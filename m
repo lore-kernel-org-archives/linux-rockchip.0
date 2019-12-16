@@ -1,50 +1,50 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v3 0/4] arm64: dts: rockchip: Add Rock Pi N10 support
-Date: Mon, 16 Dec 2019 23:17:07 +0530
-Message-ID: <20191216174711.17856-1-jagan@amarulasolutions.com>
+Subject: [PATCH v3 1/4] dt-bindings: arm: rockchip: Add Rock Pi N10 binding
+Date: Mon, 16 Dec 2019 23:17:08 +0530
+Message-ID: <20191216174711.17856-2-jagan@amarulasolutions.com>
+References: <20191216174711.17856-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191216174711.17856-1-jagan@amarulasolutions.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
 Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Akash Gajjar <akash@openedev.com>, Tom Cubie <tom@radxa.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Unlike, other Rock PI boards from radxa, Rock Pi N10 SBC is based
-on SOM + Carrier board combination.
-
 Rock Pi N10 is a Rockchip RK3399Pro based SBC, which has
 - VMARC RK3399Pro SOM (as per SMARC standard) from Vamrs.
-- Dalang carrier board from Radxa.
+- Compatible carrier board from Radxa.
 
-patch 0001: dt-bindings for Rock Pi N10
+VMARC RK3399Pro SOM need to mount on top of dalang carrier
+board for making Rock PI N10 SBC.
 
-patch 0002: VMARC RK3399Pro SOM dtsi support
+Add dt-bindings for it.
 
-patch 0003: Radxa Dalang carrier board dtsi support
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+Changes for v3:
+- Move som binding on board side
 
-patch 0004: Rock Pi N10 dts support
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Tested basic peripherals and will all more in future patches.
-
-Any inputs?
-Jagan.
-
-Jagan Teki (4):
-  dt-bindings: arm: rockchip: Add Rock Pi N10 binding
-  arm64: dts: rockchip: Add VMARC RK3399Pro SOM initial support
-  ARM: dts: rockchip: Add Radxa Dalang Carrier board
-  arm64: dts: rockchip: Add Radxa Rock Pi N10 initial support
-
- .../devicetree/bindings/arm/rockchip.yaml     |   6 +
- .../dts/rockchip-radxa-dalang-carrier.dtsi    |  81 +++++
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3399pro-rock-pi-n10.dts    |  17 +
- .../dts/rockchip/rk3399pro-vmarc-som.dtsi     | 333 ++++++++++++++++++
- 5 files changed, 438 insertions(+)
- create mode 100644 arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 45728fd22af8..c3eb32f1a9ee 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -423,6 +423,12 @@ properties:
+           - const: radxa,rockpi4
+           - const: rockchip,rk3399
+ 
++      - description: Radxa ROCK Pi N10
++        items:
++          - const: radxa,rockpi-n10
++          - const: vamrs,rk3399pro-vmarc-som
++          - const: rockchip,rk3399pro
++
+       - description: Radxa Rock2 Square
+         items:
+           - const: radxa,rock2-square
 -- 
 2.18.0.321.gffc6fa0e3
