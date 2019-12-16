@@ -1,75 +1,288 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3] arm64: dts: rockchip: split rk3399-rockpro64 for v2 and v2.1 boards
-Date: Mon, 16 Dec 2019 11:04:08 +0100
-Message-ID: <6656576.A7zHEAv81k@phil>
-References: <20191202055929.26540-1-katsuhiro@katsuster.net>
+From: Neil Armstrong <narmstrong@baylibre.com>
+Subject: Re: [PATCH v5 1/6] drm/bridge/synopsys: dsi: driver-specific
+ configuration of phy timings
+Date: Mon, 16 Dec 2019 11:37:09 +0100
+Message-ID: <305fdaba-cd0f-f0b9-686b-b319b0b424a2@baylibre.com>
+References: <20191209143130.4553-1-heiko@sntech.de>
+ <20191209143130.4553-2-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191202055929.26540-1-katsuhiro@katsuster.net>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Hugh Cole-Baker <sigmaris@gmail.com>, Vasily Khoruzhick <anarsoul@gmail.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191209143130.4553-2-heiko@sntech.de>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Heiko Stuebner <heiko@sntech.de>, a.hajda@samsung.com
+Cc: bivvy.bi@rock-chips.com, jernej.skrabec@siol.net, kuninori.morimoto.gx@renesas.com, jonas@kwiboo.se, sean@poorly.run, xzy.xu@rock-chips.com, philippe.cornu@st.com, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, yannick.fertre@st.com, linux-rockchip@lists.infradead.org, nickey.yang@rock-chips.com, eddie.cai@rock-chips.com, Laurent.pinchart@ideasonboard.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, sam@ravnborg.org, christoph.muellner@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Katsuhiro,
-
-Am Montag, 2. Dezember 2019, 06:59:29 CET schrieb Katsuhiro Suzuki:
-> This patch splits rk3399-rockpro64 dts file to 2 files for v2 and
-> v2.1 boards.
+On 09/12/2019 15:31, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 > 
-> Both v2 and v2.1 boards can use almost same settings but we find a
-> difference in I2C address of audio CODEC ES8136.
+> The timing values for dw-dsi are often dependent on the used display and
+> according to Philippe Cornu will most likely also depend on the used phy
+> technology in the soc-specific implementation.
 > 
-> Reported-by: Vasily Khoruzhick <anarsoul@gmail.com>
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+> To solve this and allow specific implementations to define them as needed
+> add a new get_timing callback to phy_ops and call this from the dphy_timing
+> function to retrieve the necessary values for the specific mode.
 > 
+> Right now this handles the hs2lp + lp2hs where Rockchip SoCs need handling
+> according to the phy speed, while STM seems to be ok with static values.
+> 
+> changes in v5:
+> - rebase on 5.5-rc1
+> - merge into px30 dsi series to prevent ordering conflicts
+> 
+> changes in v4:
+> - rebase to make it directly fit on top of drm-misc-next after all
+> 
+> changes in v3:
+> - check existence of phy_ops->get_timing in __dw_mipi_dsi_probe()
+> - emit actual error when get_timing() call fails
+> - add tags from Philippe and Yannick
+> 
+> changes in v2:
+> - add driver-specific handling, don't force all bridge users to use
+>   the same timings, as suggested by Philippe
+> 
+> Suggested-by: Philippe Cornu <philippe.cornu@st.com>
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> Reviewed-by: Philippe Cornu <philippe.cornu@st.com>
+> Tested-by: Yannick Fertre <yannick.fertre@st.com>
 > ---
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 27 +++++--
+>  drivers/gpu/drm/rockchip/Kconfig              |  1 +
+>  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 78 +++++++++++++++++++
+>  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         | 13 ++++
+>  include/drm/bridge/dw_mipi_dsi.h              |  9 +++
+>  5 files changed, 121 insertions(+), 7 deletions(-)
 > 
-> Changes in v3:
->   - Add compatible strings for v2.0 and v2.1 boards
-> 
-> Changes in v2:
->   - Use rk3399-rockpro64.dts for for v2.1 instead of creating
->     rk3399-rockpro64-v2.1.dts
-> ---
->  .../devicetree/bindings/arm/rockchip.yaml     |   2 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3399-rockpro64-v2.dts |  30 +
->  .../boot/dts/rockchip/rk3399-rockpro64.dts    | 759 +----------------
->  .../boot/dts/rockchip/rk3399-rockpro64.dtsi   | 763 ++++++++++++++++++
->  5 files changed, 800 insertions(+), 755 deletions(-)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index d9847b306b83..8d8658613c57 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -409,6 +409,8 @@ properties:
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> index b6e793bb653c..bfe0061e54a2 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> @@ -719,7 +719,15 @@ static void dw_mipi_dsi_vertical_timing_config(struct dw_mipi_dsi *dsi,
 >  
->        - description: Pine64 RockPro64
->          items:
-> +          - const: pine64,rockpro64-v2.1
-> +          - const: pine64,rockpro64-v2.0
->            - const: pine64,rockpro64
->            - const: rockchip,rk3399
+>  static void dw_mipi_dsi_dphy_timing_config(struct dw_mipi_dsi *dsi)
+>  {
+> +	const struct dw_mipi_dsi_phy_ops *phy_ops = dsi->plat_data->phy_ops;
+> +	struct dw_mipi_dsi_dphy_timing timing;
+>  	u32 hw_version;
+> +	int ret;
+> +
+> +	ret = phy_ops->get_timing(dsi->plat_data->priv_data,
+> +				  dsi->lane_mbps, &timing);
+> +	if (ret)
+> +		DRM_DEV_ERROR(dsi->dev, "Retrieving phy timings failed\n");
 >  
+>  	/*
+>  	 * TODO dw drv improvements
+> @@ -732,16 +740,20 @@ static void dw_mipi_dsi_dphy_timing_config(struct dw_mipi_dsi *dsi)
+>  	hw_version = dsi_read(dsi, DSI_VERSION) & VERSION;
+>  
+>  	if (hw_version >= HWVER_131) {
+> -		dsi_write(dsi, DSI_PHY_TMR_CFG, PHY_HS2LP_TIME_V131(0x40) |
+> -			  PHY_LP2HS_TIME_V131(0x40));
+> +		dsi_write(dsi, DSI_PHY_TMR_CFG,
+> +			  PHY_HS2LP_TIME_V131(timing.data_hs2lp) |
+> +			  PHY_LP2HS_TIME_V131(timing.data_lp2hs));
+>  		dsi_write(dsi, DSI_PHY_TMR_RD_CFG, MAX_RD_TIME_V131(10000));
+>  	} else {
+> -		dsi_write(dsi, DSI_PHY_TMR_CFG, PHY_HS2LP_TIME(0x40) |
+> -			  PHY_LP2HS_TIME(0x40) | MAX_RD_TIME(10000));
+> +		dsi_write(dsi, DSI_PHY_TMR_CFG,
+> +			  PHY_HS2LP_TIME(timing.data_hs2lp) |
+> +			  PHY_LP2HS_TIME(timing.data_lp2hs) |
+> +			  MAX_RD_TIME(10000));
+>  	}
+>  
+> -	dsi_write(dsi, DSI_PHY_TMR_LPCLK_CFG, PHY_CLKHS2LP_TIME(0x40)
+> -		  | PHY_CLKLP2HS_TIME(0x40));
+> +	dsi_write(dsi, DSI_PHY_TMR_LPCLK_CFG,
+> +		  PHY_CLKHS2LP_TIME(timing.clk_hs2lp) |
+> +		  PHY_CLKLP2HS_TIME(timing.clk_lp2hs));
+>  }
+>  
+>  static void dw_mipi_dsi_dphy_interface_config(struct dw_mipi_dsi *dsi)
+> @@ -991,7 +1003,8 @@ __dw_mipi_dsi_probe(struct platform_device *pdev,
+>  	dsi->dev = dev;
+>  	dsi->plat_data = plat_data;
+>  
+> -	if (!plat_data->phy_ops->init || !plat_data->phy_ops->get_lane_mbps) {
+> +	if (!plat_data->phy_ops->init || !plat_data->phy_ops->get_lane_mbps ||
+> +	    !plat_data->phy_ops->get_timing) {
+>  		DRM_ERROR("Phy not properly configured\n");
+>  		return ERR_PTR(-ENODEV);
+>  	}
+> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+> index 6f4222f8beeb..4b7a276994ce 100644
+> --- a/drivers/gpu/drm/rockchip/Kconfig
+> +++ b/drivers/gpu/drm/rockchip/Kconfig
+> @@ -46,6 +46,7 @@ config ROCKCHIP_DW_HDMI
+>  
+>  config ROCKCHIP_DW_MIPI_DSI
+>  	bool "Rockchip specific extensions for Synopsys DW MIPI DSI"
+> +	select GENERIC_PHY_MIPI_DPHY
+>  	help
+>  	  This selects support for Rockchip SoC specific extensions
+>  	  for the Synopsys DesignWare HDMI driver. If you want to
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> index bc073ec5c183..9406effe8077 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> @@ -559,9 +559,87 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+>  	return 0;
+>  }
+>  
+> +struct hstt {
+> +	unsigned int maxfreq;
+> +	struct dw_mipi_dsi_dphy_timing timing;
+> +};
+> +
+> +#define HSTT(_maxfreq, _c_lp2hs, _c_hs2lp, _d_lp2hs, _d_hs2lp)	\
+> +{					\
+> +	.maxfreq = _maxfreq,		\
+> +	.timing = {			\
+> +		.clk_lp2hs = _c_lp2hs,	\
+> +		.clk_hs2lp = _c_hs2lp,	\
+> +		.data_lp2hs = _d_lp2hs,	\
+> +		.data_hs2lp = _d_hs2lp,	\
+> +	}				\
+> +}
+> +
+> +/* Table A-3 High-Speed Transition Times */
+> +struct hstt hstt_table[] = {
+> +	HSTT(  90,  32, 20,  26, 13),
+> +	HSTT( 100,  35, 23,  28, 14),
+> +	HSTT( 110,  32, 22,  26, 13),
+> +	HSTT( 130,  31, 20,  27, 13),
+> +	HSTT( 140,  33, 22,  26, 14),
+> +	HSTT( 150,  33, 21,  26, 14),
+> +	HSTT( 170,  32, 20,  27, 13),
+> +	HSTT( 180,  36, 23,  30, 15),
+> +	HSTT( 200,  40, 22,  33, 15),
+> +	HSTT( 220,  40, 22,  33, 15),
+> +	HSTT( 240,  44, 24,  36, 16),
+> +	HSTT( 250,  48, 24,  38, 17),
+> +	HSTT( 270,  48, 24,  38, 17),
+> +	HSTT( 300,  50, 27,  41, 18),
+> +	HSTT( 330,  56, 28,  45, 18),
+> +	HSTT( 360,  59, 28,  48, 19),
+> +	HSTT( 400,  61, 30,  50, 20),
+> +	HSTT( 450,  67, 31,  55, 21),
+> +	HSTT( 500,  73, 31,  59, 22),
+> +	HSTT( 550,  79, 36,  63, 24),
+> +	HSTT( 600,  83, 37,  68, 25),
+> +	HSTT( 650,  90, 38,  73, 27),
+> +	HSTT( 700,  95, 40,  77, 28),
+> +	HSTT( 750, 102, 40,  84, 28),
+> +	HSTT( 800, 106, 42,  87, 30),
+> +	HSTT( 850, 113, 44,  93, 31),
+> +	HSTT( 900, 118, 47,  98, 32),
+> +	HSTT( 950, 124, 47, 102, 34),
+> +	HSTT(1000, 130, 49, 107, 35),
+> +	HSTT(1050, 135, 51, 111, 37),
+> +	HSTT(1100, 139, 51, 114, 38),
+> +	HSTT(1150, 146, 54, 120, 40),
+> +	HSTT(1200, 153, 57, 125, 41),
+> +	HSTT(1250, 158, 58, 130, 42),
+> +	HSTT(1300, 163, 58, 135, 44),
+> +	HSTT(1350, 168, 60, 140, 45),
+> +	HSTT(1400, 172, 64, 144, 47),
+> +	HSTT(1450, 176, 65, 148, 48),
+> +	HSTT(1500, 181, 66, 153, 50)
+> +};
+> +
+> +static int
+> +dw_mipi_dsi_phy_get_timing(void *priv_data, unsigned int lane_mbps,
+> +			   struct dw_mipi_dsi_dphy_timing *timing)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(hstt_table); i++)
+> +		if (lane_mbps < hstt_table[i].maxfreq)
+> +			break;
+> +
+> +	if (i == ARRAY_SIZE(hstt_table))
+> +		i--;
+> +
+> +	*timing = hstt_table[i].timing;
+> +
+> +	return 0;
+> +}
+> +
+>  static const struct dw_mipi_dsi_phy_ops dw_mipi_dsi_rockchip_phy_ops = {
+>  	.init = dw_mipi_dsi_phy_init,
+>  	.get_lane_mbps = dw_mipi_dsi_get_lane_mbps,
+> +	.get_timing = dw_mipi_dsi_phy_get_timing,
+>  };
+>  
+>  static void dw_mipi_dsi_rockchip_config(struct dw_mipi_dsi_rockchip *dsi,
+> diff --git a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+> index 514efefb0016..4b165635b2d4 100644
+> --- a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+> +++ b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+> @@ -309,11 +309,24 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+>  	return 0;
+>  }
+>  
+> +static int
+> +dw_mipi_dsi_phy_get_timing(void *priv_data, unsigned int lane_mbps,
+> +			   struct dw_mipi_dsi_dphy_timing *timing)
+> +{
+> +	timing->clk_hs2lp = 0x40;
+> +	timing->clk_lp2hs = 0x40;
+> +	timing->data_hs2lp = 0x40;
+> +	timing->data_lp2hs = 0x40;
+> +
+> +	return 0;
+> +}
+> +
+>  static const struct dw_mipi_dsi_phy_ops dw_mipi_dsi_stm_phy_ops = {
+>  	.init = dw_mipi_dsi_phy_init,
+>  	.power_on = dw_mipi_dsi_phy_power_on,
+>  	.power_off = dw_mipi_dsi_phy_power_off,
+>  	.get_lane_mbps = dw_mipi_dsi_get_lane_mbps,
+> +	.get_timing = dw_mipi_dsi_phy_get_timing,
+>  };
+>  
+>  static struct dw_mipi_dsi_plat_data dw_mipi_dsi_stm_plat_data = {
+> diff --git a/include/drm/bridge/dw_mipi_dsi.h b/include/drm/bridge/dw_mipi_dsi.h
+> index 94cc64a342e1..b0e390b3288e 100644
+> --- a/include/drm/bridge/dw_mipi_dsi.h
+> +++ b/include/drm/bridge/dw_mipi_dsi.h
+> @@ -19,6 +19,13 @@ struct dw_mipi_dsi;
+>  struct mipi_dsi_device;
+>  struct platform_device;
+>  
+> +struct dw_mipi_dsi_dphy_timing {
+> +	u16 data_hs2lp;
+> +	u16 data_lp2hs;
+> +	u16 clk_hs2lp;
+> +	u16 clk_lp2hs;
+> +};
+> +
+>  struct dw_mipi_dsi_phy_ops {
+>  	int (*init)(void *priv_data);
+>  	void (*power_on)(void *priv_data);
+> @@ -27,6 +34,8 @@ struct dw_mipi_dsi_phy_ops {
+>  			     const struct drm_display_mode *mode,
+>  			     unsigned long mode_flags, u32 lanes, u32 format,
+>  			     unsigned int *lane_mbps);
+> +	int (*get_timing)(void *priv_data, unsigned int lane_mbps,
+> +			  struct dw_mipi_dsi_dphy_timing *timing);
+>  };
+>  
+>  struct dw_mipi_dsi_host_ops {
+> 
 
-applied for 5.6 with a changed binding. If you need a
-"one-of-many" element it should use an enum ... see the rk3399-firefly
-and other boards for example. So I've adapted the patch accordingly:
-
-@@ -409,6 +409,9 @@ properties:
- 
-       - description: Pine64 RockPro64
-         items:
-+          - enum:
-+              - pine64,rockpro64-v2.1
-+              - pine64,rockpro64-v2.0
-           - const: pine64,rockpro64
-           - const: rockchip,rk3399
- 
-
-Heiko
+Reviewed-by: Neil Armstrong <narmstrong@baylibre.com>
