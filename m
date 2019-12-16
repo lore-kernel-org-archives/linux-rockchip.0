@@ -1,44 +1,24 @@
-From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: Re: [v2 0/6] Add support for PCIe controller to work in endpoint mode
- on R-Car SoCs
-Date: Mon, 16 Dec 2019 09:27:49 +0000
-Message-ID: <CA+V-a8ugehRVuV2kwYgkTVp3Vk4ftKsQVfW0=vL4L7BZbDdeNg@mail.gmail.com>
-References: <20191213084748.11210-1-prabhakar.mahadev-lad.rj@bp.renesas.com> <20191213184627.GA169673@google.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 1/3] dt-bindings: gpu: mali-bifrost: Add Rockchip PX30
+Date: Mon, 16 Dec 2019 10:35:22 +0100
+Message-ID: <2783955.QabRoRl9uH@phil>
+References: <20191208145508.3124-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191213184627.GA169673@google.com>
+In-Reply-To: <20191208145508.3124-1-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci <linux-pci@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>
+To: linux-rockchip@lists.infradead.org
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, christoph.muellner@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn,
+Am Sonntag, 8. Dezember 2019, 15:55:06 CET schrieb Heiko Stuebner:
+> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> 
+> Define a compatible string for the Mali Bifrost GPU found in
+> Rockchip's PX30 SoCs.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-On Fri, Dec 13, 2019 at 9:06 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
->
-> On Fri, Dec 13, 2019 at 08:47:42AM +0000, Lad Prabhakar wrote:
->
-> > Lad, Prabhakar (6):
-> >   pci: pcie-rcar: preparation for adding endpoint support
-> >   pci: endpoint: add support to handle features of outbound memory
-> >   of: address: add support to parse PCI outbound-ranges
-> >   dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
-> >     controller
-> >   pci: rcar: add support for rcar pcie controller in endpoint mode
-> >   misc: pci_endpoint_test: add device-id for RZ/G2E pcie controller
->
-> The next time you post this, please update the subject lines to match
-> existing conventions (capitalize "PCI", description is a complete
-> sentence starting with a capitalized verb, etc").  Run "git log
-> --online" on the file you're changing and make yours look the same.
->
->   s/pci: /PCI: /
->   s/pcie-rcar: /rcar: /
->   s/pcie/PCIe/
->   s/device-id/Device ID/
-
-Thank you for the review, I'll fix the above in next iteration.
-
-Cheers,
---Prabhakar
+applied all 3 for 5.6
