@@ -1,180 +1,500 @@
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: Re: [PATCH 09/12] drm/rockchip: lvds: Add PX30 =?UTF-8?B?c3VwcG9y?=
- =?UTF-8?B?dOOAkOivt+azqOaEj++8jOmCruS7tueUsWxpbnV4LXJvY2tjaGlwLWJvdW5j?=
- =?UTF-8?B?ZXMrYW5keS55YW49cm9jay1jaGlwcy5jb21AbGlzdHMuaW5mcmFkZWFkLm9y?=
- =?UTF-8?B?Z+S7o+WPkeOAkQ==?=
-Date: Mon, 16 Dec 2019 13:10:44 +0100
-Message-ID: <20191216131044.38582a49@xps13>
-References: <20191213181051.25983-1-miquel.raynal@bootlin.com>
- <20191213181051.25983-10-miquel.raynal@bootlin.com>
- <02b3373e-790b-5f0c-40a0-7cc423a0dac5@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH RESEND 2/2] phy/rockchip: inno-dsidphy: generalize parameter handling
+Date: Mon, 16 Dec 2019 13:24:48 +0100
+Message-ID: <20191216122448.27867-2-heiko@sntech.de>
+References: <20191216122448.27867-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <02b3373e-790b-5f0c-40a0-7cc423a0dac5@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Andy Yan <andy.yan@rock-chips.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, Maxime Chevallier <maxime.chevallier@bootlin.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191216122448.27867-1-heiko@sntech.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: kishon@ti.com
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5keSwKCkFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4gd3JvdGUgb24gTW9u
-LCAxNiBEZWMgMjAxOSAyMDowMDozMQorMDgwMDoKCj4gSGkgTWlxdWVsOgo+IAo+IFRoYW5rcyBm
-b3IgeW91ciB3b3JrIGhlcmUuCj4gCj4gQSBkaXNjdXNzaW9uIGFib3V0IHRoZSBncmYgd3JpdGUg
-bWFjcm8gYmVsbG93Lgo+IAo+IE9uIDEyLzE0LzE5IDI6MTAgQU0sIE1pcXVlbCBSYXluYWwgd3Jv
-dGU6Cj4gPiBJbnRyb2R1Y2UgUFgzMCBMVkRTIHN1cHBvcnQuIFRoaXMgbWVhbnMgYWRkaW5nIHRo
-ZSByZWxldmFudCBoZWxwZXIKPiA+IGZ1bmN0aW9ucywgYSBzcGVjaWZpYyBwcm9iZSBhbmQgYWxz
-byB0aGUgaW5pdGlhbGl6YXRpb24gb2YgYSBzcGVjaWZpYwo+ID4gUEhZLgo+ID4KPiA+IFNpZ25l
-ZC1vZmYtYnk6IE1pcXVlbCBSYXluYWwgPG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+Cj4gPiAt
-LS0KPiA+ICAgZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYyB8IDE3MyAr
-KysrKysrKysrKysrKysrKysrKysrKwo+ID4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9j
-a2NoaXBfbHZkcy5oIHwgIDE0ICsrCj4gPiAgIDIgZmlsZXMgY2hhbmdlZCwgMTg3IGluc2VydGlv
-bnMoKykKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2x2ZHMuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmMKPiA+
-IGluZGV4IGEwYzIwM2RjZDY2Zi4uZTU1MGMyZjEwMmUwIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwo+ID4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYwo+ID4gQEAgLTEwLDYgKzEwLDcgQEAKPiA+ICAg
-I2luY2x1ZGUgPGxpbnV4L2NvbXBvbmVudC5oPgo+ID4gICAjaW5jbHVkZSA8bGludXgvbWZkL3N5
-c2Nvbi5oPgo+ID4gICAjaW5jbHVkZSA8bGludXgvb2ZfZ3JhcGguaD4KPiA+ICsjaW5jbHVkZSA8
-bGludXgvcGh5L3BoeS5oPgo+ID4gICAjaW5jbHVkZSA8bGludXgvcGluY3RybC9kZXZpbmZvLmg+
-Cj4gPiAgICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiA+ICAgI2luY2x1ZGUg
-PGxpbnV4L3BtX3J1bnRpbWUuaD4KPiA+IEBAIC01NCw2ICs1NSw3IEBAIHN0cnVjdCByb2NrY2hp
-cF9sdmRzIHsKPiA+ICAgCXZvaWQgX19pb21lbSAqcmVnczsKPiA+ICAgCXN0cnVjdCByZWdtYXAg
-KmdyZjsKPiA+ICAgCXN0cnVjdCBjbGsgKnBjbGs7Cj4gPiArCXN0cnVjdCBwaHkgKmRwaHk7Cj4g
-PiAgIAljb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfbHZkc19zb2NfZGF0YSAqc29jX2RhdGE7Cj4gPiAg
-IAlpbnQgb3V0cHV0OyAvKiByZ2IgbHZkcyBvciBkdWFsIGx2ZHMgb3V0cHV0ICovCj4gPiAgIAlp
-bnQgZm9ybWF0OyAvKiB2ZXNhIG9yIGplaWRhIGZvcm1hdCAqLwo+ID4gQEAgLTMyMiw2ICszMjQs
-MTMzIEBAIHN0YXRpYyB2b2lkIHJrMzI4OF9sdmRzX2VuY29kZXJfZGlzYWJsZShzdHJ1Y3QgZHJt
-X2VuY29kZXIgKmVuY29kZXIpCj4gPiAgIAlkcm1fcGFuZWxfdW5wcmVwYXJlKGx2ZHMtPnBhbmVs
-KTsKPiA+ICAgfSAgCj4gPiAgID4gK3N0YXRpYyBpbnQgcHgzMF9sdmRzX3Bvd2Vyb24oc3RydWN0
-IHJvY2tjaGlwX2x2ZHMgKmx2ZHMpICAKPiA+ICt7Cj4gPiArCWludCByZXQ7Cj4gPiArCj4gPiAr
-CXJldCA9IHBtX3J1bnRpbWVfZ2V0X3N5bmMobHZkcy0+ZGV2KTsKPiA+ICsJaWYgKHJldCA8IDAp
-IHsKPiA+ICsJCURSTV9ERVZfRVJST1IobHZkcy0+ZGV2LCAiZmFpbGVkIHRvIGdldCBwbSBydW50
-aW1lOiAlZFxuIiwgcmV0KTsKPiA+ICsJCXJldHVybiByZXQ7Cj4gPiArCX0KPiA+ICsKPiA+ICsJ
-LyogRW5hYmxlIExWRFMgbW9kZSAqLwo+ID4gKwlyZXR1cm4gcmVnbWFwX3VwZGF0ZV9iaXRzKGx2
-ZHMtPmdyZiwgUFgzMF9MVkRTX0dSRl9QRF9WT19DT04xLAo+ID4gKwkJCQkgIFBYMzBfTFZEU19N
-T0RFX0VOKDEpIHwgUFgzMF9MVkRTX1AyU19FTigxKSwKPiA+ICsJCQkJICBQWDMwX0xWRFNfTU9E
-RV9FTigxKSB8IFBYMzBfTFZEU19QMlNfRU4oMSkpOwo+ID4gK30KPiA+ICsKPiA+ICtzdGF0aWMg
-dm9pZCBweDMwX2x2ZHNfcG93ZXJvZmYoc3RydWN0IHJvY2tjaGlwX2x2ZHMgKmx2ZHMpCj4gPiAr
-ewo+ID4gKwlyZWdtYXBfdXBkYXRlX2JpdHMobHZkcy0+Z3JmLCBQWDMwX0xWRFNfR1JGX1BEX1ZP
-X0NPTjEsCj4gPiArCQkJICAgUFgzMF9MVkRTX01PREVfRU4oMSkgfCBQWDMwX0xWRFNfUDJTX0VO
-KDEpLAo+ID4gKwkJCSAgIFBYMzBfTFZEU19NT0RFX0VOKDApIHwgUFgzMF9MVkRTX1AyU19FTigw
-KSk7Cj4gPiArCj4gPiArCXBtX3J1bnRpbWVfcHV0KGx2ZHMtPmRldik7Cj4gPiArfQo+ID4gKwo+
-ID4gK3N0YXRpYyBpbnQgcHgzMF9sdmRzX2dyZl9jb25maWcoc3RydWN0IGRybV9lbmNvZGVyICpl
-bmNvZGVyLAo+ID4gKwkJCQlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAqbW9kZSkKPiA+ICt7Cj4g
-PiArCXN0cnVjdCByb2NrY2hpcF9sdmRzICpsdmRzID0gZW5jb2Rlcl90b19sdmRzKGVuY29kZXIp
-Owo+ID4gKwl1OCBuaHN5bmMgPSAhKG1vZGUtPmZsYWdzICYgRFJNX01PREVfRkxBR19QSFNZTkMp
-Owo+ID4gKwl1OCBudnN5bmMgPSAhKG1vZGUtPmZsYWdzICYgRFJNX01PREVfRkxBR19QVlNZTkMp
-Owo+ID4gKwl1OCBuZGNsayA9ICEobW9kZS0+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX1BDU1lOQyk7
-Cj4gPiArCWludCByZXQ7Cj4gPiArCj4gPiArCWlmIChsdmRzLT5vdXRwdXQgIT0gRElTUExBWV9P
-VVRQVVRfTFZEUykgewo+ID4gKwkJRFJNX0RFVl9FUlJPUihsdmRzLT5kZXYsICJVbnN1cHBvcnRl
-ZCBkaXNwbGF5IG91dHB1dCAlZFxuIiwKPiA+ICsJCQkgICAgICBsdmRzLT5vdXRwdXQpOwo+ID4g
-KwkJcmV0dXJuIC1FSU5WQUw7Cj4gPiArCX0KPiA+ICsKPiA+ICsJaWYgKG5oc3luYyBeIG52c3lu
-Yykgewo+ID4gKwkJRFJNX0RFVl9FUlJPUihsdmRzLT5kZXYsICJVbnN1cHBvcnRlZCBIc3luYy9W
-c3luYyBwb2xhcml0eVxuIik7Cj4gPiArCQlyZXR1cm4gLUVJTlZBTDsKPiA+ICsJfQo+ID4gKwo+
-ID4gKwkvKiBTZXQgZm9ybWF0ICovCj4gPiArCXJldCA9IHJlZ21hcF91cGRhdGVfYml0cyhsdmRz
-LT5ncmYsIFBYMzBfTFZEU19HUkZfUERfVk9fQ09OMSwKPiA+ICsJCQkJIFBYMzBfTFZEU19GT1JN
-QVQobHZkcy0+Zm9ybWF0KSwKPiA+ICsJCQkJIFBYMzBfTFZEU19GT1JNQVQobHZkcy0+Zm9ybWF0
-KSk7Cj4gPiArCWlmIChyZXQpCj4gPiArCQlyZXR1cm4gcmV0Owo+ID4gKwo+ID4gKwkvKiBDb250
-cm9sIEhzeW5jL1ZzeW5jIHBvbGFyaXR5ICovCj4gPiArCXJldCA9IHJlZ21hcF91cGRhdGVfYml0
-cyhsdmRzLT5ncmYsIFBYMzBfTFZEU19HUkZfUERfVk9fQ09OMCwKPiA+ICsJCQkJIFBYMzBfTFZE
-U19USUVfQ0xLUygxKSwKPiA+ICsJCQkJIFBYMzBfTFZEU19USUVfQ0xLUygxKSk7Cj4gPiArCWlm
-IChyZXQpCj4gPiArCQlyZXR1cm4gcmV0Owo+ID4gKwo+ID4gKwkvKiBTZXQgSHN5bmMvVnN5bmMg
-cG9sYXJpdHkgKi8KPiA+ICsJcmV0ID0gcmVnbWFwX3VwZGF0ZV9iaXRzKGx2ZHMtPmdyZiwgUFgz
-MF9MVkRTX0dSRl9QRF9WT19DT04wLAo+ID4gKwkJCQkgUFgzMF9MVkRTX0lOVkVSVF9DTEtTKDEp
-LAo+ID4gKwkJCQkgUFgzMF9MVkRTX0lOVkVSVF9DTEtTKG5oc3luYykpOwo+ID4gKwlpZiAocmV0
-KQo+ID4gKwkJcmV0dXJuIHJldDsKPiA+ICsKPiA+ICsJLyogU2V0IGRjbGsgcG9sYXJpdHkgKi8K
-PiA+ICsJcmV0dXJuIHJlZ21hcF91cGRhdGVfYml0cyhsdmRzLT5ncmYsIFBYMzBfTFZEU19HUkZf
-UERfVk9fQ09OMCwKPiA+ICsJCQkJICBQWDMwX0xWRFNfSU5WRVJUX0RDTEsoMSksCj4gPiArCQkJ
-CSAgUFgzMF9MVkRTX0lOVkVSVF9EQ0xLKG5kY2xrKSk7Cj4gPiArfQo+ID4gKwo+ID4gK3N0YXRp
-YyBpbnQgcHgzMF9sdmRzX3NldF92b3Bfc291cmNlKHN0cnVjdCByb2NrY2hpcF9sdmRzICpsdmRz
-LAo+ID4gKwkJCQkgICAgc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyKQo+ID4gK3sKPiA+ICsJ
-aW50IHZvcDsKPiA+ICsKPiA+ICsJdm9wID0gZHJtX29mX2VuY29kZXJfYWN0aXZlX2VuZHBvaW50
-X2lkKGx2ZHMtPmRldi0+b2Zfbm9kZSwgZW5jb2Rlcik7Cj4gPiArCWlmICh2b3AgPCAwKQo+ID4g
-KwkJcmV0dXJuIHZvcDsKPiA+ICsKPiA+ICsJcmV0dXJuIHJlZ21hcF91cGRhdGVfYml0cyhsdmRz
-LT5ncmYsIFBYMzBfTFZEU19HUkZfUERfVk9fQ09OMSwKPiA+ICsJCQkJICBQWDMwX0xWRFNfVk9Q
-X1NFTCgxKSwKPiA+ICsJCQkJICBQWDMwX0xWRFNfVk9QX1NFTCh2b3ApKTsKPiA+ICt9Cj4gPiAr
-Cj4gPiArc3RhdGljIHZvaWQgcHgzMF9sdmRzX2VuY29kZXJfZW5hYmxlKHN0cnVjdCBkcm1fZW5j
-b2RlciAqZW5jb2RlcikKPiA+ICt7Cj4gPiArCXN0cnVjdCByb2NrY2hpcF9sdmRzICpsdmRzID0g
-ZW5jb2Rlcl90b19sdmRzKGVuY29kZXIpOwo+ID4gKwlzdHJ1Y3QgZHJtX2Rpc3BsYXlfbW9kZSAq
-bW9kZSA9ICZlbmNvZGVyLT5jcnRjLT5zdGF0ZS0+YWRqdXN0ZWRfbW9kZTsKPiA+ICsJaW50IHJl
-dDsKPiA+ICsKPiA+ICsJZHJtX3BhbmVsX3ByZXBhcmUobHZkcy0+cGFuZWwpOwo+ID4gKwo+ID4g
-KwlyZXQgPSBweDMwX2x2ZHNfcG93ZXJvbihsdmRzKTsKPiA+ICsJaWYgKHJldCkgewo+ID4gKwkJ
-RFJNX0RFVl9FUlJPUihsdmRzLT5kZXYsICJmYWlsZWQgdG8gcG93ZXIgb24gTFZEUzogJWRcbiIs
-IHJldCk7Cj4gPiArCQlkcm1fcGFuZWxfdW5wcmVwYXJlKGx2ZHMtPnBhbmVsKTsKPiA+ICsJCXJl
-dHVybjsKPiA+ICsJfQo+ID4gKwo+ID4gKwlyZXQgPSBweDMwX2x2ZHNfZ3JmX2NvbmZpZyhlbmNv
-ZGVyLCBtb2RlKTsKPiA+ICsJaWYgKHJldCkgewo+ID4gKwkJRFJNX0RFVl9FUlJPUihsdmRzLT5k
-ZXYsICJmYWlsZWQgdG8gY29uZmlndXJlIExWRFM6ICVkXG4iLCByZXQpOwo+ID4gKwkJZHJtX3Bh
-bmVsX3VucHJlcGFyZShsdmRzLT5wYW5lbCk7Cj4gPiArCQlyZXR1cm47Cj4gPiArCX0KPiA+ICsK
-PiA+ICsJcmV0ID0gcHgzMF9sdmRzX3NldF92b3Bfc291cmNlKGx2ZHMsIGVuY29kZXIpOwo+ID4g
-KwlpZiAocmV0KSB7Cj4gPiArCQlEUk1fREVWX0VSUk9SKGx2ZHMtPmRldiwgImZhaWxlZCB0byBz
-ZXQgVk9QIHNvdXJjZTogJWRcbiIsIHJldCk7Cj4gPiArCQlkcm1fcGFuZWxfdW5wcmVwYXJlKGx2
-ZHMtPnBhbmVsKTsKPiA+ICsJCXJldHVybjsKPiA+ICsJfQo+ID4gKwo+ID4gKwlkcm1fcGFuZWxf
-ZW5hYmxlKGx2ZHMtPnBhbmVsKTsKPiA+ICt9Cj4gPiArCj4gPiArc3RhdGljIHZvaWQgcHgzMF9s
-dmRzX2VuY29kZXJfZGlzYWJsZShzdHJ1Y3QgZHJtX2VuY29kZXIgKmVuY29kZXIpCj4gPiArewo+
-ID4gKwlzdHJ1Y3Qgcm9ja2NoaXBfbHZkcyAqbHZkcyA9IGVuY29kZXJfdG9fbHZkcyhlbmNvZGVy
-KTsKPiA+ICsKPiA+ICsJZHJtX3BhbmVsX2Rpc2FibGUobHZkcy0+cGFuZWwpOwo+ID4gKwlweDMw
-X2x2ZHNfcG93ZXJvZmYobHZkcyk7Cj4gPiArCWRybV9wYW5lbF91bnByZXBhcmUobHZkcy0+cGFu
-ZWwpOwo+ID4gK30KPiA+ICsKPiA+ICAgc3RhdGljIGNvbnN0Cj4gPiAgIHN0cnVjdCBkcm1fZW5j
-b2Rlcl9oZWxwZXJfZnVuY3MgcmszMjg4X2x2ZHNfZW5jb2Rlcl9oZWxwZXJfZnVuY3MgPSB7Cj4g
-PiAgIAkuZW5hYmxlID0gcmszMjg4X2x2ZHNfZW5jb2Rlcl9lbmFibGUsCj4gPiBAQCAtMzI5LDYg
-KzQ1OCwxMyBAQCBzdHJ1Y3QgZHJtX2VuY29kZXJfaGVscGVyX2Z1bmNzIHJrMzI4OF9sdmRzX2Vu
-Y29kZXJfaGVscGVyX2Z1bmNzID0gewo+ID4gICAJLmF0b21pY19jaGVjayA9IHJvY2tjaGlwX2x2
-ZHNfZW5jb2Rlcl9hdG9taWNfY2hlY2ssCj4gPiAgIH07ICAKPiA+ICAgPiArc3RhdGljIGNvbnN0
-ICAKPiA+ICtzdHJ1Y3QgZHJtX2VuY29kZXJfaGVscGVyX2Z1bmNzIHB4MzBfbHZkc19lbmNvZGVy
-X2hlbHBlcl9mdW5jcyA9IHsKPiA+ICsJLmVuYWJsZSA9IHB4MzBfbHZkc19lbmNvZGVyX2VuYWJs
-ZSwKPiA+ICsJLmRpc2FibGUgPSBweDMwX2x2ZHNfZW5jb2Rlcl9kaXNhYmxlLAo+ID4gKwkuYXRv
-bWljX2NoZWNrID0gcm9ja2NoaXBfbHZkc19lbmNvZGVyX2F0b21pY19jaGVjaywKPiA+ICt9Owo+
-ID4gKwo+ID4gICBzdGF0aWMgY29uc3Qgc3RydWN0IGRybV9lbmNvZGVyX2Z1bmNzIHJvY2tjaGlw
-X2x2ZHNfZW5jb2Rlcl9mdW5jcyA9IHsKPiA+ICAgCS5kZXN0cm95ID0gZHJtX2VuY29kZXJfY2xl
-YW51cCwKPiA+ICAgfTsKPiA+IEBAIC0zNzksMTYgKzUxNSw1MyBAQCBzdGF0aWMgaW50IHJrMzI4
-OF9sdmRzX3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYsCj4gPiAgIAlyZXR1cm4g
-MDsKPiA+ICAgfSAgCj4gPiAgID4gK3N0YXRpYyBpbnQgcHgzMF9sdmRzX3Byb2JlKHN0cnVjdCBw
-bGF0Zm9ybV9kZXZpY2UgKnBkZXYsICAKPiA+ICsJCQkgICBzdHJ1Y3Qgcm9ja2NoaXBfbHZkcyAq
-bHZkcykKPiA+ICt7Cj4gPiArCWludCByZXQ7Cj4gPiArCj4gPiArCS8qIE1TQiAqLwo+ID4gKwly
-ZXQgPSAgcmVnbWFwX3VwZGF0ZV9iaXRzKGx2ZHMtPmdyZiwgUFgzMF9MVkRTX0dSRl9QRF9WT19D
-T04xLAo+ID4gKwkJCQkgIFBYMzBfTFZEU19NU0JTRUwoMSksCj4gPiArCQkJCSAgUFgzMF9MVkRT
-X01TQlNFTCgxKSk7Cj4gPiArCWlmIChyZXQpCj4gPiArCQlyZXR1cm4gcmV0Owo+ID4gKwo+ID4g
-KwkvKiBQSFkgKi8KPiA+ICsJbHZkcy0+ZHBoeSA9IGRldm1fcGh5X2dldCgmcGRldi0+ZGV2LCAi
-ZHBoeSIpOwo+ID4gKwlpZiAoSVNfRVJSKGx2ZHMtPmRwaHkpKQo+ID4gKwkJcmV0dXJuIFBUUl9F
-UlIobHZkcy0+ZHBoeSk7Cj4gPiArCj4gPiArCXBoeV9pbml0KGx2ZHMtPmRwaHkpOwo+ID4gKwlp
-ZiAocmV0KQo+ID4gKwkJcmV0dXJuIHJldDsKPiA+ICsKPiA+ICsJcGh5X3NldF9tb2RlKGx2ZHMt
-PmRwaHksIFBIWV9NT0RFX0xWRFMpOwo+ID4gKwlpZiAocmV0KQo+ID4gKwkJcmV0dXJuIHJldDsK
-PiA+ICsKPiA+ICsJcmV0dXJuIHBoeV9wb3dlcl9vbihsdmRzLT5kcGh5KTsKPiA+ICt9Cj4gPiAr
-Cj4gPiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfbHZkc19zb2NfZGF0YSByazMyODhf
-bHZkc19kYXRhID0gewo+ID4gICAJLnByb2JlID0gcmszMjg4X2x2ZHNfcHJvYmUsCj4gPiAgIAku
-aGVscGVyX2Z1bmNzID0gJnJrMzI4OF9sdmRzX2VuY29kZXJfaGVscGVyX2Z1bmNzLAo+ID4gICB9
-OyAgCj4gPiAgID4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfbHZkc19zb2NfZGF0YSBw
-eDMwX2x2ZHNfZGF0YSA9IHsgIAo+ID4gKwkucHJvYmUgPSBweDMwX2x2ZHNfcHJvYmUsCj4gPiAr
-CS5oZWxwZXJfZnVuY3MgPSAmcHgzMF9sdmRzX2VuY29kZXJfaGVscGVyX2Z1bmNzLAo+ID4gK307
-Cj4gPiArCj4gPiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIHJvY2tjaGlwX2x2
-ZHNfZHRfaWRzW10gPSB7Cj4gPiAgIAl7Cj4gPiAgIAkJLmNvbXBhdGlibGUgPSAicm9ja2NoaXAs
-cmszMjg4LWx2ZHMiLAo+ID4gICAJCS5kYXRhID0gJnJrMzI4OF9sdmRzX2RhdGEKPiA+ICAgCX0s
-Cj4gPiArCXsKPiA+ICsJCS5jb21wYXRpYmxlID0gInJvY2tjaGlwLHB4MzAtbHZkcyIsCj4gPiAr
-CQkuZGF0YSA9ICZweDMwX2x2ZHNfZGF0YQo+ID4gKwl9LAo+ID4gICAJe30KPiA+ICAgfTsKPiA+
-ICAgTU9EVUxFX0RFVklDRV9UQUJMRShvZiwgcm9ja2NoaXBfbHZkc19kdF9pZHMpOwo+ID4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9sdmRzLmggYi9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5oCj4gPiBpbmRleCBlNDFlOWFiM2Mz
-MDYuLjdjZmIxMDJiNDg1NCAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9sdmRzLmgKPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2Nr
-Y2hpcF9sdmRzLmgKPiA+IEBAIC0xMDYsNCArMTA2LDE4IEBACj4gPiAgICNkZWZpbmUgTFZEU19W
-RVNBXzE4CQkJCTIKPiA+ICAgI2RlZmluZSBMVkRTX0pFSURBXzE4CQkJCTMgIAo+ID4gICA+ICsj
-ZGVmaW5lIFdSSVRFX0VOKHYsIGgsIGwpICAoKEdFTk1BU0soaCwgbCkgPDwgMTYpIHwgKHYgPDwg
-bCkpICAKPiAKPiAKPiBIb3cgYWJvdXQgcmVuYW1lIFdSSVRFX0VOIHRvIEhJV09SRF9VUERBVEUg
-dG8ga2VlcCBhbGlnbiB3aXRoIG90aGVyIG1vZHVsZXMgdGhhdCB3cml0ZSBncmY6IHN1Y2ggYXMg
-ZHdtYWMtcmsuYy9kdy1taXBpLWRzaS1yb2NraGlwLmMvZHctaGRtaS1yb2NrY2hpcC5jCgpTdXJl
-LiBJdCBpcyBhbHNvIHRoZSBuYW1lIG9mIHRoaXMgbWFjcm8gaW4gdGhlIEJTUCBidXQgSSBmb3Vu
-ZCBpdCBzbwp1bmRlc2NyaXB0aXZlIHRoYXQgSSBjaGFuZ2VkIGl0LiBJIGRvbid0IGxpa2UgdmVy
-eSBtdWNoIGl0cyBuZXcgbmFtZQpuZWl0aGVyIHNvIEknbGwgZ28gYmFjayB0byB0aGUgb3JpZ2lu
-YWwgb25lLgoKVGhhbmtzLApNaXF1w6hsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0t
-a2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+
+During review it came to light that exposing the pll clock outside is
+not the right approach and struct phy_configure_opts_mipi_dphy exists
+just for that reason to transfer parameters to the phy.
+
+So drop the exposed clock and rely on the phy configure options
+to bring in the correct rate. That way we can also just drop the
+open coded timing struct and default values function.
+
+Fixes: b7535a3bc0ba ("phy/rockchip: Add support for Innosilicon MIPI/LVDS/TTL PHY")
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+---
+Hi Kishon,
+
+maybe suitable as a fix for 5.5-rc?
+
+Thanks
+Heiko
+
+ drivers/phy/rockchip/Kconfig                  |   1 +
+ .../phy/rockchip/phy-rockchip-inno-dsidphy.c  | 319 ++++++------------
+ 2 files changed, 100 insertions(+), 220 deletions(-)
+
+diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
+index dbd2de4d28b1..0824b9dd5683 100644
+--- a/drivers/phy/rockchip/Kconfig
++++ b/drivers/phy/rockchip/Kconfig
+@@ -39,6 +39,7 @@ config PHY_ROCKCHIP_INNO_DSIDPHY
+ 	tristate "Rockchip Innosilicon MIPI/LVDS/TTL PHY driver"
+ 	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
+ 	select GENERIC_PHY
++	select GENERIC_PHY_MIPI_DPHY
+ 	help
+ 	  Enable this to support the Rockchip MIPI/LVDS/TTL PHY with
+ 	  Innosilicon IP block.
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+index fc729ecd3fe9..a7c6c940a3a8 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+@@ -16,6 +16,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/reset.h>
+ #include <linux/phy/phy.h>
++#include <linux/phy/phy-mipi-dphy.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/mfd/syscon.h>
+ 
+@@ -167,31 +168,6 @@
+ #define DSI_PHY_STATUS		0xb0
+ #define PHY_LOCK		BIT(0)
+ 
+-struct mipi_dphy_timing {
+-	unsigned int clkmiss;
+-	unsigned int clkpost;
+-	unsigned int clkpre;
+-	unsigned int clkprepare;
+-	unsigned int clksettle;
+-	unsigned int clktermen;
+-	unsigned int clktrail;
+-	unsigned int clkzero;
+-	unsigned int dtermen;
+-	unsigned int eot;
+-	unsigned int hsexit;
+-	unsigned int hsprepare;
+-	unsigned int hszero;
+-	unsigned int hssettle;
+-	unsigned int hsskip;
+-	unsigned int hstrail;
+-	unsigned int init;
+-	unsigned int lpx;
+-	unsigned int taget;
+-	unsigned int tago;
+-	unsigned int tasure;
+-	unsigned int wakeup;
+-};
+-
+ struct inno_dsidphy {
+ 	struct device *dev;
+ 	struct clk *ref_clk;
+@@ -201,7 +177,9 @@ struct inno_dsidphy {
+ 	void __iomem *host_base;
+ 	struct reset_control *rst;
+ 	enum phy_mode mode;
++	struct phy_configure_opts_mipi_dphy dphy_cfg;
+ 
++	struct clk *pll_clk;
+ 	struct {
+ 		struct clk_hw hw;
+ 		u8 prediv;
+@@ -238,37 +216,79 @@ static void phy_update_bits(struct inno_dsidphy *inno,
+ 	writel(tmp, inno->phy_base + reg);
+ }
+ 
+-static void mipi_dphy_timing_get_default(struct mipi_dphy_timing *timing,
+-					 unsigned long period)
++static unsigned long inno_dsidphy_pll_calc_rate(struct inno_dsidphy *inno,
++						unsigned long rate)
+ {
+-	/* Global Operation Timing Parameters */
+-	timing->clkmiss = 0;
+-	timing->clkpost = 70000 + 52 * period;
+-	timing->clkpre = 8 * period;
+-	timing->clkprepare = 65000;
+-	timing->clksettle = 95000;
+-	timing->clktermen = 0;
+-	timing->clktrail = 80000;
+-	timing->clkzero = 260000;
+-	timing->dtermen = 0;
+-	timing->eot = 0;
+-	timing->hsexit = 120000;
+-	timing->hsprepare = 65000 + 4 * period;
+-	timing->hszero = 145000 + 6 * period;
+-	timing->hssettle = 85000 + 6 * period;
+-	timing->hsskip = 40000;
+-	timing->hstrail = max(8 * period, 60000 + 4 * period);
+-	timing->init = 100000000;
+-	timing->lpx = 60000;
+-	timing->taget = 5 * timing->lpx;
+-	timing->tago = 4 * timing->lpx;
+-	timing->tasure = 2 * timing->lpx;
+-	timing->wakeup = 1000000000;
++	unsigned long prate = clk_get_rate(inno->ref_clk);
++	unsigned long best_freq = 0;
++	unsigned long fref, fout;
++	u8 min_prediv, max_prediv;
++	u8 _prediv, best_prediv = 1;
++	u16 _fbdiv, best_fbdiv = 1;
++	u32 min_delta = UINT_MAX;
++
++	/*
++	 * The PLL output frequency can be calculated using a simple formula:
++	 * PLL_Output_Frequency = (FREF / PREDIV * FBDIV) / 2
++	 * PLL_Output_Frequency: it is equal to DDR-Clock-Frequency * 2
++	 */
++	fref = prate / 2;
++	if (rate > 1000000000UL)
++		fout = 1000000000UL;
++	else
++		fout = rate;
++
++	/* 5Mhz < Fref / prediv < 40MHz */
++	min_prediv = DIV_ROUND_UP(fref, 40000000);
++	max_prediv = fref / 5000000;
++
++	for (_prediv = min_prediv; _prediv <= max_prediv; _prediv++) {
++		u64 tmp;
++		u32 delta;
++
++		tmp = (u64)fout * _prediv;
++		do_div(tmp, fref);
++		_fbdiv = tmp;
++
++		/*
++		 * The possible settings of feedback divider are
++		 * 12, 13, 14, 16, ~ 511
++		 */
++		if (_fbdiv == 15)
++			continue;
++
++		if (_fbdiv < 12 || _fbdiv > 511)
++			continue;
++
++		tmp = (u64)_fbdiv * fref;
++		do_div(tmp, _prediv);
++
++		delta = abs(fout - tmp);
++		if (!delta) {
++			best_prediv = _prediv;
++			best_fbdiv = _fbdiv;
++			best_freq = tmp;
++			break;
++		} else if (delta < min_delta) {
++			best_prediv = _prediv;
++			best_fbdiv = _fbdiv;
++			best_freq = tmp;
++			min_delta = delta;
++		}
++	}
++
++	if (best_freq) {
++		inno->pll.prediv = best_prediv;
++		inno->pll.fbdiv = best_fbdiv;
++		inno->pll.rate = best_freq;
++	}
++
++	return best_freq;
+ }
+ 
+ static void inno_dsidphy_mipi_mode_enable(struct inno_dsidphy *inno)
+ {
+-	struct mipi_dphy_timing gotp;
++	struct phy_configure_opts_mipi_dphy *cfg = &inno->dphy_cfg;
+ 	const struct {
+ 		unsigned long rate;
+ 		u8 hs_prepare;
+@@ -288,12 +308,14 @@ static void inno_dsidphy_mipi_mode_enable(struct inno_dsidphy *inno)
+ 		{ 800000000, 0x21, 0x1f, 0x09, 0x29},
+ 		{1000000000, 0x09, 0x20, 0x09, 0x27},
+ 	};
+-	u32 t_txbyteclkhs, t_txclkesc, ui;
++	u32 t_txbyteclkhs, t_txclkesc;
+ 	u32 txbyteclkhs, txclkesc, esc_clk_div;
+ 	u32 hs_exit, clk_post, clk_pre, wakeup, lpx, ta_go, ta_sure, ta_wait;
+ 	u32 hs_prepare, hs_trail, hs_zero, clk_lane_hs_zero, data_lane_hs_zero;
+ 	unsigned int i;
+ 
++	inno_dsidphy_pll_calc_rate(inno, cfg->hs_clk_rate);
++
+ 	/* Select MIPI mode */
+ 	phy_update_bits(inno, REGISTER_PART_LVDS, 0x03,
+ 			MODE_ENABLE_MASK, MIPI_MODE_ENABLE);
+@@ -328,32 +350,27 @@ static void inno_dsidphy_mipi_mode_enable(struct inno_dsidphy *inno)
+ 	txclkesc = txbyteclkhs / esc_clk_div;
+ 	t_txclkesc = div_u64(PSEC_PER_SEC, txclkesc);
+ 
+-	ui = div_u64(PSEC_PER_SEC, inno->pll.rate);
+-
+-	memset(&gotp, 0, sizeof(gotp));
+-	mipi_dphy_timing_get_default(&gotp, ui);
+-
+ 	/*
+ 	 * The value of counter for HS Ths-exit
+ 	 * Ths-exit = Tpin_txbyteclkhs * value
+ 	 */
+-	hs_exit = DIV_ROUND_UP(gotp.hsexit, t_txbyteclkhs);
++	hs_exit = DIV_ROUND_UP(cfg->hs_exit, t_txbyteclkhs);
+ 	/*
+ 	 * The value of counter for HS Tclk-post
+ 	 * Tclk-post = Tpin_txbyteclkhs * value
+ 	 */
+-	clk_post = DIV_ROUND_UP(gotp.clkpost, t_txbyteclkhs);
++	clk_post = DIV_ROUND_UP(cfg->clk_post, t_txbyteclkhs);
+ 	/*
+ 	 * The value of counter for HS Tclk-pre
+ 	 * Tclk-pre = Tpin_txbyteclkhs * value
+ 	 */
+-	clk_pre = DIV_ROUND_UP(gotp.clkpre, t_txbyteclkhs);
++	clk_pre = DIV_ROUND_UP(cfg->clk_pre, t_txbyteclkhs);
+ 
+ 	/*
+ 	 * The value of counter for HS Tlpx Time
+ 	 * Tlpx = Tpin_txbyteclkhs * (2 + value)
+ 	 */
+-	lpx = DIV_ROUND_UP(gotp.lpx, t_txbyteclkhs);
++	lpx = DIV_ROUND_UP(cfg->lpx, t_txbyteclkhs);
+ 	if (lpx >= 2)
+ 		lpx -= 2;
+ 
+@@ -362,19 +379,19 @@ static void inno_dsidphy_mipi_mode_enable(struct inno_dsidphy *inno)
+ 	 * Tta-go for turnaround
+ 	 * Tta-go = Ttxclkesc * value
+ 	 */
+-	ta_go = DIV_ROUND_UP(gotp.tago, t_txclkesc);
++	ta_go = DIV_ROUND_UP(cfg->ta_go, t_txclkesc);
+ 	/*
+ 	 * The value of counter for HS Tta-sure
+ 	 * Tta-sure for turnaround
+ 	 * Tta-sure = Ttxclkesc * value
+ 	 */
+-	ta_sure = DIV_ROUND_UP(gotp.tasure, t_txclkesc);
++	ta_sure = DIV_ROUND_UP(cfg->ta_sure, t_txclkesc);
+ 	/*
+ 	 * The value of counter for HS Tta-wait
+ 	 * Tta-wait for turnaround
+ 	 * Tta-wait = Ttxclkesc * value
+ 	 */
+-	ta_wait = DIV_ROUND_UP(gotp.taget, t_txclkesc);
++	ta_wait = DIV_ROUND_UP(cfg->ta_get, t_txclkesc);
+ 
+ 	for (i = 0; i < ARRAY_SIZE(timings); i++)
+ 		if (inno->pll.rate <= timings[i].rate)
+@@ -479,6 +496,7 @@ static int inno_dsidphy_power_on(struct phy *phy)
+ 	struct inno_dsidphy *inno = phy_get_drvdata(phy);
+ 
+ 	clk_prepare_enable(inno->pclk_phy);
++	clk_prepare_enable(inno->ref_clk);
+ 	pm_runtime_get_sync(inno->dev);
+ 
+ 	/* Bandgap power on */
+@@ -524,6 +542,7 @@ static int inno_dsidphy_power_off(struct phy *phy)
+ 			LVDS_PLL_POWER_OFF | LVDS_BANDGAP_POWER_DOWN);
+ 
+ 	pm_runtime_put(inno->dev);
++	clk_disable_unprepare(inno->ref_clk);
+ 	clk_disable_unprepare(inno->pclk_phy);
+ 
+ 	return 0;
+@@ -546,168 +565,32 @@ static int inno_dsidphy_set_mode(struct phy *phy, enum phy_mode mode,
+ 	return 0;
+ }
+ 
+-static const struct phy_ops inno_dsidphy_ops = {
+-	.set_mode = inno_dsidphy_set_mode,
+-	.power_on = inno_dsidphy_power_on,
+-	.power_off = inno_dsidphy_power_off,
+-	.owner = THIS_MODULE,
+-};
+-
+-static unsigned long inno_dsidphy_pll_round_rate(struct inno_dsidphy *inno,
+-						   unsigned long prate,
+-						   unsigned long rate,
+-						   u8 *prediv, u16 *fbdiv)
+-{
+-	unsigned long best_freq = 0;
+-	unsigned long fref, fout;
+-	u8 min_prediv, max_prediv;
+-	u8 _prediv, best_prediv = 1;
+-	u16 _fbdiv, best_fbdiv = 1;
+-	u32 min_delta = UINT_MAX;
+-
+-	/*
+-	 * The PLL output frequency can be calculated using a simple formula:
+-	 * PLL_Output_Frequency = (FREF / PREDIV * FBDIV) / 2
+-	 * PLL_Output_Frequency: it is equal to DDR-Clock-Frequency * 2
+-	 */
+-	fref = prate / 2;
+-	if (rate > 1000000000UL)
+-		fout = 1000000000UL;
+-	else
+-		fout = rate;
+-
+-	/* 5Mhz < Fref / prediv < 40MHz */
+-	min_prediv = DIV_ROUND_UP(fref, 40000000);
+-	max_prediv = fref / 5000000;
+-
+-	for (_prediv = min_prediv; _prediv <= max_prediv; _prediv++) {
+-		u64 tmp;
+-		u32 delta;
+-
+-		tmp = (u64)fout * _prediv;
+-		do_div(tmp, fref);
+-		_fbdiv = tmp;
+-
+-		/*
+-		 * The possible settings of feedback divider are
+-		 * 12, 13, 14, 16, ~ 511
+-		 */
+-		if (_fbdiv == 15)
+-			continue;
+-
+-		if (_fbdiv < 12 || _fbdiv > 511)
+-			continue;
+-
+-		tmp = (u64)_fbdiv * fref;
+-		do_div(tmp, _prediv);
+-
+-		delta = abs(fout - tmp);
+-		if (!delta) {
+-			best_prediv = _prediv;
+-			best_fbdiv = _fbdiv;
+-			best_freq = tmp;
+-			break;
+-		} else if (delta < min_delta) {
+-			best_prediv = _prediv;
+-			best_fbdiv = _fbdiv;
+-			best_freq = tmp;
+-			min_delta = delta;
+-		}
+-	}
+-
+-	if (best_freq) {
+-		*prediv = best_prediv;
+-		*fbdiv = best_fbdiv;
+-	}
+-
+-	return best_freq;
+-}
+-
+-static long inno_dsidphy_pll_clk_round_rate(struct clk_hw *hw,
+-					      unsigned long rate,
+-					      unsigned long *prate)
++static int inno_dsidphy_configure(struct phy *phy,
++				  union phy_configure_opts *opts)
+ {
+-	struct inno_dsidphy *inno = hw_to_inno(hw);
+-	unsigned long fout;
+-	u16 fbdiv = 1;
+-	u8 prediv = 1;
+-
+-	fout = inno_dsidphy_pll_round_rate(inno, *prate, rate,
+-					     &prediv, &fbdiv);
+-
+-	return fout;
+-}
+-
+-static int inno_dsidphy_pll_clk_set_rate(struct clk_hw *hw,
+-					   unsigned long rate,
+-					   unsigned long parent_rate)
+-{
+-	struct inno_dsidphy *inno = hw_to_inno(hw);
+-	unsigned long fout;
+-	u16 fbdiv = 1;
+-	u8 prediv = 1;
++	struct inno_dsidphy *inno = phy_get_drvdata(phy);
++	int ret;
+ 
+-	fout = inno_dsidphy_pll_round_rate(inno, parent_rate, rate,
+-					     &prediv, &fbdiv);
++	if (inno->mode != PHY_MODE_MIPI_DPHY)
++		return -EINVAL;
+ 
+-	dev_dbg(inno->dev, "fin=%lu, fout=%lu, prediv=%u, fbdiv=%u\n",
+-		parent_rate, fout, prediv, fbdiv);
++	ret = phy_mipi_dphy_config_validate(&opts->mipi_dphy);
++	if (ret)
++		return ret;
+ 
+-	inno->pll.prediv = prediv;
+-	inno->pll.fbdiv = fbdiv;
+-	inno->pll.rate = fout;
++	memcpy(&inno->dphy_cfg, &opts->mipi_dphy, sizeof(inno->dphy_cfg));
+ 
+ 	return 0;
+ }
+ 
+-static unsigned long
+-inno_dsidphy_pll_clk_recalc_rate(struct clk_hw *hw, unsigned long prate)
+-{
+-	struct inno_dsidphy *inno = hw_to_inno(hw);
+-
+-	/* PLL_Output_Frequency = (FREF / PREDIV * FBDIV) / 2 */
+-	return (prate / inno->pll.prediv * inno->pll.fbdiv) / 2;
+-}
+-
+-static const struct clk_ops inno_dsidphy_pll_clk_ops = {
+-	.round_rate = inno_dsidphy_pll_clk_round_rate,
+-	.set_rate = inno_dsidphy_pll_clk_set_rate,
+-	.recalc_rate = inno_dsidphy_pll_clk_recalc_rate,
++static const struct phy_ops inno_dsidphy_ops = {
++	.configure = inno_dsidphy_configure,
++	.set_mode = inno_dsidphy_set_mode,
++	.power_on = inno_dsidphy_power_on,
++	.power_off = inno_dsidphy_power_off,
++	.owner = THIS_MODULE,
+ };
+ 
+-static int inno_dsidphy_pll_register(struct inno_dsidphy *inno)
+-{
+-	struct device *dev = inno->dev;
+-	struct clk *clk;
+-	const char *parent_name;
+-	struct clk_init_data init;
+-	int ret;
+-
+-	parent_name = __clk_get_name(inno->ref_clk);
+-
+-	init.name = "mipi_dphy_pll";
+-	ret = of_property_read_string(dev->of_node, "clock-output-names",
+-				      &init.name);
+-	if (ret < 0)
+-		dev_dbg(dev, "phy should set clock-output-names property\n");
+-
+-	init.ops = &inno_dsidphy_pll_clk_ops;
+-	init.parent_names = &parent_name;
+-	init.num_parents = 1;
+-	init.flags = 0;
+-
+-	inno->pll.hw.init = &init;
+-	clk = devm_clk_register(dev, &inno->pll.hw);
+-	if (IS_ERR(clk)) {
+-		ret = PTR_ERR(clk);
+-		dev_err(dev, "failed to register PLL: %d\n", ret);
+-		return ret;
+-	}
+-
+-	return devm_of_clk_add_hw_provider(dev, of_clk_hw_simple_get,
+-					   &inno->pll.hw);
+-}
+-
+ static int inno_dsidphy_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+@@ -764,10 +647,6 @@ static int inno_dsidphy_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
+-	ret = inno_dsidphy_pll_register(inno);
+-	if (ret)
+-		return ret;
+-
+ 	pm_runtime_enable(dev);
+ 
+ 	return 0;
+-- 
+2.23.0
