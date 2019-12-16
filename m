@@ -1,81 +1,50 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [RESEND PATCH] thermal: rockchip: enable hwmon
-Date: Mon, 16 Dec 2019 17:16:06 +0100
-Message-ID: <3f3e1fcd-f4e5-efe6-ff84-bc46db15137e@linaro.org>
-References: <20191212061702.BFE2D6E85603@corona.crabdance.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v3 0/4] arm64: dts: rockchip: Add Rock Pi N10 support
+Date: Mon, 16 Dec 2019 23:17:07 +0530
+Message-ID: <20191216174711.17856-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191212061702.BFE2D6E85603@corona.crabdance.com>
-Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: schaecsn@gmx.net, Zhang Rui <rui.zhang@intel.com>, Eduardo Valentin <edubezval@gmail.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Akash Gajjar <akash@openedev.com>, Tom Cubie <tom@radxa.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/12/2019 07:17, Stefan Schaeckeler wrote:
-> By default, of-based thermal drivers do not enable hwmon.
-> Explicitly enable hwmon for both, the soc and gpu temperature
-> sensor.
-> 
-> Signed-off-by: Stefan Schaeckeler <schaecsn@gmx.net>
+Unlike, other Rock PI boards from radxa, Rock Pi N10 SBC is based
+on SOM + Carrier board combination.
 
-Applied, and took the opportunity to test it.
+Rock Pi N10 is a Rockchip RK3399Pro based SBC, which has
+- VMARC RK3399Pro SOM (as per SMARC standard) from Vamrs.
+- Dalang carrier board from Radxa.
 
-(for patchwork)
+patch 0001: dt-bindings for Rock Pi N10
 
-Tested-by: Daniel Lezcano <daniel.lezcano@linaro.org>
+patch 0002: VMARC RK3399Pro SOM dtsi support
 
-> ---
->  drivers/thermal/rockchip_thermal.c | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> index 343c2f5c5a25..e47c60010259 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -19,6 +19,8 @@
->  #include <linux/mfd/syscon.h>
->  #include <linux/pinctrl/consumer.h>
-> 
-> +#include "thermal_hwmon.h"
-> +
->  /**
->   * If the temperature over a period of time High,
->   * the resulting TSHUT gave CRU module,let it reset the entire chip,
-> @@ -1321,8 +1323,15 @@ static int rockchip_thermal_probe(struct platform_device *pdev)
-> 
->  	thermal->chip->control(thermal->regs, true);
-> 
-> -	for (i = 0; i < thermal->chip->chn_num; i++)
-> +	for (i = 0; i < thermal->chip->chn_num; i++) {
->  		rockchip_thermal_toggle_sensor(&thermal->sensors[i], true);
-> +		thermal->sensors[i].tzd->tzp->no_hwmon = false;
-> +		error = thermal_add_hwmon_sysfs(thermal->sensors[i].tzd);
-> +		if (error)
-> +			dev_warn(&pdev->dev,
-> +				 "failed to register sensor %d with hwmon: %d\n",
-> +				 i, error);
-> +	}
-> 
->  	platform_set_drvdata(pdev, thermal);
-> 
-> @@ -1344,6 +1353,7 @@ static int rockchip_thermal_remove(struct platform_device *pdev)
->  	for (i = 0; i < thermal->chip->chn_num; i++) {
->  		struct rockchip_thermal_sensor *sensor = &thermal->sensors[i];
-> 
-> +		thermal_remove_hwmon_sysfs(sensor->tzd);
->  		rockchip_thermal_toggle_sensor(sensor, false);
->  	}
-> 
-> --
-> 2.24.0
-> 
+patch 0003: Radxa Dalang carrier board dtsi support
 
+patch 0004: Rock Pi N10 dts support
+
+Tested basic peripherals and will all more in future patches.
+
+Any inputs?
+Jagan.
+
+Jagan Teki (4):
+  dt-bindings: arm: rockchip: Add Rock Pi N10 binding
+  arm64: dts: rockchip: Add VMARC RK3399Pro SOM initial support
+  ARM: dts: rockchip: Add Radxa Dalang Carrier board
+  arm64: dts: rockchip: Add Radxa Rock Pi N10 initial support
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   6 +
+ .../dts/rockchip-radxa-dalang-carrier.dtsi    |  81 +++++
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../dts/rockchip/rk3399pro-rock-pi-n10.dts    |  17 +
+ .../dts/rockchip/rk3399pro-vmarc-som.dtsi     | 333 ++++++++++++++++++
+ 5 files changed, 438 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
 
 -- 
- <http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+2.18.0.321.gffc6fa0e3
