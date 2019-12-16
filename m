@@ -1,65 +1,55 @@
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v3 4/7] media: hantro: h264: Use the generic H264
- reflist builder
-Date: Mon, 16 Dec 2019 09:54:19 +0100
-Message-ID: <20191216095419.4dfb8501@collabora.com>
-References: <20191213125414.90725-1-boris.brezillon@collabora.com>
- <20191213125414.90725-5-boris.brezillon@collabora.com>
- <24EFC68C-CF34-4D6E-8927-1CFA0CE81F45@gmail.com>
+From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
+Subject: Re: [v2 3/6] of: address: add support to parse PCI outbound-ranges
+Date: Mon, 16 Dec 2019 08:55:35 +0000
+Message-ID: <CA+V-a8sd1c_8-weQjn6_UbAmVELLQa=3Fe+0cdXSm2Sif0HDRQ@mail.gmail.com>
+References: <20191213084748.11210-4-prabhakar.mahadev-lad.rj@bp.renesas.com> <20191213201944.GA190383@google.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <24EFC68C-CF34-4D6E-8927-1CFA0CE81F45-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191213201944.GA190383@google.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci <linux-pci@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, 14 Dec 2019 15:46:35 +0000
-Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+Hi Bjorn,
 
-> Hi Boris,
-> 
-> > On 13 Dec 2019, at 12:54, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
-> > 
-> > Now that the core provides generic reflist builders, we can use them
-> > instead of implementing our own.
-> > 
-> > Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > ---
-> > Changes in v3:
-> > * New patch
-> > ---
-> > drivers/staging/media/hantro/hantro_h264.c | 237 +--------------------
-> > 1 file changed, 8 insertions(+), 229 deletions(-)
-> > 
-> > diff --git a/drivers/staging/media/hantro/hantro_h264.c b/drivers/staging/media/hantro/hantro_h264.c
-> > index 568640eab3a6..d998272d20e6 100644
-> > --- a/drivers/staging/media/hantro/hantro_h264.c
-> > +++ b/drivers/staging/media/hantro/hantro_h264.c
-> > @@ -11,7 +11,7 @@
-> >  */
-> > 
-> > #include <linux/types.h>
-> > -#include <linux/sort.h>
-> > +#include <media/v4l2-h264.h>  
-> 
-> With this patch, CONFIG_VIDEO_HANTRO needs to depend on CONFIG_V4L2_H264,
-> without that it can encounter linking errors due to missing symbols for
-> v4l2_h264_init_reflist_builder, etc.
+Thank you for the review.
 
-Oops, you're right (I didn't notice it since I had it selected by
-CONFIG_VIDEO_ROCKCHIP_VDEC). I'll fix that in v4.
+On Fri, Dec 13, 2019 at 9:05 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
+>
+> On Fri, Dec 13, 2019 at 08:47:45AM +0000, Lad Prabhakar wrote:
+> > From: "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>
+>
+> $ git log --oneline drivers/of/address.c
+> 951d48855d86 of: Make of_dma_get_range() work on bus nodes
+> 645c138636de of/address: Fix of_pci_range_parser_one translation of DMA addresses
+> 81db12ee15cb of/address: Translate 'dma-ranges' for parent nodes missing 'dma-ranges'
+> b68ac8dc22eb of: Factor out #{addr,size}-cells parsing
+> c60bf3eb888a of: address: Follow DMA parent for "dma-coherent"
+> 862ab5578f75 of/address: Introduce of_get_next_dma_parent() helper
+>
+> Make yours match.  There are a few "of: address: " subjects, but the
+> ones from Rob (the maintainer) use "of/address: ", so I'd use that.
+>
+will do the same for next iteration.
 
-Thanks,
+> > this patch adds support to parse PCI outbound-ranges, the
+> > outbound-regions are similar to pci ranges except it doesn't
+> > have pci address, below is the format for bar-ranges:
+>
+> s/pci/PCI/
+> Capitalize sentences.
+>
+will fix that.
 
-Boris
+> Is "bar-range" an actual DT property?  If it's supposed to be a
+> generic description, "BAR range" would be better.
+>
+my bad, it should be outbound-range.
+
+Cheers,
+--Prabhakar
+
+> > outbound-ranges = <flags upper32_cpuaddr lower32_cpuaddr
+> >                    upper32_size lower32_size>;
