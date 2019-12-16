@@ -1,131 +1,136 @@
-From: Anand Moon <linux.amoon@gmail.com>
-Subject: Re: [PATCH 4/4] mfd: rk808: Convert RK805 to syscore/PM ops
-Date: Mon, 16 Dec 2019 21:39:16 +0530
-Message-ID: <CANAwSgSpe=7-jCs4OtnnOoosfG89M-TAu-epC7sG0Gw2c7DrHA@mail.gmail.com>
-References: <cover.1575932654.git.robin.murphy@arm.com> <8642045f0657c9e782cd698eb08777c9d4c10c8d.1575932654.git.robin.murphy@arm.com>
- <CANAwSgTtzAZJqpsD7uVKskTnDmrT1bs=JuHxnPrkpQKtnZLhvQ@mail.gmail.com>
- <2681192.H4ySjFOPB8@diego> <CANAwSgTL-9VCFFj-+4xsLZOxKCHtjyN4P6fYnuRSOe7cZRiWew@mail.gmail.com>
- <f29fbb91-ffd0-5650-30b4-5791c970a834@arm.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v4 1/4] drm: bridge: dw_mipi_dsi: access registers via a
+ regmap
+Date: Mon, 16 Dec 2019 13:10:52 -0300
+Message-ID: <ca0c26d124a0139de31405eacb7d098173897d16.camel@collabora.com>
+References: <20191202193359.703709-1-adrian.ratiu@collabora.com>
+ <20191202193359.703709-2-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f29fbb91-ffd0-5650-30b4-5791c970a834@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Lee Jones <lee.jones@linaro.org>, Linux Kernel <linux-kernel@vger.kernel.org>, Soeren Moch <smoch@web.de>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191202193359.703709-2-adrian.ratiu@collabora.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Adrian Ratiu <adrian.ratiu@collabora.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org
+Cc: Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Boris Brezillon <boris.brezillon@collabora.com>, linux-imx@nxp.com, kernel@collabora.com, Emil Velikov <emil.velikov@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Robin,
+Hi Adrian,
 
-On Mon, 16 Dec 2019 at 18:08, Robin Murphy <robin.murphy@arm.com> wrote:
->
-> On 2019-12-16 9:50 am, Anand Moon wrote:
-> > Hi Heiko / Robin / Soeren,
-> >
-> > On Mon, 16 Dec 2019 at 01:57, Heiko St=C3=BCbner <heiko@sntech.de> wrot=
-e:
-> >>
-> >> Hi Anand,
-> >>
-> >> Am Sonntag, 15. Dezember 2019, 19:51:50 CET schrieb Anand Moon:
-> >>> On Tue, 10 Dec 2019 at 18:54, Robin Murphy <robin.murphy@arm.com> wro=
-te:
-> >>>>
-> >>>> RK805 has the same kind of dual-role sleep/shutdown pin as RK809/RK8=
-17,
-> >>>> so it makes little sense for the driver to have to have two complete=
-ly
-> >>>> different mechanisms to handle essentially the same thing. Bring RK8=
-05
-> >>>> in line with the RK809/RK817 flow to clean things up.
-> >>>>
-> >>>> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-> >>>> ---
-> >>
-> >> [...]
-> >>
-> >>> I am sill getting the kernel warning on issue poweroff see below.
-> >>> on my Rock960 Model A
-> >>> I feel the reason for this is we now have two poweroff callback
-> >>> 1  pm_power_off =3D rk808_device_shutdown
-> >>> 2  rk8xx_syscore_shutdown
-> >>
-> >> Nope, the issue is just the i2c subsystem complaining that the
-> >> Rocckhip i2c drives does not provide an atomic-transfer function, see
-> >>          "No atomic I2C transfer handler for 'i2c-0'"
-> >> in your warning.
-> >>
-> >> Somewhere it was suggested that the current transfer function just
-> >> works as atomic as well.
-> >>
-> >>
-> >>> In my investigation earlier common function for shutdown solve
-> >>> the issue of clean shutdown.
-> >>
-> >> This is simply a result of your syscore-shutdown function running way =
-to
-> >> early, before the i2c subsystem switched to using atomic transfers.
-> >>
-> >> This also indicates that this would really be way to early, as other p=
-arts
-> >> of the kernel could also still be running.
-> >>
-> >
-> > Yes, you are correct syscore-shutdown initiates
-> > shutdown before all the device do clean shutdown.
-> >
-> > So for best approach for clean atomic shutdown is to use
-> >    /* driver model interfaces that don't relate to enumeration  */
-> >          void (*shutdown)(struct i2c_client *client);
-> > drop the registration of syscore and use core .i2c_shutdown.
->
-> Huh? If you understand that the syscore shutdown hook is too early, why
-> would it seem a good idea to pull the plug even earlier from driver
-> shutdown? Not to mention that your patch as proposed breaks all the
-> GPIO-based shutdown flows.
->
-Ok opps, I might have missed some thing.
-I just look into logs to between syscore shutdown and I2C shutdown
-get more insight, so I feel I2C shutdown dose clean shutdown.
+Thanks for the patch. This is nice consolidation work.
+I'm Ccing Heiko for the Rockchip part.
 
-> If you really care about avoiding the spurious warning, implement the
-> expected polled-mode transfer function in the I2C driver. Trying to hack
-> around it by issuing I2C-based shutdown from anywhere other than
-> pm_power_off is a waste of everyone's time.
+See below for some comments.
 
-I have tired this I2C shutdown approach earlier, but as their were
-issue with clean restart, so I dropped this line.
-Then I tired to add restart notifier to handle restart that also
-did not work my boards, so I am exploring more.
+On Mon, 2019-12-02 at 21:33 +0200, AdrianAdrian Ratiu wrote:
+> Convert the common bridge code and the two rockchip & stm drivers
+> which currently use it to the regmap API in anticipation for further
+> changes to make it more generic and add older DSI host controller
+> support as found on i.mx6 based devices.
+> 
+> The regmap becomes an internal state of the bridge. No functional
+> changes other than requiring the platform drivers to use the
+> pre-configured regmap supplied by the bridge after its probe() call
+> instead of ioremp'ing the registers themselves.
+> 
+> In subsequent commits the bridge will become able to detect the
+> DSI host core version and init the regmap with different register
+> layouts. The platform drivers will continue to use the regmap without
+> modifications or worrying about the specific layout in use (in other
+> words the layout is abstracted away via the regmap).
+> 
+> Suggested-by: Boris Brezillon <boris.brezillon@collabora.com>
+> Reviewed-by: Neil Armstrong <narmstrong@baylibre.com>
+> Reviewed-by: Emil Velikov <emil.velikov@collabora.com>
+> Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+> ---
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 215 ++++++++++--------
+>  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |  17 +-
 
->
-> > I have prepare this patch on top of this series for RTF
-> > This patch dose clean shutdown of all the devices before poweroff.
-> > see the log below.
-> >
-> > *Note*: This feature will likely break the clean reboot feature.
-> > Rockchip device do not perform clean reboot as some of the IP
-> > block are not released before clean reboot and it's remain stuck.
-> > Like PCIe and MMC, We need to look into this as well.
->
-> As mentioned before, that likely has nothing to do with the PMIC, and
-> really sounds like the issue with Trusted Firmware not reenabling all
-> the SoC power domains before reset - a fix for that has already been
-> identified, see here:
-> https://forum.armbian.com/topic/7552-roc-rk3399-pc-renegade-elite/?do=3Df=
-indComment&comment=3D90289
->
-> Robin.
->
+At least for Rockchip, I'd rather see this done in two
+steps: first some regmap infrastructure introduced,
+and then in a follow-up patch, the rockchip driver
+moved to it.
 
-If we go with I2C shutdown feature, some how some device will not
-release resources and it remains stuck before the initialization next u-boo=
-t.
-See the log below. https://pastebin.com/xxwvERaz
+It's safer, and better from a bisection POV, and from
+a first look it seems doable.
 
-ATF changes will some into affect after the restart of the devices.
-FYI I am testing with all the latest AFT patches from Armbian and latest u-=
-boot.
+>  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  34 ++-
 
--Anand
+It would be good to do try the same for STM. It's also
+simpler to review that way.
+
+>  include/drm/bridge/dw_mipi_dsi.h              |   2 +-
+>  4 files changed, 145 insertions(+), 123 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> index b6e793bb653c..6cb57807f3f9 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> @@ -15,6 +15,7 @@
+>  #include <linux/module.h>
+>  #include <linux/of_device.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+>  #include <linux/reset.h>
+>  
+>  #include <video/mipi_display.h>
+> @@ -226,7 +227,7 @@ struct dw_mipi_dsi {
+>  	struct mipi_dsi_host dsi_host;
+>  	struct drm_bridge *panel_bridge;
+>  	struct device *dev;
+> -	void __iomem *base;
+> +	struct regmap *regs;
+> 
+
+You have the regmap here...
+>  
+>  	struct clk *pclk;
+>  
+[..]
+> @@ -954,7 +952,6 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
+>  	}
+>  
+>  	dsi->dev = dev;
+> -	dsi->pdata.base = dsi->base;
+>  	dsi->pdata.max_data_lanes = dsi->cdata->max_data_lanes;
+>  	dsi->pdata.phy_ops = &dw_mipi_dsi_rockchip_phy_ops;
+>  	dsi->pdata.host_ops = &dw_mipi_dsi_rockchip_host_ops;
+> @@ -970,6 +967,8 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
+>  		goto err_clkdisable;
+>  	}
+>  
+> +	dsi->regs = dsi->pdata.regs;
+> +
+
+... and this goes for both STM and Rockchip: I don't think you need neither
+the struct dw_mipi_dsi_plat_data.regs nor the
+structdw_mipi_dsi_{rockchip, stm}.regs. You should be able to
+just access the regmap via the struct dw_mipi_dsi.
+
+[..]
+>  
+>  err_dsi_probe:
+> @@ -474,7 +472,7 @@ static struct platform_driver dw_mipi_dsi_stm_driver = {
+>  	.remove		= dw_mipi_dsi_stm_remove,
+>  	.driver		= {
+>  		.of_match_table = dw_mipi_dsi_stm_dt_ids,
+> -		.name	= "stm32-display-dsi",
+> +		.name	= DRIVER_NAME,
+
+Unrelated change, please drop it.
+
+>  		.pm = &dw_mipi_dsi_stm_pm_ops,
+>  	},
+>  };
+
+Thanks,
+Ezequiel
