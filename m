@@ -1,75 +1,90 @@
-From: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>
+From: Anand Moon <linux.amoon@gmail.com>
 Subject: Re: [PATCH 0/4] mfd: RK8xx tidyup
-Date: Tue, 17 Dec 2019 00:30:08 +0100
-Message-ID: <3c78d334-9110-e88c-84d0-2f41c28a6317@web.de>
-References: <cover.1575932654.git.robin.murphy@arm.com>
- <20191216111219.GB2369@dell>
+Date: Tue, 17 Dec 2019 05:38:31 +0530
+Message-ID: <CANAwSgSfA9pMQxmvkAfDfH_wsBovc9hCivoo_YU1+ZMOD0OuYg@mail.gmail.com>
+References: <cover.1575932654.git.robin.murphy@arm.com> <20191216111219.GB2369@dell>
+ <3c78d334-9110-e88c-84d0-2f41c28a6317@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191216111219.GB2369@dell>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: linux.amoon-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Schultz <d.schultz-guT5V/WYfQezQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <3c78d334-9110-e88c-84d0-2f41c28a6317@web.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Soeren Moch <smoch@web.de>
+Cc: Lee Jones <lee.jones@linaro.org>, Robin Murphy <robin.murphy@arm.com>, Linux Kernel <linux-kernel@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Daniel Schultz <d.schultz@phytec.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMTYuMTIuMTkgMTI6MTIsIExlZSBKb25lcyB3cm90ZToKPiBPbiBUdWUsIDEwIERlYyAyMDE5
-LCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4KPj4gSGkgYWxsLAo+Pgo+PiBJbiB0cnlpbmcgdG8gZGVi
-dWcgc3VzcGVuZCBpc3N1ZXMgb24gbXkgUkszMzI4IGJveCwgSSB3YXMgbG9va2luZyBhdAo+PiBo
-b3cgdGhlIFJLOHh4IGRyaXZlciBoYW5kbGVzIHRoZSBSSzgwNSBzbGVlcCBwaW4sIGFuZCBmcmFu
-a2x5IHRoZSB3aG9sZQo+PiBkcml2ZXIgc2VlbWVkIHVudGlkeSBlbm91Z2ggdG8gd2FycmFudCBz
-b21lIGNsZWFudXAgYW5kIG1pbm9yIGZpeGVzCj4+IGJlZm9yZSBnb2luZyBhbnkgZnVydGhlci4g
-SSd2ZSBiYXNlZCB0aGUgc2VyaWVzIG9uIHRvcCBvZiBTb2VyZW4ncwo+PiAibWZkOiByazgwODog
-QWx3YXlzIHVzZSBwb3dlcm9mZiB3aGVuIHJlcXVlc3RlZCIgcGF0Y2hbMV0uCj4+Cj4+IE5vdGUg
-dGhhdCBJJ3ZlIG9ubHkgaGFkIHRpbWUgdG8gYnVpbGQtdGVzdCB0aGVzZSBwYXRjaGVzIHNvIGZh
-ciwgYnV0IEkKPj4gd2FudGVkIHRvIHNoYXJlIHRoZW0gZWFybHkgZm9yIHRoZSBzYWtlIG9mIGRp
-c2N1c3Npb24gaW4gcmVzcG9uc2UgdG8KPj4gdGhlIG90aGVyIHRocmVhZFsyXS4KPj4KPj4gUm9i
-aW4uCj4+Cj4+IFsxXSBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3BhdGNoLzExMjc5MjQ5
-Lwo+PiBbMl0gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9jb3Zlci8xMTI3Njk0NS8KPj4K
-Pj4gUm9iaW4gTXVycGh5ICg0KToKPj4gICBtZmQ6IHJrODA4OiBTZXQgZ2xvYmFsIGluc3RhbmNl
-IHVuY29uZGl0aW9uYWxseQo+PiAgIG1mZDogcms4MDg6IEFsd2F5cyByZWdpc3RlciBzeXNjb3Jl
-IG9wcwo+PiAgIG1mZDogcms4MDg6IFJlZHVjZSBzaHV0ZG93biBkdXBsaWNhdGlvbgo+PiAgIG1m
-ZDogcms4MDg6IENvbnZlcnQgUks4MDUgdG8gc3lzY29yZS9QTSBvcHMKPj4KPj4gIGRyaXZlcnMv
-bWZkL3JrODA4LmMgICAgICAgfCAxMjIgKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0KPj4gIGluY2x1ZGUvbGludXgvbWZkL3JrODA4LmggfCAgIDIgLQo+PiAgMiBmaWxlcyBj
-aGFuZ2VkLCA1MCBpbnNlcnRpb25zKCspLCA3NCBkZWxldGlvbnMoLSkKPiBOb3Qgc3VyZSB3aGF0
-J3MgaGFwcGVuaW5nIHdpdGggdGhlc2UgKGNvbXBldGluZz8pIHBhdGNoLXNldHMuICBJJ20gbm90
-Cj4gcGxhbm5pbmcgb24gZ2V0dGluZyBpbnZvbHZlZCB1bnRpbCB5b3UgZ3V5cyBoYXZlIGFycml2
-ZWQgYXQgYW5kIGFncmVlZAo+IHVwb24gYSBzaW5nbGUgc29sdXRpb24uCj4KTXkgdW5kZXJzdGFu
-ZGluZyBpcyBsaWtlIHRoaXM6CgpUaGUgcGF0Y2ggWzFdIGZpeGVzIHBvd2VyLW9mZiB0byB1c2Ug
-dGhlIG1ldGhvZCByZXF1ZXN0ZWQgaW4gdGhlCmRldmljZXRyZWUuIFRoaXMgcGF0Y2ggc2VyaWVz
-IG9uIHRvcCBvZiB0aGF0IGNsZWFucyB1cCB0aGUgcms4MDgKcG93ZXItb2ZmIGNvZGUsIHdoaWNo
-IHBlcmZlY3RseSBtYWtlcyBzZW5zZSBmb3IgbWUuIEkgdGhpbmsgdGhlc2UgMgpwYXRjaCBzZXJp
-ZXMgYXJlIG5vdCBjb250cm92ZXJzaWFsIGFzIHN1Y2guCgpBbmQgdGhlbiB3ZSBoYXZlIHRoZSBz
-ZXJpZXMgWzJdLCB3aGljaCBpcyBhIG1peCBvZgotIHNvbWUgY2xlYW4tdXAKLSBjb252ZXJ0aW5n
-IHRoZSBleGlzdGluZyBjb2RlIHRvIHVzZSBzeXNjb25fc2h1dGRvd24gZm9yIGFjdHVhbCBwb3dl
-ci1vZmYKClJvYmluLCBIZWlrbywgYW5kIG15c2VsZiBhZ3JlZSB0aGF0IHRoZSBzaHV0ZG93biBt
-ZXRob2QgaW50cm9kdWNlZCBpbgpbMl0gaXMgZnVuZGFtZW50YWxseSB3cm9uZy4gQWxsIHN5c2Nv
-bl9zaHV0ZG93biBtZXRob2RzIG9mIGFsbApyZWdpc3RlcmVkIHN5c2NvbnMgaGF2ZSB0byBydW4g
-YmVmb3JlIHRoZSBhY3R1YWwgc2h1dGRvd24sIHdoYXQgaXMKdHJpZ2dlcmVkIGluIHBtX3Bvd2Vy
-X29mZi4gVGhpcyBpcyBob3cgaXQgd29ya3Mgbm93LCBhbmQgd2hhdCBpcyB0aGUKcmlnaHQgd2F5
-IHRvIGRvIGl0LiBQYXRjaCBzZXJpZXMgWzJdIGJyZWFrcyB0aGlzIHByb21pc2Ugc2luY2UgaXQg
-ZG9lcwp0aGUgYWN0dWFsIHNodXRkb3duIGluIHRoZSBtaWRkbGUgb2YgdGhlIGNoYWluIG9mIHN5
-c2Nvbl9zaHV0ZG93biBoYW5kbGVycy4KCkluIHRoZSBkaXNjdXNzaW9uIGFib3V0IHNlcmllcyBb
-Ml0gQW5hbmQgcmVwZWF0ZWRseSB0YWxrcyBhYm91dCByZXN0YXJ0CnByb2JsZW1zLiBCdXQgdGhp
-cyByazgwOCBtZmQgZHJpdmVyIGlzIG5vdCBpbnZvbHZlZCBpbiByZXN0YXJ0LCBhbHNvCnBhdGNo
-IHNlcmllcyBbMl3CoApkb2VzIG5vdCBjaGFuZ2UgdGhhdC4gU28gSSBjYW5ub3Qgc2VlIHdoYXQg
-c2hvdWxkIGJlIHRoZSBwb2ludCBoZXJlLgoKVGhlcmUgd2FzIGFuIGVhcmxpZXIgYXR0ZW1wdCBb
-M10gdG8gZW5oYW5jZSB0aGlzIHJrODA4IG1mZCBkcml2ZXIgZm9yCnJlc3RhcnQuIEknbSBub3Qg
-c3VyZSwgaG93ZXZlciwgd2hhdCBoYXBwZW5lZCB0byB0aGlzLiBGb3IgbWUgaXQgY291bGQKbWFr
-ZSBzZW5zZSB0byByZWltcGxlbWVudCBzdWNoIHJlc3RhcnQgZnVuY3Rpb25hbGl0eSBvbiB0b3Ag
-b2YgdGhpcwoibWZkOiBSSzh4eCB0aWR5dXAiIHNlcmllcy4KClJlZ2FyZHMsClNvZXJlbgoKWzNd
-IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3BhdGNod29yay9wYXRjaC85MzQzMjMvCgoKCl9fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
-aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi All,
+
+On Tue, 17 Dec 2019 at 05:00, Soeren Moch <smoch@web.de> wrote:
+>
+> On 16.12.19 12:12, Lee Jones wrote:
+> > On Tue, 10 Dec 2019, Robin Murphy wrote:
+> >
+> >> Hi all,
+> >>
+> >> In trying to debug suspend issues on my RK3328 box, I was looking at
+> >> how the RK8xx driver handles the RK805 sleep pin, and frankly the whole
+> >> driver seemed untidy enough to warrant some cleanup and minor fixes
+> >> before going any further. I've based the series on top of Soeren's
+> >> "mfd: rk808: Always use poweroff when requested" patch[1].
+> >>
+> >> Note that I've only had time to build-test these patches so far, but I
+> >> wanted to share them early for the sake of discussion in response to
+> >> the other thread[2].
+> >>
+> >> Robin.
+> >>
+> >> [1] https://patchwork.kernel.org/patch/11279249/
+> >> [2] https://patchwork.kernel.org/cover/11276945/
+> >>
+> >> Robin Murphy (4):
+> >>   mfd: rk808: Set global instance unconditionally
+> >>   mfd: rk808: Always register syscore ops
+> >>   mfd: rk808: Reduce shutdown duplication
+> >>   mfd: rk808: Convert RK805 to syscore/PM ops
+> >>
+> >>  drivers/mfd/rk808.c       | 122 ++++++++++++++++----------------------
+> >>  include/linux/mfd/rk808.h |   2 -
+> >>  2 files changed, 50 insertions(+), 74 deletions(-)
+> > Not sure what's happening with these (competing?) patch-sets.  I'm not
+> > planning on getting involved until you guys have arrived at and agreed
+> > upon a single solution.
+> >
+> My understanding is like this:
+>
+> The patch [1] fixes power-off to use the method requested in the
+> devicetree. This patch series on top of that cleans up the rk808
+> power-off code, which perfectly makes sense for me. I think these 2
+> patch series are not controversial as such.
+>
+> And then we have the series [2], which is a mix of
+> - some clean-up
+> - converting the existing code to use syscon_shutdown for actual power-off
+>
+> Robin, Heiko, and myself agree that the shutdown method introduced in
+> [2] is fundamentally wrong. All syscon_shutdown methods of all
+> registered syscons have to run before the actual shutdown, what is
+> triggered in pm_power_off. This is how it works now, and what is the
+> right way to do it. Patch series [2] breaks this promise since it does
+> the actual shutdown in the middle of the chain of syscon_shutdown handlers.
+>
+> In the discussion about series [2] Anand repeatedly talks about restart
+> problems. But this rk808 mfd driver is not involved in restart, also
+> patch series [2]
+> does not change that. So I cannot see what should be the point here.
+>
+Sorry I dont have any expert knowledge on this, so continue on best approach..
+
+> There was an earlier attempt [3] to enhance this rk808 mfd driver for
+> restart. I'm not sure, however, what happened to this. For me it could
+> make sense to reimplement such restart functionality on top of this
+> "mfd: RK8xx tidyup" series.
+>
+> Regards,
+> Soeren
+>
+> [3] https://lore.kernel.org/patchwork/patch/934323/
+>
+>
+
+-Anand
