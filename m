@@ -1,216 +1,175 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Re: [V2 1/1 PATCH] arm64: dts: rockchip: add ROCK Pi S DTS support
-Date: Tue, 17 Dec 2019 12:48:49 +0100
-Message-ID: <80ca8b77-6a55-ef33-b772-eccaad8871e6@gmail.com>
-References: <20191217080014.11756-1-akash@openedev.com>
+From: Leonard Crestez <leonard.crestez@nxp.com>
+Subject: Re: [PATCH 2/9] PM / devfreq: Remove devfreq_get_devfreq_by_phandle
+ function
+Date: Tue, 17 Dec 2019 14:33:52 +0000
+Message-ID: <VI1PR04MB70231FA16F12ACA3A3C01772EE500@VI1PR04MB7023.eurprd04.prod.outlook.com>
+References: <20191217055738.28445-1-cw00.choi@samsung.com>
+ <CGME20191217055105epcas1p2d2930402a559e381a7854f515a683d15@epcas1p2.samsung.com>
+ <20191217055738.28445-3-cw00.choi@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191217080014.11756-1-akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Sender: linux-kernel-owner@vger.kernel.org
+To: Chanwoo Choi <cw00.choi@samsung.com>, "krzk@kernel.org" <krzk@kernel.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>
+Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>, "heiko@sntech.de" <heiko@sntech.de>, "lukasz.luba@arm.com" <lukasz.luba@arm.com>, "a.swigon@samsung.com" <a.swigon@samsung.com>, "m.szyprowski@samsung.com" <m.szyprowski@samsung.com>, "kgene@kernel.org" <kgene@kernel.org>, "myungjoo.ham@samsung.com" <myungjoo.ham@samsung.com>, "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@l>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Akash,
-
-My commit for the second time! Reply!
-
-Question for Heiko:
-Should bus-width be defined all in the rk3308 core dtsi or
-move them to dts like the rest?
-
-> +&emmc {
-> +	bus-width = <4>;
-
-Is this value correct for emmc?
-bus-width = <8> is already defined in rk3308.dtsi,
-so remove or change value.
-
-> +	cap-mmc-highspeed;
-> +	mmc-hs200-1_8v;
-
-> +	supports-sd;
-
-supports-sd is not mentioned in mmc-controller.yaml
-
-> +	disable-wp;
-
-The mmc.txt didn't explicitly say disable-wp is for SD card slot only,
-but that is what it was designed for in the first place.
-Remove all disable-wp from emmc or sdio controllers.
-
-> +	non-removable;
-> +	num-slots = <1>;
-> +	vin-supply = <&vcc_io>;
-> +	status = "okay";
-> +};
-
-> +&sdmmc {
-> +	bus-width = <4>;
-
-bus-width = <4> is already defined in rk3308.dtsi,
-so remove or change value.
-
-> +	cap-mmc-highspeed;
-> +	cap-sd-highspeed;
-
-> +	max-frequeency = <150000000>;
-
-replace max-frequeency by max-frequency
-max-frequency = <150000000> is already defined in rk3308.dtsi,
-so remove or change value.
-
-> +	supports-sd;
-
-supports-sd is not mentioned in mmc-controller.yaml
-
-> +	disable-wp;
-> +	num-slots = <1>;
-> +	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_det &sdmmc_bus4>;
-> +	card-detect-delay = <800>;
-
-Why is this value set to 800? All other dts use 200.
-What changed in the specifications?
-
-> +	status = "okay";
-> +};
-
-> +&sdio {
-> +	#address-cells = <1>;
-> +	#size-cells = <0>;
-> +	bus-width = <4>;
-
-bus-width = <4> is already defined in rk3308.dtsi,
-so remove or change value.
-
-> +	max-frequency = <1000000>;
-> +	cap-sd-highspeed;
-> +	cap-sdio-irq;
-
-> +	supports-sdio;
-
-supports-sdio is not mentioned in mmc-controller.yaml
-
-> +	keep-power-in-suspend;
-> +	mmc-pwrseq = <&sdio_pwrseq>;
-> +	non-removable;
-> +	sd-uhs-sdr104;
-> +	status = "okay";
-> +};
-
-From rk3308.dtsi:
-
-	emmc: dwmmc@ff490000 {
-		compatible = "rockchip,rk3308-dw-mshc", "rockchip,rk3288-dw-mshc";
-		reg = <0x0 0xff490000 0x0 0x4000>;
-		interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
-		bus-width = <8>;
-		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
-			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
-		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
-		fifo-depth = <0x100>;
-		max-frequency = <150000000>;
-		status = "disabled";
-	};
-
-	sdmmc: dwmmc@ff480000 {
-		compatible = "rockchip,rk3308-dw-mshc", "rockchip,rk3288-dw-mshc";
-		reg = <0x0 0xff480000 0x0 0x4000>;
-		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH>;
-		bus-width = <4>;
-		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
-			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
-		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
-		fifo-depth = <0x100>;
-		max-frequency = <150000000>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_det &sdmmc_bus4>;
-		status = "disabled";
-	};
-
-	sdio: dwmmc@ff4a0000 {
-		compatible = "rockchip,rk3308-dw-mshc", "rockchip,rk3288-dw-mshc";
-		reg = <0x0 0xff4a0000 0x0 0x4000>;
-		interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_HIGH>;
-		bus-width = <4>;
-		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
-			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
-		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
-		fifo-depth = <0x100>;
-		max-frequency = <150000000>;
-		pinctrl-names = "default";
-		pinctrl-0 = <&sdio_bus4 &sdio_cmd &sdio_clk>;
-		status = "disabled";
-	};
-
-From host.c:
-
-	device_property_read_bool(dev, "non-removable");
-	device_property_read_bool(dev, "cd-inverted");
-	device_property_read_bool(dev, "broken-cd");
-	device_property_read_bool(dev, "wp-inverted");
-	device_property_read_bool(dev, "disable-wp");
-	device_property_read_u32(dev, "bus-width", &bus_width);
-	device_property_read_u32(dev, "max-frequency", &host->f_max);
-	if (device_property_read_bool(dev, "cap-sd-highspeed"))
-		host->caps |= MMC_CAP_SD_HIGHSPEED;
-	if (device_property_read_bool(dev, "cap-mmc-highspeed"))
-		host->caps |= MMC_CAP_MMC_HIGHSPEED;
-	if (device_property_read_bool(dev, "sd-uhs-sdr12"))
-		host->caps |= MMC_CAP_UHS_SDR12;
-	if (device_property_read_bool(dev, "sd-uhs-sdr25"))
-		host->caps |= MMC_CAP_UHS_SDR25;
-	if (device_property_read_bool(dev, "sd-uhs-sdr50"))
-		host->caps |= MMC_CAP_UHS_SDR50;
-	if (device_property_read_bool(dev, "sd-uhs-sdr104"))
-		host->caps |= MMC_CAP_UHS_SDR104;
-	if (device_property_read_bool(dev, "sd-uhs-ddr50"))
-		host->caps |= MMC_CAP_UHS_DDR50;
-	if (device_property_read_bool(dev, "cap-power-off-card"))
-		host->caps |= MMC_CAP_POWER_OFF_CARD;
-	if (device_property_read_bool(dev, "cap-mmc-hw-reset"))
-		host->caps |= MMC_CAP_HW_RESET;
-	if (device_property_read_bool(dev, "cap-sdio-irq"))
-		host->caps |= MMC_CAP_SDIO_IRQ;
-	if (device_property_read_bool(dev, "full-pwr-cycle"))
-		host->caps2 |= MMC_CAP2_FULL_PWR_CYCLE;
-	if (device_property_read_bool(dev, "keep-power-in-suspend"))
-		host->pm_caps |= MMC_PM_KEEP_POWER;
-	if (device_property_read_bool(dev, "wakeup-source") ||
-	    device_property_read_bool(dev, "enable-sdio-wakeup")) /* legacy */
-		host->pm_caps |= MMC_PM_WAKE_SDIO_IRQ;
-	if (device_property_read_bool(dev, "mmc-ddr-3_3v"))
-		host->caps |= MMC_CAP_3_3V_DDR;
-	if (device_property_read_bool(dev, "mmc-ddr-1_8v"))
-		host->caps |= MMC_CAP_1_8V_DDR;
-	if (device_property_read_bool(dev, "mmc-ddr-1_2v"))
-		host->caps |= MMC_CAP_1_2V_DDR;
-	if (device_property_read_bool(dev, "mmc-hs200-1_8v"))
-		host->caps2 |= MMC_CAP2_HS200_1_8V_SDR;
-	if (device_property_read_bool(dev, "mmc-hs200-1_2v"))
-		host->caps2 |= MMC_CAP2_HS200_1_2V_SDR;
-	if (device_property_read_bool(dev, "mmc-hs400-1_8v"))
-		host->caps2 |= MMC_CAP2_HS400_1_8V | MMC_CAP2_HS200_1_8V_SDR;
-	if (device_property_read_bool(dev, "mmc-hs400-1_2v"))
-		host->caps2 |= MMC_CAP2_HS400_1_2V | MMC_CAP2_HS200_1_2V_SDR;
-	if (device_property_read_bool(dev, "mmc-hs400-enhanced-strobe"))
-		host->caps2 |= MMC_CAP2_HS400_ES;
-	if (device_property_read_bool(dev, "no-sdio"))
-		host->caps2 |= MMC_CAP2_NO_SDIO;
-	if (device_property_read_bool(dev, "no-sd"))
-		host->caps2 |= MMC_CAP2_NO_SD;
-	if (device_property_read_bool(dev, "no-mmc"))
-		host->caps2 |= MMC_CAP2_NO_MMC;
-	device_property_read_u32(dev, "fixed-emmc-driver-type", &drv_type);
-	device_property_read_u32(dev, "post-power-on-delay-ms",
-				 &host->ios.power_delay_ms);
+On 17.12.2019 07:51, Chanwoo Choi wrote:=0A=
+> Previously, devfreq core support 'devfreq' property in order to get=0A=
+> the devfreq device by phandle. But, 'devfreq' property name is not proper=
+=0A=
+> on devicetree binding because this name doesn't mean the any h/w attribut=
+e.=0A=
+> =0A=
+> The devfreq core hand over the right to decide the property name=0A=
+> for getting the devfreq device on devicetree. Each devfreq driver=0A=
+> will decide the property name on devicetree binding and then get=0A=
+> the devfreq device by using devfreq_get_devfreq_by_node().=0A=
+> =0A=
+> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>=0A=
+> ---=0A=
+>   drivers/devfreq/devfreq.c    | 35 -----------------------------------=
+=0A=
+>   drivers/devfreq/exynos-bus.c | 14 ++++++++++++--=0A=
+>   include/linux/devfreq.h      |  8 --------=0A=
+>   3 files changed, 12 insertions(+), 45 deletions(-)=0A=
+> =0A=
+> diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c=0A=
+> index cb8ca81c8973..c3d3c7c802a0 100644=0A=
+> --- a/drivers/devfreq/devfreq.c=0A=
+> +++ b/drivers/devfreq/devfreq.c=0A=
+> @@ -991,48 +991,13 @@ struct devfreq *devfreq_get_devfreq_by_node(struct =
+device_node *node)=0A=
+>   =0A=
+>   	return ERR_PTR(-ENODEV);=0A=
+>   }=0A=
+> -=0A=
+> -/*=0A=
+> - * devfreq_get_devfreq_by_phandle - Get the devfreq device from devicetr=
+ee=0A=
+> - * @dev - instance to the given device=0A=
+> - * @index - index into list of devfreq=0A=
+> - *=0A=
+> - * return the instance of devfreq device=0A=
+> - */=0A=
+> -struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int i=
+ndex)=0A=
+> -{=0A=
+> -	struct device_node *node;=0A=
+> -	struct devfreq *devfreq;=0A=
+> -=0A=
+> -	if (!dev)=0A=
+> -		return ERR_PTR(-EINVAL);=0A=
+> -=0A=
+> -	if (!dev->of_node)=0A=
+> -		return ERR_PTR(-EINVAL);=0A=
+> -=0A=
+> -	node =3D of_parse_phandle(dev->of_node, "devfreq", index);=0A=
+> -	if (!node)=0A=
+> -		return ERR_PTR(-ENODEV);=0A=
+> -=0A=
+> -	devfreq =3D devfreq_get_devfreq_by_node(node);=0A=
+> -	of_node_put(node);=0A=
+> -=0A=
+> -	return devfreq;=0A=
+> -}=0A=
+> -=0A=
+>   #else=0A=
+>   struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)=
+=0A=
+>   {=0A=
+>   	return ERR_PTR(-ENODEV);=0A=
+>   }=0A=
+> -=0A=
+> -struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int i=
+ndex)=0A=
+> -{=0A=
+> -	return ERR_PTR(-ENODEV);=0A=
+> -}=0A=
+>   #endif /* CONFIG_OF */=0A=
+>   EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_node);=0A=
+> -EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_phandle);=0A=
+>   =0A=
+>   /**=0A=
+>    * devm_devfreq_remove_device() - Resource-managed devfreq_remove_devic=
+e()=0A=
+> diff --git a/drivers/devfreq/exynos-bus.c b/drivers/devfreq/exynos-bus.c=
+=0A=
+> index 7f5917d59072..9aac2db956d5 100644=0A=
+> --- a/drivers/devfreq/exynos-bus.c=0A=
+> +++ b/drivers/devfreq/exynos-bus.c=0A=
+> @@ -146,6 +146,16 @@ static int exynos_bus_get_dev_status(struct device *=
+dev,=0A=
+>   	return ret;=0A=
+>   }=0A=
+>   =0A=
+> +static struct devfreq *get_parent_devfreq_by_node(struct device_node *np=
+)=0A=
+> +{=0A=
+> +	struct device_node *node =3D of_parse_phandle(np, "devfreq", 0);=0A=
+> +=0A=
+> +	if (!node)=0A=
+> +		return ERR_PTR(-ENODEV);=0A=
+> +=0A=
+> +	return devfreq_get_devfreq_by_node(node);=0A=
+> +}=0A=
+=0A=
+The _by_node suffix here is confusing because it actually fetches a =0A=
+property of the node unlike devfreq_get_devfreq_by_node. Maybe call this =
+=0A=
+get_parent_devfreq_from_node?=0A=
+=0A=
+Since it's a static function it could just be called get_parent_devfreq?=0A=
+=0A=
+> +=0A=
+>   static void exynos_bus_exit(struct device *dev)=0A=
+>   {=0A=
+>   	struct exynos_bus *bus =3D dev_get_drvdata(dev);=0A=
+> @@ -353,8 +363,8 @@ static int exynos_bus_profile_init_passive(struct exy=
+nos_bus *bus,=0A=
+>   	profile->exit =3D exynos_bus_passive_exit;=0A=
+>   =0A=
+>   	/* Get the instance of parent devfreq device */=0A=
+> -	parent_devfreq =3D devfreq_get_devfreq_by_phandle(dev, 0);=0A=
+> -	if (IS_ERR(parent_devfreq))=0A=
+> +	parent_devfreq =3D get_parent_devfreq_by_node(dev->of_node);=0A=
+> +	if (IS_ERR(parent_devfreq)) {=0A=
+>   		return -EPROBE_DEFER;=0A=
+>   =0A=
+>   	passive_data =3D devm_kzalloc(dev, sizeof(*passive_data), GFP_KERNEL);=
+=0A=
+> diff --git a/include/linux/devfreq.h b/include/linux/devfreq.h=0A=
+> index e3633ae43349..3ed96426302e 100644=0A=
+> --- a/include/linux/devfreq.h=0A=
+> +++ b/include/linux/devfreq.h=0A=
+> @@ -254,8 +254,6 @@ extern void devm_devfreq_unregister_notifier(struct d=
+evice *dev,=0A=
+>   				struct notifier_block *nb,=0A=
+>   				unsigned int list);=0A=
+>   extern struct devfreq *devfreq_get_devfreq_by_node(struct device_node *=
+node);=0A=
+> -extern struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev=
+,=0A=
+> -						int index);=0A=
+>   =0A=
+>   #if IS_ENABLED(CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND)=0A=
+>   /**=0A=
+> @@ -413,12 +411,6 @@ struct devfreq *devfreq_get_devfreq_by_node(struct d=
+evice_node *node)=0A=
+>   	return ERR_PTR(-ENODEV);=0A=
+>   }=0A=
+>   =0A=
+> -static inline struct devfreq *devfreq_get_devfreq_by_phandle(struct devi=
+ce *dev,=0A=
+> -							int index)=0A=
+> -{=0A=
+> -	return ERR_PTR(-ENODEV);=0A=
+> -}=0A=
+> -=0A=
+>   static inline int devfreq_update_stats(struct devfreq *df)=0A=
+>   {=0A=
+>   	return -EINVAL;=0A=
+> =0A=
+=0A=
