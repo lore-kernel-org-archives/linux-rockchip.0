@@ -1,10 +1,9 @@
 From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: [PATCH 4/9] PM / devfreq: exynos-bus: Replace deprecated 'devfreq'
- property
-Date: Tue, 17 Dec 2019 14:57:33 +0900
-Message-ID: <20191217055738.28445-5-cw00.choi@samsung.com>
+Subject: [PATCH 1/9] PM / devfreq: Add devfreq_get_devfreq_by_node function
+Date: Tue, 17 Dec 2019 14:57:30 +0900
+Message-ID: <20191217055738.28445-2-cw00.choi@samsung.com>
 References: <20191217055738.28445-1-cw00.choi@samsung.com>
-        <CGME20191217055106epcas1p11f2bc81d6bb2db3fc4bc257d78c337b9@epcas1p1.samsung.com>
+        <CGME20191217055105epcas1p3bacbf54550c52979fe819ab33bb21d30@epcas1p3.samsung.com>
 Content-Type: text/plain; charset="utf-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20191217055738.28445-1-cw00.choi@samsung.com>
@@ -13,118 +12,117 @@ To: krzk@kernel.org, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, 
 Cc: a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, cw00.choi@samsung.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In order to remove the deprecated 'devfreq' property, replace with
-new 'exynos,parent-bus' property in order to get the parent devfreq device
-in devicetree file instead of 'devfreq' property. But, to guarantee the
-backward-compatibility, keep the support 'devfreq' property.
+From: Leonard Crestez <leonard.crestez@nxp.com>
 
+Split off part of devfreq_get_devfreq_by_phandle into a separate
+function. This allows callers to fetch devfreq instances by enumerating
+devicetree instead of explicit phandles.
+
+Signed-off-by: Leonard Crestez <leonard.crestez@nxp.com>
+[cw00.choi: Export devfreq_get_devfreq_by_node function and
+ add function to devfreq.h when CONFIG_PM_DEVFREQ is enabled.]
 Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
 ---
- .../bindings/devfreq/exynos-bus.txt           | 16 +++++++--------
- drivers/devfreq/exynos-bus.c                  | 20 ++++++++++++-------
- 2 files changed, 21 insertions(+), 15 deletions(-)
+ drivers/devfreq/devfreq.c | 46 +++++++++++++++++++++++++++++----------
+ include/linux/devfreq.h   |  6 +++++
+ 2 files changed, 41 insertions(+), 11 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
-index e71f752cc18f..c948cee01124 100644
---- a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
-+++ b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
-@@ -45,7 +45,7 @@ Required properties only for parent bus device:
-   of buses.
+diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
+index 89260b17598f..cb8ca81c8973 100644
+--- a/drivers/devfreq/devfreq.c
++++ b/drivers/devfreq/devfreq.c
+@@ -966,6 +966,32 @@ struct devfreq *devm_devfreq_add_device(struct device *dev,
+ EXPORT_SYMBOL(devm_devfreq_add_device);
  
- Required properties only for passive bus device:
--- devfreq: the parent bus device.
-+- exynos,parent-bus: the parent bus device.
- 
- Optional properties only for parent bus device:
- - exynos,saturation-ratio: the percentage value which is used to calibrate
-@@ -386,36 +386,36 @@ Example2 :
- 	};
- 
- 	&bus_rightbus {
--		devfreq = <&bus_leftbus>;
-+		exynos,parent-bus = <&bus_leftbus>;
- 		status = "okay";
- 	};
- 
- 	&bus_lcd0 {
--		devfreq = <&bus_leftbus>;
-+		exynos,parent-bus = <&bus_leftbus>;
- 		status = "okay";
- 	};
- 
- 	&bus_fsys {
--		devfreq = <&bus_leftbus>;
-+		exynos,parent-bus = <&bus_leftbus>;
- 		status = "okay";
- 	};
- 
- 	&bus_mcuisp {
--		devfreq = <&bus_leftbus>;
-+		exynos,parent-bus = <&bus_leftbus>;
- 		status = "okay";
- 	};
- 
- 	&bus_isp {
--		devfreq = <&bus_leftbus>;
-+		exynos,parent-bus = <&bus_leftbus>;
- 		status = "okay";
- 	};
- 
- 	&bus_peril {
--		devfreq = <&bus_leftbus>;
-+		exynos,parent-bus = <&bus_leftbus>;
- 		status = "okay";
- 	};
- 
- 	&bus_mfc {
--		devfreq = <&bus_leftbus>;
-+		exynos,parent-bus = <&bus_leftbus>;
- 		status = "okay";
- 	};
-diff --git a/drivers/devfreq/exynos-bus.c b/drivers/devfreq/exynos-bus.c
-index 7893c3b99e60..60d61b168153 100644
---- a/drivers/devfreq/exynos-bus.c
-+++ b/drivers/devfreq/exynos-bus.c
-@@ -148,11 +148,17 @@ static int exynos_bus_get_dev_status(struct device *dev,
- 
- static struct devfreq *get_parent_devfreq_by_node(struct device_node *np)
- {
--	struct device_node *node = of_parse_phandle(np, "devfreq", 0);
--
--	if (!node)
--		return ERR_PTR(-ENODEV);
--
-+	struct device_node *node = of_parse_phandle(np, "exynos,parent-bus", 0);
+ #ifdef CONFIG_OF
++/*
++ * devfreq_get_devfreq_by_node - Get the devfreq device from devicetree
++ * @node - pointer to device_node
++ *
++ * return the instance of devfreq device
++ */
++struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
++{
++	struct devfreq *devfreq;
 +
-+	if (!node) {
-+		/*
-+		 * Check the deprecated 'devfreq' property
-+		 * to support backward-compatibility.
-+		 */
-+		node = of_parse_phandle(np, "devfreq", 0);
-+		if (!node)
-+			return ERR_PTR(-ENODEV);
++	if (!node)
++		return ERR_PTR(-EINVAL);
++
++	mutex_lock(&devfreq_list_lock);
++	list_for_each_entry(devfreq, &devfreq_list, node) {
++		if (devfreq->dev.parent
++			&& devfreq->dev.parent->of_node == node) {
++			mutex_unlock(&devfreq_list_lock);
++			return devfreq;
++		}
 +	}
- 	return devfreq_get_devfreq_by_node(node);
++	mutex_unlock(&devfreq_list_lock);
++
++	return ERR_PTR(-ENODEV);
++}
++
+ /*
+  * devfreq_get_devfreq_by_phandle - Get the devfreq device from devicetree
+  * @dev - instance to the given device
+@@ -988,26 +1014,24 @@ struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
+ 	if (!node)
+ 		return ERR_PTR(-ENODEV);
+ 
+-	mutex_lock(&devfreq_list_lock);
+-	list_for_each_entry(devfreq, &devfreq_list, node) {
+-		if (devfreq->dev.parent
+-			&& devfreq->dev.parent->of_node == node) {
+-			mutex_unlock(&devfreq_list_lock);
+-			of_node_put(node);
+-			return devfreq;
+-		}
+-	}
+-	mutex_unlock(&devfreq_list_lock);
++	devfreq = devfreq_get_devfreq_by_node(node);
+ 	of_node_put(node);
+ 
+-	return ERR_PTR(-EPROBE_DEFER);
++	return devfreq;
+ }
++
+ #else
++struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
++{
++	return ERR_PTR(-ENODEV);
++}
++
+ struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
+ {
+ 	return ERR_PTR(-ENODEV);
+ }
+ #endif /* CONFIG_OF */
++EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_node);
+ EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_phandle);
+ 
+ /**
+diff --git a/include/linux/devfreq.h b/include/linux/devfreq.h
+index c6f82d4bec9f..e3633ae43349 100644
+--- a/include/linux/devfreq.h
++++ b/include/linux/devfreq.h
+@@ -253,6 +253,7 @@ extern void devm_devfreq_unregister_notifier(struct device *dev,
+ 				struct devfreq *devfreq,
+ 				struct notifier_block *nb,
+ 				unsigned int list);
++extern struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node);
+ extern struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev,
+ 						int index);
+ 
+@@ -407,6 +408,11 @@ static inline void devm_devfreq_unregister_notifier(struct device *dev,
+ {
  }
  
-@@ -376,7 +382,7 @@ static int exynos_bus_profile_init_passive(struct exynos_bus *bus,
- 
- 	/* Get the instance of parent devfreq device */
- 	parent_devfreq = get_parent_devfreq_by_node(dev->of_node);
--	if (IS_ERR(parent_devfreq)) {
-+	if (IS_ERR(parent_devfreq))
- 		return -EPROBE_DEFER;
- 
- 	passive_data = devm_kzalloc(dev, sizeof(*passive_data), GFP_KERNEL);
-@@ -423,7 +429,7 @@ static int exynos_bus_probe(struct platform_device *pdev)
- 	if (!profile)
- 		return -ENOMEM;
- 
--	node = of_parse_phandle(dev->of_node, "devfreq", 0);
-+	node = of_parse_phandle(dev->of_node, "exynos,parent-bus", 0);
- 	if (node) {
- 		of_node_put(node);
- 		passive = true;
++struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
++{
++	return ERR_PTR(-ENODEV);
++}
++
+ static inline struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev,
+ 							int index)
+ {
 -- 
 2.17.1
