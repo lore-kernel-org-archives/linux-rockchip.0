@@ -1,131 +1,104 @@
-From: Christian Hewitt <christianshewitt@gmail.com>
-Subject: Re: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
-Date: Wed, 18 Dec 2019 13:55:35 +0200
-Message-ID: <D1B53CE9-E87C-4514-A2D7-0FE70A4D1A5D@gmail.com>
-References: <20191211235253.2539-1-smoch@web.de>
-Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191211235253.2539-1-smoch@web.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Soeren Moch <smoch@web.de>
-Cc: brcm80211-dev-list.pdl@broadcom.com, Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, brcm80211-dev-list@cypress.com, Kalle Valo <kvalo@codeaurora.org>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [RFC] Permanent Fix for RK33 gmac 1500 mtu bug
+Date: Wed, 18 Dec 2019 08:54:37 -0500
+Message-ID: <CAMdYzYordu8S4S9nT=af4SeuLq-nvUT12XN9TgE=EbSYo4=81A@mail.gmail.com>
+References: <CAMdYzYpHxMELdB4HzsViFvrLcDzG0A4000PJU6wHTaq4V9c1Nw@mail.gmail.com>
+ <CAMdYzYo6HG+NK2BHNaULtD=Lu=Ozd6pFW4YRXF8QF_UGLjJN_w@mail.gmail.com>
+ <E3092315-8D1F-4A43-B485-02D526F57B21@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <E3092315-8D1F-4A43-B485-02D526F57B21-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Cj4gT24gMTIgRGVjIDIwMTksIGF0IDE6NTIgYW0sIFNvZXJlbiBNb2NoIDxzbW9jaEB3ZWIuZGU+
-IHdyb3RlOgo+IAo+IEFkZCBzdXBwb3J0IGZvciB0aGUgQkNNNDM1OSBjaGlwc2V0IHdpdGggU0RJ
-TyBpbnRlcmZhY2UgYW5kIFJTREIgc3VwcG9ydAo+IHRvIHRoZSBicmNtZm1hYyB3aXJlbGVzcyBu
-ZXR3b3JrIGRyaXZlciBpbiBwYXRjaGVzIDEtNy4KPiAKPiBFbmhhbmNlIGRldmljZXRyZWUgb2Yg
-dGhlIFJvY2tQcm82NCBhcm02NC9yb2NrY2hpcCBib2FyZCB0byB1c2UgYW4KPiBBUDYzNTlTQSBi
-YXNlZCB3aWZpL2J0IGNvbWJvIG1vZHVsZSB3aXRoIHRoaXMgY2hpcHNldCBpbiBwYXRjaGVzIDgt
-OS4KPiAKPiAKPiBDaHVuZy1Ic2llbiBIc3UgKDEpOgo+ICBicmNtZm1hYzogc2V0IEYyIGJsb2Nr
-c2l6ZSBhbmQgd2F0ZXJtYXJrIGZvciA0MzU5Cj4gCj4gU29lcmVuIE1vY2ggKDUpOgo+ICBicmNt
-Zm1hYzogZml4IHJhbWJhc2UgZm9yIDQzNTkvOQo+ICBicmNtZm1hYzogbWFrZSBlcnJvcnMgd2hl
-biBzZXR0aW5nIHJvYW1pbmcgcGFyYW1ldGVycyBub24tZmF0YWwKPiAgYnJjbWZtYWM6IGFkZCBz
-dXBwb3J0IGZvciBCQ000MzU5IFNESU8gY2hpcHNldAo+ICBhcm02NDogZHRzOiByb2NrY2hpcDog
-Um9ja1BybzY0OiBlbmFibGUgd2lmaSBtb2R1bGUgYXQgc2RpbzAKPiAgYXJtNjQ6IGR0czogcm9j
-a2NoaXA6IFJvY2tQcm82NDogaG9vayB1cCBibHVldG9vdGggYXQgdWFydDAKPiAKPiBXcmlnaHQg
-RmVuZyAoMyk6Cj4gIGJyY21mbWFjOiByZXNldCB0d28gRDExIGNvcmVzIGlmIGNoaXAgaGFzIHR3
-byBEMTEgY29yZXMKPiAgYnJjbWZtYWM6IGFkZCBSU0RCIGNvbmRpdGlvbiB3aGVuIHNldHRpbmcg
-aW50ZXJmYWNlIGNvbWJpbmF0aW9ucwo+ICBicmNtZm1hYzogbm90IHNldCBtYnNzIGluIHZpZiBp
-ZiBmaXJtd2FyZSBkb2VzIG5vdCBzdXBwb3J0IE1CU1MKClRoYW5rcyBmb3IgcG9zdGluZyB0aGlz
-IHNlcmllcywgdGhpcyBjaGlwIGlzIHdpZGVseSB1c2VkIGJ5IGEgbGFyZ2UgbnVtYmVyIG9mIGN1
-cnJlbnQgQW1sb2dpYyBkZXZpY2VzIQoKUGF0Y2hlcyAxLTcgaGF2ZSBiZWVuIHRlc3RlZCBvbiBB
-bWxvZ2ljIEcxMkIgKEtoYWRhcyBWSU0zKSBoYXJkd2FyZSB3aXRoIDUuNS1yYyBrZXJuZWwgYW5k
-IGEgTGlicmVFTEVDIChkaXN0cm8pIGNvbGxlYWd1ZSBhbHNvIHRlc3RlZCB3aXRoIGEgS2hhZGFz
-IEVkZ2UgYm9hcmQgKFJLMzM5OSkuIFRoZSBBbXBhayA2Mzk4UyBtb2R1bGUgb24gYm90aCBib2Fy
-ZHMgYXJlIGRldGVjdGVkIGFuZCBjYW4gY29ubmVjdCB0byBuZXR3b3JrcyB0byBwYXNzIGJhc2lj
-IGZ1bmN0aW9uYWwgdGVzdGluZy4KCk9uIHRoZSBWSU0zIGJvYXJkIEkgZG8gc2VlIHRoZSBmb2xs
-b3dpbmcgd2FybmluZyBzcGxhdDoKClsgICAgNy45ODczNTFdIC0tLS0tLS0tLS0tLVsgY3V0IGhl
-cmUgXS0tLS0tLS0tLS0tLQpbICAgIDcuOTg3MzgyXSBXQVJOSU5HOiBDUFU6IDUgUElEOiAzNiBh
-dCBkcml2ZXJzL25ldC93aXJlbGVzcy9icm9hZGNvbS9icmNtODAyMTEvYnJjbWZtYWMvYmNtc2Ro
-LmM6Nzc2IGJyY21mX3NkaW9kX3NndGFibGVfYWxsb2MrMHgxMzAvMHgxMzggW2JyY21mbWFjXQpb
-ICAgIDcuOTg3Mzg0XSBNb2R1bGVzIGxpbmtlZCBpbjogYnJjbWZtYWMgZWNkaF9nZW5lcmljIGJy
-Y211dGlsIHJ0Y19tZXNvbl92cnRjIHZpZGVvZGV2IGVjYyBjZmc4MDIxMSBncGlvX3BjYTk1M3gg
-cmZraWxsIGlyX25lY19kZWNvZGVyIGNyY3QxMGRpZl9jZSByY19raGFkYXMgbWFsaV9rYmFzZShP
-KSBtZXNvbl9pciBhb19jZWNfZzEyYSBtYyBydGNfaHltODU2MyByY19jb3JlIGdwaW9fa2V5c19w
-b2xsZWQgYWRjX2tleXMgaXB2NiBuZl9kZWZyYWdfaXB2NiBjcmNfY2NpdHQgc2NoX2ZxX2NvZGVs
-ClsgICAgNy45ODc0MDNdIENQVTogNSBQSUQ6IDM2IENvbW06IGt3b3JrZXIvNTowIFRhaW50ZWQ6
-IEcgICAgICAgICAgIE8gICAgICA1LjUuMC1yYzEgIzEKWyAgICA3Ljk4NzQwNF0gSGFyZHdhcmUg
-bmFtZTogS2hhZGFzIFZJTTMgKERUKQpbICAgIDcuOTg3NDE3XSBXb3JrcXVldWU6IGV2ZW50cyBi
-cmNtZl9kcml2ZXJfcmVnaXN0ZXIgW2JyY21mbWFjXQpbICAgIDcuOTg3NDIwXSBwc3RhdGU6IDgw
-MDAwMDA1IChOemN2IGRhaWYgLVBBTiAtVUFPKQpbICAgIDcuOTg3NDMyXSBwYyA6IGJyY21mX3Nk
-aW9kX3NndGFibGVfYWxsb2MrMHgxMzAvMHgxMzggW2JyY21mbWFjXQpbICAgIDcuOTg3NDQzXSBs
-ciA6IGJyY21mX3NkaW9fcHJvYmUrMHgyOGMvMHg4OTAgW2JyY21mbWFjXQpbICAgIDcuOTg3NDQ0
-XSBzcCA6IGZmZmY4MDAwMTAxN2JhOTAKWyAgICA3Ljk4NzQ0NV0geDI5OiBmZmZmODAwMDEwMTdi
-YTkwIHgyODogMDAwMDAwMDAwMDAwMDAwMCAKWyAgICA3Ljk4NzQ0N10geDI3OiAwMDAwMDAwMDAw
-MDAwMDAwIHgyNjogZmZmZjAwMDBhOGMwOTQwMCAKWyAgICA3Ljk4NzQ0OV0geDI1OiBmZmZmODAw
-MDBhMjRjYjA4IHgyNDogZmZmZjAwMDBhMzgwMDQwMCAKWyAgICA3Ljk4NzQ1MV0geDIzOiBmZmZm
-ODAwMDEyYzYxOGM4IHgyMjogZmZmZjAwMDBhNjc1ZTAwMCAKWyAgICA3Ljk4NzQ1M10geDIxOiBm
-ZmZmMDAwMGE2NzVlMDAwIHgyMDogMDAwMDAwMDAwMDAwMDAyMyAKWyAgICA3Ljk4NzQ1NF0geDE5
-OiBmZmZmMDAwMGEzODAwMDAwIHgxODogZmZmZjgwMDAxM2IyNTkwOCAKWyAgICA3Ljk4NzQ1Nl0g
-eDE3OiBmZmZmODAwMDEzYjI1ZDBjIHgxNjogZmZmZjgwMDAxM2IyNTEwNCAKWyAgICA3Ljk4NzQ1
-N10geDE1OiAwMDAwMDAwMGYwMDAwMDAwIHgxNDogMDAwMDAwMDAwMDAwMDAwYSAKWyAgICA3Ljk4
-NzQ1OV0geDEzOiAwMDAwMDAwMDAwMDAwMDAwIHgxMjogMDAwMDAwMDAwMDAwMDAwMSAKWyAgICA3
-Ljk4NzQ2MF0geDExOiAwMDAwMDAwMDAwMDAwMDA1IHgxMDogMDEwMTAxMDEwMTAxMDEwMSAKWyAg
-ICA3Ljk4NzQ2MV0geDkgOiBmZmZmZmZmZmZmZmZmZmZmIHg4IDogN2Y3ZjdmN2Y3ZjdmN2Y3ZiAK
-WyAgICA3Ljk4NzQ2M10geDcgOiAwMDAwMDAwMDAwMDAwMWZmIHg2IDogMDAwMDAwMDAwMDAwMDA4
-MCAKWyAgICA3Ljk4NzQ2NF0geDUgOiAwMDAwMDAwMDAwMDAwNjAwIHg0IDogMDAwMDAwMDAwMDAw
-MDAwMyAKWyAgICA3Ljk4NzQ2Nl0geDMgOiBmZmZmMDAwMGE1YTNkODgwIHgyIDogMDAwMDAwMDAw
-MDAwMDAyMSAKWyAgICA3Ljk4NzQ2N10geDEgOiAwMDAwMDAwMDAwMDAwMDAzIHgwIDogZmZmZjAw
-MDBhNjc1ZTAwMCAKWyAgICA3Ljk4NzQ2OV0gQ2FsbCB0cmFjZToKWyAgICA3Ljk4NzQ4MV0gIGJy
-Y21mX3NkaW9kX3NndGFibGVfYWxsb2MrMHgxMzAvMHgxMzggW2JyY21mbWFjXQpbICAgIDcuOTg3
-NDkzXSAgYnJjbWZfc2Rpb19wcm9iZSsweDI4Yy8weDg5MCBbYnJjbWZtYWNdClsgICAgNy45ODc1
-MDRdICBicmNtZl9zZGlvZF9wcm9iZSsweGUwLzB4MWMwIFticmNtZm1hY10KWyAgICA3Ljk4NzUx
-Nl0gIGJyY21mX29wc19zZGlvX3Byb2JlKzB4MTZjLzB4MjA4IFticmNtZm1hY10KWyAgICA3Ljk4
-NzUyMl0gIHNkaW9fYnVzX3Byb2JlKzB4ZTAvMHgxYzgKWyAgICA3Ljk4NzUyNl0gIHJlYWxseV9w
-cm9iZSsweGQ4LzB4NDI4ClsgICAgNy45ODc1MjldICBkcml2ZXJfcHJvYmVfZGV2aWNlKzB4ZGMv
-MHgxMzAKWyAgICA3Ljk4NzUzMV0gIGRldmljZV9kcml2ZXJfYXR0YWNoKzB4NmMvMHg3OApbICAg
-IDcuOTg3NTMzXSAgX19kcml2ZXJfYXR0YWNoKzB4OWMvMHgxNjgKWyAgICA3Ljk4NzUzNV0gIGJ1
-c19mb3JfZWFjaF9kZXYrMHg3MC8weGMwClsgICAgNy45ODc1MzZdICBkcml2ZXJfYXR0YWNoKzB4
-MjAvMHgyOApbICAgIDcuOTg3NTM4XSAgYnVzX2FkZF9kcml2ZXIrMHgxOTAvMHgyMjAKWyAgICA3
-Ljk4NzUzOV0gIGRyaXZlcl9yZWdpc3RlcisweDYwLzB4MTEwClsgICAgNy45ODc1NDFdICBzZGlv
-X3JlZ2lzdGVyX2RyaXZlcisweDI0LzB4MzAKWyAgICA3Ljk4NzU1Ml0gIGJyY21mX3NkaW9fcmVn
-aXN0ZXIrMHgxNC8weDQ4IFticmNtZm1hY10KWyAgICA3Ljk4NzU2M10gIGJyY21mX2RyaXZlcl9y
-ZWdpc3RlcisweGMvMHgyMCBbYnJjbWZtYWNdClsgICAgNy45ODc1NjddICBwcm9jZXNzX29uZV93
-b3JrKzB4MWUwLzB4MzU4ClsgICAgNy45ODc1NjldICB3b3JrZXJfdGhyZWFkKzB4NDAvMHg0ODgK
-WyAgICA3Ljk4NzU3MV0gIGt0aHJlYWQrMHgxMTgvMHgxMjAKWyAgICA3Ljk4NzU3M10gIHJldF9m
-cm9tX2ZvcmsrMHgxMC8weDE4ClsgICAgNy45ODc1NzVdIC0tLVsgZW5kIHRyYWNlIDgwOGFjN2Ux
-NTlkMWZjMzMgXS0tLQoKSSBkb27igJl0IHNlZSB0aGlzIG9uIG9sZGVyIEFtbG9naWMgU29DcyAo
-R1hML0dYTSBkZXZpY2VzIHdpdGggdmFyaW91cyBvdGhlciBCQ00gY2hpcHMpIG9yIGFub3RoZXIg
-QW1sb2dpYyBHMTJCIGRldmljZSAoc2FtZSBTb0Mgd2l0aCBhIGRpZmZlcmVudCBBbXBhayBtb2R1
-bGUpIG9yIHNvbWUgUkszMzk5IGRldmljZXMsIHNvIGl0IG1heSBiZSBzb21ldGhpbmcgYm9hcmQg
-KEtoYWRhcyBWSU0zKSBzcGVjaWZpYy4KCkkgYWxzbyBzZWUgc29tZSBlcnJvcnMgbGlrZToKClsg
-ICA3MS4wNDY1OTddIGJyY21mbWFjOiBicmNtZl9zZGlvX3JlYWRmcmFtZXM6IFJYSEVBREVSIEZB
-SUxFRDogLTUKWyAgIDcxLjA0NjY1Ml0gYnJjbWZtYWM6IGJyY21mX3NkaW9fcnhmYWlsOiBhYm9y
-dCBjb21tYW5kLCB0ZXJtaW5hdGUgZnJhbWUsIHNlbmQgTkFLClsgIDEyMy44NDQ4NjNdIGJyY21m
-bWFjOiBicmNtZl9zZGlvX2J1c19zbGVlcDogZXJyb3Igd2hpbGUgY2hhbmdpbmcgYnVzIHNsZWVw
-IHN0YXRlIC01ClsgIDEyNC42NzgzMjldIGJyY21mbWFjOiBicmNtZl9zZGlvX3R4ZmFpbDogc2Rp
-byBlcnJvciwgYWJvcnQgY29tbWFuZCBhbmQgdGVybWluYXRlIGZyYW1lClsgIDEyNC42ODAyMjZd
-IG1tYzA6IHR1bmluZyBleGVjdXRpb24gZmFpbGVkOiAtNQpbICAxMjQuNzA4ODQzXSBicmNtZm1h
-YzogYnJjbWZfc2Rpb19idXNfc2xlZXA6IGVycm9yIHdoaWxlIGNoYW5naW5nIGJ1cyBzbGVlcCBz
-dGF0ZSAtNQpbICAxMjUuNzAwNzY1XSBicmNtZm1hYzogYnJjbWZfc2Rpb190eGZhaWw6IHNkaW8g
-ZXJyb3IsIGFib3J0IGNvbW1hbmQgYW5kIHRlcm1pbmF0ZSBmcmFtZQpbICAxMjUuODgwMzcyXSBi
-cmNtZm1hYzogbW1jX3N1Ym1pdF9vbmU6IENNRDUzIHNnIGJsb2NrIHJlYWQgZmFpbGVkIC0yMgpb
-ICAxMjUuODgwMzkzXSBicmNtZm1hYzogYnJjbWZfc2Rpb19yeGdsb206IGdsb20gcmVhZCBvZiA1
-MTIgYnl0ZXMgZmFpbGVkOiAtNQpbICAxMjUuODgwNDAxXSBicmNtZm1hYzogYnJjbWZfc2Rpb19y
-eGZhaWw6IGFib3J0IGNvbW1hbmQsIHRlcm1pbmF0ZSBmcmFtZQpbICAxMjUuODgxMjYyXSBicmNt
-Zm1hYzogYnJjbWZfc2Rpb19yZWFkZnJhbWVzOiBicmNtZl9zZGlvX3JlYWRmcmFtZXM6IGdsb20g
-c3VwZXJmcmFtZSB3L28gZGVzY3JpcHRvciEKWyAgMTI1Ljg4MTMxOF0gYnJjbWZtYWM6IGJyY21m
-X3NkaW9fcnhmYWlsOiB0ZXJtaW5hdGUgZnJhbWUKWyAgMTMxLjg0NDI4OV0gYnJjbWZtYWM6IG1t
-Y19zdWJtaXRfb25lOiBDTUQ1MyBzZyBibG9jayB3cml0ZSBmYWlsZWQgLTIyClsgIDEzMS44NDQz
-MDJdIGJyY21mbWFjOiBicmNtZl9zZGlvX3R4ZmFpbDogc2RpbyBlcnJvciwgYWJvcnQgY29tbWFu
-ZCBhbmQgdGVybWluYXRlIGZyYW1lClsgIDEzMS44NDQ0ODhdIGJyY21mbWFjOiBtbWNfc3VibWl0
-X29uZTogQ01ENTMgc2cgYmxvY2sgd3JpdGUgZmFpbGVkIC0yMgpbICAxMzEuODQ0NDk0XSBicmNt
-Zm1hYzogYnJjbWZfc2Rpb190eGZhaWw6IHNkaW8gZXJyb3IsIGFib3J0IGNvbW1hbmQgYW5kIHRl
-cm1pbmF0ZSBmcmFtZQoKSeKAmW0gbm90IHN1cmUgaWYgdGhhdOKAmXMgb2YgYW55IGNvbmNlcm4s
-IGJ1dCBpZiB5ZXMsIEnigJlkIGJlIGhhcHB5IHRvIGFwcGx5IGFueSBkZWJ1Z2dpbmcgcGF0Y2hl
-cyB5b3UgcHJvdmlkZSB0byBnZW5lcmF0ZSBvdXRwdXQuCgpUaGFua3MgYWdhaW4gZm9yIHdvcmtp
-bmcgb24gdGhpcyBjaGlwc2V0IQoKQ2hyaXN0aWFuCgoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0Cmxp
-bnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
+On Sat, Dec 14, 2019 at 9:30 AM Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+> Hi Peter,
+>
+> > On 13 Dec 2019, at 12:48, Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> >
+> > On Thu, Dec 12, 2019 at 8:21 AM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> >>
+> >> Good Morning,
+> >>
+> >> So I've continued work on fixing the rk3328/rk3399 gmac mtu tx coe offload bug.
+> >> I've found two fixes that maintain full performance and work consistently.
+> >>
+> >> First, is ayufan's tx coe patch [0], which takes the bugged_jumbo
+> >> concept introduced in [1] and applies it to 1498 and above, vice 1500
+> >> and above.
+> >>
+> >> The only downside is this disables tx coe for full size packets, which
+> >> has a negligible performance impact in my testing.
+> >>
+> >> The other option I've found that reliably works is bringing the mtu
+> >> down to 1498.
+> >> This allows tx coe to remain enabled, but with the downside of total
+> >> loss of jumbo frames.
+> >> The reduction in size has a negligible performance impact in my testing.
+> >
+> > Shortly after sending this I discovered that setting the mtu lower is
+> > not sufficient in some corner cases.
+> > I managed to make offload break even at a 1496 mtu by `apt install
+> > kubuntu-desktop` over ssh on a gigabit internet connection.
+> >
+> > After porting ayufan's patch the issue went away.
+> > So unless we can fix this by axi tuning, his patch seems to be the
+> > most viable option.
+> >
+>
+> Have you tried suggestions from Jose in https://lkml.org/lkml/2019/4/1/1382?
+> I've added "snps,no-pbl-x8;" and "snps,txpbl = <0x20>;" to the
+> gmac in the DT, on rk3399-rockpro64. This seems to fix the slow performance
+> on IPv6 specifically that I was seeing.
+>
+> I haven't done exhaustive testing beyond a few runs of iperf3, which seem
+> to show OK performance for a gigabit link on home networking hardware.
+> 874 Mbits/sec for IPv4, 856 Mbits/sec for IPv6, with MTU 1500.
+
+I'll test this out as well.
+Unfortunately I didn't catch that reducing the mtu size would break
+under heavy load because I was using iperf3 to test.
+It wasn't until I did a massive apt upgrade over ssh did it trigger.
+
+I don't experience any difference between ipv4 and ipv6, both work equally well.
+With ayufan's selective coe offload disable patch, I'm hitting about
+960Mbits/sec on iperf3.
+
+For clarification sake, this is on 5.4.
+>
+> >>
+> >>
+> >> I have also discovered that the rockchip implementation of the stmmac
+> >> driver does not process flags such as max-frame-size.
+> >>
+> >> A third option, which I haven't explored because I don't know enough
+> >> about how it works, is possibly tuning the axi settings, via the
+> >> snps,axi-config and snps,mtl-tx-config handles.
+> >> I don't know if this is feasible, but since tuning the dma settings
+> >> affects the rk3328 I have hope.
+> >> I do know that my current fix for the rk3328 does not provide full
+> >> performance and does not work at all on the rk3399.
+> >>
+> >> Thoughts?
+> >>
+> >> [0] https://github.com/ayufan-rock64/linux-kernel/commit/8a41c672dd77e48b06c1b2dec3aa9db4bad30b49#diff-c897c0b53bd633240f4b12c4d29a5ff1
+> >> [1] https://github.com/torvalds/linux/commit/ebbb293f8b3021ae2009fcb7cb3b8a52fb5fd06a
+> >
+> > _______________________________________________
+> > Linux-rockchip mailing list
+> > Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
