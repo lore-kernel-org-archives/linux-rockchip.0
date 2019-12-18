@@ -1,36 +1,83 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v3 1/4] dt-bindings: arm: rockchip: Add Rock Pi N10
- binding
-Date: Wed, 18 Dec 2019 16:15:36 -0600
-Message-ID: <20191218221536.GA20127@bogus>
-References: <20191216174711.17856-1-jagan@amarulasolutions.com>
- <20191216174711.17856-2-jagan@amarulasolutions.com>
+From: Soeren Moch <smoch@web.de>
+Subject: [PATCH v3 1/2] arm64: dts: rockchip: RockPro64: enable wifi module at sdio0
+Date: Wed, 18 Dec 2019 23:35:22 +0100
+Message-ID: <20191218223523.30154-2-smoch@web.de>
+References: <20191218223523.30154-1-smoch@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191216174711.17856-2-jagan@amarulasolutions.com>
+In-Reply-To: <20191218223523.30154-1-smoch@web.de>
 Sender: linux-kernel-owner@vger.kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>, Mark Rutland <mark.rutland@arm.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, Akash Gajjar <akash@openedev.com>, Tom Cubie <tom@radxa.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Soeren Moch <smoch@web.de>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 16 Dec 2019 23:17:08 +0530, Jagan Teki wrote:
-> Rock Pi N10 is a Rockchip RK3399Pro based SBC, which has
-> - VMARC RK3399Pro SOM (as per SMARC standard) from Vamrs.
-> - Compatible carrier board from Radxa.
-> 
-> VMARC RK3399Pro SOM need to mount on top of dalang carrier
-> board for making Rock PI N10 SBC.
-> 
-> Add dt-bindings for it.
-> 
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> ---
-> Changes for v3:
-> - Move som binding on board side
-> 
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
+RockPro64 supports an Ampak AP6359SA based wifi/bt combo module.
+The BCM4359/9 wifi controller in this module is connected to sdio0,
+enable this interface.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Use the in-band sdio irq instead of the out-of-band wifi_host_wake_l
+signal since the latter is not working reliably on this board (probably
+due to it's PCIe WAKE# connection).
+
+Signed-off-by: Soeren Moch <smoch@web.de>
+=2D--
+changes in v3:
+- none
+changes in v2:
+- add comment about irq in commit message
+
+Not sure where to place exactly the sdio0 node in the dts because
+existing sd nodes are not sorted alphabetically.
+
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Robin Murphy <robin.murphy@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+=2D--
+ .../boot/dts/rockchip/rk3399-rockpro64.dts    | 21 ++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm6=
+4/boot/dts/rockchip/rk3399-rockpro64.dts
+index 7f4b2eba31d4..9fa92790d6e0 100644
+=2D-- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
+@@ -71,13 +71,6 @@
+ 		clock-names =3D "ext_clock";
+ 		pinctrl-names =3D "default";
+ 		pinctrl-0 =3D <&wifi_enable_h>;
+-
+-		/*
+-		 * On the module itself this is one of these (depending
+-		 * on the actual card populated):
+-		 * - SDIO_RESET_L_WL_REG_ON
+-		 * - PDN (power down when low)
+-		 */
+ 		reset-gpios =3D <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
+ 	};
+
+@@ -650,6 +643,20 @@
+ 	status =3D "okay";
+ };
+
++&sdio0 {
++	bus-width =3D <4>;
++	cap-sd-highspeed;
++	cap-sdio-irq;
++	disable-wp;
++	keep-power-in-suspend;
++	mmc-pwrseq =3D <&sdio_pwrseq>;
++	non-removable;
++	pinctrl-names =3D "default";
++	pinctrl-0 =3D <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
++	sd-uhs-sdr104;
++	status =3D "okay";
++};
++
+ &sdmmc {
+ 	bus-width =3D <4>;
+ 	cap-sd-highspeed;
+=2D-
+2.17.1
