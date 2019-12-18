@@ -1,7 +1,7 @@
 From: Soeren Moch <smoch@web.de>
-Subject: [PATCH v3 1/2] arm64: dts: rockchip: RockPro64: enable wifi module at sdio0
-Date: Wed, 18 Dec 2019 23:35:22 +0100
-Message-ID: <20191218223523.30154-2-smoch@web.de>
+Subject: [PATCH v3 2/2] arm64: dts: rockchip: RockPro64: hook up bluetooth at uart0
+Date: Wed, 18 Dec 2019 23:35:23 +0100
+Message-ID: <20191218223523.30154-3-smoch@web.de>
 References: <20191218223523.30154-1-smoch@web.de>
 Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
@@ -12,23 +12,17 @@ To: Heiko Stuebner <heiko@sntech.de>
 Cc: Soeren Moch <smoch@web.de>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RockPro64 supports an Ampak AP6359SA based wifi/bt combo module.
-The BCM4359/9 wifi controller in this module is connected to sdio0,
-enable this interface.
+With enabled wifi support (required for firmware loading) for the
+Ampak AP6359SA based wifi/bt combo module we now also can enable
+the bluetooth part.
 
-Use the in-band sdio irq instead of the out-of-band wifi_host_wake_l
-signal since the latter is not working reliably on this board (probably
-due to it's PCIe WAKE# connection).
-
+Suggested-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Soeren Moch <smoch@web.de>
 =2D--
 changes in v3:
-- none
+- fix bluetooth clock name as reported by Robin Murphy
 changes in v2:
-- add comment about irq in commit message
-
-Not sure where to place exactly the sdio0 node in the dts because
-existing sd nodes are not sorted alphabetically.
+- new patch
 
 Cc: Heiko Stuebner <heiko@sntech.de>
 Cc: Robin Murphy <robin.murphy@arm.com>
@@ -36,48 +30,57 @@ Cc: linux-arm-kernel@lists.infradead.org
 Cc: linux-rockchip@lists.infradead.org
 Cc: linux-kernel@vger.kernel.org
 =2D--
- .../boot/dts/rockchip/rk3399-rockpro64.dts    | 21 ++++++++++++-------
- 1 file changed, 14 insertions(+), 7 deletions(-)
+ .../boot/dts/rockchip/rk3399-rockpro64.dts    | 29 ++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts b/arch/arm6=
 4/boot/dts/rockchip/rk3399-rockpro64.dts
-index 7f4b2eba31d4..9fa92790d6e0 100644
+index 9fa92790d6e0..d9206730c88c 100644
 =2D-- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts
-@@ -71,13 +71,6 @@
- 		clock-names =3D "ext_clock";
- 		pinctrl-names =3D "default";
- 		pinctrl-0 =3D <&wifi_enable_h>;
--
--		/*
--		 * On the module itself this is one of these (depending
--		 * on the actual card populated):
--		 * - SDIO_RESET_L_WL_REG_ON
--		 * - PDN (power down when low)
--		 */
- 		reset-gpios =3D <&gpio0 RK_PB2 GPIO_ACTIVE_LOW>;
- 	};
-
-@@ -650,6 +643,20 @@
- 	status =3D "okay";
+@@ -561,6 +561,20 @@
  };
 
-+&sdio0 {
-+	bus-width =3D <4>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	disable-wp;
-+	keep-power-in-suspend;
-+	mmc-pwrseq =3D <&sdio_pwrseq>;
-+	non-removable;
-+	pinctrl-names =3D "default";
-+	pinctrl-0 =3D <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
-+	sd-uhs-sdr104;
-+	status =3D "okay";
-+};
+ &pinctrl {
++	bt {
++		bt_enable_h: bt-enable-h {
++			rockchip,pins =3D <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
 +
- &sdmmc {
- 	bus-width =3D <4>;
- 	cap-sd-highspeed;
++		bt_host_wake_l: bt-host-wake-l {
++			rockchip,pins =3D <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		bt_wake_l: bt-wake-l {
++			rockchip,pins =3D <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	buttons {
+ 		pwrbtn: pwrbtn {
+ 			rockchip,pins =3D <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
+@@ -729,8 +743,21 @@
+
+ &uart0 {
+ 	pinctrl-names =3D "default";
+-	pinctrl-0 =3D <&uart0_xfer &uart0_cts>;
++	pinctrl-0 =3D <&uart0_xfer &uart0_cts &uart0_rts>;
+ 	status =3D "okay";
++
++	bluetooth {
++		compatible =3D "brcm,bcm43438-bt";
++		clocks =3D <&rk808 1>;
++		clock-names =3D "lpo";
++		device-wakeup-gpios =3D <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios =3D <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
++		shutdown-gpios =3D <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
++		pinctrl-names =3D "default";
++		pinctrl-0 =3D <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
++		vbat-supply =3D <&vcc3v3_sys>;
++		vddio-supply =3D <&vcc_1v8>;
++	};
+ };
+
+ &uart2 {
 =2D-
 2.17.1
