@@ -1,256 +1,131 @@
-From: "sandy.huang" <hjc@rock-chips.com>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_09/12=5d_drm/rockchip=3a_lvds=3a_Add_PX30_?=
- =?UTF-8?B?c3VwcG9ydOOAkOivt+azqOaEj++8jOmCruS7tueUsWxpbnV4LXJvY2tjaGlwLWJv?=
- =?UTF-8?Q?unces+sandy=2ehuang=3drock-chips=2ecom=40lists=2einfradead=2eorg?=
- =?UTF-8?B?5Luj5Y+R44CR?=
-Date: Wed, 18 Dec 2019 11:17:03 +0800
-Message-ID: <64f6c582-8ffd-1082-f161-1e8c1a8dda44@rock-chips.com>
-References: <20191213181051.25983-1-miquel.raynal@bootlin.com>
- <20191213181051.25983-10-miquel.raynal@bootlin.com>
- <20191216105827.rxkfbwemkqw446jx@gilmour.lan> <20191216120312.4aa478da@xps13>
- <20191216111436.wzoq33gvt42w6gqj@gilmour.lan>
-Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============1470670556=="
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191216111436.wzoq33gvt42w6gqj@gilmour.lan>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Maxime Ripard <maxime@cerno.tech>, Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Maxime Chevallier <maxime.chevallier@bootlin.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, linux-arm-kernel@lists.infradead.org
+From: Christian Hewitt <christianshewitt@gmail.com>
+Subject: Re: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
+Date: Wed, 18 Dec 2019 13:55:35 +0200
+Message-ID: <D1B53CE9-E87C-4514-A2D7-0FE70A4D1A5D@gmail.com>
+References: <20191211235253.2539-1-smoch@web.de>
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191211235253.2539-1-smoch@web.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Soeren Moch <smoch@web.de>
+Cc: brcm80211-dev-list.pdl@broadcom.com, Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, brcm80211-dev-list@cypress.com, Kalle Valo <kvalo@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is a multi-part message in MIME format.
---===============1470670556==
-Content-Type: multipart/alternative;
- boundary="------------2C99C271BEE0B7DA862D9FC7"
-Content-Language: en-US
-
-This is a multi-part message in MIME format.
---------------2C99C271BEE0B7DA862D9FC7
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-
-Hi Maxime & Miquel,
-
-在 2019/12/16 下午7:14, Maxime Ripard 写道:
-> On Mon, Dec 16, 2019 at 12:03:12PM +0100, Miquel Raynal wrote:
->> Maxime Ripard <maxime@cerno.tech> wrote on Mon, 16 Dec 2019 11:58:27 +0100:
->>> Hi,
->>>
->>> On Fri, Dec 13, 2019 at 07:10:48PM +0100, Miquel Raynal wrote:
->>>> +static int px30_lvds_grf_config(struct drm_encoder *encoder,
->>>> +				struct drm_display_mode *mode)
->>>> +{
->>>> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
->>>> +	u8 nhsync = !(mode->flags & DRM_MODE_FLAG_PHSYNC);
->>>> +	u8 nvsync = !(mode->flags & DRM_MODE_FLAG_PVSYNC);
->>>> +	u8 ndclk = !(mode->flags & DRM_MODE_FLAG_PCSYNC);
->>>> +	int ret;
->>>> +
->>>> +	if (lvds->output != DISPLAY_OUTPUT_LVDS) {
->>>> +		DRM_DEV_ERROR(lvds->dev, "Unsupported display output %d\n",
->>>> +			      lvds->output);
->>>> +		return -EINVAL;
->>>> +	}
->>>> +
->>>> +	if (nhsync ^ nvsync) {
->>>> +		DRM_DEV_ERROR(lvds->dev, "Unsupported Hsync/Vsync polarity\n");
->>>> +		return -EINVAL;
->>>> +	}
->>>> +
->>>> +	/* Set format */
->>>> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON1,
->>>> +				 PX30_LVDS_FORMAT(lvds->format),
->>>> +				 PX30_LVDS_FORMAT(lvds->format));
->>>> +	if (ret)
->>>> +		return ret;
->>>> +
->>>> +	/* Control Hsync/Vsync polarity */
->>>> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON0,
->>>> +				 PX30_LVDS_TIE_CLKS(1),
->>>> +				 PX30_LVDS_TIE_CLKS(1));
->>>> +	if (ret)
->>>> +		return ret;
->>>> +
->>>> +	/* Set Hsync/Vsync polarity */
->>>> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON0,
->>>> +				 PX30_LVDS_INVERT_CLKS(1),
->>>> +				 PX30_LVDS_INVERT_CLKS(nhsync));
->>>> +	if (ret)
->>>> +		return ret;
->>> I don't know the hardware but it seems pretty weird to me. hsync and
->>> vsync in LVDS are not clocks (or even signals), they're a bit in the
->>> payload. Is there any explanation in the datasheet (or even a
->>> datasheet in the first place)?
->> There is no explanation about this in the PX30 TRM part 1 (public). But
->> you are right the naming is weird. Could the "tie clocks" thing above
->> mean something to you/people knowing the LVDS world?
-> I have no idea what that could mean :)
-
-This two bit(GRF_CON0[9,8]) is not for hsync/vsync polarity config, the 
-polarity is done at vop_crtc_atomic_enable@rockchip_drm_vop.c.
-
-Before px30, all rockchip platform lvds output payload is include 
-hsync,vsync and den clock signal. About years ago, we meet a lvds panel 
-can't work normally at rk3288,  from the panel spec we know the panel 
-need lvds work den mode only, the hsync/vsync need to set 0 at blank 
-time, so we add this two bit(GRF_CON0[9,8]) for this mode.
-
-but now we can't get in touch with the customer and get the panel to 
-test this function, so we can't verify the panel work unnormally is 
-because of  the den mode only and the hsync vsync signal level at blank 
-time.
-
-I recommend not including this part of configuration before we test this 
-funcion at den mode only lvds panel,thanks.
-
->
-> Maxime
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---------------2C99C271BEE0B7DA862D9FC7
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  </head>
-  <body>
-    <p>Hi Maxime &amp; Miquel,<br>
-    </p>
-    <div class="moz-cite-prefix">在 2019/12/16 下午7:14, Maxime Ripard 写道:<br>
-    </div>
-    <blockquote type="cite"
-      cite="mid:20191216111436.wzoq33gvt42w6gqj@gilmour.lan">
-      <pre class="moz-quote-pre" wrap="">On Mon, Dec 16, 2019 at 12:03:12PM +0100, Miquel Raynal wrote:
-</pre>
-      <blockquote type="cite">
-        <pre class="moz-quote-pre" wrap="">Maxime Ripard <a class="moz-txt-link-rfc2396E" href="mailto:maxime@cerno.tech">&lt;maxime@cerno.tech&gt;</a> wrote on Mon, 16 Dec 2019 11:58:27 +0100:
-</pre>
-        <blockquote type="cite">
-          <pre class="moz-quote-pre" wrap="">Hi,
-
-On Fri, Dec 13, 2019 at 07:10:48PM +0100, Miquel Raynal wrote:
-</pre>
-          <blockquote type="cite">
-            <pre class="moz-quote-pre" wrap="">+static int px30_lvds_grf_config(struct drm_encoder *encoder,
-+				struct drm_display_mode *mode)
-+{
-+	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
-+	u8 nhsync = !(mode-&gt;flags &amp; DRM_MODE_FLAG_PHSYNC);
-+	u8 nvsync = !(mode-&gt;flags &amp; DRM_MODE_FLAG_PVSYNC);
-+	u8 ndclk = !(mode-&gt;flags &amp; DRM_MODE_FLAG_PCSYNC);
-+	int ret;
-+
-+	if (lvds-&gt;output != DISPLAY_OUTPUT_LVDS) {
-+		DRM_DEV_ERROR(lvds-&gt;dev, "Unsupported display output %d\n",
-+			      lvds-&gt;output);
-+		return -EINVAL;
-+	}
-+
-+	if (nhsync ^ nvsync) {
-+		DRM_DEV_ERROR(lvds-&gt;dev, "Unsupported Hsync/Vsync polarity\n");
-+		return -EINVAL;
-+	}
-+
-+	/* Set format */
-+	ret = regmap_update_bits(lvds-&gt;grf, PX30_LVDS_GRF_PD_VO_CON1,
-+				 PX30_LVDS_FORMAT(lvds-&gt;format),
-+				 PX30_LVDS_FORMAT(lvds-&gt;format));
-+	if (ret)
-+		return ret;
-+
-+	/* Control Hsync/Vsync polarity */
-+	ret = regmap_update_bits(lvds-&gt;grf, PX30_LVDS_GRF_PD_VO_CON0,
-+				 PX30_LVDS_TIE_CLKS(1),
-+				 PX30_LVDS_TIE_CLKS(1));
-+	if (ret)
-+		return ret;
-+
-+	/* Set Hsync/Vsync polarity */
-+	ret = regmap_update_bits(lvds-&gt;grf, PX30_LVDS_GRF_PD_VO_CON0,
-+				 PX30_LVDS_INVERT_CLKS(1),
-+				 PX30_LVDS_INVERT_CLKS(nhsync));
-+	if (ret)
-+		return ret;
-</pre>
-          </blockquote>
-          <pre class="moz-quote-pre" wrap="">
-I don't know the hardware but it seems pretty weird to me. hsync and
-vsync in LVDS are not clocks (or even signals), they're a bit in the
-payload. Is there any explanation in the datasheet (or even a
-datasheet in the first place)?
-</pre>
-        </blockquote>
-        <pre class="moz-quote-pre" wrap="">
-There is no explanation about this in the PX30 TRM part 1 (public). But
-you are right the naming is weird. Could the "tie clocks" thing above
-mean something to you/people knowing the LVDS world?
-</pre>
-      </blockquote>
-      <pre class="moz-quote-pre" wrap="">
-I have no idea what that could mean :)</pre>
-    </blockquote>
-    <p>This two bit(GRF_CON0[9,8]) is not for hsync/vsync polarity
-      config, the polarity is done at
-      <a class="moz-txt-link-abbreviated" href="mailto:vop_crtc_atomic_enable@rockchip_drm_vop.c">vop_crtc_atomic_enable@rockchip_drm_vop.c</a>.</p>
-    <p>Before px30, all rockchip platform lvds output payload is include
-      hsync,vsync and den clock signal. About years ago, we meet a lvds
-      panel can't work normally at rk3288,  from the panel spec we know
-      the panel need lvds work den mode only, the hsync/vsync need to
-      set 0 at blank time, so we add this two bit(GRF_CON0[9,8]) for
-      this mode.<br>
-    </p>
-    <p>but now we can't get in touch with the customer and get the panel
-      to test this function, so we can't verify the panel work
-      unnormally is because of  the den mode only and the hsync vsync
-      signal level at blank time.</p>
-    <p>I recommend not including this part of configuration before we
-      test this funcion at den mode only lvds panel,thanks.<br>
-    </p>
-    <blockquote type="cite"
-      cite="mid:20191216111436.wzoq33gvt42w6gqj@gilmour.lan">
-      <pre class="moz-quote-pre" wrap="">
-
-Maxime
-</pre>
-      <br>
-      <fieldset class="mimeAttachmentHeader"></fieldset>
-      <pre class="moz-quote-pre" wrap="">_______________________________________________
-Linux-rockchip mailing list
-<a class="moz-txt-link-abbreviated" href="mailto:Linux-rockchip@lists.infradead.org">Linux-rockchip@lists.infradead.org</a>
-<a class="moz-txt-link-freetext" href="http://lists.infradead.org/mailman/listinfo/linux-rockchip">http://lists.infradead.org/mailman/listinfo/linux-rockchip</a>
-</pre>
-    </blockquote>
-  </body>
-</html>
-
---------------2C99C271BEE0B7DA862D9FC7--
-
-
-
---===============1470670556==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-dri-devel mailing list
-dri-devel@lists.freedesktop.org
-https://lists.freedesktop.org/mailman/listinfo/dri-devel
-
---===============1470670556==--
+Cj4gT24gMTIgRGVjIDIwMTksIGF0IDE6NTIgYW0sIFNvZXJlbiBNb2NoIDxzbW9jaEB3ZWIuZGU+
+IHdyb3RlOgo+IAo+IEFkZCBzdXBwb3J0IGZvciB0aGUgQkNNNDM1OSBjaGlwc2V0IHdpdGggU0RJ
+TyBpbnRlcmZhY2UgYW5kIFJTREIgc3VwcG9ydAo+IHRvIHRoZSBicmNtZm1hYyB3aXJlbGVzcyBu
+ZXR3b3JrIGRyaXZlciBpbiBwYXRjaGVzIDEtNy4KPiAKPiBFbmhhbmNlIGRldmljZXRyZWUgb2Yg
+dGhlIFJvY2tQcm82NCBhcm02NC9yb2NrY2hpcCBib2FyZCB0byB1c2UgYW4KPiBBUDYzNTlTQSBi
+YXNlZCB3aWZpL2J0IGNvbWJvIG1vZHVsZSB3aXRoIHRoaXMgY2hpcHNldCBpbiBwYXRjaGVzIDgt
+OS4KPiAKPiAKPiBDaHVuZy1Ic2llbiBIc3UgKDEpOgo+ICBicmNtZm1hYzogc2V0IEYyIGJsb2Nr
+c2l6ZSBhbmQgd2F0ZXJtYXJrIGZvciA0MzU5Cj4gCj4gU29lcmVuIE1vY2ggKDUpOgo+ICBicmNt
+Zm1hYzogZml4IHJhbWJhc2UgZm9yIDQzNTkvOQo+ICBicmNtZm1hYzogbWFrZSBlcnJvcnMgd2hl
+biBzZXR0aW5nIHJvYW1pbmcgcGFyYW1ldGVycyBub24tZmF0YWwKPiAgYnJjbWZtYWM6IGFkZCBz
+dXBwb3J0IGZvciBCQ000MzU5IFNESU8gY2hpcHNldAo+ICBhcm02NDogZHRzOiByb2NrY2hpcDog
+Um9ja1BybzY0OiBlbmFibGUgd2lmaSBtb2R1bGUgYXQgc2RpbzAKPiAgYXJtNjQ6IGR0czogcm9j
+a2NoaXA6IFJvY2tQcm82NDogaG9vayB1cCBibHVldG9vdGggYXQgdWFydDAKPiAKPiBXcmlnaHQg
+RmVuZyAoMyk6Cj4gIGJyY21mbWFjOiByZXNldCB0d28gRDExIGNvcmVzIGlmIGNoaXAgaGFzIHR3
+byBEMTEgY29yZXMKPiAgYnJjbWZtYWM6IGFkZCBSU0RCIGNvbmRpdGlvbiB3aGVuIHNldHRpbmcg
+aW50ZXJmYWNlIGNvbWJpbmF0aW9ucwo+ICBicmNtZm1hYzogbm90IHNldCBtYnNzIGluIHZpZiBp
+ZiBmaXJtd2FyZSBkb2VzIG5vdCBzdXBwb3J0IE1CU1MKClRoYW5rcyBmb3IgcG9zdGluZyB0aGlz
+IHNlcmllcywgdGhpcyBjaGlwIGlzIHdpZGVseSB1c2VkIGJ5IGEgbGFyZ2UgbnVtYmVyIG9mIGN1
+cnJlbnQgQW1sb2dpYyBkZXZpY2VzIQoKUGF0Y2hlcyAxLTcgaGF2ZSBiZWVuIHRlc3RlZCBvbiBB
+bWxvZ2ljIEcxMkIgKEtoYWRhcyBWSU0zKSBoYXJkd2FyZSB3aXRoIDUuNS1yYyBrZXJuZWwgYW5k
+IGEgTGlicmVFTEVDIChkaXN0cm8pIGNvbGxlYWd1ZSBhbHNvIHRlc3RlZCB3aXRoIGEgS2hhZGFz
+IEVkZ2UgYm9hcmQgKFJLMzM5OSkuIFRoZSBBbXBhayA2Mzk4UyBtb2R1bGUgb24gYm90aCBib2Fy
+ZHMgYXJlIGRldGVjdGVkIGFuZCBjYW4gY29ubmVjdCB0byBuZXR3b3JrcyB0byBwYXNzIGJhc2lj
+IGZ1bmN0aW9uYWwgdGVzdGluZy4KCk9uIHRoZSBWSU0zIGJvYXJkIEkgZG8gc2VlIHRoZSBmb2xs
+b3dpbmcgd2FybmluZyBzcGxhdDoKClsgICAgNy45ODczNTFdIC0tLS0tLS0tLS0tLVsgY3V0IGhl
+cmUgXS0tLS0tLS0tLS0tLQpbICAgIDcuOTg3MzgyXSBXQVJOSU5HOiBDUFU6IDUgUElEOiAzNiBh
+dCBkcml2ZXJzL25ldC93aXJlbGVzcy9icm9hZGNvbS9icmNtODAyMTEvYnJjbWZtYWMvYmNtc2Ro
+LmM6Nzc2IGJyY21mX3NkaW9kX3NndGFibGVfYWxsb2MrMHgxMzAvMHgxMzggW2JyY21mbWFjXQpb
+ICAgIDcuOTg3Mzg0XSBNb2R1bGVzIGxpbmtlZCBpbjogYnJjbWZtYWMgZWNkaF9nZW5lcmljIGJy
+Y211dGlsIHJ0Y19tZXNvbl92cnRjIHZpZGVvZGV2IGVjYyBjZmc4MDIxMSBncGlvX3BjYTk1M3gg
+cmZraWxsIGlyX25lY19kZWNvZGVyIGNyY3QxMGRpZl9jZSByY19raGFkYXMgbWFsaV9rYmFzZShP
+KSBtZXNvbl9pciBhb19jZWNfZzEyYSBtYyBydGNfaHltODU2MyByY19jb3JlIGdwaW9fa2V5c19w
+b2xsZWQgYWRjX2tleXMgaXB2NiBuZl9kZWZyYWdfaXB2NiBjcmNfY2NpdHQgc2NoX2ZxX2NvZGVs
+ClsgICAgNy45ODc0MDNdIENQVTogNSBQSUQ6IDM2IENvbW06IGt3b3JrZXIvNTowIFRhaW50ZWQ6
+IEcgICAgICAgICAgIE8gICAgICA1LjUuMC1yYzEgIzEKWyAgICA3Ljk4NzQwNF0gSGFyZHdhcmUg
+bmFtZTogS2hhZGFzIFZJTTMgKERUKQpbICAgIDcuOTg3NDE3XSBXb3JrcXVldWU6IGV2ZW50cyBi
+cmNtZl9kcml2ZXJfcmVnaXN0ZXIgW2JyY21mbWFjXQpbICAgIDcuOTg3NDIwXSBwc3RhdGU6IDgw
+MDAwMDA1IChOemN2IGRhaWYgLVBBTiAtVUFPKQpbICAgIDcuOTg3NDMyXSBwYyA6IGJyY21mX3Nk
+aW9kX3NndGFibGVfYWxsb2MrMHgxMzAvMHgxMzggW2JyY21mbWFjXQpbICAgIDcuOTg3NDQzXSBs
+ciA6IGJyY21mX3NkaW9fcHJvYmUrMHgyOGMvMHg4OTAgW2JyY21mbWFjXQpbICAgIDcuOTg3NDQ0
+XSBzcCA6IGZmZmY4MDAwMTAxN2JhOTAKWyAgICA3Ljk4NzQ0NV0geDI5OiBmZmZmODAwMDEwMTdi
+YTkwIHgyODogMDAwMDAwMDAwMDAwMDAwMCAKWyAgICA3Ljk4NzQ0N10geDI3OiAwMDAwMDAwMDAw
+MDAwMDAwIHgyNjogZmZmZjAwMDBhOGMwOTQwMCAKWyAgICA3Ljk4NzQ0OV0geDI1OiBmZmZmODAw
+MDBhMjRjYjA4IHgyNDogZmZmZjAwMDBhMzgwMDQwMCAKWyAgICA3Ljk4NzQ1MV0geDIzOiBmZmZm
+ODAwMDEyYzYxOGM4IHgyMjogZmZmZjAwMDBhNjc1ZTAwMCAKWyAgICA3Ljk4NzQ1M10geDIxOiBm
+ZmZmMDAwMGE2NzVlMDAwIHgyMDogMDAwMDAwMDAwMDAwMDAyMyAKWyAgICA3Ljk4NzQ1NF0geDE5
+OiBmZmZmMDAwMGEzODAwMDAwIHgxODogZmZmZjgwMDAxM2IyNTkwOCAKWyAgICA3Ljk4NzQ1Nl0g
+eDE3OiBmZmZmODAwMDEzYjI1ZDBjIHgxNjogZmZmZjgwMDAxM2IyNTEwNCAKWyAgICA3Ljk4NzQ1
+N10geDE1OiAwMDAwMDAwMGYwMDAwMDAwIHgxNDogMDAwMDAwMDAwMDAwMDAwYSAKWyAgICA3Ljk4
+NzQ1OV0geDEzOiAwMDAwMDAwMDAwMDAwMDAwIHgxMjogMDAwMDAwMDAwMDAwMDAwMSAKWyAgICA3
+Ljk4NzQ2MF0geDExOiAwMDAwMDAwMDAwMDAwMDA1IHgxMDogMDEwMTAxMDEwMTAxMDEwMSAKWyAg
+ICA3Ljk4NzQ2MV0geDkgOiBmZmZmZmZmZmZmZmZmZmZmIHg4IDogN2Y3ZjdmN2Y3ZjdmN2Y3ZiAK
+WyAgICA3Ljk4NzQ2M10geDcgOiAwMDAwMDAwMDAwMDAwMWZmIHg2IDogMDAwMDAwMDAwMDAwMDA4
+MCAKWyAgICA3Ljk4NzQ2NF0geDUgOiAwMDAwMDAwMDAwMDAwNjAwIHg0IDogMDAwMDAwMDAwMDAw
+MDAwMyAKWyAgICA3Ljk4NzQ2Nl0geDMgOiBmZmZmMDAwMGE1YTNkODgwIHgyIDogMDAwMDAwMDAw
+MDAwMDAyMSAKWyAgICA3Ljk4NzQ2N10geDEgOiAwMDAwMDAwMDAwMDAwMDAzIHgwIDogZmZmZjAw
+MDBhNjc1ZTAwMCAKWyAgICA3Ljk4NzQ2OV0gQ2FsbCB0cmFjZToKWyAgICA3Ljk4NzQ4MV0gIGJy
+Y21mX3NkaW9kX3NndGFibGVfYWxsb2MrMHgxMzAvMHgxMzggW2JyY21mbWFjXQpbICAgIDcuOTg3
+NDkzXSAgYnJjbWZfc2Rpb19wcm9iZSsweDI4Yy8weDg5MCBbYnJjbWZtYWNdClsgICAgNy45ODc1
+MDRdICBicmNtZl9zZGlvZF9wcm9iZSsweGUwLzB4MWMwIFticmNtZm1hY10KWyAgICA3Ljk4NzUx
+Nl0gIGJyY21mX29wc19zZGlvX3Byb2JlKzB4MTZjLzB4MjA4IFticmNtZm1hY10KWyAgICA3Ljk4
+NzUyMl0gIHNkaW9fYnVzX3Byb2JlKzB4ZTAvMHgxYzgKWyAgICA3Ljk4NzUyNl0gIHJlYWxseV9w
+cm9iZSsweGQ4LzB4NDI4ClsgICAgNy45ODc1MjldICBkcml2ZXJfcHJvYmVfZGV2aWNlKzB4ZGMv
+MHgxMzAKWyAgICA3Ljk4NzUzMV0gIGRldmljZV9kcml2ZXJfYXR0YWNoKzB4NmMvMHg3OApbICAg
+IDcuOTg3NTMzXSAgX19kcml2ZXJfYXR0YWNoKzB4OWMvMHgxNjgKWyAgICA3Ljk4NzUzNV0gIGJ1
+c19mb3JfZWFjaF9kZXYrMHg3MC8weGMwClsgICAgNy45ODc1MzZdICBkcml2ZXJfYXR0YWNoKzB4
+MjAvMHgyOApbICAgIDcuOTg3NTM4XSAgYnVzX2FkZF9kcml2ZXIrMHgxOTAvMHgyMjAKWyAgICA3
+Ljk4NzUzOV0gIGRyaXZlcl9yZWdpc3RlcisweDYwLzB4MTEwClsgICAgNy45ODc1NDFdICBzZGlv
+X3JlZ2lzdGVyX2RyaXZlcisweDI0LzB4MzAKWyAgICA3Ljk4NzU1Ml0gIGJyY21mX3NkaW9fcmVn
+aXN0ZXIrMHgxNC8weDQ4IFticmNtZm1hY10KWyAgICA3Ljk4NzU2M10gIGJyY21mX2RyaXZlcl9y
+ZWdpc3RlcisweGMvMHgyMCBbYnJjbWZtYWNdClsgICAgNy45ODc1NjddICBwcm9jZXNzX29uZV93
+b3JrKzB4MWUwLzB4MzU4ClsgICAgNy45ODc1NjldICB3b3JrZXJfdGhyZWFkKzB4NDAvMHg0ODgK
+WyAgICA3Ljk4NzU3MV0gIGt0aHJlYWQrMHgxMTgvMHgxMjAKWyAgICA3Ljk4NzU3M10gIHJldF9m
+cm9tX2ZvcmsrMHgxMC8weDE4ClsgICAgNy45ODc1NzVdIC0tLVsgZW5kIHRyYWNlIDgwOGFjN2Ux
+NTlkMWZjMzMgXS0tLQoKSSBkb27igJl0IHNlZSB0aGlzIG9uIG9sZGVyIEFtbG9naWMgU29DcyAo
+R1hML0dYTSBkZXZpY2VzIHdpdGggdmFyaW91cyBvdGhlciBCQ00gY2hpcHMpIG9yIGFub3RoZXIg
+QW1sb2dpYyBHMTJCIGRldmljZSAoc2FtZSBTb0Mgd2l0aCBhIGRpZmZlcmVudCBBbXBhayBtb2R1
+bGUpIG9yIHNvbWUgUkszMzk5IGRldmljZXMsIHNvIGl0IG1heSBiZSBzb21ldGhpbmcgYm9hcmQg
+KEtoYWRhcyBWSU0zKSBzcGVjaWZpYy4KCkkgYWxzbyBzZWUgc29tZSBlcnJvcnMgbGlrZToKClsg
+ICA3MS4wNDY1OTddIGJyY21mbWFjOiBicmNtZl9zZGlvX3JlYWRmcmFtZXM6IFJYSEVBREVSIEZB
+SUxFRDogLTUKWyAgIDcxLjA0NjY1Ml0gYnJjbWZtYWM6IGJyY21mX3NkaW9fcnhmYWlsOiBhYm9y
+dCBjb21tYW5kLCB0ZXJtaW5hdGUgZnJhbWUsIHNlbmQgTkFLClsgIDEyMy44NDQ4NjNdIGJyY21m
+bWFjOiBicmNtZl9zZGlvX2J1c19zbGVlcDogZXJyb3Igd2hpbGUgY2hhbmdpbmcgYnVzIHNsZWVw
+IHN0YXRlIC01ClsgIDEyNC42NzgzMjldIGJyY21mbWFjOiBicmNtZl9zZGlvX3R4ZmFpbDogc2Rp
+byBlcnJvciwgYWJvcnQgY29tbWFuZCBhbmQgdGVybWluYXRlIGZyYW1lClsgIDEyNC42ODAyMjZd
+IG1tYzA6IHR1bmluZyBleGVjdXRpb24gZmFpbGVkOiAtNQpbICAxMjQuNzA4ODQzXSBicmNtZm1h
+YzogYnJjbWZfc2Rpb19idXNfc2xlZXA6IGVycm9yIHdoaWxlIGNoYW5naW5nIGJ1cyBzbGVlcCBz
+dGF0ZSAtNQpbICAxMjUuNzAwNzY1XSBicmNtZm1hYzogYnJjbWZfc2Rpb190eGZhaWw6IHNkaW8g
+ZXJyb3IsIGFib3J0IGNvbW1hbmQgYW5kIHRlcm1pbmF0ZSBmcmFtZQpbICAxMjUuODgwMzcyXSBi
+cmNtZm1hYzogbW1jX3N1Ym1pdF9vbmU6IENNRDUzIHNnIGJsb2NrIHJlYWQgZmFpbGVkIC0yMgpb
+ICAxMjUuODgwMzkzXSBicmNtZm1hYzogYnJjbWZfc2Rpb19yeGdsb206IGdsb20gcmVhZCBvZiA1
+MTIgYnl0ZXMgZmFpbGVkOiAtNQpbICAxMjUuODgwNDAxXSBicmNtZm1hYzogYnJjbWZfc2Rpb19y
+eGZhaWw6IGFib3J0IGNvbW1hbmQsIHRlcm1pbmF0ZSBmcmFtZQpbICAxMjUuODgxMjYyXSBicmNt
+Zm1hYzogYnJjbWZfc2Rpb19yZWFkZnJhbWVzOiBicmNtZl9zZGlvX3JlYWRmcmFtZXM6IGdsb20g
+c3VwZXJmcmFtZSB3L28gZGVzY3JpcHRvciEKWyAgMTI1Ljg4MTMxOF0gYnJjbWZtYWM6IGJyY21m
+X3NkaW9fcnhmYWlsOiB0ZXJtaW5hdGUgZnJhbWUKWyAgMTMxLjg0NDI4OV0gYnJjbWZtYWM6IG1t
+Y19zdWJtaXRfb25lOiBDTUQ1MyBzZyBibG9jayB3cml0ZSBmYWlsZWQgLTIyClsgIDEzMS44NDQz
+MDJdIGJyY21mbWFjOiBicmNtZl9zZGlvX3R4ZmFpbDogc2RpbyBlcnJvciwgYWJvcnQgY29tbWFu
+ZCBhbmQgdGVybWluYXRlIGZyYW1lClsgIDEzMS44NDQ0ODhdIGJyY21mbWFjOiBtbWNfc3VibWl0
+X29uZTogQ01ENTMgc2cgYmxvY2sgd3JpdGUgZmFpbGVkIC0yMgpbICAxMzEuODQ0NDk0XSBicmNt
+Zm1hYzogYnJjbWZfc2Rpb190eGZhaWw6IHNkaW8gZXJyb3IsIGFib3J0IGNvbW1hbmQgYW5kIHRl
+cm1pbmF0ZSBmcmFtZQoKSeKAmW0gbm90IHN1cmUgaWYgdGhhdOKAmXMgb2YgYW55IGNvbmNlcm4s
+IGJ1dCBpZiB5ZXMsIEnigJlkIGJlIGhhcHB5IHRvIGFwcGx5IGFueSBkZWJ1Z2dpbmcgcGF0Y2hl
+cyB5b3UgcHJvdmlkZSB0byBnZW5lcmF0ZSBvdXRwdXQuCgpUaGFua3MgYWdhaW4gZm9yIHdvcmtp
+bmcgb24gdGhpcyBjaGlwc2V0IQoKQ2hyaXN0aWFuCgoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0Cmxp
+bnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
