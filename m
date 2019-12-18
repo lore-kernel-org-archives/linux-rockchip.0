@@ -1,98 +1,256 @@
-From: "sandy.huang" <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 09/12] drm/rockchip: lvds: Add PX30 support
-Date: Wed, 18 Dec 2019 14:26:59 +0800
-Message-ID: <cdf3ee27-b099-b119-483b-af4fe4a75de4@rock-chips.com>
+From: "sandy.huang" <hjc@rock-chips.com>
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH_09/12=5d_drm/rockchip=3a_lvds=3a_Add_PX30_?=
+ =?UTF-8?B?c3VwcG9ydOOAkOivt+azqOaEj++8jOmCruS7tueUsWxpbnV4LXJvY2tjaGlwLWJv?=
+ =?UTF-8?Q?unces+sandy=2ehuang=3drock-chips=2ecom=40lists=2einfradead=2eorg?=
+ =?UTF-8?B?5Luj5Y+R44CR?=
+Date: Wed, 18 Dec 2019 11:17:03 +0800
+Message-ID: <64f6c582-8ffd-1082-f161-1e8c1a8dda44@rock-chips.com>
 References: <20191213181051.25983-1-miquel.raynal@bootlin.com>
  <20191213181051.25983-10-miquel.raynal@bootlin.com>
  <20191216105827.rxkfbwemkqw446jx@gilmour.lan> <20191216120312.4aa478da@xps13>
  <20191216111436.wzoq33gvt42w6gqj@gilmour.lan>
- <64f6c582-8ffd-1082-f161-1e8c1a8dda44@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <64f6c582-8ffd-1082-f161-1e8c1a8dda44-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: multipart/mixed; boundary="===============1470670556=="
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <20191216111436.wzoq33gvt42w6gqj@gilmour.lan>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Maxime Ripard <maxime-R63rPqgGiG5yDzI6CaY1VQ@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, tao.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: Maxime Ripard <maxime@cerno.tech>, Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Maxime Chevallier <maxime.chevallier@bootlin.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkKCiDCoMKgwqAgc29tZSBtaXN0YWtlcyB3aXRoIGxhc3QgbWFpbCwgc28gcmVzZW5kIHRoaXMg
-bWFpbC4KCuWcqCAyMDE5LzEyLzE4IOS4iuWNiDExOjE3LCBzYW5keS5odWFuZyDlhpnpgZM6Cj4g
-SGkgTWF4aW1lICYgTWlxdWVsLAo+Cj4g5ZyoIDIwMTkvMTIvMTYg5LiL5Y2INzoxNCwgTWF4aW1l
-IFJpcGFyZCDlhpnpgZM6Cj4+IE9uIE1vbiwgRGVjIDE2LCAyMDE5IGF0IDEyOjAzOjEyUE0gKzAx
-MDAsIE1pcXVlbCBSYXluYWwgd3JvdGU6Cj4+PiBNYXhpbWUgUmlwYXJkIDxtYXhpbWVAY2Vybm8u
-dGVjaD4gd3JvdGUgb24gTW9uLCAxNiBEZWMgMjAxOSAxMTo1ODoyNyAKPj4+ICswMTAwOgo+Pj4+
-IEhpLAo+Pj4+Cj4+Pj4gT24gRnJpLCBEZWMgMTMsIDIwMTkgYXQgMDc6MTA6NDhQTSArMDEwMCwg
-TWlxdWVsIFJheW5hbCB3cm90ZToKPj4+Pj4gK3N0YXRpYyBpbnQgcHgzMF9sdmRzX2dyZl9jb25m
-aWcoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAo+Pj4+PiArwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+Pj4+PiArewo+Pj4+
-PiArwqDCoMKgIHN0cnVjdCByb2NrY2hpcF9sdmRzICpsdmRzID0gZW5jb2Rlcl90b19sdmRzKGVu
-Y29kZXIpOwo+Pj4+PiArwqDCoMKgIHU4IG5oc3luYyA9ICEobW9kZS0+ZmxhZ3MgJiBEUk1fTU9E
-RV9GTEFHX1BIU1lOQyk7Cj4+Pj4+ICvCoMKgwqAgdTggbnZzeW5jID0gIShtb2RlLT5mbGFncyAm
-IERSTV9NT0RFX0ZMQUdfUFZTWU5DKTsKPj4+Pj4gK8KgwqDCoCB1OCBuZGNsayA9ICEobW9kZS0+
-ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX1BDU1lOQyk7Cj4+Pj4+ICvCoMKgwqAgaW50IHJldDsKPj4+
-Pj4gKwo+Pj4+PiArwqDCoMKgIGlmIChsdmRzLT5vdXRwdXQgIT0gRElTUExBWV9PVVRQVVRfTFZE
-Uykgewo+Pj4+PiArwqDCoMKgwqDCoMKgwqAgRFJNX0RFVl9FUlJPUihsdmRzLT5kZXYsICJVbnN1
-cHBvcnRlZCBkaXNwbGF5IG91dHB1dCAlZFxuIiwKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgbHZkcy0+b3V0cHV0KTsKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHJldHVy
-biAtRUlOVkFMOwo+Pj4+PiArwqDCoMKgIH0KPj4+Pj4gKwo+Pj4+PiArwqDCoMKgIGlmIChuaHN5
-bmMgXiBudnN5bmMpIHsKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIERSTV9ERVZfRVJST1IobHZkcy0+
-ZGV2LCAiVW5zdXBwb3J0ZWQgSHN5bmMvVnN5bmMgCj4+Pj4+IHBvbGFyaXR5XG4iKTsKPj4+Pj4g
-K8KgwqDCoMKgwqDCoMKgIHJldHVybiAtRUlOVkFMOwo+Pj4+PiArwqDCoMKgIH0KPj4+Pj4gKwo+
-Pj4+PiArwqDCoMKgIC8qIFNldCBmb3JtYXQgKi8KPj4+Pj4gK8KgwqDCoCByZXQgPSByZWdtYXBf
-dXBkYXRlX2JpdHMobHZkcy0+Z3JmLCBQWDMwX0xWRFNfR1JGX1BEX1ZPX0NPTjEsCj4+Pj4+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBQWDMwX0xWRFNfRk9STUFUKGx2ZHMtPmZv
-cm1hdCksCj4+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBQWDMwX0xWRFNf
-Rk9STUFUKGx2ZHMtPmZvcm1hdCkpOwo+Pj4+PiArwqDCoMKgIGlmIChyZXQpCj4+Pj4+ICvCoMKg
-wqDCoMKgwqDCoCByZXR1cm4gcmV0Owo+Pj4+PiArCj4+Pj4+ICvCoMKgwqAgLyogQ29udHJvbCBI
-c3luYy9Wc3luYyBwb2xhcml0eSAqLwo+Pj4+PiArwqDCoMKgIHJldCA9IHJlZ21hcF91cGRhdGVf
-Yml0cyhsdmRzLT5ncmYsIFBYMzBfTFZEU19HUkZfUERfVk9fQ09OMCwKPj4+Pj4gK8KgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFBYMzBfTFZEU19USUVfQ0xLUygxKSwKPj4+Pj4gK8Kg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFBYMzBfTFZEU19USUVfQ0xLUygxKSk7Cj4+
-Pj4+ICvCoMKgwqAgaWYgKHJldCkKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHJldHVybiByZXQ7Cj4+
-Pj4+ICsKPj4+Pj4gK8KgwqDCoCAvKiBTZXQgSHN5bmMvVnN5bmMgcG9sYXJpdHkgKi8KPj4+Pj4g
-K8KgwqDCoCByZXQgPSByZWdtYXBfdXBkYXRlX2JpdHMobHZkcy0+Z3JmLCBQWDMwX0xWRFNfR1JG
-X1BEX1ZPX0NPTjAsCj4+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBQWDMw
-X0xWRFNfSU5WRVJUX0NMS1MoMSksCj4+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCBQWDMwX0xWRFNfSU5WRVJUX0NMS1MobmhzeW5jKSk7Cj4+Pj4+ICvCoMKgwqAgaWYgKHJl
-dCkKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHJldHVybiByZXQ7Cj4+Pj4gSSBkb24ndCBrbm93IHRo
-ZSBoYXJkd2FyZSBidXQgaXQgc2VlbXMgcHJldHR5IHdlaXJkIHRvIG1lLiBoc3luYyBhbmQKPj4+
-PiB2c3luYyBpbiBMVkRTIGFyZSBub3QgY2xvY2tzIChvciBldmVuIHNpZ25hbHMpLCB0aGV5J3Jl
-IGEgYml0IGluIHRoZQo+Pj4+IHBheWxvYWQuIElzIHRoZXJlIGFueSBleHBsYW5hdGlvbiBpbiB0
-aGUgZGF0YXNoZWV0IChvciBldmVuIGEKPj4+PiBkYXRhc2hlZXQgaW4gdGhlIGZpcnN0IHBsYWNl
-KT8KPj4+IFRoZXJlIGlzIG5vIGV4cGxhbmF0aW9uIGFib3V0IHRoaXMgaW4gdGhlIFBYMzAgVFJN
-IHBhcnQgMSAocHVibGljKS4gQnV0Cj4+PiB5b3UgYXJlIHJpZ2h0IHRoZSBuYW1pbmcgaXMgd2Vp
-cmQuIENvdWxkIHRoZSAidGllIGNsb2NrcyIgdGhpbmcgYWJvdmUKPj4+IG1lYW4gc29tZXRoaW5n
-IHRvIHlvdS9wZW9wbGUga25vd2luZyB0aGUgTFZEUyB3b3JsZD8KPj4gSSBoYXZlIG5vIGlkZWEg
-d2hhdCB0aGF0IGNvdWxkIG1lYW4gOikKPgo+IFRoaXMgdHdvIGJpdChHUkZfQ09OMFs5LDhdKSBp
-cyBub3QgZm9yIGhzeW5jL3ZzeW5jIHBvbGFyaXR5IGNvbmZpZywgCj4gdGhlIHBvbGFyaXR5IGlz
-IGRvbmUgYXQgdm9wX2NydGNfYXRvbWljX2VuYWJsZUByb2NrY2hpcF9kcm1fdm9wLmMuCj4KPiBC
-ZWZvcmUgcHgzMCwgYWxsIHJvY2tjaGlwIHBsYXRmb3JtIGx2ZHMgb3V0cHV0IHBheWxvYWQgaXMg
-aW5jbHVkZSAKPiBoc3luYyx2c3luYyBhbmQgZGVuIGNsb2NrIHNpZ25hbC4gQWJvdXQgeWVhcnMg
-YWdvLCB3ZSBtZWV0IGEgbHZkcyAKPiBwYW5lbCBjYW4ndCB3b3JrIG5vcm1hbGx5IGF0IHJrMzI4
-OCzCoCBmcm9tIHRoZSBwYW5lbCBzcGVjIHdlIGtub3cgdGhlIAo+IHBhbmVsIG5lZWQgbHZkcyB3
-b3JrIGRlbiBtb2RlIG9ubHksIHRoZSBoc3luYy92c3luYyBuZWVkIHRvIHNldCAwIGF0IAo+IGJs
-YW5rIHRpbWUsIHNvIHdlIGFkZCB0aGlzIHR3byBiaXQoR1JGX0NPTjBbOSw4XSkgZm9yIHRoaXMg
-bW9kZS4KPgo+IGJ1dCBub3cgd2UgY2FuJ3QgZ2V0IGluIHRvdWNoIHdpdGggdGhlIGN1c3RvbWVy
-IGFuZCBnZXQgdGhlIHBhbmVsIHRvIAo+IHRlc3QgdGhpcyBmdW5jdGlvbiwgc28gd2UgY2FuJ3Qg
-dmVyaWZ5IHRoZSBwYW5lbCB3b3JrIHVubm9ybWFsbHkgaXMgCj4gYmVjYXVzZSBvZsKgIHRoZSBk
-ZW4gbW9kZSBvbmx5IGFuZCB0aGUgaHN5bmMgdnN5bmMgc2lnbmFsIGxldmVsIGF0IAo+IGJsYW5r
-IHRpbWUuCj4KPiBJIHJlY29tbWVuZCBub3QgaW5jbHVkaW5nIHRoaXMgcGFydCBvZiBjb25maWd1
-cmF0aW9uIGJlZm9yZSB3ZSB0ZXN0IAo+IHRoaXMgZnVuY2lvbiBhdCBkZW4gbW9kZSBvbmx5IGx2
-ZHMgcGFuZWwsdGhhbmtzLgo+Cj4+Cj4+IE1heGltZQo+Pgo+PiBfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+PiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKPj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4KCgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+This is a multi-part message in MIME format.
+--===============1470670556==
+Content-Type: multipart/alternative;
+ boundary="------------2C99C271BEE0B7DA862D9FC7"
+Content-Language: en-US
+
+This is a multi-part message in MIME format.
+--------------2C99C271BEE0B7DA862D9FC7
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+
+Hi Maxime & Miquel,
+
+在 2019/12/16 下午7:14, Maxime Ripard 写道:
+> On Mon, Dec 16, 2019 at 12:03:12PM +0100, Miquel Raynal wrote:
+>> Maxime Ripard <maxime@cerno.tech> wrote on Mon, 16 Dec 2019 11:58:27 +0100:
+>>> Hi,
+>>>
+>>> On Fri, Dec 13, 2019 at 07:10:48PM +0100, Miquel Raynal wrote:
+>>>> +static int px30_lvds_grf_config(struct drm_encoder *encoder,
+>>>> +				struct drm_display_mode *mode)
+>>>> +{
+>>>> +	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
+>>>> +	u8 nhsync = !(mode->flags & DRM_MODE_FLAG_PHSYNC);
+>>>> +	u8 nvsync = !(mode->flags & DRM_MODE_FLAG_PVSYNC);
+>>>> +	u8 ndclk = !(mode->flags & DRM_MODE_FLAG_PCSYNC);
+>>>> +	int ret;
+>>>> +
+>>>> +	if (lvds->output != DISPLAY_OUTPUT_LVDS) {
+>>>> +		DRM_DEV_ERROR(lvds->dev, "Unsupported display output %d\n",
+>>>> +			      lvds->output);
+>>>> +		return -EINVAL;
+>>>> +	}
+>>>> +
+>>>> +	if (nhsync ^ nvsync) {
+>>>> +		DRM_DEV_ERROR(lvds->dev, "Unsupported Hsync/Vsync polarity\n");
+>>>> +		return -EINVAL;
+>>>> +	}
+>>>> +
+>>>> +	/* Set format */
+>>>> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON1,
+>>>> +				 PX30_LVDS_FORMAT(lvds->format),
+>>>> +				 PX30_LVDS_FORMAT(lvds->format));
+>>>> +	if (ret)
+>>>> +		return ret;
+>>>> +
+>>>> +	/* Control Hsync/Vsync polarity */
+>>>> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON0,
+>>>> +				 PX30_LVDS_TIE_CLKS(1),
+>>>> +				 PX30_LVDS_TIE_CLKS(1));
+>>>> +	if (ret)
+>>>> +		return ret;
+>>>> +
+>>>> +	/* Set Hsync/Vsync polarity */
+>>>> +	ret = regmap_update_bits(lvds->grf, PX30_LVDS_GRF_PD_VO_CON0,
+>>>> +				 PX30_LVDS_INVERT_CLKS(1),
+>>>> +				 PX30_LVDS_INVERT_CLKS(nhsync));
+>>>> +	if (ret)
+>>>> +		return ret;
+>>> I don't know the hardware but it seems pretty weird to me. hsync and
+>>> vsync in LVDS are not clocks (or even signals), they're a bit in the
+>>> payload. Is there any explanation in the datasheet (or even a
+>>> datasheet in the first place)?
+>> There is no explanation about this in the PX30 TRM part 1 (public). But
+>> you are right the naming is weird. Could the "tie clocks" thing above
+>> mean something to you/people knowing the LVDS world?
+> I have no idea what that could mean :)
+
+This two bit(GRF_CON0[9,8]) is not for hsync/vsync polarity config, the 
+polarity is done at vop_crtc_atomic_enable@rockchip_drm_vop.c.
+
+Before px30, all rockchip platform lvds output payload is include 
+hsync,vsync and den clock signal. About years ago, we meet a lvds panel 
+can't work normally at rk3288,  from the panel spec we know the panel 
+need lvds work den mode only, the hsync/vsync need to set 0 at blank 
+time, so we add this two bit(GRF_CON0[9,8]) for this mode.
+
+but now we can't get in touch with the customer and get the panel to 
+test this function, so we can't verify the panel work unnormally is 
+because of  the den mode only and the hsync vsync signal level at blank 
+time.
+
+I recommend not including this part of configuration before we test this 
+funcion at den mode only lvds panel,thanks.
+
+>
+> Maxime
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--------------2C99C271BEE0B7DA862D9FC7
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <p>Hi Maxime &amp; Miquel,<br>
+    </p>
+    <div class="moz-cite-prefix">在 2019/12/16 下午7:14, Maxime Ripard 写道:<br>
+    </div>
+    <blockquote type="cite"
+      cite="mid:20191216111436.wzoq33gvt42w6gqj@gilmour.lan">
+      <pre class="moz-quote-pre" wrap="">On Mon, Dec 16, 2019 at 12:03:12PM +0100, Miquel Raynal wrote:
+</pre>
+      <blockquote type="cite">
+        <pre class="moz-quote-pre" wrap="">Maxime Ripard <a class="moz-txt-link-rfc2396E" href="mailto:maxime@cerno.tech">&lt;maxime@cerno.tech&gt;</a> wrote on Mon, 16 Dec 2019 11:58:27 +0100:
+</pre>
+        <blockquote type="cite">
+          <pre class="moz-quote-pre" wrap="">Hi,
+
+On Fri, Dec 13, 2019 at 07:10:48PM +0100, Miquel Raynal wrote:
+</pre>
+          <blockquote type="cite">
+            <pre class="moz-quote-pre" wrap="">+static int px30_lvds_grf_config(struct drm_encoder *encoder,
++				struct drm_display_mode *mode)
++{
++	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
++	u8 nhsync = !(mode-&gt;flags &amp; DRM_MODE_FLAG_PHSYNC);
++	u8 nvsync = !(mode-&gt;flags &amp; DRM_MODE_FLAG_PVSYNC);
++	u8 ndclk = !(mode-&gt;flags &amp; DRM_MODE_FLAG_PCSYNC);
++	int ret;
++
++	if (lvds-&gt;output != DISPLAY_OUTPUT_LVDS) {
++		DRM_DEV_ERROR(lvds-&gt;dev, "Unsupported display output %d\n",
++			      lvds-&gt;output);
++		return -EINVAL;
++	}
++
++	if (nhsync ^ nvsync) {
++		DRM_DEV_ERROR(lvds-&gt;dev, "Unsupported Hsync/Vsync polarity\n");
++		return -EINVAL;
++	}
++
++	/* Set format */
++	ret = regmap_update_bits(lvds-&gt;grf, PX30_LVDS_GRF_PD_VO_CON1,
++				 PX30_LVDS_FORMAT(lvds-&gt;format),
++				 PX30_LVDS_FORMAT(lvds-&gt;format));
++	if (ret)
++		return ret;
++
++	/* Control Hsync/Vsync polarity */
++	ret = regmap_update_bits(lvds-&gt;grf, PX30_LVDS_GRF_PD_VO_CON0,
++				 PX30_LVDS_TIE_CLKS(1),
++				 PX30_LVDS_TIE_CLKS(1));
++	if (ret)
++		return ret;
++
++	/* Set Hsync/Vsync polarity */
++	ret = regmap_update_bits(lvds-&gt;grf, PX30_LVDS_GRF_PD_VO_CON0,
++				 PX30_LVDS_INVERT_CLKS(1),
++				 PX30_LVDS_INVERT_CLKS(nhsync));
++	if (ret)
++		return ret;
+</pre>
+          </blockquote>
+          <pre class="moz-quote-pre" wrap="">
+I don't know the hardware but it seems pretty weird to me. hsync and
+vsync in LVDS are not clocks (or even signals), they're a bit in the
+payload. Is there any explanation in the datasheet (or even a
+datasheet in the first place)?
+</pre>
+        </blockquote>
+        <pre class="moz-quote-pre" wrap="">
+There is no explanation about this in the PX30 TRM part 1 (public). But
+you are right the naming is weird. Could the "tie clocks" thing above
+mean something to you/people knowing the LVDS world?
+</pre>
+      </blockquote>
+      <pre class="moz-quote-pre" wrap="">
+I have no idea what that could mean :)</pre>
+    </blockquote>
+    <p>This two bit(GRF_CON0[9,8]) is not for hsync/vsync polarity
+      config, the polarity is done at
+      <a class="moz-txt-link-abbreviated" href="mailto:vop_crtc_atomic_enable@rockchip_drm_vop.c">vop_crtc_atomic_enable@rockchip_drm_vop.c</a>.</p>
+    <p>Before px30, all rockchip platform lvds output payload is include
+      hsync,vsync and den clock signal. About years ago, we meet a lvds
+      panel can't work normally at rk3288,  from the panel spec we know
+      the panel need lvds work den mode only, the hsync/vsync need to
+      set 0 at blank time, so we add this two bit(GRF_CON0[9,8]) for
+      this mode.<br>
+    </p>
+    <p>but now we can't get in touch with the customer and get the panel
+      to test this function, so we can't verify the panel work
+      unnormally is because of  the den mode only and the hsync vsync
+      signal level at blank time.</p>
+    <p>I recommend not including this part of configuration before we
+      test this funcion at den mode only lvds panel,thanks.<br>
+    </p>
+    <blockquote type="cite"
+      cite="mid:20191216111436.wzoq33gvt42w6gqj@gilmour.lan">
+      <pre class="moz-quote-pre" wrap="">
+
+Maxime
+</pre>
+      <br>
+      <fieldset class="mimeAttachmentHeader"></fieldset>
+      <pre class="moz-quote-pre" wrap="">_______________________________________________
+Linux-rockchip mailing list
+<a class="moz-txt-link-abbreviated" href="mailto:Linux-rockchip@lists.infradead.org">Linux-rockchip@lists.infradead.org</a>
+<a class="moz-txt-link-freetext" href="http://lists.infradead.org/mailman/listinfo/linux-rockchip">http://lists.infradead.org/mailman/listinfo/linux-rockchip</a>
+</pre>
+    </blockquote>
+  </body>
+</html>
+
+--------------2C99C271BEE0B7DA862D9FC7--
+
+
+
+--===============1470670556==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+dri-devel mailing list
+dri-devel@lists.freedesktop.org
+https://lists.freedesktop.org/mailman/listinfo/dri-devel
+
+--===============1470670556==--
