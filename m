@@ -1,186 +1,98 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: Re: [PATCH 2/9] PM / devfreq: Remove devfreq_get_devfreq_by_phandle
- function
-Date: Wed, 18 Dec 2019 12:20:14 +0900
-Message-ID: <304cb931-46da-d525-811d-51d932081b84@samsung.com>
-References: <20191217055738.28445-1-cw00.choi@samsung.com>
- <CGME20191217055105epcas1p2d2930402a559e381a7854f515a683d15@epcas1p2.samsung.com>
- <20191217055738.28445-3-cw00.choi@samsung.com>
- <VI1PR04MB70231FA16F12ACA3A3C01772EE500@VI1PR04MB7023.eurprd04.prod.outlook.com>
- <1967cf03-d1e8-8197-c767-3c8d5f403708@samsung.com>
+From: "sandy.huang" <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 09/12] drm/rockchip: lvds: Add PX30 support
+Date: Wed, 18 Dec 2019 14:26:59 +0800
+Message-ID: <cdf3ee27-b099-b119-483b-af4fe4a75de4@rock-chips.com>
+References: <20191213181051.25983-1-miquel.raynal@bootlin.com>
+ <20191213181051.25983-10-miquel.raynal@bootlin.com>
+ <20191216105827.rxkfbwemkqw446jx@gilmour.lan> <20191216120312.4aa478da@xps13>
+ <20191216111436.wzoq33gvt42w6gqj@gilmour.lan>
+ <64f6c582-8ffd-1082-f161-1e8c1a8dda44@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <1967cf03-d1e8-8197-c767-3c8d5f403708@samsung.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <64f6c582-8ffd-1082-f161-1e8c1a8dda44-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Leonard Crestez <leonard.crestez@nxp.com>, "krzk@kernel.org" <krzk@kernel.org>, "robh+dt@kernel.org" <robh+dt@kernel.org>
-Cc: "mark.rutland@arm.com" <mark.rutland@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "a.swigon@samsung.com" <a.swigon@samsung.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>, "kgene@kernel.org" <kgene@kernel.org>, "myungjoo.ham@samsung.com" <myungjoo.ham@samsung.com>, "lukasz.luba@arm.com" <lukasz.luba@arm.com>, "m.szyprowski@samsung.com" <m.szyprowski@samsung.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Maxime Ripard <maxime-R63rPqgGiG5yDzI6CaY1VQ@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, tao.huang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/18/19 11:59 AM, Chanwoo Choi wrote:
-> On 12/17/19 11:33 PM, Leonard Crestez wrote:
->> On 17.12.2019 07:51, Chanwoo Choi wrote:
->>> Previously, devfreq core support 'devfreq' property in order to get
->>> the devfreq device by phandle. But, 'devfreq' property name is not proper
->>> on devicetree binding because this name doesn't mean the any h/w attribute.
->>>
->>> The devfreq core hand over the right to decide the property name
->>> for getting the devfreq device on devicetree. Each devfreq driver
->>> will decide the property name on devicetree binding and then get
->>> the devfreq device by using devfreq_get_devfreq_by_node().
->>>
->>> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
->>> ---
->>>   drivers/devfreq/devfreq.c    | 35 -----------------------------------
->>>   drivers/devfreq/exynos-bus.c | 14 ++++++++++++--
->>>   include/linux/devfreq.h      |  8 --------
->>>   3 files changed, 12 insertions(+), 45 deletions(-)
->>>
->>> diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
->>> index cb8ca81c8973..c3d3c7c802a0 100644
->>> --- a/drivers/devfreq/devfreq.c
->>> +++ b/drivers/devfreq/devfreq.c
->>> @@ -991,48 +991,13 @@ struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
->>>   
->>>   	return ERR_PTR(-ENODEV);
->>>   }
->>> -
->>> -/*
->>> - * devfreq_get_devfreq_by_phandle - Get the devfreq device from devicetree
->>> - * @dev - instance to the given device
->>> - * @index - index into list of devfreq
->>> - *
->>> - * return the instance of devfreq device
->>> - */
->>> -struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
->>> -{
->>> -	struct device_node *node;
->>> -	struct devfreq *devfreq;
->>> -
->>> -	if (!dev)
->>> -		return ERR_PTR(-EINVAL);
->>> -
->>> -	if (!dev->of_node)
->>> -		return ERR_PTR(-EINVAL);
->>> -
->>> -	node = of_parse_phandle(dev->of_node, "devfreq", index);
->>> -	if (!node)
->>> -		return ERR_PTR(-ENODEV);
->>> -
->>> -	devfreq = devfreq_get_devfreq_by_node(node);
->>> -	of_node_put(node);
->>> -
->>> -	return devfreq;
->>> -}
->>> -
->>>   #else
->>>   struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
->>>   {
->>>   	return ERR_PTR(-ENODEV);
->>>   }
->>> -
->>> -struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
->>> -{
->>> -	return ERR_PTR(-ENODEV);
->>> -}
->>>   #endif /* CONFIG_OF */
->>>   EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_node);
->>> -EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_phandle);
->>>   
->>>   /**
->>>    * devm_devfreq_remove_device() - Resource-managed devfreq_remove_device()
->>> diff --git a/drivers/devfreq/exynos-bus.c b/drivers/devfreq/exynos-bus.c
->>> index 7f5917d59072..9aac2db956d5 100644
->>> --- a/drivers/devfreq/exynos-bus.c
->>> +++ b/drivers/devfreq/exynos-bus.c
->>> @@ -146,6 +146,16 @@ static int exynos_bus_get_dev_status(struct device *dev,
->>>   	return ret;
->>>   }
->>>   
->>> +static struct devfreq *get_parent_devfreq_by_node(struct device_node *np)
->>> +{
->>> +	struct device_node *node = of_parse_phandle(np, "devfreq", 0);
->>> +
->>> +	if (!node)
->>> +		return ERR_PTR(-ENODEV);
->>> +
->>> +	return devfreq_get_devfreq_by_node(node);
->>> +}
->>
->> The _by_node suffix here is confusing because it actually fetches a 
->> property of the node unlike devfreq_get_devfreq_by_node. Maybe call this 
->> get_parent_devfreq_from_node?
->>
->> Since it's a static function it could just be called get_parent_devfreq?
-> 
-> OK.
-
-I'll rename as following because all functions of exynos-bus.c
-which used 'exynos_bus_' prefix.
-- exynos_bus_get_parent_devfreq()
-
-> 
->>
->>> +
->>>   static void exynos_bus_exit(struct device *dev)
->>>   {
->>>   	struct exynos_bus *bus = dev_get_drvdata(dev);
->>> @@ -353,8 +363,8 @@ static int exynos_bus_profile_init_passive(struct exynos_bus *bus,
->>>   	profile->exit = exynos_bus_passive_exit;
->>>   
->>>   	/* Get the instance of parent devfreq device */
->>> -	parent_devfreq = devfreq_get_devfreq_by_phandle(dev, 0);
->>> -	if (IS_ERR(parent_devfreq))
->>> +	parent_devfreq = get_parent_devfreq_by_node(dev->of_node);
->>> +	if (IS_ERR(parent_devfreq)) {
->>>   		return -EPROBE_DEFER;
->>>   
->>>   	passive_data = devm_kzalloc(dev, sizeof(*passive_data), GFP_KERNEL);
->>> diff --git a/include/linux/devfreq.h b/include/linux/devfreq.h
->>> index e3633ae43349..3ed96426302e 100644
->>> --- a/include/linux/devfreq.h
->>> +++ b/include/linux/devfreq.h
->>> @@ -254,8 +254,6 @@ extern void devm_devfreq_unregister_notifier(struct device *dev,
->>>   				struct notifier_block *nb,
->>>   				unsigned int list);
->>>   extern struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node);
->>> -extern struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev,
->>> -						int index);
->>>   
->>>   #if IS_ENABLED(CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND)
->>>   /**
->>> @@ -413,12 +411,6 @@ struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
->>>   	return ERR_PTR(-ENODEV);
->>>   }
->>>   
->>> -static inline struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev,
->>> -							int index)
->>> -{
->>> -	return ERR_PTR(-ENODEV);
->>> -}
->>> -
->>>   static inline int devfreq_update_stats(struct devfreq *df)
->>>   {
->>>   	return -EINVAL;
->>>
->>
->>
->>
-> 
-> 
-
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+SGkKCiDCoMKgwqAgc29tZSBtaXN0YWtlcyB3aXRoIGxhc3QgbWFpbCwgc28gcmVzZW5kIHRoaXMg
+bWFpbC4KCuWcqCAyMDE5LzEyLzE4IOS4iuWNiDExOjE3LCBzYW5keS5odWFuZyDlhpnpgZM6Cj4g
+SGkgTWF4aW1lICYgTWlxdWVsLAo+Cj4g5ZyoIDIwMTkvMTIvMTYg5LiL5Y2INzoxNCwgTWF4aW1l
+IFJpcGFyZCDlhpnpgZM6Cj4+IE9uIE1vbiwgRGVjIDE2LCAyMDE5IGF0IDEyOjAzOjEyUE0gKzAx
+MDAsIE1pcXVlbCBSYXluYWwgd3JvdGU6Cj4+PiBNYXhpbWUgUmlwYXJkIDxtYXhpbWVAY2Vybm8u
+dGVjaD4gd3JvdGUgb24gTW9uLCAxNiBEZWMgMjAxOSAxMTo1ODoyNyAKPj4+ICswMTAwOgo+Pj4+
+IEhpLAo+Pj4+Cj4+Pj4gT24gRnJpLCBEZWMgMTMsIDIwMTkgYXQgMDc6MTA6NDhQTSArMDEwMCwg
+TWlxdWVsIFJheW5hbCB3cm90ZToKPj4+Pj4gK3N0YXRpYyBpbnQgcHgzMF9sdmRzX2dyZl9jb25m
+aWcoc3RydWN0IGRybV9lbmNvZGVyICplbmNvZGVyLAo+Pj4+PiArwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIHN0cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+Pj4+PiArewo+Pj4+
+PiArwqDCoMKgIHN0cnVjdCByb2NrY2hpcF9sdmRzICpsdmRzID0gZW5jb2Rlcl90b19sdmRzKGVu
+Y29kZXIpOwo+Pj4+PiArwqDCoMKgIHU4IG5oc3luYyA9ICEobW9kZS0+ZmxhZ3MgJiBEUk1fTU9E
+RV9GTEFHX1BIU1lOQyk7Cj4+Pj4+ICvCoMKgwqAgdTggbnZzeW5jID0gIShtb2RlLT5mbGFncyAm
+IERSTV9NT0RFX0ZMQUdfUFZTWU5DKTsKPj4+Pj4gK8KgwqDCoCB1OCBuZGNsayA9ICEobW9kZS0+
+ZmxhZ3MgJiBEUk1fTU9ERV9GTEFHX1BDU1lOQyk7Cj4+Pj4+ICvCoMKgwqAgaW50IHJldDsKPj4+
+Pj4gKwo+Pj4+PiArwqDCoMKgIGlmIChsdmRzLT5vdXRwdXQgIT0gRElTUExBWV9PVVRQVVRfTFZE
+Uykgewo+Pj4+PiArwqDCoMKgwqDCoMKgwqAgRFJNX0RFVl9FUlJPUihsdmRzLT5kZXYsICJVbnN1
+cHBvcnRlZCBkaXNwbGF5IG91dHB1dCAlZFxuIiwKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgbHZkcy0+b3V0cHV0KTsKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHJldHVy
+biAtRUlOVkFMOwo+Pj4+PiArwqDCoMKgIH0KPj4+Pj4gKwo+Pj4+PiArwqDCoMKgIGlmIChuaHN5
+bmMgXiBudnN5bmMpIHsKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIERSTV9ERVZfRVJST1IobHZkcy0+
+ZGV2LCAiVW5zdXBwb3J0ZWQgSHN5bmMvVnN5bmMgCj4+Pj4+IHBvbGFyaXR5XG4iKTsKPj4+Pj4g
+K8KgwqDCoMKgwqDCoMKgIHJldHVybiAtRUlOVkFMOwo+Pj4+PiArwqDCoMKgIH0KPj4+Pj4gKwo+
+Pj4+PiArwqDCoMKgIC8qIFNldCBmb3JtYXQgKi8KPj4+Pj4gK8KgwqDCoCByZXQgPSByZWdtYXBf
+dXBkYXRlX2JpdHMobHZkcy0+Z3JmLCBQWDMwX0xWRFNfR1JGX1BEX1ZPX0NPTjEsCj4+Pj4+ICvC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBQWDMwX0xWRFNfRk9STUFUKGx2ZHMtPmZv
+cm1hdCksCj4+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBQWDMwX0xWRFNf
+Rk9STUFUKGx2ZHMtPmZvcm1hdCkpOwo+Pj4+PiArwqDCoMKgIGlmIChyZXQpCj4+Pj4+ICvCoMKg
+wqDCoMKgwqDCoCByZXR1cm4gcmV0Owo+Pj4+PiArCj4+Pj4+ICvCoMKgwqAgLyogQ29udHJvbCBI
+c3luYy9Wc3luYyBwb2xhcml0eSAqLwo+Pj4+PiArwqDCoMKgIHJldCA9IHJlZ21hcF91cGRhdGVf
+Yml0cyhsdmRzLT5ncmYsIFBYMzBfTFZEU19HUkZfUERfVk9fQ09OMCwKPj4+Pj4gK8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFBYMzBfTFZEU19USUVfQ0xLUygxKSwKPj4+Pj4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFBYMzBfTFZEU19USUVfQ0xLUygxKSk7Cj4+
+Pj4+ICvCoMKgwqAgaWYgKHJldCkKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHJldHVybiByZXQ7Cj4+
+Pj4+ICsKPj4+Pj4gK8KgwqDCoCAvKiBTZXQgSHN5bmMvVnN5bmMgcG9sYXJpdHkgKi8KPj4+Pj4g
+K8KgwqDCoCByZXQgPSByZWdtYXBfdXBkYXRlX2JpdHMobHZkcy0+Z3JmLCBQWDMwX0xWRFNfR1JG
+X1BEX1ZPX0NPTjAsCj4+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBQWDMw
+X0xWRFNfSU5WRVJUX0NMS1MoMSksCj4+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCBQWDMwX0xWRFNfSU5WRVJUX0NMS1MobmhzeW5jKSk7Cj4+Pj4+ICvCoMKgwqAgaWYgKHJl
+dCkKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHJldHVybiByZXQ7Cj4+Pj4gSSBkb24ndCBrbm93IHRo
+ZSBoYXJkd2FyZSBidXQgaXQgc2VlbXMgcHJldHR5IHdlaXJkIHRvIG1lLiBoc3luYyBhbmQKPj4+
+PiB2c3luYyBpbiBMVkRTIGFyZSBub3QgY2xvY2tzIChvciBldmVuIHNpZ25hbHMpLCB0aGV5J3Jl
+IGEgYml0IGluIHRoZQo+Pj4+IHBheWxvYWQuIElzIHRoZXJlIGFueSBleHBsYW5hdGlvbiBpbiB0
+aGUgZGF0YXNoZWV0IChvciBldmVuIGEKPj4+PiBkYXRhc2hlZXQgaW4gdGhlIGZpcnN0IHBsYWNl
+KT8KPj4+IFRoZXJlIGlzIG5vIGV4cGxhbmF0aW9uIGFib3V0IHRoaXMgaW4gdGhlIFBYMzAgVFJN
+IHBhcnQgMSAocHVibGljKS4gQnV0Cj4+PiB5b3UgYXJlIHJpZ2h0IHRoZSBuYW1pbmcgaXMgd2Vp
+cmQuIENvdWxkIHRoZSAidGllIGNsb2NrcyIgdGhpbmcgYWJvdmUKPj4+IG1lYW4gc29tZXRoaW5n
+IHRvIHlvdS9wZW9wbGUga25vd2luZyB0aGUgTFZEUyB3b3JsZD8KPj4gSSBoYXZlIG5vIGlkZWEg
+d2hhdCB0aGF0IGNvdWxkIG1lYW4gOikKPgo+IFRoaXMgdHdvIGJpdChHUkZfQ09OMFs5LDhdKSBp
+cyBub3QgZm9yIGhzeW5jL3ZzeW5jIHBvbGFyaXR5IGNvbmZpZywgCj4gdGhlIHBvbGFyaXR5IGlz
+IGRvbmUgYXQgdm9wX2NydGNfYXRvbWljX2VuYWJsZUByb2NrY2hpcF9kcm1fdm9wLmMuCj4KPiBC
+ZWZvcmUgcHgzMCwgYWxsIHJvY2tjaGlwIHBsYXRmb3JtIGx2ZHMgb3V0cHV0IHBheWxvYWQgaXMg
+aW5jbHVkZSAKPiBoc3luYyx2c3luYyBhbmQgZGVuIGNsb2NrIHNpZ25hbC4gQWJvdXQgeWVhcnMg
+YWdvLCB3ZSBtZWV0IGEgbHZkcyAKPiBwYW5lbCBjYW4ndCB3b3JrIG5vcm1hbGx5IGF0IHJrMzI4
+OCzCoCBmcm9tIHRoZSBwYW5lbCBzcGVjIHdlIGtub3cgdGhlIAo+IHBhbmVsIG5lZWQgbHZkcyB3
+b3JrIGRlbiBtb2RlIG9ubHksIHRoZSBoc3luYy92c3luYyBuZWVkIHRvIHNldCAwIGF0IAo+IGJs
+YW5rIHRpbWUsIHNvIHdlIGFkZCB0aGlzIHR3byBiaXQoR1JGX0NPTjBbOSw4XSkgZm9yIHRoaXMg
+bW9kZS4KPgo+IGJ1dCBub3cgd2UgY2FuJ3QgZ2V0IGluIHRvdWNoIHdpdGggdGhlIGN1c3RvbWVy
+IGFuZCBnZXQgdGhlIHBhbmVsIHRvIAo+IHRlc3QgdGhpcyBmdW5jdGlvbiwgc28gd2UgY2FuJ3Qg
+dmVyaWZ5IHRoZSBwYW5lbCB3b3JrIHVubm9ybWFsbHkgaXMgCj4gYmVjYXVzZSBvZsKgIHRoZSBk
+ZW4gbW9kZSBvbmx5IGFuZCB0aGUgaHN5bmMgdnN5bmMgc2lnbmFsIGxldmVsIGF0IAo+IGJsYW5r
+IHRpbWUuCj4KPiBJIHJlY29tbWVuZCBub3QgaW5jbHVkaW5nIHRoaXMgcGFydCBvZiBjb25maWd1
+cmF0aW9uIGJlZm9yZSB3ZSB0ZXN0IAo+IHRoaXMgZnVuY2lvbiBhdCBkZW4gbW9kZSBvbmx5IGx2
+ZHMgcGFuZWwsdGhhbmtzLgo+Cj4+Cj4+IE1heGltZQo+Pgo+PiBfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+PiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKPj4gTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+PiBodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4KCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
