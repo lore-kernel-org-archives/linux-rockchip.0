@@ -1,34 +1,80 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: remove disable-wp from rk3308-roc-cc emmc node
-Date: Thu, 19 Dec 2019 13:19:54 +0100
-Message-ID: <20191219121954.2450-1-jbx6244@gmail.com>
+From: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>
+Subject: Re: [PATCH 1/2] usb: dwc2: Fix IN FIFO allocation
+Date: Thu, 19 Dec 2019 12:34:59 +0000
+Message-ID: <69ae7364-391d-6075-27d8-7ed7c4aae2ff@synopsys.com>
+References: <20191219113432.1229852-1-john@metanate.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191219113432.1229852-1-john@metanate.com>
+Content-Language: en-US
+Content-ID: <B924C74AF17F794BAA77285C93C9EFC6@namprd12.prod.outlook.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: John Keeping <john@metanate.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The mmc-controller.yaml didn't explicitly say disable-wp is
-for SD card slot only, but that is what it was designed for
-in the first place.
-Remove all disable-wp from emmc or sdio controllers.
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
-index aa256350b..23527daa7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
-@@ -125,7 +125,6 @@
- &emmc {
- 	bus-width = <8>;
- 	cap-mmc-highspeed;
--	disable-wp;
- 	mmc-hs200-1_8v;
- 	non-removable;
- 	status = "okay";
--- 
-2.11.0
+SGkgSm9obiwNCg0KT24gMTIvMTkvMjAxOSAzOjM0IFBNLCBKb2huIEtlZXBpbmcgd3JvdGU6DQo+
+IE9uIGNoaXBzIHdpdGggZmV3ZXIgRklGT3MgdGhhbiBlbmRwb2ludHMgKGZvciBleGFtcGxlIFJL
+MzI4OCB3aGljaCBoYXMgOQ0KPiBlbmRwb2ludHMsIGJ1dCBvbmx5IDYgd2hpY2ggYXJlIGNhYmFi
+bGUgb2YgaW5wdXQpLCB0aGUgRFBUWEZTSVpODQo+IHJlZ2lzdGVycyBhYm92ZSB0aGUgRklGTyBj
+b3VudCBtYXkgcmV0dXJuIGludmFsaWQgdmFsdWVzLg0KPiANCg0KUkszMjg4IChyZXYuMi4yIE1h
+ci4yMDE3KSBkYXRhYm9vayBzYXlzOg0KLSBTdXBwb3J0IHVwIHRvIDkgZGV2aWNlIG1vZGUgZW5k
+cG9pbnRzIGluIGFkZGl0aW9uIHRvIGNvbnRyb2wgZW5kcG9pbnQgMA0KLSBTdXBwb3J0IHVwIHRv
+IDYgZGV2aWNlIG1vZGUgSU4gZW5kcG9pbnRzIGluY2x1ZGluZyBjb250cm9sIGVuZHBvaW50IDAN
+Ci0gRW5kcG9pbnRzIDEvMy81LzcgY2FuIGJlIHVzZWQgb25seSBhcyBkYXRhIElOIGVuZHBvaW50
+DQotIEVuZHBvaW50cyAyLzQvNiBjYW4gYmUgdXNlZCBvbmx5IGFzIGRhdGEgT1VUIGVuZHBvaW50
+DQotIEVuZHBvaW50cyA4LzkgY2FuIGJlIHVzZWQgYXMgZGF0YSBPVVQgYW5kIElOIGVuZHBvaW50
+DQoNCjYgSU4gRVAncyAoaW5jbC5FUDApIG1lYW4gdGhhdCBUeEZJRk8gY291bnQgc2hvdWxkIGJl
+IDUuIEZvciBFUDAgdXNpbmcgDQpOUFRYRklGTy4gT24gb3RoZXIgaGFuZCA2IEVQJ3MgMS8zLzUv
+Ny84LzkgYXJlIElOIGVuZHBvaW50cy4NClNvbWV0aGluZyBub3QgY2xlYXIgdG8gbWUuIENvdWxk
+IHlvdSBwbGVhc2UgcHJvdmlkZSBtZSB5b3VyIEhTT1RHIGNvcmUncyANCkdIV0NGRzEtNCByZWdp
+c3RlcnMgdmFsdWVzLg0KQW5kL09yIHByb3ZpZGUgbWUgbmV3ZXIgZGF0YWJvb2suDQoNCk9uZSBt
+b3JlIHN0dWZmLiBZb3UgZGlkbid0IHNlbmQgcGF0Y2ggc2VyaWVzIGNvdmVyIGxldHRlciAoW1BB
+VENIIDAvMl0pIA0Kb3IgSSBkaWRuJ3QgcmVjZWl2ZWQgaXQ/DQoNClRoYW5rcywNCk1pbmFzDQoN
+Cg0KPiBXaXRoIGxvZ2dpbmcgYWRkZWQgb24gc3RhcnR1cCwgSSBzZWU6DQo+IA0KPiAJZHdjMiBm
+ZjU4MDAwMC51c2I6IGR3YzJfaHNvdGdfaW5pdF9maWZvOiBlcD0xIHN6PTI1Ng0KPiAJZHdjMiBm
+ZjU4MDAwMC51c2I6IGR3YzJfaHNvdGdfaW5pdF9maWZvOiBlcD0yIHN6PTEyOA0KPiAJZHdjMiBm
+ZjU4MDAwMC51c2I6IGR3YzJfaHNvdGdfaW5pdF9maWZvOiBlcD0zIHN6PTEyOA0KPiAJZHdjMiBm
+ZjU4MDAwMC51c2I6IGR3YzJfaHNvdGdfaW5pdF9maWZvOiBlcD00IHN6PTY0DQo+IAlkd2MyIGZm
+NTgwMDAwLnVzYjogZHdjMl9oc290Z19pbml0X2ZpZm86IGVwPTUgc3o9NjQNCj4gCWR3YzIgZmY1
+ODAwMDAudXNiOiBkd2MyX2hzb3RnX2luaXRfZmlmbzogZXA9NiBzej0zMg0KPiAJZHdjMiBmZjU4
+MDAwMC51c2I6IGR3YzJfaHNvdGdfaW5pdF9maWZvOiBlcD03IHN6PTANCj4gCWR3YzIgZmY1ODAw
+MDAudXNiOiBkd2MyX2hzb3RnX2luaXRfZmlmbzogZXA9OCBzej0wDQo+IAlkd2MyIGZmNTgwMDAw
+LnVzYjogZHdjMl9oc290Z19pbml0X2ZpZm86IGVwPTkgc3o9MA0KPiAJZHdjMiBmZjU4MDAwMC51
+c2I6IGR3YzJfaHNvdGdfaW5pdF9maWZvOiBlcD0xMCBzej0wDQo+IAlkd2MyIGZmNTgwMDAwLnVz
+YjogZHdjMl9oc290Z19pbml0X2ZpZm86IGVwPTExIHN6PTANCj4gCWR3YzIgZmY1ODAwMDAudXNi
+OiBkd2MyX2hzb3RnX2luaXRfZmlmbzogZXA9MTIgc3o9MA0KPiAJZHdjMiBmZjU4MDAwMC51c2I6
+IGR3YzJfaHNvdGdfaW5pdF9maWZvOiBlcD0xMyBzej0wDQo+IAlkd2MyIGZmNTgwMDAwLnVzYjog
+ZHdjMl9oc290Z19pbml0X2ZpZm86IGVwPTE0IHN6PTANCj4gCWR3YzIgZmY1ODAwMDAudXNiOiBk
+d2MyX2hzb3RnX2luaXRfZmlmbzogZXA9MTUgc3o9MA0KPiANCj4gYnV0Og0KPiANCj4gCSMgY2F0
+IC9zeXMva2VybmVsL2RlYnVnL2ZmNTgwMDAwLnVzYi9maWZvDQo+IAlOb24tcGVyaW9kaWMgRklG
+T3M6DQo+IAlSWEZJRk86IFNpemUgMjc1DQo+IAlOUFRYRklGTzogU2l6ZSAxNiwgU3RhcnQgMHgw
+MDAwMDExMw0KPiANCj4gCVBlcmlvZGljIFRYRklGT3M6DQo+IAkJRFBUWEZJRk8gMTogU2l6ZSAy
+NTYsIFN0YXJ0IDB4MDAwMDAxMjMNCj4gCQlEUFRYRklGTyAyOiBTaXplIDEyOCwgU3RhcnQgMHgw
+MDAwMDIyMw0KPiAJCURQVFhGSUZPIDM6IFNpemUgMTI4LCBTdGFydCAweDAwMDAwMmEzDQo+IAkJ
+RFBUWEZJRk8gNDogU2l6ZSA2NCwgU3RhcnQgMHgwMDAwMDMyMw0KPiAJCURQVFhGSUZPIDU6IFNp
+emUgNjQsIFN0YXJ0IDB4MDAwMDAzNjMNCj4gCQlEUFRYRklGTyA2OiBTaXplIDMyLCBTdGFydCAw
+eDAwMDAwM2EzDQo+IAkJRFBUWEZJRk8gNzogU2l6ZSAwLCBTdGFydCAweDAwMDAwM2UzDQo+IAkJ
+RFBUWEZJRk8gODogU2l6ZSAwLCBTdGFydCAweDAwMDAwM2EzDQo+IAkJRFBUWEZJRk8gOTogU2l6
+ZSAyNTYsIFN0YXJ0IDB4MDAwMDAxMjMNCj4gDQo+IHNvIGl0IHNlZW1zIHRoYXQgRklGTyA5IGlz
+IG1pcnJvcmluZyBGSUZPIDEuDQo+IA0KPiBGaXggdGhlIGFsbG9jYXRpb24gYnkgdXNpbmcgdGhl
+IEZJRk8gY291bnQgaW5zdGVhZCBvZiB0aGUgZW5kcG9pbnQgY291bnQNCj4gd2hlbiBzZWxlY3Rp
+bmcgYSBGSUZPIGZvciBhbiBlbmRwb2ludC4NCj4gDQo+IFNpZ25lZC1vZmYtYnk6IEpvaG4gS2Vl
+cGluZyA8am9obkBtZXRhbmF0ZS5jb20+DQo+IC0tLQ0KPiAgIGRyaXZlcnMvdXNiL2R3YzIvZ2Fk
+Z2V0LmMgfCAzICsrLQ0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVs
+ZXRpb24oLSkNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3VzYi9kd2MyL2dhZGdldC5jIGIv
+ZHJpdmVycy91c2IvZHdjMi9nYWRnZXQuYw0KPiBpbmRleCA5MmU4ZGU5Y2I0NWMuLjkxMWI5NTBl
+ZjI1ZSAxMDA2NDQNCj4gLS0tIGEvZHJpdmVycy91c2IvZHdjMi9nYWRnZXQuYw0KPiArKysgYi9k
+cml2ZXJzL3VzYi9kd2MyL2dhZGdldC5jDQo+IEBAIC00MDU5LDExICs0MDU5LDEyIEBAIHN0YXRp
+YyBpbnQgZHdjMl9oc290Z19lcF9lbmFibGUoc3RydWN0IHVzYl9lcCAqZXAsDQo+ICAgCSAqIGEg
+dW5pcXVlIHR4LWZpZm8gZXZlbiBpZiBpdCBpcyBub24tcGVyaW9kaWMuDQo+ICAgCSAqLw0KPiAg
+IAlpZiAoZGlyX2luICYmIGhzb3RnLT5kZWRpY2F0ZWRfZmlmb3MpIHsNCj4gKwkJdW5zaWduZWQg
+Zmlmb19jb3VudCA9IGR3YzJfaHNvdGdfdHhfZmlmb19jb3VudChoc290Zyk7DQo+ICAgCQl1MzIg
+Zmlmb19pbmRleCA9IDA7DQo+ICAgCQl1MzIgZmlmb19zaXplID0gVUlOVF9NQVg7DQo+ICAgDQo+
+ICAgCQlzaXplID0gaHNfZXAtPmVwLm1heHBhY2tldCAqIGhzX2VwLT5tYzsNCj4gLQkJZm9yIChp
+ID0gMTsgaSA8IGhzb3RnLT5udW1fb2ZfZXBzOyArK2kpIHsNCj4gKwkJZm9yIChpID0gMTsgaSA8
+PSBmaWZvX2NvdW50OyArK2kpIHsNCj4gICAJCQlpZiAoaHNvdGctPmZpZm9fbWFwICYgKDEgPDwg
+aSkpDQo+ICAgCQkJCWNvbnRpbnVlOw0KPiAgIAkJCXZhbCA9IGR3YzJfcmVhZGwoaHNvdGcsIERQ
+VFhGU0laTihpKSk7DQo+IA0K
