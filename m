@@ -1,111 +1,107 @@
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: rk3368-lion-haikou: remove identical &uart0 node
-Date: Fri, 20 Dec 2019 13:55:20 +0100
-Message-ID: <20191220125520.29871-1-jbx6244@gmail.com>
+Subject: [PATCH] arm64: dts: rockchip: rk3399-evb: sort nodes in alphabetical order
+Date: Fri, 20 Dec 2019 15:45:37 +0100
+Message-ID: <20191220144537.30867-1-jbx6244@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
 Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Remove identical &uart0 node.
 Sort nodes in alphabetical order.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- .../arm64/boot/dts/rockchip/rk3368-lion-haikou.dts | 76 ++++++++++------------
- 1 file changed, 35 insertions(+), 41 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 66 ++++++++++++++---------------
+ 1 file changed, 33 insertions(+), 33 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-index 8251f3c0d..93601fe05 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-@@ -64,47 +64,6 @@
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+index 77008dca4..6e8b63db2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+@@ -134,6 +134,39 @@
+ 	status = "okay";
  };
  
--&sdmmc {
--	bus-width = <4>;
--	cap-mmc-highspeed;
--	cap-sd-highspeed;
--	cd-gpios = <&gpio2 RK_PB3 GPIO_ACTIVE_LOW>;
--	disable-wp;
--	max-frequency = <25000000>;
--	pinctrl-names = "default";
--	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
--	rockchip,default-sample-phase = <90>;
--	vmmc-supply = <&vcc3v3_baseboard>;
--	status = "okay";
--};
--
--&spi2 {
--	cs-gpios = <0>, <&gpio2 RK_PC3 GPIO_ACTIVE_LOW>;
--	status = "okay";
--};
--
--&uart0 {
--	pinctrl-names = "default";
--	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
--	status = "okay";
--};
--
--&usb_otg {
--	dr_mode = "otg";
--	status = "okay";
--};
--
--&uart0 {
--	pinctrl-names = "default";
--	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
--	status = "okay";
--};
--
--&uart1 {
--	/* alternate function of GPIO5/6 */
--	status = "disabled";
--};
--
- &pinctrl {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&haikou_pin_hog>;
-@@ -144,3 +103,38 @@
- 		};
- 	};
- };
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-mmc-highspeed;
-+	cap-sd-highspeed;
-+	cd-gpios = <&gpio2 RK_PB3 GPIO_ACTIVE_LOW>;
-+	disable-wp;
-+	max-frequency = <25000000>;
++&pcie0 {
++	ep-gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_HIGH>;
++	num-lanes = <4>;
 +	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
-+	rockchip,default-sample-phase = <90>;
-+	vmmc-supply = <&vcc3v3_baseboard>;
-+	status = "okay";
-+};
-+
-+&spi2 {
-+	cs-gpios = <0>, <&gpio2 RK_PC3 GPIO_ACTIVE_LOW>;
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
-+	status = "okay";
-+};
-+
-+&uart1 {
-+	/* alternate function of GPIO5/6 */
++	pinctrl-0 = <&pcie_clkreqn_cpm>;
 +	status = "disabled";
 +};
 +
-+&usb_otg {
-+	dr_mode = "otg";
-+	status = "okay";
++&pcie_phy {
++	status = "disabled";
 +};
++
++&pinctrl {
++	pmic {
++		pmic_int_l: pmic-int-l {
++			rockchip,pins =
++				<1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		pmic_dvs2: pmic-dvs2 {
++			rockchip,pins =
++				<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++
++	usb2 {
++		vcc5v0_host_en: vcc5v0-host-en {
++			rockchip,pins =
++				<4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
+ &pwm0 {
+ 	status = "okay";
+ };
+@@ -154,18 +187,6 @@
+ 	status = "okay";
+ };
+ 
+-&pcie_phy {
+-	status = "disabled";
+-};
+-
+-&pcie0 {
+-	ep-gpios = <&gpio3 RK_PB5 GPIO_ACTIVE_HIGH>;
+-	num-lanes = <4>;
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pcie_clkreqn_cpm>;
+-	status = "disabled";
+-};
+-
+ &u2phy0 {
+ 	status = "okay";
+ };
+@@ -203,24 +224,3 @@
+ &usb_host1_ohci {
+ 	status = "okay";
+ };
+-
+-&pinctrl {
+-	pmic {
+-		pmic_int_l: pmic-int-l {
+-			rockchip,pins =
+-				<1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
+-		};
+-
+-		pmic_dvs2: pmic-dvs2 {
+-			rockchip,pins =
+-				<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
+-		};
+-	};
+-
+-	usb2 {
+-		vcc5v0_host_en: vcc5v0-host-en {
+-			rockchip,pins =
+-				<4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+-};
 -- 
 2.11.0
