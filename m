@@ -1,67 +1,51 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [PATCH RESEND 1/2] dt-bindings: phy: drop #clock-cells from
- rockchip,px30-dsi-dphy
-Date: Fri, 20 Dec 2019 17:22:14 +0530
-Message-ID: <400d28a9-6ae3-5ff3-8d95-005714cfca33@ti.com>
-References: <20191216122448.27867-1-heiko@sntech.de>
- <12525836.FhlgEYrHGb@diego> <45c59145-5705-90f9-ff0e-c84cf8d17e8b@ti.com>
- <3795174.JdKOkfR0EK@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <3795174.JdKOkfR0EK@diego>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: mark.rutland@arm.com, Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH 1/2] arm64: dts: rockchip: rk3308-evb: sort nodes in alphabetical order
+Date: Fri, 20 Dec 2019 13:10:06 +0100
+Message-ID: <20191220121007.29337-1-jbx6244@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksCgpPbiAyMC8xMi8xOSA1OjA3IHBtLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToKPiBIaSBLaXNo
-b24sCj4gCj4gQW0gRnJlaXRhZywgMjAuIERlemVtYmVyIDIwMTksIDEyOjIxOjI4IENFVCBzY2hy
-aWViIEtpc2hvbiBWaWpheSBBYnJhaGFtIEk6Cj4+Cj4+IE9uIDE2LzEyLzE5IDExOjMxIHBtLCBI
-ZWlrbyBTdMO8Ym5lciB3cm90ZToKPj4+IEhpIFJvYiwKPj4+Cj4+PiBBbSBNb250YWcsIDE2LiBE
-ZXplbWJlciAyMDE5LCAxODo1NjoxNSBDRVQgc2NocmllYiBSb2IgSGVycmluZzoKPj4+PiBPbiBN
-b24sIDE2IERlYyAyMDE5IDEzOjI0OjQ3ICswMTAwLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4+
-Pj4gRnJvbTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvLnN0dWVibmVyQHRoZW9icm9tYS1zeXN0ZW1z
-LmNvbT4KPj4+Pj4KPj4+Pj4gRnVydGhlciByZXZpZXcgb2YgdGhlIGRzaSBjb21wb25lbnRzIGZv
-ciB0aGUgcHgzMCByZXZlYWxlZCB0aGF0IHRoZQo+Pj4+PiBwaHkgc2hvdWxkbid0IGV4cG9zZSB0
-aGUgcGxsIGFzIGNsb2NrIGJ1dCBpbnN0ZWFkIGhhbmRsZSBzZXR0aW5ncwo+Pj4+PiB2aWEgcGh5
-IHBhcmFtZXRlcnMuCj4+Pj4+Cj4+Pj4+IEFzIHRoZSBwaHkgYmluZGluZyBpcyBuZXcgYW5kIG5v
-dCB1c2VkIGFueXdoZXJlIHlldCwganVzdCBkcm9wIHRoZW0KPj4+Pj4gc28gdGhleSBkb24ndCBn
-ZXQgdXNlZC4KPj4+Pj4KPj4+Pj4gRml4ZXM6IDM4MTdjNzk2MTE3OSAoImR0LWJpbmRpbmdzOiBw
-aHk6IGFkZCB5YW1sIGJpbmRpbmcgZm9yIHJvY2tjaGlwLHB4MzAtZHNpLWRwaHkiKQo+Pj4+PiBT
-aWduZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa28uc3R1ZWJuZXJAdGhlb2Jyb21hLXN5
-c3RlbXMuY29tPgo+Pj4+PiAtLS0KPj4+Pj4gSGkgS2lzaG9uLAo+Pj4+Pgo+Pj4+PiBtYXliZSBz
-dWl0YWJsZSBhcyBhIGZpeCBmb3IgNS41LXJjPwo+Pj4+Pgo+Pj4+PiBUaGFua3MKPj4+Pj4gSGVp
-a28KPj4+Pj4KPj4+Pj4gIC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL3BoeS9yb2NrY2hpcCxweDMw
-LWRzaS1kcGh5LnlhbWwgICAgICB8IDUgLS0tLS0KPj4+Pj4gIDEgZmlsZSBjaGFuZ2VkLCA1IGRl
-bGV0aW9ucygtKQo+Pj4+Pgo+Pj4+Cj4+Pj4gUGxlYXNlIGFkZCBBY2tlZC1ieS9SZXZpZXdlZC1i
-eSB0YWdzIHdoZW4gcG9zdGluZyBuZXcgdmVyc2lvbnMuIEhvd2V2ZXIsCj4+Pj4gdGhlcmUncyBu
-byBuZWVkIHRvIHJlcG9zdCBwYXRjaGVzICpvbmx5KiB0byBhZGQgdGhlIHRhZ3MuIFRoZSB1cHN0
-cmVhbQo+Pj4+IG1haW50YWluZXIgd2lsbCBkbyB0aGF0IGZvciBhY2tzIHJlY2VpdmVkIG9uIHRo
-ZSB2ZXJzaW9uIHRoZXkgYXBwbHkuCj4+Pj4KPj4+PiBJZiBhIHRhZyB3YXMgbm90IGFkZGVkIG9u
-IHB1cnBvc2UsIHBsZWFzZSBzdGF0ZSB3aHkgYW5kIHdoYXQgY2hhbmdlZC4KPj4+Cj4+PiBzb3Jy
-eSBhYm91dCB0aGF0LiBUaGUgb3JpZ2luYWwgcmVzcG9uc2Ugc29tZWhvdyBkaWQgbm90IHRocmVh
-ZCBjb3JyZWN0bHkKPj4+IGluIG15IG1haWwgY2xpZW50LCBwcm9iYWJseSBzb21lIGZhdWx0IG9u
-IG15IHNpZGUsIHNvIEkndmUgb25seSBmb3VuZCB5b3VyCj4+PiBtYWlsIGp1c3Qgbm93IGJ5IGRp
-Z2dpbmcgaGFyZC4KPj4+Cj4+PiBAS2lzaG9uLCB0aGUgb3JpZ2luYWwgbWFpbCBhbHJlYWR5IGdv
-dCBhbgo+Pj4KPj4+IEFja2VkLWJ5OiBSb2IgSGVycmluZyA8cm9iaEBrZXJuZWwub3JnPgo+Pgo+
-PiBtZXJnZWQgbm93LCBUaGFua3MhCj4gCj4gdGhhbmtzIC4uLiBqdXN0IHRvIG1ha2Ugc3VyZSwg
-ZGlkIHlvdSBhbHNvIHNlZSB0aGUgZHJpdmVyIGNoYW5nZXMgaW4gcGF0Y2gyPwo+IEFzIEkgZG9u
-J3Qgc2VlIHRoZW0gaW4gZWl0aGVyIG9mIHlvdXIgYnJhbmNoZXMgOi0pCgpGb3Igc29tZSByZWFz
-b24sIHBhdGNoIDIgb2YgdGhlICJSRVNFTkQiIHNlcmllcyBpcyBub3QgaW4gbXkgaW5ib3guCkhv
-d2V2ZXIgbG9va2luZyBhdCB5b3VyIG9yaWdpbmFsIHNlcmllcywgbG9va3MgbGlrZSB0aGlzIGlz
-IGEgY2FuZGlkYXRlCmZvciA1LjYuIEknbGwgdGFrZSBwYXRjaCAyIGZyb20geW91ciBvcmlnaW5h
-bCBzZXJpZXMuCgpUaGFua3MKS2lzaG9uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0t
-a2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+Sort nodes in alphabetical order.
+Place &saradc below &pwm0.
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3308-evb.dts | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-evb.dts b/arch/arm64/boot/dts/rockchip/rk3308-evb.dts
+index 9b4f855ea..e8f15dcce 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-evb.dts
+@@ -190,11 +190,6 @@
+ 	cpu-supply = <&vdd_core>;
+ };
+ 
+-&saradc {
+-	status = "okay";
+-	vref-supply = <&vcc_1v8>;
+-};
+-
+ &pinctrl {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rtc_32k>;
+@@ -219,8 +214,13 @@
+ };
+ 
+ &pwm0 {
+-	status = "okay";
+ 	pinctrl-0 = <&pwm0_pin_pull_down>;
++	status = "okay";
++};
++
++&saradc {
++	vref-supply = <&vcc_1v8>;
++	status = "okay";
+ };
+ 
+ &uart4 {
+-- 
+2.11.0
