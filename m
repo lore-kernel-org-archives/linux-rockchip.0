@@ -1,86 +1,98 @@
-From: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH v2 09/11] memory: samsung: exynos5422-dmc: Replace the
- deprecated 'devfreq-events' property
-Date: Fri, 20 Dec 2019 09:24:28 +0900
-Message-ID: <20191220002430.11995-10-cw00.choi@samsung.com>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: [PATCH v2 11/11] arm64: dts: exynos: Replace deprecated property
+ for Exynos bus on TM2
+Date: Fri, 20 Dec 2019 09:24:30 +0900
+Message-ID: <20191220002430.11995-12-cw00.choi@samsung.com>
 References: <20191220002430.11995-1-cw00.choi@samsung.com>
- <CGME20191220001800epcas1p41ab059757aeec99060cb4f47b0f48ac0@epcas1p4.samsung.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191220002430.11995-1-cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, leonard.crestez-3arQi8VN3Tc@public.gmane.org, lukasz.luba-5wv7dgnIgG8@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, a.swigon-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
+        <CGME20191220001800epcas1p13d5f4ff181c10a118e151a86891a7130@epcas1p1.samsung.com>
+Content-Type: text/plain; charset="utf-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191220002430.11995-1-cw00.choi@samsung.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org, krzk@kernel.org, heiko@sntech.de, leonard.crestez@nxp.com, lukasz.luba@arm.com
+Cc: mark.rutland@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, cw00.choi@samsung.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Replace the deprecated 'devfreq-events' property with 'exynos,ppmu-device'
-property. But, to guarantee the backward-compatibility, keep the support
-of 'devfreq-events' property.
+Replace the property related to devfreq and devfreq-event device
+to remove the deprecated property name.
+- Replace 'devfreq' with 'exynos,parent-bus' property
+  for getting the parent devfreq device of exynos-bus.
+- Replace 'devfreq-events' with 'exynos,ppmu-device' property
+  for getting the devfreq-event device to monitor bus utilization.
 
-Reviewed-by: Lukasz Luba <lukasz.luba-5wv7dgnIgG8@public.gmane.org>
-Signed-off-by: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
 ---
- drivers/memory/samsung/exynos5422-dmc.c | 29 ++++++++++++++++++++-----
- 1 file changed, 23 insertions(+), 6 deletions(-)
+ .../dts/exynos/exynos5433-tm2-common.dtsi     | 20 +++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/memory/samsung/exynos5422-dmc.c b/drivers/memory/samsung/exynos5422-dmc.c
-index f11fe29a69fc..6e8aa19e84d3 100644
---- a/drivers/memory/samsung/exynos5422-dmc.c
-+++ b/drivers/memory/samsung/exynos5422-dmc.c
-@@ -1270,10 +1270,17 @@ static int exynos5_dmc_init_clks(struct exynos5_dmc *dmc)
- static struct devfreq_event_dev *exynos5_dmc_get_edev(struct device_node *np,
- 							int index)
- {
--	struct device_node *node = of_parse_phandle(np, "devfreq-events",
-+	struct device_node *node = of_parse_phandle(np, "exynos,ppmu-device",
- 							index);
--	if (!node)
--		return ERR_PTR(-ENODEV);
-+	if (!node) {
-+		 /*
-+		  * Check the deprecated 'devfreq-events' property
-+		  * to support backward-compatibility.
-+		 */
-+		node = of_parse_phandle(np, "devfreq-events", index);
-+		if (!node)
-+			return ERR_PTR(-ENODEV);
-+	}
- 	return devfreq_event_get_edev_by_node(node);
- }
+diff --git a/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi b/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
+index 6f90b0e62cba..6bdd5b0940a5 100644
+--- a/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
++++ b/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
+@@ -166,54 +166,54 @@
+ };
  
-@@ -1292,10 +1299,20 @@ static int exynos5_performance_counters_init(struct exynos5_dmc *dmc)
- 	int ret, i;
+ &bus_g2d_400 {
+-	devfreq-events = <&ppmu_event0_d0_general>, <&ppmu_event0_d1_general>;
++	exynos,ppmu-device = <&ppmu_event0_d0_general>, <&ppmu_event0_d1_general>;
+ 	vdd-supply = <&buck4_reg>;
+ 	exynos,saturation-ratio = <10>;
+ 	status = "okay";
+ };
  
- 	dmc->num_counters = of_property_count_elems_of_size(dmc->dev->of_node,
--					"devfreq-events", sizeof(u32));
-+					"exynos,ppmu-device", sizeof(u32));
- 	if (dmc->num_counters < 0) {
--		dev_err(dmc->dev, "could not get devfreq-event counters\n");
--		return dmc->num_counters;
-+		 /*
-+		  * Check the deprecated 'devfreq-events' property
-+		  * to support backward-compatibility.
-+		 */
-+		dmc->num_counters = of_property_count_elems_of_size(
-+					dmc->dev->of_node,
-+					"devfreq-events", sizeof(u32));
-+		if (dmc->num_counters < 0) {
-+			dev_err(dmc->dev,
-+				"could not get devfreq-event counters\n");
-+			return dmc->num_counters;
-+		}
- 	}
+ &bus_g2d_266 {
+-	devfreq = <&bus_g2d_400>;
++	exynos,parent-bus = <&bus_g2d_400>;
+ 	status = "okay";
+ };
  
- 	counters_size = sizeof(struct devfreq_event_dev) * dmc->num_counters;
+ &bus_gscl {
+-	devfreq = <&bus_g2d_400>;
++	exynos,parent-bus = <&bus_g2d_400>;
+ 	status = "okay";
+ };
+ 
+ &bus_hevc {
+-	devfreq = <&bus_g2d_400>;
++	exynos,parent-bus = <&bus_g2d_400>;
+ 	status = "okay";
+ };
+ 
+ &bus_jpeg {
+-	devfreq = <&bus_g2d_400>;
++	exynos,parent-bus = <&bus_g2d_400>;
+ 	status = "okay";
+ };
+ 
+ &bus_mfc {
+-	devfreq = <&bus_g2d_400>;
++	exynos,parent-bus = <&bus_g2d_400>;
+ 	status = "okay";
+ };
+ 
+ &bus_mscl {
+-	devfreq = <&bus_g2d_400>;
++	exynos,parent-bus = <&bus_g2d_400>;
+ 	status = "okay";
+ };
+ 
+ &bus_noc0 {
+-	devfreq = <&bus_g2d_400>;
++	exynos,parent-bus = <&bus_g2d_400>;
+ 	status = "okay";
+ };
+ 
+ &bus_noc1 {
+-	devfreq = <&bus_g2d_400>;
++	exynos,parent-bus = <&bus_g2d_400>;
+ 	status = "okay";
+ };
+ 
+ &bus_noc2 {
+-	devfreq = <&bus_g2d_400>;
++	exynos,parent-bus = <&bus_g2d_400>;
+ 	status = "okay";
+ };
+ 
 -- 
 2.17.1
