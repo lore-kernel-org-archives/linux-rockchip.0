@@ -1,10 +1,10 @@
 From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: [PATCH v2 02/11] PM / devfreq: Remove
- devfreq_get_devfreq_by_phandle function
-Date: Fri, 20 Dec 2019 09:24:21 +0900
-Message-ID: <20191220002430.11995-3-cw00.choi@samsung.com>
+Subject: [PATCH v2 10/11] ARM: dts: exynos: Replace deprecated property for
+ Exynos bus and DMC
+Date: Fri, 20 Dec 2019 09:24:29 +0900
+Message-ID: <20191220002430.11995-11-cw00.choi@samsung.com>
 References: <20191220002430.11995-1-cw00.choi@samsung.com>
-        <CGME20191220001759epcas1p4ce1c2017937a35de84eab720b9732df0@epcas1p4.samsung.com>
+        <CGME20191220001800epcas1p2f2dfd9d24e275425b07a06bcdeb4aba9@epcas1p2.samsung.com>
 Content-Type: text/plain; charset="utf-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20191220002430.11995-1-cw00.choi@samsung.com>
@@ -13,130 +13,396 @@ To: robh+dt@kernel.org, krzk@kernel.org, heiko@sntech.de, leonard.crestez@nxp.co
 Cc: mark.rutland@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, cw00.choi@samsung.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Previously, devfreq core support 'devfreq' property in order to get
-the devfreq device by phandle. But, 'devfreq' property name is not proper
-on devicetree binding because this name doesn't mean the any h/w attribute.
-
-The devfreq core hand over the right to decide the property name
-for getting the devfreq device on devicetree. Each devfreq driver
-will decide the property name on devicetree binding and then get
-the devfreq device by using devfreq_get_devfreq_by_node().
+Replace the property related to devfreq and devfreq-event device
+to remove the deprecated property name.
+- Replace 'devfreq' with 'exynos,parent-bus' property
+  for getting the parent devfreq device of exynos-bus.
+- Replace 'devfreq-events' with 'exynos,ppmu-device' property
+  for getting the devfreq-event device to monitor bus utilization.
 
 Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
 ---
- drivers/devfreq/devfreq.c    | 35 -----------------------------------
- drivers/devfreq/exynos-bus.c | 12 +++++++++++-
- include/linux/devfreq.h      |  8 --------
- 3 files changed, 11 insertions(+), 44 deletions(-)
+ arch/arm/boot/dts/exynos3250-monk.dts         |  2 +-
+ arch/arm/boot/dts/exynos3250-rinato.dts       | 18 +++++-----
+ .../boot/dts/exynos4412-itop-scp-core.dtsi    | 16 ++++-----
+ arch/arm/boot/dts/exynos4412-midas.dtsi       | 18 +++++-----
+ .../boot/dts/exynos4412-odroid-common.dtsi    | 18 +++++-----
+ arch/arm/boot/dts/exynos5422-odroid-core.dtsi | 34 +++++++++----------
+ 6 files changed, 53 insertions(+), 53 deletions(-)
 
-diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
-index cb8ca81c8973..c3d3c7c802a0 100644
---- a/drivers/devfreq/devfreq.c
-+++ b/drivers/devfreq/devfreq.c
-@@ -991,48 +991,13 @@ struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
+diff --git a/arch/arm/boot/dts/exynos3250-monk.dts b/arch/arm/boot/dts/exynos3250-monk.dts
+index 248bd372fe70..c6b1fcd4ba97 100644
+--- a/arch/arm/boot/dts/exynos3250-monk.dts
++++ b/arch/arm/boot/dts/exynos3250-monk.dts
+@@ -158,7 +158,7 @@
+ };
  
- 	return ERR_PTR(-ENODEV);
- }
--
--/*
-- * devfreq_get_devfreq_by_phandle - Get the devfreq device from devicetree
-- * @dev - instance to the given device
-- * @index - index into list of devfreq
-- *
-- * return the instance of devfreq device
-- */
--struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
--{
--	struct device_node *node;
--	struct devfreq *devfreq;
--
--	if (!dev)
--		return ERR_PTR(-EINVAL);
--
--	if (!dev->of_node)
--		return ERR_PTR(-EINVAL);
--
--	node = of_parse_phandle(dev->of_node, "devfreq", index);
--	if (!node)
--		return ERR_PTR(-ENODEV);
--
--	devfreq = devfreq_get_devfreq_by_node(node);
--	of_node_put(node);
--
--	return devfreq;
--}
--
- #else
- struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
- {
- 	return ERR_PTR(-ENODEV);
- }
--
--struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
--{
--	return ERR_PTR(-ENODEV);
--}
- #endif /* CONFIG_OF */
- EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_node);
--EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_phandle);
+ &bus_dmc {
+-	devfreq-events = <&ppmu_dmc0_3>, <&ppmu_dmc1_3>;
++	exynos,ppmu-device = <&ppmu_dmc0_3>, <&ppmu_dmc1_3>;
+ 	vdd-supply = <&buck1_reg>;
+ 	status = "okay";
+ };
+diff --git a/arch/arm/boot/dts/exynos3250-rinato.dts b/arch/arm/boot/dts/exynos3250-rinato.dts
+index 86c26a4edfd7..7ad80354d8df 100644
+--- a/arch/arm/boot/dts/exynos3250-rinato.dts
++++ b/arch/arm/boot/dts/exynos3250-rinato.dts
+@@ -153,49 +153,49 @@
+ };
  
- /**
-  * devm_devfreq_remove_device() - Resource-managed devfreq_remove_device()
-diff --git a/drivers/devfreq/exynos-bus.c b/drivers/devfreq/exynos-bus.c
-index 7f5917d59072..1bc4e3c81115 100644
---- a/drivers/devfreq/exynos-bus.c
-+++ b/drivers/devfreq/exynos-bus.c
-@@ -86,6 +86,16 @@ static int exynos_bus_get_event(struct exynos_bus *bus,
- 	return ret;
- }
+ &bus_dmc {
+-	devfreq-events = <&ppmu_dmc0_3>, <&ppmu_dmc1_3>;
++	exynos,ppmu-device = <&ppmu_dmc0_3>, <&ppmu_dmc1_3>;
+ 	vdd-supply = <&buck1_reg>;
+ 	status = "okay";
+ };
  
-+static struct devfreq *exynos_bus_get_parent_devfreq(struct device_node *np)
-+{
-+	struct device_node *node = of_parse_phandle(np, "devfreq", 0);
-+
-+	if (!node)
-+		return ERR_PTR(-ENODEV);
-+
-+	return devfreq_get_devfreq_by_node(node);
-+}
-+
- /*
-  * devfreq function for both simple-ondemand and passive governor
-  */
-@@ -353,7 +363,7 @@ static int exynos_bus_profile_init_passive(struct exynos_bus *bus,
- 	profile->exit = exynos_bus_passive_exit;
+ &bus_leftbus {
+-	devfreq-events = <&ppmu_leftbus_3>, <&ppmu_rightbus_3>;
++	exynos,ppmu-device = <&ppmu_leftbus_3>, <&ppmu_rightbus_3>;
+ 	vdd-supply = <&buck3_reg>;
+ 	status = "okay";
+ };
  
- 	/* Get the instance of parent devfreq device */
--	parent_devfreq = devfreq_get_devfreq_by_phandle(dev, 0);
-+	parent_devfreq = exynos_bus_get_parent_devfreq(dev->of_node);
- 	if (IS_ERR(parent_devfreq))
- 		return -EPROBE_DEFER;
+ &bus_rightbus {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
  
-diff --git a/include/linux/devfreq.h b/include/linux/devfreq.h
-index 1dccc47acbce..a4351698fb64 100644
---- a/include/linux/devfreq.h
-+++ b/include/linux/devfreq.h
-@@ -254,8 +254,6 @@ extern void devm_devfreq_unregister_notifier(struct device *dev,
- 				struct notifier_block *nb,
- 				unsigned int list);
- extern struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node);
--extern struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev,
--						int index);
+ &bus_lcd0 {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
  
- #if IS_ENABLED(CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND)
- /**
-@@ -413,12 +411,6 @@ static inline struct devfreq *devfreq_get_devfreq_by_node(struct device_node *no
- 	return ERR_PTR(-ENODEV);
- }
+ &bus_fsys {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
  
--static inline struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev,
--							int index)
--{
--	return ERR_PTR(-ENODEV);
--}
--
- static inline int devfreq_update_stats(struct devfreq *df)
- {
- 	return -EINVAL;
+ &bus_mcuisp {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_isp {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_peril {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_mfc {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm/boot/dts/exynos4412-itop-scp-core.dtsi b/arch/arm/boot/dts/exynos4412-itop-scp-core.dtsi
+index dfceb155b3a7..e275a52eb0d3 100644
+--- a/arch/arm/boot/dts/exynos4412-itop-scp-core.dtsi
++++ b/arch/arm/boot/dts/exynos4412-itop-scp-core.dtsi
+@@ -70,44 +70,44 @@
+ };
+ 
+ &bus_dmc {
+-	devfreq-events = <&ppmu_dmc0_3>, <&ppmu_dmc1_3>;
++	exynos,ppmu-device = <&ppmu_dmc0_3>, <&ppmu_dmc1_3>;
+ 	vdd-supply = <&buck1_reg>;
+ 	status = "okay";
+ };
+ 
+ &bus_acp {
+-	devfreq = <&bus_dmc>;
++	exynos,parent-bus = <&bus_dmc>;
+ 	status = "okay";
+ };
+ 
+ &bus_c2c {
+-	devfreq = <&bus_dmc>;
++	exynos,parent-bus = <&bus_dmc>;
+ 	status = "okay";
+ };
+ 
+ &bus_leftbus {
+-	devfreq-events = <&ppmu_leftbus_3>, <&ppmu_rightbus_3>;
++	exynos,ppmu-device = <&ppmu_leftbus_3>, <&ppmu_rightbus_3>;
+ 	vdd-supply = <&buck3_reg>;
+ 	status = "okay";
+ };
+ 
+ &bus_rightbus {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_fsys {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_peri {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_mfc {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm/boot/dts/exynos4412-midas.dtsi b/arch/arm/boot/dts/exynos4412-midas.dtsi
+index 83be3a797411..1869eed05167 100644
+--- a/arch/arm/boot/dts/exynos4412-midas.dtsi
++++ b/arch/arm/boot/dts/exynos4412-midas.dtsi
+@@ -288,49 +288,49 @@
+ };
+ 
+ &bus_dmc {
+-	devfreq-events = <&ppmu_dmc0_3>, <&ppmu_dmc1_3>;
++	exynos,ppmu-device = <&ppmu_dmc0_3>, <&ppmu_dmc1_3>;
+ 	vdd-supply = <&buck1_reg>;
+ 	status = "okay";
+ };
+ 
+ &bus_acp {
+-	devfreq = <&bus_dmc>;
++	exynos,parent-bus = <&bus_dmc>;
+ 	status = "okay";
+ };
+ 
+ &bus_c2c {
+-	devfreq = <&bus_dmc>;
++	exynos,parent-bus = <&bus_dmc>;
+ 	status = "okay";
+ };
+ 
+ &bus_leftbus {
+-	devfreq-events = <&ppmu_leftbus_3>, <&ppmu_rightbus_3>;
++	exynos,ppmu-device = <&ppmu_leftbus_3>, <&ppmu_rightbus_3>;
+ 	vdd-supply = <&buck3_reg>;
+ 	status = "okay";
+ };
+ 
+ &bus_rightbus {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_display {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_fsys {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_peri {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_mfc {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm/boot/dts/exynos4412-odroid-common.dtsi b/arch/arm/boot/dts/exynos4412-odroid-common.dtsi
+index ea55f377d17c..bb5a7cbcc308 100644
+--- a/arch/arm/boot/dts/exynos4412-odroid-common.dtsi
++++ b/arch/arm/boot/dts/exynos4412-odroid-common.dtsi
+@@ -88,49 +88,49 @@
+ };
+ 
+ &bus_dmc {
+-	devfreq-events = <&ppmu_dmc0_3>, <&ppmu_dmc1_3>;
++	exynos,ppmu-device = <&ppmu_dmc0_3>, <&ppmu_dmc1_3>;
+ 	vdd-supply = <&buck1_reg>;
+ 	status = "okay";
+ };
+ 
+ &bus_acp {
+-	devfreq = <&bus_dmc>;
++	exynos,parent-bus = <&bus_dmc>;
+ 	status = "okay";
+ };
+ 
+ &bus_c2c {
+-	devfreq = <&bus_dmc>;
++	exynos,parent-bus = <&bus_dmc>;
+ 	status = "okay";
+ };
+ 
+ &bus_leftbus {
+-	devfreq-events = <&ppmu_leftbus_3>, <&ppmu_rightbus_3>;
++	exynos,ppmu-device = <&ppmu_leftbus_3>, <&ppmu_rightbus_3>;
+ 	vdd-supply = <&buck3_reg>;
+ 	status = "okay";
+ };
+ 
+ &bus_rightbus {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_display {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_fsys {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_peri {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+ &bus_mfc {
+-	devfreq = <&bus_leftbus>;
++	exynos,parent-bus = <&bus_leftbus>;
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm/boot/dts/exynos5422-odroid-core.dtsi b/arch/arm/boot/dts/exynos5422-odroid-core.dtsi
+index 059fa32d1a8f..8510e2787a9c 100644
+--- a/arch/arm/boot/dts/exynos5422-odroid-core.dtsi
++++ b/arch/arm/boot/dts/exynos5422-odroid-core.dtsi
+@@ -134,7 +134,7 @@
+ };
+ 
+ &bus_wcore {
+-	devfreq-events = <&nocp_mem0_0>, <&nocp_mem0_1>,
++	exynos,ppmu-device = <&nocp_mem0_0>, <&nocp_mem0_1>,
+ 			<&nocp_mem1_0>, <&nocp_mem1_1>;
+ 	vdd-supply = <&buck3_reg>;
+ 	exynos,saturation-ratio = <100>;
+@@ -142,77 +142,77 @@
+ };
+ 
+ &bus_noc {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_fsys_apb {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_fsys {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_fsys2 {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_mfc {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_gen {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_peri {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_g2d {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_g2d_acp {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_jpeg {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_jpeg_apb {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_disp1_fimd {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_disp1 {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_gscl_scaler {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+ &bus_mscl {
+-	devfreq = <&bus_wcore>;
++	exynos,parent-bus = <&bus_wcore>;
+ 	status = "okay";
+ };
+ 
+@@ -225,7 +225,7 @@
+ };
+ 
+ &dmc {
+-	devfreq-events = <&ppmu_event3_dmc0_0>,	<&ppmu_event3_dmc0_1>,
++	exynos,ppmu-device = <&ppmu_event3_dmc0_0>, <&ppmu_event3_dmc0_1>,
+ 			<&ppmu_event3_dmc1_0>, <&ppmu_event3_dmc1_1>;
+ 	device-handle = <&samsung_K3QF2F20DB>;
+ 	operating-points-v2 = <&dmc_opp_table>;
 -- 
 2.17.1
