@@ -1,131 +1,173 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: [PATCH v2 01/11] PM / devfreq: Add devfreq_get_devfreq_by_node
- function
-Date: Fri, 20 Dec 2019 09:24:20 +0900
-Message-ID: <20191220002430.11995-2-cw00.choi@samsung.com>
+From: Leonard Crestez <leonard.crestez@nxp.com>
+Subject: Re: [PATCH v2 02/11] PM / devfreq: Remove
+ devfreq_get_devfreq_by_phandle function
+Date: Fri, 20 Dec 2019 00:46:55 +0000
+Message-ID: <VI1PR04MB70235291D8E40CB6225A0AF0EE2D0@VI1PR04MB7023.eurprd04.prod.outlook.com>
 References: <20191220002430.11995-1-cw00.choi@samsung.com>
-        <CGME20191220001759epcas1p4bbbcf6a84c09229db0ddae86be294405@epcas1p4.samsung.com>
-Content-Type: text/plain; charset="utf-8"
+ <CGME20191220001759epcas1p4ce1c2017937a35de84eab720b9732df0@epcas1p4.samsung.com>
+ <20191220002430.11995-3-cw00.choi@samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191220002430.11995-1-cw00.choi@samsung.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, krzk@kernel.org, heiko@sntech.de, leonard.crestez@nxp.com, lukasz.luba@arm.com
-Cc: mark.rutland@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, cw00.choi@samsung.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+To: Chanwoo Choi <cw00.choi@samsung.com>, "krzk@kernel.org" <krzk@kernel.org>
+Cc: "robh+dt@kernel.org" <robh+dt@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, "lukasz.luba@arm.com" <lukasz.luba@arm.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>, "a.swigon@samsung.com" <a.swigon@samsung.com>, "m.szyprowski@samsung.com" <m.szyprowski@samsung.com>, "kgene@kernel.org" <kgene@kernel.org>, "myungjoo.ham@samsung.com" <myungjoo.ham@samsung.com>, "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-rockc
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Leonard Crestez <leonard.crestez@nxp.com>
-
-Split off part of devfreq_get_devfreq_by_phandle into a separate
-function. This allows callers to fetch devfreq instances by enumerating
-devicetree instead of explicit phandles.
-
-[lkp: Reported the build error]
-Reported-by: kbuild test robot <lkp@intel.com>
-Signed-off-by: Leonard Crestez <leonard.crestez@nxp.com>
-[cw00.choi: Export devfreq_get_devfreq_by_node function and
- add function to devfreq.h when CONFIG_PM_DEVFREQ is enabled.]
-Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
----
- drivers/devfreq/devfreq.c | 46 +++++++++++++++++++++++++++++----------
- include/linux/devfreq.h   |  6 +++++
- 2 files changed, 41 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
-index 89260b17598f..cb8ca81c8973 100644
---- a/drivers/devfreq/devfreq.c
-+++ b/drivers/devfreq/devfreq.c
-@@ -966,6 +966,32 @@ struct devfreq *devm_devfreq_add_device(struct device *dev,
- EXPORT_SYMBOL(devm_devfreq_add_device);
- 
- #ifdef CONFIG_OF
-+/*
-+ * devfreq_get_devfreq_by_node - Get the devfreq device from devicetree
-+ * @node - pointer to device_node
-+ *
-+ * return the instance of devfreq device
-+ */
-+struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
-+{
-+	struct devfreq *devfreq;
-+
-+	if (!node)
-+		return ERR_PTR(-EINVAL);
-+
-+	mutex_lock(&devfreq_list_lock);
-+	list_for_each_entry(devfreq, &devfreq_list, node) {
-+		if (devfreq->dev.parent
-+			&& devfreq->dev.parent->of_node == node) {
-+			mutex_unlock(&devfreq_list_lock);
-+			return devfreq;
-+		}
-+	}
-+	mutex_unlock(&devfreq_list_lock);
-+
-+	return ERR_PTR(-ENODEV);
-+}
-+
- /*
-  * devfreq_get_devfreq_by_phandle - Get the devfreq device from devicetree
-  * @dev - instance to the given device
-@@ -988,26 +1014,24 @@ struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
- 	if (!node)
- 		return ERR_PTR(-ENODEV);
- 
--	mutex_lock(&devfreq_list_lock);
--	list_for_each_entry(devfreq, &devfreq_list, node) {
--		if (devfreq->dev.parent
--			&& devfreq->dev.parent->of_node == node) {
--			mutex_unlock(&devfreq_list_lock);
--			of_node_put(node);
--			return devfreq;
--		}
--	}
--	mutex_unlock(&devfreq_list_lock);
-+	devfreq = devfreq_get_devfreq_by_node(node);
- 	of_node_put(node);
- 
--	return ERR_PTR(-EPROBE_DEFER);
-+	return devfreq;
- }
-+
- #else
-+struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
-+{
-+	return ERR_PTR(-ENODEV);
-+}
-+
- struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
- {
- 	return ERR_PTR(-ENODEV);
- }
- #endif /* CONFIG_OF */
-+EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_node);
- EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_phandle);
- 
- /**
-diff --git a/include/linux/devfreq.h b/include/linux/devfreq.h
-index c6f82d4bec9f..1dccc47acbce 100644
---- a/include/linux/devfreq.h
-+++ b/include/linux/devfreq.h
-@@ -253,6 +253,7 @@ extern void devm_devfreq_unregister_notifier(struct device *dev,
- 				struct devfreq *devfreq,
- 				struct notifier_block *nb,
- 				unsigned int list);
-+extern struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node);
- extern struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev,
- 						int index);
- 
-@@ -407,6 +408,11 @@ static inline void devm_devfreq_unregister_notifier(struct device *dev,
- {
- }
- 
-+static inline struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
-+{
-+	return ERR_PTR(-ENODEV);
-+}
-+
- static inline struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev,
- 							int index)
- {
--- 
-2.17.1
+On 20.12.2019 02:18, Chanwoo Choi wrote:=0A=
+> Previously, devfreq core support 'devfreq' property in order to get=0A=
+> the devfreq device by phandle. But, 'devfreq' property name is not proper=
+=0A=
+> on devicetree binding because this name doesn't mean the any h/w attribut=
+e.=0A=
+> =0A=
+> The devfreq core hand over the right to decide the property name=0A=
+> for getting the devfreq device on devicetree. Each devfreq driver=0A=
+> will decide the property name on devicetree binding and then get=0A=
+> the devfreq device by using devfreq_get_devfreq_by_node().=0A=
+> =0A=
+> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>=0A=
+> ---=0A=
+>   drivers/devfreq/devfreq.c    | 35 -----------------------------------=
+=0A=
+>   drivers/devfreq/exynos-bus.c | 12 +++++++++++-=0A=
+>   include/linux/devfreq.h      |  8 --------=0A=
+>   3 files changed, 11 insertions(+), 44 deletions(-)=0A=
+> =0A=
+> diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c=0A=
+> index cb8ca81c8973..c3d3c7c802a0 100644=0A=
+> --- a/drivers/devfreq/devfreq.c=0A=
+> +++ b/drivers/devfreq/devfreq.c=0A=
+> @@ -991,48 +991,13 @@ struct devfreq *devfreq_get_devfreq_by_node(struct =
+device_node *node)=0A=
+>   =0A=
+>   	return ERR_PTR(-ENODEV);=0A=
+>   }=0A=
+> -=0A=
+> -/*=0A=
+> - * devfreq_get_devfreq_by_phandle - Get the devfreq device from devicetr=
+ee=0A=
+> - * @dev - instance to the given device=0A=
+> - * @index - index into list of devfreq=0A=
+> - *=0A=
+> - * return the instance of devfreq device=0A=
+> - */=0A=
+> -struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int i=
+ndex)=0A=
+> -{=0A=
+> -	struct device_node *node;=0A=
+> -	struct devfreq *devfreq;=0A=
+> -=0A=
+> -	if (!dev)=0A=
+> -		return ERR_PTR(-EINVAL);=0A=
+> -=0A=
+> -	if (!dev->of_node)=0A=
+> -		return ERR_PTR(-EINVAL);=0A=
+> -=0A=
+> -	node =3D of_parse_phandle(dev->of_node, "devfreq", index);=0A=
+> -	if (!node)=0A=
+> -		return ERR_PTR(-ENODEV);=0A=
+> -=0A=
+> -	devfreq =3D devfreq_get_devfreq_by_node(node);=0A=
+> -	of_node_put(node);=0A=
+> -=0A=
+> -	return devfreq;=0A=
+> -}=0A=
+> -=0A=
+>   #else=0A=
+>   struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)=
+=0A=
+>   {=0A=
+>   	return ERR_PTR(-ENODEV);=0A=
+>   }=0A=
+> -=0A=
+> -struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int i=
+ndex)=0A=
+> -{=0A=
+> -	return ERR_PTR(-ENODEV);=0A=
+> -}=0A=
+>   #endif /* CONFIG_OF */=0A=
+>   EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_node);=0A=
+> -EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_phandle);=0A=
+>   =0A=
+>   /**=0A=
+>    * devm_devfreq_remove_device() - Resource-managed devfreq_remove_devic=
+e()=0A=
+> diff --git a/drivers/devfreq/exynos-bus.c b/drivers/devfreq/exynos-bus.c=
+=0A=
+> index 7f5917d59072..1bc4e3c81115 100644=0A=
+> --- a/drivers/devfreq/exynos-bus.c=0A=
+> +++ b/drivers/devfreq/exynos-bus.c=0A=
+> @@ -86,6 +86,16 @@ static int exynos_bus_get_event(struct exynos_bus *bus=
+,=0A=
+>   	return ret;=0A=
+>   }=0A=
+>   =0A=
+> +static struct devfreq *exynos_bus_get_parent_devfreq(struct device_node =
+*np)=0A=
+> +{=0A=
+> +	struct device_node *node =3D of_parse_phandle(np, "devfreq", 0);=0A=
+> +=0A=
+> +	if (!node)=0A=
+> +		return ERR_PTR(-ENODEV);=0A=
+> +=0A=
+> +	return devfreq_get_devfreq_by_node(node);=0A=
+=0A=
+You need to call of_node_put(node) here and in several other places.=0A=
+=0A=
+The old devfreq_get_devfreq_by_phandle API handled this internally but =0A=
+devfreq_get_devfreq_by_node doesn't.=0A=
+=0A=
+Maybe the _by_phandle API could be kept and just take the property name =0A=
+instead of always using "devfreq"?=0A=
+=0A=
+> +}=0A=
+> +=0A=
+>   /*=0A=
+>    * devfreq function for both simple-ondemand and passive governor=0A=
+>    */=0A=
+> @@ -353,7 +363,7 @@ static int exynos_bus_profile_init_passive(struct exy=
+nos_bus *bus,=0A=
+>   	profile->exit =3D exynos_bus_passive_exit;=0A=
+>   =0A=
+>   	/* Get the instance of parent devfreq device */=0A=
+> -	parent_devfreq =3D devfreq_get_devfreq_by_phandle(dev, 0);=0A=
+> +	parent_devfreq =3D exynos_bus_get_parent_devfreq(dev->of_node);=0A=
+>   	if (IS_ERR(parent_devfreq))=0A=
+>   		return -EPROBE_DEFER;=0A=
+>   =0A=
+> diff --git a/include/linux/devfreq.h b/include/linux/devfreq.h=0A=
+> index 1dccc47acbce..a4351698fb64 100644=0A=
+> --- a/include/linux/devfreq.h=0A=
+> +++ b/include/linux/devfreq.h=0A=
+> @@ -254,8 +254,6 @@ extern void devm_devfreq_unregister_notifier(struct d=
+evice *dev,=0A=
+>   				struct notifier_block *nb,=0A=
+>   				unsigned int list);=0A=
+>   extern struct devfreq *devfreq_get_devfreq_by_node(struct device_node *=
+node);=0A=
+> -extern struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev=
+,=0A=
+> -						int index);=0A=
+>   =0A=
+>   #if IS_ENABLED(CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND)=0A=
+>   /**=0A=
+> @@ -413,12 +411,6 @@ static inline struct devfreq *devfreq_get_devfreq_by=
+_node(struct device_node *no=0A=
+>   	return ERR_PTR(-ENODEV);=0A=
+>   }=0A=
+>   =0A=
+> -static inline struct devfreq *devfreq_get_devfreq_by_phandle(struct devi=
+ce *dev,=0A=
+> -							int index)=0A=
+> -{=0A=
+> -	return ERR_PTR(-ENODEV);=0A=
+> -}=0A=
+> -=0A=
+>   static inline int devfreq_update_stats(struct devfreq *df)=0A=
+>   {=0A=
+>   	return -EINVAL;=0A=
+> =0A=
+=0A=
