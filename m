@@ -1,59 +1,86 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: [PATCH v2 06/11] dt-bindings: memory: exynos5422-dmc: Replace the
+From: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH v2 09/11] memory: samsung: exynos5422-dmc: Replace the
  deprecated 'devfreq-events' property
-Date: Fri, 20 Dec 2019 09:24:25 +0900
-Message-ID: <20191220002430.11995-7-cw00.choi@samsung.com>
+Date: Fri, 20 Dec 2019 09:24:28 +0900
+Message-ID: <20191220002430.11995-10-cw00.choi@samsung.com>
 References: <20191220002430.11995-1-cw00.choi@samsung.com>
-        <CGME20191220001800epcas1p364322170854fdd171c43f6b1de2b61a4@epcas1p3.samsung.com>
-Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191220002430.11995-1-cw00.choi@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, krzk@kernel.org, heiko@sntech.de, leonard.crestez@nxp.com, lukasz.luba@arm.com
-Cc: mark.rutland@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, cw00.choi@samsung.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+ <CGME20191220001800epcas1p41ab059757aeec99060cb4f47b0f48ac0@epcas1p4.samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191220002430.11995-1-cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, leonard.crestez-3arQi8VN3Tc@public.gmane.org, lukasz.luba-5wv7dgnIgG8@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, a.swigon-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 Replace the deprecated 'devfreq-events' property with 'exynos,ppmu-device'
 property. But, to guarantee the backward-compatibility, keep the support
 of 'devfreq-events' property.
 
-Reviewed-by: Lukasz Luba <lukasz.luba@arm.com>
-Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
+Reviewed-by: Lukasz Luba <lukasz.luba-5wv7dgnIgG8@public.gmane.org>
+Signed-off-by: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
- .../bindings/memory-controllers/exynos5422-dmc.txt        | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ drivers/memory/samsung/exynos5422-dmc.c | 29 ++++++++++++++++++++-----
+ 1 file changed, 23 insertions(+), 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/exynos5422-dmc.txt b/Documentation/devicetree/bindings/memory-controllers/exynos5422-dmc.txt
-index 02e4a1f862f1..fbecbcc00adb 100644
---- a/Documentation/devicetree/bindings/memory-controllers/exynos5422-dmc.txt
-+++ b/Documentation/devicetree/bindings/memory-controllers/exynos5422-dmc.txt
-@@ -17,14 +17,14 @@ Required properties for DMC device for Exynos5422:
- - clock-names : should include "fout_spll", "mout_sclk_spll", "ff_dout_spll2",
-   "fout_bpll", "mout_bpll", "sclk_bpll", "mout_mx_mspll_ccore",
-   "mout_mclk_cdrex"  entries
--- devfreq-events : phandles for PPMU devices connected to this DMC.
-+- exynos,ppmu-device : phandles for PPMU devices connected to this DMC.
- - vdd-supply : phandle for voltage regulator which is connected.
- - reg : registers of two CDREX controllers.
- - operating-points-v2 : phandle for OPPs described in v2 definition.
- - device-handle : phandle of the connected DRAM memory device. For more
- 	information please refer to documentation file:
- 	Documentation/devicetree/bindings/ddr/lpddr3.txt
--- devfreq-events : phandles of the PPMU events used by the controller.
-+- exynos,ppmu-device : phandles of the PPMU events used by the controller.
- - samsung,syscon-clk : phandle of the clock register set used by the controller,
- 	these registers are used for enabling a 'pause' feature and are not
- 	exposed by clock framework but they must be used in a safe way.
-@@ -73,8 +73,8 @@ Example:
- 			      "mout_mx_mspll_ccore",
- 			      "mout_mclk_cdrex";
- 		operating-points-v2 = <&dmc_opp_table>;
--		devfreq-events = <&ppmu_event3_dmc0_0>,	<&ppmu_event3_dmc0_1>,
--				 <&ppmu_event3_dmc1_0>, <&ppmu_event3_dmc1_1>;
-+		exynos,ppmu-device = <&ppmu_event3_dmc0_0>, <&ppmu_event3_dmc0_1>,
-+				     <&ppmu_event3_dmc1_0>, <&ppmu_event3_dmc1_1>;
- 		device-handle = <&samsung_K3QF2F20DB>;
- 		vdd-supply = <&buck1_reg>;
- 		samsung,syscon-clk = <&clock>;
+diff --git a/drivers/memory/samsung/exynos5422-dmc.c b/drivers/memory/samsung/exynos5422-dmc.c
+index f11fe29a69fc..6e8aa19e84d3 100644
+--- a/drivers/memory/samsung/exynos5422-dmc.c
++++ b/drivers/memory/samsung/exynos5422-dmc.c
+@@ -1270,10 +1270,17 @@ static int exynos5_dmc_init_clks(struct exynos5_dmc *dmc)
+ static struct devfreq_event_dev *exynos5_dmc_get_edev(struct device_node *np,
+ 							int index)
+ {
+-	struct device_node *node = of_parse_phandle(np, "devfreq-events",
++	struct device_node *node = of_parse_phandle(np, "exynos,ppmu-device",
+ 							index);
+-	if (!node)
+-		return ERR_PTR(-ENODEV);
++	if (!node) {
++		 /*
++		  * Check the deprecated 'devfreq-events' property
++		  * to support backward-compatibility.
++		 */
++		node = of_parse_phandle(np, "devfreq-events", index);
++		if (!node)
++			return ERR_PTR(-ENODEV);
++	}
+ 	return devfreq_event_get_edev_by_node(node);
+ }
+ 
+@@ -1292,10 +1299,20 @@ static int exynos5_performance_counters_init(struct exynos5_dmc *dmc)
+ 	int ret, i;
+ 
+ 	dmc->num_counters = of_property_count_elems_of_size(dmc->dev->of_node,
+-					"devfreq-events", sizeof(u32));
++					"exynos,ppmu-device", sizeof(u32));
+ 	if (dmc->num_counters < 0) {
+-		dev_err(dmc->dev, "could not get devfreq-event counters\n");
+-		return dmc->num_counters;
++		 /*
++		  * Check the deprecated 'devfreq-events' property
++		  * to support backward-compatibility.
++		 */
++		dmc->num_counters = of_property_count_elems_of_size(
++					dmc->dev->of_node,
++					"devfreq-events", sizeof(u32));
++		if (dmc->num_counters < 0) {
++			dev_err(dmc->dev,
++				"could not get devfreq-event counters\n");
++			return dmc->num_counters;
++		}
+ 	}
+ 
+ 	counters_size = sizeof(struct devfreq_event_dev) * dmc->num_counters;
 -- 
 2.17.1
