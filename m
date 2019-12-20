@@ -1,269 +1,89 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: [PATCH v2 03/11] PM / devfreq: event: Add
- devfreq_event_get_edev_by_node function
-Date: Fri, 20 Dec 2019 09:24:22 +0900
-Message-ID: <20191220002430.11995-4-cw00.choi@samsung.com>
-References: <20191220002430.11995-1-cw00.choi@samsung.com>
-        <CGME20191220001759epcas1p1fc0e5019514f7c99606347432d66bfd0@epcas1p1.samsung.com>
-Content-Type: text/plain; charset="utf-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191220002430.11995-1-cw00.choi@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, krzk@kernel.org, heiko@sntech.de, leonard.crestez@nxp.com, lukasz.luba@arm.com
-Cc: mark.rutland@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, cw00.choi@samsung.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+From: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCH v2 00/11] PM / devfreq: Remove deprecated 'devfreq' and
+ 'devfreq-events' properties
+Date: Fri, 20 Dec 2019 09:24:19 +0900
+Message-ID: <20191220002430.11995-1-cw00.choi@samsung.com>
+References: <CGME20191220001759epcas1p131a41a619847d80c64470f7c1920121f@epcas1p1.samsung.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, leonard.crestez-3arQi8VN3Tc@public.gmane.org, lukasz.luba-5wv7dgnIgG8@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, a.swigon-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chanwoo Choi <cw00.choi-4i/Q6oBd4qDQT0dZR+AlfA@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Previously, devfreq-event core supports 'devfreq-events' property
-in order to get the devfreq_event_dev device by phandle.
-But, 'devfreq-events' property name is not proper on devicetree binding
-because this name doesn't mean the any h/w attribute.
+From: Chanwoo Choi <cw00.choi-4i/Q6oBd4qDQT0dZR+AlfA@public.gmane.org>
 
-The devfreq-event core hands over the rights of which decide the property name
-for getting the devfreq device on devicetree, to each devfreq device driver.
-Each devfreq driver will decide the property name on devicetree binding
-and then get the devfreq device by using devfreq_event_get_edev_by_node().
+The devfreq and devfreq-event subsystem provided the following two properties:
+- Provide 'devfreq' property in order to get the parent devfreq device
+  by devfreq_get_devfreq_by_phandle() if devfreq device use passive governor.
+- Provide 'devfreq-events' property in order to get the devfreq-event device
+  by devfreq_event_get_edev_by_phandle().
 
-And Remove devfreq_event_get_edev_count() function used 'devfreq-events'.
+But, two properties name is not proper expressing the h/w
+and 'devfreq' word is name of linux subsystem instead of any h/w name.
 
-Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
----
- drivers/devfreq/devfreq-event.c         | 53 ++++---------------------
- drivers/devfreq/exynos-bus.c            | 16 +++++++-
- drivers/devfreq/rk3399_dmc.c            | 13 +++++-
- drivers/memory/samsung/exynos5422-dmc.c | 16 ++++++--
- include/linux/devfreq-event.h           | 14 ++-----
- 5 files changed, 50 insertions(+), 62 deletions(-)
+Hand over the rights for deciding the property name for getting
+the devfreq/devfreq-event device on devicetree, to each devfreq driver.
 
-diff --git a/drivers/devfreq/devfreq-event.c b/drivers/devfreq/devfreq-event.c
-index 8c31b0f2e28f..d0c989acbf93 100644
---- a/drivers/devfreq/devfreq-event.c
-+++ b/drivers/devfreq/devfreq-event.c
-@@ -210,25 +210,18 @@ int devfreq_event_reset_event(struct devfreq_event_dev *edev)
- EXPORT_SYMBOL_GPL(devfreq_event_reset_event);
- 
- /**
-- * devfreq_event_get_edev_by_phandle() - Get the devfreq-event dev from
-- *					 devicetree.
-- * @dev		: the pointer to the given device
-- * @index	: the index into list of devfreq-event device
-+ * devfreq_event_get_edev_by_node() - Get the devfreq-event dev from devicetree
-+ * @node	: the pointer to device_node
-  *
-  * Note that this function return the pointer of devfreq-event device.
-  */
--struct devfreq_event_dev *devfreq_event_get_edev_by_phandle(struct device *dev,
--						      int index)
-+struct devfreq_event_dev *devfreq_event_get_edev_by_node(
-+					struct device_node *node)
- {
--	struct device_node *node;
- 	struct devfreq_event_dev *edev;
- 
--	if (!dev->of_node)
--		return ERR_PTR(-EINVAL);
--
--	node = of_parse_phandle(dev->of_node, "devfreq-events", index);
- 	if (!node)
--		return ERR_PTR(-ENODEV);
-+		return ERR_PTR(-EINVAL);
- 
- 	mutex_lock(&devfreq_event_list_lock);
- 	list_for_each_entry(edev, &devfreq_event_list, node) {
-@@ -244,44 +237,12 @@ struct devfreq_event_dev *devfreq_event_get_edev_by_phandle(struct device *dev,
- out:
- 	mutex_unlock(&devfreq_event_list_lock);
- 
--	if (!edev) {
--		of_node_put(node);
-+	if (!edev)
- 		return ERR_PTR(-ENODEV);
--	}
--
--	of_node_put(node);
- 
- 	return edev;
- }
--EXPORT_SYMBOL_GPL(devfreq_event_get_edev_by_phandle);
--
--/**
-- * devfreq_event_get_edev_count() - Get the count of devfreq-event dev
-- * @dev		: the pointer to the given device
-- *
-- * Note that this function return the count of devfreq-event devices.
-- */
--int devfreq_event_get_edev_count(struct device *dev)
--{
--	int count;
--
--	if (!dev->of_node) {
--		dev_err(dev, "device does not have a device node entry\n");
--		return -EINVAL;
--	}
--
--	count = of_property_count_elems_of_size(dev->of_node, "devfreq-events",
--						sizeof(u32));
--	if (count < 0) {
--		dev_err(dev,
--			"failed to get the count of devfreq-event in %pOF node\n",
--			dev->of_node);
--		return count;
--	}
--
--	return count;
--}
--EXPORT_SYMBOL_GPL(devfreq_event_get_edev_count);
-+EXPORT_SYMBOL_GPL(devfreq_event_get_edev_by_node);
- 
- static void devfreq_event_release_edev(struct device *dev)
- {
-diff --git a/drivers/devfreq/exynos-bus.c b/drivers/devfreq/exynos-bus.c
-index 1bc4e3c81115..c4931ef53f15 100644
---- a/drivers/devfreq/exynos-bus.c
-+++ b/drivers/devfreq/exynos-bus.c
-@@ -96,6 +96,17 @@ static struct devfreq *exynos_bus_get_parent_devfreq(struct device_node *np)
- 	return devfreq_get_devfreq_by_node(node);
- }
- 
-+static struct devfreq_event_dev *exynos_bus_get_edev(struct device_node *np,
-+							int index)
-+{
-+	struct device_node *node = of_parse_phandle(np, "devfreq-events",
-+							index);
-+
-+	if (!node)
-+		return ERR_PTR(-ENODEV);
-+	return devfreq_event_get_edev_by_node(node);
-+}
-+
- /*
-  * devfreq function for both simple-ondemand and passive governor
-  */
-@@ -202,7 +213,8 @@ static int exynos_bus_parent_parse_of(struct device_node *np,
- 	 * Get the devfreq-event devices to get the current utilization of
- 	 * buses. This raw data will be used in devfreq ondemand governor.
- 	 */
--	count = devfreq_event_get_edev_count(dev);
-+	count = of_property_count_elems_of_size(dev->of_node,
-+					"devfreq-events", sizeof(u32));
- 	if (count < 0) {
- 		dev_err(dev, "failed to get the count of devfreq-event dev\n");
- 		ret = count;
-@@ -218,7 +230,7 @@ static int exynos_bus_parent_parse_of(struct device_node *np,
- 	}
- 
- 	for (i = 0; i < count; i++) {
--		bus->edev[i] = devfreq_event_get_edev_by_phandle(dev, i);
-+		bus->edev[i] = exynos_bus_get_edev(dev->of_node, i);
- 		if (IS_ERR(bus->edev[i])) {
- 			ret = -EPROBE_DEFER;
- 			goto err_regulator;
-diff --git a/drivers/devfreq/rk3399_dmc.c b/drivers/devfreq/rk3399_dmc.c
-index 2f1027c5b647..e712c8662d2f 100644
---- a/drivers/devfreq/rk3399_dmc.c
-+++ b/drivers/devfreq/rk3399_dmc.c
-@@ -303,6 +303,17 @@ static int of_get_ddr_timings(struct dram_timing *timing,
- 	return ret;
- }
- 
-+static struct devfreq_event_dev *of_get_edev(struct device_node *np,
-+							int index)
-+{
-+	struct device_node *node = of_parse_phandle(np, "devfreq-events",
-+							index);
-+
-+	if (!node)
-+		return ERR_PTR(-ENODEV);
-+	return devfreq_event_get_edev_by_node(node);
-+}
-+
- static int rk3399_dmcfreq_probe(struct platform_device *pdev)
- {
- 	struct arm_smccc_res res;
-@@ -339,7 +350,7 @@ static int rk3399_dmcfreq_probe(struct platform_device *pdev)
- 		return PTR_ERR(data->dmc_clk);
- 	}
- 
--	data->edev = devfreq_event_get_edev_by_phandle(dev, 0);
-+	data->edev = of_get_edev(dev->of_node, 0);
- 	if (IS_ERR(data->edev))
- 		return -EPROBE_DEFER;
- 
-diff --git a/drivers/memory/samsung/exynos5422-dmc.c b/drivers/memory/samsung/exynos5422-dmc.c
-index 47dbf6d1789f..f11fe29a69fc 100644
---- a/drivers/memory/samsung/exynos5422-dmc.c
-+++ b/drivers/memory/samsung/exynos5422-dmc.c
-@@ -1267,6 +1267,16 @@ static int exynos5_dmc_init_clks(struct exynos5_dmc *dmc)
- 	return 0;
- }
- 
-+static struct devfreq_event_dev *exynos5_dmc_get_edev(struct device_node *np,
-+							int index)
-+{
-+	struct device_node *node = of_parse_phandle(np, "devfreq-events",
-+							index);
-+	if (!node)
-+		return ERR_PTR(-ENODEV);
-+	return devfreq_event_get_edev_by_node(node);
-+}
-+
- /**
-  * exynos5_performance_counters_init() - Initializes performance DMC's counters
-  * @dmc:	DMC for which it does the setup
-@@ -1281,7 +1291,8 @@ static int exynos5_performance_counters_init(struct exynos5_dmc *dmc)
- 	int counters_size;
- 	int ret, i;
- 
--	dmc->num_counters = devfreq_event_get_edev_count(dmc->dev);
-+	dmc->num_counters = of_property_count_elems_of_size(dmc->dev->of_node,
-+					"devfreq-events", sizeof(u32));
- 	if (dmc->num_counters < 0) {
- 		dev_err(dmc->dev, "could not get devfreq-event counters\n");
- 		return dmc->num_counters;
-@@ -1293,8 +1304,7 @@ static int exynos5_performance_counters_init(struct exynos5_dmc *dmc)
- 		return -ENOMEM;
- 
- 	for (i = 0; i < dmc->num_counters; i++) {
--		dmc->counter[i] =
--			devfreq_event_get_edev_by_phandle(dmc->dev, i);
-+		dmc->counter[i] = exynos5_dmc_get_edev(dmc->dev->of_node, i);
- 		if (IS_ERR_OR_NULL(dmc->counter[i]))
- 			return -EPROBE_DEFER;
- 	}
-diff --git a/include/linux/devfreq-event.h b/include/linux/devfreq-event.h
-index f14f17f8cb7f..967414ac6f7c 100644
---- a/include/linux/devfreq-event.h
-+++ b/include/linux/devfreq-event.h
-@@ -105,9 +105,8 @@ extern int devfreq_event_set_event(struct devfreq_event_dev *edev);
- extern int devfreq_event_get_event(struct devfreq_event_dev *edev,
- 				struct devfreq_event_data *edata);
- extern int devfreq_event_reset_event(struct devfreq_event_dev *edev);
--extern struct devfreq_event_dev *devfreq_event_get_edev_by_phandle(
--				struct device *dev, int index);
--extern int devfreq_event_get_edev_count(struct device *dev);
-+extern struct devfreq_event_dev *devfreq_event_get_edev_by_node(
-+				struct device_node *node);
- extern struct devfreq_event_dev *devfreq_event_add_edev(struct device *dev,
- 				struct devfreq_event_desc *desc);
- extern int devfreq_event_remove_edev(struct devfreq_event_dev *edev);
-@@ -151,17 +150,12 @@ static inline int devfreq_event_reset_event(struct devfreq_event_dev *edev)
- 	return -EINVAL;
- }
- 
--static inline struct devfreq_event_dev *devfreq_event_get_edev_by_phandle(
--					struct device *dev, int index)
-+static inline struct devfreq_event_dev *devfreq_event_get_edev_by_node(
-+					struct device_node *node)
- {
- 	return ERR_PTR(-EINVAL);
- }
- 
--static inline int devfreq_event_get_edev_count(struct device *dev)
--{
--	return -EINVAL;
--}
--
- static inline struct devfreq_event_dev *devfreq_event_add_edev(struct device *dev,
- 					struct devfreq_event_desc *desc)
- {
+So, replace 'devfreq' and 'devfreq-events' property with following property
+name according to each devfreq driver:
+--------------------------------------------------------------------
+Old property  | New property       | Device driver name            |
+--------------------------------------------------------------------
+devfreq       | exynos,parent-bus  | exynos-bus.c                  |
+              |                    |                               |
+devfreq-events| exynos,ppmu-device | exynos-bus.c, exynos5422-dmc.c|
+              | rockchip,dfi-device| rk3399_dmc.c                  |
+--------------------------------------------------------------------
+
+Changes from v1:
+- Edit function name by removing '_by_node' postfix.
+- Split out dt-binding patch to make it the separte patch.j
+- Add Lukasz's tag for exynos5422-dmc
+
+Chanwoo Choi (10):
+  PM / devfreq: Remove devfreq_get_devfreq_by_phandle function
+  PM / devfreq: event: Add devfreq_event_get_edev_by_node function
+  dt-bindings: devfreq: exynos-bus: Replace deprecated 'devfreq' and 'devfreq-events' property
+  dt-bindings: devfreq: rk3399_dmc:  Replace deprecated 'devfreq-events' property
+  dt-bindings: memory: exynos5422-dmc: Replace the deprecated 'devfreq-events' property
+  PM / devfreq: exynos-bus: Replace the deprecated 'devfreq' and 'devfreq-events' property
+  PM / devfreq: rk3399_dmc: Replace the deprecated 'devfreq-events' property
+  memory: samsung: exynos5422-dmc: Replace the deprecated 'devfreq-events' property
+  ARM: dts: exynos: Replace deprecated property for Exynos bus and DMC
+  arm64: dts: exynos: Replace deprecated property for Exynos bus on TM2
+
+Leonard Crestez (1):
+  PM / devfreq: Add devfreq_get_devfreq_by_node function
+
+ .../bindings/devfreq/exynos-bus.txt           | 22 +++----
+ .../bindings/devfreq/rk3399_dmc.txt           |  4 +-
+ .../memory-controllers/exynos5422-dmc.txt     |  8 +--
+ arch/arm/boot/dts/exynos3250-monk.dts         |  2 +-
+ arch/arm/boot/dts/exynos3250-rinato.dts       | 18 +++---
+ .../boot/dts/exynos4412-itop-scp-core.dtsi    | 16 ++---
+ arch/arm/boot/dts/exynos4412-midas.dtsi       | 18 +++---
+ .../boot/dts/exynos4412-odroid-common.dtsi    | 18 +++---
+ arch/arm/boot/dts/exynos5422-odroid-core.dtsi | 34 +++++------
+ .../dts/exynos/exynos5433-tm2-common.dtsi     | 20 +++----
+ drivers/devfreq/devfreq-event.c               | 53 +++--------------
+ drivers/devfreq/devfreq.c                     | 25 +++-----
+ drivers/devfreq/exynos-bus.c                  | 58 ++++++++++++++++---
+ drivers/devfreq/rk3399_dmc.c                  | 16 ++++-
+ drivers/memory/samsung/exynos5422-dmc.c       | 37 ++++++++++--
+ include/linux/devfreq-event.h                 | 14 ++---
+ include/linux/devfreq.h                       |  6 +-
+ 17 files changed, 198 insertions(+), 171 deletions(-)
+
 -- 
 2.17.1
