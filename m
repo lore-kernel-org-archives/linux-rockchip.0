@@ -1,181 +1,127 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: Re: [PATCH v2 02/11] PM / devfreq: Remove
- devfreq_get_devfreq_by_phandle function
-Date: Fri, 20 Dec 2019 10:00:43 +0900
-Message-ID: <46e629e0-fee4-21a6-3baa-f347ff6417d8@samsung.com>
-References: <20191220002430.11995-1-cw00.choi@samsung.com>
-        <CGME20191220001759epcas1p4ce1c2017937a35de84eab720b9732df0@epcas1p4.samsung.com>
-        <20191220002430.11995-3-cw00.choi@samsung.com>
-        <VI1PR04MB70235291D8E40CB6225A0AF0EE2D0@VI1PR04MB7023.eurprd04.prod.outlook.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Describe PX30 caches
+Date: Fri, 20 Dec 2019 01:55:58 +0100
+Message-ID: <1982322.8UTTk47u2F@diego>
+References: <20191204103940.22050-1-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <VI1PR04MB70235291D8E40CB6225A0AF0EE2D0@VI1PR04MB7023.eurprd04.prod.outlook.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Leonard Crestez <leonard.crestez@nxp.com>, "krzk@kernel.org" <krzk@kernel.org>
-Cc: "robh+dt@kernel.org" <robh+dt@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, "lukasz.luba@arm.com" <lukasz.luba@arm.com>, "mark.rutland@arm.com" <mark.rutland@arm.com>, "a.swigon@samsung.com" <a.swigon@samsung.com>, "m.szyprowski@samsung.com" <m.szyprowski@samsung.com>, "kgene@kernel.org" <kgene@kernel.org>, "myungjoo.ham@samsung.com" <myungjoo.ham@samsung.com>, "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>, "linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>, "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, linux-rockc
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191204103940.22050-1-miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/20/19 9:46 AM, Leonard Crestez wrote:
-> On 20.12.2019 02:18, Chanwoo Choi wrote:
->> Previously, devfreq core support 'devfreq' property in order to get
->> the devfreq device by phandle. But, 'devfreq' property name is not proper
->> on devicetree binding because this name doesn't mean the any h/w attribute.
->>
->> The devfreq core hand over the right to decide the property name
->> for getting the devfreq device on devicetree. Each devfreq driver
->> will decide the property name on devicetree binding and then get
->> the devfreq device by using devfreq_get_devfreq_by_node().
->>
->> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
->> ---
->>   drivers/devfreq/devfreq.c    | 35 -----------------------------------
->>   drivers/devfreq/exynos-bus.c | 12 +++++++++++-
->>   include/linux/devfreq.h      |  8 --------
->>   3 files changed, 11 insertions(+), 44 deletions(-)
->>
->> diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
->> index cb8ca81c8973..c3d3c7c802a0 100644
->> --- a/drivers/devfreq/devfreq.c
->> +++ b/drivers/devfreq/devfreq.c
->> @@ -991,48 +991,13 @@ struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
->>   
->>   	return ERR_PTR(-ENODEV);
->>   }
->> -
->> -/*
->> - * devfreq_get_devfreq_by_phandle - Get the devfreq device from devicetree
->> - * @dev - instance to the given device
->> - * @index - index into list of devfreq
->> - *
->> - * return the instance of devfreq device
->> - */
->> -struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
->> -{
->> -	struct device_node *node;
->> -	struct devfreq *devfreq;
->> -
->> -	if (!dev)
->> -		return ERR_PTR(-EINVAL);
->> -
->> -	if (!dev->of_node)
->> -		return ERR_PTR(-EINVAL);
->> -
->> -	node = of_parse_phandle(dev->of_node, "devfreq", index);
->> -	if (!node)
->> -		return ERR_PTR(-ENODEV);
->> -
->> -	devfreq = devfreq_get_devfreq_by_node(node);
->> -	of_node_put(node);
->> -
->> -	return devfreq;
->> -}
->> -
->>   #else
->>   struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
->>   {
->>   	return ERR_PTR(-ENODEV);
->>   }
->> -
->> -struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
->> -{
->> -	return ERR_PTR(-ENODEV);
->> -}
->>   #endif /* CONFIG_OF */
->>   EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_node);
->> -EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_phandle);
->>   
->>   /**
->>    * devm_devfreq_remove_device() - Resource-managed devfreq_remove_device()
->> diff --git a/drivers/devfreq/exynos-bus.c b/drivers/devfreq/exynos-bus.c
->> index 7f5917d59072..1bc4e3c81115 100644
->> --- a/drivers/devfreq/exynos-bus.c
->> +++ b/drivers/devfreq/exynos-bus.c
->> @@ -86,6 +86,16 @@ static int exynos_bus_get_event(struct exynos_bus *bus,
->>   	return ret;
->>   }
->>   
->> +static struct devfreq *exynos_bus_get_parent_devfreq(struct device_node *np)
->> +{
->> +	struct device_node *node = of_parse_phandle(np, "devfreq", 0);
->> +
->> +	if (!node)
->> +		return ERR_PTR(-ENODEV);
->> +
->> +	return devfreq_get_devfreq_by_node(node);
+Am Mittwoch, 4. Dezember 2019, 11:39:40 CET schrieb Miquel Raynal:
+> PX30 SoCs feature 4 Cortex-A35 CPUs with each of them a L1 data and
+> instruction cache. Both are 32kiB wide (PX30 TRM) and made of 64-bit
+> lines (ARM Cortex-A35 manual). I-cache is 2-way set associative (ARM
+> Cortex-A35 manual), D-cache is 4-way set associative (ARM
+> Cortex-A35manual).
 > 
-> You need to call of_node_put(node) here and in several other places.
+> An L2 cache is placed after these 4 L1 caches (PX30 TRM), is 256kiB
+> wide (PX30 TRM) and made of 64-bit lines (ARM Cortex-A35 manual) and
+> is 8-way set associative (ARM Cortex-A35 manual).
 > 
-> The old devfreq_get_devfreq_by_phandle API handled this internally but 
-> devfreq_get_devfreq_by_node doesn't.
+> Describe all of them in the PX30 DTSI.
+> 
+> Signed-off-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/px30.dtsi | 35 ++++++++++++++++++++++++++
+>  1 file changed, 35 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> index 1fd12bd09e83..0e10a224a84b 100644
+> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> @@ -48,6 +48,13 @@
+>  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  			dynamic-power-coefficient = <90>;
+>  			operating-points-v2 = <&cpu0_opp_table>;
+> +			i-cache-size = <0x8000>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <256>;
+> +			d-cache-size = <0x8000>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2>;
+>  		};
+>  
+>  		cpu1: cpu@1 {
+> @@ -60,6 +67,13 @@
+>  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  			dynamic-power-coefficient = <90>;
+>  			operating-points-v2 = <&cpu0_opp_table>;
+> +			i-cache-size = <0x8000>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <256>;
+> +			d-cache-size = <0x8000>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2>;
+>  		};
+>  
+>  		cpu2: cpu@2 {
+> @@ -72,6 +86,13 @@
+>  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  			dynamic-power-coefficient = <90>;
+>  			operating-points-v2 = <&cpu0_opp_table>;
+> +			i-cache-size = <0x8000>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <256>;
+> +			d-cache-size = <0x8000>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2>;
+>  		};
+>  
+>  		cpu3: cpu@3 {
+> @@ -84,6 +105,13 @@
+>  			cpu-idle-states = <&CPU_SLEEP &CLUSTER_SLEEP>;
+>  			dynamic-power-coefficient = <90>;
+>  			operating-points-v2 = <&cpu0_opp_table>;
+> +			i-cache-size = <0x8000>;
+> +			i-cache-line-size = <64>;
+> +			i-cache-sets = <256>;
+> +			d-cache-size = <0x8000>;
+> +			d-cache-line-size = <64>;
+> +			d-cache-sets = <128>;
+> +			next-level-cache = <&l2>;
+>  		};
+>  
+>  		idle-states {
+> @@ -107,6 +135,13 @@
+>  				min-residency-us = <2000>;
+>  			};
+>  		};
+> +
+> +		l2: l2-cache {
+> +			compatible = "cache";
+> +			cache-size = <0x40000>;
+> +			cache-line-size = <64>;
+> +			cache-sets = <512>;
+> +		};
+>  	};
 
-Thanks. I'll fix it.
+Looks like Rob did answer my unspoken question, citing his reply to
+	"arm64: dts: amazon: add Amazon's Annapurna Labs Alpine v3 support" [0]
 
-> 
-> Maybe the _by_phandle API could be kept and just take the property name 
-> instead of always using "devfreq"?
+"We only define cache attributes if not discoverable or the cache ID 
+registers are wrong and you need to override what's discoverable."
 
-Do you mean like below?
-devfreq_get_devfreq_by_phandle(struct device *dev, int index)
--> devfreq_get_devfreq_by_phandle(struct device *dev, char *property_name, int index)
+So unless the cache information read during boot is wrong, it looks
+like we don't need this.
 
-In case of devfreq-event.c,
-struct devfreq_event_dev *devfreq_event_get_edev_by_phandle(
-						struct device *dev,
-						char property_name,
-						int index)
-int devfreq_event_get_edev_count(struct device *dev, char *property_name)
-
-> 
->> +}
->> +
->>   /*
->>    * devfreq function for both simple-ondemand and passive governor
->>    */
->> @@ -353,7 +363,7 @@ static int exynos_bus_profile_init_passive(struct exynos_bus *bus,
->>   	profile->exit = exynos_bus_passive_exit;
->>   
->>   	/* Get the instance of parent devfreq device */
->> -	parent_devfreq = devfreq_get_devfreq_by_phandle(dev, 0);
->> +	parent_devfreq = exynos_bus_get_parent_devfreq(dev->of_node);
->>   	if (IS_ERR(parent_devfreq))
->>   		return -EPROBE_DEFER;
->>   
->> diff --git a/include/linux/devfreq.h b/include/linux/devfreq.h
->> index 1dccc47acbce..a4351698fb64 100644
->> --- a/include/linux/devfreq.h
->> +++ b/include/linux/devfreq.h
->> @@ -254,8 +254,6 @@ extern void devm_devfreq_unregister_notifier(struct device *dev,
->>   				struct notifier_block *nb,
->>   				unsigned int list);
->>   extern struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node);
->> -extern struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev,
->> -						int index);
->>   
->>   #if IS_ENABLED(CONFIG_DEVFREQ_GOV_SIMPLE_ONDEMAND)
->>   /**
->> @@ -413,12 +411,6 @@ static inline struct devfreq *devfreq_get_devfreq_by_node(struct device_node *no
->>   	return ERR_PTR(-ENODEV);
->>   }
->>   
->> -static inline struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev,
->> -							int index)
->> -{
->> -	return ERR_PTR(-ENODEV);
->> -}
->> -
->>   static inline int devfreq_update_stats(struct devfreq *df)
->>   {
->>   	return -EINVAL;
->>
-> 
-> 
-> 
+Heiko
 
 
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+[0] https://patchwork.kernel.org/patch/11279705/
