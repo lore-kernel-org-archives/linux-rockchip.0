@@ -1,10 +1,10 @@
 From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: [PATCH v2 11/11] arm64: dts: exynos: Replace deprecated property
- for Exynos bus on TM2
-Date: Fri, 20 Dec 2019 09:24:30 +0900
-Message-ID: <20191220002430.11995-12-cw00.choi@samsung.com>
+Subject: [PATCH v2 05/11] dt-bindings: devfreq: rk3399_dmc:  Replace
+ deprecated 'devfreq-events' property
+Date: Fri, 20 Dec 2019 09:24:24 +0900
+Message-ID: <20191220002430.11995-6-cw00.choi@samsung.com>
 References: <20191220002430.11995-1-cw00.choi@samsung.com>
-        <CGME20191220001800epcas1p13d5f4ff181c10a118e151a86891a7130@epcas1p1.samsung.com>
+        <CGME20191220001759epcas1p495fc9cdb6f2bd86abf63d16f61e68804@epcas1p4.samsung.com>
 Content-Type: text/plain; charset="utf-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20191220002430.11995-1-cw00.choi@samsung.com>
@@ -13,86 +13,38 @@ To: robh+dt@kernel.org, krzk@kernel.org, heiko@sntech.de, leonard.crestez@nxp.co
 Cc: mark.rutland@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, cw00.choi@samsung.com, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Replace the property related to devfreq and devfreq-event device
-to remove the deprecated property name.
-- Replace 'devfreq' with 'exynos,parent-bus' property
-  for getting the parent devfreq device of exynos-bus.
-- Replace 'devfreq-events' with 'exynos,ppmu-device' property
-  for getting the devfreq-event device to monitor bus utilization.
+In order to remove the deprecated 'devfreq-events' property,
+replace with new 'rockchip,dfi-device' property.
+
+But, to guarantee the backward-compatibility, keep the support
+of 'devfreq-events' property.
 
 Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
 ---
- .../dts/exynos/exynos5433-tm2-common.dtsi     | 20 +++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi b/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
-index 6f90b0e62cba..6bdd5b0940a5 100644
---- a/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
-+++ b/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
-@@ -166,54 +166,54 @@
- };
+diff --git a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
+index 0ec68141f85a..e484768a4077 100644
+--- a/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
++++ b/Documentation/devicetree/bindings/devfreq/rk3399_dmc.txt
+@@ -2,7 +2,7 @@
  
- &bus_g2d_400 {
--	devfreq-events = <&ppmu_event0_d0_general>, <&ppmu_event0_d1_general>;
-+	exynos,ppmu-device = <&ppmu_event0_d0_general>, <&ppmu_event0_d1_general>;
- 	vdd-supply = <&buck4_reg>;
- 	exynos,saturation-ratio = <10>;
- 	status = "okay";
- };
+ Required properties:
+ - compatible:		 Must be "rockchip,rk3399-dmc".
+-- devfreq-events:	 Node to get DDR loading, Refer to
++- rockchip,dfi-device:	 Node to get DDR loading, Refer to
+ 			 Documentation/devicetree/bindings/devfreq/event/
+ 			 rockchip-dfi.txt
+ - clocks:		 Phandles for clock specified in "clock-names" property
+@@ -173,7 +173,7 @@ Example:
  
- &bus_g2d_266 {
--	devfreq = <&bus_g2d_400>;
-+	exynos,parent-bus = <&bus_g2d_400>;
- 	status = "okay";
- };
- 
- &bus_gscl {
--	devfreq = <&bus_g2d_400>;
-+	exynos,parent-bus = <&bus_g2d_400>;
- 	status = "okay";
- };
- 
- &bus_hevc {
--	devfreq = <&bus_g2d_400>;
-+	exynos,parent-bus = <&bus_g2d_400>;
- 	status = "okay";
- };
- 
- &bus_jpeg {
--	devfreq = <&bus_g2d_400>;
-+	exynos,parent-bus = <&bus_g2d_400>;
- 	status = "okay";
- };
- 
- &bus_mfc {
--	devfreq = <&bus_g2d_400>;
-+	exynos,parent-bus = <&bus_g2d_400>;
- 	status = "okay";
- };
- 
- &bus_mscl {
--	devfreq = <&bus_g2d_400>;
-+	exynos,parent-bus = <&bus_g2d_400>;
- 	status = "okay";
- };
- 
- &bus_noc0 {
--	devfreq = <&bus_g2d_400>;
-+	exynos,parent-bus = <&bus_g2d_400>;
- 	status = "okay";
- };
- 
- &bus_noc1 {
--	devfreq = <&bus_g2d_400>;
-+	exynos,parent-bus = <&bus_g2d_400>;
- 	status = "okay";
- };
- 
- &bus_noc2 {
--	devfreq = <&bus_g2d_400>;
-+	exynos,parent-bus = <&bus_g2d_400>;
- 	status = "okay";
- };
- 
+ 	dmc: dmc {
+ 		compatible = "rockchip,rk3399-dmc";
+-		devfreq-events = <&dfi>;
++		rockchip,dfi-device = <&dfi>;
+ 		interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru SCLK_DDRCLK>;
+ 		clock-names = "dmc_clk";
 -- 
 2.17.1
