@@ -1,33 +1,56 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH v2 04/11] dt-bindings: devfreq: exynos-bus: Replace
- deprecated 'devfreq' and 'devfreq-events' property
-Date: Fri, 20 Dec 2019 09:43:50 +0100
-Message-ID: <20191220084350.GA20583@pi3>
-References: <20191220002430.11995-1-cw00.choi@samsung.com>
- <CGME20191220001759epcas1p3051f7916542b7234aac5273e0baab83b@epcas1p3.samsung.com>
- <20191220002430.11995-5-cw00.choi@samsung.com>
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: RK3399 display flickering after kexec
+Date: Fri, 20 Dec 2019 10:08:33 +0100
+Message-ID: <61cd89ec-e505-6a2b-d43f-da74850d1b95@collabora.com>
+References: <934ab507-6501-455d-b3d6-3585d94d81f6@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191220002430.11995-5-cw00.choi@samsung.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chanwoo Choi <cw00.choi@samsung.com>
-Cc: robh+dt@kernel.org, heiko@sntech.de, leonard.crestez@nxp.com, lukasz.luba@arm.com, mark.rutland@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <934ab507-6501-455d-b3d6-3585d94d81f6-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Dec 20, 2019 at 09:24:23AM +0900, Chanwoo Choi wrote:
-> In order to remove the deprecated 'devfreq' and 'devfreq-events' property,
-> replace with new following properties
-> - Replace 'devfreq' with 'exynos,parent-bus' property
-> - Replace 'devfreq-events' with 'exynos,ppmu-device' property
-> 
-> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
-> ---
->  .../bindings/devfreq/exynos-bus.txt           | 22 +++++++++----------
->  1 file changed, 11 insertions(+), 11 deletions(-)
-
-Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
-
-Best regards,
-Krzysztof
+SGkgVmljZW7DpywKCk9uIDEyLzEyLzE5IDIzOjA0LCBWaWNlbnRlIEJlcmdhcyB3cm90ZToKPiBI
+aSBFbnJpYywgRG91Z2xhcywgU2VhbiwKPiB0aGVyZSBpcyBhbiBpc3N1ZSBvbiBSSzMzOTktYmFz
+ZWQgcGxhdGZvcm1zIHdpdGggZGlzcGxheSBmbGlja2VyaW5nLgo+IEkgaGF2ZSBzZWFyY2hlZCBt
+YWlsaW5nIGxpc3QgYW5kIGZvdW5kIHlvdSBoYXZlIG1lbnRpb25lZCBvciB3ZXJlCj4gaW52b2x2
+ZWQgaW4gcmVsYXRlZCBpc3N1ZXMsIHNvLCB5b3UgbWF5IGJlIGFibGUgdG8gaGVscC4KPiAKPiBU
+aGUgaXNzdWUgaGFzIGJlZW4gb2JzZXJ2ZWQgb24gdGhlIFNhcHBoaXJlIGJvYXJkIGFuZCBvbiBn
+b29nbGUga2V2aW4sCj4gYm90aCBhcmUgYmFzZWQgb24gdGhlIFJLMzM5OS4gVGhlIGRpc3BsYXkg
+b24gU2FwcGhpcmUgaXMgY29ubmVjdGVkCj4gdGhyb3VnaCBIRE1JIGFuZCBvbiBnb29nbGUga2V2
+aW4gaXQncyB0aGUgYnVpbHQtaW4gZURQIHBhbmVsLgo+IAo+IE9uIHRoZSBTYXBwaGlyZSBib2Fy
+ZCBpIGhhdmUgdHdvIGJvb3Rsb2FkZXJzIGF2YWlsYWJsZTogdS1ib290IGFuZAo+IGFuIGFkYXB0
+YXRpb24gb2YKPiBodHRwczovL2dpdGxhYi5jb20vdmljZW5jYi9rZXZpbmJvb3QKPiB3aGljaCBp
+cyBhIGxpbnV4LWJhc2VkIGJvb3Rsb2FkZXIgYnkgbWVhbnMgb2Yga2V4ZWMuCj4gCj4gT24gZ29v
+Z2xlIGtldmluIGkgb25seSBoYXZlIG9uZSBib290bG9hZGVyOiBrZXZpbmJvb3Qgd2l0aCBrZXhl
+Yy4KPiAKPiBXaGVuIHJ1bm5pbmcgdGhlIGZpcnN0IGtlcm5lbCAoYmVmb3JlIGtleGVjKSBvciB3
+aGVuIGJvb3Rpbmcgd2l0aAo+IHUtYm9vdCB0aGUgZGlzcGxheSB3b3JrcyBmaW5lLgo+IAo+IFRo
+ZSBpc3N1ZSBhcHBlYXJzIHdoZW4gcnVubmluZyB0aGUgc2Vjb25kIGtlcm5lbCAoYWZ0ZXIga2V4
+ZWMpLgo+IEkgaGF2ZSBvYnNlcnZlZCB0d28ga2luZHMgb2YgZmxpY2tlcmluZywgc29tZXRpbWVz
+IGl0IGlzIGp1c3QgYnVyc3RzCj4gb2YgaG9yaXpvbnRhbCBkYXJrIGxpbmVzIGFuZCBzb21ldGlt
+ZXMgaXQgaXMgdGhlIHdob2xlIHNjcmVlbgo+IGJlY29taW5nIGJsYWNrIGZvciBsZXNzIHRoYW4g
+YSBzZWNvbmQuCj4gSXQgaGFwcGVucyB2ZXJ5IG9mdGVuLCBlYWNoIHRpbWUgdGhlcmUgaXMgYSBi
+aWcgcG9ydGlvbiBvZiB0aGUgc2NyZWVuCj4gYmVpbmcgdXBkYXRlZCwgbGlrZSwgZS5nLiBzY3Jv
+bGxpbmcgYSB0ZXh0IGZpbGUgb3IgYSB3ZWIgcGFnZSBpbiBmdWxsCj4gc2NyZWVuIG1vZGUuCj4g
+Cj4gRG8geW91IGhhdmUgYW55IGlkZWFzIG9uIHdoYXQgdGhlIHJvb3QgY2F1c2Ugb2YgdGhlIGlz
+c3VlIGNvdWxkIGJlPwo+IAoKVG8gYmUgaG9uZXN0LCBJIGRvbid0IGhhdmUgaWRlYSwgbG9va3Mg
+bGlrZSBzb21lIGNsb2NrIGNvbmZpZ3VyYXRpb24gaXNzdWU/IERpZAp5b3UgY2hlY2sgdGhlIGNs
+b2NrIGFmdGVyIGFuZCBiZWZvcmU/IEkgbWlnaHQgYmUgaW50ZXJlc3RlZCB0byBsb29rIGEgYml0
+IG1vcmUKaW50byB0aGUgaXNzdWUgaWYgdGhpcyBpcyByZXByb2R1Y2libGUgdXNpbmcgdGhlIGNv
+cmVib290IGJvb3Rsb2FkZXIuIERvIHlvdQprbm93IGlmIHRoaXMgaGFwcGVucyB3aXRoIHN0b2Nr
+IGJvb3Rsb2FkZXI/CgpUaGFua3MsCiBFbnJpYwoKPiBSZWdhcmRzLAo+IMKgVmljZW7Dpy4KPiAK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
