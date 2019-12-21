@@ -1,49 +1,75 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 2/3] arm64: dts: rockchip: Enable PD for USB-C-Port on
- rk3399-roc-pc.
-Date: Sat, 21 Dec 2019 13:57:37 +0100
-Message-ID: <2330032.fiRFtybceW@phil>
-References: <678df227-38be-47af-7ee3-741a391a196c@fivetechno.de>
- <84920a36-230f-42a6-a960-a71e685be99f@singleboardsolutions.com>
+From: Tom Murphy <murphyt7@tcd.ie>
+Subject: [PATCH 0/8] Convert the intel iommu driver to the dma-iommu api
+Date: Sat, 21 Dec 2019 15:03:52 +0000
+Message-ID: <20191221150402.13868-1-murphyt7@tcd.ie>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <84920a36-230f-42a6-a960-a71e685be99f@singleboardsolutions.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Thomas McKahan <tmckahan@singleboardsolutions.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, narmstrong@baylibre.com, linux-kernel@vger.kernel.org, Markus Reichl <m.reichl@fivetechno.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: iommu@lists.linux-foundation.org
+Cc: Tom Murphy <murphyt7@tcd.ie>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Thomas,
+This patchset converts the intel iommu driver to the dma-iommu api.
 
-Am Donnerstag, 12. Dezember 2019, 16:46:09 CET schrieb Thomas McKahan:
-> Hello Markus,
-> 
->     I have been working with this as well, came across it on Armbian. I was also trying to eliminate the warning concerning the lack of port with limited success.  I also missed the interrupt pin definition I see.  I will test this later today.  
+While converting the driver I exposed a bug in the intel i915 driver which causes a huge amount of artifacts on the screen of my laptop. You can see a picture of it here:
+https://github.com/pippy360/kernelPatches/blob/master/IMG_20191219_225922.jpg
 
-Where you successful in your testing? My type-c exposure is somewhat
-limited so it would be nice to get another opinion ;-)
+This issue is most likely in the i915 driver and is most likely caused by the driver not respecting the return value of the dma_map_ops::map_sg function. You can see the driver ignoring the return value here:
+https://github.com/torvalds/linux/blob/7e0165b2f1a912a06e381e91f0f4e495f4ac3736/drivers/gpu/drm/i915/gem/i915_gem_dmabuf.c#L51
 
->    I've added Neil Armstrong for information in case any boards on the Amlogic side are similarly configured, I think a few other Rockchip ones at least are missing connector nodes, it appears to be a consistent issue presumably due to driver changes.
+Previously this didn’t cause issues because the intel map_sg always returned the same number of elements as the input scatter gather list but with the change to this dma-iommu api this is no longer the case. I wasn’t able to track the bug down to a specific line of code unfortunately.  
 
-The whole type-c topic is a somewhat undiscovered country on rk3399, due to
-the cross-ec hooking rk3399's type-c components. (see the cros-ec-pd extcon
-going to the rockchip type-c phy etc).
-
-This is presently worked on so that also everything can at some point use the
-kernel-internal type-c framework.
-
-But of course this doesn't hinder configuring the power-develivery in the
-fusb302 ICs already :-D .
+Could someone from the intel team look at this?
 
 
-Heiko
+I have been testing on a lenovo x1 carbon 5th generation. Let me know if there’s any more information you need.
+
+To allow my patch set to be tested I have added a patch (patch 8/8) in this series to disable combining sg segments in the dma-iommu api which fixes the bug but it doesn't fix the actual problem.
+
+As part of this patch series I copied the intel bounce buffer code to the dma-iommu path. The addition of the bounce buffer code took me by surprise. I did most of my development on this patch series before the bounce buffer code was added and my reimplementation in the dma-iommu path is very rushed and not properly tested but I’m running out of time to work on this patch set.
+
+On top of that I also didn’t port over the intel tracing code from this commit:
+https://github.com/torvalds/linux/commit/3b53034c268d550d9e8522e613a14ab53b8840d8#diff-6b3e7c4993f05e76331e463ab1fc87e1
+So all the work in that commit is now wasted. The code will need to be removed and reimplemented in the dma-iommu path. I would like to take the time to do this but I really don’t have the time at the moment and I want to get these changes out before the iommu code changes any more.
+
+
+Tom Murphy (8):
+  iommu/vt-d: clean up 32bit si_domain assignment
+  iommu/vt-d: Use default dma_direct_* mapping functions for direct
+    mapped devices
+  iommu/vt-d: Remove IOVA handling code from non-dma_ops path
+  iommu: Handle freelists when using deferred flushing in iommu drivers
+  iommu: Add iommu_dma_free_cpu_cached_iovas function
+  iommu: allow the dma-iommu api to use bounce buffers
+  iommu/vt-d: Convert intel iommu driver to the iommu ops
+  DO NOT MERGE: iommu: disable list appending in dma-iommu
+
+ drivers/iommu/Kconfig           |   1 +
+ drivers/iommu/amd_iommu.c       |  14 +-
+ drivers/iommu/arm-smmu-v3.c     |   3 +-
+ drivers/iommu/arm-smmu.c        |   3 +-
+ drivers/iommu/dma-iommu.c       | 183 +++++--
+ drivers/iommu/exynos-iommu.c    |   3 +-
+ drivers/iommu/intel-iommu.c     | 936 ++++----------------------------
+ drivers/iommu/iommu.c           |  39 +-
+ drivers/iommu/ipmmu-vmsa.c      |   3 +-
+ drivers/iommu/msm_iommu.c       |   3 +-
+ drivers/iommu/mtk_iommu.c       |   3 +-
+ drivers/iommu/mtk_iommu_v1.c    |   3 +-
+ drivers/iommu/omap-iommu.c      |   3 +-
+ drivers/iommu/qcom_iommu.c      |   3 +-
+ drivers/iommu/rockchip-iommu.c  |   3 +-
+ drivers/iommu/s390-iommu.c      |   3 +-
+ drivers/iommu/tegra-gart.c      |   3 +-
+ drivers/iommu/tegra-smmu.c      |   3 +-
+ drivers/iommu/virtio-iommu.c    |   3 +-
+ drivers/vfio/vfio_iommu_type1.c |   2 +-
+ include/linux/dma-iommu.h       |   3 +
+ include/linux/intel-iommu.h     |   1 -
+ include/linux/iommu.h           |  32 +-
+ 23 files changed, 345 insertions(+), 908 deletions(-)
+
+-- 
+2.20.1
