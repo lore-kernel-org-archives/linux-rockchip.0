@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 10/11] rockpro-rk3399: Enable SPI Flash
-Date: Sat, 21 Dec 2019 13:24:39 +0530
-Message-ID: <20191221075440.6944-11-jagan@amarulasolutions.com>
+Subject: [PATCH 09/11] roc-pc-rk3399: Enable SPI Flash
+Date: Sat, 21 Dec 2019 13:24:38 +0530
+Message-ID: <20191221075440.6944-10-jagan@amarulasolutions.com>
 References: <20191221075440.6944-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -25,34 +25,34 @@ Enable winbond SPI flash for ROC-PC-RK3399 board.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/dts/rk3399-rockpro64-u-boot.dtsi | 4 ++++
- configs/rockpro64-rk3399_defconfig        | 2 ++
+ arch/arm/dts/rk3399-roc-pc-u-boot.dtsi | 4 ++++
+ configs/roc-pc-rk3399_defconfig        | 2 ++
  2 files changed, 6 insertions(+)
 
-diff --git a/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi b/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
-index 4648513ea9..deaa3efd39 100644
---- a/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
-@@ -6,6 +6,10 @@
- #include "rk3399-u-boot.dtsi"
+diff --git a/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi b/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
+index 77d5cf5d3c..5746442981 100644
+--- a/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
+@@ -7,6 +7,10 @@
  #include "rk3399-sdram-lpddr4-100.dtsi"
+ 
  / {
 +	aliases {
 +		spi0 = &spi1;
 +	};
 +
  	chosen {
- 		u-boot,spl-boot-order = "same-as-spl", &sdmmc, &sdhci;
+ 		u-boot,spl-boot-order = "same-as-spl", &sdhci, &sdmmc;
  	};
-diff --git a/configs/rockpro64-rk3399_defconfig b/configs/rockpro64-rk3399_defconfig
-index 49e27c91cb..6a50ec7dbc 100644
---- a/configs/rockpro64-rk3399_defconfig
-+++ b/configs/rockpro64-rk3399_defconfig
-@@ -46,6 +46,8 @@ CONFIG_RAM_RK3399_LPDDR4=y
+diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+index 305baa712c..f37a7bda00 100644
+--- a/configs/roc-pc-rk3399_defconfig
++++ b/configs/roc-pc-rk3399_defconfig
+@@ -42,6 +42,8 @@ CONFIG_RAM_RK3399_LPDDR4=y
  CONFIG_BAUDRATE=1500000
  CONFIG_DEBUG_UART_SHIFT=2
  CONFIG_SYSRESET=y
-+CONFIG_SPI_FLASH_GIGADEVICE=y
++CONFIG_SPI_FLASH_WINBOND=y
 +CONFIG_ROCKCHIP_SPI=y
  CONFIG_USB=y
  CONFIG_USB_XHCI_HCD=y
