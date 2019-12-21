@@ -1,99 +1,89 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 00/11] rk3399: SPI boot support (fixes, updates)
-Date: Sat, 21 Dec 2019 13:24:29 +0530
-Message-ID: <20191221075440.6944-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 01/11] spi: rk: Limit transfers to (64K - 1) bytes
+Date: Sat, 21 Dec 2019 13:24:30 +0530
+Message-ID: <20191221075440.6944-2-jagan@amarulasolutions.com>
+References: <20191221075440.6944-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Simon Glass <sjg@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, linux-amarula <linux-amarula@amarulasolutions.com>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191221075440.6944-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This series support SPI boot on rk3399 in ROC-PC-RK3399 as
-an example board.
+The Rockchip SPI controller's length register only supports 16-bits,
+yielding a maximum length of 64KiB (the CTRLR1 register holds "length -
+1"). Trying to transfer more than that (e.g., with a large SPI flash
+read) will cause the driver to hang.
 
-Series introduces rk_spi fixes, sf distroboot, SPI boot support
-on ROC-PC-RK3399 board.
+Now, it seems that while theoretically we should be able to program
+CTRLR1 with 0xffff, and get a 64KiB transfer, but that also seems to
+cause the core to choke, so stick with a maximum of 64K - 1 bytes --
+i.e., 0xffff.
 
-SPI Boot log:
-------------
+Note, that the size is further divided into 'minus 1' while writing
+into CTRLR1.
 
-Channel 0: LPDDR4, 50MHz
-BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
-Channel 1: LPDDR4, 50MHz
-BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
-256B stride
-256B stride
-lpddr4_set_rate: change freq to 400000000 mhz 0, 1
-lpddr4_set_rate: change freq to 800000000 mhz 1, 0
+This change fixed two different read issues,
 
-U-Boot SPL 2020.01-rc4-00241-g9c3e7e925f (Dec 18 2019 - 19:54:46 +0530)
-Trying to boot from SPI
+1. sf read failure when with > 0x10000
 
+2. Boot from SPI flash failed during spi_flash_read call in
+   common/spl/spl_spi.c
 
-U-Boot 2020.01-rc4-00241-g9c3e7e925f (Dec 18 2019 - 19:54:46 +0530)
+Observed and Tested in
+- Rockpro64 with Gigadevice flash
+- ROC-RK3399-PC with Winbond flash
 
-Model: Firefly ROC-RK3399-PC Board
-DRAM:  3.9 GiB
-PMIC:  RK808 
-MMC:   dwmmc@fe320000: 1, sdhci@fe330000: 0
-Loading Environment from SPI Flash... SF: Detected w25q128 with page size 256 Bytes, erase size 4 KiB, total 16 MiB
-*** Warning - bad CRC, using default environment
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ drivers/spi/rk_spi.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-In:    serial@ff1a0000
-Out:   serial@ff1a0000
-Err:   serial@ff1a0000
-Model: Firefly ROC-RK3399-PC Board
-rockchip_dnl_key_pressed: adc_channel_single_shot fail!
-Net:   
-Error: ethernet@fe300000 address not set.
-No ethernet found.
-
-Hit any key to stop autoboot:  0 
-=> 
-
-Any inputs?
-Jagan.
-
-Jagan Teki (11):
-  spi: rk: Limit transfers to (64K - 1) bytes
-  distro_bootcmd: Add SF support
-  rockchip: Include SF on distrocmd devices
-  rk3399: Add boot flash script offet, size
-  rk3399: Check MMC env while defining it
-  env: kconfig: Restrict rockchip env for MMC
-  env: Enable SPI flash env for rockchip
-  rockchip: dts: Sync ROC-RK3399-PC changes from Linux
-  roc-pc-rk3399: Enable SPI Flash
-  rockpro-rk3399: Enable SPI Flash
-  roc-rk3399-pc: Add SPI boot support
-
- arch/arm/dts/rk3399-roc-pc-u-boot.dtsi    |  16 +-
- arch/arm/dts/rk3399-roc-pc.dts            | 673 +-----------------
- arch/arm/dts/rk3399-roc-pc.dtsi           | 813 ++++++++++++++++++++++
- arch/arm/dts/rk3399-rockpro64-u-boot.dtsi |   4 +
- board/rockchip/evb_rk3399/MAINTAINERS     |   2 +
- configs/roc-pc-rk3399-spi_defconfig       |  62 ++
- configs/roc-pc-rk3399_defconfig           |   2 +
- configs/rockpro64-rk3399_defconfig        |   2 +
- drivers/spi/rk_spi.c                      |  10 +-
- env/Kconfig                               |   8 +-
- include/config_distro_bootcmd.h           |  35 +
- include/configs/evb_rk3399.h              |   4 +-
- include/configs/rk3399_common.h           |   2 +
- include/configs/rockchip-common.h         |   7 +
- 14 files changed, 964 insertions(+), 676 deletions(-)
- create mode 100644 arch/arm/dts/rk3399-roc-pc.dtsi
- create mode 100644 configs/roc-pc-rk3399-spi_defconfig
-
+diff --git a/drivers/spi/rk_spi.c b/drivers/spi/rk_spi.c
+index c04535ac44..95eeb8307a 100644
+--- a/drivers/spi/rk_spi.c
++++ b/drivers/spi/rk_spi.c
+@@ -27,6 +27,12 @@
+ /* Change to 1 to output registers at the start of each transaction */
+ #define DEBUG_RK_SPI	0
+ 
++/*
++ * ctrlr1 is 16-bits, so we should support lengths of 0xffff + 1. However,
++ * the controller seems to hang when given 0x10000, so stick with this for now.
++ */
++#define ROCKCHIP_SPI_MAX_TRANLEN		0xffff
++
+ struct rockchip_spi_params {
+ 	/* RXFIFO overruns and TXFIFO underruns stop the master clock */
+ 	bool master_manages_fifo;
+@@ -367,7 +373,7 @@ static inline int rockchip_spi_16bit_reader(struct udevice *dev,
+ 	 * represented in CTRLR1.
+ 	 */
+ 	if (data && data->master_manages_fifo)
+-		max_chunk_size = 0x10000;
++		max_chunk_size = ROCKCHIP_SPI_MAX_TRANLEN;
+ 
+ 	// rockchip_spi_configure(dev, mode, size)
+ 	rkspi_enable_chip(regs, false);
+@@ -451,7 +457,7 @@ static int rockchip_spi_xfer(struct udevice *dev, unsigned int bitlen,
+ 
+ 	/* This is the original 8bit reader/writer code */
+ 	while (len > 0) {
+-		int todo = min(len, 0x10000);
++		int todo = min(len, ROCKCHIP_SPI_MAX_TRANLEN);
+ 
+ 		rkspi_enable_chip(regs, false);
+ 		writel(todo - 1, &regs->ctrlr1);
 -- 
 2.18.0.321.gffc6fa0e3
