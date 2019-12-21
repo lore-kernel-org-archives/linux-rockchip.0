@@ -1,50 +1,99 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH 1/2] Revert "rockchip: spi: fix off-by-one in chunk size
- computation"
-Date: Sat, 21 Dec 2019 13:02:32 +0530
-Message-ID: <CAMty3ZDoNCCMPTC_OoAyEwOoSMsa79KRmW9+LTC8opbinUiYPg@mail.gmail.com>
-References: <20191211132623.430-1-jagan@amarulasolutions.com>
- <20191211132623.430-2-jagan@amarulasolutions.com>
- <1E12E6D7-5401-4EF5-9D74-DFC6F8216799@theobroma-systems.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH 00/11] rk3399: SPI boot support (fixes, updates)
+Date: Sat, 21 Dec 2019 13:24:29 +0530
+Message-ID: <20191221075440.6944-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1E12E6D7-5401-4EF5-9D74-DFC6F8216799-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula <linux-amarula@amarulasolutions.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGhpbGlwcCwKCk9uIFdlZCwgRGVjIDExLCAyMDE5IGF0IDc6MTAgUE0gUGhpbGlwcCBUb21z
-aWNoCjxwaGlsaXBwLnRvbXNpY2hAdGhlb2Jyb21hLXN5c3RlbXMuY29tPiB3cm90ZToKPgo+Cj4K
-PiA+IE9uIDExLjEyLjIwMTksIGF0IDE0OjI2LCBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29s
-dXRpb25zLmNvbT4gd3JvdGU6Cj4gPgo+ID4gVGhlIG1heGltdW0gdHJhbnNmZXIgbGVuZ3RoIChp
-biBhIHNpbmdsZSB0cmFuc2FjdGlvbikgZm9yIHRoZSBSb2NrY2hpcAo+ID4gU1BJIGNvbnRyb2xs
-ZXIgaXMgNjRLZnJhbWVzIChpLmUuIDB4MTAwMDAgZnJhbWVzKSBvZiA4Yml0IG9yIDE2Yml0Cj4g
-PiBmcmFtZXMgYW5kIGlzIGVuY29kZWQgYXMgKG51bV9mcmFtZXMgLSAxKSBpbiBDVFJMUjEuCj4g
-Pgo+ID4gU28gdGhlIDB4MTAwMDAgaXMgb2Zmc2V0IHZhbHVlIGZvciA2NEsgYnV0IHRoZSBhY3R1
-YWwgc2l6ZSB2YWx1ZSB3b3VsZAo+ID4gYmUgJ21pbnVzIDEnIGZyb20gMHgxMDAwMC4KPgo+IE5B
-Sy4gUGxlYXNlIHNlZSAyIGNvZGUgbGluZXMgYmVsb3cgeW91ciBjaGFuZ2UgdG8gc2VlIHRoYXQg
-dGhlIOKAnG1pbnVzIDHigJ0KPiBpcyBhcHBsaWVkIHRoZXJl4oCmIHNvIGEgdG9kbyBvZiAweDEw
-MDAwIHdpbGwgd3JpdGUgMHhmZmZmIHRvIHJlZ3MtPmN0cmxyMS4KPgo+IFRoZSBwcm9ibGVtIG11
-c3QgYmUgc29tZXdoZXJlIGVsc2UgYW5kIHRoaXMgcGF0Y2ggd2lsbCBvbmx5IG1hc2sgdGhlCj4g
-dW5kZXJseWluZyBpc3N1ZS4KClBsZWFzZSBjaGVjayB0aGUgYmVsb3cgY2hhbmdlcy4gdGhlIG1h
-eCB0cmFuc2ZlciBzaXplIGlzIDY0SyAtIDEgd2hpY2gKaXMgMHhmZmZmIGFuZCB3ZSBuZWVkIHRv
-IHdyaXRlIC0xIG9mIHRoaXMgdG8gY3IxLgoKaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2Nt
-L2xpbnV4L2tlcm5lbC9naXQvbmV4dC9saW51eC1uZXh0LmdpdC9jb21taXQvZHJpdmVycy9zcGkv
-c3BpLXJvY2tjaGlwLmM/aWQ9NTE4NWE4MWMwMmQ0MTE4YjExZTZjYjdiNWZiZjZmMTVmZjdhZmY5
-MApodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9uZXh0L2xp
-bnV4LW5leHQuZ2l0L2NvbW1pdC9kcml2ZXJzL3NwaS9zcGktcm9ja2NoaXAuYz9pZD0wNGIzN2Qy
-ZDAyYzBhNWFlMmY0ZTU5MzI2ZWY2ZGVhZmYxOGUwNDU2CgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This series support SPI boot on rk3399 in ROC-PC-RK3399 as
+an example board.
+
+Series introduces rk_spi fixes, sf distroboot, SPI boot support
+on ROC-PC-RK3399 board.
+
+SPI Boot log:
+------------
+
+Channel 0: LPDDR4, 50MHz
+BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
+Channel 1: LPDDR4, 50MHz
+BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
+256B stride
+256B stride
+lpddr4_set_rate: change freq to 400000000 mhz 0, 1
+lpddr4_set_rate: change freq to 800000000 mhz 1, 0
+
+U-Boot SPL 2020.01-rc4-00241-g9c3e7e925f (Dec 18 2019 - 19:54:46 +0530)
+Trying to boot from SPI
+
+
+U-Boot 2020.01-rc4-00241-g9c3e7e925f (Dec 18 2019 - 19:54:46 +0530)
+
+Model: Firefly ROC-RK3399-PC Board
+DRAM:  3.9 GiB
+PMIC:  RK808 
+MMC:   dwmmc@fe320000: 1, sdhci@fe330000: 0
+Loading Environment from SPI Flash... SF: Detected w25q128 with page size 256 Bytes, erase size 4 KiB, total 16 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial@ff1a0000
+Out:   serial@ff1a0000
+Err:   serial@ff1a0000
+Model: Firefly ROC-RK3399-PC Board
+rockchip_dnl_key_pressed: adc_channel_single_shot fail!
+Net:   
+Error: ethernet@fe300000 address not set.
+No ethernet found.
+
+Hit any key to stop autoboot:  0 
+=> 
+
+Any inputs?
+Jagan.
+
+Jagan Teki (11):
+  spi: rk: Limit transfers to (64K - 1) bytes
+  distro_bootcmd: Add SF support
+  rockchip: Include SF on distrocmd devices
+  rk3399: Add boot flash script offet, size
+  rk3399: Check MMC env while defining it
+  env: kconfig: Restrict rockchip env for MMC
+  env: Enable SPI flash env for rockchip
+  rockchip: dts: Sync ROC-RK3399-PC changes from Linux
+  roc-pc-rk3399: Enable SPI Flash
+  rockpro-rk3399: Enable SPI Flash
+  roc-rk3399-pc: Add SPI boot support
+
+ arch/arm/dts/rk3399-roc-pc-u-boot.dtsi    |  16 +-
+ arch/arm/dts/rk3399-roc-pc.dts            | 673 +-----------------
+ arch/arm/dts/rk3399-roc-pc.dtsi           | 813 ++++++++++++++++++++++
+ arch/arm/dts/rk3399-rockpro64-u-boot.dtsi |   4 +
+ board/rockchip/evb_rk3399/MAINTAINERS     |   2 +
+ configs/roc-pc-rk3399-spi_defconfig       |  62 ++
+ configs/roc-pc-rk3399_defconfig           |   2 +
+ configs/rockpro64-rk3399_defconfig        |   2 +
+ drivers/spi/rk_spi.c                      |  10 +-
+ env/Kconfig                               |   8 +-
+ include/config_distro_bootcmd.h           |  35 +
+ include/configs/evb_rk3399.h              |   4 +-
+ include/configs/rk3399_common.h           |   2 +
+ include/configs/rockchip-common.h         |   7 +
+ 14 files changed, 964 insertions(+), 676 deletions(-)
+ create mode 100644 arch/arm/dts/rk3399-roc-pc.dtsi
+ create mode 100644 configs/roc-pc-rk3399-spi_defconfig
+
+-- 
+2.18.0.321.gffc6fa0e3
