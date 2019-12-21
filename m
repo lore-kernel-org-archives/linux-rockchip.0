@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 01/11] spi: rk: Limit transfers to (64K - 1) bytes
-Date: Sat, 21 Dec 2019 13:24:30 +0530
-Message-ID: <20191221075440.6944-2-jagan@amarulasolutions.com>
+Subject: [PATCH 02/11] distro_bootcmd: Add SF support
+Date: Sat, 21 Dec 2019 13:24:31 +0530
+Message-ID: <20191221075440.6944-3-jagan@amarulasolutions.com>
 References: <20191221075440.6944-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,72 +18,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The Rockchip SPI controller's length register only supports 16-bits,
-yielding a maximum length of 64KiB (the CTRLR1 register holds "length -
-1"). Trying to transfer more than that (e.g., with a large SPI flash
-read) will cause the driver to hang.
+Add distro boot command support for SPI flash.
 
-Now, it seems that while theoretically we should be able to program
-CTRLR1 with 0xffff, and get a 64KiB transfer, but that also seems to
-cause the core to choke, so stick with a maximum of 64K - 1 bytes --
-i.e., 0xffff.
+This distro boot will read the boot script at specific
+location at the flash and start sourcing the same.
 
-Note, that the size is further divided into 'minus 1' while writing
-into CTRLR1.
+The common macro like BOOTENV_SHARED_FLASH would help
+to extend the support for nand flash in future.
 
-This change fixed two different read issues,
-
-1. sf read failure when with > 0x10000
-
-2. Boot from SPI flash failed during spi_flash_read call in
-   common/spl/spl_spi.c
-
-Observed and Tested in
-- Rockpro64 with Gigadevice flash
-- ROC-RK3399-PC with Winbond flash
-
+Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/spi/rk_spi.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ include/config_distro_bootcmd.h | 35 +++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-diff --git a/drivers/spi/rk_spi.c b/drivers/spi/rk_spi.c
-index c04535ac44..95eeb8307a 100644
---- a/drivers/spi/rk_spi.c
-+++ b/drivers/spi/rk_spi.c
-@@ -27,6 +27,12 @@
- /* Change to 1 to output registers at the start of each transaction */
- #define DEBUG_RK_SPI	0
+diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
+index fc0935fa21..d68b79e290 100644
+--- a/include/config_distro_bootcmd.h
++++ b/include/config_distro_bootcmd.h
+@@ -43,6 +43,22 @@
+ #define BOOTENV_DEV_NAME_BLKDEV(devtypeu, devtypel, instance) \
+ 	#devtypel #instance " "
  
-+/*
-+ * ctrlr1 is 16-bits, so we should support lengths of 0xffff + 1. However,
-+ * the controller seems to hang when given 0x10000, so stick with this for now.
-+ */
-+#define ROCKCHIP_SPI_MAX_TRANLEN		0xffff
++#define BOOTENV_SHARED_SF_BODY(devtypel) \
++		"if " #devtypel " probe ${devnum}; then " \
++			"devtype=" #devtypel "; "	  \
++			"run scan_flash_for_scripts; "	  \
++		"fi\0"
 +
- struct rockchip_spi_params {
- 	/* RXFIFO overruns and TXFIFO underruns stop the master clock */
- 	bool master_manages_fifo;
-@@ -367,7 +373,7 @@ static inline int rockchip_spi_16bit_reader(struct udevice *dev,
- 	 * represented in CTRLR1.
- 	 */
- 	if (data && data->master_manages_fifo)
--		max_chunk_size = 0x10000;
-+		max_chunk_size = ROCKCHIP_SPI_MAX_TRANLEN;
++#define BOOTENV_SHARED_FLASH(devtypel) \
++	#devtypel "_boot=" \
++	BOOTENV_SHARED_SF_BODY(devtypel)
++
++#define BOOTENV_DEV_FLASH(devtypeu, devtypel, instance) \
++	BOOTENV_DEV_BLKDEV(devtypeu, devtypel, instance)
++
++#define BOOTENV_DEV_NAME_FLASH(devtypeu, devtypel, instance) \
++	BOOTENV_DEV_NAME_BLKDEV(devtypeu, devtypel, instance)
++
+ #ifdef CONFIG_SANDBOX
+ #define BOOTENV_SHARED_HOST	BOOTENV_SHARED_BLKDEV(host)
+ #define BOOTENV_DEV_HOST	BOOTENV_DEV_BLKDEV
+@@ -398,6 +414,18 @@
+ 	BOOT_TARGET_DEVICES_references_PXE_without_CONFIG_CMD_DHCP_or_PXE
+ #endif
  
- 	// rockchip_spi_configure(dev, mode, size)
- 	rkspi_enable_chip(regs, false);
-@@ -451,7 +457,7 @@ static int rockchip_spi_xfer(struct udevice *dev, unsigned int bitlen,
- 
- 	/* This is the original 8bit reader/writer code */
- 	while (len > 0) {
--		int todo = min(len, 0x10000);
-+		int todo = min(len, ROCKCHIP_SPI_MAX_TRANLEN);
- 
- 		rkspi_enable_chip(regs, false);
- 		writel(todo - 1, &regs->ctrlr1);
++#if defined(CONFIG_CMD_SF)
++#define BOOTENV_SHARED_SF	BOOTENV_SHARED_FLASH(sf)
++#define BOOTENV_DEV_SF		BOOTENV_DEV_FLASH
++#define BOOTENV_DEV_NAME_SF	BOOTENV_DEV_NAME_FLASH
++#else
++#define BOOTENV_SHARED_SF
++#define BOOTENV_DEV_SF \
++	BOOT_TARGET_DEVICES_references_SF_without_CONFIG_CMD_SF
++#define BOOTENV_DEV_NAME_SF \
++	BOOT_TARGET_DEVICES_references_SF_without_CONFIG_CMD_SF
++#endif
++
+ #define BOOTENV_DEV_NAME(devtypeu, devtypel, instance) \
+ 	BOOTENV_DEV_NAME_##devtypeu(devtypeu, devtypel, instance)
+ #define BOOTENV_BOOT_TARGETS \
+@@ -412,6 +440,7 @@
+ 	BOOTENV_SHARED_USB \
+ 	BOOTENV_SHARED_SATA \
+ 	BOOTENV_SHARED_SCSI \
++	BOOTENV_SHARED_SF \
+ 	BOOTENV_SHARED_NVME \
+ 	BOOTENV_SHARED_IDE \
+ 	BOOTENV_SHARED_UBIFS \
+@@ -436,6 +465,12 @@
+ 			"echo SCRIPT FAILED: continuing...; "             \
+ 		"fi\0"                                                    \
+ 	\
++	"scan_flash_for_scripts="                                         \
++		"${devtype} read ${scriptaddr} "                          \
++			"${script_offset_f} ${script_size_f}; "		  \
++		"source ${scriptaddr}; "				  \
++		"echo SCRIPT FAILED: continuing...\0"			  \
++	\
+ 	"boot_a_script="                                                  \
+ 		"load ${devtype} ${devnum}:${distro_bootpart} "           \
+ 			"${scriptaddr} ${prefix}${script}; "              \
 -- 
 2.18.0.321.gffc6fa0e3
