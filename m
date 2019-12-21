@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 04/11] rk3399: Add boot flash script offet, size
-Date: Sat, 21 Dec 2019 13:24:33 +0530
-Message-ID: <20191221075440.6944-5-jagan@amarulasolutions.com>
+Subject: [PATCH 03/11] rockchip: Include SF on distrocmd devices
+Date: Sat, 21 Dec 2019 13:24:32 +0530
+Message-ID: <20191221075440.6944-4-jagan@amarulasolutions.com>
 References: <20191221075440.6944-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20191221075440.6944-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -21,21 +21,41 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-TW9zdCBvZiB0aGUgU1BJIGZsYXNoIGRldmljZXMgaW4gcm9ja2NoaXAgKHJrMzM5OSkKYXJlIDE2
-TWlCIHNpemUuIFNvLCBsZXQncyB1c2UgdGhlIHNjcmlwdCBvZmZzZXQgYXQKdGhlIGVuZCBvZiA4
-Sy7CoAoKVGhpcyB3YXkgaXQgY2Fubm90IG92ZXJsYXAgYW55IG9mZnNldHMgYmVpbmcgdXNlZApi
-eSBzb2Z0d2FyZSBjb21wb25lbnRzIGluIGZsYXNoIGxheW91dC4KClNpZ25lZC1vZmYtYnk6IEph
-Z2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgotLS0KIGluY2x1ZGUvY29uZmln
-cy9yazMzOTlfY29tbW9uLmggfCAyICsrCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCsp
-CgpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9jb25maWdzL3JrMzM5OV9jb21tb24uaCBiL2luY2x1ZGUv
-Y29uZmlncy9yazMzOTlfY29tbW9uLmgKaW5kZXggMTI3Y2ExZjA5Yy4uOTJlYjVjYjc1MCAxMDA2
-NDQKLS0tIGEvaW5jbHVkZS9jb25maWdzL3JrMzM5OV9jb21tb24uaAorKysgYi9pbmNsdWRlL2Nv
-bmZpZ3MvcmszMzk5X2NvbW1vbi5oCkBAIC00OCw2ICs0OCw4IEBACiAKICNkZWZpbmUgRU5WX01F
-TV9MQVlPVVRfU0VUVElOR1MgXAogCSJzY3JpcHRhZGRyPTB4MDA1MDAwMDBcMCIgXAorCSJzY3Jp
-cHRfb2Zmc2V0X2Y9MHhmZmUwMDBcMCIgXAorCSJzY3JpcHRfc2l6ZV9mPTB4MjAwMFwwIiBcCiAJ
-InB4ZWZpbGVfYWRkcl9yPTB4MDA2MDAwMDBcMCIgXAogCSJmZHRfYWRkcl9yPTB4MDFmMDAwMDBc
-MCIgXAogCSJrZXJuZWxfYWRkcl9yPTB4MDIwODAwMDBcMCIgXAotLSAKMi4xOC4wLjMyMS5nZmZj
-NmZhMGUzCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+Include the SPI flash device on distro boot targets.
+
+Included at the beginning of the target devices list
+since the rockchip platform has a boot order start
+from SPI Flash.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ include/configs/rockchip-common.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/include/configs/rockchip-common.h b/include/configs/rockchip-common.h
+index 68e1105a4b..4e6d6e98d9 100644
+--- a/include/configs/rockchip-common.h
++++ b/include/configs/rockchip-common.h
+@@ -11,6 +11,12 @@
+ 
+ #ifndef CONFIG_SPL_BUILD
+ 
++#if CONFIG_IS_ENABLED(CMD_SF)
++# define BOOT_TARGET_SF(func) func(SF, sf, 0)
++#else
++# define BOOT_TARGET_SF(func)
++#endif
++
+ /* First try to boot from SD (index 0), then eMMC (index 1) */
+ #if CONFIG_IS_ENABLED(CMD_MMC)
+ 	#define BOOT_TARGET_MMC(func) \
+@@ -39,6 +45,7 @@
+ #endif
+ 
+ #define BOOT_TARGET_DEVICES(func) \
++	BOOT_TARGET_SF(func) \
+ 	BOOT_TARGET_MMC(func) \
+ 	BOOT_TARGET_USB(func) \
+ 	BOOT_TARGET_PXE(func) \
+-- 
+2.18.0.321.gffc6fa0e3
