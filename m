@@ -1,29 +1,47 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v3 0/2] arm64: dts: rockchip: RockPro64: enable wifi/bt
-Date: Sat, 21 Dec 2019 12:58:54 +0100
-Message-ID: <12929824.v0dLTkq57a@phil>
-References: <20191218223523.30154-1-smoch@web.de>
+Subject: Re: [PATCH v3 0/4] arm64: dts: rockchip: Add Rock Pi N10 support
+Date: Sat, 21 Dec 2019 13:15:59 +0100
+Message-ID: <2568287.AjJObobGxI@phil>
+References: <20191216174711.17856-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191218223523.30154-1-smoch@web.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Soeren Moch <smoch@web.de>
-Cc: Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191216174711.17856-1-jagan@amarulasolutions.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Tom Cubie <tom@radxa.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Akash Gajjar <akash@openedev.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>, linux-amarula@amarulasolutions.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 18. Dezember 2019, 23:35:21 CET schrieb Soeren Moch:
-> Enhance devicetree of the RockPro64 arm64/rockchip board to use an
-> AP6359SA based wifi/bt combo module.
+Am Montag, 16. Dezember 2019, 18:47:07 CET schrieb Jagan Teki:
+> Unlike, other Rock PI boards from radxa, Rock Pi N10 SBC is based
+> on SOM + Carrier board combination.
 > 
-> Patches 1-7 of version 2 of this patch series (to add support for the
-> BCM4359 chipset with SDIO interface to the brcmfmac wireless network
-> driver) are already picked up for wireless-drivers-next. So this
-> version 3 only contains the patches 8-9 from v2.
+> Rock Pi N10 is a Rockchip RK3399Pro based SBC, which has
+> - VMARC RK3399Pro SOM (as per SMARC standard) from Vamrs.
+> - Dalang carrier board from Radxa.
 > 
+> patch 0001: dt-bindings for Rock Pi N10
+> 
+> patch 0002: VMARC RK3399Pro SOM dtsi support
+> 
+> patch 0003: Radxa Dalang carrier board dtsi support
+> 
+> patch 0004: Rock Pi N10 dts support
+> 
+> Tested basic peripherals and will all more in future patches.
 
-applied both for 5.6
+applied all 4 for 5.6
+
+And looking for to seeing the rk3288-variant as well :-D .
 
 Thanks
 Heiko
