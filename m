@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 02/11] distro_bootcmd: Add SF support
-Date: Sat, 21 Dec 2019 13:24:31 +0530
-Message-ID: <20191221075440.6944-3-jagan@amarulasolutions.com>
+Subject: [PATCH 04/11] rk3399: Add boot flash script offet, size
+Date: Sat, 21 Dec 2019 13:24:33 +0530
+Message-ID: <20191221075440.6944-5-jagan@amarulasolutions.com>
 References: <20191221075440.6944-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20191221075440.6944-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -18,89 +18,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add distro boot command support for SPI flash.
-
-This distro boot will read the boot script at specific
-location at the flash and start sourcing the same.
-
-The common macro like BOOTENV_SHARED_FLASH would help
-to extend the support for nand flash in future.
-
-Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- include/config_distro_bootcmd.h | 35 +++++++++++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
-
-diff --git a/include/config_distro_bootcmd.h b/include/config_distro_bootcmd.h
-index fc0935fa21..d68b79e290 100644
---- a/include/config_distro_bootcmd.h
-+++ b/include/config_distro_bootcmd.h
-@@ -43,6 +43,22 @@
- #define BOOTENV_DEV_NAME_BLKDEV(devtypeu, devtypel, instance) \
- 	#devtypel #instance " "
- 
-+#define BOOTENV_SHARED_SF_BODY(devtypel) \
-+		"if " #devtypel " probe ${devnum}; then " \
-+			"devtype=" #devtypel "; "	  \
-+			"run scan_flash_for_scripts; "	  \
-+		"fi\0"
-+
-+#define BOOTENV_SHARED_FLASH(devtypel) \
-+	#devtypel "_boot=" \
-+	BOOTENV_SHARED_SF_BODY(devtypel)
-+
-+#define BOOTENV_DEV_FLASH(devtypeu, devtypel, instance) \
-+	BOOTENV_DEV_BLKDEV(devtypeu, devtypel, instance)
-+
-+#define BOOTENV_DEV_NAME_FLASH(devtypeu, devtypel, instance) \
-+	BOOTENV_DEV_NAME_BLKDEV(devtypeu, devtypel, instance)
-+
- #ifdef CONFIG_SANDBOX
- #define BOOTENV_SHARED_HOST	BOOTENV_SHARED_BLKDEV(host)
- #define BOOTENV_DEV_HOST	BOOTENV_DEV_BLKDEV
-@@ -398,6 +414,18 @@
- 	BOOT_TARGET_DEVICES_references_PXE_without_CONFIG_CMD_DHCP_or_PXE
- #endif
- 
-+#if defined(CONFIG_CMD_SF)
-+#define BOOTENV_SHARED_SF	BOOTENV_SHARED_FLASH(sf)
-+#define BOOTENV_DEV_SF		BOOTENV_DEV_FLASH
-+#define BOOTENV_DEV_NAME_SF	BOOTENV_DEV_NAME_FLASH
-+#else
-+#define BOOTENV_SHARED_SF
-+#define BOOTENV_DEV_SF \
-+	BOOT_TARGET_DEVICES_references_SF_without_CONFIG_CMD_SF
-+#define BOOTENV_DEV_NAME_SF \
-+	BOOT_TARGET_DEVICES_references_SF_without_CONFIG_CMD_SF
-+#endif
-+
- #define BOOTENV_DEV_NAME(devtypeu, devtypel, instance) \
- 	BOOTENV_DEV_NAME_##devtypeu(devtypeu, devtypel, instance)
- #define BOOTENV_BOOT_TARGETS \
-@@ -412,6 +440,7 @@
- 	BOOTENV_SHARED_USB \
- 	BOOTENV_SHARED_SATA \
- 	BOOTENV_SHARED_SCSI \
-+	BOOTENV_SHARED_SF \
- 	BOOTENV_SHARED_NVME \
- 	BOOTENV_SHARED_IDE \
- 	BOOTENV_SHARED_UBIFS \
-@@ -436,6 +465,12 @@
- 			"echo SCRIPT FAILED: continuing...; "             \
- 		"fi\0"                                                    \
- 	\
-+	"scan_flash_for_scripts="                                         \
-+		"${devtype} read ${scriptaddr} "                          \
-+			"${script_offset_f} ${script_size_f}; "		  \
-+		"source ${scriptaddr}; "				  \
-+		"echo SCRIPT FAILED: continuing...\0"			  \
-+	\
- 	"boot_a_script="                                                  \
- 		"load ${devtype} ${devnum}:${distro_bootpart} "           \
- 			"${scriptaddr} ${prefix}${script}; "              \
--- 
-2.18.0.321.gffc6fa0e3
+TW9zdCBvZiB0aGUgU1BJIGZsYXNoIGRldmljZXMgaW4gcm9ja2NoaXAgKHJrMzM5OSkKYXJlIDE2
+TWlCIHNpemUuIFNvLCBsZXQncyB1c2UgdGhlIHNjcmlwdCBvZmZzZXQgYXQKdGhlIGVuZCBvZiA4
+Sy7CoAoKVGhpcyB3YXkgaXQgY2Fubm90IG92ZXJsYXAgYW55IG9mZnNldHMgYmVpbmcgdXNlZApi
+eSBzb2Z0d2FyZSBjb21wb25lbnRzIGluIGZsYXNoIGxheW91dC4KClNpZ25lZC1vZmYtYnk6IEph
+Z2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgotLS0KIGluY2x1ZGUvY29uZmln
+cy9yazMzOTlfY29tbW9uLmggfCAyICsrCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCsp
+CgpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9jb25maWdzL3JrMzM5OV9jb21tb24uaCBiL2luY2x1ZGUv
+Y29uZmlncy9yazMzOTlfY29tbW9uLmgKaW5kZXggMTI3Y2ExZjA5Yy4uOTJlYjVjYjc1MCAxMDA2
+NDQKLS0tIGEvaW5jbHVkZS9jb25maWdzL3JrMzM5OV9jb21tb24uaAorKysgYi9pbmNsdWRlL2Nv
+bmZpZ3MvcmszMzk5X2NvbW1vbi5oCkBAIC00OCw2ICs0OCw4IEBACiAKICNkZWZpbmUgRU5WX01F
+TV9MQVlPVVRfU0VUVElOR1MgXAogCSJzY3JpcHRhZGRyPTB4MDA1MDAwMDBcMCIgXAorCSJzY3Jp
+cHRfb2Zmc2V0X2Y9MHhmZmUwMDBcMCIgXAorCSJzY3JpcHRfc2l6ZV9mPTB4MjAwMFwwIiBcCiAJ
+InB4ZWZpbGVfYWRkcl9yPTB4MDA2MDAwMDBcMCIgXAogCSJmZHRfYWRkcl9yPTB4MDFmMDAwMDBc
+MCIgXAogCSJrZXJuZWxfYWRkcl9yPTB4MDIwODAwMDBcMCIgXAotLSAKMi4xOC4wLjMyMS5nZmZj
+NmZhMGUzCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
