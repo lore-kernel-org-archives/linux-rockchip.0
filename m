@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 03/11] rockchip: Include SF on distrocmd devices
-Date: Sat, 21 Dec 2019 13:24:32 +0530
-Message-ID: <20191221075440.6944-4-jagan@amarulasolutions.com>
+Subject: [PATCH 05/11] rk3399: Check MMC env while defining it
+Date: Sat, 21 Dec 2019 13:24:34 +0530
+Message-ID: <20191221075440.6944-6-jagan@amarulasolutions.com>
 References: <20191221075440.6944-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,41 +21,32 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Include the SPI flash device on distro boot targets.
+rk3399 do support SPI flash as well, so there is
+a possibility of using flash environment for those
+usecases.
 
-Included at the beginning of the target devices list
-since the rockchip platform has a boot order start
-from SPI Flash.
+So define env device for MMC only when it is used
+by specific configuration.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- include/configs/rockchip-common.h | 7 +++++++
- 1 file changed, 7 insertions(+)
+ include/configs/evb_rk3399.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/include/configs/rockchip-common.h b/include/configs/rockchip-common.h
-index 68e1105a4b..4e6d6e98d9 100644
---- a/include/configs/rockchip-common.h
-+++ b/include/configs/rockchip-common.h
-@@ -11,6 +11,12 @@
+diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
+index b9c4d683f4..c0b0358893 100644
+--- a/include/configs/evb_rk3399.h
++++ b/include/configs/evb_rk3399.h
+@@ -8,7 +8,9 @@
  
- #ifndef CONFIG_SPL_BUILD
+ #include <configs/rk3399_common.h>
  
-+#if CONFIG_IS_ENABLED(CMD_SF)
-+# define BOOT_TARGET_SF(func) func(SF, sf, 0)
-+#else
-+# define BOOT_TARGET_SF(func)
+-#define CONFIG_SYS_MMC_ENV_DEV 0
++#if defined(CONFIG_ENV_IS_IN_MMC)
++# define CONFIG_SYS_MMC_ENV_DEV		0
 +#endif
-+
- /* First try to boot from SD (index 0), then eMMC (index 1) */
- #if CONFIG_IS_ENABLED(CMD_MMC)
- 	#define BOOT_TARGET_MMC(func) \
-@@ -39,6 +45,7 @@
- #endif
  
- #define BOOT_TARGET_DEVICES(func) \
-+	BOOT_TARGET_SF(func) \
- 	BOOT_TARGET_MMC(func) \
- 	BOOT_TARGET_USB(func) \
- 	BOOT_TARGET_PXE(func) \
+ #define SDRAM_BANK_SIZE			(2UL << 30)
+ 
 -- 
 2.18.0.321.gffc6fa0e3
