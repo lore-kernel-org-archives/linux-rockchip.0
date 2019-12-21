@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 05/11] rk3399: Check MMC env while defining it
-Date: Sat, 21 Dec 2019 13:24:34 +0530
-Message-ID: <20191221075440.6944-6-jagan@amarulasolutions.com>
+Subject: [PATCH 06/11] env: kconfig: Restrict rockchip env for MMC
+Date: Sat, 21 Dec 2019 13:24:35 +0530
+Message-ID: <20191221075440.6944-7-jagan@amarulasolutions.com>
 References: <20191221075440.6944-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,32 +21,39 @@ To: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-rk3399 do support SPI flash as well, so there is
+Rockchip do support SPI flash as well, so there is
 a possibility of using flash environment for those
-usecases.
+use cases.
 
-So define env device for MMC only when it is used
-by specific configuration.
+So, restrict the current env offset, size for MMC.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- include/configs/evb_rk3399.h | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ env/Kconfig | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
-index b9c4d683f4..c0b0358893 100644
---- a/include/configs/evb_rk3399.h
-+++ b/include/configs/evb_rk3399.h
-@@ -8,7 +8,9 @@
- 
- #include <configs/rk3399_common.h>
- 
--#define CONFIG_SYS_MMC_ENV_DEV 0
-+#if defined(CONFIG_ENV_IS_IN_MMC)
-+# define CONFIG_SYS_MMC_ENV_DEV		0
-+#endif
- 
- #define SDRAM_BANK_SIZE			(2UL << 30)
- 
+diff --git a/env/Kconfig b/env/Kconfig
+index ed12609f6a..9416a70022 100644
+--- a/env/Kconfig
++++ b/env/Kconfig
+@@ -488,7 +488,7 @@ config ENV_OFFSET
+ 	hex "Environment offset"
+ 	depends on ENV_IS_IN_EEPROM || ENV_IS_IN_MMC || ENV_IS_IN_NAND || \
+ 		    ENV_IS_IN_SPI_FLASH
+-	default 0x3f8000 if ARCH_ROCKCHIP
++	default 0x3f8000 if ARCH_ROCKCHIP && ENV_IS_IN_MMC
+ 	default 0x88000 if ARCH_SUNXI
+ 	default 0xE0000 if ARCH_ZYNQ
+ 	default 0x1E00000 if ARCH_ZYNQMP
+@@ -511,7 +511,8 @@ config ENV_SIZE
+ 	hex "Environment Size"
+ 	default 0x40000 if ENV_IS_IN_SPI_FLASH && ARCH_ZYNQMP
+ 	default 0x20000 if ARCH_SUNXI || ARCH_ZYNQ || ARCH_OMAP2PLUS || ARCH_AT91
+-	default 0x8000 if ARCH_ROCKCHIP || ARCH_ZYNQMP || ARCH_VERSAL
++	default 0x8000 if ARCH_ROCKCHIP && ENV_IS_IN_MMC
++	default 0x8000 if ARCH_ZYNQMP || ARCH_VERSAL
+ 	default 0x4000 if ARC
+ 	default 0x1f000
+ 	help
 -- 
 2.18.0.321.gffc6fa0e3
