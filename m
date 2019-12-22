@@ -1,54 +1,32 @@
-From: Arvind Sankar <nivedita@alum.mit.edu>
-Subject: Re: [PATCH 1/8] iommu/vt-d: clean up 32bit si_domain assignment
-Date: Sat, 21 Dec 2019 18:46:37 -0500
-Message-ID: <20191221234635.GA99623@rani.riverdale.lan>
-References: <20191221150402.13868-1-murphyt7@tcd.ie>
- <20191221150402.13868-2-murphyt7@tcd.ie>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191221150402.13868-2-murphyt7@tcd.ie>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tom Murphy <murphyt7@tcd.ie>
-Cc: iommu@lists.linux-foundation.org, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.>
+From: Christian Hewitt <christianshewitt-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
+Date: Sun, 22 Dec 2019 07:35:43 +0300
+Message-ID: <47DB71CE-ACC4-431D-9E66-D28A8C18C0A4@gmail.com>
+References: <20191211235253.2539-1-smoch@web.de>
+ <D1B53CE9-E87C-4514-A2D7-0FE70A4D1A5D@gmail.com>
+ <cb3ac55f-4c8f-b0a0-41ee-f16b3232c87e@web.de>
+Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
+Content-Type: text/plain;
+        charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <cb3ac55f-4c8f-b0a0-41ee-f16b3232c87e-S0/GAf8tV78@public.gmane.org>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>
+Cc: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Dec 21, 2019 at 03:03:53PM +0000, Tom Murphy wrote:
-> In the intel iommu driver devices which only support 32bit DMA can't be
-> direct mapped. The implementation of this is weird. Currently we assign
-> it a direct mapped domain and then remove the domain later and replace
-> it with a domain of type IOMMU_DOMAIN_IDENTITY. We should just assign it
-> a domain of type IOMMU_DOMAIN_IDENTITY from the begging rather than
-> needlessly swapping domains.
-> 
-> Signed-off-by: Tom Murphy <murphyt7@tcd.ie>
-> ---
->  drivers/iommu/intel-iommu.c | 88 +++++++++++++------------------------
->  1 file changed, 31 insertions(+), 57 deletions(-)
-> 
-> diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
-> index 0c8d81f56a30..c1ea66467918 100644
-> --- a/drivers/iommu/intel-iommu.c
-> +++ b/drivers/iommu/intel-iommu.c
-> @@ -5640,7 +5609,12 @@ static int intel_iommu_add_device(struct device *dev)
->  	domain = iommu_get_domain_for_dev(dev);
->  	dmar_domain = to_dmar_domain(domain);
->  	if (domain->type == IOMMU_DOMAIN_DMA) {
-> -		if (device_def_domain_type(dev) == IOMMU_DOMAIN_IDENTITY) {
-> +		/*
-> +		 * We check dma_mask >= dma_get_required_mask(dev) because
-> +		 * 32 bit DMA falls back to non-identity mapping.
-> +		 */
-> +		if (device_def_domain_type(dev) == IOMMU_DOMAIN_IDENTITY &&
-> +				dma_mask >= dma_get_required_mask(dev)) {
->  			ret = iommu_request_dm_for_dev(dev);
->  			if (ret) {
->  				dmar_remove_one_dev_info(dev);
-> -- 
-> 2.20.1
-> 
 
-Should this be dma_direct_get_required_mask? dma_get_required_mask may
-return DMA_BIT_MASK(32) -- it callbacks into intel_get_required_mask,
-but I'm not sure what iommu_no_mapping(dev) will do at this point?
+> On 19 Dec 2019, at 2:04 am, Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org> wrote:
+>=20
+> I guess you need similar enhancements of the board device tree as in
+> patch 8 of this series for your VIM3 board.
+
+Wider testing now points to a known SDIO issue (SoC bug) with Amlogic =
+G12A/B hardware. The merged workaround for the bug was only tested with =
+bcmdhd and brcmfmac may require tweaking as the same issue exhibits on =
+an Amlogic G12B device with BCM4356 chip. Testing the series with =
+Amlogic GXM (older) and SM1 (newer) hardware to exclude the SoC bug =
+shows everything working as expected.
+
+Christian=
