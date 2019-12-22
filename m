@@ -1,32 +1,64 @@
-From: Christian Hewitt <christianshewitt-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
-Date: Sun, 22 Dec 2019 07:35:43 +0300
-Message-ID: <47DB71CE-ACC4-431D-9E66-D28A8C18C0A4@gmail.com>
-References: <20191211235253.2539-1-smoch@web.de>
- <D1B53CE9-E87C-4514-A2D7-0FE70A4D1A5D@gmail.com>
- <cb3ac55f-4c8f-b0a0-41ee-f16b3232c87e@web.de>
-Mime-Version: 1.0 (Mac OS X Mail 12.4 \(3445.104.11\))
-Content-Type: text/plain;
-        charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cb3ac55f-4c8f-b0a0-41ee-f16b3232c87e-S0/GAf8tV78@public.gmane.org>
-Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>
-Cc: Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, brcm80211-dev-list.pdl-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, brcm80211-dev-list-+wT8y+m8/X5BDgjK7y7TUQ@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: RK3399 display flickering after kexec
+Date: Sun, 22 Dec 2019 12:35:53 +0100
+Message-ID: <f920475a-c163-49cc-bf4e-896c967b48d0@gmail.com>
+References: <934ab507-6501-455d-b3d6-3585d94d81f6@gmail.com>
+ <61cd89ec-e505-6a2b-d43f-da74850d1b95@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <61cd89ec-e505-6a2b-d43f-da74850d1b95-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-> On 19 Dec 2019, at 2:04 am, Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org> wrote:
->=20
-> I guess you need similar enhancements of the board device tree as in
-> patch 8 of this series for your VIM3 board.
-
-Wider testing now points to a known SDIO issue (SoC bug) with Amlogic =
-G12A/B hardware. The merged workaround for the bug was only tested with =
-bcmdhd and brcmfmac may require tweaking as the same issue exhibits on =
-an Amlogic G12B device with BCM4356 chip. Testing the series with =
-Amlogic GXM (older) and SM1 (newer) hardware to exclude the SoC bug =
-shows everything working as expected.
-
-Christian=
+T24gRnJpZGF5LCBEZWNlbWJlciAyMCwgMjAxOSAxMDowODozMyBBTSBDRVQsIEVucmljIEJhbGxl
+dGJvIGkgU2VycmEgd3JvdGU6Cj4gSGkgVmljZW7DpywKPgo+IE9uIDEyLzEyLzE5IDIzOjA0LCBW
+aWNlbnRlIEJlcmdhcyB3cm90ZToKPj4gSGkgRW5yaWMsIERvdWdsYXMsIFNlYW4sCj4+IHRoZXJl
+IGlzIGFuIGlzc3VlIG9uIFJLMzM5OS1iYXNlZCBwbGF0Zm9ybXMgd2l0aCBkaXNwbGF5IGZsaWNr
+ZXJpbmcuCj4+IEkgaGF2ZSBzZWFyY2hlZCBtYWlsaW5nIGxpc3QgYW5kIGZvdW5kIHlvdSBoYXZl
+IG1lbnRpb25lZCBvciB3ZXJlCj4+IGludm9sdmVkIGluIHJlbGF0ZWQgaXNzdWVzLCBzbywgeW91
+IG1heSBiZSBhYmxlIHRvIGhlbHAuCj4+IAo+PiBUaGUgaXNzdWUgaGFzIGJlZW4gb2JzZXJ2ZWQg
+b24gdGhlIFNhcHBoaXJlIGJvYXJkIGFuZCBvbiBnb29nbGUga2V2aW4sIC4uLgo+Cj4gVG8gYmUg
+aG9uZXN0LCBJIGRvbid0IGhhdmUgaWRlYSwgbG9va3MgbGlrZSBzb21lIGNsb2NrIAo+IGNvbmZp
+Z3VyYXRpb24gaXNzdWU/IERpZAo+IHlvdSBjaGVjayB0aGUgY2xvY2sgYWZ0ZXIgYW5kIGJlZm9y
+ZT8gSSBtaWdodCBiZSBpbnRlcmVzdGVkIHRvIAo+IGxvb2sgYSBiaXQgbW9yZQo+IGludG8gdGhl
+IGlzc3VlIGlmIHRoaXMgaXMgcmVwcm9kdWNpYmxlIHVzaW5nIHRoZSBjb3JlYm9vdCBib290bG9h
+ZGVyLiBEbyB5b3UKPiBrbm93IGlmIHRoaXMgaGFwcGVucyB3aXRoIHN0b2NrIGJvb3Rsb2FkZXI/
+CgpIaSBFbnJpYywKdGhhbmtzIGZvciByZXBseWluZy4KCkkgbmV2ZXIgdGVzdGVkIGtleGVjIHdp
+dGggdGhlIHN0b2NrIGJvb3Rsb2FkZXIuCgpDb3JlYm9vdCBmcm9tIGJyYW5jaCBmaXJtd2FyZS1n
+cnUtODc4NS5CIGF0Cmh0dHBzOi8vY2hyb21pdW0uZ29vZ2xlc291cmNlLmNvbS9jaHJvbWl1bW9z
+L3RoaXJkX3BhcnR5L2NvcmVib290CndoaWNoIGlzIChpZiBpIGFtIG5vdCB3cm9uZykgdGhlIHZl
+cnNpb24gdGhhdCBtYXRjaGVzIHRoZSBzdG9jayBib290bG9hZGVyLApkaWQgbm90IGJvb3QsIGRp
+c3BsYXkgb2ZmIGFsbCB0aGUgdGltZSBmcm9tIHBvd2VyIG9uLiBUaGlzIHdhcyB0ZXN0ZWQgbG9u
+Zwp0aW1lIGFnbyBhbmQgaSBkaWQgbm90IGluc2lzdCBtdWNoLgoKVGhlIGJvb3Rsb2FkZXIgaSBh
+bSBjdXJyZW50bHkgdXNpbmcgY29uZmlndXJlcyBwb3dlciBzdXBwbGllcywgY2xvY2tzIGFuZApk
+cmFtIGJhc2VkIG9mZiBmaXJtd2FyZS1ncnUtODc4NS5CCkFyZSBhbGwga2V2aW4tc3BlY2lmaWMg
+Y2hhbmdlcyB0byBjb3JlYm9vdCB1cHN0cmVhbWVkPyBTaG91bGQgaSB1c2UKdXBzdHJlYW0gY29y
+ZWJvb3QgYXMgcmVmZXJlbmNlPwoKQW55d2F5cywgaSB0aGluayB0aGF0IHRoZSBlYXJseSBib290
+bG9hZGVyIHN0YWdlIGlzIG5vdCB0aGUgY2F1c2UgYmVjYXVzZQp0aGUgaXNzdWUgZG9lcyBub3Qg
+c2hvdyB1cCBpbiBsaW51eCBiZWZvcmUga2V4ZWMuIE15IGlkZWEgaXMgdGhhdCB0aGUgZmlyc3QK
+bGludXgsIHdoaWxlIGtleGVjJ2luZyBzaHV0cyBkb3duIHNvbWV0aGluZyBpdCBzaG91bGRuJ3Qs
+IGxpa2UgYSBjbG9jaywgYW5kCnRoZSB0aGUgc2Vjb25kIGxpbnV4IGFmdGVyIGtleGVjIGhhcyB0
+aGUgaXNzdWUgYmVjYXNlIGl0IGNhbid0IHJlaW5pdGl6bGl6ZQppdC4KU28sIHdoZW4geW91IHNh
+eSAiRGlkIHlvdSBjaGVjayB0aGUgY2xvY2sgYWZ0ZXIgYW5kIGJlZm9yZT8iLCBob3cgZG8gaQpj
+aGVjayBpdD8gd2hpY2ggY2xvY2s/CgpJIHRoaW5rIHRoZSBtaXNiZWhhdmluZyBibG9jayBoZXJl
+IGlzIHRoZSBWT1AsIG1heWJlIGJlY2F1c2Ugb2YgYQptaXNjb25maWd1cmVkIGNsb2NrIGFzIHlv
+dSBzYXksIGJ1dCBpIGFtIGxvc3QgaGVyZSBiZWNhdXNlIHRoZXJlIGlzIG5vCmRvY3VtZW50YXRp
+b24gYWJvdXQgaXQuIFRoZSBUUk0gYXZhaWxhYmxlIG9uIHRoZSBJbnRlcm5ldCBkb2VzIG5vdApt
+ZW50aW9uIChvciBqdXN0IGJyaWVmbHkpIGEgbG90IG9mIGJsb2NrcyBwb3RlbnRpYWxseSByZWxh
+dGVkIHRvIHRoaXMgaXNzdWUKbGlrZSBWT1Agb3IgR1BVLgoKVGhhbmtzLAogIFZpY2Vuw6cuCgo+
+IFRoYW5rcywKPiAgRW5yaWMKPgo+PiBSZWdhcmRzLAo+PiAgVmljZW7Dpy4KCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
