@@ -1,100 +1,39 @@
-From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH 1/2] usb: dwc2: Fix IN FIFO allocation
-Date: Mon, 23 Dec 2019 09:10:51 +0000
-Message-ID: <b2ecd22a-63b2-1da7-3ab9-5a3eb423c07a@synopsys.com>
+From: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>
+Subject: Re: [PATCH 2/2] usb: dwc2: fix debugfs FIFO count
+Date: Mon, 23 Dec 2019 09:11:17 +0000
+Message-ID: <11124aeb-ee8e-5794-5773-cdbcc662137c@synopsys.com>
 References: <20191219113432.1229852-1-john@metanate.com>
+ <20191219113432.1229852-2-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191219113432.1229852-1-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191219113432.1229852-2-john@metanate.com>
 Content-Language: en-US
-Content-ID: <C665A604595EAE42A2E5DD49A3244268-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-ID: <8414CE18ACEF9641A914AD7891EBDF7B@namprd12.prod.outlook.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: John Keeping <john@metanate.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 12/19/2019 3:34 PM, John Keeping wrote:
-> On chips with fewer FIFOs than endpoints (for example RK3288 which has 9
-> endpoints, but only 6 which are cabable of input), the DPTXFSIZN
-> registers above the FIFO count may return invalid values.
-> 
-> With logging added on startup, I see:
-> 
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=1 sz=256
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=2 sz=128
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=3 sz=128
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=4 sz=64
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=5 sz=64
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=6 sz=32
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=7 sz=0
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=8 sz=0
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=9 sz=0
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=10 sz=0
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=11 sz=0
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=12 sz=0
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=13 sz=0
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=14 sz=0
-> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=15 sz=0
-> 
-> but:
-> 
-> 	# cat /sys/kernel/debug/ff580000.usb/fifo
-> 	Non-periodic FIFOs:
-> 	RXFIFO: Size 275
-> 	NPTXFIFO: Size 16, Start 0x00000113
-> 
-> 	Periodic TXFIFOs:
-> 		DPTXFIFO 1: Size 256, Start 0x00000123
-> 		DPTXFIFO 2: Size 128, Start 0x00000223
-> 		DPTXFIFO 3: Size 128, Start 0x000002a3
-> 		DPTXFIFO 4: Size 64, Start 0x00000323
-> 		DPTXFIFO 5: Size 64, Start 0x00000363
-> 		DPTXFIFO 6: Size 32, Start 0x000003a3
-> 		DPTXFIFO 7: Size 0, Start 0x000003e3
-> 		DPTXFIFO 8: Size 0, Start 0x000003a3
-> 		DPTXFIFO 9: Size 256, Start 0x00000123
-> 
-> so it seems that FIFO 9 is mirroring FIFO 1.
-> 
-> Fix the allocation by using the FIFO count instead of the endpoint count
-> when selecting a FIFO for an endpoint.
-> 
-> Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
-> ---
-
-Acked-by: Minas Harutyunyan <hminas-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-
->   drivers/usb/dwc2/gadget.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/usb/dwc2/gadget.c b/drivers/usb/dwc2/gadget.c
-> index 92e8de9cb45c..911b950ef25e 100644
-> --- a/drivers/usb/dwc2/gadget.c
-> +++ b/drivers/usb/dwc2/gadget.c
-> @@ -4059,11 +4059,12 @@ static int dwc2_hsotg_ep_enable(struct usb_ep *ep,
->   	 * a unique tx-fifo even if it is non-periodic.
->   	 */
->   	if (dir_in && hsotg->dedicated_fifos) {
-> +		unsigned fifo_count = dwc2_hsotg_tx_fifo_count(hsotg);
->   		u32 fifo_index = 0;
->   		u32 fifo_size = UINT_MAX;
->   
->   		size = hs_ep->ep.maxpacket * hs_ep->mc;
-> -		for (i = 1; i < hsotg->num_of_eps; ++i) {
-> +		for (i = 1; i <= fifo_count; ++i) {
->   			if (hsotg->fifo_map & (1 << i))
->   				continue;
->   			val = dwc2_readl(hsotg, DPTXFSIZN(i));
-> 
+DQoNCk9uIDEyLzE5LzIwMTkgMzozNCBQTSwgSm9obiBLZWVwaW5nIHdyb3RlOg0KPiBUaGUgbnVt
+YmVyIG9mIEZJRk9zIG1heSBiZSBsb3dlciB0aGFuIHRoZSBudW1iZXIgb2YgZW5kcG9pbnRzLiAg
+VXNlIHRoZQ0KPiBjb3JyZWN0IHRvdGFsIHdoZW4gcHJpbnRpbmcgRklGTyBkZXRhaWxzIGluIGRl
+YnVnZnMuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUu
+Y29tPg0KPiAtLS0NCg0KQWNrZWQtYnk6IE1pbmFzIEhhcnV0eXVueWFuIDxobWluYXNAc3lub3Bz
+eXMuY29tPg0KDQoNCj4gICBkcml2ZXJzL3VzYi9kd2MyL2RlYnVnZnMuYyB8IDMgKystDQo+ICAg
+MSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQ0KPiANCj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvdXNiL2R3YzIvZGVidWdmcy5jIGIvZHJpdmVycy91c2IvZHdjMi9k
+ZWJ1Z2ZzLmMNCj4gaW5kZXggYjhmMjc5MGFiZjkxLi4zYTBkY2JmYmM4MjcgMTAwNjQ0DQo+IC0t
+LSBhL2RyaXZlcnMvdXNiL2R3YzIvZGVidWdmcy5jDQo+ICsrKyBiL2RyaXZlcnMvdXNiL2R3YzIv
+ZGVidWdmcy5jDQo+IEBAIC0xODMsNiArMTgzLDcgQEAgREVGSU5FX1NIT1dfQVRUUklCVVRFKHN0
+YXRlKTsNCj4gICBzdGF0aWMgaW50IGZpZm9fc2hvdyhzdHJ1Y3Qgc2VxX2ZpbGUgKnNlcSwgdm9p
+ZCAqdikNCj4gICB7DQo+ICAgCXN0cnVjdCBkd2MyX2hzb3RnICpoc290ZyA9IHNlcS0+cHJpdmF0
+ZTsNCj4gKwlpbnQgZmlmb19jb3VudCA9IGR3YzJfaHNvdGdfdHhfZmlmb19jb3VudChoc290Zyk7
+DQo+ICAgCXUzMiB2YWw7DQo+ICAgCWludCBpZHg7DQo+ICAgDQo+IEBAIC0xOTYsNyArMTk3LDcg
+QEAgc3RhdGljIGludCBmaWZvX3Nob3coc3RydWN0IHNlcV9maWxlICpzZXEsIHZvaWQgKnYpDQo+
+ICAgDQo+ICAgCXNlcV9wdXRzKHNlcSwgIlxuUGVyaW9kaWMgVFhGSUZPczpcbiIpOw0KPiAgIA0K
+PiAtCWZvciAoaWR4ID0gMTsgaWR4IDwgaHNvdGctPm51bV9vZl9lcHM7IGlkeCsrKSB7DQo+ICsJ
+Zm9yIChpZHggPSAxOyBpZHggPD0gZmlmb19jb3VudDsgaWR4KyspIHsNCj4gICAJCXZhbCA9IGR3
+YzJfcmVhZGwoaHNvdGcsIERQVFhGU0laTihpZHgpKTsNCj4gICANCj4gICAJCXNlcV9wcmludGYo
+c2VxLCAiXHREUFRYRklGTyUyZDogU2l6ZSAlZCwgU3RhcnQgMHglMDh4XG4iLCBpZHgsDQo+IA0K
