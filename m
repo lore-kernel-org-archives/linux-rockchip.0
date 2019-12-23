@@ -1,64 +1,58 @@
-From: Lu Baolu <baolu.lu@linux.intel.com>
-Subject: Re: [PATCH 1/8] iommu/vt-d: clean up 32bit si_domain
- assignment
-Date: Mon, 23 Dec 2019 11:00:47 +0800
-Message-ID: <e569e246-11a1-e8bd-9347-310284e96885@linux.intel.com>
-References: <20191221150402.13868-1-murphyt7@tcd.ie>
- <20191221150402.13868-2-murphyt7@tcd.ie>
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH for 5.5] phy/rockchip: inno-hdmi: round clock rate down to
+ closest 1000 Hz
+Date: Mon, 23 Dec 2019 08:49:19 +0000
+Message-ID: <HE1PR06MB40118544456FC5461F49DDE8AC2E0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-In-Reply-To: <20191221150402.13868-2-murphyt7@tcd.ie>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Tom Murphy <murphyt7@tcd.ie>, iommu@lists.linux-foundation.org
-Cc: Heiko Stuebner <heiko@sntech.de>, kvm@vger.kernel.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>, linux-tegra@vger.kernel.org, Julien Grall <julien.grall@arm.com>, Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Jean-Philippe Brucker <jean-philippe@linaro.org>, linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>, Joerg Roedel <joro@8bytes.org>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, Thomas Gleixner <tglx@linutronix.d>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Jonas Karlman <jonas@kwiboo.se>, Douglas Anderson <dianders@chromium.org>, Sean Paul <seanpaul@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Commit 287422a95fe2 ("drm/rockchip: Round up _before_ giving to the clock framework")
+changed what rate clk_round_rate() is called with, an additional 999 Hz
+added to the requsted mode clock. This has caused a regression on RK3328
+and presumably also on RK3228 because the inno-hdmi-phy clock requires an
+exact match of the requested rate in the pre pll config table.
 
-On 12/21/19 11:03 PM, Tom Murphy wrote:
-> @@ -5618,9 +5583,13 @@ static int intel_iommu_add_device(struct device *dev)
->   	struct iommu_domain *domain;
->   	struct intel_iommu *iommu;
->   	struct iommu_group *group;
-> +	u64 dma_mask = *dev->dma_mask;
->   	u8 bus, devfn;
->   	int ret;
->   
-> +	if (dev->coherent_dma_mask && dev->coherent_dma_mask < dma_mask)
-> +		dma_mask = dev->coherent_dma_mask;
-> +
->   	iommu = device_to_iommu(dev, &bus, &devfn);
->   	if (!iommu)
->   		return -ENODEV;
-> @@ -5640,7 +5609,12 @@ static int intel_iommu_add_device(struct device *dev)
->   	domain = iommu_get_domain_for_dev(dev);
->   	dmar_domain = to_dmar_domain(domain);
->   	if (domain->type == IOMMU_DOMAIN_DMA) {
-> -		if (device_def_domain_type(dev) == IOMMU_DOMAIN_IDENTITY) {
-> +		/*
-> +		 * We check dma_mask >= dma_get_required_mask(dev) because
-> +		 * 32 bit DMA falls back to non-identity mapping.
-> +		 */
-> +		if (device_def_domain_type(dev) == IOMMU_DOMAIN_IDENTITY &&
-> +				dma_mask >= dma_get_required_mask(dev)) {
->   			ret = iommu_request_dm_for_dev(dev);
->   			if (ret) {
->   				dmar_remove_one_dev_info(dev);
+When an exact match is not found the parent clock rate (24MHz) is returned
+to the clk_round_rate() caller. This cause wrong pixel clock to be used and
+result in no-signal when configuring a mode on RK3328.
 
-dev->dma_mask is set to 32bit by default. During loading driver, it sets
-the real dma_mask with dma_set_mask() according to the real capability.
-Here you will always see 32bit dma_mask for each device.
+Fix this by rounding the rate down to closest 1000 Hz in round_rate func,
+this allows an exact match to be found in pre pll config table.
 
-Best regards,
-baolu
+Fixes: 287422a95fe2 ("drm/rockchip: Round up _before_ giving to the clock framework")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+index 2b97fb1185a0..9ca20c947283 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+@@ -603,6 +603,8 @@ static long inno_hdmi_phy_rk3228_clk_round_rate(struct clk_hw *hw,
+ {
+ 	const struct pre_pll_config *cfg = pre_pll_cfg_table;
+ 
++	rate = (rate / 1000) * 1000;
++
+ 	for (; cfg->pixclock != 0; cfg++)
+ 		if (cfg->pixclock == rate && !cfg->fracdiv)
+ 			break;
+@@ -755,6 +757,8 @@ static long inno_hdmi_phy_rk3328_clk_round_rate(struct clk_hw *hw,
+ {
+ 	const struct pre_pll_config *cfg = pre_pll_cfg_table;
+ 
++	rate = (rate / 1000) * 1000;
++
+ 	for (; cfg->pixclock != 0; cfg++)
+ 		if (cfg->pixclock == rate)
+ 			break;
+-- 
+2.17.1
