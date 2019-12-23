@@ -1,14 +1,15 @@
-From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Describe PX30 caches
-Date: Mon, 23 Dec 2019 10:03:20 +0100
-Message-ID: <20191223100320.3b852485@xps13>
-References: <20191204103940.22050-1-miquel.raynal@bootlin.com>
- <1982322.8UTTk47u2F@diego>
+From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH 1/2] usb: dwc2: Fix IN FIFO allocation
+Date: Mon, 23 Dec 2019 09:10:51 +0000
+Message-ID: <b2ecd22a-63b2-1da7-3ab9-5a3eb423c07a@synopsys.com>
+References: <20191219113432.1229852-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <1982322.8UTTk47u2F@diego>
+In-Reply-To: <20191219113432.1229852-1-john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+Content-ID: <C665A604595EAE42A2E5DD49A3244268-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,79 +19,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+To: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sCgpIZWlrbyBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPiB3cm90ZSBvbiBGcmks
-IDIwIERlYyAyMDE5IDAxOjU1OjU4CiswMTAwOgoKPiBBbSBNaXR0d29jaCwgNC4gRGV6ZW1iZXIg
-MjAxOSwgMTE6Mzk6NDAgQ0VUIHNjaHJpZWIgTWlxdWVsIFJheW5hbDoKPiA+IFBYMzAgU29DcyBm
-ZWF0dXJlIDQgQ29ydGV4LUEzNSBDUFVzIHdpdGggZWFjaCBvZiB0aGVtIGEgTDEgZGF0YSBhbmQK
-PiA+IGluc3RydWN0aW9uIGNhY2hlLiBCb3RoIGFyZSAzMmtpQiB3aWRlIChQWDMwIFRSTSkgYW5k
-IG1hZGUgb2YgNjQtYml0Cj4gPiBsaW5lcyAoQVJNIENvcnRleC1BMzUgbWFudWFsKS4gSS1jYWNo
-ZSBpcyAyLXdheSBzZXQgYXNzb2NpYXRpdmUgKEFSTQo+ID4gQ29ydGV4LUEzNSBtYW51YWwpLCBE
-LWNhY2hlIGlzIDQtd2F5IHNldCBhc3NvY2lhdGl2ZSAoQVJNCj4gPiBDb3J0ZXgtQTM1bWFudWFs
-KS4KPiA+IAo+ID4gQW4gTDIgY2FjaGUgaXMgcGxhY2VkIGFmdGVyIHRoZXNlIDQgTDEgY2FjaGVz
-IChQWDMwIFRSTSksIGlzIDI1NmtpQgo+ID4gd2lkZSAoUFgzMCBUUk0pIGFuZCBtYWRlIG9mIDY0
-LWJpdCBsaW5lcyAoQVJNIENvcnRleC1BMzUgbWFudWFsKSBhbmQKPiA+IGlzIDgtd2F5IHNldCBh
-c3NvY2lhdGl2ZSAoQVJNIENvcnRleC1BMzUgbWFudWFsKS4KPiA+IAo+ID4gRGVzY3JpYmUgYWxs
-IG9mIHRoZW0gaW4gdGhlIFBYMzAgRFRTSS4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogTWlxdWVs
-IFJheW5hbCA8bWlxdWVsLnJheW5hbEBib290bGluLmNvbT4KPiA+IC0tLQo+ID4gIGFyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcHgzMC5kdHNpIHwgMzUgKysrKysrKysrKysrKysrKysrKysr
-KysrKysKPiA+ICAxIGZpbGUgY2hhbmdlZCwgMzUgaW5zZXJ0aW9ucygrKQo+ID4gCj4gPiBkaWZm
-IC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9weDMwLmR0c2kgYi9hcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3B4MzAuZHRzaQo+ID4gaW5kZXggMWZkMTJiZDA5ZTgzLi4w
-ZTEwYTIyNGE4NGIgMTAwNjQ0Cj4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
-L3B4MzAuZHRzaQo+ID4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9weDMwLmR0
-c2kKPiA+IEBAIC00OCw2ICs0OCwxMyBAQAo+ID4gIAkJCWNwdS1pZGxlLXN0YXRlcyA9IDwmQ1BV
-X1NMRUVQICZDTFVTVEVSX1NMRUVQPjsKPiA+ICAJCQlkeW5hbWljLXBvd2VyLWNvZWZmaWNpZW50
-ID0gPDkwPjsKPiA+ICAJCQlvcGVyYXRpbmctcG9pbnRzLXYyID0gPCZjcHUwX29wcF90YWJsZT47
-Cj4gPiArCQkJaS1jYWNoZS1zaXplID0gPDB4ODAwMD47Cj4gPiArCQkJaS1jYWNoZS1saW5lLXNp
-emUgPSA8NjQ+Owo+ID4gKwkJCWktY2FjaGUtc2V0cyA9IDwyNTY+Owo+ID4gKwkJCWQtY2FjaGUt
-c2l6ZSA9IDwweDgwMDA+Owo+ID4gKwkJCWQtY2FjaGUtbGluZS1zaXplID0gPDY0PjsKPiA+ICsJ
-CQlkLWNhY2hlLXNldHMgPSA8MTI4PjsKPiA+ICsJCQluZXh0LWxldmVsLWNhY2hlID0gPCZsMj47
-Cj4gPiAgCQl9Owo+ID4gIAo+ID4gIAkJY3B1MTogY3B1QDEgewo+ID4gQEAgLTYwLDYgKzY3LDEz
-IEBACj4gPiAgCQkJY3B1LWlkbGUtc3RhdGVzID0gPCZDUFVfU0xFRVAgJkNMVVNURVJfU0xFRVA+
-Owo+ID4gIAkJCWR5bmFtaWMtcG93ZXItY29lZmZpY2llbnQgPSA8OTA+Owo+ID4gIAkJCW9wZXJh
-dGluZy1wb2ludHMtdjIgPSA8JmNwdTBfb3BwX3RhYmxlPjsKPiA+ICsJCQlpLWNhY2hlLXNpemUg
-PSA8MHg4MDAwPjsKPiA+ICsJCQlpLWNhY2hlLWxpbmUtc2l6ZSA9IDw2ND47Cj4gPiArCQkJaS1j
-YWNoZS1zZXRzID0gPDI1Nj47Cj4gPiArCQkJZC1jYWNoZS1zaXplID0gPDB4ODAwMD47Cj4gPiAr
-CQkJZC1jYWNoZS1saW5lLXNpemUgPSA8NjQ+Owo+ID4gKwkJCWQtY2FjaGUtc2V0cyA9IDwxMjg+
-Owo+ID4gKwkJCW5leHQtbGV2ZWwtY2FjaGUgPSA8JmwyPjsKPiA+ICAJCX07Cj4gPiAgCj4gPiAg
-CQljcHUyOiBjcHVAMiB7Cj4gPiBAQCAtNzIsNiArODYsMTMgQEAKPiA+ICAJCQljcHUtaWRsZS1z
-dGF0ZXMgPSA8JkNQVV9TTEVFUCAmQ0xVU1RFUl9TTEVFUD47Cj4gPiAgCQkJZHluYW1pYy1wb3dl
-ci1jb2VmZmljaWVudCA9IDw5MD47Cj4gPiAgCQkJb3BlcmF0aW5nLXBvaW50cy12MiA9IDwmY3B1
-MF9vcHBfdGFibGU+Owo+ID4gKwkJCWktY2FjaGUtc2l6ZSA9IDwweDgwMDA+Owo+ID4gKwkJCWkt
-Y2FjaGUtbGluZS1zaXplID0gPDY0PjsKPiA+ICsJCQlpLWNhY2hlLXNldHMgPSA8MjU2PjsKPiA+
-ICsJCQlkLWNhY2hlLXNpemUgPSA8MHg4MDAwPjsKPiA+ICsJCQlkLWNhY2hlLWxpbmUtc2l6ZSA9
-IDw2ND47Cj4gPiArCQkJZC1jYWNoZS1zZXRzID0gPDEyOD47Cj4gPiArCQkJbmV4dC1sZXZlbC1j
-YWNoZSA9IDwmbDI+Owo+ID4gIAkJfTsKPiA+ICAKPiA+ICAJCWNwdTM6IGNwdUAzIHsKPiA+IEBA
-IC04NCw2ICsxMDUsMTMgQEAKPiA+ICAJCQljcHUtaWRsZS1zdGF0ZXMgPSA8JkNQVV9TTEVFUCAm
-Q0xVU1RFUl9TTEVFUD47Cj4gPiAgCQkJZHluYW1pYy1wb3dlci1jb2VmZmljaWVudCA9IDw5MD47
-Cj4gPiAgCQkJb3BlcmF0aW5nLXBvaW50cy12MiA9IDwmY3B1MF9vcHBfdGFibGU+Owo+ID4gKwkJ
-CWktY2FjaGUtc2l6ZSA9IDwweDgwMDA+Owo+ID4gKwkJCWktY2FjaGUtbGluZS1zaXplID0gPDY0
-PjsKPiA+ICsJCQlpLWNhY2hlLXNldHMgPSA8MjU2PjsKPiA+ICsJCQlkLWNhY2hlLXNpemUgPSA8
-MHg4MDAwPjsKPiA+ICsJCQlkLWNhY2hlLWxpbmUtc2l6ZSA9IDw2ND47Cj4gPiArCQkJZC1jYWNo
-ZS1zZXRzID0gPDEyOD47Cj4gPiArCQkJbmV4dC1sZXZlbC1jYWNoZSA9IDwmbDI+Owo+ID4gIAkJ
-fTsKPiA+ICAKPiA+ICAJCWlkbGUtc3RhdGVzIHsKPiA+IEBAIC0xMDcsNiArMTM1LDEzIEBACj4g
-PiAgCQkJCW1pbi1yZXNpZGVuY3ktdXMgPSA8MjAwMD47Cj4gPiAgCQkJfTsKPiA+ICAJCX07Cj4g
-PiArCj4gPiArCQlsMjogbDItY2FjaGUgewo+ID4gKwkJCWNvbXBhdGlibGUgPSAiY2FjaGUiOwo+
-ID4gKwkJCWNhY2hlLXNpemUgPSA8MHg0MDAwMD47Cj4gPiArCQkJY2FjaGUtbGluZS1zaXplID0g
-PDY0PjsKPiA+ICsJCQljYWNoZS1zZXRzID0gPDUxMj47Cj4gPiArCQl9Owo+ID4gIAl9OyAgCj4g
-Cj4gTG9va3MgbGlrZSBSb2IgZGlkIGFuc3dlciBteSB1bnNwb2tlbiBxdWVzdGlvbiwgY2l0aW5n
-IGhpcyByZXBseSB0bwo+IAkiYXJtNjQ6IGR0czogYW1hem9uOiBhZGQgQW1hem9uJ3MgQW5uYXB1
-cm5hIExhYnMgQWxwaW5lIHYzIHN1cHBvcnQiIFswXQo+IAo+ICJXZSBvbmx5IGRlZmluZSBjYWNo
-ZSBhdHRyaWJ1dGVzIGlmIG5vdCBkaXNjb3ZlcmFibGUgb3IgdGhlIGNhY2hlIElEIAo+IHJlZ2lz
-dGVycyBhcmUgd3JvbmcgYW5kIHlvdSBuZWVkIHRvIG92ZXJyaWRlIHdoYXQncyBkaXNjb3ZlcmFi
-bGUuIgo+IAo+IFNvIHVubGVzcyB0aGUgY2FjaGUgaW5mb3JtYXRpb24gcmVhZCBkdXJpbmcgYm9v
-dCBpcyB3cm9uZywgaXQgbG9va3MKPiBsaWtlIHdlIGRvbid0IG5lZWQgdGhpcy4KCldlbGwsIEkg
-YWN0dWFsbHkgbWV0IHRoZToKCiAgICAgICAgICJVbmFibGUgdG8gZGV0ZWN0IGNhY2hlIGhpZXJh
-cmNoeSBmb3IgQ1BVIDx4PiIKCndhcm5pbmcgaW4gdGhlIGRtZXNnLiBEbyB5b3Uga25vdyBhbnl0
-aGluZyBhYm91dCBjYWNoZSBJRCByZWdpc3RlcnM/CgpUaGVyZSBpcyBzb21lIGtpbmQgb2YgImkt
-Y2FjaGUiIGluZm9zIFtUUk0gcGFnZSAzOTFdIGJ1dCBpdCBkb2Vzbid0CnNlZW0gZW5vdWdoIHRv
-IGRlc2NyaWJlIHRoZSBjYWNoZSBoaWVyYXJjaHkuCgo+IAo+IEhlaWtvCj4gCj4gCj4gWzBdIGh0
-dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gvMTEyNzk3MDUvCgpUaGFua3MsCk1pcXXD
-qGwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+
+
+On 12/19/2019 3:34 PM, John Keeping wrote:
+> On chips with fewer FIFOs than endpoints (for example RK3288 which has 9
+> endpoints, but only 6 which are cabable of input), the DPTXFSIZN
+> registers above the FIFO count may return invalid values.
+> 
+> With logging added on startup, I see:
+> 
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=1 sz=256
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=2 sz=128
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=3 sz=128
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=4 sz=64
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=5 sz=64
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=6 sz=32
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=7 sz=0
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=8 sz=0
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=9 sz=0
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=10 sz=0
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=11 sz=0
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=12 sz=0
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=13 sz=0
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=14 sz=0
+> 	dwc2 ff580000.usb: dwc2_hsotg_init_fifo: ep=15 sz=0
+> 
+> but:
+> 
+> 	# cat /sys/kernel/debug/ff580000.usb/fifo
+> 	Non-periodic FIFOs:
+> 	RXFIFO: Size 275
+> 	NPTXFIFO: Size 16, Start 0x00000113
+> 
+> 	Periodic TXFIFOs:
+> 		DPTXFIFO 1: Size 256, Start 0x00000123
+> 		DPTXFIFO 2: Size 128, Start 0x00000223
+> 		DPTXFIFO 3: Size 128, Start 0x000002a3
+> 		DPTXFIFO 4: Size 64, Start 0x00000323
+> 		DPTXFIFO 5: Size 64, Start 0x00000363
+> 		DPTXFIFO 6: Size 32, Start 0x000003a3
+> 		DPTXFIFO 7: Size 0, Start 0x000003e3
+> 		DPTXFIFO 8: Size 0, Start 0x000003a3
+> 		DPTXFIFO 9: Size 256, Start 0x00000123
+> 
+> so it seems that FIFO 9 is mirroring FIFO 1.
+> 
+> Fix the allocation by using the FIFO count instead of the endpoint count
+> when selecting a FIFO for an endpoint.
+> 
+> Signed-off-by: John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>
+> ---
+
+Acked-by: Minas Harutyunyan <hminas-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+
+>   drivers/usb/dwc2/gadget.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/usb/dwc2/gadget.c b/drivers/usb/dwc2/gadget.c
+> index 92e8de9cb45c..911b950ef25e 100644
+> --- a/drivers/usb/dwc2/gadget.c
+> +++ b/drivers/usb/dwc2/gadget.c
+> @@ -4059,11 +4059,12 @@ static int dwc2_hsotg_ep_enable(struct usb_ep *ep,
+>   	 * a unique tx-fifo even if it is non-periodic.
+>   	 */
+>   	if (dir_in && hsotg->dedicated_fifos) {
+> +		unsigned fifo_count = dwc2_hsotg_tx_fifo_count(hsotg);
+>   		u32 fifo_index = 0;
+>   		u32 fifo_size = UINT_MAX;
+>   
+>   		size = hs_ep->ep.maxpacket * hs_ep->mc;
+> -		for (i = 1; i < hsotg->num_of_eps; ++i) {
+> +		for (i = 1; i <= fifo_count; ++i) {
+>   			if (hsotg->fifo_map & (1 << i))
+>   				continue;
+>   			val = dwc2_readl(hsotg, DPTXFSIZN(i));
+> 
