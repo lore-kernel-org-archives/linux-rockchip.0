@@ -1,72 +1,87 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 01/11] spi: rk: Limit transfers to (64K - 1) bytes
-Date: Mon, 23 Dec 2019 10:30:02 +0800
-Message-ID: <9bec6335-455b-0c62-a68d-a470a3ccdc24@rock-chips.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 07/11] env: Enable SPI flash env for rockchip
+Date: Mon, 23 Dec 2019 10:34:43 +0800
+Message-ID: <87672c9e-5f49-edf9-a97d-2ed83d33d375@rock-chips.com>
 References: <20191221075440.6944-1-jagan@amarulasolutions.com>
- <20191221075440.6944-2-jagan@amarulasolutions.com>
+ <20191221075440.6944-8-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191221075440.6944-2-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20191221075440.6944-8-jagan@amarulasolutions.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula <linux-amarula@amarulasolutions.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTkvMTIvMjEg5LiL5Y2IMzo1NCwgSmFnYW4gVGVraSB3cm90ZToKPiBUaGUgUm9ja2No
-aXAgU1BJIGNvbnRyb2xsZXIncyBsZW5ndGggcmVnaXN0ZXIgb25seSBzdXBwb3J0cyAxNi1iaXRz
-LAo+IHlpZWxkaW5nIGEgbWF4aW11bSBsZW5ndGggb2YgNjRLaUIgKHRoZSBDVFJMUjEgcmVnaXN0
-ZXIgaG9sZHMgImxlbmd0aCAtCj4gMSIpLiBUcnlpbmcgdG8gdHJhbnNmZXIgbW9yZSB0aGFuIHRo
-YXQgKGUuZy4sIHdpdGggYSBsYXJnZSBTUEkgZmxhc2gKPiByZWFkKSB3aWxsIGNhdXNlIHRoZSBk
-cml2ZXIgdG8gaGFuZy4KPgo+IE5vdywgaXQgc2VlbXMgdGhhdCB3aGlsZSB0aGVvcmV0aWNhbGx5
-IHdlIHNob3VsZCBiZSBhYmxlIHRvIHByb2dyYW0KPiBDVFJMUjEgd2l0aCAweGZmZmYsIGFuZCBn
-ZXQgYSA2NEtpQiB0cmFuc2ZlciwgYnV0IHRoYXQgYWxzbyBzZWVtcyB0bwo+IGNhdXNlIHRoZSBj
-b3JlIHRvIGNob2tlLCBzbyBzdGljayB3aXRoIGEgbWF4aW11bSBvZiA2NEsgLSAxIGJ5dGVzIC0t
-Cj4gaS5lLiwgMHhmZmZmLgo+Cj4gTm90ZSwgdGhhdCB0aGUgc2l6ZSBpcyBmdXJ0aGVyIGRpdmlk
-ZWQgaW50byAnbWludXMgMScgd2hpbGUgd3JpdGluZwo+IGludG8gQ1RSTFIxLgo+Cj4gVGhpcyBj
-aGFuZ2UgZml4ZWQgdHdvIGRpZmZlcmVudCByZWFkIGlzc3VlcywKPgo+IDEuIHNmIHJlYWQgZmFp
-bHVyZSB3aGVuIHdpdGggPiAweDEwMDAwCj4KPiAyLiBCb290IGZyb20gU1BJIGZsYXNoIGZhaWxl
-ZCBkdXJpbmcgc3BpX2ZsYXNoX3JlYWQgY2FsbCBpbgo+ICAgICBjb21tb24vc3BsL3NwbF9zcGku
-Ywo+Cj4gT2JzZXJ2ZWQgYW5kIFRlc3RlZCBpbgo+IC0gUm9ja3BybzY0IHdpdGggR2lnYWRldmlj
-ZSBmbGFzaAo+IC0gUk9DLVJLMzM5OS1QQyB3aXRoIFdpbmJvbmQgZmxhc2gKPgo+IFNpZ25lZC1v
-ZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgoKUmV2aWV3ZWQt
-Ynk6IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+CgpUaGFua3MsCi0gS2V2
-ZXIKPiAtLS0KPiAgIGRyaXZlcnMvc3BpL3JrX3NwaS5jIHwgMTAgKysrKysrKystLQo+ICAgMSBm
-aWxlIGNoYW5nZWQsIDggaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL3NwaS9ya19zcGkuYyBiL2RyaXZlcnMvc3BpL3JrX3NwaS5jCj4gaW5kZXgg
-YzA0NTM1YWM0NC4uOTVlZWI4MzA3YSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3NwaS9ya19zcGku
-Ywo+ICsrKyBiL2RyaXZlcnMvc3BpL3JrX3NwaS5jCj4gQEAgLTI3LDYgKzI3LDEyIEBACj4gICAv
-KiBDaGFuZ2UgdG8gMSB0byBvdXRwdXQgcmVnaXN0ZXJzIGF0IHRoZSBzdGFydCBvZiBlYWNoIHRy
-YW5zYWN0aW9uICovCj4gICAjZGVmaW5lIERFQlVHX1JLX1NQSQkwCj4gICAKPiArLyoKPiArICog
-Y3RybHIxIGlzIDE2LWJpdHMsIHNvIHdlIHNob3VsZCBzdXBwb3J0IGxlbmd0aHMgb2YgMHhmZmZm
-ICsgMS4gSG93ZXZlciwKPiArICogdGhlIGNvbnRyb2xsZXIgc2VlbXMgdG8gaGFuZyB3aGVuIGdp
-dmVuIDB4MTAwMDAsIHNvIHN0aWNrIHdpdGggdGhpcyBmb3Igbm93Lgo+ICsgKi8KPiArI2RlZmlu
-ZSBST0NLQ0hJUF9TUElfTUFYX1RSQU5MRU4JCTB4ZmZmZgo+ICsKPiAgIHN0cnVjdCByb2NrY2hp
-cF9zcGlfcGFyYW1zIHsKPiAgIAkvKiBSWEZJRk8gb3ZlcnJ1bnMgYW5kIFRYRklGTyB1bmRlcnJ1
-bnMgc3RvcCB0aGUgbWFzdGVyIGNsb2NrICovCj4gICAJYm9vbCBtYXN0ZXJfbWFuYWdlc19maWZv
-Owo+IEBAIC0zNjcsNyArMzczLDcgQEAgc3RhdGljIGlubGluZSBpbnQgcm9ja2NoaXBfc3BpXzE2
-Yml0X3JlYWRlcihzdHJ1Y3QgdWRldmljZSAqZGV2LAo+ICAgCSAqIHJlcHJlc2VudGVkIGluIENU
-UkxSMS4KPiAgIAkgKi8KPiAgIAlpZiAoZGF0YSAmJiBkYXRhLT5tYXN0ZXJfbWFuYWdlc19maWZv
-KQo+IC0JCW1heF9jaHVua19zaXplID0gMHgxMDAwMDsKPiArCQltYXhfY2h1bmtfc2l6ZSA9IFJP
-Q0tDSElQX1NQSV9NQVhfVFJBTkxFTjsKPiAgIAo+ICAgCS8vIHJvY2tjaGlwX3NwaV9jb25maWd1
-cmUoZGV2LCBtb2RlLCBzaXplKQo+ICAgCXJrc3BpX2VuYWJsZV9jaGlwKHJlZ3MsIGZhbHNlKTsK
-PiBAQCAtNDUxLDcgKzQ1Nyw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfc3BpX3hmZXIoc3RydWN0
-IHVkZXZpY2UgKmRldiwgdW5zaWduZWQgaW50IGJpdGxlbiwKPiAgIAo+ICAgCS8qIFRoaXMgaXMg
-dGhlIG9yaWdpbmFsIDhiaXQgcmVhZGVyL3dyaXRlciBjb2RlICovCj4gICAJd2hpbGUgKGxlbiA+
-IDApIHsKPiAtCQlpbnQgdG9kbyA9IG1pbihsZW4sIDB4MTAwMDApOwo+ICsJCWludCB0b2RvID0g
-bWluKGxlbiwgUk9DS0NISVBfU1BJX01BWF9UUkFOTEVOKTsKPiAgIAo+ICAgCQlya3NwaV9lbmFi
-bGVfY2hpcChyZWdzLCBmYWxzZSk7Cj4gICAJCXdyaXRlbCh0b2RvIC0gMSwgJnJlZ3MtPmN0cmxy
-MSk7CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+Jagan,
+
+
+On 2019/12/21 下午3:54, Jagan Teki wrote:
+> Most of the SPI flash devices in rockchip are 16MiB size.
+>
+> So, keeping U-Boot proper offset start from 128MiB with 1MiB
+> size and then start env of 8KiB would be a compatible location
+> between all variants of flash sizes.
+>
+> This patch add env start from 0x14000 with a size of 8KiB.
+
+What's the space map in SPI flash suppose to be? Including 
+tpl/spl/u-boot.itb
+
+I would prefer to use 128KiB-8KiB as the env start address, we'd better 
+to avoid the
+
+risk of overlap between the env space and the firmware space.
+
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> ---
+>   env/Kconfig | 3 +++
+>   1 file changed, 3 insertions(+)
+>
+> diff --git a/env/Kconfig b/env/Kconfig
+> index 9416a70022..1bb3e1078e 100644
+> --- a/env/Kconfig
+> +++ b/env/Kconfig
+> @@ -489,6 +489,7 @@ config ENV_OFFSET
+>   	depends on ENV_IS_IN_EEPROM || ENV_IS_IN_MMC || ENV_IS_IN_NAND || \
+>   		    ENV_IS_IN_SPI_FLASH
+>   	default 0x3f8000 if ARCH_ROCKCHIP && ENV_IS_IN_MMC
+> +	default 0x140000 if ARCH_ROCKCHIP && ENV_IS_IN_SPI_FLASH
+
+Is this 0x140000 or 0x14000?
+
+
+Thanks,
+
+- Kever
+
+>   	default 0x88000 if ARCH_SUNXI
+>   	default 0xE0000 if ARCH_ZYNQ
+>   	default 0x1E00000 if ARCH_ZYNQMP
+> @@ -512,6 +513,7 @@ config ENV_SIZE
+>   	default 0x40000 if ENV_IS_IN_SPI_FLASH && ARCH_ZYNQMP
+>   	default 0x20000 if ARCH_SUNXI || ARCH_ZYNQ || ARCH_OMAP2PLUS || ARCH_AT91
+>   	default 0x8000 if ARCH_ROCKCHIP && ENV_IS_IN_MMC
+> +	default 0x2000 if ARCH_ROCKCHIP && ENV_IS_IN_SPI_FLASH
+>   	default 0x8000 if ARCH_ZYNQMP || ARCH_VERSAL
+>   	default 0x4000 if ARC
+>   	default 0x1f000
+> @@ -521,6 +523,7 @@ config ENV_SIZE
+>   config ENV_SECT_SIZE
+>   	hex "Environment Sector-Size"
+>   	depends on ENV_IS_IN_FLASH || ENV_IS_IN_SPI_FLASH
+> +	default 0x2000 if ARCH_ROCKCHIP
+>   	default 0x40000 if ARCH_ZYNQMP || ARCH_VERSAL
+>   	default 0x20000 if ARCH_ZYNQ || ARCH_OMAP2PLUS || ARCH_AT91
+>   	help
