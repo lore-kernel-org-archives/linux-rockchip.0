@@ -1,64 +1,67 @@
-From: Vicente Bergas <vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: RK3399 display flickering after kexec
-Date: Sun, 22 Dec 2019 12:35:53 +0100
-Message-ID: <f920475a-c163-49cc-bf4e-896c967b48d0@gmail.com>
-References: <934ab507-6501-455d-b3d6-3585d94d81f6@gmail.com>
- <61cd89ec-e505-6a2b-d43f-da74850d1b95@collabora.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 1/2] Revert "rockchip: spi: fix off-by-one in chunk size
+ computation"
+Date: Mon, 23 Dec 2019 10:28:47 +0800
+Message-ID: <e02f612b-2148-fb85-b0ca-8925cef4d22b@rock-chips.com>
+References: <20191211132623.430-1-jagan@amarulasolutions.com>
+ <20191211132623.430-2-jagan@amarulasolutions.com>
+ <1E12E6D7-5401-4EF5-9D74-DFC6F8216799@theobroma-systems.com>
+ <CAMty3ZDoNCCMPTC_OoAyEwOoSMsa79KRmW9+LTC8opbinUiYPg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <61cd89ec-e505-6a2b-d43f-da74850d1b95-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Sean Paul <seanpaul-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAMty3ZDoNCCMPTC_OoAyEwOoSMsa79KRmW9+LTC8opbinUiYPg@mail.gmail.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: U-Boot-Denx <u-boot@lists.denx.de>, linux-amarula <linux-amarula@amarulasolutions.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpZGF5LCBEZWNlbWJlciAyMCwgMjAxOSAxMDowODozMyBBTSBDRVQsIEVucmljIEJhbGxl
-dGJvIGkgU2VycmEgd3JvdGU6Cj4gSGkgVmljZW7DpywKPgo+IE9uIDEyLzEyLzE5IDIzOjA0LCBW
-aWNlbnRlIEJlcmdhcyB3cm90ZToKPj4gSGkgRW5yaWMsIERvdWdsYXMsIFNlYW4sCj4+IHRoZXJl
-IGlzIGFuIGlzc3VlIG9uIFJLMzM5OS1iYXNlZCBwbGF0Zm9ybXMgd2l0aCBkaXNwbGF5IGZsaWNr
-ZXJpbmcuCj4+IEkgaGF2ZSBzZWFyY2hlZCBtYWlsaW5nIGxpc3QgYW5kIGZvdW5kIHlvdSBoYXZl
-IG1lbnRpb25lZCBvciB3ZXJlCj4+IGludm9sdmVkIGluIHJlbGF0ZWQgaXNzdWVzLCBzbywgeW91
-IG1heSBiZSBhYmxlIHRvIGhlbHAuCj4+IAo+PiBUaGUgaXNzdWUgaGFzIGJlZW4gb2JzZXJ2ZWQg
-b24gdGhlIFNhcHBoaXJlIGJvYXJkIGFuZCBvbiBnb29nbGUga2V2aW4sIC4uLgo+Cj4gVG8gYmUg
-aG9uZXN0LCBJIGRvbid0IGhhdmUgaWRlYSwgbG9va3MgbGlrZSBzb21lIGNsb2NrIAo+IGNvbmZp
-Z3VyYXRpb24gaXNzdWU/IERpZAo+IHlvdSBjaGVjayB0aGUgY2xvY2sgYWZ0ZXIgYW5kIGJlZm9y
-ZT8gSSBtaWdodCBiZSBpbnRlcmVzdGVkIHRvIAo+IGxvb2sgYSBiaXQgbW9yZQo+IGludG8gdGhl
-IGlzc3VlIGlmIHRoaXMgaXMgcmVwcm9kdWNpYmxlIHVzaW5nIHRoZSBjb3JlYm9vdCBib290bG9h
-ZGVyLiBEbyB5b3UKPiBrbm93IGlmIHRoaXMgaGFwcGVucyB3aXRoIHN0b2NrIGJvb3Rsb2FkZXI/
-CgpIaSBFbnJpYywKdGhhbmtzIGZvciByZXBseWluZy4KCkkgbmV2ZXIgdGVzdGVkIGtleGVjIHdp
-dGggdGhlIHN0b2NrIGJvb3Rsb2FkZXIuCgpDb3JlYm9vdCBmcm9tIGJyYW5jaCBmaXJtd2FyZS1n
-cnUtODc4NS5CIGF0Cmh0dHBzOi8vY2hyb21pdW0uZ29vZ2xlc291cmNlLmNvbS9jaHJvbWl1bW9z
-L3RoaXJkX3BhcnR5L2NvcmVib290CndoaWNoIGlzIChpZiBpIGFtIG5vdCB3cm9uZykgdGhlIHZl
-cnNpb24gdGhhdCBtYXRjaGVzIHRoZSBzdG9jayBib290bG9hZGVyLApkaWQgbm90IGJvb3QsIGRp
-c3BsYXkgb2ZmIGFsbCB0aGUgdGltZSBmcm9tIHBvd2VyIG9uLiBUaGlzIHdhcyB0ZXN0ZWQgbG9u
-Zwp0aW1lIGFnbyBhbmQgaSBkaWQgbm90IGluc2lzdCBtdWNoLgoKVGhlIGJvb3Rsb2FkZXIgaSBh
-bSBjdXJyZW50bHkgdXNpbmcgY29uZmlndXJlcyBwb3dlciBzdXBwbGllcywgY2xvY2tzIGFuZApk
-cmFtIGJhc2VkIG9mZiBmaXJtd2FyZS1ncnUtODc4NS5CCkFyZSBhbGwga2V2aW4tc3BlY2lmaWMg
-Y2hhbmdlcyB0byBjb3JlYm9vdCB1cHN0cmVhbWVkPyBTaG91bGQgaSB1c2UKdXBzdHJlYW0gY29y
-ZWJvb3QgYXMgcmVmZXJlbmNlPwoKQW55d2F5cywgaSB0aGluayB0aGF0IHRoZSBlYXJseSBib290
-bG9hZGVyIHN0YWdlIGlzIG5vdCB0aGUgY2F1c2UgYmVjYXVzZQp0aGUgaXNzdWUgZG9lcyBub3Qg
-c2hvdyB1cCBpbiBsaW51eCBiZWZvcmUga2V4ZWMuIE15IGlkZWEgaXMgdGhhdCB0aGUgZmlyc3QK
-bGludXgsIHdoaWxlIGtleGVjJ2luZyBzaHV0cyBkb3duIHNvbWV0aGluZyBpdCBzaG91bGRuJ3Qs
-IGxpa2UgYSBjbG9jaywgYW5kCnRoZSB0aGUgc2Vjb25kIGxpbnV4IGFmdGVyIGtleGVjIGhhcyB0
-aGUgaXNzdWUgYmVjYXNlIGl0IGNhbid0IHJlaW5pdGl6bGl6ZQppdC4KU28sIHdoZW4geW91IHNh
-eSAiRGlkIHlvdSBjaGVjayB0aGUgY2xvY2sgYWZ0ZXIgYW5kIGJlZm9yZT8iLCBob3cgZG8gaQpj
-aGVjayBpdD8gd2hpY2ggY2xvY2s/CgpJIHRoaW5rIHRoZSBtaXNiZWhhdmluZyBibG9jayBoZXJl
-IGlzIHRoZSBWT1AsIG1heWJlIGJlY2F1c2Ugb2YgYQptaXNjb25maWd1cmVkIGNsb2NrIGFzIHlv
-dSBzYXksIGJ1dCBpIGFtIGxvc3QgaGVyZSBiZWNhdXNlIHRoZXJlIGlzIG5vCmRvY3VtZW50YXRp
-b24gYWJvdXQgaXQuIFRoZSBUUk0gYXZhaWxhYmxlIG9uIHRoZSBJbnRlcm5ldCBkb2VzIG5vdApt
-ZW50aW9uIChvciBqdXN0IGJyaWVmbHkpIGEgbG90IG9mIGJsb2NrcyBwb3RlbnRpYWxseSByZWxh
-dGVkIHRvIHRoaXMgaXNzdWUKbGlrZSBWT1Agb3IgR1BVLgoKVGhhbmtzLAogIFZpY2Vuw6cuCgo+
-IFRoYW5rcywKPiAgRW5yaWMKPgo+PiBSZWdhcmRzLAo+PiAgVmljZW7Dpy4KCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+On 2019/12/21 下午3:32, Jagan Teki wrote:
+> Hi Philipp,
+>
+> On Wed, Dec 11, 2019 at 7:10 PM Philipp Tomsich
+> <philipp.tomsich@theobroma-systems.com> wrote:
+>>
+>>
+>>> On 11.12.2019, at 14:26, Jagan Teki <jagan@amarulasolutions.com> wrote:
+>>>
+>>> The maximum transfer length (in a single transaction) for the Rockchip
+>>> SPI controller is 64Kframes (i.e. 0x10000 frames) of 8bit or 16bit
+>>> frames and is encoded as (num_frames - 1) in CTRLR1.
+>>>
+>>> So the 0x10000 is offset value for 64K but the actual size value would
+>>> be 'minus 1' from 0x10000.
+>> NAK. Please see 2 code lines below your change to see that the “minus 1”
+>> is applied there… so a todo of 0x10000 will write 0xffff to regs->ctrlr1.
+>>
+>> The problem must be somewhere else and this patch will only mask the
+>> underlying issue.
+> Please check the below changes. the max transfer size is 64K - 1 which
+> is 0xffff and we need to write -1 of this to cr1.
+
+Yep, the counter is 16bit, and the actual max size will be 0xffff and 
+the max available value in reg should
+
+be 0xffff-1.
+
+
+Thanks,
+
+- Kever
+
+>
+> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/spi/spi-rockchip.c?id=5185a81c02d4118b11e6cb7b5fbf6f15ff7aff90
+> https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/commit/drivers/spi/spi-rockchip.c?id=04b37d2d02c0a5ae2f4e59326ef6deaff18e0456
+>
+>
