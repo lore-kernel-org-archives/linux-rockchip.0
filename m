@@ -1,39 +1,60 @@
-From: Minas Harutyunyan <Minas.Harutyunyan@synopsys.com>
-Subject: Re: [PATCH 2/2] usb: dwc2: fix debugfs FIFO count
-Date: Mon, 23 Dec 2019 09:11:17 +0000
-Message-ID: <11124aeb-ee8e-5794-5773-cdbcc662137c@synopsys.com>
-References: <20191219113432.1229852-1-john@metanate.com>
- <20191219113432.1229852-2-john@metanate.com>
+From: Jani Nikula <jani.nikula@linux.intel.com>
+Subject: Re: [PATCH 0/8] Convert the intel iommu driver to the dma-iommu api
+Date: Mon, 23 Dec 2019 12:37:47 +0200
+Message-ID: <87blrzwcn8.fsf@intel.com>
+References: <20191221150402.13868-1-murphyt7@tcd.ie>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191219113432.1229852-2-john@metanate.com>
-Content-Language: en-US
-Content-ID: <8414CE18ACEF9641A914AD7891EBDF7B@namprd12.prod.outlook.com>
+In-Reply-To: <20191221150402.13868-1-murphyt7@tcd.ie>
 Sender: linux-kernel-owner@vger.kernel.org
-To: John Keeping <john@metanate.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+To: iommu@lists.linux-foundation.org
+Cc: Tom Murphy <murphyt7@tcd.ie>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-DQoNCk9uIDEyLzE5LzIwMTkgMzozNCBQTSwgSm9obiBLZWVwaW5nIHdyb3RlOg0KPiBUaGUgbnVt
-YmVyIG9mIEZJRk9zIG1heSBiZSBsb3dlciB0aGFuIHRoZSBudW1iZXIgb2YgZW5kcG9pbnRzLiAg
-VXNlIHRoZQ0KPiBjb3JyZWN0IHRvdGFsIHdoZW4gcHJpbnRpbmcgRklGTyBkZXRhaWxzIGluIGRl
-YnVnZnMuDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBKb2huIEtlZXBpbmcgPGpvaG5AbWV0YW5hdGUu
-Y29tPg0KPiAtLS0NCg0KQWNrZWQtYnk6IE1pbmFzIEhhcnV0eXVueWFuIDxobWluYXNAc3lub3Bz
-eXMuY29tPg0KDQoNCj4gICBkcml2ZXJzL3VzYi9kd2MyL2RlYnVnZnMuYyB8IDMgKystDQo+ICAg
-MSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMSBkZWxldGlvbigtKQ0KPiANCj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvdXNiL2R3YzIvZGVidWdmcy5jIGIvZHJpdmVycy91c2IvZHdjMi9k
-ZWJ1Z2ZzLmMNCj4gaW5kZXggYjhmMjc5MGFiZjkxLi4zYTBkY2JmYmM4MjcgMTAwNjQ0DQo+IC0t
-LSBhL2RyaXZlcnMvdXNiL2R3YzIvZGVidWdmcy5jDQo+ICsrKyBiL2RyaXZlcnMvdXNiL2R3YzIv
-ZGVidWdmcy5jDQo+IEBAIC0xODMsNiArMTgzLDcgQEAgREVGSU5FX1NIT1dfQVRUUklCVVRFKHN0
-YXRlKTsNCj4gICBzdGF0aWMgaW50IGZpZm9fc2hvdyhzdHJ1Y3Qgc2VxX2ZpbGUgKnNlcSwgdm9p
-ZCAqdikNCj4gICB7DQo+ICAgCXN0cnVjdCBkd2MyX2hzb3RnICpoc290ZyA9IHNlcS0+cHJpdmF0
-ZTsNCj4gKwlpbnQgZmlmb19jb3VudCA9IGR3YzJfaHNvdGdfdHhfZmlmb19jb3VudChoc290Zyk7
-DQo+ICAgCXUzMiB2YWw7DQo+ICAgCWludCBpZHg7DQo+ICAgDQo+IEBAIC0xOTYsNyArMTk3LDcg
-QEAgc3RhdGljIGludCBmaWZvX3Nob3coc3RydWN0IHNlcV9maWxlICpzZXEsIHZvaWQgKnYpDQo+
-ICAgDQo+ICAgCXNlcV9wdXRzKHNlcSwgIlxuUGVyaW9kaWMgVFhGSUZPczpcbiIpOw0KPiAgIA0K
-PiAtCWZvciAoaWR4ID0gMTsgaWR4IDwgaHNvdGctPm51bV9vZl9lcHM7IGlkeCsrKSB7DQo+ICsJ
-Zm9yIChpZHggPSAxOyBpZHggPD0gZmlmb19jb3VudDsgaWR4KyspIHsNCj4gICAJCXZhbCA9IGR3
-YzJfcmVhZGwoaHNvdGcsIERQVFhGU0laTihpZHgpKTsNCj4gICANCj4gICAJCXNlcV9wcmludGYo
-c2VxLCAiXHREUFRYRklGTyUyZDogU2l6ZSAlZCwgU3RhcnQgMHglMDh4XG4iLCBpZHgsDQo+IA0K
+On Sat, 21 Dec 2019, Tom Murphy <murphyt7@tcd.ie> wrote:
+> This patchset converts the intel iommu driver to the dma-iommu api.
+>
+> While converting the driver I exposed a bug in the intel i915 driver
+> which causes a huge amount of artifacts on the screen of my
+> laptop. You can see a picture of it here:
+> https://github.com/pippy360/kernelPatches/blob/master/IMG_20191219_225922.jpg
+>
+> This issue is most likely in the i915 driver and is most likely caused
+> by the driver not respecting the return value of the
+> dma_map_ops::map_sg function. You can see the driver ignoring the
+> return value here:
+> https://github.com/torvalds/linux/blob/7e0165b2f1a912a06e381e91f0f4e495f4ac3736/drivers/gpu/drm/i915/gem/i915_gem_dmabuf.c#L51
+>
+> Previously this didn’t cause issues because the intel map_sg always
+> returned the same number of elements as the input scatter gather list
+> but with the change to this dma-iommu api this is no longer the
+> case. I wasn’t able to track the bug down to a specific line of code
+> unfortunately.
+>
+> Could someone from the intel team look at this?
+
+Let me get this straight. There is current API that on success always
+returns the same number of elements as the input scatter gather
+list. You propose to change the API so that this is no longer the case?
+
+A quick check of various dma_map_sg() calls in the kernel seems to
+indicate checking for 0 for errors and then ignoring the non-zero return
+is a common pattern. Are you sure it's okay to make the change you're
+proposing?
+
+Anyway, due to the time of year and all, I'd like to ask you to file a
+bug against i915 at [1] so this is not forgotten, and please let's not
+merge the changes before this is resolved.
+
+
+Thanks,
+Jani.
+
+
+[1] https://gitlab.freedesktop.org/drm/intel/issues/new
+
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
