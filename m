@@ -1,59 +1,52 @@
 From: Yangtao Li <tiny.windzz@gmail.com>
-Subject: [PATCH] virtio-mmio: convert to devm_platform_ioremap_resource
-Date: Mon, 23 Dec 2019 18:59:13 +0000
-Message-ID: <20191223185918.9877-2-tiny.windzz@gmail.com>
+Subject: [PATCH 2/6] iommu/exynos: convert to devm_platform_ioremap_resource
+Date: Mon, 23 Dec 2019 18:59:14 +0000
+Message-ID: <20191223185918.9877-3-tiny.windzz@gmail.com>
 References: <20191223185918.9877-1-tiny.windzz@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <virtualization-bounces@lists.linux-foundation.org>
 In-Reply-To: <20191223185918.9877-1-tiny.windzz@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
+List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/virtualization>,
+ <mailto:virtualization-request@lists.linux-foundation.org?subject=unsubscribe>
+List-Archive: <http://lists.linuxfoundation.org/pipermail/virtualization/>
+List-Post: <mailto:virtualization@lists.linux-foundation.org>
+List-Help: <mailto:virtualization-request@lists.linux-foundation.org?subject=help>
+List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/virtualization>,
+ <mailto:virtualization-request@lists.linux-foundation.org?subject=subscribe>
+Errors-To: virtualization-bounces@lists.linux-foundation.org
+Sender: "Virtualization" <virtualization-bounces@lists.linux-foundation.org>
 To: m.szyprowski@samsung.com, joro@8bytes.org, kgene@kernel.org, krzk@kernel.org, matthias.bgg@gmail.com, agross@kernel.org, bjorn.andersson@linaro.org, robdclark@gmail.com, heiko@sntech.de, mst@redhat.com, jasowang@redhat.com, iommu@lists.linux-foundation.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, virtualization@lists.linux-foundation.org
 Cc: Yangtao Li <tiny.windzz@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Use devm_platform_ioremap_resource() to simplify code, which
-contains platform_get_resource, devm_request_mem_region and
-devm_ioremap.
+Use devm_platform_ioremap_resource() to simplify code.
 
 Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 ---
- drivers/virtio/virtio_mmio.c | 15 +++------------
- 1 file changed, 3 insertions(+), 12 deletions(-)
+ drivers/iommu/exynos-iommu.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/virtio/virtio_mmio.c b/drivers/virtio/virtio_mmio.c
-index e09edb5c5e06..97d5725fd9a2 100644
---- a/drivers/virtio/virtio_mmio.c
-+++ b/drivers/virtio/virtio_mmio.c
-@@ -531,18 +531,9 @@ static void virtio_mmio_release_dev(struct device *_d)
- static int virtio_mmio_probe(struct platform_device *pdev)
- {
- 	struct virtio_mmio_device *vm_dev;
--	struct resource *mem;
- 	unsigned long magic;
- 	int rc;
+diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
+index 186ff5cc975c..42d8407267ef 100644
+--- a/drivers/iommu/exynos-iommu.c
++++ b/drivers/iommu/exynos-iommu.c
+@@ -571,14 +571,12 @@ static int exynos_sysmmu_probe(struct platform_device *pdev)
+ 	int irq, ret;
+ 	struct device *dev = &pdev->dev;
+ 	struct sysmmu_drvdata *data;
+-	struct resource *res;
  
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	if (!mem)
--		return -EINVAL;
--
--	if (!devm_request_mem_region(&pdev->dev, mem->start,
--			resource_size(mem), pdev->name))
--		return -EBUSY;
--
- 	vm_dev = devm_kzalloc(&pdev->dev, sizeof(*vm_dev), GFP_KERNEL);
- 	if (!vm_dev)
+ 	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
+ 	if (!data)
  		return -ENOMEM;
-@@ -554,9 +545,9 @@ static int virtio_mmio_probe(struct platform_device *pdev)
- 	INIT_LIST_HEAD(&vm_dev->virtqueues);
- 	spin_lock_init(&vm_dev->lock);
  
--	vm_dev->base = devm_ioremap(&pdev->dev, mem->start, resource_size(mem));
--	if (vm_dev->base == NULL)
--		return -EFAULT;
-+	vm_dev->base = devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(vm_dev->base))
-+		return PTR_ERR(vm_dev->base);
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	data->sfrbase = devm_ioremap_resource(dev, res);
++	data->sfrbase = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(data->sfrbase))
+ 		return PTR_ERR(data->sfrbase);
  
- 	/* Check magic value */
- 	magic = readl(vm_dev->base + VIRTIO_MMIO_MAGIC_VALUE);
 -- 
 2.17.1
