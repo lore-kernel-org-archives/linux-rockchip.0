@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 11/11] arm64: dts: rockchip: Add PX30 LVDS
-Date: Tue, 24 Dec 2019 15:39:00 +0100
-Message-ID: <20191224143900.23567-12-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 07/11] drm/rockchip: lvds: Helpers should return decent values
+Date: Tue, 24 Dec 2019 15:38:56 +0100
+Message-ID: <20191224143900.23567-8-miquel.raynal@bootlin.com>
 References: <20191224143900.23567-1-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,75 +12,75 @@ To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Sandy Huan
 Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Describe LVDS IP. Add the CRTC and LVDS relevant endpoints so they can
-be linked together.
+Return errors instead of returning void from internal helpers. When
+these helpers are called, check the returned value and print an error
+message in this case.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- arch/arm64/boot/dts/rockchip/px30.dtsi | 37 ++++++++++++++++++++++++++
- 1 file changed, 37 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_lvds.c | 31 ++++++++++++++++++------
+ 1 file changed, 23 insertions(+), 8 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 672a3a2f42b9..f99988b08244 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -439,6 +439,33 @@
- 			compatible = "rockchip,px30-io-voltage-domain";
- 			status = "disabled";
- 		};
-+
-+		lvds: lvds {
-+			compatible = "rockchip,px30-lvds";
-+			rockchip,grf = <&grf>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			phys = <&dsi_dphy>;
-+			phy-names = "dphy";
-+			rockchip,output = "lvds";
-+			status = "disabled";
-+
-+			port@0 {
-+				reg = <0>;
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				lvds_vopb_in: endpoint@0 {
-+					reg = <0>;
-+					remote-endpoint = <&vopb_out_lvds>;
-+				};
-+
-+				lvds_vopl_in: endpoint@1 {
-+					reg = <1>;
-+					remote-endpoint = <&vopl_out_lvds>;
-+				};
-+			};
-+		};
- 	};
+diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+index 731aba25bec5..40fa49fe9fa5 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
++++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+@@ -214,8 +214,8 @@ struct drm_connector_helper_funcs rockchip_lvds_connector_helper_funcs = {
+ 	.get_modes = rockchip_lvds_connector_get_modes,
+ };
  
- 	uart1: serial@ff158000 {
-@@ -987,6 +1014,11 @@
- 		vopb_out: port {
- 			#address-cells = <1>;
- 			#size-cells = <0>;
+-static void rk3288_lvds_grf_config(struct drm_encoder *encoder,
+-				   struct drm_display_mode *mode)
++static int rk3288_lvds_grf_config(struct drm_encoder *encoder,
++				  struct drm_display_mode *mode)
+ {
+ 	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
+ 	u8 pin_hsync = (mode->flags & DRM_MODE_FLAG_PHSYNC) ? 1 : 0;
+@@ -240,10 +240,10 @@ static void rk3288_lvds_grf_config(struct drm_encoder *encoder,
+ 	val |= (pin_dclk << 8) | (pin_hsync << 9);
+ 	val |= (0xffff << 16);
+ 	ret = regmap_write(lvds->grf, RK3288_LVDS_GRF_SOC_CON7, val);
+-	if (ret != 0) {
++	if (ret)
+ 		DRM_DEV_ERROR(lvds->dev, "Could not write to GRF: %d\n", ret);
+-		return;
+-	}
 +
-+			vopb_out_lvds: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&lvds_vopb_in>;
-+			};
- 		};
- 	};
++	return ret;
+ }
  
-@@ -1019,6 +1051,11 @@
- 		vopl_out: port {
- 			#address-cells = <1>;
- 			#size-cells = <0>;
+ static int rk3288_lvds_set_vop_source(struct rockchip_lvds *lvds,
+@@ -287,13 +287,28 @@ static void rk3288_lvds_encoder_enable(struct drm_encoder *encoder)
+ 	int ret;
+ 
+ 	drm_panel_prepare(lvds->panel);
 +
-+			vopl_out_lvds: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&lvds_vopl_in>;
-+			};
- 		};
- 	};
+ 	ret = rk3288_lvds_poweron(lvds);
+ 	if (ret < 0) {
+-		DRM_DEV_ERROR(lvds->dev, "failed to power on lvds: %d\n", ret);
++		DRM_DEV_ERROR(lvds->dev, "failed to power on LVDS: %d\n", ret);
+ 		drm_panel_unprepare(lvds->panel);
++		return;
+ 	}
+-	rk3288_lvds_grf_config(encoder, mode);
+-	rk3288_lvds_set_vop_source(lvds, encoder);
++
++	ret = rk3288_lvds_grf_config(encoder, mode);
++	if (ret) {
++		DRM_DEV_ERROR(lvds->dev, "failed to configure LVDS: %d\n", ret);
++		drm_panel_unprepare(lvds->panel);
++		return;
++	}
++
++	ret = rk3288_lvds_set_vop_source(lvds, encoder);
++	if (ret) {
++		DRM_DEV_ERROR(lvds->dev, "failed to set VOP source: %d\n", ret);
++		drm_panel_unprepare(lvds->panel);
++		return;
++	}
++
+ 	drm_panel_enable(lvds->panel);
+ }
  
 -- 
 2.20.1
