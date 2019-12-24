@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 08/11] drm/rockchip: lvds: Pack functions together
-Date: Tue, 24 Dec 2019 15:38:57 +0100
-Message-ID: <20191224143900.23567-9-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 10/11] arm64: dts: rockchip: Add PX30 DSI DPHY
+Date: Tue, 24 Dec 2019 15:38:59 +0100
+Message-ID: <20191224143900.23567-11-miquel.raynal@bootlin.com>
 References: <20191224143900.23567-1-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,142 +12,34 @@ To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Sandy Huan
 Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Reorganize a bit the functions order to clarify the driver. This
-change only moves functions around, there is no functional change.
+Add the PHY which outputs MIPI DSI and LVDS.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_lvds.c | 90 ++++++++++++------------
- 1 file changed, 45 insertions(+), 45 deletions(-)
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-index 40fa49fe9fa5..f2ece09e4e24 100644
---- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-@@ -97,6 +97,40 @@ static inline int rockchip_lvds_name_to_output(const char *s)
- 	return -EINVAL;
- }
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index b2af0f02ecbe..672a3a2f42b9 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -849,6 +849,17 @@
+ 		};
+ 	};
  
-+static const struct drm_connector_funcs rockchip_lvds_connector_funcs = {
-+	.fill_modes = drm_helper_probe_single_connector_modes,
-+	.destroy = drm_connector_cleanup,
-+	.reset = drm_atomic_helper_connector_reset,
-+	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
-+	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
-+};
++	dsi_dphy: phy@ff2e0000 {
++		compatible = "rockchip,px30-dsi-dphy";
++		reg = <0x0 0xff2e0000 0x0 0x10000>;
++		clocks = <&pmucru SCLK_MIPIDSIPHY_REF>, <&cru PCLK_MIPIDSIPHY>;
++		clock-names = "ref", "pclk";
++		resets = <&cru SRST_MIPIDSIPHY_P>;
++		reset-names = "apb";
++		#phy-cells = <0>;
++		status = "disabled";
++	};
 +
-+static int rockchip_lvds_connector_get_modes(struct drm_connector *connector)
-+{
-+	struct rockchip_lvds *lvds = connector_to_lvds(connector);
-+	struct drm_panel *panel = lvds->panel;
-+
-+	return drm_panel_get_modes(panel);
-+}
-+
-+static const
-+struct drm_connector_helper_funcs rockchip_lvds_connector_helper_funcs = {
-+	.get_modes = rockchip_lvds_connector_get_modes,
-+};
-+
-+static int
-+rockchip_lvds_encoder_atomic_check(struct drm_encoder *encoder,
-+				   struct drm_crtc_state *crtc_state,
-+				   struct drm_connector_state *conn_state)
-+{
-+	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
-+
-+	s->output_mode = ROCKCHIP_OUT_MODE_P888;
-+	s->output_type = DRM_MODE_CONNECTOR_LVDS;
-+
-+	return 0;
-+}
-+
- static int rk3288_lvds_poweron(struct rockchip_lvds *lvds)
- {
- 	int ret;
-@@ -193,27 +227,6 @@ static void rk3288_lvds_poweroff(struct rockchip_lvds *lvds)
- 	clk_disable(lvds->pclk);
- }
- 
--static const struct drm_connector_funcs rockchip_lvds_connector_funcs = {
--	.fill_modes = drm_helper_probe_single_connector_modes,
--	.destroy = drm_connector_cleanup,
--	.reset = drm_atomic_helper_connector_reset,
--	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
--	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
--};
--
--static int rockchip_lvds_connector_get_modes(struct drm_connector *connector)
--{
--	struct rockchip_lvds *lvds = connector_to_lvds(connector);
--	struct drm_panel *panel = lvds->panel;
--
--	return drm_panel_get_modes(panel);
--}
--
--static const
--struct drm_connector_helper_funcs rockchip_lvds_connector_helper_funcs = {
--	.get_modes = rockchip_lvds_connector_get_modes,
--};
--
- static int rk3288_lvds_grf_config(struct drm_encoder *encoder,
- 				  struct drm_display_mode *mode)
- {
-@@ -267,19 +280,6 @@ static int rk3288_lvds_set_vop_source(struct rockchip_lvds *lvds,
- 	return 0;
- }
- 
--static int
--rockchip_lvds_encoder_atomic_check(struct drm_encoder *encoder,
--				   struct drm_crtc_state *crtc_state,
--				   struct drm_connector_state *conn_state)
--{
--	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
--
--	s->output_mode = ROCKCHIP_OUT_MODE_P888;
--	s->output_type = DRM_MODE_CONNECTOR_LVDS;
--
--	return 0;
--}
--
- static void rk3288_lvds_encoder_enable(struct drm_encoder *encoder)
- {
- 	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
-@@ -321,6 +321,17 @@ static void rk3288_lvds_encoder_disable(struct drm_encoder *encoder)
- 	drm_panel_unprepare(lvds->panel);
- }
- 
-+static const
-+struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
-+	.enable = rk3288_lvds_encoder_enable,
-+	.disable = rk3288_lvds_encoder_disable,
-+	.atomic_check = rockchip_lvds_encoder_atomic_check,
-+};
-+
-+static const struct drm_encoder_funcs rockchip_lvds_encoder_funcs = {
-+	.destroy = drm_encoder_cleanup,
-+};
-+
- static int rk3288_lvds_probe(struct platform_device *pdev,
- 			     struct rockchip_lvds *lvds)
- {
-@@ -367,17 +378,6 @@ static int rk3288_lvds_probe(struct platform_device *pdev,
- 	return 0;
- }
- 
--static const
--struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
--	.enable = rk3288_lvds_encoder_enable,
--	.disable = rk3288_lvds_encoder_disable,
--	.atomic_check = rockchip_lvds_encoder_atomic_check,
--};
--
--static const struct drm_encoder_funcs rockchip_lvds_encoder_funcs = {
--	.destroy = drm_encoder_cleanup,
--};
--
- static const struct rockchip_lvds_soc_data rk3288_lvds_data = {
- 	.probe = rk3288_lvds_probe,
- 	.helper_funcs = &rk3288_lvds_encoder_helper_funcs,
+ 	usb20_otg: usb@ff300000 {
+ 		compatible = "rockchip,px30-usb", "rockchip,rk3066-usb",
+ 			     "snps,dwc2";
 -- 
 2.20.1
