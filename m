@@ -1,38 +1,53 @@
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Subject: Re: [RFC v1 0/1] drm: lima: devfreq and cooling device support
-Date: Tue, 24 Dec 2019 12:28:41 +0100
-Message-ID: <CAFBinCCDmCHQW+nBHzsodz0R=GKoqv1EEzB=UY=ypFs4Q6MFmQ@mail.gmail.com>
-References: <20191215211223.1451499-1-martin.blumenstingl@googlemail.com> <20191216154803.GA3921@kevin>
+From: Icenowy Zheng <icenowy-h8G6r0blFSE@public.gmane.org>
+Subject: Re: [Lima] [RFC v1 0/1] drm: lima: devfreq and cooling device support
+Date: Tue, 24 Dec 2019 19:35:36 +0800
+Message-ID: <54FE8BA3-BB70-4411-9FD9-4AE460097A95@aosc.io>
+References: <20191215211223.1451499-1-martin.blumenstingl@googlemail.com>
+ <20191216154803.GA3921@kevin>
+ <CAFBinCCDmCHQW+nBHzsodz0R=GKoqv1EEzB=UY=ypFs4Q6MFmQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191216154803.GA3921@kevin>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
-Cc: yuq825@gmail.com, dri-devel@lists.freedesktop.org, lima@lists.freedesktop.org, airlied@linux.ie, daniel@ffwll.ch, linux-kernel@vger.kernel.org, tomeu.vizoso@collabora.com, robh@kernel.org, steven.price@arm.com, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, wens@csie.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAFBinCCDmCHQW+nBHzsodz0R=GKoqv1EEzB=UY=ypFs4Q6MFmQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: lima-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>, Alyssa Rosenzweig <alyssa.rosenzweig-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, steven.price-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, wens-jdAy2FN1RRM@public.gmane.org, yuq825-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Alyssa,
-
-On Mon, Dec 16, 2019 at 4:48 PM Alyssa Rosenzweig
-<alyssa.rosenzweig@collabora.com> wrote:
->
-> If so much code is being duplicated over, I'm wondering if it makes
-> sense for us to move some of the common devfreq code to core DRM
-> helpers?
-if you have any recommendation where to put it then please let me know
-(I am not familiar with the DRM subsystem at all)
-
-my initial idea was that the devfreq logic needs the same information
-that the scheduler needs (whether we're submitting something to be
-executed, there was a timeout, ...).
-however, looking at drivers/gpu/drm/scheduler/ this seems pretty
-stand-alone so I'm not sure it should go there
-also the Mali-4x0 GPUs have some "PMU" which *may* be used instead of
-polling the statistics internally
-so this is where I realize that with my current knowledge I don't know
-enough about lima, panfrost, DRM or the devfreq subsystem to get a
-good idea where to put the code.
-
-
-Martin
+Cgrkuo4gMjAxOeW5tDEy5pyIMjTml6UgR01UKzA4OjAwIOS4i+WNiDc6Mjg6NDEsIE1hcnRpbiBC
+bHVtZW5zdGluZ2wgPG1hcnRpbi5ibHVtZW5zdGluZ2xAZ29vZ2xlbWFpbC5jb20+IOWGmeWIsDoK
+PkhpIEFseXNzYSwKPgo+T24gTW9uLCBEZWMgMTYsIDIwMTkgYXQgNDo0OCBQTSBBbHlzc2EgUm9z
+ZW56d2VpZwo+PGFseXNzYS5yb3Nlbnp3ZWlnQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+Pgo+PiBJ
+ZiBzbyBtdWNoIGNvZGUgaXMgYmVpbmcgZHVwbGljYXRlZCBvdmVyLCBJJ20gd29uZGVyaW5nIGlm
+IGl0IG1ha2VzCj4+IHNlbnNlIGZvciB1cyB0byBtb3ZlIHNvbWUgb2YgdGhlIGNvbW1vbiBkZXZm
+cmVxIGNvZGUgdG8gY29yZSBEUk0KPj4gaGVscGVycz8KPmlmIHlvdSBoYXZlIGFueSByZWNvbW1l
+bmRhdGlvbiB3aGVyZSB0byBwdXQgaXQgdGhlbiBwbGVhc2UgbGV0IG1lIGtub3cKPihJIGFtIG5v
+dCBmYW1pbGlhciB3aXRoIHRoZSBEUk0gc3Vic3lzdGVtIGF0IGFsbCkKPgo+bXkgaW5pdGlhbCBp
+ZGVhIHdhcyB0aGF0IHRoZSBkZXZmcmVxIGxvZ2ljIG5lZWRzIHRoZSBzYW1lIGluZm9ybWF0aW9u
+Cj50aGF0IHRoZSBzY2hlZHVsZXIgbmVlZHMgKHdoZXRoZXIgd2UncmUgc3VibWl0dGluZyBzb21l
+dGhpbmcgdG8gYmUKPmV4ZWN1dGVkLCB0aGVyZSB3YXMgYSB0aW1lb3V0LCAuLi4pLgo+aG93ZXZl
+ciwgbG9va2luZyBhdCBkcml2ZXJzL2dwdS9kcm0vc2NoZWR1bGVyLyB0aGlzIHNlZW1zIHByZXR0
+eQo+c3RhbmQtYWxvbmUgc28gSSdtIG5vdCBzdXJlIGl0IHNob3VsZCBnbyB0aGVyZQo+YWxzbyB0
+aGUgTWFsaS00eDAgR1BVcyBoYXZlIHNvbWUgIlBNVSIgd2hpY2ggKm1heSogYmUgdXNlZCBpbnN0
+ZWFkIG9mCgpJdCdzIG9wdGlvbmFsLiBXZSBjYW5ub3QgcHJvbWlzZSBpdHMgZXhpc3RhbmNlIG9u
+IGEgZ2l2ZW4KaGFyZHdhcmUsIGFuZCBJIGhlYXJkIHRoYXQgYXQgbGVhc3Qgb24gQWxsd2lubmVy
+IEg1IE1hbGkgUE1VCmlzIGJyb2tlbi4KCj5wb2xsaW5nIHRoZSBzdGF0aXN0aWNzIGludGVybmFs
+bHkKPnNvIHRoaXMgaXMgd2hlcmUgSSByZWFsaXplIHRoYXQgd2l0aCBteSBjdXJyZW50IGtub3ds
+ZWRnZSBJIGRvbid0IGtub3cKPmVub3VnaCBhYm91dCBsaW1hLCBwYW5mcm9zdCwgRFJNIG9yIHRo
+ZSBkZXZmcmVxIHN1YnN5c3RlbSB0byBnZXQgYQo+Z29vZCBpZGVhIHdoZXJlIHRvIHB1dCB0aGUg
+Y29kZS4KPgo+Cj5NYXJ0aW4KPl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCj5saW1hIG1haWxpbmcgbGlzdAo+bGltYUBsaXN0cy5mcmVlZGVza3RvcC5vcmcK
+Pmh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8vbGltYQoKLS0g
+CuS9v+eUqCBLLTkgTWFpbCDlj5HpgIHoh6rmiJHnmoRBbmRyb2lk6K6+5aSH44CCCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
