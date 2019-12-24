@@ -1,7 +1,7 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2 06/11] drm/rockchip: lvds: Create an RK3288 specific probe function
-Date: Tue, 24 Dec 2019 15:38:55 +0100
-Message-ID: <20191224143900.23567-7-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 08/11] drm/rockchip: lvds: Pack functions together
+Date: Tue, 24 Dec 2019 15:38:57 +0100
+Message-ID: <20191224143900.23567-9-miquel.raynal@bootlin.com>
 References: <20191224143900.23567-1-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,168 +12,142 @@ To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Sandy Huan
 Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The probe function is highly tighten to the RK3288 specificities, move
-all specific bits into an "rk3288_probe" function, also part of the
-platform data.
-
-The goal is to ease the addition of new flavors of Rockchip LVDS IPs.
+Reorganize a bit the functions order to clarify the driver. This
+change only moves functions around, there is no functional change.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_lvds.c | 94 ++++++++++++++----------
- 1 file changed, 57 insertions(+), 37 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_lvds.c | 90 ++++++++++++------------
+ 1 file changed, 45 insertions(+), 45 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-index 271e126476e1..731aba25bec5 100644
+index 40fa49fe9fa5..f2ece09e4e24 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-@@ -30,6 +30,8 @@
- #define DISPLAY_OUTPUT_LVDS		1
- #define DISPLAY_OUTPUT_DUAL_LVDS	2
- 
-+struct rockchip_lvds;
-+
- #define connector_to_lvds(c) \
- 		container_of(c, struct rockchip_lvds, connector)
- 
-@@ -38,9 +40,11 @@
- 
- /**
-  * rockchip_lvds_soc_data - rockchip lvds Soc private data
-+ * @probe: LVDS platform probe function
-  * @helper_funcs: LVDS connector helper functions
-  */
- struct rockchip_lvds_soc_data {
-+	int (*probe)(struct platform_device *pdev, struct rockchip_lvds *lvds);
- 	const struct drm_encoder_helper_funcs *helper_funcs;
- };
- 
-@@ -302,6 +306,52 @@ static void rk3288_lvds_encoder_disable(struct drm_encoder *encoder)
- 	drm_panel_unprepare(lvds->panel);
+@@ -97,6 +97,40 @@ static inline int rockchip_lvds_name_to_output(const char *s)
+ 	return -EINVAL;
  }
  
-+static int rk3288_lvds_probe(struct platform_device *pdev,
-+			     struct rockchip_lvds *lvds)
++static const struct drm_connector_funcs rockchip_lvds_connector_funcs = {
++	.fill_modes = drm_helper_probe_single_connector_modes,
++	.destroy = drm_connector_cleanup,
++	.reset = drm_atomic_helper_connector_reset,
++	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
++	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
++};
++
++static int rockchip_lvds_connector_get_modes(struct drm_connector *connector)
 +{
-+	struct resource *res;
-+	int ret;
++	struct rockchip_lvds *lvds = connector_to_lvds(connector);
++	struct drm_panel *panel = lvds->panel;
 +
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	lvds->regs = devm_ioremap_resource(lvds->dev, res);
-+	if (IS_ERR(lvds->regs))
-+		return PTR_ERR(lvds->regs);
++	return drm_panel_get_modes(panel);
++}
 +
-+	lvds->pclk = devm_clk_get(lvds->dev, "pclk_lvds");
-+	if (IS_ERR(lvds->pclk)) {
-+		DRM_DEV_ERROR(lvds->dev, "could not get pclk_lvds\n");
-+		return PTR_ERR(lvds->pclk);
-+	}
++static const
++struct drm_connector_helper_funcs rockchip_lvds_connector_helper_funcs = {
++	.get_modes = rockchip_lvds_connector_get_modes,
++};
 +
-+	lvds->pins = devm_kzalloc(lvds->dev, sizeof(*lvds->pins),
-+				  GFP_KERNEL);
-+	if (!lvds->pins)
-+		return -ENOMEM;
++static int
++rockchip_lvds_encoder_atomic_check(struct drm_encoder *encoder,
++				   struct drm_crtc_state *crtc_state,
++				   struct drm_connector_state *conn_state)
++{
++	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
 +
-+	lvds->pins->p = devm_pinctrl_get(lvds->dev);
-+	if (IS_ERR(lvds->pins->p)) {
-+		DRM_DEV_ERROR(lvds->dev, "no pinctrl handle\n");
-+		devm_kfree(lvds->dev, lvds->pins);
-+		lvds->pins = NULL;
-+	} else {
-+		lvds->pins->default_state =
-+			pinctrl_lookup_state(lvds->pins->p, "lcdc");
-+		if (IS_ERR(lvds->pins->default_state)) {
-+			DRM_DEV_ERROR(lvds->dev, "no default pinctrl state\n");
-+			devm_kfree(lvds->dev, lvds->pins);
-+			lvds->pins = NULL;
-+		}
-+	}
-+
-+	ret = clk_prepare(lvds->pclk);
-+	if (ret < 0) {
-+		DRM_DEV_ERROR(lvds->dev, "failed to prepare pclk_lvds\n");
-+		return ret;
-+	}
++	s->output_mode = ROCKCHIP_OUT_MODE_P888;
++	s->output_type = DRM_MODE_CONNECTOR_LVDS;
 +
 +	return 0;
 +}
 +
- static const
- struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
- 	.enable = rk3288_lvds_encoder_enable,
-@@ -314,6 +364,7 @@ static const struct drm_encoder_funcs rockchip_lvds_encoder_funcs = {
- };
- 
- static const struct rockchip_lvds_soc_data rk3288_lvds_data = {
-+	.probe = rk3288_lvds_probe,
- 	.helper_funcs = &rk3288_lvds_encoder_helper_funcs,
- };
- 
-@@ -487,7 +538,6 @@ static int rockchip_lvds_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct rockchip_lvds *lvds;
- 	const struct of_device_id *match;
--	struct resource *res;
+ static int rk3288_lvds_poweron(struct rockchip_lvds *lvds)
+ {
  	int ret;
+@@ -193,27 +227,6 @@ static void rk3288_lvds_poweroff(struct rockchip_lvds *lvds)
+ 	clk_disable(lvds->pclk);
+ }
  
- 	if (!dev->of_node)
-@@ -503,37 +553,6 @@ static int rockchip_lvds_probe(struct platform_device *pdev)
- 		return -ENODEV;
- 	lvds->soc_data = match->data;
+-static const struct drm_connector_funcs rockchip_lvds_connector_funcs = {
+-	.fill_modes = drm_helper_probe_single_connector_modes,
+-	.destroy = drm_connector_cleanup,
+-	.reset = drm_atomic_helper_connector_reset,
+-	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
+-	.atomic_destroy_state = drm_atomic_helper_connector_destroy_state,
+-};
+-
+-static int rockchip_lvds_connector_get_modes(struct drm_connector *connector)
+-{
+-	struct rockchip_lvds *lvds = connector_to_lvds(connector);
+-	struct drm_panel *panel = lvds->panel;
+-
+-	return drm_panel_get_modes(panel);
+-}
+-
+-static const
+-struct drm_connector_helper_funcs rockchip_lvds_connector_helper_funcs = {
+-	.get_modes = rockchip_lvds_connector_get_modes,
+-};
+-
+ static int rk3288_lvds_grf_config(struct drm_encoder *encoder,
+ 				  struct drm_display_mode *mode)
+ {
+@@ -267,19 +280,6 @@ static int rk3288_lvds_set_vop_source(struct rockchip_lvds *lvds,
+ 	return 0;
+ }
  
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	lvds->regs = devm_ioremap_resource(&pdev->dev, res);
--	if (IS_ERR(lvds->regs))
--		return PTR_ERR(lvds->regs);
+-static int
+-rockchip_lvds_encoder_atomic_check(struct drm_encoder *encoder,
+-				   struct drm_crtc_state *crtc_state,
+-				   struct drm_connector_state *conn_state)
+-{
+-	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
 -
--	lvds->pclk = devm_clk_get(&pdev->dev, "pclk_lvds");
--	if (IS_ERR(lvds->pclk)) {
--		DRM_DEV_ERROR(dev, "could not get pclk_lvds\n");
--		return PTR_ERR(lvds->pclk);
--	}
+-	s->output_mode = ROCKCHIP_OUT_MODE_P888;
+-	s->output_type = DRM_MODE_CONNECTOR_LVDS;
 -
--	lvds->pins = devm_kzalloc(lvds->dev, sizeof(*lvds->pins),
--				  GFP_KERNEL);
--	if (!lvds->pins)
--		return -ENOMEM;
+-	return 0;
+-}
 -
--	lvds->pins->p = devm_pinctrl_get(lvds->dev);
--	if (IS_ERR(lvds->pins->p)) {
--		DRM_DEV_ERROR(dev, "no pinctrl handle\n");
--		devm_kfree(lvds->dev, lvds->pins);
--		lvds->pins = NULL;
--	} else {
--		lvds->pins->default_state =
--			pinctrl_lookup_state(lvds->pins->p, "lcdc");
--		if (IS_ERR(lvds->pins->default_state)) {
--			DRM_DEV_ERROR(dev, "no default pinctrl state\n");
--			devm_kfree(lvds->dev, lvds->pins);
--			lvds->pins = NULL;
--		}
--	}
--
- 	lvds->grf = syscon_regmap_lookup_by_phandle(dev->of_node,
- 						    "rockchip,grf");
- 	if (IS_ERR(lvds->grf)) {
-@@ -541,13 +560,14 @@ static int rockchip_lvds_probe(struct platform_device *pdev)
- 		return PTR_ERR(lvds->grf);
- 	}
+ static void rk3288_lvds_encoder_enable(struct drm_encoder *encoder)
+ {
+ 	struct rockchip_lvds *lvds = encoder_to_lvds(encoder);
+@@ -321,6 +321,17 @@ static void rk3288_lvds_encoder_disable(struct drm_encoder *encoder)
+ 	drm_panel_unprepare(lvds->panel);
+ }
  
-+	ret = lvds->soc_data->probe(pdev, lvds);
-+	if (ret) {
-+		DRM_DEV_ERROR(dev, "Platform initialization failed\n");
-+		return ret;
-+	}
++static const
++struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
++	.enable = rk3288_lvds_encoder_enable,
++	.disable = rk3288_lvds_encoder_disable,
++	.atomic_check = rockchip_lvds_encoder_atomic_check,
++};
 +
- 	dev_set_drvdata(dev, lvds);
++static const struct drm_encoder_funcs rockchip_lvds_encoder_funcs = {
++	.destroy = drm_encoder_cleanup,
++};
++
+ static int rk3288_lvds_probe(struct platform_device *pdev,
+ 			     struct rockchip_lvds *lvds)
+ {
+@@ -367,17 +378,6 @@ static int rk3288_lvds_probe(struct platform_device *pdev,
+ 	return 0;
+ }
  
--	ret = clk_prepare(lvds->pclk);
--	if (ret < 0) {
--		DRM_DEV_ERROR(dev, "failed to prepare pclk_lvds\n");
--		return ret;
--	}
- 	ret = component_add(&pdev->dev, &rockchip_lvds_component_ops);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(dev, "failed to add component\n");
+-static const
+-struct drm_encoder_helper_funcs rk3288_lvds_encoder_helper_funcs = {
+-	.enable = rk3288_lvds_encoder_enable,
+-	.disable = rk3288_lvds_encoder_disable,
+-	.atomic_check = rockchip_lvds_encoder_atomic_check,
+-};
+-
+-static const struct drm_encoder_funcs rockchip_lvds_encoder_funcs = {
+-	.destroy = drm_encoder_cleanup,
+-};
+-
+ static const struct rockchip_lvds_soc_data rk3288_lvds_data = {
+ 	.probe = rk3288_lvds_probe,
+ 	.helper_funcs = &rk3288_lvds_encoder_helper_funcs,
 -- 
 2.20.1
