@@ -1,52 +1,60 @@
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Subject: [PATCH v2] MAINTAINERS: Track Rockchip PMIC drivers
-Date: Tue, 24 Dec 2019 14:41:22 +0100
-Message-ID: <20191224134122.20385-1-miquel.raynal@bootlin.com>
+Subject: [PATCH v2 00/11] Add PX30 LVDS support
+Date: Tue, 24 Dec 2019 15:38:49 +0100
+Message-ID: <20191224143900.23567-1-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>
+To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The current Rockchip section misses all the PMIC related drivers. They
-are all prefixed rk8* and are as wide as clks, regulators, pinctrl,
-RTCs, audio, etc.
+Hello,
 
-Add a dedicated MAINTAINER's entry.
+This series aims at supporting LVDS on PX30.
 
-Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
----
+A first couple of patches update the documentation with the new
+compatible and the presence of a PHY. Then, the existing Rockchip
+driver is cleaned and extended to support PX30 specificities. Finally,
+the PX30 DTSI is updated with CRTC routes, the DSI DPHY and the LVDS
+IP itself.
+
+Cheers,
+Miquèl
 
 Changes since v1:
-* Create a PMIC entry in MAINTAINERS.
-* Track files with rk8 and not rk80.
+* Added Rob's Ack.
+* Used "must" instead of "should" in the bindings.
+* Precised that phy-names is an optional property in the case of
+  PX30.
+* Renamed the WRITE_EN macro into HIWORD_UPDATE to be aligned with
+  other files.
+* Removed extra configuration, not needed for generic panels (see
+  Sandy Huang answer).
+* Dropped the display-subsystem routes (useless).
+* Merged two patches to avoid phandle interdependencies in graphs and
+  intermediate build errors.
 
- MAINTAINERS | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Miquel Raynal (11):
+  dt-bindings: display: rockchip-lvds: Declare PX30 compatible
+  dt-bindings: display: rockchip-lvds: Document PX30 PHY
+  drm/rockchip: lvds: Fix indentation of a #define
+  drm/rockchip: lvds: Harmonize function names
+  drm/rockchip: lvds: Change platform data
+  drm/rockchip: lvds: Create an RK3288 specific probe function
+  drm/rockchip: lvds: Helpers should return decent values
+  drm/rockchip: lvds: Pack functions together
+  drm/rockchip: lvds: Add PX30 support
+  arm64: dts: rockchip: Add PX30 DSI DPHY
+  arm64: dts: rockchip: Add PX30 LVDS
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9d3a5c54a41d..d3f814212ba8 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -13943,6 +13943,17 @@ S:	Maintained
- F:	drivers/staging/media/hantro/
- F:	Documentation/devicetree/bindings/media/rockchip-vpu.txt
- 
-+ROCKCHIP PMIC DRIVERS
-+M:	Heiko Stuebner <heiko@sntech.de>
-+L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
-+L:	linux-rockchip@lists.infradead.org
-+T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/*/*rk8*
-+F:	include/*/*/rk8*
-+F:	include/*/*/*/rk8*
-+F:	drivers/*/*rk8*
-+
- ROCKER DRIVER
- M:	Jiri Pirko <jiri@resnulli.us>
- L:	netdev@vger.kernel.org
+ .../display/rockchip/rockchip-lvds.txt        |   4 +
+ arch/arm64/boot/dts/rockchip/px30.dtsi        |  48 ++
+ drivers/gpu/drm/rockchip/rockchip_lvds.c      | 486 ++++++++++++------
+ drivers/gpu/drm/rockchip/rockchip_lvds.h      |  19 +-
+ 4 files changed, 401 insertions(+), 156 deletions(-)
+
 -- 
 2.20.1
