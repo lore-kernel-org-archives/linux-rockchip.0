@@ -1,45 +1,27 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 4/9] PM / devfreq: exynos-bus: Replace deprecated
- 'devfreq' property
-Date: Thu, 26 Dec 2019 14:01:19 -0700
-Message-ID: <20191226210119.GA8706@bogus>
-References: <20191217055738.28445-1-cw00.choi@samsung.com>
- <CGME20191217055106epcas1p11f2bc81d6bb2db3fc4bc257d78c337b9@epcas1p1.samsung.com>
- <20191217055738.28445-5-cw00.choi@samsung.com>
+Subject: Re: [PATCH 2/2] phy: phy-rockchip-inno-usb2: add usb2-phy support
+ for RK3308 SoC
+Date: Thu, 26 Dec 2019 14:07:48 -0700
+Message-ID: <20191226210748.GA27760@bogus>
+References: <20191217075722.11646-1-akash@openedev.com>
+ <20191217075722.11646-3-akash@openedev.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20191217055738.28445-5-cw00.choi@samsung.com>
+In-Reply-To: <20191217075722.11646-3-akash@openedev.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chanwoo Choi <cw00.choi@samsung.com>
-Cc: krzk@kernel.org, mark.rutland@arm.com, heiko@sntech.de, leonard.crestez@nxp.com, lukasz.luba@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: heiko@sntech.de, jagan@openedev.com, tom@radxa.com, kever.yang@rock-chips.com, Akash Gajjar <akash@openedev.com>, Kishon Vijay Abraham I <kishon@ti.com>, Mark Rutland <mark.rutland@arm.com>, Andy Yan <andy.yan@rock-chips.com>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Dec 17, 2019 at 02:57:33PM +0900, Chanwoo Choi wrote:
-> In order to remove the deprecated 'devfreq' property, replace with
-> new 'exynos,parent-bus' property in order to get the parent devfreq device
-> in devicetree file instead of 'devfreq' property. But, to guarantee the
-> backward-compatibility, keep the support 'devfreq' property.
+On Tue, 17 Dec 2019 13:27:15 +0530, Akash Gajjar wrote:
+> This patch adds usb2-phy support for RK3308 SoCs and amend phy Documentation.
 > 
-> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
+> Signed-off-by: Akash Gajjar <akash@openedev.com>
 > ---
->  .../bindings/devfreq/exynos-bus.txt           | 16 +++++++--------
->  drivers/devfreq/exynos-bus.c                  | 20 ++++++++++++-------
->  2 files changed, 21 insertions(+), 15 deletions(-)
+>  .../bindings/phy/phy-rockchip-inno-usb2.txt   |  1 +
+>  drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 44 +++++++++++++++++++
+>  2 files changed, 45 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
-> index e71f752cc18f..c948cee01124 100644
-> --- a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
-> +++ b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
-> @@ -45,7 +45,7 @@ Required properties only for parent bus device:
->    of buses.
->  
->  Required properties only for passive bus device:
-> -- devfreq: the parent bus device.
-> +- exynos,parent-bus: the parent bus device.
 
-If you are going to do something new, why not use the interconnect 
-binding here?
-
-Rob
+Acked-by: Rob Herring <robh@kernel.org>
