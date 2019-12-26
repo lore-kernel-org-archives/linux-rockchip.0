@@ -1,57 +1,45 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] Revert "rockchip: make sure timer7 is enabled on rk3288 platforms"
-Date: Thu, 26 Dec 2019 21:27:45 +0100
-Message-ID: <1865524.AMUeMo0HA2@phil>
-References: <20191225025908.25305-1-kever.yang@rock-chips.com> <CAGb2v675A0fG9wHiJj_pkVQBmBFDf_u1L_dxiD9pT_8VBjujzw@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 4/9] PM / devfreq: exynos-bus: Replace deprecated
+ 'devfreq' property
+Date: Thu, 26 Dec 2019 14:01:19 -0700
+Message-ID: <20191226210119.GA8706@bogus>
+References: <20191217055738.28445-1-cw00.choi@samsung.com>
+ <CGME20191217055106epcas1p11f2bc81d6bb2db3fc4bc257d78c337b9@epcas1p1.samsung.com>
+ <20191217055738.28445-5-cw00.choi@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAGb2v675A0fG9wHiJj_pkVQBmBFDf_u1L_dxiD9pT_8VBjujzw@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20191217055738.28445-5-cw00.choi@samsung.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Chen-Yu Tsai <wens@kernel.org>
-Cc: Kever Yang <kever.yang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Russell King <linux@armlinux.org.uk>
+To: Chanwoo Choi <cw00.choi@samsung.com>
+Cc: krzk@kernel.org, mark.rutland@arm.com, heiko@sntech.de, leonard.crestez@nxp.com, lukasz.luba@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 25. Dezember 2019, 04:02:29 CET schrieb Chen-Yu Tsai:
-> On Wed, Dec 25, 2019 at 10:59 AM Kever Yang <kever.yang@rock-chips.com> wrote:
-> >
-> > This reverts commit 2a9fe3ca84afff6259820c4f62e579f41476becc.
-> > All the U-Boot version for rk3288 including mainline, rockchip
-> > legacy/next-dev, have init the timer7, so no need to init it in kernel
-> > again.
+On Tue, Dec 17, 2019 at 02:57:33PM +0900, Chanwoo Choi wrote:
+> In order to remove the deprecated 'devfreq' property, replace with
+> new 'exynos,parent-bus' property in order to get the parent devfreq device
+> in devicetree file instead of 'devfreq' property. But, to guarantee the
+> backward-compatibility, keep the support 'devfreq' property.
 > 
-> What about the ChromeOS bootloader?
-
-Coreboot does seem to start timer7 correctly:
-https://github.com/coreboot/coreboot/blob/master/src/soc/rockchip/rk3288/timer.c
-
-But old rk3288 Android TV-boxes do contain bootloaders not doing that and
-as the owners of such boxes will most often not have too great development
-tools available, that would break newer kernels for them, which is really bad
-as we value backwards compatibility very much.
-
-Instead (just checked theoretically) could we just check for psci existence?
-I.e. the calling order seems to be:
-
-start_kernel() (in init/main.c)
-	-> setup_arch()
-		-> psci_dt_init()
-			-> populates struct psci_ops
-	-> time_init()
-		-> machine_desc->init_time()
-
-so in rockchip_timer_init() you should "just" be able to check like
-
-	if (of_machine_is_compatible("rockchip,rk3288") && !psci_ops.cpu_on) {
-		/* timer init */
-	}
-
-
-Heiko
-
-> > One more reason is that if  we enable the trust for rk3288, then timer7 is
-> > not able to be accessed in kernel.
-> >
-> > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
+> ---
+>  .../bindings/devfreq/exynos-bus.txt           | 16 +++++++--------
+>  drivers/devfreq/exynos-bus.c                  | 20 ++++++++++++-------
+>  2 files changed, 21 insertions(+), 15 deletions(-)
 > 
+> diff --git a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
+> index e71f752cc18f..c948cee01124 100644
+> --- a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
+> +++ b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
+> @@ -45,7 +45,7 @@ Required properties only for parent bus device:
+>    of buses.
+>  
+>  Required properties only for passive bus device:
+> -- devfreq: the parent bus device.
+> +- exynos,parent-bus: the parent bus device.
+
+If you are going to do something new, why not use the interconnect 
+binding here?
+
+Rob
