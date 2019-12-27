@@ -1,15 +1,15 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH 01/11] spi: rk: Limit transfers to (64K - 1) bytes
-Date: Fri, 27 Dec 2019 11:25:03 +0530
-Message-ID: <CAMty3ZDNLNRue1OFAvPvo5oxJDwhLinA5GCSJJ7kwc08TOvdXA@mail.gmail.com>
+Subject: Re: [PATCH 07/11] env: Enable SPI flash env for rockchip
+Date: Fri, 27 Dec 2019 12:20:24 +0530
+Message-ID: <CAMty3ZDQptk4NJkLfdGiygQMTdLNhSWOxNu57OOf-DpUhFndtA@mail.gmail.com>
 References: <20191221075440.6944-1-jagan@amarulasolutions.com>
- <20191221075440.6944-2-jagan@amarulasolutions.com>
- <9bec6335-455b-0c62-a68d-a470a3ccdc24@rock-chips.com>
+ <20191221075440.6944-8-jagan@amarulasolutions.com>
+ <87672c9e-5f49-edf9-a97d-2ed83d33d375@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <9bec6335-455b-0c62-a68d-a470a3ccdc24@rock-chips.com>
+In-Reply-To: <87672c9e-5f49-edf9-a97d-2ed83d33d375@rock-chips.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <https://lists.denx.de/pipermail/u-boot/>
@@ -23,37 +23,42 @@ To: Kever Yang <kever.yang@rock-chips.com>
 Cc: U-Boot-Denx <u-boot@lists.denx.de>, linux-amarula <linux-amarula@amarulasolutions.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Dec 23, 2019 at 8:00 AM Kever Yang <kever.yang@rock-chips.com> wrot=
+Hi Kever,
+
+On Mon, Dec 23, 2019 at 8:04 AM Kever Yang <kever.yang@rock-chips.com> wrot=
 e:
+>
+> Jagan,
 >
 >
 > On 2019/12/21 =E4=B8=8B=E5=8D=883:54, Jagan Teki wrote:
-> > The Rockchip SPI controller's length register only supports 16-bits,
-> > yielding a maximum length of 64KiB (the CTRLR1 register holds "length -
-> > 1"). Trying to transfer more than that (e.g., with a large SPI flash
-> > read) will cause the driver to hang.
+> > Most of the SPI flash devices in rockchip are 16MiB size.
 > >
-> > Now, it seems that while theoretically we should be able to program
-> > CTRLR1 with 0xffff, and get a 64KiB transfer, but that also seems to
-> > cause the core to choke, so stick with a maximum of 64K - 1 bytes --
-> > i.e., 0xffff.
+> > So, keeping U-Boot proper offset start from 128MiB with 1MiB
+> > size and then start env of 8KiB would be a compatible location
+> > between all variants of flash sizes.
 > >
-> > Note, that the size is further divided into 'minus 1' while writing
-> > into CTRLR1.
-> >
-> > This change fixed two different read issues,
-> >
-> > 1. sf read failure when with > 0x10000
-> >
-> > 2. Boot from SPI flash failed during spi_flash_read call in
-> >     common/spl/spl_spi.c
-> >
-> > Observed and Tested in
-> > - Rockpro64 with Gigadevice flash
-> > - ROC-RK3399-PC with Winbond flash
-> >
-> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> > This patch add env start from 0x14000 with a size of 8KiB.
 >
-> Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+> What's the space map in SPI flash suppose to be? Including
+> tpl/spl/u-boot.itb
+>
+> I would prefer to use 128KiB-8KiB as the env start address, we'd better
+> to avoid the
+>
+> risk of overlap between the env space and the firmware space.
 
-Applied to u-boot-spi/master
+Here is the 16MiB flash layout, I have used. I can see the loader1
+(tpl/spl) can be possible to load at 0x0 or 0x32K so I have given the
+space for it. and 8K env after loader2(u-boot). let me know your
+thoughts?
+
+          0x0 - 0x8000,       32K  =3D>  reserved/loader1
+    0x8000 - 0x40000,    224K =3D>  loader1
+  0x40000 - 0x140000,    1M  =3D>  loader2
+0x140000 - 0x142000,    8K  =3D>   env
+0x142000 - 0x842000,    7M  =3D>  kernel
+0x842000 - 0x853800,  100K =3D>  dtb
+0x853800 -                             =3D>  root
+
+Jagan.
