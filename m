@@ -1,85 +1,59 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: Re: [PATCH 4/9] PM / devfreq: exynos-bus: Replace deprecated
- 'devfreq' property
-Date: Fri, 27 Dec 2019 09:09:58 +0900
-Message-ID: <a54e4275-012e-77d9-bdbe-1aab64b5c12b@samsung.com>
-References: <20191217055738.28445-1-cw00.choi@samsung.com>
-        <CGME20191217055106epcas1p11f2bc81d6bb2db3fc4bc257d78c337b9@epcas1p1.samsung.com>
-        <20191217055738.28445-5-cw00.choi@samsung.com> <20191226210119.GA8706@bogus>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH 01/11] spi: rk: Limit transfers to (64K - 1) bytes
+Date: Fri, 27 Dec 2019 11:25:03 +0530
+Message-ID: <CAMty3ZDNLNRue1OFAvPvo5oxJDwhLinA5GCSJJ7kwc08TOvdXA@mail.gmail.com>
+References: <20191221075440.6944-1-jagan@amarulasolutions.com>
+ <20191221075440.6944-2-jagan@amarulasolutions.com>
+ <9bec6335-455b-0c62-a68d-a470a3ccdc24@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191226210119.GA8706@bogus>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: krzk@kernel.org, mark.rutland@arm.com, heiko@sntech.de, leonard.crestez@nxp.com, lukasz.luba@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <9bec6335-455b-0c62-a68d-a470a3ccdc24@rock-chips.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: U-Boot-Denx <u-boot@lists.denx.de>, linux-amarula <linux-amarula@amarulasolutions.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12/27/19 6:01 AM, Rob Herring wrote:
-> On Tue, Dec 17, 2019 at 02:57:33PM +0900, Chanwoo Choi wrote:
->> In order to remove the deprecated 'devfreq' property, replace with
->> new 'exynos,parent-bus' property in order to get the parent devfreq device
->> in devicetree file instead of 'devfreq' property. But, to guarantee the
->> backward-compatibility, keep the support 'devfreq' property.
->>
->> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
->> ---
->>  .../bindings/devfreq/exynos-bus.txt           | 16 +++++++--------
->>  drivers/devfreq/exynos-bus.c                  | 20 ++++++++++++-------
->>  2 files changed, 21 insertions(+), 15 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
->> index e71f752cc18f..c948cee01124 100644
->> --- a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
->> +++ b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
->> @@ -45,7 +45,7 @@ Required properties only for parent bus device:
->>    of buses.
->>  
->>  Required properties only for passive bus device:
->> -- devfreq: the parent bus device.
->> +- exynos,parent-bus: the parent bus device.
-> 
-> If you are going to do something new, why not use the interconnect 
-> binding here?
+On Mon, Dec 23, 2019 at 8:00 AM Kever Yang <kever.yang@rock-chips.com> wrot=
+e:
+>
+>
+> On 2019/12/21 =E4=B8=8B=E5=8D=883:54, Jagan Teki wrote:
+> > The Rockchip SPI controller's length register only supports 16-bits,
+> > yielding a maximum length of 64KiB (the CTRLR1 register holds "length -
+> > 1"). Trying to transfer more than that (e.g., with a large SPI flash
+> > read) will cause the driver to hang.
+> >
+> > Now, it seems that while theoretically we should be able to program
+> > CTRLR1 with 0xffff, and get a 64KiB transfer, but that also seems to
+> > cause the core to choke, so stick with a maximum of 64K - 1 bytes --
+> > i.e., 0xffff.
+> >
+> > Note, that the size is further divided into 'minus 1' while writing
+> > into CTRLR1.
+> >
+> > This change fixed two different read issues,
+> >
+> > 1. sf read failure when with > 0x10000
+> >
+> > 2. Boot from SPI flash failed during spi_flash_read call in
+> >     common/spl/spl_spi.c
+> >
+> > Observed and Tested in
+> > - Rockpro64 with Gigadevice flash
+> > - ROC-RK3399-PC with Winbond flash
+> >
+> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+>
+> Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 
-As I knew, interconnect make the data path among multiple nodes
-and set the average and peak bandwidth to the specific data path.
-
-It means that some data will be flowed from node_a to node_d
-or the reverse way because each node has the tightly coupled
-dependency for data flow.
-
-	node_a <-> node_b <-> node_c <-> node_d
-
-
-On the other hand, exynos-bus.c driver is not related to 'data path'.
-Each bus just need to control the their own frequency and voltage.
-But, share the power line (regulator) between exynos-bus device
-even if there are no any dependency of data flow.
-
-'exynos,parent-bus' property just indicate the specific
-devfreq device(parent bus device) which controls
-the shared power line(regulator) in order to prevent
-the h/w problem due to the wrong pair of frequency and voltage.
-
-'exynos,parent-bus' property is only used to catch
-the change timing of shared power line.
-
-
-And,
-as you commented, there are some data path among the exynos-bus
-devices for the display h/w as following:
-
-	bus_display -> bus_leftbus -> bus_dmc
-
-In order to make the data path between bus devices,
-interconnect binding is required. This approach[1] was posted.
-[1] https://patchwork.kernel.org/cover/11305265/
-- [RFC,v3,0/7] PM / devfreq: Simple QoS for exynos-bus using interconnect
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+Applied to u-boot-spi/master
