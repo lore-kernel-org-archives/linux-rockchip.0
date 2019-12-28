@@ -1,51 +1,40 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v2] arm64: dts: rockchip: rk3368-lion-haikou: remove identical
- &uart0 node
-Date: Sat, 28 Dec 2019 08:47:57 +0100
-Message-ID: <20191228074757.2075-1-jbx6244@gmail.com>
-References: <20191220125520.29871-1-jbx6244@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191220125520.29871-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v2 2/2] dt-bindings: mmc: clarify disable-wp text
+Date: Sat, 28 Dec 2019 10:30:59 +0100
+Message-ID: <20191228093059.2817-2-jbx6244@gmail.com>
+References: <20191219145843.3823-1-jbx6244@gmail.com>
+ <20191228093059.2817-1-jbx6244@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191228093059.2817-1-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: robh+dt@kernel.org
+Cc: mark.rutland@arm.com, ulf.hansson@linaro.org, linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There are two identical &uart0 nodes in this dts file,
-so remove one of them.
+"disable-wp" has been removed from all Rockchip eMMC and SDIO dts nodes,
+but people still continue to submit new patches with "disable-wp" added
+to other nodes then for the SD card slot,
+what it was designed for in the first place.
+So clarify the "disable-wp" text by adding that this option should
+not be used in combination with eMMC or SDIO.
 
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts | 6 ------
- 1 file changed, 6 deletions(-)
+ Documentation/devicetree/bindings/mmc/mmc-controller.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-index 8251f3c0d..cbde279ae 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-@@ -83,12 +83,6 @@
- 	status = "okay";
- };
+diff --git a/Documentation/devicetree/bindings/mmc/mmc-controller.yaml b/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
+index d668d0fbe..3c0df4016 100644
+--- a/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
++++ b/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
+@@ -99,7 +99,7 @@ properties:
+       dedicated write-protect detection logic. If a GPIO is always used
+       for the write-protect detection logic, it is sufficient to not
+       specify the wp-gpios property in the absence of a write-protect
+-      line.
++      line. Not used in combination with eMMC or SDIO.
  
--&uart0 {
--	pinctrl-names = "default";
--	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
--	status = "okay";
--};
--
- &usb_otg {
- 	dr_mode = "otg";
- 	status = "okay";
+   wp-gpios:
+     description:
 -- 
 2.11.0
