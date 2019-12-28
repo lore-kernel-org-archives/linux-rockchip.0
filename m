@@ -1,51 +1,51 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: [PATCH v12 11/11] MAINTAINERS: add entry for Rockchip ISP1 driver
-Date: Fri, 27 Dec 2019 17:01:16 -0300
-Message-ID: <20191227200116.2612137-12-helen.koike@collabora.com>
-References: <20191227200116.2612137-1-helen.koike@collabora.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v2] arm64: dts: rockchip: rk3368-lion-haikou: remove identical
+ &uart0 node
+Date: Sat, 28 Dec 2019 08:47:57 +0100
+Message-ID: <20191228074757.2075-1-jbx6244@gmail.com>
+References: <20191220125520.29871-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191227200116.2612137-1-helen.koike@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, gregkh@linuxfoundation.org, andrey.konovalov@linaro.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, joacim.zetterling@gmail.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, linux-arm-kernel@lists.infradead.org, Helen Koike <helen.koike@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191220125520.29871-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add MAINTAINERS entry for the rockchip isp1 driver.
+There are two identical &uart0 nodes in this dts file,
+so remove one of them.
 
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
-
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
+ arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts | 6 ------
+ 1 file changed, 6 deletions(-)
 
-Changes in v12: None
-Changes in v11: None
-Changes in v10: None
-Changes in v9:
-- Move to staging
-
-Changes in v8: None
-Changes in v7: None
-
- MAINTAINERS | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 87f3d89d44a2..5ed1287cbb1c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -14117,6 +14117,12 @@ F:	drivers/hid/hid-roccat*
- F:	include/linux/hid-roccat*
- F:	Documentation/ABI/*/sysfs-driver-hid-roccat*
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
+index 8251f3c0d..cbde279ae 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
+@@ -83,12 +83,6 @@
+ 	status = "okay";
+ };
  
-+ROCKCHIP ISP V1 DRIVER
-+M:	Helen Koike <helen.koike@collabora.com>
-+L:	linux-media@vger.kernel.org
-+S:	Maintained
-+F:	drivers/staging/media/rkisp1/
-+
- ROCKCHIP RASTER 2D GRAPHIC ACCELERATION UNIT DRIVER
- M:	Jacob Chen <jacob-chen@iotwrt.com>
- M:	Ezequiel Garcia <ezequiel@collabora.com>
+-&uart0 {
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
+-	status = "okay";
+-};
+-
+ &usb_otg {
+ 	dr_mode = "otg";
+ 	status = "okay";
 -- 
-2.24.0
+2.11.0
