@@ -1,19 +1,11 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH 07/11] env: Enable SPI flash env for rockchip
-Date: Sat, 28 Dec 2019 17:38:09 +0530
-Message-ID: <CAMty3ZB0B+6ou9=DB-LP0q3R-6Gt_rRrx6b5KLjYNUKeOV_BNQ@mail.gmail.com>
-References: <20191221075440.6944-1-jagan@amarulasolutions.com>
- <20191221075440.6944-8-jagan@amarulasolutions.com>
- <87672c9e-5f49-edf9-a97d-2ed83d33d375@rock-chips.com>
- <CAMty3ZDQptk4NJkLfdGiygQMTdLNhSWOxNu57OOf-DpUhFndtA@mail.gmail.com>
- <ee58a8ea-89b1-4b9c-53e3-74c112e66fb4@web.de>
- <CAMty3ZC-jKKfnpnb4p6CmPBGLoDTac=NwGqtAvdtcM-B2N466w@mail.gmail.com>
- <30fdf54b-0f71-ffbf-ac57-51050a29b56d@web.de>
+From: Yangtao Li <tiny.windzz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 01/32] pwm: sun4i: convert to devm_platform_ioremap_resource
+Date: Sun, 29 Dec 2019 08:05:39 +0000
+Message-ID: <20191229080610.7597-1-tiny.windzz__131.061060686477$1577606861$gmane$org@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <30fdf54b-0f71-ffbf-ac57-51050a29b56d-S0/GAf8tV78@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -23,92 +15,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>
-Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: claudiu.beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, sbranden-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, nsaenzjulienne-l3A5Bk7waGM@public.gmane.org, shc_work-JGs/UdohzUI@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-imx-3arQi8VN3Tc@public.gmane.org, vz-ChpfBGZJDbMAvxtiuMwx3w@public.gmane.org, slemieux.tyco-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, palmer-96lFi9zoCfxBDgjK7y7TUQ@public.gmane.org, paul.walmsley-SpMDHPYPyPbQT0dZR+AlfA@public.gmane.org, mripard-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, wens-jdAy2FN1RRM@public.gmane.org, jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org, linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rpi-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip@li
+Cc: Yangtao Li <tiny.windzz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gRnJpLCBEZWMgMjcsIDIwMTkgYXQgNjo0OSBQTSBTb2VyZW4gTW9jaCA8c21vY2hAd2ViLmRl
-PiB3cm90ZToKPgo+Cj4KPiBPbiAyNy4xMi4xOSAxMzowNCwgSmFnYW4gVGVraSB3cm90ZToKPiA+
-IE9uIEZyaSwgRGVjIDI3LCAyMDE5IGF0IDQ6MDAgUE0gU29lcmVuIE1vY2ggPHNtb2NoQHdlYi5k
-ZT4gd3JvdGU6Cj4gPj4gSGkhCj4gPj4KPiA+PiBPbiAyNy4xMi4xOSAwNzo1MCwgSmFnYW4gVGVr
-aSB3cm90ZToKPiA+Pj4gSGkgS2V2ZXIsCj4gPj4+Cj4gPj4+IE9uIE1vbiwgRGVjIDIzLCAyMDE5
-IGF0IDg6MDQgQU0gS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4gd3JvdGU6
-Cj4gPj4+PiBKYWdhbiwKPiA+Pj4+Cj4gPj4+Pgo+ID4+Pj4gT24gMjAxOS8xMi8yMSDkuIvljYgz
-OjU0LCBKYWdhbiBUZWtpIHdyb3RlOgo+ID4+Pj4+IE1vc3Qgb2YgdGhlIFNQSSBmbGFzaCBkZXZp
-Y2VzIGluIHJvY2tjaGlwIGFyZSAxNk1pQiBzaXplLgo+ID4+Pj4+Cj4gPj4+Pj4gU28sIGtlZXBp
-bmcgVS1Cb290IHByb3BlciBvZmZzZXQgc3RhcnQgZnJvbSAxMjhNaUIgd2l0aCAxTWlCCj4gPj4+
-Pj4gc2l6ZSBhbmQgdGhlbiBzdGFydCBlbnYgb2YgOEtpQiB3b3VsZCBiZSBhIGNvbXBhdGlibGUg
-bG9jYXRpb24KPiA+Pj4+PiBiZXR3ZWVuIGFsbCB2YXJpYW50cyBvZiBmbGFzaCBzaXplcy4KPiA+
-Pj4+Pgo+ID4+Pj4+IFRoaXMgcGF0Y2ggYWRkIGVudiBzdGFydCBmcm9tIDB4MTQwMDAgd2l0aCBh
-IHNpemUgb2YgOEtpQi4KPiA+Pj4+IFdoYXQncyB0aGUgc3BhY2UgbWFwIGluIFNQSSBmbGFzaCBz
-dXBwb3NlIHRvIGJlPyBJbmNsdWRpbmcKPiA+Pj4+IHRwbC9zcGwvdS1ib290Lml0Ygo+ID4+Pj4K
-PiA+Pj4+IEkgd291bGQgcHJlZmVyIHRvIHVzZSAxMjhLaUItOEtpQiBhcyB0aGUgZW52IHN0YXJ0
-IGFkZHJlc3MsIHdlJ2QgYmV0dGVyCj4gPj4+PiB0byBhdm9pZCB0aGUKPiA+Pj4+Cj4gPj4+PiBy
-aXNrIG9mIG92ZXJsYXAgYmV0d2VlbiB0aGUgZW52IHNwYWNlIGFuZCB0aGUgZmlybXdhcmUgc3Bh
-Y2UuCj4gPj4+IEhlcmUgaXMgdGhlIDE2TWlCIGZsYXNoIGxheW91dCwgSSBoYXZlIHVzZWQuIEkg
-Y2FuIHNlZSB0aGUgbG9hZGVyMQo+ID4+PiAodHBsL3NwbCkgY2FuIGJlIHBvc3NpYmxlIHRvIGxv
-YWQgYXQgMHgwIG9yIDB4MzJLIHNvIEkgaGF2ZSBnaXZlbiB0aGUKPiA+Pj4gc3BhY2UgZm9yIGl0
-LiBhbmQgOEsgZW52IGFmdGVyIGxvYWRlcjIodS1ib290KS4gbGV0IG1lIGtub3cgeW91cgo+ID4+
-PiB0aG91Z2h0cz8KPiA+PiBXaHkgd2UgY2Fubm90IHVzZSB0aGUgc2FtZSBsYXlvdXQgYXMgd2hh
-dCBpcyBkZWZpbmVkIGZvciBTRC9lTU1DOgo+ID4+IGh0dHA6Ly9vcGVuc291cmNlLnJvY2stY2hp
-cHMuY29tL3dpa2lfUGFydGl0aW9ucwo+ID4+Cj4gPj4KPiA+Pgo+ID4+PiAgICAgICAgICAgMHgw
-IC0gMHg4MDAwLCAgICAgICAzMksgID0+ICByZXNlcnZlZC9sb2FkZXIxCj4gPj4+ICAgICAweDgw
-MDAgLSAweDQwMDAwLCAgICAyMjRLID0+ICBsb2FkZXIxCj4gPj4+ICAgMHg0MDAwMCAtIDB4MTQw
-MDAwLCAgICAxTSAgPT4gIGxvYWRlcjIKPiA+Pj4gMHgxNDAwMDAgLSAweDE0MjAwMCwgICAgOEsg
-ID0+ICAgZW52Cj4gPj4+IDB4MTQyMDAwIC0gMHg4NDIwMDAsICAgIDdNICA9PiAga2VybmVsCj4g
-Pj4+IDB4ODQyMDAwIC0gMHg4NTM4MDAsICAxMDBLID0+ICBkdGIKPiA+Pj4gMHg4NTM4MDAgLSAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgPT4gIHJvb3QKPiA+PiBUaGVzZSBzbWFsbCBsb2Fk
-ZXIxL2xvYWRlcjIgcGFydGl0aW9ucyBtYXkgYnl0ZSB1cyBsYXRlciB3aGVuIG5ld2VyCj4gPj4g
-dS1ib290IHZlcnNpb25zIG9ubHkgd2lsbCBmaXQgZm9yIFNEIGFuZCBub3QgZm9yIFNQSSBhbnlt
-b3JlLgo+ID4gWWVzLCB0aGUgaW5pdGlhbCBpZGVhIGlzIHRvIHJldXNlIHRoZSBleGlzdGluZyBT
-RCBsYXlvdXQgYnV0IHRoZSBTUEkKPiA+IGZsYXNoIGlzIGxpbWl0ZWQgaW4gc2l6ZSwgYW5kIGl0
-IGlzIGZ1cnRoZXIgbGltaXRlZCBpbiByazMzOTkgYm9hcmRzCj4gPiAocm9ja3BybzY0LCByb2Mt
-cmszMzk5LXBjLi4pLiB3aGljaCBpcyAxNk1pQi4gU28gcmV1c2luZyBoYWxmIG9mIHRoZQo+ID4g
-Zmxhc2ggc2l6ZSB3aWxsIG9jY3VweSBmb3IgdGlsbCBsb2FkZXIyIGluIFNEIHNjaGVtZS4KPiBF
-eGFjdGx5LiBPbiBteSBSb2NrUHJvNjQgU1BJIGZsYXNoIHNpemUgaXMgMTZNaUIuIFRoaXMgY292
-ZXJzIGV2ZXJ5dGhpbmcKPiB1cCB0byAiYm9vdCIsIGVzcGVjaWFsbHkgbG9hZGVyMSwgbG9hZGVy
-MiwgYW5kIFUtQm9vdCBFTlYuIFByb2JhYmx5IHRoZQo+IFNQSSBvbiB0aGVzZSBib2FyZHMgaXMg
-c2l6ZWQgdGhpcyB3YXkgdG8gZXhhY3RseSBtYXRjaCB0aGlzIHVzZSBjYXNlLgo+IFdoYXQgc2hv
-dWxkIGJlIHRoZSBhZHZhbnRhZ2Ugb2Ygb25seSB1c2luZyBoYWxmIG9mIHRoZSBhdmFpbGFibGUg
-bWVtb3J5PwoKVG8gbWFrZSBzbWFsbCBzeXN0ZW1zIHRvIGZ1bGwgdXNlIG9mIEZsYXNoLiB1bmxp
-a2UgZGlzdHJvcywgdGhlCmVtYmVkZGVkIHN5c3RlbXMgdGhhdCBydW4ganVzdCB3aXRoIGluaXRy
-YW1mcy4gT3IgYW55IHVwZGF0ZSBtZWNoYW5pc20KaW4gc3lzdGVtcyB0byBtYWtlIGZsYXNoIGJv
-b3QgYXMgYW4gdXBkYXRlIGFnZW50IGFuZCBTRCBvciBvdGhlcgptZWRpdW1zIGFzIG1haW4gc3lz
-dGVtcy4KCj4gPj4gVGhlIHJlc2VydmVkIHNwYWNlIGZvciBrZXJuZWwgaXMgYWxyZWFkeSB0b28g
-c21hbGwgZm9yIG5vcm1hbCBrZXJuZWwKPiA+PiBidWlsZHMgdG9kYXksIG5vdCB0byBtZW50aW9u
-IGEgcm9vdCBmaWxlc3lzdGVtLgo+ID4+Cj4gPj4gQXJlIHRoZXJlIGFueSB1c2UgY2FzZXMgd2hl
-cmUgc29tZWJvZHkgbmVlZHMgdG8gcGxhY2UgYm9vdCBhbmQgcm9vdAo+ID4+IHBhcnRpdGlvbnMg
-b24gU1BJIGZsYXNoPwo+ID4gU28sIGV4cGxhaW5lZCBhYm92ZSBkdWUgdG8gc2l6ZSBsaW1pdGF0
-aW9uIHRoZSByZXNwZWN0aXZlIGJsb2NrcyBsaWtlCj4gPiBrZXJuZWwsIHJvb3QgKHdlIGNhbiBz
-YXkgaW5pdHJkKSBhcmUgaW5kZWVkIGxlc3Mtc2l6ZWQgcGFydGl0aW9ucy4KPiA+IE1vcmVvdmVy
-IFNQSSBmbGFzaCBpcyBub3QgYSBzdWl0YWJsZSBzdG9yYWdlIGZvciByb290ZnMgaW4gcm9ja2No
-aXAsCj4gPiBzaW5jZSB0aGUgYm9vdCBvcmRlciBzdGFydCBmcm9tIFNQSSBmbGFzaCB1c3VhbGx5
-IGJvYXJkIHdvdWxkIGJvb3QKPiA+IGZyb20gZmxhc2ggYW5kIHRoZW4gbG9vayBmb3IgU0QsIGVN
-TUMsIFBDSWUgTlZNIGZvciBsb2FkaW5nIGJpZyBjaHVuawo+ID4gcm9vdGZzLgo+ID4KPiA+IE1v
-cmUgb3IgbGVzcyB0aGUgaWRlYSBvZiBhYm92ZSBmbGFzaCBsYXlvdXQgaXMgdG8gZml0IHByb3Bl
-cmx5Cj4gPiB3aXRoLWluLXRoZSBzaXplIGJvdW5kYXJpZXMgYW5kIGluZGVlZCBmb3Igc21hbGwg
-aW5pdHJhbWZzIHN5c3RlbXMuCj4gV2UgdXNlIGRpc3Ryb2Jvb3QgaW4gdGhlIGRlZmNvbmZpZ3Mg
-b2YgdGhlc2UgYm9hcmRzLCBzbyBubyBzZXBhcmF0ZQo+IHNwYWNlIGZvciBrZXJuZWwgb3IgaW5p
-dHJkIGlzIHJlcXVpcmVkIGluIChyYXcpIGZsYXNoLCB0aGVzZSBibG9icyBhcmUKPiBhbHdheXMg
-bG9hZGVkIGZyb20gdGhlIGJvb3QgcGFydGl0aW9uIGluc3RlYWQuCj4gQmVzaWRlcyB0aGF0LCBr
-ZXJuZWxzIGZvciBteSBSb2NrUHJvNjQgYXJlIGJpZ2dlciAoMTJNaUIgLSAyME1pQikgdGhhbgo+
-IHRoZSBhdmFpbGJhbGUgc3BhY2UgaW4gU1BJIGFueXdheSwgd2l0aCBhZGRpdGlvbmFsIH41TWlC
-IGZvciBpbml0cmQuCgpBcyBJIGV4cGxhaW5lZCBhYm92ZS4gU28sIHdlIGNhbiBza2lwIExpbnV4
-LCByb290ZnMgZnJvbSBmbGFzaCBhbmQKbWFrZSB1c2Ugb2YgZmxhc2ggbGF5b3V0IHRoYXQgY29t
-cGF0aWJsZSBiZXR3ZWVuIGFsbCBzeXN0ZW1zLiB3aGF0IGlzCnRoZSBpc3N1ZSB3aXRoIHRoYXQg
-b3RoZXIgdGhhbiBmdXR1cmUgcHJvb2Ygd2l0aCBTRCBsYXlvdXQuCgpJIHVuZGVyc3RhbmQgeW91
-ciBwb2ludCwgYnV0IGVhY2ggYW5kIGV2ZXJ5IHN0b3JhZ2UgbWVkaXVtIGNhbiBoYXZlCml0J3Mg
-b3duIHVzYWdlIHRvIG1ha2UgdXNlIG9mIGZ1bGwgc3lzdGVtIHJ1bm5pbmcuIFNvIHRoZSBwYXJ0
-aXRpb24KbGF5b3V0IHdvdWxkIGRlcGVuZCBvbiB0aGUgc2l6ZSBhbmQgZmlsZSBzeXN0ZW1zIGJ1
-dCBpdCBzaG91bGRuJ3QKZGVwZW5kIG9uIHBhcnRpY3VsYXIgc29mdHdhcmUgdXNhZ2UsIElNSE8u
-Cgo+Cj4gTXkgdXNlIGNhc2UgZm9yIFNQSSB3b3VsZCBiZSB0byBzdG9yZSB1LWJvb3QrU1BMK1RQ
-TCtBVEYrZW52aXJvbm1lbnQKPiB0aGVyZSwgc28gdGhhdCBJIGNhbiB1c2UgYSBzaW5nbGUgY29t
-YmluZWQgcm9vdCtib290IHBhcnRpdGlvbiBvbiBhIFNECj4gY2FyZCAvIFVTQiBkaXNrLgo+IFNv
-IEkgdGhpbmsgdGhlIGVhc2llc3QsIGxlYXN0IGNvbmZ1c2luZywgYW5kIGZ1dHVyZS1wcm9vZiAg
-U1BJIHBhcnRpdGlvbgo+IHNjaGVtZSB3b3VsZCBiZSB0byB1c2UgZXhhY3RseSB3aGF0IGlzIGRl
-ZmluZWQgYWxyZWFkeSBmb3IgU0QvZU1NQy4KCkxlc3MgY29uZnVzZWQgaW4gdGVybXMgb2YgbWFp
-bnRlbmFuY2UgYW5kIGVhc3kgdG8gdW5kZXJzdGFuZCBidXQgaXQKbWF5IG5vdCBiZSB1c2VkIGZv
-ciBzb21lIGNvcm5lciBjYXNlcyBsaWtlIHNtYWxsZXIgc3lzdGVtcy4KCkphZ2FuLgoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Use devm_platform_ioremap_resource() to simplify code.
+
+Signed-off-by: Yangtao Li <tiny.windzz-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ drivers/pwm/pwm-sun4i.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/drivers/pwm/pwm-sun4i.c b/drivers/pwm/pwm-sun4i.c
+index 581d23287333..f2afd312f77c 100644
+--- a/drivers/pwm/pwm-sun4i.c
++++ b/drivers/pwm/pwm-sun4i.c
+@@ -344,7 +344,6 @@ MODULE_DEVICE_TABLE(of, sun4i_pwm_dt_ids);
+ static int sun4i_pwm_probe(struct platform_device *pdev)
+ {
+ 	struct sun4i_pwm_chip *pwm;
+-	struct resource *res;
+ 	int ret;
+ 
+ 	pwm = devm_kzalloc(&pdev->dev, sizeof(*pwm), GFP_KERNEL);
+@@ -355,8 +354,7 @@ static int sun4i_pwm_probe(struct platform_device *pdev)
+ 	if (!pwm->data)
+ 		return -ENODEV;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	pwm->base = devm_ioremap_resource(&pdev->dev, res);
++	pwm->base = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(pwm->base))
+ 		return PTR_ERR(pwm->base);
+ 
+-- 
+2.17.1
