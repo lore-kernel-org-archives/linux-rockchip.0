@@ -1,7 +1,7 @@
 From: Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH] arm64: dts: rockchip: Add RK3328 GPU OPPs
-Date: Sun, 29 Dec 2019 20:14:38 +0000
-Message-ID: <48607c137d46452291510e88d5891e705dc7993c.1577650403.git.robin.murphy@arm.com>
+Subject: [PATCH] arm64: dts: rockchip: Add RK3328 idle state
+Date: Sun, 29 Dec 2019 20:16:17 +0000
+Message-ID: <a8c83e705d387446ea8121516d410e38b2d9c57b.1577640736.git.robin.murphy@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -19,45 +19,69 @@ To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add OPPs for the GPU, derived from the downstream Beelink A1 DTB.
+Downstream RK3328 DTBs describe a CPU idle state matching that present
+on other SoCs like RK3399. This works with upstream Trusted Firmware-A
+too, so let's add it here.
 
 Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 91306ebed4da..e1b1b4551a8b 100644
+index 7df7daa188df..d71187cdd430 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -605,6 +605,28 @@
- 		clocks = <&cru ACLK_GPU>, <&cru ACLK_GPU>;
- 		clock-names = "bus", "core";
- 		resets = <&cru SRST_GPU_A>;
-+		operating-points-v2 = <&gpu_opp_table>;
-+	};
-+
-+	gpu_opp_table: opp_table1 {
-+		compatible = "operating-points-v2";
-+
-+		opp-200000000 {
-+			opp-hz = /bits/ 64 <200000000>;
-+			opp-microvolt = <900000>;
-+		};
-+		opp-300000000 {
-+			opp-hz = /bits/ 64 <300000000>;
-+			opp-microvolt = <950000>;
-+		};
-+		opp-400000000 {
-+			opp-hz = /bits/ 64 <400000000>;
-+			opp-microvolt = <1025000>;
-+		};
-+		opp-500000000 {
-+			opp-hz = /bits/ 64 <500000000>;
-+			opp-microvolt = <1125000>;
-+		};
- 	};
+@@ -41,6 +41,7 @@
+ 			reg = <0x0 0x0>;
+ 			clocks = <&cru ARMCLK>;
+ 			#cooling-cells = <2>;
++			cpu-idle-states = <&CPU_SLEEP>;
+ 			dynamic-power-coefficient = <120>;
+ 			enable-method = "psci";
+ 			next-level-cache = <&l2>;
+@@ -53,6 +54,7 @@
+ 			reg = <0x0 0x1>;
+ 			clocks = <&cru ARMCLK>;
+ 			#cooling-cells = <2>;
++			cpu-idle-states = <&CPU_SLEEP>;
+ 			dynamic-power-coefficient = <120>;
+ 			enable-method = "psci";
+ 			next-level-cache = <&l2>;
+@@ -65,6 +67,7 @@
+ 			reg = <0x0 0x2>;
+ 			clocks = <&cru ARMCLK>;
+ 			#cooling-cells = <2>;
++			cpu-idle-states = <&CPU_SLEEP>;
+ 			dynamic-power-coefficient = <120>;
+ 			enable-method = "psci";
+ 			next-level-cache = <&l2>;
+@@ -77,12 +80,26 @@
+ 			reg = <0x0 0x3>;
+ 			clocks = <&cru ARMCLK>;
+ 			#cooling-cells = <2>;
++			cpu-idle-states = <&CPU_SLEEP>;
+ 			dynamic-power-coefficient = <120>;
+ 			enable-method = "psci";
+ 			next-level-cache = <&l2>;
+ 			operating-points-v2 = <&cpu0_opp_table>;
+ 		};
  
- 	h265e_mmu: iommu@ff330200 {
++		idle-states {
++			entry-method = "psci";
++
++			CPU_SLEEP: cpu-sleep {
++				compatible = "arm,idle-state";
++				local-timer-stop;
++				arm,psci-suspend-param = <0x0010000>;
++				entry-latency-us = <120>;
++				exit-latency-us = <250>;
++				min-residency-us = <900>;
++			};
++		};
++
+ 		l2: l2-cache0 {
+ 			compatible = "cache";
+ 		};
 -- 
 2.17.1
