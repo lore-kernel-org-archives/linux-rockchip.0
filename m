@@ -1,51 +1,47 @@
-From: Yangtao Li <tiny.windzz@gmail.com>
-Subject: [PATCH 31/32] pwm: sifive: convert to devm_platform_ioremap_resource
-Date: Sun, 29 Dec 2019 08:06:09 +0000
-Message-ID: <20191229080610.7597-31-tiny.windzz__23512.2527157486$1577607685$gmane$org@gmail.com>
-References: <20191229080610.7597-1-tiny.windzz@gmail.com>
-Return-path: <linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191229080610.7597-1-tiny.windzz@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-riscv/>
-List-Post: <mailto:linux-riscv@lists.infradead.org>
-List-Help: <mailto:linux-riscv-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-riscv>,
- <mailto:linux-riscv-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-riscv" <linux-riscv-bounces@lists.infradead.org>
-Errors-To: linux-riscv-bounces+glpr-linux-riscv=m.gmane.org@lists.infradead.org
-To: claudiu.beznea@microchip.com, thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de, nicolas.ferre@microchip.com, alexandre.belloni@bootlin.com, ludovic.desroches@microchip.com, rjui@broadcom.com, sbranden@broadcom.com, bcm-kernel-feedback-list@broadcom.com, f.fainelli@gmail.com, nsaenzjulienne@suse.de, shc_work@mail.ru, shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com, linux-imx@nxp.com, vz@mleia.com, slemieux.tyco@gmail.com, khilman@baylibre.com, matthias.bgg@gmail.com, heiko@sntech.de, palmer@dabbelt.com, paul.walmsley@sifive.com, mripard@kernel.org, wens@csie.org, jonathanh@nvidia.com, linux@prisktech.co.nz, linux-arm-kernel@lists.infradead.org, linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@li
-Cc: Yangtao Li <tiny.windzz@gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: [PATCH] arm64: dts: rockchip: Fix IR on Beelink A1
+Date: Sun, 29 Dec 2019 17:48:05 +0000
+Message-ID: <44269c08e2a5d75b03ded87d2eb11621762d8249.1577636223.git.robin.murphy@arm.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Use devm_platform_ioremap_resource() to simplify code.
+Apparently I wasn't paying enough attention... And nor is the lazy
+test of `cat /dev/lirc0` sufficiently blunder-proof. Oh well, with
+the correct polarity, let's also hook up a keymap now that one for
+the standard Beelink remote has handily appeared.
 
-Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 ---
- drivers/pwm/pwm-sifive.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3328-a1.dts | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pwm/pwm-sifive.c b/drivers/pwm/pwm-sifive.c
-index cc63f9baa481..cb9134d7197b 100644
---- a/drivers/pwm/pwm-sifive.c
-+++ b/drivers/pwm/pwm-sifive.c
-@@ -232,7 +232,6 @@ static int pwm_sifive_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct pwm_sifive_ddata *ddata;
- 	struct pwm_chip *chip;
--	struct resource *res;
- 	int ret;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
+index 76b49f573101..16f1656d5203 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
+@@ -49,7 +49,8 @@
  
- 	ddata = devm_kzalloc(dev, sizeof(*ddata), GFP_KERNEL);
-@@ -248,8 +247,7 @@ static int pwm_sifive_probe(struct platform_device *pdev)
- 	chip->base = -1;
- 	chip->npwm = 4;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	ddata->regs = devm_ioremap_resource(dev, res);
-+	ddata->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(ddata->regs))
- 		return PTR_ERR(ddata->regs);
+ 	ir-receiver {
+ 		compatible = "gpio-ir-receiver";
+-		gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_HIGH>;
++		gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
++		linux,rc-map-name = "rc-beelink-gs1";
+ 	};
+ };
  
 -- 
 2.17.1
