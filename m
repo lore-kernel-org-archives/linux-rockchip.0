@@ -1,33 +1,29 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH v4 4/5] clk: rockchip: add pll up and down when change pll freq
-Date: Mon, 30 Dec 2019 11:06:55 -0800
-Message-ID: <20191230190656.869962053B@mail.kernel.org>
-References: <20191204081859.19454-1-zhangqing@rock-chips.com> <20191204081859.19454-5-zhangqing@rock-chips.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Subject: Re: [PATCH 2/2] pwm: Enable compile testing for some of drivers
+Date: Mon, 30 Dec 2019 11:30:21 -0800
+Message-ID: <31653485-d6f1-5887-f101-ea8926a7879c@gmail.com>
+References: <20191230172113.17222-1-krzk@kernel.org>
+ <20191230172113.17222-2-krzk@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191204081859.19454-5-zhangqing@rock-chips.com>
+In-Reply-To: <20191230172113.17222-2-krzk@kernel.org>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: mturquette@baylibre.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, xxx@rock-chips.com, xf@rock-chips.com, huangtao@rock-chips.com, Elaine Zhang <zhangqing@rock-chips.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Thierry Reding <thierry.reding@gmail.com>, =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>, linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Elaine Zhang (2019-12-04 00:18:58)
-> set pll sequence:
->         ->set pll to slow mode or other plls
->         ->set pll down
->         ->set pll params
->         ->set pll up
->         ->wait pll lock status
->         ->set pll to normal mode
->=20
-> To slove the system error:
+On 12/30/19 9:21 AM, Krzysztof Kozlowski wrote:
+> Some of the PWM drivers can be compile tested to increase build
+> coverage.
+> 
+> The Meson PWM driver requires COMMON_CLK dependency.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-s/slove/solve/
+Acked-by: Florian Fainelli <f.fainelli@gmail.com>
 
-> wait_pll_lock: timeout waiting for pll to lock
-> pll_set_params: pll update unsucessful,
->                 trying to restore old params
->=20
-> Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+for PWM_BCM2835 and PWM_BRCMSTB, thanks!
+-- 
+Florian
