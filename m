@@ -1,14 +1,11 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2] MAINTAINERS: Track Rockchip PMIC drivers
-Date: Mon, 30 Dec 2019 16:24:09 +0800
-Message-ID: <756eaff6-0ab8-7f41-2fb2-d55057ff4534@rock-chips.com>
-References: <20191224134122.20385-1-miquel.raynal@bootlin.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v5 0/7] rockchip: Add Binman support
+Date: Mon, 30 Dec 2019 13:58:12 +0530
+Message-ID: <20191230082819.30191-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191224134122.20385-1-miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,34 +15,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTkvMTIvMjQg5LiL5Y2IOTo0MSwgTWlxdWVsIFJheW5hbCB3cm90ZToKPiBUaGUgY3Vy
-cmVudCBSb2NrY2hpcCBzZWN0aW9uIG1pc3NlcyBhbGwgdGhlIFBNSUMgcmVsYXRlZCBkcml2ZXJz
-LiBUaGV5Cj4gYXJlIGFsbCBwcmVmaXhlZCByazgqIGFuZCBhcmUgYXMgd2lkZSBhcyBjbGtzLCBy
-ZWd1bGF0b3JzLCBwaW5jdHJsLAo+IFJUQ3MsIGF1ZGlvLCBldGMuCj4KPiBBZGQgYSBkZWRpY2F0
-ZWQgTUFJTlRBSU5FUidzIGVudHJ5Lgo+Cj4gU2lnbmVkLW9mZi1ieTogTWlxdWVsIFJheW5hbCA8
-bWlxdWVsLnJheW5hbEBib290bGluLmNvbT4KPiAtLS0KPgo+IENoYW5nZXMgc2luY2UgdjE6Cj4g
-KiBDcmVhdGUgYSBQTUlDIGVudHJ5IGluIE1BSU5UQUlORVJTLgo+ICogVHJhY2sgZmlsZXMgd2l0
-aCByazggYW5kIG5vdCByazgwLgo+Cj4gICBNQUlOVEFJTkVSUyB8IDExICsrKysrKysrKysrCj4g
-ICAxIGZpbGUgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdpdCBhL01BSU5U
-QUlORVJTIGIvTUFJTlRBSU5FUlMKPiBpbmRleCA5ZDNhNWM1NGE0MWQuLmQzZjgxNDIxMmJhOCAx
-MDA2NDQKPiAtLS0gYS9NQUlOVEFJTkVSUwo+ICsrKyBiL01BSU5UQUlORVJTCj4gQEAgLTEzOTQz
-LDYgKzEzOTQzLDE3IEBAIFM6CU1haW50YWluZWQKPiAgIEY6CWRyaXZlcnMvc3RhZ2luZy9tZWRp
-YS9oYW50cm8vCj4gICBGOglEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEv
-cm9ja2NoaXAtdnB1LnR4dAo+ICAgCj4gK1JPQ0tDSElQIFBNSUMgRFJJVkVSUwo+ICtNOglIZWlr
-byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+ICtMOglsaW51eC1hcm0ta2VybmVsQGxpc3Rz
-LmluZnJhZGVhZC5vcmcgKG1vZGVyYXRlZCBmb3Igbm9uLXN1YnNjcmliZXJzKQo+ICtMOglsaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gK1Q6CWdpdCBnaXQ6Ly9naXQua2VybmVs
-Lm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbW1pbmQvbGludXgtcm9ja2NoaXAuZ2l0Cj4g
-K1M6CU1haW50YWluZWQKPiArRjoJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzLyov
-KnJrOCoKPiArRjoJaW5jbHVkZS8qLyovcms4Kgo+ICtGOglpbmNsdWRlLyovKi8qL3JrOCoKPiAr
-RjoJZHJpdmVycy8qLypyazgqCj4gKwo+ICAgUk9DS0VSIERSSVZFUgo+ICAgTToJSmlyaSBQaXJr
-byA8amlyaUByZXNudWxsaS51cz4KPiAgIEw6CW5ldGRldkB2Z2VyLmtlcm5lbC5vcmcKUmV2aWV3
-ZWQtYnk6IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+CgpUaGFua3MsCi0g
-S2V2ZXIKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+This is v5 set for Binman support in rockchip, [1] here is
+previous patchset.
+
+This series add single boot image with binman for arm32 and
+pad_cat for arm64 rockchip platforms both TPL + SPL and SPL-alone
+targets.
+
+Changes for v5:
+- collect kever review tag
+- drop idbloader.img from clean target
+Changes for v4:
+- support all rockchip platforms
+- add new patches for dtsi changes
+- update documentation
+- format proper commit message
+- rebase on master
+Changes for v3:
+- rebase on master
+- add binman for rk3288, rk3328, rk3368, rk3399
+- added rst documentation for rockchip
+Changes for v2:
+- Add few clean target patches
+- update bl31.elf env handling code, with logging
+- support puma itb, via BL31 and PMUM0 env
+- enable BUILD_TARGET for ROCKCHIP_RK3399
+
+[1] https://patchwork.ozlabs.org/cover/1182449/
+
+Any inputs?
+Jagan.
+
+Jagan Teki (7):
+  Makefile: Add rockchip image type
+  Makefile: rockchip: Suffix platform type with tpl name
+  Makefile: rockchip: Support SPL-alone mkimage
+  Makefile: rockchip: Use u-boot preferred spl name
+  arm: dts: rk3036: Add rk3036-u-boot.dtsi
+  rockchip: Add Single boot image (with binman, pad_cat)
+  doc: boards: Add rockchip documentation
+
+ Makefile                            |  39 +++++++--
+ arch/arm/Kconfig                    |   1 +
+ arch/arm/dts/rk3036-sdk-u-boot.dtsi |   2 +
+ arch/arm/dts/rk3036-u-boot.dtsi     |   6 ++
+ arch/arm/dts/rk3288-u-boot.dtsi     |   2 +
+ arch/arm/dts/rockchip-u-boot.dtsi   |  21 +++++
+ doc/board/rockchip/index.rst        |  10 +++
+ doc/board/rockchip/rockchip.rst     | 128 ++++++++++++++++++++++++++++
+ include/configs/rockchip-common.h   |   2 +
+ 9 files changed, 204 insertions(+), 7 deletions(-)
+ create mode 100644 arch/arm/dts/rk3036-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rockchip-u-boot.dtsi
+ create mode 100644 doc/board/rockchip/index.rst
+ create mode 100644 doc/board/rockchip/rockchip.rst
+
+-- 
+2.18.0.321.gffc6fa0e3
