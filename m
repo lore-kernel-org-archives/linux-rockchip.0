@@ -1,95 +1,76 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: Add RK3328 GPU OPPs
-Date: Mon, 30 Dec 2019 01:14:30 +0000
-Message-ID: <3c95c29b-6c07-5945-ac22-d683997e1ca0@arm.com>
-References: <48607c137d46452291510e88d5891e705dc7993c.1577650403.git.robin.murphy@arm.com>
- <HE1PR06MB4011483BC5EF6C87066983CCAC270@HE1PR06MB4011.eurprd06.prod.outlook.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 07/11] env: Enable SPI flash env for rockchip
+Date: Mon, 30 Dec 2019 10:59:59 +0800
+Message-ID: <ad385788-d34e-79f9-84cf-c3fbb4a8bb8c@rock-chips.com>
+References: <20191221075440.6944-1-jagan@amarulasolutions.com>
+ <20191221075440.6944-8-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <HE1PR06MB4011483BC5EF6C87066983CCAC270@HE1PR06MB4011.eurprd06.prod.outlook.com>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Jonas Karlman <jonas@kwiboo.se>, "heiko@sntech.de" <heiko@sntech.de>
-Cc: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20191221075440.6944-8-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula <linux-amarula@amarulasolutions.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2019-12-30 12:09 am, Jonas Karlman wrote:
-> On 2019-12-29 21:14, Robin Murphy wrote:
->> Add OPPs for the GPU, derived from the downstream Beelink A1 DTB.
-> 
-> My RK3328 devices (rock64, roc-cc and other android tv boxes) used to become
-> unstable when I used similar OPPs as these and vdd_logic got changed to anything
-> below 1.05v some time ago, network speeds slowed down and devices usually
-> become unresponsive.
-> 
-> I do use vendor ddr init blobs to run ddr at 786 or 933 MHz, gpu runs at 500 Mhz
-> and rock64/roc-cc LDO3 is set to use 1.0v instead of 1.1v used in A1 dts,
-> in case that could be affecting the stability at lower vdd_logic voltages.
-> 
-> These observations was a few months back so I will redo some tests and see if I
-> still get unstable systems using anything below default 1.1v for vdd_logic.
 
-Indeed, as noted on the lima devfreq thread it turns out voltage scaling 
-wasn't actually happening, so things weren't as thoroughly exercised as 
-I might have thought. I do note that downstream appears to have DRAM 
-DVFS also operating on the VDD_LOGIC domain (not to mention the video 
-decoder), so it's quite possible that in lieu of that we might need to 
-forcibly limit the minimum voltage as a compromise.
+On 2019/12/21 下午3:54, Jagan Teki wrote:
+> Most of the SPI flash devices in rockchip are 16MiB size.
+>
+> So, keeping U-Boot proper offset start from 128MiB with 1MiB
+> size and then start env of 8KiB would be a compatible location
+> between all variants of flash sizes.
+>
+> This patch add env start from 0x14000 with a size of 8KiB.
+
+You can add my review tag after update this 0x140000 typo.
+
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+
 
 Thanks,
-Robin.
-
-> 
-> Best regards,
-> Jonas
-> 
->>
->> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
->> ---
->>   arch/arm64/boot/dts/rockchip/rk3328.dtsi | 22 ++++++++++++++++++++++
->>   1 file changed, 22 insertions(+)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> index 91306ebed4da..e1b1b4551a8b 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
->> @@ -605,6 +605,28 @@
->>   		clocks = <&cru ACLK_GPU>, <&cru ACLK_GPU>;
->>   		clock-names = "bus", "core";
->>   		resets = <&cru SRST_GPU_A>;
->> +		operating-points-v2 = <&gpu_opp_table>;
->> +	};
->> +
->> +	gpu_opp_table: opp_table1 {
->> +		compatible = "operating-points-v2";
->> +
->> +		opp-200000000 {
->> +			opp-hz = /bits/ 64 <200000000>;
->> +			opp-microvolt = <900000>;
->> +		};
->> +		opp-300000000 {
->> +			opp-hz = /bits/ 64 <300000000>;
->> +			opp-microvolt = <950000>;
->> +		};
->> +		opp-400000000 {
->> +			opp-hz = /bits/ 64 <400000000>;
->> +			opp-microvolt = <1025000>;
->> +		};
->> +		opp-500000000 {
->> +			opp-hz = /bits/ 64 <500000000>;
->> +			opp-microvolt = <1125000>;
->> +		};
->>   	};
->>   
->>   	h265e_mmu: iommu@ff330200 {
-> 
+- Kever
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> ---
+>   env/Kconfig | 3 +++
+>   1 file changed, 3 insertions(+)
+>
+> diff --git a/env/Kconfig b/env/Kconfig
+> index 9416a70022..1bb3e1078e 100644
+> --- a/env/Kconfig
+> +++ b/env/Kconfig
+> @@ -489,6 +489,7 @@ config ENV_OFFSET
+>   	depends on ENV_IS_IN_EEPROM || ENV_IS_IN_MMC || ENV_IS_IN_NAND || \
+>   		    ENV_IS_IN_SPI_FLASH
+>   	default 0x3f8000 if ARCH_ROCKCHIP && ENV_IS_IN_MMC
+> +	default 0x140000 if ARCH_ROCKCHIP && ENV_IS_IN_SPI_FLASH
+>   	default 0x88000 if ARCH_SUNXI
+>   	default 0xE0000 if ARCH_ZYNQ
+>   	default 0x1E00000 if ARCH_ZYNQMP
+> @@ -512,6 +513,7 @@ config ENV_SIZE
+>   	default 0x40000 if ENV_IS_IN_SPI_FLASH && ARCH_ZYNQMP
+>   	default 0x20000 if ARCH_SUNXI || ARCH_ZYNQ || ARCH_OMAP2PLUS || ARCH_AT91
+>   	default 0x8000 if ARCH_ROCKCHIP && ENV_IS_IN_MMC
+> +	default 0x2000 if ARCH_ROCKCHIP && ENV_IS_IN_SPI_FLASH
+>   	default 0x8000 if ARCH_ZYNQMP || ARCH_VERSAL
+>   	default 0x4000 if ARC
+>   	default 0x1f000
+> @@ -521,6 +523,7 @@ config ENV_SIZE
+>   config ENV_SECT_SIZE
+>   	hex "Environment Sector-Size"
+>   	depends on ENV_IS_IN_FLASH || ENV_IS_IN_SPI_FLASH
+> +	default 0x2000 if ARCH_ROCKCHIP
+>   	default 0x40000 if ARCH_ZYNQMP || ARCH_VERSAL
+>   	default 0x20000 if ARCH_ZYNQ || ARCH_OMAP2PLUS || ARCH_AT91
+>   	help
