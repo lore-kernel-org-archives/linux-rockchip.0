@@ -1,51 +1,67 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH 09/11] roc-pc-rk3399: Enable SPI Flash
-Date: Mon, 30 Dec 2019 11:00:26 +0800
-Message-ID: <35014bef-89d6-bd3a-7c7e-2336df3c9f2c@rock-chips.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 10/11] rockpro-rk3399: Enable SPI Flash
+Date: Mon, 30 Dec 2019 11:00:42 +0800
+Message-ID: <07679fa4-495a-8958-14c9-3e65dc679727@rock-chips.com>
 References: <20191221075440.6944-1-jagan@amarulasolutions.com>
- <20191221075440.6944-10-jagan@amarulasolutions.com>
+ <20191221075440.6944-11-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191221075440.6944-10-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20191221075440.6944-11-jagan@amarulasolutions.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula <linux-amarula@amarulasolutions.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMTkvMTIvMjEg5LiL5Y2IMzo1NCwgSmFnYW4gVGVraSB3cm90ZToKPiBFbmFibGUgd2lu
-Ym9uZCBTUEkgZmxhc2ggZm9yIFJPQy1QQy1SSzMzOTkgYm9hcmQuCj4KPiBTaWduZWQtb2ZmLWJ5
-OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KUmV2aWV3ZWQtYnk6IEtl
-dmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+CgpUaGFua3MsCi0gS2V2ZXIKPiAt
-LS0KPiAgIGFyY2gvYXJtL2R0cy9yazMzOTktcm9jLXBjLXUtYm9vdC5kdHNpIHwgNCArKysrCj4g
-ICBjb25maWdzL3JvYy1wYy1yazMzOTlfZGVmY29uZmlnICAgICAgICB8IDIgKysKPiAgIDIgZmls
-ZXMgY2hhbmdlZCwgNiBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vZHRz
-L3JrMzM5OS1yb2MtcGMtdS1ib290LmR0c2kgYi9hcmNoL2FybS9kdHMvcmszMzk5LXJvYy1wYy11
-LWJvb3QuZHRzaQo+IGluZGV4IDc3ZDVjZjVkM2MuLjU3NDY0NDI5ODEgMTAwNjQ0Cj4gLS0tIGEv
-YXJjaC9hcm0vZHRzL3JrMzM5OS1yb2MtcGMtdS1ib290LmR0c2kKPiArKysgYi9hcmNoL2FybS9k
-dHMvcmszMzk5LXJvYy1wYy11LWJvb3QuZHRzaQo+IEBAIC03LDYgKzcsMTAgQEAKPiAgICNpbmNs
-dWRlICJyazMzOTktc2RyYW0tbHBkZHI0LTEwMC5kdHNpIgo+ICAgCj4gICAvIHsKPiArCWFsaWFz
-ZXMgewo+ICsJCXNwaTAgPSAmc3BpMTsKPiArCX07Cj4gKwo+ICAgCWNob3NlbiB7Cj4gICAJCXUt
-Ym9vdCxzcGwtYm9vdC1vcmRlciA9ICJzYW1lLWFzLXNwbCIsICZzZGhjaSwgJnNkbW1jOwo+ICAg
-CX07Cj4gZGlmZiAtLWdpdCBhL2NvbmZpZ3Mvcm9jLXBjLXJrMzM5OV9kZWZjb25maWcgYi9jb25m
-aWdzL3JvYy1wYy1yazMzOTlfZGVmY29uZmlnCj4gaW5kZXggMzA1YmFhNzEyYy4uZjM3YTdiZGEw
-MCAxMDA2NDQKPiAtLS0gYS9jb25maWdzL3JvYy1wYy1yazMzOTlfZGVmY29uZmlnCj4gKysrIGIv
-Y29uZmlncy9yb2MtcGMtcmszMzk5X2RlZmNvbmZpZwo+IEBAIC00Miw2ICs0Miw4IEBAIENPTkZJ
-R19SQU1fUkszMzk5X0xQRERSND15Cj4gICBDT05GSUdfQkFVRFJBVEU9MTUwMDAwMAo+ICAgQ09O
-RklHX0RFQlVHX1VBUlRfU0hJRlQ9Mgo+ICAgQ09ORklHX1NZU1JFU0VUPXkKPiArQ09ORklHX1NQ
-SV9GTEFTSF9XSU5CT05EPXkKPiArQ09ORklHX1JPQ0tDSElQX1NQST15Cj4gICBDT05GSUdfVVNC
-PXkKPiAgIENPTkZJR19VU0JfWEhDSV9IQ0Q9eQo+ICAgQ09ORklHX1VTQl9YSENJX0RXQzM9eQoK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1y
-b2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlw
-Cg==
+
+On 2019/12/21 下午3:54, Jagan Teki wrote:
+> Enable winbond SPI flash for ROC-PC-RK3399 board.
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+
+Thanks,
+- Kever
+> ---
+>   arch/arm/dts/rk3399-rockpro64-u-boot.dtsi | 4 ++++
+>   configs/rockpro64-rk3399_defconfig        | 2 ++
+>   2 files changed, 6 insertions(+)
+>
+> diff --git a/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi b/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
+> index 4648513ea9..deaa3efd39 100644
+> --- a/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
+> +++ b/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
+> @@ -6,6 +6,10 @@
+>   #include "rk3399-u-boot.dtsi"
+>   #include "rk3399-sdram-lpddr4-100.dtsi"
+>   / {
+> +	aliases {
+> +		spi0 = &spi1;
+> +	};
+> +
+>   	chosen {
+>   		u-boot,spl-boot-order = "same-as-spl", &sdmmc, &sdhci;
+>   	};
+> diff --git a/configs/rockpro64-rk3399_defconfig b/configs/rockpro64-rk3399_defconfig
+> index 49e27c91cb..6a50ec7dbc 100644
+> --- a/configs/rockpro64-rk3399_defconfig
+> +++ b/configs/rockpro64-rk3399_defconfig
+> @@ -46,6 +46,8 @@ CONFIG_RAM_RK3399_LPDDR4=y
+>   CONFIG_BAUDRATE=1500000
+>   CONFIG_DEBUG_UART_SHIFT=2
+>   CONFIG_SYSRESET=y
+> +CONFIG_SPI_FLASH_GIGADEVICE=y
+> +CONFIG_ROCKCHIP_SPI=y
+>   CONFIG_USB=y
+>   CONFIG_USB_XHCI_HCD=y
+>   CONFIG_USB_XHCI_DWC3=y
