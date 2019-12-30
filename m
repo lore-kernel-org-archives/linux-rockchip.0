@@ -1,43 +1,51 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH 11/11] roc-rk3399-pc: Add SPI boot support
-Date: Mon, 30 Dec 2019 13:22:42 +0530
-Message-ID: <CAMty3ZA1u3-21QN4N6W=9Sq3n493BBBB2W_FzAEQC9aze4SoMg@mail.gmail.com>
-References: <20191221075440.6944-1-jagan@amarulasolutions.com>
- <20191221075440.6944-12-jagan@amarulasolutions.com>
- <4cc4007b-a55d-f75d-623e-52914795d76b@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2] MAINTAINERS: Track Rockchip PMIC drivers
+Date: Mon, 30 Dec 2019 16:24:09 +0800
+Message-ID: <756eaff6-0ab8-7f41-2fb2-d55057ff4534@rock-chips.com>
+References: <20191224134122.20385-1-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <4cc4007b-a55d-f75d-623e-52914795d76b@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: U-Boot-Denx <u-boot@lists.denx.de>, linux-amarula <linux-amarula@amarulasolutions.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191224134122.20385-1-miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Dec 30, 2019 at 8:35 AM Kever Yang <kever.yang@rock-chips.com> wrot=
-e:
->
->
-> On 2019/12/21 =E4=B8=8B=E5=8D=883:54, Jagan Teki wrote:
-> > Add SPI boot support for ROC-RK3399-PC board.
-> >
-> > This would add separate config file
->
-> What is the key reason to have a new separate config file? I think it
-> would be much better
->
-> to use the same defconfig, spi boot is one of features like other
-> features, it should not need
->
-> a separate config.
-
-Problem is env, we don't have dynamic env pickup I guess, don't we?
+Ck9uIDIwMTkvMTIvMjQg5LiL5Y2IOTo0MSwgTWlxdWVsIFJheW5hbCB3cm90ZToKPiBUaGUgY3Vy
+cmVudCBSb2NrY2hpcCBzZWN0aW9uIG1pc3NlcyBhbGwgdGhlIFBNSUMgcmVsYXRlZCBkcml2ZXJz
+LiBUaGV5Cj4gYXJlIGFsbCBwcmVmaXhlZCByazgqIGFuZCBhcmUgYXMgd2lkZSBhcyBjbGtzLCBy
+ZWd1bGF0b3JzLCBwaW5jdHJsLAo+IFJUQ3MsIGF1ZGlvLCBldGMuCj4KPiBBZGQgYSBkZWRpY2F0
+ZWQgTUFJTlRBSU5FUidzIGVudHJ5Lgo+Cj4gU2lnbmVkLW9mZi1ieTogTWlxdWVsIFJheW5hbCA8
+bWlxdWVsLnJheW5hbEBib290bGluLmNvbT4KPiAtLS0KPgo+IENoYW5nZXMgc2luY2UgdjE6Cj4g
+KiBDcmVhdGUgYSBQTUlDIGVudHJ5IGluIE1BSU5UQUlORVJTLgo+ICogVHJhY2sgZmlsZXMgd2l0
+aCByazggYW5kIG5vdCByazgwLgo+Cj4gICBNQUlOVEFJTkVSUyB8IDExICsrKysrKysrKysrCj4g
+ICAxIGZpbGUgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdpdCBhL01BSU5U
+QUlORVJTIGIvTUFJTlRBSU5FUlMKPiBpbmRleCA5ZDNhNWM1NGE0MWQuLmQzZjgxNDIxMmJhOCAx
+MDA2NDQKPiAtLS0gYS9NQUlOVEFJTkVSUwo+ICsrKyBiL01BSU5UQUlORVJTCj4gQEAgLTEzOTQz
+LDYgKzEzOTQzLDE3IEBAIFM6CU1haW50YWluZWQKPiAgIEY6CWRyaXZlcnMvc3RhZ2luZy9tZWRp
+YS9oYW50cm8vCj4gICBGOglEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEv
+cm9ja2NoaXAtdnB1LnR4dAo+ICAgCj4gK1JPQ0tDSElQIFBNSUMgRFJJVkVSUwo+ICtNOglIZWlr
+byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+ICtMOglsaW51eC1hcm0ta2VybmVsQGxpc3Rz
+LmluZnJhZGVhZC5vcmcgKG1vZGVyYXRlZCBmb3Igbm9uLXN1YnNjcmliZXJzKQo+ICtMOglsaW51
+eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCj4gK1Q6CWdpdCBnaXQ6Ly9naXQua2VybmVs
+Lm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbW1pbmQvbGludXgtcm9ja2NoaXAuZ2l0Cj4g
+K1M6CU1haW50YWluZWQKPiArRjoJRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzLyov
+KnJrOCoKPiArRjoJaW5jbHVkZS8qLyovcms4Kgo+ICtGOglpbmNsdWRlLyovKi8qL3JrOCoKPiAr
+RjoJZHJpdmVycy8qLypyazgqCj4gKwo+ICAgUk9DS0VSIERSSVZFUgo+ICAgTToJSmlyaSBQaXJr
+byA8amlyaUByZXNudWxsaS51cz4KPiAgIEw6CW5ldGRldkB2Z2VyLmtlcm5lbC5vcmcKUmV2aWV3
+ZWQtYnk6IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+CgpUaGFua3MsCi0g
+S2V2ZXIKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
