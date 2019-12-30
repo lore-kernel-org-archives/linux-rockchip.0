@@ -1,236 +1,131 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH 2/2] pwm: Enable compile testing for some of drivers
-Date: Mon, 30 Dec 2019 18:21:13 +0100
-Message-ID: <20191230172113.17222-2-krzk@kernel.org>
-References: <20191230172113.17222-1-krzk@kernel.org>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v12 02/11] media: staging: rkisp1: add Rockchip ISP1
+ base driver
+Date: Mon, 30 Dec 2019 15:13:41 -0300
+Message-ID: <f5e8afbbd46a25b752890880621be95971023f2e.camel@collabora.com>
+References: <20191227200116.2612137-1-helen.koike@collabora.com>
+         <20191227200116.2612137-3-helen.koike@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191230172113.17222-1-krzk@kernel.org>
+In-Reply-To: <20191227200116.2612137-3-helen.koike@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
-Cc: Krzysztof Kozlowski <krzk@kernel.org>
+To: Helen Koike <helen.koike@collabora.com>, linux-rockchip@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, gregkh@linuxfoundation.org, andrey.konovalov@linaro.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, joacim.zetterling@gmail.com, kernel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, linux-arm-kernel@lists.infradead.org, Jacob Chen <jacob2.chen@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Yichong Zhong <zyc@rock-chips.com>, Jacob Chen <cc@rock-chips.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Some of the PWM drivers can be compile tested to increase build
-coverage.
+Hi Helen,
 
-The Meson PWM driver requires COMMON_CLK dependency.
+Just spotted a small thing.
 
-Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
----
- drivers/pwm/Kconfig | 48 +++++++++++++++++++++++----------------------
- 1 file changed, 25 insertions(+), 23 deletions(-)
+On Fri, 2019-12-27 at 17:01 -0300, Helen Koike wrote:
+[..]
+> +static int rkisp1_probe(struct platform_device *pdev)
+> +{
+> +       struct device_node *node = pdev->dev.of_node;
+> +       const struct rkisp1_match_data *clk_data;
+> +       const struct of_device_id *match;
+> +       struct device *dev = &pdev->dev;
+> +       struct rkisp1_device *rkisp1;
+> +       struct v4l2_device *v4l2_dev;
+> +       unsigned int i;
+> +       int ret, irq;
+> +
+> +       match = of_match_node(rkisp1_of_match, node);
+> +       rkisp1 = devm_kzalloc(dev, sizeof(*rkisp1), GFP_KERNEL);
+> +       if (!rkisp1)
+> +               return -ENOMEM;
+> +
+> +       dev_set_drvdata(dev, rkisp1);
+> +       rkisp1->dev = dev;
+> +
+> +       rkisp1_debug_init(rkisp1);
+> +
+> +       rkisp1->base_addr = devm_platform_ioremap_resource(pdev, 0);
+> +       if (IS_ERR(rkisp1->base_addr))
+> +               return PTR_ERR(rkisp1->base_addr);
+> +
+> +       irq = platform_get_irq(pdev, 0);
+> +       if (irq < 0)
+> +               return irq;
+> +
+> +       ret = devm_request_irq(dev, irq, rkisp1_isr, IRQF_SHARED,
+> +                              dev_driver_string(dev), dev);
+> +       if (ret) {
+> +               dev_err(dev, "request irq failed: %d\n", ret);
+> +               return ret;
+> +       }
+> +
+> +       rkisp1->irq = irq;
+> +       clk_data = match->data;
+> +
+> +       for (i = 0; i < clk_data->size; i++)
+> +               rkisp1->clks[i].id = clk_data->clks[i];
+> +       ret = devm_clk_bulk_get(dev, clk_data->size, rkisp1->clks);
+> +       if (ret)
+> +               return ret;
+> +       rkisp1->clk_size = clk_data->size;
+> +
+> +       pm_runtime_enable(&pdev->dev);
+> +
+> +       strscpy(rkisp1->media_dev.model, RKISP1_DRIVER_NAME,
+> +               sizeof(rkisp1->media_dev.model));
+> +       rkisp1->media_dev.dev = &pdev->dev;
+> +       strscpy(rkisp1->media_dev.bus_info,
+> +               "platform: " RKISP1_DRIVER_NAME,
+> +               sizeof(rkisp1->media_dev.bus_info));
+> +       media_device_init(&rkisp1->media_dev);
+> +
+> +       v4l2_dev = &rkisp1->v4l2_dev;
+> +       v4l2_dev->mdev = &rkisp1->media_dev;
+> +       strscpy(v4l2_dev->name, RKISP1_DRIVER_NAME, sizeof(v4l2_dev->name));
+> +
+> +       ret = v4l2_device_register(rkisp1->dev, &rkisp1->v4l2_dev);
+> +       if (ret)
+> +               return ret;
+> +
+> +       ret = media_device_register(&rkisp1->media_dev);
+> +       if (ret) {
+> +               dev_err(dev, "Failed to register media device: %d\n", ret);
+> +               goto err_unreg_v4l2_dev;
+> +       }
+> +
+> +       ret = rkisp1_entities_register(rkisp1);
+> +       if (ret)
+> +               goto err_unreg_media_dev;
+> +
+> +       return 0;
+> +
+> +err_unreg_media_dev:
+> +       media_device_unregister(&rkisp1->media_dev);
+> +err_unreg_v4l2_dev:
+> +       v4l2_device_unregister(&rkisp1->v4l2_dev);
+> +       pm_runtime_disable(&pdev->dev);
 
-diff --git a/drivers/pwm/Kconfig b/drivers/pwm/Kconfig
-index c865d688f6b4..d5661a227321 100644
---- a/drivers/pwm/Kconfig
-+++ b/drivers/pwm/Kconfig
-@@ -44,7 +44,7 @@ config PWM_AB8500
- 
- config PWM_ATMEL
- 	tristate "Atmel PWM support"
--	depends on ARCH_AT91 && OF
-+	depends on (ARCH_AT91 || COMPILE_TEST) && OF
- 	help
- 	  Generic PWM framework driver for Atmel SoC.
- 
-@@ -100,7 +100,7 @@ config PWM_BCM_KONA
- 
- config PWM_BCM2835
- 	tristate "BCM2835 PWM support"
--	depends on ARCH_BCM2835
-+	depends on ARCH_BCM2835 || COMPILE_TEST
- 	help
- 	  PWM framework driver for BCM2835 controller (Raspberry Pi)
- 
-@@ -109,7 +109,7 @@ config PWM_BCM2835
- 
- config PWM_BERLIN
- 	tristate "Marvell Berlin PWM support"
--	depends on ARCH_BERLIN
-+	depends on ARCH_BERLIN || COMPILE_TEST
- 	help
- 	  PWM framework driver for Marvell Berlin SoCs.
- 
-@@ -118,7 +118,7 @@ config PWM_BERLIN
- 
- config PWM_BRCMSTB
- 	tristate "Broadcom STB PWM support"
--	depends on ARCH_BRCMSTB || BMIPS_GENERIC
-+	depends on ARCH_BRCMSTB || BMIPS_GENERIC || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for the Broadcom Set-top-Box
- 	  SoCs (BCM7xxx).
-@@ -152,7 +152,7 @@ config PWM_CROS_EC
- 
- config PWM_EP93XX
- 	tristate "Cirrus Logic EP93xx PWM support"
--	depends on ARCH_EP93XX
-+	depends on ARCH_EP93XX || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for Cirrus Logic EP93xx.
- 
-@@ -195,7 +195,7 @@ config PWM_IMG
- 
- config PWM_IMX1
- 	tristate "i.MX1 PWM support"
--	depends on ARCH_MXC
-+	depends on ARCH_MXC || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for i.MX1 and i.MX21
- 
-@@ -204,7 +204,7 @@ config PWM_IMX1
- 
- config PWM_IMX27
- 	tristate "i.MX27 PWM support"
--	depends on ARCH_MXC
-+	depends on ARCH_MXC || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for i.MX27 and later i.MX SoCs.
- 
-@@ -244,7 +244,7 @@ config PWM_LP3943
- 
- config PWM_LPC18XX_SCT
- 	tristate "LPC18xx/43xx PWM/SCT support"
--	depends on ARCH_LPC18XX
-+	depends on ARCH_LPC18XX || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for NXP LPC18xx PWM/SCT which
- 	  supports 16 channels.
-@@ -256,7 +256,7 @@ config PWM_LPC18XX_SCT
- 
- config PWM_LPC32XX
- 	tristate "LPC32XX PWM support"
--	depends on ARCH_LPC32XX
-+	depends on ARCH_LPC32XX || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for LPC32XX. The LPC32XX SOC has two
- 	  PWM controllers.
-@@ -289,7 +289,8 @@ config PWM_LPSS_PLATFORM
- 
- config PWM_MESON
- 	tristate "Amlogic Meson PWM driver"
--	depends on ARCH_MESON
-+	depends on ARCH_MESON || COMPILE_TEST
-+	depends on COMMON_CLK
- 	help
- 	  The platform driver for Amlogic Meson PWM controller.
- 
-@@ -318,7 +319,7 @@ config PWM_MEDIATEK
- 
- config PWM_MXS
- 	tristate "Freescale MXS PWM support"
--	depends on ARCH_MXS && OF
-+	depends on (ARCH_MXS && OF) || COMPILE_TEST
- 	select STMP_DEVICE
- 	help
- 	  Generic PWM framework driver for Freescale MXS.
-@@ -328,7 +329,8 @@ config PWM_MXS
- 
- config PWM_OMAP_DMTIMER
- 	tristate "OMAP Dual-Mode Timer PWM support"
--	depends on OF && ARCH_OMAP && OMAP_DM_TIMER
-+	depends on (ARCH_OMAP && OMAP_DM_TIMER) || COMPILE_TEST
-+	depends on OF
- 	help
- 	  Generic PWM framework driver for OMAP Dual-Mode Timer PWM output
- 
-@@ -356,7 +358,7 @@ config PWM_PUV3
- 
- config PWM_PXA
- 	tristate "PXA PWM support"
--	depends on ARCH_PXA
-+	depends on ARCH_PXA || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for PXA.
- 
-@@ -387,14 +389,14 @@ config PWM_RENESAS_TPU
- 
- config PWM_ROCKCHIP
- 	tristate "Rockchip PWM support"
--	depends on ARCH_ROCKCHIP
-+	depends on ARCH_ROCKCHIP || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for the PWM controller found on
- 	  Rockchip SoCs.
- 
- config PWM_SAMSUNG
- 	tristate "Samsung PWM support"
--	depends on PLAT_SAMSUNG || ARCH_EXYNOS
-+	depends on PLAT_SAMSUNG || ARCH_EXYNOS || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for Samsung.
- 
-@@ -414,7 +416,7 @@ config PWM_SIFIVE
- 
- config PWM_SPEAR
- 	tristate "STMicroelectronics SPEAr PWM support"
--	depends on PLAT_SPEAR
-+	depends on PLAT_SPEAR || COMPILE_TEST
- 	depends on OF
- 	help
- 	  Generic PWM framework driver for the PWM controller on ST
-@@ -436,7 +438,7 @@ config PWM_SPRD
- 
- config PWM_STI
- 	tristate "STiH4xx PWM support"
--	depends on ARCH_STI
-+	depends on ARCH_STI || COMPILE_TEST
- 	depends on OF
- 	help
- 	  Generic PWM framework driver for STiH4xx SoCs.
-@@ -446,7 +448,7 @@ config PWM_STI
- 
- config PWM_STM32
- 	tristate "STMicroelectronics STM32 PWM"
--	depends on MFD_STM32_TIMERS
-+	depends on MFD_STM32_TIMERS || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for STM32 SoCs.
- 
-@@ -482,7 +484,7 @@ config PWM_SUN4I
- 
- config PWM_TEGRA
- 	tristate "NVIDIA Tegra PWM support"
--	depends on ARCH_TEGRA
-+	depends on ARCH_TEGRA || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for the PWFM controller found on NVIDIA
- 	  Tegra SoCs.
-@@ -492,7 +494,7 @@ config PWM_TEGRA
- 
- config PWM_TIECAP
- 	tristate "ECAP PWM support"
--	depends on ARCH_OMAP2PLUS || ARCH_DAVINCI_DA8XX || ARCH_KEYSTONE || ARCH_K3
-+	depends on ARCH_OMAP2PLUS || ARCH_DAVINCI_DA8XX || ARCH_KEYSTONE || ARCH_K3 || COMPILE_TEST
- 	help
- 	  PWM driver support for the ECAP APWM controller found on TI SOCs
- 
-@@ -501,7 +503,7 @@ config PWM_TIECAP
- 
- config PWM_TIEHRPWM
- 	tristate "EHRPWM PWM support"
--	depends on ARCH_OMAP2PLUS || ARCH_DAVINCI_DA8XX || ARCH_K3
-+	depends on ARCH_OMAP2PLUS || ARCH_DAVINCI_DA8XX || ARCH_K3 || COMPILE_TEST
- 	help
- 	  PWM driver support for the EHRPWM controller found on TI SOCs
- 
-@@ -528,7 +530,7 @@ config PWM_TWL_LED
- 
- config PWM_VT8500
- 	tristate "vt8500 PWM support"
--	depends on ARCH_VT8500
-+	depends on ARCH_VT8500 || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for vt8500.
- 
-@@ -537,7 +539,7 @@ config PWM_VT8500
- 
- config PWM_ZX
- 	tristate "ZTE ZX PWM support"
--	depends on ARCH_ZX
-+	depends on ARCH_ZX || COMPILE_TEST
- 	help
- 	  Generic PWM framework driver for ZTE ZX family SoCs.
- 
--- 
-2.17.1
+There's a missing call to debugfs_remove_recursive here.
+
+> +       return ret;
+> +}
+> +
+> +static int rkisp1_remove(struct platform_device *pdev)
+> +{
+> +       struct rkisp1_device *rkisp1 = platform_get_drvdata(pdev);
+> +
+> +       v4l2_async_notifier_unregister(&rkisp1->notifier);
+> +       v4l2_async_notifier_cleanup(&rkisp1->notifier);
+> +
+> +       rkisp1_isp_unregister(rkisp1);
+> +
+> +       media_device_unregister(&rkisp1->media_dev);
+> +       v4l2_device_unregister(&rkisp1->v4l2_dev);
+> +
+> +       pm_runtime_disable(&pdev->dev);
+> +
+> +       debugfs_remove_recursive(rkisp1->debug.debugfs_dir);
+> +       return 0;
+> +}
+> +
+
+Thanks,
+Ezequiel
