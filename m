@@ -1,198 +1,60 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v5 7/7] doc: boards: Add rockchip documentation
-Date: Mon, 30 Dec 2019 13:58:19 +0530
-Message-ID: <20191230082819.30191-8-jagan@amarulasolutions.com>
-References: <20191230082819.30191-1-jagan@amarulasolutions.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 15/32] pwm: rockchip: convert to
+ devm_platform_ioremap_resource
+Date: Mon, 30 Dec 2019 09:39:38 +0100
+Message-ID: <3343090.K8KIS9te04@phil>
+References: <20191229080610.7597-1-tiny.windzz@gmail.com>
+ <20191229080610.7597-15-tiny.windzz@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191230082819.30191-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191229080610.7597-15-tiny.windzz@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Yangtao Li <tiny.windzz@gmail.com>
+Cc: alexandre.belloni@bootlin.com, linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, thierry.reding@gmail.com, linux-riscv@lists.infradead.org, festevam@gmail.com, f.fainelli@gmail.com, shc_work@mail.ru, khilman@baylibre.com, wens@csie.org, jonathanh@nvidia.com, linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com, bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com, slemieux.tyco@gmail.com, linux-pwm@vger.kernel.org, rjui@broadcom.com, s.hauer@pengutronix.de, u.kleine-koenig@pengutronix.de, mripard@kernel.org, vz@mleia.com, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, paul.walmsley@sifive.com, matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, sbranden@broadcom.com, linux@prisktech.co.nz, palmer@dabbelt.com, kernel@pengutronix.de, shawnguo@kernel.org, claudiu.beznea@micro
 List-Id: linux-rockchip.vger.kernel.org
 
-Rockchip has documentation file, doc/README.rockchip but
-which is not so readable to add or understand the existing
-contents. Even the format that support is legacy readme
-in U-Boot.
+Am Sonntag, 29. Dezember 2019, 09:05:53 CET schrieb Yangtao Li:
+> Use devm_platform_ioremap_resource() to simplify code.
+> 
+> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 
-Add rockchip specific documentation file using new rst
-format, which describes the information about Rockchip
-supported boards and it's usage steps.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-Added minimal information about rk3288, rk3328, rk3368
-and rk3399 boards and usage. This would indeed updated
-further based on the requirements and updates.
 
-Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Matwey V. Kornilov <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- doc/board/rockchip/index.rst    |  10 +++
- doc/board/rockchip/rockchip.rst | 128 ++++++++++++++++++++++++++++++++
- 2 files changed, 138 insertions(+)
- create mode 100644 doc/board/rockchip/index.rst
- create mode 100644 doc/board/rockchip/rockchip.rst
-
-diff --git a/doc/board/rockchip/index.rst b/doc/board/rockchip/index.rst
-new file mode 100644
-index 0000000000..0c377e9bbb
---- /dev/null
-+++ b/doc/board/rockchip/index.rst
-@@ -0,0 +1,10 @@
-+.. SPDX-License-Identifier: GPL-2.0+
-+.. Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+
-+Rockchip
-+========
-+
-+.. toctree::
-+   :maxdepth: 2
-+
-+   rockchip
-diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
-new file mode 100644
-index 0000000000..625155e432
---- /dev/null
-+++ b/doc/board/rockchip/rockchip.rst
-@@ -0,0 +1,128 @@
-+.. SPDX-License-Identifier: GPL-2.0+
-+.. Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+
-+ROCKCHIP
-+========
-+
-+About this
-+----------
-+
-+This document describes the information about Rockchip supported boards
-+and it's usage steps.
-+
-+Rockchip boards
-+---------------
-+
-+Rockchip is SoC solutions provider for tablets & PCs, streaming media
-+TV boxes, AI audio & vision, IoT hardware.
-+
-+A wide range of Rockchip SoCs with associated boardsare supported in
-+mainline U-Boot.
-+
-+List of mainline supported rockchip boards:
-+
-+* rk3288
-+     - Evb-RK3288
-+     - Firefly-RK3288
-+     - mqmaker MiQi
-+     - Phytec RK3288 PCM-947
-+     - PopMetal-RK3288
-+     - Radxa Rock 2 Square
-+     - Tinker-RK3288
-+     - Google Jerry
-+     - Google Mickey
-+     - Google Minnie
-+     - Google Speedy
-+     - Amarula Vyasa-RK3288
-+* rk3328
-+     - Rockchip RK3328 EVB
-+     - Pine64 Rock64
-+* rk3368
-+     - GeekBox
-+     - PX5 EVB
-+     - Rockchip sheep board
-+     - Theobroma Systems RK3368-uQ7 SoM
-+* rk3399
-+     - 96boards RK3399 Ficus
-+     - 96boards Rock960
-+     - Firefly-RK3399 Board
-+     - Firefly ROC-RK3399-PC Board
-+     - FriendlyElec NanoPC-T4
-+     - FriendlyElec NanoPi M4
-+     - FriendlyARM NanoPi NEO4
-+     - Google Bob
-+     - Khadas Edge
-+     - Khadas Edge-Captain
-+     - Khadas Edge-V
-+     - Orange Pi RK3399 Board
-+     - Pine64 RockPro64
-+     - Radxa ROCK Pi 4
-+     - Rockchip RK3399 Evaluation Board
-+     - Theobroma Systems RK3399-Q7 SoM
-+
-+Building
-+--------
-+
-+TF-A
-+^^^^
-+
-+TF-A would require to build for ARM64 Rockchip SoCs platforms.
-+
-+To build TF-A::
-+
-+        git clone https://github.com/ARM-software/arm-trusted-firmware.git
-+        cd arm-trusted-firmware
-+        make realclean
-+        make CROSS_COMPILE=aarch64-linux-gnu- PLAT=rk3399
-+
-+Specify the PLAT= with desired rockchip platform to build TF-A for.
-+
-+U-Boot
-+^^^^^^
-+
-+To build rk3328 boards::
-+
-+        export BL31=/path/to/arm-trusted-firmware/to/bl31.elf
-+        make evb-rk3328_defconfig
-+        make
-+
-+To build rk3288 boards::
-+
-+        make evb-rk3288_defconfig
-+        make
-+
-+To build rk3368 boards::
-+
-+        export BL31=/path/to/arm-trusted-firmware/to/bl31.elf
-+        make evb-px5_defconfig
-+        make
-+
-+To build rk3399 boards::
-+
-+        export BL31=/path/to/arm-trusted-firmware/to/bl31.elf
-+        make evb-rk3399_defconfig
-+        make
-+
-+Flashing
-+--------
-+
-+SD Card
-+^^^^^^^
-+
-+All rockchip platforms, except rk3128 (which doesn't use SPL) are now
-+supporting single boot image using binman and pad_cat.
-+
-+To write an image that boots from an SD card (assumed to be /dev/sda)::
-+
-+        sudo dd if=u-boot-rockchip.bin of=/dev/sda seek=64
-+        sync
-+
-+TODO
-+----
-+
-+- Add rockchip idbloader image building
-+- Describe steps for eMMC flashing
-+- Add missing SoC's with it boards list
-+
-+.. Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+.. Thu Oct 17 22:36:14 IST 2019
--- 
-2.18.0.321.gffc6fa0e3
+> ---
+>  drivers/pwm/pwm-rockchip.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
+> index 73352e6fbccb..f0549b82338d 100644
+> --- a/drivers/pwm/pwm-rockchip.c
+> +++ b/drivers/pwm/pwm-rockchip.c
+> @@ -292,7 +292,6 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+>  {
+>  	const struct of_device_id *id;
+>  	struct rockchip_pwm_chip *pc;
+> -	struct resource *r;
+>  	int ret, count;
+>  
+>  	id = of_match_device(rockchip_pwm_dt_ids, &pdev->dev);
+> @@ -303,8 +302,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+>  	if (!pc)
+>  		return -ENOMEM;
+>  
+> -	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> -	pc->base = devm_ioremap_resource(&pdev->dev, r);
+> +	pc->base = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(pc->base))
+>  		return PTR_ERR(pc->base);
+>  
+> 
