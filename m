@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v5 3/7] Makefile: rockchip: Support SPL-alone mkimage
-Date: Mon, 30 Dec 2019 13:58:15 +0530
-Message-ID: <20191230082819.30191-4-jagan@amarulasolutions.com>
+Subject: [PATCH v5 4/7] Makefile: rockchip: Use u-boot preferred spl name
+Date: Mon, 30 Dec 2019 13:58:16 +0530
+Message-ID: <20191230082819.30191-5-jagan@amarulasolutions.com>
 References: <20191230082819.30191-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,50 +21,69 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add SPL-alone mkimage tooling support via Makefile for
-few platforms or boards used in rockchip family.
+Most of the platforms uses the platform type and particular
+boot stage on their image naming conventions in makefile
+like,
 
-With this users would get rid of explicitly creating
-mkimage tool for rockchip rksd or rkspi boot modes.
+u-boot-sunxi-with-spl.bin - Allwinner U-Boot with SPL
+u-boot-spl-mtk.bin - Mediatek SPL bin
+
+This would help to understand the users to what that
+particular image belongs to? and less confused.
+
+On that note, use u-boot-spl-rockchip.bin instead of
+idbloader.img. idbloader.img is still a proper naming
+for rockchip external documentation but u-boot preferred
+spl name would always good choice in upstream tree.
+
+Also, bin is more conventional way to include it on tools
+like binman, pad_cat etc in future patches.
+
+Note: usage of platform type, boot stage doesn't follow
+consistent oder as of now.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- Makefile | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ Makefile | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index e519103be4..d8a0f68883 100644
+index d8a0f68883..b48693e560 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -908,7 +908,7 @@ ifeq ($(CONFIG_MPC85xx)$(CONFIG_OF_SEPARATE),yy)
- ALL-y += u-boot-with-dtb.bin
+@@ -909,7 +909,7 @@ ALL-y += u-boot-with-dtb.bin
  endif
  
--ifeq ($(CONFIG_ARCH_ROCKCHIP)$(CONFIG_SPL)$(CONFIG_TPL),yyy)
-+ifeq ($(CONFIG_ARCH_ROCKCHIP)$(CONFIG_SPL),yy)
- ALL-y += idbloader.img
+ ifeq ($(CONFIG_ARCH_ROCKCHIP)$(CONFIG_SPL),yy)
+-ALL-y += idbloader.img
++ALL-y += u-boot-spl-rockchip.bin
  endif
  
-@@ -1382,11 +1382,19 @@ else
- ROCKCHIP_IMG_TYPE := rksd
- endif
- 
-+# TPL + SPL
-+ifeq ($(CONFIG_SPL)$(CONFIG_TPL),yy)
+ LDFLAGS_u-boot += $(LDFLAGS_FINAL)
+@@ -1387,11 +1387,11 @@ ifeq ($(CONFIG_SPL)$(CONFIG_TPL),yy)
  MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
  tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
  	$(call if_changed,mkimage)
- idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
+-idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
++u-boot-spl-rockchip.bin: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
  	$(call if_changed,cat)
-+else
-+MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
-+idbloader.img: spl/u-boot-spl.bin FORCE
-+	$(call if_changed,mkimage)
-+endif
-+
+ else
+-MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
+-idbloader.img: spl/u-boot-spl.bin FORCE
++MKIMAGEFLAGS_u-boot-spl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
++u-boot-spl-rockchip.bin: spl/u-boot-spl.bin FORCE
+ 	$(call if_changed,mkimage)
  endif
  
- ifeq ($(CONFIG_ARCH_LPC32XX)$(CONFIG_SPL),yy)
+@@ -1943,8 +1943,7 @@ CLEAN_DIRS  += $(MODVERDIR) \
+ CLEAN_FILES += include/bmp_logo.h include/bmp_logo_data.h tools/version.h \
+ 	       boot* u-boot* MLO* SPL System.map fit-dtb.blob* \
+ 	       u-boot-ivt.img.log u-boot-dtb.imx.log SPL.log u-boot.imx.log \
+-	       lpc32xx-* bl31.c bl31.elf bl31_*.bin image.map tispl.bin* \
+-	       idbloader.img
++	       lpc32xx-* bl31.c bl31.elf bl31_*.bin image.map tispl.bin*
+ 
+ # Directories & files removed with 'make mrproper'
+ MRPROPER_DIRS  += include/config include/generated spl tpl \
 -- 
 2.18.0.321.gffc6fa0e3
