@@ -1,56 +1,48 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 04/11] rk3399: Add boot flash script offet, size
-Date: Mon, 30 Dec 2019 11:06:41 +0800
-Message-ID: <0e99c721-5f46-58bb-a14a-961ce6c11691@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 03/11] rockchip: Include SF on distrocmd devices
+Date: Mon, 30 Dec 2019 11:07:04 +0800
+Message-ID: <b3a2f160-abc4-fe3f-a340-37791f6ae6dd@rock-chips.com>
 References: <20191221075440.6944-1-jagan@amarulasolutions.com>
- <20191221075440.6944-5-jagan@amarulasolutions.com>
+ <20191221075440.6944-4-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20191221075440.6944-5-jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191221075440.6944-4-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, linux-amarula <linux-amarula@amarulasolutions.com>, linux-rockchip@lists.infradead.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2019/12/21 下午3:54, Jagan Teki wrote:
-> Most of the SPI flash devices in rockchip (rk3399)
-> are 16MiB size. So, let's use the script offset at
-> the end of 8K.
->
-> This way it cannot overlap any offsets being used
-> by software components in flash layout.
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
-> ---
->   include/configs/rk3399_common.h | 2 ++
->   1 file changed, 2 insertions(+)
->
-> diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
-> index 127ca1f09c..92eb5cb750 100644
-> --- a/include/configs/rk3399_common.h
-> +++ b/include/configs/rk3399_common.h
-> @@ -48,6 +48,8 @@
->   
->   #define ENV_MEM_LAYOUT_SETTINGS \
->   	"scriptaddr=0x00500000\0" \
-> +	"script_offset_f=0xffe000\0" \
-> +	"script_size_f=0x2000\0" \
->   	"pxefile_addr_r=0x00600000\0" \
->   	"fdt_addr_r=0x01f00000\0" \
->   	"kernel_addr_r=0x02080000\0" \
+Ck9uIDIwMTkvMTIvMjEg5LiL5Y2IMzo1NCwgSmFnYW4gVGVraSB3cm90ZToKPiBJbmNsdWRlIHRo
+ZSBTUEkgZmxhc2ggZGV2aWNlIG9uIGRpc3RybyBib290IHRhcmdldHMuCj4KPiBJbmNsdWRlZCBh
+dCB0aGUgYmVnaW5uaW5nIG9mIHRoZSB0YXJnZXQgZGV2aWNlcyBsaXN0Cj4gc2luY2UgdGhlIHJv
+Y2tjaGlwIHBsYXRmb3JtIGhhcyBhIGJvb3Qgb3JkZXIgc3RhcnQKPiBmcm9tIFNQSSBGbGFzaC4K
+Pgo+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29t
+PgpSZXZpZXdlZC1ieTogS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KClRo
+YW5rcywKLSBLZXZlcgo+IC0tLQo+ICAgaW5jbHVkZS9jb25maWdzL3JvY2tjaGlwLWNvbW1vbi5o
+IHwgNyArKysrKysrCj4gICAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspCj4KPiBkaWZm
+IC0tZ2l0IGEvaW5jbHVkZS9jb25maWdzL3JvY2tjaGlwLWNvbW1vbi5oIGIvaW5jbHVkZS9jb25m
+aWdzL3JvY2tjaGlwLWNvbW1vbi5oCj4gaW5kZXggNjhlMTEwNWE0Yi4uNGU2ZDZlOThkOSAxMDA2
+NDQKPiAtLS0gYS9pbmNsdWRlL2NvbmZpZ3Mvcm9ja2NoaXAtY29tbW9uLmgKPiArKysgYi9pbmNs
+dWRlL2NvbmZpZ3Mvcm9ja2NoaXAtY29tbW9uLmgKPiBAQCAtMTEsNiArMTEsMTIgQEAKPiAgIAo+
+ICAgI2lmbmRlZiBDT05GSUdfU1BMX0JVSUxECj4gICAKPiArI2lmIENPTkZJR19JU19FTkFCTEVE
+KENNRF9TRikKPiArIyBkZWZpbmUgQk9PVF9UQVJHRVRfU0YoZnVuYykgZnVuYyhTRiwgc2YsIDAp
+Cj4gKyNlbHNlCj4gKyMgZGVmaW5lIEJPT1RfVEFSR0VUX1NGKGZ1bmMpCj4gKyNlbmRpZgo+ICsK
+PiAgIC8qIEZpcnN0IHRyeSB0byBib290IGZyb20gU0QgKGluZGV4IDApLCB0aGVuIGVNTUMgKGlu
+ZGV4IDEpICovCj4gICAjaWYgQ09ORklHX0lTX0VOQUJMRUQoQ01EX01NQykKPiAgIAkjZGVmaW5l
+IEJPT1RfVEFSR0VUX01NQyhmdW5jKSBcCj4gQEAgLTM5LDYgKzQ1LDcgQEAKPiAgICNlbmRpZgo+
+ICAgCj4gICAjZGVmaW5lIEJPT1RfVEFSR0VUX0RFVklDRVMoZnVuYykgXAo+ICsJQk9PVF9UQVJH
+RVRfU0YoZnVuYykgXAo+ICAgCUJPT1RfVEFSR0VUX01NQyhmdW5jKSBcCj4gICAJQk9PVF9UQVJH
+RVRfVVNCKGZ1bmMpIFwKPiAgIAlCT09UX1RBUkdFVF9QWEUoZnVuYykgXAoKCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
+aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
