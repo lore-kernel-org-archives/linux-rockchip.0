@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v5 1/7] Makefile: Add rockchip image type
-Date: Mon, 30 Dec 2019 13:58:13 +0530
-Message-ID: <20191230082819.30191-2-jagan@amarulasolutions.com>
+Subject: [PATCH v5 5/7] arm: dts: rk3036: Add rk3036-u-boot.dtsi
+Date: Mon, 30 Dec 2019 13:58:17 +0530
+Message-ID: <20191230082819.30191-6-jagan@amarulasolutions.com>
 References: <20191230082819.30191-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,41 +18,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add rockchip image type support. right now the image
-type marked with rksd, So create image type variable
-with required image type like rksd or rkspi.
+Add U-Boot specific dtsi file for rk3036 SoC. This
+would help to add U-Boot specific dts nodes, properties
+which are common across rk3036.
 
-Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Matwey V. Kornilov <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Right now, the file is empty, will add required changes
+in future patches.
+
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- Makefile | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ arch/arm/dts/rk3036-sdk-u-boot.dtsi | 2 ++
+ arch/arm/dts/rk3036-u-boot.dtsi     | 4 ++++
+ 2 files changed, 6 insertions(+)
+ create mode 100644 arch/arm/dts/rk3036-u-boot.dtsi
 
-diff --git a/Makefile b/Makefile
-index e20a206239..9998d238f3 100644
---- a/Makefile
-+++ b/Makefile
-@@ -1374,7 +1374,15 @@ u-boot-with-spl.bin: $(SPL_IMAGE) $(SPL_PAYLOAD) FORCE
- 	$(call if_changed,pad_cat)
- 
- ifeq ($(CONFIG_ARCH_ROCKCHIP),y)
--MKIMAGEFLAGS_u-boot-tpl.img = -n $(CONFIG_SYS_SOC) -T rksd
+diff --git a/arch/arm/dts/rk3036-sdk-u-boot.dtsi b/arch/arm/dts/rk3036-sdk-u-boot.dtsi
+index 6f15f4a8ec..754800c6e6 100644
+--- a/arch/arm/dts/rk3036-sdk-u-boot.dtsi
++++ b/arch/arm/dts/rk3036-sdk-u-boot.dtsi
+@@ -1,3 +1,5 @@
++#include "rk3036-u-boot.dtsi"
 +
-+# rockchip image type
-+ifeq ($(CONFIG_SPI_FLASH_SUPPORT),y)
-+ROCKCHIP_IMG_TYPE := rkspi
-+else
-+ROCKCHIP_IMG_TYPE := rksd
-+endif
-+
-+MKIMAGEFLAGS_u-boot-tpl.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
- tpl/u-boot-tpl.img: tpl/u-boot-tpl.bin FORCE
- 	$(call if_changed,mkimage)
- idbloader.img: tpl/u-boot-tpl.img spl/u-boot-spl.bin FORCE
+ &uart2 {
+ 	u-boot,dm-pre-reloc;
+ };
+diff --git a/arch/arm/dts/rk3036-u-boot.dtsi b/arch/arm/dts/rk3036-u-boot.dtsi
+new file mode 100644
+index 0000000000..1e7d079315
+--- /dev/null
++++ b/arch/arm/dts/rk3036-u-boot.dtsi
+@@ -0,0 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
 -- 
 2.18.0.321.gffc6fa0e3
