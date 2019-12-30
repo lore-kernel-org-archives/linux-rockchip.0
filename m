@@ -1,78 +1,299 @@
-From: Emmanuel Vadot <manu-xXdDKFdH5B3kFDPD4ZthVA@public.gmane.org>
-Subject: Re: [PATCH 10/11] rockpro-rk3399: Enable SPI Flash
-Date: Mon, 30 Dec 2019 12:51:34 +0100
-Message-ID: <20191230125134.189ba860e7fc99b4ad2f1def@bidouilliste.com>
-References: <20191221075440.6944-1-jagan@amarulasolutions.com>
- <20191221075440.6944-11-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191221075440.6944-11-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+From: Akash Gajjar <akash@openedev.com>
+Subject: [PATCH V3, 1/1] arm64: dts: rockchip: add ROCK Pi S DTS support
+Date: Mon, 30 Dec 2019 20:19:32 +0530
+Message-ID: <20191230145008.5899-1-akash@openedev.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: jagan@openedev.com, tom@radxa.com, Akash Gajjar <akash@openedev.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Andy Yan <andy.yan@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, Douglas Anderson <dianders@chromium.org>, Vivek Unune <npcomplete13@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Markus Reichl <m.reichl@fivetechno.de>, Jagan Teki <jagan@amarulasolutions.com>, Nick Xie <nick@khadas.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+ROCK Pi S is RK3308 based SBC from radxa.com. ROCK Pi S has a,
+- 256MB/512MB DDR3 RAM
+- SD, NAND flash (optional on board 1/2/4/8Gb)
+- 100MB ethernet, PoE (optional)
+- Onboard 802.11 b/g/n wifi + Bluetooth 4.0 Module
+- USB2.0 Type-A HOST x1
+- USB3.0 Type-C OTG x1
+- 26-pin expansion header
+- USB Type-C DC 5V Power Supply
 
- Hi Jagan,
+This patch enables
+- Console
+- NAND Flash
+- SD Card
 
-On Sat, 21 Dec 2019 13:24:39 +0530
-Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org> wrote:
+Signed-off-by: Akash Gajjar <akash@openedev.com>
+---
+Changes for v2
+- Use pwm-supply for vdd_core node instead of vi-supply
+- Add USB2.0 node support
+ 
+Changes for v3
+- Use small S on dts file name
+- Add missing semicolon
+- Remove USB2.0 node support
 
-> Enable winbond SPI flash for ROC-PC-RK3399 board.
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 221 ++++++++++++++++++
+ 3 files changed, 227 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
 
- s/ROC-PC-RK3399/RockPro64/
-
-> 
-> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> ---
->  arch/arm/dts/rk3399-rockpro64-u-boot.dtsi | 4 ++++
->  configs/rockpro64-rk3399_defconfig        | 2 ++
->  2 files changed, 6 insertions(+)
-> 
-> diff --git a/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi b/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
-> index 4648513ea9..deaa3efd39 100644
-> --- a/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
-> +++ b/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
-> @@ -6,6 +6,10 @@
->  #include "rk3399-u-boot.dtsi"
->  #include "rk3399-sdram-lpddr4-100.dtsi"
->  / {
-> +	aliases {
-> +		spi0 = &spi1;
-
- That looks weird ... what's the point of this alias exactly ?
-
-> +	};
-> +
->  	chosen {
->  		u-boot,spl-boot-order = "same-as-spl", &sdmmc, &sdhci;
->  	};
-> diff --git a/configs/rockpro64-rk3399_defconfig b/configs/rockpro64-rk3399_defconfig
-> index 49e27c91cb..6a50ec7dbc 100644
-> --- a/configs/rockpro64-rk3399_defconfig
-> +++ b/configs/rockpro64-rk3399_defconfig
-> @@ -46,6 +46,8 @@ CONFIG_RAM_RK3399_LPDDR4=y
->  CONFIG_BAUDRATE=1500000
->  CONFIG_DEBUG_UART_SHIFT=2
->  CONFIG_SYSRESET=y
-> +CONFIG_SPI_FLASH_GIGADEVICE=y
-> +CONFIG_ROCKCHIP_SPI=y
->  CONFIG_USB=y
->  CONFIG_USB_XHCI_HCD=y
->  CONFIG_USB_XHCI_DWC3=y
-> -- 
-> 2.18.0.321.gffc6fa0e3
-
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index d9847b306b83..48d40c928d45 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -422,6 +422,11 @@ properties:
+           - const: radxa,rockpi4
+           - const: rockchip,rk3399
+ 
++      - description: Radxa ROCK Pi S
++        items:
++          - const: radxa,rockpis
++          - const: rockchip,rk3308
++
+       - description: Radxa Rock2 Square
+         items:
+           - const: radxa,rock2-square
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 48fb631d5451..e56a5527bab4 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -2,6 +2,7 @@
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-rock-pi-s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+new file mode 100644
+index 000000000000..4fccae43f008
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+@@ -0,0 +1,221 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2019 Akash Gajjar <akash@openedev.com>
++ * Copyright (c) 2019 Jagan Teki <jagan@openedev.com>
++ */
++
++/dts-v1/;
++#include "rk3308.dtsi"
++
++/ {
++	model = "Radxa ROCK Pi S";
++	compatible = "radxa,rockpis", "rockchip,rk3308";
++
++	chosen {
++		stdout-path = "serial0:1500000n8";
++	};
++
++	leds {
++		compatible = "gpio-leds";
++		pinctrl-names = "default";
++		pinctrl-0 = <&green_led_gio>, <&heartbeat_led_gpio>;
++
++		green-led {
++			label = "rockpis:green:power";
++			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "default-on";
++			default-state = "on";
++		};
++
++		blue-led {
++			label = "rockpis:blue:user";
++			gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
++			default-state = "on";
++			linux,default-trigger = "heartbeat";
++		};
++	};
++
++	sdio_pwrseq: sdio-pwrseq {
++		compatible = "mmc-pwrseq-simple";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_enable_h>;
++		reset-gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_LOW>;
++	};
++
++	vcc5v0_sys: vcc5v0-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++
++	vdd_core: vdd-core {
++		compatible = "pwm-regulator";
++		pwms = <&pwm0 0 5000 1>;
++		regulator-name = "vdd_core";
++		regulator-min-microvolt = <827000>;
++		regulator-max-microvolt = <1340000>;
++		regulator-init-microvolt = <1015000>;
++		regulator-settling-time-up-us = <250>;
++		regulator-always-on;
++		regulator-boot-on;
++		pwm-supply = <&vcc5v0_sys>;
++	};
++
++	vdd_log: vdd-log {
++		compatible = "regulator-fixed";
++		regulator-name = "vdd_log";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1050000>;
++		regulator-max-microvolt = <1050000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc_ddr: vcc-ddr {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_ddr";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1500000>;
++		regulator-max-microvolt = <1500000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc_1v8: vcc-1v8 {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_1v8";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		vin-supply = <&vcc_io>;
++	};
++
++	vcc_io: vcc-io {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_io";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++
++	vcc5v0_otg: vcc5v0-otg {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_otg";
++		regulator-always-on;
++		gpio = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
++		enable-active-high;
++		pinctrl-names = "default";
++		pinctrl-0 = <&otg_vbus_drv>;
++		vin-supply = <&vcc5v0_sys>;
++	};
++};
++
++&cpu0 {
++	cpu-supply = <&vdd_core>;
++};
++
++&emmc {
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	supports-sd;
++	disable-wp;
++	non-removable;
++	num-slots = <1>;
++	vin-supply = <&vcc_io>;
++	status = "okay";
++};
++
++&i2c1 {
++	status = "okay";
++};
++
++&sdmmc {
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	max-frequeency = <150000000>;
++	supports-sd;
++	disable-wp;
++	num-slots = <1>;
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_det &sdmmc_bus4>;
++	card-detect-delay = <800>;
++	status = "okay";
++};
++
++&spi2 {
++	status = "okay";
++	max-freq = <10000000>;
++};
++
++&pinctrl {
++	pinctrl-names = "default";
++	pinctrl-0 = <&rtc_32k>;
++
++	leds {
++		green_led_gio: green-led-gpio {
++			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		heartbeat_led_gpio: heartbeat-led-gpio {
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	usb {
++		otg_vbus_drv: otg-vbus-drv {
++			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	sdio-pwrseq {
++		wifi_enable_h: wifi-enable-h {
++			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
++		wifi_host_wake: wifi-host-wake {
++			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++	};
++};
++
++&pwm0 {
++	status = "okay";
++	pinctrl-0 = <&pwm0_pin_pull_down>;
++};
++
++&saradc {
++	vref-supply = <&vcc_1v8>;
++	status = "okay";
++};
++
++&sdio {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	bus-width = <4>;
++	max-frequency = <1000000>;
++	cap-sd-highspeed;
++	cap-sdio-irq;
++	supports-sdio;
++	keep-power-in-suspend;
++	mmc-pwrseq = <&sdio_pwrseq>;
++	non-removable;
++	sd-uhs-sdr104;
++	status = "okay";
++};
++
++&uart0 {
++	status = "okay";
++};
++
++&uart4 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&uart4_xfer &uart4_rts &uart4_cts>;
++	status = "okay";
++};
 -- 
-Emmanuel Vadot <manu-xXdDKFdH5B3kFDPD4ZthVA@public.gmane.org>
+2.17.1
