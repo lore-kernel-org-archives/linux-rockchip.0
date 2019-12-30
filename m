@@ -1,11 +1,13 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v5 0/7] rockchip: Add Binman support
-Date: Mon, 30 Dec 2019 13:58:12 +0530
-Message-ID: <20191230082819.30191-1-jagan@amarulasolutions.com>
+Subject: [PATCH v5 2/7] Makefile: rockchip: Suffix platform type with tpl name
+Date: Mon, 30 Dec 2019 13:58:14 +0530
+Message-ID: <20191230082819.30191-3-jagan@amarulasolutions.com>
+References: <20191230082819.30191-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191230082819.30191-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,60 +21,47 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This is v5 set for Binman support in rockchip, [1] here is
-previous patchset.
+Most of the platforms uses the platform type on their boot
+stage image naming conventions in makefile like,
 
-This series add single boot image with binman for arm32 and
-pad_cat for arm64 rockchip platforms both TPL + SPL and SPL-alone
-targets.
+u-boot-x86-start16-tpl.bin - x86 start16 TPL bin
+u-boot-spl-mtk.bin - Mediatek SPL bin
 
-Changes for v5:
-- collect kever review tag
-- drop idbloader.img from clean target
-Changes for v4:
-- support all rockchip platforms
-- add new patches for dtsi changes
-- update documentation
-- format proper commit message
-- rebase on master
-Changes for v3:
-- rebase on master
-- add binman for rk3288, rk3328, rk3368, rk3399
-- added rst documentation for rockchip
-Changes for v2:
-- Add few clean target patches
-- update bl31.elf env handling code, with logging
-- support puma itb, via BL31 and PMUM0 env
-- enable BUILD_TARGET for ROCKCHIP_RK3399
+This would help to understand the users to what that
+particular image belongs to? and less confused.
 
-[1] https://patchwork.ozlabs.org/cover/1182449/
+On that note, suffix platform type rockchip for existing
+u-boot-tpl.img so now it become u-boot-tpl-rockchip.bin
 
-Any inputs?
-Jagan.
+Also, bin is more conventional way to include it on tools
+like binman, pad_cat etc in future patches.
 
-Jagan Teki (7):
-  Makefile: Add rockchip image type
-  Makefile: rockchip: Suffix platform type with tpl name
-  Makefile: rockchip: Support SPL-alone mkimage
-  Makefile: rockchip: Use u-boot preferred spl name
-  arm: dts: rk3036: Add rk3036-u-boot.dtsi
-  rockchip: Add Single boot image (with binman, pad_cat)
-  doc: boards: Add rockchip documentation
+Note: usage of platform type doesn't follow consistent order
+as of now.
 
- Makefile                            |  39 +++++++--
- arch/arm/Kconfig                    |   1 +
- arch/arm/dts/rk3036-sdk-u-boot.dtsi |   2 +
- arch/arm/dts/rk3036-u-boot.dtsi     |   6 ++
- arch/arm/dts/rk3288-u-boot.dtsi     |   2 +
- arch/arm/dts/rockchip-u-boot.dtsi   |  21 +++++
- doc/board/rockchip/index.rst        |  10 +++
- doc/board/rockchip/rockchip.rst     | 128 ++++++++++++++++++++++++++++
- include/configs/rockchip-common.h   |   2 +
- 9 files changed, 204 insertions(+), 7 deletions(-)
- create mode 100644 arch/arm/dts/rk3036-u-boot.dtsi
- create mode 100644 arch/arm/dts/rockchip-u-boot.dtsi
- create mode 100644 doc/board/rockchip/index.rst
- create mode 100644 doc/board/rockchip/rockchip.rst
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/Makefile b/Makefile
+index 9998d238f3..e519103be4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1382,10 +1382,10 @@ else
+ ROCKCHIP_IMG_TYPE := rksd
+ endif
+ 
+-MKIMAGEFLAGS_u-boot-tpl.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
+-tpl/u-boot-tpl.img: tpl/u-boot-tpl.bin FORCE
++MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
++tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
+ 	$(call if_changed,mkimage)
+-idbloader.img: tpl/u-boot-tpl.img spl/u-boot-spl.bin FORCE
++idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
+ 	$(call if_changed,cat)
+ endif
+ 
 -- 
 2.18.0.321.gffc6fa0e3
