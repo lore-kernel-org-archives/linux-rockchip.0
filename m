@@ -1,7 +1,7 @@
 From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [PATCH 1/7] Documentation: PCI: endpoint/pci-endpoint-cfs: Guide to use SR-IOV
-Date: Tue, 31 Dec 2019 17:05:28 +0530
-Message-ID: <20191231113534.30405-2-kishon@ti.com>
+Subject: [PATCH 2/7] dt-bindings: PCI: cadence: Add binding to specify max virtual functions
+Date: Tue, 31 Dec 2019 17:05:29 +0530
+Message-ID: <20191231113534.30405-3-kishon@ti.com>
 References: <20191231113534.30405-1-kishon@ti.com>
 Mime-Version: 1.0
 Content-Type: text/plain
@@ -12,52 +12,60 @@ To: Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi <lorenzo.pieralisi
 Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-doc@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add Documentation to help users use PCI endpoint to create virtual
-functions using configfs. An endpoint function is designated as a
-virtual endpoint function device when it is linked to a physical
-endpoint function device (instead of a endpoint controller).
+Add binding to specify maximum number of virtual functions that can be
+associated with each physical function.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- Documentation/PCI/endpoint/pci-endpoint-cfs.rst | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+ .../devicetree/bindings/pci/cdns,cdns-pcie-ep.txt         | 2 ++
+ .../devicetree/bindings/pci/ti,j721e-pci-ep.yaml          | 8 ++++++++
+ 2 files changed, 10 insertions(+)
 
-diff --git a/Documentation/PCI/endpoint/pci-endpoint-cfs.rst b/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-index b6d39cdec56e..0f55c5511c6c 100644
---- a/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-+++ b/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
-@@ -43,6 +43,7 @@ entries corresponding to EPF driver will be created by the EPF core.
- 		.. <EPF Driver1>/
- 			... <EPF Device 11>/
- 			... <EPF Device 21>/
-+			... <EPF Device 31>/
- 		.. <EPF Driver2>/
- 			... <EPF Device 12>/
- 			... <EPF Device 22>/
-@@ -68,6 +69,14 @@ created)
- 				... subsys_vendor_id
- 				... subsys_id
- 				... interrupt_pin
-+			        ... <Symlink EPF Device 31>/
+diff --git a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
+index 4a0475e2ba7e..432578202733 100644
+--- a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
++++ b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
+@@ -9,6 +9,8 @@ Required properties:
+ 
+ Optional properties:
+ - max-functions: Maximum number of functions that can be configured (default 1).
++- max-virtual-functions: Maximum number of virtual functions that can be
++    associated with each physical function.
+ - phys: From PHY bindings: List of Generic PHY phandles. One per lane if more
+   than one in the list.  If only one PHY listed it must manage all lanes. 
+ - phy-names:  List of names to identify the PHY.
+diff --git a/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml b/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
+index 4621c62016c7..1d4964ba494f 100644
+--- a/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
++++ b/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
+@@ -61,6 +61,12 @@ properties:
+     minimum: 1
+     maximum: 6
+ 
++  max-virtual-functions:
++    minItems: 1
++    maxItems: 6
++    description: As defined in
++                 Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
 +
-+The <EPF Device> directory can have a list of symbolic links to
-+other <EPF Device>. These symbolic links should be created by the user
-+to represent the virtual functions that are bound to the physical
-+function. In the above directory structure <EPF Device 11> is a physical
-+function and <EPF Device 31> is a virtual function. A EPF device once it's
-+linked to another EPF device, cannot be linked to a EPC device.
+   dma-coherent:
+     description: Indicates that the PCIe IP block can ensure the coherency
  
- EPC Device
- ==========
-@@ -88,7 +97,8 @@ entries corresponding to EPC device will be created by the EPC core.
+@@ -85,6 +91,7 @@ required:
+   - cdns,max-outbound-regions
+   - dma-coherent
+   - max-functions
++  - max-virtual-functions
+   - phys
+   - phy-names
  
- The <EPC Device> directory will have a list of symbolic links to
- <EPF Device>. These symbolic links should be created by the user to
--represent the functions present in the endpoint device.
-+represent the functions present in the endpoint device. Only <EPF Device>
-+that represents a physical function can be linked to a EPC device.
- 
- The <EPC Device> directory will also have a *start* field. Once
- "1" is written to this field, the endpoint device will be ready to
+@@ -107,6 +114,7 @@ examples:
+             clock-names = "fck";
+             cdns,max-outbound-regions = <16>;
+             max-functions = /bits/ 8 <6>;
++            max-virtual-functions = /bits/ 16 <4 4 4 4 0 0>;
+             dma-coherent;
+             phys = <&serdes0_pcie_link>;
+             phy-names = "pcie_phy";
 -- 
 2.17.1
