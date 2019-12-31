@@ -1,36 +1,27 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix IR on Beelink A1
-Date: Tue, 31 Dec 2019 12:50:31 +0100
-Message-ID: <30349756.SWxbmzi8ve@phil>
-References: <44269c08e2a5d75b03ded87d2eb11621762d8249.1577636223.git.robin.murphy@arm.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: rk3368-lion-haikou: remove identical &uart0 node
+Date: Tue, 31 Dec 2019 12:47:36 +0100
+Message-ID: <1957883.kUPM6Xjvq3@phil>
+References: <20191220125520.29871-1-jbx6244@gmail.com> <20191228074757.2075-1-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <44269c08e2a5d75b03ded87d2eb11621762d8249.1577636223.git.robin.murphy@arm.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191228074757.2075-1-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 29. Dezember 2019, 18:48:05 CET schrieb Robin Murphy:
-> Apparently I wasn't paying enough attention... And nor is the lazy
-> test of `cat /dev/lirc0` sufficiently blunder-proof. Oh well, with
-> the correct polarity, let's also hook up a keymap now that one for
-> the standard Beelink remote has handily appeared.
-> 
-> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
-> ---
+Hi Johan,
 
-applied for 5.6
+Am Samstag, 28. Dezember 2019, 08:47:57 CET schrieb Johan Jonker:
+> There are two identical &uart0 nodes in this dts file,
+> so remove one of them.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+thanks for separating the duplicate-removal from the other changes
+and I've applied the patch for 5.6 now.
 
 Thanks
 Heiko
