@@ -1,461 +1,69 @@
-From: Qiang Yu <yuq825@gmail.com>
-Subject: Re: [RFC v2 1/1] drm/lima: Add optional devfreq support
-Date: Tue, 31 Dec 2019 10:54:19 +0800
-Message-ID: <CAKGbVbs365C_44p9VyW33n5r2s7VKgOzpZWCZ2rAHZ+f2sic1A@mail.gmail.com>
-References: <20191227173707.20413-1-martin.blumenstingl@googlemail.com> <20191227173707.20413-2-martin.blumenstingl@googlemail.com>
+From: "Matwey V. Kornilov" <matwey.kornilov@gmail.com>
+Subject: Re: [PATCH v5 7/7] doc: boards: Add rockchip documentation
+Date: Tue, 31 Dec 2019 10:50:42 +0300
+Message-ID: <CAJs94EacaLU4QJkhKAm6+v_=rtyNWkeCoYONLF43qTVSCko-cw@mail.gmail.com>
+References: <20191230082819.30191-1-jagan@amarulasolutions.com>
+ <20191230082819.30191-8-jagan@amarulasolutions.com>
+ <CAJs94EYBrwf9Pt0R-_OypT-JHWGFpZYxRhKcUXWgXTFJi9O0HA@mail.gmail.com>
+ <CAMty3ZDkaVCBmKeofqn7p+EVGdHx3NZDt13kN6Nx_WVFSF5Pyg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191227173707.20413-2-martin.blumenstingl@googlemail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Rob Herring <robh@kernel.org>, Steven Price <steven.price@arm.com>, Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>, "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAMty3ZDkaVCBmKeofqn7p+EVGdHx3NZDt13kN6Nx_WVFSF5Pyg@mail.gmail.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: U-Boot Mailing List <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, Akash Gajjar <akash@openedev.com>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Dec 28, 2019 at 1:37 AM Martin Blumenstingl
-<martin.blumenstingl@googlemail.com> wrote:
+=D0=BF=D0=BD, 30 =D0=B4=D0=B5=D0=BA. 2019 =D0=B3. =D0=B2 11:59, Jagan Teki =
+<jagan@amarulasolutions.com>:
 >
-> Most platforms with a Mali-400 or Mali-450 GPU also have support for
-> changing the GPU clock frequency. Add devfreq support so the GPU clock
-> rate is updated based on the actual GPU usage when the
-> "operating-points-v2" property is present in the board.dts.
+> Hi,
 >
-> The actual devfreq code is taken from panfrost_devfreq.c and modified so
-> it matches what the lima hardware needs:
-> - a call to dev_pm_opp_set_clkname() during initialization because there
->   are two clocks on Mali-4x0 IPs. "core" is the one that actually clocks
->   the GPU so we need to control it using devfreq.
-> - locking when reading or writing the devfreq statistics because (unlike
->   than panfrost) we have multiple PP and GP IRQs which may finish jobs
->   concurrently.
+> On Mon, Dec 30, 2019 at 2:11 PM Matwey V. Kornilov
+> <matwey.kornilov@gmail.com> wrote:
+> >
+> > Hello,
+> >
+> > Thank you for the patch set.
+> > Currently, I have the following concern about documentation and
+> > overall proposed u-boot deploy procedure.
+> >
+> > There is a use case, when I have to use Rockchip proprietary TPL
+> > binary and deploy it instead of u-boot's one together with u-boot SPL
+> > and ITB images.
+> > It is required for debugging purposes because unfortunately u-boot TPL
+> > is usually less stable that proprietary one. And switching the TPL
+> > binary is basically the first step when I see random strange crashes.
+> > It is a good way to locate an issue origin.
+> >
+> > Could we somehow ensure that this backup deployment plan is still
+> > possible and documented in the text here? It would be great if the
+> > user could learn the procedure from the text, not from the source
+> > code, recovering correct offsets.
 >
-> Signed-off-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> ---
->  drivers/gpu/drm/lima/Kconfig        |   1 +
->  drivers/gpu/drm/lima/Makefile       |   3 +-
->  drivers/gpu/drm/lima/lima_devfreq.c | 183 ++++++++++++++++++++++++++++
->  drivers/gpu/drm/lima/lima_devfreq.h |  15 +++
->  drivers/gpu/drm/lima/lima_device.c  |   4 +
->  drivers/gpu/drm/lima/lima_device.h  |  17 +++
->  drivers/gpu/drm/lima/lima_drv.c     |  14 ++-
->  drivers/gpu/drm/lima/lima_sched.c   |   7 ++
->  drivers/gpu/drm/lima/lima_sched.h   |   3 +
->  9 files changed, 244 insertions(+), 3 deletions(-)
->  create mode 100644 drivers/gpu/drm/lima/lima_devfreq.c
->  create mode 100644 drivers/gpu/drm/lima/lima_devfreq.h
->
-> diff --git a/drivers/gpu/drm/lima/Kconfig b/drivers/gpu/drm/lima/Kconfig
-> index 571dc369a7e9..cdd24b68b5d4 100644
-> --- a/drivers/gpu/drm/lima/Kconfig
-> +++ b/drivers/gpu/drm/lima/Kconfig
-> @@ -10,5 +10,6 @@ config DRM_LIMA
->         depends on OF
->         select DRM_SCHED
->         select DRM_GEM_SHMEM_HELPER
-> +       select PM_DEVFREQ
->         help
->           DRM driver for ARM Mali 400/450 GPUs.
-> diff --git a/drivers/gpu/drm/lima/Makefile b/drivers/gpu/drm/lima/Makefile
-> index a85444b0a1d4..5e5c29875e9c 100644
-> --- a/drivers/gpu/drm/lima/Makefile
-> +++ b/drivers/gpu/drm/lima/Makefile
-> @@ -14,6 +14,7 @@ lima-y := \
->         lima_sched.o \
->         lima_ctx.o \
->         lima_dlbu.o \
-> -       lima_bcast.o
-> +       lima_bcast.o \
-> +       lima_devfreq.o
->
->  obj-$(CONFIG_DRM_LIMA) += lima.o
-> diff --git a/drivers/gpu/drm/lima/lima_devfreq.c b/drivers/gpu/drm/lima/lima_devfreq.c
-> new file mode 100644
-> index 000000000000..a5fd6b8faa77
-> --- /dev/null
-> +++ b/drivers/gpu/drm/lima/lima_devfreq.c
-> @@ -0,0 +1,183 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright 2019 Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> + *
-> + * Based on panfrost_devfreq.c:
-> + *   Copyright 2019 Collabora ltd.
-> + */
-> +#include <linux/clk.h>
-> +#include <linux/devfreq.h>
-> +#include <linux/devfreq_cooling.h>
-> +#include <linux/device.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pm_opp.h>
-> +
-> +#include "lima_device.h"
-> +#include "lima_devfreq.h"
-> +
-> +static void lima_devfreq_update_utilization(struct lima_device *ldev)
-> +{
-> +       unsigned long irqflags;
-> +       ktime_t now, last;
-> +
-> +       if (!ldev->devfreq.devfreq)
-> +               return;
-> +
-> +       spin_lock_irqsave(&ldev->devfreq.lock, irqflags);
-> +
-> +       now = ktime_get();
-> +       last = ldev->devfreq.time_last_update;
-> +
-> +       if (atomic_read(&ldev->devfreq.busy_count) > 0)
-> +               ldev->devfreq.busy_time += ktime_sub(now, last);
-> +       else
-> +               ldev->devfreq.idle_time += ktime_sub(now, last);
-> +
-> +       ldev->devfreq.time_last_update = now;
-> +
-> +       spin_unlock_irqrestore(&ldev->devfreq.lock, irqflags);
-> +}
-> +
-> +static int lima_devfreq_target(struct device *dev, unsigned long *freq,
-> +                              u32 flags)
-> +{
-> +       struct dev_pm_opp *opp;
-> +       int err;
-> +
-> +       opp = devfreq_recommended_opp(dev, freq, flags);
-> +       if (IS_ERR(opp))
-> +               return PTR_ERR(opp);
-> +       dev_pm_opp_put(opp);
-> +
-> +       err = dev_pm_opp_set_rate(dev, *freq);
-> +       if (err)
-> +               return err;
-> +
-> +       return 0;
-> +}
-> +
-> +static void lima_devfreq_reset(struct lima_device *ldev)
-> +{
-> +       unsigned long irqflags;
-> +
-> +       spin_lock_irqsave(&ldev->devfreq.lock, irqflags);
-> +
-> +       ldev->devfreq.busy_time = 0;
-> +       ldev->devfreq.idle_time = 0;
-> +       ldev->devfreq.time_last_update = ktime_get();
-> +
-> +       spin_unlock_irqrestore(&ldev->devfreq.lock, irqflags);
-> +}
-> +
-> +static int lima_devfreq_get_dev_status(struct device *dev,
-> +                                      struct devfreq_dev_status *status)
-> +{
-> +       struct lima_device *ldev = dev_get_drvdata(dev);
-> +       unsigned long irqflags;
-> +
-> +       lima_devfreq_update_utilization(ldev);
-> +
-> +       status->current_frequency = clk_get_rate(ldev->clk_gpu);
-> +
-> +       spin_lock_irqsave(&ldev->devfreq.lock, irqflags);
-> +
-> +       status->total_time = ktime_to_ns(ktime_add(ldev->devfreq.busy_time,
-> +                                                  ldev->devfreq.idle_time));
-> +       status->busy_time = ktime_to_ns(ldev->devfreq.busy_time);
-> +
-> +       spin_unlock_irqrestore(&ldev->devfreq.lock, irqflags);
-> +
-> +       lima_devfreq_reset(ldev);
-> +
-> +       dev_dbg(ldev->dev, "busy %lu total %lu %lu %% freq %lu MHz\n",
-> +               status->busy_time, status->total_time,
-> +               status->busy_time / (status->total_time / 100),
-> +               status->current_frequency / 1000 / 1000);
-> +
-> +       return 0;
-> +}
-> +
-> +static struct devfreq_dev_profile lima_devfreq_profile = {
-> +       .polling_ms = 50, /* ~3 frames */
-> +       .target = lima_devfreq_target,
-> +       .get_dev_status = lima_devfreq_get_dev_status,
-> +};
-> +
-> +int lima_devfreq_init(struct lima_device *ldev)
-> +{
-> +       struct thermal_cooling_device *cooling;
-> +       struct device *dev = &ldev->pdev->dev;
-> +       struct devfreq *devfreq;
-> +       struct dev_pm_opp *opp;
-> +       unsigned long cur_freq;
-> +       int ret;
-> +
-> +       spin_lock_init(&ldev->devfreq.lock);
-> +
-> +       ldev->devfreq.opp_table = dev_pm_opp_set_clkname(dev, "core");
-> +       if (IS_ERR(ldev->devfreq.opp_table))
-> +               return PTR_ERR(ldev->devfreq.opp_table);
-> +
-> +       ret = dev_pm_opp_of_add_table(dev);
-> +       if (ret == -ENODEV) /* Optional, continue without devfreq */
-> +               return 0;
-> +       else if (ret)
-> +               return ret;
-> +
-> +       lima_devfreq_reset(ldev);
-> +
-> +       cur_freq = clk_get_rate(ldev->clk_gpu);
-> +
-> +       opp = devfreq_recommended_opp(dev, &cur_freq, 0);
-> +       if (IS_ERR(opp))
-> +               return PTR_ERR(opp);
-> +
-> +       lima_devfreq_profile.initial_freq = cur_freq;
-> +       dev_pm_opp_put(opp);
-> +
-> +       devfreq = devm_devfreq_add_device(dev, &lima_devfreq_profile,
-> +                                         DEVFREQ_GOV_SIMPLE_ONDEMAND, NULL);
-> +       if (IS_ERR(devfreq)) {
-> +               dev_err(dev, "Couldn't initialize GPU devfreq\n");
-> +               dev_pm_opp_of_remove_table(dev);
-> +               return PTR_ERR(devfreq);
-> +       }
-> +
-> +       ldev->devfreq.devfreq = devfreq;
-> +
-> +       cooling = of_devfreq_cooling_register(dev->of_node, devfreq);
-> +       if (IS_ERR(cooling))
-> +               dev_info(dev, "Failed to register cooling device\n");
-> +       else
-> +               ldev->devfreq.cooling = cooling;
-> +
-> +       return 0;
-> +}
-> +
-> +void lima_devfreq_fini(struct lima_device *ldev)
-> +{
-> +       if (ldev->devfreq.cooling)
-> +               devfreq_cooling_unregister(ldev->devfreq.cooling);
-> +
-> +       if (ldev->devfreq.opp_table) {
-> +               dev_pm_opp_put_clkname(ldev->devfreq.opp_table);
-> +               ldev->devfreq.opp_table = NULL;
-> +       }
-> +
-> +       dev_pm_opp_of_remove_table(&ldev->pdev->dev);
-> +}
-> +
-> +void lima_devfreq_record_busy(struct lima_device *ldev)
-> +{
-> +       lima_devfreq_update_utilization(ldev);
-> +       atomic_inc(&ldev->devfreq.busy_count);
-> +}
-> +
-> +void lima_devfreq_record_idle(struct lima_device *ldev)
-> +{
-> +       int count;
-> +
-> +       lima_devfreq_update_utilization(ldev);
-> +       count = atomic_dec_if_positive(&ldev->devfreq.busy_count);
-> +       WARN_ON(count < 0);
-> +}
-> diff --git a/drivers/gpu/drm/lima/lima_devfreq.h b/drivers/gpu/drm/lima/lima_devfreq.h
-> new file mode 100644
-> index 000000000000..fe4f8a437033
-> --- /dev/null
-> +++ b/drivers/gpu/drm/lima/lima_devfreq.h
-> @@ -0,0 +1,15 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/* Copyright 2019 Martin Blumenstingl <martin.blumenstingl@googlemail.com> */
-> +
-> +#ifndef __LIMA_DEVFREQ_H__
-> +#define __LIMA_DEVFREQ_H__
-> +
-> +struct lima_device;
-> +
-> +int lima_devfreq_init(struct lima_device *ldev);
-> +void lima_devfreq_fini(struct lima_device *ldev);
-> +
-> +void lima_devfreq_record_busy(struct lima_device *ldev);
-> +void lima_devfreq_record_idle(struct lima_device *ldev);
-> +
-> +#endif
-> diff --git a/drivers/gpu/drm/lima/lima_device.c b/drivers/gpu/drm/lima/lima_device.c
-> index 19829b543024..7f1f7a1c03e5 100644
-> --- a/drivers/gpu/drm/lima/lima_device.c
-> +++ b/drivers/gpu/drm/lima/lima_device.c
-> @@ -214,6 +214,8 @@ static int lima_init_gp_pipe(struct lima_device *dev)
->         struct lima_sched_pipe *pipe = dev->pipe + lima_pipe_gp;
->         int err;
->
-> +       pipe->ldev = dev;
-> +
->         err = lima_sched_pipe_init(pipe, "gp");
->         if (err)
->                 return err;
-> @@ -244,6 +246,8 @@ static int lima_init_pp_pipe(struct lima_device *dev)
->         struct lima_sched_pipe *pipe = dev->pipe + lima_pipe_pp;
->         int err, i;
->
-> +       pipe->ldev = dev;
-> +
->         err = lima_sched_pipe_init(pipe, "pp");
->         if (err)
->                 return err;
-> diff --git a/drivers/gpu/drm/lima/lima_device.h b/drivers/gpu/drm/lima/lima_device.h
-> index 31158d86271c..26f0efdd17f1 100644
-> --- a/drivers/gpu/drm/lima/lima_device.h
-> +++ b/drivers/gpu/drm/lima/lima_device.h
-> @@ -5,6 +5,7 @@
->  #define __LIMA_DEVICE_H__
->
->  #include <drm/drm_device.h>
-> +#include <linux/atomic.h>
->  #include <linux/delay.h>
->
->  #include "lima_sched.h"
-> @@ -94,6 +95,22 @@ struct lima_device {
->
->         u32 *dlbu_cpu;
->         dma_addr_t dlbu_dma;
-> +
-> +       struct {
-> +               struct devfreq *devfreq;
-> +               struct opp_table *opp_table;
-> +               struct thermal_cooling_device *cooling;
-> +               ktime_t busy_time;
-> +               ktime_t idle_time;
-> +               ktime_t time_last_update;
-> +               atomic_t busy_count;
-> +               /*
-> +                * Protect busy_time, idle_time and time_last_update because
-> +                * these can be updated concurrently - for example by the GP
-> +                * and PP interrupts.
-> +                */
-> +               spinlock_t lock;
-> +       } devfreq;
->  };
->
->  static inline struct lima_device *
-> diff --git a/drivers/gpu/drm/lima/lima_drv.c b/drivers/gpu/drm/lima/lima_drv.c
-> index 124efe4fa97b..b64b1777f220 100644
-> --- a/drivers/gpu/drm/lima/lima_drv.c
-> +++ b/drivers/gpu/drm/lima/lima_drv.c
-> @@ -10,6 +10,7 @@
->  #include <drm/drm_prime.h>
->  #include <drm/lima_drm.h>
->
-> +#include "lima_devfreq.h"
->  #include "lima_drv.h"
->  #include "lima_gem.h"
->  #include "lima_vm.h"
-> @@ -296,18 +297,26 @@ static int lima_pdev_probe(struct platform_device *pdev)
->         if (err)
->                 goto err_out1;
->
-> +       err = lima_devfreq_init(ldev);
-> +       if (err) {
-> +               dev_err(&pdev->dev, "Fatal error during devfreq init\n");
-> +               goto err_out2;
-> +       }
-> +
->         /*
->          * Register the DRM device with the core and the connectors with
->          * sysfs.
->          */
->         err = drm_dev_register(ddev, 0);
->         if (err < 0)
-> -               goto err_out2;
-> +               goto err_out3;
->
->         return 0;
->
-> -err_out2:
-> +err_out3:
->         lima_device_fini(ldev);
-> +err_out2:
-> +       lima_devfreq_fini(ldev);
->  err_out1:
->         drm_dev_put(ddev);
->  err_out0:
-> @@ -321,6 +330,7 @@ static int lima_pdev_remove(struct platform_device *pdev)
->         struct drm_device *ddev = ldev->ddev;
->
->         drm_dev_unregister(ddev);
-> +       lima_devfreq_fini(ldev);
->         lima_device_fini(ldev);
->         drm_dev_put(ddev);
->         lima_sched_slab_fini();
-> diff --git a/drivers/gpu/drm/lima/lima_sched.c b/drivers/gpu/drm/lima/lima_sched.c
-> index f522c5f99729..851c496a168b 100644
-> --- a/drivers/gpu/drm/lima/lima_sched.c
-> +++ b/drivers/gpu/drm/lima/lima_sched.c
-> @@ -5,6 +5,7 @@
->  #include <linux/slab.h>
->  #include <linux/xarray.h>
->
-> +#include "lima_devfreq.h"
->  #include "lima_drv.h"
->  #include "lima_sched.h"
->  #include "lima_vm.h"
-> @@ -213,6 +214,8 @@ static struct dma_fence *lima_sched_run_job(struct drm_sched_job *job)
->          */
->         ret = dma_fence_get(task->fence);
->
-> +       lima_devfreq_record_busy(pipe->ldev);
-> +
->         pipe->current_task = task;
->
->         /* this is needed for MMU to work correctly, otherwise GP/PP
-> @@ -280,6 +283,8 @@ static void lima_sched_handle_error_task(struct lima_sched_pipe *pipe,
->         pipe->current_vm = NULL;
->         pipe->current_task = NULL;
->
-> +       lima_devfreq_record_idle(pipe->ldev);
-> +
->         drm_sched_resubmit_jobs(&pipe->base);
->         drm_sched_start(&pipe->base, true);
->  }
-> @@ -348,6 +353,8 @@ void lima_sched_pipe_fini(struct lima_sched_pipe *pipe)
->
->  void lima_sched_pipe_task_done(struct lima_sched_pipe *pipe)
->  {
-> +       lima_devfreq_record_idle(pipe->ldev);
+> You mean to say rkbin =3D> SPL =3D> U-Boot proper ? if yes, I do agree
 
-This should be moved to the else {} part of the following code. As you
-have added the save
-idle record to the lima_sched_handle_error_task which is just the if
-{} part of the following
-code, so no need to call it twice for error tasks. BTW.
-lima_sched_handle_error_task is also
-used for timeout tasks, so add idle record in it is fine.
+Yes, I mean so.
+I think it would be great to have something like the section
+describing where do the things came from and the layout which is under
+the hood.
 
-Regards,
-Qiang
+> with this point and it is worth to document it as well. Kever, will
+> that be okay for you?
+>
+> Jagan.
 
-> +
->         if (pipe->error)
->                 schedule_work(&pipe->error_work);
->         else {
-> diff --git a/drivers/gpu/drm/lima/lima_sched.h b/drivers/gpu/drm/lima/lima_sched.h
-> index 928af91c1118..9ae7df7d7fbb 100644
-> --- a/drivers/gpu/drm/lima/lima_sched.h
-> +++ b/drivers/gpu/drm/lima/lima_sched.h
-> @@ -6,6 +6,7 @@
->
->  #include <drm/gpu_scheduler.h>
->
-> +struct lima_device;
->  struct lima_vm;
->
->  struct lima_sched_task {
-> @@ -41,6 +42,8 @@ struct lima_sched_pipe {
->         u32 fence_seqno;
->         spinlock_t fence_lock;
->
-> +       struct lima_device *ldev;
-> +
->         struct lima_sched_task *current_task;
->         struct lima_vm *current_vm;
->
-> --
-> 2.24.1
->
+
+--
+With best regards,
+Matwey V. Kornilov
