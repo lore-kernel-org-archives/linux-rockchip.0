@@ -1,40 +1,40 @@
-From: Heiko Stuebner <heiko@sntech.de>
+From: Miquel Raynal <miquel.raynal@bootlin.com>
 Subject: Re: [PATCH v2 10/11] arm64: dts: rockchip: Add PX30 DSI DPHY
-Date: Tue, 31 Dec 2019 13:14:02 +0100
-Message-ID: <10740878.zWD4iEhqxt@phil>
+Date: Tue, 31 Dec 2019 16:41:25 +0100
+Message-ID: <20191231164125.2aaad2e2@xps13>
 References: <20191224143900.23567-1-miquel.raynal@bootlin.com>
- <20191224143900.23567-11-miquel.raynal@bootlin.com> <1796464.bE5sXyoQCg@phil>
+        <20191224143900.23567-11-miquel.raynal@bootlin.com>
+        <1796464.bE5sXyoQCg@phil>
+        <10740878.zWD4iEhqxt@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1796464.bE5sXyoQCg@phil>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Maxime Chevallier <maxime.chevallier@bootlin.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <10740878.zWD4iEhqxt@phil>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 31. Dezember 2019, 12:56:14 CET schrieb Heiko Stuebner:
-> Am Dienstag, 24. Dezember 2019, 15:38:59 CET schrieb Miquel Raynal:
-> > Add the PHY which outputs MIPI DSI and LVDS.
+Hi Heiko,
+
+Heiko Stuebner <heiko@sntech.de> wrote on Tue, 31 Dec 2019 13:14:02
++0100:
+
+> Am Dienstag, 31. Dezember 2019, 12:56:14 CET schrieb Heiko Stuebner:
+> > Am Dienstag, 24. Dezember 2019, 15:38:59 CET schrieb Miquel Raynal:  
+> > > Add the PHY which outputs MIPI DSI and LVDS.
+> > > 
+> > > Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>  
 > > 
-> > Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+> > applied for 5.6 (picked early due to it being shared between lvds and dsi)  
 > 
-> applied for 5.6 (picked early due to it being shared between lvds and dsi)
+> and I've just added the VO powerdomain to the dsi-dphy node.
+> 
+> While the TRM is not really forthcoming in telling me if the dphy needs
+> the power-domain as well, the vendor kernel does, so we should probably
+> just follow their example ;-) .
 
-and I've just added the VO powerdomain to the dsi-dphy node.
+Agreed!
 
-While the TRM is not really forthcoming in telling me if the dphy needs
-the power-domain as well, the vendor kernel does, so we should probably
-just follow their example ;-) .
-
-
-Heiko
+Miquèl
