@@ -1,36 +1,36 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [PATCH 7/7] misc: pci_endpoint_test: Populate sriov_configure ops to configure SR-IOV device
-Date: Tue, 31 Dec 2019 17:05:34 +0530
-Message-ID: <20191231113534.30405-8-kishon@ti.com>
-References: <20191231113534.30405-1-kishon@ti.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix IR on Beelink A1
+Date: Tue, 31 Dec 2019 12:50:31 +0100
+Message-ID: <30349756.SWxbmzi8ve@phil>
+References: <44269c08e2a5d75b03ded87d2eb11621762d8249.1577636223.git.robin.murphy@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191231113534.30405-1-kishon@ti.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Andrew Murray <andrew.murray@arm.com>, Tom Joseph <tjoseph@cadence.com>, Rob Herring <robh+dt@kernel.org>, Arnd Bergmann <arnd@arndb.de>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-doc@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <44269c08e2a5d75b03ded87d2eb11621762d8249.1577636223.git.robin.murphy@arm.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Populate sriov_configure ops with pci_sriov_configure_simple to
-configure SR-IOV device.
+Am Sonntag, 29. Dezember 2019, 18:48:05 CET schrieb Robin Murphy:
+> Apparently I wasn't paying enough attention... And nor is the lazy
+> test of `cat /dev/lirc0` sufficiently blunder-proof. Oh well, with
+> the correct polarity, let's also hook up a keymap now that one for
+> the standard Beelink remote has handily appeared.
+> 
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> ---
 
-Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
----
- drivers/misc/pci_endpoint_test.c | 1 +
- 1 file changed, 1 insertion(+)
+applied for 5.6
 
-diff --git a/drivers/misc/pci_endpoint_test.c b/drivers/misc/pci_endpoint_test.c
-index b2458988939e..0f448c33f45c 100644
---- a/drivers/misc/pci_endpoint_test.c
-+++ b/drivers/misc/pci_endpoint_test.c
-@@ -840,6 +840,7 @@ static struct pci_driver pci_endpoint_test_driver = {
- 	.id_table	= pci_endpoint_test_tbl,
- 	.probe		= pci_endpoint_test_probe,
- 	.remove		= pci_endpoint_test_remove,
-+	.sriov_configure = pci_sriov_configure_simple,
- };
- module_pci_driver(pci_endpoint_test_driver);
- 
--- 
-2.17.1
+Thanks
+Heiko
