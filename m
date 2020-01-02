@@ -1,87 +1,100 @@
 From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: Re: [v2 3/6] of: address: add support to parse PCI outbound-ranges
-Date: Thu, 2 Jan 2020 08:44:23 +0000
-Message-ID: <CA+V-a8vjwqkH5rYsy_rsHF93d91izsaEwmFXNpYqk3_=_Asd2g@mail.gmail.com>
+Subject: Re: [v2 4/6] dt-bindings: PCI: rcar: Add bindings for R-Car PCIe
+ endpoint controller
+Date: Thu, 2 Jan 2020 08:47:47 +0000
+Message-ID: <CA+V-a8vO_3P3vDFVuKLJAK7v99E7qKVAei0Kmba8tKist7mAaw@mail.gmail.com>
 References: <20191213084748.11210-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
- <20191213084748.11210-4-prabhakar.mahadev-lad.rj@bp.renesas.com>
- <CAL_JsqLSYroDZGWksJJ=E+01X=3Tji4+GmK8s3i+d2BJphqiLQ@mail.gmail.com>
- <CA+V-a8uKBuVUQvkoJ9pJYX97Qy3JazTyLCy-2T35gOX77AP8vg@mail.gmail.com>
- <20191219233129.GA5484@bogus>
+ <20191213084748.11210-5-prabhakar.mahadev-lad.rj@bp.renesas.com> <20191219233525.GA9478@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20191219233129.GA5484@bogus>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191219233525.GA9478@bogus>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Rob Herring <robh@kernel.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, PCI <linux-pci@vger.kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Frank Rowand <frowand.list@gmail.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Will Deacon <will@kernel.org>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Catalin Marinas <catalin.marinas@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Chris Paterson <Chris.Paterson2@renesas.com>, Arnd Bergmann <arnd@arndb.de>, "Lad,
- Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>, Simon Horman <horms@verge.net.au>, Bjorn Helgaas <bhelgaas@google.com>, moderated list:ARM/FREESCALE IMX / MXC ARM
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci <linux-pci@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, Linux-Renesa
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Rob,
 
-On Thu, Dec 19, 2019 at 11:31 PM Rob Herring <robh@kernel.org> wrote:
->
-> On Mon, Dec 16, 2019 at 08:49:23AM +0000, Lad, Prabhakar wrote:
-> > Hi Rob,
-> >
-> > Thank you for the review.
-> >
-> > On Fri, Dec 13, 2019 at 8:37 PM Rob Herring <robh+dt@kernel.org> wrote:
-> > >
-> > > On Fri, Dec 13, 2019 at 2:48 AM Lad Prabhakar
-> > > <prabhakar.csengg@gmail.com> wrote:
-> > > >
-> > > > From: "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>
-> > > >
-> > > > this patch adds support to parse PCI outbound-ranges, the
-> > > > outbound-regions are similar to pci ranges except it doesn't
-> > > > have pci address, below is the format for bar-ranges:
-> > > >
-> > > > outbound-ranges = <flags upper32_cpuaddr lower32_cpuaddr
-> > > >                    upper32_size lower32_size>;
-> > >
-> > > You can't just make up a new ranges property. Especially one that
-> > > doesn't follow how 'ranges' works. We already have 'dma-ranges' to
-> > > translate device to memory addresses.
-> > >
-> > > Explain the problem or feature you need, not the solution you came up
-> > > with. Why do you need this and other endpoint bindings haven't?
-> > >
-> > rcar SoC's supports multiple outbound region for mapping the PCI address
-> > locally to the system. This lead to discussion where there exist controllers
-> > which support regions for high/low priority transfer and similarly regions
-> > for large/small memory allocations, as a result a new ranges property was
-> > added, where we can specify the flags which would indicate how the outbound
-> > region can be used during requests.
->
-> What are the flags?
+Thank you for the review.
 
-below are the flags which were discussed in first version of the
-series, but since the driver is
-currently using just PCI_EPC_WINDOW_FLAG_NON_MULTI_ALLOC flag I'll be
-dropping them in
-next version (suggested by Kishon) and rest will be added as and when
-required by the driver.
+On Thu, Dec 19, 2019 at 11:35 PM Rob Herring <robh@kernel.org> wrote:
+>
+> On Fri, Dec 13, 2019 at 08:47:46AM +0000, Lad Prabhakar wrote:
+> > From: "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>
+> >
+> > This patch adds the bindings for the R-Car PCIe endpoint driver.
+> >
+> > Signed-off-by: Lad, Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+> > ---
+> >  .../devicetree/bindings/pci/rcar-pci-ep.txt        | 37 ++++++++++++++++++++++
+> >  1 file changed, 37 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
+>
+> Please make this a DT schema.
+>
+sure will do.
 
- * @PCI_EPC_WINDOW_FLAG_MULTI_ALLOC: Indicates multiple chunks of memory can be
- *                                  allocated from same window
- * @PCI_EPC_WINDOW_FLAG_NON_MULTI_ALLOC: Indicates only single memory allocation
- *                                      is possible on the window
- * @PCI_EPC_WINDOW_FLAG_LARGE_ALLOC: Window is used for large memory allocation
- * @PCI_EPC_WINDOW_FLAG_SMALL_ALLOC: Window is used for small memory allocation
- * @PCI_EPC_WINDOW_FLAG_HIGH_PRI_ALLOC: Window is used for high priority data
- *                                     transfers
- * @PCI_EPC_WINDOW_FLAG_LOW_PRI_ALLOC: Window is used for low priority data
- *                                    transfers
+> >
+> > diff --git a/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt b/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
+> > new file mode 100644
+> > index 0000000..7f0a97e
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
+> > @@ -0,0 +1,37 @@
+> > +* Renesas R-Car PCIe Endpoint Controller DT description
+> > +
+> > +Required properties:
+> > +         "renesas,pcie-ep-r8a774c0" for the R8A774C0 SoC;
+>
+> Normal ordering is: renesas,r8a774c0-pcie-ep
+>
+> > +         "renesas,pcie-ep-rcar-gen3" for a generic R-Car Gen3 or
+> > +                                  RZ/G2 compatible device.
+> > +
+> > +         When compatible with the generic version, nodes must list the
+> > +         SoC-specific version corresponding to the platform first
+> > +         followed by the generic version.
+> > +
+> > +- reg: base address and length of the PCIe controller registers.
+> > +- outbound-ranges: outbound windows base address and length including the flags.
+> > +- resets: Must contain phandles to PCIe-related reset lines exposed by IP block
+>
+> How many?
+>
+should be one.
+
+> > +- clocks: from common clock binding: clock specifiers for the PCIe controller
+> > +      clock.
+> > +- clock-names: from common clock binding: should be "pcie".
+> > +
+> > +Optional Property:
+> > +- max-functions: Maximum number of functions that can be configured (default 1).
+> > +
+> > +Example:
+> > +
+> > +SoC-specific DT Entry:
+> > +
+> > +     pcie_ep: pcie_ep@fe000000 {
+>
+> pcie-ep@
+>
+will fix that.
 
 Cheers,
 --Prabhakar
+
+> > +             compatible = "renesas,pcie-ep-r8a774c0", "renesas,pcie-rcar-gen2";
+> > +             reg = <0 0xfe000000 0 0x80000>;
+> > +             outbound-ranges = <0xa 0x0 0xfe100000 0 0x000100000
+> > +                                0xa 0x0 0xfe200000 0 0x000200000
+> > +                                0x6 0x0 0x30000000 0 0x008000000
+> > +                                0x6 0x0 0x38000000 0 0x008000000>;
+> > +             clocks = <&cpg CPG_MOD 319>;
+> > +             clock-names = "pcie";
+> > +             power-domains = <&sysc R8A774C0_PD_ALWAYS_ON>;
+> > +             resets = <&cpg 319>;
+> > +     };
+> > --
+> > 2.7.4
+> >
