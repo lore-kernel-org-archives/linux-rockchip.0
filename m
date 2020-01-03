@@ -1,92 +1,99 @@
-From: Joseph Kogut <joseph.kogut@gmail.com>
-Subject: Orange Pi 4 (RK3399) fails to bring up ethernet on boot
-Date: Thu, 2 Jan 2020 17:04:30 -0800
-Message-ID: <CAMWSM7ha5XcoknM1qrNTMM+A5Re2yQPNWvu_ZVKAWBUx-FmasA@mail.gmail.com>
+From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
+Subject: Re: [v2 4/6] dt-bindings: PCI: rcar: Add bindings for R-Car PCIe
+ endpoint controller
+Date: Fri, 3 Jan 2020 16:29:18 +0000
+Message-ID: <CA+V-a8uZqwfbYNec7bPWf5RuZP-zVkAyAz8SMueJic5wU0zyBw@mail.gmail.com>
+References: <20191213084748.11210-1-prabhakar.mahadev-lad.rj@bp.renesas.com> <20191213084748.11210-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20191213084748.11210-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, mark.rutland@arm.com
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Magnus Damm <magnus.damm@gmail.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, Chris Paterson <Chris.Paterson2@renesas.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Frank Rowand <frowand.list@gmail.com>, Gustavo Pimentel <gustavo.pim>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
+Hi Kishon/Rob,
 
-I'm working on getting the newly released Orange Pi 4 up and running
-with the mainline kernel. Using the rk3399-orangepi device tree gets
-the device to start booting, but the kernel has an oops when starting
-networking, and the boot process fails to continue.
+On Fri, Dec 13, 2019 at 8:48 AM Lad Prabhakar
+<prabhakar.csengg@gmail.com> wrote:
+>
+> From: "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>
+>
+> This patch adds the bindings for the R-Car PCIe endpoint driver.
+>
+> Signed-off-by: Lad, Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+> ---
+>  .../devicetree/bindings/pci/rcar-pci-ep.txt        | 37 ++++++++++++++++++++++
+>  1 file changed, 37 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
+>
+> diff --git a/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt b/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
+> new file mode 100644
+> index 0000000..7f0a97e
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
+> @@ -0,0 +1,37 @@
+> +* Renesas R-Car PCIe Endpoint Controller DT description
+> +
+> +Required properties:
+> +           "renesas,pcie-ep-r8a774c0" for the R8A774C0 SoC;
+> +           "renesas,pcie-ep-rcar-gen3" for a generic R-Car Gen3 or
+> +                                    RZ/G2 compatible device.
+> +
+> +           When compatible with the generic version, nodes must list the
+> +           SoC-specific version corresponding to the platform first
+> +           followed by the generic version.
+> +
+> +- reg: base address and length of the PCIe controller registers.
+> +- outbound-ranges: outbound windows base address and length including the flags.
+> +- resets: Must contain phandles to PCIe-related reset lines exposed by IP block
+> +- clocks: from common clock binding: clock specifiers for the PCIe controller
+> +        clock.
+> +- clock-names: from common clock binding: should be "pcie".
+> +
+> +Optional Property:
+> +- max-functions: Maximum number of functions that can be configured (default 1).
+> +
+> +Example:
+> +
+> +SoC-specific DT Entry:
+> +
+> +       pcie_ep: pcie_ep@fe000000 {
+> +               compatible = "renesas,pcie-ep-r8a774c0", "renesas,pcie-rcar-gen2";
+> +               reg = <0 0xfe000000 0 0x80000>;
+> +               outbound-ranges = <0xa 0x0 0xfe100000 0 0x000100000
+> +                                  0xa 0x0 0xfe200000 0 0x000200000
+> +                                  0x6 0x0 0x30000000 0 0x008000000
+> +                                  0x6 0x0 0x38000000 0 0x008000000>;
+> +               clocks = <&cpg CPG_MOD 319>;
+> +               clock-names = "pcie";
+> +               power-domains = <&sysc R8A774C0_PD_ALWAYS_ON>;
+> +               resets = <&cpg 319>;
+> +       };
 
-[  153.325306] Internal error: Oops: 96000004 [#1] SMP
-[  153.325733] Modules linked in: rockchipdrm btsdio(+) brcmfmac
-analogix_dp rockchip_rga dw_mipi_dsi brcmutil dw_hdmi hci_uart cec
-videobuf2_dma_sg cfg80211 v4l2_mem2mem btqca rc_core videobuf2_memops
-btbcm videobuf2_v4l2 btintel videobuf2_common drm_kms_helper bluetooth
-dwmac_rk syscopyarea stmmac_platform videodev panfrost sysfillrect
-stmmac snd_soc_simple_card sysimgblt fb_sys_fops gpu_sched
-snd_soc_simple_card_utils ecdh_generic st_lsm6dsx_spi phylink mc
-st_lsm6dsx_i2c ecc inv_mpu6050_i2c drm rfkill st_lsm6dsx inv_mpu6050
-adc_keys rockchip_saradc gpio_keys ak8975 cm32181 dw_wdt
-rockchip_thermal rtc_rk808
-[  153.330457] CPU: 1 PID: 493 Comm: systemd-network Tainted: G
-     L    5.5.0-rc4-1-ARCH #1
-[  153.331230] Hardware name: Orange Pi RK3399 Board (DT)
-[  153.331681] pstate: 40000005 (nZcv daif -PAN -UAO)
-[  153.332108] pc : mdiobus_get_phy+0xc/0x28
-[  153.332487] lr : stmmac_open+0x288/0xa50 [stmmac]
-[  153.332899] sp : ffff800011f2b5e0
-[  153.333190] x29: ffff800011f2b5e0 x28: 0000000000000000
-[  153.333656] x27: ffff0000eb6448c0 x26: ffff0000eb7e7e10
-[  153.334122] x25: 0000000000000001 x24: 0000000000000000
-[  153.334587] x23: ffff800011829000 x22: ffff0000eb644000
-[  153.335053] x21: ffff800011f2bbd0 x20: ffff0000ea0e6280
-[  153.335519] x19: 00000000ffffffff x18: 0000000000000000
-[  153.335984] x17: 0000000000000000 x16: 0000000000000000
-[  153.336449] x15: 0000000000000000 x14: 0000000000000000
-[  153.336915] x13: 0000000000000000 x12: 0000000000000000
-[  153.337380] x11: 0000000000000003 x10: 0101010101010101
-[  153.337845] x9 : ffff8000090becb0 x8 : 7f7f7f7f7f7f7f7f
-[  153.338310] x7 : fefefeff646c606d x6 : 1e091448e4e5f6e9
-[  153.338776] x5 : 697665644814091e x4 : 8080808000000000
-[  153.339241] x3 : 8343c96b232bb348 x2 : ffff0000ea0b8880
-[  153.339707] x1 : 00000000ffffffff x0 : fffffffffffffff8
-[  153.340172] Call trace:
-[  153.340392]  mdiobus_get_phy+0xc/0x28
-[  153.340717]  __dev_open+0x104/0x198
-[  153.341025]  __dev_change_flags+0x1a0/0x208
-[  153.341393]  dev_change_flags+0x28/0x68
-[  153.341731]  do_setlink+0x2cc/0xcc0
-[  153.342040]  rtnl_setlink+0xf0/0x188
-[  153.342355]  rtnetlink_rcv_msg+0x2b0/0x358
-[  153.342719]  netlink_rcv_skb+0x60/0x120
-[  153.343056]  rtnetlink_rcv+0x1c/0x28
-[  153.343371]  netlink_unicast+0x1a0/0x248
-[  153.343716]  netlink_sendmsg+0x1c0/0x3c0
-[  153.344061]  sock_sendmsg+0x4c/0x58
-[  153.344368]  __sys_sendto+0xd4/0x138
-[  153.344683]  __arm64_sys_sendto+0x2c/0x38
-[  153.345039]  el0_svc_handler+0xa4/0x188
-[  153.345377]  el0_sync_handler+0x1c8/0x260
-[  153.345730]  el0_sync+0x140/0x180
-[  153.346025] Code: d65f03c0 aa1e03e9 d503201f 8b21cc00 (f941d000)
-[  153.346560] ---[ end trace 0d82e8dab5e0c74f ]---
+Now that I have dropped "outbound-ranges", do the below bindings look good ?
 
-It's worth noting that the rk3399-orangepi device tree isn't
-necessarily compatible with this board, though after perusing the
-schematics for both the Orange Pi 4 and Orange Pi RK3399, I found no
-differences as far as the networking hardware goes. However, this is
-not an area in which I am well experienced.
+- reg-names: Must include the following names
+ - "apb-base" - Controller base
+ - "memory0" - memory window 0 used by the host to map the pci address locally
+ - "memory1" - memory window 1 used by the host to map the pci address locally
+- "memory2" - memory window 2 used by the host to map the pci address locally
+- "memory3" - memory window 3 used by the host to map the pci address locally
 
-I was able to work around this issue by reading a few other RK3399
-based device trees, and adding a phy-handle property to the gmac node,
-as well as an mdio child node. I have a patch [0] that works with my
-board, but I'm unsure if it's correct for both Orange Pis, and even if
-it is, I'm not sure what the original problem was, or how to word the
-commit message to actually send the patch.
+    pcie-ep: pcie_ep@fe000000 {
+        compatible = "renesas,pcie-r8a774c0", "renesas,pcie-rcar-gen2";
+        reg = <0 0xfe000000 0 0x80000>,
+            <0x0 0xfe100000 0 0x100000>,
+            <0x0 0xfe200000 0 0x200000>,
+            <0x0 0x30000000 0 0x8000000>,
+            <0x0 0x38000000 0 0x8000000>;
+        reg-names = "apb-base", "memory0", "memory1", "memory2", "memory3";
+        clocks = <&cpg CPG_MOD 319>;
+        clock-names = "pcie";
+        power-domains = <&sysc R8A774C0_PD_ALWAYS_ON>;
+        resets = <&cpg 319>;
+    };
 
-Could you please advise on how I should proceed?
-
-Best,
-Joseph
-
-[0] https://gist.github.com/jakogut/bc21de0535b640f2374c1d07a710e8ab
+Cheers,
+--Prabhakar
