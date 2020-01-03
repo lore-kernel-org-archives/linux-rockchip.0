@@ -1,99 +1,141 @@
-From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: Re: [v2 4/6] dt-bindings: PCI: rcar: Add bindings for R-Car PCIe
- endpoint controller
-Date: Fri, 3 Jan 2020 16:29:18 +0000
-Message-ID: <CA+V-a8uZqwfbYNec7bPWf5RuZP-zVkAyAz8SMueJic5wU0zyBw@mail.gmail.com>
-References: <20191213084748.11210-1-prabhakar.mahadev-lad.rj@bp.renesas.com> <20191213084748.11210-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: [PATCH v5 6/7] rockchip: Add Single boot image (with binman,
+ pad_cat)
+Date: Fri, 3 Jan 2020 23:05:05 +0530
+Message-ID: <CAMty3ZCGTSX7Y0TUDriOi1e6c3p=FK3V90DviYXMmqLbvNZjew@mail.gmail.com>
+References: <20191230082819.30191-1-jagan@amarulasolutions.com>
+ <20191230082819.30191-7-jagan@amarulasolutions.com>
+ <CAJs94EZiDzMDZ=FS_G0e+O_5Q8iP15Rvp=oa3f4h659WQEaS8w@mail.gmail.com>
+ <CAJs94EZgpHmkHAfDQUH_mqW82Jw_QJWiJgx_8Uny1ru1WfbrHw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191213084748.11210-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Magnus Damm <magnus.damm@gmail.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, Chris Paterson <Chris.Paterson2@renesas.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Frank Rowand <frowand.list@gmail.com>, Gustavo Pimentel <gustavo.pim>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAJs94EZgpHmkHAfDQUH_mqW82Jw_QJWiJgx_8Uny1ru1WfbrHw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "Matwey V. Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon/Rob,
-
-On Fri, Dec 13, 2019 at 8:48 AM Lad Prabhakar
-<prabhakar.csengg@gmail.com> wrote:
->
-> From: "Lad, Prabhakar" <prabhakar.mahadev-lad.rj@bp.renesas.com>
->
-> This patch adds the bindings for the R-Car PCIe endpoint driver.
->
-> Signed-off-by: Lad, Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-> ---
->  .../devicetree/bindings/pci/rcar-pci-ep.txt        | 37 ++++++++++++++++++++++
->  1 file changed, 37 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
->
-> diff --git a/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt b/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
-> new file mode 100644
-> index 0000000..7f0a97e
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pci/rcar-pci-ep.txt
-> @@ -0,0 +1,37 @@
-> +* Renesas R-Car PCIe Endpoint Controller DT description
-> +
-> +Required properties:
-> +           "renesas,pcie-ep-r8a774c0" for the R8A774C0 SoC;
-> +           "renesas,pcie-ep-rcar-gen3" for a generic R-Car Gen3 or
-> +                                    RZ/G2 compatible device.
-> +
-> +           When compatible with the generic version, nodes must list the
-> +           SoC-specific version corresponding to the platform first
-> +           followed by the generic version.
-> +
-> +- reg: base address and length of the PCIe controller registers.
-> +- outbound-ranges: outbound windows base address and length including the flags.
-> +- resets: Must contain phandles to PCIe-related reset lines exposed by IP block
-> +- clocks: from common clock binding: clock specifiers for the PCIe controller
-> +        clock.
-> +- clock-names: from common clock binding: should be "pcie".
-> +
-> +Optional Property:
-> +- max-functions: Maximum number of functions that can be configured (default 1).
-> +
-> +Example:
-> +
-> +SoC-specific DT Entry:
-> +
-> +       pcie_ep: pcie_ep@fe000000 {
-> +               compatible = "renesas,pcie-ep-r8a774c0", "renesas,pcie-rcar-gen2";
-> +               reg = <0 0xfe000000 0 0x80000>;
-> +               outbound-ranges = <0xa 0x0 0xfe100000 0 0x000100000
-> +                                  0xa 0x0 0xfe200000 0 0x000200000
-> +                                  0x6 0x0 0x30000000 0 0x008000000
-> +                                  0x6 0x0 0x38000000 0 0x008000000>;
-> +               clocks = <&cpg CPG_MOD 319>;
-> +               clock-names = "pcie";
-> +               power-domains = <&sysc R8A774C0_PD_ALWAYS_ON>;
-> +               resets = <&cpg 319>;
-> +       };
-
-Now that I have dropped "outbound-ranges", do the below bindings look good ?
-
-- reg-names: Must include the following names
- - "apb-base" - Controller base
- - "memory0" - memory window 0 used by the host to map the pci address locally
- - "memory1" - memory window 1 used by the host to map the pci address locally
-- "memory2" - memory window 2 used by the host to map the pci address locally
-- "memory3" - memory window 3 used by the host to map the pci address locally
-
-    pcie-ep: pcie_ep@fe000000 {
-        compatible = "renesas,pcie-r8a774c0", "renesas,pcie-rcar-gen2";
-        reg = <0 0xfe000000 0 0x80000>,
-            <0x0 0xfe100000 0 0x100000>,
-            <0x0 0xfe200000 0 0x200000>,
-            <0x0 0x30000000 0 0x8000000>,
-            <0x0 0x38000000 0 0x8000000>;
-        reg-names = "apb-base", "memory0", "memory1", "memory2", "memory3";
-        clocks = <&cpg CPG_MOD 319>;
-        clock-names = "pcie";
-        power-domains = <&sysc R8A774C0_PD_ALWAYS_ON>;
-        resets = <&cpg 319>;
-    };
-
-Cheers,
---Prabhakar
+T24gVHVlLCBEZWMgMzEsIDIwMTkgYXQgMTozNCBQTSBNYXR3ZXkgVi4gS29ybmlsb3YKPG1hdHdl
+eS5rb3JuaWxvdkBnbWFpbC5jb20+IHdyb3RlOgo+Cj4g0LLRgiwgMzEg0LTQtdC6LiAyMDE5INCz
+LiDQsiAxMDo1NCwgTWF0d2V5IFYuIEtvcm5pbG92IDxtYXR3ZXkua29ybmlsb3ZAZ21haWwuY29t
+PjoKPiA+Cj4gPiDQv9C9LCAzMCDQtNC10LouIDIwMTkg0LMuINCyIDExOjI4LCBKYWdhbiBUZWtp
+IDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT46Cj4gPiA+Cj4gPiA+IEFsbCByb2NrY2hpcCBw
+bGF0Zm9ybXMgc3VwcG9ydCBUUEwgb3IgU1BMLWJhc2VkIGJvb3Rsb2FkZXIKPiA+ID4gaW4gbWFp
+bmxpbmUgd2l0aCBVLUJvb3QgcHJvcGVyIGFzIGZpbmFsIHN0YWdlLiBGb3IgZWFjaAo+ID4gPiBz
+dGFnZSB3ZSBuZWVkIHRvIGJ1cm4gdGhlIGltYWdlIG9uIHRvIGZsYXNoIHdpdGggcmVzcGVjdGl2
+ZQo+ID4gPiBvZmZzZXRzLgo+ID4gPgo+ID4gPiBUaGlzIHBhdGNoIGNyZWF0ZXMgYSBzaW5nbGUg
+Ym9vdCBpbWFnZSBjb21wb25lbnQgdXNpbmcKPiA+ID4gLSBiaW5tYW4sIGZvciBhcm0zMiByb2Nr
+Y2hpcCBwbGF0Zm9ybXMKPiA+ID4gLSBwYWRfY2F0LCBmb3IgYXJtNjQgcm9ja2NoaXAgcGxhdGZv
+cm1zLgo+ID4gPgo+ID4gPiBUaGlzIHdvdWxkIGhlbHAgdXNlcnMgdG8gZ2V0IHJpZCBvZiBidXJu
+aW5nIGRpZmZlcmVudAo+ID4gPiBib290IHN0YWdlIGltYWdlcy4KPiA+ID4KPiA+ID4gVGhlIG5l
+dyBpbWFnZSBjYWxsZWQgJ3UtYm9vdC1yb2NrY2hpcC5iaW4nCj4gPiA+IHdoaWNoIGNhbiBidXJu
+IGludG8gZmxhc2ggbGlrZToKPiA+ID4KPiA+ID4g4oK5IHN1ZG8gZGQgaWY9dS1ib290LXJvY2tj
+aGlwLmJpbiBvZj0vZGV2L3NkYSBzZWVrPTY0Cj4gPiA+Cj4gPiA+IFRoaXMgd291bGQgc3VwcG9y
+dCBhbGwgcm9ja2NoaXAgcGxhdGZvcm1zLCBleGNlcHQgcmszMTI4Cj4gPiA+IHNpbmNlIGl0IGRv
+ZXNuJ3Qgc3VwcG9ydCBmb3IgU1BMIHlldC4KPiA+ID4KPiA+ID4gQ2M6IEtldmVyIFlhbmcgPGtl
+dmVyLnlhbmdAcm9jay1jaGlwcy5jb20+Cj4gPiA+IENjOiBNYXR3ZXkgVi4gS29ybmlsb3YgPG1h
+dHdleS5rb3JuaWxvdkBnbWFpbC5jb20+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kg
+PGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+ID4gPiBSZXZpZXdlZC1ieTogS2V2ZXIgWWFu
+ZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiA+ID4gLS0tCj4gPiA+ICBNYWtlZmlsZSAg
+ICAgICAgICAgICAgICAgICAgICAgICAgfCAxOCArKysrKysrKysrKysrKy0tLS0KPiA+ID4gIGFy
+Y2gvYXJtL0tjb25maWcgICAgICAgICAgICAgICAgICB8ICAxICsKPiA+ID4gIGFyY2gvYXJtL2R0
+cy9yazMwMzYtdS1ib290LmR0c2kgICB8ICAyICsrCj4gPiA+ICBhcmNoL2FybS9kdHMvcmszMjg4
+LXUtYm9vdC5kdHNpICAgfCAgMiArKwo+ID4gPiAgYXJjaC9hcm0vZHRzL3JvY2tjaGlwLXUtYm9v
+dC5kdHNpIHwgMjEgKysrKysrKysrKysrKysrKysrKysrCj4gPiA+ICBpbmNsdWRlL2NvbmZpZ3Mv
+cm9ja2NoaXAtY29tbW9uLmggfCAgMiArKwo+ID4gPiAgNiBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNl
+cnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+ID4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gv
+YXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaQo+ID4gPgo+ID4gPiBkaWZmIC0tZ2l0IGEvTWFr
+ZWZpbGUgYi9NYWtlZmlsZQo+ID4gPiBpbmRleCBiNDg2OTNlNTYwLi5kNWI2YzQ1Yzg5IDEwMDY0
+NAo+ID4gPiAtLS0gYS9NYWtlZmlsZQo+ID4gPiArKysgYi9NYWtlZmlsZQo+ID4gPiBAQCAtOTA5
+LDcgKzkwOSw3IEBAIEFMTC15ICs9IHUtYm9vdC13aXRoLWR0Yi5iaW4KPiA+ID4gIGVuZGlmCj4g
+PiA+Cj4gPiA+ICBpZmVxICgkKENPTkZJR19BUkNIX1JPQ0tDSElQKSQoQ09ORklHX1NQTCkseXkp
+Cj4gPiA+IC1BTEwteSArPSB1LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbgo+ID4gPiArQUxMLXkgKz0g
+dS1ib290LXJvY2tjaGlwLmJpbgo+ID4gPiAgZW5kaWYKPiA+ID4KPiA+ID4gIExERkxBR1NfdS1i
+b290ICs9ICQoTERGTEFHU19GSU5BTCkKPiA+ID4gQEAgLTEzODcsMTUgKzEzODcsMjUgQEAgaWZl
+cSAoJChDT05GSUdfU1BMKSQoQ09ORklHX1RQTCkseXkpCj4gPiA+ICBNS0lNQUdFRkxBR1NfdS1i
+b290LXRwbC1yb2NrY2hpcC5iaW4gPSAtbiAkKENPTkZJR19TWVNfU09DKSAtVCAkKFJPQ0tDSElQ
+X0lNR19UWVBFKQo+ID4gPiAgdHBsL3UtYm9vdC10cGwtcm9ja2NoaXAuYmluOiB0cGwvdS1ib290
+LXRwbC5iaW4gRk9SQ0UKPiA+ID4gICAgICAgICAkKGNhbGwgaWZfY2hhbmdlZCxta2ltYWdlKQo+
+ID4gPiAtdS1ib290LXNwbC1yb2NrY2hpcC5iaW46IHRwbC91LWJvb3QtdHBsLXJvY2tjaGlwLmJp
+biBzcGwvdS1ib290LXNwbC5iaW4gRk9SQ0UKPiA+ID4gK3NwbC91LWJvb3Qtc3BsLXJvY2tjaGlw
+LmJpbjogdHBsL3UtYm9vdC10cGwtcm9ja2NoaXAuYmluIHNwbC91LWJvb3Qtc3BsLmJpbiBGT1JD
+RQo+ID4gPiAgICAgICAgICQoY2FsbCBpZl9jaGFuZ2VkLGNhdCkKPiA+ID4gIGVsc2UKPiA+ID4g
+IE1LSU1BR0VGTEFHU191LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbiA9IC1uICQoQ09ORklHX1NZU19T
+T0MpIC1UICQoUk9DS0NISVBfSU1HX1RZUEUpCj4gPiA+IC11LWJvb3Qtc3BsLXJvY2tjaGlwLmJp
+bjogc3BsL3UtYm9vdC1zcGwuYmluIEZPUkNFCj4gPiA+ICtzcGwvdS1ib290LXNwbC1yb2NrY2hp
+cC5iaW46IHNwbC91LWJvb3Qtc3BsLmJpbiBGT1JDRQo+ID4gPiAgICAgICAgICQoY2FsbCBpZl9j
+aGFuZ2VkLG1raW1hZ2UpCj4gPiA+ICBlbmRpZgo+ID4gPgo+ID4gPiAtZW5kaWYKPiA+ID4gK2lm
+ZXEgKCQoQ09ORklHX0FSTTY0KSwpCj4gPiA+ICt1LWJvb3Qtcm9ja2NoaXAuYmluOiBzcGwvdS1i
+b290LXNwbC1yb2NrY2hpcC5iaW4gdS1ib290LmltZyBGT1JDRQo+ID4gPiArICAgICAgICQoY2Fs
+bCBpZl9jaGFuZ2VkLGJpbm1hbikKPiA+ID4gK2Vsc2UKPiA+ID4gK09CSkNPUFlGTEFHU191LWJv
+b3Qtcm9ja2NoaXAuYmluID0gLUkgYmluYXJ5IC1PIGJpbmFyeSBcCj4gPiA+ICsgICAgICAgLS1w
+YWQtdG89JChDT05GSUdfU1BMX1BBRF9UTykgLS1nYXAtZmlsbD0weGZmCj4gPiA+ICt1LWJvb3Qt
+cm9ja2NoaXAuYmluOiBzcGwvdS1ib290LXNwbC1yb2NrY2hpcC5iaW4gdS1ib290Lml0YiBGT1JD
+RQo+ID4gPiArICAgICAgICQoY2FsbCBpZl9jaGFuZ2VkLHBhZF9jYXQpCj4gPiA+ICtlbmRpZiAj
+IENPTkZJR19BUk02NAo+ID4gPiArCj4gPiA+ICtlbmRpZiAjIENPTkZJR19BUkNIX1JPQ0tDSElQ
+Cj4gPiA+Cj4gPiA+ICBpZmVxICgkKENPTkZJR19BUkNIX0xQQzMyWFgpJChDT05GSUdfU1BMKSx5
+eSkKPiA+ID4gIE1LSU1BR0VGTEFHU19scGMzMnh4LXNwbC5pbWcgPSAtVCBscGMzMnh4aW1hZ2Ug
+LWEgJChDT05GSUdfU1BMX1RFWFRfQkFTRSkKPiA+ID4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL0tj
+b25maWcgYi9hcmNoL2FybS9LY29uZmlnCj4gPiA+IGluZGV4IGY5ZGFiMDczZWEuLjdiZDk5YmEz
+YmIgMTAwNjQ0Cj4gPiA+IC0tLSBhL2FyY2gvYXJtL0tjb25maWcKPiA+ID4gKysrIGIvYXJjaC9h
+cm0vS2NvbmZpZwo+ID4gPiBAQCAtMTU5MCw2ICsxNTkwLDcgQEAgY29uZmlnIEFSQ0hfU1RNMzJN
+UAo+ID4gPiAgY29uZmlnIEFSQ0hfUk9DS0NISVAKPiA+ID4gICAgICAgICBib29sICJTdXBwb3J0
+IFJvY2tjaGlwIFNvQ3MiCj4gPiA+ICAgICAgICAgc2VsZWN0IEJMSwo+ID4gPiArICAgICAgIHNl
+bGVjdCBCSU5NQU4gaWYgIUFSTTY0Cj4gPiA+ICAgICAgICAgc2VsZWN0IERNCj4gPiA+ICAgICAg
+ICAgc2VsZWN0IERNX0dQSU8KPiA+ID4gICAgICAgICBzZWxlY3QgRE1fSTJDCj4gPiA+IGRpZmYg
+LS1naXQgYS9hcmNoL2FybS9kdHMvcmszMDM2LXUtYm9vdC5kdHNpIGIvYXJjaC9hcm0vZHRzL3Jr
+MzAzNi11LWJvb3QuZHRzaQo+ID4gPiBpbmRleCAxZTdkMDc5MzE1Li40MWFjMDU0YjgxIDEwMDY0
+NAo+ID4gPiAtLS0gYS9hcmNoL2FybS9kdHMvcmszMDM2LXUtYm9vdC5kdHNpCj4gPiA+ICsrKyBi
+L2FyY2gvYXJtL2R0cy9yazMwMzYtdS1ib290LmR0c2kKPiA+ID4gQEAgLTIsMyArMiw1IEBACj4g
+PiA+ICAvKgo+ID4gPiAgICogQ29weXJpZ2h0IChDKSAyMDE5IEphZ2FuIFRla2kgPGphZ2FuQGFt
+YXJ1bGFzb2x1dGlvbnMuY29tPgo+ID4gPiAgICovCj4gPiA+ICsKPiA+ID4gKyNpbmNsdWRlICJy
+b2NrY2hpcC11LWJvb3QuZHRzaSIKPiA+ID4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2R0cy9yazMy
+ODgtdS1ib290LmR0c2kgYi9hcmNoL2FybS9kdHMvcmszMjg4LXUtYm9vdC5kdHNpCj4gPiA+IGlu
+ZGV4IDNmMDBhM2I2ZDMuLjZkMzE3MzUzNjIgMTAwNjQ0Cj4gPiA+IC0tLSBhL2FyY2gvYXJtL2R0
+cy9yazMyODgtdS1ib290LmR0c2kKPiA+ID4gKysrIGIvYXJjaC9hcm0vZHRzL3JrMzI4OC11LWJv
+b3QuZHRzaQo+ID4gPiBAQCAtMyw2ICszLDggQEAKPiA+ID4gICAqIENvcHlyaWdodCAoQykgMjAx
+OSBSb2NrY2hpcCBFbGVjdHJvbmljcyBDby4sIEx0ZAo+ID4gPiAgICovCj4gPiA+Cj4gPiA+ICsj
+aW5jbHVkZSAicm9ja2NoaXAtdS1ib290LmR0c2kiCj4gPiA+ICsKPiA+ID4gIC8gewo+ID4gPiAg
+ICAgICAgIGNob3NlbiB7Cj4gPiA+ICAgICAgICAgICAgICAgICB1LWJvb3Qsc3BsLWJvb3Qtb3Jk
+ZXIgPSBcCj4gPiA+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9kdHMvcm9ja2NoaXAtdS1ib290LmR0
+c2kgYi9hcmNoL2FybS9kdHMvcm9ja2NoaXAtdS1ib290LmR0c2kKPiA+ID4gbmV3IGZpbGUgbW9k
+ZSAxMDA2NDQKPiA+ID4gaW5kZXggMDAwMDAwMDAwMC4uYmMwYjE0MTJhMgo+ID4gPiAtLS0gL2Rl
+di9udWxsCj4gPiA+ICsrKyBiL2FyY2gvYXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaQo+ID4g
+PiBAQCAtMCwwICsxLDIxIEBACj4gPiA+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BM
+LTIuMCsKPiA+ID4gKy8qCj4gPiA+ICsgKiBDb3B5cmlnaHQgKEMpIDIwMTkgSmFnYW4gVGVraSA8
+amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gPiA+ICsgKi8KPiA+ID4gKwo+ID4gPiArI2lu
+Y2x1ZGUgPGNvbmZpZy5oPgo+ID4gPiArCj4gPiA+ICsvIHsKPiA+ID4gKyAgICAgICBiaW5tYW4g
+ewo+ID4gPiArICAgICAgICAgICAgICAgZmlsZW5hbWUgPSAidS1ib290LXJvY2tjaGlwLmJpbiI7
+Cj4gPiA+ICsgICAgICAgICAgICAgICBwYWQtYnl0ZSA9IDwweGZmPjsKPiA+ID4gKwo+ID4gPiAr
+ICAgICAgICAgICAgICAgYmxvYiB7Cj4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGZpbGVu
+YW1lID0gInNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbiI7Cj4gPiA+ICsgICAgICAgICAgICAg
+ICB9Owo+ID4gPiArCj4gPiA+ICsgICAgICAgICAgICAgICB1LWJvb3QtaW1nIHsKPiA+ID4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgb2Zmc2V0ID0gPENPTkZJR19TUExfUEFEX1RPPjsKPiA+ID4g
+KyAgICAgICAgICAgICAgIH07Cj4gPiA+ICsgICAgICAgfTsKPiA+ID4gK307Cj4gPiA+IGRpZmYg
+LS1naXQgYS9pbmNsdWRlL2NvbmZpZ3Mvcm9ja2NoaXAtY29tbW9uLmggYi9pbmNsdWRlL2NvbmZp
+Z3Mvcm9ja2NoaXAtY29tbW9uLmgKPiA+ID4gaW5kZXggNjhlMTEwNWE0Yi4uZDdmNWNhOWZhNCAx
+MDA2NDQKPiA+ID4gLS0tIGEvaW5jbHVkZS9jb25maWdzL3JvY2tjaGlwLWNvbW1vbi5oCj4gPiA+
+ICsrKyBiL2luY2x1ZGUvY29uZmlncy9yb2NrY2hpcC1jb21tb24uaAo+ID4gPiBAQCAtOSw2ICs5
+LDggQEAKPiA+ID4KPiA+ID4gICNkZWZpbmUgQ09ORklHX1NZU19OUzE2NTUwX01FTTMyCj4gPiA+
+Cj4gPiA+ICsjZGVmaW5lIENPTkZJR19TUExfUEFEX1RPICAgICAgICAgICAgICA4MzU1ODQwCj4g
+Pgo+ID4gSSBtYXkgYmUgd3JvbmcsIGJ1dCBzaG91bGRuJ3QgQ09ORklHX1NZU19NTUNTRF9SQVdf
+TU9ERV9VX0JPT1RfU0VDVE9SCj4gPiBiZSB1c2VkIGhlcmU/Cj4KPiBJLmUuCj4KPiAjZGVmaW5l
+IENPTkZJR19TUExfUEFEX1RPICgoQ09ORklHX1NZU19NTUNTRF9SQVdfTU9ERV9VX0JPT1RfU0VD
+VE9SIC0gNjQpICogNTEyKQoKWWVzLCAgSSBkaWQgdHJ5IHRoaXMgbG9naWMuIGJ1dCBhcm02NCBj
+b21waWxlciB0aHJvd2luZyB3YXJuaW5nIGR1cmluZwpidWlsZCBmb3IgdGhpcy4gKEknbSB1c2lu
+ZyBnY2MgNi4zLjEpCgogIENBVCAgICAgdS1ib290LXJvY2tjaGlwLmJpbgphYXJjaDY0LWxpbnV4
+LWdudS1vYmpjb3B5OiAtLXBhZC10bzogYmFkIG51bWJlcjoKKChDT05GSUdfU1lTX01NQ1NEX1JB
+V19NT0RFX1VfQk9PVF9TRUNUT1IgLSA2NCkgKiA1MTIpCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
