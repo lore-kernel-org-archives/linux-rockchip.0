@@ -1,69 +1,59 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: Re: [PATCH V3, 1/1] arm64: dts: rockchip: add ROCK Pi S DTS
- support
-Date: Sat, 4 Jan 2020 11:01:09 +0100
-Message-ID: <d8816df1-2e00-468e-94f3-06b2845c1a81@gmail.com>
-References: <20200104003939.GA15565@bogus>
+From: Markus Reichl <m.reichl@fivetechno.de>
+Subject: [PATCH 2/5] regulator: mp8859: add config option and build entry
+Date: Sat,  4 Jan 2020 16:32:46 +0100
+Message-ID: <20200104153321.6584-3-m.reichl@fivetechno.de>
+References: <20200104153321.6584-1-m.reichl@fivetechno.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200104003939.GA15565@bogus>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200104153321.6584-1-m.reichl@fivetechno.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>
+Cc: Markus Reichl <m.reichl@fivetechno.de>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Add entries for the mp8857 regulator driver
+to the build system.
 
-Question for Rob Herring.
-See my comments at version 2.
-What is the reason that the non valid/existent node options
-supports-sd, supports-sd max-frequeency num-slots and disable-wp
-together with the many style issues are accepted?
+Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+---
+ drivers/regulator/Kconfig  | 11 +++++++++++
+ drivers/regulator/Makefile |  1 +
+ 2 files changed, 12 insertions(+)
 
-Thanks.
-
-On Mon, 30 Dec 2019 20:19:32 +0530, Akash Gajjar wrote:
-> ROCK Pi S is RK3308 based SBC from radxa.com. ROCK Pi S has a,
-> - 256MB/512MB DDR3 RAM
-> - SD, NAND flash (optional on board 1/2/4/8Gb)
-> - 100MB ethernet, PoE (optional)
-> - Onboard 802.11 b/g/n wifi + Bluetooth 4.0 Module
-> - USB2.0 Type-A HOST x1
-> - USB3.0 Type-C OTG x1
-> - 26-pin expansion header
-> - USB Type-C DC 5V Power Supply
->
-> This patch enables
-> - Console
-> - NAND Flash
-> - SD Card
->
-> Signed-off-by: Akash Gajjar <akash at openedev.com>
-> ---
-> Changes for v2
-> - Use pwm-supply for vdd_core node instead of vi-supply
-> - Add USB2.0 node support
->
-> Changes for v3
-> - Use small S on dts file name
-> - Add missing semicolon
-> - Remove USB2.0 node support
->
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 221 ++++++++++++++++++
->  3 files changed, 227 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
->
-
-Reviewed-by: Rob Herring <robh at kernel.org>
+diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+index 56512748a47d..593733a88a61 100644
+--- a/drivers/regulator/Kconfig
++++ b/drivers/regulator/Kconfig
+@@ -612,6 +612,17 @@ config REGULATOR_MCP16502
+ 	  through the regulator interface. In addition it enables
+ 	  suspend-to-ram/standby transition.
+ 
++config REGULATOR_MP8859
++	tristate "MPS MP8859 regulator driver"
++	depends on I2C
++	select REGMAP_I2C
++	help
++	  Say y here to support the MP8859 voltage regulator. This driver
++	  supports basic operations (get/set voltage) through the regulator
++	  interface.
++	  Say M here if you want to include support for the regulator as a
++	  module. The module will be named "mp8859".
++
+ config REGULATOR_MT6311
+ 	tristate "MediaTek MT6311 PMIC"
+ 	depends on I2C
+diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+index 9eccf93bc3ab..8ba8e5deebbd 100644
+--- a/drivers/regulator/Makefile
++++ b/drivers/regulator/Makefile
+@@ -78,6 +78,7 @@ obj-$(CONFIG_REGULATOR_MC13783) += mc13783-regulator.o
+ obj-$(CONFIG_REGULATOR_MC13892) += mc13892-regulator.o
+ obj-$(CONFIG_REGULATOR_MC13XXX_CORE) +=  mc13xxx-regulator-core.o
+ obj-$(CONFIG_REGULATOR_MCP16502) += mcp16502.o
++obj-$(CONFIG_REGULATOR_MP8859) += mp8859.o
+ obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6358)	+= mt6358-regulator.o
+-- 
+2.24.1
