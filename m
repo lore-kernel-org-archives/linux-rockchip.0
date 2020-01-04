@@ -1,141 +1,49 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH v5 6/7] rockchip: Add Single boot image (with binman,
- pad_cat)
-Date: Fri, 3 Jan 2020 23:05:05 +0530
-Message-ID: <CAMty3ZCGTSX7Y0TUDriOi1e6c3p=FK3V90DviYXMmqLbvNZjew@mail.gmail.com>
-References: <20191230082819.30191-1-jagan@amarulasolutions.com>
- <20191230082819.30191-7-jagan@amarulasolutions.com>
- <CAJs94EZiDzMDZ=FS_G0e+O_5Q8iP15Rvp=oa3f4h659WQEaS8w@mail.gmail.com>
- <CAJs94EZgpHmkHAfDQUH_mqW82Jw_QJWiJgx_8Uny1ru1WfbrHw@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH V3, 1/1] arm64: dts: rockchip: add ROCK Pi S DTS support
+Date: Fri, 3 Jan 2020 17:39:39 -0700
+Message-ID: <20200104003939.GA15565@bogus>
+References: <20191230145008.5899-1-akash@openedev.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAJs94EZgpHmkHAfDQUH_mqW82Jw_QJWiJgx_8Uny1ru1WfbrHw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "Matwey V. Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC support" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20191230145008.5899-1-akash@openedev.com>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: heiko@sntech.de, jagan@openedev.com, tom@radxa.com, Akash Gajjar <akash@openedev.com>, Mark Rutland <mark.rutland@arm.com>, Andy Yan <andy.yan@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, Douglas Anderson <dianders@chromium.org>, Vivek Unune <npcomplete13@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Markus Reichl <m.reichl@fivetechno.de>, Jagan Teki <jagan@amarulasolutions.com>, Nick Xie <nick@khadas.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCBEZWMgMzEsIDIwMTkgYXQgMTozNCBQTSBNYXR3ZXkgVi4gS29ybmlsb3YKPG1hdHdl
-eS5rb3JuaWxvdkBnbWFpbC5jb20+IHdyb3RlOgo+Cj4g0LLRgiwgMzEg0LTQtdC6LiAyMDE5INCz
-LiDQsiAxMDo1NCwgTWF0d2V5IFYuIEtvcm5pbG92IDxtYXR3ZXkua29ybmlsb3ZAZ21haWwuY29t
-PjoKPiA+Cj4gPiDQv9C9LCAzMCDQtNC10LouIDIwMTkg0LMuINCyIDExOjI4LCBKYWdhbiBUZWtp
-IDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT46Cj4gPiA+Cj4gPiA+IEFsbCByb2NrY2hpcCBw
-bGF0Zm9ybXMgc3VwcG9ydCBUUEwgb3IgU1BMLWJhc2VkIGJvb3Rsb2FkZXIKPiA+ID4gaW4gbWFp
-bmxpbmUgd2l0aCBVLUJvb3QgcHJvcGVyIGFzIGZpbmFsIHN0YWdlLiBGb3IgZWFjaAo+ID4gPiBz
-dGFnZSB3ZSBuZWVkIHRvIGJ1cm4gdGhlIGltYWdlIG9uIHRvIGZsYXNoIHdpdGggcmVzcGVjdGl2
-ZQo+ID4gPiBvZmZzZXRzLgo+ID4gPgo+ID4gPiBUaGlzIHBhdGNoIGNyZWF0ZXMgYSBzaW5nbGUg
-Ym9vdCBpbWFnZSBjb21wb25lbnQgdXNpbmcKPiA+ID4gLSBiaW5tYW4sIGZvciBhcm0zMiByb2Nr
-Y2hpcCBwbGF0Zm9ybXMKPiA+ID4gLSBwYWRfY2F0LCBmb3IgYXJtNjQgcm9ja2NoaXAgcGxhdGZv
-cm1zLgo+ID4gPgo+ID4gPiBUaGlzIHdvdWxkIGhlbHAgdXNlcnMgdG8gZ2V0IHJpZCBvZiBidXJu
-aW5nIGRpZmZlcmVudAo+ID4gPiBib290IHN0YWdlIGltYWdlcy4KPiA+ID4KPiA+ID4gVGhlIG5l
-dyBpbWFnZSBjYWxsZWQgJ3UtYm9vdC1yb2NrY2hpcC5iaW4nCj4gPiA+IHdoaWNoIGNhbiBidXJu
-IGludG8gZmxhc2ggbGlrZToKPiA+ID4KPiA+ID4g4oK5IHN1ZG8gZGQgaWY9dS1ib290LXJvY2tj
-aGlwLmJpbiBvZj0vZGV2L3NkYSBzZWVrPTY0Cj4gPiA+Cj4gPiA+IFRoaXMgd291bGQgc3VwcG9y
-dCBhbGwgcm9ja2NoaXAgcGxhdGZvcm1zLCBleGNlcHQgcmszMTI4Cj4gPiA+IHNpbmNlIGl0IGRv
-ZXNuJ3Qgc3VwcG9ydCBmb3IgU1BMIHlldC4KPiA+ID4KPiA+ID4gQ2M6IEtldmVyIFlhbmcgPGtl
-dmVyLnlhbmdAcm9jay1jaGlwcy5jb20+Cj4gPiA+IENjOiBNYXR3ZXkgVi4gS29ybmlsb3YgPG1h
-dHdleS5rb3JuaWxvdkBnbWFpbC5jb20+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kg
-PGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+ID4gPiBSZXZpZXdlZC1ieTogS2V2ZXIgWWFu
-ZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiA+ID4gLS0tCj4gPiA+ICBNYWtlZmlsZSAg
-ICAgICAgICAgICAgICAgICAgICAgICAgfCAxOCArKysrKysrKysrKysrKy0tLS0KPiA+ID4gIGFy
-Y2gvYXJtL0tjb25maWcgICAgICAgICAgICAgICAgICB8ICAxICsKPiA+ID4gIGFyY2gvYXJtL2R0
-cy9yazMwMzYtdS1ib290LmR0c2kgICB8ICAyICsrCj4gPiA+ICBhcmNoL2FybS9kdHMvcmszMjg4
-LXUtYm9vdC5kdHNpICAgfCAgMiArKwo+ID4gPiAgYXJjaC9hcm0vZHRzL3JvY2tjaGlwLXUtYm9v
-dC5kdHNpIHwgMjEgKysrKysrKysrKysrKysrKysrKysrCj4gPiA+ICBpbmNsdWRlL2NvbmZpZ3Mv
-cm9ja2NoaXAtY29tbW9uLmggfCAgMiArKwo+ID4gPiAgNiBmaWxlcyBjaGFuZ2VkLCA0MiBpbnNl
-cnRpb25zKCspLCA0IGRlbGV0aW9ucygtKQo+ID4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gv
-YXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaQo+ID4gPgo+ID4gPiBkaWZmIC0tZ2l0IGEvTWFr
-ZWZpbGUgYi9NYWtlZmlsZQo+ID4gPiBpbmRleCBiNDg2OTNlNTYwLi5kNWI2YzQ1Yzg5IDEwMDY0
-NAo+ID4gPiAtLS0gYS9NYWtlZmlsZQo+ID4gPiArKysgYi9NYWtlZmlsZQo+ID4gPiBAQCAtOTA5
-LDcgKzkwOSw3IEBAIEFMTC15ICs9IHUtYm9vdC13aXRoLWR0Yi5iaW4KPiA+ID4gIGVuZGlmCj4g
-PiA+Cj4gPiA+ICBpZmVxICgkKENPTkZJR19BUkNIX1JPQ0tDSElQKSQoQ09ORklHX1NQTCkseXkp
-Cj4gPiA+IC1BTEwteSArPSB1LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbgo+ID4gPiArQUxMLXkgKz0g
-dS1ib290LXJvY2tjaGlwLmJpbgo+ID4gPiAgZW5kaWYKPiA+ID4KPiA+ID4gIExERkxBR1NfdS1i
-b290ICs9ICQoTERGTEFHU19GSU5BTCkKPiA+ID4gQEAgLTEzODcsMTUgKzEzODcsMjUgQEAgaWZl
-cSAoJChDT05GSUdfU1BMKSQoQ09ORklHX1RQTCkseXkpCj4gPiA+ICBNS0lNQUdFRkxBR1NfdS1i
-b290LXRwbC1yb2NrY2hpcC5iaW4gPSAtbiAkKENPTkZJR19TWVNfU09DKSAtVCAkKFJPQ0tDSElQ
-X0lNR19UWVBFKQo+ID4gPiAgdHBsL3UtYm9vdC10cGwtcm9ja2NoaXAuYmluOiB0cGwvdS1ib290
-LXRwbC5iaW4gRk9SQ0UKPiA+ID4gICAgICAgICAkKGNhbGwgaWZfY2hhbmdlZCxta2ltYWdlKQo+
-ID4gPiAtdS1ib290LXNwbC1yb2NrY2hpcC5iaW46IHRwbC91LWJvb3QtdHBsLXJvY2tjaGlwLmJp
-biBzcGwvdS1ib290LXNwbC5iaW4gRk9SQ0UKPiA+ID4gK3NwbC91LWJvb3Qtc3BsLXJvY2tjaGlw
-LmJpbjogdHBsL3UtYm9vdC10cGwtcm9ja2NoaXAuYmluIHNwbC91LWJvb3Qtc3BsLmJpbiBGT1JD
-RQo+ID4gPiAgICAgICAgICQoY2FsbCBpZl9jaGFuZ2VkLGNhdCkKPiA+ID4gIGVsc2UKPiA+ID4g
-IE1LSU1BR0VGTEFHU191LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbiA9IC1uICQoQ09ORklHX1NZU19T
-T0MpIC1UICQoUk9DS0NISVBfSU1HX1RZUEUpCj4gPiA+IC11LWJvb3Qtc3BsLXJvY2tjaGlwLmJp
-bjogc3BsL3UtYm9vdC1zcGwuYmluIEZPUkNFCj4gPiA+ICtzcGwvdS1ib290LXNwbC1yb2NrY2hp
-cC5iaW46IHNwbC91LWJvb3Qtc3BsLmJpbiBGT1JDRQo+ID4gPiAgICAgICAgICQoY2FsbCBpZl9j
-aGFuZ2VkLG1raW1hZ2UpCj4gPiA+ICBlbmRpZgo+ID4gPgo+ID4gPiAtZW5kaWYKPiA+ID4gK2lm
-ZXEgKCQoQ09ORklHX0FSTTY0KSwpCj4gPiA+ICt1LWJvb3Qtcm9ja2NoaXAuYmluOiBzcGwvdS1i
-b290LXNwbC1yb2NrY2hpcC5iaW4gdS1ib290LmltZyBGT1JDRQo+ID4gPiArICAgICAgICQoY2Fs
-bCBpZl9jaGFuZ2VkLGJpbm1hbikKPiA+ID4gK2Vsc2UKPiA+ID4gK09CSkNPUFlGTEFHU191LWJv
-b3Qtcm9ja2NoaXAuYmluID0gLUkgYmluYXJ5IC1PIGJpbmFyeSBcCj4gPiA+ICsgICAgICAgLS1w
-YWQtdG89JChDT05GSUdfU1BMX1BBRF9UTykgLS1nYXAtZmlsbD0weGZmCj4gPiA+ICt1LWJvb3Qt
-cm9ja2NoaXAuYmluOiBzcGwvdS1ib290LXNwbC1yb2NrY2hpcC5iaW4gdS1ib290Lml0YiBGT1JD
-RQo+ID4gPiArICAgICAgICQoY2FsbCBpZl9jaGFuZ2VkLHBhZF9jYXQpCj4gPiA+ICtlbmRpZiAj
-IENPTkZJR19BUk02NAo+ID4gPiArCj4gPiA+ICtlbmRpZiAjIENPTkZJR19BUkNIX1JPQ0tDSElQ
-Cj4gPiA+Cj4gPiA+ICBpZmVxICgkKENPTkZJR19BUkNIX0xQQzMyWFgpJChDT05GSUdfU1BMKSx5
-eSkKPiA+ID4gIE1LSU1BR0VGTEFHU19scGMzMnh4LXNwbC5pbWcgPSAtVCBscGMzMnh4aW1hZ2Ug
-LWEgJChDT05GSUdfU1BMX1RFWFRfQkFTRSkKPiA+ID4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL0tj
-b25maWcgYi9hcmNoL2FybS9LY29uZmlnCj4gPiA+IGluZGV4IGY5ZGFiMDczZWEuLjdiZDk5YmEz
-YmIgMTAwNjQ0Cj4gPiA+IC0tLSBhL2FyY2gvYXJtL0tjb25maWcKPiA+ID4gKysrIGIvYXJjaC9h
-cm0vS2NvbmZpZwo+ID4gPiBAQCAtMTU5MCw2ICsxNTkwLDcgQEAgY29uZmlnIEFSQ0hfU1RNMzJN
-UAo+ID4gPiAgY29uZmlnIEFSQ0hfUk9DS0NISVAKPiA+ID4gICAgICAgICBib29sICJTdXBwb3J0
-IFJvY2tjaGlwIFNvQ3MiCj4gPiA+ICAgICAgICAgc2VsZWN0IEJMSwo+ID4gPiArICAgICAgIHNl
-bGVjdCBCSU5NQU4gaWYgIUFSTTY0Cj4gPiA+ICAgICAgICAgc2VsZWN0IERNCj4gPiA+ICAgICAg
-ICAgc2VsZWN0IERNX0dQSU8KPiA+ID4gICAgICAgICBzZWxlY3QgRE1fSTJDCj4gPiA+IGRpZmYg
-LS1naXQgYS9hcmNoL2FybS9kdHMvcmszMDM2LXUtYm9vdC5kdHNpIGIvYXJjaC9hcm0vZHRzL3Jr
-MzAzNi11LWJvb3QuZHRzaQo+ID4gPiBpbmRleCAxZTdkMDc5MzE1Li40MWFjMDU0YjgxIDEwMDY0
-NAo+ID4gPiAtLS0gYS9hcmNoL2FybS9kdHMvcmszMDM2LXUtYm9vdC5kdHNpCj4gPiA+ICsrKyBi
-L2FyY2gvYXJtL2R0cy9yazMwMzYtdS1ib290LmR0c2kKPiA+ID4gQEAgLTIsMyArMiw1IEBACj4g
-PiA+ICAvKgo+ID4gPiAgICogQ29weXJpZ2h0IChDKSAyMDE5IEphZ2FuIFRla2kgPGphZ2FuQGFt
-YXJ1bGFzb2x1dGlvbnMuY29tPgo+ID4gPiAgICovCj4gPiA+ICsKPiA+ID4gKyNpbmNsdWRlICJy
-b2NrY2hpcC11LWJvb3QuZHRzaSIKPiA+ID4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2R0cy9yazMy
-ODgtdS1ib290LmR0c2kgYi9hcmNoL2FybS9kdHMvcmszMjg4LXUtYm9vdC5kdHNpCj4gPiA+IGlu
-ZGV4IDNmMDBhM2I2ZDMuLjZkMzE3MzUzNjIgMTAwNjQ0Cj4gPiA+IC0tLSBhL2FyY2gvYXJtL2R0
-cy9yazMyODgtdS1ib290LmR0c2kKPiA+ID4gKysrIGIvYXJjaC9hcm0vZHRzL3JrMzI4OC11LWJv
-b3QuZHRzaQo+ID4gPiBAQCAtMyw2ICszLDggQEAKPiA+ID4gICAqIENvcHlyaWdodCAoQykgMjAx
-OSBSb2NrY2hpcCBFbGVjdHJvbmljcyBDby4sIEx0ZAo+ID4gPiAgICovCj4gPiA+Cj4gPiA+ICsj
-aW5jbHVkZSAicm9ja2NoaXAtdS1ib290LmR0c2kiCj4gPiA+ICsKPiA+ID4gIC8gewo+ID4gPiAg
-ICAgICAgIGNob3NlbiB7Cj4gPiA+ICAgICAgICAgICAgICAgICB1LWJvb3Qsc3BsLWJvb3Qtb3Jk
-ZXIgPSBcCj4gPiA+IGRpZmYgLS1naXQgYS9hcmNoL2FybS9kdHMvcm9ja2NoaXAtdS1ib290LmR0
-c2kgYi9hcmNoL2FybS9kdHMvcm9ja2NoaXAtdS1ib290LmR0c2kKPiA+ID4gbmV3IGZpbGUgbW9k
-ZSAxMDA2NDQKPiA+ID4gaW5kZXggMDAwMDAwMDAwMC4uYmMwYjE0MTJhMgo+ID4gPiAtLS0gL2Rl
-di9udWxsCj4gPiA+ICsrKyBiL2FyY2gvYXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaQo+ID4g
-PiBAQCAtMCwwICsxLDIxIEBACj4gPiA+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BM
-LTIuMCsKPiA+ID4gKy8qCj4gPiA+ICsgKiBDb3B5cmlnaHQgKEMpIDIwMTkgSmFnYW4gVGVraSA8
-amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gPiA+ICsgKi8KPiA+ID4gKwo+ID4gPiArI2lu
-Y2x1ZGUgPGNvbmZpZy5oPgo+ID4gPiArCj4gPiA+ICsvIHsKPiA+ID4gKyAgICAgICBiaW5tYW4g
-ewo+ID4gPiArICAgICAgICAgICAgICAgZmlsZW5hbWUgPSAidS1ib290LXJvY2tjaGlwLmJpbiI7
-Cj4gPiA+ICsgICAgICAgICAgICAgICBwYWQtYnl0ZSA9IDwweGZmPjsKPiA+ID4gKwo+ID4gPiAr
-ICAgICAgICAgICAgICAgYmxvYiB7Cj4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGZpbGVu
-YW1lID0gInNwbC91LWJvb3Qtc3BsLXJvY2tjaGlwLmJpbiI7Cj4gPiA+ICsgICAgICAgICAgICAg
-ICB9Owo+ID4gPiArCj4gPiA+ICsgICAgICAgICAgICAgICB1LWJvb3QtaW1nIHsKPiA+ID4gKyAg
-ICAgICAgICAgICAgICAgICAgICAgb2Zmc2V0ID0gPENPTkZJR19TUExfUEFEX1RPPjsKPiA+ID4g
-KyAgICAgICAgICAgICAgIH07Cj4gPiA+ICsgICAgICAgfTsKPiA+ID4gK307Cj4gPiA+IGRpZmYg
-LS1naXQgYS9pbmNsdWRlL2NvbmZpZ3Mvcm9ja2NoaXAtY29tbW9uLmggYi9pbmNsdWRlL2NvbmZp
-Z3Mvcm9ja2NoaXAtY29tbW9uLmgKPiA+ID4gaW5kZXggNjhlMTEwNWE0Yi4uZDdmNWNhOWZhNCAx
-MDA2NDQKPiA+ID4gLS0tIGEvaW5jbHVkZS9jb25maWdzL3JvY2tjaGlwLWNvbW1vbi5oCj4gPiA+
-ICsrKyBiL2luY2x1ZGUvY29uZmlncy9yb2NrY2hpcC1jb21tb24uaAo+ID4gPiBAQCAtOSw2ICs5
-LDggQEAKPiA+ID4KPiA+ID4gICNkZWZpbmUgQ09ORklHX1NZU19OUzE2NTUwX01FTTMyCj4gPiA+
-Cj4gPiA+ICsjZGVmaW5lIENPTkZJR19TUExfUEFEX1RPICAgICAgICAgICAgICA4MzU1ODQwCj4g
-Pgo+ID4gSSBtYXkgYmUgd3JvbmcsIGJ1dCBzaG91bGRuJ3QgQ09ORklHX1NZU19NTUNTRF9SQVdf
-TU9ERV9VX0JPT1RfU0VDVE9SCj4gPiBiZSB1c2VkIGhlcmU/Cj4KPiBJLmUuCj4KPiAjZGVmaW5l
-IENPTkZJR19TUExfUEFEX1RPICgoQ09ORklHX1NZU19NTUNTRF9SQVdfTU9ERV9VX0JPT1RfU0VD
-VE9SIC0gNjQpICogNTEyKQoKWWVzLCAgSSBkaWQgdHJ5IHRoaXMgbG9naWMuIGJ1dCBhcm02NCBj
-b21waWxlciB0aHJvd2luZyB3YXJuaW5nIGR1cmluZwpidWlsZCBmb3IgdGhpcy4gKEknbSB1c2lu
-ZyBnY2MgNi4zLjEpCgogIENBVCAgICAgdS1ib290LXJvY2tjaGlwLmJpbgphYXJjaDY0LWxpbnV4
-LWdudS1vYmpjb3B5OiAtLXBhZC10bzogYmFkIG51bWJlcjoKKChDT05GSUdfU1lTX01NQ1NEX1JB
-V19NT0RFX1VfQk9PVF9TRUNUT1IgLSA2NCkgKiA1MTIpCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Mon, 30 Dec 2019 20:19:32 +0530, Akash Gajjar wrote:
+> ROCK Pi S is RK3308 based SBC from radxa.com. ROCK Pi S has a,
+> - 256MB/512MB DDR3 RAM
+> - SD, NAND flash (optional on board 1/2/4/8Gb)
+> - 100MB ethernet, PoE (optional)
+> - Onboard 802.11 b/g/n wifi + Bluetooth 4.0 Module
+> - USB2.0 Type-A HOST x1
+> - USB3.0 Type-C OTG x1
+> - 26-pin expansion header
+> - USB Type-C DC 5V Power Supply
+> 
+> This patch enables
+> - Console
+> - NAND Flash
+> - SD Card
+> 
+> Signed-off-by: Akash Gajjar <akash@openedev.com>
+> ---
+> Changes for v2
+> - Use pwm-supply for vdd_core node instead of vi-supply
+> - Add USB2.0 node support
+>  
+> Changes for v3
+> - Use small S on dts file name
+> - Add missing semicolon
+> - Remove USB2.0 node support
+> 
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 221 ++++++++++++++++++
+>  3 files changed, 227 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+> 
+
+Reviewed-by: Rob Herring <robh@kernel.org>
