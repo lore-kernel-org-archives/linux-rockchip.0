@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v6 5/6] rockchip: Add Single boot image (with binman, pad_cat)
-Date: Sat,  4 Jan 2020 14:08:05 +0530
-Message-ID: <20200104083806.3930-6-jagan@amarulasolutions.com>
+Subject: [PATCH v6 6/6] doc: boards: Add rockchip documentation
+Date: Sat,  4 Jan 2020 14:08:06 +0530
+Message-ID: <20200104083806.3930-7-jagan@amarulasolutions.com>
 References: <20200104083806.3930-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20200104083806.3930-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -21,78 +21,180 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-QWxsIHJvY2tjaGlwIHBsYXRmb3JtcyBzdXBwb3J0IFRQTCBvciBTUEwtYmFzZWQgYm9vdGxvYWRl
-cgppbiBtYWlubGluZSB3aXRoIFUtQm9vdCBwcm9wZXIgYXMgZmluYWwgc3RhZ2UuIEZvciBlYWNo
-CnN0YWdlIHdlIG5lZWQgdG8gYnVybiB0aGUgaW1hZ2Ugb24gdG8gZmxhc2ggd2l0aCByZXNwZWN0
-aXZlCm9mZnNldHMuCgpUaGlzIHBhdGNoIGNyZWF0ZXMgYSBzaW5nbGUgYm9vdCBpbWFnZSBjb21w
-b25lbnQgdXNpbmcKLSBiaW5tYW4sIGZvciBhcm0zMiByb2NrY2hpcCBwbGF0Zm9ybXMKLSBwYWRf
-Y2F0LCBmb3IgYXJtNjQgcm9ja2NoaXAgcGxhdGZvcm1zLgoKVGhpcyB3b3VsZCBoZWxwIHVzZXJz
-IHRvIGdldCByaWQgb2YgYnVybmluZyBkaWZmZXJlbnQKYm9vdCBzdGFnZSBpbWFnZXMuCgpUaGUg
-bmV3IGltYWdlIGNhbGxlZCAndS1ib290LXJvY2tjaGlwLmJpbicKd2hpY2ggY2FuIGJ1cm4gaW50
-byBmbGFzaCBsaWtlOgoK4oK5IHN1ZG8gZGQgaWY9dS1ib290LXJvY2tjaGlwLmJpbiBvZj0vZGV2
-L3NkYSBzZWVrPTY0CgpUaGlzIHdvdWxkIHN1cHBvcnQgYWxsIHJvY2tjaGlwIHBsYXRmb3Jtcywg
-ZXhjZXB0IHJrMzEyOApzaW5jZSBpdCBkb2Vzbid0IHN1cHBvcnQgZm9yIFNQTCB5ZXQuCgpDYzog
-S2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KQ2M6IE1hdHdleSBWLiBLb3Ju
-aWxvdiA8bWF0d2V5Lmtvcm5pbG92QGdtYWlsLmNvbT4KU2lnbmVkLW9mZi1ieTogSmFnYW4gVGVr
-aSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+ClJldmlld2VkLWJ5OiBLZXZlciBZYW5nIDxr
-ZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgotLS0KIE1ha2VmaWxlICAgICAgICAgICAgICAgICAg
-ICAgICAgICB8IDE0ICsrKysrKysrKysrKy0tCiBhcmNoL2FybS9LY29uZmlnICAgICAgICAgICAg
-ICAgICAgfCAgMSArCiBhcmNoL2FybS9kdHMvcmszMDM2LXUtYm9vdC5kdHNpICAgfCAgMiArKwog
-YXJjaC9hcm0vZHRzL3JrMzI4OC11LWJvb3QuZHRzaSAgIHwgIDIgKysKIGFyY2gvYXJtL2R0cy9y
-b2NrY2hpcC11LWJvb3QuZHRzaSB8IDIxICsrKysrKysrKysrKysrKysrKysrKwogaW5jbHVkZS9j
-b25maWdzL3JvY2tjaGlwLWNvbW1vbi5oIHwgIDMgKysrCiA2IGZpbGVzIGNoYW5nZWQsIDQxIGlu
-c2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCiBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0v
-ZHRzL3JvY2tjaGlwLXUtYm9vdC5kdHNpCgpkaWZmIC0tZ2l0IGEvTWFrZWZpbGUgYi9NYWtlZmls
-ZQppbmRleCBkOGEwZjY4ODgzLi5jZGQzZWI0NjE0IDEwMDY0NAotLS0gYS9NYWtlZmlsZQorKysg
-Yi9NYWtlZmlsZQpAQCAtOTA5LDcgKzkwOSw3IEBAIEFMTC15ICs9IHUtYm9vdC13aXRoLWR0Yi5i
-aW4KIGVuZGlmCiAKIGlmZXEgKCQoQ09ORklHX0FSQ0hfUk9DS0NISVApJChDT05GSUdfU1BMKSx5
-eSkKLUFMTC15ICs9IGlkYmxvYWRlci5pbWcKK0FMTC15ICs9IHUtYm9vdC1yb2NrY2hpcC5iaW4K
-IGVuZGlmCiAKIExERkxBR1NfdS1ib290ICs9ICQoTERGTEFHU19GSU5BTCkKQEAgLTEzOTUsNyAr
-MTM5NSwxNyBAQCBpZGJsb2FkZXIuaW1nOiBzcGwvdS1ib290LXNwbC5iaW4gRk9SQ0UKIAkkKGNh
-bGwgaWZfY2hhbmdlZCxta2ltYWdlKQogZW5kaWYKIAotZW5kaWYKK2lmZXEgKCQoQ09ORklHX0FS
-TTY0KSwpCit1LWJvb3Qtcm9ja2NoaXAuYmluOiBpZGJsb2FkZXIuaW1nIHUtYm9vdC5pbWcgRk9S
-Q0UKKwkkKGNhbGwgaWZfY2hhbmdlZCxiaW5tYW4pCitlbHNlCitPQkpDT1BZRkxBR1NfdS1ib290
-LXJvY2tjaGlwLmJpbiA9IC1JIGJpbmFyeSAtTyBiaW5hcnkgXAorCS0tcGFkLXRvPSQoQ09ORklH
-X1NQTF9QQURfVE8pIC0tZ2FwLWZpbGw9MHhmZgordS1ib290LXJvY2tjaGlwLmJpbjogaWRibG9h
-ZGVyLmltZyB1LWJvb3QuaXRiIEZPUkNFCisJJChjYWxsIGlmX2NoYW5nZWQscGFkX2NhdCkKK2Vu
-ZGlmICMgQ09ORklHX0FSTTY0CisKK2VuZGlmICMgQ09ORklHX0FSQ0hfUk9DS0NISVAKIAogaWZl
-cSAoJChDT05GSUdfQVJDSF9MUEMzMlhYKSQoQ09ORklHX1NQTCkseXkpCiBNS0lNQUdFRkxBR1Nf
-bHBjMzJ4eC1zcGwuaW1nID0gLVQgbHBjMzJ4eGltYWdlIC1hICQoQ09ORklHX1NQTF9URVhUX0JB
-U0UpCmRpZmYgLS1naXQgYS9hcmNoL2FybS9LY29uZmlnIGIvYXJjaC9hcm0vS2NvbmZpZwppbmRl
-eCBmOWRhYjA3M2VhLi43YmQ5OWJhM2JiIDEwMDY0NAotLS0gYS9hcmNoL2FybS9LY29uZmlnCisr
-KyBiL2FyY2gvYXJtL0tjb25maWcKQEAgLTE1OTAsNiArMTU5MCw3IEBAIGNvbmZpZyBBUkNIX1NU
-TTMyTVAKIGNvbmZpZyBBUkNIX1JPQ0tDSElQCiAJYm9vbCAiU3VwcG9ydCBSb2NrY2hpcCBTb0Nz
-IgogCXNlbGVjdCBCTEsKKwlzZWxlY3QgQklOTUFOIGlmICFBUk02NAogCXNlbGVjdCBETQogCXNl
-bGVjdCBETV9HUElPCiAJc2VsZWN0IERNX0kyQwpkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vZHRzL3Jr
-MzAzNi11LWJvb3QuZHRzaSBiL2FyY2gvYXJtL2R0cy9yazMwMzYtdS1ib290LmR0c2kKaW5kZXgg
-MWU3ZDA3OTMxNS4uNDFhYzA1NGI4MSAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vZHRzL3JrMzAzNi11
-LWJvb3QuZHRzaQorKysgYi9hcmNoL2FybS9kdHMvcmszMDM2LXUtYm9vdC5kdHNpCkBAIC0yLDMg
-KzIsNSBAQAogLyoKICAqIENvcHlyaWdodCAoQykgMjAxOSBKYWdhbiBUZWtpIDxqYWdhbkBhbWFy
-dWxhc29sdXRpb25zLmNvbT4KICAqLworCisjaW5jbHVkZSAicm9ja2NoaXAtdS1ib290LmR0c2ki
-CmRpZmYgLS1naXQgYS9hcmNoL2FybS9kdHMvcmszMjg4LXUtYm9vdC5kdHNpIGIvYXJjaC9hcm0v
-ZHRzL3JrMzI4OC11LWJvb3QuZHRzaQppbmRleCAzZjAwYTNiNmQzLi42ZDMxNzM1MzYyIDEwMDY0
-NAotLS0gYS9hcmNoL2FybS9kdHMvcmszMjg4LXUtYm9vdC5kdHNpCisrKyBiL2FyY2gvYXJtL2R0
-cy9yazMyODgtdS1ib290LmR0c2kKQEAgLTMsNiArMyw4IEBACiAgKiBDb3B5cmlnaHQgKEMpIDIw
-MTkgUm9ja2NoaXAgRWxlY3Ryb25pY3MgQ28uLCBMdGQKICAqLwogCisjaW5jbHVkZSAicm9ja2No
-aXAtdS1ib290LmR0c2kiCisKIC8gewogCWNob3NlbiB7CiAJCXUtYm9vdCxzcGwtYm9vdC1vcmRl
-ciA9IFwKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaSBiL2Fy
-Y2gvYXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaQpuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRl
-eCAwMDAwMDAwMDAwLi5hMjU1OWUyZGIwCi0tLSAvZGV2L251bGwKKysrIGIvYXJjaC9hcm0vZHRz
-L3JvY2tjaGlwLXUtYm9vdC5kdHNpCkBAIC0wLDAgKzEsMjEgQEAKKy8vIFNQRFgtTGljZW5zZS1J
-ZGVudGlmaWVyOiBHUEwtMi4wKworLyoKKyAqIENvcHlyaWdodCAoQykgMjAxOSBKYWdhbiBUZWtp
-IDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KKyAqLworCisjaW5jbHVkZSA8Y29uZmlnLmg+
-CisKKy8geworCWJpbm1hbiB7CisJCWZpbGVuYW1lID0gInUtYm9vdC1yb2NrY2hpcC5iaW4iOwor
-CQlwYWQtYnl0ZSA9IDwweGZmPjsKKworCQlibG9iIHsKKwkJCWZpbGVuYW1lID0gImlkYmxvYWRl
-ci5pbWciOworCQl9OworCisJCXUtYm9vdC1pbWcgeworCQkJb2Zmc2V0ID0gPENPTkZJR19TUExf
-UEFEX1RPPjsKKwkJfTsKKwl9OworfTsKZGlmZiAtLWdpdCBhL2luY2x1ZGUvY29uZmlncy9yb2Nr
-Y2hpcC1jb21tb24uaCBiL2luY2x1ZGUvY29uZmlncy9yb2NrY2hpcC1jb21tb24uaAppbmRleCA2
-OGUxMTA1YTRiLi5iNTVlMDlhOWNhIDEwMDY0NAotLS0gYS9pbmNsdWRlL2NvbmZpZ3Mvcm9ja2No
-aXAtY29tbW9uLmgKKysrIGIvaW5jbHVkZS9jb25maWdzL3JvY2tjaGlwLWNvbW1vbi5oCkBAIC05
-LDYgKzksOSBAQAogCiAjZGVmaW5lIENPTkZJR19TWVNfTlMxNjU1MF9NRU0zMgogCisvKiAoKENP
-TkZJR19TWVNfTU1DU0RfUkFXX01PREVfVV9CT09UX1NFQ1RPUiAtIDY0KSAqIDUxMikgKi8KKyNk
-ZWZpbmUgQ09ORklHX1NQTF9QQURfVE8JCTgzNTU4NDAKKwogI2lmbmRlZiBDT05GSUdfU1BMX0JV
-SUxECiAKIC8qIEZpcnN0IHRyeSB0byBib290IGZyb20gU0QgKGluZGV4IDApLCB0aGVuIGVNTUMg
-KGluZGV4IDEpICovCi0tIAoyLjE4LjAuMzIxLmdmZmM2ZmEwZTMKCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Rockchip has documentation file, doc/README.rockchip but
+which is not so readable to add or understand the existing
+contents. Even the format that support is legacy readme
+in U-Boot.
+
+Add rockchip specific documentation file using new rst
+format, which describes the information about Rockchip
+supported boards and it's usage steps.
+
+Added minimal information about rk3288, rk3328, rk3368
+and rk3399 boards and usage. This would indeed updated
+further based on the requirements and updates.
+
+Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Matwey V. Kornilov <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ doc/board/rockchip/index.rst    |  10 +++
+ doc/board/rockchip/rockchip.rst | 130 ++++++++++++++++++++++++++++++++
+ 2 files changed, 140 insertions(+)
+ create mode 100644 doc/board/rockchip/index.rst
+ create mode 100644 doc/board/rockchip/rockchip.rst
+
+diff --git a/doc/board/rockchip/index.rst b/doc/board/rockchip/index.rst
+new file mode 100644
+index 0000000000..0c377e9bbb
+--- /dev/null
++++ b/doc/board/rockchip/index.rst
+@@ -0,0 +1,10 @@
++.. SPDX-License-Identifier: GPL-2.0+
++.. Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++
++Rockchip
++========
++
++.. toctree::
++   :maxdepth: 2
++
++   rockchip
+diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
+new file mode 100644
+index 0000000000..6c34f1ab99
+--- /dev/null
++++ b/doc/board/rockchip/rockchip.rst
+@@ -0,0 +1,130 @@
++.. SPDX-License-Identifier: GPL-2.0+
++.. Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++
++ROCKCHIP
++========
++
++About this
++----------
++
++This document describes the information about Rockchip supported boards
++and it's usage steps.
++
++Rockchip boards
++---------------
++
++Rockchip is SoC solutions provider for tablets & PCs, streaming media
++TV boxes, AI audio & vision, IoT hardware.
++
++A wide range of Rockchip SoCs with associated boardsare supported in
++mainline U-Boot.
++
++List of mainline supported rockchip boards:
++
++* rk3288
++     - Evb-RK3288
++     - Firefly-RK3288
++     - mqmaker MiQi
++     - Phytec RK3288 PCM-947
++     - PopMetal-RK3288
++     - Radxa Rock 2 Square
++     - Tinker-RK3288
++     - Google Jerry
++     - Google Mickey
++     - Google Minnie
++     - Google Speedy
++     - Amarula Vyasa-RK3288
++* rk3328
++     - Rockchip RK3328 EVB
++     - Pine64 Rock64
++* rk3368
++     - GeekBox
++     - PX5 EVB
++     - Rockchip sheep board
++     - Theobroma Systems RK3368-uQ7 SoM
++* rk3399
++     - 96boards RK3399 Ficus
++     - 96boards Rock960
++     - Firefly-RK3399 Board
++     - Firefly ROC-RK3399-PC Board
++     - FriendlyElec NanoPC-T4
++     - FriendlyElec NanoPi M4
++     - FriendlyARM NanoPi NEO4
++     - Google Bob
++     - Khadas Edge
++     - Khadas Edge-Captain
++     - Khadas Edge-V
++     - Orange Pi RK3399 Board
++     - Pine64 RockPro64
++     - Radxa ROCK Pi 4
++     - Rockchip RK3399 Evaluation Board
++     - Theobroma Systems RK3399-Q7 SoM
++
++Building
++--------
++
++TF-A
++^^^^
++
++TF-A would require to build for ARM64 Rockchip SoCs platforms.
++
++To build TF-A::
++
++        git clone https://github.com/ARM-software/arm-trusted-firmware.git
++        cd arm-trusted-firmware
++        make realclean
++        make CROSS_COMPILE=aarch64-linux-gnu- PLAT=rk3399
++
++Specify the PLAT= with desired rockchip platform to build TF-A for.
++
++U-Boot
++^^^^^^
++
++To build rk3328 boards::
++
++        export BL31=/path/to/arm-trusted-firmware/to/bl31.elf
++        make evb-rk3328_defconfig
++        make
++
++To build rk3288 boards::
++
++        make evb-rk3288_defconfig
++        make
++
++To build rk3368 boards::
++
++        export BL31=/path/to/arm-trusted-firmware/to/bl31.elf
++        make evb-px5_defconfig
++        make
++
++To build rk3399 boards::
++
++        export BL31=/path/to/arm-trusted-firmware/to/bl31.elf
++        make evb-rk3399_defconfig
++        make
++
++Flashing
++--------
++
++SD Card
++^^^^^^^
++
++All rockchip platforms, except rk3128 (which doesn't use SPL) are now
++supporting single boot image using binman and pad_cat.
++
++To write an image that boots from an SD card (assumed to be /dev/sda)::
++
++        sudo dd if=u-boot-rockchip.bin of=/dev/sda seek=64
++        sync
++
++TODO
++----
++
++- Add rockchip idbloader image building
++- Add rockchip TPL image building
++- Document SPI flash boot
++- Describe steps for eMMC flashing
++- Add missing SoC's with it boards list
++
++.. Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++.. Sat Jan  4 14:00:54 IST 2020
+-- 
+2.18.0.321.gffc6fa0e3
