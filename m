@@ -1,49 +1,58 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH V3, 1/1] arm64: dts: rockchip: add ROCK Pi S DTS support
-Date: Fri, 3 Jan 2020 17:39:39 -0700
-Message-ID: <20200104003939.GA15565@bogus>
-References: <20191230145008.5899-1-akash@openedev.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v6 1/6] Makefile: Add rockchip image type
+Date: Sat,  4 Jan 2020 14:08:01 +0530
+Message-ID: <20200104083806.3930-2-jagan@amarulasolutions.com>
+References: <20200104083806.3930-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191230145008.5899-1-akash@openedev.com>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: heiko@sntech.de, jagan@openedev.com, tom@radxa.com, Akash Gajjar <akash@openedev.com>, Mark Rutland <mark.rutland@arm.com>, Andy Yan <andy.yan@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>, Douglas Anderson <dianders@chromium.org>, Vivek Unune <npcomplete13@gmail.com>, Matthias Kaehlcke <mka@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Markus Reichl <m.reichl@fivetechno.de>, Jagan Teki <jagan@amarulasolutions.com>, Nick Xie <nick@khadas.com>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200104083806.3930-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 30 Dec 2019 20:19:32 +0530, Akash Gajjar wrote:
-> ROCK Pi S is RK3308 based SBC from radxa.com. ROCK Pi S has a,
-> - 256MB/512MB DDR3 RAM
-> - SD, NAND flash (optional on board 1/2/4/8Gb)
-> - 100MB ethernet, PoE (optional)
-> - Onboard 802.11 b/g/n wifi + Bluetooth 4.0 Module
-> - USB2.0 Type-A HOST x1
-> - USB3.0 Type-C OTG x1
-> - 26-pin expansion header
-> - USB Type-C DC 5V Power Supply
-> 
-> This patch enables
-> - Console
-> - NAND Flash
-> - SD Card
-> 
-> Signed-off-by: Akash Gajjar <akash@openedev.com>
-> ---
-> Changes for v2
-> - Use pwm-supply for vdd_core node instead of vi-supply
-> - Add USB2.0 node support
->  
-> Changes for v3
-> - Use small S on dts file name
-> - Add missing semicolon
-> - Remove USB2.0 node support
-> 
->  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
->  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->  .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 221 ++++++++++++++++++
->  3 files changed, 227 insertions(+)
->  create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
-> 
+Add rockchip image type support. right now the image
+type marked with rksd, So create image type variable
+with required image type like rksd or rkspi.
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Matwey V. Kornilov <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
+ Makefile | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index e20a206239..9998d238f3 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1374,7 +1374,15 @@ u-boot-with-spl.bin: $(SPL_IMAGE) $(SPL_PAYLOAD) FORCE
+ 	$(call if_changed,pad_cat)
+ 
+ ifeq ($(CONFIG_ARCH_ROCKCHIP),y)
+-MKIMAGEFLAGS_u-boot-tpl.img = -n $(CONFIG_SYS_SOC) -T rksd
++
++# rockchip image type
++ifeq ($(CONFIG_SPI_FLASH_SUPPORT),y)
++ROCKCHIP_IMG_TYPE := rkspi
++else
++ROCKCHIP_IMG_TYPE := rksd
++endif
++
++MKIMAGEFLAGS_u-boot-tpl.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
+ tpl/u-boot-tpl.img: tpl/u-boot-tpl.bin FORCE
+ 	$(call if_changed,mkimage)
+ idbloader.img: tpl/u-boot-tpl.img spl/u-boot-spl.bin FORCE
+-- 
+2.18.0.321.gffc6fa0e3
