@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v6 3/6] Makefile: rockchip: Support SPL-alone mkimage
-Date: Sat,  4 Jan 2020 14:08:03 +0530
-Message-ID: <20200104083806.3930-4-jagan@amarulasolutions.com>
+Subject: [PATCH v6 4/6] arm: dts: rk3036: Add rk3036-u-boot.dtsi
+Date: Sat,  4 Jan 2020 14:08:04 +0530
+Message-ID: <20200104083806.3930-5-jagan@amarulasolutions.com>
 References: <20200104083806.3930-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,50 +21,40 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add SPL-alone mkimage tooling support via Makefile for
-few platforms or boards used in rockchip family.
+Add U-Boot specific dtsi file for rk3036 SoC. This
+would help to add U-Boot specific dts nodes, properties
+which are common across rk3036.
 
-With this users would get rid of explicitly creating
-mkimage tool for rockchip rksd or rkspi boot modes.
+Right now, the file is empty, will add required changes
+in future patches.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- Makefile | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ arch/arm/dts/rk3036-sdk-u-boot.dtsi | 2 ++
+ arch/arm/dts/rk3036-u-boot.dtsi     | 4 ++++
+ 2 files changed, 6 insertions(+)
+ create mode 100644 arch/arm/dts/rk3036-u-boot.dtsi
 
-diff --git a/Makefile b/Makefile
-index e519103be4..d8a0f68883 100644
---- a/Makefile
-+++ b/Makefile
-@@ -908,7 +908,7 @@ ifeq ($(CONFIG_MPC85xx)$(CONFIG_OF_SEPARATE),yy)
- ALL-y += u-boot-with-dtb.bin
- endif
- 
--ifeq ($(CONFIG_ARCH_ROCKCHIP)$(CONFIG_SPL)$(CONFIG_TPL),yyy)
-+ifeq ($(CONFIG_ARCH_ROCKCHIP)$(CONFIG_SPL),yy)
- ALL-y += idbloader.img
- endif
- 
-@@ -1382,11 +1382,19 @@ else
- ROCKCHIP_IMG_TYPE := rksd
- endif
- 
-+# TPL + SPL
-+ifeq ($(CONFIG_SPL)$(CONFIG_TPL),yy)
- MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
- tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
- 	$(call if_changed,mkimage)
- idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
- 	$(call if_changed,cat)
-+else
-+MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
-+idbloader.img: spl/u-boot-spl.bin FORCE
-+	$(call if_changed,mkimage)
-+endif
+diff --git a/arch/arm/dts/rk3036-sdk-u-boot.dtsi b/arch/arm/dts/rk3036-sdk-u-boot.dtsi
+index 6f15f4a8ec..754800c6e6 100644
+--- a/arch/arm/dts/rk3036-sdk-u-boot.dtsi
++++ b/arch/arm/dts/rk3036-sdk-u-boot.dtsi
+@@ -1,3 +1,5 @@
++#include "rk3036-u-boot.dtsi"
 +
- endif
- 
- ifeq ($(CONFIG_ARCH_LPC32XX)$(CONFIG_SPL),yy)
+ &uart2 {
+ 	u-boot,dm-pre-reloc;
+ };
+diff --git a/arch/arm/dts/rk3036-u-boot.dtsi b/arch/arm/dts/rk3036-u-boot.dtsi
+new file mode 100644
+index 0000000000..1e7d079315
+--- /dev/null
++++ b/arch/arm/dts/rk3036-u-boot.dtsi
+@@ -0,0 +1,4 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
++ */
 -- 
 2.18.0.321.gffc6fa0e3
