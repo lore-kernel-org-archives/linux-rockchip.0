@@ -1,37 +1,30 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 02/11] dt-bindings: display: rockchip-lvds: Document
- PX30 PHY
-Date: Sat, 4 Jan 2020 14:29:42 -0700
-Message-ID: <20200104212942.GA18654@bogus>
-References: <20191224143900.23567-1-miquel.raynal@bootlin.com>
- <20191224143900.23567-3-miquel.raynal@bootlin.com>
+Subject: Re: [PATCH v2 1/2] dt-bindings: mmc: remove identical phrase in
+ disable-wp text
+Date: Sat, 4 Jan 2020 14:55:24 -0700
+Message-ID: <20200104215524.GA28188@bogus>
+References: <20191219145843.3823-1-jbx6244@gmail.com>
+ <20191228093059.2817-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20191224143900.23567-3-miquel.raynal@bootlin.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Miquel Raynal <miquel.raynal@bootlin.com>, Maxime Chevallier <maxime.chevallier@bootlin.com>, linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20191228093059.2817-1-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, ulf.hansson@linaro.org, linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 24 Dec 2019 15:38:51 +0100, Miquel Raynal wrote:
-> PX30 SoCs use a single PHY shared by two display pipelines: MIPI DSI
-> and LVDS. In the case of the LVDS IP, document the possibility to fill
-> a PHY handle.
+On Sat, 28 Dec 2019 10:30:58 +0100, Johan Jonker wrote:
+> There are two identical phrases in the disable-wp text,
+> so remove one of them.
 > 
-> Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
->  .../devicetree/bindings/display/rockchip/rockchip-lvds.txt     | 3 +++
->  1 file changed, 3 insertions(+)
+>  Documentation/devicetree/bindings/mmc/mmc-controller.yaml | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+Applied, thanks.
+
+Rob
