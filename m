@@ -1,132 +1,121 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 15/15] phy/rockchip: inno-hdmi: Support more pre-pll configuration
-Date: Mon, 06 Jan 2020 22:33:29 +0100
-Message-ID: <2769685.GCkjRackp1@diego>
-References: <HE1PR06MB4011254424EDB4485617513CAC3C0@HE1PR06MB4011.eurprd06.prod.outlook.com> <20200106204951.6060-1-jonas@kwiboo.se> <HE1PR06MB4011666845128FD3C89F9DACAC3C0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH 06/15] drm/rockchip: vop: limit resolution width to 3840
+Date: Mon, 6 Jan 2020 21:34:09 +0000
+Message-ID: <HE1PR06MB40113EDB12EB739D19AB225FAC3C0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+References: <HE1PR06MB4011254424EDB4485617513CAC3C0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+ <20200106204812.5944-1-jonas@kwiboo.se>
+ <HE1PR06MB40111E90F5DA4718126E6A92AC3C0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+ <3203294.bEmSZkBOq4@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <HE1PR06MB4011666845128FD3C89F9DACAC3C0@HE1PR06MB4011.eurprd06.prod.outlook.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Sandy Huang <hjc@rock-chips.com>, Algea Cao <algea.cao@rock-chips.com>, Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Zheng Yang <zhengyang@rock-chips.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <dri-devel-bounces@lists.freedesktop.org>
+In-Reply-To: <3203294.bEmSZkBOq4@diego>
+Content-Language: en-US
+Content-ID: <C7279E574F34114DB66C0CD97F5F0DB6@eurprd06.prod.outlook.com>
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
+List-Post: <mailto:dri-devel@lists.freedesktop.org>
+List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
+ <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: dri-devel-bounces@lists.freedesktop.org
+Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+To: =?Windows-1252?Q?Heiko_St=FCbner?= <heiko@sntech.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, David Airlie <airlied@linux.ie>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Sandy Huang <hjc@rock-chips.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, Kishon Vijay Abraham I <kishon@ti.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Zheng Yang <zhengyang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 6. Januar 2020, 21:50:02 CET schrieb Jonas Karlman:
-> From: Algea Cao <algea.cao@rock-chips.com>
-> 
-> Adding the following freq cfg in 8-bit and 10-bit color depth:
-> 
-> {
->   40000000,  65000000,  71000000,  83500000, 85750000,
->   88750000, 108000000, 119000000, 162000000
-> }
-> 
-> New freq has been validated by quantumdata 980.
-> 
-> For some freq which can't be got by only using integer freq div,
-> frac freq div is needed, Such as 88.75Mhz 10-bit. But The actual
-> freq is different from the target freq, We must try to narrow
-> the gap between them. RK322X only support integer freq div.
-> 
-> The VCO of pre-PLL must be more than 2Ghz, otherwise PLL may be
-> unlocked.
-> 
-> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+On 2020-01-06 22:18, Heiko St=FCbner wrote:
+> Hi Jonas,
+>
+> Am Montag, 6. Januar 2020, 21:48:25 CET schrieb Jonas Karlman:
+>> Using a destination width that is more then 3840 pixels
+>> is not supported in scl_vop_cal_scl_fac().
+>>
+>> Work around this limitation by filtering all modes with
+>> a width above 3840 pixels.
+> could you try to send the whole series to people? I only get this patch6
+> of a series of 15 and that is way confusing not knowing what you want
+> to actually achieve.
 
-Acked-by: Heiko Stuebner <heiko@sntech.de>
+Very strange, you are the recipient of all patches, and they where delivere=
+d to
+patchworks at [1] and [2], I also have a copy of this series at [3].
 
+This is part of a series for adding support for more HDMI modes on the RK32=
+28/RK3328.
+Also preparation for adding bus format negotiation for YUV420 and 10-bit ou=
+tput mode,
+early bus format work is located at [4].
 
-> ---
->  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 74 ++++++++++++-------
->  1 file changed, 49 insertions(+), 25 deletions(-)
-> 
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> index 3719309ad0d0..bb8bdf5e3301 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-> @@ -291,32 +291,56 @@ struct inno_hdmi_phy_drv_data {
->  	const struct phy_config		*phy_cfg_table;
->  };
->  
-> +/*
-> + * If only using integer freq div can't get frequency we want, frac
-> + * freq div is needed. For example, pclk 88.75 Mhz and tmdsclk
-> + * 110.9375 Mhz must use frac div 0xF00000. The actual frequency is different
-> + * from the target frequency. Such as the tmds clock 110.9375 Mhz,
-> + * the actual tmds clock we get is 110.93719 Mhz. It is important
-> + * to note that RK322X platforms do not support frac div.
-> + */
->  static const struct pre_pll_config pre_pll_cfg_table[] = {
-> -	{ 27000000,  27000000, 1,  90, 3, 2, 2, 10, 3, 3, 4, 0, 0},
-> -	{ 27000000,  33750000, 1,  90, 1, 3, 3, 10, 3, 3, 4, 0, 0},
-> -	{ 40000000,  40000000, 1,  80, 2, 2, 2, 12, 2, 2, 2, 0, 0},
-> -	{ 59341000,  59341000, 1,  98, 3, 1, 2,  1, 3, 3, 4, 0, 0xE6AE6B},
-> -	{ 59400000,  59400000, 1,  99, 3, 1, 1,  1, 3, 3, 4, 0, 0},
-> -	{ 59341000,  74176250, 1,  98, 0, 3, 3,  1, 3, 3, 4, 0, 0xE6AE6B},
-> -	{ 59400000,  74250000, 1,  99, 1, 2, 2,  1, 3, 3, 4, 0, 0},
-> -	{ 74176000,  74176000, 1,  98, 1, 2, 2,  1, 2, 3, 4, 0, 0xE6AE6B},
-> -	{ 74250000,  74250000, 1,  99, 1, 2, 2,  1, 2, 3, 4, 0, 0},
-> -	{ 74176000,  92720000, 4, 494, 1, 2, 2,  1, 3, 3, 4, 0, 0x816817},
-> -	{ 74250000,  92812500, 4, 495, 1, 2, 2,  1, 3, 3, 4, 0, 0},
-> -	{148352000, 148352000, 1,  98, 1, 1, 1,  1, 2, 2, 2, 0, 0xE6AE6B},
-> -	{148500000, 148500000, 1,  99, 1, 1, 1,  1, 2, 2, 2, 0, 0},
-> -	{148352000, 185440000, 4, 494, 0, 2, 2,  1, 3, 2, 2, 0, 0x816817},
-> -	{148500000, 185625000, 4, 495, 0, 2, 2,  1, 3, 2, 2, 0, 0},
-> -	{296703000, 296703000, 1,  98, 0, 1, 1,  1, 0, 2, 2, 0, 0xE6AE6B},
-> -	{297000000, 297000000, 1,  99, 0, 1, 1,  1, 0, 2, 2, 0, 0},
-> -	{296703000, 370878750, 4, 494, 1, 2, 0,  1, 3, 1, 1, 0, 0x816817},
-> -	{297000000, 371250000, 4, 495, 1, 2, 0,  1, 3, 1, 1, 0, 0},
-> -	{593407000, 296703500, 1,  98, 0, 1, 1,  1, 0, 2, 1, 0, 0xE6AE6B},
-> -	{594000000, 297000000, 1,  99, 0, 1, 1,  1, 0, 2, 1, 0, 0},
-> -	{593407000, 370879375, 4, 494, 1, 2, 0,  1, 3, 1, 1, 1, 0x816817},
-> -	{594000000, 371250000, 4, 495, 1, 2, 0,  1, 3, 1, 1, 1, 0},
-> -	{593407000, 593407000, 1,  98, 0, 2, 0,  1, 0, 1, 1, 0, 0xE6AE6B},
-> -	{594000000, 594000000, 1,  99, 0, 2, 0,  1, 0, 1, 1, 0, 0},
-> +	{ 27000000,  27000000, 1,  90, 3, 2, 2, 10, 3, 3,  4, 0, 0},
-> +	{ 27000000,  33750000, 1,  90, 1, 3, 3, 10, 3, 3,  4, 0, 0},
-> +	{ 40000000,  40000000, 1,  80, 2, 2, 2, 12, 2, 2,  2, 0, 0},
-> +	{ 40000000,  50000000, 1, 100, 2, 2, 2,  1, 0, 0, 15, 0, 0},
-> +	{ 59341000,  59341000, 1,  98, 3, 1, 2,  1, 3, 3,  4, 0, 0xE6AE6B},
-> +	{ 59400000,  59400000, 1,  99, 3, 1, 1,  1, 3, 3,  4, 0, 0},
-> +	{ 59341000,  74176250, 1,  98, 0, 3, 3,  1, 3, 3,  4, 0, 0xE6AE6B},
-> +	{ 59400000,  74250000, 1,  99, 1, 2, 2,  1, 3, 3,  4, 0, 0},
-> +	{ 65000000,  65000000, 1, 130, 2, 2, 2,  1, 0, 0, 12, 0, 0},
-> +	{ 65000000,  81250000, 3, 325, 0, 3, 3,  1, 0, 0, 10, 0, 0},
-> +	{ 71000000,  71000000, 3, 284, 0, 3, 3,  1, 0, 0,  8, 0, 0},
-> +	{ 71000000,  88750000, 3, 355, 0, 3, 3,  1, 0, 0, 10, 0, 0},
-> +	{ 74176000,  74176000, 1,  98, 1, 2, 2,  1, 2, 3,  4, 0, 0xE6AE6B},
-> +	{ 74250000,  74250000, 1,  99, 1, 2, 2,  1, 2, 3,  4, 0, 0},
-> +	{ 74176000,  92720000, 4, 494, 1, 2, 2,  1, 3, 3,  4, 0, 0x816817},
-> +	{ 74250000,  92812500, 4, 495, 1, 2, 2,  1, 3, 3,  4, 0, 0},
-> +	{ 83500000,  83500000, 2, 167, 2, 1, 1,  1, 0, 0,  6, 0, 0},
-> +	{ 83500000, 104375000, 1, 104, 2, 1, 1,  1, 1, 0,  5, 0, 0x600000},
-> +	{ 85750000,  85750000, 3, 343, 0, 3, 3,  1, 0, 0,  8, 0, 0},
-> +	{ 88750000,  88750000, 3, 355, 0, 3, 3,  1, 0, 0,  8, 0, 0},
-> +	{ 88750000, 110937500, 1, 110, 2, 1, 1,  1, 1, 0,  5, 0, 0xF00000},
-> +	{108000000, 108000000, 1,  90, 3, 0, 0,  1, 0, 0,  5, 0, 0},
-> +	{108000000, 135000000, 1,  90, 0, 2, 2,  1, 0, 0,  5, 0, 0},
-> +	{119000000, 119000000, 1, 119, 2, 1, 1,  1, 0, 0,  6, 0, 0},
-> +	{119000000, 148750000, 1,  99, 0, 2, 2,  1, 0, 0,  5, 0, 0x2AAAAA},
-> +	{148352000, 148352000, 1,  98, 1, 1, 1,  1, 2, 2,  2, 0, 0xE6AE6B},
-> +	{148500000, 148500000, 1,  99, 1, 1, 1,  1, 2, 2,  2, 0, 0},
-> +	{148352000, 185440000, 4, 494, 0, 2, 2,  1, 3, 2,  2, 0, 0x816817},
-> +	{148500000, 185625000, 4, 495, 0, 2, 2,  1, 3, 2,  2, 0, 0},
-> +	{162000000, 162000000, 1, 108, 0, 2, 2,  1, 0, 0,  4, 0, 0},
-> +	{162000000, 202500000, 1, 135, 0, 2, 2,  1, 0, 0,  5, 0, 0},
-> +	{296703000, 296703000, 1,  98, 0, 1, 1,  1, 0, 2,  2, 0, 0xE6AE6B},
-> +	{297000000, 297000000, 1,  99, 0, 1, 1,  1, 0, 2,  2, 0, 0},
-> +	{296703000, 370878750, 4, 494, 1, 2, 0,  1, 3, 1,  1, 0, 0x816817},
-> +	{297000000, 371250000, 4, 495, 1, 2, 0,  1, 3, 1,  1, 0, 0},
-> +	{593407000, 296703500, 1,  98, 0, 1, 1,  1, 0, 2,  1, 0, 0xE6AE6B},
-> +	{594000000, 297000000, 1,  99, 0, 1, 1,  1, 0, 2,  1, 0, 0},
-> +	{593407000, 370879375, 4, 494, 1, 2, 0,  1, 3, 1,  1, 1, 0x816817},
-> +	{594000000, 371250000, 4, 495, 1, 2, 0,  1, 3, 1,  1, 1, 0},
-> +	{593407000, 593407000, 1,  98, 0, 2, 0,  1, 0, 1,  1, 0, 0xE6AE6B},
-> +	{594000000, 594000000, 1,  99, 0, 2, 0,  1, 0, 1,  1, 0, 0},
->  	{ /* sentinel */ }
->  };
->  
-> 
+[1] https://patchwork.kernel.org/cover/11320061/
+[2] https://patchwork.freedesktop.org/series/71675/
+[3] https://github.com/Kwiboo/linux-rockchip/commits/next-20200106-inno-hdm=
+i-phy
+[4] https://github.com/Kwiboo/linux-rockchip/commits/next-20200106-bus-form=
+at
+
+>
+> Hence I can also just point to rk3229, rk3328, rk3368 and rk3399 that
+> report a max output of 4096x2160 , which would be larger than that
+> 3840 value?
+
+Currently the scaling code in rockchip drm driver is limiting the use of la=
+rge framebuffers at [5].
+This scaling limitation made it impossible for me to use any 4096x mode tha=
+t my TV supports.
+
+if (dst_w > 3840) {
+=A0=A0=A0 DRM_DEV_ERROR(vop->dev, "Maximum dst width (3840) exceeded\n");
+
+[5] https://github.com/torvalds/linux/blob/master/drivers/gpu/drm/rockchip/=
+rockchip_drm_vop.c#L329-L332
+
+Regards,
+Jonas
+
+>
+>
+> Heiko
+>
+>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>>  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 10 ++++++++++
+>>  1 file changed, 10 insertions(+)
+>>
+>> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/d=
+rm/rockchip/rockchip_drm_vop.c
+>> index d04b3492bdac..f181897cbfad 100644
+>> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+>> @@ -1036,6 +1036,15 @@ static void vop_crtc_disable_vblank(struct drm_cr=
+tc *crtc)
+>>  	spin_unlock_irqrestore(&vop->irq_lock, flags);
+>>  }
+>>  =
+
+>> +enum drm_mode_status vop_crtc_mode_valid(struct drm_crtc *crtc,
+>> +					 const struct drm_display_mode *mode)
+>> +{
+>> +	if (mode->hdisplay > 3840)
+>> +		return MODE_BAD_HVALUE;
+>> +
+>> +	return MODE_OK;
+>> +}
+>> +
+>>  static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
+>>  				const struct drm_display_mode *mode,
+>>  				struct drm_display_mode *adjusted_mode)
+>> @@ -1377,6 +1386,7 @@ static void vop_crtc_atomic_flush(struct drm_crtc =
+*crtc,
+>>  }
+>>  =
+
+>>  static const struct drm_crtc_helper_funcs vop_crtc_helper_funcs =3D {
+>> +	.mode_valid =3D vop_crtc_mode_valid,
+>>  	.mode_fixup =3D vop_crtc_mode_fixup,
+>>  	.atomic_check =3D vop_crtc_atomic_check,
+>>  	.atomic_begin =3D vop_crtc_atomic_begin,
+>>
