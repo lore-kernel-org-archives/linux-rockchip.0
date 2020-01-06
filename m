@@ -1,88 +1,95 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2 00/11] Add PX30 LVDS support
-Date: Sun, 05 Jan 2020 15:05:26 +0100
-Message-ID: <1885398.klecWcqSHf@phil>
-References: <20191224143900.23567-1-miquel.raynal@bootlin.com>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Subject: Re: [PATCH 4/9] PM / devfreq: exynos-bus: Replace deprecated
+ 'devfreq' property
+Date: Mon, 6 Jan 2020 10:38:29 +0900
+Message-ID: <76616499-7c19-06b1-461a-28ae17a76c60@samsung.com>
+References: <20191217055738.28445-1-cw00.choi@samsung.com>
+        <CGME20191217055106epcas1p11f2bc81d6bb2db3fc4bc257d78c337b9@epcas1p1.samsung.com>
+        <20191217055738.28445-5-cw00.choi@samsung.com> <20191226210119.GA8706@bogus>
+        <a54e4275-012e-77d9-bdbe-1aab64b5c12b@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <20191224143900.23567-1-miquel.raynal@bootlin.com>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Maxime Chevallier <maxime.chevallier@bootlin.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <a54e4275-012e-77d9-bdbe-1aab64b5c12b@samsung.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: krzk@kernel.org, mark.rutland@arm.com, heiko@sntech.de, leonard.crestez@nxp.com, lukasz.luba@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 24. Dezember 2019, 15:38:49 CET schrieb Miquel Raynal:
-> Hello,
-> =
+Hi Rob,
 
-> This series aims at supporting LVDS on PX30.
-> =
+Gently Ping.
 
-> A first couple of patches update the documentation with the new
-> compatible and the presence of a PHY. Then, the existing Rockchip
-> driver is cleaned and extended to support PX30 specificities. Finally,
-> the PX30 DTSI is updated with CRTC routes, the DSI DPHY and the LVDS
-> IP itself.
-> =
+On 12/27/19 9:09 AM, Chanwoo Choi wrote:
+> On 12/27/19 6:01 AM, Rob Herring wrote:
+>> On Tue, Dec 17, 2019 at 02:57:33PM +0900, Chanwoo Choi wrote:
+>>> In order to remove the deprecated 'devfreq' property, replace with
+>>> new 'exynos,parent-bus' property in order to get the parent devfreq device
+>>> in devicetree file instead of 'devfreq' property. But, to guarantee the
+>>> backward-compatibility, keep the support 'devfreq' property.
+>>>
+>>> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
+>>> ---
+>>>  .../bindings/devfreq/exynos-bus.txt           | 16 +++++++--------
+>>>  drivers/devfreq/exynos-bus.c                  | 20 ++++++++++++-------
+>>>  2 files changed, 21 insertions(+), 15 deletions(-)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
+>>> index e71f752cc18f..c948cee01124 100644
+>>> --- a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
+>>> +++ b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
+>>> @@ -45,7 +45,7 @@ Required properties only for parent bus device:
+>>>    of buses.
+>>>  
+>>>  Required properties only for passive bus device:
+>>> -- devfreq: the parent bus device.
+>>> +- exynos,parent-bus: the parent bus device.
+>>
+>> If you are going to do something new, why not use the interconnect 
+>> binding here?
+> 
+> As I knew, interconnect make the data path among multiple nodes
+> and set the average and peak bandwidth to the specific data path.
+> 
+> It means that some data will be flowed from node_a to node_d
+> or the reverse way because each node has the tightly coupled
+> dependency for data flow.
+> 
+> 	node_a <-> node_b <-> node_c <-> node_d
+> 
+> 
+> On the other hand, exynos-bus.c driver is not related to 'data path'.
+> Each bus just need to control the their own frequency and voltage.
+> But, share the power line (regulator) between exynos-bus device
+> even if there are no any dependency of data flow.
+> 
+> 'exynos,parent-bus' property just indicate the specific
+> devfreq device(parent bus device) which controls
+> the shared power line(regulator) in order to prevent
+> the h/w problem due to the wrong pair of frequency and voltage.
+> 
+> 'exynos,parent-bus' property is only used to catch
+> the change timing of shared power line.
+> 
+> 
+> And,
+> as you commented, there are some data path among the exynos-bus
+> devices for the display h/w as following:
+> 
+> 	bus_display -> bus_leftbus -> bus_dmc
+> 
+> In order to make the data path between bus devices,
+> interconnect binding is required. This approach[1] was posted.
+> [1] https://patchwork.kernel.org/cover/11305265/
+> - [RFC,v3,0/7] PM / devfreq: Simple QoS for exynos-bus using interconnect
+> 
 
-> Cheers,
-> Miqu=E8l
-> =
-
-> Changes since v1:
-> * Added Rob's Ack.
-> * Used "must" instead of "should" in the bindings.
-> * Precised that phy-names is an optional property in the case of
->   PX30.
-> * Renamed the WRITE_EN macro into HIWORD_UPDATE to be aligned with
->   other files.
-> * Removed extra configuration, not needed for generic panels (see
->   Sandy Huang answer).
-> * Dropped the display-subsystem routes (useless).
-> * Merged two patches to avoid phandle interdependencies in graphs and
->   intermediate build errors.
-> =
-
-> Miquel Raynal (11):
->   dt-bindings: display: rockchip-lvds: Declare PX30 compatible
->   dt-bindings: display: rockchip-lvds: Document PX30 PHY
->   drm/rockchip: lvds: Fix indentation of a #define
->   drm/rockchip: lvds: Harmonize function names
->   drm/rockchip: lvds: Change platform data
->   drm/rockchip: lvds: Create an RK3288 specific probe function
->   drm/rockchip: lvds: Helpers should return decent values
->   drm/rockchip: lvds: Pack functions together
-
-applied patches 1-8 to drm-misc-next
-
->   drm/rockchip: lvds: Add PX30 support
-
-drm-misc-next is currently still at 5.4-rc4, so I'll need to find out how
-to get newer kernel changes in there, as right now we're missing
-the PHY_MODE_LVDS constant.
+Are there any other commentss?
 
 
-Heiko
-
->   arm64: dts: rockchip: Add PX30 DSI DPHY
->   arm64: dts: rockchip: Add PX30 LVDS
-> =
-
->  .../display/rockchip/rockchip-lvds.txt        |   4 +
->  arch/arm64/boot/dts/rockchip/px30.dtsi        |  48 ++
->  drivers/gpu/drm/rockchip/rockchip_lvds.c      | 486 ++++++++++++------
->  drivers/gpu/drm/rockchip/rockchip_lvds.h      |  19 +-
->  4 files changed, 401 insertions(+), 156 deletions(-)
-> =
-
-> =
+-- 
+Best Regards,
+Chanwoo Choi
+Samsung Electronics
