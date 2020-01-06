@@ -1,82 +1,101 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 00/11] Add PX30 LVDS support
-Date: Mon, 06 Jan 2020 12:09:19 +0100
-Message-ID: <2064471.Uj1soXtvLx@diego>
-References: <20191224143900.23567-1-miquel.raynal@bootlin.com>
- <1885398.klecWcqSHf@phil>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v2 1/2] arm64: dts: rockchip: add dsi controller for px30
+Date: Mon,  6 Jan 2020 12:20:04 +0100
+Message-ID: <20200106112005.795834-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-In-Reply-To: <1885398.klecWcqSHf@phil>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Maxime Chevallier <maxime.chevallier@bootlin.com>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, christoph.muellner@theobroma-systems.com, heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 5. Januar 2020, 15:05:26 CET schrieb Heiko Stuebner:
-> Am Dienstag, 24. Dezember 2019, 15:38:49 CET schrieb Miquel Raynal:
-> > Hello,
-> > =
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-> > This series aims at supporting LVDS on PX30.
-> > =
+This adds the dw-mipi-dsi controller and hooks it into the
+display-subsystem on px30.
 
-> > A first couple of patches update the documentation with the new
-> > compatible and the presence of a PHY. Then, the existing Rockchip
-> > driver is cleaned and extended to support PX30 specificities. Finally,
-> > the PX30 DTSI is updated with CRTC routes, the DSI DPHY and the LVDS
-> > IP itself.
-> > =
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+---
+changes in v2:
+- move reset properties into correct order
+- drop dsiphy node, already added by another patch
 
-> > Cheers,
-> > Miqu=E8l
-> > =
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 48 ++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
 
-> > Changes since v1:
-> > * Added Rob's Ack.
-> > * Used "must" instead of "should" in the bindings.
-> > * Precised that phy-names is an optional property in the case of
-> >   PX30.
-> > * Renamed the WRITE_EN macro into HIWORD_UPDATE to be aligned with
-> >   other files.
-> > * Removed extra configuration, not needed for generic panels (see
-> >   Sandy Huang answer).
-> > * Dropped the display-subsystem routes (useless).
-> > * Merged two patches to avoid phandle interdependencies in graphs and
-> >   intermediate build errors.
-> > =
-
-> > Miquel Raynal (11):
-> >   dt-bindings: display: rockchip-lvds: Declare PX30 compatible
-> >   dt-bindings: display: rockchip-lvds: Document PX30 PHY
-> >   drm/rockchip: lvds: Fix indentation of a #define
-> >   drm/rockchip: lvds: Harmonize function names
-> >   drm/rockchip: lvds: Change platform data
-> >   drm/rockchip: lvds: Create an RK3288 specific probe function
-> >   drm/rockchip: lvds: Helpers should return decent values
-> >   drm/rockchip: lvds: Pack functions together
-> =
-
-> applied patches 1-8 to drm-misc-next
-> =
-
-> >   drm/rockchip: lvds: Add PX30 support
-> =
-
-> drm-misc-next is currently still at 5.4-rc4, so I'll need to find out how
-> to get newer kernel changes in there, as right now we're missing
-> the PHY_MODE_LVDS constant.
-
-applied now to drm-misc-next as well, after drm-misc maintainers did the
-requested back-merge to get that constant.
-
-Heiko
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 5b5ca7ff6674..986ed249a733 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -955,6 +955,44 @@ gpu: gpu@ff400000 {
+ 		status = "disabled";
+ 	};
+ 
++	dsi: dsi@ff450000 {
++		compatible = "rockchip,px30-mipi-dsi";
++		reg = <0x0 0xff450000 0x0 0x10000>;
++		interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru PCLK_MIPI_DSI>;
++		clock-names = "pclk";
++		phys = <&dsi_dphy>;
++		phy-names = "dphy";
++		power-domains = <&power PX30_PD_VO>;
++		resets = <&cru SRST_MIPIDSI_HOST_P>;
++		reset-names = "apb";
++		rockchip,grf = <&grf>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++		status = "disabled";
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@0 {
++				reg = <0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				dsi_in_vopb: endpoint@0 {
++					reg = <0>;
++					remote-endpoint = <&vopb_out_dsi>;
++				};
++
++				dsi_in_vopl: endpoint@1 {
++					reg = <1>;
++					remote-endpoint = <&vopl_out_dsi>;
++				};
++			};
++		};
++	};
++
+ 	vopb: vop@ff460000 {
+ 		compatible = "rockchip,px30-vop-big";
+ 		reg = <0x0 0xff460000 0x0 0xefc>;
+@@ -972,6 +1010,11 @@ vopb: vop@ff460000 {
+ 		vopb_out: port {
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
++
++			vopb_out_dsi: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&dsi_in_vopb>;
++			};
+ 		};
+ 	};
+ 
+@@ -1004,6 +1047,11 @@ vopl: vop@ff470000 {
+ 		vopl_out: port {
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
++
++			vopl_out_dsi: endpoint@0 {
++				reg = <0>;
++				remote-endpoint = <&dsi_in_vopl>;
++			};
+ 		};
+ 	};
+ 
+-- 
+2.24.1
