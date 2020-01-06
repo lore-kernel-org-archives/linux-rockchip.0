@@ -1,47 +1,45 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix IR on Beelink A1
-Date: Mon, 06 Jan 2020 15:23:04 +0100
-Message-ID: <12698221.yjhRjYoh56@diego>
-References: <44269c08e2a5d75b03ded87d2eb11621762d8249.1577636223.git.robin.murphy@arm.com>
- <30349756.SWxbmzi8ve@phil> <3d0f69d5-739a-0566-b1d7-bc3c2f0c8045@arm.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH 1/5] regulator: mp8859: add driver
+Date: Mon, 6 Jan 2020 20:45:20 +0000
+Message-ID: <20200106204520.GD6448@sirena.org.uk>
+References: <20200104153321.6584-1-m.reichl@fivetechno.de>
+ <20200104153321.6584-2-m.reichl@fivetechno.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <3d0f69d5-739a-0566-b1d7-bc3c2f0c8045-5wv7dgnIgG8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="iVCmgExH7+hIHJ1A"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200104153321.6584-2-m.reichl@fivetechno.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Markus Reichl <m.reichl@fivetechno.de>
+Cc: linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Robin,
 
-Am Mittwoch, 1. Januar 2020, 14:01:32 CET schrieb Robin Murphy:
-> On 2019-12-31 11:50 am, Heiko Stuebner wrote:
-> > Am Sonntag, 29. Dezember 2019, 18:48:05 CET schrieb Robin Murphy:
-> >> Apparently I wasn't paying enough attention... And nor is the lazy
-> >> test of `cat /dev/lirc0` sufficiently blunder-proof. Oh well, with
-> >> the correct polarity, let's also hook up a keymap now that one for
-> >> the standard Beelink remote has handily appeared.
-> >>
-> >> Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> >> ---
-> > 
-> > applied for 5.6
-> 
-> Thanks Heiko - although if you have any other fixes to send for 5.5 do 
-> you think this might be able to sneak in too? Someone mentioned on IRC 
-> that unlike mine, their box wouldn't even generate interrupts with the 
-> polarity backwards.
+--iVCmgExH7+hIHJ1A
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-I've moved the patch over to a shiny new fixes branch for 5.5 now :-)
+On Sat, Jan 04, 2020 at 04:32:45PM +0100, Markus Reichl wrote:
+> The MP8859 from Monolithic Power Systems is a single output DC/DC
+> converter. The voltage can be controlled via I2C.
 
-Heiko
+I have patches 1, 2 and 4 with no cover letter or other information
+about dependencies.  What's the story there?
+
+--iVCmgExH7+hIHJ1A
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl4TnGAACgkQJNaLcl1U
+h9A46gf/bxiSXCC7UE5lAyiSv1Ty0tmILgIugHIDfpv1kiItsznOj8o8gd3t8Xak
+RfV15p/RE5SEf5Mt9PmQ9HZLYrz57LYhPdIW8mdqPYEBBSLIK6yomYITST5+FrH7
+pc36LC/KBi310B2EzWReP45Tmw+oEWw/CTYHYcto48soSNDBsoaqoqfM59GrLRP5
+2YapCH/IaVzmrxAToY00vPDGeOvkeRIzXV4ewVTedOB/ZDU0tUtKZhDPLzjv6P2+
+lEGdUmRK+TYlP9UIB0i9b4i+Rmvx9LjHpZ3e+HZ3WOIiv6ONfgt2j9AcpgZUraeF
+ExDGyMhZQFn9v/qcJs5Txp0Tdrebzw==
+=5TQL
+-----END PGP SIGNATURE-----
+
+--iVCmgExH7+hIHJ1A--
