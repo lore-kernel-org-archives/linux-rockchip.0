@@ -1,111 +1,153 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: Orange Pi 4 (RK3399) fails to bring up ethernet on boot
-Date: Mon, 6 Jan 2020 12:58:51 +0000
-Message-ID: <eeace85d-c007-a1ad-054c-21b129c35179@arm.com>
-References: <CAMWSM7ha5XcoknM1qrNTMM+A5Re2yQPNWvu_ZVKAWBUx-FmasA@mail.gmail.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH V3, 1/1] arm64: dts: rockchip: add ROCK Pi S DTS support
+Date: Mon, 06 Jan 2020 15:21:12 +0100
+Message-ID: <14039094.HKn2KS7fIZ@diego>
+References: <20191230145008.5899-1-akash@openedev.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAMWSM7ha5XcoknM1qrNTMM+A5Re2yQPNWvu_ZVKAWBUx-FmasA@mail.gmail.com>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Joseph Kogut <joseph.kogut@gmail.com>
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20191230145008.5899-1-akash@openedev.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Akash Gajjar <akash@openedev.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, tom@radxa.com, Robin Murphy <robin.murphy@arm.com>, Douglas Anderson <dianders@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, Markus Reichl <m.reichl@fivetechno.de>, linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>, Nick Xie <nick@khadas.com>, Andy Yan <andy.yan@rock-chips.com>, jagan@openedev.com, Matthias Kaehlcke <mka@chromium.org>, Vivek Unune <npcomplete13@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 03/01/2020 1:04 am, Joseph Kogut wrote:
-> Hello,
-> 
-> I'm working on getting the newly released Orange Pi 4 up and running
-> with the mainline kernel. Using the rk3399-orangepi device tree gets
-> the device to start booting, but the kernel has an oops when starting
-> networking, and the boot process fails to continue.
-> 
-> [  153.325306] Internal error: Oops: 96000004 [#1] SMP
-> [  153.325733] Modules linked in: rockchipdrm btsdio(+) brcmfmac
-> analogix_dp rockchip_rga dw_mipi_dsi brcmutil dw_hdmi hci_uart cec
-> videobuf2_dma_sg cfg80211 v4l2_mem2mem btqca rc_core videobuf2_memops
-> btbcm videobuf2_v4l2 btintel videobuf2_common drm_kms_helper bluetooth
-> dwmac_rk syscopyarea stmmac_platform videodev panfrost sysfillrect
-> stmmac snd_soc_simple_card sysimgblt fb_sys_fops gpu_sched
-> snd_soc_simple_card_utils ecdh_generic st_lsm6dsx_spi phylink mc
-> st_lsm6dsx_i2c ecc inv_mpu6050_i2c drm rfkill st_lsm6dsx inv_mpu6050
-> adc_keys rockchip_saradc gpio_keys ak8975 cm32181 dw_wdt
-> rockchip_thermal rtc_rk808
-> [  153.330457] CPU: 1 PID: 493 Comm: systemd-network Tainted: G
->       L    5.5.0-rc4-1-ARCH #1
-> [  153.331230] Hardware name: Orange Pi RK3399 Board (DT)
-> [  153.331681] pstate: 40000005 (nZcv daif -PAN -UAO)
-> [  153.332108] pc : mdiobus_get_phy+0xc/0x28
-> [  153.332487] lr : stmmac_open+0x288/0xa50 [stmmac]
-> [  153.332899] sp : ffff800011f2b5e0
-> [  153.333190] x29: ffff800011f2b5e0 x28: 0000000000000000
-> [  153.333656] x27: ffff0000eb6448c0 x26: ffff0000eb7e7e10
-> [  153.334122] x25: 0000000000000001 x24: 0000000000000000
-> [  153.334587] x23: ffff800011829000 x22: ffff0000eb644000
-> [  153.335053] x21: ffff800011f2bbd0 x20: ffff0000ea0e6280
-> [  153.335519] x19: 00000000ffffffff x18: 0000000000000000
-> [  153.335984] x17: 0000000000000000 x16: 0000000000000000
-> [  153.336449] x15: 0000000000000000 x14: 0000000000000000
-> [  153.336915] x13: 0000000000000000 x12: 0000000000000000
-> [  153.337380] x11: 0000000000000003 x10: 0101010101010101
-> [  153.337845] x9 : ffff8000090becb0 x8 : 7f7f7f7f7f7f7f7f
-> [  153.338310] x7 : fefefeff646c606d x6 : 1e091448e4e5f6e9
-> [  153.338776] x5 : 697665644814091e x4 : 8080808000000000
-> [  153.339241] x3 : 8343c96b232bb348 x2 : ffff0000ea0b8880
-> [  153.339707] x1 : 00000000ffffffff x0 : fffffffffffffff8
-> [  153.340172] Call trace:
-> [  153.340392]  mdiobus_get_phy+0xc/0x28
-> [  153.340717]  __dev_open+0x104/0x198
-> [  153.341025]  __dev_change_flags+0x1a0/0x208
-> [  153.341393]  dev_change_flags+0x28/0x68
-> [  153.341731]  do_setlink+0x2cc/0xcc0
-> [  153.342040]  rtnl_setlink+0xf0/0x188
-> [  153.342355]  rtnetlink_rcv_msg+0x2b0/0x358
-> [  153.342719]  netlink_rcv_skb+0x60/0x120
-> [  153.343056]  rtnetlink_rcv+0x1c/0x28
-> [  153.343371]  netlink_unicast+0x1a0/0x248
-> [  153.343716]  netlink_sendmsg+0x1c0/0x3c0
-> [  153.344061]  sock_sendmsg+0x4c/0x58
-> [  153.344368]  __sys_sendto+0xd4/0x138
-> [  153.344683]  __arm64_sys_sendto+0x2c/0x38
-> [  153.345039]  el0_svc_handler+0xa4/0x188
-> [  153.345377]  el0_sync_handler+0x1c8/0x260
-> [  153.345730]  el0_sync+0x140/0x180
-> [  153.346025] Code: d65f03c0 aa1e03e9 d503201f 8b21cc00 (f941d000)
-> [  153.346560] ---[ end trace 0d82e8dab5e0c74f ]---
-> 
-> It's worth noting that the rk3399-orangepi device tree isn't
-> necessarily compatible with this board, though after perusing the
-> schematics for both the Orange Pi 4 and Orange Pi RK3399, I found no
-> differences as far as the networking hardware goes. However, this is
-> not an area in which I am well experienced.
-> 
-> I was able to work around this issue by reading a few other RK3399
-> based device trees, and adding a phy-handle property to the gmac node,
-> as well as an mdio child node. I have a patch [0] that works with my
-> board, but I'm unsure if it's correct for both Orange Pis, and even if
-> it is, I'm not sure what the original problem was, or how to word the
-> commit message to actually send the patch.
-> 
-> Could you please advise on how I should proceed?
+Hi Akash,
 
-FWIW this appears to be down to a recent driver change breaking MDIO 
-auto-probing in the case where there is neither a fixed link nor an 
-explicitly-described phy - see the discussion on the thread here: 
-https://lore.kernel.org/netdev/1599392.7x4dJXGyiB@diego/
+Am Montag, 30. Dezember 2019, 15:49:32 CET schrieb Akash Gajjar:
+> ROCK Pi S is RK3308 based SBC from radxa.com. ROCK Pi S has a,
+> - 256MB/512MB DDR3 RAM
+> - SD, NAND flash (optional on board 1/2/4/8Gb)
+> - 100MB ethernet, PoE (optional)
+> - Onboard 802.11 b/g/n wifi + Bluetooth 4.0 Module
+> - USB2.0 Type-A HOST x1
+> - USB3.0 Type-C OTG x1
+> - 26-pin expansion header
+> - USB Type-C DC 5V Power Supply
+> 
+> This patch enables
+> - Console
+> - NAND Flash
+> - SD Card
+> 
+> Signed-off-by: Akash Gajjar <akash@openedev.com>
 
-Robin.
+> +&emmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	mmc-hs200-1_8v;
+> +	supports-sd;
 
-> 
-> Best,
-> Joseph
-> 
-> [0] https://gist.github.com/jakogut/bc21de0535b640f2374c1d07a710e8ab
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+supports-sd is not a property
+
+> +	disable-wp;
+> +	non-removable;
+> +	num-slots = <1>;
+
+nums-slots was removed very long ago
+
+> +	vin-supply = <&vcc_io>;
+
+please provide actual vmmc and vqmmc supplies
+vin is not a valid supply for emmcs
+
+> +	status = "okay";
+> +};
+> +
+> +&i2c1 {
+> +	status = "okay";
+> +};
+> +
+> +&sdmmc {
+> +	bus-width = <4>;
+> +	cap-mmc-highspeed;
+> +	cap-sd-highspeed;
+> +	max-frequeency = <150000000>;
+> +	supports-sd;
+
+supports-sd is not a valid property
+
+> +	disable-wp;
+> +	num-slots = <1>;
+
+again, obsolete num-slots
+
+> +	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_det &sdmmc_bus4>;
+> +	card-detect-delay = <800>;
+> +	status = "okay";
+> +};
+> +
+> +&spi2 {
+> +	status = "okay";
+> +	max-freq = <10000000>;
+> +};
+> +
+> +&pinctrl {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&rtc_32k>;
+> +
+> +	leds {
+> +		green_led_gio: green-led-gpio {
+> +			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +
+> +		heartbeat_led_gpio: heartbeat-led-gpio {
+> +			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+> +	usb {
+> +		otg_vbus_drv: otg-vbus-drv {
+> +			rockchip,pins = <0 RK_PC5 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+> +	sdio-pwrseq {
+> +		wifi_enable_h: wifi-enable-h {
+> +			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +
+> +		wifi_host_wake: wifi-host-wake {
+> +			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_down>;
+> +		};
+> +	};
+> +};
+> +
+> +&pwm0 {
+> +	status = "okay";
+> +	pinctrl-0 = <&pwm0_pin_pull_down>;
+> +};
+> +
+> +&saradc {
+> +	vref-supply = <&vcc_1v8>;
+> +	status = "okay";
+> +};
+> +
+> +&sdio {
+> +	#address-cells = <1>;
+> +	#size-cells = <0>;
+> +	bus-width = <4>;
+> +	max-frequency = <1000000>;
+> +	cap-sd-highspeed;
+> +	cap-sdio-irq;
+> +	supports-sdio;
+
+not a valid property
+
+> +	keep-power-in-suspend;
+> +	mmc-pwrseq = <&sdio_pwrseq>;
+> +	non-removable;
+> +	sd-uhs-sdr104;
+> +	status = "okay";
+> +};
+
+Heiko
