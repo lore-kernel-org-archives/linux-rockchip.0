@@ -1,53 +1,35 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: hook up the px30-evb dsi display
-Date: Mon,  6 Jan 2020 12:20:05 +0100
-Message-ID: <20200106112005.795834-2-heiko@sntech.de>
-References: <20200106112005.795834-1-heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] drm: rockchip: rk3066_hdmi: set edid fifo address
+Date: Mon, 06 Jan 2020 12:26:35 +0100
+Message-ID: <6562118.EOOupxtdqP@phil>
+References: <20191211203417.19448-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200106112005.795834-1-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-rockchip@lists.infradead.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, christoph.muellner@theobroma-systems.com, heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191211203417.19448-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: airlied-cv59FeDIM0c@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Am Mittwoch, 11. Dezember 2019, 21:34:17 CET schrieb Johan Jonker:
+> From: Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> 
+> Fix edid reading error when edid's block > 2.
+> 
+> Signed-off-by: Nickey Yang <nickey.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-Create the necessary display nodes to activate the Xingpeng XPP055C272
-dsi display that can be found on the px30-evb.
+applied to drm-misc-next for 5.6
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
----
- arch/arm64/boot/dts/rockchip/px30-evb.dts | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-index 180995a590c1..fa21da5d9268 100644
---- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-@@ -112,6 +112,22 @@ &display_subsystem {
- 	status = "okay";
- };
- 
-+&dsi {
-+	status = "okay";
-+
-+	panel@0 {
-+		compatible = "xinpeng,xpp055c272";
-+		reg = <0>;
-+		backlight = <&backlight>;
-+		iovcc-supply = <&vcc_1v8>;
-+		vci-supply = <&vcc3v3_lcd>;
-+	};
-+};
-+
-+&dsi_dphy {
-+	status = "okay";
-+};
-+
- &emmc {
- 	bus-width = <8>;
- 	cap-mmc-highspeed;
--- 
-2.24.1
+Thanks
+Heiko
