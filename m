@@ -1,43 +1,37 @@
-From: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
-Subject: Re: [PATCH 1/5] regulator: mp8859: add driver
-Date: Mon, 6 Jan 2020 21:52:12 +0100
-Message-ID: <1216f846-0a3b-70f0-70b9-49f8fa90720d@fivetechno.de>
-References: <20200104153321.6584-1-m.reichl@fivetechno.de>
- <20200104153321.6584-2-m.reichl@fivetechno.de>
- <20200106204520.GD6448@sirena.org.uk>
+From: Markus Reichl <m.reichl@fivetechno.de>
+Subject: [PATCH 0/5] regulator: mp8859: add driver for DC/DC converter used on rk3399-roc-pc board
+Date: Mon,  6 Jan 2020 22:16:23 +0100
+Message-ID: <20200106211633.2882-1-m.reichl@fivetechno.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200106204520.GD6448-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-Content-Language: de-DE
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Markus Reichl <m.reichl@fivetechno.de>, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am 06.01.20 um 21:45 schrieb Mark Brown:
-> On Sat, Jan 04, 2020 at 04:32:45PM +0100, Markus Reichl wrote:
->> The MP8859 from Monolithic Power Systems is a single output DC/DC
->> converter. The voltage can be controlled via I2C.
-> 
-> I have patches 1, 2 and 4 with no cover letter or other information
-> about dependencies.  What's the story there?
-> 
-I used scripts/get_maintainer.pl on the single patches, will resend to 
-a combined list.
+On rk3399-roc-pc board a voltage regulator MP8859 from Monolithic Power Systems
+is used to supply the 12V power line. This delivers 5V as a default value after
+boot. The voltage is controllable via I2C.
+Add a basic driver to set and get the voltage of the MP8859 and add a matching
+node with fixed 12V in the DT of the board. 
 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+Markus Reichl (5):
+  regulator: mp8859: add driver
+  regulator: mp8859: add config option and build entry
+  dt-bindings: add vendor Monolithic Power Systems
+  dt-bindings: regulator: add MPS mp8859 voltage regulator
+  arm64: dts: rockchip: Enable mp8859 regulator on rk3399-roc-pc
+
+ .../devicetree/bindings/regulator/mp8859.txt  |  22 +++
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ .../boot/dts/rockchip/rk3399-roc-pc.dtsi      |  32 ++--
+ drivers/regulator/Kconfig                     |  11 ++
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/mp8859.c                    | 156 ++++++++++++++++++
+ 6 files changed, 210 insertions(+), 14 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mp8859.txt
+ create mode 100644 drivers/regulator/mp8859.c
+
+-- 
+2.24.1
