@@ -1,43 +1,55 @@
-From: Doug Anderson <dianders@chromium.org>
-Subject: Re: [PATCH for 5.5] phy/rockchip: inno-hdmi: round clock rate down to
- closest 1000 Hz
-Date: Mon, 6 Jan 2020 14:25:37 -0800
-Message-ID: <CAD=FV=XbmwC1H446Og9juqYBR66ozjNVw9SDa2WWz=sKQg_imw@mail.gmail.com>
-References: <HE1PR06MB40118544456FC5461F49DDE8AC2E0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v12 08/11] media: staging: dt-bindings: add Rockchip ISP1
+ yaml bindings
+Date: Mon, 6 Jan 2020 16:27:56 -0600
+Message-ID: <CAL_JsqL25gQZxdN+2ciSj7HLbOjN3OvjY-GrA57m9_y-CdYZLA@mail.gmail.com>
+References: <20191227200116.2612137-1-helen.koike@collabora.com> <20191227200116.2612137-9-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <HE1PR06MB40118544456FC5461F49DDE8AC2E0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+In-Reply-To: <20191227200116.2612137-9-helen.koike@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Sean Paul <seanpaul@chromium.org>, Kishon Vijay Abraham I <kishon@ti.com>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: Helen Koike <helen.koike@collabora.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Eddie Cai <eddie.cai.linux@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, "heiko@sntech.de" <heiko@sntech.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrey Konovalov <andrey.konovalov@linaro.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, joacim.zetterling@gmail.com, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Jacob Chen <jacob-chen@iotwrt.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-On Mon, Dec 23, 2019 at 12:49 AM Jonas Karlman <jonas@kwiboo.se> wrote:
+On Fri, Dec 27, 2019 at 2:02 PM Helen Koike <helen.koike@collabora.com> wrote:
 >
-> Commit 287422a95fe2 ("drm/rockchip: Round up _before_ giving to the clock framework")
-> changed what rate clk_round_rate() is called with, an additional 999 Hz
-> added to the requsted mode clock. This has caused a regression on RK3328
-> and presumably also on RK3228 because the inno-hdmi-phy clock requires an
-> exact match of the requested rate in the pre pll config table.
+> Add yaml DT bindings for Rockchip ISP1.
 >
-> When an exact match is not found the parent clock rate (24MHz) is returned
-> to the clk_round_rate() caller. This cause wrong pixel clock to be used and
-> result in no-signal when configuring a mode on RK3328.
+> This was tested and verified with:
+> mv drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml Documentation/devicetree/bindings/media/
+> make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 >
-> Fix this by rounding the rate down to closest 1000 Hz in round_rate func,
-> this allows an exact match to be found in pre pll config table.
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
 >
-> Fixes: 287422a95fe2 ("drm/rockchip: Round up _before_ giving to the clock framework")
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
->  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 4 ++++
->  1 file changed, 4 insertions(+)
+>
+> Changes in v12:
+> - The commit replaces the following commit in previous series named
+> media: staging: dt-bindings: Document the Rockchip ISP1 bindings
+> This new patch adds yaml binding and was verified with
+> make dtbs_check and make dt_binding_check
+>
+> Changes in v11:
+> - add clock-names values
+>
+> Changes in v10:
+> - unsquash
+>
+> Changes in v9:
+> - squash
+> - move to staging
+>
+> Changes in v8:
+> - fix title division style
+>
+> Changes in v7:
+> - update document with new design and tested example
+>
+>  .../bindings/media/rockchip-isp1.yaml         | 193 ++++++++++++++++++
+>  1 file changed, 193 insertions(+)
+>  create mode 100644 drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 
-Sorry for the regression and thanks for the fix.  It seems sane to me
-since you're just matching against your own table and all the rates
-there are all in kHz.
-
-Reviewed-by: Douglas Anderson <dianders@chromium.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
