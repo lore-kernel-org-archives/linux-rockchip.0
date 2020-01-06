@@ -1,85 +1,350 @@
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v3 6/7] media: rkvdec: Add the rkvdec driver
-Date: Mon, 6 Jan 2020 08:52:35 +0100
-Message-ID: <20200106085235.0e639ecb@collabora.com>
-References: <20191213125414.90725-1-boris.brezillon@collabora.com>
- <20191213125414.90725-7-boris.brezillon@collabora.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v3 2/5] rockchip: rk3399: Enable DISPLAY_CPUINFO
+Date: Mon, 6 Jan 2020 17:23:54 +0800
+Message-ID: <51d5325a-6f1f-05af-822a-f9d098f7af9f@rock-chips.com>
+References: <20191229190726.29266-1-jagan@amarulasolutions.com>
+ <20191229190726.29266-3-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20191213125414.90725-7-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20191229190726.29266-3-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, Akash Gajjar <akash@openedev.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 13 Dec 2019 13:54:13 +0100
-Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
 
-> +static int rkvdec_try_capture_fmt(struct file *file, void *priv,
-> +				  struct v4l2_format *f)
-> +{
-> +	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
-> +	const struct rkvdec_coded_fmt_desc *coded_desc;
-> +	u32 fourcc, width, height;
-> +	unsigned int i;
-> +
-> +	/*
-> +	 * The codec context should point to a coded format desc, if the format
-> +	 * on the coded end has not been set yet, it should point to the
-> +	 * default value.
-> +	 */
-> +	coded_desc = ctx->coded_fmt_desc;
-> +	if (WARN_ON(!coded_desc))
-> +		return -EINVAL;
-> +
-> +	fourcc = f->fmt.pix_mp.pixelformat;
-> +	for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
-> +		if (coded_desc->decoded_fmts[i] == fourcc)
-> +			break;
-> +	}
-> +
-> +	if (i == coded_desc->num_decoded_fmts)
-> +		return -EINVAL;
-> +
-> +	/* Save the original width/height before aligning them. */
-> +	width = f->fmt.pix_mp.width;
-> +	height = f->fmt.pix_mp.height;
-> +
-> +	/* Always apply the frmsize constraint of the coded end. */
-> +	v4l2_apply_frmsize_constraints(&f->fmt.pix_mp.width,
-> +				       &f->fmt.pix_mp.height,
-> +				       &coded_desc->frmsize);
-> +
-> +	v4l2_fill_pixfmt_mp(&f->fmt.pix_mp, fourcc, f->fmt.pix_mp.width,
-> +			    f->fmt.pix_mp.height);
-> +
-> +	/*
-> +	 * Now that we have computed sizeimage and bytesperline we can restore
-> +	 * the original width/height (before macro block alignment).
-> +	 */
-> +	f->fmt.pix_mp.width = width;
-> +	f->fmt.pix_mp.height = height;
+On 2019/12/30 上午3:07, Jagan Teki wrote:
+> RK3288, RK3399 are now support cpu-info, so enable
+> DISPLAY_CPUINFO by default.
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 
-Looks like restoring the original width/height was a bad idea (it
-breaks the odd_size tests of the VP9 testsuite [1]). I'll adjust the
-test in validate_dec_params() [2] to align the ctrl width/height params
-on a superblock size (64 pixels) instead.
-
-> +
-> +	f->fmt.pix_mp.field = V4L2_FIELD_NONE;
-> +
-> +	return 0;
-> +}
-
-[1]https://storage.googleapis.com/downloads.webmproject.org/vp9/decoder-test-streams/Profile_0_8bit.zip
-[2]https://patchwork.kernel.org/patch/11290603/
+Thanks,
+- Kever
+> ---
+>   configs/evb-rk3288_defconfig                 | 1 -
+>   configs/evb-rk3399_defconfig                 | 1 -
+>   configs/ficus-rk3399_defconfig               | 1 -
+>   configs/firefly-rk3288_defconfig             | 1 -
+>   configs/firefly-rk3399_defconfig             | 1 -
+>   configs/khadas-edge-captain-rk3399_defconfig | 1 -
+>   configs/khadas-edge-rk3399_defconfig         | 1 -
+>   configs/khadas-edge-v-rk3399_defconfig       | 1 -
+>   configs/leez-rk3399_defconfig                | 1 -
+>   configs/miqi-rk3288_defconfig                | 1 -
+>   configs/nanopc-t4-rk3399_defconfig           | 1 -
+>   configs/nanopi-m4-rk3399_defconfig           | 1 -
+>   configs/nanopi-neo4-rk3399_defconfig         | 1 -
+>   configs/orangepi-rk3399_defconfig            | 1 -
+>   configs/phycore-rk3288_defconfig             | 1 -
+>   configs/popmetal-rk3288_defconfig            | 1 -
+>   configs/puma-rk3399_defconfig                | 1 -
+>   configs/roc-pc-rk3399_defconfig              | 1 -
+>   configs/rock-pi-4-rk3399_defconfig           | 1 -
+>   configs/rock960-rk3399_defconfig             | 1 -
+>   configs/rockpro64-rk3399_defconfig           | 1 -
+>   configs/tinker-rk3288_defconfig              | 1 -
+>   configs/tinker-s-rk3288_defconfig            | 1 -
+>   configs/vyasa-rk3288_defconfig               | 1 -
+>   24 files changed, 24 deletions(-)
+>
+> diff --git a/configs/evb-rk3288_defconfig b/configs/evb-rk3288_defconfig
+> index 1fa4054f5d..59c909e10d 100644
+> --- a/configs/evb-rk3288_defconfig
+> +++ b/configs/evb-rk3288_defconfig
+> @@ -14,7 +14,6 @@ CONFIG_DEBUG_UART=y
+>   CONFIG_USE_PREBOOT=y
+>   CONFIG_SILENT_CONSOLE=y
+>   CONFIG_DEFAULT_FDT_FILE="rk3288-evb-rk808.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   CONFIG_SPL_STACK_R=y
+>   CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
+> diff --git a/configs/evb-rk3399_defconfig b/configs/evb-rk3399_defconfig
+> index 8b8cdc5109..896a6050eb 100644
+> --- a/configs/evb-rk3399_defconfig
+> +++ b/configs/evb-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-evb.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/ficus-rk3399_defconfig b/configs/ficus-rk3399_defconfig
+> index 6bb030acc1..5b49fe0b7b 100644
+> --- a/configs/ficus-rk3399_defconfig
+> +++ b/configs/ficus-rk3399_defconfig
+> @@ -9,7 +9,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_SPL_TEXT_BASE=0xff8c2000
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/firefly-rk3288_defconfig b/configs/firefly-rk3288_defconfig
+> index 0c0a51c54f..41a6fc3edd 100644
+> --- a/configs/firefly-rk3288_defconfig
+> +++ b/configs/firefly-rk3288_defconfig
+> @@ -14,7 +14,6 @@ CONFIG_DEBUG_UART=y
+>   CONFIG_USE_PREBOOT=y
+>   CONFIG_SILENT_CONSOLE=y
+>   CONFIG_DEFAULT_FDT_FILE="rk3288-firefly.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   CONFIG_SPL_STACK_R=y
+>   CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
+> diff --git a/configs/firefly-rk3399_defconfig b/configs/firefly-rk3399_defconfig
+> index b84d7b9ff0..5d197f5f8a 100644
+> --- a/configs/firefly-rk3399_defconfig
+> +++ b/configs/firefly-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-firefly.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/khadas-edge-captain-rk3399_defconfig b/configs/khadas-edge-captain-rk3399_defconfig
+> index c408a1a59b..379e21e28d 100644
+> --- a/configs/khadas-edge-captain-rk3399_defconfig
+> +++ b/configs/khadas-edge-captain-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-khadas-edge-captain.dtbi"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/khadas-edge-rk3399_defconfig b/configs/khadas-edge-rk3399_defconfig
+> index 796f94f8d7..9086018cd0 100644
+> --- a/configs/khadas-edge-rk3399_defconfig
+> +++ b/configs/khadas-edge-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-khadas-edge.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/khadas-edge-v-rk3399_defconfig b/configs/khadas-edge-v-rk3399_defconfig
+> index e70e1ec2e6..261d75526b 100644
+> --- a/configs/khadas-edge-v-rk3399_defconfig
+> +++ b/configs/khadas-edge-v-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-khadas-edge-v.dtbi"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/leez-rk3399_defconfig b/configs/leez-rk3399_defconfig
+> index 3758d79a1e..1d621fc9ce 100644
+> --- a/configs/leez-rk3399_defconfig
+> +++ b/configs/leez-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-leez-p710.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   CONFIG_SPL_STACK_R=y
+>   CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
+> diff --git a/configs/miqi-rk3288_defconfig b/configs/miqi-rk3288_defconfig
+> index cec8e42c5e..25a808eb89 100644
+> --- a/configs/miqi-rk3288_defconfig
+> +++ b/configs/miqi-rk3288_defconfig
+> @@ -15,7 +15,6 @@ CONFIG_SPL_TEXT_BASE=0xff704000
+>   CONFIG_USE_PREBOOT=y
+>   CONFIG_SILENT_CONSOLE=y
+>   CONFIG_DEFAULT_FDT_FILE="rk3288-miqi.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   CONFIG_SPL_STACK_R=y
+>   CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
+> diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
+> index 504346eb99..bd6d60ff6c 100644
+> --- a/configs/nanopc-t4-rk3399_defconfig
+> +++ b/configs/nanopc-t4-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopc-t4.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk3399_defconfig
+> index 24c8aa401b..74ede13c23 100644
+> --- a/configs/nanopi-m4-rk3399_defconfig
+> +++ b/configs/nanopi-m4-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopi-m4.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-rk3399_defconfig
+> index 986739f16e..a44124aac0 100644
+> --- a/configs/nanopi-neo4-rk3399_defconfig
+> +++ b/configs/nanopi-neo4-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopi-neo4.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/orangepi-rk3399_defconfig b/configs/orangepi-rk3399_defconfig
+> index bed634b699..4c464de8a6 100644
+> --- a/configs/orangepi-rk3399_defconfig
+> +++ b/configs/orangepi-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-orangepi.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/phycore-rk3288_defconfig b/configs/phycore-rk3288_defconfig
+> index 4c48d42299..2f10c7a3b3 100644
+> --- a/configs/phycore-rk3288_defconfig
+> +++ b/configs/phycore-rk3288_defconfig
+> @@ -16,7 +16,6 @@ CONFIG_USE_PREBOOT=y
+>   CONFIG_SILENT_CONSOLE=y
+>   CONFIG_CONSOLE_MUX=y
+>   CONFIG_DEFAULT_FDT_FILE="rk3288-phycore-rdk.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   CONFIG_SPL_STACK_R=y
+>   CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
+> diff --git a/configs/popmetal-rk3288_defconfig b/configs/popmetal-rk3288_defconfig
+> index f732f6b209..512efee1a9 100644
+> --- a/configs/popmetal-rk3288_defconfig
+> +++ b/configs/popmetal-rk3288_defconfig
+> @@ -16,7 +16,6 @@ CONFIG_USE_PREBOOT=y
+>   CONFIG_SILENT_CONSOLE=y
+>   CONFIG_CONSOLE_MUX=y
+>   CONFIG_DEFAULT_FDT_FILE="rk3288-popmetal.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   CONFIG_SPL_STACK_R=y
+>   CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
+> diff --git a/configs/puma-rk3399_defconfig b/configs/puma-rk3399_defconfig
+> index 55255bf6af..30c7ab2751 100644
+> --- a/configs/puma-rk3399_defconfig
+> +++ b/configs/puma-rk3399_defconfig
+> @@ -16,7 +16,6 @@ CONFIG_SPL_TEXT_BASE=0xff8c2000
+>   CONFIG_SPL_FIT_GENERATOR="board/theobroma-systems/puma_rk3399/fit_spl_atf.sh"
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-puma-haikou.dtb"
+>   CONFIG_MISC_INIT_R=y
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+> index 305baa712c..bf83b25dbc 100644
+> --- a/configs/roc-pc-rk3399_defconfig
+> +++ b/configs/roc-pc-rk3399_defconfig
+> @@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-roc-pc.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
+> index 2c01bf1f87..4429f58fde 100644
+> --- a/configs/rock-pi-4-rk3399_defconfig
+> +++ b/configs/rock-pi-4-rk3399_defconfig
+> @@ -9,7 +9,6 @@ CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4.dtb"
+>   CONFIG_MISC_INIT_R=y
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/rock960-rk3399_defconfig b/configs/rock960-rk3399_defconfig
+> index ec32e6cf05..7b6dc3f83c 100644
+> --- a/configs/rock960-rk3399_defconfig
+> +++ b/configs/rock960-rk3399_defconfig
+> @@ -9,7 +9,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock960.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/rockpro64-rk3399_defconfig b/configs/rockpro64-rk3399_defconfig
+> index 49e27c91cb..955b717131 100644
+> --- a/configs/rockpro64-rk3399_defconfig
+> +++ b/configs/rockpro64-rk3399_defconfig
+> @@ -10,7 +10,6 @@ CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rockpro64.dtb"
+>   CONFIG_MISC_INIT_R=y
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> diff --git a/configs/tinker-rk3288_defconfig b/configs/tinker-rk3288_defconfig
+> index 83c3450839..894e7d1e12 100644
+> --- a/configs/tinker-rk3288_defconfig
+> +++ b/configs/tinker-rk3288_defconfig
+> @@ -16,7 +16,6 @@ CONFIG_USE_PREBOOT=y
+>   CONFIG_SILENT_CONSOLE=y
+>   CONFIG_CONSOLE_MUX=y
+>   CONFIG_DEFAULT_FDT_FILE="rk3288-tinker.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   CONFIG_SPL_STACK_R=y
+>   CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
+> diff --git a/configs/tinker-s-rk3288_defconfig b/configs/tinker-s-rk3288_defconfig
+> index 4925b14821..6215aa2d61 100644
+> --- a/configs/tinker-s-rk3288_defconfig
+> +++ b/configs/tinker-s-rk3288_defconfig
+> @@ -15,7 +15,6 @@ CONFIG_DEBUG_UART=y
+>   CONFIG_USE_PREBOOT=y
+>   CONFIG_SILENT_CONSOLE=y
+>   CONFIG_DEFAULT_FDT_FILE="rk3288-tinker-s.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   CONFIG_SPL_STACK_R=y
+>   CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x300000
+> diff --git a/configs/vyasa-rk3288_defconfig b/configs/vyasa-rk3288_defconfig
+> index 9497f0dd0f..6cb7f13e49 100644
+> --- a/configs/vyasa-rk3288_defconfig
+> +++ b/configs/vyasa-rk3288_defconfig
+> @@ -14,7 +14,6 @@ CONFIG_DEBUG_UART=y
+>   CONFIG_USE_PREBOOT=y
+>   CONFIG_SILENT_CONSOLE=y
+>   CONFIG_DEFAULT_FDT_FILE="rk3288-vyasa.dtb"
+> -# CONFIG_DISPLAY_CPUINFO is not set
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   CONFIG_SPL_STACK_R=y
+>   CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
