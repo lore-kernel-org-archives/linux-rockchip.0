@@ -1,95 +1,85 @@
-From: Chanwoo Choi <cw00.choi@samsung.com>
-Subject: Re: [PATCH 4/9] PM / devfreq: exynos-bus: Replace deprecated
- 'devfreq' property
-Date: Mon, 6 Jan 2020 10:38:29 +0900
-Message-ID: <76616499-7c19-06b1-461a-28ae17a76c60@samsung.com>
-References: <20191217055738.28445-1-cw00.choi@samsung.com>
-        <CGME20191217055106epcas1p11f2bc81d6bb2db3fc4bc257d78c337b9@epcas1p1.samsung.com>
-        <20191217055738.28445-5-cw00.choi@samsung.com> <20191226210119.GA8706@bogus>
-        <a54e4275-012e-77d9-bdbe-1aab64b5c12b@samsung.com>
+From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v3 6/7] media: rkvdec: Add the rkvdec driver
+Date: Mon, 6 Jan 2020 08:52:35 +0100
+Message-ID: <20200106085235.0e639ecb@collabora.com>
+References: <20191213125414.90725-1-boris.brezillon@collabora.com>
+ <20191213125414.90725-7-boris.brezillon@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a54e4275-012e-77d9-bdbe-1aab64b5c12b@samsung.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh@kernel.org>
-Cc: krzk@kernel.org, mark.rutland@arm.com, heiko@sntech.de, leonard.crestez@nxp.com, lukasz.luba@arm.com, a.swigon@samsung.com, m.szyprowski@samsung.com, kgene@kernel.org, myungjoo.ham@samsung.com, kyungmin.park@samsung.com, linux-pm@vger.kernel.org, linux-samsung-soc@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20191213125414.90725-7-boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Hans Verkuil <hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+On Fri, 13 Dec 2019 13:54:13 +0100
+Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
 
-Gently Ping.
+> +static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+> +				  struct v4l2_format *f)
+> +{
+> +	struct rkvdec_ctx *ctx = fh_to_rkvdec_ctx(priv);
+> +	const struct rkvdec_coded_fmt_desc *coded_desc;
+> +	u32 fourcc, width, height;
+> +	unsigned int i;
+> +
+> +	/*
+> +	 * The codec context should point to a coded format desc, if the format
+> +	 * on the coded end has not been set yet, it should point to the
+> +	 * default value.
+> +	 */
+> +	coded_desc = ctx->coded_fmt_desc;
+> +	if (WARN_ON(!coded_desc))
+> +		return -EINVAL;
+> +
+> +	fourcc = f->fmt.pix_mp.pixelformat;
+> +	for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
+> +		if (coded_desc->decoded_fmts[i] == fourcc)
+> +			break;
+> +	}
+> +
+> +	if (i == coded_desc->num_decoded_fmts)
+> +		return -EINVAL;
+> +
+> +	/* Save the original width/height before aligning them. */
+> +	width = f->fmt.pix_mp.width;
+> +	height = f->fmt.pix_mp.height;
+> +
+> +	/* Always apply the frmsize constraint of the coded end. */
+> +	v4l2_apply_frmsize_constraints(&f->fmt.pix_mp.width,
+> +				       &f->fmt.pix_mp.height,
+> +				       &coded_desc->frmsize);
+> +
+> +	v4l2_fill_pixfmt_mp(&f->fmt.pix_mp, fourcc, f->fmt.pix_mp.width,
+> +			    f->fmt.pix_mp.height);
+> +
+> +	/*
+> +	 * Now that we have computed sizeimage and bytesperline we can restore
+> +	 * the original width/height (before macro block alignment).
+> +	 */
+> +	f->fmt.pix_mp.width = width;
+> +	f->fmt.pix_mp.height = height;
 
-On 12/27/19 9:09 AM, Chanwoo Choi wrote:
-> On 12/27/19 6:01 AM, Rob Herring wrote:
->> On Tue, Dec 17, 2019 at 02:57:33PM +0900, Chanwoo Choi wrote:
->>> In order to remove the deprecated 'devfreq' property, replace with
->>> new 'exynos,parent-bus' property in order to get the parent devfreq device
->>> in devicetree file instead of 'devfreq' property. But, to guarantee the
->>> backward-compatibility, keep the support 'devfreq' property.
->>>
->>> Signed-off-by: Chanwoo Choi <cw00.choi@samsung.com>
->>> ---
->>>  .../bindings/devfreq/exynos-bus.txt           | 16 +++++++--------
->>>  drivers/devfreq/exynos-bus.c                  | 20 ++++++++++++-------
->>>  2 files changed, 21 insertions(+), 15 deletions(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
->>> index e71f752cc18f..c948cee01124 100644
->>> --- a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
->>> +++ b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
->>> @@ -45,7 +45,7 @@ Required properties only for parent bus device:
->>>    of buses.
->>>  
->>>  Required properties only for passive bus device:
->>> -- devfreq: the parent bus device.
->>> +- exynos,parent-bus: the parent bus device.
->>
->> If you are going to do something new, why not use the interconnect 
->> binding here?
-> 
-> As I knew, interconnect make the data path among multiple nodes
-> and set the average and peak bandwidth to the specific data path.
-> 
-> It means that some data will be flowed from node_a to node_d
-> or the reverse way because each node has the tightly coupled
-> dependency for data flow.
-> 
-> 	node_a <-> node_b <-> node_c <-> node_d
-> 
-> 
-> On the other hand, exynos-bus.c driver is not related to 'data path'.
-> Each bus just need to control the their own frequency and voltage.
-> But, share the power line (regulator) between exynos-bus device
-> even if there are no any dependency of data flow.
-> 
-> 'exynos,parent-bus' property just indicate the specific
-> devfreq device(parent bus device) which controls
-> the shared power line(regulator) in order to prevent
-> the h/w problem due to the wrong pair of frequency and voltage.
-> 
-> 'exynos,parent-bus' property is only used to catch
-> the change timing of shared power line.
-> 
-> 
-> And,
-> as you commented, there are some data path among the exynos-bus
-> devices for the display h/w as following:
-> 
-> 	bus_display -> bus_leftbus -> bus_dmc
-> 
-> In order to make the data path between bus devices,
-> interconnect binding is required. This approach[1] was posted.
-> [1] https://patchwork.kernel.org/cover/11305265/
-> - [RFC,v3,0/7] PM / devfreq: Simple QoS for exynos-bus using interconnect
-> 
+Looks like restoring the original width/height was a bad idea (it
+breaks the odd_size tests of the VP9 testsuite [1]). I'll adjust the
+test in validate_dec_params() [2] to align the ctrl width/height params
+on a superblock size (64 pixels) instead.
 
-Are there any other commentss?
+> +
+> +	f->fmt.pix_mp.field = V4L2_FIELD_NONE;
+> +
+> +	return 0;
+> +}
 
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+[1]https://storage.googleapis.com/downloads.webmproject.org/vp9/decoder-test-streams/Profile_0_8bit.zip
+[2]https://patchwork.kernel.org/patch/11290603/
