@@ -1,15 +1,15 @@
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v12 08/11] media: staging: dt-bindings: add Rockchip ISP1
- yaml bindings
-Date: Tue, 7 Jan 2020 01:59:57 +0200
-Message-ID: <20200106235957.GA28230@pendragon.ideasonboard.com>
+Subject: Re: [PATCH v12 09/11] media: staging: dt-bindings: add Rockchip MIPI
+ RX D-PHY yaml bindings
+Date: Tue, 7 Jan 2020 02:10:55 +0200
+Message-ID: <20200107001055.GE22189@pendragon.ideasonboard.com>
 References: <20191227200116.2612137-1-helen.koike@collabora.com>
- <20191227200116.2612137-9-helen.koike@collabora.com>
+ <20191227200116.2612137-10-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20191227200116.2612137-9-helen.koike@collabora.com>
+In-Reply-To: <20191227200116.2612137-10-helen.koike@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Helen Koike <helen.koike@collabora.com>
 Cc: linux-rockchip@lists.infradead.org, mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, gregkh@linuxfoundation.org, andrey.konovalov@linaro.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, sakari.ailus@linux.intel.com, joacim.zetterling@gmail.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, linux-arm-kernel@lists.infradead.org
@@ -19,13 +19,13 @@ Hi Helen,
 
 Thank you for the patch.
 
-On Fri, Dec 27, 2019 at 05:01:13PM -0300, Helen Koike wrote:
-> Add yaml DT bindings for Rockchip ISP1.
+On Fri, Dec 27, 2019 at 05:01:14PM -0300, Helen Koike wrote:
+> Add yaml DT bindings for Rockchip MIPI D-PHY RX
 > 
 > This was tested and verified with:
-> mv drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml Documentation/devicetree/bindings/media/
-> make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> mv drivers/staging/media/phy-rockchip-dphy/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml  Documentation/devicetree/bindings/phy/
+> make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
+> make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
 > 
 > Signed-off-by: Helen Koike <helen.koike@collabora.com>
 > 
@@ -33,254 +33,120 @@ On Fri, Dec 27, 2019 at 05:01:13PM -0300, Helen Koike wrote:
 > 
 > Changes in v12:
 > - The commit replaces the following commit in previous series named
-> media: staging: dt-bindings: Document the Rockchip ISP1 bindings
+> media: staging: dt-bindings: Document the Rockchip MIPI RX D-PHY bindings
 > This new patch adds yaml binding and was verified with
 > make dtbs_check and make dt_binding_check
 > 
-> Changes in v11:
-> - add clock-names values
-> 
+> Changes in v11: None
 > Changes in v10:
 > - unsquash
 > 
 > Changes in v9:
+> - fix title division style
 > - squash
 > - move to staging
 > 
-> Changes in v8:
-> - fix title division style
-> 
+> Changes in v8: None
 > Changes in v7:
-> - update document with new design and tested example
+> - updated doc with new design and tested example
 > 
->  .../bindings/media/rockchip-isp1.yaml         | 193 ++++++++++++++++++
->  1 file changed, 193 insertions(+)
->  create mode 100644 drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+>  .../bindings/phy/rockchip-mipi-dphy.yaml      | 75 +++++++++++++++++++
+>  1 file changed, 75 insertions(+)
+>  create mode 100644 drivers/staging/media/phy-rockchip-dphy/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
 > 
-> diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> diff --git a/drivers/staging/media/phy-rockchip-dphy/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml b/drivers/staging/media/phy-rockchip-dphy/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
 > new file mode 100644
-> index 000000000000..4d1b2c67a4cd
+> index 000000000000..af97f1b3e005
 > --- /dev/null
-> +++ b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> @@ -0,0 +1,193 @@
+> +++ b/drivers/staging/media/phy-rockchip-dphy/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
+> @@ -0,0 +1,75 @@
 > +# SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 > +%YAML 1.2
 > +---
-> +$id: http://devicetree.org/schemas/media/rockchip-isp1.yaml#
+> +$id: http://devicetree.org/schemas/phy/rockchip-mipi-dphy.yaml#
 > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: Rockchip SoC Image Signal Processing unit v1
+> +title: Rockchip SoC MIPI RX0 D-PHY Device Tree Bindings
+
+Should this be s/RX0/RX/ ? Or do you expect different bindings for RX1 ?
+Looking at the PHY driver, it seems to handle all PHYs with a single
+struct device. Should we thus use #phy-cells = <1> to select the PHY ?
+
 > +
 > +maintainers:
 > +  - Helen Koike <helen.koike@collabora.com>
+> +  - Ezequiel Garcia <ezequiel@collabora.com>
 > +
 > +description: |
-> +  Rockchip ISP1 is the Camera interface for the Rockchip series of SoCs
-> +  which contains image processing, scaling, and compression funcitons.
+> +  The Rockchip SoC has a MIPI D-PHY bus with an RX0 entry which connects to
+> +  the ISP1 (Image Signal Processing unit v1.0) for CSI cameras.
 > +
 > +properties:
 > +  compatible:
-> +    const: rockchip,rk3399-cif-isp
+> +    const: rockchip,rk3399-mipi-dphy
 > +
 > +  reg:
 > +    maxItems: 1
 > +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  iommus:
-> +    maxItems: 1
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  phys:
-> +    maxItems: 1
-> +    description: phandle for the PHY port
-
-According to http://opensource.rock-chips.com/wiki_Camera_driver, RK3388
-can route either of DPHY RX0 or DPHY RX1 to the single ISP instance,
-while RK3399 has one PHY per ISP instance, with DPHY RX1 being shared
-with the display. Have you given any thought on how we will support this
-in a backward-compatible way in the DT bindings ?
-
-> +
-> +  phy-names:
-> +    const: dphy
-> +
 > +  clocks:
 > +    items:
-> +      - description: ISP clock
-> +      - description: ISP aclk clock
-> +      - description: ISP aclk wrapper clock
-> +      - description: ISP hclk clock
-> +      - description: ISP hclk wrapper clock
+> +      - description: Mipi d-phy ref clock
+> +      - description: Mipi d-phy rx0 cfg clock
 
-I wonder what aclk and hclk stand far. In any case those names match the
-CRU documentation, so that seems fine.
+s/Mipi d-phy/MIPI D-PHY/
 
+> +      - description: Video in/out general register file clock
 > +
 > +  clock-names:
 > +    items:
-> +      - const: clk_isp
-> +      - const: aclk_isp
-> +      - const: aclk_isp_wrap
-> +      - const: hclk_isp
-> +      - const: hclk_isp_wrap
+> +      - const: dphy-ref
+> +      - const: dphy-cfg
+> +      - const: grf
 > +
-> +  # See ./video-interfaces.txt for details
-> +  ports:
-> +    type: object
-> +    additionalProperties: false
+> +  '#phy-cells':
+> +    const: 0
 > +
-> +    properties:
-> +      "#address-cells":
-> +        const: 1
-> +
-> +      "#size-cells":
-> +        const: 0
-> +
-> +      port@0:
-> +        type: object
-> +        additionalProperties: false
-
-I think this should have a description to tell what this port
-corresponds to.
-
-> +
-> +        properties:
-> +          "#address-cells":
-> +            const: 1
-> +
-> +          "#size-cells":
-> +            const: 0
-> +
-> +          reg:
-> +            const: 0
-> +            description: port identifier.
-
-Here and for the endpoint below the description is probably not needed.
-
-> +
-> +        patternProperties:
-> +          endpoint:
-> +            type: object
-> +            additionalProperties: false
-> +
-> +            properties:
-> +              reg:
-> +                maxItems: 1
-> +                description: endpoint identifier.
-> +
-> +              data-lanes:
-> +                minItems: 1
-> +                maxItems: 4
-> +
-> +              remote-endpoint: true
-> +
-> +    required:
-> +      - port@0
+> +  power-domains:
+> +    description: Video in/out power domain.
+> +    maxItems: 1
 > +
 > +required:
 > +  - compatible
-> +  - interrupts
 > +  - clocks
 > +  - clock-names
+> +  - '#phy-cells'
 > +  - power-domains
-> +  - iommus
-> +  - phys
-> +  - phy-names
-> +  - ports
 > +
 > +additionalProperties: false
 > +
 > +examples:
 > +  - |
 > +
+> +    /*
+> +     * MIPI RX D-PHY use registers in "general register files", it
+> +     * should be a child of the GRF.
+> +     *
+> +     * grf: syscon@ff770000 {
+> +     *  compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
+> +     *  ...
+
+missing
+
+	* };
+
+> +     */
+> +
 > +    #include <dt-bindings/clock/rk3399-cru.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
 > +    #include <dt-bindings/power/rk3399-power.h>
 > +
-> +    parent0: parent@0 {
-> +        #address-cells = <2>;
-> +        #size-cells = <2>;
-> +
-> +        isp0: isp0@ff910000 {
-> +            compatible = "rockchip,rk3399-cif-isp";
-> +            reg = <0x0 0xff910000 0x0 0x4000>;
-> +            interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
-> +            clocks = <&cru SCLK_ISP0>,
-> +                     <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
-> +                     <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
-> +            clock-names = "clk_isp",
-> +                          "aclk_isp", "aclk_isp_wrap",
-> +                          "hclk_isp", "hclk_isp_wrap";
-> +            power-domains = <&power RK3399_PD_ISP0>;
-> +            iommus = <&isp0_mmu>;
-> +            phys = <&dphy>;
-> +            phy-names = "dphy";
-> +
-> +            ports {
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +
-> +                port@0 {
-> +                    #address-cells = <1>;
-> +                    #size-cells = <0>;
-> +                    reg = <0>;
-> +
-> +                    mipi_in_wcam: endpoint@0 {
-> +                        reg = <0>;
-> +                        remote-endpoint = <&wcam_out>;
-> +                        data-lanes = <1 2>;
-> +                    };
-> +
-> +                    mipi_in_ucam: endpoint@1 {
-> +                        reg = <1>;
-> +                        remote-endpoint = <&ucam_out>;
-> +                        data-lanes = <1>;
-> +                    };
-
-Are those two cameras connected to the same CSI-2 lines with at most one
-sensor out of reset ?
-
-With the above small issues addressed,
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-> +                };
-> +            };
-> +        };
-> +
-> +        i2c7: i2c@ff160000 {
-> +            clock-frequency = <400000>;
-> +            #address-cells = <1>;
-> +            #size-cells = <0>;
-> +
-> +            wcam: camera@36 {
-> +                compatible = "ovti,ov5695";
-> +                reg = <0x36>;
-> +
-> +                port {
-> +                    wcam_out: endpoint {
-> +                        remote-endpoint = <&mipi_in_wcam>;
-> +                        data-lanes = <1 2>;
-> +                    };
-> +                };
-> +            };
-> +
-> +            ucam: camera@3c {
-> +                compatible = "ovti,ov2685";
-> +                reg = <0x3c>;
-> +
-> +                  port {
-> +                      ucam_out: endpoint {
-> +                          remote-endpoint = <&mipi_in_ucam>;
-> +                          data-lanes = <1>;
-> +                      };
-> +                  };
-> +            };
-> +        };
+> +    dphy: mipi-dphy {
+> +        compatible = "rockchip,rk3399-mipi-dphy";
+> +        clocks = <&cru SCLK_MIPIDPHY_REF>,
+> +                 <&cru SCLK_DPHY_RX0_CFG>,
+> +                 <&cru PCLK_VIO_GRF>;
+> +        clock-names = "dphy-ref", "dphy-cfg", "grf";
+> +        power-domains = <&power RK3399_PD_VIO>;
+> +        #phy-cells = <0>;
 > +    };
 
 -- 
