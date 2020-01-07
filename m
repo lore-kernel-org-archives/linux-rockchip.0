@@ -1,45 +1,135 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH 2/2] pwm: Enable compile testing for some of drivers
-Date: Tue, 7 Jan 2020 13:15:12 +0100
-Message-ID: <20200107121512.GA319@pi3>
-References: <20191230172113.17222-1-krzk@kernel.org>
- <20191230172113.17222-2-krzk@kernel.org>
- <20200107072645.ko247bwhh3ibdu73@pengutronix.de>
- <20200107082539.GA31827@pi3>
- <20200107104234.wq74fska3szrg4ii@pengutronix.de>
- <20200107110359.GA32423@pi3>
- <20200107113354.ggq6zarewq5ip354@pengutronix.de>
- <20200107115429.GA32632@pi3>
- <20200107120926.cgrxk6b4rchf6i42@pengutronix.de>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v12 09/11] media: staging: dt-bindings: add Rockchip
+ MIPI RX D-PHY yaml bindings
+Date: Tue, 07 Jan 2020 10:20:10 -0300
+Message-ID: <657de953782be2514849bc8bd12a3fbcb6794427.camel@collabora.com>
+References: <20191227200116.2612137-1-helen.koike@collabora.com>
+         <cfd5156f09358a428d0c40cfcd17d688e0225f2b.camel@collabora.com>
+         <20200107023721.GG22189@pendragon.ideasonboard.com>
+         <2549505.MsbA2le1sL@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200107120926.cgrxk6b4rchf6i42@pengutronix.de>
+In-Reply-To: <2549505.MsbA2le1sL@diego>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: linux-pwm@vger.kernel.org, Arnd Bergmann <arnd@arndb.de>, Richard Weinberger <richard@nod.at>, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, kernel@pengutronix.de, linux-tegra@vger.kernel.org, linux-amlogic@lists.infradead.org, linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+To: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Helen Koike <helen.koike@collabora.com>, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, gregkh@linuxfoundation.org, andrey.konovalov@linaro.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, sakari.ailus@linux.intel.com, joacim.zetterling@gmail.com, kernel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jan 07, 2020 at 01:09:26PM +0100, Uwe Kleine-König wrote:
-> > > (Oh, HAS_DMA is defined using "depends on !NO_DMA" + "default y".
-> > > NO_DMA has three different definitions. Two of them (in
-> > > drivers/crypto/ccree/cc_hw_queue_defs.h and arch/arm/include/asm/dma.h)
-> > > unrelated.)
+Hi Heiko, Laurent,
+
+On Tue, 2020-01-07 at 10:28 +0100, Heiko Stübner wrote:
+> Am Dienstag, 7. Januar 2020, 03:37:21 CET schrieb Laurent Pinchart:
+> > On Mon, Jan 06, 2020 at 11:06:12PM -0300, Ezequiel Garcia wrote:
+> > > On Tue, 2020-01-07 at 02:10 +0200, Laurent Pinchart wrote:
+> > > > Hi Helen,
+> > > > 
+> > > > Thank you for the patch.
+> > > > 
+> > > > On Fri, Dec 27, 2019 at 05:01:14PM -0300, Helen Koike wrote:
+> > > > > Add yaml DT bindings for Rockchip MIPI D-PHY RX
+> > > > > 
+> > > > > This was tested and verified with:
+> > > > > mv drivers/staging/media/phy-rockchip-dphy/Documentation/devicetree/bindings/phy/rockchip-mipi-
+> > > > > dphy.yaml  Documentation/devicetree/bindings/phy/
+> > > > > make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
+> > > > > make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
+> > > > > 
+> > > > > Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> > > > > 
+> > > > > ---
+> > > > > 
+> > > > > Changes in v12:
+> > > > > - The commit replaces the following commit in previous series named
+> > > > > media: staging: dt-bindings: Document the Rockchip MIPI RX D-PHY bindings
+> > > > > This new patch adds yaml binding and was verified with
+> > > > > make dtbs_check and make dt_binding_check
+> > > > > 
+> > > > > Changes in v11: None
+> > > > > Changes in v10:
+> > > > > - unsquash
+> > > > > 
+> > > > > Changes in v9:
+> > > > > - fix title division style
+> > > > > - squash
+> > > > > - move to staging
+> > > > > 
+> > > > > Changes in v8: None
+> > > > > Changes in v7:
+> > > > > - updated doc with new design and tested example
+> > > > > 
+> > > > >  .../bindings/phy/rockchip-mipi-dphy.yaml      | 75 +++++++++++++++++++
+> > > > >  1 file changed, 75 insertions(+)
+> > > > >  create mode 100644 drivers/staging/media/phy-rockchip-dphy/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
+> > > > > 
+> > > > > diff --git a/drivers/staging/media/phy-rockchip-dphy/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
+> > > > > b/drivers/staging/media/phy-
+> > > > > rockchip-dphy/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
+> > > > > new file mode 100644
+> > > > > index 000000000000..af97f1b3e005
+> > > > > --- /dev/null
+> > > > > +++ b/drivers/staging/media/phy-rockchip-dphy/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy.yaml
+> > > > > @@ -0,0 +1,75 @@
+> > > > > +# SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> > > > > +%YAML 1.2
+> > > > > +---
+> > > > > +$id: http://devicetree.org/schemas/phy/rockchip-mipi-dphy.yaml#
+> > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > > > +
+> > > > > +title: Rockchip SoC MIPI RX0 D-PHY Device Tree Bindings
+> > > > 
+> > > > Should this be s/RX0/RX/ ? Or do you expect different bindings for RX1 ?
+> > > 
+> > > The driver currently only supports RX0, but I think you are right,
+> > > it should say RX here. This binding could be extended for RX1.
+> > > 
+> > > > Looking at the PHY driver, it seems to handle all PHYs with a single
+> > > > struct device. Should we thus use #phy-cells = <1> to select the PHY ?
+> > > 
+> > > I am not following this. The driver handles just one PHY. Each PHY
+> > > should have its own node.
 > > 
-> > Yes, HAS_DMA is the second missing piece for UM.
+> > Looking at the registers, it seems that the different PHYs are
+> > intertwined and we would could have trouble handling the different PHYs
+> > with different DT nodes and thus struct device instances.
 > 
-> So something like:
+> I have to confess to not following _ALL_ of the threads, so may say
+> something stupid, but I don't think the PHYs are intertwined so much.
 > 
-> 	# Usermode linux doesn't provide HAS_DMA and HAS_IOMEM.  To not have to
-> 	# clutter most dependencies with these just exclude UML from compile
-> 	# testing.
+> Where RX0 is controlled from the "General Register Files" alone
+> [register dumping ground for soc designers], the TX1RX1-phy
+> actually gets controlled from inside the dsi1 register area it seems.
 > 
-> as comment for COMPILE_TEST's depend line should be fine, right?
+> So in my previous (still unsucessful) tests, I was rolling with something like
+> https://github.com/mmind/linux-rockchip/commit/e0d4b03976d2aab85a8c1630be937ea003b5df88
+> 
+> With the actual "logic" picked from the vendor kernel, that just double-
+> maps the dsi1-registers in both dsi and dphy driver, which was strange.
+> 
 > 
 
-I think yes.
+Describing each PHY in its own device node (as we currently do)
+results in:
 
-Best regards,
-Krzysztof
+        mipi_dphy_tx1rx1: mipi-dphy-tx1rx1@ff968000 {
+                compatible = "rockchip,rk3399-mipi-dphy";
+                reg = <0x0 0xff968000 0x0 0x8000>;
+                rockchip,grf = <&grf>;
+        };
+
+        grf: syscon@ff770000 {
+                mipi_dphy_rx0: mipi-dphy-rx0 {
+                        compatible = "rockchip,rk3399-mipi-dphy";
+                };
+        };
+
+Which is mildly ugly, as it uses two mechanism to describe
+the GRF resource. In addition, the driver will then _infer_
+which device node is RX0 and which is TX1RX1, from this.
+
+Perhaps Laurent's proposal, describing each PHY explicitly,
+would be cleaner?
+
+Thanks,
+Ezequiel
