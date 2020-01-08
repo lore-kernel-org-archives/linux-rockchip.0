@@ -1,52 +1,103 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH RFT v1 1/3] drm/panfrost: enable devfreq based the
- "operating-points-v2" property
-Date: Wed, 8 Jan 2020 14:20:21 +0000
-Message-ID: <be59a20b-af08-5b55-fa69-f87d5aa9f277@arm.com>
-References: <20200107230626.885451-1-martin.blumenstingl@googlemail.com>
- <20200107230626.885451-2-martin.blumenstingl@googlemail.com>
- <a85f2063-f412-9762-58d1-47fdffb24af9@arm.com>
- <CAFBinCBYrNC+ULV6Y=77qogowkDZwM+H0bxOqPN4sT6q3krGfw@mail.gmail.com>
+From: Mark Brown <broonie@kernel.org>
+Subject: Applied "regulator: mp8859: add config option and build entry" to the
+ regulator tree
+Date: Wed, 08 Jan 2020 15:58:54 +0000
+Message-ID: <applied-20200106211633.2882-3-m.reichl@fivetechno.de>
+References: <20200106211633.2882-3-m.reichl@fivetechno.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFBinCBYrNC+ULV6Y=77qogowkDZwM+H0bxOqPN4sT6q3krGfw@mail.gmail.com>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, steven.price@arm.com, tomeu.vizoso@collabora.com, robh@kernel.org, linux-kernel@vger.kernel.org, daniel@ffwll.ch, airlied@linux.ie, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, Sudeep Holla <sudeep.holla@arm.com>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
+In-Reply-To: <20200106211633.2882-3-m.reichl@fivetechno.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
+To: Markus Reichl <m.reichl@fivetechno.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-[ +Sudeep ]
+The patch
 
-On 08/01/2020 12:38 pm, Martin Blumenstingl wrote:
-> Hi Robin,
-> 
-> On Wed, Jan 8, 2020 at 12:18 PM Robin Murphy <robin.murphy@arm.com> wrote:
->>
->> On 07/01/2020 11:06 pm, Martin Blumenstingl wrote:
->>> Decouple the check to see whether we want to enable devfreq for the GPU
->>> from dev_pm_opp_set_regulators(). This is preparation work for adding
->>> back support for regulator control (which means we need to call
->>> dev_pm_opp_set_regulators() before dev_pm_opp_of_add_table(), which
->>> means having a check for "is devfreq enabled" that is not tied to
->>> dev_pm_opp_of_add_table() makes things easier).
->>
->> Hmm, what about cases like the SCMI DVFS protocol where the OPPs are
->> dynamically discovered rather than statically defined in DT?
-> where can I find such an example (Amlogic SoCs use SCPI instead of
-> SCMI, so I don't think that I have any board with SCMI support) or
-> some documentation?
-> (I could only find SCPI clock and CPU DVFS implementations, but no
-> generic "OPPs for any device" implementation)
+   regulator: mp8859: add config option and build entry
 
-On closer inspection I think this applies to the SCPI DVFS protocol 
-too[1]. AIUI the fact that neither is wired up to a devfreq driver yet 
-is merely due to lack of demand and suitable systems to develop/test on 
-so far - the panfrost devfreq code is only now looking like the first 
-viable upstream use-case ;)
+has been applied to the regulator tree at
 
-Robin.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-5.6
 
-[1] http://infocenter.arm.com/help/topic/com.arm.doc.dui0922g/BABFEBCD.html
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.  
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+From c66f1cbad53a61f00f8b6273e737d5e560b69ec7 Mon Sep 17 00:00:00 2001
+From: Markus Reichl <m.reichl@fivetechno.de>
+Date: Mon, 6 Jan 2020 22:16:25 +0100
+Subject: [PATCH] regulator: mp8859: add config option and build entry
+
+Add entries for the mp8859 regulator driver
+to the build system.
+
+Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+Link: https://lore.kernel.org/r/20200106211633.2882-3-m.reichl@fivetechno.de
+Signed-off-by: Mark Brown <broonie@kernel.org>
+---
+ drivers/regulator/Kconfig  | 11 +++++++++++
+ drivers/regulator/Makefile |  1 +
+ 2 files changed, 12 insertions(+)
+
+diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
+index 56512748a47d..593733a88a61 100644
+--- a/drivers/regulator/Kconfig
++++ b/drivers/regulator/Kconfig
+@@ -612,6 +612,17 @@ config REGULATOR_MCP16502
+ 	  through the regulator interface. In addition it enables
+ 	  suspend-to-ram/standby transition.
+ 
++config REGULATOR_MP8859
++	tristate "MPS MP8859 regulator driver"
++	depends on I2C
++	select REGMAP_I2C
++	help
++	  Say y here to support the MP8859 voltage regulator. This driver
++	  supports basic operations (get/set voltage) through the regulator
++	  interface.
++	  Say M here if you want to include support for the regulator as a
++	  module. The module will be named "mp8859".
++
+ config REGULATOR_MT6311
+ 	tristate "MediaTek MT6311 PMIC"
+ 	depends on I2C
+diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
+index 9eccf93bc3ab..8ba8e5deebbd 100644
+--- a/drivers/regulator/Makefile
++++ b/drivers/regulator/Makefile
+@@ -78,6 +78,7 @@ obj-$(CONFIG_REGULATOR_MC13783) += mc13783-regulator.o
+ obj-$(CONFIG_REGULATOR_MC13892) += mc13892-regulator.o
+ obj-$(CONFIG_REGULATOR_MC13XXX_CORE) +=  mc13xxx-regulator-core.o
+ obj-$(CONFIG_REGULATOR_MCP16502) += mcp16502.o
++obj-$(CONFIG_REGULATOR_MP8859) += mp8859.o
+ obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
+ obj-$(CONFIG_REGULATOR_MT6358)	+= mt6358-regulator.o
+-- 
+2.20.1
