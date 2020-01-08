@@ -1,53 +1,37 @@
-From: Tobias Schramm <t.schramm@manjaro.org>
-Subject: [PATCH 1/1] drm/rockchip: fix integer type used for storing dp data
- rate and lane count
-Date: Wed,  8 Jan 2020 23:39:49 +0100
-Message-ID: <20200108223949.355975-2-t.schramm@manjaro.org>
-References: <20200108223949.355975-1-t.schramm@manjaro.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 5/5] arm64: dts: rockchip: Enable mp8859 regulator on
+ rk3399-roc-pc
+Date: Thu, 09 Jan 2020 00:30:05 +0100
+Message-ID: <2818372.Uxc4pq5UrR@phil>
+References: <20200106211633.2882-1-m.reichl@fivetechno.de>
+ <20200106211633.2882-6-m.reichl@fivetechno.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20200108223949.355975-1-t.schramm@manjaro.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: linux-rockchip@lists.infradead.org, Tobias Schramm <t.schramm@manjaro.org>, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200106211633.2882-6-m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-commit 2589c4025f13 ("drm/rockchip: Avoid drm_dp_link helpers") changes
-the type of variables used to store the display port data rate and
-number of lanes to u8. However u8 is not sufficient to store the link
-data rate of the display port.
-This commit reverts the type of both the number of lanes and the data
-rate to unsigned int.
+Am Montag, 6. Januar 2020, 22:16:28 CET schrieb Markus Reichl:
+> The rk3399-roc-pc uses a MP8859 DC/DC converter for 12V supply.
+> This supplies 5V only in default state after booting.
+> Now we can control the output voltage via I2C interface.
+> Add a node for the driver to reach 12V.
+> 
+> Signed-off-by: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
 
-Signed-off-by: Tobias Schramm <t.schramm@manjaro.org>
----
- drivers/gpu/drm/rockchip/cdn-dp-core.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+applied for 5.6 now that the driver-side got merged
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.h b/drivers/gpu/drm/rockchip/cdn-dp-core.h
-index 83c4586665b4..806cb0b08982 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.h
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.h
-@@ -94,8 +94,8 @@ struct cdn_dp_device {
- 	struct video_info video_info;
- 	struct cdn_dp_port *port[MAX_PHY];
- 	u8 ports;
--	u8 max_lanes;
--	u8 max_rate;
-+	unsigned int max_lanes;
-+	unsigned int max_rate;
- 	u8 lanes;
- 	int active_port;
- 
--- 
-2.24.1
+Thanks
+Heiko
