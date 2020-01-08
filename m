@@ -1,7 +1,7 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: [PATCH v13 09/11] media: staging: dt-bindings: add Rockchip MIPI RX D-PHY RX0 yaml bindings
-Date: Wed,  8 Jan 2020 15:44:52 -0300
-Message-ID: <20200108184454.825725-10-helen.koike@collabora.com>
+Subject: [PATCH v13 10/11] media: staging: rkisp1: add TODO file for staging
+Date: Wed,  8 Jan 2020 15:44:53 -0300
+Message-ID: <20200108184454.825725-11-helen.koike@collabora.com>
 References: <20200108184454.825725-1-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -9,129 +9,54 @@ Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20200108184454.825725-1-helen.koike@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-rockchip@lists.infradead.org
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, gregkh@linuxfoundation.org, andrey.konovalov@linaro.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, joacim.zetterling@gmail.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, linux-arm-kernel@lists.infradead.org, Helen Koike <helen.koike@collabora.com>, Rob Herring <robh@kernel.org>
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, gregkh@linuxfoundation.org, andrey.konovalov@linaro.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, robh+dt@kernel.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com, joacim.zetterling@gmail.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, jacob-chen@iotwrt.com, linux-arm-kernel@lists.infradead.org, Helen Koike <helen.koike@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add yaml DT bindings for Rockchip MIPI D-PHY RX
-
-This was tested and verified with:
-mv drivers/staging/media/phy-rockchip-dphy-rx0/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml  Documentation/devicetree/bindings/phy/
-make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
-make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
+Add TODO file with requirements to move this driver out of staging.
 
 Signed-off-by: Helen Koike <helen.koike@collabora.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
-
 ---
 
-Changes in v13:
-- renamed with rx0 suffix
-- improved clock description
-
-Changes in v12:
-- The commit replaces the following commit in previous series named
-media: staging: dt-bindings: Document the Rockchip MIPI RX D-PHY bindings
-This new patch adds yaml binding and was verified with
-make dtbs_check and make dt_binding_check
-
+Changes in v13: None
+Changes in v12: None
 Changes in v11: None
-Changes in v10:
-- unsquash
-
-Changes in v9:
-- fix title division style
-- squash
-- move to staging
-
+Changes in v10: None
+Changes in v9: None
 Changes in v8: None
-Changes in v7:
-- updated doc with new design and tested example
+Changes in v7: None
 
- .../bindings/phy/rockchip-mipi-dphy-rx0.yaml  | 76 +++++++++++++++++++
- 1 file changed, 76 insertions(+)
- create mode 100644 drivers/staging/media/phy-rockchip-dphy-rx0/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
+ drivers/staging/media/rkisp1/TODO | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+ create mode 100644 drivers/staging/media/rkisp1/TODO
 
-diff --git a/drivers/staging/media/phy-rockchip-dphy-rx0/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml b/drivers/staging/media/phy-rockchip-dphy-rx0/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
+diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
 new file mode 100644
-index 000000000000..5dacece35702
+index 000000000000..03cd9a4e70f7
 --- /dev/null
-+++ b/drivers/staging/media/phy-rockchip-dphy-rx0/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
-@@ -0,0 +1,76 @@
-+# SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/phy/rockchip-mipi-dphy-rx0.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/drivers/staging/media/rkisp1/TODO
+@@ -0,0 +1,23 @@
++* Fix serialization on subdev ops.
++* Don't use v4l2_async_notifier_parse_fwnode_endpoints_by_port().
++e.g. isp_parse_of_endpoints in drivers/media/platform/omap3isp/isp.c
++cio2_parse_firmware in drivers/media/pci/intel/ipu3/ipu3-cio2.c.
++* Fix pad format size for statistics and parameters entities.
++* Use threaded interrupt for rkisp1_stats_isr(), remove work queue.
++* Fix checkpatch errors.
++* Make sure uapi structs have the same size and layout in 32 and 62 bits,
++and that there are no holes in the structures (pahole is a utility that
++can be used to test this).
++* Review and comment every lock
++* Handle quantization
++* Document rkisp1-common.h
++* streaming paths (mainpath and selfpath) check if the other path is streaming
++in several places of the code, review this, specially that it doesn't seem it
++supports streaming from both paths at the same time.
 +
-+title: Rockchip SoC MIPI RX0 D-PHY Device Tree Bindings
++NOTES:
++* All v4l2-compliance test must pass.
++* Stats and params can be tested with libcamera and ChromiumOS stack.
 +
-+maintainers:
-+  - Helen Koike <helen.koike@collabora.com>
-+  - Ezequiel Garcia <ezequiel@collabora.com>
-+
-+description: |
-+  The Rockchip SoC has a MIPI D-PHY bus with an RX0 entry which connects to
-+  the ISP1 (Image Signal Processing unit v1.0) for CSI cameras.
-+
-+properties:
-+  compatible:
-+    const: rockchip,rk3399-mipi-dphy-rx0
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: MIPI D-PHY ref clock
-+      - description: MIPI D-PHY RX0 cfg clock
-+      - description: Video in/out general register file clock
-+
-+  clock-names:
-+    items:
-+      - const: dphy-ref
-+      - const: dphy-cfg
-+      - const: grf
-+
-+  '#phy-cells':
-+    const: 0
-+
-+  power-domains:
-+    description: Video in/out power domain.
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - clocks
-+  - clock-names
-+  - '#phy-cells'
-+  - power-domains
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+
-+    /*
-+     * MIPI D-PHY RX0 use registers in "general register files", it
-+     * should be a child of the GRF.
-+     *
-+     * grf: syscon@ff770000 {
-+     *  compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
-+     *  ...
-+     * };
-+     */
-+
-+    #include <dt-bindings/clock/rk3399-cru.h>
-+    #include <dt-bindings/power/rk3399-power.h>
-+
-+    mipi_dphy_rx0: mipi-dphy-rx0 {
-+        compatible = "rockchip,rk3399-mipi-dphy-rx0";
-+        clocks = <&cru SCLK_MIPIDPHY_REF>,
-+                 <&cru SCLK_DPHY_RX0_CFG>,
-+                 <&cru PCLK_VIO_GRF>;
-+        clock-names = "dphy-ref", "dphy-cfg", "grf";
-+        power-domains = <&power RK3399_PD_VIO>;
-+        #phy-cells = <0>;
-+    };
++Please CC patches to Linux Media <linux-media@vger.kernel.org> and
++Helen Koike <helen.koike@collabora.com>.
 -- 
 2.24.0
