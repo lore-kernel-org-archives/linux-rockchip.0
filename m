@@ -1,8 +1,8 @@
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 01/14] phy/rockchip: inno-hdmi: use correct vco_div_5 macro
- on rk3328
-Date: Wed, 08 Jan 2020 21:07:47 +0000 (UTC)
-Message-ID: <20200108210740.28769-2-jonas@kwiboo.se>
+Subject: [PATCH v2 10/14] arm64: dts: rockchip: add vpll clock to hdmi node on
+ rk3328
+Date: Wed, 08 Jan 2020 21:07:51 +0000 (UTC)
+Message-ID: <20200108210740.28769-11-jonas@kwiboo.se>
 References: <20200108210740.28769-1-jonas@kwiboo.se>
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
@@ -13,31 +13,28 @@ To: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>
 Cc: Jonas Karlman <jonas@kwiboo.se>, Kishon Vijay Abraham I <kishon@ti.com>, Zheng Yang <zhengyang@rock-chips.com>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-inno_hdmi_phy_rk3328_clk_set_rate() is using the RK3228 macro
-when configuring vco_div_5 on RK3328.
+Add the hdmiphy clock as the vpll in hdmi node.
 
-Fix this by using correct vco_div_5 macro for RK3328.
-
-Fixes: 53706a116863 ("phy: add Rockchip Innosilicon hdmi phy")
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-index 9ca20c947283..b0ac1d3ee390 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-@@ -790,8 +790,8 @@ static int inno_hdmi_phy_rk3328_clk_set_rate(struct clk_hw *hw,
- 			 RK3328_PRE_PLL_POWER_DOWN);
- 
- 	/* Configure pre-pll */
--	inno_update_bits(inno, 0xa0, RK3228_PCLK_VCO_DIV_5_MASK,
--			 RK3228_PCLK_VCO_DIV_5(cfg->vco_div_5_en));
-+	inno_update_bits(inno, 0xa0, RK3328_PCLK_VCO_DIV_5_MASK,
-+			 RK3328_PCLK_VCO_DIV_5(cfg->vco_div_5_en));
- 	inno_write(inno, 0xa1, RK3328_PRE_PLL_PRE_DIV(cfg->prediv));
- 
- 	val = RK3328_SPREAD_SPECTRUM_MOD_DISABLE;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index fee896338cc1..5d8807aca62e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -720,9 +720,11 @@
+ 			     <GIC_SPI 71 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru PCLK_HDMI>,
+ 			 <&cru SCLK_HDMI_SFC>,
++			 <&hdmiphy>,
+ 			 <&cru SCLK_RTC32K>;
+ 		clock-names = "iahb",
+ 			      "isfr",
++			      "vpll",
+ 			      "cec";
+ 		phys = <&hdmiphy>;
+ 		phy-names = "hdmi";
 -- 
 2.17.1
