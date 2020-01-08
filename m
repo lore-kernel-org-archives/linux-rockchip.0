@@ -1,38 +1,58 @@
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Subject: Re: [PATCH RFT v1 1/3] drm/panfrost: enable devfreq based the
- "operating-points-v2" property
-Date: Wed, 8 Jan 2020 13:38:00 +0100
-Message-ID: <CAFBinCBYrNC+ULV6Y=77qogowkDZwM+H0bxOqPN4sT6q3krGfw@mail.gmail.com>
-References: <20200107230626.885451-1-martin.blumenstingl@googlemail.com>
- <20200107230626.885451-2-martin.blumenstingl@googlemail.com> <a85f2063-f412-9762-58d1-47fdffb24af9@arm.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH 10/11] rockpro-rk3399: Enable SPI Flash
+Date: Wed, 8 Jan 2020 18:29:07 +0530
+Message-ID: <CAMty3ZDQfV5XXAiBynNwBw7-6rWMU-Zf34EQ1AjRf8r9+crrZw@mail.gmail.com>
+References: <20191221075440.6944-1-jagan@amarulasolutions.com>
+ <20191221075440.6944-11-jagan@amarulasolutions.com>
+ <20191230125134.189ba860e7fc99b4ad2f1def@bidouilliste.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <a85f2063-f412-9762-58d1-47fdffb24af9@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, steven.price@arm.com, tomeu.vizoso@collabora.com, robh@kernel.org, linux-kernel@vger.kernel.org, daniel@ffwll.ch, airlied@linux.ie, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20191230125134.189ba860e7fc99b4ad2f1def@bidouilliste.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Emmanuel Vadot <manu@bidouilliste.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, U-Boot-Denx <u-boot@lists.denx.de>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Robin,
-
-On Wed, Jan 8, 2020 at 12:18 PM Robin Murphy <robin.murphy@arm.com> wrote:
+On Mon, Dec 30, 2019 at 5:21 PM Emmanuel Vadot <manu@bidouilliste.com> wrote:
 >
-> On 07/01/2020 11:06 pm, Martin Blumenstingl wrote:
-> > Decouple the check to see whether we want to enable devfreq for the GPU
-> > from dev_pm_opp_set_regulators(). This is preparation work for adding
-> > back support for regulator control (which means we need to call
-> > dev_pm_opp_set_regulators() before dev_pm_opp_of_add_table(), which
-> > means having a check for "is devfreq enabled" that is not tied to
-> > dev_pm_opp_of_add_table() makes things easier).
 >
-> Hmm, what about cases like the SCMI DVFS protocol where the OPPs are
-> dynamically discovered rather than statically defined in DT?
-where can I find such an example (Amlogic SoCs use SCPI instead of
-SCMI, so I don't think that I have any board with SCMI support) or
-some documentation?
-(I could only find SCPI clock and CPU DVFS implementations, but no
-generic "OPPs for any device" implementation)
+>  Hi Jagan,
+>
+> On Sat, 21 Dec 2019 13:24:39 +0530
+> Jagan Teki <jagan@amarulasolutions.com> wrote:
+>
+> > Enable winbond SPI flash for ROC-PC-RK3399 board.
+>
+>  s/ROC-PC-RK3399/RockPro64/
+>
+> >
+> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> > ---
+> >  arch/arm/dts/rk3399-rockpro64-u-boot.dtsi | 4 ++++
+> >  configs/rockpro64-rk3399_defconfig        | 2 ++
+> >  2 files changed, 6 insertions(+)
+> >
+> > diff --git a/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi b/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
+> > index 4648513ea9..deaa3efd39 100644
+> > --- a/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
+> > +++ b/arch/arm/dts/rk3399-rockpro64-u-boot.dtsi
+> > @@ -6,6 +6,10 @@
+> >  #include "rk3399-u-boot.dtsi"
+> >  #include "rk3399-sdram-lpddr4-100.dtsi"
+> >  / {
+> > +     aliases {
+> > +             spi0 = &spi1;
+>
+>  That looks weird ... what's the point of this alias exactly ?
 
-
-Martin
+spi uclass would require alias number to bind the driver, no way to
+escape as of now.
