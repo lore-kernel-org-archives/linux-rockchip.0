@@ -1,30 +1,30 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "regulator: mp8859: add config option and build entry" to the
- regulator tree
-Date: Wed, 08 Jan 2020 15:58:54 +0000
-Message-ID: <applied-20200106211633.2882-3-m.reichl@fivetechno.de>
-References: <20200106211633.2882-3-m.reichl@fivetechno.de>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Applied "regulator: bindings: add MPS mp8859 voltage regulator" to
+ the regulator tree
+Date: Wed, 08 Jan 2020 15:58:57 +0000
+Message-ID: <applied-20200106211633.2882-5-m.reichl@fivetechno.de>
+References: <20200106211633.2882-5-m.reichl@fivetechno.de>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20200106211633.2882-3-m.reichl@fivetechno.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Markus Reichl <m.reichl@fivetechno.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200106211633.2882-5-m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 The patch
 
-   regulator: mp8859: add config option and build entry
+   regulator: bindings: add MPS mp8859 voltage regulator
 
 has been applied to the regulator tree at
 
@@ -49,55 +49,49 @@ to this mail.
 Thanks,
 Mark
 
-From c66f1cbad53a61f00f8b6273e737d5e560b69ec7 Mon Sep 17 00:00:00 2001
-From: Markus Reichl <m.reichl@fivetechno.de>
-Date: Mon, 6 Jan 2020 22:16:25 +0100
-Subject: [PATCH] regulator: mp8859: add config option and build entry
+From 44665f7d082977e8bb1803ec0e596f141cba7196 Mon Sep 17 00:00:00 2001
+From: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+Date: Mon, 6 Jan 2020 22:16:27 +0100
+Subject: [PATCH] regulator: bindings: add MPS mp8859 voltage regulator
 
-Add entries for the mp8859 regulator driver
-to the build system.
+The MP8859 from Monolithic Power Systems is a single output dc/dc converter
+with voltage control over i2c.
 
-Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
-Link: https://lore.kernel.org/r/20200106211633.2882-3-m.reichl@fivetechno.de
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+Link: https://lore.kernel.org/r/20200106211633.2882-5-m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org
+Signed-off-by: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 ---
- drivers/regulator/Kconfig  | 11 +++++++++++
- drivers/regulator/Makefile |  1 +
- 2 files changed, 12 insertions(+)
+ .../devicetree/bindings/regulator/mp8859.txt  | 22 +++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/mp8859.txt
 
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index 56512748a47d..593733a88a61 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -612,6 +612,17 @@ config REGULATOR_MCP16502
- 	  through the regulator interface. In addition it enables
- 	  suspend-to-ram/standby transition.
- 
-+config REGULATOR_MP8859
-+	tristate "MPS MP8859 regulator driver"
-+	depends on I2C
-+	select REGMAP_I2C
-+	help
-+	  Say y here to support the MP8859 voltage regulator. This driver
-+	  supports basic operations (get/set voltage) through the regulator
-+	  interface.
-+	  Say M here if you want to include support for the regulator as a
-+	  module. The module will be named "mp8859".
+diff --git a/Documentation/devicetree/bindings/regulator/mp8859.txt b/Documentation/devicetree/bindings/regulator/mp8859.txt
+new file mode 100644
+index 000000000000..74ad69730989
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/mp8859.txt
+@@ -0,0 +1,22 @@
++Monolithic Power Systems MP8859 voltage regulator
 +
- config REGULATOR_MT6311
- 	tristate "MediaTek MT6311 PMIC"
- 	depends on I2C
-diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-index 9eccf93bc3ab..8ba8e5deebbd 100644
---- a/drivers/regulator/Makefile
-+++ b/drivers/regulator/Makefile
-@@ -78,6 +78,7 @@ obj-$(CONFIG_REGULATOR_MC13783) += mc13783-regulator.o
- obj-$(CONFIG_REGULATOR_MC13892) += mc13892-regulator.o
- obj-$(CONFIG_REGULATOR_MC13XXX_CORE) +=  mc13xxx-regulator-core.o
- obj-$(CONFIG_REGULATOR_MCP16502) += mcp16502.o
-+obj-$(CONFIG_REGULATOR_MP8859) += mp8859.o
- obj-$(CONFIG_REGULATOR_MT6311) += mt6311-regulator.o
- obj-$(CONFIG_REGULATOR_MT6323)	+= mt6323-regulator.o
- obj-$(CONFIG_REGULATOR_MT6358)	+= mt6358-regulator.o
++Required properties:
++- compatible: "mps,mp8859";
++- reg: I2C slave address.
++
++Optional subnode for regulator: "mp8859_dcdc", using common regulator
++bindings given in <Documentation/devicetree/bindings/regulator/regulator.txt>.
++
++Example:
++
++	mp8859: regulator@66 {
++		compatible = "mps,mp8859";
++		reg = <0x66>;
++		dc_12v: mp8859_dcdc {
++			regulator-name = "dc_12v";
++			regulator-min-microvolt = <12000000>;
++			regulator-max-microvolt = <12000000>;
++			regulator-boot-on;
++			regulator-always-on;
++		};
++	};
 -- 
 2.20.1
