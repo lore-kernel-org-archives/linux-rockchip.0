@@ -1,7 +1,8 @@
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 05/14] phy/rockchip: inno-hdmi: force set_rate on power_on
-Date: Wed, 08 Jan 2020 21:07:49 +0000 (UTC)
-Message-ID: <20200108210740.28769-6-jonas@kwiboo.se>
+Subject: [PATCH v2 12/14] drm/rockchip: dw-hdmi: limit tmds to 340mhz on
+ rk3228/rk3328
+Date: Wed, 08 Jan 2020 21:07:52 +0000 (UTC)
+Message-ID: <20200108210740.28769-13-jonas@kwiboo.se>
 References: <20200108210740.28769-1-jonas@kwiboo.se>
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
@@ -9,92 +10,66 @@ Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20200108210740.28769-1-jonas@kwiboo.se>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>
-Cc: Jonas Karlman <jonas@kwiboo.se>, Kishon Vijay Abraham I <kishon@ti.com>, Zheng Yang <zhengyang@rock-chips.com>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Huicong Xu <xhc@rock-chips.com>
+Cc: Jonas Karlman <jonas@kwiboo.se>, Kishon Vijay Abraham I <kishon@ti.com>, Zheng Yang <zhengyang@rock-chips.com>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Huicong Xu <xhc@rock-chips.com>
+RK3228/RK3328 does not provide a stable hdmi signal at TMDS rates
+above 371.25MHz (340MHz pixel clock).
 
-Regular 8-bit and Deep Color video formats mainly differ in TMDS rate and
-not in pixel clock rate.
-When the hdmiphy clock is configured with the same pixel clock rate using
-clk_set_rate() the clock framework do not signal the hdmi phy driver
-to set_rate when switching between 8-bit and Deep Color.
-This result in pre/post pll not being re-configured when switching between
-regular 8-bit and Deep Color video formats.
+Limit the pixel clock rate to 340MHz to provide a stable signal.
+Also limit the pixel clock to the display reported max tmds clock.
 
-Fix this by calling set_rate in power_on to force pre pll re-configuration.
-
-Signed-off-by: Huicong Xu <xhc@rock-chips.com>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 22 +++++++++++++++++++--
+ 1 file changed, 20 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-index 3a59a6da0440..3719309ad0d0 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-@@ -245,6 +245,7 @@ struct inno_hdmi_phy {
- 	struct clk_hw hw;
- 	struct clk *phyclk;
- 	unsigned long pixclock;
-+	unsigned long tmdsclock;
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 45fcdce3f27f..66c14df4a680 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -237,6 +237,24 @@ dw_hdmi_rockchip_mode_valid(struct drm_connector *connector,
+ 	return (valid) ? MODE_OK : MODE_BAD;
+ }
+ 
++static enum drm_mode_status
++dw_hdmi_rk3228_mode_valid(struct drm_connector *connector,
++			  const struct drm_display_mode *mode)
++{
++	struct drm_display_info *info = &connector->display_info;
++	int max_tmds_clock = max(info->max_tmds_clock, 165000);
++	int clock = mode->clock;
++
++	if (connector->ycbcr_420_allowed && drm_mode_is_420(info, mode) &&
++	    (info->color_formats & DRM_COLOR_FORMAT_YCRCB420))
++		clock /= 2;
++
++	if (clock > max_tmds_clock || clock > 340000)
++		return MODE_CLOCK_HIGH;
++
++	return MODE_OK;
++}
++
+ static const struct drm_encoder_funcs dw_hdmi_rockchip_encoder_funcs = {
+ 	.destroy = drm_encoder_cleanup,
+ };
+@@ -424,7 +442,7 @@ static struct rockchip_hdmi_chip_data rk3228_chip_data = {
  };
  
- struct pre_pll_config {
-@@ -485,6 +486,8 @@ static int inno_hdmi_phy_power_on(struct phy *phy)
+ static const struct dw_hdmi_plat_data rk3228_hdmi_drv_data = {
+-	.mode_valid = dw_hdmi_rockchip_mode_valid,
++	.mode_valid = dw_hdmi_rk3228_mode_valid,
+ 	.mpll_cfg = rockchip_mpll_cfg,
+ 	.cur_ctr = rockchip_cur_ctr,
+ 	.phy_config = rockchip_phy_config,
+@@ -461,7 +479,7 @@ static struct rockchip_hdmi_chip_data rk3328_chip_data = {
+ };
  
- 	dev_dbg(inno->dev, "Inno HDMI PHY Power On\n");
- 
-+	inno->plat_data->clk_ops->set_rate(&inno->hw, inno->pixclock, 24000000);
-+
- 	ret = clk_prepare_enable(inno->phyclk);
- 	if (ret)
- 		return ret;
-@@ -509,6 +512,8 @@ static int inno_hdmi_phy_power_off(struct phy *phy)
- 
- 	clk_disable_unprepare(inno->phyclk);
- 
-+	inno->tmdsclock = 0;
-+
- 	dev_dbg(inno->dev, "Inno HDMI PHY Power Off\n");
- 
- 	return 0;
-@@ -628,6 +633,9 @@ static int inno_hdmi_phy_rk3228_clk_set_rate(struct clk_hw *hw,
- 	dev_dbg(inno->dev, "%s rate %lu tmdsclk %lu\n",
- 		__func__, rate, tmdsclock);
- 
-+	if (inno->pixclock == rate && inno->tmdsclock == tmdsclock)
-+		return 0;
-+
- 	cfg = inno_hdmi_phy_get_pre_pll_cfg(inno, rate);
- 	if (IS_ERR(cfg))
- 		return PTR_ERR(cfg);
-@@ -670,6 +678,7 @@ static int inno_hdmi_phy_rk3228_clk_set_rate(struct clk_hw *hw,
- 	}
- 
- 	inno->pixclock = rate;
-+	inno->tmdsclock = tmdsclock;
- 
- 	return 0;
- }
-@@ -781,6 +790,9 @@ static int inno_hdmi_phy_rk3328_clk_set_rate(struct clk_hw *hw,
- 	dev_dbg(inno->dev, "%s rate %lu tmdsclk %lu\n",
- 		__func__, rate, tmdsclock);
- 
-+	if (inno->pixclock == rate && inno->tmdsclock == tmdsclock)
-+		return 0;
-+
- 	cfg = inno_hdmi_phy_get_pre_pll_cfg(inno, rate);
- 	if (IS_ERR(cfg))
- 		return PTR_ERR(cfg);
-@@ -820,6 +832,7 @@ static int inno_hdmi_phy_rk3328_clk_set_rate(struct clk_hw *hw,
- 	}
- 
- 	inno->pixclock = rate;
-+	inno->tmdsclock = tmdsclock;
- 
- 	return 0;
- }
+ static const struct dw_hdmi_plat_data rk3328_hdmi_drv_data = {
+-	.mode_valid = dw_hdmi_rockchip_mode_valid,
++	.mode_valid = dw_hdmi_rk3228_mode_valid,
+ 	.mpll_cfg = rockchip_mpll_cfg,
+ 	.cur_ctr = rockchip_cur_ctr,
+ 	.phy_config = rockchip_phy_config,
 -- 
 2.17.1
