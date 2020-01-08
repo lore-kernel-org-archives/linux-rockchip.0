@@ -1,230 +1,45 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Applied "regulator: mp8859: add driver" to the regulator tree
-Date: Wed, 08 Jan 2020 15:59:01 +0000
-Message-ID: <applied-20200106211633.2882-2-m.reichl@fivetechno.de>
-References: <20200106211633.2882-2-m.reichl@fivetechno.de>
+From: Lad Prabhakar <prabhakar.csengg@gmail.com>
+Subject: [v3 6/6] misc: pci_endpoint_test: Add Device ID for RZ/G2E PCIe controller
+Date: Wed,  8 Jan 2020 16:22:11 +0000
+Message-ID: <20200108162211.22358-7-prabhakar.mahadev-lad.rj@bp.renesas.com>
+References: <20200108162211.22358-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20200106211633.2882-2-m.reichl@fivetechno.de>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Markus Reichl <m.reichl@fivetechno.de>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200108162211.22358-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci@vger.kernel.org
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, Chris Paterson <Chris.Paterson2@renesas.com>, Frank Rowand <frowand.list@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Jingoo Han <jingoohan1@gmail.com>, Simon Horman <horms@verge.net.au>, Shawn Lin <shawn.lin@rock-chips.com>, Tom Joseph <tjoseph@cadence.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Lad Prabhakar <prabhakar.mahadev-l>
 List-Id: linux-rockchip.vger.kernel.org
 
-The patch
+Add RZ/G2E in pci_device_id table so that pci-epf-test can be used for
+testing PCIe EP in RZ/G2E.
 
-   regulator: mp8859: add driver
-
-has been applied to the regulator tree at
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-5.6
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.  
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-From 4444a1c10069e2f371fa497ba22feafafed5aada Mon Sep 17 00:00:00 2001
-From: Markus Reichl <m.reichl@fivetechno.de>
-Date: Mon, 6 Jan 2020 22:16:24 +0100
-Subject: [PATCH] regulator: mp8859: add driver
-
-The MP8859 from Monolithic Power Systems is a single output DC/DC
-converter. The voltage can be controlled via I2C.
-
-Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
-Link: https://lore.kernel.org/r/20200106211633.2882-2-m.reichl@fivetechno.de
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 ---
- drivers/regulator/mp8859.c | 156 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 156 insertions(+)
- create mode 100644 drivers/regulator/mp8859.c
+ drivers/misc/pci_endpoint_test.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/regulator/mp8859.c b/drivers/regulator/mp8859.c
-new file mode 100644
-index 000000000000..e804a5267301
---- /dev/null
-+++ b/drivers/regulator/mp8859.c
-@@ -0,0 +1,156 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// Copyright (c) 2019 five technologies GmbH
-+// Author: Markus Reichl <m.reichl@fivetechno.de>
+diff --git a/drivers/misc/pci_endpoint_test.c b/drivers/misc/pci_endpoint_test.c
+index a5e317073d95..3c84e9a98a05 100644
+--- a/drivers/misc/pci_endpoint_test.c
++++ b/drivers/misc/pci_endpoint_test.c
+@@ -66,6 +66,8 @@
+ 
+ #define PCI_DEVICE_ID_TI_AM654			0xb00c
+ 
++#define PCI_DEVICE_ID_RENESAS_RZG2E		0x002d
 +
-+#include <linux/module.h>
-+#include <linux/i2c.h>
-+#include <linux/of.h>
-+#include <linux/regulator/driver.h>
-+#include <linux/regmap.h>
-+
-+
-+#define VOL_MIN_IDX			0x00
-+#define VOL_MAX_IDX			0x7ff
-+
-+/* Register definitions */
-+#define MP8859_VOUT_L_REG		0    //3 lo Bits
-+#define MP8859_VOUT_H_REG		1    //8 hi Bits
-+#define MP8859_VOUT_GO_REG		2
-+#define MP8859_IOUT_LIM_REG		3
-+#define MP8859_CTL1_REG			4
-+#define MP8859_CTL2_REG			5
-+#define MP8859_RESERVED1_REG		6
-+#define MP8859_RESERVED2_REG		7
-+#define MP8859_RESERVED3_REG		8
-+#define MP8859_STATUS_REG		9
-+#define MP8859_INTERRUPT_REG		0x0A
-+#define MP8859_MASK_REG			0x0B
-+#define MP8859_ID1_REG			0x0C
-+#define MP8859_MFR_ID_REG		0x27
-+#define MP8859_DEV_ID_REG		0x28
-+#define MP8859_IC_REV_REG		0x29
-+
-+#define MP8859_MAX_REG			0x29
-+
-+#define MP8859_GO_BIT			0x01
-+
-+
-+static int mp8859_set_voltage_sel(struct regulator_dev *rdev, unsigned int sel)
-+{
-+	int ret;
-+
-+	ret = regmap_write(rdev->regmap, MP8859_VOUT_L_REG, sel & 0x7);
-+
-+	if (ret)
-+		return ret;
-+	ret = regmap_write(rdev->regmap, MP8859_VOUT_H_REG, sel >> 3);
-+
-+	if (ret)
-+		return ret;
-+	ret = regmap_update_bits(rdev->regmap, MP8859_VOUT_GO_REG,
-+					MP8859_GO_BIT, 1);
-+	return ret;
-+}
-+
-+static int mp8859_get_voltage_sel(struct regulator_dev *rdev)
-+{
-+	unsigned int val_tmp;
-+	unsigned int val;
-+	int ret;
-+
-+	ret = regmap_read(rdev->regmap, MP8859_VOUT_H_REG, &val_tmp);
-+
-+	if (ret)
-+		return ret;
-+	val = val_tmp << 3;
-+
-+	ret = regmap_read(rdev->regmap, MP8859_VOUT_L_REG, &val_tmp);
-+
-+	if (ret)
-+		return ret;
-+	val |= val_tmp & 0x07;
-+	return val;
-+}
-+
-+static const struct regulator_linear_range mp8859_dcdc_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(0, VOL_MIN_IDX, VOL_MAX_IDX, 10000),
-+};
-+
-+static const struct regmap_config mp8859_regmap = {
-+	.reg_bits = 8,
-+	.val_bits = 8,
-+	.max_register = MP8859_MAX_REG,
-+	.cache_type = REGCACHE_RBTREE,
-+};
-+
-+static const struct regulator_ops mp8859_ops = {
-+	.set_voltage_sel = mp8859_set_voltage_sel,
-+	.get_voltage_sel = mp8859_get_voltage_sel,
-+	.list_voltage = regulator_list_voltage_linear_range,
-+};
-+
-+static const struct regulator_desc mp8859_regulators[] = {
-+	{
-+		.id = 0,
-+		.type = REGULATOR_VOLTAGE,
-+		.name = "mp8859_dcdc",
-+		.of_match = of_match_ptr("mp8859_dcdc"),
-+		.n_voltages = VOL_MAX_IDX + 1,
-+		.linear_ranges = mp8859_dcdc_ranges,
-+		.n_linear_ranges = 1,
-+		.ops = &mp8859_ops,
-+		.owner = THIS_MODULE,
-+	},
-+};
-+
-+static int mp8859_i2c_probe(struct i2c_client *i2c)
-+{
-+	int ret;
-+	struct regulator_config config = {.dev = &i2c->dev};
-+	struct regmap *regmap = devm_regmap_init_i2c(i2c, &mp8859_regmap);
-+	struct regulator_dev *rdev;
-+
-+	if (IS_ERR(regmap)) {
-+		ret = PTR_ERR(regmap);
-+		dev_err(&i2c->dev, "regmap init failed: %d\n", ret);
-+		return ret;
-+	}
-+	rdev = devm_regulator_register(&i2c->dev, &mp8859_regulators[0],
-+					&config);
-+
-+	if (IS_ERR(rdev)) {
-+		ret = PTR_ERR(rdev);
-+		dev_err(&i2c->dev, "failed to register %s: %d\n",
-+			mp8859_regulators[0].name, ret);
-+			return ret;
-+		}
-+	return 0;
-+}
-+
-+static const struct of_device_id mp8859_dt_id[] = {
-+	{.compatible =  "mps,mp8859"},
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, mp8859_dt_id);
-+
-+static const struct i2c_device_id mp8859_i2c_id[] = {
-+	{ "mp8859", },
-+	{  },
-+};
-+MODULE_DEVICE_TABLE(i2c, mp8859_i2c_id);
-+
-+static struct i2c_driver mp8859_regulator_driver = {
-+	.driver = {
-+		.name = "mp8859",
-+		.of_match_table = of_match_ptr(mp8859_dt_id),
-+	},
-+	.probe_new = mp8859_i2c_probe,
-+	.id_table = mp8859_i2c_id,
-+};
-+
-+module_i2c_driver(mp8859_regulator_driver);
-+
-+MODULE_DESCRIPTION("Monolithic Power Systems MP8859 voltage regulator driver");
-+MODULE_AUTHOR("Markus Reichl <m.reichl@fivetechno.de>");
-+MODULE_LICENSE("GPL v2");
+ #define is_am654_pci_dev(pdev)		\
+ 		((pdev)->device == PCI_DEVICE_ID_TI_AM654)
+ 
+@@ -797,6 +799,7 @@ static const struct pci_device_id pci_endpoint_test_tbl[] = {
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_TI, PCI_DEVICE_ID_TI_AM654),
+ 	  .driver_data = (kernel_ulong_t)&am654_data
+ 	},
++	{ PCI_DEVICE(PCI_VENDOR_ID_RENESAS, PCI_DEVICE_ID_RENESAS_RZG2E) },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(pci, pci_endpoint_test_tbl);
 -- 
 2.20.1
