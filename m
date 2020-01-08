@@ -1,55 +1,52 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH 1/2] pwm: Fix minor Kconfig whitespace issues
-Date: Wed, 8 Jan 2020 14:00:52 +0100
-Message-ID: <20200108130052.GF1993114@ulmo>
-References: <20191230172113.17222-1-krzk@kernel.org>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH RFT v1 1/3] drm/panfrost: enable devfreq based the
+ "operating-points-v2" property
+Date: Wed, 8 Jan 2020 14:20:21 +0000
+Message-ID: <be59a20b-af08-5b55-fa69-f87d5aa9f277@arm.com>
+References: <20200107230626.885451-1-martin.blumenstingl@googlemail.com>
+ <20200107230626.885451-2-martin.blumenstingl@googlemail.com>
+ <a85f2063-f412-9762-58d1-47fdffb24af9@arm.com>
+ <CAFBinCBYrNC+ULV6Y=77qogowkDZwM+H0bxOqPN4sT6q3krGfw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="+jhVVhN62yS6hEJ8"
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191230172113.17222-1-krzk@kernel.org>
+In-Reply-To: <CAFBinCBYrNC+ULV6Y=77qogowkDZwM+H0bxOqPN4sT6q3krGfw@mail.gmail.com>
+Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
+To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Cc: dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, steven.price@arm.com, tomeu.vizoso@collabora.com, robh@kernel.org, linux-kernel@vger.kernel.org, daniel@ffwll.ch, airlied@linux.ie, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, Sudeep Holla <sudeep.holla@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+[ +Sudeep ]
 
---+jhVVhN62yS6hEJ8
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 08/01/2020 12:38 pm, Martin Blumenstingl wrote:
+> Hi Robin,
+> 
+> On Wed, Jan 8, 2020 at 12:18 PM Robin Murphy <robin.murphy@arm.com> wrote:
+>>
+>> On 07/01/2020 11:06 pm, Martin Blumenstingl wrote:
+>>> Decouple the check to see whether we want to enable devfreq for the GPU
+>>> from dev_pm_opp_set_regulators(). This is preparation work for adding
+>>> back support for regulator control (which means we need to call
+>>> dev_pm_opp_set_regulators() before dev_pm_opp_of_add_table(), which
+>>> means having a check for "is devfreq enabled" that is not tied to
+>>> dev_pm_opp_of_add_table() makes things easier).
+>>
+>> Hmm, what about cases like the SCMI DVFS protocol where the OPPs are
+>> dynamically discovered rather than statically defined in DT?
+> where can I find such an example (Amlogic SoCs use SCPI instead of
+> SCMI, so I don't think that I have any board with SCMI support) or
+> some documentation?
+> (I could only find SCPI clock and CPU DVFS implementations, but no
+> generic "OPPs for any device" implementation)
 
-On Mon, Dec 30, 2019 at 06:21:12PM +0100, Krzysztof Kozlowski wrote:
-> Remove double whitespace after "config" keyword.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> ---
->  drivers/pwm/Kconfig | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+On closer inspection I think this applies to the SCPI DVFS protocol 
+too[1]. AIUI the fact that neither is wired up to a devfreq driver yet 
+is merely due to lack of demand and suitable systems to develop/test on 
+so far - the panfrost devfreq code is only now looking like the first 
+viable upstream use-case ;)
 
-Applied, thanks.
+Robin.
 
-Thierry
-
---+jhVVhN62yS6hEJ8
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl4V0oQACgkQ3SOs138+
-s6GW+RAAqt7l9DVUT1XZy2TgE7UeLRkeCbnVtYRqr1q4kqqjW1uRyRc2gbd6Q15a
-Orl53tUGiuE+Fr/t+UpQSLOmsc93zRIqkhbyMdfyTXJRGhzU5UCx2BuBDkelvmZ/
-ZcTgvi8IkXRVh7SJx6E2i956iFXifCQQKd/pbS3oPZbUCeRPJuhCTgmfD7NAKvCR
-YsaDo4MWHuuulx05CCLeZ+g915YEGXCV5nKr5RdY9/uf1ifS1waeUZK8+C+uwAy6
-17J7Ee4+27mydyVzsutgTLAWfnNf3wcwDzbYaR61G4dKZXHWZBlzjq1hAlyfLrfI
-Ue9fAv71KPfLULXpotqvoVkzKeTzW5SSnbtsi22wLJfmu5RI2ZCS2gXdRN0Z5f8y
-9M59CBmSSOvoQ7b/nBbOCxxlUqZTXGjnlJCXqrqGmomCMQvKZIJBNBILlFoQDDtZ
-wCVV+XXEHq3j4qvgsjgkAHLGyxkjmryg6fOFe9mqCGwk1huV5NYbI4aP1xiSCmTt
-00wLZMd67PnKuPv1GAgvRW+BLif97N1U7g2OP5ewhYXPj7cd1DVQHsgwbKnKkz1H
-UWG3gn+7n3KcstFfKsgS3X8fhKQ2+HalnX9hBfeORhPef5cCtIURILtOU/sS/pvZ
-f30UWoLal+Aylqbsc01nUJmxg27i/m0q4+v7waQmAJlE0L+1c6o=
-=p5N4
------END PGP SIGNATURE-----
-
---+jhVVhN62yS6hEJ8--
+[1] http://infocenter.arm.com/help/topic/com.arm.doc.dui0922g/BABFEBCD.html
