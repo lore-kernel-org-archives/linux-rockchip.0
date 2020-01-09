@@ -1,34 +1,43 @@
-From: Otavio Salvador <otavio.salvador@ossystems.com.br>
-Subject: RV1108G run-time detection
-Date: Thu, 9 Jan 2020 13:18:48 -0300
-Message-ID: <CAP9ODKo8UPbU+JR45T2rjJH3FefcWw=tS71EmjFzVyPMA_R7gg@mail.gmail.com>
+From: Markus Reichl <m.reichl@fivetechno.de>
+Subject: [Bug ?] usb :typec :tcpm :fusb302
+Date: Thu, 9 Jan 2020 17:29:07 +0100
+Message-ID: <0ac6bbe7-6395-526d-213c-ac58a19d8673@fivetechno.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Language: de-DE
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Kernel development list <linux-kernel@vger.kernel.org>
+To: Guenter Roeck <linux@roeck-us.net>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Linux USB Mailing List <linux-usb@vger.kernel.org>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org, Markus Reichl <m.reichl@fivetechno.de>
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi,
 
-We would like to know if there is a way to distinguish between RV1108
-and RV1108G versions in run-time.
+I'm working with a ROC-RK3399-PC arm64 board from firefly, circuit sheet [1].
+The board is powered from an USB-C type connector via an FUSB302 PD controller.
+With measured 15W+ power consumption it should use higher voltage PD modes than
+the standard 5V USB-C mode.
 
-The reason we are asking is because arch/arm/boot/dts/rv1108.dtsi
-defines the following operational points: 408, 600, 816, 1008 MHz, but
-the RV1108G version does not support 1GHz and its maximum operating
-frequency is 800MHz (not 816 MHz).
+When I add the related connector node in DTS [2] the FUSB302 initializes
+the right PD mode (e.g. 15V/3A).
 
-In the i.MX SoCs we can read a fuse that indicates the "speed grading"
-of the chip and decide which operating points could be used for that
-particular version.
+But during initialisation the PD is switched off shortly and the board has a blackout.
+When I inject a backup supply voltage behind the FUSB302 (e.g. at SYS_12V line) during boot
+I can remove the backup after succesfull setting up the PD and the board will run fine.
 
-Is there such a mechanism in RV1108? Any suggestions to limiting the
-RV1108G operational point at 800MHz?
+Is it possible to change the behaviour of the fusb302 driver to not power down the PD supply
+during init?
 
-Thanks
+In vendor kernel (4.4) this is done somehow but the sources are too different for me to find
+out how.
 
+Gruß,
 -- 
-Otavio Salvador                             O.S. Systems
-http://www.ossystems.com.br        http://code.ossystems.com.br
-Mobile: +55 (53) 9 9981-7854          Mobile: +1 (347) 903-9750
+Markus Reichl
+
+[1]
+http://download.t-firefly.com/product/RK3399/Docs/Hardware/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%92%8C%E8%B4%B4%E7%89%87%E5%9B%BE/ROC-RK3399-PC/ROC-3399-PC-V10-A-20180804_%E5%8E%9F%E7%90%86%E5%9B%BE.pdf
+
+[2]
+https://lkml.org/lkml/2019/12/10/517
