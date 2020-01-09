@@ -1,61 +1,421 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/1] drm/rockchip: fix integer type used for storing dp
- data rate and lane count
-Date: Thu, 09 Jan 2020 01:15:40 +0100
-Message-ID: <2028959.b8b8FNkPgY@diego>
-References: <20200108223949.355975-1-t.schramm@manjaro.org>
- <20200108223949.355975-2-t.schramm@manjaro.org>
+From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Subject: Re: [v3 3/6] PCI: endpoint: Add support to handle multiple base for
+ mapping outbound memory
+Date: Thu, 9 Jan 2020 11:57:18 +0530
+Message-ID: <53d74632-34ee-f7f7-656f-a93a6c10e7ba__49151.5368966915$1578551281$gmane$org@ti.com>
+References: <20200108162211.22358-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <20200108162211.22358-4-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org>
-In-Reply-To: <20200108223949.355975-2-t.schramm@manjaro.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane.org@lists.infradead.org
-To: Tobias Schramm <t.schramm@manjaro.org>
-Cc: David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200108162211.22358-4-prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Lad Prabhakar <prabhakar.csengg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Marek Vasut <marek.vasut+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chris Paterson <Chris.Paterson2-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Frank Rowand <frowand.list-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lad Prabhakar <prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tom Joseph <tjoseph-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Simon Horman <horms-/R6kz+dDXgpPR4JQBCEnsQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 8. Januar 2020, 23:39:49 CET schrieb Tobias Schramm:
-> commit 2589c4025f13 ("drm/rockchip: Avoid drm_dp_link helpers") changes
-> the type of variables used to store the display port data rate and
-> number of lanes to u8. However u8 is not sufficient to store the link
-> data rate of the display port.
-> This commit reverts the type of both the number of lanes and the data
-> rate to unsigned int.
+Hi Prabhakar,
+
+On 08/01/20 9:52 PM, Lad Prabhakar wrote:
+> R-Car PCIe controller has support to map multiple memory regions for
+> mapping the outbound memory in local system also the controller limits
+> single allocation for each region (that is, once a chunk is used from the
+> region it cannot be used to allocate a new one). This features inspires to
+> add support for handling multiple memory bases in endpoint framework.
 > 
-> Signed-off-by: Tobias Schramm <t.schramm@manjaro.org>
+> With this patch pci_epc_mem_init() now accepts multiple regions, also
+> page_size for each memory region is passed during initialization so as
+> to handle single allocation for each region by setting the page_size to
+> window_size.
+> 
+> Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
 > ---
->  drivers/gpu/drm/rockchip/cdn-dp-core.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.h b/drivers/gpu/drm/rockchip/cdn-dp-core.h
-> index 83c4586665b4..806cb0b08982 100644
-> --- a/drivers/gpu/drm/rockchip/cdn-dp-core.h
-> +++ b/drivers/gpu/drm/rockchip/cdn-dp-core.h
-> @@ -94,8 +94,8 @@ struct cdn_dp_device {
->  	struct video_info video_info;
->  	struct cdn_dp_port *port[MAX_PHY];
->  	u8 ports;
-> -	u8 max_lanes;
-> -	u8 max_rate;
-> +	unsigned int max_lanes;
-
-although I would think u8 should be enough for max_lanes?
-There shouldn't be be more than 255 dp lanes?
-
-
-Heiko
-
-> +	unsigned int max_rate;
->  	u8 lanes;
->  	int active_port;
+>  .../pci/controller/cadence/pcie-cadence-ep.c  |  12 +-
+>  .../pci/controller/dwc/pcie-designware-ep.c   |  31 ++-
+>  drivers/pci/controller/pcie-rockchip-ep.c     |  14 +-
+>  drivers/pci/endpoint/functions/pci-epf-test.c |  29 +--
+>  drivers/pci/endpoint/pci-epc-core.c           |   7 +-
+>  drivers/pci/endpoint/pci-epc-mem.c            | 199 ++++++++++++++----
+>  include/linux/pci-epc.h                       |  46 ++--
+>  7 files changed, 245 insertions(+), 93 deletions(-)
+>
+.
+.
+<snip>
+.
+.
+> diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
+> index 2091508c1620..289c266c2d90 100644
+> --- a/drivers/pci/endpoint/pci-epc-core.c
+> +++ b/drivers/pci/endpoint/pci-epc-core.c
+> @@ -358,13 +358,15 @@ EXPORT_SYMBOL_GPL(pci_epc_unmap_addr);
+>   * @epc: the EPC device on which address is allocated
+>   * @func_no: the endpoint function number in the EPC device
+>   * @phys_addr: physical address of the local system
+> + * @window: index to the window region where PCI address will be mapped
+>   * @pci_addr: PCI address to which the physical address should be mapped
+>   * @size: the size of the allocation
+>   *
+>   * Invoke to map CPU address with PCI address.
+>   */
+>  int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
+> -		     phys_addr_t phys_addr, u64 pci_addr, size_t size)
+> +		     phys_addr_t phys_addr, int window,
+> +		     u64 pci_addr, size_t size)
+>  {
+>  	int ret;
+>  	unsigned long flags;
+> @@ -376,7 +378,8 @@ int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
+>  		return 0;
 >  
-> 
+>  	spin_lock_irqsave(&epc->lock, flags);
+> -	ret = epc->ops->map_addr(epc, func_no, phys_addr, pci_addr, size);
+> +	ret = epc->ops->map_addr(epc, func_no, phys_addr,
+> +				 window, pci_addr, size);
+>  	spin_unlock_irqrestore(&epc->lock, flags);
+>  
+>  	return ret;
+> diff --git a/drivers/pci/endpoint/pci-epc-mem.c b/drivers/pci/endpoint/pci-epc-mem.c
+> index d2b174ce15de..f205f7819292 100644
+> --- a/drivers/pci/endpoint/pci-epc-mem.c
+> +++ b/drivers/pci/endpoint/pci-epc-mem.c
+> @@ -38,57 +38,77 @@ static int pci_epc_mem_get_order(struct pci_epc_mem *mem, size_t size)
+>  /**
+>   * __pci_epc_mem_init() - initialize the pci_epc_mem structure
+>   * @epc: the EPC device that invoked pci_epc_mem_init
+> - * @phys_base: the physical address of the base
+> - * @size: the size of the address space
+> - * @page_size: size of each page
+> + * @windows: pointer to windows supported by the device
+> + * @num_windows: number of windows device supports
+>   *
+>   * Invoke to initialize the pci_epc_mem structure used by the
+>   * endpoint functions to allocate mapped PCI address.
+>   */
+> -int __pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_base, size_t size,
+> -		       size_t page_size)
+> +int __pci_epc_mem_init(struct pci_epc *epc, struct pci_epc_mem_window *windows,
+> +		       int num_windows)
+>  {
+> -	int ret;
+> -	struct pci_epc_mem *mem;
+> -	unsigned long *bitmap;
+> +	struct pci_epc_mem *mem = NULL;
+> +	unsigned long *bitmap = NULL;
+>  	unsigned int page_shift;
+> -	int pages;
+> +	size_t page_size;
+>  	int bitmap_size;
+> +	int pages;
+> +	int ret;
+> +	int i;
+>  
+> -	if (page_size < PAGE_SIZE)
+> -		page_size = PAGE_SIZE;
+> +	epc->mem_windows = 0;
+>  
+> -	page_shift = ilog2(page_size);
+> -	pages = size >> page_shift;
+> -	bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
+> +	if (!windows)
+> +		return -EINVAL;
+>  
+> -	mem = kzalloc(sizeof(*mem), GFP_KERNEL);
+> -	if (!mem) {
+> -		ret = -ENOMEM;
+> -		goto err;
+> -	}
+> +	if (num_windows <= 0)
+> +		return -EINVAL;
+>  
+> -	bitmap = kzalloc(bitmap_size, GFP_KERNEL);
+> -	if (!bitmap) {
+> -		ret = -ENOMEM;
+> -		goto err_mem;
+> -	}
+> +	epc->mem = kcalloc(num_windows, sizeof(*mem), GFP_KERNEL);
+> +	if (!epc->mem)
+> +		return -EINVAL;
+> +
+> +	for (i = 0; i < num_windows; i++) {
+> +		page_size = windows[i].page_size;
+> +		if (page_size < PAGE_SIZE)
+> +			page_size = PAGE_SIZE;
+> +		page_shift = ilog2(page_size);
+> +		pages = windows[i].size >> page_shift;
+> +		bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
+> +
+> +		mem = kzalloc(sizeof(*mem), GFP_KERNEL);
+> +		if (!mem) {
+> +			ret = -ENOMEM;
+> +			goto err_mem;
+> +		}
+>  
+> -	mem->bitmap = bitmap;
+> -	mem->phys_base = phys_base;
+> -	mem->page_size = page_size;
+> -	mem->pages = pages;
+> -	mem->size = size;
+> +		bitmap = kzalloc(bitmap_size, GFP_KERNEL);
+> +		if (!bitmap) {
+> +			ret = -ENOMEM;
+> +			goto err_mem;
+> +		}
+>  
+> -	epc->mem = mem;
+> +		mem->bitmap = bitmap;
+> +		mem->window.phys_base = windows[i].phys_base;
+> +		mem->page_size = page_size;
+> +		mem->pages = pages;
+> +		mem->window.size = windows[i].size;
+> +		mem->window.map_size = 0;
+> +
+> +		epc->mem[i] = mem;
+> +	}
+> +	epc->mem_windows = num_windows;
+>  
+>  	return 0;
+>  
+>  err_mem:
+> -	kfree(mem);
+> +	for (; i >= 0; i--) {
+
+mem has to be reinitialized for every iteration of the loop.
+> +		kfree(mem->bitmap);
+> +		kfree(epc->mem[i]);
+> +	}
+> +	kfree(epc->mem);
+>  
+> -err:
+> -return ret;
+> +	return ret;
+>  }
+>  EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
+>  
+> @@ -101,48 +121,127 @@ EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
+>   */
+>  void pci_epc_mem_exit(struct pci_epc *epc)
+>  {
+> -	struct pci_epc_mem *mem = epc->mem;
+> +	struct pci_epc_mem *mem;
+> +	int i;
+> +
+> +	if (!epc->mem_windows)
+> +		return;
+> +
+> +	for (i = 0; i <= epc->mem_windows; i++) {
+> +		mem = epc->mem[i];
+> +		kfree(mem->bitmap);
+> +		kfree(epc->mem[i]);
+> +	}
+> +	kfree(epc->mem);
+>  
+>  	epc->mem = NULL;
+> -	kfree(mem->bitmap);
+> -	kfree(mem);
+> +	epc->mem_windows = 0;
+>  }
+>  EXPORT_SYMBOL_GPL(pci_epc_mem_exit);
+>  
+> +static int pci_epc_find_best_fit_window(struct pci_epc *epc, size_t size)
+> +{
+> +	size_t window_least_size = 0;
+> +	int best_fit_window = -1;
+> +	struct pci_epc_mem *mem;
+> +	size_t actual_size;
+> +	size_t avail_size;
+> +	int i;
+> +
+> +	for (i = 0; i < epc->mem_windows; i++) {
+> +		mem = epc->mem[i];
+> +
+> +		actual_size = ALIGN(size, mem->page_size);
+> +		avail_size = mem->window.size - mem->window.map_size;
+> +
+> +		if (best_fit_window == -1) {
+> +			if (actual_size <= avail_size) {
+> +				best_fit_window = i;
+> +				window_least_size = mem->window.size;
+> +			}
+> +		} else {
+> +			if (actual_size <= avail_size &&
+> +			    mem->window.size < window_least_size) {
+> +				best_fit_window = i;
+> +				window_least_size = mem->window.size;
+> +			}
+> +		}
+> +	}
+> +
+> +	return best_fit_window;
+> +}
+
+This function shouldn't be required at all. Just loop over all the
+windows invoking bitmap_find_free_region(), breaking the loop if it
+succeeds and continuing if there is no free region.
+> +
+>  /**
+>   * pci_epc_mem_alloc_addr() - allocate memory address from EPC addr space
+>   * @epc: the EPC device on which memory has to be allocated
+>   * @phys_addr: populate the allocated physical address here
+> + * @window: populate the window here which will be used to map PCI address
+>   * @size: the size of the address space that has to be allocated
+>   *
+>   * Invoke to allocate memory address from the EPC address space. This
+>   * is usually done to map the remote RC address into the local system.
+>   */
+>  void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+> -				     phys_addr_t *phys_addr, size_t size)
+> +				     phys_addr_t *phys_addr,
+> +				     int *window, size_t size)
+>  {
+> +	int best_fit = PCI_EPC_DEFAULT_WINDOW;
+> +	void __iomem *virt_addr = NULL;
+> +	struct pci_epc_mem *mem;
+> +	unsigned int page_shift;
+>  	int pageno;
+> -	void __iomem *virt_addr;
+> -	struct pci_epc_mem *mem = epc->mem;
+> -	unsigned int page_shift = ilog2(mem->page_size);
+>  	int order;
+>  
+> +	if (epc->mem_windows <= 0)
+> +		return NULL;
+> +
+> +	if (epc->mem_windows > 1) {
+> +		best_fit = pci_epc_find_best_fit_window(epc, size);
+> +		if (best_fit < 0)
+> +			return NULL;
+> +	}
+> +
+> +	mem = epc->mem[best_fit];
+>  	size = ALIGN(size, mem->page_size);
+> +	if (size > (mem->window.size - mem->window.map_size))
+> +		return NULL;
+> +	page_shift = ilog2(mem->page_size);
+>  	order = pci_epc_mem_get_order(mem, size);
+>  
+>  	pageno = bitmap_find_free_region(mem->bitmap, mem->pages, order);
+>  	if (pageno < 0)
+>  		return NULL;
+
+This has to be invoked now in a loop for the number of windows. If
+pageno < 0, continue the loop or else break.
+>  
+> -	*phys_addr = mem->phys_base + ((phys_addr_t)pageno << page_shift);
+> +	*phys_addr = mem->window.phys_base +
+> +		     ((phys_addr_t)pageno << page_shift);
+>  	virt_addr = ioremap(*phys_addr, size);
+> -	if (!virt_addr)
+> +	if (!virt_addr) {
+>  		bitmap_release_region(mem->bitmap, pageno, order);
+> +	} else {
+> +		mem->window.map_size += size;
+
+The map_size shouldn't be required.
+> +		*window = best_fit;
+
+Can't the platform driver get the window based on the address? Let's try
+to avoid modifying API's for platform specific requirements.
+> +	}
+>  
+>  	return virt_addr;
+>  }
+>  EXPORT_SYMBOL_GPL(pci_epc_mem_alloc_addr);
+>  
+> +static int pci_epc_get_matching_window(struct pci_epc *epc,
+> +				       phys_addr_t phys_addr)
+> +{
+> +	struct pci_epc_mem *mem;
+> +	int i;
+> +
+> +	for (i = 0; i < epc->mem_windows; i++) {
+> +		mem = epc->mem[i];
+> +
+> +		if (mem->window.phys_base == phys_addr)
+> +			return i;
+> +	}
+> +
+> +	return -EINVAL;
+> +}
+> +
+>  /**
+>   * pci_epc_mem_free_addr() - free the allocated memory address
+>   * @epc: the EPC device on which memory was allocated
+> @@ -155,16 +254,26 @@ EXPORT_SYMBOL_GPL(pci_epc_mem_alloc_addr);
+>  void pci_epc_mem_free_addr(struct pci_epc *epc, phys_addr_t phys_addr,
+>  			   void __iomem *virt_addr, size_t size)
+>  {
+> +	struct pci_epc_mem *mem;
+> +	unsigned int page_shift;
+> +	int window = 0;
+>  	int pageno;
+> -	struct pci_epc_mem *mem = epc->mem;
+> -	unsigned int page_shift = ilog2(mem->page_size);
+>  	int order;
+>  
+> +	if (epc->mem_windows > 1) {
+> +		window = pci_epc_get_matching_window(epc, phys_addr);
+> +		if (window < 0)
+> +			return;
+> +	}
+> +
+> +	mem = epc->mem[window];
+> +	page_shift = ilog2(mem->page_size);
+>  	iounmap(virt_addr);
+> -	pageno = (phys_addr - mem->phys_base) >> page_shift;
+> +	pageno = (phys_addr - mem->window.phys_base) >> page_shift;
+>  	size = ALIGN(size, mem->page_size);
+>  	order = pci_epc_mem_get_order(mem, size);
+>  	bitmap_release_region(mem->bitmap, pageno, order);
+> +	mem->window.map_size -= size;
+>  }
+>  EXPORT_SYMBOL_GPL(pci_epc_mem_free_addr);
+>  
+> diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
+> index 56f1846b9d39..89daafa0d19f 100644
+> --- a/include/linux/pci-epc.h
+> +++ b/include/linux/pci-epc.h
+> @@ -48,7 +48,8 @@ struct pci_epc_ops {
+>  	void	(*clear_bar)(struct pci_epc *epc, u8 func_no,
+>  			     struct pci_epf_bar *epf_bar);
+>  	int	(*map_addr)(struct pci_epc *epc, u8 func_no,
+> -			    phys_addr_t addr, u64 pci_addr, size_t size);
+> +			    phys_addr_t addr, int window,
+> +			    u64 pci_addr, size_t size);
+>  	void	(*unmap_addr)(struct pci_epc *epc, u8 func_no,
+>  			      phys_addr_t addr);
+>  	int	(*set_msi)(struct pci_epc *epc, u8 func_no, u8 interrupts);
+> @@ -64,17 +65,31 @@ struct pci_epc_ops {
+>  	struct module *owner;
+>  };
+>  
+> +#define PCI_EPC_DEFAULT_WINDOW         0
+> +
+> +/**
+> + * struct pci_epc_mem_window - address window of the endpoint controller
+> + * @phys_base: physical base address of the PCI address window
+> + * @size: the size of the PCI address window
+> + * @map_size: size of allocated chunk in window
+> + * @page_size: size of each page
+> + */
+> +struct pci_epc_mem_window {
+> +	phys_addr_t	phys_base;
+> +	size_t		size;
+> +	size_t		map_size;
+
+mem->bitmap already holds the map_size information. This structure can
+be used only for passing info about the mem windows from platform to the
+core. So map_size shouldn't be required.
+
+Thanks
+Kishon
