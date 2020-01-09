@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v4 2/8] rockchip: rk3399: Enable DISPLAY_CPUINFO
-Date: Thu,  9 Jan 2020 14:22:16 +0530
-Message-ID: <20200109085222.22670-3-jagan@amarulasolutions.com>
+Subject: [PATCH v4 4/8] rockchip: Add common reset cause
+Date: Thu,  9 Jan 2020 14:22:18 +0530
+Message-ID: <20200109085222.22670-5-jagan@amarulasolutions.com>
 References: <20200109085222.22670-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -20,325 +20,197 @@ To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Phil
 Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RK3288, RK3399 are now support cpu-info, so enable
-DISPLAY_CPUINFO by default.
+Add cpu reset cause in common cpu-info file.
+
+This would help to print the reset cause for
+various resets.
+
+Right now it support rk3288, rk3399. rest of rockchip
+platforms doesn't have reset cause support ye but this
+code is more feasible to extend the same.
 
 Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
- configs/evb-rk3288_defconfig                 | 1 -
- configs/evb-rk3399_defconfig                 | 1 -
- configs/ficus-rk3399_defconfig               | 1 -
- configs/firefly-rk3288_defconfig             | 1 -
- configs/firefly-rk3399_defconfig             | 1 -
- configs/khadas-edge-captain-rk3399_defconfig | 1 -
- configs/khadas-edge-rk3399_defconfig         | 1 -
- configs/khadas-edge-v-rk3399_defconfig       | 1 -
- configs/leez-rk3399_defconfig                | 1 -
- configs/miqi-rk3288_defconfig                | 1 -
- configs/nanopc-t4-rk3399_defconfig           | 1 -
- configs/nanopi-m4-rk3399_defconfig           | 1 -
- configs/nanopi-neo4-rk3399_defconfig         | 1 -
- configs/orangepi-rk3399_defconfig            | 1 -
- configs/phycore-rk3288_defconfig             | 1 -
- configs/popmetal-rk3288_defconfig            | 1 -
- configs/puma-rk3399_defconfig                | 1 -
- configs/roc-pc-rk3399_defconfig              | 1 -
- configs/rock-pi-4-rk3399_defconfig           | 1 -
- configs/rock960-rk3399_defconfig             | 1 -
- configs/rockpro64-rk3399_defconfig           | 1 -
- configs/tinker-rk3288_defconfig              | 1 -
- configs/tinker-s-rk3288_defconfig            | 1 -
- configs/vyasa-rk3288_defconfig               | 1 -
- 24 files changed, 24 deletions(-)
+ arch/arm/include/asm/arch-rockchip/cru.h      | 12 +++++
+ .../include/asm/arch-rockchip/cru_rk3288.h    | 14 +-----
+ arch/arm/mach-rockchip/cpu-info.c             | 49 +++++++++++++++++++
+ arch/arm/mach-rockchip/rk3288/rk3288.c        | 39 ---------------
+ 4 files changed, 62 insertions(+), 52 deletions(-)
 
-diff --git a/configs/evb-rk3288_defconfig b/configs/evb-rk3288_defconfig
-index 1fa4054f5d..59c909e10d 100644
---- a/configs/evb-rk3288_defconfig
-+++ b/configs/evb-rk3288_defconfig
-@@ -14,7 +14,6 @@ CONFIG_DEBUG_UART=y
- CONFIG_USE_PREBOOT=y
- CONFIG_SILENT_CONSOLE=y
- CONFIG_DEFAULT_FDT_FILE="rk3288-evb-rk808.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
-diff --git a/configs/evb-rk3399_defconfig b/configs/evb-rk3399_defconfig
-index 8b8cdc5109..896a6050eb 100644
---- a/configs/evb-rk3399_defconfig
-+++ b/configs/evb-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-evb.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/ficus-rk3399_defconfig b/configs/ficus-rk3399_defconfig
-index 6bb030acc1..5b49fe0b7b 100644
---- a/configs/ficus-rk3399_defconfig
-+++ b/configs/ficus-rk3399_defconfig
-@@ -9,7 +9,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_SPL_TEXT_BASE=0xff8c2000
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/firefly-rk3288_defconfig b/configs/firefly-rk3288_defconfig
-index 0c0a51c54f..41a6fc3edd 100644
---- a/configs/firefly-rk3288_defconfig
-+++ b/configs/firefly-rk3288_defconfig
-@@ -14,7 +14,6 @@ CONFIG_DEBUG_UART=y
- CONFIG_USE_PREBOOT=y
- CONFIG_SILENT_CONSOLE=y
- CONFIG_DEFAULT_FDT_FILE="rk3288-firefly.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
-diff --git a/configs/firefly-rk3399_defconfig b/configs/firefly-rk3399_defconfig
-index b84d7b9ff0..5d197f5f8a 100644
---- a/configs/firefly-rk3399_defconfig
-+++ b/configs/firefly-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-firefly.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/khadas-edge-captain-rk3399_defconfig b/configs/khadas-edge-captain-rk3399_defconfig
-index c408a1a59b..379e21e28d 100644
---- a/configs/khadas-edge-captain-rk3399_defconfig
-+++ b/configs/khadas-edge-captain-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-khadas-edge-captain.dtbi"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/khadas-edge-rk3399_defconfig b/configs/khadas-edge-rk3399_defconfig
-index 796f94f8d7..9086018cd0 100644
---- a/configs/khadas-edge-rk3399_defconfig
-+++ b/configs/khadas-edge-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-khadas-edge.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/khadas-edge-v-rk3399_defconfig b/configs/khadas-edge-v-rk3399_defconfig
-index e70e1ec2e6..261d75526b 100644
---- a/configs/khadas-edge-v-rk3399_defconfig
-+++ b/configs/khadas-edge-v-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-khadas-edge-v.dtbi"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/leez-rk3399_defconfig b/configs/leez-rk3399_defconfig
-index 3758d79a1e..1d621fc9ce 100644
---- a/configs/leez-rk3399_defconfig
-+++ b/configs/leez-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-leez-p710.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
-diff --git a/configs/miqi-rk3288_defconfig b/configs/miqi-rk3288_defconfig
-index cec8e42c5e..25a808eb89 100644
---- a/configs/miqi-rk3288_defconfig
-+++ b/configs/miqi-rk3288_defconfig
-@@ -15,7 +15,6 @@ CONFIG_SPL_TEXT_BASE=0xff704000
- CONFIG_USE_PREBOOT=y
- CONFIG_SILENT_CONSOLE=y
- CONFIG_DEFAULT_FDT_FILE="rk3288-miqi.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
-diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
-index 504346eb99..bd6d60ff6c 100644
---- a/configs/nanopc-t4-rk3399_defconfig
-+++ b/configs/nanopc-t4-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopc-t4.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk3399_defconfig
-index 24c8aa401b..74ede13c23 100644
---- a/configs/nanopi-m4-rk3399_defconfig
-+++ b/configs/nanopi-m4-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopi-m4.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-rk3399_defconfig
-index 986739f16e..a44124aac0 100644
---- a/configs/nanopi-neo4-rk3399_defconfig
-+++ b/configs/nanopi-neo4-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-nanopi-neo4.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/orangepi-rk3399_defconfig b/configs/orangepi-rk3399_defconfig
-index bed634b699..4c464de8a6 100644
---- a/configs/orangepi-rk3399_defconfig
-+++ b/configs/orangepi-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-orangepi.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/phycore-rk3288_defconfig b/configs/phycore-rk3288_defconfig
-index 4c48d42299..2f10c7a3b3 100644
---- a/configs/phycore-rk3288_defconfig
-+++ b/configs/phycore-rk3288_defconfig
-@@ -16,7 +16,6 @@ CONFIG_USE_PREBOOT=y
- CONFIG_SILENT_CONSOLE=y
- CONFIG_CONSOLE_MUX=y
- CONFIG_DEFAULT_FDT_FILE="rk3288-phycore-rdk.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
-diff --git a/configs/popmetal-rk3288_defconfig b/configs/popmetal-rk3288_defconfig
-index f732f6b209..512efee1a9 100644
---- a/configs/popmetal-rk3288_defconfig
-+++ b/configs/popmetal-rk3288_defconfig
-@@ -16,7 +16,6 @@ CONFIG_USE_PREBOOT=y
- CONFIG_SILENT_CONSOLE=y
- CONFIG_CONSOLE_MUX=y
- CONFIG_DEFAULT_FDT_FILE="rk3288-popmetal.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
-diff --git a/configs/puma-rk3399_defconfig b/configs/puma-rk3399_defconfig
-index 55255bf6af..30c7ab2751 100644
---- a/configs/puma-rk3399_defconfig
-+++ b/configs/puma-rk3399_defconfig
-@@ -16,7 +16,6 @@ CONFIG_SPL_TEXT_BASE=0xff8c2000
- CONFIG_SPL_FIT_GENERATOR="board/theobroma-systems/puma_rk3399/fit_spl_atf.sh"
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-puma-haikou.dtb"
- CONFIG_MISC_INIT_R=y
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index 305baa712c..bf83b25dbc 100644
---- a/configs/roc-pc-rk3399_defconfig
-+++ b/configs/roc-pc-rk3399_defconfig
-@@ -8,7 +8,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-roc-pc.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
-index 2c01bf1f87..4429f58fde 100644
---- a/configs/rock-pi-4-rk3399_defconfig
-+++ b/configs/rock-pi-4-rk3399_defconfig
-@@ -9,7 +9,6 @@ CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4.dtb"
- CONFIG_MISC_INIT_R=y
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/rock960-rk3399_defconfig b/configs/rock960-rk3399_defconfig
-index ec32e6cf05..7b6dc3f83c 100644
---- a/configs/rock960-rk3399_defconfig
-+++ b/configs/rock960-rk3399_defconfig
-@@ -9,7 +9,6 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock960.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/rockpro64-rk3399_defconfig b/configs/rockpro64-rk3399_defconfig
-index 49e27c91cb..955b717131 100644
---- a/configs/rockpro64-rk3399_defconfig
-+++ b/configs/rockpro64-rk3399_defconfig
-@@ -10,7 +10,6 @@ CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rockpro64.dtb"
- CONFIG_MISC_INIT_R=y
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-diff --git a/configs/tinker-rk3288_defconfig b/configs/tinker-rk3288_defconfig
-index 83c3450839..894e7d1e12 100644
---- a/configs/tinker-rk3288_defconfig
-+++ b/configs/tinker-rk3288_defconfig
-@@ -16,7 +16,6 @@ CONFIG_USE_PREBOOT=y
- CONFIG_SILENT_CONSOLE=y
- CONFIG_CONSOLE_MUX=y
- CONFIG_DEFAULT_FDT_FILE="rk3288-tinker.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
-diff --git a/configs/tinker-s-rk3288_defconfig b/configs/tinker-s-rk3288_defconfig
-index 4925b14821..6215aa2d61 100644
---- a/configs/tinker-s-rk3288_defconfig
-+++ b/configs/tinker-s-rk3288_defconfig
-@@ -15,7 +15,6 @@ CONFIG_DEBUG_UART=y
- CONFIG_USE_PREBOOT=y
- CONFIG_SILENT_CONSOLE=y
- CONFIG_DEFAULT_FDT_FILE="rk3288-tinker-s.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x300000
-diff --git a/configs/vyasa-rk3288_defconfig b/configs/vyasa-rk3288_defconfig
-index 9497f0dd0f..6cb7f13e49 100644
---- a/configs/vyasa-rk3288_defconfig
-+++ b/configs/vyasa-rk3288_defconfig
-@@ -14,7 +14,6 @@ CONFIG_DEBUG_UART=y
- CONFIG_USE_PREBOOT=y
- CONFIG_SILENT_CONSOLE=y
- CONFIG_DEFAULT_FDT_FILE="rk3288-vyasa.dtb"
--# CONFIG_DISPLAY_CPUINFO is not set
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x2000
+diff --git a/arch/arm/include/asm/arch-rockchip/cru.h b/arch/arm/include/asm/arch-rockchip/cru.h
+index 475d772fb6..5cf2aec11a 100644
+--- a/arch/arm/include/asm/arch-rockchip/cru.h
++++ b/arch/arm/include/asm/arch-rockchip/cru.h
+@@ -13,6 +13,18 @@
+ # include <asm/arch-rockchip/cru_rk3399.h>
+ #endif
+ 
++/* CRU_GLB_RST_ST */
++enum {
++	GLB_POR_RST,
++	FST_GLB_RST_ST		= BIT(0),
++	SND_GLB_RST_ST		= BIT(1),
++	FST_GLB_TSADC_RST_ST	= BIT(2),
++	SND_GLB_TSADC_RST_ST	= BIT(3),
++	FST_GLB_WDT_RST_ST	= BIT(4),
++	SND_GLB_WDT_RST_ST	= BIT(5),
++	GLB_RST_ST_MASK		= GENMASK(5, 0),
++};
++
+ #define MHz		1000000
+ 
+ #endif /* _ROCKCHIP_CLOCK_H */
+diff --git a/arch/arm/include/asm/arch-rockchip/cru_rk3288.h b/arch/arm/include/asm/arch-rockchip/cru_rk3288.h
+index 7aa6efe46c..412b73e55f 100644
+--- a/arch/arm/include/asm/arch-rockchip/cru_rk3288.h
++++ b/arch/arm/include/asm/arch-rockchip/cru_rk3288.h
+@@ -51,7 +51,7 @@ struct rockchip_cru {
+ 	u32 cru_glb_cnt_th;
+ 	u32 cru_glb_rst_con;
+ 	u32 reserved3;
+-	u32 cru_glb_rst_st;
++	u32 glb_rst_st;
+ 	u32 reserved4;
+ 	u32 cru_sdmmc_con[2];
+ 	u32 cru_sdio0_con[2];
+@@ -227,16 +227,4 @@ enum {
+ 	CLKF_MASK		= 0x1fff << CLKF_SHIFT,
+ };
+ 
+-/* CRU_GLB_RST_ST */
+-enum {
+-	GLB_POR_RST,
+-	FST_GLB_RST_ST		= BIT(0),
+-	SND_GLB_RST_ST		= BIT(1),
+-	FST_GLB_TSADC_RST_ST	= BIT(2),
+-	SND_GLB_TSADC_RST_ST	= BIT(3),
+-	FST_GLB_WDT_RST_ST	= BIT(4),
+-	SND_GLB_WDT_RST_ST	= BIT(5),
+-	GLB_RST_ST_MASK		= GENMASK(5, 0),
+-};
+-
+ #endif
+diff --git a/arch/arm/mach-rockchip/cpu-info.c b/arch/arm/mach-rockchip/cpu-info.c
+index 9bccbd4f68..4b0e99299a 100644
+--- a/arch/arm/mach-rockchip/cpu-info.c
++++ b/arch/arm/mach-rockchip/cpu-info.c
+@@ -5,10 +5,59 @@
+  */
+ 
+ #include <common.h>
++#include <asm/io.h>
++#include <asm/arch-rockchip/clock.h>
++#include <asm/arch-rockchip/cru.h>
++#include <asm/arch-rockchip/hardware.h>
++#include <linux/err.h>
++
++static char *get_reset_cause(void)
++{
++	struct rockchip_cru *cru = rockchip_get_cru();
++	char *cause = NULL;
++
++	if (IS_ERR(cru))
++		return cause;
++
++	switch (cru->glb_rst_st) {
++	case GLB_POR_RST:
++		cause = "POR";
++		break;
++	case FST_GLB_RST_ST:
++	case SND_GLB_RST_ST:
++		cause = "RST";
++		break;
++	case FST_GLB_TSADC_RST_ST:
++	case SND_GLB_TSADC_RST_ST:
++		cause = "THERMAL";
++		break;
++	case FST_GLB_WDT_RST_ST:
++	case SND_GLB_WDT_RST_ST:
++		cause = "WDOG";
++		break;
++	default:
++		cause = "unknown reset";
++	}
++
++	/**
++	 * reset_reason env is used by rk3288, due to special use case
++	 * to figure it the boot behavior. so keep this as it is.
++	 */
++	env_set("reset_reason", cause);
++
++	/*
++	 * Clear glb_rst_st, so we can determine the last reset cause
++	 * for following resets.
++	 */
++	rk_clrreg(&cru->glb_rst_st, GLB_RST_ST_MASK);
++
++	return cause;
++}
+ 
+ int print_cpuinfo(void)
+ {
+ 	printf("SoC: Rockchip %s\n", CONFIG_SYS_SOC);
++	printf("Reset cause: %s\n", get_reset_cause());
+ 
+ 	/* TODO print operating temparature and clock */
+ 
+diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
+index 47ee5d440b..18ea7f35fb 100644
+--- a/arch/arm/mach-rockchip/rk3288/rk3288.c
++++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
+@@ -102,43 +102,6 @@ void board_debug_uart_init(void)
+ }
+ #endif
+ 
+-static void rk3288_detect_reset_reason(void)
+-{
+-	struct rockchip_cru *cru = rockchip_get_cru();
+-	const char *reason;
+-
+-	if (IS_ERR(cru))
+-		return;
+-
+-	switch (cru->cru_glb_rst_st) {
+-	case GLB_POR_RST:
+-		reason = "POR";
+-		break;
+-	case FST_GLB_RST_ST:
+-	case SND_GLB_RST_ST:
+-		reason = "RST";
+-		break;
+-	case FST_GLB_TSADC_RST_ST:
+-	case SND_GLB_TSADC_RST_ST:
+-		reason = "THERMAL";
+-		break;
+-	case FST_GLB_WDT_RST_ST:
+-	case SND_GLB_WDT_RST_ST:
+-		reason = "WDOG";
+-		break;
+-	default:
+-		reason = "unknown reset";
+-	}
+-
+-	env_set("reset_reason", reason);
+-
+-	/*
+-	 * Clear cru_glb_rst_st, so we can determine the last reset cause
+-	 * for following resets.
+-	 */
+-	rk_clrreg(&cru->cru_glb_rst_st, GLB_RST_ST_MASK);
+-}
+-
+ __weak int rk3288_board_late_init(void)
+ {
+ 	return 0;
+@@ -146,8 +109,6 @@ __weak int rk3288_board_late_init(void)
+ 
+ int rk_board_late_init(void)
+ {
+-	rk3288_detect_reset_reason();
+-
+ 	return rk3288_board_late_init();
+ }
+ 
 -- 
 2.18.0.321.gffc6fa0e3
