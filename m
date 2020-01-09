@@ -1,146 +1,114 @@
-From: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+From: Lukasz Luba <lukasz.luba@arm.com>
 Subject: Re: [PATCH v2 02/11] PM / devfreq: Remove
  devfreq_get_devfreq_by_phandle function
-Date: Thu, 9 Jan 2020 19:54:04 +0900
-Message-ID: <22cde618-d51e-2d4d-461e-e2d2c1b52af2@samsung.com>
+Date: Thu, 9 Jan 2020 10:57:03 +0000
+Message-ID: <3cb1e237-84b2-f110-4eb3-6394151cecc4@arm.com>
 References: <20191220002430.11995-1-cw00.choi@samsung.com>
-        <CGME20191220001759epcas1p4ce1c2017937a35de84eab720b9732df0@epcas1p4.samsung.com>
-        <20191220002430.11995-3-cw00.choi@samsung.com>
-        <b9a1ebe5-e114-3a6b-6081-c794e1341329@arm.com>
+ <CGME20191220001759epcas1p4ce1c2017937a35de84eab720b9732df0@epcas1p4.samsung.com>
+ <20191220002430.11995-3-cw00.choi@samsung.com>
+ <b9a1ebe5-e114-3a6b-6081-c794e1341329@arm.com>
+ <22cde618-d51e-2d4d-461e-e2d2c1b52af2@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <b9a1ebe5-e114-3a6b-6081-c794e1341329-5wv7dgnIgG8@public.gmane.org>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <22cde618-d51e-2d4d-461e-e2d2c1b52af2@samsung.com>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lukasz Luba <lukasz.luba-5wv7dgnIgG8@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, leonard.crestez-3arQi8VN3Tc@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, a.swigon-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Chanwoo Choi <cw00.choi@samsung.com>, robh+dt@kernel.org, krzk@kernel.org, heiko@sntech.de, leonard.crestez@nxp.com
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-pm@vger.kernel.org, a.swigon@samsung.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, kyungmin.park@samsung.com, myungjoo.ham@samsung.com, kgene@kernel.org, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 1/9/20 7:37 PM, Lukasz Luba wrote:
-> Hi Chanwoo,
-> 
-> On 12/20/19 12:24 AM, Chanwoo Choi wrote:
->> Previously, devfreq core support 'devfreq' property in order to get
->> the devfreq device by phandle. But, 'devfreq' property name is not proper
->> on devicetree binding because this name doesn't mean the any h/w attribute.
->>
->> The devfreq core hand over the right to decide the property name
->> for getting the devfreq device on devicetree. Each devfreq driver
->> will decide the property name on devicetree binding and then get
->> the devfreq device by using devfreq_get_devfreq_by_node().
->>
->> Signed-off-by: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
->> ---
->>   drivers/devfreq/devfreq.c    | 35 -----------------------------------
->>   drivers/devfreq/exynos-bus.c | 12 +++++++++++-
->>   include/linux/devfreq.h      |  8 --------
->>   3 files changed, 11 insertions(+), 44 deletions(-)
->>
->> diff --git a/drivers/devfreq/devfreq.c b/drivers/devfreq/devfreq.c
->> index cb8ca81c8973..c3d3c7c802a0 100644
->> --- a/drivers/devfreq/devfreq.c
->> +++ b/drivers/devfreq/devfreq.c
->> @@ -991,48 +991,13 @@ struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
->>         return ERR_PTR(-ENODEV);
->>   }
->> -
->> -/*
->> - * devfreq_get_devfreq_by_phandle - Get the devfreq device from devicetree
->> - * @dev - instance to the given device
->> - * @index - index into list of devfreq
->> - *
->> - * return the instance of devfreq device
->> - */
->> -struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
->> -{
->> -    struct device_node *node;
->> -    struct devfreq *devfreq;
->> -
->> -    if (!dev)
->> -        return ERR_PTR(-EINVAL);
->> -
->> -    if (!dev->of_node)
->> -        return ERR_PTR(-EINVAL);
->> -
->> -    node = of_parse_phandle(dev->of_node, "devfreq", index);
->> -    if (!node)
->> -        return ERR_PTR(-ENODEV);
->> -
->> -    devfreq = devfreq_get_devfreq_by_node(node);
->> -    of_node_put(node);
->> -
->> -    return devfreq;
->> -}
->> -
->>   #else
->>   struct devfreq *devfreq_get_devfreq_by_node(struct device_node *node)
->>   {
->>       return ERR_PTR(-ENODEV);
->>   }
->> -
->> -struct devfreq *devfreq_get_devfreq_by_phandle(struct device *dev, int index)
->> -{
->> -    return ERR_PTR(-ENODEV);
->> -}
->>   #endif /* CONFIG_OF */
->>   EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_node);
->> -EXPORT_SYMBOL_GPL(devfreq_get_devfreq_by_phandle);
->>     /**
->>    * devm_devfreq_remove_device() - Resource-managed devfreq_remove_device()
->> diff --git a/drivers/devfreq/exynos-bus.c b/drivers/devfreq/exynos-bus.c
->> index 7f5917d59072..1bc4e3c81115 100644
->> --- a/drivers/devfreq/exynos-bus.c
->> +++ b/drivers/devfreq/exynos-bus.c
->> @@ -86,6 +86,16 @@ static int exynos_bus_get_event(struct exynos_bus *bus,
->>       return ret;
->>   }
->>   +static struct devfreq *exynos_bus_get_parent_devfreq(struct device_node *np)
->> +{
->> +    struct device_node *node = of_parse_phandle(np, "devfreq", 0);
->> +
->> +    if (!node)
->> +        return ERR_PTR(-ENODEV);
->> +
->> +    return devfreq_get_devfreq_by_node(node);
->> +}
->> +
->>   /*
->>    * devfreq function for both simple-ondemand and passive governor
->>    */
->> @@ -353,7 +363,7 @@ static int exynos_bus_profile_init_passive(struct exynos_bus *bus,
->>       profile->exit = exynos_bus_passive_exit;
->>         /* Get the instance of parent devfreq device */
->> -    parent_devfreq = devfreq_get_devfreq_by_phandle(dev, 0);
->> +    parent_devfreq = exynos_bus_get_parent_devfreq(dev->of_node);
->>       if (IS_ERR(parent_devfreq))
->>           return -EPROBE_DEFER;
->>   
-> 
-> These changes won't apply, probably I need some base for it.
-
-I developed it on devfreq-next branch[1]
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/linux.git/log/?h=devfreq-next
-
-And I try to apply these patchset to linux-next[2] with tags/next-20200109.
-But, patch10/11 of deviceetree has some merge conflict
-because patch[3] related to exynos-bus was merged.
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/log/
-[3] https://patchwork.kernel.org/cover/11303235/
-    - [v2,0/2] Exynos5422: fix bus related OPPs for Odroid XU3/XU4/HC1
-
-On next version, I'll rebase it on latest patches.
-
-> 
-> Regards,
-> Lukasz
-> 
-> 
-> 
-
-
--- 
-Best Regards,
-Chanwoo Choi
-Samsung Electronics
+CgpPbiAxLzkvMjAgMTA6NTQgQU0sIENoYW53b28gQ2hvaSB3cm90ZToKPiBPbiAxLzkvMjAgNzoz
+NyBQTSwgTHVrYXN6IEx1YmEgd3JvdGU6Cj4+IEhpIENoYW53b28sCj4+Cj4+IE9uIDEyLzIwLzE5
+IDEyOjI0IEFNLCBDaGFud29vIENob2kgd3JvdGU6Cj4+PiBQcmV2aW91c2x5LCBkZXZmcmVxIGNv
+cmUgc3VwcG9ydCAnZGV2ZnJlcScgcHJvcGVydHkgaW4gb3JkZXIgdG8gZ2V0Cj4+PiB0aGUgZGV2
+ZnJlcSBkZXZpY2UgYnkgcGhhbmRsZS4gQnV0LCAnZGV2ZnJlcScgcHJvcGVydHkgbmFtZSBpcyBu
+b3QgcHJvcGVyCj4+PiBvbiBkZXZpY2V0cmVlIGJpbmRpbmcgYmVjYXVzZSB0aGlzIG5hbWUgZG9l
+c24ndCBtZWFuIHRoZSBhbnkgaC93IGF0dHJpYnV0ZS4KPj4+Cj4+PiBUaGUgZGV2ZnJlcSBjb3Jl
+IGhhbmQgb3ZlciB0aGUgcmlnaHQgdG8gZGVjaWRlIHRoZSBwcm9wZXJ0eSBuYW1lCj4+PiBmb3Ig
+Z2V0dGluZyB0aGUgZGV2ZnJlcSBkZXZpY2Ugb24gZGV2aWNldHJlZS4gRWFjaCBkZXZmcmVxIGRy
+aXZlcgo+Pj4gd2lsbCBkZWNpZGUgdGhlIHByb3BlcnR5IG5hbWUgb24gZGV2aWNldHJlZSBiaW5k
+aW5nIGFuZCB0aGVuIGdldAo+Pj4gdGhlIGRldmZyZXEgZGV2aWNlIGJ5IHVzaW5nIGRldmZyZXFf
+Z2V0X2RldmZyZXFfYnlfbm9kZSgpLgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IENoYW53b28gQ2hv
+aSA8Y3cwMC5jaG9pQHNhbXN1bmcuY29tPgo+Pj4gLS0tCj4+PiAgwqAgZHJpdmVycy9kZXZmcmVx
+L2RldmZyZXEuY8KgwqDCoCB8IDM1IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+Cj4+PiAgwqAgZHJpdmVycy9kZXZmcmVxL2V4eW5vcy1idXMuYyB8IDEyICsrKysrKysrKysrLQo+
+Pj4gIMKgIGluY2x1ZGUvbGludXgvZGV2ZnJlcS5owqDCoMKgwqDCoCB8wqAgOCAtLS0tLS0tLQo+
+Pj4gIMKgIDMgZmlsZXMgY2hhbmdlZCwgMTEgaW5zZXJ0aW9ucygrKSwgNDQgZGVsZXRpb25zKC0p
+Cj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZGV2ZnJlcS9kZXZmcmVxLmMgYi9kcml2ZXJz
+L2RldmZyZXEvZGV2ZnJlcS5jCj4+PiBpbmRleCBjYjhjYTgxYzg5NzMuLmMzZDNjN2M4MDJhMCAx
+MDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvZGV2ZnJlcS9kZXZmcmVxLmMKPj4+ICsrKyBiL2RyaXZl
+cnMvZGV2ZnJlcS9kZXZmcmVxLmMKPj4+IEBAIC05OTEsNDggKzk5MSwxMyBAQCBzdHJ1Y3QgZGV2
+ZnJlcSAqZGV2ZnJlcV9nZXRfZGV2ZnJlcV9ieV9ub2RlKHN0cnVjdCBkZXZpY2Vfbm9kZSAqbm9k
+ZSkKPj4+ICDCoCDCoMKgwqDCoMKgIHJldHVybiBFUlJfUFRSKC1FTk9ERVYpOwo+Pj4gIMKgIH0K
+Pj4+IC0KPj4+IC0vKgo+Pj4gLSAqIGRldmZyZXFfZ2V0X2RldmZyZXFfYnlfcGhhbmRsZSAtIEdl
+dCB0aGUgZGV2ZnJlcSBkZXZpY2UgZnJvbSBkZXZpY2V0cmVlCj4+PiAtICogQGRldiAtIGluc3Rh
+bmNlIHRvIHRoZSBnaXZlbiBkZXZpY2UKPj4+IC0gKiBAaW5kZXggLSBpbmRleCBpbnRvIGxpc3Qg
+b2YgZGV2ZnJlcQo+Pj4gLSAqCj4+PiAtICogcmV0dXJuIHRoZSBpbnN0YW5jZSBvZiBkZXZmcmVx
+IGRldmljZQo+Pj4gLSAqLwo+Pj4gLXN0cnVjdCBkZXZmcmVxICpkZXZmcmVxX2dldF9kZXZmcmVx
+X2J5X3BoYW5kbGUoc3RydWN0IGRldmljZSAqZGV2LCBpbnQgaW5kZXgpCj4+PiAtewo+Pj4gLcKg
+wqDCoCBzdHJ1Y3QgZGV2aWNlX25vZGUgKm5vZGU7Cj4+PiAtwqDCoMKgIHN0cnVjdCBkZXZmcmVx
+ICpkZXZmcmVxOwo+Pj4gLQo+Pj4gLcKgwqDCoCBpZiAoIWRldikKPj4+IC3CoMKgwqDCoMKgwqDC
+oCByZXR1cm4gRVJSX1BUUigtRUlOVkFMKTsKPj4+IC0KPj4+IC3CoMKgwqAgaWYgKCFkZXYtPm9m
+X25vZGUpCj4+PiAtwqDCoMKgwqDCoMKgwqAgcmV0dXJuIEVSUl9QVFIoLUVJTlZBTCk7Cj4+PiAt
+Cj4+PiAtwqDCoMKgIG5vZGUgPSBvZl9wYXJzZV9waGFuZGxlKGRldi0+b2Zfbm9kZSwgImRldmZy
+ZXEiLCBpbmRleCk7Cj4+PiAtwqDCoMKgIGlmICghbm9kZSkKPj4+IC3CoMKgwqDCoMKgwqDCoCBy
+ZXR1cm4gRVJSX1BUUigtRU5PREVWKTsKPj4+IC0KPj4+IC3CoMKgwqAgZGV2ZnJlcSA9IGRldmZy
+ZXFfZ2V0X2RldmZyZXFfYnlfbm9kZShub2RlKTsKPj4+IC3CoMKgwqAgb2Zfbm9kZV9wdXQobm9k
+ZSk7Cj4+PiAtCj4+PiAtwqDCoMKgIHJldHVybiBkZXZmcmVxOwo+Pj4gLX0KPj4+IC0KPj4+ICDC
+oCAjZWxzZQo+Pj4gIMKgIHN0cnVjdCBkZXZmcmVxICpkZXZmcmVxX2dldF9kZXZmcmVxX2J5X25v
+ZGUoc3RydWN0IGRldmljZV9ub2RlICpub2RlKQo+Pj4gIMKgIHsKPj4+ICDCoMKgwqDCoMKgIHJl
+dHVybiBFUlJfUFRSKC1FTk9ERVYpOwo+Pj4gIMKgIH0KPj4+IC0KPj4+IC1zdHJ1Y3QgZGV2ZnJl
+cSAqZGV2ZnJlcV9nZXRfZGV2ZnJlcV9ieV9waGFuZGxlKHN0cnVjdCBkZXZpY2UgKmRldiwgaW50
+IGluZGV4KQo+Pj4gLXsKPj4+IC3CoMKgwqAgcmV0dXJuIEVSUl9QVFIoLUVOT0RFVik7Cj4+PiAt
+fQo+Pj4gIMKgICNlbmRpZiAvKiBDT05GSUdfT0YgKi8KPj4+ICDCoCBFWFBPUlRfU1lNQk9MX0dQ
+TChkZXZmcmVxX2dldF9kZXZmcmVxX2J5X25vZGUpOwo+Pj4gLUVYUE9SVF9TWU1CT0xfR1BMKGRl
+dmZyZXFfZ2V0X2RldmZyZXFfYnlfcGhhbmRsZSk7Cj4+PiAgwqAgwqAgLyoqCj4+PiAgwqDCoCAq
+IGRldm1fZGV2ZnJlcV9yZW1vdmVfZGV2aWNlKCkgLSBSZXNvdXJjZS1tYW5hZ2VkIGRldmZyZXFf
+cmVtb3ZlX2RldmljZSgpCj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9kZXZmcmVxL2V4eW5vcy1i
+dXMuYyBiL2RyaXZlcnMvZGV2ZnJlcS9leHlub3MtYnVzLmMKPj4+IGluZGV4IDdmNTkxN2Q1OTA3
+Mi4uMWJjNGUzYzgxMTE1IDEwMDY0NAo+Pj4gLS0tIGEvZHJpdmVycy9kZXZmcmVxL2V4eW5vcy1i
+dXMuYwo+Pj4gKysrIGIvZHJpdmVycy9kZXZmcmVxL2V4eW5vcy1idXMuYwo+Pj4gQEAgLTg2LDYg
+Kzg2LDE2IEBAIHN0YXRpYyBpbnQgZXh5bm9zX2J1c19nZXRfZXZlbnQoc3RydWN0IGV4eW5vc19i
+dXMgKmJ1cywKPj4+ICDCoMKgwqDCoMKgIHJldHVybiByZXQ7Cj4+PiAgwqAgfQo+Pj4gIMKgICtz
+dGF0aWMgc3RydWN0IGRldmZyZXEgKmV4eW5vc19idXNfZ2V0X3BhcmVudF9kZXZmcmVxKHN0cnVj
+dCBkZXZpY2Vfbm9kZSAqbnApCj4+PiArewo+Pj4gK8KgwqDCoCBzdHJ1Y3QgZGV2aWNlX25vZGUg
+Km5vZGUgPSBvZl9wYXJzZV9waGFuZGxlKG5wLCAiZGV2ZnJlcSIsIDApOwo+Pj4gKwo+Pj4gK8Kg
+wqDCoCBpZiAoIW5vZGUpCj4+PiArwqDCoMKgwqDCoMKgwqAgcmV0dXJuIEVSUl9QVFIoLUVOT0RF
+Vik7Cj4+PiArCj4+PiArwqDCoMKgIHJldHVybiBkZXZmcmVxX2dldF9kZXZmcmVxX2J5X25vZGUo
+bm9kZSk7Cj4+PiArfQo+Pj4gKwo+Pj4gIMKgIC8qCj4+PiAgwqDCoCAqIGRldmZyZXEgZnVuY3Rp
+b24gZm9yIGJvdGggc2ltcGxlLW9uZGVtYW5kIGFuZCBwYXNzaXZlIGdvdmVybm9yCj4+PiAgwqDC
+oCAqLwo+Pj4gQEAgLTM1Myw3ICszNjMsNyBAQCBzdGF0aWMgaW50IGV4eW5vc19idXNfcHJvZmls
+ZV9pbml0X3Bhc3NpdmUoc3RydWN0IGV4eW5vc19idXMgKmJ1cywKPj4+ICDCoMKgwqDCoMKgIHBy
+b2ZpbGUtPmV4aXQgPSBleHlub3NfYnVzX3Bhc3NpdmVfZXhpdDsKPj4+ICDCoCDCoMKgwqDCoMKg
+IC8qIEdldCB0aGUgaW5zdGFuY2Ugb2YgcGFyZW50IGRldmZyZXEgZGV2aWNlICovCj4+PiAtwqDC
+oMKgIHBhcmVudF9kZXZmcmVxID0gZGV2ZnJlcV9nZXRfZGV2ZnJlcV9ieV9waGFuZGxlKGRldiwg
+MCk7Cj4+PiArwqDCoMKgIHBhcmVudF9kZXZmcmVxID0gZXh5bm9zX2J1c19nZXRfcGFyZW50X2Rl
+dmZyZXEoZGV2LT5vZl9ub2RlKTsKPj4+ICDCoMKgwqDCoMKgIGlmIChJU19FUlIocGFyZW50X2Rl
+dmZyZXEpKQo+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoCByZXR1cm4gLUVQUk9CRV9ERUZFUjsKPj4+
+ICAgIAo+Pgo+PiBUaGVzZSBjaGFuZ2VzIHdvbid0IGFwcGx5LCBwcm9iYWJseSBJIG5lZWQgc29t
+ZSBiYXNlIGZvciBpdC4KPiAKPiBJIGRldmVsb3BlZCBpdCBvbiBkZXZmcmVxLW5leHQgYnJhbmNo
+WzFdCj4gWzFdIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0
+L2NoYW53b28vbGludXguZ2l0L2xvZy8/aD1kZXZmcmVxLW5leHQKPiAKPiBBbmQgSSB0cnkgdG8g
+YXBwbHkgdGhlc2UgcGF0Y2hzZXQgdG8gbGludXgtbmV4dFsyXSB3aXRoIHRhZ3MvbmV4dC0yMDIw
+MDEwOS4KPiBCdXQsIHBhdGNoMTAvMTEgb2YgZGV2aWNlZXRyZWUgaGFzIHNvbWUgbWVyZ2UgY29u
+ZmxpY3QKPiBiZWNhdXNlIHBhdGNoWzNdIHJlbGF0ZWQgdG8gZXh5bm9zLWJ1cyB3YXMgbWVyZ2Vk
+Lgo+IFsyXSBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC9u
+ZXh0L2xpbnV4LW5leHQuZ2l0L2xvZy8KPiBbM10gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9y
+Zy9jb3Zlci8xMTMwMzIzNS8KPiAgICAgIC0gW3YyLDAvMl0gRXh5bm9zNTQyMjogZml4IGJ1cyBy
+ZWxhdGVkIE9QUHMgZm9yIE9kcm9pZCBYVTMvWFU0L0hDMQo+IAo+IE9uIG5leHQgdmVyc2lvbiwg
+SSdsbCByZWJhc2UgaXQgb24gbGF0ZXN0IHBhdGNoZXMuCgpUaGFuayB5b3UgZm9yIHRoZSBpbmZv
+cm1hdGlvbi4gSSB3aWxsIHVwZGF0ZSB0aGUgYmFzZSBhbmQgY29udGludWUgdGhlCnJldmlldy4K
+Ckx1a2FzegoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+bGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtYXJtLWtlcm5lbAo=
