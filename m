@@ -1,40 +1,28 @@
-From: Tobias Schramm <t.schramm@manjaro.org>
-Subject: [PATCH v2 1/1] drm/rockchip: fix integer type used for storing dp data rate
-Date: Thu,  9 Jan 2020 08:31:29 +0100
-Message-ID: <20200109073129.378507-2-t.schramm@manjaro.org>
-References: <20200109073129.378507-1-t.schramm@manjaro.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Use ABI name for recovery mode pin on veyron fievel/tiger
+Date: Thu, 09 Jan 2020 09:51:19 +0100
+Message-ID: <4961361.gyzMsJYQDa@diego>
+References: <20200108092908.1.I3afd3535b65460e79f3976e9ebfa392a0dd75e01@changeid>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200109073129.378507-1-t.schramm@manjaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Tobias Schramm <t.schramm@manjaro.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200108092908.1.I3afd3535b65460e79f3976e9ebfa392a0dd75e01@changeid>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-commmit 2589c4025f13 ("drm/rockchip: Avoid drm_dp_link helpers") changes
-the type of variables used to store the display port data rate and
-number of lanes to u8. However u8 is not sufficient to store the link
-data rate of the display port.
-This commit reverts the type of data rate to unsigned int.
+Am Mittwoch, 8. Januar 2020, 18:29:33 CET schrieb Matthias Kaehlcke:
+> The recovery mode pin is currently named 'REC_MODE_L', which is
+> how the signal is called in the schematics. The Chrome OS ABI
+> requires the pin to be named 'RECOVERY_SW_L', which is also how
+> it is called on all other veyron devices. Rename the pin to match
+> the ABI.
+> 
+> Signed-off-by: Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 
-Signed-off-by: Tobias Schramm <t.schramm@manjaro.org>
----
- drivers/gpu/drm/rockchip/cdn-dp-core.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+applied for 5.6
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.h b/drivers/gpu/drm/rockchip/cdn-dp-core.h
-index 83c4586665b4..81ac9b658a70 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.h
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.h
-@@ -95,7 +95,7 @@ struct cdn_dp_device {
- 	struct cdn_dp_port *port[MAX_PHY];
- 	u8 ports;
- 	u8 max_lanes;
--	u8 max_rate;
-+	unsigned int max_rate;
- 	u8 lanes;
- 	int active_port;
- 
--- 
-2.24.1
+Thanks
+Heiko
