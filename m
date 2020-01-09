@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v4 4/8] rockchip: Add common reset cause
-Date: Thu,  9 Jan 2020 14:22:18 +0530
-Message-ID: <20200109085222.22670-5-jagan@amarulasolutions.com>
+Subject: [DO NOT MERGE] [PATCH v4 8/8] roc-rk3399-pc: Enable bootcount
+Date: Thu,  9 Jan 2020 14:22:22 +0530
+Message-ID: <20200109085222.22670-9-jagan@amarulasolutions.com>
 References: <20200109085222.22670-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -20,197 +20,21 @@ To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Phil
 Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add cpu reset cause in common cpu-info file.
+Enable bootcount suport for ROC-RK3399-PC board.
 
-This would help to print the reset cause for
-various resets.
-
-Right now it support rk3288, rk3399. rest of rockchip
-platforms doesn't have reset cause support ye but this
-code is more feasible to extend the same.
-
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
- arch/arm/include/asm/arch-rockchip/cru.h      | 12 +++++
- .../include/asm/arch-rockchip/cru_rk3288.h    | 14 +-----
- arch/arm/mach-rockchip/cpu-info.c             | 49 +++++++++++++++++++
- arch/arm/mach-rockchip/rk3288/rk3288.c        | 39 ---------------
- 4 files changed, 62 insertions(+), 52 deletions(-)
+ configs/roc-pc-rk3399_defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/include/asm/arch-rockchip/cru.h b/arch/arm/include/asm/arch-rockchip/cru.h
-index 475d772fb6..5cf2aec11a 100644
---- a/arch/arm/include/asm/arch-rockchip/cru.h
-+++ b/arch/arm/include/asm/arch-rockchip/cru.h
-@@ -13,6 +13,18 @@
- # include <asm/arch-rockchip/cru_rk3399.h>
- #endif
- 
-+/* CRU_GLB_RST_ST */
-+enum {
-+	GLB_POR_RST,
-+	FST_GLB_RST_ST		= BIT(0),
-+	SND_GLB_RST_ST		= BIT(1),
-+	FST_GLB_TSADC_RST_ST	= BIT(2),
-+	SND_GLB_TSADC_RST_ST	= BIT(3),
-+	FST_GLB_WDT_RST_ST	= BIT(4),
-+	SND_GLB_WDT_RST_ST	= BIT(5),
-+	GLB_RST_ST_MASK		= GENMASK(5, 0),
-+};
-+
- #define MHz		1000000
- 
- #endif /* _ROCKCHIP_CLOCK_H */
-diff --git a/arch/arm/include/asm/arch-rockchip/cru_rk3288.h b/arch/arm/include/asm/arch-rockchip/cru_rk3288.h
-index 7aa6efe46c..412b73e55f 100644
---- a/arch/arm/include/asm/arch-rockchip/cru_rk3288.h
-+++ b/arch/arm/include/asm/arch-rockchip/cru_rk3288.h
-@@ -51,7 +51,7 @@ struct rockchip_cru {
- 	u32 cru_glb_cnt_th;
- 	u32 cru_glb_rst_con;
- 	u32 reserved3;
--	u32 cru_glb_rst_st;
-+	u32 glb_rst_st;
- 	u32 reserved4;
- 	u32 cru_sdmmc_con[2];
- 	u32 cru_sdio0_con[2];
-@@ -227,16 +227,4 @@ enum {
- 	CLKF_MASK		= 0x1fff << CLKF_SHIFT,
- };
- 
--/* CRU_GLB_RST_ST */
--enum {
--	GLB_POR_RST,
--	FST_GLB_RST_ST		= BIT(0),
--	SND_GLB_RST_ST		= BIT(1),
--	FST_GLB_TSADC_RST_ST	= BIT(2),
--	SND_GLB_TSADC_RST_ST	= BIT(3),
--	FST_GLB_WDT_RST_ST	= BIT(4),
--	SND_GLB_WDT_RST_ST	= BIT(5),
--	GLB_RST_ST_MASK		= GENMASK(5, 0),
--};
--
- #endif
-diff --git a/arch/arm/mach-rockchip/cpu-info.c b/arch/arm/mach-rockchip/cpu-info.c
-index 9bccbd4f68..4b0e99299a 100644
---- a/arch/arm/mach-rockchip/cpu-info.c
-+++ b/arch/arm/mach-rockchip/cpu-info.c
-@@ -5,10 +5,59 @@
-  */
- 
- #include <common.h>
-+#include <asm/io.h>
-+#include <asm/arch-rockchip/clock.h>
-+#include <asm/arch-rockchip/cru.h>
-+#include <asm/arch-rockchip/hardware.h>
-+#include <linux/err.h>
-+
-+static char *get_reset_cause(void)
-+{
-+	struct rockchip_cru *cru = rockchip_get_cru();
-+	char *cause = NULL;
-+
-+	if (IS_ERR(cru))
-+		return cause;
-+
-+	switch (cru->glb_rst_st) {
-+	case GLB_POR_RST:
-+		cause = "POR";
-+		break;
-+	case FST_GLB_RST_ST:
-+	case SND_GLB_RST_ST:
-+		cause = "RST";
-+		break;
-+	case FST_GLB_TSADC_RST_ST:
-+	case SND_GLB_TSADC_RST_ST:
-+		cause = "THERMAL";
-+		break;
-+	case FST_GLB_WDT_RST_ST:
-+	case SND_GLB_WDT_RST_ST:
-+		cause = "WDOG";
-+		break;
-+	default:
-+		cause = "unknown reset";
-+	}
-+
-+	/**
-+	 * reset_reason env is used by rk3288, due to special use case
-+	 * to figure it the boot behavior. so keep this as it is.
-+	 */
-+	env_set("reset_reason", cause);
-+
-+	/*
-+	 * Clear glb_rst_st, so we can determine the last reset cause
-+	 * for following resets.
-+	 */
-+	rk_clrreg(&cru->glb_rst_st, GLB_RST_ST_MASK);
-+
-+	return cause;
-+}
- 
- int print_cpuinfo(void)
- {
- 	printf("SoC: Rockchip %s\n", CONFIG_SYS_SOC);
-+	printf("Reset cause: %s\n", get_reset_cause());
- 
- 	/* TODO print operating temparature and clock */
- 
-diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
-index 47ee5d440b..18ea7f35fb 100644
---- a/arch/arm/mach-rockchip/rk3288/rk3288.c
-+++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
-@@ -102,43 +102,6 @@ void board_debug_uart_init(void)
- }
- #endif
- 
--static void rk3288_detect_reset_reason(void)
--{
--	struct rockchip_cru *cru = rockchip_get_cru();
--	const char *reason;
--
--	if (IS_ERR(cru))
--		return;
--
--	switch (cru->cru_glb_rst_st) {
--	case GLB_POR_RST:
--		reason = "POR";
--		break;
--	case FST_GLB_RST_ST:
--	case SND_GLB_RST_ST:
--		reason = "RST";
--		break;
--	case FST_GLB_TSADC_RST_ST:
--	case SND_GLB_TSADC_RST_ST:
--		reason = "THERMAL";
--		break;
--	case FST_GLB_WDT_RST_ST:
--	case SND_GLB_WDT_RST_ST:
--		reason = "WDOG";
--		break;
--	default:
--		reason = "unknown reset";
--	}
--
--	env_set("reset_reason", reason);
--
--	/*
--	 * Clear cru_glb_rst_st, so we can determine the last reset cause
--	 * for following resets.
--	 */
--	rk_clrreg(&cru->cru_glb_rst_st, GLB_RST_ST_MASK);
--}
--
- __weak int rk3288_board_late_init(void)
- {
- 	return 0;
-@@ -146,8 +109,6 @@ __weak int rk3288_board_late_init(void)
- 
- int rk_board_late_init(void)
- {
--	rk3288_detect_reset_reason();
--
- 	return rk3288_board_late_init();
- }
- 
+diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+index b30ca55107..e4b26b037b 100644
+--- a/configs/roc-pc-rk3399_defconfig
++++ b/configs/roc-pc-rk3399_defconfig
+@@ -55,3 +55,4 @@ CONFIG_USB_ETHER_SMSC95XX=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
+ CONFIG_WDT=y
++CONFIG_BOOTCOUNT_LIMIT=y
 -- 
 2.18.0.321.gffc6fa0e3
