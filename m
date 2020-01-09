@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v7 3/7] Makefile: rockchip: Support SPL-alone mkimage
-Date: Fri, 10 Jan 2020 00:16:18 +0530
-Message-ID: <20200109184622.3098-4-jagan@amarulasolutions.com>
+Subject: [PATCH v7 2/7] Makefile: rockchip: Suffix platform type with tpl name
+Date: Fri, 10 Jan 2020 00:16:17 +0530
+Message-ID: <20200109184622.3098-3-jagan@amarulasolutions.com>
 References: <20200109184622.3098-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,50 +21,47 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add SPL-alone mkimage tooling support via Makefile for
-few platforms or boards used in rockchip family.
+Most of the platforms uses the platform type on their boot
+stage image naming conventions in makefile like,
 
-With this users would get rid of explicitly creating
-mkimage tool for rockchip rksd or rkspi boot modes.
+u-boot-x86-start16-tpl.bin - x86 start16 TPL bin
+u-boot-spl-mtk.bin - Mediatek SPL bin
+
+This would help to understand the users to what that
+particular image belongs to? and less confused.
+
+On that note, suffix platform type rockchip for existing
+u-boot-tpl.img so now it become u-boot-tpl-rockchip.bin
+
+Also, bin is more conventional way to include it on tools
+like binman, pad_cat etc in future patches.
+
+Note: usage of platform type doesn't follow consistent order
+as of now.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- Makefile | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 50ac12fe9b..5361524f77 100644
+index e264b2a49a..50ac12fe9b 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -908,7 +908,7 @@ ifeq ($(CONFIG_MPC85xx)$(CONFIG_OF_SEPARATE),yy)
- ALL-y += u-boot-with-dtb.bin
- endif
- 
--ifeq ($(CONFIG_ARCH_ROCKCHIP)$(CONFIG_SPL)$(CONFIG_TPL),yyy)
-+ifeq ($(CONFIG_ARCH_ROCKCHIP)$(CONFIG_SPL),yy)
- ALL-y += idbloader.img
- endif
- 
-@@ -1382,11 +1382,19 @@ else
+@@ -1382,10 +1382,10 @@ else
  ROCKCHIP_IMG_TYPE := rksd
  endif
  
-+# TPL + SPL
-+ifeq ($(CONFIG_SPL)$(CONFIG_TPL),yy)
- MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
- tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
+-MKIMAGEFLAGS_u-boot-tpl.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
+-tpl/u-boot-tpl.img: tpl/u-boot-tpl.bin FORCE
++MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
++tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
  	$(call if_changed,mkimage)
- idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
+-idbloader.img: tpl/u-boot-tpl.img spl/u-boot-spl.bin FORCE
++idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
  	$(call if_changed,cat)
-+else
-+MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
-+idbloader.img: spl/u-boot-spl.bin FORCE
-+	$(call if_changed,mkimage)
-+endif
-+
  endif
  
- ifeq ($(CONFIG_ARCH_LPC32XX)$(CONFIG_SPL),yy)
 -- 
 2.18.0.321.gffc6fa0e3
