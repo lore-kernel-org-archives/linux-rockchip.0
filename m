@@ -1,41 +1,40 @@
 From: Tobias Schramm <t.schramm@manjaro.org>
-Subject: [PATCH v2 0/1] Regression in rockchipdrm
-Date: Thu,  9 Jan 2020 08:31:28 +0100
-Message-ID: <20200109073129.378507-1-t.schramm@manjaro.org>
+Subject: [PATCH v2 1/1] drm/rockchip: fix integer type used for storing dp data rate
+Date: Thu,  9 Jan 2020 08:31:29 +0100
+Message-ID: <20200109073129.378507-2-t.schramm@manjaro.org>
+References: <20200109073129.378507-1-t.schramm@manjaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <dri-devel-bounces@lists.freedesktop.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/dri-devel>
-List-Post: <mailto:dri-devel@lists.freedesktop.org>
-List-Help: <mailto:dri-devel-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/dri-devel>,
- <mailto:dri-devel-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: dri-devel-bounces@lists.freedesktop.org
-Sender: "dri-devel" <dri-devel-bounces@lists.freedesktop.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200109073129.378507-1-t.schramm@manjaro.org>
+Sender: linux-kernel-owner@vger.kernel.org
 To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: linux-rockchip@lists.infradead.org, Tobias Schramm <t.schramm@manjaro.org>, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Tobias Schramm <t.schramm@manjaro.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-commit 2589c4025f13 ("drm/rockchip: Avoid drm_dp_link helpers") changed
-the datatype used for storing the display port data rate to u8.
-A u8 is not sufficient to store the data rate, resulting in a crash due
-to incorrect calculations.
+commmit 2589c4025f13 ("drm/rockchip: Avoid drm_dp_link helpers") changes
+the type of variables used to store the display port data rate and
+number of lanes to u8. However u8 is not sufficient to store the link
+data rate of the display port.
+This commit reverts the type of data rate to unsigned int.
 
-This series resolves the issue by restoring the data type changed in
-commit 2589c4025f13 to their original type.
-
-Thanks to CrystalGamma for identifying the commit causing the regression.
-
-v2: Keep lane count as u8
-
-Tobias Schramm (1):
-  drm/rockchip: fix integer type used for storing dp data rate
-
+Signed-off-by: Tobias Schramm <t.schramm@manjaro.org>
+---
  drivers/gpu/drm/rockchip/cdn-dp-core.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.h b/drivers/gpu/drm/rockchip/cdn-dp-core.h
+index 83c4586665b4..81ac9b658a70 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.h
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.h
+@@ -95,7 +95,7 @@ struct cdn_dp_device {
+ 	struct cdn_dp_port *port[MAX_PHY];
+ 	u8 ports;
+ 	u8 max_lanes;
+-	u8 max_rate;
++	unsigned int max_rate;
+ 	u8 lanes;
+ 	int active_port;
+ 
 -- 
 2.24.1
