@@ -1,137 +1,54 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/2] Rockchip dt64 for 5.6
-Date: Thu, 09 Jan 2020 22:40:34 +0100
-Message-ID: <5115625.yBEeHQkg2z@phil>
-References: <8215452.dU6eVM2tAM@phil>
+From: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v6 5/6] rockchip: Add Single boot image (with binman,
+ pad_cat)
+Date: Fri, 10 Jan 2020 22:39:35 +1300
+Message-ID: <CAPnjgZ0u7E=KmiJodARvVFfVv+u0vdxCC1NN_2tnFNAMkp4NLw@mail.gmail.com>
+References: <20200104083806.3930-1-jagan@amarulasolutions.com>
+ <20200104083806.3930-6-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <8215452.dU6eVM2tAM@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, soc@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200104083806.3930-6-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit e42617b825f8073569da76dc4510bfa019b1c35a:
-
-  Linux 5.5-rc1 (2019-12-08 14:57:55 -0800)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.6-rockchip-dts64-1
-
-for you to fetch changes up to 1fc61ed04d309b0b8b3562acf701ab988eee12de:
-
-  arm64: dts: rockchip: Enable mp8859 regulator on rk3399-roc-pc (2020-01-09 00:28:40 +0100)
-
-----------------------------------------------------------------
-New boards are the Radxa Rock Pi N10 using the VMARC SOM and Dalang
-carrier board, separate versions for the two rockpro64 hardware revisions
-which switched a pin between revisions. The rockpro64 also got
-bluetooth support now.
-
-The px30 got a lot of attention with dsi, gpu and thermal support.
-Similarly the rk3399-roc-pc board also got attention with mtd flash,
-sdr104 mode, hdmi sound, gpu and a lot of other smaller improvements.
-
-Other than that there is a new gpu-cooling device for rk3399 a cpu
-idle-state for rk3328 and more small improvements across a number
-of boards.
-
-----------------------------------------------------------------
-Anand Moon (1):
-      arm64: dts: rockchip: Add regulators for pcie on rk3399-rock960
-
-Heiko Stuebner (7):
-      arm64: dts: rockchip: remove 408MHz operating point from px30
-      arm64: dts: rockchip: add thermal infrastructure to px30
-      arm64: dts: rockchip: enable tsadc on px30-evb
-      dt-bindings: gpu: mali-bifrost: Add Rockchip PX30
-      arm64: dts: rockchip: add the gpu for px30
-      arm64: dts: rockchip: enable the gpu on px30-evb
-      arm64: dts: rockchip: add dsi controller for px30
-
-Jagan Teki (4):
-      dt-bindings: arm: rockchip: Add Rock Pi N10 binding
-      arm64: dts: rockchip: Add VMARC RK3399Pro SOM initial support
-      ARM: dts: rockchip: Add Radxa Dalang Carrier board
-      arm64: dts: rockchip: Add Radxa Rock Pi N10 initial support
-
-Johan Jonker (3):
-      arm64: dts: rockchip: remove identical &uart0 node from rk3368-lion-haikou
-      arm64: dts: rockchip: rk3399-firefly: remove num-slots from &sdio0 node
-      arm64: dts: rockchip: rk3399-hugsun-x99: remove supports-sd and supports-emmc options
-
-Katsuhiro Suzuki (1):
-      arm64: dts: rockchip: split rk3399-rockpro64 for v2 and v2.1 boards
-
-Kever Yang (1):
-      arm64: dts: rockchip: Fix min voltage for rk3399-firefly vdd_log
-
-Markus Reichl (10):
-      arm64: dts: rockchip: Add node for gpu on rk3399-roc-pc
-      arm64: dts: rockchip: Add regulators for pcie on rk3399-roc-pc
-      arm64: dts: rockchip: Enable HDMI Sound on rk3399-roc-pc
-      arm64: dts: rockchip: Disable HS400 for mmc on rk3399-roc-pc
-      arm64: dts: rockchip: Fix vdd_log on rk3399-roc-pc
-      arm64: dts: rockchip: Use correct pin for lcd-reset pinctrl on rk3399-roc-pc
-      arm64: dts: rockchip: Add SDR104 mode to SD-card I/F on rk3399-roc-pc
-      arm64: dts: rockchip: Enable MTD Flash on rk3399-roc-pc
-      arm64: dts: rockchip: Remove always-on properties from regulator nodes on rk3399-roc-pc.
-      arm64: dts: rockchip: Enable mp8859 regulator on rk3399-roc-pc
-
-Matwey V. Kornilov (2):
-      arm64: dts: rockchip: Enable PCIe for Radxa Rock Pi 4 board
-      arm64: dts: rockchip: Add regulators for PCIe for Radxa Rock Pi 4 board
-
-Miquel Raynal (2):
-      arm64: dts: rockchip: Add PX30 DSI DPHY
-      arm64: dts: rockchip: Add PX30 LVDS
-
-Robin Murphy (4):
-      arm64: dts: rockchip: Fix NanoPC-T4 cooling maps
-      arm64: dts: rockchip: Improve nanopi4 PCIe
-      arm64: dts: rockchip: Add GPU cooling device for RK3399
-      arm64: dts: rockchip: Add RK3328 idle state
-
-Soeren Moch (2):
-      arm64: dts: rockchip: enable wifi module at sdio0 on rockpro64
-      arm64: dts: rockchip: hook up bluetooth at uart0 on rockpro64
-
- .../devicetree/bindings/arm/rockchip.yaml          |   9 +
- .../devicetree/bindings/gpu/arm,mali-bifrost.yaml  |   1 +
- .../boot/dts/rockchip-radxa-dalang-carrier.dtsi    |  81 +++
- arch/arm64/boot/dts/rockchip/Makefile              |   2 +
- arch/arm64/boot/dts/rockchip/px30-evb.dts          |  11 +
- arch/arm64/boot/dts/rockchip/px30.dtsi             | 187 ++++-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  17 +
- .../arm64/boot/dts/rockchip/rk3368-lion-haikou.dts |   6 -
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |   3 +-
- arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts |   2 -
- arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts  |  28 +-
- arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi   |  27 +-
- .../boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts  |   4 +-
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    |  97 ++-
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts  |  26 +
- arch/arm64/boot/dts/rockchip/rk3399-rock960.dtsi   |  11 +
- .../boot/dts/rockchip/rk3399-rockpro64-v2.dts      |  30 +
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dts  | 759 +-------------------
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi | 797 +++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |   9 +
- .../boot/dts/rockchip/rk3399pro-rock-pi-n10.dts    |  17 +
- .../boot/dts/rockchip/rk3399pro-vmarc-som.dtsi     | 333 +++++++++
- 22 files changed, 1632 insertions(+), 825 deletions(-)
- create mode 100644 arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rockpro64-v2.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
+SGkgSmFnYW4sCgpPbiBTYXQsIDQgSmFuIDIwMjAgYXQgMjE6MzgsIEphZ2FuIFRla2kgPGphZ2Fu
+QGFtYXJ1bGFzb2x1dGlvbnMuY29tPiB3cm90ZToKPgo+IEFsbCByb2NrY2hpcCBwbGF0Zm9ybXMg
+c3VwcG9ydCBUUEwgb3IgU1BMLWJhc2VkIGJvb3Rsb2FkZXIKPiBpbiBtYWlubGluZSB3aXRoIFUt
+Qm9vdCBwcm9wZXIgYXMgZmluYWwgc3RhZ2UuIEZvciBlYWNoCj4gc3RhZ2Ugd2UgbmVlZCB0byBi
+dXJuIHRoZSBpbWFnZSBvbiB0byBmbGFzaCB3aXRoIHJlc3BlY3RpdmUKPiBvZmZzZXRzLgo+Cj4g
+VGhpcyBwYXRjaCBjcmVhdGVzIGEgc2luZ2xlIGJvb3QgaW1hZ2UgY29tcG9uZW50IHVzaW5nCj4g
+LSBiaW5tYW4sIGZvciBhcm0zMiByb2NrY2hpcCBwbGF0Zm9ybXMKPiAtIHBhZF9jYXQsIGZvciBh
+cm02NCByb2NrY2hpcCBwbGF0Zm9ybXMuCj4KPiBUaGlzIHdvdWxkIGhlbHAgdXNlcnMgdG8gZ2V0
+IHJpZCBvZiBidXJuaW5nIGRpZmZlcmVudAo+IGJvb3Qgc3RhZ2UgaW1hZ2VzLgo+Cj4gVGhlIG5l
+dyBpbWFnZSBjYWxsZWQgJ3UtYm9vdC1yb2NrY2hpcC5iaW4nCj4gd2hpY2ggY2FuIGJ1cm4gaW50
+byBmbGFzaCBsaWtlOgo+Cj4g4oK5IHN1ZG8gZGQgaWY9dS1ib290LXJvY2tjaGlwLmJpbiBvZj0v
+ZGV2L3NkYSBzZWVrPTY0CgpIb3cgYWJvdXQgYWRkaW5nIHRoZSBpbml0aWFsIDY0IGJsb2NrcyBp
+bnRvIHRoZSBpbWFnZSB0b28sIHNvIHRoZSBzZWVrCmlzbid0IG5lZWRlZD8KCj4gVGhpcyB3b3Vs
+ZCBzdXBwb3J0IGFsbCByb2NrY2hpcCBwbGF0Zm9ybXMsIGV4Y2VwdCByazMxMjgKPiBzaW5jZSBp
+dCBkb2Vzbid0IHN1cHBvcnQgZm9yIFNQTCB5ZXQuCj4KPiBDYzogS2V2ZXIgWWFuZyA8a2V2ZXIu
+eWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiBDYzogTWF0d2V5IFYuIEtvcm5pbG92IDxtYXR3ZXkua29y
+bmlsb3ZAZ21haWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1
+bGFzb2x1dGlvbnMuY29tPgo+IFJldmlld2VkLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJv
+Y2stY2hpcHMuY29tPgo+IC0tLQo+ICBNYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAg
+fCAxNCArKysrKysrKysrKystLQo+ICBhcmNoL2FybS9LY29uZmlnICAgICAgICAgICAgICAgICAg
+fCAgMSArCj4gIGFyY2gvYXJtL2R0cy9yazMwMzYtdS1ib290LmR0c2kgICB8ICAyICsrCj4gIGFy
+Y2gvYXJtL2R0cy9yazMyODgtdS1ib290LmR0c2kgICB8ICAyICsrCj4gIGFyY2gvYXJtL2R0cy9y
+b2NrY2hpcC11LWJvb3QuZHRzaSB8IDIxICsrKysrKysrKysrKysrKysrKysrKwo+ICBpbmNsdWRl
+L2NvbmZpZ3Mvcm9ja2NoaXAtY29tbW9uLmggfCAgMyArKysKPiAgNiBmaWxlcyBjaGFuZ2VkLCA0
+MSBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJj
+aC9hcm0vZHRzL3JvY2tjaGlwLXUtYm9vdC5kdHNpCgpSZWdhcmRzLApTaW1vbgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
