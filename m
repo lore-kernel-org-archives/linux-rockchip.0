@@ -1,54 +1,82 @@
-From: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+From: "Matwey V. Kornilov" <matwey.kornilov@gmail.com>
 Subject: Re: [PATCH v6 5/6] rockchip: Add Single boot image (with binman,
  pad_cat)
-Date: Fri, 10 Jan 2020 22:39:35 +1300
-Message-ID: <CAPnjgZ0u7E=KmiJodARvVFfVv+u0vdxCC1NN_2tnFNAMkp4NLw@mail.gmail.com>
+Date: Fri, 10 Jan 2020 12:42:03 +0300
+Message-ID: <CAJs94EYEr82dv0_Wu_Y0XY=fA1kxvBt-Cav+vuR1MUA2U3811w@mail.gmail.com>
 References: <20200104083806.3930-1-jagan@amarulasolutions.com>
  <20200104083806.3930-6-jagan@amarulasolutions.com>
+ <CAPnjgZ0u7E=KmiJodARvVFfVv+u0vdxCC1NN_2tnFNAMkp4NLw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200104083806.3930-6-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAPnjgZ0u7E=KmiJodARvVFfVv+u0vdxCC1NN_2tnFNAMkp4NLw@mail.gmail.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Simon Glass <sjg@chromium.org>
+Cc: "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, U-Boot Mailing List <u-boot@lists.denx.de>, linux-amarula <linux-amarula@amarulasolutions.com>, Akash Gajjar <akash@openedev.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSmFnYW4sCgpPbiBTYXQsIDQgSmFuIDIwMjAgYXQgMjE6MzgsIEphZ2FuIFRla2kgPGphZ2Fu
-QGFtYXJ1bGFzb2x1dGlvbnMuY29tPiB3cm90ZToKPgo+IEFsbCByb2NrY2hpcCBwbGF0Zm9ybXMg
-c3VwcG9ydCBUUEwgb3IgU1BMLWJhc2VkIGJvb3Rsb2FkZXIKPiBpbiBtYWlubGluZSB3aXRoIFUt
-Qm9vdCBwcm9wZXIgYXMgZmluYWwgc3RhZ2UuIEZvciBlYWNoCj4gc3RhZ2Ugd2UgbmVlZCB0byBi
-dXJuIHRoZSBpbWFnZSBvbiB0byBmbGFzaCB3aXRoIHJlc3BlY3RpdmUKPiBvZmZzZXRzLgo+Cj4g
-VGhpcyBwYXRjaCBjcmVhdGVzIGEgc2luZ2xlIGJvb3QgaW1hZ2UgY29tcG9uZW50IHVzaW5nCj4g
-LSBiaW5tYW4sIGZvciBhcm0zMiByb2NrY2hpcCBwbGF0Zm9ybXMKPiAtIHBhZF9jYXQsIGZvciBh
-cm02NCByb2NrY2hpcCBwbGF0Zm9ybXMuCj4KPiBUaGlzIHdvdWxkIGhlbHAgdXNlcnMgdG8gZ2V0
-IHJpZCBvZiBidXJuaW5nIGRpZmZlcmVudAo+IGJvb3Qgc3RhZ2UgaW1hZ2VzLgo+Cj4gVGhlIG5l
-dyBpbWFnZSBjYWxsZWQgJ3UtYm9vdC1yb2NrY2hpcC5iaW4nCj4gd2hpY2ggY2FuIGJ1cm4gaW50
-byBmbGFzaCBsaWtlOgo+Cj4g4oK5IHN1ZG8gZGQgaWY9dS1ib290LXJvY2tjaGlwLmJpbiBvZj0v
-ZGV2L3NkYSBzZWVrPTY0CgpIb3cgYWJvdXQgYWRkaW5nIHRoZSBpbml0aWFsIDY0IGJsb2NrcyBp
-bnRvIHRoZSBpbWFnZSB0b28sIHNvIHRoZSBzZWVrCmlzbid0IG5lZWRlZD8KCj4gVGhpcyB3b3Vs
-ZCBzdXBwb3J0IGFsbCByb2NrY2hpcCBwbGF0Zm9ybXMsIGV4Y2VwdCByazMxMjgKPiBzaW5jZSBp
-dCBkb2Vzbid0IHN1cHBvcnQgZm9yIFNQTCB5ZXQuCj4KPiBDYzogS2V2ZXIgWWFuZyA8a2V2ZXIu
-eWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiBDYzogTWF0d2V5IFYuIEtvcm5pbG92IDxtYXR3ZXkua29y
-bmlsb3ZAZ21haWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1
-bGFzb2x1dGlvbnMuY29tPgo+IFJldmlld2VkLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJv
-Y2stY2hpcHMuY29tPgo+IC0tLQo+ICBNYWtlZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAg
-fCAxNCArKysrKysrKysrKystLQo+ICBhcmNoL2FybS9LY29uZmlnICAgICAgICAgICAgICAgICAg
-fCAgMSArCj4gIGFyY2gvYXJtL2R0cy9yazMwMzYtdS1ib290LmR0c2kgICB8ICAyICsrCj4gIGFy
-Y2gvYXJtL2R0cy9yazMyODgtdS1ib290LmR0c2kgICB8ICAyICsrCj4gIGFyY2gvYXJtL2R0cy9y
-b2NrY2hpcC11LWJvb3QuZHRzaSB8IDIxICsrKysrKysrKysrKysrKysrKysrKwo+ICBpbmNsdWRl
-L2NvbmZpZ3Mvcm9ja2NoaXAtY29tbW9uLmggfCAgMyArKysKPiAgNiBmaWxlcyBjaGFuZ2VkLCA0
-MSBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJj
-aC9hcm0vZHRzL3JvY2tjaGlwLXUtYm9vdC5kdHNpCgpSZWdhcmRzLApTaW1vbgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+=D0=BF=D1=82, 10 =D1=8F=D0=BD=D0=B2. 2020 =D0=B3. =D0=B2 12:39, Simon Glass=
+ <sjg@chromium.org>:
+>
+> Hi Jagan,
+>
+> On Sat, 4 Jan 2020 at 21:38, Jagan Teki <jagan@amarulasolutions.com> wrot=
+e:
+> >
+> > All rockchip platforms support TPL or SPL-based bootloader
+> > in mainline with U-Boot proper as final stage. For each
+> > stage we need to burn the image on to flash with respective
+> > offsets.
+> >
+> > This patch creates a single boot image component using
+> > - binman, for arm32 rockchip platforms
+> > - pad_cat, for arm64 rockchip platforms.
+> >
+> > This would help users to get rid of burning different
+> > boot stage images.
+> >
+> > The new image called 'u-boot-rockchip.bin'
+> > which can burn into flash like:
+> >
+> > =E2=82=B9 sudo dd if=3Du-boot-rockchip.bin of=3D/dev/sda seek=3D64
+>
+> How about adding the initial 64 blocks into the image too, so the seek
+> isn't needed?
+>
+
+It will break partition tables on the target device.
+
+> > This would support all rockchip platforms, except rk3128
+> > since it doesn't support for SPL yet.
+> >
+> > Cc: Kever Yang <kever.yang@rock-chips.com>
+> > Cc: Matwey V. Kornilov <matwey.kornilov@gmail.com>
+> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> > Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+> > ---
+> >  Makefile                          | 14 ++++++++++++--
+> >  arch/arm/Kconfig                  |  1 +
+> >  arch/arm/dts/rk3036-u-boot.dtsi   |  2 ++
+> >  arch/arm/dts/rk3288-u-boot.dtsi   |  2 ++
+> >  arch/arm/dts/rockchip-u-boot.dtsi | 21 +++++++++++++++++++++
+> >  include/configs/rockchip-common.h |  3 +++
+> >  6 files changed, 41 insertions(+), 2 deletions(-)
+> >  create mode 100644 arch/arm/dts/rockchip-u-boot.dtsi
+>
+> Regards,
+> Simon
+
+
+
+--=20
+With best regards,
+Matwey V. Kornilov
