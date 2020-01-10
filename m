@@ -1,48 +1,45 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH] ARM: dts: rockchip: add reg property to brcmf sub node for
- rk3188-bqedison2qc
-Date: Fri, 10 Jan 2020 14:44:20 +0100
-Message-ID: <20200110134420.11280-1-jbx6244@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: add reg property to brcmf sub node
+Date: Fri, 10 Jan 2020 15:21:28 +0100
+Message-ID: <20200110142128.13522-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
 An experimental test with the command below gives this error:
-rk3188-bqedison2qc.dt.yaml: dwmmc@10218000: wifi@1:
+rk3399-firefly.dt.yaml: dwmmc@fe310000: wifi@1:
 'reg' is a required property
-
+rk3399-orangepi.dt.yaml: dwmmc@fe310000: wifi@1:
+'reg' is a required property
+rk3399-khadas-edge.dt.yaml: dwmmc@fe310000: wifi@1:
+'reg' is a required property
+rk3399-khadas-edge-captain.dt.yaml: dwmmc@fe310000: wifi@1:
+'reg' is a required property
+rk3399-khadas-edge-v.dt.yaml: dwmmc@fe310000: wifi@1:
+'reg' is a required property
 So fix this by adding a reg property to the brcmf sub node.
 Also add #address-cells and #size-cells to prevent more warnings.
 
-make ARCH=arm dtbs_check
+make ARCH=arm64 dtbs_check
 DT_SCHEMA_FILES=Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- arch/arm/boot/dts/rk3188-bqedison2qc.dts | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts      | 3 +++
+ arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi | 3 +++
+ arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts     | 3 +++
+ 3 files changed, 9 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3188-bqedison2qc.dts b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-index c8b62bbd6..ad1afd403 100644
---- a/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-+++ b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
-@@ -466,9 +466,12 @@
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sd1_clk>, <&sd1_cmd>, <&sd1_bus4>;
- 	vmmcq-supply = <&vccio_wl>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index 92de83dd4..06043179f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -669,9 +669,12 @@
+ 	vqmmc-supply = &vcc1v8_s3;	/* IO line */
+ 	vmmc-supply = &vcc_sdio;	/* card's power */
+ 
 +	#address-cells = <1>;
 +	#size-cells = <0>;
  	status = "okay";
@@ -50,7 +47,41 @@ index c8b62bbd6..ad1afd403 100644
  	brcmf: wifi@1 {
 +		reg = <1>;
  		compatible = "brcm,bcm4329-fmac";
- 		interrupt-parent = <&gpio3>;
- 		interrupts = <RK_PD2 GPIO_ACTIVE_HIGH>;
+ 		interrupt-parent = <&gpio0>;
+ 		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
+index 4944d78a0..e87a04477 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
+@@ -654,9 +654,12 @@
+ 	sd-uhs-sdr104;
+ 	vqmmc-supply = <&vcc1v8_s3>;
+ 	vmmc-supply = <&vccio_sd>;
++	#address-cells = <1>;
++	#size-cells = <0>;
+ 	status = "okay";
+ 
+ 	brcmf: wifi@1 {
++		reg = <1>;
+ 		compatible = "brcm,bcm4329-fmac";
+ 		interrupt-parent = <&gpio0>;
+ 		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
+index 0541dfce9..9c659f311 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
+@@ -648,9 +648,12 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+ 	sd-uhs-sdr104;
++	#address-cells = <1>;
++	#size-cells = <0>;
+ 	status = "okay";
+ 
+ 	brcmf: wifi@1 {
++		reg = <1>;
+ 		compatible = "brcm,bcm4329-fmac";
+ 		interrupt-parent = <&gpio0>;
+ 		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
 -- 
 2.11.0
