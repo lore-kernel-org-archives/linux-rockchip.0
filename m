@@ -1,55 +1,66 @@
-From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Subject: [PATCH RFT v2 0/3] devfreq fixes for panfrost
-Date: Sun, 12 Jan 2020 01:16:20 +0100
-Message-ID: <20200112001623.2121227-1-martin.blumenstingl@googlemail.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: [PATCH v2 1/5] mfd: rk808: Always use poweroff when requested
+Date: Sun, 12 Jan 2020 01:55:00 +0000
+Message-ID: <233bf172a5310658d703b11be6e637d6c4d46338.1578789410.git.robin.murphy@arm.com>
+References: <cover.1578789410.git.robin.murphy@arm.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1578789410.git.robin.murphy@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, steven.price@arm.com, tomeu.vizoso@collabora.com, robh@kernel.org
-Cc: linux-kernel@vger.kernel.org, daniel@ffwll.ch, airlied@linux.ie, robin.murphy@arm.com, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, sudeep.holla@arm.com, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+To: lee.jones@linaro.org
+Cc: linux-kernel@vger.kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, smoch@web.de
 List-Id: linux-rockchip.vger.kernel.org
 
-These are a bunch of devfreq fixes for panfrost that came up in a
-discussion with Robin Murphy during the code-review of the lima
-devfreq patches: [0]
+From: Soeren Moch <smoch@web.de>
 
-I am only able to test patch #1 properly because the only boards with
-panfrost GPU that I have are using an Amlogic SoC. We don't have
-support for the OPP tables or dynamic clock changes there yet.
-So patches #2 and #3 are compile-tested only.
+With the device tree property "rockchip,system-power-controller" we
+explicitly request to use this PMIC to power off the system. So always
+register our poweroff function, even if some other handler (probably
+PSCI poweroff) was registered before.
 
+This does tend to reveal a warning on shutdown due to the Rockchip I2C
+driver not implementing an atomic transfer method, however since the
+write to DEV_OFF takes effect immediately the I2C completion interrupt
+is moot anyway, and as the very last thing written to the console it is
+only visible to users going out of their way to capture serial output.
 
-Changes since v1 at [1]
-- added Steven's Reviewed-by to patch #2 (thank you!)
-- only use dev_pm_opp_put_regulators() to clean up in
-  panfrost_devfreq_init() if regulators_opp_table is not NULL to fix
-  a potential crash inside dev_pm_opp_put_regulators() as spotted by
-  Steven Price (thank you!). While here, I also switched to "goto err"
-  pattern to avoid lines with more than 80 characters.
+Signed-off-by: Soeren Moch <smoch@web.de>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+[ rm: note potential warning in commit message ]
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+---
+ drivers/mfd/rk808.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-Known discussion topics (I have no way to test either of these, so I am
-looking for help here):
-- Steven Price reported the following message on his firefly (RK3288)
-  board:
-  "debugfs: Directory 'ffa30000.gpu-mali' with parent 'vdd_gpu' already
-  present!"
-- Robin Murphy suggested that patch #1 may not work once the OPP table
-  for the GPU comes from SCMI
-
-
-[0] https://patchwork.freedesktop.org/patch/346898/
-[1] https://patchwork.freedesktop.org/series/71744/
-
-
-Martin Blumenstingl (3):
-  drm/panfrost: enable devfreq based the "operating-points-v2" property
-  drm/panfrost: call dev_pm_opp_of_remove_table() in all error-paths
-  drm/panfrost: Use the mali-supply regulator for control again
-
- drivers/gpu/drm/panfrost/panfrost_devfreq.c | 44 +++++++++++++++++----
- drivers/gpu/drm/panfrost/panfrost_device.h  |  1 +
- 2 files changed, 37 insertions(+), 8 deletions(-)
-
+diff --git a/drivers/mfd/rk808.c b/drivers/mfd/rk808.c
+index a69a6742ecdc..616e44e7ef98 100644
+--- a/drivers/mfd/rk808.c
++++ b/drivers/mfd/rk808.c
+@@ -550,7 +550,7 @@ static int rk808_probe(struct i2c_client *client,
+ 	const struct mfd_cell *cells;
+ 	int nr_pre_init_regs;
+ 	int nr_cells;
+-	int pm_off = 0, msb, lsb;
++	int msb, lsb;
+ 	unsigned char pmic_id_msb, pmic_id_lsb;
+ 	int ret;
+ 	int i;
+@@ -674,16 +674,9 @@ static int rk808_probe(struct i2c_client *client,
+ 		goto err_irq;
+ 	}
+ 
+-	pm_off = of_property_read_bool(np,
+-				"rockchip,system-power-controller");
+-	if (pm_off && !pm_power_off) {
++	if (of_property_read_bool(np, "rockchip,system-power-controller")) {
+ 		rk808_i2c_client = client;
+ 		pm_power_off = rk808->pm_pwroff_fn;
+-	}
+-
+-	if (pm_off && !pm_power_off_prepare) {
+-		if (!rk808_i2c_client)
+-			rk808_i2c_client = client;
+ 		pm_power_off_prepare = rk808->pm_pwroff_prep_fn;
+ 	}
+ 
 -- 
-2.24.1
+2.17.1
