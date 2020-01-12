@@ -1,43 +1,55 @@
 From: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Subject: [PATCH RFT v2 2/3] drm/panfrost: call dev_pm_opp_of_remove_table() in all error-paths
-Date: Sun, 12 Jan 2020 01:16:22 +0100
-Message-ID: <20200112001623.2121227-3-martin.blumenstingl@googlemail.com>
-References: <20200112001623.2121227-1-martin.blumenstingl@googlemail.com>
+Subject: [PATCH RFT v2 0/3] devfreq fixes for panfrost
+Date: Sun, 12 Jan 2020 01:16:20 +0100
+Message-ID: <20200112001623.2121227-1-martin.blumenstingl@googlemail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200112001623.2121227-1-martin.blumenstingl@googlemail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: dri-devel@lists.freedesktop.org, alyssa@rosenzweig.io, steven.price@arm.com, tomeu.vizoso@collabora.com, robh@kernel.org
 Cc: linux-kernel@vger.kernel.org, daniel@ffwll.ch, airlied@linux.ie, robin.murphy@arm.com, linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, sudeep.holla@arm.com, Martin Blumenstingl <martin.blumenstingl@googlemail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-If devfreq_recommended_opp() fails we need to undo
-dev_pm_opp_of_add_table() by calling dev_pm_opp_of_remove_table() (just
-like we do it in the other error-path below).
+These are a bunch of devfreq fixes for panfrost that came up in a
+discussion with Robin Murphy during the code-review of the lima
+devfreq patches: [0]
 
-Fixes: f3ba91228e8e91 ("drm/panfrost: Add initial panfrost driver")
-Reviewed-by: Steven Price <steven.price@arm.com>
-Signed-off-by: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
----
- drivers/gpu/drm/panfrost/panfrost_devfreq.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+I am only able to test patch #1 properly because the only boards with
+panfrost GPU that I have are using an Amlogic SoC. We don't have
+support for the OPP tables or dynamic clock changes there yet.
+So patches #2 and #3 are compile-tested only.
 
-diff --git a/drivers/gpu/drm/panfrost/panfrost_devfreq.c b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-index 1471588763ce..170f6c8c9651 100644
---- a/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_devfreq.c
-@@ -93,8 +93,10 @@ int panfrost_devfreq_init(struct panfrost_device *pfdev)
- 	cur_freq = clk_get_rate(pfdev->clock);
- 
- 	opp = devfreq_recommended_opp(dev, &cur_freq, 0);
--	if (IS_ERR(opp))
-+	if (IS_ERR(opp)) {
-+		dev_pm_opp_of_remove_table(dev);
- 		return PTR_ERR(opp);
-+	}
- 
- 	panfrost_devfreq_profile.initial_freq = cur_freq;
- 	dev_pm_opp_put(opp);
+
+Changes since v1 at [1]
+- added Steven's Reviewed-by to patch #2 (thank you!)
+- only use dev_pm_opp_put_regulators() to clean up in
+  panfrost_devfreq_init() if regulators_opp_table is not NULL to fix
+  a potential crash inside dev_pm_opp_put_regulators() as spotted by
+  Steven Price (thank you!). While here, I also switched to "goto err"
+  pattern to avoid lines with more than 80 characters.
+
+Known discussion topics (I have no way to test either of these, so I am
+looking for help here):
+- Steven Price reported the following message on his firefly (RK3288)
+  board:
+  "debugfs: Directory 'ffa30000.gpu-mali' with parent 'vdd_gpu' already
+  present!"
+- Robin Murphy suggested that patch #1 may not work once the OPP table
+  for the GPU comes from SCMI
+
+
+[0] https://patchwork.freedesktop.org/patch/346898/
+[1] https://patchwork.freedesktop.org/series/71744/
+
+
+Martin Blumenstingl (3):
+  drm/panfrost: enable devfreq based the "operating-points-v2" property
+  drm/panfrost: call dev_pm_opp_of_remove_table() in all error-paths
+  drm/panfrost: Use the mali-supply regulator for control again
+
+ drivers/gpu/drm/panfrost/panfrost_devfreq.c | 44 +++++++++++++++++----
+ drivers/gpu/drm/panfrost/panfrost_device.h  |  1 +
+ 2 files changed, 37 insertions(+), 8 deletions(-)
+
 -- 
 2.24.1
