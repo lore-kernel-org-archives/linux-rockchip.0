@@ -1,138 +1,236 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: =?UTF-8?Q?Re=3a_=5bRFC_PATCH_v1_00/10=5d_Enable_RK3066_NANDC_for_MK?=
- =?UTF-8?B?ODA444CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNl?=
- =?UTF-8?Q?s+shawn=2elin=3drock-chips=2ecom=40lists=2einfradead=2eorg?=
- =?UTF-8?B?5Luj5Y+R44CR?=
-Date: Mon, 13 Jan 2020 09:55:28 +0800
-Message-ID: <aad92eb5-00ed-5071-c206-491eff243537@rock-chips.com>
-References: <20200108205338.11369-1-jbx6244@gmail.com>
+From: Kishon Vijay Abraham I <kishon@ti.com>
+Subject: Re: [v3 3/6] PCI: endpoint: Add support to handle multiple base for
+ mapping outbound memory
+Date: Mon, 13 Jan 2020 14:28:26 +0530
+Message-ID: <2b4dd351-76ee-60bd-bd91-20d5f1ac4e79@ti.com>
+References: <20200108162211.22358-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <20200108162211.22358-4-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <53d74632-34ee-f7f7-656f-a93a6c10e7ba@ti.com>
+ <CA+V-a8tHkqkxE_5DMtt6PbJyGz1vfKZUezE5nOFmJXarJAugkw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200108205338.11369-1-jbx6244@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Johan Jonker <jbx6244@gmail.com>, miquel.raynal@bootlin.com
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, vigneshr@ti.com, richard@nod.at, shawn.lin@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-mtd@lists.infradead.org, =?UTF-8?B?6LW15Luq5bOw?= <yifeng.zhao@rock-chips.com>, linux-arm-kernel@lists.infradead.org, heiko@sntech.de
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <CA+V-a8tHkqkxE_5DMtt6PbJyGz1vfKZUezE5nOFmJXarJAugkw@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-pci-owner@vger.kernel.org
+To: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci <linux-pci@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>Linux-Renesas <lin>
 List-Id: linux-rockchip.vger.kernel.org
 
-+ Yifeng Zhao
+Hi Prabhakar,
 
-On 2020/1/9 4:53, Johan Jonker wrote:
-> DISCLAIMER: Use at your own risk.
-> Status: For testing only!
+On 10/01/20 11:38 PM, Lad, Prabhakar wrote:
+> Hi Kishon,
 > 
-> Version: V1
+> Thank you for the review.
 > 
-> Title: Enable RK3066 NANDC for MK808.
+> On Thu, Jan 9, 2020 at 6:25 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
+>>
+>> Hi Prabhakar,
+>>
+>> On 08/01/20 9:52 PM, Lad Prabhakar wrote:
+>>> R-Car PCIe controller has support to map multiple memory regions for
+>>> mapping the outbound memory in local system also the controller limits
+>>> single allocation for each region (that is, once a chunk is used from the
+>>> region it cannot be used to allocate a new one). This features inspires to
+>>> add support for handling multiple memory bases in endpoint framework.
+>>>
+>>> With this patch pci_epc_mem_init() now accepts multiple regions, also
+>>> page_size for each memory region is passed during initialization so as
+>>> to handle single allocation for each region by setting the page_size to
+>>> window_size.
+>>>
+>>> Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+>>> ---
+>>>  .../pci/controller/cadence/pcie-cadence-ep.c  |  12 +-
+>>>  .../pci/controller/dwc/pcie-designware-ep.c   |  31 ++-
+>>>  drivers/pci/controller/pcie-rockchip-ep.c     |  14 +-
+>>>  drivers/pci/endpoint/functions/pci-epf-test.c |  29 +--
+>>>  drivers/pci/endpoint/pci-epc-core.c           |   7 +-
+>>>  drivers/pci/endpoint/pci-epc-mem.c            | 199 ++++++++++++++----
+>>>  include/linux/pci-epc.h                       |  46 ++--
+>>>  7 files changed, 245 insertions(+), 93 deletions(-)
+>>>
+>> .
+>> .
+>> <snip>
+>> .
+>> .
+>>> diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
+>>> index 2091508c1620..289c266c2d90 100644
+>>> --- a/drivers/pci/endpoint/pci-epc-core.c
+>>> +++ b/drivers/pci/endpoint/pci-epc-core.c
+>>> @@ -358,13 +358,15 @@ EXPORT_SYMBOL_GPL(pci_epc_unmap_addr);
+>>>   * @epc: the EPC device on which address is allocated
+>>>   * @func_no: the endpoint function number in the EPC device
+>>>   * @phys_addr: physical address of the local system
+>>> + * @window: index to the window region where PCI address will be mapped
+>>>   * @pci_addr: PCI address to which the physical address should be mapped
+>>>   * @size: the size of the allocation
+>>>   *
+>>>   * Invoke to map CPU address with PCI address.
+>>>   */
+>>>  int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
+>>> -                  phys_addr_t phys_addr, u64 pci_addr, size_t size)
+>>> +                  phys_addr_t phys_addr, int window,
+>>> +                  u64 pci_addr, size_t size)
+>>>  {
+>>>       int ret;
+>>>       unsigned long flags;
+>>> @@ -376,7 +378,8 @@ int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
+>>>               return 0;
+>>>
+>>>       spin_lock_irqsave(&epc->lock, flags);
+>>> -     ret = epc->ops->map_addr(epc, func_no, phys_addr, pci_addr, size);
+>>> +     ret = epc->ops->map_addr(epc, func_no, phys_addr,
+>>> +                              window, pci_addr, size);
+>>>       spin_unlock_irqrestore(&epc->lock, flags);
+>>>
+>>>       return ret;
+>>> diff --git a/drivers/pci/endpoint/pci-epc-mem.c b/drivers/pci/endpoint/pci-epc-mem.c
+>>> index d2b174ce15de..f205f7819292 100644
+>>> --- a/drivers/pci/endpoint/pci-epc-mem.c
+>>> +++ b/drivers/pci/endpoint/pci-epc-mem.c
+>>> @@ -38,57 +38,77 @@ static int pci_epc_mem_get_order(struct pci_epc_mem *mem, size_t size)
+>>>  /**
+>>>   * __pci_epc_mem_init() - initialize the pci_epc_mem structure
+>>>   * @epc: the EPC device that invoked pci_epc_mem_init
+>>> - * @phys_base: the physical address of the base
+>>> - * @size: the size of the address space
+>>> - * @page_size: size of each page
+>>> + * @windows: pointer to windows supported by the device
+>>> + * @num_windows: number of windows device supports
+>>>   *
+>>>   * Invoke to initialize the pci_epc_mem structure used by the
+>>>   * endpoint functions to allocate mapped PCI address.
+>>>   */
+>>> -int __pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_base, size_t size,
+>>> -                    size_t page_size)
+>>> +int __pci_epc_mem_init(struct pci_epc *epc, struct pci_epc_mem_window *windows,
+>>> +                    int num_windows)
+>>>  {
+>>> -     int ret;
+>>> -     struct pci_epc_mem *mem;
+>>> -     unsigned long *bitmap;
+>>> +     struct pci_epc_mem *mem = NULL;
+>>> +     unsigned long *bitmap = NULL;
+>>>       unsigned int page_shift;
+>>> -     int pages;
+>>> +     size_t page_size;
+>>>       int bitmap_size;
+>>> +     int pages;
+>>> +     int ret;
+>>> +     int i;
+>>>
+>>> -     if (page_size < PAGE_SIZE)
+>>> -             page_size = PAGE_SIZE;
+>>> +     epc->mem_windows = 0;
+>>>
+>>> -     page_shift = ilog2(page_size);
+>>> -     pages = size >> page_shift;
+>>> -     bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
+>>> +     if (!windows)
+>>> +             return -EINVAL;
+>>>
+>>> -     mem = kzalloc(sizeof(*mem), GFP_KERNEL);
+>>> -     if (!mem) {
+>>> -             ret = -ENOMEM;
+>>> -             goto err;
+>>> -     }
+>>> +     if (num_windows <= 0)
+>>> +             return -EINVAL;
+>>>
+>>> -     bitmap = kzalloc(bitmap_size, GFP_KERNEL);
+>>> -     if (!bitmap) {
+>>> -             ret = -ENOMEM;
+>>> -             goto err_mem;
+>>> -     }
+>>> +     epc->mem = kcalloc(num_windows, sizeof(*mem), GFP_KERNEL);
+>>> +     if (!epc->mem)
+>>> +             return -EINVAL;
+>>> +
+>>> +     for (i = 0; i < num_windows; i++) {
+>>> +             page_size = windows[i].page_size;
+>>> +             if (page_size < PAGE_SIZE)
+>>> +                     page_size = PAGE_SIZE;
+>>> +             page_shift = ilog2(page_size);
+>>> +             pages = windows[i].size >> page_shift;
+>>> +             bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
+>>> +
+>>> +             mem = kzalloc(sizeof(*mem), GFP_KERNEL);
+>>> +             if (!mem) {
+>>> +                     ret = -ENOMEM;
+>>> +                     goto err_mem;
+>>> +             }
+>>>
+>>> -     mem->bitmap = bitmap;
+>>> -     mem->phys_base = phys_base;
+>>> -     mem->page_size = page_size;
+>>> -     mem->pages = pages;
+>>> -     mem->size = size;
+>>> +             bitmap = kzalloc(bitmap_size, GFP_KERNEL);
+>>> +             if (!bitmap) {
+>>> +                     ret = -ENOMEM;
+>>> +                     goto err_mem;
+>>> +             }
+>>>
+>>> -     epc->mem = mem;
+>>> +             mem->bitmap = bitmap;
+>>> +             mem->window.phys_base = windows[i].phys_base;
+>>> +             mem->page_size = page_size;
+>>> +             mem->pages = pages;
+>>> +             mem->window.size = windows[i].size;
+>>> +             mem->window.map_size = 0;
+>>> +
+>>> +             epc->mem[i] = mem;
+>>> +     }
+>>> +     epc->mem_windows = num_windows;
+>>>
+>>>       return 0;
+>>>
+>>>  err_mem:
+>>> -     kfree(mem);
+>>> +     for (; i >= 0; i--) {
+>>
+>> mem has to be reinitialized for every iteration of the loop.
+> not sure what exactly you mean here, could you please elaborate.
+
+You are invoking "kfree(mem->bitmap);" in a loop without re-initializing
+mem. Refer pci_epc_mem_exit() where you are doing the free properly.
+
 > 
-> The majority of Rockchip devices use a closed source FTL driver
-> to reduce wear leveling. This patch serie proposes
-> an experimental raw NAND controller driver for basic tasks
-> in order to get the bindings and the nodes accepted for in the dts files.
-> 
-> What does it do:
-> 
-> On module load this driver will reserve its resources.
-> After initialization the MTD framework will then try to detect
-> the type and number of NAND chips. When all conditions are met,
-> it registers it self as MTD device.
-> This driver is then ready to receive user commands
-> such as to read and write NAND pages.
-> 
-> Test examples:
-> 
-> # dd if-/dev/mtd0 of=dd.bin bs=8192 count=4
-> 
-> # nanddump -a -l 32768 -f nanddump.bin /dev/mtd0
-> 
-> Not tested:
-> 
-> NANDC version 9.
-> NAND raw write.
-> RK3066 still has no support for Uboot.
-> Any write command would interfere with data structures made by the boot loader.
-> 
-> Etc.
-> 
-> Problems:
-> 
-> No bad block support. Most devices use a FTL bad block map with tags
-> that must be located on specific page locations which is outside
-> the scope of the raw MTD framework.
-> 
+>>> +             kfree(mem->bitmap);
+>>> +             kfree(epc->mem[i]);
+>>> +     }
+>>> +     kfree(epc->mem);
+>>>
+>>> -err:
+>>> -return ret;
+>>> +     return ret;
+>>>  }
+>>>  EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
+>>>
+>>> @@ -101,48 +121,127 @@ EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
+>>>   */
+>>>  void pci_epc_mem_exit(struct pci_epc *epc)
+>>>  {
+>>> -     struct pci_epc_mem *mem = epc->mem;
+>>> +     struct pci_epc_mem *mem;
+>>> +     int i;
+>>> +
+>>> +     if (!epc->mem_windows)
+>>> +             return;
+>>> +
+>>> +     for (i = 0; i <= epc->mem_windows; i++) {
+>>> +             mem = epc->mem[i];
+
+Missing the above line in the error handling above.
 
 
-Hi Johan,
+>>> +             kfree(mem->bitmap);
+>>> +             kfree(epc->mem[i]);
+>>> +     }
 
-I loop in the author of the original NANDC driver who is now gonna to
-develop a new version of NANDC driver in near future that supports more
-features like bad block supoort. Maybe he could share his TODO.
-
-> No partition support. A FTL driver will store at random locations and
-> a linear user specific layout does not fit within
-> the generic character of this basic driver.
-> 
-> Etc.
-> 
-> Chris Zhong (1):
->    ARM: dts: rockchip: add nandc node for rk3066a/rk3188
-> 
-> Dingqiang Lin (2):
->    arm64: dts: rockchip: add nandc node for px30
->    arm64: dts: rockchip: add nandc node for rk3308
-> 
-> Jianqun Xu (1):
->    ARM: dts: rockchip: add nandc nodes for rk3288
-> 
-> Johan Jonker (2):
->    dt-bindings: mtd: add rockchip nand controller bindings
->    ARM: dts: rockchip: rk3066a-mk808: enable nandc node
-> 
-> Jon Lin (1):
->    ARM: dts: rockchip: add nandc node for rv1108
-> 
-> Wenping Zhang (1):
->    ARM: dts: rockchip: add nandc node for rk322x
-> 
-> Yifeng Zhao (1):
->    mtd: nand: raw: add rockchip nand controller driver
-> 
-> Zhaoyifeng (1):
->    arm64: dts: rockchip: add nandc node for rk3368
-> 
->   .../devicetree/bindings/mtd/rockchip,nandc.yaml    |   78 ++
->   arch/arm/boot/dts/rk3066a-mk808.dts                |    9 +
->   arch/arm/boot/dts/rk322x.dtsi                      |   11 +
->   arch/arm/boot/dts/rk3288.dtsi                      |   24 +
->   arch/arm/boot/dts/rk3xxx.dtsi                      |   11 +
->   arch/arm/boot/dts/rv1108.dtsi                      |   11 +
->   arch/arm64/boot/dts/rockchip/px30.dtsi             |   15 +
->   arch/arm64/boot/dts/rockchip/rk3308.dtsi           |   11 +
->   arch/arm64/boot/dts/rockchip/rk3368.dtsi           |   12 +
->   drivers/mtd/nand/raw/Kconfig                       |    8 +
->   drivers/mtd/nand/raw/Makefile                      |    1 +
->   drivers/mtd/nand/raw/rockchip_nandc.c              | 1224 ++++++++++++++++++++
->   12 files changed, 1415 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nandc.yaml
->   create mode 100644 drivers/mtd/nand/raw/rockchip_nandc.c
-> 
-> --
-> 2.11.0
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
-> 
-> 
+Thanks
+Kishon
