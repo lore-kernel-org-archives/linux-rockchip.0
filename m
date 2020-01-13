@@ -1,74 +1,39 @@
-From: Steven Price <steven.price@arm.com>
-Subject: Re: [PATCH RFT v1 3/3] drm/panfrost: Use the mali-supply regulator
- for control again
-Date: Mon, 13 Jan 2020 17:10:23 +0000
-Message-ID: <21d0730b-8299-8bfd-4321-746ccb3772d0@arm.com>
-References: <20200107230626.885451-1-martin.blumenstingl@googlemail.com>
- <20200107230626.885451-4-martin.blumenstingl@googlemail.com>
- <2ceffe46-57a8-79a8-2c41-d04b227d3792@arm.com>
- <CAFBinCD7o-q-i66zZhOro1DanKAfG-8obQtzxxD==xOwsy_d6A@mail.gmail.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: =?UTF-8?Q?Re=3a_=5bRFC_PATCH_v1_00/10=5d_Enable_RK3066_NANDC_for_MK?=
+ =?UTF-8?B?ODA444CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNl?=
+ =?UTF-8?Q?s+shawn=2elin=3drock-chips=2ecom=40lists=2einfradead=2eorg?=
+ =?UTF-8?B?5Luj5Y+R44CR?=
+Date: Mon, 13 Jan 2020 19:33:50 +0100
+Message-ID: <73cb4b1a-aad3-c613-a642-1887905e3932@gmail.com>
+References: <20200108205338.11369-1-jbx6244@gmail.com>
+ <aad92eb5-00ed-5071-c206-491eff243537@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFBinCD7o-q-i66zZhOro1DanKAfG-8obQtzxxD==xOwsy_d6A@mail.gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <aad92eb5-00ed-5071-c206-491eff243537-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: tomeu.vizoso@collabora.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, robin.murphy@arm.com, alyssa@rosenzweig.io
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
+Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, =?UTF-8?B?6LW15Luq5bOw?= <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 09/01/2020 17:27, Martin Blumenstingl wrote:
-> On Thu, Jan 9, 2020 at 12:31 PM Steven Price <steven.price@arm.com> wrote:
->>
->> On 07/01/2020 23:06, Martin Blumenstingl wrote:
->>> dev_pm_opp_set_rate() needs a reference to the regulator which should be
->>> updated when updating the GPU frequency. The name of the regulator has
->>> to be passed at initialization-time using dev_pm_opp_set_regulators().
->>> Add the call to dev_pm_opp_set_regulators() so dev_pm_opp_set_rate()
->>> will update the GPU regulator when updating the frequency (just like
->>> we did this manually before when we open-coded dev_pm_opp_set_rate()).
->>
->> This patch causes a warning from debugfs on my firefly (RK3288) board:
->>
->> debugfs: Directory 'ffa30000.gpu-mali' with parent 'vdd_gpu' already
->> present!
->>
->> So it looks like the regulator is being added twice - but I haven't
->> investigated further.
-> I *think* it's because the regulator is already fetched by the
-> panfrost driver itself to enable it
-> (the devfreq code currently does not support enabling the regulator,
-> it can only control the voltage)
+Hi Shawn,
+
+Thank you for your notice.
+In that case I think that I produce a version 2 "light",
+where I address only a small amount of the TODO's and leave all other
+things up to you, so that you can do what suits you best.
+Hope that RK3066 support for MTD can be included.(Linux and Uboot)
+
+Thanks
+
+On 1/13/20 2:55 AM, Shawn Lin wrote:
+
 > 
-> I'm not sure what to do about this though
-
-Having a little play around with this, I think you can simply remove the
-panfrost_regulator_init() call. This at least works for me - the call to
-dev_pm_opp_set_regulators() seems to set everything up. However I
-suspect you need to do this unconditionally even if there are no
-operating points defined.
-
-> [...]
->>>       ret = dev_pm_opp_of_add_table(dev);
->>> -     if (ret)
->>> +     if (ret) {
->>> +             dev_pm_opp_put_regulators(pfdev->devfreq.regulators_opp_table);
->>
->> If we don't have a regulator then regulators_opp_table will be NULL and
->> sadly dev_pm_opp_put_regulators() doesn't handle a NULL argument. The
->> same applies to the two below calls obviously.
-> good catch, thank you!
-> are you happy with the general approach here or do you think that
-> dev_pm_opp_set_regulators is the wrong way to go (for whatever
-> reason)?
-
-To be honest this is an area I still don't fully understand. There's a
-lot of magic helper functions and very little in the way of helpful
-documentation to work out which are the right ones to call. It seems
-reasonable to me, hopefully someone more in the know will chime in it
-there's something fundamentally wrong!
-
-Thanks,
-
-Steve
+> Hi Johan,
+> 
+> I loop in the author of the original NANDC driver who is now gonna to
+> develop a new version of NANDC driver in near future that supports more
+> features like bad block supoort. Maybe he could share his TODO.
+> 
