@@ -1,39 +1,117 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: =?UTF-8?Q?Re=3a_=5bRFC_PATCH_v1_00/10=5d_Enable_RK3066_NANDC_for_MK?=
- =?UTF-8?B?ODA444CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNl?=
- =?UTF-8?Q?s+shawn=2elin=3drock-chips=2ecom=40lists=2einfradead=2eorg?=
- =?UTF-8?B?5Luj5Y+R44CR?=
-Date: Mon, 13 Jan 2020 19:33:50 +0100
-Message-ID: <73cb4b1a-aad3-c613-a642-1887905e3932@gmail.com>
-References: <20200108205338.11369-1-jbx6244@gmail.com>
- <aad92eb5-00ed-5071-c206-491eff243537@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [v3 4/6] dt-bindings: PCI: rcar: Add bindings for R-Car PCIe
+ endpoint controller
+Date: Mon, 13 Jan 2020 15:22:52 -0600
+Message-ID: <20200113212252.GA3120@bogus>
+References: <20200108162211.22358-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <20200108162211.22358-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <aad92eb5-00ed-5071-c206-491eff243537-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, =?UTF-8?B?6LW15Luq5bOw?= <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200108162211.22358-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Lad Prabhakar <prabhakar.csengg@gmail.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci@vger.kernel.org, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, Chris Paterson <Chris.Paterson2@renesas.com>, Frank
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+On Wed, Jan 08, 2020 at 04:22:09PM +0000, Lad Prabhakar wrote:
+> This patch adds the bindings for the R-Car PCIe endpoint driver.
+> 
+> Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+> ---
+>  .../devicetree/bindings/pci/rcar-pci-ep.yaml  | 76 +++++++++++++++++++
+>  1 file changed, 76 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
 
-Thank you for your notice.
-In that case I think that I produce a version 2 "light",
-where I address only a small amount of the TODO's and leave all other
-things up to you, so that you can do what suits you best.
-Hope that RK3066 support for MTD can be included.(Linux and Uboot)
+Fails 'make dt_binding_check':
 
-Thanks
-
-On 1/13/20 2:55 AM, Shawn Lin wrote:
+Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml: $id: 
+path/filename 'pci/rcar-pcie-ep.yaml' doesn't match actual filename
 
 > 
-> Hi Johan,
-> 
-> I loop in the author of the original NANDC driver who is now gonna to
-> develop a new version of NANDC driver in near future that supports more
-> features like bad block supoort. Maybe he could share his TODO.
+> diff --git a/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml b/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
+> new file mode 100644
+> index 000000000000..99c2a1174463
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
+> @@ -0,0 +1,76 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +# Copyright (C) 2020 Renesas Electronics Europe GmbH - https://www.renesas.com/eu/en/
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pci/rcar-pcie-ep.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Renesas R-Car PCIe Endpoint
+> +
+> +maintainers:
+> +  - Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: renesas,r8a774c0-pcie-ep
+> +      - const: renesas,rcar-gen3-pcie-ep
+> +
+> +  reg:
+> +    maxItems: 5
+> +
+> +  reg-names:
+> +    items:
+> +      - const: apb-base
+> +      - const: memory0
+> +      - const: memory1
+> +      - const: memory2
+> +      - const: memory3
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    items:
+> +      - const: pcie
+> +
+> +  max-functions:
+> +    minimum: 1
+> +    maximum: 6
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - reg-names
+> +  - resets
+> +  - power-domains
+> +  - clocks
+> +  - clock-names
+> +  - max-functions
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/r8a774c0-cpg-mssr.h>
+> +    #include <dt-bindings/power/r8a774c0-sysc.h>
+> +
+> +     pcie0_ep: pcie-ep@fe000000 {
+> +            compatible = "renesas,r8a774c0-pcie-ep",
+> +                         "renesas,rcar-gen3-pcie-ep";
+> +            reg = <0 0xfe000000 0 0x80000>,
+> +                  <0x0 0xfe100000 0 0x100000>,
+> +                  <0x0 0xfe200000 0 0x200000>,
+> +                  <0x0 0x30000000 0 0x8000000>,
+> +                  <0x0 0x38000000 0 0x8000000>;
+> +            reg-names = "apb-base", "memory0", "memory1", "memory2", "memory3";
+> +            resets = <&cpg 319>;
+> +            power-domains = <&sysc R8A774C0_PD_ALWAYS_ON>;
+> +            clocks = <&cpg CPG_MOD 319>;
+> +            clock-names = "pcie";
+> +            max-functions = /bits/ 8 <1>;
+> +    };
+> -- 
+> 2.20.1
 > 
