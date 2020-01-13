@@ -1,236 +1,37 @@
-From: Kishon Vijay Abraham I <kishon@ti.com>
-Subject: Re: [v3 3/6] PCI: endpoint: Add support to handle multiple base for
- mapping outbound memory
-Date: Mon, 13 Jan 2020 14:28:26 +0530
-Message-ID: <2b4dd351-76ee-60bd-bd91-20d5f1ac4e79@ti.com>
-References: <20200108162211.22358-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
- <20200108162211.22358-4-prabhakar.mahadev-lad.rj@bp.renesas.com>
- <53d74632-34ee-f7f7-656f-a93a6c10e7ba@ti.com>
- <CA+V-a8tHkqkxE_5DMtt6PbJyGz1vfKZUezE5nOFmJXarJAugkw@mail.gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix dwmmc clock name for px30 and rk3308
+Date: Mon, 13 Jan 2020 10:15:56 +0100
+Message-ID: <3203839.F8si9oFvou@phil>
+References: <20200110161200.22755-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <CA+V-a8tHkqkxE_5DMtt6PbJyGz1vfKZUezE5nOFmJXarJAugkw@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-pci-owner@vger.kernel.org
-To: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci <linux-pci@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>Linux-Renesas <lin>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200110161200.22755-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Prabhakar,
+Hi Johan,
 
-On 10/01/20 11:38 PM, Lad, Prabhakar wrote:
-> Hi Kishon,
+Am Freitag, 10. Januar 2020, 17:12:00 CET schrieb Johan Jonker:
+> An experimental test with the command below gives this error:
+> px30-evb.dt.yaml: dwmmc@ff390000: clock-names:2:
+> 'ciu-drive' was expected
+> rk3308-evb.dt.yaml: dwmmc@ff480000: clock-names:2:
+> 'ciu-drive' was expected
 > 
-> Thank you for the review.
+> 'ciu-drv' is not a valid dwmmc clock name,
+> so fix this by changing it to 'ciu-drive'.
 > 
-> On Thu, Jan 9, 2020 at 6:25 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
->>
->> Hi Prabhakar,
->>
->> On 08/01/20 9:52 PM, Lad Prabhakar wrote:
->>> R-Car PCIe controller has support to map multiple memory regions for
->>> mapping the outbound memory in local system also the controller limits
->>> single allocation for each region (that is, once a chunk is used from the
->>> region it cannot be used to allocate a new one). This features inspires to
->>> add support for handling multiple memory bases in endpoint framework.
->>>
->>> With this patch pci_epc_mem_init() now accepts multiple regions, also
->>> page_size for each memory region is passed during initialization so as
->>> to handle single allocation for each region by setting the page_size to
->>> window_size.
->>>
->>> Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
->>> ---
->>>  .../pci/controller/cadence/pcie-cadence-ep.c  |  12 +-
->>>  .../pci/controller/dwc/pcie-designware-ep.c   |  31 ++-
->>>  drivers/pci/controller/pcie-rockchip-ep.c     |  14 +-
->>>  drivers/pci/endpoint/functions/pci-epf-test.c |  29 +--
->>>  drivers/pci/endpoint/pci-epc-core.c           |   7 +-
->>>  drivers/pci/endpoint/pci-epc-mem.c            | 199 ++++++++++++++----
->>>  include/linux/pci-epc.h                       |  46 ++--
->>>  7 files changed, 245 insertions(+), 93 deletions(-)
->>>
->> .
->> .
->> <snip>
->> .
->> .
->>> diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
->>> index 2091508c1620..289c266c2d90 100644
->>> --- a/drivers/pci/endpoint/pci-epc-core.c
->>> +++ b/drivers/pci/endpoint/pci-epc-core.c
->>> @@ -358,13 +358,15 @@ EXPORT_SYMBOL_GPL(pci_epc_unmap_addr);
->>>   * @epc: the EPC device on which address is allocated
->>>   * @func_no: the endpoint function number in the EPC device
->>>   * @phys_addr: physical address of the local system
->>> + * @window: index to the window region where PCI address will be mapped
->>>   * @pci_addr: PCI address to which the physical address should be mapped
->>>   * @size: the size of the allocation
->>>   *
->>>   * Invoke to map CPU address with PCI address.
->>>   */
->>>  int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
->>> -                  phys_addr_t phys_addr, u64 pci_addr, size_t size)
->>> +                  phys_addr_t phys_addr, int window,
->>> +                  u64 pci_addr, size_t size)
->>>  {
->>>       int ret;
->>>       unsigned long flags;
->>> @@ -376,7 +378,8 @@ int pci_epc_map_addr(struct pci_epc *epc, u8 func_no,
->>>               return 0;
->>>
->>>       spin_lock_irqsave(&epc->lock, flags);
->>> -     ret = epc->ops->map_addr(epc, func_no, phys_addr, pci_addr, size);
->>> +     ret = epc->ops->map_addr(epc, func_no, phys_addr,
->>> +                              window, pci_addr, size);
->>>       spin_unlock_irqrestore(&epc->lock, flags);
->>>
->>>       return ret;
->>> diff --git a/drivers/pci/endpoint/pci-epc-mem.c b/drivers/pci/endpoint/pci-epc-mem.c
->>> index d2b174ce15de..f205f7819292 100644
->>> --- a/drivers/pci/endpoint/pci-epc-mem.c
->>> +++ b/drivers/pci/endpoint/pci-epc-mem.c
->>> @@ -38,57 +38,77 @@ static int pci_epc_mem_get_order(struct pci_epc_mem *mem, size_t size)
->>>  /**
->>>   * __pci_epc_mem_init() - initialize the pci_epc_mem structure
->>>   * @epc: the EPC device that invoked pci_epc_mem_init
->>> - * @phys_base: the physical address of the base
->>> - * @size: the size of the address space
->>> - * @page_size: size of each page
->>> + * @windows: pointer to windows supported by the device
->>> + * @num_windows: number of windows device supports
->>>   *
->>>   * Invoke to initialize the pci_epc_mem structure used by the
->>>   * endpoint functions to allocate mapped PCI address.
->>>   */
->>> -int __pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_base, size_t size,
->>> -                    size_t page_size)
->>> +int __pci_epc_mem_init(struct pci_epc *epc, struct pci_epc_mem_window *windows,
->>> +                    int num_windows)
->>>  {
->>> -     int ret;
->>> -     struct pci_epc_mem *mem;
->>> -     unsigned long *bitmap;
->>> +     struct pci_epc_mem *mem = NULL;
->>> +     unsigned long *bitmap = NULL;
->>>       unsigned int page_shift;
->>> -     int pages;
->>> +     size_t page_size;
->>>       int bitmap_size;
->>> +     int pages;
->>> +     int ret;
->>> +     int i;
->>>
->>> -     if (page_size < PAGE_SIZE)
->>> -             page_size = PAGE_SIZE;
->>> +     epc->mem_windows = 0;
->>>
->>> -     page_shift = ilog2(page_size);
->>> -     pages = size >> page_shift;
->>> -     bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
->>> +     if (!windows)
->>> +             return -EINVAL;
->>>
->>> -     mem = kzalloc(sizeof(*mem), GFP_KERNEL);
->>> -     if (!mem) {
->>> -             ret = -ENOMEM;
->>> -             goto err;
->>> -     }
->>> +     if (num_windows <= 0)
->>> +             return -EINVAL;
->>>
->>> -     bitmap = kzalloc(bitmap_size, GFP_KERNEL);
->>> -     if (!bitmap) {
->>> -             ret = -ENOMEM;
->>> -             goto err_mem;
->>> -     }
->>> +     epc->mem = kcalloc(num_windows, sizeof(*mem), GFP_KERNEL);
->>> +     if (!epc->mem)
->>> +             return -EINVAL;
->>> +
->>> +     for (i = 0; i < num_windows; i++) {
->>> +             page_size = windows[i].page_size;
->>> +             if (page_size < PAGE_SIZE)
->>> +                     page_size = PAGE_SIZE;
->>> +             page_shift = ilog2(page_size);
->>> +             pages = windows[i].size >> page_shift;
->>> +             bitmap_size = BITS_TO_LONGS(pages) * sizeof(long);
->>> +
->>> +             mem = kzalloc(sizeof(*mem), GFP_KERNEL);
->>> +             if (!mem) {
->>> +                     ret = -ENOMEM;
->>> +                     goto err_mem;
->>> +             }
->>>
->>> -     mem->bitmap = bitmap;
->>> -     mem->phys_base = phys_base;
->>> -     mem->page_size = page_size;
->>> -     mem->pages = pages;
->>> -     mem->size = size;
->>> +             bitmap = kzalloc(bitmap_size, GFP_KERNEL);
->>> +             if (!bitmap) {
->>> +                     ret = -ENOMEM;
->>> +                     goto err_mem;
->>> +             }
->>>
->>> -     epc->mem = mem;
->>> +             mem->bitmap = bitmap;
->>> +             mem->window.phys_base = windows[i].phys_base;
->>> +             mem->page_size = page_size;
->>> +             mem->pages = pages;
->>> +             mem->window.size = windows[i].size;
->>> +             mem->window.map_size = 0;
->>> +
->>> +             epc->mem[i] = mem;
->>> +     }
->>> +     epc->mem_windows = num_windows;
->>>
->>>       return 0;
->>>
->>>  err_mem:
->>> -     kfree(mem);
->>> +     for (; i >= 0; i--) {
->>
->> mem has to be reinitialized for every iteration of the loop.
-> not sure what exactly you mean here, could you please elaborate.
-
-You are invoking "kfree(mem->bitmap);" in a loop without re-initializing
-mem. Refer pci_epc_mem_exit() where you are doing the free properly.
-
+> make ARCH=arm64 dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
 > 
->>> +             kfree(mem->bitmap);
->>> +             kfree(epc->mem[i]);
->>> +     }
->>> +     kfree(epc->mem);
->>>
->>> -err:
->>> -return ret;
->>> +     return ret;
->>>  }
->>>  EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
->>>
->>> @@ -101,48 +121,127 @@ EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
->>>   */
->>>  void pci_epc_mem_exit(struct pci_epc *epc)
->>>  {
->>> -     struct pci_epc_mem *mem = epc->mem;
->>> +     struct pci_epc_mem *mem;
->>> +     int i;
->>> +
->>> +     if (!epc->mem_windows)
->>> +             return;
->>> +
->>> +     for (i = 0; i <= epc->mem_windows; i++) {
->>> +             mem = epc->mem[i];
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-Missing the above line in the error handling above.
-
-
->>> +             kfree(mem->bitmap);
->>> +             kfree(epc->mem[i]);
->>> +     }
+thanks for this fix, I've split it into two patches (px30 and rk3308) and
+applied for 5.6
 
 Thanks
-Kishon
+Heiko
