@@ -1,89 +1,74 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] clk: rockchip: convert rk3036 pll type to use internal lock
- status
-Date: Mon, 13 Jan 2020 16:26:56 +0100
-Message-ID: <20200113152656.2313846-1-heiko@sntech.de>
+From: Steven Price <steven.price@arm.com>
+Subject: Re: [PATCH RFT v1 3/3] drm/panfrost: Use the mali-supply regulator
+ for control again
+Date: Mon, 13 Jan 2020 17:10:23 +0000
+Message-ID: <21d0730b-8299-8bfd-4321-746ccb3772d0@arm.com>
+References: <20200107230626.885451-1-martin.blumenstingl@googlemail.com>
+ <20200107230626.885451-4-martin.blumenstingl@googlemail.com>
+ <2ceffe46-57a8-79a8-2c41-d04b227d3792@arm.com>
+ <CAFBinCD7o-q-i66zZhOro1DanKAfG-8obQtzxxD==xOwsy_d6A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, zhangqing-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAFBinCD7o-q-i66zZhOro1DanKAfG-8obQtzxxD==xOwsy_d6A@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
+Cc: tomeu.vizoso@collabora.com, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, robin.murphy@arm.com, alyssa@rosenzweig.io
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+On 09/01/2020 17:27, Martin Blumenstingl wrote:
+> On Thu, Jan 9, 2020 at 12:31 PM Steven Price <steven.price@arm.com> wrote:
+>>
+>> On 07/01/2020 23:06, Martin Blumenstingl wrote:
+>>> dev_pm_opp_set_rate() needs a reference to the regulator which should be
+>>> updated when updating the GPU frequency. The name of the regulator has
+>>> to be passed at initialization-time using dev_pm_opp_set_regulators().
+>>> Add the call to dev_pm_opp_set_regulators() so dev_pm_opp_set_rate()
+>>> will update the GPU regulator when updating the frequency (just like
+>>> we did this manually before when we open-coded dev_pm_opp_set_rate()).
+>>
+>> This patch causes a warning from debugfs on my firefly (RK3288) board:
+>>
+>> debugfs: Directory 'ffa30000.gpu-mali' with parent 'vdd_gpu' already
+>> present!
+>>
+>> So it looks like the regulator is being added twice - but I haven't
+>> investigated further.
+> I *think* it's because the regulator is already fetched by the
+> panfrost driver itself to enable it
+> (the devfreq code currently does not support enabling the regulator,
+> it can only control the voltage)
+> 
+> I'm not sure what to do about this though
 
-The rk3036 pll type exposes its lock status in both its pllcon registers
-as well as the General Register Files. To remove one dependency convert
-it to the "internal" lock status, similar to how rk3399 handles it.
+Having a little play around with this, I think you can simply remove the
+panfrost_regulator_init() call. This at least works for me - the call to
+dev_pm_opp_set_regulators() seems to set everything up. However I
+suspect you need to do this unconditionally even if there are no
+operating points defined.
 
-Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
----
- drivers/clk/rockchip/clk-pll.c | 24 +++++++++++++++++++++---
- 1 file changed, 21 insertions(+), 3 deletions(-)
+> [...]
+>>>       ret = dev_pm_opp_of_add_table(dev);
+>>> -     if (ret)
+>>> +     if (ret) {
+>>> +             dev_pm_opp_put_regulators(pfdev->devfreq.regulators_opp_table);
+>>
+>> If we don't have a regulator then regulators_opp_table will be NULL and
+>> sadly dev_pm_opp_put_regulators() doesn't handle a NULL argument. The
+>> same applies to the two below calls obviously.
+> good catch, thank you!
+> are you happy with the general approach here or do you think that
+> dev_pm_opp_set_regulators is the wrong way to go (for whatever
+> reason)?
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 198417d56300..37378ded0993 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -118,12 +118,30 @@ static int rockchip_pll_wait_lock(struct rockchip_clk_pll *pll)
- #define RK3036_PLLCON1_REFDIV_SHIFT		0
- #define RK3036_PLLCON1_POSTDIV2_MASK		0x7
- #define RK3036_PLLCON1_POSTDIV2_SHIFT		6
-+#define RK3036_PLLCON1_LOCK_STATUS		BIT(10)
- #define RK3036_PLLCON1_DSMPD_MASK		0x1
- #define RK3036_PLLCON1_DSMPD_SHIFT		12
-+#define RK3036_PLLCON1_PWRDOWN			BIT(13)
- #define RK3036_PLLCON2_FRAC_MASK		0xffffff
- #define RK3036_PLLCON2_FRAC_SHIFT		0
- 
--#define RK3036_PLLCON1_PWRDOWN			(1 << 13)
-+static int rockchip_rk3036_pll_wait_lock(struct rockchip_clk_pll *pll)
-+{
-+	u32 pllcon;
-+	int delay = 24000000;
-+
-+	/* poll check the lock status in rk3399 xPLLCON2 */
-+	while (delay > 0) {
-+		pllcon = readl_relaxed(pll->reg_base + RK3036_PLLCON(1));
-+		if (pllcon & RK3036_PLLCON1_LOCK_STATUS)
-+			return 0;
-+
-+		delay--;
-+	}
-+
-+	pr_err("%s: timeout waiting for pll to lock\n", __func__);
-+	return -ETIMEDOUT;
-+}
- 
- static void rockchip_rk3036_pll_get_params(struct rockchip_clk_pll *pll,
- 					struct rockchip_pll_rate_table *rate)
-@@ -221,7 +239,7 @@ static int rockchip_rk3036_pll_set_params(struct rockchip_clk_pll *pll,
- 	writel_relaxed(pllcon, pll->reg_base + RK3036_PLLCON(2));
- 
- 	/* wait for the pll to lock */
--	ret = rockchip_pll_wait_lock(pll);
-+	ret = rockchip_rk3036_pll_wait_lock(pll);
- 	if (ret) {
- 		pr_warn("%s: pll update unsuccessful, trying to restore old params\n",
- 			__func__);
-@@ -260,7 +278,7 @@ static int rockchip_rk3036_pll_enable(struct clk_hw *hw)
- 
- 	writel(HIWORD_UPDATE(0, RK3036_PLLCON1_PWRDOWN, 0),
- 	       pll->reg_base + RK3036_PLLCON(1));
--	rockchip_pll_wait_lock(pll);
-+	rockchip_rk3036_pll_wait_lock(pll);
- 
- 	return 0;
- }
--- 
-2.24.1
+To be honest this is an area I still don't fully understand. There's a
+lot of magic helper functions and very little in the way of helpful
+documentation to work out which are the right ones to call. It seems
+reasonable to me, hopefully someone more in the know will chime in it
+there's something fundamentally wrong!
+
+Thanks,
+
+Steve
