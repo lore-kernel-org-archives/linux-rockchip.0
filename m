@@ -1,8 +1,8 @@
 From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 3/6] PCI: dwc: Skip allocating own MSI domain if using
- external MSI domain
-Date: Tue, 14 Jan 2020 15:22:57 +0800
-Message-ID: <1578986580-71974-4-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH 1/6] dt-bindings: add binding for Rockchip combo phy using an
+ Innosilicon IP
+Date: Tue, 14 Jan 2020 15:22:55 +0800
+Message-ID: <1578986580-71974-2-git-send-email-shawn.lin@rock-chips.com>
 References: <1578986580-71974-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,66 +22,105 @@ To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Lorenzo Pier
 Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On some platform, external MSI domain is using instead of the one
-created by designware driver. For instance, if using GIC-V3-ITS
-as a MSI domain, we only need set msi-map in the devicetree but
-never need any bit in the designware driver to handle MSI stuff.
-So skip allocating its own MSI domain for that case.
+This IP could supports USB3.0 and PCIe.
 
 Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+
 ---
 
- drivers/pci/controller/dwc/pcie-designware-host.c | 10 +++++++++-
- drivers/pci/controller/dwc/pcie-designware.h      |  1 +
- 2 files changed, 10 insertions(+), 1 deletion(-)
+ .../bindings/phy/rockchip,inno-combophy.yaml       | 84 ++++++++++++++++++++++
+ 1 file changed, 84 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml
 
-diff --git a/drivers/pci/controller/dwc/pcie-designware-host.c b/drivers/pci/controller/dwc/pcie-designware-host.c
-index 395feb8..e78d094 100644
---- a/drivers/pci/controller/dwc/pcie-designware-host.c
-+++ b/drivers/pci/controller/dwc/pcie-designware-host.c
-@@ -257,6 +257,10 @@ int dw_pcie_allocate_domains(struct pcie_port *pp)
- 	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
- 	struct fwnode_handle *fwnode = of_node_to_fwnode(pci->dev->of_node);
- 
-+	/* Rely on the external MSI domain */
-+	if (pp->msi_ext)
-+		return 0;
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml
+new file mode 100644
+index 0000000..d647ab3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml
+@@ -0,0 +1,84 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/rockchip,inno-combophy.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- 	pp->irq_domain = irq_domain_create_linear(fwnode, pp->num_vectors,
- 					       &dw_pcie_msi_domain_ops, pp);
- 	if (!pp->irq_domain) {
-@@ -278,6 +282,9 @@ int dw_pcie_allocate_domains(struct pcie_port *pp)
- 
- void dw_pcie_free_msi(struct pcie_port *pp)
- {
-+	if (pp->msi_ext)
-+		return;
++title: Rockchip USB3.0/PCI-e combo phy
 +
- 	if (pp->msi_irq) {
- 		irq_set_chained_handler(pp->msi_irq, NULL);
- 		irq_set_handler_data(pp->msi_irq, NULL);
-@@ -413,7 +420,8 @@ int dw_pcie_host_init(struct pcie_port *pp)
- 	if (ret)
- 		pci->num_viewport = 2;
- 
--	if (pci_msi_enabled()) {
-+	if (pci_msi_enabled() &&
-+	    !pp->msi_ext) {
- 		/*
- 		 * If a specific SoC driver needs to change the
- 		 * default number of vectors, it needs to implement
-diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
-index a22ea59..eeafa52 100644
---- a/drivers/pci/controller/dwc/pcie-designware.h
-+++ b/drivers/pci/controller/dwc/pcie-designware.h
-@@ -201,6 +201,7 @@ struct pcie_port {
- 	u32			irq_mask[MAX_MSI_CTRLS];
- 	struct pci_bus		*root_bus;
- 	raw_spinlock_t		lock;
-+	int			msi_ext;
- 	DECLARE_BITMAP(msi_irq_in_use, MAX_MSI_IRQS);
- };
- 
++maintainers:
++        - Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++        - William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++
++properties:
++  "#phy-cells":
++    const: 1
++
++  compatible:
++    enum:
++      - rockchip,rk1808-combphy
++
++  reg:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: PLL reference clock
++
++  clock-names:
++    items:
++      - const: refclk
++
++  resets:
++    items:
++      - description: OTG unit reset line
++      - description: POR unit reset line
++      - description: APB interface reset line
++      - description: PIPE unit reset line
++
++  reset-names:
++    items:
++      - const: otg-rst
++      - const: combphy-por
++      - const: combphy-apb
++      - const: combphy-pipe
++
++  rockchip,combphygrf:
++    items:
++      - description: The grf for COMBPHY configuration and state registers.
++
++required:
++  - "#phy-cells"
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - resets
++  - reset-names
++  - rockchip,combphygrf
++
++additionalProperties: false
++
++examples:
++  - |
++    combphy_grf: syscon@fe018000 {
++        compatible = "rockchip,usb3phy-grf", "syscon";
++        reg = <0x0 0xfe018000 0x0 0x8000>;
++    };
++
++    combphy: phy@ff380000 {
++        compatible = "rockchip,rk1808-combphy";
++        reg = <0x0 0xff380000 0x0 0x10000>;
++        #phy-cells = <1>;
++        clocks = <&cru SCLK_PCIEPHY_REF>;
++        clock-names = "refclk";
++        assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
++        assigned-clock-rates = <25000000>;
++        resets = <&cru SRST_USB3_OTG_A>, <&cru SRST_PCIEPHY_POR>,
++                 <&cru SRST_PCIEPHY_P>, <&cru SRST_PCIEPHY_PIPE>;
++        reset-names = "otg-rst", "combphy-por",
++                      "combphy-apb", "combphy-pipe";
++        rockchip,combphygrf = <&combphy_grf>;
++    };
++
++...
 -- 
 1.9.1
