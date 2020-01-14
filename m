@@ -1,87 +1,108 @@
-From: Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>
-Subject: [PATCH] clk: rockchip: fix incorrect configuration of rk3228
- aclk_gpu* clocks
-Date: Tue, 14 Jan 2020 16:25:02 +0000
-Message-ID: <20200114162503.7548-1-justin.swartz@risingedge.co.za>
+From: Chanwoo Choi <chanwoo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 4/9] PM / devfreq: exynos-bus: Replace deprecated
+ 'devfreq' property
+Date: Wed, 15 Jan 2020 03:57:30 +0900
+Message-ID: <CAGTfZH0K65ON0FQGUjQbr71_9VWJXTmRbih1gko6Pcuy+PL63Q@mail.gmail.com>
+References: <20191217055738.28445-1-cw00.choi@samsung.com> <CGME20191217055106epcas1p11f2bc81d6bb2db3fc4bc257d78c337b9@epcas1p1.samsung.com>
+ <20191217055738.28445-5-cw00.choi@samsung.com> <20191226210119.GA8706@bogus>
+ <a54e4275-012e-77d9-bdbe-1aab64b5c12b@samsung.com> <76616499-7c19-06b1-461a-28ae17a76c60@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <76616499-7c19-06b1-461a-28ae17a76c60-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Leonard Crestez <leonard.crestez-3arQi8VN3Tc@public.gmane.org>, lukasz.luba-5wv7dgnIgG8@public.gmane.org, =?UTF-8?B?QXJ0dXIgxZp3aWdvxYQ=?= <a.swigon-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, MyungJoo Ham <myungjoo.ham-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kyungmin Park <kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Linux PM list <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-samsung-soc <linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes prevent the unrecoverable freezes and rcu_sched
-stall warnings experienced in each of my attempts to take advantage of
-lima.
+Hi Rob,
 
-Replace the COMPOSITE_NOGATE definition of aclk_gpu_pre with a
-COMPOSITE that retains the selection of HDMIPHY as the PLL source, but
-instead makes uses of the aclk_gpu PLL source gate and parent names
-defined by mux_pll_src_4plls_p rather than mux_aclk_gpu_pre_p.
+On Mon, Jan 6, 2020 at 10:32 AM Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org> wrote:
+>
+> Hi Rob,
+>
+> Gently Ping.
 
-Remove the now unused mux_aclk_gpu_pre_p and the four named but also
-unused definitions (cpll_gpu, gpll_gpu, hdmiphy_gpu and usb480m_gpu)
-of the aclk_gpu PLL source gate.
+Once again, ping. Could you please review?
 
-Use the correct gate offset for aclk_gpu and aclk_gpu_noc.
+On v2[1], made separate patches for dt-binding.
+[1] https://patchwork.kernel.org/cover/11304545/
 
-Signed-off-by: Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>
----
- drivers/clk/rockchip/clk-rk3228.c | 17 ++++-------------
- 1 file changed, 4 insertions(+), 13 deletions(-)
+>
+> On 12/27/19 9:09 AM, Chanwoo Choi wrote:
+> > On 12/27/19 6:01 AM, Rob Herring wrote:
+> >> On Tue, Dec 17, 2019 at 02:57:33PM +0900, Chanwoo Choi wrote:
+> >>> In order to remove the deprecated 'devfreq' property, replace with
+> >>> new 'exynos,parent-bus' property in order to get the parent devfreq device
+> >>> in devicetree file instead of 'devfreq' property. But, to guarantee the
+> >>> backward-compatibility, keep the support 'devfreq' property.
+> >>>
+> >>> Signed-off-by: Chanwoo Choi <cw00.choi-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+> >>> ---
+> >>>  .../bindings/devfreq/exynos-bus.txt           | 16 +++++++--------
+> >>>  drivers/devfreq/exynos-bus.c                  | 20 ++++++++++++-------
+> >>>  2 files changed, 21 insertions(+), 15 deletions(-)
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
+> >>> index e71f752cc18f..c948cee01124 100644
+> >>> --- a/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
+> >>> +++ b/Documentation/devicetree/bindings/devfreq/exynos-bus.txt
+> >>> @@ -45,7 +45,7 @@ Required properties only for parent bus device:
+> >>>    of buses.
+> >>>
+> >>>  Required properties only for passive bus device:
+> >>> -- devfreq: the parent bus device.
+> >>> +- exynos,parent-bus: the parent bus device.
+> >>
+> >> If you are going to do something new, why not use the interconnect
+> >> binding here?
+> >
+> > As I knew, interconnect make the data path among multiple nodes
+> > and set the average and peak bandwidth to the specific data path.
+> >
+> > It means that some data will be flowed from node_a to node_d
+> > or the reverse way because each node has the tightly coupled
+> > dependency for data flow.
+> >
+> >       node_a <-> node_b <-> node_c <-> node_d
+> >
+> >
+> > On the other hand, exynos-bus.c driver is not related to 'data path'.
+> > Each bus just need to control the their own frequency and voltage.
+> > But, share the power line (regulator) between exynos-bus device
+> > even if there are no any dependency of data flow.
+> >
+> > 'exynos,parent-bus' property just indicate the specific
+> > devfreq device(parent bus device) which controls
+> > the shared power line(regulator) in order to prevent
+> > the h/w problem due to the wrong pair of frequency and voltage.
+> >
+> > 'exynos,parent-bus' property is only used to catch
+> > the change timing of shared power line.
+> >
+> >
+> > And,
+> > as you commented, there are some data path among the exynos-bus
+> > devices for the display h/w as following:
+> >
+> >       bus_display -> bus_leftbus -> bus_dmc
+> >
+> > In order to make the data path between bus devices,
+> > interconnect binding is required. This approach[1] was posted.
+> > [1] https://patchwork.kernel.org/cover/11305265/
+> > - [RFC,v3,0/7] PM / devfreq: Simple QoS for exynos-bus using interconnect
+> >
+>
+> Are there any other commentss?
+>
+>
+> --
+> Best Regards,
+> Chanwoo Choi
+> Samsung Electronics
 
-diff --git a/drivers/clk/rockchip/clk-rk3228.c b/drivers/clk/rockchip/clk-rk3228.c
-index d17cfb7a3..d7243c09c 100644
---- a/drivers/clk/rockchip/clk-rk3228.c
-+++ b/drivers/clk/rockchip/clk-rk3228.c
-@@ -156,8 +156,6 @@ PNAME(mux_i2s_out_p)		= { "i2s1_pre", "xin12m" };
- PNAME(mux_i2s2_p)		= { "i2s2_src", "i2s2_frac", "xin12m" };
- PNAME(mux_sclk_spdif_p)		= { "sclk_spdif_src", "spdif_frac", "xin12m" };
- 
--PNAME(mux_aclk_gpu_pre_p)	= { "cpll_gpu", "gpll_gpu", "hdmiphy_gpu", "usb480m_gpu" };
--
- PNAME(mux_uart0_p)		= { "uart0_src", "uart0_frac", "xin24m" };
- PNAME(mux_uart1_p)		= { "uart1_src", "uart1_frac", "xin24m" };
- PNAME(mux_uart2_p)		= { "uart2_src", "uart2_frac", "xin24m" };
-@@ -468,16 +466,9 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
- 			RK2928_CLKSEL_CON(24), 6, 10, DFLAGS,
- 			RK2928_CLKGATE_CON(2), 8, GFLAGS),
- 
--	GATE(0, "cpll_gpu", "cpll", 0,
--			RK2928_CLKGATE_CON(3), 13, GFLAGS),
--	GATE(0, "gpll_gpu", "gpll", 0,
--			RK2928_CLKGATE_CON(3), 13, GFLAGS),
--	GATE(0, "hdmiphy_gpu", "hdmiphy", 0,
--			RK2928_CLKGATE_CON(3), 13, GFLAGS),
--	GATE(0, "usb480m_gpu", "usb480m", 0,
-+	COMPOSITE(0, "aclk_gpu_pre", mux_pll_src_4plls_p, 0,
-+			RK2928_CLKSEL_CON(34), 5, 2, MFLAGS, 0, 5, DFLAGS,
- 			RK2928_CLKGATE_CON(3), 13, GFLAGS),
--	COMPOSITE_NOGATE(0, "aclk_gpu_pre", mux_aclk_gpu_pre_p, 0,
--			RK2928_CLKSEL_CON(34), 5, 2, MFLAGS, 0, 5, DFLAGS),
- 
- 	COMPOSITE(SCLK_SPI0, "sclk_spi0", mux_pll_src_2plls_p, 0,
- 			RK2928_CLKSEL_CON(25), 8, 1, MFLAGS, 0, 7, DFLAGS,
-@@ -582,8 +573,8 @@ static struct rockchip_clk_branch rk3228_clk_branches[] __initdata = {
- 	GATE(0, "pclk_peri_noc", "pclk_peri", CLK_IGNORE_UNUSED, RK2928_CLKGATE_CON(12), 2, GFLAGS),
- 
- 	/* PD_GPU */
--	GATE(ACLK_GPU, "aclk_gpu", "aclk_gpu_pre", 0, RK2928_CLKGATE_CON(13), 14, GFLAGS),
--	GATE(0, "aclk_gpu_noc", "aclk_gpu_pre", 0, RK2928_CLKGATE_CON(13), 15, GFLAGS),
-+	GATE(ACLK_GPU, "aclk_gpu", "aclk_gpu_pre", 0, RK2928_CLKGATE_CON(7), 14, GFLAGS),
-+	GATE(0, "aclk_gpu_noc", "aclk_gpu_pre", 0, RK2928_CLKGATE_CON(7), 15, GFLAGS),
- 
- 	/* PD_BUS */
- 	GATE(0, "sclk_initmem_mbist", "aclk_cpu", 0, RK2928_CLKGATE_CON(8), 1, GFLAGS),
+
+
 -- 
-2.11.0
+Best Regards,
+Chanwoo Choi
