@@ -1,83 +1,127 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 2/7] dt-bindings: PCI: cadence: Add binding to specify
- max virtual functions
-Date: Tue, 14 Jan 2020 19:40:26 -0600
-Message-ID: <20200115014026.GA10726@bogus>
-References: <20191231113534.30405-1-kishon@ti.com>
- <20191231113534.30405-3-kishon@ti.com>
+Subject: Re: [RFC PATCH v1 01/10] dt-bindings: mtd: add rockchip nand
+ controller bindings
+Date: Tue, 14 Jan 2020 19:57:06 -0600
+Message-ID: <20200115015706.GA30647@bogus>
+References: <20200108205338.11369-1-jbx6244@gmail.com>
+ <20200108205338.11369-2-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20191231113534.30405-3-kishon@ti.com>
+In-Reply-To: <20200108205338.11369-2-jbx6244@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Andrew Murray <andrew.murray@arm.com>, Tom Joseph <tjoseph@cadence.com>, Arnd Bergmann <arnd@arndb.de>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-doc@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com, mark.rutland@arm.com, heiko@sntech.de, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Dec 31, 2019 at 05:05:29PM +0530, Kishon Vijay Abraham I wrote:
-> Add binding to specify maximum number of virtual functions that can be
-> associated with each physical function.
+On Wed, Jan 08, 2020 at 09:53:29PM +0100, Johan Jonker wrote:
+> Add the Rockchip NAND controller bindings.
 > 
-> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
->  .../devicetree/bindings/pci/cdns,cdns-pcie-ep.txt         | 2 ++
->  .../devicetree/bindings/pci/ti,j721e-pci-ep.yaml          | 8 ++++++++
->  2 files changed, 10 insertions(+)
+>  .../devicetree/bindings/mtd/rockchip,nandc.yaml    | 78 ++++++++++++++++++++++
+>  1 file changed, 78 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nandc.yaml
 > 
-> diff --git a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
-> index 4a0475e2ba7e..432578202733 100644
-> --- a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
-> +++ b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
-> @@ -9,6 +9,8 @@ Required properties:
->  
->  Optional properties:
->  - max-functions: Maximum number of functions that can be configured (default 1).
-> +- max-virtual-functions: Maximum number of virtual functions that can be
-> +    associated with each physical function.
->  - phys: From PHY bindings: List of Generic PHY phandles. One per lane if more
->    than one in the list.  If only one PHY listed it must manage all lanes. 
->  - phy-names:  List of names to identify the PHY.
-> diff --git a/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml b/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
-> index 4621c62016c7..1d4964ba494f 100644
-> --- a/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
-> +++ b/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
-> @@ -61,6 +61,12 @@ properties:
->      minimum: 1
->      maximum: 6
->  
-> +  max-virtual-functions:
-> +    minItems: 1
-> +    maxItems: 6
+> diff --git a/Documentation/devicetree/bindings/mtd/rockchip,nandc.yaml b/Documentation/devicetree/bindings/mtd/rockchip,nandc.yaml
+> new file mode 100644
+> index 000000000..573d1a580
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mtd/rockchip,nandc.yaml
+> @@ -0,0 +1,78 @@
+> +# SPDX-License-Identifier: GPL-2.0
 
-Is there a PCIe spec limit to number of virtual functions per phy 
-function? Or 2^32 virtual functions is okay.
+Dual license new bindings:
 
-> +    description: As defined in
-> +                 Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
+(GPL-2.0-only OR BSD-2-Clause)
 
-I suspect this this be a common property.
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mtd/rockchip,nandc.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip NAND Controller Device Tree Bindings
+> +
+> +allOf:
+> +  - $ref: "nand-controller.yaml"
+
+Should end with a '#'.
 
 > +
->    dma-coherent:
->      description: Indicates that the PCIe IP block can ensure the coherency
->  
-> @@ -85,6 +91,7 @@ required:
->    - cdns,max-outbound-regions
->    - dma-coherent
->    - max-functions
-> +  - max-virtual-functions
->    - phys
->    - phy-names
->  
-> @@ -107,6 +114,7 @@ examples:
->              clock-names = "fck";
->              cdns,max-outbound-regions = <16>;
->              max-functions = /bits/ 8 <6>;
-> +            max-virtual-functions = /bits/ 16 <4 4 4 4 0 0>;
->              dma-coherent;
->              phys = <&serdes0_pcie_link>;
->              phy-names = "pcie_phy";
+> +maintainers:
+> +  - Heiko Stuebner <heiko@sntech.de>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,nandc-v6
+> +      - rockchip,nandc-v9
+
+Use SoC specific compatibles, not version numbers.
+
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  clock-names:
+> +    oneOf:
+> +      - items:
+> +        - const: hclk_nandc
+> +      - items:
+> +        - const: clk_nandc
+> +        - const: hclk_nandc
+
+Can't you put hclk_nandc first so it's always index 0.
+
+> +
+> +patternProperties:
+> +  "^nand@[a-f0-9]+$":
+> +    type: object
+> +    properties:
+> +      reg:
+> +        minimum: 0
+> +        maximum: 3
+> +
+> +      nand-is-boot-medium: true
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rk3188-cru-common.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    nandc: nand-controller@10500000 {
+> +      compatible = "rockchip,nandc-v6";
+> +      reg = <0x10500000 0x4000>;
+> +      interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH>;
+> +      clocks = <&cru HCLK_NANDC0>;
+> +      clock-names = "hclk_nandc";
+> +      #address-cells = <1>;
+> +      #size-cells = <0>;
+> +
+> +      nand@0 {
+> +        reg = <0>;
+> +        nand-is-boot-medium;
+> +      };
+> +    };
+> +
+> +...
 > -- 
-> 2.17.1
+> 2.11.0
 > 
