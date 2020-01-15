@@ -1,196 +1,83 @@
 From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 4/6] dt-bindings: rockchip: Add DesignWare based PCIe
- controller
-Date: Tue, 14 Jan 2020 18:05:02 -0600
-Message-ID: <20200115000502.GA27530@bogus>
-References: <1578986580-71974-1-git-send-email-shawn.lin@rock-chips.com>
- <1578986580-71974-5-git-send-email-shawn.lin@rock-chips.com>
+Subject: Re: [PATCH 2/7] dt-bindings: PCI: cadence: Add binding to specify
+ max virtual functions
+Date: Tue, 14 Jan 2020 19:40:26 -0600
+Message-ID: <20200115014026.GA10726@bogus>
+References: <20191231113534.30405-1-kishon@ti.com>
+ <20191231113534.30405-3-kishon@ti.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1578986580-71974-5-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, William Wu <william.wu@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, linux-rockchip@lists.infradead.org
+In-Reply-To: <20191231113534.30405-3-kishon@ti.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Andrew Murray <andrew.murray@arm.com>, Tom Joseph <tjoseph@cadence.com>, Arnd Bergmann <arnd@arndb.de>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-doc@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jan 14, 2020 at 03:22:58PM +0800, Shawn Lin wrote:
-> From: Simon Xue <xxm@rock-chips.com>
+On Tue, Dec 31, 2019 at 05:05:29PM +0530, Kishon Vijay Abraham I wrote:
+> Add binding to specify maximum number of virtual functions that can be
+> associated with each physical function.
 > 
-> Signed-off-by: Simon Xue <xxm@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 > ---
+>  .../devicetree/bindings/pci/cdns,cdns-pcie-ep.txt         | 2 ++
+>  .../devicetree/bindings/pci/ti,j721e-pci-ep.yaml          | 8 ++++++++
+>  2 files changed, 10 insertions(+)
 > 
->  .../devicetree/bindings/pci/rockchip-dw-pcie.yaml  | 132 +++++++++++++++++++++
->  1 file changed, 132 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> diff --git a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
+> index 4a0475e2ba7e..432578202733 100644
+> --- a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
+> +++ b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
+> @@ -9,6 +9,8 @@ Required properties:
+>  
+>  Optional properties:
+>  - max-functions: Maximum number of functions that can be configured (default 1).
+> +- max-virtual-functions: Maximum number of virtual functions that can be
+> +    associated with each physical function.
+>  - phys: From PHY bindings: List of Generic PHY phandles. One per lane if more
+>    than one in the list.  If only one PHY listed it must manage all lanes. 
+>  - phy-names:  List of names to identify the PHY.
+> diff --git a/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml b/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
+> index 4621c62016c7..1d4964ba494f 100644
+> --- a/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
+> +++ b/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
+> @@ -61,6 +61,12 @@ properties:
+>      minimum: 1
+>      maximum: 6
+>  
+> +  max-virtual-functions:
+> +    minItems: 1
+> +    maxItems: 6
 
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml: 
-properties:rockchip,usbpciegrf: {'items': [{'description': 'The grf for 
-COMBPHY configuration and state registers.'}]} is not valid under any of 
-the given schemas (Possible causes of the failure):
-	
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml: 
-properties:rockchip,usbpciegrf: 'description' is a required property
+Is there a PCIe spec limit to number of virtual functions per phy 
+function? Or 2^32 virtual functions is okay.
 
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> new file mode 100644
-> index 0000000..c5205f6
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> @@ -0,0 +1,132 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: DesignWare based PCIe RC controller on Rockchip SoCs
-> +
-> +maintainers:
-> +        - Shawn Lin <shawn.lin@rock-chips.com>
-> +        - Simon Xue <xxm@rock-chips.com>
+> +    description: As defined in
+> +                 Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
 
-indent 2 spaces.
-
-> +
-
-You need to reference pci-bus.yaml.
-
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk1808-pcie
-> +      - snps,dw-pcie
-
-This means the compatible is one of these 2 strings.
-
-It's also going to be a problem because it will match on all DTs with 
-'snps,dw-pcie'. Look at some of the 'arm,primecell' schema for how to 
-avoid that with 'select'.
+I suspect this this be a common property.
 
 > +
-> +  reg:
-> +    maxItems: 2
-> +
-> +  clocks:
-> +    items:
-> +      - description: High speed clock for PCIe
-> +      - description: Low speed clock for PCIe
-> +      - description: AHB clock for PCIe
-> +      - description: APB clock for PCIe
-> +      - description: Auxiliary clock for PCIe
-> +
-> +  clock-names:
-> +    items:
-> +      - const: hsclk
-> +      - const: lsclk
-> +      - const: aclk
-> +      - const: pclk
-> +      - const: sclk-aux
-> +
-> +  resets:
-> +    items:
-> +      - description: PCIe niu high reset line
-> +      - description: PCIe niu low reset line
-> +      - description: PCIe grf reset line
-> +      - description: PCIe control reset line
-> +      - description: PCIe control powerup reset line
-> +      - description: PCIe control master reset line
-> +      - description: PCIe control slave reset line
-> +      - description: PCIe control dbi reset line
-> +      - description: PCIe control button reset line
-> +      - description: PCIe control power engine reset line
-> +      - description: PCIe control core reset line
-> +      - description: PCIe control non-sticky reset line
-> +      - description: PCIe control sticky reset line
-> +      - description: PCIe control power reset line
-> +      - description: PCIe niu ahb reset line
-> +      - description: PCIe niu apb reset line
-> +
-> +  reset-names:
-> +    items:
-> +      - const: niu-h
-> +      - const: niu-l
-> +      - const: grf-p
-> +      - const: ctl-p
-> +      - const: ctl-powerup
-> +      - const: ctl-mst-a
-> +      - const: ctl-slv-a
-> +      - const: ctl-dbi-a
-> +      - const: ctl-button
-> +      - const: ctl-pe
-> +      - const: ctl-core
-> +      - const: ctl-nsticky
-> +      - const: ctl-sticky
-> +      - const: ctl-pwr
-> +      - const: ctl-niu-a
-> +      - const: ctl-niu-p
-> +
-> +  rockchip,usbpciegrf:
-> +    items:
-> +      - description: The grf for COMBPHY configuration and state registers.
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - clocks
-> +  - clock-names
-> +  - msi-map
-> +  - num-lanes
-> +  - phys
-> +  - phy-names
-> +  - resets
-> +  - reset-names
-> +  - rockchip,usbpciegrf
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    usb_pcie_grf: syscon@fe040000 {
-> +        compatible = "rockchip,usb-pcie-grf", "syscon";
-> +        reg = <0x0 0xfe040000 0x0 0x1000>;
-> +    };
-> +
-> +    pcie0: pcie@fc400000 {
-> +        compatible = "rockchip,rk1808-pcie", "snps,dw-pcie";
-> +        reg = <0x0 0xfc000000 0x0 0x400000>,
-> +              <0x0 0xfc400000 0x0 0x10000>;
-> +        clocks = <&cru HSCLK_PCIE>, <&cru LSCLK_PCIE>,
-> +                 <&cru ACLK_PCIE>, <&cru PCLK_PCIE>,
-> +                 <&cru SCLK_PCIE_AUX>;
-> +        clock-names = "hsclk", "lsclk",
-> +                      "aclk", "pclk",
-> +                      "sclk-aux";
-> +        msi-map = <0x0 &its 0x0 0x1000>;
-> +        num-lanes = <2>;
-> +        phys = <&combphy PHY_TYPE_PCIE>;
-> +        phy-names = "pcie-phy";
-> +        resets = <&cru SRST_PCIE_NIU_H>, <&cru SRST_PCIE_NIU_L>,
-> +                 <&cru SRST_PCIEGRF_P>, <&cru SRST_PCIECTL_P>,
-> +                 <&cru SRST_PCIECTL_POWERUP>, <&cru SRST_PCIECTL_MST_A>,
-> +                 <&cru SRST_PCIECTL_SLV_A>, <&cru SRST_PCIECTL_DBI_A>,
-> +                 <&cru SRST_PCIECTL_BUTTON>, <&cru SRST_PCIECTL_PE>,
-> +                 <&cru SRST_PCIECTL_CORE>, <&cru SRST_PCIECTL_NSTICKY>,
-> +                 <&cru SRST_PCIECTL_STICKY>, <&cru SRST_PCIECTL_PWR>,
-> +                 <&cru SRST_PCIE_NIU_A>, <&cru SRST_PCIE_NIU_P>;
-> +        reset-names = "niu-h", "niu-l", "grf-p", "ctl-p",
-> +                      "ctl-powerup", "ctl-mst-a", "ctl-slv-a",
-> +                      "ctl-dbi-a", "ctl-button", "ctl-pe",
-> +                      "ctl-core", "ctl-nsticky", "ctl-sticky",
-> +                      "ctl-pwr", "ctl-niu-a", "ctl-niu-p";
-> +        rockchip,usbpciegrf = <&usb_pcie_grf>;
-
-You are missing a number of common, required PCI properties.
-
-> +    };
-> +
-> +...
+>    dma-coherent:
+>      description: Indicates that the PCIe IP block can ensure the coherency
+>  
+> @@ -85,6 +91,7 @@ required:
+>    - cdns,max-outbound-regions
+>    - dma-coherent
+>    - max-functions
+> +  - max-virtual-functions
+>    - phys
+>    - phy-names
+>  
+> @@ -107,6 +114,7 @@ examples:
+>              clock-names = "fck";
+>              cdns,max-outbound-regions = <16>;
+>              max-functions = /bits/ 8 <6>;
+> +            max-virtual-functions = /bits/ 16 <4 4 4 4 0 0>;
+>              dma-coherent;
+>              phys = <&serdes0_pcie_link>;
+>              phy-names = "pcie_phy";
 > -- 
-> 1.9.1
-> 
-> 
+> 2.17.1
 > 
