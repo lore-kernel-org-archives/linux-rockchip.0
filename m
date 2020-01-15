@@ -1,137 +1,191 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 1/6] dt-bindings: add binding for Rockchip combo phy
- using an Innosilicon IP
-Date: Tue, 14 Jan 2020 17:43:23 -0600
-Message-ID: <20200114234323.GA5823@bogus>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH 4/6] dt-bindings: rockchip: Add DesignWare based PCIe
+ controller
+Date: Tue, 14 Jan 2020 18:05:02 -0600
+Message-ID: <20200115000502.GA27530@bogus>
 References: <1578986580-71974-1-git-send-email-shawn.lin@rock-chips.com>
- <1578986580-71974-2-git-send-email-shawn.lin@rock-chips.com>
+ <1578986580-71974-5-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <1578986580-71974-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <1578986580-71974-5-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, William Wu <william.wu@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jan 14, 2020 at 03:22:55PM +0800, Shawn Lin wrote:
-> This IP could supports USB3.0 and PCIe.
+On Tue, Jan 14, 2020 at 03:22:58PM +0800, Shawn Lin wrote:
+> From: Simon Xue <xxm@rock-chips.com>
 > 
-> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> 
+> Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 > ---
 > 
->  .../bindings/phy/rockchip,inno-combophy.yaml       | 84 ++++++++++++++++++++++
->  1 file changed, 84 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml
+>  .../devicetree/bindings/pci/rockchip-dw-pcie.yaml  | 132 +++++++++++++++++++++
+>  1 file changed, 132 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 
-Fails 'make dt_binding_check':
-
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml: 
-ignoring, error in schema: properties: rockchip,combphygrf
-Documentation/devicetree/bindings/display/simple-framebuffer.example.dts:21.16-37.11: 
-Warning (chosen_node_is_root): /example-0/chosen: chosen node must be at root node
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml: 
-properties:rockchip,combphygrf: {'items': [{'description': 'The grf for 
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml: 
+properties:rockchip,usbpciegrf: {'items': [{'description': 'The grf for 
 COMBPHY configuration and state registers.'}]} is not valid under any of 
 the given schemas (Possible causes of the failure):
 	
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml: 
-properties:rockchip,combphygrf: 'description' is a required property
-
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml: 
+properties:rockchip,usbpciegrf: 'description' is a required property
 
 > 
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml
+> diff --git a/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
 > new file mode 100644
-> index 0000000..d647ab3
+> index 0000000..c5205f6
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/phy/rockchip,inno-combophy.yaml
-> @@ -0,0 +1,84 @@
+> +++ b/Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
+> @@ -0,0 +1,132 @@
 > +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
 > +%YAML 1.2
 > +---
-> +$id: http://devicetree.org/schemas/phy/rockchip,inno-combophy.yaml#
+> +$id: http://devicetree.org/schemas/pci/rockchip-dw-pcie.yaml#
 > +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +title: Rockchip USB3.0/PCI-e combo phy
+> +title: DesignWare based PCIe RC controller on Rockchip SoCs
 > +
 > +maintainers:
-> +        - Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> +        - William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> +        - Shawn Lin <shawn.lin@rock-chips.com>
+> +        - Simon Xue <xxm@rock-chips.com>
 
-2 space indent.
+indent 2 spaces.
 
 > +
+
+You need to reference pci-bus.yaml.
+
 > +properties:
-> +  "#phy-cells":
-> +    const: 1
-> +
 > +  compatible:
 > +    enum:
-> +      - rockchip,rk1808-combphy
+> +      - rockchip,rk1808-pcie
+> +      - snps,dw-pcie
+
+This means the compatible is one of these 2 strings.
+
+It's also going to be a problem because it will match on all DTs with 
+'snps,dw-pcie'. Look at some of the 'arm,primecell' schema for how to 
+avoid that with 'select'.
+
 > +
 > +  reg:
-> +    maxItems: 1
+> +    maxItems: 2
 > +
 > +  clocks:
 > +    items:
-> +      - description: PLL reference clock
+> +      - description: High speed clock for PCIe
+> +      - description: Low speed clock for PCIe
+> +      - description: AHB clock for PCIe
+> +      - description: APB clock for PCIe
+> +      - description: Auxiliary clock for PCIe
 > +
 > +  clock-names:
 > +    items:
-> +      - const: refclk
+> +      - const: hsclk
+> +      - const: lsclk
+> +      - const: aclk
+> +      - const: pclk
+> +      - const: sclk-aux
 > +
 > +  resets:
 > +    items:
-> +      - description: OTG unit reset line
-> +      - description: POR unit reset line
-> +      - description: APB interface reset line
-> +      - description: PIPE unit reset line
+> +      - description: PCIe niu high reset line
+> +      - description: PCIe niu low reset line
+> +      - description: PCIe grf reset line
+> +      - description: PCIe control reset line
+> +      - description: PCIe control powerup reset line
+> +      - description: PCIe control master reset line
+> +      - description: PCIe control slave reset line
+> +      - description: PCIe control dbi reset line
+> +      - description: PCIe control button reset line
+> +      - description: PCIe control power engine reset line
+> +      - description: PCIe control core reset line
+> +      - description: PCIe control non-sticky reset line
+> +      - description: PCIe control sticky reset line
+> +      - description: PCIe control power reset line
+> +      - description: PCIe niu ahb reset line
+> +      - description: PCIe niu apb reset line
 > +
 > +  reset-names:
 > +    items:
-> +      - const: otg-rst
-> +      - const: combphy-por
-> +      - const: combphy-apb
-> +      - const: combphy-pipe
+> +      - const: niu-h
+> +      - const: niu-l
+> +      - const: grf-p
+> +      - const: ctl-p
+> +      - const: ctl-powerup
+> +      - const: ctl-mst-a
+> +      - const: ctl-slv-a
+> +      - const: ctl-dbi-a
+> +      - const: ctl-button
+> +      - const: ctl-pe
+> +      - const: ctl-core
+> +      - const: ctl-nsticky
+> +      - const: ctl-sticky
+> +      - const: ctl-pwr
+> +      - const: ctl-niu-a
+> +      - const: ctl-niu-p
 > +
-> +  rockchip,combphygrf:
+> +  rockchip,usbpciegrf:
 > +    items:
 > +      - description: The grf for COMBPHY configuration and state registers.
 > +
 > +required:
-> +  - "#phy-cells"
 > +  - compatible
 > +  - reg
 > +  - clocks
 > +  - clock-names
+> +  - msi-map
+> +  - num-lanes
+> +  - phys
+> +  - phy-names
 > +  - resets
 > +  - reset-names
-> +  - rockchip,combphygrf
+> +  - rockchip,usbpciegrf
 > +
 > +additionalProperties: false
 > +
 > +examples:
 > +  - |
-> +    combphy_grf: syscon@fe018000 {
-> +        compatible = "rockchip,usb3phy-grf", "syscon";
-> +        reg = <0x0 0xfe018000 0x0 0x8000>;
+> +    usb_pcie_grf: syscon@fe040000 {
+> +        compatible = "rockchip,usb-pcie-grf", "syscon";
+> +        reg = <0x0 0xfe040000 0x0 0x1000>;
 > +    };
 > +
-> +    combphy: phy@ff380000 {
-> +        compatible = "rockchip,rk1808-combphy";
-> +        reg = <0x0 0xff380000 0x0 0x10000>;
-> +        #phy-cells = <1>;
-> +        clocks = <&cru SCLK_PCIEPHY_REF>;
-> +        clock-names = "refclk";
-> +        assigned-clocks = <&cru SCLK_PCIEPHY_REF>;
-> +        assigned-clock-rates = <25000000>;
-> +        resets = <&cru SRST_USB3_OTG_A>, <&cru SRST_PCIEPHY_POR>,
-> +                 <&cru SRST_PCIEPHY_P>, <&cru SRST_PCIEPHY_PIPE>;
-> +        reset-names = "otg-rst", "combphy-por",
-> +                      "combphy-apb", "combphy-pipe";
-> +        rockchip,combphygrf = <&combphy_grf>;
+> +    pcie0: pcie@fc400000 {
+> +        compatible = "rockchip,rk1808-pcie", "snps,dw-pcie";
+> +        reg = <0x0 0xfc000000 0x0 0x400000>,
+> +              <0x0 0xfc400000 0x0 0x10000>;
+> +        clocks = <&cru HSCLK_PCIE>, <&cru LSCLK_PCIE>,
+> +                 <&cru ACLK_PCIE>, <&cru PCLK_PCIE>,
+> +                 <&cru SCLK_PCIE_AUX>;
+> +        clock-names = "hsclk", "lsclk",
+> +                      "aclk", "pclk",
+> +                      "sclk-aux";
+> +        msi-map = <0x0 &its 0x0 0x1000>;
+> +        num-lanes = <2>;
+> +        phys = <&combphy PHY_TYPE_PCIE>;
+> +        phy-names = "pcie-phy";
+> +        resets = <&cru SRST_PCIE_NIU_H>, <&cru SRST_PCIE_NIU_L>,
+> +                 <&cru SRST_PCIEGRF_P>, <&cru SRST_PCIECTL_P>,
+> +                 <&cru SRST_PCIECTL_POWERUP>, <&cru SRST_PCIECTL_MST_A>,
+> +                 <&cru SRST_PCIECTL_SLV_A>, <&cru SRST_PCIECTL_DBI_A>,
+> +                 <&cru SRST_PCIECTL_BUTTON>, <&cru SRST_PCIECTL_PE>,
+> +                 <&cru SRST_PCIECTL_CORE>, <&cru SRST_PCIECTL_NSTICKY>,
+> +                 <&cru SRST_PCIECTL_STICKY>, <&cru SRST_PCIECTL_PWR>,
+> +                 <&cru SRST_PCIE_NIU_A>, <&cru SRST_PCIE_NIU_P>;
+> +        reset-names = "niu-h", "niu-l", "grf-p", "ctl-p",
+> +                      "ctl-powerup", "ctl-mst-a", "ctl-slv-a",
+> +                      "ctl-dbi-a", "ctl-button", "ctl-pe",
+> +                      "ctl-core", "ctl-nsticky", "ctl-sticky",
+> +                      "ctl-pwr", "ctl-niu-a", "ctl-niu-p";
+> +        rockchip,usbpciegrf = <&usb_pcie_grf>;
+
+You are missing a number of common, required PCI properties.
+
 > +    };
 > +
 > +...
