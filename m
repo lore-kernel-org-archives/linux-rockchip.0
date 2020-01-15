@@ -1,46 +1,39 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: Re: [RFC PATCH v1 1/3] dt-bindings: mmc: combine common mmc and
- dw-mshc properties
-Date: Wed, 15 Jan 2020 14:02:18 +0100
-Message-ID: <12bbbdbc-027e-90de-fd57-291013167b06@gmail.com>
-References: <20200114213809.27166-1-jbx6244@gmail.com>
- <CAL_Jsq+8X0oRykiQOKVyaxis4H0yO=nzUtnFF_BXdwBkuigr7g@mail.gmail.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH v2] pinctrl/rockchip: splite soc data to separated driver
+Date: Wed, 15 Jan 2020 13:51:40 +0100
+Message-ID: <CACRpkdY_EHQbF4rRyGwoxEk8LeWfmRzmCd=8=SY95LPXMHYOmw@mail.gmail.com>
+References: <20200109094001.24343-1-jay.xu@rock-chips.com> <20200113011616.19791-1-jay.xu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAL_Jsq+8X0oRykiQOKVyaxis4H0yO=nzUtnFF_BXdwBkuigr7g@mail.gmail.com>
-Content-Language: en-US
+In-Reply-To: <20200113011616.19791-1-jay.xu@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, "heiko@sntech.de" <heiko@sntech.de>, linux-mmc <linux-mmc@vger.kernel.org>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+To: Jianqun Xu <jay.xu@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: David Wu <david.wu@rock-chips.com>, Kever Yang <kever.yang@rock-chips.com>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Mon, Jan 13, 2020 at 2:16 AM Jianqun Xu <jay.xu@rock-chips.com> wrote:
 
-Thank you for your explanation.
-I was not aware that was playing.
-So now we go from a 'simple' txt to yaml conversion to a complete
-'change your node name first' operation.
-Can you indicate if that common yaml file for dw-mshc and Rockchip
-is still a good idea?
+> * Decrease codes of pinctrl-rockchip.c from 4,000 lines to 2000 by
+> separating soc data to a new file.
+>
+> * Move rockchip pinctrl related struct definations to a head file.
+>
+> * Keep legency pinctrl-rockchip.c under driver/pinctrl but not to
+> compile it, conveniently for reviewers.
+>
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 
-Thanks
+This patch looks good, two things are missing:
 
+- Review from Heiko
 
-On 1/14/20 11:06 PM, Rob Herring wrote:
-> On Tue, Jan 14, 2020 at 3:38 PM Johan Jonker <jbx6244@gmail.com> wrote:
->>
->> Combine the common properties for mmc and dw-mshc in
->> mmc-controller-common.yaml
->
-> Commit messages should explain the why, not what.
->
-> AFAICT, the only reason is to not have a node name of 'mmc'. That's
-> entirely the reason why it is defined. Fix your node names to use the
-> standard name.
->
->
->
-> Rob
->
+- A change to MAINTAINERS so that the file pattern still
+  matches
+
+Should someone from Rockchip also sign up as comaintainer
+for this driver by the way? (Though the people at Rockchip
+posting patches for this seem to change a bit.)
+
+Yours,
+Linus Walleij
