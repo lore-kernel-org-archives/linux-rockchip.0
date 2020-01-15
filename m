@@ -1,70 +1,193 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH 5/6] PCI: rockchip: add DesignWare based PCIe controller
-Date: Wed, 15 Jan 2020 11:24:30 -0600
-Message-ID: <20200115172430.GA180494@google.com>
-References: <1578986701-72072-1-git-send-email-shawn.lin@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1578986701-72072-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh+dt@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, William Wu <william.wu@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, linux-rockchip@lists.infradead.org
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 1/2] ARM: dts: rockchip: rename dwmmc node names to mmc
+Date: Wed, 15 Jan 2020 19:52:43 +0100
+Message-ID: <20200115185244.18149-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Follow subject line convention.
+Current dts files with 'dwmmc' nodes are manually verified.
+In order to automate this process rockchip-dw-mshc.txt
+has to be converted to yaml. In the new setup
+rockchip-dw-mshc.yaml will inherit properties from
+mmc-controller.yaml and synopsys-dw-mshc-common.yaml.
+'dwmmc' will no longer be a valid name for a node,
+so change them all to 'mmc'
 
-On Tue, Jan 14, 2020 at 03:25:01PM +0800, Shawn Lin wrote:
-> From: Simon Xue <xxm@rock-chips.com>
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3036.dtsi | 6 +++---
+ arch/arm/boot/dts/rk322x.dtsi | 6 +++---
+ arch/arm/boot/dts/rk3288.dtsi | 8 ++++----
+ arch/arm/boot/dts/rk3xxx.dtsi | 6 +++---
+ arch/arm/boot/dts/rv1108.dtsi | 6 +++---
+ 5 files changed, 16 insertions(+), 16 deletions(-)
 
-Needs a commit log.  Please describe the relationship with the
-existing drivers/pci/controller/pcie-rockchip-host.c.  Are they for
-different devices?  Does this supercede the other?
-
-> Signed-off-by: Simon Xue <xxm@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
->  drivers/pci/controller/dwc/Kconfig            |   9 +
->  drivers/pci/controller/dwc/Makefile           |   1 +
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 441 ++++++++++++++++++++++++++
->  3 files changed, 451 insertions(+)
->  create mode 100644 drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> 
-> diff --git a/drivers/pci/controller/dwc/Kconfig b/drivers/pci/controller/dwc/Kconfig
-> index 0830dfc..9160264 100644
-> --- a/drivers/pci/controller/dwc/Kconfig
-> +++ b/drivers/pci/controller/dwc/Kconfig
-> @@ -82,6 +82,15 @@ config PCIE_DW_PLAT_EP
->  	  order to enable device-specific features PCI_DW_PLAT_EP must be
->  	  selected.
->  
-> +config PCIE_DW_ROCKCHIP
-> +	bool "Rockchip DesignWare PCIe controller"
-> +	select PCIE_DW
-> +	select PCIE_DW_HOST
-> +	depends on ARCH_ROCKCHIP
-> +	depends on OF
-> +	help
-> +	  Enables support for the DW PCIe controller in the Rockchip SoC.
-
-A user needs to be able to tell whether to enable
-CONFIG_PCIE_ROCKCHIP_HOST or CONFIG_PCIE_DW_ROCKCHIP.  Is there an
-endpoint driver coming?  Should this be named PCIE_DW_ROCKCHIP_HOST?
-
-> +	ret = rockchip_pcie_reset_grant_ctrl(rockchip, true);
-> +	if (ret)
-> +		goto deinit_clk;
-> +
-> +//	if (rockchip->mode == DW_PCIE_RC_TYPE)
-> +//		ret = rk_add_pcie_port(rockchip);
-
-Remove commented-out code.  I do like an "if" statement better than
-the complicated assignment/ternary thing below, though.
-
-> +	ret = rockchip->mode == DW_PCIE_RC_TYPE ?
-> +		rk_add_pcie_port(rockchip) : -EINVAL;
-> +
-> +	if (ret)
-> +		goto deinit_clk;
+diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
+index c70182c5a..cf36e2519 100644
+--- a/arch/arm/boot/dts/rk3036.dtsi
++++ b/arch/arm/boot/dts/rk3036.dtsi
+@@ -224,7 +224,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	sdmmc: dwmmc@10214000 {
++	sdmmc: mmc@10214000 {
+ 		compatible = "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x10214000 0x4000>;
+ 		clock-frequency = <37500000>;
+@@ -238,7 +238,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	sdio: dwmmc@10218000 {
++	sdio: mmc@10218000 {
+ 		compatible = "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x10218000 0x4000>;
+ 		max-frequency = <37500000>;
+@@ -252,7 +252,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	emmc: dwmmc@1021c000 {
++	emmc: mmc@1021c000 {
+ 		compatible = "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x1021c000 0x4000>;
+ 		interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index 340ed6ccb..4e90efdc9 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -662,7 +662,7 @@
+ 		};
+ 	};
+ 
+-	sdmmc: dwmmc@30000000 {
++	sdmmc: mmc@30000000 {
+ 		compatible = "rockchip,rk3228-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x30000000 0x4000>;
+ 		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
+@@ -675,7 +675,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	sdio: dwmmc@30010000 {
++	sdio: mmc@30010000 {
+ 		compatible = "rockchip,rk3228-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x30010000 0x4000>;
+ 		interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
+@@ -688,7 +688,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	emmc: dwmmc@30020000 {
++	emmc: mmc@30020000 {
+ 		compatible = "rockchip,rk3228-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x30020000 0x4000>;
+ 		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 415c75f57..9beb66216 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -247,7 +247,7 @@
+ 		ports = <&vopl_out>, <&vopb_out>;
+ 	};
+ 
+-	sdmmc: dwmmc@ff0c0000 {
++	sdmmc: mmc@ff0c0000 {
+ 		compatible = "rockchip,rk3288-dw-mshc";
+ 		max-frequency = <150000000>;
+ 		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
+@@ -261,7 +261,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	sdio0: dwmmc@ff0d0000 {
++	sdio0: mmc@ff0d0000 {
+ 		compatible = "rockchip,rk3288-dw-mshc";
+ 		max-frequency = <150000000>;
+ 		clocks = <&cru HCLK_SDIO0>, <&cru SCLK_SDIO0>,
+@@ -275,7 +275,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	sdio1: dwmmc@ff0e0000 {
++	sdio1: mmc@ff0e0000 {
+ 		compatible = "rockchip,rk3288-dw-mshc";
+ 		max-frequency = <150000000>;
+ 		clocks = <&cru HCLK_SDIO1>, <&cru SCLK_SDIO1>,
+@@ -289,7 +289,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	emmc: dwmmc@ff0f0000 {
++	emmc: mmc@ff0f0000 {
+ 		compatible = "rockchip,rk3288-dw-mshc";
+ 		max-frequency = <150000000>;
+ 		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
+diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
+index 97307a405..241f43e29 100644
+--- a/arch/arm/boot/dts/rk3xxx.dtsi
++++ b/arch/arm/boot/dts/rk3xxx.dtsi
+@@ -231,7 +231,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	mmc0: dwmmc@10214000 {
++	mmc0: mmc@10214000 {
+ 		compatible = "rockchip,rk2928-dw-mshc";
+ 		reg = <0x10214000 0x1000>;
+ 		interrupts = <GIC_SPI 23 IRQ_TYPE_LEVEL_HIGH>;
+@@ -245,7 +245,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	mmc1: dwmmc@10218000 {
++	mmc1: mmc@10218000 {
+ 		compatible = "rockchip,rk2928-dw-mshc";
+ 		reg = <0x10218000 0x1000>;
+ 		interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+@@ -259,7 +259,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	emmc: dwmmc@1021c000 {
++	emmc: mmc@1021c000 {
+ 		compatible = "rockchip,rk2928-dw-mshc";
+ 		reg = <0x1021c000 0x1000>;
+ 		interrupts = <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index 5876690ee..1fd06e7cb 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -456,7 +456,7 @@
+ 		#reset-cells = <1>;
+ 	};
+ 
+-	emmc: dwmmc@30110000 {
++	emmc: mmc@30110000 {
+ 		compatible = "rockchip,rv1108-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x30110000 0x4000>;
+ 		interrupts = <GIC_SPI 13 IRQ_TYPE_LEVEL_HIGH>;
+@@ -468,7 +468,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	sdio: dwmmc@30120000 {
++	sdio: mmc@30120000 {
+ 		compatible = "rockchip,rv1108-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x30120000 0x4000>;
+ 		interrupts = <GIC_SPI 12 IRQ_TYPE_LEVEL_HIGH>;
+@@ -480,7 +480,7 @@
+ 		status = "disabled";
+ 	};
+ 
+-	sdmmc: dwmmc@30130000 {
++	sdmmc: mmc@30130000 {
+ 		compatible = "rockchip,rv1108-dw-mshc", "rockchip,rk3288-dw-mshc";
+ 		reg = <0x30130000 0x4000>;
+ 		interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>;
+-- 
+2.11.0
