@@ -1,37 +1,227 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v2 3/3] dt-bindings: mmc: rockchip-dw-mshc: add description for rk3308
-Date: Thu, 16 Jan 2020 16:22:30 +0100
-Message-ID: <20200116152230.29831-3-jbx6244@gmail.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v2 2/3] dt-bindings: mmc: convert rockchip dw-mshc bindings to yaml
+Date: Thu, 16 Jan 2020 16:22:29 +0100
+Message-ID: <20200116152230.29831-2-jbx6244@gmail.com>
 References: <20200116152230.29831-1-jbx6244@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200116152230.29831-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200116152230.29831-1-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: ulf.hansson@linaro.org
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The description below is already in use for rk3308.dtsi,
-but was somehow never added to a document, so add
-"rockchip,rk3308-dw-mshc", "rockchip,rk3288-dw-mshc"
-for mmc nodes on a rk3308 platform to rockchip-dw-mshc.yaml.
+Current dts files with 'dwmmc' nodes are manually verified.
+In order to automate this process rockchip-dw-mshc.txt
+has to be converted to yaml. In the new setup
+rockchip-dw-mshc.yaml will inherit properties from
+mmc-controller.yaml and synopsys-dw-mshc-common.yaml.
+'dwmmc' will no longer be a valid name for a node and
+should be changed to 'mmc'.
 
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |  49 --------
+ .../devicetree/bindings/mmc/rockchip-dw-mshc.yaml  | 123 +++++++++++++++++++++
+ MAINTAINERS                                        |   1 +
+ 3 files changed, 124 insertions(+), 49 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
+ create mode 100644 Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
 
+diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
+deleted file mode 100644
+index 6f629b12b..000000000
+--- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
++++ /dev/null
+@@ -1,49 +0,0 @@
+-* Rockchip specific extensions to the Synopsys Designware Mobile
+-  Storage Host Controller
+-
+-The Synopsys designware mobile storage host controller is used to interface
+-a SoC with storage medium such as eMMC or SD/MMC cards. This file documents
+-differences between the core Synopsys dw mshc controller properties described
+-by synopsys-dw-mshc.txt and the properties used by the Rockchip specific
+-extensions to the Synopsys Designware Mobile Storage Host Controller.
+-
+-Required Properties:
+-
+-* compatible: should be
+-	- "rockchip,rk2928-dw-mshc": for Rockchip RK2928 and following,
+-							before RK3288
+-	- "rockchip,rk3288-dw-mshc": for Rockchip RK3288
+-	- "rockchip,rv1108-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RV1108
+-	- "rockchip,px30-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip PX30
+-	- "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3036
+-	- "rockchip,rk3228-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK322x
+-	- "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3328
+-	- "rockchip,rk3368-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3368
+-	- "rockchip,rk3399-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3399
+-
+-Optional Properties:
+-* clocks: from common clock binding: if ciu-drive and ciu-sample are
+-  specified in clock-names, should contain handles to these clocks.
+-
+-* clock-names: Apart from the clock-names described in synopsys-dw-mshc.txt
+-  two more clocks "ciu-drive" and "ciu-sample" are supported. They are used
+-  to control the clock phases, "ciu-sample" is required for tuning high-
+-  speed modes.
+-
+-* rockchip,default-sample-phase: The default phase to set ciu-sample at
+-  probing, low speeds or in case where all phases work at tuning time.
+-  If not specified 0 deg will be used.
+-
+-* rockchip,desired-num-phases: The desired number of times that the host
+-  execute tuning when needed. If not specified, the host will do tuning
+-  for 360 times, namely tuning for each degree.
+-
+-Example:
+-
+-	rkdwmmc0@12200000 {
+-		compatible = "rockchip,rk3288-dw-mshc";
+-		reg = <0x12200000 0x1000>;
+-		interrupts = <0 75 0>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-	};
 diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-index 2f70f5ef0..89c3edd6a 100644
---- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+new file mode 100644
+index 000000000..2f70f5ef0
+--- /dev/null
 +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-@@ -35,6 +35,8 @@ properties:
-             - rockchip,rk3036-dw-mshc
-             # for Rockchip RK322x
-             - rockchip,rk3228-dw-mshc
-+            # for Rockchip RK3308
-+            - rockchip,rk3308-dw-mshc
-             # for Rockchip RK3328
-             - rockchip,rk3328-dw-mshc
-             # for Rockchip RK3368
+@@ -0,0 +1,123 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mmc/rockchip-dw-mshc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip designware mobile storage host controller device tree bindings
++
++description:
++  Rockchip uses the Synopsys designware mobile storage host controller
++  to interface a SoC with storage medium such as eMMC or SD/MMC cards.
++  This file documents the combined properties for the core Synopsys dw mshc
++  controller that are not already included in the synopsys-dw-mshc-common.yaml
++  file and the Rockchip specific extensions.
++
++allOf:
++  - $ref: "synopsys-dw-mshc-common.yaml#"
++
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
++
++# Everything else is described in the common file
++properties:
++  compatible:
++    oneOf:
++      # for Rockchip RK2928 and before RK3288
++      - const: rockchip,rk2928-dw-mshc
++      # for Rockchip RK3288
++      - const: rockchip,rk3288-dw-mshc
++      - items:
++          - enum:
++            # for Rockchip PX30
++            - rockchip,px30-dw-mshc
++            # for Rockchip RK3036
++            - rockchip,rk3036-dw-mshc
++            # for Rockchip RK322x
++            - rockchip,rk3228-dw-mshc
++            # for Rockchip RK3328
++            - rockchip,rk3328-dw-mshc
++            # for Rockchip RK3368
++            - rockchip,rk3368-dw-mshc
++            # for Rockchip RK3399
++            - rockchip,rk3399-dw-mshc
++            # for Rockchip RV1108
++            - rockchip,rv1108-dw-mshc
++          - const: rockchip,rk3288-dw-mshc
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    minItems: 2
++    maxItems: 4
++    description:
++      Handle to "biu" and "ciu" clocks for the bus interface unit clock and
++      the card interface unit clock. If "ciu-drive" and "ciu-sample" are
++      specified in clock-names, it should also contain
++      handles to these clocks.
++
++  clock-names:
++    minItems: 2
++    items:
++      - const: biu
++      - const: ciu
++      - const: ciu-drive
++      - const: ciu-sample
++    description:
++      Apart from the clock-names "biu" and "ciu" two more clocks
++      "ciu-drive" and "ciu-sample" are supported. They are used
++      to control the clock phases, "ciu-sample" is required for tuning
++      high speed modes.
++
++  rockchip,default-sample-phase:
++    allOf:
++      - $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 0
++    maximum: 360
++    default: 0
++    description:
++      The default phase to set "ciu-sample" at probing,
++      low speeds or in case where all phases work at tuning time.
++      If not specified 0 deg will be used.
++
++  rockchip,desired-num-phases:
++    allOf:
++      - $ref: /schemas/types.yaml#/definitions/uint32
++    minimum: 0
++    maximum: 360
++    default: 360
++    description:
++      The desired number of times that the host execute tuning when needed.
++      If not specified, the host will do tuning for 360 times,
++      namely tuning for each degree.
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3288-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    sdmmc: mmc@ff0c0000 {
++      compatible = "rockchip,rk3288-dw-mshc";
++      reg = <0x0 0xff0c0000 0x0 0x4000>;
++      interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
++               <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
++      clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
++      resets = <&cru SRST_MMC0>;
++      reset-names = "reset";
++      fifo-depth = <0x100>;
++      max-frequency = <150000000>;
++    };
++
++...
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d6ad01d71..1b16c0fdf 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2240,6 +2240,7 @@ L:	linux-rockchip@lists.infradead.org
+ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
+ S:	Maintained
+ F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
++F:	Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+ F:	arch/arm/boot/dts/rk3*
+ F:	arch/arm/boot/dts/rv1108*
+ F:	arch/arm/mach-rockchip/
 -- 
 2.11.0
