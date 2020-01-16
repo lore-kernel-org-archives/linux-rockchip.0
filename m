@@ -1,73 +1,50 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.4 205/205] phy/rockchip: inno-hdmi: round clock rate
- down to closest 1000 Hz
-Date: Thu, 16 Jan 2020 11:43:00 -0500
-Message-ID: <20200116164300.6705-205-sashal@kernel.org>
-References: <20200116164300.6705-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 292/671] PCI: rockchip: Fix rockchip_pcie_ep_assert_intx() bitwise operations
+Date: Thu, 16 Jan 2020 11:58:50 -0500
+Message-ID: <20200116170509.12787-29-sashal@kernel.org>
+References: <20200116170509.12787-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200116164300.6705-1-sashal@kernel.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20200116170509.12787-1-sashal@kernel.org>
+Sender: stable-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Sasha Levin <sashal@kernel.org>, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org, Jonas Karlman <jonas@kwiboo.se>
+Cc: Colin Ian King <colin.king@canonical.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Mukesh Ojha <mojha@codeaurora.org>, Shawn Lin <shawn.lin@rock-chips.com>, Sasha Levin <sashal@kernel.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+From: Colin Ian King <colin.king@canonical.com>
 
-[ Upstream commit 4f510aa10468954b1da4e94689c38ac6ea8d3627 ]
+[ Upstream commit c577f4a5a08bb9677e12ddafb62e2f3a901de87f ]
 
-Commit 287422a95fe2 ("drm/rockchip: Round up _before_ giving to the clock framework")
-changed what rate clk_round_rate() is called with, an additional 999 Hz
-added to the requsted mode clock. This has caused a regression on RK3328
-and presumably also on RK3228 because the inno-hdmi-phy clock requires an
-exact match of the requested rate in the pre pll config table.
+Currently the bitwise operations on the u16 variable 'status' with
+the setting ROCKCHIP_PCIE_EP_CMD_STATUS_IS are incorrect because
+ROCKCHIP_PCIE_EP_CMD_STATUS_IS is 1UL<<19 which is wider than the
+u16 variable.
 
-When an exact match is not found the parent clock rate (24MHz) is returned
-to the clk_round_rate() caller. This cause wrong pixel clock to be used and
-result in no-signal when configuring a mode on RK3328.
+Fix this by making status a u32.
 
-Fix this by rounding the rate down to closest 1000 Hz in round_rate func,
-this allows an exact match to be found in pre pll config table.
-
-Fixes: 287422a95fe2 ("drm/rockchip: Round up _before_ giving to the clock framework")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Reviewed-by: Mukesh Ojha <mojha@codeaurora.org>
+Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/pci/controller/pcie-rockchip-ep.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-index 2b97fb1185a0..9ca20c947283 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
-@@ -603,6 +603,8 @@ static long inno_hdmi_phy_rk3228_clk_round_rate(struct clk_hw *hw,
- {
- 	const struct pre_pll_config *cfg = pre_pll_cfg_table;
+diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+index b8163c56a142..caf34661d38d 100644
+--- a/drivers/pci/controller/pcie-rockchip-ep.c
++++ b/drivers/pci/controller/pcie-rockchip-ep.c
+@@ -350,7 +350,7 @@ static void rockchip_pcie_ep_assert_intx(struct rockchip_pcie_ep *ep, u8 fn,
+ 	struct rockchip_pcie *rockchip = &ep->rockchip;
+ 	u32 r = ep->max_regions - 1;
+ 	u32 offset;
+-	u16 status;
++	u32 status;
+ 	u8 msg_code;
  
-+	rate = (rate / 1000) * 1000;
-+
- 	for (; cfg->pixclock != 0; cfg++)
- 		if (cfg->pixclock == rate && !cfg->fracdiv)
- 			break;
-@@ -755,6 +757,8 @@ static long inno_hdmi_phy_rk3328_clk_round_rate(struct clk_hw *hw,
- {
- 	const struct pre_pll_config *cfg = pre_pll_cfg_table;
- 
-+	rate = (rate / 1000) * 1000;
-+
- 	for (; cfg->pixclock != 0; cfg++)
- 		if (cfg->pixclock == rate)
- 			break;
+ 	if (unlikely(ep->irq_pci_addr != ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR ||
 -- 
 2.20.1
