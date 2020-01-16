@@ -1,82 +1,107 @@
-From: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH 2/7] dt-bindings: PCI: cadence: Add binding to specify max
- virtual functions
-Date: Thu, 16 Jan 2020 16:59:20 +0530
-Message-ID: <f0690395-4ce7-df93-e837-670829aafb03@ti.com>
-References: <20191231113534.30405-1-kishon@ti.com>
- <20191231113534.30405-3-kishon@ti.com> <20200115014026.GA10726@bogus>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [RFC PATCH v1 2/3] dt-bindings: mmc: convert synopsys dw-mshc
+ bindings to yaml
+Date: Thu, 16 Jan 2020 13:00:55 +0100
+Message-ID: <203e9217-9aa8-b65e-4411-2d9b23c1362a@gmail.com>
+References: <20200114213809.27166-1-jbx6244@gmail.com>
+ <20200114213809.27166-2-jbx6244@gmail.com>
+ <CAL_JsqJ0QJ9uG9NY7vMGG00G4Jfk2mXS4OPdUzEaRVaCP++GzQ@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200115014026.GA10726@bogus>
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <CAL_JsqJ0QJ9uG9NY7vMGG00G4Jfk2mXS4OPdUzEaRVaCP++GzQ@mail.gmail.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-doc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tom Joseph <tjoseph-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Sender: linux-mmc-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, "heiko@sntech.de" <heiko@sntech.de>, linux-mmc <linux-mmc@vger.kernel.org>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+See below.
 
-On 15/01/20 7:10 AM, Rob Herring wrote:
-> On Tue, Dec 31, 2019 at 05:05:29PM +0530, Kishon Vijay Abraham I wrote:
->> Add binding to specify maximum number of virtual functions that can be
->> associated with each physical function.
+On 1/15/20 4:18 PM, Rob Herring wrote:
+> On Tue, Jan 14, 2020 at 3:38 PM Johan Jonker <jbx6244@gmail.com> wrote:
 >>
->> Signed-off-by: Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
->> ---
->>  .../devicetree/bindings/pci/cdns,cdns-pcie-ep.txt         | 2 ++
->>  .../devicetree/bindings/pci/ti,j721e-pci-ep.yaml          | 8 ++++++++
->>  2 files changed, 10 insertions(+)
->>
->> diff --git a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
->> index 4a0475e2ba7e..432578202733 100644
->> --- a/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
->> +++ b/Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
->> @@ -9,6 +9,8 @@ Required properties:
->>  
->>  Optional properties:
->>  - max-functions: Maximum number of functions that can be configured (default 1).
->> +- max-virtual-functions: Maximum number of virtual functions that can be
->> +    associated with each physical function.
->>  - phys: From PHY bindings: List of Generic PHY phandles. One per lane if more
->>    than one in the list.  If only one PHY listed it must manage all lanes. 
->>  - phy-names:  List of names to identify the PHY.
->> diff --git a/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml b/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
->> index 4621c62016c7..1d4964ba494f 100644
->> --- a/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
->> +++ b/Documentation/devicetree/bindings/pci/ti,j721e-pci-ep.yaml
->> @@ -61,6 +61,12 @@ properties:
->>      minimum: 1
->>      maximum: 6
->>  
->> +  max-virtual-functions:
->> +    minItems: 1
->> +    maxItems: 6
+
+> [...]
 > 
-> Is there a PCIe spec limit to number of virtual functions per phy 
-> function? Or 2^32 virtual functions is okay.
+>> diff --git a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
+>> new file mode 100644
+>> index 000000000..6f85a21d0
+>> --- /dev/null
+>> +++ b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
+>> @@ -0,0 +1,88 @@
+>> +# SPDX-License-Identifier: GPL-2.0
+>> +%YAML 1.2
+>> +---
+>> +$id: http://devicetree.org/schemas/mmc/synopsys-dw-mshc.yaml#
+>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>> +
+>> +title: Synopsys Designware Mobile Storage Host Controller Binding
 
-The PCIe spec provides a 16 bit field to specify number of virtual
-functions in the SR-IOV extended capability.
+[..]
 
-
+>> +examples:
+>> +  # The MSHC controller node can be split into two portions, SoC specific and
+>> +  # board specific portions as listed below.
 > 
->> +    description: As defined in
->> +                 Documentation/devicetree/bindings/pci/cdns,cdns-pcie-ep.txt
-> 
-> I suspect this this be a common property.
 
-Right now we don't have common EP property binding across all
-controllers. Maybe should create one?
+
+> This split doesn't work because the examples are built and validated
+> now. It may happen to because all the props are optional, but the
+> board hunk goes unchecked. So please combine.
+> 
+
+Hi,
+
+I have no knowledge about this particular hardware to give a realistic
+example. Could someone advise here? Or should I just use the first
+example for now?
 
 Thanks
-Kishon
+
+>> +  - |
+>> +    dwmmc0@12200000 {
+>> +      compatible = "snps,dw-mshc";
+>> +      clocks = <&clock 351>, <&clock 132>;
+>> +      clock-names = "biu", "ciu";
+>> +      reg = <0x12200000 0x1000>;
+>> +      interrupts = <0 75 0>;
+>> +      #address-cells = <1>;
+>> +      #size-cells = <0>;
+>> +      data-addr = <0x200>;
+>> +      fifo-watermark-aligned;
+>> +      resets = <&rst 20>;
+>> +      reset-names = "reset";
+>> +    };
+>> +  # [board specific internal DMA resources]
+>> +  - |
+>> +    dwmmc0@12200000 {
+>> +      clock-frequency = <400000000>;
+>> +      clock-freq-min-max = <400000 200000000>;
+>> +      broken-cd;
+>> +      fifo-depth = <0x80>;
+>> +      card-detect-delay = <200>;
+>> +      vmmc-supply = <&buck8>;
+>> +      bus-width = <8>;
+>> +      cap-mmc-highspeed;
+>> +      cap-sd-highspeed;
+>> +    };
+>> +  # [board specific generic DMA request binding]
+>> +  - |
+>> +    dwmmc0@12200000 {
+>> +      clock-frequency = <400000000>;
+>> +      clock-freq-min-max = <400000 200000000>;
+>> +      broken-cd;
+>> +      fifo-depth = <0x80>;
+>> +      card-detect-delay = <200>;
+>> +      vmmc-supply = <&buck8>;
+>> +      bus-width = <8>;
+>> +      cap-mmc-highspeed;
+>> +      cap-sd-highspeed;
+>> +      dmas = <&pdma 12>;
+>> +      dma-names = "rx-tx";
+>> +    };
+>> --
+>> 2.11.0
+>>
