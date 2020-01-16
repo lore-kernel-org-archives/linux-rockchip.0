@@ -1,50 +1,51 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.19 292/671] PCI: rockchip: Fix rockchip_pcie_ep_assert_intx() bitwise operations
-Date: Thu, 16 Jan 2020 11:58:50 -0500
-Message-ID: <20200116170509.12787-29-sashal@kernel.org>
-References: <20200116170509.12787-1-sashal@kernel.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 1/2] dt-bindings: mmc: remove identical phrase in
+ disable-wp text
+Date: Thu, 16 Jan 2020 11:18:17 -0600
+Message-ID: <CAL_Jsq+9w2wjwoOfnnKUBk9kOkZFcU6aWwyaw05ye-p3_WDcaQ@mail.gmail.com>
+References: <20191219145843.3823-1-jbx6244@gmail.com> <20191228093059.2817-1-jbx6244@gmail.com>
+ <20200104215524.GA28188@bogus> <CAPDyKFp5BvA7tKpBUh-bpn5X4xvg8b9HuMO7+fZVJEp78=ToRw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20200116170509.12787-1-sashal@kernel.org>
-Sender: stable-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Colin Ian King <colin.king@canonical.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Mukesh Ojha <mojha@codeaurora.org>, Shawn Lin <shawn.lin@rock-chips.com>, Sasha Levin <sashal@kernel.org>, linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAPDyKFp5BvA7tKpBUh-bpn5X4xvg8b9HuMO7+fZVJEp78=ToRw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Johan Jonker <jbx6244@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, DTML <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Colin Ian King <colin.king@canonical.com>
+On Thu, Jan 16, 2020 at 5:17 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+>
+> On Sat, 4 Jan 2020 at 22:55, Rob Herring <robh@kernel.org> wrote:
+> >
+> > On Sat, 28 Dec 2019 10:30:58 +0100, Johan Jonker wrote:
+> > > There are two identical phrases in the disable-wp text,
+> > > so remove one of them.
+> > >
+> > > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> > > ---
+> > >  Documentation/devicetree/bindings/mmc/mmc-controller.yaml | 3 +--
+> > >  1 file changed, 1 insertion(+), 2 deletions(-)
+> > >
+> >
+> > Applied, thanks.
+> >
+> > Rob
+>
+> Rob,
+>
+> Normally I pick up the DT doc changes for mmc whenever you have acked
+> them (at least more non-trivial changes). I regards to the
+> mmc-controller.yaml file, I have no queued changes in my tree for this
+> cycle so this should be fine in regards to conflicts.
+>
+> Going forward, do you prefer to pick the DT doc changes for mmc, or
+> can I consider this as a single occasion thingy?
 
-[ Upstream commit c577f4a5a08bb9677e12ddafb62e2f3a901de87f ]
+I usually only pick up small changes if they are a binding only series
+and if they haven't been picked up already.
 
-Currently the bitwise operations on the u16 variable 'status' with
-the setting ROCKCHIP_PCIE_EP_CMD_STATUS_IS are incorrect because
-ROCKCHIP_PCIE_EP_CMD_STATUS_IS is 1UL<<19 which is wider than the
-u16 variable.
+Though I've been picking up a few schema conversions primarily so I
+can check that they validate. Hopefully that's temporary.
 
-Fix this by making status a u32.
-
-Fixes: cf590b078391 ("PCI: rockchip: Add EP driver for Rockchip PCIe controller")
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
-Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Reviewed-by: Mukesh Ojha <mojha@codeaurora.org>
-Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/pci/controller/pcie-rockchip-ep.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index b8163c56a142..caf34661d38d 100644
---- a/drivers/pci/controller/pcie-rockchip-ep.c
-+++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -350,7 +350,7 @@ static void rockchip_pcie_ep_assert_intx(struct rockchip_pcie_ep *ep, u8 fn,
- 	struct rockchip_pcie *rockchip = &ep->rockchip;
- 	u32 r = ep->max_regions - 1;
- 	u32 offset;
--	u16 status;
-+	u32 status;
- 	u8 msg_code;
- 
- 	if (unlikely(ep->irq_pci_addr != ROCKCHIP_PCIE_EP_PCI_LEGACY_IRQ_ADDR ||
--- 
-2.20.1
+Rob
