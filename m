@@ -1,64 +1,327 @@
-From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [RFC PATCH v1 2/3] dt-bindings: mmc: convert synopsys dw-mshc
- bindings to yaml
-Date: Thu, 16 Jan 2020 08:07:59 -0600
-Message-ID: <CAL_Jsq+cJd0Ht+4FNX9RjbZL2vHjF90+G-v05XuyxrT7Ng15sA@mail.gmail.com>
-References: <20200114213809.27166-1-jbx6244@gmail.com> <20200114213809.27166-2-jbx6244@gmail.com>
- <CAL_JsqJ0QJ9uG9NY7vMGG00G4Jfk2mXS4OPdUzEaRVaCP++GzQ@mail.gmail.com> <203e9217-9aa8-b65e-4411-2d9b23c1362a@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v2 1/3] dt-bindings: mmc: convert synopsys dw-mshc bindings to yaml
+Date: Thu, 16 Jan 2020 16:22:28 +0100
+Message-ID: <20200116152230.29831-1-jbx6244@gmail.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <203e9217-9aa8-b65e-4411-2d9b23c1362a-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jan 16, 2020 at 6:00 AM Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> See below.
->
-> On 1/15/20 4:18 PM, Rob Herring wrote:
-> > On Tue, Jan 14, 2020 at 3:38 PM Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> >>
->
-> > [...]
-> >
-> >> diff --git a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
-> >> new file mode 100644
-> >> index 000000000..6f85a21d0
-> >> --- /dev/null
-> >> +++ b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
-> >> @@ -0,0 +1,88 @@
-> >> +# SPDX-License-Identifier: GPL-2.0
-> >> +%YAML 1.2
-> >> +---
-> >> +$id: http://devicetree.org/schemas/mmc/synopsys-dw-mshc.yaml#
-> >> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> >> +
-> >> +title: Synopsys Designware Mobile Storage Host Controller Binding
->
-> [..]
->
-> >> +examples:
-> >> +  # The MSHC controller node can be split into two portions, SoC specific and
-> >> +  # board specific portions as listed below.
-> >
->
->
-> > This split doesn't work because the examples are built and validated
-> > now. It may happen to because all the props are optional, but the
-> > board hunk goes unchecked. So please combine.
-> >
->
-> Hi,
->
-> I have no knowledge about this particular hardware to give a realistic
-> example. Could someone advise here? Or should I just use the first
-> example for now?
+Current dts files with 'dwmmc' nodes are manually verified.
+In order to automate this process synopsys-dw-mshc.txt
+has to be converted to yaml. In the new setup
+synopsys-dw-mshc.yaml will inherit properties from
+mmc-controller.yaml and synopsys-dw-mshc-common.yaml.
+'dwmmc' will no longer be a valid name for a node and
+should be changed to 'mmc'.
 
-Just combine the first part and one of the the 2 board hunks. I don't
-think having 2 board examples with the only diff being the dma
-properties adds much value.
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ .../bindings/mmc/synopsys-dw-mshc-common.yaml      |  68 ++++++++++
+ .../devicetree/bindings/mmc/synopsys-dw-mshc.txt   | 141 ---------------------
+ .../devicetree/bindings/mmc/synopsys-dw-mshc.yaml  |  70 ++++++++++
+ 3 files changed, 138 insertions(+), 141 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mmc/synopsys-dw-mshc-common.yaml
+ delete mode 100644 Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt
+ create mode 100644 Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
 
-Rob
+diff --git a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc-common.yaml b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc-common.yaml
+new file mode 100644
+index 000000000..890d47a87
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc-common.yaml
+@@ -0,0 +1,68 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mmc/synopsys-dw-mshc-common.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Synopsys Designware Mobile Storage Host Controller Common Properties
++
++allOf:
++  - $ref: "mmc-controller.yaml#"
++
++maintainers:
++  - Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
++
++# Everything else is described in the common file
++properties:
++  resets:
++    maxItems: 1
++
++  reset-names:
++    const: reset
++
++  clock-frequency:
++    description:
++      Should be the frequency (in Hz) of the ciu clock.  If this
++      is specified and the ciu clock is specified then we'll try to set the ciu
++      clock to this at probe time.
++
++  fifo-depth:
++    allOf:
++      - $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      The maximum size of the tx/rx fifo's. If this property is not
++      specified, the default value of the fifo size is determined from the
++      controller registers.
++
++  card-detect-delay:
++    allOf:
++      - $ref: /schemas/types.yaml#/definitions/uint32
++      - default: 0
++    description:
++      Delay in milli-seconds before detecting card after card
++      insert event. The default value is 0.
++
++  data-addr:
++    allOf:
++      - $ref: /schemas/types.yaml#/definitions/uint32
++    description:
++      Override fifo address with value provided by DT. The default FIFO reg
++      offset is assumed as 0x100 (version < 0x240A) and 0x200(version >= 0x240A)
++      by driver. If the controller does not follow this rule, please use
++      this property to set fifo address in device tree.
++
++  fifo-watermark-aligned:
++    allOf:
++      - $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      Data done irq is expected if data length is less than
++      watermark in PIO mode. But fifo watermark is requested to be aligned
++      with data length in some SoC so that TX/RX irq can be generated with
++      data done irq. Add this watermark quirk to mark this requirement and
++      force fifo watermark setting accordingly.
++
++  dmas:
++    maxItems: 1
++
++  dma-names:
++    const: rx-tx
+diff --git a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt
+deleted file mode 100644
+index 7e5e427a2..000000000
+--- a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.txt
++++ /dev/null
+@@ -1,141 +0,0 @@
+-* Synopsys Designware Mobile Storage Host Controller
+-
+-The Synopsys designware mobile storage host controller is used to interface
+-a SoC with storage medium such as eMMC or SD/MMC cards. This file documents
+-differences between the core mmc properties described by mmc.txt and the
+-properties used by the Synopsys Designware Mobile Storage Host Controller.
+-
+-Required Properties:
+-
+-* compatible: should be
+-	- snps,dw-mshc: for controllers compliant with synopsys dw-mshc.
+-* #address-cells: should be 1.
+-* #size-cells: should be 0.
+-
+-# Slots (DEPRECATED): The slot specific information are contained within
+-  child-nodes with each child-node representing a supported slot. There should
+-  be atleast one child node representing a card slot. The name of the child node
+-  representing the slot is recommended to be slot@n where n is the unique number
+-  of the slot connected to the controller. The following are optional properties
+-  which can be included in the slot child node.
+-
+-	* reg: specifies the physical slot number. The valid values of this
+-	  property is 0 to (num-slots -1), where num-slots is the value
+-	  specified by the num-slots property.
+-
+-	* bus-width: as documented in mmc core bindings.
+-
+-	* wp-gpios: specifies the write protect gpio line. The format of the
+-	  gpio specifier depends on the gpio controller. If a GPIO is not used
+-	  for write-protect, this property is optional.
+-
+-	* disable-wp: If the wp-gpios property isn't present then (by default)
+-	  we'd assume that the write protect is hooked up directly to the
+-	  controller's special purpose write protect line (accessible via
+-	  the WRTPRT register).  However, it's possible that we simply don't
+-	  want write protect.  In that case specify 'disable-wp'.
+-	  NOTE: This property is not required for slots known to always
+-	  connect to eMMC or SDIO cards.
+-
+-Optional properties:
+-
+-* resets: phandle + reset specifier pair, intended to represent hardware
+-  reset signal present internally in some host controller IC designs.
+-  See Documentation/devicetree/bindings/reset/reset.txt for details.
+-
+-* reset-names: request name for using "resets" property. Must be "reset".
+-	(It will be used together with "resets" property.)
+-
+-* clocks: from common clock binding: handle to biu and ciu clocks for the
+-  bus interface unit clock and the card interface unit clock.
+-
+-* clock-names: from common clock binding: Shall be "biu" and "ciu".
+-  If the biu clock is missing we'll simply skip enabling it.  If the
+-  ciu clock is missing we'll just assume that the clock is running at
+-  clock-frequency.  It is an error to omit both the ciu clock and the
+-  clock-frequency.
+-
+-* clock-frequency: should be the frequency (in Hz) of the ciu clock.  If this
+-  is specified and the ciu clock is specified then we'll try to set the ciu
+-  clock to this at probe time.
+-
+-* fifo-depth: The maximum size of the tx/rx fifo's. If this property is not
+-  specified, the default value of the fifo size is determined from the
+-  controller registers.
+-
+-* card-detect-delay: Delay in milli-seconds before detecting card after card
+-  insert event. The default value is 0.
+-
+-* data-addr: Override fifo address with value provided by DT. The default FIFO reg
+-  offset is assumed as 0x100 (version < 0x240A) and 0x200(version >= 0x240A) by
+-  driver. If the controller does not follow this rule, please use this property
+-  to set fifo address in device tree.
+-
+-* fifo-watermark-aligned: Data done irq is expected if data length is less than
+-  watermark in PIO mode. But fifo watermark is requested to be aligned with data
+-  length in some SoC so that TX/RX irq can be generated with data done irq. Add this
+-  watermark quirk to mark this requirement and force fifo watermark setting
+-  accordingly.
+-
+-* vmmc-supply: The phandle to the regulator to use for vmmc.  If this is
+-  specified we'll defer probe until we can find this regulator.
+-
+-* dmas: List of DMA specifiers with the controller specific format as described
+-  in the generic DMA client binding. Refer to dma.txt for details.
+-
+-* dma-names: request names for generic DMA client binding. Must be "rx-tx".
+-  Refer to dma.txt for details.
+-
+-Aliases:
+-
+-- All the MSHC controller nodes should be represented in the aliases node using
+-  the following format 'mshc{n}' where n is a unique number for the alias.
+-
+-Example:
+-
+-The MSHC controller node can be split into two portions, SoC specific and
+-board specific portions as listed below.
+-
+-	dwmmc0@12200000 {
+-		compatible = "snps,dw-mshc";
+-		clocks = <&clock 351>, <&clock 132>;
+-		clock-names = "biu", "ciu";
+-		reg = <0x12200000 0x1000>;
+-		interrupts = <0 75 0>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-		data-addr = <0x200>;
+-		fifo-watermark-aligned;
+-		resets = <&rst 20>;
+-		reset-names = "reset";
+-	};
+-
+-[board specific internal DMA resources]
+-
+-	dwmmc0@12200000 {
+-		clock-frequency = <400000000>;
+-		clock-freq-min-max = <400000 200000000>;
+-		broken-cd;
+-		fifo-depth = <0x80>;
+-		card-detect-delay = <200>;
+-		vmmc-supply = <&buck8>;
+-		bus-width = <8>;
+-		cap-mmc-highspeed;
+-		cap-sd-highspeed;
+-	};
+-
+-[board specific generic DMA request binding]
+-
+-	dwmmc0@12200000 {
+-		clock-frequency = <400000000>;
+-		clock-freq-min-max = <400000 200000000>;
+-		broken-cd;
+-		fifo-depth = <0x80>;
+-		card-detect-delay = <200>;
+-		vmmc-supply = <&buck8>;
+-		bus-width = <8>;
+-		cap-mmc-highspeed;
+-		cap-sd-highspeed;
+-		dmas = <&pdma 12>;
+-		dma-names = "rx-tx";
+-	};
+diff --git a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
+new file mode 100644
+index 000000000..05f9f36dc
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
+@@ -0,0 +1,70 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mmc/synopsys-dw-mshc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Synopsys Designware Mobile Storage Host Controller Binding
++
++allOf:
++  - $ref: "synopsys-dw-mshc-common.yaml#"
++
++maintainers:
++  - Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
++
++# Everything else is described in the common file
++properties:
++  compatible:
++    const: snps,dw-mshc
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    minItems: 2
++    maxItems: 2
++    description:
++      Handle to "biu" and "ciu" clocks for the
++      bus interface unit clock and the card interface unit clock.
++
++  clock-names:
++    items:
++      - const: biu
++      - const: ciu
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++
++examples:
++  - |
++    mmc@12200000 {
++      compatible = "snps,dw-mshc";
++      reg = <0x12200000 0x1000>;
++      interrupts = <0 75 0>;
++      clocks = <&clock 351>, <&clock 132>;
++      clock-names = "biu", "ciu";
++      dmas = <&pdma 12>;
++      dma-names = "rx-tx";
++      resets = <&rst 20>;
++      reset-names = "reset";
++      vmmc-supply = <&buck8>;
++      #address-cells = <1>;
++      #size-cells = <0>;
++      broken-cd;
++      bus-width = <8>;
++      cap-mmc-highspeed;
++      cap-sd-highspeed;
++      card-detect-delay = <200>;
++      clock-freq-min-max = <400000 200000000>;
++      clock-frequency = <400000000>;
++      data-addr = <0x200>;
++      fifo-depth = <0x80>;
++      fifo-watermark-aligned;
++    };
+-- 
+2.11.0
