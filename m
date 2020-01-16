@@ -1,51 +1,94 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: mmc: remove identical phrase in
- disable-wp text
-Date: Thu, 16 Jan 2020 11:18:17 -0600
-Message-ID: <CAL_Jsq+9w2wjwoOfnnKUBk9kOkZFcU6aWwyaw05ye-p3_WDcaQ@mail.gmail.com>
-References: <20191219145843.3823-1-jbx6244@gmail.com> <20191228093059.2817-1-jbx6244@gmail.com>
- <20200104215524.GA28188@bogus> <CAPDyKFp5BvA7tKpBUh-bpn5X4xvg8b9HuMO7+fZVJEp78=ToRw@mail.gmail.com>
+From: Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 5/6] PCI: rockchip: add DesignWare based PCIe controller
+Date: Thu, 16 Jan 2020 21:36:00 +0000
+Message-ID: <SL2P216MB0105652DE83E7CBBDA2A370CAA360@SL2P216MB0105.KORP216.PROD.OUTLOOK.COM>
+References: <1578986580-71974-1-git-send-email-shawn.lin@rock-chips.com>
+ <1578986701-72072-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAPDyKFp5BvA7tKpBUh-bpn5X4xvg8b9HuMO7+fZVJEp78=ToRw@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Johan Jonker <jbx6244@gmail.com>, Mark Rutland <mark.rutland@arm.com>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, DTML <devicetree@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1578986701-72072-1-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, "linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Han Jingoo <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jan 16, 2020 at 5:17 AM Ulf Hansson <ulf.hansson@linaro.org> wrote:
+On 1/14/20, 2:25 AM, Shawn Lin wrote:
+>=20
+> From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 >
-> On Sat, 4 Jan 2020 at 22:55, Rob Herring <robh@kernel.org> wrote:
-> >
-> > On Sat, 28 Dec 2019 10:30:58 +0100, Johan Jonker wrote:
-> > > There are two identical phrases in the disable-wp text,
-> > > so remove one of them.
-> > >
-> > > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> > > ---
-> > >  Documentation/devicetree/bindings/mmc/mmc-controller.yaml | 3 +--
-> > >  1 file changed, 1 insertion(+), 2 deletions(-)
-> > >
-> >
-> > Applied, thanks.
-> >
-> > Rob
+> Signed-off-by: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
 >
-> Rob,
+>  drivers/pci/controller/dwc/Kconfig            |   9 +
+>  drivers/pci/controller/dwc/Makefile           |   1 +
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 441 ++++++++++++++++++++=
+++++++
+>  3 files changed, 451 insertions(+)
+>  create mode 100644 drivers/pci/controller/dwc/pcie-dw-rockchip.c
 >
-> Normally I pick up the DT doc changes for mmc whenever you have acked
-> them (at least more non-trivial changes). I regards to the
-> mmc-controller.yaml file, I have no queued changes in my tree for this
-> cycle so this should be fine in regards to conflicts.
->
-> Going forward, do you prefer to pick the DT doc changes for mmc, or
-> can I consider this as a single occasion thingy?
+> diff --git a/drivers/pci/controller/dwc/Kconfig b/drivers/pci/controller/=
+dwc/Kconfig
+> index 0830dfc..9160264 100644
+> --- a/drivers/pci/controller/dwc/Kconfig
+> +++ b/drivers/pci/controller/dwc/Kconfig
+> @@ -82,6 +82,15 @@ config PCIE_DW_PLAT_EP
+>  	  order to enable device-specific features PCI_DW_PLAT_EP must be
+>  	  selected.
+> =20
+> +config PCIE_DW_ROCKCHIP
+> +	bool "Rockchip DesignWare PCIe controller"
+> +	select PCIE_DW
+> +	select PCIE_DW_HOST
+> +	depends on ARCH_ROCKCHIP
+> +	depends on OF
+> +	help
+> +	  Enables support for the DW PCIe controller in the Rockchip SoC.
+> +
 
-I usually only pick up small changes if they are a binding only series
-and if they haven't been picked up already.
+The order is PCIE_DW, PCI_*, and PCIE_* as below.
 
-Though I've been picking up a few schema conversions primarily so I
-can check that they validate. Hopefully that's temporary.
+1. Common Frameworks:
+    These options are used by other controller drivers.
+    e.g., PCIE_DW, PCIE_DW_HOST, PCIE_DW_EP.
 
-Rob
+2. PCI_* controller drivers:
+    PCI_* was used earlier than PCIE_*. If a chip vendor's controllers prov=
+ide
+    both conventional PCI and PCI Express, or only conventional PCI, PCI_* =
+can
+    be used.
+
+3. PCIE_* controller drivers
+    If a controller can support only PCI Express, not conventional PCI,
+    PCIE_* is the proper naming.
+
+Then, within PCI_* or PCIE_* categories, each controller option should be
+in an alphabetical order for the readability.
+
+So, add 'PCIE_DW_ROCKCHIP' between 'PCIE_ARTPEC6_EP' and 'PCIE_KIRIN'.
+
+>
+>  config PCI_EXYNOS
+>  	bool "Samsung Exynos PCIe controller"
+>  	depends on SOC_EXYNOS5440 || COMPILE_TEST
+> diff --git a/drivers/pci/controller/dwc/Makefile b/drivers/pci/controller=
+/dwc/Makefile
+> index 8a637cf..cb4857f 100644
+> --- a/drivers/pci/controller/dwc/Makefile
+> +++ b/drivers/pci/controller/dwc/Makefile
+> @@ -19,6 +19,7 @@ obj-$(CONFIG_PCIE_HISI_STB) +=3D pcie-histb.o
+>  obj-$(CONFIG_PCI_MESON) +=3D pci-meson.o
+>  obj-$(CONFIG_PCIE_TEGRA194) +=3D pcie-tegra194.o
+>  obj-$(CONFIG_PCIE_UNIPHIER) +=3D pcie-uniphier.o
+> +obj-$(CONFIG_PCIE_DW_ROCKCHIP) +=3D pcie-dw-rockchip.o
+
+Ditto.
+
+[...]
+
+Best regards,
+Jingoo Han
