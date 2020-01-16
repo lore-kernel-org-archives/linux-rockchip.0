@@ -1,8 +1,8 @@
 From: Jianqun Xu <jay.xu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3] pinctrl: rockchip: split rockchip pinctrl driver by SoC
- type
-Date: Thu, 16 Jan 2020 15:14:26 +0800
-Message-ID: <20200116071426.13430-1-jay.xu@rock-chips.com>
+Subject: [PATCH v3 RESEND] pinctrl: rockchip: split rockchip pinctrl driver by
+ SoC type
+Date: Thu, 16 Jan 2020 15:47:38 +0800
+Message-ID: <20200116074738.14144-1-jay.xu@rock-chips.com>
 References: <c4ec95a7-aaf1-2331-352f-2def319a1c7d@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -291,7 +291,7 @@ index 000000000000..a250b60631f5
 +obj-$(CONFIG_PINCTRL_RV1108)	+= pinctrl-rv1108.o
 diff --git a/drivers/pinctrl/rockchip/pinctrl-px30.c b/drivers/pinctrl/rockchip/pinctrl-px30.c
 new file mode 100644
-index 000000000000..b589c2166a3f
+index 000000000000..d92563cdf957
 --- /dev/null
 +++ b/drivers/pinctrl/rockchip/pinctrl-px30.c
 @@ -0,0 +1,224 @@
@@ -491,7 +491,7 @@ index 000000000000..b589c2166a3f
 +		.iomux_routes		= px30_mux_route_data,
 +		.niomux_routes		= ARRAY_SIZE(px30_mux_route_data),
 +		.pull_calc_reg		= px30_calc_pull,
-+		.drv_calc_reg		= px30_calc_drv_reg,
++		.drv_calc_reg		= px30_calc_drv,
 +		.schmitt_calc_reg	= px30_calc_schmitt,
 +};
 +
