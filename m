@@ -1,122 +1,73 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.4 035/205] drm/rockchip: Round up _before_ giving to the clock framework
-Date: Thu, 16 Jan 2020 11:40:10 -0500
-Message-ID: <20200116164300.6705-35-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 205/205] phy/rockchip: inno-hdmi: round clock rate
+ down to closest 1000 Hz
+Date: Thu, 16 Jan 2020 11:43:00 -0500
+Message-ID: <20200116164300.6705-205-sashal@kernel.org>
 References: <20200116164300.6705-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <stable-owner@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
 In-Reply-To: <20200116164300.6705-1-sashal@kernel.org>
-Sender: stable-owner@vger.kernel.org
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
 To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Douglas Anderson <dianders@chromium.org>, Sean Paul <seanpaul@chromium.org>, Sasha Levin <sashal@kernel.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-arm-kernel@lists.infradead.org, Jonas Karlman <jonas@kwiboo.se>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Douglas Anderson <dianders@chromium.org>
+From: Jonas Karlman <jonas@kwiboo.se>
 
-[ Upstream commit 287422a95fe28e05c1952de0472e0dfdffa6caae ]
+[ Upstream commit 4f510aa10468954b1da4e94689c38ac6ea8d3627 ]
 
-I'm embarassed to say that even though I've touched
-vop_crtc_mode_fixup() twice and I swear I tested it, there's still a
-stupid glaring bug in it.  Specifically, on veyron_minnie (with all
-the latest display timings) we want to be setting our pixel clock to
-66,666,666.67 Hz and we tell userspace that's what we set, but we're
-actually choosing 66,000,000 Hz.  This is confirmed by looking at the
-clock tree.
+Commit 287422a95fe2 ("drm/rockchip: Round up _before_ giving to the clock framework")
+changed what rate clk_round_rate() is called with, an additional 999 Hz
+added to the requsted mode clock. This has caused a regression on RK3328
+and presumably also on RK3228 because the inno-hdmi-phy clock requires an
+exact match of the requested rate in the pre pll config table.
 
-The problem is that in drm_display_mode_from_videomode() we convert
-from Hz to kHz with:
+When an exact match is not found the parent clock rate (24MHz) is returned
+to the clk_round_rate() caller. This cause wrong pixel clock to be used and
+result in no-signal when configuring a mode on RK3328.
 
-  dmode->clock = vm->pixelclock / 1000;
+Fix this by rounding the rate down to closest 1000 Hz in round_rate func,
+this allows an exact match to be found in pre pll config table.
 
-...and drm_display_mode_from_videomode() is called from panel-simple
-when we have an "override_mode" like we do on veyron_minnie.  See
-commit 123643e5c40a ("ARM: dts: rockchip: Specify
-rk3288-veyron-minnie's display timings").
-
-...so when the device tree specifies a clock of 66666667 for the panel
-then DRM translates that to 66666000.  The clock framework will always
-pick a clock that is _lower_ than the one requested, so it will refuse
-to pick 66666667 and we'll end up at 66000000.
-
-While we could try to fix drm_display_mode_from_videomode() to round
-to the nearest kHz and it would fix our problem, it wouldn't help if
-the clock we actually needed was 60,000,001 Hz.  We could
-alternatively have DRM always round up, but maybe this would break
-someone else who already baked in the assumption that DRM rounds down.
-Specifically note that clock drivers are not consistent about whether
-they round up or round down when you call clk_set_rate().  We know how
-Rockchip's clock driver works, but (for instance) you can see that on
-most Qualcomm clocks the default is clk_rcg2_ops which rounds up.
-
-Let's solve this by just adding 999 Hz before calling
-clk_round_rate().  This should be safe and work everywhere.  As
-discussed in more detail in comments in the commit, Rockchip's PLLs
-are configured in a way that there shouldn't be another PLL setting
-that is only a few kHz off so we won't get mixed up.
-
-NOTE: if this is picked to stable, it's probably easiest to first pick
-commit 527e4ca3b6d1 ("drm/rockchip: Base adjustments of the mode based
-on prev adjustments") which shouldn't hurt in stable.
-
-Fixes: b59b8de31497 ("drm/rockchip: return a true clock rate to adjusted_mode")
-Signed-off-by: Douglas Anderson <dianders@chromium.org>
-Reviewed-by: Sean Paul <seanpaul@chromium.org>
-Signed-off-by: Sean Paul <seanpaul@chromium.org>
-Link: https://patchwork.freedesktop.org/patch/msgid/20191003114726.v2.1.Ib233b3e706cf6317858384264d5b0ed35657456e@changeid
+Fixes: 287422a95fe2 ("drm/rockchip: Round up _before_ giving to the clock framework")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 37 +++++++++++++++++++--
- 1 file changed, 34 insertions(+), 3 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index 613404f86668..84e3decb17b1 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1040,10 +1040,41 @@ static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
- 				struct drm_display_mode *adjusted_mode)
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+index 2b97fb1185a0..9ca20c947283 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+@@ -603,6 +603,8 @@ static long inno_hdmi_phy_rk3228_clk_round_rate(struct clk_hw *hw,
  {
- 	struct vop *vop = to_vop(crtc);
-+	unsigned long rate;
+ 	const struct pre_pll_config *cfg = pre_pll_cfg_table;
  
--	adjusted_mode->clock =
--		DIV_ROUND_UP(clk_round_rate(vop->dclk,
--					    adjusted_mode->clock * 1000), 1000);
-+	/*
-+	 * Clock craziness.
-+	 *
-+	 * Key points:
-+	 *
-+	 * - DRM works in in kHz.
-+	 * - Clock framework works in Hz.
-+	 * - Rockchip's clock driver picks the clock rate that is the
-+	 *   same _OR LOWER_ than the one requested.
-+	 *
-+	 * Action plan:
-+	 *
-+	 * 1. When DRM gives us a mode, we should add 999 Hz to it.  That way
-+	 *    if the clock we need is 60000001 Hz (~60 MHz) and DRM tells us to
-+	 *    make 60000 kHz then the clock framework will actually give us
-+	 *    the right clock.
-+	 *
-+	 *    NOTE: if the PLL (maybe through a divider) could actually make
-+	 *    a clock rate 999 Hz higher instead of the one we want then this
-+	 *    could be a problem.  Unfortunately there's not much we can do
-+	 *    since it's baked into DRM to use kHz.  It shouldn't matter in
-+	 *    practice since Rockchip PLLs are controlled by tables and
-+	 *    even if there is a divider in the middle I wouldn't expect PLL
-+	 *    rates in the table that are just a few kHz different.
-+	 *
-+	 * 2. Get the clock framework to round the rate for us to tell us
-+	 *    what it will actually make.
-+	 *
-+	 * 3. Store the rounded up rate so that we don't need to worry about
-+	 *    this in the actual clk_set_rate().
-+	 */
-+	rate = clk_round_rate(vop->dclk, adjusted_mode->clock * 1000 + 999);
-+	adjusted_mode->clock = DIV_ROUND_UP(rate, 1000);
++	rate = (rate / 1000) * 1000;
++
+ 	for (; cfg->pixclock != 0; cfg++)
+ 		if (cfg->pixclock == rate && !cfg->fracdiv)
+ 			break;
+@@ -755,6 +757,8 @@ static long inno_hdmi_phy_rk3328_clk_round_rate(struct clk_hw *hw,
+ {
+ 	const struct pre_pll_config *cfg = pre_pll_cfg_table;
  
- 	return true;
- }
++	rate = (rate / 1000) * 1000;
++
+ 	for (; cfg->pixclock != 0; cfg++)
+ 		if (cfg->pixclock == rate)
+ 			break;
 -- 
 2.20.1
