@@ -1,227 +1,122 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2 2/3] dt-bindings: mmc: convert rockchip dw-mshc bindings to yaml
-Date: Thu, 16 Jan 2020 16:22:29 +0100
-Message-ID: <20200116152230.29831-2-jbx6244@gmail.com>
-References: <20200116152230.29831-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200116152230.29831-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: ulf.hansson@linaro.org
-Cc: robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+From: Sasha Levin <sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 035/205] drm/rockchip: Round up _before_ giving to the clock framework
+Date: Thu, 16 Jan 2020 11:40:10 -0500
+Message-ID: <20200116164300.6705-35-sashal@kernel.org>
+References: <20200116164300.6705-1-sashal@kernel.org>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20200116164300.6705-1-sashal@kernel.org>
+Sender: stable-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: Douglas Anderson <dianders@chromium.org>, Sean Paul <seanpaul@chromium.org>, Sasha Levin <sashal@kernel.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Current dts files with 'dwmmc' nodes are manually verified.
-In order to automate this process rockchip-dw-mshc.txt
-has to be converted to yaml. In the new setup
-rockchip-dw-mshc.yaml will inherit properties from
-mmc-controller.yaml and synopsys-dw-mshc-common.yaml.
-'dwmmc' will no longer be a valid name for a node and
-should be changed to 'mmc'.
+From: Douglas Anderson <dianders@chromium.org>
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+[ Upstream commit 287422a95fe28e05c1952de0472e0dfdffa6caae ]
+
+I'm embarassed to say that even though I've touched
+vop_crtc_mode_fixup() twice and I swear I tested it, there's still a
+stupid glaring bug in it.  Specifically, on veyron_minnie (with all
+the latest display timings) we want to be setting our pixel clock to
+66,666,666.67 Hz and we tell userspace that's what we set, but we're
+actually choosing 66,000,000 Hz.  This is confirmed by looking at the
+clock tree.
+
+The problem is that in drm_display_mode_from_videomode() we convert
+from Hz to kHz with:
+
+  dmode->clock = vm->pixelclock / 1000;
+
+...and drm_display_mode_from_videomode() is called from panel-simple
+when we have an "override_mode" like we do on veyron_minnie.  See
+commit 123643e5c40a ("ARM: dts: rockchip: Specify
+rk3288-veyron-minnie's display timings").
+
+...so when the device tree specifies a clock of 66666667 for the panel
+then DRM translates that to 66666000.  The clock framework will always
+pick a clock that is _lower_ than the one requested, so it will refuse
+to pick 66666667 and we'll end up at 66000000.
+
+While we could try to fix drm_display_mode_from_videomode() to round
+to the nearest kHz and it would fix our problem, it wouldn't help if
+the clock we actually needed was 60,000,001 Hz.  We could
+alternatively have DRM always round up, but maybe this would break
+someone else who already baked in the assumption that DRM rounds down.
+Specifically note that clock drivers are not consistent about whether
+they round up or round down when you call clk_set_rate().  We know how
+Rockchip's clock driver works, but (for instance) you can see that on
+most Qualcomm clocks the default is clk_rcg2_ops which rounds up.
+
+Let's solve this by just adding 999 Hz before calling
+clk_round_rate().  This should be safe and work everywhere.  As
+discussed in more detail in comments in the commit, Rockchip's PLLs
+are configured in a way that there shouldn't be another PLL setting
+that is only a few kHz off so we won't get mixed up.
+
+NOTE: if this is picked to stable, it's probably easiest to first pick
+commit 527e4ca3b6d1 ("drm/rockchip: Base adjustments of the mode based
+on prev adjustments") which shouldn't hurt in stable.
+
+Fixes: b59b8de31497 ("drm/rockchip: return a true clock rate to adjusted_mode")
+Signed-off-by: Douglas Anderson <dianders@chromium.org>
+Reviewed-by: Sean Paul <seanpaul@chromium.org>
+Signed-off-by: Sean Paul <seanpaul@chromium.org>
+Link: https://patchwork.freedesktop.org/patch/msgid/20191003114726.v2.1.Ib233b3e706cf6317858384264d5b0ed35657456e@changeid
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |  49 --------
- .../devicetree/bindings/mmc/rockchip-dw-mshc.yaml  | 123 +++++++++++++++++++++
- MAINTAINERS                                        |   1 +
- 3 files changed, 124 insertions(+), 49 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
- create mode 100644 Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 37 +++++++++++++++++++--
+ 1 file changed, 34 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
-deleted file mode 100644
-index 6f629b12b..000000000
---- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
-+++ /dev/null
-@@ -1,49 +0,0 @@
--* Rockchip specific extensions to the Synopsys Designware Mobile
--  Storage Host Controller
--
--The Synopsys designware mobile storage host controller is used to interface
--a SoC with storage medium such as eMMC or SD/MMC cards. This file documents
--differences between the core Synopsys dw mshc controller properties described
--by synopsys-dw-mshc.txt and the properties used by the Rockchip specific
--extensions to the Synopsys Designware Mobile Storage Host Controller.
--
--Required Properties:
--
--* compatible: should be
--	- "rockchip,rk2928-dw-mshc": for Rockchip RK2928 and following,
--							before RK3288
--	- "rockchip,rk3288-dw-mshc": for Rockchip RK3288
--	- "rockchip,rv1108-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RV1108
--	- "rockchip,px30-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip PX30
--	- "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3036
--	- "rockchip,rk3228-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK322x
--	- "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3328
--	- "rockchip,rk3368-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3368
--	- "rockchip,rk3399-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3399
--
--Optional Properties:
--* clocks: from common clock binding: if ciu-drive and ciu-sample are
--  specified in clock-names, should contain handles to these clocks.
--
--* clock-names: Apart from the clock-names described in synopsys-dw-mshc.txt
--  two more clocks "ciu-drive" and "ciu-sample" are supported. They are used
--  to control the clock phases, "ciu-sample" is required for tuning high-
--  speed modes.
--
--* rockchip,default-sample-phase: The default phase to set ciu-sample at
--  probing, low speeds or in case where all phases work at tuning time.
--  If not specified 0 deg will be used.
--
--* rockchip,desired-num-phases: The desired number of times that the host
--  execute tuning when needed. If not specified, the host will do tuning
--  for 360 times, namely tuning for each degree.
--
--Example:
--
--	rkdwmmc0@12200000 {
--		compatible = "rockchip,rk3288-dw-mshc";
--		reg = <0x12200000 0x1000>;
--		interrupts = <0 75 0>;
--		#address-cells = <1>;
--		#size-cells = <0>;
--	};
-diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-new file mode 100644
-index 000000000..2f70f5ef0
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-@@ -0,0 +1,123 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mmc/rockchip-dw-mshc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip designware mobile storage host controller device tree bindings
-+
-+description:
-+  Rockchip uses the Synopsys designware mobile storage host controller
-+  to interface a SoC with storage medium such as eMMC or SD/MMC cards.
-+  This file documents the combined properties for the core Synopsys dw mshc
-+  controller that are not already included in the synopsys-dw-mshc-common.yaml
-+  file and the Rockchip specific extensions.
-+
-+allOf:
-+  - $ref: "synopsys-dw-mshc-common.yaml#"
-+
-+maintainers:
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+# Everything else is described in the common file
-+properties:
-+  compatible:
-+    oneOf:
-+      # for Rockchip RK2928 and before RK3288
-+      - const: rockchip,rk2928-dw-mshc
-+      # for Rockchip RK3288
-+      - const: rockchip,rk3288-dw-mshc
-+      - items:
-+          - enum:
-+            # for Rockchip PX30
-+            - rockchip,px30-dw-mshc
-+            # for Rockchip RK3036
-+            - rockchip,rk3036-dw-mshc
-+            # for Rockchip RK322x
-+            - rockchip,rk3228-dw-mshc
-+            # for Rockchip RK3328
-+            - rockchip,rk3328-dw-mshc
-+            # for Rockchip RK3368
-+            - rockchip,rk3368-dw-mshc
-+            # for Rockchip RK3399
-+            - rockchip,rk3399-dw-mshc
-+            # for Rockchip RV1108
-+            - rockchip,rv1108-dw-mshc
-+          - const: rockchip,rk3288-dw-mshc
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    minItems: 2
-+    maxItems: 4
-+    description:
-+      Handle to "biu" and "ciu" clocks for the bus interface unit clock and
-+      the card interface unit clock. If "ciu-drive" and "ciu-sample" are
-+      specified in clock-names, it should also contain
-+      handles to these clocks.
-+
-+  clock-names:
-+    minItems: 2
-+    items:
-+      - const: biu
-+      - const: ciu
-+      - const: ciu-drive
-+      - const: ciu-sample
-+    description:
-+      Apart from the clock-names "biu" and "ciu" two more clocks
-+      "ciu-drive" and "ciu-sample" are supported. They are used
-+      to control the clock phases, "ciu-sample" is required for tuning
-+      high speed modes.
-+
-+  rockchip,default-sample-phase:
-+    allOf:
-+      - $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 0
-+    maximum: 360
-+    default: 0
-+    description:
-+      The default phase to set "ciu-sample" at probing,
-+      low speeds or in case where all phases work at tuning time.
-+      If not specified 0 deg will be used.
-+
-+  rockchip,desired-num-phases:
-+    allOf:
-+      - $ref: /schemas/types.yaml#/definitions/uint32
-+    minimum: 0
-+    maximum: 360
-+    default: 360
-+    description:
-+      The desired number of times that the host execute tuning when needed.
-+      If not specified, the host will do tuning for 360 times,
-+      namely tuning for each degree.
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rk3288-cru.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    sdmmc: mmc@ff0c0000 {
-+      compatible = "rockchip,rk3288-dw-mshc";
-+      reg = <0x0 0xff0c0000 0x0 0x4000>;
-+      interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
-+      clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
-+               <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
-+      clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-+      resets = <&cru SRST_MMC0>;
-+      reset-names = "reset";
-+      fifo-depth = <0x100>;
-+      max-frequency = <150000000>;
-+    };
-+
-+...
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d6ad01d71..1b16c0fdf 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2240,6 +2240,7 @@ L:	linux-rockchip@lists.infradead.org
- T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
- S:	Maintained
- F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-+F:	Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
- F:	arch/arm/boot/dts/rk3*
- F:	arch/arm/boot/dts/rv1108*
- F:	arch/arm/mach-rockchip/
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index 613404f86668..84e3decb17b1 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1040,10 +1040,41 @@ static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
+ 				struct drm_display_mode *adjusted_mode)
+ {
+ 	struct vop *vop = to_vop(crtc);
++	unsigned long rate;
+ 
+-	adjusted_mode->clock =
+-		DIV_ROUND_UP(clk_round_rate(vop->dclk,
+-					    adjusted_mode->clock * 1000), 1000);
++	/*
++	 * Clock craziness.
++	 *
++	 * Key points:
++	 *
++	 * - DRM works in in kHz.
++	 * - Clock framework works in Hz.
++	 * - Rockchip's clock driver picks the clock rate that is the
++	 *   same _OR LOWER_ than the one requested.
++	 *
++	 * Action plan:
++	 *
++	 * 1. When DRM gives us a mode, we should add 999 Hz to it.  That way
++	 *    if the clock we need is 60000001 Hz (~60 MHz) and DRM tells us to
++	 *    make 60000 kHz then the clock framework will actually give us
++	 *    the right clock.
++	 *
++	 *    NOTE: if the PLL (maybe through a divider) could actually make
++	 *    a clock rate 999 Hz higher instead of the one we want then this
++	 *    could be a problem.  Unfortunately there's not much we can do
++	 *    since it's baked into DRM to use kHz.  It shouldn't matter in
++	 *    practice since Rockchip PLLs are controlled by tables and
++	 *    even if there is a divider in the middle I wouldn't expect PLL
++	 *    rates in the table that are just a few kHz different.
++	 *
++	 * 2. Get the clock framework to round the rate for us to tell us
++	 *    what it will actually make.
++	 *
++	 * 3. Store the rounded up rate so that we don't need to worry about
++	 *    this in the actual clk_set_rate().
++	 */
++	rate = clk_round_rate(vop->dclk, adjusted_mode->clock * 1000 + 999);
++	adjusted_mode->clock = DIV_ROUND_UP(rate, 1000);
+ 
+ 	return true;
+ }
 -- 
-2.11.0
+2.20.1
