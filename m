@@ -1,107 +1,64 @@
-From: Johan Jonker <jbx6244@gmail.com>
+From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Subject: Re: [RFC PATCH v1 2/3] dt-bindings: mmc: convert synopsys dw-mshc
  bindings to yaml
-Date: Thu, 16 Jan 2020 13:00:55 +0100
-Message-ID: <203e9217-9aa8-b65e-4411-2d9b23c1362a@gmail.com>
-References: <20200114213809.27166-1-jbx6244@gmail.com>
- <20200114213809.27166-2-jbx6244@gmail.com>
- <CAL_JsqJ0QJ9uG9NY7vMGG00G4Jfk2mXS4OPdUzEaRVaCP++GzQ@mail.gmail.com>
+Date: Thu, 16 Jan 2020 08:07:59 -0600
+Message-ID: <CAL_Jsq+cJd0Ht+4FNX9RjbZL2vHjF90+G-v05XuyxrT7Ng15sA@mail.gmail.com>
+References: <20200114213809.27166-1-jbx6244@gmail.com> <20200114213809.27166-2-jbx6244@gmail.com>
+ <CAL_JsqJ0QJ9uG9NY7vMGG00G4Jfk2mXS4OPdUzEaRVaCP++GzQ@mail.gmail.com> <203e9217-9aa8-b65e-4411-2d9b23c1362a@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <CAL_JsqJ0QJ9uG9NY7vMGG00G4Jfk2mXS4OPdUzEaRVaCP++GzQ@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-mmc-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Mark Rutland <mark.rutland@arm.com>, "heiko@sntech.de" <heiko@sntech.de>, linux-mmc <linux-mmc@vger.kernel.org>, devicetree@vger.kernel.org, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <203e9217-9aa8-b65e-4411-2d9b23c1362a-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Ulf Hansson <ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-mmc <linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-See below.
+On Thu, Jan 16, 2020 at 6:00 AM Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+> See below.
+>
+> On 1/15/20 4:18 PM, Rob Herring wrote:
+> > On Tue, Jan 14, 2020 at 3:38 PM Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> >>
+>
+> > [...]
+> >
+> >> diff --git a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
+> >> new file mode 100644
+> >> index 000000000..6f85a21d0
+> >> --- /dev/null
+> >> +++ b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
+> >> @@ -0,0 +1,88 @@
+> >> +# SPDX-License-Identifier: GPL-2.0
+> >> +%YAML 1.2
+> >> +---
+> >> +$id: http://devicetree.org/schemas/mmc/synopsys-dw-mshc.yaml#
+> >> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> >> +
+> >> +title: Synopsys Designware Mobile Storage Host Controller Binding
+>
+> [..]
+>
+> >> +examples:
+> >> +  # The MSHC controller node can be split into two portions, SoC specific and
+> >> +  # board specific portions as listed below.
+> >
+>
+>
+> > This split doesn't work because the examples are built and validated
+> > now. It may happen to because all the props are optional, but the
+> > board hunk goes unchecked. So please combine.
+> >
+>
+> Hi,
+>
+> I have no knowledge about this particular hardware to give a realistic
+> example. Could someone advise here? Or should I just use the first
+> example for now?
 
-On 1/15/20 4:18 PM, Rob Herring wrote:
-> On Tue, Jan 14, 2020 at 3:38 PM Johan Jonker <jbx6244@gmail.com> wrote:
->>
+Just combine the first part and one of the the 2 board hunks. I don't
+think having 2 board examples with the only diff being the dma
+properties adds much value.
 
-> [...]
-> 
->> diff --git a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
->> new file mode 100644
->> index 000000000..6f85a21d0
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
->> @@ -0,0 +1,88 @@
->> +# SPDX-License-Identifier: GPL-2.0
->> +%YAML 1.2
->> +---
->> +$id: http://devicetree.org/schemas/mmc/synopsys-dw-mshc.yaml#
->> +$schema: http://devicetree.org/meta-schemas/core.yaml#
->> +
->> +title: Synopsys Designware Mobile Storage Host Controller Binding
-
-[..]
-
->> +examples:
->> +  # The MSHC controller node can be split into two portions, SoC specific and
->> +  # board specific portions as listed below.
-> 
-
-
-> This split doesn't work because the examples are built and validated
-> now. It may happen to because all the props are optional, but the
-> board hunk goes unchecked. So please combine.
-> 
-
-Hi,
-
-I have no knowledge about this particular hardware to give a realistic
-example. Could someone advise here? Or should I just use the first
-example for now?
-
-Thanks
-
->> +  - |
->> +    dwmmc0@12200000 {
->> +      compatible = "snps,dw-mshc";
->> +      clocks = <&clock 351>, <&clock 132>;
->> +      clock-names = "biu", "ciu";
->> +      reg = <0x12200000 0x1000>;
->> +      interrupts = <0 75 0>;
->> +      #address-cells = <1>;
->> +      #size-cells = <0>;
->> +      data-addr = <0x200>;
->> +      fifo-watermark-aligned;
->> +      resets = <&rst 20>;
->> +      reset-names = "reset";
->> +    };
->> +  # [board specific internal DMA resources]
->> +  - |
->> +    dwmmc0@12200000 {
->> +      clock-frequency = <400000000>;
->> +      clock-freq-min-max = <400000 200000000>;
->> +      broken-cd;
->> +      fifo-depth = <0x80>;
->> +      card-detect-delay = <200>;
->> +      vmmc-supply = <&buck8>;
->> +      bus-width = <8>;
->> +      cap-mmc-highspeed;
->> +      cap-sd-highspeed;
->> +    };
->> +  # [board specific generic DMA request binding]
->> +  - |
->> +    dwmmc0@12200000 {
->> +      clock-frequency = <400000000>;
->> +      clock-freq-min-max = <400000 200000000>;
->> +      broken-cd;
->> +      fifo-depth = <0x80>;
->> +      card-detect-delay = <200>;
->> +      vmmc-supply = <&buck8>;
->> +      bus-width = <8>;
->> +      cap-mmc-highspeed;
->> +      cap-sd-highspeed;
->> +      dmas = <&pdma 12>;
->> +      dma-names = "rx-tx";
->> +    };
->> --
->> 2.11.0
->>
+Rob
