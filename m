@@ -1,52 +1,121 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v7 5/7] arm: dts: rk3188: Add rk3188-u-boot.dtsi
-Date: Fri, 17 Jan 2020 14:53:15 +0800
-Message-ID: <dac808a1-f96d-e5e7-f565-6ba88ad1bb86@rock-chips.com>
-References: <20200109184622.3098-1-jagan@amarulasolutions.com>
- <20200109184622.3098-6-jagan@amarulasolutions.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: [PATCH] arm: rockchip: dts: Kill off "simple-panel" compatibles
+Date: Fri, 17 Jan 2020 17:08:51 -0600
+Message-ID: <20200117230851.25434-1-robh@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200109184622.3098-6-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMjAvMS8xMCDkuIrljYgyOjQ2LCBKYWdhbiBUZWtpIHdyb3RlOgo+IEFkZCBVLUJvb3Qg
-c3BlY2lmaWMgZHRzaSBmaWxlIGZvciByazMxODggU29DLiBUaGlzCj4gd291bGQgaGVscCB0byBh
-ZGQgVS1Cb290IHNwZWNpZmljIGR0cyBub2RlcywgcHJvcGVydGllcwo+IHdoaWNoIGFyZSBjb21t
-b24gYWNyb3NzIHJrMzE4OC4KPgo+IFJpZ2h0IG5vdywgdGhlIGZpbGUgaXMgZW1wdHksIHdpbGwg
-YWRkIHJlcXVpcmVkIGNoYW5nZXMKPiBpbiBmdXR1cmUgcGF0Y2hlcy4KPgo+IFNpZ25lZC1vZmYt
-Ynk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgpSZXZpZXdlZC1ieTog
-S2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KClRoYW5rcywKLSBLZXZlcgo+
-IC0tLQo+ICAgYXJjaC9hcm0vZHRzL3JrMzE4OC1yYWR4YXJvY2stdS1ib290LmR0c2kgfCAyICsr
-Cj4gICBhcmNoL2FybS9kdHMvcmszMTg4LXUtYm9vdC5kdHNpICAgICAgICAgICB8IDQgKysrKwo+
-ICAgMiBmaWxlcyBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKykKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0
-NCBhcmNoL2FybS9kdHMvcmszMTg4LXUtYm9vdC5kdHNpCj4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9h
-cm0vZHRzL3JrMzE4OC1yYWR4YXJvY2stdS1ib290LmR0c2kgYi9hcmNoL2FybS9kdHMvcmszMTg4
-LXJhZHhhcm9jay11LWJvb3QuZHRzaQo+IGluZGV4IDFiYjU0MDg1OTIuLjIwNGJiM2E5MGUgMTAw
-NjQ0Cj4gLS0tIGEvYXJjaC9hcm0vZHRzL3JrMzE4OC1yYWR4YXJvY2stdS1ib290LmR0c2kKPiAr
-KysgYi9hcmNoL2FybS9kdHMvcmszMTg4LXJhZHhhcm9jay11LWJvb3QuZHRzaQo+IEBAIC0zLDYg
-KzMsOCBAQAo+ICAgICogQ29weXJpZ2h0IChjKSAyMDE4IEZ1emhvdSBSb2NrY2hpcCBFbGVjdHJv
-bmljcyBDby4sIEx0ZC4KPiAgICAqLwo+ICAgCj4gKyNpbmNsdWRlICJyazMxODgtdS1ib290LmR0
-c2kiCj4gKwo+ICAgJmNydSB7Cj4gICAJdS1ib290LGRtLXNwbDsKPiAgIH07Cj4gZGlmZiAtLWdp
-dCBhL2FyY2gvYXJtL2R0cy9yazMxODgtdS1ib290LmR0c2kgYi9hcmNoL2FybS9kdHMvcmszMTg4
-LXUtYm9vdC5kdHNpCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwMDAwLi4x
-ZTdkMDc5MzE1Cj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2FyY2gvYXJtL2R0cy9yazMxODgtdS1i
-b290LmR0c2kKPiBAQCAtMCwwICsxLDQgQEAKPiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6
-IEdQTC0yLjArCj4gKy8qCj4gKyAqIENvcHlyaWdodCAoQykgMjAxOSBKYWdhbiBUZWtpIDxqYWdh
-bkBhbWFydWxhc29sdXRpb25zLmNvbT4KPiArICovCgoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+"simple-panel" is a Linux driver and has never been an accepted upstream
+compatible string, so remove it.
+
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+---
+ arch/arm/boot/dts/rk3288-evb.dtsi                          | 2 +-
+ arch/arm/boot/dts/rk3288-veyron-edp.dtsi                   | 2 +-
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts                 | 2 +-
+ arch/arm/boot/dts/rk3288-veyron-tiger.dts                  | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts            | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 +-
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi b/arch/arm/boot/dts/rk3288-evb.dtsi
+index 2afd686b2033..018802df4c0e 100644
+--- a/arch/arm/boot/dts/rk3288-evb.dtsi
++++ b/arch/arm/boot/dts/rk3288-evb.dtsi
+@@ -97,7 +97,7 @@
+ 	};
+ 
+ 	panel: panel {
+-		compatible = "lg,lp079qx1-sp0v", "simple-panel";
++		compatible = "lg,lp079qx1-sp0v";
+ 		backlight = <&backlight>;
+ 		enable-gpios = <&gpio7 RK_PA4 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-0 = <&lcd_cs>;
+diff --git a/arch/arm/boot/dts/rk3288-veyron-edp.dtsi b/arch/arm/boot/dts/rk3288-veyron-edp.dtsi
+index 300a7e32c978..32c0f10765dd 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-edp.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron-edp.dtsi
+@@ -54,7 +54,7 @@
+ 	};
+ 
+ 	panel: panel {
+-		compatible = "innolux,n116bge", "simple-panel";
++		compatible = "innolux,n116bge";
+ 		status = "okay";
+ 		power-supply = <&panel_regulator>;
+ 		backlight = <&backlight>;
+diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+index c833716dbe48..95db0eb8d639 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+@@ -70,7 +70,7 @@
+ };
+ 
+ &panel {
+-	compatible = "auo,b101ean01", "simple-panel";
++	compatible = "auo,b101ean01";
+ 
+ 	/delete-node/ panel-timing;
+ 
+diff --git a/arch/arm/boot/dts/rk3288-veyron-tiger.dts b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
+index bebb230e592f..069f0c2c1fdf 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-tiger.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
+@@ -53,7 +53,7 @@
+ };
+ 
+ &panel {
+-	compatible = "auo,b101ean01", "simple-panel";
++	compatible = "auo,b101ean01";
+ 
+ 	/delete-node/ panel-timing;
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
+index 9dd3b171e91d..e6c1c94c8d69 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts
+@@ -18,7 +18,7 @@
+ 		     "google,bob", "google,gru", "rockchip,rk3399";
+ 
+ 	edp_panel: edp-panel {
+-		compatible = "boe,nv101wxmn51", "simple-panel";
++		compatible = "boe,nv101wxmn51";
+ 		backlight = <&backlight>;
+ 		power-supply = <&pp3300_disp>;
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+index b8066868a3fe..2bbef9fcbe27 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts
+@@ -39,7 +39,7 @@
+ 	};
+ 
+ 	edp_panel: edp-panel {
+-		compatible = "sharp,lq123p1jx31", "simple-panel";
++		compatible = "sharp,lq123p1jx31";
+ 		backlight = <&backlight>;
+ 		power-supply = <&pp3300_disp>;
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+index 808ea77f951d..b4d8f60b7e44 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+@@ -84,7 +84,7 @@
+ 	};
+ 
+ 	edp_panel: edp-panel {
+-		compatible ="lg,lp079qx1-sp0v", "simple-panel";
++		compatible ="lg,lp079qx1-sp0v";
+ 		backlight = <&backlight>;
+ 		enable-gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+-- 
+2.20.1
