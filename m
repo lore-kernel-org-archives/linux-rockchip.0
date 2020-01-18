@@ -1,28 +1,36 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm: rockchip: dts: Kill off "simple-panel" compatibles
-Date: Sun, 19 Jan 2020 00:01:51 +0100
-Message-ID: <11733187.XpjhTr9bNC@phil>
-References: <20200117230851.25434-1-robh@kernel.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200117230851.25434-1-robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [RFC PATCH v1 2/3] dt-bindings: spi: spi-rockchip: add description for rk3308
+Date: Sun, 19 Jan 2020 00:08:47 +0100
+Message-ID: <20200118230848.15326-2-jbx6244@gmail.com>
+References: <20200118230848.15326-1-jbx6244@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200118230848.15326-1-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org
+Cc: robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, linux-spi@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 18. Januar 2020, 00:08:51 CET schrieb Rob Herring:
-> "simple-panel" is a Linux driver and has never been an accepted upstream
-> compatible string, so remove it.
-> 
-> Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+The description below is already in use for rk3308.dtsi,
+but was somehow never added to a document, so add
+"rockchip,rk3308-spi", "rockchip,rk3066-spi"
+for spi nodes on a rk3308 platform to spi-rockchip.yaml.
 
-I've split this into arm32+arm64 variants and applied it for
-maybe still 5.6
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-Thanks
-Heiko
+diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+index 80c56c583..24d9567a6 100644
+--- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
++++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+@@ -29,6 +29,7 @@ properties:
+             - rockchip,px30-spi    #for px30 SoCs.
+             - rockchip,rk3188-spi  #for rk3188 SoCs.
+             - rockchip,rk3288-spi  #for rk3288 SoCs.
++            - rockchip,rk3308-spi  #for rk3308 SoCs.
+             - rockchip,rk3368-spi  #for rk3368 SoCs.
+             - rockchip,rk3399-spi  #for rk3399 SoCs.
+           - const: rockchip,rk3066-spi
+-- 
+2.11.0
