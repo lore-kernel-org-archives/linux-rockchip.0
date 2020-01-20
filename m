@@ -1,81 +1,146 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [Bug ?] usb :typec :tcpm :fusb302
-Date: Mon, 20 Jan 2020 08:04:41 -0800
-Message-ID: <2e739a08-191b-d7c9-1273-4000cbbca423@roeck-us.net>
-References: <0ac6bbe7-6395-526d-213c-ac58a19d8673@fivetechno.de>
- <20200120115828.GC32175@kuha.fi.intel.com>
- <e05b6c1f-5e00-c000-23b9-1683230fd9f7@roeck-us.net>
- <546a5723-a974-ed0a-93e3-b46c919b0f7e@fivetechno.de>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH 1/5] component: Add an API to cleanup before unbind
+Date: Mon, 20 Jan 2020 14:05:58 -0300
+Message-ID: <20200120170602.3832-2-ezequiel@collabora.com>
+References: <20200120170602.3832-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <546a5723-a974-ed0a-93e3-b46c919b0f7e@fivetechno.de>
-Content-Language: en-US
+In-Reply-To: <20200120170602.3832-1-ezequiel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Markus Reichl <m.reichl@fivetechno.de>, Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, Linux USB Mailing List <linux-usb@vger.kernel.org>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J . Wysocki" <rafael@kernel.org>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 1/20/20 6:34 AM, Markus Reichl wrote:
-> Hi Guenter,
-> 
-> Am 20.01.20 um 15:21 schrieb Guenter Roeck:
->> On 1/20/20 3:58 AM, Heikki Krogerus wrote:
->>> Hi Markus,
->>>
->>> On Thu, Jan 09, 2020 at 05:29:07PM +0100, Markus Reichl wrote:
->>>> Hi,
->>>>
->>>> I'm working with a ROC-RK3399-PC arm64 board from firefly, circuit sheet [1].
->>>> The board is powered from an USB-C type connector via an FUSB302 PD controller.
->>>> With measured 15W+ power consumption it should use higher voltage PD modes than
->>>> the standard 5V USB-C mode.
->>>>
->>>> When I add the related connector node in DTS [2] the FUSB302 initializes
->>>> the right PD mode (e.g. 15V/3A).
->>>>
->>>> But during initialisation the PD is switched off shortly and the board has a blackout.
->>>> When I inject a backup supply voltage behind the FUSB302 (e.g. at SYS_12V line) during boot
->>>> I can remove the backup after succesfull setting up the PD and the board will run fine.
->>>>
->>>> Is it possible to change the behaviour of the fusb302 driver to not power down the PD supply
->>>> during init?
->>>
->>> I guess it's also possible that the problem is with tcpm.c instead of
->>> fusb302.c. tcpm.c provides the USB PD state matchines. Guenter! Can
->>> you take a look at this?
->>>
->>
->> There was always a problem with handoff from the bootloader. tcpm_init() calls
->> tcpm_reset_port() which turns vbus and vconn off, which I imagine can
->> trigger the situation.
->>
->> Unfortunately I was never able to solve the puzzle. The Type-C protocol does
->> not support any kind of "hand-off" from one component in the system to another.
->> If the state machine doesn't start from a clean state, there is pretty
->> much no guarantee that it ever synchronizes.
->>
->> Maybe someone can find a better solution, but when I wrote the code I just
->> could not get it to work reliably without resetting everything during
->> registration.
->>
->> Note that v4.4 did not include the upstream tcpm code, suggesting the
->> code in the vendor kernel was possibly using a different or backported
->> state machine. Impossible to say what was done there without access
->> to the code.
-> 
-> The vendor code for fusb302 is here:
-> https://github.com/FireflyTeam/kernel/tree/rk3399/firefly/drivers/mfd
-> 
+Some users of the component API have a special model
+for the allocation and release of its resources:
+resources are allocated by an API but then
+released by other means.
 
-AFAICS the vendor code don't reset VBUS, and selectively (only) resets the
-PD state machine in the fusb302 on startup. The tcpm state machine is embedded
-in the fusb302 driver, making this easier to control.
+This contrasts with the current component API
+assumption: .unbind must undo everything that .bind did.
 
-The fusb302 Linux kernel driver, on the other side, resets the entire fusb302
-on initialization, not just PD (bit 0 of the reset register). Question is if
-that can be changed to just reset PD (bit 1 of the reset register).
-Maybe that would already fix the problem. Can you give it a try ?
+An example of this is the DRM framework, which expects
+registered objects (connectors, planes, CRTCs, etc)
+to be released by respective drm_xxx_funcs.destroy hooks.
 
-Guenter
+The drm_xxx_funcs.destroy call is done either directly
+by drm_mode_config_cleanup() or in a refcounted fashion,
+depending on the type of object.
+
+For example, a DRM CRTC object is registered by
+drm_crtc_init_with_planes(), and then released by drm_crtc_cleanup(),
+which is normally called from the drm_crtc_funcs.destroy hook.
+
+Now, in this model, drm_mode_config_cleanup() should
+always be called before component_unbind() to avoid
+use-after-free situations (because each component
+has a devres group).
+
+However, component_bind_all() calls component_unbind
+on binded components, if any component in the chain
+fails to bind.
+
+In order to allow this special case, and following Alan Kay:
+
+  "simple things should be simple, complex things should be possible"
+
+introduce an extension to component_bind_all, which takes an extra
+cleanup callback, to be called when binding fails to perform
+extra cleanup steps.
+
+This new API allows the following simple pattern:
+
+void unbind_cleanup(...)
+{
+        drm_mode_config_cleanup(drm_dev);
+}
+
+int foo_bind()
+{
+	component_bind_all_or_cleanup(dev, drm_dev, unbind_cleanup);
+}
+
+void foo_unbind()
+{
+        drm_mode_config_cleanup(drm_dev);
+        component_unbind_all(dev, drm_dev);
+}
+
+Each DRM component then uses the respective .destroy
+hooks to destroy DRM resources, and the .unbind
+hooks to release non-DRM resources.
+
+Arguably, this could be viewed as Very Ugly. However, it handles
+this complex case, making it possible to fix the current
+unbind crashes that some DRM drivers suffer from,
+in a non-invasive way, keeping the DRM resource handling model.
+
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+---
+ drivers/base/component.c  |  9 +++++++--
+ include/linux/component.h | 10 +++++++++-
+ 2 files changed, 16 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/base/component.c b/drivers/base/component.c
+index 532a3a5d8f63..371cff9208cf 100644
+--- a/drivers/base/component.c
++++ b/drivers/base/component.c
+@@ -622,12 +622,14 @@ static int component_bind(struct component *component, struct master *master,
+  * component_bind_all - bind all components of an aggregate driver
+  * @master_dev: device with the aggregate driver
+  * @data: opaque pointer, passed to all components
++ * @cleanup: optional cleanup callback.
+  *
+  * Binds all components of the aggregate @dev by passing @data to their
+  * &component_ops.bind functions. Should be called from
+  * &component_master_ops.bind.
+  */
+-int component_bind_all(struct device *master_dev, void *data)
++int component_bind_all_or_cleanup(struct device *master_dev,
++				  void *data, void (*cleanup)(void *data))
+ {
+ 	struct master *master;
+ 	struct component *c;
+@@ -650,6 +652,9 @@ int component_bind_all(struct device *master_dev, void *data)
+ 		}
+ 
+ 	if (ret != 0) {
++		if (cleanup)
++			cleanup(data);
++
+ 		for (; i > 0; i--)
+ 			if (!master->match->compare[i - 1].duplicate) {
+ 				c = master->match->compare[i - 1].component;
+@@ -659,7 +664,7 @@ int component_bind_all(struct device *master_dev, void *data)
+ 
+ 	return ret;
+ }
+-EXPORT_SYMBOL_GPL(component_bind_all);
++EXPORT_SYMBOL_GPL(component_bind_all_or_cleanup);
+ 
+ static int __component_add(struct device *dev, const struct component_ops *ops,
+ 	int subcomponent)
+diff --git a/include/linux/component.h b/include/linux/component.h
+index 16de18f473d7..1a5c7b772de3 100644
+--- a/include/linux/component.h
++++ b/include/linux/component.h
+@@ -38,7 +38,15 @@ int component_add_typed(struct device *dev, const struct component_ops *ops,
+ 	int subcomponent);
+ void component_del(struct device *, const struct component_ops *);
+ 
+-int component_bind_all(struct device *master, void *master_data);
++int component_bind_all_or_cleanup(struct device *master,
++				  void *master_data,
++				  void (*cleanup)(void *data));
++
++static inline int component_bind_all(struct device *master, void *master_data)
++{
++	return component_bind_all_or_cleanup(master, master_data, NULL);
++}
++
+ void component_unbind_all(struct device *master, void *master_data);
+ 
+ struct master;
+-- 
+2.25.0
