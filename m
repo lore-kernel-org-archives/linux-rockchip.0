@@ -1,69 +1,63 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL 2/2] Rockchip dt64 for 5.6 round2
-Date: Mon, 20 Jan 2020 00:26:34 +0100
-Message-ID: <7641353.lIegmeFAIi@phil>
-References: <3473489.DgqFdXXe5V@phil>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH 5/6] PCI: rockchip: add DesignWare based PCIe controller
+Date: Mon, 20 Jan 2020 08:55:26 +0800
+Message-ID: <9458895c-9e1a-ad97-ba5d-e1c4e56dad2b@rock-chips.com>
+References: <1578986580-71974-1-git-send-email-shawn.lin@rock-chips.com>
+ <1578986701-72072-1-git-send-email-shawn.lin@rock-chips.com>
+ <0975b4e4-4bee-3f8e-5276-2bc78e6dabc0@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <3473489.DgqFdXXe5V@phil>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: arm@kernel.org
-Cc: linux-rockchip@lists.infradead.org, soc@kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <0975b4e4-4bee-3f8e-5276-2bc78e6dabc0-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Francesco Lavra <francescolavra.fl-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Cc: shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The following changes since commit 1fc61ed04d309b0b8b3562acf701ab988eee12de:
 
-  arm64: dts: rockchip: Enable mp8859 regulator on rk3399-roc-pc (2020-01-09 00:28:40 +0100)
+On 2020/1/19 0:36, Francesco Lavra wrote:
+> On 1/14/20 8:25 AM, Shawn Lin wrote:
+>> +static int rockchip_pcie_reset_control_release(struct rockchip_pcie 
+>> *rockchip)
+>> +{
+>> +    struct device *dev = rockchip->pci->dev;
+>> +    struct property *prop;
+>> +    const char *name;
+>> +    int ret, count, i = 0;
+>> +
+>> +    count = of_property_count_strings(dev->of_node, "reset-names");
+>> +    if (count < 1)
+>> +        return -ENODEV;
+>> +
+>> +    rockchip->rsts = devm_kcalloc(dev, count,
+>> +                     sizeof(struct reset_bulk_data),
+>> +                     GFP_KERNEL);
+>> +    if (!rockchip->rsts)
+>> +        return -ENOMEM;
+>> +
+>> +    of_property_for_each_string(dev->of_node, "reset-names",
+>> +                    prop, name) {
+>> +        rockchip->rsts[i].id = name;
+>> +        if (!rockchip->rsts[i].id)
+>> +            return -ENOMEM;
+>> +        i++;
+>> +    }
+>> +
+>> +    for (i = 0; i < count; i++) {
+>> +        rockchip->rsts[i].rst = devm_reset_control_get_exclusive(dev,
+>> +                        rockchip->rsts[i].id);
+>> +        if (IS_ERR_OR_NULL(rockchip->rsts[i].rst)) {
+>> +            dev_err(dev, "failed to get %s\n",
+>> +                rockchip->clks[i].id);
+>> +            return -PTR_ERR(rockchip->rsts[i].rst);
+> 
+> IS_ERR_OR_NULL() should be replaced with IS_ERR(), because 
+> devm_reset_control_get_exclusive() never returns a NULL value.
+> Also, in case of error you should return the value from PTR_ERR(), 
+> without the minus sign.
 
-are available in the Git repository at:
+Thanks, Francesco. Will fix in v2.
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.6-rockchip-dts64-2
-
-for you to fetch changes up to 62b5efc919b12c0effc6fd5720b6d5ddc1d1ee5f:
-
-  arm64: dts: rockchip: Kill off "simple-panel" compatibles (2020-01-18 23:58:56 +0100)
-
-----------------------------------------------------------------
-DSI display for px30 evaluation board and a number of cleanups
-accross multiple socs.
-
-----------------------------------------------------------------
-Heiko Stuebner (1):
-      arm64: dts: rockchip: hook up the px30-evb dsi display
-
-Johan Jonker (4):
-      arm64: dts: rockchip: fix dwmmc clock name for px30
-      arm64: dts: rockchip: fix dwmmc clock name for rk3308
-      arm64: dts: rockchip: add reg property to brcmf sub-nodes
-      arm64: dts: rockchip: rename dwmmc node names to mmc
-
-Markus Reichl (1):
-      arm64: dts: rockchip: Enable sdio0 and uart0 on rk3399-roc-pc-mezzanine
-
-Rob Herring (1):
-      arm64: dts: rockchip: Kill off "simple-panel" compatibles
-
- arch/arm64/boot/dts/rockchip/px30-evb.dts          | 32 ++++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/px30.dtsi             | 12 ++++----
- arch/arm64/boot/dts/rockchip/rk3308.dtsi           | 12 ++++----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  6 ++--
- arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  6 ++--
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    |  3 ++
- arch/arm64/boot/dts/rockchip/rk3399-gru-bob.dts    |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-gru-kevin.dts  |  2 +-
- .../boot/dts/rockchip/rk3399-khadas-edge.dtsi      |  3 ++
- arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts   |  3 ++
- .../boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts  | 21 ++++++++++++++
- .../dts/rockchip/rk3399-sapphire-excavator.dts     |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  4 +--
- 13 files changed, 85 insertions(+), 23 deletions(-)
+> 
+> 
