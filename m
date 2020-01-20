@@ -1,86 +1,83 @@
-From: Guenter Roeck <linux@roeck-us.net>
+From: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
 Subject: Re: [Bug ?] usb :typec :tcpm :fusb302
-Date: Mon, 20 Jan 2020 06:21:19 -0800
-Message-ID: <e05b6c1f-5e00-c000-23b9-1683230fd9f7@roeck-us.net>
+Date: Mon, 20 Jan 2020 15:34:02 +0100
+Message-ID: <546a5723-a974-ed0a-93e3-b46c919b0f7e@fivetechno.de>
 References: <0ac6bbe7-6395-526d-213c-ac58a19d8673@fivetechno.de>
  <20200120115828.GC32175@kuha.fi.intel.com>
+ <e05b6c1f-5e00-c000-23b9-1683230fd9f7@roeck-us.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200120115828.GC32175@kuha.fi.intel.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>, Markus Reichl <m.reichl@fivetechno.de>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, Linux USB Mailing List <linux-usb@vger.kernel.org>, Linux Kernel <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <e05b6c1f-5e00-c000-23b9-1683230fd9f7-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>
+Content-Language: de-DE
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Guenter Roeck <linux-0h96xk9xTtrk1uMJSBkQmQ@public.gmane.org>, Heikki Krogerus <heikki.krogerus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Linux USB Mailing List <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linux Kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 1/20/20 3:58 AM, Heikki Krogerus wrote:
-> Hi Markus,
-> 
-> On Thu, Jan 09, 2020 at 05:29:07PM +0100, Markus Reichl wrote:
->> Hi,
->>
->> I'm working with a ROC-RK3399-PC arm64 board from firefly, circuit sheet [1].
->> The board is powered from an USB-C type connector via an FUSB302 PD controller.
->> With measured 15W+ power consumption it should use higher voltage PD modes than
->> the standard 5V USB-C mode.
->>
->> When I add the related connector node in DTS [2] the FUSB302 initializes
->> the right PD mode (e.g. 15V/3A).
->>
->> But during initialisation the PD is switched off shortly and the board has a blackout.
->> When I inject a backup supply voltage behind the FUSB302 (e.g. at SYS_12V line) during boot
->> I can remove the backup after succesfull setting up the PD and the board will run fine.
->>
->> Is it possible to change the behaviour of the fusb302 driver to not power down the PD supply
->> during init?
-> 
-> I guess it's also possible that the problem is with tcpm.c instead of
-> fusb302.c. tcpm.c provides the USB PD state matchines. Guenter! Can
-> you take a look at this?
-> 
-
-There was always a problem with handoff from the bootloader. tcpm_init() calls
-tcpm_reset_port() which turns vbus and vconn off, which I imagine can
-trigger the situation.
-
-Unfortunately I was never able to solve the puzzle. The Type-C protocol does
-not support any kind of "hand-off" from one component in the system to another.
-If the state machine doesn't start from a clean state, there is pretty
-much no guarantee that it ever synchronizes.
-
-Maybe someone can find a better solution, but when I wrote the code I just
-could not get it to work reliably without resetting everything during
-registration.
-
-Note that v4.4 did not include the upstream tcpm code, suggesting the
-code in the vendor kernel was possibly using a different or backported
-state machine. Impossible to say what was done there without access
-to the code.
-
-Guenter
-
-> Both tcpm.c and fusb302.c create debugfs entries that have a more
-> detailed log about things that are happening. Can you check what you
-> have in those (when you boot with the mains cable plugged it)?
-> 
->          % mount debugfs -t debugfs /sys/kernel/debug
->          % cat /sys/kernel/debug/tcpm*
->          % cat /sys/kernel/debug/fusb302/*
-> 
-> Which kernel are you running by the way?
-> 
->> In vendor kernel (4.4) this is done somehow but the sources are too different for me to find
->> out how.
->>
->> Gruß,
->> -- 
->> Markus Reichl
->>
->> [1]
->> http://download.t-firefly.com/product/RK3399/Docs/Hardware/%E5%8E%9F%E7%90%86%E5%9B%BE%E5%92%8C%E8%B4%B4%E7%89%87%E5%9B%BE/ROC-RK3399-PC/ROC-3399-PC-V10-A-20180804_%E5%8E%9F%E7%90%86%E5%9B%BE.pdf
->>
->> [2]
->> https://lkml.org/lkml/2019/12/10/517
-> 
+SGkgR3VlbnRlciwKCkFtIDIwLjAxLjIwIHVtIDE1OjIxIHNjaHJpZWIgR3VlbnRlciBSb2VjazoK
+PiBPbiAxLzIwLzIwIDM6NTggQU0sIEhlaWtraSBLcm9nZXJ1cyB3cm90ZToKPj4gSGkgTWFya3Vz
+LAo+Pgo+PiBPbiBUaHUsIEphbiAwOSwgMjAyMCBhdCAwNToyOTowN1BNICswMTAwLCBNYXJrdXMg
+UmVpY2hsIHdyb3RlOgo+Pj4gSGksCj4+Pgo+Pj4gSSdtIHdvcmtpbmcgd2l0aCBhIFJPQy1SSzMz
+OTktUEMgYXJtNjQgYm9hcmQgZnJvbSBmaXJlZmx5LCBjaXJjdWl0IHNoZWV0IFsxXS4KPj4+IFRo
+ZSBib2FyZCBpcyBwb3dlcmVkIGZyb20gYW4gVVNCLUMgdHlwZSBjb25uZWN0b3IgdmlhIGFuIEZV
+U0IzMDIgUEQgY29udHJvbGxlci4KPj4+IFdpdGggbWVhc3VyZWQgMTVXKyBwb3dlciBjb25zdW1w
+dGlvbiBpdCBzaG91bGQgdXNlIGhpZ2hlciB2b2x0YWdlIFBEIG1vZGVzIHRoYW4KPj4+IHRoZSBz
+dGFuZGFyZCA1ViBVU0ItQyBtb2RlLgo+Pj4KPj4+IFdoZW4gSSBhZGQgdGhlIHJlbGF0ZWQgY29u
+bmVjdG9yIG5vZGUgaW4gRFRTIFsyXSB0aGUgRlVTQjMwMiBpbml0aWFsaXplcwo+Pj4gdGhlIHJp
+Z2h0IFBEIG1vZGUgKGUuZy4gMTVWLzNBKS4KPj4+Cj4+PiBCdXQgZHVyaW5nIGluaXRpYWxpc2F0
+aW9uIHRoZSBQRCBpcyBzd2l0Y2hlZCBvZmYgc2hvcnRseSBhbmQgdGhlIGJvYXJkIGhhcyBhIGJs
+YWNrb3V0Lgo+Pj4gV2hlbiBJIGluamVjdCBhIGJhY2t1cCBzdXBwbHkgdm9sdGFnZSBiZWhpbmQg
+dGhlIEZVU0IzMDIgKGUuZy4gYXQgU1lTXzEyViBsaW5lKSBkdXJpbmcgYm9vdAo+Pj4gSSBjYW4g
+cmVtb3ZlIHRoZSBiYWNrdXAgYWZ0ZXIgc3VjY2VzZnVsbCBzZXR0aW5nIHVwIHRoZSBQRCBhbmQg
+dGhlIGJvYXJkIHdpbGwgcnVuIGZpbmUuCj4+Pgo+Pj4gSXMgaXQgcG9zc2libGUgdG8gY2hhbmdl
+IHRoZSBiZWhhdmlvdXIgb2YgdGhlIGZ1c2IzMDIgZHJpdmVyIHRvIG5vdCBwb3dlciBkb3duIHRo
+ZSBQRCBzdXBwbHkKPj4+IGR1cmluZyBpbml0Pwo+Pgo+PiBJIGd1ZXNzIGl0J3MgYWxzbyBwb3Nz
+aWJsZSB0aGF0IHRoZSBwcm9ibGVtIGlzIHdpdGggdGNwbS5jIGluc3RlYWQgb2YKPj4gZnVzYjMw
+Mi5jLiB0Y3BtLmMgcHJvdmlkZXMgdGhlIFVTQiBQRCBzdGF0ZSBtYXRjaGluZXMuIEd1ZW50ZXIh
+IENhbgo+PiB5b3UgdGFrZSBhIGxvb2sgYXQgdGhpcz8KPj4KPiAKPiBUaGVyZSB3YXMgYWx3YXlz
+IGEgcHJvYmxlbSB3aXRoIGhhbmRvZmYgZnJvbSB0aGUgYm9vdGxvYWRlci4gdGNwbV9pbml0KCkg
+Y2FsbHMKPiB0Y3BtX3Jlc2V0X3BvcnQoKSB3aGljaCB0dXJucyB2YnVzIGFuZCB2Y29ubiBvZmYs
+IHdoaWNoIEkgaW1hZ2luZSBjYW4KPiB0cmlnZ2VyIHRoZSBzaXR1YXRpb24uCj4gCj4gVW5mb3J0
+dW5hdGVseSBJIHdhcyBuZXZlciBhYmxlIHRvIHNvbHZlIHRoZSBwdXp6bGUuIFRoZSBUeXBlLUMg
+cHJvdG9jb2wgZG9lcwo+IG5vdCBzdXBwb3J0IGFueSBraW5kIG9mICJoYW5kLW9mZiIgZnJvbSBv
+bmUgY29tcG9uZW50IGluIHRoZSBzeXN0ZW0gdG8gYW5vdGhlci4KPiBJZiB0aGUgc3RhdGUgbWFj
+aGluZSBkb2Vzbid0IHN0YXJ0IGZyb20gYSBjbGVhbiBzdGF0ZSwgdGhlcmUgaXMgcHJldHR5Cj4g
+bXVjaCBubyBndWFyYW50ZWUgdGhhdCBpdCBldmVyIHN5bmNocm9uaXplcy4KPiAKPiBNYXliZSBz
+b21lb25lIGNhbiBmaW5kIGEgYmV0dGVyIHNvbHV0aW9uLCBidXQgd2hlbiBJIHdyb3RlIHRoZSBj
+b2RlIEkganVzdAo+IGNvdWxkIG5vdCBnZXQgaXQgdG8gd29yayByZWxpYWJseSB3aXRob3V0IHJl
+c2V0dGluZyBldmVyeXRoaW5nIGR1cmluZwo+IHJlZ2lzdHJhdGlvbi4KPiAKPiBOb3RlIHRoYXQg
+djQuNCBkaWQgbm90IGluY2x1ZGUgdGhlIHVwc3RyZWFtIHRjcG0gY29kZSwgc3VnZ2VzdGluZyB0
+aGUKPiBjb2RlIGluIHRoZSB2ZW5kb3Iga2VybmVsIHdhcyBwb3NzaWJseSB1c2luZyBhIGRpZmZl
+cmVudCBvciBiYWNrcG9ydGVkCj4gc3RhdGUgbWFjaGluZS4gSW1wb3NzaWJsZSB0byBzYXkgd2hh
+dCB3YXMgZG9uZSB0aGVyZSB3aXRob3V0IGFjY2Vzcwo+IHRvIHRoZSBjb2RlLgoKVGhlIHZlbmRv
+ciBjb2RlIGZvciBmdXNiMzAyIGlzIGhlcmU6Cmh0dHBzOi8vZ2l0aHViLmNvbS9GaXJlZmx5VGVh
+bS9rZXJuZWwvdHJlZS9yazMzOTkvZmlyZWZseS9kcml2ZXJzL21mZAoKR3J1w58sCi0tIApNYXJr
+dXMgUmVpY2hsCj4gCj4gR3VlbnRlcgo+IAo+PiBCb3RoIHRjcG0uYyBhbmQgZnVzYjMwMi5jIGNy
+ZWF0ZSBkZWJ1Z2ZzIGVudHJpZXMgdGhhdCBoYXZlIGEgbW9yZQo+PiBkZXRhaWxlZCBsb2cgYWJv
+dXQgdGhpbmdzIHRoYXQgYXJlIGhhcHBlbmluZy4gQ2FuIHlvdSBjaGVjayB3aGF0IHlvdQo+PiBo
+YXZlIGluIHRob3NlICh3aGVuIHlvdSBib290IHdpdGggdGhlIG1haW5zIGNhYmxlIHBsdWdnZWQg
+aXQpPwo+Pgo+PiDCoMKgwqDCoMKgwqDCoMKgICUgbW91bnQgZGVidWdmcyAtdCBkZWJ1Z2ZzIC9z
+eXMva2VybmVsL2RlYnVnCj4+IMKgwqDCoMKgwqDCoMKgwqAgJSBjYXQgL3N5cy9rZXJuZWwvZGVi
+dWcvdGNwbSoKPj4gwqDCoMKgwqDCoMKgwqDCoCAlIGNhdCAvc3lzL2tlcm5lbC9kZWJ1Zy9mdXNi
+MzAyLyoKPj4KPj4gV2hpY2gga2VybmVsIGFyZSB5b3UgcnVubmluZyBieSB0aGUgd2F5Pwo+Pgo+
+Pj4gSW4gdmVuZG9yIGtlcm5lbCAoNC40KSB0aGlzIGlzIGRvbmUgc29tZWhvdyBidXQgdGhlIHNv
+dXJjZXMgYXJlIHRvbyBkaWZmZXJlbnQgZm9yIG1lIHRvIGZpbmQKPj4+IG91dCBob3cuCj4+Pgo+
+Pj4gR3J1w58sCj4+PiAtLSAKPj4+IE1hcmt1cyBSZWljaGwKPj4+Cj4+PiBbMV0KPj4+IGh0dHA6
+Ly9kb3dubG9hZC50LWZpcmVmbHkuY29tL3Byb2R1Y3QvUkszMzk5L0RvY3MvSGFyZHdhcmUvJUU1
+JThFJTlGJUU3JTkwJTg2JUU1JTlCJUJFJUU1JTkyJThDJUU4JUI0JUI0JUU3JTg5JTg3JUU1JTlC
+JUJFL1JPQy1SSzMzOTktUEMvUk9DLTMzOTktUEMtVjEwLUEtMjAxODA4MDRfJUU1JThFJTlGJUU3
+JTkwJTg2JUU1JTlCJUJFLnBkZgo+Pj4KPj4+IFsyXQo+Pj4gaHR0cHM6Ly9sa21sLm9yZy9sa21s
+LzIwMTkvMTIvMTAvNTE3Cj4+Cj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
