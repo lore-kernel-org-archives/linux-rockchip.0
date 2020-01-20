@@ -1,49 +1,92 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH 0/5] drm/rockchip: Fix unbind/bind
-Date: Mon, 20 Jan 2020 14:05:57 -0300
-Message-ID: <20200120170602.3832-1-ezequiel@collabora.com>
+Subject: [PATCH 2/5] drm/rockchip: Fix the device unbind order
+Date: Mon, 20 Jan 2020 14:05:59 -0300
+Message-ID: <20200120170602.3832-3-ezequiel@collabora.com>
+References: <20200120170602.3832-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200120170602.3832-1-ezequiel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J . Wysocki" <rafael@kernel.org>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
 Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This series is an attempt to fix the unbind/bind crash
-(due to an use-after-free bug) found on rockchip-drm driver.
+In order to cleanup the configuration, destroying the components
+in the pipeline, the components must be present.
 
-The problem lies in the way the driver uses the component API.
-Currently, rockchip_drm_unbind calls component_unbind_all before
-drm_mode_config_cleanup, the former releasing the memory
-where the DRM objects are embedded.
+Therefore, cleanup the config first, and unbind the components
+later.
 
-The series goal is basically to fix all the components,
-making proper use of the respective .destroy hooks,
-making sure there are no use-after-free or double-free issues.
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 20 ++++++++++++--------
+ 1 file changed, 12 insertions(+), 8 deletions(-)
 
-The first patch is likely the most controversial, which is required
-because component_bind_all will call component_unbind without
-calling drm_mode_config_cleanup, if any component fails to bind.
-As mentioned above, this is problematic in the DRM framework.
-
-Thanks!
-Ezequiel
-
-Ezequiel Garcia (5):
-  component: Add an API to cleanup before unbind
-  drm/rockchip: Fix the device unbind order
-  drm/rockchip: vop: Fix CRTC unbind
-  drm/rockchip: lvds: Fix component unbind
-  drm/rockchip: rk3066_hdmi: Cleanup component unbind
-
- drivers/base/component.c                    |  9 +++-
- drivers/gpu/drm/rockchip/rk3066_hdmi.c      |  8 +--
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 20 +++++---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 56 ++++++++-------------
- drivers/gpu/drm/rockchip/rockchip_lvds.c    | 20 ++++----
- include/linux/component.h                   | 10 +++-
- 6 files changed, 60 insertions(+), 63 deletions(-)
-
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+index 20ecb1508a22..ca12a35483f9 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -108,6 +108,11 @@ static void rockchip_iommu_cleanup(struct drm_device *drm_dev)
+ 	iommu_domain_free(private->domain);
+ }
+ 
++static void unbind_cleanup(void *data)
++{
++	drm_mode_config_cleanup((struct drm_device *)data);
++}
++
+ static int rockchip_drm_bind(struct device *dev)
+ {
+ 	struct drm_device *drm_dev;
+@@ -140,13 +145,13 @@ static int rockchip_drm_bind(struct device *dev)
+ 	rockchip_drm_mode_config_init(drm_dev);
+ 
+ 	/* Try to bind all sub drivers. */
+-	ret = component_bind_all(dev, drm_dev);
++	ret = component_bind_all_or_cleanup(dev, drm_dev, unbind_cleanup);
+ 	if (ret)
+-		goto err_mode_config_cleanup;
++		goto err_free;
+ 
+ 	ret = drm_vblank_init(drm_dev, drm_dev->mode_config.num_crtc);
+ 	if (ret)
+-		goto err_unbind_all;
++		goto err_drm_cleanup;
+ 
+ 	drm_mode_config_reset(drm_dev);
+ 
+@@ -158,7 +163,7 @@ static int rockchip_drm_bind(struct device *dev)
+ 
+ 	ret = rockchip_drm_fbdev_init(drm_dev);
+ 	if (ret)
+-		goto err_unbind_all;
++		goto err_drm_cleanup;
+ 
+ 	/* init kms poll for handling hpd */
+ 	drm_kms_helper_poll_init(drm_dev);
+@@ -171,10 +176,9 @@ static int rockchip_drm_bind(struct device *dev)
+ err_kms_helper_poll_fini:
+ 	drm_kms_helper_poll_fini(drm_dev);
+ 	rockchip_drm_fbdev_fini(drm_dev);
+-err_unbind_all:
+-	component_unbind_all(dev, drm_dev);
+-err_mode_config_cleanup:
++err_drm_cleanup:
+ 	drm_mode_config_cleanup(drm_dev);
++	component_unbind_all(dev, drm_dev);
+ 	rockchip_iommu_cleanup(drm_dev);
+ err_free:
+ 	drm_dev->dev_private = NULL;
+@@ -193,8 +197,8 @@ static void rockchip_drm_unbind(struct device *dev)
+ 	drm_kms_helper_poll_fini(drm_dev);
+ 
+ 	drm_atomic_helper_shutdown(drm_dev);
+-	component_unbind_all(dev, drm_dev);
+ 	drm_mode_config_cleanup(drm_dev);
++	component_unbind_all(dev, drm_dev);
+ 	rockchip_iommu_cleanup(drm_dev);
+ 
+ 	drm_dev->dev_private = NULL;
 -- 
 2.25.0
