@@ -1,116 +1,117 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2] dt-bindings: convert rockchip-drm.txt to
- rockchip-drm.yaml
-Date: Tue, 21 Jan 2020 17:00:34 +0100
-Message-ID: <633202b7-31cb-a2ff-9461-631652cd94c0@gmail.com>
-References: <6371f95f-8bf8-47c9-021e-b23006f25405@collabora.com>
- <573dc6d1-5857-f3ba-a392-67351db727b5@gmail.com>
- <7c79efd2-f5b0-6736-19b0-4d116714f887@collabora.com>
+From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
+Subject: Re: [v3 4/6] dt-bindings: PCI: rcar: Add bindings for R-Car PCIe
+ endpoint controller
+Date: Tue, 21 Jan 2020 17:57:18 +0000
+Message-ID: <CA+V-a8s1Jx8uZiSr0uiryS492EbFRoFg9QTwkosZsuyfRYp-3g@mail.gmail.com>
+References: <20200108162211.22358-1-prabhakar.mahadev-lad.rj@bp.renesas.com> <20200108162211.22358-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <7c79efd2-f5b0-6736-19b0-4d116714f887-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Dafna Hirschfeld <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: airlied-cv59FeDIM0c@public.gmane.org, dafna3-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <20200108162211.22358-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci <linux-pci@vger.kernel.org>
+Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, Chris Paterson <Chris.Paterson2@renesas.com>, Frank Rowand <frowand.list@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Jingoo Han <jingoohan1@gmail.com>, Simon Horman <horms@verge.net.au>, Shawn Lin <shawn.lin@rock-chips.com>, Tom Joseph <tjoseph@cadence.com>, Heiko Stuebner <hei>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Rob/Kishon,
 
-On 1/21/20 4:26 PM, Dafna Hirschfeld wrote:
-> 
-> 
-> On 21.01.20 16:11, Johan Jonker wrote:
->> Hi Dafna,
->>
->>
->>>
->>>
->>> On 21.01.20 15:03, Rob Herring wrote:
->>>> On Tue, Jan 21, 2020 at 6:35 AM Dafna Hirschfeld
->>>> <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
->>>>>
->>>>> convert the binding file rockchip-drm.txt to yaml format.
->>>>> This was tested and verified with:
->>>>> make dt_binding_check
->>>>> DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
->>>>>
->>>>
->>>> Also, make sure just 'make dt_binding_check' passes as that checks the
->>>> example against all schemas.
->>>
->>> But this also checks the other schemas in general, and when running it,
->>> it fails because of bugs in other schemas.
->>
->>
->>> For example with arm=ARM I get:
->>
->> Use:
->>
->> # enable Rockchip arm in menuconfig
->> make ARCH=arm menuconfig
->>
->> make ARCH=arm dt_binding_check
->> DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
->>
->>
->> and not:
->> arm=ARM
->>
-> yes, sorry, this is what I did. When running with the DT_SCHEMA_FILES
-> set then it passes both on ARM and ARM64
-> but when this variable is not set I get the above error.
+On Wed, Jan 8, 2020 at 4:22 PM Lad Prabhakar <prabhakar.csengg@gmail.com> wrote:
+>
+> This patch adds the bindings for the R-Car PCIe endpoint driver.
+>
+> Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+> ---
+>  .../devicetree/bindings/pci/rcar-pci-ep.yaml  | 76 +++++++++++++++++++
+>  1 file changed, 76 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
+>
+> diff --git a/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml b/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
+> new file mode 100644
+> index 000000000000..99c2a1174463
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
+> @@ -0,0 +1,76 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +# Copyright (C) 2020 Renesas Electronics Europe GmbH - https://www.renesas.com/eu/en/
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pci/rcar-pcie-ep.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Renesas R-Car PCIe Endpoint
+> +
+> +maintainers:
+> +  - Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: renesas,r8a774c0-pcie-ep
+> +      - const: renesas,rcar-gen3-pcie-ep
+> +
+> +  reg:
+> +    maxItems: 5
+> +
+> +  reg-names:
+> +    items:
+> +      - const: apb-base
+> +      - const: memory0
+> +      - const: memory1
+> +      - const: memory2
+> +      - const: memory3
+> +
+> +  power-domains:
+> +    maxItems: 1
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    maxItems: 1
+> +
+> +  clock-names:
+> +    items:
+> +      - const: pcie
+> +
+> +  max-functions:
+> +    minimum: 1
+> +    maximum: 6
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - reg-names
+> +  - resets
+> +  - power-domains
+> +  - clocks
+> +  - clock-names
+> +  - max-functions
+> +
+apart from dt_binding_check error are we OK with dt bindings ?
 
-# for Intel use:
-make dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+Cheers,
+--Prabhakar
 
-
-# for Rockchip use:
-make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-
-Also change:
-
-example:
-  Reduce some spaces here.
-
-Also remove "|" from description.
-
-See:
-description: |
-  A more detailed multi-line description of the binding.
-
-  Details about the hardware device and any links to datasheets can go here.
-
-  Literal blocks are marked with the '|' at the beginning. The end is
-marked by
-  indentation less than the first line of the literal block. Lines also
-cannot
-  begin with a tab character.
-
-> 
-> Dafna
-> 
->>
->>>
->>>     DTC    
->>> Documentation/devicetree/bindings/clock/qcom,gcc.example.dt.yaml
->>> Error:
->>> Documentation/devicetree/bindings/clock/qcom,gcc.example.dts:111.28-29
->>> syntax error
->>> FATAL ERROR: Unable to parse input tree
->>>
->>> Dafna
->>>
->>>>
->>>>> make dtbs_check
->>>>> DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
->>>>>
->>>>>
->>
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/r8a774c0-cpg-mssr.h>
+> +    #include <dt-bindings/power/r8a774c0-sysc.h>
+> +
+> +     pcie0_ep: pcie-ep@fe000000 {
+> +            compatible = "renesas,r8a774c0-pcie-ep",
+> +                         "renesas,rcar-gen3-pcie-ep";
+> +            reg = <0 0xfe000000 0 0x80000>,
+> +                  <0x0 0xfe100000 0 0x100000>,
+> +                  <0x0 0xfe200000 0 0x200000>,
+> +                  <0x0 0x30000000 0 0x8000000>,
+> +                  <0x0 0x38000000 0 0x8000000>;
+> +            reg-names = "apb-base", "memory0", "memory1", "memory2", "memory3";
+> +            resets = <&cpg 319>;
+> +            power-domains = <&sysc R8A774C0_PD_ALWAYS_ON>;
+> +            clocks = <&cpg CPG_MOD 319>;
+> +            clock-names = "pcie";
+> +            max-functions = /bits/ 8 <1>;
+> +    };
+> --
+> 2.20.1
+>
