@@ -1,48 +1,96 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH 1/4] media: rockchip/rga: add rk3228-rga to
- rockchip_rga_match[]
-Date: Tue, 21 Jan 2020 07:45:01 -0300
-Message-ID: <241033bf82fc7e955dd20c0084bfd4f6fc9fc75b.camel@collabora.com>
-References: <20200120194158.25357-1-justin.swartz@risingedge.co.za>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200120194158.25357-1-justin.swartz@risingedge.co.za>
-Sender: linux-media-owner@vger.kernel.org
-To: Justin Swartz <justin.swartz@risingedge.co.za>, Jacob Chen <jacob-chen@iotwrt.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Dafna Hirschfeld <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH] dt-bindings: convert rockchip-drm.txt to rockchip-drm.yaml
+Date: Tue, 21 Jan 2020 12:27:18 +0100
+Message-ID: <20200121112718.18466-1-dafna.hirschfeld@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna3-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Dafna Hirschfeld <dafna.hirschfeld-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 2020-01-20 at 19:41 +0000, Justin Swartz wrote:
-> Add an entry to the rockchip_rga_match array for "rockchip,rk3228-rga"
-> 
-> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
-> ---
->  drivers/media/platform/rockchip/rga/rga.c | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-> index e9ff12b6b..268116cd5 100644
-> --- a/drivers/media/platform/rockchip/rga/rga.c
-> +++ b/drivers/media/platform/rockchip/rga/rga.c
-> @@ -956,6 +956,9 @@ static const struct dev_pm_ops rga_pm = {
->  
->  static const struct of_device_id rockchip_rga_match[] = {
->  	{
-> +		.compatible = "rockchip,rk3228-rga",
-> +	},
+From: Dafna Hirschfeld <dafna.hirschfeld-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-Unless you need to tune something in the driver
-specifically for rk3228, then you don't need a
-new compatible string.
+convert the binding file rockchip-drm.txt to yaml format.
+This was tested and verified with:
+make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
 
-As the name implies, it's just a "compatible",
-so you may simply declare your rga dts node as
-compatible to "rockchip,rk3288-rga".
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ .../display/rockchip/rockchip-drm.txt         | 19 ----------
+ .../display/rockchip/rockchip-drm.yaml        | 38 +++++++++++++++++++
+ 2 files changed, 38 insertions(+), 19 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-drm.txt
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
 
-(Of course, this means we shouldn't have added
-the rk3399 compatible string.)
-
-Regards,
-Ezequiel
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.txt
+deleted file mode 100644
+index 5707af89319d..000000000000
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.txt
++++ /dev/null
+@@ -1,19 +0,0 @@
+-Rockchip DRM master device
+-================================
+-
+-The Rockchip DRM master device is a virtual device needed to list all
+-vop devices or other display interface nodes that comprise the
+-graphics subsystem.
+-
+-Required properties:
+-- compatible: Should be "rockchip,display-subsystem"
+-- ports: Should contain a list of phandles pointing to display interface port
+-  of vop devices. vop definitions as defined in
+-  Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
+-
+-example:
+-
+-display-subsystem {
+-	compatible = "rockchip,display-subsystem";
+-	ports = <&vopl_out>, <&vopb_out>;
+-};
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+new file mode 100644
+index 000000000000..e4ef1a02196d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+@@ -0,0 +1,38 @@
++# SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/rockchip-drm.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip DRM master device
++
++maintainers:
++  - Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org
++  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
++
++description: |
++  The Rockchip DRM master device is a virtual device needed to list all
++  vop devices or other display interface nodes that comprise the
++  graphics subsystem.
++
++properties:
++  compatible:
++    const: rockchip,display-subsystem
++
++  ports:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      Should contain a list of phandles pointing to display interface port
++      of vop devices. vop definitions as defined in
++      Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
++
++required:
++  - compatible
++  - ports
++
++examples:
++  - |
++    display-subsystem {
++        compatible = "rockchip,display-subsystem";
++        ports = <&vopl_out>, <&vopb_out>;
++    };
+-- 
+2.17.1
