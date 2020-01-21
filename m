@@ -1,52 +1,45 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] PM / AVS: rockchip-io: fix the supply naming for the emmc supply on px30
-Date: Tue, 21 Jan 2020 23:28:59 +0100
-Message-ID: <20200121222859.4069263-1-heiko@sntech.de>
+Subject: [PATCH] drm/rockchip: rgb: don't count non-existent devices when determining subdrivers
+Date: Tue, 21 Jan 2020 23:48:28 +0100
+Message-ID: <20200121224828.4070067-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: khilman@kernel.org, nm@ti.com
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, christoph.muellner@theobroma-systems.com, heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+To: hjc@rock-chips.com
+Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, miquel.raynal@bootlin.com, christoph.muellner@theobroma-systems.com, heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-The supply going to the emmc/flash is named vccio6, not vccio0 and while
-the code does this correctly already, the comments and error output do not.
+rockchip_drm_endpoint_is_subdriver() may also return error codes.
+For example if the target-node is in the disabled state, so no
+platform-device is getting created for it.
 
-So just change these values to the correct ones.
+In that case current code would count that as external rgb device,
+which in turn would make probing the rockchip-drm device fail.
+
+So only count the target as rgb device if the function actually
+returns 0.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 ---
- drivers/power/avs/rockchip-io-domain.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_rgb.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/power/avs/rockchip-io-domain.c
-index 398fc954419e..eece97f97ef8 100644
---- a/drivers/power/avs/rockchip-io-domain.c
-+++ b/drivers/power/avs/rockchip-io-domain.c
-@@ -152,18 +152,18 @@ static void px30_iodomain_init(struct rockchip_iodomain *iod)
- 	int ret;
- 	u32 val;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_rgb.c b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+index ae730275a34f..79a7e60633e0 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_rgb.c
++++ b/drivers/gpu/drm/rockchip/rockchip_rgb.c
+@@ -98,7 +98,8 @@ struct rockchip_rgb *rockchip_rgb_init(struct device *dev,
+ 		if (of_property_read_u32(endpoint, "reg", &endpoint_id))
+ 			endpoint_id = 0;
  
--	/* if no VCCIO0 supply we should leave things alone */
-+	/* if no VCCIO6 supply we should leave things alone */
- 	if (!iod->supplies[PX30_IO_VSEL_VCCIO6_SUPPLY_NUM].reg)
- 		return;
+-		if (rockchip_drm_endpoint_is_subdriver(endpoint) > 0)
++		/* if subdriver (> 0) or error case (< 0), ignore entry */
++		if (rockchip_drm_endpoint_is_subdriver(endpoint) != 0)
+ 			continue;
  
- 	/*
--	 * set vccio0 iodomain to also use this framework
-+	 * set vccio6 iodomain to also use this framework
- 	 * instead of a special gpio.
- 	 */
- 	val = PX30_IO_VSEL_VCCIO6_SRC | (PX30_IO_VSEL_VCCIO6_SRC << 16);
- 	ret = regmap_write(iod->grf, PX30_IO_VSEL, val);
- 	if (ret < 0)
--		dev_warn(iod->dev, "couldn't update vccio0 ctrl\n");
-+		dev_warn(iod->dev, "couldn't update vccio6 ctrl\n");
- }
- 
- static void rk3288_iodomain_init(struct rockchip_iodomain *iod)
+ 		child_count++;
 -- 
 2.24.1
