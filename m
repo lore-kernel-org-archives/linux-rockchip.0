@@ -1,45 +1,65 @@
-From: Justin Swartz <justin.swartz@risingedge.co.za>
-Subject: [PATCH v3 1/2] ARM: dts: rockchip: add rga node for rk322x
-Date: Tue, 21 Jan 2020 22:02:40 +0000
-Message-ID: <20200121220242.22815-2-justin.swartz@risingedge.co.za>
-References: <20200120194158.25357-1-justin.swartz@risingedge.co.za>
- <20200121220242.22815-1-justin.swartz@risingedge.co.za>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] arm64: dts: rockchip: fix px30 lvds ports
+Date: Tue, 21 Jan 2020 23:20:55 +0100
+Message-ID: <20200121222055.4068166-2-heiko@sntech.de>
+References: <20200121222055.4068166-1-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200121220242.22815-1-justin.swartz@risingedge.co.za>
+In-Reply-To: <20200121222055.4068166-1-heiko@sntech.de>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: Justin Swartz <justin.swartz@risingedge.co.za>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+To: linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, miquel.raynal@bootlin.com, christoph.muellner@theobroma-systems.com, heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add a node to define the presence of RGA, a 2D raster
-graphic acceleration unit.
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+The lvds controller has two ports. port@0 for the connection
+to the display controller(s) and port@1 for the connection to
+the panel, so should have a ports node covering the port@x nodes.
+
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 ---
- arch/arm/boot/dts/rk322x.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 23 ++++++++++++++---------
+ 1 file changed, 14 insertions(+), 9 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index 340ed6ccb..29d50bebc 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -621,6 +621,17 @@
- 		status = "disabled";
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 9b1c92132007..37e014444214 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -421,19 +421,24 @@ lvds: lvds {
+ 			rockchip,output = "lvds";
+ 			status = "disabled";
  
-+	rga: rga@20060000 {
-+		compatible = "rockchip,rk3228-rga", "rockchip,rk3288-rga";
-+		reg = <0x20060000 0x1000>;
-+		interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA>;
-+		clock-names = "aclk", "hclk", "sclk";
-+		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
-+		reset-names = "core", "axi", "ahb";
-+		status = "disabled";
-+	};
+-			port@0 {
+-				reg = <0>;
++			ports {
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+ 
+-				lvds_vopb_in: endpoint@0 {
++				port@0 {
+ 					reg = <0>;
+-					remote-endpoint = <&vopb_out_lvds>;
+-				};
+-
+-				lvds_vopl_in: endpoint@1 {
+-					reg = <1>;
+-					remote-endpoint = <&vopl_out_lvds>;
++					#address-cells = <1>;
++					#size-cells = <0>;
 +
- 	iep_mmu: iommu@20070800 {
- 		compatible = "rockchip,iommu";
- 		reg = <0x20070800 0x100>;
++					lvds_vopb_in: endpoint@0 {
++						reg = <0>;
++						remote-endpoint = <&vopb_out_lvds>;
++					};
++
++					lvds_vopl_in: endpoint@1 {
++						reg = <1>;
++						remote-endpoint = <&vopl_out_lvds>;
++					};
+ 				};
+ 			};
+ 		};
 -- 
-2.11.0
+2.24.1
