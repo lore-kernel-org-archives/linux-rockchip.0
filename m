@@ -1,73 +1,63 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix px30 lvds ports
-Date: Tue, 21 Jan 2020 14:56:58 +0000
-Message-ID: <1cd15d49-3c4f-6da2-4d4f-0414dd6d6adc@arm.com>
-References: <20200121134510.3893487-1-heiko@sntech.de>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2] dt-bindings: convert rockchip-drm.txt to
+ rockchip-drm.yaml
+Date: Tue, 21 Jan 2020 16:11:17 +0100
+Message-ID: <573dc6d1-5857-f3ba-a392-67351db727b5@gmail.com>
+References: <6371f95f-8bf8-47c9-021e-b23006f25405@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200121134510.3893487-1-heiko@sntech.de>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, linux-kernel@vger.kernel.org, miquel.raynal@bootlin.com, linux-arm-kernel@lists.infradead.org, christoph.muellner@theobroma-systems.com
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <6371f95f-8bf8-47c9-021e-b23006f25405-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+Cc: airlied-cv59FeDIM0c@public.gmane.org, dafna3-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 21/01/2020 1:45 pm, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> 
-> The lvds controller has two ports. port@0 for the connection
-> to the display controller(s) and port@1 for the connection to
-> the panel, so should have a ports node covering the port@x nodes.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> ---
->   arch/arm64/boot/dts/rockchip/px30.dtsi | 23 ++++++++++++++---------
->   1 file changed, 14 insertions(+), 9 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> index 9b1c92132007..37e014444214 100644
-> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> @@ -421,19 +421,24 @@ lvds: lvds {
->   			rockchip,output = "lvds";
->   			status = "disabled";
+Hi Dafna,
 
-FWIW, the main node's "#{address,size}-cells" properties above here 
-should now be unnecessary too.
 
-Robin.
-
->   
-> -			port@0 {
-> -				reg = <0>;
-> +			ports {
->   				#address-cells = <1>;
->   				#size-cells = <0>;
->   
-> -				lvds_vopb_in: endpoint@0 {
-> +				port@0 {
->   					reg = <0>;
-> -					remote-endpoint = <&vopb_out_lvds>;
-> -				};
-> -
-> -				lvds_vopl_in: endpoint@1 {
-> -					reg = <1>;
-> -					remote-endpoint = <&vopl_out_lvds>;
-> +					#address-cells = <1>;
-> +					#size-cells = <0>;
-> +
-> +					lvds_vopb_in: endpoint@0 {
-> +						reg = <0>;
-> +						remote-endpoint = <&vopb_out_lvds>;
-> +					};
-> +
-> +					lvds_vopl_in: endpoint@1 {
-> +						reg = <1>;
-> +						remote-endpoint = <&vopl_out_lvds>;
-> +					};
->   				};
->   			};
->   		};
 > 
+> 
+> On 21.01.20 15:03, Rob Herring wrote:
+>> On Tue, Jan 21, 2020 at 6:35 AM Dafna Hirschfeld
+>> <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+>>>
+>>> convert the binding file rockchip-drm.txt to yaml format.
+>>> This was tested and verified with:
+>>> make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+>> 
+>> Also, make sure just 'make dt_binding_check' passes as that checks the
+>> example against all schemas.
+> 
+> But this also checks the other schemas in general, and when running it, 
+> it fails because of bugs in other schemas.
+
+
+> For example with arm=ARM I get:
+
+Use:
+
+# enable Rockchip arm in menuconfig
+make ARCH=arm menuconfig
+
+make ARCH=arm dt_binding_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+
+and not:
+arm=ARM
+
+
+> 
+>    DTC     Documentation/devicetree/bindings/clock/qcom,gcc.example.dt.yaml
+> Error: 
+> Documentation/devicetree/bindings/clock/qcom,gcc.example.dts:111.28-29 
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> 
+> Dafna
+> 
+>> 
+>>> make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
+>>>
