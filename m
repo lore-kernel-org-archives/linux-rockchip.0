@@ -1,30 +1,24 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 3/3] dt-bindings: mmc: rockchip-dw-mshc: add
- description for rk3308
-Date: Wed, 22 Jan 2020 10:05:53 -0600
-Message-ID: <20200122160553.GA10824@bogus>
-References: <20200116152230.29831-1-jbx6244@gmail.com>
- <20200116152230.29831-3-jbx6244@gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] dt-bindings: Add doc for Pine64 Pinebook Pro
+Date: Wed, 22 Jan 2020 10:08:22 -0600
+Message-ID: <20200122160822.GA15049@bogus>
+References: <20200116225617.6318-1-manu@freebsd.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20200116152230.29831-3-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: ulf.hansson@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+In-Reply-To: <20200116225617.6318-1-manu-h+KGxgPPiopAfugRpC6u6w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, nick-XW3xCAIBE2TQT0dZR+AlfA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org, aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org, pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, vicencb-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Emmanuel Vadot <manu-h+KGxgPPiopAfugRpC6u6w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 16 Jan 2020 16:22:30 +0100, Johan Jonker wrote:
-> The description below is already in use for rk3308.dtsi,
-> but was somehow never added to a document, so add
-> "rockchip,rk3308-dw-mshc", "rockchip,rk3288-dw-mshc"
-> for mmc nodes on a rk3308 platform to rockchip-dw-mshc.yaml.
+On Thu, 16 Jan 2020 23:56:16 +0100, Emmanuel Vadot wrote:
+> Add a compatible for Pine64 Pinebook Pro
 > 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> Signed-off-by: Emmanuel Vadot <manu-h+KGxgPPiopAfugRpC6u6w@public.gmane.org>
 > ---
->  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 2 ++
->  1 file changed, 2 insertions(+)
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
