@@ -1,37 +1,30 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 2/3] dt-bindings: mmc: convert rockchip dw-mshc
- bindings to yaml
-Date: Wed, 22 Jan 2020 10:05:43 -0600
-Message-ID: <20200122160543.GA10427@bogus>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 3/3] dt-bindings: mmc: rockchip-dw-mshc: add
+ description for rk3308
+Date: Wed, 22 Jan 2020 10:05:53 -0600
+Message-ID: <20200122160553.GA10824@bogus>
 References: <20200116152230.29831-1-jbx6244@gmail.com>
- <20200116152230.29831-2-jbx6244@gmail.com>
+ <20200116152230.29831-3-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20200116152230.29831-2-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: ulf.hansson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-mmc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+In-Reply-To: <20200116152230.29831-3-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: ulf.hansson@linaro.org, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 16 Jan 2020 16:22:29 +0100, Johan Jonker wrote:
-> Current dts files with 'dwmmc' nodes are manually verified.
-> In order to automate this process rockchip-dw-mshc.txt
-> has to be converted to yaml. In the new setup
-> rockchip-dw-mshc.yaml will inherit properties from
-> mmc-controller.yaml and synopsys-dw-mshc-common.yaml.
-> 'dwmmc' will no longer be a valid name for a node and
-> should be changed to 'mmc'.
+On Thu, 16 Jan 2020 16:22:30 +0100, Johan Jonker wrote:
+> The description below is already in use for rk3308.dtsi,
+> but was somehow never added to a document, so add
+> "rockchip,rk3308-dw-mshc", "rockchip,rk3288-dw-mshc"
+> for mmc nodes on a rk3308 platform to rockchip-dw-mshc.yaml.
 > 
-> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
->  .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |  49 --------
->  .../devicetree/bindings/mmc/rockchip-dw-mshc.yaml  | 123 +++++++++++++++++++++
->  MAINTAINERS                                        |   1 +
->  3 files changed, 124 insertions(+), 49 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
->  create mode 100644 Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+>  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
 > 
 
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Acked-by: Rob Herring <robh@kernel.org>
