@@ -1,115 +1,67 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 4/4] rockchip: Enable HDMI output on rk3399 board w/ HDMI
-Date: Thu, 23 Jan 2020 21:58:45 +0530
-Message-ID: <20200123162845.10651-5-jagan@amarulasolutions.com>
-References: <20200123162845.10651-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH 02/11] distro_bootcmd: Add SF support
+Date: Thu, 23 Jan 2020 22:25:50 +0530
+Message-ID: <CAMty3ZAq+aDMuEKGYk9UyTS4Z4=TgtNcKRDtiBC-=mqRWUWAyA@mail.gmail.com>
+References: <20191221075440.6944-1-jagan@amarulasolutions.com>
+ <20191221075440.6944-3-jagan@amarulasolutions.com>
+ <20200120172240.GX8732@bill-the-cat>
+ <8dddd74f-7b17-a614-48ab-aea0bc9148db@csgraf.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200123162845.10651-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <8dddd74f-7b17-a614-48ab-aea0bc9148db@csgraf.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Alexander Graf <agraf@csgraf.de>, Tom Rini <trini@konsulko.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heinrich Schuchardt <xypron.glpk@gmx.de>, U-Boot-Denx <u-boot@lists.denx.de>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable config options and console setting to respective
-rk3399 board for HDMI output.
+On Mon, Jan 20, 2020 at 11:10 PM Alexander Graf <agraf@csgraf.de> wrote:
+>
+>
+> On 20.01.20 18:22, Tom Rini wrote:
+> > +A few people that may have insight to my question
+> >
+> > On Sat, Dec 21, 2019 at 01:24:31PM +0530, Jagan Teki wrote:
+> >
+> >> Add distro boot command support for SPI flash.
+> >>
+> >> This distro boot will read the boot script at specific
+> >> location at the flash and start sourcing the same.
+> >>
+> >> The common macro like BOOTENV_SHARED_FLASH would help
+> >> to extend the support for nand flash in future.
+> >>
+> >> Cc: Tom Rini <trini@konsulko.com>
+> >> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> > What distro is this for?  My concern here is that hundreds of boards
+> > (literally) grow by a few hundred bytes to add in this bit of additional
+> > default logic.  That's not a big problem if distributions are now going
+> > to be using SPI flash as where they're programming in their bootscript.
+> > But, who is doing that?  Thanks!
+>
+>
+> I am not aware of any "distro" that puts a U-Boot script at offset 0 of
+> the SPI Flash.
+>
+> Traditionally, SPI Flash boot setups were always very hand crafted -
+> exactly the opposite of what distro boot is for. That said, I think
+> supporting SPI Flash boot for rk3399 is great! Albeit I would personally
+> only store U-Boot and the environment on SPI, not the target OS.
+>
+> Jagan, is putting a U-Boot script on the SPI Flash something you thought
+> of or something that the rk3399 reference board already does? If it's
+> the latter, maybe you could add it as a board custom boot function?
 
-Boards supported and tested on this patch are:
-- NanoPc T4
-- NanoPi M4
-- NanoPi Neo4
-- ROC-RK3399-PC
+Yes it would be later that points to. rk3399 has SPI flash layout and
+out of which one of offset(script_offset_f=0xffe000 from
+include/configs/rk3399_common.h) stored the programming script.
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- configs/nanopc-t4-rk3399_defconfig   | 6 ++++++
- configs/nanopi-m4-rk3399_defconfig   | 6 ++++++
- configs/nanopi-neo4-rk3399_defconfig | 6 ++++++
- configs/roc-pc-rk3399_defconfig      | 6 ++++++
- include/configs/evb_rk3399.h         | 5 +++++
- 5 files changed, 29 insertions(+)
-
-diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
-index bd6d60ff6c..17e8a18d31 100644
---- a/configs/nanopc-t4-rk3399_defconfig
-+++ b/configs/nanopc-t4-rk3399_defconfig
-@@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_VIDEO_BPP16=y
-+CONFIG_VIDEO_BPP32=y
-+CONFIG_DISPLAY=y
-+CONFIG_VIDEO_ROCKCHIP=y
-+CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk3399_defconfig
-index 74ede13c23..b73b2fdc27 100644
---- a/configs/nanopi-m4-rk3399_defconfig
-+++ b/configs/nanopi-m4-rk3399_defconfig
-@@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_VIDEO_BPP16=y
-+CONFIG_VIDEO_BPP32=y
-+CONFIG_DISPLAY=y
-+CONFIG_VIDEO_ROCKCHIP=y
-+CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-rk3399_defconfig
-index a44124aac0..2ecb50967b 100644
---- a/configs/nanopi-neo4-rk3399_defconfig
-+++ b/configs/nanopi-neo4-rk3399_defconfig
-@@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_VIDEO_BPP16=y
-+CONFIG_VIDEO_BPP32=y
-+CONFIG_DISPLAY=y
-+CONFIG_VIDEO_ROCKCHIP=y
-+CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index 3a051d9b0c..a9f99f992d 100644
---- a/configs/roc-pc-rk3399_defconfig
-+++ b/configs/roc-pc-rk3399_defconfig
-@@ -56,3 +56,9 @@ CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_VIDEO_BPP16=y
-+CONFIG_VIDEO_BPP32=y
-+CONFIG_DISPLAY=y
-+CONFIG_VIDEO_ROCKCHIP=y
-+CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
-index c0b0358893..09eb361655 100644
---- a/include/configs/evb_rk3399.h
-+++ b/include/configs/evb_rk3399.h
-@@ -6,6 +6,11 @@
- #ifndef __EVB_RK3399_H
- #define __EVB_RK3399_H
- 
-+#define ROCKCHIP_DEVICE_SETTINGS \
-+		"stdin=serial,cros-ec-keyb\0" \
-+		"stdout=serial,vidconsole\0" \
-+		"stderr=serial,vidconsole\0"
-+
- #include <configs/rk3399_common.h>
- 
- #if defined(CONFIG_ENV_IS_IN_MMC)
--- 
-2.18.0.321.gffc6fa0e3
+Jagan.
