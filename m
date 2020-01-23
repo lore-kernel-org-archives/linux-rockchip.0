@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 3/4] rockchip: Enable pre console for rk3399
-Date: Thu, 23 Jan 2020 21:58:44 +0530
-Message-ID: <20200123162845.10651-4-jagan@amarulasolutions.com>
+Subject: [PATCH 4/4] rockchip: Enable HDMI output on rk3399 board w/ HDMI
+Date: Thu, 23 Jan 2020 21:58:45 +0530
+Message-ID: <20200123162845.10651-5-jagan@amarulasolutions.com>
 References: <20200123162845.10651-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,48 +21,95 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable pre console buffer for rk3399 platform.
+Enable config options and console setting to respective
+rk3399 board for HDMI output.
 
-This would help to capture the console messages prior to
-the console being initialised. Enabling this would help
-to capture all the console messages on video output source
-like HDMI. So we can find the full console messages of
-U-Boot proper on HDMI display when enabled it for RK3399
-platform boards.
-
-Buffer address used for pre console is 0x0f200000 which is
-ram base plus 240MiB. right now the Allwinner SoC is using
-similar computation.
+Boards supported and tested on this patch are:
+- NanoPc T4
+- NanoPi M4
+- NanoPi Neo4
+- ROC-RK3399-PC
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/mach-rockchip/Kconfig | 1 +
- common/Kconfig                 | 1 +
- 2 files changed, 2 insertions(+)
+ configs/nanopc-t4-rk3399_defconfig   | 6 ++++++
+ configs/nanopi-m4-rk3399_defconfig   | 6 ++++++
+ configs/nanopi-neo4-rk3399_defconfig | 6 ++++++
+ configs/roc-pc-rk3399_defconfig      | 6 ++++++
+ include/configs/evb_rk3399.h         | 5 +++++
+ 5 files changed, 29 insertions(+)
 
-diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
-index ed7514ab75..0cb1f23d0f 100644
---- a/arch/arm/mach-rockchip/Kconfig
-+++ b/arch/arm/mach-rockchip/Kconfig
-@@ -229,6 +229,7 @@ config ROCKCHIP_RK3399
- 	select DM_PMIC
- 	select DM_REGULATOR_FIXED
- 	select BOARD_LATE_INIT
-+	imply PRE_CONSOLE_BUFFER
- 	imply ROCKCHIP_COMMON_BOARD
- 	imply ROCKCHIP_SDRAM_COMMON
- 	imply SPL_ROCKCHIP_COMMON_BOARD
-diff --git a/common/Kconfig b/common/Kconfig
-index 21d0244050..7d81924340 100644
---- a/common/Kconfig
-+++ b/common/Kconfig
-@@ -568,6 +568,7 @@ config PRE_CON_BUF_ADDR
- 	default 0x2f000000 if ARCH_SUNXI && MACH_SUN9I
- 	default 0x4f000000 if ARCH_SUNXI && !MACH_SUN9I
- 	default 0x0f000000 if ROCKCHIP_RK3288
-+	default 0x0f200000 if ROCKCHIP_RK3399
- 	help
- 	  This sets the start address of the pre-console buffer. This must
- 	  be in available memory and is accessed before relocation and
+diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
+index bd6d60ff6c..17e8a18d31 100644
+--- a/configs/nanopc-t4-rk3399_defconfig
++++ b/configs/nanopc-t4-rk3399_defconfig
+@@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=y
+ CONFIG_USB_ETHER_SMSC95XX=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
++CONFIG_DM_VIDEO=y
++CONFIG_VIDEO_BPP16=y
++CONFIG_VIDEO_BPP32=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk3399_defconfig
+index 74ede13c23..b73b2fdc27 100644
+--- a/configs/nanopi-m4-rk3399_defconfig
++++ b/configs/nanopi-m4-rk3399_defconfig
+@@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=y
+ CONFIG_USB_ETHER_SMSC95XX=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
++CONFIG_DM_VIDEO=y
++CONFIG_VIDEO_BPP16=y
++CONFIG_VIDEO_BPP32=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-rk3399_defconfig
+index a44124aac0..2ecb50967b 100644
+--- a/configs/nanopi-neo4-rk3399_defconfig
++++ b/configs/nanopi-neo4-rk3399_defconfig
+@@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=y
+ CONFIG_USB_ETHER_SMSC95XX=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
++CONFIG_DM_VIDEO=y
++CONFIG_VIDEO_BPP16=y
++CONFIG_VIDEO_BPP32=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+index 3a051d9b0c..a9f99f992d 100644
+--- a/configs/roc-pc-rk3399_defconfig
++++ b/configs/roc-pc-rk3399_defconfig
+@@ -56,3 +56,9 @@ CONFIG_USB_ETHER_RTL8152=y
+ CONFIG_USB_ETHER_SMSC95XX=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
++CONFIG_DM_VIDEO=y
++CONFIG_VIDEO_BPP16=y
++CONFIG_VIDEO_BPP32=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
+index c0b0358893..09eb361655 100644
+--- a/include/configs/evb_rk3399.h
++++ b/include/configs/evb_rk3399.h
+@@ -6,6 +6,11 @@
+ #ifndef __EVB_RK3399_H
+ #define __EVB_RK3399_H
+ 
++#define ROCKCHIP_DEVICE_SETTINGS \
++		"stdin=serial,cros-ec-keyb\0" \
++		"stdout=serial,vidconsole\0" \
++		"stderr=serial,vidconsole\0"
++
+ #include <configs/rk3399_common.h>
+ 
+ #if defined(CONFIG_ENV_IS_IN_MMC)
 -- 
 2.18.0.321.gffc6fa0e3
