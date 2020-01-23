@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 2/4] video: rockchip: Fix vop modes for rk3399
-Date: Thu, 23 Jan 2020 21:58:43 +0530
-Message-ID: <20200123162845.10651-3-jagan@amarulasolutions.com>
+Subject: [PATCH 3/4] rockchip: Enable pre console for rk3399
+Date: Thu, 23 Jan 2020 21:58:44 +0530
+Message-ID: <20200123162845.10651-4-jagan@amarulasolutions.com>
 References: <20200123162845.10651-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,149 +21,48 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VOP display endpoint pipeline configuration is differs
-between rk3288 vs rk3399.
+Enable pre console buffer for rk3399 platform.
 
-These VOP pipeline configuration depends on how the
-different display interfaces connected in sequence to
-IN and OUT ports like for,
+This would help to capture the console messages prior to
+the console being initialised. Enabling this would help
+to capture all the console messages on video output source
+like HDMI. So we can find the full console messages of
+U-Boot proper on HDMI display when enabled it for RK3399
+platform boards.
 
-RK3288:
-
-vopb_out: port {
-	#address-cells = <1>;
-	#size-cells = <0>;
-	vopb_out_edp: endpoint@0 {
-		reg = <0>;
-		remote-endpoint = <&edp_in_vopb>;
-	};
-	vopb_out_hdmi: endpoint@1 {
-		reg = <1>;
-                remote-endpoint = <&hdmi_in_vopb>;
-        };
-        vopb_out_lvds: endpoint@2 {
-                reg = <2>;
-                remote-endpoint = <&lvds_in_vopb>;
-        };
-        vopb_out_mipi: endpoint@3 {
-                reg = <3>;
-                remote-endpoint = <&mipi_in_vopb>;
-        };
-};
-
-RK3399:
-
-vopb_out: port {
-         #address-cells = <1>;
-         #size-cells = <0>;
-         vopb_out_edp: endpoint@0 {
-                reg = <0>;
-                remote-endpoint = <&edp_in_vopb>;
-         };
-         vopb_out_mipi: endpoint@1 {
-                reg = <1>;
-                remote-endpoint = <&mipi_in_vopb>;
-         };
-         vopb_out_hdmi: endpoint@2 {
-                reg = <2>;
-                remote-endpoint = <&hdmi_in_vopb>;
-         };
-         vopb_out_mipi1: endpoint@3 {
-                reg = <3>;
-                remote-endpoint = <&mipi1_in_vopb>;
-         };
-         vopb_out_dp: endpoint@4 {
-                reg = <4>;
-                remote-endpoint = <&dp_in_vopb>;
-         };
-};
-
-here, HDMI interface has endpoint 1 in rk3288 and 2 in rk3399.
-
-The rockchip vop driver often depends on this determined endpoint
-number and stored in vop_mode. So based on this vop_mode the bpp
-and pin polarity would configure on detected display interface.
-
-Since, the existing driver using rk3288 vop mode settings enabling
-the same will result wrong display interface configuration for rk3399.
-
-Add the patch for fixing these vop modes for rk3399.
+Buffer address used for pre console is 0x0f200000 which is
+ram base plus 240MiB. right now the Allwinner SoC is using
+similar computation.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/include/asm/arch-rockchip/vop_rk3288.h | 11 +++++++++++
- drivers/video/rockchip/rk3399_vop.c             |  2 --
- drivers/video/rockchip/rk_vop.c                 |  4 ++++
- 3 files changed, 15 insertions(+), 2 deletions(-)
+ arch/arm/mach-rockchip/Kconfig | 1 +
+ common/Kconfig                 | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/arch/arm/include/asm/arch-rockchip/vop_rk3288.h b/arch/arm/include/asm/arch-rockchip/vop_rk3288.h
-index 8398249509..872a158b71 100644
---- a/arch/arm/include/asm/arch-rockchip/vop_rk3288.h
-+++ b/arch/arm/include/asm/arch-rockchip/vop_rk3288.h
-@@ -85,6 +85,16 @@ enum {
- 	LB_RGB_1280X8 = 0x5
- };
- 
-+#if defined(CONFIG_ROCKCHIP_RK3399)
-+enum vop_modes {
-+	VOP_MODE_EDP = 0,
-+	VOP_MODE_MIPI,
-+	VOP_MODE_HDMI,
-+	VOP_MODE_MIPI1,
-+	VOP_MODE_DP,
-+	VOP_MODE_NONE,
-+};
-+#else
- enum vop_modes {
- 	VOP_MODE_EDP = 0,
- 	VOP_MODE_HDMI,
-@@ -94,6 +104,7 @@ enum vop_modes {
- 	VOP_MODE_AUTO_DETECT,
- 	VOP_MODE_UNKNOWN,
- };
-+#endif
- 
- /* VOP_VERSION_INFO */
- #define M_FPGA_VERSION (0xffff << 16)
-diff --git a/drivers/video/rockchip/rk3399_vop.c b/drivers/video/rockchip/rk3399_vop.c
-index 81c122d7a9..1d5b3931a6 100644
---- a/drivers/video/rockchip/rk3399_vop.c
-+++ b/drivers/video/rockchip/rk3399_vop.c
-@@ -45,8 +45,6 @@ static void rk3399_set_pin_polarity(struct udevice *dev,
- 				V_RK3399_DSP_MIPI_POL(polarity));
- 		break;
- 
--	case VOP_MODE_LVDS:
--		/* The RK3399 has neither parallel RGB nor LVDS output. */
- 	default:
- 		debug("%s: unsupported output mode %x\n", __func__, mode);
- 	}
-diff --git a/drivers/video/rockchip/rk_vop.c b/drivers/video/rockchip/rk_vop.c
-index b56c3f336c..bdb790a0c5 100644
---- a/drivers/video/rockchip/rk_vop.c
-+++ b/drivers/video/rockchip/rk_vop.c
-@@ -117,10 +117,12 @@ static void rkvop_enable_output(struct udevice *dev, enum vop_modes mode)
- 				V_EDP_OUT_EN(1));
- 		break;
- 
-+#if defined(CONFIG_ROCKCHIP_RK3288)
- 	case VOP_MODE_LVDS:
- 		clrsetbits_le32(&regs->sys_ctrl, M_ALL_OUT_EN,
- 				V_RGB_OUT_EN(1));
- 		break;
-+#endif
- 
- 	case VOP_MODE_MIPI:
- 		clrsetbits_le32(&regs->sys_ctrl, M_ALL_OUT_EN,
-@@ -312,7 +314,9 @@ static int rk_display_init(struct udevice *dev, ulong fbbase, ofnode ep_node)
- 	/* Set bitwidth for vop display according to vop mode */
- 	switch (vop_id) {
- 	case VOP_MODE_EDP:
-+#if defined(CONFIG_ROCKCHIP_RK3288)
- 	case VOP_MODE_LVDS:
-+#endif
- 		l2bpp = VIDEO_BPP16;
- 		break;
- 	case VOP_MODE_HDMI:
+diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+index ed7514ab75..0cb1f23d0f 100644
+--- a/arch/arm/mach-rockchip/Kconfig
++++ b/arch/arm/mach-rockchip/Kconfig
+@@ -229,6 +229,7 @@ config ROCKCHIP_RK3399
+ 	select DM_PMIC
+ 	select DM_REGULATOR_FIXED
+ 	select BOARD_LATE_INIT
++	imply PRE_CONSOLE_BUFFER
+ 	imply ROCKCHIP_COMMON_BOARD
+ 	imply ROCKCHIP_SDRAM_COMMON
+ 	imply SPL_ROCKCHIP_COMMON_BOARD
+diff --git a/common/Kconfig b/common/Kconfig
+index 21d0244050..7d81924340 100644
+--- a/common/Kconfig
++++ b/common/Kconfig
+@@ -568,6 +568,7 @@ config PRE_CON_BUF_ADDR
+ 	default 0x2f000000 if ARCH_SUNXI && MACH_SUN9I
+ 	default 0x4f000000 if ARCH_SUNXI && !MACH_SUN9I
+ 	default 0x0f000000 if ROCKCHIP_RK3288
++	default 0x0f200000 if ROCKCHIP_RK3399
+ 	help
+ 	  This sets the start address of the pre-console buffer. This must
+ 	  be in available memory and is accessed before relocation and
 -- 
 2.18.0.321.gffc6fa0e3
