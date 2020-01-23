@@ -1,65 +1,65 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 3/3] ARM: dts: rockchip: Add vcc50_hdmi for rk3288-vyasa
-Date: Thu, 23 Jan 2020 19:16:41 +0530
-Message-ID: <20200123134641.30720-3-jagan@amarulasolutions.com>
-References: <20200123134641.30720-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH 1/4] rockchip: rk3288: Enable pre console buffer
+Date: Thu, 23 Jan 2020 19:42:19 +0530
+Message-ID: <20200123141222.486-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200123134641.30720-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add vcc50_hdmi regulator for Vyasa RK3288 board.
+Enable pre console buffer for rk3288 platform.
 
-VCC50_HDMI is the real name used for this regulator as
-per the schematics.
+This would help to capture the console messages prior to
+the console being initialised. Enabling this would help
+to capture all the console messages on video output source
+like HDMI. So we can find the full console messages of
+U-Boot proper on HDMI display when enabled it for RK3288
+platform boards.
 
-This regulator used for HDMI connector by detecting the
-cable via HDMI_EN gpio and input rails are sourced from
-VSUS_5V regulator.
+Buffer address used for pre console is 0x0f000000 which is
+ram base plus 240MiB. right now the Allwinner SoC is using
+similar computation.
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
- arch/arm/boot/dts/rk3288-vyasa.dts | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ arch/arm/mach-rockchip/Kconfig | 1 +
+ common/Kconfig                 | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
-index 88c63946f2a3..52291faf7aef 100644
---- a/arch/arm/boot/dts/rk3288-vyasa.dts
-+++ b/arch/arm/boot/dts/rk3288-vyasa.dts
-@@ -78,6 +78,17 @@
- 		vin-supply = <&vcc_io>;
- 	};
- 
-+	vcc50_hdmi: vcc50-hdmi {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc50_hdmi";
-+		enable-active-high;
-+		gpio = <&gpio7 RK_PB4 GPIO_ACTIVE_HIGH>; /* HDMI_EN */
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc50_hdmi_en>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vsus_5v>;
-+	};
- 	vusb1_5v: vusb1-5v {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vusb1_5v";
-@@ -446,6 +457,12 @@
- 		};
- 	};
- 
-+	hdmi {
-+		vcc50_hdmi_en: vcc50-hdmi-en {
-+			rockchip,pins = <7 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int: pmic-int {
- 			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
+diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+index 2f260a5c5f..ed7514ab75 100644
+--- a/arch/arm/mach-rockchip/Kconfig
++++ b/arch/arm/mach-rockchip/Kconfig
+@@ -102,6 +102,7 @@ config ROCKCHIP_RK3288
+ 	select SUPPORT_SPL
+ 	select SPL
+ 	select SUPPORT_TPL
++	imply PRE_CONSOLE_BUFFER
+ 	imply ROCKCHIP_COMMON_BOARD
+ 	imply SPL_ROCKCHIP_COMMON_BOARD
+ 	imply TPL_CLK
+diff --git a/common/Kconfig b/common/Kconfig
+index a7c5ba278a..21d0244050 100644
+--- a/common/Kconfig
++++ b/common/Kconfig
+@@ -567,6 +567,7 @@ config PRE_CON_BUF_ADDR
+ 	depends on PRE_CONSOLE_BUFFER
+ 	default 0x2f000000 if ARCH_SUNXI && MACH_SUN9I
+ 	default 0x4f000000 if ARCH_SUNXI && !MACH_SUN9I
++	default 0x0f000000 if ROCKCHIP_RK3288
+ 	help
+ 	  This sets the start address of the pre-console buffer. This must
+ 	  be in available memory and is accessed before relocation and
 -- 
 2.18.0.321.gffc6fa0e3
