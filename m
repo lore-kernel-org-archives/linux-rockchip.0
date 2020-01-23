@@ -1,49 +1,50 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 0/4] rockchip: rk3399: Fix HDMI out
-Date: Thu, 23 Jan 2020 21:58:41 +0530
-Message-ID: <20200123162845.10651-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 1/4] arm64: dts: rk3399-u-boot: Delete vop
+ assigned-clocks/rates
+Date: Thu, 23 Jan 2020 21:58:42 +0530
+Message-ID: <20200123162845.10651-2-jagan@amarulasolutions.com>
+References: <20200123162845.10651-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200123162845.10651-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Due to recent Linux dts(i) sync for rk3399. the existing
-vop driver is not working with HDMI out on RK3399.
-
-These patches fixing the same and enabled HDMI out new boards.
-
-Any inputs?
-Jagan.
-
-Jagan Teki (4):
-  arm64: dts: rk3399-u-boot: Delete vop assigned-clocks/rates
-  video: rockchip: Fix vop modes for rk3399
-  rockchip: Enable pre console for rk3399
-  rockchip: Enable HDMI output on rk3399 board w/ HDMI
-
- arch/arm/dts/rk3399-u-boot.dtsi                 |  4 ++++
- arch/arm/include/asm/arch-rockchip/vop_rk3288.h | 11 +++++++++++
- arch/arm/mach-rockchip/Kconfig                  |  1 +
- common/Kconfig                                  |  1 +
- configs/nanopc-t4-rk3399_defconfig              |  6 ++++++
- configs/nanopi-m4-rk3399_defconfig              |  6 ++++++
- configs/nanopi-neo4-rk3399_defconfig            |  6 ++++++
- configs/roc-pc-rk3399_defconfig                 |  6 ++++++
- drivers/video/rockchip/rk3399_vop.c             |  2 --
- drivers/video/rockchip/rk_vop.c                 |  4 ++++
- include/configs/evb_rk3399.h                    |  5 +++++
- 11 files changed, 50 insertions(+), 2 deletions(-)
-
--- 
-2.18.0.321.gffc6fa0e3
+TGludXggc3VwcG9ydGluZyBhc3NpZ25lZC1jbG9ja3MgZm9yIFZPUCBvbiByazMzOTkgYnkgYXNz
+dW1pbmcKVS1Cb290IG5vdCBpbml0aWFsaXppbmcgaXQgb24gdGhpcyBsaW51eCBjb21taXQ6Cgpj
+b21taXQgPDYxN2Y0NDcyYmRkMz4gKCJhcm02NDogZHRzOiByb2NrY2hpcDogaW5pdCByazMzOTkg
+dm9wIGNsb2NrIHJhdGVzIikKClRoZXJlIGlzIG5vIHNwZWNpZmljIG5lZWQgdG8gaW5pdGlhbGl6
+ZSB0aGVzZSBhc3NpZ25lZCBjbG9jawppbiBVLUJvb3QgYXMgdmlkZW8gZHJpdmVycyBzdGlsbCB3
+b3JrIHdpdGggZGVmYXVsdCBhY2xrIGFuZCDCoApoY2xrIHZhbHVlcy4gU28sIHRoZXNlIGNsb2Nr
+cyBhcmUgc2ltcGx5IG5vdCBzdXBwb3J0ZWQgYnkgcmszMzk5CmNsb2NrIGRyaXZlci4KCkJ1dCwg
+ZHVyaW5nIHN0ZGlvIHByb2JlIG9mIHZpZGNvbnNvbGUsIHRoZSBkZXZpY2UgcHJvYmUKd2lsbCB0
+cnkgdG8gY2hlY2sgd2hldGhlciB0aGUgYXNzaWduZWQgY2xvY2tzIG9uIHRoYXQgdmlkZW8KY29u
+c29sZSBub2RlIGlzIGluaXRpYWxpemVkIG9yIG5vdD8gYW5kIHJldHVybiBlcnJvciBpZiBub3Qu
+CgpTbywgZGVsZXRlIHRoZXNlIHByb3BlcnR5IHZpYSAtdS1ib290IGR0c2kgYXMgdGhlcmUgaXMK
+bm8gc3BlY2lmaWMgbmVlZCBpbiBVLUJvb3QuCgpTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxq
+YWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KLS0tCiBhcmNoL2FybS9kdHMvcmszMzk5LXUtYm9v
+dC5kdHNpIHwgNCArKysrCiAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspCgpkaWZmIC0t
+Z2l0IGEvYXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3QuZHRzaSBiL2FyY2gvYXJtL2R0cy9yazMz
+OTktdS1ib290LmR0c2kKaW5kZXggNDAyNDBiYmZjMi4uYjhiMjBlZDIyZCAxMDA2NDQKLS0tIGEv
+YXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3QuZHRzaQorKysgYi9hcmNoL2FybS9kdHMvcmszMzk5
+LXUtYm9vdC5kdHNpCkBAIC02NCw5ICs2NCwxMyBAQAogfTsKIAogJnZvcGIgeworCS9kZWxldGUt
+cHJvcGVydHkvIGFzc2lnbmVkLWNsb2NrczsKKwkvZGVsZXRlLXByb3BlcnR5LyBhc3NpZ25lZC1j
+bG9jay1yYXRlczsKIAl1LWJvb3QsZG0tcHJlLXJlbG9jOwogfTsKIAogJnZvcGwgeworCS9kZWxl
+dGUtcHJvcGVydHkvIGFzc2lnbmVkLWNsb2NrczsKKwkvZGVsZXRlLXByb3BlcnR5LyBhc3NpZ25l
+ZC1jbG9jay1yYXRlczsKIAl1LWJvb3QsZG0tcHJlLXJlbG9jOwogfTsKLS0gCjIuMTguMC4zMjEu
+Z2ZmYzZmYTBlMwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
