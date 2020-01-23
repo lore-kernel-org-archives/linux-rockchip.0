@@ -1,49 +1,48 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 1/3] ARM: dts: rockchip: Fix vcc10_lcd name and voltage for rk3288-vyasa
-Date: Thu, 23 Jan 2020 19:16:39 +0530
-Message-ID: <20200123134641.30720-1-jagan@amarulasolutions.com>
+Subject: [PATCH 2/3] ARM: dts: rockchip: Fix ddc-i2c-bus for rk3288-vyasa
+Date: Thu, 23 Jan 2020 19:16:40 +0530
+Message-ID: <20200123134641.30720-2-jagan@amarulasolutions.com>
+References: <20200123134641.30720-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200123134641.30720-1-jagan@amarulasolutions.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
 Cc: Michael Trimarchi <michael@amarulasolutions.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-According to hardware schematics of Vyasa RK3288 the
-actual name used for vcc10_lcd is vdd10_lcd.
+ddc-i2c-bus routed for HDMI is i2c2 not i2c5 on
+Vyasa RK3288 board.
 
-regulator suspend voltage can rail upto 1.0V not 1.8V.
-
-Fix the name and suspend voltage for vcc10_lcd regulator.
+Add support for fixing the same.
 
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
- arch/arm/boot/dts/rk3288-vyasa.dts | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/arm/boot/dts/rk3288-vyasa.dts | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
-index ba06e9f97ddc..d2f79e5bee87 100644
+index d2f79e5bee87..88c63946f2a3 100644
 --- a/arch/arm/boot/dts/rk3288-vyasa.dts
 +++ b/arch/arm/boot/dts/rk3288-vyasa.dts
-@@ -286,15 +286,15 @@
- 				};
- 			};
+@@ -150,7 +150,7 @@
+ };
  
--			vcc10_lcd: LDO_REG6 {
--				regulator-name = "vcc10_lcd";
-+			vdd10_lcd: LDO_REG6 {
-+				regulator-name = "vdd10_lcd";
- 				regulator-min-microvolt = <1000000>;
- 				regulator-max-microvolt = <1000000>;
- 				regulator-always-on;
- 				regulator-boot-on;
- 				regulator-state-mem {
- 					regulator-on-in-suspend;
--					regulator-suspend-microvolt = <1800000>;
-+					regulator-suspend-microvolt = <1000000>;
- 				};
- 			};
+ &hdmi {
+-	ddc-i2c-bus = <&i2c2>;
++	ddc-i2c-bus = <&i2c5>;
+ 	status = "okay";
+ };
+ 
+@@ -347,7 +347,7 @@
+ 	};
+ };
+ 
+-&i2c2 {
++&i2c5 {
+ 	status = "okay";
+ };
  
 -- 
 2.18.0.321.gffc6fa0e3
