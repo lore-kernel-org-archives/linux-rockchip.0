@@ -1,54 +1,49 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 4/4] rk3288: vyasa: Add console settings
-Date: Thu, 23 Jan 2020 19:42:22 +0530
-Message-ID: <20200123141222.486-4-jagan@amarulasolutions.com>
-References: <20200123141222.486-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH 0/4] rockchip: rk3399: Fix HDMI out
+Date: Thu, 23 Jan 2020 21:58:41 +0530
+Message-ID: <20200123162845.10651-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200123141222.486-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add console settings like stdin, stdout and stderr as
-cros-ec-keyb and vidconsole respectively for Vyasa Rk3288
-board.
+Due to recent Linux dts(i) sync for rk3399. the existing
+vop driver is not working with HDMI out on RK3399.
 
-This would certainly help to detect the attached video
-devices (like HDMI) and print the console message on display.
+These patches fixing the same and enabled HDMI out new boards.
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- include/configs/vyasa-rk3288.h | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+Any inputs?
+Jagan.
 
-diff --git a/include/configs/vyasa-rk3288.h b/include/configs/vyasa-rk3288.h
-index 3574a3b5a5..e31dc77720 100644
---- a/include/configs/vyasa-rk3288.h
-+++ b/include/configs/vyasa-rk3288.h
-@@ -8,7 +8,11 @@
- #ifndef __CONFIG_H
- #define __CONFIG_H
- 
--#define ROCKCHIP_DEVICE_SETTINGS
-+#define ROCKCHIP_DEVICE_SETTINGS \
-+		"stdin=serial,cros-ec-keyb\0" \
-+		"stdout=serial,vidconsole\0" \
-+		"stderr=serial,vidconsole\0"
-+
- #include <configs/rk3288_common.h>
- 
- #undef BOOT_TARGET_DEVICES
+Jagan Teki (4):
+  arm64: dts: rk3399-u-boot: Delete vop assigned-clocks/rates
+  video: rockchip: Fix vop modes for rk3399
+  rockchip: Enable pre console for rk3399
+  rockchip: Enable HDMI output on rk3399 board w/ HDMI
+
+ arch/arm/dts/rk3399-u-boot.dtsi                 |  4 ++++
+ arch/arm/include/asm/arch-rockchip/vop_rk3288.h | 11 +++++++++++
+ arch/arm/mach-rockchip/Kconfig                  |  1 +
+ common/Kconfig                                  |  1 +
+ configs/nanopc-t4-rk3399_defconfig              |  6 ++++++
+ configs/nanopi-m4-rk3399_defconfig              |  6 ++++++
+ configs/nanopi-neo4-rk3399_defconfig            |  6 ++++++
+ configs/roc-pc-rk3399_defconfig                 |  6 ++++++
+ drivers/video/rockchip/rk3399_vop.c             |  2 --
+ drivers/video/rockchip/rk_vop.c                 |  4 ++++
+ include/configs/evb_rk3399.h                    |  5 +++++
+ 11 files changed, 50 insertions(+), 2 deletions(-)
+
 -- 
 2.18.0.321.gffc6fa0e3
