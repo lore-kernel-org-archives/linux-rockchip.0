@@ -1,12 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 1/4] arm64: dts: rk3399-u-boot: Delete vop
- assigned-clocks/rates
-Date: Thu, 23 Jan 2020 21:58:42 +0530
-Message-ID: <20200123162845.10651-2-jagan@amarulasolutions.com>
+Subject: [PATCH 2/4] video: rockchip: Fix vop modes for rk3399
+Date: Thu, 23 Jan 2020 21:58:43 +0530
+Message-ID: <20200123162845.10651-3-jagan@amarulasolutions.com>
 References: <20200123162845.10651-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20200123162845.10651-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -22,29 +21,149 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-TGludXggc3VwcG9ydGluZyBhc3NpZ25lZC1jbG9ja3MgZm9yIFZPUCBvbiByazMzOTkgYnkgYXNz
-dW1pbmcKVS1Cb290IG5vdCBpbml0aWFsaXppbmcgaXQgb24gdGhpcyBsaW51eCBjb21taXQ6Cgpj
-b21taXQgPDYxN2Y0NDcyYmRkMz4gKCJhcm02NDogZHRzOiByb2NrY2hpcDogaW5pdCByazMzOTkg
-dm9wIGNsb2NrIHJhdGVzIikKClRoZXJlIGlzIG5vIHNwZWNpZmljIG5lZWQgdG8gaW5pdGlhbGl6
-ZSB0aGVzZSBhc3NpZ25lZCBjbG9jawppbiBVLUJvb3QgYXMgdmlkZW8gZHJpdmVycyBzdGlsbCB3
-b3JrIHdpdGggZGVmYXVsdCBhY2xrIGFuZCDCoApoY2xrIHZhbHVlcy4gU28sIHRoZXNlIGNsb2Nr
-cyBhcmUgc2ltcGx5IG5vdCBzdXBwb3J0ZWQgYnkgcmszMzk5CmNsb2NrIGRyaXZlci4KCkJ1dCwg
-ZHVyaW5nIHN0ZGlvIHByb2JlIG9mIHZpZGNvbnNvbGUsIHRoZSBkZXZpY2UgcHJvYmUKd2lsbCB0
-cnkgdG8gY2hlY2sgd2hldGhlciB0aGUgYXNzaWduZWQgY2xvY2tzIG9uIHRoYXQgdmlkZW8KY29u
-c29sZSBub2RlIGlzIGluaXRpYWxpemVkIG9yIG5vdD8gYW5kIHJldHVybiBlcnJvciBpZiBub3Qu
-CgpTbywgZGVsZXRlIHRoZXNlIHByb3BlcnR5IHZpYSAtdS1ib290IGR0c2kgYXMgdGhlcmUgaXMK
-bm8gc3BlY2lmaWMgbmVlZCBpbiBVLUJvb3QuCgpTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxq
-YWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KLS0tCiBhcmNoL2FybS9kdHMvcmszMzk5LXUtYm9v
-dC5kdHNpIHwgNCArKysrCiAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspCgpkaWZmIC0t
-Z2l0IGEvYXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3QuZHRzaSBiL2FyY2gvYXJtL2R0cy9yazMz
-OTktdS1ib290LmR0c2kKaW5kZXggNDAyNDBiYmZjMi4uYjhiMjBlZDIyZCAxMDA2NDQKLS0tIGEv
-YXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3QuZHRzaQorKysgYi9hcmNoL2FybS9kdHMvcmszMzk5
-LXUtYm9vdC5kdHNpCkBAIC02NCw5ICs2NCwxMyBAQAogfTsKIAogJnZvcGIgeworCS9kZWxldGUt
-cHJvcGVydHkvIGFzc2lnbmVkLWNsb2NrczsKKwkvZGVsZXRlLXByb3BlcnR5LyBhc3NpZ25lZC1j
-bG9jay1yYXRlczsKIAl1LWJvb3QsZG0tcHJlLXJlbG9jOwogfTsKIAogJnZvcGwgeworCS9kZWxl
-dGUtcHJvcGVydHkvIGFzc2lnbmVkLWNsb2NrczsKKwkvZGVsZXRlLXByb3BlcnR5LyBhc3NpZ25l
-ZC1jbG9jay1yYXRlczsKIAl1LWJvb3QsZG0tcHJlLXJlbG9jOwogfTsKLS0gCjIuMTguMC4zMjEu
-Z2ZmYzZmYTBlMwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+VOP display endpoint pipeline configuration is differs
+between rk3288 vs rk3399.
+
+These VOP pipeline configuration depends on how the
+different display interfaces connected in sequence to
+IN and OUT ports like for,
+
+RK3288:
+
+vopb_out: port {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	vopb_out_edp: endpoint@0 {
+		reg = <0>;
+		remote-endpoint = <&edp_in_vopb>;
+	};
+	vopb_out_hdmi: endpoint@1 {
+		reg = <1>;
+                remote-endpoint = <&hdmi_in_vopb>;
+        };
+        vopb_out_lvds: endpoint@2 {
+                reg = <2>;
+                remote-endpoint = <&lvds_in_vopb>;
+        };
+        vopb_out_mipi: endpoint@3 {
+                reg = <3>;
+                remote-endpoint = <&mipi_in_vopb>;
+        };
+};
+
+RK3399:
+
+vopb_out: port {
+         #address-cells = <1>;
+         #size-cells = <0>;
+         vopb_out_edp: endpoint@0 {
+                reg = <0>;
+                remote-endpoint = <&edp_in_vopb>;
+         };
+         vopb_out_mipi: endpoint@1 {
+                reg = <1>;
+                remote-endpoint = <&mipi_in_vopb>;
+         };
+         vopb_out_hdmi: endpoint@2 {
+                reg = <2>;
+                remote-endpoint = <&hdmi_in_vopb>;
+         };
+         vopb_out_mipi1: endpoint@3 {
+                reg = <3>;
+                remote-endpoint = <&mipi1_in_vopb>;
+         };
+         vopb_out_dp: endpoint@4 {
+                reg = <4>;
+                remote-endpoint = <&dp_in_vopb>;
+         };
+};
+
+here, HDMI interface has endpoint 1 in rk3288 and 2 in rk3399.
+
+The rockchip vop driver often depends on this determined endpoint
+number and stored in vop_mode. So based on this vop_mode the bpp
+and pin polarity would configure on detected display interface.
+
+Since, the existing driver using rk3288 vop mode settings enabling
+the same will result wrong display interface configuration for rk3399.
+
+Add the patch for fixing these vop modes for rk3399.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ arch/arm/include/asm/arch-rockchip/vop_rk3288.h | 11 +++++++++++
+ drivers/video/rockchip/rk3399_vop.c             |  2 --
+ drivers/video/rockchip/rk_vop.c                 |  4 ++++
+ 3 files changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/include/asm/arch-rockchip/vop_rk3288.h b/arch/arm/include/asm/arch-rockchip/vop_rk3288.h
+index 8398249509..872a158b71 100644
+--- a/arch/arm/include/asm/arch-rockchip/vop_rk3288.h
++++ b/arch/arm/include/asm/arch-rockchip/vop_rk3288.h
+@@ -85,6 +85,16 @@ enum {
+ 	LB_RGB_1280X8 = 0x5
+ };
+ 
++#if defined(CONFIG_ROCKCHIP_RK3399)
++enum vop_modes {
++	VOP_MODE_EDP = 0,
++	VOP_MODE_MIPI,
++	VOP_MODE_HDMI,
++	VOP_MODE_MIPI1,
++	VOP_MODE_DP,
++	VOP_MODE_NONE,
++};
++#else
+ enum vop_modes {
+ 	VOP_MODE_EDP = 0,
+ 	VOP_MODE_HDMI,
+@@ -94,6 +104,7 @@ enum vop_modes {
+ 	VOP_MODE_AUTO_DETECT,
+ 	VOP_MODE_UNKNOWN,
+ };
++#endif
+ 
+ /* VOP_VERSION_INFO */
+ #define M_FPGA_VERSION (0xffff << 16)
+diff --git a/drivers/video/rockchip/rk3399_vop.c b/drivers/video/rockchip/rk3399_vop.c
+index 81c122d7a9..1d5b3931a6 100644
+--- a/drivers/video/rockchip/rk3399_vop.c
++++ b/drivers/video/rockchip/rk3399_vop.c
+@@ -45,8 +45,6 @@ static void rk3399_set_pin_polarity(struct udevice *dev,
+ 				V_RK3399_DSP_MIPI_POL(polarity));
+ 		break;
+ 
+-	case VOP_MODE_LVDS:
+-		/* The RK3399 has neither parallel RGB nor LVDS output. */
+ 	default:
+ 		debug("%s: unsupported output mode %x\n", __func__, mode);
+ 	}
+diff --git a/drivers/video/rockchip/rk_vop.c b/drivers/video/rockchip/rk_vop.c
+index b56c3f336c..bdb790a0c5 100644
+--- a/drivers/video/rockchip/rk_vop.c
++++ b/drivers/video/rockchip/rk_vop.c
+@@ -117,10 +117,12 @@ static void rkvop_enable_output(struct udevice *dev, enum vop_modes mode)
+ 				V_EDP_OUT_EN(1));
+ 		break;
+ 
++#if defined(CONFIG_ROCKCHIP_RK3288)
+ 	case VOP_MODE_LVDS:
+ 		clrsetbits_le32(&regs->sys_ctrl, M_ALL_OUT_EN,
+ 				V_RGB_OUT_EN(1));
+ 		break;
++#endif
+ 
+ 	case VOP_MODE_MIPI:
+ 		clrsetbits_le32(&regs->sys_ctrl, M_ALL_OUT_EN,
+@@ -312,7 +314,9 @@ static int rk_display_init(struct udevice *dev, ulong fbbase, ofnode ep_node)
+ 	/* Set bitwidth for vop display according to vop mode */
+ 	switch (vop_id) {
+ 	case VOP_MODE_EDP:
++#if defined(CONFIG_ROCKCHIP_RK3288)
+ 	case VOP_MODE_LVDS:
++#endif
+ 		l2bpp = VIDEO_BPP16;
+ 		break;
+ 	case VOP_MODE_HDMI:
+-- 
+2.18.0.321.gffc6fa0e3
