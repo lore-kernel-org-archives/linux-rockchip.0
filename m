@@ -1,158 +1,171 @@
-From: Tom Rini <trini@konsulko.com>
-Subject: Re: [PATCH 4/4] rockchip: Enable HDMI output on rk3399 board w/ HDMI
-Date: Fri, 24 Jan 2020 10:27:35 -0500
-Message-ID: <20200124152735.GR26536@bill-the-cat>
-References: <20200123162845.10651-1-jagan@amarulasolutions.com>
- <20200123162845.10651-5-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="Uc2nn8srCdMFAHlk"
-Return-path: <u-boot-bounces@lists.denx.de>
-Content-Disposition: inline
-In-Reply-To: <20200123162845.10651-5-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Anatolij Gustschin <agust@denx.de>
-Cc: linux-rockchip@lists.infradead.org, u-boot@lists.denx.de, linux-amarula@amarulasolutions.com
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [RFC PATCH v2 00/10] Enable RK3066 NANDC for MK808
+Date: Fri, 24 Jan 2020 17:29:51 +0100
+Message-ID: <20200124163001.28910-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+DISCLAIMER: Use at your own risk.
+Status: For testing only!
 
---Uc2nn8srCdMFAHlk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Version: V2
 
-On Thu, Jan 23, 2020 at 09:58:45PM +0530, Jagan Teki wrote:
+Title: Enable RK3066 NANDC for MK808.
 
-> Enable config options and console setting to respective
-> rk3399 board for HDMI output.
->=20
-> Boards supported and tested on this patch are:
-> - NanoPc T4
-> - NanoPi M4
-> - NanoPi Neo4
-> - ROC-RK3399-PC
->=20
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> ---
->  configs/nanopc-t4-rk3399_defconfig   | 6 ++++++
->  configs/nanopi-m4-rk3399_defconfig   | 6 ++++++
->  configs/nanopi-neo4-rk3399_defconfig | 6 ++++++
->  configs/roc-pc-rk3399_defconfig      | 6 ++++++
->  include/configs/evb_rk3399.h         | 5 +++++
->  5 files changed, 29 insertions(+)
->=20
-> diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk339=
-9_defconfig
-> index bd6d60ff6c..17e8a18d31 100644
-> --- a/configs/nanopc-t4-rk3399_defconfig
-> +++ b/configs/nanopc-t4-rk3399_defconfig
-> @@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
->  CONFIG_USB_ETHER_SMSC95XX=3Dy
->  CONFIG_SPL_TINY_MEMSET=3Dy
->  CONFIG_ERRNO_STR=3Dy
-> +CONFIG_DM_VIDEO=3Dy
-> +CONFIG_VIDEO_BPP16=3Dy
-> +CONFIG_VIDEO_BPP32=3Dy
-> +CONFIG_DISPLAY=3Dy
-> +CONFIG_VIDEO_ROCKCHIP=3Dy
-> +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
-> diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk339=
-9_defconfig
-> index 74ede13c23..b73b2fdc27 100644
-> --- a/configs/nanopi-m4-rk3399_defconfig
-> +++ b/configs/nanopi-m4-rk3399_defconfig
-> @@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
->  CONFIG_USB_ETHER_SMSC95XX=3Dy
->  CONFIG_SPL_TINY_MEMSET=3Dy
->  CONFIG_ERRNO_STR=3Dy
-> +CONFIG_DM_VIDEO=3Dy
-> +CONFIG_VIDEO_BPP16=3Dy
-> +CONFIG_VIDEO_BPP32=3Dy
-> +CONFIG_DISPLAY=3Dy
-> +CONFIG_VIDEO_ROCKCHIP=3Dy
-> +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
-> diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-r=
-k3399_defconfig
-> index a44124aac0..2ecb50967b 100644
-> --- a/configs/nanopi-neo4-rk3399_defconfig
-> +++ b/configs/nanopi-neo4-rk3399_defconfig
-> @@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
->  CONFIG_USB_ETHER_SMSC95XX=3Dy
->  CONFIG_SPL_TINY_MEMSET=3Dy
->  CONFIG_ERRNO_STR=3Dy
-> +CONFIG_DM_VIDEO=3Dy
-> +CONFIG_VIDEO_BPP16=3Dy
-> +CONFIG_VIDEO_BPP32=3Dy
-> +CONFIG_DISPLAY=3Dy
-> +CONFIG_VIDEO_ROCKCHIP=3Dy
-> +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
-> diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defc=
-onfig
-> index 3a051d9b0c..a9f99f992d 100644
-> --- a/configs/roc-pc-rk3399_defconfig
-> +++ b/configs/roc-pc-rk3399_defconfig
-> @@ -56,3 +56,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
->  CONFIG_USB_ETHER_SMSC95XX=3Dy
->  CONFIG_SPL_TINY_MEMSET=3Dy
->  CONFIG_ERRNO_STR=3Dy
-> +CONFIG_DM_VIDEO=3Dy
-> +CONFIG_VIDEO_BPP16=3Dy
-> +CONFIG_VIDEO_BPP32=3Dy
-> +CONFIG_DISPLAY=3Dy
-> +CONFIG_VIDEO_ROCKCHIP=3Dy
-> +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
-> diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
-> index c0b0358893..09eb361655 100644
-> --- a/include/configs/evb_rk3399.h
-> +++ b/include/configs/evb_rk3399.h
-> @@ -6,6 +6,11 @@
->  #ifndef __EVB_RK3399_H
->  #define __EVB_RK3399_H
-> =20
-> +#define ROCKCHIP_DEVICE_SETTINGS \
-> +		"stdin=3Dserial,cros-ec-keyb\0" \
-> +		"stdout=3Dserial,vidconsole\0" \
-> +		"stderr=3Dserial,vidconsole\0"
-> +
->  #include <configs/rk3399_common.h>
-> =20
->  #if defined(CONFIG_ENV_IS_IN_MMC)
+The majority of Rockchip devices use a closed source FTL driver
+to reduce wear leveling. This patch serie proposes
+an experimental raw NAND controller driver for basic tasks
+in order to get the bindings and the nodes accepted for in the dts files.
 
-This seems like another commit (along with the question I saw about
-i.MX FB not showing the right colors) 2cc393f32fd9 needs to be reworked
-so that we default to enabling everything still but let boards opt out
-rather than forcing everyone to opt-in as it seems like there's a lot of
-cases where people need to opt-in and didn't know.
+What does it do:
 
---=20
-Tom
+On module load this driver will reserve its resources.
+After initialization the MTD framework will then try to detect
+the type and number of NAND chips. When all conditions are met,
+it registers it self as MTD device.
+This driver is then ready to receive user commands
+such as to read and write NAND pages.
 
---Uc2nn8srCdMFAHlk
-Content-Type: application/pgp-signature; name="signature.asc"
+Test examples:
 
------BEGIN PGP SIGNATURE-----
+# dd if=/dev/mtd0 of=dd.bin bs=8192 count=4
 
-iQIzBAABCgAdFiEE6HLbQJwaaH776GM2h/n2NdMddlIFAl4rDOQACgkQh/n2NdMd
-dlIMsw//Siyk8dgBJqO6PiD3hE1PRyWVMcCzfwmhths5+0v1V/PVbwNhrFfXdBkA
-r4NKvMI1AvM+LzpEBrn8djgxEaVHd0mc1INJ1lFDNvc6/fU3qgiOXYE7WKm2If02
-4n84lqqk7o1vE3cw1UikooTOj4uOkrW0m7lSvb8mUbBaq50awDWfmdGZbEk5P0g8
-jMIOpVBkK4pHHfr9uP+uAilmqeQcZG8rf1lTXl89eBDn2LuCR6Fc/JVb+fW11zoY
-lYgJdhDonDM2pIPI7QJdP9Hr+u6E5nnQ95TAbUb7g0OPTvlT7CE+gTdhsG0rTmSk
-eQTiLRz8zPQlWe+Swm5JIhAJaimS3hoXTNfM0zh4kt7MmWVs3u8/uxDn7s/m0pcG
-THKyK1SWi+VlmUV1TB7ZIyL8/eWD6925H8dt+joKY2Au1l71JH44G2AUDSvotr0U
-mv6nfL8LRO+ukzE3BGucDo5o9WKnqpANpoXplwcL8Ak4UTZbDOdTnz3EwhPcLTtz
-GJQEMqIV2yoEEsasdcvSMnP7FEtZgy4xhsDwasEadBa8m1tIGeG/UcknTEoSLKEV
-ezlouc1q4FllnD507PkuwpEs2ilI1/NCBD70mpxV0IeUrDa4BeqPiq8ZPqJUv0ev
-er68P7cEoVr5d053nyIVM7SK4pR380h1pitLcA8Ac6Dv0O6u5ik=
-=4o2C
------END PGP SIGNATURE-----
+# nanddump -a -l 32768 -f nanddump.bin /dev/mtd0
 
---Uc2nn8srCdMFAHlk--
+Not tested:
+
+NANDC version 9.
+NAND raw write.
+RK3066 still has no support for Uboot.
+Any write command would interfere with data structures made by the boot loader.
+
+Etc.
+
+Problems:
+
+No bad block support. Most devices use a FTL bad block map with tags
+that must be located on specific page locations which is outside
+the scope of the raw MTD framework.
+
+hynix_nand_init() add extra option NAND_BBM_LASTPAGE for H27UCG8T2ATR-BC.
+
+No partition support. A FTL driver will store at random locations and
+a linear user specific layout does not fit within
+the generic character of this basic driver.
+
+Driver assumes that IO pins are correctly set by the boot loader.
+
+Fixed timing setting.
+
+RK3228A/RK3228B compatibility version 701 unknown
+RV1108 nand version unknown
+
+Etc.
+
+Todo:
+
+MLC ?
+ARM vs arm64 testing
+move BCH strengths and array size to struct rk_nandc_data
+
+Changes V2:
+Include suggestions by Miquel Raynal
+Include suggestions by Rob Herring
+
+Kconfig:
+  add supported Socs
+
+rk3*.dtsi
+  change compatible
+  remove #address-cells and #size-cells;
+  swap clock
+  swap clock-names
+
+rockchip,nand-controller.yaml
+  add "rockchip,idb-res-blk-num" property
+  add hash
+  change compatible
+  change doc name
+  swap clock-names
+
+rockchip-nand-controller.c
+  add fls(8 * 1024) original intention
+  add more struct rk_nandc_data types
+  add rk_nandc_hw_ecc_setup_helper()
+  add "rockchip,idb-res-blk-num" property
+  add struct rk_nandc_cap
+  add struct rk_nandc_reg_offset
+  change copyright text
+  change dev_err to dev_dbg in rk_nandc_probe()
+  change driver name
+  change of_rk_nandc_match compatible and data
+  change rk_nandc_hw_syndrome_ecc_read_page() error message
+  check return status rk_nandc_hw_syndrome_ecc_read_page()
+  check return status rk_nandc_hw_syndrome_ecc_write_page()
+  fix ./scripts/checkpatch.pl --strict issues
+  fix arm64 compile (untested)
+  fix rk_nandc_chip_init nand_scan
+  move empty line above MODULE_LICENSE()
+  move NAND_ECC_HW below NAND_ECC_HW_SYNDROME
+  move vars from controller to chip structure
+  relocate init_completion()
+  remove nand_to_mtd in rk_nandc_attach_chip()
+  remove page pointer write tag for bootrom
+  rename all defines to RK_NANDC_*
+  rename rk_nand_ctrl
+  replace bank_base calculations by defines
+  replace g_nandc_info[id]
+  replace kmalloc by devm_kzalloc
+  replace uint8_t by u8
+  replace uint32_t bu u32
+  replace writel by writel_relaxed
+  replace RK_NANDC_NUM_BANKS by ctrl->cap->max_cs
+
+
+Chris Zhong (1):
+  ARM: dts: rockchip: add nandc node for rk3066a/rk3188
+
+Dingqiang Lin (2):
+  arm64: dts: rockchip: add nandc node for px30
+  arm64: dts: rockchip: add nandc node for rk3308
+
+Jianqun Xu (1):
+  ARM: dts: rockchip: add nandc nodes for rk3288
+
+Johan Jonker (2):
+  dt-bindings: mtd: add rockchip nand controller bindings
+  ARM: dts: rockchip: rk3066a-mk808: enable nandc node
+
+Jon Lin (1):
+  ARM: dts: rockchip: add nandc node for rv1108
+
+Wenping Zhang (1):
+  ARM: dts: rockchip: add nandc node for rk322x
+
+Yifeng Zhao (1):
+  mtd: rawnand: rockchip: Add NAND controller driver
+
+Zhaoyifeng (1):
+  arm64: dts: rockchip: add nandc node for rk3368
+
+ .../bindings/mtd/rockchip,nand-controller.yaml     |   92 ++
+ arch/arm/boot/dts/rk3066a-mk808.dts                |   11 +
+ arch/arm/boot/dts/rk322x.dtsi                      |    9 +
+ arch/arm/boot/dts/rk3288.dtsi                      |   20 +
+ arch/arm/boot/dts/rk3xxx.dtsi                      |    9 +
+ arch/arm/boot/dts/rv1108.dtsi                      |    9 +
+ arch/arm64/boot/dts/rockchip/px30.dtsi             |   12 +
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi           |    9 +
+ arch/arm64/boot/dts/rockchip/rk3368.dtsi           |    9 +
+ drivers/mtd/nand/raw/Kconfig                       |    9 +
+ drivers/mtd/nand/raw/Makefile                      |    1 +
+ drivers/mtd/nand/raw/rockchip-nand-controller.c    | 1307 ++++++++++++++++++++
+ 12 files changed, 1497 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
+ create mode 100644 drivers/mtd/nand/raw/rockchip-nand-controller.c
+
+--
+2.11.0
