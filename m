@@ -1,250 +1,158 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: Re: [PATCH v2 2/3] dt-bindings: mmc: convert rockchip dw-mshc
- bindings to yaml
-Date: Fri, 24 Jan 2020 12:25:26 +0100
-Message-ID: <CAPDyKFrgGTDK_4bv3ofs2ky6d5optfTh2H-99uBMjZzNpcOhUQ@mail.gmail.com>
-References: <20200116152230.29831-1-jbx6244@gmail.com>
- <20200116152230.29831-2-jbx6244@gmail.com>
+From: Tom Rini <trini@konsulko.com>
+Subject: Re: [PATCH 4/4] rockchip: Enable HDMI output on rk3399 board w/ HDMI
+Date: Fri, 24 Jan 2020 10:27:35 -0500
+Message-ID: <20200124152735.GR26536@bill-the-cat>
+References: <20200123162845.10651-1-jagan@amarulasolutions.com>
+ <20200123162845.10651-5-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200116152230.29831-2-jbx6244@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, DTML <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="Uc2nn8srCdMFAHlk"
+Return-path: <u-boot-bounces@lists.denx.de>
+Content-Disposition: inline
+In-Reply-To: <20200123162845.10651-5-jagan@amarulasolutions.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Anatolij Gustschin <agust@denx.de>
+Cc: linux-rockchip@lists.infradead.org, u-boot@lists.denx.de, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 16 Jan 2020 at 16:22, Johan Jonker <jbx6244@gmail.com> wrote:
->
-> Current dts files with 'dwmmc' nodes are manually verified.
-> In order to automate this process rockchip-dw-mshc.txt
-> has to be converted to yaml. In the new setup
-> rockchip-dw-mshc.yaml will inherit properties from
-> mmc-controller.yaml and synopsys-dw-mshc-common.yaml.
-> 'dwmmc' will no longer be a valid name for a node and
-> should be changed to 'mmc'.
->
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 
-Applied for next, thanks!
+--Uc2nn8srCdMFAHlk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Kind regards
-Uffe
+On Thu, Jan 23, 2020 at 09:58:45PM +0530, Jagan Teki wrote:
 
-
+> Enable config options and console setting to respective
+> rk3399 board for HDMI output.
+>=20
+> Boards supported and tested on this patch are:
+> - NanoPc T4
+> - NanoPi M4
+> - NanoPi Neo4
+> - ROC-RK3399-PC
+>=20
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 > ---
->  .../devicetree/bindings/mmc/rockchip-dw-mshc.txt   |  49 --------
->  .../devicetree/bindings/mmc/rockchip-dw-mshc.yaml  | 123 +++++++++++++++++++++
->  MAINTAINERS                                        |   1 +
->  3 files changed, 124 insertions(+), 49 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
->  create mode 100644 Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
->
-> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
-> deleted file mode 100644
-> index 6f629b12b..000000000
-> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.txt
-> +++ /dev/null
-> @@ -1,49 +0,0 @@
-> -* Rockchip specific extensions to the Synopsys Designware Mobile
-> -  Storage Host Controller
-> -
-> -The Synopsys designware mobile storage host controller is used to interface
-> -a SoC with storage medium such as eMMC or SD/MMC cards. This file documents
-> -differences between the core Synopsys dw mshc controller properties described
-> -by synopsys-dw-mshc.txt and the properties used by the Rockchip specific
-> -extensions to the Synopsys Designware Mobile Storage Host Controller.
-> -
-> -Required Properties:
-> -
-> -* compatible: should be
-> -       - "rockchip,rk2928-dw-mshc": for Rockchip RK2928 and following,
-> -                                                       before RK3288
-> -       - "rockchip,rk3288-dw-mshc": for Rockchip RK3288
-> -       - "rockchip,rv1108-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RV1108
-> -       - "rockchip,px30-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip PX30
-> -       - "rockchip,rk3036-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3036
-> -       - "rockchip,rk3228-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK322x
-> -       - "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3328
-> -       - "rockchip,rk3368-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3368
-> -       - "rockchip,rk3399-dw-mshc", "rockchip,rk3288-dw-mshc": for Rockchip RK3399
-> -
-> -Optional Properties:
-> -* clocks: from common clock binding: if ciu-drive and ciu-sample are
-> -  specified in clock-names, should contain handles to these clocks.
-> -
-> -* clock-names: Apart from the clock-names described in synopsys-dw-mshc.txt
-> -  two more clocks "ciu-drive" and "ciu-sample" are supported. They are used
-> -  to control the clock phases, "ciu-sample" is required for tuning high-
-> -  speed modes.
-> -
-> -* rockchip,default-sample-phase: The default phase to set ciu-sample at
-> -  probing, low speeds or in case where all phases work at tuning time.
-> -  If not specified 0 deg will be used.
-> -
-> -* rockchip,desired-num-phases: The desired number of times that the host
-> -  execute tuning when needed. If not specified, the host will do tuning
-> -  for 360 times, namely tuning for each degree.
-> -
-> -Example:
-> -
-> -       rkdwmmc0@12200000 {
-> -               compatible = "rockchip,rk3288-dw-mshc";
-> -               reg = <0x12200000 0x1000>;
-> -               interrupts = <0 75 0>;
-> -               #address-cells = <1>;
-> -               #size-cells = <0>;
-> -       };
-> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> new file mode 100644
-> index 000000000..2f70f5ef0
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> @@ -0,0 +1,123 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mmc/rockchip-dw-mshc.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>  configs/nanopc-t4-rk3399_defconfig   | 6 ++++++
+>  configs/nanopi-m4-rk3399_defconfig   | 6 ++++++
+>  configs/nanopi-neo4-rk3399_defconfig | 6 ++++++
+>  configs/roc-pc-rk3399_defconfig      | 6 ++++++
+>  include/configs/evb_rk3399.h         | 5 +++++
+>  5 files changed, 29 insertions(+)
+>=20
+> diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk339=
+9_defconfig
+> index bd6d60ff6c..17e8a18d31 100644
+> --- a/configs/nanopc-t4-rk3399_defconfig
+> +++ b/configs/nanopc-t4-rk3399_defconfig
+> @@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
+>  CONFIG_USB_ETHER_SMSC95XX=3Dy
+>  CONFIG_SPL_TINY_MEMSET=3Dy
+>  CONFIG_ERRNO_STR=3Dy
+> +CONFIG_DM_VIDEO=3Dy
+> +CONFIG_VIDEO_BPP16=3Dy
+> +CONFIG_VIDEO_BPP32=3Dy
+> +CONFIG_DISPLAY=3Dy
+> +CONFIG_VIDEO_ROCKCHIP=3Dy
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
+> diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk339=
+9_defconfig
+> index 74ede13c23..b73b2fdc27 100644
+> --- a/configs/nanopi-m4-rk3399_defconfig
+> +++ b/configs/nanopi-m4-rk3399_defconfig
+> @@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
+>  CONFIG_USB_ETHER_SMSC95XX=3Dy
+>  CONFIG_SPL_TINY_MEMSET=3Dy
+>  CONFIG_ERRNO_STR=3Dy
+> +CONFIG_DM_VIDEO=3Dy
+> +CONFIG_VIDEO_BPP16=3Dy
+> +CONFIG_VIDEO_BPP32=3Dy
+> +CONFIG_DISPLAY=3Dy
+> +CONFIG_VIDEO_ROCKCHIP=3Dy
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
+> diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-r=
+k3399_defconfig
+> index a44124aac0..2ecb50967b 100644
+> --- a/configs/nanopi-neo4-rk3399_defconfig
+> +++ b/configs/nanopi-neo4-rk3399_defconfig
+> @@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
+>  CONFIG_USB_ETHER_SMSC95XX=3Dy
+>  CONFIG_SPL_TINY_MEMSET=3Dy
+>  CONFIG_ERRNO_STR=3Dy
+> +CONFIG_DM_VIDEO=3Dy
+> +CONFIG_VIDEO_BPP16=3Dy
+> +CONFIG_VIDEO_BPP32=3Dy
+> +CONFIG_DISPLAY=3Dy
+> +CONFIG_VIDEO_ROCKCHIP=3Dy
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
+> diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defc=
+onfig
+> index 3a051d9b0c..a9f99f992d 100644
+> --- a/configs/roc-pc-rk3399_defconfig
+> +++ b/configs/roc-pc-rk3399_defconfig
+> @@ -56,3 +56,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
+>  CONFIG_USB_ETHER_SMSC95XX=3Dy
+>  CONFIG_SPL_TINY_MEMSET=3Dy
+>  CONFIG_ERRNO_STR=3Dy
+> +CONFIG_DM_VIDEO=3Dy
+> +CONFIG_VIDEO_BPP16=3Dy
+> +CONFIG_VIDEO_BPP32=3Dy
+> +CONFIG_DISPLAY=3Dy
+> +CONFIG_VIDEO_ROCKCHIP=3Dy
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
+> diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
+> index c0b0358893..09eb361655 100644
+> --- a/include/configs/evb_rk3399.h
+> +++ b/include/configs/evb_rk3399.h
+> @@ -6,6 +6,11 @@
+>  #ifndef __EVB_RK3399_H
+>  #define __EVB_RK3399_H
+> =20
+> +#define ROCKCHIP_DEVICE_SETTINGS \
+> +		"stdin=3Dserial,cros-ec-keyb\0" \
+> +		"stdout=3Dserial,vidconsole\0" \
+> +		"stderr=3Dserial,vidconsole\0"
 > +
-> +title: Rockchip designware mobile storage host controller device tree bindings
-> +
-> +description:
-> +  Rockchip uses the Synopsys designware mobile storage host controller
-> +  to interface a SoC with storage medium such as eMMC or SD/MMC cards.
-> +  This file documents the combined properties for the core Synopsys dw mshc
-> +  controller that are not already included in the synopsys-dw-mshc-common.yaml
-> +  file and the Rockchip specific extensions.
-> +
-> +allOf:
-> +  - $ref: "synopsys-dw-mshc-common.yaml#"
-> +
-> +maintainers:
-> +  - Heiko Stuebner <heiko@sntech.de>
-> +
-> +# Everything else is described in the common file
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      # for Rockchip RK2928 and before RK3288
-> +      - const: rockchip,rk2928-dw-mshc
-> +      # for Rockchip RK3288
-> +      - const: rockchip,rk3288-dw-mshc
-> +      - items:
-> +          - enum:
-> +            # for Rockchip PX30
-> +            - rockchip,px30-dw-mshc
-> +            # for Rockchip RK3036
-> +            - rockchip,rk3036-dw-mshc
-> +            # for Rockchip RK322x
-> +            - rockchip,rk3228-dw-mshc
-> +            # for Rockchip RK3328
-> +            - rockchip,rk3328-dw-mshc
-> +            # for Rockchip RK3368
-> +            - rockchip,rk3368-dw-mshc
-> +            # for Rockchip RK3399
-> +            - rockchip,rk3399-dw-mshc
-> +            # for Rockchip RV1108
-> +            - rockchip,rv1108-dw-mshc
-> +          - const: rockchip,rk3288-dw-mshc
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 2
-> +    maxItems: 4
-> +    description:
-> +      Handle to "biu" and "ciu" clocks for the bus interface unit clock and
-> +      the card interface unit clock. If "ciu-drive" and "ciu-sample" are
-> +      specified in clock-names, it should also contain
-> +      handles to these clocks.
-> +
-> +  clock-names:
-> +    minItems: 2
-> +    items:
-> +      - const: biu
-> +      - const: ciu
-> +      - const: ciu-drive
-> +      - const: ciu-sample
-> +    description:
-> +      Apart from the clock-names "biu" and "ciu" two more clocks
-> +      "ciu-drive" and "ciu-sample" are supported. They are used
-> +      to control the clock phases, "ciu-sample" is required for tuning
-> +      high speed modes.
-> +
-> +  rockchip,default-sample-phase:
-> +    allOf:
-> +      - $ref: /schemas/types.yaml#/definitions/uint32
-> +    minimum: 0
-> +    maximum: 360
-> +    default: 0
-> +    description:
-> +      The default phase to set "ciu-sample" at probing,
-> +      low speeds or in case where all phases work at tuning time.
-> +      If not specified 0 deg will be used.
-> +
-> +  rockchip,desired-num-phases:
-> +    allOf:
-> +      - $ref: /schemas/types.yaml#/definitions/uint32
-> +    minimum: 0
-> +    maximum: 360
-> +    default: 360
-> +    description:
-> +      The desired number of times that the host execute tuning when needed.
-> +      If not specified, the host will do tuning for 360 times,
-> +      namely tuning for each degree.
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/rk3288-cru.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +    sdmmc: mmc@ff0c0000 {
-> +      compatible = "rockchip,rk3288-dw-mshc";
-> +      reg = <0x0 0xff0c0000 0x0 0x4000>;
-> +      interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
-> +      clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
-> +               <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
-> +      clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> +      resets = <&cru SRST_MMC0>;
-> +      reset-names = "reset";
-> +      fifo-depth = <0x100>;
-> +      max-frequency = <150000000>;
-> +    };
-> +
-> +...
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index d6ad01d71..1b16c0fdf 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2240,6 +2240,7 @@ L:        linux-rockchip@lists.infradead.org
->  T:     git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
->  S:     Maintained
->  F:     Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-> +F:     Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
->  F:     arch/arm/boot/dts/rk3*
->  F:     arch/arm/boot/dts/rv1108*
->  F:     arch/arm/mach-rockchip/
-> --
-> 2.11.0
->
+>  #include <configs/rk3399_common.h>
+> =20
+>  #if defined(CONFIG_ENV_IS_IN_MMC)
+
+This seems like another commit (along with the question I saw about
+i.MX FB not showing the right colors) 2cc393f32fd9 needs to be reworked
+so that we default to enabling everything still but let boards opt out
+rather than forcing everyone to opt-in as it seems like there's a lot of
+cases where people need to opt-in and didn't know.
+
+--=20
+Tom
+
+--Uc2nn8srCdMFAHlk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE6HLbQJwaaH776GM2h/n2NdMddlIFAl4rDOQACgkQh/n2NdMd
+dlIMsw//Siyk8dgBJqO6PiD3hE1PRyWVMcCzfwmhths5+0v1V/PVbwNhrFfXdBkA
+r4NKvMI1AvM+LzpEBrn8djgxEaVHd0mc1INJ1lFDNvc6/fU3qgiOXYE7WKm2If02
+4n84lqqk7o1vE3cw1UikooTOj4uOkrW0m7lSvb8mUbBaq50awDWfmdGZbEk5P0g8
+jMIOpVBkK4pHHfr9uP+uAilmqeQcZG8rf1lTXl89eBDn2LuCR6Fc/JVb+fW11zoY
+lYgJdhDonDM2pIPI7QJdP9Hr+u6E5nnQ95TAbUb7g0OPTvlT7CE+gTdhsG0rTmSk
+eQTiLRz8zPQlWe+Swm5JIhAJaimS3hoXTNfM0zh4kt7MmWVs3u8/uxDn7s/m0pcG
+THKyK1SWi+VlmUV1TB7ZIyL8/eWD6925H8dt+joKY2Au1l71JH44G2AUDSvotr0U
+mv6nfL8LRO+ukzE3BGucDo5o9WKnqpANpoXplwcL8Ak4UTZbDOdTnz3EwhPcLTtz
+GJQEMqIV2yoEEsasdcvSMnP7FEtZgy4xhsDwasEadBa8m1tIGeG/UcknTEoSLKEV
+ezlouc1q4FllnD507PkuwpEs2ilI1/NCBD70mpxV0IeUrDa4BeqPiq8ZPqJUv0ev
+er68P7cEoVr5d053nyIVM7SK4pR380h1pitLcA8Ac6Dv0O6u5ik=
+=4o2C
+-----END PGP SIGNATURE-----
+
+--Uc2nn8srCdMFAHlk--
