@@ -1,38 +1,108 @@
-From: Anatolij Gustschin <agust@denx.de>
-Subject: Re: [PATCH 4/4] rockchip: Enable HDMI output on rk3399 board w/ HDMI
-Date: Fri, 24 Jan 2020 18:03:44 +0100
-Message-ID: <20200124180344.375e3af4@crub>
-References: <20200123162845.10651-1-jagan@amarulasolutions.com>
- <20200123162845.10651-5-jagan@amarulasolutions.com>
- <20200124152735.GR26536@bill-the-cat>
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+Subject: Re: [RFC PATCH v2 00/10] Enable RK3066 NANDC for MK808
+Date: Fri, 24 Jan 2020 18:17:51 +0100
+Message-ID: <20200124181751.721aa428@xps13>
+References: <20200124163001.28910-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200124152735.GR26536@bill-the-cat>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Tom Rini <trini@konsulko.com>
-Cc: linux-rockchip@lists.infradead.org, u-boot@lists.denx.de, linux-amarula@amarulasolutions.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200124163001.28910-1-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: richard@nod.at, vigneshr@ti.com, robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, linux-mtd@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com, yifeng.zhao@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 24 Jan 2020 10:27:35 -0500
-Tom Rini trini@konsulko.com wrote:
+Hi Johan,
 
-> This seems like another commit (along with the question I saw about
-> i.MX FB not showing the right colors) 2cc393f32fd9 needs to be reworked
-> so that we default to enabling everything still but let boards opt out
-> rather than forcing everyone to opt-in as it seems like there's a lot of
-> cases where people need to opt-in and didn't know.
+Johan Jonker <jbx6244@gmail.com> wrote on Fri, 24 Jan 2020 17:29:51
++0100:
 
-yes, I'll rework this.
+> DISCLAIMER: Use at your own risk.
+> Status: For testing only!
+> 
+> Version: V2
+> 
+> Title: Enable RK3066 NANDC for MK808.
+> 
+> The majority of Rockchip devices use a closed source FTL driver
+> to reduce wear leveling. This patch serie proposes
+> an experimental raw NAND controller driver for basic tasks
+> in order to get the bindings and the nodes accepted for in the dts files.
+> 
+> What does it do:
+> 
+> On module load this driver will reserve its resources.
+> After initialization the MTD framework will then try to detect
+> the type and number of NAND chips. When all conditions are met,
+> it registers it self as MTD device.
+> This driver is then ready to receive user commands
+> such as to read and write NAND pages.
+> 
+> Test examples:
+> 
+> # dd if=/dev/mtd0 of=dd.bin bs=8192 count=4
+> 
+> # nanddump -a -l 32768 -f nanddump.bin /dev/mtd0
+> 
+> Not tested:
+> 
+> NANDC version 9.
+> NAND raw write.
 
---
-Anatolij
+nandbiterrs -i /dev/mtd<x> to validate it works!
+
+> RK3066 still has no support for Uboot.
+> Any write command would interfere with data structures made by the boot loader.
+> 
+> Etc.
+> 
+> Problems:
+> 
+> No bad block support. Most devices use a FTL bad block map with tags
+> that must be located on specific page locations which is outside
+> the scope of the raw MTD framework.
+
+I don't understand this story of bad block map. Are you comparing with
+a vendor kernel?
+
+If vendors invent new ways to handle MTD blocks it's sad but they will
+never be compatible with mainline. It's a fact. However for an upstream
+version, I don't get if there is any real issue? The location of the
+BBM is not related to your controller driver but depends on the NAND
+chip and as you say below we know provide three possible positions in
+a block.
+
+What you refer as the FTL is the equivalent of UBI in Linux, which
+indeed offers to the user a linear logical view of all the valid blocks
+while physically the data is spread across all the available
+eraseblocks.
+
+> 
+> hynix_nand_init() add extra option NAND_BBM_LASTPAGE for H27UCG8T2ATR-BC.
+> 
+> No partition support. A FTL driver will store at random locations and
+> a linear user specific layout does not fit within
+> the generic character of this basic driver.
+> 
+> Driver assumes that IO pins are correctly set by the boot loader.
+
+Which pins are you talking about? Are you missing a pinctrl driver?
+
+> 
+> Fixed timing setting.
+> 
+> RK3228A/RK3228B compatibility version 701 unknown
+> RV1108 nand version unknown
+> 
+> Etc.
+> 
+> Todo:
+> 
+> MLC ?
+
+This is not related to your NAND controller driver neither.
+
+
+Cheers,
+Miquèl
