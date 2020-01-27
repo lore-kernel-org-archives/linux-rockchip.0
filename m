@@ -1,80 +1,57 @@
-From: Adam Joseph <adam-FEgOTC+cuHmFhqYwkx2y8jh339VZgyU0@public.gmane.org>
-Subject: [Question] rk3399-gru-kevin post-kexec() severe screen flickering
-Date: Sat, 25 Jan 2020 13:24:47 -1000
-Message-ID: <20200125132447.48f01721@kleene>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4, 1/1] arm64: dts: rockchip: add ROCK Pi S DTS support
+Date: Mon, 27 Jan 2020 09:36:47 -0600
+Message-ID: <20200127153647.GA32343@bogus>
+References: <20200125063153.2720-1-akash@openedev.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20200125063153.2720-1-akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, jagan-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Alexis Ballier <aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nick Xie <nick-XW3xCAIBE2TQT0dZR+AlfA@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>, Vivek Unune <npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello all,
+On Sat, 25 Jan 2020 12:01:37 +0530, Akash Gajjar wrote:
+> ROCK Pi S is RK3308 based SBC from radxa.com. ROCK Pi S has a,
+> - 256MB/512MB DDR3 RAM
+> - SD, NAND flash (optional on board 1/2/4/8Gb)
+> - 100MB ethernet, PoE (optional)
+> - Onboard 802.11 b/g/n wifi + Bluetooth 4.0 Module
+> - USB2.0 Type-A HOST x1
+> - USB3.0 Type-C OTG x1
+> - 26-pin expansion header
+> - USB Type-C DC 5V Power Supply
+> 
+> This patch enables
+> - Console
+> - NAND Flash
+> - SD Card
+> 
+> Signed-off-by: Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>
+> ---
+> Changes in v4
+> - remove supports-sd/sdio, nums-slots property
+> - use vmmc-supply for emmc node
+> 
+> Changes in v3
+> - Use small S on dts file name
+> - Add missing semicolon
+> - Remove USB2.0 node support
+> 
+> Changes in v2
+> - Use pwm-supply for vdd_core node instead of vi-supply
+> - Add USB2.0 node support
+>  
+>  .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+>  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+>  .../boot/dts/rockchip/rk3308-rock-pi-s.dts    | 216 ++++++++++++++++++
+>  3 files changed, 222 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3308-rock-pi-s.dts
+> 
 
-My daily driver is a linux on a Samsung XE513 aka "Chromebook Plus"
-aka rk3399-gru-kevin, using coreboot (loaded from SPI NOR) with a
-hardwired linux kernel FIT image compiled into the coreboot.rom.
-I'm moving towards this "burned-in" kernel being merely a first-stage
-bootloader that loads the real kernel from non-eeprom storage, checks
-its hash, and then kexec()'s it.
+Please add Acked-by/Reviewed-by tags when posting new versions. However,
+there's no need to repost patches *only* to add the tags. The upstream
+maintainer will do that for acks received on the version they apply.
 
-I've managed to get this working; the magic incantation is to add
-"irqchip.gicv3_nolpi=1" for the first-stage kernel, and pull this
-patch when compiling it:
-
-  https://lore.kernel.org/patchwork/cover/933456/
-
-This works great, except that after loading the second kernel the
-screen flickers very badly and continuously.  The flicker is
-especially bad if I use the touchscreen.  This doesn't happen if the
-exact same "second kernel" image is booted directly out of NOR flash
-by coreboot.  Is there some way to totally power down the touchscreen
-digitizer, and if so would that help?  I could live without the
-touchscreen if I had to.  Can cut PCB traces if necessary.
-
-I noticed that eballetbo (to whom I am eternally grateful for all the
-work he does to make mainline linux on gru-kevin possible) came across
-the same problem, as documented here:
-
-  https://freenode.irclog.whitequark.org/linux-rockchip/2018-11-20#23524255
-
-Has there been any more progress on this?  If not, can anybody get me
-pointed in the right direction to try to fix this myself?
-
-I'm guessing the "clocks" here refer to PLL registers -- VCO taps,
-dividers, etc.  I'm very familiar with that sort of stuff from the
-FPGA world, although the last time I did any kernel hacking was before
-devicetrees were popular.  Is there some way to brute-force dump the
-state of all the rk3399's clocking-related registers so I can diff the
-results from a post-kexec() and pre-kexec() kernel?
-
-I see a lot of comments from rockchip employees about flicker being
-caused by the resident ATF code deciding to fiddle with the DRAM DVFS
-settings outside of the vertical blanking interval; is this relevant?
-For example:
-
-  https://groups.google.com/a/chromium.org/d/msg/chromium-os-reviews/8SD-sEw5_-Y/uJaXssVqFQAJ
-
-On a related note, is there any way to have the ATF code delete itself
-from memory after returning control to the coreboot ramstage?  I went
-many months without usable suspend-to-ram and invested an absurd
-amount of time before discovering that the intricate dance needed to
-get the ATF to agree to suspend the machine only works with certain
-versions of special branches of the ATF code.  It was a pretty unhappy
-experience, and at this point I don't see the post-boot resident
-portion of the ATF adding positive value.  If I can just boot linux
-in EL3-secure-world after the ATF has set up the DRAM timings that
-would seem to be simpler.
-
-Thanks for any pointers,
-
-  - a
+If a tag was not added on purpose, please state why and what changed.
