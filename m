@@ -1,56 +1,50 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3] dt-bindings: convert rockchip-drm.txt to
- rockchip-drm.yaml
-Date: Mon, 27 Jan 2020 10:13:31 -0600
-Message-ID: <20200127161331.GA20191@bogus>
-References: <20200121154314.3444-1-dafna.hirschfeld@collabora.com>
+From: =?utf-8?B?TWlrYSBQZW50dGlsw6Q=?= <mika.penttila-MRsr7dthA9VWk0Htik3J/w@public.gmane.org>
+Subject: Interfacing mipi-lvds bridge with rk3399
+Date: Mon, 27 Jan 2020 16:18:10 +0000
+Message-ID: <2bf23a36-1b6c-c793-20f9-39aec71afc63@nextfour.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200121154314.3444-1-dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna3-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Language: en-US
+Content-ID: <B660F7DC3638D6449B92F45E75C83E24-yI6K9L9iJZCcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: "hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 21 Jan 2020 16:43:14 +0100, Dafna Hirschfeld wrote:
-> convert the binding file rockchip-drm.txt to yaml format.
-> This was tested and verified on ARM and ARM64 with:
-> make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-> make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
-> the detail of the ARM tests:
-> export ARCH=arm KBUILD_OUTPUT=../kbuild/arm-test-dtc/ CROSS_COMPILE=arm-linux-gnueabi-
-> make menuconfig # set rockchip system
-> make clean
-> make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-> make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-> 
-> the detail of the ARM64 tests:
-> export ARCH=arm64 KBUILD_OUTPUT=../kbuild/arm64-test-dtc/ CROSS_COMPILE=aarch64-linux-gnu-
-> make menuconfig # set rockchip system
-> make clean
-> make dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-> make dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-> 
-> 
-> Changes since v1:
-> - fixed worng sign-off
-> - fixed the path of the $id property to be the path of the yaml file
-> Changes since v2:
-> - add a missing ">" sign in maintainers list
-> - change the licens to GPL-2.0-only
-> - add "additionalProperties: false"
-> - change the commit message to conform that it was tested on both ARM and ARM64
-> 
-> 
->  .../display/rockchip/rockchip-drm.txt         | 19 ---------
->  .../display/rockchip/rockchip-drm.yaml        | 40 +++++++++++++++++++
->  2 files changed, 40 insertions(+), 19 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-drm.txt
->  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-> 
-
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+SGksDQoNCldlIGFyZSBkZXZlbG9waW5nIGEgY3VzdG9tIGJvYXJkLCBpbiB3aGljaCB3ZSBhcmUg
+dXNpbmcgdGhlIHJrMzM5OSBzb2MuIA0KV2UgaGF2ZSBMVkRTIGRpc3BsYXlzLCBhbmQgdXNlIFRJ
+IFNONjVkc2k4NCBicmlkZ2UgYXMgYSBtaXBpLWx2ZHMgYnJpZGdlLg0KVGhlIGJyaWRnZSBkZW1h
+bmRzIHRoZSBEU0kgZGF0YSBsYW5lcyBiZSBpbiBMUC0xMSBzdGF0ZSAoc3RvcCBzdGF0ZSkuIFdl
+IA0KZGV2ZWxvcGVkIHN1cHBvcnQgZm9yIHRoZSBicmlkZ2UgYXMgYSBEUk0gYnJpZGdlIG1vZHVs
+ZS4gSXQgZ2V0cyBjYWxsZWQgDQppbiB0aGUgcGxhY2VzIHdlIHdhbnQsIGJ1dCB0aGUgcHJvYmxl
+bSBpcyB0aGUgZGF0YSBsYW5lcywgbm8gaW4gTFAtMTEuIA0KSW5zdGVhZCwgdGhleSBzZWVtIHRv
+IGJlIGxvd2lzaCwgdW50aWwgZGF0YSBzdGFydHMgKHRoZXkgc2VlbSB0byB2aXNpdCANCkxQLTEx
+IGEgYSBzaG9ydCB0aW1lLCBsaWtlIDVtcyBiZWZvcmUgZGF0YSBzdHJlYW0uIFRoaXMgaXMgbm90
+IGVub3VnaCANCmFuZCBub3QgdW5kZXIgb3VyIGNvbnRyb2wuIFdlIHdvdWxkIGxpa2UgdG8gZGVt
+YW5kIHRoZSBtaXBpIGRocHkgaW50byANCkxQLTExIChvciBtYWtlIHN1cmUgaXQgc3RheXMgdGhl
+cmUgZnJvbSBwb3dlcnVwL3Jlc2V0KS4gQW5kIGFmdGVyIA0KY29uZmlndXJpbmcgYnJpZGdlLCBs
+ZXQgdGhlIGRhdGEgbGVhdmUgTFAtMTEuDQoNCkRvY3VtZW50YXRpb24gc3RhdGVzIHRoYXQgdGhl
+IGRhdGEgc2hvdWxkIGJlIExQLTExIHVwb24gcGh5IHJlc2V0LiBIb3cgDQpjb21lIGl0IGlzIG5v
+dD8gQW5kLCB3aGlsZSBib290aW5nLCB3ZSBzZSBhIGNvdXBsZSBvZiBzZXQgbW9kZSBjYWxscywg
+DQpkdXJpbmcgd2hpY2ggdGhlIHBoeSBpcyBjb25maWd1cmVkLiBEdXJpbmcgdGhlIHBoeSBpbml0
+LCB0aGVyZSdzIGNvZGUgdG8gDQp3YWl0IGZvciB0aGUgcGh5IGVudGVyIHN0b3Agc3RhdGUuIEZp
+cnN0IHRpbWUgdGhlIHBoeSBzdGF0dXMgc2F5cyBpdCBoYXMgDQplbnRlcmVkIHN0b3Agc3RhdGUu
+IEJ1dCBzZWNvbmQgdGltZSB0aGUgd2FpdCB0aW1lb3V0cyAoYWZ0ZXIgMTBtcyBvciANCnNvKS4g
+V2l0aCBvc2NpbGxvc2NvcGUgYW55dGhpbmcgbGlrZSBMUC0xMSBpc24ndCBvYnNlcnZlZC4NCg0K
+SGFzIHNvbWVvbmUgc3VjY2Vzc2Z1bGx5IGludGVncmF0ZWQgU042NWRzaTh4IHdpdGggcmszMzk5
+ID8gRG9lcyBzb21lb25lIA0KaGF2ZSBpbmZvcm1hdGlvbiBvbiBob3d0byBjb21tYW5kIHRoZSBw
+aHkgd3J0IHN0b3Agc3RhdGVzIGFuZCBob3cgaXQgDQpzaG91bGQgYmVoYXZlPw0KDQpUaGFua3Mg
+aW4gYWR2YW5jZSwNCk1pa2EgUGVudHRpbMOkDQpOZXh0Zm91cg0KDQpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
+c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
