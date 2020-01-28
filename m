@@ -1,69 +1,75 @@
-From: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: Interfacing mipi-lvds bridge with rk3399
-Date: Tue, 28 Jan 2020 11:39:41 +0100
-Message-ID: <da4df90b-e0eb-4257-29a0-c16381db885d@samsung.com>
-References: <CGME20200128083655eucas1p2665cc13d4794ce4796c91f7146dd4dc4@eucas1p2.samsung.com>
- <2bf23a36-1b6c-c793-20f9-39aec71afc63@nextfour.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH 1/3] clk: rockchip: convert rk3399 pll type to use
+ readl_poll_timeout
+Date: Tue, 28 Jan 2020 15:28:44 +0000
+Message-ID: <f8001dbb-ebbc-ebe3-d1db-c75d3888fd38@arm.com>
+References: <20200128100204.1318450-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <2bf23a36-1b6c-c793-20f9-39aec71afc63-MRsr7dthA9VWk0Htik3J/w@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Mika_Penttil=c3=a4?= <mika.penttila-MRsr7dthA9VWk0Htik3J/w@public.gmane.org>, "hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20200128100204.1318450-1-heiko@sntech.de>
+Content-Language: en-GB
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, linux-clk@vger.kernel.org
+Cc: sboyd@kernel.org, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, mturquette@baylibre.com, zhangqing@rock-chips.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, christoph.muellner@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gMjcuMDEuMjAyMCAxNzoxOCwgTWlrYSBQZW50dGlsw6Qgd3JvdGU6Cj4gSGksCj4KPiBXZSBh
-cmUgZGV2ZWxvcGluZyBhIGN1c3RvbSBib2FyZCwgaW4gd2hpY2ggd2UgYXJlIHVzaW5nIHRoZSBy
-azMzOTkgc29jLiAKPiBXZSBoYXZlIExWRFMgZGlzcGxheXMsIGFuZCB1c2UgVEkgU042NWRzaTg0
-IGJyaWRnZSBhcyBhIG1pcGktbHZkcyBicmlkZ2UuCj4gVGhlIGJyaWRnZSBkZW1hbmRzIHRoZSBE
-U0kgZGF0YSBsYW5lcyBiZSBpbiBMUC0xMSBzdGF0ZSAoc3RvcCBzdGF0ZSkuIFdlIAo+IGRldmVs
-b3BlZCBzdXBwb3J0IGZvciB0aGUgYnJpZGdlIGFzIGEgRFJNIGJyaWRnZSBtb2R1bGUuIEl0IGdl
-dHMgY2FsbGVkIAo+IGluIHRoZSBwbGFjZXMgd2Ugd2FudCwgYnV0IHRoZSBwcm9ibGVtIGlzIHRo
-ZSBkYXRhIGxhbmVzLCBubyBpbiBMUC0xMS4gCj4gSW5zdGVhZCwgdGhleSBzZWVtIHRvIGJlIGxv
-d2lzaCwgdW50aWwgZGF0YSBzdGFydHMgKHRoZXkgc2VlbSB0byB2aXNpdCAKPiBMUC0xMSBhIGEg
-c2hvcnQgdGltZSwgbGlrZSA1bXMgYmVmb3JlIGRhdGEgc3RyZWFtLiBUaGlzIGlzIG5vdCBlbm91
-Z2ggCj4gYW5kIG5vdCB1bmRlciBvdXIgY29udHJvbC4gV2Ugd291bGQgbGlrZSB0byBkZW1hbmQg
-dGhlIG1pcGkgZGhweSBpbnRvIAo+IExQLTExIChvciBtYWtlIHN1cmUgaXQgc3RheXMgdGhlcmUg
-ZnJvbSBwb3dlcnVwL3Jlc2V0KS4gQW5kIGFmdGVyIAo+IGNvbmZpZ3VyaW5nIGJyaWRnZSwgbGV0
-IHRoZSBkYXRhIGxlYXZlIExQLTExLgo+Cj4gRG9jdW1lbnRhdGlvbiBzdGF0ZXMgdGhhdCB0aGUg
-ZGF0YSBzaG91bGQgYmUgTFAtMTEgdXBvbiBwaHkgcmVzZXQuIEhvdyAKPiBjb21lIGl0IGlzIG5v
-dD8gQW5kLCB3aGlsZSBib290aW5nLCB3ZSBzZSBhIGNvdXBsZSBvZiBzZXQgbW9kZSBjYWxscywg
-Cj4gZHVyaW5nIHdoaWNoIHRoZSBwaHkgaXMgY29uZmlndXJlZC4gRHVyaW5nIHRoZSBwaHkgaW5p
-dCwgdGhlcmUncyBjb2RlIHRvIAo+IHdhaXQgZm9yIHRoZSBwaHkgZW50ZXIgc3RvcCBzdGF0ZS4g
-Rmlyc3QgdGltZSB0aGUgcGh5IHN0YXR1cyBzYXlzIGl0IGhhcyAKPiBlbnRlcmVkIHN0b3Agc3Rh
-dGUuIEJ1dCBzZWNvbmQgdGltZSB0aGUgd2FpdCB0aW1lb3V0cyAoYWZ0ZXIgMTBtcyBvciAKPiBz
-bykuIFdpdGggb3NjaWxsb3Njb3BlIGFueXRoaW5nIGxpa2UgTFAtMTEgaXNuJ3Qgb2JzZXJ2ZWQu
-Cj4KPiBIYXMgc29tZW9uZSBzdWNjZXNzZnVsbHkgaW50ZWdyYXRlZCBTTjY1ZHNpOHggd2l0aCBy
-azMzOTkgPyBEb2VzIHNvbWVvbmUgCj4gaGF2ZSBpbmZvcm1hdGlvbiBvbiBob3d0byBjb21tYW5k
-IHRoZSBwaHkgd3J0IHN0b3Agc3RhdGVzIGFuZCBob3cgaXQgCj4gc2hvdWxkIGJlaGF2ZT8KCgpJ
-IGFtIG5vdCBmYW1pbGlhciBuZWl0aGVyIHdpdGggcmszMzk5LCBuZWl0aGVyIHNuNjVkc2k4NCBz
-byBJIGNhbm5vdAp0ZWxsIGFib3V0IHRoZXNlIGNoaXBzLAoKYnV0IGdlbmVyYWxseSBwb3dlci1v
-biBvbiBtaXBpIHNvdXJjZSAocmszMzk5IG9yIGV4dGVybmFsIG1pcGkgcGh5KQpzaG91bGQgZHJp
-dmUgTFAtMTEgc3RhdGUuCgpTbyBJIHdvdWxkIGxvb2sgaW50byByazMzODktbWlwaSBkcml2ZXIs
-IG1pcGktcGh5IGNvZGUgKGVzcGVjaWFsbHkgaWYKdGhlcmUgaXMgZXh0ZXJuYWwgcGh5KSwgbWF5
-YmUgcmVndWxhdG9ycyBwb3dlcmluZyBkaXNwbGF5IHBpcGVsaW5lLAptYXliZSBzb21lIGdwaW9z
-LCB2b2x0YWdlIGxldmVsIHNoaWZ0ZXJzLCBwb3dlciBkb21haW5zLCBTb0NzIGV4dGVybmFsCmlu
-dGVyZmFjZXMgaXNvbGF0aW9uIGNvbmZpZ3VyYXRpb24gPz8/CgpBZGRpdGlvbmFsbHkgeW91IHNo
-b3VsZCBzdHVkeSBhbGwgd2lyZXMgb24gYm9hcmQncyBzY2hlbWF0aWNzIHJlZ2FyZGluZwpkaXNw
-bGF5IHBpcGVsaW5lLgoKV2l0aG91dCB0aGUgY29kZSBvciBkb2N1bWVudGF0aW9uIGlzIGhhcmQg
-dG8gc2F5IG1vcmUgd2hhdCBpcyBnb2luZyBvbiBoZXJlLgoKClJlZ2FyZHMKCkFuZHJ6ZWoKCgo+
-Cj4gVGhhbmtzIGluIGFkdmFuY2UsCj4gTWlrYSBQZW50dGlsw6QKPiBOZXh0Zm91cgo+Cj4gX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPiBkcmktZGV2ZWwg
-bWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNrdG9wLm9yZwo+IGh0dHBzOi8v
-cHJvdGVjdDIuZmlyZWV5ZS5jb20vdXJsP2s9YzUyYmRmODQtOThmODg2M2EtYzUyYTU0Y2ItMGNj
-NDdhMzFiYTgyLWQ4YTBlODdjZGU5OWE2MjImdT1odHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2RyaS1kZXZlbAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 28/01/2020 10:02 am, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> 
+> Instead of open coding the polling of the lock status, use the
+> handy readl_poll_timeout for this. As the pll locking is normally
+> blazingly fast and we don't want to incur additional delays, we're
+> not doing any sleeps similar to for example the imx clk-pllv4
+> and define a very safe but still short timeout of 1ms.
+> 
+> Suggested-by: Stephen Boyd <sboyd@kernel.org>
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> ---
+>   drivers/clk/rockchip/clk-pll.c | 21 ++++++++++-----------
+>   1 file changed, 10 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+> index 198417d56300..43c9fd0086a2 100644
+> --- a/drivers/clk/rockchip/clk-pll.c
+> +++ b/drivers/clk/rockchip/clk-pll.c
+> @@ -585,19 +585,18 @@ static const struct clk_ops rockchip_rk3066_pll_clk_ops = {
+>   static int rockchip_rk3399_pll_wait_lock(struct rockchip_clk_pll *pll)
+>   {
+>   	u32 pllcon;
+> -	int delay = 24000000;
+> +	int ret;
+>   
+> -	/* poll check the lock status in rk3399 xPLLCON2 */
+> -	while (delay > 0) {
+> -		pllcon = readl_relaxed(pll->reg_base + RK3399_PLLCON(2));
+> -		if (pllcon & RK3399_PLLCON2_LOCK_STATUS)
+> -			return 0;
+> +	/*
+> +	 * Lock time typical 250, max 500 input clock cycles @24MHz
+> +	 * So define a very safe maximum of 1000us, meaning 24000 cycles.
+> +	 */
+> +	ret = readl_poll_timeout(pll->reg_base + RK3399_PLLCON(2), pllcon,
+> +				 pllcon & RK3399_PLLCON2_LOCK_STATUS, 0, 1000);
+
+Note that the existing I/O accessor was readl_relaxed(), but using plain 
+readl_poll_timeout() switches it to regular readl(). It may well not 
+matter, but since it's not noted as an intentional change it seemed 
+worth pointing out.
+
+Robin.
+
+> +	if (ret)
+> +		pr_err("%s: timeout waiting for pll to lock\n", __func__);
+>   
+> -		delay--;
+> -	}
+> -
+> -	pr_err("%s: timeout waiting for pll to lock\n", __func__);
+> -	return -ETIMEDOUT;
+> +	return ret;
+>   }
+>   
+>   static void rockchip_rk3399_pll_get_params(struct rockchip_clk_pll *pll,
+> 
