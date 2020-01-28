@@ -1,50 +1,64 @@
-From: =?utf-8?B?TWlrYSBQZW50dGlsw6Q=?= <mika.penttila-MRsr7dthA9VWk0Htik3J/w@public.gmane.org>
-Subject: Interfacing mipi-lvds bridge with rk3399
-Date: Mon, 27 Jan 2020 16:18:10 +0000
-Message-ID: <2bf23a36-1b6c-c793-20f9-39aec71afc63@nextfour.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 2/3] clk: rockchip: convert basic pll lock_wait to use regmap_read_poll_timeout
+Date: Tue, 28 Jan 2020 11:02:02 +0100
+Message-ID: <20200128100204.1318450-2-heiko@sntech.de>
+References: <20200128100204.1318450-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: en-US
-Content-ID: <B660F7DC3638D6449B92F45E75C83E24-yI6K9L9iJZCcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org" <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20200128100204.1318450-1-heiko@sntech.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux-clk@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, mturquette@baylibre.com, sboyd@kernel.org, heiko@sntech.de, christoph.muellner@theobroma-systems.com, zhangqing@rock-chips.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGksDQoNCldlIGFyZSBkZXZlbG9waW5nIGEgY3VzdG9tIGJvYXJkLCBpbiB3aGljaCB3ZSBhcmUg
-dXNpbmcgdGhlIHJrMzM5OSBzb2MuIA0KV2UgaGF2ZSBMVkRTIGRpc3BsYXlzLCBhbmQgdXNlIFRJ
-IFNONjVkc2k4NCBicmlkZ2UgYXMgYSBtaXBpLWx2ZHMgYnJpZGdlLg0KVGhlIGJyaWRnZSBkZW1h
-bmRzIHRoZSBEU0kgZGF0YSBsYW5lcyBiZSBpbiBMUC0xMSBzdGF0ZSAoc3RvcCBzdGF0ZSkuIFdl
-IA0KZGV2ZWxvcGVkIHN1cHBvcnQgZm9yIHRoZSBicmlkZ2UgYXMgYSBEUk0gYnJpZGdlIG1vZHVs
-ZS4gSXQgZ2V0cyBjYWxsZWQgDQppbiB0aGUgcGxhY2VzIHdlIHdhbnQsIGJ1dCB0aGUgcHJvYmxl
-bSBpcyB0aGUgZGF0YSBsYW5lcywgbm8gaW4gTFAtMTEuIA0KSW5zdGVhZCwgdGhleSBzZWVtIHRv
-IGJlIGxvd2lzaCwgdW50aWwgZGF0YSBzdGFydHMgKHRoZXkgc2VlbSB0byB2aXNpdCANCkxQLTEx
-IGEgYSBzaG9ydCB0aW1lLCBsaWtlIDVtcyBiZWZvcmUgZGF0YSBzdHJlYW0uIFRoaXMgaXMgbm90
-IGVub3VnaCANCmFuZCBub3QgdW5kZXIgb3VyIGNvbnRyb2wuIFdlIHdvdWxkIGxpa2UgdG8gZGVt
-YW5kIHRoZSBtaXBpIGRocHkgaW50byANCkxQLTExIChvciBtYWtlIHN1cmUgaXQgc3RheXMgdGhl
-cmUgZnJvbSBwb3dlcnVwL3Jlc2V0KS4gQW5kIGFmdGVyIA0KY29uZmlndXJpbmcgYnJpZGdlLCBs
-ZXQgdGhlIGRhdGEgbGVhdmUgTFAtMTEuDQoNCkRvY3VtZW50YXRpb24gc3RhdGVzIHRoYXQgdGhl
-IGRhdGEgc2hvdWxkIGJlIExQLTExIHVwb24gcGh5IHJlc2V0LiBIb3cgDQpjb21lIGl0IGlzIG5v
-dD8gQW5kLCB3aGlsZSBib290aW5nLCB3ZSBzZSBhIGNvdXBsZSBvZiBzZXQgbW9kZSBjYWxscywg
-DQpkdXJpbmcgd2hpY2ggdGhlIHBoeSBpcyBjb25maWd1cmVkLiBEdXJpbmcgdGhlIHBoeSBpbml0
-LCB0aGVyZSdzIGNvZGUgdG8gDQp3YWl0IGZvciB0aGUgcGh5IGVudGVyIHN0b3Agc3RhdGUuIEZp
-cnN0IHRpbWUgdGhlIHBoeSBzdGF0dXMgc2F5cyBpdCBoYXMgDQplbnRlcmVkIHN0b3Agc3RhdGUu
-IEJ1dCBzZWNvbmQgdGltZSB0aGUgd2FpdCB0aW1lb3V0cyAoYWZ0ZXIgMTBtcyBvciANCnNvKS4g
-V2l0aCBvc2NpbGxvc2NvcGUgYW55dGhpbmcgbGlrZSBMUC0xMSBpc24ndCBvYnNlcnZlZC4NCg0K
-SGFzIHNvbWVvbmUgc3VjY2Vzc2Z1bGx5IGludGVncmF0ZWQgU042NWRzaTh4IHdpdGggcmszMzk5
-ID8gRG9lcyBzb21lb25lIA0KaGF2ZSBpbmZvcm1hdGlvbiBvbiBob3d0byBjb21tYW5kIHRoZSBw
-aHkgd3J0IHN0b3Agc3RhdGVzIGFuZCBob3cgaXQgDQpzaG91bGQgYmVoYXZlPw0KDQpUaGFua3Mg
-aW4gYWR2YW5jZSwNCk1pa2EgUGVudHRpbMOkDQpOZXh0Zm91cg0KDQpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+
+Instead of open coding the polling of the lock status, use the
+handy regmap_read_poll_timeout for this. As the pll locking is
+normally blazingly fast and we don't want to incur additional
+delays, we're not doing any sleeps similar to for example the imx
+clk-pllv4 and define a very safe but still short timeout of 1ms.
+
+Suggested-by: Stephen Boyd <sboyd@kernel.org>
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+---
+ drivers/clk/rockchip/clk-pll.c | 21 ++++++---------------
+ 1 file changed, 6 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+index 43c9fd0086a2..26ca46d49191 100644
+--- a/drivers/clk/rockchip/clk-pll.c
++++ b/drivers/clk/rockchip/clk-pll.c
+@@ -86,23 +86,14 @@ static int rockchip_pll_wait_lock(struct rockchip_clk_pll *pll)
+ {
+ 	struct regmap *grf = pll->ctx->grf;
+ 	unsigned int val;
+-	int delay = 24000000, ret;
+-
+-	while (delay > 0) {
+-		ret = regmap_read(grf, pll->lock_offset, &val);
+-		if (ret) {
+-			pr_err("%s: failed to read pll lock status: %d\n",
+-			       __func__, ret);
+-			return ret;
+-		}
++	int ret;
+ 
+-		if (val & BIT(pll->lock_shift))
+-			return 0;
+-		delay--;
+-	}
++	ret = regmap_read_poll_timeout(grf, pll->lock_offset, val,
++				       val & BIT(pll->lock_shift), 0, 1000);
++	if (ret)
++		pr_err("%s: timeout waiting for pll to lock\n", __func__);
+ 
+-	pr_err("%s: timeout waiting for pll to lock\n", __func__);
+-	return -ETIMEDOUT;
++	return ret;
+ }
+ 
+ /**
+-- 
+2.24.1
