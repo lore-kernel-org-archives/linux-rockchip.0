@@ -1,70 +1,63 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v3 2/3] clk: rockchip: convert basic pll lock_wait to use regmap_read_poll_timeout
-Date: Wed, 29 Jan 2020 17:38:20 +0100
-Message-ID: <20200129163821.1547295-2-heiko@sntech.de>
-References: <20200129163821.1547295-1-heiko@sntech.de>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: [PATCH v4 0/6] media: rockchip: Add the rkvdec driver
+Date: Wed, 29 Jan 2020 16:54:55 -0300
+Message-ID: <20200129195501.8317-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20200129163821.1547295-1-heiko@sntech.de>
-Sender: linux-clk-owner@vger.kernel.org
-To: linux-clk@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, mturquette@baylibre.com, sboyd@kernel.org, heiko@sntech.de, christoph.muellner@theobroma-systems.com, zhangqing@rock-chips.com, robin.murphy@arm.com, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Rob Herring <robh+dt@kernel.org>, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Boris Brezillon <boris.brezillon@collabora.com>, Sakari Ailus <sakari.ailus@iki.fi>, Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Hello,
 
-Instead of open coding the polling of the lock status, use the
-handy regmap_read_poll_timeout for this. As the pll locking is
-normally blazingly fast and we don't want to incur additional
-delays, we're not doing any sleeps similar to for example the imx
-clk-pllv4 and define a very safe but still short timeout of 1ms.
+This is v4 of Boris' rkvdec driver.
 
-Suggested-by: Stephen Boyd <sboyd@kernel.org>
-Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
----
-changes in v3:
-- none
-changes in v2:
-- add patch to keep generic grf wait_lock similar to the rest
-  and use regmap_read_poll_timeout for this
+I've addressed the comments received during v3, all of them
+quite minor. Please check each patch changelog for more details.
 
- drivers/clk/rockchip/clk-pll.c | 21 ++++++---------------
- 1 file changed, 6 insertions(+), 15 deletions(-)
+Thanks,
+Ezequiel
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 6fd52895e7b6..c7c3848d68e8 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -86,23 +86,14 @@ static int rockchip_pll_wait_lock(struct rockchip_clk_pll *pll)
- {
- 	struct regmap *grf = pll->ctx->grf;
- 	unsigned int val;
--	int delay = 24000000, ret;
--
--	while (delay > 0) {
--		ret = regmap_read(grf, pll->lock_offset, &val);
--		if (ret) {
--			pr_err("%s: failed to read pll lock status: %d\n",
--			       __func__, ret);
--			return ret;
--		}
-+	int ret;
- 
--		if (val & BIT(pll->lock_shift))
--			return 0;
--		delay--;
--	}
-+	ret = regmap_read_poll_timeout(grf, pll->lock_offset, val,
-+				       val & BIT(pll->lock_shift), 0, 1000);
-+	if (ret)
-+		pr_err("%s: timeout waiting for pll to lock\n", __func__);
- 
--	pr_err("%s: timeout waiting for pll to lock\n", __func__);
--	return -ETIMEDOUT;
-+	return ret;
- }
- 
- /**
+Boris Brezillon (5):
+  media: v4l2-core: Add helpers to build the H264 P/B0/B1 reflists
+  media: hantro: h264: Use the generic H264 reflist builder
+  media: dt-bindings: rockchip: Document RK3399 Video Decoder bindings
+  media: rkvdec: Add the rkvdec driver
+  arm64: dts: rockchip: rk3399: Define the rockchip Video Decoder node
+
+Jonas Karlman (1):
+  media: uapi: h264: Add DPB entry field reference flags
+
+ .../bindings/media/rockchip,vdec.yaml         |   71 +
+ .../media/uapi/v4l/ext-ctrls-codec.rst        |   16 +
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      |   14 +-
+ drivers/media/v4l2-core/Kconfig               |    4 +
+ drivers/media/v4l2-core/Makefile              |    1 +
+ drivers/media/v4l2-core/v4l2-h264.c           |  258 ++++
+ drivers/staging/media/Kconfig                 |    2 +
+ drivers/staging/media/Makefile                |    1 +
+ drivers/staging/media/hantro/Kconfig          |    1 +
+ drivers/staging/media/hantro/hantro_h264.c    |  237 +---
+ drivers/staging/media/rkvdec/Kconfig          |   15 +
+ drivers/staging/media/rkvdec/Makefile         |    3 +
+ drivers/staging/media/rkvdec/rkvdec-h264.c    | 1154 +++++++++++++++++
+ drivers/staging/media/rkvdec/rkvdec-regs.h    |  239 ++++
+ drivers/staging/media/rkvdec/rkvdec.c         | 1134 ++++++++++++++++
+ drivers/staging/media/rkvdec/rkvdec.h         |  124 ++
+ include/media/h264-ctrls.h                    |    2 +
+ include/media/v4l2-h264.h                     |   86 ++
+ 18 files changed, 3132 insertions(+), 230 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+ create mode 100644 drivers/media/v4l2-core/v4l2-h264.c
+ create mode 100644 drivers/staging/media/rkvdec/Kconfig
+ create mode 100644 drivers/staging/media/rkvdec/Makefile
+ create mode 100644 drivers/staging/media/rkvdec/rkvdec-h264.c
+ create mode 100644 drivers/staging/media/rkvdec/rkvdec-regs.h
+ create mode 100644 drivers/staging/media/rkvdec/rkvdec.c
+ create mode 100644 drivers/staging/media/rkvdec/rkvdec.h
+ create mode 100644 include/media/v4l2-h264.h
+
 -- 
-2.24.1
+2.25.0
