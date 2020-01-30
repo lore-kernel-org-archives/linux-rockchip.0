@@ -1,36 +1,53 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH] media: hantro: Prevent encoders from using post-processing
-Date: Wed, 29 Jan 2020 18:06:08 -0300
-Message-ID: <20200129210608.6807-1-ezequiel@collabora.com>
+From: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v6 5/6] rockchip: Add Single boot image (with binman,
+ pad_cat)
+Date: Wed, 29 Jan 2020 19:17:37 -0700
+Message-ID: <CAPnjgZ3PkXZe5GX9xB2fSteLdiz+=xhgCXFvdUgz0qGeEVFHKQ@mail.gmail.com>
+References: <20200104083806.3930-1-jagan@amarulasolutions.com>
+ <20200104083806.3930-6-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Boris Brezillon <boris.brezillon@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200104083806.3930-6-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The post-processing feature is meant to be used by decoding
-only. Prevent encoding jobs from enabling it.
-
-Fixes: 8c2d66b036c77 ("media: hantro: Support color conversion via post-processing")
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
----
- drivers/staging/media/hantro/hantro.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-index b0faa43b3f79..327ddef45345 100644
---- a/drivers/staging/media/hantro/hantro.h
-+++ b/drivers/staging/media/hantro/hantro.h
-@@ -423,7 +423,7 @@ hantro_get_dst_buf(struct hantro_ctx *ctx)
- static inline bool
- hantro_needs_postproc(struct hantro_ctx *ctx, const struct hantro_fmt *fmt)
- {
--	return fmt->fourcc != V4L2_PIX_FMT_NV12;
-+	return !hantro_is_encoder_ctx(ctx) && fmt->fourcc != V4L2_PIX_FMT_NV12;
- }
- 
- static inline dma_addr_t
--- 
-2.25.0
+T24gU2F0LCA0IEphbiAyMDIwIGF0IDAxOjM4LCBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29s
+dXRpb25zLmNvbT4gd3JvdGU6Cj4KPiBBbGwgcm9ja2NoaXAgcGxhdGZvcm1zIHN1cHBvcnQgVFBM
+IG9yIFNQTC1iYXNlZCBib290bG9hZGVyCj4gaW4gbWFpbmxpbmUgd2l0aCBVLUJvb3QgcHJvcGVy
+IGFzIGZpbmFsIHN0YWdlLiBGb3IgZWFjaAo+IHN0YWdlIHdlIG5lZWQgdG8gYnVybiB0aGUgaW1h
+Z2Ugb24gdG8gZmxhc2ggd2l0aCByZXNwZWN0aXZlCj4gb2Zmc2V0cy4KPgo+IFRoaXMgcGF0Y2gg
+Y3JlYXRlcyBhIHNpbmdsZSBib290IGltYWdlIGNvbXBvbmVudCB1c2luZwo+IC0gYmlubWFuLCBm
+b3IgYXJtMzIgcm9ja2NoaXAgcGxhdGZvcm1zCj4gLSBwYWRfY2F0LCBmb3IgYXJtNjQgcm9ja2No
+aXAgcGxhdGZvcm1zLgo+Cj4gVGhpcyB3b3VsZCBoZWxwIHVzZXJzIHRvIGdldCByaWQgb2YgYnVy
+bmluZyBkaWZmZXJlbnQKPiBib290IHN0YWdlIGltYWdlcy4KPgo+IFRoZSBuZXcgaW1hZ2UgY2Fs
+bGVkICd1LWJvb3Qtcm9ja2NoaXAuYmluJwo+IHdoaWNoIGNhbiBidXJuIGludG8gZmxhc2ggbGlr
+ZToKPgo+IOKCuSBzdWRvIGRkIGlmPXUtYm9vdC1yb2NrY2hpcC5iaW4gb2Y9L2Rldi9zZGEgc2Vl
+az02NAo+Cj4gVGhpcyB3b3VsZCBzdXBwb3J0IGFsbCByb2NrY2hpcCBwbGF0Zm9ybXMsIGV4Y2Vw
+dCByazMxMjgKPiBzaW5jZSBpdCBkb2Vzbid0IHN1cHBvcnQgZm9yIFNQTCB5ZXQuCj4KPiBDYzog
+S2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiBDYzogTWF0d2V5IFYuIEtv
+cm5pbG92IDxtYXR3ZXkua29ybmlsb3ZAZ21haWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEphZ2Fu
+IFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+IFJldmlld2VkLWJ5OiBLZXZlciBZ
+YW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICBNYWtlZmlsZSAgICAgICAg
+ICAgICAgICAgICAgICAgICAgfCAxNCArKysrKysrKysrKystLQo+ICBhcmNoL2FybS9LY29uZmln
+ICAgICAgICAgICAgICAgICAgfCAgMSArCj4gIGFyY2gvYXJtL2R0cy9yazMwMzYtdS1ib290LmR0
+c2kgICB8ICAyICsrCj4gIGFyY2gvYXJtL2R0cy9yazMyODgtdS1ib290LmR0c2kgICB8ICAyICsr
+Cj4gIGFyY2gvYXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaSB8IDIxICsrKysrKysrKysrKysr
+KysrKysrKwo+ICBpbmNsdWRlL2NvbmZpZ3Mvcm9ja2NoaXAtY29tbW9uLmggfCAgMyArKysKPiAg
+NiBmaWxlcyBjaGFuZ2VkLCA0MSBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+ICBjcmVh
+dGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3JvY2tjaGlwLXUtYm9vdC5kdHNpCgpSZXZpZXdl
+ZC1ieTogU2ltb24gR2xhc3MgPHNqZ0BjaHJvbWl1bS5vcmc+CgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
