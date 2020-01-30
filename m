@@ -1,53 +1,73 @@
-From: Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: [PATCH v6 5/6] rockchip: Add Single boot image (with binman,
- pad_cat)
-Date: Wed, 29 Jan 2020 19:17:37 -0700
-Message-ID: <CAPnjgZ3PkXZe5GX9xB2fSteLdiz+=xhgCXFvdUgz0qGeEVFHKQ@mail.gmail.com>
-References: <20200104083806.3930-1-jagan@amarulasolutions.com>
- <20200104083806.3930-6-jagan@amarulasolutions.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 1/4] rockchip: rk3288: Enable pre console buffer
+Date: Thu, 30 Jan 2020 11:55:20 +0800
+Message-ID: <73495425-6433-7001-fddd-df9161ae46cc@rock-chips.com>
+References: <20200123141222.486-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200104083806.3930-6-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot Mailing List <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, "Matwey V . Kornilov" <matwey.kornilov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Akash Gajjar <akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200123141222.486-1-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gU2F0LCA0IEphbiAyMDIwIGF0IDAxOjM4LCBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29s
-dXRpb25zLmNvbT4gd3JvdGU6Cj4KPiBBbGwgcm9ja2NoaXAgcGxhdGZvcm1zIHN1cHBvcnQgVFBM
-IG9yIFNQTC1iYXNlZCBib290bG9hZGVyCj4gaW4gbWFpbmxpbmUgd2l0aCBVLUJvb3QgcHJvcGVy
-IGFzIGZpbmFsIHN0YWdlLiBGb3IgZWFjaAo+IHN0YWdlIHdlIG5lZWQgdG8gYnVybiB0aGUgaW1h
-Z2Ugb24gdG8gZmxhc2ggd2l0aCByZXNwZWN0aXZlCj4gb2Zmc2V0cy4KPgo+IFRoaXMgcGF0Y2gg
-Y3JlYXRlcyBhIHNpbmdsZSBib290IGltYWdlIGNvbXBvbmVudCB1c2luZwo+IC0gYmlubWFuLCBm
-b3IgYXJtMzIgcm9ja2NoaXAgcGxhdGZvcm1zCj4gLSBwYWRfY2F0LCBmb3IgYXJtNjQgcm9ja2No
-aXAgcGxhdGZvcm1zLgo+Cj4gVGhpcyB3b3VsZCBoZWxwIHVzZXJzIHRvIGdldCByaWQgb2YgYnVy
-bmluZyBkaWZmZXJlbnQKPiBib290IHN0YWdlIGltYWdlcy4KPgo+IFRoZSBuZXcgaW1hZ2UgY2Fs
-bGVkICd1LWJvb3Qtcm9ja2NoaXAuYmluJwo+IHdoaWNoIGNhbiBidXJuIGludG8gZmxhc2ggbGlr
-ZToKPgo+IOKCuSBzdWRvIGRkIGlmPXUtYm9vdC1yb2NrY2hpcC5iaW4gb2Y9L2Rldi9zZGEgc2Vl
-az02NAo+Cj4gVGhpcyB3b3VsZCBzdXBwb3J0IGFsbCByb2NrY2hpcCBwbGF0Zm9ybXMsIGV4Y2Vw
-dCByazMxMjgKPiBzaW5jZSBpdCBkb2Vzbid0IHN1cHBvcnQgZm9yIFNQTCB5ZXQuCj4KPiBDYzog
-S2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KPiBDYzogTWF0d2V5IFYuIEtv
-cm5pbG92IDxtYXR3ZXkua29ybmlsb3ZAZ21haWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEphZ2Fu
-IFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+IFJldmlld2VkLWJ5OiBLZXZlciBZ
-YW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICBNYWtlZmlsZSAgICAgICAg
-ICAgICAgICAgICAgICAgICAgfCAxNCArKysrKysrKysrKystLQo+ICBhcmNoL2FybS9LY29uZmln
-ICAgICAgICAgICAgICAgICAgfCAgMSArCj4gIGFyY2gvYXJtL2R0cy9yazMwMzYtdS1ib290LmR0
-c2kgICB8ICAyICsrCj4gIGFyY2gvYXJtL2R0cy9yazMyODgtdS1ib290LmR0c2kgICB8ICAyICsr
-Cj4gIGFyY2gvYXJtL2R0cy9yb2NrY2hpcC11LWJvb3QuZHRzaSB8IDIxICsrKysrKysrKysrKysr
-KysrKysrKwo+ICBpbmNsdWRlL2NvbmZpZ3Mvcm9ja2NoaXAtY29tbW9uLmggfCAgMyArKysKPiAg
-NiBmaWxlcyBjaGFuZ2VkLCA0MSBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+ICBjcmVh
-dGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3JvY2tjaGlwLXUtYm9vdC5kdHNpCgpSZXZpZXdl
-ZC1ieTogU2ltb24gR2xhc3MgPHNqZ0BjaHJvbWl1bS5vcmc+CgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+On 2020/1/23 下午10:12, Jagan Teki wrote:
+> Enable pre console buffer for rk3288 platform.
+>
+> This would help to capture the console messages prior to
+> the console being initialised. Enabling this would help
+> to capture all the console messages on video output source
+> like HDMI. So we can find the full console messages of
+> U-Boot proper on HDMI display when enabled it for RK3288
+> platform boards.
+>
+> Buffer address used for pre console is 0x0f000000 which is
+> ram base plus 240MiB. right now the Allwinner SoC is using
+> similar computation.
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+
+Thanks,
+- Kever
+> ---
+>   arch/arm/mach-rockchip/Kconfig | 1 +
+>   common/Kconfig                 | 1 +
+>   2 files changed, 2 insertions(+)
+>
+> diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+> index 2f260a5c5f..ed7514ab75 100644
+> --- a/arch/arm/mach-rockchip/Kconfig
+> +++ b/arch/arm/mach-rockchip/Kconfig
+> @@ -102,6 +102,7 @@ config ROCKCHIP_RK3288
+>   	select SUPPORT_SPL
+>   	select SPL
+>   	select SUPPORT_TPL
+> +	imply PRE_CONSOLE_BUFFER
+>   	imply ROCKCHIP_COMMON_BOARD
+>   	imply SPL_ROCKCHIP_COMMON_BOARD
+>   	imply TPL_CLK
+> diff --git a/common/Kconfig b/common/Kconfig
+> index a7c5ba278a..21d0244050 100644
+> --- a/common/Kconfig
+> +++ b/common/Kconfig
+> @@ -567,6 +567,7 @@ config PRE_CON_BUF_ADDR
+>   	depends on PRE_CONSOLE_BUFFER
+>   	default 0x2f000000 if ARCH_SUNXI && MACH_SUN9I
+>   	default 0x4f000000 if ARCH_SUNXI && !MACH_SUN9I
+> +	default 0x0f000000 if ROCKCHIP_RK3288
+>   	help
+>   	  This sets the start address of the pre-console buffer. This must
+>   	  be in available memory and is accessed before relocation and
