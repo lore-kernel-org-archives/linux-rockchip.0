@@ -1,149 +1,102 @@
-From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: Re: [v3 4/6] dt-bindings: PCI: rcar: Add bindings for R-Car PCIe
- endpoint controller
-Date: Thu, 30 Jan 2020 20:54:13 +0000
-Message-ID: <CA+V-a8th3eysn0s2q9EEAqQb7vfd3bNcL=ow_z8tSWAC6K=iJw@mail.gmail.com>
-References: <20200108162211.22358-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
- <20200108162211.22358-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
- <CA+V-a8s1Jx8uZiSr0uiryS492EbFRoFg9QTwkosZsuyfRYp-3g@mail.gmail.com> <9c65eb7a-539b-1fa3-f988-40c32aa8dfe3@ti.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v4 5/6] media: rkvdec: Add the rkvdec driver
+Date: Fri, 31 Jan 2020 08:53:47 -0300
+Message-ID: <739f60a89646cc92f26e34523cbe8aaab5697351.camel@collabora.com>
+References: <20200129195501.8317-1-ezequiel@collabora.com>
+                <20200129195501.8317-6-ezequiel@collabora.com>
+         <20200130171249.3ae0444a@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-renesas-soc-owner@vger.kernel.org>
-In-Reply-To: <9c65eb7a-539b-1fa3-f988-40c32aa8dfe3@ti.com>
-Sender: linux-renesas-soc-owner@vger.kernel.org
-To: Rob Herring <robh+dt@kernel.org>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>, Mark Rutland <mark.rutland@arm.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, linux-pci <linux-pci@vger.kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, Linux-Renesa
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200130171249.3ae0444a-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Rob,
+On Thu, 2020-01-30 at 17:12 +0100, Boris Brezillon wrote:
+> On Wed, 29 Jan 2020 16:55:00 -0300
+> Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+> 
+> > From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > 
+> > The rockchip vdec block is a stateless decoder that's able to decode
+> > H264, HEVC and VP9 content. This commit adds the core infrastructure
+> > and the H264 backend. Support for VP9 and HEVS will be added later on.
+> > 
+> > Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> > ---
+> > v4:
+> > * Make poc tables const, as suggested by Hans
+> > * Move buffer extra space calculation TRY_FMT, as done on Hantro.
+> > * Get rid of vb2_request_get_buf and open-code
+> >   following Cedrus. We can move it to a helper as a follow-up patch.
+> 
+> Well, we know what that means in practice :-).
+> 
 
-On Wed, Jan 22, 2020 at 8:13 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
->
-> Hi Prabhakar,
->
-> On 21/01/20 11:27 PM, Lad, Prabhakar wrote:
-> > Hi Rob/Kishon,
-> >
-> > On Wed, Jan 8, 2020 at 4:22 PM Lad Prabhakar <prabhakar.csengg@gmail.com> wrote:
-> >>
-> >> This patch adds the bindings for the R-Car PCIe endpoint driver.
-> >>
-> >> Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-> >> ---
-> >>  .../devicetree/bindings/pci/rcar-pci-ep.yaml  | 76 +++++++++++++++++++
-> >>  1 file changed, 76 insertions(+)
-> >>  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
-> >>
-> >> diff --git a/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml b/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
-> >> new file mode 100644
-> >> index 000000000000..99c2a1174463
-> >> --- /dev/null
-> >> +++ b/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
-> >> @@ -0,0 +1,76 @@
-> >> +# SPDX-License-Identifier: GPL-2.0
-> >> +# Copyright (C) 2020 Renesas Electronics Europe GmbH - https://www.renesas.com/eu/en/
-> >> +%YAML 1.2
-> >> +---
-> >> +$id: http://devicetree.org/schemas/pci/rcar-pcie-ep.yaml#
-> >> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> >> +
-> >> +title: Renesas R-Car PCIe Endpoint
-> >> +
-> >> +maintainers:
-> >> +  - Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-> >> +
-> >> +properties:
-> >> +  compatible:
-> >> +    items:
-> >> +      - const: renesas,r8a774c0-pcie-ep
-> >> +      - const: renesas,rcar-gen3-pcie-ep
-> >> +
-> >> +  reg:
-> >> +    maxItems: 5
-> >> +
-> >> +  reg-names:
-> >> +    items:
-> >> +      - const: apb-base
-> >> +      - const: memory0
-> >> +      - const: memory1
-> >> +      - const: memory2
-> >> +      - const: memory3
->
-> As I had mentioned in the other patch, I'd prefer if we can create
-> standard binding for representing the memory regions. IMHO we should
-> create subnode for memory regions Each sub-node itself may or may not
-> have more than one memory region.
->
-> In your platform, since there can be only one allocation in a memory
-> region, there should be 4 sub-nodes for each of the memory region and
-> each node should have page_size (or some equivalent property) property
-> to indicate page_size (= region_size).
->
-> For a platform that doesn't have the restriction, there can be a single
-> sub-node containing all the memory region.
->
-> Let's wait for Rob's comment though.
->
-Gentle ping.on the suggestions above.
+Well, not necesarily. I think we can expect a helper soon,
+but it doesn't have to be part of this series :-)
 
-Cheers,
---Prabhakar
+And perhaps we can find another way to link a media request
+to a vb2 queue, so we don't have to iterate over objects
+like we are doing now?
 
-> Thanks
-> Kishon
-> >> +
-> >> +  power-domains:
-> >> +    maxItems: 1
-> >> +
-> >> +  resets:
-> >> +    maxItems: 1
-> >> +
-> >> +  clocks:
-> >> +    maxItems: 1
-> >> +
-> >> +  clock-names:
-> >> +    items:
-> >> +      - const: pcie
-> >> +
-> >> +  max-functions:
-> >> +    minimum: 1
-> >> +    maximum: 6
-> >> +
-> >> +required:
-> >> +  - compatible
-> >> +  - reg
-> >> +  - reg-names
-> >> +  - resets
-> >> +  - power-domains
-> >> +  - clocks
-> >> +  - clock-names
-> >> +  - max-functions
-> >> +
-> > apart from dt_binding_check error are we OK with dt bindings ?
-> >
-> > Cheers,
-> > --Prabhakar
-> >
-> >> +examples:
-> >> +  - |
-> >> +    #include <dt-bindings/clock/r8a774c0-cpg-mssr.h>
-> >> +    #include <dt-bindings/power/r8a774c0-sysc.h>
-> >> +
-> >> +     pcie0_ep: pcie-ep@fe000000 {
-> >> +            compatible = "renesas,r8a774c0-pcie-ep",
-> >> +                         "renesas,rcar-gen3-pcie-ep";
-> >> +            reg = <0 0xfe000000 0 0x80000>,
-> >> +                  <0x0 0xfe100000 0 0x100000>,
-> >> +                  <0x0 0xfe200000 0 0x200000>,
-> >> +                  <0x0 0x30000000 0 0x8000000>,
-> >> +                  <0x0 0x38000000 0 0x8000000>;
-> >> +            reg-names = "apb-base", "memory0", "memory1", "memory2", "memory3";
-> >> +            resets = <&cpg 319>;
-> >> +            power-domains = <&sysc R8A774C0_PD_ALWAYS_ON>;
-> >> +            clocks = <&cpg CPG_MOD 319>;
-> >> +            clock-names = "pcie";
-> >> +            max-functions = /bits/ 8 <1>;
-> >> +    };
-> >> --
-> >> 2.20.1
-> >>
+> > new file mode 100644
+> > index 000000000000..1293b3621364
+> > --- /dev/null
+> > +++ b/drivers/staging/media/rkvdec/rkvdec-regs.h
+> > @@ -0,0 +1,239 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +/*
+> > + * Rockchip VPU codec driver
+> > + *
+> > + * Copyright (C) 2015 Rockchip Electronics Co., Ltd.
+> > + *	Jung Zhao <jung.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > + *	Alpha Lin <alpha.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > + *
+> > + * This software is licensed under the terms of the GNU General Public
+> > + * License version 2, as published by the Free Software Foundation, and
+> > + * may be copied, distributed, and modified under those terms.
+> > + *
+> > + * This program is distributed in the hope that it will be useful,
+> > + * but WITHOUT ANY WARRANTY; without even the implied warranty of
+> > + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+> > + * GNU General Public License for more details.
+> > + */
+> 
+> Oops, looks like I forgot to remove the license text here. Also not
+> entirely sure the copyrights are correct (might be a copy from the
+> hantro driver instead of the rkvdec one).
+> 
+
+Right.
+
+> 
+> > diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
+> > new file mode 100644
+> > index 000000000000..529ef86510d3
+> > --- /dev/null
+> > +++ b/drivers/staging/media/rkvdec/rkvdec.h
+> > @@ -0,0 +1,124 @@
+> > +/* SPDX-License-Identifier: GPL-2.0 */
+> > +/*
+> > + * Hantro VPU codec driver
+> > + *
+> > + * Copyright 2018 Google LLC.
+> > + *	Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+> > + *
+> > + * Based on s5p-mfc driver by Samsung Electronics Co., Ltd.
+> > + * Copyright (C) 2011 Samsung Electronics Co., Ltd.
+> > + */
+> 
+> This header has been copied from the hantro driver, so it's most likely
+> wrong.
+> 
+
+Oh, I totally missed this.
+
+Thanks for reviewing!
+Ezequiel
