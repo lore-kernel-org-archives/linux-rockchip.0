@@ -1,50 +1,82 @@
-From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v4 5/6] media: rkvdec: Add the rkvdec driver
-Date: Fri, 31 Jan 2020 13:18:45 +0100
-Message-ID: <20200131131845.65451a8c@collabora.com>
-References: <20200129195501.8317-1-ezequiel@collabora.com>
-        <20200129195501.8317-6-ezequiel@collabora.com>
-        <20200130171249.3ae0444a@collabora.com>
-        <739f60a89646cc92f26e34523cbe8aaab5697351.camel@collabora.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH v8 05/14] media: rkisp1: add Rockchip ISP1 subdev driver
+Date: Fri, 31 Jan 2020 20:38:34 +0100
+Message-ID: <78856358-1afd-31a7-86dd-22f7d6d7fb05@collabora.com>
+References: <20190730184256.30338-1-helen.koike@collabora.com>
+ <20190730184256.30338-6-helen.koike@collabora.com>
+ <20190808091406.GQ21370@paasikivi.fi.intel.com>
+ <da6c1d01-e3f6-ad73-db55-145d7832a665@collabora.com>
+ <20190815082422.GM6133@paasikivi.fi.intel.com>
+ <20190815131748.GS6133@paasikivi.fi.intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <739f60a89646cc92f26e34523cbe8aaab5697351.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sakari Ailus <sakari.ailus-X3B1VOXEql0@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20190815131748.GS6133@paasikivi.fi.intel.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sakari Ailus <sakari.ailus@linux.intel.com>, Helen Koike <helen.koike@collabora.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, mchehab@kernel.org, heiko@sntech.de, jacob2.chen@rock-chips.com, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, tfiga@chromium.org, hans.verkuil@cisco.com, laurent.pinchart@ideasonboard.com, kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, zhengsq@rock-chips.com, Jacob Chen <cc@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>, Dafna Hirschfeld <dafna3@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 31 Jan 2020 08:53:47 -0300
-Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+Hi,
+I (Dafna Hirschfeld) will work in following months with Helen Koike to fix the issues
+in the TODO file of this driver: drivers/staging/media/rkisp1/TODO
 
-> On Thu, 2020-01-30 at 17:12 +0100, Boris Brezillon wrote:
-> > On Wed, 29 Jan 2020 16:55:00 -0300
-> > Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
-> >   
-> > > From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > > 
-> > > The rockchip vdec block is a stateless decoder that's able to decode
-> > > H264, HEVC and VP9 content. This commit adds the core infrastructure
-> > > and the H264 backend. Support for VP9 and HEVS will be added later on.
+On 15.08.19 15:17, Sakari Ailus wrote:
+> On Thu, Aug 15, 2019 at 11:24:22AM +0300, Sakari Ailus wrote:
+>> Hi Helen,
+>>
+>> On Wed, Aug 14, 2019 at 09:58:05PM -0300, Helen Koike wrote:
+>>
+>> ...
+>>
+>>>>> +static int rkisp1_isp_sd_set_fmt(struct v4l2_subdev *sd,
+>>>>> +				 struct v4l2_subdev_pad_config *cfg,
+>>>>> +				 struct v4l2_subdev_format *fmt)
+>>>>> +{
+>>>>> +	struct rkisp1_device *isp_dev = sd_to_isp_dev(sd);
+>>>>> +	struct rkisp1_isp_subdev *isp_sd = &isp_dev->isp_sdev;
+>>>>> +	struct v4l2_mbus_framefmt *mf = &fmt->format;
+>>>>> +
+>>>>
+>>>> Note that for sub-device nodes, the driver is itself responsible for
+>>>> serialising the access to its data structures.
+>>>
+>>> But looking at subdev_do_ioctl_lock(), it seems that it serializes the
+>>> ioctl calls for subdevs, no? Or I'm misunderstanding something (which is
+>>> most probably) ?
+>>
+>> Good question. I had missed this change --- subdev_do_ioctl_lock() is
+>> relatively new. But setting that lock is still not possible as the struct
 
-						 ^HEVC
+'the struct' - do you mean the 'vdev' struct allocated in
+'v4l2_device_register_subdev_nodes' ?
 
-> > > 
-> > > Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > > Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > > ---
-> > > v4:
-> > > * Make poc tables const, as suggested by Hans
-> > > * Move buffer extra space calculation TRY_FMT, as done on Hantro.
-> > > * Get rid of vb2_request_get_buf and open-code
-> > >   following Cedrus. We can move it to a helper as a follow-up patch.  
-> > 
-> > Well, we know what that means in practice :-).
-> >   
+>> is allocated in the framework and the device is registered before the
+
+>> driver gets hold of it. It's a good idea to provide the same serialisation
+>> for subdevs as well.
+>>
+>> I'll get back to this later.
 > 
-> Well, not necesarily. I think we can expect a helper soon,
-> but it doesn't have to be part of this series :-)
+> The main reason is actually that these ops are also called through the
+> sub-device kAPI, not only through the uAPI, and the locks are only taken
+> through the calls via uAPI.
 
-I'd be happy to be proven wrong ;-).
+actually it seems that although 'subdev_do_ioctl_lock' exit, I wonder if
+any subdevice uses that vdev->lock in  subdev_do_ioctl_lock.
+It is not initialized in v4l2_device_register_subdev_nodes where the vdev is allocated
+and I wonder if any subdevice actually initialize it somewhere else. For example it is null in this
+driver and in vimc.
+
+> 
+> So adding the locks to uAPI calls alone would not address the issue.
+
+What I can do is add a mutex to every struct of a subdevice and lock it
+at the beginning of each subdevice operation.
+Is this an acceptable solution?
+
+Thanks,
+Dafna
+> 
