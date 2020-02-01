@@ -1,14 +1,15 @@
-From: Robin Murphy <robin.murphy@arm.com>
+From: Adam Van Ymeren <adam@vany.ca>
 Subject: Re: [PATCH] arm64: dts: rockchip: Fix rk3328-roc-cc sdmmcio-regulator
-Date: Sat, 1 Feb 2020 10:51:12 +0000
-Message-ID: <7b9829b3-e2d2-95b1-03cb-1af7a3c6acad@arm.com>
+Date: Sat, 1 Feb 2020 10:41:59 -0500
+Message-ID: <4a6a9d81-c831-4167-7fbf-64805940fb6f@vany.ca>
 References: <87imkryz5t.fsf@vany.ca>
+ <7b9829b3-e2d2-95b1-03cb-1af7a3c6acad@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <87imkryz5t.fsf@vany.ca>
-Content-Language: en-GB
+In-Reply-To: <7b9829b3-e2d2-95b1-03cb-1af7a3c6acad@arm.com>
+Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -18,45 +19,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Adam Van Ymeren <adam@vany.ca>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+To: Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 Cc: Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Adam,
-
-On 2020-01-31 11:38 pm, Adam Van Ymeren wrote:
-> With this change the kernel successfully finds the SD Card and can load
-> a rootfs from it.  Tested on hardware.
-> 
-> Signed-off-by: Adam Van Ymeren <adam@vany.ca>
-> 
-> diff -uprN -X linux-5.5/Documentation/dontdiff linux-5.5-orig/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts linux-5.5/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-> --- linux-5.5-orig/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts	2020-01-26 19:23:03.000000000 -0500
-> +++ linux-5.5/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts	2020-01-31 16:26:35.377075419 -0500
-> @@ -44,7 +44,7 @@
->   
->   	vcc_sdio: sdmmcio-regulator {
->   		compatible = "regulator-gpio";
-> -		gpios = <&grf_gpio 0 GPIO_ACTIVE_HIGH>;
-> +		gpios = <&gpio0 RK_PD1 GPIO_ACTIVE_HIGH>;
-
-Given that the RK3328 datasheet has no mention of GPIO0_D1 existing at 
-all, how sure are you that this is correct - have you tested cards in 
-both 3.3V and 1.8V (UHS-1) signalling modes?
-
-The ROC-RK3328-CC schematics show GPIO_MUTE being used to bias the 
-feedback pin of an adjustable regulator supplying the SDMMC0 I/O domain, 
-so it seems more likely that the pin is correct but the states (or the 
-polarity) are backwards.
-
-Robin.
-
->   		states = <1800000 0x1
->   			  3300000 0x0>;
->   		regulator-name = "vcc_sdio";
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+Ck9uIDIwMjAtMDItMDEgNTo1MSBhLm0uLCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4gSGkgQWRhbSwK
+Pgo+IE9uIDIwMjAtMDEtMzEgMTE6MzggcG0sIEFkYW0gVmFuIFltZXJlbiB3cm90ZToKPj4gV2l0
+aCB0aGlzIGNoYW5nZSB0aGUga2VybmVsIHN1Y2Nlc3NmdWxseSBmaW5kcyB0aGUgU0QgQ2FyZCBh
+bmQgY2FuIGxvYWQKPj4gYSByb290ZnMgZnJvbSBpdC7CoCBUZXN0ZWQgb24gaGFyZHdhcmUuCj4+
+Cj4+IFNpZ25lZC1vZmYtYnk6IEFkYW0gVmFuIFltZXJlbiA8YWRhbUB2YW55LmNhPgo+Pgo+PiBk
+aWZmIC11cHJOIC1YIGxpbnV4LTUuNS9Eb2N1bWVudGF0aW9uL2RvbnRkaWZmCj4+IGxpbnV4LTUu
+NS1vcmlnL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvYy1jYy5kdHMKPj4g
+bGludXgtNS41L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LXJvYy1jYy5kdHMK
+Pj4gLS0tIGxpbnV4LTUuNS1vcmlnL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4
+LXJvYy1jYy5kdHPCoMKgwqAKPj4gMjAyMC0wMS0yNiAxOToyMzowMy4wMDAwMDAwMDAgLTA1MDAK
+Pj4gKysrIGxpbnV4LTUuNS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMyOC1yb2Mt
+Y2MuZHRzwqDCoMKgCj4+IDIwMjAtMDEtMzEgMTY6MjY6MzUuMzc3MDc1NDE5IC0wNTAwCj4+IEBA
+IC00NCw3ICs0NCw3IEBACj4+IMKgIMKgwqDCoMKgwqAgdmNjX3NkaW86IHNkbW1jaW8tcmVndWxh
+dG9yIHsKPj4gwqDCoMKgwqDCoMKgwqDCoMKgIGNvbXBhdGlibGUgPSAicmVndWxhdG9yLWdwaW8i
+Owo+PiAtwqDCoMKgwqDCoMKgwqAgZ3Bpb3MgPSA8JmdyZl9ncGlvIDAgR1BJT19BQ1RJVkVfSElH
+SD47Cj4+ICvCoMKgwqDCoMKgwqDCoCBncGlvcyA9IDwmZ3BpbzAgUktfUEQxIEdQSU9fQUNUSVZF
+X0hJR0g+Owo+Cj4gR2l2ZW4gdGhhdCB0aGUgUkszMzI4IGRhdGFzaGVldCBoYXMgbm8gbWVudGlv
+biBvZiBHUElPMF9EMSBleGlzdGluZyBhdAo+IGFsbCwgaG93IHN1cmUgYXJlIHlvdSB0aGF0IHRo
+aXMgaXMgY29ycmVjdCAtIGhhdmUgeW91IHRlc3RlZCBjYXJkcyBpbgo+IGJvdGggMy4zViBhbmQg
+MS44ViAoVUhTLTEpIHNpZ25hbGxpbmcgbW9kZXM/Cj4KPiBUaGUgUk9DLVJLMzMyOC1DQyBzY2hl
+bWF0aWNzIHNob3cgR1BJT19NVVRFIGJlaW5nIHVzZWQgdG8gYmlhcyB0aGUKPiBmZWVkYmFjayBw
+aW4gb2YgYW4gYWRqdXN0YWJsZSByZWd1bGF0b3Igc3VwcGx5aW5nIHRoZSBTRE1NQzAgSS9PCj4g
+ZG9tYWluLCBzbyBpdCBzZWVtcyBtb3JlIGxpa2VseSB0aGF0IHRoZSBwaW4gaXMgY29ycmVjdCBi
+dXQgdGhlIHN0YXRlcwo+IChvciB0aGUgcG9sYXJpdHkpIGFyZSBiYWNrd2FyZHMuCgoKSG1tIHll
+YWggYWZ0ZXIgcmVhZGluZyB0aGUgc2NoZW1hdGljcyB0aGlzIGRvZXNuJ3QgbWFrZSBzZW5zZS7C
+oCBJIHRvb2sKaXQgZnJvbSB0aGUgdmVuZG9ycyBzb3VyY2UgdHJlZVsxXSwgYW5kIGl0IGRlZmlu
+aXRlbHkgYWxsb3dlZCBteSBzeXN0ZW0KdG8gYm9vdCB3aGVuIGl0IHdvdWxkbid0IGJlZm9yZSwg
+YnV0IEkgb25seSB0cmllZCBhIDMuM1YgY2FyZC7CoCBJJ2xsIHRyeQpqdXN0IGNoYW5naW5nIHRo
+ZSBwb2xhcml0eS7CoCBJJ2xsIGFsc28gZmluZCBhIFVIUy0xIGNhcmQgYW5kIHRlc3QgdGhhdCwK
+YW55IGFkdmljZSBvbiBob3cgdG8gdmVyaWZ5IHRoYXQgaXQncyBydW5uaW5nIGluIHRoZSAxLjhW
+IG1vZGU/CgpbMV0KaHR0cHM6Ly9naXRodWIuY29tL0ZpcmVmbHlUZWFtL2tlcm5lbC9ibG9iL3Jr
+MzMyOC9maXJlZmx5L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzI4LWZpcmVmbHkt
+Y29yZS5kdHNpI0w4OQoKClRoYW5rcyBmb3IgdGhlIHJldmlldyEKCi1BZGFtCgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBt
+YWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
