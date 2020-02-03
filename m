@@ -1,47 +1,40 @@
-From: Anatolij Gustschin <agust@denx.de>
-Subject: Re: [PATCH 4/4] rockchip: Enable HDMI output on rk3399 board w/ HDMI
-Date: Mon, 3 Feb 2020 23:10:55 +0100
-Message-ID: <20200203231055.0a3732b6@crub>
-References: <20200123162845.10651-1-jagan@amarulasolutions.com>
- <20200123162845.10651-5-jagan@amarulasolutions.com>
- <20200124152735.GR26536@bill-the-cat>
- <CAMty3ZBQ_mRY4ojo_4iHUzup2tD-FO6ZmskwJyXskg4O4iHz+Q@mail.gmail.com>
- <20200203144708.GK13379@bill-the-cat>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200203144708.GK13379@bill-the-cat>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Tom Rini <trini@konsulko.com>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, U-Boot-Denx <u-boot@lists.denx.de>, linux-amarula <linux-amarula@amarulasolutions.com>
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+Subject: [PATCH v4 0/3] Add rga to rk322x device tree
+Date: Mon,  3 Feb 2020 22:30:28 +0000
+Message-ID: <cover.1580768038.git.justin.swartz@risingedge.co.za>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Justin Swartz <justin.swartz@risingedge.co.za>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 3 Feb 2020 09:47:08 -0500
-Tom Rini trini@konsulko.com wrote:
-... 
-> > yes, this evb board config is common across most of the rk3399
-> > defconfig boards. this patch enable hdmi on few rk3399 boards all use
-> > same config file, evb_rk3399.h  
-> 
-> Yes, the ROCKCHIP_DEVICE_SETTINGS part makes sense, but the rest looks
-> very much like part of we need to rework the commit I mentioned.  I
-> don't object to this going in as-is.  Anatolij, how goes the rework of
-> things however?  I do want to see that get in sooner rather than later
-> so we can sort out other regressions from just a lack of CONFIG options
-> being enabled.  Thanks!
+This patchset aims to enable use of Rockchip's RGA, a 2D raster
+graphic acceleration unit, on rk322x based devices.
 
-A patch [1] for this is under build testing.
+Changes in v4:
+  - Add a compatible value entry for the rk3228 to the rockchip-rga
+    device tree binding documentation.
 
-[1] http://patchwork.ozlabs.org/patch/1233033
+Changes in v3:
+  - Relocate rga node to the correct position in rk322x.dtsi, as
+    indicated by Johan Jonker.
 
---
-Anatolij
+Changes in v2:
+  - Remove unnecessary "rockchip,rk3228-rga" device tree compatibility
+    string patch, as advised by Ezequiel Garcia.
+
+  - Use both "rockchip,rk3228-rga" and "rockchip,rk3288-rga" in the
+    rga node's compatibility property, as suggested by Heiko Stuebner.
+
+Justin Swartz (3):
+  [media] dt-bindings: Add binding for rk3228 rga
+  ARM: dts: rockchip: add rga node for rk322x
+  ARM: dts: rockchip: enable rga for rk3229-xms6
+
+ Documentation/devicetree/bindings/media/rockchip-rga.txt |  5 +++--
+ arch/arm/boot/dts/rk3229-xms6.dts                        |  4 ++++
+ arch/arm/boot/dts/rk322x.dtsi                            | 11 +++++++++++
+ 3 files changed, 18 insertions(+), 2 deletions(-)
+
+-- 
+2.11.0
