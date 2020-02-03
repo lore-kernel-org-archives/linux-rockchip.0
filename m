@@ -1,175 +1,133 @@
-From: Tom Rini <trini@konsulko.com>
-Subject: Re: [PATCH 4/4] rockchip: Enable HDMI output on rk3399 board w/ HDMI
-Date: Mon, 3 Feb 2020 09:47:08 -0500
-Message-ID: <20200203144708.GK13379@bill-the-cat>
-References: <20200123162845.10651-1-jagan@amarulasolutions.com>
- <20200123162845.10651-5-jagan@amarulasolutions.com>
- <20200124152735.GR26536@bill-the-cat>
- <CAMty3ZBQ_mRY4ojo_4iHUzup2tD-FO6ZmskwJyXskg4O4iHz+Q@mail.gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [RFC PATCH v2 01/10] dt-bindings: mtd: add rockchip nand
+ controller bindings
+Date: Mon, 3 Feb 2020 15:45:42 +0000
+Message-ID: <20200203154542.GA27866@bogus>
+References: <20200124163001.28910-1-jbx6244@gmail.com>
+ <20200124163001.28910-2-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="OaJtNTxAPudgaAxc"
-Return-path: <u-boot-bounces@lists.denx.de>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <CAMty3ZBQ_mRY4ojo_4iHUzup2tD-FO6ZmskwJyXskg4O4iHz+Q@mail.gmail.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Anatolij Gustschin <agust@denx.de>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, U-Boot-Denx <u-boot@lists.denx.de>, linux-amarula <linux-amarula@amarulasolutions.com>
+In-Reply-To: <20200124163001.28910-2-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+On Fri, Jan 24, 2020 at 05:29:52PM +0100, Johan Jonker wrote:
+> Add the Rockchip NAND controller bindings.
+> 
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>  .../bindings/mtd/rockchip,nand-controller.yaml     | 92 ++++++++++++++++++++++
+>  1 file changed, 92 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml b/Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
+> new file mode 100644
+> index 000000000..5c725f972
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
+> @@ -0,0 +1,92 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mtd/rockchip,nand-controller.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip NAND Controller Device Tree Bindings
+> +
+> +allOf:
+> +  - $ref: "nand-controller.yaml#"
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - rockchip,px30-nand-controller
+> +      - rockchip,rk3066-nand-controller
+> +      - rockchip,rk3228-nand-controller
+> +      - rockchip,rk3288-nand-controller
+> +      - rockchip,rk3308-nand-controller
+> +      - rockchip,rk3368-nand-controller
+> +      - rockchip,rv1108-nand-controller
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  clock-names:
+> +    minItems: 1
+> +    items:
+> +      - const: hclk_nandc
+> +      - const: clk_nandc
+> +
+> +patternProperties:
+> +  "^nand@[a-f0-9]+$":
+> +    type: object
+> +    properties:
+> +      reg:
+> +        minimum: 0
+> +        maximum: 3
+> +
+> +      nand-is-boot-medium: true
+> +
+> +      rockchip,idb-res-blk-num:
 
---OaJtNTxAPudgaAxc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+What is idb? Rather than define, maybe just 'rockchip,boot-blks'?
 
-On Mon, Feb 03, 2020 at 04:55:27PM +0530, Jagan Teki wrote:
-> On Fri, Jan 24, 2020 at 8:57 PM Tom Rini <trini@konsulko.com> wrote:
-> >
-> > On Thu, Jan 23, 2020 at 09:58:45PM +0530, Jagan Teki wrote:
-> >
-> > > Enable config options and console setting to respective
-> > > rk3399 board for HDMI output.
-> > >
-> > > Boards supported and tested on this patch are:
-> > > - NanoPc T4
-> > > - NanoPi M4
-> > > - NanoPi Neo4
-> > > - ROC-RK3399-PC
-> > >
-> > > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> > > ---
-> > >  configs/nanopc-t4-rk3399_defconfig   | 6 ++++++
-> > >  configs/nanopi-m4-rk3399_defconfig   | 6 ++++++
-> > >  configs/nanopi-neo4-rk3399_defconfig | 6 ++++++
-> > >  configs/roc-pc-rk3399_defconfig      | 6 ++++++
-> > >  include/configs/evb_rk3399.h         | 5 +++++
-> > >  5 files changed, 29 insertions(+)
-> > >
-> > > diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-r=
-k3399_defconfig
-> > > index bd6d60ff6c..17e8a18d31 100644
-> > > --- a/configs/nanopc-t4-rk3399_defconfig
-> > > +++ b/configs/nanopc-t4-rk3399_defconfig
-> > > @@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
-> > >  CONFIG_USB_ETHER_SMSC95XX=3Dy
-> > >  CONFIG_SPL_TINY_MEMSET=3Dy
-> > >  CONFIG_ERRNO_STR=3Dy
-> > > +CONFIG_DM_VIDEO=3Dy
-> > > +CONFIG_VIDEO_BPP16=3Dy
-> > > +CONFIG_VIDEO_BPP32=3Dy
-> > > +CONFIG_DISPLAY=3Dy
-> > > +CONFIG_VIDEO_ROCKCHIP=3Dy
-> > > +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
-> > > diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-r=
-k3399_defconfig
-> > > index 74ede13c23..b73b2fdc27 100644
-> > > --- a/configs/nanopi-m4-rk3399_defconfig
-> > > +++ b/configs/nanopi-m4-rk3399_defconfig
-> > > @@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
-> > >  CONFIG_USB_ETHER_SMSC95XX=3Dy
-> > >  CONFIG_SPL_TINY_MEMSET=3Dy
-> > >  CONFIG_ERRNO_STR=3Dy
-> > > +CONFIG_DM_VIDEO=3Dy
-> > > +CONFIG_VIDEO_BPP16=3Dy
-> > > +CONFIG_VIDEO_BPP32=3Dy
-> > > +CONFIG_DISPLAY=3Dy
-> > > +CONFIG_VIDEO_ROCKCHIP=3Dy
-> > > +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
-> > > diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-ne=
-o4-rk3399_defconfig
-> > > index a44124aac0..2ecb50967b 100644
-> > > --- a/configs/nanopi-neo4-rk3399_defconfig
-> > > +++ b/configs/nanopi-neo4-rk3399_defconfig
-> > > @@ -53,3 +53,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
-> > >  CONFIG_USB_ETHER_SMSC95XX=3Dy
-> > >  CONFIG_SPL_TINY_MEMSET=3Dy
-> > >  CONFIG_ERRNO_STR=3Dy
-> > > +CONFIG_DM_VIDEO=3Dy
-> > > +CONFIG_VIDEO_BPP16=3Dy
-> > > +CONFIG_VIDEO_BPP32=3Dy
-> > > +CONFIG_DISPLAY=3Dy
-> > > +CONFIG_VIDEO_ROCKCHIP=3Dy
-> > > +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
-> > > diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_=
-defconfig
-> > > index 3a051d9b0c..a9f99f992d 100644
-> > > --- a/configs/roc-pc-rk3399_defconfig
-> > > +++ b/configs/roc-pc-rk3399_defconfig
-> > > @@ -56,3 +56,9 @@ CONFIG_USB_ETHER_RTL8152=3Dy
-> > >  CONFIG_USB_ETHER_SMSC95XX=3Dy
-> > >  CONFIG_SPL_TINY_MEMSET=3Dy
-> > >  CONFIG_ERRNO_STR=3Dy
-> > > +CONFIG_DM_VIDEO=3Dy
-> > > +CONFIG_VIDEO_BPP16=3Dy
-> > > +CONFIG_VIDEO_BPP32=3Dy
-> > > +CONFIG_DISPLAY=3Dy
-> > > +CONFIG_VIDEO_ROCKCHIP=3Dy
-> > > +CONFIG_DISPLAY_ROCKCHIP_HDMI=3Dy
-> > > diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk339=
-9.h
-> > > index c0b0358893..09eb361655 100644
-> > > --- a/include/configs/evb_rk3399.h
-> > > +++ b/include/configs/evb_rk3399.h
-> > > @@ -6,6 +6,11 @@
-> > >  #ifndef __EVB_RK3399_H
-> > >  #define __EVB_RK3399_H
-> > >
-> > > +#define ROCKCHIP_DEVICE_SETTINGS \
-> > > +             "stdin=3Dserial,cros-ec-keyb\0" \
-> > > +             "stdout=3Dserial,vidconsole\0" \
-> > > +             "stderr=3Dserial,vidconsole\0"
-> > > +
-> > >  #include <configs/rk3399_common.h>
-> > >
-> > >  #if defined(CONFIG_ENV_IS_IN_MMC)
-> >
-> > This seems like another commit (along with the question I saw about
-> > i.MX FB not showing the right colors) 2cc393f32fd9 needs to be reworked
-> > so that we default to enabling everything still but let boards opt out
-> > rather than forcing everyone to opt-in as it seems like there's a lot of
-> > cases where people need to opt-in and didn't know.
->=20
-> yes, this evb board config is common across most of the rk3399
-> defconfig boards. this patch enable hdmi on few rk3399 boards all use
-> same config file, evb_rk3399.h
+> +        minimum: 2
 
-Yes, the ROCKCHIP_DEVICE_SETTINGS part makes sense, but the rest looks
-very much like part of we need to rework the commit I mentioned.  I
-don't object to this going in as-is.  Anatolij, how goes the rework of
-things however?  I do want to see that get in sooner rather than later
-so we can sort out other regressions from just a lack of CONFIG options
-being enabled.  Thanks!
+is there a max?
 
---=20
-Tom
-
---OaJtNTxAPudgaAxc
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE6HLbQJwaaH776GM2h/n2NdMddlIFAl44MmgACgkQh/n2NdMd
-dlKFpBAAw+P/LOk3G7OEc+n8jERjDEiuDojQgTz6ttbwPuWFfCkje6tNsk4pLK0N
-TQPS/dXd4NN+N0BK2RBCFxmdgToG/jQWMQg1YpjluJrIPcvsSjq3b9FsQffr/3Vb
-Pak55/JgIKWaufHVNmdV8/SetWdFCorsztik+Hz5AptJLobQ64Ay7J/CtZQ5vd8o
-o0ymUGirKnlBhB3LW6uLxrHc30OnbycozyRWUmOr0tC5d83szGVYEPOQgRAU7iQ6
-EfvsP3dDZpxrY+LbMs/eSy0QvHb2dUi+6zenGo5DotspGtNj7YpQjCVhoNBHuNJS
-Z3ad/MF8LW3xZw02hPs68g6UWwcCVq4mxjJQ1qnvmdAFjDEbZzP3xlVS83/96vCM
-Y1uBE1z//D6g7KWr58opuW2auYrLA+ZzXbRbn0fejBIY49heXGftEptBYD3vqMnr
-/HnOsu8SASdQGgZEty4VTkjO6Z1B60aFL6vcFOWzZeXAAKbqggKTfy2rTZghWXME
-SxvEaF6kK6oFqf6YECgZC2gI9ikK1myy3nCo1nTWCtyK2TFd15TV9gT1930uVelJ
-LJY1g+PyE9cDhU7DyS5ss1BbBKxYdhhsMtNDyKf6EHSFKnAXjXwdF4HaMAgrFhMx
-tZSh4I8DV66fF0o+L2f4YpnURi2FH6fLWEBH+WbOn6VwJ7KklnM=
-=0vZQ
------END PGP SIGNATURE-----
-
---OaJtNTxAPudgaAxc--
+> +        default: 16
+> +        allOf:
+> +        - $ref: /schemas/types.yaml#/definitions/uint32
+> +        description:
+> +          For legacy devices where the bootrom can only handle 24 bit BCH/ECC.
+> +          If specified it indicates the number of erase blocks in use by
+> +          the bootloader that need a lower BCH/ECC setting.
+> +          Only used in combination with 'nand-is-boot-medium'.
+> +
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rk3188-cru-common.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    nandc: nand-controller@10500000 {
+> +      compatible = "rockchip,rk3066-nand-controller";
+> +      reg = <0x10500000 0x4000>;
+> +      interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH>;
+> +      clocks = <&cru HCLK_NANDC0>;
+> +      clock-names = "hclk_nandc";
+> +      #address-cells = <1>;
+> +      #size-cells = <0>;
+> +
+> +      nand@0 {
+> +        reg = <0>;
+> +        nand-is-boot-medium;
+> +      };
+> +    };
+> +
+> +...
+> -- 
+> 2.11.0
+> 
