@@ -1,84 +1,49 @@
-From: Adam Van Ymeren <adam@vany.ca>
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix rk3328-roc-cc sdmmcio-regulator
-Date: Sat, 1 Feb 2020 17:10:15 -0500
-Message-ID: <510d310b-30af-7b24-d472-907bc6b2ef46@vany.ca>
-References: <87imkryz5t.fsf@vany.ca>
- <7b9829b3-e2d2-95b1-03cb-1af7a3c6acad@arm.com>
- <4a6a9d81-c831-4167-7fbf-64805940fb6f@vany.ca>
- <d8a8b696-268b-1ea8-7b5e-406a651011ff@arm.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH 1/2] rk3399: Add boot flash script offet, size
+Date: Mon,  3 Feb 2020 14:49:23 +0530
+Message-ID: <20200203091924.15385-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <d8a8b696-268b-1ea8-7b5e-406a651011ff@arm.com>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Cc: Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMjAtMDItMDEgMTI6NDYgcC5tLiwgUm9iaW4gTXVycGh5IHdyb3RlOgo+IE9uIDIwMjAt
-MDItMDEgMzo0MSBwbSwgQWRhbSBWYW4gWW1lcmVuIHdyb3RlOgo+Pgo+PiBPbiAyMDIwLTAyLTAx
-IDU6NTEgYS5tLiwgUm9iaW4gTXVycGh5IHdyb3RlOgo+Pj4gSGkgQWRhbSwKPj4+Cj4+PiBPbiAy
-MDIwLTAxLTMxIDExOjM4IHBtLCBBZGFtIFZhbiBZbWVyZW4gd3JvdGU6Cj4+Pj4gV2l0aCB0aGlz
-IGNoYW5nZSB0aGUga2VybmVsIHN1Y2Nlc3NmdWxseSBmaW5kcyB0aGUgU0QgQ2FyZCBhbmQgY2Fu
-Cj4+Pj4gbG9hZAo+Pj4+IGEgcm9vdGZzIGZyb20gaXQuwqAgVGVzdGVkIG9uIGhhcmR3YXJlLgo+
-Pj4+Cj4+Pj4gU2lnbmVkLW9mZi1ieTogQWRhbSBWYW4gWW1lcmVuIDxhZGFtQHZhbnkuY2E+Cj4+
-Pj4KPj4+PiBkaWZmIC11cHJOIC1YIGxpbnV4LTUuNS9Eb2N1bWVudGF0aW9uL2RvbnRkaWZmCj4+
-Pj4gbGludXgtNS41LW9yaWcvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzMjgtcm9j
-LWNjLmR0cwo+Pj4+IGxpbnV4LTUuNS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzMy
-OC1yb2MtY2MuZHRzCj4+Pj4gLS0tIGxpbnV4LTUuNS1vcmlnL2FyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszMzI4LXJvYy1jYy5kdHMKPj4+PiAyMDIwLTAxLTI2IDE5OjIzOjAzLjAwMDAw
-MDAwMCAtMDUwMAo+Pj4+ICsrKyBsaW51eC01LjUvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
-cC9yazMzMjgtcm9jLWNjLmR0cwo+Pj4+IDIwMjAtMDEtMzEgMTY6MjY6MzUuMzc3MDc1NDE5IC0w
-NTAwCj4+Pj4gQEAgLTQ0LDcgKzQ0LDcgQEAKPj4+PiDCoMKgIMKgwqDCoMKgwqAgdmNjX3NkaW86
-IHNkbW1jaW8tcmVndWxhdG9yIHsKPj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoCBjb21wYXRpYmxl
-ID0gInJlZ3VsYXRvci1ncGlvIjsKPj4+PiAtwqDCoMKgwqDCoMKgwqAgZ3Bpb3MgPSA8JmdyZl9n
-cGlvIDAgR1BJT19BQ1RJVkVfSElHSD47Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgIGdwaW9zID0gPCZn
-cGlvMCBSS19QRDEgR1BJT19BQ1RJVkVfSElHSD47Cj4+Pgo+Pj4gR2l2ZW4gdGhhdCB0aGUgUksz
-MzI4IGRhdGFzaGVldCBoYXMgbm8gbWVudGlvbiBvZiBHUElPMF9EMSBleGlzdGluZyBhdAo+Pj4g
-YWxsLCBob3cgc3VyZSBhcmUgeW91IHRoYXQgdGhpcyBpcyBjb3JyZWN0IC0gaGF2ZSB5b3UgdGVz
-dGVkIGNhcmRzIGluCj4+PiBib3RoIDMuM1YgYW5kIDEuOFYgKFVIUy0xKSBzaWduYWxsaW5nIG1v
-ZGVzPwo+Pj4KPj4+IFRoZSBST0MtUkszMzI4LUNDIHNjaGVtYXRpY3Mgc2hvdyBHUElPX01VVEUg
-YmVpbmcgdXNlZCB0byBiaWFzIHRoZQo+Pj4gZmVlZGJhY2sgcGluIG9mIGFuIGFkanVzdGFibGUg
-cmVndWxhdG9yIHN1cHBseWluZyB0aGUgU0RNTUMwIEkvTwo+Pj4gZG9tYWluLCBzbyBpdCBzZWVt
-cyBtb3JlIGxpa2VseSB0aGF0IHRoZSBwaW4gaXMgY29ycmVjdCBidXQgdGhlIHN0YXRlcwo+Pj4g
-KG9yIHRoZSBwb2xhcml0eSkgYXJlIGJhY2t3YXJkcy4KPj4KPj4KPj4gSG1tIHllYWggYWZ0ZXIg
-cmVhZGluZyB0aGUgc2NoZW1hdGljcyB0aGlzIGRvZXNuJ3QgbWFrZSBzZW5zZS7CoCBJIHRvb2sK
-Pj4gaXQgZnJvbSB0aGUgdmVuZG9ycyBzb3VyY2UgdHJlZVsxXSwgYW5kIGl0IGRlZmluaXRlbHkg
-YWxsb3dlZCBteSBzeXN0ZW0KPj4gdG8gYm9vdCB3aGVuIGl0IHdvdWxkbid0IGJlZm9yZSwgYnV0
-IEkgb25seSB0cmllZCBhIDMuM1YgY2FyZC7CoCBJJ2xsIHRyeQo+PiBqdXN0IGNoYW5naW5nIHRo
-ZSBwb2xhcml0eS7CoCBJJ2xsIGFsc28gZmluZCBhIFVIUy0xIGNhcmQgYW5kIHRlc3QgdGhhdCwK
-Pj4gYW55IGFkdmljZSBvbiBob3cgdG8gdmVyaWZ5IHRoYXQgaXQncyBydW5uaW5nIGluIHRoZSAx
-LjhWIG1vZGU/Cj4KPiBNeSBwcmVmZXJyZWQgbWV0aG9kIGlzIHRvIHN0aWNrIGEgbWV0ZXIgb24g
-ZWl0aGVyIHRoZSB1U0Qgc29ja2V0IHBpbnMKPiBvciB0aGUgcmVndWxhdG9yIGl0c2VsZiBhbmQg
-d2lnZ2xlIHRoZSBHUElPIGZyb20gdXNlcnNwYWNlLCBidXQKPiBwcmVmZXJhYmx5IG9ubHkgaWYg
-dGhlIGJvYXJkIGNhbiBydW4gd2l0aG91dCBhIGNhcmQgaW5zZXJ0ZWQuCj4KPiBUaGF0IHNhaWQs
-IEkganVzdCBzdWRkZW5seSByZW1lbWJlcmVkIGFib3V0IHJlZ3VsYXRvciBHUElPcyBiZWluZwo+
-IHF1aXJreSBmb3IgbGVnYWN5IEFCSSByZWFzb25zIC0gSSdtIG5vdyA5OSUgc3VyZSB0aGF0IHlv
-dSBzaG91bGQKPiBzaW1wbHkgbmVlZCB0byBhZGQgdGhlICJlbmFibGUtYWN0aXZlLWhpZ2giIHBy
-b3BlcnR5IHRvIG1ha2UgaXQKPiBhY3R1YWxseSB3b3JrIGFzIGV4cGVjdGVkLgo+CgpXaGVscCBJ
-IGRpZCBhIHdob2xlIGJ1bmNoIG9mIHRyYWNpbmcgYW5kIGRlYnVnZ2luZyBvbmx5IHRvIHJlYWxp
-emUgdGhhdApJIGRpZG4ndCBoYXZlIENPTkZJR19HUElPX1NZU0NPTiBlbmFibGVkLCBzbyBiaWcg
-c3VwcmlzZSB0aGUgZ3Bpby1zeXNjb24KZHJpdmVyIG5lZWRlZCBmb3IgZ3JmLWdwaW8gbmV2ZXIg
-Y2FtZSBvbmxpbmUuwqAgQWZ0ZXIgdHVybmluZyB0aGF0IG9uIEkgZ2V0CgpbwqDCoMKgIDEuMjc3
-MTE1XSBtbWNfaG9zdCBtbWMxOiBCdXMgc3BlZWQgKHNsb3QgMCkgPSA0MDAwMDBIeiAoc2xvdCBy
-ZXEKNDAwMDAwSHosIGFjdHVhbCA0MDAwMDBIWiBkaXYgPSAwKQoKaW4gbXkgZG1lc2csIHdoaWNo
-IGlzIG1vcmUgdGhhbiBJIHVzZWQgdG8gZ2V0LsKgIEhvd2V2ZXIgaXQgZmFpbHMgdG8KZGV0ZWN0
-IHRoZSBTRENhcmQuwqAgSSB0cmllZCB3aXRoIGFuZCB3aXRob3V0IGVuYWJsZS1hY3RpdmUtaGln
-aDsgb24gdGhlCnNkbW1jaW8tcmVndWxhdG9yIGVudHJ5LCBuZWl0aGVyIHNlZW1lZCB0byBtYWtl
-IGEgZGlmZmVyZW5jZS7CoCBJJ2xsIGRvCnNvbWUgbW9yZSBkZWJ1Z2dpbmcgaW4gYSBiaXQsIGl0
-cyBhbHdheXMgcG9zc2libGUgSSBkaWQgc29tZXRoaW5nIHN0dXBpZApsaWtlIHVzZSB0aGUgd3Jv
-bmcgLmR0YiBmaWxlIChvciBidWlsZCB3aXRob3V0IENPTkZJR19HUElPX1NZU0NPTikuCgoKVGhh
-bmtzIGFnYWluIQoKLUFkYW0KCnwKCnwKCnx8Cgp8Cgp8Cgp8Cgp8fHwKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxp
-bmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+Most of the SPI flash devices in rockchip (rk3399)
+are 16MiB size. So, let's use the script offset at
+the end of 8K. 
+
+This way it cannot overlap any offsets being used
+by software components in flash layout.
+
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+---
+ include/configs/rk3399_common.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
+index 89a8a44bbe..01a9174bd2 100644
+--- a/include/configs/rk3399_common.h
++++ b/include/configs/rk3399_common.h
+@@ -48,6 +48,8 @@
+ 
+ #define ENV_MEM_LAYOUT_SETTINGS \
+ 	"scriptaddr=0x00500000\0" \
++	"script_offset_f=0xffe000\0" \
++	"script_size_f=0x2000\0" \
+ 	"pxefile_addr_r=0x00600000\0" \
+ 	"fdt_addr_r=0x01f00000\0" \
+ 	"kernel_addr_r=0x02080000\0" \
+-- 
+2.17.1
