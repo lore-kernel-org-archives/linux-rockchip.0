@@ -1,51 +1,49 @@
-From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: dwc2: gadget mode and timeout with GRSTCTL_CSFTRST
-Date: Thu, 6 Feb 2020 10:49:26 +0000
-Message-ID: <aeb7c81c-7ddf-823d-8c8f-91abe281bae6@synopsys.com>
-References: <3600884.FGW0xRIbGs@phil>
+From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 2/3] ASoC: rockchip: Make RK3328 GPIO_MUTE control
+ explicit
+Date: Thu, 6 Feb 2020 11:46:06 +0000
+Message-ID: <20200206114606.GM3897@sirena.org.uk>
+References: <cover.1580950046.git.robin.murphy@arm.com>
+ <29a846da33c02df64eca62b5fa0f3884652f788f.1580950046.git.robin.murphy@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <3600884.FGW0xRIbGs@phil>
-Content-Language: en-US
-Content-ID: <ADDE3620032E424887235C9B434B22C7-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: "christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org" <christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Thinh Nguyen <Thinh.Nguyen-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, John Keeping <john-HooS5bfzL4hWk0Htik3J/w@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha512;
+        protocol="application/pgp-signature"; boundary="+F2yqQIdYdj7GirX"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <29a846da33c02df64eca62b5fa0f3884652f788f.1580950046.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sDQoNCg0KT24gMi81LzIwMjAgNjozNyBQTSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6
-DQo+IEhpLA0KPiANCj4gcmlnaHQgbm93IHdlJ3JlIGV4cGVyaWVuY2luZyBzdHJhbmdlIGJlaGF2
-aW91ciB3aXRoIGEgZHdjMiBvbiBSb2NrY2hpcCdzDQo+IFBYMzAgc29jLg0KPiANCj4gV2l0aCBh
-IGNhYmxlIGNvbm5lY3RlZCB0byB0aGUgcG9ydCwgdGhlIGNvbmZpZ2ZzLXNuaXBwZXQgYmVsb3cg
-c2VlbXMgdG8NCj4gd29yayBhbmQgYXQgbGVhc3QgY3JlYXRlcyBhIGFjbSBkZXZpY2Ugb24gdGhl
-IGhvc3QuIFRob3VnaCBJJ20gdG9sZCB0aGF0IGENCj4gCSBwaWNvY29tIC1iIDExNTIwMCAvZGV2
-L3R0eUFDTQ0KPiBzb21ldGltZXMgd29ya3Mgb2sgYnV0IGFsc28gc29tZXRpbWVzIHJldHVybnMg
-LUVCVVNZIG9yIGhhbmdzLg0KPiBbQnV0IEkgZ3Vlc3MgdGhhdCBpcyBhIHNlcGFyYXRlIHByb2Js
-ZW1dDQo+IA0KPiBCdXQgaWYgdGhlcmUgaXMgbm8gY2FibGUgY29ubmVjdGVkIHdoZW4gdHJ5aW5n
-IHRvIGRvIHRoZSBjb25maWdmcyBzdGVwcw0KPiB3ZSBlbmQgdXAgd2l0aA0KPiAJZHdjMl9jb3Jl
-X3Jlc2V0OiBIQU5HISBTb2Z0IFJlc2V0IHRpbWVvdXQgR1JTVENUTCBHUlNUQ1RMX0NTRlRSU1QN
-Cj4gYW5kIG5vIGdhZGdldCBnZXRzIGNvbmZpZ3VyZWQuDQo+IA0KV2hpY2ggdGltZW91dCB2YWx1
-ZSBzZXQgdG8gd2FpdCBHUlNUQ1RMIGNsZWFyZWQ/IERvZXMgdGhpcyBjb21taXQgDQphcHBsaWVk
-OiA2Njg5ZjBmNGJiMTRlICJ1c2I6IGR3YzI6IHVzZSBhIGxvbmdlciBjb3JlIHJlc3QgdGltZW91
-dCBpbiANCmR3YzJfY29yZV9yZXNldCgpIj8NCklmIHllcywgY2FuIHlvdSBzZW5kIGRlYnVnIGxv
-ZyBmb3IgYWJvdmUgY2FzZS4NCg0KVGhhbmtzLA0KTWluYXMNCg0KPiANCj4gU28gSSBndWVzcyB0
-byBnZXQgYSBmZWVsaW5nIGZvciB0aGUgaXNzdWUsIGlzIHRoaXMgc29tZXRoaW5nIHRvIGJlDQo+
-IGV4cGVjdGVkLCBvciBhdCBsZWFzdCBhIGtub3duIGlzc3VlLCB3aXRoIG1heWJlIGEgZml4IGZs
-eWluZyBhcm91bmQNCj4gc29tZXdoZXJlPw0KPiANCj4gT3IgaXMgdGhpcyB3b3JraW5nIG9uIG90
-aGVyIGR3YzIgcGxhdGZvcm1zIGNvcnJlY3RseSBhbmQgaXMgY2F1c2VkDQo+IGJ5IHNvbWUgb3Ro
-ZXIgcGFydCB0YWxraW5nIHRvIHRoZSBkd2MyIGRvaW5nIHN0cmFuZ2UgdGhpbmdzPw0KPiANCj4g
-DQo+IFRoYW5rcw0KPiBIZWlrbw0KPiANCj4gLS0tLS0tLS0gODwgLS0tLSBjb25maWdmcyBzbmlw
-cGV0IC0tLS0tLSA+OCAtLS0tLS0tLQ0KPiBjZCAvY29uZmlnZnMvdXNiX2dhZGdldA0KPiBta2Rp
-ciBnMQ0KPiBjZCBnMQ0KPiBlY2hvICIweDFkNmQiID4gaWRWZW5kb3INCj4gZWNobyAiMHgwMTA0
-IiA+IGlkUHJvZHVjdA0KPiBta2RpciBzdHJpbmdzLzB4NDA5DQo+IGVjaG8gIjAxMjM0NTY3ODki
-ID4gc3RyaW5ncy8weDQwOS9zZXJpYWxudW1iZXINCj4gZWNobyAiVGhlb2Jyb21hIFN5c3RlbXMi
-ID4gc3RyaW5ncy8weDQwOS9tYW51ZmFjdHVyZXINCj4gZWNobyAiQ29icmEgRGVidWcgU2VyaWFs
-IiA+IHN0cmluZ3MvMHg0MDkvcHJvZHVjdA0KPiANCj4gIyBjcmVhdGUgY29uZmlnDQo+IG1rZGly
-IGNvbmZpZ3MvYy4xDQo+IG1rZGlyIGNvbmZpZ3MvYy4xL3N0cmluZ3MvMHg0MDkNCj4gZWNobyAi
-Y29uZjEiID4gY29uZmlncy9jLjEvc3RyaW5ncy8weDQwOS9jb25maWd1cmF0aW9uDQo+IA0KPiAj
-IGNyZWF0ZSBmdW5jdGlvbg0KPiBta2RpciBmdW5jdGlvbnMvYWNtLnVzYjANCj4gbG4gLXMgZnVu
-Y3Rpb25zL2FjbS51c2IwIGNvbmZpZ3MvYy4xDQo+IA0KPiAjIGFjdGl2YXRlIG5ldyBjb25maWcN
-Cj4gZWNobyAiIiA+IFVEQw0KPiBlY2hvICJmZjMwMDAwMC51c2IiID4gVURDDQo+IA0KPiANCj4g
-DQo=
+
+--+F2yqQIdYdj7GirX
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, Feb 06, 2020 at 01:07:12AM +0000, Robin Murphy wrote:
+> The RK3328 reference design uses an external line driver IC as a buffer
+> on the analog codec output, enabled by the GPIO_MUTE pin, and such a
+> configuration is currently assumed in the codec driver's direct poking
+> of GRF_SOC_CON10 to control the GPIO_MUTE output value. However, some
+
+This makes sense but it is an ABI break so is going to need
+quirking for existing boards that unfortunately rely on the
+existing behaviour.
+
+--+F2yqQIdYdj7GirX
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl47/H4ACgkQJNaLcl1U
+h9DSgAf/fI2jTkBLGwfZiU8QU+VXIx/+BPEpU9gRjE/WwtBF2zlRRy3WLOiYqQ5Y
+Y+Jgt8z1POzBClW3R1EYdRfuno7LdCv0Uw6x3N5lGI48qRilCVvtfDq7wUkMqsCT
+o6WrsChoeB3VFYsyKSD/ZKjA2Zxie2VYH4actQ/kdat4TeYXyIVQ/IcEZsMZXPmL
+RydsLYzjOLFElnxNVA8FlHbumD9t1u0qRvCW9G0ASdoNa1IHA0AeYUoVBFo2/yGo
+5AQ5AZNMfjrTfpvzRbg7zyQdztURC/VUqnqk+dSFOzZ8SC91lj7mw9IC1+9dRF5R
+1GxdYx+sA24Phw4T+p07RZO9aUY6xw==
+=pHJO
+-----END PGP SIGNATURE-----
+
+--+F2yqQIdYdj7GirX--
