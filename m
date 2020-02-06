@@ -1,58 +1,83 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 2/3] ASoC: rockchip: Make RK3328 GPIO_MUTE control
- explicit
-Date: Thu, 6 Feb 2020 13:57:18 +0000
-Message-ID: <20200206135718.GQ3897@sirena.org.uk>
-References: <cover.1580950046.git.robin.murphy@arm.com>
- <29a846da33c02df64eca62b5fa0f3884652f788f.1580950046.git.robin.murphy@arm.com>
- <20200206114606.GM3897@sirena.org.uk>
- <ad2c941a-9724-510e-959f-3cca3cab1dc2@arm.com>
+From: Alexis Ballier <aballier@gentoo.org>
+Subject: [PATCH 1/2] arm64: dts: rockchip: rk3399-orangepi: Add ethernet phy.
+Date: Thu,  6 Feb 2020 16:10:24 +0100
+Message-ID: <20200206151025.3813-1-aballier@gentoo.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="k1RcuuA4CmYq3pph"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <ad2c941a-9724-510e-959f-3cca3cab1dc2-5wv7dgnIgG8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+Cc: Alexis Ballier <aballier@gentoo.org>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Enables INTB.
+The wiring is the same as the nanopi4, so this is heavily based on:
+- [1a4e6203f0c] arm64: dts: rockchip: Add nanopi4 ethernet phy
+- [bc43cee88aa] arm64: dts: rockchip: Update nanopi4 phy reset properties
+by Robin Murphy.
 
---k1RcuuA4CmYq3pph
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Signed-off-by: Alexis Ballier <aballier@gentoo.org>
+Cc: devicetree@vger.kernel.org
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Robin Murphy <robin.murphy@arm.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org
+---
+ .../boot/dts/rockchip/rk3399-orangepi.dts     | 31 ++++++++++++++++---
+ 1 file changed, 27 insertions(+), 4 deletions(-)
 
-On Thu, Feb 06, 2020 at 12:36:04PM +0000, Robin Murphy wrote:
-> On 2020-02-06 11:46 am, Mark Brown wrote:
-
-> > This makes sense but it is an ABI break so is going to need
-> > quirking for existing boards that unfortunately rely on the
-> > existing behaviour.
-
-> I guess the existing (mis)behaviour could be predicated on an
-> of_machine_is_compatible() check for Rock64 boards - it's ugly, but should
-> do the job if you feel it's more important to be 100% strict about not
-> regressing supported systems for any possible kernel/DTB combination.
-
-Yes, that's what I'm suggesting - we don't need to be exhaustive
-but having an obvious place for people to put the quirk in if
-they are affected is much better practice than just silently
-letting things break.
-
---k1RcuuA4CmYq3pph
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl48Gz0ACgkQJNaLcl1U
-h9Dqlwf/e9pbZnoHIpXKjbaTLD0JTMQR2bflNKfkFgJa4HN0EBmRU/2zzjhQsMBj
-FwXbRw0mbFlfh8DvJcHwjp9Nt+DzRk084QZm1xjXyIdok04lxQCq0/XwBENKJGUp
-icw2FFpQGCVQJRixdXMaY0M0woDlf8GF/gk+KkNrJWvtD3JYD3pbaNqDO3Sfg4C/
-ECfMVskfkS0XSKhcMWqbmFBf8ImMABUOu8qV6oWbEmxRlmjMxv28pNjXi+L96X83
-qZ9St2FvccCApJ7twkomusHVtpw62Cpwy0OOwxOFIjEWTHXzhyAH/vFtPmMJwZJJ
-vHRSZAgaioZ451LfVRCV/L6YnOeigg==
-=S0B3
------END PGP SIGNATURE-----
-
---k1RcuuA4CmYq3pph--
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
+index 9c659f3115c8..1767015e684c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
+@@ -202,14 +202,27 @@ &gmac {
+ 	clock_in_out = "input";
+ 	phy-supply = <&vcc3v3_s3>;
+ 	phy-mode = "rgmii";
++	phy-handle = <&rtl8211e>;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&rgmii_pins>;
+-	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
+-	snps,reset-active-low;
+-	snps,reset-delays-us = <0 10000 50000>;
++	pinctrl-0 = <&rgmii_pins>, <&phy_intb>, <&phy_rstb>;
+ 	tx_delay = <0x28>;
+ 	rx_delay = <0x11>;
+ 	status = "okay";
++
++	mdio {
++		compatible = "snps,dwmac-mdio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		rtl8211e: phy@1 {
++			reg = <1>;
++			interrupt-parent = <&gpio3>;
++			interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
++			reset-assert-us = <10000>;
++			reset-deassert-us = <30000>;
++			reset-gpios = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
++		};
++	};
+ };
+ 
+ &gpu {
+@@ -537,6 +550,16 @@ pwr_btn: pwr-btn {
+ 		};
+ 	};
+ 
++	phy {
++		phy_intb: phy-intb {
++			rockchip,pins = <3 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		phy_rstb: phy-rstb {
++			rockchip,pins = <3 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	pmic {
+ 		pmic_int_l: pmic-int-l {
+ 			rockchip,pins =
+-- 
+2.25.0
