@@ -1,47 +1,69 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: [PATCH 3/3] arm64: dts: rockchip: Describe RK3328 GPIO_MUTE users
-Date: Thu,  6 Feb 2020 01:07:13 +0000
-Message-ID: <462e0f9fba41a990f7dd118d32935d8c9e5fd9d5.1580950046.git.robin.murphy@arm.com>
-References: <cover.1580950046.git.robin.murphy@arm.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cover.1580950046.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+From: Thomas McKahan <tmckahan@singleboardsolutions.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix rk3328-roc-cc sdmmcio-regulator
+Date: Wed, 5 Feb 2020 22:05:50 -0500
+Message-ID: <477af575-d43f-fab8-36a4-0a75a4272667@singleboardsolutions.com>
+References: <87imkryz5t.fsf@vany.ca>
+ <7b9829b3-e2d2-95b1-03cb-1af7a3c6acad@arm.com>
+ <4a6a9d81-c831-4167-7fbf-64805940fb6f@vany.ca>
+ <d8a8b696-268b-1ea8-7b5e-406a651011ff@arm.com>
+ <510d310b-30af-7b24-d472-907bc6b2ef46@vany.ca>
+ <CAMdYzYo5V2rHE6Axx9p67n3FcCFpQ5TA+m7kqaE3Uqn6d0QUhw@mail.gmail.com>
+ <7b36198e-25c0-4f3b-d871-6bd5aaf619d8@vany.ca>
+ <CAMdYzYp_dVjn18-6gy5MVpuGcOpf26eaPitfNZhARCixfrtYCA@mail.gmail.com>
+ <2f863743-f5fd-7702-ac22-762dbca834cb@vany.ca>
+ <CAMdYzYopKjRpVnyq2k84XZK0kmR_ZBH8KNjVyPz3upQjx0rLJQ@mail.gmail.com>
+ <382b4bd5-279d-b227-5d0c-774d9c164168@arm.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <382b4bd5-279d-b227-5d0c-774d9c164168@arm.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Robin Murphy <robin.murphy@arm.com>, Peter Geis <pgwipeout@gmail.com>, Adam Van Ymeren <adam@vany.ca>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add explicit properties to describe existing boards' GPIO_MUTE usage
-for the analog codec.
 
-Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3328-a1.dts     | 1 +
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 1 +
- 2 files changed, 2 insertions(+)
+On 2/5/2020 2:02 PM, Robin Murphy wrote:
+> On 05/02/2020 6:43 pm, Peter Geis wrote:
+> [...]
+>>> One thing I did notice, though, is that GPIO_MUTE seems to have some
+>>> inherent coupling to the analog codec, as the value automatically goes
+>>> high when starting to play audio, and low again when stopping (but can
+>>> still be manually toggled in between). Thus unless there's some secret
+>>> to disabling that behaviour then it might not be safe to enable analog
+>>> audio on these ROC-CC boards for fear of messing up peoples' SD cards.
+>>
+>> Robin,
+>> Do you know if that is the SOC doing that or the drivers?
+>
+> Ha, once again I hastily jump to a conclusion without fully 
+> investigating... I'm really not doing too well in this thread :)
+>
+> You're absolutely right; on closer inspection rk3328_analog_output() 
+> in the codec driver is poking GRF_SOC_CON10 directly. That should be 
+> straightforward enough to sort out, phew!
+>
+> Cheers,
+> Robin.
+>
+I've had random reports of SD problems from people using our mainline 
+images with Armbian on RK3328, I recently enabled the audio codec since 
+it looked like all the pieces were in place. I'll take a look at the 
+GPIO_MUTE patchset I saw just landed.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-index 5822cd0ee7db..6cd4543720fd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-@@ -60,6 +60,7 @@
- };
- 
- &codec {
-+	mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 62936b432f9a..bf3e546f5266 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -104,6 +104,7 @@
- };
- 
- &codec {
-+	mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
- 	status = "okay";
- 
- 	port@0 {
--- 
-2.17.1
+-Tony
+
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
