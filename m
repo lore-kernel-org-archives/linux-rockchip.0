@@ -1,38 +1,30 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 2/3] ASoC: rockchip: Make RK3328 GPIO_MUTE control explicit
-Date: Thu, 6 Feb 2020 13:05:27 -0500
-Message-ID: <CAMdYzYqTEnG_Q-8SvO2R6PeaPXQ3VBKu6iVYhYvb=wK7tT7c3A@mail.gmail.com>
-References: <cover.1580950046.git.robin.murphy@arm.com> <29a846da33c02df64eca62b5fa0f3884652f788f.1580950046.git.robin.murphy@arm.com>
- <20200206114606.GM3897@sirena.org.uk> <ad2c941a-9724-510e-959f-3cca3cab1dc2@arm.com>
- <20200206135718.GQ3897@sirena.org.uk>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v4 1/3] [media] dt-bindings: Add binding for rk3228 rga
+Date: Thu, 6 Feb 2020 19:06:34 +0000
+Message-ID: <20200206190634.GA10940@bogus>
+References: <cover.1580768038.git.justin.swartz@risingedge.co.za>
+ <4e66b3f029c56d7c7709d39ed15894b86f51fd37.1580768038.git.justin.swartz@risingedge.co.za>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200206135718.GQ3897-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-media-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <4e66b3f029c56d7c7709d39ed15894b86f51fd37.1580768038.git.justin.swartz@risingedge.co.za>
+Sender: linux-media-owner@vger.kernel.org
+Cc: Jacob Chen <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Justin Swartz <justin.swartz@risingedge.co.za>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Feb 6, 2020 at 8:57 AM Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
->
-> On Thu, Feb 06, 2020 at 12:36:04PM +0000, Robin Murphy wrote:
-> > On 2020-02-06 11:46 am, Mark Brown wrote:
->
-> > > This makes sense but it is an ABI break so is going to need
-> > > quirking for existing boards that unfortunately rely on the
-> > > existing behaviour.
->
-> > I guess the existing (mis)behaviour could be predicated on an
-> > of_machine_is_compatible() check for Rock64 boards - it's ugly, but should
-> > do the job if you feel it's more important to be 100% strict about not
-> > regressing supported systems for any possible kernel/DTB combination.
->
-> Yes, that's what I'm suggesting - we don't need to be exhaustive
-> but having an obvious place for people to put the quirk in if
-> they are affected is much better practice than just silently
-> letting things break.
+On Mon,  3 Feb 2020 22:40:15 +0000, Justin Swartz wrote:
+> Indicate that the rk3228 rga is compatible with that of the rk3288.
+> 
+> But if any rk3228-specific quirks are identified in future that
+> require handling logic that differs from what is provided for the
+> rk3288, then allow for the compatibility string "rockchip,rk3228-rga"
+> to be matched instead of "rockchip,rk3288-rga".
+> 
+> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+> ---
+>  Documentation/devicetree/bindings/media/rockchip-rga.txt | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
+> 
 
-Might want to put a warning in there too, so that if someone is paying
-attention they will see that they are using an out of date device
-tree.
+Acked-by: Rob Herring <robh@kernel.org>
