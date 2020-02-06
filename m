@@ -1,66 +1,38 @@
-From: Alexis Ballier <aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH 2/2] arm64: dts: rockchip: rk3399-orangepi: Explicitly pinmix the regulator configuration GPIOs
-Date: Thu,  6 Feb 2020 16:10:25 +0100
-Message-ID: <20200206151025.3813-2-aballier@gentoo.org>
-References: <20200206151025.3813-1-aballier@gentoo.org>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/3] ASoC: rockchip: Make RK3328 GPIO_MUTE control explicit
+Date: Thu, 6 Feb 2020 13:05:27 -0500
+Message-ID: <CAMdYzYqTEnG_Q-8SvO2R6PeaPXQ3VBKu6iVYhYvb=wK7tT7c3A@mail.gmail.com>
+References: <cover.1580950046.git.robin.murphy@arm.com> <29a846da33c02df64eca62b5fa0f3884652f788f.1580950046.git.robin.murphy@arm.com>
+ <20200206114606.GM3897@sirena.org.uk> <ad2c941a-9724-510e-959f-3cca3cab1dc2@arm.com>
+ <20200206135718.GQ3897@sirena.org.uk>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200206151025.3813-1-aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org>
+In-Reply-To: <20200206135718.GQ3897-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Alexis Ballier <aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Those GPIOs define which register is used by the GPU & CPUB regulators
-for sleep mode. The register is defined here, so better have the GPIOs
-explicitly set too.
+On Thu, Feb 6, 2020 at 8:57 AM Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+>
+> On Thu, Feb 06, 2020 at 12:36:04PM +0000, Robin Murphy wrote:
+> > On 2020-02-06 11:46 am, Mark Brown wrote:
+>
+> > > This makes sense but it is an ABI break so is going to need
+> > > quirking for existing boards that unfortunately rely on the
+> > > existing behaviour.
+>
+> > I guess the existing (mis)behaviour could be predicated on an
+> > of_machine_is_compatible() check for Rock64 boards - it's ugly, but should
+> > do the job if you feel it's more important to be 100% strict about not
+> > regressing supported systems for any possible kernel/DTB combination.
+>
+> Yes, that's what I'm suggesting - we don't need to be exhaustive
+> but having an obvious place for people to put the quirk in if
+> they are affected is much better practice than just silently
+> letting things break.
 
-Signed-off-by: Alexis Ballier <aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
----
- arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-index 1767015e684c..f9f7246d4d2f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts
-@@ -432,6 +432,8 @@ vdd_cpu_b: regulator@40 {
- 		compatible = "silergy,syr827";
- 		reg = <0x40>;
- 		fcs,suspend-voltage-selector = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cpu_b_sleep>;
- 		regulator-name = "vdd_cpu_b";
- 		regulator-min-microvolt = <712500>;
- 		regulator-max-microvolt = <1500000>;
-@@ -449,6 +451,8 @@ vdd_gpu: regulator@41 {
- 		compatible = "silergy,syr828";
- 		reg = <0x41>;
- 		fcs,suspend-voltage-selector = <1>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&gpu_sleep>;
- 		regulator-name = "vdd_gpu";
- 		regulator-min-microvolt = <712500>;
- 		regulator-max-microvolt = <1500000>;
-@@ -561,6 +565,14 @@ phy_rstb: phy-rstb {
- 	};
- 
- 	pmic {
-+		cpu_b_sleep: cpu-b-sleep {
-+			rockchip,pins = <1 RK_PC1 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
-+		gpu_sleep: gpu-sleep {
-+			rockchip,pins = <1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_down>;
-+		};
-+
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins =
- 				<1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
--- 
-2.25.0
+Might want to put a warning in there too, so that if someone is paying
+attention they will see that they are using an out of date device
+tree.
