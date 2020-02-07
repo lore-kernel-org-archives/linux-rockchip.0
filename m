@@ -1,68 +1,70 @@
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: [PATCH] arm64: dts: rk3399: Remove extcon unit address and extcon-cells from Gru
-Date: Fri,  7 Feb 2020 15:13:24 +0100
-Message-ID: <20200207141324.3188898-1-enric.balletbo@collabora.com>
+From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
+Subject: Re: siimple-framebuffer rockchip persistent logo
+Date: Fri, 7 Feb 2020 20:14:04 +0100
+Message-ID: <CAOf5uwnRLn7tXFRxjPGASuCnmOwooA4Ytk28Zc+A0kp=UZDQWw@mail.gmail.com>
+References: <CAOf5uwmPMRq4v9=5-Z=XLH7hATC-AhXQWthfy_uvYTXSo6V+CA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAOf5uwmPMRq4v9=5-Z=XLH7hATC-AhXQWthfy_uvYTXSo6V+CA@mail.gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org
-Cc: Collabora Kernel ML <kernel@collabora.com>, dafna.hirschfeld@collabora.com, heiko@sntech.de, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Marcel Holtmann <marcel@holtmann.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
+To: Kever Yang <kever.yang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Cc: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, LKML <linux-kernel@vger.kernel.org>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The cros-ec-extcon has no reg property so remove the unit address from
-the DT node to make DT compiler happy.
+Hi all
 
-While here, remove the inexistent extcon-cells property from the extcon
-nodes.
+I move a bit on this
 
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
----
-Thanks to the Dafna's work and Rob's review I got noticed that the old
-txt binding was wrong, and also, that the current cros-ec-extcon node in
-Gru is wrong, so sending this patch now that is fresh in our minds and
-update the node accordingly. There is an extcon-cells property that seems
-to not exist and is not documented, so remove it.
+On Sun, Jan 12, 2020 at 6:16 PM Michael Nazzareno Trimarchi
+<michael@amarulasolutions.com> wrote:
+>
+> Hi Kever
+>
+> Trying to have a persistent banner from uboot to linux-kernel. I'm
+> right now working on linux-rockchip kernel but I think that the
+> problem is even on mainline
+>
+> +               framebuffer: framebuffer@7f800000 {
+> +                       compatible = "rockchip,simple-framebuffer",
+> +                                    "simple-framebuffer";
+> +                       reg = <0x7f800000 (1920 * 1080 * 4)>;
+> +                       width = <1920>;
+> +                       height = <1080>;
+> +                       stride = <(1920 * 4)>;
+> +                       format = "a8b8g8r8";
+> +                       clocks = <&cru  PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>,
+> +                                <&cru SRST_LCDC0_AXI>, <&cru
+> SRST_LCDC0_AHB>, <&cru SRST_LCDC0_DCLK>,
+> +                                <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
+> +                       status = "okay";
+> +               };
+>
 
-For reference, see https://lkml.org/lkml/2020/2/5/176.
+Now I can allocate the parameter using the bootloader and create the
+right mapping for the simple framebuffer. I don't even understand
+how sunxi and meson can work if they don't create a reserved memory
+using no-map. This is fixed on my side so the log is totally clean.
+I have added the deregister of simple fb and handover to the drm
 
- arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 4 +---
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi            | 4 +---
- 2 files changed, 2 insertions(+), 6 deletions(-)
+Now my boot parameters are:
+Kernel command line: console=ttyS2,115200n8 root=/dev/mmcblk0p1
+rootwait pd_ignore_unused clk_ignore_unused
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-index 7cd6d470c1cb..1384dabbdf40 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
-@@ -291,11 +291,9 @@ cros_ec_pwm: ec-pwm {
- 		#pwm-cells = <1>;
- 	};
- 
--	usbc_extcon1: extcon@1 {
-+	usbc_extcon1: extcon1 {
- 		compatible = "google,extcon-usbc-cros-ec";
- 		google,usb-port-id = <1>;
--
--		#extcon-cells = <0>;
- 	};
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-index dd5624975c9b..2f3997740068 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
-@@ -570,11 +570,9 @@ i2c_tunnel: i2c-tunnel {
- 			#size-cells = <0>;
- 		};
- 
--		usbc_extcon0: extcon@0 {
-+		usbc_extcon0: extcon0 {
- 			compatible = "google,extcon-usbc-cros-ec";
- 			google,usb-port-id = <0>;
--
--			#extcon-cells = <0>;
- 		};
- 	};
- };
--- 
-2.24.1
+Still I have display go off on tinker during boot. Any suggestion?
+
+Michael
+
+
+> Seems that it get off before I reach the drm registration
+>
+> [    2.077495] simple-framebuffer 7f800000.framebuffer: framebuffer at
+> 0x7f800000, 0x7e9000 bytes, mapped to 0xf0900000
+> [    2.077519] simple-framebuffer 7f800000.framebuffer:
+> format=a8b8g8r8, mode=1920x1080x32, linelength=7680
+> [    2.161225] simple-framebuffer 7f800000.framebuffer: fb0: simplefb
+> registered!
+> [    3.433847] fb: switching to rockchip-drm-fb from simple
+>
+> I don't find all the clocks and if those are the only think that I
+> need to stay on. Any suggestion?
