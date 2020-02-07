@@ -1,7 +1,7 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH 1/4] media: staging: rkisp1: change function to return void instead of int
-Date: Fri,  7 Feb 2020 09:59:48 +0100
-Message-ID: <20200207085951.5226-2-dafna.hirschfeld@collabora.com>
+Subject: [PATCH 3/4] media: staging: rkisp1: add serialization to the isp subdev ops
+Date: Fri,  7 Feb 2020 09:59:50 +0100
+Message-ID: <20200207085951.5226-4-dafna.hirschfeld@collabora.com>
 References: <20200207085951.5226-1-dafna.hirschfeld@collabora.com>
 Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <20200207085951.5226-1-dafna.hirschfeld@collabora.com>
@@ -10,76 +10,158 @@ To: linux-media@vger.kernel.org
 Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There are functions that return int but actually return always 0.
-Change them to return void and then there is no need to check
-for error return value.
+For subdevices drivers, the drivers themself are responsible
+for serializing their operations.
+This patch adds serialization to the isp subdevice.
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- drivers/staging/media/rkisp1/rkisp1-isp.c | 16 ++++------------
- 1 file changed, 4 insertions(+), 12 deletions(-)
+ drivers/staging/media/rkisp1/rkisp1-common.h |  2 ++
+ drivers/staging/media/rkisp1/rkisp1-isp.c    | 29 ++++++++++++++------
+ 2 files changed, 23 insertions(+), 8 deletions(-)
 
+diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+index 4e773d611d1b..7c668ac4bdd5 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-common.h
++++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+@@ -96,6 +96,7 @@ struct rkisp1_sensor_async {
+  * @sink_crop: crop for sink pad
+  * @src_fmt: output format
+  * @src_crop: output size
++ * @ops_lock: ops serialization
+  *
+  * @is_dphy_errctrl_disabled : if dphy errctrl is disabled (avoid endless interrupt)
+  * @frame_sequence: used to synchronize frame_id between video devices.
+@@ -107,6 +108,7 @@ struct rkisp1_isp {
+ 	struct v4l2_subdev_pad_config pad_cfg[RKISP1_ISP_PAD_MAX];
+ 	const struct rkisp1_isp_mbus_info *sink_fmt;
+ 	const struct rkisp1_isp_mbus_info *src_fmt;
++	struct mutex ops_lock;
+ 	bool is_dphy_errctrl_disabled;
+ 	atomic_t frame_sequence;
+ };
 diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-index 2b0513e826fe..56bd95d01f65 100644
+index c98e3c16f520..aa7a842f97f8 100644
 --- a/drivers/staging/media/rkisp1/rkisp1-isp.c
 +++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-@@ -504,7 +504,7 @@ static int rkisp1_config_cif(struct rkisp1_device *rkisp1)
+@@ -791,7 +791,9 @@ static int rkisp1_isp_get_fmt(struct v4l2_subdev *sd,
+ {
+ 	struct rkisp1_isp *isp = container_of(sd, struct rkisp1_isp, sd);
+ 
++	mutex_lock(&isp->ops_lock);
+ 	fmt->format = *rkisp1_isp_get_pad_fmt(isp, cfg, fmt->pad, fmt->which);
++	mutex_unlock(&isp->ops_lock);
  	return 0;
  }
  
--static int rkisp1_isp_stop(struct rkisp1_device *rkisp1)
-+static void rkisp1_isp_stop(struct rkisp1_device *rkisp1)
+@@ -801,6 +803,7 @@ static int rkisp1_isp_set_fmt(struct v4l2_subdev *sd,
  {
- 	u32 val;
+ 	struct rkisp1_isp *isp = container_of(sd, struct rkisp1_isp, sd);
  
-@@ -540,8 +540,6 @@ static int rkisp1_isp_stop(struct rkisp1_device *rkisp1)
- 		     RKISP1_CIF_IRCL_MIPI_SW_RST | RKISP1_CIF_IRCL_ISP_SW_RST,
- 		     RKISP1_CIF_IRCL);
- 	rkisp1_write(rkisp1, 0x0, RKISP1_CIF_IRCL);
++	mutex_lock(&isp->ops_lock);
+ 	if (fmt->pad == RKISP1_ISP_PAD_SINK_VIDEO)
+ 		rkisp1_isp_set_sink_fmt(isp, cfg, &fmt->format, fmt->which);
+ 	else if (fmt->pad == RKISP1_ISP_PAD_SOURCE_VIDEO)
+@@ -809,6 +812,7 @@ static int rkisp1_isp_set_fmt(struct v4l2_subdev *sd,
+ 		fmt->format = *rkisp1_isp_get_pad_fmt(isp, cfg, fmt->pad,
+ 						      fmt->which);
+ 
++	mutex_unlock(&isp->ops_lock);
+ 	return 0;
+ }
+ 
+@@ -817,11 +821,13 @@ static int rkisp1_isp_get_selection(struct v4l2_subdev *sd,
+ 				    struct v4l2_subdev_selection *sel)
+ {
+ 	struct rkisp1_isp *isp = container_of(sd, struct rkisp1_isp, sd);
++	int ret = 0;
+ 
+ 	if (sel->pad != RKISP1_ISP_PAD_SOURCE_VIDEO &&
+ 	    sel->pad != RKISP1_ISP_PAD_SINK_VIDEO)
+ 		return -EINVAL;
+ 
++	mutex_lock(&isp->ops_lock);
+ 	switch (sel->target) {
+ 	case V4L2_SEL_TGT_CROP_BOUNDS:
+ 		if (sel->pad == RKISP1_ISP_PAD_SINK_VIDEO) {
+@@ -844,10 +850,10 @@ static int rkisp1_isp_get_selection(struct v4l2_subdev *sd,
+ 						  sel->which);
+ 		break;
+ 	default:
+-		return -EINVAL;
++		ret = -EINVAL;
+ 	}
 -
 -	return 0;
++	mutex_unlock(&isp->ops_lock);
++	return ret;
  }
  
- static void rkisp1_config_clk(struct rkisp1_device *rkisp1)
-@@ -555,7 +553,7 @@ static void rkisp1_config_clk(struct rkisp1_device *rkisp1)
- 	rkisp1_write(rkisp1, val, RKISP1_CIF_ICCL);
- }
+ static int rkisp1_isp_set_selection(struct v4l2_subdev *sd,
+@@ -857,21 +863,23 @@ static int rkisp1_isp_set_selection(struct v4l2_subdev *sd,
+ 	struct rkisp1_device *rkisp1 =
+ 		container_of(sd->v4l2_dev, struct rkisp1_device, v4l2_dev);
+ 	struct rkisp1_isp *isp = container_of(sd, struct rkisp1_isp, sd);
++	int ret = 0;
  
--static int rkisp1_isp_start(struct rkisp1_device *rkisp1)
-+static void rkisp1_isp_start(struct rkisp1_device *rkisp1)
- {
- 	struct rkisp1_sensor_async *sensor = rkisp1->active_sensor;
- 	u32 val;
-@@ -580,8 +578,6 @@ static int rkisp1_isp_start(struct rkisp1_device *rkisp1)
- 	 * the MIPI interface and before starting the sensor output.
- 	 */
- 	usleep_range(1000, 1200);
+ 	if (sel->target != V4L2_SEL_TGT_CROP)
+ 		return -EINVAL;
+ 
+ 	dev_dbg(rkisp1->dev, "%s: pad: %d sel(%d,%d)/%dx%d\n", __func__,
+ 		sel->pad, sel->r.left, sel->r.top, sel->r.width, sel->r.height);
 -
++	mutex_lock(&isp->ops_lock);
+ 	if (sel->pad == RKISP1_ISP_PAD_SINK_VIDEO)
+ 		rkisp1_isp_set_sink_crop(isp, cfg, &sel->r, sel->which);
+ 	else if (sel->pad == RKISP1_ISP_PAD_SOURCE_VIDEO)
+ 		rkisp1_isp_set_src_crop(isp, cfg, &sel->r, sel->which);
+ 	else
+-		return -EINVAL;
++		ret = -EINVAL;
+ 
 -	return 0;
++	mutex_unlock(&isp->ops_lock);
++	return ret;
  }
  
- /* ----------------------------------------------------------------------------
-@@ -956,9 +952,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ static int rkisp1_subdev_link_validate(struct media_link *link)
+@@ -948,6 +956,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ {
+ 	struct rkisp1_device *rkisp1 =
+ 		container_of(sd->v4l2_dev, struct rkisp1_device, v4l2_dev);
++	struct rkisp1_isp *isp = &rkisp1->isp;
+ 	struct v4l2_subdev *sensor_sd;
  	int ret = 0;
  
- 	if (!enable) {
--		ret = rkisp1_isp_stop(rkisp1);
--		if (ret)
--			return ret;
-+		rkisp1_isp_stop(rkisp1);
- 		rkisp1_mipi_csi2_stop(rkisp1->active_sensor);
- 		return 0;
- 	}
-@@ -981,9 +975,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+@@ -967,16 +976,19 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
+ 		return -EINVAL;
+ 
+ 	atomic_set(&rkisp1->isp.frame_sequence, -1);
++	mutex_lock(&isp->ops_lock);
+ 	ret = rkisp1_config_cif(rkisp1);
  	if (ret)
- 		return ret;
+-		return ret;
++		goto mutex_unlock;
  
--	ret = rkisp1_isp_start(rkisp1);
--	if (ret)
--		rkisp1_mipi_csi2_stop(rkisp1->active_sensor);
-+	rkisp1_isp_start(rkisp1);
+ 	ret = rkisp1_mipi_csi2_start(&rkisp1->isp, rkisp1->active_sensor);
+ 	if (ret)
+-		return ret;
++		goto mutex_unlock;
  
+ 	rkisp1_isp_start(rkisp1);
+ 
++mutex_unlock:
++	mutex_unlock(&isp->ops_lock);
  	return ret;
  }
+ 
+@@ -1036,6 +1048,7 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1,
+ 	isp->sink_fmt = rkisp1_isp_mbus_info_get(RKISP1_DEF_SINK_PAD_FMT);
+ 	isp->src_fmt = rkisp1_isp_mbus_info_get(RKISP1_DEF_SRC_PAD_FMT);
+ 
++	mutex_init(&isp->ops_lock);
+ 	ret = media_entity_pads_init(&sd->entity, RKISP1_ISP_PAD_MAX, pads);
+ 	if (ret)
+ 		return ret;
 -- 
 2.17.1
