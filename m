@@ -1,141 +1,68 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 4/4] media: staging: rkisp1: add serialization to the
- resizer subdev ops
-Date: Fri, 7 Feb 2020 10:56:05 -0300
-Message-ID: <0bc0b4d9-9b68-4535-2a97-eaa99dc2d597@collabora.com>
-References: <20200207085951.5226-1-dafna.hirschfeld@collabora.com>
- <20200207085951.5226-5-dafna.hirschfeld@collabora.com>
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [PATCH] arm64: dts: rk3399: Remove extcon unit address and extcon-cells from Gru
+Date: Fri,  7 Feb 2020 15:13:24 +0100
+Message-ID: <20200207141324.3188898-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200207085951.5226-5-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org
-Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org
+Cc: Collabora Kernel ML <kernel@collabora.com>, dafna.hirschfeld@collabora.com, heiko@sntech.de, Matthias Kaehlcke <mka@chromium.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Brian Norris <briannorris@chromium.org>, Marcel Holtmann <marcel@holtmann.org>, Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+The cros-ec-extcon has no reg property so remove the unit address from
+the DT node to make DT compiler happy.
 
+While here, remove the inexistent extcon-cells property from the extcon
+nodes.
 
-On 2/7/20 6:59 AM, Dafna Hirschfeld wrote:
-> For subdevices drivers, the drivers themself are responsible
-> for serializing their operations.
-> This patch adds serialization to the resizer subdevice.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+---
+Thanks to the Dafna's work and Rob's review I got noticed that the old
+txt binding was wrong, and also, that the current cros-ec-extcon node in
+Gru is wrong, so sending this patch now that is fresh in our minds and
+update the node accordingly. There is an extcon-cells property that seems
+to not exist and is not documented, so remove it.
 
+For reference, see https://lkml.org/lkml/2020/2/5/176.
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
+ arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi | 4 +---
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi            | 4 +---
+ 2 files changed, 2 insertions(+), 6 deletions(-)
 
-Sakari, if you could take a look at this too it would be great.
-
-Dafna, could you also send a patch removing the item in the TODO list
-regarding ioctls serialization?
-
-Thanks,
-Helen
-
-> ---
->  drivers/staging/media/rkisp1/rkisp1-common.h  |  1 +
->  drivers/staging/media/rkisp1/rkisp1-resizer.c | 16 ++++++++++++++--
->  2 files changed, 15 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-> index 7c668ac4bdd5..18507f5b6f3c 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
-> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-> @@ -226,6 +226,7 @@ struct rkisp1_resizer {
->  	struct v4l2_subdev_pad_config pad_cfg[RKISP1_ISP_PAD_MAX];
->  	const struct rkisp1_rsz_config *config;
->  	enum rkisp1_fmt_pix_type fmt_type;
-> +	struct mutex ops_lock;
->  };
->  
->  struct rkisp1_debug {
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> index 9de6744f0900..87799fbf0363 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> @@ -562,7 +562,9 @@ static int rkisp1_rsz_get_fmt(struct v4l2_subdev *sd,
->  	struct rkisp1_resizer *rsz =
->  		container_of(sd, struct rkisp1_resizer, sd);
->  
-> +	mutex_lock(&rsz->ops_lock);
->  	fmt->format = *rkisp1_rsz_get_pad_fmt(rsz, cfg, fmt->pad, fmt->which);
-> +	mutex_unlock(&rsz->ops_lock);
->  	return 0;
->  }
->  
-> @@ -573,11 +575,13 @@ static int rkisp1_rsz_set_fmt(struct v4l2_subdev *sd,
->  	struct rkisp1_resizer *rsz =
->  		container_of(sd, struct rkisp1_resizer, sd);
->  
-> +	mutex_lock(&rsz->ops_lock);
->  	if (fmt->pad == RKISP1_RSZ_PAD_SINK)
->  		rkisp1_rsz_set_sink_fmt(rsz, cfg, &fmt->format, fmt->which);
->  	else
->  		rkisp1_rsz_set_src_fmt(rsz, cfg, &fmt->format, fmt->which);
->  
-> +	mutex_unlock(&rsz->ops_lock);
->  	return 0;
->  }
->  
-> @@ -588,10 +592,12 @@ static int rkisp1_rsz_get_selection(struct v4l2_subdev *sd,
->  	struct rkisp1_resizer *rsz =
->  		container_of(sd, struct rkisp1_resizer, sd);
->  	struct v4l2_mbus_framefmt *mf_sink;
-> +	int ret = 0;
->  
->  	if (sel->pad == RKISP1_RSZ_PAD_SRC)
->  		return -EINVAL;
->  
-> +	mutex_lock(&rsz->ops_lock);
->  	switch (sel->target) {
->  	case V4L2_SEL_TGT_CROP_BOUNDS:
->  		mf_sink = rkisp1_rsz_get_pad_fmt(rsz, cfg, RKISP1_RSZ_PAD_SINK,
-> @@ -606,10 +612,11 @@ static int rkisp1_rsz_get_selection(struct v4l2_subdev *sd,
->  						  sel->which);
->  		break;
->  	default:
-> -		return -EINVAL;
-> +		ret = -EINVAL;
->  	}
->  
-> -	return 0;
-> +	mutex_unlock(&rsz->ops_lock);
-> +	return ret;
->  }
->  
->  static int rkisp1_rsz_set_selection(struct v4l2_subdev *sd,
-> @@ -625,7 +632,9 @@ static int rkisp1_rsz_set_selection(struct v4l2_subdev *sd,
->  	dev_dbg(sd->dev, "%s: pad: %d sel(%d,%d)/%dx%d\n", __func__,
->  		sel->pad, sel->r.left, sel->r.top, sel->r.width, sel->r.height);
->  
-> +	mutex_lock(&rsz->ops_lock);
->  	rkisp1_rsz_set_sink_crop(rsz, cfg, &sel->r, sel->which);
-> +	mutex_unlock(&rsz->ops_lock);
->  
->  	return 0;
->  }
-> @@ -665,9 +674,11 @@ static int rkisp1_rsz_s_stream(struct v4l2_subdev *sd, int enable)
->  	if (other->is_streaming)
->  		when = RKISP1_SHADOW_REGS_ASYNC;
->  
-> +	mutex_lock(&rsz->ops_lock);
->  	rkisp1_rsz_config(rsz, when);
->  	rkisp1_dcrop_config(rsz);
->  
-> +	mutex_unlock(&rsz->ops_lock);
->  	return 0;
->  }
->  
-> @@ -713,6 +724,7 @@ static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
->  
->  	rsz->fmt_type = RKISP1_DEF_FMT_TYPE;
->  
-> +	mutex_init(&rsz->ops_lock);
->  	ret = media_entity_pads_init(&sd->entity, 2, pads);
->  	if (ret)
->  		return ret;
-> 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index 7cd6d470c1cb..1384dabbdf40 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -291,11 +291,9 @@ cros_ec_pwm: ec-pwm {
+ 		#pwm-cells = <1>;
+ 	};
+ 
+-	usbc_extcon1: extcon@1 {
++	usbc_extcon1: extcon1 {
+ 		compatible = "google,extcon-usbc-cros-ec";
+ 		google,usb-port-id = <1>;
+-
+-		#extcon-cells = <0>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index dd5624975c9b..2f3997740068 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -570,11 +570,9 @@ i2c_tunnel: i2c-tunnel {
+ 			#size-cells = <0>;
+ 		};
+ 
+-		usbc_extcon0: extcon@0 {
++		usbc_extcon0: extcon0 {
+ 			compatible = "google,extcon-usbc-cros-ec";
+ 			google,usb-port-id = <0>;
+-
+-			#extcon-cells = <0>;
+ 		};
+ 	};
+ };
+-- 
+2.24.1
