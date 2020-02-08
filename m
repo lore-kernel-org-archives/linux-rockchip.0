@@ -1,7 +1,7 @@
 From: Lad Prabhakar <prabhakar.csengg@gmail.com>
-Subject: [PATCH v4 4/6] dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint controller
-Date: Sat,  8 Feb 2020 18:36:39 +0000
-Message-ID: <20200208183641.6674-5-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Subject: [PATCH v4 6/6] misc: pci_endpoint_test: Add Device ID for RZ/G2E PCIe controller
+Date: Sat,  8 Feb 2020 18:36:41 +0000
+Message-ID: <20200208183641.6674-7-prabhakar.mahadev-lad.rj@bp.renesas.com>
 References: <20200208183641.6674-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,95 +12,34 @@ To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark 
 Cc: Andrew Murray <andrew.murray@arm.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds the bindings for the R-Car PCIe endpoint driver.
+Add RZ/G2E in pci_device_id table so that pci-epf-test can be used for
+testing PCIe EP in RZ/G2E.
 
 Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 ---
- .../devicetree/bindings/pci/rcar-pci-ep.yaml       | 76 ++++++++++++++++++++++
- 1 file changed, 76 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
+ drivers/misc/pci_endpoint_test.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml b/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
-new file mode 100644
-index 0000000..07cd5a7
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
-@@ -0,0 +1,76 @@
-+# SPDX-License-Identifier: GPL-2.0
-+# Copyright (C) 2020 Renesas Electronics Europe GmbH - https://www.renesas.com/eu/en/
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pci/rcar-pci-ep.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/misc/pci_endpoint_test.c b/drivers/misc/pci_endpoint_test.c
+index a5e3170..3c84e9a 100644
+--- a/drivers/misc/pci_endpoint_test.c
++++ b/drivers/misc/pci_endpoint_test.c
+@@ -66,6 +66,8 @@
+ 
+ #define PCI_DEVICE_ID_TI_AM654			0xb00c
+ 
++#define PCI_DEVICE_ID_RENESAS_RZG2E		0x002d
 +
-+title: Renesas R-Car PCIe Endpoint
-+
-+maintainers:
-+  - Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: renesas,r8a774c0-pcie-ep
-+      - const: renesas,rcar-gen3-pcie-ep
-+
-+  reg:
-+    maxItems: 5
-+
-+  reg-names:
-+    items:
-+      - const: apb-base
-+      - const: memory0
-+      - const: memory1
-+      - const: memory2
-+      - const: memory3
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  resets:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    items:
-+      - const: pcie
-+
-+  max-functions:
-+    minimum: 1
-+    maximum: 6
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - resets
-+  - power-domains
-+  - clocks
-+  - clock-names
-+  - max-functions
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/r8a774c0-cpg-mssr.h>
-+    #include <dt-bindings/power/r8a774c0-sysc.h>
-+
-+     pcie0_ep: pcie-ep@fe000000 {
-+            compatible = "renesas,r8a774c0-pcie-ep",
-+                         "renesas,rcar-gen3-pcie-ep";
-+            reg = <0 0xfe000000 0 0x80000>,
-+                  <0x0 0xfe100000 0 0x100000>,
-+                  <0x0 0xfe200000 0 0x200000>,
-+                  <0x0 0x30000000 0 0x8000000>,
-+                  <0x0 0x38000000 0 0x8000000>;
-+            reg-names = "apb-base", "memory0", "memory1", "memory2", "memory3";
-+            resets = <&cpg 319>;
-+            power-domains = <&sysc R8A774C0_PD_ALWAYS_ON>;
-+            clocks = <&cpg CPG_MOD 319>;
-+            clock-names = "pcie";
-+            max-functions = /bits/ 8 <1>;
-+    };
+ #define is_am654_pci_dev(pdev)		\
+ 		((pdev)->device == PCI_DEVICE_ID_TI_AM654)
+ 
+@@ -797,6 +799,7 @@ static const struct pci_device_id pci_endpoint_test_tbl[] = {
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_TI, PCI_DEVICE_ID_TI_AM654),
+ 	  .driver_data = (kernel_ulong_t)&am654_data
+ 	},
++	{ PCI_DEVICE(PCI_VENDOR_ID_RENESAS, PCI_DEVICE_ID_RENESAS_RZG2E) },
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(pci, pci_endpoint_test_tbl);
 -- 
 2.7.4
