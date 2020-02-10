@@ -1,216 +1,139 @@
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: Re: [PATCH v7 04/11] media: uapi: h264: Add the concept of start
- code
-Date: Sun, 09 Feb 2020 15:08:45 -0500
-Message-ID: <7666b3a6a73aed0d4dd28dba8b0bcd08b2df6a3d.camel@collabora.com>
-References: <20190816160132.7352-1-ezequiel@collabora.com>
-         <20190816160132.7352-5-ezequiel@collabora.com>
-Reply-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+From: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH v3 0/3] Enable Hantro G1 post-processor
+Date: Mon, 10 Feb 2020 11:45:30 +0900
+Message-ID: <CAAFQd5A8Y3C64NozqXjMDV0CQ5==dW9Y-6KtFigYFmO3EDd3+A@mail.gmail.com>
+References: <20191113175603.24742-1-ezequiel@collabora.com>
+ <74fea061a52ee3f8e25793bf9e47eba90a52c3e3.camel@ndufresne.ca>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-        boundary="=-U0pbP9NiBTf40tHmv8JJ"
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20190816160132.7352-5-ezequiel@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
-Cc: kernel@collabora.com, Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Alexandre Courbot <acourbot@chromium.org>, fbuergisser@chromium.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <74fea061a52ee3f8e25793bf9e47eba90a52c3e3.camel-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Philipp Zabel <p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Chris Healy <cphealy-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
---=-U0pbP9NiBTf40tHmv8JJ
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Le vendredi 16 ao=C3=BBt 2019 =C3=A0 13:01 -0300, Ezequiel Garcia a =C3=A9c=
-rit :
-> Stateless decoders have different expectations about the
-> start code that is prepended on H264 slices. Add a
-> menu control to express the supported start code types
-> (including no start code).
->=20
-> Drivers are allowed to support only one start code type,
-> but they can support both too.
->=20
-> Note that this is independent of the H264 decoding mode,
-> which specifies the granularity of the decoding operations.
-> Either in frame-based or slice-based mode, this new control
-> will allow to define the start code expected on H264 slices.
->=20
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> Tested-by: Philipp Zabel <p.zabel@pengutronix.de>
-> ---
-> Changes in v7:
-> * None.
-> Changes in v6:
-> * Rename to START_CODE and enum values
->   as suggested by Hand and Paul.
-> Changes in v5:
-> * Improve specification as suggested by Hans.
-> Changes in v4:
-> * New patch.
-> ---
->  .../media/uapi/v4l/ext-ctrls-codec.rst        | 33 +++++++++++++++++++
->  .../media/uapi/v4l/pixfmt-compressed.rst      |  5 +--
->  drivers/media/v4l2-core/v4l2-ctrls.c          |  9 +++++
->  include/media/h264-ctrls.h                    |  6 ++++
->  4 files changed, 51 insertions(+), 2 deletions(-)
->=20
-> diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documenta=
-tion/media/uapi/v4l/ext-ctrls-codec.rst
-> index 7e7447d9998c..3703c705286f 100644
-> --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-> +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
-> @@ -2076,6 +2076,39 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type=
- -
->          The OUTPUT buffer must contain all slices needed to decode the
->          frame. The OUTPUT buffer must also contain both fields.
-> =20
-> +``V4L2_CID_MPEG_VIDEO_H264_START_CODE (enum)``
-
-I believe we need to revisit the naming here. In most documents I've
-read, start code refers to a header that allow parsing a bit stream
-from a random location. In H264, this is used as synonyme of ANNEX B
-NAL Headers. In this context, the obvious future value to this enum is
-AVCc headers, which is not a start code.
-
-I would suggest to revisite and rename to:
-
-  V4L2_CID_MPEG_VIDEO_H264_NAL_HDR_TYPE
-
-
-> +    Specifies the H264 slice start code expected for each slice.
-> +    This control is used as a modifier for V4L2_PIX_FMT_H264_SLICE
-> +    pixel format. Applications that support V4L2_PIX_FMT_H264_SLICE
-> +    are required to set this control in order to specify the start code
-> +    that is expected for the buffer.
-> +    Drivers may expose a single or multiple start codes, depending
-> +    on what they can support.
-> +
-> +    .. note::
-> +
-> +       This menu control is not yet part of the public kernel API and
-> +       it is expected to change.
-> +
-> +.. c:type:: v4l2_mpeg_video_h264_start_code
-> +
-> +.. cssclass:: longtable
-> +
-> +.. flat-table::
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - ``V4L2_MPEG_VIDEO_H264_START_CODE_NONE``
-> +      - 0
-> +      - Selecting this value specifies that H264 slices are passed
-> +        to the driver without any start code.
-> +    * - ``V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B``
-> +      - 1
-> +      - Selecting this value specifies that H264 slices are expected
-> +        to be prefixed by Annex B start codes. According to :ref:`h264`
-> +        valid start codes can be 3-bytes 0x000001 or 4-bytes 0x00000001.
-> +
->  .. _v4l2-mpeg-mpeg2:
-> =20
->  ``V4L2_CID_MPEG_VIDEO_MPEG2_SLICE_PARAMS (struct)``
-> diff --git a/Documentation/media/uapi/v4l/pixfmt-compressed.rst b/Documen=
-tation/media/uapi/v4l/pixfmt-compressed.rst
-> index d666eb51741a..493b6020107d 100644
-> --- a/Documentation/media/uapi/v4l/pixfmt-compressed.rst
-> +++ b/Documentation/media/uapi/v4l/pixfmt-compressed.rst
-> @@ -60,8 +60,9 @@ Compressed Formats
->  	extracted from the H264 bitstream.  This format is adapted for
->  	stateless video decoders that implement an H264 pipeline
->  	(using the :ref:`mem2mem` and :ref:`media-request-api`).
-> -	This pixelformat has a modifier that must be set at least once
-> -	through the ``V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE`` control.
-> +	This pixelformat has two modifiers that must be set at least once
-> +	through the ``V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE``
-> +        and ``V4L2_CID_MPEG_VIDEO_H264_START_CODE`` controls.
->  	In addition, metadata associated with the frame to decode are
->  	required to be passed through the ``V4L2_CID_MPEG_VIDEO_H264_SPS``,
->  	``V4L2_CID_MPEG_VIDEO_H264_PPS``,
-> diff --git a/drivers/media/v4l2-core/v4l2-ctrls.c b/drivers/media/v4l2-co=
-re/v4l2-ctrls.c
-> index 2c67f9fc4d5b..1d8f38824631 100644
-> --- a/drivers/media/v4l2-core/v4l2-ctrls.c
-> +++ b/drivers/media/v4l2-core/v4l2-ctrls.c
-> @@ -407,6 +407,11 @@ const char * const *v4l2_ctrl_get_menu(u32 id)
->  		"Frame-Based",
->  		NULL,
->  	};
-> +	static const char * const h264_start_code[] =3D {
-> +		"No Start Code",
-> +		"Annex B Start Code",
-> +		NULL,
-> +	};
->  	static const char * const mpeg_mpeg2_level[] =3D {
->  		"Low",
->  		"Main",
-> @@ -640,6 +645,8 @@ const char * const *v4l2_ctrl_get_menu(u32 id)
->  		return h264_fmo_map_type;
->  	case V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE:
->  		return h264_decode_mode;
-> +	case V4L2_CID_MPEG_VIDEO_H264_START_CODE:
-> +		return h264_start_code;
->  	case V4L2_CID_MPEG_VIDEO_MPEG2_LEVEL:
->  		return mpeg_mpeg2_level;
->  	case V4L2_CID_MPEG_VIDEO_MPEG2_PROFILE:
-> @@ -860,6 +867,7 @@ const char *v4l2_ctrl_get_name(u32 id)
->  	case V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS:		return "H264 Slice Paramet=
-ers";
->  	case V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS:		return "H264 Decode Param=
-eters";
->  	case V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE:		return "H264 Decode Mode";
-> +	case V4L2_CID_MPEG_VIDEO_H264_START_CODE:		return "H264 Start Code";
->  	case V4L2_CID_MPEG_VIDEO_MPEG2_LEVEL:			return "MPEG2 Level";
->  	case V4L2_CID_MPEG_VIDEO_MPEG2_PROFILE:			return "MPEG2 Profile";
->  	case V4L2_CID_MPEG_VIDEO_MPEG4_I_FRAME_QP:		return "MPEG4 I-Frame QP Va=
-lue";
-> @@ -1229,6 +1237,7 @@ void v4l2_ctrl_fill(u32 id, const char **name, enum=
- v4l2_ctrl_type *type,
->  	case V4L2_CID_MPEG_VIDEO_H264_SEI_FP_ARRANGEMENT_TYPE:
->  	case V4L2_CID_MPEG_VIDEO_H264_FMO_MAP_TYPE:
->  	case V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE:
-> +	case V4L2_CID_MPEG_VIDEO_H264_START_CODE:
->  	case V4L2_CID_MPEG_VIDEO_MPEG2_LEVEL:
->  	case V4L2_CID_MPEG_VIDEO_MPEG2_PROFILE:
->  	case V4L2_CID_MPEG_VIDEO_MPEG4_LEVEL:
-> diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
-> index 928c48c57282..ba2876a64cf6 100644
-> --- a/include/media/h264-ctrls.h
-> +++ b/include/media/h264-ctrls.h
-> @@ -27,6 +27,7 @@
->  #define V4L2_CID_MPEG_VIDEO_H264_SLICE_PARAMS	(V4L2_CID_MPEG_BASE+1003)
->  #define V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS	(V4L2_CID_MPEG_BASE+1004)
->  #define V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE	(V4L2_CID_MPEG_BASE+1005)
-> +#define V4L2_CID_MPEG_VIDEO_H264_START_CODE	(V4L2_CID_MPEG_BASE+1006)
-> =20
->  /* enum v4l2_ctrl_type type values */
->  #define V4L2_CTRL_TYPE_H264_SPS			0x0110
-> @@ -40,6 +41,11 @@ enum v4l2_mpeg_video_h264_decode_mode {
->  	V4L2_MPEG_VIDEO_H264_DECODE_MODE_FRAME_BASED,
->  };
-> =20
-> +enum v4l2_mpeg_video_h264_start_code {
-> +	V4L2_MPEG_VIDEO_H264_START_CODE_NONE,
-> +	V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
-> +};
-> +
->  #define V4L2_H264_SPS_CONSTRAINT_SET0_FLAG			0x01
->  #define V4L2_H264_SPS_CONSTRAINT_SET1_FLAG			0x02
->  #define V4L2_H264_SPS_CONSTRAINT_SET2_FLAG			0x04
-
---=-U0pbP9NiBTf40tHmv8JJ
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXkBmzQAKCRBxUwItrAao
-HJvFAJ9j3qmEHp+mn63qDT+EnFrH3WHs5gCgwXqSR01WgQ6l1I0jPQ+PR0AT5Wc=
-=3XxE
------END PGP SIGNATURE-----
-
---=-U0pbP9NiBTf40tHmv8JJ--
+T24gTW9uLCBGZWIgMTAsIDIwMjAgYXQgNDo1MiBBTSBOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFz
+QG5kdWZyZXNuZS5jYT4gd3JvdGU6Cj4KPiBMZSBtZXJjcmVkaSAxMyBub3ZlbWJyZSAyMDE5IMOg
+IDE0OjU2IC0wMzAwLCBFemVxdWllbCBHYXJjaWEgYSDDqWNyaXQgOgo+ID4gSGkgYWxsLAo+ID4K
+PiA+IFRoZSBIYW50cm8gRzEgVlBVIHBvc3QtcHJvY2Vzc29yIGJsb2NrIGNhbiBiZSBwaXBlbGlu
+ZWQgd2l0aAo+ID4gdGhlIGRlY29kZXIgaGFyZHdhcmUsIGFsbG93aW5nIHRvIHBlcmZvcm0gb3Bl
+cmF0aW9ucyBzdWNoIGFzCj4gPiBjb2xvciBjb252ZXJzaW9uLCBzY2FsaW5nLCByb3RhdGlvbiwg
+Y3JvcHBpbmcsIGFtb25nIG90aGVycy4KPiA+Cj4gPiBXaGVuIHRoZSBwb3N0LXByb2Nlc3NvciBp
+cyBlbmFibGVkLCB0aGUgZGVjb2RlciBoYXJkd2FyZQo+ID4gbmVlZHMgaXRzIG93biBzZXQgb2Yg
+TlYxMiBidWZmZXJzICh0aGUgbmF0aXZlIGRlY29kZXIgZm9ybWF0KSwKPiA+IGFuZCB0aGUgcG9z
+dC1wcm9jZXNzb3IgaXMgdGhlIG93bmVyIG9mIHRoZSBDQVBUVVJFIGJ1ZmZlcnMsCj4gPiBhbGxv
+Y2F0ZWQgZm9yIHRoZSBwb3N0LXByb2Nlc3NlZCBmb3JtYXQuCj4gPgo+ID4gVGhpcyB3YXksIGFw
+cGxpY2F0aW9ucyBvYnRhaW4gcG9zdC1wcm9jZXNzZWQKPiA+IChzY2FsZWQsIGNvbnZlcnRlZCwg
+ZXRjKSBidWZmZXJzIHRyYW5zcGFyZW50bHkuCj4gPgo+ID4gVGhpcyBmZWF0dXJlIGlzIGltcGxl
+bWVudGVkIGJ5IGV4cG9zaW5nIHRoZSBwb3N0LXByb2Nlc3NlZCBwaXhlbAo+ID4gZm9ybWF0cyBv
+biBFTlVNX0ZNVCwgb3JkZXJlZCBhcyAicHJlZmVycmVkIHBpeGVsZm9ybWF0IGZpcnN0IjoKPiA+
+Cj4gPiB2NGwyLWN0bCAtZCAxIC0tbGlzdC1mb3JtYXRzCj4gPiBpb2N0bDogVklESU9DX0VOVU1f
+Rk1UCj4gPiAgICAgICBUeXBlOiBWaWRlbyBDYXB0dXJlIE11bHRpcGxhbmFyCj4gPgo+ID4gICAg
+ICAgWzBdOiAnTlYxMicgKFkvQ2JDciA0OjI6MCkKPiA+ICAgICAgIFsxXTogJ1lVWVYnIChZVVlW
+IDQ6MjoyKQo+ID4KPiA+IFRoZSBvcmRlciBvZiBwcmVmZXJlbmNlIGluIEVOVU1fRk1UIGNhbiBi
+ZSB1c2VkIGFzIGEgaGludAo+ID4gYnkgYXBwbGljYXRpb25zLiBUaGlzIHNlcmllcyB1cGRhdGVz
+IHRoZSB1QVBJIHNwZWNpZmljYXRpb24KPiA+IGFjY29yZGluZ2x5Lgo+Cj4gQXMgSSdtIGltcGxl
+bWVudGluZyB0aGlzLCBJIHJlYWxpemUgdGhhdCB0aGVyZSBtYXkgbWUgYSBnYXAgaW4gYmVpbmcK
+PiBhYmxlIHRvIGltcGxlbWVudCBib3RoIElQUCBhbmQgbm9uLUlQUCBzdXBwb3J0IGluIGEgZ2Vu
+ZXJpYyBmcmFtZXdvcmsuCj4gVW5saWtlIHRoZSBhYm92ZSBjb21tZW50LCB3ZSBmb3Igbm9uLUlQ
+UCBkZWNvZGVyIHdlIGNhbm5vdCBuYWl2ZWx5IHBpY2sKPiB0aGUgZmlyc3QgZm9ybWF0LiBJbiBm
+YWN0IHdlIHBhcnNlIHRoZSBjaHJvbWEgYW5kIGRlcHRoIGluZm9ybWF0aW9uCj4gZnJvbSB0aGUg
+aGVhZGVycyAobGlrZSBwcHMgZnJvbSBIMjY0KSwgYW5kIHdlIHBpY2sgYSBtYXRjaGluZyBwaXhl
+bAo+IGZvcm1hdC4gVGhpcyB3YXksIGlmIHdlIGhhdmUgYSAxMGJpdCBzdHJlYW0sIGFuZCBvdXIg
+SVAgc3VwcG9ydHMgMTBiaXQsCj4gd2Ugd2lsbCBwaWNrIGEgMTBiaXQgcGl4ZWwgZm9ybWF0cywg
+b3RoZXJ3aXNlIGRlY29kaW5nIHdpbGwganVzdCBmYWlsLgo+Cj4gTm9uZSBvZiB0aGlzIGluZm9y
+bWF0aW9uIGlzIHBhc3NlZCB0byB0aGUgZHJpdmVyIHByaW9yIHRvIHRoZSBmaXJzdAo+IFJlcXVl
+c3QgYmVpbmcgbWFkZSwgc28gdGhlcmUgaXMgbm8gd2F5IChhcyBvZiBjdXJyZW50IHNwZWMpIHRo
+YXQgdGhlCj4gZHJpdmVyIGNhbiB2YWxpZGF0ZSB0aGlzIGluIHRyeV9mbXQgYWhlYWQgb2YgdGlt
+ZS4gVW5sZXNzIEkgc2V0IHBpY3R1cmUKPiBwYXJhbWV0ZXJzIHdpdGhvdXQgYSByZXF1ZXN0X2Zk
+IGZvciB0aGF0IHB1cnBvc2UuIElmIHRoaXMgaXMgdGhlIHdheSwKPiB0aGVuIHdlIHNob3VsZCBk
+b2N1bWVudCB0aGlzLgoKK0FsZXhhbmRyZSBDb3VyYm90CgpJdCB3YXMgc3VnZ2VzdGVkIGluIHRo
+ZSB2ZXJ5IGVhcmx5IFJGQyBzdGFnZSwgYnV0IGl0IGxvb2tzIGxpa2UgaXQKZGlkbid0IG1ha2Ug
+aXQgdG8gdGhlIGZpbmFsIHNwZWMuCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcGF0Y2gv
+MTA1ODMyMzMvIzIyMjA5NTU1Cgo+Cj4gSXMgdGhpcyB0aGUgaW50ZW5kZWQgd2F5IHRvIG5lZ290
+aWF0aW9uIElQUCBmdW5jdGlvbnMgd2l0aCB0aGUgZHJpdmVyID8KPgoKSW4gdGhlb3J5LCBpZiB0
+aGUgdXNlcnNwYWNlIGtub3dzIHdoZXRoZXIgdGhlIHN0cmVhbSBpcyA0OjI6MCBvciA0OjI6Mgph
+bmQgOC1iaXQgb3IgMTAtYml0LCBpdCBjYW4gc3RpbGwgc2VsZWN0IHRoZSBmaXJzdCBmb3JtYXQg
+ZnJvbSB0aGUgdG9wCnRoYXQgbWF0Y2hlcyB0aGVzZSBwcm9wZXJ0aWVzLgoKVGhhdCdzIG5vdCBo
+b3cgZm9ybWF0IGhhbmRsaW5nIGluIFY0TDIgd29ya3MsIHRob3VnaC4gRU5VTV9GTVQgaXMKZXhw
+ZWN0ZWQgdG8gcmV0dXJuIGEgbGlzdCBvZiB2YWxpZCBmb3JtYXRzIGFuZCBpZiB3ZSBmb3JnZXQg
+YWJvdXQgdGhlCmltYWdlIHByb2Nlc3NvciBmb3IgYSBtb21lbnQsIGEgc3RhdGVsZXNzIGRlY29k
+ZXIgd291bGQgYWx3YXlzIHJldHVybgphbnkgcG9zc2libGUgZm9ybWF0LCBpbmNsdWRpbmcgb25l
+cyBpbnZhbGlkIGZvciB0aGUgc3RyZWFtLgoKTm93IGJhY2sgdG8gdGhlIGltYWdlIHByb2Nlc3Nv
+ciwgaWYgaXQgaGFuZGxlcyBjb252ZXJzaW9ucyBmcm9tIGFueSB0bwphbnkgZm9ybWF0IGxpc3Rl
+ZCBieSBFTlVNX0ZNVCwgd2Uga2luZCBvZiByZWdhaW4gdGhlIFY0TDIgY29tcGxpYW5jZSwKYnV0
+IGlmIHRoZSBjb252ZXJzaW9ucyBhcmUgbGltaXRlZCwgdGhlIGFib3ZlIHJlcXVpcmVtZW50IHN0
+aWxsCmRvZXNuJ3QgaG9sZCBhbmQgd2UncmUgbm90IGltcGxlbWVudGluZyBWNEwyIGNvcnJlY3Rs
+eS4KClBlcmhhcHMgd2UgY2FuIHN0aWxsIGFtZW5kIHRoZSBzcGVjIGFuZCByZXF1aXJlIGNvbnRy
+b2xzIHRoYXQKZGV0ZXJtaW5lIHRoZSBzdHJlYW0gcHJvcGVydGllcyB0byBiZSBzZXQgYmVmb3Jl
+IHN0YXJ0aW5nIHRoZQpzdHJlYW1pbmc/IEkgY2FuIGltYWdpbmUgaXQgY291bGQgYWxzbyBoZWxw
+IHRoZSBkcml2ZXIgZmlsdGVyIG91dCBzb21lCnVuc3VwcG9ydGVkIHN0cmVhbXMgZWFybHksIGJl
+Zm9yZSBhbGxvY2F0aW5nIGJ1ZmZlcnMgYW5kIGF0dGVtcHRpbmcgdG8KZGVjb2RlLgoKQmVzdCBy
+ZWdhcmRzLApUb21hc3oKCj4gPgo+ID4gV2hlbiB0aGUgYXBwbGljYXRpb24gc2V0cyBhIHBpeGVs
+IGZvcm1hdCBvdGhlciB0aGFuIE5WMTIsCj4gPiB0aGUgcG9zdC1wcm9jZXNzb3IgaXMgdHJhbnNw
+YXJlbnRseSBlbmFibGVkLgo+ID4KPiA+IFBhdGNoIDEgaXMgYSBjbGVhbnVwcyBuZWVkZWQgdG8g
+ZWFzaWVyIGludGVncmF0ZSB0aGUgcG9zdC1wcm9jZXNzb3IuCj4gPiBQYXRjaCAyIGludHJvZHVj
+ZXMgdGhlIHBvc3QtcHJvY2Vzc2luZyBzdXBwb3J0Lgo+ID4gUGF0Y2ggMyB1cGRhdGVzIHRoZSB1
+QVBJIHNwZWNpZmljYXRpb24uCj4gPgo+ID4gVGhpcyBpcyB0ZXN0ZWQgb24gUkszMjg4IHBsYXRm
+b3JtcyB3aXRoIE1QRUctMiwgVlA4IGFuZAo+ID4gSDI2NCBzdHJlYW1zLCBkZWNvZGluZyB0byBZ
+VVkyIHN1cmZhY2VzLiBGb3Igbm93LCB0aGlzIHNlcmllcwo+ID4gaXMgb25seSBhZGRpbmcgc3Vw
+cG9ydCBmb3IgTlYxMi10by1ZVVkyIGNvbnZlcnNpb24uCj4gPgo+ID4gQXBwbGllcyB0byBtZWRp
+YS9tYXN0ZXIuCj4gPgo+ID4gRnV0dXJlIHBsYW5zCj4gPiAtLS0tLS0tLS0tLS0KPiA+Cj4gPiBJ
+dCBzZWVtcyB0byBtZSB0aGF0IHdlIHNob3VsZCBzdGFydCBtb3ZpbmcgdGhpcyBkcml2ZXIgdG8g
+dXNlCj4gPiByZWdtYXAtYmFzZWQgYWNjZXNzIHRvIHJlZ2lzdGVycy4gSG93ZXZlciwgc3VjaCBt
+b3ZlIGlzIG91dCBvZiBzY29wZQo+ID4gYW5kIG5vdCBlbnRpcmVseSByZWxhdGVkIHRvIHRoaXMg
+cG9zdC1wcm9jZXNzb3IgZW5hYmxlbWVudC4KPiA+Cj4gPiBXZSdsbCB3b3JrIG9uIHRoYXQgYXMg
+Zm9sbG93LXVwIHBhdGNoZXMuCj4gPgo+ID4gQ2hhbmdlbG9nCj4gPiAtLS0tLS0tLS0KPiA+Cj4g
+PiBDaGFuZ2VzIHYzOgo+ID4KPiA+ICogQWZ0ZXIgZGlzY3Vzc2luZyB3aXRoIEhhbnMgYW5kIFRv
+bWFzeiBkdXJpbmcgdGhlIG1lZGlhIHN1bW1pdAo+ID4gaW4gRUxDRSwgd2UgZGVjaWRlZCB0byBn
+byBiYWNrIG9uIHRoZSBNQyBjaGFuZ2VzLiBUaGUgTUMgdG9wb2xvZ3kKPiA+IGlzIG5vdyB1bnRv
+dWNoZWQuIFRoaXMgbWVhbnMgdGhlIHNlcmllcyBpcyBub3cgc2ltaWxhciB0byB2MSwKPiA+IGV4
+Y2VwdCB3ZSBleHBsaWNpdGx5IHVzZSB0aGUgRU5VTV9GTVQgdG8gaGludCBhYm91dCB0aGUgcG9z
+dC1wcm9jZXNzZWQKPiA+IGZvcm1hdHMuCj4gPgo+ID4gQ2hhbmdlcyB2MjoKPiA+Cj4gPiAqIFRo
+ZSBkZWNvZGVyLT5wb3N0LXByb2Nlc3NvciB0b3BvbG9neSBpcyBub3cgZXhwb3NlZAo+ID4gICBl
+eHBsaWNpdGx5IGFuZCBhcHBsaWNhdGlvbnMgbmVlZCB0byBjb25maWd1cmUgdGhlIHBpcGVsaW5l
+Lgo+ID4gICBCeSBkZWZhdWx0LCB0aGUgZGVjb2RlciBpcyBlbmFibGVkIGFuZCB0aGUgcG9zdC1w
+cm9jZXNzb3IKPiA+ICAgaXMgZGlzYWJsZWQuCj4gPgo+ID4gKiBSR0IgcG9zdC1wcm9jZXNzaW5n
+IG91dHB1dCBoYXMgYmVlbiBkcm9wcGVkLiBXZSBtaWdodAo+ID4gICBhZGQgdGhpcyBpbiB0aGUg
+ZnV0dXJlLCBidXQgZm9yIG5vdywgaXQgc2VlbXMgaXQgd291bGQKPiA+ICAgbWFrZSB0aGUgY29k
+ZSBtb3JlIGNvbXBsZXggd2l0aG91dCBhIHVzZS1jYXNlIGluIG1pbmQuCj4gPiAgIFJHQiBpcyBt
+dWNoIG1vcmUgbWVtb3J5LWNvbnN1bWluZyBzbyBsZXNzIGF0dHJhY3RpdmUKPiA+ICAgdGhhbiBZ
+VVYsIGFuZCBtb2Rlcm4gR1BVcyBhbmQgZGlzcGxheSBjb250cm9sbGVycyBzdXBwb3J0IFlVVi4K
+PiA+Cj4gPiAqIFRoZSBwb3N0LXByb2Nlc3NvciBpbXBsZW1lbnRhdGlvbiBzdGlsbCBzdXBwb3J0
+cyBSSzMyODgKPiA+ICAgb25seS4gSG93ZXZlciwgYSBnZW5lcmljIHJlZ2lzdGVyIGluZnJhc3Ry
+dWN0dXJlIGlzIGludHJvZHVjZWQKPiA+ICAgdG8gbWFrZSBhZGRpdGlvbiBvZiBvdGhlciB2YXJp
+YW50cyBzdWNoIGFzIFJLMzM5OSByZWFsbHkgZWFzeS4KPiA+Cj4gPiBFemVxdWllbCBHYXJjaWEg
+KDMpOgo+ID4gICBtZWRpYTogaGFudHJvOiBDbGVhbnVwIGZvcm1hdCBuZWdvdGlhdGlvbiBoZWxw
+ZXJzCj4gPiAgIG1lZGlhOiBoYW50cm86IFN1cHBvcnQgY29sb3IgY29udmVyc2lvbiB2aWEgcG9z
+dC1wcm9jZXNzaW5nCj4gPiAgIG1lZGlhOiB2aWRpb2MtZW51bS1mbXQucnN0OiBjbGFyaWZ5IGZv
+cm1hdCBwcmVmZXJlbmNlCj4gPgo+ID4gIC4uLi9tZWRpYS91YXBpL3Y0bC92aWRpb2MtZW51bS1m
+bXQucnN0ICAgICAgICB8ICAgNCArLQo+ID4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8v
+TWFrZWZpbGUgICAgICAgICB8ICAgMSArCj4gPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRy
+by9oYW50cm8uaCAgICAgICAgIHwgIDY0ICsrKysrKystCj4gPiAgZHJpdmVycy9zdGFnaW5nL21l
+ZGlhL2hhbnRyby9oYW50cm9fZHJ2LmMgICAgIHwgICA4ICstCj4gPiAgLi4uL3N0YWdpbmcvbWVk
+aWEvaGFudHJvL2hhbnRyb19nMV9oMjY0X2RlYy5jIHwgICAyICstCj4gPiAgLi4uL21lZGlhL2hh
+bnRyby9oYW50cm9fZzFfbXBlZzJfZGVjLmMgICAgICAgIHwgICAyICstCj4gPiAgZHJpdmVycy9z
+dGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZzFfcmVncy5oIHwgIDUzICsrKysrKysKPiA+ICAu
+Li4vc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2cxX3ZwOF9kZWMuYyAgfCAgIDIgKy0KPiA+
+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19oMjY0LmMgICAgfCAgIDYgKy0K
+PiA+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19ody5oICAgICAgfCAgMTMg
+KysKPiA+ICAuLi4vc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX3Bvc3Rwcm9jLmMgICAgfCAx
+NDEgKysrKysrKysrKysrKysrKysrCj4gPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9o
+YW50cm9fdjRsMi5jICAgIHwgMTA1ICsrKysrKysrLS0tLS0KPiA+ICBkcml2ZXJzL3N0YWdpbmcv
+bWVkaWEvaGFudHJvL3JrMzI4OF92cHVfaHcuYyAgfCAgMTAgKysKPiA+ICAxMyBmaWxlcyBjaGFu
+Z2VkLCAzNjYgaW5zZXJ0aW9ucygrKSwgNDUgZGVsZXRpb25zKC0pCj4gPiAgY3JlYXRlIG1vZGUg
+MTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX3Bvc3Rwcm9jLmMKPiA+
+Cj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
