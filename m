@@ -1,64 +1,193 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 2/3] ASoC: rockchip: Make RK3328 GPIO_MUTE control
- explicit
-Date: Mon, 10 Feb 2020 13:56:44 +0000
-Message-ID: <20200210135644.GL7685@sirena.org.uk>
-References: <cover.1580950046.git.robin.murphy@arm.com>
- <29a846da33c02df64eca62b5fa0f3884652f788f.1580950046.git.robin.murphy@arm.com>
- <20200206114606.GM3897@sirena.org.uk>
- <ad2c941a-9724-510e-959f-3cca3cab1dc2@arm.com>
- <20200206135718.GQ3897@sirena.org.uk>
- <CAMdYzYqTEnG_Q-8SvO2R6PeaPXQ3VBKu6iVYhYvb=wK7tT7c3A@mail.gmail.com>
- <bca13994-a8b1-fa21-fdf0-9f362d693f39@arm.com>
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+Subject: Re: [PATCH v3 0/3] Enable Hantro G1 post-processor
+Date: Mon, 10 Feb 2020 23:16:05 -0500
+Message-ID: <f3b8c40fa84f9819959bf60cc9a1f4951bcda36a.camel@ndufresne.ca>
+References: <20191113175603.24742-1-ezequiel@collabora.com>
+         <74fea061a52ee3f8e25793bf9e47eba90a52c3e3.camel@ndufresne.ca>
+         <CAAFQd5A8Y3C64NozqXjMDV0CQ5==dW9Y-6KtFigYFmO3EDd3+A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="sMZCuqyhuhd4ycTi"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <bca13994-a8b1-fa21-fdf0-9f362d693f39-5wv7dgnIgG8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAAFQd5A8Y3C64NozqXjMDV0CQ5==dW9Y-6KtFigYFmO3EDd3+A@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, kernel@collabora.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Chris Healy <cphealy@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Le lundi 10 février 2020 à 11:45 +0900, Tomasz Figa a écrit :
+> On Mon, Feb 10, 2020 at 4:52 AM Nicolas Dufresne <nicolas@ndufresne.ca> wrote:
+> > Le mercredi 13 novembre 2019 à 14:56 -0300, Ezequiel Garcia a écrit :
+> > > Hi all,
+> > > 
+> > > The Hantro G1 VPU post-processor block can be pipelined with
+> > > the decoder hardware, allowing to perform operations such as
+> > > color conversion, scaling, rotation, cropping, among others.
+> > > 
+> > > When the post-processor is enabled, the decoder hardware
+> > > needs its own set of NV12 buffers (the native decoder format),
+> > > and the post-processor is the owner of the CAPTURE buffers,
+> > > allocated for the post-processed format.
+> > > 
+> > > This way, applications obtain post-processed
+> > > (scaled, converted, etc) buffers transparently.
+> > > 
+> > > This feature is implemented by exposing the post-processed pixel
+> > > formats on ENUM_FMT, ordered as "preferred pixelformat first":
+> > > 
+> > > v4l2-ctl -d 1 --list-formats
+> > > ioctl: VIDIOC_ENUM_FMT
+> > >       Type: Video Capture Multiplanar
+> > > 
+> > >       [0]: 'NV12' (Y/CbCr 4:2:0)
+> > >       [1]: 'YUYV' (YUYV 4:2:2)
+> > > 
+> > > The order of preference in ENUM_FMT can be used as a hint
+> > > by applications. This series updates the uAPI specification
+> > > accordingly.
+> > 
+> > As I'm implementing this, I realize that there may me a gap in being
+> > able to implement both IPP and non-IPP support in a generic framework.
+> > Unlike the above comment, we for non-IPP decoder we cannot naively pick
+> > the first format. In fact we parse the chroma and depth information
+> > from the headers (like pps from H264), and we pick a matching pixel
+> > format. This way, if we have a 10bit stream, and our IP supports 10bit,
+> > we will pick a 10bit pixel formats, otherwise decoding will just fail.
+> > 
+> > None of this information is passed to the driver prior to the first
+> > Request being made, so there is no way (as of current spec) that the
+> > driver can validate this in try_fmt ahead of time. Unless I set picture
+> > parameters without a request_fd for that purpose. If this is the way,
+> > then we should document this.
+> 
+> +Alexandre Courbot
+> 
+> It was suggested in the very early RFC stage, but it looks like it
+> didn't make it to the final spec.
+> https://patchwork.kernel.org/patch/10583233/#22209555
 
---sMZCuqyhuhd4ycTi
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Ok, maybe we should revive it, it would fill that gap. Again, only an
+issue if you have a post processor. I'm still surprised we didn't
+expose the IPP functions through the topology, it would make so much
+sense to me, and I can make better code with that knowledge.
 
-On Thu, Feb 06, 2020 at 09:38:11PM +0000, Robin Murphy wrote:
-> On 2020-02-06 6:05 pm, Peter Geis wrote:
-> > On Thu, Feb 6, 2020 at 8:57 AM Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-> >>
+I found while coding this, that even if it's more difficult,
+classification of device by looking at the topology and the entity
+functions is much nicer, less of a guess.
 
+Though, we lack some documentation (or clarification) for how to
+properly handle formats, size and selection in order to configure the
+IPP. Ezequiel was saying that we don't implement selection in Hanto, so
+I guess the scaling is a bit ambiguous then in regard to coded/display
+sizes. Though we pass a size to the OUTPUT side, so the driver can
+always control a little bit.
 
-> compromise that isn't too hideous, preserves the logical cleanup but
-> at least prevents audio going silent with old DTBs (plus handling GPIO
-> probe deferral properly which I forgot about first time around). How
-> does this look?
->=20
-> Robin.
->=20
-> ----->8-----
+> 
+> > Is this the intended way to negotiation IPP functions with the driver ?
+> > 
+> 
+> In theory, if the userspace knows whether the stream is 4:2:0 or 4:2:2
+> and 8-bit or 10-bit, it can still select the first format from the top
+> that matches these properties.
 
-Please don't send revisions of individual patches in reply to discussion
-of a series, it makes it really hard to follow what's going on with the
-series.  Please just send patches normally.
+That's exactly what I do, I have a map of the formats and their
+chroma/depth, and take the first one that match. If that fails, I just
+fallback to the first one. It's something you need to do anyway, as we
+prefer the native format first (even if there is an IPP).
 
---sMZCuqyhuhd4ycTi
-Content-Type: application/pgp-signature; name="signature.asc"
+> 
+> That's not how format handling in V4L2 works, though. ENUM_FMT is
+> expected to return a list of valid formats and if we forget about the
+> image processor for a moment, a stateless decoder would always return
+> any possible format, including ones invalid for the stream.
+> 
+> Now back to the image processor, if it handles conversions from any to
+> any format listed by ENUM_FMT, we kind of regain the V4L2 compliance,
+> but if the conversions are limited, the above requirement still
+> doesn't hold and we're not implementing V4L2 correctly.
+> 
+> Perhaps we can still amend the spec and require controls that
+> determine the stream properties to be set before starting the
+> streaming? I can imagine it could also help the driver filter out some
+> unsupported streams early, before allocating buffers and attempting to
+> decode.
 
------BEGIN PGP SIGNATURE-----
+I think it would make sense, so just to make sure, for H264 we could
+set the V4L2_CID_MPEG_VIDEO_H264_SPS along with the OUTPUT format,
+prior to CAPTURE enumeration.
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl5BYRsACgkQJNaLcl1U
-h9Du0wf9HO3Q6AaZJ1I4tRS3loJ/OXK/v8QMTdDtKmw/Ek+JwYeQh3npOWMQBItK
-6pwxmpW5l4Cej0jPXpea00qCFYlQEadT1topkaNHLoNic2dlkVSv2seRbm3R6dwP
-ghjNr4Mwv3vycd1P46hmJZsB+eDH4HmZnQGKSFkdz4i1j6MOLfwWxdnJLWpOP740
-dwaB4VXKiS3EKCw5A3Q07jMCTuNyeXumjmq79/4POKCmN7FcE5Gr64c747stLQ+g
-cDRDRKWiVhLuAFTDTnHf4ry9bTlGulap1bs2xN2qlmbxIKMT5ZV/UGQDhqrDQ6MV
-/A1zX6aZmKOe6X82hUl4CSeTgIR6HQ==
-=TcrG
------END PGP SIGNATURE-----
-
---sMZCuqyhuhd4ycTi--
+> 
+> Best regards,
+> Tomasz
+> 
+> > > When the application sets a pixel format other than NV12,
+> > > the post-processor is transparently enabled.
+> > > 
+> > > Patch 1 is a cleanups needed to easier integrate the post-processor.
+> > > Patch 2 introduces the post-processing support.
+> > > Patch 3 updates the uAPI specification.
+> > > 
+> > > This is tested on RK3288 platforms with MPEG-2, VP8 and
+> > > H264 streams, decoding to YUY2 surfaces. For now, this series
+> > > is only adding support for NV12-to-YUY2 conversion.
+> > > 
+> > > Applies to media/master.
+> > > 
+> > > Future plans
+> > > ------------
+> > > 
+> > > It seems to me that we should start moving this driver to use
+> > > regmap-based access to registers. However, such move is out of scope
+> > > and not entirely related to this post-processor enablement.
+> > > 
+> > > We'll work on that as follow-up patches.
+> > > 
+> > > Changelog
+> > > ---------
+> > > 
+> > > Changes v3:
+> > > 
+> > > * After discussing with Hans and Tomasz during the media summit
+> > > in ELCE, we decided to go back on the MC changes. The MC topology
+> > > is now untouched. This means the series is now similar to v1,
+> > > except we explicitly use the ENUM_FMT to hint about the post-processed
+> > > formats.
+> > > 
+> > > Changes v2:
+> > > 
+> > > * The decoder->post-processor topology is now exposed
+> > >   explicitly and applications need to configure the pipeline.
+> > >   By default, the decoder is enabled and the post-processor
+> > >   is disabled.
+> > > 
+> > > * RGB post-processing output has been dropped. We might
+> > >   add this in the future, but for now, it seems it would
+> > >   make the code more complex without a use-case in mind.
+> > >   RGB is much more memory-consuming so less attractive
+> > >   than YUV, and modern GPUs and display controllers support YUV.
+> > > 
+> > > * The post-processor implementation still supports RK3288
+> > >   only. However, a generic register infrastructure is introduced
+> > >   to make addition of other variants such as RK3399 really easy.
+> > > 
+> > > Ezequiel Garcia (3):
+> > >   media: hantro: Cleanup format negotiation helpers
+> > >   media: hantro: Support color conversion via post-processing
+> > >   media: vidioc-enum-fmt.rst: clarify format preference
+> > > 
+> > >  .../media/uapi/v4l/vidioc-enum-fmt.rst        |   4 +-
+> > >  drivers/staging/media/hantro/Makefile         |   1 +
+> > >  drivers/staging/media/hantro/hantro.h         |  64 +++++++-
+> > >  drivers/staging/media/hantro/hantro_drv.c     |   8 +-
+> > >  .../staging/media/hantro/hantro_g1_h264_dec.c |   2 +-
+> > >  .../media/hantro/hantro_g1_mpeg2_dec.c        |   2 +-
+> > >  drivers/staging/media/hantro/hantro_g1_regs.h |  53 +++++++
+> > >  .../staging/media/hantro/hantro_g1_vp8_dec.c  |   2 +-
+> > >  drivers/staging/media/hantro/hantro_h264.c    |   6 +-
+> > >  drivers/staging/media/hantro/hantro_hw.h      |  13 ++
+> > >  .../staging/media/hantro/hantro_postproc.c    | 141 ++++++++++++++++++
+> > >  drivers/staging/media/hantro/hantro_v4l2.c    | 105 ++++++++-----
+> > >  drivers/staging/media/hantro/rk3288_vpu_hw.c  |  10 ++
+> > >  13 files changed, 366 insertions(+), 45 deletions(-)
+> > >  create mode 100644 drivers/staging/media/hantro/hantro_postproc.c
+> > > 
