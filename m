@@ -1,208 +1,236 @@
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-Subject: Re: [PATCH v3 0/3] Enable Hantro G1 post-processor
-Date: Tue, 11 Feb 2020 11:22:41 -0500
-Message-ID: <9655c8b0cf58c93e26159503120f37890731f313.camel@ndufresne.ca>
-References: <20191113175603.24742-1-ezequiel@collabora.com>
-         <74fea061a52ee3f8e25793bf9e47eba90a52c3e3.camel@ndufresne.ca>
-         <CAAFQd5A8Y3C64NozqXjMDV0CQ5==dW9Y-6KtFigYFmO3EDd3+A@mail.gmail.com>
-         <f3b8c40fa84f9819959bf60cc9a1f4951bcda36a.camel@ndufresne.ca>
+From: Adam Van Ymeren <adam@vany.ca>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix rk3328-roc-cc sdmmcio-regulator
+Date: Tue, 11 Feb 2020 16:32:06 -0500
+Message-ID: <5111ebb1-fd44-354a-0a55-5f27f9523c9e@vany.ca>
+References: <87imkryz5t.fsf@vany.ca>
+ <7b9829b3-e2d2-95b1-03cb-1af7a3c6acad@arm.com>
+ <4a6a9d81-c831-4167-7fbf-64805940fb6f@vany.ca>
+ <d8a8b696-268b-1ea8-7b5e-406a651011ff@arm.com>
+ <510d310b-30af-7b24-d472-907bc6b2ef46@vany.ca>
+ <CAMdYzYo5V2rHE6Axx9p67n3FcCFpQ5TA+m7kqaE3Uqn6d0QUhw@mail.gmail.com>
+ <7b36198e-25c0-4f3b-d871-6bd5aaf619d8@vany.ca>
+ <CAMdYzYp_dVjn18-6gy5MVpuGcOpf26eaPitfNZhARCixfrtYCA@mail.gmail.com>
+ <2f863743-f5fd-7702-ac22-762dbca834cb@vany.ca>
+ <CAMdYzYopKjRpVnyq2k84XZK0kmR_ZBH8KNjVyPz3upQjx0rLJQ@mail.gmail.com>
+ <88ee95cc-4160-a1b2-ae38-6a1146cc2dde@vany.ca>
+ <fc529695-ccd7-f1b5-ebf5-8241fec3a24a@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f3b8c40fa84f9819959bf60cc9a1f4951bcda36a.camel@ndufresne.ca>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, kernel@collabora.com, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philipp Zabel <p.zabel@pengutronix.de>, Boris Brezillon <boris.brezillon@collabora.com>, Chris Healy <cphealy@gmail.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Alexandre Courbot <acourbot@chromium.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <fc529695-ccd7-f1b5-ebf5-8241fec3a24a@arm.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Robin Murphy <robin.murphy@arm.com>, Peter Geis <pgwipeout@gmail.com>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On lun, 2020-02-10 at 23:16 -0500, Nicolas Dufresne wrote:
-> Le lundi 10 février 2020 à 11:45 +0900, Tomasz Figa a écrit :
-> > On Mon, Feb 10, 2020 at 4:52 AM Nicolas Dufresne <nicolas@ndufresne.ca>
-> > wrote:
-> > > Le mercredi 13 novembre 2019 à 14:56 -0300, Ezequiel Garcia a écrit :
-> > > > Hi all,
-> > > > 
-> > > > The Hantro G1 VPU post-processor block can be pipelined with
-> > > > the decoder hardware, allowing to perform operations such as
-> > > > color conversion, scaling, rotation, cropping, among others.
-> > > > 
-> > > > When the post-processor is enabled, the decoder hardware
-> > > > needs its own set of NV12 buffers (the native decoder format),
-> > > > and the post-processor is the owner of the CAPTURE buffers,
-> > > > allocated for the post-processed format.
-> > > > 
-> > > > This way, applications obtain post-processed
-> > > > (scaled, converted, etc) buffers transparently.
-> > > > 
-> > > > This feature is implemented by exposing the post-processed pixel
-> > > > formats on ENUM_FMT, ordered as "preferred pixelformat first":
-> > > > 
-> > > > v4l2-ctl -d 1 --list-formats
-> > > > ioctl: VIDIOC_ENUM_FMT
-> > > >       Type: Video Capture Multiplanar
-> > > > 
-> > > >       [0]: 'NV12' (Y/CbCr 4:2:0)
-> > > >       [1]: 'YUYV' (YUYV 4:2:2)
-> > > > 
-> > > > The order of preference in ENUM_FMT can be used as a hint
-> > > > by applications. This series updates the uAPI specification
-> > > > accordingly.
-> > > 
-> > > As I'm implementing this, I realize that there may me a gap in being
-> > > able to implement both IPP and non-IPP support in a generic framework.
-> > > Unlike the above comment, we for non-IPP decoder we cannot naively pick
-> > > the first format. In fact we parse the chroma and depth information
-> > > from the headers (like pps from H264), and we pick a matching pixel
-> > > format. This way, if we have a 10bit stream, and our IP supports 10bit,
-> > > we will pick a 10bit pixel formats, otherwise decoding will just fail.
-> > > 
-> > > None of this information is passed to the driver prior to the first
-> > > Request being made, so there is no way (as of current spec) that the
-> > > driver can validate this in try_fmt ahead of time. Unless I set picture
-> > > parameters without a request_fd for that purpose. If this is the way,
-> > > then we should document this.
-> > 
-> > +Alexandre Courbot
-> > 
-> > It was suggested in the very early RFC stage, but it looks like it
-> > didn't make it to the final spec.
-> > https://patchwork.kernel.org/patch/10583233/#22209555
-> 
-> Ok, maybe we should revive it, it would fill that gap. Again, only an
-> issue if you have a post processor. I'm still surprised we didn't
-> expose the IPP functions through the topology, it would make so much
-> sense to me, and I can make better code with that knowledge.
-> 
-> I found while coding this, that even if it's more difficult,
-> classification of device by looking at the topology and the entity
-> functions is much nicer, less of a guess.
-> 
-> Though, we lack some documentation (or clarification) for how to
-> properly handle formats, size and selection in order to configure the
-> IPP. Ezequiel was saying that we don't implement selection in Hanto, so
-> I guess the scaling is a bit ambiguous then in regard to coded/display
-> sizes. Though we pass a size to the OUTPUT side, so the driver can
-> always control a little bit.
-
-Re-reading the "initialization process", it's actually still there:
-
-"Call VIDIOC_S_EXT_CTRLS() to set all the controls (parsed headers, etc.)
-required by the OUTPUT format to enumerate the CAPTURE formats."
-
-And then it suggest to use G_FMT to retreive the optimal format as selected by
-the driver. So I guess this is a false alarm. And we probably don't need to play
-with the subsampling to filter the formats, as the driver is expected to do so.
-
-So what could be improve, is have in the per-codec documentation the list of
-controls that are "required by the OUTPUT format to enumerate the CAPTURE
-formats.". Could just be a comment in the control doc so say, "this control is
-needed to allow enumerationg of the CAPTURE formats".
-
-> 
-> > > Is this the intended way to negotiation IPP functions with the driver ?
-> > > 
-> > 
-> > In theory, if the userspace knows whether the stream is 4:2:0 or 4:2:2
-> > and 8-bit or 10-bit, it can still select the first format from the top
-> > that matches these properties.
-> 
-> That's exactly what I do, I have a map of the formats and their
-> chroma/depth, and take the first one that match. If that fails, I just
-> fallback to the first one. It's something you need to do anyway, as we
-> prefer the native format first (even if there is an IPP).
-> 
-> > That's not how format handling in V4L2 works, though. ENUM_FMT is
-> > expected to return a list of valid formats and if we forget about the
-> > image processor for a moment, a stateless decoder would always return
-> > any possible format, including ones invalid for the stream.
-> > 
-> > Now back to the image processor, if it handles conversions from any to
-> > any format listed by ENUM_FMT, we kind of regain the V4L2 compliance,
-> > but if the conversions are limited, the above requirement still
-> > doesn't hold and we're not implementing V4L2 correctly.
-> > 
-> > Perhaps we can still amend the spec and require controls that
-> > determine the stream properties to be set before starting the
-> > streaming? I can imagine it could also help the driver filter out some
-> > unsupported streams early, before allocating buffers and attempting to
-> > decode.
-> 
-> I think it would make sense, so just to make sure, for H264 we could
-> set the V4L2_CID_MPEG_VIDEO_H264_SPS along with the OUTPUT format,
-> prior to CAPTURE enumeration.
-> 
-> > Best regards,
-> > Tomasz
-> > 
-> > > > When the application sets a pixel format other than NV12,
-> > > > the post-processor is transparently enabled.
-> > > > 
-> > > > Patch 1 is a cleanups needed to easier integrate the post-processor.
-> > > > Patch 2 introduces the post-processing support.
-> > > > Patch 3 updates the uAPI specification.
-> > > > 
-> > > > This is tested on RK3288 platforms with MPEG-2, VP8 and
-> > > > H264 streams, decoding to YUY2 surfaces. For now, this series
-> > > > is only adding support for NV12-to-YUY2 conversion.
-> > > > 
-> > > > Applies to media/master.
-> > > > 
-> > > > Future plans
-> > > > ------------
-> > > > 
-> > > > It seems to me that we should start moving this driver to use
-> > > > regmap-based access to registers. However, such move is out of scope
-> > > > and not entirely related to this post-processor enablement.
-> > > > 
-> > > > We'll work on that as follow-up patches.
-> > > > 
-> > > > Changelog
-> > > > ---------
-> > > > 
-> > > > Changes v3:
-> > > > 
-> > > > * After discussing with Hans and Tomasz during the media summit
-> > > > in ELCE, we decided to go back on the MC changes. The MC topology
-> > > > is now untouched. This means the series is now similar to v1,
-> > > > except we explicitly use the ENUM_FMT to hint about the post-processed
-> > > > formats.
-> > > > 
-> > > > Changes v2:
-> > > > 
-> > > > * The decoder->post-processor topology is now exposed
-> > > >   explicitly and applications need to configure the pipeline.
-> > > >   By default, the decoder is enabled and the post-processor
-> > > >   is disabled.
-> > > > 
-> > > > * RGB post-processing output has been dropped. We might
-> > > >   add this in the future, but for now, it seems it would
-> > > >   make the code more complex without a use-case in mind.
-> > > >   RGB is much more memory-consuming so less attractive
-> > > >   than YUV, and modern GPUs and display controllers support YUV.
-> > > > 
-> > > > * The post-processor implementation still supports RK3288
-> > > >   only. However, a generic register infrastructure is introduced
-> > > >   to make addition of other variants such as RK3399 really easy.
-> > > > 
-> > > > Ezequiel Garcia (3):
-> > > >   media: hantro: Cleanup format negotiation helpers
-> > > >   media: hantro: Support color conversion via post-processing
-> > > >   media: vidioc-enum-fmt.rst: clarify format preference
-> > > > 
-> > > >  .../media/uapi/v4l/vidioc-enum-fmt.rst        |   4 +-
-> > > >  drivers/staging/media/hantro/Makefile         |   1 +
-> > > >  drivers/staging/media/hantro/hantro.h         |  64 +++++++-
-> > > >  drivers/staging/media/hantro/hantro_drv.c     |   8 +-
-> > > >  .../staging/media/hantro/hantro_g1_h264_dec.c |   2 +-
-> > > >  .../media/hantro/hantro_g1_mpeg2_dec.c        |   2 +-
-> > > >  drivers/staging/media/hantro/hantro_g1_regs.h |  53 +++++++
-> > > >  .../staging/media/hantro/hantro_g1_vp8_dec.c  |   2 +-
-> > > >  drivers/staging/media/hantro/hantro_h264.c    |   6 +-
-> > > >  drivers/staging/media/hantro/hantro_hw.h      |  13 ++
-> > > >  .../staging/media/hantro/hantro_postproc.c    | 141 ++++++++++++++++++
-> > > >  drivers/staging/media/hantro/hantro_v4l2.c    | 105 ++++++++-----
-> > > >  drivers/staging/media/hantro/rk3288_vpu_hw.c  |  10 ++
-> > > >  13 files changed, 366 insertions(+), 45 deletions(-)
-> > > >  create mode 100644 drivers/staging/media/hantro/hantro_postproc.c
-> > > > 
+Ck9uIDIwMjAtMDItMTAgODozNyBhLm0uLCBSb2JpbiBNdXJwaHkgd3JvdGU6Cj4gT24gMDkvMDIv
+MjAyMCAxOjA3IGFtLCBBZGFtIFZhbiBZbWVyZW4gd3JvdGU6Cj4+IEdvdCBpdCB3b3JraW5nLiBS
+b2JpbiB5b3Ugd2VyZSByaWdodCwgaXQganVzdCBuZWVkZWQgZW5hYmxlLWFjdGl2ZS1oaWdoOwo+
+PiBhZGRlZCB0byB0aGUgcmVndWxhdG9yLCB1cGRhdGVkIHBhdGNoIGF0IHRoZSBlbmQgb2YgdGhp
+cyBtZXNzYWdlLgo+Cj4gV2VpcmQuLi4gYWZ0ZXIgbXkgaW5pdGlhbCBleGNpdGVtZW50IEkgd2Vu
+dCBiYWNrIGFuZCBsb29rZWQgbW9yZQo+IGNsb3NlbHkgYXQgdGhlIGJpbmRpbmcgYW5kIGdwaW9s
+aWItb2YgY29kZSwgb25seSB0byByZWFsaXNlIHRoYXQgdGhhdAo+IHByb3BlcnR5IGlzIG9ubHkg
+c3VwcG9zZWQgdG8gYXBwbHkgdG8gc3BlY2lmaWMgJ2VuYWJsZScgR1BJT3MgKG9mCj4gd2hpY2gg
+dGhlcmUgYXJlIG5vbmUgaGVyZSBzaW5jZSBpdCdzIGFsd2F5cy1vbiksIGFuZCB0aGF0IHRoZSAn
+c3RhdGUnCj4gR1BJT3Mgd2VyZSBhIHNlcGFyYXRlIHRoaW5nIGFuZCBJJ2QganVtcGVkIHRvIHRo
+ZSB3cm9uZyBjb25jbHVzaW9uLiBTbwo+IG5vdyBJJ20gZG91Ymx5IHN1cnByaXNlZCB0aGF0IGl0
+IGFjdHVhbGx5IG1ha2VzIGEgZGlmZmVyZW5jZSA6LwoKWWVhaCB5b3UncmUgcmlnaHQsIGl0IGRv
+ZXNuJ3QgbWFrZSBhIGRpZmZlcmVuY2UsIGl0IHdhcyBqdXN0CmNvaW5jaWRlbmNlLsKgIEl0IGp1
+c3Qgc2VlbXMgdG8gYmUgcmVhbGx5IGZsYWt5LCBpdCdzIGJvb3RpbmcKc3VjY2Vzc2Z1bGx5IGFi
+b3V0IDIwLTMwJSBvZiB0aGUgdGltZSwgSSBrZXB0IGRyYXdpbmcgY29uY2x1c2lvbnMgYmFzZWQK
+b24gb25lIG9yIHR3byBzdWNjZXNzZnVsIGJvb3RzLCBidXQgZnJvbSBub3cgb24gSSdsbCB0cnkg
+MTAgYm9vdHMKYmVmb3JlwqAgV2l0aCBubyBjaGFuZ2VzIGFuZCBqdXN0IHVucGx1Z2dpbmcvcmVw
+bHVnZ2luZyB0aGUgYm9hcmQsIHRoZQprZXJuZWwgb25seSBmaW5kcyBtbWNibGsxIDIwLTMwJSBv
+ZiB0aGUgdGltZS7CoCBXaGF0J3Mgd2VpcmQgdGhvdWdoIGlzCnRoYXQgdGhlIGZpcnN0IHN0YWdl
+IGlkYmxvYWRlciBhbmQgdS1ib290IHNvIGZhciBoYXZlIHdvcmtlZCAxMDAlIG9mIHRoZQp0aW1l
+IG9uIHRoZSBzYW1lIHNkY2FyZC4KCgpBcyBJIHNhaWQgZWFybHkgaW4gdGhlIHRocmVhZCwgaWYg
+SSByZW1vdmUgdmNjX3NkaW8vdnFtbWMgZnJvbSB0aGUKZGV2aWNlIHRyZWUsIHRoZW4gdGhlIGtl
+cm5lbCBmaW5kcyBtbWNibGsxIGV2ZXJ5IHRpbWUgSSd2ZSBhdHRlbXB0ZWQgaXQKc28gZmFyLCBh
+bHRob3VnaCBJIGhhdmVuJ3QgZG9uZSBleHRlbnNpdmUgdGVzdHMgdG8gc2VlIGlmIGkvbyBpcwpz
+dGFibGUuwqAgU28gdGhlcmUgc2VlbXMgdG8gYmUgX3NvbWV0aGluZ18gYWJvdXQgaG93IHRoZSBr
+ZXJuZWwgaXMKaW50ZXJhY3Rpbmcgd2l0aCB0aGUgcmVndWxhdG9yIGFuZC9vciB0aGUgbW1jIGhv
+c3QsIG90aGVyd2lzZSBJIHNlZSBubwpleHBsYW5hdGlvbiBmb3Igd2h5IHRoZSBrZXJuZWwgd291
+bGQgZmFpbCB3aGVyZSB1LWJvb3QgaGFkIHN1Y2NlZWRlZC4KCgpJIGxvZ2dlZCB3cml0ZXMgdG8g
+cmVnaXN0ZXIgMHg0MjgsIGFuZCB2b2x0YWdlIGNoYW5nZXMgaW4KZ3Bpby1yZWd1bGF0b3IsIHdp
+dGggdGhlIGRlZmF1bHQgZGV2aWNlIHRyZWUgd2hlbiBhc2tpbmcgZm9yIDMuM1YgaXQKc2V0cyAw
+eDQyOCB0byAweDIwMDAwLCB3aGljaCBpcyBhcyBleHBlY3RlZCwgSSB2ZXJpZmllZCB0aGUgb3V0
+cHV0IG9mCnRoZSB2b2x0YWdlIHJlZ3VsYXRvciB3aXRoIGEgbXVsdGltZXRlciBhbmQgaXQgZG9l
+cyBhcHBlYXIgdG8gYmUgMy4zVi7CoApJIG5vdGljZSBob3dldmVyIHRoYXQgZWFybHkgaW4gdGhl
+IGdwaW8gc2V0dXAgaXQgZmlyc3Qgd3JpdGVzIDB4MjAwMDIgdG8KMHg0MjggYmVmb3JlIGxhdGVy
+IHdyaXRpbmcgMHgyMDAwMCB3aGF0IGluaXRpYWxpemluZyB0aGUgbW1jIGRyaXZlcgoKClvCoMKg
+wqAgMC41NDUwMDddIEFEQU1WWSByZWdtYXAgNDI4IDw9IDIwMDAyClvCoMKgwqAgMC41NDkzNDhd
+IGR3bW1jX3JvY2tjaGlwIGZmNTAwMDAwLmR3bW1jOiBJRE1BQyBzdXBwb3J0cyAzMi1iaXQKYWRk
+cmVzcyBtb2RlLgpbwqDCoMKgIDAuNTUwMDEyXSBkd21tY19yb2NrY2hpcCBmZjUwMDAwMC5kd21t
+YzogVXNpbmcgaW50ZXJuYWwgRE1BIGNvbnRyb2xsZXIuClvCoMKgwqAgMC41NTA2MTVdIGR3bW1j
+X3JvY2tjaGlwIGZmNTAwMDAwLmR3bW1jOiBWZXJzaW9uIElEIGlzIDI3MGEKW8KgwqDCoCAwLjU1
+MTE1NF0gZHdtbWNfcm9ja2NoaXAgZmY1MDAwMDAuZHdtbWM6IERXIE1NQyBjb250cm9sbGVyIGF0
+IGlycQoyOSwzMiBiaXQgaG9zdCBkYXRhIHdpZHRoLDI1NiBkZWVwIGZpZm8KW8KgwqDCoCAwLjU1
+MjUyN10gQURBTVZZOiBncGlvX3JlZ3VsYXRvcl9zZXRfdm9sdGFnZSB2Y2Nfc2RpbzogdXY6IDMz
+MDAwMDAKc3RhdGU6IDAKW8KgwqDCoCAwLjU1MzE1OF0gQURBTVZZIHJlZ21hcCA0MjggPD0gMjAw
+MDAKW8KgwqDCoCAwLjU2NjEzM10gbW1jX2hvc3QgbW1jMTogQnVzIHNwZWVkIChzbG90IDApID0g
+NDAwMDAwSHogKHNsb3QgcmVxCjQwMDAwMEh6LCBhY3R1YWwgNDAwMDAwSFogZGl2ID0gMCkKCgpN
+eSBiZXN0IGd1ZXNzIGlzIHRoZXJlJ3Mgc29tZSBzb3J0IG9mIHJhY2UgY29uZGl0aW9uP8KgIE1h
+eWJlIGEgY2FwYWNpdG9yCmlzIHN0aWxsIGNoYXJnaW5nIGFuZCBob2xkaW5nIHRoZSB2b2x0YWdl
+IGxvdyBqdXN0IGxvbmcgZW5vdWdoIHRoYXQgdGhlCmtlcm5lbCBnaXZlcyB1cD/CoCBPciBtYXli
+ZSB0aGUga2VybmVsIGlzIGp1c3Qgbm90IHdhaXRpbmcgbG9uZyBlbm91Z2gKZm9yIHRoZSBtbWMg
+aG9zdCB0byBmaW5pc2ggaW5pdGlhbGl6aW5nLsKgIEluIGFib3V0IDUwJSBvZiBteSBmYWlsZWQK
+Ym9vdHMgSSBzZWUgdGhpcyBkZWJ1ZyBtZXNzYWdlcyBhYm91dCBtbWMxIG1peGVkIGludG8gdGhl
+IGtlcm5lbCBwYW5pYwpsaWtlIHNvLgoKW8KgwqDCoCAwLjY2MjQyOF0gVkZTOiBDYW5ub3Qgb3Bl
+biByb290IGRldmljZSAibW1jYmxrMXA1IiBvcgp1bmtub3duLWJsb2NrKDAsMCk6IGVycm9yIC02
+ClvCoMKgwqAgMC42NjMxMDddIFBsZWFzZSBhcHBlbmQgYSBjb3JyZWN0ICJyb290PSIgYm9vdCBv
+cHRpb247IGhlcmUgYXJlIHRoZQphdmFpbGFibGUgcGFydGl0aW9uczoKW8KgwqDCoCAwLjY2Mzg0
+N10gS2VybmVsIHBhbmljIC0gbm90IHN5bmNpbmc6IFZGUzogVW5hYmxlIHRvIG1vdW50IHJvb3Qg
+ZnMKb24gdW5rbm93bi1ibG9jaygwLDApClvCoMKgwqAgMC42NjM4NzJdIG1tYzE6IHN0YXJ0aW5n
+IENNRDYgYXJnIDAwZmZmZmYwIGZsYWdzIDAwMDAwMGI1ClvCoMKgwqAgMC42NjQ1NzhdIENQVTog
+MiBQSUQ6IDEgQ29tbTogc3dhcHBlci8wIE5vdCB0YWludGVkIDUuNS4wICMzNwpbwqDCoMKgIDAu
+NjY1MDYxXSBtbWMxOsKgwqDCoMKgIGJsa3N6IDY0IGJsb2NrcyAxIGZsYWdzIDAwMDAwMjAwIHRz
+YWMgMTAwIG1zIG5zYWMgMApbwqDCoMKgIDAuNjY1NTcyXSBIYXJkd2FyZSBuYW1lOiBGaXJlZmx5
+IHJvYy1yazMzMjgtY2MgKERUKQpbwqDCoMKgIDAuNjY2NjAwXSBDYWxsIHRyYWNlOgpbwqDCoMKg
+IDAuNjY2ODMyXcKgIGR1bXBfYmFja3RyYWNlKzB4MC8weDFiNApbwqDCoMKgIDAuNjY3MTYxXcKg
+IHNob3dfc3RhY2srMHgxNC8weDFjClvCoMKgwqAgMC42Njc0NjFdwqAgZHVtcF9zdGFjaysweGI0
+LzB4MTAwClvCoMKgwqAgMC42Njc3NjhdwqAgcGFuaWMrMHgxMjAvMHgyZjQKW8KgwqDCoCAwLjY2
+ODA0Nl3CoCBtb3VudF9ibG9ja19yb290KzB4MmEwLzB4MzI4ClvCoMKgwqAgMC42Njg0MDFdwqAg
+bW91bnRfcm9vdCsweDdjLzB4ODgKW8KgwqDCoCAwLjY2ODQ1N10gbW1jMTogcmVxIGRvbmUgKENN
+RDYpOiAwOiAwMDAwMDkwMCAwMDAwMDAwMCAwMDAwMDAwMCAwMDAwMDAwMApbwqDCoMKgIDAuNjY4
+NzAwXcKgIHByZXBhcmVfbmFtZXNwYWNlKzB4MTU0LzB4MTY0ClvCoMKgwqAgMC42NjkyODhdIG1t
+YzE6wqDCoMKgwqAgNjQgYnl0ZXMgdHJhbnNmZXJyZWQ6IDAKW8KgwqDCoCAwLjY2OTY0Ml3CoCBr
+ZXJuZWxfaW5pdF9mcmVlYWJsZSsweDFkMC8weDI1NApbwqDCoMKgIDAuNjcwMDQwXSBtbWMxOiBj
+bG9jayAyNTAwMDAwMEh6IGJ1c21vZGUgMiBwb3dlcm1vZGUgMiBjcyAwIFZkZCAyMQp3aWR0aCAx
+IHRpbWluZyAwClvCoMKgwqAgMC42NzA0MDRdwqAga2VybmVsX2luaXQrMHgxMC8weGY4ClvCoMKg
+wqAgMC42NzExMzFdIG1tY19ob3N0IG1tYzE6IEJ1cyBzcGVlZCAoc2xvdCAwKSA9IDI1MDAwMDAw
+SHogKHNsb3QgcmVxCjI1MDAwMDAwSHosIGFjdHVhbCAyNTAwMDAwMEhaIGRpdiA9IDApClvCoMKg
+wqAgMC42NzEzNzhdwqAgcmV0X2Zyb21fZm9yaysweDEwLzB4MTgKW8KgwqDCoCAwLjY3MjIzMF0g
+bW1jMTogc3RhcnRpbmcgQ01ENTUgYXJnIGFmNTMwMDAwIGZsYWdzIDAwMDAwMDk1CgpzdWdnZXN0
+aW5nIHRoYXQgdGhlIGtlcm5lbCBpcyBzdGlsbCBkb2luZyBzdHVmZiB3aXRoIG1tYzEgYWZ0ZXIg
+aXQncwphbHJlYWR5IGdpdmVuIHVwIG9uIGZpbmRpbmcgdGhlIHJvb3QgZGV2aWNlLgoKCkhlcmUn
+cyBkbWVzZyBmcm9tIGEgc3VjY2Vzc2Z1bCBib290IHwgZ3JlcCBtbWMKCgokIGdyZXAgbW1jIHN1
+Y2Nlc3MudHh0ClvCoMKgwqAgMC4wMDAwMDBdIEtlcm5lbCBjb21tYW5kIGxpbmU6IGVhcmx5Y29u
+PXVhcnQ4MjUwLG1taW8zMiwweGZmMTMwMDAwCmNvbnNvbGU9dHR5UzIsMTUwMDAwMCBydyByb290
+PS9kZXYvbW1jYmxrMXA1IGluaXQ9L3NiaW4vaW5pdAprZ2Rib2M9dHR5UzIsMTUwMDAwMCBsb2ds
+ZXZlbD03IGR5bmRiZz0ibW9kdWxlIGR3X21tYyArcCA7IG1vZHVsZQpkd19tbWNfcm9ja2NoaXAg
+K3AgOyBtb2R1bGUgbW1jX2NvcmUgK3AiClvCoMKgwqAgMC4xMjM3MTRdIEFEQU1WWSBncGlvIGZp
+eGVkIHJlZ3VsYXRvciBxdWlya3MgZGV2aWNlOgpzZG1tYy1yZWd1bGF0b3IgYWN0aXZlX2xvdzog
+MQpbwqDCoMKgIDAuNDg1MjE1XSBkd21tY19yb2NrY2hpcCBmZjUwMDAwMC5kd21tYzogSURNQUMg
+c3VwcG9ydHMgMzItYml0CmFkZHJlc3MgbW9kZS4KW8KgwqDCoCAwLjQ4NTg3OV0gZHdtbWNfcm9j
+a2NoaXAgZmY1MDAwMDAuZHdtbWM6IFVzaW5nIGludGVybmFsIERNQSBjb250cm9sbGVyLgpbwqDC
+oMKgIDAuNDg2NDgyXSBkd21tY19yb2NrY2hpcCBmZjUwMDAwMC5kd21tYzogVmVyc2lvbiBJRCBp
+cyAyNzBhClvCoMKgwqAgMC40ODcwNTRdIGR3bW1jX3JvY2tjaGlwIGZmNTAwMDAwLmR3bW1jOiBE
+VyBNTUMgY29udHJvbGxlciBhdCBpcnEKMjksMzIgYml0IGhvc3QgZGF0YSB3aWR0aCwyNTYgZGVl
+cCBmaWZvClvCoMKgwqAgMC40ODk0OTVdIGR3bW1jX3JvY2tjaGlwIGZmNTIwMDAwLmR3bW1jOiBJ
+RE1BQyBzdXBwb3J0cyAzMi1iaXQKYWRkcmVzcyBtb2RlLgpbwqDCoMKgIDAuNDkwMTUzXSBkd21t
+Y19yb2NrY2hpcCBmZjUyMDAwMC5kd21tYzogVXNpbmcgaW50ZXJuYWwgRE1BIGNvbnRyb2xsZXIu
+ClvCoMKgwqAgMC40OTA3NThdIGR3bW1jX3JvY2tjaGlwIGZmNTIwMDAwLmR3bW1jOiBWZXJzaW9u
+IElEIGlzIDI3MGEKW8KgwqDCoCAwLjQ5MTMxM10gZHdtbWNfcm9ja2NoaXAgZmY1MjAwMDAuZHdt
+bWM6IERXIE1NQyBjb250cm9sbGVyIGF0IGlycQozMCwzMiBiaXQgaG9zdCBkYXRhIHdpZHRoLDI1
+NiBkZWVwIGZpZm8KW8KgwqDCoCAwLjQ5Mjk1Ml0gbW1jX2hvc3QgbW1jMDogY2FyZCBpcyBub24t
+cmVtb3ZhYmxlLgpbwqDCoMKgIDAuNTA2MTYxXSBtbWNfaG9zdCBtbWMwOiBCdXMgc3BlZWQgKHNs
+b3QgMCkgPSA0MDAwMDBIeiAoc2xvdCByZXEKNDAwMDAwSHosIGFjdHVhbCA0MDAwMDBIWiBkaXYg
+PSAwKQpbwqDCoMKgIDAuNTU5MTY5XSBkd21tY19yb2NrY2hpcCBmZjUwMDAwMC5kd21tYzogSURN
+QUMgc3VwcG9ydHMgMzItYml0CmFkZHJlc3MgbW9kZS4KW8KgwqDCoCAwLjU1OTgzNF0gZHdtbWNf
+cm9ja2NoaXAgZmY1MDAwMDAuZHdtbWM6IFVzaW5nIGludGVybmFsIERNQSBjb250cm9sbGVyLgpb
+wqDCoMKgIDAuNTYwNDM3XSBkd21tY19yb2NrY2hpcCBmZjUwMDAwMC5kd21tYzogVmVyc2lvbiBJ
+RCBpcyAyNzBhClvCoMKgwqAgMC41NjA5ODBdIGR3bW1jX3JvY2tjaGlwIGZmNTAwMDAwLmR3bW1j
+OiBEVyBNTUMgY29udHJvbGxlciBhdCBpcnEKMjksMzIgYml0IGhvc3QgZGF0YSB3aWR0aCwyNTYg
+ZGVlcCBmaWZvClvCoMKgwqAgMC41NzU5NjhdIG1tY19ob3N0IG1tYzE6IEJ1cyBzcGVlZCAoc2xv
+dCAwKSA9IDQwMDAwMEh6IChzbG90IHJlcQo0MDAwMDBIeiwgYWN0dWFsIDQwMDAwMEhaIGRpdiA9
+IDApClvCoMKgwqAgMC42NTA2NDddIG1tY19ob3N0IG1tYzE6IEJ1cyBzcGVlZCAoc2xvdCAwKSA9
+IDI1MDAwMDAwSHogKHNsb3QgcmVxCjI1MDAwMDAwSHosIGFjdHVhbCAyNTAwMDAwMEhaIGRpdiA9
+IDApClvCoMKgwqAgMC42NTc4NzNdIG1tYzE6IG5ldyBTRCBjYXJkIGF0IGFkZHJlc3MgYWY1Mwpb
+wqDCoMKgIDAuNjU5MDkxXSBtbWNibGsxOiBtbWMxOmFmNTMgU1UwMkcgMS44NCBHaUIKW8KgwqDC
+oCAwLjY3NzIzMV3CoCBtbWNibGsxOiBwMSBwMiBwMyBwNCBwNQpbwqDCoMKgIDAuNjk1NzA4XSBF
+WFQ0LWZzIChtbWNibGsxcDUpOiB3YXJuaW5nOiBtb3VudGluZyB1bmNoZWNrZWQgZnMsCnJ1bm5p
+bmcgZTJmc2NrIGlzIHJlY29tbWVuZGVkClvCoMKgwqAgMC43MDA3OTZdIEVYVDQtZnMgKG1tY2Js
+azFwNSk6IG1vdW50ZWQgZmlsZXN5c3RlbSB3aXRob3V0IGpvdXJuYWwuCk9wdHM6IChudWxsKQpb
+wqDCoMKgIDEuMDI5MzMyXSBkd21tY19yb2NrY2hpcCBmZjUyMDAwMC5kd21tYzogQnVzeTsgdHJ5
+aW5nIGFueXdheQpbwqDCoMKgIDEuNTI5ODU4XSBtbWNfaG9zdCBtbWMwOiBUaW1lb3V0IHNlbmRp
+bmcgY29tbWFuZCAoY21kIDB4MjAyMDAwIGFyZwoweDAgc3RhdHVzIDB4ODAyMDIwMDApClvCoMKg
+wqAgMS41NDQ1MjZdIG1tY19ob3N0IG1tYzA6IEJ1cyBzcGVlZCAoc2xvdCAwKSA9IDMwMDAwMEh6
+IChzbG90IHJlcQozMDAwMDBIeiwgYWN0dWFsIDMwMDAwMEhaIGRpdiA9IDApClvCoMKgwqAgMi4w
+NjcwNDZdIGR3bW1jX3JvY2tjaGlwIGZmNTIwMDAwLmR3bW1jOiBCdXN5OyB0cnlpbmcgYW55d2F5
+ClvCoMKgwqAgMi41Njc1NjVdIG1tY19ob3N0IG1tYzA6IFRpbWVvdXQgc2VuZGluZyBjb21tYW5k
+IChjbWQgMHgyMDIwMDAgYXJnCjB4MCBzdGF0dXMgMHg4MDIwMjAwMCkKW8KgwqDCoCAyLjU4MjE5
+OV0gbW1jX2hvc3QgbW1jMDogQnVzIHNwZWVkIChzbG90IDApID0gMjAwMDAwSHogKHNsb3QgcmVx
+CjIwMDAwMEh6LCBhY3R1YWwgMjAwMDAwSFogZGl2ID0gMCkKW8KgwqDCoCAzLjEwNzM1M10gZHdt
+bWNfcm9ja2NoaXAgZmY1MjAwMDAuZHdtbWM6IEJ1c3k7IHRyeWluZyBhbnl3YXkKW8KgwqDCoCAz
+LjYwNzg4OV0gbW1jX2hvc3QgbW1jMDogVGltZW91dCBzZW5kaW5nIGNvbW1hbmQgKGNtZCAweDIw
+MjAwMCBhcmcKMHgwIHN0YXR1cyAweDgwMjAyMDAwKQpbwqDCoMKgIDMuNjIyNjIwXSBtbWNfaG9z
+dCBtbWMwOiBCdXMgc3BlZWQgKHNsb3QgMCkgPSAxMDAwMDBIeiAoc2xvdCByZXEKMTAwMDAwSHos
+IGFjdHVhbCAxMDAwMDBIWiBkaXYgPSAwKQpbwqDCoMKgIDQuMTU1MzAwXSBkd21tY19yb2NrY2hp
+cCBmZjUyMDAwMC5kd21tYzogQnVzeTsgdHJ5aW5nIGFueXdheQpbwqDCoMKgIDQuNjU1ODM5XSBt
+bWNfaG9zdCBtbWMwOiBUaW1lb3V0IHNlbmRpbmcgY29tbWFuZCAoY21kIDB4MjAyMDAwIGFyZwow
+eDAgc3RhdHVzIDB4ODAyMDIwMDApCgphbmQgZm9yIGEgZmFpbGVkIGJvb3QKCiQgZ3JlcCBtbWMg
+ZmFpbC50eHQKW8KgwqDCoCAwLjAwMDAwMF0gS2VybmVsIGNvbW1hbmQgbGluZTogZWFybHljb249
+dWFydDgyNTAsbW1pbzMyLDB4ZmYxMzAwMDAKY29uc29sZT10dHlTMiwxNTAwMDAwIHJ3IHJvb3Q9
+L2Rldi9tbWNibGsxcDUgaW5pdD0vc2Jpbi9pbml0CmtnZGJvYz10dHlTMiwxNTAwMDAwIGxvZ2xl
+dmVsPTcgZHluZGJnPSJtb2R1bGUgZHdfbW1jICtwIDsgbW9kdWxlCmR3X21tY19yb2NrY2hpcCAr
+cCA7IG1vZHVsZSBtbWNfY29yZSArcCIKW8KgwqDCoCAwLjEyMzc5OV0gQURBTVZZIGdwaW8gZml4
+ZWQgcmVndWxhdG9yIHF1aXJrcyBkZXZpY2U6CnNkbW1jLXJlZ3VsYXRvciBhY3RpdmVfbG93OiAx
+ClvCoMKgwqAgMC40ODUyOTVdIGR3bW1jX3JvY2tjaGlwIGZmNTAwMDAwLmR3bW1jOiBJRE1BQyBz
+dXBwb3J0cyAzMi1iaXQKYWRkcmVzcyBtb2RlLgpbwqDCoMKgIDAuNDg1OTU1XSBkd21tY19yb2Nr
+Y2hpcCBmZjUwMDAwMC5kd21tYzogVXNpbmcgaW50ZXJuYWwgRE1BIGNvbnRyb2xsZXIuClvCoMKg
+wqAgMC40ODY1NjBdIGR3bW1jX3JvY2tjaGlwIGZmNTAwMDAwLmR3bW1jOiBWZXJzaW9uIElEIGlz
+IDI3MGEKW8KgwqDCoCAwLjQ4NzEyOF0gZHdtbWNfcm9ja2NoaXAgZmY1MDAwMDAuZHdtbWM6IERX
+IE1NQyBjb250cm9sbGVyIGF0IGlycQoyOSwzMiBiaXQgaG9zdCBkYXRhIHdpZHRoLDI1NiBkZWVw
+IGZpZm8KW8KgwqDCoCAwLjQ4OTU4NF0gZHdtbWNfcm9ja2NoaXAgZmY1MjAwMDAuZHdtbWM6IElE
+TUFDIHN1cHBvcnRzIDMyLWJpdAphZGRyZXNzIG1vZGUuClvCoMKgwqAgMC40OTAyNDNdIGR3bW1j
+X3JvY2tjaGlwIGZmNTIwMDAwLmR3bW1jOiBVc2luZyBpbnRlcm5hbCBETUEgY29udHJvbGxlci4K
+W8KgwqDCoCAwLjQ5MDg0OV0gZHdtbWNfcm9ja2NoaXAgZmY1MjAwMDAuZHdtbWM6IFZlcnNpb24g
+SUQgaXMgMjcwYQpbwqDCoMKgIDAuNDkxNDAwXSBkd21tY19yb2NrY2hpcCBmZjUyMDAwMC5kd21t
+YzogRFcgTU1DIGNvbnRyb2xsZXIgYXQgaXJxCjMwLDMyIGJpdCBob3N0IGRhdGEgd2lkdGgsMjU2
+IGRlZXAgZmlmbwpbwqDCoMKgIDAuNDkzMDQzXSBtbWNfaG9zdCBtbWMwOiBjYXJkIGlzIG5vbi1y
+ZW1vdmFibGUuClvCoMKgwqAgMC41MDYyNDhdIG1tY19ob3N0IG1tYzA6IEJ1cyBzcGVlZCAoc2xv
+dCAwKSA9IDQwMDAwMEh6IChzbG90IHJlcQo0MDAwMDBIeiwgYWN0dWFsIDQwMDAwMEhaIGRpdiA9
+IDApClvCoMKgwqAgMC41NTkyNDldIGR3bW1jX3JvY2tjaGlwIGZmNTAwMDAwLmR3bW1jOiBJRE1B
+QyBzdXBwb3J0cyAzMi1iaXQKYWRkcmVzcyBtb2RlLgpbwqDCoMKgIDAuNTU5OTYwXSBkd21tY19y
+b2NrY2hpcCBmZjUwMDAwMC5kd21tYzogVXNpbmcgaW50ZXJuYWwgRE1BIGNvbnRyb2xsZXIuClvC
+oMKgwqAgMC41NjA1NjRdIGR3bW1jX3JvY2tjaGlwIGZmNTAwMDAwLmR3bW1jOiBWZXJzaW9uIElE
+IGlzIDI3MGEKW8KgwqDCoCAwLjU2MTEwOF0gZHdtbWNfcm9ja2NoaXAgZmY1MDAwMDAuZHdtbWM6
+IERXIE1NQyBjb250cm9sbGVyIGF0IGlycQoyOSwzMiBiaXQgaG9zdCBkYXRhIHdpZHRoLDI1NiBk
+ZWVwIGZpZm8KW8KgwqDCoCAxLjA2MzUyMV0gZHdtbWNfcm9ja2NoaXAgZmY1MjAwMDAuZHdtbWM6
+IEJ1c3k7IHRyeWluZyBhbnl3YXkKW8KgwqDCoCAxLjU2NDA0OV0gbW1jX2hvc3QgbW1jMDogVGlt
+ZW91dCBzZW5kaW5nIGNvbW1hbmQgKGNtZCAweDIwMjAwMCBhcmcKMHgwIHN0YXR1cyAweDgwMjAy
+MDAwKQpbwqDCoMKgIDEuNTY0OTI1XSBtbWNfaG9zdCBtbWMxOiBCdXMgc3BlZWQgKHNsb3QgMCkg
+PSA0MDAwMDBIeiAoc2xvdCByZXEKNDAwMDAwSHosIGFjdHVhbCA0MDAwMDBIWiBkaXYgPSAwKQpb
+wqDCoMKgIDEuNTc5NjcxXSBtbWNfaG9zdCBtbWMwOiBCdXMgc3BlZWQgKHNsb3QgMCkgPSAzMDAw
+MDBIeiAoc2xvdCByZXEKMzAwMDAwSHosIGFjdHVhbCAzMDAwMDBIWiBkaXYgPSAwKQpbwqDCoMKg
+IDIuMTA5NDg0XSBkd21tY19yb2NrY2hpcCBmZjUyMDAwMC5kd21tYzogQnVzeTsgdHJ5aW5nIGFu
+eXdheQpbwqDCoMKgIDIuNjEwMDE1XSBtbWNfaG9zdCBtbWMwOiBUaW1lb3V0IHNlbmRpbmcgY29t
+bWFuZCAoY21kIDB4MjAyMDAwIGFyZwoweDAgc3RhdHVzIDB4ODAyMDIwMDApClvCoMKgwqAgMi42
+MTI0MTFdIFZGUzogQ2Fubm90IG9wZW4gcm9vdCBkZXZpY2UgIm1tY2JsazFwNSIgb3IKdW5rbm93
+bi1ibG9jaygwLDApOiBlcnJvciAtNgoKCj4KPj4gSSB3ZW50IGJhY2sgb3ZlciBteSBjb25maWcg
+d2l0aCBhIGZpbmUgdG9vdGggY29tYiBhbmQgZm91bmQgYSBmZXcKPj4gcm9ja2NoaXAgZHJpdmVy
+cyBJIHdhcyBtaXNzaW5nIGluY2x1ZGluZyBQSU5DVFJMX1JLODA1IHdoaWNoIHNlZW1zCj4+IHJl
+bGF0ZWQgYnV0IEkgaG9uZXN0bHkgY2FuJ3QgZmlndXJlIG91dCBob3cuwqAgSSB3aWxsIHRyeSB0
+byBuYXJyb3cgZG93bgo+PiB3aGljaCBzcGVjaWZpYyBkcml2ZXIgd2FzIG1pc3NpbmcuwqAgSXQg
+d2FzIG9kZCBiZWNhdXNlIGl0IHdvdWxkIGZpbmQgdGhlCj4+IG1tYyBob3N0IGJ1dCBqdXN0IGZh
+aWwgbm90aWNlIHRoYXQgYSBjYXJkIHdhcyBwcmVzZW50LsKgIEl0IHNlZW1lZCB0byBzZXQKPj4g
+dGhlIHJlZ2lzdGVyIGNvcnJlY3RseSBhbmQgaWRlbnRpZnkgdGhlIG1tYyBob3N0LCBidXQgZmFp
+bGVkIHRvIG5vdGljZQo+PiBhbnkgY2FyZCBwcmVzZW50Lgo+Cj4gUElOQ1RSTF9SSzgwNSBzaG91
+bGQgb25seSBiZSBmb3IgdGhlIGNvdXBsZSBvZiBHUElPIHBpbnMgb24gdGhlIFBNSUMKPiBpdHNl
+bGYgd2hpY2ggSUlSQyB0aGUgcmVmZXJlbmNlIGRlc2lnbiB1c2VzIGZvciB0aGUgZXRoZXJuZXQg
+TEVEcywgc28KPiBJIHdvdWxkbid0IGV4cGVjdCBpdCB0byBiZSByZWxldmFudC4KSW5kZWVkLsKg
+IEkgd2FzIGRyYXdpbmcgY29ubmVjdGlvbnMgdGhhdCB3ZXJlbid0IHRoZXJlIGR1ZSB0byB0aGUg
+Zmxha2luZXNzLgo+Cj4gVGhvc2Ugc3ltcHRvbXMgbWFrZSBzZW5zZSBmb3IgdGhlIHZvbHRhZ2Vz
+IGJlaW5nIGJhY2t3YXJkcyAob3IganVzdAo+IHN0dWNrIGF0IDEuOFYpIHRob3VnaCAtIHdoZW4g
+dGhlIEkvTyBkb21haW4gaXMgY29uZmlndXJlZCB0byBleHBlY3QKPiAzLjNWLCAxLjhWIGlzIHRv
+byBsb3cgdG8gcmVnaXN0ZXIgYXMgYSBsb2dpYyBoaWdoLCBzbyBMaW51eCB3aWxsCj4gYWx3YXlz
+IHRoaW5rIHRoYXQgc29tZXRoaW5nIGlzIGluc2VydGVkIGluIHRoZSBzbG90LCBidXQgbm90IHRh
+bGtpbmcgYmFjay4KCkhtbS7CoCBJIHRyaWVkIGFkZGluZyBicm9rZW4tY2QsIGJ1dCBJIGNvdWxk
+bid0IHRlbGwgYW55IHNpZ25pZmljYW50CmRpZmZlcmVuY2UgaW4gdGhlIHJhdGUgb2Ygc3VjY2Vz
+c2Z1bCBib290cy4KCkkgaGF2ZSBhbiBlbW1jIG1vZHVsZSBjb21pbmcgc28gaG9wZWZ1bGx5IEkg
+Y2FuIGhhdmUgc29tZXRoaW5nIHJlbGlhYmxlCnRvIGJvb3QgZnJvbSBhbmQgY2FuIGl0ZXJhdGUg
+ZmFzdGVyIHdpdGhvdXQgaGF2aW5nIHRvIHBoeXNpY2FsbHkgbW92ZSBhbgpzZGNhcmQgYmFjayBh
+bmQgZm9ydGggZXZlcnkgdGltZS4KCj4gUm9iaW4uCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51
+eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
