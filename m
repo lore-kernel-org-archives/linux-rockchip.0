@@ -1,28 +1,43 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rk3399: Remove extcon unit address and extcon-cells from Gru
-Date: Wed, 12 Feb 2020 23:24:58 +0100
-Message-ID: <3531662.p2XxmjTmOT@phil>
-References: <20200207141324.3188898-1-enric.balletbo@collabora.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] clk: rockchip: fix incorrect configuration of rk3228 aclk_gpu* clocks
+Date: Wed, 12 Feb 2020 23:36:18 +0100
+Message-ID: <3638560.bLjz2vc75D@phil>
+References: <20200114162503.7548-1-justin.swartz@risingedge.co.za>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200207141324.3188898-1-enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Collabora Kernel ML <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Brian Norris <briannorris-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Marcel Holtmann <marcel-kz+m5ild9QBg9hUCZPvPmw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20200114162503.7548-1-justin.swartz@risingedge.co.za>
+Sender: linux-clk-owner@vger.kernel.org
+To: Justin Swartz <justin.swartz@risingedge.co.za>
+Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 7. Februar 2020, 15:13:24 CET schrieb Enric Balletbo i Serra:
-> The cros-ec-extcon has no reg property so remove the unit address from
-> the DT node to make DT compiler happy.
-> 
-> While here, remove the inexistent extcon-cells property from the extcon
-> nodes.
-> 
-> Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Hi Justin,
 
-applied for 5.7
+Am Dienstag, 14. Januar 2020, 17:25:02 CET schrieb Justin Swartz:
+> The following changes prevent the unrecoverable freezes and rcu_sched
+> stall warnings experienced in each of my attempts to take advantage of
+> lima.
+> 
+> Replace the COMPOSITE_NOGATE definition of aclk_gpu_pre with a
+> COMPOSITE that retains the selection of HDMIPHY as the PLL source, but
+> instead makes uses of the aclk_gpu PLL source gate and parent names
+> defined by mux_pll_src_4plls_p rather than mux_aclk_gpu_pre_p.
+> 
+> Remove the now unused mux_aclk_gpu_pre_p and the four named but also
+> unused definitions (cpll_gpu, gpll_gpu, hdmiphy_gpu and usb480m_gpu)
+> of the aclk_gpu PLL source gate.
+> 
+> Use the correct gate offset for aclk_gpu and aclk_gpu_noc.
+> 
+> Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
+
+thanks a lot for diving through the clock controller and fixing the
+issues. I've checked against the TRM as well and the previous state
+was quite wrong and your changes match the hardware manual.
+
+I've applied it as fix for 5.6 now.
 
 Thanks
 Heiko
