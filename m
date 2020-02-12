@@ -1,51 +1,181 @@
-From: Michal Simek <michal.simek@xilinx.com>
-Subject: Re: [PATCH 7/7] ARM: zynq: Replace <linux/clk-provider.h> by
- <linux/of_clk.h>
-Date: Wed, 12 Feb 2020 12:14:37 +0100
-Message-ID: <60cdf168-a4c9-d3c5-871b-cd1bd5bfcffe@xilinx.com>
-References: <20200212100830.446-1-geert+renesas@glider.be>
- <20200212100830.446-8-geert+renesas@glider.be>
+From: Michael Nazzareno Trimarchi <michael@amarulasolutions.com>
+Subject: Re: siimple-framebuffer rockchip persistent logo
+Date: Wed, 12 Feb 2020 12:49:11 +0100
+Message-ID: <CAOf5uwnf6yF0sksjVRRzxLCD8xaMGhUhkOQ8CjwhYy85zcArLw@mail.gmail.com>
+References: <CAOf5uwmPMRq4v9=5-Z=XLH7hATC-AhXQWthfy_uvYTXSo6V+CA@mail.gmail.com>
+ <CAOf5uwnRLn7tXFRxjPGASuCnmOwooA4Ytk28Zc+A0kp=UZDQWw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20200212100830.446-8-geert+renesas@glider.be>
-Content-Language: en-US
-Sender: linux-clk-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert+renesas@glider.be>, Russell King <linux@armlinux.org.uk>, Matthias Brugger <matthias.bgg@gmail.com>, Lubomir Rintel <lkundrak@v3.sk>, Heiko Stuebner <heiko@sntech.de>, Magnus Damm <magnus.damm@gmail.com>, Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Michal Simek <michal.simek@xilinx.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CAOf5uwnRLn7tXFRxjPGASuCnmOwooA4Ytk28Zc+A0kp=UZDQWw@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kever Yang <kever.yang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, LKML <linux-kernel@vger.kernel.org>, Jagan Teki <jagan@amarulasolutions.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Hans de Goede <hdegoede@redhat.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 12. 02. 20 11:08, Geert Uytterhoeven wrote:
-> The Zynq platform code is not a clock provider, and just needs to call
-> of_clk_init().
-> 
-> Hence it can include <linux/of_clk.h> instead of <linux/clk-provider.h>.
-> 
-> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-> ---
->  arch/arm/mach-zynq/common.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm/mach-zynq/common.c b/arch/arm/mach-zynq/common.c
-> index 3a4248fd796281c3..a9dd2f71cd19d2a9 100644
-> --- a/arch/arm/mach-zynq/common.c
-> +++ b/arch/arm/mach-zynq/common.c
-> @@ -12,10 +12,10 @@
->  #include <linux/cpumask.h>
->  #include <linux/platform_device.h>
->  #include <linux/clk.h>
-> -#include <linux/clk-provider.h>
->  #include <linux/clk/zynq.h>
->  #include <linux/clocksource.h>
->  #include <linux/of_address.h>
-> +#include <linux/of_clk.h>
->  #include <linux/of_irq.h>
->  #include <linux/of_platform.h>
->  #include <linux/of.h>
-> 
+Hi Heiko and Hans
 
-Looks good. Applied to zynq/soc.
+I manage to have the persistent framebuffer but complete working video subsystem
 
-Thanks,
-Michal
+THe problem is the follow
+
+[    0.116514] rk_iommu ff930300.iommu: attaching to power domain 'pd_vio'
+[    0.116539] rk_iommu ff930300.iommu: adding clock 'aclk_vop0' to
+list of PM clocks
+[    0.116561] rk_iommu ff930300.iommu: adding clock 'hclk_vop0' to
+list of PM clocks
+[    0.116989] rk_iommu ff940300.iommu: attaching to power domain 'pd_vio'
+[    0.117013] rk_iommu ff940300.iommu: adding clock 'aclk_vop1' to
+list of PM clocks
+[    0.117032] rk_iommu ff940300.iommu: adding clock 'hclk_vop1' to
+list of PM clocks
+[    0.117335] rk_iommu ff9a0800.iommu: attaching to power domain 'pd_video'
+[    0.117359] rk_iommu ff9a0800.iommu: adding clock 'aclk_vcodec' to
+list of PM clocks
+[    0.117377] rk_iommu ff9a0800.iommu: adding clock 'hclk_vcodec' to
+list of PM clocks
+[    0.117773] rockchip-pm-domain
+ff730000.power-management:power-controller: Calling pd power off
+[    0.117926] rockchip-pm-domain
+ff730000.power-management:power-controller: Calling power domain off
+[    0.117984] rockchip-pm-domain
+ff730000.power-management:power-controller: Calling pd power off
+[    0.118016] rockchip-pm-domain
+ff730000.power-management:power-controller: Calling power domain off
+
+As you can see the pd_vio domain are off even if simpleframe buffer
+own them. The problem is that the
+rk_iommu is registered before the simple framebuffer. When pd_io
+domain is off everything is done on
+hdmi side
+
++       chosen {
++               #address-cells = <2>;
++               #size-cells = <2>;
++               ranges;
++
++               simplefb_hdmi: framebuffer-lcd0-hdmi {
++                       compatible = "rockchip,simple-framebuffer",
++                                    "simple-framebuffer";
++                       rockchip,pipeline = "rockchip,dw_hdmi";
++                       clocks = <&cru PCLK_HDMI_CTRL>, <&cru
+SCLK_HDMI_HDCP>, <&cru SCLK_HDMI_CEC>,
++                                <&cru ACLK_VOP0>, <&cru DCLK_VOP0>,
+<&cru HCLK_VOP0>;
++                       power-domains = <&power RK3288_PD_VIO>;
++                       status = "disabled";
++               };
++       };
+
+Memory area is automatic injected by the bootloader. Now rk iommu is
+with runtime enable so basically if I understand
+the >sync call will schedule a power off domain if they are not in use.
+
+[    0.118064] vgaarb: loaded
+[    0.118997] SCSI subsystem initialized
+[    0.119213] libata version 3.00 loaded.
+[    0.119499] usbcore: registered new interface driver usbfs
+[    0.119552] usbcore: registered new interface driver hub
+[    0.119617] usbcore: registered new device driver usb
+[    0.121505] pps_core: LinuxPPS API ver. 1 registered
+[    0.121515] pps_core: Software ver. 5.3.6 - Copyright 2005-2007
+Rodolfo Giometti <giometti@linux.it>
+[    0.121539] PTP clock support registered
+[    0.121777] EDAC MC: Ver: 3.0.0
+[    0.125046] clocksource: Switched to clocksource arch_sys_counter
+[    0.930470] simple-framebuffer 7f800000.framebuffer: attaching to
+power domain 'pd_vio'
+[    0.930501] simple-framebuffer 7f800000.framebuffer: adding clock
+'pclk_hdmi_ctrl' to list of PM clocks
+[    0.930523] simple-framebuffer 7f800000.framebuffer: adding clock
+'sclk_hdmi_hdcp' to list of PM clocks
+[    0.930544] simple-framebuffer 7f800000.framebuffer: adding clock
+'sclk_hdmi_cec' to list of PM clocks
+[    0.930564] simple-framebuffer 7f800000.framebuffer: adding clock
+'aclk_vop0' to list of PM clocks
+[    0.930585] simple-framebuffer 7f800000.framebuffer: adding clock
+'dclk_vop0' to list of PM clocks
+[    0.930606] simple-framebuffer 7f800000.framebuffer: adding clock
+'hclk_vop0' to list of PM clocks
+[    0.930642] rockchip-pm-domain
+ff730000.power-management:power-controller: Calling pd power on
+[    0.930746] rockchip-pm-domain
+ff730000.power-management:power-controller: Calling power domain on
+[    0.931083] simple-framebuffer 7f800000.framebuffer: framebuffer at
+0x7f800000, 0x7e9000 bytes, mapped to 0x(ptrval)
+[    0.931101] simple-framebuffer 7f800000.framebuffer:
+format=x8r8g8b8, mode=1920x1080x32, linelength=7680
+[    0.931415] simple-framebuffer 7f800000.framebuffer: fb0: simplefb
+registered!
+
+Here when everything get registered by offcouse the screen went black already
+
+Michael
+
+On Fri, Feb 7, 2020 at 8:14 PM Michael Nazzareno Trimarchi
+<michael@amarulasolutions.com> wrote:
+>
+> Hi all
+>
+> I move a bit on this
+>
+> On Sun, Jan 12, 2020 at 6:16 PM Michael Nazzareno Trimarchi
+> <michael@amarulasolutions.com> wrote:
+> >
+> > Hi Kever
+> >
+> > Trying to have a persistent banner from uboot to linux-kernel. I'm
+> > right now working on linux-rockchip kernel but I think that the
+> > problem is even on mainline
+> >
+> > +               framebuffer: framebuffer@7f800000 {
+> > +                       compatible = "rockchip,simple-framebuffer",
+> > +                                    "simple-framebuffer";
+> > +                       reg = <0x7f800000 (1920 * 1080 * 4)>;
+> > +                       width = <1920>;
+> > +                       height = <1080>;
+> > +                       stride = <(1920 * 4)>;
+> > +                       format = "a8b8g8r8";
+> > +                       clocks = <&cru  PCLK_HDMI_CTRL>, <&cru SCLK_HDMI_HDCP>,
+> > +                                <&cru SRST_LCDC0_AXI>, <&cru
+> > SRST_LCDC0_AHB>, <&cru SRST_LCDC0_DCLK>,
+> > +                                <&cru ACLK_VOP0>, <&cru HCLK_VOP0>;
+> > +                       status = "okay";
+> > +               };
+> >
+>
+> Now I can allocate the parameter using the bootloader and create the
+> right mapping for the simple framebuffer. I don't even understand
+> how sunxi and meson can work if they don't create a reserved memory
+> using no-map. This is fixed on my side so the log is totally clean.
+> I have added the deregister of simple fb and handover to the drm
+>
+> Now my boot parameters are:
+> Kernel command line: console=ttyS2,115200n8 root=/dev/mmcblk0p1
+> rootwait pd_ignore_unused clk_ignore_unused
+>
+> Still I have display go off on tinker during boot. Any suggestion?
+>
+> Michael
+>
+>
+> > Seems that it get off before I reach the drm registration
+> >
+> > [    2.077495] simple-framebuffer 7f800000.framebuffer: framebuffer at
+> > 0x7f800000, 0x7e9000 bytes, mapped to 0xf0900000
+> > [    2.077519] simple-framebuffer 7f800000.framebuffer:
+> > format=a8b8g8r8, mode=1920x1080x32, linelength=7680
+> > [    2.161225] simple-framebuffer 7f800000.framebuffer: fb0: simplefb
+> > registered!
+> > [    3.433847] fb: switching to rockchip-drm-fb from simple
+> >
+> > I don't find all the clocks and if those are the only think that I
+> > need to stay on. Any suggestion?
+
+
+
+-- 
+| Michael Nazzareno Trimarchi                     Amarula Solutions BV |
+| COO  -  Founder                                      Cruquiuskade 47 |
+| +31(0)851119172                                 Amsterdam 1018 AM NL |
+|                  [`as] http://www.amarulasolutions.com               |
