@@ -1,65 +1,25 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v4 2/6] PCI: rcar: Fix calculating mask for PCIEPAMR
- register
-Date: Wed, 12 Feb 2020 08:04:34 -0600
-Message-ID: <20200212140434.GA129189@google.com>
-References: <20200208183641.6674-3-prabhakar.mahadev-lad.rj@bp.renesas.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH 1/7] ARM/time: Replace <linux/clk-provider.h> by <linux/of_clk.h>
+Date: Wed, 12 Feb 2020 09:08:52 -0800
+Message-ID: <158152733235.121156.10015443943029373617@swboyd.mtv.corp.google.com>
+References: <20200212100830.446-1-geert+renesas@glider.be> <20200212100830.446-2-geert+renesas@glider.be>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200208183641.6674-3-prabhakar.mahadev-lad.rj@bp.renesas.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Lad Prabhakar <prabhakar.csengg@gmail.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Andrew Murray <andrew.murray@arm.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20200212100830.446-2-geert+renesas@glider.be>
+Sender: linux-clk-owner@vger.kernel.org
+To: Chen-Yu Tsai <wens@csie.org>, Heiko Stuebner <heiko@sntech.de>, Lubomir Rintel <lkundrak@v3.sk>, Magnus Damm <magnus.damm@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, Maxime Ripard <mripard@kernel.org>, Michal Simek <michal.simek@xilinx.com>, Russell King <linux@armlinux.org.uk>
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Feb 08, 2020 at 06:36:37PM +0000, Lad Prabhakar wrote:
-> The mask value was calculated incorrectly for PCIEPAMR register if the
-> size was less the 128bytes, this patch fixes the above by adding a check
-> on size.
-
-s/less the/less than/
-s/128bytes,/128 bytes./
-s/this patch fixes the above/Fix this issue/
-
-> Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+Quoting Geert Uytterhoeven (2020-02-12 02:08:24)
+> The ARM time code is not a clock provider, and just needs to call
+> of_clk_init().
+>=20
+> Hence it can include <linux/of_clk.h> instead of <linux/clk-provider.h>.
+>=20
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
 > ---
->  drivers/pci/controller/pcie-rcar.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-rcar.c b/drivers/pci/controller/pcie-rcar.c
-> index d5568db..c76a92a 100644
-> --- a/drivers/pci/controller/pcie-rcar.c
-> +++ b/drivers/pci/controller/pcie-rcar.c
-> @@ -71,7 +71,7 @@ void rcar_pcie_set_outbound(int win, void __iomem *base,
->  	/* Setup PCIe address space mappings for each resource */
->  	resource_size_t res_start;
->  	resource_size_t size;
-> -	u32 mask;
-> +	u32 mask = 0x0;
->  
->  	rcar_pci_write_reg(base, 0x00000000, PCIEPTCTLR(win));
->  
-> @@ -80,7 +80,8 @@ void rcar_pcie_set_outbound(int win, void __iomem *base,
->  	 * keeps things pretty simple.
->  	 */
->  	size = resource_size(res);
-> -	mask = (roundup_pow_of_two(size) / SZ_128) - 1;
-> +	if (size > 128)
-> +		mask = (roundup_pow_of_two(size) / SZ_128) - 1;
 
-I would put the "mask = 0x0" right here so it's all in one place,
-i.e.,
-
-  if (size > 128)
-    mask = (roundup_pow_of_two(size) / SZ_128) - 1;
-  else
-    mask = 0x0;
-
->  	rcar_pci_write_reg(base, mask << 7, PCIEPAMR(win));
->  
->  	if (!host) {
-> -- 
-> 2.7.4
-> 
+Reviewed-by: Stephen Boyd <sboyd@kernel.org>
