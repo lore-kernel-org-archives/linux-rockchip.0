@@ -1,8 +1,8 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.5 329/542] arm64: dts: rockchip: fix dwmmc clock
- name for px30
-Date: Fri, 14 Feb 2020 10:45:21 -0500
-Message-ID: <20200214154854.6746-329-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.5 330/542] arm64: dts: rockchip: fix dwmmc clock
+ name for rk3308
+Date: Fri, 14 Feb 2020 10:45:22 -0500
+Message-ID: <20200214154854.6746-330-sashal@kernel.org>
 References: <20200214154854.6746-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -24,10 +24,10 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit 7f2147350291569acd1df5a26dcdfc573916016f ]
+[ Upstream commit 2be6a280144e521248a4bdefb691a0a97e604294 ]
 
 An experimental test with the command below gives this error:
-px30-evb.dt.yaml: dwmmc@ff390000: clock-names:2:
+rk3308-evb.dt.yaml: dwmmc@ff480000: clock-names:2:
 'ciu-drive' was expected
 
 'ciu-drv' is not a valid dwmmc clock name,
@@ -41,15 +41,15 @@ Link: https://lore.kernel.org/r/20200110161200.22755-1-jbx6244@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/px30.dtsi | 6 +++---
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 8812b70f39111..5acd5ce714d4a 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -826,7 +826,7 @@
- 		interrupts = <GIC_SPI 54 IRQ_TYPE_LEVEL_HIGH>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index 8bdc66c62975b..fa0d55f1a5871 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -591,7 +591,7 @@
+ 		bus-width = <4>;
  		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
  			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
 -		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
@@ -57,19 +57,19 @@ index 8812b70f39111..5acd5ce714d4a 100644
  		fifo-depth = <0x100>;
  		max-frequency = <150000000>;
  		pinctrl-names = "default";
-@@ -841,7 +841,7 @@
- 		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
- 			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
+@@ -606,7 +606,7 @@
+ 		bus-width = <8>;
+ 		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
+ 			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
 -		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
 +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
  		fifo-depth = <0x100>;
  		max-frequency = <150000000>;
- 		pinctrl-names = "default";
-@@ -856,7 +856,7 @@
- 		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
- 			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
+ 		status = "disabled";
+@@ -619,7 +619,7 @@
+ 		bus-width = <4>;
+ 		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
+ 			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
 -		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
 +		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
  		fifo-depth = <0x100>;
