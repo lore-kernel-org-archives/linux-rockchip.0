@@ -1,44 +1,73 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 4/6] dt-bindings: rockchip: Add DesignWare based PCIe
- controller
-Date: Thu, 13 Feb 2020 14:47:08 -0600
-Message-ID: <20200213204708.GA2363@bogus>
-References: <1581574091-240890-1-git-send-email-shawn.lin@rock-chips.com>
- <1581574091-240890-5-git-send-email-shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 1/6] dt-bindings: add binding for Rockchip combo phy using an Innosilicon IP
+Date: Fri, 14 Feb 2020 10:20:14 +0100
+Message-ID: <17396429.PKOFnNSWWW@phil>
+References: <1581574091-240890-1-git-send-email-shawn.lin@rock-chips.com> <1581574091-240890-2-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-pci-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1581574091-240890-5-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-Cc: Heiko Stuebner <heiko@sntech.de>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, William Wu <william.wu@rock-chips.com>, Simon Xue <xxm@rock-chips.com>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1581574091-240890-2-git-send-email-shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 13 Feb 2020 14:08:09 +0800, Shawn Lin wrote:
-> From: Simon Xue <xxm@rock-chips.com>
+Hi Shawn,
+
+Am Donnerstag, 13. Februar 2020, 07:08:06 CET schrieb Shawn Lin:
+> This IP could supports USB3.0 and PCIe.
 > 
-> Signed-off-by: Simon Xue <xxm@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Signed-off-by: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 > 
 > ---
 > 
 > Changes in v2:
 > - fix yaml format
 > 
->  .../devicetree/bindings/pci/rockchip-dw-pcie.yaml  | 148 +++++++++++++++++++++
->  1 file changed, 148 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pci/rockchip-dw-pcie.yaml
-> 
+>  .../bindings/phy/rockchip,inno-combophy.yaml       | 80 ++++++++++++++++++++++
 
-My bot found errors running 'make dt_binding_check' on your patch:
+can we make this rockchip,inno-usb3pciephy or something similar please?
+Same for the driver name.
 
-Documentation/devicetree/bindings/display/simple-framebuffer.example.dts:21.16-37.11: Warning (chosen_node_is_root): /example-0/chosen: chosen node must be at root node
-Error: Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dts:24.26-27 syntax error
-FATAL ERROR: Unable to parse input tree
-scripts/Makefile.lib:300: recipe for target 'Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dt.yaml' failed
-make[1]: *** [Documentation/devicetree/bindings/pci/rockchip-dw-pcie.example.dt.yaml] Error 1
-Makefile:1263: recipe for target 'dt_binding_check' failed
-make: *** [dt_binding_check] Error 2
+-combophy is completely non-descriptive and looking at the Rockchip
+vendor-tree we already have:
 
-See https://patchwork.ozlabs.org/patch/1237300
-Please check and re-submit.
+- phy-rockchip-inno-combphy.c (this one)
+- phy-rockchip-inno-mipi-dphy.c (rk1808 dsi, but should actually fit into combo)
+- phy-rockchip-inno-video-combo-phy.c (dsi/lvds/ttl)
+- phy-rockchip-inno-video-phy.c (rk3288-lvds)
+
+All of them have quite none-descriptive names
+
+The inno-video-combo-phy already got a somewhat nicer name in
+mainline (dsidphy), so I think it would be cool to also do this here
+(and for the driver of course).
+
+
+> +  reset-names:
+> +    items:
+> +      - const: otg-rst
+> +      - const: combphy-por
+> +      - const: combphy-apb
+> +      - const: combphy-pipe
+
+reset-names are local to the node, so there is no need
+for combophy prefixes, so these should probably be:
+
+      - const: otg-rst
+      - const: por
+      - const: apb
+      - const: pipe
+
+
+> +
+> +  rockchip,combphygrf:
+> +    enum:
+> +      - rockchip,combphygrf
+
+nicer name here? :-)
+
+
+Thanks
+Heiko
