@@ -1,8 +1,8 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.5 330/542] arm64: dts: rockchip: fix dwmmc clock
- name for rk3308
-Date: Fri, 14 Feb 2020 10:45:22 -0500
-Message-ID: <20200214154854.6746-330-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.5 332/542] ARM: dts: rockchip: add reg property to
+ brcmf sub node for rk3188-bqedison2qc
+Date: Fri, 14 Feb 2020 10:45:24 -0500
+Message-ID: <20200214154854.6746-332-sashal@kernel.org>
 References: <20200214154854.6746-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -24,56 +24,42 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit 2be6a280144e521248a4bdefb691a0a97e604294 ]
+[ Upstream commit cf206bca178cd5b5a436494b2e0cea75295944f4 ]
 
 An experimental test with the command below gives this error:
-rk3308-evb.dt.yaml: dwmmc@ff480000: clock-names:2:
-'ciu-drive' was expected
+rk3188-bqedison2qc.dt.yaml: dwmmc@10218000: wifi@1:
+'reg' is a required property
 
-'ciu-drv' is not a valid dwmmc clock name,
-so fix this by changing it to 'ciu-drive'.
+So fix this by adding a reg property to the brcmf sub node.
+Also add #address-cells and #size-cells to prevent more warnings.
 
-make ARCH=arm64 dtbs_check
+make ARCH=arm dtbs_check
 DT_SCHEMA_FILES=Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/20200110161200.22755-1-jbx6244@gmail.com
+Link: https://lore.kernel.org/r/20200110134420.11280-1-jbx6244@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ arch/arm/boot/dts/rk3188-bqedison2qc.dts | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index 8bdc66c62975b..fa0d55f1a5871 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -591,7 +591,7 @@
- 		bus-width = <4>;
- 		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
- 			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
--		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
-+		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
- 		fifo-depth = <0x100>;
- 		max-frequency = <150000000>;
- 		pinctrl-names = "default";
-@@ -606,7 +606,7 @@
- 		bus-width = <8>;
- 		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
- 			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
--		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
-+		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
- 		fifo-depth = <0x100>;
- 		max-frequency = <150000000>;
- 		status = "disabled";
-@@ -619,7 +619,7 @@
- 		bus-width = <4>;
- 		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
- 			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
--		clock-names = "biu", "ciu", "ciu-drv", "ciu-sample";
-+		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
- 		fifo-depth = <0x100>;
- 		max-frequency = <150000000>;
- 		pinctrl-names = "default";
+diff --git a/arch/arm/boot/dts/rk3188-bqedison2qc.dts b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
+index c8b62bbd6a4a4..ad1afd403052a 100644
+--- a/arch/arm/boot/dts/rk3188-bqedison2qc.dts
++++ b/arch/arm/boot/dts/rk3188-bqedison2qc.dts
+@@ -466,9 +466,12 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sd1_clk>, <&sd1_cmd>, <&sd1_bus4>;
+ 	vmmcq-supply = <&vccio_wl>;
++	#address-cells = <1>;
++	#size-cells = <0>;
+ 	status = "okay";
+ 
+ 	brcmf: wifi@1 {
++		reg = <1>;
+ 		compatible = "brcm,bcm4329-fmac";
+ 		interrupt-parent = <&gpio3>;
+ 		interrupts = <RK_PD2 GPIO_ACTIVE_HIGH>;
 -- 
 2.20.1
