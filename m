@@ -1,36 +1,113 @@
-From: Bjorn Andersson <bjorn.andersson@linaro.org>
-Subject: Re: [PATCH 2/2] pinctrl: Use new GPIO_LINE_DIRECTION
-Date: Fri, 14 Feb 2020 21:35:17 -0800
-Message-ID: <20200215053517.GN955802@ripper>
-References: <20191112141819.GA22076@localhost.localdomain>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v4 2/2] pinctrl: rockchip: split rockchip pinctrl driver by SoC type
+Date: Sat, 15 Feb 2020 12:11:19 +0100
+Message-ID: <6201612.znBgJCgWHB@phil>
+References: <c4ec95a7-aaf1-2331-352f-2def319a1c7d@rock-chips.com> <20200117081358.5772-1-jay.xu@rock-chips.com> <20200117081358.5772-3-jay.xu@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-renesas-soc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20191112141819.GA22076@localhost.localdomain>
-Sender: linux-renesas-soc-owner@vger.kernel.org
-To: Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>
-Cc: mazziesaccount@gmail.com, Linus Walleij <linus.walleij@linaro.org>, Eric Anholt <eric@anholt.net>, Stefan Wahren <wahrenst@gmx.net>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, bcm-kernel-feedback-list@broadcom.com, Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Jason Cooper <jason@lakedaemon.net>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Ludovic Desroches <ludovic.desroches@microchip.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Paul Cercueil <paul@crapouillou.net>, Neil
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200117081358.5772-3-jay.xu@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jianqun Xu <jay.xu@rock-chips.com>
+Cc: linus.walleij@linaro.org, david.wu@rock-chips.com, kever.yang@rock-chips.com, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue 12 Nov 06:18 PST 2019, Matti Vaittinen wrote:
-> diff --git a/drivers/pinctrl/qcom/pinctrl-msm.c b/drivers/pinctrl/qcom/pinctrl-msm.c
-> index 763da0be10d6..8844ca1261d5 100644
-> --- a/drivers/pinctrl/qcom/pinctrl-msm.c
-> +++ b/drivers/pinctrl/qcom/pinctrl-msm.c
-> @@ -485,8 +485,8 @@ static int msm_gpio_get_direction(struct gpio_chip *chip, unsigned int offset)
+Hi Jay,
+
+Am Freitag, 17. Januar 2020, 09:13:58 CET schrieb Jianqun Xu:
+> The pinctrl-rockchip driver grows larger by adding support for
+> each new SoC, that make the kernel Image size too large since
+> it only under one config named PINCTRL_ROCKCHIP.
+> 
+> This patch split driver in the form of core driver + soc driver,
+> - pinctrl-rockchip.c defined an platform probe register function
+> - pinctrl-rkxxxx.c init module by matching compatible name
+> 
+> For rockchip_defconfig, it needs to select all PINCTRL_RKxxxx to
+> keep same with old driver.
+> 
+> For some special defconfig, it can only select one PINCTRL_RKxxxx.
+> 
+> Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+> ---
+> changes since v3:
+> - add base patch with directory change only, suggested by Robin
+> - rebase patch
+> 
+> changes since v2:
+> - remove rockchip_pinctrl_remove
+> - rename rockchip_pinctrl_* to rockchip_pctrl_*
+> - redule arguments for get_soc_data
+> - add module author for each new driver files
+> - add copyright for new driver files
+> 
+> changes since v1:
+> - add rockchip_pinctrl_remove
+> - remove unused head files in pinctrl-rockchip.h
+> 
+>  drivers/pinctrl/rockchip/Kconfig            |  114 +
+>  drivers/pinctrl/rockchip/Makefile           |   14 +
+>  drivers/pinctrl/rockchip/pinctrl-px30.c     |  224 ++
+>  drivers/pinctrl/rockchip/pinctrl-rk2928.c   |   70 +
+>  drivers/pinctrl/rockchip/pinctrl-rk3036.c   |   69 +
+>  drivers/pinctrl/rockchip/pinctrl-rk3066a.c  |   72 +
+>  drivers/pinctrl/rockchip/pinctrl-rk3066b.c  |   51 +
+>  drivers/pinctrl/rockchip/pinctrl-rk3128.c   |  161 ++
+>  drivers/pinctrl/rockchip/pinctrl-rk3188.c   |  147 ++
+>  drivers/pinctrl/rockchip/pinctrl-rk3228.c   |  225 ++
+>  drivers/pinctrl/rockchip/pinctrl-rk3288.c   |  210 ++
+>  drivers/pinctrl/rockchip/pinctrl-rk3308.c   |  420 +++
+>  drivers/pinctrl/rockchip/pinctrl-rk3328.c   |  272 ++
+>  drivers/pinctrl/rockchip/pinctrl-rk3368.c   |  125 +
+>  drivers/pinctrl/rockchip/pinctrl-rk3399.c   |  195 ++
+>  drivers/pinctrl/rockchip/pinctrl-rockchip.c | 2547 ++-----------------
+>  drivers/pinctrl/rockchip/pinctrl-rockchip.h |  388 +++
+>  drivers/pinctrl/rockchip/pinctrl-rv1108.c   |  214 ++
+>  18 files changed, 3149 insertions(+), 2369 deletions(-)
+
+What Robin suggested, was doing this incrementally. So keep your patch1
+but then do
+- patch2: split out px30-pinctrl
+- patch3: split out rk3288 pinctrl
+- etc
+
+Because even my mail client chokes on this massive 6000 line patch, so a
+real review is actually very difficult.
+
+
+> diff --git a/drivers/pinctrl/rockchip/Kconfig b/drivers/pinctrl/rockchip/Kconfig
+> index 7a0077ca32dd..4873a05108f8 100644
+> --- a/drivers/pinctrl/rockchip/Kconfig
+> +++ b/drivers/pinctrl/rockchip/Kconfig
+> @@ -5,8 +5,122 @@ if (ARCH_ROCKCHIP || COMPILE_TEST)
+>  config PINCTRL_ROCKCHIP
+>  	bool
+>  	select PINMUX
+> +	select PINCONF
+>  	select GENERIC_PINCONF
+> +	select GPIOLIB_IRQCHIP
+>  	select GENERIC_IRQ_CHIP
+>  	select MFD_SYSCON
 >  
->  	val = msm_readl_ctl(pctrl, g);
->  
-> -	/* 0 = output, 1 = input */
-> -	return val & BIT(g->oe_bit) ? 0 : 1;
-> +	return val & BIT(g->oe_bit) ? GPIO_LINE_DIRECTION_OUT :
-> +				      GPIO_LINE_DIRECTION_IN;
+> +config PINCTRL_PX30
+> +	tristate "PX30 pin controller driver"
+> +	depends on GPIOLIB && OF
+> +	select PINCTRL_ROCKCHIP
 
-For pinctrl-msm:
-Reviewed-by: Bjorn Andersson <bjorn.andersson@linaro.org>
+you might want to add a
+	default y if ARM64
+here
+(similar default y if ARM for arm32 pinctrl drivers)
 
->  }
+Because otherwise you're breaking peoples kernel configs and also
+the default is to build a somewhat unified kernel in the default defconfigs,
+so we want all matching pinctrl drivers by default and people then can
+disable drivers if they really want to build a slimmed down kernel.
 
-Regards,
-Bjorn
+With the "if ARM" / "if ARM64" parts you even save some space by
+default as well, as you build only the relevant drivers.
+
+
+Heiko
