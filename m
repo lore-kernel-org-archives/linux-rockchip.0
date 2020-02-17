@@ -1,65 +1,54 @@
-From: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>
+From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 Subject: Re: USB DWC2 stops responding when insert/remove cable multiple times
-Date: Mon, 17 Feb 2020 09:30:56 -0300
-Message-ID: <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw@mail.gmail.com>
+Date: Mon, 17 Feb 2020 13:26:30 +0000
+Message-ID: <ee47be28-ba9f-750f-65d2-51a722ce291d@synopsys.com>
 References: <CAP9ODKprPi8N-dU8NaKwneXH-3b0ipSEDpU5mDbGntxuyhGhJw@mail.gmail.com>
  <41a7bfe7-54b1-84eb-091f-469d971ab968@synopsys.com>
+ <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <41a7bfe7-54b1-84eb-091f-469d971ab968-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+Content-ID: <6DE938F54FDE314DB6D56C761EAE977B-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
 Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+To: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>, Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Minas,
-
-On Mon, Feb 17, 2020 at 5:58 AM Minas Harutyunyan
-<Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
-> On 2/14/2020 5:40 PM, Otavio Salvador wrote:
-...
-> >      [  312.967867] g_serial gadget: high-speed config #2: CDC ACM config
-> >      [  314.828173] dwc2 30180000.usb: new device is high-speed
-> >      [  314.866943] dwc2 30180000.usb: new address 16
-> >      [  314.889550] g_serial gadget: high-speed config #2: CDC ACM config
-> >
->
-> I assume here you few time disconnected and then connected cable and
-> after last connection even when g_serial seen in last line it stop work.
-> Correct?
-
-Yes. It stops responding.
-
-> > The "[  314.889550] g_serial gadget: high-speed config #2: CDC ACM
-> > config" message is the last time it is detected. As mentioned, to
-> > restore the port to work, we need to reload the g_serial module.
-> >
-> > When we reload it, following exception happens:
-> >
->
-> Actually exception happen in g_serial not dwc2. Why you assume that it
-> because of dwc2?
-
-Indeed. After reporting this, it does sounds it is two decouple
-issues. The tty seems to be not properly cleaned up and it seems to
-have a resource not properly cleaned up.
-
-...
-> > So, I am a bit lost how to debug this so I'd like to know what kind of
-> > information might be useful to find the root cause of it?
->
-> And despite of above exception, g_serial enumerated it works fine?
-
-If reloaded the USB is detected but tty seems to not work. It seems it
-fails to free the ttyGS0 previously used and thus it cannot properly
-create the new device.
-
-> Please provide me dump of follow dwc2 debugfs's: regdump, hw_params, params.
-
-Do you want this on working and failing state or just the failing one?
-
--- 
-Otavio Salvador                             O.S. Systems
-http://www.ossystems.com.br        http://code.ossystems.com.br
-Mobile: +55 (53) 9 9981-7854          Mobile: +1 (347) 903-9750
+SGkgT3RhdmlvLA0KDQpPbiAyLzE3LzIwMjAgNDozMCBQTSwgT3RhdmlvIFNhbHZhZG9yIHdyb3Rl
+Og0KPiBIZWxsbyBNaW5hcywNCj4gDQo+IE9uIE1vbiwgRmViIDE3LCAyMDIwIGF0IDU6NTggQU0g
+TWluYXMgSGFydXR5dW55YW4NCj4gPE1pbmFzLkhhcnV0eXVueWFuQHN5bm9wc3lzLmNvbT4gd3Jv
+dGU6DQo+PiBPbiAyLzE0LzIwMjAgNTo0MCBQTSwgT3RhdmlvIFNhbHZhZG9yIHdyb3RlOg0KPiAu
+Li4NCj4+PiAgICAgICBbICAzMTIuOTY3ODY3XSBnX3NlcmlhbCBnYWRnZXQ6IGhpZ2gtc3BlZWQg
+Y29uZmlnICMyOiBDREMgQUNNIGNvbmZpZw0KPj4+ICAgICAgIFsgIDMxNC44MjgxNzNdIGR3YzIg
+MzAxODAwMDAudXNiOiBuZXcgZGV2aWNlIGlzIGhpZ2gtc3BlZWQNCj4+PiAgICAgICBbICAzMTQu
+ODY2OTQzXSBkd2MyIDMwMTgwMDAwLnVzYjogbmV3IGFkZHJlc3MgMTYNCj4+PiAgICAgICBbICAz
+MTQuODg5NTUwXSBnX3NlcmlhbCBnYWRnZXQ6IGhpZ2gtc3BlZWQgY29uZmlnICMyOiBDREMgQUNN
+IGNvbmZpZw0KPj4+DQo+Pg0KPj4gSSBhc3N1bWUgaGVyZSB5b3UgZmV3IHRpbWUgZGlzY29ubmVj
+dGVkIGFuZCB0aGVuIGNvbm5lY3RlZCBjYWJsZSBhbmQNCj4+IGFmdGVyIGxhc3QgY29ubmVjdGlv
+biBldmVuIHdoZW4gZ19zZXJpYWwgc2VlbiBpbiBsYXN0IGxpbmUgaXQgc3RvcCB3b3JrLg0KPj4g
+Q29ycmVjdD8NCj4gDQo+IFllcy4gSXQgc3RvcHMgcmVzcG9uZGluZy4NCj4gDQo+Pj4gVGhlICJb
+ICAzMTQuODg5NTUwXSBnX3NlcmlhbCBnYWRnZXQ6IGhpZ2gtc3BlZWQgY29uZmlnICMyOiBDREMg
+QUNNDQo+Pj4gY29uZmlnIiBtZXNzYWdlIGlzIHRoZSBsYXN0IHRpbWUgaXQgaXMgZGV0ZWN0ZWQu
+IEFzIG1lbnRpb25lZCwgdG8NCj4+PiByZXN0b3JlIHRoZSBwb3J0IHRvIHdvcmssIHdlIG5lZWQg
+dG8gcmVsb2FkIHRoZSBnX3NlcmlhbCBtb2R1bGUuDQo+Pj4NCj4+PiBXaGVuIHdlIHJlbG9hZCBp
+dCwgZm9sbG93aW5nIGV4Y2VwdGlvbiBoYXBwZW5zOg0KPj4+DQo+Pg0KPj4gQWN0dWFsbHkgZXhj
+ZXB0aW9uIGhhcHBlbiBpbiBnX3NlcmlhbCBub3QgZHdjMi4gV2h5IHlvdSBhc3N1bWUgdGhhdCBp
+dA0KPj4gYmVjYXVzZSBvZiBkd2MyPw0KPiANCj4gSW5kZWVkLiBBZnRlciByZXBvcnRpbmcgdGhp
+cywgaXQgZG9lcyBzb3VuZHMgaXQgaXMgdHdvIGRlY291cGxlDQo+IGlzc3Vlcy4gVGhlIHR0eSBz
+ZWVtcyB0byBiZSBub3QgcHJvcGVybHkgY2xlYW5lZCB1cCBhbmQgaXQgc2VlbXMgdG8NCj4gaGF2
+ZSBhIHJlc291cmNlIG5vdCBwcm9wZXJseSBjbGVhbmVkIHVwLg0KPiANCkVuYWJsZSBkZWJ1ZyBw
+cmludHMgdG8gZ2V0IGZ1bGwgZHdjMiBkZWJ1ZyBwcmludHMgdG8gc2VlIHdoYXQgaGFwcGVuIA0K
+d2l0aCBkd2MyLg0KDQo+IC4uLg0KPj4+IFNvLCBJIGFtIGEgYml0IGxvc3QgaG93IHRvIGRlYnVn
+IHRoaXMgc28gSSdkIGxpa2UgdG8ga25vdyB3aGF0IGtpbmQgb2YNCj4+PiBpbmZvcm1hdGlvbiBt
+aWdodCBiZSB1c2VmdWwgdG8gZmluZCB0aGUgcm9vdCBjYXVzZSBvZiBpdD8NCj4+DQo+PiBBbmQg
+ZGVzcGl0ZSBvZiBhYm92ZSBleGNlcHRpb24sIGdfc2VyaWFsIGVudW1lcmF0ZWQgaXQgd29ya3Mg
+ZmluZT8NCj4gDQo+IElmIHJlbG9hZGVkIHRoZSBVU0IgaXMgZGV0ZWN0ZWQgYnV0IHR0eSBzZWVt
+cyB0byBub3Qgd29yay4gSXQgc2VlbXMgaXQNCj4gZmFpbHMgdG8gZnJlZSB0aGUgdHR5R1MwIHBy
+ZXZpb3VzbHkgdXNlZCBhbmQgdGh1cyBpdCBjYW5ub3QgcHJvcGVybHkNCj4gY3JlYXRlIHRoZSBu
+ZXcgZGV2aWNlLg0KPiANCj4+IFBsZWFzZSBwcm92aWRlIG1lIGR1bXAgb2YgZm9sbG93IGR3YzIg
+ZGVidWdmcydzOiByZWdkdW1wLCBod19wYXJhbXMsIHBhcmFtcy4NCj4gDQo+IERvIHlvdSB3YW50
+IHRoaXMgb24gd29ya2luZyBhbmQgZmFpbGluZyBzdGF0ZSBvciBqdXN0IHRoZSBmYWlsaW5nIG9u
+ZT8NCj4gDQpBZnRlciBmYWlsaW5nLg0KDQoNClRoYW5rcywNCk1pbmFzDQo=
