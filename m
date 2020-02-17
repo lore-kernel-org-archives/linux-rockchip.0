@@ -1,113 +1,97 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 2/2] pinctrl: rockchip: split rockchip pinctrl driver by SoC type
-Date: Sat, 15 Feb 2020 12:11:19 +0100
-Message-ID: <6201612.znBgJCgWHB@phil>
-References: <c4ec95a7-aaf1-2331-352f-2def319a1c7d@rock-chips.com> <20200117081358.5772-1-jay.xu@rock-chips.com> <20200117081358.5772-3-jay.xu@rock-chips.com>
+From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: USB DWC2 stops responding when insert/remove cable multiple times
+Date: Mon, 17 Feb 2020 08:58:11 +0000
+Message-ID: <41a7bfe7-54b1-84eb-091f-469d971ab968@synopsys.com>
+References: <CAP9ODKprPi8N-dU8NaKwneXH-3b0ipSEDpU5mDbGntxuyhGhJw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200117081358.5772-3-jay.xu@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jianqun Xu <jay.xu@rock-chips.com>
-Cc: linus.walleij@linaro.org, david.wu@rock-chips.com, kever.yang@rock-chips.com, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAP9ODKprPi8N-dU8NaKwneXH-3b0ipSEDpU5mDbGntxuyhGhJw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+Content-ID: <8607DFE13831C844ADD3AB7A0F1FFEBB-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jay,
-
-Am Freitag, 17. Januar 2020, 09:13:58 CET schrieb Jianqun Xu:
-> The pinctrl-rockchip driver grows larger by adding support for
-> each new SoC, that make the kernel Image size too large since
-> it only under one config named PINCTRL_ROCKCHIP.
-> 
-> This patch split driver in the form of core driver + soc driver,
-> - pinctrl-rockchip.c defined an platform probe register function
-> - pinctrl-rkxxxx.c init module by matching compatible name
-> 
-> For rockchip_defconfig, it needs to select all PINCTRL_RKxxxx to
-> keep same with old driver.
-> 
-> For some special defconfig, it can only select one PINCTRL_RKxxxx.
-> 
-> Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> ---
-> changes since v3:
-> - add base patch with directory change only, suggested by Robin
-> - rebase patch
-> 
-> changes since v2:
-> - remove rockchip_pinctrl_remove
-> - rename rockchip_pinctrl_* to rockchip_pctrl_*
-> - redule arguments for get_soc_data
-> - add module author for each new driver files
-> - add copyright for new driver files
-> 
-> changes since v1:
-> - add rockchip_pinctrl_remove
-> - remove unused head files in pinctrl-rockchip.h
-> 
->  drivers/pinctrl/rockchip/Kconfig            |  114 +
->  drivers/pinctrl/rockchip/Makefile           |   14 +
->  drivers/pinctrl/rockchip/pinctrl-px30.c     |  224 ++
->  drivers/pinctrl/rockchip/pinctrl-rk2928.c   |   70 +
->  drivers/pinctrl/rockchip/pinctrl-rk3036.c   |   69 +
->  drivers/pinctrl/rockchip/pinctrl-rk3066a.c  |   72 +
->  drivers/pinctrl/rockchip/pinctrl-rk3066b.c  |   51 +
->  drivers/pinctrl/rockchip/pinctrl-rk3128.c   |  161 ++
->  drivers/pinctrl/rockchip/pinctrl-rk3188.c   |  147 ++
->  drivers/pinctrl/rockchip/pinctrl-rk3228.c   |  225 ++
->  drivers/pinctrl/rockchip/pinctrl-rk3288.c   |  210 ++
->  drivers/pinctrl/rockchip/pinctrl-rk3308.c   |  420 +++
->  drivers/pinctrl/rockchip/pinctrl-rk3328.c   |  272 ++
->  drivers/pinctrl/rockchip/pinctrl-rk3368.c   |  125 +
->  drivers/pinctrl/rockchip/pinctrl-rk3399.c   |  195 ++
->  drivers/pinctrl/rockchip/pinctrl-rockchip.c | 2547 ++-----------------
->  drivers/pinctrl/rockchip/pinctrl-rockchip.h |  388 +++
->  drivers/pinctrl/rockchip/pinctrl-rv1108.c   |  214 ++
->  18 files changed, 3149 insertions(+), 2369 deletions(-)
-
-What Robin suggested, was doing this incrementally. So keep your patch1
-but then do
-- patch2: split out px30-pinctrl
-- patch3: split out rk3288 pinctrl
-- etc
-
-Because even my mail client chokes on this massive 6000 line patch, so a
-real review is actually very difficult.
-
-
-> diff --git a/drivers/pinctrl/rockchip/Kconfig b/drivers/pinctrl/rockchip/Kconfig
-> index 7a0077ca32dd..4873a05108f8 100644
-> --- a/drivers/pinctrl/rockchip/Kconfig
-> +++ b/drivers/pinctrl/rockchip/Kconfig
-> @@ -5,8 +5,122 @@ if (ARCH_ROCKCHIP || COMPILE_TEST)
->  config PINCTRL_ROCKCHIP
->  	bool
->  	select PINMUX
-> +	select PINCONF
->  	select GENERIC_PINCONF
-> +	select GPIOLIB_IRQCHIP
->  	select GENERIC_IRQ_CHIP
->  	select MFD_SYSCON
->  
-> +config PINCTRL_PX30
-> +	tristate "PX30 pin controller driver"
-> +	depends on GPIOLIB && OF
-> +	select PINCTRL_ROCKCHIP
-
-you might want to add a
-	default y if ARM64
-here
-(similar default y if ARM for arm32 pinctrl drivers)
-
-Because otherwise you're breaking peoples kernel configs and also
-the default is to build a somewhat unified kernel in the default defconfigs,
-so we want all matching pinctrl drivers by default and people then can
-disable drivers if they really want to build a slimmed down kernel.
-
-With the "if ARM" / "if ARM64" parts you even save some space by
-default as well, as you build only the relevant drivers.
-
-
-Heiko
+SGkgT3RhdmlvLA0KDQpPbiAyLzE0LzIwMjAgNTo0MCBQTSwgT3RhdmlvIFNhbHZhZG9yIHdyb3Rl
+Og0KPiAgIHRoZSBVU0IgcG9ydCBzdG9wcyByZXNwb25kaW5nLiBUbyByZWNvdmVyIHRoZSBwb3J0
+IHdlIG5lZWQgdG8gcmVsb2FkDQo+IHRoZSBnX3NlcmlhbCBtb2R1bGUuDQo+IA0KPiBJIGhhdmUg
+cmVwb3J0cyBvZiBpdCBoYXBwZW5pbmcgaW4gdGhlIGZpZWxkLCBvbiB0aGUgZGV2aWNlIGJ1dCwg
+dW50aWwNCj4gcmVjZW50bHksIGl0IHZlcnkgaGFyZCB0byByZXByb2R1Y2UuIFdlIGZvdW5kIHRo
+YXQgaXQgaXMgdmVyeSBlYXN5IHRvDQo+IHJlcHJvZHVjZSB3aGVuIHdlIHVzZSB0aGUgTWljcm9z
+b2Z0IFN1cmZhY2UgRG9jaywgYXMgaHViLg0KPiANCj4gRGVzY3JpcHRpb24gb2YgdGhlIGhvc3Q6
+DQo+IA0KPiAgICAgIE9wZXJhdGluZyBTeXN0ZW06IFdpbmRvd3MgMTAgUHJvDQo+ICAgICAgRHJp
+dmVyOiBsaWJ1c2ItMS4wIDEuMC4yMg0KPiANCj4gRGVzY3JpcHRpb24gb2YgdGhlIHRhcmdldDoN
+Cj4gDQo+ICAgICAgU29DOiBSb2NrY2hpcCBSVjExMDhHDQo+ICAgICAgR2FkZ2V0OiBnX3Nlcmlh
+bA0KPiAgICAgIExpbnV4OiA1LjQuMTkNCj4gDQo+IGRtZXNnOg0KPiAgICAgIFsgICA1OS42NDc3
+NDZdIGdfc2VyaWFsIGdhZGdldDogR2FkZ2V0IFNlcmlhbCB2Mi40DQo+ICAgICAgWyAgIDU5LjY0
+ODE3OF0gZ19zZXJpYWwgZ2FkZ2V0OiBnX3NlcmlhbCByZWFkeQ0KPiAgICAgIFsgICA1OS42NTM5
+MjBdIGR3YzIgMzAxODAwMDAudXNiOiBib3VuZCBkcml2ZXIgZ19zZXJpYWwNCj4gICAgICBbICAg
+NTkuOTEyMzY0XSBkd2MyIDMwMTgwMDAwLnVzYjogbmV3IGRldmljZSBpcyBoaWdoLXNwZWVkDQo+
+ICAgICAgWyAgIDU5Ljk0OTk4MV0gZHdjMiAzMDE4MDAwMC51c2I6IG5ldyBhZGRyZXNzIDEyDQo+
+ICAgICAgWyAgIDYwLjAzNDkzN10gZ19zZXJpYWwgZ2FkZ2V0OiBoaWdoLXNwZWVkIGNvbmZpZyAj
+MjogQ0RDIEFDTSBjb25maWcNCj4gICAgICBbICAgNjUuOTgwMzgyXSBwaHkgcGh5LTEwMzAwMDAw
+LnN5c2Nvbjp1c2IyLXBoeUAxMDAuMDogY2hhcmdlciA9DQo+IFVTQl9DRFBfQ0hBUkdFUg0KPiAg
+ICAgIFsgICA2Ni4zMTMyNjddIGR3YzIgMzAxODAwMDAudXNiOiBuZXcgZGV2aWNlIGlzIGhpZ2gt
+c3BlZWQNCj4gICAgICBbICAgNjYuMzUwOTAyXSBkd2MyIDMwMTgwMDAwLnVzYjogbmV3IGFkZHJl
+c3MgMTMNCj4gICAgICBbICAgNjYuMzg4MDY1XSBnX3NlcmlhbCBnYWRnZXQ6IGhpZ2gtc3BlZWQg
+Y29uZmlnICMyOiBDREMgQUNNIGNvbmZpZw0KPiAgICAgIFsgIDMxMS42MDQyNTFdIGR3YzIgMzAx
+ODAwMDAudXNiOiBuZXcgZGV2aWNlIGlzIGhpZ2gtc3BlZWQNCj4gICAgICBbICAzMTEuNjQxNzk4
+XSBkd2MyIDMwMTgwMDAwLnVzYjogbmV3IGFkZHJlc3MgMTQNCj4gICAgICBbICAzMTEuNzQ1NTk3
+XSBnX3NlcmlhbCBnYWRnZXQ6IGhpZ2gtc3BlZWQgY29uZmlnICMyOiBDREMgQUNNIGNvbmZpZw0K
+PiAgICAgIFsgIDMxMi45MDUxMDJdIGR3YzIgMzAxODAwMDAudXNiOiBuZXcgZGV2aWNlIGlzIGhp
+Z2gtc3BlZWQNCj4gICAgICBbICAzMTIuOTQ0MzAxXSBkd2MyIDMwMTgwMDAwLnVzYjogbmV3IGFk
+ZHJlc3MgMTUNCj4gICAgICBbICAzMTIuOTY3ODY3XSBnX3NlcmlhbCBnYWRnZXQ6IGhpZ2gtc3Bl
+ZWQgY29uZmlnICMyOiBDREMgQUNNIGNvbmZpZw0KPiAgICAgIFsgIDMxNC44MjgxNzNdIGR3YzIg
+MzAxODAwMDAudXNiOiBuZXcgZGV2aWNlIGlzIGhpZ2gtc3BlZWQNCj4gICAgICBbICAzMTQuODY2
+OTQzXSBkd2MyIDMwMTgwMDAwLnVzYjogbmV3IGFkZHJlc3MgMTYNCj4gICAgICBbICAzMTQuODg5
+NTUwXSBnX3NlcmlhbCBnYWRnZXQ6IGhpZ2gtc3BlZWQgY29uZmlnICMyOiBDREMgQUNNIGNvbmZp
+Zw0KPiANCg0KSSBhc3N1bWUgaGVyZSB5b3UgZmV3IHRpbWUgZGlzY29ubmVjdGVkIGFuZCB0aGVu
+IGNvbm5lY3RlZCBjYWJsZSBhbmQgDQphZnRlciBsYXN0IGNvbm5lY3Rpb24gZXZlbiB3aGVuIGdf
+c2VyaWFsIHNlZW4gaW4gbGFzdCBsaW5lIGl0IHN0b3Agd29yay4gDQpDb3JyZWN0Pw0KDQo+IA0K
+PiBUaGUgIlsgIDMxNC44ODk1NTBdIGdfc2VyaWFsIGdhZGdldDogaGlnaC1zcGVlZCBjb25maWcg
+IzI6IENEQyBBQ00NCj4gY29uZmlnIiBtZXNzYWdlIGlzIHRoZSBsYXN0IHRpbWUgaXQgaXMgZGV0
+ZWN0ZWQuIEFzIG1lbnRpb25lZCwgdG8NCj4gcmVzdG9yZSB0aGUgcG9ydCB0byB3b3JrLCB3ZSBu
+ZWVkIHRvIHJlbG9hZCB0aGUgZ19zZXJpYWwgbW9kdWxlLg0KPiANCj4gV2hlbiB3ZSByZWxvYWQg
+aXQsIGZvbGxvd2luZyBleGNlcHRpb24gaGFwcGVuczoNCj4gDQoNCkFjdHVhbGx5IGV4Y2VwdGlv
+biBoYXBwZW4gaW4gZ19zZXJpYWwgbm90IGR3YzIuIFdoeSB5b3UgYXNzdW1lIHRoYXQgaXQgDQpi
+ZWNhdXNlIG9mIGR3YzI/DQoNCj4gICAgICBbICA5MjMuOTYyNTQ3XSA5ZmUwOiAwMDAwMDAwMiBi
+NjM0NjY4OCBiNjU0NzhkMCBiNmY0ODY3YyA2MDBmMDAxMA0KPiBmZmZmZmY5YyAwMDAwMDAwMCAw
+MDAwMDAwMA0KPiAgICAgIFsgIDkyMy45NjMzMDRdIFs8YzA4NTA2Mzg+XSAoX3Jhd19zcGluX2xv
+Y2tfaXJxKSBmcm9tIFs8YmYwNDVkNDQ+XQ0KPiAoZ3NfY2xvc2UrMHgyYy8weDFmMCBbdV9zZXJp
+YWxdKQ0KPiAgICAgIFsgIDkyMy45NjQxMTddIFs8YmYwNDVkNDQ+XSAoZ3NfY2xvc2UgW3Vfc2Vy
+aWFsXSkgZnJvbQ0KPiBbPGMwNGY5NmU4Pl0gKHR0eV9yZWxlYXNlKzB4ZjAvMHg0OWMpDQo+ICAg
+ICAgWyAgOTIzLjk2NDg2M10gWzxjMDRmOTZlOD5dICh0dHlfcmVsZWFzZSkgZnJvbSBbPGMwNGZi
+NWE0Pl0NCj4gKHR0eV9vcGVuKzB4MTE4LzB4NDUwKQ0KPiAgICAgIFsgIDkyMy45NjU1MjZdIFs8
+YzA0ZmI1YTQ+XSAodHR5X29wZW4pIGZyb20gWzxjMDJiNTA5Yz5dDQo+IChjaHJkZXZfb3Blbisw
+eGUwLzB4MWI0KQ0KPiAgICAgIFsgIDkyMy45NjYxODhdIFs8YzAyYjUwOWM+XSAoY2hyZGV2X29w
+ZW4pIGZyb20gWzxjMDJhYzUzOD5dDQo+IChkb19kZW50cnlfb3BlbisweDExNC8weDNmNCkNCj4g
+ICAgICBbICA5MjMuOTY2ODk3XSBbPGMwMmFjNTM4Pl0gKGRvX2RlbnRyeV9vcGVuKSBmcm9tIFs8
+YzAyYmY3Nzg+XQ0KPiAocGF0aF9vcGVuYXQrMHgyZjgvMHgxMTI4KQ0KPiAgICAgIFsgIDkyMy45
+Njc2MTNdIFs8YzAyYmY3Nzg+XSAocGF0aF9vcGVuYXQpIGZyb20gWzxjMDJjMTkzMD5dDQo+IChk
+b19maWxwX29wZW4rMHg3NC8weGU0KQ0KPiAgICAgIFsgIDkyMy45NjgyOTBdIFs8YzAyYzE5MzA+
+XSAoZG9fZmlscF9vcGVuKSBmcm9tIFs8YzAyYWRiNWM+XQ0KPiAoZG9fc3lzX29wZW4rMHgxNzQv
+MHgyMDgpDQo+ICAgICAgWyAgOTIzLjk2ODk4NV0gWzxjMDJhZGI1Yz5dIChkb19zeXNfb3Blbikg
+ZnJvbSBbPGMwMTAxMDAwPl0NCj4gKHJldF9mYXN0X3N5c2NhbGwrMHgwLzB4NTQpDQo+ICAgICAg
+WyAgOTIzLjk2OTY3NV0gRXhjZXB0aW9uIHN0YWNrKDB4YzY3MzlmYTggdG8gMHhjNjczOWZmMCkN
+Cj4gICAgICBbICA5MjMuOTcwMTM2XSA5ZmEwOiAgICAgICAgICAgICAgICAgICAwMDNlNGZmMCAw
+MDY3NDQ1MCBmZmZmZmY5Yw0KPiAwMDNlNGZmMCAwMDAwMDkwMiAwMDAwMDAwMA0KPiAgICAgIFsg
+IDkyMy45NzA4NjhdIDlmYzA6IDAwM2U0ZmYwIDAwNjc0NDUwIDAwMDAwMDBkIDAwMDAwMTQyIGI1
+N2ZmMDExDQo+IDAwMDQwMDAwIDAwMDQwMDAwIGI2MzQ2ODc0DQo+ICAgICAgWyAgOTIzLjk3MTU5
+N10gOWZlMDogMDAwMDAwMDIgYjYzNDY2ODggYjY1NDc4ZDAgYjZmNDg2N2MNCj4gICAgICBbICA5
+MjMuOTcyMDY1XSBDb2RlOiBmNTdmZjA1YiBlMTJmZmYxZSBmMTBjMDA4MCBmNTkwZjAwMCAoZTE5
+MDNmOWYpDQo+ICAgICAgWyAgOTIzLjk3MjYxOF0gLS0tWyBlbmQgdHJhY2UgMDJlZGJiYjk5NDhj
+MTU5YyBdLS0tDQo+ICAgICAgWyAgOTM4LjkwODcxNl0gZ19zZXJpYWwgZ2FkZ2V0OiBHYWRnZXQg
+U2VyaWFsIHYyLjQNCj4gICAgICBbICA5MzguOTA5MTUyXSBnX3NlcmlhbCBnYWRnZXQ6IGdfc2Vy
+aWFsIHJlYWR5DQo+ICAgICAgWyAgOTM4LjkxNzE0OF0gZHdjMiAzMDE4MDAwMC51c2I6IGJvdW5k
+IGRyaXZlciBnX3NlcmlhbA0KPiAgICAgIFsgIDkzOS4xNzYxNzldIGR3YzIgMzAxODAwMDAudXNi
+OiBuZXcgZGV2aWNlIGlzIGhpZ2gtc3BlZWQNCj4gICAgICBbICA5MzkuMjE1NDU5XSBkd2MyIDMw
+MTgwMDAwLnVzYjogbmV3IGFkZHJlc3MgMTcNCj4gICAgICBbICA5MzkuNDIyMDM3XSBnX3Nlcmlh
+bCBnYWRnZXQ6IGhpZ2gtc3BlZWQgY29uZmlnICMyOiBDREMgQUNNIGNvbmZpZw0KPiANCj4gU28s
+IEkgYW0gYSBiaXQgbG9zdCBob3cgdG8gZGVidWcgdGhpcyBzbyBJJ2QgbGlrZSB0byBrbm93IHdo
+YXQga2luZCBvZg0KPiBpbmZvcm1hdGlvbiBtaWdodCBiZSB1c2VmdWwgdG8gZmluZCB0aGUgcm9v
+dCBjYXVzZSBvZiBpdD8NCg0KQW5kIGRlc3BpdGUgb2YgYWJvdmUgZXhjZXB0aW9uLCBnX3Nlcmlh
+bCBlbnVtZXJhdGVkIGl0IHdvcmtzIGZpbmU/DQoNCg0KUGxlYXNlIHByb3ZpZGUgbWUgZHVtcCBv
+ZiBmb2xsb3cgZHdjMiBkZWJ1Z2ZzJ3M6IHJlZ2R1bXAsIGh3X3BhcmFtcywgcGFyYW1zLg0KDQpU
+aGFua3MsDQpNaW5hcw0KDQo=
