@@ -1,32 +1,55 @@
 From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: [PATCH v2 0/3] Clean up RK3328 audio codec GPIO control
-Date: Tue, 18 Feb 2020 21:31:57 +0000
-Message-ID: <cover.1581376744.git.robin.murphy@arm.com>
+Subject: [PATCH v2 1/3] ASoC: dt-bindings: Make RK3328 codec GPIO explicit
+Date: Tue, 18 Feb 2020 21:31:58 +0000
+Message-ID: <5f7a399dea8a9dedef57f6f99f0f6ab1c1fdc56a.1581376744.git.robin.murphy@arm.com>
+References: <cover.1581376744.git.robin.murphy@arm.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <cover.1581376744.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
 Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi all,
+Existing RK3328 codec drivers have overloaded the GRF phandle to assume
+implicit control of the limited-function GPIO_MUTE pin, which is usually
+used to enable an external audio line driver IC. Since this pin has a
+proper binding of its own (see gpio/rockchip,rk3328-grf-gpio.txt), make
+a GPIO explicit in the codec binding too. This will help avoid ambiguity
+on boards that use that pin for some other purpose.
 
-Since nobody said anything resembling "that looks like a terrible idea!"
-to what I propsed on top of v1, resending as a full v2 per Mark's
-request.
+(and while touching the example, enforce the "don't include status" rule)
 
-Robin.
+Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+---
 
+v2: no change
 
-Robin Murphy (3):
-  ASoC: dt-bindings: Make RK3328 codec GPIO explicit
-  ASoC: rockchip: Make RK3328 GPIO_MUTE control explicit
-  arm64: dts: rockchip: Describe RK3328 GPIO_MUTE users
+ .../devicetree/bindings/sound/rockchip,rk3328-codec.txt    | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
- .../bindings/sound/rockchip,rk3328-codec.txt  |  7 ++++-
- arch/arm64/boot/dts/rockchip/rk3328-a1.dts    |  1 +
- .../arm64/boot/dts/rockchip/rk3328-rock64.dts |  1 +
- sound/soc/codecs/rk3328_codec.c               | 31 ++++++++++---------
- 4 files changed, 24 insertions(+), 16 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt
+index 2469588c7ccb..1ecd75d2032a 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt
+@@ -10,6 +10,11 @@ Required properties:
+ - clock-names: should be "pclk".
+ - spk-depop-time-ms: speak depop time msec.
+ 
++Optional properties:
++
++- mute-gpios: GPIO specifier for external line driver control (typically the
++              dedicated GPIO_MUTE pin)
++
+ Example for rk3328 internal codec:
+ 
+ codec: codec@ff410000 {
+@@ -18,6 +23,6 @@ codec: codec@ff410000 {
+ 	rockchip,grf = <&grf>;
+ 	clocks = <&cru PCLK_ACODEC>;
+ 	clock-names = "pclk";
++	mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
+ 	spk-depop-time-ms = 100;
+-	status = "disabled";
+ };
 -- 
 2.17.1
