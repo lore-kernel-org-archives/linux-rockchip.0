@@ -1,118 +1,47 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: [PATCH v2 2/3] ASoC: rockchip: Make RK3328 GPIO_MUTE control explicit
-Date: Tue, 18 Feb 2020 21:31:59 +0000
-Message-ID: <5bc383ed1832f0f5d1dcb3c97ad92fd68e5217e3.1581376744.git.robin.murphy@arm.com>
-References: <cover.1581376744.git.robin.murphy@arm.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <cover.1581376744.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH v2 0/5] mfd: RK8xx tidyup
+Date: Tue, 18 Feb 2020 21:44:55 +0000
+Message-ID: <caf2fcfe-696e-9398-7c85-57498107f0ac@arm.com>
+References: <cover.1578789410.git.robin.murphy@arm.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <cover.1578789410.git.robin.murphy@arm.com>
+Content-Language: en-GB
+Sender: linux-kernel-owner@vger.kernel.org
+To: lee.jones@linaro.org
+Cc: linux-rockchip@lists.infradead.org, smoch@web.de, linux-kernel@vger.kernel.org, heiko@sntech.de
 List-Id: linux-rockchip.vger.kernel.org
 
-The RK3328 reference design uses an external line driver IC as a buffer
-on the analog codec output, enabled by the GPIO_MUTE pin, and such a
-configuration is currently assumed in the codec driver's direct poking
-of GRF_SOC_CON10 to control the GPIO_MUTE output value. However, some
-boards wire up analog audio yet use that pin for some other purpose, so
-that assumption doesn't always hold. Update this functionality to rely
-on an explicit GPIO descriptor, such that it can be managed at the
-board level.
+On 2020-01-12 1:54 am, Robin Murphy wrote:
+> Hi all,
+> 
+> Here's a second crack at my RK805-inspired cleanup. There was a bit
+> of debate around v1[1], but it seems like we're now all happy that this
+> is a reasonable way to go. For clarity I decided to include Soeren's
+> patch as #1/5, but since I've rewritten most of my patches I've not
+> included the tested-by tags.
 
-Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
----
+Any more comments, or are these patches good to merge now? My local 
+branch seemed to rebase to 5.6-rc1 cleanly, but I can resend if necessary.
 
-v2:
- - add fallback case to avoid possible Rock64 regressions
- - propagate GPIO errors; "optional" doesn't really mean "ignore
-   brokenness if present"
+Thanks,
+Robin.
 
- sound/soc/codecs/rk3328_codec.c | 31 ++++++++++++++++---------------
- 1 file changed, 16 insertions(+), 15 deletions(-)
-
-diff --git a/sound/soc/codecs/rk3328_codec.c b/sound/soc/codecs/rk3328_codec.c
-index 287c962ba00d..115706a55577 100644
---- a/sound/soc/codecs/rk3328_codec.c
-+++ b/sound/soc/codecs/rk3328_codec.c
-@@ -7,6 +7,7 @@
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/device.h>
-+#include <linux/gpio/consumer.h>
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/platform_device.h>
-@@ -31,7 +32,7 @@
- 
- struct rk3328_codec_priv {
- 	struct regmap *regmap;
--	struct regmap *grf;
-+	struct gpio_desc *mute;
- 	struct clk *mclk;
- 	struct clk *pclk;
- 	unsigned int sclk;
-@@ -106,16 +107,6 @@ static int rk3328_set_dai_fmt(struct snd_soc_dai *dai, unsigned int fmt)
- 	return 0;
- }
- 
--static void rk3328_analog_output(struct rk3328_codec_priv *rk3328, int mute)
--{
--	unsigned int val = BIT(17);
--
--	if (mute)
--		val |= BIT(1);
--
--	regmap_write(rk3328->grf, RK3328_GRF_SOC_CON10, val);
--}
--
- static int rk3328_digital_mute(struct snd_soc_dai *dai, int mute)
- {
- 	struct rk3328_codec_priv *rk3328 =
-@@ -205,7 +196,7 @@ static int rk3328_codec_open_playback(struct rk3328_codec_priv *rk3328)
- 	}
- 
- 	msleep(rk3328->spk_depop_time);
--	rk3328_analog_output(rk3328, 1);
-+	gpiod_set_value(rk3328->mute, 0);
- 
- 	regmap_update_bits(rk3328->regmap, HPOUTL_GAIN_CTRL,
- 			   HPOUTL_GAIN_MASK, OUT_VOLUME);
-@@ -246,7 +237,7 @@ static int rk3328_codec_close_playback(struct rk3328_codec_priv *rk3328)
- {
- 	size_t i;
- 
--	rk3328_analog_output(rk3328, 0);
-+	gpiod_set_value(rk3328->mute, 1);
- 
- 	regmap_update_bits(rk3328->regmap, HPOUTL_GAIN_CTRL,
- 			   HPOUTL_GAIN_MASK, 0);
-@@ -446,7 +437,6 @@ static int rk3328_platform_probe(struct platform_device *pdev)
- 		dev_err(&pdev->dev, "missing 'rockchip,grf'\n");
- 		return PTR_ERR(grf);
- 	}
--	rk3328->grf = grf;
- 	/* enable i2s_acodec_en */
- 	regmap_write(grf, RK3328_GRF_SOC_CON2,
- 		     (BIT(14) << 16 | BIT(14)));
-@@ -458,7 +448,18 @@ static int rk3328_platform_probe(struct platform_device *pdev)
- 		rk3328->spk_depop_time = 200;
- 	}
- 
--	rk3328_analog_output(rk3328, 0);
-+	rk3328->mute = gpiod_get_optional(&pdev->dev, "mute", GPIOD_OUT_HIGH);
-+	if (IS_ERR(rk3328->mute))
-+		return PTR_ERR(rk3328->mute);
-+	/*
-+	 * Rock64 is the only supported platform to have widely relied on
-+	 * this; if we do happen to come across an old DTB, just leave the
-+	 * external mute forced off.
-+	 */
-+	if (!rk3328->mute && of_machine_is_compatible("pine64,rock64")) {
-+		dev_warn(&pdev->dev, "assuming implicit control of GPIO_MUTE; update devicetree if possible\n");
-+		regmap_write(grf, RK3328_GRF_SOC_CON10, BIT(17) | BIT(1));
-+	}
- 
- 	rk3328->mclk = devm_clk_get(&pdev->dev, "mclk");
- 	if (IS_ERR(rk3328->mclk))
--- 
-2.17.1
+> 
+> [1] https://lore.kernel.org/lkml/cover.1575932654.git.robin.murphy@arm.com/
+> 
+> Robin Murphy (4):
+>    mfd: rk808: Ensure suspend/resume hooks always work
+>    mfd: rk808: Stop using syscore ops
+>    mfd: rk808: Reduce shutdown duplication
+>    mfd: rk808: Convert RK805 to shutdown/suspend hooks
+> 
+> Soeren Moch (1):
+>    mfd: rk808: Always use poweroff when requested
+> 
+>   drivers/mfd/rk808.c       | 139 +++++++++++++-------------------------
+>   include/linux/mfd/rk808.h |   2 -
+>   2 files changed, 48 insertions(+), 93 deletions(-)
+> 
