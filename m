@@ -1,61 +1,79 @@
-From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+From: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>
 Subject: Re: USB DWC2 stops responding when insert/remove cable multiple times
-Date: Wed, 19 Feb 2020 12:26:48 +0000
-Message-ID: <380d765b-8867-a899-b67a-c016c09fa27b@synopsys.com>
+Date: Wed, 19 Feb 2020 12:10:31 -0300
+Message-ID: <CAP9ODKqL_GN+iebL3wPX_9fEUtUVP8Ahv03yJ1R-JLDr=Cn0BA@mail.gmail.com>
 References: <CAP9ODKprPi8N-dU8NaKwneXH-3b0ipSEDpU5mDbGntxuyhGhJw@mail.gmail.com>
- <41a7bfe7-54b1-84eb-091f-469d971ab968@synopsys.com>
- <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw@mail.gmail.com>
- <ee47be28-ba9f-750f-65d2-51a722ce291d@synopsys.com>
- <CAP9ODKqa_4NSsFMUpyFDt3ohgGBCMgbOyKaVjYfSjmcZLmmC+A@mail.gmail.com>
+ <41a7bfe7-54b1-84eb-091f-469d971ab968@synopsys.com> <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw@mail.gmail.com>
+ <ee47be28-ba9f-750f-65d2-51a722ce291d@synopsys.com> <CAP9ODKqa_4NSsFMUpyFDt3ohgGBCMgbOyKaVjYfSjmcZLmmC+A@mail.gmail.com>
+ <380d765b-8867-a899-b67a-c016c09fa27b@synopsys.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAP9ODKqa_4NSsFMUpyFDt3ohgGBCMgbOyKaVjYfSjmcZLmmC+A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-US
-Content-ID: <AB4A495D0FAB8F4B8E8A14B2D3F04515-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+In-Reply-To: <380d765b-8867-a899-b67a-c016c09fa27b-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>, Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+To: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
 Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgT3RhdmlvLA0KDQpPbiAyLzE3LzIwMjAgMTE6NTMgUE0sIE90YXZpbyBTYWx2YWRvciB3cm90
-ZToNCj4gSGVsbG8gTWluYXMsDQo+IA0KPiBPbiBNb24sIEZlYiAxNywgMjAyMCBhdCAxMDoyNiBB
-TSBNaW5hcyBIYXJ1dHl1bnlhbg0KPiA8TWluYXMuSGFydXR5dW55YW5Ac3lub3BzeXMuY29tPiB3
-cm90ZToNCj4+IEVuYWJsZSBkZWJ1ZyBwcmludHMgdG8gZ2V0IGZ1bGwgZHdjMiBkZWJ1ZyBwcmlu
-dHMgdG8gc2VlIHdoYXQgaGFwcGVuDQo+PiB3aXRoIGR3YzIuDQo+IA0KDQo+IFsgMTA1NC41Mjk3
-NzRdIGR3YzIgMzAxODAwMDAudXNiOiBlcDAgc3RhdGU6MA0KPiBbIDEwNTQuNTI5Nzg1XSBkd2My
-IDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19zdGFydF9yZXE6IER4RVBDVEw9MHg4NDA4ODIwMA0K
-PiBbIDEwNTQuNTI5ODAxXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19zdGFydF9yZXE6
-IERYRVBDVEw9MHg4MDA4ODIwMA0KPiBbIDEwNTQuNTI5OTI4XSBkd2MyIDMwMTgwMDAwLnVzYjog
-ZXAyb3V0OiByZXEgMjZiZDliOWY6IDUxMkAwNmI3ZGJjYSwNCj4gbm9pPTAsIHplcm89MCwgc25v
-az0wDQo+IFsgMTA1NC41MzcwOTVdIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hzb3RnX2lycTog
-MDQwMDg0MjggMDAwMDA0MDANCj4gKGQ4OGMzY2M0KSByZXRyeSA4DQo+IFsgMTA1NC41MzcxMTld
-IGR3YzIgMzAxODAwMDAudXNiOiBHSU5UU1RTX0VybHlTdXNwDQo+IFsgMTA1NC41NDAxNDddIGR3
-YzIgMzAxODAwMDAudXNiOiBnaW50c3RzPTA0MDA4ODI4ICBnaW50bXNrPWQ4OGMzY2M0DQo+IFsg
-MTA1NC41NDAxNzJdIGR3YzIgMzAxODAwMDAudXNiOiBVU0IgU1VTUEVORA0KPiBbIDEwNTQuNTQw
-MTkxXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oYW5kbGVfdXNiX3N1c3BlbmRfaW50cjogRFNU
-Uz0weDVhZDgwMQ0KPiBbIDEwNTQuNTQwMjExXSBkd2MyIDMwMTgwMDAwLnVzYjogRFNUUy5TdXNw
-ZW5kIFN0YXR1cz0xIEhXQ0ZHNC5Qb3dlcg0KPiBPcHRpbWl6ZT0xIEhXQ0ZHNC5IaWJlcm5hdGlv
-bj0wDQo+IFsgMTA1NC41NDAyNDJdIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hzb3RnX2lycTog
-MDQwMDgwMjggMDAwMDAwMDANCj4gKGQ4OGMzY2M0KSByZXRyeSA4DQo+IFsgMTA1NC41ODU0MDJd
-IGR3YzIgMzAxODAwMDAudXNiOiBlcDFpbjogcmVxIDAxZWZmMzFiOiAzNTNAYmY4ZDYyZDgsDQo+
-IG5vaT0wLCB6ZXJvPTEsIHNub2s9MA0KPiBbIDEwNTQuNTg1NDIyXSBkd2MyIDMwMTgwMDAwLnVz
-YjogZHdjMl9oc290Z19lcF9xdWV1ZTogc3VibWl0IHJlcXVlc3QNCj4gb25seSBpbiBhY3RpdmUg
-c3RhdGUNCj4gWyAxMDU0LjY2MTY2N10gZHdjMiAzMDE4MDAwMC51c2I6IGR3YzJfaHNvdGdfaXJx
-OiAwNDAwODQyOCAwMDAwMDQwMA0KPiAoZDg4YzNjYzQpIHJldHJ5IDgNCj4gWyAxMDU0LjY2MTY5
-NF0gZHdjMiAzMDE4MDAwMC51c2I6IEdJTlRTVFNfRXJseVN1c3ANCj4gWyAxMDU0LjY2NDcxNV0g
-ZHdjMiAzMDE4MDAwMC51c2I6IGdpbnRzdHM9MDQwMDg4MjggIGdpbnRtc2s9ZDg4YzNjYzQNCj4g
-WyAxMDU0LjY2NDc0MV0gZHdjMiAzMDE4MDAwMC51c2I6IFVTQiBTVVNQRU5EDQo+IFsgMTA1NC42
-NjQ3NjBdIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hhbmRsZV91c2Jfc3VzcGVuZF9pbnRyOiBE
-U1RTPTB4NWFkODAxDQo+IFsgMTA1NC42NjQ3ODFdIGR3YzIgMzAxODAwMDAudXNiOiBEU1RTLlN1
-c3BlbmQgU3RhdHVzPTEgSFdDRkc0LlBvd2VyDQo+IA0KDQpBY3R1YWxseSwgSSBkb24ndCBzZWUg
-YW55IGlzc3VlIHdpdGggZHdjMiBmcm9tIHRoZSBsb2cuIE9ubHkgbm90IGNsZWFyIA0Kd2h5IFNV
-U1BFTkQgaGFwcGVuIGhlYXIuIElzIGl0IGJlY2F1c2Ugb2YgZGlzY29ubmVjdC9jb25uZWN0IG9y
-IA0KcmVsb2FkaW5nIGdfc2VyaWFsPw0KSXMgdGhpcyBsb2cgcmVjb3JkZWQgd2hlbiBpc3N1ZSBz
-ZWVuPw0KQW55d2F5LCBiZWZvcmUgU1VTUEVORCBhbmQgYWZ0ZXIgZHdjMiBzdWNjZXNzZnVsbHkg
-cGVyZm9ybSB0cmFuc2ZlcnMgb24gDQphbGwgRVAncyAtIGVwMWluIGJ1bGssIGVwMm91dCBidWxr
-IGFuZCBlcDNpbiBpbnRlcnJ1cHQuDQpDYW4geW91IHByb3ZpZGUgZG1lc2cgd2l0aCBkd2MyIGRl
-YnVnIHByaW50cyB3aXRoIGV4Y2VwdGlvbiBjYXNlIGluc2lkZS4NCg0KPiBJcyB0aGlzIGluZm9y
-bWF0aW9uIHlvdSBuZWVkPyBJZiBuZWVkIHdlIGNhbiBnYXRoZXIgbW9yZSBpbmZvLg0KPiANCg0K
-DQpUaGFua3MsDQpNaW5hcw0K
+Hello Minas,
+
+On Wed, Feb 19, 2020 at 9:26 AM Minas Harutyunyan
+<Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+> On 2/17/2020 11:53 PM, Otavio Salvador wrote:
+> > On Mon, Feb 17, 2020 at 10:26 AM Minas Harutyunyan
+> > <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
+> >> Enable debug prints to get full dwc2 debug prints to see what happen
+> >> with dwc2.
+>
+> > [ 1054.529774] dwc2 30180000.usb: ep0 state:0
+> > [ 1054.529785] dwc2 30180000.usb: dwc2_hsotg_start_req: DxEPCTL=0x84088200
+> > [ 1054.529801] dwc2 30180000.usb: dwc2_hsotg_start_req: DXEPCTL=0x80088200
+> > [ 1054.529928] dwc2 30180000.usb: ep2out: req 26bd9b9f: 512@06b7dbca,
+> > noi=0, zero=0, snok=0
+> > [ 1054.537095] dwc2 30180000.usb: dwc2_hsotg_irq: 04008428 00000400
+> > (d88c3cc4) retry 8
+> > [ 1054.537119] dwc2 30180000.usb: GINTSTS_ErlySusp
+> > [ 1054.540147] dwc2 30180000.usb: gintsts=04008828  gintmsk=d88c3cc4
+> > [ 1054.540172] dwc2 30180000.usb: USB SUSPEND
+> > [ 1054.540191] dwc2 30180000.usb: dwc2_handle_usb_suspend_intr: DSTS=0x5ad801
+> > [ 1054.540211] dwc2 30180000.usb: DSTS.Suspend Status=1 HWCFG4.Power
+> > Optimize=1 HWCFG4.Hibernation=0
+> > [ 1054.540242] dwc2 30180000.usb: dwc2_hsotg_irq: 04008028 00000000
+> > (d88c3cc4) retry 8
+> > [ 1054.585402] dwc2 30180000.usb: ep1in: req 01eff31b: 353@bf8d62d8,
+> > noi=0, zero=1, snok=0
+> > [ 1054.585422] dwc2 30180000.usb: dwc2_hsotg_ep_queue: submit request
+> > only in active state
+> > [ 1054.661667] dwc2 30180000.usb: dwc2_hsotg_irq: 04008428 00000400
+> > (d88c3cc4) retry 8
+> > [ 1054.661694] dwc2 30180000.usb: GINTSTS_ErlySusp
+> > [ 1054.664715] dwc2 30180000.usb: gintsts=04008828  gintmsk=d88c3cc4
+> > [ 1054.664741] dwc2 30180000.usb: USB SUSPEND
+> > [ 1054.664760] dwc2 30180000.usb: dwc2_handle_usb_suspend_intr: DSTS=0x5ad801
+> > [ 1054.664781] dwc2 30180000.usb: DSTS.Suspend Status=1 HWCFG4.Power
+> >
+>
+> Actually, I don't see any issue with dwc2 from the log. Only not clear
+> why SUSPEND happen hear. Is it because of disconnect/connect or
+> reloading g_serial?
+> Is this log recorded when issue seen?
+
+Yes, the log was recorded however we did not reload the g_serial
+module. So when we gathered the logs, it was stuck.
+
+> Anyway, before SUSPEND and after dwc2 successfully perform transfers on
+> all EP's - ep1in bulk, ep2out bulk and ep3in interrupt.
+> Can you provide dmesg with dwc2 debug prints with exception case inside.
+
+The log I sent was taken with:
+
+1) boot device
+2) ran 'dmesg -c' so we cleaned the old messages
+3) cause the lock up to happen
+4) gather dmesg output
+
+What sequence do you want us to do?
+--
+Otavio Salvador                             O.S. Systems
+http://www.ossystems.com.br        http://code.ossystems.com.br
+Mobile: +55 (53) 9 9981-7854          Mobile: +1 (347) 903-9750
