@@ -1,47 +1,61 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 2/3] ASoC: rockchip: Make RK3328 GPIO_MUTE control
- explicit
-Date: Wed, 19 Feb 2020 12:06:11 +0000
-Message-ID: <20200219120611.GB4488@sirena.org.uk>
-References: <cover.1581376744.git.robin.murphy@arm.com>
- <5bc383ed1832f0f5d1dcb3c97ad92fd68e5217e3.1581376744.git.robin.murphy@arm.com>
+From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: USB DWC2 stops responding when insert/remove cable multiple times
+Date: Wed, 19 Feb 2020 12:26:48 +0000
+Message-ID: <380d765b-8867-a899-b67a-c016c09fa27b@synopsys.com>
+References: <CAP9ODKprPi8N-dU8NaKwneXH-3b0ipSEDpU5mDbGntxuyhGhJw@mail.gmail.com>
+ <41a7bfe7-54b1-84eb-091f-469d971ab968@synopsys.com>
+ <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw@mail.gmail.com>
+ <ee47be28-ba9f-750f-65d2-51a722ce291d@synopsys.com>
+ <CAP9ODKqa_4NSsFMUpyFDt3ohgGBCMgbOyKaVjYfSjmcZLmmC+A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="yNb1oOkm5a9FJOVX"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <5bc383ed1832f0f5d1dcb3c97ad92fd68e5217e3.1581376744.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAP9ODKqa_4NSsFMUpyFDt3ohgGBCMgbOyKaVjYfSjmcZLmmC+A-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+Content-ID: <AB4A495D0FAB8F4B8E8A14B2D3F04515-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>, Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
---yNb1oOkm5a9FJOVX
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Tue, Feb 18, 2020 at 09:31:59PM +0000, Robin Murphy wrote:
-
->  - add fallback case to avoid possible Rock64 regressions
-
-This should really have been called out in the changelog, were I reading
-this cold I might've stopped at the changelog and said you needed to
-keep the ABI stable for old boards.
-
---yNb1oOkm5a9FJOVX
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl5NJLMACgkQJNaLcl1U
-h9A6EQf+M4FxgJh7NoGwjteEBX6uwLvxHTrgo0677EFqqDjc/b5TNCDU720Q7dbi
-Mead2pPB06lQOHGO2piOu+A55lWuHX17hfnh9t1AECnZmZDQv/kTgZ/qb/yYU02d
-rJLGP0+Uy8bYU3SAzIGZyC0RJ3MydsaHp5/w3qXNiTQ/RB90k4CkqeYpCw0uT9yX
-8fgIUqUdiOgOvGjDn91teqXcoAjIU7VXfvz6yijqhqNynx1ybjgXklR1TJ2S2bZc
-kY35dvMUXpVraf/NcNJMYZVBaMRHMqj7LmRGUUAcVZZ982bWNAXx1FOPzY19ri6v
-NZyWPTowIagAhp65YyKen9nUh3a4sA==
-=Inf+
------END PGP SIGNATURE-----
-
---yNb1oOkm5a9FJOVX--
+SGkgT3RhdmlvLA0KDQpPbiAyLzE3LzIwMjAgMTE6NTMgUE0sIE90YXZpbyBTYWx2YWRvciB3cm90
+ZToNCj4gSGVsbG8gTWluYXMsDQo+IA0KPiBPbiBNb24sIEZlYiAxNywgMjAyMCBhdCAxMDoyNiBB
+TSBNaW5hcyBIYXJ1dHl1bnlhbg0KPiA8TWluYXMuSGFydXR5dW55YW5Ac3lub3BzeXMuY29tPiB3
+cm90ZToNCj4+IEVuYWJsZSBkZWJ1ZyBwcmludHMgdG8gZ2V0IGZ1bGwgZHdjMiBkZWJ1ZyBwcmlu
+dHMgdG8gc2VlIHdoYXQgaGFwcGVuDQo+PiB3aXRoIGR3YzIuDQo+IA0KDQo+IFsgMTA1NC41Mjk3
+NzRdIGR3YzIgMzAxODAwMDAudXNiOiBlcDAgc3RhdGU6MA0KPiBbIDEwNTQuNTI5Nzg1XSBkd2My
+IDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19zdGFydF9yZXE6IER4RVBDVEw9MHg4NDA4ODIwMA0K
+PiBbIDEwNTQuNTI5ODAxXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19zdGFydF9yZXE6
+IERYRVBDVEw9MHg4MDA4ODIwMA0KPiBbIDEwNTQuNTI5OTI4XSBkd2MyIDMwMTgwMDAwLnVzYjog
+ZXAyb3V0OiByZXEgMjZiZDliOWY6IDUxMkAwNmI3ZGJjYSwNCj4gbm9pPTAsIHplcm89MCwgc25v
+az0wDQo+IFsgMTA1NC41MzcwOTVdIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hzb3RnX2lycTog
+MDQwMDg0MjggMDAwMDA0MDANCj4gKGQ4OGMzY2M0KSByZXRyeSA4DQo+IFsgMTA1NC41MzcxMTld
+IGR3YzIgMzAxODAwMDAudXNiOiBHSU5UU1RTX0VybHlTdXNwDQo+IFsgMTA1NC41NDAxNDddIGR3
+YzIgMzAxODAwMDAudXNiOiBnaW50c3RzPTA0MDA4ODI4ICBnaW50bXNrPWQ4OGMzY2M0DQo+IFsg
+MTA1NC41NDAxNzJdIGR3YzIgMzAxODAwMDAudXNiOiBVU0IgU1VTUEVORA0KPiBbIDEwNTQuNTQw
+MTkxXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oYW5kbGVfdXNiX3N1c3BlbmRfaW50cjogRFNU
+Uz0weDVhZDgwMQ0KPiBbIDEwNTQuNTQwMjExXSBkd2MyIDMwMTgwMDAwLnVzYjogRFNUUy5TdXNw
+ZW5kIFN0YXR1cz0xIEhXQ0ZHNC5Qb3dlcg0KPiBPcHRpbWl6ZT0xIEhXQ0ZHNC5IaWJlcm5hdGlv
+bj0wDQo+IFsgMTA1NC41NDAyNDJdIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hzb3RnX2lycTog
+MDQwMDgwMjggMDAwMDAwMDANCj4gKGQ4OGMzY2M0KSByZXRyeSA4DQo+IFsgMTA1NC41ODU0MDJd
+IGR3YzIgMzAxODAwMDAudXNiOiBlcDFpbjogcmVxIDAxZWZmMzFiOiAzNTNAYmY4ZDYyZDgsDQo+
+IG5vaT0wLCB6ZXJvPTEsIHNub2s9MA0KPiBbIDEwNTQuNTg1NDIyXSBkd2MyIDMwMTgwMDAwLnVz
+YjogZHdjMl9oc290Z19lcF9xdWV1ZTogc3VibWl0IHJlcXVlc3QNCj4gb25seSBpbiBhY3RpdmUg
+c3RhdGUNCj4gWyAxMDU0LjY2MTY2N10gZHdjMiAzMDE4MDAwMC51c2I6IGR3YzJfaHNvdGdfaXJx
+OiAwNDAwODQyOCAwMDAwMDQwMA0KPiAoZDg4YzNjYzQpIHJldHJ5IDgNCj4gWyAxMDU0LjY2MTY5
+NF0gZHdjMiAzMDE4MDAwMC51c2I6IEdJTlRTVFNfRXJseVN1c3ANCj4gWyAxMDU0LjY2NDcxNV0g
+ZHdjMiAzMDE4MDAwMC51c2I6IGdpbnRzdHM9MDQwMDg4MjggIGdpbnRtc2s9ZDg4YzNjYzQNCj4g
+WyAxMDU0LjY2NDc0MV0gZHdjMiAzMDE4MDAwMC51c2I6IFVTQiBTVVNQRU5EDQo+IFsgMTA1NC42
+NjQ3NjBdIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hhbmRsZV91c2Jfc3VzcGVuZF9pbnRyOiBE
+U1RTPTB4NWFkODAxDQo+IFsgMTA1NC42NjQ3ODFdIGR3YzIgMzAxODAwMDAudXNiOiBEU1RTLlN1
+c3BlbmQgU3RhdHVzPTEgSFdDRkc0LlBvd2VyDQo+IA0KDQpBY3R1YWxseSwgSSBkb24ndCBzZWUg
+YW55IGlzc3VlIHdpdGggZHdjMiBmcm9tIHRoZSBsb2cuIE9ubHkgbm90IGNsZWFyIA0Kd2h5IFNV
+U1BFTkQgaGFwcGVuIGhlYXIuIElzIGl0IGJlY2F1c2Ugb2YgZGlzY29ubmVjdC9jb25uZWN0IG9y
+IA0KcmVsb2FkaW5nIGdfc2VyaWFsPw0KSXMgdGhpcyBsb2cgcmVjb3JkZWQgd2hlbiBpc3N1ZSBz
+ZWVuPw0KQW55d2F5LCBiZWZvcmUgU1VTUEVORCBhbmQgYWZ0ZXIgZHdjMiBzdWNjZXNzZnVsbHkg
+cGVyZm9ybSB0cmFuc2ZlcnMgb24gDQphbGwgRVAncyAtIGVwMWluIGJ1bGssIGVwMm91dCBidWxr
+IGFuZCBlcDNpbiBpbnRlcnJ1cHQuDQpDYW4geW91IHByb3ZpZGUgZG1lc2cgd2l0aCBkd2MyIGRl
+YnVnIHByaW50cyB3aXRoIGV4Y2VwdGlvbiBjYXNlIGluc2lkZS4NCg0KPiBJcyB0aGlzIGluZm9y
+bWF0aW9uIHlvdSBuZWVkPyBJZiBuZWVkIHdlIGNhbiBnYXRoZXIgbW9yZSBpbmZvLg0KPiANCg0K
+DQpUaGFua3MsDQpNaW5hcw0K
