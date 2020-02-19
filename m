@@ -1,64 +1,76 @@
-From: Carlos de Paula <me-FwFLQrstKkX3oGB3hsPCZA@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: Add txpbl node for RK3399/RK3328
-Date: Tue, 18 Feb 2020 17:10:37 -0500
-Message-ID: <20200218221040.10955-1-me@carlosedp.com>
+From: "Lad, Prabhakar" <prabhakar.csengg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v4 2/6] PCI: rcar: Fix calculating mask for PCIEPAMR register
+Date: Wed, 19 Feb 2020 08:47:46 +0000
+Message-ID: <CA+V-a8vVaLpVofr=tp0AXwUzDMwCJ+Byc8VGtmmtOWVSs3GVvg@mail.gmail.com>
+References: <20200208183641.6674-3-prabhakar.mahadev-lad.rj@bp.renesas.com> <20200212140434.GA129189@google.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200212140434.GA129189-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jose.abreu-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, Carlos de Paula <me-FwFLQrstKkX3oGB3hsPCZA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Christoph Muellner <christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Catalin Marinas <catalin.marinas-5wv7dgnIgG8@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Arnd Bergmann <arnd-r2nGTMty4D4@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Marek Vasut <marek.vasut+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Andrew Murray <andrew.murray-5wv7dgnIgG8@public.gmane.org>, linux-pci <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, LAK <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Linux-Renesas <linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, open list:
 List-Id: linux-rockchip.vger.kernel.org
 
-Some rockchip SoCs like the RK3399 and RK3328 exhibit an issue
-where tx checksumming does not work with packets larger than 1498.
+Hi Bjorn,
 
-The default Programmable Buffer Length for TX in these GMAC's is
-not suitable for MTUs higher than 1498. The workaround is to disable
-TX offloading with 'ethtool -K eth0 tx off rx off' causing performance
-impacts as it disables hardware checksumming.
+Thank you for the review.
 
-This patch sets snps,txpbl to 0x4 which is a safe number tested ok for
-the most popular MTU value of 1500.
+On Wed, Feb 12, 2020 at 2:04 PM Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+>
+> On Sat, Feb 08, 2020 at 06:36:37PM +0000, Lad Prabhakar wrote:
+> > The mask value was calculated incorrectly for PCIEPAMR register if the
+> > size was less the 128bytes, this patch fixes the above by adding a check
+> > on size.
+>
+> s/less the/less than/
+> s/128bytes,/128 bytes./
+> s/this patch fixes the above/Fix this issue/
+>
+My bad will fix that.
 
-For reference, see https://lkml.org/lkml/2019/4/1/1382.
+> > Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
+> > ---
+> >  drivers/pci/controller/pcie-rcar.c | 5 +++--
+> >  1 file changed, 3 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/pci/controller/pcie-rcar.c b/drivers/pci/controller/pcie-rcar.c
+> > index d5568db..c76a92a 100644
+> > --- a/drivers/pci/controller/pcie-rcar.c
+> > +++ b/drivers/pci/controller/pcie-rcar.c
+> > @@ -71,7 +71,7 @@ void rcar_pcie_set_outbound(int win, void __iomem *base,
+> >       /* Setup PCIe address space mappings for each resource */
+> >       resource_size_t res_start;
+> >       resource_size_t size;
+> > -     u32 mask;
+> > +     u32 mask = 0x0;
+> >
+> >       rcar_pci_write_reg(base, 0x00000000, PCIEPTCTLR(win));
+> >
+> > @@ -80,7 +80,8 @@ void rcar_pcie_set_outbound(int win, void __iomem *base,
+> >        * keeps things pretty simple.
+> >        */
+> >       size = resource_size(res);
+> > -     mask = (roundup_pow_of_two(size) / SZ_128) - 1;
+> > +     if (size > 128)
+> > +             mask = (roundup_pow_of_two(size) / SZ_128) - 1;
+>
+> I would put the "mask = 0x0" right here so it's all in one place,
+> i.e.,
+>
+>   if (size > 128)
+>     mask = (roundup_pow_of_two(size) / SZ_128) - 1;
+>   else
+>     mask = 0x0;
+>
+Sure will change that.
 
-Signed-off-by: Carlos de Paula <me-FwFLQrstKkX3oGB3hsPCZA@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 ++
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 1 +
- 2 files changed, 3 insertions(+)
+Cheers,
+--Prabhakar Lad
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 1f53ead52c7f..b7f1de4b7fd0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -906,6 +906,7 @@
- 		resets = <&cru SRST_GMAC2IO_A>;
- 		reset-names = "stmmaceth";
- 		rockchip,grf = <&grf>;
-+		snps,txpbl = <0x4>;
- 		status = "disabled";
- 	};
- 
-@@ -913,6 +914,7 @@
- 		compatible = "rockchip,rk3328-gmac";
- 		reg = <0x0 0xff550000 0x0 0x10000>;
- 		rockchip,grf = <&grf>;
-+		snps,txpbl = <0x4>;
- 		interrupts = <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH>;
- 		interrupt-names = "macirq";
- 		clocks = <&cru SCLK_MAC2PHY_SRC>, <&cru SCLK_MAC2PHY_RXTX>,
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 33cc21fcf4c1..cd5415d7e559 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -288,6 +288,7 @@
- 		resets = <&cru SRST_A_GMAC>;
- 		reset-names = "stmmaceth";
- 		rockchip,grf = <&grf>;
-+		snps,txpbl = <0x4>;
- 		status = "disabled";
- 	};
- 
--- 
-2.20.1
+> >       rcar_pci_write_reg(base, mask << 7, PCIEPAMR(win));
+> >
+> >       if (!host) {
+> > --
+> > 2.7.4
+> >
