@@ -1,36 +1,84 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] ASoC: dt-bindings: Make RK3328 codec GPIO explicit
-Date: Wed, 19 Feb 2020 15:38:30 -0600
-Message-ID: <20200219213830.GA15330@bogus>
-References: <cover.1581376744.git.robin.murphy@arm.com>
- <5f7a399dea8a9dedef57f6f99f0f6ab1c1fdc56a.1581376744.git.robin.murphy@arm.com>
+From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: USB DWC2 stops responding when insert/remove cable multiple times
+Date: Thu, 20 Feb 2020 06:59:00 +0000
+Message-ID: <beddbc55-fd22-96b7-c980-e4ea207a42f5@synopsys.com>
+References: <CAP9ODKprPi8N-dU8NaKwneXH-3b0ipSEDpU5mDbGntxuyhGhJw@mail.gmail.com>
+ <41a7bfe7-54b1-84eb-091f-469d971ab968@synopsys.com>
+ <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw@mail.gmail.com>
+ <ee47be28-ba9f-750f-65d2-51a722ce291d@synopsys.com>
+ <CAP9ODKqa_4NSsFMUpyFDt3ohgGBCMgbOyKaVjYfSjmcZLmmC+A@mail.gmail.com>
+ <380d765b-8867-a899-b67a-c016c09fa27b@synopsys.com>
+ <CAP9ODKqL_GN+iebL3wPX_9fEUtUVP8Ahv03yJ1R-JLDr=Cn0BA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <5f7a399dea8a9dedef57f6f99f0f6ab1c1fdc56a.1581376744.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAP9ODKqL_GN+iebL3wPX_9fEUtUVP8Ahv03yJ1R-JLDr=Cn0BA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+Content-ID: <A16150286B7E9F479217619807D79E2F-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>, Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 18 Feb 2020 21:31:58 +0000, Robin Murphy wrote:
-> Existing RK3328 codec drivers have overloaded the GRF phandle to assume
-> implicit control of the limited-function GPIO_MUTE pin, which is usually
-> used to enable an external audio line driver IC. Since this pin has a
-> proper binding of its own (see gpio/rockchip,rk3328-grf-gpio.txt), make
-> a GPIO explicit in the codec binding too. This will help avoid ambiguity
-> on boards that use that pin for some other purpose.
-> 
-> (and while touching the example, enforce the "don't include status" rule)
-> 
-> Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> ---
-> 
-> v2: no change
-> 
->  .../devicetree/bindings/sound/rockchip,rk3328-codec.txt    | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+SGkgT3RhdmlvLA0KDQoNCk9uIDIvMTkvMjAyMCA3OjEwIFBNLCBPdGF2aW8gU2FsdmFkb3Igd3Jv
+dGU6DQo+IEhlbGxvIE1pbmFzLA0KPiANCj4gT24gV2VkLCBGZWIgMTksIDIwMjAgYXQgOToyNiBB
+TSBNaW5hcyBIYXJ1dHl1bnlhbg0KPiA8TWluYXMuSGFydXR5dW55YW5Ac3lub3BzeXMuY29tPiB3
+cm90ZToNCj4+IE9uIDIvMTcvMjAyMCAxMTo1MyBQTSwgT3RhdmlvIFNhbHZhZG9yIHdyb3RlOg0K
+Pj4+IE9uIE1vbiwgRmViIDE3LCAyMDIwIGF0IDEwOjI2IEFNIE1pbmFzIEhhcnV0eXVueWFuDQo+
+Pj4gPE1pbmFzLkhhcnV0eXVueWFuQHN5bm9wc3lzLmNvbT4gd3JvdGU6DQo+Pj4+IEVuYWJsZSBk
+ZWJ1ZyBwcmludHMgdG8gZ2V0IGZ1bGwgZHdjMiBkZWJ1ZyBwcmludHMgdG8gc2VlIHdoYXQgaGFw
+cGVuDQo+Pj4+IHdpdGggZHdjMi4NCj4+DQo+Pj4gWyAxMDU0LjUyOTc3NF0gZHdjMiAzMDE4MDAw
+MC51c2I6IGVwMCBzdGF0ZTowDQo+Pj4gWyAxMDU0LjUyOTc4NV0gZHdjMiAzMDE4MDAwMC51c2I6
+IGR3YzJfaHNvdGdfc3RhcnRfcmVxOiBEeEVQQ1RMPTB4ODQwODgyMDANCj4+PiBbIDEwNTQuNTI5
+ODAxXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19zdGFydF9yZXE6IERYRVBDVEw9MHg4
+MDA4ODIwMA0KPj4+IFsgMTA1NC41Mjk5MjhdIGR3YzIgMzAxODAwMDAudXNiOiBlcDJvdXQ6IHJl
+cSAyNmJkOWI5ZjogNTEyQDA2YjdkYmNhLA0KPj4+IG5vaT0wLCB6ZXJvPTAsIHNub2s9MA0KPj4+
+IFsgMTA1NC41MzcwOTVdIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hzb3RnX2lycTogMDQwMDg0
+MjggMDAwMDA0MDANCj4+PiAoZDg4YzNjYzQpIHJldHJ5IDgNCj4+PiBbIDEwNTQuNTM3MTE5XSBk
+d2MyIDMwMTgwMDAwLnVzYjogR0lOVFNUU19Fcmx5U3VzcA0KPj4+IFsgMTA1NC41NDAxNDddIGR3
+YzIgMzAxODAwMDAudXNiOiBnaW50c3RzPTA0MDA4ODI4ICBnaW50bXNrPWQ4OGMzY2M0DQo+Pj4g
+WyAxMDU0LjU0MDE3Ml0gZHdjMiAzMDE4MDAwMC51c2I6IFVTQiBTVVNQRU5EDQo+Pj4gWyAxMDU0
+LjU0MDE5MV0gZHdjMiAzMDE4MDAwMC51c2I6IGR3YzJfaGFuZGxlX3VzYl9zdXNwZW5kX2ludHI6
+IERTVFM9MHg1YWQ4MDENCj4+PiBbIDEwNTQuNTQwMjExXSBkd2MyIDMwMTgwMDAwLnVzYjogRFNU
+Uy5TdXNwZW5kIFN0YXR1cz0xIEhXQ0ZHNC5Qb3dlcg0KPj4+IE9wdGltaXplPTEgSFdDRkc0Lkhp
+YmVybmF0aW9uPTANCj4+PiBbIDEwNTQuNTQwMjQyXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9o
+c290Z19pcnE6IDA0MDA4MDI4IDAwMDAwMDAwDQo+Pj4gKGQ4OGMzY2M0KSByZXRyeSA4DQo+Pj4g
+WyAxMDU0LjU4NTQwMl0gZHdjMiAzMDE4MDAwMC51c2I6IGVwMWluOiByZXEgMDFlZmYzMWI6IDM1
+M0BiZjhkNjJkOCwNCj4+PiBub2k9MCwgemVybz0xLCBzbm9rPTANCj4+PiBbIDEwNTQuNTg1NDIy
+XSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19lcF9xdWV1ZTogc3VibWl0IHJlcXVlc3QN
+Cj4+PiBvbmx5IGluIGFjdGl2ZSBzdGF0ZQ0KPj4+IFsgMTA1NC42NjE2NjddIGR3YzIgMzAxODAw
+MDAudXNiOiBkd2MyX2hzb3RnX2lycTogMDQwMDg0MjggMDAwMDA0MDANCj4+PiAoZDg4YzNjYzQp
+IHJldHJ5IDgNCj4+PiBbIDEwNTQuNjYxNjk0XSBkd2MyIDMwMTgwMDAwLnVzYjogR0lOVFNUU19F
+cmx5U3VzcA0KPj4+IFsgMTA1NC42NjQ3MTVdIGR3YzIgMzAxODAwMDAudXNiOiBnaW50c3RzPTA0
+MDA4ODI4ICBnaW50bXNrPWQ4OGMzY2M0DQo+Pj4gWyAxMDU0LjY2NDc0MV0gZHdjMiAzMDE4MDAw
+MC51c2I6IFVTQiBTVVNQRU5EDQo+Pj4gWyAxMDU0LjY2NDc2MF0gZHdjMiAzMDE4MDAwMC51c2I6
+IGR3YzJfaGFuZGxlX3VzYl9zdXNwZW5kX2ludHI6IERTVFM9MHg1YWQ4MDENCj4+PiBbIDEwNTQu
+NjY0NzgxXSBkd2MyIDMwMTgwMDAwLnVzYjogRFNUUy5TdXNwZW5kIFN0YXR1cz0xIEhXQ0ZHNC5Q
+b3dlcg0KPj4+DQo+Pg0KPj4gQWN0dWFsbHksIEkgZG9uJ3Qgc2VlIGFueSBpc3N1ZSB3aXRoIGR3
+YzIgZnJvbSB0aGUgbG9nLiBPbmx5IG5vdCBjbGVhcg0KPj4gd2h5IFNVU1BFTkQgaGFwcGVuIGhl
+YXIuIElzIGl0IGJlY2F1c2Ugb2YgZGlzY29ubmVjdC9jb25uZWN0IG9yDQo+PiByZWxvYWRpbmcg
+Z19zZXJpYWw/DQo+PiBJcyB0aGlzIGxvZyByZWNvcmRlZCB3aGVuIGlzc3VlIHNlZW4/DQo+IA0K
+PiBZZXMsIHRoZSBsb2cgd2FzIHJlY29yZGVkIGhvd2V2ZXIgd2UgZGlkIG5vdCByZWxvYWQgdGhl
+IGdfc2VyaWFsDQo+IG1vZHVsZS4gU28gd2hlbiB3ZSBnYXRoZXJlZCB0aGUgbG9ncywgaXQgd2Fz
+IHN0dWNrLg0KPiANCj4+IEFueXdheSwgYmVmb3JlIFNVU1BFTkQgYW5kIGFmdGVyIGR3YzIgc3Vj
+Y2Vzc2Z1bGx5IHBlcmZvcm0gdHJhbnNmZXJzIG9uDQo+PiBhbGwgRVAncyAtIGVwMWluIGJ1bGss
+IGVwMm91dCBidWxrIGFuZCBlcDNpbiBpbnRlcnJ1cHQuDQo+PiBDYW4geW91IHByb3ZpZGUgZG1l
+c2cgd2l0aCBkd2MyIGRlYnVnIHByaW50cyB3aXRoIGV4Y2VwdGlvbiBjYXNlIGluc2lkZS4NCj4g
+DQo+IFRoZSBsb2cgSSBzZW50IHdhcyB0YWtlbiB3aXRoOg0KPiANCj4gMSkgYm9vdCBkZXZpY2UN
+Cj4gMikgcmFuICdkbWVzZyAtYycgc28gd2UgY2xlYW5lZCB0aGUgb2xkIG1lc3NhZ2VzDQo+IDMp
+IGNhdXNlIHRoZSBsb2NrIHVwIHRvIGhhcHBlbg0KPiA0KSBnYXRoZXIgZG1lc2cgb3V0cHV0DQo+
+IA0KPiBXaGF0IHNlcXVlbmNlIGRvIHlvdSB3YW50IHVzIHRvIGRvPw0KDQpZZXMuIENhbiB5b3Ug
+cHJvdmlkZSBhbHNvIFVTQiB0cmFjZT8NCg0KVGhhbmtzLA0KTWluYXMNCg0KDQo+IC0tDQo+IE90
+YXZpbyBTYWx2YWRvciAgICAgICAgICAgICAgICAgICAgICAgICAgICAgTy5TLiBTeXN0ZW1zDQo+
+IGh0dHBzOi8vdXJsZGVmZW5zZS5wcm9vZnBvaW50LmNvbS92Mi91cmw/dT1odHRwLTNBX193d3cu
+b3NzeXN0ZW1zLmNvbS5iciZkPUR3SUJhUSZjPURQTDZfWF82SmtYRng3QVhXcUIwdGcmcj02ejlB
+bDlGckhSX1pxYmJ0U0FzRDE2cHZPTDJTM1hIeFFuU3pxOGt1c3lJJm09TFJabWpVQ19Sc3FJMUt5
+OUEwU2tmQ3FpY3NEa0NvSG5Hblh0dHdVbFhlYyZzPTgxNXItZDNCWGtGRkp0SUIyRVE4T0EyZmNy
+Nm9vTkVwYllmdm9BUmJEM3MmZT0gICAgICAgICBodHRwczovL3VybGRlZmVuc2UucHJvb2Zwb2lu
+dC5jb20vdjIvdXJsP3U9aHR0cC0zQV9fY29kZS5vc3N5c3RlbXMuY29tLmJyJmQ9RHdJQmFRJmM9
+RFBMNl9YXzZKa1hGeDdBWFdxQjB0ZyZyPTZ6OUFsOUZySFJfWnFiYnRTQXNEMTZwdk9MMlMzWEh4
+UW5TenE4a3VzeUkmbT1MUlptalVDX1JzcUkxS3k5QTBTa2ZDcWljc0RrQ29IbkduWHR0d1VsWGVj
+JnM9TzFwc3JwX2NjVDFGNkg2NzhyNTBISWQxY1duNmc4VXhLV3N0Wl9rQnpPOCZlPQ0KPiBNb2Jp
+bGU6ICs1NSAoNTMpIDkgOTk4MS03ODU0ICAgICAgICAgIE1vYmlsZTogKzEgKDM0NykgOTAzLTk3
+NTANCj4gDQo=
