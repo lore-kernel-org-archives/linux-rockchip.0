@@ -1,39 +1,49 @@
-From: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>
-Subject: Re: USB DWC2 stops responding when insert/remove cable multiple times
-Date: Thu, 20 Feb 2020 10:16:00 -0300
-Message-ID: <CAP9ODKq2nEHz_rbwwCv-94LSBOq0it2Kc4yhCqrLT-XxoXommg@mail.gmail.com>
-References: <CAP9ODKprPi8N-dU8NaKwneXH-3b0ipSEDpU5mDbGntxuyhGhJw@mail.gmail.com>
- <41a7bfe7-54b1-84eb-091f-469d971ab968@synopsys.com> <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw@mail.gmail.com>
- <ee47be28-ba9f-750f-65d2-51a722ce291d@synopsys.com> <CAP9ODKqa_4NSsFMUpyFDt3ohgGBCMgbOyKaVjYfSjmcZLmmC+A@mail.gmail.com>
- <380d765b-8867-a899-b67a-c016c09fa27b@synopsys.com> <CAP9ODKqL_GN+iebL3wPX_9fEUtUVP8Ahv03yJ1R-JLDr=Cn0BA@mail.gmail.com>
- <beddbc55-fd22-96b7-c980-e4ea207a42f5@synopsys.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <beddbc55-fd22-96b7-c980-e4ea207a42f5-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Cc: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+From: sunil@amarulasolutions.com
+Subject: [PATCH] arm64: defconfig: Enable REGULATOR_MP8859
+Date: Thu, 20 Feb 2020 18:57:39 +0530
+Message-ID: <1582205259-15274-1-git-send-email-sunil@amarulasolutions.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de, catalin.marinas@arm.com, will@kernel.org
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Jagan Teki <jagan@amarulasolutions.com>, Markus Reichl <m.reichl@fivetechno.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello Minas,
+From: Jagan Teki <jagan@amarulasolutions.com>
 
-Thanks for all your help on this, ...
+RK3399 boards like ROC-RK3399-PC is using MP8859 DC/DC converter
+for 12V supply.
 
-On Thu, Feb 20, 2020 at 3:59 AM Minas Harutyunyan
-<Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org> wrote:
->
-> On 2/19/2020 7:10 PM, Otavio Salvador wrote:
-...
-> > What sequence do you want us to do?
->
-> Yes. Can you provide also USB trace?
+roc-rk3399-pc initially used 12V fixed regulator for this supply,
+but the below commit has switched to use MP8859.
 
-I can, however, it is not clear to me what you want us to do.
+commit <1fc61ed04d309b0b8b3562acf701ab988eee12de> "arm64: dts: rockchip:
+Enable mp8859 regulator on rk3399-roc-pc"
 
-Should we use, on host side, usbmon? or do you want something different?
+So, enable bydefault on the defconfig.
 
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Markus Reichl <m.reichl@fivetechno.de>
+Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
+---
+Note:
+This change set is applied on top of linux-rockchip, branch v5.7-armsoc/dts64.
+(git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git -b v5.7-armsoc/dts64)
+This change set was tested on ROC-RK3399-PC, an rk3399 based target.
+---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 0f21288..973a493 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -505,6 +505,7 @@ CONFIG_REGULATOR_QCOM_RPMH=y
+ CONFIG_REGULATOR_QCOM_SMD_RPM=y
+ CONFIG_REGULATOR_QCOM_SPMI=y
+ CONFIG_REGULATOR_RK808=y
++CONFIG_REGULATOR_MP8859=y
+ CONFIG_REGULATOR_S2MPS11=y
+ CONFIG_REGULATOR_VCTRL=m
+ CONFIG_RC_CORE=m
 -- 
-Otavio Salvador                             O.S. Systems
-http://www.ossystems.com.br        http://code.ossystems.com.br
-Mobile: +55 (53) 9 9981-7854          Mobile: +1 (347) 903-9750
+2.7.4
