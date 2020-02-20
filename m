@@ -1,54 +1,48 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH] media: staging: rkisp1: capture: remove support to
- userptr memory
-Date: Thu, 20 Feb 2020 16:14:04 -0300
-Message-ID: <54b8a35e-b0d4-3aba-a6ab-c44981db21a1@collabora.com>
-References: <20200220185603.26968-1-dafna.hirschfeld@collabora.com>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 30/32] pwm: hibvt: do some cleanup
+Date: Thu, 20 Feb 2020 21:41:52 +0100
+Message-ID: <20200220204152.p6rublsssifvvnvk@pengutronix.de>
+References: <20191229080610.7597-1-tiny.windzz@gmail.com>
+ <20191229080610.7597-30-tiny.windzz@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200220185603.26968-1-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org
-Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20191229080610.7597-30-tiny.windzz@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Yangtao Li <tiny.windzz@gmail.com>, thierry.reding@gmail.com
+Cc: alexandre.belloni@bootlin.com, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, linux-riscv@lists.infradead.org, festevam@gmail.com, f.fainelli@gmail.com, shc_work@mail.ru, khilman@baylibre.com, wens@csie.org, jonathanh@nvidia.com, linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com, bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com, slemieux.tyco@gmail.com, linux-pwm@vger.kernel.org, rjui@broadcom.com, s.hauer@pengutronix.de, mripard@kernel.org, vz@mleia.com, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, paul.walmsley@sifive.com, matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, sbranden@broadcom.com, linux@prisktech.co.nz, palmer@dabbelt.com, kernel@pengutronix.de, shawnguo@kernel.org, claudiu.beznea@microchip.com, nsaenzjulienne@suse.de
 List-Id: linux-rockchip.vger.kernel.org
 
+On Sun, Dec 29, 2019 at 08:06:08AM +0000, Yangtao Li wrote:
+> Use devm_platform_ioremap_resource() to simplify code.
+> 'i' and 'ret' are variables of the same type and there is no
+> need to use two lines.
 
+I think I wouldn't have merged these two lines, but I don't feel strong
+here. The other 31 patches are clean replacements.
 
-On 2/20/20 3:56 PM, Dafna Hirschfeld wrote:
-> The dma_contig memory operations which is used by the capture
-> should not support userptr. Therefore remove it.
+But I also don't think respining just for this minor thing is worth the
+effort, so:
 
-I would just re-word this a bit, something like:
+Acked-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
 
-VB2_USERPTR support doesn't make sense for drivers based on
-vb2_dma_contig, so just drop it.
+for the whole series. (Not sure it is sensible to ack each patch
+individually, @Thierry, tell me if this simplifies things for you.)
 
-Otherwise, queues using vb2_dma_contig_memops causes v4l2-compliance
-to fail for VB2_USERPTR mode, due to buffer misalignment.
+Best regards
+Uwe
 
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+-- =
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
-
-> ---
->  drivers/staging/media/rkisp1/rkisp1-capture.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> index 5f97af5cd95f..a006cd03228d 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> @@ -1349,7 +1349,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
->  
->  	q = &node->buf_queue;
->  	q->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
-> -	q->io_modes = VB2_MMAP | VB2_DMABUF | VB2_USERPTR;
-> +	q->io_modes = VB2_MMAP | VB2_DMABUF;
->  	q->drv_priv = cap;
->  	q->ops = &rkisp1_vb2_ops;
->  	q->mem_ops = &vb2_dma_contig_memops;
-> 
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
