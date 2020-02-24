@@ -1,219 +1,110 @@
-From: Chris Snook <chris.snook@gmail.com>
-Subject: Re: [PATCH net-next v1 18/18] net/atheros: Clean atheros code from
- driver version
-Date: Mon, 24 Feb 2020 10:15:36 -0800
-Message-ID: <CAMXMK6um=B+bL0vjL-65chjEvfNoU0qfbCAwDnRSD_18_Z5ODA@mail.gmail.com>
-References: <20200224085311.460338-1-leon@kernel.org> <20200224085311.460338-19-leon@kernel.org>
+From: Francesco Lavra <francescolavra.fl-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 37/51] drm/rockchip: Drop explicit drm_mode_config_cleanup
+ call
+Date: Mon, 24 Feb 2020 20:13:10 +0100
+Message-ID: <CAOau3s8hWzD6xc6grZJr+yjtXuW1g=E_8tPigOUk-cJEQ8-JfQ@mail.gmail.com>
+References: <20200221210319.2245170-1-daniel.vetter@ffwll.ch>
+ <20200221210319.2245170-38-daniel.vetter@ffwll.ch>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200224085311.460338-19-leon@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Leon Romanovsky <leon@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Leon Romanovsky <leonro@mellanox.com>, Tom Lendacky <thomas.lendacky@amd.com>, Keyur Chudgar <keyur@os.amperecomputing.com>, Don Fry <pcnet32@frontier.com>, Veaceslav Falico <vfalico@gmail.com>, Jay Vosburgh <j.vosburgh@gmail.com>, linux-acenic@sunsite.dk, Maxime Ripard <mripard@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Mark Einon <mark.einon@gmail.com>, linux-rockchip@lists.infradead.org, Iyappan Subramanian <iyappan@os.amperecomputing.com>, Igor Russkikh <irusskikh@marvell.com>, David Dillow <dave@thedillows.org>, Netanel Belgazal <netanel@amazon.com>, Quan Nguyen <quan@os.amperecomputing.com>, Jay Cliburn <jcliburn@gmail.com>, Lino Sanfilippo <LinoSanfilippo@gm>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200221210319.2245170-38-daniel.vetter-/w4YWyX8dFk@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Intel Graphics Development <intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, DRI Development <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Daniel Vetter <daniel.vetter-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Acked-by: Chris Snook <chris.snook@gmail.com>
-
-On Mon, Feb 24, 2020 at 12:54 AM Leon Romanovsky <leon@kernel.org> wrote:
->
-> From: Leon Romanovsky <leonro@mellanox.com>
->
-> Use linux kernel version for ethtool and module versions.
->
-> Signed-off-by: Leon Romanovsky <leonro@mellanox.com>
-> ---
->  drivers/net/ethernet/atheros/atl1c/atl1c.h         |  1 -
->  drivers/net/ethernet/atheros/atl1c/atl1c_ethtool.c |  2 --
->  drivers/net/ethernet/atheros/atl1c/atl1c_main.c    |  5 -----
->  drivers/net/ethernet/atheros/atl1e/atl1e.h         |  1 -
->  drivers/net/ethernet/atheros/atl1e/atl1e_ethtool.c |  2 --
->  drivers/net/ethernet/atheros/atl1e/atl1e_main.c    |  4 ----
->  drivers/net/ethernet/atheros/atlx/atl1.c           |  6 ------
->  drivers/net/ethernet/atheros/atlx/atl2.c           | 10 ----------
->  8 files changed, 31 deletions(-)
->
-> diff --git a/drivers/net/ethernet/atheros/atl1c/atl1c.h b/drivers/net/ethernet/atheros/atl1c/atl1c.h
-> index 60b2febd7315..a0562a90fb6d 100644
-> --- a/drivers/net/ethernet/atheros/atl1c/atl1c.h
-> +++ b/drivers/net/ethernet/atheros/atl1c/atl1c.h
-> @@ -583,7 +583,6 @@ struct atl1c_adapter {
->                 readl(((a)->hw_addr + reg) + ((offset) << 2)))
->
->  extern char atl1c_driver_name[];
-> -extern char atl1c_driver_version[];
->
->  void atl1c_reinit_locked(struct atl1c_adapter *adapter);
->  s32 atl1c_reset_hw(struct atl1c_hw *hw);
-> diff --git a/drivers/net/ethernet/atheros/atl1c/atl1c_ethtool.c b/drivers/net/ethernet/atheros/atl1c/atl1c_ethtool.c
-> index b5a70a36fa04..e2eb7b8c63a0 100644
-> --- a/drivers/net/ethernet/atheros/atl1c/atl1c_ethtool.c
-> +++ b/drivers/net/ethernet/atheros/atl1c/atl1c_ethtool.c
-> @@ -221,8 +221,6 @@ static void atl1c_get_drvinfo(struct net_device *netdev,
->         struct atl1c_adapter *adapter = netdev_priv(netdev);
->
->         strlcpy(drvinfo->driver,  atl1c_driver_name, sizeof(drvinfo->driver));
-> -       strlcpy(drvinfo->version, atl1c_driver_version,
-> -               sizeof(drvinfo->version));
->         strlcpy(drvinfo->bus_info, pci_name(adapter->pdev),
->                 sizeof(drvinfo->bus_info));
->  }
-> diff --git a/drivers/net/ethernet/atheros/atl1c/atl1c_main.c b/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
-> index 0d67b951c0b2..00bd7bd55794 100644
-> --- a/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
-> +++ b/drivers/net/ethernet/atheros/atl1c/atl1c_main.c
-> @@ -8,9 +8,7 @@
->
->  #include "atl1c.h"
->
-> -#define ATL1C_DRV_VERSION "1.0.1.1-NAPI"
->  char atl1c_driver_name[] = "atl1c";
-> -char atl1c_driver_version[] = ATL1C_DRV_VERSION;
->
->  /*
->   * atl1c_pci_tbl - PCI Device ID Table
-> @@ -37,7 +35,6 @@ MODULE_AUTHOR("Jie Yang");
->  MODULE_AUTHOR("Qualcomm Atheros Inc., <nic-devel@qualcomm.com>");
->  MODULE_DESCRIPTION("Qualcomm Atheros 100/1000M Ethernet Network Driver");
->  MODULE_LICENSE("GPL");
-> -MODULE_VERSION(ATL1C_DRV_VERSION);
->
->  static int atl1c_stop_mac(struct atl1c_hw *hw);
->  static void atl1c_disable_l0s_l1(struct atl1c_hw *hw);
-> @@ -2642,8 +2639,6 @@ static int atl1c_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->                 goto err_register;
->         }
->
-> -       if (netif_msg_probe(adapter))
-> -               dev_info(&pdev->dev, "version %s\n", ATL1C_DRV_VERSION);
->         cards_found++;
->         return 0;
->
-> diff --git a/drivers/net/ethernet/atheros/atl1e/atl1e.h b/drivers/net/ethernet/atheros/atl1e/atl1e.h
-> index e9893da50995..9fcad783c939 100644
-> --- a/drivers/net/ethernet/atheros/atl1e/atl1e.h
-> +++ b/drivers/net/ethernet/atheros/atl1e/atl1e.h
-> @@ -482,7 +482,6 @@ struct atl1e_adapter {
->                 readl(((a)->hw_addr + reg) + ((offset) << 2)))
->
->  extern char atl1e_driver_name[];
-> -extern char atl1e_driver_version[];
->
->  void atl1e_check_options(struct atl1e_adapter *adapter);
->  int atl1e_up(struct atl1e_adapter *adapter);
-> diff --git a/drivers/net/ethernet/atheros/atl1e/atl1e_ethtool.c b/drivers/net/ethernet/atheros/atl1e/atl1e_ethtool.c
-> index c6b9e7ea8e38..0cbde352d1ba 100644
-> --- a/drivers/net/ethernet/atheros/atl1e/atl1e_ethtool.c
-> +++ b/drivers/net/ethernet/atheros/atl1e/atl1e_ethtool.c
-> @@ -307,8 +307,6 @@ static void atl1e_get_drvinfo(struct net_device *netdev,
->         struct atl1e_adapter *adapter = netdev_priv(netdev);
->
->         strlcpy(drvinfo->driver,  atl1e_driver_name, sizeof(drvinfo->driver));
-> -       strlcpy(drvinfo->version, atl1e_driver_version,
-> -               sizeof(drvinfo->version));
->         strlcpy(drvinfo->fw_version, "L1e", sizeof(drvinfo->fw_version));
->         strlcpy(drvinfo->bus_info, pci_name(adapter->pdev),
->                 sizeof(drvinfo->bus_info));
-> diff --git a/drivers/net/ethernet/atheros/atl1e/atl1e_main.c b/drivers/net/ethernet/atheros/atl1e/atl1e_main.c
-> index e0d89942d537..223ef846123e 100644
-> --- a/drivers/net/ethernet/atheros/atl1e/atl1e_main.c
-> +++ b/drivers/net/ethernet/atheros/atl1e/atl1e_main.c
-> @@ -8,10 +8,7 @@
->
->  #include "atl1e.h"
->
-> -#define DRV_VERSION "1.0.0.7-NAPI"
-> -
->  char atl1e_driver_name[] = "ATL1E";
-> -char atl1e_driver_version[] = DRV_VERSION;
->  #define PCI_DEVICE_ID_ATTANSIC_L1E      0x1026
->  /*
->   * atl1e_pci_tbl - PCI Device ID Table
-> @@ -33,7 +30,6 @@ MODULE_DEVICE_TABLE(pci, atl1e_pci_tbl);
->  MODULE_AUTHOR("Atheros Corporation, <xiong.huang@atheros.com>, Jie Yang <jie.yang@atheros.com>");
->  MODULE_DESCRIPTION("Atheros 1000M Ethernet Network Driver");
->  MODULE_LICENSE("GPL");
-> -MODULE_VERSION(DRV_VERSION);
->
->  static void atl1e_setup_mac_ctrl(struct atl1e_adapter *adapter);
->
-> diff --git a/drivers/net/ethernet/atheros/atlx/atl1.c b/drivers/net/ethernet/atheros/atlx/atl1.c
-> index b498fd6a47d0..271e7034fa70 100644
-> --- a/drivers/net/ethernet/atheros/atlx/atl1.c
-> +++ b/drivers/net/ethernet/atheros/atlx/atl1.c
-> @@ -65,12 +65,10 @@
->
->  #include "atl1.h"
->
-> -#define ATLX_DRIVER_VERSION "2.1.3"
->  MODULE_AUTHOR("Xiong Huang <xiong.huang@atheros.com>, "
->               "Chris Snook <csnook@redhat.com>, "
->               "Jay Cliburn <jcliburn@gmail.com>");
->  MODULE_LICENSE("GPL");
-> -MODULE_VERSION(ATLX_DRIVER_VERSION);
->
->  /* Temporary hack for merging atl1 and atl2 */
->  #include "atlx.c"
-> @@ -2965,8 +2963,6 @@ static int atl1_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->         /* get device revision number */
->         adapter->hw.dev_rev = ioread16(adapter->hw.hw_addr +
->                 (REG_MASTER_CTRL + 2));
-> -       if (netif_msg_probe(adapter))
-> -               dev_info(&pdev->dev, "version %s\n", ATLX_DRIVER_VERSION);
->
->         /* set default ring resource counts */
->         adapter->rfd_ring.count = adapter->rrd_ring.count = ATL1_DEFAULT_RFD;
-> @@ -3344,8 +3340,6 @@ static void atl1_get_drvinfo(struct net_device *netdev,
->         struct atl1_adapter *adapter = netdev_priv(netdev);
->
->         strlcpy(drvinfo->driver, ATLX_DRIVER_NAME, sizeof(drvinfo->driver));
-> -       strlcpy(drvinfo->version, ATLX_DRIVER_VERSION,
-> -               sizeof(drvinfo->version));
->         strlcpy(drvinfo->bus_info, pci_name(adapter->pdev),
->                 sizeof(drvinfo->bus_info));
->  }
-> diff --git a/drivers/net/ethernet/atheros/atlx/atl2.c b/drivers/net/ethernet/atheros/atlx/atl2.c
-> index b81a4e0c5b57..7c52b92b599d 100644
-> --- a/drivers/net/ethernet/atheros/atlx/atl2.c
-> +++ b/drivers/net/ethernet/atheros/atlx/atl2.c
-> @@ -36,18 +36,13 @@
->
->  #include "atl2.h"
->
-> -#define ATL2_DRV_VERSION "2.2.3"
-> -
->  static const char atl2_driver_name[] = "atl2";
->  static const char atl2_driver_string[] = "Atheros(R) L2 Ethernet Driver";
-> -static const char atl2_copyright[] = "Copyright (c) 2007 Atheros Corporation.";
-> -static const char atl2_driver_version[] = ATL2_DRV_VERSION;
->  static const struct ethtool_ops atl2_ethtool_ops;
->
->  MODULE_AUTHOR("Atheros Corporation <xiong.huang@atheros.com>, Chris Snook <csnook@redhat.com>");
->  MODULE_DESCRIPTION("Atheros Fast Ethernet Network Driver");
->  MODULE_LICENSE("GPL");
-> -MODULE_VERSION(ATL2_DRV_VERSION);
->
->  /*
->   * atl2_pci_tbl - PCI Device ID Table
-> @@ -1688,9 +1683,6 @@ static struct pci_driver atl2_driver = {
->   */
->  static int __init atl2_init_module(void)
->  {
-> -       printk(KERN_INFO "%s - version %s\n", atl2_driver_string,
-> -               atl2_driver_version);
-> -       printk(KERN_INFO "%s\n", atl2_copyright);
->         return pci_register_driver(&atl2_driver);
->  }
->  module_init(atl2_init_module);
-> @@ -2011,8 +2003,6 @@ static void atl2_get_drvinfo(struct net_device *netdev,
->         struct atl2_adapter *adapter = netdev_priv(netdev);
->
->         strlcpy(drvinfo->driver,  atl2_driver_name, sizeof(drvinfo->driver));
-> -       strlcpy(drvinfo->version, atl2_driver_version,
-> -               sizeof(drvinfo->version));
->         strlcpy(drvinfo->fw_version, "L2", sizeof(drvinfo->fw_version));
->         strlcpy(drvinfo->bus_info, pci_name(adapter->pdev),
->                 sizeof(drvinfo->bus_info));
-> --
-> 2.24.1
->
+T24gRnJpLCBGZWIgMjEsIDIwMjAgYXQgMTA6MDQgUE0gRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZl
+dHRlckBmZndsbC5jaD4gd3JvdGU6Cj4KPiBJdCdzIChhbG1vc3QsIHRoZXJlJ3Mgc29tZSBpb21t
+dSBzdHVmZiB3aXRob3V0IHNpZ25pZmljYW5jZSkgcmlnaHQKPiBhYm92ZSB0aGUgZHJtX2Rldl9w
+dXQoKS4KPgo+IFRoaXMgaXMgbWFkZSBwb3NzaWJsZSBieSBhIHByZWNlZWRpbmcgcGF0Y2ggd2hp
+Y2ggYWRkZWQgYSBkcm1tXwo+IGNsZWFudXAgYWN0aW9uIHRvIGRybV9tb2RlX2NvbmZpZ19pbml0
+KCksIGhlbmNlIGFsbCB3ZSBuZWVkIHRvIGRvIHRvCj4gZW5zdXJlIHRoYXQgZHJtX21vZGVfY29u
+ZmlnX2NsZWFudXAoKSBpcyBydW4gb24gZmluYWwgZHJtX2RldmljZQo+IGNsZWFudXAgaXMgY2hl
+Y2sgdGhlIG5ldyBlcnJvciBjb2RlIGZvciBfaW5pdCgpLgo+Cj4gQXNpZGU6IEFub3RoZXIgZHJp
+dmVyIHdpdGggYSBiaXQgbXVjaCBkZXZtX2t6YWxsb2MsIHdoaWNoIHNob3VsZAo+IHByb2JhYmx5
+IHVzZSBkcm1tX2t6YWxsb2MgaW5zdGVhZCAuLi4KPgo+IHYyOiBFeHBsYWluIHdoeSB0aGlzIGNs
+ZWFudXAgaXMgcG9zc2libGUgKExhdXJlbnQpLgo+Cj4gQ2M6IExhdXJlbnQgUGluY2hhcnQgPGxh
+dXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwg
+VmV0dGVyIDxkYW5pZWwudmV0dGVyQGludGVsLmNvbT4KPiBDYzogU2FuZHkgSHVhbmcgPGhqY0By
+b2NrLWNoaXBzLmNvbT4KPiBDYzogIkhlaWtvIFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRlPgo+
+IENjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwgMTAgKysrLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwg
+MyBpbnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gaW5kZXggMjBlY2IxNTA4YTIyLi5kMGViYTIxZWVi
+YzkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9k
+cnYuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMK
+PiBAQCAtMTM1LDcgKzEzNSw5IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2JpbmQoc3RydWN0
+IGRldmljZSAqZGV2KQo+ICAgICAgICAgaWYgKHJldCkKPiAgICAgICAgICAgICAgICAgZ290byBl
+cnJfZnJlZTsKPgo+IC0gICAgICAgZHJtX21vZGVfY29uZmlnX2luaXQoZHJtX2Rldik7Cj4gKyAg
+ICAgICByZXQgPSBkcm1fbW9kZV9jb25maWdfaW5pdChkcm1fZGV2KTsKPiArICAgICAgIGlmIChy
+ZXQpCj4gKyAgICAgICAgICAgICAgIGdvdG8gZXJyX2ZyZWU7CgpTaG91bGRuJ3QgdGhlIGdvdG8g
+bGFiZWwgYmUgZXJyX21vZGVfY29uZmlnX2NsZWFudXAgaGVyZT8gT3RoZXJ3aXNlCnRoaXMgZXJy
+b3IgcGF0aCBtaXNzZXMgdGhlIGNhbGwgdG8gcm9ja2NoaXBfaW9tbXVfY2xlYW51cCgpLgoKPgo+
+ICAgICAgICAgcm9ja2NoaXBfZHJtX21vZGVfY29uZmlnX2luaXQoZHJtX2Rldik7Cj4KPiBAQCAt
+MTc0LDExICsxNzYsOCBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2RybV9iaW5kKHN0cnVjdCBkZXZp
+Y2UgKmRldikKPiAgZXJyX3VuYmluZF9hbGw6Cj4gICAgICAgICBjb21wb25lbnRfdW5iaW5kX2Fs
+bChkZXYsIGRybV9kZXYpOwo+ICBlcnJfbW9kZV9jb25maWdfY2xlYW51cDoKPiAtICAgICAgIGRy
+bV9tb2RlX2NvbmZpZ19jbGVhbnVwKGRybV9kZXYpOwo+ICAgICAgICAgcm9ja2NoaXBfaW9tbXVf
+Y2xlYW51cChkcm1fZGV2KTsKPiAgZXJyX2ZyZWU6Cj4gLSAgICAgICBkcm1fZGV2LT5kZXZfcHJp
+dmF0ZSA9IE5VTEw7Cj4gLSAgICAgICBkZXZfc2V0X2RydmRhdGEoZGV2LCBOVUxMKTsKPiAgICAg
+ICAgIGRybV9kZXZfcHV0KGRybV9kZXYpOwo+ICAgICAgICAgcmV0dXJuIHJldDsKPiAgfQoKT24g
+RnJpLCBGZWIgMjEsIDIwMjAgYXQgMTA6MDQgUE0gRGFuaWVsIFZldHRlciA8ZGFuaWVsLnZldHRl
+ckBmZndsbC5jaD4gd3JvdGU6Cj4KPiBJdCdzIChhbG1vc3QsIHRoZXJlJ3Mgc29tZSBpb21tdSBz
+dHVmZiB3aXRob3V0IHNpZ25pZmljYW5jZSkgcmlnaHQKPiBhYm92ZSB0aGUgZHJtX2Rldl9wdXQo
+KS4KPgo+IFRoaXMgaXMgbWFkZSBwb3NzaWJsZSBieSBhIHByZWNlZWRpbmcgcGF0Y2ggd2hpY2gg
+YWRkZWQgYSBkcm1tXwo+IGNsZWFudXAgYWN0aW9uIHRvIGRybV9tb2RlX2NvbmZpZ19pbml0KCks
+IGhlbmNlIGFsbCB3ZSBuZWVkIHRvIGRvIHRvCj4gZW5zdXJlIHRoYXQgZHJtX21vZGVfY29uZmln
+X2NsZWFudXAoKSBpcyBydW4gb24gZmluYWwgZHJtX2RldmljZQo+IGNsZWFudXAgaXMgY2hlY2sg
+dGhlIG5ldyBlcnJvciBjb2RlIGZvciBfaW5pdCgpLgo+Cj4gQXNpZGU6IEFub3RoZXIgZHJpdmVy
+IHdpdGggYSBiaXQgbXVjaCBkZXZtX2t6YWxsb2MsIHdoaWNoIHNob3VsZAo+IHByb2JhYmx5IHVz
+ZSBkcm1tX2t6YWxsb2MgaW5zdGVhZCAuLi4KPgo+IHYyOiBFeHBsYWluIHdoeSB0aGlzIGNsZWFu
+dXAgaXMgcG9zc2libGUgKExhdXJlbnQpLgo+Cj4gQ2M6IExhdXJlbnQgUGluY2hhcnQgPGxhdXJl
+bnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgVmV0
+dGVyIDxkYW5pZWwudmV0dGVyQGludGVsLmNvbT4KPiBDYzogU2FuZHkgSHVhbmcgPGhqY0Byb2Nr
+LWNoaXBzLmNvbT4KPiBDYzogIkhlaWtvIFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRlPgo+IENj
+OiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBDYzogbGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAv
+cm9ja2NoaXBfZHJtX2Rydi5jIHwgMTAgKysrLS0tLS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgMyBp
+bnNlcnRpb25zKCspLCA3IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
+aXAvcm9ja2NoaXBfZHJtX2Rydi5jCj4gaW5kZXggMjBlY2IxNTA4YTIyLi5kMGViYTIxZWViYzkg
+MTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV9kcnYu
+Ywo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKPiBA
+QCAtMTM1LDcgKzEzNSw5IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2JpbmQoc3RydWN0IGRl
+dmljZSAqZGV2KQo+ICAgICAgICAgaWYgKHJldCkKPiAgICAgICAgICAgICAgICAgZ290byBlcnJf
+ZnJlZTsKPgo+IC0gICAgICAgZHJtX21vZGVfY29uZmlnX2luaXQoZHJtX2Rldik7Cj4gKyAgICAg
+ICByZXQgPSBkcm1fbW9kZV9jb25maWdfaW5pdChkcm1fZGV2KTsKPiArICAgICAgIGlmIChyZXQp
+Cj4gKyAgICAgICAgICAgICAgIGdvdG8gZXJyX2ZyZWU7Cj4KPiAgICAgICAgIHJvY2tjaGlwX2Ry
+bV9tb2RlX2NvbmZpZ19pbml0KGRybV9kZXYpOwo+Cj4gQEAgLTE3NCwxMSArMTc2LDggQEAgc3Rh
+dGljIGludCByb2NrY2hpcF9kcm1fYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gIGVycl91bmJp
+bmRfYWxsOgo+ICAgICAgICAgY29tcG9uZW50X3VuYmluZF9hbGwoZGV2LCBkcm1fZGV2KTsKPiAg
+ZXJyX21vZGVfY29uZmlnX2NsZWFudXA6Cj4gLSAgICAgICBkcm1fbW9kZV9jb25maWdfY2xlYW51
+cChkcm1fZGV2KTsKPiAgICAgICAgIHJvY2tjaGlwX2lvbW11X2NsZWFudXAoZHJtX2Rldik7Cj4g
+IGVycl9mcmVlOgo+IC0gICAgICAgZHJtX2Rldi0+ZGV2X3ByaXZhdGUgPSBOVUxMOwo+IC0gICAg
+ICAgZGV2X3NldF9kcnZkYXRhKGRldiwgTlVMTCk7Cj4gICAgICAgICBkcm1fZGV2X3B1dChkcm1f
+ZGV2KTsKPiAgICAgICAgIHJldHVybiByZXQ7Cj4gIH0KPiBAQCAtMTk0LDExICsxOTMsOCBAQCBz
+dGF0aWMgdm9pZCByb2NrY2hpcF9kcm1fdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPgo+ICAg
+ICAgICAgZHJtX2F0b21pY19oZWxwZXJfc2h1dGRvd24oZHJtX2Rldik7Cj4gICAgICAgICBjb21w
+b25lbnRfdW5iaW5kX2FsbChkZXYsIGRybV9kZXYpOwo+IC0gICAgICAgZHJtX21vZGVfY29uZmln
+X2NsZWFudXAoZHJtX2Rldik7Cj4gICAgICAgICByb2NrY2hpcF9pb21tdV9jbGVhbnVwKGRybV9k
+ZXYpOwo+Cj4gLSAgICAgICBkcm1fZGV2LT5kZXZfcHJpdmF0ZSA9IE5VTEw7Cj4gLSAgICAgICBk
+ZXZfc2V0X2RydmRhdGEoZGV2LCBOVUxMKTsKPiAgICAgICAgIGRybV9kZXZfcHV0KGRybV9kZXYp
+Owo+ICB9Cj4KPiAtLQo+IDIuMjQuMQo+Cj4KPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
+dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
