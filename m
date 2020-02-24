@@ -1,46 +1,35 @@
-From: Maxime Ripard <maxime@cerno.tech>
-Subject: Re: [PATCH net-next v1 09/18] net/allwinner: Remove driver version
-Date: Mon, 24 Feb 2020 10:43:59 +0100
-Message-ID: <20200224094359.t2qevsxzilgq3faj@gilmour.lan>
-References: <20200224085311.460338-1-leon@kernel.org>
- <20200224085311.460338-10-leon@kernel.org>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH 3/3] drm/panel: add panel driver for Elida KD35T133 panels
+Date: Mon, 24 Feb 2020 15:06:11 +0000
+Message-ID: <ec42b04a-4727-cbd4-d0c4-21a8def8abd0@arm.com>
+References: <20200223150711.194482-1-heiko@sntech.de>
+ <20200223150711.194482-3-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="3l2hq75myvlmy434"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200224085311.460338-10-leon@kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Leon Romanovsky <leon@kernel.org>
-Cc: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Leon Romanovsky <leonro@mellanox.com>, Tom Lendacky <thomas.lendacky@amd.com>, Keyur Chudgar <keyur@os.amperecomputing.com>, Don Fry <pcnet32@frontier.com>, Veaceslav Falico <vfalico@gmail.com>, Jay Vosburgh <j.vosburgh@gmail.com>, linux-acenic@sunsite.dk, Heiko Stuebner <heiko@sntech.de>, Mark Einon <mark.einon@gmail.com>, Chris Snook <chris.snook@gmail.com>, linux-rockchip@lists.infradead.org, Iyappan Subramanian <iyappan@os.amperecomputing.com>, Igor Russkikh <irusskikh@marvell.com>, David Dillow <dave@thedillows.org>, Netanel Belgazal <netanel@amazon.com>, Quan Nguyen <quan@os.amperecomputing.com>, Jay Cliburn <jcliburn@gmail.com>, Lino Sanfilippo <LinoSanfilippo@g>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200223150711.194482-3-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Content-Language: en-GB
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Cc: thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On 23/02/2020 3:07 pm, Heiko Stuebner wrote:
+[...]
+> +#define dsi_generic_write_seq(dsi, cmd, seq...) do {			\
+> +		static const u8 d[] = { seq };				\
+> +		int ret;						\
+> +		ret = mipi_dsi_dcs_write(dsi, cmd, d, ARRAY_SIZE(d));	\
 
---3l2hq75myvlmy434
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Nit: in the rocktech driver, dsi_generic_write_seq() is wrapping 
+mipi_dsi_generic_write() which seems logically self-consistent. 
+Therefore shouldn't this wrapper be called something like 
+dsi_dcs_write_seq()? I have no idea what any of this actually means, but 
+the dissonance is enough to make my reviewer-sense tingle ;)
 
-On Mon, Feb 24, 2020 at 10:53:02AM +0200, Leon Romanovsky wrote:
-> From: Leon Romanovsky <leonro@mellanox.com>
->
-> There is no need in custom driver version for in-tree code.
->
-> Signed-off-by: Leon Romanovsky <leonro@mellanox.com>
+Robin.
 
-Acked-by: Maxime Ripard <mripard@kernel.org>
-
-Thanks!
-Maxime
-
---3l2hq75myvlmy434
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCXlOa3wAKCRDj7w1vZxhR
-xcbKAQD34RQIuVr/Eh3rqW6wAmdRFzMj82wPjjPCwVxOnFdvRgEA5ad/HOXd1R53
-M1v0PShtjx6kM890phDjQwlRq6EvWAE=
-=V9ws
------END PGP SIGNATURE-----
-
---3l2hq75myvlmy434--
+> +		if (ret < 0)						\
+> +			return ret;					\
+> +	} while (0)
