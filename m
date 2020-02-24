@@ -1,10 +1,12 @@
 From: Leon Romanovsky <leon@kernel.org>
-Subject: [PATCH net-next v1 00/18] Clean driver, module and FW versions
-Date: Mon, 24 Feb 2020 10:52:53 +0200
-Message-ID: <20200224085311.460338-1-leon@kernel.org>
+Subject: [PATCH net-next v1 01/18] net/bond: Delete driver and module versions
+Date: Mon, 24 Feb 2020 10:52:54 +0200
+Message-ID: <20200224085311.460338-2-leon@kernel.org>
+References: <20200224085311.460338-1-leon@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <20200224085311.460338-1-leon@kernel.org>
 Sender: netdev-owner@vger.kernel.org
 To: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>
 Cc: Leon Romanovsky <leonro@mellanox.com>, Tom Lendacky <thomas.lendacky@amd.com>, Keyur Chudgar <keyur@os.amperecomputing.com>, Don Fry <pcnet32@frontier.com>, Veaceslav Falico <vfalico@gmail.com>, Jay Vosburgh <j.vosburgh@gmail.com>, linux-acenic@sunsite.dk, Maxime Ripard <mripard@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Mark Einon <mark.einon@gmail.com>, Chris Snook <chris.snook@gmail.com>, linux-rockchip@lists.infradead.org, Iyappan Subramanian <iyappan@os.amperecomputing.com>, Igor Russkikh <irusskikh@marvell.com>, David Dillow <dave@thedillows.org>, Netanel Belgazal <netanel@amazon.com>, Quan Nguyen <quan@os.amperecomputing.com>, Jay Cliburn <jcliburn@gmail.com>, Lino Sanfilippo <LinoSanfilippo@gmx.de>, linux-arm-kernel@lists.infradea
@@ -12,113 +14,61 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Leon Romanovsky <leonro@mellanox.com>
 
-Change log:
- v1:
-  * Split all FW cleanups patches to separate patches
-  * Fixed commit message
-  * Deleted odd DRV_RELDATE
-  * Added everyone from MAINTAINERS file
- v0: https://lore.kernel.org/netdev/20200220145855.255704-1-leon@kernel.org
+The in-kernel code has already unique version, which is based
+on Linus's tag, update the bond driver to be consistent with that
+version.
 
-----------------------------------------------------------------------------
+Signed-off-by: Leon Romanovsky <leonro@mellanox.com>
+---
+ drivers/net/bonding/bond_main.c    | 6 +-----
+ drivers/net/bonding/bonding_priv.h | 5 ++---
+ 2 files changed, 3 insertions(+), 8 deletions(-)
 
-Hi,
+diff --git a/drivers/net/bonding/bond_main.c b/drivers/net/bonding/bond_main.c
+index c68c1d1387ee..2e70e43c5df5 100644
+--- a/drivers/net/bonding/bond_main.c
++++ b/drivers/net/bonding/bond_main.c
+@@ -4370,7 +4370,6 @@ static void bond_ethtool_get_drvinfo(struct net_device *bond_dev,
+ 				     struct ethtool_drvinfo *drvinfo)
+ {
+ 	strlcpy(drvinfo->driver, DRV_NAME, sizeof(drvinfo->driver));
+-	strlcpy(drvinfo->version, DRV_VERSION, sizeof(drvinfo->version));
+ 	snprintf(drvinfo->fw_version, sizeof(drvinfo->fw_version), "%d",
+ 		 BOND_ABI_VERSION);
+ }
+@@ -5008,8 +5007,6 @@ static int __init bonding_init(void)
+ 	int i;
+ 	int res;
 
-This is first patchset to netdev (already sent RDMA [1] and arch/um [2])
-in attempt to unify the version management for in-tree kernel code.
-The patches follow already accepted ethtool change [3] to set as
-a default linux kernel version.
+-	pr_info("%s", bond_version);
+-
+ 	res = bond_check_params(&bonding_defaults);
+ 	if (res)
+ 		goto out;
+@@ -5064,6 +5061,5 @@ static void __exit bonding_exit(void)
+ module_init(bonding_init);
+ module_exit(bonding_exit);
+ MODULE_LICENSE("GPL");
+-MODULE_VERSION(DRV_VERSION);
+-MODULE_DESCRIPTION(DRV_DESCRIPTION ", v" DRV_VERSION);
++MODULE_DESCRIPTION(DRV_DESCRIPTION);
+ MODULE_AUTHOR("Thomas Davis, tadavis@lbl.gov and many others");
+diff --git a/drivers/net/bonding/bonding_priv.h b/drivers/net/bonding/bonding_priv.h
+index 5a4d81a9437c..45b77bc8c7b3 100644
+--- a/drivers/net/bonding/bonding_priv.h
++++ b/drivers/net/bonding/bonding_priv.h
+@@ -14,12 +14,11 @@
 
-It allows us to remove driver version and present to the users unified
-picture of driver version, which is similar to default MODULE_VERSION().
+ #ifndef _BONDING_PRIV_H
+ #define _BONDING_PRIV_H
++#include <linux/vermagic.h>
 
-As part of this series, I deleted various creative attempts to mark
-absence of FW. There is no need to set "N/A" in ethtool ->fw_version
-field and it is enough to do not set it.
+-#define DRV_VERSION	"3.7.1"
+-#define DRV_RELDATE	"April 27, 2011"
+ #define DRV_NAME	"bonding"
+ #define DRV_DESCRIPTION	"Ethernet Channel Bonding Driver"
 
-1.
-The code is compile tested and passes 0-day kbuild.
-2.
-The proposed changes are based on commit:
-  2bb07f4e1d86 ("tc-testing: updated tdc tests for basic filter")
-3.
-WIP branch is [4].
+-#define bond_version DRV_DESCRIPTION ": v" DRV_VERSION " (" DRV_RELDATE ")\n"
++#define bond_version DRV_DESCRIPTION ": v" UTS_RELEASE "\n"
 
-[1] https://lore.kernel.org/linux-rdma/20200220071239.231800-1-leon@kernel.org/
-[2] http://lists.infradead.org/pipermail/linux-um/2020-February/002913.html
-[3] https://lore.kernel.org/linux-rdma/20200127072028.19123-1-leon@kernel.org/
-[4] https://git.kernel.org/pub/scm/linux/kernel/git/leon/linux-rdma.git/log/?h=ethtool
-
-Thanks
-
-Leon Romanovsky (18):
-  net/bond: Delete driver and module versions
-  net/dummy: Ditch driver and module versions
-  net/3com: Delete driver and module versions from 3com drivers
-  net/adaptec: Clean driver versions
-  net/aeroflex: Clean ethtool_info struct assignments
-  net/aeroflex: Don't assign FW if it is not available
-  net/agere: Delete unneeded driver version
-  net/alacritech: Delete driver version
-  net/allwinner: Remove driver version
-  net/alteon: Properly report FW version
-  net/althera: Delete hardcoded driver version
-  net/amazon: Ensure that driver version is aligned to the linux kernel
-  net/amd: Remove useless driver version
-  net/apm: Remove useless driver version
-  net/apm: Properly mark absence of FW
-  net/aquantia: Delete module version
-  net/arc: Delete driver version
-  net/atheros: Clean atheros code from driver version
-
- drivers/net/bonding/bond_main.c               |  6 +-----
- drivers/net/bonding/bonding_priv.h            |  5 ++---
- drivers/net/dummy.c                           |  3 ---
- drivers/net/ethernet/3com/3c509.c             |  8 +-------
- drivers/net/ethernet/3com/3c515.c             | 16 +---------------
- drivers/net/ethernet/3com/3c589_cs.c          |  2 --
- drivers/net/ethernet/3com/typhoon.c           |  1 -
- drivers/net/ethernet/adaptec/starfire.c       | 19 +------------------
- drivers/net/ethernet/aeroflex/greth.c         |  2 --
- drivers/net/ethernet/agere/et131x.c           |  1 -
- drivers/net/ethernet/agere/et131x.h           |  1 -
- drivers/net/ethernet/alacritech/slicoss.c     |  3 ---
- drivers/net/ethernet/allwinner/sun4i-emac.c   |  2 --
- drivers/net/ethernet/alteon/acenic.c          |  5 ++---
- .../net/ethernet/altera/altera_tse_ethtool.c  |  1 -
- drivers/net/ethernet/amazon/ena/ena_ethtool.c |  1 -
- drivers/net/ethernet/amazon/ena/ena_netdev.c  | 17 ++---------------
- drivers/net/ethernet/amazon/ena/ena_netdev.h  | 11 -----------
- drivers/net/ethernet/amd/amd8111e.c           |  5 +----
- drivers/net/ethernet/amd/au1000_eth.c         |  5 -----
- drivers/net/ethernet/amd/nmclan_cs.c          |  9 +++------
- drivers/net/ethernet/amd/pcnet32.c            |  7 -------
- drivers/net/ethernet/amd/sunlance.c           | 10 ----------
- drivers/net/ethernet/amd/xgbe/xgbe-ethtool.c  |  1 -
- drivers/net/ethernet/amd/xgbe/xgbe-main.c     |  1 -
- drivers/net/ethernet/amd/xgbe/xgbe.h          |  1 -
- drivers/net/ethernet/apm/xgene-v2/ethtool.c   |  2 --
- drivers/net/ethernet/apm/xgene-v2/main.c      |  1 -
- drivers/net/ethernet/apm/xgene-v2/main.h      |  1 -
- .../ethernet/apm/xgene/xgene_enet_ethtool.c   |  2 --
- .../net/ethernet/apm/xgene/xgene_enet_main.c  |  1 -
- .../net/ethernet/apm/xgene/xgene_enet_main.h  |  1 -
- .../net/ethernet/aquantia/atlantic/aq_cfg.h   |  4 ----
- .../ethernet/aquantia/atlantic/aq_common.h    |  1 -
- .../ethernet/aquantia/atlantic/aq_ethtool.c   |  1 -
- .../net/ethernet/aquantia/atlantic/aq_main.c  |  1 -
- drivers/net/ethernet/aquantia/atlantic/ver.h  | 12 ------------
- drivers/net/ethernet/arc/emac.h               |  1 -
- drivers/net/ethernet/arc/emac_arc.c           |  2 --
- drivers/net/ethernet/arc/emac_main.c          |  1 -
- drivers/net/ethernet/arc/emac_rockchip.c      |  2 --
- drivers/net/ethernet/atheros/atl1c/atl1c.h    |  1 -
- .../ethernet/atheros/atl1c/atl1c_ethtool.c    |  2 --
- .../net/ethernet/atheros/atl1c/atl1c_main.c   |  5 -----
- drivers/net/ethernet/atheros/atl1e/atl1e.h    |  1 -
- .../ethernet/atheros/atl1e/atl1e_ethtool.c    |  2 --
- .../net/ethernet/atheros/atl1e/atl1e_main.c   |  4 ----
- drivers/net/ethernet/atheros/atlx/atl1.c      |  6 ------
- drivers/net/ethernet/atheros/atlx/atl2.c      | 10 ----------
- 49 files changed, 14 insertions(+), 193 deletions(-)
- delete mode 100644 drivers/net/ethernet/aquantia/atlantic/ver.h
+ #endif
