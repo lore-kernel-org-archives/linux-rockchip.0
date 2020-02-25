@@ -1,50 +1,48 @@
-From: Francesco Lavra <francescolavra.fl-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 3/3] drm/panel: add panel driver for Elida KD35T133 panels
-Date: Tue, 25 Feb 2020 11:49:13 +0100
-Message-ID: <026a2176-cded-d6ea-7fab-d1425ab3dd5d@gmail.com>
-References: <20200223150711.194482-1-heiko@sntech.de>
- <20200223150711.194482-3-heiko@sntech.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200223150711.194482-3-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+From: Ezra Buehler <ezra@easyb.ch>
+Subject: Re: [RFC 00/25] arm64: realtek: Add Xnano X5 and implement
+ TM1628/FD628/AiP1618 LED controllers
+Date: Tue, 25 Feb 2020 22:42:57 +0100
+Message-ID: <E33E27B9-D33C-4182-A5B1-C72FA40470BC@easyb.ch>
+References: <20191212033952.5967-1-afaerber@suse.de>
+ <7110806f-ddbd-f055-e107-7a1f7e223102@arm.com>
+ <c86c6bc0-b0e5-c46e-da87-9d910b95f9f3@suse.de>
+ <04e7d7cd-a8bc-621b-9205-1a058521cabe@arm.com>
+Mime-Version: 1.0 (Mac OS X Mail 11.5 \(3445.9.1\))
+Content-Type: text/plain;
+        charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-leds-owner@vger.kernel.org>
+In-Reply-To: <04e7d7cd-a8bc-621b-9205-1a058521cabe@arm.com>
+Sender: linux-leds-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>, =?utf-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>
+Cc: linux-realtek-soc@lists.infradead.org, linux-leds@vger.kernel.org, linux-rtc@vger.kernel.org, Alessandro Zummo <a.zummo@towertech.it>, Alexandre Belloni <alexandre.belloni@bootlin.com>, csd@princeton.com.tw, devicetree@vger.kernel.org, sales@fdhisi.com, Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Jacek Anaszewski <jacek.anaszewski@gmail.com>, Pavel Machek <pavel@ucw.cz>, zypeng@titanmec.com, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Dan Murphy <dmurphy@ti.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2/23/20 4:07 PM, Heiko Stuebner wrote:
-> +static int kd35t133_unprepare(struct drm_panel *panel)
-> +{
-> +	struct kd35t133 *ctx = panel_to_kd35t133(panel);
-> +	struct mipi_dsi_device *dsi = to_mipi_dsi_device(ctx->dev);
-> +	int ret;
-> +
-> +	if (!ctx->prepared)
-> +		return 0;
-> +
-> +	ret = mipi_dsi_dcs_set_display_off(dsi);
-> +	if (ret < 0)
-> +		DRM_DEV_ERROR(ctx->dev, "failed to set display off: %d\n",
-> +			      ret);
-> +
-> +	mipi_dsi_dcs_enter_sleep_mode(dsi);
-> +	if (ret < 0) {
-> +		DRM_DEV_ERROR(ctx->dev, "failed to enter sleep mode: %d\n",
-> +			      ret);
+Hi Robin,
+Hi Andreas,
 
-It looks like you forgot to assign the return value from 
-mipi_dsi_dcs_enter_sleep_mode() to ret.
+> On 13 Dec 2019, at 15:07, Robin Murphy <robin.murphy@arm.com> wrote:
+>=20
+> I also have one of the H96 Max boxes (which I picked up out of =
+curiosity
+> for the mysterious RK3318) with an FD6551, although I've not attacked
+> that one with the logic analyser yet to see how similar it is.
 
-> +		return ret;
-> +	}
-> +
-> +	regulator_disable(ctx->iovcc);
-> +	regulator_disable(ctx->vdd);
-> +
-> +	ctx->prepared = false;
-> +
-> +	return 0;
-> +}
+I have a T9 (RK3328) TV box with the same chip in it. The FD6551 uses an
+I2C-like protocol. Every digit (and the symbols) have an I2C address,
+but, the display does not signal ACK. AFAIK the FD650 and FD655 which
+are used in other boxes (Amlogic) are very similar.
+
+So far, I have whipped up a proof-of-cocept driver that uses i2c-gpio.
+The digits seem to be rotated by 180 degrees. So, in order to use
+map_to_7segment.h I had to define the BIT_SEG7_* constants differently.
+My display also has multiple symbols (WIFI, network, pause, play, USB,
+alarm) that are controlled by writing to the same address as for the
+colon.
+
+I=E2=80=99d love to work on a driver (similar to Andreas=E2=80=99 SPI =
+based driver) for
+these I2C connected chips.
+
+Cheers,
+Ezra.
