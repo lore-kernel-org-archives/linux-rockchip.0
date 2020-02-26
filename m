@@ -1,16 +1,15 @@
 From: Lee Jones <lee.jones@linaro.org>
-Subject: Re: [PATCH v2 2/5] mfd: rk808: Ensure suspend/resume hooks always
- work
-Date: Wed, 26 Feb 2020 10:32:34 +0000
-Message-ID: <20200226103234.GF3494@dell>
+Subject: Re: [PATCH v2 3/5] mfd: rk808: Stop using syscore ops
+Date: Wed, 26 Feb 2020 10:32:45 +0000
+Message-ID: <20200226103245.GG3494@dell>
 References: <cover.1578789410.git.robin.murphy@arm.com>
- <e2cd9aa88c96f69fd931d606e0e70784c3020551.1578789410.git.robin.murphy@arm.com>
+ <7fdcdb900c7dc4fba38266e1db637131c3090a67.1578789410.git.robin.murphy@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <e2cd9aa88c96f69fd931d606e0e70784c3020551.1578789410.git.robin.murphy@arm.com>
+In-Reply-To: <7fdcdb900c7dc4fba38266e1db637131c3090a67.1578789410.git.robin.murphy@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Robin Murphy <robin.murphy@arm.com>
 Cc: linux-kernel@vger.kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, smoch@web.de
@@ -18,17 +17,16 @@ List-Id: linux-rockchip.vger.kernel.org
 
 On Sun, 12 Jan 2020, Robin Murphy wrote:
 
-> The RK809/RK817 suspend/resume hooks should not have to depend on
-> whether this driver owns the pm_power_off hook, and thus the global
-> rk808_i2c_client is set - indeed, the GPIO-based control is really
-> only relevant when PSCI firmware is in charge of power rather than
-> the kernel. As driver model callbacks, they have an appropriate
-> device argument to hand, so can just always use that.
+> Setting the SLEEP pin to its shutdown function for appropriate PMICs
+> doesn't need to happen in single-CPU context, so there's really no point
+> involving the syscore machinery. Hook it up to the standard driver model
+> shutdown method instead. This also obviates the issue that the syscore
+> ops weren't being unregistered on probe failure or module removal.
 > 
 > Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 > ---
->  drivers/mfd/rk808.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  drivers/mfd/rk808.c | 26 ++++++++++++--------------
+>  1 file changed, 12 insertions(+), 14 deletions(-)
 
 Applied, thanks.
 
