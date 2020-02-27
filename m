@@ -1,65 +1,31 @@
-From: Daniel Vetter <daniel.vetter@ffwll.ch>
-Subject: [PATCH 37/51] drm/rockchip: Drop explicit drm_mode_config_cleanup call
-Date: Thu, 27 Feb 2020 19:15:08 +0100
-Message-ID: <20200227181522.2711142-38-daniel.vetter@ffwll.ch>
-References: <20200227181522.2711142-1-daniel.vetter@ffwll.ch>
+From: Tobias Schramm <t.schramm@manjaro.org>
+Subject: [PATCH 0/2] Add support for the pine64 Pinebook Pro
+Date: Thu, 27 Feb 2020 19:06:28 +0100
+Message-ID: <20200227180630.166982-1-t.schramm@manjaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200227181522.2711142-1-daniel.vetter@ffwll.ch>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: DRI Development <dri-devel@lists.freedesktop.org>
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Francesco Lavra <francescolavra.fl@gmail.com>, Daniel Vetter <daniel.vetter@ffwll.ch>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, m.felsch@pengutronix.de, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org, l.stach@pengutronix.de
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>
+Cc: Douglas Anderson <dianders@chromium.org>, Jagan Teki <jagan@amarulasolutions.com>, Markus Reichl <m.reichl@fivetechno.de>, Alexis Ballier <aballier@gentoo.org>, Matthias Kaehlcke <mka@chromium.org>, Nick Xie <nick@khadas.com>, Kever Yang <kever.yang@rock-chips.com>, Vivek Unune <npcomplete13@gmail.com>, Katsuhiro Suzuki <katsuhiro@katsuster.net>, Tobias Schramm <t.schramm@manjaro.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, anarsoul@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-SXQncyAoYWxtb3N0LCB0aGVyZSdzIHNvbWUgaW9tbXUgc3R1ZmYgd2l0aG91dCBzaWduaWZpY2Fu
-Y2UpIHJpZ2h0CmFib3ZlIHRoZSBkcm1fZGV2X3B1dCgpLgoKVGhpcyBpcyBtYWRlIHBvc3NpYmxl
-IGJ5IGEgcHJlY2VlZGluZyBwYXRjaCB3aGljaCBhZGRlZCBhIGRybW1fCmNsZWFudXAgYWN0aW9u
-IHRvIGRybV9tb2RlX2NvbmZpZ19pbml0KCksIGhlbmNlIGFsbCB3ZSBuZWVkIHRvIGRvIHRvCmVu
-c3VyZSB0aGF0IGRybV9tb2RlX2NvbmZpZ19jbGVhbnVwKCkgaXMgcnVuIG9uIGZpbmFsIGRybV9k
-ZXZpY2UKY2xlYW51cCBpcyBjaGVjayB0aGUgbmV3IGVycm9yIGNvZGUgZm9yIF9pbml0KCkuCgpB
-c2lkZTogQW5vdGhlciBkcml2ZXIgd2l0aCBhIGJpdCBtdWNoIGRldm1fa3phbGxvYywgd2hpY2gg
-c2hvdWxkCnByb2JhYmx5IHVzZSBkcm1tX2t6YWxsb2MgaW5zdGVhZCAuLi4KCnYyOiBFeHBsYWlu
-IHdoeSB0aGlzIGNsZWFudXAgaXMgcG9zc2libGUgKExhdXJlbnQpLgoKdjM6IEp1bXAgb3V0IGF0
-IHRoZSByaWdodCBsYWJlbCAoRnJhbmNlc2NvKQoKQ2M6IEZyYW5jZXNjbyBMYXZyYSA8ZnJhbmNl
-c2NvbGF2cmEuZmxAZ21haWwuY29tPgpDYzogTGF1cmVudCBQaW5jaGFydCA8bGF1cmVudC5waW5j
-aGFydEBpZGVhc29uYm9hcmQuY29tPgpTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgVmV0dGVyIDxkYW5p
-ZWwudmV0dGVyQGludGVsLmNvbT4KQ2M6IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+
-CkNjOiAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+CkNjOiBsaW51eC1hcm0ta2Vy
-bmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jIHwg
-MTIgKysrKy0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCA4IGRlbGV0
-aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9k
-cm1fZHJ2LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCmlu
-ZGV4IDIwZWNiMTUwOGEyMi4uOWIyNTAyZjkyMDE4IDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX2Rydi5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
-Y2hpcC9yb2NrY2hpcF9kcm1fZHJ2LmMKQEAgLTEzNSw3ICsxMzUsOSBAQCBzdGF0aWMgaW50IHJv
-Y2tjaGlwX2RybV9iaW5kKHN0cnVjdCBkZXZpY2UgKmRldikKIAlpZiAocmV0KQogCQlnb3RvIGVy
-cl9mcmVlOwogCi0JZHJtX21vZGVfY29uZmlnX2luaXQoZHJtX2Rldik7CisJcmV0ID0gZHJtX21v
-ZGVfY29uZmlnX2luaXQoZHJtX2Rldik7CisJaWYgKHJldCkKKwkJZ290byBlcnJfaW9tbXVfY2xl
-YW51cDsKIAogCXJvY2tjaGlwX2RybV9tb2RlX2NvbmZpZ19pbml0KGRybV9kZXYpOwogCkBAIC0x
-NzMsMTIgKzE3NSw5IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZHJtX2JpbmQoc3RydWN0IGRldmlj
-ZSAqZGV2KQogCXJvY2tjaGlwX2RybV9mYmRldl9maW5pKGRybV9kZXYpOwogZXJyX3VuYmluZF9h
-bGw6CiAJY29tcG9uZW50X3VuYmluZF9hbGwoZGV2LCBkcm1fZGV2KTsKLWVycl9tb2RlX2NvbmZp
-Z19jbGVhbnVwOgotCWRybV9tb2RlX2NvbmZpZ19jbGVhbnVwKGRybV9kZXYpOworZXJyX2lvbW11
-X2NsZWFudXA6CiAJcm9ja2NoaXBfaW9tbXVfY2xlYW51cChkcm1fZGV2KTsKIGVycl9mcmVlOgot
-CWRybV9kZXYtPmRldl9wcml2YXRlID0gTlVMTDsKLQlkZXZfc2V0X2RydmRhdGEoZGV2LCBOVUxM
-KTsKIAlkcm1fZGV2X3B1dChkcm1fZGV2KTsKIAlyZXR1cm4gcmV0OwogfQpAQCAtMTk0LDExICsx
-OTMsOCBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9kcm1fdW5iaW5kKHN0cnVjdCBkZXZpY2UgKmRl
-dikKIAogCWRybV9hdG9taWNfaGVscGVyX3NodXRkb3duKGRybV9kZXYpOwogCWNvbXBvbmVudF91
-bmJpbmRfYWxsKGRldiwgZHJtX2Rldik7Ci0JZHJtX21vZGVfY29uZmlnX2NsZWFudXAoZHJtX2Rl
-dik7CiAJcm9ja2NoaXBfaW9tbXVfY2xlYW51cChkcm1fZGV2KTsKIAotCWRybV9kZXYtPmRldl9w
-cml2YXRlID0gTlVMTDsKLQlkZXZfc2V0X2RydmRhdGEoZGV2LCBOVUxMKTsKIAlkcm1fZGV2X3B1
-dChkcm1fZGV2KTsKIH0KIAotLSAKMi4yNC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgt
-YXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+This patchset adds an initial dts and compatible string for the rk3399
+based Pinebook Pro 14" laptop.
+
+Contrary to the Rockchip BSP dts proposed mid January this dts has a
+power tree reflecting the actual schematic of the device and features
+full display, audio and WiFi/Bluetooth support.
+
+Tobias Schramm (2):
+  dt-bindings: Add doc for pine64 Pinebook Pro
+  arm64: dts: rockchip: Add initial support for Pinebook Pro
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts | 1191 +++++++++++++++++
+ 3 files changed, 1197 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+
+-- 
+2.24.1
