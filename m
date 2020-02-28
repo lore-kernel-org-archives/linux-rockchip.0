@@ -1,61 +1,83 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH 1/2] ARM: dts: remove g-use-dma from rockchip usb nodes
-Date: Fri, 28 Feb 2020 12:39:21 +0100
-Message-ID: <20200228113922.20266-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix cpu compatible property for
+ rk3308
+Date: Fri, 28 Feb 2020 12:33:21 +0000
+Message-ID: <6a6beced-a8cb-448e-a4b2-331cd09d0c61@arm.com>
+References: <20200228084827.16198-1-jbx6244@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200228084827.16198-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-GB
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-A test with the command below gives these errors:
+On 28/02/2020 8:48 am, Johan Jonker wrote:
+> A test with the command below gives for example these errors:
+> 
+> arch/arm64/boot/dts/rockchip/rk3308-evb.dt.yaml: cpu@0: compatible:
+> Additional items are not allowed ('arm,armv8' was unexpected)
+> arch/arm64/boot/dts/rockchip/rk3308-evb.dt.yaml: cpu@0: compatible:
+> ['arm,cortex-a35', 'arm,armv8']
+> is too long
+> 
+> Fix these errors by removing the last argument of
+> the cpu compatible property in rk3308.dtsi.
 
-arch/arm/boot/dts/rv1108-elgin-r1.dt.yaml: usb@30180000:
-'g-use-dma' does not match any of the regexes: 'pinctrl-[0-9]+'
-arch/arm/boot/dts/rv1108-evb.dt.yaml: usb@30180000:
-'g-use-dma' does not match any of the regexes: 'pinctrl-[0-9]+'
-arch/arm/boot/dts/rk3228-evb.dt.yaml: usb@30040000:
-'g-use-dma' does not match any of the regexes: 'pinctrl-[0-9]+'
-arch/arm/boot/dts/rk3229-evb.dt.yaml: usb@30040000:
-'g-use-dma' does not match any of the regexes: 'pinctrl-[0-9]+'
-arch/arm/boot/dts/rk3229-xms6.dt.yaml: usb@30040000:
-'g-use-dma' does not match any of the regexes: 'pinctrl-[0-9]+'
+Bah, seems this snuck in a couple of releases after we blitzed the last 
+of these from the tree :)
 
-'g-use-dma' is not a valid option in dwc2.yaml, so remove it
-from all Rockchip dtsi files.
+Reviewed-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 
-make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/usb/dwc2.yaml
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm/boot/dts/rk322x.dtsi | 1 -
- arch/arm/boot/dts/rv1108.dtsi | 1 -
- 2 files changed, 2 deletions(-)
-
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index 4e90efdc9..dac930be3 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -718,7 +718,6 @@
- 		g-np-tx-fifo-size = <16>;
- 		g-rx-fifo-size = <280>;
- 		g-tx-fifo-size = <256 128 128 64 32 16>;
--		g-use-dma;
- 		phys = <&u2phy0_otg>;
- 		phy-names = "usb2-phy";
- 		status = "disabled";
-diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-index 1fd06e7cb..9bb109d66 100644
---- a/arch/arm/boot/dts/rv1108.dtsi
-+++ b/arch/arm/boot/dts/rv1108.dtsi
-@@ -527,7 +527,6 @@
- 		g-np-tx-fifo-size = <16>;
- 		g-rx-fifo-size = <280>;
- 		g-tx-fifo-size = <256 128 128 64 32 16>;
--		g-use-dma;
- 		phys = <&u2phy_otg>;
- 		phy-names = "usb2-phy";
- 		status = "disabled";
--- 
-2.11.0
+> make ARCH=arm64
+> dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/arm/cpus.yaml
+> 
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3308.dtsi | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+> index 116f1900e..3bd5bc860 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+> @@ -40,7 +40,7 @@
+>   
+>   		cpu0: cpu@0 {
+>   			device_type = "cpu";
+> -			compatible = "arm,cortex-a35", "arm,armv8";
+> +			compatible = "arm,cortex-a35";
+>   			reg = <0x0 0x0>;
+>   			enable-method = "psci";
+>   			clocks = <&cru ARMCLK>;
+> @@ -53,7 +53,7 @@
+>   
+>   		cpu1: cpu@1 {
+>   			device_type = "cpu";
+> -			compatible = "arm,cortex-a35", "arm,armv8";
+> +			compatible = "arm,cortex-a35";
+>   			reg = <0x0 0x1>;
+>   			enable-method = "psci";
+>   			operating-points-v2 = <&cpu0_opp_table>;
+> @@ -63,7 +63,7 @@
+>   
+>   		cpu2: cpu@2 {
+>   			device_type = "cpu";
+> -			compatible = "arm,cortex-a35", "arm,armv8";
+> +			compatible = "arm,cortex-a35";
+>   			reg = <0x0 0x2>;
+>   			enable-method = "psci";
+>   			operating-points-v2 = <&cpu0_opp_table>;
+> @@ -73,7 +73,7 @@
+>   
+>   		cpu3: cpu@3 {
+>   			device_type = "cpu";
+> -			compatible = "arm,cortex-a35", "arm,armv8";
+> +			compatible = "arm,cortex-a35";
+>   			reg = <0x0 0x3>;
+>   			enable-method = "psci";
+>   			operating-points-v2 = <&cpu0_opp_table>;
+> 
