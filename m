@@ -1,71 +1,67 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: fix cpu compatible property for rk3308
-Date: Fri, 28 Feb 2020 09:48:27 +0100
-Message-ID: <20200228084827.16198-1-jbx6244@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: USB DWC2 stops responding when insert/remove cable multiple times
+Date: Fri, 28 Feb 2020 09:01:25 +0000
+Message-ID: <665fe49e-ebfa-bcb0-fcd1-ea1e9252b306@synopsys.com>
+References: <CAP9ODKprPi8N-dU8NaKwneXH-3b0ipSEDpU5mDbGntxuyhGhJw@mail.gmail.com>
+ <41a7bfe7-54b1-84eb-091f-469d971ab968@synopsys.com>
+ <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw@mail.gmail.com>
+ <ee47be28-ba9f-750f-65d2-51a722ce291d@synopsys.com>
+ <CAP9ODKqa_4NSsFMUpyFDt3ohgGBCMgbOyKaVjYfSjmcZLmmC+A@mail.gmail.com>
+ <380d765b-8867-a899-b67a-c016c09fa27b@synopsys.com>
+ <CAP9ODKqL_GN+iebL3wPX_9fEUtUVP8Ahv03yJ1R-JLDr=Cn0BA@mail.gmail.com>
+ <beddbc55-fd22-96b7-c980-e4ea207a42f5@synopsys.com>
+ <CAP9ODKq2nEHz_rbwwCv-94LSBOq0it2Kc4yhCqrLT-XxoXommg@mail.gmail.com>
+ <1d2ee918-57e4-53b2-6953-0107d7720c59@synopsys.com>
+ <CAP9ODKoS5KQrhTrUvahHEhQG-WA+bfLnP4tTFxzrQaGh1nTcZw@mail.gmail.com>
+ <CAP9ODKoRuB-nyjr1ksGU61PVMjFTMMWKwgpHQ=e7bChAu5Okhg@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAP9ODKoRuB-nyjr1ksGU61PVMjFTMMWKwgpHQ=e7bChAu5Okhg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+Content-ID: <CC6672F8B8E35B4AB64A7C8A0F3DA21E-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>, Otavio Salvador <otavio-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>
+Cc: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-A test with the command below gives for example these errors:
-
-arch/arm64/boot/dts/rockchip/rk3308-evb.dt.yaml: cpu@0: compatible:
-Additional items are not allowed ('arm,armv8' was unexpected)
-arch/arm64/boot/dts/rockchip/rk3308-evb.dt.yaml: cpu@0: compatible:
-['arm,cortex-a35', 'arm,armv8']
-is too long
-
-Fix these errors by removing the last argument of
-the cpu compatible property in rk3308.dtsi.
-
-make ARCH=arm64
-dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/arm/cpus.yaml
-
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index 116f1900e..3bd5bc860 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -40,7 +40,7 @@
- 
- 		cpu0: cpu@0 {
- 			device_type = "cpu";
--			compatible = "arm,cortex-a35", "arm,armv8";
-+			compatible = "arm,cortex-a35";
- 			reg = <0x0 0x0>;
- 			enable-method = "psci";
- 			clocks = <&cru ARMCLK>;
-@@ -53,7 +53,7 @@
- 
- 		cpu1: cpu@1 {
- 			device_type = "cpu";
--			compatible = "arm,cortex-a35", "arm,armv8";
-+			compatible = "arm,cortex-a35";
- 			reg = <0x0 0x1>;
- 			enable-method = "psci";
- 			operating-points-v2 = <&cpu0_opp_table>;
-@@ -63,7 +63,7 @@
- 
- 		cpu2: cpu@2 {
- 			device_type = "cpu";
--			compatible = "arm,cortex-a35", "arm,armv8";
-+			compatible = "arm,cortex-a35";
- 			reg = <0x0 0x2>;
- 			enable-method = "psci";
- 			operating-points-v2 = <&cpu0_opp_table>;
-@@ -73,7 +73,7 @@
- 
- 		cpu3: cpu@3 {
- 			device_type = "cpu";
--			compatible = "arm,cortex-a35", "arm,armv8";
-+			compatible = "arm,cortex-a35";
- 			reg = <0x0 0x3>;
- 			enable-method = "psci";
- 			operating-points-v2 = <&cpu0_opp_table>;
--- 
-2.11.0
+SGkgT3RhdmlvLA0KDQpPbiAyLzIxLzIwMjAgNjowNyBQTSwgT3RhdmlvIFNhbHZhZG9yIHdyb3Rl
+Og0KPiBPbiBGcmksIEZlYiAyMSwgMjAyMCBhdCAxMTowNiBBTSBPdGF2aW8gU2FsdmFkb3INCj4g
+PG90YXZpb0Bvc3N5c3RlbXMuY29tLmJyPiB3cm90ZToNCj4+IE9uIEZyaSwgRmViIDIxLCAyMDIw
+IGF0IDM6NTIgQU0gTWluYXMgSGFydXR5dW55YW4NCj4+IDxNaW5hcy5IYXJ1dHl1bnlhbkBzeW5v
+cHN5cy5jb20+IHdyb3RlOg0KPj4+IE9uIDIvMjAvMjAyMCA1OjE2IFBNLCBPdGF2aW8gU2FsdmFk
+b3Igd3JvdGU6DQo+Pj4+IEhlbGxvIE1pbmFzLA0KPj4+Pg0KPj4+PiBUaGFua3MgZm9yIGFsbCB5
+b3VyIGhlbHAgb24gdGhpcywgLi4uDQo+Pj4+DQo+Pj4+IE9uIFRodSwgRmViIDIwLCAyMDIwIGF0
+IDM6NTkgQU0gTWluYXMgSGFydXR5dW55YW4NCj4+Pj4gPE1pbmFzLkhhcnV0eXVueWFuQHN5bm9w
+c3lzLmNvbT4gd3JvdGU6DQo+Pj4+Pg0KPj4+Pj4gT24gMi8xOS8yMDIwIDc6MTAgUE0sIE90YXZp
+byBTYWx2YWRvciB3cm90ZToNCj4+Pj4gLi4uDQo+Pj4+Pj4gV2hhdCBzZXF1ZW5jZSBkbyB5b3Ug
+d2FudCB1cyB0byBkbz8NCj4+Pj4+DQo+Pj4gUGxlYXNlIHByb3ZpZGUgZHdjMiBkZWJ1ZyBsb2cg
+d2hlbiBzdG9wIHdvcmtpbmcgd2l0aCBnX3NlcmlhbCBleGNlcHRpb24NCj4+PiBkdW1wIGluc2lk
+ZS4NCj4+PiBBbHNvIHByb3ZpZGUgZHdjMiBsb2cgd2hlbiBpdCdzIHdvcmsgd2l0aG91dCBpc3N1
+ZS4NCj4+DQo+PiBBdHRhY2hlZC4NCj4gDQpSZXZpZXdlZCBhbGwgbG9ncy4gTm90IGZvdW5kIGFu
+eSBkd2MyIHJlbGF0ZWQgaXNzdWUuIE5vdCBhYmxlIHRvIA0KcmVwcm9kdWNlIG9uIG15IHNldHVw
+LiBNeSBsb2cgb24gcm1tb2QgZ19zZXJpYWw6DQoNCls2ODc4NC44MTc3NzNdIGdfc2VyaWFsIGdh
+ZGdldDogcmVzZXQgY29uZmlnDQpbNjg3ODQuODE3Nzc1XSBnX3NlcmlhbCBnYWRnZXQ6IGFjbSB0
+dHlHUzAgZGVhY3RpdmF0ZWQNCls2ODc4NC44MTc3NzldIGR3YzIgZHdjMi4xLmF1dG86IGR3YzJf
+aHNvdGdfZXBfZGlzYWJsZShlcCAwMDAwMDAwMDVlOWFlNDIwKQ0KWzY4Nzg0LjgxNzc4NF0gZHdj
+MiBkd2MyLjEuYXV0bzogZHdjMl9oc290Z19lcF9kaXNhYmxlOiBEeEVQQ1RMPTB4MDgwODAyMDAN
+Cls2ODc4NC44MTc3OTFdIGR3YzIgZHdjMi4xLmF1dG86IGR3YzJfaHNvdGdfZXBfZGlzYWJsZShl
+cCAwMDAwMDAwMGU2NzMwZjJiKQ0KWzY4Nzg0LjgxNzc5Nl0gZHdjMiBkd2MyLjEuYXV0bzogZHdj
+Ml9oc290Z19lcF9kaXNhYmxlOiBEeEVQQ1RMPTB4MDg4ODAyMDANCls2ODc4NC44MTc4MDVdIGR3
+YzIgZHdjMi4xLmF1dG86IGR3YzJfaHNvdGdfZXBfZGlzYWJsZShlcCAwMDAwMDAwMGNlZjA1ZTli
+KQ0KWzY4Nzg0LjgxNzgwOV0gZHdjMiBkd2MyLjEuYXV0bzogZHdjMl9oc290Z19lcF9kaXNhYmxl
+OiBEeEVQQ1RMPTB4MDg0YzAwMGENCls2ODc4NC44MTc4MjBdIGdfc2VyaWFsIGdhZGdldDogYWNt
+IHR0eUdTMCBkZWFjdGl2YXRlZA0KWzY4Nzg0LjgxNzg5NF0gdXNiIDUtNDogVVNCIGRpc2Nvbm5l
+Y3QsIGRldmljZSBudW1iZXIgNg0KWzY4Nzg0LjgxNzk3NV0gZHdjMiBkd2MyLjEuYXV0bzogZHdj
+Ml9oc290Z19lcF9kaXNhYmxlKGVwIDAwMDAwMDAwZTY3MzBmMmIpDQpbNjg3ODQuODE3OTgwXSBk
+d2MyIGR3YzIuMS5hdXRvOiBkd2MyX2hzb3RnX2VwX2Rpc2FibGU6IER4RVBDVEw9MHgwODhhMDIw
+MA0KDQpQYXkgYXR0ZW50aW9uIGdfc2VyaWFsIHR3aWNlIHBlcmZvcm1pbmcgdHR5U0cwIGRlYWN0
+aXZhdGlvbi4NCkluIG15IHNldHVwIHNlY29uZCBkZWFjdGl2YXRpb24gcGFzc2VkIE9rLCBidXQg
+aW4geW91ciBjYXNlIGV4Y2VwdGlvbiANCmJhY2sgdHJhY2UgcHJpbnQgb3V0IHdpdGggTlVMTCBw
+b2ludGVyIGRlLXJlZmVyZW5jZSBvbiBzcGluX2xvY2tfaXJxLiANCkNvdWxkIHlvdSBwbGVhc2Ug
+YWRkIGRlYnVnIHByaW50IGJlZm9yZSBzcGluX2xvY2tfaXJxKCkgaW4gZnVuY3Rpb24gDQpnc19j
+bG9zZSgpIGluIGZpbGUgdV9zZXJpYWwuYyB0byBjaGVjayB0dHksIHR0eS0+ZHJpdmVyX2RhdGEu
+IEFyZSB0aGVzZSANCnZhcnMgTlVMTCBvciBuby4NCkp1c3Qgcm1tb2QgZ19zZXJpYWwgY2FzZSBm
+dWxseSBlbm91Z2guDQoNClRoYW5rcywNCk1pbmFzDQoNCj4gRm9yZ290IHRvIGF0dGFjaCB0aGUg
+ZmlsZXMuDQo+IA0K
