@@ -1,63 +1,68 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: Describe RK3328 GPIO_MUTE
- users
-Date: Fri, 28 Feb 2020 12:48:50 +0000
-Message-ID: <59fe8a7d-22ab-6098-5266-4fdf4bf41adb@arm.com>
-References: <cover.1581376744.git.robin.murphy@arm.com>
- <53637c0359ad9473dc1391a8428ba21017ec467e.1581376744.git.robin.murphy@arm.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH 1/4] dt-bindings: arm: fix Rockchip Kylin board bindings
+Date: Fri, 28 Feb 2020 13:50:11 +0100
+Message-ID: <5d47cf5f-9ac4-cff4-340b-a2518a508738@gmail.com>
+References: <20200228061436.13506-1-jbx6244@gmail.com>
+ <73b41bd1-01e9-6af8-afc8-b1a96614d026@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <53637c0359ad9473dc1391a8428ba21017ec467e.1581376744.git.robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Content-Language: en-GB
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <73b41bd1-01e9-6af8-afc8-b1a96614d026@arm.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>, heiko@sntech.de
+Cc: devicetree@vger.kernel.org, robh+dt@kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
-
-On 18/02/2020 9:32 pm, Robin Murphy wrote:
-> Add explicit properties to describe existing boards' GPIO_MUTE usage
-> for the analog codec.
-
-Are you happy to pick this up now that the driver patches are queued?
-
-Thanks,
-Robin.
-
-> Signed-off-by: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-> ---
+On 2/28/20 1:35 PM, Robin Murphy wrote:
+> On 28/02/2020 6:14 am, Johan Jonker wrote:
+>> A test with the command below gives this error:
+>>
+>> arch/arm/boot/dts/rk3036-kylin.dt.yaml: /: compatible:
+>> ['rockchip,rk3036-kylin', 'rockchip,rk3036']
+>> is not valid under any of the given schemas
+>>
+>> Fix this error by changing 'rockchip,kylin-rk3036' to
+>> 'rockchip,rk3036-kylin' in rockchip.yaml.
 > 
-> v2: no change
+
+
+> Although I can guess, it might be worth a note to explain why it's the
+> binding rather than the DTS that gets changed here.
+
+Hi Robin,
+
+My guess is that given a look at the other boards the processor name
+comes first and then the board name, so I changed it in rockchip.yaml.
+But maybe Heiko can better explain what the naming consensus in the past
+was.
+
+Kind regards,
+
+Johan
+
 > 
->   arch/arm64/boot/dts/rockchip/rk3328-a1.dts     | 1 +
->   arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 1 +
->   2 files changed, 2 insertions(+)
+> Robin.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-> index 16f1656d5203..797e90a3ac92 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-a1.dts
-> @@ -60,6 +60,7 @@
->   };
->   
->   &codec {
-> +	mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
->   	status = "okay";
->   };
->   
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> index 62936b432f9a..bf3e546f5266 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-> @@ -104,6 +104,7 @@
->   };
->   
->   &codec {
-> +	mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
->   	status = "okay";
->   
->   	port@0 {
-> 
+>> make ARCH=arm dtbs_check
+>> DT_SCHEMA_FILES=Documentation/devicetree/bindings/arm/rockchip.yaml
+>>
+>> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+>> ---
+>>   Documentation/devicetree/bindings/arm/rockchip.yaml | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml
+>> b/Documentation/devicetree/bindings/arm/rockchip.yaml
+>> index 874b0eaa2..203158038 100644
+>> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+>> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+>> @@ -443,7 +443,7 @@ properties:
+>>           - description: Rockchip Kylin
+>>           items:
+>> -          - const: rockchip,kylin-rk3036
+>> +          - const: rockchip,rk3036-kylin
+>>             - const: rockchip,rk3036
+>>           - description: Rockchip PX3 Evaluation board
+>>
