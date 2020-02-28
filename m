@@ -1,67 +1,143 @@
-From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
-Subject: Re: USB DWC2 stops responding when insert/remove cable multiple times
-Date: Fri, 28 Feb 2020 09:01:25 +0000
-Message-ID: <665fe49e-ebfa-bcb0-fcd1-ea1e9252b306@synopsys.com>
-References: <CAP9ODKprPi8N-dU8NaKwneXH-3b0ipSEDpU5mDbGntxuyhGhJw@mail.gmail.com>
- <41a7bfe7-54b1-84eb-091f-469d971ab968@synopsys.com>
- <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw@mail.gmail.com>
- <ee47be28-ba9f-750f-65d2-51a722ce291d@synopsys.com>
- <CAP9ODKqa_4NSsFMUpyFDt3ohgGBCMgbOyKaVjYfSjmcZLmmC+A@mail.gmail.com>
- <380d765b-8867-a899-b67a-c016c09fa27b@synopsys.com>
- <CAP9ODKqL_GN+iebL3wPX_9fEUtUVP8Ahv03yJ1R-JLDr=Cn0BA@mail.gmail.com>
- <beddbc55-fd22-96b7-c980-e4ea207a42f5@synopsys.com>
- <CAP9ODKq2nEHz_rbwwCv-94LSBOq0it2Kc4yhCqrLT-XxoXommg@mail.gmail.com>
- <1d2ee918-57e4-53b2-6953-0107d7720c59@synopsys.com>
- <CAP9ODKoS5KQrhTrUvahHEhQG-WA+bfLnP4tTFxzrQaGh1nTcZw@mail.gmail.com>
- <CAP9ODKoRuB-nyjr1ksGU61PVMjFTMMWKwgpHQ=e7bChAu5Okhg@mail.gmail.com>
+From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Subject: [PATCH 1/3] mtd: rawnand: rockchip: NFC drivers for RK3308,
+ RK3188 and others
+Date: Fri, 28 Feb 2020 18:01:15 +0800
+Message-ID: <1582884076-27615-3-git-send-email-yifeng.zhao@rock-chips.com>
+References: <1582884076-27615-1-git-send-email-yifeng.zhao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAP9ODKoRuB-nyjr1ksGU61PVMjFTMMWKwgpHQ=e7bChAu5Okhg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: en-US
-Content-ID: <CC6672F8B8E35B4AB64A7C8A0F3DA21E-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
-Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>, Otavio Salvador <otavio-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>
-Cc: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <1582884076-27615-1-git-send-email-yifeng.zhao@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
+List-Post: <mailto:linux-mtd@lists.infradead.org>
+List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
+ <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
+Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=m.gmane-mx.org@lists.infradead.org
+To: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com, robh+dt@kernel.org
+Cc: devicetree@vger.kernel.org, Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-mtd@lists.infradead.org, heiko@sntech.de, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgT3RhdmlvLA0KDQpPbiAyLzIxLzIwMjAgNjowNyBQTSwgT3RhdmlvIFNhbHZhZG9yIHdyb3Rl
-Og0KPiBPbiBGcmksIEZlYiAyMSwgMjAyMCBhdCAxMTowNiBBTSBPdGF2aW8gU2FsdmFkb3INCj4g
-PG90YXZpb0Bvc3N5c3RlbXMuY29tLmJyPiB3cm90ZToNCj4+IE9uIEZyaSwgRmViIDIxLCAyMDIw
-IGF0IDM6NTIgQU0gTWluYXMgSGFydXR5dW55YW4NCj4+IDxNaW5hcy5IYXJ1dHl1bnlhbkBzeW5v
-cHN5cy5jb20+IHdyb3RlOg0KPj4+IE9uIDIvMjAvMjAyMCA1OjE2IFBNLCBPdGF2aW8gU2FsdmFk
-b3Igd3JvdGU6DQo+Pj4+IEhlbGxvIE1pbmFzLA0KPj4+Pg0KPj4+PiBUaGFua3MgZm9yIGFsbCB5
-b3VyIGhlbHAgb24gdGhpcywgLi4uDQo+Pj4+DQo+Pj4+IE9uIFRodSwgRmViIDIwLCAyMDIwIGF0
-IDM6NTkgQU0gTWluYXMgSGFydXR5dW55YW4NCj4+Pj4gPE1pbmFzLkhhcnV0eXVueWFuQHN5bm9w
-c3lzLmNvbT4gd3JvdGU6DQo+Pj4+Pg0KPj4+Pj4gT24gMi8xOS8yMDIwIDc6MTAgUE0sIE90YXZp
-byBTYWx2YWRvciB3cm90ZToNCj4+Pj4gLi4uDQo+Pj4+Pj4gV2hhdCBzZXF1ZW5jZSBkbyB5b3Ug
-d2FudCB1cyB0byBkbz8NCj4+Pj4+DQo+Pj4gUGxlYXNlIHByb3ZpZGUgZHdjMiBkZWJ1ZyBsb2cg
-d2hlbiBzdG9wIHdvcmtpbmcgd2l0aCBnX3NlcmlhbCBleGNlcHRpb24NCj4+PiBkdW1wIGluc2lk
-ZS4NCj4+PiBBbHNvIHByb3ZpZGUgZHdjMiBsb2cgd2hlbiBpdCdzIHdvcmsgd2l0aG91dCBpc3N1
-ZS4NCj4+DQo+PiBBdHRhY2hlZC4NCj4gDQpSZXZpZXdlZCBhbGwgbG9ncy4gTm90IGZvdW5kIGFu
-eSBkd2MyIHJlbGF0ZWQgaXNzdWUuIE5vdCBhYmxlIHRvIA0KcmVwcm9kdWNlIG9uIG15IHNldHVw
-LiBNeSBsb2cgb24gcm1tb2QgZ19zZXJpYWw6DQoNCls2ODc4NC44MTc3NzNdIGdfc2VyaWFsIGdh
-ZGdldDogcmVzZXQgY29uZmlnDQpbNjg3ODQuODE3Nzc1XSBnX3NlcmlhbCBnYWRnZXQ6IGFjbSB0
-dHlHUzAgZGVhY3RpdmF0ZWQNCls2ODc4NC44MTc3NzldIGR3YzIgZHdjMi4xLmF1dG86IGR3YzJf
-aHNvdGdfZXBfZGlzYWJsZShlcCAwMDAwMDAwMDVlOWFlNDIwKQ0KWzY4Nzg0LjgxNzc4NF0gZHdj
-MiBkd2MyLjEuYXV0bzogZHdjMl9oc290Z19lcF9kaXNhYmxlOiBEeEVQQ1RMPTB4MDgwODAyMDAN
-Cls2ODc4NC44MTc3OTFdIGR3YzIgZHdjMi4xLmF1dG86IGR3YzJfaHNvdGdfZXBfZGlzYWJsZShl
-cCAwMDAwMDAwMGU2NzMwZjJiKQ0KWzY4Nzg0LjgxNzc5Nl0gZHdjMiBkd2MyLjEuYXV0bzogZHdj
-Ml9oc290Z19lcF9kaXNhYmxlOiBEeEVQQ1RMPTB4MDg4ODAyMDANCls2ODc4NC44MTc4MDVdIGR3
-YzIgZHdjMi4xLmF1dG86IGR3YzJfaHNvdGdfZXBfZGlzYWJsZShlcCAwMDAwMDAwMGNlZjA1ZTli
-KQ0KWzY4Nzg0LjgxNzgwOV0gZHdjMiBkd2MyLjEuYXV0bzogZHdjMl9oc290Z19lcF9kaXNhYmxl
-OiBEeEVQQ1RMPTB4MDg0YzAwMGENCls2ODc4NC44MTc4MjBdIGdfc2VyaWFsIGdhZGdldDogYWNt
-IHR0eUdTMCBkZWFjdGl2YXRlZA0KWzY4Nzg0LjgxNzg5NF0gdXNiIDUtNDogVVNCIGRpc2Nvbm5l
-Y3QsIGRldmljZSBudW1iZXIgNg0KWzY4Nzg0LjgxNzk3NV0gZHdjMiBkd2MyLjEuYXV0bzogZHdj
-Ml9oc290Z19lcF9kaXNhYmxlKGVwIDAwMDAwMDAwZTY3MzBmMmIpDQpbNjg3ODQuODE3OTgwXSBk
-d2MyIGR3YzIuMS5hdXRvOiBkd2MyX2hzb3RnX2VwX2Rpc2FibGU6IER4RVBDVEw9MHgwODhhMDIw
-MA0KDQpQYXkgYXR0ZW50aW9uIGdfc2VyaWFsIHR3aWNlIHBlcmZvcm1pbmcgdHR5U0cwIGRlYWN0
-aXZhdGlvbi4NCkluIG15IHNldHVwIHNlY29uZCBkZWFjdGl2YXRpb24gcGFzc2VkIE9rLCBidXQg
-aW4geW91ciBjYXNlIGV4Y2VwdGlvbiANCmJhY2sgdHJhY2UgcHJpbnQgb3V0IHdpdGggTlVMTCBw
-b2ludGVyIGRlLXJlZmVyZW5jZSBvbiBzcGluX2xvY2tfaXJxLiANCkNvdWxkIHlvdSBwbGVhc2Ug
-YWRkIGRlYnVnIHByaW50IGJlZm9yZSBzcGluX2xvY2tfaXJxKCkgaW4gZnVuY3Rpb24gDQpnc19j
-bG9zZSgpIGluIGZpbGUgdV9zZXJpYWwuYyB0byBjaGVjayB0dHksIHR0eS0+ZHJpdmVyX2RhdGEu
-IEFyZSB0aGVzZSANCnZhcnMgTlVMTCBvciBuby4NCkp1c3Qgcm1tb2QgZ19zZXJpYWwgY2FzZSBm
-dWxseSBlbm91Z2guDQoNClRoYW5rcywNCk1pbmFzDQoNCj4gRm9yZ290IHRvIGF0dGFjaCB0aGUg
-ZmlsZXMuDQo+IA0K
+Documentation support for Rockchip NAND controllers
+
+Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+---
+
+ .../bindings/mtd/rockchip,nand.yaml           | 95 +++++++++++++++++++
+ 1 file changed, 95 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
+
+diff --git a/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml b/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
+new file mode 100644
+index 000000000000..9a81f682ac01
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
+@@ -0,0 +1,95 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mtd/rockchip,nand.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip SoCs NAND FLASH Controller (NFC) Device Tree Bindings
++
++allOf:
++  - $ref: "nand-controller.yaml"
++
++maintainers:
++  - Yifeng Zhao <yifeng.zhao@rock-chips.com>
++
++properties:
++  "#address-cells": true
++  "#size-cells": true
++
++  compatible:
++    const: rockchip,nfc
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Module Clock
++      - description: Bus Clock
++
++  clock-names:
++    items:
++      - const: clk_nfc
++      - const: clk_ahb
++
++  clock-rates:
++      maximum: 150000000
++
++  pinctrl-names: true
++
++patternProperties:
++  "^pinctrl-[0-9]+$": true
++
++  "^nand@[a-f0-9]$":
++    type: object
++    properties:
++      reg:
++        minimum: 0
++        maximum: 3
++
++      nand-ecc-step-size:
++        const: 1024
++
++      nand-ecc-strength:
++        enum: [16, 24 , 40, 60, 70]
++
++      nand-bus-width:
++        const: 8
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/rk3308-cru.h>
++    nfc: nand-controller@ff4b0000 {
++      compatible = "rockchip,nfc";
++      reg = <0x0 0xff4b0000 0x0 0x4000>;
++      interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru SCLK_NANDC>, <&cru HCLK_NANDC>;
++      clock-names = "clk_nfc", "clk_ahb";
++      clock-rates = <150000000>;
++      pinctrl-names = "default";
++      pinctrl-0 = <&flash_csn0 &flash_rdy &flash_ale &flash_cle
++                  &flash_wrn &flash_rdn &flash_bus8>;
++
++      #address-cells = <1>;
++      #size-cells = <0>;
++      nand@0 {
++        reg = <0>;
++        nand-ecc-mode = "hw";
++        nand-ecc-strength = <16>;
++        nand-ecc-step-size = <1024>;
++        nand-bus-width = <8>;
++      };
++    };
++
++...
+-- 
+2.17.1
+
+
+
+
+______________________________________________________
+Linux MTD discussion mailing list
+http://lists.infradead.org/mailman/listinfo/linux-mtd/
