@@ -1,43 +1,81 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add initial support for Pinebook Pro
-Date: Fri, 28 Feb 2020 16:15:25 +0100
-Message-ID: <3144691.gaQQKPV42P@diego>
-References: <20200227180630.166982-1-t.schramm@manjaro.org> <12370413.gKdrHkWbHd@diego> <37190f26-48aa-dcad-d4b1-8a534ba1360e@manjaro.org>
+From: Lad Prabhakar <prabhakar.csengg@gmail.com>
+Subject: [PATCH v5 0/7] Add support for PCIe controller to work in endpoint mode on R-Car SoCs
+Date: Fri, 28 Feb 2020 15:41:15 +0000
+Message-ID: <20200228154122.14164-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <37190f26-48aa-dcad-d4b1-8a534ba1360e-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>, Alexis Ballier <aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nick Xie <nick-XW3xCAIBE2TQT0dZR+AlfA@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Vivek Unune <npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-pci-owner@vger.kernel.org>
+Sender: linux-pci-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Andrew Murray <andrew.murray@arm.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tobias,
+This patch series adds support for PCIe controller on rcar to work in
+endpoint mode, this also extends the epf framework to handle base region
+for mapping PCI address locally.
 
-Am Freitag, 28. Februar 2020, 15:57:10 CET schrieb Tobias Schramm:
-> thanks for the review. I'll implement the changes and send a v2.
-> 
-> >> +	 * of wakeup sources without disabling the whole key
-> > Also can you explain the problem a bit? If there is a deficit in the input
-> > subsystem regarding wakeup events, dt is normally not the place to work
-> > around things [we're supposed to be OS independent]
-> 
-> The issue is that some users wanted to be able to control the wakeup
-> functionality of the keys separately via sysfs. That does not seem to be
-> possible when combining both keys into one gpio-keys node. A more
-> detailed explanation of the issue can be found at [1].
+Note:
+The cadence/rockchip/designware endpoint drivers are build tested only.
 
-ok ... but that is really strange, because looking at gpio-keys.c I see
-it checking the individual button wakeup-property before setting
-the irq-wake in gpio_keys_enable_wakeup() .
+Changes for v5:
+1] Rebased the patches on next branch of https://git.kernel.org/pub/scm/
+   linux/kernel/git/helgaas/pci.git
+2] Fixed review comments reported by Kishon while fetching the matching
+   window in function pci_epc_get_matching_window()
+3] Fixed review comments reported by Bjorn
+   a] Split patch up first patch so that its easier to review and incremental
+   b] Fixed typos
+4] Included Reviewed tag from Rob for the dt-binding patch
+5] Fixed issue reported by Nathan for assigning variable to itself
 
-Ah, but I guess manually disabling/enabling wakeup via sysfs only
-works for the whole device and all wakeup buttons.
+Changes for v4:
+1] Fixed dtb_check error reported by Rob
+2] Fixed review comments reported by Kishon
+   a] Dropped pci_epc_find_best_fit_window()
+   b] Fixed initializing mem ptr in __pci_epc_mem_init()
+   c] Dropped map_size from pci_epc_mem_window structure
 
-In general this sounds more like a gpio-keys deficit, but in the end
-we can keep the separate gpio-key nodes here, they don't violate any
-dt-bindings ;-) .
+Changes for v3:
+1] Fixed review comments from Bjorn and Kishon.
+3] Converted to DT schema
 
+Changes for v2:
+1] Fixed review comments from Biju for dt-bindings to include an example
+   for a tested platform.
+2] Fixed review comments from Kishon to extend the features of outbound
+   regions in epf framework.
+3] Added support to parse outbound-ranges in OF.
 
-Heiko
+Lad Prabhakar (7):
+  PCI: rcar: Rename pcie-rcar.c to pcie-rcar-host.c
+  PCI: rcar: Move shareable code to a common file
+  PCI: rcar: Fix calculating mask for PCIEPAMR register
+  PCI: endpoint: Add support to handle multiple base for mapping
+    outbound memory
+  dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
+    controller
+  PCI: rcar: Add support for rcar PCIe controller in endpoint mode
+  misc: pci_endpoint_test: Add Device ID for RZ/G2E PCIe controller
+
+ .../devicetree/bindings/pci/rcar-pci-ep.yaml       |   76 ++
+ arch/arm64/configs/defconfig                       |    2 +-
+ drivers/misc/pci_endpoint_test.c                   |    3 +
+ drivers/pci/controller/Kconfig                     |   15 +-
+ drivers/pci/controller/Makefile                    |    3 +-
+ drivers/pci/controller/cadence/pcie-cadence-ep.c   |    7 +-
+ drivers/pci/controller/dwc/pcie-designware-ep.c    |   29 +-
+ drivers/pci/controller/pcie-rcar-ep.c              |  490 ++++++++
+ drivers/pci/controller/pcie-rcar-host.c            | 1053 +++++++++++++++++
+ drivers/pci/controller/pcie-rcar.c                 | 1229 +-------------------
+ drivers/pci/controller/pcie-rcar.h                 |  129 ++
+ drivers/pci/controller/pcie-rockchip-ep.c          |    7 +-
+ drivers/pci/endpoint/pci-epc-mem.c                 |  167 ++-
+ include/linux/pci-epc.h                            |   39 +-
+ 14 files changed, 1985 insertions(+), 1264 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
+ create mode 100644 drivers/pci/controller/pcie-rcar-ep.c
+ create mode 100644 drivers/pci/controller/pcie-rcar-host.c
+ create mode 100644 drivers/pci/controller/pcie-rcar.h
+
+-- 
+2.7.4
