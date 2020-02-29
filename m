@@ -1,24 +1,38 @@
 From: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add initial support for
- Pinebook Pro
-Date: Sat, 29 Feb 2020 15:05:35 +0100
-Message-ID: <8b3a8591-4b2c-fc6b-1693-b31e28e10817@manjaro.org>
-References: <20200228203806.346299-3-t.schramm@manjaro.org>
- <68b8b201-d77a-7f91-fccd-8fec7eb15da5@gmail.com>
+Subject: [PATCH v3 0/2] Add support for the pine64 Pinebook Pro
+Date: Sat, 29 Feb 2020 15:48:15 +0100
+Message-ID: <20200229144817.355678-1-t.schramm@manjaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <68b8b201-d77a-7f91-fccd-8fec7eb15da5-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US-large
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org
-Cc: aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org, anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, nick-XW3xCAIBE2TQT0dZR+AlfA@public.gmane.org, npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>, Alexis Ballier <aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nick Xie <nick-XW3xCAIBE2TQT0dZR+AlfA@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Vivek Unune <npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Johan,
+This patchset adds an initial dts and compatible string for the rk3399
+based Pinebook Pro 14" laptop.
 
-thanks for the review. I'll include your fixes in v3.
+This is version 3 of the original patchset with additional fixes proposed
+by Johan.
 
+Contrary to the Rockchip BSP dts proposed mid January this dts has a
+power tree reflecting the actual schematic of the device and features
+full display, audio and WiFi/Bluetooth support.
 
-Tobias
+Changelog:
+ v2: Incorporate review by Heiko
+ v3: Add fixes suggested by Johan
+
+Tobias Schramm (2):
+  dt-bindings: Add doc for pine64 Pinebook Pro
+  arm64: dts: rockchip: Add initial support for Pinebook Pro
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts | 1105 +++++++++++++++++
+ 3 files changed, 1111 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+
+-- 
+2.24.1
