@@ -1,36 +1,41 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix cpu compatible property for rk3308
-Date: Sun, 01 Mar 2020 00:43:46 +0100
-Message-ID: <2296994.saQPy0AWz7@phil>
-References: <20200228084827.16198-1-jbx6244@gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] ARM: dts: remove g-use-dma from rockchip usb nodes
+Date: Sun, 01 Mar 2020 00:47:07 +0100
+Message-ID: <8908074.NjHMO83URx@phil>
+References: <20200228113922.20266-1-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200228084827.16198-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200228113922.20266-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 28. Februar 2020, 09:48:27 CET schrieb Johan Jonker:
-> A test with the command below gives for example these errors:
+Am Freitag, 28. Februar 2020, 12:39:21 CET schrieb Johan Jonker:
+> A test with the command below gives these errors:
 > 
-> arch/arm64/boot/dts/rockchip/rk3308-evb.dt.yaml: cpu@0: compatible:
-> Additional items are not allowed ('arm,armv8' was unexpected)
-> arch/arm64/boot/dts/rockchip/rk3308-evb.dt.yaml: cpu@0: compatible:
-> ['arm,cortex-a35', 'arm,armv8']
-> is too long
+> arch/arm/boot/dts/rv1108-elgin-r1.dt.yaml: usb@30180000:
+> 'g-use-dma' does not match any of the regexes: 'pinctrl-[0-9]+'
+> arch/arm/boot/dts/rv1108-evb.dt.yaml: usb@30180000:
+> 'g-use-dma' does not match any of the regexes: 'pinctrl-[0-9]+'
+> arch/arm/boot/dts/rk3228-evb.dt.yaml: usb@30040000:
+> 'g-use-dma' does not match any of the regexes: 'pinctrl-[0-9]+'
+> arch/arm/boot/dts/rk3229-evb.dt.yaml: usb@30040000:
+> 'g-use-dma' does not match any of the regexes: 'pinctrl-[0-9]+'
+> arch/arm/boot/dts/rk3229-xms6.dt.yaml: usb@30040000:
+> 'g-use-dma' does not match any of the regexes: 'pinctrl-[0-9]+'
 > 
-> Fix these errors by removing the last argument of
-> the cpu compatible property in rk3308.dtsi.
+> 'g-use-dma' is not a valid option in dwc2.yaml, so remove it
+> from all Rockchip dtsi files.
 > 
-> make ARCH=arm64
-> dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/arm/cpus.yaml
+> make ARCH=arm dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/usb/dwc2.yaml
 > 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-applied for 5.7 with Robins Rb
+applied both patches for 5.7
 
 Thanks
 Heiko
