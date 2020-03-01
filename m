@@ -1,53 +1,58 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/4] dt-bindings: arm: fix Rockchip Kylin board bindings
-Date: Sun, 01 Mar 2020 00:55:19 +0100
-Message-ID: <21505688.DxWBmkEV5j@phil>
-References: <20200228061436.13506-1-jbx6244@gmail.com> <73b41bd1-01e9-6af8-afc8-b1a96614d026@arm.com> <5d47cf5f-9ac4-cff4-340b-a2518a508738@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH 3/4] dt-bindings: arm: fix Rockchip rk3399-evb bindings
+Date: Sun, 01 Mar 2020 01:02:06 +0100
+Message-ID: <3089122.gegXmbq47i@phil>
+References: <20200228061436.13506-1-jbx6244@gmail.com> <78b8b53f-2e2a-3804-41fb-bb2610947ca2@arm.com> <229c3511-d99d-8bac-6241-0088c5fc13ef@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <5d47cf5f-9ac4-cff4-340b-a2518a508738-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <229c3511-d99d-8bac-6241-0088c5fc13ef@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>, dianders@chromium.org
+Cc: Robin Murphy <robin.murphy@arm.com>, devicetree@vger.kernel.org, robh+dt@kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Johan,
 
-Am Freitag, 28. Februar 2020, 13:50:11 CET schrieb Johan Jonker:
-> On 2/28/20 1:35 PM, Robin Murphy wrote:
-> > On 28/02/2020 6:14 am, Johan Jonker wrote:
-> >> A test with the command below gives this error:
-> >>
-> >> arch/arm/boot/dts/rk3036-kylin.dt.yaml: /: compatible:
-> >> ['rockchip,rk3036-kylin', 'rockchip,rk3036']
-> >> is not valid under any of the given schemas
-> >>
-> >> Fix this error by changing 'rockchip,kylin-rk3036' to
-> >> 'rockchip,rk3036-kylin' in rockchip.yaml.
-> > 
-> 
-> 
-> > Although I can guess, it might be worth a note to explain why it's the
-> > binding rather than the DTS that gets changed here.
-> 
+Am Freitag, 28. Februar 2020, 14:28:36 CET schrieb Johan Jonker:
 > Hi Robin,
 > 
-> My guess is that given a look at the other boards the processor name
-> comes first and then the board name, so I changed it in rockchip.yaml.
-> But maybe Heiko can better explain what the naming consensus in the past
-> was.
+> When I look at the review process of rk3399-evb.dts
+> it is mentioned here:
+> 
+> https://lore.kernel.org/patchwork/patch/672327/
+> 
+> >> +	model = "Rockchip RK3399 Evaluation Board";
+> >> +	compatible = "rockchip,rk3399-evb", "rockchip,rk3399",
+> >> +		     "google,rk3399evb-rev2", google,rk3399evb-rev1",
+> >> +		     "google,rk3399evb-rev0" ;
+> > 
+> > can you check against which compatibles that coreboot really matches?
+> > 
+> > As we said that the evb changed between rev1 and rev2, I would expect the 
+> > compatible to be something like
+> > 
+> > 	compatible = "rockchip,rk3399-evb",  "google,rk3399evb-rev2", 
+> > 			"rockchip,rk3399";
+> > 
+> > leaving out the rev1 and rev0
+> 
+> The consensus in version 4 ends in what is shown in the dts file, so I
+> changed it in rockchip.yaml. Things from the past maybe can better be
+> explained by Heiko. Please advise if this patch needs to change and in
+> what file.
 
+Just get rid of the "google,rk3399evb-rev2" from the .dts please :-) .
 
-I think what Robin meant was that there should be an explanation in the
-commit message on why you change the binding and not the board.
+(1)  "rockchip,rk3399-evb", "rockchip,rk3399", "google,rk3399evb-rev2";
+    is just wrong for the reasons Robin explained, I guess that slipped
+    through review at the time.
+(2) "google,rk3399evb-rev2" was a specific variant for Google I'm pretty
+    sure they'll have scraped all these boards directly after they had the
+    first actual rk3399-gru development devices
 
-Normally the dt-binding is the authoritative part, so boards should follow
-the binding, but in the kylin-case the compatible from the .dts is used fr
-years in the field now, so you're correct to fix the binding, as otherwise
-we would break old users.
+So I'm pretty sure the only rk3399-evbs in existence are the general ones.
 
-So just add a paragraph to the commit message with the above ;-)
 
 Heiko
