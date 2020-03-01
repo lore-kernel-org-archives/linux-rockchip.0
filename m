@@ -1,30 +1,34 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] ARM: dts: rockchip: Fix vcc10_lcd name and voltage for rk3288-vyasa
-Date: Sun, 01 Mar 2020 01:37:57 +0100
-Message-ID: <3357418.yJKWReClb3@phil>
-References: <20200123134641.30720-1-jagan@amarulasolutions.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] ARM: rockchip: fix spelling mistake "to" -> "too"
+Date: Sun, 01 Mar 2020 01:38:03 +0100
+Message-ID: <1720649.X7Ob58gyZQ@phil>
+References: <20200123004807.2833556-1-colin.king@canonical.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200123134641.30720-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <20200123004807.2833556-1-colin.king@canonical.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Colin King <colin.king@canonical.com>
+Cc: linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org, Russell King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 23. Januar 2020, 14:46:39 CET schrieb Jagan Teki:
-> According to hardware schematics of Vyasa RK3288 the
-> actual name used for vcc10_lcd is vdd10_lcd.
+Am Donnerstag, 23. Januar 2020, 01:48:07 CET schrieb Colin King:
+> From: Colin Ian King <colin.king@canonical.com>
 > 
-> regulator suspend voltage can rail upto 1.0V not 1.8V.
+> There is a spelling mistake in a pr_err message. Fix it.
 > 
-> Fix the name and suspend voltage for vcc10_lcd regulator.
-> 
-> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
 
-applied all 3 for 5.7
-[added a missing blank after the regulator in patch3]
+applied for 5.7
 
 Thanks
 Heiko
