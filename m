@@ -1,63 +1,37 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH 2/2] dt-bindings: usb: dwc2: add compatible property for rk3368 usb
-Date: Mon,  2 Mar 2020 12:58:12 +0100
-Message-ID: <20200302115812.7207-2-jbx6244@gmail.com>
-References: <20200302115812.7207-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200302115812.7207-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, gregkh@linuxfoundation.org, linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Peter Robinson <pbrobinson@gmail.com>
+Subject: Re: [PATCH 4/4] rockchip: Enable HDMI output on rk3399 board w/ HDMI
+Date: Mon, 2 Mar 2020 13:01:58 +0000
+Message-ID: <CALeDE9PO3aKTZ8Z89KhedLfnRxja+mPq1ocwOOfSFm+NRJBr0A@mail.gmail.com>
+References: <20200123162845.10651-1-jagan@amarulasolutions.com>
+ <20200123162845.10651-5-jagan@amarulasolutions.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200123162845.10651-5-jagan@amarulasolutions.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, u-boot@lists.denx.de, linux-amarula@amarulasolutions.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-A test with the command below gives these errors:
+> +#define ROCKCHIP_DEVICE_SETTINGS \
+> +               "stdin=serial,cros-ec-keyb\0" \
 
-arch/arm64/boot/dts/rockchip/rk3368-evb-act8846.dt.yaml: usb@ff580000: compatible:
-['rockchip,rk3368-usb', 'rockchip,rk3066-usb', 'snps,dwc2']
-is not valid under any of the given schemas
-arch/arm64/boot/dts/rockchip/rk3368-geekbox.dt.yaml: usb@ff580000: compatible:
-['rockchip,rk3368-usb', 'rockchip,rk3066-usb', 'snps,dwc2']
-is not valid under any of the given schemas
-arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dt.yaml: usb@ff580000: compatible:
-['rockchip,rk3368-usb', 'rockchip,rk3066-usb', 'snps,dwc2']
-is not valid under any of the given schemas
-arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dt.yaml: usb@ff580000: compatible:
-['rockchip,rk3368-usb', 'rockchip,rk3066-usb', 'snps,dwc2']
-is not valid under any of the given schemas
-arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dt.yaml: usb@ff580000: compatible:
-['rockchip,rk3368-usb', 'rockchip,rk3066-usb', 'snps,dwc2']
-is not valid under any of the given schemas
-arch/arm64/boot/dts/rockchip/rk3368-r88.dt.yaml: usb@ff580000: compatible:
-['rockchip,rk3368-usb', 'rockchip,rk3066-usb', 'snps,dwc2']
-is not valid under any of the given schemas
+This should likely be a usb keyboard and not the CrOS EC keyboard.
 
-The compatible property for rk3368 dwc2 usb was somehow never added to
-the documention. Fix this error by adding
-'rockchip,rk3368-usb', 'rockchip,rk3066-usb', 'snps,dwc2'
-to dwc2.yaml.
-
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/usb/dwc2.yaml
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- Documentation/devicetree/bindings/usb/dwc2.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/Documentation/devicetree/bindings/usb/dwc2.yaml b/Documentation/devicetree/bindings/usb/dwc2.yaml
-index e9f4cea21..14aeb67e8 100644
---- a/Documentation/devicetree/bindings/usb/dwc2.yaml
-+++ b/Documentation/devicetree/bindings/usb/dwc2.yaml
-@@ -45,6 +45,10 @@ properties:
-           - const: rockchip,rk3328-usb
-           - const: rockchip,rk3066-usb
-           - const: snps,dwc2
-+      - items:
-+          - const: rockchip,rk3368-usb
-+          - const: rockchip,rk3066-usb
-+          - const: snps,dwc2
-       - const: lantiq,arx100-usb
-       - const: lantiq,xrx200-usb
-       - items:
--- 
-2.11.0
+> +               "stdout=serial,vidconsole\0" \
+> +               "stderr=serial,vidconsole\0"
+> +
+>  #include <configs/rk3399_common.h>
+>
+>  #if defined(CONFIG_ENV_IS_IN_MMC)
+> --
+> 2.18.0.321.gffc6fa0e3
+>
