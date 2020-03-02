@@ -1,7 +1,7 @@
 From: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 3/3] MAINTAINERS: add maintainers to rockchip nfc
-Date: Mon,  2 Mar 2020 10:47:44 +0800
-Message-ID: <20200302024744.28185-4-yifeng.zhao@rock-chips.com>
+Subject: [PATCH 2/3] mtd: rockchip: device tree bindings for Rockchip
+Date: Mon,  2 Mar 2020 10:47:43 +0800
+Message-ID: <20200302024744.28185-3-yifeng.zhao@rock-chips.com>
 References: <20200302024744.28185-1-yifeng.zhao@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <20200302024744.28185-1-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
@@ -10,33 +10,117 @@ To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@p
 Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Documentation support for Rockchip NAND controllers
+
 Signed-off-by: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 
 Changes in v2: None
 
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
+ .../bindings/mtd/rockchip,nand.yaml           | 95 +++++++++++++++++++
+ 1 file changed, 95 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4017e6b760be..79cfad293549 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2242,6 +2242,7 @@ L:	linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
- T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
- S:	Maintained
- F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
-+F:	Documentation/devicetree/bindings/*/*rockchip*.yaml
- F:	arch/arm/boot/dts/rk3*
- F:	arch/arm/boot/dts/rv1108*
- F:	arch/arm/mach-rockchip/
-@@ -2249,6 +2250,7 @@ F:	drivers/clk/rockchip/
- F:	drivers/i2c/busses/i2c-rk3x.c
- F:	drivers/*/*rockchip*
- F:	drivers/*/*/*rockchip*
-+F:	drivers/*/*/*/*rockchip*
- F:	sound/soc/rockchip/
- N:	rockchip
- 
+diff --git a/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml b/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
+new file mode 100644
+index 000000000000..9a81f682ac01
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
+@@ -0,0 +1,95 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mtd/rockchip,nand.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip SoCs NAND FLASH Controller (NFC) Device Tree Bindings
++
++allOf:
++  - $ref: "nand-controller.yaml"
++
++maintainers:
++  - Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++
++properties:
++  "#address-cells": true
++  "#size-cells": true
++
++  compatible:
++    const: rockchip,nfc
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Module Clock
++      - description: Bus Clock
++
++  clock-names:
++    items:
++      - const: clk_nfc
++      - const: clk_ahb
++
++  clock-rates:
++      maximum: 150000000
++
++  pinctrl-names: true
++
++patternProperties:
++  "^pinctrl-[0-9]+$": true
++
++  "^nand@[a-f0-9]$":
++    type: object
++    properties:
++      reg:
++        minimum: 0
++        maximum: 3
++
++      nand-ecc-step-size:
++        const: 1024
++
++      nand-ecc-strength:
++        enum: [16, 24 , 40, 60, 70]
++
++      nand-bus-width:
++        const: 8
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/rk3308-cru.h>
++    nfc: nand-controller@ff4b0000 {
++      compatible = "rockchip,nfc";
++      reg = <0x0 0xff4b0000 0x0 0x4000>;
++      interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru SCLK_NANDC>, <&cru HCLK_NANDC>;
++      clock-names = "clk_nfc", "clk_ahb";
++      clock-rates = <150000000>;
++      pinctrl-names = "default";
++      pinctrl-0 = <&flash_csn0 &flash_rdy &flash_ale &flash_cle
++                  &flash_wrn &flash_rdn &flash_bus8>;
++
++      #address-cells = <1>;
++      #size-cells = <0>;
++      nand@0 {
++        reg = <0>;
++        nand-ecc-mode = "hw";
++        nand-ecc-strength = <16>;
++        nand-ecc-step-size = <1024>;
++        nand-bus-width = <8>;
++      };
++    };
++
++...
 -- 
 2.17.1
