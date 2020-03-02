@@ -1,47 +1,47 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v2 1/3] dt-bindings: arm: fix Rockchip Kylin board bindings
-Date: Mon,  2 Mar 2020 10:27:57 +0100
-Message-ID: <20200302092759.3291-1-jbx6244@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v2 2/3] dt-bindings: arm: add Rockchip rk3036-evb board
+Date: Mon,  2 Mar 2020 10:27:58 +0100
+Message-ID: <20200302092759.3291-2-jbx6244@gmail.com>
+References: <20200302092759.3291-1-jbx6244@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200302092759.3291-1-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 A test with the command below gives this error:
 
-arch/arm/boot/dts/rk3036-kylin.dt.yaml: /: compatible:
-['rockchip,rk3036-kylin', 'rockchip,rk3036']
+arch/arm/boot/dts/rk3036-evb.dt.yaml: /: compatible:
+['rockchip,rk3036-evb', 'rockchip,rk3036']
 is not valid under any of the given schemas
 
-Normally the dt-binding is the authoritative part, so boards should follow
-the binding, but in the kylin-case the compatible from the .dts is used for
-years in the field now, so fix the binding, as otherwise
-we would break old users.
-
-Fix this error by changing 'rockchip,kylin-rk3036' to
-'rockchip,rk3036-kylin' in rockchip.yaml.
+This board was somehow never added to the documentation.
+Fix this error by adding the rk3036-evb board to rockchip.yaml.
 
 make ARCH=arm dtbs_check
 DT_SCHEMA_FILES=Documentation/devicetree/bindings/arm/rockchip.yaml
 
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 874b0eaa2..203158038 100644
+index 203158038..d303790f5 100644
 --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
 +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -443,7 +443,7 @@ properties:
+@@ -468,6 +468,11 @@ properties:
+           - const: rockchip,r88
+           - const: rockchip,rk3368
  
-       - description: Rockchip Kylin
++      - description: Rockchip RK3036 Evaluation board
++        items:
++          - const: rockchip,rk3036-evb
++          - const: rockchip,rk3036
++
+       - description: Rockchip RK3228 Evaluation board
          items:
--          - const: rockchip,kylin-rk3036
-+          - const: rockchip,rk3036-kylin
-           - const: rockchip,rk3036
- 
-       - description: Rockchip PX3 Evaluation board
+           - const: rockchip,rk3228-evb
 -- 
 2.11.0
