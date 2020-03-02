@@ -1,41 +1,55 @@
-From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] mtd: rawnand: rockchip: NFC drivers for RK3308,
- RK3188 and others
-Date: Mon, 2 Mar 2020 10:47:54 +0100
-Message-ID: <20200302104754.61204e72@xps13>
-References: <20200302024744.28185-1-yifeng.zhao@rock-chips.com>
-        <20200302024744.28185-2-yifeng.zhao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 1/2] dt-bindings: usb: dwc2: add compatible property for rk3328 usb
+Date: Mon,  2 Mar 2020 12:58:11 +0100
+Message-ID: <20200302115812.7207-1-jbx6244@gmail.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200302024744.28185-2-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Yifeng,
+A test with the command below gives these errors:
 
-Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote on Mon,  2 Mar 2020
-10:47:42 +0800:
+arch/arm64/boot/dts/rockchip/rk3328-a1.dt.yaml: usb@ff580000: compatible:
+['rockchip,rk3328-usb', 'rockchip,rk3066-usb', 'snps,dwc2']
+is not valid under any of the given schemas
+arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: usb@ff580000: compatible:
+['rockchip,rk3328-usb', 'rockchip,rk3066-usb', 'snps,dwc2']
+is not valid under any of the given schemas
+arch/arm64/boot/dts/rockchip/rk3328-rock64.dt.yaml: usb@ff580000: compatible:
+['rockchip,rk3328-usb', 'rockchip,rk3066-usb', 'snps,dwc2']
+is not valid under any of the given schemas
+arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dt.yaml: usb@ff580000: compatible:
+['rockchip,rk3328-usb', 'rockchip,rk3066-usb', 'snps,dwc2']
+is not valid under any of the given schemas
 
-> This driver supports Rockchip NFC (NAND Flash Controller) found on RK3308,
-> RK3368, RKPX30, RV1108 and other SOCs. The driver has been tested using
-> 8-bit NAND interface on the ARM based RK3308 platform.
+The compatible property for rk3328 dwc2 usb was somehow never added to
+the documention. Fix this error by adding
+'rockchip,rk3328-usb', 'rockchip,rk3066-usb', 'snps,dwc2'
+to dwc2.yaml.
 
-I missed this series, you should have it prefixed "v2". Please use
-git-format-patch to generate your series. This time you miss the cover
-letter (or at least your second and third patches should be answers to
-the first one) otherwise it is not easy to follow when people start
-discussing:
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/usb/dwc2.yaml
 
-	git format-patch --cover-letter -v<x> [commits]
-	git send-email v<x>-*.patch --to ... --cc ...
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ Documentation/devicetree/bindings/usb/dwc2.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-For the next iteration, <x> should be 3.
-
-Also, mind the title change for the bindings changes.
-
-Good luck,
-Miquèl
+diff --git a/Documentation/devicetree/bindings/usb/dwc2.yaml b/Documentation/devicetree/bindings/usb/dwc2.yaml
+index e95ba9373..e9f4cea21 100644
+--- a/Documentation/devicetree/bindings/usb/dwc2.yaml
++++ b/Documentation/devicetree/bindings/usb/dwc2.yaml
+@@ -41,6 +41,10 @@ properties:
+           - const: rockchip,rk3288-usb
+           - const: rockchip,rk3066-usb
+           - const: snps,dwc2
++      - items:
++          - const: rockchip,rk3328-usb
++          - const: rockchip,rk3066-usb
++          - const: snps,dwc2
+       - const: lantiq,arx100-usb
+       - const: lantiq,xrx200-usb
+       - items:
+-- 
+2.11.0
