@@ -1,48 +1,35 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: fix compatible property for rk3399-evb
-Date: Mon,  2 Mar 2020 10:27:59 +0100
-Message-ID: <20200302092759.3291-3-jbx6244@gmail.com>
-References: <20200302092759.3291-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200302092759.3291-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH 0/3] Add Rockchip NFC drivers for RK3308 and others
+Date: Mon, 2 Mar 2020 10:31:03 +0100
+Message-ID: <20200302103103.1eb7df94@xps13>
+References: <1582884076-27615-1-git-send-email-yifeng.zhao@rock-chips.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1582884076-27615-1-git-send-email-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-A test with the command below gives this error:
+Hi Yifeng,
 
-arch/arm64/boot/dts/rockchip/rk3399-evb.dt.yaml: /: compatible:
-['rockchip,rk3399-evb', 'rockchip,rk3399', 'google,rk3399evb-rev2']
-is not valid under any of the given schemas
+Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote on Fri, 28 Feb 2020
+18:01:13 +0800:
 
-'google,rk3399evb-rev2' was a no longer used variant for Google.
-The binding only mentions 'rockchip,rk3399-evb', 'rockchip,rk3399',
-so fix this error by removing 'google,rk3399evb-rev2' from
-the compatible property in rk3399-evb.dts and change it into
-generic rk3399-evb support only.
+> Rockchp's NFC(Nand Flash Controller) has three versions: V6, V8 and V9.
+> This series patch can support all  three versions.
+> 
 
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/arm/rockchip.yaml
+Your series has been badly created, strangely I received twice patch 1
+with two different contents, patch 2 arrived way later than patch 1 and
+3 and the commit title of the bindings patch is wrong, it should
+besomething like:
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+	dt-bindings: mtd: Describe Rockchip RK3xxx NAND flash controller
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-index 77008dca4..d1afd1e1d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -9,8 +9,7 @@
- 
- / {
- 	model = "Rockchip RK3399 Evaluation Board";
--	compatible = "rockchip,rk3399-evb", "rockchip,rk3399",
--		     "google,rk3399evb-rev2";
-+	compatible = "rockchip,rk3399-evb", "rockchip,rk3399";
- 
- 	backlight: backlight {
- 		compatible = "pwm-backlight";
--- 
-2.11.0
+Can you please resend this series in a v2?
+
+Thanks,
+Miquèl
