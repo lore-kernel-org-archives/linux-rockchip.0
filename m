@@ -1,57 +1,132 @@
-From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH 2/2] arm64: dts: rockchip: Describe PX30 GPU
-Date: Mon,  2 Mar 2020 16:58:08 +0100
-Message-ID: <20200302155808.11273-2-miquel.raynal@bootlin.com>
-References: <20200302155808.11273-1-miquel.raynal@bootlin.com>
+From: =?UTF-8?q?Myl=C3=A8ne=20Josserand?=
+        <mylene.josserand@collabora.com>
+Subject: [PATCH 1/2] ARM: Rockchip: Handle rk3288/rk3288w revision
+Date: Mon,  2 Mar 2020 16:57:02 +0100
+Message-ID: <20200302155703.278421-2-mylene.josserand@collabora.com>
+References: <20200302155703.278421-1-mylene.josserand@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200302155808.11273-1-miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20200302155703.278421-1-mylene.josserand@collabora.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux@armlinux.org.uk, heiko@sntech.de, mturquette@baylibre.com, sboyd@kernel.org
+Cc: mylene.josserand@collabora.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-PX30 SoCs feature an ARM Bifrost GPU.
+Determine which revision of rk3288 by checking the HDMI version.
+According to the Rockchip BSP kernel, on rk3288w, the HDMI
+revision equals 0x1A which is not the case for the rk3288 [1].
 
-Signed-off-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+As these SOC have some differences, the new function
+'soc_is_rk3288w' will help us to know on which revision
+we are.
+
+[1]:https://github.com/rockchip-linux/u-boot/blob/f992fe3334aa5090acb448261982628b5a3d37a5/arch/arm/include/asm/arch-rockchip/cpu.h#L30..L34
+
+Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
 ---
+ arch/arm/mach-rockchip/rockchip.c | 45 +++++++++++++++++++++++++++++++
+ include/soc/rockchip/revision.h   | 22 +++++++++++++++
+ 2 files changed, 67 insertions(+)
+ create mode 100644 include/soc/rockchip/revision.h
 
-Hello, this change is just adding basic GPU support, more work is
-needed on the devfreq/opp side to be sure everything works and is
-properly described. Hence, this proposal aims at describing the HW
-block only, not its hability to change voltages/frequencies.
-
-Thanks,
-Miquèl
-
- arch/arm64/boot/dts/rockchip/px30.dtsi | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index f99988b08244..7780e532d31b 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -997,6 +997,19 @@
- 		status = "disabled";
- 	};
+diff --git a/arch/arm/mach-rockchip/rockchip.c b/arch/arm/mach-rockchip/rockchip.c
+index f9797a2b5d0d..b907ba390093 100644
+--- a/arch/arm/mach-rockchip/rockchip.c
++++ b/arch/arm/mach-rockchip/rockchip.c
+@@ -9,12 +9,14 @@
+ #include <linux/kernel.h>
+ #include <linux/init.h>
+ #include <linux/io.h>
++#include <linux/of_address.h>
+ #include <linux/of_platform.h>
+ #include <linux/irqchip.h>
+ #include <linux/clk-provider.h>
+ #include <linux/clocksource.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/regmap.h>
++#include <soc/rockchip/revision.h>
+ #include <asm/mach/arch.h>
+ #include <asm/mach/map.h>
+ #include <asm/hardware/cache-l2x0.h>
+@@ -22,6 +24,49 @@
+ #include "pm.h"
  
-+	gpu: gpu@ff400000 {
-+		compatible = "rockchip,px30-mali", "arm,mali-bifrost";
-+		reg = <0x0 0xff400000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 46 IRQ_TYPE_LEVEL_HIGH>,
-+			     <GIC_SPI 47 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "gpu", "mmu", "job";
-+		clocks = <&cru SCLK_GPU>;
-+		clock-names = "clk_mali";
-+		power-domains = <&power PX30_PD_GPU>;
-+		status = "disabled";
-+	};
+ #define RK3288_TIMER6_7_PHYS 0xff810000
++#define RK3288_HDMI_REV_REG	0x04
++#define RK3288W_HDMI_REV	0x1A
 +
- 	vopb: vop@ff460000 {
- 		compatible = "rockchip,px30-vop-big";
- 		reg = <0x0 0xff460000 0x0 0xefc>;
++static const struct of_device_id rk3288_dt_hdmi_match[] __initconst = {
++	{ .compatible = "rockchip,rk3288-dw-hdmi" },
++	{ }
++};
++
++int rk3288_get_revision(void)
++{
++	static int revision = RK3288_SOC_REV_UNKNOWN;
++	struct device_node *dn;
++	void __iomem *hdmi_base;
++
++	if (revision != RK3288_SOC_REV_UNKNOWN)
++		return revision;
++
++	dn = of_find_matching_node(NULL, rk3288_dt_hdmi_match);
++	if (!dn) {
++		pr_err("%s: Couldn't find HDMI node\n", __func__);
++		return -EINVAL;
++	}
++
++	hdmi_base = of_iomap(dn, 0);
++	of_node_put(dn);
++
++	if (!hdmi_base) {
++		pr_err("%s: Couldn't map %pOF regs\n", __func__,
++		       hdmi_base);
++		return -ENXIO;
++	}
++
++	if (readl_relaxed(hdmi_base + RK3288_HDMI_REV_REG) ==
++	    RK3288W_HDMI_REV)
++		revision = RK3288_SOC_REV_RK3288W;
++	else
++		revision = RK3288_SOC_REV_RK3288;
++
++	iounmap(hdmi_base);
++
++	return revision;
++}
++EXPORT_SYMBOL(rk3288_get_revision);
+ 
+ static void __init rockchip_timer_init(void)
+ {
+diff --git a/include/soc/rockchip/revision.h b/include/soc/rockchip/revision.h
+new file mode 100644
+index 000000000000..226419c60af0
+--- /dev/null
++++ b/include/soc/rockchip/revision.h
+@@ -0,0 +1,22 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright 2020 Collabora
++ */
++
++#ifndef __SOC_ROCKCHIP_REVISION_H__
++#define __SOC_ROCKCHIP_REVISION_H__
++
++enum rk3288_soc_revision {
++	RK3288_SOC_REV_UNKNOWN,
++	RK3288_SOC_REV_RK3288,
++	RK3288_SOC_REV_RK3288W,
++};
++
++int rk3288_get_revision(void);
++
++static inline bool soc_is_rk3288w(void)
++{
++	return rk3288_get_revision() == RK3288_SOC_REV_RK3288W;
++}
++
++#endif /* __SOC_ROCKCHIP_REVISION_H__ */
 -- 
-2.20.1
+2.25.1
