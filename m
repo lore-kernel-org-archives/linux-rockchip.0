@@ -1,103 +1,49 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH 2/2] arm64: dts: add bus to rockchip amba nodenames
-Date: Mon,  2 Mar 2020 16:30:47 +0100
-Message-ID: <20200302153047.17101-2-jbx6244@gmail.com>
-References: <20200302153047.17101-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200302153047.17101-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: =?UTF-8?q?Myl=C3=A8ne=20Josserand?=
+        <mylene.josserand@collabora.com>
+Subject: [PATCH 0/2] ARM: Add Rockchip rk3288w support
+Date: Mon,  2 Mar 2020 16:57:01 +0100
+Message-ID: <20200302155703.278421-1-mylene.josserand@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: linux@armlinux.org.uk, heiko@sntech.de, mturquette@baylibre.com, sboyd@kernel.org
+Cc: mylene.josserand@collabora.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-clk@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-A test with the command below gives for example this error:
+Hello everyone,
 
-arch/arm64/boot/dts/rockchip/rk3399-evb.dt.yaml: amba: $nodename:0:
-'amba' does not match
-'^(bus|soc|axi|ahb|apb)(@[0-9a-f]+)?$'
+This series adds the support for the Rockchip RK3288w which
+is a revision of the RK3288. It is mostly the same SOC except
+for, at least, one clock tree which is different. This difference
+is only known by the BSP kernel repository [1].
 
-AMBA is a open standard for the connection and
-management of functional blocks in a SoC.
-It's compatible with 'simple-bus', so fix this error
-by adding 'bus' to all Rockchip 'amba' nodes.
+Currently, the mainline kernel will not hang on rk3288w but it is
+probably by "chance" because we got an issue on a lower kernel version.
 
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/
-schemas/simple-bus.yaml
+According to Rockchip's U-Boot [2], the rk3288w can be detected using
+the HDMI revision number (= 0x1A) in this version of the SOC.
+Not to rely on U-Boot about the compatible, the patch 01 will handle
+the detection of the HDMI version in the rockchip subsystem.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm64/boot/dts/rockchip/px30.dtsi   | 2 +-
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 2 +-
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
- arch/arm64/boot/dts/rockchip/rk3368.dtsi | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+Let me know what you think!
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 4f484119f..215515ccb 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -700,7 +700,7 @@
- 		clock-names = "pclk", "timer";
- 	};
- 
--	amba {
-+	amba: bus {
- 		compatible = "simple-bus";
- 		#address-cells = <2>;
- 		#size-cells = <2>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index 3bd5bc860..ac43bc3f7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -513,7 +513,7 @@
- 		status = "disabled";
- 	};
- 
--	amba {
-+	amba: bus {
- 		compatible = "simple-bus";
- 		#address-cells = <2>;
- 		#size-cells = <2>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index bad41bc6f..d9490f417 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -142,7 +142,7 @@
- 		};
- 	};
- 
--	amba {
-+	amba: bus {
- 		compatible = "simple-bus";
- 		#address-cells = <2>;
- 		#size-cells = <2>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-index a0df61c61..2079e877a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
-@@ -136,7 +136,7 @@
- 		};
- 	};
- 
--	amba {
-+	amba: bus {
- 		compatible = "simple-bus";
- 		#address-cells = <2>;
- 		#size-cells = <2>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 33cc21fcf..63355ba7c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -197,7 +197,7 @@
- 		#clock-cells = <0>;
- 	};
- 
--	amba {
-+	amba: bus {
- 		compatible = "simple-bus";
- 		#address-cells = <2>;
- 		#size-cells = <2>;
+Best regards,
+Mylène Josserand
+
+[1] https://github.com/rockchip-linux/kernel/blob/develop-4.4/drivers/clk/rockchip/clk-rk3288.c#L960..L964
+[2] https://github.com/rockchip-linux/u-boot/blob/next-dev/arch/arm/mach-rockchip/rk3288/rk3288.c#L378..L388
+
+Mylène Josserand (2):
+  ARM: Rockchip: Handle rk3288/rk3288w revision
+  clk: rockchip: rk3288: Handle clock tree for rk3288w
+
+ arch/arm/mach-rockchip/rockchip.c | 45 +++++++++++++++++++++++++++++++
+ drivers/clk/rockchip/clk-rk3288.c | 21 +++++++++++++--
+ include/soc/rockchip/revision.h   | 22 +++++++++++++++
+ 3 files changed, 86 insertions(+), 2 deletions(-)
+ create mode 100644 include/soc/rockchip/revision.h
+
 -- 
-2.11.0
+2.25.1
