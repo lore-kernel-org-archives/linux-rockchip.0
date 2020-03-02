@@ -1,84 +1,33 @@
-From: =?UTF-8?q?Myl=C3=A8ne=20Josserand?=
-        <mylene.josserand@collabora.com>
-Subject: [PATCH 2/2] clk: rockchip: rk3288: Handle clock tree for rk3288w
-Date: Mon,  2 Mar 2020 16:57:03 +0100
-Message-ID: <20200302155703.278421-3-mylene.josserand@collabora.com>
-References: <20200302155703.278421-1-mylene.josserand@collabora.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Describe PX30 GPU
+Date: Mon, 02 Mar 2020 17:28:11 +0100
+Message-ID: <3626817.RKRXn6i3ii@diego>
+References: <20200302155808.11273-1-miquel.raynal@bootlin.com> <20200302155808.11273-2-miquel.raynal@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20200302155703.278421-1-mylene.josserand@collabora.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: linux@armlinux.org.uk, heiko@sntech.de, mturquette@baylibre.com, sboyd@kernel.org
-Cc: mylene.josserand@collabora.com, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200302155808.11273-2-miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The revision rk3288w has a different clock tree about
-"hclk_vio" clock, according to the BSP kernel code [1].
+Hi Miquel,
 
-This patch handles this difference by detecting which SOC it is
-and creating the div accordingly.
+Am Montag, 2. M‰rz 2020, 16:58:08 CET schrieb Miquel Raynal:
+> PX30 SoCs feature an ARM Bifrost GPU.
+> 
+> Signed-off-by: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+> ---
+> 
+> Hello, this change is just adding basic GPU support, more work is
+> needed on the devfreq/opp side to be sure everything works and is
+> properly described. Hence, this proposal aims at describing the HW
+> block only, not its hability to change voltages/frequencies.
 
-[1]: https://github.com/rockchip-linux/kernel/blob/develop-4.4/drivers/clk/rockchip/clk-rk3288.c#L960..L964
+please check mainline for existing patches ;-)
 
-Signed-off-by: Myl√®ne Josserand <mylene.josserand@collabora.com>
----
- drivers/clk/rockchip/clk-rk3288.c | 21 +++++++++++++++++++--
- 1 file changed, 19 insertions(+), 2 deletions(-)
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=a07f34a083f211c5f2f9b073a9b499accee078a2
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index cc2a177bbdbf..e7d6e3a095a5 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -10,6 +10,7 @@
- #include <linux/of_address.h>
- #include <linux/syscore_ops.h>
- #include <dt-bindings/clock/rk3288-cru.h>
-+#include <soc/rockchip/revision.h>
- #include "clk.h"
- 
- #define RK3288_GRF_SOC_CON(x)	(0x244 + x * 4)
-@@ -425,8 +426,6 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	COMPOSITE(0, "aclk_vio0", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
- 			RK3288_CLKSEL_CON(31), 6, 2, MFLAGS, 0, 5, DFLAGS,
- 			RK3288_CLKGATE_CON(3), 0, GFLAGS),
--	DIV(0, "hclk_vio", "aclk_vio0", 0,
--			RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
- 	COMPOSITE(0, "aclk_vio1", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
- 			RK3288_CLKSEL_CON(31), 14, 2, MFLAGS, 8, 5, DFLAGS,
- 			RK3288_CLKGATE_CON(3), 2, GFLAGS),
-@@ -819,6 +818,16 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
- };
- 
-+static struct rockchip_clk_branch rk3288w_hclkvio_branch[] __initdata = {
-+	DIV(0, "hclk_vio", "aclk_vio1", 0,
-+	    RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-+};
-+
-+static struct rockchip_clk_branch rk3288_hclkvio_branch[] __initdata = {
-+	DIV(0, "hclk_vio", "aclk_vio0", 0,
-+	    RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-+};
-+
- static const char *const rk3288_critical_clocks[] __initconst = {
- 	"aclk_cpu",
- 	"aclk_peri",
-@@ -931,6 +940,14 @@ static void __init rk3288_clk_init(struct device_node *np)
- 		return;
- 	}
- 
-+	/* Check for the rk3288w revision as Clock tree is different */
-+	if (soc_is_rk3288w())
-+		rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
-+					       ARRAY_SIZE(rk3288w_hclkvio_branch));
-+	else
-+		rockchip_clk_register_branches(ctx, rk3288_hclkvio_branch,
-+					       ARRAY_SIZE(rk3288_hclkvio_branch));
-+
- 	rockchip_clk_register_plls(ctx, rk3288_pll_clks,
- 				   ARRAY_SIZE(rk3288_pll_clks),
- 				   RK3288_GRF_SOC_STATUS1);
--- 
-2.25.1
+Heiko
