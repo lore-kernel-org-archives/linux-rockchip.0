@@ -1,38 +1,129 @@
 From: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v3 0/3] Add Rockchip NFC drivers for RK3308 and others
-Date: Tue,  3 Mar 2020 17:47:33 +0800
-Message-ID: <20200303094736.7490-1-yifeng.zhao@rock-chips.com>
+Subject: [PATCH v3 2/3] dt-bindings: mtd: Describe Rockchip RK3xxx NAND flash controller
+Date: Tue,  3 Mar 2020 17:47:35 +0800
+Message-ID: <20200303094736.7490-3-yifeng.zhao@rock-chips.com>
+References: <20200303094736.7490-1-yifeng.zhao@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200303094736.7490-1-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Documentation support for Rockchip RK3xxx NAND flash controllers
 
-Rockchp's NFC(Nand Flash Controller) has three versions: V6, V8 and V9.
-This series patch can support all  three versions.
-
+Signed-off-by: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+---
 
 Changes in v3:
 -change the title for the dt-bindings
 
-Changes in v2:
-- Fix compile error.
-- Include header files sorted by file name
+Changes in v2: None
 
-Yifeng Zhao (3):
-  mtd: rawnand: rockchip: NFC drivers for RK3308, RK3188 and others
-  dt-bindings: mtd: Describe Rockchip RK3xxx NAND flash controller
-  MAINTAINERS: add maintainers to rockchip nfc
-
- .../bindings/mtd/rockchip,nand.yaml           |   95 ++
- MAINTAINERS                                   |    2 +
- drivers/mtd/nand/raw/Kconfig                  |    7 +
- drivers/mtd/nand/raw/Makefile                 |    1 +
- drivers/mtd/nand/raw/rockchip_nand.c          | 1229 +++++++++++++++++
- 5 files changed, 1334 insertions(+)
+ .../bindings/mtd/rockchip,nand.yaml           | 95 +++++++++++++++++++
+ 1 file changed, 95 insertions(+)
  create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
- create mode 100644 drivers/mtd/nand/raw/rockchip_nand.c
 
+diff --git a/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml b/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
+new file mode 100644
+index 000000000000..9a81f682ac01
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
+@@ -0,0 +1,95 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mtd/rockchip,nand.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip SoCs NAND FLASH Controller (NFC) Device Tree Bindings
++
++allOf:
++  - $ref: "nand-controller.yaml"
++
++maintainers:
++  - Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++
++properties:
++  "#address-cells": true
++  "#size-cells": true
++
++  compatible:
++    const: rockchip,nfc
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Module Clock
++      - description: Bus Clock
++
++  clock-names:
++    items:
++      - const: clk_nfc
++      - const: clk_ahb
++
++  clock-rates:
++      maximum: 150000000
++
++  pinctrl-names: true
++
++patternProperties:
++  "^pinctrl-[0-9]+$": true
++
++  "^nand@[a-f0-9]$":
++    type: object
++    properties:
++      reg:
++        minimum: 0
++        maximum: 3
++
++      nand-ecc-step-size:
++        const: 1024
++
++      nand-ecc-strength:
++        enum: [16, 24 , 40, 60, 70]
++
++      nand-bus-width:
++        const: 8
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/rk3308-cru.h>
++    nfc: nand-controller@ff4b0000 {
++      compatible = "rockchip,nfc";
++      reg = <0x0 0xff4b0000 0x0 0x4000>;
++      interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru SCLK_NANDC>, <&cru HCLK_NANDC>;
++      clock-names = "clk_nfc", "clk_ahb";
++      clock-rates = <150000000>;
++      pinctrl-names = "default";
++      pinctrl-0 = <&flash_csn0 &flash_rdy &flash_ale &flash_cle
++                  &flash_wrn &flash_rdn &flash_bus8>;
++
++      #address-cells = <1>;
++      #size-cells = <0>;
++      nand@0 {
++        reg = <0>;
++        nand-ecc-mode = "hw";
++        nand-ecc-strength = <16>;
++        nand-ecc-step-size = <1024>;
++        nand-bus-width = <8>;
++      };
++    };
++
++...
 -- 
 2.17.1
