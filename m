@@ -1,161 +1,39 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] ARM: Rockchip: Handle rk3288/rk3288w revision
-Date: Wed, 04 Mar 2020 11:59:54 +0100
-Message-ID: <2221545.2vEflg7qi2@diego>
-References: <20200302155703.278421-1-mylene.josserand@collabora.com> <20200302155703.278421-2-mylene.josserand@collabora.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 1/3] dt-bindings: Add vendor prefix for Elida
+Date: Wed, 4 Mar 2020 10:34:26 -0600
+Message-ID: <20200304163426.GA20664@bogus>
+References: <20200229151506.750242-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20200302155703.278421-2-mylene.josserand@collabora.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: =?ISO-8859-1?Q?Myl=E8ne?= Josserand <mylene.josserand@collabora.com>
-Cc: linux@armlinux.org.uk, mturquette@baylibre.com, sboyd@kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20200229151506.750242-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, francescolavra.fl-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Am Montag, 2. März 2020, 16:57:02 CET schrieb Mylène Josserand:
-> Determine which revision of rk3288 by checking the HDMI version.
-> According to the Rockchip BSP kernel, on rk3288w, the HDMI
-> revision equals 0x1A which is not the case for the rk3288 [1].
+On Sat, 29 Feb 2020 16:15:04 +0100, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 > 
-> As these SOC have some differences, the new function
-> 'soc_is_rk3288w' will help us to know on which revision
-> we are.
-
-what happened to just having a different compatible in the dts?
-Aka doing a 
-
-rk3288w.dtsi with
-
-#include "rk3288.dtsi"
-
-&cru {
-	compatible = "rockchip,rk3288w-cru";
-}
-
-I somehow don't expect boards to just switch between soc variants
-on the fly.
-
-Also, doing things in mach-rockchip is not very future-proof:
-
-(1) having random soc-specific APIs spanning the kernel feels wrong,
-    especially as at some point it might not be contained to our own special
-    drivers like the cru. I cannot really see people being enthusiastic if
-    something like this would be needed in say the core Analogix-DP bridge ;-)
-(2) I guess the rk3288w will not be the last soc doing this and on arm64 you
-    can't do it that way, as there is no mach-rockchip there
-
-So my personal preference would really would be just a specific compatible
-for affected ip blocks.
-
-Heiko
-
-> [1]:https://github.com/rockchip-linux/u-boot/blob/f992fe3334aa5090acb448261982628b5a3d37a5/arch/arm/include/asm/arch-rockchip/cpu.h#L30..L34
+> Shenzen Elida Technology Co. Ltd. is a Chinese TFT manufacturer.
 > 
-> Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
+> Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+> Acked-by: Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
 > ---
->  arch/arm/mach-rockchip/rockchip.c | 45 +++++++++++++++++++++++++++++++
->  include/soc/rockchip/revision.h   | 22 +++++++++++++++
->  2 files changed, 67 insertions(+)
->  create mode 100644 include/soc/rockchip/revision.h
+> Hi Rob,
 > 
-> diff --git a/arch/arm/mach-rockchip/rockchip.c b/arch/arm/mach-rockchip/rockchip.c
-> index f9797a2b5d0d..b907ba390093 100644
-> --- a/arch/arm/mach-rockchip/rockchip.c
-> +++ b/arch/arm/mach-rockchip/rockchip.c
-> @@ -9,12 +9,14 @@
->  #include <linux/kernel.h>
->  #include <linux/init.h>
->  #include <linux/io.h>
-> +#include <linux/of_address.h>
->  #include <linux/of_platform.h>
->  #include <linux/irqchip.h>
->  #include <linux/clk-provider.h>
->  #include <linux/clocksource.h>
->  #include <linux/mfd/syscon.h>
->  #include <linux/regmap.h>
-> +#include <soc/rockchip/revision.h>
->  #include <asm/mach/arch.h>
->  #include <asm/mach/map.h>
->  #include <asm/hardware/cache-l2x0.h>
-> @@ -22,6 +24,49 @@
->  #include "pm.h"
->  
->  #define RK3288_TIMER6_7_PHYS 0xff810000
-> +#define RK3288_HDMI_REV_REG	0x04
-> +#define RK3288W_HDMI_REV	0x1A
-> +
-> +static const struct of_device_id rk3288_dt_hdmi_match[] __initconst = {
-> +	{ .compatible = "rockchip,rk3288-dw-hdmi" },
-> +	{ }
-> +};
-> +
-> +int rk3288_get_revision(void)
-> +{
-> +	static int revision = RK3288_SOC_REV_UNKNOWN;
-> +	struct device_node *dn;
-> +	void __iomem *hdmi_base;
-> +
-> +	if (revision != RK3288_SOC_REV_UNKNOWN)
-> +		return revision;
-> +
-> +	dn = of_find_matching_node(NULL, rk3288_dt_hdmi_match);
-> +	if (!dn) {
-> +		pr_err("%s: Couldn't find HDMI node\n", __func__);
-> +		return -EINVAL;
-> +	}
-> +
-> +	hdmi_base = of_iomap(dn, 0);
-> +	of_node_put(dn);
-> +
-> +	if (!hdmi_base) {
-> +		pr_err("%s: Couldn't map %pOF regs\n", __func__,
-> +		       hdmi_base);
-> +		return -ENXIO;
-> +	}
-> +
-> +	if (readl_relaxed(hdmi_base + RK3288_HDMI_REV_REG) ==
-> +	    RK3288W_HDMI_REV)
-> +		revision = RK3288_SOC_REV_RK3288W;
-> +	else
-> +		revision = RK3288_SOC_REV_RK3288;
-> +
-> +	iounmap(hdmi_base);
-> +
-> +	return revision;
-> +}
-> +EXPORT_SYMBOL(rk3288_get_revision);
->  
->  static void __init rockchip_timer_init(void)
->  {
-> diff --git a/include/soc/rockchip/revision.h b/include/soc/rockchip/revision.h
-> new file mode 100644
-> index 000000000000..226419c60af0
-> --- /dev/null
-> +++ b/include/soc/rockchip/revision.h
-> @@ -0,0 +1,22 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +/*
-> + * Copyright 2020 Collabora
-> + */
-> +
-> +#ifndef __SOC_ROCKCHIP_REVISION_H__
-> +#define __SOC_ROCKCHIP_REVISION_H__
-> +
-> +enum rk3288_soc_revision {
-> +	RK3288_SOC_REV_UNKNOWN,
-> +	RK3288_SOC_REV_RK3288,
-> +	RK3288_SOC_REV_RK3288W,
-> +};
-> +
-> +int rk3288_get_revision(void);
-> +
-> +static inline bool soc_is_rk3288w(void)
-> +{
-> +	return rk3288_get_revision() == RK3288_SOC_REV_RK3288W;
-> +}
-> +
-> +#endif /* __SOC_ROCKCHIP_REVISION_H__ */
+> as can be seen on [0], Sam expects you to apply the vendor prefix
+> to the main dt-tree.
 > 
+> Thanks
+> Heiko
+> 
+> [0] http://lore.kernel.org/r/20200229125725.GC5447-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org
+> 
+>  Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+
+Applied, thanks.
+
+Rob
