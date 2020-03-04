@@ -1,43 +1,43 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v3 3/3] dt-bindings: spi: spi-rockchip: add description for rk3328
-Date: Wed,  4 Mar 2020 19:42:03 +0100
-Message-ID: <20200304184203.9548-3-jbx6244@gmail.com>
-References: <20200304184203.9548-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200304184203.9548-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org
-Cc: heiko@sntech.de, robh+dt@kernel.org, linux-spi@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
+Subject: [PATCH v4 0/2] Add support for the pine64 Pinebook Pro
+Date: Wed,  4 Mar 2020 22:29:16 +0100
+Message-ID: <20200304212918.689936-1-t.schramm@manjaro.org>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>, Alexis Ballier <aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nick Xie <nick-XW3xCAIBE2TQT0dZR+AlfA@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Vivek Unune <npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Vasily Khoruzhick <anarsoul-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Emmanuel Vadot <manu-h+KGxgPPiopAfugRpC6u6w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The description below is already in use for rk3328.dtsi,
-but was somehow never added to a document, so add
-"rockchip,rk3328-spi", "rockchip,rk3066-spi"
-for spi nodes on a rk3328 platform to spi-rockchip.yaml.
+This patchset adds an initial dts and compatible string for the rk3399
+based Pinebook Pro 14" laptop.
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Acked-by: Rob Herring <robh@kernel.org>
----
-Changes v3:
-  remove some comments
+This is version 4 of the original patchset with more fixes proposed
+by Johan. Additionally the dt-bindings doc patch has been replaced by
+one from Emmanuel since that patch has already been reviewed by Rob.
 
-Changes v2:
-  add acked by
----
- Documentation/devicetree/bindings/spi/spi-rockchip.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Contrary to the Rockchip BSP dts proposed mid January this dts has a
+power tree reflecting the actual schematic of the device and features
+full display, audio and WiFi/Bluetooth support.
 
-diff --git a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-index 456896e2d..81ad4b761 100644
---- a/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-+++ b/Documentation/devicetree/bindings/spi/spi-rockchip.yaml
-@@ -30,6 +30,7 @@ properties:
-             - rockchip,rk3188-spi
-             - rockchip,rk3288-spi
-             - rockchip,rk3308-spi
-+            - rockchip,rk3328-spi
-             - rockchip,rk3368-spi
-             - rockchip,rk3399-spi
-           - const: rockchip,rk3066-spi
+Changelog:
+ v2: Incorporate review by Heiko
+ v3: Add fixes suggested by Johan
+ v4: More fixes by Johan, set data-role on typec connector,
+     use compatible doc patch by Emmanuel
+
+Emmanuel Vadot (1):
+  dt-bindings: Add doc for Pine64 Pinebook Pro
+
+Tobias Schramm (1):
+  arm64: dts: rockchip: Add initial support for Pinebook Pro
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    5 +
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts | 1096 +++++++++++++++++
+ 3 files changed, 1102 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+
 -- 
-2.11.0
+2.24.1
