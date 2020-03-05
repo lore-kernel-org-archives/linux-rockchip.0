@@ -1,24 +1,28 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/4] arm64: dts: rockchip: remove dvs2 pinctrl for pmic on rk3399 evb
-Date: Thu, 05 Mar 2020 22:38:52 +0100
-Message-ID: <1742149.p31cPTDa3R@diego>
-References: <20200305113912.32226-1-andy.yan@rock-chips.com> <20200305113912.32226-2-andy.yan@rock-chips.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH] clk: rockchip: fix mmc get phase
+Date: Thu, 05 Mar 2020 13:54:59 -0800
+Message-ID: <158344529963.25912.17580013895714045674@swboyd.mtv.corp.google.com>
+References: <20200303192956.64410-1-jbrunet@baylibre.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200305113912.32226-2-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20200303192956.64410-1-jbrunet@baylibre.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Jerome Brunet <jbrunet@baylibre.com>, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Markus Reichl <m.reichl@fivetechno.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 5. März 2020, 12:39:09 CET schrieb Andy Yan:
-> DVS2 of pmic is connected to GND, no pinctrl for it.
-> 
-> Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Quoting Jerome Brunet (2020-03-03 11:29:56)
+> If the mmc clock has no rate, it can be assumed to be constant.
+> In such case, there is no measurable phase shift. Just return 0
+> in this case instead of returning an error.
+>=20
+> Fixes: 2760878662a2 ("clk: Bail out when calculating phase fails during c=
+lk
+> registration")
+> Tested-by: Markus Reichl <m.reichl@fivetechno.de>
+> Signed-off-by: Jerome Brunet <jbrunet@baylibre.com>
+> ---
 
-applied for 5.7
-
-Thanks
-Heiko
+Applied to clk-next right on top of the phase branch.
