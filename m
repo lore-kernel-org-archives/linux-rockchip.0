@@ -1,28 +1,66 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [PATCH] clk: rockchip: fix mmc get phase
-Date: Thu, 05 Mar 2020 13:54:59 -0800
-Message-ID: <158344529963.25912.17580013895714045674@swboyd.mtv.corp.google.com>
-References: <20200303192956.64410-1-jbrunet@baylibre.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/3] ARM: dts: rockchip: add missing @0 to memory
+ nodenames
+Date: Thu, 5 Mar 2020 23:21:52 +0100
+Message-ID: <2a5ef6fc-2487-91ef-24ce-97dd47b0a137@gmail.com>
+References: <20200304074051.8742-1-jbx6244@gmail.com>
+ <20200304074051.8742-2-jbx6244@gmail.com> <1784340.9KJLpVao5L@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20200303192956.64410-1-jbrunet@baylibre.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Jerome Brunet <jbrunet@baylibre.com>, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org, Markus Reichl <m.reichl@fivetechno.de>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1784340.9KJLpVao5L@phil>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Jerome Brunet (2020-03-03 11:29:56)
-> If the mmc clock has no rate, it can be assumed to be constant.
-> In such case, there is no measurable phase shift. Just return 0
-> in this case instead of returning an error.
->=20
-> Fixes: 2760878662a2 ("clk: Bail out when calculating phase fails during c=
-lk
-> registration")
-> Tested-by: Markus Reichl <m.reichl@fivetechno.de>
-> Signed-off-by: Jerome Brunet <jbrunet@baylibre.com>
-> ---
+Hi Heiko,
 
-Applied to clk-next right on top of the phase branch.
+Goal was to reduce the error output of existing code a little bit,
+so that we can use it for the review of new patches.
+Some questions:
+As I don't have the hardware, where else is coreboot used?
+Is this a rk3288-veyron.dtsi problem only?
+ie. Is it a option to produce a patch serie v2 without veyron?
+Can someone help testing?
+
+Johan
+
+On 3/5/20 10:31 PM, Heiko Stuebner wrote:
+> Hi Johan,
+>
+> Am Mittwoch, 4. März 2020, 08:40:50 CET schrieb Johan Jonker:
+>> A test with the command below gives for example this error:
+>>
+>> arch/arm/boot/dts/rk3288-tinker.dt.yaml: /: memory:
+>> False schema does not allow
+>> {'device_type': ['memory'], 'reg': [[0, 0, 0, 2147483648]]}
+>>
+>> The memory nodes all have a reg property that requires '@' in
+>> the nodename. Fix this error by adding the missing '@0' to
+>> the involved memory nodenames.
+>>
+>> make ARCH=arm dtbs_check
+>> DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/
+>> schemas/root-node.yaml
+>
+> changes to memory nodes you sadly cannot do in such an automated fashion.
+> If you read the comment in rk3288-veyron.dtsi you'll see that a previous
+> similar iteration broke all of those machines as their coreboot doesn't
+> copy with memory@0 and would insert another memory node without @0
+>
+> In the past iteration the consensus then was that memory without @0
+> is also ok (as it isn't changeable anyway).
+>
+
+> As I don't really want to repeat that, I'd like actual hardware tests
+> before touching memory nodes.
+
+Any suggestion/feedback rapport welcome.
+
+>
+> Heiko
+>
+>
