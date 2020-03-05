@@ -1,85 +1,51 @@
-From: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH 4/4] arm64: dts: rockchip: Enable eDP display on rk3399 evb
-Date: Thu,  5 Mar 2020 19:39:12 +0800
-Message-ID: <20200305113912.32226-5-andy.yan@rock-chips.com>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH 1/4] arm64: dts: rockchip: remove dvs2 pinctrl for pmic on
+ rk3399 evb
+Date: Thu,  5 Mar 2020 19:39:09 +0800
+Message-ID: <20200305113912.32226-2-andy.yan@rock-chips.com>
 References: <20200305113912.32226-1-andy.yan@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200305113912.32226-1-andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <20200305113912.32226-1-andy.yan@rock-chips.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: Andy Yan <andy.yan@rock-chips.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add eDP panle and enable relative dt node like vop/iommu
-to enable eDP display on rk3399 evb.
+DVS2 of pmic is connected to GND, no pinctrl for it.
 
-Signed-off-by: Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+
 ---
 
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 40 +++++++++++++++++++++
- 1 file changed, 40 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 5 -----
+ 1 file changed, 5 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-index d4e402b40d08..23e213c421d0 100644
+index 77008dca45bc..eb501bb8f426 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -51,6 +51,19 @@
- 		pwms = <&pwm0 0 25000 0>;
- 	};
- 
-+	edp_panel: edp-panel {
-+		compatible ="lg,lp079qx1-sp0v";
-+		backlight = <&backlight>;
-+		power-supply = <&vcc3v3_s0>;
-+		enable-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
-+
-+		port {
-+			panel_in_edp: endpoint {
-+				remote-endpoint = <&edp_out_panel>;
-+			};
-+		};
-+	};
-+
- 	clkin_gmac: external-gmac-clock {
- 		compatible = "fixed-clock";
- 		clock-frequency = <125000000>;
-@@ -113,6 +126,24 @@
- 
- };
- 
-+&edp {
-+	status = "okay";
-+	force-hpd;
-+
-+	ports {
-+		edp_out: port@1 {
-+			reg = <1>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			edp_out_panel: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&panel_in_edp>;
-+			};
-+		};
-+	};
-+};
-+
- &emmc_phy {
- 	status = "okay";
- };
-@@ -439,3 +470,12 @@
+@@ -210,11 +210,6 @@
+ 			rockchip,pins =
+ 				<1 RK_PC5 RK_FUNC_GPIO &pcfg_pull_up>;
  		};
+-
+-		pmic_dvs2: pmic-dvs2 {
+-			rockchip,pins =
+-				<1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_down>;
+-		};
  	};
- };
-+
-+&vopb {
-+	status = "okay";
-+};
-+
-+&vopb_mmu {
-+	status = "okay";
-+};
-+
+ 
+ 	usb2 {
 -- 
 2.17.1
