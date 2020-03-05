@@ -1,266 +1,251 @@
-From: Andy Yan <andy.yan@rock-chips.com>
-Subject: [PATCH 2/4] arm64: dts: rockchip: Add pmic dt tree for rk3399 evb
-Date: Thu,  5 Mar 2020 19:39:10 +0800
-Message-ID: <20200305113912.32226-3-andy.yan@rock-chips.com>
-References: <20200305113912.32226-1-andy.yan@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200305113912.32226-1-andy.yan@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: Andy Yan <andy.yan@rock-chips.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v1 1/5] dt-bindings: i2c: convert rockchip i2c bindings to yaml
+Date: Thu,  5 Mar 2020 15:36:07 +0100
+Message-ID: <20200305143611.10733-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-i2c-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-RK3399 EVB use 2 SYR837/8 and a RK808 for power supply,
-Add regulator tree for it.
+Current dts files with 'i2c' nodes are manually verified.
+In order to automate this process i2c-rk3x.txt
+has to be converted to yaml. In the new setup
+i2c-rk3x.yaml will inherit properties from
+i2c-controller.yaml.
 
-Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Also change document name in MAINTAINERS.
+
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
+ Documentation/devicetree/bindings/i2c/i2c-rk3x.txt |  68 -----------
+ .../devicetree/bindings/i2c/i2c-rk3x.yaml          | 129 +++++++++++++++++++++
+ MAINTAINERS                                        |   2 +-
+ 3 files changed, 130 insertions(+), 69 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
+ create mode 100644 Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
 
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts | 221 ++++++++++++++++++++
- 1 file changed, 221 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-index eb501bb8f426..af6e23568504 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
-@@ -134,6 +134,227 @@
- 	status = "okay";
- };
- 
-+&i2c0 {
-+	status = "okay";
-+	vdd_cpu_b: syr827@40 {
-+		compatible = "silergy,syr827";
-+		reg = <0x40>;
-+		vin-supply = <&vcc5v0_sys>;
-+		regulator-name = "vdd_cpu_b";
-+		regulator-min-microvolt = <712500>;
-+		regulator-max-microvolt = <1500000>;
-+		regulator-ramp-delay = <1000>;
-+		fcs,suspend-voltage-selector = <1>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-initial-state = <3>;
-+                        regulator-state-mem {
-+                        regulator-off-in-suspend;
-+                };
-+	};
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt b/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
+deleted file mode 100644
+index 22f2eeb2c..000000000
+--- a/Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
++++ /dev/null
+@@ -1,68 +0,0 @@
+-* Rockchip RK3xxx I2C controller
+-
+-This driver interfaces with the native I2C controller present in Rockchip
+-RK3xxx SoCs.
+-
+-Required properties :
+-
+- - reg : Offset and length of the register set for the device
+- - compatible: should be one of the following:
+-   - "rockchip,rv1108-i2c": for rv1108
+-   - "rockchip,rk3066-i2c": for rk3066
+-   - "rockchip,rk3188-i2c": for rk3188
+-   - "rockchip,rk3228-i2c": for rk3228
+-   - "rockchip,rk3288-i2c": for rk3288
+-   - "rockchip,rk3328-i2c", "rockchip,rk3399-i2c": for rk3328
+-   - "rockchip,rk3399-i2c": for rk3399
+- - interrupts : interrupt number
+- - clocks: See ../clock/clock-bindings.txt
+-   - For older hardware (rk3066, rk3188, rk3228, rk3288):
+-     - There is one clock that's used both to derive the functional clock
+-       for the device and as the bus clock.
+-   - For newer hardware (rk3399): specified by name
+-     - "i2c": This is used to derive the functional clock.
+-     - "pclk": This is the bus clock.
+-
+-Required on RK3066, RK3188 :
+-
+- - rockchip,grf : the phandle of the syscon node for the general register
+-		  file (GRF)
+- - on those SoCs an alias with the correct I2C bus ID (bit offset in the GRF)
+-   is also required.
+-
+-Optional properties :
+-
+- - clock-frequency : SCL frequency to use (in Hz). If omitted, 100kHz is used.
+- - i2c-scl-rising-time-ns : Number of nanoseconds the SCL signal takes to rise
+-	(t(r) in I2C specification). If not specified this is assumed to be
+-	the maximum the specification allows(1000 ns for Standard-mode,
+-	300 ns for Fast-mode) which might cause slightly slower communication.
+- - i2c-scl-falling-time-ns : Number of nanoseconds the SCL signal takes to fall
+-	(t(f) in the I2C specification). If not specified this is assumed to
+-	be the maximum the specification allows (300 ns) which might cause
+-	slightly slower communication.
+- - i2c-sda-falling-time-ns : Number of nanoseconds the SDA signal takes to fall
+-	(t(f) in the I2C specification). If not specified we'll use the SCL
+-	value since they are the same in nearly all cases.
+-
+-Example:
+-
+-aliases {
+-	i2c0 = &i2c0;
+-}
+-
+-i2c0: i2c@2002d000 {
+-	compatible = "rockchip,rk3188-i2c";
+-	reg = <0x2002d000 0x1000>;
+-	interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
+-	#address-cells = <1>;
+-	#size-cells = <0>;
+-
+-	rockchip,grf = <&grf>;
+-
+-	clock-names = "i2c";
+-	clocks = <&cru PCLK_I2C0>;
+-
+-	i2c-scl-rising-time-ns = <800>;
+-	i2c-scl-falling-time-ns = <100>;
+-};
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+new file mode 100644
+index 000000000..962aefb7d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+@@ -0,0 +1,129 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/i2c/i2c-rk3x.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	vdd_gpu: syr828@41 {
-+                compatible = "silergy,syr828";
-+                reg = <0x41>;
-+                vin-supply = <&vcc5v0_sys>;
-+                regulator-name = "vdd_gpu";
-+                regulator-min-microvolt = <712500>;
-+                regulator-max-microvolt = <1500000>;
-+                regulator-ramp-delay = <1000>;
-+                fcs,suspend-voltage-selector = <1>;
-+                regulator-always-on;
-+                regulator-boot-on;
-+                regulator-initial-state = <3>;
-+                        regulator-state-mem {
-+                        regulator-off-in-suspend;
-+		};
-+	};
++title: Rockchip RK3xxx I2C controller
 +
-+	rk808: pmic@1b {
-+		compatible = "rockchip,rk808";
-+		reg = <0x1b>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <21 IRQ_TYPE_LEVEL_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&pmic_int_l>;
-+		rockchip,system-power-controller;
-+		wakeup-source;
-+		#clock-cells = <1>;
-+		clock-output-names = "rk808-clkout1", "rk808-clkout2";
++description:
++  This driver interfaces with the native I2C controller present in Rockchip
++  RK3xxx SoCs.
 +
-+		vcc1-supply = <&vcc3v3_sys>;
-+		vcc2-supply = <&vcc3v3_sys>;
-+		vcc3-supply = <&vcc3v3_sys>;
-+		vcc4-supply = <&vcc3v3_sys>;
-+		vcc6-supply = <&vcc3v3_sys>;
-+		vcc7-supply = <&vcc3v3_sys>;
-+		vcc8-supply = <&vcc3v3_sys>;
-+		vcc9-supply = <&vcc3v3_sys>;
-+		vcc10-supply = <&vcc3v3_sys>;
-+		vcc11-supply = <&vcc3v3_sys>;
-+		vcc12-supply = <&vcc3v3_sys>;
-+		vddio-supply = <&vcc1v8_pmu>;
++allOf:
++  - $ref: /schemas/i2c/i2c-controller.yaml#
 +
-+		regulators {
-+			vdd_log: DCDC_REG1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+				regulator-name = "vdd_log";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <900000>;
-+				};
-+			};
++maintainers:
++  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 +
-+			vdd_cpu_l: DCDC_REG2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <750000>;
-+				regulator-max-microvolt = <1350000>;
-+				regulator-ramp-delay = <6001>;
-+				regulator-name = "vdd_cpu_l";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
++# Everything else is described in the common file
++properties:
++  compatible:
++    oneOf:
++      - const: rockchip,rv1108-i2c
++      - const: rockchip,rk3066-i2c
++      - const: rockchip,rk3188-i2c
++      - const: rockchip,rk3228-i2c
++      - const: rockchip,rk3288-i2c
++      - const: rockchip,rk3399-i2c
++      - items:
++          - enum:
++            - rockchip,rk3328-i2c
++          - const: rockchip,rk3399-i2c
 +
-+			vcc_ddr: DCDC_REG3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vcc_ddr";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
++  reg:
++    maxItems: 1
 +
-+			vcc_1v8: DCDC_REG4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc_1v8";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
++  interrupts:
++    maxItems: 1
 +
-+			vcc1v8_dvp: LDO_REG1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc1v8_dvp";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
++  clocks:
++    minItems: 1
++    items:
++      - description:
++          For older hardware (rk3066, rk3188, rk3228, rk3288)
++          there is one clock that is used both to derive the functional clock
++          for the device and as the bus clock.
++          For newer hardware (rk3399) this clock is used to derive
++          the functional clock
++      - description:
++          For newer hardware (rk3399) this is the bus clock
 +
-+			vcc3v0_tp: LDO_REG2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-name = "vcc3v0_tp";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
++  clock-names:
++    minItems: 1
++    items:
++      - const: i2c
++      - const: pclk
 +
-+			vcc1v8_pmu: LDO_REG3 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcc1v8_pmu";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1800000>;
-+				};
-+			};
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Required on RK3066, RK3188 the phandle of the syscon node for
++      the general register file (GRF)
++      On those SoCs an alias with the correct I2C bus ID
++      (bit offset in the GRF) is also required.
 +
-+			vcc_sd: LDO_REG4 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-name = "vcc_sd";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3000000>;
-+				};
-+			};
++  clock-frequency:
++    default: 100000
++    description:
++      SCL frequency to use (in Hz). If omitted, 100kHz is used.
 +
-+			vcca3v0_codec: LDO_REG5 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-name = "vcca3v0_codec";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
++  i2c-scl-rising-time-ns:
++    default: 1000
++    description:
++      Number of nanoseconds the SCL signal takes to rise
++      (t(r) in I2C specification). If not specified this is assumed to be
++      the maximum the specification allows(1000 ns for Standard-mode,
++      300 ns for Fast-mode) which might cause slightly slower communication.
 +
-+			vcc_1v5: LDO_REG6 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1500000>;
-+				regulator-max-microvolt = <1500000>;
-+				regulator-name = "vcc_1v5";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <1500000>;
-+				};
-+			};
++  i2c-scl-falling-time-ns:
++    default: 300
++    description:
++      Number of nanoseconds the SCL signal takes to fall
++      (t(f) in the I2C specification). If not specified this is assumed to
++      be the maximum the specification allows (300 ns) which might cause
++      slightly slower communication.
 +
-+			vcca1v8_codec: LDO_REG7 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <1800000>;
-+				regulator-max-microvolt = <1800000>;
-+				regulator-name = "vcca1v8_codec";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
++  i2c-sda-falling-time-ns:
++    default: 300
++    description:
++      Number of nanoseconds the SDA signal takes to fall
++      (t(f) in the I2C specification). If not specified we will use the SCL
++      value since they are the same in nearly all cases.
 +
-+			vcc_3v0: LDO_REG8 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-min-microvolt = <3000000>;
-+				regulator-max-microvolt = <3000000>;
-+				regulator-name = "vcc_3v0";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+					regulator-suspend-microvolt = <3000000>;
-+				};
-+			};
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
 +
-+			vcc3v3_s3: SWITCH_REG1 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vcc3v3_s3";
-+				regulator-state-mem {
-+					regulator-on-in-suspend;
-+				};
-+			};
++if:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - rockchip,rk3066-i2c
++          - rockchip,rk3188-i2c
 +
-+			vcc3v3_s0: SWITCH_REG2 {
-+				regulator-always-on;
-+				regulator-boot-on;
-+				regulator-name = "vcc3v3_s0";
-+				regulator-state-mem {
-+					regulator-off-in-suspend;
-+				};
-+			};
-+		};
-+	};
-+};
++then:
++  required:
++    - rockchip,grf
 +
- &pwm0 {
- 	status = "okay";
- };
++examples:
++  - |
++    #include <dt-bindings/clock/rk3188-cru-common.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    i2c0: i2c@2002d000 {
++      compatible = "rockchip,rk3188-i2c";
++      reg = <0x2002d000 0x1000>;
++      interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru PCLK_I2C0>;
++      clock-names = "i2c";
++      rockchip,grf = <&grf>;
++      i2c-scl-falling-time-ns = <100>;
++      i2c-scl-rising-time-ns = <800>;
++      #address-cells = <1>;
++      #size-cells = <0>;
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 42c21184d..a480cec62 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2279,7 +2279,7 @@ L:	linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org (moderated for non-subscribers)
+ L:	linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
+ S:	Maintained
+-F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.txt
++F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+ F:	Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+ F:	Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+ F:	arch/arm/boot/dts/rk3*
 -- 
-2.17.1
+2.11.0
