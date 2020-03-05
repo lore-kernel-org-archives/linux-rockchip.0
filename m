@@ -1,241 +1,202 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] ARM: Rockchip: Handle rk3288/rk3288w revision
-Date: Thu, 05 Mar 2020 01:51:46 +0100
-Message-ID: <35989681.7qWAQounLj@diego>
-References: <20200302155703.278421-1-mylene.josserand@collabora.com> <2221545.2vEflg7qi2@diego> <5fa8402863c7fb4171d8b2021a776b9ac0be1596.camel@collabora.com>
+From: Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Subject: Re: USB DWC2 stops responding when insert/remove cable multiple times
+Date: Thu, 5 Mar 2020 06:45:44 +0000
+Message-ID: <bb0d6b96-f8c6-f8b9-3589-46e5ecaf37cc@synopsys.com>
+References: <CAP9ODKprPi8N-dU8NaKwneXH-3b0ipSEDpU5mDbGntxuyhGhJw@mail.gmail.com>
+ <41a7bfe7-54b1-84eb-091f-469d971ab968@synopsys.com>
+ <CAP9ODKoUH=Cc=uuhfaUy7fkSVdfBHhX-6oS9_hi3Wd6GgDiZYw@mail.gmail.com>
+ <ee47be28-ba9f-750f-65d2-51a722ce291d@synopsys.com>
+ <CAP9ODKqa_4NSsFMUpyFDt3ohgGBCMgbOyKaVjYfSjmcZLmmC+A@mail.gmail.com>
+ <380d765b-8867-a899-b67a-c016c09fa27b@synopsys.com>
+ <CAP9ODKqL_GN+iebL3wPX_9fEUtUVP8Ahv03yJ1R-JLDr=Cn0BA@mail.gmail.com>
+ <beddbc55-fd22-96b7-c980-e4ea207a42f5@synopsys.com>
+ <CAP9ODKq2nEHz_rbwwCv-94LSBOq0it2Kc4yhCqrLT-XxoXommg@mail.gmail.com>
+ <1d2ee918-57e4-53b2-6953-0107d7720c59@synopsys.com>
+ <CAP9ODKoS5KQrhTrUvahHEhQG-WA+bfLnP4tTFxzrQaGh1nTcZw@mail.gmail.com>
+ <CAP9ODKoRuB-nyjr1ksGU61PVMjFTMMWKwgpHQ=e7bChAu5Okhg@mail.gmail.com>
+ <665fe49e-ebfa-bcb0-fcd1-ea1e9252b306@synopsys.com>
+ <CAP9ODKo=YSNa-uNgzwP2X5yDy_qDzYjLogZLg11rRcSXr+wrFw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <5fa8402863c7fb4171d8b2021a776b9ac0be1596.camel@collabora.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: =?ISO-8859-1?Q?Myl=E8ne?= Josserand <mylene.josserand@collabora.com>, linux@armlinux.org.uk, mturquette@baylibre.com, sboyd@kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-clk@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAP9ODKo=YSNa-uNgzwP2X5yDy_qDzYjLogZLg11rRcSXr+wrFw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: en-US
+Content-ID: <AC3DCC2BD5C1944C8A3D3752593F5481-asWib9pRmPqcE4WynfumptQqCkab/8FMAL8bYrjMMd8@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Otavio Salvador <otavio.salvador-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>, Minas Harutyunyan <Minas.Harutyunyan-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>
+Cc: Otavio Salvador <otavio-fKevB0iiKLMBZ+LybsDmbA@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, "linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Felipe Balbi <balbi-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Johan Hovold <johan-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Ezequiel,
-
-Am Donnerstag, 5. März 2020, 01:03:30 CET schrieb Ezequiel Garcia:
-> Hi Heiko,
-> 
-> On Wed, 2020-03-04 at 11:59 +0100, Heiko Stübner wrote:
-> > Hi,
-> > 
-> > Am Montag, 2. März 2020, 16:57:02 CET schrieb Mylène Josserand:
-> > > Determine which revision of rk3288 by checking the HDMI version.
-> > > According to the Rockchip BSP kernel, on rk3288w, the HDMI
-> > > revision equals 0x1A which is not the case for the rk3288 [1].
-> > > 
-> > > As these SOC have some differences, the new function
-> > > 'soc_is_rk3288w' will help us to know on which revision
-> > > we are.
-> > 
-> > what happened to just having a different compatible in the dts?
-> > Aka doing a 
-> > 
-> > rk3288w.dtsi with
-> > 
-> > #include "rk3288.dtsi"
-> > 
-> > &cru {
-> > 	compatible = "rockchip,rk3288w-cru";
-> > }
-> > 
-> 
-> I guess you have something like this in mind:
-> 
-> static void __init rk3288_clk_init(struct device_node *np)
-> {
->         __rk3288_clk_init(np, RK3288_SOC_REV_RK3288W);
-> }
-> CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
-> 
-> static void __init rk3288w_clk_init(struct device_node *np)
-> {
->         __rk3288_clk_init(np, RK3288_SOC_REV_RK3288);
-> }
-> CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288w-cru", rk3288w_clk_init);
-> 
-> And the rest is mostly untouched, except the revision is
-> no longer queried and is now passed by the DT?
-
-Essentially yes, but I guess I was more thinking along the lines of
-the rk3188/rk3066a/rk3188a (drivers/clk/rockchip/clk-rk3188.c)
-
-
-> This would be cleaner for the kernel, with the obvious
-> drawback being that you now have to maintain
-> another DTS.
-
-Right now we would end up with the pretty minimal devicetree
-having just that cru. So not very invasive.
-
-
-> This could be an inconvenience. I believe
-> RK3288W is meant as a direct replacement for RK3288,
-> so folks building products would expect to just use
-> RK3288W, and not really bother with passing a
-> different DTS or what not.
-
-Not sure I follow. As below, I don't think boards will magically switch
-between soc variants, so a boards devicetree should just include
-the variant - especially as I don't really know how many
-additional new boards we will see with it (rk3288 being quite old itself).
-
-
-> > I somehow don't expect boards to just switch between soc variants
-> > on the fly.
-> > 
-> 
-> While I agree they are nasty, quirks like this
-> are not uncommon.
-> 
-> > Also, doing things in mach-rockchip is not very future-proof:
-> > 
-> 
-> There is actually no reason to keep this in mach-rockchip, right?
-> 
-> The quirk could be placed in other places. For instance,
-> directly in the clock driver.
-
-Mapping the hdmi controller inside the clock driver to read some "random"
-register that hopefully indicates an (undocumented) distinction between soc
-variants.
-
-Somehow just having that minimal devicetree for the "w" sounds
-way cleaner ;-) .
-
-
-It's definitly cool to have support for the rk3288w but I don't like
-adding hacks for something that is after all some sort of niche product.
-
-
-Heiko
-
-
-> > (1) having random soc-specific APIs spanning the kernel feels wrong,
-> >     especially as at some point it might not be contained to our own special
-> >     drivers like the cru. I cannot really see people being enthusiastic if
-> >     something like this would be needed in say the core Analogix-DP bridge ;-)
-> > (2) I guess the rk3288w will not be the last soc doing this and on arm64 you
-> >     can't do it that way, as there is no mach-rockchip there
-> > 
-> > So my personal preference would really would be just a specific compatible
-> > for affected ip blocks.
-> > 
-> > Heiko
-> > 
-> > > [1]:https://github.com/rockchip-linux/u-boot/blob/f992fe3334aa5090acb448261982628b5a3d37a5/arch/arm/include/asm/arch-rockchip/cpu.h#L30..L34
-> > > 
-> > > Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
-> > > ---
-> > >  arch/arm/mach-rockchip/rockchip.c | 45 +++++++++++++++++++++++++++++++
-> > >  include/soc/rockchip/revision.h   | 22 +++++++++++++++
-> > >  2 files changed, 67 insertions(+)
-> > >  create mode 100644 include/soc/rockchip/revision.h
-> > > 
-> > > diff --git a/arch/arm/mach-rockchip/rockchip.c b/arch/arm/mach-rockchip/rockchip.c
-> > > index f9797a2b5d0d..b907ba390093 100644
-> > > --- a/arch/arm/mach-rockchip/rockchip.c
-> > > +++ b/arch/arm/mach-rockchip/rockchip.c
-> > > @@ -9,12 +9,14 @@
-> > >  #include <linux/kernel.h>
-> > >  #include <linux/init.h>
-> > >  #include <linux/io.h>
-> > > +#include <linux/of_address.h>
-> > >  #include <linux/of_platform.h>
-> > >  #include <linux/irqchip.h>
-> > >  #include <linux/clk-provider.h>
-> > >  #include <linux/clocksource.h>
-> > >  #include <linux/mfd/syscon.h>
-> > >  #include <linux/regmap.h>
-> > > +#include <soc/rockchip/revision.h>
-> > >  #include <asm/mach/arch.h>
-> > >  #include <asm/mach/map.h>
-> > >  #include <asm/hardware/cache-l2x0.h>
-> > > @@ -22,6 +24,49 @@
-> > >  #include "pm.h"
-> > >  
-> > >  #define RK3288_TIMER6_7_PHYS 0xff810000
-> > > +#define RK3288_HDMI_REV_REG	0x04
-> > > +#define RK3288W_HDMI_REV	0x1A
-> > > +
-> > > +static const struct of_device_id rk3288_dt_hdmi_match[] __initconst = {
-> > > +	{ .compatible = "rockchip,rk3288-dw-hdmi" },
-> > > +	{ }
-> > > +};
-> > > +
-> > > +int rk3288_get_revision(void)
-> > > +{
-> > > +	static int revision = RK3288_SOC_REV_UNKNOWN;
-> > > +	struct device_node *dn;
-> > > +	void __iomem *hdmi_base;
-> > > +
-> > > +	if (revision != RK3288_SOC_REV_UNKNOWN)
-> > > +		return revision;
-> > > +
-> > > +	dn = of_find_matching_node(NULL, rk3288_dt_hdmi_match);
-> > > +	if (!dn) {
-> > > +		pr_err("%s: Couldn't find HDMI node\n", __func__);
-> > > +		return -EINVAL;
-> > > +	}
-> > > +
-> > > +	hdmi_base = of_iomap(dn, 0);
-> > > +	of_node_put(dn);
-> > > +
-> > > +	if (!hdmi_base) {
-> > > +		pr_err("%s: Couldn't map %pOF regs\n", __func__,
-> > > +		       hdmi_base);
-> > > +		return -ENXIO;
-> > > +	}
-> > > +
-> > > +	if (readl_relaxed(hdmi_base + RK3288_HDMI_REV_REG) ==
-> > > +	    RK3288W_HDMI_REV)
-> > > +		revision = RK3288_SOC_REV_RK3288W;
-> > > +	else
-> > > +		revision = RK3288_SOC_REV_RK3288;
-> > > +
-> > > +	iounmap(hdmi_base);
-> > > +
-> > > +	return revision;
-> > > +}
-> > > +EXPORT_SYMBOL(rk3288_get_revision);
-> > >  
-> > >  static void __init rockchip_timer_init(void)
-> > >  {
-> > > diff --git a/include/soc/rockchip/revision.h b/include/soc/rockchip/revision.h
-> > > new file mode 100644
-> > > index 000000000000..226419c60af0
-> > > --- /dev/null
-> > > +++ b/include/soc/rockchip/revision.h
-> > > @@ -0,0 +1,22 @@
-> > > +/* SPDX-License-Identifier: GPL-2.0-only */
-> > > +/*
-> > > + * Copyright 2020 Collabora
-> > > + */
-> > > +
-> > > +#ifndef __SOC_ROCKCHIP_REVISION_H__
-> > > +#define __SOC_ROCKCHIP_REVISION_H__
-> > > +
-> > > +enum rk3288_soc_revision {
-> > > +	RK3288_SOC_REV_UNKNOWN,
-> > > +	RK3288_SOC_REV_RK3288,
-> > > +	RK3288_SOC_REV_RK3288W,
-> > > +};
-> > > +
-> > > +int rk3288_get_revision(void);
-> > > +
-> > > +static inline bool soc_is_rk3288w(void)
-> > > +{
-> > > +	return rk3288_get_revision() == RK3288_SOC_REV_RK3288W;
-> > > +}
-> > > +
-> > > +#endif /* __SOC_ROCKCHIP_REVISION_H__ */
-> > > 
-> > 
-> > 
-> > 
-> > 
-> 
-> 
-> 
+SGkgT3RhdmlvLA0KDQpPbiAyLzI4LzIwMjAgOTozNSBQTSwgT3RhdmlvIFNhbHZhZG9yIHdyb3Rl
+Og0KPiBIZWxsbyBNaW5hcywNCj4gDQo+IE9uIEZyaSwgRmViIDI4LCAyMDIwIGF0IDY6MDEgQU0g
+TWluYXMgSGFydXR5dW55YW4NCj4gPE1pbmFzLkhhcnV0eXVueWFuQHN5bm9wc3lzLmNvbT4gd3Jv
+dGU6DQo+PiBPbiAyLzIxLzIwMjAgNjowNyBQTSwgT3RhdmlvIFNhbHZhZG9yIHdyb3RlOg0KPj4+
+IE9uIEZyaSwgRmViIDIxLCAyMDIwIGF0IDExOjA2IEFNIE90YXZpbyBTYWx2YWRvcg0KPj4+IDxv
+dGF2aW9Ab3NzeXN0ZW1zLmNvbS5icj4gd3JvdGU6DQo+Pj4+IE9uIEZyaSwgRmViIDIxLCAyMDIw
+IGF0IDM6NTIgQU0gTWluYXMgSGFydXR5dW55YW4NCj4+Pj4gPE1pbmFzLkhhcnV0eXVueWFuQHN5
+bm9wc3lzLmNvbT4gd3JvdGU6DQo+Pj4+PiBPbiAyLzIwLzIwMjAgNToxNiBQTSwgT3RhdmlvIFNh
+bHZhZG9yIHdyb3RlOg0KPj4+Pj4+IEhlbGxvIE1pbmFzLA0KPj4+Pj4+DQo+Pj4+Pj4gVGhhbmtz
+IGZvciBhbGwgeW91ciBoZWxwIG9uIHRoaXMsIC4uLg0KPj4+Pj4+DQo+Pj4+Pj4gT24gVGh1LCBG
+ZWIgMjAsIDIwMjAgYXQgMzo1OSBBTSBNaW5hcyBIYXJ1dHl1bnlhbg0KPj4+Pj4+IDxNaW5hcy5I
+YXJ1dHl1bnlhbkBzeW5vcHN5cy5jb20+IHdyb3RlOg0KPj4+Pj4+Pg0KPj4+Pj4+PiBPbiAyLzE5
+LzIwMjAgNzoxMCBQTSwgT3RhdmlvIFNhbHZhZG9yIHdyb3RlOg0KPj4+Pj4+IC4uLg0KPj4+Pj4+
+Pj4gV2hhdCBzZXF1ZW5jZSBkbyB5b3Ugd2FudCB1cyB0byBkbz8NCj4+Pj4+Pj4NCj4+Pj4+IFBs
+ZWFzZSBwcm92aWRlIGR3YzIgZGVidWcgbG9nIHdoZW4gc3RvcCB3b3JraW5nIHdpdGggZ19zZXJp
+YWwgZXhjZXB0aW9uDQo+Pj4+PiBkdW1wIGluc2lkZS4NCj4+Pj4+IEFsc28gcHJvdmlkZSBkd2My
+IGxvZyB3aGVuIGl0J3Mgd29yayB3aXRob3V0IGlzc3VlLg0KPj4+Pg0KPj4+PiBBdHRhY2hlZC4N
+Cj4+Pg0KPiANCj4gWyAgMjA3LjcxNTg5OF0gZHdjMiAzMDE4MDAwMC51c2I6IGR3YzJfaHNvdGdf
+cHVsbHVwOiBpc19vbjogMCBvcF9zdGF0ZTogMw0KPiBbICAyMDcuNzE1OTQyXSBkd2MyIDMwMTgw
+MDAwLnVzYjogY29tcGxldGU6IGVwIGI0NWU4ZGFjIGVwMCwgcmVxDQo+IDllNTk0OWIwLCAtMTA4
+ID0+IDg2M2ZjMWI5DQo+IFsgIDIwNy43MTU5NjZdIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hz
+b3RnX2NvbXBsZXRlX3NldHVwOiBmYWlsZWQgLTEwOA0KPiBbICAyMDcuNzE1OTk2XSBkd2MyIDMw
+MTgwMDAwLnVzYjogY29tcGxldGU6IGVwIGVkZmE0NmQzIGVwMm91dCwgcmVxDQo+IGM2NTlhMzAx
+LCAtMTA4ID0+IGYwZGU1MDEzDQo+IFsgIDIwNy43MTYwNTBdIGR3YzIgMzAxODAwMDAudXNiOiBj
+b21wbGV0ZTogZXAgZWRmYTQ2ZDMgZXAyb3V0LCByZXENCj4gZjQ2YjY4YzQsIC0xMDggPT4gZjBk
+ZTUwMTMNCj4gWyAgMjA3LjcxNjA3OF0gZHdjMiAzMDE4MDAwMC51c2I6IGNvbXBsZXRlOiBlcCBl
+ZGZhNDZkMyBlcDJvdXQsIHJlcQ0KPiAyNDg5MGE0NiwgLTEwOCA9PiBmMGRlNTAxMw0KPiBbICAy
+MDcuNzE2MTAwXSBkd2MyIDMwMTgwMDAwLnVzYjogY29tcGxldGU6IGVwIGVkZmE0NmQzIGVwMm91
+dCwgcmVxDQo+IGZjNDgxMGZkLCAtMTA4ID0+IGYwZGU1MDEzDQo+IFsgIDIwNy43MTYxMTldIGR3
+YzIgMzAxODAwMDAudXNiOiBjb21wbGV0ZTogZXAgZWRmYTQ2ZDMgZXAyb3V0LCByZXENCj4gZjY0
+MWJkYWQsIC0xMDggPT4gZjBkZTUwMTMNCj4gWyAgMjA3LjcxNjEzOV0gZHdjMiAzMDE4MDAwMC51
+c2I6IGNvbXBsZXRlOiBlcCBlZGZhNDZkMyBlcDJvdXQsIHJlcQ0KPiA5Mjg3MTU3MywgLTEwOCA9
+PiBmMGRlNTAxMw0KPiBbICAyMDcuNzE2MTU4XSBkd2MyIDMwMTgwMDAwLnVzYjogY29tcGxldGU6
+IGVwIGVkZmE0NmQzIGVwMm91dCwgcmVxDQo+IGZlNzdiNjAzLCAtMTA4ID0+IGYwZGU1MDEzDQo+
+IFsgIDIwNy43MTYxNzddIGR3YzIgMzAxODAwMDAudXNiOiBjb21wbGV0ZTogZXAgZWRmYTQ2ZDMg
+ZXAyb3V0LCByZXENCj4gM2U5MDY0ZDUsIC0xMDggPT4gZjBkZTUwMTMNCj4gWyAgMjA3LjcxNjE5
+Nl0gZHdjMiAzMDE4MDAwMC51c2I6IGNvbXBsZXRlOiBlcCBlZGZhNDZkMyBlcDJvdXQsIHJlcQ0K
+PiA1YWFlMmUxMSwgLTEwOCA9PiBmMGRlNTAxMw0KPiBbICAyMDcuNzE2MjE2XSBkd2MyIDMwMTgw
+MDAwLnVzYjogY29tcGxldGU6IGVwIGVkZmE0NmQzIGVwMm91dCwgcmVxDQo+IDdjNTgzNGRiLCAt
+MTA4ID0+IGYwZGU1MDEzDQo+IFsgIDIwNy43MTYyMzZdIGR3YzIgMzAxODAwMDAudXNiOiBjb21w
+bGV0ZTogZXAgZWRmYTQ2ZDMgZXAyb3V0LCByZXENCj4gOTY4YWYyNDQsIC0xMDggPT4gZjBkZTUw
+MTMNCj4gWyAgMjA3LjcxNjI1N10gZHdjMiAzMDE4MDAwMC51c2I6IGNvbXBsZXRlOiBlcCBlZGZh
+NDZkMyBlcDJvdXQsIHJlcQ0KPiBmYTY4YzJlYiwgLTEwOCA9PiBmMGRlNTAxMw0KPiBbICAyMDcu
+NzE2Mjc2XSBkd2MyIDMwMTgwMDAwLnVzYjogY29tcGxldGU6IGVwIGVkZmE0NmQzIGVwMm91dCwg
+cmVxDQo+IDZjZmJjZWU1LCAtMTA4ID0+IGYwZGU1MDEzDQo+IFsgIDIwNy43MTYyOTZdIGR3YzIg
+MzAxODAwMDAudXNiOiBjb21wbGV0ZTogZXAgZWRmYTQ2ZDMgZXAyb3V0LCByZXENCj4gZWVhODJh
+MmIsIC0xMDggPT4gZjBkZTUwMTMNCj4gWyAgMjA3LjcxNjMxNV0gZHdjMiAzMDE4MDAwMC51c2I6
+IGNvbXBsZXRlOiBlcCBlZGZhNDZkMyBlcDJvdXQsIHJlcQ0KPiA1NmNjZDgyZCwgLTEwOCA9PiBm
+MGRlNTAxMw0KPiBbICAyMDcuNzE2MzM1XSBkd2MyIDMwMTgwMDAwLnVzYjogY29tcGxldGU6IGVw
+IGVkZmE0NmQzIGVwMm91dCwgcmVxDQo+IGEwMGI3MTQ4LCAtMTA4ID0+IGYwZGU1MDEzDQo+IFsg
+IDIwNy43MTYzODldIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hzb3RnX2VwX2Rpc2FibGUoZXAg
+ZWRmYTQ2ZDMpDQo+IFsgIDIwNy43MTY0MTBdIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hzb3Rn
+X2VwX3N0b3BfeGZyOiBzdG9wcGluZw0KPiB0cmFuc2ZlciBvbiBlcDJvdXQNCj4gWyAgMjA3Ljcx
+NjQzOF0gZHdjMiAzMDE4MDAwMC51c2I6IGR3YzJfaHNvdGdfZXBfZGlzYWJsZTogRHhFUENUTD0w
+eDA4MDgwMjAwDQo+IFsgIDIwNy43MTY0NTddIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hzb3Rn
+X2VwX2Rpc2FibGUoZXAgMDNmNDAwNTQpDQo+IFsgIDIwNy43MTY0NjldIGR3YzIgMzAxODAwMDAu
+dXNiOiBkd2MyX2hzb3RnX2VwX2Rpc2FibGU6IER4RVBDVEw9MHgwODhhMDIwMA0KPiBbICAyMDcu
+NzE2NTY3XSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19lcF9kaXNhYmxlKGVwIDEwOGY4
+OWZhKQ0KPiBbICAyMDcuNzE2NTgxXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19lcF9k
+aXNhYmxlOiBEeEVQQ1RMPTB4MDk4YzAwMGENCj4gWyAgMjA3LjcyMjYwMF0gZ3NfY2xvc2U6IGJl
+Zm9yZSBzcGluX3VubG9ja19pcnEgMTogdHR5LT5kcml2ZXJfZGF0YSBpcyBiYWY0YTAwZA0KPiBb
+ICAyMDcuNzIyNjI1XSBnc19jbG9zZTogdHR5R1MwICgxMWJiYmZlYSxkYzlhMWRiMSkgLi4uDQo+
+IFsgIDIwNy43MjI2NDZdIGdzX2Nsb3NlOiB0dHlHUzAgKDExYmJiZmVhLGRjOWExZGIxKSBkb25l
+IQ0KPiBbICAyMDguMDQwMTIyXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19lcF9kaXNh
+YmxlKGVwIDAzZjQwMDU0KQ0KPiBbICAyMDguMDQwMTUzXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdj
+Ml9oc290Z19lcF9kaXNhYmxlOiBEeEVQQ1RMPTB4MDg4YTAyMDANCj4gWyAgMjA4LjA0MDE3N10g
+ZHdjMiAzMDE4MDAwMC51c2I6IGR3YzJfaHNvdGdfZXBfZGlzYWJsZShlcCBlZGZhNDZkMykNCj4g
+WyAgMjA4LjA0MDE5NF0gZHdjMiAzMDE4MDAwMC51c2I6IGR3YzJfaHNvdGdfZXBfZGlzYWJsZTog
+RHhFUENUTD0weDA4MGEwMjAwDQo+IFsgIDIwOC4wNDAyMTRdIGR3YzIgMzAxODAwMDAudXNiOiBk
+d2MyX2hzb3RnX2VwX2Rpc2FibGUoZXAgMTA4Zjg5ZmEpDQo+IFsgIDIwOC4wNDAyMjddIGR3YzIg
+MzAxODAwMDAudXNiOiBkd2MyX2hzb3RnX2VwX2Rpc2FibGU6IER4RVBDVEw9MHgwOThlMDAwYQ0K
+PiBbICAyMDguMDQwMjQzXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19lcF9kaXNhYmxl
+KGVwIDEyZDIxMDI4KQ0KPiBbICAyMDguMDQwMjU1XSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9o
+c290Z19lcF9kaXNhYmxlOiBEeEVQQ1RMPTB4MDgwMjA0MDANCj4gWyAgMjA4LjA0MDI3MV0gZHdj
+MiAzMDE4MDAwMC51c2I6IGR3YzJfaHNvdGdfZXBfZGlzYWJsZShlcCBmYjZiM2U2MCkNCj4gWyAg
+MjA4LjA0MDI4Ml0gZHdjMiAzMDE4MDAwMC51c2I6IGR3YzJfaHNvdGdfZXBfZGlzYWJsZTogRHhF
+UENUTD0weDA4MDIwNDAwDQo+IFsgIDIwOC4wNDAyOThdIGR3YzIgMzAxODAwMDAudXNiOiBkd2My
+X2hzb3RnX2VwX2Rpc2FibGUoZXAgYWJlYTNkMDYpDQo+IFsgIDIwOC4wNDAzMTBdIGR3YzIgMzAx
+ODAwMDAudXNiOiBkd2MyX2hzb3RnX2VwX2Rpc2FibGU6IER4RVBDVEw9MHgwODAyMDQwMA0KPiBb
+ICAyMDguMDQwMzI2XSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19lcF9kaXNhYmxlKGVw
+IDgwNzRhYzIxKQ0KPiBbICAyMDguMDQwMzM4XSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290
+Z19lcF9kaXNhYmxlOiBEeEVQQ1RMPTB4MDgwMjA0MDANCj4gWyAgMjA4LjA0MDM1NV0gZHdjMiAz
+MDE4MDAwMC51c2I6IGR3YzJfaHNvdGdfZXBfZGlzYWJsZShlcCA5NDQ5ZTNlZSkNCj4gWyAgMjA4
+LjA0MDM2N10gZHdjMiAzMDE4MDAwMC51c2I6IGR3YzJfaHNvdGdfZXBfZGlzYWJsZTogRHhFUENU
+TD0weDA4MDIwNDAwDQo+IFsgIDIwOC4wNDAzODNdIGR3YzIgMzAxODAwMDAudXNiOiBkd2MyX2hz
+b3RnX2VwX2Rpc2FibGUoZXAgM2I2Y2Q2OGMpDQo+IFsgIDIwOC4wNDAzOTVdIGR3YzIgMzAxODAw
+MDAudXNiOiBkd2MyX2hzb3RnX2VwX2Rpc2FibGU6IER4RVBDVEw9MHgwODAyMDQwMA0KPiBbICAy
+MDguMDQwNDEyXSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19lcF9kaXNhYmxlKGVwIDM4
+YzRkOWRiKQ0KPiBbICAyMDguMDQwNDI2XSBkd2MyIDMwMTgwMDAwLnVzYjogZHdjMl9oc290Z19l
+cF9kaXNhYmxlOiBEeEVQQ1RMPTB4MDgwMjA0MDANCj4gWyAgMjA4LjA0MDQ0M10gZHdjMiAzMDE4
+MDAwMC51c2I6IGR3YzJfaHNvdGdfZXBfZGlzYWJsZShlcCA2N2IzNzQzNCkNCj4gWyAgMjA4LjA0
+MDQ1N10gZHdjMiAzMDE4MDAwMC51c2I6IGR3YzJfaHNvdGdfZXBfZGlzYWJsZTogRHhFUENUTD0w
+eDA4MDIwNDAwDQo+IFsgIDIwOC4wNjE5MTRdIGdzX2Nsb3NlOiBiZWZvcmUgc3Bpbl91bmxvY2tf
+aXJxIDE6IHR0eS0+ZHJpdmVyX2RhdGEgaXMgYmFmNGEwMGQNCj4gWyAgMjA4LjA2MTk4MF0gODwt
+LS0gY3V0IGhlcmUgLS0tDQo+IFsgIDIwOC4wNjIyODNdIFVuYWJsZSB0byBoYW5kbGUga2VybmVs
+IHBhZ2luZyByZXF1ZXN0IGF0IHZpcnR1YWwNCj4gYWRkcmVzcyAwMDc2NjUwMA0KPiBbICAyMDgu
+MDYyOTM0XSBwZ2QgPSBiNDFjOWU3Yg0KPiBbICAyMDguMDYzMTg5XSBbMDA3NjY1MDBdICpwZ2Q9
+MDAwMDAwMDANCj4gWyAgMjA4LjA2MzUyOF0gSW50ZXJuYWwgZXJyb3I6IE9vcHM6IDUgWyMxXSBT
+TVAgQVJNDQo+IFsgIDIwOC4wNjM5NDVdIE1vZHVsZXMgbGlua2VkIGluOiB1c2JfZl9hY20gdV9z
+ZXJpYWwgbGliY29tcG9zaXRlDQo+IGNvbmZpZ2ZzIHpyYW0genNtYWxsb2MgZW1sb2coTykgcnRj
+X3JrODA4IGNsa19yazgwOCBzcGlfcm9ja2NoaXANCj4gd2R0b2tlbihPKSBbbGFzdCB1bmxvYWRl
+ZDogZ19zZXJpYWxdDQo+IFsgIDIwOC4wNjUzMDNdIENQVTogMCBQSUQ6IDEyMDMgQ29tbTogc2gg
+VGFpbnRlZDogRyAgICAgICAgICAgTyAgICAgIDUuNC4yMSAjMQ0KPiBbICAyMDguMDY1OTIzXSBI
+YXJkd2FyZSBuYW1lOiBSb2NrY2hpcCAoRGV2aWNlIFRyZWUpDQo+IFsgIDIwOC4wNjYzNjRdIFBD
+IGlzIGF0IF9fY2FuY2VsX3dvcmtfdGltZXIrMHg2NC8weDIwMA0KPiBbICAyMDguMDY2ODE5XSBM
+UiBpcyBhdCB0cnlfdG9fZ3JhYl9wZW5kaW5nKzB4NDQvMHgxYTANCj4gWyAgMjA4LjA2NzI1N10g
+cGMgOiBbPGMwMTUzYzcwPl0gICAgbHIgOiBbPGMwMTUyYTM0Pl0gICAgcHNyOiAyMDAxMDA5Mw0K
+PiBbICAyMDguMDY3ODE4XSBzcCA6IGM1ZDkxZTk4ICBpcCA6IDAwMDAwMDAwICBmcCA6IGMwOTRl
+OGM4DQo+IFsgIDIwOC4wNjgyODldIHIxMDogMDAwMDAwMDAgIHI5IDogYzY0OGZiN2MgIHI4IDog
+YzVjODhmMDANCj4gWyAgMjA4LjA2ODc2MF0gcjcgOiAwMDAwMDAwMCAgcjYgOiAwMDAwMDAwMCAg
+cjUgOiBjNjQ4ZDIwNCAgcjQgOiBjNWQ5MDAwMA0KPiBbICAyMDguMDY5MzQzXSByMyA6IDAwNzY2
+NTAwICByMiA6IDAwNzY2NTY1ICByMSA6IGM2NDhkMjA0ICByMCA6IDAwMDAwMDAwDQo+IFsgIDIw
+OC4wNjk5MzNdIEZsYWdzOiBuekN2ICBJUlFzIG9mZiAgRklRcyBvbiAgTW9kZSBTVkNfMzIgIElT
+QSBBUk0NCj4gU2VnbWVudCBub25lDQo+IFsgIDIwOC4wNzA1ODFdIENvbnRyb2w6IDEwYzUzODdk
+ICBUYWJsZTogNjU5MTAwNmEgIERBQzogMDAwMDAwNTENCj4gWyAgMjA4LjA3MTEwMl0gUHJvY2Vz
+cyBzaCAocGlkOiAxMjAzLCBzdGFjayBsaW1pdCA9IDB4N2MxNTc4YTkpDQo+IFsgIDIwOC4wNzE2
+MTRdIFN0YWNrOiAoMHhjNWQ5MWU5OCB0byAweGM1ZDkyMDAwKQ0KPiBbICAyMDguMDcyMDEyXSAx
+ZTgwOg0KPiAgICAgIDYwMDEwMDEzIGMwNGEyZjUwDQo+IFsgIDIwOC4wNzI3NDVdIDFlYTA6IGM2
+NDhmYTAwIDAwMDAwMDAwIDAwMDAwMDAwIGM1YzhjNTgwIGM1Yzg4ZjAwDQo+IGMwYzA1Yzg4IDAw
+MDAwMDAwIGM2NDhmYTAwDQo+IFsgIDIwOC4wNzM0NzhdIDFlYzA6IGM2NDhmYTAwIDAwMDAwMDAw
+IGM1YzhjNTgwIGMwNDlhZjg0IGMwYzZmM2I0DQo+IGMwNDliMDgwIGM2NDhmYTAwIDAwMDAwMDAw
+DQo+IFsgIDIwOC4wNzQyMTFdIDFlZTA6IGM2NDhmYmE4IGMwNDliZTEwIDAwMDAwMDAwIDAwMDAw
+MDAwIDAwMDAwMTc4DQo+IGM2NDhmYjA0IGM2NDhmYjA0IGMwOTg4M2MwDQo+IFsgIDIwOC4wNzQ5
+NDRdIDFmMDA6IDgwMTAwMDBhIGM1Yzg4ZjAwIDAwMGUwMDAzIGM1OTA3Mzk4IGM3MjBhODUwDQo+
+IGM2ZTY4Y2MwIDAwMDAwMDA4IGM1Yzg4ZjA4DQo+IFsgIDIwOC4wNzU2NzddIDFmMjA6IDAwMDAw
+MDAwIGMwMmI0NzZjIDAwMDAwMDAwIDAwMDAwMDAwIGM1ZDk1ODAwDQo+IGM1ZDk1YzU0IGMwY2Ix
+NWI0IGM1ZDk1YzNjDQo+IFsgIDIwOC4wNzY0MTFdIDFmNDA6IGM2MzRhYTgwIDAwMDAwMDAwIDAw
+MDAwMGY4IGMwMTU3Zjc4IGM1ZDk1ODAwDQo+IGM2NDBiNDAwIGM1ZDkwMDAwIGM2NDBiNDQwDQo+
+IFsgIDIwOC4wNzcxNDZdIDFmNjA6IGZmZmZlMDAwIGMwMTNiZjY0IDAwMDAwODBmIGMwMTE2NWNj
+IGI2ZjA5YWJjDQo+IGMwYzA1Yzg4IDAwMDAwMDAwIDAwMDAwMGY4DQo+IFsgIDIwOC4wNzc4Nzld
+IDFmODA6IDAwMDAwMDAwIGMwMTNkNGI4IDAwMDAwMDAwIDAwMDAwMDA0IDAwNTAyMDFjDQo+IDAw
+MDAwMGY4IGMwMTAxMjA0IGMwMTNkNTU0DQo+IFsgIDIwOC4wNzg2MTFdIDFmYTA6IDAwMDAwMDAw
+IGMwMTAxMDAwIDAwMDAwMDAwIDAwMDAwMDA0IDAwMDAwMDAwDQo+IDAwMDAwMDAwIDAwNTAzMTUw
+IDAwMDAwMDAwDQo+IFsgIDIwOC4wNzkzNDRdIDFmYzA6IDAwMDAwMDAwIDAwMDAwMDA0IDAwNTAy
+MDFjIDAwMDAwMGY4IDAwMDAwMDAwDQo+IDAwMDAwMDAwIDAwNTAxYTc4IDAwMDAwMDAwDQo+IFsg
+IDIwOC4wODAwNzddIDFmZTA6IDAwNTAxYjI4IGJlYzc5OGU0IDAwNDhlMzYwIGI2ZTY5NWU0IDIw
+MDEwMDEwDQo+IDAwMDAwMDAwIDAwMDAwMDAwIDAwMDAwMDAwDQo+IFsgIDIwOC4wODA4MzFdIFs8
+YzAxNTNjNzA+XSAoX19jYW5jZWxfd29ya190aW1lcikgZnJvbSBbPGMwNDlhZjg0Pl0NCj4gKHJl
+bGVhc2VfdHR5KzB4ODgvMHgxMDQpDQo+IFsgIDIwOC4wODE1ODVdIFs8YzA0OWFmODQ+XSAocmVs
+ZWFzZV90dHkpIGZyb20gWzxjMDQ5YjA4MD5dDQo+ICh0dHlfcmVsZWFzZV9zdHJ1Y3QrMHgzNC8w
+eDQwKQ0KPiBbICAyMDguMDgyMzE1XSBbPGMwNDliMDgwPl0gKHR0eV9yZWxlYXNlX3N0cnVjdCkg
+ZnJvbSBbPGMwNDliZTEwPl0NCj4gKHR0eV9yZWxlYXNlKzB4NDNjLzB4NjQwKQ0KPiBbICAyMDgu
+MDgzMDU2XSBbPGMwNDliZTEwPl0gKHR0eV9yZWxlYXNlKSBmcm9tIFs8YzAyYjQ3NmM+XSAoX19m
+cHV0KzB4ODgvMHgyMTgpDQo+IFsgIDIwOC4wODM3MDJdIFs8YzAyYjQ3NmM+XSAoX19mcHV0KSBm
+cm9tIFs8YzAxNTdmNzg+XSAodGFza193b3JrX3J1bisweGE0LzB4YzQpDQo+IFsgIDIwOC4wODQz
+NTddIFs8YzAxNTdmNzg+XSAodGFza193b3JrX3J1bikgZnJvbSBbPGMwMTNiZjY0Pl0NCj4gKGRv
+X2V4aXQrMHg0MzAvMHhhZWMpDQo+IFsgIDIwOC4wODUwMjldIFs8YzAxM2JmNjQ+XSAoZG9fZXhp
+dCkgZnJvbSBbPGMwMTNkNGI4Pl0NCj4gKGRvX2dyb3VwX2V4aXQrMHgzYy8weGM4KQ0KPiBbICAy
+MDguMDg1Njg0XSBbPGMwMTNkNGI4Pl0gKGRvX2dyb3VwX2V4aXQpIGZyb20gWzxjMDEzZDU1ND5d
+DQo+IChfX3dha2VfdXBfcGFyZW50KzB4MC8weDE4KQ0KPiBbICAyMDguMDg2Mzk3XSBDb2RlOiBl
+NTk1MzAwMCBlMzEzMDAwNCAxM2MzMzBmZiAwMWEwNDJhMyAoMTU5MzMwMDApDQo+IFsgIDIwOC4w
+ODY5NDhdIC0tLVsgZW5kIHRyYWNlIDlhYTk1NjZlNDJiOTJmMWMgXS0tLQ0KPiBbICAyMDguMDg3
+MzY3XSBGaXhpbmcgcmVjdXJzaXZlIGZhdWx0IGJ1dCByZWJvb3QgaXMgbmVlZGVkIQ0KPiANCg0K
+U29ycnksIGJ1dCBJIGNhbid0IGZpbmQgYW55IHJlbGF0aW9uIGJldHdlZW4gdGhpcyBybW1vZCBn
+X3NlcmlhbCBpc3N1ZSANCmFuZCBkd2MyLiBEb24ndCB0aGluayB0aGF0IGlzIGR3YzIgaXNzdWUu
+DQoNClRoYW5rcywNCk1pbmFzDQoNCg0KPiBUaGUgZGlmZiBJIGFwcGxpZWQgd2FzOg0KPiANCj4g
+QEAgLTY2Miw2ICs2NjIsOSBAQCBzdGF0aWMgdm9pZCBnc19jbG9zZShzdHJ1Y3QgdHR5X3N0cnVj
+dCAqdHR5LA0KPiBzdHJ1Y3QgZmlsZSAqZmlsZSkNCj4gICAgICBzdHJ1Y3QgZ3NfcG9ydCAqcG9y
+dCA9IHR0eS0+ZHJpdmVyX2RhdGE7DQo+ICAgICAgc3RydWN0IGdzZXJpYWwgICpnc2VyOw0KPiAN
+Cj4gKyAgICBwcl9kZWJ1ZygiZ3NfY2xvc2U6IGJlZm9yZSBzcGluX3VubG9ja19pcnEgMTogdHR5
+LT5kcml2ZXJfZGF0YSBpcyAlcFxuIiwNCj4gKyAgICAgICAgICAgICB0dHktPmRyaXZlcl9kYXRh
+KTsNCj4gKw0KPiAgICAgIHNwaW5fbG9ja19pcnEoJnBvcnQtPnBvcnRfbG9jayk7DQo+IA0KPiAg
+ICAgIGlmIChwb3J0LT5wb3J0LmNvdW50ICE9IDEpIHsNCj4gQEAgLTY4Nyw2ICs2OTAsMTAgQEAg
+c3RhdGljIHZvaWQgZ3NfY2xvc2Uoc3RydWN0IHR0eV9zdHJ1Y3QgKnR0eSwNCj4gc3RydWN0IGZp
+bGUgKmZpbGUpDQo+ICAgICAgICAgIHdhaXRfZXZlbnRfaW50ZXJydXB0aWJsZV90aW1lb3V0KHBv
+cnQtPmRyYWluX3dhaXQsDQo+ICAgICAgICAgICAgICAgICAgICAgIGdzX2Nsb3NlX2ZsdXNoX2Rv
+bmUocG9ydCksDQo+ICAgICAgICAgICAgICAgICAgICAgIEdTX0NMT1NFX1RJTUVPVVQgKiBIWik7
+DQo+ICsNCj4gKyAgICAgICAgcHJfZGVidWcoImdzX2Nsb3NlOiBiZWZvcmUgc3Bpbl91bmxvY2tf
+aXJxIDI6DQo+IHR0eS0+ZHJpdmVyX2RhdGEgaXMgJXBcbiIsDQo+ICsgICAgICAgICAgICAgICAg
+IHR0eS0+ZHJpdmVyX2RhdGEpOw0KPiArDQo+ICAgICAgICAgIHNwaW5fbG9ja19pcnEoJnBvcnQt
+PnBvcnRfbG9jayk7DQo+IA0KPiAgICAgICAgICBpZiAocG9ydC0+cG9ydC5jb3VudCAhPSAxKQ0K
+PiANCj4gDQo=
