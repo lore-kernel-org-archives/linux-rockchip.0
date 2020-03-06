@@ -1,112 +1,258 @@
-From: Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>
-Subject: Re: [PATCH 17/22] drm/tilcdc: Use simple encoder
-Date: Fri, 6 Mar 2020 18:03:18 +0200
-Message-ID: <d4b7313e-3b5e-0659-fb2a-32a969a80081@ti.com>
-References: <20200305155950.2705-1-tzimmermann@suse.de>
- <20200305155950.2705-18-tzimmermann@suse.de>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200305155950.2705-18-tzimmermann-l3A5Bk7waGM@public.gmane.org>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Thomas Zimmermann <tzimmermann-l3A5Bk7waGM@public.gmane.org>, airlied-cv59FeDIM0c@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org, abrodkin-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, bbrezillon-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, mripard-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, stefan-XLVq0VzYD2Y@public.gmane.org, alison.wang-3arQi8VN3Tc@public.gmane.org, patrik.r.jakobsson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, xinliang.liu-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, zourongrong-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, kong.kongxinwei-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org, puck.chen-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-imx-3arQi8VN3Tc@public.gmane.org, paul-icTtO2rgO2OTuSrc4Mpeew@public.gmane.org
-Cc: linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v1] dt-bindings: display: rockchip: convert rockchip vop bindings to yaml
+Date: Fri,  6 Mar 2020 18:03:53 +0100
+Message-ID: <20200306170353.11393-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 05/03/2020 17:59, Thomas Zimmermann wrote:
-> The tilcdc driver uses empty implementations for its encoders. Replace
-> the code with the generic simple encoder.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann-l3A5Bk7waGM@public.gmane.org>
+Current dts files with 'vop' nodes are manually verified.
+In order to automate this process rockchip-vop.txt
+has to be converted to yaml. Also included are new
+properties needed for the latest Rockchip Socs.
 
-Acked-by: Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>
+Added properties:
+  assigned-clocks
+  assigned-clock-rates
+  power-domains
+  rockchip,grf
 
-> ---
->  drivers/gpu/drm/tilcdc/tilcdc_external.c | 10 +++-------
->  drivers/gpu/drm/tilcdc/tilcdc_panel.c    |  8 ++------
->  2 files changed, 5 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_external.c b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> index 28b7f703236e..b177525588c1 100644
-> --- a/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> +++ b/drivers/gpu/drm/tilcdc/tilcdc_external.c
-> @@ -10,6 +10,7 @@
->  #include <drm/drm_atomic_helper.h>
->  #include <drm/drm_bridge.h>
->  #include <drm/drm_of.h>
-> +#include <drm/drm_simple_kms_helper.h>
->  
->  #include "tilcdc_drv.h"
->  #include "tilcdc_external.h"
-> @@ -83,10 +84,6 @@ int tilcdc_add_component_encoder(struct drm_device *ddev)
->  	return 0;
->  }
->  
-> -static const struct drm_encoder_funcs tilcdc_external_encoder_funcs = {
-> -	.destroy	= drm_encoder_cleanup,
-> -};
-> -
->  static
->  int tilcdc_attach_bridge(struct drm_device *ddev, struct drm_bridge *bridge)
->  {
-> @@ -131,9 +128,8 @@ int tilcdc_attach_external_device(struct drm_device *ddev)
->  	if (!priv->external_encoder)
->  		return -ENOMEM;
->  
-> -	ret = drm_encoder_init(ddev, priv->external_encoder,
-> -			       &tilcdc_external_encoder_funcs,
-> -			       DRM_MODE_ENCODER_NONE, NULL);
-> +	ret = drm_simple_encoder_init(ddev, priv->external_encoder,
-> +				      DRM_MODE_ENCODER_NONE);
->  	if (ret) {
->  		dev_err(ddev->dev, "drm_encoder_init() failed %d\n", ret);
->  		return ret;
-> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_panel.c b/drivers/gpu/drm/tilcdc/tilcdc_panel.c
-> index 5584e656b857..12823d60c4e8 100644
-> --- a/drivers/gpu/drm/tilcdc/tilcdc_panel.c
-> +++ b/drivers/gpu/drm/tilcdc/tilcdc_panel.c
-> @@ -16,6 +16,7 @@
->  #include <drm/drm_connector.h>
->  #include <drm/drm_modeset_helper_vtables.h>
->  #include <drm/drm_probe_helper.h>
-> +#include <drm/drm_simple_kms_helper.h>
->  
->  #include "tilcdc_drv.h"
->  #include "tilcdc_panel.h"
-> @@ -74,10 +75,6 @@ static void panel_encoder_mode_set(struct drm_encoder *encoder,
->  	/* nothing needed */
->  }
->  
-> -static const struct drm_encoder_funcs panel_encoder_funcs = {
-> -		.destroy        = drm_encoder_cleanup,
-> -};
-> -
->  static const struct drm_encoder_helper_funcs panel_encoder_helper_funcs = {
->  		.dpms           = panel_encoder_dpms,
->  		.prepare        = panel_encoder_prepare,
-> @@ -102,8 +99,7 @@ static struct drm_encoder *panel_encoder_create(struct drm_device *dev,
->  	encoder = &panel_encoder->base;
->  	encoder->possible_crtcs = 1;
->  
-> -	ret = drm_encoder_init(dev, encoder, &panel_encoder_funcs,
-> -			DRM_MODE_ENCODER_LVDS, NULL);
-> +	ret = drm_simple_encoder_init(dev, encoder, DRM_MODE_ENCODER_LVDS);
->  	if (ret < 0)
->  		goto fail;
->  
-> 
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ .../bindings/display/rockchip/rockchip-vop.txt     |  74 -----------
+ .../bindings/display/rockchip/rockchip-vop.yaml    | 141 +++++++++++++++++++++
+ 2 files changed, 141 insertions(+), 74 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
 
-
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
+deleted file mode 100644
+index 8b3a5f514..000000000
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
++++ /dev/null
+@@ -1,74 +0,0 @@
+-device-tree bindings for rockchip soc display controller (vop)
+-
+-VOP (Visual Output Processor) is the Display Controller for the Rockchip
+-series of SoCs which transfers the image data from a video memory
+-buffer to an external LCD interface.
+-
+-Required properties:
+-- compatible: value should be one of the following
+-		"rockchip,rk3036-vop";
+-		"rockchip,rk3126-vop";
+-		"rockchip,px30-vop-lit";
+-		"rockchip,px30-vop-big";
+-		"rockchip,rk3066-vop";
+-		"rockchip,rk3188-vop";
+-		"rockchip,rk3288-vop";
+-		"rockchip,rk3368-vop";
+-		"rockchip,rk3366-vop";
+-		"rockchip,rk3399-vop-big";
+-		"rockchip,rk3399-vop-lit";
+-		"rockchip,rk3228-vop";
+-		"rockchip,rk3328-vop";
+-
+-- reg: Must contain one entry corresponding to the base address and length
+-	of the register space. Can optionally contain a second entry
+-	corresponding to the CRTC gamma LUT address.
+-
+-- interrupts: should contain a list of all VOP IP block interrupts in the
+-		 order: VSYNC, LCD_SYSTEM. The interrupt specifier
+-		 format depends on the interrupt controller used.
+-
+-- clocks: must include clock specifiers corresponding to entries in the
+-		clock-names property.
+-
+-- clock-names: Must contain
+-		aclk_vop: for ddr buffer transfer.
+-		hclk_vop: for ahb bus to R/W the phy regs.
+-		dclk_vop: pixel clock.
+-
+-- resets: Must contain an entry for each entry in reset-names.
+-  See ../reset/reset.txt for details.
+-- reset-names: Must include the following entries:
+-  - axi
+-  - ahb
+-  - dclk
+-
+-- iommus: required a iommu node
+-
+-- port: A port node with endpoint definitions as defined in
+-  Documentation/devicetree/bindings/media/video-interfaces.txt.
+-
+-Example:
+-SoC specific DT entry:
+-	vopb: vopb@ff930000 {
+-		compatible = "rockchip,rk3288-vop";
+-		reg = <0x0 0xff930000 0x0 0x19c>, <0x0 0xff931000 0x0 0x1000>;
+-		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&cru ACLK_VOP0>, <&cru DCLK_VOP0>, <&cru HCLK_VOP0>;
+-		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
+-		resets = <&cru SRST_LCDC1_AXI>, <&cru SRST_LCDC1_AHB>, <&cru SRST_LCDC1_DCLK>;
+-		reset-names = "axi", "ahb", "dclk";
+-		iommus = <&vopb_mmu>;
+-		vopb_out: port {
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-			vopb_out_edp: endpoint@0 {
+-				reg = <0>;
+-				remote-endpoint=<&edp_in_vopb>;
+-			};
+-			vopb_out_hdmi: endpoint@1 {
+-				reg = <1>;
+-				remote-endpoint=<&hdmi_in_vopb>;
+-			};
+-		};
+-	};
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
+new file mode 100644
+index 000000000..93ccd32aa
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
+@@ -0,0 +1,141 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip soc display controller (VOP)
++
++description:
++  VOP (Visual Output Processor) is the Display Controller for the Rockchip
++  series of SoCs which transfers the image data from a video memory
++  buffer to an external LCD interface.
++
++maintainers:
++  - Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
++
++properties:
++  compatible:
++    oneOf:
++      - const: rockchip,px30-vop-big
++      - const: rockchip,px30-vop-lit
++      - const: rockchip,rk3036-vop
++      - const: rockchip,rk3066-vop
++      - const: rockchip,rk3126-vop
++      - const: rockchip,rk3188-vop
++      - const: rockchip,rk3228-vop
++      - const: rockchip,rk3288-vop
++      - const: rockchip,rk3328-vop
++      - const: rockchip,rk3366-vop
++      - const: rockchip,rk3368-vop
++      - const: rockchip,rk3399-vop-big
++      - const: rockchip,rk3399-vop-lit
++
++  reg:
++    minItems: 1
++    items:
++      - description:
++          Must contain one entry corresponding to the base address and length
++          of the register space.
++      - description:
++          Can optionally contain a second entry corresponding to
++          the CRTC gamma LUT address.
++
++  interrupts:
++    maxItems: 1
++    description:
++      Should contain a list of all VOP IP block interrupts in the
++      order VSYNC, LCD_SYSTEM. The interrupt specifier
++      format depends on the interrupt controller used.
++
++  clocks:
++    items:
++      - description: Clock for ddr buffer transfer.
++      - description: Pixel clock.
++      - description: Clock for the ahb bus to R/W the phy regs.
++
++  clock-names:
++    items:
++      - const: aclk_vop
++      - const: dclk_vop
++      - const: hclk_vop
++
++  resets:
++    minItems: 3
++    maxItems: 3
++
++  reset-names:
++    items:
++      - const: axi
++      - const: ahb
++      - const: dclk
++
++  port:
++    type: object
++    description:
++      A port node with endpoint definitions as defined in
++      Documentation/devicetree/bindings/media/video-interfaces.txt.
++
++  assigned-clocks:
++    maxItems: 2
++
++  assigned-clock-rates:
++    maxItems: 2
++
++  iommus:
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      The phandle of the syscon node for
++      the general register file (GRF).
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - resets
++  - reset-names
++  - port
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3288-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    vopb: vopb@ff930000 {
++      compatible = "rockchip,rk3288-vop";
++      reg = <0x0 0xff930000 0x0 0x19c>,
++            <0x0 0xff931000 0x0 0x1000>;
++      interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru ACLK_VOP0>,
++               <&cru DCLK_VOP0>,
++               <&cru HCLK_VOP0>;
++      clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
++      resets = <&cru SRST_LCDC1_AXI>,
++               <&cru SRST_LCDC1_AHB>,
++               <&cru SRST_LCDC1_DCLK>;
++      reset-names = "axi", "ahb", "dclk";
++      iommus = <&vopb_mmu>;
++      vopb_out: port {
++        #address-cells = <1>;
++        #size-cells = <0>;
++        vopb_out_edp: endpoint@0 {
++          reg = <0>;
++          remote-endpoint=<&edp_in_vopb>;
++        };
++        vopb_out_hdmi: endpoint@1 {
++          reg = <1>;
++          remote-endpoint=<&hdmi_in_vopb>;
++        };
++      };
++    };
 -- 
-Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki.
-Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
+2.11.0
