@@ -1,43 +1,44 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v4 2/2] arm64: dts: rockchip: Add initial support for Pinebook Pro
-Date: Fri, 06 Mar 2020 20:09:05 +0100
-Message-ID: <1783248.GgDFSgCcj8@diego>
-References: <20200304213023.689983-2-t.schramm@manjaro.org> <6168222.Wuk326WHQK@phil> <b30fef29-6667-9200-178b-4d0e9fc63c12@manjaro.org>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH 2/3] dt-bindings: Add binding for Hardkernel Odroid Go Advance
+Date: Fri,  6 Mar 2020 22:09:21 +0100
+Message-ID: <20200306210922.172346-2-heiko@sntech.de>
+References: <20200306210922.172346-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <b30fef29-6667-9200-178b-4d0e9fc63c12-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
+In-Reply-To: <20200306210922.172346-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Emmanuel Vadot <manu-h+KGxgPPiopAfugRpC6u6w@public.gmane.org>, Alexis Ballier <aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org>, Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Nick Xie <nick-XW3xCAIBE2TQT0dZR+AlfA@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Vivek Unune <npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Tobias,
+From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 
-Am Freitag, 6. März 2020, 19:58:45 CET schrieb Tobias Schramm:
-> Hi Heiko,
-> 
-> >> This commit adds initial dt support for the rk3399 based Pinebook Pro.
-> >>
-> >> Signed-off-by: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
-> >
-> > applied for 5.7
-> >
-> 
-> any chance you can squeeze in another small fix? Somewhere in the
-> process the vmcc and vqmmc supplies of the sdmmc controller were removed
-> in error. Those should be added to the sdmmc controller like this:
-> 
->  &sdmmc {
->         pinctrl-names = "default";
->         pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_bus4>;
->         sd-uhs-sdr104;
-> +       vmmc-supply = <&vcc3v0_sd>;
-> +       vqmmc-supply = <&vcc_sdio>;
->         status = "okay";
->  };
+Add a compatible for the Odroid Go Advance from Hardkernel.
+The compatible used by the vendor already is odroid-go2, to distinguish
+it from the previous (microcontroller-based) Odroid Go, so we're keeping
+that, also to not cause unnecessary incompatibilites.
 
-I've amended the commit with these two properties.
+Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Heiko
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index f4ba00d679e6..4343ce7880e4 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -358,6 +358,11 @@ properties:
+           - const: haoyu,marsboard-rk3066
+           - const: rockchip,rk3066a
+ 
++      - description: Hardkernel Odroid Go Advance
++        items:
++          - const: hardkernel,rk3326-odroid-go2
++          - const: rockchip,rk3326
++
+       - description: Hugsun X99 TV Box
+         items:
+           - const: hugsun,x99
+-- 
+2.24.1
