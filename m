@@ -1,173 +1,74 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
 Subject: Re: [PATCH 1/2] ARM: Rockchip: Handle rk3288/rk3288w revision
-Date: Fri, 06 Mar 2020 07:30:56 -0300
-Message-ID: <8f3ef079b0c96d65e5855a58efd6d8dc32cd32e7.camel@collabora.com>
+Date: Fri, 6 Mar 2020 11:45:25 +0100
+Message-ID: <CAMuHMdXJQqaCcMko9GUAeUiYQzmy3vnX42yVQNPzhj5ijtFuYA@mail.gmail.com>
 References: <20200302155703.278421-1-mylene.josserand@collabora.com>
-         <2221545.2vEflg7qi2@diego>
-         <5fa8402863c7fb4171d8b2021a776b9ac0be1596.camel@collabora.com>
-         <35989681.7qWAQounLj@diego>
-         <8b993ec8ae9dccc6a8633cfe5e5b6d40d58ffbae.camel@collabora.com>
-         <506e1aeda3ed14276734f22f320b0ceb6a4b06b0.camel@collabora.com>
-         <933e1ce3-68be-9e78-18a3-eb3d4e038cfb@rock-chips.com>
+ <20200302155703.278421-2-mylene.josserand@collabora.com> <2221545.2vEflg7qi2@diego>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <933e1ce3-68be-9e78-18a3-eb3d4e038cfb@rock-chips.com>
+In-Reply-To: <2221545.2vEflg7qi2@diego>
 Sender: linux-clk-owner@vger.kernel.org
-To: Kever Yang <kever.yang@rock-chips.com>, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: =?ISO-8859-1?Q?Myl=E8ne?= Josserand <mylene.josserand@collabora.com>, linux@armlinux.org.uk, mturquette@baylibre.com, sboyd@kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com, linux-clk@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: =?UTF-8?Q?Myl=C3=A8ne_Josserand?= <mylene.josserand@collabora.com>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Russell King <linux@armlinux.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Collabora Kernel ML <kernel@collabora.com>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 2020-03-06 at 10:44 +0800, Kever Yang wrote:
-> Hi Ezequiel,
-> 
-> 
-> On 2020/3/5 下午7:35, Ezequiel Garcia wrote:
-> > (Adding Kever to the loop)
-> > 
-> > On Thu, 2020-03-05 at 08:32 -0300, Ezequiel Garcia wrote:
-> > > On Thu, 2020-03-05 at 01:51 +0100, Heiko Stübner wrote:
-> > > > Hi Ezequiel,
-> > > > 
-> > > > Am Donnerstag, 5. März 2020, 01:03:30 CET schrieb Ezequiel Garcia:
-> > > > > Hi Heiko,
-> > > > > 
-> > > > > On Wed, 2020-03-04 at 11:59 +0100, Heiko Stübner wrote:
-> > > > > > Hi,
-> > > > > > 
-> > > > > > Am Montag, 2. März 2020, 16:57:02 CET schrieb Mylène Josserand:
-> > > > > > > Determine which revision of rk3288 by checking the HDMI version.
-> > > > > > > According to the Rockchip BSP kernel, on rk3288w, the HDMI
-> > > > > > > revision equals 0x1A which is not the case for the rk3288 [1].
-> > > > > > > 
-> > > > > > > As these SOC have some differences, the new function
-> > > > > > > 'soc_is_rk3288w' will help us to know on which revision
-> > > > > > > we are.
-> > > > > > what happened to just having a different compatible in the dts?
-> > > > > > Aka doing a
-> > > > > > 
-> > > > > > rk3288w.dtsi with
-> > > > > > 
-> > > > > > #include "rk3288.dtsi"
-> > > > > > 
-> > > > > > &cru {
-> > > > > > 	compatible = "rockchip,rk3288w-cru";
-> > > > > > }
-> > > > > > 
-> > > > > I guess you have something like this in mind:
-> > > > > 
-> > > > > static void __init rk3288_clk_init(struct device_node *np)
-> > > > > {
-> > > > >          __rk3288_clk_init(np, RK3288_SOC_REV_RK3288W);
-> > > > > }
-> > > > > CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
-> > > > > 
-> > > > > static void __init rk3288w_clk_init(struct device_node *np)
-> > > > > {
-> > > > >          __rk3288_clk_init(np, RK3288_SOC_REV_RK3288);
-> > > > > }
-> > > > > CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288w-cru", rk3288w_clk_init);
-> > > > > 
-> > > > > And the rest is mostly untouched, except the revision is
-> > > > > no longer queried and is now passed by the DT?
-> > > > Essentially yes, but I guess I was more thinking along the lines of
-> > > > the rk3188/rk3066a/rk3188a (drivers/clk/rockchip/clk-rk3188.c)
-> > > > 
-> > > > 
-> > > > > This would be cleaner for the kernel, with the obvious
-> > > > > drawback being that you now have to maintain
-> > > > > another DTS.
-> > > > Right now we would end up with the pretty minimal devicetree
-> > > > having just that cru. So not very invasive.
-> > > > 
-> > > > 
-> > > > > This could be an inconvenience. I believe
-> > > > > RK3288W is meant as a direct replacement for RK3288,
-> > > > > so folks building products would expect to just use
-> > > > > RK3288W, and not really bother with passing a
-> > > > > different DTS or what not.
-> > > > Not sure I follow. As below, I don't think boards will magically switch
-> > > > between soc variants, so a boards devicetree should just include
-> > > > the variant - especially as I don't really know how many
-> > > > additional new boards we will see with it (rk3288 being quite old itself).
-> > > > 
-> > > It's not about new boards, any company does sells some RK32888-based product,
-> > > will eventually want to produce some more.
-> > > 
-> > > If I understand correctly, RK3288W is the SoC that Rockchip is now offering,
-> > > and not RK3288 anymore.
-> 
-> No, the RK3288 will continue to supply to the legacy projects which may 
-> have a long contract with Rockchip,
-> 
-> and RK3288W is the recommend to use in all new project.
-> 
+Hi Heiko,
 
-I guess this means that if a company not having a long contract
-wants to keep producing an RK3288-based product, it will have to
-resort to RK3288W.
+On Wed, Mar 4, 2020 at 12:00 PM Heiko Stübner <heiko@sntech.de> wrote:
+> Am Montag, 2. März 2020, 16:57:02 CET schrieb Mylène Josserand:
+> > Determine which revision of rk3288 by checking the HDMI version.
+> > According to the Rockchip BSP kernel, on rk3288w, the HDMI
+> > revision equals 0x1A which is not the case for the rk3288 [1].
+> >
+> > As these SOC have some differences, the new function
+> > 'soc_is_rk3288w' will help us to know on which revision
+> > we are.
+>
+> what happened to just having a different compatible in the dts?
+> Aka doing a
+>
+> rk3288w.dtsi with
+>
+> #include "rk3288.dtsi"
+>
+> &cru {
+>         compatible = "rockchip,rk3288w-cru";
+> }
+>
+> I somehow don't expect boards to just switch between soc variants
+> on the fly.
+>
+> Also, doing things in mach-rockchip is not very future-proof:
+>
+> (1) having random soc-specific APIs spanning the kernel feels wrong,
+>     especially as at some point it might not be contained to our own special
+>     drivers like the cru. I cannot really see people being enthusiastic if
+>     something like this would be needed in say the core Analogix-DP bridge ;-)
 
-And IIRC, it's meant to be a direct replacement.
- 
-> > > So, if you have to produce another batch of _the same RK3288_ product,
-> > > you'll have to use RK3288W. In other words, they would "just switch"
-> > > between SoC variants.
-> > > 
-> > > In fact, such a case motivates these patches :-)
-> > > 
-> > > > > > I somehow don't expect boards to just switch between soc variants
-> > > > > > on the fly.
-> > > > > > 
-> > > > > While I agree they are nasty, quirks like this
-> > > > > are not uncommon.
-> > > > > 
-> > > > > > Also, doing things in mach-rockchip is not very future-proof:
-> > > > > > 
-> > > > > There is actually no reason to keep this in mach-rockchip, right?
-> > > > > 
-> > > > > The quirk could be placed in other places. For instance,
-> > > > > directly in the clock driver.
-> > > > Mapping the hdmi controller inside the clock driver to read some "random"
-> > > > register that hopefully indicates an (undocumented) distinction between soc
-> > > > variants.
-> > > > 
-> > > > Somehow just having that minimal devicetree for the "w" sounds
-> > > > way cleaner ;-) .
-> 
-> I agree with Heiko on this.
-> 
-> What Rockchip done is:
-> 
-> - kernel is using "rockchip,rk3288w" compatible to identify rk3288w, 
-> which is clean in kernel;
-> 
-> - kernel evb dts do not have compatible "rockchip,rk3288w" for we would 
-> like to identify it dynamic in bootloader;
-> 
-> - We use U-Boot to identify the rk3288w with HDMI reg value, and pass it 
-> to kernel via modify the
-> 
->     dtb pass to kernel, so that we can support all kind of rockchip 
-> customer projects with any kind of rk3288;
-> 
-> - For upstream kernel, it make sense to add "rockchip,rk3288w" in board 
-> dts for which using rk3288w SoC.
-> 
+Indeed.  You're better of registering an soc_device_attribute using
+soc_device_register(), after which any driver can use soc_device_match()
+to differentiate based on the SoC revision.
 
-So you proposing to move this revision detection code
-from the kernel to all the bootloaders (U-Boot is not the
-only one, right?).
+> (2) I guess the rk3288w will not be the last soc doing this and on arm64 you
+>     can't do it that way, as there is no mach-rockchip there
 
-I understand that bootloaders are maybe less strict
-to quirks like this, but OTOH this approach seems like
-just movint things around, plus requiring now to update
-two components, instead of just one.
+There's drivers/soc/rockchip ;-)
 
-And also, are we sure the bootloaders maintainers
-will accept the quirk?
+> So my personal preference would really would be just a specific compatible
+> for affected ip blocks.
 
-Thanks,
-Ezequiel
+Doing that only for affected IP blocks may miss integration differences.
+Of course, you can always resort to soc_device_match() to handle those...
 
- 
+Gr{oetje,eeting}s,
+
+                        Geert
+
+-- 
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
