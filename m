@@ -1,12 +1,10 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH 2/3] dt-bindings: Add binding for Hardkernel Odroid Go Advance
-Date: Fri,  6 Mar 2020 22:09:21 +0100
-Message-ID: <20200306210922.172346-2-heiko@sntech.de>
-References: <20200306210922.172346-1-heiko@sntech.de>
+Subject: [PATCH 1/3] arm64: dts: rockchip: add core devicetree for rk3326
+Date: Fri,  6 Mar 2020 22:09:20 +0100
+Message-ID: <20200306210922.172346-1-heiko@sntech.de>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200306210922.172346-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
@@ -14,31 +12,35 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 
-Add a compatible for the Odroid Go Advance from Hardkernel.
-The compatible used by the vendor already is odroid-go2, to distinguish
-it from the previous (microcontroller-based) Odroid Go, so we're keeping
-that, also to not cause unnecessary incompatibilites.
+The rk3326 is basically a px30 without the second display controller.
+So add a dtsi based on that, that just removes the affected nodes.
 
 Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3326.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3326.dtsi
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index f4ba00d679e6..4343ce7880e4 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -358,6 +358,11 @@ properties:
-           - const: haoyu,marsboard-rk3066
-           - const: rockchip,rk3066a
- 
-+      - description: Hardkernel Odroid Go Advance
-+        items:
-+          - const: hardkernel,rk3326-odroid-go2
-+          - const: rockchip,rk3326
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326.dtsi b/arch/arm64/boot/dts/rockchip/rk3326.dtsi
+new file mode 100644
+index 000000000000..2ba6da125137
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3326.dtsi
+@@ -0,0 +1,15 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2020 Fuzhou Rockchip Electronics Co., Ltd
++ */
 +
-       - description: Hugsun X99 TV Box
-         items:
-           - const: hugsun,x99
++#include "px30.dtsi"
++
++&display_subsystem {
++	ports = <&vopb_out>;
++};
++
++/delete-node/ &dsi_in_vopl;
++/delete-node/ &lvds_vopl_in;
++/delete-node/ &vopl;
++/delete-node/ &vopl_mmu;
 -- 
 2.24.1
