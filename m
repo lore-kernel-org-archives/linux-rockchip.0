@@ -1,137 +1,358 @@
-From: Sam Ravnborg <sam@ravnborg.org>
-Subject: Re: [PATCH 37/51] drm/rockchip: Drop explicit
- drm_mode_config_cleanup call
-Date: Sat, 7 Mar 2020 09:38:59 +0100
-Message-ID: <20200307083859.GF28810@ravnborg.org>
-References: <20200302222631.3861340-1-daniel.vetter@ffwll.ch>
- <20200302222631.3861340-38-daniel.vetter@ffwll.ch>
+From: Jonathan Cameron <jic23@kernel.org>
+Subject: Re: [PATCH] iio: adc: rockchip_saradc: Add support iio
+ =?UTF-8?B?YnVmZmVyc+OAkOivt+azqOaEj++8jOmCruS7tueUsWxpbnV4LXJvY2tjaGlw?=
+ =?UTF-8?B?LWJvdW5jZXMreHhtPXJvY2stY2hpcHMuY29tQGxpc3RzLmluZnJhZGVhZC5v?=
+ =?UTF-8?B?cmfku6Plj5HjgJE=?=
+Date: Sat, 7 Mar 2020 11:42:31 +0000
+Message-ID: <20200307114231.41832f07@archlinux>
+References: <20200301112353.887028-1-heiko@sntech.de>
+        <67e46e36-ebac-ebe3-b4f4-9edb88fb0dcf@rock-chips.com>
+        <20200303203236.2cbcfeee@archlinux>
+        <9036a57e-be5e-49e1-6f0e-77b3a5e9fa12@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
-Return-path: <intel-gfx-bounces@lists.freedesktop.org>
-Content-Disposition: inline
-In-Reply-To: <20200302222631.3861340-38-daniel.vetter@ffwll.ch>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
-List-Post: <mailto:intel-gfx@lists.freedesktop.org>
-List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
- <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
-Errors-To: intel-gfx-bounces@lists.freedesktop.org
-Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
-To: Daniel Vetter <daniel.vetter@ffwll.ch>
-Cc: Francesco Lavra <francescolavra.fl@gmail.com>, Intel Graphics Development <intel-gfx@lists.freedesktop.org>, Sandy Huang <hjc@rock-chips.com>, DRI Development <dri-devel@lists.freedesktop.org>, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Thomas Zimmermann <tzimmermann@suse.de>, Daniel Vetter <daniel.vetter@intel.com>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <9036a57e-be5e-49e1-6f0e-77b3a5e9fa12@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: xxm <xxm@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, lars@metafoo.de, linux-iio@vger.kernel.org, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, pmeerw@pmeerw.net, knaack.h@gmx.de
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 02, 2020 at 11:26:17PM +0100, Daniel Vetter wrote:
-> It's (almost, there's some iommu stuff without significance) right
-> above the drm_dev_put().
-> =
+On Wed, 4 Mar 2020 09:39:10 +0800
+xxm <xxm@rock-chips.com> wrote:
 
-> This is made possible by a preceeding patch which added a drmm_
-> cleanup action to drm_mode_config_init(), hence all we need to do to
-> ensure that drm_mode_config_cleanup() is run on final drm_device
-> cleanup is check the new error code for _init().
-> =
+> Hi,
+>=20
+> =E5=9C=A8 2020/3/4 4:32, Jonathan Cameron =E5=86=99=E9=81=93:
+> > On Mon, 2 Mar 2020 10:11:02 +0800
+> > xxm <xxm@rock-chips.com> wrote:
+> >  =20
+> >> Hi, Heiko
+> >>
+> >> =E5=9C=A8 2020/3/1 19:23, Heiko Stuebner =E5=86=99=E9=81=93: =20
+> >>> From: Simon Xue <xxm@rock-chips.com>
+> >>>
+> >>> Add the ability to also support access via (triggered) buffers
+> >>> next to the existing direct mode.
+> >>>
+> >>> Device in question is the Odroid Go Advance that connects a joystick
+> >>> to two of the saradc channels for X and Y axis and the new (and still
+> >>> pending) adc joystick driver of course wants to use triggered buffers
+> >>> from the iio subsystem.
+> >>>
+> >>> Signed-off-by: Simon Xue <xxm@rock-chips.com>
+> >>> [some simplifications and added commit description]
+> >>> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> >>> ---
+> >>>    drivers/iio/adc/Kconfig           |   2 +
+> >>>    drivers/iio/adc/rockchip_saradc.c | 137 ++++++++++++++++++++++----=
+----
+> >>>    2 files changed, 102 insertions(+), 37 deletions(-)
+> >>>
+> >>> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+> >>> index 82e33082958c..55d2499ff757 100644
+> >>> --- a/drivers/iio/adc/Kconfig
+> >>> +++ b/drivers/iio/adc/Kconfig
+> >>> @@ -787,6 +787,8 @@ config ROCKCHIP_SARADC
+> >>>    	tristate "Rockchip SARADC driver"
+> >>>    	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
+> >>>    	depends on RESET_CONTROLLER
+> >>> +	select IIO_BUFFER
+> >>> +	select IIO_TRIGGERED_BUFFER
+> >>>    	help
+> >>>    	  Say yes here to build support for the SARADC found in SoCs from
+> >>>    	  Rockchip.
+> >>> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rock=
+chip_saradc.c
+> >>> index 582ba047c4a6..402b2210a682 100644
+> >>> --- a/drivers/iio/adc/rockchip_saradc.c
+> >>> +++ b/drivers/iio/adc/rockchip_saradc.c
+> >>> @@ -15,7 +15,11 @@
+> >>>    #include <linux/delay.h>
+> >>>    #include <linux/reset.h>
+> >>>    #include <linux/regulator/consumer.h>
+> >>> +#include <linux/iio/buffer.h>
+> >>>    #include <linux/iio/iio.h>
+> >>> +#include <linux/iio/trigger.h>
+> >>> +#include <linux/iio/trigger_consumer.h>
+> >>> +#include <linux/iio/triggered_buffer.h>
+> >>>   =20
+> >>>    #define SARADC_DATA			0x00
+> >>>   =20
+> >>> @@ -34,7 +38,6 @@
+> >>>    #define SARADC_TIMEOUT			msecs_to_jiffies(100)
+> >>>   =20
+> >>>    struct rockchip_saradc_data {
+> >>> -	int				num_bits;
+> >>>    	const struct iio_chan_spec	*channels;
+> >>>    	int				num_channels;
+> >>>    	unsigned long			clk_rate;
+> >>> @@ -49,8 +52,37 @@ struct rockchip_saradc {
+> >>>    	struct reset_control	*reset;
+> >>>    	const struct rockchip_saradc_data *data;
+> >>>    	u16			last_val;
+> >>> +	const struct iio_chan_spec *last_chan;
+> >>>    };
+> >>>   =20
+> >>> +static void rockchip_saradc_power_down(struct rockchip_saradc *info)
+> >>> +{
+> >>> +	/* Clear irq & power down adc */
+> >>> +	writel_relaxed(0, info->regs + SARADC_CTRL);
+> >>> +}
+> >>> +
+> >>> +static int rockchip_saradc_conversion(struct rockchip_saradc *info,
+> >>> +				   struct iio_chan_spec const *chan)
+> >>> +{
+> >>> +	reinit_completion(&info->completion);
+> >>> +
+> >>> +	/* 8 clock periods as delay between power up and start cmd */
+> >>> +	writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
+> >>> +
+> >>> +	info->last_chan =3D chan;
+> >>> +
+> >>> +	/* Select the channel to be used and trigger conversion */
+> >>> +	writel(SARADC_CTRL_POWER_CTRL
+> >>> +			| (chan->channel & SARADC_CTRL_CHN_MASK)
+> >>> +			| SARADC_CTRL_IRQ_ENABLE,
+> >>> +		   info->regs + SARADC_CTRL);
+> >>> +
+> >>> +	if (!wait_for_completion_timeout(&info->completion, SARADC_TIMEOUT))
+> >>> +		return -ETIMEDOUT;
+> >>> +
+> >>> +	return 0;
+> >>> +}
+> >>> +
+> >>>    static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
+> >>>    				    struct iio_chan_spec const *chan,
+> >>>    				    int *val, int *val2, long mask)
+> >>> @@ -62,24 +94,12 @@ static int rockchip_saradc_read_raw(struct iio_de=
+v *indio_dev,
+> >>>    	case IIO_CHAN_INFO_RAW:
+> >>>    		mutex_lock(&indio_dev->mlock);
+> >>>   =20
+> >>> -		reinit_completion(&info->completion);
+> >>> -
+> >>> -		/* 8 clock periods as delay between power up and start cmd */
+> >>> -		writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
+> >>> -
+> >>> -		/* Select the channel to be used and trigger conversion */
+> >>> -		writel(SARADC_CTRL_POWER_CTRL
+> >>> -				| (chan->channel & SARADC_CTRL_CHN_MASK)
+> >>> -				| SARADC_CTRL_IRQ_ENABLE,
+> >>> -		       info->regs + SARADC_CTRL);
+> >>> -
+> >>> -		if (!wait_for_completion_timeout(&info->completion,
+> >>> -						 SARADC_TIMEOUT)) {
+> >>> -			writel_relaxed(0, info->regs + SARADC_CTRL);
+> >>> +		ret =3D rockchip_saradc_conversion(info, chan);
+> >>> +		if (ret) {
+> >>> +			rockchip_saradc_power_down(info);
+> >>>    			mutex_unlock(&indio_dev->mlock);
+> >>> -			return -ETIMEDOUT;
+> >>> +			return ret;
+> >>>    		}
+> >>> -
+> >>>    		*val =3D info->last_val;
+> >>>    		mutex_unlock(&indio_dev->mlock);
+> >>>    		return IIO_VAL_INT;
+> >>> @@ -91,7 +111,7 @@ static int rockchip_saradc_read_raw(struct iio_dev=
+ *indio_dev,
+> >>>    		}
+> >>>   =20
+> >>>    		*val =3D ret / 1000;
+> >>> -		*val2 =3D info->data->num_bits;
+> >>> +		*val2 =3D chan->scan_type.realbits;
+> >>>    		return IIO_VAL_FRACTIONAL_LOG2;
+> >>>    	default:
+> >>>    		return -EINVAL;
+> >>> @@ -104,10 +124,9 @@ static irqreturn_t rockchip_saradc_isr(int irq, =
+void *dev_id)
+> >>>   =20
+> >>>    	/* Read value */
+> >>>    	info->last_val =3D readl_relaxed(info->regs + SARADC_DATA);
+> >>> -	info->last_val &=3D GENMASK(info->data->num_bits - 1, 0);
+> >>> +	info->last_val &=3D GENMASK(info->last_chan->scan_type.realbits - 1=
+, 0);
+> >>>   =20
+> >>> -	/* Clear irq & power down adc */
+> >>> -	writel_relaxed(0, info->regs + SARADC_CTRL);
+> >>> +	rockchip_saradc_power_down(info);
+> >>>   =20
+> >>>    	complete(&info->completion);
+> >>>   =20
+> >>> @@ -118,51 +137,55 @@ static const struct iio_info rockchip_saradc_ii=
+o_info =3D {
+> >>>    	.read_raw =3D rockchip_saradc_read_raw,
+> >>>    };
+> >>>   =20
+> >>> -#define ADC_CHANNEL(_index, _id) {				\
+> >>> +#define ADC_CHANNEL(_index, _id, _res) {			\
+> >>>    	.type =3D IIO_VOLTAGE,					\
+> >>>    	.indexed =3D 1,						\
+> >>>    	.channel =3D _index,					\
+> >>>    	.info_mask_separate =3D BIT(IIO_CHAN_INFO_RAW),		\
+> >>>    	.info_mask_shared_by_type =3D BIT(IIO_CHAN_INFO_SCALE),	\
+> >>>    	.datasheet_name =3D _id,					\
+> >>> +	.scan_index =3D _index,					\
+> >>> +	.scan_type =3D {						\
+> >>> +		.sign =3D 'u',					\
+> >>> +		.realbits =3D _res,				\
+> >>> +		.storagebits =3D 16,				\
+> >>> +		.endianness =3D IIO_LE,				\
+> >>> +	},							\
+> >>>    }
+> >>>   =20
+> >>>    static const struct iio_chan_spec rockchip_saradc_iio_channels[] =
+=3D {
+> >>> -	ADC_CHANNEL(0, "adc0"),
+> >>> -	ADC_CHANNEL(1, "adc1"),
+> >>> -	ADC_CHANNEL(2, "adc2"),
+> >>> +	ADC_CHANNEL(0, "adc0", 10),
+> >>> +	ADC_CHANNEL(1, "adc1", 10),
+> >>> +	ADC_CHANNEL(2, "adc2", 10),
+> >>>    };
+> >>>   =20
+> >>>    static const struct rockchip_saradc_data saradc_data =3D {
+> >>> -	.num_bits =3D 10,
+> >>>    	.channels =3D rockchip_saradc_iio_channels,
+> >>>    	.num_channels =3D ARRAY_SIZE(rockchip_saradc_iio_channels),
+> >>>    	.clk_rate =3D 1000000,
+> >>>    };
+> >>>   =20
+> >>>    static const struct iio_chan_spec rockchip_rk3066_tsadc_iio_channe=
+ls[] =3D {
+> >>> -	ADC_CHANNEL(0, "adc0"),
+> >>> -	ADC_CHANNEL(1, "adc1"),
+> >>> +	ADC_CHANNEL(0, "adc0", 12),
+> >>> +	ADC_CHANNEL(1, "adc1", 12),
+> >>>    };
+> >>>   =20
+> >>>    static const struct rockchip_saradc_data rk3066_tsadc_data =3D {
+> >>> -	.num_bits =3D 12,
+> >>>    	.channels =3D rockchip_rk3066_tsadc_iio_channels,
+> >>>    	.num_channels =3D ARRAY_SIZE(rockchip_rk3066_tsadc_iio_channels),
+> >>>    	.clk_rate =3D 50000,
+> >>>    };
+> >>>   =20
+> >>>    static const struct iio_chan_spec rockchip_rk3399_saradc_iio_chann=
+els[] =3D {
+> >>> -	ADC_CHANNEL(0, "adc0"),
+> >>> -	ADC_CHANNEL(1, "adc1"),
+> >>> -	ADC_CHANNEL(2, "adc2"),
+> >>> -	ADC_CHANNEL(3, "adc3"),
+> >>> -	ADC_CHANNEL(4, "adc4"),
+> >>> -	ADC_CHANNEL(5, "adc5"),
+> >>> +	ADC_CHANNEL(0, "adc0", 10),
+> >>> +	ADC_CHANNEL(1, "adc1", 10),
+> >>> +	ADC_CHANNEL(2, "adc2", 10),
+> >>> +	ADC_CHANNEL(3, "adc3", 10),
+> >>> +	ADC_CHANNEL(4, "adc4", 10),
+> >>> +	ADC_CHANNEL(5, "adc5", 10),
+> >>>    };
+> >>>   =20
+> >>>    static const struct rockchip_saradc_data rk3399_saradc_data =3D {
+> >>> -	.num_bits =3D 10,
+> >>>    	.channels =3D rockchip_rk3399_saradc_iio_channels,
+> >>>    	.num_channels =3D ARRAY_SIZE(rockchip_rk3399_saradc_iio_channels),
+> >>>    	.clk_rate =3D 1000000,
+> >>> @@ -193,6 +216,39 @@ static void rockchip_saradc_reset_controller(str=
+uct reset_control *reset)
+> >>>    	reset_control_deassert(reset);
+> >>>    }
+> >>>   =20
+> >>> +static irqreturn_t rockchip_saradc_trigger_handler(int irq, void *p)
+> >>> +{
+> >>> +	struct iio_poll_func *pf =3D p;
+> >>> +	struct iio_dev *i_dev =3D pf->indio_dev;
+> >>> +	struct rockchip_saradc *info =3D iio_priv(i_dev);
+> >>> +	u16 data[20]; =20
+> >> How about this:
+> >> #define MAX_CHANNEL_NUM 16 =20
+> >=20
+> > Unfortunately this is a bit more complex than it seems.
+> > The buffer needs to be big enough for all the channels
+> > + a 8 byte aligned space to put the timestamp in.
+> >=20
+> > You can construct that in a fashion suitable to use in a
+> > macro but it's a bit more fiddly than simply being the
+> > maximum number of channels.
+> >  =20
+> Make use of iio_dev->scan_bytes to alloc a buffer in=20
+> iio_info->update_scan_mode callback for storing the
+> "data + timestamp" is another way
 
-> Aside: Another driver with a bit much devm_kzalloc, which should
-> probably use drmm_kzalloc instead ...
-> =
+Please don't do that. scan_bytes is marked as [INTERN] in
+the docs in iio.h.   The reason for this is it is an internal
+implementation detail.  Drivers should not be touching it.
+We never provided any sort of utility function because it's normally
+really easy for a driver to establish an upper bound for itself.
 
-> v2: Explain why this cleanup is possible (Laurent).
-> =
+Jonathan
 
-> v3: Jump out at the right label (Francesco)
-> =
 
-> v4: Try again, kbuild caught that I didn't build test this properly
-> ...
-> =
-
-> v5: Use drmm_mode_config_init() for more clarity (Sam, Thomas)
-> =
-
-> Cc: Sam Ravnborg <sam@ravnborg.org>
-> Cc: Thomas Zimmermann <tzimmermann@suse.de>
-> Cc: Francesco Lavra <francescolavra.fl@gmail.com>
-> Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> Signed-off-by: Daniel Vetter <daniel.vetter@intel.com>
-> Cc: Sandy Huang <hjc@rock-chips.com>
-> Cc: "Heiko St=FCbner" <heiko@sntech.de>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-
-Acked-by: Sam Ravnborg <sam@ravnborg.org>
-
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 14 +++++---------
->  1 file changed, 5 insertions(+), 9 deletions(-)
-> =
-
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/dr=
-m/rockchip/rockchip_drm_drv.c
-> index 20ecb1508a22..0f3eb392fe39 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> @@ -135,14 +135,16 @@ static int rockchip_drm_bind(struct device *dev)
->  	if (ret)
->  		goto err_free;
->  =
-
-> -	drm_mode_config_init(drm_dev);
-> +	ret =3D drmm_mode_config_init(drm_dev);
-> +	if (ret)
-> +		goto err_iommu_cleanup;
->  =
-
->  	rockchip_drm_mode_config_init(drm_dev);
->  =
-
->  	/* Try to bind all sub drivers. */
->  	ret =3D component_bind_all(dev, drm_dev);
->  	if (ret)
-> -		goto err_mode_config_cleanup;
-> +		goto err_iommu_cleanup;
->  =
-
->  	ret =3D drm_vblank_init(drm_dev, drm_dev->mode_config.num_crtc);
->  	if (ret)
-> @@ -173,12 +175,9 @@ static int rockchip_drm_bind(struct device *dev)
->  	rockchip_drm_fbdev_fini(drm_dev);
->  err_unbind_all:
->  	component_unbind_all(dev, drm_dev);
-> -err_mode_config_cleanup:
-> -	drm_mode_config_cleanup(drm_dev);
-> +err_iommu_cleanup:
->  	rockchip_iommu_cleanup(drm_dev);
->  err_free:
-> -	drm_dev->dev_private =3D NULL;
-> -	dev_set_drvdata(dev, NULL);
->  	drm_dev_put(drm_dev);
->  	return ret;
->  }
-> @@ -194,11 +193,8 @@ static void rockchip_drm_unbind(struct device *dev)
->  =
-
->  	drm_atomic_helper_shutdown(drm_dev);
->  	component_unbind_all(dev, drm_dev);
-> -	drm_mode_config_cleanup(drm_dev);
->  	rockchip_iommu_cleanup(drm_dev);
->  =
-
-> -	drm_dev->dev_private =3D NULL;
-> -	dev_set_drvdata(dev, NULL);
->  	drm_dev_put(drm_dev);
->  }
->  =
-
-> -- =
-
-> 2.24.1
-> =
-
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+> >> u16 data[MAX_CHANNEL_NUM]; =20
+> >>> +	int ret;
+> >>> +	int i, j =3D 0;
+> >>> +
+> >>> +	mutex_lock(&i_dev->mlock);
+> >>> +
+> >>> +	for_each_set_bit(i, i_dev->active_scan_mask, i_dev->masklength) {
+> >>> +		const struct iio_chan_spec *chan =3D &i_dev->channels[i];
+> >>> +
+> >>> +		ret =3D rockchip_saradc_conversion(info, chan);
+> >>> +		if (ret) {
+> >>> +			rockchip_saradc_power_down(info);
+> >>> +			goto out;
+> >>> +		}
+> >>> +
+> >>> +		data[j] =3D info->last_val;
+> >>> +		j++;
+> >>> +	}
+> >>> +
+> >>> +	iio_push_to_buffers_with_timestamp(i_dev, data, iio_get_time_ns(i_d=
+ev));
+> >>> +out:
+> >>> +	mutex_unlock(&i_dev->mlock);
+> >>> +
+> >>> +	iio_trigger_notify_done(i_dev->trig);
+> >>> +
+> >>> +	return IRQ_HANDLED;
+> >>> +}
+> >>> +
+> >>>    static int rockchip_saradc_probe(struct platform_device *pdev)
+> >>>    {
+> >>>    	struct rockchip_saradc *info =3D NULL;
+> >>> @@ -315,12 +371,19 @@ static int rockchip_saradc_probe(struct platfor=
+m_device *pdev)
+> >>>    	indio_dev->channels =3D info->data->channels;
+> >>>    	indio_dev->num_channels =3D info->data->num_channels;
+> >>>   =20
+> >>> -	ret =3D iio_device_register(indio_dev);
+> >>> +	ret =3D iio_triggered_buffer_setup(indio_dev, NULL,
+> >>> +					 rockchip_saradc_trigger_handler, NULL); =20
+> >> devm_iio_triggered_buffer_setup seems better =20
+> >>>    	if (ret)
+> >>>    		goto err_clk;
+> >>>   =20
+> >>> +	ret =3D iio_device_register(indio_dev);
+> >>> +	if (ret)
+> >>> +		goto err_buffer_cleanup;
+> >>> +
+> >>>    	return 0;
+> >>>   =20
+> >>> +err_buffer_cleanup:
+> >>> +	iio_triggered_buffer_cleanup(indio_dev);
+> >>>    err_clk:
+> >>>    	clk_disable_unprepare(info->clk);
+> >>>    err_pclk:
+> >>>     =20
+> >> xxm@rock-chips.com
+> >>
+> >> =20
+> >=20
+> >=20
+> >=20
+> >  =20
+>=20
+>=20
