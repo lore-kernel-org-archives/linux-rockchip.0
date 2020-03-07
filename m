@@ -1,7 +1,7 @@
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v1 3/5] arm64: dts: remove no-emmc from mmc node for Rockchip PX5 EVB
-Date: Sat,  7 Mar 2020 14:48:39 +0100
-Message-ID: <20200307134841.13803-3-jbx6244@gmail.com>
+Subject: [PATCH v1 4/5] arm64: dts: rockchip: fix vqmmc-supply property name for rk3399 puma
+Date: Sat,  7 Mar 2020 14:48:40 +0100
+Message-ID: <20200307134841.13803-4-jbx6244@gmail.com>
 References: <20200307134841.13803-1-jbx6244@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20200307134841.13803-1-jbx6244@gmail.com>
@@ -25,33 +25,34 @@ First when we combine rockchip-dw-mshc.yaml,
 synopsys-dw-mshc-common.yaml and mmc-controller.yaml it gives
 this error:
 
-arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dt.yaml: mmc@ff0c0000:
-'no-emmc' does not match any of the regexes:
+arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dt.yaml: mmc@fe320000:
+'vqmmc' does not match any of the regexes:
 '^.*@[0-9]+$', '^clk-phase-(legacy|sd-hs|mmc-(hs|hs[24]00|ddr52)|
 uhs-(sdr(12|25|50|104)|ddr50))$', 'pinctrl-[0-9]+'
 
-'no-emmc' is not a valid property name for mmc nodes,
-so remove it.
+'vqmmc' is not a valid property name for mmc nodes.
+Fix this error by renaming it to 'vqmmc-supply'.
 
 make ARCH=arm64 dtbs_check
 DT_SCHEMA_FILES=Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts b/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-index 231db0305..5ffd7b4d3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-px5-evb.dts
-@@ -239,7 +239,6 @@
- 	cap-mmc-highspeed;
- 	cap-sd-highspeed;
- 	card-detect-delay = <200>;
--	no-emmc;
- 	no-sdio;
- 	sd-uhs-sdr12;
- 	sd-uhs-sdr25;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+index c1edca387..07694b196 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+@@ -480,7 +480,7 @@
+ };
+ 
+ &sdmmc {
+-	vqmmc = <&vcc_sd>;
++	vqmmc-supply = <&vcc_sd>;
+ };
+ 
+ &spi1 {
 -- 
 2.11.0
