@@ -1,358 +1,666 @@
-From: Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH] iio: adc: rockchip_saradc: Add support iio
- =?UTF-8?B?YnVmZmVyc+OAkOivt+azqOaEj++8jOmCruS7tueUsWxpbnV4LXJvY2tjaGlw?=
- =?UTF-8?B?LWJvdW5jZXMreHhtPXJvY2stY2hpcHMuY29tQGxpc3RzLmluZnJhZGVhZC5v?=
- =?UTF-8?B?cmfku6Plj5HjgJE=?=
-Date: Sat, 7 Mar 2020 11:42:31 +0000
-Message-ID: <20200307114231.41832f07@archlinux>
-References: <20200301112353.887028-1-heiko@sntech.de>
-        <67e46e36-ebac-ebe3-b4f4-9edb88fb0dcf@rock-chips.com>
-        <20200303203236.2cbcfeee@archlinux>
-        <9036a57e-be5e-49e1-6f0e-77b3a5e9fa12@rock-chips.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: add Odroid Advance Go
+Date: Sat, 07 Mar 2020 14:47:37 +0100
+Message-ID: <1813727.zy6ATufqe5@diego>
+References: <20200306210922.172346-3-heiko@sntech.de> <59bdf2c1-79cf-2c45-263e-80a9358c7fdd@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <9036a57e-be5e-49e1-6f0e-77b3a5e9fa12@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: xxm <xxm@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, lars@metafoo.de, linux-iio@vger.kernel.org, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, pmeerw@pmeerw.net, knaack.h@gmx.de
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <59bdf2c1-79cf-2c45-263e-80a9358c7fdd-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 4 Mar 2020 09:39:10 +0800
-xxm <xxm@rock-chips.com> wrote:
+Hi Johan,
 
-> Hi,
->=20
-> =E5=9C=A8 2020/3/4 4:32, Jonathan Cameron =E5=86=99=E9=81=93:
-> > On Mon, 2 Mar 2020 10:11:02 +0800
-> > xxm <xxm@rock-chips.com> wrote:
-> >  =20
-> >> Hi, Heiko
-> >>
-> >> =E5=9C=A8 2020/3/1 19:23, Heiko Stuebner =E5=86=99=E9=81=93: =20
-> >>> From: Simon Xue <xxm@rock-chips.com>
-> >>>
-> >>> Add the ability to also support access via (triggered) buffers
-> >>> next to the existing direct mode.
-> >>>
-> >>> Device in question is the Odroid Go Advance that connects a joystick
-> >>> to two of the saradc channels for X and Y axis and the new (and still
-> >>> pending) adc joystick driver of course wants to use triggered buffers
-> >>> from the iio subsystem.
-> >>>
-> >>> Signed-off-by: Simon Xue <xxm@rock-chips.com>
-> >>> [some simplifications and added commit description]
-> >>> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-> >>> ---
-> >>>    drivers/iio/adc/Kconfig           |   2 +
-> >>>    drivers/iio/adc/rockchip_saradc.c | 137 ++++++++++++++++++++++----=
-----
-> >>>    2 files changed, 102 insertions(+), 37 deletions(-)
-> >>>
-> >>> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-> >>> index 82e33082958c..55d2499ff757 100644
-> >>> --- a/drivers/iio/adc/Kconfig
-> >>> +++ b/drivers/iio/adc/Kconfig
-> >>> @@ -787,6 +787,8 @@ config ROCKCHIP_SARADC
-> >>>    	tristate "Rockchip SARADC driver"
-> >>>    	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
-> >>>    	depends on RESET_CONTROLLER
-> >>> +	select IIO_BUFFER
-> >>> +	select IIO_TRIGGERED_BUFFER
-> >>>    	help
-> >>>    	  Say yes here to build support for the SARADC found in SoCs from
-> >>>    	  Rockchip.
-> >>> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rock=
-chip_saradc.c
-> >>> index 582ba047c4a6..402b2210a682 100644
-> >>> --- a/drivers/iio/adc/rockchip_saradc.c
-> >>> +++ b/drivers/iio/adc/rockchip_saradc.c
-> >>> @@ -15,7 +15,11 @@
-> >>>    #include <linux/delay.h>
-> >>>    #include <linux/reset.h>
-> >>>    #include <linux/regulator/consumer.h>
-> >>> +#include <linux/iio/buffer.h>
-> >>>    #include <linux/iio/iio.h>
-> >>> +#include <linux/iio/trigger.h>
-> >>> +#include <linux/iio/trigger_consumer.h>
-> >>> +#include <linux/iio/triggered_buffer.h>
-> >>>   =20
-> >>>    #define SARADC_DATA			0x00
-> >>>   =20
-> >>> @@ -34,7 +38,6 @@
-> >>>    #define SARADC_TIMEOUT			msecs_to_jiffies(100)
-> >>>   =20
-> >>>    struct rockchip_saradc_data {
-> >>> -	int				num_bits;
-> >>>    	const struct iio_chan_spec	*channels;
-> >>>    	int				num_channels;
-> >>>    	unsigned long			clk_rate;
-> >>> @@ -49,8 +52,37 @@ struct rockchip_saradc {
-> >>>    	struct reset_control	*reset;
-> >>>    	const struct rockchip_saradc_data *data;
-> >>>    	u16			last_val;
-> >>> +	const struct iio_chan_spec *last_chan;
-> >>>    };
-> >>>   =20
-> >>> +static void rockchip_saradc_power_down(struct rockchip_saradc *info)
-> >>> +{
-> >>> +	/* Clear irq & power down adc */
-> >>> +	writel_relaxed(0, info->regs + SARADC_CTRL);
-> >>> +}
-> >>> +
-> >>> +static int rockchip_saradc_conversion(struct rockchip_saradc *info,
-> >>> +				   struct iio_chan_spec const *chan)
-> >>> +{
-> >>> +	reinit_completion(&info->completion);
-> >>> +
-> >>> +	/* 8 clock periods as delay between power up and start cmd */
-> >>> +	writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
-> >>> +
-> >>> +	info->last_chan =3D chan;
-> >>> +
-> >>> +	/* Select the channel to be used and trigger conversion */
-> >>> +	writel(SARADC_CTRL_POWER_CTRL
-> >>> +			| (chan->channel & SARADC_CTRL_CHN_MASK)
-> >>> +			| SARADC_CTRL_IRQ_ENABLE,
-> >>> +		   info->regs + SARADC_CTRL);
-> >>> +
-> >>> +	if (!wait_for_completion_timeout(&info->completion, SARADC_TIMEOUT))
-> >>> +		return -ETIMEDOUT;
-> >>> +
-> >>> +	return 0;
-> >>> +}
-> >>> +
-> >>>    static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
-> >>>    				    struct iio_chan_spec const *chan,
-> >>>    				    int *val, int *val2, long mask)
-> >>> @@ -62,24 +94,12 @@ static int rockchip_saradc_read_raw(struct iio_de=
-v *indio_dev,
-> >>>    	case IIO_CHAN_INFO_RAW:
-> >>>    		mutex_lock(&indio_dev->mlock);
-> >>>   =20
-> >>> -		reinit_completion(&info->completion);
-> >>> -
-> >>> -		/* 8 clock periods as delay between power up and start cmd */
-> >>> -		writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
-> >>> -
-> >>> -		/* Select the channel to be used and trigger conversion */
-> >>> -		writel(SARADC_CTRL_POWER_CTRL
-> >>> -				| (chan->channel & SARADC_CTRL_CHN_MASK)
-> >>> -				| SARADC_CTRL_IRQ_ENABLE,
-> >>> -		       info->regs + SARADC_CTRL);
-> >>> -
-> >>> -		if (!wait_for_completion_timeout(&info->completion,
-> >>> -						 SARADC_TIMEOUT)) {
-> >>> -			writel_relaxed(0, info->regs + SARADC_CTRL);
-> >>> +		ret =3D rockchip_saradc_conversion(info, chan);
-> >>> +		if (ret) {
-> >>> +			rockchip_saradc_power_down(info);
-> >>>    			mutex_unlock(&indio_dev->mlock);
-> >>> -			return -ETIMEDOUT;
-> >>> +			return ret;
-> >>>    		}
-> >>> -
-> >>>    		*val =3D info->last_val;
-> >>>    		mutex_unlock(&indio_dev->mlock);
-> >>>    		return IIO_VAL_INT;
-> >>> @@ -91,7 +111,7 @@ static int rockchip_saradc_read_raw(struct iio_dev=
- *indio_dev,
-> >>>    		}
-> >>>   =20
-> >>>    		*val =3D ret / 1000;
-> >>> -		*val2 =3D info->data->num_bits;
-> >>> +		*val2 =3D chan->scan_type.realbits;
-> >>>    		return IIO_VAL_FRACTIONAL_LOG2;
-> >>>    	default:
-> >>>    		return -EINVAL;
-> >>> @@ -104,10 +124,9 @@ static irqreturn_t rockchip_saradc_isr(int irq, =
-void *dev_id)
-> >>>   =20
-> >>>    	/* Read value */
-> >>>    	info->last_val =3D readl_relaxed(info->regs + SARADC_DATA);
-> >>> -	info->last_val &=3D GENMASK(info->data->num_bits - 1, 0);
-> >>> +	info->last_val &=3D GENMASK(info->last_chan->scan_type.realbits - 1=
-, 0);
-> >>>   =20
-> >>> -	/* Clear irq & power down adc */
-> >>> -	writel_relaxed(0, info->regs + SARADC_CTRL);
-> >>> +	rockchip_saradc_power_down(info);
-> >>>   =20
-> >>>    	complete(&info->completion);
-> >>>   =20
-> >>> @@ -118,51 +137,55 @@ static const struct iio_info rockchip_saradc_ii=
-o_info =3D {
-> >>>    	.read_raw =3D rockchip_saradc_read_raw,
-> >>>    };
-> >>>   =20
-> >>> -#define ADC_CHANNEL(_index, _id) {				\
-> >>> +#define ADC_CHANNEL(_index, _id, _res) {			\
-> >>>    	.type =3D IIO_VOLTAGE,					\
-> >>>    	.indexed =3D 1,						\
-> >>>    	.channel =3D _index,					\
-> >>>    	.info_mask_separate =3D BIT(IIO_CHAN_INFO_RAW),		\
-> >>>    	.info_mask_shared_by_type =3D BIT(IIO_CHAN_INFO_SCALE),	\
-> >>>    	.datasheet_name =3D _id,					\
-> >>> +	.scan_index =3D _index,					\
-> >>> +	.scan_type =3D {						\
-> >>> +		.sign =3D 'u',					\
-> >>> +		.realbits =3D _res,				\
-> >>> +		.storagebits =3D 16,				\
-> >>> +		.endianness =3D IIO_LE,				\
-> >>> +	},							\
-> >>>    }
-> >>>   =20
-> >>>    static const struct iio_chan_spec rockchip_saradc_iio_channels[] =
-=3D {
-> >>> -	ADC_CHANNEL(0, "adc0"),
-> >>> -	ADC_CHANNEL(1, "adc1"),
-> >>> -	ADC_CHANNEL(2, "adc2"),
-> >>> +	ADC_CHANNEL(0, "adc0", 10),
-> >>> +	ADC_CHANNEL(1, "adc1", 10),
-> >>> +	ADC_CHANNEL(2, "adc2", 10),
-> >>>    };
-> >>>   =20
-> >>>    static const struct rockchip_saradc_data saradc_data =3D {
-> >>> -	.num_bits =3D 10,
-> >>>    	.channels =3D rockchip_saradc_iio_channels,
-> >>>    	.num_channels =3D ARRAY_SIZE(rockchip_saradc_iio_channels),
-> >>>    	.clk_rate =3D 1000000,
-> >>>    };
-> >>>   =20
-> >>>    static const struct iio_chan_spec rockchip_rk3066_tsadc_iio_channe=
-ls[] =3D {
-> >>> -	ADC_CHANNEL(0, "adc0"),
-> >>> -	ADC_CHANNEL(1, "adc1"),
-> >>> +	ADC_CHANNEL(0, "adc0", 12),
-> >>> +	ADC_CHANNEL(1, "adc1", 12),
-> >>>    };
-> >>>   =20
-> >>>    static const struct rockchip_saradc_data rk3066_tsadc_data =3D {
-> >>> -	.num_bits =3D 12,
-> >>>    	.channels =3D rockchip_rk3066_tsadc_iio_channels,
-> >>>    	.num_channels =3D ARRAY_SIZE(rockchip_rk3066_tsadc_iio_channels),
-> >>>    	.clk_rate =3D 50000,
-> >>>    };
-> >>>   =20
-> >>>    static const struct iio_chan_spec rockchip_rk3399_saradc_iio_chann=
-els[] =3D {
-> >>> -	ADC_CHANNEL(0, "adc0"),
-> >>> -	ADC_CHANNEL(1, "adc1"),
-> >>> -	ADC_CHANNEL(2, "adc2"),
-> >>> -	ADC_CHANNEL(3, "adc3"),
-> >>> -	ADC_CHANNEL(4, "adc4"),
-> >>> -	ADC_CHANNEL(5, "adc5"),
-> >>> +	ADC_CHANNEL(0, "adc0", 10),
-> >>> +	ADC_CHANNEL(1, "adc1", 10),
-> >>> +	ADC_CHANNEL(2, "adc2", 10),
-> >>> +	ADC_CHANNEL(3, "adc3", 10),
-> >>> +	ADC_CHANNEL(4, "adc4", 10),
-> >>> +	ADC_CHANNEL(5, "adc5", 10),
-> >>>    };
-> >>>   =20
-> >>>    static const struct rockchip_saradc_data rk3399_saradc_data =3D {
-> >>> -	.num_bits =3D 10,
-> >>>    	.channels =3D rockchip_rk3399_saradc_iio_channels,
-> >>>    	.num_channels =3D ARRAY_SIZE(rockchip_rk3399_saradc_iio_channels),
-> >>>    	.clk_rate =3D 1000000,
-> >>> @@ -193,6 +216,39 @@ static void rockchip_saradc_reset_controller(str=
-uct reset_control *reset)
-> >>>    	reset_control_deassert(reset);
-> >>>    }
-> >>>   =20
-> >>> +static irqreturn_t rockchip_saradc_trigger_handler(int irq, void *p)
-> >>> +{
-> >>> +	struct iio_poll_func *pf =3D p;
-> >>> +	struct iio_dev *i_dev =3D pf->indio_dev;
-> >>> +	struct rockchip_saradc *info =3D iio_priv(i_dev);
-> >>> +	u16 data[20]; =20
-> >> How about this:
-> >> #define MAX_CHANNEL_NUM 16 =20
-> >=20
-> > Unfortunately this is a bit more complex than it seems.
-> > The buffer needs to be big enough for all the channels
-> > + a 8 byte aligned space to put the timestamp in.
-> >=20
-> > You can construct that in a fashion suitable to use in a
-> > macro but it's a bit more fiddly than simply being the
-> > maximum number of channels.
-> >  =20
-> Make use of iio_dev->scan_bytes to alloc a buffer in=20
-> iio_info->update_scan_mode callback for storing the
-> "data + timestamp" is another way
+Am Samstag, 7. März 2020, 09:36:19 CET schrieb Johan Jonker:
+> The 'heartbeat' led seems to need some changes. The rest is inherited
+> from px30.dtsi I think. How do you deal with all the compatible
+> properties names that are normally SoC specific?
 
-Please don't do that. scan_bytes is marked as [INTERN] in
-the docs in iio.h.   The reason for this is it is an internal
-implementation detail.  Drivers should not be touching it.
-We never provided any sort of utility function because it's normally
-really easy for a driver to establish an upper bound for itself.
+The rk3326 really is just a px30 with the little vop deactivated.
+So I really don't want to make "much fuss" over that ;-)
 
-Jonathan
+Previous iterations where the arm32 px3/px3se/etc which essentially
+also just copied an existing soc and added some industrial voodoo
+to the chip itself (temperature range or whatever).
 
 
-> >> u16 data[MAX_CHANNEL_NUM]; =20
-> >>> +	int ret;
-> >>> +	int i, j =3D 0;
-> >>> +
-> >>> +	mutex_lock(&i_dev->mlock);
-> >>> +
-> >>> +	for_each_set_bit(i, i_dev->active_scan_mask, i_dev->masklength) {
-> >>> +		const struct iio_chan_spec *chan =3D &i_dev->channels[i];
-> >>> +
-> >>> +		ret =3D rockchip_saradc_conversion(info, chan);
-> >>> +		if (ret) {
-> >>> +			rockchip_saradc_power_down(info);
-> >>> +			goto out;
-> >>> +		}
-> >>> +
-> >>> +		data[j] =3D info->last_val;
-> >>> +		j++;
-> >>> +	}
-> >>> +
-> >>> +	iio_push_to_buffers_with_timestamp(i_dev, data, iio_get_time_ns(i_d=
-ev));
-> >>> +out:
-> >>> +	mutex_unlock(&i_dev->mlock);
-> >>> +
-> >>> +	iio_trigger_notify_done(i_dev->trig);
-> >>> +
-> >>> +	return IRQ_HANDLED;
-> >>> +}
-> >>> +
-> >>>    static int rockchip_saradc_probe(struct platform_device *pdev)
-> >>>    {
-> >>>    	struct rockchip_saradc *info =3D NULL;
-> >>> @@ -315,12 +371,19 @@ static int rockchip_saradc_probe(struct platfor=
-m_device *pdev)
-> >>>    	indio_dev->channels =3D info->data->channels;
-> >>>    	indio_dev->num_channels =3D info->data->num_channels;
-> >>>   =20
-> >>> -	ret =3D iio_device_register(indio_dev);
-> >>> +	ret =3D iio_triggered_buffer_setup(indio_dev, NULL,
-> >>> +					 rockchip_saradc_trigger_handler, NULL); =20
-> >> devm_iio_triggered_buffer_setup seems better =20
-> >>>    	if (ret)
-> >>>    		goto err_clk;
-> >>>   =20
-> >>> +	ret =3D iio_device_register(indio_dev);
-> >>> +	if (ret)
-> >>> +		goto err_buffer_cleanup;
-> >>> +
-> >>>    	return 0;
-> >>>   =20
-> >>> +err_buffer_cleanup:
-> >>> +	iio_triggered_buffer_cleanup(indio_dev);
-> >>>    err_clk:
-> >>>    	clk_disable_unprepare(info->clk);
-> >>>    err_pclk:
-> >>>     =20
-> >> xxm@rock-chips.com
-> >>
-> >> =20
-> >=20
-> >=20
-> >=20
-> >  =20
->=20
->=20
+And thanks for making sure the details are right below. I'll do a
+v2 with these things corrected.
+
+Thanks
+Heiko
+
+
+> Also include all mail lists found with:
+> ./scripts/get_maintainer.pl --nogit-fallback --nogit
+> 
+> linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> 
+>   DTC     arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dtb
+>   DTC     arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dt.yaml
+>   CHECK   arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dt.yaml
+> arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dt.yaml: tsadc:
+> tsadc-otp-gpio: {'rockchip,pins': [[0, 6, 0, 123]], 'phandle': [[90]]}
+> is not of type 'array'
+> arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dt.yaml: usb@ff340000:
+> 'clock-names', 'power-domains' do not match any of the regexes:
+> 'pinctrl-[0-9]+'
+> arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dt.yaml: usb@ff300000:
+> 'power-domains' does not match any of the regexes: 'pinctrl-[0-9]+'
+> arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dt.yaml: usb@ff350000:
+> 'clock-names', 'power-domains' do not match any of the regexes:
+> 'pinctrl-[0-9]+'
+> arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dt.yaml: gpio-leds:
+> 'heartbeat' does not match any of the regexes: '(^led-[0-9a-f]$|led)',
+> 'pinctrl-[0-9]+'
+> arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dt.yaml: usb2-phy@100:
+> '#phy-cells' is a required property
+> 
+> > From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+> > 
+> > The Odroid Advance Go is a handheld based on Rockchip's rk3326 soc
+> > with a DSI display and some handheld controls including an analog
+> > joystick connected to the saradc.
+> > 
+> > Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+> >  .../boot/dts/rockchip/rk3326-odroid-go2.dts   | 544 ++++++++++++++++++
+> >  2 files changed, 545 insertions(+)
+> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> > 
+> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> > index af1e1c3707d0..86c38467d487 100644
+> > --- a/arch/arm64/boot/dts/rockchip/Makefile
+> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> > @@ -6,6 +6,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-copperhead-ltk101b4029w.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
+> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> > new file mode 100644
+> > index 000000000000..a16f4a0d1d4d
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+> > @@ -0,0 +1,544 @@
+> > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> > +/*
+> > + * Copyright (c) 2019 Hardkernel Co., Ltd
+> > + * Copyright (c) 2020 Theobroma Systems Design und Consulting GmbH
+> > + */
+> > +
+> > +/dts-v1/;
+> > +#include <dt-bindings/gpio/gpio.h>
+> > +#include <dt-bindings/input/input.h>
+> > +#include <dt-bindings/pinctrl/rockchip.h>
+> > +#include "rk3326.dtsi"
+> > +
+> > +/ {
+> > +	model = "ODROID-GO Advance";
+> > +	compatible = "hardkernel,rk3326-odroid-go2", "rockchip,rk3326";
+> > +
+> > +	chosen {
+> > +		stdout-path = "serial2:115200n8";
+> > +	};
+> > +
+> > +	gpio-keys {
+> > +		compatible = "gpio-keys";
+> > +		pinctrl-names = "default";
+> > +		pinctrl-0 = <&btn_pins>;
+> > +
+> > +		/*
+> > +		 *      *** ODROIDGO2-Advance Switch layoout ***
+> > +		 * |------------------------------------------------|
+> > +		 * | sw15                                      sw16 |
+> > +		 * |------------------------------------------------|
+> > +		 * |     sw1      |-------------------|      sw8    |
+> > +		 * |  sw3   sw4   |                   |   sw7   sw5 |
+> > +		 * |     sw2      |    LCD Display    |      sw6    |
+> > +		 * |              |                   |             |
+> > +		 * |              |-------------------|             |
+> > +		 * |         sw9 sw10   sw11 sw12   sw13 sw14       |
+> > +		 * |------------------------------------------------|
+> > +		 */
+> > +
+> > +		sw1 {
+> > +			gpios = <&gpio1 RK_PB4 GPIO_ACTIVE_LOW>;
+> > +			label = "DPAD-UP";
+> > +			linux,code = <BTN_DPAD_UP>;
+> > +		};
+> > +		sw2 {
+> > +			gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_LOW>;
+> > +			label = "DPAD-DOWN";
+> > +			linux,code = <BTN_DPAD_DOWN>;
+> > +		};
+> > +		sw3 {
+> > +			gpios = <&gpio1 RK_PB6 GPIO_ACTIVE_LOW>;
+> > +			label = "DPAD-LEFT";
+> > +			linux,code = <BTN_DPAD_LEFT>;
+> > +		};
+> > +		sw4 {
+> > +			gpios = <&gpio1 RK_PB7 GPIO_ACTIVE_LOW>;
+> > +			label = "DPAD-RIGHT";
+> > +			linux,code = <BTN_DPAD_RIGHT>;
+> > +		};
+> > +		sw5 {
+> > +			gpios = <&gpio1 RK_PA2 GPIO_ACTIVE_LOW>;
+> > +			label = "BTN-A";
+> > +			linux,code = <BTN_EAST>;
+> > +		};
+> > +		sw6 {
+> > +			gpios = <&gpio1 RK_PA5 GPIO_ACTIVE_LOW>;
+> > +			label = "BTN-B";
+> > +			linux,code = <BTN_SOUTH>;
+> > +		};
+> > +		sw7 {
+> > +			gpios = <&gpio1 RK_PA6 GPIO_ACTIVE_LOW>;
+> > +			label = "BTN-Y";
+> > +			linux,code = <BTN_WEST>;
+> > +		};
+> > +		sw8 {
+> > +			gpios = <&gpio1 RK_PA7 GPIO_ACTIVE_LOW>;
+> > +			label = "BTN-X";
+> > +			linux,code = <BTN_NORTH>;
+> > +		};
+> > +		sw9 {
+> > +			gpios = <&gpio2 RK_PA0 GPIO_ACTIVE_LOW>;
+> > +			label = "F1";
+> > +			linux,code = <BTN_TRIGGER_HAPPY1>;
+> > +		};
+> > +		sw10 {
+> > +			gpios = <&gpio2 RK_PA1 GPIO_ACTIVE_LOW>;
+> > +			label = "F2";
+> > +			linux,code = <BTN_TRIGGER_HAPPY2>;
+> > +		};
+> > +		sw11 {
+> > +			gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
+> > +			label = "F3";
+> > +			linux,code = <BTN_TRIGGER_HAPPY3>;
+> > +		};
+> > +		sw12 {
+> > +			gpios = <&gpio2 RK_PA3 GPIO_ACTIVE_LOW>;
+> > +			label = "F4";
+> > +			linux,code = <BTN_TRIGGER_HAPPY4>;
+> > +		};
+> > +		sw13 {
+> > +			gpios = <&gpio2 RK_PA4 GPIO_ACTIVE_LOW>;
+> > +			label = "F5";
+> > +			linux,code = <BTN_TRIGGER_HAPPY5>;
+> > +		};
+> > +		sw14 {
+> > +			gpios = <&gpio2 RK_PA5 GPIO_ACTIVE_LOW>;
+> > +			label = "F6";
+> > +			linux,code = <BTN_TRIGGER_HAPPY6>;
+> > +		};
+> > +		sw15 {
+> > +			gpios = <&gpio2 RK_PA6 GPIO_ACTIVE_LOW>;
+> > +			label = "TOP-LEFT";
+> > +			linux,code = <BTN_TL>;
+> > +		};
+> > +		sw16 {
+> > +			gpios = <&gpio2 RK_PA7 GPIO_ACTIVE_LOW>;
+> > +			label = "TOP-RIGHT";
+> > +			linux,code = <BTN_TR>;
+> > +		};
+> > +	};
+> > +
+> > +	leds: gpio-leds {
+> > +		compatible = "gpio-leds";
+> > +		pinctrl-names = "led_pins";
+> > +		pinctrl-0 = <&led_pins>;
+> > +
+> > +		/* Blue LED : GPIO0_C1 */
+> > +		heartbeat {
+> > +			label = "blue:heartbeat";
+> > +			gpios = <&gpio0 RK_PC1 GPIO_ACTIVE_HIGH>;
+> > +			linux,default-trigger = "heartbeat";
+> > +		};
+> > +	};
+> > +
+> 
+> > +	backlight: backlight {
+> > +		compatible = "pwm-backlight";
+> > +		power-supply = <&vcc_bl>;
+> > +		pwms = <&pwm1 0 25000 0>;
+> > +	};
+> 
+> sort nodenames
+> 
+> > +
+> > +	vccsys: vccsys {
+> > +		compatible = "regulator-fixed";
+> > +		regulator-name = "vcc3v8_sys";
+> > +		regulator-always-on;
+> > +		regulator-min-microvolt = <3800000>;
+> > +		regulator-max-microvolt = <3800000>;
+> > +	};
+> > +
+> > +	vcc_host: vcc_host {
+> > +		compatible = "regulator-fixed";
+> > +		regulator-name = "vcc_host";
+> > +		regulator-min-microvolt = <5000000>;
+> > +		regulator-max-microvolt = <5000000>;
+> > +
+> > +		gpio = <&gpio0 RK_PB7 GPIO_ACTIVE_HIGH>;
+> > +		enable-active-high;
+> > +		regulator-always-on;
+> > +		vin-supply = <&vccsys>;
+> > +	};
+> > +};
+> > +
+> > +&cpu0 {
+> > +	cpu-supply = <&vdd_arm>;
+> > +};
+> > +
+> > +&cpu1 {
+> > +	cpu-supply = <&vdd_arm>;
+> > +};
+> > +
+> > +&cpu2 {
+> > +	cpu-supply = <&vdd_arm>;
+> > +};
+> > +
+> > +&cpu3 {
+> > +	cpu-supply = <&vdd_arm>;
+> > +};
+> > +
+> > +&cru {
+> > +	assigned-clocks = <&cru PLL_NPLL>,
+> > +		<&cru ACLK_BUS_PRE>, <&cru ACLK_PERI_PRE>,
+> > +		<&cru HCLK_BUS_PRE>, <&cru HCLK_PERI_PRE>,
+> > +		<&cru PCLK_BUS_PRE>, <&cru SCLK_GPU>,
+> > +		<&cru PLL_CPLL>;
+> > +
+> > +	assigned-clock-rates = <1188000000>,
+> > +		<200000000>, <200000000>,
+> > +		<150000000>, <150000000>,
+> > +		<100000000>, <200000000>,
+> > +		<17000000>;
+> > +};
+> > +
+> > +&display_subsystem {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&dsi {
+> > +	status = "okay";
+> > +
+> > +	ports {
+> > +		mipi_out: port@1 {
+> > +			reg = <1>;
+> > +
+> > +			mipi_out_panel: endpoint {
+> > +				remote-endpoint = <&mipi_in_panel>;
+> > +			};
+> > +		};
+> > +	};
+> > +
+> > +	panel@0 {
+> > +		compatible = "elida,kd35t133";
+> > +		reg = <0>;
+> > +		backlight = <&backlight>;
+> > +		iovcc-supply = <&vcc_lcd>;
+> > +		reset-gpios = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
+> > +		vdd-supply = <&vcc_lcd>;
+> > +
+> > +		port {
+> > +			mipi_in_panel: endpoint {
+> > +				remote-endpoint = <&mipi_out_panel>;
+> > +			};
+> > +		};
+> > +	};
+> > +};
+> > +
+> > +&dsi_dphy {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&gpu {
+> > +	mali-supply = <&vdd_logic>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&i2c0 {
+> 
+> > +	status = "okay";
+> 
+> status below
+> 
+> > +	clock-frequency = <400000>;
+> 
+> > +	i2c-scl-rising-time-ns = <280>;
+> > +	i2c-scl-falling-time-ns = <16>;
+> 
+> sort
+> 
+> > +
+> > +	rk817: pmic@20 {
+> > +		compatible = "rockchip,rk817";
+> > +		reg = <0x20>;
+> > +		interrupt-parent = <&gpio0>;
+> > +		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
+> > +		pinctrl-names = "default";
+> > +		pinctrl-0 = <&pmic_int>;
+> > +		rockchip,system-power-controller;
+> > +		wakeup-source;
+> > +		#clock-cells = <1>;
+> > +		clock-output-names = "rk808-clkout1", "xin32k";
+> > +
+> > +		vcc1-supply = <&vccsys>;
+> > +		vcc2-supply = <&vccsys>;
+> > +		vcc3-supply = <&vccsys>;
+> > +		vcc4-supply = <&vccsys>;
+> > +		vcc5-supply = <&vccsys>;
+> > +		vcc6-supply = <&vccsys>;
+> > +		vcc7-supply = <&vccsys>;
+> > +
+> > +		regulators {
+> > +			vdd_logic: DCDC_REG1 {
+> > +				regulator-name = "vdd_logic";
+> > +				regulator-min-microvolt = <950000>;
+> > +				regulator-max-microvolt = <1150000>;
+> > +				regulator-ramp-delay = <6001>;
+> > +				regulator-always-on;
+> > +				regulator-boot-on;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-on-in-suspend;
+> > +					regulator-suspend-microvolt = <950000>;
+> > +				};
+> > +			};
+> > +
+> > +			vdd_arm: DCDC_REG2 {
+> > +				regulator-name = "vdd_arm";
+> > +				regulator-min-microvolt = <950000>;
+> > +				regulator-max-microvolt = <1350000>;
+> > +				regulator-ramp-delay = <6001>;
+> > +				regulator-always-on;
+> > +				regulator-boot-on;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-off-in-suspend;
+> > +					regulator-suspend-microvolt = <950000>;
+> > +				};
+> > +			};
+> > +
+> > +			vcc_ddr: DCDC_REG3 {
+> > +				regulator-name = "vcc_ddr";
+> > +				regulator-always-on;
+> > +				regulator-boot-on;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-on-in-suspend;
+> > +				};
+> > +			};
+> > +
+> > +			vcc_3v3: DCDC_REG4 {
+> > +				regulator-name = "vcc_3v3";
+> > +				regulator-min-microvolt = <3300000>;
+> > +				regulator-max-microvolt = <3300000>;
+> > +				regulator-always-on;
+> > +				regulator-boot-on;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-off-in-suspend;
+> > +					regulator-suspend-microvolt = <3300000>;
+> > +				};
+> > +			};
+> > +
+> > +			vcc_1v8: LDO_REG2 {
+> > +				regulator-name = "vcc_1v8";
+> > +				regulator-min-microvolt = <1800000>;
+> > +				regulator-max-microvolt = <1800000>;
+> > +				regulator-always-on;
+> > +				regulator-boot-on;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-on-in-suspend;
+> > +					regulator-suspend-microvolt = <1800000>;
+> > +				};
+> > +			};
+> > +
+> > +			vdd_1v0: LDO_REG3 {
+> > +				regulator-name = "vdd_1v0";
+> > +				regulator-min-microvolt = <1000000>;
+> > +				regulator-max-microvolt = <1000000>;
+> > +				regulator-always-on;
+> > +				regulator-boot-on;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-on-in-suspend;
+> > +					regulator-suspend-microvolt = <1000000>;
+> > +				};
+> > +			};
+> > +
+> > +			vcc3v3_pmu: LDO_REG4 {
+> > +				regulator-name = "vcc3v3_pmu";
+> > +				regulator-min-microvolt = <3300000>;
+> > +				regulator-max-microvolt = <3300000>;
+> > +				regulator-always-on;
+> > +				regulator-boot-on;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-on-in-suspend;
+> > +					regulator-suspend-microvolt = <3300000>;
+> > +				};
+> > +			};
+> > +
+> > +			vccio_sd: LDO_REG5 {
+> > +				regulator-name = "vccio_sd";
+> > +				regulator-min-microvolt = <1800000>;
+> > +				regulator-max-microvolt = <3300000>;
+> > +				regulator-always-on;
+> > +				regulator-boot-on;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-on-in-suspend;
+> > +					regulator-suspend-microvolt = <3300000>;
+> > +				};
+> > +			};
+> > +
+> > +			vcc_sd: LDO_REG6 {
+> > +				regulator-name = "vcc_sd";
+> > +				regulator-min-microvolt = <3300000>;
+> > +				regulator-max-microvolt = <3300000>;
+> > +				regulator-boot-on;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-on-in-suspend;
+> > +					regulator-suspend-microvolt = <3300000>;
+> > +				};
+> > +			};
+> > +
+> > +			vcc_bl: LDO_REG7 {
+> > +				regulator-name = "vcc_bl";
+> > +				regulator-min-microvolt = <3300000>;
+> > +				regulator-max-microvolt = <3300000>;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-off-in-suspend;
+> > +					regulator-suspend-microvolt = <3300000>;
+> > +				};
+> > +			};
+> > +
+> > +			vcc_lcd: LDO_REG8 {
+> > +				regulator-name = "vcc_lcd";
+> > +				regulator-min-microvolt = <2800000>;
+> > +				regulator-max-microvolt = <2800000>;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-off-in-suspend;
+> > +					regulator-suspend-microvolt = <2800000>;
+> > +				};
+> > +			};
+> > +
+> > +			vcc_cam: LDO_REG9 {
+> > +				regulator-name = "vcc_cam";
+> > +				regulator-min-microvolt = <3000000>;
+> > +				regulator-max-microvolt = <3000000>;
+> > +
+> > +				regulator-state-mem {
+> > +					regulator-off-in-suspend;
+> > +					regulator-suspend-microvolt = <3000000>;
+> > +				};
+> > +			};
+> > +		};
+> > +	};
+> > +};
+> > +
+> > +/* EXT Header(P2) : 7(SCL:GPIO0.C2), 8(SDA:GPIO0.C3) */
+> > +&i2c1 {
+> 
+> > +	status = "okay";
+> 
+> status below
+> 
+> > +	clock-frequency = <400000>;
+> > +};
+> > +
+> > +/* I2S 1 Channel Used */
+> > +&i2s1_2ch {
+> 
+> > +	status = "okay";
+> 
+> status below
+> 
+> > +	#sound-dai-cells = <0>;
+> > +};
+> > +
+> > +&io_domains {
+> > +	vccio1-supply = <&vcc_3v3>;
+> > +	vccio2-supply = <&vccio_sd>;
+> > +	vccio3-supply = <&vcc_3v3>;
+> > +	vccio4-supply = <&vcc_3v3>;
+> > +	vccio5-supply = <&vcc_3v3>;
+> > +	vccio6-supply = <&vcc_3v3>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&pmu_io_domains {
+> > +	pmuio1-supply = <&vcc3v3_pmu>;
+> > +	pmuio2-supply = <&vcc3v3_pmu>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&pwm1 {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&saradc {
+> > +	vref-supply = <&vcc_1v8>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&sdmmc {
+> > +	bus-width = <4>;
+> > +	cap-sd-highspeed;
+> 
+> > +	card-detect-delay = <800>;
+> 
+> Other dts use 200. Why we need 800?
+> 
+> > +	cd-gpios = <&gpio0 RK_PA3 GPIO_ACTIVE_LOW>;
+> > +	sd-uhs-sdr12;
+> > +	sd-uhs-sdr25;
+> > +	sd-uhs-sdr50;
+> > +	sd-uhs-sdr104;
+> > +	vmmc-supply = <&vcc_sd>;
+> > +	vqmmc-supply = <&vccio_sd>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&tsadc {
+> > +	pinctrl-names = "gpio", "otpout";
+> > +	pinctrl-0 = <&tsadc_otp_gpio>;
+> > +	pinctrl-1 = <&tsadc_otp_out>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&u2phy {
+> > +	status = "okay";
+> > +
+> > +	u2phy_host: host-port {
+> > +		status = "okay";
+> > +	};
+> > +
+> > +	u2phy_otg: otg-port {
+> > +		status = "disabled";
+> > +	};
+> > +};
+> > +
+> > +&usb20_otg {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&uart1 {
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&uart1_xfer &uart1_cts>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&uart2 {
+> > +	pinctrl-names = "default";
+> > +	pinctrl-0 = <&uart2m1_xfer>;
+> > +	status = "okay";
+> > +};
+> > +
+> > +&vopb {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&vopb_mmu {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&pinctrl {
+> > +	pmic {
+> > +		pmic_int: pmic-int {
+> > +			rockchip,pins = <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
+> > +		};
+> > +
+> > +		dc_det: dc-det {
+> > +			rockchip,pins = <0 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +		};
+> > +	};
+> > +
+> > +	leds {
+> > +		led_pins: led-pins {
+> > +			rockchip,pins = <0 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
+> > +		};
+> > +	};
+> > +
+> > +	btns {
+> > +		btn_pins: btn-pins {
+> > +			rockchip,pins = <1 RK_PB4 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<1 RK_PB5 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<1 RK_PB6 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<1 RK_PB7 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<1 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<1 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<1 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +
+> > +					<2 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<2 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<2 RK_PA3 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<2 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<2 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>,
+> > +					<2 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>;
+> > +		};
+> > +	};
+> > +};
+> > --
+> > 2.24.1
+> 
+> 
+> 
