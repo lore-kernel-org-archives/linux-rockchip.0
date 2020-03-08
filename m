@@ -1,111 +1,55 @@
-From: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 10/22] drm/mediatek: Use simple encoder
-Date: Sat, 7 Mar 2020 22:26:32 +0100
-Message-ID: <31d07a60-e7fd-0631-5132-64609af5fcd8@gmail.com>
-References: <20200305155950.2705-1-tzimmermann@suse.de>
- <20200305155950.2705-11-tzimmermann@suse.de>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v2 1/3] arm64: dts: rockchip: add core devicetree for rk3326
+Date: Sun,  8 Mar 2020 23:32:48 +0100
+Message-ID: <20200308223250.353053-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200305155950.2705-11-tzimmermann-l3A5Bk7waGM@public.gmane.org>
-Content-Language: en-US
-Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Thomas Zimmermann <tzimmermann-l3A5Bk7waGM@public.gmane.org>, airlied-cv59FeDIM0c@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org, abrodkin-HKixBCOQz3hWk0Htik3J/w@public.gmane.org, bbrezillon-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, nicolas.ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, mripard-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, inki.dae-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, jy0922.shim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, sw0312.kim-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kyungmin.park-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org, kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, stefan-XLVq0VzYD2Y@public.gmane.org, alison.wang-3arQi8VN3Tc@public.gmane.org, patrik.r.jakobsson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, xinliang.liu-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, zourongrong-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, john.stultz-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, kong.kongxinwei-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org, puck.chen-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, p.zabel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-imx@
-Cc: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: linux-rockchip@lists.infradead.org
+Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, heiko@sntech.de, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, kever.yang@rock-chips.com, linux-kernel@vger.kernel.org, robh+dt@kernel.org, jbx6244@gmail.com, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org, christoph.muellner@theobroma-systems.com
 List-Id: linux-rockchip.vger.kernel.org
 
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
+The rk3326 is basically a px30 without the second display controller.
+So add a dtsi based on that, that just removes the affected nodes.
 
-On 05/03/2020 16:59, Thomas Zimmermann wrote:
-> The mediatak driver uses empty implementations for its encoders. Replace
-> the code with the generic simple encoder.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann-l3A5Bk7waGM@public.gmane.org>
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3326.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3326.dtsi
 
-Reviewed-by: Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-
-> ---
->  drivers/gpu/drm/mediatek/mtk_dpi.c | 14 +++-----------
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 14 +++-----------
->  2 files changed, 6 insertions(+), 22 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> index 14fbe1c09ce9..9c90c58e5acd 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-> @@ -20,6 +20,7 @@
->  #include <drm/drm_bridge.h>
->  #include <drm/drm_crtc.h>
->  #include <drm/drm_of.h>
-> +#include <drm/drm_simple_kms_helper.h>
->  
->  #include "mtk_dpi_regs.h"
->  #include "mtk_drm_ddp_comp.h"
-> @@ -509,15 +510,6 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
->  	return 0;
->  }
->  
-> -static void mtk_dpi_encoder_destroy(struct drm_encoder *encoder)
-> -{
-> -	drm_encoder_cleanup(encoder);
-> -}
-> -
-> -static const struct drm_encoder_funcs mtk_dpi_encoder_funcs = {
-> -	.destroy = mtk_dpi_encoder_destroy,
-> -};
-> -
->  static bool mtk_dpi_encoder_mode_fixup(struct drm_encoder *encoder,
->  				       const struct drm_display_mode *mode,
->  				       struct drm_display_mode *adjusted_mode)
-> @@ -596,8 +588,8 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
->  		return ret;
->  	}
->  
-> -	ret = drm_encoder_init(drm_dev, &dpi->encoder, &mtk_dpi_encoder_funcs,
-> -			       DRM_MODE_ENCODER_TMDS, NULL);
-> +	ret = drm_simple_encoder_init(drm_dev, &dpi->encoder,
-> +				      DRM_MODE_ENCODER_TMDS);
->  	if (ret) {
->  		dev_err(dev, "Failed to initialize decoder: %d\n", ret);
->  		goto err_unregister;
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index 0ede69830a9d..a9a25087112f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -22,6 +22,7 @@
->  #include <drm/drm_panel.h>
->  #include <drm/drm_print.h>
->  #include <drm/drm_probe_helper.h>
-> +#include <drm/drm_simple_kms_helper.h>
->  
->  #include "mtk_drm_ddp_comp.h"
->  
-> @@ -787,15 +788,6 @@ static void mtk_output_dsi_disable(struct mtk_dsi *dsi)
->  	dsi->enabled = false;
->  }
->  
-> -static void mtk_dsi_encoder_destroy(struct drm_encoder *encoder)
-> -{
-> -	drm_encoder_cleanup(encoder);
-> -}
-> -
-> -static const struct drm_encoder_funcs mtk_dsi_encoder_funcs = {
-> -	.destroy = mtk_dsi_encoder_destroy,
-> -};
-> -
->  static bool mtk_dsi_encoder_mode_fixup(struct drm_encoder *encoder,
->  				       const struct drm_display_mode *mode,
->  				       struct drm_display_mode *adjusted_mode)
-> @@ -888,8 +880,8 @@ static int mtk_dsi_create_conn_enc(struct drm_device *drm, struct mtk_dsi *dsi)
->  {
->  	int ret;
->  
-> -	ret = drm_encoder_init(drm, &dsi->encoder, &mtk_dsi_encoder_funcs,
-> -			       DRM_MODE_ENCODER_DSI, NULL);
-> +	ret = drm_simple_encoder_init(drm, &dsi->encoder,
-> +				      DRM_MODE_ENCODER_DSI);
->  	if (ret) {
->  		DRM_ERROR("Failed to encoder init to drm\n");
->  		return ret;
-> 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326.dtsi b/arch/arm64/boot/dts/rockchip/rk3326.dtsi
+new file mode 100644
+index 000000000000..2ba6da125137
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3326.dtsi
+@@ -0,0 +1,15 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2020 Fuzhou Rockchip Electronics Co., Ltd
++ */
++
++#include "px30.dtsi"
++
++&display_subsystem {
++	ports = <&vopb_out>;
++};
++
++/delete-node/ &dsi_in_vopl;
++/delete-node/ &lvds_vopl_in;
++/delete-node/ &vopl;
++/delete-node/ &vopl_mmu;
+-- 
+2.24.1
