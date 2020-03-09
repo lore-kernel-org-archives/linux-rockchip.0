@@ -1,51 +1,66 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: remove max-freq from &spi1 node for Hugsun X99
-Date: Mon,  9 Mar 2020 13:51:45 +0100
-Message-ID: <20200309125145.14455-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [RFC PATCH] ARM: dts: rockchip: remove #dma-cells from dma client nodes for rv1108
+Date: Mon,  9 Mar 2020 14:40:20 +0100
+Message-ID: <20200309134020.14935-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-A test with the command below does not detect all errors
-in combination with 'additionalProperties: false' and
-allOf:
-  - $ref: "spi-controller.yaml#"
+When we combine spi-rockchip.yaml and
+spi-controller.yaml and add 'additionalProperties: false'
+it gives for example this error:
 
-'additionalProperties' applies to all properties that are not
-accounted-for by 'properties' or 'patternProperties' in
-the immediate schema.
-
-First when we combine spi-rockchip.yaml and
-spi-controller.yaml it gives this error:
-
-arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dt.yaml: spi@ff1d0000:
-'max-freq' does not match any of the regexes:
+arch/arm/boot/dts/rv1108-evb.dt.yaml: spi@10270000:
+'#dma-cells' does not match any of the regexes:
 '^.*@[0-9a-f]+$', '^slave$'
 
-'max-freq' is not a valid property name for spi nodes,
-so remove it.
+'#dma-cells' are not used for dma clients, so remove them all.
 
-make ARCH=arm64 dtbs_check
+make ARCH=arm dtbs_check
 DT_SCHEMA_FILES=Documentation/devicetree/bindings/spi/spi-rockchip.yaml
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm/boot/dts/rv1108.dtsi | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-index f2ffee639..ee4867fbe 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-@@ -610,7 +610,6 @@
- 
- &spi1 {
- 	status = "okay";
--	max-freq = <10000000>;
- 
- 	flash@0 {
- 		compatible = "jedec,spi-nor";
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index 59295babd..fda16f976 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -120,7 +120,6 @@
+ 		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
+ 		clock-names = "baudclk", "apb_pclk";
+ 		dmas = <&pdma 6>, <&pdma 7>;
+-		#dma-cells = <2>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&uart2m0_xfer>;
+ 		status = "disabled";
+@@ -136,7 +135,6 @@
+ 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+ 		clock-names = "baudclk", "apb_pclk";
+ 		dmas = <&pdma 4>, <&pdma 5>;
+-		#dma-cells = <2>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&uart1_xfer>;
+ 		status = "disabled";
+@@ -152,7 +150,6 @@
+ 		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+ 		clock-names = "baudclk", "apb_pclk";
+ 		dmas = <&pdma 2>, <&pdma 3>;
+-		#dma-cells = <2>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
+ 		status = "disabled";
+@@ -208,7 +205,6 @@
+ 		clock-names = "spiclk", "apb_pclk";
+ 		dmas = <&pdma 8>, <&pdma 9>;
+ 		dma-names = "tx", "rx";
+-		#dma-cells = <2>;
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+ 		status = "disabled";
 -- 
 2.11.0
