@@ -1,55 +1,36 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: add Odroid Advance Go
-Date: Sun, 08 Mar 2020 23:39:35 +0100
-Message-ID: <2618559.AJtVb54S78@phil>
-References: <20200308223250.353053-1-heiko@sntech.de>
- <20200308223250.353053-3-heiko@sntech.de>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v1] dt-bindings: display: rockchip: convert rockchip vop
+ bindings to yaml
+Date: Mon, 9 Mar 2020 07:55:22 +0100
+Message-ID: <590762ab-db79-c8b1-7f0e-b653ed4b1721@gmail.com>
+References: <20200306170353.11393-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200308223250.353053-3-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: mark.rutland-5wv7dgnIgG8@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200306170353.11393-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: airlied-cv59FeDIM0c@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Sonntag, 8. M=E4rz 2020, 23:32:50 CET schrieb Heiko Stuebner:
-> From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-> =
+Hi,
 
-> The Odroid Advance Go is a handheld based on Rockchip's rk3326 soc
-> with a DSI display and some handheld controls including an analog
-> joystick connected to the saradc.
-> =
+Question for robh:
 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+In the old txt situation we add/describe only properties that are used
+by the driver/hardware itself. With yaml it also filters things in a
+node that are used by other drivers like:
 
-> +		 *      *** ODROIDGO2-Advance Switch layoout ***
+assigned-clocks:
+assigned-clock-rates:
+power-domains:
 
-It was pointed out to me that there is a typo here, layout instead
-of layoout ;-) .
+Should we add or not?
 
-I'll hopefully just remember to remove that when applying, if I don't
-need a v3 for other things.
+Kind regards,
 
-> +		 * |------------------------------------------------|
-> +		 * | sw15                                      sw16 |
-> +		 * |------------------------------------------------|
-> +		 * |     sw1      |-------------------|      sw8    |
-> +		 * |  sw3   sw4   |                   |   sw7   sw5 |
-> +		 * |     sw2      |    LCD Display    |      sw6    |
-> +		 * |              |                   |             |
-> +		 * |              |-------------------|             |
-> +		 * |         sw9 sw10   sw11 sw12   sw13 sw14       |
-> +		 * |------------------------------------------------|
-> +		 */
-> +
+Johan
+
+PS: Will drop 'rockchip,grf' in v2 for px30, not used in vop driver?
