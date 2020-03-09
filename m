@@ -1,44 +1,311 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] spi: rockchip: add compatible string for px30 rk3308 rk3328
-Date: Mon,  9 Mar 2020 16:10:03 +0100
-Message-ID: <20200309151004.7780-1-jbx6244@gmail.com>
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v2] iio: adc: rockchip_saradc: Add support iio buffers
+Date: Mon,  9 Mar 2020 22:22:02 +0100
+Message-ID: <20200309212202.107785-1-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The Rockchip spi binding is updated to yaml and new models
-were added. The spi on px30,rk3308 and rk3328 are the same as
-other Rockchip based SoCs, so add compatible string for it.
+From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Add the ability to also support access via (triggered) buffers
+next to the existing direct mode.
+
+Device in question is the Odroid Go Advance that connects a joystick
+to two of the saradc channels for X and Y axis and the new (and still
+pending) adc joystick driver of course wants to use triggered buffers
+from the iio subsystem.
+
+Signed-off-by: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+[some simplifications and added commit description]
+Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 ---
- drivers/spi/spi-rockchip.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+changes in v2:
+- use devm_iio_triggered_buffer_setup
+- calculate data array size from channel number (curtesy of at91-sama5d2_adc)
 
-diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-index 2cc6d9951..70ef63e0b 100644
---- a/drivers/spi/spi-rockchip.c
-+++ b/drivers/spi/spi-rockchip.c
-@@ -843,14 +843,17 @@ static const struct dev_pm_ops rockchip_spi_pm = {
+ drivers/iio/adc/Kconfig           |   2 +
+ drivers/iio/adc/rockchip_saradc.c | 150 +++++++++++++++++++++++-------
+ 2 files changed, 116 insertions(+), 36 deletions(-)
+
+diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+index 82e33082958c..55d2499ff757 100644
+--- a/drivers/iio/adc/Kconfig
++++ b/drivers/iio/adc/Kconfig
+@@ -787,6 +787,8 @@ config ROCKCHIP_SARADC
+ 	tristate "Rockchip SARADC driver"
+ 	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
+ 	depends on RESET_CONTROLLER
++	select IIO_BUFFER
++	select IIO_TRIGGERED_BUFFER
+ 	help
+ 	  Say yes here to build support for the SARADC found in SoCs from
+ 	  Rockchip.
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index 582ba047c4a6..0ee62d3935b7 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -15,7 +15,11 @@
+ #include <linux/delay.h>
+ #include <linux/reset.h>
+ #include <linux/regulator/consumer.h>
++#include <linux/iio/buffer.h>
+ #include <linux/iio/iio.h>
++#include <linux/iio/trigger.h>
++#include <linux/iio/trigger_consumer.h>
++#include <linux/iio/triggered_buffer.h>
+ 
+ #define SARADC_DATA			0x00
+ 
+@@ -32,9 +36,19 @@
+ #define SARADC_DLY_PU_SOC_MASK		0x3f
+ 
+ #define SARADC_TIMEOUT			msecs_to_jiffies(100)
++#define SARADC_MAX_CHANNELS		6
++
++/*
++ * Maximum number of bytes to hold conversion from all channels
++ * without the timestamp.
++ */
++#define SARADC_BUFFER_MAX_CONVERSION_BYTES ((SARADC_MAX_CHANNELS) * 2)
++
++/* This total must also include the timestamp */
++#define SARADC_BUFFER_MAX_BYTES (SARADC_BUFFER_MAX_CONVERSION_BYTES + 8)
++#define SARADC_BUFFER_MAX_HWORDS (SARADC_BUFFER_MAX_BYTES / 2)
+ 
+ struct rockchip_saradc_data {
+-	int				num_bits;
+ 	const struct iio_chan_spec	*channels;
+ 	int				num_channels;
+ 	unsigned long			clk_rate;
+@@ -49,8 +63,37 @@ struct rockchip_saradc {
+ 	struct reset_control	*reset;
+ 	const struct rockchip_saradc_data *data;
+ 	u16			last_val;
++	const struct iio_chan_spec *last_chan;
  };
  
- static const struct of_device_id rockchip_spi_dt_match[] = {
--	{ .compatible = "rockchip,rv1108-spi", },
-+	{ .compatible = "rockchip,px30-spi", },
- 	{ .compatible = "rockchip,rk3036-spi", },
- 	{ .compatible = "rockchip,rk3066-spi", },
- 	{ .compatible = "rockchip,rk3188-spi", },
- 	{ .compatible = "rockchip,rk3228-spi", },
- 	{ .compatible = "rockchip,rk3288-spi", },
-+	{ .compatible = "rockchip,rk3308-spi", },
-+	{ .compatible = "rockchip,rk3328-spi", },
- 	{ .compatible = "rockchip,rk3368-spi", },
- 	{ .compatible = "rockchip,rk3399-spi", },
-+	{ .compatible = "rockchip,rv1108-spi", },
- 	{ },
++static void rockchip_saradc_power_down(struct rockchip_saradc *info)
++{
++	/* Clear irq & power down adc */
++	writel_relaxed(0, info->regs + SARADC_CTRL);
++}
++
++static int rockchip_saradc_conversion(struct rockchip_saradc *info,
++				   struct iio_chan_spec const *chan)
++{
++	reinit_completion(&info->completion);
++
++	/* 8 clock periods as delay between power up and start cmd */
++	writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
++
++	info->last_chan = chan;
++
++	/* Select the channel to be used and trigger conversion */
++	writel(SARADC_CTRL_POWER_CTRL
++			| (chan->channel & SARADC_CTRL_CHN_MASK)
++			| SARADC_CTRL_IRQ_ENABLE,
++		   info->regs + SARADC_CTRL);
++
++	if (!wait_for_completion_timeout(&info->completion, SARADC_TIMEOUT))
++		return -ETIMEDOUT;
++
++	return 0;
++}
++
+ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
+ 				    struct iio_chan_spec const *chan,
+ 				    int *val, int *val2, long mask)
+@@ -62,24 +105,12 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
+ 	case IIO_CHAN_INFO_RAW:
+ 		mutex_lock(&indio_dev->mlock);
+ 
+-		reinit_completion(&info->completion);
+-
+-		/* 8 clock periods as delay between power up and start cmd */
+-		writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
+-
+-		/* Select the channel to be used and trigger conversion */
+-		writel(SARADC_CTRL_POWER_CTRL
+-				| (chan->channel & SARADC_CTRL_CHN_MASK)
+-				| SARADC_CTRL_IRQ_ENABLE,
+-		       info->regs + SARADC_CTRL);
+-
+-		if (!wait_for_completion_timeout(&info->completion,
+-						 SARADC_TIMEOUT)) {
+-			writel_relaxed(0, info->regs + SARADC_CTRL);
++		ret = rockchip_saradc_conversion(info, chan);
++		if (ret) {
++			rockchip_saradc_power_down(info);
+ 			mutex_unlock(&indio_dev->mlock);
+-			return -ETIMEDOUT;
++			return ret;
+ 		}
+-
+ 		*val = info->last_val;
+ 		mutex_unlock(&indio_dev->mlock);
+ 		return IIO_VAL_INT;
+@@ -91,7 +122,7 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
+ 		}
+ 
+ 		*val = ret / 1000;
+-		*val2 = info->data->num_bits;
++		*val2 = chan->scan_type.realbits;
+ 		return IIO_VAL_FRACTIONAL_LOG2;
+ 	default:
+ 		return -EINVAL;
+@@ -104,10 +135,9 @@ static irqreturn_t rockchip_saradc_isr(int irq, void *dev_id)
+ 
+ 	/* Read value */
+ 	info->last_val = readl_relaxed(info->regs + SARADC_DATA);
+-	info->last_val &= GENMASK(info->data->num_bits - 1, 0);
++	info->last_val &= GENMASK(info->last_chan->scan_type.realbits - 1, 0);
+ 
+-	/* Clear irq & power down adc */
+-	writel_relaxed(0, info->regs + SARADC_CTRL);
++	rockchip_saradc_power_down(info);
+ 
+ 	complete(&info->completion);
+ 
+@@ -118,51 +148,55 @@ static const struct iio_info rockchip_saradc_iio_info = {
+ 	.read_raw = rockchip_saradc_read_raw,
  };
- MODULE_DEVICE_TABLE(of, rockchip_spi_dt_match);
+ 
+-#define ADC_CHANNEL(_index, _id) {				\
++#define ADC_CHANNEL(_index, _id, _res) {			\
+ 	.type = IIO_VOLTAGE,					\
+ 	.indexed = 1,						\
+ 	.channel = _index,					\
+ 	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),		\
+ 	.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),	\
+ 	.datasheet_name = _id,					\
++	.scan_index = _index,					\
++	.scan_type = {						\
++		.sign = 'u',					\
++		.realbits = _res,				\
++		.storagebits = 16,				\
++		.endianness = IIO_LE,				\
++	},							\
+ }
+ 
+ static const struct iio_chan_spec rockchip_saradc_iio_channels[] = {
+-	ADC_CHANNEL(0, "adc0"),
+-	ADC_CHANNEL(1, "adc1"),
+-	ADC_CHANNEL(2, "adc2"),
++	ADC_CHANNEL(0, "adc0", 10),
++	ADC_CHANNEL(1, "adc1", 10),
++	ADC_CHANNEL(2, "adc2", 10),
+ };
+ 
+ static const struct rockchip_saradc_data saradc_data = {
+-	.num_bits = 10,
+ 	.channels = rockchip_saradc_iio_channels,
+ 	.num_channels = ARRAY_SIZE(rockchip_saradc_iio_channels),
+ 	.clk_rate = 1000000,
+ };
+ 
+ static const struct iio_chan_spec rockchip_rk3066_tsadc_iio_channels[] = {
+-	ADC_CHANNEL(0, "adc0"),
+-	ADC_CHANNEL(1, "adc1"),
++	ADC_CHANNEL(0, "adc0", 12),
++	ADC_CHANNEL(1, "adc1", 12),
+ };
+ 
+ static const struct rockchip_saradc_data rk3066_tsadc_data = {
+-	.num_bits = 12,
+ 	.channels = rockchip_rk3066_tsadc_iio_channels,
+ 	.num_channels = ARRAY_SIZE(rockchip_rk3066_tsadc_iio_channels),
+ 	.clk_rate = 50000,
+ };
+ 
+ static const struct iio_chan_spec rockchip_rk3399_saradc_iio_channels[] = {
+-	ADC_CHANNEL(0, "adc0"),
+-	ADC_CHANNEL(1, "adc1"),
+-	ADC_CHANNEL(2, "adc2"),
+-	ADC_CHANNEL(3, "adc3"),
+-	ADC_CHANNEL(4, "adc4"),
+-	ADC_CHANNEL(5, "adc5"),
++	ADC_CHANNEL(0, "adc0", 10),
++	ADC_CHANNEL(1, "adc1", 10),
++	ADC_CHANNEL(2, "adc2", 10),
++	ADC_CHANNEL(3, "adc3", 10),
++	ADC_CHANNEL(4, "adc4", 10),
++	ADC_CHANNEL(5, "adc5", 10),
+ };
+ 
+ static const struct rockchip_saradc_data rk3399_saradc_data = {
+-	.num_bits = 10,
+ 	.channels = rockchip_rk3399_saradc_iio_channels,
+ 	.num_channels = ARRAY_SIZE(rockchip_rk3399_saradc_iio_channels),
+ 	.clk_rate = 1000000,
+@@ -193,6 +227,39 @@ static void rockchip_saradc_reset_controller(struct reset_control *reset)
+ 	reset_control_deassert(reset);
+ }
+ 
++static irqreturn_t rockchip_saradc_trigger_handler(int irq, void *p)
++{
++	struct iio_poll_func *pf = p;
++	struct iio_dev *i_dev = pf->indio_dev;
++	struct rockchip_saradc *info = iio_priv(i_dev);
++	u16 data[SARADC_BUFFER_MAX_HWORDS];
++	int ret;
++	int i, j = 0;
++
++	mutex_lock(&i_dev->mlock);
++
++	for_each_set_bit(i, i_dev->active_scan_mask, i_dev->masklength) {
++		const struct iio_chan_spec *chan = &i_dev->channels[i];
++
++		ret = rockchip_saradc_conversion(info, chan);
++		if (ret) {
++			rockchip_saradc_power_down(info);
++			goto out;
++		}
++
++		data[j] = info->last_val;
++		j++;
++	}
++
++	iio_push_to_buffers_with_timestamp(i_dev, data, iio_get_time_ns(i_dev));
++out:
++	mutex_unlock(&i_dev->mlock);
++
++	iio_trigger_notify_done(i_dev->trig);
++
++	return IRQ_HANDLED;
++}
++
+ static int rockchip_saradc_probe(struct platform_device *pdev)
+ {
+ 	struct rockchip_saradc *info = NULL;
+@@ -221,6 +288,11 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+ 
+ 	info->data = match->data;
+ 
++	if (info->data->num_channels > SARADC_MAX_CHANNELS) {
++		dev_err(&pdev->dev, "max channels exceeded");
++		return -EINVAL;
++	}
++
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	info->regs = devm_ioremap_resource(&pdev->dev, mem);
+ 	if (IS_ERR(info->regs))
+@@ -315,6 +387,12 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+ 	indio_dev->channels = info->data->channels;
+ 	indio_dev->num_channels = info->data->num_channels;
+ 
++	ret = devm_iio_triggered_buffer_setup(&indio_dev->dev, indio_dev, NULL,
++					      rockchip_saradc_trigger_handler,
++					      NULL);
++	if (ret)
++		goto err_clk;
++
+ 	ret = iio_device_register(indio_dev);
+ 	if (ret)
+ 		goto err_clk;
 -- 
-2.11.0
+2.24.1
