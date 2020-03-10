@@ -1,311 +1,384 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH v2] iio: adc: rockchip_saradc: Add support iio buffers
-Date: Mon,  9 Mar 2020 22:22:02 +0100
-Message-ID: <20200309212202.107785-1-heiko@sntech.de>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH=5d_drm/bridge=3a_analogix=5fdp=3a_Split_bi?=
+ =?UTF-8?B?bmQoKSBpbnRvIHByb2JlKCkgYW5kIHJlYWwgYmluZCgp44CQ6K+35rOo5oSP77yM?=
+ =?UTF-8?B?6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcythbmR5Lnlhbj1yb2NrLWNo?=
+ =?UTF-8?B?aXBzLmNvbUBsaXN0cy5pbmZyYWRlYWQub3Jn5Luj5Y+R44CR?=
+Date: Tue, 10 Mar 2020 09:10:49 +0800
+Message-ID: <0a287abf-12ed-7e34-c765-144a8c10230d@rock-chips.com>
+References: <CGME20200302142626eucas1p25b7aec18264b1483fab9cceb86989aa8@eucas1p2.samsung.com>
+ <20200302142615.14947-1-m.szyprowski@samsung.com>
+ <30f64c8f-2a12-46c2-e5eb-505bbb2088ed@samsung.com>
+ <331b5d65-f619-ff84-d4e7-55d2257a90c5@rock-chips.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <331b5d65-f619-ff84-d4e7-55d2257a90c5@rock-chips.com>
+Content-Language: en-US
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Andrzej Hajda <a.hajda@samsung.com>, Marek Szyprowski <m.szyprowski@samsung.com>, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>, Neil Armstrong <narmstrong@baylibre.com>, Jingoo Han <jingoohan1@gmail.com>, Jonas Karlman <jonas@kwiboo.se>, Seung-Woo Kim <sw0312.kim@samsung.com>, Sandy Huang <hjc@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Hi Marek:
 
-Add the ability to also support access via (triggered) buffers
-next to the existing direct mode.
 
-Device in question is the Odroid Go Advance that connects a joystick
-to two of the saradc channels for X and Y axis and the new (and still
-pending) adc joystick driver of course wants to use triggered buffers
-from the iio subsystem.
+On 3/5/20 5:03 PM, Andy Yan wrote:
+>
+> Hi:
+>
+> I tested it on a rk3399 board, but the eDP was broken after this patch 
+> applied:
+>
+>
+> [    0.891873] registered taskstats version 1
+> [    0.892243] Loading compiled-in X.509 certificates
+> [    0.929147] rockchip-dp ff970000.edp: no DP phy configured
+> [    0.931676] random: fast init done
+> [    0.932594] rockchip-drm display-subsystem: bound ff900000.vop (ops 
+> vop_component_ops)
+> [    0.934117] rockchip-drm display-subsystem: bound ff970000.edp (ops 
+> rockchip_dp_component_ops)
+> [    0.934878] [drm] Supports vblank timestamp caching Rev 2 
+> (21.10.2013).
+> [    0.935459] [drm] No driver support for vblank timestamp query.
+> [    0.956708] mmc0: new HS400 MMC card at address 0001
+> [    0.958261] mmcblk0: mmc0:0001 AWPD3R 14.6 GiB
+> [    0.958952] mmcblk0boot0: mmc0:0001 AWPD3R partition 1 4.00 MiB
+> [    0.959804] mmcblk0boot1: mmc0:0001 AWPD3R partition 2 4.00 MiB
+> [    0.960540] mmcblk0rpmb: mmc0:0001 AWPD3R partition 3 4.00 MiB, 
+> chardev (242:0)
+> [    0.965428] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.966228] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.967025] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.967104]  mmcblk0: p1 p2 p3 p4 p5
+> [    0.967823] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.968620] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.969417] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.970216] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.971012] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.971811] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.972608] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.973404] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.974201] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.974998] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.975799] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.976596] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.977393] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.978189] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.978986] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.979786] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+> [    0.980584] rockchip-dp ff970000.edp: AUX CH error happened: 0x7 (1)
+>
+>
+> Before this patch :
+>
+>
+> [    0.877707] 9pnet: Installing 9P2000 support
+> [    0.878156] Key type dns_resolver registered
+> [    0.879188] registered taskstats version 1
+> [    0.879558] Loading compiled-in X.509 certificates
+> [    0.918227] rockchip-drm display-subsystem: bound ff900000.vop (ops 
+> vop_component_ops)
+> [    0.918965] rockchip-dp ff970000.edp: no DP phy configured
+> [    0.921003] rockchip-drm display-subsystem: bound ff970000.edp (ops 
+> rockchip_dp_component_ops)
+> [    0.921766] [drm] Supports vblank timestamp caching Rev 2 
+> (21.10.2013).
+> [    0.922347] [drm] No driver support for vblank timestamp query.
+> [    0.922620] random: fast init done
+> [    0.944772] mmc0: new HS400 MMC card at address 0001
+> [    0.946330] mmcblk0: mmc0:0001 AWPD3R 14.6 GiB
+> [    0.947022] mmcblk0boot0: mmc0:0001 AWPD3R partition 1 4.00 MiB
+> [    0.947835] mmcblk0boot1: mmc0:0001 AWPD3R partition 2 4.00 MiB
+> [    0.948706] mmcblk0rpmb: mmc0:0001 AWPD3R partition 3 4.00 MiB, 
+> chardev (242:0)
+> [    0.948928] [drm] vop_crtc_atomic_enable
+> [    0.954614]  mmcblk0: p1 p2 p3 p4 p5
+> [    1.061071] Console: switching to colour frame buffer device 192x128
+> [    1.095819] rockchip-drm display-subsystem: fb0: rockchipdrmfb 
+> frame buffer device
+> [    1.098090] [drm] Initialized rockchip 1.0.0 20140818 for 
+> display-subsystem on minor 0
+> [    1.100342] hctosys: unable to open rtc device (rtc0)
+> 75,1          Bot
+>
+> On 3/3/20 8:38 PM, Andrzej Hajda wrote:
+>> On 02.03.2020 15:26, Marek Szyprowski wrote:
+>>> Analogix_dp driver acquires all its resources in ->bind() callback, 
+>>> what
+>>> is a bit against the driver component based approach, where driver
+>>> initialization is split into probe(), where all resources are 
+>>> gathered, and
+>>> bind(), where objects are created and compound driver is initialized.
+>>> Extract resource related operations to analogix_dp_probe() and
+>>> analogix_dp_remove() and call them before/after registration of the 
+>>> device
+>>> components from the main Exynos and Rockchip DP drivers.
+>>>
+>>> This fixes multiple tries of DRM compound driver bind() when example 
+>>> when
+>>> DP PHY driver is not yet loaded/probed():
+>>>
+>>> [drm] Exynos DRM: using 14400000.fimd device for DMA mapping operations
+>>> exynos-drm exynos-drm: bound 14400000.fimd (ops fimd_component_ops 
+>>> [exynosdrm])
+>>> exynos-drm exynos-drm: bound 14450000.mixer (ops mixer_component_ops 
+>>> [exynosdrm])
+>>> exynos-dp 145b0000.dp-controller: no DP phy configured
+>>> exynos-drm exynos-drm: failed to bind 145b0000.dp-controller (ops 
+>>> exynos_dp_ops [exynosdrm]): -517
+>>> exynos-drm exynos-drm: master bind failed: -517
+>>> ...
+>>> [drm] Exynos DRM: using 14400000.fimd device for DMA mapping operations
+>>> exynos-drm exynos-drm: bound 14400000.fimd (ops hdmi_enable 
+>>> [exynosdrm])
+>>> exynos-drm exynos-drm: bound 14450000.mixer (ops hdmi_enable 
+>>> [exynosdrm])
+>>> exynos-drm exynos-drm: bound 145b0000.dp-controller (ops hdmi_enable 
+>>> [exynosdrm])
+>>> exynos-drm exynos-drm: bound 14530000.hdmi (ops hdmi_enable 
+>>> [exynosdrm])
+>>> [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+>>> Console: switching to colour frame buffer device 170x48
+>>> exynos-drm exynos-drm: fb0: exynosdrmfb frame buffer device
+>>> [drm] Initialized exynos 1.1.0 20180330 for exynos-drm on minor 1
+>>> ...
+>>>
+>>> Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+>>
+>> I hope someone with rockchip will test the patch.
+>>
+>> I am little bit worried about power/resource management:
+>>
+>> 1. dp->clock enabled in probe.
+>>
+>> 2. pm_runtime enabled in bind.
+>>
+>> Both seems to me too early, but it could be hw issue and should be
+>> addressed in separate patches if possible.
+>>
+>>
+>> As I understand the patch tries to split things without changing order
+>> of calls, so for me it is OK:
+>>
+>>
+>> Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
+>>
+>>   --
+>>
+>> Regards
+>> Andrzej
+>>
+>>> ---
+>>>   .../drm/bridge/analogix/analogix_dp_core.c    | 33 
+>>> ++++++++++++-------
+>>>   drivers/gpu/drm/exynos/exynos_dp.c            | 15 ++++++---
+>>>   .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 15 +++++----
+>>>   include/drm/bridge/analogix_dp.h              |  5 +--
+>>>   4 files changed, 44 insertions(+), 24 deletions(-)
+>>>
+>>> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c 
+>>> b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>>> index dfb59a5fefea..a89a03b66bf2 100644
+>>> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>>> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+>>> @@ -1646,8 +1646,7 @@ static ssize_t analogix_dpaux_transfer(struct 
+>>> drm_dp_aux *aux,
+>>>   }
+>>>     struct analogix_dp_device *
+>>> -analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
+>>> -         struct analogix_dp_plat_data *plat_data)
+>>> +analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data 
+>>> *plat_data)
+>>>   {
+>>>       struct platform_device *pdev = to_platform_device(dev);
+>>>       struct analogix_dp_device *dp;
 
-Signed-off-by: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-[some simplifications and added commit description]
-Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
----
-changes in v2:
-- use devm_iio_triggered_buffer_setup
-- calculate data array size from channel number (curtesy of at91-sama5d2_adc)
+          ret = analogix_dp_dt_parse_pdata(dp);
+         if (ret)
+                 return ERR_PTR(ret);
 
- drivers/iio/adc/Kconfig           |   2 +
- drivers/iio/adc/rockchip_saradc.c | 150 +++++++++++++++++++++++-------
- 2 files changed, 116 insertions(+), 36 deletions(-)
 
-diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-index 82e33082958c..55d2499ff757 100644
---- a/drivers/iio/adc/Kconfig
-+++ b/drivers/iio/adc/Kconfig
-@@ -787,6 +787,8 @@ config ROCKCHIP_SARADC
- 	tristate "Rockchip SARADC driver"
- 	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
- 	depends on RESET_CONTROLLER
-+	select IIO_BUFFER
-+	select IIO_TRIGGERED_BUFFER
- 	help
- 	  Say yes here to build support for the SARADC found in SoCs from
- 	  Rockchip.
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index 582ba047c4a6..0ee62d3935b7 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -15,7 +15,11 @@
- #include <linux/delay.h>
- #include <linux/reset.h>
- #include <linux/regulator/consumer.h>
-+#include <linux/iio/buffer.h>
- #include <linux/iio/iio.h>
-+#include <linux/iio/trigger.h>
-+#include <linux/iio/trigger_consumer.h>
-+#include <linux/iio/triggered_buffer.h>
- 
- #define SARADC_DATA			0x00
- 
-@@ -32,9 +36,19 @@
- #define SARADC_DLY_PU_SOC_MASK		0x3f
- 
- #define SARADC_TIMEOUT			msecs_to_jiffies(100)
-+#define SARADC_MAX_CHANNELS		6
-+
-+/*
-+ * Maximum number of bytes to hold conversion from all channels
-+ * without the timestamp.
-+ */
-+#define SARADC_BUFFER_MAX_CONVERSION_BYTES ((SARADC_MAX_CHANNELS) * 2)
-+
-+/* This total must also include the timestamp */
-+#define SARADC_BUFFER_MAX_BYTES (SARADC_BUFFER_MAX_CONVERSION_BYTES + 8)
-+#define SARADC_BUFFER_MAX_HWORDS (SARADC_BUFFER_MAX_BYTES / 2)
- 
- struct rockchip_saradc_data {
--	int				num_bits;
- 	const struct iio_chan_spec	*channels;
- 	int				num_channels;
- 	unsigned long			clk_rate;
-@@ -49,8 +63,37 @@ struct rockchip_saradc {
- 	struct reset_control	*reset;
- 	const struct rockchip_saradc_data *data;
- 	u16			last_val;
-+	const struct iio_chan_spec *last_chan;
- };
- 
-+static void rockchip_saradc_power_down(struct rockchip_saradc *info)
-+{
-+	/* Clear irq & power down adc */
-+	writel_relaxed(0, info->regs + SARADC_CTRL);
-+}
-+
-+static int rockchip_saradc_conversion(struct rockchip_saradc *info,
-+				   struct iio_chan_spec const *chan)
-+{
-+	reinit_completion(&info->completion);
-+
-+	/* 8 clock periods as delay between power up and start cmd */
-+	writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
-+
-+	info->last_chan = chan;
-+
-+	/* Select the channel to be used and trigger conversion */
-+	writel(SARADC_CTRL_POWER_CTRL
-+			| (chan->channel & SARADC_CTRL_CHN_MASK)
-+			| SARADC_CTRL_IRQ_ENABLE,
-+		   info->regs + SARADC_CTRL);
-+
-+	if (!wait_for_completion_timeout(&info->completion, SARADC_TIMEOUT))
-+		return -ETIMEDOUT;
-+
-+	return 0;
-+}
-+
- static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
- 				    struct iio_chan_spec const *chan,
- 				    int *val, int *val2, long mask)
-@@ -62,24 +105,12 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
- 	case IIO_CHAN_INFO_RAW:
- 		mutex_lock(&indio_dev->mlock);
- 
--		reinit_completion(&info->completion);
--
--		/* 8 clock periods as delay between power up and start cmd */
--		writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
--
--		/* Select the channel to be used and trigger conversion */
--		writel(SARADC_CTRL_POWER_CTRL
--				| (chan->channel & SARADC_CTRL_CHN_MASK)
--				| SARADC_CTRL_IRQ_ENABLE,
--		       info->regs + SARADC_CTRL);
--
--		if (!wait_for_completion_timeout(&info->completion,
--						 SARADC_TIMEOUT)) {
--			writel_relaxed(0, info->regs + SARADC_CTRL);
-+		ret = rockchip_saradc_conversion(info, chan);
-+		if (ret) {
-+			rockchip_saradc_power_down(info);
- 			mutex_unlock(&indio_dev->mlock);
--			return -ETIMEDOUT;
-+			return ret;
- 		}
--
- 		*val = info->last_val;
- 		mutex_unlock(&indio_dev->mlock);
- 		return IIO_VAL_INT;
-@@ -91,7 +122,7 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
- 		}
- 
- 		*val = ret / 1000;
--		*val2 = info->data->num_bits;
-+		*val2 = chan->scan_type.realbits;
- 		return IIO_VAL_FRACTIONAL_LOG2;
- 	default:
- 		return -EINVAL;
-@@ -104,10 +135,9 @@ static irqreturn_t rockchip_saradc_isr(int irq, void *dev_id)
- 
- 	/* Read value */
- 	info->last_val = readl_relaxed(info->regs + SARADC_DATA);
--	info->last_val &= GENMASK(info->data->num_bits - 1, 0);
-+	info->last_val &= GENMASK(info->last_chan->scan_type.realbits - 1, 0);
- 
--	/* Clear irq & power down adc */
--	writel_relaxed(0, info->regs + SARADC_CTRL);
-+	rockchip_saradc_power_down(info);
- 
- 	complete(&info->completion);
- 
-@@ -118,51 +148,55 @@ static const struct iio_info rockchip_saradc_iio_info = {
- 	.read_raw = rockchip_saradc_read_raw,
- };
- 
--#define ADC_CHANNEL(_index, _id) {				\
-+#define ADC_CHANNEL(_index, _id, _res) {			\
- 	.type = IIO_VOLTAGE,					\
- 	.indexed = 1,						\
- 	.channel = _index,					\
- 	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),		\
- 	.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),	\
- 	.datasheet_name = _id,					\
-+	.scan_index = _index,					\
-+	.scan_type = {						\
-+		.sign = 'u',					\
-+		.realbits = _res,				\
-+		.storagebits = 16,				\
-+		.endianness = IIO_LE,				\
-+	},							\
- }
- 
- static const struct iio_chan_spec rockchip_saradc_iio_channels[] = {
--	ADC_CHANNEL(0, "adc0"),
--	ADC_CHANNEL(1, "adc1"),
--	ADC_CHANNEL(2, "adc2"),
-+	ADC_CHANNEL(0, "adc0", 10),
-+	ADC_CHANNEL(1, "adc1", 10),
-+	ADC_CHANNEL(2, "adc2", 10),
- };
- 
- static const struct rockchip_saradc_data saradc_data = {
--	.num_bits = 10,
- 	.channels = rockchip_saradc_iio_channels,
- 	.num_channels = ARRAY_SIZE(rockchip_saradc_iio_channels),
- 	.clk_rate = 1000000,
- };
- 
- static const struct iio_chan_spec rockchip_rk3066_tsadc_iio_channels[] = {
--	ADC_CHANNEL(0, "adc0"),
--	ADC_CHANNEL(1, "adc1"),
-+	ADC_CHANNEL(0, "adc0", 12),
-+	ADC_CHANNEL(1, "adc1", 12),
- };
- 
- static const struct rockchip_saradc_data rk3066_tsadc_data = {
--	.num_bits = 12,
- 	.channels = rockchip_rk3066_tsadc_iio_channels,
- 	.num_channels = ARRAY_SIZE(rockchip_rk3066_tsadc_iio_channels),
- 	.clk_rate = 50000,
- };
- 
- static const struct iio_chan_spec rockchip_rk3399_saradc_iio_channels[] = {
--	ADC_CHANNEL(0, "adc0"),
--	ADC_CHANNEL(1, "adc1"),
--	ADC_CHANNEL(2, "adc2"),
--	ADC_CHANNEL(3, "adc3"),
--	ADC_CHANNEL(4, "adc4"),
--	ADC_CHANNEL(5, "adc5"),
-+	ADC_CHANNEL(0, "adc0", 10),
-+	ADC_CHANNEL(1, "adc1", 10),
-+	ADC_CHANNEL(2, "adc2", 10),
-+	ADC_CHANNEL(3, "adc3", 10),
-+	ADC_CHANNEL(4, "adc4", 10),
-+	ADC_CHANNEL(5, "adc5", 10),
- };
- 
- static const struct rockchip_saradc_data rk3399_saradc_data = {
--	.num_bits = 10,
- 	.channels = rockchip_rk3399_saradc_iio_channels,
- 	.num_channels = ARRAY_SIZE(rockchip_rk3399_saradc_iio_channels),
- 	.clk_rate = 1000000,
-@@ -193,6 +227,39 @@ static void rockchip_saradc_reset_controller(struct reset_control *reset)
- 	reset_control_deassert(reset);
- }
- 
-+static irqreturn_t rockchip_saradc_trigger_handler(int irq, void *p)
-+{
-+	struct iio_poll_func *pf = p;
-+	struct iio_dev *i_dev = pf->indio_dev;
-+	struct rockchip_saradc *info = iio_priv(i_dev);
-+	u16 data[SARADC_BUFFER_MAX_HWORDS];
-+	int ret;
-+	int i, j = 0;
-+
-+	mutex_lock(&i_dev->mlock);
-+
-+	for_each_set_bit(i, i_dev->active_scan_mask, i_dev->masklength) {
-+		const struct iio_chan_spec *chan = &i_dev->channels[i];
-+
-+		ret = rockchip_saradc_conversion(info, chan);
-+		if (ret) {
-+			rockchip_saradc_power_down(info);
-+			goto out;
-+		}
-+
-+		data[j] = info->last_val;
-+		j++;
-+	}
-+
-+	iio_push_to_buffers_with_timestamp(i_dev, data, iio_get_time_ns(i_dev));
-+out:
-+	mutex_unlock(&i_dev->mlock);
-+
-+	iio_trigger_notify_done(i_dev->trig);
-+
-+	return IRQ_HANDLED;
-+}
-+
- static int rockchip_saradc_probe(struct platform_device *pdev)
- {
- 	struct rockchip_saradc *info = NULL;
-@@ -221,6 +288,11 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 
- 	info->data = match->data;
- 
-+	if (info->data->num_channels > SARADC_MAX_CHANNELS) {
-+		dev_err(&pdev->dev, "max channels exceeded");
-+		return -EINVAL;
-+	}
-+
- 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	info->regs = devm_ioremap_resource(&pdev->dev, mem);
- 	if (IS_ERR(info->regs))
-@@ -315,6 +387,12 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
- 	indio_dev->channels = info->data->channels;
- 	indio_dev->num_channels = info->data->num_channels;
- 
-+	ret = devm_iio_triggered_buffer_setup(&indio_dev->dev, indio_dev, NULL,
-+					      rockchip_saradc_trigger_handler,
-+					      NULL);
-+	if (ret)
-+		goto err_clk;
-+
- 	ret = iio_device_register(indio_dev);
- 	if (ret)
- 		goto err_clk;
--- 
-2.24.1
+     I think this is the problem I tested。 Now the pdata were parse in 
+probe, but the plata_data->dev_type was populated in 
+rockchip_dp_bind/exynos_dp_bind after probe.So we can't parse the right 
+configuration here.
+
+
+
+>>> @@ -1750,22 +1749,30 @@ analogix_dp_bind(struct device *dev, struct 
+>>> drm_device *drm_dev,
+>>>                       irq_flags, "analogix-dp", dp);
+>>>       if (ret) {
+>>>           dev_err(&pdev->dev, "failed to request irq\n");
+>>> -        goto err_disable_pm_runtime;
+>>> +        return ERR_PTR(ret);
+>>>       }
+>>>       disable_irq(dp->irq);
+>>>   +    return dp;
+>>> +}
+>>> +EXPORT_SYMBOL_GPL(analogix_dp_probe);
+>>> +
+>>> +int analogix_dp_bind(struct analogix_dp_device *dp, struct 
+>>> drm_device *drm_dev)
+>>> +{
+>>> +    int ret;
+>>> +
+>>>       dp->drm_dev = drm_dev;
+>>>       dp->encoder = dp->plat_data->encoder;
+>>>         dp->aux.name = "DP-AUX";
+>>>       dp->aux.transfer = analogix_dpaux_transfer;
+>>> -    dp->aux.dev = &pdev->dev;
+>>> +    dp->aux.dev = dp->dev;
+>>>         ret = drm_dp_aux_register(&dp->aux);
+>>>       if (ret)
+>>> -        return ERR_PTR(ret);
+>>> +        return ret;
+>>>   -    pm_runtime_enable(dev);
+>>> +    pm_runtime_enable(dp->dev);
+>>>         ret = analogix_dp_create_bridge(drm_dev, dp);
+>>>       if (ret) {
+>>> @@ -1773,13 +1780,12 @@ analogix_dp_bind(struct device *dev, struct 
+>>> drm_device *drm_dev,
+>>>           goto err_disable_pm_runtime;
+>>>       }
+>>>   -    return dp;
+>>> +    return 0;
+>>>     err_disable_pm_runtime:
+>>> +    pm_runtime_disable(dp->dev);
+>>>   -    pm_runtime_disable(dev);
+>>> -
+>>> -    return ERR_PTR(ret);
+>>> +    return ret;
+>>>   }
+>>>   EXPORT_SYMBOL_GPL(analogix_dp_bind);
+>>>   @@ -1796,10 +1802,15 @@ void analogix_dp_unbind(struct 
+>>> analogix_dp_device *dp)
+>>>         drm_dp_aux_unregister(&dp->aux);
+>>>       pm_runtime_disable(dp->dev);
+>>> -    clk_disable_unprepare(dp->clock);
+>>>   }
+>>>   EXPORT_SYMBOL_GPL(analogix_dp_unbind);
+>>>   +void analogix_dp_remove(struct analogix_dp_device *dp)
+>>> +{
+>>> +    clk_disable_unprepare(dp->clock);
+>>> +}
+>>> +EXPORT_SYMBOL_GPL(analogix_dp_remove);
+>>> +
+>>>   #ifdef CONFIG_PM
+>>>   int analogix_dp_suspend(struct analogix_dp_device *dp)
+>>>   {
+>>> diff --git a/drivers/gpu/drm/exynos/exynos_dp.c 
+>>> b/drivers/gpu/drm/exynos/exynos_dp.c
+>>> index 4785885c0f4f..558b78e8cc32 100644
+>>> --- a/drivers/gpu/drm/exynos/exynos_dp.c
+>>> +++ b/drivers/gpu/drm/exynos/exynos_dp.c
+>>> @@ -184,13 +184,11 @@ static int exynos_dp_bind(struct device *dev, 
+>>> struct device *master, void *data)
+>>>         dp->plat_data.encoder = encoder;
+>>>   -    dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
+>>> -    if (IS_ERR(dp->adp)) {
+>>> +    ret = analogix_dp_bind(dp->adp, dp->drm_dev);
+>>> +    if (ret)
+>>> dp->encoder.funcs->destroy(&dp->encoder);
+>>> -        return PTR_ERR(dp->adp);
+>>> -    }
+>>>   -    return 0;
+>>> +    return ret;
+>>>   }
+>>>     static void exynos_dp_unbind(struct device *dev, struct device 
+>>> *master,
+>>> @@ -250,12 +248,19 @@ static int exynos_dp_probe(struct 
+>>> platform_device *pdev)
+>>>       dp->ptn_bridge = bridge;
+>>>     out:
+>>> +    dp->adp = analogix_dp_probe(dev, &dp->plat_data);
+>>> +    if (IS_ERR(dp->adp))
+>>> +        return PTR_ERR(dp->adp);
+>>> +
+>>>       return component_add(&pdev->dev, &exynos_dp_ops);
+>>>   }
+>>>     static int exynos_dp_remove(struct platform_device *pdev)
+>>>   {
+>>> +    struct exynos_dp_device *dp = platform_get_drvdata(pdev);
+>>> +
+>>>       component_del(&pdev->dev, &exynos_dp_ops);
+>>> +    analogix_dp_remove(dp->adp);
+>>>         return 0;
+>>>   }
+>>> diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c 
+>>> b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>>> index f38f5e113c6b..b85cf2582864 100644
+>>> --- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>>> +++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+>>> @@ -349,11 +349,9 @@ static int rockchip_dp_bind(struct device *dev, 
+>>> struct device *master,
+>>>       dp->plat_data.power_off = rockchip_dp_powerdown;
+>>>       dp->plat_data.get_modes = rockchip_dp_get_modes;
+>>>   -    dp->adp = analogix_dp_bind(dev, dp->drm_dev, &dp->plat_data);
+>>> -    if (IS_ERR(dp->adp)) {
+>>> -        ret = PTR_ERR(dp->adp);
+>>> +    ret = analogix_dp_bind(dp->adp, drm_dev);
+>>> +    if (ret)
+>>>           goto err_cleanup_encoder;
+>>> -    }
+>>>         return 0;
+>>>   err_cleanup_encoder:
+>>> @@ -368,8 +366,6 @@ static void rockchip_dp_unbind(struct device 
+>>> *dev, struct device *master,
+>>>         analogix_dp_unbind(dp->adp);
+>>>       dp->encoder.funcs->destroy(&dp->encoder);
+>>> -
+>>> -    dp->adp = ERR_PTR(-ENODEV);
+>>>   }
+>>>     static const struct component_ops rockchip_dp_component_ops = {
+>>> @@ -402,12 +398,19 @@ static int rockchip_dp_probe(struct 
+>>> platform_device *pdev)
+>>>         platform_set_drvdata(pdev, dp);
+>>>   +    dp->adp = analogix_dp_probe(dev, &dp->plat_data);
+>>> +    if (IS_ERR(dp->adp))
+>>> +        return PTR_ERR(dp->adp);
+>>> +
+>>>       return component_add(dev, &rockchip_dp_component_ops);
+>>>   }
+>>>     static int rockchip_dp_remove(struct platform_device *pdev)
+>>>   {
+>>> +    struct rockchip_dp_device *dp = platform_get_drvdata(pdev);
+>>> +
+>>>       component_del(&pdev->dev, &rockchip_dp_component_ops);
+>>> +    analogix_dp_remove(dp->adp);
+>>>         return 0;
+>>>   }
+>>> diff --git a/include/drm/bridge/analogix_dp.h 
+>>> b/include/drm/bridge/analogix_dp.h
+>>> index 7aa2f93da49c..b0dcc07334a1 100644
+>>> --- a/include/drm/bridge/analogix_dp.h
+>>> +++ b/include/drm/bridge/analogix_dp.h
+>>> @@ -42,9 +42,10 @@ int analogix_dp_resume(struct analogix_dp_device 
+>>> *dp);
+>>>   int analogix_dp_suspend(struct analogix_dp_device *dp);
+>>>     struct analogix_dp_device *
+>>> -analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
+>>> -         struct analogix_dp_plat_data *plat_data);
+>>> +analogix_dp_probe(struct device *dev, struct analogix_dp_plat_data 
+>>> *plat_data);
+>>> +int analogix_dp_bind(struct analogix_dp_device *dp, struct 
+>>> drm_device *drm_dev);
+>>>   void analogix_dp_unbind(struct analogix_dp_device *dp);
+>>> +void analogix_dp_remove(struct analogix_dp_device *dp);
+>>>     int analogix_dp_start_crc(struct drm_connector *connector);
+>>>   int analogix_dp_stop_crc(struct drm_connector *connector);
+>>
+>>
+>> _______________________________________________
+>> Linux-rockchip mailing list
+>> Linux-rockchip@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
