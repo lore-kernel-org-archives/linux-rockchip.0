@@ -1,198 +1,242 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH 6/6] hantro: Refactor for V4L2 API spec compliancy
-Date: Wed, 11 Mar 2020 14:43:00 -0300
-Message-ID: <20200311174300.19407-7-ezequiel@collabora.com>
-References: <20200311174300.19407-1-ezequiel@collabora.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200311174300.19407-1-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v3] dt-bindings: display: convert rockchip vop bindings to yaml
+Date: Wed, 11 Mar 2020 19:15:24 +0100
+Message-ID: <20200311181524.25108-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Refactor how S_FMT and TRY_FMT are handled, and also make sure
-internal initial format and format reset are done properly.
+Current dts files with 'vop' nodes are manually verified.
+In order to automate this process rockchip-vop.txt
+has to be converted to yaml.
 
-The latter is achieved by making sure the same hantro_{set,try}_fmt
-helpers are called on all paths that set the format (which is
-part of the driver state).
-
-This commit removes the following v4l2-compliance warnings:
-
-test VIDIOC_G_FMT: OK
-	fail: v4l2-test-formats.cpp(711): Video Capture Multiplanar: TRY_FMT(G_FMT) != G_FMT
-test VIDIOC_TRY_FMT: FAIL
-	fail: v4l2-test-formats.cpp(1116): Video Capture Multiplanar: S_FMT(G_FMT) != G_FMT
-test VIDIOC_S_FMT: FAIL
-
-Reported-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- drivers/staging/media/hantro/hantro_v4l2.c | 70 ++++++++++++++--------
- 1 file changed, 45 insertions(+), 25 deletions(-)
+Changes v3:
+  Change description
 
-diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-index 458b502ff01b..f28a94e2fa93 100644
---- a/drivers/staging/media/hantro/hantro_v4l2.c
-+++ b/drivers/staging/media/hantro/hantro_v4l2.c
-@@ -30,6 +30,11 @@
- #include "hantro_hw.h"
- #include "hantro_v4l2.h"
- 
-+static int hantro_set_fmt_out(struct hantro_ctx *ctx,
-+			      struct v4l2_pix_format_mplane *pix_mp);
-+static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
-+			      struct v4l2_pix_format_mplane *pix_mp);
+Changes v2:
+  No new properties
+---
+ .../bindings/display/rockchip/rockchip-vop.txt     |  74 ------------
+ .../bindings/display/rockchip/rockchip-vop.yaml    | 126 +++++++++++++++++++++
+ 2 files changed, 126 insertions(+), 74 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
+ create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
+deleted file mode 100644
+index 8b3a5f514..000000000
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
++++ /dev/null
+@@ -1,74 +0,0 @@
+-device-tree bindings for rockchip soc display controller (vop)
+-
+-VOP (Visual Output Processor) is the Display Controller for the Rockchip
+-series of SoCs which transfers the image data from a video memory
+-buffer to an external LCD interface.
+-
+-Required properties:
+-- compatible: value should be one of the following
+-		"rockchip,rk3036-vop";
+-		"rockchip,rk3126-vop";
+-		"rockchip,px30-vop-lit";
+-		"rockchip,px30-vop-big";
+-		"rockchip,rk3066-vop";
+-		"rockchip,rk3188-vop";
+-		"rockchip,rk3288-vop";
+-		"rockchip,rk3368-vop";
+-		"rockchip,rk3366-vop";
+-		"rockchip,rk3399-vop-big";
+-		"rockchip,rk3399-vop-lit";
+-		"rockchip,rk3228-vop";
+-		"rockchip,rk3328-vop";
+-
+-- reg: Must contain one entry corresponding to the base address and length
+-	of the register space. Can optionally contain a second entry
+-	corresponding to the CRTC gamma LUT address.
+-
+-- interrupts: should contain a list of all VOP IP block interrupts in the
+-		 order: VSYNC, LCD_SYSTEM. The interrupt specifier
+-		 format depends on the interrupt controller used.
+-
+-- clocks: must include clock specifiers corresponding to entries in the
+-		clock-names property.
+-
+-- clock-names: Must contain
+-		aclk_vop: for ddr buffer transfer.
+-		hclk_vop: for ahb bus to R/W the phy regs.
+-		dclk_vop: pixel clock.
+-
+-- resets: Must contain an entry for each entry in reset-names.
+-  See ../reset/reset.txt for details.
+-- reset-names: Must include the following entries:
+-  - axi
+-  - ahb
+-  - dclk
+-
+-- iommus: required a iommu node
+-
+-- port: A port node with endpoint definitions as defined in
+-  Documentation/devicetree/bindings/media/video-interfaces.txt.
+-
+-Example:
+-SoC specific DT entry:
+-	vopb: vopb@ff930000 {
+-		compatible = "rockchip,rk3288-vop";
+-		reg = <0x0 0xff930000 0x0 0x19c>, <0x0 0xff931000 0x0 0x1000>;
+-		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&cru ACLK_VOP0>, <&cru DCLK_VOP0>, <&cru HCLK_VOP0>;
+-		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
+-		resets = <&cru SRST_LCDC1_AXI>, <&cru SRST_LCDC1_AHB>, <&cru SRST_LCDC1_DCLK>;
+-		reset-names = "axi", "ahb", "dclk";
+-		iommus = <&vopb_mmu>;
+-		vopb_out: port {
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-			vopb_out_edp: endpoint@0 {
+-				reg = <0>;
+-				remote-endpoint=<&edp_in_vopb>;
+-			};
+-			vopb_out_hdmi: endpoint@1 {
+-				reg = <1>;
+-				remote-endpoint=<&hdmi_in_vopb>;
+-			};
+-		};
+-	};
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
+new file mode 100644
+index 000000000..be363e2e8
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
+@@ -0,0 +1,126 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- static const struct hantro_fmt *
- hantro_get_formats(const struct hantro_ctx *ctx, unsigned int *num_fmts)
- {
-@@ -227,12 +232,12 @@ static int vidioc_g_fmt_cap_mplane(struct file *file, void *priv,
- 	return 0;
- }
- 
--static int vidioc_try_fmt(struct file *file, void *priv, struct v4l2_format *f,
--			  bool capture)
-+static int hantro_try_fmt(const struct hantro_ctx *ctx,
-+			  struct v4l2_pix_format_mplane *pix_mp,
-+			  enum v4l2_buf_type type)
- {
--	struct hantro_ctx *ctx = fh_to_ctx(priv);
--	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
- 	const struct hantro_fmt *fmt, *vpu_fmt;
-+	bool capture = !V4L2_TYPE_IS_OUTPUT(type);
- 	bool coded;
- 
- 	coded = capture == hantro_is_encoder_ctx(ctx);
-@@ -246,7 +251,7 @@ static int vidioc_try_fmt(struct file *file, void *priv, struct v4l2_format *f,
- 	fmt = hantro_find_format(ctx, pix_mp->pixelformat);
- 	if (!fmt) {
- 		fmt = hantro_get_default_fmt(ctx, coded);
--		f->fmt.pix_mp.pixelformat = fmt->fourcc;
-+		pix_mp->pixelformat = fmt->fourcc;
- 	}
- 
- 	if (coded) {
-@@ -294,13 +299,13 @@ static int vidioc_try_fmt(struct file *file, void *priv, struct v4l2_format *f,
- static int vidioc_try_fmt_cap_mplane(struct file *file, void *priv,
- 				     struct v4l2_format *f)
- {
--	return vidioc_try_fmt(file, priv, f, true);
-+	return hantro_try_fmt(fh_to_ctx(priv), &f->fmt.pix_mp, f->type);
- }
- 
- static int vidioc_try_fmt_out_mplane(struct file *file, void *priv,
- 				     struct v4l2_format *f)
- {
--	return vidioc_try_fmt(file, priv, f, false);
-+	return hantro_try_fmt(fh_to_ctx(priv), &f->fmt.pix_mp, f->type);
- }
- 
- static void
-@@ -334,11 +339,12 @@ hantro_reset_encoded_fmt(struct hantro_ctx *ctx)
- 	}
- 
- 	hantro_reset_fmt(fmt, vpu_fmt);
--	fmt->num_planes = 1;
- 	fmt->width = vpu_fmt->frmsize.min_width;
- 	fmt->height = vpu_fmt->frmsize.min_height;
--	fmt->plane_fmt[0].sizeimage = vpu_fmt->header_size +
--				fmt->width * fmt->height * vpu_fmt->max_depth;
-+	if (hantro_is_encoder_ctx(ctx))
-+		hantro_set_fmt_cap(ctx, fmt);
-+	else
-+		hantro_set_fmt_out(ctx, fmt);
- }
- 
- static void
-@@ -360,9 +366,12 @@ hantro_reset_raw_fmt(struct hantro_ctx *ctx)
- 	}
- 
- 	hantro_reset_fmt(raw_fmt, raw_vpu_fmt);
--	v4l2_fill_pixfmt_mp(raw_fmt, raw_vpu_fmt->fourcc,
--			    encoded_fmt->width,
--			    encoded_fmt->height);
-+	raw_fmt->width = encoded_fmt->width;
-+	raw_fmt->width = encoded_fmt->width;
-+	if (hantro_is_encoder_ctx(ctx))
-+		hantro_set_fmt_out(ctx, raw_fmt);
-+	else
-+		hantro_set_fmt_cap(ctx, raw_fmt);
- }
- 
- void hantro_reset_fmts(struct hantro_ctx *ctx)
-@@ -388,15 +397,15 @@ hantro_update_requires_request(struct hantro_ctx *ctx, u32 fourcc)
- 	}
- }
- 
--static int
--vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
-+static int hantro_set_fmt_out(struct hantro_ctx *ctx,
-+			      struct v4l2_pix_format_mplane *pix_mp)
- {
--	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
--	struct hantro_ctx *ctx = fh_to_ctx(priv);
--	struct vb2_queue *vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-+	struct vb2_queue *vq;
- 	int ret;
- 
--	ret = vidioc_try_fmt_out_mplane(file, priv, f);
-+	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
-+			     V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
-+	ret = hantro_try_fmt(ctx, pix_mp, V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
- 	if (ret)
- 		return ret;
- 
-@@ -458,16 +467,15 @@ vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
- 	return 0;
- }
- 
--static int vidioc_s_fmt_cap_mplane(struct file *file, void *priv,
--				   struct v4l2_format *f)
-+static int hantro_set_fmt_cap(struct hantro_ctx *ctx,
-+			      struct v4l2_pix_format_mplane *pix_mp)
- {
--	struct v4l2_pix_format_mplane *pix_mp = &f->fmt.pix_mp;
--	struct hantro_ctx *ctx = fh_to_ctx(priv);
- 	struct vb2_queue *vq;
- 	int ret;
- 
- 	/* Change not allowed if queue is busy. */
--	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx, f->type);
-+	vq = v4l2_m2m_get_vq(ctx->fh.m2m_ctx,
-+			     V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
- 	if (vb2_is_busy(vq))
- 		return -EBUSY;
- 
-@@ -488,7 +496,7 @@ static int vidioc_s_fmt_cap_mplane(struct file *file, void *priv,
- 			return -EBUSY;
- 	}
- 
--	ret = vidioc_try_fmt_cap_mplane(file, priv, f);
-+	ret = hantro_try_fmt(ctx, pix_mp, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
- 	if (ret)
- 		return ret;
- 
-@@ -522,6 +530,18 @@ static int vidioc_s_fmt_cap_mplane(struct file *file, void *priv,
- 	return 0;
- }
- 
-+static int
-+vidioc_s_fmt_out_mplane(struct file *file, void *priv, struct v4l2_format *f)
-+{
-+	return hantro_set_fmt_out(fh_to_ctx(priv), &f->fmt.pix_mp);
-+}
++title: Rockchip SoC display controller (VOP)
 +
-+static int
-+vidioc_s_fmt_cap_mplane(struct file *file, void *priv, struct v4l2_format *f)
-+{
-+	return hantro_set_fmt_cap(fh_to_ctx(priv), &f->fmt.pix_mp);
-+}
++description:
++  VOP (Video Out Processor) is the display controller for the Rockchip
++  series of SoCs which transfers the image data from a video memory
++  buffer to an external LCD interface.
 +
- const struct v4l2_ioctl_ops hantro_ioctl_ops = {
- 	.vidioc_querycap = vidioc_querycap,
- 	.vidioc_enum_framesizes = vidioc_enum_framesizes,
++maintainers:
++  - Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
++
++properties:
++  compatible:
++    oneOf:
++      - const: rockchip,px30-vop-big
++      - const: rockchip,px30-vop-lit
++      - const: rockchip,rk3036-vop
++      - const: rockchip,rk3066-vop
++      - const: rockchip,rk3126-vop
++      - const: rockchip,rk3188-vop
++      - const: rockchip,rk3228-vop
++      - const: rockchip,rk3288-vop
++      - const: rockchip,rk3328-vop
++      - const: rockchip,rk3366-vop
++      - const: rockchip,rk3368-vop
++      - const: rockchip,rk3399-vop-big
++      - const: rockchip,rk3399-vop-lit
++
++  reg:
++    minItems: 1
++    items:
++      - description:
++          Must contain one entry corresponding to the base address and length
++          of the register space.
++      - description:
++          Can optionally contain a second entry corresponding to
++          the CRTC gamma LUT address.
++
++  interrupts:
++    maxItems: 1
++    description:
++      Should contain a list of all VOP IP block interrupts in the
++      order VSYNC, LCD_SYSTEM. The interrupt specifier
++      format depends on the interrupt controller used.
++
++  clocks:
++    items:
++      - description: Clock for ddr buffer transfer.
++      - description: Pixel clock.
++      - description: Clock for the ahb bus to R/W the phy regs.
++
++  clock-names:
++    items:
++      - const: aclk_vop
++      - const: dclk_vop
++      - const: hclk_vop
++
++  resets:
++    minItems: 3
++    maxItems: 3
++
++  reset-names:
++    items:
++      - const: axi
++      - const: ahb
++      - const: dclk
++
++  port:
++    type: object
++    description:
++      A port node with endpoint definitions as defined in
++      Documentation/devicetree/bindings/media/video-interfaces.txt.
++
++  iommus:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - resets
++  - reset-names
++  - port
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3288-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    vopb: vopb@ff930000 {
++      compatible = "rockchip,rk3288-vop";
++      reg = <0x0 0xff930000 0x0 0x19c>,
++            <0x0 0xff931000 0x0 0x1000>;
++      interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru ACLK_VOP0>,
++               <&cru DCLK_VOP0>,
++               <&cru HCLK_VOP0>;
++      clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
++      resets = <&cru SRST_LCDC1_AXI>,
++               <&cru SRST_LCDC1_AHB>,
++               <&cru SRST_LCDC1_DCLK>;
++      reset-names = "axi", "ahb", "dclk";
++      iommus = <&vopb_mmu>;
++      vopb_out: port {
++        #address-cells = <1>;
++        #size-cells = <0>;
++        vopb_out_edp: endpoint@0 {
++          reg = <0>;
++          remote-endpoint=<&edp_in_vopb>;
++        };
++        vopb_out_hdmi: endpoint@1 {
++          reg = <1>;
++          remote-endpoint=<&hdmi_in_vopb>;
++        };
++      };
++    };
 -- 
-2.25.0
+2.11.0
