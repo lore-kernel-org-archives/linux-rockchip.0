@@ -1,31 +1,50 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] drm/rockchip: rgb: don't count non-existent devices when determining subdrivers
-Date: Wed, 11 Mar 2020 10:00:45 +0100
-Message-ID: <2624804.tm1DkxDElZ@phil>
-References: <20200121224828.4070067-1-heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v1 1/5] ARM: dts: rockchip: fix vqmmc-supply property name for rk3188-bqedison2qc
+Date: Wed, 11 Mar 2020 10:07:54 +0100
+Message-ID: <37714750.JZCpAI0Cju@phil>
+References: <20200307134841.13803-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200121224828.4070067-1-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: hjc@rock-chips.com
-Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, miquel.raynal@bootlin.com, christoph.muellner@theobroma-systems.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200307134841.13803-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 21. Januar 2020, 23:48:28 CET schrieb Heiko Stuebner:
-> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Am Samstag, 7. März 2020, 14:48:37 CET schrieb Johan Jonker:
+> A test with the command below does not detect all errors
+> in combination with 'additionalProperties: false' and
+> allOf:
+>   - $ref: "synopsys-dw-mshc-common.yaml#"
+> allOf:
+>   - $ref: "mmc-controller.yaml#"
 > 
-> rockchip_drm_endpoint_is_subdriver() may also return error codes.
-> For example if the target-node is in the disabled state, so no
-> platform-device is getting created for it.
+> 'additionalProperties' applies to all properties that are not
+> accounted-for by 'properties' or 'patternProperties' in
+> the immediate schema.
 > 
-> In that case current code would count that as external rgb device,
-> which in turn would make probing the rockchip-drm device fail.
+> First when we combine rockchip-dw-mshc.yaml,
+> synopsys-dw-mshc-common.yaml and mmc-controller.yaml it gives
+> this error:
 > 
-> So only count the target as rgb device if the function actually
-> returns 0.
+> arch/arm/boot/dts/rk3188-bqedison2qc.dt.yaml: mmc@10218000:
+> 'vmmcq-supply' does not match any of the regexes:
+> '^.*@[0-9]+$',
+> '^clk-phase-(legacy|sd-hs|mmc-(hs|hs[24]00|ddr52)|
+> uhs-(sdr(12|25|50|104)|ddr50))$',
+> 'pinctrl-[0-9]+'
 > 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> 'vmmcq-supply' is not a valid property name for mmc nodes.
+> Fix this error by renaming it to 'vqmmc-supply'.
+> 
+> make ARCH=arm dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+> 
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-applied to drm-misc-next
+applied all 5 for 5.7
+
+Thanks
+Heiko
