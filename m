@@ -1,137 +1,51 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH 2/2] ARM: dts: rockchip: remove #address-cells and #size-cells from i2s nodes
-Date: Wed, 11 Mar 2020 17:25:24 +0100
-Message-ID: <20200311162524.19748-2-jbx6244@gmail.com>
-References: <20200311162524.19748-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200311162524.19748-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v1 2/2] dt-bindings: sound: rockchip-i2s: add #sound-dai-cells property
+Date: Wed, 11 Mar 2020 18:43:22 +0100
+Message-ID: <20200311174322.23813-2-jbx6244@gmail.com>
+References: <20200311174322.23813-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200311174322.23813-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+Cc: broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-An experimental test with the command below gives
-for example this error:
+'#sound-dai-cells' is required to properly interpret
+the list of DAI specified in the 'sound-dai' property,
+so add them to 'rockchip-i2s.yaml'
 
-arch/arm/boot/dts/rk3036-evb.dt.yaml: i2s@10220000:
-'#address-cells', '#size-cells'
-do not match any of the regexes: 'pinctrl-[0-9]+'
-
-'#address-cells' and '#size-cells' are not a valid property
-for i2s nodes, so remove them.
-
-make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- arch/arm/boot/dts/rk3036.dtsi  | 2 --
- arch/arm/boot/dts/rk3066a.dtsi | 6 ------
- arch/arm/boot/dts/rk3188.dtsi  | 2 --
- arch/arm/boot/dts/rk322x.dtsi  | 6 ------
- arch/arm/boot/dts/rk3288.dtsi  | 2 --
- 5 files changed, 18 deletions(-)
+ Documentation/devicetree/bindings/sound/rockchip-i2s.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 2226f0d70..781ac7583 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -281,8 +281,6 @@
- 		compatible = "rockchip,rk3036-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x10220000 0x4000>;
- 		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
--		#address-cells = <1>;
--		#size-cells = <0>;
- 		clock-names = "i2s_clk", "i2s_hclk";
- 		clocks = <&cru SCLK_I2S>, <&cru HCLK_I2S>;
- 		dmas = <&pdma 0>, <&pdma 1>;
-diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
-index f3fc92e57..b599394d1 100644
---- a/arch/arm/boot/dts/rk3066a.dtsi
-+++ b/arch/arm/boot/dts/rk3066a.dtsi
-@@ -156,8 +156,6 @@
- 		compatible = "rockchip,rk3066-i2s";
- 		reg = <0x10118000 0x2000>;
- 		interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
--		#address-cells = <1>;
--		#size-cells = <0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2s0_bus>;
- 		clocks = <&cru SCLK_I2S0>, <&cru HCLK_I2S0>;
-@@ -174,8 +172,6 @@
- 		compatible = "rockchip,rk3066-i2s";
- 		reg = <0x1011a000 0x2000>;
- 		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
--		#address-cells = <1>;
--		#size-cells = <0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2s1_bus>;
- 		clocks = <&cru SCLK_I2S1>, <&cru HCLK_I2S1>;
-@@ -192,8 +188,6 @@
- 		compatible = "rockchip,rk3066-i2s";
- 		reg = <0x1011c000 0x2000>;
- 		interrupts = <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH>;
--		#address-cells = <1>;
--		#size-cells = <0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2s2_bus>;
- 		clocks = <&cru SCLK_I2S2>, <&cru HCLK_I2S2>;
-diff --git a/arch/arm/boot/dts/rk3188.dtsi b/arch/arm/boot/dts/rk3188.dtsi
-index 651ea4e15..24abf214a 100644
---- a/arch/arm/boot/dts/rk3188.dtsi
-+++ b/arch/arm/boot/dts/rk3188.dtsi
-@@ -166,8 +166,6 @@
- 		compatible = "rockchip,rk3188-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x1011a000 0x2000>;
- 		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_HIGH>;
--		#address-cells = <1>;
--		#size-cells = <0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&i2s0_bus>;
- 		clocks = <&cru SCLK_I2S0>, <&cru HCLK_I2S0>;
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index 8ad44213f..a0acf2ef8 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -152,8 +152,6 @@
- 		compatible = "rockchip,rk3228-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x100b0000 0x4000>;
- 		interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH>;
--		#address-cells = <1>;
--		#size-cells = <0>;
- 		clock-names = "i2s_clk", "i2s_hclk";
- 		clocks = <&cru SCLK_I2S1>, <&cru HCLK_I2S1_8CH>;
- 		dmas = <&pdma 14>, <&pdma 15>;
-@@ -167,8 +165,6 @@
- 		compatible = "rockchip,rk3228-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x100c0000 0x4000>;
- 		interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
--		#address-cells = <1>;
--		#size-cells = <0>;
- 		clock-names = "i2s_clk", "i2s_hclk";
- 		clocks = <&cru SCLK_I2S0>, <&cru HCLK_I2S0_8CH>;
- 		dmas = <&pdma 11>, <&pdma 12>;
-@@ -193,8 +189,6 @@
- 		compatible = "rockchip,rk3228-i2s", "rockchip,rk3066-i2s";
- 		reg = <0x100e0000 0x4000>;
- 		interrupts = <GIC_SPI 28 IRQ_TYPE_LEVEL_HIGH>;
--		#address-cells = <1>;
--		#size-cells = <0>;
- 		clock-names = "i2s_clk", "i2s_hclk";
- 		clocks = <&cru SCLK_I2S2>, <&cru HCLK_I2S2_2CH>;
- 		dmas = <&pdma 0>, <&pdma 1>;
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index f68dcde6c..4745be518 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -962,8 +962,6 @@
- 		reg = <0x0 0xff890000 0x0 0x10000>;
- 		#sound-dai-cells = <0>;
- 		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
--		#address-cells = <1>;
--		#size-cells = <0>;
- 		clocks = <&cru SCLK_I2S0>, <&cru HCLK_I2S0>;
- 		clock-names = "i2s_clk", "i2s_hclk";
- 		dmas = <&dmac_bus_s 0>, <&dmac_bus_s 1>;
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
+index eff06b4b5..7cd0e278e 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
++++ b/Documentation/devicetree/bindings/sound/rockchip-i2s.yaml
+@@ -77,6 +77,9 @@ properties:
+       Required property for controllers which support multi channel
+       playback/capture.
+ 
++  "#sound-dai-cells":
++    const: 0
++
+ required:
+   - compatible
+   - reg
+@@ -85,6 +88,7 @@ required:
+   - clock-names
+   - dmas
+   - dma-names
++  - "#sound-dai-cells"
+ 
+ additionalProperties: false
+ 
+@@ -103,4 +107,5 @@ examples:
+       dma-names = "tx", "rx";
+       rockchip,capture-channels = <2>;
+       rockchip,playback-channels = <8>;
++      #sound-dai-cells = <0>;
+     };
 -- 
 2.11.0
