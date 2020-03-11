@@ -1,239 +1,162 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v2] dt-bindings: display: convert rockchip vop bindings to yaml
-Date: Wed, 11 Mar 2020 14:05:15 +0100
-Message-ID: <20200311130515.10663-1-jbx6244@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: "sandy.huang" <hjc@rock-chips.com>
+Subject: Re: [PATCH v2] dt-bindings: display: convert rockchip vop bindings to
+ yaml
+Date: Wed, 11 Mar 2020 22:56:47 +0800
+Message-ID: <28eb8ff1-b180-ebf7-a74c-966c6c7df2db@rock-chips.com>
+References: <20200311130515.10663-1-jbx6244@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <20200311130515.10663-1-jbx6244@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
+Cc: devicetree@vger.kernel.org, airlied@linux.ie, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, daniel@ffwll.ch, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Current dts files with 'vop' nodes are manually verified.
-In order to automate this process rockchip-vop.txt
-has to be converted to yaml.
-
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
-Changes v2:
-  No new properties
----
- .../bindings/display/rockchip/rockchip-vop.txt     |  74 ------------
- .../bindings/display/rockchip/rockchip-vop.yaml    | 126 +++++++++++++++++++++
- 2 files changed, 126 insertions(+), 74 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
- create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
-deleted file mode 100644
-index 8b3a5f514..000000000
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
-+++ /dev/null
-@@ -1,74 +0,0 @@
--device-tree bindings for rockchip soc display controller (vop)
--
--VOP (Visual Output Processor) is the Display Controller for the Rockchip
--series of SoCs which transfers the image data from a video memory
--buffer to an external LCD interface.
--
--Required properties:
--- compatible: value should be one of the following
--		"rockchip,rk3036-vop";
--		"rockchip,rk3126-vop";
--		"rockchip,px30-vop-lit";
--		"rockchip,px30-vop-big";
--		"rockchip,rk3066-vop";
--		"rockchip,rk3188-vop";
--		"rockchip,rk3288-vop";
--		"rockchip,rk3368-vop";
--		"rockchip,rk3366-vop";
--		"rockchip,rk3399-vop-big";
--		"rockchip,rk3399-vop-lit";
--		"rockchip,rk3228-vop";
--		"rockchip,rk3328-vop";
--
--- reg: Must contain one entry corresponding to the base address and length
--	of the register space. Can optionally contain a second entry
--	corresponding to the CRTC gamma LUT address.
--
--- interrupts: should contain a list of all VOP IP block interrupts in the
--		 order: VSYNC, LCD_SYSTEM. The interrupt specifier
--		 format depends on the interrupt controller used.
--
--- clocks: must include clock specifiers corresponding to entries in the
--		clock-names property.
--
--- clock-names: Must contain
--		aclk_vop: for ddr buffer transfer.
--		hclk_vop: for ahb bus to R/W the phy regs.
--		dclk_vop: pixel clock.
--
--- resets: Must contain an entry for each entry in reset-names.
--  See ../reset/reset.txt for details.
--- reset-names: Must include the following entries:
--  - axi
--  - ahb
--  - dclk
--
--- iommus: required a iommu node
--
--- port: A port node with endpoint definitions as defined in
--  Documentation/devicetree/bindings/media/video-interfaces.txt.
--
--Example:
--SoC specific DT entry:
--	vopb: vopb@ff930000 {
--		compatible = "rockchip,rk3288-vop";
--		reg = <0x0 0xff930000 0x0 0x19c>, <0x0 0xff931000 0x0 0x1000>;
--		interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
--		clocks = <&cru ACLK_VOP0>, <&cru DCLK_VOP0>, <&cru HCLK_VOP0>;
--		clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
--		resets = <&cru SRST_LCDC1_AXI>, <&cru SRST_LCDC1_AHB>, <&cru SRST_LCDC1_DCLK>;
--		reset-names = "axi", "ahb", "dclk";
--		iommus = <&vopb_mmu>;
--		vopb_out: port {
--			#address-cells = <1>;
--			#size-cells = <0>;
--			vopb_out_edp: endpoint@0 {
--				reg = <0>;
--				remote-endpoint=<&edp_in_vopb>;
--			};
--			vopb_out_hdmi: endpoint@1 {
--				reg = <1>;
--				remote-endpoint=<&hdmi_in_vopb>;
--			};
--		};
--	};
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-new file mode 100644
-index 000000000..cb88849f2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
-@@ -0,0 +1,126 @@
-+# SPDX-License-Identifier: GPL-2.0
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/rockchip/rockchip-vop.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip soc display controller (VOP)
-+
-+description:
-+  VOP (Visual Output Processor) is the Display Controller for the Rockchip
-+  series of SoCs which transfers the image data from a video memory
-+  buffer to an external LCD interface.
-+
-+maintainers:
-+  - Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-+  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - const: rockchip,px30-vop-big
-+      - const: rockchip,px30-vop-lit
-+      - const: rockchip,rk3036-vop
-+      - const: rockchip,rk3066-vop
-+      - const: rockchip,rk3126-vop
-+      - const: rockchip,rk3188-vop
-+      - const: rockchip,rk3228-vop
-+      - const: rockchip,rk3288-vop
-+      - const: rockchip,rk3328-vop
-+      - const: rockchip,rk3366-vop
-+      - const: rockchip,rk3368-vop
-+      - const: rockchip,rk3399-vop-big
-+      - const: rockchip,rk3399-vop-lit
-+
-+  reg:
-+    minItems: 1
-+    items:
-+      - description:
-+          Must contain one entry corresponding to the base address and length
-+          of the register space.
-+      - description:
-+          Can optionally contain a second entry corresponding to
-+          the CRTC gamma LUT address.
-+
-+  interrupts:
-+    maxItems: 1
-+    description:
-+      Should contain a list of all VOP IP block interrupts in the
-+      order VSYNC, LCD_SYSTEM. The interrupt specifier
-+      format depends on the interrupt controller used.
-+
-+  clocks:
-+    items:
-+      - description: Clock for ddr buffer transfer.
-+      - description: Pixel clock.
-+      - description: Clock for the ahb bus to R/W the phy regs.
-+
-+  clock-names:
-+    items:
-+      - const: aclk_vop
-+      - const: dclk_vop
-+      - const: hclk_vop
-+
-+  resets:
-+    minItems: 3
-+    maxItems: 3
-+
-+  reset-names:
-+    items:
-+      - const: axi
-+      - const: ahb
-+      - const: dclk
-+
-+  port:
-+    type: object
-+    description:
-+      A port node with endpoint definitions as defined in
-+      Documentation/devicetree/bindings/media/video-interfaces.txt.
-+
-+  iommus:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - resets
-+  - reset-names
-+  - port
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rk3288-cru.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    vopb: vopb@ff930000 {
-+      compatible = "rockchip,rk3288-vop";
-+      reg = <0x0 0xff930000 0x0 0x19c>,
-+            <0x0 0xff931000 0x0 0x1000>;
-+      interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
-+      clocks = <&cru ACLK_VOP0>,
-+               <&cru DCLK_VOP0>,
-+               <&cru HCLK_VOP0>;
-+      clock-names = "aclk_vop", "dclk_vop", "hclk_vop";
-+      resets = <&cru SRST_LCDC1_AXI>,
-+               <&cru SRST_LCDC1_AHB>,
-+               <&cru SRST_LCDC1_DCLK>;
-+      reset-names = "axi", "ahb", "dclk";
-+      iommus = <&vopb_mmu>;
-+      vopb_out: port {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+        vopb_out_edp: endpoint@0 {
-+          reg = <0>;
-+          remote-endpoint=<&edp_in_vopb>;
-+        };
-+        vopb_out_hdmi: endpoint@1 {
-+          reg = <1>;
-+          remote-endpoint=<&hdmi_in_vopb>;
-+        };
-+      };
-+    };
--- 
-2.11.0
+SGkgam9oYW4sCgrU2iAyMDIwLzMvMTEgMjE6MDUsIEpvaGFuIEpvbmtlciDQtLXAOgo+IEN1cnJl
+bnQgZHRzIGZpbGVzIHdpdGggJ3ZvcCcgbm9kZXMgYXJlIG1hbnVhbGx5IHZlcmlmaWVkLgo+IElu
+IG9yZGVyIHRvIGF1dG9tYXRlIHRoaXMgcHJvY2VzcyByb2NrY2hpcC12b3AudHh0Cj4gaGFzIHRv
+IGJlIGNvbnZlcnRlZCB0byB5YW1sLgo+Cj4gU2lnbmVkLW9mZi1ieTogSm9oYW4gSm9ua2VyIDxq
+Yng2MjQ0QGdtYWlsLmNvbT4KPiAtLS0KPiBDaGFuZ2VzIHYyOgo+ICAgIE5vIG5ldyBwcm9wZXJ0
+aWVzCj4gLS0tCj4gICAuLi4vYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC12b3Au
+dHh0ICAgICB8ICA3NCAtLS0tLS0tLS0tLS0KPiAgIC4uLi9iaW5kaW5ncy9kaXNwbGF5L3JvY2tj
+aGlwL3JvY2tjaGlwLXZvcC55YW1sICAgIHwgMTI2ICsrKysrKysrKysrKysrKysrKysrKwo+ICAg
+MiBmaWxlcyBjaGFuZ2VkLCAxMjYgaW5zZXJ0aW9ucygrKSwgNzQgZGVsZXRpb25zKC0pCj4gICBk
+ZWxldGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
+YXkvcm9ja2NoaXAvcm9ja2NoaXAtdm9wLnR4dAo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXZv
+cC55YW1sCj4KPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAtdm9wLnR4dCBiL0RvY3VtZW50YXRpb24vZGV2aWNl
+dHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXZvcC50eHQKPiBkZWxldGVk
+IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCA4YjNhNWY1MTQuLjAwMDAwMDAwMAo+IC0tLSBhL0Rv
+Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlw
+LXZvcC50eHQKPiArKysgL2Rldi9udWxsCj4gQEAgLTEsNzQgKzAsMCBAQAo+IC1kZXZpY2UtdHJl
+ZSBiaW5kaW5ncyBmb3Igcm9ja2NoaXAgc29jIGRpc3BsYXkgY29udHJvbGxlciAodm9wKQo+IC0K
+PiAtVk9QIChWaXN1YWwgT3V0cHV0IFByb2Nlc3NvcikgaXMgdGhlIERpc3BsYXkgQ29udHJvbGxl
+ciBmb3IgdGhlIFJvY2tjaGlwCgpDYW4geW91IGNoYW5nZSAoVmlzdWFsIE91dCBQcm9jZXNzb3Ip
+IHRvIChWaWRlbyBPdXQgUHJvY2Vzc29yKSBieSB0aGUgCndheSwgd2UgaGF2ZSBjaGFuZ2UgdGhp
+cyBhdCB0aGUgbGF0ZXN0IFRSTSBkb2N1bWVudC4gdGhhbmtzLgoKPiAtc2VyaWVzIG9mIFNvQ3Mg
+d2hpY2ggdHJhbnNmZXJzIHRoZSBpbWFnZSBkYXRhIGZyb20gYSB2aWRlbyBtZW1vcnkKPiAtYnVm
+ZmVyIHRvIGFuIGV4dGVybmFsIExDRCBpbnRlcmZhY2UuCj4gLQo+IC1SZXF1aXJlZCBwcm9wZXJ0
+aWVzOgo+IC0tIGNvbXBhdGlibGU6IHZhbHVlIHNob3VsZCBiZSBvbmUgb2YgdGhlIGZvbGxvd2lu
+Zwo+IC0JCSJyb2NrY2hpcCxyazMwMzYtdm9wIjsKPiAtCQkicm9ja2NoaXAscmszMTI2LXZvcCI7
+Cj4gLQkJInJvY2tjaGlwLHB4MzAtdm9wLWxpdCI7Cj4gLQkJInJvY2tjaGlwLHB4MzAtdm9wLWJp
+ZyI7Cj4gLQkJInJvY2tjaGlwLHJrMzA2Ni12b3AiOwo+IC0JCSJyb2NrY2hpcCxyazMxODgtdm9w
+IjsKPiAtCQkicm9ja2NoaXAscmszMjg4LXZvcCI7Cj4gLQkJInJvY2tjaGlwLHJrMzM2OC12b3Ai
+Owo+IC0JCSJyb2NrY2hpcCxyazMzNjYtdm9wIjsKPiAtCQkicm9ja2NoaXAscmszMzk5LXZvcC1i
+aWciOwo+IC0JCSJyb2NrY2hpcCxyazMzOTktdm9wLWxpdCI7Cj4gLQkJInJvY2tjaGlwLHJrMzIy
+OC12b3AiOwo+IC0JCSJyb2NrY2hpcCxyazMzMjgtdm9wIjsKPiAtCj4gLS0gcmVnOiBNdXN0IGNv
+bnRhaW4gb25lIGVudHJ5IGNvcnJlc3BvbmRpbmcgdG8gdGhlIGJhc2UgYWRkcmVzcyBhbmQgbGVu
+Z3RoCj4gLQlvZiB0aGUgcmVnaXN0ZXIgc3BhY2UuIENhbiBvcHRpb25hbGx5IGNvbnRhaW4gYSBz
+ZWNvbmQgZW50cnkKPiAtCWNvcnJlc3BvbmRpbmcgdG8gdGhlIENSVEMgZ2FtbWEgTFVUIGFkZHJl
+c3MuCj4gLQo+IC0tIGludGVycnVwdHM6IHNob3VsZCBjb250YWluIGEgbGlzdCBvZiBhbGwgVk9Q
+IElQIGJsb2NrIGludGVycnVwdHMgaW4gdGhlCj4gLQkJIG9yZGVyOiBWU1lOQywgTENEX1NZU1RF
+TS4gVGhlIGludGVycnVwdCBzcGVjaWZpZXIKPiAtCQkgZm9ybWF0IGRlcGVuZHMgb24gdGhlIGlu
+dGVycnVwdCBjb250cm9sbGVyIHVzZWQuCj4gLQo+IC0tIGNsb2NrczogbXVzdCBpbmNsdWRlIGNs
+b2NrIHNwZWNpZmllcnMgY29ycmVzcG9uZGluZyB0byBlbnRyaWVzIGluIHRoZQo+IC0JCWNsb2Nr
+LW5hbWVzIHByb3BlcnR5Lgo+IC0KPiAtLSBjbG9jay1uYW1lczogTXVzdCBjb250YWluCj4gLQkJ
+YWNsa192b3A6IGZvciBkZHIgYnVmZmVyIHRyYW5zZmVyLgo+IC0JCWhjbGtfdm9wOiBmb3IgYWhi
+IGJ1cyB0byBSL1cgdGhlIHBoeSByZWdzLgo+IC0JCWRjbGtfdm9wOiBwaXhlbCBjbG9jay4KPiAt
+Cj4gLS0gcmVzZXRzOiBNdXN0IGNvbnRhaW4gYW4gZW50cnkgZm9yIGVhY2ggZW50cnkgaW4gcmVz
+ZXQtbmFtZXMuCj4gLSAgU2VlIC4uL3Jlc2V0L3Jlc2V0LnR4dCBmb3IgZGV0YWlscy4KPiAtLSBy
+ZXNldC1uYW1lczogTXVzdCBpbmNsdWRlIHRoZSBmb2xsb3dpbmcgZW50cmllczoKPiAtICAtIGF4
+aQo+IC0gIC0gYWhiCj4gLSAgLSBkY2xrCj4gLQo+IC0tIGlvbW11czogcmVxdWlyZWQgYSBpb21t
+dSBub2RlCj4gLQo+IC0tIHBvcnQ6IEEgcG9ydCBub2RlIHdpdGggZW5kcG9pbnQgZGVmaW5pdGlv
+bnMgYXMgZGVmaW5lZCBpbgo+IC0gIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9t
+ZWRpYS92aWRlby1pbnRlcmZhY2VzLnR4dC4KPiAtCj4gLUV4YW1wbGU6Cj4gLVNvQyBzcGVjaWZp
+YyBEVCBlbnRyeToKPiAtCXZvcGI6IHZvcGJAZmY5MzAwMDAgewo+IC0JCWNvbXBhdGlibGUgPSAi
+cm9ja2NoaXAscmszMjg4LXZvcCI7Cj4gLQkJcmVnID0gPDB4MCAweGZmOTMwMDAwIDB4MCAweDE5
+Yz4sIDwweDAgMHhmZjkzMTAwMCAweDAgMHgxMDAwPjsKPiAtCQlpbnRlcnJ1cHRzID0gPEdJQ19T
+UEkgMTUgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gLQkJY2xvY2tzID0gPCZjcnUgQUNMS19WT1Aw
+PiwgPCZjcnUgRENMS19WT1AwPiwgPCZjcnUgSENMS19WT1AwPjsKPiAtCQljbG9jay1uYW1lcyA9
+ICJhY2xrX3ZvcCIsICJkY2xrX3ZvcCIsICJoY2xrX3ZvcCI7Cj4gLQkJcmVzZXRzID0gPCZjcnUg
+U1JTVF9MQ0RDMV9BWEk+LCA8JmNydSBTUlNUX0xDREMxX0FIQj4sIDwmY3J1IFNSU1RfTENEQzFf
+RENMSz47Cj4gLQkJcmVzZXQtbmFtZXMgPSAiYXhpIiwgImFoYiIsICJkY2xrIjsKPiAtCQlpb21t
+dXMgPSA8JnZvcGJfbW11PjsKPiAtCQl2b3BiX291dDogcG9ydCB7Cj4gLQkJCSNhZGRyZXNzLWNl
+bGxzID0gPDE+Owo+IC0JCQkjc2l6ZS1jZWxscyA9IDwwPjsKPiAtCQkJdm9wYl9vdXRfZWRwOiBl
+bmRwb2ludEAwIHsKPiAtCQkJCXJlZyA9IDwwPjsKPiAtCQkJCXJlbW90ZS1lbmRwb2ludD08JmVk
+cF9pbl92b3BiPjsKPiAtCQkJfTsKPiAtCQkJdm9wYl9vdXRfaGRtaTogZW5kcG9pbnRAMSB7Cj4g
+LQkJCQlyZWcgPSA8MT47Cj4gLQkJCQlyZW1vdGUtZW5kcG9pbnQ9PCZoZG1pX2luX3ZvcGI+Owo+
+IC0JCQl9Owo+IC0JCX07Cj4gLQl9Owo+IGRpZmYgLS1naXQgYS9Eb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC12b3AueWFtbCBiL0RvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L3JvY2tjaGlwL3JvY2tjaGlwLXZv
+cC55YW1sCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwMDAuLmNiODg4NDlm
+Mgo+IC0tLSAvZGV2L251bGwKPiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcC12b3AueWFtbAo+IEBAIC0wLDAgKzEsMTI2IEBA
+Cj4gKyMgU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAKPiArJVlBTUwgMS4yCj4gKy0t
+LQo+ICskaWQ6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Rpc3BsYXkvcm9ja2NoaXAv
+cm9ja2NoaXAtdm9wLnlhbWwjCj4gKyRzY2hlbWE6IGh0dHA6Ly9kZXZpY2V0cmVlLm9yZy9tZXRh
+LXNjaGVtYXMvY29yZS55YW1sIwo+ICsKPiArdGl0bGU6IFJvY2tjaGlwIHNvYyBkaXNwbGF5IGNv
+bnRyb2xsZXIgKFZPUCkKPiArCj4gK2Rlc2NyaXB0aW9uOgo+ICsgIFZPUCAoVmlzdWFsIE91dHB1
+dCBQcm9jZXNzb3IpIGlzIHRoZSBEaXNwbGF5IENvbnRyb2xsZXIgZm9yIHRoZSBSb2NrY2hpcAo+
+ICsgIHNlcmllcyBvZiBTb0NzIHdoaWNoIHRyYW5zZmVycyB0aGUgaW1hZ2UgZGF0YSBmcm9tIGEg
+dmlkZW8gbWVtb3J5Cj4gKyAgYnVmZmVyIHRvIGFuIGV4dGVybmFsIExDRCBpbnRlcmZhY2UuCj4g
+Kwo+ICttYWludGFpbmVyczoKPiArICAtIFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+
+Cj4gKyAgLSBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+ICsKPiArcHJvcGVydGll
+czoKPiArICBjb21wYXRpYmxlOgo+ICsgICAgb25lT2Y6Cj4gKyAgICAgIC0gY29uc3Q6IHJvY2tj
+aGlwLHB4MzAtdm9wLWJpZwo+ICsgICAgICAtIGNvbnN0OiByb2NrY2hpcCxweDMwLXZvcC1saXQK
+PiArICAgICAgLSBjb25zdDogcm9ja2NoaXAscmszMDM2LXZvcAo+ICsgICAgICAtIGNvbnN0OiBy
+b2NrY2hpcCxyazMwNjYtdm9wCj4gKyAgICAgIC0gY29uc3Q6IHJvY2tjaGlwLHJrMzEyNi12b3AK
+PiArICAgICAgLSBjb25zdDogcm9ja2NoaXAscmszMTg4LXZvcAo+ICsgICAgICAtIGNvbnN0OiBy
+b2NrY2hpcCxyazMyMjgtdm9wCj4gKyAgICAgIC0gY29uc3Q6IHJvY2tjaGlwLHJrMzI4OC12b3AK
+PiArICAgICAgLSBjb25zdDogcm9ja2NoaXAscmszMzI4LXZvcAo+ICsgICAgICAtIGNvbnN0OiBy
+b2NrY2hpcCxyazMzNjYtdm9wCj4gKyAgICAgIC0gY29uc3Q6IHJvY2tjaGlwLHJrMzM2OC12b3AK
+PiArICAgICAgLSBjb25zdDogcm9ja2NoaXAscmszMzk5LXZvcC1iaWcKPiArICAgICAgLSBjb25z
+dDogcm9ja2NoaXAscmszMzk5LXZvcC1saXQKPiArCj4gKyAgcmVnOgo+ICsgICAgbWluSXRlbXM6
+IDEKPiArICAgIGl0ZW1zOgo+ICsgICAgICAtIGRlc2NyaXB0aW9uOgo+ICsgICAgICAgICAgTXVz
+dCBjb250YWluIG9uZSBlbnRyeSBjb3JyZXNwb25kaW5nIHRvIHRoZSBiYXNlIGFkZHJlc3MgYW5k
+IGxlbmd0aAo+ICsgICAgICAgICAgb2YgdGhlIHJlZ2lzdGVyIHNwYWNlLgo+ICsgICAgICAtIGRl
+c2NyaXB0aW9uOgo+ICsgICAgICAgICAgQ2FuIG9wdGlvbmFsbHkgY29udGFpbiBhIHNlY29uZCBl
+bnRyeSBjb3JyZXNwb25kaW5nIHRvCj4gKyAgICAgICAgICB0aGUgQ1JUQyBnYW1tYSBMVVQgYWRk
+cmVzcy4KPiArCj4gKyAgaW50ZXJydXB0czoKPiArICAgIG1heEl0ZW1zOiAxCj4gKyAgICBkZXNj
+cmlwdGlvbjoKPiArICAgICAgU2hvdWxkIGNvbnRhaW4gYSBsaXN0IG9mIGFsbCBWT1AgSVAgYmxv
+Y2sgaW50ZXJydXB0cyBpbiB0aGUKPiArICAgICAgb3JkZXIgVlNZTkMsIExDRF9TWVNURU0uIFRo
+ZSBpbnRlcnJ1cHQgc3BlY2lmaWVyCj4gKyAgICAgIGZvcm1hdCBkZXBlbmRzIG9uIHRoZSBpbnRl
+cnJ1cHQgY29udHJvbGxlciB1c2VkLgo+ICsKPiArICBjbG9ja3M6Cj4gKyAgICBpdGVtczoKPiAr
+ICAgICAgLSBkZXNjcmlwdGlvbjogQ2xvY2sgZm9yIGRkciBidWZmZXIgdHJhbnNmZXIuCj4gKyAg
+ICAgIC0gZGVzY3JpcHRpb246IFBpeGVsIGNsb2NrLgo+ICsgICAgICAtIGRlc2NyaXB0aW9uOiBD
+bG9jayBmb3IgdGhlIGFoYiBidXMgdG8gUi9XIHRoZSBwaHkgcmVncy4KPiArCj4gKyAgY2xvY2st
+bmFtZXM6Cj4gKyAgICBpdGVtczoKPiArICAgICAgLSBjb25zdDogYWNsa192b3AKPiArICAgICAg
+LSBjb25zdDogZGNsa192b3AKPiArICAgICAgLSBjb25zdDogaGNsa192b3AKPiArCj4gKyAgcmVz
+ZXRzOgo+ICsgICAgbWluSXRlbXM6IDMKPiArICAgIG1heEl0ZW1zOiAzCj4gKwo+ICsgIHJlc2V0
+LW5hbWVzOgo+ICsgICAgaXRlbXM6Cj4gKyAgICAgIC0gY29uc3Q6IGF4aQo+ICsgICAgICAtIGNv
+bnN0OiBhaGIKPiArICAgICAgLSBjb25zdDogZGNsawo+ICsKPiArICBwb3J0Ogo+ICsgICAgdHlw
+ZTogb2JqZWN0Cj4gKyAgICBkZXNjcmlwdGlvbjoKPiArICAgICAgQSBwb3J0IG5vZGUgd2l0aCBl
+bmRwb2ludCBkZWZpbml0aW9ucyBhcyBkZWZpbmVkIGluCj4gKyAgICAgIERvY3VtZW50YXRpb24v
+ZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS92aWRlby1pbnRlcmZhY2VzLnR4dC4KPiArCj4gKyAg
+aW9tbXVzOgo+ICsgICAgbWF4SXRlbXM6IDEKPiArCj4gK3JlcXVpcmVkOgo+ICsgIC0gY29tcGF0
+aWJsZQo+ICsgIC0gcmVnCj4gKyAgLSBpbnRlcnJ1cHRzCj4gKyAgLSBjbG9ja3MKPiArICAtIGNs
+b2NrLW5hbWVzCj4gKyAgLSByZXNldHMKPiArICAtIHJlc2V0LW5hbWVzCj4gKyAgLSBwb3J0Cj4g
+Kwo+ICthZGRpdGlvbmFsUHJvcGVydGllczogZmFsc2UKPiArCj4gK2V4YW1wbGVzOgo+ICsgIC0g
+fAo+ICsgICAgI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2Nsb2NrL3JrMzI4OC1jcnUuaD4KPiArICAg
+ICNpbmNsdWRlIDxkdC1iaW5kaW5ncy9pbnRlcnJ1cHQtY29udHJvbGxlci9hcm0tZ2ljLmg+Cj4g
+KyAgICAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvaW50ZXJydXB0LWNvbnRyb2xsZXIvaXJxLmg+Cj4g
+KyAgICB2b3BiOiB2b3BiQGZmOTMwMDAwIHsKPiArICAgICAgY29tcGF0aWJsZSA9ICJyb2NrY2hp
+cCxyazMyODgtdm9wIjsKPiArICAgICAgcmVnID0gPDB4MCAweGZmOTMwMDAwIDB4MCAweDE5Yz4s
+Cj4gKyAgICAgICAgICAgIDwweDAgMHhmZjkzMTAwMCAweDAgMHgxMDAwPjsKPiArICAgICAgaW50
+ZXJydXB0cyA9IDxHSUNfU1BJIDE1IElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+ICsgICAgICBjbG9j
+a3MgPSA8JmNydSBBQ0xLX1ZPUDA+LAo+ICsgICAgICAgICAgICAgICA8JmNydSBEQ0xLX1ZPUDA+
+LAo+ICsgICAgICAgICAgICAgICA8JmNydSBIQ0xLX1ZPUDA+Owo+ICsgICAgICBjbG9jay1uYW1l
+cyA9ICJhY2xrX3ZvcCIsICJkY2xrX3ZvcCIsICJoY2xrX3ZvcCI7Cj4gKyAgICAgIHJlc2V0cyA9
+IDwmY3J1IFNSU1RfTENEQzFfQVhJPiwKPiArICAgICAgICAgICAgICAgPCZjcnUgU1JTVF9MQ0RD
+MV9BSEI+LAo+ICsgICAgICAgICAgICAgICA8JmNydSBTUlNUX0xDREMxX0RDTEs+Owo+ICsgICAg
+ICByZXNldC1uYW1lcyA9ICJheGkiLCAiYWhiIiwgImRjbGsiOwo+ICsgICAgICBpb21tdXMgPSA8
+JnZvcGJfbW11PjsKPiArICAgICAgdm9wYl9vdXQ6IHBvcnQgewo+ICsgICAgICAgICNhZGRyZXNz
+LWNlbGxzID0gPDE+Owo+ICsgICAgICAgICNzaXplLWNlbGxzID0gPDA+Owo+ICsgICAgICAgIHZv
+cGJfb3V0X2VkcDogZW5kcG9pbnRAMCB7Cj4gKyAgICAgICAgICByZWcgPSA8MD47Cj4gKyAgICAg
+ICAgICByZW1vdGUtZW5kcG9pbnQ9PCZlZHBfaW5fdm9wYj47Cj4gKyAgICAgICAgfTsKPiArICAg
+ICAgICB2b3BiX291dF9oZG1pOiBlbmRwb2ludEAxIHsKPiArICAgICAgICAgIHJlZyA9IDwxPjsK
+PiArICAgICAgICAgIHJlbW90ZS1lbmRwb2ludD08JmhkbWlfaW5fdm9wYj47Cj4gKyAgICAgICAg
+fTsKPiArICAgICAgfTsKPiArICAgIH07CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFy
+bS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
