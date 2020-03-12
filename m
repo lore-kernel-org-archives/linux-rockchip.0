@@ -1,60 +1,70 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v2] drm/bridge: analogix_dp: Split bind() into probe()
- and real bind()
-Date: Thu, 12 Mar 2020 10:17:39 +0100
-Message-ID: <78cf2af3-3fbe-c381-b96d-fb14d959f6e8@samsung.com>
-References: <CGME20200310104049eucas1p107e1ec61456fce4c830d3232a400b32f@eucas1p1.samsung.com>
-        <20200310103427.26048-1-m.szyprowski@samsung.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH v1] dt-bindings: mmc: synopsys-dw-mshc: fix
+ clock-freq-min-max in example
+Date: Thu, 12 Mar 2020 14:08:21 +0100
+Message-ID: <CAPDyKFq22RTPQ2FD+yMYTstyEhqU=6piiiDkEFs4CB5f6uRG4Q@mail.gmail.com>
+References: <20200307160556.16226-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <20200310103427.26048-1-m.szyprowski@samsung.com>
-Content-Language: en-US
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Marek Szyprowski <m.szyprowski@samsung.com>, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>, Neil Armstrong <narmstrong@baylibre.com>, Jingoo Han <jingoohan1@gmail.com>, Jonas Karlman <jonas@kwiboo.se>, Seung-Woo Kim <sw0312.kim@samsung.com>, Sandy Huang <hjc@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andy Yan <andy.yan@rock-chips.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200307160556.16226-1-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>, DTML <devicetree@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10.03.2020 11:34, Marek Szyprowski wrote:
-> Analogix_dp driver acquires all its resources in the ->bind() callback,
-> what is a bit against the component driver based approach, where the
-> driver initialization is split into a probe(), where all resources are
-> gathered, and a bind(), where all objects are created and a compound
-> driver is initialized.
+On Sat, 7 Mar 2020 at 17:06, Johan Jonker <jbx6244@gmail.com> wrote:
 >
-> Extract all the resource related operations to analogix_dp_probe() and
-> analogix_dp_remove(), then call them before/after registration of the
-> device components from the main Exynos DP and Rockchip DP drivers. Also
-> move the plat_data initialization to the probe() to make it available for
-> the analogix_dp_probe() function.
+> A test with the command below does not detect all errors
+> in combination with 'additionalProperties: false' and
+> allOf:
+>   - $ref: "synopsys-dw-mshc-common.yaml#"
+> allOf:
+>   - $ref: "mmc-controller.yaml#"
 >
-> This fixes the multiple calls to the bind() of the DRM compound driver
-> when the DP PHY driver is not yet loaded/probed:
+> 'additionalProperties' applies to all properties that are not
+> accounted-for by 'properties' or 'patternProperties' in
+> the immediate schema.
 >
-> [drm] Exynos DRM: using 14400000.fimd device for DMA mapping operations
-> exynos-drm exynos-drm: bound 14400000.fimd (ops fimd_component_ops [exynosdrm])
-> exynos-drm exynos-drm: bound 14450000.mixer (ops mixer_component_ops [exynosdrm])
-> exynos-dp 145b0000.dp-controller: no DP phy configured
-> exynos-drm exynos-drm: failed to bind 145b0000.dp-controller (ops exynos_dp_ops [exynosdrm]): -517
-> exynos-drm exynos-drm: master bind failed: -517
-> ...
-> [drm] Exynos DRM: using 14400000.fimd device for DMA mapping operations
-> exynos-drm exynos-drm: bound 14400000.fimd (ops hdmi_enable [exynosdrm])
-> exynos-drm exynos-drm: bound 14450000.mixer (ops hdmi_enable [exynosdrm])
-> exynos-drm exynos-drm: bound 145b0000.dp-controller (ops hdmi_enable [exynosdrm])
-> exynos-drm exynos-drm: bound 14530000.hdmi (ops hdmi_enable [exynosdrm])
-> [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
-> Console: switching to colour frame buffer device 170x48
-> exynos-drm exynos-drm: fb0: exynosdrmfb frame buffer device
-> [drm] Initialized exynos 1.1.0 20180330 for exynos-drm on minor 1
-> ...
+> First when we combine synopsys-dw-mshc.yaml,
+> synopsys-dw-mshc-common.yaml and mmc-controller.yaml it gives
+> this error:
 >
-> Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+> Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.example.dt.yaml:
+> mmc@12200000: 'clock-freq-min-max' does not match any of the regexes:
+> '^.*@[0-9]+$', '^clk-phase-(legacy|sd-hs|mmc-(hs|hs[24]00|ddr52)|
+> uhs-(sdr(12|25|50|104)|ddr50))$', 'pinctrl-[0-9]+'
+>
+> 'clock-freq-min-max' is deprecated, so replace it by 'max-frequency'.
+>
+> make ARCH=arm dt_binding_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
+>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+
+Applied for next, thanks!
+
+Kind regards
+Uffe
 
 
-Reviewed-by: Andrzej Hajda <a.hajda@samsung.com>
-
- --
-Regards
-Andrzej
+> ---
+>  Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
+> index 05f9f36dc..dd2c1b147 100644
+> --- a/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/synopsys-dw-mshc.yaml
+> @@ -62,7 +62,7 @@ examples:
+>        cap-mmc-highspeed;
+>        cap-sd-highspeed;
+>        card-detect-delay = <200>;
+> -      clock-freq-min-max = <400000 200000000>;
+> +      max-frequency = <200000000>;
+>        clock-frequency = <400000000>;
+>        data-addr = <0x200>;
+>        fifo-depth = <0x80>;
+> --
+> 2.11.0
+>
