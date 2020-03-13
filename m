@@ -1,113 +1,120 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: [PATCH 3/3] media: staging: rkisp1: cap: serialize start/stop stream
-Date: Thu, 12 Mar 2020 22:46:26 -0300
-Message-ID: <20200313014626.3103091-4-helen.koike@collabora.com>
-References: <20200313014626.3103091-1-helen.koike@collabora.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add Hugsun X99 IR receiver and
+ power led
+Date: Fri, 13 Mar 2020 09:32:27 +0100
+Message-ID: <7f294dd5-3188-e2d6-dd49-4b2afb04455a@gmail.com>
+References: <20200313000112.19419-1-npcomplete13@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200313014626.3103091-1-helen.koike@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org
-Cc: mchehab@kernel.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, kernel@collabora.com, Helen Koike <helen.koike@collabora.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200313000112.19419-1-npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Vivek Unune <npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, akash-oRp2ZoJdM/RWk0Htik3J/w@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In order to support simultaneous streaming from both capture devices,
-start/stop vb2 calls need to be serialized to allow multiple concurrent
-calls.
+Hi Vivek,
 
-This is required to synchronize who starts/stops the shared entities in
-the pipeline.
+The 'power-led' need some changes.
 
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
+From leds-gpio.yaml:
 
----
+patternProperties:
+  # The first form is preferred, but fall back to just 'led' anywhere in the
+  # node name to at least catch some child nodes.
+  "(^led-[0-9a-f]$|led)":
+    type: object
 
- drivers/staging/media/rkisp1/rkisp1-capture.c | 9 +++++++++
- drivers/staging/media/rkisp1/rkisp1-common.h  | 2 ++
- drivers/staging/media/rkisp1/rkisp1-dev.c     | 2 ++
- 3 files changed, 13 insertions(+)
+Test with:
+make -k ARCH=arm64 dtbs_check
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index e665381b5af0..30d7a72aa554 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -935,6 +935,8 @@ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
- 	struct rkisp1_device *rkisp1 = cap->rkisp1;
- 	int ret;
- 
-+	mutex_lock(&cap->rkisp1->stream_lock);
-+
- 	rkisp1_stream_stop(cap);
- 	media_pipeline_stop(&node->vdev.entity);
- 	ret = rkisp1_pipeline_sink_walk(&node->vdev.entity, NULL,
-@@ -954,6 +956,8 @@ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
- 		dev_err(rkisp1->dev, "power down failed error:%d\n", ret);
- 
- 	rkisp1_dummy_buf_destroy(cap);
-+
-+	mutex_unlock(&cap->rkisp1->stream_lock);
- }
- 
- /*
-@@ -998,6 +1002,8 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
- 	struct media_entity *entity = &cap->vnode.vdev.entity;
- 	int ret;
- 
-+	mutex_lock(&cap->rkisp1->stream_lock);
-+
- 	ret = rkisp1_dummy_buf_create(cap);
- 	if (ret)
- 		goto err_ret_buffers;
-@@ -1027,6 +1033,8 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
- 		goto err_pipe_disable;
- 	}
- 
-+	mutex_unlock(&cap->rkisp1->stream_lock);
-+
- 	return 0;
- 
- err_pipe_disable:
-@@ -1040,6 +1048,7 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
- 	rkisp1_dummy_buf_destroy(cap);
- err_ret_buffers:
- 	rkisp1_return_all_buffers(cap, VB2_BUF_STATE_QUEUED);
-+	mutex_unlock(&cap->rkisp1->stream_lock);
- 
- 	return ret;
- }
-diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-index 369a401b098a..f74fca3985e3 100644
---- a/drivers/staging/media/rkisp1/rkisp1-common.h
-+++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-@@ -244,6 +244,7 @@ struct rkisp1_debug {
-  * @rkisp1_capture: capture video device
-  * @stats: ISP statistics output device
-  * @params: ISP input parameters device
-+ * @stream_lock: lock to serialize start/stop streaming in capture devices.
-  */
- struct rkisp1_device {
- 	void __iomem *base_addr;
-@@ -263,6 +264,7 @@ struct rkisp1_device {
- 	struct rkisp1_params params;
- 	struct media_pipeline pipe;
- 	struct vb2_alloc_ctx *alloc_ctx;
-+	struct mutex stream_lock;
- 	struct rkisp1_debug debug;
- };
- 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
-index 558126e66465..2977c494925f 100644
---- a/drivers/staging/media/rkisp1/rkisp1-dev.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
-@@ -472,6 +472,8 @@ static int rkisp1_probe(struct platform_device *pdev)
- 	dev_set_drvdata(dev, rkisp1);
- 	rkisp1->dev = dev;
- 
-+	mutex_init(&rkisp1->stream_lock);
-+
- 	rkisp1->base_addr = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(rkisp1->base_addr))
- 		return PTR_ERR(rkisp1->base_addr);
--- 
-2.25.0
+arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dt.yaml: leds:
+power-led:linux,default-trigger:0: 'none' is not one of ['backlight',
+'default-on', 'heartbeat', 'disk-activity', 'ide-disk', 'timer', 'pattern']
+
+On 3/13/20 1:01 AM, Vivek Unune wrote:
+>  - Add Hugsun X99 IR receiver and power led
+>  - Remove pwm0 node as it interferes with pwer LED gpio
+
+pwer => power
+
+>    Also, it's not used in factory firmware
+>    
+
+> Tested with Libreelec kernel v5.6
+
+Test with linux-next.
+
+git clone -- depth 1
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
+
+> 
+> Signed-off-by: Vivek Unune <npcomplete13-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>  .../boot/dts/rockchip/rk3399-hugsun-x99.dts   | 37 +++++++++++++++++--
+>  1 file changed, 33 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+> index d69a613fb65a..df425e164a2e 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+> @@ -29,6 +29,26 @@
+>  		regulator-max-microvolt = <5000000>;
+>  	};
+>  
+> +	ir-receiver {
+> +		compatible = "gpio-ir-receiver";
+> +		gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_LOW>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&ir_rx>;
+> +	};
+> +
+> +	leds {
+> +		compatible = "gpio-leds";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&power_led_gpio>;
+> +
+> +		power-led {
+> +			label = "blue:power";
+> +			gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_HIGH>;
+> +			default-state = "on";
+> +			linux,default-trigger = "none";
+> +		};
+> +	};
+> +
+>  	vcc_sys: vcc-sys {
+>  		compatible = "regulator-fixed";
+>  		regulator-name = "vcc_sys";
+> @@ -483,6 +503,18 @@
+>  		};
+>  	};
+>  
+> +	ir {
+> +		ir_rx: ir-rx {
+> +			rockchip,pins = <0 RK_PA6 1 &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+> +	leds {
+> +		power_led_gpio: power-led-gpio {
+> +			rockchip,pins = <4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+>  	pmic {
+>  		pmic_int_l: pmic-int-l {
+>  			rockchip,pins =
+> @@ -539,10 +572,6 @@
+>  	};
+>  };
+>  
+> -&pwm0 {
+> -	status = "okay";
+> -};
+> -
+>  &pwm2 {
+>  	status = "okay";
+>  	pinctrl-0 = <&pwm2_pin_pull_down>;
+> 
