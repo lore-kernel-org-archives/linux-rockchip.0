@@ -1,80 +1,82 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: add missing @0 to memory nodenames
-Date: Fri, 13 Mar 2020 11:37:26 +0100
-Message-ID: <20200313103726.1678-2-jbx6244@gmail.com>
-References: <20200313103726.1678-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200313103726.1678-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Chi-Hsien Lin <chi-hsien.lin@cypress.com>
+Subject: Re: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
+Date: Fri, 13 Mar 2020 19:03:31 +0800
+Message-ID: <d7b05a6c-dfba-c8e0-b5fb-f6f7f5a6c1b7@cypress.com>
+References: <20191211235253.2539-1-smoch@web.de>
+ <1daadfe0-5964-db9b-818c-6e4c75ac6a69@web.de>
+ <22526722-1ae8-a018-0e24-81d7ad7512dd@web.de> <2685733.IzV8dBlDb2@diego>
+Reply-To: chi-hsien.lin@cypress.com
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <2685733.IzV8dBlDb2@diego>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Soeren Moch <smoch@web.de>
+Cc: brcm80211-dev-list.pdl@broadcom.com, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, brcm80211-dev-list@cypress.com, Kalle Valo <kvalo@codeaurora.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-A test with the command below gives these errors:
-
-arch/arm64/boot/dts/rockchip/rk3368-evb-act8846.dt.yaml: /: memory:
-False schema does not allow
-{'reg': [[0, 0, 0, 1073741824]], 'device_type': ['memory']}
-arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dt.yaml: /: memory:
-False schema does not allow
-{'reg': [[0, 0, 0, 2147483648]], 'device_type': ['memory']}
-arch/arm64/boot/dts/rockchip/rk3368-r88.dt.yaml: /: memory:
-False schema does not allow
-{'reg': [[0, 0, 0, 1073741824]], 'device_type': ['memory']}
-
-The memory nodes all have a reg property that requires '@' in
-the nodename. Fix this error by adding the missing '@0' to
-the involved memory nodenames.
-
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/
-schemas/root-node.yaml
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi           | 2 +-
- arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts | 2 +-
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts            | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-index 1c52f47c4..b9e2e4bc0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi
-@@ -12,7 +12,7 @@
- 		stdout-path = "serial2:115200n8";
- 	};
- 
--	memory {
-+	memory@0 {
- 		device_type = "memory";
- 		reg = <0x0 0x0 0x0 0x40000000>;
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
-index 6cc310255..9435008d5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
-@@ -15,7 +15,7 @@
- 		stdout-path = "serial2:115200n8";
- 	};
- 
--	memory {
-+	memory@0 {
- 		device_type = "memory";
- 		reg = <0x0 0x0 0x0 0x80000000>;
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-index 006a1fb6a..cf11175ec 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
-@@ -15,7 +15,7 @@
- 		stdout-path = "serial2:115200n8";
- 	};
- 
--	memory {
-+	memory@0 {
- 		device_type = "memory";
- 		reg = <0x0 0x0 0x0 0x40000000>;
- 	};
--- 
-2.11.0
+CgpPbiAxMi8xNi8yMDE5IDc6NDMsIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEhpIFNvZXJlbiwK
+PiAKPiBBbSBTb25udGFnLCAxNS4gRGV6ZW1iZXIgMjAxOSwgMjI6MjQ6MTAgQ0VUIHNjaHJpZWIg
+U29lcmVuIE1vY2g6Cj4+IE9uIDEyLjEyLjE5IDExOjU5LCBTb2VyZW4gTW9jaCB3cm90ZToKPj4+
+IE9uIDEyLjEyLjE5IDEwOjQyLCBLYWxsZSBWYWxvIHdyb3RlOgo+Pj4+IFNvZXJlbiBNb2NoIDxz
+bW9jaEB3ZWIuZGU+IHdyaXRlczoKPj4+Pgo+Pj4+PiBBZGQgc3VwcG9ydCBmb3IgdGhlIEJDTTQz
+NTkgY2hpcHNldCB3aXRoIFNESU8gaW50ZXJmYWNlIGFuZCBSU0RCIHN1cHBvcnQKPj4+Pj4gdG8g
+dGhlIGJyY21mbWFjIHdpcmVsZXNzIG5ldHdvcmsgZHJpdmVyIGluIHBhdGNoZXMgMS03Lgo+Pj4+
+Pgo+Pj4+PiBFbmhhbmNlIGRldmljZXRyZWUgb2YgdGhlIFJvY2tQcm82NCBhcm02NC9yb2NrY2hp
+cCBib2FyZCB0byB1c2UgYW4KPj4+Pj4gQVA2MzU5U0EgYmFzZWQgd2lmaS9idCBjb21ibyBtb2R1
+bGUgd2l0aCB0aGlzIGNoaXBzZXQgaW4gcGF0Y2hlcyA4LTkuCj4+Pj4+Cj4+Pj4+Cj4+Pj4+IENo
+dW5nLUhzaWVuIEhzdSAoMSk6Cj4+Pj4+ICAgIGJyY21mbWFjOiBzZXQgRjIgYmxvY2tzaXplIGFu
+ZCB3YXRlcm1hcmsgZm9yIDQzNTkKPj4+Pj4KPj4+Pj4gU29lcmVuIE1vY2ggKDUpOgo+Pj4+PiAg
+ICBicmNtZm1hYzogZml4IHJhbWJhc2UgZm9yIDQzNTkvOQo+Pj4+PiAgICBicmNtZm1hYzogbWFr
+ZSBlcnJvcnMgd2hlbiBzZXR0aW5nIHJvYW1pbmcgcGFyYW1ldGVycyBub24tZmF0YWwKPj4+Pj4g
+ICAgYnJjbWZtYWM6IGFkZCBzdXBwb3J0IGZvciBCQ000MzU5IFNESU8gY2hpcHNldAo+Pj4+PiAg
+ICBhcm02NDogZHRzOiByb2NrY2hpcDogUm9ja1BybzY0OiBlbmFibGUgd2lmaSBtb2R1bGUgYXQg
+c2RpbzAKPj4+Pj4gICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IFJvY2tQcm82NDogaG9vayB1cCBi
+bHVldG9vdGggYXQgdWFydDAKPj4+Pj4KPj4+Pj4gV3JpZ2h0IEZlbmcgKDMpOgo+Pj4+PiAgICBi
+cmNtZm1hYzogcmVzZXQgdHdvIEQxMSBjb3JlcyBpZiBjaGlwIGhhcyB0d28gRDExIGNvcmVzCj4+
+Pj4+ICAgIGJyY21mbWFjOiBhZGQgUlNEQiBjb25kaXRpb24gd2hlbiBzZXR0aW5nIGludGVyZmFj
+ZSBjb21iaW5hdGlvbnMKPj4+Pj4gICAgYnJjbWZtYWM6IG5vdCBzZXQgbWJzcyBpbiB2aWYgaWYg
+ZmlybXdhcmUgZG9lcyBub3Qgc3VwcG9ydCBNQlNTCj4+Pj4+Cj4+Pj4+ICAgLi4uL2Jvb3QvZHRz
+L3JvY2tjaGlwL3JrMzM5OS1yb2NrcHJvNjQuZHRzICAgIHwgNTAgKysrKysrKysrKystLS0KPj4+
+Pj4gICAuLi4vYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2JjbXNkaC5jICAgICAgfCAgOCAr
+Ky0KPj4+Pj4gICAuLi4vYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2NmZzgwMjExLmMgICAg
+fCA2OCArKysrKysrKysrKysrKystLS0tCj4+Pj4+ICAgLi4uL2Jyb2FkY29tL2JyY204MDIxMS9i
+cmNtZm1hYy9jaGlwLmMgICAgICAgIHwgNTQgKysrKysrKysrKysrKystCj4+Pj4+ICAgLi4uL2Jy
+b2FkY29tL2JyY204MDIxMS9icmNtZm1hYy9jaGlwLmggICAgICAgIHwgIDEgKwo+Pj4+PiAgIC4u
+Li9icm9hZGNvbS9icmNtODAyMTEvYnJjbWZtYWMvcGNpZS5jICAgICAgICB8ICAyICstCj4+Pj4+
+ICAgLi4uL2Jyb2FkY29tL2JyY204MDIxMS9icmNtZm1hYy9zZGlvLmMgICAgICAgIHwgMTcgKysr
+KysKPj4+Pj4gICBpbmNsdWRlL2xpbnV4L21tYy9zZGlvX2lkcy5oICAgICAgICAgICAgICAgICAg
+fCAgMiArCj4+Pj4+ICAgOCBmaWxlcyBjaGFuZ2VkLCAxNzYgaW5zZXJ0aW9ucygrKSwgMjYgZGVs
+ZXRpb25zKC0pCj4+Pj4gSnVzdCB0byBtYWtlIHN1cmUgd2UgYXJlIG9uIHRoZSBzYW1lIHBhZ2Us
+IEkgd2lsbCBhcHBseSBwYXRjaGVzIDEtNyB0bwo+Pj4+IHdpcmVsZXNzLWRyaXZlcnMtbmV4dCBh
+bmQgcGF0Y2hlcyA4LTkgZ28gdG8gc29tZSBvdGhlciB0cmVlPyBBbmQgdGhlcmUKPj4+PiBhcmUg
+bm8gZGVwZW5kZW5jaWVzIGJldHdlZW4gdGhlIGJyY21mbWFjIHBhdGNoZXMgYW5kIGR0cyBwYXRj
+aGVzPwo+Pj4+Cj4+PiBZZXMsIHRoaXMgYWxzbyBpcyBteSB1bmRlcnN0YW5kaW5nLiBJJ20gZ2xh
+ZCBpZiB5b3UgYXJlIGZpbmUgd2l0aAo+Pj4gcGF0Y2hlcyAxLTcuCj4+PiBIZWlrbyB3aWxsIHBp
+Y2sgdXAgcGF0Y2hlcyA4LTkgbGF0ZXIgZm9yIGxpbnV4LXJvY2tjaGlwIGluZGVwZW5kZW50bHku
+Cj4+PiBBbmQgaWYgd2UgbmVlZCBhbm90aGVyIHJvdW5kIG9mIHJldmlldyBmb3IgcGF0Y2hlcyA4
+LTksIEkgdGhpbmsgd2UgZG9uJ3QKPj4+IG5lZWQgdG8gYm90aGVyIGxpbnV4LXdpcmVsZXNzIHdp
+dGggdGhpcy4KPj4KPj4gSGVpa28sCj4+Cj4+IGlzIHRoaXMgT0sgZm9yIHlvdSB3aGVuIHBhdGNo
+ZXMgMS03IGFyZSBtZXJnZWQgbm93IGluIHdpcmVsZXNzLWRyaXZlcnMsCj4+IGFuZCB0aGVuIEkg
+c2VuZCBhIHYzIGZvciBwYXRjaGVzIDgtOSBvbmx5IGZvciB5b3UgdG8gbWVyZ2UgaW4KPj4gbGlu
+dXgtcm9ja2NoaXAgbGF0ZXI/IE9yIGRvIHlvdSBwcmVmZXIgYSBmdWxsIHYzIGZvciB0aGUgd2hv
+bGUgc2VyaWVzCj4+IHdpdGggb25seSB0aGlzIHBlbmRpbmcgY2xvY2sgbmFtZSB1cGRhdGUgaW4g
+cGF0Y2ggOT8KPiAKPiBOb3BlLCBtZXJnaW5nIDEtNyBmcm9tIHRoaXMgdjIgYW5kIHRoZW4gZ2V0
+dGluZyBhIHYzIHdpdGggb25seSB0aGUgZHRzCj4gc3R1ZmYgaXMgcGVyZmVjdGx5IGZpbmUgOi0p
+CgpTb2VyZW4sCgpJIHN1cHBvc2UgcGF0Y2ggMS03IGZyb20gdGhpcyBzZXJpb3VzIGFyZSBhbGwg
+Z29vZCBmb3IgbWVyZ2luZy4gSXMgdGhhdCAKcmlnaHQ/IElmIHNvLCBjb3VsZCB5b3UgcGxlYXNl
+IGNyZWF0ZSBhIHJlYmFzZWQgVjM/CgoKUmVnYXJkcywKQ2hpLWhzaWVuIExpbgoKPiAKPiBIZWlr
+bwo+IAo+IAo+IC4KPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGluZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LWFybS1rZXJuZWwK
