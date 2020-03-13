@@ -1,95 +1,96 @@
-From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: Re: [PATCH v5 0/7] Add support for PCIe controller to work in
- endpoint mode on R-Car SoCs
-Date: Fri, 13 Mar 2020 15:46:42 +0000
-Message-ID: <CA+V-a8vchrpa-1N1J+yVdo6-3zouOHX6=G4epWm68yirPirzag@mail.gmail.com>
-References: <20200228154122.14164-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH 0/3] media: staging: rkisp1: allow simultaneous streaming
+ from multiple capture devices
+Date: Fri, 13 Mar 2020 13:51:53 -0300
+Message-ID: <9673b170-69cf-b951-bc29-76cf05e57fea@collabora.com>
+References: <20200313014626.3103091-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-renesas-soc-owner@vger.kernel.org>
-In-Reply-To: <20200228154122.14164-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
-Sender: linux-renesas-soc-owner@vger.kernel.org
-To: Bjorn Helgaas <bhelgaas@google.com>, Kishon Vijay Abraham I <kishon@ti.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
-Cc: Andrew Murray <andrew.murray@arm.com>, linux-pci <linux-pci@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Mark Rutland <mark.rutland@arm.com>, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, Shawn
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200313014626.3103091-1-helen.koike@collabora.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-media@vger.kernel.org
+Cc: mchehab@kernel.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Bjorn/Kishon,
 
-On Fri, Feb 28, 2020 at 3:41 PM Lad Prabhakar
-<prabhakar.csengg@gmail.com> wrote:
->
-> This patch series adds support for PCIe controller on rcar to work in
-> endpoint mode, this also extends the epf framework to handle base region
-> for mapping PCI address locally.
->
-> Note:
-> The cadence/rockchip/designware endpoint drivers are build tested only.
->
-> Changes for v5:
-> 1] Rebased the patches on next branch of https://git.kernel.org/pub/scm/
->    linux/kernel/git/helgaas/pci.git
-> 2] Fixed review comments reported by Kishon while fetching the matching
->    window in function pci_epc_get_matching_window()
-> 3] Fixed review comments reported by Bjorn
->    a] Split patch up first patch so that its easier to review and incremental
->    b] Fixed typos
-> 4] Included Reviewed tag from Rob for the dt-binding patch
-> 5] Fixed issue reported by Nathan for assigning variable to itself
->
-> Changes for v4:
-> 1] Fixed dtb_check error reported by Rob
-> 2] Fixed review comments reported by Kishon
->    a] Dropped pci_epc_find_best_fit_window()
->    b] Fixed initializing mem ptr in __pci_epc_mem_init()
->    c] Dropped map_size from pci_epc_mem_window structure
->
-> Changes for v3:
-> 1] Fixed review comments from Bjorn and Kishon.
-> 3] Converted to DT schema
->
-> Changes for v2:
-> 1] Fixed review comments from Biju for dt-bindings to include an example
->    for a tested platform.
-> 2] Fixed review comments from Kishon to extend the features of outbound
->    regions in epf framework.
-> 3] Added support to parse outbound-ranges in OF.
->
-> Lad Prabhakar (7):
->   PCI: rcar: Rename pcie-rcar.c to pcie-rcar-host.c
->   PCI: rcar: Move shareable code to a common file
->   PCI: rcar: Fix calculating mask for PCIEPAMR register
->   PCI: endpoint: Add support to handle multiple base for mapping
->     outbound memory
->   dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
->     controller
->   PCI: rcar: Add support for rcar PCIe controller in endpoint mode
->   misc: pci_endpoint_test: Add Device ID for RZ/G2E PCIe controller
->
-Gentle ping.
 
-Cheers,
---Prabhakar Lad
+On 3/12/20 10:46 PM, Helen Koike wrote:
+> Hi,
+> 
+> This series adds support for simultaneous streaming from both capture
+> devices (rkisp1_selfpath and rkisp1_mainpath).
+> 
+> Patch 1/3 fixes return error handling from pm functions, which was
+> preventing the second stream to start.
+> 
+> Patch 2/3 don't allow .s_stream entity callback to be called if a stream is
+> already enabled. Which fixes the issue when stopping one stream would
+> also stop the other.
+> 
+> Patch 3/3 serializes start/stop streaming calls, since they both read
+> and modify the streaming status of all the entities in the piipeline.
+> 
+> This series was tested with:
+> 
+> SEN_DEV=/dev/v4l-subdev3
+> ISP_DEV=/dev/v4l-subdev0
+> RSZ_SP_DEV=/dev/v4l-subdev2
+> RSZ_MP_DEV=/dev/v4l-subdev1
+> CAP_SP_DEV=/dev/video1
+> CAP_MP_DEV=/dev/video0
+> 
+> WIDTH=1920
+> HEIGHT=1080
+> RAW_CODE=SRGGB10_1X10
+> YUV_CODE=YUYV8_2X8
+> 
+> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$RAW_CODE -d $SEN_DEV
+> 
+> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$RAW_CODE -d $ISP_DEV
+> v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $ISP_DEV
+> 
+> v4l2-ctl --set-subdev-selection pad=2,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $ISP_DEV
+> v4l2-ctl --set-subdev-fmt pad=2,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $ISP_DEV
+> 
+> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_SP_DEV
+> v4l2-ctl --set-subdev-fmt pad=1,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_SP_DEV
+> 
+> v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $RSZ_SP_DEV
+> 
+> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_MP_DEV
+> v4l2-ctl --set-subdev-fmt pad=1,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_MP_DEV
+> 
+> v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $RSZ_MP_DEV
+> 
+> v4l2-ctl -v width=$WIDTH,height=$HEIGHT,pixelformat=NV12 -d $CAP_SP_DEV
+> v4l2-ctl -v width=$WIDTH,height=$HEIGHT,pixelformat=NV12 -d $CAP_MP_DEV
+> 
+> sleep 1
+> 
+> v4l2-ctl --stream-mmap --stream-count=100 -d $CAP_SP_DEV --stream-to=/tmp/test_sp.raw &
+> v4l2-ctl --stream-mmap --stream-count=100 -d $CAP_MP_DEV --stream-to=/tmp/test_mp.raw &
+> 
+> wait
+> echo "Completed"
+> 
+> 
+> 
+> Helen Koike (3):
+>   media: staging: rkisp1: cap: fix return values from pm functions
+>   media: staging: rkisp1: do not call s_stream if the entity is still in
+>     use
+>   media: staging: rkisp1: cap: serialize start/stop stream
+> 
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 25 ++++++++++++++++---
+>  drivers/staging/media/rkisp1/rkisp1-common.h  |  2 ++
+>  drivers/staging/media/rkisp1/rkisp1-dev.c     |  2 ++
+>  3 files changed, 25 insertions(+), 4 deletions(-)
+> 
 
->  .../devicetree/bindings/pci/rcar-pci-ep.yaml       |   76 ++
->  arch/arm64/configs/defconfig                       |    2 +-
->  drivers/misc/pci_endpoint_test.c                   |    3 +
->  drivers/pci/controller/Kconfig                     |   15 +-
->  drivers/pci/controller/Makefile                    |    3 +-
->  drivers/pci/controller/cadence/pcie-cadence-ep.c   |    7 +-
->  drivers/pci/controller/dwc/pcie-designware-ep.c    |   29 +-
->  drivers/pci/controller/pcie-rcar-ep.c              |  490 ++++++++
->  drivers/pci/controller/pcie-rcar-host.c            | 1053 +++++++++++++++++
->  drivers/pci/controller/pcie-rcar.c                 | 1229 +-------------------
->  drivers/pci/controller/pcie-rcar.h                 |  129 ++
->  drivers/pci/controller/pcie-rockchip-ep.c          |    7 +-
->  drivers/pci/endpoint/pci-epc-mem.c                 |  167 ++-
->  include/linux/pci-epc.h                            |   39 +-
->  14 files changed, 1985 insertions(+), 1264 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
->  create mode 100644 drivers/pci/controller/pcie-rcar-ep.c
->  create mode 100644 drivers/pci/controller/pcie-rcar-host.c
->  create mode 100644 drivers/pci/controller/pcie-rcar.h
->
-> --
-> 2.7.4
->
+Please, ignore this version, I rebased with the wrong branch. I'll send v2.
+
+Thanks
+Helen
