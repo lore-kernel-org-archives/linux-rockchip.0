@@ -1,86 +1,85 @@
-From: Vivek Unune <npcomplete13@gmail.com>
-Subject: [PATCH] arm64: dts: rockchip: Add Hugsun X99 IR receiver and power led
-Date: Thu, 12 Mar 2020 20:01:12 -0400
-Message-ID: <20200313000112.19419-1-npcomplete13@gmail.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: [PATCH 0/3] media: staging: rkisp1: allow simultaneous streaming from multiple capture devices
+Date: Thu, 12 Mar 2020 22:46:23 -0300
+Message-ID: <20200313014626.3103091-1-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: robh+dt@kernel.org, mark.rutland@arm.com, heiko@sntech.de, ezequiel@collabora.com, jbx6244@gmail.com, akash@openedev.com
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Vivek Unune <npcomplete13@gmail.com>
+To: linux-media@vger.kernel.org
+Cc: mchehab@kernel.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, kernel@collabora.com, Helen Koike <helen.koike@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
- - Add Hugsun X99 IR receiver and power led
- - Remove pwm0 node as it interferes with pwer LED gpio
-   Also, it's not used in factory firmware
-   
-Tested with Libreelec kernel v5.6
+Hi,
 
-Signed-off-by: Vivek Unune <npcomplete13@gmail.com>
----
- .../boot/dts/rockchip/rk3399-hugsun-x99.dts   | 37 +++++++++++++++++--
- 1 file changed, 33 insertions(+), 4 deletions(-)
+This series adds support for simultaneous streaming from both capture
+devices (rkisp1_selfpath and rkisp1_mainpath).
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-index d69a613fb65a..df425e164a2e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-@@ -29,6 +29,26 @@
- 		regulator-max-microvolt = <5000000>;
- 	};
- 
-+	ir-receiver {
-+		compatible = "gpio-ir-receiver";
-+		gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_LOW>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&ir_rx>;
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&power_led_gpio>;
-+
-+		power-led {
-+			label = "blue:power";
-+			gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_HIGH>;
-+			default-state = "on";
-+			linux,default-trigger = "none";
-+		};
-+	};
-+
- 	vcc_sys: vcc-sys {
- 		compatible = "regulator-fixed";
- 		regulator-name = "vcc_sys";
-@@ -483,6 +503,18 @@
- 		};
- 	};
- 
-+	ir {
-+		ir_rx: ir-rx {
-+			rockchip,pins = <0 RK_PA6 1 &pcfg_pull_none>;
-+		};
-+	};
-+
-+	leds {
-+		power_led_gpio: power-led-gpio {
-+			rockchip,pins = <4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins =
-@@ -539,10 +572,6 @@
- 	};
- };
- 
--&pwm0 {
--	status = "okay";
--};
--
- &pwm2 {
- 	status = "okay";
- 	pinctrl-0 = <&pwm2_pin_pull_down>;
+Patch 1/3 fixes return error handling from pm functions, which was
+preventing the second stream to start.
+
+Patch 2/3 don't allow .s_stream entity callback to be called if a stream is
+already enabled. Which fixes the issue when stopping one stream would
+also stop the other.
+
+Patch 3/3 serializes start/stop streaming calls, since they both read
+and modify the streaming status of all the entities in the piipeline.
+
+This series was tested with:
+
+SEN_DEV=/dev/v4l-subdev3
+ISP_DEV=/dev/v4l-subdev0
+RSZ_SP_DEV=/dev/v4l-subdev2
+RSZ_MP_DEV=/dev/v4l-subdev1
+CAP_SP_DEV=/dev/video1
+CAP_MP_DEV=/dev/video0
+
+WIDTH=1920
+HEIGHT=1080
+RAW_CODE=SRGGB10_1X10
+YUV_CODE=YUYV8_2X8
+
+v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$RAW_CODE -d $SEN_DEV
+
+v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$RAW_CODE -d $ISP_DEV
+v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $ISP_DEV
+
+v4l2-ctl --set-subdev-selection pad=2,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $ISP_DEV
+v4l2-ctl --set-subdev-fmt pad=2,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $ISP_DEV
+
+v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_SP_DEV
+v4l2-ctl --set-subdev-fmt pad=1,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_SP_DEV
+
+v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $RSZ_SP_DEV
+
+v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_MP_DEV
+v4l2-ctl --set-subdev-fmt pad=1,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_MP_DEV
+
+v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $RSZ_MP_DEV
+
+v4l2-ctl -v width=$WIDTH,height=$HEIGHT,pixelformat=NV12 -d $CAP_SP_DEV
+v4l2-ctl -v width=$WIDTH,height=$HEIGHT,pixelformat=NV12 -d $CAP_MP_DEV
+
+sleep 1
+
+v4l2-ctl --stream-mmap --stream-count=100 -d $CAP_SP_DEV --stream-to=/tmp/test_sp.raw &
+v4l2-ctl --stream-mmap --stream-count=100 -d $CAP_MP_DEV --stream-to=/tmp/test_mp.raw &
+
+wait
+echo "Completed"
+
+
+
+Helen Koike (3):
+  media: staging: rkisp1: cap: fix return values from pm functions
+  media: staging: rkisp1: do not call s_stream if the entity is still in
+    use
+  media: staging: rkisp1: cap: serialize start/stop stream
+
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 25 ++++++++++++++++---
+ drivers/staging/media/rkisp1/rkisp1-common.h  |  2 ++
+ drivers/staging/media/rkisp1/rkisp1-dev.c     |  2 ++
+ 3 files changed, 25 insertions(+), 4 deletions(-)
+
 -- 
-2.20.1
+2.25.0
