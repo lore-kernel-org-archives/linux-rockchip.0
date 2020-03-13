@@ -1,89 +1,45 @@
-From: Soeren Moch <smoch@web.de>
-Subject: Re: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
-Date: Fri, 13 Mar 2020 14:17:37 +0100
-Message-ID: <09d6c2d7-b632-3dd1-2c9d-736ccc18d4a9@web.de>
-References: <20191211235253.2539-1-smoch@web.de>
- <1daadfe0-5964-db9b-818c-6e4c75ac6a69@web.de>
- <22526722-1ae8-a018-0e24-81d7ad7512dd@web.de> <2685733.IzV8dBlDb2@diego>
- <d7b05a6c-dfba-c8e0-b5fb-f6f7f5a6c1b7@cypress.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <d7b05a6c-dfba-c8e0-b5fb-f6f7f5a6c1b7@cypress.com>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: chi-hsien.lin@cypress.com, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: brcm80211-dev-list.pdl@broadcom.com, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, brcm80211-dev-list@cypress.com, Kalle Valo <kvalo@codeaurora.org>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: remove clock-frequency from saradc node rv1108
+Date: Fri, 13 Mar 2020 14:26:46 +0100
+Message-ID: <20200313132646.10317-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDEzLjAzLjIwIDEyOjAzLCBDaGktSHNpZW4gTGluIHdyb3RlOgo+IE9uIDEyLzE2LzIwMTkg
-Nzo0MywgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4+IEhpIFNvZXJlbiwKPj4KPj4gQW0gU29ubnRh
-ZywgMTUuIERlemVtYmVyIDIwMTksIDIyOjI0OjEwIENFVCBzY2hyaWViIFNvZXJlbiBNb2NoOgo+
-Pj4gT24gMTIuMTIuMTkgMTE6NTksIFNvZXJlbiBNb2NoIHdyb3RlOgo+Pj4+IE9uIDEyLjEyLjE5
-IDEwOjQyLCBLYWxsZSBWYWxvIHdyb3RlOgo+Pj4+PiBTb2VyZW4gTW9jaCA8c21vY2hAd2ViLmRl
-PiB3cml0ZXM6Cj4+Pj4+Cj4+Pj4+PiBBZGQgc3VwcG9ydCBmb3IgdGhlIEJDTTQzNTkgY2hpcHNl
-dCB3aXRoIFNESU8gaW50ZXJmYWNlIGFuZCBSU0RCCj4+Pj4+PiBzdXBwb3J0Cj4+Pj4+PiB0byB0
-aGUgYnJjbWZtYWMgd2lyZWxlc3MgbmV0d29yayBkcml2ZXIgaW4gcGF0Y2hlcyAxLTcuCj4+Pj4+
-Pgo+Pj4+Pj4gRW5oYW5jZSBkZXZpY2V0cmVlIG9mIHRoZSBSb2NrUHJvNjQgYXJtNjQvcm9ja2No
-aXAgYm9hcmQgdG8gdXNlIGFuCj4+Pj4+PiBBUDYzNTlTQSBiYXNlZCB3aWZpL2J0IGNvbWJvIG1v
-ZHVsZSB3aXRoIHRoaXMgY2hpcHNldCBpbiBwYXRjaGVzCj4+Pj4+PiA4LTkuCj4+Pj4+Pgo+Pj4+
-Pj4KPj4+Pj4+IENodW5nLUhzaWVuIEhzdSAoMSk6Cj4+Pj4+PiDCoMKgIGJyY21mbWFjOiBzZXQg
-RjIgYmxvY2tzaXplIGFuZCB3YXRlcm1hcmsgZm9yIDQzNTkKPj4+Pj4+Cj4+Pj4+PiBTb2VyZW4g
-TW9jaCAoNSk6Cj4+Pj4+PiDCoMKgIGJyY21mbWFjOiBmaXggcmFtYmFzZSBmb3IgNDM1OS85Cj4+
-Pj4+PiDCoMKgIGJyY21mbWFjOiBtYWtlIGVycm9ycyB3aGVuIHNldHRpbmcgcm9hbWluZyBwYXJh
-bWV0ZXJzIG5vbi1mYXRhbAo+Pj4+Pj4gwqDCoCBicmNtZm1hYzogYWRkIHN1cHBvcnQgZm9yIEJD
-TTQzNTkgU0RJTyBjaGlwc2V0Cj4+Pj4+PiDCoMKgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBSb2Nr
-UHJvNjQ6IGVuYWJsZSB3aWZpIG1vZHVsZSBhdCBzZGlvMAo+Pj4+Pj4gwqDCoCBhcm02NDogZHRz
-OiByb2NrY2hpcDogUm9ja1BybzY0OiBob29rIHVwIGJsdWV0b290aCBhdCB1YXJ0MAo+Pj4+Pj4K
-Pj4+Pj4+IFdyaWdodCBGZW5nICgzKToKPj4+Pj4+IMKgwqAgYnJjbWZtYWM6IHJlc2V0IHR3byBE
-MTEgY29yZXMgaWYgY2hpcCBoYXMgdHdvIEQxMSBjb3Jlcwo+Pj4+Pj4gwqDCoCBicmNtZm1hYzog
-YWRkIFJTREIgY29uZGl0aW9uIHdoZW4gc2V0dGluZyBpbnRlcmZhY2UgY29tYmluYXRpb25zCj4+
-Pj4+PiDCoMKgIGJyY21mbWFjOiBub3Qgc2V0IG1ic3MgaW4gdmlmIGlmIGZpcm13YXJlIGRvZXMg
-bm90IHN1cHBvcnQgTUJTUwo+Pj4+Pj4KPj4+Pj4+IMKgIC4uLi9ib290L2R0cy9yb2NrY2hpcC9y
-azMzOTktcm9ja3BybzY0LmR0c8KgwqDCoCB8IDUwICsrKysrKysrKysrLS0tCj4+Pj4+PiDCoCAu
-Li4vYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2JjbXNkaC5jwqDCoMKgwqDCoCB8wqAgOCAr
-Ky0KPj4+Pj4+IMKgIC4uLi9icm9hZGNvbS9icmNtODAyMTEvYnJjbWZtYWMvY2ZnODAyMTEuY8Kg
-wqDCoCB8IDY4Cj4+Pj4+PiArKysrKysrKysrKysrKystLS0tCj4+Pj4+PiDCoCAuLi4vYnJvYWRj
-b20vYnJjbTgwMjExL2JyY21mbWFjL2NoaXAuY8KgwqDCoMKgwqDCoMKgIHwgNTQgKysrKysrKysr
-KysrKystCj4+Pj4+PiDCoCAuLi4vYnJvYWRjb20vYnJjbTgwMjExL2JyY21mbWFjL2NoaXAuaMKg
-wqDCoMKgwqDCoMKgIHzCoCAxICsKPj4+Pj4+IMKgIC4uLi9icm9hZGNvbS9icmNtODAyMTEvYnJj
-bWZtYWMvcGNpZS5jwqDCoMKgwqDCoMKgwqAgfMKgIDIgKy0KPj4+Pj4+IMKgIC4uLi9icm9hZGNv
-bS9icmNtODAyMTEvYnJjbWZtYWMvc2Rpby5jwqDCoMKgwqDCoMKgwqAgfCAxNyArKysrKwo+Pj4+
-Pj4gwqAgaW5jbHVkZS9saW51eC9tbWMvc2Rpb19pZHMuaMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgfMKgIDIgKwo+Pj4+Pj4gwqAgOCBmaWxlcyBjaGFuZ2VkLCAxNzYgaW5zZXJ0
-aW9ucygrKSwgMjYgZGVsZXRpb25zKC0pCj4+Pj4+IEp1c3QgdG8gbWFrZSBzdXJlIHdlIGFyZSBv
-biB0aGUgc2FtZSBwYWdlLCBJIHdpbGwgYXBwbHkgcGF0Y2hlcwo+Pj4+PiAxLTcgdG8KPj4+Pj4g
-d2lyZWxlc3MtZHJpdmVycy1uZXh0IGFuZCBwYXRjaGVzIDgtOSBnbyB0byBzb21lIG90aGVyIHRy
-ZWU/IEFuZAo+Pj4+PiB0aGVyZQo+Pj4+PiBhcmUgbm8gZGVwZW5kZW5jaWVzIGJldHdlZW4gdGhl
-IGJyY21mbWFjIHBhdGNoZXMgYW5kIGR0cyBwYXRjaGVzPwo+Pj4+Pgo+Pj4+IFllcywgdGhpcyBh
-bHNvIGlzIG15IHVuZGVyc3RhbmRpbmcuIEknbSBnbGFkIGlmIHlvdSBhcmUgZmluZSB3aXRoCj4+
-Pj4gcGF0Y2hlcyAxLTcuCj4+Pj4gSGVpa28gd2lsbCBwaWNrIHVwIHBhdGNoZXMgOC05IGxhdGVy
-IGZvciBsaW51eC1yb2NrY2hpcCBpbmRlcGVuZGVudGx5Lgo+Pj4+IEFuZCBpZiB3ZSBuZWVkIGFu
-b3RoZXIgcm91bmQgb2YgcmV2aWV3IGZvciBwYXRjaGVzIDgtOSwgSSB0aGluayB3ZQo+Pj4+IGRv
-bid0Cj4+Pj4gbmVlZCB0byBib3RoZXIgbGludXgtd2lyZWxlc3Mgd2l0aCB0aGlzLgo+Pj4KPj4+
-IEhlaWtvLAo+Pj4KPj4+IGlzIHRoaXMgT0sgZm9yIHlvdSB3aGVuIHBhdGNoZXMgMS03IGFyZSBt
-ZXJnZWQgbm93IGluIHdpcmVsZXNzLWRyaXZlcnMsCj4+PiBhbmQgdGhlbiBJIHNlbmQgYSB2MyBm
-b3IgcGF0Y2hlcyA4LTkgb25seSBmb3IgeW91IHRvIG1lcmdlIGluCj4+PiBsaW51eC1yb2NrY2hp
-cCBsYXRlcj8gT3IgZG8geW91IHByZWZlciBhIGZ1bGwgdjMgZm9yIHRoZSB3aG9sZSBzZXJpZXMK
-Pj4+IHdpdGggb25seSB0aGlzIHBlbmRpbmcgY2xvY2sgbmFtZSB1cGRhdGUgaW4gcGF0Y2ggOT8K
-Pj4KPj4gTm9wZSwgbWVyZ2luZyAxLTcgZnJvbSB0aGlzIHYyIGFuZCB0aGVuIGdldHRpbmcgYSB2
-MyB3aXRoIG9ubHkgdGhlIGR0cwo+PiBzdHVmZiBpcyBwZXJmZWN0bHkgZmluZSA6LSkKPgo+IFNv
-ZXJlbiwKPgo+IEkgc3VwcG9zZSBwYXRjaCAxLTcgZnJvbSB0aGlzIHNlcmlvdXMgYXJlIGFsbCBn
-b29kIGZvciBtZXJnaW5nLiBJcwo+IHRoYXQgcmlnaHQ/IElmIHNvLCBjb3VsZCB5b3UgcGxlYXNl
-IGNyZWF0ZSBhIHJlYmFzZWQgVjM/CkNoaS1oc2llbiwKClRoYW5rcyBmb3IgYXNraW5nLCBidXQg
-dGhlc2UgcGF0Y2hlcyBhcmUgYWxyZWFkeSBtZXJnZWQgaW4KdG9ydmFsZHMvdjUuNi1yYzEgYXMg
-Y29tbWl0cwoxYjhkMmUwYTllNDIuLjI2MzU4NTNjZTRhYgoKU28gZXZlcnl0aGluZyBhbHJlYWR5
-IGZpbmUgd2l0aCB0aGlzLgoKVGhhbmtzLApTb2VyZW4KCj4KPgo+IFJlZ2FyZHMsCj4gQ2hpLWhz
-aWVuIExpbgo+Cj4+Cj4+IEhlaWtvCj4+Cj4+Cj4+IC4KPj4KCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlz
-dApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+An experimental test with the command below gives these errors:
+
+arch/arm/boot/dts/rv1108-elgin-r1.dt.yaml: adc@1038c000:
+'clock-frequency'
+does not match any of the regexes: 'pinctrl-[0-9]+'
+arch/arm/boot/dts/rv1108-evb.dt.yaml: adc@1038c000:
+'clock-frequency'
+does not match any of the regexes: 'pinctrl-[0-9]+'
+
+'clock-frequency' is not a valid property for a saradc node,
+so remove it.
+
+make ARCH=arm dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/iio/adc/
+rockchip-saradc.yaml
+
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ arch/arm/boot/dts/rv1108.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index 153868c62..f9cfe2c80 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -366,7 +366,6 @@
+ 		reg = <0x1038c000 0x100>;
+ 		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
+ 		#io-channel-cells = <1>;
+-		clock-frequency = <1000000>;
+ 		clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
+ 		clock-names = "saradc", "apb_pclk";
+ 		status = "disabled";
+-- 
+2.11.0
