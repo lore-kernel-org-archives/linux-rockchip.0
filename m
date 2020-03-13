@@ -1,45 +1,152 @@
 From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] ARM: dts: rockchip: remove clock-frequency from saradc node rv1108
-Date: Fri, 13 Mar 2020 14:26:46 +0100
-Message-ID: <20200313132646.10317-1-jbx6244@gmail.com>
+Subject: [PATCH v1 1/3] dt-bindings: iio: adc: convert rockchip saradc bindings to yaml
+Date: Fri, 13 Mar 2020 14:29:24 +0100
+Message-ID: <20200313132926.10543-1-jbx6244@gmail.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-An experimental test with the command below gives these errors:
-
-arch/arm/boot/dts/rv1108-elgin-r1.dt.yaml: adc@1038c000:
-'clock-frequency'
-does not match any of the regexes: 'pinctrl-[0-9]+'
-arch/arm/boot/dts/rv1108-evb.dt.yaml: adc@1038c000:
-'clock-frequency'
-does not match any of the regexes: 'pinctrl-[0-9]+'
-
-'clock-frequency' is not a valid property for a saradc node,
-so remove it.
-
-make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/iio/adc/
-rockchip-saradc.yaml
+Current dts files with 'saradc' nodes are manually verified.
+In order to automate this process rockchip-saradc.txt
+has to be converted to yaml.
 
 Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- arch/arm/boot/dts/rv1108.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+ .../bindings/iio/adc/rockchip-saradc.txt           | 37 ----------
+ .../bindings/iio/adc/rockchip-saradc.yaml          | 79 ++++++++++++++++++++++
+ 2 files changed, 79 insertions(+), 37 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+ create mode 100644 Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
 
-diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-index 153868c62..f9cfe2c80 100644
---- a/arch/arm/boot/dts/rv1108.dtsi
-+++ b/arch/arm/boot/dts/rv1108.dtsi
-@@ -366,7 +366,6 @@
- 		reg = <0x1038c000 0x100>;
- 		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
- 		#io-channel-cells = <1>;
--		clock-frequency = <1000000>;
- 		clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
- 		clock-names = "saradc", "apb_pclk";
- 		status = "disabled";
+diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+deleted file mode 100644
+index c2c50b598..000000000
+--- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
++++ /dev/null
+@@ -1,37 +0,0 @@
+-Rockchip Successive Approximation Register (SAR) A/D Converter bindings
+-
+-Required properties:
+-- compatible: should be "rockchip,<name>-saradc" or "rockchip,rk3066-tsadc"
+-   - "rockchip,saradc": for rk3188, rk3288
+-   - "rockchip,rk3066-tsadc": for rk3036
+-   - "rockchip,rk3328-saradc", "rockchip,rk3399-saradc": for rk3328
+-   - "rockchip,rk3399-saradc": for rk3399
+-   - "rockchip,rv1108-saradc", "rockchip,rk3399-saradc": for rv1108
+-
+-- reg: physical base address of the controller and length of memory mapped
+-       region.
+-- interrupts: The interrupt number to the cpu. The interrupt specifier format
+-              depends on the interrupt controller.
+-- clocks: Must contain an entry for each entry in clock-names.
+-- clock-names: Shall be "saradc" for the converter-clock, and "apb_pclk" for
+-               the peripheral clock.
+-- vref-supply: The regulator supply ADC reference voltage.
+-- #io-channel-cells: Should be 1, see ../iio-bindings.txt
+-
+-Optional properties:
+-- resets: Must contain an entry for each entry in reset-names if need support
+-	  this option. See ../reset/reset.txt for details.
+-- reset-names: Must include the name "saradc-apb".
+-
+-Example:
+-	saradc: saradc@2006c000 {
+-		compatible = "rockchip,saradc";
+-		reg = <0x2006c000 0x100>;
+-		interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
+-		clock-names = "saradc", "apb_pclk";
+-		resets = <&cru SRST_SARADC>;
+-		reset-names = "saradc-apb";
+-		#io-channel-cells = <1>;
+-		vref-supply = <&vcc18>;
+-	};
+diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+new file mode 100644
+index 000000000..2908788b3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+@@ -0,0 +1,79 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/iio/adc/rockchip-saradc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip Successive Approximation Register (SAR) A/D Converter
++
++maintainers:
++  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
++
++properties:
++  compatible:
++    oneOf:
++      - const: rockchip,saradc
++      - const: rockchip,rk3066-tsadc
++      - const: rockchip,rk3399-saradc
++      - items:
++          - enum:
++            - rockchip,rk3328-saradc
++            - rockchip,rv1108-saradc
++          - const: rockchip,rk3399-saradc
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: converter clock
++      - description: peripheral clock
++
++  clock-names:
++    items:
++      - const: saradc
++      - const: apb_pclk
++
++  resets:
++    maxItems: 1
++
++  reset-names:
++    const: saradc-apb
++
++  vref-supply:
++    description:
++      The regulator supply for the ADC reference voltage.
++
++  "#io-channel-cells":
++    const: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - vref-supply
++  - "#io-channel-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3288-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    saradc: saradc@2006c000 {
++      compatible = "rockchip,saradc";
++      reg = <0x2006c000 0x100>;
++      interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
++      clock-names = "saradc", "apb_pclk";
++      resets = <&cru SRST_SARADC>;
++      reset-names = "saradc-apb";
++      vref-supply = <&vcc18>;
++      #io-channel-cells = <1>;
++    };
 -- 
 2.11.0
