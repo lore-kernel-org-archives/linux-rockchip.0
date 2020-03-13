@@ -1,96 +1,43 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 0/3] media: staging: rkisp1: allow simultaneous streaming
- from multiple capture devices
-Date: Fri, 13 Mar 2020 13:51:53 -0300
-Message-ID: <9673b170-69cf-b951-bc29-76cf05e57fea@collabora.com>
-References: <20200313014626.3103091-1-helen.koike@collabora.com>
+From: Joshua Watt <jpewhacker-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Keep rk3288-tinker SD card IO powered
+ during reboot
+Date: Fri, 13 Mar 2020 13:38:53 -0500
+Message-ID: <ed50e114-5efd-edcc-a287-3cacc4a28161@gmail.com>
+References: <20200219204224.34154-1-JPEWhacker@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200313014626.3103091-1-helen.koike@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200219204224.34154-1-JPEWhacker-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org
-Cc: mchehab@kernel.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, kernel@collabora.com
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 
+On 2/19/20 2:42 PM, Joshua Watt wrote:
+> IO voltage regulator for the SD card must be kept on all the time,
+> otherwise when the board reboots the SD card can't be read by the
+> bootloader.
 
-On 3/12/20 10:46 PM, Helen Koike wrote:
-> Hi,
-> 
-> This series adds support for simultaneous streaming from both capture
-> devices (rkisp1_selfpath and rkisp1_mainpath).
-> 
-> Patch 1/3 fixes return error handling from pm functions, which was
-> preventing the second stream to start.
-> 
-> Patch 2/3 don't allow .s_stream entity callback to be called if a stream is
-> already enabled. Which fixes the issue when stopping one stream would
-> also stop the other.
-> 
-> Patch 3/3 serializes start/stop streaming calls, since they both read
-> and modify the streaming status of all the entities in the piipeline.
-> 
-> This series was tested with:
-> 
-> SEN_DEV=/dev/v4l-subdev3
-> ISP_DEV=/dev/v4l-subdev0
-> RSZ_SP_DEV=/dev/v4l-subdev2
-> RSZ_MP_DEV=/dev/v4l-subdev1
-> CAP_SP_DEV=/dev/video1
-> CAP_MP_DEV=/dev/video0
-> 
-> WIDTH=1920
-> HEIGHT=1080
-> RAW_CODE=SRGGB10_1X10
-> YUV_CODE=YUYV8_2X8
-> 
-> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$RAW_CODE -d $SEN_DEV
-> 
-> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$RAW_CODE -d $ISP_DEV
-> v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $ISP_DEV
-> 
-> v4l2-ctl --set-subdev-selection pad=2,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $ISP_DEV
-> v4l2-ctl --set-subdev-fmt pad=2,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $ISP_DEV
-> 
-> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_SP_DEV
-> v4l2-ctl --set-subdev-fmt pad=1,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_SP_DEV
-> 
-> v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $RSZ_SP_DEV
-> 
-> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_MP_DEV
-> v4l2-ctl --set-subdev-fmt pad=1,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_MP_DEV
-> 
-> v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $RSZ_MP_DEV
-> 
-> v4l2-ctl -v width=$WIDTH,height=$HEIGHT,pixelformat=NV12 -d $CAP_SP_DEV
-> v4l2-ctl -v width=$WIDTH,height=$HEIGHT,pixelformat=NV12 -d $CAP_MP_DEV
-> 
-> sleep 1
-> 
-> v4l2-ctl --stream-mmap --stream-count=100 -d $CAP_SP_DEV --stream-to=/tmp/test_sp.raw &
-> v4l2-ctl --stream-mmap --stream-count=100 -d $CAP_MP_DEV --stream-to=/tmp/test_mp.raw &
-> 
-> wait
-> echo "Completed"
-> 
-> 
-> 
-> Helen Koike (3):
->   media: staging: rkisp1: cap: fix return values from pm functions
->   media: staging: rkisp1: do not call s_stream if the entity is still in
->     use
->   media: staging: rkisp1: cap: serialize start/stop stream
-> 
->  drivers/staging/media/rkisp1/rkisp1-capture.c | 25 ++++++++++++++++---
->  drivers/staging/media/rkisp1/rkisp1-common.h  |  2 ++
->  drivers/staging/media/rkisp1/rkisp1-dev.c     |  2 ++
->  3 files changed, 25 insertions(+), 4 deletions(-)
-> 
+Ping?
 
-Please, ignore this version, I rebased with the wrong branch. I'll send v2.
-
-Thanks
-Helen
+>
+> Signed-off-by: Joshua Watt <JPEWhacker-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>   arch/arm/boot/dts/rk3288-tinker.dtsi | 1 +
+>   1 file changed, 1 insertion(+)
+>
+> diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
+> index 312582c1bd37..acfaa12ec239 100644
+> --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
+> +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
+> @@ -276,6 +276,7 @@
+>   			};
+>   
+>   			vccio_sd: LDO_REG5 {
+> +				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <1800000>;
+>   				regulator-max-microvolt = <3300000>;
