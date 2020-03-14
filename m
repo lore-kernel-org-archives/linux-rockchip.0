@@ -1,61 +1,68 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH] ARM: dts: rockchip: fix vref-supply for &saradc node rk3288
- firefly reload
-Date: Sat, 14 Mar 2020 15:07:55 +0100
-Message-ID: <20200314140755.4877-1-jbx6244@gmail.com>
+From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Subject: [PATCH] ARM: dts: rockchip: use DMA channels for UARTs of TinkerBoard
+Date: Sat, 14 Mar 2020 23:23:27 +0900
+Message-ID: <20200314142327.25568-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: devicetree@vger.kernel.org, robh+dt@kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-A test with the command below gives this error:
+This patch enables to use DMAC for all UARTs that are connected to
+dmac_peri core for TinkerBoard.
 
-arch/arm/boot/dts/rk3288-firefly-reload.dt.yaml: saradc@ff100000:
-'vref-supply' is a required property
+Only uart2 is connected different DMAC (dmac_bus_s) so keep current
+settings on this patch.
 
-PMIC Channel OUT11 with powername 'vcc_18'
-(connected through R155 bridge with 'vccio_wl')
-is used for the recovery key and ADC_AVDD_1V8.
-
-Fix error by adding 'vcc_18' as vref for the saradc.
-
-make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/iio/adc/
-rockchip-saradc.yaml
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
 ---
-Schematic:
+ arch/arm/boot/dts/rk3288-tinker.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-http://www.t-firefly.com/download/Firefly-RK3288-Reload/hardware/MainBoard/
-Schematic/FIREFLY-RK3288_RELOAD_V10_Schematic.pdf
----
- arch/arm/boot/dts/rk3288-firefly-reload.dts | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-index 1574383fd..8c38bda21 100644
---- a/arch/arm/boot/dts/rk3288-firefly-reload.dts
-+++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
-@@ -234,6 +234,7 @@
+diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi b/arch/arm/boot/dts/rk3288-tinker.dtsi
+index 312582c1bd37..6efabeaf3c6d 100644
+--- a/arch/arm/boot/dts/rk3288-tinker.dtsi
++++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
+@@ -491,10 +491,14 @@ &tsadc {
  };
  
- &saradc {
-+	vref-supply = <&vcc_18>;
+ &uart0 {
++	dmas = <&dmac_peri 1>, <&dmac_peri 2>;
++	dma-names = "tx", "rx";
+ 	status = "okay";
+ };
+ 
+ &uart1 {
++	dmas = <&dmac_peri 3>, <&dmac_peri 4>;
++	dma-names = "tx", "rx";
+ 	status = "okay";
+ };
+ 
+@@ -503,10 +507,14 @@ &uart2 {
+ };
+ 
+ &uart3 {
++	dmas = <&dmac_peri 7>, <&dmac_peri 8>;
++	dma-names = "tx", "rx";
+ 	status = "okay";
+ };
+ 
+ &uart4 {
++	dmas = <&dmac_peri 9>, <&dmac_peri 10>;
++	dma-names = "tx", "rx";
  	status = "okay";
  };
  
 -- 
-2.11.0
+2.25.1
