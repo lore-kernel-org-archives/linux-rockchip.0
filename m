@@ -1,16 +1,11 @@
 From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: Re: [PATCH] ARM: dts: rockchip: use DMA channels for UARTs of
- TinkerBoard
-Date: Sun, 15 Mar 2020 18:44:13 +0900
-Message-ID: <0b36bf84-0e7b-7287-a094-9fd2f33167ee@katsuster.net>
-References: <20200314142327.25568-1-katsuhiro@katsuster.net>
- <2930126.sCcUyySgUU@diego>
+Subject: [PATCH] ARM: dts: rockchip: use DMA channels for UARTs for RK3288
+Date: Sun, 15 Mar 2020 18:51:15 +0900
+Message-ID: <20200315095115.10106-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <2930126.sCcUyySgUU@diego>
-Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -20,50 +15,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGVsbG8gSGVpa28sCgo+IFRoaXMgYmVsb25ncyBpbiByazMyODguZHRzaSwgYXMgdGhpcyBpcyBk
-ZWZpbml0bHkgbm90IGJvYXJkLXNwZWNpZmljLCBhcwo+IHRoZSBkbWEtdWFydCBjb25uZWN0aW9u
-IGlzIGRvbmUgaW5zaWRlIHRoZSBzb2MuCj4gCj4gQXQgbGVhc3Qgb24gYXJtNjQgKHJrMzMyOCwg
-cHgzMCwgcHJvYmFibHkgbW9yZSkgd2UgYWxyZWFkeSBoYXZlIHRoZQo+IHVhcnQgZG1hcyBpbiB0
-aGUgY29yZSBkdHNpIHdpdGhvdXQgYW55IHByb2JsZW1zLgo+IAo+IElzIHRoZXJlIGFueSByZWFz
-b24gd2h5IHlvdSBvbmx5IGRpZCBhZGQgaXQgdG8gdGhlIHRpbmtlciBib2FyZCBvbmx5PwoKVGhl
-cmUgaXMgbm8gc3BlY2lhbCByZWFzb24uIFNpbXBseSBJIGRvbid0IGhhdmUgYW5kIG5vdCB0ZXN0
-ZWQgb24gb3RoZXIKYm9hcmRzIG9mIFJLMzI4OC4gQnV0IEkgaG9wZSB0aGVzZSBETUEgc2V0dGlu
-Z3MgY2FuIHdvcmsgY29ycmVjdGx5IG9uCm90aGVyIGJvYXJkcy4KCkknbGwgcmVzZW5kIHBhdGNo
-IGZvciByazMyODguZHRzaS4KCkJlc3QgUmVnYXJkcywKS2F0c3VoaXJvIFN1enVraQoKCk9uIDIw
-MjAvMDMvMTUgMDowOSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gSGksCj4gCj4gQW0gU2Ftc3Rh
-ZywgMTQuIE3DpHJ6IDIwMjAsIDE1OjIzOjI3IENFVCBzY2hyaWViIEthdHN1aGlybyBTdXp1a2k6
-Cj4+IFRoaXMgcGF0Y2ggZW5hYmxlcyB0byB1c2UgRE1BQyBmb3IgYWxsIFVBUlRzIHRoYXQgYXJl
-IGNvbm5lY3RlZCB0bwo+PiBkbWFjX3BlcmkgY29yZSBmb3IgVGlua2VyQm9hcmQuCj4+Cj4+IE9u
-bHkgdWFydDIgaXMgY29ubmVjdGVkIGRpZmZlcmVudCBETUFDIChkbWFjX2J1c19zKSBzbyBrZWVw
-IGN1cnJlbnQKPj4gc2V0dGluZ3Mgb24gdGhpcyBwYXRjaC4KPiAKPiBUaGlzIGJlbG9uZ3MgaW4g
-cmszMjg4LmR0c2ksIGFzIHRoaXMgaXMgZGVmaW5pdGx5IG5vdCBib2FyZC1zcGVjaWZpYywgYXMK
-PiB0aGUgZG1hLXVhcnQgY29ubmVjdGlvbiBpcyBkb25lIGluc2lkZSB0aGUgc29jLgo+IAo+IEF0
-IGxlYXN0IG9uIGFybTY0IChyazMzMjgsIHB4MzAsIHByb2JhYmx5IG1vcmUpIHdlIGFscmVhZHkg
-aGF2ZSB0aGUKPiB1YXJ0IGRtYXMgaW4gdGhlIGNvcmUgZHRzaSB3aXRob3V0IGFueSBwcm9ibGVt
-cy4KPiAKPiBJcyB0aGVyZSBhbnkgcmVhc29uIHdoeSB5b3Ugb25seSBkaWQgYWRkIGl0IHRvIHRo
-ZSB0aW5rZXIgYm9hcmQgb25seT8KPiAKPiAKPiBIZWlrbwo+IAo+IAo+PiBTaWduZWQtb2ZmLWJ5
-OiBLYXRzdWhpcm8gU3V6dWtpIDxrYXRzdWhpcm9Aa2F0c3VzdGVyLm5ldD4KPj4gLS0tCj4+ICAg
-YXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXRpbmtlci5kdHNpIHwgOCArKysrKysrKwo+PiAgIDEg
-ZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJt
-L2Jvb3QvZHRzL3JrMzI4OC10aW5rZXIuZHRzaSBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC10
-aW5rZXIuZHRzaQo+PiBpbmRleCAzMTI1ODJjMWJkMzcuLjZlZmFiZWFmM2M2ZCAxMDA2NDQKPj4g
-LS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXRpbmtlci5kdHNpCj4+ICsrKyBiL2FyY2gv
-YXJtL2Jvb3QvZHRzL3JrMzI4OC10aW5rZXIuZHRzaQo+PiBAQCAtNDkxLDEwICs0OTEsMTQgQEAg
-JnRzYWRjIHsKPj4gICB9Owo+PiAgIAo+PiAgICZ1YXJ0MCB7Cj4+ICsJZG1hcyA9IDwmZG1hY19w
-ZXJpIDE+LCA8JmRtYWNfcGVyaSAyPjsKPj4gKwlkbWEtbmFtZXMgPSAidHgiLCAicngiOwo+PiAg
-IAlzdGF0dXMgPSAib2theSI7Cj4+ICAgfTsKPj4gICAKPj4gICAmdWFydDEgewo+PiArCWRtYXMg
-PSA8JmRtYWNfcGVyaSAzPiwgPCZkbWFjX3BlcmkgND47Cj4+ICsJZG1hLW5hbWVzID0gInR4Iiwg
-InJ4IjsKPj4gICAJc3RhdHVzID0gIm9rYXkiOwo+PiAgIH07Cj4+ICAgCj4+IEBAIC01MDMsMTAg
-KzUwNywxNCBAQCAmdWFydDIgewo+PiAgIH07Cj4+ICAgCj4+ICAgJnVhcnQzIHsKPj4gKwlkbWFz
-ID0gPCZkbWFjX3BlcmkgNz4sIDwmZG1hY19wZXJpIDg+Owo+PiArCWRtYS1uYW1lcyA9ICJ0eCIs
-ICJyeCI7Cj4+ICAgCXN0YXR1cyA9ICJva2F5IjsKPj4gICB9Owo+PiAgIAo+PiAgICZ1YXJ0NCB7
-Cj4+ICsJZG1hcyA9IDwmZG1hY19wZXJpIDk+LCA8JmRtYWNfcGVyaSAxMD47Cj4+ICsJZG1hLW5h
-bWVzID0gInR4IiwgInJ4IjsKPj4gICAJc3RhdHVzID0gIm9rYXkiOwo+PiAgIH07Cj4+ICAgCj4+
-Cj4gCj4gCj4gCj4gCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtYXJtLWtlcm5lbAo=
+This patch enables to use DMAC for all UARTs that are connected to
+dmac_peri core for Rochchip RK3288.
+
+Only uart2 is connected different DMAC (dmac_bus_s) so keep current
+settings on this patch.
+
+Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+---
+ arch/arm/boot/dts/rk3288.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 8bcb4a51682e..e9f8a44f5f2a 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -420,6 +420,8 @@ uart0: serial@ff180000 {
+ 		reg-io-width = <4>;
+ 		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+ 		clock-names = "baudclk", "apb_pclk";
++		dmas = <&dmac_peri 1>, <&dmac_peri 2>;
++		dma-names = "tx", "rx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&uart0_xfer>;
+ 		status = "disabled";
+@@ -433,6 +435,8 @@ uart1: serial@ff190000 {
+ 		reg-io-width = <4>;
+ 		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+ 		clock-names = "baudclk", "apb_pclk";
++		dmas = <&dmac_peri 3>, <&dmac_peri 4>;
++		dma-names = "tx", "rx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&uart1_xfer>;
+ 		status = "disabled";
+@@ -459,6 +463,8 @@ uart3: serial@ff1b0000 {
+ 		reg-io-width = <4>;
+ 		clocks = <&cru SCLK_UART3>, <&cru PCLK_UART3>;
+ 		clock-names = "baudclk", "apb_pclk";
++		dmas = <&dmac_peri 7>, <&dmac_peri 8>;
++		dma-names = "tx", "rx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&uart3_xfer>;
+ 		status = "disabled";
+@@ -472,6 +478,8 @@ uart4: serial@ff1c0000 {
+ 		reg-io-width = <4>;
+ 		clocks = <&cru SCLK_UART4>, <&cru PCLK_UART4>;
+ 		clock-names = "baudclk", "apb_pclk";
++		dmas = <&dmac_peri 9>, <&dmac_peri 10>;
++		dma-names = "tx", "rx";
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&uart4_xfer>;
+ 		status = "disabled";
+-- 
+2.25.1
