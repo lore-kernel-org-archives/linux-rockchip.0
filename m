@@ -1,121 +1,69 @@
-From: Chi-Hsien Lin <chi-hsien.lin@cypress.com>
-Subject: Re: [PATCH v2 0/9] brcmfmac: add support for BCM4359 SDIO chipset
-Date: Sun, 15 Mar 2020 15:01:54 +0800
-Message-ID: <e3431452-7cfc-7e2c-c93f-977cfd21b46b@cypress.com>
-References: <20191211235253.2539-1-smoch@web.de>
- <1daadfe0-5964-db9b-818c-6e4c75ac6a69@web.de>
- <22526722-1ae8-a018-0e24-81d7ad7512dd@web.de> <2685733.IzV8dBlDb2@diego>
- <d7b05a6c-dfba-c8e0-b5fb-f6f7f5a6c1b7@cypress.com>
- <09d6c2d7-b632-3dd1-2c9d-736ccc18d4a9@web.de>
-Reply-To: chi-hsien.lin@cypress.com
+From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Subject: Re: [PATCH] ARM: dts: rockchip: use DMA channels for UARTs of
+ TinkerBoard
+Date: Sun, 15 Mar 2020 18:44:13 +0900
+Message-ID: <0b36bf84-0e7b-7287-a094-9fd2f33167ee@katsuster.net>
+References: <20200314142327.25568-1-katsuhiro@katsuster.net>
+ <2930126.sCcUyySgUU@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <09d6c2d7-b632-3dd1-2c9d-736ccc18d4a9@web.de>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <2930126.sCcUyySgUU@diego>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Soeren Moch <smoch@web.de>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Kalle Valo <kvalo@codeaurora.org>, "brcm80211-dev-list.pdl@broadcom.com" <brcm80211-dev-list.pdl@broadcom.com>, "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, brcm80211-dev-list <brcm80211-dev-list@cypress.com>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 03/13/2020 9:17, Soeren Moch wrote:
-> 
-> On 13.03.20 12:03, Chi-Hsien Lin wrote:
->> On 12/16/2019 7:43, Heiko Stübner wrote:
->>> Hi Soeren,
->>>
->>> Am Sonntag, 15. Dezember 2019, 22:24:10 CET schrieb Soeren Moch:
->>>> On 12.12.19 11:59, Soeren Moch wrote:
->>>>> On 12.12.19 10:42, Kalle Valo wrote:
->>>>>> Soeren Moch <smoch@web.de> writes:
->>>>>>
->>>>>>> Add support for the BCM4359 chipset with SDIO interface and RSDB
->>>>>>> support
->>>>>>> to the brcmfmac wireless network driver in patches 1-7.
->>>>>>>
->>>>>>> Enhance devicetree of the RockPro64 arm64/rockchip board to use an
->>>>>>> AP6359SA based wifi/bt combo module with this chipset in patches
->>>>>>> 8-9.
->>>>>>>
->>>>>>>
->>>>>>> Chung-Hsien Hsu (1):
->>>>>>>     brcmfmac: set F2 blocksize and watermark for 4359
->>>>>>>
->>>>>>> Soeren Moch (5):
->>>>>>>     brcmfmac: fix rambase for 4359/9
->>>>>>>     brcmfmac: make errors when setting roaming parameters non-fatal
->>>>>>>     brcmfmac: add support for BCM4359 SDIO chipset
->>>>>>>     arm64: dts: rockchip: RockPro64: enable wifi module at sdio0
->>>>>>>     arm64: dts: rockchip: RockPro64: hook up bluetooth at uart0
->>>>>>>
->>>>>>> Wright Feng (3):
->>>>>>>     brcmfmac: reset two D11 cores if chip has two D11 cores
->>>>>>>     brcmfmac: add RSDB condition when setting interface combinations
->>>>>>>     brcmfmac: not set mbss in vif if firmware does not support MBSS
->>>>>>>
->>>>>>>    .../boot/dts/rockchip/rk3399-rockpro64.dts    | 50 +++++++++++---
->>>>>>>    .../broadcom/brcm80211/brcmfmac/bcmsdh.c      |  8 ++-
->>>>>>>    .../broadcom/brcm80211/brcmfmac/cfg80211.c    | 68
->>>>>>> +++++++++++++++----
->>>>>>>    .../broadcom/brcm80211/brcmfmac/chip.c        | 54 ++++++++++++++-
->>>>>>>    .../broadcom/brcm80211/brcmfmac/chip.h        |  1 +
->>>>>>>    .../broadcom/brcm80211/brcmfmac/pcie.c        |  2 +-
->>>>>>>    .../broadcom/brcm80211/brcmfmac/sdio.c        | 17 +++++
->>>>>>>    include/linux/mmc/sdio_ids.h                  |  2 +
->>>>>>>    8 files changed, 176 insertions(+), 26 deletions(-)
->>>>>> Just to make sure we are on the same page, I will apply patches
->>>>>> 1-7 to
->>>>>> wireless-drivers-next and patches 8-9 go to some other tree? And
->>>>>> there
->>>>>> are no dependencies between the brcmfmac patches and dts patches?
->>>>>>
->>>>> Yes, this also is my understanding. I'm glad if you are fine with
->>>>> patches 1-7.
->>>>> Heiko will pick up patches 8-9 later for linux-rockchip independently.
->>>>> And if we need another round of review for patches 8-9, I think we
->>>>> don't
->>>>> need to bother linux-wireless with this.
->>>>
->>>> Heiko,
->>>>
->>>> is this OK for you when patches 1-7 are merged now in wireless-drivers,
->>>> and then I send a v3 for patches 8-9 only for you to merge in
->>>> linux-rockchip later? Or do you prefer a full v3 for the whole series
->>>> with only this pending clock name update in patch 9?
->>>
->>> Nope, merging 1-7 from this v2 and then getting a v3 with only the dts
->>> stuff is perfectly fine :-)
->>
->> Soeren,
->>
->> I suppose patch 1-7 from this serious are all good for merging. Is
->> that right? If so, could you please create a rebased V3?
-> Chi-hsien,
-> 
-> Thanks for asking, but these patches are already merged in
-> torvalds/v5.6-rc1 as commits
-> 1b8d2e0a9e42..2635853ce4ab
-> 
-> So everything already fine with this.
-
-Ahh... You're right. They're all good. Thanks a lot!!
-
-> 
-> Thanks,
-> Soeren
-> 
->>
->>
->> Regards,
->> Chi-hsien Lin
->>
->>>
->>> Heiko
->>>
->>>
->>> .
->>>
-> 
+SGVsbG8gSGVpa28sCgo+IFRoaXMgYmVsb25ncyBpbiByazMyODguZHRzaSwgYXMgdGhpcyBpcyBk
+ZWZpbml0bHkgbm90IGJvYXJkLXNwZWNpZmljLCBhcwo+IHRoZSBkbWEtdWFydCBjb25uZWN0aW9u
+IGlzIGRvbmUgaW5zaWRlIHRoZSBzb2MuCj4gCj4gQXQgbGVhc3Qgb24gYXJtNjQgKHJrMzMyOCwg
+cHgzMCwgcHJvYmFibHkgbW9yZSkgd2UgYWxyZWFkeSBoYXZlIHRoZQo+IHVhcnQgZG1hcyBpbiB0
+aGUgY29yZSBkdHNpIHdpdGhvdXQgYW55IHByb2JsZW1zLgo+IAo+IElzIHRoZXJlIGFueSByZWFz
+b24gd2h5IHlvdSBvbmx5IGRpZCBhZGQgaXQgdG8gdGhlIHRpbmtlciBib2FyZCBvbmx5PwoKVGhl
+cmUgaXMgbm8gc3BlY2lhbCByZWFzb24uIFNpbXBseSBJIGRvbid0IGhhdmUgYW5kIG5vdCB0ZXN0
+ZWQgb24gb3RoZXIKYm9hcmRzIG9mIFJLMzI4OC4gQnV0IEkgaG9wZSB0aGVzZSBETUEgc2V0dGlu
+Z3MgY2FuIHdvcmsgY29ycmVjdGx5IG9uCm90aGVyIGJvYXJkcy4KCkknbGwgcmVzZW5kIHBhdGNo
+IGZvciByazMyODguZHRzaS4KCkJlc3QgUmVnYXJkcywKS2F0c3VoaXJvIFN1enVraQoKCk9uIDIw
+MjAvMDMvMTUgMDowOSwgSGVpa28gU3TDvGJuZXIgd3JvdGU6Cj4gSGksCj4gCj4gQW0gU2Ftc3Rh
+ZywgMTQuIE3DpHJ6IDIwMjAsIDE1OjIzOjI3IENFVCBzY2hyaWViIEthdHN1aGlybyBTdXp1a2k6
+Cj4+IFRoaXMgcGF0Y2ggZW5hYmxlcyB0byB1c2UgRE1BQyBmb3IgYWxsIFVBUlRzIHRoYXQgYXJl
+IGNvbm5lY3RlZCB0bwo+PiBkbWFjX3BlcmkgY29yZSBmb3IgVGlua2VyQm9hcmQuCj4+Cj4+IE9u
+bHkgdWFydDIgaXMgY29ubmVjdGVkIGRpZmZlcmVudCBETUFDIChkbWFjX2J1c19zKSBzbyBrZWVw
+IGN1cnJlbnQKPj4gc2V0dGluZ3Mgb24gdGhpcyBwYXRjaC4KPiAKPiBUaGlzIGJlbG9uZ3MgaW4g
+cmszMjg4LmR0c2ksIGFzIHRoaXMgaXMgZGVmaW5pdGx5IG5vdCBib2FyZC1zcGVjaWZpYywgYXMK
+PiB0aGUgZG1hLXVhcnQgY29ubmVjdGlvbiBpcyBkb25lIGluc2lkZSB0aGUgc29jLgo+IAo+IEF0
+IGxlYXN0IG9uIGFybTY0IChyazMzMjgsIHB4MzAsIHByb2JhYmx5IG1vcmUpIHdlIGFscmVhZHkg
+aGF2ZSB0aGUKPiB1YXJ0IGRtYXMgaW4gdGhlIGNvcmUgZHRzaSB3aXRob3V0IGFueSBwcm9ibGVt
+cy4KPiAKPiBJcyB0aGVyZSBhbnkgcmVhc29uIHdoeSB5b3Ugb25seSBkaWQgYWRkIGl0IHRvIHRo
+ZSB0aW5rZXIgYm9hcmQgb25seT8KPiAKPiAKPiBIZWlrbwo+IAo+IAo+PiBTaWduZWQtb2ZmLWJ5
+OiBLYXRzdWhpcm8gU3V6dWtpIDxrYXRzdWhpcm9Aa2F0c3VzdGVyLm5ldD4KPj4gLS0tCj4+ICAg
+YXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXRpbmtlci5kdHNpIHwgOCArKysrKysrKwo+PiAgIDEg
+ZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKykKPj4KPj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJt
+L2Jvb3QvZHRzL3JrMzI4OC10aW5rZXIuZHRzaSBiL2FyY2gvYXJtL2Jvb3QvZHRzL3JrMzI4OC10
+aW5rZXIuZHRzaQo+PiBpbmRleCAzMTI1ODJjMWJkMzcuLjZlZmFiZWFmM2M2ZCAxMDA2NDQKPj4g
+LS0tIGEvYXJjaC9hcm0vYm9vdC9kdHMvcmszMjg4LXRpbmtlci5kdHNpCj4+ICsrKyBiL2FyY2gv
+YXJtL2Jvb3QvZHRzL3JrMzI4OC10aW5rZXIuZHRzaQo+PiBAQCAtNDkxLDEwICs0OTEsMTQgQEAg
+JnRzYWRjIHsKPj4gICB9Owo+PiAgIAo+PiAgICZ1YXJ0MCB7Cj4+ICsJZG1hcyA9IDwmZG1hY19w
+ZXJpIDE+LCA8JmRtYWNfcGVyaSAyPjsKPj4gKwlkbWEtbmFtZXMgPSAidHgiLCAicngiOwo+PiAg
+IAlzdGF0dXMgPSAib2theSI7Cj4+ICAgfTsKPj4gICAKPj4gICAmdWFydDEgewo+PiArCWRtYXMg
+PSA8JmRtYWNfcGVyaSAzPiwgPCZkbWFjX3BlcmkgND47Cj4+ICsJZG1hLW5hbWVzID0gInR4Iiwg
+InJ4IjsKPj4gICAJc3RhdHVzID0gIm9rYXkiOwo+PiAgIH07Cj4+ICAgCj4+IEBAIC01MDMsMTAg
+KzUwNywxNCBAQCAmdWFydDIgewo+PiAgIH07Cj4+ICAgCj4+ICAgJnVhcnQzIHsKPj4gKwlkbWFz
+ID0gPCZkbWFjX3BlcmkgNz4sIDwmZG1hY19wZXJpIDg+Owo+PiArCWRtYS1uYW1lcyA9ICJ0eCIs
+ICJyeCI7Cj4+ICAgCXN0YXR1cyA9ICJva2F5IjsKPj4gICB9Owo+PiAgIAo+PiAgICZ1YXJ0NCB7
+Cj4+ICsJZG1hcyA9IDwmZG1hY19wZXJpIDk+LCA8JmRtYWNfcGVyaSAxMD47Cj4+ICsJZG1hLW5h
+bWVzID0gInR4IiwgInJ4IjsKPj4gICAJc3RhdHVzID0gIm9rYXkiOwo+PiAgIH07Cj4+ICAgCj4+
+Cj4gCj4gCj4gCj4gCj4gCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX18KbGludXgtYXJtLWtlcm5lbCBtYWlsaW5nIGxpc3QKbGludXgtYXJtLWtlcm5lbEBs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtYXJtLWtlcm5lbAo=
