@@ -1,141 +1,76 @@
-From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] mtd: rawnand: rockchip: NFC drivers for RK3308,
- RK3188 and others
-Date: Mon, 16 Mar 2020 11:06:58 +0100
-Message-ID: <20200316110658.43aea94a@xps13>
-References: <20200303094736.7490-1-yifeng.zhao@rock-chips.com>
-        <20200303094736.7490-2-yifeng.zhao@rock-chips.com>
-        <20200309121645.1fca069d@xps13>
-        <2020031617554207432140@rock-chips.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Subject: Re: [PATCH v5 0/7] Add support for PCIe controller to work in
+ endpoint mode on R-Car SoCs
+Date: Mon, 16 Mar 2020 12:18:59 +0000
+Message-ID: <20200316121859.GB5043@e121166-lin.cambridge.arm.com>
+References: <20200228154122.14164-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <CA+V-a8vchrpa-1N1J+yVdo6-3zouOHX6=G4epWm68yirPirzag@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <2020031617554207432140-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: =?UTF-8?B?6LW15Luq5bOw?= <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: richard <richard-/L3Ra7n9ekc@public.gmane.org>, vigneshr <vigneshr-l0cyMroinI0@public.gmane.org>, robh+dt <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mtd <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?B?SGVpa29TdMO8Ym5lcg==?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CA+V-a8vchrpa-1N1J+yVdo6-3zouOHX6=G4epWm68yirPirzag@mail.gmail.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Kishon Vijay Abraham I <kishon@ti.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Andrew Murray <andrew.murray@arm.com>, linux-pci <linux-pci@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Marek Vasut <marek.vasut+renesas@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Mark Rutland <mark.r>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Yifeng,
-
-赵仪峰 <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote on Mon, 16 Mar 2020 17:59:26
-+0800:
-
-> Hi miquel，
+On Fri, Mar 13, 2020 at 03:46:42PM +0000, Lad, Prabhakar wrote:
+> Hi Bjorn/Kishon,
 > 
-> 1.
-> >A comment here explaining what the next function does and why would be
-> >nice.
-> >  
-> >> +static void rk_nfc_format_page(struct mtd_info *mtd, const u8 *buf)
-> >> +{
-> >> +	struct nand_chip *chip = mtd_to_nand(mtd);
-> >> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> >> +	u32 i;
-> >> +   
-> 
-> The data layout is different between NFC and nand  driver
-
-you probably mean between the NAND flash controller and whét the NAND
-core expects, but ok
-
-> This code is designed with reference to mtk_nand.c
-> There is a description of the data layout at the beginning of the file:
->  * NFC Page Data Layout:
->  *	1024 Bytes Data + 4Bytes sys data + 28Bytes~124Bytes ecc +
->  *	1024 Bytes Data + 4Bytes sys data + 28Bytes~124Bytes ecc +
->  *	......
->  * NAND Page Data Layout:
->  *	1024 * n Data + m Bytes oob
->  * Original Bad Block Mask Location:
->  *	first byte of oob(spare)
->  * nand_chip->oob_poi data layout:
->  *	4Bytes sys data + .... + 4Bytes sys data + ecc data
-> 
-> 2. 
-> >> +	dma_reg = DMA_ST | ((!rw) << DMA_WR)  | DMA_EN | (2 << DMA_AHB_SIZE) |
-> >> +	     (7 << DMA_BURST_SIZE) | (16 << DMA_INC_NUM);
-> >> +
-> >> +	fl_reg = (rw << FLCTL_WR) | FLCTL_XFER_EN | FLCTL_ACORRECT |
-> >> +	(n_KB << FLCTL_XFER_SECTOR) | FLCTL_TOG_FIX;
-> >> +
-> >> +	if (nfc->nfc_version == 6) {  
+> On Fri, Feb 28, 2020 at 3:41 PM Lad Prabhakar
+> <prabhakar.csengg@gmail.com> wrote:
 > >
-> >I would prefer using switch statements any time you check the version.
-> >The version should be an enum.
+> > This patch series adds support for PCIe controller on rcar to work in
+> > endpoint mode, this also extends the epf framework to handle base region
+> > for mapping PCI address locally.
 > >
-> >You can also define a platform data structure for the register offsets
-> >that have the same name, but not necessarily the same offset. Then you
-> >can reference the right value directly.
-> >eg.
+> > Note:
+> > The cadence/rockchip/designware endpoint drivers are build tested only.
 > >
-> >	struct rk_nfc_plat_data {
-> >	u32 nfc_bchctl_off;
-> >	...
-> >	};
+> > Changes for v5:
+> > 1] Rebased the patches on next branch of https://git.kernel.org/pub/scm/
+> >    linux/kernel/git/helgaas/pci.git
+> > 2] Fixed review comments reported by Kishon while fetching the matching
+> >    window in function pci_epc_get_matching_window()
+> > 3] Fixed review comments reported by Bjorn
+> >    a] Split patch up first patch so that its easier to review and incremental
+> >    b] Fixed typos
+> > 4] Included Reviewed tag from Rob for the dt-binding patch
+> > 5] Fixed issue reported by Nathan for assigning variable to itself
 > >
-> >	struct rk_nfc_plat_data rk_nfc_v6_plat_data = {
-> >	nfc_bchctl_off = ...;
-> >	...
-> >	};
+> > Changes for v4:
+> > 1] Fixed dtb_check error reported by Rob
+> > 2] Fixed review comments reported by Kishon
+> >    a] Dropped pci_epc_find_best_fit_window()
+> >    b] Fixed initializing mem ptr in __pci_epc_mem_init()
+> >    c] Dropped map_size from pci_epc_mem_window structure
 > >
-> >	bch_reg = readl(pdata->nfc_bchctl_off);  
-> 
-> I will modify the code with switch and enum, but it is difficult to use platform data structure, 
-> because the bit offset inside the register is also different.
+> > Changes for v3:
+> > 1] Fixed review comments from Bjorn and Kishon.
+> > 3] Converted to DT schema
+> >
+> > Changes for v2:
+> > 1] Fixed review comments from Biju for dt-bindings to include an example
+> >    for a tested platform.
+> > 2] Fixed review comments from Kishon to extend the features of outbound
+> >    regions in epf framework.
+> > 3] Added support to parse outbound-ranges in OF.
+> >
+> > Lad Prabhakar (7):
+> >   PCI: rcar: Rename pcie-rcar.c to pcie-rcar-host.c
+> >   PCI: rcar: Move shareable code to a common file
+> >   PCI: rcar: Fix calculating mask for PCIEPAMR register
+> >   PCI: endpoint: Add support to handle multiple base for mapping
+> >     outbound memory
+> >   dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
+> >     controller
+> >   PCI: rcar: Add support for rcar PCIe controller in endpoint mode
+> >   misc: pci_endpoint_test: Add Device ID for RZ/G2E PCIe controller
+> >
+> Gentle ping.
 
-it works the same with bitfields actually, if the bitfields have close
-names and behave the same (no matter where they are in registers), you
-should probably define them in a platform data structure as well.
+You should ask the R-CAR maintainers first to have a look at your
+code and ACK accordingly.
 
-> #define	NFC_BCH_ST_V6	(0x20)
-> #define	NFC_BCH_ST_V9	(0x150)
-> #define	BCH_ST_ERR0_V6	BIT(2)
-> #define	BCH_ST_ERR1_V6	BIT(15)
-> #define	BCH_ST_ERR0_V9	BIT(2)
-> #define	BCH_ST_ERR1_V9	BIT(18)
-> #define	ECC_ERR_CNT0_V6(x) (((((x) & (0x1F << 3)) >> 3) \
-> | (((x) & (1 << 27)) >> 22)) & 0x3F)
-> #define	ECC_ERR_CNT1_V6(x) (((((x) & (0x1F << 16)) >> 16) \
-> | (((x) & (1 << 29)) >> 24)) & 0x3F)
-> #define	ECC_ERR_CNT0_V9(x) (((x) & (0x7F << 3)) >> 3)
-> #define	ECC_ERR_CNT1_V9(x) (((x) & (0x7F << 19)) >> 19)
-> 
-> 3.
-> >> +static int rk_nfc_write_page_raw(struct nand_chip *chip, const u8 *buf,
-> >> +	 int oob_on, int page)
-> >> +{
-> >> +	struct mtd_info *mtd = nand_to_mtd(chip);
-> >> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> >> +
-> >> +	rk_nfc_format_page(mtd, buf);
-> >> +	return rk_nfc_write_page(mtd, chip, nfc->buffer, page, 1);  
-> >
-> >I think you should avoid calling ->write_page. You will avoid an
-> >indentation level in this function and clarify what write_page_raw do.
-> >Same for read, and the _oob alternative. Also, I'm sure write_buf does
-> >not need to be exported and you can just move the actual code in this
-> >function.  
-> 
-> The code  is designed with reference to mtk_nand.c.
-> The function rk_nfc_format_page will copy data from extern buffer to nfc->buffer.
-> I will move the code in the function rk_nfc_format_page to rk_nfc_write_page_raw.
-> 
-> 4.
-> >> +static int rk_nfc_write_page_hwecc(struct nand_chip *chip, const u8 *buf,
-> >> +	   int oob_on, int page)
-> >> +{
-> >> +	return rk_nfc_write_page(nand_to_mtd(chip), chip, buf, page, 0);
-> >> +}  
-> >
-> >What is the purpose of this indirection?
-> >  
-> 
-> The function  rk_nfc_write_page also call by rk_nfc_write_page_raw, a parameter(raw)
-> is required to confirm whether ECC is used or not.
-
-Ok.
-
-Thanks,
-Miquèl
+Lorenzo
