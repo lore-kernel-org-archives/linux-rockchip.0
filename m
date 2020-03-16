@@ -1,83 +1,83 @@
-From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: Re: [PATCH v5 0/7] Add support for PCIe controller to work in
- endpoint mode on R-Car SoCs
-Date: Mon, 16 Mar 2020 12:33:12 +0000
-Message-ID: <CA+V-a8tEty80_XsU2qhmxLVWXnsfv3PE+ZiVfw+jrcOJXTwr6A@mail.gmail.com>
-References: <20200228154122.14164-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
- <CA+V-a8vchrpa-1N1J+yVdo6-3zouOHX6=G4epWm68yirPirzag@mail.gmail.com> <20200316121859.GB5043@e121166-lin.cambridge.arm.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH] media: v4l2-common: Add BGR666 to v4l2_format_info
+Date: Mon, 16 Mar 2020 14:45:04 +0100
+Message-ID: <ca5838da-d18c-1bef-e1b2-bfa13bf79ad3@collabora.com>
+References: <20200316070123.2434-1-dafna.hirschfeld@collabora.com>
+ <20200316072214.GA16123@pendragon.ideasonboard.com>
+ <31efd58f-1ab1-d3d0-e4b9-ea9072e608fa@collabora.com>
+ <20200316081516.GK4732@pendragon.ideasonboard.com>
+ <401a9aca-f61f-d818-28dc-0e4cf7c2ac20@collabora.com>
+ <20200316100036.GR4732@pendragon.ideasonboard.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20200316121859.GB5043@e121166-lin.cambridge.arm.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Kishon Vijay Abraham I <kishon@ti.com>, Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Andrew Murray <andrew.murray@arm.com>, linux-pci <linux-pci@vger.kernel.org>, LAK <linux-arm-kernel@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, Marek Vasut <marek.vasut+renesas@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Heiko Stuebner <heiko@sntech.de>, Will Deacon <will@kernel.org>, Catalin Marinas <catalin.marinas@arm.com>, Mark Rutland <mark.r>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200316100036.GR4732@pendragon.ideasonboard.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Lorenzo,
 
-On Mon, Mar 16, 2020 at 12:19 PM Lorenzo Pieralisi
-<lorenzo.pieralisi@arm.com> wrote:
->
-> On Fri, Mar 13, 2020 at 03:46:42PM +0000, Lad, Prabhakar wrote:
-> > Hi Bjorn/Kishon,
-> >
-> > On Fri, Feb 28, 2020 at 3:41 PM Lad Prabhakar
-> > <prabhakar.csengg@gmail.com> wrote:
-> > >
-> > > This patch series adds support for PCIe controller on rcar to work in
-> > > endpoint mode, this also extends the epf framework to handle base region
-> > > for mapping PCI address locally.
-> > >
-> > > Note:
-> > > The cadence/rockchip/designware endpoint drivers are build tested only.
-> > >
-> > > Changes for v5:
-> > > 1] Rebased the patches on next branch of https://git.kernel.org/pub/scm/
-> > >    linux/kernel/git/helgaas/pci.git
-> > > 2] Fixed review comments reported by Kishon while fetching the matching
-> > >    window in function pci_epc_get_matching_window()
-> > > 3] Fixed review comments reported by Bjorn
-> > >    a] Split patch up first patch so that its easier to review and incremental
-> > >    b] Fixed typos
-> > > 4] Included Reviewed tag from Rob for the dt-binding patch
-> > > 5] Fixed issue reported by Nathan for assigning variable to itself
-> > >
-> > > Changes for v4:
-> > > 1] Fixed dtb_check error reported by Rob
-> > > 2] Fixed review comments reported by Kishon
-> > >    a] Dropped pci_epc_find_best_fit_window()
-> > >    b] Fixed initializing mem ptr in __pci_epc_mem_init()
-> > >    c] Dropped map_size from pci_epc_mem_window structure
-> > >
-> > > Changes for v3:
-> > > 1] Fixed review comments from Bjorn and Kishon.
-> > > 3] Converted to DT schema
-> > >
-> > > Changes for v2:
-> > > 1] Fixed review comments from Biju for dt-bindings to include an example
-> > >    for a tested platform.
-> > > 2] Fixed review comments from Kishon to extend the features of outbound
-> > >    regions in epf framework.
-> > > 3] Added support to parse outbound-ranges in OF.
-> > >
-> > > Lad Prabhakar (7):
-> > >   PCI: rcar: Rename pcie-rcar.c to pcie-rcar-host.c
-> > >   PCI: rcar: Move shareable code to a common file
-> > >   PCI: rcar: Fix calculating mask for PCIEPAMR register
-> > >   PCI: endpoint: Add support to handle multiple base for mapping
-> > >     outbound memory
-> > >   dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
-> > >     controller
-> > >   PCI: rcar: Add support for rcar PCIe controller in endpoint mode
-> > >   misc: pci_endpoint_test: Add Device ID for RZ/G2E PCIe controller
-> > >
-> > Gentle ping.
->
-> You should ask the R-CAR maintainers first to have a look at your
-> code and ACK accordingly.
->
-Thanks I have pinged the R-CAR maintainers to do the needy.
 
-Cheers,
---Prabhakar
+On 16.03.20 11:00, Laurent Pinchart wrote:
+> Hi Dafna,
+> 
+> On Mon, Mar 16, 2020 at 09:59:56AM +0100, Dafna Hirschfeld wrote:
+>> On 16.03.20 09:15, Laurent Pinchart wrote:
+>>> On Mon, Mar 16, 2020 at 09:07:16AM +0100, Dafna Hirschfeld wrote:
+>>>> On 16.03.20 08:22, Laurent Pinchart wrote:
+>>>>> On Mon, Mar 16, 2020 at 08:01:23AM +0100, Dafna Hirschfeld wrote:
+>>>>>> Add V4L2_PIX_FMT_BGR666 to the format table.
+>>>>>>
+>>>>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>>>>>> ---
+>>>>>> Hi,
+>>>>>> BGR66 is needed for the rkisp1 driver.
+>>>>>> Currently it crashes since the call to
+>>>>>> v4l2_format_info returns NULL.
+>>>>>>
+>>>>>>     drivers/media/v4l2-core/v4l2-common.c | 1 +
+>>>>>>     1 file changed, 1 insertion(+)
+>>>>>>
+>>>>>> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+>>>>>> index d0e5ebc736f9..d7f82b2aa22f 100644
+>>>>>> --- a/drivers/media/v4l2-core/v4l2-common.c
+>>>>>> +++ b/drivers/media/v4l2-core/v4l2-common.c
+>>>>>> @@ -253,6 +253,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+>>>>>>     		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+>>>>>>     		{ .format = V4L2_PIX_FMT_RGB565,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+>>>>>>     		{ .format = V4L2_PIX_FMT_RGB555,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+>>>>>> +		{ .format = V4L2_PIX_FMT_BGR666,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+>>>>>
+>>>>> Isn't BGR666 stored in 3 bytes per pixel ?
+>>>>
+>>>> Hi, I also discussed it with Helen. From the documentation we
+>>>> understood that it uses 4 bytes and the last one is empty.
+>>>> https://linuxtv.org/downloads/v4l-dvb-apis/uapi/v4l/pixfmt-rgb.html
+>>>
+>>> Would you then also understand V4L2_PIX_FMT_RGB565 to use 4 bytes with
+>>> the last 2 bytes empty ? :-)
+>>
+>> hmm, the formats between BGR24 and XRGB32 in the docs table have vertical lines crossing all 4 bytes so we understood that they are all 4 bytes. Isn't it?
+>> Format RGB565 doesn't have does vertical lines on the last two bytes which means it uses 2. At least that is what we understood.
+> 
+> I stand corrected, looking at the drivers implementing
+> V4L2_PIX_FMT_BGR666, they all handle it as a 32bpp format.
+> 
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> 
+>>> I agree that the documentation is somehow ambiguous and should be fixed.
+>>> Patches are welcome ;-)
+> 
+> I think adding explicit '-' or 'x' in the cells that contain "don't
+> care" bits would help avoiding confusion.
+
+sure, I'll do that
+
+> 
+>>>>>>     
+>>>>>>     		/* YUV packed formats */
+>>>>>>     		{ .format = V4L2_PIX_FMT_YUYV,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 2, .vdiv = 1 },
+> 
