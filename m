@@ -1,195 +1,225 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: [PATCH 4/4] media: vimc: use v4l2_pipeline_stream_{enable,disable} helpers
-Date: Mon, 16 Mar 2020 16:33:05 -0300
-Message-ID: <20200316193305.428378-5-helen.koike@collabora.com>
+Subject: Re: [PATCH 2/4] media: v4l2-common: add helper functions to call
+ s_stream() callbacks
+Date: Mon, 16 Mar 2020 17:50:02 -0300
+Message-ID: <b7041eb2-adfc-abf4-336e-93a2b1154482@collabora.com>
 References: <20200316193305.428378-1-helen.koike@collabora.com>
+ <20200316193305.428378-3-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200316193305.428378-1-helen.koike@collabora.com>
+In-Reply-To: <20200316193305.428378-3-helen.koike@collabora.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-media@vger.kernel.org
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, niklas.soderlund@ragnatech.se, mchehab@kernel.org, Helen Koike <helen.koike@collabora.com>
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, niklas.soderlund@ragnatech.se, mchehab@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Use v4l2_pipeline_stream_{enable,disable} to call .s_stream() subdevice
-callbacks through the pipeline.
 
-Tested streaming works with:
 
-media-ctl -d /dev/media0 -V '"Sensor A":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d /dev/media0 -V '"Debayer A":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d /dev/media0 -V '"Sensor B":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d /dev/media0 -V '"Debayer B":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d /dev/media0 -V '"Scaler":0[fmt:RGB888_1X24/640x480]'
-media-ctl -d /dev/media0 -V '"Scaler":0[crop:(100,50)/400x150]'
-media-ctl -d /dev/media0 -V '"Scaler":1[fmt:RGB888_1X24/1920x1440]'
-v4l2-ctl -d /dev/video2 -v width=1200,height=450
-v4l2-ctl -d /dev/video0 -v pixelformat=BA81
-v4l2-ctl -d /dev/video1 -v pixelformat=BA81
-v4l2-ctl --stream-mmap --stream-count=10 -d /dev/video2 --stream-to=/tmp/test.raw
+On 3/16/20 4:33 PM, Helen Koike wrote:
+> Add v4l2_pipeline_stream_{enable,disable} helper functions to iterate
+> through the subdevices in a given stream (i.e following links from sink
+> to source) and call .s_stream() callback.
+> 
+> Add stream_count on the subdevice object for simultaneous streaming from
+> different video devices which shares subdevices.
+> 
+> Prevent calling .s_stream(true) if it was already called previously by
+> another stream.
+> 
+> Prevent calling .s_stream(false) from one stream when there are still
+> others active.
+> 
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> ---
+> 
+>  drivers/media/v4l2-core/v4l2-common.c | 99 +++++++++++++++++++++++++++
+>  include/media/v4l2-common.h           | 30 ++++++++
+>  include/media/v4l2-subdev.h           |  2 +
+>  3 files changed, 131 insertions(+)
+> 
+> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+> index d0e5ebc736f9..6a5a3d2c282e 100644
+> --- a/drivers/media/v4l2-core/v4l2-common.c
+> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> @@ -441,3 +441,102 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
+> +
+> +int v4l2_pipeline_stream_disable(struct media_entity *entity,
+> +				 struct media_pipeline *pipe)
+> +{
+> +	struct media_device *mdev = entity->graph_obj.mdev;
+> +	int ret = 0;
+> +
+> +	mutex_lock(&mdev->graph_mutex);
+> +
+> +	if (!pipe->streaming_count) {
+> +		ret = media_graph_walk_init(&pipe->graph, mdev);
+> +		if (ret) {
+> +			mutex_unlock(&mdev->graph_mutex);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	media_graph_walk_start(&pipe->graph, entity);
+> +
+> +	while ((entity = media_graph_walk_next_stream(&pipe->graph))) {
+> +		struct v4l2_subdev *sd;
+> +
+> +		if (!is_media_entity_v4l2_subdev(entity))
+> +			continue;
+> +
+> +		sd = media_entity_to_v4l2_subdev(entity);
+> +		if (!sd->stream_count || --sd->stream_count)
+> +			continue;
+> +
+> +		ret = v4l2_subdev_call(sd, video, s_stream, false);
+> +		if (ret && ret != -ENOIOCTLCMD)
 
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
+argh..., there is a missing open curly braces here (skipped when I added the check
+for -ENOIOCTLCMD), sorry about that (/me embarrassed).
 
----
+Fixed version can be found here https://gitlab.collabora.com/koike/linux/tree/v4l2/s_stream
 
- drivers/media/platform/vimc/vimc-capture.c  | 28 +++++++-----
- drivers/media/platform/vimc/vimc-streamer.c | 49 +++------------------
- 2 files changed, 23 insertions(+), 54 deletions(-)
+I'll submit v2 after having your comments.
 
-diff --git a/drivers/media/platform/vimc/vimc-capture.c b/drivers/media/platform/vimc/vimc-capture.c
-index 23e740c1c5c0..f65d59728d8f 100644
---- a/drivers/media/platform/vimc/vimc-capture.c
-+++ b/drivers/media/platform/vimc/vimc-capture.c
-@@ -233,21 +233,27 @@ static int vimc_cap_start_streaming(struct vb2_queue *vq, unsigned int count)
- 
- 	vcap->sequence = 0;
- 
--	/* Start the media pipeline */
- 	ret = media_pipeline_start(entity, &vcap->stream.pipe);
--	if (ret) {
--		vimc_cap_return_all_buffers(vcap, VB2_BUF_STATE_QUEUED);
--		return ret;
--	}
-+	if (ret)
-+		goto err_return_all_buffers;
-+
-+	ret = v4l2_pipeline_stream_enable(entity, &vcap->stream.pipe);
-+	if (ret)
-+		goto err_stop_media_pipe;
- 
- 	ret = vimc_streamer_s_stream(&vcap->stream, &vcap->ved, 1);
--	if (ret) {
--		media_pipeline_stop(entity);
--		vimc_cap_return_all_buffers(vcap, VB2_BUF_STATE_QUEUED);
--		return ret;
--	}
-+	if (ret)
-+		goto err_stop_stream;
- 
- 	return 0;
-+
-+err_stop_stream:
-+	v4l2_pipeline_stream_disable(entity, &vcap->stream.pipe);
-+err_stop_media_pipe:
-+	media_pipeline_stop(entity);
-+err_return_all_buffers:
-+	vimc_cap_return_all_buffers(vcap, VB2_BUF_STATE_QUEUED);
-+	return ret;
- }
- 
- /*
-@@ -260,6 +266,8 @@ static void vimc_cap_stop_streaming(struct vb2_queue *vq)
- 
- 	vimc_streamer_s_stream(&vcap->stream, &vcap->ved, 0);
- 
-+	v4l2_pipeline_stream_disable(&vcap->vdev.entity, &vcap->stream.pipe);
-+
- 	/* Stop the media pipeline */
- 	media_pipeline_stop(&vcap->vdev.entity);
- 
-diff --git a/drivers/media/platform/vimc/vimc-streamer.c b/drivers/media/platform/vimc/vimc-streamer.c
-index 65feb3c596db..c0085f4695c2 100644
---- a/drivers/media/platform/vimc/vimc-streamer.c
-+++ b/drivers/media/platform/vimc/vimc-streamer.c
-@@ -36,33 +36,6 @@ static struct media_entity *vimc_get_source_entity(struct media_entity *ent)
- 	return NULL;
- }
- 
--/**
-- * vimc_streamer_pipeline_terminate - Disable stream in all ved in stream
-- *
-- * @stream: the pointer to the stream structure with the pipeline to be
-- *	    disabled.
-- *
-- * Calls s_stream to disable the stream in each entity of the pipeline
-- *
-- */
--static void vimc_streamer_pipeline_terminate(struct vimc_stream *stream)
--{
--	struct vimc_ent_device *ved;
--	struct v4l2_subdev *sd;
--
--	while (stream->pipe_size) {
--		stream->pipe_size--;
--		ved = stream->ved_pipeline[stream->pipe_size];
--		stream->ved_pipeline[stream->pipe_size] = NULL;
--
--		if (!is_media_entity_v4l2_subdev(ved->ent))
--			continue;
--
--		sd = media_entity_to_v4l2_subdev(ved->ent);
--		v4l2_subdev_call(sd, video, s_stream, 0);
--	}
--}
--
- /**
-  * vimc_streamer_pipeline_init - Initializes the stream structure
-  *
-@@ -82,27 +55,15 @@ static int vimc_streamer_pipeline_init(struct vimc_stream *stream,
- 	struct media_entity *entity;
- 	struct video_device *vdev;
- 	struct v4l2_subdev *sd;
--	int ret = 0;
- 
- 	stream->pipe_size = 0;
- 	while (stream->pipe_size < VIMC_STREAMER_PIPELINE_MAX_SIZE) {
- 		if (!ved) {
--			vimc_streamer_pipeline_terminate(stream);
-+			stream->pipe_size = 0;
- 			return -EINVAL;
- 		}
- 		stream->ved_pipeline[stream->pipe_size++] = ved;
- 
--		if (is_media_entity_v4l2_subdev(ved->ent)) {
--			sd = media_entity_to_v4l2_subdev(ved->ent);
--			ret = v4l2_subdev_call(sd, video, s_stream, 1);
--			if (ret && ret != -ENOIOCTLCMD) {
--				dev_err(ved->dev, "subdev_call error %s\n",
--					ved->ent->name);
--				vimc_streamer_pipeline_terminate(stream);
--				return ret;
--			}
--		}
--
- 		entity = vimc_get_source_entity(ved->ent);
- 		/* Check if the end of the pipeline was reached */
- 		if (!entity) {
-@@ -111,7 +72,7 @@ static int vimc_streamer_pipeline_init(struct vimc_stream *stream,
- 				dev_err(ved->dev,
- 					"first entity in the pipe '%s' is not a source\n",
- 					ved->ent->name);
--				vimc_streamer_pipeline_terminate(stream);
-+				stream->pipe_size = 0;
- 				return -EPIPE;
- 			}
- 			return 0;
-@@ -129,7 +90,7 @@ static int vimc_streamer_pipeline_init(struct vimc_stream *stream,
- 		}
- 	}
- 
--	vimc_streamer_pipeline_terminate(stream);
-+	stream->pipe_size = 0;
- 	return -EINVAL;
- }
- 
-@@ -210,7 +171,7 @@ int vimc_streamer_s_stream(struct vimc_stream *stream,
- 		if (IS_ERR(stream->kthread)) {
- 			ret = PTR_ERR(stream->kthread);
- 			dev_err(ved->dev, "kthread_run failed with %d\n", ret);
--			vimc_streamer_pipeline_terminate(stream);
-+			stream->pipe_size = 0;
- 			stream->kthread = NULL;
- 			return ret;
- 		}
-@@ -231,7 +192,7 @@ int vimc_streamer_s_stream(struct vimc_stream *stream,
- 
- 		stream->kthread = NULL;
- 
--		vimc_streamer_pipeline_terminate(stream);
-+		stream->pipe_size = 0;
- 	}
- 
- 	return 0;
--- 
-2.25.0
+> +			dev_dbg(mdev->dev,
+> +				"couldn't disable stream for subdevice '%s'\n",
+> +				entity->name);
+> +			break;
+> +		}
+> +
+> +		dev_dbg(mdev->dev,
+> +			"stream disabled for subdevice '%s'\n", entity->name);
+> +	}
+> +
+> +	if (!pipe->streaming_count)
+> +		media_graph_walk_cleanup(&pipe->graph);
+> +
+> +	mutex_unlock(&mdev->graph_mutex);
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_disable);
+> +
+> +__must_check int v4l2_pipeline_stream_enable(struct media_entity *entity,
+> +					     struct media_pipeline *pipe)
+> +{
+> +	struct media_device *mdev = entity->graph_obj.mdev;
+> +	int ret = 0;
+> +
+> +	mutex_lock(&mdev->graph_mutex);
+> +
+> +	if (!pipe->streaming_count) {
+> +		ret = media_graph_walk_init(&pipe->graph, mdev);
+> +		if (ret) {
+> +			mutex_unlock(&mdev->graph_mutex);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	media_graph_walk_start(&pipe->graph, entity);
+> +
+> +	while ((entity = media_graph_walk_next_stream(&pipe->graph))) {
+> +		struct v4l2_subdev *sd;
+> +
+> +		if (!is_media_entity_v4l2_subdev(entity))
+> +			continue;
+> +
+> +		sd = media_entity_to_v4l2_subdev(entity);
+> +		if (sd->stream_count++)
+> +			continue;
+> +
+> +		ret = v4l2_subdev_call(sd, video, s_stream, true);
+> +		if (ret && ret != -ENOIOCTLCMD)
+
+Same here
+
+Thanks,
+Helen
+
+> +			dev_dbg(mdev->dev,
+> +				"couldn't enable stream for subdevice '%s'\n",
+> +				entity->name);
+> +			v4l2_pipeline_stream_disable(entity, pipe);
+> +			break;
+> +		}
+> +
+> +		dev_dbg(mdev->dev,
+> +			"stream enabled for subdevice '%s'\n", entity->name);
+> +	}
+> +
+> +	if (!pipe->streaming_count)
+> +		media_graph_walk_cleanup(&pipe->graph);
+> +
+> +	mutex_unlock(&mdev->graph_mutex);
+> +
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_enable);
+> diff --git a/include/media/v4l2-common.h b/include/media/v4l2-common.h
+> index 150ee16ebd81..46c0857d07c4 100644
+> --- a/include/media/v4l2-common.h
+> +++ b/include/media/v4l2-common.h
+> @@ -519,6 +519,36 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+>  int v4l2_fill_pixfmt_mp(struct v4l2_pix_format_mplane *pixfmt, u32 pixelformat,
+>  			u32 width, u32 height);
+>  
+> +/**
+> + * media_pipeline_stop - Mark a pipeline as not streaming
+> + * @entity: Starting entity
+> + * @pipe: Media pipeline to iterate through the topology
+> + *
+> + * Call .s_stream(false) callback in all the subdevices participating in the
+> + * stream, i.e. following links from sink to source.
+> + *
+> + * If multiple calls to v4l2_pipeline_stream_enable() have been made, the
+> + * same number of calls to this function are required.
+> + */
+> +int v4l2_pipeline_stream_disable(struct media_entity *entity,
+> +				 struct media_pipeline *pipe);
+> +
+> +/**
+> + * v4l2_pipeline_stream_enable - Call .s_stream(true) callbacks in the stream
+> + * @entity: Starting entity
+> + * @pipe: Media pipeline to iterate through the topology
+> + *
+> + * Call .s_stream(true) callback in all the subdevices participating in the
+> + * stream, i.e. following links from sink to source.
+> + *
+> + * Calls to this function can be nested, in which case the same number of
+> + * v4l2_pipeline_stream_disable() calls will be required to stop streaming.
+> + * The  pipeline pointer must be identical for all nested calls to
+> + * v4l2_pipeline_stream_enable().
+> + */
+> +__must_check int v4l2_pipeline_stream_enable(struct media_entity *entity,
+> +					     struct media_pipeline *pipe);
+> +
+>  static inline u64 v4l2_buffer_get_timestamp(const struct v4l2_buffer *buf)
+>  {
+>  	/*
+> diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
+> index a4848de59852..20f913a9f70c 100644
+> --- a/include/media/v4l2-subdev.h
+> +++ b/include/media/v4l2-subdev.h
+> @@ -838,6 +838,7 @@ struct v4l2_subdev_platform_data {
+>   * @subdev_notifier: A sub-device notifier implicitly registered for the sub-
+>   *		     device using v4l2_device_register_sensor_subdev().
+>   * @pdata: common part of subdevice platform data
+> + * @stream_count: Stream count for the subdevice.
+>   *
+>   * Each instance of a subdev driver should create this struct, either
+>   * stand-alone or embedded in a larger struct.
+> @@ -869,6 +870,7 @@ struct v4l2_subdev {
+>  	struct v4l2_async_notifier *notifier;
+>  	struct v4l2_async_notifier *subdev_notifier;
+>  	struct v4l2_subdev_platform_data *pdata;
+> +	unsigned int stream_count;
+>  };
+>  
+>  
+> 
