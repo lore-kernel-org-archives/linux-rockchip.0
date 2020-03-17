@@ -1,112 +1,34 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: [PATCH v2 2/2] media: staging: rkisp1: cap: serialize start/stop stream
-Date: Mon, 16 Mar 2020 18:00:44 -0300
-Message-ID: <20200316210044.595312-3-helen.koike@collabora.com>
-References: <20200316210044.595312-1-helen.koike@collabora.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: fix lvds-encoder ports subnode for rk3188-bqedison2qc
+Date: Tue, 17 Mar 2020 01:25:26 +0100
+Message-ID: <6365496.CELQRQS0Ut@phil>
+References: <20200316174647.5598-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200316210044.595312-1-helen.koike@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org
-Cc: mchehab@kernel.org, linux-kernel@vger.kernel.org, tfiga@chromium.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, kernel@collabora.com, Helen Koike <helen.koike@collabora.com>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200316174647.5598-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-In order to support simultaneous streaming from both capture devices,
-start/stop vb2 calls need to be serialized to allow multiple concurrent
-calls.
+Am Montag, 16. März 2020, 18:46:47 CET schrieb Johan Jonker:
+> A test with the command below gives this error:
+> 
+> arch/arm/boot/dts/rk3188-bqedison2qc.dt.yaml: lvds-encoder:
+> 'ports' is a required property
+> 
+> Fix error by adding a ports wrapper for port@0 and port@1
+> inside the 'lvds-encoder' node for rk3188-bqedison2qc.
+> 
+> make ARCH=arm dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/display/
+> bridge/lvds-codec.yaml
+> 
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
----
+applied for 5.7
 
-Changes in v2:
-- Rebased with media/master
-
- drivers/staging/media/rkisp1/rkisp1-capture.c | 9 +++++++++
- drivers/staging/media/rkisp1/rkisp1-common.h  | 2 ++
- drivers/staging/media/rkisp1/rkisp1-dev.c     | 2 ++
- 3 files changed, 13 insertions(+)
-
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index 967bd05b4507..f3c4f2a198ca 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -927,6 +927,8 @@ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
- 	struct rkisp1_device *rkisp1 = cap->rkisp1;
- 	int ret;
- 
-+	mutex_lock(&cap->rkisp1->stream_lock);
-+
- 	rkisp1_stream_stop(cap);
- 	media_pipeline_stop(&node->vdev.entity);
- 	ret = rkisp1_pipeline_sink_walk(&node->vdev.entity, NULL,
-@@ -943,6 +945,8 @@ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
- 		dev_err(rkisp1->dev, "power down failed error:%d\n", ret);
- 
- 	rkisp1_dummy_buf_destroy(cap);
-+
-+	mutex_unlock(&cap->rkisp1->stream_lock);
- }
- 
- /*
-@@ -987,6 +991,8 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
- 	struct media_entity *entity = &cap->vnode.vdev.entity;
- 	int ret;
- 
-+	mutex_lock(&cap->rkisp1->stream_lock);
-+
- 	ret = rkisp1_dummy_buf_create(cap);
- 	if (ret)
- 		goto err_ret_buffers;
-@@ -1016,6 +1022,8 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
- 		goto err_pipe_disable;
- 	}
- 
-+	mutex_unlock(&cap->rkisp1->stream_lock);
-+
- 	return 0;
- 
- err_pipe_disable:
-@@ -1029,6 +1037,7 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
- 	rkisp1_dummy_buf_destroy(cap);
- err_ret_buffers:
- 	rkisp1_return_all_buffers(cap, VB2_BUF_STATE_QUEUED);
-+	mutex_unlock(&cap->rkisp1->stream_lock);
- 
- 	return ret;
- }
-diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-index b291cc60de8e..4ec5aae9694a 100644
---- a/drivers/staging/media/rkisp1/rkisp1-common.h
-+++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-@@ -247,6 +247,7 @@ struct rkisp1_debug {
-  * @rkisp1_capture: capture video device
-  * @stats: ISP statistics output device
-  * @params: ISP input parameters device
-+ * @stream_lock: lock to serialize start/stop streaming in capture devices.
-  */
- struct rkisp1_device {
- 	void __iomem *base_addr;
-@@ -266,6 +267,7 @@ struct rkisp1_device {
- 	struct rkisp1_params params;
- 	struct media_pipeline pipe;
- 	struct vb2_alloc_ctx *alloc_ctx;
-+	struct mutex stream_lock;
- 	struct rkisp1_debug debug;
- };
- 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
-index b1b3c058e957..3e3a3925b019 100644
---- a/drivers/staging/media/rkisp1/rkisp1-dev.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
-@@ -471,6 +471,8 @@ static int rkisp1_probe(struct platform_device *pdev)
- 	dev_set_drvdata(dev, rkisp1);
- 	rkisp1->dev = dev;
- 
-+	mutex_init(&rkisp1->stream_lock);
-+
- 	rkisp1->base_addr = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(rkisp1->base_addr))
- 		return PTR_ERR(rkisp1->base_addr);
--- 
-2.25.0
+Thanks
+Heiko
