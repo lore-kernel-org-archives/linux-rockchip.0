@@ -1,29 +1,30 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] ARM: dts: rockchip: fix vref-supply for &saradc node rk3288 firefly reload
-Date: Tue, 17 Mar 2020 01:26:51 +0100
-Message-ID: <2367208.yvSAVzBJkc@phil>
-References: <20200314140755.4877-1-jbx6244@gmail.com>
+Subject: Re: [PATCH] ARM: dts: rockchip: remove clock-frequency from saradc node rv1108
+Date: Tue, 17 Mar 2020 01:27:14 +0100
+Message-ID: <3820267.Gqg2QCzSh7@phil>
+References: <20200313132646.10317-1-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: 8BIT
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200314140755.4877-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <20200313132646.10317-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Samstag, 14. März 2020, 15:07:55 CET schrieb Johan Jonker:
-> A test with the command below gives this error:
+Am Freitag, 13. März 2020, 14:26:46 CET schrieb Johan Jonker:
+> An experimental test with the command below gives these errors:
 > 
-> arch/arm/boot/dts/rk3288-firefly-reload.dt.yaml: saradc@ff100000:
-> 'vref-supply' is a required property
+> arch/arm/boot/dts/rv1108-elgin-r1.dt.yaml: adc@1038c000:
+> 'clock-frequency'
+> does not match any of the regexes: 'pinctrl-[0-9]+'
+> arch/arm/boot/dts/rv1108-evb.dt.yaml: adc@1038c000:
+> 'clock-frequency'
+> does not match any of the regexes: 'pinctrl-[0-9]+'
 > 
-> PMIC Channel OUT11 with powername 'vcc_18'
-> (connected through R155 bridge with 'vccio_wl')
-> is used for the recovery key and ADC_AVDD_1V8.
-> 
-> Fix error by adding 'vcc_18' as vref for the saradc.
+> 'clock-frequency' is not a valid property for a saradc node,
+> so remove it.
 > 
 > make ARCH=arm dtbs_check
 > DT_SCHEMA_FILES=Documentation/devicetree/bindings/iio/adc/
