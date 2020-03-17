@@ -1,15 +1,15 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v2 1/2] media: staging: rkisp1: remove mbus field from
- rkisp1_sensor_async
-Date: Tue, 17 Mar 2020 09:52:32 -0300
-Message-ID: <19a93392-f646-6bfc-d918-16c2a4c7e7e4@collabora.com>
+Subject: Re: [PATCH v2 2/2] media: staging: rkisp1: replace the call to
+ v4l2_async_notifier_parse_fwnode_endpoints_by_port
+Date: Tue, 17 Mar 2020 10:12:22 -0300
+Message-ID: <89b1c5e1-4659-b489-25d1-a8278949c048@collabora.com>
 References: <20200312154604.24996-1-dafna.hirschfeld@collabora.com>
- <20200312154604.24996-2-dafna.hirschfeld@collabora.com>
+ <20200312154604.24996-3-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200312154604.24996-2-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20200312154604.24996-3-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org
@@ -18,216 +18,186 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Hi Dafna,
 
-Thanks for the patch, just a small comment below.
-
 On 3/12/20 12:46 PM, Dafna Hirschfeld wrote:
-> 'struct v4l2_mbus_config' is a legacy struct that should not be used
-> in new drivers. So replace it with the fields:
+> don't call 'v4l2_async_notifier_parse_fwnode_endpoints_by_port'
+> in order to register async subdevices. Instead call
+> 'v4l2_fwnode_endpoint_parse' to parse the remote endpoints
+> and then register each async subdev with
+> 'v4l2_async_notifier_add_fwnode_remote_subdev'
 > 
-> enum v4l2_mbus_type mbus_type;
-> unsigned int parallel_bus_flags;
-> 
-> The field 'parallel_bus_flags' is used only for buses of types
-> V4L2_MBUS_BT656, V4L2_MBUS_PARALLEL which are not yet supported
-> so they are set to 0.
+> Also remove the relevant item in the TODO file
 > 
 > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 > ---
->  drivers/staging/media/rkisp1/rkisp1-common.h |  3 +-
->  drivers/staging/media/rkisp1/rkisp1-dev.c    | 22 ++-------
->  drivers/staging/media/rkisp1/rkisp1-isp.c    | 52 +++++++-------------
->  3 files changed, 24 insertions(+), 53 deletions(-)
+
+It would be nice to have a changelog here as well.
+
+>  drivers/staging/media/rkisp1/TODO         |  3 -
+>  drivers/staging/media/rkisp1/rkisp1-dev.c | 94 +++++++++++++----------
+>  2 files changed, 55 insertions(+), 42 deletions(-)
 > 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-> index b291cc60de8e..f5ee72dc19d3 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
-> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-> @@ -80,8 +80,9 @@ enum rkisp1_isp_pad {
->   */
->  struct rkisp1_sensor_async {
->  	struct v4l2_async_subdev asd;
-> -	struct v4l2_mbus_config mbus;
->  	unsigned int lanes;
-> +	enum v4l2_mbus_type mbus_type;
-> +	unsigned int parallel_bus_flags;
->  	struct v4l2_subdev *sd;
->  	struct v4l2_ctrl *pixel_rate_ctrl;
->  	struct phy *dphy;
+> diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
+> index 0aa9877dd64a..1aa3bb9fd6cb 100644
+> --- a/drivers/staging/media/rkisp1/TODO
+> +++ b/drivers/staging/media/rkisp1/TODO
+> @@ -1,6 +1,3 @@
+> -* Don't use v4l2_async_notifier_parse_fwnode_endpoints_by_port().
+> -e.g. isp_parse_of_endpoints in drivers/media/platform/omap3isp/isp.c
+> -cio2_parse_firmware in drivers/media/pci/intel/ipu3/ipu3-cio2.c.
+>  * Fix pad format size for statistics and parameters entities.
+>  * Use threaded interrupt for rkisp1_stats_isr(), remove work queue.
+>  * Fix checkpatch errors.
 > diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
-> index b1b3c058e957..d2186856bb24 100644
+> index d2186856bb24..1035a39f3e49 100644
 > --- a/drivers/staging/media/rkisp1/rkisp1-dev.c
 > +++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
-> @@ -250,26 +250,14 @@ static int rkisp1_fwnode_parse(struct device *dev,
->  		return -EINVAL;
->  	}
->  
-> -	s_asd->mbus.type = vep->bus_type;
-> -	s_asd->mbus.flags = vep->bus.mipi_csi2.flags;
-> +	s_asd->mbus_type = vep->bus_type;
->  	s_asd->lanes = vep->bus.mipi_csi2.num_data_lanes;
->  
-> -	switch (vep->bus.mipi_csi2.num_data_lanes) {
-> -	case 1:
-> -		s_asd->mbus.flags |= V4L2_MBUS_CSI2_1_LANE;
-> -		break;
-> -	case 2:
-> -		s_asd->mbus.flags |= V4L2_MBUS_CSI2_2_LANE;
-> -		break;
-> -	case 3:
-> -		s_asd->mbus.flags |= V4L2_MBUS_CSI2_3_LANE;
-> -		break;
-> -	case 4:
-> -		s_asd->mbus.flags |= V4L2_MBUS_CSI2_4_LANE;
-> -		break;
-> -	default:
-> +	/* Parallel bus is currently not supported */
-> +	s_asd->parallel_bus_flags = 0;
-
-Why not just:
-
-s_asd->parallel_bus_flags = vep->bus.mipi_csi2.flags
-
-So when it gets supported, we don't need to change this, and you also don't
-change the logic here, since this patch was supposed to just replace
-struct v4l2_mbus_config by other variables.
-
-Make sense?
-
-> +
-> +	if (s_asd->lanes < 1 || s_asd->lanes > 4)
->  		return -EINVAL;
-> -	}
->  
+> @@ -233,35 +233,6 @@ static int rkisp1_subdev_notifier_complete(struct v4l2_async_notifier *notifier)
 >  	return 0;
 >  }
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-> index fa53f05e37d8..bd17c3c498af 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-> @@ -291,7 +291,7 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
->  	if (sink_fmt->fmt_type == RKISP1_FMT_BAYER) {
->  		acq_mult = 1;
->  		if (src_fmt->fmt_type == RKISP1_FMT_BAYER) {
-> -			if (sensor->mbus.type == V4L2_MBUS_BT656)
-> +			if (sensor->mbus_type == V4L2_MBUS_BT656)
->  				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_RAW_PICT_ITU656;
->  			else
->  				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_RAW_PICT;
-> @@ -299,17 +299,17 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
->  			rkisp1_write(rkisp1, RKISP1_CIF_ISP_DEMOSAIC_TH(0xc),
->  				     RKISP1_CIF_ISP_DEMOSAIC);
 >  
-> -			if (sensor->mbus.type == V4L2_MBUS_BT656)
-> +			if (sensor->mbus_type == V4L2_MBUS_BT656)
->  				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_BAYER_ITU656;
->  			else
->  				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_BAYER_ITU601;
->  		}
->  	} else if (sink_fmt->fmt_type == RKISP1_FMT_YUV) {
->  		acq_mult = 2;
-> -		if (sensor->mbus.type == V4L2_MBUS_CSI2_DPHY) {
-> +		if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY) {
->  			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
->  		} else {
-> -			if (sensor->mbus.type == V4L2_MBUS_BT656)
-> +			if (sensor->mbus_type == V4L2_MBUS_BT656)
->  				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU656;
->  			else
->  				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
-> @@ -319,17 +319,17 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
->  	}
+> -static int rkisp1_fwnode_parse(struct device *dev,
+> -			       struct v4l2_fwnode_endpoint *vep,
+> -			       struct v4l2_async_subdev *asd)
+> -{
+> -	struct rkisp1_sensor_async *s_asd =
+> -			container_of(asd, struct rkisp1_sensor_async, asd);
+> -
+> -	if (vep->bus_type != V4L2_MBUS_CSI2_DPHY) {
+> -		dev_err(dev, "Only CSI2 bus type is currently supported\n");
+> -		return -EINVAL;
+> -	}
+> -
+> -	if (vep->base.port != 0) {
+> -		dev_err(dev, "The ISP has only port 0\n");
+> -		return -EINVAL;
+> -	}
+> -
+> -	s_asd->mbus_type = vep->bus_type;
+> -	s_asd->lanes = vep->bus.mipi_csi2.num_data_lanes;
+> -
+> -	/* Parallel bus is currently not supported */
+> -	s_asd->parallel_bus_flags = 0;
+> -
+> -	if (s_asd->lanes < 1 || s_asd->lanes > 4)
+> -		return -EINVAL;
+> -
+> -	return 0;
+> -}
+> -
+>  static const struct v4l2_async_notifier_operations rkisp1_subdev_notifier_ops = {
+>  	.bound = rkisp1_subdev_notifier_bound,
+>  	.unbind = rkisp1_subdev_notifier_unbind,
+> @@ -271,23 +242,68 @@ static const struct v4l2_async_notifier_operations rkisp1_subdev_notifier_ops =
+>  static int rkisp1_subdev_notifier(struct rkisp1_device *rkisp1)
+>  {
+>  	struct v4l2_async_notifier *ntf = &rkisp1->notifier;
+> -	struct device *dev = rkisp1->dev;
+> +	int next_id = 0;
+
+This is endpoint id right?
+Maybe just change it to unsigned.
+
+The scope says it should be u32:
+
+struct fwnode_handle *
+fwnode_graph_get_endpoint_by_id(const struct fwnode_handle *fwnode,
+				u32 port, u32 endpoint, unsigned long flags)
+
+
+>  	int ret;
 >  
->  	/* Set up input acquisition properties */
-> -	if (sensor->mbus.type == V4L2_MBUS_BT656 ||
-> -	    sensor->mbus.type == V4L2_MBUS_PARALLEL) {
-> -		if (sensor->mbus.flags & V4L2_MBUS_PCLK_SAMPLE_RISING)
-> +	if (sensor->mbus_type == V4L2_MBUS_BT656 ||
-> +	    sensor->mbus_type == V4L2_MBUS_PARALLEL) {
-> +		if (sensor->parallel_bus_flags & V4L2_MBUS_PCLK_SAMPLE_RISING)
->  			signal = RKISP1_CIF_ISP_ACQ_PROP_POS_EDGE;
+>  	v4l2_async_notifier_init(ntf);
+>  
+> -	ret = v4l2_async_notifier_parse_fwnode_endpoints_by_port(dev, ntf,
+> -					sizeof(struct rkisp1_sensor_async),
+> -					0, rkisp1_fwnode_parse);
+> -	if (ret)
+> -		return ret;
+> +	while (1) {
+> +		struct v4l2_fwnode_endpoint vep = {
+> +			.bus_type = V4L2_MBUS_CSI2_DPHY
+> +		};
+> +		struct rkisp1_sensor_async *rk_asd = NULL;
+> +		struct fwnode_handle *ep;
+>  
+> -	if (list_empty(&ntf->asd_list))
+> -		return -ENODEV;
+> +		ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(rkisp1->dev),
+> +			0, next_id, FWNODE_GRAPH_ENDPOINT_NEXT);
+>  
 
-You check both bus types, I understand that V4L2_MBUS_BT656 is also a parallel interface,
-but I think it would be less confusing to name it just bus_flags, what do you think?
+Please, remove this new line, so the error check is near the function which generated it.
 
-Regards,
+> -	ntf->ops = &rkisp1_subdev_notifier_ops;
+> +		if (!ep)
+> +			break;
+> +
+> +		ret = v4l2_fwnode_endpoint_parse(ep, &vep);
+> +		if (ret)
+> +			goto err_parse;
+> +
+> +		rk_asd = kzalloc(sizeof(*rk_asd), GFP_KERNEL);
+> +		if (!rk_asd) {
+> +			ret = -ENOMEM;
+> +			goto err_parse;
+> +		}
+> +
+> +		rk_asd->lanes = vep.bus.mipi_csi2.num_data_lanes;
+> +		rk_asd->mbus_type = vep.bus_type;
+> +
+> +		/* Parallel bus is currently not supported */
+> +		rk_asd->parallel_bus_flags = 0;
+
+Please see my comment in previous patch of this series.
+
+> +		ret = v4l2_async_notifier_add_fwnode_remote_subdev(ntf, ep,
+> +								   &rk_asd->asd);
+> +		if (ret)
+> +			goto err_parse;
+> +
+> +		dev_dbg(rkisp1->dev, "registered ep id %d with %d lanes\n",
+> +			vep.base.id, rk_asd->lanes);
+> +
+> +		next_id = vep.base.id + 1;
+> +
+> +		fwnode_handle_put(ep);
+>  
+> -	return v4l2_async_notifier_register(&rkisp1->v4l2_dev, ntf);
+> +		continue;
+> +err_parse:
+> +		fwnode_handle_put(ep);
+> +		kfree(rk_asd);
+> +		v4l2_async_notifier_cleanup(ntf);
+> +		return ret;
+
+Question:
+
+If parsing one endpoint fails, should you:
+
+1) Parse all the other endpoints and ignore the one which fails?
+2) Cleanup and free all the other endpoints?
+
+In any case, this code is just stopping in the first one that fails and not
+cleaning up the previous one, so it is not doing any of the previous
+behaviors.
+
+I see that ipu3-cio2.c does the same. Sakari, could you comment on this?
+
+Thanks
 Helen
 
->  	}
+> +	}
+> +
+> +	if (next_id == 0)
+> +		dev_warn(rkisp1->dev, "no remote subdevice found\n");
+> +	ntf->ops = &rkisp1_subdev_notifier_ops;
+> +	ret = v4l2_async_notifier_register(&rkisp1->v4l2_dev, ntf);
+> +	if (ret) {
+> +		v4l2_async_notifier_cleanup(ntf);
+> +		return ret;
+> +	}
+> +	return 0;
+>  }
 >  
-> -	if (sensor->mbus.type == V4L2_MBUS_PARALLEL) {
-> -		if (sensor->mbus.flags & V4L2_MBUS_VSYNC_ACTIVE_LOW)
-> +	if (sensor->mbus_type == V4L2_MBUS_PARALLEL) {
-> +		if (sensor->parallel_bus_flags & V4L2_MBUS_VSYNC_ACTIVE_LOW)
->  			signal |= RKISP1_CIF_ISP_ACQ_PROP_VSYNC_LOW;
->  
-> -		if (sensor->mbus.flags & V4L2_MBUS_HSYNC_ACTIVE_LOW)
-> +		if (sensor->parallel_bus_flags & V4L2_MBUS_HSYNC_ACTIVE_LOW)
->  			signal |= RKISP1_CIF_ISP_ACQ_PROP_HSYNC_LOW;
->  	}
->  
-> @@ -401,29 +401,11 @@ static int rkisp1_config_dvp(struct rkisp1_device *rkisp1)
->  static int rkisp1_config_mipi(struct rkisp1_device *rkisp1)
->  {
->  	const struct rkisp1_isp_mbus_info *sink_fmt = rkisp1->isp.sink_fmt;
-> -	unsigned int lanes;
-> +	unsigned int lanes = rkisp1->active_sensor->lanes;
->  	u32 mipi_ctrl;
->  
-> -	/*
-> -	 * rkisp1->active_sensor->mbus is set in isp or d-phy notifier_bound
-> -	 * function
-> -	 */
-> -	switch (rkisp1->active_sensor->mbus.flags & V4L2_MBUS_CSI2_LANES) {
-> -	case V4L2_MBUS_CSI2_4_LANE:
-> -		lanes = 4;
-> -		break;
-> -	case V4L2_MBUS_CSI2_3_LANE:
-> -		lanes = 3;
-> -		break;
-> -	case V4L2_MBUS_CSI2_2_LANE:
-> -		lanes = 2;
-> -		break;
-> -	case V4L2_MBUS_CSI2_1_LANE:
-> -		lanes = 1;
-> -		break;
-> -	default:
-> +	if (lanes < 1 || lanes > 4)
->  		return -EINVAL;
-> -	}
->  
->  	mipi_ctrl = RKISP1_CIF_MIPI_CTRL_NUM_LANES(lanes - 1) |
->  		    RKISP1_CIF_MIPI_CTRL_SHUTDOWNLANES(0xf) |
-> @@ -470,11 +452,11 @@ static int rkisp1_config_path(struct rkisp1_device *rkisp1)
->  	u32 dpcl = rkisp1_read(rkisp1, RKISP1_CIF_VI_DPCL);
->  	int ret = 0;
->  
-> -	if (sensor->mbus.type == V4L2_MBUS_BT656 ||
-> -	    sensor->mbus.type == V4L2_MBUS_PARALLEL) {
-> +	if (sensor->mbus_type == V4L2_MBUS_BT656 ||
-> +	    sensor->mbus_type == V4L2_MBUS_PARALLEL) {
->  		ret = rkisp1_config_dvp(rkisp1);
->  		dpcl |= RKISP1_CIF_VI_DPCL_IF_SEL_PARALLEL;
-> -	} else if (sensor->mbus.type == V4L2_MBUS_CSI2_DPHY) {
-> +	} else if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY) {
->  		ret = rkisp1_config_mipi(rkisp1);
->  		dpcl |= RKISP1_CIF_VI_DPCL_IF_SEL_MIPI;
->  	}
-> @@ -561,7 +543,7 @@ static void rkisp1_isp_start(struct rkisp1_device *rkisp1)
->  	rkisp1_config_clk(rkisp1);
->  
->  	/* Activate MIPI */
-> -	if (sensor->mbus.type == V4L2_MBUS_CSI2_DPHY) {
-> +	if (sensor->mbus_type == V4L2_MBUS_CSI2_DPHY) {
->  		val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_CTRL);
->  		rkisp1_write(rkisp1, val | RKISP1_CIF_MIPI_CTRL_OUTPUT_ENA,
->  			     RKISP1_CIF_MIPI_CTRL);
-> @@ -956,7 +938,7 @@ static int rkisp1_isp_s_stream(struct v4l2_subdev *sd, int enable)
->  	rkisp1->active_sensor = container_of(sensor_sd->asd,
->  					     struct rkisp1_sensor_async, asd);
->  
-> -	if (rkisp1->active_sensor->mbus.type != V4L2_MBUS_CSI2_DPHY)
-> +	if (rkisp1->active_sensor->mbus_type != V4L2_MBUS_CSI2_DPHY)
->  		return -EINVAL;
->  
->  	atomic_set(&rkisp1->isp.frame_sequence, -1);
+>  /* ----------------------------------------------------------------------------
 > 
