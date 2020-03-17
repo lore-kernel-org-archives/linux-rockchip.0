@@ -1,46 +1,65 @@
-From: Oleksandr Suvorov <oleksandr.suvorov-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>
+From: Thierry Reding <thierry.reding@gmail.com>
 Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
-Date: Tue, 17 Mar 2020 18:39:58 +0200
-Message-ID: <CAGgjyvE9+fHDKiua=BWBaTRGaChsOvnUnG6RGA9Q4V4uPuPEhQ@mail.gmail.com>
+Date: Tue, 17 Mar 2020 18:40:43 +0100
+Message-ID: <20200317174043.GA1464607@ulmo>
 References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
- <20200317123231.2843297-2-oleksandr.suvorov@toradex.com> <f281a6a0-a150-514d-ef02-4e51192031d7@microchip.com>
+ <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <f281a6a0-a150-514d-ef02-4e51192031d7-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Claudiu.Beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Paul Barker <pbarker-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Marcel Ziswiler <marcel.ziswiler-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Igor Opaniuk <igor.opaniuk-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Philippe Schenker <philippe.schenker-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, wens-jdAy2FN1RRM@public.gmane.org, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, Ludovic.Desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, mripard-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, NXP Linux Team <linux-imx-3arQi8VN3Tc@public.gmane.org>, Nicolas.Ferre-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org, palmer-96lFi9zoCfxBDgjK7y7TUQ@public.gmane.org, paul-icTtO2rgO2OTuSrc4Mpeew@public.gmane.org, paul.walmsley-SpMDHPYPyPbQT0dZR+AlfA@public.gmane.org, Pengutronix Kernel Team <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.orgSascha Hauer <s.>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="sdtB3X0nJg68CQEu"
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+Cc: devicetree@vger.kernel.org, linux-pwm@vger.kernel.org, Paul Barker <pbarker@konsulko.com>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Kevin Hilman <khilman@baylibre.com>, Ludovic Desroches <ludovic.desroches@microchip.com>, Maxime Ripard <mripard@kernel.org>, NXP Linux Team <linux-imx@nxp.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 17, 2020 at 6:27 PM <Claudiu.Beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org> wrote:
->
->
->
-> On 17.03.2020 14:32, Oleksandr Suvorov wrote:
-> > @@ -187,7 +187,7 @@ static ssize_t polarity_store(struct device *child,
-> >         if (sysfs_streq(buf, "normal"))
-> >                 polarity = PWM_POLARITY_NORMAL;
-> >         else if (sysfs_streq(buf, "inversed"))
->
-> You may also consider this string     ^
 
-Thanks for the feedback, Claudiu.
+--sdtB3X0nJg68CQEu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-I thought about it and decided not to change the ABI, as this change
-can impact lots of user-land applications.
-As a minimum, I can push this change as a separate patch to be able to
-revert the change of ABI only.
-What do you think?
+On Tue, Mar 17, 2020 at 02:32:25PM +0200, Oleksandr Suvorov wrote:
+> The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
+> Rename it to PWM_POLARITY_INVERTED.
 
-> > -               polarity = PWM_POLARITY_INVERSED;
-> > +               polarity = PWM_POLARITY_INVERTED;
+It isn't misspelled. "inversed" is a synonym for "inverted". Both
+spellings are correct.
 
+And as you noted in the cover letter, there's a conflict between the
+macro defined in dt-bindings/pwm/pwm.txt. If they end up being included
+in the wrong order you'll get a compile error.
 
+The enum was named this way on purpose to make it separate from the
+definition for the DT bindings. Note that DT bindings are an ABI and can
+never change, whereas the enum pwm_polarity is part of a Linux internal
+API and doesn't have the same restrictions as an ABI.
 
--- 
-Best regards
-Oleksandr Suvorov
+As far as I'm concerned this is completely unnecessary churn that's
+potentially going to come back and bite us, so I see no reason to accept
+this.
 
-Toradex AG
-Ebenaustrasse 10 | 6048 Horw | Switzerland | T: +41 41 500 48 00
+Thierry
+
+--sdtB3X0nJg68CQEu
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl5xC5cACgkQ3SOs138+
+s6Fzrg//W6eAtrfA02CGekiB6CchW1v901SEIXd0i/BUbGhUbBXgNAk0CdFr1oZF
+oWh3FArEd2Ugq3qvpgf4UqWlO/2IptBucOUVSwQ5Imuc+eS/JKxC3lriUcpyI519
+b5+MI+QPztSa8Nae3cVvDVd1zs+s5QE1J9TOJTINsayE0yxs2QDk7px+T2hP6S5y
+fZmxD7DxmhzzTjY9pUb7B8Km/c+g3iLZ2dOrjizHPQ0D6gjni2sAljxJXKBkExBG
+nSSO7pOuxA1Koi0/lKAQGtxKl1QbfH5aerdiSj8wi74C4DXTG/yHIU0x4YKpbu1d
+C0nSwCafh3P/dIz0ja7iv+8y02HB43gdu9tyA6dlVzIs7UAS/upZfwtLCI49zdOL
+Qq28oqgpytPujRWyFSdT7EisrlmqA4TlG6jvndwdhKiurjM98oNob5FiUYz/QebP
+cX0mZQFNM8UJjzhu51wkfu3NwtdIBXMWv+EhD8Kh7Ash60aI7LE2HltEC5Y/KqiW
+uprdNVNa09YyyZLgE0W1rDU4rsdPw+yxp/XR/vzPWR4eivXlrbPtkBxcZcZfHAmj
+Yg13OeYRbxUgR1Jx4vGYyRgV2wSNSyDcwqZ0vU0Z8C4C3qLFNqQPllTPonTSdcnX
+gQU9NZOlpo00W4TwrlO7I+3Ww9qNIvnHhMwcaOQGIca6+ZVYyfQ=
+=EuQk
+-----END PGP SIGNATURE-----
+
+--sdtB3X0nJg68CQEu--
