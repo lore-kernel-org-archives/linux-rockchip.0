@@ -1,65 +1,37 @@
 From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
         <u.kleine-koenig@pengutronix.de>
 Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
-Date: Tue, 17 Mar 2020 22:00:42 +0100
-Message-ID: <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
+Date: Tue, 17 Mar 2020 22:32:48 +0100
+Message-ID: <20200317213248.mmh2t6jgncq3tqp3@pengutronix.de>
 References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
  <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
- <20200317174043.GA1464607@ulmo>
+ <20200317133450.58c25bcb@ub1910>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-pwm-owner@vger.kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20200317174043.GA1464607@ulmo>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Thierry Reding <thierry.reding@gmail.com>
-Cc: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>, devicetree@vger.kernel.org, linux-pwm@vger.kernel.org, Paul Barker <pbarker@konsulko.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Kevin Hilman <khilman@baylibre.com>, Ludovic Desroches <ludovic.desroches@microchip.com>, Maxime Ripard <mripard@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Nicolas Ferre <nicolas.f>
+In-Reply-To: <20200317133450.58c25bcb@ub1910>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Paul Barker <pbarker@konsulko.com>
+Cc: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>, devicetree@vger.kernel.org, linux-pwm@vger.kernel.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Kevin Hilman <khilman@baylibre.com>, Ludovic Desroches <ludovic.desroches@microchip.com>, Maxime Ripard <mripard@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, Palmer
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
-
-On Tue, Mar 17, 2020 at 06:40:43PM +0100, Thierry Reding wrote:
-> On Tue, Mar 17, 2020 at 02:32:25PM +0200, Oleksandr Suvorov wrote:
+On Tue, Mar 17, 2020 at 01:34:50PM +0000, Paul Barker wrote:
+> On Tue, 17 Mar 2020 14:32:25 +0200
+> Oleksandr Suvorov <oleksandr.suvorov@toradex.com> wrote:
+> 
 > > The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
 > > Rename it to PWM_POLARITY_INVERTED.
+> > 
+> > Signed-off-by: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
 > 
-> It isn't misspelled. "inversed" is a synonym for "inverted". Both
-> spellings are correct.
+> Looks good. PWM_POLARITY_INVERSED confused me when I was working in this area
+> recently.
 
-Some time ago I stumbled about "inversed", too. My spell checker doesn't
-know it and I checked some dictionaries and none of them knew that word:
+Same for me.
 
-https://www.lexico.com/search?utf8=%E2%9C%93&filter=dictionary&dictionary=en&query=inversed
-https://de.pons.com/%C3%BCbersetzung/englisch-deutsch/inversed
-https://dictionary.cambridge.org/spellcheck/english-german/?q=inversed
-
-https://en.wiktionary.org/wiki/inverse#Verb mentions "inverse" as a verb
-having "inversed" as past participle.
-
-Having said this I think (independent of the question if "inversed"
-exists) using two similar terms for the same thing just results in
-confusion. I hit that in the past already and I like it being addressed.
-
-> And as you noted in the cover letter, there's a conflict between the
-> macro defined in dt-bindings/pwm/pwm.txt. If they end up being included
-> in the wrong order you'll get a compile error.
-
-There are also other symbols that exist twice (GPIO_ACTIVE_HIGH was the
-first to come to my mind). I'm not aware of any problems related to
-these. What am I missing?
- 
-> The enum was named this way on purpose to make it separate from the
-> definition for the DT bindings.
-
-Then please let's make it different by picking a different prefix or
-something like that.
-
-> Note that DT bindings are an ABI and can
-> never change, whereas the enum pwm_polarity is part of a Linux internal
-> API and doesn't have the same restrictions as an ABI.
-
-I thought only binary device trees (dtb) are supposed to be ABI.
+Acked-by: Uwe Kleine-König <u.kleine-koenig@pengutronix.de>
 
 Best regards
 Uwe
