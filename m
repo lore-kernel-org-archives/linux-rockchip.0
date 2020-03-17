@@ -1,526 +1,797 @@
-From: Oleksandr Suvorov <oleksandr.suvorov-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
-Date: Tue, 17 Mar 2020 14:32:25 +0200
-Message-ID: <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
+From: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+Subject: [RFC PATCH 6/7] arm64: dts: pwm: replace polarity constant with macro
+Date: Tue, 17 Mar 2020 14:32:30 +0200
+Message-ID: <20200317123231.2843297-7-oleksandr.suvorov@toradex.com>
 References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
 Mime-Version: 1.0
 Content-Type: text/plain
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200317123231.2843297-1-oleksandr.suvorov-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Paul Barker <pbarker-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Marcel Ziswiler <marcel.ziswiler-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Igor Opaniuk <igor.opaniuk-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Philippe Schenker <philippe.schenker-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Oleksandr Suvorov <oleksandr.suvorov-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Claudiu Beznea <claudiu.beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Ludovic Desroches <ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, Maxime Ripard <mripard-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, NXP Linux Team <linux-imx-3arQi8VN3Tc@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: devicetree@vger.kernel.org, linux-pwm@vger.kernel.org
+Cc: Paul Barker <pbarker@konsulko.com>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, Oleksandr Suvorov <oleksandr.suvorov@toradex.com>, =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius@stikonas.eu>, Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Hugh Cole-Baker <sigmaris@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, Johan
 List-Id: linux-rockchip.vger.kernel.org
 
-The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
-Rename it to PWM_POLARITY_INVERTED.
+There is the PWM_POLARITY_NORMAL defined and describled in
+<dt-bindings/pwm/pwm.h> and used by pwm drivers.
 
-Signed-off-by: Oleksandr Suvorov <oleksandr.suvorov-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>
+This patch converts all '0' constant in pwms parameters into
+PWM_POLARITY_NORMAL.
+
+Replace with sed regexp:
+'s/(pwms = <&[a-zA-Z_0-9]+ [0-9]+ [0-9]+) 0>/\1 PWM_POLARITY_NORMAL>/'
+
+Then:
+- include pwm.h in some dts/dtsi to fix building errors about undefined
+  symbols.
+- fix the patman warnings about the code format;
+
+Signed-off-by: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
 ---
 
- drivers/pwm/core.c             |  4 ++--
- drivers/pwm/pwm-atmel-hlcdc.c  |  2 +-
- drivers/pwm/pwm-atmel-tcb.c    | 16 ++++++++--------
- drivers/pwm/pwm-atmel.c        |  2 +-
- drivers/pwm/pwm-bcm-iproc.c    |  2 +-
- drivers/pwm/pwm-bcm-kona.c     |  2 +-
- drivers/pwm/pwm-ep93xx.c       |  2 +-
- drivers/pwm/pwm-fsl-ftm.c      |  2 +-
- drivers/pwm/pwm-hibvt.c        |  2 +-
- drivers/pwm/pwm-imx-tpm.c      |  2 +-
- drivers/pwm/pwm-imx27.c        |  4 ++--
- drivers/pwm/pwm-jz4740.c       |  2 +-
- drivers/pwm/pwm-meson.c        |  6 +++---
- drivers/pwm/pwm-omap-dmtimer.c |  4 ++--
- drivers/pwm/pwm-renesas-tpu.c  |  6 +++---
- drivers/pwm/pwm-rockchip.c     |  4 ++--
- drivers/pwm/pwm-sifive.c       |  4 ++--
- drivers/pwm/pwm-sun4i.c        |  2 +-
- drivers/pwm/pwm-tiecap.c       |  2 +-
- drivers/pwm/pwm-tiehrpwm.c     |  4 ++--
- drivers/pwm/pwm-vt8500.c       |  2 +-
- drivers/pwm/pwm-zx.c           |  4 ++--
- drivers/pwm/sysfs.c            |  4 ++--
- include/linux/pwm.h            |  4 ++--
- 24 files changed, 44 insertions(+), 44 deletions(-)
+ arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts      | 2 +-
+ arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts       | 2 +-
+ arch/arm64/boot/dts/amlogic/meson-axg-s400.dts             | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-axg.dtsi                 | 1 +
+ arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi          | 1 +
+ arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts          | 5 +++--
+ arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts            | 2 +-
+ arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts         | 5 +++--
+ arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi    | 4 ++--
+ arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts       | 4 ++--
+ arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts       | 7 ++++---
+ arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi        | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gx.dtsi                  | 1 +
+ arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts       | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts     | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi           | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi       | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi          | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts       | 3 ++-
+ .../boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts    | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts | 2 +-
+ .../arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi      | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts      | 5 +++--
+ arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts         | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi         | 4 +++-
+ arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts     | 2 +-
+ arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts           | 7 ++++---
+ arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi      | 3 ++-
+ arch/arm64/boot/dts/rockchip/px30-evb.dts                  | 2 +-
+ arch/arm64/boot/dts/rockchip/px30.dtsi                     | 1 +
+ arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts             | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi                   | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts                | 4 ++--
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts            | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi    | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi       | 4 ++--
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi               | 6 +++---
+ arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi            | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi         | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi                   | 1 +
+ 44 files changed, 77 insertions(+), 51 deletions(-)
 
-diff --git a/drivers/pwm/core.c b/drivers/pwm/core.c
-index 5a7f6598c05f..08afbb5b98aa 100644
---- a/drivers/pwm/core.c
-+++ b/drivers/pwm/core.c
-@@ -152,7 +152,7 @@ of_pwm_xlate_with_flags(struct pwm_chip *pc, const struct of_phandle_args *args)
- 	pwm->args.polarity = PWM_POLARITY_NORMAL;
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts
+index 64b1c54f87c0..adbcf6abf338 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts
+@@ -23,7 +23,7 @@ aliases {
  
- 	if (args->args_count > 2 && args->args[2] & PWM_POLARITY_INVERTED)
--		pwm->args.polarity = PWM_POLARITY_INVERSED;
-+		pwm->args.polarity = PWM_POLARITY_INVERTED;
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+-		pwms = <&pwm 0 50000 0>;
++		pwms = <&pwm 0 50000 PWM_POLARITY_NORMAL>;
+ 		brightness-levels = <0 5 10 15 20 30 40 55 70 85 100>;
+ 		default-brightness-level = <2>;
+ 		enable-gpios = <&pio 3 23 GPIO_ACTIVE_HIGH>; /* PD23 */
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts
+index f5df5f705b72..083f3dc9deaa 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts
+@@ -21,7 +21,7 @@ aliases {
  
- 	return pwm;
- }
-@@ -819,7 +819,7 @@ static struct pwm_device *acpi_pwm_get(struct fwnode_handle *fwnode)
- 	pwm->args.polarity = PWM_POLARITY_NORMAL;
- 
- 	if (args.nargs > 2 && args.args[2] & PWM_POLARITY_INVERTED)
--		pwm->args.polarity = PWM_POLARITY_INVERSED;
-+		pwm->args.polarity = PWM_POLARITY_INVERTED;
- #endif
- 
- 	return pwm;
-diff --git a/drivers/pwm/pwm-atmel-hlcdc.c b/drivers/pwm/pwm-atmel-hlcdc.c
-index dcbc0489dfd4..b53a188479b0 100644
---- a/drivers/pwm/pwm-atmel-hlcdc.c
-+++ b/drivers/pwm/pwm-atmel-hlcdc.c
-@@ -270,7 +270,7 @@ static int atmel_hlcdc_pwm_probe(struct platform_device *pdev)
- 	chip->chip.of_xlate = of_pwm_xlate_with_flags;
- 	chip->chip.of_pwm_n_cells = 3;
- 
--	ret = pwmchip_add_with_polarity(&chip->chip, PWM_POLARITY_INVERSED);
-+	ret = pwmchip_add_with_polarity(&chip->chip, PWM_POLARITY_INVERTED);
- 	if (ret) {
- 		clk_disable_unprepare(hlcdc->periph_clk);
- 		return ret;
-diff --git a/drivers/pwm/pwm-atmel-tcb.c b/drivers/pwm/pwm-atmel-tcb.c
-index 85c53701958c..98526a286347 100644
---- a/drivers/pwm/pwm-atmel-tcb.c
-+++ b/drivers/pwm/pwm-atmel-tcb.c
-@@ -152,7 +152,7 @@ static void atmel_tcb_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
- 	/*
- 	 * If duty is 0 the timer will be stopped and we have to
- 	 * configure the output correctly on software trigger:
--	 *  - set output to high if PWM_POLARITY_INVERSED
-+	 *  - set output to high if PWM_POLARITY_INVERTED
- 	 *  - set output to low if PWM_POLARITY_NORMAL
- 	 *
- 	 * This is why we're reverting polarity in this case.
-@@ -166,13 +166,13 @@ static void atmel_tcb_pwm_disable(struct pwm_chip *chip, struct pwm_device *pwm)
- 	/* flush old setting and set the new one */
- 	if (index == 0) {
- 		cmr &= ~ATMEL_TC_ACMR_MASK;
--		if (polarity == PWM_POLARITY_INVERSED)
-+		if (polarity == PWM_POLARITY_INVERTED)
- 			cmr |= ATMEL_TC_ASWTRG_CLEAR;
- 		else
- 			cmr |= ATMEL_TC_ASWTRG_SET;
- 	} else {
- 		cmr &= ~ATMEL_TC_BCMR_MASK;
--		if (polarity == PWM_POLARITY_INVERSED)
-+		if (polarity == PWM_POLARITY_INVERTED)
- 			cmr |= ATMEL_TC_BSWTRG_CLEAR;
- 		else
- 			cmr |= ATMEL_TC_BSWTRG_SET;
-@@ -211,7 +211,7 @@ static int atmel_tcb_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
- 	/*
- 	 * If duty is 0 the timer will be stopped and we have to
- 	 * configure the output correctly on software trigger:
--	 *  - set output to high if PWM_POLARITY_INVERSED
-+	 *  - set output to high if PWM_POLARITY_INVERTED
- 	 *  - set output to low if PWM_POLARITY_NORMAL
- 	 *
- 	 * This is why we're reverting polarity in this case.
-@@ -229,13 +229,13 @@ static int atmel_tcb_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
- 		cmr &= ~ATMEL_TC_ACMR_MASK;
- 
- 		/* Set CMR flags according to given polarity */
--		if (polarity == PWM_POLARITY_INVERSED)
-+		if (polarity == PWM_POLARITY_INVERTED)
- 			cmr |= ATMEL_TC_ASWTRG_CLEAR;
- 		else
- 			cmr |= ATMEL_TC_ASWTRG_SET;
- 	} else {
- 		cmr &= ~ATMEL_TC_BCMR_MASK;
--		if (polarity == PWM_POLARITY_INVERSED)
-+		if (polarity == PWM_POLARITY_INVERTED)
- 			cmr |= ATMEL_TC_BSWTRG_CLEAR;
- 		else
- 			cmr |= ATMEL_TC_BSWTRG_SET;
-@@ -249,12 +249,12 @@ static int atmel_tcb_pwm_enable(struct pwm_chip *chip, struct pwm_device *pwm)
- 	 */
- 	if (tcbpwm->duty != tcbpwm->period && tcbpwm->duty > 0) {
- 		if (index == 0) {
--			if (polarity == PWM_POLARITY_INVERSED)
-+			if (polarity == PWM_POLARITY_INVERTED)
- 				cmr |= ATMEL_TC_ACPA_SET | ATMEL_TC_ACPC_CLEAR;
- 			else
- 				cmr |= ATMEL_TC_ACPA_CLEAR | ATMEL_TC_ACPC_SET;
- 		} else {
--			if (polarity == PWM_POLARITY_INVERSED)
-+			if (polarity == PWM_POLARITY_INVERTED)
- 				cmr |= ATMEL_TC_BCPB_SET | ATMEL_TC_BCPC_CLEAR;
- 			else
- 				cmr |= ATMEL_TC_BCPB_CLEAR | ATMEL_TC_BCPC_SET;
-diff --git a/drivers/pwm/pwm-atmel.c b/drivers/pwm/pwm-atmel.c
-index 6161e7e3e9ac..2d42f97e4b81 100644
---- a/drivers/pwm/pwm-atmel.c
-+++ b/drivers/pwm/pwm-atmel.c
-@@ -329,7 +329,7 @@ static void atmel_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	}
- 
- 	if (cmr & PWM_CMR_CPOL)
--		state->polarity = PWM_POLARITY_INVERSED;
-+		state->polarity = PWM_POLARITY_INVERTED;
- 	else
- 		state->polarity = PWM_POLARITY_NORMAL;
- }
-diff --git a/drivers/pwm/pwm-bcm-iproc.c b/drivers/pwm/pwm-bcm-iproc.c
-index 1f829edd8ee7..574bec61e0ac 100644
---- a/drivers/pwm/pwm-bcm-iproc.c
-+++ b/drivers/pwm/pwm-bcm-iproc.c
-@@ -97,7 +97,7 @@ static void iproc_pwmc_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	if (value & BIT(IPROC_PWM_CTRL_POLARITY_SHIFT(pwm->hwpwm)))
- 		state->polarity = PWM_POLARITY_NORMAL;
- 	else
--		state->polarity = PWM_POLARITY_INVERSED;
-+		state->polarity = PWM_POLARITY_INVERTED;
- 
- 	value = readl(ip->base + IPROC_PWM_PRESCALE_OFFSET);
- 	prescale = value >> IPROC_PWM_PRESCALE_SHIFT(pwm->hwpwm);
-diff --git a/drivers/pwm/pwm-bcm-kona.c b/drivers/pwm/pwm-bcm-kona.c
-index 81da91df2529..02da511814f1 100644
---- a/drivers/pwm/pwm-bcm-kona.c
-+++ b/drivers/pwm/pwm-bcm-kona.c
-@@ -303,7 +303,7 @@ static int kona_pwmc_probe(struct platform_device *pdev)
- 
- 	clk_disable_unprepare(kp->clk);
- 
--	ret = pwmchip_add_with_polarity(&kp->chip, PWM_POLARITY_INVERSED);
-+	ret = pwmchip_add_with_polarity(&kp->chip, PWM_POLARITY_INVERTED);
- 	if (ret < 0)
- 		dev_err(&pdev->dev, "failed to add PWM chip: %d\n", ret);
- 
-diff --git a/drivers/pwm/pwm-ep93xx.c b/drivers/pwm/pwm-ep93xx.c
-index 4bab73073ad7..02345b6f9fe8 100644
---- a/drivers/pwm/pwm-ep93xx.c
-+++ b/drivers/pwm/pwm-ep93xx.c
-@@ -124,7 +124,7 @@ static int ep93xx_pwm_polarity(struct pwm_chip *chip, struct pwm_device *pwm,
- 	if (ret)
- 		return ret;
- 
--	if (polarity == PWM_POLARITY_INVERSED)
-+	if (polarity == PWM_POLARITY_INVERTED)
- 		writew(0x1, ep93xx_pwm->base + EP93XX_PWMx_INVERT);
- 	else
- 		writew(0x0, ep93xx_pwm->base + EP93XX_PWMx_INVERT);
-diff --git a/drivers/pwm/pwm-fsl-ftm.c b/drivers/pwm/pwm-fsl-ftm.c
-index 59272a920479..75dc30978c19 100644
---- a/drivers/pwm/pwm-fsl-ftm.c
-+++ b/drivers/pwm/pwm-fsl-ftm.c
-@@ -287,7 +287,7 @@ static int fsl_pwm_apply_config(struct fsl_pwm_chip *fpc,
- 	regmap_write(fpc->regmap, FTM_CV(pwm->hwpwm), duty);
- 
- 	reg_polarity = 0;
--	if (newstate->polarity == PWM_POLARITY_INVERSED)
-+	if (newstate->polarity == PWM_POLARITY_INVERTED)
- 		reg_polarity = BIT(pwm->hwpwm);
- 
- 	regmap_update_bits(fpc->regmap, FTM_POL, BIT(pwm->hwpwm), reg_polarity);
-diff --git a/drivers/pwm/pwm-hibvt.c b/drivers/pwm/pwm-hibvt.c
-index ad205fdad372..c57a94e7da0f 100644
---- a/drivers/pwm/pwm-hibvt.c
-+++ b/drivers/pwm/pwm-hibvt.c
-@@ -120,7 +120,7 @@ static void hibvt_pwm_set_polarity(struct pwm_chip *chip,
- {
- 	struct hibvt_pwm_chip *hi_pwm_chip = to_hibvt_pwm_chip(chip);
- 
--	if (polarity == PWM_POLARITY_INVERSED)
-+	if (polarity == PWM_POLARITY_INVERTED)
- 		hibvt_pwm_set_bits(hi_pwm_chip->base, PWM_CTRL_ADDR(pwm->hwpwm),
- 				PWM_POLARITY_MASK, (0x1 << PWM_POLARITY_SHIFT));
- 	else
-diff --git a/drivers/pwm/pwm-imx-tpm.c b/drivers/pwm/pwm-imx-tpm.c
-index 9145f6160649..461ab2c08616 100644
---- a/drivers/pwm/pwm-imx-tpm.c
-+++ b/drivers/pwm/pwm-imx-tpm.c
-@@ -156,7 +156,7 @@ static void pwm_imx_tpm_get_state(struct pwm_chip *chip,
- 	/* get polarity */
- 	val = readl(tpm->base + PWM_IMX_TPM_CnSC(pwm->hwpwm));
- 	if ((val & PWM_IMX_TPM_CnSC_ELS) == PWM_IMX_TPM_CnSC_ELS_INVERSED)
--		state->polarity = PWM_POLARITY_INVERSED;
-+		state->polarity = PWM_POLARITY_INVERTED;
- 	else
- 		/*
- 		 * Assume reserved values (2b00 and 2b11) to yield
-diff --git a/drivers/pwm/pwm-imx27.c b/drivers/pwm/pwm-imx27.c
-index 35a7ac42269c..33d344445254 100644
---- a/drivers/pwm/pwm-imx27.c
-+++ b/drivers/pwm/pwm-imx27.c
-@@ -146,7 +146,7 @@ static void pwm_imx27_get_state(struct pwm_chip *chip,
- 		state->polarity = PWM_POLARITY_NORMAL;
- 		break;
- 	case MX3_PWMCR_POUTC_INVERTED:
--		state->polarity = PWM_POLARITY_INVERSED;
-+		state->polarity = PWM_POLARITY_INVERTED;
- 		break;
- 	default:
- 		dev_warn(chip->dev, "can't set polarity, output disconnected");
-@@ -280,7 +280,7 @@ static int pwm_imx27_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	     FIELD_PREP(MX3_PWMCR_CLKSRC, MX3_PWMCR_CLKSRC_IPG_HIGH) |
- 	     MX3_PWMCR_DBGEN;
- 
--	if (state->polarity == PWM_POLARITY_INVERSED)
-+	if (state->polarity == PWM_POLARITY_INVERTED)
- 		cr |= FIELD_PREP(MX3_PWMCR_POUTC,
- 				MX3_PWMCR_POUTC_INVERTED);
- 
-diff --git a/drivers/pwm/pwm-jz4740.c b/drivers/pwm/pwm-jz4740.c
-index 9d78cc21cb12..67075d18561f 100644
---- a/drivers/pwm/pwm-jz4740.c
-+++ b/drivers/pwm/pwm-jz4740.c
-@@ -130,7 +130,7 @@ static int jz4740_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	case PWM_POLARITY_NORMAL:
- 		ctrl &= ~JZ_TIMER_CTRL_PWM_ACTIVE_LOW;
- 		break;
--	case PWM_POLARITY_INVERSED:
-+	case PWM_POLARITY_INVERTED:
- 		ctrl |= JZ_TIMER_CTRL_PWM_ACTIVE_LOW;
- 		break;
- 	}
-diff --git a/drivers/pwm/pwm-meson.c b/drivers/pwm/pwm-meson.c
-index 6245bbdb6e6c..2d368bfc680d 100644
---- a/drivers/pwm/pwm-meson.c
-+++ b/drivers/pwm/pwm-meson.c
-@@ -8,7 +8,7 @@
-  * N cycles for the first half period.
-  * The hardware has no "polarity" setting. This driver reverses the period
-  * cycles (the low length is inverted with the high length) for
-- * PWM_POLARITY_INVERSED. This means that .get_state cannot read the polarity
-+ * PWM_POLARITY_INVERTED. This means that .get_state cannot read the polarity
-  * from the hardware.
-  * Setting the duty cycle will disable and re-enable the PWM output.
-  * Disabling the PWM stops the output immediately (without waiting for the
-@@ -168,7 +168,7 @@ static int meson_pwm_calc(struct meson_pwm *meson, struct pwm_device *pwm,
- 	duty = state->duty_cycle;
- 	period = state->period;
- 
--	if (state->polarity == PWM_POLARITY_INVERSED)
-+	if (state->polarity == PWM_POLARITY_INVERTED)
- 		duty = period - duty;
- 
- 	fin_freq = clk_get_rate(channel->clk);
-@@ -275,7 +275,7 @@ static int meson_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 		return -EINVAL;
- 
- 	if (!state->enabled) {
--		if (state->polarity == PWM_POLARITY_INVERSED) {
-+		if (state->polarity == PWM_POLARITY_INVERTED) {
- 			/*
- 			 * This IP block revision doesn't have an "always high"
- 			 * setting which we can use for "inverted disabled".
-diff --git a/drivers/pwm/pwm-omap-dmtimer.c b/drivers/pwm/pwm-omap-dmtimer.c
-index 88a3c5690fea..082ccec93133 100644
---- a/drivers/pwm/pwm-omap-dmtimer.c
-+++ b/drivers/pwm/pwm-omap-dmtimer.c
-@@ -190,7 +190,7 @@ static int pwm_omap_dmtimer_config(struct pwm_chip *chip,
- 		load_value, load_value,	match_value, match_value);
- 
- 	omap->pdata->set_pwm(omap->dm_timer,
--			      pwm_get_polarity(pwm) == PWM_POLARITY_INVERSED,
-+			      pwm_get_polarity(pwm) == PWM_POLARITY_INVERTED,
- 			      true,
- 			      PWM_OMAP_DMTIMER_TRIGGER_OVERFLOW_AND_COMPARE);
- 
-@@ -220,7 +220,7 @@ static int pwm_omap_dmtimer_set_polarity(struct pwm_chip *chip,
- 	 */
- 	mutex_lock(&omap->mutex);
- 	omap->pdata->set_pwm(omap->dm_timer,
--			      polarity == PWM_POLARITY_INVERSED,
-+			      polarity == PWM_POLARITY_INVERTED,
- 			      true,
- 			      PWM_OMAP_DMTIMER_TRIGGER_OVERFLOW_AND_COMPARE);
- 	mutex_unlock(&omap->mutex);
-diff --git a/drivers/pwm/pwm-renesas-tpu.c b/drivers/pwm/pwm-renesas-tpu.c
-index 4a855a21b782..32beeb93ade1 100644
---- a/drivers/pwm/pwm-renesas-tpu.c
-+++ b/drivers/pwm/pwm-renesas-tpu.c
-@@ -108,17 +108,17 @@ static void tpu_pwm_set_pin(struct tpu_pwm_device *pwm,
- 	switch (state) {
- 	case TPU_PIN_INACTIVE:
- 		tpu_pwm_write(pwm, TPU_TIORn,
--			      pwm->polarity == PWM_POLARITY_INVERSED ?
-+			      pwm->polarity == PWM_POLARITY_INVERTED ?
- 			      TPU_TIOR_IOA_1 : TPU_TIOR_IOA_0);
- 		break;
- 	case TPU_PIN_PWM:
- 		tpu_pwm_write(pwm, TPU_TIORn,
--			      pwm->polarity == PWM_POLARITY_INVERSED ?
-+			      pwm->polarity == PWM_POLARITY_INVERTED ?
- 			      TPU_TIOR_IOA_0_SET : TPU_TIOR_IOA_1_CLR);
- 		break;
- 	case TPU_PIN_ACTIVE:
- 		tpu_pwm_write(pwm, TPU_TIORn,
--			      pwm->polarity == PWM_POLARITY_INVERSED ?
-+			      pwm->polarity == PWM_POLARITY_INVERTED ?
- 			      TPU_TIOR_IOA_0 : TPU_TIOR_IOA_1);
- 		break;
- 	}
-diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index 73352e6fbccb..c6158d559790 100644
---- a/drivers/pwm/pwm-rockchip.c
-+++ b/drivers/pwm/pwm-rockchip.c
-@@ -91,7 +91,7 @@ static void rockchip_pwm_get_state(struct pwm_chip *chip,
- 				 true : false;
- 
- 	if (pc->data->supports_polarity && !(val & PWM_DUTY_POSITIVE))
--		state->polarity = PWM_POLARITY_INVERSED;
-+		state->polarity = PWM_POLARITY_INVERTED;
- 	else
- 		state->polarity = PWM_POLARITY_NORMAL;
- 
-@@ -135,7 +135,7 @@ static void rockchip_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
- 
- 	if (pc->data->supports_polarity) {
- 		ctrl &= ~PWM_POLARITY_MASK;
--		if (state->polarity == PWM_POLARITY_INVERSED)
-+		if (state->polarity == PWM_POLARITY_INVERTED)
- 			ctrl |= PWM_DUTY_NEGATIVE | PWM_INACTIVE_POSITIVE;
- 		else
- 			ctrl |= PWM_DUTY_POSITIVE | PWM_INACTIVE_NEGATIVE;
-diff --git a/drivers/pwm/pwm-sifive.c b/drivers/pwm/pwm-sifive.c
-index cc63f9baa481..409123405a11 100644
---- a/drivers/pwm/pwm-sifive.c
-+++ b/drivers/pwm/pwm-sifive.c
-@@ -124,7 +124,7 @@ static void pwm_sifive_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	state->period = ddata->real_period;
- 	state->duty_cycle =
- 		(u64)duty * ddata->real_period >> PWM_SIFIVE_CMPWIDTH;
--	state->polarity = PWM_POLARITY_INVERSED;
-+	state->polarity = PWM_POLARITY_INVERTED;
- }
- 
- static int pwm_sifive_enable(struct pwm_chip *chip, bool enable)
-@@ -157,7 +157,7 @@ static int pwm_sifive_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 	int ret = 0;
- 	u32 frac;
- 
--	if (state->polarity != PWM_POLARITY_INVERSED)
-+	if (state->polarity != PWM_POLARITY_INVERTED)
- 		return -EINVAL;
- 
- 	ret = clk_enable(ddata->clk);
-diff --git a/drivers/pwm/pwm-sun4i.c b/drivers/pwm/pwm-sun4i.c
-index 3e3efa6c768f..7ddcdefd2a97 100644
---- a/drivers/pwm/pwm-sun4i.c
-+++ b/drivers/pwm/pwm-sun4i.c
-@@ -149,7 +149,7 @@ static void sun4i_pwm_get_state(struct pwm_chip *chip,
- 	if (val & BIT_CH(PWM_ACT_STATE, pwm->hwpwm))
- 		state->polarity = PWM_POLARITY_NORMAL;
- 	else
--		state->polarity = PWM_POLARITY_INVERSED;
-+		state->polarity = PWM_POLARITY_INVERTED;
- 
- 	if ((val & BIT_CH(PWM_CLK_GATING | PWM_EN, pwm->hwpwm)) ==
- 	    BIT_CH(PWM_CLK_GATING | PWM_EN, pwm->hwpwm))
-diff --git a/drivers/pwm/pwm-tiecap.c b/drivers/pwm/pwm-tiecap.c
-index ab38c8203b79..b96b388f0969 100644
---- a/drivers/pwm/pwm-tiecap.c
-+++ b/drivers/pwm/pwm-tiecap.c
-@@ -118,7 +118,7 @@ static int ecap_pwm_set_polarity(struct pwm_chip *chip, struct pwm_device *pwm,
- 
- 	value = readw(pc->mmio_base + ECCTL2);
- 
--	if (polarity == PWM_POLARITY_INVERSED)
-+	if (polarity == PWM_POLARITY_INVERTED)
- 		/* Duty cycle defines LOW period of PWM */
- 		value |= ECCTL2_APWM_POL_LOW;
- 	else
-diff --git a/drivers/pwm/pwm-tiehrpwm.c b/drivers/pwm/pwm-tiehrpwm.c
-index 7b4c770ce9d6..71c337443dd5 100644
---- a/drivers/pwm/pwm-tiehrpwm.c
-+++ b/drivers/pwm/pwm-tiehrpwm.c
-@@ -193,7 +193,7 @@ static void configure_polarity(struct ehrpwm_pwm_chip *pc, int chan)
- 		aqctl_reg = AQCTLB;
- 		aqctl_mask = AQCTL_CBU_MASK;
- 
--		if (pc->polarity[chan] == PWM_POLARITY_INVERSED)
-+		if (pc->polarity[chan] == PWM_POLARITY_INVERTED)
- 			aqctl_val = AQCTL_CHANB_POLINVERSED;
- 		else
- 			aqctl_val = AQCTL_CHANB_POLNORMAL;
-@@ -201,7 +201,7 @@ static void configure_polarity(struct ehrpwm_pwm_chip *pc, int chan)
- 		aqctl_reg = AQCTLA;
- 		aqctl_mask = AQCTL_CAU_MASK;
- 
--		if (pc->polarity[chan] == PWM_POLARITY_INVERSED)
-+		if (pc->polarity[chan] == PWM_POLARITY_INVERTED)
- 			aqctl_val = AQCTL_CHANA_POLINVERSED;
- 		else
- 			aqctl_val = AQCTL_CHANA_POLNORMAL;
-diff --git a/drivers/pwm/pwm-vt8500.c b/drivers/pwm/pwm-vt8500.c
-index 11d45e56a923..fc434965c5ed 100644
---- a/drivers/pwm/pwm-vt8500.c
-+++ b/drivers/pwm/pwm-vt8500.c
-@@ -165,7 +165,7 @@ static int vt8500_pwm_set_polarity(struct pwm_chip *chip,
- 
- 	val = readl(vt8500->base + REG_CTRL(pwm->hwpwm));
- 
--	if (polarity == PWM_POLARITY_INVERSED)
-+	if (polarity == PWM_POLARITY_INVERTED)
- 		val |= CTRL_INVERT;
- 	else
- 		val &= ~CTRL_INVERT;
-diff --git a/drivers/pwm/pwm-zx.c b/drivers/pwm/pwm-zx.c
-index e2c21cc34a96..dc7d20e52c52 100644
---- a/drivers/pwm/pwm-zx.c
-+++ b/drivers/pwm/pwm-zx.c
-@@ -75,7 +75,7 @@ static void zx_pwm_get_state(struct pwm_chip *chip, struct pwm_device *pwm,
- 	if (value & ZX_PWM_POLAR)
- 		state->polarity = PWM_POLARITY_NORMAL;
- 	else
--		state->polarity = PWM_POLARITY_INVERSED;
-+		state->polarity = PWM_POLARITY_INVERTED;
- 
- 	if (value & ZX_PWM_EN)
- 		state->enabled = true;
-@@ -158,7 +158,7 @@ static int zx_pwm_apply(struct pwm_chip *chip, struct pwm_device *pwm,
- 
- 	if (state->polarity != cstate.polarity)
- 		zx_pwm_set_mask(zpc, pwm->hwpwm, ZX_PWM_MODE, ZX_PWM_POLAR,
--				(state->polarity == PWM_POLARITY_INVERSED) ?
-+				(state->polarity == PWM_POLARITY_INVERTED) ?
- 				 0 : ZX_PWM_POLAR);
- 
- 	if (state->period != cstate.period ||
-diff --git a/drivers/pwm/sysfs.c b/drivers/pwm/sysfs.c
-index 2389b8669846..769ac09c56c2 100644
---- a/drivers/pwm/sysfs.c
-+++ b/drivers/pwm/sysfs.c
-@@ -166,7 +166,7 @@ static ssize_t polarity_show(struct device *child,
- 		polarity = "normal";
- 		break;
- 
--	case PWM_POLARITY_INVERSED:
-+	case PWM_POLARITY_INVERTED:
- 		polarity = "inversed";
- 		break;
- 	}
-@@ -187,7 +187,7 @@ static ssize_t polarity_store(struct device *child,
- 	if (sysfs_streq(buf, "normal"))
- 		polarity = PWM_POLARITY_NORMAL;
- 	else if (sysfs_streq(buf, "inversed"))
--		polarity = PWM_POLARITY_INVERSED;
-+		polarity = PWM_POLARITY_INVERTED;
- 	else
- 		return -EINVAL;
- 
-diff --git a/include/linux/pwm.h b/include/linux/pwm.h
-index 0ef808d925bb..38b7ed8ef913 100644
---- a/include/linux/pwm.h
-+++ b/include/linux/pwm.h
-@@ -16,13 +16,13 @@ struct pwm_chip;
-  * @PWM_POLARITY_NORMAL: a high signal for the duration of the duty-
-  * cycle, followed by a low signal for the remainder of the pulse
-  * period
-- * @PWM_POLARITY_INVERSED: a low signal for the duration of the duty-
-+ * @PWM_POLARITY_INVERTED: a low signal for the duration of the duty-
-  * cycle, followed by a high signal for the remainder of the pulse
-  * period
-  */
- enum pwm_polarity {
- 	PWM_POLARITY_NORMAL,
--	PWM_POLARITY_INVERSED,
-+	PWM_POLARITY_INVERTED,
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+-		pwms = <&pwm 0 50000 0>;
++		pwms = <&pwm 0 50000 PWM_POLARITY_NORMAL>;
+ 		power-supply = <&reg_dcdc1>;
+ 		brightness-levels = <0 5 7 10 14 20 28 40 56 80 112>;
+ 		default-brightness-level = <5>;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-axg-s400.dts b/arch/arm64/boot/dts/amlogic/meson-axg-s400.dts
+index cb1360ae1211..97b31a914def 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-axg-s400.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-axg-s400.dts
+@@ -356,7 +356,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ab 0 30518 0>; /* PWM_A at 32.768KHz */
++		/* PWM_A at 32.768KHz */
++		pwms = <&pwm_ab 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
  };
  
- /**
+diff --git a/arch/arm64/boot/dts/amlogic/meson-axg.dtsi b/arch/arm64/boot/dts/amlogic/meson-axg.dtsi
+index aace3d32a3df..e536436f6306 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-axg.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-axg.dtsi
+@@ -10,6 +10,7 @@
+ #include <dt-bindings/gpio/meson-axg-gpio.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/reset/amlogic,meson-axg-audio-arb.h>
+ #include <dt-bindings/reset/amlogic,meson-axg-reset.h>
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi b/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi
+index 87b9a47a51b9..c1f8232fdde1 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi
+@@ -9,6 +9,7 @@
+ #include <dt-bindings/clock/g12a-aoclkc.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/reset/amlogic,meson-g12a-reset.h>
+ #include <dt-bindings/thermal/thermal.h>
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts b/arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts
+index 168f460e11fa..7408c5b58105 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts
+@@ -141,7 +141,7 @@ vddcpu: regulator-vddcpu {
+ 
+ 		vin-supply = <&dc_in>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -176,7 +176,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sound {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts b/arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts
+index 2a324f0136e3..7b1e17267ae3 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts
+@@ -141,7 +141,7 @@ vddcpu: regulator-vddcpu {
+ 
+ 		vin-supply = <&main_12v>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts b/arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts
+index 4f2596d82989..8cc90ae9b326 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts
+@@ -141,7 +141,7 @@ vddcpu: regulator-vddcpu {
+ 
+ 		vin-supply = <&dc_in>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -232,7 +232,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi b/arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi
+index b1fab5749ca8..9d1411724dbb 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi
+@@ -20,7 +20,7 @@ vddcpu_a: regulator-vddcpu-a {
+ 
+ 		vin-supply = <&dc_in>;
+ 
+-		pwms = <&pwm_ab 0 1250 0>;
++		pwms = <&pwm_ab 0 1250 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -39,7 +39,7 @@ vddcpu_b: regulator-vddcpu-b {
+ 
+ 		vin-supply = <&vsys_3v3>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts
+index 8830d3844885..4c3252b0cc67 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts
+@@ -127,7 +127,7 @@ vddcpu_a: regulator-vddcpu-a {
+ 
+ 		vin-supply = <&main_12v>;
+ 
+-		pwms = <&pwm_ab 0 1250 0>;
++		pwms = <&pwm_ab 0 1250 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -146,7 +146,7 @@ vddcpu_b: regulator-vddcpu-b {
+ 
+ 		vin-supply = <&main_12v>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts
+index ccd0bced01e8..15759f3df472 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts
+@@ -109,7 +109,7 @@ vddcpu_a: regulator-vddcpu-a {
+ 
+ 		vin-supply = <&main_12v>;
+ 
+-		pwms = <&pwm_ab 0 1250 0>;
++		pwms = <&pwm_ab 0 1250 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -128,7 +128,7 @@ vddcpu_b: regulator-vddcpu-b {
+ 
+ 		vin-supply = <&main_12v>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -282,7 +282,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi b/arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi
+index 12d5e333e5f2..4e1a429b3dff 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi
+@@ -72,7 +72,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gx.dtsi b/arch/arm64/boot/dts/amlogic/meson-gx.dtsi
+index 40db06e28b66..d584c99e60c6 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gx.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gx.dtsi
+@@ -12,6 +12,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/pwm/pwm.h>
+ 
+ / {
+ 	interrupt-parent = <&gic>;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts b/arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts
+index d6ca684e0e61..6dc2e6aafe97 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts
+@@ -79,7 +79,8 @@ wifi_32k: wifi-32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts b/arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts
+index 65ec7dea828c..77d1d729e857 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts
+@@ -109,7 +109,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi b/arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi
+index e803a466fe4e..41406fba88bc 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi
+@@ -83,7 +83,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi b/arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi
+index 45cb83625951..59e436c41da9 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi
+@@ -77,7 +77,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	hdmi-connector {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi b/arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi
+index dee51cf95223..2d0c4badfe3b 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi
+@@ -82,7 +82,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts
+index a1119cfb0280..90cfdb96cba9 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts
+@@ -93,7 +93,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts
+index c8d74e61dec1..69b9f2a31ae3 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts
+@@ -72,7 +72,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts
+index 440bc23c7342..95b654846db8 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts
+@@ -47,7 +47,7 @@ pwmleds {
+ 
+ 		power {
+ 			label = "vim:red:power";
+-			pwms = <&pwm_AO_ab 1 7812500 0>;
++			pwms = <&pwm_AO_ab 1 7812500 PWM_POLARITY_NORMAL>;
+ 			max-brightness = <255>;
+ 			linux,default-trigger = "default-on";
+ 		};
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts
+index 62dd87821ce5..28c814460d72 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts
+@@ -72,7 +72,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi
+index 6ac678f88bd8..b7923f2278b7 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi
+@@ -76,7 +76,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts b/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
+index d5dc12878dfe..674e5e765a32 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
+@@ -87,7 +87,7 @@ pwmleds {
+ 
+ 		power {
+ 			label = "vim:red:power";
+-			pwms = <&pwm_AO_ab 1 7812500 0>;
++			pwms = <&pwm_AO_ab 1 7812500 PWM_POLARITY_NORMAL>;
+ 			max-brightness = <255>;
+ 			linux,default-trigger = "default-on";
+ 		};
+@@ -187,7 +187,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts b/arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts
+index 420a88e9a195..87475bd61cdf 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts
+@@ -81,7 +81,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi b/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
+index 90815fa25ec6..a5babf55a937 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
+@@ -7,6 +7,7 @@
+ 
+ #include <dt-bindings/input/input.h>
+ #include <dt-bindings/gpio/meson-g12a-gpio.h>
++#include <dt-bindings/pwm/pwm.h>
+ 
+ / {
+ 	model = "Khadas VIM3";
+@@ -167,7 +168,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts
+index dbbf29a0dbf6..23e3bc0cc765 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts
+@@ -25,7 +25,7 @@ vddcpu: regulator-vddcpu {
+ 
+ 		vin-supply = <&vsys_3v3>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts
+index cb1b48f5b8b1..e55631b815c3 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts
+@@ -116,7 +116,7 @@ pwmleds {
+ 
+ 		power {
+ 			label = "sei610:red:power";
+-			pwms = <&pwm_AO_ab 0 30518 0>;
++			pwms = <&pwm_AO_ab 0 30518 PWM_POLARITY_NORMAL>;
+ 			max-brightness = <255>;
+ 			linux,default-trigger = "default-on";
+ 			active-low;
+@@ -187,7 +187,7 @@ vddcpu: regulator-vddcpu {
+ 
+ 		vin-supply = <&dc_in>;
+ 
+-		pwms = <&pwm_AO_cd 1 1500 0>;
++		pwms = <&pwm_AO_cd 1 1500 PWM_POLARITY_NORMAL>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -336,7 +336,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_POLARITY_NORMAL>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi b/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
+index 250fc01de78d..f70703df97e3 100644
+--- a/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
++++ b/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
+@@ -14,6 +14,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/input/input.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/sound/samsung-i2s.h>
+ 
+ / {
+@@ -913,7 +914,7 @@ charger_reg: CHARGER {
+ 		haptic: max77843-haptic {
+ 			compatible = "maxim,max77843-haptic";
+ 			haptic-supply = <&ldo38_reg>;
+-			pwms = <&pwm 0 33670 0>;
++			pwms = <&pwm 0 33670 PWM_POLARITY_NORMAL>;
+ 			pwm-names = "haptic";
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+index 0a680257d9c2..f9359ece5b28 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+@@ -57,7 +57,7 @@ vol-up-key {
+ 
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+-		pwms = <&pwm1 0 25000 0>;
++		pwms = <&pwm1 0 25000 PWM_POLARITY_NORMAL>;
+ 		power-supply = <&vcc3v3_lcd>;
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 60de8e9c421b..97bf03d536a3 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -9,6 +9,7 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/power/px30-power.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/soc/rockchip,boot-mode.h>
+ #include <dt-bindings/thermal/thermal.h>
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+index aa256350b18f..502d2d9fa8dc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+@@ -22,7 +22,7 @@ ir_rx {
+ 
+ 	ir_tx {
+ 		compatible = "pwm-ir-tx";
+-		pwms = <&pwm5 0 25000 0>;
++		pwms = <&pwm5 0 25000 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	leds {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index ac43bc3f7031..f3d0295a8046 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -9,6 +9,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/soc/rockchip,boot-mode.h>
+ #include <dt-bindings/thermal/thermal.h>
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+index 694b0d08d644..6fd15469b6f0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+@@ -47,7 +47,7 @@ backlight: backlight {
+ 			240 241 242 243 244 245 246 247
+ 			248 249 250 251 252 253 254 255>;
+ 		default-brightness-level = <200>;
+-		pwms = <&pwm0 0 25000 0>;
++		pwms = <&pwm0 0 25000 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	edp_panel: edp-panel {
+@@ -72,7 +72,7 @@ clkin_gmac: external-gmac-clock {
+ 
+ 	vdd_center: vdd-center {
+ 		compatible = "pwm-regulator";
+-		pwms = <&pwm3 0 25000 0>;
++		pwms = <&pwm3 0 25000 PWM_POLARITY_NORMAL>;
+ 		regulator-name = "vdd_center";
+ 		regulator-min-microvolt = <800000>;
+ 		regulator-max-microvolt = <1400000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index d63faf38cc81..c233f8a2f444 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -20,7 +20,7 @@ chosen {
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+ 		enable-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
+-		pwms = <&pwm0 0 25000 0>;
++		pwms = <&pwm0 0 25000 PWM_POLARITY_NORMAL>;
+ 		brightness-levels = <
+ 			  0   1   2   3   4   5   6   7
+ 			  8   9  10  11  12  13  14  15
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index 1384dabbdf40..ae44d55e38d1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -50,7 +50,7 @@ ppvar_centerlogic_pwm: ppvar-centerlogic-pwm {
+ 		compatible = "pwm-regulator";
+ 		regulator-name = "ppvar_centerlogic_pwm";
+ 
+-		pwms = <&pwm3 0 3337 0>;
++		pwms = <&pwm3 0 3337 PWM_POLARITY_NORMAL>;
+ 		pwm-supply = <&ppvar_sys>;
+ 		pwm-dutycycle-range = <100 0>;
+ 		pwm-dutycycle-unit = <100>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+index 4373ed732af7..e7c2d31bece2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+@@ -164,7 +164,7 @@ backlight: backlight {
+ 		enable-gpios = <&gpio4 21 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&bl_en>;
+-		pwms = <&pwm1 0 1000000 0>;
++		pwms = <&pwm1 0 1000000 PWM_POLARITY_NORMAL>;
+ 		pwm-delay-us = <10000>;
+ 	};
+ 
+@@ -217,7 +217,7 @@ &ppvar_bigcpu {
+ 
+ &ppvar_bigcpu_pwm {
+ 	/* On scarlet ppvar big cpu use pwm3 */
+-	pwms = <&pwm3 0 3337 0>;
++	pwms = <&pwm3 0 3337 PWM_POLARITY_NORMAL>;
+ 	regulator-min-microvolt = <800074>;
+ 	regulator-max-microvolt = <1299226>;
+ };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 2f3997740068..f5ebafb64820 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -101,7 +101,7 @@ ppvar_bigcpu_pwm: ppvar-bigcpu-pwm {
+ 		compatible = "pwm-regulator";
+ 		regulator-name = "ppvar_bigcpu_pwm";
+ 
+-		pwms = <&pwm1 0 3337 0>;
++		pwms = <&pwm1 0 3337 PWM_POLARITY_NORMAL>;
+ 		pwm-supply = <&ppvar_sys>;
+ 		pwm-dutycycle-range = <100 0>;
+ 		pwm-dutycycle-unit = <100>;
+@@ -130,7 +130,7 @@ ppvar_litcpu_pwm: ppvar-litcpu-pwm {
+ 		compatible = "pwm-regulator";
+ 		regulator-name = "ppvar_litcpu_pwm";
+ 
+-		pwms = <&pwm2 0 3337 0>;
++		pwms = <&pwm2 0 3337 PWM_POLARITY_NORMAL>;
+ 		pwm-supply = <&ppvar_sys>;
+ 		pwm-dutycycle-range = <100 0>;
+ 		pwm-dutycycle-unit = <100>;
+@@ -159,7 +159,7 @@ ppvar_gpu_pwm: ppvar-gpu-pwm {
+ 		compatible = "pwm-regulator";
+ 		regulator-name = "ppvar_gpu_pwm";
+ 
+-		pwms = <&pwm0 0 3337 0>;
++		pwms = <&pwm0 0 3337 PWM_POLARITY_NORMAL>;
+ 		pwm-supply = <&ppvar_sys>;
+ 		pwm-dutycycle-range = <100 0>;
+ 		pwm-dutycycle-unit = <100>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
+index e87a04477440..979fd0832efd 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
+@@ -161,7 +161,7 @@ fan: pwm-fan {
+ 		cooling-levels = <0 150 200 255>;
+ 		#cooling-cells = <2>;
+ 		fan-supply = <&vsys_5v0>;
+-		pwms = <&pwm0 0 40000 0>;
++		pwms = <&pwm0 0 40000 PWM_POLARITY_NORMAL>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
+index e0d75617bb7e..c63a115930aa 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
+@@ -62,7 +62,7 @@ fan: pwm-fan {
+ 		cooling-levels = <0 12 18 255>;
+ 		#cooling-cells = <2>;
+ 		fan-supply = <&vcc12v0_sys>;
+-		pwms = <&pwm1 0 50000 0>;
++		pwms = <&pwm1 0 50000 PWM_POLARITY_NORMAL>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+index 9f225e9c3d54..3656a8d71b4a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+@@ -19,7 +19,7 @@ chosen {
+ 
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+-		pwms = <&pwm0 0 25000 0>;
++		pwms = <&pwm0 0 25000 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	clkin_gmac: external-gmac-clock {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+index 9bca25801260..2712270e93ca 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+@@ -58,7 +58,7 @@ fan: pwm-fan {
+ 		compatible = "pwm-fan";
+ 		#cooling-cells = <2>;
+ 		fan-supply = <&vcc12v_dcin>;
+-		pwms = <&pwm1 0 50000 0>;
++		pwms = <&pwm1 0 50000 PWM_POLARITY_NORMAL>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+index b4d8f60b7e44..0b658374fb9a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+@@ -79,7 +79,7 @@ backlight: backlight {
+ 			248 249 250 251 252 253 254 255>;
+ 		default-brightness-level = <200>;
+ 		enable-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
+-		pwms = <&pwm0 0 25000 0>;
++		pwms = <&pwm0 0 25000 PWM_POLARITY_NORMAL>;
+ 		status = "okay";
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 28c7ee540439..8e7dfa8449c6 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -9,6 +9,7 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/power/rk3399-power.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/thermal/thermal.h>
+ 
+ / {
 -- 
 2.24.1
