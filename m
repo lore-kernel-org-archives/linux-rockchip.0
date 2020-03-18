@@ -1,74 +1,53 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v2 3/8] hantro: Use v4l2_m2m_buf_done_and_job_finish
-Date: Wed, 18 Mar 2020 10:21:03 -0300
-Message-ID: <20200318132108.21873-4-ezequiel@collabora.com>
+Subject: [PATCH v2 4/8] hantro: Remove unneeded hantro_dec_buf_finish
+Date: Wed, 18 Mar 2020 10:21:04 -0300
+Message-ID: <20200318132108.21873-5-ezequiel@collabora.com>
 References: <20200318132108.21873-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <20200318132108.21873-1-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Sender: linux-media-owner@vger.kernel.org
 To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Cc: Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Rob Herring <robh@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Let the core sort out the nuances of returning buffers
-to userspace, by using the v4l2_m2m_buf_done_and_job_finish
-helper.
-
-This change also removes usage of buffer sequence fields,
-which shouldn't have any meaning for stateless decoders.
+Since now .buf_prepare takes care of setting the
+buffer payload size, we can get rid of this,
+at least for decoders.
 
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_drv.c | 27 ++++++++---------------
- 1 file changed, 9 insertions(+), 18 deletions(-)
+ drivers/staging/media/hantro/hantro_drv.c | 10 ----------
+ 1 file changed, 10 deletions(-)
 
 diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 0b1200fc0e1a..ec889d755cd6 100644
+index ec889d755cd6..bd204da6c669 100644
 --- a/drivers/staging/media/hantro/hantro_drv.c
 +++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -94,32 +94,23 @@ static void hantro_job_finish(struct hantro_dev *vpu,
- 			      unsigned int bytesused,
- 			      enum vb2_buffer_state result)
- {
--	struct vb2_v4l2_buffer *src, *dst;
- 	int ret;
- 
- 	pm_runtime_mark_last_busy(vpu->dev);
- 	pm_runtime_put_autosuspend(vpu->dev);
- 	clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
- 
--	src = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
--	dst = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
--
--	if (WARN_ON(!src))
--		return;
--	if (WARN_ON(!dst))
--		return;
--
--	src->sequence = ctx->sequence_out++;
--	dst->sequence = ctx->sequence_cap++;
--
--	ret = ctx->buf_finish(ctx, &dst->vb2_buf, bytesused);
--	if (ret)
--		result = VB2_BUF_STATE_ERROR;
-+	if (ctx->buf_finish) {
-+		struct vb2_v4l2_buffer *dst;
- 
--	v4l2_m2m_buf_done(src, result);
--	v4l2_m2m_buf_done(dst, result);
-+		dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-+		ret = ctx->buf_finish(ctx, &dst->vb2_buf, bytesused);
-+		if (ret)
-+			result = VB2_BUF_STATE_ERROR;
-+	}
- 
--	v4l2_m2m_job_finish(vpu->m2m_dev, ctx->fh.m2m_ctx);
-+	v4l2_m2m_buf_done_and_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx,
-+					 result);
+@@ -80,15 +80,6 @@ hantro_enc_buf_finish(struct hantro_ctx *ctx, struct vb2_buffer *buf,
+ 	return 0;
  }
  
- void hantro_irq_done(struct hantro_dev *vpu, unsigned int bytesused,
+-static int
+-hantro_dec_buf_finish(struct hantro_ctx *ctx, struct vb2_buffer *buf,
+-		      unsigned int bytesused)
+-{
+-	/* For decoders set bytesused as per the output picture. */
+-	buf->planes[0].bytesused = ctx->dst_fmt.plane_fmt[0].sizeimage;
+-	return 0;
+-}
+-
+ static void hantro_job_finish(struct hantro_dev *vpu,
+ 			      struct hantro_ctx *ctx,
+ 			      unsigned int bytesused,
+@@ -422,7 +413,6 @@ static int hantro_open(struct file *filp)
+ 		ctx->buf_finish = hantro_enc_buf_finish;
+ 	} else if (func->id == MEDIA_ENT_F_PROC_VIDEO_DECODER) {
+ 		allowed_codecs = vpu->variant->codec & HANTRO_DECODERS;
+-		ctx->buf_finish = hantro_dec_buf_finish;
+ 	} else {
+ 		ret = -ENODEV;
+ 		goto err_ctx_free;
 -- 
 2.25.0
