@@ -1,133 +1,130 @@
-From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [RFC PATCH 1/2] dt-bindings: sram: convert rockchip-pmu-sram
- bindings to yaml
-Date: Wed, 18 Mar 2020 16:55:20 -0600
-Message-ID: <CAL_Jsq+0M1n7M1EjnJhum9Sn30FEb3ux4agJSa1KhNwUxv4THg@mail.gmail.com>
-References: <20200317163555.18107-1-jbx6244@gmail.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
+Date: Wed, 18 Mar 2020 23:59:53 +0100
+Message-ID: <20200318225953.GA2874972@ulmo>
+References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+ <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
+ <20200317174043.GA1464607@ulmo>
+ <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200317163555.18107-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="ReaqsoxgOBHFXBhH"
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>, devicetree@vger.kernel.org, linux-pwm@vger.kernel.org, Paul Barker <pbarker@konsulko.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Kevin Hilman <khilman@baylibre.com>, Ludovic Desroches <ludovic.desroches@microchip.com>, Maxime Ripard <mripard@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Nicolas Ferre <nicolas.f>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 17, 2020 at 10:36 AM Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> Current dts files with 'rockchip-pmu-sram' compatible nodes
-> are manually verified. In order to automate this process
-> rockchip-pmu-sram.txt has to be converted to yaml.
->
-> A check with the command below gives for example this error:
->
-> arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff700000:
-> compatible:0:
-> 'rockchip,rk3288-pmu-sram' was expected
-> arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff700000:
-> compatible:
-> ['mmio-sram'] is too short
->
-> Fix this error by adding an extra 'mmio-sram' compatible and
-> 'if then' structure to filter yaml warnings.
 
-Seems to me you should fix the .dts file. If we adjust schemas to make
-dts files pass, then what is the point of the schemas?
+--ReaqsoxgOBHFXBhH
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> make ARCH=arm dtbs_check
-> DT_SCHEMA_FILES=Documentation/devicetree/bindings/sram/
-> rockchip-pmu-sram.yaml
+On Tue, Mar 17, 2020 at 10:00:42PM +0100, Uwe Kleine-K=C3=B6nig wrote:
+> Hello,
+>=20
+> On Tue, Mar 17, 2020 at 06:40:43PM +0100, Thierry Reding wrote:
+> > On Tue, Mar 17, 2020 at 02:32:25PM +0200, Oleksandr Suvorov wrote:
+> > > The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
+> > > Rename it to PWM_POLARITY_INVERTED.
+> >=20
+> > It isn't misspelled. "inversed" is a synonym for "inverted". Both
+> > spellings are correct.
+>=20
+> Some time ago I stumbled about "inversed", too. My spell checker doesn't
+> know it and I checked some dictionaries and none of them knew that word:
+>=20
+> https://www.lexico.com/search?utf8=3D%E2%9C%93&filter=3Ddictionary&dictio=
+nary=3Den&query=3Dinversed
+> https://de.pons.com/%C3%BCbersetzung/englisch-deutsch/inversed
+> https://dictionary.cambridge.org/spellcheck/english-german/?q=3Dinversed
+>=20
+> https://en.wiktionary.org/wiki/inverse#Verb mentions "inverse" as a verb
+> having "inversed" as past participle.
 
-Until recent changes in linux-next now, this is not sufficient as all
-examples are not checked against all schemas.
+Here are the first three results from a Google query:
 
-> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  .../devicetree/bindings/sram/rockchip-pmu-sram.txt | 16 --------
->  .../bindings/sram/rockchip-pmu-sram.yaml           | 46 ++++++++++++++++++++++
->  2 files changed, 46 insertions(+), 16 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
->  create mode 100644 Documentation/devicetree/bindings/sram/rockchip-pmu-sram.yaml
->
-> diff --git a/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt b/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
-> deleted file mode 100644
-> index 6b42fda30..000000000
-> --- a/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
-> +++ /dev/null
-> @@ -1,16 +0,0 @@
-> -Rockchip SRAM for pmu:
-> -------------------------------
-> -
-> -The sram of pmu is used to store the function of resume from maskrom(the 1st
-> -level loader). This is a common use of the "pmu-sram" because it keeps power
-> -even in low power states in the system.
-> -
-> -Required node properties:
-> -- compatible : should be "rockchip,rk3288-pmu-sram"
-> -- reg : physical base address and the size of the registers window
-> -
-> -Example:
-> -       sram@ff720000 {
-> -               compatible = "rockchip,rk3288-pmu-sram", "mmio-sram";
-> -               reg = <0xff720000 0x1000>;
-> -       };
-> diff --git a/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.yaml b/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.yaml
-> new file mode 100644
-> index 000000000..bb72e4f53
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.yaml
-> @@ -0,0 +1,46 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sram/rockchip-pmu-sram.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip SRAM for pmu
-> +
-> +description:
-> +  The sram of pmu is used to store the function of resume from maskrom(the 1st
-> +  level loader). This is a common use of the "pmu-sram" because it keeps power
-> +  even in low power states in the system.
-> +
-> +maintainers:
-> +  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-> +
-> +# The extra 'mmio-sram' compatible and 'if then' structure is needed
-> +# to filter yaml warnings.
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - const: mmio-sram
-> +      - items:
-> +        - const: rockchip,rk3288-pmu-sram
+	https://www.yourdictionary.com/inversed
+	https://www.dictionary.com/browse/inversed
+	https://en.wiktionary.org/wiki/inversed
 
-We've been just adding the compatibles to the common sram.yaml for the
-simple cases like this.
+> Having said this I think (independent of the question if "inversed"
+> exists) using two similar terms for the same thing just results in
+> confusion. I hit that in the past already and I like it being addressed.
 
+I don't know. It's pretty common to use different words for the same
+thing. They're called synonyms.
 
-> +        - const: mmio-sram
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +if:
-> +  properties:
-> +    compatible:
-> +      contains:
-> +        const: rockchip,rk3288-pmu-sram
-> +
-> +then:
-> +  required:
-> +    - compatible
-> +    - reg
-> +
-> +examples:
-> +  - |
-> +    pmu_sram: sram@ff720000 {
-> +      compatible = "rockchip,rk3288-pmu-sram", "mmio-sram";
-> +      reg = <0xff720000 0x1000>;
-> +    };
-> --
-> 2.11.0
->
+> > And as you noted in the cover letter, there's a conflict between the
+> > macro defined in dt-bindings/pwm/pwm.txt. If they end up being included
+> > in the wrong order you'll get a compile error.
+>=20
+> There are also other symbols that exist twice (GPIO_ACTIVE_HIGH was the
+> first to come to my mind). I'm not aware of any problems related to
+> these. What am I missing?
+
+There's currently no problem, obviously. But if for some reason the
+include files end up being included in a different order (i.e. the
+dt-bindings header is included before linux/pwm.h) then the macro will
+be evaluated and result in something like:
+
+	enum pwm_polarity {
+		PWM_POLARITY_NORMAL,
+		1,
+	};
+
+and that's not valid C, so will cause a build error.
+
+> > The enum was named this way on purpose to make it separate from the
+> > definition for the DT bindings.
+>=20
+> Then please let's make it different by picking a different prefix or
+> something like that.
+
+Again, seems to me like unnecessary churn. Feel free to propose
+something, but I recall being in the same position at the time and this
+was the best I could come up with.
+
+> > Note that DT bindings are an ABI and can
+> > never change, whereas the enum pwm_polarity is part of a Linux internal
+> > API and doesn't have the same restrictions as an ABI.
+>=20
+> I thought only binary device trees (dtb) are supposed to be ABI.
+
+Yes, the DTB is the ABI. dt-bindings/pwm/pwm.h is used to generate DTBs,
+which basically makes it ABI as well. Yes, the symbol name may not be
+part of the ABI, but changing the symbol becomes very inconvenient
+because everyone that depends on it would have to change. Why bother?
+
+My point is that enum pwm_polarity is an API in the kernel and hence its
+easy to change or extend. But since that is not the same for the DTB, we
+need to be careful what from the internal kernel API leaks into the DTB.
+That's why they are different symbols, so that it is clear that what's
+in dt-bindings/pwm/pwm.h is the ABI.
+
+Thierry
+
+--ReaqsoxgOBHFXBhH
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl5yp+UACgkQ3SOs138+
+s6FO/BAApA+hyvKBdtCzUbodbVNOnFlAivhVCo+N5zGSec6fjuALlAnGB/kYeWlt
+XpSwooECx8G2j+mO9LmKjQi4ZmZxFGhO790xo3Q4CHNE+c/DNU0iP3cTXlJYhrAm
+fBpMAsDBwuyrcJCuavVIDuM0okLAQ2XlmZFFT3WNCuC7NmmwkvVr0lJeg1/9lIsp
+mivS6EuLEwXH0H03avpu3+o6+RAIKdO7jKegMHGQNWnBNg1bj+dCMvnKrxAKEjby
+27HuFhm4cMsd5DQQE2RlB7iWZD1aLpk/S7n98LvGti8PiXAtfVzPjUhIXFrvJXi/
+3A7ZwL7jHyaCmMMD3BJHa3/f3SlJMPU31ABixFS4R1t8LyLW4yw47jvZeznRqy8m
+4EkQcdl5EQ4bdDyVOgyWTJTjuPLqahDFFjZGapLbvpM6nj9FTAX+PTDhAvi+QQ4F
+XYkRpbO23Vw9bkE5hHNnD1lYMUgBE0WYTYZVgxEhVbV8Tte3qvnidjlEiNdVFznM
+uYBZv0Ks0r5LAWq2EAwy6JlfzbfdP42dlj5ZRgqNqhTbybFhtwpZ1qhE/XfG0k4L
+gfJt9ZXUHn81TWBrKoUC3YNbjJtTF2cl7l2JKft6+S3W93CV50lTzycJp/iy3srI
+qigCThG2YlpsInS8ZEfww4p47i5+Uje0uHDaoT07uEukyjNAYkQ=
+=Nsfz
+-----END PGP SIGNATURE-----
+
+--ReaqsoxgOBHFXBhH--
