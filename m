@@ -1,130 +1,106 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
-Date: Wed, 18 Mar 2020 23:59:53 +0100
-Message-ID: <20200318225953.GA2874972@ulmo>
-References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
- <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
- <20200317174043.GA1464607@ulmo>
- <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: =?UTF-8?Q?Re=3a_PROBLEM=3a_mmc=5fselect=5fhs400es_failed=2c_error_-?=
+ =?UTF-8?B?MTEw44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgtbW1jLW93bmVyQHZnZXIu?=
+ =?UTF-8?B?a2VybmVsLm9yZ+S7o+WPkeOAkQ==?=
+Date: Thu, 19 Mar 2020 11:11:32 +0800
+Message-ID: <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com>
+References: <20200301220242.GA8276@arya.arvanta.net>
+ <20200318214917.GA9112@arya.arvanta.net>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="ReaqsoxgOBHFXBhH"
-Return-path: <linux-pwm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>, devicetree@vger.kernel.org, linux-pwm@vger.kernel.org, Paul Barker <pbarker@konsulko.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Kevin Hilman <khilman@baylibre.com>, Ludovic Desroches <ludovic.desroches@microchip.com>, Maxime Ripard <mripard@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Nicolas Ferre <nicolas.f>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <20200318214917.GA9112@arya.arvanta.net>
+Sender: linux-mmc-owner@vger.kernel.org
+To: =?UTF-8?Q?Milan_P=2e_Stani=c4=87?= <mps@arvanta.net>
+Cc: shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Milan
 
---ReaqsoxgOBHFXBhH
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+[+linux-rockchip to see if someone has a Samsung chromebook one plus
+and could confirm if it works]
 
-On Tue, Mar 17, 2020 at 10:00:42PM +0100, Uwe Kleine-K=C3=B6nig wrote:
+On 2020/3/19 5:49, Milan P. Stanić wrote:
 > Hello,
->=20
-> On Tue, Mar 17, 2020 at 06:40:43PM +0100, Thierry Reding wrote:
-> > On Tue, Mar 17, 2020 at 02:32:25PM +0200, Oleksandr Suvorov wrote:
-> > > The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
-> > > Rename it to PWM_POLARITY_INVERTED.
-> >=20
-> > It isn't misspelled. "inversed" is a synonym for "inverted". Both
-> > spellings are correct.
->=20
-> Some time ago I stumbled about "inversed", too. My spell checker doesn't
-> know it and I checked some dictionaries and none of them knew that word:
->=20
-> https://www.lexico.com/search?utf8=3D%E2%9C%93&filter=3Ddictionary&dictio=
-nary=3Den&query=3Dinversed
-> https://de.pons.com/%C3%BCbersetzung/englisch-deutsch/inversed
-> https://dictionary.cambridge.org/spellcheck/english-german/?q=3Dinversed
->=20
-> https://en.wiktionary.org/wiki/inverse#Verb mentions "inverse" as a verb
-> having "inversed" as past participle.
+> 
+> Sorry to annoy again, but could you tell me if I sent this bug report
+> to right mail address or I should send it somewhere else.
+> 
+> Also, did I sent bug report correctly or I did some mistakes which
+> caused it to be ignored.
+> 
+> -- TIA On Sun, 2020-03-01 at 23:02, Milan P. Stanić wrote:
+>> Hello,
+>>
+>> I'm not native English speaker and I'm self taught in English so sorry
+>> if do not write or express correctly. And sorry if I posted bug report
+>> to wrong address.
+>>
+>> I'm running linux 5.6.0-rc3 without any patches on Samsung chromebook
+>> one plus, Arm64 rockchip rk3399 based model name:
+>> Machine model: Google Kevin
+>>
+>> I build kernels from upstream git.kernel.org for this machine for some
+>> time (iirc, from 5.2.1 and up) but I'm getting error messages in kernel
+>> after machine resumes from suspend-to-ram.
 
-Here are the first three results from a Google query:
+It sounds to me suspend-to-ram never works for this machine, at least
+since 5.2.1. Am I right?
 
-	https://www.yourdictionary.com/inversed
-	https://www.dictionary.com/browse/inversed
-	https://en.wiktionary.org/wiki/inversed
-
-> Having said this I think (independent of the question if "inversed"
-> exists) using two similar terms for the same thing just results in
-> confusion. I hit that in the past already and I like it being addressed.
-
-I don't know. It's pretty common to use different words for the same
-thing. They're called synonyms.
-
-> > And as you noted in the cover letter, there's a conflict between the
-> > macro defined in dt-bindings/pwm/pwm.txt. If they end up being included
-> > in the wrong order you'll get a compile error.
->=20
-> There are also other symbols that exist twice (GPIO_ACTIVE_HIGH was the
-> first to come to my mind). I'm not aware of any problems related to
-> these. What am I missing?
-
-There's currently no problem, obviously. But if for some reason the
-include files end up being included in a different order (i.e. the
-dt-bindings header is included before linux/pwm.h) then the macro will
-be evaluated and result in something like:
-
-	enum pwm_polarity {
-		PWM_POLARITY_NORMAL,
-		1,
-	};
-
-and that's not valid C, so will cause a build error.
-
-> > The enum was named this way on purpose to make it separate from the
-> > definition for the DT bindings.
->=20
-> Then please let's make it different by picking a different prefix or
-> something like that.
-
-Again, seems to me like unnecessary churn. Feel free to propose
-something, but I recall being in the same position at the time and this
-was the best I could come up with.
-
-> > Note that DT bindings are an ABI and can
-> > never change, whereas the enum pwm_polarity is part of a Linux internal
-> > API and doesn't have the same restrictions as an ABI.
->=20
-> I thought only binary device trees (dtb) are supposed to be ABI.
-
-Yes, the DTB is the ABI. dt-bindings/pwm/pwm.h is used to generate DTBs,
-which basically makes it ABI as well. Yes, the symbol name may not be
-part of the ABI, but changing the symbol becomes very inconvenient
-because everyone that depends on it would have to change. Why bother?
-
-My point is that enum pwm_polarity is an API in the kernel and hence its
-easy to change or extend. But since that is not the same for the DTB, we
-need to be careful what from the internal kernel API leaks into the DTB.
-That's why they are different symbols, so that it is clear that what's
-in dt-bindings/pwm/pwm.h is the ABI.
-
-Thierry
-
---ReaqsoxgOBHFXBhH
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl5yp+UACgkQ3SOs138+
-s6FO/BAApA+hyvKBdtCzUbodbVNOnFlAivhVCo+N5zGSec6fjuALlAnGB/kYeWlt
-XpSwooECx8G2j+mO9LmKjQi4ZmZxFGhO790xo3Q4CHNE+c/DNU0iP3cTXlJYhrAm
-fBpMAsDBwuyrcJCuavVIDuM0okLAQ2XlmZFFT3WNCuC7NmmwkvVr0lJeg1/9lIsp
-mivS6EuLEwXH0H03avpu3+o6+RAIKdO7jKegMHGQNWnBNg1bj+dCMvnKrxAKEjby
-27HuFhm4cMsd5DQQE2RlB7iWZD1aLpk/S7n98LvGti8PiXAtfVzPjUhIXFrvJXi/
-3A7ZwL7jHyaCmMMD3BJHa3/f3SlJMPU31ABixFS4R1t8LyLW4yw47jvZeznRqy8m
-4EkQcdl5EQ4bdDyVOgyWTJTjuPLqahDFFjZGapLbvpM6nj9FTAX+PTDhAvi+QQ4F
-XYkRpbO23Vw9bkE5hHNnD1lYMUgBE0WYTYZVgxEhVbV8Tte3qvnidjlEiNdVFznM
-uYBZv0Ks0r5LAWq2EAwy6JlfzbfdP42dlj5ZRgqNqhTbybFhtwpZ1qhE/XfG0k4L
-gfJt9ZXUHn81TWBrKoUC3YNbjJtTF2cl7l2JKft6+S3W93CV50lTzycJp/iy3srI
-qigCThG2YlpsInS8ZEfww4p47i5+Uje0uHDaoT07uEukyjNAYkQ=
-=Nsfz
------END PGP SIGNATURE-----
-
---ReaqsoxgOBHFXBhH--
+>>
+>> excerpt from dmesg output:
+>> -----------------------------------------------------------------------
+>> Restarting tasks ... done.
+>> PM: suspend exit
+>> mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+>> mmc1: mmc_select_hs400es failed, error -110
+>> mmc1: error -110 doing runtime resume
+>> mmc1: Got data interrupt 0x00000002 even though no data operation was in progress.
+>> mmc1: sdhci: ============ SDHCI REGISTER DUMP ===========
+>> mmc1: sdhci: Sys addr:  0x00000008 | Version:  0x00001002
+>> mmc1: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000008
+>> mmc1: sdhci: Argument:  0x00000000 | Trn mode: 0x00000023
+>> mmc1: sdhci: Present:   0x1fff0001 | Host ctl: 0x00000035
+>> mmc1: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
+>> mmc1: sdhci: Wake-up:   0x00000000 | Clock:    0x0000bc07
+>> mmc1: sdhci: Timeout:   0x0000000d | Int stat: 0x00000000
+>> mmc1: sdhci: Int enab:  0x03ff000b | Sig enab: 0x03ff000b
+>> mmc1: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
+>> mmc1: sdhci: Caps:      0x44edc880 | Caps_1:   0x801020f7
+>> mmc1: sdhci: Cmd:       0x00000c1a | Max curr: 0x00000000
+>> mmc1: sdhci: Resp[0]:   0x00000000 | Resp[1]:  0x373300bd
+>> mmc1: sdhci: Resp[2]:   0x35303030 | Resp[3]:  0x00000000
+>> mmc1: sdhci: Host ctl2: 0x00000000
+>> mmc1: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xed41e200
+>> -----------------------------------------------------------------------
+>>
+>> I invoke suspend-to-ram by `echo mem > /sys/power/state` from ACPI power
+>> and LID button handlers.
+>>
+>> This only happens when I boot and use internal emmc card and never when
+>> boot and use external mmc card.
+>>
+>> If suspend-to-ram is not invoked (machine is always in normal state)
+>> this problem never happen (or I missed it somehow).
+>>
+>> I'm attaching kernel .config (file config-5.6.0-rc3-1-gru.conf) which
+>> use to build kernel, output of the `awk -f scripts/ver_linux` as file
+>> ver_linux.txt and  output of dmesg as file mmc-err.txt (from which I
+>> deleted wifi connection logs).
+>>
+>> Sorry if I did something bad or wrong with this bug report, I don't have
+>> much experience with bug reporting, especially for kernel.
+>>
+>> I'm ready to send you more data, and investigate this more, apply
+>> patches and rebuild kernel or whatever you ask me (of course if my
+>> understanding and knowledge is enough for this job).
+>>
+>> Thank in advance
+>>
+>> --
+>> Kind regards
+>>
+> [...]
+> 
+> 
