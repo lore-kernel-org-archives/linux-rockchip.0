@@ -1,127 +1,67 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: =?UTF-8?Q?Re=3a_PROBLEM=3a_mmc=5fselect=5fhs400es_failed=2c_error_-?=
- =?UTF-8?B?MTEw44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgtbW1jLW93bmVyQHZnZXIu?=
- =?UTF-8?B?a2VybmVsLm9yZ+S7o+WPkeOAkQ==?=
-Date: Thu, 19 Mar 2020 12:28:44 +0000
-Message-ID: <158bd6f5-2430-19bd-28ef-e18d67becaf3@arm.com>
-References: <20200301220242.GA8276@arya.arvanta.net>
- <20200318214917.GA9112@arya.arvanta.net>
- <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com>
+From: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
+Date: Thu, 19 Mar 2020 14:57:07 +0200
+Message-ID: <CAGgjyvFebxXaKkhy-UR1-kaYWozpP67YtVf5mp4mTHFQRhsjKg@mail.gmail.com>
+References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+ <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
+ <20200317174043.GA1464607@ulmo>
+ <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
+ <20200318225953.GA2874972@ulmo>
+ <CAGgjyvGd4y8M0L1sFMvQ1=gPcKfUPoR13dVS7F5WZx=333KG6g@mail.gmail.com>
+ <20200319121026.3rzcxdknfyhtkryi@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com>
-Content-Language: en-GB
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>, =?UTF-8?Q?Milan_P=2e_Stani=c4=87?= <mps@arvanta.net>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <20200319121026.3rzcxdknfyhtkryi@pengutronix.de>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, linux-pwm@vger.kernel.org, Marcel Ziswiler <marcel.ziswiler@toradex.com>, linux-kernel@vger.kernel.org, Paul Cercueil <paul@crapouillou.net>, Thierry Reding <thierry.reding@gmail.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, linux-riscv@lists.infradead.org, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Kevin Hilman <khilman@baylibre.com>, Chen-Yu Tsai <wens@csie.org>, linux-rockchip@lists.infradead.org, Ludovic Desroches <ludovic.desroches@microchip.com>, bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>, devicetree@vger.kernel.org, Ray Jui <rjui@broadcom.com>, Sascha Hauer <s.hauer@pengutronix.de>, Maxime Ripard <mripard@kernel.org>, Philippe Schenker <philippe.schenker@toradex.com>, Paul Barker <pbarker@konsulko.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
-
-On 2020-03-19 3:11 am, Shawn Lin wrote:
-> Hi Milan
-> 
-> [+linux-rockchip to see if someone has a Samsung chromebook one plus
-> and could confirm if it works]
-
-FWIW I've also tried suspend on my NanoPC-T4 and seen that the eMMC 
-(also HS400-ES) fails to come back properly on resume (thus resume never 
-completes due to the missing root filesystem). IIRC it might even have 
-been reproducible with suspend-to-idle, but I'd have to double-check that.
-
-Robin.
-
-> On 2020/3/19 5:49, Milan P. Stanić wrote:
->> Hello,
->>
->> Sorry to annoy again, but could you tell me if I sent this bug report
->> to right mail address or I should send it somewhere else.
->>
->> Also, did I sent bug report correctly or I did some mistakes which
->> caused it to be ignored.
->>
->> -- TIA On Sun, 2020-03-01 at 23:02, Milan P. Stanić wrote:
->>> Hello,
->>>
->>> I'm not native English speaker and I'm self taught in English so sorry
->>> if do not write or express correctly. And sorry if I posted bug report
->>> to wrong address.
->>>
->>> I'm running linux 5.6.0-rc3 without any patches on Samsung chromebook
->>> one plus, Arm64 rockchip rk3399 based model name:
->>> Machine model: Google Kevin
->>>
->>> I build kernels from upstream git.kernel.org for this machine for some
->>> time (iirc, from 5.2.1 and up) but I'm getting error messages in kernel
->>> after machine resumes from suspend-to-ram.
-> 
-> It sounds to me suspend-to-ram never works for this machine, at least
-> since 5.2.1. Am I right?
-> 
->>>
->>> excerpt from dmesg output:
->>> -----------------------------------------------------------------------
->>> Restarting tasks ... done.
->>> PM: suspend exit
->>> mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, 
->>> actual 400000HZ div = 0)
->>> mmc1: mmc_select_hs400es failed, error -110
->>> mmc1: error -110 doing runtime resume
->>> mmc1: Got data interrupt 0x00000002 even though no data operation was 
->>> in progress.
->>> mmc1: sdhci: ============ SDHCI REGISTER DUMP ===========
->>> mmc1: sdhci: Sys addr:  0x00000008 | Version:  0x00001002
->>> mmc1: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000008
->>> mmc1: sdhci: Argument:  0x00000000 | Trn mode: 0x00000023
->>> mmc1: sdhci: Present:   0x1fff0001 | Host ctl: 0x00000035
->>> mmc1: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
->>> mmc1: sdhci: Wake-up:   0x00000000 | Clock:    0x0000bc07
->>> mmc1: sdhci: Timeout:   0x0000000d | Int stat: 0x00000000
->>> mmc1: sdhci: Int enab:  0x03ff000b | Sig enab: 0x03ff000b
->>> mmc1: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
->>> mmc1: sdhci: Caps:      0x44edc880 | Caps_1:   0x801020f7
->>> mmc1: sdhci: Cmd:       0x00000c1a | Max curr: 0x00000000
->>> mmc1: sdhci: Resp[0]:   0x00000000 | Resp[1]:  0x373300bd
->>> mmc1: sdhci: Resp[2]:   0x35303030 | Resp[3]:  0x00000000
->>> mmc1: sdhci: Host ctl2: 0x00000000
->>> mmc1: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xed41e200
->>> -----------------------------------------------------------------------
->>>
->>> I invoke suspend-to-ram by `echo mem > /sys/power/state` from ACPI power
->>> and LID button handlers.
->>>
->>> This only happens when I boot and use internal emmc card and never when
->>> boot and use external mmc card.
->>>
->>> If suspend-to-ram is not invoked (machine is always in normal state)
->>> this problem never happen (or I missed it somehow).
->>>
->>> I'm attaching kernel .config (file config-5.6.0-rc3-1-gru.conf) which
->>> use to build kernel, output of the `awk -f scripts/ver_linux` as file
->>> ver_linux.txt and  output of dmesg as file mmc-err.txt (from which I
->>> deleted wifi connection logs).
->>>
->>> Sorry if I did something bad or wrong with this bug report, I don't have
->>> much experience with bug reporting, especially for kernel.
->>>
->>> I'm ready to send you more data, and investigate this more, apply
->>> patches and rebuild kernel or whatever you ask me (of course if my
->>> understanding and knowledge is enough for this job).
->>>
->>> Thank in advance
->>>
->>> -- 
->>> Kind regards
->>>
->> [...]
->>
->>
-> 
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBNYXIgMTksIDIwMjAgYXQgMjoxMSBQTSBVd2UgS2xlaW5lLUvDtm5pZwo8dS5rbGVp
+bmUta29lbmlnQHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPgo+IEhlbGxvLAo+Cj4gW2Ryb3BwaW5n
+IFRvbnkgUHJpc2sgPGxpbnV4QHByaXNrdGVjaC5jby5uej4gZnJvbSByZWNpcGllbnRzXQo+Cj4g
+T24gVGh1LCBNYXIgMTksIDIwMjAgYXQgMDE6NDA6MjhQTSArMDIwMCwgT2xla3NhbmRyIFN1dm9y
+b3Ygd3JvdGU6Cj4gPiBUaGllcnJ5LCBJIHNlZSB0aGUgUFdNIGNvcmUgY29udmVydHMgdGhlIGJp
+dCBmaWVsZCAidGhpcmQgY2VsbCIgaW50bwo+ID4gdGhlIHBvbGFyaXR5IHZhcmlhYmxlLgo+ID4g
+Tm93IEkgcHJvYmFibHkgdW5kZXJzdGFuZCB5b3VyIHNpZ2h0IGFuZCBhZ3JlZSB0aGF0IHdlIHNo
+b3VsZG4ndCBnaXZlCj4gPiB0aGUgc2FtZSBuYW1lcyB0byBiaXRzIGluIGJpdGZpZWxkIChkdHMp
+IGFuZCB2YWx1ZXMgb2YgYSB2YXJpYWJsZS4KPiA+Cj4gPiBCdXQgdGhlcmUgYXJlIGxvdHMgb2Yg
+dXNlbGVzcyAiMCIgdmFsdWVzIG9mIHRoaXJkIGNlbGwgb2YgInB3bXMiCj4gPiBvcHRpb24gaW4g
+ZHRzIGZpbGVzLgo+ID4KPiA+IEkgc2VlIDIgd2F5cyBub3c6Cj4gPiAtIGp1c3QgcmVtb3ZlIGFs
+bCAiMCIgInRoaXJkIGNlbGwiIGZyb20gInB3bXMiIG9wdGlvbnMgaW4gZHRzIGZpbGVzLiBJCj4g
+PiBzZWUgdGhpcyAiMCIgY29uZnVzZXMgc29tZSBwZW9wbGUuCj4KPiBUaGVuIHlvdSBoYXZlIHRv
+IG92ZXJ3cml0ZSBwd20tY2VsbHMgb2YgdGhlIHByb3ZpZGVyLiBJZiB0aGVyZSBhcmUgdHdvCj4g
+UFdNcyB1c2VkIGZyb20gdGhlIHNhbWUgcHJvdmlkZXIgYW5kIG9ubHkgb25lIGlzIGludmVydGVk
+IHRoaXMgd29uJ3QKPiB3b3JrLiAoTm90IGVudGlyZWx5IHN1cmUgSSB1bmRlcnN0b29kIHlvdXIg
+c3VnZ2VzdGlvbi4pIFNvIEkgZG9uJ3QgbGlrZQo+IHRoaXMgc3VnZ2VzdGlvbi4KCkdvb2QgcG9p
+bnQsIGFncmVlLiBCdXQgd2Ugc3RpbGwgaGF2ZSB0aGUgdW5uYW1lZCAiMCIuCgpXaGF0IGFib3V0
+IHJlbmFtaW5nIHRoZSBkdC1iaW5kaW5ncyBtYWNybyBQV01fUE9MQVJJVFlfSU5WRVJURUQKYW5k
+IGFkZCB0aGUgbmV3IG9uZSBmb3IgdGhlIG5vcm1hbCBwb2xhcml0eT8KTGlrZSBQV01fRkxBR19Q
+T0xBUklUWV9OT1JNQUwgLyBQV01fRkxBR19QT0xBUklUWV9JTlZFUlRFRCBvcgpEVF9QV01fUE9M
+QVJJVFlfTk9STUFMIC8gRFRfUFdNX1BPTEFSSVRZX0lOVkVSVEVEPwoKVXNpbmcgZGlmZmVyZW50
+IHByZWZpeCB3aWxsIHByZXZlbnQgaW50ZXJmZXJpbmcgbmFtZXMgb2YgZW51bSBhbmQKbWFjcm9z
+IGluIHRoZSBmdXR1cmUKYW5kIHdpbGwgYWxsb3cgdXNpbmcgdGhlIG5hbWVkIG5vcC1mbGFnIFBX
+TV9GTEFHX1BPTEFSSVRZX05PUk1BTCBpbiBkdHMuCgo+IEFuZCBhbHNvIGluIG15IGV5ZXMgdGhp
+cyBpc24ndCBjbGVhcmVyLCBqdXN0IG1vcmUgY29tcGxpY2F0ZWQgdG8gdXNlLgo+Cj4gPiAtIGNv
+bnZlcnQgcHdtX3N0YXRlLnBvbGFyaXR5IGludG8gcHdtX3N0YXRlLmZsYWdzIGFuZCB1c2UgYml0
+ZmllbGQKPiA+ICAgZGlyZWN0bHkgZnJvbSBkdGIuCj4gPiAgIEl0IHNpbXBsaWZpZXMgdGhlIHBh
+cnNpbmcgbG9naWMgYW5kIG1ha2VzIGFkZGluZyBuZXcgZmxhZ3MgZWFzaWVyLgo+Cj4gKnNocnVn
+KiwgSSBkb24ndCBjYXJlIG11Y2guCj4KPiBCZXN0IHJlZ2FyZHMKPiBVd2UKPgo+IC0tCj4gUGVu
+Z3V0cm9uaXggZS5LLiAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgVXdlIEtsZWluZS1Lw7Zu
+aWcgICAgICAgICAgICB8Cj4gSW5kdXN0cmlhbCBMaW51eCBTb2x1dGlvbnMgICAgICAgICAgICAg
+ICAgIHwgaHR0cHM6Ly93d3cucGVuZ3V0cm9uaXguZGUvIHwKCgoKLS0gCkJlc3QgcmVnYXJkcwpP
+bGVrc2FuZHIgU3V2b3JvdgoKVG9yYWRleCBBRwpFYmVuYXVzdHJhc3NlIDEwIHwgNjA0OCBIb3J3
+IHwgU3dpdHplcmxhbmQgfCBUOiArNDEgNDEgNTAwIDQ4IDAwCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlz
+dApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
