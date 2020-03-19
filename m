@@ -1,64 +1,48 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: Re: [RFC PATCH 2/2] phy: phy-rockchip-inno-usb2: remove support for
- rockchip, rk3366-usb2phy
-Date: Thu, 19 Mar 2020 15:01:20 +0100
-Message-ID: <625d2904-458b-1edc-d91c-21614653a274@gmail.com>
-References: <20200318192901.5023-1-jbx6244@gmail.com>
- <20200318192901.5023-2-jbx6244@gmail.com>
- <233769c3-a44a-0ebd-7a2c-6fab17fb56f2@arm.com>
+From: Christoph Muellner <christoph.muellner@theobroma-systems.com>
+Subject: [PATCH] phy: rk-inno-usb2: Decrease verbosity of repeating log.
+Date: Thu, 19 Mar 2020 15:08:52 +0100
+Message-ID: <20200319140852.27636-1-christoph.muellner@theobroma-systems.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <233769c3-a44a-0ebd-7a2c-6fab17fb56f2@arm.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>, kishon@ti.com
-Cc: devicetree@vger.kernel.org, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+Cc: Heiko Stuebner <heiko@sntech.de>, heiko.stuebner@theobroma-systems.com, linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Christoph Muellner <christoph.muellner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+phy-rockchip-inno-usb2 logs the message
 
-Some questions.
-Can Rockchip or Heiko explain why we have half finished support in the
-upstream kernel for rk3366? What happened?
-Are any plans to add a rk3366.dtsi?
-How wide spread was the use of rk3366? Products?
-ie. When does support stop?
+  "phy-ff2c0000.syscon:usb2-phy@100.2: charger = INVALID_CHARGER"
 
-There's also a rk3368. Is there a need for "rockchip,rk3368-usb2phy"?
+constantly with a frequency of about 1 Hz and a verbosity level
+of INFO. As this is clearly annoying, this patch decreases
+the log level to DEBUG.
 
-We'll keep "rockchip,rk3366-usb2phy" aboard for v2.
+Signed-off-by: Christoph Muellner <christoph.muellner@theobroma-systems.com>
+---
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks
-
-On 3/19/20 2:07 PM, Robin Murphy wrote:
-> Hi Johan,
-> 
-> On 2020-03-18 7:29 pm, Johan Jonker wrote:
->> 'phy-rockchip-inno-usb2.txt' is updated to yaml, whereby
->> the compatible string 'rockchip,rk3366-usb2phy' was removed,
->> because it's not in use by a dts file, so remove support
->> in the code as well.
-> 
-> Here's a DT using it:
-> 
-> https://github.com/rockchip-linux/kernel/blob/develop-4.4/arch/arm64/boot/dts/rockchip/rk3366.dtsi#L820
-> 
-> 
-> Please note that although DT bindings happen to be primarily maintained
-> in the upstream kernel tree at the moment, it is mostly as a consequence
-> of Linux being the source of most active development. Bindings should
-> not be considered to be "owned" by upstream Linux since there are many
-> other consumers, both downstream, and in completely different projects
-> like the BSDs. As far as I'm aware there is still a long-term plan to
-> eventually flip the switch and move maintenance to a standalone repo:
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/devicetree/devicetree-rebasing.git
-> 
-> 
-> Things like PCI Device IDs and ACPI HIDs aren't even documented as
-> formally as DT bindings, so by the reasoning here we could arguably
-> delete the majority of drivers from the kernel...
-> 
-> Robin.
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+index 680cc0c8825c..a84e9f027fc4 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
+@@ -763,7 +763,7 @@ static void rockchip_chg_detect_work(struct work_struct *work)
+ 		/* put the controller in normal mode */
+ 		property_enable(base, &rphy->phy_cfg->chg_det.opmode, true);
+ 		rockchip_usb2phy_otg_sm_work(&rport->otg_sm_work.work);
+-		dev_info(&rport->phy->dev, "charger = %s\n",
++		dev_dbg(&rport->phy->dev, "charger = %s\n",
+ 			 chg_to_string(rphy->chg_type));
+ 		return;
+ 	default:
+-- 
+2.20.1
