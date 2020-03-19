@@ -1,292 +1,226 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] ARM: dts: rockchip: move uart2 pinctrl settings to each
- dts for rk3288
-Date: Thu, 19 Mar 2020 16:29:06 +0000
-Message-ID: <4d93b050-6185-0d39-c89a-ac7fb6fc7780@arm.com>
-References: <20200319151339.17909-1-katsuhiro@katsuster.net>
- <4307911.4IBKxFWOMT@diego>
- <8eed33d8-142c-28cf-7fa4-faf9bebb13cf@katsuster.net>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
+Date: Thu, 19 Mar 2020 17:37:00 +0100
+Message-ID: <20200319163700.GA3354541@ulmo>
+References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+ <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
+ <20200317174043.GA1464607@ulmo>
+ <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
+ <20200318225953.GA2874972@ulmo>
+ <20200319065039.szhh5dm6v3ejwijd@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8eed33d8-142c-28cf-7fa4-faf9bebb13cf@katsuster.net>
-Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="LZvS9be/3tNcYl/X"
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200319065039.szhh5dm6v3ejwijd@pengutronix.de>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>, devicetree@vger.kernel.org, linux-pwm@vger.kernel.org, Paul Barker <pbarker@konsulko.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Kevin Hilman <khilman@baylibre.com>, Ludovic Desroches <ludovic.desroches@microchip.com>, Maxime Ripard <mripard@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Nicolas Ferre <nicolas.f>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-03-19 3:58 pm, Katsuhiro Suzuki wrote:
-> Hello Heiko,
-> 
-> On 2020/03/20 0:25, Heiko Stübner wrote:
->> Hi,
->>
->> Am Donnerstag, 19. März 2020, 16:13:39 CET schrieb Katsuhiro Suzuki:
->>> This patch removes conflicted pinctrl settings uart2 and pwm 2/3
->>> from common rk3288.dtsi and moves exist uart2 pinctrl settings
->>> into each rk3288*.dts files.
->>>
->>>    - pwm2_pin  : use GPIO7_C6
->>>    - pwm3_pin  : use GPIO7_C7
->>>    - uart2_xfer: use GPIO7_C6, GPIO7_C7
->>
->> Board files only ever get to enable either pwm2/3 or uart2,
->> not both at once - so I'm not sure where you see conflicts.
->>
-> 
-> At first, I think so too. But I've saw this message when booting.
-> 
-> ----------
-> [    2.435504] rockchip-pinctrl pinctrl: pin gpio7-22 already requested 
-> by ff680020.pwm; cannot claim for ff690000.serial
-> [    2.447506] rockchip-pinctrl pinctrl: pin-238 (ff690000.serial) 
-> status -22
-> [    2.455198] rockchip-pinctrl pinctrl: could not request pin 238 
-> (gpio7-22) from group uart2-xfer  on device rockchip-pinctrl
-> ----------
-> 
-> And it seems that uart2(ttyS2) is not working correctly.
-> 
-> ----------
-> # cat /dev/ttyS2
-> cat: /dev/ttyS2: Input/output error
-> ----------
-> 
-> I'm using newest linux-next, make defconfig and CONFIG_MODULES = n setting
-> with TinkerBoard. Can I resolve this issue in other ways?
 
-Do you perhaps have a DT overlay or bootloader script enabling pwm2? 
-(try `cat /sys/firmware/devicetree/base/pwm@ff680020/status` for a 
-sanity check). FWIW I don't recall ever seeing this on my RK3288 box.
+--LZvS9be/3tNcYl/X
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-(or of course maybe there's just some pinctrl bug in -next that's 
-claiming configs for disabled devices)
+On Thu, Mar 19, 2020 at 07:50:39AM +0100, Uwe Kleine-K=C3=B6nig wrote:
+>=20
+> [Dropped Tony Prisk from recipients as the address bounces]
+>=20
+> Hello,
+>=20
+> On Wed, Mar 18, 2020 at 11:59:53PM +0100, Thierry Reding wrote:
+> > On Tue, Mar 17, 2020 at 10:00:42PM +0100, Uwe Kleine-K=C3=B6nig wrote:
+> > > Hello,
+> > >=20
+> > > On Tue, Mar 17, 2020 at 06:40:43PM +0100, Thierry Reding wrote:
+> > > > On Tue, Mar 17, 2020 at 02:32:25PM +0200, Oleksandr Suvorov wrote:
+> > > > > The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
+> > > > > Rename it to PWM_POLARITY_INVERTED.
+> > > >=20
+> > > > It isn't misspelled. "inversed" is a synonym for "inverted". Both
+> > > > spellings are correct.
+> > >=20
+> > > Some time ago I stumbled about "inversed", too. My spell checker does=
+n't
+> > > know it and I checked some dictionaries and none of them knew that wo=
+rd:
+> > >=20
+> > > https://www.lexico.com/search?utf8=3D%E2%9C%93&filter=3Ddictionary&di=
+ctionary=3Den&query=3Dinversed
+> > > https://de.pons.com/%C3%BCbersetzung/englisch-deutsch/inversed
+> > > https://dictionary.cambridge.org/spellcheck/english-german/?q=3Dinver=
+sed
+> > >=20
+> > > https://en.wiktionary.org/wiki/inverse#Verb mentions "inverse" as a v=
+erb
+> > > having "inversed" as past participle.
+> >=20
+> > Here are the first three results from a Google query:
+> >=20
+> > 	https://www.yourdictionary.com/inversed
+>=20
+> There is something fishy. In the Verb section it says indeed, that it is
+> the past participle and simple past of inverse. The entry for inverse
+> however only has sections that identify this word as adjective or noun;
+> not a verb.
+>=20
+> > 	https://www.dictionary.com/browse/inversed
+>=20
+> Not sure I'd count this as hint that inversed exists. The entry shown to
+> me under this URL is about "inverse" and it has
+>=20
+> 	verb (used with object), in=C2=B7versed, in=C2=B7vers=C2=B7ing.
+> 		? to invert.
+>=20
+> Does this mean: "Did you mean invert instead?"
+>=20
+> > 	https://en.wiktionary.org/wiki/inversed
+>=20
+> Yeah, that's the one I found, too.
+>=20
+> I still have the impression that "inversed" is in use because people
+> don't know better and understand the intended meaning. And this results
+> in leaking of this word into the references.
+>=20
+> > > Having said this I think (independent of the question if "inversed"
+> > > exists) using two similar terms for the same thing just results in
+> > > confusion. I hit that in the past already and I like it being address=
+ed.
+> >=20
+> > I don't know. It's pretty common to use different words for the same
+> > thing. They're called synonyms.
+>=20
+> In literature yes, I agree. In a novel it is annoying to repeat the same
+> words over and over again and some variation is good. In programming
+> however the goal is a different one. There the goal should be to be
+> precise and consistent.
 
-Robin.
+We also need to make sure that things don't break. It's a very bad idea
+to have a macro with the same name as an enum value for reasons I stated
+before. I think that's the most important thing here.
 
-> 
-> Best Regards,
-> Katsuhiro Suzuki
-> 
-> 
->> And of course there are alternative pins to use, if you need uart2
->> you need both pins in uart-pinmux and if you need either as pwm, then
->> the board by design just can't use them as uart2.
->>
->> So pin setting should stay where they are, as there really is no 
->> conflict.
->>
->>
->> Heiko
->>
->>
->>
->>> Currently uart2 rk3288 user is the following:
->>>
->>>    - rk3288-evb.dtsi:&uart2 {
->>>    - rk3288-firefly-reload.dts:&uart2 {
->>>    - rk3288-firefly.dtsi:&uart2 {
->>>    - rk3288-miqi.dts:&uart2 {
->>>    - rk3288-phycore-rdk.dts:&uart2 {
->>>    - rk3288-popmetal.dts:&uart2 {
->>>    - rk3288-r89.dts:&uart2 {
->>>    - rk3288-rock2-square.dts:&uart2 {
->>>    - rk3288-tinker.dtsi:&uart2 {
->>>    - rk3288-veyron.dtsi:&uart2 {
->>>    - rk3288-vyasa.dts:&uart2 {
->>>
->>> And no one is using pwm2 nor pwm3.
->>>
->>> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
->>> ---
->>>   arch/arm/boot/dts/rk3288-evb.dtsi           | 2 ++
->>>   arch/arm/boot/dts/rk3288-firefly-reload.dts | 2 ++
->>>   arch/arm/boot/dts/rk3288-firefly.dtsi       | 2 ++
->>>   arch/arm/boot/dts/rk3288-miqi.dts           | 2 ++
->>>   arch/arm/boot/dts/rk3288-phycore-rdk.dts    | 2 ++
->>>   arch/arm/boot/dts/rk3288-popmetal.dts       | 2 ++
->>>   arch/arm/boot/dts/rk3288-r89.dts            | 2 ++
->>>   arch/arm/boot/dts/rk3288-rock2-square.dts   | 2 ++
->>>   arch/arm/boot/dts/rk3288-tinker.dtsi        | 2 ++
->>>   arch/arm/boot/dts/rk3288-veyron.dtsi        | 2 ++
->>>   arch/arm/boot/dts/rk3288-vyasa.dts          | 2 ++
->>>   arch/arm/boot/dts/rk3288.dtsi               | 6 ------
->>>   12 files changed, 22 insertions(+), 6 deletions(-)
->>>
->>> diff --git a/arch/arm/boot/dts/rk3288-evb.dtsi 
->>> b/arch/arm/boot/dts/rk3288-evb.dtsi
->>> index 018802df4c0e..74091f831ecf 100644
->>> --- a/arch/arm/boot/dts/rk3288-evb.dtsi
->>> +++ b/arch/arm/boot/dts/rk3288-evb.dtsi
->>> @@ -285,6 +285,8 @@ &uart1 {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288-firefly-reload.dts 
->>> b/arch/arm/boot/dts/rk3288-firefly-reload.dts
->>> index 8c38bda21a7c..b0c976c8e35b 100644
->>> --- a/arch/arm/boot/dts/rk3288-firefly-reload.dts
->>> +++ b/arch/arm/boot/dts/rk3288-firefly-reload.dts
->>> @@ -283,6 +283,8 @@ &uart1 {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288-firefly.dtsi 
->>> b/arch/arm/boot/dts/rk3288-firefly.dtsi
->>> index 5e0a19004e46..1632cc083c12 100644
->>> --- a/arch/arm/boot/dts/rk3288-firefly.dtsi
->>> +++ b/arch/arm/boot/dts/rk3288-firefly.dtsi
->>> @@ -532,6 +532,8 @@ &uart1 {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288-miqi.dts 
->>> b/arch/arm/boot/dts/rk3288-miqi.dts
->>> index c41d012c8850..2c0ed37fde80 100644
->>> --- a/arch/arm/boot/dts/rk3288-miqi.dts
->>> +++ b/arch/arm/boot/dts/rk3288-miqi.dts
->>> @@ -379,6 +379,8 @@ &tsadc {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288-phycore-rdk.dts 
->>> b/arch/arm/boot/dts/rk3288-phycore-rdk.dts
->>> index 1e33859de484..6532c1ac43cd 100644
->>> --- a/arch/arm/boot/dts/rk3288-phycore-rdk.dts
->>> +++ b/arch/arm/boot/dts/rk3288-phycore-rdk.dts
->>> @@ -244,6 +244,8 @@ &uart0 {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288-popmetal.dts 
->>> b/arch/arm/boot/dts/rk3288-popmetal.dts
->>> index 6a51940398b5..f18306bd9e6e 100644
->>> --- a/arch/arm/boot/dts/rk3288-popmetal.dts
->>> +++ b/arch/arm/boot/dts/rk3288-popmetal.dts
->>> @@ -481,6 +481,8 @@ &uart1 {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288-r89.dts 
->>> b/arch/arm/boot/dts/rk3288-r89.dts
->>> index a258c7ae5329..02d2f5cfe201 100644
->>> --- a/arch/arm/boot/dts/rk3288-r89.dts
->>> +++ b/arch/arm/boot/dts/rk3288-r89.dts
->>> @@ -340,6 +340,8 @@ &uart1 {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288-rock2-square.dts 
->>> b/arch/arm/boot/dts/rk3288-rock2-square.dts
->>> index cdcdc921ee09..a44290e882be 100644
->>> --- a/arch/arm/boot/dts/rk3288-rock2-square.dts
->>> +++ b/arch/arm/boot/dts/rk3288-rock2-square.dts
->>> @@ -264,6 +264,8 @@ &spdif {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288-tinker.dtsi 
->>> b/arch/arm/boot/dts/rk3288-tinker.dtsi
->>> index acfaa12ec239..0327119f71b4 100644
->>> --- a/arch/arm/boot/dts/rk3288-tinker.dtsi
->>> +++ b/arch/arm/boot/dts/rk3288-tinker.dtsi
->>> @@ -500,6 +500,8 @@ &uart1 {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288-veyron.dtsi 
->>> b/arch/arm/boot/dts/rk3288-veyron.dtsi
->>> index 54a6838d73f5..baa44d00e49a 100644
->>> --- a/arch/arm/boot/dts/rk3288-veyron.dtsi
->>> +++ b/arch/arm/boot/dts/rk3288-veyron.dtsi
->>> @@ -412,6 +412,8 @@ &uart1 {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts 
->>> b/arch/arm/boot/dts/rk3288-vyasa.dts
->>> index 385dd59393e1..aa50cdc7f839 100644
->>> --- a/arch/arm/boot/dts/rk3288-vyasa.dts
->>> +++ b/arch/arm/boot/dts/rk3288-vyasa.dts
->>> @@ -398,6 +398,8 @@ &tsadc {
->>>   };
->>>   &uart2 {
->>> +    pinctrl-names = "default";
->>> +    pinctrl-0 = <&uart2_xfer>;
->>>       status = "okay";
->>>   };
->>> diff --git a/arch/arm/boot/dts/rk3288.dtsi 
->>> b/arch/arm/boot/dts/rk3288.dtsi
->>> index 0cd88774db95..4c1f8cabb5eb 100644
->>> --- a/arch/arm/boot/dts/rk3288.dtsi
->>> +++ b/arch/arm/boot/dts/rk3288.dtsi
->>> @@ -450,8 +450,6 @@ uart2: serial@ff690000 {
->>>           reg-io-width = <4>;
->>>           clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
->>>           clock-names = "baudclk", "apb_pclk";
->>> -        pinctrl-names = "default";
->>> -        pinctrl-0 = <&uart2_xfer>;
->>>           status = "disabled";
->>>       };
->>> @@ -706,8 +704,6 @@ pwm2: pwm@ff680020 {
->>>           compatible = "rockchip,rk3288-pwm";
->>>           reg = <0x0 0xff680020 0x0 0x10>;
->>>           #pwm-cells = <3>;
->>> -        pinctrl-names = "default";
->>> -        pinctrl-0 = <&pwm2_pin>;
->>>           clocks = <&cru PCLK_RKPWM>;
->>>           clock-names = "pwm";
->>>           status = "disabled";
->>> @@ -717,8 +713,6 @@ pwm3: pwm@ff680030 {
->>>           compatible = "rockchip,rk3288-pwm";
->>>           reg = <0x0 0xff680030 0x0 0x10>;
->>>           #pwm-cells = <3>;
->>> -        pinctrl-names = "default";
->>> -        pinctrl-0 = <&pwm3_pin>;
->>>           clocks = <&cru PCLK_RKPWM>;
->>>           clock-names = "pwm";
->>>           status = "disabled";
->>>
->>
->>
->>
->>
->>
-> 
-> 
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+Also, if inversed is a synonym of inverted, we don't loose any precision
+at all. All you have to remember is that you're dealing with a device
+tree constant in one case and an API enumeration in the other.
+
+So I think the current form is actually more precise, though I guess it
+could be confusing if you don't care about the difference.
+
+> > > > And as you noted in the cover letter, there's a conflict between the
+> > > > macro defined in dt-bindings/pwm/pwm.txt. If they end up being incl=
+uded
+> > > > in the wrong order you'll get a compile error.
+> > >=20
+> > > There are also other symbols that exist twice (GPIO_ACTIVE_HIGH was t=
+he
+> > > first to come to my mind). I'm not aware of any problems related to
+> > > these. What am I missing?
+> >=20
+> > There's currently no problem, obviously. But if for some reason the
+> > include files end up being included in a different order (i.e. the
+> > dt-bindings header is included before linux/pwm.h) then the macro will
+> > be evaluated and result in something like:
+> >=20
+> > 	enum pwm_polarity {
+> > 		PWM_POLARITY_NORMAL,
+> > 		1,
+> > 	};
+> >=20
+> > and that's not valid C, so will cause a build error.
+>=20
+> I admit I didn't look closely here and I assume you are right. If I
+> understand Oleksandr right this is only an intermediate step and when
+> the series is applied completely this issue is gone. Still it might be
+> worth to improve the series here.
+
+	$ gcc -o /dev/null -x c - <<- EOF
+	>     #define PWM_POLARITY_INVERTED (1 << 0)
+	>
+	>     enum pwm_polarity {
+	>         PWM_POLARITY_NORMAL,
+	>         PWM_POLARITY_INVERTED,
+	>     };
+	> EOF
+	<stdin>:1:35: error: expected identifier before =E2=80=98(=E2=80=99 token
+	<stdin>:5:9: note: in expansion of macro =E2=80=98PWM_POLARITY_INVERTED=E2=
+=80=99
+
+Q.E.D.
+
+> My original question was about similar problems with GPIO_ACTIVE_HIGH.
+> Are you aware of problems there?
+
+The problem exists there equally. We're probably not running into it
+because drivers don't end up including dt-bindings/gpio/gpio.h and
+include/linux/gpio/machine.h at the same time. Or they end up always
+including them in the right order.
+
+For PWM the situation is slightly more complicated because we only have
+one header for the kernel API, so the likelihood of including it along
+with the dt-bindings header is increased compared to GPIO.
+
+> > > > Note that DT bindings are an ABI and can
+> > > > never change, whereas the enum pwm_polarity is part of a Linux inte=
+rnal
+> > > > API and doesn't have the same restrictions as an ABI.
+> > >=20
+> > > I thought only binary device trees (dtb) are supposed to be ABI.
+> >=20
+> > Yes, the DTB is the ABI. dt-bindings/pwm/pwm.h is used to generate DTBs,
+> > which basically makes it ABI as well.
+>=20
+> We disagree here. With this argument you could fix quite some things as
+> ABI.
+
+I don't understand what you're trying to say.
+
+> > Yes, the symbol name may not be part of the ABI, but changing the
+> > symbol becomes very inconvenient because everyone that depends on it
+> > would have to change.
+>=20
+> Oleksandr adapted all in-tree users, so it only affects out-of-tree
+> users. In my book this is fine.
+
+There used to be a time when it was assumed that eventually device tree
+sources would live outside of the kernel tree. Given that they are a HW
+description, they really ought not to be relying on the Linux kernel
+tree as a way of keeping them consistent. That's really only out of
+convenience.
+
+> > Why bother?
+>=20
+> To make the API more precise and consistent. That's a good goal in my
+> eyes.
+
+PWM_POLARITY_INVERTED is not part of the API. It doesn't exist for
+anything other than to make the device tree more readable.
+
+I now regret that we ever introduced this in the first place. Perhaps it
+would've been better to just deal with raw numbers instead.
+
+Thierry
+
+--LZvS9be/3tNcYl/X
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl5zn6kACgkQ3SOs138+
+s6G0qA//TRbmBTBaIgA8loJnEh1oNwlzPblJdiH8lXKLSVxfyTXfaFGDQcOzMyBg
+DkLtpO51Rah1o+3yB/j6b8TXA9amdpD65SP2FBL2dFLyBn8K5Ot5ZWuvTapyclcz
+2TI8cG1Du/xLWxMDDX+Rylj+9XTlQxu3lGssuCM56hF0VXmhyvEzD3/aLlA/MjeY
+QQky3apxaRT+lnGsAzRLGbLHZufTV+OaZ9ZYZZGTlsXR1VAUsyR44TGM+290Ut6p
+Ds8bLPjI3xTa6uy66MlsUcYAAo1/jCQMAS+Nr/B0XGRPJdtK2G+MY3vtTZENSvqr
+VKDulCTAEGE/uP+7qZVOmxOZIhX7n1zBdwSdZS5FgjCok6QjfOUa9SlT77O4bGAM
+lGaeG9h8gBYpE2wk+9Wd6V9vm8UoJXPujpsyJXRHpQa5nJhgqr/VNYCeHlYhKXuQ
+ymd6V9cwXRk/0xoRKR8WnRl5ZgfZtTYDfh/dGD7CdUBcyfCFZVcYEI01iO54m5Dr
+/kakaDhUXRLv+xBGk4CocrSgo92DQeFUWyb2QnoW/5yYbHEOYEsfz+pWUicxin/y
+Yf9ZNfDh5MPRidZyJ5b/wy3xz2OHEkyGKGGIb2em5E5AwvDZiDXhQkjhf5hzb2fD
+xgjBAa+LbbBZYCs2a4Y85i+tpsJpp72cE4Xamu4rr3Pz7URiAnw=
+=VES6
+-----END PGP SIGNATURE-----
+
+--LZvS9be/3tNcYl/X--
