@@ -1,106 +1,145 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: =?UTF-8?Q?Re=3a_PROBLEM=3a_mmc=5fselect=5fhs400es_failed=2c_error_-?=
- =?UTF-8?B?MTEw44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgtbW1jLW93bmVyQHZnZXIu?=
- =?UTF-8?B?a2VybmVsLm9yZ+S7o+WPkeOAkQ==?=
-Date: Thu, 19 Mar 2020 11:11:32 +0800
-Message-ID: <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com>
-References: <20200301220242.GA8276@arya.arvanta.net>
- <20200318214917.GA9112@arya.arvanta.net>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
+        <u.kleine-koenig@pengutronix.de>
+Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
+Date: Thu, 19 Mar 2020 07:50:39 +0100
+Message-ID: <20200319065039.szhh5dm6v3ejwijd@pengutronix.de>
+References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+ <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
+ <20200317174043.GA1464607@ulmo>
+ <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
+ <20200318225953.GA2874972@ulmo>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <20200318214917.GA9112@arya.arvanta.net>
-Sender: linux-mmc-owner@vger.kernel.org
-To: =?UTF-8?Q?Milan_P=2e_Stani=c4=87?= <mps@arvanta.net>
-Cc: shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200318225953.GA2874972@ulmo>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Thierry Reding <thierry.reding@gmail.com>
+Cc: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>, devicetree@vger.kernel.org, linux-pwm@vger.kernel.org, Paul Barker <pbarker@konsulko.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Chen-Yu Tsai <wens@csie.org>, Claudiu Beznea <claudiu.beznea@microchip.com>, Fabio Estevam <festevam@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Kevin Hilman <khilman@baylibre.com>, Ludovic Desroches <ludovic.desroches@microchip.com>, Maxime Ripard <mripard@kernel.org>, NXP Linux Team <linux-imx@nxp.com>, Nicolas Ferre <nicolas.f>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Milan
 
-[+linux-rockchip to see if someone has a Samsung chromebook one plus
-and could confirm if it works]
+[Dropped Tony Prisk from recipients as the address bounces]
 
-On 2020/3/19 5:49, Milan P. StaniÄ‡ wrote:
-> Hello,
-> 
-> Sorry to annoy again, but could you tell me if I sent this bug report
-> to right mail address or I should send it somewhere else.
-> 
-> Also, did I sent bug report correctly or I did some mistakes which
-> caused it to be ignored.
-> 
-> -- TIA On Sun, 2020-03-01 at 23:02, Milan P. StaniÄ‡ wrote:
->> Hello,
->>
->> I'm not native English speaker and I'm self taught in English so sorry
->> if do not write or express correctly. And sorry if I posted bug report
->> to wrong address.
->>
->> I'm running linux 5.6.0-rc3 without any patches on Samsung chromebook
->> one plus, Arm64 rockchip rk3399 based model name:
->> Machine model: Google Kevin
->>
->> I build kernels from upstream git.kernel.org for this machine for some
->> time (iirc, from 5.2.1 and up) but I'm getting error messages in kernel
->> after machine resumes from suspend-to-ram.
+Hello,
 
-It sounds to me suspend-to-ram never works for this machine, at least
-since 5.2.1. Am I right?
+On Wed, Mar 18, 2020 at 11:59:53PM +0100, Thierry Reding wrote:
+> On Tue, Mar 17, 2020 at 10:00:42PM +0100, Uwe Kleine-König wrote:
+> > Hello,
+> > 
+> > On Tue, Mar 17, 2020 at 06:40:43PM +0100, Thierry Reding wrote:
+> > > On Tue, Mar 17, 2020 at 02:32:25PM +0200, Oleksandr Suvorov wrote:
+> > > > The polarity enum definition PWM_POLARITY_INVERSED is misspelled.
+> > > > Rename it to PWM_POLARITY_INVERTED.
+> > > 
+> > > It isn't misspelled. "inversed" is a synonym for "inverted". Both
+> > > spellings are correct.
+> > 
+> > Some time ago I stumbled about "inversed", too. My spell checker doesn't
+> > know it and I checked some dictionaries and none of them knew that word:
+> > 
+> > https://www.lexico.com/search?utf8=%E2%9C%93&filter=dictionary&dictionary=en&query=inversed
+> > https://de.pons.com/%C3%BCbersetzung/englisch-deutsch/inversed
+> > https://dictionary.cambridge.org/spellcheck/english-german/?q=inversed
+> > 
+> > https://en.wiktionary.org/wiki/inverse#Verb mentions "inverse" as a verb
+> > having "inversed" as past participle.
+> 
+> Here are the first three results from a Google query:
+> 
+> 	https://www.yourdictionary.com/inversed
 
->>
->> excerpt from dmesg output:
->> -----------------------------------------------------------------------
->> Restarting tasks ... done.
->> PM: suspend exit
->> mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
->> mmc1: mmc_select_hs400es failed, error -110
->> mmc1: error -110 doing runtime resume
->> mmc1: Got data interrupt 0x00000002 even though no data operation was in progress.
->> mmc1: sdhci: ============ SDHCI REGISTER DUMP ===========
->> mmc1: sdhci: Sys addr:  0x00000008 | Version:  0x00001002
->> mmc1: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000008
->> mmc1: sdhci: Argument:  0x00000000 | Trn mode: 0x00000023
->> mmc1: sdhci: Present:   0x1fff0001 | Host ctl: 0x00000035
->> mmc1: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
->> mmc1: sdhci: Wake-up:   0x00000000 | Clock:    0x0000bc07
->> mmc1: sdhci: Timeout:   0x0000000d | Int stat: 0x00000000
->> mmc1: sdhci: Int enab:  0x03ff000b | Sig enab: 0x03ff000b
->> mmc1: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
->> mmc1: sdhci: Caps:      0x44edc880 | Caps_1:   0x801020f7
->> mmc1: sdhci: Cmd:       0x00000c1a | Max curr: 0x00000000
->> mmc1: sdhci: Resp[0]:   0x00000000 | Resp[1]:  0x373300bd
->> mmc1: sdhci: Resp[2]:   0x35303030 | Resp[3]:  0x00000000
->> mmc1: sdhci: Host ctl2: 0x00000000
->> mmc1: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xed41e200
->> -----------------------------------------------------------------------
->>
->> I invoke suspend-to-ram by `echo mem > /sys/power/state` from ACPI power
->> and LID button handlers.
->>
->> This only happens when I boot and use internal emmc card and never when
->> boot and use external mmc card.
->>
->> If suspend-to-ram is not invoked (machine is always in normal state)
->> this problem never happen (or I missed it somehow).
->>
->> I'm attaching kernel .config (file config-5.6.0-rc3-1-gru.conf) which
->> use to build kernel, output of the `awk -f scripts/ver_linux` as file
->> ver_linux.txt and  output of dmesg as file mmc-err.txt (from which I
->> deleted wifi connection logs).
->>
->> Sorry if I did something bad or wrong with this bug report, I don't have
->> much experience with bug reporting, especially for kernel.
->>
->> I'm ready to send you more data, and investigate this more, apply
->> patches and rebuild kernel or whatever you ask me (of course if my
->> understanding and knowledge is enough for this job).
->>
->> Thank in advance
->>
->> --
->> Kind regards
->>
-> [...]
+There is something fishy. In the Verb section it says indeed, that it is
+the past participle and simple past of inverse. The entry for inverse
+however only has sections that identify this word as adjective or noun;
+not a verb.
+
+> 	https://www.dictionary.com/browse/inversed
+
+Not sure I'd count this as hint that inversed exists. The entry shown to
+me under this URL is about "inverse" and it has
+
+	verb (used with object), in·versed, in·vers·ing.
+		? to invert.
+
+Does this mean: "Did you mean invert instead?"
+
+> 	https://en.wiktionary.org/wiki/inversed
+
+Yeah, that's the one I found, too.
+
+I still have the impression that "inversed" is in use because people
+don't know better and understand the intended meaning. And this results
+in leaking of this word into the references.
+
+> > Having said this I think (independent of the question if "inversed"
+> > exists) using two similar terms for the same thing just results in
+> > confusion. I hit that in the past already and I like it being addressed.
 > 
+> I don't know. It's pretty common to use different words for the same
+> thing. They're called synonyms.
+
+In literature yes, I agree. In a novel it is annoying to repeat the same
+words over and over again and some variation is good. In programming
+however the goal is a different one. There the goal should be to be
+precise and consistent.
+
+> > > And as you noted in the cover letter, there's a conflict between the
+> > > macro defined in dt-bindings/pwm/pwm.txt. If they end up being included
+> > > in the wrong order you'll get a compile error.
+> > 
+> > There are also other symbols that exist twice (GPIO_ACTIVE_HIGH was the
+> > first to come to my mind). I'm not aware of any problems related to
+> > these. What am I missing?
 > 
+> There's currently no problem, obviously. But if for some reason the
+> include files end up being included in a different order (i.e. the
+> dt-bindings header is included before linux/pwm.h) then the macro will
+> be evaluated and result in something like:
+> 
+> 	enum pwm_polarity {
+> 		PWM_POLARITY_NORMAL,
+> 		1,
+> 	};
+> 
+> and that's not valid C, so will cause a build error.
+
+I admit I didn't look closely here and I assume you are right. If I
+understand Oleksandr right this is only an intermediate step and when
+the series is applied completely this issue is gone. Still it might be
+worth to improve the series here.
+
+My original question was about similar problems with GPIO_ACTIVE_HIGH.
+Are you aware of problems there?
+
+> > > Note that DT bindings are an ABI and can
+> > > never change, whereas the enum pwm_polarity is part of a Linux internal
+> > > API and doesn't have the same restrictions as an ABI.
+> > 
+> > I thought only binary device trees (dtb) are supposed to be ABI.
+> 
+> Yes, the DTB is the ABI. dt-bindings/pwm/pwm.h is used to generate DTBs,
+> which basically makes it ABI as well.
+
+We disagree here. With this argument you could fix quite some things as
+ABI.
+
+> Yes, the symbol name may not be part of the ABI, but changing the
+> symbol becomes very inconvenient because everyone that depends on it
+> would have to change.
+
+Oleksandr adapted all in-tree users, so it only affects out-of-tree
+users. In my book this is fine.
+
+> Why bother?
+
+To make the API more precise and consistent. That's a good goal in my
+eyes.
+
+Best regards
+Uwe
+
+-- 
+Pengutronix e.K.                           | Uwe Kleine-König            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
