@@ -1,132 +1,58 @@
-From: Milan =?utf-8?Q?P=2E_Stani=C4=87?= <mps@arvanta.net>
-Subject: Re: PROBLEM: =?utf-8?Q?mmc=5Fselect=5Fhs40?=
- =?utf-8?B?MGVzIGZhaWxlZCwgZXJyb3IgLTExMOOAkOivt+azqOaEj++8jOmCruS7tg==?=
- =?utf-8?B?55SxbGludXgtbW1jLW93bmVyQHZnZXIua2VybmVsLm9yZ+S7o+WPkeOAkQ==?=
-Date: Thu, 19 Mar 2020 13:00:16 +0100
-Message-ID: <20200319120016.GA31191@arya.arvanta.net>
-References: <20200301220242.GA8276@arya.arvanta.net>
- <20200318214917.GA9112@arya.arvanta.net>
- <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?=
+        <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
+Subject: Re: [RFC PATCH 1/7] pwm: rename the PWM_POLARITY_INVERSED enum
+Date: Thu, 19 Mar 2020 13:10:26 +0100
+Message-ID: <20200319121026.3rzcxdknfyhtkryi@pengutronix.de>
+References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+ <20200317123231.2843297-2-oleksandr.suvorov@toradex.com>
+ <20200317174043.GA1464607@ulmo>
+ <20200317210042.ryrof3amr7fxp4w5@pengutronix.de>
+ <20200318225953.GA2874972@ulmo>
+ <CAGgjyvGd4y8M0L1sFMvQ1=gPcKfUPoR13dVS7F5WZx=333KG6g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
+In-Reply-To: <CAGgjyvGd4y8M0L1sFMvQ1=gPcKfUPoR13dVS7F5WZx=333KG6g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Oleksandr Suvorov <oleksandr.suvorov-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>
+Cc: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Paul Barker <pbarker-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Marcel Ziswiler <marcel.ziswiler-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Igor Opaniuk <igor.opaniuk-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Philippe Schenker <philippe.schenker-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Claudiu Beznea <claudiu.beznea-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Florian Fainelli <f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Ludovic Desroches <ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, Maxime Ripard <mripard-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, NXP Linux Team <linux-imx-3arQi8VN3Tc@public.gmane.org>, Nicolas Ferre <nicolas.ferre@mic>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Shawn,
+Hello,
 
-On Thu, 2020-03-19 at 11:11, Shawn Lin wrote:
-> Hi Milan
+[dropping Tony Prisk <linux-ci5G2KO2hbZ+pU9mqzGVBQ@public.gmane.org> from recipients]
+
+On Thu, Mar 19, 2020 at 01:40:28PM +0200, Oleksandr Suvorov wrote:
+> Thierry, I see the PWM core converts the bit field "third cell" into
+> the polarity variable.
+> Now I probably understand your sight and agree that we shouldn't give
+> the same names to bits in bitfield (dts) and values of a variable.
 > 
-> [+linux-rockchip to see if someone has a Samsung chromebook one plus
-> and could confirm if it works]
+> But there are lots of useless "0" values of third cell of "pwms"
+> option in dts files.
 > 
-> On 2020/3/19 5:49, Milan P. Stanić wrote:
-> > Hello,
-> > 
-> > Sorry to annoy again, but could you tell me if I sent this bug report
-> > to right mail address or I should send it somewhere else.
-> > 
-> > Also, did I sent bug report correctly or I did some mistakes which
-> > caused it to be ignored.
-> > 
-> > -- TIA On Sun, 2020-03-01 at 23:02, Milan P. Stanić wrote:
-> > > Hello,
-> > > 
-> > > I'm not native English speaker and I'm self taught in English so sorry
-> > > if do not write or express correctly. And sorry if I posted bug report
-> > > to wrong address.
-> > > 
-> > > I'm running linux 5.6.0-rc3 without any patches on Samsung chromebook
-> > > one plus, Arm64 rockchip rk3399 based model name:
-> > > Machine model: Google Kevin
-> > > 
-> > > I build kernels from upstream git.kernel.org for this machine for some
-> > > time (iirc, from 5.2.1 and up) but I'm getting error messages in kernel
-> > > after machine resumes from suspend-to-ram.
-> 
-> It sounds to me suspend-to-ram never works for this machine, at least
-> since 5.2.1. Am I right?
+> I see 2 ways now:
+> - just remove all "0" "third cell" from "pwms" options in dts files. I
+> see this "0" confuses some people.
 
-Sorry if I was not clear in previous mail. suspend-to-ram and resume works
-fine if the machine doesn't mount internal emmc card to use it in way.
+Then you have to overwrite pwm-cells of the provider. If there are two
+PWMs used from the same provider and only one is inverted this won't
+work. (Not entirely sure I understood your suggestion.) So I don't like
+this suggestion.
 
-If it boots from external mmc card or ssd disk attached over usb-c
-interface and use root filesystem (or any other filesystem, /home for
-example) on them (external mmc or disk on usb-c) it can go numerous
-times to suspend-resume cycles without any problem.
+And also in my eyes this isn't clearer, just more complicated to use.
 
-But if any filesystem from emmc mounted then in can suspend and even
-resume, but when resumed after some random time it start to make
-problems: programs segfault, cant read or write files and similar
-issue.
+> - convert pwm_state.polarity into pwm_state.flags and use bitfield
+>   directly from dtb.
+>   It simplifies the parsing logic and makes adding new flags easier.
 
-As I wrote in previous mail I can apply patches, build kernel and
-(maybe) tweak some parameters in kernel source (if I know which one
-should help me) to help subsystem developers to fix this problem.
+*shrug*, I don't care much.
+
+Best regards
+Uwe
 
 -- 
-thanks
-
-> > > excerpt from dmesg output:
-> > > -----------------------------------------------------------------------
-> > > Restarting tasks ... done.
-> > > PM: suspend exit
-> > > mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
-> > > mmc1: mmc_select_hs400es failed, error -110
-> > > mmc1: error -110 doing runtime resume
-> > > mmc1: Got data interrupt 0x00000002 even though no data operation was in progress.
-> > > mmc1: sdhci: ============ SDHCI REGISTER DUMP ===========
-> > > mmc1: sdhci: Sys addr:  0x00000008 | Version:  0x00001002
-> > > mmc1: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000008
-> > > mmc1: sdhci: Argument:  0x00000000 | Trn mode: 0x00000023
-> > > mmc1: sdhci: Present:   0x1fff0001 | Host ctl: 0x00000035
-> > > mmc1: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
-> > > mmc1: sdhci: Wake-up:   0x00000000 | Clock:    0x0000bc07
-> > > mmc1: sdhci: Timeout:   0x0000000d | Int stat: 0x00000000
-> > > mmc1: sdhci: Int enab:  0x03ff000b | Sig enab: 0x03ff000b
-> > > mmc1: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
-> > > mmc1: sdhci: Caps:      0x44edc880 | Caps_1:   0x801020f7
-> > > mmc1: sdhci: Cmd:       0x00000c1a | Max curr: 0x00000000
-> > > mmc1: sdhci: Resp[0]:   0x00000000 | Resp[1]:  0x373300bd
-> > > mmc1: sdhci: Resp[2]:   0x35303030 | Resp[3]:  0x00000000
-> > > mmc1: sdhci: Host ctl2: 0x00000000
-> > > mmc1: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xed41e200
-> > > -----------------------------------------------------------------------
-> > > 
-> > > I invoke suspend-to-ram by `echo mem > /sys/power/state` from ACPI power
-> > > and LID button handlers.
-> > > 
-> > > This only happens when I boot and use internal emmc card and never when
-> > > boot and use external mmc card.
-> > > 
-> > > If suspend-to-ram is not invoked (machine is always in normal state)
-> > > this problem never happen (or I missed it somehow).
-> > > 
-> > > I'm attaching kernel .config (file config-5.6.0-rc3-1-gru.conf) which
-> > > use to build kernel, output of the `awk -f scripts/ver_linux` as file
-> > > ver_linux.txt and  output of dmesg as file mmc-err.txt (from which I
-> > > deleted wifi connection logs).
-> > > 
-> > > Sorry if I did something bad or wrong with this bug report, I don't have
-> > > much experience with bug reporting, especially for kernel.
-> > > 
-> > > I'm ready to send you more data, and investigate this more, apply
-> > > patches and rebuild kernel or whatever you ask me (of course if my
-> > > understanding and knowledge is enough for this job).
-> > > 
-> > > Thank in advance
-> > > 
-> > > --
-> > > Kind regards
-> > > 
-> > [...]
-> > 
-> > 
-> 
-> 
+Pengutronix e.K.                           | Uwe Kleine-K�nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
