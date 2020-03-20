@@ -1,44 +1,47 @@
-From: Lu Baolu <baolu.lu@linux.intel.com>
-Subject: Re: [PATCH 3/8] iommu/vt-d: Remove IOVA handling code from
- non-dma_ops path
-Date: Fri, 20 Mar 2020 15:06:24 +0800
-Message-ID: <46bf21e2-bb3e-1c1e-8dae-2c5bd8c5274f@linux.intel.com>
-References: <20191221150402.13868-1-murphyt7@tcd.ie>
- <20191221150402.13868-4-murphyt7@tcd.ie>
- <CALQxJuuue2MCF+xAAAcWCW=301HHZ9yWBmYV-K-ubCxO4s5eqQ@mail.gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-msm-owner@vger.kernel.org>
-In-Reply-To: <CALQxJuuue2MCF+xAAAcWCW=301HHZ9yWBmYV-K-ubCxO4s5eqQ@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-arm-msm-owner@vger.kernel.org
-To: Tom Murphy <murphyt7@tcd.ie>, iommu@lists.linux-foundation.org
-Cc: baolu.lu@linux.intel.com, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Andy Gross <agross@kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.co>
+From: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v4 0/3] Add Rockchip NFC drivers for RK3308 and others
+Date: Fri, 20 Mar 2020 17:33:39 +0800
+Message-ID: <20200320093342.15470-1-yifeng.zhao@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020/3/20 14:30, Tom Murphy wrote:
-> Could we merge patch 1-3 from this series? it just cleans up weird
-> code and merging these patches will cover some of the work needed to
-> move the intel iommu driver to the dma-iommu api in the future.
 
-Can you please take a look at this patch series?
+Rockchp's NFC(Nand Flash Controller) has three versions: V6, V8 and V9.
+This series patch can support all  three versions.
 
-https://lkml.org/lkml/2020/3/13/1162
 
-It probably makes this series easier.
+Changes in v4:
+- Define platform data structure for the register offsets.
+- The compatible define with rkxx_nfc.
+- Use SET_SYSTEM_SLEEP_PM_OPS to define PM_OPS.
+- Use exec_op instead of legacy hooks.
+- The compatible define with rkxx_nfc
+- Add assigned-clocks
+- Fix some wrong define
 
-Best regards,
-baolu
+Changes in v3:
+- Change the title for the dt-bindings
 
-> 
-> On Sat, 21 Dec 2019 at 07:04, Tom Murphy<murphyt7@tcd.ie>  wrote:
->> Remove all IOVA handling code from the non-dma_ops path in the intel
->> iommu driver.
->>
->> There's no need for the non-dma_ops path to keep track of IOVAs. The
->> whole point of the non-dma_ops path is that it allows the IOVAs to be
->> handled separately. The IOVA handling code removed in this patch is
->> pointless.
->>
->> Signed-off-by: Tom Murphy<murphyt7@tcd.ie>
+Changes in v2:
+- Fix compile error.
+- Include header files sorted by file name
+
+Yifeng Zhao (3):
+  mtd: rawnand: rockchip: NFC drivers for RK3308, RK3188 and others
+  dt-bindings: mtd: Describe Rockchip RK3xxx NAND flash controller
+  MAINTAINERS: add maintainers to rockchip nfc
+
+ .../bindings/mtd/rockchip,nand.yaml           |  101 ++
+ MAINTAINERS                                   |    2 +
+ drivers/mtd/nand/raw/Kconfig                  |    7 +
+ drivers/mtd/nand/raw/Makefile                 |    1 +
+ drivers/mtd/nand/raw/rockchip_nand.c          | 1315 +++++++++++++++++
+ 5 files changed, 1426 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
+ create mode 100644 drivers/mtd/nand/raw/rockchip_nand.c
+
+-- 
+2.17.1
