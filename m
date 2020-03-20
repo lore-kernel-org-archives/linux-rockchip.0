@@ -1,70 +1,31 @@
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [RFC PATCH 6/7] arm64: dts: pwm: replace polarity constant with
- macro
-Date: Fri, 20 Mar 2020 11:03:29 +0100
-Message-ID: <20200320100329.GB16931@pi3>
-References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
- <20200317123231.2843297-7-oleksandr.suvorov@toradex.com>
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH v4 0/3] Add Rockchip NFC drivers for RK3308 and others
+Date: Fri, 20 Mar 2020 11:18:41 +0100
+Message-ID: <20200320111841.3386d415@xps13>
+References: <20200320093342.15470-1-yifeng.zhao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200317123231.2843297-7-oleksandr.suvorov@toradex.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
-Cc: devicetree@vger.kernel.org, linux-pwm@vger.kernel.org, Paul Barker <pbarker@konsulko.com>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, Andrius =?utf-8?B?xaB0aWtvbmFz?= <andrius@stikonas.eu>, Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, Christoph Muellner <christoph.muellner@theobroma-systems.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Hugh Cole-Baker <sigmaris@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, Johan
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200320093342.15470-1-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Mar 17, 2020 at 02:32:30PM +0200, Oleksandr Suvorov wrote:
-> There is the PWM_POLARITY_NORMAL defined and describled in
-> <dt-bindings/pwm/pwm.h> and used by pwm drivers.
-> 
-> This patch converts all '0' constant in pwms parameters into
-> PWM_POLARITY_NORMAL.
-> 
-> Replace with sed regexp:
-> 's/(pwms = <&[a-zA-Z_0-9]+ [0-9]+ [0-9]+) 0>/\1 PWM_POLARITY_NORMAL>/'
-> 
-> Then:
-> - include pwm.h in some dts/dtsi to fix building errors about undefined
->   symbols.
-> - fix the patman warnings about the code format;
-> 
-> Signed-off-by: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
-> ---
-> 
->  arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts      | 2 +-
->  arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts       | 2 +-
->  arch/arm64/boot/dts/amlogic/meson-axg-s400.dts             | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-axg.dtsi                 | 1 +
->  arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi          | 1 +
->  arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts          | 5 +++--
->  arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts            | 2 +-
->  arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts         | 5 +++--
->  arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi    | 4 ++--
->  arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts       | 4 ++--
->  arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts       | 7 ++++---
->  arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi        | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-gx.dtsi                  | 1 +
->  arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts       | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts     | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi           | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi       | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi          | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts       | 3 ++-
->  .../boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts    | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts | 2 +-
->  .../arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi      | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts      | 5 +++--
->  arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts         | 3 ++-
->  arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi         | 4 +++-
->  arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts     | 2 +-
->  arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts           | 7 ++++---
->  arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi      | 3 ++-
+Hi Yifeng,
 
-For Exynos:
-Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
+Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote on Fri, 20 Mar 2020
+17:33:39 +0800:
 
-Best regards,
-Krzysztof
+> Rockchp's NFC(Nand Flash Controller) has three versions: V6, V8 and V9.
+> This series patch can support all  three versions.
+> 
+> 
+It looks like it's the third time you send a v4 for this series, if you
+change things in the series, please increase the version number. If
+it is a mistake, please tell us so, because it is not easy to follow :)
+
+
+Thanks,
+Miquèl
