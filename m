@@ -1,298 +1,275 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v4 2/3] dt-bindings: mtd: Describe Rockchip RK3xxx NAND
- flash controller
-Date: Fri, 20 Mar 2020 16:32:25 +0100
-Message-ID: <3352edf3-7951-8760-7ee2-0cffa77a8bf8@gmail.com>
-References: <20200320093342.15470-1-yifeng.zhao@rock-chips.com>
- <20200320093342.15470-3-yifeng.zhao@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200320093342.15470-3-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [RFC PATCH v2] dt-bindings: phy: convert phy-rockchip-inno-usb2 bindings to yaml
+Date: Fri, 20 Mar 2020 19:37:55 +0100
+Message-ID: <20200320183755.17150-1-jbx6244@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: kishon@ti.com
+Cc: heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Yifeng,
+Current dts files for Rockchip with 'usb2-phy' subnodes
+are manually verified. In order to automate this process
+phy-rockchip-inno-usb2.txt has to be converted to yaml.
 
-Déjà vu.
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+Changed v2:
+  Keep unused "rockchip,rk3366-usb2phy" support.
+  Add "#phy-cells" to example.
+  Add allOf phy-provider.yaml
+---
+ .../bindings/phy/phy-rockchip-inno-usb2.txt        |  81 -----------
+ .../bindings/phy/phy-rockchip-inno-usb2.yaml       | 153 +++++++++++++++++++++
+ 2 files changed, 153 insertions(+), 81 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+ create mode 100644 Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
 
-The Documentation/ portion of the patch should come in the series before
-the code implementing the binding.
-
-cover letter
-binding
-driver
-dts patches
-
-Test with linux-next for MAINTAINER patch. It has changed.
-
-git clone -- depth 1
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
-
-Also include all mail lists found with:
-./scripts/get_maintainer.pl --nogit-fallback --nogit
-
-On 3/20/20 10:33 AM, Yifeng Zhao wrote:
-> Documentation support for Rockchip RK3xxx NAND flash controllers
->
-> Signed-off-by: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
->
-> Changes in v4:
-> - The compatible define with rkxx_nfc
-> - Add assigned-clocks
-> - Fix some wrong define
->
-> Changes in v3:
-> - Change the title for the dt-bindings
->
-> Changes in v2: None
->
->  .../bindings/mtd/rockchip,nand.yaml           | 101 ++++++++++++++++++
->  1 file changed, 101 insertions(+)
->  create mode 100644
-Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
->
-
-> diff --git a/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
-b/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
-
-I think rockchip,nand-controller.yaml is preferred.
-A driver named rockchip-nand-controller.c would be nice!
-See comments on my previous series by Miquel Raynal.
-
-> new file mode 100644
-> index 000000000000..907af0d52b6b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
-> @@ -0,0 +1,101 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mtd/rockchip,nand.yaml#
-
-rockchip,nand-controller.yaml#
-
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-
-> +title: Rockchip SoCs NAND FLASH Controller (NFC) Device Tree Bindings
-
-Maybe change to:
-
-title: Rockchip SoCs NAND FLASH Controller (NFC)
-
-> +
-> +allOf:
-> +  - $ref: "nand-controller.yaml"
-
-Add #
-
-  - $ref: "nand-controller.yaml#"
-
-> +
-> +maintainers:
-
-> +  - Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-
-Add only people with maintainers rights.
-
-- Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-
-> +
-> +properties:
-
-> +  "#address-cells": true
-> +  "#size-cells": true
-
-Already in nand-controller.yaml
-
-> +
-> +  compatible:
-> +    enum:
-
-> +      - rockchip,px30_nfc
-> +      - rockchip,rk3308_nfc
-> +      - rockchip,rv1108_nfc
-> +      - rockchip,rk3066_nfc
-> +      - rockchip,rk3188_nfc
-> +      - rockchip,rk3288_nfc
-> +      - rockchip,rk3368_nfc
-> +      - rockchip,rk2928_nfc
-> +      - rockchip,rk3036_nfc
-> +      - rockchip,rk3128_nfc
-> +      - rockchip,rk3228_nfc
-
-sort/format
-Ask robh for exact format.
-
-- rockchip,rk3066-nand-controller
-
-
-Also add dtsi patches in this serie for supported SoCs in main kernel,
-so we can check them with yaml
-
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-
-minItems: 1
-
-> +    items:
-
-> +      - description: Module Clock
-> +      - description: Bus Clock
-
-swap
-rk3066 only has ahb
-Change this also in source!
-
-- description: Bus Clock
-- description: Module Clock
-
-> +
-> +  clock-names:
-
-minItems: 1
-
-> +    items:
-
-> +      - const: nfc
-> +      - const: ahb
-
-swap
-rk3066 only has ahb
-
-- const: ahb
-- const: nfc
-
-> +
-> +patternProperties:
-
-> +  "^nand@[0-3]$":
-
-Use same name as in nand-controller.yaml for inheritance?
-
-  "^nand@[a-f0-9]$":
-
-> +    type: object
-> +    properties:
-> +      reg:
-> +        minimum: 0
-> +        maximum: 3
-> +
-
-nand-ecc-mode?
-
-> +      nand-ecc-step-size:
-> +        const: 1024
-> +
-> +      nand-ecc-strength:
-> +        enum: [16, 24 , 40, 60, 70]
-
-remove space            ^
-
-> +
-> +      nand-bus-width:
-> +        const: 8
-
-rk3066 needs lower bch for r/w idb
-add info about idb blocks used as variable instead of fixed to 8.
-Change this also in source!
-For example:
-
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
+deleted file mode 100644
+index 541f52988..000000000
+--- a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.txt
++++ /dev/null
+@@ -1,81 +0,0 @@
+-ROCKCHIP USB2.0 PHY WITH INNO IP BLOCK
+-
+-Required properties (phy (parent) node):
+- - compatible : should be one of the listed compatibles:
+-	* "rockchip,px30-usb2phy"
+-	* "rockchip,rk3228-usb2phy"
+-	* "rockchip,rk3328-usb2phy"
+-	* "rockchip,rk3366-usb2phy"
+-	* "rockchip,rk3399-usb2phy"
+-	* "rockchip,rv1108-usb2phy"
+- - reg : the address offset of grf for usb-phy configuration.
+- - #clock-cells : should be 0.
+- - clock-output-names : specify the 480m output clock name.
+-
+-Optional properties:
+- - clocks : phandle + phy specifier pair, for the input clock of phy.
+- - clock-names : input clock name of phy, must be "phyclk".
+- - assigned-clocks : phandle of usb 480m clock.
+- - assigned-clock-parents : parent of usb 480m clock, select between
+-		 usb-phy output 480m and xin24m.
+-		 Refer to clk/clock-bindings.txt for generic clock
+-		 consumer properties.
+- - rockchip,usbgrf : phandle to the syscon managing the "usb general
+-		 register files". When set driver will request its
+-		 phandle as one companion-grf for some special SoCs
+-		 (e.g RV1108).
+- - extcon : phandle to the extcon device providing the cable state for
+-		 the otg phy.
+-
+-Required nodes : a sub-node is required for each port the phy provides.
+-		 The sub-node name is used to identify host or otg port,
+-		 and shall be the following entries:
+-	* "otg-port" : the name of otg port.
+-	* "host-port" : the name of host port.
+-
+-Required properties (port (child) node):
+- - #phy-cells : must be 0. See ./phy-bindings.txt for details.
+- - interrupts : specify an interrupt for each entry in interrupt-names.
+- - interrupt-names : a list which should be one of the following cases:
+-	Regular case:
+-	* "otg-id" : for the otg id interrupt.
+-	* "otg-bvalid" : for the otg vbus interrupt.
+-	* "linestate" : for the host/otg linestate interrupt.
+-	Some SoCs use one interrupt with the above muxed together, so for these
+-	* "otg-mux" : otg-port interrupt, which mux otg-id/otg-bvalid/linestate
+-		to one.
+-
+-Optional properties:
+- - phy-supply : phandle to a regulator that provides power to VBUS.
+-		See ./phy-bindings.txt for details.
+-
+-Example:
+-
+-grf: syscon@ff770000 {
+-	compatible = "rockchip,rk3366-grf", "syscon", "simple-mfd";
+-	#address-cells = <1>;
+-	#size-cells = <1>;
+-
+-...
+-
+-	u2phy: usb2-phy@700 {
+-		compatible = "rockchip,rk3366-usb2phy";
+-		reg = <0x700 0x2c>;
+-		#clock-cells = <0>;
+-		clock-output-names = "sclk_otgphy0_480m";
+-
+-		u2phy_otg: otg-port {
+-			#phy-cells = <0>;
+-			interrupts = <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH>,
+-				     <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH>,
+-				     <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
+-			interrupt-names = "otg-id", "otg-bvalid", "linestate";
+-		};
+-
+-		u2phy_host: host-port {
+-			#phy-cells = <0>;
+-			interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
+-			interrupt-names = "linestate";
+-		};
+-	};
+-};
+diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
+new file mode 100644
+index 000000000..8fd1e6f3a
+--- /dev/null
++++ b/Documentation/devicetree/bindings/phy/phy-rockchip-inno-usb2.yaml
+@@ -0,0 +1,153 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/phy/phy-rockchip-inno-usb2.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+      nand-is-boot-medium: true
++title: Rockchip USB2.0 phy with inno IP block
 +
-
-+      rockchip,boot-blks:
-
-suggestion from robh.
-See comments on my previous series.
-
-+        minimum: 2
-+        default: 16
-+        allOf:
-+        - $ref: /schemas/types.yaml#/definitions/uint32
++allOf:
++  - $ref: /schemas/phy/phy-provider.yaml#
++
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
++
++# Everything else is described in the common file
++properties:
++  compatible:
++    oneOf:
++      - const: rockchip,px30-usb2phy
++      - const: rockchip,rk3228-usb2phy
++      - const: rockchip,rk3328-usb2phy
++      - const: rockchip,rk3366-usb2phy
++      - const: rockchip,rk3399-usb2phy
++      - const: rockchip,rv1108-usb2phy
++
++  reg:
++    maxItems: 1
++
++  clock-output-names:
++    description:
++      The usb 480m output clock name.
++
++  "#clock-cells":
++    const: 0
++
++  clocks:
++    maxItems: 1
++
++  clock-names:
++    const: phyclk
++
++  assigned-clocks:
++    description:
++      Phandle of the usb 480m clock.
++
++  assigned-clock-parents:
++    description:
++      Parent of the usb 480m clock.
++      Select between usb-phy output 480m and xin24m.
++      Refer to clk/clock-bindings.txt for generic clock consumer properties.
++
++  extcon:
++    description:
++      Phandle to the extcon device providing the cable state for the otg phy.
++
++  rockchip,usbgrf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the syscon managing the 'usb general register files'.
++      When set the driver will request its phandle as one companion-grf
++      for some special SoCs (e.g rv1108).
++
++  host-port:
++    type: object
++    additionalProperties: false
++
++    properties:
++      "#phy-cells":
++        const: 0
++
++      interrupts:
++        description: host linestate interrupt
++
++      interrupt-names:
++        const: linestate
++
++      phy-supply:
 +        description:
-+          For legacy devices where the bootrom can only handle 24 bit
-BCH/ECC.
-+          If specified it indicates the number of erase blocks in use by
-+          the bootloader that need a lower BCH/ECC setting.
-+          Only used in combination with 'nand-is-boot-medium'.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +
-> +examples:
-> +  - |
-
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/rk3308-cru.h>
-
-sort
-    #include <dt-bindings/clock/rk3308-cru.h>
-    #include <dt-bindings/interrupt-controller/arm-gic.h>
-
-> +    nfc: nand-controller@ff4b0000 {
-> +      compatible = "rockchip,nfc";
-
-use real compatible else no check
-
-> +      reg = <0x0 0xff4b0000 0x0 0x4000>;
-> +      interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
-
-> +      clocks = <&cru SCLK_NANDC>, <&cru HCLK_NANDC>;
-
-swap
-
-> +      clock-names = "nfc", "ahb";
-
-swap
-
-> +      assigned-clocks = <&clks SCLK_NANDC>;
-> +      assigned-clock-rates = <150000000>;
-> +
-
-> +      pinctrl-names = "default";
-
-pinctrl-names below pinctrl-0
-
-> +      pinctrl-0 = <&flash_csn0 &flash_rdy &flash_ale &flash_cle
-> +                  &flash_wrn &flash_rdn &flash_bus8>;
-
-sort/align
-
-> +
-> +      #address-cells = <1>;
-> +      #size-cells = <0>;
-
-space
-
-> +      nand@0 {
-> +        reg = <0>;
-> +        nand-ecc-mode = "hw";
-> +        nand-ecc-strength = <16>;
-> +        nand-ecc-step-size = <1024>;
-> +        nand-bus-width = <8>;
-> +      };
-> +    };
-> +
-> +...
-> --
-> 2.17.1
->
++          Phandle to a regulator that provides power to VBUS.
++          See ./phy-bindings.txt for details.
++
++    required:
++      - "#phy-cells"
++      - interrupts
++      - interrupt-names
++
++  otg-port:
++    type: object
++    additionalProperties: false
++
++    properties:
++      "#phy-cells":
++        const: 0
++
++      interrupts:
++        minItems: 1
++        maxItems: 3
++
++      interrupt-names:
++        oneOf:
++          - const: linestate
++          - const: otg-mux
++          - items:
++            - const: otg-bvalid
++            - const: otg-id
++            - const: linestate
++
++      phy-supply:
++        description:
++          Phandle to a regulator that provides power to VBUS.
++          See ./phy-bindings.txt for details.
++
++    required:
++      - "#phy-cells"
++      - interrupts
++      - interrupt-names
++
++required:
++  - compatible
++  - reg
++  - clock-output-names
++  - "#clock-cells"
++  - host-port
++  - otg-port
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3399-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    u2phy0: usb2-phy@e450 {
++      compatible = "rockchip,rk3399-usb2phy";
++      reg = <0xe450 0x10>;
++      clocks = <&cru SCLK_USB2PHY0_REF>;
++      clock-names = "phyclk";
++      clock-output-names = "clk_usbphy0_480m";
++      #clock-cells = <0>;
++      #phy-cells = <0>;
++
++      u2phy0_host: host-port {
++        #phy-cells = <0>;
++        interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH 0>;
++        interrupt-names = "linestate";
++      };
++
++      u2phy0_otg: otg-port {
++        #phy-cells = <0>;
++        interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>,
++                     <GIC_SPI 104 IRQ_TYPE_LEVEL_HIGH 0>,
++                     <GIC_SPI 106 IRQ_TYPE_LEVEL_HIGH 0>;
++        interrupt-names = "otg-bvalid", "otg-id", "linestate";
++      };
++    };
+-- 
+2.11.0
