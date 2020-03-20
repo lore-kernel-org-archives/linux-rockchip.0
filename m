@@ -1,159 +1,90 @@
-From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Subject: [PATCH v4 2/3] dt-bindings: mtd: Describe Rockchip RK3xxx NAND flash
- controller
-Date: Fri, 20 Mar 2020 17:33:41 +0800
-Message-ID: <20200320093342.15470-3-yifeng.zhao@rock-chips.com>
-References: <20200320093342.15470-1-yifeng.zhao@rock-chips.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [RFC PATCH 7/7] arm: dts: pwm: replace polarity constant with
+ macro
+Date: Fri, 20 Mar 2020 11:02:43 +0100
+Message-ID: <20200320100243.GA16931@pi3>
+References: <20200317123231.2843297-1-oleksandr.suvorov@toradex.com>
+ <20200317123231.2843297-8-oleksandr.suvorov@toradex.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mtd-bounces+gldm-linux-mtd-36=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200320093342.15470-1-yifeng.zhao@rock-chips.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mtd/>
-List-Post: <mailto:linux-mtd@lists.infradead.org>
-List-Help: <mailto:linux-mtd-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mtd>,
- <mailto:linux-mtd-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-mtd" <linux-mtd-bounces@lists.infradead.org>
-Errors-To: linux-mtd-bounces+gldm-linux-mtd-36=m.gmane-mx.org@lists.infradead.org
-To: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com, robh+dt@kernel.org
-Cc: devicetree@vger.kernel.org, Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-mtd@lists.infradead.org, heiko@sntech.de, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200317123231.2843297-8-oleksandr.suvorov@toradex.com>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+Cc: devicetree@vger.kernel.org, linux-pwm@vger.kernel.org, Paul Barker <pbarker@konsulko.com>, Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, Alexandre Belloni <alexandre.belloni@bootlin.com>, Bartosz Golaszewski <bgolaszewski@baylibre.com>, =?utf-8?Q?Beno=C3=AEt?= Cousson <bcousson@baylibre.com>, Chen-Yu Tsai <wens@csie.org>, David Lechner <david@lechnology.com>, Fabio Estevam <festevam@gmail.com>, Geert Uytterhoeven <geert+renesas@glider.be>, Heiko Stuebner <heiko@sntech.de>, Jisheng Zhang <Jisheng.Zhang@synaptics.com>, Kevin Hilman <khilman>
 List-Id: linux-rockchip.vger.kernel.org
 
-Documentation support for Rockchip RK3xxx NAND flash controllers
+On Tue, Mar 17, 2020 at 02:32:31PM +0200, Oleksandr Suvorov wrote:
+> There is the PWM_POLARITY_NORMAL defined and describled in
+> <dt-bindings/pwm/pwm.h> and used by pwm drivers.
+> 
+> This patch converts all '0' constant in pwms parameters into
+> PWM_POLARITY_NORMAL.
+> 
+> Replace with sed regexp:
+> 's/(pwms = <&[a-zA-Z_0-9]+ [0-9]+ [0-9]+) 0>/\1 PWM_POLARITY_NORMAL>/'
+> 
+> Then:
+> - included pwm.h in some dts/dtsi to fix building errors about undefined
+>   symbols.
+> - fixed the patman warnings about the code format;
+> 
+> Signed-off-by: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+> ---
+> 
+>  arch/arm/boot/dts/am335x-cm-t335.dts               | 2 +-
+>  arch/arm/boot/dts/am335x-evm.dts                   | 2 +-
+>  arch/arm/boot/dts/am3517-evm.dts                   | 2 +-
+>  arch/arm/boot/dts/at91-dvk_su60_somc_lcm.dtsi      | 2 +-
+>  arch/arm/boot/dts/at91-kizbox2-common.dtsi         | 6 +++---
+>  arch/arm/boot/dts/at91-kizbox3_common.dtsi         | 8 ++++----
+>  arch/arm/boot/dts/at91-kizboxmini-common.dtsi      | 6 +++---
+>  arch/arm/boot/dts/at91-nattis-2-natte-2.dts        | 2 +-
+>  arch/arm/boot/dts/at91-sama5d4_ma5d4evk.dts        | 2 +-
+>  arch/arm/boot/dts/at91sam9n12ek.dts                | 2 +-
+>  arch/arm/boot/dts/at91sam9x5dm.dtsi                | 2 +-
+>  arch/arm/boot/dts/berlin2cd-google-chromecast.dts  | 4 ++--
+>  arch/arm/boot/dts/da850-evm.dts                    | 2 +-
+>  arch/arm/boot/dts/da850-lego-ev3.dts               | 4 ++--
+>  arch/arm/boot/dts/exynos4412-midas.dtsi            | 2 +-
+>  arch/arm/boot/dts/exynos4412-odroidu3.dts          | 2 +-
+>  arch/arm/boot/dts/exynos5250-snow-common.dtsi      | 2 +-
+>  arch/arm/boot/dts/exynos5410-odroidxu.dts          | 2 +-
+>  arch/arm/boot/dts/exynos5420-peach-pit.dts         | 2 +-
+>  arch/arm/boot/dts/exynos5422-odroidhc1.dts         | 2 +-
+>  arch/arm/boot/dts/exynos5422-odroidxu3-common.dtsi | 2 +-
+>  arch/arm/boot/dts/exynos5422-odroidxu4.dts         | 2 +-
+>  arch/arm/boot/dts/exynos54xx-odroidxu-leds.dtsi    | 4 ++--
+>  arch/arm/boot/dts/exynos5800-peach-pi.dts          | 2 +-
+>  arch/arm/boot/dts/imx53-tx53-x13x.dts              | 5 +++--
+>  arch/arm/boot/dts/imx6dl-tx6dl-comtft.dts          | 2 +-
+>  arch/arm/boot/dts/imx6q-display5.dtsi              | 2 +-
+>  arch/arm/boot/dts/imx6q-tx6q-1010-comtft.dts       | 2 +-
+>  arch/arm/boot/dts/imx6q-tx6q-1020-comtft.dts       | 2 +-
+>  arch/arm/boot/dts/imx6qdl-tx6-lvds.dtsi            | 4 ++--
+>  arch/arm/boot/dts/imx7-colibri.dtsi                | 4 +++-
+>  arch/arm/boot/dts/imx7d-nitrogen7.dts              | 3 ++-
+>  arch/arm/boot/dts/imx7d-pico.dtsi                  | 3 ++-
+>  arch/arm/boot/dts/imx7d-sdb.dts                    | 3 ++-
+>  arch/arm/boot/dts/imx7ulp-evk.dts                  | 3 ++-
+>  arch/arm/boot/dts/iwg20d-q7-common.dtsi            | 2 +-
+>  arch/arm/boot/dts/logicpd-torpedo-baseboard.dtsi   | 2 +-
+>  arch/arm/boot/dts/meson8b-ec100.dts                | 4 ++--
+>  arch/arm/boot/dts/meson8b-mxq.dts                  | 4 ++--
+>  arch/arm/boot/dts/meson8b-odroidc1.dts             | 4 ++--
+>  arch/arm/boot/dts/motorola-mapphone-common.dtsi    | 3 ++-
+>  arch/arm/boot/dts/omap3-gta04.dtsi                 | 2 +-
+>  arch/arm/boot/dts/omap3-n900.dts                   | 2 +-
+>  arch/arm/boot/dts/rk3288-veyron-edp.dtsi           | 2 +-
+>  arch/arm/boot/dts/rk3288-veyron.dtsi               | 2 +-
+>  arch/arm/boot/dts/rv1108-evb.dts                   | 2 +-
+>  arch/arm/boot/dts/s3c6410-mini6410.dts             | 2 +-
+>  arch/arm/boot/dts/s5pv210-aries.dtsi               | 2 +-
+>  arch/arm/boot/dts/s5pv210-smdkv210.dts             | 2 +-
 
-Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
----
+For Exynos/S3C/S5P:
+Acked-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-Changes in v4:
-- The compatible define with rkxx_nfc
-- Add assigned-clocks
-- Fix some wrong define
-
-Changes in v3:
-- Change the title for the dt-bindings
-
-Changes in v2: None
-
- .../bindings/mtd/rockchip,nand.yaml           | 101 ++++++++++++++++++
- 1 file changed, 101 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
-
-diff --git a/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml b/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
-new file mode 100644
-index 000000000000..907af0d52b6b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mtd/rockchip,nand.yaml
-@@ -0,0 +1,101 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mtd/rockchip,nand.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip SoCs NAND FLASH Controller (NFC) Device Tree Bindings
-+
-+allOf:
-+  - $ref: "nand-controller.yaml"
-+
-+maintainers:
-+  - Yifeng Zhao <yifeng.zhao@rock-chips.com>
-+
-+properties:
-+  "#address-cells": true
-+  "#size-cells": true
-+
-+  compatible:
-+    enum:
-+      - rockchip,px30_nfc
-+      - rockchip,rk3308_nfc
-+      - rockchip,rv1108_nfc
-+      - rockchip,rk3066_nfc
-+      - rockchip,rk3188_nfc
-+      - rockchip,rk3288_nfc
-+      - rockchip,rk3368_nfc
-+      - rockchip,rk2928_nfc
-+      - rockchip,rk3036_nfc
-+      - rockchip,rk3128_nfc
-+      - rockchip,rk3228_nfc
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: Module Clock
-+      - description: Bus Clock
-+
-+  clock-names:
-+    items:
-+      - const: nfc
-+      - const: ahb
-+
-+patternProperties:
-+  "^nand@[0-3]$":
-+    type: object
-+    properties:
-+      reg:
-+        minimum: 0
-+        maximum: 3
-+
-+      nand-ecc-step-size:
-+        const: 1024
-+
-+      nand-ecc-strength:
-+        enum: [16, 24 , 40, 60, 70]
-+
-+      nand-bus-width:
-+        const: 8
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/rk3308-cru.h>
-+    nfc: nand-controller@ff4b0000 {
-+      compatible = "rockchip,nfc";
-+      reg = <0x0 0xff4b0000 0x0 0x4000>;
-+      interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
-+      clocks = <&cru SCLK_NANDC>, <&cru HCLK_NANDC>;
-+      clock-names = "nfc", "ahb";
-+      assigned-clocks = <&clks SCLK_NANDC>;
-+      assigned-clock-rates = <150000000>;
-+
-+      pinctrl-names = "default";
-+      pinctrl-0 = <&flash_csn0 &flash_rdy &flash_ale &flash_cle
-+                  &flash_wrn &flash_rdn &flash_bus8>;
-+
-+      #address-cells = <1>;
-+      #size-cells = <0>;
-+      nand@0 {
-+        reg = <0>;
-+        nand-ecc-mode = "hw";
-+        nand-ecc-strength = <16>;
-+        nand-ecc-step-size = <1024>;
-+        nand-bus-width = <8>;
-+      };
-+    };
-+
-+...
--- 
-2.17.1
-
-
-
-
-______________________________________________________
-Linux MTD discussion mailing list
-http://lists.infradead.org/mailman/listinfo/linux-mtd/
+Best regards,
+Krzysztof
