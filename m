@@ -1,140 +1,44 @@
-From: Milan =?utf-8?Q?P=2E_Stani=C4=87?= <mps@arvanta.net>
-Subject: Re: PROBLEM: =?utf-8?Q?mmc=5Fselect=5Fhs40?=
- =?utf-8?B?MGVzIGZhaWxlZCwgZXJyb3IgLTExMOOAkOivt+azqOaEj++8jOmCruS7tg==?=
- =?utf-8?B?55SxbGludXgtbW1jLW93bmVyQHZnZXIua2VybmVsLm9yZ+S7o+WPkeOAkQ==?=
-Date: Sat, 21 Mar 2020 21:46:52 +0100
-Message-ID: <20200321204652.GA21002@arya.arvanta.net>
-References: <20200301220242.GA8276@arya.arvanta.net>
- <20200318214917.GA9112@arya.arvanta.net>
- <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com>
- <158bd6f5-2430-19bd-28ef-e18d67becaf3@arm.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-mmc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <158bd6f5-2430-19bd-28ef-e18d67becaf3@arm.com>
-Sender: linux-mmc-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-mmc@vger.kernel.org, Ulf Hansson <ulf.hansson@linaro.org>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH 1/6] arm64: dts: rockchip: fix phy nodename for rk3328
+Date: Sat, 21 Mar 2020 22:54:18 +0100
+Message-ID: <20200321215423.12176-1-jbx6244@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: robin.murphy@arm.com, aballier@gentoo.org, robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+A test with the command below gives for example this error:
 
-On Thu, 2020-03-19 at 12:28, Robin Murphy wrote:
-> Hi Shawn,
-> 
-> On 2020-03-19 3:11 am, Shawn Lin wrote:
-> > Hi Milan
-> > 
-> > [+linux-rockchip to see if someone has a Samsung chromebook one plus
-> > and could confirm if it works]
-> 
-> FWIW I've also tried suspend on my NanoPC-T4 and seen that the eMMC (also
-> HS400-ES) fails to come back properly on resume (thus resume never completes
-> due to the missing root filesystem). IIRC it might even have been
-> reproducible with suspend-to-idle, but I'd have to double-check that.
+arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: phy@0:
+'#phy-cells' is a required property
+
+The phy nodename is used by a phy-handle.
+The parent node is compatible with "snps,dwmac-mdio",
+so change nodename to 'ethernet-phy', for which '#phy-cells'
+is not a required property
+
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/schemas/
+phy/phy-provider.yaml
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 54b3f4616..8976c869f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -934,7 +934,7 @@
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
  
-I forgot to tell that emmc worked without problem on this machine with
-ChromeOS kernel 4.4.xx downloaded from
-https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4
-and with patches from
-https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-gru
-for about two years (iirc).
-Problem started when I switched to mainline kernels, somewhere around
-5.1.xx
-
-> Robin.
-> 
-> > On 2020/3/19 5:49, Milan P. Stanić wrote:
-> > > Hello,
-> > > 
-> > > Sorry to annoy again, but could you tell me if I sent this bug report
-> > > to right mail address or I should send it somewhere else.
-> > > 
-> > > Also, did I sent bug report correctly or I did some mistakes which
-> > > caused it to be ignored.
-> > > 
-> > > -- TIA On Sun, 2020-03-01 at 23:02, Milan P. Stanić wrote:
-> > > > Hello,
-> > > > 
-> > > > I'm not native English speaker and I'm self taught in English so sorry
-> > > > if do not write or express correctly. And sorry if I posted bug report
-> > > > to wrong address.
-> > > > 
-> > > > I'm running linux 5.6.0-rc3 without any patches on Samsung chromebook
-> > > > one plus, Arm64 rockchip rk3399 based model name:
-> > > > Machine model: Google Kevin
-> > > > 
-> > > > I build kernels from upstream git.kernel.org for this machine for some
-> > > > time (iirc, from 5.2.1 and up) but I'm getting error messages in kernel
-> > > > after machine resumes from suspend-to-ram.
-> > 
-> > It sounds to me suspend-to-ram never works for this machine, at least
-> > since 5.2.1. Am I right?
-> > 
-> > > > 
-> > > > excerpt from dmesg output:
-> > > > -----------------------------------------------------------------------
-> > > > Restarting tasks ... done.
-> > > > PM: suspend exit
-> > > > mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz,
-> > > > actual 400000HZ div = 0)
-> > > > mmc1: mmc_select_hs400es failed, error -110
-> > > > mmc1: error -110 doing runtime resume
-> > > > mmc1: Got data interrupt 0x00000002 even though no data
-> > > > operation was in progress.
-> > > > mmc1: sdhci: ============ SDHCI REGISTER DUMP ===========
-> > > > mmc1: sdhci: Sys addr:  0x00000008 | Version:  0x00001002
-> > > > mmc1: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000008
-> > > > mmc1: sdhci: Argument:  0x00000000 | Trn mode: 0x00000023
-> > > > mmc1: sdhci: Present:   0x1fff0001 | Host ctl: 0x00000035
-> > > > mmc1: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
-> > > > mmc1: sdhci: Wake-up:   0x00000000 | Clock:    0x0000bc07
-> > > > mmc1: sdhci: Timeout:   0x0000000d | Int stat: 0x00000000
-> > > > mmc1: sdhci: Int enab:  0x03ff000b | Sig enab: 0x03ff000b
-> > > > mmc1: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
-> > > > mmc1: sdhci: Caps:      0x44edc880 | Caps_1:   0x801020f7
-> > > > mmc1: sdhci: Cmd:       0x00000c1a | Max curr: 0x00000000
-> > > > mmc1: sdhci: Resp[0]:   0x00000000 | Resp[1]:  0x373300bd
-> > > > mmc1: sdhci: Resp[2]:   0x35303030 | Resp[3]:  0x00000000
-> > > > mmc1: sdhci: Host ctl2: 0x00000000
-> > > > mmc1: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xed41e200
-> > > > -----------------------------------------------------------------------
-> > > > 
-> > > > I invoke suspend-to-ram by `echo mem > /sys/power/state` from ACPI power
-> > > > and LID button handlers.
-> > > > 
-> > > > This only happens when I boot and use internal emmc card and never when
-> > > > boot and use external mmc card.
-> > > > 
-> > > > If suspend-to-ram is not invoked (machine is always in normal state)
-> > > > this problem never happen (or I missed it somehow).
-> > > > 
-> > > > I'm attaching kernel .config (file config-5.6.0-rc3-1-gru.conf) which
-> > > > use to build kernel, output of the `awk -f scripts/ver_linux` as file
-> > > > ver_linux.txt and  output of dmesg as file mmc-err.txt (from which I
-> > > > deleted wifi connection logs).
-> > > > 
-> > > > Sorry if I did something bad or wrong with this bug report, I don't have
-> > > > much experience with bug reporting, especially for kernel.
-> > > > 
-> > > > I'm ready to send you more data, and investigate this more, apply
-> > > > patches and rebuild kernel or whatever you ask me (of course if my
-> > > > understanding and knowledge is enough for this job).
-> > > > 
-> > > > Thank in advance
-> > > > 
-> > > > -- 
-> > > > Kind regards
-> > > > 
-> > > [...]
-> > > 
-> > > 
-> > 
-> > 
-> > 
-> > _______________________________________________
-> > Linux-rockchip mailing list
-> > Linux-rockchip@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+-			phy: phy@0 {
++			phy: ethernet-phy@0 {
+ 				compatible = "ethernet-phy-id1234.d400", "ethernet-phy-ieee802.3-c22";
+ 				reg = <0>;
+ 				clocks = <&cru SCLK_MAC2PHY_OUT>;
+-- 
+2.11.0
