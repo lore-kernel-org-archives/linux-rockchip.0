@@ -1,61 +1,73 @@
-From: Dafna Hirschfeld <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH 0/2] media: staging: rkisp1: Fix formats for metadata pads
-Date: Wed, 25 Mar 2020 22:27:02 +0100
-Message-ID: <20200325212704.29862-1-dafna.hirschfeld@collabora.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v3 0/7] hantro: set of small cleanups and fixes
+Date: Wed, 25 Mar 2020 18:34:31 -0300
+Message-ID: <20200325213439.16509-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna3-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffrey Kardatzke <jkardatzke-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-There are 4 pads between the entities
-rkisp1_isp, rkisp1_params, rkisp1_stats that transmit
-metadata. Since metadata has no dimensions, it makes
-sense to set the width and height of these pads to 0.
-The problem is that it makes the v4l-compliance tests fail.
-Currently, in order to silent the tests, the width
-and height are set to RKISP1_DEFAULT_*
+Hi all,
 
-This patchset sets the dimensions to 0 and solves the
-compliance error by introducing a new flag
-MEDIA_PAD_FL_METADATA in media.h and setting
-this flag to those pads.
-Then the v4l2-compliance tests can skip the
-dimensions test if this flag is set.
+Cleanups and fixes, third iteration.
 
-This is just a suggested implementation from Laurent,
-a better documentation is probably needed.
-Another possible solution suggested by Verkuil
-is to add a new media bus format: MEDIA_BUS_FMT_FIXED_METADATA.
+The main idea here is to address two issues, and while
+at it, clean the driver a bit.
 
-- patch 1: introduces the the flag
-- patch 2: set the flag to the pads and removes a related TODO item
+The first issue can be found in Patch 1, when the Request
+API is used, the CAPTURE buffer should be returned _before_
+the OUTPUT buffer, to avoid waking up userspace prematurely.
 
-A corresponding patch to v4l-utils will be sent.
+I noticed this issue while working on the rkvdec driver,
+but this time I've decided to tackle it at the core,
+in v4l2_m2m_buf_done_and_job_finish().
 
+The second issue is a simple compliance issue, which is solved
+by refactoring the driver, dealing with internal set format
+properly.
 
-Dafna Hirschfeld (2):
-  media: media.h: Add a pad flag MEDIA_PAD_FL_METADATA
-  media: staging: rkisp1: add the flag MEDIA_PAD_FL_METADATA to the
-    metadata pads
+Note that patch 7 still needs reviews from device tree maintainers.
 
- Documentation/media/uapi/mediactl/media-types.rst |  4 ++++
- drivers/staging/media/rkisp1/TODO                 |  1 -
- drivers/staging/media/rkisp1/rkisp1-isp.c         | 10 ++++++----
- drivers/staging/media/rkisp1/rkisp1-params.c      |  2 +-
- drivers/staging/media/rkisp1/rkisp1-stats.c       |  2 +-
- include/uapi/linux/media.h                        |  1 +
- 6 files changed, 13 insertions(+), 7 deletions(-)
+Changes v3:
+
+* Rebased media master.
+
+* Revert buffer sequence removal change.
+
+Changes v2:
+
+* Fix compile warning introduced by patch 6.
+
+* I'm adding two additional patches this time.
+  Patch 7 converts the binding to json-schema,
+  and patch 8 puts linux-rockchip mailing list in MAINTAINERS. 
+
+Thanks,
+Ezequiel
+
+Ezequiel Garcia (7):
+  v4l2-mem2mem: return CAPTURE buffer first
+  hantro: Set buffers' zeroth plane payload in .buf_prepare
+  hantro: Use v4l2_m2m_buf_done_and_job_finish
+  hantro: Remove unneeded hantro_dec_buf_finish
+  hantro: Move H264 motion vector calculation to a helper
+  hantro: Refactor for V4L2 API spec compliancy
+  dt-bindings: rockchip-vpu: Convert bindings to json-schema
+
+ .../bindings/media/rockchip-vpu.txt           |  43 -------
+ .../bindings/media/rockchip-vpu.yaml          |  82 +++++++++++++
+ MAINTAINERS                                   |   2 +-
+ drivers/media/v4l2-core/v4l2-mem2mem.c        |  11 +-
+ drivers/staging/media/hantro/hantro.h         |   7 +-
+ drivers/staging/media/hantro/hantro_drv.c     |  28 ++---
+ drivers/staging/media/hantro/hantro_hw.h      |  31 +++++
+ drivers/staging/media/hantro/hantro_v4l2.c    | 111 +++++++++---------
+ 8 files changed, 193 insertions(+), 122 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.txt
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.yaml
 
 -- 
-2.17.1
+2.26.0.rc2
