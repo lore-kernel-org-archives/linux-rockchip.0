@@ -1,62 +1,53 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v3 3/7] hantro: Use v4l2_m2m_buf_done_and_job_finish
-Date: Wed, 25 Mar 2020 18:34:34 -0300
-Message-ID: <20200325213439.16509-4-ezequiel@collabora.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v3 4/7] hantro: Remove unneeded hantro_dec_buf_finish
+Date: Wed, 25 Mar 2020 18:34:35 -0300
+Message-ID: <20200325213439.16509-5-ezequiel@collabora.com>
 References: <20200325213439.16509-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200325213439.16509-1-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Rob Herring <robh@kernel.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Ezequiel Garcia <ezequiel@collabora.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200325213439.16509-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffrey Kardatzke <jkardatzke-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Let the core sort out the nuances of returning buffers
-to userspace, by using the v4l2_m2m_buf_done_and_job_finish
-helper.
+Since now .buf_prepare takes care of setting the
+buffer payload size, we can get rid of this,
+at least for decoders.
 
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
---
- drivers/staging/media/hantro/hantro_drv.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ drivers/staging/media/hantro/hantro_drv.c | 10 ----------
+ 1 file changed, 10 deletions(-)
 
 diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index ace13973e2d0..d0097c5fe7d9 100644
+index d0097c5fe7d9..0db8ad455160 100644
 --- a/drivers/staging/media/hantro/hantro_drv.c
 +++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -101,8 +101,8 @@ static void hantro_job_finish(struct hantro_dev *vpu,
- 	pm_runtime_put_autosuspend(vpu->dev);
- 	clk_bulk_disable(vpu->variant->num_clocks, vpu->clocks);
- 
--	src = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
--	dst = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-+	src = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-+	dst = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
- 
- 	if (WARN_ON(!src))
- 		return;
-@@ -112,14 +112,14 @@ static void hantro_job_finish(struct hantro_dev *vpu,
- 	src->sequence = ctx->sequence_out++;
- 	dst->sequence = ctx->sequence_cap++;
- 
--	ret = ctx->buf_finish(ctx, &dst->vb2_buf, bytesused);
--	if (ret)
--		result = VB2_BUF_STATE_ERROR;
--
--	v4l2_m2m_buf_done(src, result);
--	v4l2_m2m_buf_done(dst, result);
-+	if (ctx->buf_finish) {
-+		ret = ctx->buf_finish(ctx, &dst->vb2_buf, bytesused);
-+		if (ret)
-+			result = VB2_BUF_STATE_ERROR;
-+	}
- 
--	v4l2_m2m_job_finish(vpu->m2m_dev, ctx->fh.m2m_ctx);
-+	v4l2_m2m_buf_done_and_job_finish(ctx->dev->m2m_dev, ctx->fh.m2m_ctx,
-+					 result);
+@@ -80,15 +80,6 @@ hantro_enc_buf_finish(struct hantro_ctx *ctx, struct vb2_buffer *buf,
+ 	return 0;
  }
  
- void hantro_irq_done(struct hantro_dev *vpu, unsigned int bytesused,
+-static int
+-hantro_dec_buf_finish(struct hantro_ctx *ctx, struct vb2_buffer *buf,
+-		      unsigned int bytesused)
+-{
+-	/* For decoders set bytesused as per the output picture. */
+-	buf->planes[0].bytesused = ctx->dst_fmt.plane_fmt[0].sizeimage;
+-	return 0;
+-}
+-
+ static void hantro_job_finish(struct hantro_dev *vpu,
+ 			      struct hantro_ctx *ctx,
+ 			      unsigned int bytesused,
+@@ -431,7 +422,6 @@ static int hantro_open(struct file *filp)
+ 		ctx->buf_finish = hantro_enc_buf_finish;
+ 	} else if (func->id == MEDIA_ENT_F_PROC_VIDEO_DECODER) {
+ 		allowed_codecs = vpu->variant->codec & HANTRO_DECODERS;
+-		ctx->buf_finish = hantro_dec_buf_finish;
+ 	} else {
+ 		ret = -ENODEV;
+ 		goto err_ctx_free;
 -- 
 2.26.0.rc2
