@@ -1,73 +1,64 @@
 From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 0/7] hantro: set of small cleanups and fixes
-Date: Wed, 25 Mar 2020 18:34:31 -0300
-Message-ID: <20200325213439.16509-1-ezequiel@collabora.com>
+Subject: [PATCH v3 1/7] v4l2-mem2mem: return CAPTURE buffer first
+Date: Wed, 25 Mar 2020 18:34:32 -0300
+Message-ID: <20200325213439.16509-2-ezequiel@collabora.com>
+References: <20200325213439.16509-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200325213439.16509-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffrey Kardatzke <jkardatzke-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffrey Kardatzke <jkardatzke-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi all,
+When the request API is used, typically an OUTPUT (src) buffer
+will be part of a request. A userspace process will be typically
+blocked, waiting on the request file descriptor.
 
-Cleanups and fixes, third iteration.
+Returning the OUTPUT (src) buffer will wake-up such processes,
+who will immediately attempt to dequeue the CAPTURE buffer,
+only to find it's still unavailable.
 
-The main idea here is to address two issues, and while
-at it, clean the driver a bit.
+Therefore, change v4l2_m2m_buf_done_and_job_finish returning
+the CAPTURE (dst) buffer first, to avoid signalling the request
+file descriptor prematurely, i.e. before the CAPTURE buffer is done.
 
-The first issue can be found in Patch 1, when the Request
-API is used, the CAPTURE buffer should be returned _before_
-the OUTPUT buffer, to avoid waking up userspace prematurely.
+When the request API is not used, this change should have
+no impact.
 
-I noticed this issue while working on the rkvdec driver,
-but this time I've decided to tackle it at the core,
-in v4l2_m2m_buf_done_and_job_finish().
+Tested-by: Nicolas Dufresne <nicolas.dufresne-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+ drivers/media/v4l2-core/v4l2-mem2mem.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-The second issue is a simple compliance issue, which is solved
-by refactoring the driver, dealing with internal set format
-properly.
-
-Note that patch 7 still needs reviews from device tree maintainers.
-
-Changes v3:
-
-* Rebased media master.
-
-* Revert buffer sequence removal change.
-
-Changes v2:
-
-* Fix compile warning introduced by patch 6.
-
-* I'm adding two additional patches this time.
-  Patch 7 converts the binding to json-schema,
-  and patch 8 puts linux-rockchip mailing list in MAINTAINERS. 
-
-Thanks,
-Ezequiel
-
-Ezequiel Garcia (7):
-  v4l2-mem2mem: return CAPTURE buffer first
-  hantro: Set buffers' zeroth plane payload in .buf_prepare
-  hantro: Use v4l2_m2m_buf_done_and_job_finish
-  hantro: Remove unneeded hantro_dec_buf_finish
-  hantro: Move H264 motion vector calculation to a helper
-  hantro: Refactor for V4L2 API spec compliancy
-  dt-bindings: rockchip-vpu: Convert bindings to json-schema
-
- .../bindings/media/rockchip-vpu.txt           |  43 -------
- .../bindings/media/rockchip-vpu.yaml          |  82 +++++++++++++
- MAINTAINERS                                   |   2 +-
- drivers/media/v4l2-core/v4l2-mem2mem.c        |  11 +-
- drivers/staging/media/hantro/hantro.h         |   7 +-
- drivers/staging/media/hantro/hantro_drv.c     |  28 ++---
- drivers/staging/media/hantro/hantro_hw.h      |  31 +++++
- drivers/staging/media/hantro/hantro_v4l2.c    | 111 +++++++++---------
- 8 files changed, 193 insertions(+), 122 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.txt
- create mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-
+diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
+index 8986c31176e9..62ac9424c92a 100644
+--- a/drivers/media/v4l2-core/v4l2-mem2mem.c
++++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
+@@ -504,12 +504,21 @@ void v4l2_m2m_buf_done_and_job_finish(struct v4l2_m2m_dev *m2m_dev,
+ 
+ 	if (WARN_ON(!src_buf || !dst_buf))
+ 		goto unlock;
+-	v4l2_m2m_buf_done(src_buf, state);
+ 	dst_buf->is_held = src_buf->flags & V4L2_BUF_FLAG_M2M_HOLD_CAPTURE_BUF;
+ 	if (!dst_buf->is_held) {
+ 		v4l2_m2m_dst_buf_remove(m2m_ctx);
+ 		v4l2_m2m_buf_done(dst_buf, state);
+ 	}
++	/*
++	 * If the request API is being used, returning the OUTPUT
++	 * (src) buffer will wake-up any process waiting on the
++	 * request file descriptor.
++	 *
++	 * Therefore, return the CAPTURE (dst) buffer first,
++	 * to avoid signalling the request file descriptor
++	 * before the CAPTURE buffer is done.
++	 */
++	v4l2_m2m_buf_done(src_buf, state);
+ 	schedule_next = _v4l2_m2m_job_finish(m2m_dev, m2m_ctx);
+ unlock:
+ 	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
 -- 
 2.26.0.rc2
