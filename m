@@ -1,180 +1,66 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 7/7] dt-bindings: rockchip-vpu: Convert bindings to json-schema
-Date: Wed, 25 Mar 2020 18:34:38 -0300
-Message-ID: <20200325213439.16509-8-ezequiel@collabora.com>
-References: <20200325213439.16509-1-ezequiel@collabora.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200325213439.16509-1-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffrey Kardatzke <jkardatzke-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: [PATCH v4l-utils] v4l2-compliance: don't test pad's dimensions if it's MEDIA_PAD_FL_METADATA
+Date: Wed, 25 Mar 2020 22:43:57 +0100
+Message-ID: <20200325214357.30722-1-dafna.hirschfeld@collabora.com>
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Convert Rockchip VPU (Hantro IP block) codec driver documentation to
-json-schema.
+Pads with the flag MEDIA_PAD_FL_METADATA transmit metadata
+which has no dimension, so don't test the width and hight
+returned by S/G_FMT for that pads.
 
-Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- .../bindings/media/rockchip-vpu.txt           | 43 ----------
- .../bindings/media/rockchip-vpu.yaml          | 82 +++++++++++++++++++
- MAINTAINERS                                   |  2 +-
- 3 files changed, 83 insertions(+), 44 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.txt
- create mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+This patch completes the patchset sent to linux-media:
+"media: staging: rkisp1: Fix formats for metadata pads"
+https://patchwork.kernel.org/project/linux-media/list/?series=261673
+It compiles only when the media.h file is synced with
+this patchset so that the flag MEDIA_PAD_FL_METADATA
+is added.
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.txt b/Documentation/devicetree/bindings/media/rockchip-vpu.txt
-deleted file mode 100644
-index 339252d9c515..000000000000
---- a/Documentation/devicetree/bindings/media/rockchip-vpu.txt
-+++ /dev/null
-@@ -1,43 +0,0 @@
--device-tree bindings for rockchip VPU codec
--
--Rockchip (Video Processing Unit) present in various Rockchip platforms,
--such as RK3288, RK3328 and RK3399.
--
--Required properties:
--- compatible: value should be one of the following
--		"rockchip,rk3288-vpu";
--		"rockchip,rk3328-vpu";
--		"rockchip,rk3399-vpu";
--- interrupts: encoding and decoding interrupt specifiers
--- interrupt-names: should be
--		"vepu", "vdpu" on RK3288 and RK3399,
--		"vdpu" on RK3328.
--- clocks: phandle to VPU aclk, hclk clocks
--- clock-names: should be "aclk" and "hclk"
--- power-domains: phandle to power domain node
--- iommus: phandle to a iommu node
--
--Example:
--SoC-specific DT entry:
--	vpu: video-codec@ff9a0000 {
--		compatible = "rockchip,rk3288-vpu";
--		reg = <0x0 0xff9a0000 0x0 0x800>;
--		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
--			     <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
--		interrupt-names = "vepu", "vdpu";
--		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
--		clock-names = "aclk", "hclk";
--		power-domains = <&power RK3288_PD_VIDEO>;
--		iommus = <&vpu_mmu>;
--	};
--
--	vpu: video-codec@ff350000 {
--		compatible = "rockchip,rk3328-vpu";
--		reg = <0x0 0xff350000 0x0 0x800>;
--		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
--		interrupt-names = "vdpu";
--		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
--		clock-names = "aclk", "hclk";
--		power-domains = <&power RK3328_PD_VPU>;
--		iommus = <&vpu_mmu>;
--	};
-diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-new file mode 100644
-index 000000000000..a0c45e05cf03
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-@@ -0,0 +1,82 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+
-+%YAML 1.2
-+---
-+$id: "http://devicetree.org/schemas/media/rockchip-vpu.yaml#"
-+$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-+
-+title: Hantro G1 VPU codecs implemented on Rockchip SoCs
-+
-+maintainers:
-+  - Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-+
-+description:
-+  Hantro G1 video encode and decode accelerators present on Rockchip SoCs.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - rockchip,rk3288-vpu
-+      - rockchip,rk3328-vpu
-+      - rockchip,rk3399-vpu
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 2
-+
-+  interrupt-names:
-+    items:
-+      - const: vepu
-+      - const: vdpu
-+
-+  clocks:
-+    maxItems: 2
-+
-+  clock-names:
-+    items:
-+      - const: aclk
-+      - const: hclk
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  iommus:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - interrupt-names
-+  - clocks
-+  - clock-names
-+
-+examples:
-+  - |
-+        #include <dt-bindings/clock/rk3288-cru.h>
-+        #include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+        vpu: video-codec@ff9a0000 {
-+                compatible = "rockchip,rk3288-vpu";
-+                reg = <0x0 0xff9a0000 0x0 0x800>;
-+                interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
-+                             <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
-+                interrupt-names = "vepu", "vdpu";
-+                clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-+                clock-names = "aclk", "hclk";
-+                power-domains = <&power RK3288_PD_VIDEO>;
-+                iommus = <&vpu_mmu>;
-+        };
-+
-+        vpu: video-codec@ff350000 {
-+                compatible = "rockchip,rk3328-vpu";
-+                reg = <0x0 0xff350000 0x0 0x800>;
-+                interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
-+                interrupt-names = "vdpu";
-+                clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-+                clock-names = "aclk", "hclk";
-+                power-domains = <&power RK3328_PD_VPU>;
-+                iommus = <&vpu_mmu>;
-+        };
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d66ac41ef587..2b8b3e7f3df3 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -14320,7 +14320,7 @@ L:	linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
- S:	Maintained
- F:	drivers/staging/media/hantro/
- F:	Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
--F:	Documentation/devicetree/bindings/media/rockchip-vpu.txt
-+F:	Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+ utils/v4l2-compliance/v4l2-test-subdevs.cpp | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/utils/v4l2-compliance/v4l2-test-subdevs.cpp b/utils/v4l2-compliance/v4l2-test-subdevs.cpp
+index 489639fb..ca527529 100644
+--- a/utils/v4l2-compliance/v4l2-test-subdevs.cpp
++++ b/utils/v4l2-compliance/v4l2-test-subdevs.cpp
+@@ -305,11 +305,13 @@ int testSubDevFrameInterval(struct node *node, unsigned pad)
+ 	return 0;
+ }
  
- ROCKER DRIVER
- M:	Jiri Pirko <jiri-rHqAuBHg3fBzbRFIqnYvSA@public.gmane.org>
+-static int checkMBusFrameFmt(struct node *node, struct v4l2_mbus_framefmt &fmt)
++static int checkMBusFrameFmt(struct node *node, struct v4l2_mbus_framefmt &fmt, unsigned pad)
+ {
+ 	fail_on_test(check_0(fmt.reserved, sizeof(fmt.reserved)));
+-	fail_on_test(fmt.width == 0 || fmt.width > 65536);
+-	fail_on_test(fmt.height == 0 || fmt.height > 65536);
++	if (!(node->pads[pad].flags & MEDIA_PAD_FL_METADATA)) {
++		fail_on_test(fmt.width == 0 || fmt.width > 65536);
++		fail_on_test(fmt.height == 0 || fmt.height > 65536);
++	}
+ 	fail_on_test(fmt.code == 0 || fmt.code == ~0U);
+ 	fail_on_test(fmt.field == ~0U);
+ 	if (!node->is_passthrough_subdev) {
+@@ -353,7 +355,7 @@ int testSubDevFormat(struct node *node, unsigned which, unsigned pad)
+ 	fail_on_test(check_0(fmt.reserved, sizeof(fmt.reserved)));
+ 	fail_on_test(fmt.which != which);
+ 	fail_on_test(fmt.pad != pad);
+-	fail_on_test(checkMBusFrameFmt(node, fmt.format));
++	fail_on_test(checkMBusFrameFmt(node, fmt.format, pad));
+ 	s_fmt = fmt;
+ 	memset(s_fmt.reserved, 0xff, sizeof(s_fmt.reserved));
+ 	memset(s_fmt.format.reserved, 0xff, sizeof(s_fmt.format.reserved));
+@@ -366,7 +368,7 @@ int testSubDevFormat(struct node *node, unsigned which, unsigned pad)
+ 		return 0;
+ 	}
+ 	fail_on_test(check_0(s_fmt.reserved, sizeof(s_fmt.reserved)));
+-	fail_on_test(checkMBusFrameFmt(node, s_fmt.format));
++	fail_on_test(checkMBusFrameFmt(node, s_fmt.format, pad));
+ 	fail_on_test(s_fmt.format.width != fmt.format.width);
+ 	fail_on_test(s_fmt.format.height != fmt.format.height);
+ 	fail_on_test(s_fmt.format.code != fmt.format.code);
 -- 
-2.26.0.rc2
+2.17.1
