@@ -1,191 +1,113 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 7/7] dt-bindings: rockchip-vpu: Convert bindings to json-schema
-Date: Thu, 26 Mar 2020 10:59:30 -0600
-Message-ID: <CAL_Jsq+oBsDoDVpRUeW6z-92_wYbA1CHvJnSX-ALk3igbMmJJg@mail.gmail.com>
-References: <20200325213439.16509-1-ezequiel@collabora.com> <20200325213439.16509-8-ezequiel@collabora.com>
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+Subject: Re: [PATCH v2 3/8] hantro: Use v4l2_m2m_buf_done_and_job_finish
+Date: Thu, 26 Mar 2020 14:30:01 -0400
+Message-ID: <3fb1dcdbbf54051d9a8fee1d1498583c3a79cecd.camel@ndufresne.ca>
+References: <20200318132108.21873-1-ezequiel@collabora.com>
+                 <20200318132108.21873-4-ezequiel@collabora.com>
+                 <13b1efe1-8b52-070b-cf11-b230bd405d3e@xs4all.nl>
+                 <0a8f6d97e6869ff694aedd67a3176217a885c938.camel@ndufresne.ca>
+                 <50d764ec-1c15-99bd-192b-9aa6ae5bf368@xs4all.nl>
+         <648c8411353071a7e1ffd3576d268b01177ab678.camel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200325213439.16509-8-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, Collabora Kernel ML <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffrey Kardatzke <jkardatzke-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <648c8411353071a7e1ffd3576d268b01177ab678.camel@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Rob Herring <robh@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Mar 25, 2020 at 3:35 PM Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
->
-> Convert Rockchip VPU (Hantro IP block) codec driver documentation to
-> json-schema.
->
-> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
-> Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
->  .../bindings/media/rockchip-vpu.txt           | 43 ----------
->  .../bindings/media/rockchip-vpu.yaml          | 82 +++++++++++++++++++
->  MAINTAINERS                                   |  2 +-
->  3 files changed, 83 insertions(+), 44 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.txt
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.yaml
->
-> diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.txt b/Documentation/devicetree/bindings/media/rockchip-vpu.txt
-> deleted file mode 100644
-> index 339252d9c515..000000000000
-> --- a/Documentation/devicetree/bindings/media/rockchip-vpu.txt
-> +++ /dev/null
-> @@ -1,43 +0,0 @@
-> -device-tree bindings for rockchip VPU codec
-> -
-> -Rockchip (Video Processing Unit) present in various Rockchip platforms,
-> -such as RK3288, RK3328 and RK3399.
-> -
-> -Required properties:
-> -- compatible: value should be one of the following
-> -               "rockchip,rk3288-vpu";
-> -               "rockchip,rk3328-vpu";
-> -               "rockchip,rk3399-vpu";
-> -- interrupts: encoding and decoding interrupt specifiers
-> -- interrupt-names: should be
-> -               "vepu", "vdpu" on RK3288 and RK3399,
-> -               "vdpu" on RK3328.
-> -- clocks: phandle to VPU aclk, hclk clocks
-> -- clock-names: should be "aclk" and "hclk"
-> -- power-domains: phandle to power domain node
-> -- iommus: phandle to a iommu node
-> -
-> -Example:
-> -SoC-specific DT entry:
-> -       vpu: video-codec@ff9a0000 {
-> -               compatible = "rockchip,rk3288-vpu";
-> -               reg = <0x0 0xff9a0000 0x0 0x800>;
-> -               interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
-> -                            <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
-> -               interrupt-names = "vepu", "vdpu";
-> -               clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-> -               clock-names = "aclk", "hclk";
-> -               power-domains = <&power RK3288_PD_VIDEO>;
-> -               iommus = <&vpu_mmu>;
-> -       };
-> -
-> -       vpu: video-codec@ff350000 {
-> -               compatible = "rockchip,rk3328-vpu";
-> -               reg = <0x0 0xff350000 0x0 0x800>;
-> -               interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> -               interrupt-names = "vdpu";
-> -               clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-> -               clock-names = "aclk", "hclk";
-> -               power-domains = <&power RK3328_PD_VPU>;
-> -               iommus = <&vpu_mmu>;
-> -       };
-> diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> new file mode 100644
-> index 000000000000..a0c45e05cf03
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> @@ -0,0 +1,82 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +
-> +%YAML 1.2
-> +---
-> +$id: "http://devicetree.org/schemas/media/rockchip-vpu.yaml#"
-> +$schema: "http://devicetree.org/meta-schemas/core.yaml#"
-> +
-> +title: Hantro G1 VPU codecs implemented on Rockchip SoCs
-> +
-> +maintainers:
-> +  - Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> +
-> +description:
-> +  Hantro G1 video encode and decode accelerators present on Rockchip SoCs.
-> +
-> +properties:
-> +  compatible:
-> +    enum:
-> +      - rockchip,rk3288-vpu
-> +      - rockchip,rk3328-vpu
-> +      - rockchip,rk3399-vpu
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 2
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: vepu
-> +      - const: vdpu
-> +
-> +  clocks:
-> +    maxItems: 2
-> +
-> +  clock-names:
-> +    items:
-> +      - const: aclk
-> +      - const: hclk
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  iommus:
-> +    maxItems: 1
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - interrupt-names
-> +  - clocks
-> +  - clock-names
+Le mercredi 25 mars 2020 à 17:30 -0300, Ezequiel Garcia a écrit :
+>    1. On Wed, 2020-03-25 at 16:28 +0100, Hans Verkuil wrote:
+> > On 3/25/20 3:02 PM, Nicolas Dufresne wrote:
+> > > Le mercredi 25 mars 2020 à 09:22 +0100, Hans Verkuil a écrit :
+> > > > On 3/18/20 2:21 PM, Ezequiel Garcia wrote:
+> > > > > Let the core sort out the nuances of returning buffers
+> > > > > to userspace, by using the v4l2_m2m_buf_done_and_job_finish
+> > > > > helper.
+> > > > > 
+> > > > > This change also removes usage of buffer sequence fields,
+> > > > > which shouldn't have any meaning for stateless decoders.
+> > > > 
+> > > > Uh, why remove this? For one, doesn't this cause fails in v4l2-compliance?
+> > > > Also, while I agree that it is not terribly useful, it doesn't hurt, does it?
+> > > > 
+> > > > And the V4L2 spec makes no exception for stateless codecs with respect to the
+> > > > sequence field.
+> > > > 
+> > > > Nacked-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+> > > 
+> > > The spec also does not say what it means either. As an example, you
+> > > have spec for ALTERNATE interlacing mode that changes the meaning of
+> > > the sequence, but not for alternate H264 fields (which cannot be part
+> > > of the format, since this changes often). We also don't have spec for
+> > > the the sequence behaviour while using HOLD features.
+> > 
+> > I hate it that the spec changes the sequence meaning for FIELD_ALTERNATE,
+> > I always thought that that made drivers unnecessarily complicated. Unfortunately,
+> > this is something we inherited.
+> > 
+> > Currently the spec says for sequence:
+> > 
+> > "Set by the driver, counting the frames (not fields!) in sequence. This field is set
+> >  for both input and output devices."
+> > 
+> > The only thing missing here is that it should say that for compressed formats this
+> > counts the buffers, since one buffer with compressed data may not have a one-to-one
+> > mapping with frames.
 
-Add:
+That's also why I think it's programatically useless in that case, there is no
+logic for which input/output can be related unless you know what the framing is.
 
-additionalProperties: false
+> > 
+> > This description for 'sequence' was never updated when compressed data formats were
+> > added, so it is a bit out of date.
+> > 
+> > > I'm worried we are falling into the test driven trap, were people
+> > > implement features to satisfy a test, while the added complexity don't
+> > > really make sense. Shouldn't we change our approach and opt-out
+> > > features for new type of HW, so that we can keep the drivers code
+> > > saner?
+> > 
+> > Why wasn't the existing code in this patch sane? Sure, we can change the spec, but
+> > then 1) all existing drivers need to be updated as well, and 2) v4l2-compliance needs
+> > to be changed to test specifically for this class of drivers and ensure that for those
+> > the sequence field is set to 0. Not to mention introducing an exception in the uAPI
+> > where the sequence field suddenly isn't used anymore.
+> > 
+> > Frankly, I would prefer that the whole sequence handling is moved to videobuf2-v4l2.c.
+> > It really doesn't belong in drivers, with the exception of incrementing the sequence
+> > counter in case of dropped frames.
+> > 
+> > I think I suggested it when vb2 was being designed, but at the time the preference
+> > was to keep it in the driver. Long time ago, though.
+> > 
+> 
+> Do you think we could try to move this to the core?
 
-> +
-> +examples:
-> +  - |
-> +        #include <dt-bindings/clock/rk3288-cru.h>
-> +        #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +        vpu: video-codec@ff9a0000 {
-> +                compatible = "rockchip,rk3288-vpu";
-> +                reg = <0x0 0xff9a0000 0x0 0x800>;
-> +                interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
-> +                             <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
-> +                interrupt-names = "vepu", "vdpu";
-> +                clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
-> +                clock-names = "aclk", "hclk";
-> +                power-domains = <&power RK3288_PD_VIDEO>;
+I'm also happy as long as drivers stop having to implement this generic
+statistic. Note, that only applies to existing m2m, we still need that counter
+to detect driver side frame drops in CAPTURE only devices (like UVC cameras).
 
-Header for this define?
-
-> +                iommus = <&vpu_mmu>;
-> +        };
-> +
-> +        vpu: video-codec@ff350000 {
-> +                compatible = "rockchip,rk3328-vpu";
-> +                reg = <0x0 0xff350000 0x0 0x800>;
-> +                interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +                interrupt-names = "vdpu";
-> +                clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
-> +                clock-names = "aclk", "hclk";
-> +                power-domains = <&power RK3328_PD_VPU>;
-> +                iommus = <&vpu_mmu>;
-> +        };
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index d66ac41ef587..2b8b3e7f3df3 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -14320,7 +14320,7 @@ L:      linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->  S:     Maintained
->  F:     drivers/staging/media/hantro/
->  F:     Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
-> -F:     Documentation/devicetree/bindings/media/rockchip-vpu.txt
-> +F:     Documentation/devicetree/bindings/media/rockchip-vpu.yaml
->
->  ROCKER DRIVER
->  M:     Jiri Pirko <jiri-rHqAuBHg3fBzbRFIqnYvSA@public.gmane.org>
-> --
-> 2.26.0.rc2
->
+> 
+> I might be able find some time to try that.
+> 
+> > And another reason why I want to keep it: I find it actually useful to see a running
+> > counter: it helps keeping track of how many buffers you've processed since you started
+> > streaming.
+> > 
+> 
+> +1
+> 
+> > Finally, the removal of the sequence counter simply does not belong in this patch.
+> > 
+> 
+> Agreed, no complaints on my side.
+> 
+> I am actually happy about this feedback.
+> 
+> Thanks,
+> Ezequiel
+> 
+> 
