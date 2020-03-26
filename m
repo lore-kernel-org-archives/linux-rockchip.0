@@ -1,87 +1,92 @@
-From: Dafna Hirschfeld <dafna3@gmail.com>
-Subject: Re: [PATCH 1/2] media: media.h: Add a pad flag MEDIA_PAD_FL_METADATA
-Date: Thu, 26 Mar 2020 08:59:04 +0100
-Message-ID: <CAJ1myNS5jdqCXAtueA_j+ULkiioDxhegfCLQWFXrvL6_AYPwFg@mail.gmail.com>
-References: <20200325212704.29862-1-dafna.hirschfeld@collabora.com>
- <20200325212704.29862-2-dafna.hirschfeld@collabora.com> <20200325222621.GX19171@pendragon.ideasonboard.com>
+From: Mylene Josserand <mylene.josserand@collabora.com>
+Subject: Re: [PATCH 1/2] ARM: Rockchip: Handle rk3288/rk3288w revision
+Date: Thu, 26 Mar 2020 14:50:22 +0100
+Message-ID: <5802ec08-5e6a-8547-ee8e-dde630791235@collabora.com>
+References: <20200302155703.278421-1-mylene.josserand@collabora.com>
+ <20200302155703.278421-2-mylene.josserand@collabora.com>
+ <2221545.2vEflg7qi2@diego>
+ <CAMuHMdXJQqaCcMko9GUAeUiYQzmy3vnX42yVQNPzhj5ijtFuYA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200325222621.GX19171@pendragon.ideasonboard.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Helen Koike <helen.koike@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAMuHMdXJQqaCcMko9GUAeUiYQzmy3vnX42yVQNPzhj5ijtFuYA@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-clk-owner@vger.kernel.org
+To: Geert Uytterhoeven <geert@linux-m68k.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Russell King <linux@armlinux.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Collabora Kernel ML <kernel@collabora.com>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Mar 25, 2020 at 11:26 PM Laurent Pinchart
-<laurent.pinchart@ideasonboard.com> wrote:
->
-> Hi Dafna,
->
-> Thank you for the patch.
->
-> On Wed, Mar 25, 2020 at 10:27:03PM +0100, Dafna Hirschfeld wrote:
-> > Add a flag to the flags field of 'struct media_pad_desc'
-> > that indicates that the data transmitted by the pad is
-> > metadata.
-> >
-> > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> > ---
-> >  Documentation/media/uapi/mediactl/media-types.rst | 4 ++++
-> >  include/uapi/linux/media.h                        | 1 +
-> >  2 files changed, 5 insertions(+)
-> >
-> > diff --git a/Documentation/media/uapi/mediactl/media-types.rst b/Documentation/media/uapi/mediactl/media-types.rst
-> > index 3af6a414b501..4ca902478971 100644
-> > --- a/Documentation/media/uapi/mediactl/media-types.rst
-> > +++ b/Documentation/media/uapi/mediactl/media-types.rst
-> > @@ -361,6 +361,7 @@ Types and flags used to represent the media graph elements
-> >  .. _MEDIA-PAD-FL-SINK:
-> >  .. _MEDIA-PAD-FL-SOURCE:
-> >  .. _MEDIA-PAD-FL-MUST-CONNECT:
-> > +.. _MEDIA-PAD-FL-METADATA:
-> >
-> >  .. flat-table:: Media pad flags
-> >      :header-rows:  0
-> > @@ -381,6 +382,9 @@ Types and flags used to represent the media graph elements
-> >         configuration dependent) for the pad to need enabled links even
-> >         when this flag isn't set; the absence of the flag doesn't imply
-> >         there is none.
-> > +    *  -  ``MEDIA_PAD_FL_METADATA``
-> > +       -  This flag indicates that the data transmitted by the pad is of
-> > +          type metadata.
-> >
-> >
-> >  One and only one of ``MEDIA_PAD_FL_SINK`` and ``MEDIA_PAD_FL_SOURCE``
-> > diff --git a/include/uapi/linux/media.h b/include/uapi/linux/media.h
-> > index 383ac7b7d8f0..ae37226eb5c9 100644
-> > --- a/include/uapi/linux/media.h
-> > +++ b/include/uapi/linux/media.h
-> > @@ -210,6 +210,7 @@ struct media_entity_desc {
-> >  #define MEDIA_PAD_FL_SINK                    (1 << 0)
-> >  #define MEDIA_PAD_FL_SOURCE                  (1 << 1)
-> >  #define MEDIA_PAD_FL_MUST_CONNECT            (1 << 2)
-> > +#define MEDIA_PAD_FL_METADATA                        (1 << 3)
->
-> I think we need to reserve a few bits here. We'll have more than
-> metadata. Audio comes to mind, there will likely be more. Having
-> independent flags would not only waste a bit of space in the bitfield
-> (not that we're about to run out of bits, but still), but would make it
-> possible to specify invalid configurations such as MEDIA_PAD_FL_METADATA
-> | MEDIA_PAD_FL_AUDIO. And now that I've written this, I realize that
-> audio metadata could be a thing, so maybe a metadata flag is actually
-> the best option :-)
-hehe, ok, but drivers that set the METADATA flag should also set the media
-bus code to MEDIA_BUS_FMT_FIXED ? If yes then setting
-the METADATA flag with a different media bus is also an invalid configuration.
+Hello everyone,
 
->
-> There are pros and cons for both options, so I won't recommend one.
->
-> >  struct media_pad_desc {
-> >       __u32 entity;           /* entity ID */
->
-> --
-> Regards,
->
-> Laurent Pinchart
+Thank you for all these feedback and discussion about my patches.
+
+On 3/6/20 11:45 AM, Geert Uytterhoeven wrote:
+> Hi Heiko,
+> 
+> On Wed, Mar 4, 2020 at 12:00 PM Heiko Stübner <heiko@sntech.de> wrote:
+>> Am Montag, 2. März 2020, 16:57:02 CET schrieb Mylène Josserand:
+>>> Determine which revision of rk3288 by checking the HDMI version.
+>>> According to the Rockchip BSP kernel, on rk3288w, the HDMI
+>>> revision equals 0x1A which is not the case for the rk3288 [1].
+>>>
+>>> As these SOC have some differences, the new function
+>>> 'soc_is_rk3288w' will help us to know on which revision
+>>> we are.
+>>
+>> what happened to just having a different compatible in the dts?
+>> Aka doing a
+>>
+>> rk3288w.dtsi with
+>>
+>> #include "rk3288.dtsi"
+>>
+>> &cru {
+>>          compatible = "rockchip,rk3288w-cru";
+>> }
+>>
+>> I somehow don't expect boards to just switch between soc variants
+>> on the fly.
+>>
+>> Also, doing things in mach-rockchip is not very future-proof:
+>>
+>> (1) having random soc-specific APIs spanning the kernel feels wrong,
+>>      especially as at some point it might not be contained to our own special
+>>      drivers like the cru. I cannot really see people being enthusiastic if
+>>      something like this would be needed in say the core Analogix-DP bridge ;-)
+> 
+> Indeed.  You're better of registering an soc_device_attribute using
+> soc_device_register(), after which any driver can use soc_device_match()
+> to differentiate based on the SoC revision.
+
+Thank you for this suggestion. The issue is that clocks are registered 
+at an early stage of the boot so using initcalls is too late for the 
+clock differentiation :(
+
+> 
+>> (2) I guess the rk3288w will not be the last soc doing this and on arm64 you
+>>      can't do it that way, as there is no mach-rockchip there
+> 
+> There's drivers/soc/rockchip ;-)
+> 
+>> So my personal preference would really would be just a specific compatible
+>> for affected ip blocks.
+> 
+> Doing that only for affected IP blocks may miss integration differences.
+> Of course, you can always resort to soc_device_match() to handle those...
+> 
+> Gr{oetje,eeting}s,
+> 
+>                          Geert
+> 
+
+It would be a great idea indeed if there was not this clock registration 
+too soon for initcalls.
+
+I am currently running out of ideas to propose a better solution than 
+this V1. Is anyone has any recommendation to handle that? I would really 
+appreciate :)
+
+Thank you in advance!
+Best regards,
+Mylène
