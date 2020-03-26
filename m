@@ -1,78 +1,50 @@
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Subject: Re: [PATCH 1/2] ARM: Rockchip: Handle rk3288/rk3288w revision
-Date: Thu, 26 Mar 2020 16:31:38 +0100
-Message-ID: <CAMuHMdVKFT7eNK0RUi3miJ08O9FMAVs5Qz=YmbHH5-9UUzLNPw@mail.gmail.com>
-References: <20200302155703.278421-1-mylene.josserand@collabora.com>
- <20200302155703.278421-2-mylene.josserand@collabora.com> <2221545.2vEflg7qi2@diego>
- <CAMuHMdXJQqaCcMko9GUAeUiYQzmy3vnX42yVQNPzhj5ijtFuYA@mail.gmail.com> <5802ec08-5e6a-8547-ee8e-dde630791235@collabora.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v3 7/7] dt-bindings: rockchip-vpu: Convert bindings to
+ json-schema
+Date: Thu, 26 Mar 2020 10:55:11 -0600
+Message-ID: <20200326165511.GA11084@bogus>
+References: <20200325213439.16509-1-ezequiel@collabora.com>
+ <20200325213439.16509-8-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <5802ec08-5e6a-8547-ee8e-dde630791235@collabora.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Mylene Josserand <mylene.josserand@collabora.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Russell King <linux@armlinux.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Collabora Kernel ML <kernel@collabora.com>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20200325213439.16509-8-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jeffrey Kardatzke <jkardatzke-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mylene,
+On Wed, 25 Mar 2020 18:34:38 -0300, Ezequiel Garcia wrote:
+> Convert Rockchip VPU (Hantro IP block) codec driver documentation to
+> json-schema.
+> 
+> Cc: Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+> Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>  .../bindings/media/rockchip-vpu.txt           | 43 ----------
+>  .../bindings/media/rockchip-vpu.yaml          | 82 +++++++++++++++++++
+>  MAINTAINERS                                   |  2 +-
+>  3 files changed, 83 insertions(+), 44 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.txt
+>  create mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> 
 
-On Thu, Mar 26, 2020 at 2:50 PM Mylene Josserand
-<mylene.josserand@collabora.com> wrote:
-> On 3/6/20 11:45 AM, Geert Uytterhoeven wrote:
-> > On Wed, Mar 4, 2020 at 12:00 PM Heiko Stübner <heiko@sntech.de> wrote:
-> >> Am Montag, 2. März 2020, 16:57:02 CET schrieb Mylène Josserand:
-> >>> Determine which revision of rk3288 by checking the HDMI version.
-> >>> According to the Rockchip BSP kernel, on rk3288w, the HDMI
-> >>> revision equals 0x1A which is not the case for the rk3288 [1].
-> >>>
-> >>> As these SOC have some differences, the new function
-> >>> 'soc_is_rk3288w' will help us to know on which revision
-> >>> we are.
-> >>
-> >> what happened to just having a different compatible in the dts?
-> >> Aka doing a
-> >>
-> >> rk3288w.dtsi with
-> >>
-> >> #include "rk3288.dtsi"
-> >>
-> >> &cru {
-> >>          compatible = "rockchip,rk3288w-cru";
-> >> }
-> >>
-> >> I somehow don't expect boards to just switch between soc variants
-> >> on the fly.
-> >>
-> >> Also, doing things in mach-rockchip is not very future-proof:
-> >>
-> >> (1) having random soc-specific APIs spanning the kernel feels wrong,
-> >>      especially as at some point it might not be contained to our own special
-> >>      drivers like the cru. I cannot really see people being enthusiastic if
-> >>      something like this would be needed in say the core Analogix-DP bridge ;-)
-> >
-> > Indeed.  You're better of registering an soc_device_attribute using
-> > soc_device_register(), after which any driver can use soc_device_match()
-> > to differentiate based on the SoC revision.
->
-> Thank you for this suggestion. The issue is that clocks are registered
-> at an early stage of the boot so using initcalls is too late for the
-> clock differentiation :(
+My bot found errors running 'make dt_binding_check' on your patch:
 
-IC, rk388 is still using CLK_OF_DECLARE().
-What about converting it to a platform driver, registered from e.g.
-subsys_initcall()?
-If you need some clocks early (e.g. for timers), you can do split
-registration, with the early part still using CLK_OF_DECLARE().
-That should work, assumed the timer clocks don't need differentiation.
+Error: Documentation/devicetree/bindings/media/rockchip-vpu.example.dts:28.41-42 syntax error
+FATAL ERROR: Unable to parse input tree
+scripts/Makefile.lib:311: recipe for target 'Documentation/devicetree/bindings/media/rockchip-vpu.example.dt.yaml' failed
+make[1]: *** [Documentation/devicetree/bindings/media/rockchip-vpu.example.dt.yaml] Error 1
+make[1]: *** Waiting for unfinished jobs....
+Makefile:1262: recipe for target 'dt_binding_check' failed
+make: *** [dt_binding_check] Error 2
 
-Gr{oetje,eeting}s,
+See https://patchwork.ozlabs.org/patch/1261669
 
-                        Geert
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure dt-schema is up to date:
 
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
+pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
 
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+Please check and re-submit.
