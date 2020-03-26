@@ -1,113 +1,60 @@
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-Subject: Re: [PATCH v2 3/8] hantro: Use v4l2_m2m_buf_done_and_job_finish
-Date: Thu, 26 Mar 2020 14:30:01 -0400
-Message-ID: <3fb1dcdbbf54051d9a8fee1d1498583c3a79cecd.camel@ndufresne.ca>
-References: <20200318132108.21873-1-ezequiel@collabora.com>
-                 <20200318132108.21873-4-ezequiel@collabora.com>
-                 <13b1efe1-8b52-070b-cf11-b230bd405d3e@xs4all.nl>
-                 <0a8f6d97e6869ff694aedd67a3176217a885c938.camel@ndufresne.ca>
-                 <50d764ec-1c15-99bd-192b-9aa6ae5bf368@xs4all.nl>
-         <648c8411353071a7e1ffd3576d268b01177ab678.camel@collabora.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v3 7/7] dt-bindings: rockchip-vpu: Convert bindings to
+ json-schema
+Date: Thu, 26 Mar 2020 16:08:23 -0300
+Message-ID: <03f7e88c778f7234ff53579527c4481367fe645c.camel@collabora.com>
+References: <20200325213439.16509-1-ezequiel@collabora.com>
+         <20200325213439.16509-8-ezequiel@collabora.com>
+         <20200326165511.GA11084@bogus>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <648c8411353071a7e1ffd3576d268b01177ab678.camel@collabora.com>
+In-Reply-To: <20200326165511.GA11084@bogus>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Rob Herring <robh@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Le mercredi 25 mars 2020 à 17:30 -0300, Ezequiel Garcia a écrit :
->    1. On Wed, 2020-03-25 at 16:28 +0100, Hans Verkuil wrote:
-> > On 3/25/20 3:02 PM, Nicolas Dufresne wrote:
-> > > Le mercredi 25 mars 2020 à 09:22 +0100, Hans Verkuil a écrit :
-> > > > On 3/18/20 2:21 PM, Ezequiel Garcia wrote:
-> > > > > Let the core sort out the nuances of returning buffers
-> > > > > to userspace, by using the v4l2_m2m_buf_done_and_job_finish
-> > > > > helper.
-> > > > > 
-> > > > > This change also removes usage of buffer sequence fields,
-> > > > > which shouldn't have any meaning for stateless decoders.
-> > > > 
-> > > > Uh, why remove this? For one, doesn't this cause fails in v4l2-compliance?
-> > > > Also, while I agree that it is not terribly useful, it doesn't hurt, does it?
-> > > > 
-> > > > And the V4L2 spec makes no exception for stateless codecs with respect to the
-> > > > sequence field.
-> > > > 
-> > > > Nacked-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-> > > 
-> > > The spec also does not say what it means either. As an example, you
-> > > have spec for ALTERNATE interlacing mode that changes the meaning of
-> > > the sequence, but not for alternate H264 fields (which cannot be part
-> > > of the format, since this changes often). We also don't have spec for
-> > > the the sequence behaviour while using HOLD features.
+On Thu, 2020-03-26 at 10:55 -0600, Rob Herring wrote:
+> On Wed, 25 Mar 2020 18:34:38 -0300, Ezequiel Garcia wrote:
+> > Convert Rockchip VPU (Hantro IP block) codec driver documentation to
+> > json-schema.
 > > 
-> > I hate it that the spec changes the sequence meaning for FIELD_ALTERNATE,
-> > I always thought that that made drivers unnecessarily complicated. Unfortunately,
-> > this is something we inherited.
+> > Cc: Mark Rutland <mark.rutland@arm.com>
+> > Cc: Rob Herring <robh@kernel.org>
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > ---
+> >  .../bindings/media/rockchip-vpu.txt           | 43 ----------
+> >  .../bindings/media/rockchip-vpu.yaml          | 82 +++++++++++++++++++
+> >  MAINTAINERS                                   |  2 +-
+> >  3 files changed, 83 insertions(+), 44 deletions(-)
+> >  delete mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.txt
+> >  create mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.yaml
 > > 
-> > Currently the spec says for sequence:
-> > 
-> > "Set by the driver, counting the frames (not fields!) in sequence. This field is set
-> >  for both input and output devices."
-> > 
-> > The only thing missing here is that it should say that for compressed formats this
-> > counts the buffers, since one buffer with compressed data may not have a one-to-one
-> > mapping with frames.
+> 
+> My bot found errors running 'make dt_binding_check' on your patch:
+> 
+> Error: Documentation/devicetree/bindings/media/rockchip-vpu.example.dts:28.41-42 syntax error
+> FATAL ERROR: Unable to parse input tree
+> scripts/Makefile.lib:311: recipe for target 'Documentation/devicetree/bindings/media/rockchip-vpu.example.dt.yaml' failed
+> make[1]: *** [Documentation/devicetree/bindings/media/rockchip-vpu.example.dt.yaml] Error 1
+> make[1]: *** Waiting for unfinished jobs....
+> Makefile:1262: recipe for target 'dt_binding_check' failed
+> make: *** [dt_binding_check] Error 2
+> 
+> See https://patchwork.ozlabs.org/patch/1261669
+> 
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure dt-schema is up to date:
+> 
+> pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
+> 
+> Please check and re-submit.
+> 
 
-That's also why I think it's programatically useless in that case, there is no
-logic for which input/output can be related unless you know what the framing is.
+Sure, I will.
 
-> > 
-> > This description for 'sequence' was never updated when compressed data formats were
-> > added, so it is a bit out of date.
-> > 
-> > > I'm worried we are falling into the test driven trap, were people
-> > > implement features to satisfy a test, while the added complexity don't
-> > > really make sense. Shouldn't we change our approach and opt-out
-> > > features for new type of HW, so that we can keep the drivers code
-> > > saner?
-> > 
-> > Why wasn't the existing code in this patch sane? Sure, we can change the spec, but
-> > then 1) all existing drivers need to be updated as well, and 2) v4l2-compliance needs
-> > to be changed to test specifically for this class of drivers and ensure that for those
-> > the sequence field is set to 0. Not to mention introducing an exception in the uAPI
-> > where the sequence field suddenly isn't used anymore.
-> > 
-> > Frankly, I would prefer that the whole sequence handling is moved to videobuf2-v4l2.c.
-> > It really doesn't belong in drivers, with the exception of incrementing the sequence
-> > counter in case of dropped frames.
-> > 
-> > I think I suggested it when vb2 was being designed, but at the time the preference
-> > was to keep it in the driver. Long time ago, though.
-> > 
-> 
-> Do you think we could try to move this to the core?
+Sorry about that!
 
-I'm also happy as long as drivers stop having to implement this generic
-statistic. Note, that only applies to existing m2m, we still need that counter
-to detect driver side frame drops in CAPTURE only devices (like UVC cameras).
-
-> 
-> I might be able find some time to try that.
-> 
-> > And another reason why I want to keep it: I find it actually useful to see a running
-> > counter: it helps keeping track of how many buffers you've processed since you started
-> > streaming.
-> > 
-> 
-> +1
-> 
-> > Finally, the removal of the sequence counter simply does not belong in this patch.
-> > 
-> 
-> Agreed, no complaints on my side.
-> 
-> I am actually happy about this feedback.
-> 
-> Thanks,
-> Ezequiel
-> 
-> 
+Ezequiel
