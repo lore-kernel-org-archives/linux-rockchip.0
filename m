@@ -1,85 +1,59 @@
-From: Mylene Josserand <mylene.josserand@collabora.com>
-Subject: Re: [PATCH 1/2] ARM: Rockchip: Handle rk3288/rk3288w revision
-Date: Fri, 27 Mar 2020 07:20:03 +0100
-Message-ID: <5efe50ad-a88e-bc8c-de08-3be355ad9e53@collabora.com>
-References: <20200302155703.278421-1-mylene.josserand@collabora.com>
- <20200302155703.278421-2-mylene.josserand@collabora.com>
- <2221545.2vEflg7qi2@diego>
- <CAMuHMdXJQqaCcMko9GUAeUiYQzmy3vnX42yVQNPzhj5ijtFuYA@mail.gmail.com>
- <5802ec08-5e6a-8547-ee8e-dde630791235@collabora.com>
- <CAMuHMdVKFT7eNK0RUi3miJ08O9FMAVs5Qz=YmbHH5-9UUzLNPw@mail.gmail.com>
+From: Andrzej Hajda <a.hajda@samsung.com>
+Subject: Re: [PATCH v2] drm/bridge: analogix_dp: Split bind() into probe()
+ and real bind()
+Date: Fri, 27 Mar 2020 08:44:37 +0100
+Message-ID: <1386cf0a-7359-c1c5-35bc-c86ce944f035@samsung.com>
+References: <CGME20200310104049eucas1p107e1ec61456fce4c830d3232a400b32f@eucas1p1.samsung.com>
+        <20200310103427.26048-1-m.szyprowski@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAMuHMdVKFT7eNK0RUi3miJ08O9FMAVs5Qz=YmbHH5-9UUzLNPw@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <20200310103427.26048-1-m.szyprowski@samsung.com>
 Content-Language: en-US
-Sender: linux-clk-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Russell King <linux@armlinux.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Collabora Kernel ML <kernel@collabora.com>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Marek Szyprowski <m.szyprowski@samsung.com>, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>, Neil Armstrong <narmstrong@baylibre.com>, Jingoo Han <jingoohan1@gmail.com>, Jonas Karlman <jonas@kwiboo.se>, Seung-Woo Kim <sw0312.kim@samsung.com>, Sandy Huang <hjc@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andy Yan <andy.yan@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Geert,
+On 10.03.2020 11:34, Marek Szyprowski wrote:
+> Analogix_dp driver acquires all its resources in the ->bind() callback,
+> what is a bit against the component driver based approach, where the
+> driver initialization is split into a probe(), where all resources are
+> gathered, and a bind(), where all objects are created and a compound
+> driver is initialized.
+>
+> Extract all the resource related operations to analogix_dp_probe() and
+> analogix_dp_remove(), then call them before/after registration of the
+> device components from the main Exynos DP and Rockchip DP drivers. Also
+> move the plat_data initialization to the probe() to make it available for
+> the analogix_dp_probe() function.
+>
+> This fixes the multiple calls to the bind() of the DRM compound driver
+> when the DP PHY driver is not yet loaded/probed:
+>
+> [drm] Exynos DRM: using 14400000.fimd device for DMA mapping operations
+> exynos-drm exynos-drm: bound 14400000.fimd (ops fimd_component_ops [exynosdrm])
+> exynos-drm exynos-drm: bound 14450000.mixer (ops mixer_component_ops [exynosdrm])
+> exynos-dp 145b0000.dp-controller: no DP phy configured
+> exynos-drm exynos-drm: failed to bind 145b0000.dp-controller (ops exynos_dp_ops [exynosdrm]): -517
+> exynos-drm exynos-drm: master bind failed: -517
+> ...
+> [drm] Exynos DRM: using 14400000.fimd device for DMA mapping operations
+> exynos-drm exynos-drm: bound 14400000.fimd (ops hdmi_enable [exynosdrm])
+> exynos-drm exynos-drm: bound 14450000.mixer (ops hdmi_enable [exynosdrm])
+> exynos-drm exynos-drm: bound 145b0000.dp-controller (ops hdmi_enable [exynosdrm])
+> exynos-drm exynos-drm: bound 14530000.hdmi (ops hdmi_enable [exynosdrm])
+> [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+> Console: switching to colour frame buffer device 170x48
+> exynos-drm exynos-drm: fb0: exynosdrmfb frame buffer device
+> [drm] Initialized exynos 1.1.0 20180330 for exynos-drm on minor 1
+> ...
+>
+> Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
 
-On 3/26/20 4:31 PM, Geert Uytterhoeven wrote:
-> Hi Mylene,
-> 
-> On Thu, Mar 26, 2020 at 2:50 PM Mylene Josserand
-> <mylene.josserand@collabora.com> wrote:
->> On 3/6/20 11:45 AM, Geert Uytterhoeven wrote:
->>> On Wed, Mar 4, 2020 at 12:00 PM Heiko Stübner <heiko@sntech.de> wrote:
->>>> Am Montag, 2. März 2020, 16:57:02 CET schrieb Mylène Josserand:
->>>>> Determine which revision of rk3288 by checking the HDMI version.
->>>>> According to the Rockchip BSP kernel, on rk3288w, the HDMI
->>>>> revision equals 0x1A which is not the case for the rk3288 [1].
->>>>>
->>>>> As these SOC have some differences, the new function
->>>>> 'soc_is_rk3288w' will help us to know on which revision
->>>>> we are.
->>>>
->>>> what happened to just having a different compatible in the dts?
->>>> Aka doing a
->>>>
->>>> rk3288w.dtsi with
->>>>
->>>> #include "rk3288.dtsi"
->>>>
->>>> &cru {
->>>>           compatible = "rockchip,rk3288w-cru";
->>>> }
->>>>
->>>> I somehow don't expect boards to just switch between soc variants
->>>> on the fly.
->>>>
->>>> Also, doing things in mach-rockchip is not very future-proof:
->>>>
->>>> (1) having random soc-specific APIs spanning the kernel feels wrong,
->>>>       especially as at some point it might not be contained to our own special
->>>>       drivers like the cru. I cannot really see people being enthusiastic if
->>>>       something like this would be needed in say the core Analogix-DP bridge ;-)
->>>
->>> Indeed.  You're better of registering an soc_device_attribute using
->>> soc_device_register(), after which any driver can use soc_device_match()
->>> to differentiate based on the SoC revision.
->>
->> Thank you for this suggestion. The issue is that clocks are registered
->> at an early stage of the boot so using initcalls is too late for the
->> clock differentiation :(
-> 
-> IC, rk388 is still using CLK_OF_DECLARE().
-> What about converting it to a platform driver, registered from e.g.
-> subsys_initcall()?
-> If you need some clocks early (e.g. for timers), you can do split
-> registration, with the early part still using CLK_OF_DECLARE().
-> That should work, assumed the timer clocks don't need differentiation.
-> 
-> Gr{oetje,eeting}s,
-> 
->                          Geert
-> 
 
-oh, nice, thanks for the help!
-I will try that and send a new version if it is working fine.
+Queued to fixes.
 
-Best regards,
-Mylène
+
+Andrzej
