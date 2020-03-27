@@ -1,59 +1,98 @@
-From: Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v2] drm/bridge: analogix_dp: Split bind() into probe()
- and real bind()
-Date: Fri, 27 Mar 2020 08:44:37 +0100
-Message-ID: <1386cf0a-7359-c1c5-35bc-c86ce944f035@samsung.com>
-References: <CGME20200310104049eucas1p107e1ec61456fce4c830d3232a400b32f@eucas1p1.samsung.com>
-        <20200310103427.26048-1-m.szyprowski@samsung.com>
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+Subject: Re: [PATCH 1/2] media: media.h: Add a pad flag MEDIA_PAD_FL_METADATA
+Date: Fri, 27 Mar 2020 10:08:58 +0200
+Message-ID: <20200327080858.GB23713@kekkonen.localdomain>
+References: <20200325212704.29862-1-dafna.hirschfeld@collabora.com>
+ <20200325212704.29862-2-dafna.hirschfeld@collabora.com>
+ <20200325222621.GX19171@pendragon.ideasonboard.com>
+ <CAJ1myNS5jdqCXAtueA_j+ULkiioDxhegfCLQWFXrvL6_AYPwFg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <20200310103427.26048-1-m.szyprowski@samsung.com>
-Content-Language: en-US
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Marek Szyprowski <m.szyprowski@samsung.com>, dri-devel@lists.freedesktop.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>, Neil Armstrong <narmstrong@baylibre.com>, Jingoo Han <jingoohan1@gmail.com>, Jonas Karlman <jonas@kwiboo.se>, Seung-Woo Kim <sw0312.kim@samsung.com>, Sandy Huang <hjc@rock-chips.com>, Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andy Yan <andy.yan@rock-chips.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-media-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAJ1myNS5jdqCXAtueA_j+ULkiioDxhegfCLQWFXrvL6_AYPwFg@mail.gmail.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna3@gmail.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Helen Koike <helen.koike@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 10.03.2020 11:34, Marek Szyprowski wrote:
-> Analogix_dp driver acquires all its resources in the ->bind() callback,
-> what is a bit against the component driver based approach, where the
-> driver initialization is split into a probe(), where all resources are
-> gathered, and a bind(), where all objects are created and a compound
-> driver is initialized.
->
-> Extract all the resource related operations to analogix_dp_probe() and
-> analogix_dp_remove(), then call them before/after registration of the
-> device components from the main Exynos DP and Rockchip DP drivers. Also
-> move the plat_data initialization to the probe() to make it available for
-> the analogix_dp_probe() function.
->
-> This fixes the multiple calls to the bind() of the DRM compound driver
-> when the DP PHY driver is not yet loaded/probed:
->
-> [drm] Exynos DRM: using 14400000.fimd device for DMA mapping operations
-> exynos-drm exynos-drm: bound 14400000.fimd (ops fimd_component_ops [exynosdrm])
-> exynos-drm exynos-drm: bound 14450000.mixer (ops mixer_component_ops [exynosdrm])
-> exynos-dp 145b0000.dp-controller: no DP phy configured
-> exynos-drm exynos-drm: failed to bind 145b0000.dp-controller (ops exynos_dp_ops [exynosdrm]): -517
-> exynos-drm exynos-drm: master bind failed: -517
-> ...
-> [drm] Exynos DRM: using 14400000.fimd device for DMA mapping operations
-> exynos-drm exynos-drm: bound 14400000.fimd (ops hdmi_enable [exynosdrm])
-> exynos-drm exynos-drm: bound 14450000.mixer (ops hdmi_enable [exynosdrm])
-> exynos-drm exynos-drm: bound 145b0000.dp-controller (ops hdmi_enable [exynosdrm])
-> exynos-drm exynos-drm: bound 14530000.hdmi (ops hdmi_enable [exynosdrm])
-> [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
-> Console: switching to colour frame buffer device 170x48
-> exynos-drm exynos-drm: fb0: exynosdrmfb frame buffer device
-> [drm] Initialized exynos 1.1.0 20180330 for exynos-drm on minor 1
-> ...
->
-> Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Dafna, Laurent,
 
+On Thu, Mar 26, 2020 at 08:59:04AM +0100, Dafna Hirschfeld wrote:
+> On Wed, Mar 25, 2020 at 11:26 PM Laurent Pinchart
+> <laurent.pinchart@ideasonboard.com> wrote:
+> >
+> > Hi Dafna,
+> >
+> > Thank you for the patch.
+> >
+> > On Wed, Mar 25, 2020 at 10:27:03PM +0100, Dafna Hirschfeld wrote:
+> > > Add a flag to the flags field of 'struct media_pad_desc'
+> > > that indicates that the data transmitted by the pad is
+> > > metadata.
+> > >
+> > > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> > > ---
+> > >  Documentation/media/uapi/mediactl/media-types.rst | 4 ++++
+> > >  include/uapi/linux/media.h                        | 1 +
+> > >  2 files changed, 5 insertions(+)
+> > >
+> > > diff --git a/Documentation/media/uapi/mediactl/media-types.rst b/Documentation/media/uapi/mediactl/media-types.rst
+> > > index 3af6a414b501..4ca902478971 100644
+> > > --- a/Documentation/media/uapi/mediactl/media-types.rst
+> > > +++ b/Documentation/media/uapi/mediactl/media-types.rst
+> > > @@ -361,6 +361,7 @@ Types and flags used to represent the media graph elements
+> > >  .. _MEDIA-PAD-FL-SINK:
+> > >  .. _MEDIA-PAD-FL-SOURCE:
+> > >  .. _MEDIA-PAD-FL-MUST-CONNECT:
+> > > +.. _MEDIA-PAD-FL-METADATA:
+> > >
+> > >  .. flat-table:: Media pad flags
+> > >      :header-rows:  0
+> > > @@ -381,6 +382,9 @@ Types and flags used to represent the media graph elements
+> > >         configuration dependent) for the pad to need enabled links even
+> > >         when this flag isn't set; the absence of the flag doesn't imply
+> > >         there is none.
+> > > +    *  -  ``MEDIA_PAD_FL_METADATA``
+> > > +       -  This flag indicates that the data transmitted by the pad is of
+> > > +          type metadata.
+> > >
+> > >
+> > >  One and only one of ``MEDIA_PAD_FL_SINK`` and ``MEDIA_PAD_FL_SOURCE``
+> > > diff --git a/include/uapi/linux/media.h b/include/uapi/linux/media.h
+> > > index 383ac7b7d8f0..ae37226eb5c9 100644
+> > > --- a/include/uapi/linux/media.h
+> > > +++ b/include/uapi/linux/media.h
+> > > @@ -210,6 +210,7 @@ struct media_entity_desc {
+> > >  #define MEDIA_PAD_FL_SINK                    (1 << 0)
+> > >  #define MEDIA_PAD_FL_SOURCE                  (1 << 1)
+> > >  #define MEDIA_PAD_FL_MUST_CONNECT            (1 << 2)
+> > > +#define MEDIA_PAD_FL_METADATA                        (1 << 3)
+> >
+> > I think we need to reserve a few bits here. We'll have more than
+> > metadata. Audio comes to mind, there will likely be more. Having
+> > independent flags would not only waste a bit of space in the bitfield
+> > (not that we're about to run out of bits, but still), but would make it
+> > possible to specify invalid configurations such as MEDIA_PAD_FL_METADATA
+> > | MEDIA_PAD_FL_AUDIO. And now that I've written this, I realize that
+> > audio metadata could be a thing, so maybe a metadata flag is actually
+> > the best option :-)
+> hehe, ok, but drivers that set the METADATA flag should also set the media
+> bus code to MEDIA_BUS_FMT_FIXED ? If yes then setting
+> the METADATA flag with a different media bus is also an invalid configuration.
 
-Queued to fixes.
+That may be currently the case, but not all non-image data (metadata in
+practice) will be using MEDIA_BUS_FMT_FIXED, for instance sensor embedded
+data when we support that in upstream.
 
+Note that whether metadata flows over a pad is dynamic configuration. I
+wonder if it is useful to tell this to the user, as the user, in many
+cases, will be making the configuration affecting this. There definitely
+are devices where this configuration would be static, but many of those
+cases (ISPs in particular) have DMAs (i.e. video nodes) directly connected
+over a link, where you'll find this information on the video node.
 
-Andrzej
+-- 
+Regards,
+
+Sakari Ailus
