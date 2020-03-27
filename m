@@ -1,7 +1,7 @@
 From: Chen-Yu Tsai <wens@kernel.org>
-Subject: [PATCH 1/6] arm64: dts: rockchip: rk3399-roc-pc: Fix MMC numbering for LED triggers
-Date: Fri, 27 Mar 2020 11:04:09 +0800
-Message-ID: <20200327030414.5903-2-wens@kernel.org>
+Subject: [PATCH 5/6] arm64: dts: rockchip: rk3399: drop #address-cells, #size-cells from pmugrf node
+Date: Fri, 27 Mar 2020 11:04:13 +0800
+Message-ID: <20200327030414.5903-6-wens@kernel.org>
 References: <20200327030414.5903-1-wens@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -14,61 +14,32 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Chen-Yu Tsai <wens@csie.org>
 
-With SDIO now enabled, the numbering of the existing MMC host controllers
-gets incremented by 1, as the SDIO host is the first one.
+The device tree compiler gives the following warning:
 
-Increment the numbering of the MMC LED triggers to match.
+    /syscon@ff100000: unnecessary #address-cells/#size-cells without
+    "ranges" or child "reg" property
 
-Fixes: cf3c5397835f ("arm64: dts: rockchip: Enable sdio0 and uart0 on rk3399-roc-pc-mezzanine")
+Since the pmygrf node only has an io-domains child node that has no
+reg property, remove the two properties from the pmugrf node to silence
+the warning.
+
 Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts | 8 ++++++++
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi          | 4 ++--
- 2 files changed, 10 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
-index 2acb3d500fb9..f0686fc276be 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
-@@ -38,6 +38,10 @@ vcc3v3_pcie: vcc3v3-pcie {
- 	};
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 74f2c3d49095..3499d1497127 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1124,8 +1124,6 @@ pd_vopl@RK3399_PD_VOPL {
+ 	pmugrf: syscon@ff320000 {
+ 		compatible = "rockchip,rk3399-pmugrf", "syscon", "simple-mfd";
+ 		reg = <0x0 0xff320000 0x0 0x1000>;
+-		#address-cells = <1>;
+-		#size-cells = <1>;
  
-+&diy_led {
-+	linux,default-trigger = "mmc2";
-+};
-+
- &pcie_phy {
- 	status = "okay";
- };
-@@ -91,3 +95,7 @@ &uart0 {
- 	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
- 	status = "okay";
- };
-+
-+&yellow_led {
-+	linux,default-trigger = "mmc1";
-+};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-index 9f225e9c3d54..bc060ac7972d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-@@ -70,14 +70,14 @@ work-led {
- 			linux,default-trigger = "heartbeat";
- 		};
- 
--		diy-led {
-+		diy_led: diy-led {
- 			label = "red:diy";
- 			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
- 			default-state = "off";
- 			linux,default-trigger = "mmc1";
- 		};
- 
--		yellow-led {
-+		yellow_led: yellow-led {
- 			label = "yellow:yellow-led";
- 			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
- 			default-state = "off";
+ 		pmu_io_domains: io-domains {
+ 			compatible = "rockchip,rk3399-pmu-io-voltage-domain";
 -- 
 2.25.1
