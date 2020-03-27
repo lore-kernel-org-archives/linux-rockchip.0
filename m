@@ -1,57 +1,74 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH 3/4] media: staging: rkisp1: cap: support uv swapped plane formats
-Date: Thu, 26 Mar 2020 21:16:09 +0100
-Message-ID: <20200326201610.31762-4-dafna.hirschfeld@collabora.com>
-References: <20200326201610.31762-1-dafna.hirschfeld@collabora.com>
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200326201610.31762-1-dafna.hirschfeld@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
+From: Chen-Yu Tsai <wens@kernel.org>
+Subject: [PATCH 1/6] arm64: dts: rockchip: rk3399-roc-pc: Fix MMC numbering for LED triggers
+Date: Fri, 27 Mar 2020 11:04:09 +0800
+Message-ID: <20200327030414.5903-2-wens@kernel.org>
+References: <20200327030414.5903-1-wens@kernel.org>
+Mime-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200327030414.5903-1-wens@kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
+Cc: Chen-Yu Tsai <wens@csie.org>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Plane formats with the u and v planes swapped can be
-supported by changing the address of the cb and cr in
-the buffer.
+From: Chen-Yu Tsai <wens@csie.org>
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+With SDIO now enabled, the numbering of the existing MMC host controllers
+gets incremented by 1, as the SDIO host is the first one.
+
+Increment the numbering of the MMC LED triggers to match.
+
+Fixes: cf3c5397835f ("arm64: dts: rockchip: Enable sdio0 and uart0 on rk3399-roc-pc-mezzanine")
+Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 ---
- drivers/staging/media/rkisp1/rkisp1-capture.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts | 8 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi          | 4 ++--
+ 2 files changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index fa2849209433..2d274e8f565b 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -41,6 +41,10 @@
- 	(((write_format) == RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA) ||	\
- 	 ((write_format) == RKISP1_MI_CTRL_SP_WRITE_SPLA))
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
+index 2acb3d500fb9..f0686fc276be 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
+@@ -38,6 +38,10 @@ vcc3v3_pcie: vcc3v3-pcie {
+ 	};
+ };
  
-+#define RKISP1_IS_PLANAR(write_format)					\
-+	(((write_format) == RKISP1_MI_CTRL_SP_WRITE_PLA) ||		\
-+	 ((write_format) == RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8))
++&diy_led {
++	linux,default-trigger = "mmc2";
++};
 +
- enum rkisp1_plane {
- 	RKISP1_PLANE_Y	= 0,
- 	RKISP1_PLANE_CB	= 1,
-@@ -788,6 +792,19 @@ static void rkisp1_vb2_buf_queue(struct vb2_buffer *vb)
- 			rkisp1_pixfmt_comp_size(pixm, RKISP1_PLANE_CB);
- 	}
- 
-+	/*
-+	 * uv swap can be supported for plane formats by switching
-+	 * the address of cb and cr
-+	 */
-+	if (RKISP1_IS_PLANAR(cap->pix.cfg->write_format) &&
-+	    cap->pix.cfg->uv_swap) {
-+		ispbuf->buff_addr[RKISP1_PLANE_CR] =
-+			ispbuf->buff_addr[RKISP1_PLANE_CB];
-+		ispbuf->buff_addr[RKISP1_PLANE_CB] =
-+			ispbuf->buff_addr[RKISP1_PLANE_CR] +
-+			rkisp1_pixfmt_comp_size(pixm, RKISP1_PLANE_CR);
-+	}
+ &pcie_phy {
+ 	status = "okay";
+ };
+@@ -91,3 +95,7 @@ &uart0 {
+ 	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
+ 	status = "okay";
+ };
 +
- 	spin_lock_irqsave(&cap->buf.lock, flags);
++&yellow_led {
++	linux,default-trigger = "mmc1";
++};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+index 9f225e9c3d54..bc060ac7972d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+@@ -70,14 +70,14 @@ work-led {
+ 			linux,default-trigger = "heartbeat";
+ 		};
  
- 	/*
+-		diy-led {
++		diy_led: diy-led {
+ 			label = "red:diy";
+ 			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
+ 			default-state = "off";
+ 			linux,default-trigger = "mmc1";
+ 		};
+ 
+-		yellow-led {
++		yellow_led: yellow-led {
+ 			label = "yellow:yellow-led";
+ 			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
+ 			default-state = "off";
 -- 
-2.17.1
+2.25.1
