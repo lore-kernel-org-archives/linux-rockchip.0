@@ -1,35 +1,85 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v4] dt-bindings: rockchip-vpu: Convert bindings to json-schema
-Date: Thu, 26 Mar 2020 21:05:03 -0600
-Message-ID: <CAL_JsqJ4sLE8mf=Ssg3wxbpf-f65i+YRkCBj+8DVGPonRA0=9A@mail.gmail.com>
-References: <20200325213439.16509-8-ezequiel@collabora.com> <20200326191343.1989-1-ezequiel@collabora.com>
+From: Mylene Josserand <mylene.josserand@collabora.com>
+Subject: Re: [PATCH 1/2] ARM: Rockchip: Handle rk3288/rk3288w revision
+Date: Fri, 27 Mar 2020 07:20:03 +0100
+Message-ID: <5efe50ad-a88e-bc8c-de08-3be355ad9e53@collabora.com>
+References: <20200302155703.278421-1-mylene.josserand@collabora.com>
+ <20200302155703.278421-2-mylene.josserand@collabora.com>
+ <2221545.2vEflg7qi2@diego>
+ <CAMuHMdXJQqaCcMko9GUAeUiYQzmy3vnX42yVQNPzhj5ijtFuYA@mail.gmail.com>
+ <5802ec08-5e6a-8547-ee8e-dde630791235@collabora.com>
+ <CAMuHMdVKFT7eNK0RUi3miJ08O9FMAVs5Qz=YmbHH5-9UUzLNPw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200326191343.1989-1-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas@ndufresne.ca>, Collabora Kernel ML <kernel@collabora.com>, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <CAMuHMdVKFT7eNK0RUi3miJ08O9FMAVs5Qz=YmbHH5-9UUzLNPw@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-clk-owner@vger.kernel.org
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Russell King <linux@armlinux.org.uk>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Collabora Kernel ML <kernel@collabora.com>, linux-clk <linux-clk@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Mar 26, 2020 at 1:14 PM Ezequiel Garcia <ezequiel@collabora.com> wrote:
->
-> Convert Rockchip VPU (Hantro IP block) codec driver documentation to
-> json-schema.
->
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: Rob Herring <robh@kernel.org>
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> ---
-> v4:
-> * Fix issues pointed out by Rob,
->   and make sure now dt_binding_check passes.
->
->  .../bindings/media/rockchip-vpu.txt           | 43 -----------
->  .../bindings/media/rockchip-vpu.yaml          | 74 +++++++++++++++++++
->  MAINTAINERS                                   |  2 +-
->  3 files changed, 75 insertions(+), 44 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.txt
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+Hi Geert,
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+On 3/26/20 4:31 PM, Geert Uytterhoeven wrote:
+> Hi Mylene,
+> 
+> On Thu, Mar 26, 2020 at 2:50 PM Mylene Josserand
+> <mylene.josserand@collabora.com> wrote:
+>> On 3/6/20 11:45 AM, Geert Uytterhoeven wrote:
+>>> On Wed, Mar 4, 2020 at 12:00 PM Heiko Stübner <heiko@sntech.de> wrote:
+>>>> Am Montag, 2. März 2020, 16:57:02 CET schrieb Mylène Josserand:
+>>>>> Determine which revision of rk3288 by checking the HDMI version.
+>>>>> According to the Rockchip BSP kernel, on rk3288w, the HDMI
+>>>>> revision equals 0x1A which is not the case for the rk3288 [1].
+>>>>>
+>>>>> As these SOC have some differences, the new function
+>>>>> 'soc_is_rk3288w' will help us to know on which revision
+>>>>> we are.
+>>>>
+>>>> what happened to just having a different compatible in the dts?
+>>>> Aka doing a
+>>>>
+>>>> rk3288w.dtsi with
+>>>>
+>>>> #include "rk3288.dtsi"
+>>>>
+>>>> &cru {
+>>>>           compatible = "rockchip,rk3288w-cru";
+>>>> }
+>>>>
+>>>> I somehow don't expect boards to just switch between soc variants
+>>>> on the fly.
+>>>>
+>>>> Also, doing things in mach-rockchip is not very future-proof:
+>>>>
+>>>> (1) having random soc-specific APIs spanning the kernel feels wrong,
+>>>>       especially as at some point it might not be contained to our own special
+>>>>       drivers like the cru. I cannot really see people being enthusiastic if
+>>>>       something like this would be needed in say the core Analogix-DP bridge ;-)
+>>>
+>>> Indeed.  You're better of registering an soc_device_attribute using
+>>> soc_device_register(), after which any driver can use soc_device_match()
+>>> to differentiate based on the SoC revision.
+>>
+>> Thank you for this suggestion. The issue is that clocks are registered
+>> at an early stage of the boot so using initcalls is too late for the
+>> clock differentiation :(
+> 
+> IC, rk388 is still using CLK_OF_DECLARE().
+> What about converting it to a platform driver, registered from e.g.
+> subsys_initcall()?
+> If you need some clocks early (e.g. for timers), you can do split
+> registration, with the early part still using CLK_OF_DECLARE().
+> That should work, assumed the timer clocks don't need differentiation.
+> 
+> Gr{oetje,eeting}s,
+> 
+>                          Geert
+> 
+
+oh, nice, thanks for the help!
+I will try that and send a new version if it is working fine.
+
+Best regards,
+Mylène
