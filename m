@@ -1,309 +1,41 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH] media: staging: rkisp1: cap: remove field fmt_type from struct rkisp1_capture_fmt_cfg
-Date: Sat, 28 Mar 2020 09:49:15 +0100
-Message-ID: <20200328084915.21398-1-dafna.hirschfeld@collabora.com>
-Return-path: <linux-media-owner@vger.kernel.org>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
+From: Martin Blumenstingl <martin.blumenstingl-gM/Ye1E23mwN+BqQ9rBEUg@public.gmane.org>
+Subject: Re: [PATCH v4 2/2] drm/lima: Add optional devfreq and cooling device
+ support
+Date: Sat, 28 Mar 2020 11:20:24 +0100
+Message-ID: <CAFBinCDUhVaky6EUA7dOAhAZM9itbydQ+w=0P-1m2u0o0HUUeA@mail.gmail.com>
+References: <20200319203427.2259891-1-martin.blumenstingl@googlemail.com>
+ <20200319203427.2259891-3-martin.blumenstingl@googlemail.com>
+ <CAKGbVbtKqdCEcawkjG=7TRd30df6GJ+gagV_JegntyqRpzC4cg@mail.gmail.com>
+ <CAKGbVbvAvk0L5sGQmuqfxeL6AwtVnSsYyCp6YBYV6ZHKepWBXg@mail.gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAKGbVbvAvk0L5sGQmuqfxeL6AwtVnSsYyCp6YBYV6ZHKepWBXg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Qiang Yu <yuq825-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tomeu Vizoso <tomeu.vizoso-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Steven Price <steven.price-5wv7dgnIgG8@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Alyssa Rosenzweig <alyssa.rosenzweig-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, "open list:ARM/Amlogic Meson..." <linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The pixel encoding can be retrieved from the cap->pix.info.
-Therefore the field fmt_type can be removed from the
-struct rkisp1_capture_fmt_cfg.
+On Sat, Mar 28, 2020 at 9:40 AM Qiang Yu <yuq825-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+> Applied to drm-misc-next.
+thank you!
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- drivers/staging/media/rkisp1/rkisp1-capture.c | 62 +++++--------------
- 1 file changed, 17 insertions(+), 45 deletions(-)
+regarding patch #1 - can you apply this as well?
+patch #1 just takes this midgard change [0] and ports it to utgard
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index 24fe6a7888aa..01e1ff5943f1 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -52,7 +52,6 @@ enum rkisp1_plane {
-  */
- struct rkisp1_capture_fmt_cfg {
- 	u32 fourcc;
--	u8 fmt_type;
- 	u8 uv_swap;
- 	u32 write_format;
- 	u32 output_format;
-@@ -83,11 +82,24 @@ struct rkisp1_capture_config {
- 	} mi;
- };
- 
-+static enum rkisp1_fmt_pix_type
-+rkisp1_pixel_enc_to_fmt_pix(const struct v4l2_format_info *f)
-+{
-+	switch (f->pixel_enc) {
-+	case V4L2_PIXEL_ENC_RGB:
-+		return RKISP1_FMT_RGB;
-+	case V4L2_PIXEL_ENC_YUV:
-+		return RKISP1_FMT_YUV;
-+	case V4L2_PIXEL_ENC_BAYER:
-+		return RKISP1_FMT_BAYER;
-+	}
-+	return V4L2_PIXEL_ENC_UNKNOWN;
-+}
-+
- static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 	/* yuv422 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUYV,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 	}, {
-@@ -101,119 +113,95 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV16,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV61,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU422M,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	},
- 	/* yuv420 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV21,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV21M,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12M,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV420,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU420,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	},
- 	/* yuv444 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUV444M,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	},
- 	/* yuv400 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_GREY,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 	},
- 	/* raw */
- 	{
- 		.fourcc = V4L2_PIX_FMT_SRGGB8,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGRBG8,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGBRG8,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SBGGR8,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SRGGB10,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGRBG10,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGBRG10,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SBGGR10,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SRGGB12,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGRBG12,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGBRG12,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SBGGR12,
--		.fmt_type = RKISP1_FMT_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	},
- };
-@@ -222,7 +210,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* yuv422 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUYV,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-@@ -240,25 +227,21 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV16,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV61,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU422M,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-@@ -266,37 +249,31 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* yuv420 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV21,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV21M,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12M,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV420,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU420,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-@@ -304,7 +281,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* yuv444 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUV444M,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV444,
-@@ -312,7 +288,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* yuv400 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_GREY,
--		.fmt_type = RKISP1_FMT_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
-@@ -320,17 +295,14 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* rgb */
- 	{
- 		.fourcc = V4L2_PIX_FMT_RGB24,
--		.fmt_type = RKISP1_FMT_RGB,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_RGB565,
--		.fmt_type = RKISP1_FMT_RGB,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB565,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_BGR666,
--		.fmt_type = RKISP1_FMT_RGB,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB666,
- 	},
-@@ -504,13 +476,12 @@ static void rkisp1_sp_disable(struct rkisp1_capture *cap)
- 
- static void rkisp1_mp_enable(struct rkisp1_capture *cap)
- {
--	const struct rkisp1_capture_fmt_cfg *isp_fmt = cap->pix.cfg;
- 	u32 mi_ctrl;
- 
- 	rkisp1_mp_disable(cap);
- 
- 	mi_ctrl = rkisp1_read(cap->rkisp1, RKISP1_CIF_MI_CTRL);
--	if (isp_fmt->fmt_type == RKISP1_FMT_BAYER)
-+	if (v4l2_is_format_bayer(cap->pix.info))
- 		mi_ctrl |= RKISP1_CIF_MI_CTRL_RAW_ENABLE;
- 	/* YUV */
- 	else
-@@ -1260,7 +1231,8 @@ static int rkisp1_capture_link_validate(struct media_link *link)
- 		return -EPIPE;
- 	}
- 
--	if (cap->pix.cfg->fmt_type != isp->src_fmt->fmt_type) {
-+	if (rkisp1_pixel_enc_to_fmt_pix(cap->pix.info) !=
-+	    isp->src_fmt->fmt_type) {
- 		dev_err(cap->rkisp1->dev,
- 			"format type mismatch in link '%s:%d->%s:%d'\n",
- 			link->source->entity->name, link->source->index,
--- 
-2.17.1
+
+Thank you!
+Martin
+
+
+[0] https://cgit.freedesktop.org/drm/drm-misc/commit/Documentation/devicetree/bindings/gpu?id=982c0500fd1a8012c31d3c9dd8de285129904656
