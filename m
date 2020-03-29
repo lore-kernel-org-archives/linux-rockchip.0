@@ -1,43 +1,128 @@
-From: Qiang Yu <yuq825@gmail.com>
-Subject: Re: [PATCH v4 2/2] drm/lima: Add optional devfreq and cooling device support
-Date: Sun, 29 Mar 2020 17:57:13 +0800
-Message-ID: <CAKGbVbsHXUhpaU34ovRPqc51LSavERUzMySx3hG7AqdO-oobHw@mail.gmail.com>
-References: <20200319203427.2259891-1-martin.blumenstingl@googlemail.com>
- <20200319203427.2259891-3-martin.blumenstingl@googlemail.com>
- <CAKGbVbtKqdCEcawkjG=7TRd30df6GJ+gagV_JegntyqRpzC4cg@mail.gmail.com>
- <CAKGbVbvAvk0L5sGQmuqfxeL6AwtVnSsYyCp6YBYV6ZHKepWBXg@mail.gmail.com> <CAFBinCDUhVaky6EUA7dOAhAZM9itbydQ+w=0P-1m2u0o0HUUeA@mail.gmail.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Subject: Re: [PATCH 1/6] arm64: dts: rockchip: rk3399-roc-pc: Fix MMC
+ numbering for LED triggers
+Date: Mon, 30 Mar 2020 00:36:37 +0800
+Message-ID: <CAGb2v65ayZwN14S-Pzu2ip1K=fgzTbNB=ZzUcpou-jtv8m6vBA@mail.gmail.com>
+References: <20200327030414.5903-2-wens@kernel.org> <684a08e6-7dfe-4cb1-2ae5-c1fb4128976b@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAFBinCDUhVaky6EUA7dOAhAZM9itbydQ+w=0P-1m2u0o0HUUeA@mail.gmail.com>
+In-Reply-To: <684a08e6-7dfe-4cb1-2ae5-c1fb4128976b@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: dri-devel <dri-devel@lists.freedesktop.org>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Tomeu Vizoso <tomeu.vizoso@collabora.com>, Rob Herring <robh@kernel.org>, Steven Price <steven.price@arm.com>, Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>, "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, linux-pm@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Chen-Yu Tsai <wens@kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-I'm not the maintainer of patch 1 file, so please contact:
-  - Rob Herring <robh@kernel.org>
-  - Maxime Ripard <maxime.ripard@free-electrons.com>
-  - Heiko Stuebner <heiko@sntech.de>
-to review and apply patch 1.
-
-Regards,
-Qiang
-
-On Sat, Mar 28, 2020 at 6:20 PM Martin Blumenstingl
-<martin.blumenstingl@googlemail.com> wrote:
+On Fri, Mar 27, 2020 at 5:58 PM Johan Jonker <jbx6244@gmail.com> wrote:
 >
-> On Sat, Mar 28, 2020 at 9:40 AM Qiang Yu <yuq825@gmail.com> wrote:
+> Hi Chen-Yu Tsai,
+>
+> The led node names need some changes.
+> 'linux,default-trigger' value does not fit.
+>
+> From leds-gpio.yaml:
+>
+> patternProperties:
+>   # The first form is preferred, but fall back to just 'led' anywhere in the
+>   # node name to at least catch some child nodes.
+>   "(^led-[0-9a-f]$|led)":
+>     type: object
+>
+> Rename led nodenames to 'led-0' form
+>
+> Also include all mail lists found with:
+> ./scripts/get_maintainer.pl --nogit-fallback --nogit
+>
+> devicetree@vger.kernel.org
+
+Oops...
+
+> If you like change the rest of dts with leds as well...
+>
+>   DTC     arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dt.yaml
+>   CHECK   arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dt.yaml
+> arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dt.yaml: leds:
+> yellow-led:linux,default-trigger:0: 'mmc0' is not one of ['backlight',
+> 'default-on', 'heartbeat', 'disk-activity', 'ide-disk', 'timer', 'pattern']
+> arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dt.yaml: leds:
+> diy-led:linux,default-trigger:0: 'mmc1' is not one of ['backlight',
+> 'default-on', 'heartbeat', 'disk-activity', 'ide-disk', 'timer', 'pattern']
+>   DTC     arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dt.yaml
+>   CHECK   arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dt.yaml
+> arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dt.yaml: leds:
+> diy-led:linux,default-trigger:0: 'mmc2' is not one of ['backlight',
+> 'default-on', 'heartbeat', 'disk-activity', 'ide-disk', 'timer', 'pattern']
+> arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dt.yaml: leds:
+> yellow-led:linux,default-trigger:0: 'mmc1' is not one of ['backlight',
+> 'default-on', 'heartbeat', 'disk-activity', 'ide-disk', 'timer', 'pattern']
+
+Maybe we should just get rid of linux,default-trigger then?
+
+Heiko?
+
+ChenYu
+
+> make -k ARCH=arm64 dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/leds/leds-gpio.yaml
+>
+> > From: Chen-Yu Tsai <wens@csie.org>
 > >
-> > Applied to drm-misc-next.
-> thank you!
+> > With SDIO now enabled, the numbering of the existing MMC host controllers
+> > gets incremented by 1, as the SDIO host is the first one.
+> >
+> > Increment the numbering of the MMC LED triggers to match.
+> >
+> > Fixes: cf3c5397835f ("arm64: dts: rockchip: Enable sdio0 and uart0 on rk3399-roc-pc-mezzanine")
+> > Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+> > ---
+> >  arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts | 8 ++++++++
+> >  arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi          | 4 ++--
+> >  2 files changed, 10 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
+> > index 2acb3d500fb9..f0686fc276be 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
+> > @@ -38,6 +38,10 @@ vcc3v3_pcie: vcc3v3-pcie {
+> >       };
+> >  };
+> >
+> > +&diy_led {
+> > +     linux,default-trigger = "mmc2";
+> > +};
+> > +
+> >  &pcie_phy {
+> >       status = "okay";
+> >  };
+> > @@ -91,3 +95,7 @@ &uart0 {
+> >       pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
+> >       status = "okay";
+> >  };
+> > +
+> > +&yellow_led {
+> > +     linux,default-trigger = "mmc1";
+> > +};
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> > index 9f225e9c3d54..bc060ac7972d 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> > @@ -70,14 +70,14 @@ work-led {
+> >                       linux,default-trigger = "heartbeat";
+> >               };
+> >
+> > -             diy-led {
+> > +             diy_led: diy-led {
+> >                       label = "red:diy";
+> >                       gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
+> >                       default-state = "off";
+> >                       linux,default-trigger = "mmc1";
+> >               };
+> >
+> > -             yellow-led {
+> > +             yellow_led: yellow-led {
+> >                       label = "yellow:yellow-led";
+> >                       gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
+> >                       default-state = "off";
+> > --
+> > 2.25.1
 >
-> regarding patch #1 - can you apply this as well?
-> patch #1 just takes this midgard change [0] and ports it to utgard
->
->
-> Thank you!
-> Martin
->
->
-> [0] https://cgit.freedesktop.org/drm/drm-misc/commit/Documentation/devicetree/bindings/gpu?id=982c0500fd1a8012c31d3c9dd8de285129904656
