@@ -1,72 +1,71 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH] media: v4l2-common: change the pixel_enc of
- V4L2_PIX_FMT_GREY to YUV
-Date: Mon, 30 Mar 2020 15:22:38 -0300
-Message-ID: <9304066ca10c9ccdf8a5fd88866425a5f45a330a.camel@collabora.com>
-References: <20200323173618.14058-1-dafna.hirschfeld@collabora.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH 1/4] media: staging: rkisp1: cap: fix issues when writing
+ to uv swap register
+Date: Mon, 30 Mar 2020 16:11:26 -0300
+Message-ID: <0ad5cae9-e12b-fc22-dbed-886c91af4f46@collabora.com>
+References: <20200326201610.31762-1-dafna.hirschfeld@collabora.com>
+ <20200326201610.31762-2-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200323173618.14058-1-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20200326201610.31762-2-dafna.hirschfeld@collabora.com>
+Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, helen.koike@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Dafna,
 
-Nice catch, thanks a lot.
+Thanks for your patch.
 
-On Mon, 2020-03-23 at 18:36 +0100, Dafna Hirschfeld wrote:
-> V4L2_PIX_FMT_GREY format is Ycbcr format without
+On 3/26/20 5:16 PM, Dafna Hirschfeld wrote:
+> When writing to the RKISP1_CIF_MI_XTD_FORMAT_CTRL register
+> in mainpath, a redundant mask that clears the related swap
+> flag is applied and then the flag is set again.
+> 
+> In the selfpath, a mask that clears the swap setting is applied
+> instead of adding the setting.
+> This patch fixes those issues by just adding the swap setting.
 
-A nitpick s/Ycbcr/YCbCr. Maybe Hans can amend
-this when applying.
+One is a clean-up, and the other one is a bug fix.
+Could you please split those in two separated patches?
 
-It's no big deal anyway.
+It is better for tracking bugs and bisectability to  not mix
+cleanups with fixes.
 
-Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+Thanks
+Helen
 
-> the color data, therefore its pixel_enc should
-> set to V4L2_PIXEL_ENC_YUV.
 > 
 > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 > ---
->  drivers/media/v4l2-core/v4l2-common.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-> index d0e5ebc736f9..054f2e607dff 100644
-> --- a/drivers/media/v4l2-core/v4l2-common.c
-> +++ b/drivers/media/v4l2-core/v4l2-common.c
-> @@ -250,7 +250,6 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
->  		{ .format = V4L2_PIX_FMT_RGBA32,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv =
-> 1, .vdiv = 1 },
->  		{ .format = V4L2_PIX_FMT_ABGR32,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv =
-> 1, .vdiv = 1 },
->  		{ .format = V4L2_PIX_FMT_BGRA32,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv =
-> 1, .vdiv = 1 },
-> -		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .hdiv =
-> 1, .vdiv = 1 },
->  		{ .format = V4L2_PIX_FMT_RGB565,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv =
-> 1, .vdiv = 1 },
->  		{ .format = V4L2_PIX_FMT_RGB555,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv =
-> 1, .vdiv = 1 },
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> index 45d237a77ca4..84a3cf565106 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> @@ -432,8 +432,7 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
+>  	if (cap->pix.cfg->uv_swap) {
+>  		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
 >  
-> @@ -274,6 +273,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
->  		{ .format = V4L2_PIX_FMT_YUV420,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv =
-> 2, .vdiv = 2 },
->  		{ .format = V4L2_PIX_FMT_YVU420,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv =
-> 2, .vdiv = 2 },
->  		{ .format = V4L2_PIX_FMT_YUV422P, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv =
-> 2, .vdiv = 1 },
-> +		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .hdiv =
-> 1, .vdiv = 1 },
+> -		reg = (reg & ~BIT(0)) |
+> -		      RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+> +		reg = reg | RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+>  		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>  	}
 >  
->  		/* YUV planar formats, non contiguous variant */
->  		{ .format = V4L2_PIX_FMT_YUV420M, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 3, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv =
-> 2, .vdiv = 2 },
-> -- 
-> 2.17.1
-> 
+> @@ -470,8 +469,8 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
+>  	if (cap->pix.cfg->uv_swap) {
+>  		u32 reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>  
+> -		rkisp1_write(rkisp1, reg & ~BIT(1),
+> -			     RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+> +		reg = reg | RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
+> +		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>  	}
+>  
+>  	rkisp1_mi_config_ctrl(cap);
 > 
