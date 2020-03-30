@@ -1,128 +1,196 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 4/4] rockchip: Enable HDMI output on rk3399 board w/ HDMI
-Date: Mon, 30 Mar 2020 23:46:13 +0530
-Message-ID: <20200330181613.29462-5-jagan@amarulasolutions.com>
-References: <20200330181613.29462-1-jagan@amarulasolutions.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Subject: =?UTF-8?B?UmU6IFBST0JMRU06IG1tY19zZWxlY3RfaHM0MDBlcyBmYWlsZWQsIGVycm9yIC0xMTA=?=
+        =?UTF-8?B?44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgtbW1jLW93bmVyQHZnZXIua2VybmVsLm9yZ+S7ow==?=
+        =?UTF-8?B?5Y+R44CR?=
+Date: Mon, 30 Mar 2020 20:19:01 +0200
+Message-ID: <CAPDyKFotyWVXu+Aj6y-DoAtrbimD7ycg=81bf8zjeSg9mrD-4A@mail.gmail.com>
+References: <20200301220242.GA8276@arya.arvanta.net> <20200318214917.GA9112@arya.arvanta.net>
+ <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com> <158bd6f5-2430-19bd-28ef-e18d67becaf3@arm.com>
+ <20200321204652.GA21002@arya.arvanta.net> <20200327171417.GA4387@arya.arvanta.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200330181613.29462-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-mmc-owner@vger.kernel.org>
+In-Reply-To: <20200327171417.GA4387@arya.arvanta.net>
+Sender: linux-mmc-owner@vger.kernel.org
+To: =?UTF-8?Q?Milan_P=2E_Stani=C4=87?= <mps@arvanta.net>
+Cc: Robin Murphy <robin.murphy@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable config options and console setting to respective
-rk3399 board for HDMI output.
+On Fri, 27 Mar 2020 at 18:14, Milan P. Stani=C4=87 <mps@arvanta.net> wrote:
+>
+> Hi,
+>
+> Anyone looked at this problem?
+>
+> Or, is there better url or mailing list where I should send this bug
+> report?
 
-Boards supported and tested on this patch are:
-- NanoPc T4
-- NanoPi M4
-- NanoPi Neo4
-- ROC-RK3399-PC
+This is the mmc-list and since the rock-chips list was added by Shawn
+- you have directed your question correctly.
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
-Changes for v2:
-- use usbkbd in stdin
-- enable USB_KEYBOARD
+The problem is, this isn't a list where everyone can get free support.
+People may be working on other platforms, for example.
 
- configs/nanopc-t4-rk3399_defconfig   | 7 +++++++
- configs/nanopi-m4-rk3399_defconfig   | 7 +++++++
- configs/nanopi-neo4-rk3399_defconfig | 7 +++++++
- configs/roc-pc-rk3399_defconfig      | 6 ++++++
- include/configs/evb_rk3399.h         | 5 +++++
- 5 files changed, 32 insertions(+)
+The best option for you, is probably to ping Shawn or to reach out to
+some other Rock-chips people, as it seems like these guys needs to
+have a closer look.
 
-diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
-index 9ea9b11574..607a00dbf7 100644
---- a/configs/nanopc-t4-rk3399_defconfig
-+++ b/configs/nanopc-t4-rk3399_defconfig
-@@ -52,5 +52,12 @@ CONFIG_USB_ETHER_ASIX88179=y
- CONFIG_USB_ETHER_MCS7830=y
- CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
-+CONFIG_USB_KEYBOARD=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_VIDEO_BPP16=y
-+CONFIG_VIDEO_BPP32=y
-+CONFIG_DISPLAY=y
-+CONFIG_VIDEO_ROCKCHIP=y
-+CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk3399_defconfig
-index ad0e808bf6..3fcb7ac2d7 100644
---- a/configs/nanopi-m4-rk3399_defconfig
-+++ b/configs/nanopi-m4-rk3399_defconfig
-@@ -52,5 +52,12 @@ CONFIG_USB_ETHER_ASIX88179=y
- CONFIG_USB_ETHER_MCS7830=y
- CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
-+CONFIG_USB_KEYBOARD=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_VIDEO_BPP16=y
-+CONFIG_VIDEO_BPP32=y
-+CONFIG_DISPLAY=y
-+CONFIG_VIDEO_ROCKCHIP=y
-+CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-rk3399_defconfig
-index d038a8cab9..b9ea535e43 100644
---- a/configs/nanopi-neo4-rk3399_defconfig
-+++ b/configs/nanopi-neo4-rk3399_defconfig
-@@ -52,5 +52,12 @@ CONFIG_USB_ETHER_ASIX88179=y
- CONFIG_USB_ETHER_MCS7830=y
- CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
-+CONFIG_USB_KEYBOARD=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_VIDEO_BPP16=y
-+CONFIG_VIDEO_BPP32=y
-+CONFIG_DISPLAY=y
-+CONFIG_VIDEO_ROCKCHIP=y
-+CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index d540a17aeb..be76524cef 100644
---- a/configs/roc-pc-rk3399_defconfig
-+++ b/configs/roc-pc-rk3399_defconfig
-@@ -59,3 +59,9 @@ CONFIG_USB_ETHER_SMSC95XX=y
- CONFIG_USB_KEYBOARD=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_VIDEO_BPP16=y
-+CONFIG_VIDEO_BPP32=y
-+CONFIG_DISPLAY=y
-+CONFIG_VIDEO_ROCKCHIP=y
-+CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
-index c0b0358893..2d3db22877 100644
---- a/include/configs/evb_rk3399.h
-+++ b/include/configs/evb_rk3399.h
-@@ -6,6 +6,11 @@
- #ifndef __EVB_RK3399_H
- #define __EVB_RK3399_H
- 
-+#define ROCKCHIP_DEVICE_SETTINGS \
-+		"stdin=serial,usbkbd\0" \
-+		"stdout=serial,vidconsole\0" \
-+		"stderr=serial,vidconsole\0"
-+
- #include <configs/rk3399_common.h>
- 
- #if defined(CONFIG_ENV_IS_IN_MMC)
--- 
-2.17.1
+>
+> Or, could someone tell me what I could try to fix it, which file and
+> parameters to change?
+
+Well, if you can narrow down the problem that is always helpful. So
+for example, is there any upstream kernel that works - or is it only
+working through the chrome-os tree (which likely contains vendor
+specific changes that are not upstream).
+
+Kind regards
+Uff
+
+>
+> On Sat, 2020-03-21 at 21:46, Milan P. Stani=C4=87 wrote:
+> > Hi,
+> >
+> > On Thu, 2020-03-19 at 12:28, Robin Murphy wrote:
+> > > Hi Shawn,
+> > >
+> > > On 2020-03-19 3:11 am, Shawn Lin wrote:
+> > > > Hi Milan
+> > > >
+> > > > [+linux-rockchip to see if someone has a Samsung chromebook one plu=
+s
+> > > > and could confirm if it works]
+> > >
+> > > FWIW I've also tried suspend on my NanoPC-T4 and seen that the eMMC (=
+also
+> > > HS400-ES) fails to come back properly on resume (thus resume never co=
+mpletes
+> > > due to the missing root filesystem). IIRC it might even have been
+> > > reproducible with suspend-to-idle, but I'd have to double-check that.
+> >
+> > I forgot to tell that emmc worked without problem on this machine with
+> > ChromeOS kernel 4.4.xx downloaded from
+> > https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chrom=
+eos-4.4
+> > and with patches from
+> > https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-gru
+> > for about two years (iirc).
+> > Problem started when I switched to mainline kernels, somewhere around
+> > 5.1.xx
+> >
+> > > Robin.
+> > >
+> > > > On 2020/3/19 5:49, Milan P. Stani=C4=87 wrote:
+> > > > > Hello,
+> > > > >
+> > > > > Sorry to annoy again, but could you tell me if I sent this bug re=
+port
+> > > > > to right mail address or I should send it somewhere else.
+> > > > >
+> > > > > Also, did I sent bug report correctly or I did some mistakes whic=
+h
+> > > > > caused it to be ignored.
+> > > > >
+> > > > > -- TIA On Sun, 2020-03-01 at 23:02, Milan P. Stani=C4=87 wrote:
+> > > > > > Hello,
+> > > > > >
+> > > > > > I'm not native English speaker and I'm self taught in English s=
+o sorry
+> > > > > > if do not write or express correctly. And sorry if I posted bug=
+ report
+> > > > > > to wrong address.
+> > > > > >
+> > > > > > I'm running linux 5.6.0-rc3 without any patches on Samsung chro=
+mebook
+> > > > > > one plus, Arm64 rockchip rk3399 based model name:
+> > > > > > Machine model: Google Kevin
+> > > > > >
+> > > > > > I build kernels from upstream git.kernel.org for this machine f=
+or some
+> > > > > > time (iirc, from 5.2.1 and up) but I'm getting error messages i=
+n kernel
+> > > > > > after machine resumes from suspend-to-ram.
+> > > >
+> > > > It sounds to me suspend-to-ram never works for this machine, at lea=
+st
+> > > > since 5.2.1. Am I right?
+> > > >
+> > > > > >
+> > > > > > excerpt from dmesg output:
+> > > > > > ---------------------------------------------------------------=
+--------
+> > > > > > Restarting tasks ... done.
+> > > > > > PM: suspend exit
+> > > > > > mmc_host mmc0: Bus speed (slot 0) =3D 400000Hz (slot req 400000=
+Hz,
+> > > > > > actual 400000HZ div =3D 0)
+> > > > > > mmc1: mmc_select_hs400es failed, error -110
+> > > > > > mmc1: error -110 doing runtime resume
+> > > > > > mmc1: Got data interrupt 0x00000002 even though no data
+> > > > > > operation was in progress.
+> > > > > > mmc1: sdhci: =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D SDHCI REGISTE=
+R DUMP =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> > > > > > mmc1: sdhci: Sys addr:  0x00000008 | Version:  0x00001002
+> > > > > > mmc1: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000008
+> > > > > > mmc1: sdhci: Argument:  0x00000000 | Trn mode: 0x00000023
+> > > > > > mmc1: sdhci: Present:   0x1fff0001 | Host ctl: 0x00000035
+> > > > > > mmc1: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
+> > > > > > mmc1: sdhci: Wake-up:   0x00000000 | Clock:    0x0000bc07
+> > > > > > mmc1: sdhci: Timeout:   0x0000000d | Int stat: 0x00000000
+> > > > > > mmc1: sdhci: Int enab:  0x03ff000b | Sig enab: 0x03ff000b
+> > > > > > mmc1: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
+> > > > > > mmc1: sdhci: Caps:      0x44edc880 | Caps_1:   0x801020f7
+> > > > > > mmc1: sdhci: Cmd:       0x00000c1a | Max curr: 0x00000000
+> > > > > > mmc1: sdhci: Resp[0]:   0x00000000 | Resp[1]:  0x373300bd
+> > > > > > mmc1: sdhci: Resp[2]:   0x35303030 | Resp[3]:  0x00000000
+> > > > > > mmc1: sdhci: Host ctl2: 0x00000000
+> > > > > > mmc1: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xed41e200
+> > > > > > ---------------------------------------------------------------=
+--------
+> > > > > >
+> > > > > > I invoke suspend-to-ram by `echo mem > /sys/power/state` from A=
+CPI power
+> > > > > > and LID button handlers.
+> > > > > >
+> > > > > > This only happens when I boot and use internal emmc card and ne=
+ver when
+> > > > > > boot and use external mmc card.
+> > > > > >
+> > > > > > If suspend-to-ram is not invoked (machine is always in normal s=
+tate)
+> > > > > > this problem never happen (or I missed it somehow).
+> > > > > >
+> > > > > > I'm attaching kernel .config (file config-5.6.0-rc3-1-gru.conf)=
+ which
+> > > > > > use to build kernel, output of the `awk -f scripts/ver_linux` a=
+s file
+> > > > > > ver_linux.txt and  output of dmesg as file mmc-err.txt (from wh=
+ich I
+> > > > > > deleted wifi connection logs).
+> > > > > >
+> > > > > > Sorry if I did something bad or wrong with this bug report, I d=
+on't have
+> > > > > > much experience with bug reporting, especially for kernel.
+> > > > > >
+> > > > > > I'm ready to send you more data, and investigate this more, app=
+ly
+> > > > > > patches and rebuild kernel or whatever you ask me (of course if=
+ my
+> > > > > > understanding and knowledge is enough for this job).
+> > > > > >
+> > > > > > Thank in advance
+> > > > > >
+> > > > > > --
+> > > > > > Kind regards
+> > > > > >
+> > > > > [...]
+> > > > >
+> > > > >
+> > > >
+> > > >
+> > > >
+> > > > _______________________________________________
+> > > > Linux-rockchip mailing list
+> > > > Linux-rockchip@lists.infradead.org
+> > > > http://lists.infradead.org/mailman/listinfo/linux-rockchip
