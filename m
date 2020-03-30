@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 2/4] video: rockchip: Fix vop modes for rk3399
-Date: Mon, 30 Mar 2020 23:46:11 +0530
-Message-ID: <20200330181613.29462-3-jagan@amarulasolutions.com>
+Subject: [PATCH v2 4/4] rockchip: Enable HDMI output on rk3399 board w/ HDMI
+Date: Mon, 30 Mar 2020 23:46:13 +0530
+Message-ID: <20200330181613.29462-5-jagan@amarulasolutions.com>
 References: <20200330181613.29462-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,152 +21,108 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-VOP display endpoint pipeline configuration is differs
-between rk3288 vs rk3399.
+Enable config options and console setting to respective
+rk3399 board for HDMI output.
 
-These VOP pipeline configuration depends on how the
-different display interfaces connected in sequence to
-IN and OUT ports like for,
-
-RK3288:
-
-vopb_out: port {
-	#address-cells = <1>;
-	#size-cells = <0>;
-	vopb_out_edp: endpoint@0 {
-		reg = <0>;
-		remote-endpoint = <&edp_in_vopb>;
-	};
-	vopb_out_hdmi: endpoint@1 {
-		reg = <1>;
-                remote-endpoint = <&hdmi_in_vopb>;
-        };
-        vopb_out_lvds: endpoint@2 {
-                reg = <2>;
-                remote-endpoint = <&lvds_in_vopb>;
-        };
-        vopb_out_mipi: endpoint@3 {
-                reg = <3>;
-                remote-endpoint = <&mipi_in_vopb>;
-        };
-};
-
-RK3399:
-
-vopb_out: port {
-         #address-cells = <1>;
-         #size-cells = <0>;
-         vopb_out_edp: endpoint@0 {
-                reg = <0>;
-                remote-endpoint = <&edp_in_vopb>;
-         };
-         vopb_out_mipi: endpoint@1 {
-                reg = <1>;
-                remote-endpoint = <&mipi_in_vopb>;
-         };
-         vopb_out_hdmi: endpoint@2 {
-                reg = <2>;
-                remote-endpoint = <&hdmi_in_vopb>;
-         };
-         vopb_out_mipi1: endpoint@3 {
-                reg = <3>;
-                remote-endpoint = <&mipi1_in_vopb>;
-         };
-         vopb_out_dp: endpoint@4 {
-                reg = <4>;
-                remote-endpoint = <&dp_in_vopb>;
-         };
-};
-
-here, HDMI interface has endpoint 1 in rk3288 and 2 in rk3399.
-
-The rockchip vop driver often depends on this determined endpoint
-number and stored in vop_mode. So based on this vop_mode the bpp
-and pin polarity would configure on detected display interface.
-
-Since, the existing driver using rk3288 vop mode settings enabling
-the same will result wrong display interface configuration for rk3399.
-
-Add the patch for fixing these vop modes for rk3399.
+Boards supported and tested on this patch are:
+- NanoPc T4
+- NanoPi M4
+- NanoPi Neo4
+- ROC-RK3399-PC
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
 Changes for v2:
-- none
+- use usbkbd in stdin
+- enable USB_KEYBOARD
 
- arch/arm/include/asm/arch-rockchip/vop_rk3288.h | 11 +++++++++++
- drivers/video/rockchip/rk3399_vop.c             |  2 --
- drivers/video/rockchip/rk_vop.c                 |  4 ++++
- 3 files changed, 15 insertions(+), 2 deletions(-)
+ configs/nanopc-t4-rk3399_defconfig   | 7 +++++++
+ configs/nanopi-m4-rk3399_defconfig   | 7 +++++++
+ configs/nanopi-neo4-rk3399_defconfig | 7 +++++++
+ configs/roc-pc-rk3399_defconfig      | 6 ++++++
+ include/configs/evb_rk3399.h         | 5 +++++
+ 5 files changed, 32 insertions(+)
 
-diff --git a/arch/arm/include/asm/arch-rockchip/vop_rk3288.h b/arch/arm/include/asm/arch-rockchip/vop_rk3288.h
-index 8398249509..872a158b71 100644
---- a/arch/arm/include/asm/arch-rockchip/vop_rk3288.h
-+++ b/arch/arm/include/asm/arch-rockchip/vop_rk3288.h
-@@ -85,6 +85,16 @@ enum {
- 	LB_RGB_1280X8 = 0x5
- };
+diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
+index 9ea9b11574..607a00dbf7 100644
+--- a/configs/nanopc-t4-rk3399_defconfig
++++ b/configs/nanopc-t4-rk3399_defconfig
+@@ -52,5 +52,12 @@ CONFIG_USB_ETHER_ASIX88179=y
+ CONFIG_USB_ETHER_MCS7830=y
+ CONFIG_USB_ETHER_RTL8152=y
+ CONFIG_USB_ETHER_SMSC95XX=y
++CONFIG_USB_KEYBOARD=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
++CONFIG_DM_VIDEO=y
++CONFIG_VIDEO_BPP16=y
++CONFIG_VIDEO_BPP32=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk3399_defconfig
+index ad0e808bf6..3fcb7ac2d7 100644
+--- a/configs/nanopi-m4-rk3399_defconfig
++++ b/configs/nanopi-m4-rk3399_defconfig
+@@ -52,5 +52,12 @@ CONFIG_USB_ETHER_ASIX88179=y
+ CONFIG_USB_ETHER_MCS7830=y
+ CONFIG_USB_ETHER_RTL8152=y
+ CONFIG_USB_ETHER_SMSC95XX=y
++CONFIG_USB_KEYBOARD=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
++CONFIG_DM_VIDEO=y
++CONFIG_VIDEO_BPP16=y
++CONFIG_VIDEO_BPP32=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-rk3399_defconfig
+index d038a8cab9..b9ea535e43 100644
+--- a/configs/nanopi-neo4-rk3399_defconfig
++++ b/configs/nanopi-neo4-rk3399_defconfig
+@@ -52,5 +52,12 @@ CONFIG_USB_ETHER_ASIX88179=y
+ CONFIG_USB_ETHER_MCS7830=y
+ CONFIG_USB_ETHER_RTL8152=y
+ CONFIG_USB_ETHER_SMSC95XX=y
++CONFIG_USB_KEYBOARD=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
++CONFIG_DM_VIDEO=y
++CONFIG_VIDEO_BPP16=y
++CONFIG_VIDEO_BPP32=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+index d540a17aeb..be76524cef 100644
+--- a/configs/roc-pc-rk3399_defconfig
++++ b/configs/roc-pc-rk3399_defconfig
+@@ -59,3 +59,9 @@ CONFIG_USB_ETHER_SMSC95XX=y
+ CONFIG_USB_KEYBOARD=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
++CONFIG_DM_VIDEO=y
++CONFIG_VIDEO_BPP16=y
++CONFIG_VIDEO_BPP32=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
+index c0b0358893..2d3db22877 100644
+--- a/include/configs/evb_rk3399.h
++++ b/include/configs/evb_rk3399.h
+@@ -6,6 +6,11 @@
+ #ifndef __EVB_RK3399_H
+ #define __EVB_RK3399_H
  
-+#if defined(CONFIG_ROCKCHIP_RK3399)
-+enum vop_modes {
-+	VOP_MODE_EDP = 0,
-+	VOP_MODE_MIPI,
-+	VOP_MODE_HDMI,
-+	VOP_MODE_MIPI1,
-+	VOP_MODE_DP,
-+	VOP_MODE_NONE,
-+};
-+#else
- enum vop_modes {
- 	VOP_MODE_EDP = 0,
- 	VOP_MODE_HDMI,
-@@ -94,6 +104,7 @@ enum vop_modes {
- 	VOP_MODE_AUTO_DETECT,
- 	VOP_MODE_UNKNOWN,
- };
-+#endif
++#define ROCKCHIP_DEVICE_SETTINGS \
++		"stdin=serial,usbkbd\0" \
++		"stdout=serial,vidconsole\0" \
++		"stderr=serial,vidconsole\0"
++
+ #include <configs/rk3399_common.h>
  
- /* VOP_VERSION_INFO */
- #define M_FPGA_VERSION (0xffff << 16)
-diff --git a/drivers/video/rockchip/rk3399_vop.c b/drivers/video/rockchip/rk3399_vop.c
-index 81c122d7a9..1d5b3931a6 100644
---- a/drivers/video/rockchip/rk3399_vop.c
-+++ b/drivers/video/rockchip/rk3399_vop.c
-@@ -45,8 +45,6 @@ static void rk3399_set_pin_polarity(struct udevice *dev,
- 				V_RK3399_DSP_MIPI_POL(polarity));
- 		break;
- 
--	case VOP_MODE_LVDS:
--		/* The RK3399 has neither parallel RGB nor LVDS output. */
- 	default:
- 		debug("%s: unsupported output mode %x\n", __func__, mode);
- 	}
-diff --git a/drivers/video/rockchip/rk_vop.c b/drivers/video/rockchip/rk_vop.c
-index e91d4dfa7f..e1bd656bee 100644
---- a/drivers/video/rockchip/rk_vop.c
-+++ b/drivers/video/rockchip/rk_vop.c
-@@ -118,10 +118,12 @@ static void rkvop_enable_output(struct udevice *dev, enum vop_modes mode)
- 				V_EDP_OUT_EN(1));
- 		break;
- 
-+#if defined(CONFIG_ROCKCHIP_RK3288)
- 	case VOP_MODE_LVDS:
- 		clrsetbits_le32(&regs->sys_ctrl, M_ALL_OUT_EN,
- 				V_RGB_OUT_EN(1));
- 		break;
-+#endif
- 
- 	case VOP_MODE_MIPI:
- 		clrsetbits_le32(&regs->sys_ctrl, M_ALL_OUT_EN,
-@@ -313,7 +315,9 @@ static int rk_display_init(struct udevice *dev, ulong fbbase, ofnode ep_node)
- 	/* Set bitwidth for vop display according to vop mode */
- 	switch (vop_id) {
- 	case VOP_MODE_EDP:
-+#if defined(CONFIG_ROCKCHIP_RK3288)
- 	case VOP_MODE_LVDS:
-+#endif
- 		l2bpp = VIDEO_BPP16;
- 		break;
- 	case VOP_MODE_HDMI:
+ #if defined(CONFIG_ENV_IS_IN_MMC)
 -- 
 2.17.1
