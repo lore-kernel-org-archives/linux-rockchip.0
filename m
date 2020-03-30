@@ -1,30 +1,56 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v1 3/3] dt-bindings: iio: adc: rockchip-saradc: add
- description for px30
-Date: Mon, 30 Mar 2020 12:11:06 -0600
-Message-ID: <20200330181106.GA8102@bogus>
-References: <20200313132926.10543-1-jbx6244@gmail.com>
- <20200313132926.10543-3-jbx6244@gmail.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v2 0/4] rockchip: rk3399: Fix HDMI out
+Date: Mon, 30 Mar 2020 23:46:09 +0530
+Message-ID: <20200330181613.29462-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200313132926.10543-3-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 13 Mar 2020 14:29:26 +0100, Johan Jonker wrote:
-> The description below is already in use for px30.dtsi,
-> but was somehow never added to a document, so add
-> "rockchip,px30-saradc", "rockchip,rk3399-saradc"
-> for saradc nodes on a px30 platform to rockchip-saradc.yaml.
-> 
-> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
+Due to recent Linux dts(i) sync for rk3399. the existing
+vop driver is not working with HDMI out on RK3399.
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+This is v2 patchset, for previous version fixes[1].  
+
+[1] https://patchwork.ozlabs.org/cover/1228297/
+
+Changes for v2:
+- use usbkbd as stdin
+- enable USB Keyboard
+
+Any inputs?
+Jagan.
+
+Jagan Teki (4):
+  arm64: dts: rk3399-u-boot: Delete vop assigned-clocks/rates
+  video: rockchip: Fix vop modes for rk3399
+  rockchip: Enable pre console for rk3399
+  rockchip: Enable HDMI output on rk3399 board w/ HDMI
+
+ arch/arm/dts/rk3399-u-boot.dtsi                 |  4 ++++
+ arch/arm/include/asm/arch-rockchip/vop_rk3288.h | 11 +++++++++++
+ arch/arm/mach-rockchip/Kconfig                  |  1 +
+ common/Kconfig                                  |  1 +
+ configs/nanopc-t4-rk3399_defconfig              |  7 +++++++
+ configs/nanopi-m4-rk3399_defconfig              |  7 +++++++
+ configs/nanopi-neo4-rk3399_defconfig            |  7 +++++++
+ configs/roc-pc-rk3399_defconfig                 |  6 ++++++
+ drivers/video/rockchip/rk3399_vop.c             |  2 --
+ drivers/video/rockchip/rk_vop.c                 |  4 ++++
+ include/configs/evb_rk3399.h                    |  5 +++++
+ 11 files changed, 53 insertions(+), 2 deletions(-)
+
+-- 
+2.17.1
