@@ -1,71 +1,83 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 4/4] media: staging: rkisp1: cap: remove unsupported
- formats
-Date: Mon, 30 Mar 2020 16:20:44 -0300
-Message-ID: <83fc8d9c-16a0-a381-f5b8-5da642d79f5c@collabora.com>
-References: <20200326201610.31762-1-dafna.hirschfeld@collabora.com>
- <20200326201610.31762-5-dafna.hirschfeld@collabora.com>
+From: Mark Kettenis <mark.kettenis@xs4all.nl>
+Subject: Re: [PATCH v2 1/4] arm64: dts: rk3399-u-boot: Delete vop
+ assigned-clocks/rates
+Date: Mon, 30 Mar 2020 21:36:17 +0200 (CEST)
+Message-ID: <016151d6786a0ea4@bloch.sibelius.xs4all.nl>
+References: <20200330181613.29462-1-jagan@amarulasolutions.com>
+ <20200330181613.29462-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200326201610.31762-5-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-reply-to: <20200330181613.29462-2-jagan@amarulasolutions.com> (message from
+ Jagan Teki on Mon, 30 Mar 2020 23:46:10 +0530)
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+Cc: kever.yang@rock-chips.com, sjg@chromium.org, philipp.tomsich@theobroma-systems.com, agust@denx.de, sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, jagan@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 3/26/20 5:16 PM, Dafna Hirschfeld wrote:
-> For Ycbcr packed formats only YUYV can be supported by
-> the driver. This patch removes the other formats.
+> From: Jagan Teki <jagan@amarulasolutions.com>
+> Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de,
+>         linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com,
+>         Jagan Teki <jagan@amarulasolutions.com>
+> Date: Mon, 30 Mar 2020 23:46:10 +0530
+> Content-Type: text/plain; charset=UTF-8
 > 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> Linux supporting assigned-clocks for VOP on rk3399 by assuming
+> U-Boot not initializing it on this linux commit:
+> 
+> commit <617f4472bdd3> ("arm64: dts: rockchip: init rk3399 vop clock rates")
+> 
+> There is no specific need to initialize these assigned clock
+> in U-Boot as video drivers still work with default aclk and  
+> hclk values. So, these clocks are simply not supported by rk3399
+> clock driver.
+> 
+> But, during stdio probe of vidconsole, the device probe
+> will try to check whether the assigned clocks on that video
+> console node is initialized or not? and return error if not.
+> 
+> So, delete these property via -u-boot dtsi as there is
+> no specific need in U-Boot.
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
+Deleting these properties isn't very helpful as it means the U-Boot
+device tree can no longer be used by the kernel.  Isn't it a better
+idea to implement these clocks as stubs in the u-boot clock driver?
 
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 > ---
->  drivers/staging/media/rkisp1/rkisp1-capture.c | 21 -------------------
->  1 file changed, 21 deletions(-)
+> Changes for v2:
+> - none
 > 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> index 2d274e8f565b..076335193f40 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> @@ -98,15 +98,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
->  		.fmt_type = RKISP1_FMT_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> -	}, {
-> -		.fourcc = V4L2_PIX_FMT_YVYU,
-> -		.fmt_type = RKISP1_FMT_YUV,
-> -		.uv_swap = 1,
-> -		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> -	}, {
-> -		.fourcc = V4L2_PIX_FMT_VYUY,
-> -		.fmt_type = RKISP1_FMT_YUV,
-> -		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV422P,
->  		.fmt_type = RKISP1_FMT_YUV,
-> @@ -234,18 +225,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> -	}, {
-> -		.fourcc = V4L2_PIX_FMT_YVYU,
-> -		.fmt_type = RKISP1_FMT_YUV,
-> -		.uv_swap = 1,
-> -		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-> -		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> -	}, {
-> -		.fourcc = V4L2_PIX_FMT_VYUY,
-> -		.fmt_type = RKISP1_FMT_YUV,
-> -		.uv_swap = 1,
-> -		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-> -		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV422P,
->  		.fmt_type = RKISP1_FMT_YUV,
+>  arch/arm/dts/rk3399-u-boot.dtsi | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/arch/arm/dts/rk3399-u-boot.dtsi b/arch/arm/dts/rk3399-u-boot.dtsi
+> index 8b857ccfc7..b846f9cde7 100644
+> --- a/arch/arm/dts/rk3399-u-boot.dtsi
+> +++ b/arch/arm/dts/rk3399-u-boot.dtsi
+> @@ -99,9 +99,13 @@
+>  };
+>  
+>  &vopb {
+> +	/delete-property/ assigned-clocks;
+> +	/delete-property/ assigned-clock-rates;
+>  	u-boot,dm-pre-reloc;
+>  };
+>  
+>  &vopl {
+> +	/delete-property/ assigned-clocks;
+> +	/delete-property/ assigned-clock-rates;
+>  	u-boot,dm-pre-reloc;
+>  };
+> -- 
+> 2.17.1
+> 
 > 
