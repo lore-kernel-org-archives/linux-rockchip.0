@@ -1,12 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 1/4] arm64: dts: rk3399-u-boot: Delete vop
- assigned-clocks/rates
-Date: Mon, 30 Mar 2020 23:46:10 +0530
-Message-ID: <20200330181613.29462-2-jagan@amarulasolutions.com>
+Subject: [PATCH v2 3/4] rockchip: Enable pre console for rk3399
+Date: Mon, 30 Mar 2020 23:46:12 +0530
+Message-ID: <20200330181613.29462-4-jagan@amarulasolutions.com>
 References: <20200330181613.29462-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20200330181613.29462-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -22,29 +21,51 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-TGludXggc3VwcG9ydGluZyBhc3NpZ25lZC1jbG9ja3MgZm9yIFZPUCBvbiByazMzOTkgYnkgYXNz
-dW1pbmcKVS1Cb290IG5vdCBpbml0aWFsaXppbmcgaXQgb24gdGhpcyBsaW51eCBjb21taXQ6Cgpj
-b21taXQgPDYxN2Y0NDcyYmRkMz4gKCJhcm02NDogZHRzOiByb2NrY2hpcDogaW5pdCByazMzOTkg
-dm9wIGNsb2NrIHJhdGVzIikKClRoZXJlIGlzIG5vIHNwZWNpZmljIG5lZWQgdG8gaW5pdGlhbGl6
-ZSB0aGVzZSBhc3NpZ25lZCBjbG9jawppbiBVLUJvb3QgYXMgdmlkZW8gZHJpdmVycyBzdGlsbCB3
-b3JrIHdpdGggZGVmYXVsdCBhY2xrIGFuZCDCoApoY2xrIHZhbHVlcy4gU28sIHRoZXNlIGNsb2Nr
-cyBhcmUgc2ltcGx5IG5vdCBzdXBwb3J0ZWQgYnkgcmszMzk5CmNsb2NrIGRyaXZlci4KCkJ1dCwg
-ZHVyaW5nIHN0ZGlvIHByb2JlIG9mIHZpZGNvbnNvbGUsIHRoZSBkZXZpY2UgcHJvYmUKd2lsbCB0
-cnkgdG8gY2hlY2sgd2hldGhlciB0aGUgYXNzaWduZWQgY2xvY2tzIG9uIHRoYXQgdmlkZW8KY29u
-c29sZSBub2RlIGlzIGluaXRpYWxpemVkIG9yIG5vdD8gYW5kIHJldHVybiBlcnJvciBpZiBub3Qu
-CgpTbywgZGVsZXRlIHRoZXNlIHByb3BlcnR5IHZpYSAtdS1ib290IGR0c2kgYXMgdGhlcmUgaXMK
-bm8gc3BlY2lmaWMgbmVlZCBpbiBVLUJvb3QuCgpTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxq
-YWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KLS0tCkNoYW5nZXMgZm9yIHYyOgotIG5vbmUKCiBh
-cmNoL2FybS9kdHMvcmszMzk5LXUtYm9vdC5kdHNpIHwgNCArKysrCiAxIGZpbGUgY2hhbmdlZCwg
-NCBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3Qu
-ZHRzaSBiL2FyY2gvYXJtL2R0cy9yazMzOTktdS1ib290LmR0c2kKaW5kZXggOGI4NTdjY2ZjNy4u
-Yjg0NmY5Y2RlNyAxMDA2NDQKLS0tIGEvYXJjaC9hcm0vZHRzL3JrMzM5OS11LWJvb3QuZHRzaQor
-KysgYi9hcmNoL2FybS9kdHMvcmszMzk5LXUtYm9vdC5kdHNpCkBAIC05OSw5ICs5OSwxMyBAQAog
-fTsKIAogJnZvcGIgeworCS9kZWxldGUtcHJvcGVydHkvIGFzc2lnbmVkLWNsb2NrczsKKwkvZGVs
-ZXRlLXByb3BlcnR5LyBhc3NpZ25lZC1jbG9jay1yYXRlczsKIAl1LWJvb3QsZG0tcHJlLXJlbG9j
-OwogfTsKIAogJnZvcGwgeworCS9kZWxldGUtcHJvcGVydHkvIGFzc2lnbmVkLWNsb2NrczsKKwkv
-ZGVsZXRlLXByb3BlcnR5LyBhc3NpZ25lZC1jbG9jay1yYXRlczsKIAl1LWJvb3QsZG0tcHJlLXJl
-bG9jOwogfTsKLS0gCjIuMTcuMQoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAK
+Enable pre console buffer for rk3399 platform.
+
+This would help to capture the console messages prior to
+the console being initialised. Enabling this would help
+to capture all the console messages on video output source
+like HDMI. So we can find the full console messages of
+U-Boot proper on HDMI display when enabled it for RK3399
+platform boards.
+
+Buffer address used for pre console is 0x0f200000 which is
+ram base plus 240MiB. right now the Allwinner SoC is using
+similar computation.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+Changes for v2:
+- none
+
+ arch/arm/mach-rockchip/Kconfig | 1 +
+ common/Kconfig                 | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+index ed7514ab75..0cb1f23d0f 100644
+--- a/arch/arm/mach-rockchip/Kconfig
++++ b/arch/arm/mach-rockchip/Kconfig
+@@ -229,6 +229,7 @@ config ROCKCHIP_RK3399
+ 	select DM_PMIC
+ 	select DM_REGULATOR_FIXED
+ 	select BOARD_LATE_INIT
++	imply PRE_CONSOLE_BUFFER
+ 	imply ROCKCHIP_COMMON_BOARD
+ 	imply ROCKCHIP_SDRAM_COMMON
+ 	imply SPL_ROCKCHIP_COMMON_BOARD
+diff --git a/common/Kconfig b/common/Kconfig
+index 46e4193fc8..bd35de3056 100644
+--- a/common/Kconfig
++++ b/common/Kconfig
+@@ -568,6 +568,7 @@ config PRE_CON_BUF_ADDR
+ 	default 0x2f000000 if ARCH_SUNXI && MACH_SUN9I
+ 	default 0x4f000000 if ARCH_SUNXI && !MACH_SUN9I
+ 	default 0x0f000000 if ROCKCHIP_RK3288
++	default 0x0f200000 if ROCKCHIP_RK3399
+ 	help
+ 	  This sets the start address of the pre-console buffer. This must
+ 	  be in available memory and is accessed before relocation and
+-- 
+2.17.1
