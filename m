@@ -1,15 +1,14 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 2/3] media: staging: rkisp1: rsz: change (hv)div only if
- capture format is YUV
-Date: Mon, 30 Mar 2020 17:04:43 -0300
-Message-ID: <7445ddcb-75f5-7792-0807-47c0b0d0d54a@collabora.com>
-References: <20200328105606.13660-1-dafna.hirschfeld@collabora.com>
- <20200328105606.13660-3-dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH] media: staging: rkisp1: cap: change RGB24 format to
+ XBGR32
+Date: Mon, 30 Mar 2020 17:19:25 -0300
+Message-ID: <7d387293-5fc8-6d6e-bc5a-03138a247d50@collabora.com>
+References: <20200328135311.21221-1-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200328105606.13660-3-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20200328135311.21221-1-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
@@ -17,46 +16,46 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 
-On 3/28/20 7:56 AM, Dafna Hirschfeld wrote:
-> RGB formats in selfpath should receive input format as YUV422.
-> The resizer input format is always YUV422 and therefore
-> if the capture format is RGB, the resizer should not change
-> the YUV rations.
+On 3/28/20 10:53 AM, Dafna Hirschfeld wrote:
+> According to the manual, the YUV->RGB conversion outputs
+
+s/manual/datasheet
+
+> "24 bit word" that means that each pixel is 4 byte but the last
+> one should be ignored. This matches format V4L2_PIX_FMT_XBGR32.
+
+I think you can re-word this a bit, since 24bits is 3 bytes, and this doesn't mean 4 bytes are used.
+
+I guess you meant that datasheet says 4 bytes are used, with 24bits for the RGB and the last byte is ignored.
+
 > 
 > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 > ---
->  drivers/staging/media/rkisp1/rkisp1-resizer.c | 14 ++++++++++++--
->  1 file changed, 12 insertions(+), 2 deletions(-)
+> The patch rebased on to of the patch
+> "media: staging: rkisp1: cap: remove field fmt_type from struct rkisp1_capture_fmt_cfg"
 > 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> index 8704267a066f..5721eee29ecb 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> @@ -389,8 +389,18 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
->  			&rsz->rkisp1->capture_devs[rsz->id];
->  		const struct v4l2_format_info *pixfmt_info = cap->pix.info;
->  
-> -		hdiv = pixfmt_info->hdiv;
-> -		vdiv = pixfmt_info->vdiv;
-> +		/*
-> +		 * The resizer always get the input as YUV422
-> +		 * If the capture encoding is also YUV, then the resizer should
-> +		 * change the 4:2:2 sampling to the sampling of the capture
-> +		 * format (4:2:2 -> 4:2:0 for example).
-> +		 * If the capture format is RGB then the memory input should
-> +		 * be YUV422 so we don't change the default hdiv, vdiv
-> +		 */
-> +		if (v4l2_is_format_yuv(pixfmt_info)) {
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> index 3abf38362f5a..5f248b68190e 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> @@ -281,7 +281,7 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>  	},
+>  	/* rgb */
+>  	{
+> -		.fourcc = V4L2_PIX_FMT_RGB24,
+> +		.fourcc = V4L2_PIX_FMT_XBGR32,
 
-Can't this be moved with && in the outer if statement block?
+Shouldn't it be V4L2_PIX_FMT_RGBX32 ?
+
+Or the colors are inverted as well?
 
 Regards,
 Helen
 
-> +			hdiv = pixfmt_info->hdiv;
-> +			vdiv = pixfmt_info->vdiv;
-> +		}
->  	}
->  	src_c.width = src_y.width / hdiv;
->  	src_c.height = src_y.height / vdiv;
+>  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+>  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
+>  	}, {
 > 
