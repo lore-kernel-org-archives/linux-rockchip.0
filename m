@@ -1,71 +1,68 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 1/4] media: staging: rkisp1: cap: fix issues when writing
- to uv swap register
-Date: Mon, 30 Mar 2020 16:11:26 -0300
-Message-ID: <0ad5cae9-e12b-fc22-dbed-886c91af4f46@collabora.com>
+Subject: Re: [PATCH 2/4] media: staging: rkisp1: cap: support uv swap only for
+ semiplanar formats
+Date: Mon, 30 Mar 2020 16:12:22 -0300
+Message-ID: <bf6628db-efda-cb12-8f44-372e53d72778@collabora.com>
 References: <20200326201610.31762-1-dafna.hirschfeld@collabora.com>
- <20200326201610.31762-2-dafna.hirschfeld@collabora.com>
+ <20200326201610.31762-3-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200326201610.31762-2-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20200326201610.31762-3-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
 
-Thanks for your patch.
 
 On 3/26/20 5:16 PM, Dafna Hirschfeld wrote:
-> When writing to the RKISP1_CIF_MI_XTD_FORMAT_CTRL register
-> in mainpath, a redundant mask that clears the related swap
-> flag is applied and then the flag is set again.
-> 
-> In the selfpath, a mask that clears the swap setting is applied
-> instead of adding the setting.
-> This patch fixes those issues by just adding the swap setting.
-
-One is a clean-up, and the other one is a bug fix.
-Could you please split those in two separated patches?
-
-It is better for tracking bugs and bisectability to  not mix
-cleanups with fixes.
-
-Thanks
-Helen
-
+> The register RKISP1_CIF_MI_XTD_FORMAT_CTRL is relevant only
+> for semiplanar formats, therefore the uv swap can be supported
+> through this register only for semiplanar formats.
 > 
 > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+
+Acked-by: Helen Koike <helen.koike@collabora.com>
+
 > ---
->  drivers/staging/media/rkisp1/rkisp1-capture.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 10 ++++++++--
+>  1 file changed, 8 insertions(+), 2 deletions(-)
 > 
 > diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> index 45d237a77ca4..84a3cf565106 100644
+> index 84a3cf565106..fa2849209433 100644
 > --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
 > +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> @@ -432,8 +432,7 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
->  	if (cap->pix.cfg->uv_swap) {
+> @@ -37,6 +37,10 @@
+>  
+>  #define RKISP1_MIN_BUFFERS_NEEDED 3
+>  
+> +#define RKISP1_IS_SEMI_PLANAR(write_format)				\
+> +	(((write_format) == RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA) ||	\
+> +	 ((write_format) == RKISP1_MI_CTRL_SP_WRITE_SPLA))
+> +
+>  enum rkisp1_plane {
+>  	RKISP1_PLANE_Y	= 0,
+>  	RKISP1_PLANE_CB	= 1,
+> @@ -429,7 +433,8 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
+>  		     cap->config->mi.cr_size_init);
+>  
+>  	rkisp1_irq_frame_end_enable(cap);
+> -	if (cap->pix.cfg->uv_swap) {
+> +	if (RKISP1_IS_SEMI_PLANAR(cap->pix.cfg->write_format) &&
+> +	    cap->pix.cfg->uv_swap) {
 >  		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
 >  
-> -		reg = (reg & ~BIT(0)) |
-> -		      RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
-> +		reg = reg | RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
->  		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
->  	}
+>  		reg = reg | RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+> @@ -466,7 +471,8 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
+>  	rkisp1_write(rkisp1, cap->sp_y_stride, RKISP1_CIF_MI_SP_Y_LLENGTH);
 >  
-> @@ -470,8 +469,8 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
->  	if (cap->pix.cfg->uv_swap) {
+>  	rkisp1_irq_frame_end_enable(cap);
+> -	if (cap->pix.cfg->uv_swap) {
+> +	if (RKISP1_IS_SEMI_PLANAR(cap->pix.cfg->write_format) &&
+> +	    cap->pix.cfg->uv_swap) {
 >  		u32 reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
 >  
-> -		rkisp1_write(rkisp1, reg & ~BIT(1),
-> -			     RKISP1_CIF_MI_XTD_FORMAT_CTRL);
-> +		reg = reg | RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
-> +		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
->  	}
->  
->  	rkisp1_mi_config_ctrl(cap);
+>  		reg = reg | RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
 > 
