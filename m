@@ -1,86 +1,54 @@
 From: Johan Jonker <jbx6244@gmail.com>
-Subject: [RFC PATCH v3 1/2] dt-bindings: sram: convert rockchip-pmu-sram bindings to yaml
-Date: Tue, 31 Mar 2020 14:13:51 +0200
-Message-ID: <20200331121352.3825-1-jbx6244@gmail.com>
+Subject: [RFC PATCH v3 2/2] ARM: dts: rockchip: fix yaml warnings for rk3288-pmu-sram compatible nodes
+Date: Tue, 31 Mar 2020 14:13:52 +0200
+Message-ID: <20200331121352.3825-2-jbx6244@gmail.com>
+References: <20200331121352.3825-1-jbx6244@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200331121352.3825-1-jbx6244@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: heiko@sntech.de
 Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Current dts files with 'rockchip-pmu-sram' compatible nodes
-are now verified with sram.yaml, although the original
-text document still exists. Merge rockchip-pmu-sram.txt
-with sram.yaml by adding it as description with an example.
+A test with the command below gives for example these warnings:
+
+arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff720000:
+'#address-cells' is a required property
+arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff720000:
+'#size-cells' is a required property
+arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff720000:
+'ranges' is a required property
+
+Fix this error by adding '#address-cells', '#size-cells' and
+'ranges' to the 'rockchip,rk3288-pmu-sram' compatible node
+in rk3288.dtsi.
+
+make ARCH=arm dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/sram/sram.yaml
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
 Not tested with hardware.
 
-Changes v3:
-  Document the compatible
-
 Changed v2:
-  Merge with sram.yaml
+  Fix dtsi.
 ---
- .../devicetree/bindings/sram/rockchip-pmu-sram.txt       | 16 ----------------
- Documentation/devicetree/bindings/sram/sram.yaml         | 14 ++++++++++++++
- 2 files changed, 14 insertions(+), 16 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
+ arch/arm/boot/dts/rk3288.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt b/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
-deleted file mode 100644
-index 6b42fda30..000000000
---- a/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
-+++ /dev/null
-@@ -1,16 +0,0 @@
--Rockchip SRAM for pmu:
--------------------------------
--
--The sram of pmu is used to store the function of resume from maskrom(the 1st
--level loader). This is a common use of the "pmu-sram" because it keeps power
--even in low power states in the system.
--
--Required node properties:
--- compatible : should be "rockchip,rk3288-pmu-sram"
--- reg : physical base address and the size of the registers window
--
--Example:
--	sram@ff720000 {
--		compatible = "rockchip,rk3288-pmu-sram", "mmio-sram";
--		reg = <0xff720000 0x1000>;
--	};
-diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
-index 7b83cc6c9..605eb1460 100644
---- a/Documentation/devicetree/bindings/sram/sram.yaml
-+++ b/Documentation/devicetree/bindings/sram/sram.yaml
-@@ -29,6 +29,7 @@ properties:
-       enum:
-         - mmio-sram
-         - atmel,sama5d2-securam
-+        - rockchip,rk3288-pmu-sram
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 9c8741bb1..f102fec69 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -730,6 +730,9 @@
+ 	pmu_sram: sram@ff720000 {
+ 		compatible = "rockchip,rk3288-pmu-sram", "mmio-sram";
+ 		reg = <0x0 0xff720000 0x0 0x1000>;
++		#address-cells = <1>;
++		#size-cells = <1>;
++		ranges = <0 0x0 0xff720000 0x1000>;
+ 	};
  
-   reg:
-     maxItems: 1
-@@ -224,6 +225,19 @@ examples:
-     };
- 
-   - |
-+    // Rockchip's rk3288 SoC uses the sram of pmu to store the function of
-+    // resume from maskrom(the 1st level loader). This is a common use of
-+    // the "pmu-sram" because it keeps power even in low power states
-+    // in the system.
-+    sram@ff720000 {
-+      compatible = "rockchip,rk3288-pmu-sram", "mmio-sram";
-+      reg = <0xff720000 0x1000>;
-+      #address-cells = <1>;
-+      #size-cells = <1>;
-+      ranges = <0 0xff720000 0x1000>;
-+    };
-+
-+  - |
-     // Allwinner's A80 SoC uses part of the secure sram for hotplugging of the
-     // primary core (cpu0). Once the core gets powered up it checks if a magic
-     // value is set at a specific location. If it is then the BROM will jump
+ 	pmu: power-management@ff730000 {
 -- 
 2.11.0
