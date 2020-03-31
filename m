@@ -1,54 +1,51 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [RFC PATCH v3 2/2] ARM: dts: rockchip: fix yaml warnings for rk3288-pmu-sram compatible nodes
-Date: Tue, 31 Mar 2020 14:13:52 +0200
-Message-ID: <20200331121352.3825-2-jbx6244@gmail.com>
-References: <20200331121352.3825-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200331121352.3825-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Subject: Re: [PATCH v4 17/33] media: add SPDX headers on Kconfig and Makefile
+ files
+Date: Tue, 31 Mar 2020 14:22:09 +0200
+Message-ID: <20200331122209.GA1627483@kroah.com>
+References: <cover.1585651678.git.mchehab+huawei@kernel.org>
+ <981eea64742859c63d8ab88c24b1b3380ee32dd2.1585651678.git.mchehab+huawei@kernel.org>
+ <20200331120608.GB4767@pendragon.ideasonboard.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-media-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200331120608.GB4767@pendragon.ideasonboard.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, devel@driverdev.osuosl.org, Sakari Ailus <sakari.ailus@linux.intel.com>, Helen Koike <helen.koike@collabora.com>, Maxime Ripard <mripard@kernel.org>, linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>, Philipp Zabel <p.zabel@pengutronix.de>, Ezequiel Garcia <ezequiel@collabora.com>, linux-arm-kernel@lists.infradead.org, Linux Media Mailing List <linux-media@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-A test with the command below gives for example these warnings:
+On Tue, Mar 31, 2020 at 03:06:08PM +0300, Laurent Pinchart wrote:
+> Hi Mauro,
+> 
+> Thank you for the patch.
+> 
+> On Tue, Mar 31, 2020 at 01:11:53PM +0200, Mauro Carvalho Chehab wrote:
+> > Most of media Kconfig/Makefile files already has SPDX,
+> > but there are a few ones still missing. Add it to them.
+> 
+> I think it's a good idea to state the license of each source file, the
+> patch looks fine to me. I've however been thinking about licenses for
+> build system files recently, and I'll hijack this thread a bit to ask a
+> question :-)
+> 
+> For a project like the Linux kernel, and especially for subsystems that
+> are covered by a single license, the choice is easy, we can apply the
+> same license to the build files. However, for a project that contains
+> components covered by different licenses (such as, for instance, an LGPL
+> library, a GPL application and a BSD plugin), how should the license
+> covering the build system files be selected ? I searched a bit for
+> guidance on this topic, and couldn't find much.
 
-arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff720000:
-'#address-cells' is a required property
-arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff720000:
-'#size-cells' is a required property
-arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff720000:
-'ranges' is a required property
+By "default" if there is no license on a file in the kernel tree, it
+falls under the GPLv2 license and we should explicity state it, like
+this patch does.
 
-Fix this error by adding '#address-cells', '#size-cells' and
-'ranges' to the 'rockchip,rk3288-pmu-sram' compatible node
-in rk3288.dtsi.
+So this is fine, but if you want to license the build files some other
+way, that's good too, but do so when you add them to the tree, not at
+some later time when it could cause confusion :)
 
-make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/sram/sram.yaml
+thanks,
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
-Not tested with hardware.
-
-Changed v2:
-  Fix dtsi.
----
- arch/arm/boot/dts/rk3288.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 9c8741bb1..f102fec69 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -730,6 +730,9 @@
- 	pmu_sram: sram@ff720000 {
- 		compatible = "rockchip,rk3288-pmu-sram", "mmio-sram";
- 		reg = <0x0 0xff720000 0x0 0x1000>;
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+		ranges = <0 0x0 0xff720000 0x1000>;
- 	};
- 
- 	pmu: power-management@ff730000 {
--- 
-2.11.0
+greg k-h
