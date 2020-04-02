@@ -1,57 +1,57 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 0/5] rockchip: rk3399: Fix HDMI out
-Date: Thu, 2 Apr 2020 22:28:53 +0800
-Message-ID: <4e11274d-b166-1e41-83a6-8bf647f96c84@rock-chips.com>
-References: <20200402114125.2501-1-jagan@amarulasolutions.com>
- <20200402155616.013f6bf8@crub>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH 3/4] arm64: dts: rockchip: add rx0 mipi-phy for rk3399
+Date: Thu, 02 Apr 2020 16:31:11 +0200
+Message-ID: <105956984.FXDh2DO4ZE@diego>
+References: <20200402000234.226466-4-helen.koike@collabora.com> <970b9e48-e38f-7e7a-3472-7dc5a4737e58@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200402155616.013f6bf8@crub>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Mark Kettenis <mark.kettenis-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <970b9e48-e38f-7e7a-3472-7dc5a4737e58@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: helen.koike@collabora.com, dafna.hirschfeld@collabora.com, devel@driverdev.osuosl.org, devicetree@vger.kernel.org, ezequiel@collabora.com, hverkuil-cisco@xs4all.nl, karthik.poduval@gmail.com, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, robh+dt@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgQW5hdG9saWosCgpPbiAyMDIwLzQvMiDkuIvljYg5OjU2LCBBbmF0b2xpaiBHdXN0c2NoaW4g
-d3JvdGU6Cj4gT24gVGh1LCAgMiBBcHIgMjAyMCAxNzoxMToyMCArMDUzMAo+IEphZ2FuIFRla2kg
-amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20gd3JvdGU6Cj4gLi4uCj4+IEphZ2FuIFRla2kgKDUp
-Ogo+PiAgICBjbGs6IHJrMzM5OTogU2V0IGVtcHR5IGZvciB2b3BsIGFzc2lnbmVkLWNsb2Nrcwo+
-PiAgICB2aWRlbzogcm9ja2NoaXA6IEZpeCB2b3AgbW9kZXMgZm9yIHJrMzM5OQo+PiAgICByb2Nr
-Y2hpcDogRW5hYmxlIHByZSBjb25zb2xlIGZvciByazMzOTkKPj4gICAgcm9ja2NoaXA6IEVuYWJs
-ZSBIRE1JIG91dHB1dCBvbiByazMzOTkgYm9hcmQgdy8gSERNSQo+PiAgICB2aWRlbzogcm9ja2No
-aXA6IFN1cHBvcnQgNEsgcmVzb2x1dGlvbiBmb3IgcmszMzk5LCBIRE1JCj4+Cj4+ICAgYXJjaC9h
-cm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC92b3BfcmszMjg4LmggfCAxMSArKysrKysrKysr
-Kwo+PiAgIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAgICAgIHwg
-IDEgKwo+PiAgIGNvbW1vbi9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IHwgIDEgKwo+PiAgIGNvbmZpZ3MvbmFub3BjLXQ0LXJrMzM5OV9kZWZjb25maWcgICAgICAgICAg
-ICAgIHwgIDcgKysrKysrKwo+PiAgIGNvbmZpZ3MvbmFub3BpLW00LXJrMzM5OV9kZWZjb25maWcg
-ICAgICAgICAgICAgIHwgIDcgKysrKysrKwo+PiAgIGNvbmZpZ3MvbmFub3BpLW5lbzQtcmszMzk5
-X2RlZmNvbmZpZyAgICAgICAgICAgIHwgIDcgKysrKysrKwo+PiAgIGNvbmZpZ3Mvcm9jLXBjLXJr
-MzM5OV9kZWZjb25maWcgICAgICAgICAgICAgICAgIHwgIDYgKysrKysrCj4+ICAgY29uZmlncy9y
-b2NrOTYwLXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICAgICAgfCAgNyArKysrKysrCj4+ICAg
-ZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrX3JrMzM5OS5jICAgICAgICAgICAgICAgfCAgNyArKysr
-KysrCj4+ICAgZHJpdmVycy92aWRlby9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgICAgICAg
-fCAgMiArKwo+PiAgIGRyaXZlcnMvdmlkZW8vcm9ja2NoaXAvcmszMzk5X3ZvcC5jICAgICAgICAg
-ICAgIHwgIDIgLS0KPj4gICBkcml2ZXJzL3ZpZGVvL3JvY2tjaGlwL3JrX3ZvcC5jICAgICAgICAg
-ICAgICAgICB8ICA0ICsrKysKPj4gICBpbmNsdWRlL2NvbmZpZ3MvZXZiX3JrMzM5OS5oICAgICAg
-ICAgICAgICAgICAgICB8ICA1ICsrKysrCj4+ICAgaW5jbHVkZS9jb25maWdzL3JvY2s5NjBfcmsz
-Mzk5LmggICAgICAgICAgICAgICAgfCAgNSArKysrKwo+PiAgIDE0IGZpbGVzIGNoYW5nZWQsIDcw
-IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4gU2VyaWVzIGFwcGxpZWQgdG8gdS1ib290
-LXZpZGVvL3ZpZGVvLWZpeGVzLXYyMDIwLjA0LCB0aGFua3MhCgpJIHdhcyBhYm91dCB0byBhcHBs
-eSB0aGVzZSBwYXRjaGVzLCBhbmQgdW5kZXIgdHJhdmlzIGJ1aWxkIG5vdy4KCkl0J3MgYWxzbyBP
-SyBmb3IgdGhlc2UgcGF0Y2hlcyB0byBtZXJnZSBpbnRvIHUtYm9vdC12aWRlby4KCgpUaGFua3Ms
-CgotIEtldmVyCgo+Cj4gLS0KPiBBbmF0b2xpago+Cj4KCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Am Donnerstag, 2. April 2020, 15:48:02 CEST schrieb Johan Jonker:
+> Hi Helen,
+> 
+> > From: Helen Koike <helen.koike@collabora.com>
+> 
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > index 33cc21fcf4c10..fc0295d2a65a1 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> > @@ -1394,6 +1394,17 @@ io_domains: io-domains {
+> >  			status = "disabled";
+> >  		};
+> >  
+> 
+> > +		mipi_dphy_rx0: mipi-dphy-rx0 {
+> 
+> For Heiko sort syscon@ff770000 subnodes alphabetical or reg value first?
+
+Similar to main nodes ... so things without reg alphabetical,
+the rest by reg address
+
+
+> 
+> > +			compatible = "rockchip,rk3399-mipi-dphy-rx0";
+> > +			clocks = <&cru SCLK_MIPIDPHY_REF>,
+> 
+> > +				<&cru SCLK_DPHY_RX0_CFG>,
+> > +				<&cru PCLK_VIO_GRF>;
+> 
+> Align                            ^
+> 
+> > +			clock-names = "dphy-ref", "dphy-cfg", "grf";
+> > +			power-domains = <&power RK3399_PD_VIO>;
+> > +			#phy-cells = <0>;
+> > +			status = "disabled";
+> > +		};
+> > +
+> >  		u2phy0: usb2-phy@e450 {
+> >  			compatible = "rockchip,rk3399-usb2phy";
+> >  			reg = <0xe450 0x10>;
+> 
+> 
