@@ -1,75 +1,44 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add isp0 node for rk3399
-Date: Thu, 2 Apr 2020 19:20:20 +0200
-Message-ID: <1187d28a-6fb9-fd12-a422-8a4220a11e79@gmail.com>
-References: <20200402000234.226466-5-helen.koike@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200402000234.226466-5-helen.koike@collabora.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: helen.koike@collabora.com
-Cc: dafna.hirschfeld@collabora.com, devel@driverdev.osuosl.org, devicetree@vger.kernel.org, ezequiel@collabora.com, heiko@sntech.de, hverkuil-cisco@xs4all.nl, karthik.poduval@gmail.com, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, robh+dt@kernel.org
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: [PATCH v2 0/5] media: staging: rkisp1: cap: various fixes for capture formats
+Date: Thu,  2 Apr 2020 21:04:14 +0200
+Message-ID: <20200402190419.15155-1-dafna.hirschfeld@collabora.com>
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Helen,
+This patchset fixes various issues related to
+the supported formats in the rkisp1 capture.
 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index fc0295d2a65a1..815099a0cd0dd 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1718,6 +1718,33 @@ vopb_mmu: iommu@ff903f00 {
->  		status = "disabled";
->  	};
->  
-> +	isp0: isp0@ff910000 {
-> +		compatible = "rockchip,rk3399-cif-isp";
-> +		reg = <0x0 0xff910000 0x0 0x4000>;
-> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		clocks = <&cru SCLK_ISP0>,
-> +			 <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
-> +			 <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
-> +		clock-names = "clk_isp",
-> +			      "aclk_isp", "aclk_isp_wrap",
-> +			      "hclk_isp", "hclk_isp_wrap";
+Patches summary:
 
-> +		power-domains = <&power RK3399_PD_ISP0>;
-> +		iommus = <&isp0_mmu>;
-> +		phys = <&mipi_dphy_rx0>;
-> +		phy-names = "dphy";
+patches 1,2 - fixes a wrong assignments to the register that swaps the
+'u', 'v' planes in YUV semiplanar formats.
 
-Maybe a little sort? But keep rest as it is. Also in example.
+patch 3 - sets the register from patch 1 only if the format is semiplanar.
 
-		iommus = <&isp0_mmu>;
-		phys = <&mipi_dphy_rx0>;
-		phy-names = "dphy";
-		power-domains = <&power RK3399_PD_ISP0>;
+patch 4 - adds support to planar YUV formats with swapped u,v planes
+by swapping the addresses of the planes
 
-> +
-> +		ports {
-> +			#address-cells = <1>;
-> +			#size-cells = <0>;
-> +
-> +			port@0 {
+patch 5 - removes some packed YUV formats that are not supported
+by the driver.
 
-> +				#address-cells = <1>;
-> +				#size-cells = <0>;
-> +				reg = <0>;
+changes from v1:
+- split the first patch from v1 into two separate patches, the first is a cleanup patch
+the second fixes a bug.
 
-Move reg above #address-cells. Change that in example as well.
+Dafna Hirschfeld (5):
+  media: staging: rkisp1: cap: cleanup in mainpath config for uv swap
+    format
+  media: staging: rkisp1: cap: fix value written to uv swap register in
+    selfpath
+  media: staging: rkisp1: cap: support uv swap only for semiplanar
+    formats
+  media: staging: rkisp1: cap: support uv swapped plane formats
+  media: staging: rkisp1: cap: remove unsupported formats
 
-				reg = <0>;
-				#address-cells = <1>;
-				#size-cells = <0>;
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 55 ++++++++++---------
+ 1 file changed, 28 insertions(+), 27 deletions(-)
 
-> +			};
-> +		};
-> +	};
-> +
->  	isp0_mmu: iommu@ff914000 {
->  		compatible = "rockchip,iommu";
->  		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
-> -- 
-> 2.26.0
+-- 
+2.17.1
