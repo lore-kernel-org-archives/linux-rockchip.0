@@ -1,14 +1,11 @@
 From: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: Power Key/button on rk3399-roc-pc
-Date: Thu, 2 Apr 2020 10:09:03 +0530
-Message-ID: <CAM+7aWshiM3YAc9B+GADqKry7bAPapdTJAym-9Wzadtdr3cJHg@mail.gmail.com>
-References: <CAM+7aWuR-2EYSDQLj+Sep9cu_cAsL5QD=wRrar-9vLSd_7KPyg@mail.gmail.com>
- <c3f77864-ab66-e31c-e9a6-5a3c8e10b6ea@fivetechno.de>
+Subject: on-board LED's on rk3399-roc-pc
+Date: Thu, 2 Apr 2020 10:30:28 +0530
+Message-ID: <CAM+7aWt+xY6xJ9sHUk_AwAX1hzTpcgAH1EhofRgO2b+d+YuWQg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <c3f77864-ab66-e31c-e9a6-5a3c8e10b6ea-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,61 +15,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
-Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+To: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>, djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org
+Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Apr 1, 2020 at 3:40 PM Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org> wrote:
->
-> Hi Suniel,
->
-> Am 01.04.20 um 06:53 schrieb Suniel Mahesh:
-> > Hi Markus, Levin and all,
-> >
-> > Can you guys please suggest me on my requirement.
-> >
-> > rk3399-roc-pc board has a Power Key/button. As per the schematics this
-> > Power Key/button
-> > is connected to GPIO0_A5.
->
-> And to PWRON of RK808.
->
-> >
-> > My requirement is can I use this button for board powerup (especially
-> > in linux when we issue
-> > "poweroff" command, the board shuts down and it should power back on
-> > after I press the Power Key/button).
-> >
-> > For the above to happen, I think this Power Key/button be connected to
-> > PMIC RK808-D IC, am i correct ?
->
-> Yes, see P.16 of ROC-3399-PC-V10-A-20180804 schematic.
-> >
-> > In the schematics, it is not very clear as if such arrangement is
-> > there (though it says it can be an option in
-> > RK3399_BOX_REF_V13_20180821.pdf). I am attaching the document.
-> >
-> > Please suggest/comment on my requirement.
->
-> Should work, everything is in place, just press long enough ;-).
+Hi Markus, Levin and all,
 
-Thanks Markus for your help. its working.
+rk3399-roc-pc board has three on-board LED's:
 
->
-> Btw. could you just revert your recent U-Boot commit
-> checking GPIO0_A5 that prevents unattended booting?
+1. work-led(green) assigned as  linux,default-trigger = "heartbeat"
+2. diy-led(red) assigned as  linux,default-trigger = "mmc1" ---- which is emmc
+3. yellow-led(yellow) assigned as  linux,default-trigger = "mmc0" ----
+which is SD
 
-we have sent a patch series(5 patches) which takes care of the above
-issue. attaching patchwork links:
-https://patchwork.ozlabs.org/patch/1258093/
+I have a  requirement where diy-led(red) should be on while linux
+boots and until poweroff, indicating
+full power mode.
 
+here are my questions:
+1. Since diy-led(red) is already assigned to mmc1, how could I achieve
+the above requirement.
+    In the diy-led node I changed default-state to "on", but it didn't work.
+
+2. Is there any specific reason why diy-led(red) is assigned to mmc1 ?
+
+3. Is it possible to swap work-led with diy-led, meaning work-led
+assigned to "mmc1" and diy-led
+   assigned as "heartbeat" or "default-on" ?
+
+Please suggest/comment on my requirement.
+
+Thanks and regards
 Suniel
->
-> Thanks,
-> --
-> Markus
->
-> >
-> > Thanks and regards
-> > Suniel
-> >
