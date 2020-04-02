@@ -1,49 +1,257 @@
-From: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: on-board LED's on rk3399-roc-pc
-Date: Thu, 2 Apr 2020 10:30:28 +0530
-Message-ID: <CAM+7aWt+xY6xJ9sHUk_AwAX1hzTpcgAH1EhofRgO2b+d+YuWQg@mail.gmail.com>
+From: Mylene Josserand <mylene.josserand@collabora.com>
+Subject: Re: [PATCH v2 1/2] soc: rockchip: Register a soc_device to retrieve
+ revision
+Date: Thu, 2 Apr 2020 08:31:10 +0200
+Message-ID: <aea600e2-7169-1bbc-252f-1bc77bd5b104@collabora.com>
+References: <20200401153513.423683-1-mylene.josserand@collabora.com>
+ <20200401153513.423683-2-mylene.josserand@collabora.com>
+ <5143930.cPWVAAQKI9@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>, djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org
-Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <5143930.cPWVAAQKI9@diego>
+Content-Language: en-US
+Sender: linux-clk-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, mturquette@baylibre.com, sboyd@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org, kernel@collabora.com, kever.yang@rock-chips.com, geert@linux-m68k.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Markus, Levin and all,
+Hi Heiko,
 
-rk3399-roc-pc board has three on-board LED's:
+On 4/1/20 6:34 PM, Heiko Stübner wrote:
+> Hi Mylène,
+> 
+> Am Mittwoch, 1. April 2020, 17:35:12 CEST schrieb Mylène Josserand:
+>> Determine which revision of rk3288 by checking the HDMI version.
+>> According to the Rockchip BSP kernel/u-boot, on rk3288w, the HDMI
+>> revision equals 0x1A which is not the case for the rk3288.
+>>
+>> As these SOC have some differences, this driver will help us
+>> to know on which revision we are by using 'soc_device' registration
+>> to be able to use 'soc_device_match' to detect rk3288/rk3288w.
+>>
+>> Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
+> 
+> I like your new approach quite a lot :-)
 
-1. work-led(green) assigned as  linux,default-trigger = "heartbeat"
-2. diy-led(red) assigned as  linux,default-trigger = "mmc1" ---- which is emmc
-3. yellow-led(yellow) assigned as  linux,default-trigger = "mmc0" ----
-which is SD
+Thank you, I am happy to know that :D
 
-I have a  requirement where diy-led(red) should be on while linux
-boots and until poweroff, indicating
-full power mode.
+> 
+> There are some things we need to take into account though, see below.
 
-here are my questions:
-1. Since diy-led(red) is already assigned to mmc1, how could I achieve
-the above requirement.
-    In the diy-led node I changed default-state to "on", but it didn't work.
+Sure, no problem
 
-2. Is there any specific reason why diy-led(red) is assigned to mmc1 ?
+> 
+> 
+>> ---
+>>   drivers/soc/rockchip/Makefile |   1 +
+>>   drivers/soc/rockchip/rk3288.c | 125 ++++++++++++++++++++++++++++++++++
+>>   2 files changed, 126 insertions(+)
+>>   create mode 100644 drivers/soc/rockchip/rk3288.c
+>>
+>> diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
+>> index afca0a4c4b72..9dbf12913512 100644
+>> --- a/drivers/soc/rockchip/Makefile
+>> +++ b/drivers/soc/rockchip/Makefile
+>> @@ -2,5 +2,6 @@
+>>   #
+>>   # Rockchip Soc drivers
+>>   #
+>> +obj-$(CONFIG_ARCH_ROCKCHIP) += rk3288.o
+>>   obj-$(CONFIG_ROCKCHIP_GRF) += grf.o
+>>   obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
+>> diff --git a/drivers/soc/rockchip/rk3288.c b/drivers/soc/rockchip/rk3288.c
+> 
+> I'd really like this to be a soc.c instead of rk3288.c ;-)
 
-3. Is it possible to swap work-led with diy-led, meaning work-led
-assigned to "mmc1" and diy-led
-   assigned as "heartbeat" or "default-on" ?
+Cool! I will do that :)
 
-Please suggest/comment on my requirement.
+> 
+> 
+>> new file mode 100644
+>> index 000000000000..83379ba2b31b
+>> --- /dev/null
+>> +++ b/drivers/soc/rockchip/rk3288.c
+>> @@ -0,0 +1,125 @@
+>> +// SPDX-License-Identifier: GPL-2.0
+>> +/*
+>> + * Copyright 2020 Collabora Ltd
+>> + * Author: Mylene Josserand <mylene.josserand@collabora.com>
+>> + */
+>> +
+>> +#include <linux/init.h>
+>> +#include <linux/io.h>
+>> +#include <linux/of_address.h>
+>> +#include <linux/sys_soc.h>
+>> +#include <linux/slab.h>
+>> +#include <linux/platform_device.h>
+>> +#include <linux/of.h>
+>> +
+>> +#define RK3288_HDMI_REV_REG	0x04
+>> +#define RK3288W_HDMI_REV	0x1A
+>> +
+>> +enum rk3288_soc_rev {
+>> +	RK3288_SOC_REV_NOT_DETECT,
+>> +	RK3288_SOC_REV_RK3288,
+>> +	RK3288_SOC_REV_RK3288W,
+>> +};
+>> +
+>> +static int rk3288_revision(void)
+>> +{
+>> +	static int revision = RK3288_SOC_REV_NOT_DETECT;
+>> +	struct device_node *dn;
+>> +	void __iomem *hdmi_base;
+>> +
+>> +	if (revision != RK3288_SOC_REV_NOT_DETECT)
+>> +		return revision;
+>> +
+>> +	dn = of_find_compatible_node(NULL, NULL, "rockchip,rk3288-dw-hdmi");
+>> +	if (!dn) {
+>> +		pr_err("%s: Couldn't find HDMI node\n", __func__);
+>> +		return -EINVAL;
+>> +	}
+>> +
+>> +	hdmi_base = of_iomap(dn, 0);
+>> +	of_node_put(dn);
+>> +
+>> +	if (!hdmi_base) {
+>> +		pr_err("%s: Couldn't map %pOF regs\n", __func__,
+>> +		       hdmi_base);
+>> +		return -ENXIO;
+>> +	}
+> 
+> The possible problem I see here is clocking and power-domain of the hdmi
+> controller in corner-cases. In the past we already had a lot of fun with
+> kexec, which also indicates that people actually use kexec productively.
+> 
+> So while all clocks are ungated and all power-domains are powered on first
+> boot, on a system without graphics the pclk+power-domain could be off when
+> doing a kexec into a second kernel, which then would probably hang here.
+> 
+> 
+> Of course with the hdmi-pclk being sourced from hclk_vio we run into a
+> chicken-egg-problem, as we need pclk_hdmi_ctrl to register hclk_vio at all.
+> 
+> So I guess one way out of this could be to
+> - amend rk3288_clk_shutdown() to also ungate the hdmi-pclk on shutdown
+> - add a shutdown mechanism to the power-domain driver so that it can
+>    enable PD_VIO on shutdown
 
-Thanks and regards
-Suniel
+hm, indeed, I will send a v3 including that, thanks for the hints!
+
+> 
+>> +
+>> +	if (readl_relaxed(hdmi_base + RK3288_HDMI_REV_REG)
+>> +	    == RK3288W_HDMI_REV)
+> 
+> nit: a nicer look would be something like
+> 	val = readl_relaxed(hdmi_base + RK3288_HDMI_REV_REG);
+> 	if (val == RK3288W_HDMI_REV)
+
+I will change that.
+
+> 
+>> +		revision = RK3288_SOC_REV_RK3288W;
+>> +	else
+>> +		revision = RK3288_SOC_REV_RK3288;
+>> +
+>> +	iounmap(hdmi_base);
+>> +
+>> +	return revision;
+>> +}
+>> +
+>> +static const char *rk3288_socinfo_revision(u32 rev)
+>> +{
+>> +	const char *soc_rev;
+>> +
+>> +	switch (rev) {
+>> +	case RK3288_SOC_REV_RK3288:
+>> +		soc_rev = "RK3288";
+>> +		break;
+>> +
+>> +	case RK3288_SOC_REV_RK3288W:
+>> +		soc_rev = "RK3288w";
+> 
+> can we maybe use lower-case letters for all here?
+
+Sure, no problem.
+
+> 
+>> +		break;
+>> +
+>> +	case RK3288_SOC_REV_NOT_DETECT:
+>> +		soc_rev = "";
+>> +		break;
+>> +
+>> +	default:
+>> +		soc_rev = "unknown";
+>> +		break;
+>> +	}
+>> +
+>> +	return kstrdup_const(soc_rev, GFP_KERNEL);
+>> +}
+>> +
+>> +static const struct of_device_id rk3288_soc_match[] = {
+>> +	{ .compatible = "rockchip,rk3288", },
+>> +	{ }
+>> +};
+>> +
+>> +static int __init rk3288_soc_init(void)
+> 
+> as noted at the top, I'd really like to see this more generalized so that
+> other socs can just hook in there with a revision callback in a
+> rockchip_soc_data struct.
+
+Yes, I will do!
+
+> 
+> 
+>> +{
+>> +	struct soc_device_attribute *soc_dev_attr;
+>> +	struct soc_device *soc_dev;
+>> +	struct device_node *np;
+>> +
+>> +	np = of_find_matching_node(NULL, rk3288_soc_match);
+>> +	if (!np)
+>> +		return -ENODEV;
+>> +
+>> +	soc_dev_attr = kzalloc(sizeof(*soc_dev_attr), GFP_KERNEL);
+>> +	if (!soc_dev_attr)
+>> +		return -ENOMEM;
+>> +
+>> +	soc_dev_attr->family = "Rockchip";
+>> +	soc_dev_attr->soc_id = "RK32xx";
+> 
+> nit: rk3288 instead of "32xx" please
+
+okay
+
+> 
+>> +
+>> +	np = of_find_node_by_path("/");
+>> +	of_property_read_string(np, "model", &soc_dev_attr->machine);
+>> +	of_node_put(np);
+>> +
+>> +	soc_dev_attr->revision = rk3288_socinfo_revision(rk3288_revision());
+>> +
+>> +	soc_dev = soc_device_register(soc_dev_attr);
+>> +	if (IS_ERR(soc_dev)) {
+>> +		kfree_const(soc_dev_attr->revision);
+>> +		kfree_const(soc_dev_attr->soc_id);
+>> +		kfree(soc_dev_attr);
+>> +		return PTR_ERR(soc_dev);
+>> +	}
+>> +
+>> +	dev_info(soc_device_to_device(soc_dev), "Rockchip %s %s detected\n",
+>> +		 soc_dev_attr->soc_id, soc_dev_attr->revision);
+> 
+> nit: dev_dbg should be enough, that information doesn't really matter for
+> most people, as it's only relevant to clock internals.
+
+yep
+
+Thank you again for this review!
+
+Best regards,
+Mylène Josserand
