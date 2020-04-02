@@ -1,44 +1,36 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v2 0/5] media: staging: rkisp1: cap: various fixes for capture formats
-Date: Thu,  2 Apr 2020 21:04:14 +0200
-Message-ID: <20200402190419.15155-1-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v2 1/5] media: staging: rkisp1: cap: cleanup in mainpath config for uv swap format
+Date: Thu,  2 Apr 2020 21:04:15 +0200
+Message-ID: <20200402190419.15155-2-dafna.hirschfeld@collabora.com>
+References: <20200402190419.15155-1-dafna.hirschfeld@collabora.com>
 Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200402190419.15155-1-dafna.hirschfeld@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
 To: linux-media@vger.kernel.org, dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patchset fixes various issues related to
-the supported formats in the rkisp1 capture.
+The value RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP equals BIT(0),
+Therefore when writing it to the register there is no need to mask
+it first with ~BIT(0).
 
-Patches summary:
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-patches 1,2 - fixes a wrong assignments to the register that swaps the
-'u', 'v' planes in YUV semiplanar formats.
-
-patch 3 - sets the register from patch 1 only if the format is semiplanar.
-
-patch 4 - adds support to planar YUV formats with swapped u,v planes
-by swapping the addresses of the planes
-
-patch 5 - removes some packed YUV formats that are not supported
-by the driver.
-
-changes from v1:
-- split the first patch from v1 into two separate patches, the first is a cleanup patch
-the second fixes a bug.
-
-Dafna Hirschfeld (5):
-  media: staging: rkisp1: cap: cleanup in mainpath config for uv swap
-    format
-  media: staging: rkisp1: cap: fix value written to uv swap register in
-    selfpath
-  media: staging: rkisp1: cap: support uv swap only for semiplanar
-    formats
-  media: staging: rkisp1: cap: support uv swapped plane formats
-  media: staging: rkisp1: cap: remove unsupported formats
-
- drivers/staging/media/rkisp1/rkisp1-capture.c | 55 ++++++++++---------
- 1 file changed, 28 insertions(+), 27 deletions(-)
-
+diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+index 45d237a77ca4..5700d7be2819 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-capture.c
++++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+@@ -432,8 +432,7 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
+ 	if (cap->pix.cfg->uv_swap) {
+ 		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+ 
+-		reg = (reg & ~BIT(0)) |
+-		      RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
++		reg = reg | RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+ 		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+ 	}
+ 
 -- 
 2.17.1
