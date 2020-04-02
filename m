@@ -1,102 +1,151 @@
 From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 4/4] arm64: dts: rockchip: add isp0 node for rk3399
-Date: Thu, 2 Apr 2020 22:10:21 +0200
-Message-ID: <20ae21a6-74b0-ff99-80d9-1a0ce2cc1aa5@gmail.com>
-References: <20200402000234.226466-5-helen.koike@collabora.com>
- <1187d28a-6fb9-fd12-a422-8a4220a11e79@gmail.com>
- <d8b05dd4-1ece-9513-b2ec-0cb58f665c5e@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Subject: [PATCH v1 1/2] dt-bindings: media: convert rockchip rga bindings to yaml
+Date: Fri,  3 Apr 2020 00:33:14 +0200
+Message-ID: <20200402223315.12260-1-jbx6244@gmail.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <d8b05dd4-1ece-9513-b2ec-0cb58f665c5e-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Content-Language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+To: jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org
+Cc: ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 4/2/20 9:46 PM, Helen Koike wrote:
-> 
-> 
-> On 4/2/20 2:20 PM, Johan Jonker wrote:
->> Hi Helen,
->>
->>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>> index fc0295d2a65a1..815099a0cd0dd 100644
->>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
->>> @@ -1718,6 +1718,33 @@ vopb_mmu: iommu@ff903f00 {
->>>  		status = "disabled";
->>>  	};
->>>  
->>> +	isp0: isp0@ff910000 {
->>> +		compatible = "rockchip,rk3399-cif-isp";
->>> +		reg = <0x0 0xff910000 0x0 0x4000>;
->>> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
->>> +		clocks = <&cru SCLK_ISP0>,
->>> +			 <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
->>> +			 <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
->>> +		clock-names = "clk_isp",
->>> +			      "aclk_isp", "aclk_isp_wrap",
->>> +			      "hclk_isp", "hclk_isp_wrap";
->>
->>> +		power-domains = <&power RK3399_PD_ISP0>;
->>> +		iommus = <&isp0_mmu>;
->>> +		phys = <&mipi_dphy_rx0>;
->>> +		phy-names = "dphy";
->>
->> Maybe a little sort? But keep rest as it is. Also in example.
->>
->> 		iommus = <&isp0_mmu>;
->> 		phys = <&mipi_dphy_rx0>;
->> 		phy-names = "dphy";
->> 		power-domains = <&power RK3399_PD_ISP0>;
-> 
-> Are you proposing only to move power-domains after phy? And keep the rest?
-> What is the main logic?
+Current dts files for Rockchip with 'rga' nodes
+are manually verified. In order to automate this process
+rockchip-rga.txt has to be converted to yaml.
 
-There is no hard rule... It mostly depend on Heiko...
+Changed:
+  Add missing reg property
 
-For nodes:
-Sort things without reg alphabetical first,
-then sort the rest by reg address.
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ .../devicetree/bindings/media/rockchip-rga.txt     | 34 ----------
+ .../devicetree/bindings/media/rockchip-rga.yaml    | 78 ++++++++++++++++++++++
+ 2 files changed, 78 insertions(+), 34 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/media/rockchip-rga.txt
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip-rga.yaml
 
-Inside nodes:
-If exists on top: compatible, reg and interrupts.
-In alphabetical order the required properties.
-Then in alphabetical order the other properties.
-And as last things that start with '#' in alphabetical order.
-
-> 
-> Thanks
-> Helen
-> 
->>
->>> +
->>> +		ports {
->>> +			#address-cells = <1>;
->>> +			#size-cells = <0>;
->>> +
->>> +			port@0 {
->>
->>> +				#address-cells = <1>;
->>> +				#size-cells = <0>;
->>> +				reg = <0>;
->>
->> Move reg above #address-cells. Change that in example as well.
->>
->> 				reg = <0>;
->> 				#address-cells = <1>;
->> 				#size-cells = <0>;
->>
->>> +			};
->>> +		};
->>> +	};
->>> +
->>>  	isp0_mmu: iommu@ff914000 {
->>>  		compatible = "rockchip,iommu";
->>>  		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
->>> -- 
->>> 2.26.0
->>
+diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.txt b/Documentation/devicetree/bindings/media/rockchip-rga.txt
+deleted file mode 100644
+index c53a8e513..000000000
+--- a/Documentation/devicetree/bindings/media/rockchip-rga.txt
++++ /dev/null
+@@ -1,34 +0,0 @@
+-device-tree bindings for rockchip 2D raster graphic acceleration controller (RGA)
+-
+-RGA is a standalone 2D raster graphic acceleration unit. It accelerates 2D
+-graphics operations, such as point/line drawing, image scaling, rotation,
+-BitBLT, alpha blending and image blur/sharpness.
+-
+-Required properties:
+-- compatible: value should be one of the following
+-  "rockchip,rk3228-rga", "rockchip,rk3288-rga": for Rockchip RK3228
+-  "rockchip,rk3288-rga": for Rockchip RK3288
+-  "rockchip,rk3399-rga": for Rockchip RK3399
+-
+-- interrupts: RGA interrupt specifier.
+-
+-- clocks: phandle to RGA sclk/hclk/aclk clocks
+-
+-- clock-names: should be "aclk", "hclk" and "sclk"
+-
+-- resets: Must contain an entry for each entry in reset-names.
+-  See ../reset/reset.txt for details.
+-- reset-names: should be "core", "axi" and "ahb"
+-
+-Example:
+-SoC-specific DT entry:
+-	rga: rga@ff680000 {
+-		compatible = "rockchip,rk3399-rga";
+-		reg = <0xff680000 0x10000>;
+-		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
+-		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
+-		clock-names = "aclk", "hclk", "sclk";
+-
+-		resets = <&cru SRST_RGA_CORE>, <&cru SRST_A_RGA>, <&cru SRST_H_RGA>;
+-		reset-names = "core, "axi", "ahb";
+-	};
+diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.yaml b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+new file mode 100644
+index 000000000..3b110b574
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+@@ -0,0 +1,78 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/rockchip-rga.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip 2D raster graphic acceleration controller (RGA)
++
++description:
++  RGA is a standalone 2D raster graphic acceleration unit. It accelerates 2D
++  graphics operations, such as point/line drawing, image scaling, rotation,
++  BitBLT, alpha blending and image blur/sharpness.
++
++maintainers:
++  - Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
++  - Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
++
++properties:
++  compatible:
++    oneOf:
++      - const: rockchip,rk3288-rga
++      - const: rockchip,rk3399-rga
++      - items:
++          - const: rockchip,rk3228-rga
++          - const: rockchip,rk3288-rga
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    maxItems: 3
++
++  clock-names:
++    items:
++      - const: aclk
++      - const: hclk
++      - const: sclk
++
++  resets:
++    maxItems: 3
++
++  reset-names:
++    items:
++      - const: core
++      - const: axi
++      - const: ahb
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - resets
++  - reset-names
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3399-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    rga: rga@ff680000 {
++      compatible = "rockchip,rk3399-rga";
++      reg = <0xff680000 0x10000>;
++      interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru ACLK_RGA>,
++               <&cru HCLK_RGA>,
++               <&cru SCLK_RGA_CORE>;
++      clock-names = "aclk", "hclk", "sclk";
++      resets = <&cru SRST_RGA_CORE>,
++               <&cru SRST_A_RGA>,
++               <&cru SRST_H_RGA>;
++      reset-names = "core", "axi", "ahb";
++    };
+-- 
+2.11.0
