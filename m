@@ -1,159 +1,99 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH v2 1/2] soc: rockchip: Register a soc_device to retrieve
- revision
-Date: Thu, 2 Apr 2020 12:45:34 +0100
-Message-ID: <4844d3ba-87fa-51f4-0a56-3131e390589a@arm.com>
-References: <20200401153513.423683-1-mylene.josserand@collabora.com>
- <20200401153513.423683-2-mylene.josserand@collabora.com>
- <5143930.cPWVAAQKI9@diego>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH 1/4] dt-bindings: phy: phy-rockchip-dphy-rx0: move
+ rockchip dphy rx0 bindings out of staging
+Date: Thu, 2 Apr 2020 14:16:45 +0200
+Message-ID: <bfefe00c-5673-ddcb-4e2a-425eb4771002@gmail.com>
+References: <20200402000234.226466-2-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <5143930.cPWVAAQKI9@diego>
-Content-Language: en-GB
-Sender: linux-clk-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, =?UTF-8?Q?Myl=c3=a8ne_Josserand?= <mylene.josserand@collabora.com>
-Cc: sboyd@kernel.org, mturquette@baylibre.com, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, geert@linux-m68k.org, kernel@collabora.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200402000234.226466-2-helen.koike@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: helen.koike@collabora.com
+Cc: dafna.hirschfeld@collabora.com, devel@driverdev.osuosl.org, devicetree@vger.kernel.org, ezequiel@collabora.com, heiko@sntech.de, hverkuil-cisco@xs4all.nl, karthik.poduval@gmail.com, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, robh+dt@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-04-01 5:34 pm, Heiko Stübner wrote:
-[...]
-> The possible problem I see here is clocking and power-domain of the hdmi
-> controller in corner-cases. In the past we already had a lot of fun with
-> kexec, which also indicates that people actually use kexec productively.
-> 
-> So while all clocks are ungated and all power-domains are powered on first
-> boot, on a system without graphics the pclk+power-domain could be off when
-> doing a kexec into a second kernel, which then would probably hang here.
+Hi Helen,
 
-Just to be that guy, how about kdump, where entry to the second kernel 
-is predicated on there *not* being a nice clean shutdown? ;)
+> # SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> %YAML 1.2
+> ---
+> $id: http://devicetree.org/schemas/phy/rockchip-mipi-dphy-rx0.yaml#
+> $schema: http://devicetree.org/meta-schemas/core.yaml#
+> 
+> title: Rockchip SoC MIPI RX0 D-PHY Device Tree Bindings
+> 
+> maintainers:
+>   - Helen Koike <helen.koike@collabora.com>
+>   - Ezequiel Garcia <ezequiel@collabora.com>
+> 
+> description: |
+>   The Rockchip SoC has a MIPI D-PHY bus with an RX0 entry which connects to
+>   the ISP1 (Image Signal Processing unit v1.0) for CSI cameras.
+> 
+> properties:
+>   compatible:
+>     const: rockchip,rk3399-mipi-dphy-rx0
+> 
 
-IMO relying on any particular bootloader behaviour in the kernel is 
-fairly fragile - U-Boot has a lot more latitude in assuming it's running 
-straight out of reset than Linux does. If we're not going to trust the 
-DT to correctly describe the SoC variant in the first place, then it's 
-somewhat questionable whether we should trust it for indirectly 
-identifying the SoC variant either - it would seem a lot more robust to 
-just map the known physical addresses to run a canned sequence of 
-register writes that puts things in a known-good state (on the basis 
-that this has to run before the 'real' drivers for those things are up, 
-and thus can't interfere with them).
+>   reg:
+>     maxItems: 1
 
-Robin.
+If 'reg' is not used => remove it.
 
-> Of course with the hdmi-pclk being sourced from hclk_vio we run into a
-> chicken-egg-problem, as we need pclk_hdmi_ctrl to register hclk_vio at all.
 > 
-> So I guess one way out of this could be to
-> - amend rk3288_clk_shutdown() to also ungate the hdmi-pclk on shutdown
-> - add a shutdown mechanism to the power-domain driver so that it can
->    enable PD_VIO on shutdown
+>   clocks:
+>     items:
+>       - description: MIPI D-PHY ref clock
+>       - description: MIPI D-PHY RX0 cfg clock
+>       - description: Video in/out general register file clock
 > 
->> +
->> +	if (readl_relaxed(hdmi_base + RK3288_HDMI_REV_REG)
->> +	    == RK3288W_HDMI_REV)
+>   clock-names:
+>     items:
+>       - const: dphy-ref
+>       - const: dphy-cfg
+>       - const: grf
 > 
-> nit: a nicer look would be something like
-> 	val = readl_relaxed(hdmi_base + RK3288_HDMI_REV_REG);
-> 	if (val == RK3288W_HDMI_REV)
+>   '#phy-cells':
+>     const: 0
 > 
->> +		revision = RK3288_SOC_REV_RK3288W;
->> +	else
->> +		revision = RK3288_SOC_REV_RK3288;
->> +
->> +	iounmap(hdmi_base);
->> +
->> +	return revision;
->> +}
->> +
->> +static const char *rk3288_socinfo_revision(u32 rev)
->> +{
->> +	const char *soc_rev;
->> +
->> +	switch (rev) {
->> +	case RK3288_SOC_REV_RK3288:
->> +		soc_rev = "RK3288";
->> +		break;
->> +
->> +	case RK3288_SOC_REV_RK3288W:
->> +		soc_rev = "RK3288w";
+>   power-domains:
+>     description: Video in/out power domain.
+>     maxItems: 1
 > 
-> can we maybe use lower-case letters for all here?
+> required:
+>   - compatible
+>   - clocks
+>   - clock-names
+>   - '#phy-cells'
+>   - power-domains
 > 
->> +		break;
->> +
->> +	case RK3288_SOC_REV_NOT_DETECT:
->> +		soc_rev = "";
->> +		break;
->> +
->> +	default:
->> +		soc_rev = "unknown";
->> +		break;
->> +	}
->> +
->> +	return kstrdup_const(soc_rev, GFP_KERNEL);
->> +}
->> +
->> +static const struct of_device_id rk3288_soc_match[] = {
->> +	{ .compatible = "rockchip,rk3288", },
->> +	{ }
->> +};
->> +
->> +static int __init rk3288_soc_init(void)
+> additionalProperties: false
 > 
-> as noted at the top, I'd really like to see this more generalized so that
-> other socs can just hook in there with a revision callback in a
-> rockchip_soc_data struct.
+> examples:
+>   - |
 > 
+>     /*
+>      * MIPI D-PHY RX0 use registers in "general register files", it
+>      * should be a child of the GRF.
+>      *
+>      * grf: syscon@ff770000 {
+>      *  compatible = "rockchip,rk3399-grf", "syscon", "simple-mfd";
+>      *  ...
+>      * };
+>      */
 > 
->> +{
->> +	struct soc_device_attribute *soc_dev_attr;
->> +	struct soc_device *soc_dev;
->> +	struct device_node *np;
->> +
->> +	np = of_find_matching_node(NULL, rk3288_soc_match);
->> +	if (!np)
->> +		return -ENODEV;
->> +
->> +	soc_dev_attr = kzalloc(sizeof(*soc_dev_attr), GFP_KERNEL);
->> +	if (!soc_dev_attr)
->> +		return -ENOMEM;
->> +
->> +	soc_dev_attr->family = "Rockchip";
->> +	soc_dev_attr->soc_id = "RK32xx";
+>     #include <dt-bindings/clock/rk3399-cru.h>
+>     #include <dt-bindings/power/rk3399-power.h>
 > 
-> nit: rk3288 instead of "32xx" please
-> 
->> +
->> +	np = of_find_node_by_path("/");
->> +	of_property_read_string(np, "model", &soc_dev_attr->machine);
->> +	of_node_put(np);
->> +
->> +	soc_dev_attr->revision = rk3288_socinfo_revision(rk3288_revision());
->> +
->> +	soc_dev = soc_device_register(soc_dev_attr);
->> +	if (IS_ERR(soc_dev)) {
->> +		kfree_const(soc_dev_attr->revision);
->> +		kfree_const(soc_dev_attr->soc_id);
->> +		kfree(soc_dev_attr);
->> +		return PTR_ERR(soc_dev);
->> +	}
->> +
->> +	dev_info(soc_device_to_device(soc_dev), "Rockchip %s %s detected\n",
->> +		 soc_dev_attr->soc_id, soc_dev_attr->revision);
-> 
-> nit: dev_dbg should be enough, that information doesn't really matter for
-> most people, as it's only relevant to clock internals.
-> 
-> 
-> Heiko
-> 
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+>     mipi_dphy_rx0: mipi-dphy-rx0 {
+>         compatible = "rockchip,rk3399-mipi-dphy-rx0";
+>         clocks = <&cru SCLK_MIPIDPHY_REF>,
+>                  <&cru SCLK_DPHY_RX0_CFG>,
+>                  <&cru PCLK_VIO_GRF>;
+>         clock-names = "dphy-ref", "dphy-cfg", "grf";
+>         power-domains = <&power RK3399_PD_VIO>;
+>         #phy-cells = <0>;
+>     };
