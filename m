@@ -1,272 +1,43 @@
-From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH 2/4] dt-bindings: media: rkisp1: move rockchip-isp1
- bindings out of staging
-Date: Thu, 2 Apr 2020 11:42:39 -0300
-Message-ID: <faacd068-e722-4fa8-efab-c51c723b75c1@collabora.com>
-References: <20200402000234.226466-3-helen.koike@collabora.com>
- <7e53ec1e-33bd-3385-40a0-de3fd00ad1a1@gmail.com>
+From: Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org>
+Subject: Re: [PATCH v3 0/5] rockchip: rk3399: Fix HDMI out
+Date: Thu, 2 Apr 2020 16:42:54 +0200
+Message-ID: <20200402164254.601503b2@crub>
+References: <20200402114125.2501-1-jagan@amarulasolutions.com>
+ <20200402155616.013f6bf8@crub>
+ <4e11274d-b166-1e41-83a6-8bf647f96c84@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <7e53ec1e-33bd-3385-40a0-de3fd00ad1a1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <4e11274d-b166-1e41-83a6-8bf647f96c84-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Mark Kettenis <mark.kettenis-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Johan,
+Hi Kever,
 
-Thanks for your review.
+On Thu, 2 Apr 2020 22:28:53 +0800
+Kever Yang kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org wrote:
+...
+> > Series applied to u-boot-video/video-fixes-v2020.04, thanks!  
+> 
+> I was about to apply these patches, and under travis build now.
+> 
+> It's also OK for these patches to merge into u-boot-video.
 
-On 4/2/20 8:35 AM, Johan Jonker wrote:
-> Hi Helen,
-> 
->> # SPDX-License-Identifier: (GPL-2.0+ OR MIT)
->> %YAML 1.2
->> ---
->> $id: http://devicetree.org/schemas/media/rockchip-isp1.yaml#
->> $schema: http://devicetree.org/meta-schemas/core.yaml#
->>
-> 
->> title: Rockchip SoC Image Signal Processing unit v1
-> 
-> Where do we need 'v1' for? Is there a 'v2'?
+I'm build testing the series [1] and will submit a pull request to
+Tom.
 
-ISPv1 is the Rockchip's name for the IP block.
+[1] https://gitlab.denx.de/u-boot/custodians/u-boot-video/pipelines/2606
 
-> 
->>
->> maintainers:
->>   - Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
->>
->> description: |
->>   Rockchip ISP1 is the Camera interface for the Rockchip series of SoCs
->>   which contains image processing, scaling, and compression functions.
->>
->> properties:
->>   compatible:
->>     const: rockchip,rk3399-cif-isp
->>
->>   reg:
->>     maxItems: 1
->>
->>   interrupts:
->>     maxItems: 1
->>
->>   iommus:
->>     maxItems: 1
->>
->>   power-domains:
->>     maxItems: 1
->>
->>   phys:
->>     maxItems: 1
->>     description: phandle for the PHY port
->>
->>   phy-names:
->>     const: dphy
->>
->>   clocks:
->>     items:
->>       - description: ISP clock
->>       - description: ISP AXI clock clock
->>       - description: ISP AXI clock  wrapper clock
->>       - description: ISP AHB clock clock
->>       - description: ISP AHB wrapper clock
->>
->>   clock-names:
->>     items:
->>       - const: clk_isp
->>       - const: aclk_isp
->>       - const: aclk_isp_wrap
->>       - const: hclk_isp
->>       - const: hclk_isp_wrap
->>
->>   # See ./video-interfaces.txt for details
->>   ports:
->>     type: object
->>     additionalProperties: false
->>
->>     properties:
->>       "#address-cells":
->>         const: 1
->>
->>       "#size-cells":
->>         const: 0
->>
->>       port@0:
->>         type: object
->>         description: connection point for sensors at MIPI-DPHY RX0
-> 
->>         additionalProperties: false
-> 
-> Nothing required here?
-
-I was thinking that if there is no endpoint, then nothing is required.
-But if there is, then #address-cells, #size-cells and reg are. I guess
-I can just add them as required.
-
-I'll add it in the patchseries.
-
-> 
->>
->>         properties:
->>           "#address-cells":
->>             const: 1
->>
->>           "#size-cells":
->>             const: 0
->>
->>           reg:
->>             const: 0
->>
->>         patternProperties:
->>           endpoint:
->>             type: object
->>             additionalProperties: false
->>
->>             properties:
->>               reg:
->>                 maxItems: 1
->>
->>               data-lanes:
->>                 minItems: 1
->>                 maxItems: 4
->>
->>               remote-endpoint: true
->>
->>     required:
-> 
->>       - port@0
-> 
-> The use of '@0' makes "#address-cells" and "#size-cells" also a requirement.
-> 
-> - "#address-cells"
-> - "#size-cells"
-
-Ok, I'll add it.
-
-> 
->>
->> required:
->>   - compatible
-> 
-> How about 'reg'?
-> 
-> - reg
-
-ack, I'll add another patch in the series fixing this.
-
-> 
->>   - interrupts
->>   - clocks
->>   - clock-names
->>   - power-domains
->>   - iommus
->>   - phys
->>   - phy-names
->>   - ports
->>
->> additionalProperties: false
->>
->> examples:
->>   - |
->>
->>     #include <dt-bindings/clock/rk3399-cru.h>
->>     #include <dt-bindings/interrupt-controller/arm-gic.h>
->>     #include <dt-bindings/power/rk3399-power.h>
->>
->>     parent0: parent@0 {
->>         #address-cells = <2>;
->>         #size-cells = <2>;
->>
->>         isp0: isp0@ff910000 {
->>             compatible = "rockchip,rk3399-cif-isp";
->>             reg = <0x0 0xff910000 0x0 0x4000>;
->>             interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
->>             clocks = <&cru SCLK_ISP0>,
->>                      <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
->>                      <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
->>             clock-names = "clk_isp",
->>                           "aclk_isp", "aclk_isp_wrap",
->>                           "hclk_isp", "hclk_isp_wrap";
->>             power-domains = <&power RK3399_PD_ISP0>;
->>             iommus = <&isp0_mmu>;
->>             phys = <&dphy>;
->>             phy-names = "dphy";
->>
->>             ports {
->>                 #address-cells = <1>;
->>                 #size-cells = <0>;
->>
->>                 port@0 {
->>                     #address-cells = <1>;
->>                     #size-cells = <0>;
->>                     reg = <0>;
->>
->>                     mipi_in_wcam: endpoint@0 {
->>                         reg = <0>;
->>                         remote-endpoint = <&wcam_out>;
->>                         data-lanes = <1 2>;
->>                     };
->>
->>                     mipi_in_ucam: endpoint@1 {
->>                         reg = <1>;
->>                         remote-endpoint = <&ucam_out>;
->>                         data-lanes = <1>;
->>                     };
->>                 };
->>             };
->>         };
->>
-> 
->>         i2c7: i2c@ff160000 {
->>             clock-frequency = <400000>;
->>             #address-cells = <1>;
->>             #size-cells = <0>;
-> 
-> Incomplete example.
-> From i2c-rk3x.yaml:
-> 
-> required:
->   - compatible
->   - reg
->   - interrupts
->   - clocks
->   - clock-names
-
-The idea was to exemplify how to connect to the sensor nodes below.
-But I don't see a problem adding a complete i2c example, I'll add it.
-
-Thanks
-Helen
-
-> 
->>
->>             wcam: camera@36 {
->>                 compatible = "ovti,ov5695";
->>                 reg = <0x36>;
->>
->>                 port {
->>                     wcam_out: endpoint {
->>                         remote-endpoint = <&mipi_in_wcam>;
->>                         data-lanes = <1 2>;
->>                     };
->>                 };
->>             };
->>
->>             ucam: camera@3c {
->>                 compatible = "ovti,ov2685";
->>                 reg = <0x3c>;
->>
->>                   port {
->>                       ucam_out: endpoint {
->>                           remote-endpoint = <&mipi_in_ucam>;
->>                           data-lanes = <1>;
->>                       };
->>                   };
->>             };
->>         };
->>     };
+--
+Anatolij
