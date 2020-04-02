@@ -1,40 +1,58 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH 1/4] dt-bindings: phy: phy-rockchip-dphy-rx0: move
- rockchip dphy rx0 bindings out of staging
-Date: Thu, 02 Apr 2020 13:17:27 -0300
-Message-ID: <a86bfa69fef8eee428d7c89b1d4fe99728af2ab7.camel@collabora.com>
-References: <20200402000234.226466-1-helen.koike@collabora.com>
-         <20200402000234.226466-2-helen.koike@collabora.com>
+Subject: Re: [PATCH 1/3] rkisp1: Get rid of unused variable warning
+Date: Thu, 02 Apr 2020 13:31:27 -0300
+Message-ID: <530189e1af69fb04168cf1237aa2990895e471dd.camel@collabora.com>
+References: <20200401213721.24173-1-ezequiel@collabora.com>
+         <20200401213721.24173-2-ezequiel@collabora.com>
+         <b994a6fe-865b-d5c4-7f3f-ed6b1815f37f@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200402000234.226466-2-helen.koike@collabora.com>
+In-Reply-To: <b994a6fe-865b-d5c4-7f3f-ed6b1815f37f@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>, devicetree@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>
-Cc: linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, robh+dt@kernel.org, heiko@sntech.de, hverkuil-cisco@xs4all.nl, kernel@collabora.com, dafna.hirschfeld@collabora.com, mark.rutland@arm.com, karthik.poduval@gmail.com
+To: Robin Murphy <robin.murphy@arm.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-(+Kishon)
+On Thu, 2020-04-02 at 10:47 +0100, Robin Murphy wrote:
+> On 2020-04-01 10:37 pm, Ezequiel Garcia wrote:
+> > If CONFIG_OF is not selected, the compiler will complain:
+> > 
+> > drivers/staging/media/rkisp1/rkisp1-dev.c: In function ‘rkisp1_probe’:
+> > drivers/staging/media/rkisp1/rkisp1-dev.c:457:22: warning: unused variable ‘node’ [-Wunused-variable]
+> >    457 |  struct device_node *node = pdev->dev.of_node;
+> > 
+> > Rework the code slightly and make the compiler happy.
+> > 
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > ---
+> >   drivers/staging/media/rkisp1/rkisp1-dev.c | 3 +--
+> >   1 file changed, 1 insertion(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
+> > index b1b3c058e957..5e7e797aad71 100644
+> > --- a/drivers/staging/media/rkisp1/rkisp1-dev.c
+> > +++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
+> > @@ -454,7 +454,6 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+> >   
+> >   static int rkisp1_probe(struct platform_device *pdev)
+> >   {
+> > -	struct device_node *node = pdev->dev.of_node;
+> >   	const struct rkisp1_match_data *clk_data;
+> >   	const struct of_device_id *match;
+> >   	struct device *dev = &pdev->dev;
+> > @@ -463,7 +462,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+> >   	unsigned int i;
+> >   	int ret, irq;
+> >   
+> > -	match = of_match_node(rkisp1_of_match, node);
+> > +	match = of_match_node(rkisp1_of_match, pdev->dev.of_node);
+> 
+> FWIW you could clean up "match" too by using of_device_get_match_data().
+> 
 
-Hi Helen,
-
-I was wondering if we couldn't also move the phy driver out of staging.
+Ah, that's nicer.
 
 Thanks,
 Ezequiel
- 
-On Wed, 2020-04-01 at 21:02 -0300, Helen Koike wrote:
-> Move phy-rockchip-dphy-rx0 bindings to Documentation/devicetree/bindings/phy
-> 
-> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> ---
->  .../devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml           | 0
->  1 file changed, 0 insertions(+), 0 deletions(-)
->  rename {drivers/staging/media/phy-rockchip-dphy-rx0/Documentation => Documentation}/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml (100%)
-> 
-> diff --git a/drivers/staging/media/phy-rockchip-dphy-rx0/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
-> b/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
-> similarity index 100%
-> rename from drivers/staging/media/phy-rockchip-dphy-rx0/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
-> rename to Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
