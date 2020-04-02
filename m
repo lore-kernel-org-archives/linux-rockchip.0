@@ -1,187 +1,57 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 1/2] soc: rockchip: Register a soc_device to retrieve revision
-Date: Thu, 02 Apr 2020 16:14:58 +0200
-Message-ID: <4543799.QtudHIFNrS@diego>
-References: <20200401153513.423683-1-mylene.josserand@collabora.com> <5143930.cPWVAAQKI9@diego> <4844d3ba-87fa-51f4-0a56-3131e390589a@arm.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 0/5] rockchip: rk3399: Fix HDMI out
+Date: Thu, 2 Apr 2020 22:28:53 +0800
+Message-ID: <4e11274d-b166-1e41-83a6-8bf647f96c84@rock-chips.com>
+References: <20200402114125.2501-1-jagan@amarulasolutions.com>
+ <20200402155616.013f6bf8@crub>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <4844d3ba-87fa-51f4-0a56-3131e390589a@arm.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: =?ISO-8859-1?Q?Myl=E8ne?= Josserand <mylene.josserand@collabora.com>, sboyd@kernel.org, mturquette@baylibre.com, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, geert@linux-m68k.org, kernel@collabora.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200402155616.013f6bf8@crub>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Mark Kettenis <mark.kettenis-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 2. April 2020, 13:45:34 CEST schrieb Robin Murphy:
-> On 2020-04-01 5:34 pm, Heiko Stübner wrote:
-> [...]
-> > The possible problem I see here is clocking and power-domain of the hdmi
-> > controller in corner-cases. In the past we already had a lot of fun with
-> > kexec, which also indicates that people actually use kexec productively.
-> > 
-> > So while all clocks are ungated and all power-domains are powered on first
-> > boot, on a system without graphics the pclk+power-domain could be off when
-> > doing a kexec into a second kernel, which then would probably hang here.
-> 
-> Just to be that guy, how about kdump, where entry to the second kernel 
-> is predicated on there *not* being a nice clean shutdown? ;)
-> 
-> IMO relying on any particular bootloader behaviour in the kernel is 
-> fairly fragile - U-Boot has a lot more latitude in assuming it's running 
-> straight out of reset than Linux does.
-
-You'll have to take into account that there are more boot options than
-uboot ;-) ... especially the rk3288 also needs to support some ancient
-version of coreboot - that definitly won't see any updates anymore
-and isn't really user upgradeable.
-
-
-> If we're not going to trust the 
-> DT to correctly describe the SoC variant in the first place,
-
-I'm still all for "just put a rk3288w" into the devicetree compatible,
-but so far other participants seem to prefer a software solution ;-) .
-
-
-> then it's 
-> somewhat questionable whether we should trust it for indirectly 
-> identifying the SoC variant either - it would seem a lot more robust to 
-> just map the known physical addresses to run a canned sequence of 
-> register writes that puts things in a known-good state (on the basis 
-> that this has to run before the 'real' drivers for those things are up, 
-> and thus can't interfere with them).
-
-The problem is, the "known physical address" is part of the dw-hdmi
-controller ip block, so we'll also need to take into account clocks and
-power-domains.
-
-So that would mean the soc-"driver" would need to 
-- ioremap hdmi, cru and pmu
-- ungate all clocks (on reboot we don't know the hirarchy)
-- enable at least the pd_vio power-domain
-via direct register writes.
-
-Doable but definitly very ugly and I also don't really know what more
-people farther upstream would say to that.
-
-Anybody interested in just adding that new dt-compatible?
-
-
-Heiko
-
-> > Of course with the hdmi-pclk being sourced from hclk_vio we run into a
-> > chicken-egg-problem, as we need pclk_hdmi_ctrl to register hclk_vio at all.
-> > 
-> > So I guess one way out of this could be to
-> > - amend rk3288_clk_shutdown() to also ungate the hdmi-pclk on shutdown
-> > - add a shutdown mechanism to the power-domain driver so that it can
-> >    enable PD_VIO on shutdown
-> > 
-> >> +
-> >> +	if (readl_relaxed(hdmi_base + RK3288_HDMI_REV_REG)
-> >> +	    == RK3288W_HDMI_REV)
-> > 
-> > nit: a nicer look would be something like
-> > 	val = readl_relaxed(hdmi_base + RK3288_HDMI_REV_REG);
-> > 	if (val == RK3288W_HDMI_REV)
-> > 
-> >> +		revision = RK3288_SOC_REV_RK3288W;
-> >> +	else
-> >> +		revision = RK3288_SOC_REV_RK3288;
-> >> +
-> >> +	iounmap(hdmi_base);
-> >> +
-> >> +	return revision;
-> >> +}
-> >> +
-> >> +static const char *rk3288_socinfo_revision(u32 rev)
-> >> +{
-> >> +	const char *soc_rev;
-> >> +
-> >> +	switch (rev) {
-> >> +	case RK3288_SOC_REV_RK3288:
-> >> +		soc_rev = "RK3288";
-> >> +		break;
-> >> +
-> >> +	case RK3288_SOC_REV_RK3288W:
-> >> +		soc_rev = "RK3288w";
-> > 
-> > can we maybe use lower-case letters for all here?
-> > 
-> >> +		break;
-> >> +
-> >> +	case RK3288_SOC_REV_NOT_DETECT:
-> >> +		soc_rev = "";
-> >> +		break;
-> >> +
-> >> +	default:
-> >> +		soc_rev = "unknown";
-> >> +		break;
-> >> +	}
-> >> +
-> >> +	return kstrdup_const(soc_rev, GFP_KERNEL);
-> >> +}
-> >> +
-> >> +static const struct of_device_id rk3288_soc_match[] = {
-> >> +	{ .compatible = "rockchip,rk3288", },
-> >> +	{ }
-> >> +};
-> >> +
-> >> +static int __init rk3288_soc_init(void)
-> > 
-> > as noted at the top, I'd really like to see this more generalized so that
-> > other socs can just hook in there with a revision callback in a
-> > rockchip_soc_data struct.
-> > 
-> > 
-> >> +{
-> >> +	struct soc_device_attribute *soc_dev_attr;
-> >> +	struct soc_device *soc_dev;
-> >> +	struct device_node *np;
-> >> +
-> >> +	np = of_find_matching_node(NULL, rk3288_soc_match);
-> >> +	if (!np)
-> >> +		return -ENODEV;
-> >> +
-> >> +	soc_dev_attr = kzalloc(sizeof(*soc_dev_attr), GFP_KERNEL);
-> >> +	if (!soc_dev_attr)
-> >> +		return -ENOMEM;
-> >> +
-> >> +	soc_dev_attr->family = "Rockchip";
-> >> +	soc_dev_attr->soc_id = "RK32xx";
-> > 
-> > nit: rk3288 instead of "32xx" please
-> > 
-> >> +
-> >> +	np = of_find_node_by_path("/");
-> >> +	of_property_read_string(np, "model", &soc_dev_attr->machine);
-> >> +	of_node_put(np);
-> >> +
-> >> +	soc_dev_attr->revision = rk3288_socinfo_revision(rk3288_revision());
-> >> +
-> >> +	soc_dev = soc_device_register(soc_dev_attr);
-> >> +	if (IS_ERR(soc_dev)) {
-> >> +		kfree_const(soc_dev_attr->revision);
-> >> +		kfree_const(soc_dev_attr->soc_id);
-> >> +		kfree(soc_dev_attr);
-> >> +		return PTR_ERR(soc_dev);
-> >> +	}
-> >> +
-> >> +	dev_info(soc_device_to_device(soc_dev), "Rockchip %s %s detected\n",
-> >> +		 soc_dev_attr->soc_id, soc_dev_attr->revision);
-> > 
-> > nit: dev_dbg should be enough, that information doesn't really matter for
-> > most people, as it's only relevant to clock internals.
-> > 
-> > 
-> > Heiko
-> > 
-> > 
-> > 
-> > _______________________________________________
-> > Linux-rockchip mailing list
-> > Linux-rockchip@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> > 
-> 
+SGkgQW5hdG9saWosCgpPbiAyMDIwLzQvMiDkuIvljYg5OjU2LCBBbmF0b2xpaiBHdXN0c2NoaW4g
+d3JvdGU6Cj4gT24gVGh1LCAgMiBBcHIgMjAyMCAxNzoxMToyMCArMDUzMAo+IEphZ2FuIFRla2kg
+amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20gd3JvdGU6Cj4gLi4uCj4+IEphZ2FuIFRla2kgKDUp
+Ogo+PiAgICBjbGs6IHJrMzM5OTogU2V0IGVtcHR5IGZvciB2b3BsIGFzc2lnbmVkLWNsb2Nrcwo+
+PiAgICB2aWRlbzogcm9ja2NoaXA6IEZpeCB2b3AgbW9kZXMgZm9yIHJrMzM5OQo+PiAgICByb2Nr
+Y2hpcDogRW5hYmxlIHByZSBjb25zb2xlIGZvciByazMzOTkKPj4gICAgcm9ja2NoaXA6IEVuYWJs
+ZSBIRE1JIG91dHB1dCBvbiByazMzOTkgYm9hcmQgdy8gSERNSQo+PiAgICB2aWRlbzogcm9ja2No
+aXA6IFN1cHBvcnQgNEsgcmVzb2x1dGlvbiBmb3IgcmszMzk5LCBIRE1JCj4+Cj4+ICAgYXJjaC9h
+cm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC92b3BfcmszMjg4LmggfCAxMSArKysrKysrKysr
+Kwo+PiAgIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAgICAgIHwg
+IDEgKwo+PiAgIGNvbW1vbi9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IHwgIDEgKwo+PiAgIGNvbmZpZ3MvbmFub3BjLXQ0LXJrMzM5OV9kZWZjb25maWcgICAgICAgICAg
+ICAgIHwgIDcgKysrKysrKwo+PiAgIGNvbmZpZ3MvbmFub3BpLW00LXJrMzM5OV9kZWZjb25maWcg
+ICAgICAgICAgICAgIHwgIDcgKysrKysrKwo+PiAgIGNvbmZpZ3MvbmFub3BpLW5lbzQtcmszMzk5
+X2RlZmNvbmZpZyAgICAgICAgICAgIHwgIDcgKysrKysrKwo+PiAgIGNvbmZpZ3Mvcm9jLXBjLXJr
+MzM5OV9kZWZjb25maWcgICAgICAgICAgICAgICAgIHwgIDYgKysrKysrCj4+ICAgY29uZmlncy9y
+b2NrOTYwLXJrMzM5OV9kZWZjb25maWcgICAgICAgICAgICAgICAgfCAgNyArKysrKysrCj4+ICAg
+ZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrX3JrMzM5OS5jICAgICAgICAgICAgICAgfCAgNyArKysr
+KysrCj4+ICAgZHJpdmVycy92aWRlby9yb2NrY2hpcC9LY29uZmlnICAgICAgICAgICAgICAgICAg
+fCAgMiArKwo+PiAgIGRyaXZlcnMvdmlkZW8vcm9ja2NoaXAvcmszMzk5X3ZvcC5jICAgICAgICAg
+ICAgIHwgIDIgLS0KPj4gICBkcml2ZXJzL3ZpZGVvL3JvY2tjaGlwL3JrX3ZvcC5jICAgICAgICAg
+ICAgICAgICB8ICA0ICsrKysKPj4gICBpbmNsdWRlL2NvbmZpZ3MvZXZiX3JrMzM5OS5oICAgICAg
+ICAgICAgICAgICAgICB8ICA1ICsrKysrCj4+ICAgaW5jbHVkZS9jb25maWdzL3JvY2s5NjBfcmsz
+Mzk5LmggICAgICAgICAgICAgICAgfCAgNSArKysrKwo+PiAgIDE0IGZpbGVzIGNoYW5nZWQsIDcw
+IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4gU2VyaWVzIGFwcGxpZWQgdG8gdS1ib290
+LXZpZGVvL3ZpZGVvLWZpeGVzLXYyMDIwLjA0LCB0aGFua3MhCgpJIHdhcyBhYm91dCB0byBhcHBs
+eSB0aGVzZSBwYXRjaGVzLCBhbmQgdW5kZXIgdHJhdmlzIGJ1aWxkIG5vdy4KCkl0J3MgYWxzbyBP
+SyBmb3IgdGhlc2UgcGF0Y2hlcyB0byBtZXJnZSBpbnRvIHUtYm9vdC12aWRlby4KCgpUaGFua3Ms
+CgotIEtldmVyCgo+Cj4gLS0KPiBBbmF0b2xpago+Cj4KCgoKX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
+bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
