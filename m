@@ -1,62 +1,116 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 5/5] video: rockchip: Support 4K resolution for rk3399, HDMI
-Date: Thu,  2 Apr 2020 17:11:25 +0530
-Message-ID: <20200402114125.2501-6-jagan@amarulasolutions.com>
-References: <20200402114125.2501-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH v2 1/4] arm64: dts: rk3399-u-boot: Delete vop
+ assigned-clocks/rates
+Date: Thu, 2 Apr 2020 17:12:59 +0530
+Message-ID: <CAMty3ZCYbPfesTxEjmpD2M9fT3pOfK1R3L-v0esVMFhe8PHsAA@mail.gmail.com>
+References: <20200330181613.29462-1-jagan@amarulasolutions.com>
+ <20200330181613.29462-2-jagan@amarulasolutions.com>
+ <016151d6786a0ea4@bloch.sibelius.xs4all.nl>
+ <CAMty3ZCHTk5H60cNmUhfq=pNwBJ9Kc1KuGGb=gQFCp2SS3_1gw@mail.gmail.com>
+ <103f3c97-e223-6718-bb08-0aa2395145a2@rock-chips.com>
+ <CAMty3ZD7ofW1XhAWijmCEv7=Mxu7SzsfWLiLsU0yqLpF9d5wOQ@mail.gmail.com>
+ <01615b08caa99d65@bloch.sibelius.xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200402114125.2501-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Mark Kettenis <mark.kettenis-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <01615b08caa99d65@bloch.sibelius.xs4all.nl>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Mark Kettenis <mark.kettenis@xs4all.nl>
+Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Anatolij Gustschin <agust@denx.de>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The default resolution for rockchip display is 1920x1080
-which failed to work on 4K HDMI out displays on rk3399.
+On Thu, Apr 2, 2020 at 3:48 PM Mark Kettenis <mark.kettenis@xs4all.nl> wrot=
+e:
+>
+> > From: Jagan Teki <jagan@amarulasolutions.com>
+> > Date: Thu, 2 Apr 2020 15:07:01 +0530
+> >
+> > Hi Kever,
+> >
+> > On Thu, Apr 2, 2020 at 2:48 PM Kever Yang <kever.yang@rock-chips.com> w=
+rote:
+> > >
+> > > Hi Jagan,
+> > >
+> > > On 2020/3/31 =E4=B8=8B=E5=8D=881:59, Jagan Teki wrote:
+> > > > On Tue, Mar 31, 2020 at 1:06 AM Mark Kettenis <mark.kettenis@xs4all=
+.nl> wrote:
+> > > >>> From: Jagan Teki <jagan@amarulasolutions.com>
+> > > >>> Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de,
+> > > >>>          linux-rockchip@lists.infradead.org, linux-amarula@amarul=
+asolutions.com,
+> > > >>>          Jagan Teki <jagan@amarulasolutions.com>
+> > > >>> Date: Mon, 30 Mar 2020 23:46:10 +0530
+> > > >>> Content-Type: text/plain; charset=3DUTF-8
+> > > >>>
+> > > >>> Linux supporting assigned-clocks for VOP on rk3399 by assuming
+> > > >>> U-Boot not initializing it on this linux commit:
+> > > >>>
+> > > >>> commit <617f4472bdd3> ("arm64: dts: rockchip: init rk3399 vop clo=
+ck rates")
+> > > >>>
+> > > >>> There is no specific need to initialize these assigned clock
+> > > >>> in U-Boot as video drivers still work with default aclk and
+> > > >>> hclk values. So, these clocks are simply not supported by rk3399
+> > > >>> clock driver.
+> > > >>>
+> > > >>> But, during stdio probe of vidconsole, the device probe
+> > > >>> will try to check whether the assigned clocks on that video
+> > > >>> console node is initialized or not? and return error if not.
+> > > >>>
+> > > >>> So, delete these property via -u-boot dtsi as there is
+> > > >>> no specific need in U-Boot.
+> > > >> Deleting these properties isn't very helpful as it means the U-Boo=
+t
+> > > >> device tree can no longer be used by the kernel.  Isn't it a bette=
+r
+> > > >> idea to implement these clocks as stubs in the u-boot clock driver=
+?
+> > > > I did try this before sorting out these changes, seems like it
+> > > > requires a bit more tweaking the clock wrt display code. I really
+> > > > didn't see any use case as of now for just to print u-boot log on
+> > > > display out, and more over this support has been broken since from
+> > > > releases. so bypassing these nodes can be a solutions for now.
+> > >
+> > >
+> > > I agree with Mark for not touch the dts first. I don't know the detai=
+l
+> > > of display driver but:
+> > >
+> > > - The rk3399 driver use to work without touch dts from kernel;
+> > >
+> > > - the clock driver have a rk3399_vop_set_clk() which does not depends=
+ on
+> > > dts.
+> >
+> > The existing video drivers are written based on the puma dts and those
+> > are not inline to Linux dts files, i.e. the reason the code is pushed
+> > I think. The rest of rk3399 dtsi files are now inline to Linux as and
+> > display out on these are broken from last 2 releases. so my idea is to
+> > resolve the things one-after-another like
+> > 1. Make existing video stuff work with all rk3399 (this series along
+> > with this patch)
+> > 2. Drop this patch change and make video drivers working w/o any
+> > explicit changes in dts like this patch does.
+> >
+> > Since step 2, would take time, and require close testing of all boards
+> > I would like to pick the existing stuff for the release. Mark my words
+> > to fix the things for the next release.
+>
+> Fair enough.  I don't think fixing the issue is too difficult, but it
+> is better to do these things in small steps anyway.
 
-So, mark the default resolution as 3480x2160 for rk3399
-HDMI out.
+I have managed to fix this via clock driver(which seems more
+reasonable as per Kever), so this is dropped in v3. thanks for
+noticing.
 
-This would work all the hdmi display resolutions till
-4K.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
-Changes for v3:
-- new patch
-
- drivers/video/rockchip/Kconfig | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/video/rockchip/Kconfig b/drivers/video/rockchip/Kconfig
-index 10182d0b66..cfd774ead6 100644
---- a/drivers/video/rockchip/Kconfig
-+++ b/drivers/video/rockchip/Kconfig
-@@ -22,6 +22,7 @@ menuconfig VIDEO_ROCKCHIP
- config VIDEO_ROCKCHIP_MAX_XRES
-         int "Maximum horizontal resolution (for memory allocation purposes)"
- 	depends on VIDEO_ROCKCHIP
-+	default 3480 if ROCKCHIP_RK3399 && DISPLAY_ROCKCHIP_HDMI
- 	default 1920
- 	help
- 	  The maximum horizontal resolution to support for the framebuffer.
-@@ -31,6 +32,7 @@ config VIDEO_ROCKCHIP_MAX_XRES
- config VIDEO_ROCKCHIP_MAX_YRES
-         int "Maximum vertical resolution (for memory allocation purposes)"
- 	depends on VIDEO_ROCKCHIP
-+	default 2160 if ROCKCHIP_RK3399 && DISPLAY_ROCKCHIP_HDMI
- 	default 1080
- 	help
- 	  The maximum vertical resolution to support for the framebuffer.
--- 
-2.17.1
+Jagan.
