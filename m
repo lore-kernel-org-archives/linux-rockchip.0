@@ -1,99 +1,82 @@
-From: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
-Subject: Re: Power Key/button on rk3399-roc-pc
-Date: Thu, 2 Apr 2020 09:27:24 +0200
-Message-ID: <af59b7f4-7fb9-4370-9cf5-de4bfedf9e43@fivetechno.de>
-References: <CAM+7aWuR-2EYSDQLj+Sep9cu_cAsL5QD=wRrar-9vLSd_7KPyg@mail.gmail.com>
- <c3f77864-ab66-e31c-e9a6-5a3c8e10b6ea@fivetechno.de>
- <CAM+7aWshiM3YAc9B+GADqKry7bAPapdTJAym-9Wzadtdr3cJHg@mail.gmail.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2 1/4] arm64: dts: rk3399-u-boot: Delete vop
+ assigned-clocks/rates
+Date: Thu, 2 Apr 2020 17:18:03 +0800
+Message-ID: <103f3c97-e223-6718-bb08-0aa2395145a2@rock-chips.com>
+References: <20200330181613.29462-1-jagan@amarulasolutions.com>
+ <20200330181613.29462-2-jagan@amarulasolutions.com>
+ <016151d6786a0ea4@bloch.sibelius.xs4all.nl>
+ <CAMty3ZCHTk5H60cNmUhfq=pNwBJ9Kc1KuGGb=gQFCp2SS3_1gw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAM+7aWshiM3YAc9B+GADqKry7bAPapdTJAym-9Wzadtdr3cJHg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Content-Language: de-DE
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAMty3ZCHTk5H60cNmUhfq=pNwBJ9Kc1KuGGb=gQFCp2SS3_1gw@mail.gmail.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Mark Kettenis <mark.kettenis@xs4all.nl>
+Cc: Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Anatolij Gustschin <agust@denx.de>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Suniel,
+Hi Jagan,
 
-Am 02.04.20 um 06:39 schrieb Suniel Mahesh:
-> On Wed, Apr 1, 2020 at 3:40 PM Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org> wrote:
->>
->> Hi Suniel,
->>
->> Am 01.04.20 um 06:53 schrieb Suniel Mahesh:
->> > Hi Markus, Levin and all,
->> >
->> > Can you guys please suggest me on my requirement.
->> >
->> > rk3399-roc-pc board has a Power Key/button. As per the schematics this
->> > Power Key/button
->> > is connected to GPIO0_A5.
->>
->> And to PWRON of RK808.
->>
->> >
->> > My requirement is can I use this button for board powerup (especially
->> > in linux when we issue
->> > "poweroff" command, the board shuts down and it should power back on
->> > after I press the Power Key/button).
->> >
->> > For the above to happen, I think this Power Key/button be connected to
->> > PMIC RK808-D IC, am i correct ?
->>
->> Yes, see P.16 of ROC-3399-PC-V10-A-20180804 schematic.
->> >
->> > In the schematics, it is not very clear as if such arrangement is
->> > there (though it says it can be an option in
->> > RK3399_BOX_REF_V13_20180821.pdf). I am attaching the document.
->> >
->> > Please suggest/comment on my requirement.
->>
->> Should work, everything is in place, just press long enough ;-).
-> 
-> Thanks Markus for your help. its working.
-> 
->>
->> Btw. could you just revert your recent U-Boot commit
->> checking GPIO0_A5 that prevents unattended booting?
-> 
-> we have sent a patch series(5 patches) which takes care of the above
-> issue. attaching patchwork links:
-> https://patchwork.ozlabs.org/patch/1258093/
+On 2020/3/31 下午1:59, Jagan Teki wrote:
+> On Tue, Mar 31, 2020 at 1:06 AM Mark Kettenis <mark.kettenis@xs4all.nl> wrote:
+>>> From: Jagan Teki <jagan@amarulasolutions.com>
+>>> Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de,
+>>>          linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com,
+>>>          Jagan Teki <jagan@amarulasolutions.com>
+>>> Date: Mon, 30 Mar 2020 23:46:10 +0530
+>>> Content-Type: text/plain; charset=UTF-8
+>>>
+>>> Linux supporting assigned-clocks for VOP on rk3399 by assuming
+>>> U-Boot not initializing it on this linux commit:
+>>>
+>>> commit <617f4472bdd3> ("arm64: dts: rockchip: init rk3399 vop clock rates")
+>>>
+>>> There is no specific need to initialize these assigned clock
+>>> in U-Boot as video drivers still work with default aclk and
+>>> hclk values. So, these clocks are simply not supported by rk3399
+>>> clock driver.
+>>>
+>>> But, during stdio probe of vidconsole, the device probe
+>>> will try to check whether the assigned clocks on that video
+>>> console node is initialized or not? and return error if not.
+>>>
+>>> So, delete these property via -u-boot dtsi as there is
+>>> no specific need in U-Boot.
+>> Deleting these properties isn't very helpful as it means the U-Boot
+>> device tree can no longer be used by the kernel.  Isn't it a better
+>> idea to implement these clocks as stubs in the u-boot clock driver?
+> I did try this before sorting out these changes, seems like it
+> requires a bit more tweaking the clock wrt display code. I really
+> didn't see any use case as of now for just to print u-boot log on
+> display out, and more over this support has been broken since from
+> releases. so bypassing these nodes can be a solutions for now.
 
-I looked at your
-[v2,2/5] roc-rk3399-pc: Set low power leds, power key only if POR [1]
-and it seems to prevent unattended boot after a power interruption
-(brown out), which is a problem for a device with a built in board
-and no access to power key or operator.
-I really would prefer straight boot without human intervention in
-all cases.
+
+I agree with Mark for not touch the dts first. I don't know the detail 
+of display driver but:
+
+- The rk3399 driver use to work without touch dts from kernel;
+
+- the clock driver have a rk3399_vop_set_clk() which does not depends on 
+dts.
+
 
 Thanks,
---
-Markus
 
-[1] https://patchwork.ozlabs.org/patch/1258094/
+- Kever
 
-> 
-> Suniel
->>
->> Thanks,
->> --
->> Markus
->>
->> >
->> > Thanks and regards
->> > Suniel
->> >
-> 
+>
+> Jagan.
+>
+>
