@@ -1,89 +1,40 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: add rx0 mipi-phy for rk3399
-Date: Thu, 02 Apr 2020 16:49:18 +0200
-Message-ID: <3198644.TY9RtKZRLE@diego>
-References: <20200402000234.226466-4-helen.koike@collabora.com> <105956984.FXDh2DO4ZE@diego> <76211530-73ff-5f36-8915-8bdc036d4369@gmail.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 1/4] dt-bindings: phy: phy-rockchip-dphy-rx0: move
+ rockchip dphy rx0 bindings out of staging
+Date: Thu, 02 Apr 2020 13:17:27 -0300
+Message-ID: <a86bfa69fef8eee428d7c89b1d4fe99728af2ab7.camel@collabora.com>
+References: <20200402000234.226466-1-helen.koike@collabora.com>
+         <20200402000234.226466-2-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <76211530-73ff-5f36-8915-8bdc036d4369@gmail.com>
+In-Reply-To: <20200402000234.226466-2-helen.koike@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: helen.koike@collabora.com, dafna.hirschfeld@collabora.com, devel@driverdev.osuosl.org, devicetree@vger.kernel.org, ezequiel@collabora.com, hverkuil-cisco@xs4all.nl, karthik.poduval@gmail.com, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, robh+dt@kernel.org
+To: Helen Koike <helen.koike@collabora.com>, devicetree@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>
+Cc: linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, robh+dt@kernel.org, heiko@sntech.de, hverkuil-cisco@xs4all.nl, kernel@collabora.com, dafna.hirschfeld@collabora.com, mark.rutland@arm.com, karthik.poduval@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Donnerstag, 2. April 2020, 16:37:52 CEST schrieb Johan Jonker:
-> On 4/2/20 4:31 PM, Heiko Stübner wrote:
-> > Am Donnerstag, 2. April 2020, 15:48:02 CEST schrieb Johan Jonker:
-> >> Hi Helen,
-> >>
-> >>> From: Helen Koike <helen.koike@collabora.com>
-> >>
-> >>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> >>> index 33cc21fcf4c10..fc0295d2a65a1 100644
-> >>> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> >>> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> >>> @@ -1394,6 +1394,17 @@ io_domains: io-domains {
-> >>>  			status = "disabled";
-> >>>  		};
-> >>>  
-> >>
-> >>> +		mipi_dphy_rx0: mipi-dphy-rx0 {
-> >>
-> >> For Heiko sort syscon@ff770000 subnodes alphabetical or reg value first?
-> > 
-> > Similar to main nodes ... so things without reg alphabetical,
-> > the rest by reg address
-> > 
-> alphabetical first:
-> 
-> io-domains
-> mipi-dphy-rx0
-> usb2-phy@e450
+(+Kishon)
 
-like this ... aka similar to what we do in the core nodes.
+Hi Helen,
 
-For the record, pinctrl at the bottom of a soc.dtsi is ok.
+I was wondering if we couldn't also move the phy driver out of staging.
 
-
-Heiko
-
-> .@..
+Thanks,
+Ezequiel
+ 
+On Wed, 2020-04-01 at 21:02 -0300, Helen Koike wrote:
+> Move phy-rockchip-dphy-rx0 bindings to Documentation/devicetree/bindings/phy
 > 
-> or
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> ---
+>  .../devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml           | 0
+>  1 file changed, 0 insertions(+), 0 deletions(-)
+>  rename {drivers/staging/media/phy-rockchip-dphy-rx0/Documentation => Documentation}/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml (100%)
 > 
-> with reg values first:
-> 
-> .@..
-> emmc_phy: phy@f780
-> mipi-dphy-rx0
-> pcie-phy
-> 
-> > 
-> >>
-> >>> +			compatible = "rockchip,rk3399-mipi-dphy-rx0";
-> >>> +			clocks = <&cru SCLK_MIPIDPHY_REF>,
-> >>
-> >>> +				<&cru SCLK_DPHY_RX0_CFG>,
-> >>> +				<&cru PCLK_VIO_GRF>;
-> >>
-> >> Align                            ^
-> >>
-> >>> +			clock-names = "dphy-ref", "dphy-cfg", "grf";
-> >>> +			power-domains = <&power RK3399_PD_VIO>;
-> >>> +			#phy-cells = <0>;
-> >>> +			status = "disabled";
-> >>> +		};
-> >>> +
-> >>>  		u2phy0: usb2-phy@e450 {
-> >>>  			compatible = "rockchip,rk3399-usb2phy";
-> >>>  			reg = <0xe450 0x10>;
-> >>
-> >>
-> > 
-> > 
-> > 
-> > 
-> 
-> 
+> diff --git a/drivers/staging/media/phy-rockchip-dphy-rx0/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
+> b/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
+> similarity index 100%
+> rename from drivers/staging/media/phy-rockchip-dphy-rx0/Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
+> rename to Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
