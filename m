@@ -1,98 +1,243 @@
-From: Mark Kettenis <mark.kettenis@xs4all.nl>
-Subject: Re: [PATCH v2 1/4] arm64: dts: rk3399-u-boot: Delete vop
- assigned-clocks/rates
-Date: Thu, 2 Apr 2020 12:18:39 +0200 (CEST)
-Message-ID: <01615b08caa99d65@bloch.sibelius.xs4all.nl>
-References: <20200330181613.29462-1-jagan@amarulasolutions.com>
- <20200330181613.29462-2-jagan@amarulasolutions.com>
- <016151d6786a0ea4@bloch.sibelius.xs4all.nl>
- <CAMty3ZCHTk5H60cNmUhfq=pNwBJ9Kc1KuGGb=gQFCp2SS3_1gw@mail.gmail.com>
- <103f3c97-e223-6718-bb08-0aa2395145a2@rock-chips.com>
- <CAMty3ZD7ofW1XhAWijmCEv7=Mxu7SzsfWLiLsU0yqLpF9d5wOQ@mail.gmail.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/4] dt-bindings: media: rkisp1: move rockchip-isp1
+ bindings out of staging
+Date: Thu, 2 Apr 2020 13:35:05 +0200
+Message-ID: <7e53ec1e-33bd-3385-40a0-de3fd00ad1a1@gmail.com>
+References: <20200402000234.226466-3-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-reply-to: <CAMty3ZD7ofW1XhAWijmCEv7=Mxu7SzsfWLiLsU0yqLpF9d5wOQ@mail.gmail.com>
- (message from Jagan Teki on Thu, 2 Apr 2020 15:07:01 +0530)
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: kever.yang@rock-chips.com, sjg@chromium.org, philipp.tomsich@theobroma-systems.com, agust@denx.de, sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200402000234.226466-3-helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+Cc: dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-> From: Jagan Teki <jagan@amarulasolutions.com>
-> Date: Thu, 2 Apr 2020 15:07:01 +0530
-> 
-> Hi Kever,
-> 
-> On Thu, Apr 2, 2020 at 2:48 PM Kever Yang <kever.yang@rock-chips.com> wrote:
-> >
-> > Hi Jagan,
-> >
-> > On 2020/3/31 下午1:59, Jagan Teki wrote:
-> > > On Tue, Mar 31, 2020 at 1:06 AM Mark Kettenis <mark.kettenis@xs4all.nl> wrote:
-> > >>> From: Jagan Teki <jagan@amarulasolutions.com>
-> > >>> Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de,
-> > >>>          linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com,
-> > >>>          Jagan Teki <jagan@amarulasolutions.com>
-> > >>> Date: Mon, 30 Mar 2020 23:46:10 +0530
-> > >>> Content-Type: text/plain; charset=UTF-8
-> > >>>
-> > >>> Linux supporting assigned-clocks for VOP on rk3399 by assuming
-> > >>> U-Boot not initializing it on this linux commit:
-> > >>>
-> > >>> commit <617f4472bdd3> ("arm64: dts: rockchip: init rk3399 vop clock rates")
-> > >>>
-> > >>> There is no specific need to initialize these assigned clock
-> > >>> in U-Boot as video drivers still work with default aclk and
-> > >>> hclk values. So, these clocks are simply not supported by rk3399
-> > >>> clock driver.
-> > >>>
-> > >>> But, during stdio probe of vidconsole, the device probe
-> > >>> will try to check whether the assigned clocks on that video
-> > >>> console node is initialized or not? and return error if not.
-> > >>>
-> > >>> So, delete these property via -u-boot dtsi as there is
-> > >>> no specific need in U-Boot.
-> > >> Deleting these properties isn't very helpful as it means the U-Boot
-> > >> device tree can no longer be used by the kernel.  Isn't it a better
-> > >> idea to implement these clocks as stubs in the u-boot clock driver?
-> > > I did try this before sorting out these changes, seems like it
-> > > requires a bit more tweaking the clock wrt display code. I really
-> > > didn't see any use case as of now for just to print u-boot log on
-> > > display out, and more over this support has been broken since from
-> > > releases. so bypassing these nodes can be a solutions for now.
-> >
-> >
-> > I agree with Mark for not touch the dts first. I don't know the detail
-> > of display driver but:
-> >
-> > - The rk3399 driver use to work without touch dts from kernel;
-> >
-> > - the clock driver have a rk3399_vop_set_clk() which does not depends on
-> > dts.
-> 
-> The existing video drivers are written based on the puma dts and those
-> are not inline to Linux dts files, i.e. the reason the code is pushed
-> I think. The rest of rk3399 dtsi files are now inline to Linux as and
-> display out on these are broken from last 2 releases. so my idea is to
-> resolve the things one-after-another like
-> 1. Make existing video stuff work with all rk3399 (this series along
-> with this patch)
-> 2. Drop this patch change and make video drivers working w/o any
-> explicit changes in dts like this patch does.
-> 
-> Since step 2, would take time, and require close testing of all boards
-> I would like to pick the existing stuff for the release. Mark my words
-> to fix the things for the next release.
+Hi Helen,
 
-Fair enough.  I don't think fixing the issue is too difficult, but it
-is better to do these things in small steps anyway.
+> # SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> %YAML 1.2
+> ---
+> $id: http://devicetree.org/schemas/media/rockchip-isp1.yaml#
+> $schema: http://devicetree.org/meta-schemas/core.yaml#
+> 
+
+> title: Rockchip SoC Image Signal Processing unit v1
+
+Where do we need 'v1' for? Is there a 'v2'?
+
+> 
+> maintainers:
+>   - Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> 
+> description: |
+>   Rockchip ISP1 is the Camera interface for the Rockchip series of SoCs
+>   which contains image processing, scaling, and compression functions.
+> 
+> properties:
+>   compatible:
+>     const: rockchip,rk3399-cif-isp
+> 
+>   reg:
+>     maxItems: 1
+> 
+>   interrupts:
+>     maxItems: 1
+> 
+>   iommus:
+>     maxItems: 1
+> 
+>   power-domains:
+>     maxItems: 1
+> 
+>   phys:
+>     maxItems: 1
+>     description: phandle for the PHY port
+> 
+>   phy-names:
+>     const: dphy
+> 
+>   clocks:
+>     items:
+>       - description: ISP clock
+>       - description: ISP AXI clock clock
+>       - description: ISP AXI clock  wrapper clock
+>       - description: ISP AHB clock clock
+>       - description: ISP AHB wrapper clock
+> 
+>   clock-names:
+>     items:
+>       - const: clk_isp
+>       - const: aclk_isp
+>       - const: aclk_isp_wrap
+>       - const: hclk_isp
+>       - const: hclk_isp_wrap
+> 
+>   # See ./video-interfaces.txt for details
+>   ports:
+>     type: object
+>     additionalProperties: false
+> 
+>     properties:
+>       "#address-cells":
+>         const: 1
+> 
+>       "#size-cells":
+>         const: 0
+> 
+>       port@0:
+>         type: object
+>         description: connection point for sensors at MIPI-DPHY RX0
+
+>         additionalProperties: false
+
+Nothing required here?
+
+> 
+>         properties:
+>           "#address-cells":
+>             const: 1
+> 
+>           "#size-cells":
+>             const: 0
+> 
+>           reg:
+>             const: 0
+> 
+>         patternProperties:
+>           endpoint:
+>             type: object
+>             additionalProperties: false
+> 
+>             properties:
+>               reg:
+>                 maxItems: 1
+> 
+>               data-lanes:
+>                 minItems: 1
+>                 maxItems: 4
+> 
+>               remote-endpoint: true
+> 
+>     required:
+
+>       - port@0
+
+The use of '@0' makes "#address-cells" and "#size-cells" also a requirement.
+
+- "#address-cells"
+- "#size-cells"
+
+> 
+> required:
+>   - compatible
+
+How about 'reg'?
+
+- reg
+
+>   - interrupts
+>   - clocks
+>   - clock-names
+>   - power-domains
+>   - iommus
+>   - phys
+>   - phy-names
+>   - ports
+> 
+> additionalProperties: false
+> 
+> examples:
+>   - |
+> 
+>     #include <dt-bindings/clock/rk3399-cru.h>
+>     #include <dt-bindings/interrupt-controller/arm-gic.h>
+>     #include <dt-bindings/power/rk3399-power.h>
+> 
+>     parent0: parent@0 {
+>         #address-cells = <2>;
+>         #size-cells = <2>;
+> 
+>         isp0: isp0@ff910000 {
+>             compatible = "rockchip,rk3399-cif-isp";
+>             reg = <0x0 0xff910000 0x0 0x4000>;
+>             interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
+>             clocks = <&cru SCLK_ISP0>,
+>                      <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
+>                      <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
+>             clock-names = "clk_isp",
+>                           "aclk_isp", "aclk_isp_wrap",
+>                           "hclk_isp", "hclk_isp_wrap";
+>             power-domains = <&power RK3399_PD_ISP0>;
+>             iommus = <&isp0_mmu>;
+>             phys = <&dphy>;
+>             phy-names = "dphy";
+> 
+>             ports {
+>                 #address-cells = <1>;
+>                 #size-cells = <0>;
+> 
+>                 port@0 {
+>                     #address-cells = <1>;
+>                     #size-cells = <0>;
+>                     reg = <0>;
+> 
+>                     mipi_in_wcam: endpoint@0 {
+>                         reg = <0>;
+>                         remote-endpoint = <&wcam_out>;
+>                         data-lanes = <1 2>;
+>                     };
+> 
+>                     mipi_in_ucam: endpoint@1 {
+>                         reg = <1>;
+>                         remote-endpoint = <&ucam_out>;
+>                         data-lanes = <1>;
+>                     };
+>                 };
+>             };
+>         };
+> 
+
+>         i2c7: i2c@ff160000 {
+>             clock-frequency = <400000>;
+>             #address-cells = <1>;
+>             #size-cells = <0>;
+
+Incomplete example.
+From i2c-rk3x.yaml:
+
+required:
+  - compatible
+  - reg
+  - interrupts
+  - clocks
+  - clock-names
+
+> 
+>             wcam: camera@36 {
+>                 compatible = "ovti,ov5695";
+>                 reg = <0x36>;
+> 
+>                 port {
+>                     wcam_out: endpoint {
+>                         remote-endpoint = <&mipi_in_wcam>;
+>                         data-lanes = <1 2>;
+>                     };
+>                 };
+>             };
+> 
+>             ucam: camera@3c {
+>                 compatible = "ovti,ov2685";
+>                 reg = <0x3c>;
+> 
+>                   port {
+>                       ucam_out: endpoint {
+>                           remote-endpoint = <&mipi_in_ucam>;
+>                           data-lanes = <1>;
+>                       };
+>                   };
+>             };
+>         };
+>     };
