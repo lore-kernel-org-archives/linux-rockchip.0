@@ -1,71 +1,47 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v2 1/3] rkisp1: Get rid of unused variable warning
-Date: Thu, 2 Apr 2020 16:51:48 -0300
-Message-ID: <3f751060-8af4-3d7a-785a-c06c56736a08@collabora.com>
-References: <20200402194504.5331-1-ezequiel@collabora.com>
- <20200402194504.5331-2-ezequiel@collabora.com>
+Subject: Re: [PATCH v2 1/5] media: staging: rkisp1: cap: cleanup in mainpath
+ config for uv swap format
+Date: Thu, 2 Apr 2020 16:53:09 -0300
+Message-ID: <a945bce9-2cb5-e51c-43d8-7b04916635f6@collabora.com>
+References: <20200402190419.15155-1-dafna.hirschfeld@collabora.com>
+ <20200402190419.15155-2-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200402194504.5331-2-ezequiel@collabora.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200402190419.15155-2-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: kernel@collabora.com, Hans Verkuil <hverkuil@xs4all.nl>, Robin Murphy <robin.murphy@arm.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
 
-On 4/2/20 4:45 PM, Ezequiel Garcia wrote:
-> If CONFIG_OF is not selected, the compiler will complain:
+On 4/2/20 4:04 PM, Dafna Hirschfeld wrote:
+> The value RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP equals BIT(0),
+> Therefore when writing it to the register there is no need to mask
+> it first with ~BIT(0).
 > 
-> drivers/staging/media/rkisp1/rkisp1-dev.c: In function ‘rkisp1_probe’:
-> drivers/staging/media/rkisp1/rkisp1-dev.c:457:22: warning: unused variable ‘node’ [-Wunused-variable]
->   457 |  struct device_node *node = pdev->dev.of_node;
-> 
-> Rework the code slightly and make the compiler happy.
-> 
-> Suggested-by: Robin Murphy <robin.murphy@arm.com>
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
 Acked-by: Helen Koike <helen.koike@collabora.com>
 
 > ---
->  drivers/staging/media/rkisp1/rkisp1-dev.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 > 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
-> index b1b3c058e957..3f6285709352 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-dev.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
-> @@ -454,16 +454,17 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> index 45d237a77ca4..5700d7be2819 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> @@ -432,8 +432,7 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
+>  	if (cap->pix.cfg->uv_swap) {
+>  		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
 >  
->  static int rkisp1_probe(struct platform_device *pdev)
->  {
-> -	struct device_node *node = pdev->dev.of_node;
->  	const struct rkisp1_match_data *clk_data;
-> -	const struct of_device_id *match;
->  	struct device *dev = &pdev->dev;
->  	struct rkisp1_device *rkisp1;
->  	struct v4l2_device *v4l2_dev;
->  	unsigned int i;
->  	int ret, irq;
->  
-> -	match = of_match_node(rkisp1_of_match, node);
-> +	clk_data = of_device_get_match_data(&pdev->dev);
-> +	if (!clk_data)
-> +		return -ENODEV;
-> +
->  	rkisp1 = devm_kzalloc(dev, sizeof(*rkisp1), GFP_KERNEL);
->  	if (!rkisp1)
->  		return -ENOMEM;
-> @@ -487,7 +488,6 @@ static int rkisp1_probe(struct platform_device *pdev)
+> -		reg = (reg & ~BIT(0)) |
+> -		      RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+> +		reg = reg | RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+>  		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
 >  	}
 >  
->  	rkisp1->irq = irq;
-> -	clk_data = match->data;
->  
->  	for (i = 0; i < clk_data->size; i++)
->  		rkisp1->clks[i].id = clk_data->clks[i];
 > 
