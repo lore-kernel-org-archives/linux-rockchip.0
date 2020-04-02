@@ -1,53 +1,58 @@
-From: Anatolij Gustschin <agust@denx.de>
-Subject: Re: [PATCH v3 0/5] rockchip: rk3399: Fix HDMI out
-Date: Thu, 2 Apr 2020 15:56:16 +0200
-Message-ID: <20200402155616.013f6bf8@crub>
-References: <20200402114125.2501-1-jagan@amarulasolutions.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH 1/3] rkisp1: Get rid of unused variable warning
+Date: Thu, 2 Apr 2020 10:58:35 -0300
+Message-ID: <86db2adb-d567-afc4-b675-49ad031cd75e@collabora.com>
+References: <20200401213721.24173-1-ezequiel@collabora.com>
+ <20200401213721.24173-2-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200402114125.2501-1-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Mark Kettenis <mark.kettenis@xs4all.nl>, sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200401213721.24173-2-ezequiel@collabora.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: kernel@collabora.com, Hans Verkuil <hverkuil@xs4all.nl>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu,  2 Apr 2020 17:11:20 +0530
-Jagan Teki jagan@amarulasolutions.com wrote:
-...
-> Jagan Teki (5):
->   clk: rk3399: Set empty for vopl assigned-clocks
->   video: rockchip: Fix vop modes for rk3399
->   rockchip: Enable pre console for rk3399
->   rockchip: Enable HDMI output on rk3399 board w/ HDMI
->   video: rockchip: Support 4K resolution for rk3399, HDMI
+
+
+On 4/1/20 6:37 PM, Ezequiel Garcia wrote:
+> If CONFIG_OF is not selected, the compiler will complain:
 > 
->  arch/arm/include/asm/arch-rockchip/vop_rk3288.h | 11 +++++++++++
->  arch/arm/mach-rockchip/Kconfig                  |  1 +
->  common/Kconfig                                  |  1 +
->  configs/nanopc-t4-rk3399_defconfig              |  7 +++++++
->  configs/nanopi-m4-rk3399_defconfig              |  7 +++++++
->  configs/nanopi-neo4-rk3399_defconfig            |  7 +++++++
->  configs/roc-pc-rk3399_defconfig                 |  6 ++++++
->  configs/rock960-rk3399_defconfig                |  7 +++++++
->  drivers/clk/rockchip/clk_rk3399.c               |  7 +++++++
->  drivers/video/rockchip/Kconfig                  |  2 ++
->  drivers/video/rockchip/rk3399_vop.c             |  2 --
->  drivers/video/rockchip/rk_vop.c                 |  4 ++++
->  include/configs/evb_rk3399.h                    |  5 +++++
->  include/configs/rock960_rk3399.h                |  5 +++++
->  14 files changed, 70 insertions(+), 2 deletions(-)
+> drivers/staging/media/rkisp1/rkisp1-dev.c: In function ‘rkisp1_probe’:
+> drivers/staging/media/rkisp1/rkisp1-dev.c:457:22: warning: unused variable ‘node’ [-Wunused-variable]
+>   457 |  struct device_node *node = pdev->dev.of_node;
+> 
+> Rework the code slightly and make the compiler happy.
+> 
+> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 
-Series applied to u-boot-video/video-fixes-v2020.04, thanks!
+Acked-by: Helen Koike <helen.koike@collabora.com>
 
---
-Anatolij
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-dev.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
+> index b1b3c058e957..5e7e797aad71 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-dev.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
+> @@ -454,7 +454,6 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+>  
+>  static int rkisp1_probe(struct platform_device *pdev)
+>  {
+> -	struct device_node *node = pdev->dev.of_node;
+>  	const struct rkisp1_match_data *clk_data;
+>  	const struct of_device_id *match;
+>  	struct device *dev = &pdev->dev;
+> @@ -463,7 +462,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+>  	unsigned int i;
+>  	int ret, irq;
+>  
+> -	match = of_match_node(rkisp1_of_match, node);
+> +	match = of_match_node(rkisp1_of_match, pdev->dev.of_node);
+>  	rkisp1 = devm_kzalloc(dev, sizeof(*rkisp1), GFP_KERNEL);
+>  	if (!rkisp1)
+>  		return -ENOMEM;
+> 
