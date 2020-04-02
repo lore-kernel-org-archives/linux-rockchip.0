@@ -1,106 +1,99 @@
-From: Mylene Josserand <mylene.josserand@collabora.com>
-Subject: Re: [PATCH v2 2/2] clk: rockchip: rk3288: Handle clock tree for
- rk3288w
-Date: Thu, 2 Apr 2020 08:35:05 +0200
-Message-ID: <7c21a7d6-a24f-dbc6-4eaa-548ddfc0f73e@collabora.com>
-References: <20200401153513.423683-1-mylene.josserand@collabora.com>
- <20200401153513.423683-3-mylene.josserand@collabora.com>
- <CAMuHMdXvFOKqmZ-MLJV4SAeLN-PDzqPvMvbVpcD=jyip9tbdnA@mail.gmail.com>
+From: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+Subject: Re: Power Key/button on rk3399-roc-pc
+Date: Thu, 2 Apr 2020 09:27:24 +0200
+Message-ID: <af59b7f4-7fb9-4370-9cf5-de4bfedf9e43@fivetechno.de>
+References: <CAM+7aWuR-2EYSDQLj+Sep9cu_cAsL5QD=wRrar-9vLSd_7KPyg@mail.gmail.com>
+ <c3f77864-ab66-e31c-e9a6-5a3c8e10b6ea@fivetechno.de>
+ <CAM+7aWshiM3YAc9B+GADqKry7bAPapdTJAym-9Wzadtdr3cJHg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAMuHMdXvFOKqmZ-MLJV4SAeLN-PDzqPvMvbVpcD=jyip9tbdnA@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, Linux ARM <linux-arm-kernel@lists.infradead.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-clk <linux-clk@vger.kernel.org>, Collabora Kernel ML <kernel@collabora.com>, kever.yang@rock-chips.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CAM+7aWshiM3YAc9B+GADqKry7bAPapdTJAym-9Wzadtdr3cJHg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Language: de-DE
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Geert,
+Hi Suniel,
 
-On 4/1/20 6:56 PM, Geert Uytterhoeven wrote:
-> Hi Mylène,
-> 
-> On Wed, Apr 1, 2020 at 5:35 PM Mylène Josserand
-> <mylene.josserand@collabora.com> wrote:
->> The revision rk3288w has a different clock tree about
->> "hclk_vio" clock, according to the BSP kernel code.
+Am 02.04.20 um 06:39 schrieb Suniel Mahesh:
+> On Wed, Apr 1, 2020 at 3:40 PM Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org> wrote:
 >>
->> This patch handles this difference by detecting which SOC it is
->> and creating the div accordingly. Because we are using
->> soc_device_match function, we need to delay the registration
->> of this clock later than others to have time to get SoC revision.
+>> Hi Suniel,
 >>
->> Otherwise, because of CLK_OF_DECLARE uses, clock tree will be
->> created too soon to have time to detect SoC's revision.
+>> Am 01.04.20 um 06:53 schrieb Suniel Mahesh:
+>> > Hi Markus, Levin and all,
+>> >
+>> > Can you guys please suggest me on my requirement.
+>> >
+>> > rk3399-roc-pc board has a Power Key/button. As per the schematics this
+>> > Power Key/button
+>> > is connected to GPIO0_A5.
 >>
->> Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
-> 
-> Thanks for your patch!
-
-Thanks for your review!
-
-> 
->> --- a/drivers/clk/rockchip/clk-rk3288.c
->> +++ b/drivers/clk/rockchip/clk-rk3288.c
->> @@ -914,10 +923,15 @@ static struct syscore_ops rk3288_clk_syscore_ops = {
->>          .resume = rk3288_clk_resume,
->>   };
+>> And to PWRON of RK808.
 >>
->> +static const struct soc_device_attribute rk3288w[] = {
->> +       { .soc_id = "RK32xx", .revision = "RK3288w" },
->> +       { /* sentinel */ }
->> +};
->> +
->> +static struct rockchip_clk_provider *ctx;
->> +
->>   static void __init rk3288_clk_init(struct device_node *np)
->>   {
->> -       struct rockchip_clk_provider *ctx;
->> -
->>          rk3288_cru_base = of_iomap(np, 0);
->>          if (!rk3288_cru_base) {
->>                  pr_err("%s: could not map cru region\n", __func__);
->> @@ -955,3 +969,17 @@ static void __init rk3288_clk_init(struct device_node *np)
->>          rockchip_clk_of_add_provider(np, ctx);
->>   }
->>   CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
->> +
->> +static int __init rk3288_hclkvio_register(void)
->> +{
+>> >
+>> > My requirement is can I use this button for board powerup (especially
+>> > in linux when we issue
+>> > "poweroff" command, the board shuts down and it should power back on
+>> > after I press the Power Key/button).
+>> >
+>> > For the above to happen, I think this Power Key/button be connected to
+>> > PMIC RK808-D IC, am i correct ?
+>>
+>> Yes, see P.16 of ROC-3399-PC-V10-A-20180804 schematic.
+>> >
+>> > In the schematics, it is not very clear as if such arrangement is
+>> > there (though it says it can be an option in
+>> > RK3399_BOX_REF_V13_20180821.pdf). I am attaching the document.
+>> >
+>> > Please suggest/comment on my requirement.
+>>
+>> Should work, everything is in place, just press long enough ;-).
 > 
-> This function will always be called, even when running a (multi-platform)
-> kernel on a non-rk3288 platform.  So you need some protection against
-> that.
+> Thanks Markus for your help. its working.
+> 
+>>
+>> Btw. could you just revert your recent U-Boot commit
+>> checking GPIO0_A5 that prevents unattended booting?
+> 
+> we have sent a patch series(5 patches) which takes care of the above
+> issue. attaching patchwork links:
+> https://patchwork.ozlabs.org/patch/1258093/
 
-erg, good point, I didn't think about that.
+I looked at your
+[v2,2/5] roc-rk3399-pc: Set low power leds, power key only if POR [1]
+and it seems to prevent unattended boot after a power interruption
+(brown out), which is a problem for a device with a built in board
+and no access to power key or operator.
+I really would prefer straight boot without human intervention in
+all cases.
+
+Thanks,
+--
+Markus
+
+[1] https://patchwork.ozlabs.org/patch/1258094/
 
 > 
->> +       /* Check for the rk3288w revision as clock tree is different */
->> +       if (soc_device_match(rk3288w))
->> +               rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
->> +                                              ARRAY_SIZE(rk3288w_hclkvio_branch));
->> +       else
->> +               rockchip_clk_register_branches(ctx, rk3288_hclkvio_branch,
->> +                                              ARRAY_SIZE(rk3288_hclkvio_branch));
+> Suniel
+>>
+>> Thanks,
+>> --
+>> Markus
+>>
+>> >
+>> > Thanks and regards
+>> > Suniel
+>> >
 > 
-> Note that soc_device_match() returns a struct soc_device_attribute
-> pointer.  If you would store the rockchip_clk_branch array pointer and
-> size in rk3288w[...].data (i.e. a pointer to a struct containing that
-> info), for both the r83288w and normal rk3288 variants, you could
-> simplify this to:
-> 
->      attr = soc_device_match(rk3288w);
->      if (attr) {
->              struct rk3288_branch_array *p = attr->data;
->              rockchip_clk_register_branches(ctx, p->branches, p->len);
->      }
-> 
-> That would handle the not-running-on-rk3288 issue as well.
-
-Nice, thank you for the explanation and the code, very useful :)
-
-Best regards,
-
-Mylène
