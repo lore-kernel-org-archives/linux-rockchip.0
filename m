@@ -1,16 +1,15 @@
-From: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: Power Key/button on rk3399-roc-pc
-Date: Thu, 2 Apr 2020 17:59:41 +0530
-Message-ID: <CAM+7aWsKkNhxtnompweSCaiOc+B+HNGGar-bRT5Hww0HmV7P=A@mail.gmail.com>
-References: <CAM+7aWuR-2EYSDQLj+Sep9cu_cAsL5QD=wRrar-9vLSd_7KPyg@mail.gmail.com>
- <c3f77864-ab66-e31c-e9a6-5a3c8e10b6ea@fivetechno.de>
- <CAM+7aWshiM3YAc9B+GADqKry7bAPapdTJAym-9Wzadtdr3cJHg@mail.gmail.com>
- <af59b7f4-7fb9-4370-9cf5-de4bfedf9e43@fivetechno.de>
+From: Peter Robinson <pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v3 4/5] rockchip: Enable HDMI output on rk3399 board w/
+ HDMI
+Date: Thu, 2 Apr 2020 13:38:01 +0100
+Message-ID: <CALeDE9Ph_iwaGd+z7bWOgBpHE9hDkg6G74rNeKxcbDgOrSVXRQ@mail.gmail.com>
+References: <20200402114125.2501-1-jagan@amarulasolutions.com>
+ <20200402114125.2501-5-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <af59b7f4-7fb9-4370-9cf5-de4bfedf9e43-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
+In-Reply-To: <20200402114125.2501-5-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -20,86 +19,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org>
-Cc: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, djw-Efosm3t9Qi2Pt1CcHtbs0g@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Anatolij Gustschin <agust-ynQEQJNshbs@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Mark Kettenis <mark.kettenis-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Apr 2, 2020 at 12:57 PM Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org> wrote:
+> Enable config options and console setting to respective
+> rk3399 board for HDMI output.
 >
-> Hi Suniel,
+> Boards supported and tested on this patch are:
+> - NanoPc T4
+> - NanoPi M4
+> - NanoPi Neo4
+> - ROC-RK3399-PC
+> - Rock960
 >
-> Am 02.04.20 um 06:39 schrieb Suniel Mahesh:
-> > On Wed, Apr 1, 2020 at 3:40 PM Markus Reichl <m.reichl-SRyzfwRm/0rPTwkrwQOX7A@public.gmane.org> wrote:
-> >>
-> >> Hi Suniel,
-> >>
-> >> Am 01.04.20 um 06:53 schrieb Suniel Mahesh:
-> >> > Hi Markus, Levin and all,
-> >> >
-> >> > Can you guys please suggest me on my requirement.
-> >> >
-> >> > rk3399-roc-pc board has a Power Key/button. As per the schematics this
-> >> > Power Key/button
-> >> > is connected to GPIO0_A5.
-> >>
-> >> And to PWRON of RK808.
-> >>
-> >> >
-> >> > My requirement is can I use this button for board powerup (especially
-> >> > in linux when we issue
-> >> > "poweroff" command, the board shuts down and it should power back on
-> >> > after I press the Power Key/button).
-> >> >
-> >> > For the above to happen, I think this Power Key/button be connected to
-> >> > PMIC RK808-D IC, am i correct ?
-> >>
-> >> Yes, see P.16 of ROC-3399-PC-V10-A-20180804 schematic.
-> >> >
-> >> > In the schematics, it is not very clear as if such arrangement is
-> >> > there (though it says it can be an option in
-> >> > RK3399_BOX_REF_V13_20180821.pdf). I am attaching the document.
-> >> >
-> >> > Please suggest/comment on my requirement.
-> >>
-> >> Should work, everything is in place, just press long enough ;-).
-> >
-> > Thanks Markus for your help. its working.
-> >
-> >>
-> >> Btw. could you just revert your recent U-Boot commit
-> >> checking GPIO0_A5 that prevents unattended booting?
-> >
-> > we have sent a patch series(5 patches) which takes care of the above
-> > issue. attaching patchwork links:
-> > https://patchwork.ozlabs.org/patch/1258093/
->
-> I looked at your
-> [v2,2/5] roc-rk3399-pc: Set low power leds, power key only if POR [1]
-> and it seems to prevent unattended boot after a power interruption
-> (brown out), which is a problem for a device with a built in board
-> and no access to power key or operator.
-> I really would prefer straight boot without human intervention in
-> all cases.
->
-reverted the patch, except diy-led(RED LED) is kept as it is.
-This indicates the board is in full power mode.
+> Cc: Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Tested-by: Peter Robinson <pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-Thanks
-> Thanks,
+Tested on the Rock960 rev 1.2, I'm guessing the firefly-rk3399 should
+be able to be enabled in a similar manner, will try and test that as
+well when I get a moment.
+
+> ---
+> Changes for v3:
+> - add rock960 hdmi out support
+>
+>  configs/nanopc-t4-rk3399_defconfig   | 7 +++++++
+>  configs/nanopi-m4-rk3399_defconfig   | 7 +++++++
+>  configs/nanopi-neo4-rk3399_defconfig | 7 +++++++
+>  configs/roc-pc-rk3399_defconfig      | 6 ++++++
+>  configs/rock960-rk3399_defconfig     | 7 +++++++
+>  include/configs/evb_rk3399.h         | 5 +++++
+>  include/configs/rock960_rk3399.h     | 5 +++++
+>  7 files changed, 44 insertions(+)
+>
+> diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
+> index 9ea9b11574..607a00dbf7 100644
+> --- a/configs/nanopc-t4-rk3399_defconfig
+> +++ b/configs/nanopc-t4-rk3399_defconfig
+> @@ -52,5 +52,12 @@ CONFIG_USB_ETHER_ASIX88179=y
+>  CONFIG_USB_ETHER_MCS7830=y
+>  CONFIG_USB_ETHER_RTL8152=y
+>  CONFIG_USB_ETHER_SMSC95XX=y
+> +CONFIG_USB_KEYBOARD=y
+>  CONFIG_SPL_TINY_MEMSET=y
+>  CONFIG_ERRNO_STR=y
+> +CONFIG_DM_VIDEO=y
+> +CONFIG_VIDEO_BPP16=y
+> +CONFIG_VIDEO_BPP32=y
+> +CONFIG_DISPLAY=y
+> +CONFIG_VIDEO_ROCKCHIP=y
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+> diff --git a/configs/nanopi-m4-rk3399_defconfig b/configs/nanopi-m4-rk3399_defconfig
+> index ad0e808bf6..3fcb7ac2d7 100644
+> --- a/configs/nanopi-m4-rk3399_defconfig
+> +++ b/configs/nanopi-m4-rk3399_defconfig
+> @@ -52,5 +52,12 @@ CONFIG_USB_ETHER_ASIX88179=y
+>  CONFIG_USB_ETHER_MCS7830=y
+>  CONFIG_USB_ETHER_RTL8152=y
+>  CONFIG_USB_ETHER_SMSC95XX=y
+> +CONFIG_USB_KEYBOARD=y
+>  CONFIG_SPL_TINY_MEMSET=y
+>  CONFIG_ERRNO_STR=y
+> +CONFIG_DM_VIDEO=y
+> +CONFIG_VIDEO_BPP16=y
+> +CONFIG_VIDEO_BPP32=y
+> +CONFIG_DISPLAY=y
+> +CONFIG_VIDEO_ROCKCHIP=y
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+> diff --git a/configs/nanopi-neo4-rk3399_defconfig b/configs/nanopi-neo4-rk3399_defconfig
+> index d038a8cab9..b9ea535e43 100644
+> --- a/configs/nanopi-neo4-rk3399_defconfig
+> +++ b/configs/nanopi-neo4-rk3399_defconfig
+> @@ -52,5 +52,12 @@ CONFIG_USB_ETHER_ASIX88179=y
+>  CONFIG_USB_ETHER_MCS7830=y
+>  CONFIG_USB_ETHER_RTL8152=y
+>  CONFIG_USB_ETHER_SMSC95XX=y
+> +CONFIG_USB_KEYBOARD=y
+>  CONFIG_SPL_TINY_MEMSET=y
+>  CONFIG_ERRNO_STR=y
+> +CONFIG_DM_VIDEO=y
+> +CONFIG_VIDEO_BPP16=y
+> +CONFIG_VIDEO_BPP32=y
+> +CONFIG_DISPLAY=y
+> +CONFIG_VIDEO_ROCKCHIP=y
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+> diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+> index d540a17aeb..be76524cef 100644
+> --- a/configs/roc-pc-rk3399_defconfig
+> +++ b/configs/roc-pc-rk3399_defconfig
+> @@ -59,3 +59,9 @@ CONFIG_USB_ETHER_SMSC95XX=y
+>  CONFIG_USB_KEYBOARD=y
+>  CONFIG_SPL_TINY_MEMSET=y
+>  CONFIG_ERRNO_STR=y
+> +CONFIG_DM_VIDEO=y
+> +CONFIG_VIDEO_BPP16=y
+> +CONFIG_VIDEO_BPP32=y
+> +CONFIG_DISPLAY=y
+> +CONFIG_VIDEO_ROCKCHIP=y
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+> diff --git a/configs/rock960-rk3399_defconfig b/configs/rock960-rk3399_defconfig
+> index ba4226e173..c4e954731a 100644
+> --- a/configs/rock960-rk3399_defconfig
+> +++ b/configs/rock960-rk3399_defconfig
+> @@ -58,5 +58,12 @@ CONFIG_USB_ETHER_ASIX88179=y
+>  CONFIG_USB_ETHER_MCS7830=y
+>  CONFIG_USB_ETHER_RTL8152=y
+>  CONFIG_USB_ETHER_SMSC95XX=y
+> +CONFIG_USB_KEYBOARD=y
+>  CONFIG_SPL_TINY_MEMSET=y
+>  CONFIG_ERRNO_STR=y
+> +CONFIG_DM_VIDEO=y
+> +CONFIG_VIDEO_BPP16=y
+> +CONFIG_VIDEO_BPP32=y
+> +CONFIG_DISPLAY=y
+> +CONFIG_VIDEO_ROCKCHIP=y
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+> diff --git a/include/configs/evb_rk3399.h b/include/configs/evb_rk3399.h
+> index c0b0358893..2d3db22877 100644
+> --- a/include/configs/evb_rk3399.h
+> +++ b/include/configs/evb_rk3399.h
+> @@ -6,6 +6,11 @@
+>  #ifndef __EVB_RK3399_H
+>  #define __EVB_RK3399_H
+>
+> +#define ROCKCHIP_DEVICE_SETTINGS \
+> +               "stdin=serial,usbkbd\0" \
+> +               "stdout=serial,vidconsole\0" \
+> +               "stderr=serial,vidconsole\0"
+> +
+>  #include <configs/rk3399_common.h>
+>
+>  #if defined(CONFIG_ENV_IS_IN_MMC)
+> diff --git a/include/configs/rock960_rk3399.h b/include/configs/rock960_rk3399.h
+> index 746d24cbff..304ad2b7aa 100644
+> --- a/include/configs/rock960_rk3399.h
+> +++ b/include/configs/rock960_rk3399.h
+> @@ -6,6 +6,11 @@
+>  #ifndef __ROCK960_RK3399_H
+>  #define __ROCK960_RK3399_H
+>
+> +#define ROCKCHIP_DEVICE_SETTINGS \
+> +               "stdin=serial,usbkbd\0" \
+> +               "stdout=serial,vidconsole\0" \
+> +               "stderr=serial,vidconsole\0"
+> +
+>  #include <configs/rk3399_common.h>
+>
+>  #define CONFIG_SYS_MMC_ENV_DEV         1
 > --
-> Markus
+> 2.17.1
 >
-> [1] https://patchwork.ozlabs.org/patch/1258094/
->
-> >
-> > Suniel
-> >>
-> >> Thanks,
-> >> --
-> >> Markus
-> >>
-> >> >
-> >> > Thanks and regards
-> >> > Suniel
-> >> >
-> >
