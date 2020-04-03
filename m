@@ -1,308 +1,82 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v2 2/2] media: staging: rkisp1: cap: remove field fmt_type from struct rkisp1_capture_fmt_cfg
-Date: Fri,  3 Apr 2020 11:27:38 +0200
-Message-ID: <20200403092738.29831-3-dafna.hirschfeld@collabora.com>
-References: <20200403092738.29831-1-dafna.hirschfeld@collabora.com>
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200403092738.29831-1-dafna.hirschfeld@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org, sakari.ailus@linux.intel.com
+From: Prabhakar Mahadev Lad <prabhakar.mahadev-lad.rj@bp.renesas.com>
+Subject: RE: [PATCH v6 02/11] arm64: defconfig: enable CONFIG_PCIE_RCAR_HOST
+Date: Fri, 3 Apr 2020 09:31:43 +0000
+Message-ID: <OSBPR01MB35905B0D9DB55E8FBA340341AAC70@OSBPR01MB3590.jpnprd01.prod.outlook.com>
+References: <1585856319-4380-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <1585856319-4380-3-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <TYAPR01MB454403D69A74036B74CC8220D8C70@TYAPR01MB4544.jpnprd01.prod.outlook.com>
+ <CAMuHMdVWn=U82k5RJnBaRUgRHh3bRfdncOupmX67-u-nbwsG9w@mail.gmail.com>
+ <TYAPR01MB4544B6B749588A7390323D28D8C70@TYAPR01MB4544.jpnprd01.prod.outlook.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <TYAPR01MB4544B6B749588A7390323D28D8C70@TYAPR01MB4544.jpnprd01.prod.outlook.com>
+Content-Language: en-US
+Sender: linux-pci-owner@vger.kernel.org
+To: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Will Deacon <will@kernel.org>, Geert Uytterhoeven <geert+renesas@glider.be>, Catalin Marinas <catalin.marinas@arm.com>, Arnd Bergmann <arnd@arndb.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Andrew Murray <andrew.murray@arm.com>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>, Chris Paterson <Chris.Paterson2@renesas.com>, Frank Rowand <frowand.list@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Jingoo Han <jingoohan1@gmail.com>, Simon Horman <horms@verge.net.au>, Shawn Lin <shawn.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The pixel encoding can be retrieved from the cap->pix.info.
-Therefore the field fmt_type can be removed from the
-struct rkisp1_capture_fmt_cfg.
-
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- drivers/staging/media/rkisp1/rkisp1-capture.c | 51 +------------------
- 1 file changed, 2 insertions(+), 49 deletions(-)
-
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index 8e8ea7ed8de3..0bef5faf068e 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -52,7 +52,6 @@ enum rkisp1_plane {
-  */
- struct rkisp1_capture_fmt_cfg {
- 	u32 fourcc;
--	u8 fmt_type;
- 	u8 uv_swap;
- 	u32 write_format;
- 	u32 output_format;
-@@ -87,133 +86,106 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 	/* yuv422 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUYV,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVYU,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_VYUY,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV16,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV61,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU422M,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	},
- 	/* yuv420 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV21,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV21M,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12M,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV420,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU420,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	},
- 	/* yuv444 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUV444M,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	},
- 	/* yuv400 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_GREY,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
- 	},
- 	/* raw */
- 	{
- 		.fourcc = V4L2_PIX_FMT_SRGGB8,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGRBG8,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGBRG8,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SBGGR8,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SRGGB10,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGRBG10,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGBRG10,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SBGGR10,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SRGGB12,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGRBG12,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGBRG12,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SBGGR12,
--		.fmt_type = V4L2_PIXEL_ENC_BAYER,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
- 	},
- };
-@@ -222,43 +194,36 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* yuv422 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUYV,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVYU,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_VYUY,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV16,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV61,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU422M,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-@@ -266,37 +231,31 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* yuv420 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV21,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV21M,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12M,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV420,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU420,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-@@ -304,7 +263,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* yuv444 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_YUV444M,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV444,
-@@ -312,7 +270,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* yuv400 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_GREY,
--		.fmt_type = V4L2_PIXEL_ENC_YUV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
-@@ -320,17 +277,14 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* rgb */
- 	{
- 		.fourcc = V4L2_PIX_FMT_RGB24,
--		.fmt_type = V4L2_PIXEL_ENC_RGB,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_RGB565,
--		.fmt_type = V4L2_PIXEL_ENC_RGB,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB565,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_BGR666,
--		.fmt_type = V4L2_PIXEL_ENC_RGB,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB666,
- 	},
-@@ -504,13 +458,12 @@ static void rkisp1_sp_disable(struct rkisp1_capture *cap)
- 
- static void rkisp1_mp_enable(struct rkisp1_capture *cap)
- {
--	const struct rkisp1_capture_fmt_cfg *isp_fmt = cap->pix.cfg;
- 	u32 mi_ctrl;
- 
- 	rkisp1_mp_disable(cap);
- 
- 	mi_ctrl = rkisp1_read(cap->rkisp1, RKISP1_CIF_MI_CTRL);
--	if (isp_fmt->fmt_type == V4L2_PIXEL_ENC_BAYER)
-+	if (v4l2_is_format_bayer(cap->pix.info))
- 		mi_ctrl |= RKISP1_CIF_MI_CTRL_RAW_ENABLE;
- 	/* YUV */
- 	else
-@@ -1265,7 +1218,7 @@ static int rkisp1_capture_link_validate(struct media_link *link)
- 		return -EPIPE;
- 	}
- 
--	if (cap->pix.cfg->fmt_type != isp->src_fmt->fmt_type) {
-+	if (cap->pix.info->pixel_enc != isp->src_fmt->fmt_type) {
- 		dev_err(cap->rkisp1->dev,
- 			"format type mismatch in link '%s:%d->%s:%d'\n",
- 			link->source->entity->name, link->source->index,
--- 
-2.17.1
+SGkgU2hpbW9kYS1zYW4vR2VlcnQtc2FuLA0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0t
+DQo+IEZyb206IFlvc2hpaGlybyBTaGltb2RhIDx5b3NoaWhpcm8uc2hpbW9kYS51aEByZW5lc2Fz
+LmNvbT4NCj4gU2VudDogMDMgQXByaWwgMjAyMCAxMDowNQ0KPiBUbzogR2VlcnQgVXl0dGVyaG9l
+dmVuIDxnZWVydEBsaW51eC1tNjhrLm9yZz47IFByYWJoYWthciBNYWhhZGV2IExhZCA8cHJhYmhh
+a2FyLm1haGFkZXYtbGFkLnJqQGJwLnJlbmVzYXMuY29tPg0KPiBDYzogV2lsbCBEZWFjb24gPHdp
+bGxAa2VybmVsLm9yZz47IEdlZXJ0IFV5dHRlcmhvZXZlbiA8Z2VlcnQrcmVuZXNhc0BnbGlkZXIu
+YmU+OyBDYXRhbGluIE1hcmluYXMgPGNhdGFsaW4ubWFyaW5hc0Bhcm0uY29tPjsgQXJuZA0KPiBC
+ZXJnbWFubiA8YXJuZEBhcm5kYi5kZT47IEdyZWcgS3JvYWgtSGFydG1hbiA8Z3JlZ2toQGxpbnV4
+Zm91bmRhdGlvbi5vcmc+OyBBbmRyZXcgTXVycmF5IDxhbmRyZXcubXVycmF5QGFybS5jb20+Ow0K
+PiBkZXZpY2V0cmVlQHZnZXIua2VybmVsLm9yZzsgbGludXgta2VybmVsQHZnZXIua2VybmVsLm9y
+ZzsgbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnOyBsaW51eC1yZW5lc2FzLXNv
+Y0B2Z2VyLmtlcm5lbC5vcmc7IENocmlzDQo+IFBhdGVyc29uIDxDaHJpcy5QYXRlcnNvbjJAcmVu
+ZXNhcy5jb20+OyBGcmFuayBSb3dhbmQgPGZyb3dhbmQubGlzdEBnbWFpbC5jb20+OyBHdXN0YXZv
+IFBpbWVudGVsDQo+IDxndXN0YXZvLnBpbWVudGVsQHN5bm9wc3lzLmNvbT47IEppbmdvbyBIYW4g
+PGppbmdvb2hhbjFAZ21haWwuY29tPjsgU2ltb24gSG9ybWFuIDxob3Jtc0B2ZXJnZS5uZXQuYXU+
+OyBTaGF3biBMaW4NCj4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT47IFRvbSBKb3NlcGggPHRq
+b3NlcGhAY2FkZW5jZS5jb20+OyBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPjsgbGlu
+dXgtDQo+IHJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmc7IExhZCBQcmFiaGFrYXIgPHByYWJo
+YWthci5jc2VuZ2dAZ21haWwuY29tPjsgTWFnbnVzIERhbW0gPG1hZ251cy5kYW1tQGdtYWlsLmNv
+bT47IEtpc2hvbiBWaWpheQ0KPiBBYnJhaGFtIEkgPGtpc2hvbkB0aS5jb20+OyBMb3JlbnpvIFBp
+ZXJhbGlzaSA8bG9yZW56by5waWVyYWxpc2lAYXJtLmNvbT47IE1hcmVrIFZhc3V0IDxtYXJlay52
+YXN1dCtyZW5lc2FzQGdtYWlsLmNvbT47IGxpbnV4LQ0KPiBwY2lAdmdlci5rZXJuZWwub3JnOyBC
+am9ybiBIZWxnYWFzIDxiaGVsZ2Fhc0Bnb29nbGUuY29tPjsgUm9iIEhlcnJpbmcgPHJvYmgrZHRA
+a2VybmVsLm9yZz47IE1hcmsgUnV0bGFuZA0KPiA8bWFyay5ydXRsYW5kQGFybS5jb20+DQo+IFN1
+YmplY3Q6IFJFOiBbUEFUQ0ggdjYgMDIvMTFdIGFybTY0OiBkZWZjb25maWc6IGVuYWJsZSBDT05G
+SUdfUENJRV9SQ0FSX0hPU1QNCj4NCj4gSGkgR2VlcnQtc2FuLA0KPg0KPiBUaGFuayB5b3UgZm9y
+IHlvdXIgY29tbWVudHMhDQo+DQo+ID4gRnJvbTogR2VlcnQgVXl0dGVyaG9ldmVuLCBTZW50OiBG
+cmlkYXksIEFwcmlsIDMsIDIwMjAgNToyOCBQTQ0KPiA8c25pcD4NCj4gPiA+IEJ1dCwgSSdtIHRo
+aW5raW5nIHRoaXMgcGF0Y2ggKGFuZCBwYXRjaCAwMy8xMSkgc2hvdWxkIGJlIHNlcGFyYXRlZA0K
+PiA+ID4gZnJvbSB0aGlzIHBhdGNoIHNlcmllcyBmb3IgYXJtNjQgc3Vic3lzdGVtIHRvIGVhc2Ug
+bWFpbnRlbmFuY2UuDQo+ID4gPiBNeSBzY2VuYXJpbyBpczoNCj4gPiA+ICAxKSBwYXRjaCBzZXJp
+ZXMgMTogUi1DYXIgUENJZSBlbmRwb2ludCBzdXBwb3J0Lg0KPiA+ID4gIC0tIFRoaXMgbWVhbnM6
+IHBhdGNoIDEsIDQgLSA5LCAxMQ0KPiA+ID4NCj4gPiA+ICAyKSBBZnRlciB0aGUgcGF0Y2ggc2Vy
+aWVzIDEgaXMgbWVyZ2VkLCBzdWJtaXQgdGhpcyBwYXRjaCAyLzExIHRvIGFybSBzdWJzeXN0ZW0N
+Cj4gPiA+ICAgIGFuZCBzdWJtaXQgdGhlIHBhdGNoIDEwLzExIHRvIG1pc2Mgc3Vic3lzdGVtLg0K
+PiA+ID4NCj4gPiA+ICAzKSBBdCBsYXN0LCBzdWJtaXQgcGF0Y2ggMy8xMSBhZnRlciB0aGUgcGF0
+Y2ggMi8xMSBpcyBtZXJnZWQuDQo+ID4gPg0KPiA+ID4gR2VlcnQtc2FuLCB3aGF0IGRvIHlvdSB0
+aGluaz8NCj4gPg0KPiA+IFRoYW5rcywgSSBhZ3JlZSB3aXRoIHlvdXIgc3VtbWFyeS4NCj4gPg0K
+PiA+IEkgY2FuIHRha2UgcGF0Y2ggMi8xMSB0aHJvdWdoIHJlbmVzYXMtZGV2ZWwuDQo+ID4gUHJv
+YmFibHkgaXQncyBiZXN0IGlmIEkgc3VibWl0IGl0IHRvIGFybS1zb2MgYXMgYSBmaXggZm9yIHY1
+LjgsIGFmdGVyDQo+ID4gdGhlIGRyaXZlciBwYXJ0DQo+ID4gaGFzIGJlZW4gbWVyZ2VkIGludG8g
+djUuOC1yYzEsIHNvIDMvMTEgY2FuIGJlIHN1Ym1pdHRlZCBmb3IgdjUuOS4NCj4NCj4gVGhhbmsg
+eW91ISBJIGdvdCBpdC4NCj4NClRoYW5rIHlvdSwgSWxsIHNwbGl0IHRoZSBwYXRjaGVzIGFjY29y
+ZGluZ2x5IGFuZCBwb3N0IGEgdjcuDQoNCj4gPiBCVFcsIEknbSB3b25kZXJpbmcgYWJvdXQgIltQ
+QVRDSCB2NiAwNS8xMV0gUENJOiByY2FyOiBGaXggY2FsY3VsYXRpbmcNCj4gPiBtYXNrIGZvciBQ
+Q0lFUEFNUiByZWdpc3RlciIuIENhbiB0aGUgaXNzdWUgZml4ZWQgYnkgdGhpcyBwYXRjaCBoYXBw
+ZW4gd2l0aA0KPiA+IHRoZSBjdXJyZW50IGRyaXZlciBpbiBob3N0IG1vZGUsIG9yIGlzIHRoYXQg
+bGltaXRlZCB0byBlcCBtb2RlPw0KPiA+IEluIGNhc2Ugb2YgdGhlIGZvcm1lciwgcGxlYXNlIHN1
+Ym1pdCBpdCB0byB0aGUgUENJIG1haW50YWluZXIgYXMgYSBzZXBhcmF0ZQ0KPiA+IGZpeC4NCj4N
+Cj4gVGhhbmsgeW91IGZvciBwb2ludGVkIGl0IG91dC4gSSB0aGluayB0aGlzIGlzIHRoZSBjYXNl
+IG9mIHRoZSBmb3JtZXIuDQo+IElJVUMsIGlmIHN1Y2ggYSBzbWFsbCB3aW5kb3cgUENJZSBkZXZp
+Y2UgZXhpc3RzLCB0aGUgaXNzdWUgaGFwcGVucy4NCj4NCj4gUHJhYmhha2FyLXNhbiwgaXMgbXkg
+dW5kZXJzdGFuZGluZyBjb3JyZWN0Pw0KPg0KVGhpcyBpc3N1ZSB3aWxsIG9ubHkgYmUgaGl0IG9u
+IEVQLCB3aGVuIGluIGhvc3QgbW9kZSB0aGUgc2l6ZXMgd2lsbCBiZSBmaXhlZCB0byAxIE1ieXRl
+cyAvMiBNYnl0ZXMgLzEyOCBNYnl0ZXMNCg0KQ2hlZXJzLA0KLS1QcmFiaGFrYXINCg0KPiBCZXN0
+IHJlZ2FyZHMsDQo+IFlvc2hpaGlybyBTaGltb2RhDQoNCg0KDQpSZW5lc2FzIEVsZWN0cm9uaWNz
+IEV1cm9wZSBHbWJILCBHZXNjaGFlZnRzZnVlaHJlci9QcmVzaWRlbnQ6IENhcnN0ZW4gSmF1Y2gs
+IFNpdHogZGVyIEdlc2VsbHNjaGFmdC9SZWdpc3RlcmVkIG9mZmljZTogRHVlc3NlbGRvcmYsIEFy
+Y2FkaWFzdHJhc3NlIDEwLCA0MDQ3MiBEdWVzc2VsZG9yZiwgR2VybWFueSwgSGFuZGVsc3JlZ2lz
+dGVyL0NvbW1lcmNpYWwgUmVnaXN0ZXI6IER1ZXNzZWxkb3JmLCBIUkIgMzcwOCBVU3QtSUROci4v
+VGF4IGlkZW50aWZpY2F0aW9uIG5vLjogREUgMTE5MzUzNDA2IFdFRUUtUmVnLi1Oci4vV0VFRSBy
+ZWcuIG5vLjogREUgMTQ5Nzg2NDcNCg==
