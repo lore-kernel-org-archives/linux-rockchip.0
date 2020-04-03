@@ -1,108 +1,60 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH 1/3] media: dt-bindings: media: Document Rockchip CIF bindings
-Date: Fri, 03 Apr 2020 18:25:05 +0200
-Message-ID: <1766530.2SdDkCQg1P@phil>
-References: <20200403142122.297283-1-maxime.chevallier@bootlin.com> <20200403142122.297283-2-maxime.chevallier@bootlin.com>
+Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add the camera interface description of the PX30
+Date: Fri, 03 Apr 2020 18:27:27 +0200
+Message-ID: <4068915.k80quj1ed4@phil>
+References: <20200403142122.297283-1-maxime.chevallier@bootlin.com> <20200403142122.297283-4-maxime.chevallier@bootlin.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7Bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200403142122.297283-2-maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+In-Reply-To: <20200403142122.297283-4-maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 Cc: Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Hans Verkuil <hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Maxime,
-
-Am Freitag, 3. April 2020, 16:21:20 CEST schrieb Maxime Chevallier:
-> Add a documentation for the Rockchip Camera Interface controller
-> binding.
-> 
-> This controller can be found on platforms such as the PX30 or the
-> RK3288, the PX30 being the only platform supported so far.
+Am Freitag, 3. April 2020, 16:21:22 CEST schrieb Maxime Chevallier:
+> The PX30 has a camera interface, supporting CSI2, BT656 and Parallel
+> modes. Add a DT description for this interface.
 > 
 > Signed-off-by: Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 > ---
->  .../bindings/media/rockchip-cif.yaml          | 98 +++++++++++++++++++
->  1 file changed, 98 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-cif.yaml
+>  arch/arm64/boot/dts/rockchip/px30.dtsi | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip-cif.yaml b/Documentation/devicetree/bindings/media/rockchip-cif.yaml
-> new file mode 100644
-> index 000000000000..87fb5e136edd
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/rockchip-cif.yaml
-> @@ -0,0 +1,98 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/rockchip-cif.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip Camera Interface (CIF)
-> +
-> +maintainers:
-> +  - Maxime Chevallier <maxime.chevallier-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-> +
-> +description: |-
-> +Camera Interface for Rockcip platforms
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,px30-cif
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: ACLK
-> +      - description: HCLK
-> +      - description: PCLK
-> +      - description: CIF_OUT
-> +
-> +  clock-names:
-> +    items:
-> +      - const: aclk_cif
-> +      - const: hclk_cif
-> +      - const: pclk_cif
-> +      - const: cif_out
+> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> index 3e1f51a66daf..38ed35bc9b7a 100644
+> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> @@ -1058,6 +1058,18 @@ dsi_in_vopl: endpoint@1 {
+>  		};
+>  	};
+>  
+> +	cif: cif@ff490000 {
 
-names for clocks / reset are always local to the node/ip-block
-so there is no need to have that _cif in them.
+nit: please sort by register address, so @ff490000 is definitly
+somewhere after that ff460000 of the vopb ;-)
 
-Also the pclk isn't coming from the cru but from some external source
-at least on px30 and rk3288 (and I guess others as well), so maybe
-that deserves a distinct name.
+> +		compatible = "rockchip,px30-cif";
+> +		reg = <0x0 0xff490000 0x0 0x200>;
+> +		interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru ACLK_CIF>, <&cru HCLK_CIF>, <&cru PCLK_CIF>, <&cru SCLK_CIF_OUT>;
+> +		clock-names = "aclk_cif", "hclk_cif", "pclk_cif", "cif_out";
+> +		resets = <&cru SRST_CIF_A>, <&cru SRST_CIF_H>, <&cru SRST_CIF_PCLKIN>;
+> +		reset-names = "rst_cif_a", "rst_cif_h", "rst_cif_pclkin";
+> +		power-domains = <&power PX30_PD_VI>;
 
-Maybe something like aclk, hclk, pclkin or so?
-
-Also the cif_out clock is not actual part of the CIF block, on both
-the rk3288 and px30 (and probably the others too) it is generated
-in the SoC's clock controller and then just led to an output-pin on
-the soc, so I'd assume a peripheral wanting to use that would take
-care of setting+enabling that clock (similar to the i2s mclk)?
+nit: while doing the above, ideally just move the power-domains above resets
+everthing else is sorted nicely.
 
 
-> +
-> +  resets:
-> +    items:
-> +      - description: Reset CIF A
-> +      - description: Reset CIF H
-> +      - description: Reset CIF PCLK IN
-> +
-> +  reset-names:
-> +    items:
-> +      - const: rst_cif_a
-> +      - const: rst_cif_h
-> +      - const: rst_cif_pclkin
-
-Same here, maybe just "axi", "ahb", "pclkin" like the
-vop resets do?
-
-
+Thanks
 Heiko
+
+> +		status = "disabled";
+> +	};
+> +
+>  	vopb: vop@ff460000 {
+>  		compatible = "rockchip,px30-vop-big";
+>  		reg = <0x0 0xff460000 0x0 0xefc>;
+> 
