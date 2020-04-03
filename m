@@ -1,41 +1,67 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: [PATCH v2 7/9] media: MAINTAINERS: rkisp1: add path to dt-bindings
-Date: Fri,  3 Apr 2020 13:15:36 -0300
-Message-ID: <20200403161538.1375908-8-helen.koike@collabora.com>
+Subject: [PATCH v2 8/9] arm64: dts: rockchip: add rx0 mipi-phy for rk3399
+Date: Fri,  3 Apr 2020 13:15:37 -0300
+Message-ID: <20200403161538.1375908-9-helen.koike@collabora.com>
 References: <20200403161538.1375908-1-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <20200403161538.1375908-1-helen.koike@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Sender: linux-media-owner@vger.kernel.org
 To: devicetree@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
 Cc: linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, robh+dt@kernel.org, heiko@sntech.de, hverkuil-cisco@xs4all.nl, kernel@collabora.com, dafna.hirschfeld@collabora.com, ezequiel@collabora.com, mark.rutland@arm.com, karthik.poduval@gmail.com, jbx6244@gmail.com, kishon@ti.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The Rockchip ISP bindings was moved out of staging.
-Update MAINTAINERS file with the new path.
+From: Shunqian Zheng <zhengsq@rock-chips.com>
 
-Suggested-by: Johan Jonker <jbx6244@gmail.com>
+Designware MIPI D-PHY, used for ISP0 in rk3399.
+
+Verified with:
+make ARCH=arm64 dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
+
+Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
 Signed-off-by: Helen Koike <helen.koike@collabora.com>
+
 ---
 
-V2:
-- This is a new patch in the series
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+Changes in v2:
+- fix alignment of clocks
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d66ac41ef5872..726044b84cf23 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -14303,6 +14303,7 @@ M:	Helen Koike <helen.koike@collabora.com>
- L:	linux-media@vger.kernel.org
- S:	Maintained
- F:	drivers/staging/media/rkisp1/
-+F:	Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+V1:
+This patchset came from the original ISP series from Rockchip:
+
+    https://patchwork.kernel.org/patch/10267409/
+
+The only difference is:
+- add phy-cells
+- update compatible to "rockchip,rk3399-mipi-dphy-rx0"
+- commit message
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 33cc21fcf4c10..6b3380b10e596 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1394,6 +1394,17 @@ io_domains: io-domains {
+ 			status = "disabled";
+ 		};
  
- ROCKCHIP RASTER 2D GRAPHIC ACCELERATION UNIT DRIVER
- M:	Jacob Chen <jacob-chen@iotwrt.com>
++		mipi_dphy_rx0: mipi-dphy-rx0 {
++			compatible = "rockchip,rk3399-mipi-dphy-rx0";
++			clocks = <&cru SCLK_MIPIDPHY_REF>,
++				 <&cru SCLK_DPHY_RX0_CFG>,
++				 <&cru PCLK_VIO_GRF>;
++			clock-names = "dphy-ref", "dphy-cfg", "grf";
++			power-domains = <&power RK3399_PD_VIO>;
++			#phy-cells = <0>;
++			status = "disabled";
++		};
++
+ 		u2phy0: usb2-phy@e450 {
+ 			compatible = "rockchip,rk3399-usb2phy";
+ 			reg = <0xe450 0x10>;
 -- 
 2.26.0
