@@ -1,319 +1,171 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v2 2/2] media: staging: rkisp1: cap: remove field fmt_type
- from struct rkisp1_capture_fmt_cfg
-Date: Fri, 3 Apr 2020 09:24:31 -0300
-Message-ID: <ffd48fa3-0c60-57cf-8ce0-6927b498cb66@collabora.com>
-References: <20200403092738.29831-1-dafna.hirschfeld@collabora.com>
- <20200403092738.29831-3-dafna.hirschfeld@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200403092738.29831-3-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, laurent.pinchart@ideasonboard.com, linux-rockchip@lists.infradead.org, sakari.ailus@linux.intel.com
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v1] dt-bindings: media: convert rockchip vpu bindings to yaml
+Date: Fri,  3 Apr 2020 14:43:16 +0200
+Message-ID: <20200403124316.5445-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+Cc: mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Current dts files for Rockchip with 'vpu' nodes
+are manually verified. In order to automate this process
+rockchip-vpu.txt has to be converted to yaml.
 
+Changed:
+  Add missing reg property
 
-On 4/3/20 6:27 AM, Dafna Hirschfeld wrote:
-> The pixel encoding can be retrieved from the cap->pix.info.
-> Therefore the field fmt_type can be removed from the
-> struct rkisp1_capture_fmt_cfg.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ .../devicetree/bindings/media/rockchip-vpu.txt     | 43 -------------
+ .../devicetree/bindings/media/rockchip-vpu.yaml    | 75 ++++++++++++++++++++++
+ MAINTAINERS                                        |  2 +-
+ 3 files changed, 76 insertions(+), 44 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.txt
+ create mode 100644 Documentation/devicetree/bindings/media/rockchip-vpu.yaml
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
-
-> ---
->  drivers/staging/media/rkisp1/rkisp1-capture.c | 51 +------------------
->  1 file changed, 2 insertions(+), 49 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> index 8e8ea7ed8de3..0bef5faf068e 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> @@ -52,7 +52,6 @@ enum rkisp1_plane {
->   */
->  struct rkisp1_capture_fmt_cfg {
->  	u32 fourcc;
-> -	u8 fmt_type;
->  	u8 uv_swap;
->  	u32 write_format;
->  	u32 output_format;
-> @@ -87,133 +86,106 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
->  	/* yuv422 */
->  	{
->  		.fourcc = V4L2_PIX_FMT_YUYV,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YVYU,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_VYUY,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV422P,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV16,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV61,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YVU422M,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
->  	},
->  	/* yuv420 */
->  	{
->  		.fourcc = V4L2_PIX_FMT_NV21,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV12,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV21M,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV12M,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV420,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YVU420,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
->  	},
->  	/* yuv444 */
->  	{
->  		.fourcc = V4L2_PIX_FMT_YUV444M,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
->  	},
->  	/* yuv400 */
->  	{
->  		.fourcc = V4L2_PIX_FMT_GREY,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
->  	},
->  	/* raw */
->  	{
->  		.fourcc = V4L2_PIX_FMT_SRGGB8,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGRBG8,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGBRG8,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SBGGR8,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SRGGB10,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGRBG10,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGBRG10,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SBGGR10,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SRGGB12,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGRBG12,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGBRG12,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SBGGR12,
-> -		.fmt_type = V4L2_PIXEL_ENC_BAYER,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
->  	},
->  };
-> @@ -222,43 +194,36 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  	/* yuv422 */
->  	{
->  		.fourcc = V4L2_PIX_FMT_YUYV,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YVYU,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_VYUY,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV422P,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV16,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV61,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YVU422M,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> @@ -266,37 +231,31 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  	/* yuv420 */
->  	{
->  		.fourcc = V4L2_PIX_FMT_NV21,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV12,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV21M,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV12M,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV420,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YVU420,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-> @@ -304,7 +263,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  	/* yuv444 */
->  	{
->  		.fourcc = V4L2_PIX_FMT_YUV444M,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV444,
-> @@ -312,7 +270,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  	/* yuv400 */
->  	{
->  		.fourcc = V4L2_PIX_FMT_GREY,
-> -		.fmt_type = V4L2_PIXEL_ENC_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
-> @@ -320,17 +277,14 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  	/* rgb */
->  	{
->  		.fourcc = V4L2_PIX_FMT_RGB24,
-> -		.fmt_type = V4L2_PIXEL_ENC_RGB,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_RGB565,
-> -		.fmt_type = V4L2_PIXEL_ENC_RGB,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB565,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_BGR666,
-> -		.fmt_type = V4L2_PIXEL_ENC_RGB,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB666,
->  	},
-> @@ -504,13 +458,12 @@ static void rkisp1_sp_disable(struct rkisp1_capture *cap)
->  
->  static void rkisp1_mp_enable(struct rkisp1_capture *cap)
->  {
-> -	const struct rkisp1_capture_fmt_cfg *isp_fmt = cap->pix.cfg;
->  	u32 mi_ctrl;
->  
->  	rkisp1_mp_disable(cap);
->  
->  	mi_ctrl = rkisp1_read(cap->rkisp1, RKISP1_CIF_MI_CTRL);
-> -	if (isp_fmt->fmt_type == V4L2_PIXEL_ENC_BAYER)
-> +	if (v4l2_is_format_bayer(cap->pix.info))
->  		mi_ctrl |= RKISP1_CIF_MI_CTRL_RAW_ENABLE;
->  	/* YUV */
->  	else
-> @@ -1265,7 +1218,7 @@ static int rkisp1_capture_link_validate(struct media_link *link)
->  		return -EPIPE;
->  	}
->  
-> -	if (cap->pix.cfg->fmt_type != isp->src_fmt->fmt_type) {
-> +	if (cap->pix.info->pixel_enc != isp->src_fmt->fmt_type) {
->  		dev_err(cap->rkisp1->dev,
->  			"format type mismatch in link '%s:%d->%s:%d'\n",
->  			link->source->entity->name, link->source->index,
-> 
+diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.txt b/Documentation/devicetree/bindings/media/rockchip-vpu.txt
+deleted file mode 100644
+index 339252d9c..000000000
+--- a/Documentation/devicetree/bindings/media/rockchip-vpu.txt
++++ /dev/null
+@@ -1,43 +0,0 @@
+-device-tree bindings for rockchip VPU codec
+-
+-Rockchip (Video Processing Unit) present in various Rockchip platforms,
+-such as RK3288, RK3328 and RK3399.
+-
+-Required properties:
+-- compatible: value should be one of the following
+-		"rockchip,rk3288-vpu";
+-		"rockchip,rk3328-vpu";
+-		"rockchip,rk3399-vpu";
+-- interrupts: encoding and decoding interrupt specifiers
+-- interrupt-names: should be
+-		"vepu", "vdpu" on RK3288 and RK3399,
+-		"vdpu" on RK3328.
+-- clocks: phandle to VPU aclk, hclk clocks
+-- clock-names: should be "aclk" and "hclk"
+-- power-domains: phandle to power domain node
+-- iommus: phandle to a iommu node
+-
+-Example:
+-SoC-specific DT entry:
+-	vpu: video-codec@ff9a0000 {
+-		compatible = "rockchip,rk3288-vpu";
+-		reg = <0x0 0xff9a0000 0x0 0x800>;
+-		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
+-			     <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+-		interrupt-names = "vepu", "vdpu";
+-		clocks = <&cru ACLK_VCODEC>, <&cru HCLK_VCODEC>;
+-		clock-names = "aclk", "hclk";
+-		power-domains = <&power RK3288_PD_VIDEO>;
+-		iommus = <&vpu_mmu>;
+-	};
+-
+-	vpu: video-codec@ff350000 {
+-		compatible = "rockchip,rk3328-vpu";
+-		reg = <0x0 0xff350000 0x0 0x800>;
+-		interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
+-		interrupt-names = "vdpu";
+-		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
+-		clock-names = "aclk", "hclk";
+-		power-domains = <&power RK3328_PD_VPU>;
+-		iommus = <&vpu_mmu>;
+-	};
+diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+new file mode 100644
+index 000000000..c64c33923
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+@@ -0,0 +1,75 @@
++# SPDX-License-Identifier: GPL-2.0
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/rockchip-vpu.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip video processing unit (VPU) codec
++
++maintainers:
++  - Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3288-vpu
++      - rockchip,rk3328-vpu
++      - rockchip,rk3399-vpu
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    minItems: 1
++    maxItems: 2
++
++  interrupt-names:
++    oneOf:
++      - const: vdpu
++      - items:
++        - const: vepu
++        - const: vdpu
++
++  clocks:
++    maxItems: 2
++
++  clock-names:
++    items:
++      - const: aclk
++      - const: hclk
++
++  iommus:
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - interrupt-names
++  - clocks
++  - clock-names
++  - iommus
++  - power-domains
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3288-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/power/rk3288-power.h>
++    vpu: video-codec@ff9a0000 {
++      compatible = "rockchip,rk3288-vpu";
++      reg = <0x0 0xff9a0000 0x0 0x800>;
++      interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
++                   <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
++      interrupt-names = "vepu", "vdpu";
++      clocks = <&cru ACLK_VCODEC>,
++               <&cru HCLK_VCODEC>;
++      clock-names = "aclk", "hclk";
++      iommus = <&vpu_mmu>;
++      power-domains = <&power RK3288_PD_VIDEO>;
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index a480cec62..ce80b22cf 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -14374,7 +14374,7 @@ M:	Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+ L:	linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+ S:	Maintained
+ F:	drivers/staging/media/hantro/
+-F:	Documentation/devicetree/bindings/media/rockchip-vpu.txt
++F:	Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+ 
+ ROCKER DRIVER
+ M:	Jiri Pirko <jiri-rHqAuBHg3fBzbRFIqnYvSA@public.gmane.org>
+-- 
+2.11.0
