@@ -1,110 +1,65 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v8 3/5] media: dt-bindings: rockchip: Document RK3399 Video Decoder bindings
-Date: Fri,  3 Apr 2020 19:13:43 -0300
-Message-ID: <20200403221345.16702-4-ezequiel@collabora.com>
+Subject: [PATCH v8 5/5] arm64: dts: rockchip: rk3399: Define the rockchip Video Decoder node
+Date: Fri,  3 Apr 2020 19:13:45 -0300
+Message-ID: <20200403221345.16702-6-ezequiel@collabora.com>
 References: <20200403221345.16702-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <20200403221345.16702-1-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Sender: linux-media-owner@vger.kernel.org
 To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Rob Herring <robh@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Boris Brezillon <boris.brezillon@collabora.com>
 
-Document the Rockchip RK3399 Video Decoder bindings.
+RK3399 has a Video decoder, define the node in the dtsi. We also add
+the missing power-domain in mmu node and enable the block.
 
 Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
----
+--
 v8:
 * None.
+v7:
+* As noted by Johan Jonker, fix node order.
 ---
- .../bindings/media/rockchip,vdec.yaml         | 73 +++++++++++++++++++
- 1 file changed, 73 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-new file mode 100644
-index 000000000000..0c68cdad9a31
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-@@ -0,0 +1,73 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/rockchip,vdec.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 33cc21fcf4c1..dfb737e8ff31 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1278,6 +1278,18 @@ vpu_mmu: iommu@ff650800 {
+ 		power-domains = <&power RK3399_PD_VCODEC>;
+ 	};
+ 
++	vdec: video-codec@ff660000 {
++		compatible = "rockchip,rk3399-vdec";
++		reg = <0x0 0xff660000 0x0 0x400>;
++		interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "vdpu";
++		clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>,
++			 <&cru SCLK_VDU_CA>, <&cru SCLK_VDU_CORE>;
++		clock-names = "axi", "ahb", "cabac", "core";
++		power-domains = <&power RK3399_PD_VDU>;
++		iommus = <&vdec_mmu>;
++	};
 +
-+title: Rockchip Video Decoder (VDec) Device Tree Bindings
-+
-+maintainers:
-+  - Heiko Stuebner <heiko@sntech.de>
-+
-+description: |-
-+  The Rockchip rk3399 has a stateless Video Decoder that can decodes H.264,
-+  HEVC an VP9 streams.
-+
-+properties:
-+  compatible:
-+    const: rockchip,rk3399-vdec
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: The Video Decoder AXI interface clock
-+      - description: The Video Decoder AHB interface clock
-+      - description: The Video Decoded CABAC clock
-+      - description: The Video Decoder core clock
-+
-+  clock-names:
-+    items:
-+      - const: axi
-+      - const: ahb
-+      - const: cabac
-+      - const: core
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  iommus:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - power-domains
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/rk3399-cru.h>
-+    #include <dt-bindings/power/rk3399-power.h>
-+
-+    vdec: video-codec@ff660000 {
-+        compatible = "rockchip,rk3399-vdec";
-+        reg = <0x0 0xff660000 0x0 0x400>;
-+        interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH 0>;
-+        clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>,
-+                 <&cru SCLK_VDU_CA>, <&cru SCLK_VDU_CORE>;
-+        clock-names = "axi", "ahb", "cabac", "core";
-+        power-domains = <&power RK3399_PD_VDU>;
-+        iommus = <&vdec_mmu>;
-+    };
-+
-+...
+ 	vdec_mmu: iommu@ff660480 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff660480 0x0 0x40>, <0x0 0xff6604c0 0x0 0x40>;
+@@ -1285,8 +1297,8 @@ vdec_mmu: iommu@ff660480 {
+ 		interrupt-names = "vdec_mmu";
+ 		clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>;
+ 		clock-names = "aclk", "iface";
++		power-domains = <&power RK3399_PD_VDU>;
+ 		#iommu-cells = <0>;
+-		status = "disabled";
+ 	};
+ 
+ 	iep_mmu: iommu@ff670800 {
 -- 
 2.26.0.rc2
