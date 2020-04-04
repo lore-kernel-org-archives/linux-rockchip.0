@@ -1,75 +1,41 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [PATCH 2/3] media: staging: rkisp1: rsz: change (hv)div only if
- capture format is YUV
-Date: Sat, 4 Apr 2020 14:09:20 +0200
-Message-ID: <711657f5-005b-fafd-6063-f8c8b61905e7@collabora.com>
-References: <20200328105606.13660-1-dafna.hirschfeld@collabora.com>
- <20200328105606.13660-3-dafna.hirschfeld@collabora.com>
- <7445ddcb-75f5-7792-0807-47c0b0d0d54a@collabora.com>
+From: Jonathan Cameron <jic23@kernel.org>
+Subject: Re: [PATCH v1 1/3] dt-bindings: iio: adc: convert rockchip saradc
+ bindings to yaml
+Date: Sat, 4 Apr 2020 15:01:41 +0100
+Message-ID: <20200404150141.5a3dce00@archlinux>
+References: <20200313132926.10543-1-jbx6244@gmail.com>
+        <20200330181052.GA7527@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <7445ddcb-75f5-7792-0807-47c0b0d0d54a@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200330181052.GA7527@bogus>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Rob Herring <robh@kernel.org>
+Cc: Johan Jonker <jbx6244@gmail.com>, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, heiko@sntech.de, robh+dt@kernel.org, linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+On Mon, 30 Mar 2020 12:10:52 -0600
+Rob Herring <robh@kernel.org> wrote:
 
-
-On 30.03.20 22:04, Helen Koike wrote:
+> On Fri, 13 Mar 2020 14:29:24 +0100, Johan Jonker wrote:
+> > Current dts files with 'saradc' nodes are manually verified.
+> > In order to automate this process rockchip-saradc.txt
+> > has to be converted to yaml.
+> > 
+> > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> > ---
+> >  .../bindings/iio/adc/rockchip-saradc.txt           | 37 ----------
+> >  .../bindings/iio/adc/rockchip-saradc.yaml          | 79 ++++++++++++++++++++++
+> >  2 files changed, 79 insertions(+), 37 deletions(-)
+> >  delete mode 100644 Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+> >  create mode 100644 Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+> >   
 > 
-> 
-> On 3/28/20 7:56 AM, Dafna Hirschfeld wrote:
->> RGB formats in selfpath should receive input format as YUV422.
->> The resizer input format is always YUV422 and therefore
->> if the capture format is RGB, the resizer should not change
->> the YUV rations.
->>
->> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
->> ---
->>   drivers/staging/media/rkisp1/rkisp1-resizer.c | 14 ++++++++++++--
->>   1 file changed, 12 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
->> index 8704267a066f..5721eee29ecb 100644
->> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
->> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
->> @@ -389,8 +389,18 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
->>   			&rsz->rkisp1->capture_devs[rsz->id];
->>   		const struct v4l2_format_info *pixfmt_info = cap->pix.info;
->>   
->> -		hdiv = pixfmt_info->hdiv;
->> -		vdiv = pixfmt_info->vdiv;
->> +		/*
->> +		 * The resizer always get the input as YUV422
->> +		 * If the capture encoding is also YUV, then the resizer should
->> +		 * change the 4:2:2 sampling to the sampling of the capture
->> +		 * format (4:2:2 -> 4:2:0 for example).
->> +		 * If the capture format is RGB then the memory input should
->> +		 * be YUV422 so we don't change the default hdiv, vdiv
->> +		 */
->> +		if (v4l2_is_format_yuv(pixfmt_info)) {
-> 
-> Can't this be moved with && in the outer if statement block?
-
-Actually the outer statement is not needed at all and can be removed
-since the code return if rsz->fmt_type is RKISP1_FMT_BAYER but
-the resizer format is either bayer or yuv so there is no
-need for the "if (rsz->fmt_type == RKISP1_FMT_YUV)"
+> Reviewed-by: Rob Herring <robh@kernel.org>
+Applied to the togreg branch of iio.git and pushed out as testing to be largely
+ignored by the autobuilders.
 
 Thanks,
-Dafna
 
-> 
-> Regards,
-> Helen
-> 
->> +			hdiv = pixfmt_info->hdiv;
->> +			vdiv = pixfmt_info->vdiv;
->> +		}
->>   	}
->>   	src_c.width = src_y.width / hdiv;
->>   	src_c.height = src_y.height / vdiv;
->>
+Jonathan
