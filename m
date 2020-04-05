@@ -1,155 +1,793 @@
-From: Oleksandr Suvorov <oleksandr.suvorov-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>
-Subject: [RFC PATCH v2 0/6] Add PWM_NOFLAGS property flag
-Date: Sun,  5 Apr 2020 22:22:40 +0300
-Message-ID: <20200405192246.3741784-1-oleksandr.suvorov@toradex.com>
+From: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+Subject: [RFC PATCH v2 4/6] arm64: dts: pwm: replace flag 0 with PWM_NOFLAGS
+Date: Sun,  5 Apr 2020 22:22:44 +0300
+Message-ID: <20200405192246.3741784-5-oleksandr.suvorov@toradex.com>
+References: <20200405192246.3741784-1-oleksandr.suvorov@toradex.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Alexandre Belloni <alexandre.belloni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Alexis Ballier <aballier-aBrp7R+bbdUdnm+yROfE0A@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, Marcel Ziswiler <marcel.ziswiler-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Sekhar Nori <nsekhar-l0cyMroinI0@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Stefan Agner <stefan-XLVq0VzYD2Y@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Oleksandr Suvorov <oleksandr.suvorov-2KBjVHiyJgBBDgjK7y7TUQ@public.gmane.org>, Soeren Moch <smoch-S0/GAf8tV78@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Magnus Damm <magnus.damm-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ludovic Desroches <ludovic.desroches@microchip.>
+Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+In-Reply-To: <20200405192246.3741784-1-oleksandr.suvorov@toradex.com>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: devicetree@vger.kernel.org
+Cc: Paul Barker <pbarker@konsulko.com>, Marcel Ziswiler <marcel.ziswiler@toradex.com>, Igor Opaniuk <igor.opaniuk@toradex.com>, Philippe Schenker <philippe.schenker@toradex.com>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Oleksandr Suvorov <oleksandr.suvorov@toradex.com>, =?UTF-8?q?Andrius=20=C5=A0tikonas?= <andrius@stikonas.eu>, Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@csie.org>, Daniel Lezcano <daniel.lezcano@linaro.org>, Enric Balletbo i Serra <enric.balletbo@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Hugh Cole-Baker <sigmaris@gmail.com>, Jagan Teki <jagan@amarulasolutions.com>, Johan Jonker <jbx6244@gmail.com>, Katsuhiro Suzuki <katsuhiro@katsuster.>
 List-Id: linux-rockchip.vger.kernel.org
 
+The raw value '0' in the 3rd cell of the "pwms" property means there are
+no flags to be set.
 
-This patchset introduces the PWM_NOFLAGS flag instead of '0' raw value
-in the optional cell "flags" of "pwms" property, if it is required to be
-used but don't need to set any flag.
+This patch converts '0' flag into PWM_NOFLAGS.
 
-Also, replace '1' raw value of "flags" cell with the existing macro
-PWM_POLARITY_INVERTED where it has not been done before.
+Signed-off-by: Oleksandr Suvorov <oleksandr.suvorov@toradex.com>
+---
 
 Changes in v2:
-- remove the driver part of patchset as dangerous and senseless.
 - Use PWM_NOFLAGS instead of PWM_POLARITY_NORMAL to avoid possible
   conflict with enum pwm_polarity in <linux/pwm.h>. Also, this name
   reflects the sense of this value more precisely.
-- add the example of PWM_NOFLAGS usage;
 
-Oleksandr Suvorov (6):
-  dt-bindings: pwm: add PWM_NOFLAGS definition
-  dt-bindings: pwm: document the PWM no-flag
-  arm64: dts: pwm: replace flag 1 with PWM_POLARITY_INVERTED
-  arm64: dts: pwm: replace flag 0 with PWM_NOFLAGS
-  arm: dts: pwm: replace flag 1 with PWM_POLARITY_INVERTED
-  arm: dts: pwm: replace flag 0 with PWM_NOFLAGS
+ arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts      | 2 +-
+ arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts       | 2 +-
+ arch/arm64/boot/dts/amlogic/meson-axg-s400.dts             | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-axg.dtsi                 | 1 +
+ arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi          | 1 +
+ arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts          | 5 +++--
+ arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts            | 2 +-
+ arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts         | 5 +++--
+ arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi    | 4 ++--
+ arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts       | 4 ++--
+ arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts       | 7 ++++---
+ arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi        | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gx.dtsi                  | 1 +
+ arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts       | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts     | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi           | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi       | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi          | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts       | 3 ++-
+ .../boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts    | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts | 2 +-
+ .../arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi      | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts      | 5 +++--
+ arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts         | 3 ++-
+ arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi         | 4 +++-
+ arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts     | 2 +-
+ arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts           | 7 ++++---
+ arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi      | 3 ++-
+ arch/arm64/boot/dts/rockchip/px30-evb.dts                  | 2 +-
+ arch/arm64/boot/dts/rockchip/px30.dtsi                     | 1 +
+ arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts             | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi                   | 1 +
+ arch/arm64/boot/dts/rockchip/rk3399-evb.dts                | 4 ++--
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts            | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi    | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi       | 4 ++--
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi               | 6 +++---
+ arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi       | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts          | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi            | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi         | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts | 2 +-
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi                   | 1 +
+ 44 files changed, 77 insertions(+), 51 deletions(-)
 
- Documentation/devicetree/bindings/pwm/pwm.txt         | 11 ++++++++++-
- arch/arm/boot/dts/am335x-cm-t335.dts                  |  2 +-
- arch/arm/boot/dts/am335x-evm.dts                      |  2 +-
- arch/arm/boot/dts/am3517-evm.dts                      |  2 +-
- arch/arm/boot/dts/at91-dvk_su60_somc_lcm.dtsi         |  2 +-
- arch/arm/boot/dts/at91-kizbox2-common.dtsi            |  6 +++---
- arch/arm/boot/dts/at91-kizbox3_common.dtsi            |  8 ++++----
- arch/arm/boot/dts/at91-kizboxmini-common.dtsi         |  6 +++---
- arch/arm/boot/dts/at91-nattis-2-natte-2.dts           |  2 +-
- arch/arm/boot/dts/at91-sama5d4_ma5d4evk.dts           |  2 +-
- arch/arm/boot/dts/at91sam9n12ek.dts                   |  2 +-
- arch/arm/boot/dts/at91sam9x5dm.dtsi                   |  2 +-
- arch/arm/boot/dts/berlin2cd-google-chromecast.dts     |  4 ++--
- arch/arm/boot/dts/da850-evm.dts                       |  2 +-
- arch/arm/boot/dts/da850-lego-ev3.dts                  |  4 ++--
- arch/arm/boot/dts/exynos4412-midas.dtsi               |  2 +-
- arch/arm/boot/dts/exynos4412-odroidu3.dts             |  2 +-
- arch/arm/boot/dts/exynos5250-snow-common.dtsi         |  2 +-
- arch/arm/boot/dts/exynos5410-odroidxu.dts             |  2 +-
- arch/arm/boot/dts/exynos5420-peach-pit.dts            |  2 +-
- arch/arm/boot/dts/exynos5422-odroidhc1.dts            |  2 +-
- arch/arm/boot/dts/exynos5422-odroidxu3-common.dtsi    |  2 +-
- arch/arm/boot/dts/exynos5422-odroidxu4.dts            |  2 +-
- arch/arm/boot/dts/exynos54xx-odroidxu-leds.dtsi       |  4 ++--
- arch/arm/boot/dts/exynos5800-peach-pi.dts             |  2 +-
- arch/arm/boot/dts/imx53-tx53-x13x.dts                 |  5 +++--
- arch/arm/boot/dts/imx6dl-tx6dl-comtft.dts             |  2 +-
- arch/arm/boot/dts/imx6q-display5.dtsi                 |  2 +-
- arch/arm/boot/dts/imx6q-tx6q-1010-comtft.dts          |  2 +-
- arch/arm/boot/dts/imx6q-tx6q-1020-comtft.dts          |  2 +-
- arch/arm/boot/dts/imx6qdl-tx6-lvds.dtsi               |  4 ++--
- arch/arm/boot/dts/imx6ull-colibri-eval-v3.dtsi        |  4 +++-
- arch/arm/boot/dts/imx7-colibri.dtsi                   |  4 +++-
- arch/arm/boot/dts/imx7d-nitrogen7.dts                 |  3 ++-
- arch/arm/boot/dts/imx7d-pico.dtsi                     |  3 ++-
- arch/arm/boot/dts/imx7d-sdb.dts                       |  3 ++-
- arch/arm/boot/dts/imx7ulp-evk.dts                     |  3 ++-
- arch/arm/boot/dts/iwg20d-q7-common.dtsi               |  2 +-
- arch/arm/boot/dts/logicpd-torpedo-baseboard.dtsi      |  2 +-
- arch/arm/boot/dts/meson8b-ec100.dts                   |  4 ++--
- arch/arm/boot/dts/meson8b-mxq.dts                     |  4 ++--
- arch/arm/boot/dts/meson8b-odroidc1.dts                |  4 ++--
- arch/arm/boot/dts/motorola-mapphone-common.dtsi       |  3 ++-
- arch/arm/boot/dts/omap3-gta04.dtsi                    |  2 +-
- arch/arm/boot/dts/omap3-n900.dts                      |  2 +-
- arch/arm/boot/dts/rk3229-evb.dts                      |  4 ++--
- arch/arm/boot/dts/rk3229-xms6.dts                     |  4 ++--
- arch/arm/boot/dts/rk3288-veyron-edp.dtsi              |  2 +-
- arch/arm/boot/dts/rk3288-veyron.dtsi                  |  2 +-
- arch/arm/boot/dts/rv1108-evb.dts                      |  2 +-
- arch/arm/boot/dts/s3c6410-mini6410.dts                |  2 +-
- arch/arm/boot/dts/s5pv210-aries.dtsi                  |  2 +-
- arch/arm/boot/dts/s5pv210-smdkv210.dts                |  2 +-
- arch/arm/boot/dts/sun5i-gr8-evb.dts                   |  2 +-
- arch/arm/boot/dts/vf-colibri.dtsi                     |  4 +++-
- arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts |  2 +-
- arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts  |  2 +-
- arch/arm64/boot/dts/amlogic/meson-axg-s400.dts        |  3 ++-
- arch/arm64/boot/dts/amlogic/meson-axg.dtsi            |  1 +
- arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi     |  1 +
- arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts     |  5 +++--
- arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts       |  2 +-
- arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts    |  5 +++--
- .../boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi      |  4 ++--
- arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts  |  4 ++--
- arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts  |  7 ++++---
- arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi   |  3 ++-
- arch/arm64/boot/dts/amlogic/meson-gx.dtsi             |  1 +
- arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts  |  3 ++-
- .../arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts |  3 ++-
- arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi      |  3 ++-
- arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi  |  3 ++-
- arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi     |  3 ++-
- arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts  |  3 ++-
- .../dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts    |  3 ++-
- .../boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts   |  2 +-
- .../boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts  |  3 ++-
- arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi |  3 ++-
- arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts |  5 +++--
- arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts    |  3 ++-
- arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi    |  4 +++-
- .../arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts |  2 +-
- arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts      |  7 ++++---
- arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi |  3 ++-
- arch/arm64/boot/dts/rockchip/px30-evb.dts             |  2 +-
- arch/arm64/boot/dts/rockchip/px30.dtsi                |  1 +
- arch/arm64/boot/dts/rockchip/rk3308-evb.dts           |  2 +-
- arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts        |  4 ++--
- arch/arm64/boot/dts/rockchip/rk3308.dtsi              |  1 +
- arch/arm64/boot/dts/rockchip/rk3399-evb.dts           |  4 ++--
- arch/arm64/boot/dts/rockchip/rk3399-firefly.dts       |  4 ++--
- .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi      |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi  |  4 ++--
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi          |  6 +++---
- arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts    |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi  |  4 ++--
- arch/arm64/boot/dts/rockchip/rk3399-leez-p710.dts     |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts     |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-orangepi.dts      |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts  |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi       |  4 ++--
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dts     |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi    |  4 ++--
- .../boot/dts/rockchip/rk3399-sapphire-excavator.dts   |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399-sapphire.dtsi     |  2 +-
- arch/arm64/boot/dts/rockchip/rk3399.dtsi              |  1 +
- include/dt-bindings/pwm/pwm.h                         |  1 +
- 107 files changed, 183 insertions(+), 135 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts
+index 64b1c54f87c0..3aa0cc70eb9a 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-pinebook.dts
+@@ -23,7 +23,7 @@ aliases {
+ 
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+-		pwms = <&pwm 0 50000 0>;
++		pwms = <&pwm 0 50000 PWM_NOFLAGS>;
+ 		brightness-levels = <0 5 10 15 20 30 40 55 70 85 100>;
+ 		default-brightness-level = <2>;
+ 		enable-gpios = <&pio 3 23 GPIO_ACTIVE_HIGH>; /* PD23 */
+diff --git a/arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts b/arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts
+index f5df5f705b72..0c493c662e19 100644
+--- a/arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts
++++ b/arch/arm64/boot/dts/allwinner/sun50i-a64-teres-i.dts
+@@ -21,7 +21,7 @@ aliases {
+ 
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+-		pwms = <&pwm 0 50000 0>;
++		pwms = <&pwm 0 50000 PWM_NOFLAGS>;
+ 		power-supply = <&reg_dcdc1>;
+ 		brightness-levels = <0 5 7 10 14 20 28 40 56 80 112>;
+ 		default-brightness-level = <5>;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-axg-s400.dts b/arch/arm64/boot/dts/amlogic/meson-axg-s400.dts
+index cb1360ae1211..6cdac1daf580 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-axg-s400.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-axg-s400.dts
+@@ -356,7 +356,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ab 0 30518 0>; /* PWM_A at 32.768KHz */
++		/* PWM_A at 32.768KHz */
++		pwms = <&pwm_ab 0 30518 PWM_NOFLAGS>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-axg.dtsi b/arch/arm64/boot/dts/amlogic/meson-axg.dtsi
+index aace3d32a3df..e536436f6306 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-axg.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-axg.dtsi
+@@ -10,6 +10,7 @@
+ #include <dt-bindings/gpio/meson-axg-gpio.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/reset/amlogic,meson-axg-audio-arb.h>
+ #include <dt-bindings/reset/amlogic,meson-axg-reset.h>
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi b/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi
+index 0882ea215b88..45b96bca4398 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-g12-common.dtsi
+@@ -9,6 +9,7 @@
+ #include <dt-bindings/clock/g12a-aoclkc.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/reset/amlogic,meson-g12a-reset.h>
+ #include <dt-bindings/thermal/thermal.h>
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts b/arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts
+index b00d0468c753..7d85d4066397 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12a-sei510.dts
+@@ -141,7 +141,7 @@ vddcpu: regulator-vddcpu {
+ 
+ 		vin-supply = <&dc_in>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -176,7 +176,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sound {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts b/arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts
+index a26bfe72550f..22f642664665 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12a-u200.dts
+@@ -141,7 +141,7 @@ vddcpu: regulator-vddcpu {
+ 
+ 		vin-supply = <&main_12v>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts b/arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts
+index 1b07c8c06eac..4857fee0b48e 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12a-x96-max.dts
+@@ -141,7 +141,7 @@ vddcpu: regulator-vddcpu {
+ 
+ 		vin-supply = <&dc_in>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -232,7 +232,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi b/arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi
+index c33e85fbdaba..3250d3e12d46 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-khadas-vim3.dtsi
+@@ -22,7 +22,7 @@ vddcpu_a: regulator-vddcpu-a {
+ 
+ 		vin-supply = <&dc_in>;
+ 
+-		pwms = <&pwm_ab 0 1250 0>;
++		pwms = <&pwm_ab 0 1250 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -41,7 +41,7 @@ vddcpu_b: regulator-vddcpu-b {
+ 
+ 		vin-supply = <&vsys_3v3>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts
+index 169ea283d4ee..68a47428ec68 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-odroid-n2.dts
+@@ -127,7 +127,7 @@ vddcpu_a: regulator-vddcpu-a {
+ 
+ 		vin-supply = <&main_12v>;
+ 
+-		pwms = <&pwm_ab 0 1250 0>;
++		pwms = <&pwm_ab 0 1250 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -146,7 +146,7 @@ vddcpu_b: regulator-vddcpu-b {
+ 
+ 		vin-supply = <&main_12v>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts b/arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts
+index 325e448eb09c..841974b6474d 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-g12b-ugoos-am6.dts
+@@ -109,7 +109,7 @@ vddcpu_a: regulator-vddcpu-a {
+ 
+ 		vin-supply = <&main_12v>;
+ 
+-		pwms = <&pwm_ab 0 1250 0>;
++		pwms = <&pwm_ab 0 1250 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -128,7 +128,7 @@ vddcpu_b: regulator-vddcpu-b {
+ 
+ 		vin-supply = <&main_12v>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -282,7 +282,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi b/arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi
+index 12d5e333e5f2..9da6ad85aff0 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gx-p23x-q20x.dtsi
+@@ -72,7 +72,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gx.dtsi b/arch/arm64/boot/dts/amlogic/meson-gx.dtsi
+index 03f79fe045b7..e00c045fb8a8 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gx.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gx.dtsi
+@@ -12,6 +12,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/thermal/thermal.h>
+ 
+ / {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts b/arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts
+index d6ca684e0e61..a4058ce97d75 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-nanopi-k2.dts
+@@ -79,7 +79,8 @@ wifi_32k: wifi-32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts b/arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts
+index 65ec7dea828c..30c900cf1d12 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-nexbox-a95x.dts
+@@ -109,7 +109,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi b/arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi
+index e803a466fe4e..f10a90eb39f6 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-p20x.dtsi
+@@ -83,7 +83,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi b/arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi
+index 45cb83625951..ce91158d0aa9 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-vega-s95.dtsi
+@@ -77,7 +77,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	hdmi-connector {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi b/arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi
+index dee51cf95223..281836e3e178 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gxbb-wetek.dtsi
+@@ -82,7 +82,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts
+index a1119cfb0280..4711fd911205 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s805x-p241.dts
+@@ -93,7 +93,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts
+index c8d74e61dec1..71438f79e45f 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-hwacom-amazetv.dts
+@@ -72,7 +72,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts
+index 440bc23c7342..c3cda2db21a1 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-khadas-vim.dts
+@@ -47,7 +47,7 @@ pwmleds {
+ 
+ 		power {
+ 			label = "vim:red:power";
+-			pwms = <&pwm_AO_ab 1 7812500 0>;
++			pwms = <&pwm_AO_ab 1 7812500 PWM_NOFLAGS>;
+ 			max-brightness = <255>;
+ 			linux,default-trigger = "default-on";
+ 		};
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts
+index 62dd87821ce5..78bef1154f81 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-nexbox-a95x.dts
+@@ -72,7 +72,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi
+index 6ac678f88bd8..a58d0cf277ad 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-gxl-s905x-p212.dtsi
+@@ -76,7 +76,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts b/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
+index 27eeab71ec77..9b3eed29a5b5 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxm-khadas-vim2.dts
+@@ -86,7 +86,7 @@ pwmleds {
+ 
+ 		power {
+ 			label = "vim:red:power";
+-			pwms = <&pwm_AO_ab 1 7812500 0>;
++			pwms = <&pwm_AO_ab 1 7812500 PWM_NOFLAGS>;
+ 			max-brightness = <255>;
+ 			linux,default-trigger = "default-on";
+ 		};
+@@ -143,7 +143,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts b/arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts
+index 420a88e9a195..8442468bb0bc 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-gxm-rbox-pro.dts
+@@ -81,7 +81,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi b/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
+index 094ecf2222bb..68aedcbb2c93 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
++++ b/arch/arm64/boot/dts/amlogic/meson-khadas-vim3.dtsi
+@@ -7,6 +7,7 @@
+ 
+ #include <dt-bindings/input/input.h>
+ #include <dt-bindings/gpio/meson-g12a-gpio.h>
++#include <dt-bindings/pwm/pwm.h>
+ 
+ / {
+ 	aliases {
+@@ -165,7 +166,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts
+index dbbf29a0dbf6..21219d63362e 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-khadas-vim3l.dts
+@@ -25,7 +25,7 @@ vddcpu: regulator-vddcpu {
+ 
+ 		vin-supply = <&vsys_3v3>;
+ 
+-		pwms = <&pwm_AO_cd 1 1250 0>;
++		pwms = <&pwm_AO_cd 1 1250 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+diff --git a/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts b/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts
+index dfb2438851c0..016c8914e833 100644
+--- a/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts
++++ b/arch/arm64/boot/dts/amlogic/meson-sm1-sei610.dts
+@@ -116,7 +116,7 @@ pwmleds {
+ 
+ 		power {
+ 			label = "sei610:red:power";
+-			pwms = <&pwm_AO_ab 0 30518 0>;
++			pwms = <&pwm_AO_ab 0 30518 PWM_NOFLAGS>;
+ 			max-brightness = <255>;
+ 			linux,default-trigger = "default-on";
+ 			active-low;
+@@ -187,7 +187,7 @@ vddcpu: regulator-vddcpu {
+ 
+ 		vin-supply = <&dc_in>;
+ 
+-		pwms = <&pwm_AO_cd 1 1500 0>;
++		pwms = <&pwm_AO_cd 1 1500 PWM_NOFLAGS>;
+ 		pwm-dutycycle-range = <100 0>;
+ 
+ 		regulator-boot-on;
+@@ -336,7 +336,8 @@ wifi32k: wifi32k {
+ 		compatible = "pwm-clock";
+ 		#clock-cells = <0>;
+ 		clock-frequency = <32768>;
+-		pwms = <&pwm_ef 0 30518 0>; /* PWM_E at 32.768KHz */
++		/* PWM_E at 32.768KHz */
++		pwms = <&pwm_ef 0 30518 PWM_NOFLAGS>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi b/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
+index 250fc01de78d..f8bd886a7c0e 100644
+--- a/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
++++ b/arch/arm64/boot/dts/exynos/exynos5433-tm2-common.dtsi
+@@ -14,6 +14,7 @@
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/input/input.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/sound/samsung-i2s.h>
+ 
+ / {
+@@ -913,7 +914,7 @@ charger_reg: CHARGER {
+ 		haptic: max77843-haptic {
+ 			compatible = "maxim,max77843-haptic";
+ 			haptic-supply = <&ldo38_reg>;
+-			pwms = <&pwm 0 33670 0>;
++			pwms = <&pwm 0 33670 PWM_NOFLAGS>;
+ 			pwm-names = "haptic";
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+index 0a680257d9c2..e0257385105a 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
+@@ -57,7 +57,7 @@ vol-up-key {
+ 
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+-		pwms = <&pwm1 0 25000 0>;
++		pwms = <&pwm1 0 25000 PWM_NOFLAGS>;
+ 		power-supply = <&vcc3v3_lcd>;
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index f809dd6d5dc3..c792b011d2c4 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -9,6 +9,7 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/power/px30-power.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/soc/rockchip,boot-mode.h>
+ #include <dt-bindings/thermal/thermal.h>
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+index 6ef851e7e16a..a33bd5b53840 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+@@ -22,7 +22,7 @@ ir_rx {
+ 
+ 	ir_tx {
+ 		compatible = "pwm-ir-tx";
+-		pwms = <&pwm5 0 25000 0>;
++		pwms = <&pwm5 0 25000 PWM_NOFLAGS>;
+ 	};
+ 
+ 	leds {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index ac43bc3f7031..f3d0295a8046 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -9,6 +9,7 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/soc/rockchip,boot-mode.h>
+ #include <dt-bindings/thermal/thermal.h>
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+index 694b0d08d644..e831a29ed842 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-evb.dts
+@@ -47,7 +47,7 @@ backlight: backlight {
+ 			240 241 242 243 244 245 246 247
+ 			248 249 250 251 252 253 254 255>;
+ 		default-brightness-level = <200>;
+-		pwms = <&pwm0 0 25000 0>;
++		pwms = <&pwm0 0 25000 PWM_NOFLAGS>;
+ 	};
+ 
+ 	edp_panel: edp-panel {
+@@ -72,7 +72,7 @@ clkin_gmac: external-gmac-clock {
+ 
+ 	vdd_center: vdd-center {
+ 		compatible = "pwm-regulator";
+-		pwms = <&pwm3 0 25000 0>;
++		pwms = <&pwm3 0 25000 PWM_NOFLAGS>;
+ 		regulator-name = "vdd_center";
+ 		regulator-min-microvolt = <800000>;
+ 		regulator-max-microvolt = <1400000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index 5617a441e141..49164ad3093f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -20,7 +20,7 @@ chosen {
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+ 		enable-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
+-		pwms = <&pwm0 0 25000 0>;
++		pwms = <&pwm0 0 25000 PWM_NOFLAGS>;
+ 		brightness-levels = <
+ 			  0   1   2   3   4   5   6   7
+ 			  8   9  10  11  12  13  14  15
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+index 1384dabbdf40..775bca13b5d5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-chromebook.dtsi
+@@ -50,7 +50,7 @@ ppvar_centerlogic_pwm: ppvar-centerlogic-pwm {
+ 		compatible = "pwm-regulator";
+ 		regulator-name = "ppvar_centerlogic_pwm";
+ 
+-		pwms = <&pwm3 0 3337 0>;
++		pwms = <&pwm3 0 3337 PWM_NOFLAGS>;
+ 		pwm-supply = <&ppvar_sys>;
+ 		pwm-dutycycle-range = <100 0>;
+ 		pwm-dutycycle-unit = <100>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+index 4373ed732af7..e8b105171b86 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
+@@ -164,7 +164,7 @@ backlight: backlight {
+ 		enable-gpios = <&gpio4 21 GPIO_ACTIVE_HIGH>;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&bl_en>;
+-		pwms = <&pwm1 0 1000000 0>;
++		pwms = <&pwm1 0 1000000 PWM_NOFLAGS>;
+ 		pwm-delay-us = <10000>;
+ 	};
+ 
+@@ -217,7 +217,7 @@ &ppvar_bigcpu {
+ 
+ &ppvar_bigcpu_pwm {
+ 	/* On scarlet ppvar big cpu use pwm3 */
+-	pwms = <&pwm3 0 3337 0>;
++	pwms = <&pwm3 0 3337 PWM_NOFLAGS>;
+ 	regulator-min-microvolt = <800074>;
+ 	regulator-max-microvolt = <1299226>;
+ };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 2f3997740068..317b1bc9a018 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -101,7 +101,7 @@ ppvar_bigcpu_pwm: ppvar-bigcpu-pwm {
+ 		compatible = "pwm-regulator";
+ 		regulator-name = "ppvar_bigcpu_pwm";
+ 
+-		pwms = <&pwm1 0 3337 0>;
++		pwms = <&pwm1 0 3337 PWM_NOFLAGS>;
+ 		pwm-supply = <&ppvar_sys>;
+ 		pwm-dutycycle-range = <100 0>;
+ 		pwm-dutycycle-unit = <100>;
+@@ -130,7 +130,7 @@ ppvar_litcpu_pwm: ppvar-litcpu-pwm {
+ 		compatible = "pwm-regulator";
+ 		regulator-name = "ppvar_litcpu_pwm";
+ 
+-		pwms = <&pwm2 0 3337 0>;
++		pwms = <&pwm2 0 3337 PWM_NOFLAGS>;
+ 		pwm-supply = <&ppvar_sys>;
+ 		pwm-dutycycle-range = <100 0>;
+ 		pwm-dutycycle-unit = <100>;
+@@ -159,7 +159,7 @@ ppvar_gpu_pwm: ppvar-gpu-pwm {
+ 		compatible = "pwm-regulator";
+ 		regulator-name = "ppvar_gpu_pwm";
+ 
+-		pwms = <&pwm0 0 3337 0>;
++		pwms = <&pwm0 0 3337 PWM_NOFLAGS>;
+ 		pwm-supply = <&ppvar_sys>;
+ 		pwm-dutycycle-range = <100 0>;
+ 		pwm-dutycycle-unit = <100>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
+index 47890757e866..9f606a6c01c9 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
+@@ -161,7 +161,7 @@ fan: pwm-fan {
+ 		cooling-levels = <0 150 200 255>;
+ 		#cooling-cells = <2>;
+ 		fan-supply = <&vsys_5v0>;
+-		pwms = <&pwm0 0 40000 0>;
++		pwms = <&pwm0 0 40000 PWM_NOFLAGS>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
+index e0d75617bb7e..f6f60274e5b8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
+@@ -62,7 +62,7 @@ fan: pwm-fan {
+ 		cooling-levels = <0 12 18 255>;
+ 		#cooling-cells = <2>;
+ 		fan-supply = <&vcc12v0_sys>;
+-		pwms = <&pwm1 0 50000 0>;
++		pwms = <&pwm1 0 50000 PWM_NOFLAGS>;
+ 	};
+ };
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+index d9dad0f45564..e86932d9549a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+@@ -19,7 +19,7 @@ chosen {
+ 
+ 	backlight: backlight {
+ 		compatible = "pwm-backlight";
+-		pwms = <&pwm0 0 25000 0>;
++		pwms = <&pwm0 0 25000 PWM_NOFLAGS>;
+ 	};
+ 
+ 	clkin_gmac: external-gmac-clock {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+index 5eedeae21189..e373277d39ca 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+@@ -58,7 +58,7 @@ fan: pwm-fan {
+ 		compatible = "pwm-fan";
+ 		#cooling-cells = <2>;
+ 		fan-supply = <&vcc12v_dcin>;
+-		pwms = <&pwm1 0 50000 0>;
++		pwms = <&pwm1 0 50000 PWM_NOFLAGS>;
+ 	};
+ 
+ 	sdio_pwrseq: sdio-pwrseq {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+index 73e269a8ae0c..fa3b70d219ba 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dts
+@@ -79,7 +79,7 @@ backlight: backlight {
+ 			248 249 250 251 252 253 254 255>;
+ 		default-brightness-level = <200>;
+ 		enable-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
+-		pwms = <&pwm0 0 25000 0>;
++		pwms = <&pwm0 0 25000 PWM_NOFLAGS>;
+ 		status = "okay";
+ 	};
+ 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 74f2c3d49095..30943914bcfa 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -9,6 +9,7 @@
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ #include <dt-bindings/power/rk3399-power.h>
++#include <dt-bindings/pwm/pwm.h>
+ #include <dt-bindings/thermal/thermal.h>
+ 
+ / {
 -- 
 2.24.1
