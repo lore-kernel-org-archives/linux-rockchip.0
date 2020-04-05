@@ -1,82 +1,76 @@
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH v2 5/5] media: staging: rkisp1: cap: remove unsupported
- formats
-Date: Mon, 6 Apr 2020 01:43:57 +0300
-Message-ID: <20200405224357.GR5846@pendragon.ideasonboard.com>
-References: <20200402190419.15155-1-dafna.hirschfeld@collabora.com>
- <20200402190419.15155-6-dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH] media: v4l2-common: change the pixel_enc of
+ V4L2_PIX_FMT_GREY to YUV
+Date: Mon, 6 Apr 2020 02:00:37 +0300
+Message-ID: <20200405230037.GT5846@pendragon.ideasonboard.com>
+References: <20200323173618.14058-1-dafna.hirschfeld@collabora.com>
+ <9304066ca10c9ccdf8a5fd88866425a5f45a330a.camel@collabora.com>
+ <ef6fd691-c8ca-9408-76b4-e47aca0fc9b4@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Return-path: <linux-media-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20200402190419.15155-6-dafna.hirschfeld@collabora.com>
+In-Reply-To: <ef6fd691-c8ca-9408-76b4-e47aca0fc9b4@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: linux-media@vger.kernel.org, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, linux-rockchip@lists.infradead.org
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, helen.koike@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Dafna,
 
 Thank you for the patch.
 
-On Thu, Apr 02, 2020 at 09:04:19PM +0200, Dafna Hirschfeld wrote:
-> For Ycbcr packed formats only YUYV can be supported by
-> the driver. This patch removes the other formats.
-
-The RKISP1_CIF_MI_BYTE_SWAP bit could possibly help achieving other YUV
-orders, but as far as I can tell, it would affect both the main path and
-the self path, so it wouldn't be very convenient. At a quick glance I
-haven't found a way to support those formats, but just to make sure,
-have you double-checked that the nv21_self and nv21_main bits of
-MI_XTD_FORMAT_CTRL don't also affect packed mode ? If they don't,
+On Tue, Mar 31, 2020 at 09:20:49AM +0200, Dafna Hirschfeld wrote:
+> On 30.03.20 20:22, Ezequiel Garcia wrote:
+> > Hi Dafna,
+> > 
+> > Nice catch, thanks a lot.
+>
+> Hi, It was actually Helen's idea,
+> 
+> > On Mon, 2020-03-23 at 18:36 +0100, Dafna Hirschfeld wrote:
+> >> V4L2_PIX_FMT_GREY format is Ycbcr format without
+> > 
+> > A nitpick s/Ycbcr/YCbCr. Maybe Hans can amend
+> > this when applying.
+> > 
+> > It's no big deal anyway.
+> > 
+> > Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > 
+> >> the color data, therefore its pixel_enc should
+> >> set to V4L2_PIXEL_ENC_YUV.
+> >>
+> >> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>
+> Suggested-by: Helen Koike <helen.koike@collabora.com>
 
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> Acked-by: Helen Koike <helen.koike@collabora.com>
-> ---
->  drivers/staging/media/rkisp1/rkisp1-capture.c | 21 -------------------
->  1 file changed, 21 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> index 2d274e8f565b..076335193f40 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> @@ -98,15 +98,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
->  		.fmt_type = RKISP1_FMT_YUV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> -	}, {
-> -		.fourcc = V4L2_PIX_FMT_YVYU,
-> -		.fmt_type = RKISP1_FMT_YUV,
-> -		.uv_swap = 1,
-> -		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> -	}, {
-> -		.fourcc = V4L2_PIX_FMT_VYUY,
-> -		.fmt_type = RKISP1_FMT_YUV,
-> -		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV422P,
->  		.fmt_type = RKISP1_FMT_YUV,
-> @@ -234,18 +225,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> -	}, {
-> -		.fourcc = V4L2_PIX_FMT_YVYU,
-> -		.fmt_type = RKISP1_FMT_YUV,
-> -		.uv_swap = 1,
-> -		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-> -		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> -	}, {
-> -		.fourcc = V4L2_PIX_FMT_VYUY,
-> -		.fmt_type = RKISP1_FMT_YUV,
-> -		.uv_swap = 1,
-> -		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-> -		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV422P,
->  		.fmt_type = RKISP1_FMT_YUV,
+> >> ---
+> >>   drivers/media/v4l2-core/v4l2-common.c | 2 +-
+> >>   1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+> >> index d0e5ebc736f9..054f2e607dff 100644
+> >> --- a/drivers/media/v4l2-core/v4l2-common.c
+> >> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> >> @@ -250,7 +250,6 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+> >>   		{ .format = V4L2_PIX_FMT_RGBA32,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> >>   		{ .format = V4L2_PIX_FMT_ABGR32,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> >>   		{ .format = V4L2_PIX_FMT_BGRA32,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> >> -		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> >>   		{ .format = V4L2_PIX_FMT_RGB565,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> >>   		{ .format = V4L2_PIX_FMT_RGB555,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> >>   
+> >> @@ -274,6 +273,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
+> >>   		{ .format = V4L2_PIX_FMT_YUV420,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
+> >>   		{ .format = V4L2_PIX_FMT_YVU420,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
+> >>   		{ .format = V4L2_PIX_FMT_YUV422P, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 1 },
+> >> +		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
+> >>   
+> >>   		/* YUV planar formats, non contiguous variant */
+> >>   		{ .format = V4L2_PIX_FMT_YUV420M, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 3, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
 
 -- 
 Regards,
