@@ -1,107 +1,53 @@
-From: Markus Elfring <Markus.Elfring@web.de>
-Subject: [PATCH] thermal: Delete an error message in four functions
-Date: Sun, 5 Apr 2020 18:50:38 +0200
-Message-ID: <05f49ae7-5cc7-d6a0-fc3d-abaf2a0b373c@web.de>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH 1/3] media: staging: rkisp1: rsz: get the capture format
+ info from the capture struct
+Date: Sun, 5 Apr 2020 20:24:50 +0300
+Message-ID: <20200405172450.GH5846@pendragon.ideasonboard.com>
+References: <20200328105606.13660-1-dafna.hirschfeld@collabora.com>
+ <20200328105606.13660-2-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-omap@vger.kernel.org, Alexandre Torgue <alexandre.torgue@st.com>, Allison Randal <allison@lohutok.net>, Amit Kucheria <amit.kucheria@verdurent.com>, Clark Williams <williams@redhat.com>, Colin Ian King <colin.king@canonical.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Eduardo Valentin <edubezval@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Keerthy <j-keerthy@ti.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Pascal Paillet <p.paillet@st.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Thomas Gleixner <tglx@linutronix.de>
-Cc: LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org, Tang Bin <tangbin@cmss.chinamobile.com>
+Return-path: <linux-media-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200328105606.13660-2-dafna.hirschfeld@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: linux-media@vger.kernel.org, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Markus Elfring <elfring@users.sourceforge.net>
-Date: Sun, 5 Apr 2020 18:35:16 +0200
+Hi Dafna,
 
-The function =E2=80=9Cplatform_get_irq=E2=80=9D can log an error already.
-Thus omit redundant messages for the exception handling in the
-calling functions.
+Thank you for the patch.
 
-This issue was detected by using the Coccinelle software.
+On Sat, Mar 28, 2020 at 11:56:04AM +0100, Dafna Hirschfeld wrote:
+> Currently the format info of the capture is retrieved by calling
+> the function  v4l2_format_info. This is not needed since it is
+> already save in the capture object.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
-Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
-=2D--
- drivers/thermal/rockchip_thermal.c          | 4 +---
- drivers/thermal/st/st_thermal_memmap.c      | 4 +---
- drivers/thermal/st/stm_thermal.c            | 4 +---
- drivers/thermal/ti-soc-thermal/ti-bandgap.c | 5 ++---
- 4 files changed, 5 insertions(+), 12 deletions(-)
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip=
-_thermal.c
-index 7c1a8bccdcba..15a71ecc916c 100644
-=2D-- a/drivers/thermal/rockchip_thermal.c
-+++ b/drivers/thermal/rockchip_thermal.c
-@@ -1241,10 +1241,8 @@ static int rockchip_thermal_probe(struct platform_d=
-evice *pdev)
- 		return -ENXIO;
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-resizer.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> index 87799fbf0363..8704267a066f 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> @@ -387,8 +387,7 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
+>  	if (rsz->fmt_type == RKISP1_FMT_YUV) {
+>  		struct rkisp1_capture *cap =
+>  			&rsz->rkisp1->capture_devs[rsz->id];
+> -		const struct v4l2_format_info *pixfmt_info =
+> -			v4l2_format_info(cap->pix.fmt.pixelformat);
+> +		const struct v4l2_format_info *pixfmt_info = cap->pix.info;
+>  
+>  		hdiv = pixfmt_info->hdiv;
+>  		vdiv = pixfmt_info->vdiv;
 
- 	irq =3D platform_get_irq(pdev, 0);
--	if (irq < 0) {
--		dev_err(&pdev->dev, "no irq resource?\n");
-+	if (irq < 0)
- 		return -EINVAL;
--	}
+-- 
+Regards,
 
- 	thermal =3D devm_kzalloc(&pdev->dev, sizeof(struct rockchip_thermal_data=
-),
- 			       GFP_KERNEL);
-diff --git a/drivers/thermal/st/st_thermal_memmap.c b/drivers/thermal/st/s=
-t_thermal_memmap.c
-index a824b78dabf8..a0114452d11f 100644
-=2D-- a/drivers/thermal/st/st_thermal_memmap.c
-+++ b/drivers/thermal/st/st_thermal_memmap.c
-@@ -94,10 +94,8 @@ static int st_mmap_register_enable_irq(struct st_therma=
-l_sensor *sensor)
- 	int ret;
-
- 	sensor->irq =3D platform_get_irq(pdev, 0);
--	if (sensor->irq < 0) {
--		dev_err(dev, "failed to register IRQ\n");
-+	if (sensor->irq < 0)
- 		return sensor->irq;
--	}
-
- 	ret =3D devm_request_threaded_irq(dev, sensor->irq,
- 					NULL, st_mmap_thermal_trip_handler,
-diff --git a/drivers/thermal/st/stm_thermal.c b/drivers/thermal/st/stm_the=
-rmal.c
-index 9314e3df6a42..331e2b768df5 100644
-=2D-- a/drivers/thermal/st/stm_thermal.c
-+++ b/drivers/thermal/st/stm_thermal.c
-@@ -385,10 +385,8 @@ static int stm_register_irq(struct stm_thermal_sensor=
- *sensor)
- 	int ret;
-
- 	sensor->irq =3D platform_get_irq(pdev, 0);
--	if (sensor->irq < 0) {
--		dev_err(dev, "%s: Unable to find IRQ\n", __func__);
-+	if (sensor->irq < 0)
- 		return sensor->irq;
--	}
-
- 	ret =3D devm_request_threaded_irq(dev, sensor->irq,
- 					NULL,
-diff --git a/drivers/thermal/ti-soc-thermal/ti-bandgap.c b/drivers/thermal=
-/ti-soc-thermal/ti-bandgap.c
-index 263b0420fbe4..ab19ceff6e2a 100644
-=2D-- a/drivers/thermal/ti-soc-thermal/ti-bandgap.c
-+++ b/drivers/thermal/ti-soc-thermal/ti-bandgap.c
-@@ -772,10 +772,9 @@ static int ti_bandgap_talert_init(struct ti_bandgap *=
-bgp,
- 	int ret;
-
- 	bgp->irq =3D platform_get_irq(pdev, 0);
--	if (bgp->irq < 0) {
--		dev_err(&pdev->dev, "get_irq failed\n");
-+	if (bgp->irq < 0)
- 		return bgp->irq;
--	}
-+
- 	ret =3D request_threaded_irq(bgp->irq, NULL,
- 				   ti_bandgap_talert_irq_handler,
- 				   IRQF_TRIGGER_HIGH | IRQF_ONESHOT,
-=2D-
-2.26.0
+Laurent Pinchart
