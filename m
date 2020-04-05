@@ -1,76 +1,177 @@
-From: Justin Swartz <justin.swartz@risingedge.co.za>
-Subject: [PATCH] ARM: dts: enable WLAN for Mecer Xtreme Mini S6
-Date: Sun,  5 Apr 2020 11:00:21 +0000
-Message-ID: <20200405110022.3849-1-justin.swartz@risingedge.co.za>
+From: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] dt-bindings: iio: adc: convert rockchip saradc
+ bindings to yaml
+Date: Sun, 5 Apr 2020 13:06:21 +0100
+Message-ID: <20200405130621.252578e8@archlinux>
+References: <20200404102730.3295-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
-Cc: linux-rockchip@lists.infradead.org, Justin Swartz <justin.swartz@risingedge.co.za>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200404102730.3295-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The Mecer Xtreme Mini S6 features a wireless module, based on a
-Realtek 8723BS, which provides WLAN and Bluetooth connectivity via
-SDIO and UART interfaces respectively.
+On Sat,  4 Apr 2020 12:27:28 +0200
+Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
 
-Define a simple MMC power sequence that declares the GPIO pins
-connected to the module's WLAN Disable and Bluetooth Disable pins
-as active low reset signals, because both signals must be deasserted
-for WLAN radio operation.
+> Current dts files with 'saradc' nodes are manually verified.
+> In order to automate this process rockchip-saradc.txt
+> has to be converted to yaml.
+> 
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Hi Johan
 
-Configure the host's SDIO interface for High Speed mode with 1.8v
-I/O signalling and IRQ detection over a 4-bit wide bus.
+As I'd already applied these I'd have preferred a fix patch and I'm not actually
+sure it's really worth making the change.  I don't think we have any rules
+about minimal includes or anything in DT bindings.  Was there an error or
+warning as a result of this?
 
-Signed-off-by: Justin Swartz <justin.swartz@risingedge.co.za>
----
- arch/arm/boot/dts/rk3229-xms6.dts | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+Still as I hadn't pushed out as non rebasing yet I've picked this version up
+and dropped the previous.
 
-diff --git a/arch/arm/boot/dts/rk3229-xms6.dts b/arch/arm/boot/dts/rk3229-xms6.dts
-index 679fc2b00..cdfcef41b 100644
---- a/arch/arm/boot/dts/rk3229-xms6.dts
-+++ b/arch/arm/boot/dts/rk3229-xms6.dts
-@@ -39,6 +39,12 @@
- 		};
- 	};
- 
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		reset-gpios = <&gpio2 26 GPIO_ACTIVE_LOW>,
-+		              <&gpio2 29 GPIO_ACTIVE_LOW>;
-+	};
-+
- 	vcc_host: vcc-host-regulator {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -202,6 +208,18 @@
- 	status = "okay";
- };
- 
-+&sdio {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	disable-wp;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	num-slots = <1>;
-+	vqmmc-supply = <&vccio_1v8>;
-+	status = "okay";
-+};
-+
- &sdmmc {
- 	cap-mmc-highspeed;
- 	disable-wp;
--- 
-2.11.0
+Thanks,
+
+Jonathan
+
+> ---
+> Changes v2:
+>   Add reviewed by
+>   Fix irq.h already included in arm-gic.h
+> ---
+>  .../bindings/iio/adc/rockchip-saradc.txt           | 37 ----------
+>  .../bindings/iio/adc/rockchip-saradc.yaml          | 78 ++++++++++++++++++++++
+>  2 files changed, 78 insertions(+), 37 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+>  create mode 100644 Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+> deleted file mode 100644
+> index c2c50b598..000000000
+> --- a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.txt
+> +++ /dev/null
+> @@ -1,37 +0,0 @@
+> -Rockchip Successive Approximation Register (SAR) A/D Converter bindings
+> -
+> -Required properties:
+> -- compatible: should be "rockchip,<name>-saradc" or "rockchip,rk3066-tsadc"
+> -   - "rockchip,saradc": for rk3188, rk3288
+> -   - "rockchip,rk3066-tsadc": for rk3036
+> -   - "rockchip,rk3328-saradc", "rockchip,rk3399-saradc": for rk3328
+> -   - "rockchip,rk3399-saradc": for rk3399
+> -   - "rockchip,rv1108-saradc", "rockchip,rk3399-saradc": for rv1108
+> -
+> -- reg: physical base address of the controller and length of memory mapped
+> -       region.
+> -- interrupts: The interrupt number to the cpu. The interrupt specifier format
+> -              depends on the interrupt controller.
+> -- clocks: Must contain an entry for each entry in clock-names.
+> -- clock-names: Shall be "saradc" for the converter-clock, and "apb_pclk" for
+> -               the peripheral clock.
+> -- vref-supply: The regulator supply ADC reference voltage.
+> -- #io-channel-cells: Should be 1, see ../iio-bindings.txt
+> -
+> -Optional properties:
+> -- resets: Must contain an entry for each entry in reset-names if need support
+> -	  this option. See ../reset/reset.txt for details.
+> -- reset-names: Must include the name "saradc-apb".
+> -
+> -Example:
+> -	saradc: saradc@2006c000 {
+> -		compatible = "rockchip,saradc";
+> -		reg = <0x2006c000 0x100>;
+> -		interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+> -		clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
+> -		clock-names = "saradc", "apb_pclk";
+> -		resets = <&cru SRST_SARADC>;
+> -		reset-names = "saradc-apb";
+> -		#io-channel-cells = <1>;
+> -		vref-supply = <&vcc18>;
+> -	};
+> diff --git a/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+> new file mode 100644
+> index 000000000..9b9882323
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/iio/adc/rockchip-saradc.yaml
+> @@ -0,0 +1,78 @@
+> +# SPDX-License-Identifier: GPL-2.0
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/iio/adc/rockchip-saradc.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Rockchip Successive Approximation Register (SAR) A/D Converter
+> +
+> +maintainers:
+> +  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - const: rockchip,saradc
+> +      - const: rockchip,rk3066-tsadc
+> +      - const: rockchip,rk3399-saradc
+> +      - items:
+> +          - enum:
+> +            - rockchip,rk3328-saradc
+> +            - rockchip,rv1108-saradc
+> +          - const: rockchip,rk3399-saradc
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  clocks:
+> +    items:
+> +      - description: converter clock
+> +      - description: peripheral clock
+> +
+> +  clock-names:
+> +    items:
+> +      - const: saradc
+> +      - const: apb_pclk
+> +
+> +  resets:
+> +    maxItems: 1
+> +
+> +  reset-names:
+> +    const: saradc-apb
+> +
+> +  vref-supply:
+> +    description:
+> +      The regulator supply for the ADC reference voltage.
+> +
+> +  "#io-channel-cells":
+> +    const: 1
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +  - clocks
+> +  - clock-names
+> +  - vref-supply
+> +  - "#io-channel-cells"
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/clock/rk3288-cru.h>
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +    saradc: saradc@2006c000 {
+> +      compatible = "rockchip,saradc";
+> +      reg = <0x2006c000 0x100>;
+> +      interrupts = <GIC_SPI 26 IRQ_TYPE_LEVEL_HIGH>;
+> +      clocks = <&cru SCLK_SARADC>, <&cru PCLK_SARADC>;
+> +      clock-names = "saradc", "apb_pclk";
+> +      resets = <&cru SRST_SARADC>;
+> +      reset-names = "saradc-apb";
+> +      vref-supply = <&vcc18>;
+> +      #io-channel-cells = <1>;
+> +    };
