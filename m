@@ -1,95 +1,36 @@
-From: "J, KEERTHY" <j-keerthy-l0cyMroinI0@public.gmane.org>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
 Subject: Re: [PATCH] thermal: Delete an error message in four functions
-Date: Mon, 6 Apr 2020 13:47:22 +0530
-Message-ID: <ac59c663-18a5-5bbf-09da-2cd8d034138c@ti.com>
+Date: Mon, 6 Apr 2020 11:03:57 +0200
+Message-ID: <89b0acdd-de88-bafb-0a2c-74aaf2fe0496@linaro.org>
 References: <05f49ae7-5cc7-d6a0-fc3d-abaf2a0b373c@web.de>
- <CAHLCerMS5ghVXhOD7RAd5unxEe7w1W4_8hBP5Tf9HvuMEh5Lqg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAHLCerMS5ghVXhOD7RAd5unxEe7w1W4_8hBP5Tf9HvuMEh5Lqg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+In-Reply-To: <05f49ae7-5cc7-d6a0-fc3d-abaf2a0b373c@web.de>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Amit Kucheria <amit.kucheria-LY4KaoCqKrnby3iVrkZq2A@public.gmane.org>, Markus Elfring <Markus.Elfring-S0/GAf8tV78@public.gmane.org>
-Cc: Pascal Paillet <p.paillet-qxv4g6HH51o@public.gmane.org>, Tang Bin <tangbin-0p4V/sDNsUmm0O/7XYngnFaTQe2KTcn/@public.gmane.org>, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, Linux PM list <linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Clark Williams <williams-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Sebastian Andrzej Siewior <bigeasy-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, kernel-janitors-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Zhang Rui <rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Eduardo Valentin <edubezval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Allison Randal <allison-wcfNWazeolPR7s880joybQ@public.gmane.org>, Maxime Coquelin <mcoquelin.stm32-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Colin Ian King <colin.king-Z7WLFzj8eWMS+FvcfC7Uqw@public.gmane.org>, Thomas Gleixner <tglx-hfZtesqFncYOwBW4kG4KsQ@public.gmane.org>, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, lakml <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: Markus Elfring <Markus.Elfring@web.de>, linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-omap@vger.kernel.org, Alexandre Torgue <alexandre.torgue@st.com>, Allison Randal <allison@lohutok.net>, Amit Kucheria <amit.kucheria@verdurent.com>, Clark Williams <williams@redhat.com>, Colin Ian King <colin.king@canonical.com>, Eduardo Valentin <edubezval@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Keerthy <j-keerthy@ti.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Pascal Paillet <p.paillet@st.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Thomas Gleixner <tglx@linutronix.de>
+Cc: LKML <linux-kernel@vger.kernel.org>, kernel-janitors@vger.kernel.org, Tang Bin <tangbin@cmss.chinamobile.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpPbiA0LzYvMjAyMCAxOjAwIFBNLCBBbWl0IEt1Y2hlcmlhIHdyb3RlOgo+IE9uIFN1biwgQXBy
-IDUsIDIwMjAgYXQgMTA6MjEgUE0gTWFya3VzIEVsZnJpbmcgPE1hcmt1cy5FbGZyaW5nQHdlYi5k
-ZT4gd3JvdGU6Cj4+Cj4+IEZyb206IE1hcmt1cyBFbGZyaW5nIDxlbGZyaW5nQHVzZXJzLnNvdXJj
-ZWZvcmdlLm5ldD4KPj4gRGF0ZTogU3VuLCA1IEFwciAyMDIwIDE4OjM1OjE2ICswMjAwCj4+Cj4+
-IFRoZSBmdW5jdGlvbiDigJxwbGF0Zm9ybV9nZXRfaXJx4oCdIGNhbiBsb2cgYW4gZXJyb3IgYWxy
-ZWFkeS4KPj4gVGh1cyBvbWl0IHJlZHVuZGFudCBtZXNzYWdlcyBmb3IgdGhlIGV4Y2VwdGlvbiBo
-YW5kbGluZyBpbiB0aGUKPj4gY2FsbGluZyBmdW5jdGlvbnMuCj4+Cj4+IFRoaXMgaXNzdWUgd2Fz
-IGRldGVjdGVkIGJ5IHVzaW5nIHRoZSBDb2NjaW5lbGxlIHNvZnR3YXJlLgo+Pgo+PiBTaWduZWQt
-b2ZmLWJ5OiBNYXJrdXMgRWxmcmluZyA8ZWxmcmluZ0B1c2Vycy5zb3VyY2Vmb3JnZS5uZXQ+CgpS
-ZXZpZXdlZC1ieTogS2VlcnRoeSA8ai1rZWVydGh5QHRpLmNvbT4KCj4gCj4gUmV2aWV3ZWQtYnk6
-IEFtaXQgS3VjaGVyaWEgPGFtaXQua3VjaGVyaWFAbGluYXJvLm9yZz4KPiAKPj4gLS0tCj4+ICAg
-ZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYyAgICAgICAgICB8IDQgKy0tLQo+PiAg
-IGRyaXZlcnMvdGhlcm1hbC9zdC9zdF90aGVybWFsX21lbW1hcC5jICAgICAgfCA0ICstLS0KPj4g
-ICBkcml2ZXJzL3RoZXJtYWwvc3Qvc3RtX3RoZXJtYWwuYyAgICAgICAgICAgIHwgNCArLS0tCj4+
-ICAgZHJpdmVycy90aGVybWFsL3RpLXNvYy10aGVybWFsL3RpLWJhbmRnYXAuYyB8IDUgKystLS0K
-Pj4gICA0IGZpbGVzIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKSwgMTIgZGVsZXRpb25zKC0pCj4+
-Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jIGIvZHJp
-dmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYwo+PiBpbmRleCA3YzFhOGJjY2RjYmEuLjE1
-YTcxZWNjOTE2YyAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy90aGVybWFsL3JvY2tjaGlwX3RoZXJt
-YWwuYwo+PiArKysgYi9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jCj4+IEBAIC0x
-MjQxLDEwICsxMjQxLDggQEAgc3RhdGljIGludCByb2NrY2hpcF90aGVybWFsX3Byb2JlKHN0cnVj
-dCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+ICAgICAgICAgICAgICAgICAgcmV0dXJuIC1FTlhJ
-TzsKPj4KPj4gICAgICAgICAgaXJxID0gcGxhdGZvcm1fZ2V0X2lycShwZGV2LCAwKTsKPj4gLSAg
-ICAgICBpZiAoaXJxIDwgMCkgewo+PiAtICAgICAgICAgICAgICAgZGV2X2VycigmcGRldi0+ZGV2
-LCAibm8gaXJxIHJlc291cmNlP1xuIik7Cj4+ICsgICAgICAgaWYgKGlycSA8IDApCj4+ICAgICAg
-ICAgICAgICAgICAgcmV0dXJuIC1FSU5WQUw7Cj4+IC0gICAgICAgfQo+Pgo+PiAgICAgICAgICB0
-aGVybWFsID0gZGV2bV9remFsbG9jKCZwZGV2LT5kZXYsIHNpemVvZihzdHJ1Y3Qgcm9ja2NoaXBf
-dGhlcm1hbF9kYXRhKSwKPj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBHRlBfS0VS
-TkVMKTsKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvdGhlcm1hbC9zdC9zdF90aGVybWFsX21lbW1h
-cC5jIGIvZHJpdmVycy90aGVybWFsL3N0L3N0X3RoZXJtYWxfbWVtbWFwLmMKPj4gaW5kZXggYTgy
-NGI3OGRhYmY4Li5hMDExNDQ1MmQxMWYgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9z
-dC9zdF90aGVybWFsX21lbW1hcC5jCj4+ICsrKyBiL2RyaXZlcnMvdGhlcm1hbC9zdC9zdF90aGVy
-bWFsX21lbW1hcC5jCj4+IEBAIC05NCwxMCArOTQsOCBAQCBzdGF0aWMgaW50IHN0X21tYXBfcmVn
-aXN0ZXJfZW5hYmxlX2lycShzdHJ1Y3Qgc3RfdGhlcm1hbF9zZW5zb3IgKnNlbnNvcikKPj4gICAg
-ICAgICAgaW50IHJldDsKPj4KPj4gICAgICAgICAgc2Vuc29yLT5pcnEgPSBwbGF0Zm9ybV9nZXRf
-aXJxKHBkZXYsIDApOwo+PiAtICAgICAgIGlmIChzZW5zb3ItPmlycSA8IDApIHsKPj4gLSAgICAg
-ICAgICAgICAgIGRldl9lcnIoZGV2LCAiZmFpbGVkIHRvIHJlZ2lzdGVyIElSUVxuIik7Cj4+ICsg
-ICAgICAgaWYgKHNlbnNvci0+aXJxIDwgMCkKPj4gICAgICAgICAgICAgICAgICByZXR1cm4gc2Vu
-c29yLT5pcnE7Cj4+IC0gICAgICAgfQo+Pgo+PiAgICAgICAgICByZXQgPSBkZXZtX3JlcXVlc3Rf
-dGhyZWFkZWRfaXJxKGRldiwgc2Vuc29yLT5pcnEsCj4+ICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgTlVMTCwgc3RfbW1hcF90aGVybWFsX3RyaXBfaGFuZGxlciwKPj4g
-ZGlmZiAtLWdpdCBhL2RyaXZlcnMvdGhlcm1hbC9zdC9zdG1fdGhlcm1hbC5jIGIvZHJpdmVycy90
-aGVybWFsL3N0L3N0bV90aGVybWFsLmMKPj4gaW5kZXggOTMxNGUzZGY2YTQyLi4zMzFlMmI3Njhk
-ZjUgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9zdC9zdG1fdGhlcm1hbC5jCj4+ICsr
-KyBiL2RyaXZlcnMvdGhlcm1hbC9zdC9zdG1fdGhlcm1hbC5jCj4+IEBAIC0zODUsMTAgKzM4NSw4
-IEBAIHN0YXRpYyBpbnQgc3RtX3JlZ2lzdGVyX2lycShzdHJ1Y3Qgc3RtX3RoZXJtYWxfc2Vuc29y
-ICpzZW5zb3IpCj4+ICAgICAgICAgIGludCByZXQ7Cj4+Cj4+ICAgICAgICAgIHNlbnNvci0+aXJx
-ID0gcGxhdGZvcm1fZ2V0X2lycShwZGV2LCAwKTsKPj4gLSAgICAgICBpZiAoc2Vuc29yLT5pcnEg
-PCAwKSB7Cj4+IC0gICAgICAgICAgICAgICBkZXZfZXJyKGRldiwgIiVzOiBVbmFibGUgdG8gZmlu
-ZCBJUlFcbiIsIF9fZnVuY19fKTsKPj4gKyAgICAgICBpZiAoc2Vuc29yLT5pcnEgPCAwKQo+PiAg
-ICAgICAgICAgICAgICAgIHJldHVybiBzZW5zb3ItPmlycTsKPj4gLSAgICAgICB9Cj4+Cj4+ICAg
-ICAgICAgIHJldCA9IGRldm1fcmVxdWVzdF90aHJlYWRlZF9pcnEoZGV2LCBzZW5zb3ItPmlycSwK
-Pj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBOVUxMLAo+PiBkaWZm
-IC0tZ2l0IGEvZHJpdmVycy90aGVybWFsL3RpLXNvYy10aGVybWFsL3RpLWJhbmRnYXAuYyBiL2Ry
-aXZlcnMvdGhlcm1hbC90aS1zb2MtdGhlcm1hbC90aS1iYW5kZ2FwLmMKPj4gaW5kZXggMjYzYjA0
-MjBmYmU0Li5hYjE5Y2VmZjZlMmEgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC90aS1z
-b2MtdGhlcm1hbC90aS1iYW5kZ2FwLmMKPj4gKysrIGIvZHJpdmVycy90aGVybWFsL3RpLXNvYy10
-aGVybWFsL3RpLWJhbmRnYXAuYwo+PiBAQCAtNzcyLDEwICs3NzIsOSBAQCBzdGF0aWMgaW50IHRp
-X2JhbmRnYXBfdGFsZXJ0X2luaXQoc3RydWN0IHRpX2JhbmRnYXAgKmJncCwKPj4gICAgICAgICAg
-aW50IHJldDsKPj4KPj4gICAgICAgICAgYmdwLT5pcnEgPSBwbGF0Zm9ybV9nZXRfaXJxKHBkZXYs
-IDApOwo+PiAtICAgICAgIGlmIChiZ3AtPmlycSA8IDApIHsKPj4gLSAgICAgICAgICAgICAgIGRl
-dl9lcnIoJnBkZXYtPmRldiwgImdldF9pcnEgZmFpbGVkXG4iKTsKPj4gKyAgICAgICBpZiAoYmdw
-LT5pcnEgPCAwKQo+PiAgICAgICAgICAgICAgICAgIHJldHVybiBiZ3AtPmlycTsKPj4gLSAgICAg
-ICB9Cj4+ICsKPj4gICAgICAgICAgcmV0ID0gcmVxdWVzdF90aHJlYWRlZF9pcnEoYmdwLT5pcnEs
-IE5VTEwsCj4+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRpX2JhbmRnYXBf
-dGFsZXJ0X2lycV9oYW5kbGVyLAo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBJUlFGX1RSSUdHRVJfSElHSCB8IElSUUZfT05FU0hPVCwKPj4gLS0KPj4gMi4yNi4wCj4+Cgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 05/04/2020 18:50, Markus Elfring wrote:
+> From: Markus Elfring <elfring@users.sourceforge.net>
+> Date: Sun, 5 Apr 2020 18:35:16 +0200
+> 
+> The function “platform_get_irq” can log an error already.
+> Thus omit redundant messages for the exception handling in the
+> calling functions.
+> 
+> This issue was detected by using the Coccinelle software.
+> 
+> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
+
+Applied, thanks
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
