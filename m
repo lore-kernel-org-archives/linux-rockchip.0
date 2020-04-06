@@ -1,95 +1,101 @@
-From: Pavel Machek <pavel@ucw.cz>
-Subject: Re: [PATCH 1/6] arm64: dts: rockchip: rk3399-roc-pc: Fix MMC
- numbering for LED triggers
-Date: Mon, 6 Apr 2020 11:13:13 +0200
-Message-ID: <20200406091313.GF31120@duo.ucw.cz>
-References: <20200327030414.5903-2-wens@kernel.org>
- <684a08e6-7dfe-4cb1-2ae5-c1fb4128976b@gmail.com>
- <CAGb2v65ayZwN14S-Pzu2ip1K=fgzTbNB=ZzUcpou-jtv8m6vBA@mail.gmail.com>
- <ccf35a92-7005-9c6d-a8a2-c17b714a60bc@arm.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: enable WLAN for Mecer Xtreme Mini S6
+Date: Mon, 6 Apr 2020 11:57:02 +0200
+Message-ID: <e602c1b8-3606-a8d3-c64c-ec9e58315974@gmail.com>
+References: <20200405110022.3849-1-justin.swartz@risingedge.co.za>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha1;
-        protocol="application/pgp-signature"; boundary="ExXT7PjY8AI4Hyfa"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <ccf35a92-7005-9c6d-a8a2-c17b714a60bc@arm.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Chen-Yu Tsai <wens@kernel.org>, Johan Jonker <jbx6244@gmail.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, jacek.anaszewski@gmail.com, devicetree@vger.kernel.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200405110022.3849-1-justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Justin,
 
---ExXT7PjY8AI4Hyfa
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Have a look at the documents:
 
-Hi!
+Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+Documentation/devicetree/bindings/mmc/synopsys-dw-mshc-common.yaml
+Documentation/devicetree/bindings/mmc/mmc-controller.yaml
 
-> > > arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dt.yaml: leds:
-> > > diy-led:linux,default-trigger:0: 'mmc2' is not one of ['backlight',
-> > > 'default-on', 'heartbeat', 'disk-activity', 'ide-disk', 'timer', 'pat=
-tern']
-> > > arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dt.yaml: leds:
-> > > yellow-led:linux,default-trigger:0: 'mmc1' is not one of ['backlight',
-> > > 'default-on', 'heartbeat', 'disk-activity', 'ide-disk', 'timer', 'pat=
-tern']
-> >=20
-> > Maybe we should just get rid of linux,default-trigger then?
->=20
-> In this particular case, I'd say it's probably time to reevaluate the rat=
-her
-> out-of-date binding. The apparent intent of the "linux,default-trigger"
-> property seems to be to describe any trigger supported by Linux, so either
-> the binding wants to be kept in sync with all the triggers Linux actually
-> supports, or perhaps it should just be redefined as a free-form
+Fix &emmc as well.
 
-It is enough to keep it in sync with all the triggers we actually use :-).
+> From: Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>
+> To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>,
+> 	Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>,
+> 	Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>
+> Cc: Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>,
+> 	linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org,
+> 	linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org,
+> 	linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+> Subject: [PATCH] ARM: dts: enable WLAN for Mecer Xtreme Mini S6
+> Date: Sun,  5 Apr 2020 11:00:21 +0000
+> Message-ID: <20200405110022.3849-1-justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org> (raw)
+> 
+> The Mecer Xtreme Mini S6 features a wireless module, based on a
+> Realtek 8723BS, which provides WLAN and Bluetooth connectivity via
+> SDIO and UART interfaces respectively.
+> 
+> Define a simple MMC power sequence that declares the GPIO pins
+> connected to the module's WLAN Disable and Bluetooth Disable pins
+> as active low reset signals, because both signals must be deasserted
+> for WLAN radio operation.
+> 
+> Configure the host's SDIO interface for High Speed mode with 1.8v
+> I/O signalling and IRQ detection over a 4-bit wide bus.
+> 
+> Signed-off-by: Justin Swartz <justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org>
+> ---
+>  arch/arm/boot/dts/rk3229-xms6.dts | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/rk3229-xms6.dts b/arch/arm/boot/dts/rk3229-xms6.dts
+> index 679fc2b00..cdfcef41b 100644
+> --- a/arch/arm/boot/dts/rk3229-xms6.dts
+> +++ b/arch/arm/boot/dts/rk3229-xms6.dts
+> @@ -39,6 +39,12 @@
+>  		};
+>  	};
+>  
+> +	sdio_pwrseq: sdio-pwrseq {
+> +		compatible = "mmc-pwrseq-simple";
+> +		reset-gpios = <&gpio2 26 GPIO_ACTIVE_LOW>,
+> +		              <&gpio2 29 GPIO_ACTIVE_LOW>;
+> +	};
+> +
+>  	vcc_host: vcc-host-regulator {
+>  		compatible = "regulator-fixed";
+>  		enable-active-high;
+> @@ -202,6 +208,18 @@
+>  	status = "okay";
+>  };
+>  
+> +&sdio {
+> +	bus-width = <4>;
+> +	cap-sd-highspeed;
+> +	cap-sdio-irq;
 
-> I'd be slightly inclined towards the latter, since the schema validator
-> can't know whether the given trigger actually corresponds to the correct
-> thing for whatever the LED is physically labelled on the board/case, nor
-> whether the version(s) of Linux that people intend to use actually support
-> that trigger (since it doesn't have to be the version contemporary with t=
-he
-> schema definition), so strict validation of this particular property seems
-> to be of limited value.
+> +	disable-wp;
 
-But freeform seems acceptable, too.
+Not used in combination with sdio and emmc.
 
-> > > > -             diy-led {
-> > > > +             diy_led: diy-led {
-> > > >                        label =3D "red:diy";
-> > > >                        gpios =3D <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
-> > > >                        default-state =3D "off";
-> > > >                        linux,default-trigger =3D "mmc1";
-> > > >                };
+> +	mmc-pwrseq = <&sdio_pwrseq>;
+> +	non-removable;
 
-This label probably should be "mmc1:red:activity" or something like that.
+> +	num-slots = <1>;
 
-> > > > -             yellow-led {
-> > > > +             yellow_led: yellow-led {
-> > > >                        label =3D "yellow:yellow-led";
-> > > >                        gpios =3D <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-> > > >                        default-state =3D "off";
+Deprecated.
 
-And this label should be changed, too.
-
-Best regards,
-									Pavel
---=20
-(english) http://www.livejournal.com/~pavelmachek
-(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
-g.html
-
---ExXT7PjY8AI4Hyfa
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCXoryqQAKCRAw5/Bqldv6
-8ulxAJ9JvBVEpW4qxrGrRgIxyoWrDXPWaACglhyoV7FLpZSAdi34M9to1ysGuB4=
-=FV4E
------END PGP SIGNATURE-----
-
---ExXT7PjY8AI4Hyfa--
+> +	vqmmc-supply = <&vccio_1v8>;
+> +	status = "okay";
+> +};
+> +
+>  &sdmmc {
+>  	cap-mmc-highspeed;
+>  	disable-wp;
+> -- 
+> 2.11.0
