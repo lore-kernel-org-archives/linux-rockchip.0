@@ -1,78 +1,116 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH] media: v4l2-common: change the pixel_enc of
- V4L2_PIX_FMT_GREY to YUV
-Date: Mon, 6 Apr 2020 02:00:37 +0300
-Message-ID: <20200405230037.GT5846@pendragon.ideasonboard.com>
-References: <20200323173618.14058-1-dafna.hirschfeld@collabora.com>
- <9304066ca10c9ccdf8a5fd88866425a5f45a330a.camel@collabora.com>
- <ef6fd691-c8ca-9408-76b4-e47aca0fc9b4@collabora.com>
+From: Amit Kucheria <amit.kucheria@verdurent.com>
+Subject: Re: [PATCH] thermal: Delete an error message in four functions
+Date: Mon, 6 Apr 2020 13:00:00 +0530
+Message-ID: <CAHLCerMS5ghVXhOD7RAd5unxEe7w1W4_8hBP5Tf9HvuMEh5Lqg@mail.gmail.com>
+References: <05f49ae7-5cc7-d6a0-fc3d-abaf2a0b373c@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-media-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <ef6fd691-c8ca-9408-76b4-e47aca0fc9b4@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, helen.koike@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <05f49ae7-5cc7-d6a0-fc3d-abaf2a0b373c@web.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Markus Elfring <Markus.Elfring@web.de>
+Cc: Linux PM list <linux-pm@vger.kernel.org>, lakml <linux-arm-kernel@lists.infradead.org>, linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, linux-omap@vger.kernel.org, Alexandre Torgue <alexandre.torgue@st.com>, Allison Randal <allison@lohutok.net>, Clark Williams <williams@redhat.com>, Colin Ian King <colin.king@canonical.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Eduardo Valentin <edubezval@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Keerthy <j-keerthy@ti.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Pascal Paillet <p.paillet@st.com>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Thomas Gleixner <tglx@linutronix.de>, Zhang Rui <rui.>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
-
-Thank you for the patch.
-
-On Tue, Mar 31, 2020 at 09:20:49AM +0200, Dafna Hirschfeld wrote:
-> On 30.03.20 20:22, Ezequiel Garcia wrote:
-> > Hi Dafna,
-> > 
-> > Nice catch, thanks a lot.
+On Sun, Apr 5, 2020 at 10:21 PM Markus Elfring <Markus.Elfring@web.de> wrot=
+e:
 >
-> Hi, It was actually Helen's idea,
-> 
-> > On Mon, 2020-03-23 at 18:36 +0100, Dafna Hirschfeld wrote:
-> >> V4L2_PIX_FMT_GREY format is Ycbcr format without
-> > 
-> > A nitpick s/Ycbcr/YCbCr. Maybe Hans can amend
-> > this when applying.
-> > 
-> > It's no big deal anyway.
-> > 
-> > Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > 
-> >> the color data, therefore its pixel_enc should
-> >> set to V4L2_PIXEL_ENC_YUV.
-> >>
-> >> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> From: Markus Elfring <elfring@users.sourceforge.net>
+> Date: Sun, 5 Apr 2020 18:35:16 +0200
 >
-> Suggested-by: Helen Koike <helen.koike@collabora.com>
+> The function =E2=80=9Cplatform_get_irq=E2=80=9D can log an error already.
+> Thus omit redundant messages for the exception handling in the
+> calling functions.
+>
+> This issue was detected by using the Coccinelle software.
+>
+> Signed-off-by: Markus Elfring <elfring@users.sourceforge.net>
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Reviewed-by: Amit Kucheria <amit.kucheria@linaro.org>
 
-> >> ---
-> >>   drivers/media/v4l2-core/v4l2-common.c | 2 +-
-> >>   1 file changed, 1 insertion(+), 1 deletion(-)
-> >>
-> >> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-> >> index d0e5ebc736f9..054f2e607dff 100644
-> >> --- a/drivers/media/v4l2-core/v4l2-common.c
-> >> +++ b/drivers/media/v4l2-core/v4l2-common.c
-> >> @@ -250,7 +250,6 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
-> >>   		{ .format = V4L2_PIX_FMT_RGBA32,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
-> >>   		{ .format = V4L2_PIX_FMT_ABGR32,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
-> >>   		{ .format = V4L2_PIX_FMT_BGRA32,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 4, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
-> >> -		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
-> >>   		{ .format = V4L2_PIX_FMT_RGB565,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
-> >>   		{ .format = V4L2_PIX_FMT_RGB555,  .pixel_enc = V4L2_PIXEL_ENC_RGB, .mem_planes = 1, .comp_planes = 1, .bpp = { 2, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
-> >>   
-> >> @@ -274,6 +273,7 @@ const struct v4l2_format_info *v4l2_format_info(u32 format)
-> >>   		{ .format = V4L2_PIX_FMT_YUV420,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
-> >>   		{ .format = V4L2_PIX_FMT_YVU420,  .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
-> >>   		{ .format = V4L2_PIX_FMT_YUV422P, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 1 },
-> >> +		{ .format = V4L2_PIX_FMT_GREY,    .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 1, .comp_planes = 1, .bpp = { 1, 0, 0, 0 }, .hdiv = 1, .vdiv = 1 },
-> >>   
-> >>   		/* YUV planar formats, non contiguous variant */
-> >>   		{ .format = V4L2_PIX_FMT_YUV420M, .pixel_enc = V4L2_PIXEL_ENC_YUV, .mem_planes = 3, .comp_planes = 3, .bpp = { 1, 1, 1, 0 }, .hdiv = 2, .vdiv = 2 },
-
--- 
-Regards,
-
-Laurent Pinchart
+> ---
+>  drivers/thermal/rockchip_thermal.c          | 4 +---
+>  drivers/thermal/st/st_thermal_memmap.c      | 4 +---
+>  drivers/thermal/st/stm_thermal.c            | 4 +---
+>  drivers/thermal/ti-soc-thermal/ti-bandgap.c | 5 ++---
+>  4 files changed, 5 insertions(+), 12 deletions(-)
+>
+> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchi=
+p_thermal.c
+> index 7c1a8bccdcba..15a71ecc916c 100644
+> --- a/drivers/thermal/rockchip_thermal.c
+> +++ b/drivers/thermal/rockchip_thermal.c
+> @@ -1241,10 +1241,8 @@ static int rockchip_thermal_probe(struct platform_=
+device *pdev)
+>                 return -ENXIO;
+>
+>         irq =3D platform_get_irq(pdev, 0);
+> -       if (irq < 0) {
+> -               dev_err(&pdev->dev, "no irq resource?\n");
+> +       if (irq < 0)
+>                 return -EINVAL;
+> -       }
+>
+>         thermal =3D devm_kzalloc(&pdev->dev, sizeof(struct rockchip_therm=
+al_data),
+>                                GFP_KERNEL);
+> diff --git a/drivers/thermal/st/st_thermal_memmap.c b/drivers/thermal/st/=
+st_thermal_memmap.c
+> index a824b78dabf8..a0114452d11f 100644
+> --- a/drivers/thermal/st/st_thermal_memmap.c
+> +++ b/drivers/thermal/st/st_thermal_memmap.c
+> @@ -94,10 +94,8 @@ static int st_mmap_register_enable_irq(struct st_therm=
+al_sensor *sensor)
+>         int ret;
+>
+>         sensor->irq =3D platform_get_irq(pdev, 0);
+> -       if (sensor->irq < 0) {
+> -               dev_err(dev, "failed to register IRQ\n");
+> +       if (sensor->irq < 0)
+>                 return sensor->irq;
+> -       }
+>
+>         ret =3D devm_request_threaded_irq(dev, sensor->irq,
+>                                         NULL, st_mmap_thermal_trip_handle=
+r,
+> diff --git a/drivers/thermal/st/stm_thermal.c b/drivers/thermal/st/stm_th=
+ermal.c
+> index 9314e3df6a42..331e2b768df5 100644
+> --- a/drivers/thermal/st/stm_thermal.c
+> +++ b/drivers/thermal/st/stm_thermal.c
+> @@ -385,10 +385,8 @@ static int stm_register_irq(struct stm_thermal_senso=
+r *sensor)
+>         int ret;
+>
+>         sensor->irq =3D platform_get_irq(pdev, 0);
+> -       if (sensor->irq < 0) {
+> -               dev_err(dev, "%s: Unable to find IRQ\n", __func__);
+> +       if (sensor->irq < 0)
+>                 return sensor->irq;
+> -       }
+>
+>         ret =3D devm_request_threaded_irq(dev, sensor->irq,
+>                                         NULL,
+> diff --git a/drivers/thermal/ti-soc-thermal/ti-bandgap.c b/drivers/therma=
+l/ti-soc-thermal/ti-bandgap.c
+> index 263b0420fbe4..ab19ceff6e2a 100644
+> --- a/drivers/thermal/ti-soc-thermal/ti-bandgap.c
+> +++ b/drivers/thermal/ti-soc-thermal/ti-bandgap.c
+> @@ -772,10 +772,9 @@ static int ti_bandgap_talert_init(struct ti_bandgap =
+*bgp,
+>         int ret;
+>
+>         bgp->irq =3D platform_get_irq(pdev, 0);
+> -       if (bgp->irq < 0) {
+> -               dev_err(&pdev->dev, "get_irq failed\n");
+> +       if (bgp->irq < 0)
+>                 return bgp->irq;
+> -       }
+> +
+>         ret =3D request_threaded_irq(bgp->irq, NULL,
+>                                    ti_bandgap_talert_irq_handler,
+>                                    IRQF_TRIGGER_HIGH | IRQF_ONESHOT,
+> --
+> 2.26.0
+>
