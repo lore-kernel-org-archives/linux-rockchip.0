@@ -1,60 +1,91 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] dt-bindings: sound: convert rockchip spdif
- bindings to yaml
-Date: Mon, 6 Apr 2020 12:50:08 +0100
-Message-ID: <20200406115008.GA7650@sirena.org.uk>
-References: <20200404115225.4314-1-jbx6244@gmail.com>
- <20200406110703.GA6837@sirena.org.uk>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH v2 4/5] media: staging: rkisp1: cap: support uv swapped
+ plane formats
+Date: Mon, 6 Apr 2020 13:56:44 +0200
+Message-ID: <e3b8728b-7146-30b5-2312-1b4cbac52c27@collabora.com>
+References: <20200402190419.15155-1-dafna.hirschfeld@collabora.com>
+ <20200402190419.15155-5-dafna.hirschfeld@collabora.com>
+ <20200405181623.GQ5846@pendragon.ideasonboard.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="Nq2Wo0NMKNjxTN9z"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200406110703.GA6837-GFdadSzt00ze9xe1eoZjHA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200405181623.GQ5846@pendragon.ideasonboard.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
---Nq2Wo0NMKNjxTN9z
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Mon, Apr 06, 2020 at 12:07:03PM +0100, Mark Brown wrote:
-> On Sat, Apr 04, 2020 at 01:52:23PM +0200, Johan Jonker wrote:
-> > Current dts files with 'spdif' nodes are manually verified.
-> > In order to automate this process rockchip-spdif.txt
-> > has to be converted to yaml.
->=20
-> Please don't send content free pings and please allow a reasonable time
-> for review.  People get busy, go on holiday, attend conferences and so=20
+On 4/5/20 8:16 PM, Laurent Pinchart wrote:
+> Hi Dafna,
+> 
+> Thank you for the patch.
+> 
+> On Thu, Apr 02, 2020 at 09:04:18PM +0200, Dafna Hirschfeld wrote:
+>> Plane formats with the u and v planes swapped can be
+>> supported by changing the address of the cb and cr in
+>> the buffer.
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>> Acked-by: Helen Koike <helen.koike@collabora.com>
+>> ---
+>>   drivers/staging/media/rkisp1/rkisp1-capture.c | 17 +++++++++++++++++
+>>   1 file changed, 17 insertions(+)
+>>
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> index fa2849209433..2d274e8f565b 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> @@ -41,6 +41,10 @@
+>>   	(((write_format) == RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA) ||	\
+>>   	 ((write_format) == RKISP1_MI_CTRL_SP_WRITE_SPLA))
+>>   
+>> +#define RKISP1_IS_PLANAR(write_format)					\
+>> +	(((write_format) == RKISP1_MI_CTRL_SP_WRITE_PLA) ||		\
+>> +	 ((write_format) == RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8))
+>> +
+>>   enum rkisp1_plane {
+>>   	RKISP1_PLANE_Y	= 0,
+>>   	RKISP1_PLANE_CB	= 1,
+>> @@ -788,6 +792,19 @@ static void rkisp1_vb2_buf_queue(struct vb2_buffer *vb)
+>>   			rkisp1_pixfmt_comp_size(pixm, RKISP1_PLANE_CB);
+>>   	}
+>>   
+>> +	/*
+>> +	 * uv swap can be supported for plane formats by switching
+>> +	 * the address of cb and cr
+>> +	 */
+>> +	if (RKISP1_IS_PLANAR(cap->pix.cfg->write_format) &&
+> 
+> As commented on patch 3/5, could this be checked from the data in
+> v4l2_format_info ?
+yes
+> 
+>> +	    cap->pix.cfg->uv_swap) {
+>> +		ispbuf->buff_addr[RKISP1_PLANE_CR] =
+>> +			ispbuf->buff_addr[RKISP1_PLANE_CB];
+>> +		ispbuf->buff_addr[RKISP1_PLANE_CB] =
+>> +			ispbuf->buff_addr[RKISP1_PLANE_CR] +
+>> +			rkisp1_pixfmt_comp_size(pixm, RKISP1_PLANE_CR);
+> 
+> How about
+> 
+> 		swap(ispbuf->buff_addr[RKISP1_PLANE_CR],
+> 		     ispbuf->buff_addr[RKISP1_PLANE_CB]);
+> 
+> ?
+This also works, theoretically if there was a format where the Cb, Cr planes
+are not equal size then a swap will not work.
 
-Sorry, I just noticed that there are actually some changes in this
-version.
-
-> Please submit patches using subject lines reflecting the style for the
-> subsystem, this makes it easier for people to identify relevant patches.
-> Look at what existing commits in the area you're changing are doing and
-> make sure your subject lines visually resemble what they're doing.
-> There's no need to resubmit to fix this alone.
-
-This bit still applies though.
-
---Nq2Wo0NMKNjxTN9z
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl6LF28ACgkQJNaLcl1U
-h9BQDwf/TLMzjvaOS/XrkaDPT2V2JBzzwos/AckUmEy1bGBb3gFmfuV5mHpZFfTM
-f1svscqWp5VgXssq6EGCwZnUpmyGjo1AcJTq1aYCAgXa65a7c8D8QS2WwzYlFeFQ
-NMTO/Vd5q/9qjreQSvqWCXByFF1lSaNX3LOq4F1b8wEloSjFUv33W4AgewOq8g6P
-evxzb1IsiIUv9CJsOgz/cPAud4FseYOuh4H1L+TqigrDd4z1i9nUXeluSvmswf0k
-WJGHHvU2xxLjFicbQeJrG5VyXHSELl6JRdbojGFPksD2SKTnHXl3+/mLDWHYzFW4
-4YhxljCFCaRnx+ofEiOsmPEjt/HEOQ==
-=y6jt
------END PGP SIGNATURE-----
-
---Nq2Wo0NMKNjxTN9z--
+Thanks,
+Dafna
+> 
+>> +	}
+>> +
+>>   	spin_lock_irqsave(&cap->buf.lock, flags);
+>>   
+>>   	/*
+> 
