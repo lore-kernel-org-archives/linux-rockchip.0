@@ -1,63 +1,619 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3 1/3] dt-bindings: sound: convert rockchip spdif
- bindings to yaml
-Date: Mon, 6 Apr 2020 12:07:03 +0100
-Message-ID: <20200406110703.GA6837@sirena.org.uk>
-References: <20200404115225.4314-1-jbx6244@gmail.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH v2 1/2] media: staging: rkisp1: replace
+ rkisp1_fmt_pix_type with v4l2_pixel_encoding
+Date: Mon, 6 Apr 2020 13:08:47 +0200
+Message-ID: <f51e0ba7-b8c9-ec84-8ef1-7b4404a39340@collabora.com>
+References: <20200403092738.29831-1-dafna.hirschfeld@collabora.com>
+ <20200403092738.29831-2-dafna.hirschfeld@collabora.com>
+ <20200405175229.GL5846@pendragon.ideasonboard.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="TB36FDmn/VVEgNH/"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200404115225.4314-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200405175229.GL5846@pendragon.ideasonboard.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, linux-rockchip@lists.infradead.org, sakari.ailus@linux.intel.com
 List-Id: linux-rockchip.vger.kernel.org
 
 
---TB36FDmn/VVEgNH/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Sat, Apr 04, 2020 at 01:52:23PM +0200, Johan Jonker wrote:
-> Current dts files with 'spdif' nodes are manually verified.
-> In order to automate this process rockchip-spdif.txt
-> has to be converted to yaml.
+On 4/5/20 7:52 PM, Laurent Pinchart wrote:
+> Hi Dafna,
+> 
+> Thank you for the patch.
+> 
+> On Fri, Apr 03, 2020 at 11:27:37AM +0200, Dafna Hirschfeld wrote:
+>> The enum rkisp1_fmt_pix_type that holds the pixel format
+>> which is one of RGB, YUV, BAYER, can be replace by the
+>> v4l2 enum v4l2_pixel_encoding.
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>> ---
+>>   drivers/staging/media/rkisp1/rkisp1-capture.c | 92 +++++++++----------
+>>   drivers/staging/media/rkisp1/rkisp1-common.h  | 11 +--
+>>   drivers/staging/media/rkisp1/rkisp1-isp.c     | 42 ++++-----
+>>   drivers/staging/media/rkisp1/rkisp1-resizer.c |  8 +-
+>>   4 files changed, 73 insertions(+), 80 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> index 45d237a77ca4..8e8ea7ed8de3 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> @@ -87,133 +87,133 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
+>>   	/* yuv422 */
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_YUYV,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_YVYU,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_VYUY,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_YUV422P,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_NV16,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_NV61,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_YVU422M,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>>   	},
+>>   	/* yuv420 */
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_NV21,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_NV12,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_NV21M,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_NV12M,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_YUV420,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_YVU420,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>>   	},
+>>   	/* yuv444 */
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_YUV444M,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>>   	},
+>>   	/* yuv400 */
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_GREY,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+>>   	},
+>>   	/* raw */
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_SRGGB8,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SGRBG8,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SGBRG8,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SBGGR8,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SRGGB10,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SGRBG10,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SGBRG10,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SBGGR10,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SRGGB12,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SGRBG12,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SGBRG12,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_SBGGR12,
+>> -		.fmt_type = RKISP1_FMT_BAYER,
+>> +		.fmt_type = V4L2_PIXEL_ENC_BAYER,
+>>   		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
+>>   	},
+>>   };
+>> @@ -222,43 +222,43 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>>   	/* yuv422 */
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_YUYV,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_YVYU,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_VYUY,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_YUV422P,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_NV16,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_NV61,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_YVU422M,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+>> @@ -266,37 +266,37 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>>   	/* yuv420 */
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_NV21,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_NV12,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_NV21M,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_NV12M,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_YUV420,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_YVU420,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 1,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
+>> @@ -304,7 +304,7 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>>   	/* yuv444 */
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_YUV444M,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV444,
+>> @@ -312,7 +312,7 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>>   	/* yuv400 */
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_GREY,
+>> -		.fmt_type = RKISP1_FMT_YUV,
+>> +		.fmt_type = V4L2_PIXEL_ENC_YUV,
+>>   		.uv_swap = 0,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
+>> @@ -320,17 +320,17 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>>   	/* rgb */
+>>   	{
+>>   		.fourcc = V4L2_PIX_FMT_RGB24,
+>> -		.fmt_type = RKISP1_FMT_RGB,
+>> +		.fmt_type = V4L2_PIXEL_ENC_RGB,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_RGB565,
+>> -		.fmt_type = RKISP1_FMT_RGB,
+>> +		.fmt_type = V4L2_PIXEL_ENC_RGB,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB565,
+>>   	}, {
+>>   		.fourcc = V4L2_PIX_FMT_BGR666,
+>> -		.fmt_type = RKISP1_FMT_RGB,
+>> +		.fmt_type = V4L2_PIXEL_ENC_RGB,
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB666,
+>>   	},
+>> @@ -510,7 +510,7 @@ static void rkisp1_mp_enable(struct rkisp1_capture *cap)
+>>   	rkisp1_mp_disable(cap);
+>>   
+>>   	mi_ctrl = rkisp1_read(cap->rkisp1, RKISP1_CIF_MI_CTRL);
+>> -	if (isp_fmt->fmt_type == RKISP1_FMT_BAYER)
+>> +	if (isp_fmt->fmt_type == V4L2_PIXEL_ENC_BAYER)
+>>   		mi_ctrl |= RKISP1_CIF_MI_CTRL_RAW_ENABLE;
+>>   	/* YUV */
+>>   	else
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+>> index 18507f5b6f3c..c8625747c279 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+>> @@ -52,13 +52,6 @@ enum rkisp1_stream_id {
+>>   	RKISP1_SELFPATH,
+>>   };
+>>   
+>> -enum rkisp1_fmt_pix_type {
+>> -	RKISP1_FMT_YUV,
+>> -	RKISP1_FMT_RGB,
+>> -	RKISP1_FMT_BAYER,
+>> -	RKISP1_FMT_JPEG,
+> 
+> Will we still have a path forward to support JPEG ?
 
-Please don't send content free pings and please allow a reasonable time
-for review.  People get busy, go on holiday, attend conferences and so=20
-on so unless there is some reason for urgency (like critical bug fixes)
-please allow at least a couple of weeks for review.  If there have been
-review comments then people may be waiting for those to be addressed.
+The JPEG encoder is another block between the resizer and the capture.
+I didn't think about it too deeply since JPEG support doesn't seem to come soon.
+But I guess it is just adding another entity that recieve only MEDIA_BUS_FMT_YUYV8_2X8
+to sink pad and output only MEDIA_BUS_FMT_JPEG_1X8 and adding an item to
+rkisp1_mp_fmts with with fourcc = V4L2_PIX_FMT_JPEG.
+Then in the validation callback there should be an 'if' that check that if pix-fmt is JPEG
+then so is the mbus format.
+So we can do without RKISP1_FMT_JPEG
 
-Sending content free pings adds to the mail volume (if they are seen at
-all) which is often the problem and since they can't be reviewed
-directly if something has gone wrong you'll have to resend the patches
-anyway, so sending again is generally a better approach though there are
-some other maintainers who like them - if in doubt look at how patches
-for the subsystem are normally handled.
+> 
+>> -};
+>> -
+>>   enum rkisp1_fmt_raw_pat_type {
+>>   	RKISP1_RAW_RGGB = 0,
+>>   	RKISP1_RAW_GRBG,
+>> @@ -225,7 +218,7 @@ struct rkisp1_resizer {
+>>   	struct media_pad pads[RKISP1_ISP_PAD_MAX];
+>>   	struct v4l2_subdev_pad_config pad_cfg[RKISP1_ISP_PAD_MAX];
+>>   	const struct rkisp1_rsz_config *config;
+>> -	enum rkisp1_fmt_pix_type fmt_type;
+>> +	enum v4l2_pixel_encoding fmt_type;
+> 
+> Would it make sense to also rename the fmt_type field to pixel_enc > 
+>>   	struct mutex ops_lock;
+>>   };
+>>   
+>> @@ -278,7 +271,7 @@ struct rkisp1_device {
+>>    */
+>>   struct rkisp1_isp_mbus_info {
+>>   	u32 mbus_code;
+>> -	enum rkisp1_fmt_pix_type fmt_type;
+>> +	enum v4l2_pixel_encoding fmt_type;
+> 
+> Same here.
+yes, I'll add these 2 it as another patch
 
-Please submit patches using subject lines reflecting the style for the
-subsystem, this makes it easier for people to identify relevant patches.
-Look at what existing commits in the area you're changing are doing and
-make sure your subject lines visually resemble what they're doing.
-There's no need to resubmit to fix this alone.
+Thanks,
+Dafna
 
---TB36FDmn/VVEgNH/
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl6LDVQACgkQJNaLcl1U
-h9At1Af9FC3z9FsNzTwUOLATMox+yRod2jIFEGJXPViju4E8V2EuoclTbhXAgNQ+
-HpPLozVdeSMKzCNs57EAKph0W6rKpkaGz5R9NliqRohe0OiQpnIhftVJMHawgqCl
-0e0hzX3E+R+1hOa6R2BDTdTHuA+xk2oni8V6w/MW4LVuZZ13fl2Pxa2y5dOdp+ER
-woZL3J56Q1b6NkKdYWyCMZgj/GfOb8FFVfC0Dp4BTQh0VO0V2KvwCdklmWXqYC8D
-kkHkggw+t/98qhSUrBu+L4FvXYwc17OzhJszkbJWGLoA83ogbf12Nqm4X2ftyteA
-p+R0xiHc+axQuwhe8ch0Ei0ZBAJxvg==
-=VqFs
------END PGP SIGNATURE-----
-
---TB36FDmn/VVEgNH/--
+> 
+> With or without this change (which could also go on top),
+> 
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> 
+>>   	u32 mipi_dt;
+>>   	u32 yuv_seq;
+>>   	u8 bus_width;
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
+>> index a41c6ff14009..98a74603327a 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-isp.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
+>> @@ -61,116 +61,116 @@
+>>   static const struct rkisp1_isp_mbus_info rkisp1_isp_formats[] = {
+>>   	{
+>>   		.mbus_code	= MEDIA_BUS_FMT_YUYV8_2X8,
+>> -		.fmt_type	= RKISP1_FMT_YUV,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_YUV,
+>>   		.direction	= RKISP1_DIR_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SRGGB10_1X10,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
+>>   		.bayer_pat	= RKISP1_RAW_RGGB,
+>>   		.bus_width	= 10,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
+>>   		.bayer_pat	= RKISP1_RAW_BGGR,
+>>   		.bus_width	= 10,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SGBRG10_1X10,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
+>>   		.bayer_pat	= RKISP1_RAW_GBRG,
+>>   		.bus_width	= 10,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
+>>   		.bayer_pat	= RKISP1_RAW_GRBG,
+>>   		.bus_width	= 10,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SRGGB12_1X12,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
+>>   		.bayer_pat	= RKISP1_RAW_RGGB,
+>>   		.bus_width	= 12,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SBGGR12_1X12,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
+>>   		.bayer_pat	= RKISP1_RAW_BGGR,
+>>   		.bus_width	= 12,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SGBRG12_1X12,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
+>>   		.bayer_pat	= RKISP1_RAW_GBRG,
+>>   		.bus_width	= 12,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SGRBG12_1X12,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
+>>   		.bayer_pat	= RKISP1_RAW_GRBG,
+>>   		.bus_width	= 12,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SRGGB8_1X8,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
+>>   		.bayer_pat	= RKISP1_RAW_RGGB,
+>>   		.bus_width	= 8,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SBGGR8_1X8,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
+>>   		.bayer_pat	= RKISP1_RAW_BGGR,
+>>   		.bus_width	= 8,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SGBRG8_1X8,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
+>>   		.bayer_pat	= RKISP1_RAW_GBRG,
+>>   		.bus_width	= 8,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_SGRBG8_1X8,
+>> -		.fmt_type	= RKISP1_FMT_BAYER,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_BAYER,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
+>>   		.bayer_pat	= RKISP1_RAW_GRBG,
+>>   		.bus_width	= 8,
+>>   		.direction	= RKISP1_DIR_SINK_SRC,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_YUYV8_1X16,
+>> -		.fmt_type	= RKISP1_FMT_YUV,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_YUV,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_YUV422_8b,
+>>   		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCBYCR,
+>>   		.bus_width	= 16,
+>>   		.direction	= RKISP1_DIR_SINK,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_YVYU8_1X16,
+>> -		.fmt_type	= RKISP1_FMT_YUV,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_YUV,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_YUV422_8b,
+>>   		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCRYCB,
+>>   		.bus_width	= 16,
+>>   		.direction	= RKISP1_DIR_SINK,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_UYVY8_1X16,
+>> -		.fmt_type	= RKISP1_FMT_YUV,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_YUV,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_YUV422_8b,
+>>   		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CBYCRY,
+>>   		.bus_width	= 16,
+>>   		.direction	= RKISP1_DIR_SINK,
+>>   	}, {
+>>   		.mbus_code	= MEDIA_BUS_FMT_VYUY8_1X16,
+>> -		.fmt_type	= RKISP1_FMT_YUV,
+>> +		.fmt_type	= V4L2_PIXEL_ENC_YUV,
+>>   		.mipi_dt	= RKISP1_CIF_CSI2_DT_YUV422_8b,
+>>   		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CRYCBY,
+>>   		.bus_width	= 16,
+>> @@ -288,9 +288,9 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
+>>   					    RKISP1_ISP_PAD_SINK_VIDEO,
+>>   					    V4L2_SUBDEV_FORMAT_ACTIVE);
+>>   
+>> -	if (sink_fmt->fmt_type == RKISP1_FMT_BAYER) {
+>> +	if (sink_fmt->fmt_type == V4L2_PIXEL_ENC_BAYER) {
+>>   		acq_mult = 1;
+>> -		if (src_fmt->fmt_type == RKISP1_FMT_BAYER) {
+>> +		if (src_fmt->fmt_type == V4L2_PIXEL_ENC_BAYER) {
+>>   			if (sensor->mbus.type == V4L2_MBUS_BT656)
+>>   				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_RAW_PICT_ITU656;
+>>   			else
+>> @@ -304,7 +304,7 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
+>>   			else
+>>   				isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_BAYER_ITU601;
+>>   		}
+>> -	} else if (sink_fmt->fmt_type == RKISP1_FMT_YUV) {
+>> +	} else if (sink_fmt->fmt_type == V4L2_PIXEL_ENC_YUV) {
+>>   		acq_mult = 2;
+>>   		if (sensor->mbus.type == V4L2_MBUS_CSI2_DPHY) {
+>>   			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
+>> @@ -357,7 +357,7 @@ static int rkisp1_config_isp(struct rkisp1_device *rkisp1)
+>>   		    RKISP1_CIF_ISP_PIC_SIZE_ERROR | RKISP1_CIF_ISP_FRAME_IN;
+>>   	rkisp1_write(rkisp1, irq_mask, RKISP1_CIF_ISP_IMSC);
+>>   
+>> -	if (src_fmt->fmt_type == RKISP1_FMT_BAYER) {
+>> +	if (src_fmt->fmt_type == V4L2_PIXEL_ENC_BAYER) {
+>>   		rkisp1_params_disable(&rkisp1->params);
+>>   	} else {
+>>   		struct v4l2_mbus_framefmt *src_frm;
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> index 87799fbf0363..eaf28d421676 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> @@ -14,7 +14,7 @@
+>>   #define RKISP1_RSZ_MP_DEV_NAME	RKISP1_DRIVER_NAME "_resizer_mainpath"
+>>   
+>>   #define RKISP1_DEF_FMT MEDIA_BUS_FMT_YUYV8_2X8
+>> -#define RKISP1_DEF_FMT_TYPE RKISP1_FMT_YUV
+>> +#define RKISP1_DEF_FMT_TYPE V4L2_PIXEL_ENC_YUV
+>>   
+>>   #define RKISP1_MBUS_FMT_HDIV 2
+>>   #define RKISP1_MBUS_FMT_VDIV 1
+>> @@ -371,7 +371,7 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
+>>   	src_fmt = rkisp1_rsz_get_pad_fmt(rsz, NULL, RKISP1_RSZ_PAD_SRC,
+>>   					 V4L2_SUBDEV_FORMAT_ACTIVE);
+>>   
+>> -	if (rsz->fmt_type == RKISP1_FMT_BAYER) {
+>> +	if (rsz->fmt_type == V4L2_PIXEL_ENC_BAYER) {
+>>   		rkisp1_rsz_disable(rsz, when);
+>>   		return;
+>>   	}
+>> @@ -384,7 +384,7 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
+>>   	sink_c.width = sink_y.width / RKISP1_MBUS_FMT_HDIV;
+>>   	sink_c.height = sink_y.height / RKISP1_MBUS_FMT_VDIV;
+>>   
+>> -	if (rsz->fmt_type == RKISP1_FMT_YUV) {
+>> +	if (rsz->fmt_type == V4L2_PIXEL_ENC_YUV) {
+>>   		struct rkisp1_capture *cap =
+>>   			&rsz->rkisp1->capture_devs[rsz->id];
+>>   		const struct v4l2_format_info *pixfmt_info =
+>> @@ -498,7 +498,7 @@ static void rkisp1_rsz_set_sink_crop(struct rkisp1_resizer *rsz,
+>>   	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
+>>   
+>>   	if (rsz->id == RKISP1_MAINPATH &&
+>> -	    mbus_info->fmt_type == RKISP1_FMT_BAYER) {
+>> +	    mbus_info->fmt_type == V4L2_PIXEL_ENC_BAYER) {
+>>   		sink_crop->left = 0;
+>>   		sink_crop->top = 0;
+>>   		sink_crop->width = sink_fmt->width;
+> 
