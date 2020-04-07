@@ -1,106 +1,168 @@
-From: Niklas =?iso-8859-1?Q?S=F6derlund?=
-        <niklas.soderlund@ragnatech.se>
-Subject: Re: [PATCH v2 0/3] media: add v4l2_pipeline_stream_{enable,disable}
- helpers
-Date: Tue, 7 Apr 2020 21:36:15 +0200
-Message-ID: <20200407193615.GG1716317@oden.dyn.berto.se>
-References: <20200403213312.1863876-1-helen.koike@collabora.com>
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+Subject: Re: [PATCH v8 4/5] media: rkvdec: Add the rkvdec driver
+Date: Tue, 07 Apr 2020 15:36:32 -0400
+Message-ID: <abe902f2ebdfa41bd4d99b7beb3b6c7ec91d2a8f.camel@ndufresne.ca>
+References: <20200403221345.16702-1-ezequiel@collabora.com>
+         <20200403221345.16702-5-ezequiel@collabora.com>
+         <CAKQmDh_pCX_s2Ze7b1YBqgvEZHNrgzDUfcjPos8_GZq8x6=5Ng@mail.gmail.com>
+         <5c417620e1baeed7ec4ac750ab481366df2aa590.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200403213312.1863876-1-helen.koike@collabora.com>
+In-Reply-To: <5c417620e1baeed7ec4ac750ab481366df2aa590.camel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>
-Cc: linux-media@vger.kernel.org, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, skhan@linuxfoundation.org, mchehab@kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: DVB_Linux_Media <linux-media@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Helen,
+Le mardi 07 avril 2020 à 11:35 -0300, Ezequiel Garcia a écrit :
+> On Mon, 2020-04-06 at 16:27 -0400, Nicolas Dufresne wrote:
+> > Le ven. 3 avr. 2020 à 18:14, Ezequiel Garcia <ezequiel@collabora.com> a écrit :
+> > > From: Boris Brezillon <boris.brezillon@collabora.com>
+> > > 
+> > > The rockchip vdec block is a stateless decoder that's able to decode
+> > > H264, HEVC and VP9 content. This commit adds the core infrastructure
+> > > and the H264 backend. Support for VP9 and HEVS will be added later on.
+> > > 
+> > > Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+> > > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > 
+> > Sorry for the late feedback (got a comment lower) ...
+> > 
+> > Tested-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> > 
+> 
+> Nice, thank you.
+> 
+> > > --
+> > > v8:
+> > > * Fix kfree and style changes, as suggested by Andriy.
+> > > v7:
+> > > * hverkuil-cisco@xs4all.nl: replaced VFL_TYPE_GRABBER by _VIDEO
+> > > * Use macros and ARRAY_SIZE instead of magic numbers,
+> > >   as suggested by Mauro.
+> > > * Renamed M_N macro, suggested by Mauro.
+> > > * Use v4l2_m2m_buf_done_and_job_finish.
+> > > * Set buffers' zeroth plane payload in .buf_prepare
+> > > * Refactor try/s_fmt for spec compliance.
+> > > ---
+> > >  MAINTAINERS                                |    7 +
+> > >  drivers/staging/media/Kconfig              |    2 +
+> > >  drivers/staging/media/Makefile             |    1 +
+> > >  drivers/staging/media/rkvdec/Kconfig       |   15 +
+> > >  drivers/staging/media/rkvdec/Makefile      |    3 +
+> > >  drivers/staging/media/rkvdec/TODO          |   11 +
+> > >  drivers/staging/media/rkvdec/rkvdec-h264.c | 1156 ++++++++++++++++++++
+> > >  drivers/staging/media/rkvdec/rkvdec-regs.h |  223 ++++
+> > >  drivers/staging/media/rkvdec/rkvdec.c      | 1103 +++++++++++++++++++
+> > >  drivers/staging/media/rkvdec/rkvdec.h      |  121 ++
+> > >  10 files changed, 2642 insertions(+)
+> > >  create mode 100644 drivers/staging/media/rkvdec/Kconfig
+> > >  create mode 100644 drivers/staging/media/rkvdec/Makefile
+> > >  create mode 100644 drivers/staging/media/rkvdec/TODO
+> > >  create mode 100644 drivers/staging/media/rkvdec/rkvdec-h264.c
+> > >  create mode 100644 drivers/staging/media/rkvdec/rkvdec-regs.h
+> > >  create mode 100644 drivers/staging/media/rkvdec/rkvdec.c
+> > >  create mode 100644 drivers/staging/media/rkvdec/rkvdec.h
+> > > 
+> [..]
+> > > +
+> > > +static void set_ps_field(u32 *buf, struct rkvdec_ps_field field, u32 value)
+> > > +{
+> > > +       u8 bit = field.offset % 32, word = field.offset / 32;
+> > > +       u64 mask = GENMASK_ULL(bit + field.len - 1, bit);
+> > > +       u64 val = ((u64)value << bit) & mask;
+> > > +
+> > > +       buf[word] &= ~mask;
+> > > +       buf[word] |= val;
+> > > +       if (bit + field.len > 32) {
+> > > +               buf[word + 1] &= ~(mask >> 32);
+> > > +               buf[word + 1] |= val >> 32;
+> > > +       }
+> > > +}
+> > > +
+> > > +static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+> > > +                           struct rkvdec_h264_run *run)
+> > > +{
+> > > +       struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
+> > > +       const struct v4l2_ctrl_h264_sps *sps = run->sps;
+> > > +       const struct v4l2_ctrl_h264_pps *pps = run->pps;
+> > > +       const struct v4l2_ctrl_h264_decode_params *dec_params = run->decode_params;
+> > > +       const struct v4l2_h264_dpb_entry *dpb = dec_params->dpb;
+> > > +       struct rkvdec_h264_priv_tbl *priv_tbl = h264_ctx->priv_tbl.cpu;
+> > > +       struct rkvdec_sps_pps_packet *hw_ps;
+> > > +       dma_addr_t scaling_list_address;
+> > > +       u32 scaling_distance;
+> > > +       u32 i;
+> > > +
+> > > +       /*
+> > > +        * HW read the SPS/PPS information from PPS packet index by PPS id.
+> > > +        * offset from the base can be calculated by PPS_id * 32 (size per PPS
+> > > +        * packet unit). so the driver copy SPS/PPS information to the exact PPS
+> > > +        * packet unit for HW accessing.
+> > > +        */
+> > > +       hw_ps = &priv_tbl->param_set[pps->pic_parameter_set_id];
+> > > +       memset(hw_ps, 0, sizeof(*hw_ps));
+> > > +
+> > > +#define WRITE_PPS(value, field) set_ps_field(hw_ps->info, field, value)
+> > > +       /* write sps */
+> > > +       WRITE_PPS(0xf, SEQ_PARAMETER_SET_ID);
+> > > +       WRITE_PPS(0xff, PROFILE_IDC);
+> > > +       WRITE_PPS(1, CONSTRAINT_SET3_FLAG);
+> > 
+> > At first I found that part rather interesting, but I see this
+> > hardcoding matches what Rockchip do.
+> > 
+> > https://github.com/rockchip-linux/mpp/blob/release/mpp/hal/rkdec/h264d/hal_h264d_rkv_reg.c#L266
+> > 
+> > > +       WRITE_PPS(sps->chroma_format_idc, CHROMA_FORMAT_IDC);
+> > 
+> > But here's it's not so great. This driver does not implement any kind
+> > of validation. In fact, if I pass 3
+> > here  (YCbCr 4:4:4) it will accept it, and kind of decode some frames,
+> > but eventually with crash and
+> > reboot is needed. We should (as defined in the Statelss CODEC spec)
+> > validate the SPS and refuse if
+> > an unsupported profile idc, chroma idc, luma/chroma depth or coded
+> > size is requested.
+> 
+> Perhaps we could validate that at request_validate time,
+> or maybe ops.try_ctrl is better.
+> 
+> </thinking_out_loud>
+> 
+> > Validating the
+> > S_FMT is not sufficient as one can trick the driver in allocating
+> > buffers that are too small.
+> > 
+> 
+> I am not sure I follow you: how do you think the driver
+> can be tricked like this?
 
-On 2020-04-03 18:33:09 -0300, Helen Koike wrote:
-> Hi,
-> 
-> Media drivers need to iterate through the pipeline and call .s_stream()
-> callbacks in the subdevices.
-> 
-> Instead of repeating code, add helpers for this.
-> 
-> These helpers will go walk through the pipeline only visiting entities
-> that participates in the stream, i.e. it follows links from sink to source
-> (and not the opposite).
-> 
-> Which means that in a topology like this https://bit.ly/3b2MxjI
-> calling v4l2_pipeline_stream_enable() from rkisp1_mainpath won't call
-> .s_stream(true) for rkisp1_resizer_selfpath.
-> 
-> stream_count variable was added in v4l2_subdevice to handle nested calls
-> to the helpers.
-> This is useful when the driver allows streaming from more then one
-> capture device sharing subdevices.
-> 
-> This patch came from the error I was facing when multistreaming from
-> rkisp1 driver, where stoping one capture would call s_stream(false) in
-> the pipeline, causing a stall in the second capture device.
-> 
-> Also, the vimc patch https://patchwork.kernel.org/patch/10948833/ won't
-> be required with this patchset.
-> 
-> This patchset was tested on rkisp1 and vimc drivers.
+What I see is that there is no cross validation between the SPS
+register configuration and the frame allocations done through S_FMT. So
+if I cheat in S_FMT, and then pass an SPS that is larger then
+announced, the HW could potentially overrun buffers. That entirely
+depends on how much robustness there is in the HW implementation iself
+(and if we have a register to pass the buffer size).
 
-I'm just curious, with this series applied can I stream simultaneously 
-on multiple video devises using vimc?
+This is of course a gut feeling, I haven't found time to test this yet,
+but it came to my mind after I notice that passing a 4:4:4 choma_idc
+stream causes driver failure (no visible memory corruption or overrun
+though, the driver just stops working). So the resulting issues might
+not be that bad, but you endup loosing the decoder.
 
 > 
-> Other cleanup might be possible (but I won't add in this patchset as I
-> don't have the hw to test):
-> 	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/qcom/camss/camss-video.c#n430
-> 	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/omap3isp/isp.c#n697
-> 	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/stm32/stm32-dcmi.c#n680
-> 	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/xilinx/xilinx-dma.c#n97
+> > What I suspect is that we need to be careful with this HW, as it seems
+> > to be a bit half backed, which
+> > means it might be supporting more features then supported by the TRM
+> > or reference code, and we
+> > must disable this with software.
+> > 
+> > (p.s. I can provide a stream to reproduce the 4:4:4 driver failure)
+> > 
 > 
-> Changes in V2:
-> ====================
-> The first version was calling the s_stream() callbacks from sensor to
-> capture.
+> Thanks,
+> Ezequiel
 > 
-> This was generating errors in the Scarlet Chromebook, when the sensor
-> was being enabled before the ISP.
-> 
-> It make sense to enable subdevices from capture to sensor instead (which
-> is what most drivers do already).
-> 
-> This v2 drops the changes from mc-entity.c, and re-implement helpers in
-> v4l2-common.c
-> 
-> Overview of patches:
-> ====================
-> 
-> Path 1/3 adds the helpers in v4l2-common.c, allowing nested calls by
-> adding stream_count in the subdevice struct.
-> 
-> Patch 2/3 cleanup rkisp1 driver to use the helpers.
-> 
-> Patch 3/3 cleanup vimc driver to use the helpers.
-> 
-> Helen Koike (3):
->   media: v4l2-common: add helper functions to call s_stream() callbacks
->   media: staging: rkisp1: use v4l2_pipeline_stream_{enable,disable}
->     helpers
->   media: vimc: use v4l2_pipeline_stream_{enable,disable} helpers
-> 
->  drivers/media/platform/vimc/vimc-capture.c    |  28 +++--
->  drivers/media/platform/vimc/vimc-streamer.c   |  49 +-------
->  drivers/media/v4l2-core/v4l2-common.c         | 117 ++++++++++++++++++
->  drivers/staging/media/rkisp1/rkisp1-capture.c |  76 +-----------
->  include/media/v4l2-common.h                   |  28 +++++
->  include/media/v4l2-subdev.h                   |   2 +
->  6 files changed, 173 insertions(+), 127 deletions(-)
-> 
-> -- 
-> 2.26.0
-> 
-
--- 
-Regards,
-Niklas S�derlund
