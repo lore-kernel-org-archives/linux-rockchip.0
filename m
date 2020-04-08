@@ -1,159 +1,136 @@
-From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v8 4/5] media: rkvdec: Add the rkvdec driver
-Date: Wed, 08 Apr 2020 11:04:10 -0300
-Message-ID: <f2a044b2c9a0d2920ce3cc327b331a790cd128bb.camel@collabora.com>
-References: <20200403221345.16702-1-ezequiel@collabora.com>
- <20200403221345.16702-5-ezequiel@collabora.com>
- <CAKQmDh_pCX_s2Ze7b1YBqgvEZHNrgzDUfcjPos8_GZq8x6=5Ng@mail.gmail.com>
- <5c417620e1baeed7ec4ac750ab481366df2aa590.camel@collabora.com>
- <abe902f2ebdfa41bd4d99b7beb3b6c7ec91d2a8f.camel@ndufresne.ca>
+From: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [RFC PATCH 31/34] iommu/exynos: Create iommu_device in struct
+ exynos_iommu_owner
+Date: Wed, 8 Apr 2020 16:23:05 +0200
+Message-ID: <f59b0bb3-8c08-9cc9-bb1a-e69b7b226f60@samsung.com>
+References: <20200407183742.4344-1-joro@8bytes.org>
+        <CGME20200407184501eucas1p25407bc96e4345df406cf6ba061ae6a82@eucas1p2.samsung.com>
+        <20200407183742.4344-32-joro@8bytes.org>
+        <449e7f16-e719-9617-ec92-63b82c0bc33f@samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <abe902f2ebdfa41bd4d99b7beb3b6c7ec91d2a8f.camel-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Nicolas Dufresne <nicolas-dDhyB4GVkw9AFePFGvp55w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Jeffrey Kardatzke <jkardatzke-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, DVB_Linux_Media <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <449e7f16-e719-9617-ec92-63b82c0bc33f-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Content-Language: en-US
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Lu Baolu <baolu.lu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Jean-Philippe Brucker <jean-philippe-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-T24gVHVlLCAyMDIwLTA0LTA3IGF0IDE1OjM2IC0wNDAwLCBOaWNvbGFzIER1ZnJlc25lIHdyb3Rl
-Ogo+IExlIG1hcmRpIDA3IGF2cmlsIDIwMjAgw6AgMTE6MzUgLTAzMDAsIEV6ZXF1aWVsIEdhcmNp
-YSBhIMOpY3JpdCA6Cj4gPiBPbiBNb24sIDIwMjAtMDQtMDYgYXQgMTY6MjcgLTA0MDAsIE5pY29s
-YXMgRHVmcmVzbmUgd3JvdGU6Cj4gPiA+IExlIHZlbi4gMyBhdnIuIDIwMjAgw6AgMTg6MTQsIEV6
-ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4gYSDDqWNyaXQgOgo+ID4gPiA+
-IEZyb206IEJvcmlzIEJyZXppbGxvbiA8Ym9yaXMuYnJlemlsbG9uQGNvbGxhYm9yYS5jb20+Cj4g
-PiA+ID4gCj4gPiA+ID4gVGhlIHJvY2tjaGlwIHZkZWMgYmxvY2sgaXMgYSBzdGF0ZWxlc3MgZGVj
-b2RlciB0aGF0J3MgYWJsZSB0byBkZWNvZGUKPiA+ID4gPiBIMjY0LCBIRVZDIGFuZCBWUDkgY29u
-dGVudC4gVGhpcyBjb21taXQgYWRkcyB0aGUgY29yZSBpbmZyYXN0cnVjdHVyZQo+ID4gPiA+IGFu
-ZCB0aGUgSDI2NCBiYWNrZW5kLiBTdXBwb3J0IGZvciBWUDkgYW5kIEhFVlMgd2lsbCBiZSBhZGRl
-ZCBsYXRlciBvbi4KPiA+ID4gPiAKPiA+ID4gPiBTaWduZWQtb2ZmLWJ5OiBCb3JpcyBCcmV6aWxs
-b24gPGJvcmlzLmJyZXppbGxvbkBjb2xsYWJvcmEuY29tPgo+ID4gPiA+IFNpZ25lZC1vZmYtYnk6
-IEV6ZXF1aWVsIEdhcmNpYSA8ZXplcXVpZWxAY29sbGFib3JhLmNvbT4KPiA+ID4gCj4gPiA+IFNv
-cnJ5IGZvciB0aGUgbGF0ZSBmZWVkYmFjayAoZ290IGEgY29tbWVudCBsb3dlcikgLi4uCj4gPiA+
-IAo+ID4gPiBUZXN0ZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29s
-bGFib3JhLmNvbT4KPiA+ID4gCj4gPiAKPiA+IE5pY2UsIHRoYW5rIHlvdS4KPiA+IAo+ID4gPiA+
-IC0tCj4gPiA+ID4gdjg6Cj4gPiA+ID4gKiBGaXgga2ZyZWUgYW5kIHN0eWxlIGNoYW5nZXMsIGFz
-IHN1Z2dlc3RlZCBieSBBbmRyaXkuCj4gPiA+ID4gdjc6Cj4gPiA+ID4gKiBodmVya3VpbC1jaXNj
-b0B4czRhbGwubmw6IHJlcGxhY2VkIFZGTF9UWVBFX0dSQUJCRVIgYnkgX1ZJREVPCj4gPiA+ID4g
-KiBVc2UgbWFjcm9zIGFuZCBBUlJBWV9TSVpFIGluc3RlYWQgb2YgbWFnaWMgbnVtYmVycywKPiA+
-ID4gPiAgIGFzIHN1Z2dlc3RlZCBieSBNYXVyby4KPiA+ID4gPiAqIFJlbmFtZWQgTV9OIG1hY3Jv
-LCBzdWdnZXN0ZWQgYnkgTWF1cm8uCj4gPiA+ID4gKiBVc2UgdjRsMl9tMm1fYnVmX2RvbmVfYW5k
-X2pvYl9maW5pc2guCj4gPiA+ID4gKiBTZXQgYnVmZmVycycgemVyb3RoIHBsYW5lIHBheWxvYWQg
-aW4gLmJ1Zl9wcmVwYXJlCj4gPiA+ID4gKiBSZWZhY3RvciB0cnkvc19mbXQgZm9yIHNwZWMgY29t
-cGxpYW5jZS4KPiA+ID4gPiAtLS0KPiA+ID4gPiAgTUFJTlRBSU5FUlMgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIHwgICAgNyArCj4gPiA+ID4gIGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9L
-Y29uZmlnICAgICAgICAgICAgICB8ICAgIDIgKwo+ID4gPiA+ICBkcml2ZXJzL3N0YWdpbmcvbWVk
-aWEvTWFrZWZpbGUgICAgICAgICAgICAgfCAgICAxICsKPiA+ID4gPiAgZHJpdmVycy9zdGFnaW5n
-L21lZGlhL3JrdmRlYy9LY29uZmlnICAgICAgIHwgICAxNSArCj4gPiA+ID4gIGRyaXZlcnMvc3Rh
-Z2luZy9tZWRpYS9ya3ZkZWMvTWFrZWZpbGUgICAgICB8ICAgIDMgKwo+ID4gPiA+ICBkcml2ZXJz
-L3N0YWdpbmcvbWVkaWEvcmt2ZGVjL1RPRE8gICAgICAgICAgfCAgIDExICsKPiA+ID4gPiAgZHJp
-dmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9ya3ZkZWMtaDI2NC5jIHwgMTE1NiArKysrKysrKysr
-KysrKysrKysrKwo+ID4gPiA+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL3JrdmRlYy1y
-ZWdzLmggfCAgMjIzICsrKysKPiA+ID4gPiAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9y
-a3ZkZWMuYyAgICAgIHwgMTEwMyArKysrKysrKysrKysrKysrKysrCj4gPiA+ID4gIGRyaXZlcnMv
-c3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmggICAgICB8ICAxMjEgKysKPiA+ID4gPiAgMTAg
-ZmlsZXMgY2hhbmdlZCwgMjY0MiBpbnNlcnRpb25zKCspCj4gPiA+ID4gIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmt2ZGVjL0tjb25maWcKPiA+ID4gPiAgY3JlYXRl
-IG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvTWFrZWZpbGUKPiA+ID4g
-PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvVE9ETwo+
-ID4gPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JrdmRlYy9y
-a3ZkZWMtaDI2NC5jCj4gPiA+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3N0YWdpbmcv
-bWVkaWEvcmt2ZGVjL3JrdmRlYy1yZWdzLmgKPiA+ID4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmMKPiA+ID4gPiAgY3JlYXRlIG1vZGUg
-MTAwNjQ0IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmgKPiA+ID4gPiAKPiA+
-IFsuLl0KPiA+ID4gPiArCj4gPiA+ID4gK3N0YXRpYyB2b2lkIHNldF9wc19maWVsZCh1MzIgKmJ1
-Ziwgc3RydWN0IHJrdmRlY19wc19maWVsZCBmaWVsZCwgdTMyIHZhbHVlKQo+ID4gPiA+ICt7Cj4g
-PiA+ID4gKyAgICAgICB1OCBiaXQgPSBmaWVsZC5vZmZzZXQgJSAzMiwgd29yZCA9IGZpZWxkLm9m
-ZnNldCAvIDMyOwo+ID4gPiA+ICsgICAgICAgdTY0IG1hc2sgPSBHRU5NQVNLX1VMTChiaXQgKyBm
-aWVsZC5sZW4gLSAxLCBiaXQpOwo+ID4gPiA+ICsgICAgICAgdTY0IHZhbCA9ICgodTY0KXZhbHVl
-IDw8IGJpdCkgJiBtYXNrOwo+ID4gPiA+ICsKPiA+ID4gPiArICAgICAgIGJ1Zlt3b3JkXSAmPSB+
-bWFzazsKPiA+ID4gPiArICAgICAgIGJ1Zlt3b3JkXSB8PSB2YWw7Cj4gPiA+ID4gKyAgICAgICBp
-ZiAoYml0ICsgZmllbGQubGVuID4gMzIpIHsKPiA+ID4gPiArICAgICAgICAgICAgICAgYnVmW3dv
-cmQgKyAxXSAmPSB+KG1hc2sgPj4gMzIpOwo+ID4gPiA+ICsgICAgICAgICAgICAgICBidWZbd29y
-ZCArIDFdIHw9IHZhbCA+PiAzMjsKPiA+ID4gPiArICAgICAgIH0KPiA+ID4gPiArfQo+ID4gPiA+
-ICsKPiA+ID4gPiArc3RhdGljIHZvaWQgYXNzZW1ibGVfaHdfcHBzKHN0cnVjdCBya3ZkZWNfY3R4
-ICpjdHgsCj4gPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgIHN0cnVjdCBya3ZkZWNf
-aDI2NF9ydW4gKnJ1bikKPiA+ID4gPiArewo+ID4gPiA+ICsgICAgICAgc3RydWN0IHJrdmRlY19o
-MjY0X2N0eCAqaDI2NF9jdHggPSBjdHgtPnByaXY7Cj4gPiA+ID4gKyAgICAgICBjb25zdCBzdHJ1
-Y3QgdjRsMl9jdHJsX2gyNjRfc3BzICpzcHMgPSBydW4tPnNwczsKPiA+ID4gPiArICAgICAgIGNv
-bnN0IHN0cnVjdCB2NGwyX2N0cmxfaDI2NF9wcHMgKnBwcyA9IHJ1bi0+cHBzOwo+ID4gPiA+ICsg
-ICAgICAgY29uc3Qgc3RydWN0IHY0bDJfY3RybF9oMjY0X2RlY29kZV9wYXJhbXMgKmRlY19wYXJh
-bXMgPSBydW4tPmRlY29kZV9wYXJhbXM7Cj4gPiA+ID4gKyAgICAgICBjb25zdCBzdHJ1Y3QgdjRs
-Ml9oMjY0X2RwYl9lbnRyeSAqZHBiID0gZGVjX3BhcmFtcy0+ZHBiOwo+ID4gPiA+ICsgICAgICAg
-c3RydWN0IHJrdmRlY19oMjY0X3ByaXZfdGJsICpwcml2X3RibCA9IGgyNjRfY3R4LT5wcml2X3Ri
-bC5jcHU7Cj4gPiA+ID4gKyAgICAgICBzdHJ1Y3Qgcmt2ZGVjX3Nwc19wcHNfcGFja2V0ICpod19w
-czsKPiA+ID4gPiArICAgICAgIGRtYV9hZGRyX3Qgc2NhbGluZ19saXN0X2FkZHJlc3M7Cj4gPiA+
-ID4gKyAgICAgICB1MzIgc2NhbGluZ19kaXN0YW5jZTsKPiA+ID4gPiArICAgICAgIHUzMiBpOwo+
-ID4gPiA+ICsKPiA+ID4gPiArICAgICAgIC8qCj4gPiA+ID4gKyAgICAgICAgKiBIVyByZWFkIHRo
-ZSBTUFMvUFBTIGluZm9ybWF0aW9uIGZyb20gUFBTIHBhY2tldCBpbmRleCBieSBQUFMgaWQuCj4g
-PiA+ID4gKyAgICAgICAgKiBvZmZzZXQgZnJvbSB0aGUgYmFzZSBjYW4gYmUgY2FsY3VsYXRlZCBi
-eSBQUFNfaWQgKiAzMiAoc2l6ZSBwZXIgUFBTCj4gPiA+ID4gKyAgICAgICAgKiBwYWNrZXQgdW5p
-dCkuIHNvIHRoZSBkcml2ZXIgY29weSBTUFMvUFBTIGluZm9ybWF0aW9uIHRvIHRoZSBleGFjdCBQ
-UFMKPiA+ID4gPiArICAgICAgICAqIHBhY2tldCB1bml0IGZvciBIVyBhY2Nlc3NpbmcuCj4gPiA+
-ID4gKyAgICAgICAgKi8KPiA+ID4gPiArICAgICAgIGh3X3BzID0gJnByaXZfdGJsLT5wYXJhbV9z
-ZXRbcHBzLT5waWNfcGFyYW1ldGVyX3NldF9pZF07Cj4gPiA+ID4gKyAgICAgICBtZW1zZXQoaHdf
-cHMsIDAsIHNpemVvZigqaHdfcHMpKTsKPiA+ID4gPiArCj4gPiA+ID4gKyNkZWZpbmUgV1JJVEVf
-UFBTKHZhbHVlLCBmaWVsZCkgc2V0X3BzX2ZpZWxkKGh3X3BzLT5pbmZvLCBmaWVsZCwgdmFsdWUp
-Cj4gPiA+ID4gKyAgICAgICAvKiB3cml0ZSBzcHMgKi8KPiA+ID4gPiArICAgICAgIFdSSVRFX1BQ
-UygweGYsIFNFUV9QQVJBTUVURVJfU0VUX0lEKTsKPiA+ID4gPiArICAgICAgIFdSSVRFX1BQUygw
-eGZmLCBQUk9GSUxFX0lEQyk7Cj4gPiA+ID4gKyAgICAgICBXUklURV9QUFMoMSwgQ09OU1RSQUlO
-VF9TRVQzX0ZMQUcpOwo+ID4gPiAKPiA+ID4gQXQgZmlyc3QgSSBmb3VuZCB0aGF0IHBhcnQgcmF0
-aGVyIGludGVyZXN0aW5nLCBidXQgSSBzZWUgdGhpcwo+ID4gPiBoYXJkY29kaW5nIG1hdGNoZXMg
-d2hhdCBSb2NrY2hpcCBkby4KPiA+ID4gCj4gPiA+IGh0dHBzOi8vZ2l0aHViLmNvbS9yb2NrY2hp
-cC1saW51eC9tcHAvYmxvYi9yZWxlYXNlL21wcC9oYWwvcmtkZWMvaDI2NGQvaGFsX2gyNjRkX3Jr
-dl9yZWcuYyNMMjY2Cj4gPiA+IAo+ID4gPiA+ICsgICAgICAgV1JJVEVfUFBTKHNwcy0+Y2hyb21h
-X2Zvcm1hdF9pZGMsIENIUk9NQV9GT1JNQVRfSURDKTsKPiA+ID4gCj4gPiA+IEJ1dCBoZXJlJ3Mg
-aXQncyBub3Qgc28gZ3JlYXQuIFRoaXMgZHJpdmVyIGRvZXMgbm90IGltcGxlbWVudCBhbnkga2lu
-ZAo+ID4gPiBvZiB2YWxpZGF0aW9uLiBJbiBmYWN0LCBpZiBJIHBhc3MgMwo+ID4gPiBoZXJlICAo
-WUNiQ3IgNDo0OjQpIGl0IHdpbGwgYWNjZXB0IGl0LCBhbmQga2luZCBvZiBkZWNvZGUgc29tZSBm
-cmFtZXMsCj4gPiA+IGJ1dCBldmVudHVhbGx5IHdpdGggY3Jhc2ggYW5kCj4gPiA+IHJlYm9vdCBp
-cyBuZWVkZWQuIFdlIHNob3VsZCAoYXMgZGVmaW5lZCBpbiB0aGUgU3RhdGVsc3MgQ09ERUMgc3Bl
-YykKPiA+ID4gdmFsaWRhdGUgdGhlIFNQUyBhbmQgcmVmdXNlIGlmCj4gPiA+IGFuIHVuc3VwcG9y
-dGVkIHByb2ZpbGUgaWRjLCBjaHJvbWEgaWRjLCBsdW1hL2Nocm9tYSBkZXB0aCBvciBjb2RlZAo+
-ID4gPiBzaXplIGlzIHJlcXVlc3RlZC4KPiA+IAo+ID4gUGVyaGFwcyB3ZSBjb3VsZCB2YWxpZGF0
-ZSB0aGF0IGF0IHJlcXVlc3RfdmFsaWRhdGUgdGltZSwKPiA+IG9yIG1heWJlIG9wcy50cnlfY3Ry
-bCBpcyBiZXR0ZXIuCj4gPiAKPiA+IDwvdGhpbmtpbmdfb3V0X2xvdWQ+Cj4gPiAKPiA+ID4gVmFs
-aWRhdGluZyB0aGUKPiA+ID4gU19GTVQgaXMgbm90IHN1ZmZpY2llbnQgYXMgb25lIGNhbiB0cmlj
-ayB0aGUgZHJpdmVyIGluIGFsbG9jYXRpbmcKPiA+ID4gYnVmZmVycyB0aGF0IGFyZSB0b28gc21h
-bGwuCj4gPiA+IAo+ID4gCj4gPiBJIGFtIG5vdCBzdXJlIEkgZm9sbG93IHlvdTogaG93IGRvIHlv
-dSB0aGluayB0aGUgZHJpdmVyCj4gPiBjYW4gYmUgdHJpY2tlZCBsaWtlIHRoaXM/Cj4gCj4gV2hh
-dCBJIHNlZSBpcyB0aGF0IHRoZXJlIGlzIG5vIGNyb3NzIHZhbGlkYXRpb24gYmV0d2VlbiB0aGUg
-U1BTCj4gcmVnaXN0ZXIgY29uZmlndXJhdGlvbiBhbmQgdGhlIGZyYW1lIGFsbG9jYXRpb25zIGRv
-bmUgdGhyb3VnaCBTX0ZNVC4gU28KPiBpZiBJIGNoZWF0IGluIFNfRk1ULCBhbmQgdGhlbiBwYXNz
-IGFuIFNQUyB0aGF0IGlzIGxhcmdlciB0aGVuCj4gYW5ub3VuY2VkLCB0aGUgSFcgY291bGQgcG90
-ZW50aWFsbHkgb3ZlcnJ1biBidWZmZXJzLiBUaGF0IGVudGlyZWx5Cj4gZGVwZW5kcyBvbiBob3cg
-bXVjaCByb2J1c3RuZXNzIHRoZXJlIGlzIGluIHRoZSBIVyBpbXBsZW1lbnRhdGlvbiBpc2VsZgo+
-IChhbmQgaWYgd2UgaGF2ZSBhIHJlZ2lzdGVyIHRvIHBhc3MgdGhlIGJ1ZmZlciBzaXplKS4KPiAK
-PiBUaGlzIGlzIG9mIGNvdXJzZSBhIGd1dCBmZWVsaW5nLCBJIGhhdmVuJ3QgZm91bmQgdGltZSB0
-byB0ZXN0IHRoaXMgeWV0LAo+IGJ1dCBpdCBjYW1lIHRvIG15IG1pbmQgYWZ0ZXIgSSBub3RpY2Ug
-dGhhdCBwYXNzaW5nIGEgNDo0OjQgY2hvbWFfaWRjCj4gc3RyZWFtIGNhdXNlcyBkcml2ZXIgZmFp
-bHVyZSAobm8gdmlzaWJsZSBtZW1vcnkgY29ycnVwdGlvbiBvciBvdmVycnVuCj4gdGhvdWdoLCB0
-aGUgZHJpdmVyIGp1c3Qgc3RvcHMgd29ya2luZykuIFNvIHRoZSByZXN1bHRpbmcgaXNzdWVzIG1p
-Z2h0Cj4gbm90IGJlIHRoYXQgYmFkLCBidXQgeW91IGVuZHVwIGxvb3NpbmcgdGhlIGRlY29kZXIu
-Cj4gCgpOb3RlIHRoYXQgdGhpcyBkcml2ZXIgKGFzIHdlbGwgYXMgSGFudHJvKSBwcm9ncmFtcyB0
-aGUgaGFyZHdhcmUKdXNpbmcgdGhlIG5lZ290aWF0ZWQgcmVzb2x1dGlvbiwgYW5kIGlnbm9yZXMg
-d2hhdCB0aGUgU1BTIHNheXMKYWJvdXQgaXQuCgpJdCBzaG91bGRuJ3QgYmUgcG9zc2libGUgdG8g
-dHJpY2sgdGhlIGRyaXZlciB0aGlzIHdheS4KCk9UT0gsIGJvdGggZHJpdmVycyBzaG91bGQgaGF2
-ZSBhZGRpdGlvbmFsIGNoZWNrcyBmb3Igb3RoZXIgU1BTCmZpZWxkcyBzdWNoIGFzIGNocm9tYV9m
-b3JtYXRfaWRjIGFuZCBsdW1hX2JpdF9kZXB0aCwgYXMgeW91CnBvaW50ZWQgb3V0LgoKSSdsbCBh
-ZGQgdGhpcyB0byBteSBUT0RPIGxpc3QuIEkgdGhpbmsgaXQncyBkb2FibGUgYXMgZm9sbG93LXVw
-CnBhdGNoZXMuCgpUaGFuaywKRXplcXVpZWwKCj4gPiA+IFdoYXQgSSBzdXNwZWN0IGlzIHRoYXQg
-d2UgbmVlZCB0byBiZSBjYXJlZnVsIHdpdGggdGhpcyBIVywgYXMgaXQgc2VlbXMKPiA+ID4gdG8g
-YmUgYSBiaXQgaGFsZiBiYWNrZWQsIHdoaWNoCj4gPiA+IG1lYW5zIGl0IG1pZ2h0IGJlIHN1cHBv
-cnRpbmcgbW9yZSBmZWF0dXJlcyB0aGVuIHN1cHBvcnRlZCBieSB0aGUgVFJNCj4gPiA+IG9yIHJl
-ZmVyZW5jZSBjb2RlLCBhbmQgd2UKPiA+ID4gbXVzdCBkaXNhYmxlIHRoaXMgd2l0aCBzb2Z0d2Fy
-ZS4KPiA+ID4gCj4gPiA+IChwLnMuIEkgY2FuIHByb3ZpZGUgYSBzdHJlYW0gdG8gcmVwcm9kdWNl
-IHRoZSA0OjQ6NCBkcml2ZXIgZmFpbHVyZSkKPiA+ID4gCj4gPiAKPiA+IFRoYW5rcywKPiA+IEV6
-ZXF1aWVsCj4gPiAKPiAKPiAKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi again,
+
+On 08.04.2020 14:23, Marek Szyprowski wrote:
+> Hi Joerg,
+>
+> On 07.04.2020 20:37, Joerg Roedel wrote:
+>> From: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
+>>
+>> The 'struct exynos_iommu_owner' is an umbrella for multiple SYSMMU
+>> instances attached to one master. As such all these instances are
+>> handled the same, they are all configured with the same iommu_domain,
+>> for example.
+>>
+>> The IOMMU core code expects each device to have only one IOMMU
+>> attached, so create the IOMMU-device for the umbrella instead of each
+>> hardware SYSMMU.
+>>
+>> Signed-off-by: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
+>> ---
+>>   drivers/iommu/exynos-iommu.c | 96 +++++++++++++++++++++++++++---------
+>>   1 file changed, 73 insertions(+), 23 deletions(-)
+>>
+>> diff --git a/drivers/iommu/exynos-iommu.c b/drivers/iommu/exynos-iommu.c
+>> index 186ff5cc975c..86ecccbf0438 100644
+>> --- a/drivers/iommu/exynos-iommu.c
+>> +++ b/drivers/iommu/exynos-iommu.c
+>> @@ -235,6 +235,8 @@ struct exynos_iommu_owner {
+>>       struct list_head controllers;    /* list of 
+>> sysmmu_drvdata.owner_node */
+>>       struct iommu_domain *domain;    /* domain this device is 
+>> attached */
+>>       struct mutex rpm_lock;        /* for runtime pm of all sysmmus */
+>> +
+>> +    struct iommu_device iommu;    /* IOMMU core handle */
+>>   };
+>>     /*
+>> @@ -274,8 +276,6 @@ struct sysmmu_drvdata {
+>>       struct list_head owner_node;    /* node for owner controllers 
+>> list */
+>>       phys_addr_t pgtable;        /* assigned page table structure */
+>>       unsigned int version;        /* our version */
+>> -
+>> -    struct iommu_device iommu;    /* IOMMU core handle */
+>>   };
+>>     static struct exynos_iommu_domain *to_exynos_domain(struct 
+>> iommu_domain *dom)
+>> @@ -625,18 +625,6 @@ static int exynos_sysmmu_probe(struct 
+>> platform_device *pdev)
+>>       data->sysmmu = dev;
+>>       spin_lock_init(&data->lock);
+>>   -    ret = iommu_device_sysfs_add(&data->iommu, &pdev->dev, NULL,
+>> -                     dev_name(data->sysmmu));
+>> -    if (ret)
+>> -        return ret;
+>> -
+>> -    iommu_device_set_ops(&data->iommu, &exynos_iommu_ops);
+>> -    iommu_device_set_fwnode(&data->iommu, &dev->of_node->fwnode);
+>
+> The iommu_device_set_fwnode() call is lost during this conversion, 
+> what breaks driver operation. Most of the above IOMMU fw calls you 
+> have moved to xlate function. I've checked briefly but it looks that 
+> there is a chicken-egg problem here. The owner structure is allocated 
+> and initialized from of_xlate(), which won't be called without linking 
+> the problem iommu structure with the fwnode first, what might be done 
+> only in sysmmu_probe(). I will check how to handle this in a different 
+> way.
+
+I've played with this a bit and it looks that won't be easy to make it 
+working on ARM 32bit.
+
+I need a place to initialize properly all the structures for the given 
+master (IOMMU client device, the one which performs DMA operations).
+
+I tried to move all the initialization from xlate() to device_probe(), 
+but such approach doesn't work.
+
+On ARM32bit exynos_iommu_device_probe() is called by the device core and 
+IOMMU framework very early, before the Exynos SYSMMU platform devices 
+(controllers) are probed yet. Even iommu class is not yet initialized 
+that time, so returning anything successful from it causes following 
+NULL ptr dereference:
+
+Unable to handle kernel NULL pointer dereference at virtual address 0000004c
+...
+
+(__iommu_probe_device) from [<c055b334>] (iommu_probe_device+0x18/0x114)
+(iommu_probe_device) from [<c055b4ac>] (iommu_bus_notifier+0x7c/0x94)
+(iommu_bus_notifier) from [<c014e8ec>] (notifier_call_chain+0x44/0x84)
+(notifier_call_chain) from [<c014e9ec>] 
+(__blocking_notifier_call_chain+0x48/0x60)
+(__blocking_notifier_call_chain) from [<c014ea1c>] 
+(blocking_notifier_call_chain+0x18/0x20)
+(blocking_notifier_call_chain) from [<c05c8d1c>] (device_add+0x3e8/0x704)
+(device_add) from [<c07bafc4>] (of_platform_device_create_pdata+0x90/0xc4)
+(of_platform_device_create_pdata) from [<c07bb138>] 
+(of_platform_bus_create+0x134/0x48c)
+(of_platform_bus_create) from [<c07bb1a4>] 
+(of_platform_bus_create+0x1a0/0x48c)
+(of_platform_bus_create) from [<c07bb63c>] (of_platform_populate+0x84/0x114)
+(of_platform_populate) from [<c1125e9c>] 
+(of_platform_default_populate_init+0x90/0xac)
+(of_platform_default_populate_init) from [<c010326c>] 
+(do_one_initcall+0x80/0x42c)
+(do_one_initcall) from [<c1101074>] (kernel_init_freeable+0x15c/0x208)
+(kernel_init_freeable) from [<c0afdde0>] (kernel_init+0x8/0x118)
+(kernel_init) from [<c01010b4>] (ret_from_fork+0x14/0x20)
+
+I've tried returning ERR_PTR(-EPROBE_DEFER) from device_probe(), but I 
+doesn't work there. Some more changes in the framework are needed...
+
+ > ...
+
+Best regards
+-- 
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
