@@ -1,57 +1,23 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH] media: staging: rkisp1: avoid unused variable warning
-Date: Wed, 08 Apr 2020 16:38:30 -0300
-Message-ID: <58f011c7bd67c886892ac98505b916cc95adf495.camel@collabora.com>
-References: <20200408155325.2077345-1-arnd@arndb.de>
-         <3336c3105120d2f90dbc20d47ff98e722a123d5b.camel@collabora.com>
-         <CAK8P3a1K5T2e2kAQMVi=ubPN3v4rYgtb9TaGC6evNXSUc4embQ@mail.gmail.com>
+From: Bjorn Helgaas <helgaas@kernel.org>
+Subject: Re: [PATCH v7 2/8] PCI: rcar: Move shareable code to a common file
+Date: Wed, 8 Apr 2020 18:30:08 -0500
+Message-ID: <20200408233008.GA150200@google.com>
+References: <1586360280-10956-3-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAK8P3a1K5T2e2kAQMVi=ubPN3v4rYgtb9TaGC6evNXSUc4embQ@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Helen Koike <helen.koike@collabora.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Jacob Chen <jacob2.chen@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Yichong Zhong <zyc@rock-chips.com>, Jacob Chen <cc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, driverdevel <devel@driverdev.osuos>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-pci-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <1586360280-10956-3-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh+dt@kernel.org>, Andrew Murray <amurray@thegoodpenguin.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Jingoo Han <jingoohan1@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Tom Joseph <tjoseph@cadence.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert+renesas@glider.be>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, Chris Paterson <Chris.Paterson2@renesas.com>, linux-rockchip@lists.infradead.org, Lad Prabhakar <pr>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 2020-04-08 at 21:08 +0200, Arnd Bergmann wrote:
-> On Wed, Apr 8, 2020 at 7:56 PM Ezequiel Garcia <ezequiel@collabora.com> wrote:
-> > On Wed, 2020-04-08 at 17:52 +0200, Arnd Bergmann wrote:
-> > > When compile-testing with CONFIG_OF disabled, we get a warning
-> > > about an unused variable, and about inconsistent Kconfig dependencies:
-> > > 
-> > > WARNING: unmet direct dependencies detected for PHY_ROCKCHIP_DPHY_RX0
-> > >   Depends on [n]: STAGING [=y] && STAGING_MEDIA [=y] && MEDIA_SUPPORT [=m] && (ARCH_ROCKCHIP [=n] || COMPILE_TEST [=y]) && OF [=n]
-> > >   Selected by [m]:
-> > >   - VIDEO_ROCKCHIP_ISP1 [=m] && STAGING [=y] && STAGING_MEDIA [=y] && MEDIA_SUPPORT [=m] && VIDEO_V4L2 [=m] && VIDEO_V4L2_SUBDEV_API [=y] &&
-> > > (ARCH_ROCKCHIP [=n] || COMPILE_TEST [=y])
-> > > 
-> > > drivers/staging/media/rkisp1/rkisp1-dev.c: In function 'rkisp1_probe':
-> > > drivers/staging/media/rkisp1/rkisp1-dev.c:457:22: error: unused variable 'node' [-Werror=unused-variable]
-> > >   457 |  struct device_node *node = pdev->dev.of_node;
-> > > 
-> > > Simply open-coding the pointer dereference in the only place
-> > > the variable is used avoids the warning in all configurations,
-> > > so we can allow compile-testing as well.
-> > > 
-> > 
-> > Hello Arnd,
-> > 
-> > Thanks for your patch.
-> > 
-> > I believe this is already fixed here:
-> > 
-> > https://patchwork.linuxtv.org/patch/62774/
-> > https://patchwork.linuxtv.org/patch/62775/
-> 
-> Ok, sorry for the duplicate. I only tested on mainline from a few days ago,
-> so I must have missed it getting merged in the meantime.
-> 
+On Wed, Apr 08, 2020 at 04:37:54PM +0100, Lad Prabhakar wrote:
+> This patch moves sharable code to common file pcie-rcar.c and the #defines
+> to pcie-rcar.h so that the common code can be reused with endpoint driver.
+> There are no functional changes with this patch for the host controller
+> driver.
 
-No worries!
-
-Those were was sent very recently, and won't be
-merged any time soon :-)
-
-Ezequiel
+s/This patch moves/Move/
+s/sharable/shareable/
