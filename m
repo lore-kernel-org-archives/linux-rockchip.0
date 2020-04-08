@@ -1,35 +1,36 @@
 From: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
-Subject: [PATCH v7 7/8] PCI: Add Renesas R8A774C0 device ID
-Date: Wed,  8 Apr 2020 16:37:59 +0100
-Message-ID: <1586360280-10956-8-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Subject: [PATCH v7 8/8] MAINTAINERS: Add file patterns for rcar PCI device tree bindings
+Date: Wed,  8 Apr 2020 16:38:00 +0100
+Message-ID: <1586360280-10956-9-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
 References: <1586360280-10956-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
 In-Reply-To: <1586360280-10956-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
-Sender: linux-pci-owner@vger.kernel.org
+Sender: linux-renesas-soc-owner@vger.kernel.org
 To: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Andrew Murray <amurray@thegoodpenguin.co.uk>, Kishon Vijay Abraham I <kishon@ti.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Jingoo Han <jingoohan1@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Tom Joseph <tjoseph@cadence.com>, Heiko Stuebner <heiko@sntech.de>
 Cc: Geert Uytterhoeven <geert+renesas@glider.be>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, Chris Paterson <Chris.Paterson2@renesas.com>, linux-rockchip@lists.infradead.org, Lad Prabhakar <prabhakar.csengg@gmail.com>, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add R8A774C0 device ID so that this can be used by
-pci_endpoint_test driver.
+Add file pattern entry for rcar PCI devicetree binding, so that when
+people run ./scripts/get_maintainer.pl the rcar PCI maintainers could also
+be listed.
 
 Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 Reviewed-by: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
 ---
- include/linux/pci_ids.h | 1 +
+ MAINTAINERS | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
-index 1dfc4e1dcb94..9e957c18abeb 100644
---- a/include/linux/pci_ids.h
-+++ b/include/linux/pci_ids.h
-@@ -2460,6 +2460,7 @@
- #define PCI_DEVICE_ID_RENESAS_SH7763	0x0004
- #define PCI_DEVICE_ID_RENESAS_SH7785	0x0007
- #define PCI_DEVICE_ID_RENESAS_SH7786	0x0010
-+#define PCI_DEVICE_ID_RENESAS_R8A774C0	0x002d
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3f0f2ee2af32..87df2d31a54b 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -12933,6 +12933,7 @@ L:	linux-pci@vger.kernel.org
+ L:	linux-renesas-soc@vger.kernel.org
+ S:	Maintained
+ F:	drivers/pci/controller/*rcar*
++F:	Documentation/devicetree/bindings/pci/*rcar*
  
- #define PCI_VENDOR_ID_SOLARFLARE	0x1924
- #define PCI_DEVICE_ID_SOLARFLARE_SFC4000A_0	0x0703
+ PCI DRIVER FOR SAMSUNG EXYNOS
+ M:	Jingoo Han <jingoohan1@gmail.com>
 -- 
 2.20.1
