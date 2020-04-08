@@ -1,7 +1,7 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v3 1/6] media: staging: rkisp1: cap: cleanup in mainpath config for uv swap format
-Date: Wed,  8 Apr 2020 13:48:17 +0200
-Message-ID: <20200408114822.27360-2-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v3 4/6] media: staging: rkisp1: cap: support uv swap only for semiplanar formats
+Date: Wed,  8 Apr 2020 13:48:20 +0200
+Message-ID: <20200408114822.27360-5-dafna.hirschfeld@collabora.com>
 References: <20200408114822.27360-1-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,30 +12,63 @@ To: linux-media@vger.kernel.org
 Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The value RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP equals BIT(0),
-Therefore when writing it to the register there is no need to mask
-it first with ~BIT(0).
+The register RKISP1_CIF_MI_XTD_FORMAT_CTRL is relevant only
+for semiplanar formats, therefore the uv swap can be supported
+through this register only for semiplanar formats.
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Acked-by: Helen Koike <helen.koike@collabora.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- drivers/staging/media/rkisp1/rkisp1-capture.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 31 ++++++++++++-------
+ 1 file changed, 19 insertions(+), 12 deletions(-)
 
 diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index fbf62399fe3d..8ce1d25d4c6f 100644
+index 4830083c33fd..257799a7d865 100644
 --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
 +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -386,8 +386,7 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 	if (cap->pix.cfg->uv_swap) {
- 		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+@@ -383,12 +383,16 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
+ 		     cap->config->mi.cr_size_init);
  
--		reg = (reg & ~BIT(0)) |
--		      RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
-+		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
- 		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
- 	}
+ 	rkisp1_irq_frame_end_enable(cap);
+-	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+-	if (cap->pix.cfg->uv_swap)
+-		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+-	else
+-		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+-	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
++
++	/* set uv swapping for semiplanar formats */
++	if (cap->pix.info->comp_planes == 2) {
++		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
++		if (cap->pix.cfg->uv_swap)
++			reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
++		else
++			reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
++		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
++	}
+ 
+ 	rkisp1_mi_config_ctrl(cap);
+ 
+@@ -421,12 +425,15 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
+ 
+ 	rkisp1_irq_frame_end_enable(cap);
+ 
+-	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+-	if (cap->pix.cfg->uv_swap)
+-		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
+-	else
+-		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
+-	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
++	/* set uv swapping for semiplanar formats */
++	if (cap->pix.info->comp_planes == 2) {
++		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
++		if (cap->pix.cfg->uv_swap)
++			reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
++		else
++			reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
++		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
++	}
+ 
+ 	rkisp1_mi_config_ctrl(cap);
  
 -- 
 2.20.1
