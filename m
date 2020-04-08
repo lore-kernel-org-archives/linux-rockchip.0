@@ -1,30 +1,27 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
 Subject: Re: [PATCH] media: staging: rkisp1: avoid unused variable warning
-Date: Wed, 8 Apr 2020 19:08:06 +0300
-Message-ID: <20200408160806.GJ4881@pendragon.ideasonboard.com>
+Date: Wed, 08 Apr 2020 14:56:21 -0300
+Message-ID: <3336c3105120d2f90dbc20d47ff98e722a123d5b.camel@collabora.com>
 References: <20200408155325.2077345-1-arnd@arndb.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <20200408155325.2077345-1-arnd@arndb.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Arnd Bergmann <arnd@arndb.de>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Helen Koike <helen.koike@collabora.com>, Jacob Chen <jacob2.chen@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Yichong Zhong <zyc@rock-chips.com>, Jacob Chen <cc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org
+Sender: linux-media-owner@vger.kernel.org
+To: Arnd Bergmann <arnd@arndb.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Helen Koike <helen.koike@collabora.com>
+Cc: Jacob Chen <jacob2.chen@rock-chips.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Yichong Zhong <zyc@rock-chips.com>, Jacob Chen <cc@rock-chips.com>, Eddie Cai <eddie.cai.linux@gmail.com>, Jeffy Chen <jeffy.chen@rock-chips.com>, Allon Huang <allon.huang@rock-chips.com>, Tomasz Figa <tfiga@chromium.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, devel@driverdev.osuosl.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Arnd,
-
-Thank you for the patch.
-
-On Wed, Apr 08, 2020 at 05:52:44PM +0200, Arnd Bergmann wrote:
+On Wed, 2020-04-08 at 17:52 +0200, Arnd Bergmann wrote:
 > When compile-testing with CONFIG_OF disabled, we get a warning
 > about an unused variable, and about inconsistent Kconfig dependencies:
 > 
 > WARNING: unmet direct dependencies detected for PHY_ROCKCHIP_DPHY_RX0
 >   Depends on [n]: STAGING [=y] && STAGING_MEDIA [=y] && MEDIA_SUPPORT [=m] && (ARCH_ROCKCHIP [=n] || COMPILE_TEST [=y]) && OF [=n]
 >   Selected by [m]:
->   - VIDEO_ROCKCHIP_ISP1 [=m] && STAGING [=y] && STAGING_MEDIA [=y] && MEDIA_SUPPORT [=m] && VIDEO_V4L2 [=m] && VIDEO_V4L2_SUBDEV_API [=y] && (ARCH_ROCKCHIP [=n] || COMPILE_TEST [=y])
+>   - VIDEO_ROCKCHIP_ISP1 [=m] && STAGING [=y] && STAGING_MEDIA [=y] && MEDIA_SUPPORT [=m] && VIDEO_V4L2 [=m] && VIDEO_V4L2_SUBDEV_API [=y] &&
+> (ARCH_ROCKCHIP [=n] || COMPILE_TEST [=y])
 > 
 > drivers/staging/media/rkisp1/rkisp1-dev.c: In function 'rkisp1_probe':
 > drivers/staging/media/rkisp1/rkisp1-dev.c:457:22: error: unused variable 'node' [-Werror=unused-variable]
@@ -34,52 +31,16 @@ On Wed, Apr 08, 2020 at 05:52:44PM +0200, Arnd Bergmann wrote:
 > the variable is used avoids the warning in all configurations,
 > so we can allow compile-testing as well.
 > 
-> Fixes: d65dd85281fb ("media: staging: rkisp1: add Rockchip ISP1 base driver")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Hello Arnd,
 
-> ---
->  drivers/staging/media/phy-rockchip-dphy-rx0/Kconfig | 2 +-
->  drivers/staging/media/rkisp1/rkisp1-dev.c           | 3 +--
->  2 files changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/media/phy-rockchip-dphy-rx0/Kconfig b/drivers/staging/media/phy-rockchip-dphy-rx0/Kconfig
-> index bd0147624de1..dd5d4d741bdd 100644
-> --- a/drivers/staging/media/phy-rockchip-dphy-rx0/Kconfig
-> +++ b/drivers/staging/media/phy-rockchip-dphy-rx0/Kconfig
-> @@ -2,7 +2,7 @@
->  
->  config PHY_ROCKCHIP_DPHY_RX0
->  	tristate "Rockchip MIPI Synopsys DPHY RX0 driver"
-> -	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-> +	depends on (ARCH_ROCKCHIP && OF) || COMPILE_TEST
->  	select GENERIC_PHY_MIPI_DPHY
->  	select GENERIC_PHY
->  	help
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
-> index b1b3c058e957..5e7e797aad71 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-dev.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
-> @@ -454,7 +454,6 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
->  
->  static int rkisp1_probe(struct platform_device *pdev)
->  {
-> -	struct device_node *node = pdev->dev.of_node;
->  	const struct rkisp1_match_data *clk_data;
->  	const struct of_device_id *match;
->  	struct device *dev = &pdev->dev;
-> @@ -463,7 +462,7 @@ static int rkisp1_probe(struct platform_device *pdev)
->  	unsigned int i;
->  	int ret, irq;
->  
-> -	match = of_match_node(rkisp1_of_match, node);
-> +	match = of_match_node(rkisp1_of_match, pdev->dev.of_node);
->  	rkisp1 = devm_kzalloc(dev, sizeof(*rkisp1), GFP_KERNEL);
->  	if (!rkisp1)
->  		return -ENOMEM;
+Thanks for your patch.
 
--- 
-Regards,
+I believe this is already fixed here:
 
-Laurent Pinchart
+https://patchwork.linuxtv.org/patch/62774/
+https://patchwork.linuxtv.org/patch/62775/
+
+
+Cheers,
+Ezequiel
