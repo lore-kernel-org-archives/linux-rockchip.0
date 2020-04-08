@@ -1,122 +1,90 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [RFC PATCH 17/34] iommu/arm-smmu: Store device instead of group
- in arm_smmu_s2cr
-Date: Wed, 8 Apr 2020 13:09:40 +0100
-Message-ID: <98c10a41-d223-e375-9742-b6471c3dc33c@arm.com>
-References: <20200407183742.4344-1-joro@8bytes.org>
- <20200407183742.4344-18-joro@8bytes.org>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH v3 3/6] media: staging: rkisp1: cap: change the logic for
+ writing to uv swap register
+Date: Wed, 8 Apr 2020 15:10:11 +0300
+Message-ID: <20200408121011.GE4881@pendragon.ideasonboard.com>
+References: <20200408114822.27360-1-dafna.hirschfeld@collabora.com>
+ <20200408114822.27360-4-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <20200407183742.4344-18-joro@8bytes.org>
-Content-Language: en-GB
-Sender: linux-samsung-soc-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, linux-tegra@vger.kernel.org, virtualization@lists.linux-foundation.org, Joerg Roedel <jroedel@suse.de>
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-media-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200408114822.27360-4-dafna.hirschfeld@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: linux-media@vger.kernel.org, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-04-07 7:37 pm, Joerg Roedel wrote:
-> From: Joerg Roedel <jroedel@suse.de>
+Hi Dafna,
+
+Thank you for the patch.
+
+On Wed, Apr 08, 2020 at 01:48:19PM +0200, Dafna Hirschfeld wrote:
+> The register RKISP1_CIF_MI_XTD_FORMAT_CTRL is currently written
+> with "on" only if the u,v streams need to be swapped. This patch
+> also write to it with "off" if they don't need to be swapped.
 > 
-> This is required to convert the arm-smmu driver to the
-> probe/release_device() interface.
-> 
-> Signed-off-by: Joerg Roedel <jroedel@suse.de>
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+
+I think you can squash this with 1/6 and 2/6.
+
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+
 > ---
->   drivers/iommu/arm-smmu.c | 14 +++++++++-----
->   1 file changed, 9 insertions(+), 5 deletions(-)
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 21 ++++++++++---------
+>  1 file changed, 11 insertions(+), 10 deletions(-)
 > 
-> diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
-> index a6a5796e9c41..3493501d8b2c 100644
-> --- a/drivers/iommu/arm-smmu.c
-> +++ b/drivers/iommu/arm-smmu.c
-> @@ -69,7 +69,7 @@ MODULE_PARM_DESC(disable_bypass,
->   	"Disable bypass streams such that incoming transactions from devices that are not attached to an iommu domain will report an abort back to the device and will not be allowed to pass through the SMMU.");
->   
->   struct arm_smmu_s2cr {
-> -	struct iommu_group		*group;
-> +	struct device			*dev;
->   	int				count;
->   	enum arm_smmu_s2cr_type		type;
->   	enum arm_smmu_s2cr_privcfg	privcfg;
-> @@ -1100,7 +1100,7 @@ static int arm_smmu_master_alloc_smes(struct device *dev)
->   	/* It worked! Now, poke the actual hardware */
->   	for_each_cfg_sme(cfg, fwspec, i, idx) {
->   		arm_smmu_write_sme(smmu, idx);
-> -		smmu->s2crs[idx].group = group;
-> +		smmu->s2crs[idx].dev = dev;
->   	}
->   
->   	mutex_unlock(&smmu->stream_map_mutex);
-> @@ -1495,11 +1495,15 @@ static struct iommu_group *arm_smmu_device_group(struct device *dev)
->   	int i, idx;
->   
->   	for_each_cfg_sme(cfg, fwspec, i, idx) {
-> -		if (group && smmu->s2crs[idx].group &&
-> -		    group != smmu->s2crs[idx].group)
-> +		struct iommu_group *idx_grp = NULL;
-> +
-> +		if (smmu->s2crs[idx].dev)
-> +			idx_grp = smmu->s2crs[idx].dev->iommu_group;
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> index 5d0e489505f0..4830083c33fd 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> @@ -383,12 +383,12 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
+>  		     cap->config->mi.cr_size_init);
+>  
+>  	rkisp1_irq_frame_end_enable(cap);
+> -	if (cap->pix.cfg->uv_swap) {
+> -		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+> -
+> +	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+> +	if (cap->pix.cfg->uv_swap)
+>  		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+> -		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+> -	}
+> +	else
+> +		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+> +	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>  
+>  	rkisp1_mi_config_ctrl(cap);
+>  
+> @@ -406,7 +406,7 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
+>  {
+>  	const struct v4l2_pix_format_mplane *pixm = &cap->pix.fmt;
+>  	struct rkisp1_device *rkisp1 = cap->rkisp1;
+> -	u32 mi_ctrl;
+> +	u32 mi_ctrl, reg;
+>  
+>  	rkisp1_write(rkisp1, rkisp1_pixfmt_comp_size(pixm, RKISP1_PLANE_Y),
+>  		     cap->config->mi.y_size_init);
+> @@ -420,12 +420,13 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
+>  	rkisp1_write(rkisp1, cap->sp_y_stride, RKISP1_CIF_MI_SP_Y_LLENGTH);
+>  
+>  	rkisp1_irq_frame_end_enable(cap);
+> -	if (cap->pix.cfg->uv_swap) {
+> -		u32 reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>  
+> +	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+> +	if (cap->pix.cfg->uv_swap)
+>  		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
+> -		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+> -	}
+> +	else
+> +		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
+> +	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>  
+>  	rkisp1_mi_config_ctrl(cap);
+>  
 
-For a hot-pluggable bus where logical devices may share Stream IDs (like 
-fsl-mc), this could happen:
+-- 
+Regards,
 
-   create device A
-   iommu_probe_device(A)
-     iommu_device_group(A) -> alloc group X
-   create device B
-   iommu_probe_device(B)
-     iommu_device_group(A) -> lookup returns group X
-   ...
-   iommu_remove_device(A)
-   delete device A
-   create device C
-   iommu_probe_device(C)
-     iommu_device_group(C) -> use-after-free of A
-
-Preserving the logical behaviour here would probably look *something* 
-like the mangled diff below, but I haven't thought it through 100%.
-
-Robin.
-
------>8-----
-diff --git a/drivers/iommu/arm-smmu.c b/drivers/iommu/arm-smmu.c
-index 16c4b87af42b..e88612ee47fe 100644
---- a/drivers/iommu/arm-smmu.c
-+++ b/drivers/iommu/arm-smmu.c
-@@ -1100,10 +1100,8 @@ static int arm_smmu_master_alloc_smes(struct 
-device *dev)
-         iommu_group_put(group);
-
-         /* It worked! Now, poke the actual hardware */
--       for_each_cfg_sme(fwspec, i, idx) {
-+       for_each_cfg_sme(fwspec, i, idx)
-                 arm_smmu_write_sme(smmu, idx);
--               smmu->s2crs[idx].group = group;
--       }
-
-         mutex_unlock(&smmu->stream_map_mutex);
-         return 0;
-@@ -1500,15 +1498,17 @@ static struct iommu_group 
-*arm_smmu_device_group(struct device *dev)
-         }
-
-         if (group)
--               return iommu_group_ref_get(group);
--
--       if (dev_is_pci(dev))
-+               iommu_group_ref_get(group);
-+       else if (dev_is_pci(dev))
-                 group = pci_device_group(dev);
-         else if (dev_is_fsl_mc(dev))
-                 group = fsl_mc_device_group(dev);
-         else
-                 group = generic_device_group(dev);
-
-+       for_each_cfg_sme(fwspec, i, idx)
-+               smmu->s2crs[idx].group = group;
-+
-         return group;
-  }
+Laurent Pinchart
