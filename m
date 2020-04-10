@@ -1,46 +1,61 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.6 06/68] media: hantro: fix extra MV/MC sync space calculation
-Date: Thu,  9 Apr 2020 23:45:31 -0400
-Message-ID: <20200410034634.7731-6-sashal@kernel.org>
-References: <20200410034634.7731-1-sashal@kernel.org>
+From: Milan =?utf-8?Q?P=2E_Stani=C4=87?= <mps-OV3VlZ6014XR7s880joybQ@public.gmane.org>
+Subject: Re: PROBLEM: [drm:analogix_dp_bridge_atomic_enable [analogix_dp]]
+ *ERROR* Failed to disable psr -110
+Date: Fri, 10 Apr 2020 11:57:19 +0200
+Message-ID: <20200410095719.GA914@arya.arvanta.net>
+References: <20200329203349.GA15121@arya.arvanta.net>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200410034634.7731-1-sashal@kernel.org>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Sasha Levin <sashal@kernel.org>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devel@driverdev.osuosl.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20200329203349.GA15121-2zQUq8s2aCOuucbRd6SqTw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Philipp Zabel <p.zabel@pengutronix.de>
-
-[ Upstream commit 042584e9055b615ac917239884fb0d65690f56ec ]
-
-Add space for MVs and MC sync data to the capture buffers depending on
-whether the post processor will be enabled for the new capture format
-passed to TRY_FMT, not the currently set capture format.
-
-Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/staging/media/hantro/hantro_v4l2.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-index 0198bcda26b75..f4ae2cee0f189 100644
---- a/drivers/staging/media/hantro/hantro_v4l2.c
-+++ b/drivers/staging/media/hantro/hantro_v4l2.c
-@@ -295,7 +295,7 @@ static int vidioc_try_fmt(struct file *file, void *priv, struct v4l2_format *f,
- 		 * +---------------------------+
- 		 */
- 		if (ctx->vpu_src_fmt->fourcc == V4L2_PIX_FMT_H264_SLICE &&
--		    !hantro_needs_postproc(ctx, ctx->vpu_dst_fmt))
-+		    !hantro_needs_postproc(ctx, fmt))
- 			pix_mp->plane_fmt[0].sizeimage +=
- 				64 * MB_WIDTH(pix_mp->width) *
- 				     MB_WIDTH(pix_mp->height) + 32;
--- 
-2.20.1
+SGVsbG8sCgpEb2VzIGFueW9uZSBoYXZlL2tub3cgYW55dGhpbmcgd2hpY2ggY291bGQgaGVscCB3
+aXRoIHRoaXMgcHJvYmxlbSBvcgpwb2ludCBtZSB3aGVyZSBJIGNhbiBsb29rIHRvIGZpbmQgc29s
+dXRpb24gZm9yIHRoaXMgc2VyaW91cyBpc3N1ZS4KClRJQQoKT24gU3VuLCAyMDIwLTAzLTI5IGF0
+IDIyOjMzLCBNaWxhbiBQLiBTdGFuacSHIHdyb3RlOgo+IFsgUGxlYXNlIGtlZXAgbWUgaW4gQ2Ms
+IEknbSBub3Qgc3Vic2NyaWJlZCB0byB0aGlzIG1haWxpbmcgbGlzdCBdCj4gCj4gWyBJIHBvc3Rl
+ZCB0aGlzIGJ1ZyByZXBvcnQgdG8gZHJpLWRldmVsQGZyZWVkZXNrdG9wLm9yZyBoZXJlOgo+ICAg
+aHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvYXJjaGl2ZXMvZHJpLWRldmVsLzIwMjAtTWFy
+Y2gvMjU5ODMyLmh0bWwKPiAgIG9uIFRodSBNYXIgMTkgMjA6MDE6MTkgVVRDIDIwMjAgYnV0IGRp
+ZG4ndCByZWNlaXZlZCBhbnkgYW5zd2VyLiBTbwo+ICAgcmVwb3N0aW5nIGhlcmUgaW4gYSBob3Bl
+IHRoYXQgc29tZW9uZSB3aWxsIGhlbHAgXQo+IAo+IEhlbGxvLAo+IAo+IFRoaXMgaXMgb25lIG9m
+IGZpcnN0IGJ1ZyByZXBvcnQgdG8gbGludXgga2VybmVsLCBzbyBzb3JyeSBpZiBJIGRvCj4gc29t
+ZXRoaW5nIHdyb25nIG9yIGluYXBwcm9wcmlhdGUuIEFuZCBJJ20gc2VsZiB0YXVnaHQgaW4gRW5n
+bGlzaCBzbwo+IHNvcnJ5IGlmIGRvIG5vdCB3cml0ZSBvciBleHByZXNzIGNvcnJlY3RseS4KPiAK
+PiBJJ20gcnVubmluZyBsaW51eCA1LjYuMC1yYzMgd2l0aG91dCBhbnkgcGF0Y2hlcyBvbiBTYW1z
+dW5nIGNocm9tZWJvb2sKPiBvbmUgcGx1cywgQXJtNjQgcm9ja2NoaXAgcmszMzk5IGJhc2VkIG1v
+ZGVsIG5hbWU6Cj4gTWFjaGluZSBtb2RlbDogR29vZ2xlIEtldmluCj4gCj4gSSBidWlsZCBrZXJu
+ZWxzIGZyb20gdXBzdHJlYW0gZ2l0Lmtlcm5lbC5vcmcgZm9yIHRoaXMgbWFjaGluZSBmb3Igc29t
+ZQo+IHRpbWUgKGlpcmMsIGZyb20gNS40LjEgYW5kIHVwKSBidXQgSSdtIGdldHRpbmcgZXJyb3Ig
+bWVzc2FnZXMgaW4ga2VybmVsCj4gYWJvdXQgJ3BzcicgcmVsYXRlZCB0byBhbmFsb2dpeCBkcml2
+ZXIsIHdoaWNoIEkgc2VlIHdpdGggYGRtZXNnYC4KPiAKPiBUaGlzIGJ1ZyBhcHBlYXJzIGluIGBk
+bWVzZ2Agb3V0cHV0IGZldyB0aW1lcyBvbiBhIGRheXMgYnV0IHJhbmRvbWx5IGFuZAo+IEkgY2Fu
+J3QgZmluZCBhbnkgY29ycmVsYXRpb24gb2YgdGhlIHdvcmsgd2l0aCBtYWNoaW5lIGFuZCBhcHBl
+YXJhbmNlIG9mCj4gdGhpcyBidWcuCj4gCj4gSSBoYXZlIG5vIGV4cGVyaWVuY2Ugd2l0aCB3aXRo
+IHZpZGVvIGRyaXZlcnMgc28gZG9uJ3Qga25vdyBob3cgdG8gZGVidWcKPiB0aGlzIHByb2JsZW0g
+bW9yZSBkZWVwbHkuCj4gCj4gSSdtIGF0dGFjaGluZyBrZXJuZWwgLmNvbmZpZyAoZmlsZSBjb25m
+aWctNS42LjAtcmMzLTEtZ3J1LmNvbmYpIHdoaWNoIEkKPiB1c2UgdG8gYnVpbGQga2VybmVsLCBv
+dXRwdXQgb2YgdGhlIGBhd2sgLWYgc2NyaXB0cy92ZXJfbGludXhgIGFzIGZpbGUKPiB2ZXJfbGlu
+dXgudHh0IGFuZCAgb3V0cHV0IG9mIGRtZXNnIGFzIGZpbGUgZG1lc2ctYnIzLnR4dCAoZnJvbSB3
+aGljaCBJCj4gZGVsZXRlZCBvbmx5IHdpZmkgYXNzb2NpYXRpb24gbG9nKS4KPiAKPiBTb3JyeSBh
+Z2FpbiBpZiBJIGRpZCBzb21ldGhpbmcgYmFkIG9yIHdyb25nIHdpdGggdGhpcyBidWcgcmVwb3J0
+Lgo+IAo+IEknbSByZWFkeSB0byBzZW5kIHlvdSBtb3JlIGRhdGEsIGFuZCBpbnZlc3RpZ2F0ZSB0
+aGlzIG1vcmUsIGFwcGx5Cj4gcGF0Y2hlcyBhbmQgcmVidWlsZCBrZXJuZWwgb3Igd2hhdGV2ZXIg
+eW91IGFzayBtZSAob2YgY291cnNlIGlmIG15Cj4gdW5kZXJzdGFuZGluZyBhbmQga25vd2xlZGdl
+IGlzIGVub3VnaCBmb3IgdGhpcyBqb2IpLgo+IAo+IFRoYW5rIGluIGFkdmFuY2UKPiAKWy4uLl0K
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
