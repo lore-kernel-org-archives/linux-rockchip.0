@@ -1,49 +1,60 @@
-From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: Re: PROBLEM: [drm:analogix_dp_bridge_atomic_enable [analogix_dp]]
- *ERROR* Failed to disable psr -110
-Date: Fri, 10 Apr 2020 08:28:56 -0700
-Message-ID: <CAD=FV=WWx2KH+qKvGa5yQW7fZHQ_azd69Eza_Gvs18eQPvfHGg@mail.gmail.com>
-References: <20200329203349.GA15121@arya.arvanta.net>
- <20200410095719.GA914@arya.arvanta.net>
- <CAFqH_53TsmtSFnUoWixsa4v6GvOi0Korv3p8BJfROhtW0Afw-Q@mail.gmail.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [RFC PATCH v3 2/2] ARM: dts: rockchip: fix yaml warnings for
+ rk3288-pmu-sram compatible nodes
+Date: Fri, 10 Apr 2020 12:52:30 -0500
+Message-ID: <20200410175230.GA28412@bogus>
+References: <20200331121352.3825-1-jbx6244@gmail.com>
+ <20200331121352.3825-2-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CAFqH_53TsmtSFnUoWixsa4v6GvOi0Korv3p8BJfROhtW0Afw-Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?Q?Milan_P=2E_Stani=C4=87?= <mps-OV3VlZ6014XR7s880joybQ@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20200331121352.3825-2-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On Tue, Mar 31, 2020 at 02:13:52PM +0200, Johan Jonker wrote:
+> A test with the command below gives for example these warnings:
+> 
+> arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff720000:
+> '#address-cells' is a required property
+> arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff720000:
+> '#size-cells' is a required property
+> arch/arm/boot/dts/rk3288-evb-act8846.dt.yaml: sram@ff720000:
+> 'ranges' is a required property
+> 
+> Fix this error by adding '#address-cells', '#size-cells' and
+> 'ranges' to the 'rockchip,rk3288-pmu-sram' compatible node
+> in rk3288.dtsi.
+> 
+> make ARCH=arm dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/sram/sram.yaml
+> 
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+> Not tested with hardware.
+> 
+> Changed v2:
+>   Fix dtsi.
+> ---
+>  arch/arm/boot/dts/rk3288.dtsi | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index 9c8741bb1..f102fec69 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -730,6 +730,9 @@
+>  	pmu_sram: sram@ff720000 {
+>  		compatible = "rockchip,rk3288-pmu-sram", "mmio-sram";
+>  		reg = <0x0 0xff720000 0x0 0x1000>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		ranges = <0 0x0 0xff720000 0x1000>;
 
-On Fri, Apr 10, 2020 at 5:56 AM Enric Balletbo Serra
-<eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> Hi Milan,
->
-> Right, this is an annoying issue but also known, unfortunately, I
-> personally didn't have time to look at. but it is in my TODO.
+I think we should make these optional instead if there's no child nodes. 
+And if there are child nodes, then these will be required.
 
-Random shot in the dark, but any chance somehow your PHY clock and
-PCLK for the eDP don't match?  If they don't then (IIRC) you'll get
-random failures to access eDP registers.
-
-Some history in <https://crrev.com/c/433393>.  It looks like the
-changes in that patch are upstream but if something else happened to
-make your PHY and PCLK mismatch it could cause similar symptoms.
-
-...of course it's always possible (probable) that it's something
-different, but since that was such a weird and hard-to-track-down
-problem I figured I'd at least make sure it wasn't that.
-
--Doug
+Rob
