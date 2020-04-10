@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 2/3] rk3399: Add boot flash script offset, size
-Date: Fri, 10 Apr 2020 23:56:30 +0530
-Message-ID: <20200410182631.11951-3-jagan@amarulasolutions.com>
+Subject: [PATCH v2 3/3] rockchip: Enable SF distro bootcmd
+Date: Fri, 10 Apr 2020 23:56:31 +0530
+Message-ID: <20200410182631.11951-4-jagan@amarulasolutions.com>
 References: <20200410182631.11951-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20200410182631.11951-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -21,22 +21,61 @@ To: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, Kever Yang <kever.
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-TW9zdCBvZiB0aGUgU1BJIGZsYXNoIGRldmljZXMgaW4gcm9ja2NoaXAgKHJrMzM5OSkKYXJlIDE2
-TWlCIHNpemUuIFNvLCBsZXQncyB1c2UgdGhlIHNjcmlwdCBvZmZzZXQgYXQKdGhlIGVuZCBvZiA4
-Sy7CoAoKVGhpcyB3YXkgaXQgY2Fubm90IG92ZXJsYXAgYW55IG9mZnNldHMgYmVpbmcgdXNlZApi
-eSBzb2Z0d2FyZSBjb21wb25lbnRzIGluIGZsYXNoIGxheW91dC4KClNpZ25lZC1vZmYtYnk6IEph
-Z2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgpSZXZpZXdlZC1ieTogS2V2ZXIg
-WWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KLS0tCkNoYW5nZXMgZm9yIHYyOgotIG5l
-dyBwYXRjaAoKIGluY2x1ZGUvY29uZmlncy9yazMzOTlfY29tbW9uLmggfCAyICsrCiAxIGZpbGUg
-Y2hhbmdlZCwgMiBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0IGEvaW5jbHVkZS9jb25maWdzL3Jr
-MzM5OV9jb21tb24uaCBiL2luY2x1ZGUvY29uZmlncy9yazMzOTlfY29tbW9uLmgKaW5kZXggODlh
-OGE0NGJiZS4uMDFhOTE3NGJkMiAxMDA2NDQKLS0tIGEvaW5jbHVkZS9jb25maWdzL3JrMzM5OV9j
-b21tb24uaAorKysgYi9pbmNsdWRlL2NvbmZpZ3MvcmszMzk5X2NvbW1vbi5oCkBAIC00OCw2ICs0
-OCw4IEBACiAKICNkZWZpbmUgRU5WX01FTV9MQVlPVVRfU0VUVElOR1MgXAogCSJzY3JpcHRhZGRy
-PTB4MDA1MDAwMDBcMCIgXAorCSJzY3JpcHRfb2Zmc2V0X2Y9MHhmZmUwMDBcMCIgXAorCSJzY3Jp
-cHRfc2l6ZV9mPTB4MjAwMFwwIiBcCiAJInB4ZWZpbGVfYWRkcl9yPTB4MDA2MDAwMDBcMCIgXAog
-CSJmZHRfYWRkcl9yPTB4MDFmMDAwMDBcMCIgXAogCSJrZXJuZWxfYWRkcl9yPTB4MDIwODAwMDBc
-MCIgXAotLSAKMi4xNy4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+Enable SPI flash(SF) distro boot command in Rockchip.
+
+This distro boot will read the boot script at specific
+location at the flash and start sourcing the same.
+
+Included the SF device at the last of the target devices
+list since all the rest of the devices on the list have
+more possibility to boot the distribution due to the
+size of the SPI flash is concern.
+
+Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+Changes for v2:
+- update BOOT_TARGET_SF 
+
+ include/configs/rk3399_common.h   | 1 +
+ include/configs/rockchip-common.h | 9 ++++++++-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
+index 01a9174bd2..f0ae6e67a7 100644
+--- a/include/configs/rk3399_common.h
++++ b/include/configs/rk3399_common.h
+@@ -60,6 +60,7 @@
+ #endif
+ 
+ #include <config_distro_bootcmd.h>
++#include <environment/distro/sf.h>
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ 	ENV_MEM_LAYOUT_SETTINGS \
+ 	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \
+diff --git a/include/configs/rockchip-common.h b/include/configs/rockchip-common.h
+index b55e09a9ca..d97395db90 100644
+--- a/include/configs/rockchip-common.h
++++ b/include/configs/rockchip-common.h
+@@ -41,11 +41,18 @@
+ 	#define BOOT_TARGET_DHCP(func)
+ #endif
+ 
++#if CONFIG_IS_ENABLED(CMD_SF)
++	#define BOOT_TARGET_SF(func)	func(SF, sf, 0)
++#else
++	#define BOOT_TARGET_SF(func)
++#endif
++
+ #define BOOT_TARGET_DEVICES(func) \
+ 	BOOT_TARGET_MMC(func) \
+ 	BOOT_TARGET_USB(func) \
+ 	BOOT_TARGET_PXE(func) \
+-	BOOT_TARGET_DHCP(func)
++	BOOT_TARGET_DHCP(func) \
++	BOOT_TARGET_SF(func)
+ 
+ #ifdef CONFIG_ARM64
+ #define ROOT_UUID "B921B045-1DF0-41C3-AF44-4C6F280D3FAE;\0"
+-- 
+2.17.1
