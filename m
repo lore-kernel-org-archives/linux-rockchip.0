@@ -1,13 +1,18 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 3/3] rockchip: Enable SF distro bootcmd
-Date: Fri, 10 Apr 2020 23:56:31 +0530
-Message-ID: <20200410182631.11951-4-jagan@amarulasolutions.com>
-References: <20200410182631.11951-1-jagan@amarulasolutions.com>
+From: Milan =?utf-8?Q?P=2E_Stani=C4=87?= <mps-OV3VlZ6014XR7s880joybQ@public.gmane.org>
+Subject: Re: PROBLEM: [drm:analogix_dp_bridge_atomic_enable [analogix_dp]]
+ *ERROR* Failed to disable psr -110
+Date: Fri, 10 Apr 2020 21:29:26 +0200
+Message-ID: <20200410192926.GA24668@arya.arvanta.net>
+References: <20200329203349.GA15121@arya.arvanta.net>
+ <20200410095719.GA914@arya.arvanta.net>
+ <CAFqH_53TsmtSFnUoWixsa4v6GvOi0Korv3p8BJfROhtW0Afw-Q@mail.gmail.com>
+ <CAD=FV=WWx2KH+qKvGa5yQW7fZHQ_azd69Eza_Gvs18eQPvfHGg@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200410182631.11951-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CAD=FV=WWx2KH+qKvGa5yQW7fZHQ_azd69Eza_Gvs18eQPvfHGg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -17,65 +22,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable SPI flash(SF) distro boot command in Rockchip.
+Hi,
 
-This distro boot will read the boot script at specific
-location at the flash and start sourcing the same.
+On Fri, 2020-04-10 at 08:28, Doug Anderson wrote:
+> Hi,
+> 
+> On Fri, Apr 10, 2020 at 5:56 AM Enric Balletbo Serra
+> <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+> >
+> > Hi Milan,
+> >
+> > Right, this is an annoying issue but also known, unfortunately, I
+> > personally didn't have time to look at. but it is in my TODO.
+> 
+> Random shot in the dark, but any chance somehow your PHY clock and
+> PCLK for the eDP don't match?  If they don't then (IIRC) you'll get
+> random failures to access eDP registers.
+> 
+> Some history in <https://crrev.com/c/433393>.  It looks like the
+> changes in that patch are upstream but if something else happened to
+> make your PHY and PCLK mismatch it could cause similar symptoms.
+> 
+> ...of course it's always possible (probable) that it's something
+> different, but since that was such a weird and hard-to-track-down
+> problem I figured I'd at least make sure it wasn't that.
 
-Included the SF device at the last of the target devices
-list since all the rest of the devices on the list have
-more possibility to boot the distribution due to the
-size of the SPI flash is concern.
+Not sure I understood (I'm not graphic hardware programmer) but I
+changed arch/arm64/boot/dts/rockchip/rk3399.dtsi file around line
+1367 (current mainline kernel), this:
+    assigned-clocks =
+      <&cru PLL_GPLL>, <&cru PLL_CPLL>,
+      <&cru PLL_NPLL>,
+      <&cru ACLK_PERIHP>, <&cru HCLK_PERIHP>,
+      <&cru PCLK_PERIHP>,
+      <&cru ACLK_PERILP0>, <&cru HCLK_PERILP0>,
+      <&cru PCLK_PERILP0>, <&cru ACLK_CCI>,
+      <&cru HCLK_PERILP1>, <&cru PCLK_PERILP1>,
+      <&cru ACLK_VIO>, <&cru ACLK_HDCP>,
+      <&cru ACLK_GIC_PRE>,
+      <&cru PCLK_DDR>;
+    assigned-clock-rates =
+       <594000000>,  <800000000>,
+      <1000000000>,
+       <150000000>,   <75000000>,
+        <37500000>,
+       <100000000>,  <100000000>,
+        <50000000>, <600000000>,
+       <100000000>,   <50000000>,
+       <400000000>, <400000000>,
+       <200000000>,
+       <200000000>;
 
-Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
-Changes for v2:
-- update BOOT_TARGET_SF 
+and changed  <594000000> to  <600000000>
+build kernel and it boots but display is blank after boot.
 
- include/configs/rk3399_common.h   | 1 +
- include/configs/rockchip-common.h | 9 ++++++++-
- 2 files changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
-index 01a9174bd2..f0ae6e67a7 100644
---- a/include/configs/rk3399_common.h
-+++ b/include/configs/rk3399_common.h
-@@ -60,6 +60,7 @@
- #endif
- 
- #include <config_distro_bootcmd.h>
-+#include <environment/distro/sf.h>
- #define CONFIG_EXTRA_ENV_SETTINGS \
- 	ENV_MEM_LAYOUT_SETTINGS \
- 	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \
-diff --git a/include/configs/rockchip-common.h b/include/configs/rockchip-common.h
-index b55e09a9ca..d97395db90 100644
---- a/include/configs/rockchip-common.h
-+++ b/include/configs/rockchip-common.h
-@@ -41,11 +41,18 @@
- 	#define BOOT_TARGET_DHCP(func)
- #endif
- 
-+#if CONFIG_IS_ENABLED(CMD_SF)
-+	#define BOOT_TARGET_SF(func)	func(SF, sf, 0)
-+#else
-+	#define BOOT_TARGET_SF(func)
-+#endif
-+
- #define BOOT_TARGET_DEVICES(func) \
- 	BOOT_TARGET_MMC(func) \
- 	BOOT_TARGET_USB(func) \
- 	BOOT_TARGET_PXE(func) \
--	BOOT_TARGET_DHCP(func)
-+	BOOT_TARGET_DHCP(func) \
-+	BOOT_TARGET_SF(func)
- 
- #ifdef CONFIG_ARM64
- #define ROOT_UUID "B921B045-1DF0-41C3-AF44-4C6F280D3FAE;\0"
--- 
-2.17.1
+TIA
+> -Doug
