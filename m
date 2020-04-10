@@ -1,15 +1,16 @@
-From: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 Subject: Re: PROBLEM: [drm:analogix_dp_bridge_atomic_enable [analogix_dp]]
  *ERROR* Failed to disable psr -110
-Date: Fri, 10 Apr 2020 14:56:05 +0200
-Message-ID: <CAFqH_53TsmtSFnUoWixsa4v6GvOi0Korv3p8BJfROhtW0Afw-Q@mail.gmail.com>
+Date: Fri, 10 Apr 2020 08:28:56 -0700
+Message-ID: <CAD=FV=WWx2KH+qKvGa5yQW7fZHQ_azd69Eza_Gvs18eQPvfHGg@mail.gmail.com>
 References: <20200329203349.GA15121@arya.arvanta.net>
  <20200410095719.GA914@arya.arvanta.net>
+ <CAFqH_53TsmtSFnUoWixsa4v6GvOi0Korv3p8BJfROhtW0Afw-Q@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200410095719.GA914-2zQUq8s2aCOuucbRd6SqTw@public.gmane.org>
+In-Reply-To: <CAFqH_53TsmtSFnUoWixsa4v6GvOi0Korv3p8BJfROhtW0Afw-Q-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,60 +20,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: =?UTF-8?Q?Milan_P=2E_Stani=C4=87?= <mps-OV3VlZ6014XR7s880joybQ@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+To: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?UTF-8?Q?Milan_P=2E_Stani=C4=87?= <mps-OV3VlZ6014XR7s880joybQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgTWlsYW4sCgpSaWdodCwgdGhpcyBpcyBhbiBhbm5veWluZyBpc3N1ZSBidXQgYWxzbyBrbm93
-biwgdW5mb3J0dW5hdGVseSwgSQpwZXJzb25hbGx5IGRpZG4ndCBoYXZlIHRpbWUgdG8gbG9vayBh
-dC4gYnV0IGl0IGlzIGluIG15IFRPRE8uCgpZb3UgY2FuIHRyeSB0byByZXZlcnQgdGhpcyBwYXRj
-aAoKY29tbWl0IGQ0ZGE0ZTMzMzQxYzVlNjE1OTU0M2FjYzAzNTU5Y2IyNGY1MjBiYzIKQXV0aG9y
-OiBTZWFuIFBhdWwgPHNlYW5wYXVsQGNocm9taXVtLm9yZz4KRGF0ZTogICBXZWQgU2VwIDE4IDE2
-OjA3OjI5IDIwMTkgLTA0MDAKCiAgICBkcm06IE1lYXN1cmUgU2VsZiBSZWZyZXNoIEVudHJ5L0V4
-aXQgdGltZXMgdG8gYXZvaWQgdGhyYXNoaW5nCgpTZWUgYWxzbyBzb21lIG1vcmUgaW5mbyBoZXJl
-OgogKiAgaHR0cHM6Ly9sa21sLm9yZy9sa21sLzIwMTkvOS8xOC85NzUKCk5vdGUgdGhhdCByZXZl
-cnRpbmcgdGhlIHBhdGNoIGRvZXNuJ3QgZml4ZXMgdGhlIGlzc3VlIGp1c3QgbWFrZXMgaXQKbGVz
-cyB2aXNpYmxlLgoKQ2hlZXJzLAogRW5yaWMKCk1pc3NhdGdlIGRlIE1pbGFuIFAuIFN0YW5pxIcg
-PG1wc0BhcnZhbnRhLm5ldD4gZGVsIGRpYSBkdi4sIDEwIGTigJlhYnIuCjIwMjAgYSBsZXMgMTE6
-NTc6Cj4KPiBIZWxsbywKPgo+IERvZXMgYW55b25lIGhhdmUva25vdyBhbnl0aGluZyB3aGljaCBj
-b3VsZCBoZWxwIHdpdGggdGhpcyBwcm9ibGVtIG9yCj4gcG9pbnQgbWUgd2hlcmUgSSBjYW4gbG9v
-ayB0byBmaW5kIHNvbHV0aW9uIGZvciB0aGlzIHNlcmlvdXMgaXNzdWUuCj4KPiBUSUEKPgo+IE9u
-IFN1biwgMjAyMC0wMy0yOSBhdCAyMjozMywgTWlsYW4gUC4gU3RhbmnEhyB3cm90ZToKPiA+IFsg
-UGxlYXNlIGtlZXAgbWUgaW4gQ2MsIEknbSBub3Qgc3Vic2NyaWJlZCB0byB0aGlzIG1haWxpbmcg
-bGlzdCBdCj4gPgo+ID4gWyBJIHBvc3RlZCB0aGlzIGJ1ZyByZXBvcnQgdG8gZHJpLWRldmVsQGZy
-ZWVkZXNrdG9wLm9yZyBoZXJlOgo+ID4gICBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9h
-cmNoaXZlcy9kcmktZGV2ZWwvMjAyMC1NYXJjaC8yNTk4MzIuaHRtbAo+ID4gICBvbiBUaHUgTWFy
-IDE5IDIwOjAxOjE5IFVUQyAyMDIwIGJ1dCBkaWRuJ3QgcmVjZWl2ZWQgYW55IGFuc3dlci4gU28K
-PiA+ICAgcmVwb3N0aW5nIGhlcmUgaW4gYSBob3BlIHRoYXQgc29tZW9uZSB3aWxsIGhlbHAgXQo+
-ID4KPiA+IEhlbGxvLAo+ID4KPiA+IFRoaXMgaXMgb25lIG9mIGZpcnN0IGJ1ZyByZXBvcnQgdG8g
-bGludXgga2VybmVsLCBzbyBzb3JyeSBpZiBJIGRvCj4gPiBzb21ldGhpbmcgd3Jvbmcgb3IgaW5h
-cHByb3ByaWF0ZS4gQW5kIEknbSBzZWxmIHRhdWdodCBpbiBFbmdsaXNoIHNvCj4gPiBzb3JyeSBp
-ZiBkbyBub3Qgd3JpdGUgb3IgZXhwcmVzcyBjb3JyZWN0bHkuCj4gPgo+ID4gSSdtIHJ1bm5pbmcg
-bGludXggNS42LjAtcmMzIHdpdGhvdXQgYW55IHBhdGNoZXMgb24gU2Ftc3VuZyBjaHJvbWVib29r
-Cj4gPiBvbmUgcGx1cywgQXJtNjQgcm9ja2NoaXAgcmszMzk5IGJhc2VkIG1vZGVsIG5hbWU6Cj4g
-PiBNYWNoaW5lIG1vZGVsOiBHb29nbGUgS2V2aW4KPiA+Cj4gPiBJIGJ1aWxkIGtlcm5lbHMgZnJv
-bSB1cHN0cmVhbSBnaXQua2VybmVsLm9yZyBmb3IgdGhpcyBtYWNoaW5lIGZvciBzb21lCj4gPiB0
-aW1lIChpaXJjLCBmcm9tIDUuNC4xIGFuZCB1cCkgYnV0IEknbSBnZXR0aW5nIGVycm9yIG1lc3Nh
-Z2VzIGluIGtlcm5lbAo+ID4gYWJvdXQgJ3BzcicgcmVsYXRlZCB0byBhbmFsb2dpeCBkcml2ZXIs
-IHdoaWNoIEkgc2VlIHdpdGggYGRtZXNnYC4KPiA+Cj4gPiBUaGlzIGJ1ZyBhcHBlYXJzIGluIGBk
-bWVzZ2Agb3V0cHV0IGZldyB0aW1lcyBvbiBhIGRheXMgYnV0IHJhbmRvbWx5IGFuZAo+ID4gSSBj
-YW4ndCBmaW5kIGFueSBjb3JyZWxhdGlvbiBvZiB0aGUgd29yayB3aXRoIG1hY2hpbmUgYW5kIGFw
-cGVhcmFuY2Ugb2YKPiA+IHRoaXMgYnVnLgo+ID4KPiA+IEkgaGF2ZSBubyBleHBlcmllbmNlIHdp
-dGggd2l0aCB2aWRlbyBkcml2ZXJzIHNvIGRvbid0IGtub3cgaG93IHRvIGRlYnVnCj4gPiB0aGlz
-IHByb2JsZW0gbW9yZSBkZWVwbHkuCj4gPgo+ID4gSSdtIGF0dGFjaGluZyBrZXJuZWwgLmNvbmZp
-ZyAoZmlsZSBjb25maWctNS42LjAtcmMzLTEtZ3J1LmNvbmYpIHdoaWNoIEkKPiA+IHVzZSB0byBi
-dWlsZCBrZXJuZWwsIG91dHB1dCBvZiB0aGUgYGF3ayAtZiBzY3JpcHRzL3Zlcl9saW51eGAgYXMg
-ZmlsZQo+ID4gdmVyX2xpbnV4LnR4dCBhbmQgIG91dHB1dCBvZiBkbWVzZyBhcyBmaWxlIGRtZXNn
-LWJyMy50eHQgKGZyb20gd2hpY2ggSQo+ID4gZGVsZXRlZCBvbmx5IHdpZmkgYXNzb2NpYXRpb24g
-bG9nKS4KPiA+Cj4gPiBTb3JyeSBhZ2FpbiBpZiBJIGRpZCBzb21ldGhpbmcgYmFkIG9yIHdyb25n
-IHdpdGggdGhpcyBidWcgcmVwb3J0Lgo+ID4KPiA+IEknbSByZWFkeSB0byBzZW5kIHlvdSBtb3Jl
-IGRhdGEsIGFuZCBpbnZlc3RpZ2F0ZSB0aGlzIG1vcmUsIGFwcGx5Cj4gPiBwYXRjaGVzIGFuZCBy
-ZWJ1aWxkIGtlcm5lbCBvciB3aGF0ZXZlciB5b3UgYXNrIG1lIChvZiBjb3Vyc2UgaWYgbXkKPiA+
-IHVuZGVyc3RhbmRpbmcgYW5kIGtub3dsZWRnZSBpcyBlbm91Z2ggZm9yIHRoaXMgam9iKS4KPiA+
-Cj4gPiBUaGFuayBpbiBhZHZhbmNlCj4gPgo+IFsuLi5dCj4KPiBfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi,
+
+On Fri, Apr 10, 2020 at 5:56 AM Enric Balletbo Serra
+<eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+> Hi Milan,
+>
+> Right, this is an annoying issue but also known, unfortunately, I
+> personally didn't have time to look at. but it is in my TODO.
+
+Random shot in the dark, but any chance somehow your PHY clock and
+PCLK for the eDP don't match?  If they don't then (IIRC) you'll get
+random failures to access eDP registers.
+
+Some history in <https://crrev.com/c/433393>.  It looks like the
+changes in that patch are upstream but if something else happened to
+make your PHY and PCLK mismatch it could cause similar symptoms.
+
+...of course it's always possible (probable) that it's something
+different, but since that was such a weird and hard-to-track-down
+problem I figured I'd at least make sure it wasn't that.
+
+-Doug
