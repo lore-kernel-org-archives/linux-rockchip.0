@@ -1,45 +1,90 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v2 0/3] environment: distro: Add SF distro support
-Date: Fri, 10 Apr 2020 23:56:28 +0530
-Message-ID: <20200410182631.11951-1-jagan@amarulasolutions.com>
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Tom Rini <trini@konsulko.com>, Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v2 1/3] environment: distro: Add SF distro command
+Date: Fri, 10 Apr 2020 23:56:29 +0530
+Message-ID: <20200410182631.11951-2-jagan@amarulasolutions.com>
+References: <20200410182631.11951-1-jagan@amarulasolutions.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200410182631.11951-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch is based on Tom comments from previous 
-version[1] for adding new distro support separately
-as in include/environment/distro/sf.h 
+Add distro boot command support for SPI flash (SF).
 
-This new sf distro command not touch the existing
-include/config_distro_bootcmd.h.
+This distro boot will read the boot script at specific
+location at the flash and start sourcing the same.
 
-Used this new SF distro command in rk3399 platform.
+This file need to include on required include/config
+file.
 
-[1] https://patchwork.ozlabs.org/patch/1232666/
+Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+Changes for v2:
+- new patch
 
-Any inputs?
-Jagan.
-
-Jagan Teki (3):
-  environment: distro: Add SF distro command
-  rk3399: Add boot flash script offset, size
-  rockchip: Enable SF distro bootcmd
-
- include/configs/rk3399_common.h   |  3 +++
- include/configs/rockchip-common.h |  9 ++++++-
- include/environment/distro/sf.h   | 41 +++++++++++++++++++++++++++++++
- 3 files changed, 52 insertions(+), 1 deletion(-)
+ include/environment/distro/sf.h | 41 +++++++++++++++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
  create mode 100644 include/environment/distro/sf.h
 
+diff --git a/include/environment/distro/sf.h b/include/environment/distro/sf.h
+new file mode 100644
+index 0000000000..e793be06c6
+--- /dev/null
++++ b/include/environment/distro/sf.h
+@@ -0,0 +1,41 @@
++/* SPDX-License-Identifier: GPL-2.0+ */
++/*
++ * Copyright (C) 2020 Amarula Solutions(India)
++ *
++ * SF distro configurations.
++ */
++
++#ifndef __DISTRO_SF_CONFIG_H
++#define __DISTRO_SF_CONFIG_H
++
++#if CONFIG_IS_ENABLED(CMD_SF)
++#define BOOTENV_SHARED_SF(devtypel)				\
++	#devtypel "_boot=" 					\
++	"if " #devtypel " probe ${busnum}; then "		\
++		"devtype=" #devtypel "; "	  		\
++		"run scan_sf_for_scripts; "	  		\
++	"fi\0"
++#define BOOTENV_DEV_SF(devtypeu, devtypel, instance) 		\
++	"bootcmd_" #devtypel #instance "=" 			\
++		"busnum=" #instance "; " 			\
++		"run " #devtypel "_boot\0"
++#define BOOTENV_DEV_NAME_SF(devtypeu, devtypel, instance) 	\
++	#devtypel #instance " "
++#else
++#define BOOTENV_SHARED_SF(devtypel)
++#define BOOTENV_DEV_SF \
++	BOOT_TARGET_DEVICES_references_SF_without_CONFIG_CMD_SF
++#define BOOTENV_DEV_NAME_SF \
++	BOOT_TARGET_DEVICES_references_SF_without_CONFIG_CMD_SF
++
++#endif /* CONFIG_CMD_SF */
++
++#define BOOTENV_SF \
++	BOOTENV_SHARED_SF(sf) \
++	"scan_sf_for_scripts="					\
++		"${devtype} read ${scriptaddr} "		\
++			"${script_offset_f} ${script_size_f}; "	\
++		"source ${scriptaddr}; "			\
++		"echo SCRIPT FAILED: continuing...\0"
++
++#endif /* __DISTRO_SF_CONFIG_H */
 -- 
 2.17.1
