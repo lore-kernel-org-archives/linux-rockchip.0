@@ -1,84 +1,96 @@
-From: Milan =?utf-8?Q?P=2E_Stani=C4=87?= <mps-OV3VlZ6014XR7s880joybQ@public.gmane.org>
-Subject: Re: PROBLEM: [drm:analogix_dp_bridge_atomic_enable [analogix_dp]]
- *ERROR* Failed to disable psr -110
-Date: Fri, 10 Apr 2020 21:29:26 +0200
-Message-ID: <20200410192926.GA24668@arya.arvanta.net>
-References: <20200329203349.GA15121@arya.arvanta.net>
- <20200410095719.GA914@arya.arvanta.net>
- <CAFqH_53TsmtSFnUoWixsa4v6GvOi0Korv3p8BJfROhtW0Afw-Q@mail.gmail.com>
- <CAD=FV=WWx2KH+qKvGa5yQW7fZHQ_azd69Eza_Gvs18eQPvfHGg@mail.gmail.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH v3 3/6] media: staging: rkisp1: cap: change the logic for
+ writing to uv swap register
+Date: Sat, 11 Apr 2020 14:24:34 +0200
+Message-ID: <b27c1762-cdd6-a010-0950-ae2eec89ccab@collabora.com>
+References: <20200408114822.27360-1-dafna.hirschfeld@collabora.com>
+ <20200408114822.27360-4-dafna.hirschfeld@collabora.com>
+ <20200408121011.GE4881@pendragon.ideasonboard.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <CAD=FV=WWx2KH+qKvGa5yQW7fZHQ_azd69Eza_Gvs18eQPvfHGg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200408121011.GE4881@pendragon.ideasonboard.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
 
-On Fri, 2020-04-10 at 08:28, Doug Anderson wrote:
-> Hi,
-> 
-> On Fri, Apr 10, 2020 at 5:56 AM Enric Balletbo Serra
-> <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
-> >
-> > Hi Milan,
-> >
-> > Right, this is an annoying issue but also known, unfortunately, I
-> > personally didn't have time to look at. but it is in my TODO.
-> 
-> Random shot in the dark, but any chance somehow your PHY clock and
-> PCLK for the eDP don't match?  If they don't then (IIRC) you'll get
-> random failures to access eDP registers.
-> 
-> Some history in <https://crrev.com/c/433393>.  It looks like the
-> changes in that patch are upstream but if something else happened to
-> make your PHY and PCLK mismatch it could cause similar symptoms.
-> 
-> ...of course it's always possible (probable) that it's something
-> different, but since that was such a weird and hard-to-track-down
-> problem I figured I'd at least make sure it wasn't that.
 
-Not sure I understood (I'm not graphic hardware programmer) but I
-changed arch/arm64/boot/dts/rockchip/rk3399.dtsi file around line
-1367 (current mainline kernel), this:
-    assigned-clocks =
-      <&cru PLL_GPLL>, <&cru PLL_CPLL>,
-      <&cru PLL_NPLL>,
-      <&cru ACLK_PERIHP>, <&cru HCLK_PERIHP>,
-      <&cru PCLK_PERIHP>,
-      <&cru ACLK_PERILP0>, <&cru HCLK_PERILP0>,
-      <&cru PCLK_PERILP0>, <&cru ACLK_CCI>,
-      <&cru HCLK_PERILP1>, <&cru PCLK_PERILP1>,
-      <&cru ACLK_VIO>, <&cru ACLK_HDCP>,
-      <&cru ACLK_GIC_PRE>,
-      <&cru PCLK_DDR>;
-    assigned-clock-rates =
-       <594000000>,  <800000000>,
-      <1000000000>,
-       <150000000>,   <75000000>,
-        <37500000>,
-       <100000000>,  <100000000>,
-        <50000000>, <600000000>,
-       <100000000>,   <50000000>,
-       <400000000>, <400000000>,
-       <200000000>,
-       <200000000>;
+On 4/8/20 2:10 PM, Laurent Pinchart wrote:
+> Hi Dafna,
+> 
+> Thank you for the patch.
+> 
+> On Wed, Apr 08, 2020 at 01:48:19PM +0200, Dafna Hirschfeld wrote:
+>> The register RKISP1_CIF_MI_XTD_FORMAT_CTRL is currently written
+>> with "on" only if the u,v streams need to be swapped. This patch
+>> also write to it with "off" if they don't need to be swapped.
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> 
+> I think you can squash this with 1/6 and 2/6.
+Hi, as Helen already commented, since it is a combination of
+cleanups and bug fixes, I think it is better to keep them separated.
 
-and changed  <594000000> to  <600000000>
-build kernel and it boots but display is blank after boot.
-
-TIA
-> -Doug
+Thanks,
+Dafna
+> 
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> 
+>> ---
+>>   drivers/staging/media/rkisp1/rkisp1-capture.c | 21 ++++++++++---------
+>>   1 file changed, 11 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> index 5d0e489505f0..4830083c33fd 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> @@ -383,12 +383,12 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
+>>   		     cap->config->mi.cr_size_init);
+>>   
+>>   	rkisp1_irq_frame_end_enable(cap);
+>> -	if (cap->pix.cfg->uv_swap) {
+>> -		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>> -
+>> +	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>> +	if (cap->pix.cfg->uv_swap)
+>>   		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+>> -		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>> -	}
+>> +	else
+>> +		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
+>> +	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>>   
+>>   	rkisp1_mi_config_ctrl(cap);
+>>   
+>> @@ -406,7 +406,7 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
+>>   {
+>>   	const struct v4l2_pix_format_mplane *pixm = &cap->pix.fmt;
+>>   	struct rkisp1_device *rkisp1 = cap->rkisp1;
+>> -	u32 mi_ctrl;
+>> +	u32 mi_ctrl, reg;
+>>   
+>>   	rkisp1_write(rkisp1, rkisp1_pixfmt_comp_size(pixm, RKISP1_PLANE_Y),
+>>   		     cap->config->mi.y_size_init);
+>> @@ -420,12 +420,13 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
+>>   	rkisp1_write(rkisp1, cap->sp_y_stride, RKISP1_CIF_MI_SP_Y_LLENGTH);
+>>   
+>>   	rkisp1_irq_frame_end_enable(cap);
+>> -	if (cap->pix.cfg->uv_swap) {
+>> -		u32 reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>>   
+>> +	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>> +	if (cap->pix.cfg->uv_swap)
+>>   		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
+>> -		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>> -	}
+>> +	else
+>> +		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
+>> +	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
+>>   
+>>   	rkisp1_mi_config_ctrl(cap);
+>>   
+> 
