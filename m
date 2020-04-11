@@ -1,96 +1,108 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [PATCH v3 3/6] media: staging: rkisp1: cap: change the logic for
- writing to uv swap register
-Date: Sat, 11 Apr 2020 14:24:34 +0200
-Message-ID: <b27c1762-cdd6-a010-0950-ae2eec89ccab@collabora.com>
-References: <20200408114822.27360-1-dafna.hirschfeld@collabora.com>
- <20200408114822.27360-4-dafna.hirschfeld@collabora.com>
- <20200408121011.GE4881@pendragon.ideasonboard.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200408121011.GE4881@pendragon.ideasonboard.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v4] dt-bindings: sram: convert rockchip-pmu-sram bindings to yaml
+Date: Sat, 11 Apr 2020 14:25:07 +0200
+Message-ID: <20200411122507.4040-1-jbx6244@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Current dts files with 'rockchip-pmu-sram' compatible nodes
+are now verified with sram.yaml, although the original
+text document still exists. Merge rockchip-pmu-sram.txt
+with sram.yaml by adding it as description with an example.
+Make #address-cells, #size-cells and ranges optional
+if there are no child nodes to prevent yaml warnings.
 
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+Changes v4:
+  Make some properties optional
 
-On 4/8/20 2:10 PM, Laurent Pinchart wrote:
-> Hi Dafna,
-> 
-> Thank you for the patch.
-> 
-> On Wed, Apr 08, 2020 at 01:48:19PM +0200, Dafna Hirschfeld wrote:
->> The register RKISP1_CIF_MI_XTD_FORMAT_CTRL is currently written
->> with "on" only if the u,v streams need to be swapped. This patch
->> also write to it with "off" if they don't need to be swapped.
->>
->> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> 
-> I think you can squash this with 1/6 and 2/6.
-Hi, as Helen already commented, since it is a combination of
-cleanups and bug fixes, I think it is better to keep them separated.
+Changes v3:
+  Document the compatible
 
-Thanks,
-Dafna
-> 
-> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> 
->> ---
->>   drivers/staging/media/rkisp1/rkisp1-capture.c | 21 ++++++++++---------
->>   1 file changed, 11 insertions(+), 10 deletions(-)
->>
->> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
->> index 5d0e489505f0..4830083c33fd 100644
->> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
->> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
->> @@ -383,12 +383,12 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
->>   		     cap->config->mi.cr_size_init);
->>   
->>   	rkisp1_irq_frame_end_enable(cap);
->> -	if (cap->pix.cfg->uv_swap) {
->> -		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
->> -
->> +	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
->> +	if (cap->pix.cfg->uv_swap)
->>   		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
->> -		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
->> -	}
->> +	else
->> +		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
->> +	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
->>   
->>   	rkisp1_mi_config_ctrl(cap);
->>   
->> @@ -406,7 +406,7 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
->>   {
->>   	const struct v4l2_pix_format_mplane *pixm = &cap->pix.fmt;
->>   	struct rkisp1_device *rkisp1 = cap->rkisp1;
->> -	u32 mi_ctrl;
->> +	u32 mi_ctrl, reg;
->>   
->>   	rkisp1_write(rkisp1, rkisp1_pixfmt_comp_size(pixm, RKISP1_PLANE_Y),
->>   		     cap->config->mi.y_size_init);
->> @@ -420,12 +420,13 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
->>   	rkisp1_write(rkisp1, cap->sp_y_stride, RKISP1_CIF_MI_SP_Y_LLENGTH);
->>   
->>   	rkisp1_irq_frame_end_enable(cap);
->> -	if (cap->pix.cfg->uv_swap) {
->> -		u32 reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
->>   
->> +	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
->> +	if (cap->pix.cfg->uv_swap)
->>   		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
->> -		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
->> -	}
->> +	else
->> +		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
->> +	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
->>   
->>   	rkisp1_mi_config_ctrl(cap);
->>   
-> 
+Changed v2:
+  Merge with sram.yaml
+---
+ .../devicetree/bindings/sram/rockchip-pmu-sram.txt | 16 -------------
+ Documentation/devicetree/bindings/sram/sram.yaml   | 26 +++++++++++++++++++---
+ 2 files changed, 23 insertions(+), 19 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
+
+diff --git a/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt b/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
+deleted file mode 100644
+index 6b42fda30..000000000
+--- a/Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
++++ /dev/null
+@@ -1,16 +0,0 @@
+-Rockchip SRAM for pmu:
+-------------------------------
+-
+-The sram of pmu is used to store the function of resume from maskrom(the 1st
+-level loader). This is a common use of the "pmu-sram" because it keeps power
+-even in low power states in the system.
+-
+-Required node properties:
+-- compatible : should be "rockchip,rk3288-pmu-sram"
+-- reg : physical base address and the size of the registers window
+-
+-Example:
+-	sram@ff720000 {
+-		compatible = "rockchip,rk3288-pmu-sram", "mmio-sram";
+-		reg = <0xff720000 0x1000>;
+-	};
+diff --git a/Documentation/devicetree/bindings/sram/sram.yaml b/Documentation/devicetree/bindings/sram/sram.yaml
+index 7b83cc6c9..f474fee47 100644
+--- a/Documentation/devicetree/bindings/sram/sram.yaml
++++ b/Documentation/devicetree/bindings/sram/sram.yaml
+@@ -29,6 +29,7 @@ properties:
+       enum:
+         - mmio-sram
+         - atmel,sama5d2-securam
++        - rockchip,rk3288-pmu-sram
+ 
+   reg:
+     maxItems: 1
+@@ -118,9 +119,18 @@ patternProperties:
+ required:
+   - compatible
+   - reg
+-  - "#address-cells"
+-  - "#size-cells"
+-  - ranges
++
++if:
++  properties:
++    compatible:
++      contains:
++        const: rockchip,rk3288-pmu-sram
++
++else:
++  required:
++    - "#address-cells"
++    - "#size-cells"
++    - ranges
+ 
+ additionalProperties: false
+ 
+@@ -224,6 +234,16 @@ examples:
+     };
+ 
+   - |
++    // Rockchip's rk3288 SoC uses the sram of pmu to store the function of
++    // resume from maskrom(the 1st level loader). This is a common use of
++    // the "pmu-sram" because it keeps power even in low power states
++    // in the system.
++    sram@ff720000 {
++      compatible = "rockchip,rk3288-pmu-sram", "mmio-sram";
++      reg = <0xff720000 0x1000>;
++    };
++
++  - |
+     // Allwinner's A80 SoC uses part of the secure sram for hotplugging of the
+     // primary core (cpu0). Once the core gets powered up it checks if a magic
+     // value is set at a specific location. If it is then the BROM will jump
+-- 
+2.11.0
