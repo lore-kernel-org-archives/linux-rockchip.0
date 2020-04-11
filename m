@@ -1,7 +1,7 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v4 4/6] media: staging: rkisp1: cap: support uv swap only for semiplanar formats
-Date: Sat, 11 Apr 2020 18:06:00 +0200
-Message-ID: <20200411160602.14637-5-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v4 6/6] media: staging: rkisp1: cap: remove unsupported formats
+Date: Sat, 11 Apr 2020 18:06:02 +0200
+Message-ID: <20200411160602.14637-7-dafna.hirschfeld@collabora.com>
 References: <20200411160602.14637-1-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,64 +12,50 @@ To: linux-media@vger.kernel.org
 Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The register RKISP1_CIF_MI_XTD_FORMAT_CTRL is relevant only
-for semiplanar formats, therefore the uv swap can be supported
-through this register only for semiplanar formats.
+For Ycbcr packed formats only YUYV can be supported by
+the driver. This patch removes the other formats.
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Acked-by: Helen Koike <helen.koike@collabora.com>
 Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 ---
- drivers/staging/media/rkisp1/rkisp1-capture.c | 31 ++++++++++++-------
- 1 file changed, 19 insertions(+), 12 deletions(-)
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 17 -----------------
+ 1 file changed, 17 deletions(-)
 
 diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index 4830083c33fd..257799a7d865 100644
+index 4d182630927b..151822b6ca01 100644
 --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
 +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -383,12 +383,16 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 		     cap->config->mi.cr_size_init);
- 
- 	rkisp1_irq_frame_end_enable(cap);
--	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
--	if (cap->pix.cfg->uv_swap)
--		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
--	else
--		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
--	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
-+
-+	/* set uv swapping for semiplanar formats */
-+	if (cap->pix.info->comp_planes == 2) {
-+		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
-+		if (cap->pix.cfg->uv_swap)
-+			reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
-+		else
-+			reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
-+		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
-+	}
- 
- 	rkisp1_mi_config_ctrl(cap);
- 
-@@ -421,12 +425,15 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
- 
- 	rkisp1_irq_frame_end_enable(cap);
- 
--	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
--	if (cap->pix.cfg->uv_swap)
--		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
--	else
--		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
--	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
-+	/* set uv swapping for semiplanar formats */
-+	if (cap->pix.info->comp_planes == 2) {
-+		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
-+		if (cap->pix.cfg->uv_swap)
-+			reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
-+		else
-+			reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
-+		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
-+	}
- 
- 	rkisp1_mi_config_ctrl(cap);
- 
+@@ -88,13 +88,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
+ 		.fourcc = V4L2_PIX_FMT_YUYV,
+ 		.uv_swap = 0,
+ 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+-	}, {
+-		.fourcc = V4L2_PIX_FMT_YVYU,
+-		.uv_swap = 1,
+-		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+-	}, {
+-		.fourcc = V4L2_PIX_FMT_VYUY,
+-		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+ 	}, {
+ 		.fourcc = V4L2_PIX_FMT_YUV422P,
+ 		.uv_swap = 0,
+@@ -197,16 +190,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+ 		.uv_swap = 0,
+ 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+ 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+-	}, {
+-		.fourcc = V4L2_PIX_FMT_YVYU,
+-		.uv_swap = 1,
+-		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+-		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+-	}, {
+-		.fourcc = V4L2_PIX_FMT_VYUY,
+-		.uv_swap = 1,
+-		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+-		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+ 	}, {
+ 		.fourcc = V4L2_PIX_FMT_YUV422P,
+ 		.uv_swap = 0,
 -- 
 2.20.1
