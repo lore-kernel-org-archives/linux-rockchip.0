@@ -1,75 +1,69 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v4 3/6] media: staging: rkisp1: cap: change the logic for writing to uv swap register
-Date: Sat, 11 Apr 2020 18:05:59 +0200
-Message-ID: <20200411160602.14637-4-dafna.hirschfeld@collabora.com>
-References: <20200411160602.14637-1-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v4 0/6] media: staging: rkisp1: cap: various fixes for capture formats
+Date: Sat, 11 Apr 2020 18:05:56 +0200
+Message-ID: <20200411160602.14637-1-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200411160602.14637-1-dafna.hirschfeld@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
 To: linux-media@vger.kernel.org
 Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The register RKISP1_CIF_MI_XTD_FORMAT_CTRL is currently written
-with "on" only if the u,v streams need to be swapped. This patch
-also write to it with "off" if they don't need to be swapped.
+This patchset fixes various issues related to
+the supported formats in the rkisp1 capture.
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
----
- drivers/staging/media/rkisp1/rkisp1-capture.c | 21 ++++++++++---------
- 1 file changed, 11 insertions(+), 10 deletions(-)
+This patchset is rebased on top of v3 of the patchset:
+"rkisp1: use enum v4l2_pixel_encoding instead of rkisp1_fmt_pix_type"
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index 5d0e489505f0..4830083c33fd 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -383,12 +383,12 @@ static void rkisp1_mp_config(struct rkisp1_capture *cap)
- 		     cap->config->mi.cr_size_init);
- 
- 	rkisp1_irq_frame_end_enable(cap);
--	if (cap->pix.cfg->uv_swap) {
--		reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
--
-+	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
-+	if (cap->pix.cfg->uv_swap)
- 		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
--		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
--	}
-+	else
-+		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_MP_CB_CR_SWAP;
-+	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
- 
- 	rkisp1_mi_config_ctrl(cap);
- 
-@@ -406,7 +406,7 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
- {
- 	const struct v4l2_pix_format_mplane *pixm = &cap->pix.fmt;
- 	struct rkisp1_device *rkisp1 = cap->rkisp1;
--	u32 mi_ctrl;
-+	u32 mi_ctrl, reg;
- 
- 	rkisp1_write(rkisp1, rkisp1_pixfmt_comp_size(pixm, RKISP1_PLANE_Y),
- 		     cap->config->mi.y_size_init);
-@@ -420,12 +420,13 @@ static void rkisp1_sp_config(struct rkisp1_capture *cap)
- 	rkisp1_write(rkisp1, cap->sp_y_stride, RKISP1_CIF_MI_SP_Y_LLENGTH);
- 
- 	rkisp1_irq_frame_end_enable(cap);
--	if (cap->pix.cfg->uv_swap) {
--		u32 reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
- 
-+	reg = rkisp1_read(rkisp1, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
-+	if (cap->pix.cfg->uv_swap)
- 		reg |= RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
--		rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
--	}
-+	else
-+		reg &= ~RKISP1_CIF_MI_XTD_FMT_CTRL_SP_CB_CR_SWAP;
-+	rkisp1_write(rkisp1, reg, RKISP1_CIF_MI_XTD_FORMAT_CTRL);
- 
- 	rkisp1_mi_config_ctrl(cap);
- 
+Patches summary:
+
+patches 1,2 - fixes a wrong assignments to the register that swaps the
+'u', 'v' planes in YUV semiplanar formats.
+
+patch 3 - writes to the uv swap with "off" if swapping is not needed.
+
+patch 4 - sets the uv swap register only if the format is semiplanar.
+
+patch 5 - adds support to planar YUV formats with swapped u,v planes
+by swapping the addresses of the planes
+
+patch 6 - removes some packed YUV formats that are not supported
+by the driver.
+
+changes from v1:
+- split the first patch from v1 into two separate patches, the first is a cleanup patch
+the second fixes a bug.
+
+changes from v2:
+- rebasing the patchset on top of v3 of
+"rkisp1: use enum v4l2_pixel_encoding instead of rkisp1_fmt_pix_type"
+- patches 1,2: replace "reg = reg | .." with "reg |= .."
+- adding patch 3 to change the logic of wrrting to uv swap reg
+- patches 4,5: checking if format is (semi)planar using the info pointer and not using the write_format value
+- patch 4: using the "swap" define to swap the cb, cr addresses
+
+changes from v3:
+- In patch 5 in the doc and log message: s/plane formats/planar formats/
+
+
+
+
+
+Dafna Hirschfeld (6):
+  media: staging: rkisp1: cap: cleanup in mainpath config for uv swap
+    format
+  media: staging: rkisp1: cap: fix value written to uv swap register in
+    selfpath
+  media: staging: rkisp1: cap: change the logic for writing to uv swap
+    register
+  media: staging: rkisp1: cap: support uv swap only for semiplanar
+    formats
+  media: staging: rkisp1: cap: support uv swapped planar formats
+  media: staging: rkisp1: cap: remove unsupported formats
+
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 50 +++++++++----------
+ 1 file changed, 24 insertions(+), 26 deletions(-)
+
 -- 
 2.20.1
