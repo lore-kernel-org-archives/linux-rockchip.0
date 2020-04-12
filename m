@@ -1,183 +1,311 @@
-From: Leon Romanovsky <leon@kernel.org>
-Subject: Re: [PATCH] net/3com/3c515: Fix MODULE_ARCH_VERMAGIC redefinition
-Date: Mon, 13 Apr 2020 11:40:26 +0300
-Message-ID: <20200413084026.GH334007@unreal>
-References: <20200413045555.GE334007@unreal>
- <20200412.220739.516022706077351913.davem@davemloft.net>
- <20200413052637.GG334007@unreal>
- <20200412.223604.1160930629964379276.davem@davemloft.net>
- <20200413080452.GA3772@zn.tnic>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v3] iio: adc: rockchip_saradc: Add support iio buffers
+Date: Mon, 13 Apr 2020 00:42:51 +0200
+Message-ID: <20200412224251.2919182-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200413080452.GA3772@zn.tnic>
-Sender: netdev-owner@vger.kernel.org
-To: Borislav Petkov <bp@alien8.de>
-Cc: David Miller <davem@davemloft.net>, kuba@kernel.org, thomas.lendacky@amd.com, keyur@os.amperecomputing.com, pcnet32@frontier.com, vfalico@gmail.com, j.vosburgh@gmail.com, linux-acenic@sunsite.dk, mripard@kernel.org, heiko@sntech.de, mark.einon@gmail.com, chris.snook@gmail.com, linux-rockchip@lists.infradead.org, iyappan@os.amperecomputing.com, irusskikh@marvell.com, dave@thedillows.org, netanel@amazon.com, quan@os.amperecomputing.com, jcliburn@gmail.com, LinoSanfilippo@gmx.de, linux-arm-kernel@lists.infradead.org, andreas@gaisler.com, andy@greyhouse.net, netdev@vger.kernel.org, thor.thayer@linux.intel.com, linux-kernel@vger.kernel.org, ionut@badula.org, akiyano@amazon.com, jes@trained-monkey.org, nios2-dev@lists.rocketboards.org, wens@csie.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 13, 2020 at 10:04:52AM +0200, Borislav Petkov wrote:
-> On Sun, Apr 12, 2020 at 10:36:04PM -0700, David Miller wrote:
-> > From: Leon Romanovsky <leon@kernel.org>
-> > Date: Mon, 13 Apr 2020 08:26:37 +0300
-> >
-> > > How do you want us to handle it? Boris resend, me to send, you to fix?
-> >
-> > Anyone other than me can do it ;-)
->
-> Ok, here's what I'm thinking: that vermagic.h is normally automatically
-> included in the *mod.c as part of the module creation, see add_header()
-> in modpost.c.
->
-> So then perhaps drivers should not use it directly due to the current
-> inclusion order:
->
-> linux/module.h includes asm/module.h and that arch-specific header
-> defines MODULE_VERMAGIC* for the respective arch.
->
-> linux/vermagic.h defines all those fallbacks for those MODULE_VERMAGIC*
-> things and if the inclusion order is swapped - we get the redefinition
-> warning.
->
-> Yesterday I tried the below - basically get rid of all the remaining
-> includers of linux/vermagic.h but two are left:
->
-> drivers/net/ethernet/hisilicon/hns3/hns3_enet.c:18:#include <linux/vermagic.h>
-> drivers/net/ethernet/netronome/nfp/nfp_main.c:17:#include <linux/vermagic.h>
->
-> because both use VERMAGIC_STRING directly.
->
-> So,
->
-> * one could either allow that and sort the inclusion order so that, for
-> example, asm/module.h includes linux/vermagic.h and thus the fallbacks
-> are there present.
->
-> or
->
-> * remove all uses of VERMAGIC_STRING from the drivers, add a header
-> guard which prevents people from using it directly and leave
-> VERMAGIC_STRING only to the internal module machinery in the kernel.
->
-> Judging by how only a handful of old drivers are even using that,
-> perhaps not too far fetched.
->
-> In any case, this needs a maintainer decision.
->
-> Leon, if you wanna do it whatever you guys end up agreeing on, just go
-> ahead and submit the patches - it's not like I don't have anything else
-> on the TODO :-) Just add a Reported-by: me and that should be enough.
+From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-I broke it so I should fix and will send a patch today/tomorrow.
+Add the ability to also support access via (triggered) buffers
+next to the existing direct mode.
 
-Thanks
+Device in question is the Odroid Go Advance that connects a joystick
+to two of the saradc channels for X and Y axis and the new (and still
+pending) adc joystick driver of course wants to use triggered buffers
+from the iio subsystem.
 
->
-> If you're busy too, lemme know and I'll put it on my todo then.
->
-> Thx.
->
-> diff --git a/drivers/net/bonding/bonding_priv.h b/drivers/net/bonding/bonding_priv.h
-> index 45b77bc8c7b3..48cdf3a49a7d 100644
-> --- a/drivers/net/bonding/bonding_priv.h
-> +++ b/drivers/net/bonding/bonding_priv.h
-> @@ -14,7 +14,7 @@
->
->  #ifndef _BONDING_PRIV_H
->  #define _BONDING_PRIV_H
-> -#include <linux/vermagic.h>
-> +#include <generated/utsrelease.h>
->
->  #define DRV_NAME	"bonding"
->  #define DRV_DESCRIPTION	"Ethernet Channel Bonding Driver"
-> diff --git a/drivers/net/ethernet/3com/3c509.c b/drivers/net/ethernet/3com/3c509.c
-> index b762176a1406..139d0120f511 100644
-> --- a/drivers/net/ethernet/3com/3c509.c
-> +++ b/drivers/net/ethernet/3com/3c509.c
-> @@ -85,7 +85,6 @@
->  #include <linux/device.h>
->  #include <linux/eisa.h>
->  #include <linux/bitops.h>
-> -#include <linux/vermagic.h>
->
->  #include <linux/uaccess.h>
->  #include <asm/io.h>
-> diff --git a/drivers/net/ethernet/3com/3c515.c b/drivers/net/ethernet/3com/3c515.c
-> index 90312fcd6319..47b4215bb93b 100644
-> --- a/drivers/net/ethernet/3com/3c515.c
-> +++ b/drivers/net/ethernet/3com/3c515.c
-> @@ -22,7 +22,6 @@
->
->  */
->
-> -#include <linux/vermagic.h>
->  #define DRV_NAME		"3c515"
->
->  #define CORKSCREW 1
-> diff --git a/drivers/net/ethernet/adaptec/starfire.c b/drivers/net/ethernet/adaptec/starfire.c
-> index 2db42211329f..a64191fc2af9 100644
-> --- a/drivers/net/ethernet/adaptec/starfire.c
-> +++ b/drivers/net/ethernet/adaptec/starfire.c
-> @@ -45,7 +45,6 @@
->  #include <asm/processor.h>		/* Processor type for cache alignment. */
->  #include <linux/uaccess.h>
->  #include <asm/io.h>
-> -#include <linux/vermagic.h>
->
->  /*
->   * The current frame processor firmware fails to checksum a fragment
-> diff --git a/drivers/net/ethernet/pensando/ionic/ionic_main.c b/drivers/net/ethernet/pensando/ionic/ionic_main.c
-> index 588c62e9add7..3ed150512091 100644
-> --- a/drivers/net/ethernet/pensando/ionic/ionic_main.c
-> +++ b/drivers/net/ethernet/pensando/ionic/ionic_main.c
-> @@ -6,7 +6,7 @@
->  #include <linux/module.h>
->  #include <linux/netdevice.h>
->  #include <linux/utsname.h>
-> -#include <linux/vermagic.h>
-> +#include <generated/utsrelease.h>
->
->  #include "ionic.h"
->  #include "ionic_bus.h"
-> diff --git a/drivers/power/supply/test_power.c b/drivers/power/supply/test_power.c
-> index 65c23ef6408d..b3c05ff05783 100644
-> --- a/drivers/power/supply/test_power.c
-> +++ b/drivers/power/supply/test_power.c
-> @@ -16,7 +16,7 @@
->  #include <linux/power_supply.h>
->  #include <linux/errno.h>
->  #include <linux/delay.h>
-> -#include <linux/vermagic.h>
-> +#include <generated/utsrelease.h>
->
->  enum test_power_id {
->  	TEST_AC,
-> diff --git a/net/ethtool/ioctl.c b/net/ethtool/ioctl.c
-> index 89d0b1827aaf..adab97e500cf 100644
-> --- a/net/ethtool/ioctl.c
-> +++ b/net/ethtool/ioctl.c
-> @@ -17,7 +17,6 @@
->  #include <linux/phy.h>
->  #include <linux/bitops.h>
->  #include <linux/uaccess.h>
-> -#include <linux/vermagic.h>
->  #include <linux/vmalloc.h>
->  #include <linux/sfp.h>
->  #include <linux/slab.h>
-> @@ -29,6 +28,8 @@
->  #include <net/flow_offload.h>
->  #include <linux/ethtool_netlink.h>
->
-> +#include <generated/utsrelease.h>
-> +
->  #include "common.h"
->
->  /*
->
->
-> --
-> Regards/Gruss,
->     Boris.
->
-> https://people.kernel.org/tglx/notes-about-netiquette
+Signed-off-by: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+[some simplifications and added commit description]
+Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+---
+changes in v3:
+- split buffer struct into values and timestamp area similar to dln2-adc
+  and make sure timestamp gets 8-byte aligned - ALIGN uses 4 as it aligns
+  u16 elements not bytes - hopefully I got it right this time ;-)
+changes in v2:
+- use devm_iio_triggered_buffer_setup
+- calculate data array size from channel number (curtesy of at91-sama5d2_adc)
+
+ drivers/iio/adc/Kconfig           |   2 +
+ drivers/iio/adc/rockchip_saradc.c | 146 ++++++++++++++++++++++--------
+ 2 files changed, 112 insertions(+), 36 deletions(-)
+
+diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+index 12bb8b7ca1ff..8d2dd60614c6 100644
+--- a/drivers/iio/adc/Kconfig
++++ b/drivers/iio/adc/Kconfig
+@@ -809,6 +809,8 @@ config ROCKCHIP_SARADC
+ 	tristate "Rockchip SARADC driver"
+ 	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
+ 	depends on RESET_CONTROLLER
++	select IIO_BUFFER
++	select IIO_TRIGGERED_BUFFER
+ 	help
+ 	  Say yes here to build support for the SARADC found in SoCs from
+ 	  Rockchip.
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index 582ba047c4a6..0713363a4b43 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -15,7 +15,11 @@
+ #include <linux/delay.h>
+ #include <linux/reset.h>
+ #include <linux/regulator/consumer.h>
++#include <linux/iio/buffer.h>
+ #include <linux/iio/iio.h>
++#include <linux/iio/trigger.h>
++#include <linux/iio/trigger_consumer.h>
++#include <linux/iio/triggered_buffer.h>
+ 
+ #define SARADC_DATA			0x00
+ 
+@@ -32,9 +36,12 @@
+ #define SARADC_DLY_PU_SOC_MASK		0x3f
+ 
+ #define SARADC_TIMEOUT			msecs_to_jiffies(100)
++#define SARADC_MAX_CHANNELS		6
++
++/* buffer elements are u16, timestamp needs to be 8-byte aligned */
++#define SARADC_BUFFER_NUM_U16	ALIGN(SARADC_MAX_CHANNELS, 4)
+ 
+ struct rockchip_saradc_data {
+-	int				num_bits;
+ 	const struct iio_chan_spec	*channels;
+ 	int				num_channels;
+ 	unsigned long			clk_rate;
+@@ -49,8 +56,37 @@ struct rockchip_saradc {
+ 	struct reset_control	*reset;
+ 	const struct rockchip_saradc_data *data;
+ 	u16			last_val;
++	const struct iio_chan_spec *last_chan;
+ };
+ 
++static void rockchip_saradc_power_down(struct rockchip_saradc *info)
++{
++	/* Clear irq & power down adc */
++	writel_relaxed(0, info->regs + SARADC_CTRL);
++}
++
++static int rockchip_saradc_conversion(struct rockchip_saradc *info,
++				   struct iio_chan_spec const *chan)
++{
++	reinit_completion(&info->completion);
++
++	/* 8 clock periods as delay between power up and start cmd */
++	writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
++
++	info->last_chan = chan;
++
++	/* Select the channel to be used and trigger conversion */
++	writel(SARADC_CTRL_POWER_CTRL
++			| (chan->channel & SARADC_CTRL_CHN_MASK)
++			| SARADC_CTRL_IRQ_ENABLE,
++		   info->regs + SARADC_CTRL);
++
++	if (!wait_for_completion_timeout(&info->completion, SARADC_TIMEOUT))
++		return -ETIMEDOUT;
++
++	return 0;
++}
++
+ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
+ 				    struct iio_chan_spec const *chan,
+ 				    int *val, int *val2, long mask)
+@@ -62,24 +98,12 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
+ 	case IIO_CHAN_INFO_RAW:
+ 		mutex_lock(&indio_dev->mlock);
+ 
+-		reinit_completion(&info->completion);
+-
+-		/* 8 clock periods as delay between power up and start cmd */
+-		writel_relaxed(8, info->regs + SARADC_DLY_PU_SOC);
+-
+-		/* Select the channel to be used and trigger conversion */
+-		writel(SARADC_CTRL_POWER_CTRL
+-				| (chan->channel & SARADC_CTRL_CHN_MASK)
+-				| SARADC_CTRL_IRQ_ENABLE,
+-		       info->regs + SARADC_CTRL);
+-
+-		if (!wait_for_completion_timeout(&info->completion,
+-						 SARADC_TIMEOUT)) {
+-			writel_relaxed(0, info->regs + SARADC_CTRL);
++		ret = rockchip_saradc_conversion(info, chan);
++		if (ret) {
++			rockchip_saradc_power_down(info);
+ 			mutex_unlock(&indio_dev->mlock);
+-			return -ETIMEDOUT;
++			return ret;
+ 		}
+-
+ 		*val = info->last_val;
+ 		mutex_unlock(&indio_dev->mlock);
+ 		return IIO_VAL_INT;
+@@ -91,7 +115,7 @@ static int rockchip_saradc_read_raw(struct iio_dev *indio_dev,
+ 		}
+ 
+ 		*val = ret / 1000;
+-		*val2 = info->data->num_bits;
++		*val2 = chan->scan_type.realbits;
+ 		return IIO_VAL_FRACTIONAL_LOG2;
+ 	default:
+ 		return -EINVAL;
+@@ -104,10 +128,9 @@ static irqreturn_t rockchip_saradc_isr(int irq, void *dev_id)
+ 
+ 	/* Read value */
+ 	info->last_val = readl_relaxed(info->regs + SARADC_DATA);
+-	info->last_val &= GENMASK(info->data->num_bits - 1, 0);
++	info->last_val &= GENMASK(info->last_chan->scan_type.realbits - 1, 0);
+ 
+-	/* Clear irq & power down adc */
+-	writel_relaxed(0, info->regs + SARADC_CTRL);
++	rockchip_saradc_power_down(info);
+ 
+ 	complete(&info->completion);
+ 
+@@ -118,51 +141,55 @@ static const struct iio_info rockchip_saradc_iio_info = {
+ 	.read_raw = rockchip_saradc_read_raw,
+ };
+ 
+-#define ADC_CHANNEL(_index, _id) {				\
++#define ADC_CHANNEL(_index, _id, _res) {			\
+ 	.type = IIO_VOLTAGE,					\
+ 	.indexed = 1,						\
+ 	.channel = _index,					\
+ 	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW),		\
+ 	.info_mask_shared_by_type = BIT(IIO_CHAN_INFO_SCALE),	\
+ 	.datasheet_name = _id,					\
++	.scan_index = _index,					\
++	.scan_type = {						\
++		.sign = 'u',					\
++		.realbits = _res,				\
++		.storagebits = 16,				\
++		.endianness = IIO_LE,				\
++	},							\
+ }
+ 
+ static const struct iio_chan_spec rockchip_saradc_iio_channels[] = {
+-	ADC_CHANNEL(0, "adc0"),
+-	ADC_CHANNEL(1, "adc1"),
+-	ADC_CHANNEL(2, "adc2"),
++	ADC_CHANNEL(0, "adc0", 10),
++	ADC_CHANNEL(1, "adc1", 10),
++	ADC_CHANNEL(2, "adc2", 10),
+ };
+ 
+ static const struct rockchip_saradc_data saradc_data = {
+-	.num_bits = 10,
+ 	.channels = rockchip_saradc_iio_channels,
+ 	.num_channels = ARRAY_SIZE(rockchip_saradc_iio_channels),
+ 	.clk_rate = 1000000,
+ };
+ 
+ static const struct iio_chan_spec rockchip_rk3066_tsadc_iio_channels[] = {
+-	ADC_CHANNEL(0, "adc0"),
+-	ADC_CHANNEL(1, "adc1"),
++	ADC_CHANNEL(0, "adc0", 12),
++	ADC_CHANNEL(1, "adc1", 12),
+ };
+ 
+ static const struct rockchip_saradc_data rk3066_tsadc_data = {
+-	.num_bits = 12,
+ 	.channels = rockchip_rk3066_tsadc_iio_channels,
+ 	.num_channels = ARRAY_SIZE(rockchip_rk3066_tsadc_iio_channels),
+ 	.clk_rate = 50000,
+ };
+ 
+ static const struct iio_chan_spec rockchip_rk3399_saradc_iio_channels[] = {
+-	ADC_CHANNEL(0, "adc0"),
+-	ADC_CHANNEL(1, "adc1"),
+-	ADC_CHANNEL(2, "adc2"),
+-	ADC_CHANNEL(3, "adc3"),
+-	ADC_CHANNEL(4, "adc4"),
+-	ADC_CHANNEL(5, "adc5"),
++	ADC_CHANNEL(0, "adc0", 10),
++	ADC_CHANNEL(1, "adc1", 10),
++	ADC_CHANNEL(2, "adc2", 10),
++	ADC_CHANNEL(3, "adc3", 10),
++	ADC_CHANNEL(4, "adc4", 10),
++	ADC_CHANNEL(5, "adc5", 10),
+ };
+ 
+ static const struct rockchip_saradc_data rk3399_saradc_data = {
+-	.num_bits = 10,
+ 	.channels = rockchip_rk3399_saradc_iio_channels,
+ 	.num_channels = ARRAY_SIZE(rockchip_rk3399_saradc_iio_channels),
+ 	.clk_rate = 1000000,
+@@ -193,6 +220,42 @@ static void rockchip_saradc_reset_controller(struct reset_control *reset)
+ 	reset_control_deassert(reset);
+ }
+ 
++static irqreturn_t rockchip_saradc_trigger_handler(int irq, void *p)
++{
++	struct iio_poll_func *pf = p;
++	struct iio_dev *i_dev = pf->indio_dev;
++	struct rockchip_saradc *info = iio_priv(i_dev);
++	struct {
++		u16 values[SARADC_BUFFER_NUM_U16];
++		int64_t timestamp;
++	} data;
++	int ret;
++	int i, j = 0;
++
++	mutex_lock(&i_dev->mlock);
++
++	for_each_set_bit(i, i_dev->active_scan_mask, i_dev->masklength) {
++		const struct iio_chan_spec *chan = &i_dev->channels[i];
++
++		ret = rockchip_saradc_conversion(info, chan);
++		if (ret) {
++			rockchip_saradc_power_down(info);
++			goto out;
++		}
++
++		data.values[j] = info->last_val;
++		j++;
++	}
++
++	iio_push_to_buffers_with_timestamp(i_dev, &data, iio_get_time_ns(i_dev));
++out:
++	mutex_unlock(&i_dev->mlock);
++
++	iio_trigger_notify_done(i_dev->trig);
++
++	return IRQ_HANDLED;
++}
++
+ static int rockchip_saradc_probe(struct platform_device *pdev)
+ {
+ 	struct rockchip_saradc *info = NULL;
+@@ -221,6 +284,11 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+ 
+ 	info->data = match->data;
+ 
++	if (info->data->num_channels > SARADC_MAX_CHANNELS) {
++		dev_err(&pdev->dev, "max channels exceeded");
++		return -EINVAL;
++	}
++
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	info->regs = devm_ioremap_resource(&pdev->dev, mem);
+ 	if (IS_ERR(info->regs))
+@@ -315,6 +383,12 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+ 	indio_dev->channels = info->data->channels;
+ 	indio_dev->num_channels = info->data->num_channels;
+ 
++	ret = devm_iio_triggered_buffer_setup(&indio_dev->dev, indio_dev, NULL,
++					      rockchip_saradc_trigger_handler,
++					      NULL);
++	if (ret)
++		goto err_clk;
++
+ 	ret = iio_device_register(indio_dev);
+ 	if (ret)
+ 		goto err_clk;
+-- 
+2.24.1
