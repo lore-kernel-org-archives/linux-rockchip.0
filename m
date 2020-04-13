@@ -1,26 +1,25 @@
-From: Jonathan Cameron <jic23-tko9wxEg+fIOOJlXag/Snyp2UmYkHbXO@public.gmane.org>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 Subject: Re: [PATCH v3] iio: adc: rockchip_saradc: Add support iio buffers
-Date: Mon, 13 Apr 2020 17:47:10 +0100
-Message-ID: <20200413174710.06224388@archlinux>
-References: <20200412224251.2919182-1-heiko@sntech.de>
-        <20200413174434.55b2941a@archlinux>
+Date: Mon, 13 Apr 2020 18:55:12 +0200
+Message-ID: <4304017.Osc3njyXrW@diego>
+References: <20200412224251.2919182-1-heiko@sntech.de> <20200413174434.55b2941a@archlinux>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20200413174434.55b2941a@archlinux>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, xxm@rock-chips.com, kever.yang@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 13 Apr 2020 17:44:34 +0100
-Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
+Hi Jonathan,
 
+Am Montag, 13. April 2020, 18:44:34 CEST schrieb Jonathan Cameron:
 > On Mon, 13 Apr 2020 00:42:51 +0200
-> Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> Heiko Stuebner <heiko@sntech.de> wrote:
 > 
-> > From: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > From: Simon Xue <xxm@rock-chips.com>
 > > 
 > > Add the ability to also support access via (triggered) buffers
 > > next to the existing direct mode.
@@ -30,9 +29,9 @@ Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
 > > pending) adc joystick driver of course wants to use triggered buffers
 > > from the iio subsystem.
 > > 
-> > Signed-off-by: Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> > Signed-off-by: Simon Xue <xxm@rock-chips.com>
 > > [some simplifications and added commit description]
-> > Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>  
+> > Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 > 
 > Comments inline.
 > 
@@ -91,7 +90,7 @@ Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
 > > +#define SARADC_MAX_CHANNELS		6
 > > +
 > > +/* buffer elements are u16, timestamp needs to be 8-byte aligned */
-> > +#define SARADC_BUFFER_NUM_U16	ALIGN(SARADC_MAX_CHANNELS, 4)  
+> > +#define SARADC_BUFFER_NUM_U16	ALIGN(SARADC_MAX_CHANNELS, 4)
 > I may be going crazy but I think that will get you the 'start' of the
 > timestamp, not the length including it.
 > 
@@ -111,18 +110,25 @@ Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
 > ALIGN(SARADC_MAX_CHANNELS + sizeof(u64) / sizeof(u16), 4)
 > which will be ((10 + 3) & ~3) b1101 & b1100 = 12
 
-Doh. I see you then added the 64 bit as a separate element in
-a structure.  Note with that you will get the padding for
-free anyway as this should be standard C alignment.
+hmm, getting the start of the timestamp was actually what I intended ;-)
+The dln2-adc driver did that fancy struct definition for its data. which
+I stole, see the part from blow:
 
-That's actually quite a nice way of ensuring we get the right
-length!
+> > +	struct {
+> > +		u16 values[SARADC_BUFFER_NUM_U16];
+> > +		int64_t timestamp;
+> > +	} data;
 
-Thanks,
+So SARADC_BUFFER_NUM really is meant to only contain the
+number of actual buffer data - I guess I should explain that out better
+in the comment. Because defining this separate makes this so much
+more readable when we're not trying to implicitly add the timestamp
+space.
 
-Jonathan
+And a size_of(data) for that struct then returned nicely these 24 bytes
+in my tests.
 
->  
+
 > >  
 > >  struct rockchip_saradc_data {
 > > -	int				num_bits;
@@ -338,11 +344,17 @@ Jonathan
 > >  
 > > +	if (info->data->num_channels > SARADC_MAX_CHANNELS) {
 > > +		dev_err(&pdev->dev, "max channels exceeded");
-> > +		return -EINVAL;  
+> > +		return -EINVAL;
 > 
 > How can that happen?  Bug in the addition of a new device type?
 > If it's just paranoia against future code, perhaps add a comment to
 > say that.
+
+yep that is "paranoia" for the case someone adds a fancy new 20 channel
+saradc variant and forgets to adapt the constant.
+
+I'll add a comment.
+
 > 
 > > +	}
 > > +
@@ -358,7 +370,7 @@ Jonathan
 > > +					      NULL);
 > > +	if (ret)
 > > +		goto err_clk;
-> > +  
+> > +
 > 
 > Please avoid mixing an matching between device managed an unmanaged interfaces.
 > It means the driver is not 'obviously correct' and hence harder to review.
@@ -368,8 +380,14 @@ Jonathan
 > handling and remove (note this should be a precursor patch), or use
 > iio_triggered_buffer_setup and manually call iio_triggered_buffer_cleanup
 > in the right place in the remove function.
->  
+
+I'll go with the devm_* approach, less complexity is better than adding more ;-)
+
+
+Heiko
+
 > >  	ret = iio_device_register(indio_dev);
 > >  	if (ret)
-> >  		goto err_clk;  
+> >  		goto err_clk;
+> 
 > 
