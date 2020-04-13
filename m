@@ -1,17 +1,18 @@
-From: Leon Romanovsky <leon@kernel.org>
-Subject: Re: [PATCH] net/3com/3c515: Fix MODULE_ARCH_VERMAGIC redefinition
-Date: Mon, 13 Apr 2020 08:26:37 +0300
-Message-ID: <20200413052637.GG334007@unreal>
-References: <20200411155623.GA22175@zn.tnic>
- <20200412.210341.1711540878857604145.davem@davemloft.net>
- <20200413045555.GE334007@unreal>
- <20200412.220739.516022706077351913.davem@davemloft.net>
+From: Chen-Yu Tsai <wens@kernel.org>
+Subject: Re: [PATCH 1/6] arm64: dts: rockchip: rk3399-roc-pc: Fix MMC
+ numbering for LED triggers
+Date: Mon, 13 Apr 2020 13:33:47 +0800
+Message-ID: <CAGb2v64bcVLmQPxfAUafa-Grbr1MRCVb0j=HYUrXdihbmVB2Mw@mail.gmail.com>
+References: <20200327030414.5903-2-wens@kernel.org>
+ <684a08e6-7dfe-4cb1-2ae5-c1fb4128976b@gmail.com>
+ <CAGb2v65ayZwN14S-Pzu2ip1K=fgzTbNB=ZzUcpou-jtv8m6vBA@mail.gmail.com>
+ <ccf35a92-7005-9c6d-a8a2-c17b714a60bc@arm.com>
+ <20200406091313.GF31120@duo.ucw.cz>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-Content-Disposition: inline
-In-Reply-To: <20200412.220739.516022706077351913.davem@davemloft.net>
+In-Reply-To: <20200406091313.GF31120@duo.ucw.cz>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -21,48 +22,92 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: David Miller <davem@davemloft.net>
-Cc: thor.thayer@linux.intel.com, heiko@sntech.de, irusskikh@marvell.com, andreas@gaisler.com, chris.snook@gmail.com, dave@thedillows.org, jes@trained-monkey.org, iyappan@os.amperecomputing.com, quan@os.amperecomputing.com, linux-acenic@sunsite.dk, andy@greyhouse.net, akiyano@amazon.com, linux-rockchip@lists.infradead.org, wens@csie.org, LinoSanfilippo@gmx.de, vfalico@gmail.com, kuba@kernel.org, thomas.lendacky@amd.com, jcliburn@gmail.com, j.vosburgh@gmail.com, keyur@os.amperecomputing.com, mripard@kernel.org, pcnet32@frontier.com, bp@alien8.de, nios2-dev@lists.rocketboards.org, linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, ionut@badula.org, netanel@amazon.com, mark.einon@gmail.com
+To: Pavel Machek <pavel@ucw.cz>
+Cc: devicetree <devicetree@vger.kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, jacek.anaszewski@gmail.com, Johan Jonker <jbx6244@gmail.com>, Chen-Yu Tsai <wens@kernel.org>, Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Apr 12, 2020 at 10:07:39PM -0700, David Miller wrote:
-> From: Leon Romanovsky <leon@kernel.org>
-> Date: Mon, 13 Apr 2020 07:55:55 +0300
+Hi Pavel,
+
+On Mon, Apr 6, 2020 at 5:13 PM Pavel Machek <pavel@ucw.cz> wrote:
 >
-> > On Sun, Apr 12, 2020 at 09:03:41PM -0700, David Miller wrote:
-> >> From: Borislav Petkov <bp@alien8.de>
-> >> Date: Sat, 11 Apr 2020 17:56:23 +0200
-> >>
-> >> > From: Borislav Petkov <bp@suse.de>
-> >> >
-> >> > Change the include order so that MODULE_ARCH_VERMAGIC from the arch
-> >> > header arch/x86/include/asm/module.h gets used instead of the fallback
-> >> > from include/linux/vermagic.h and thus fix:
-> >> >
-> >> >   In file included from ./include/linux/module.h:30,
-> >> >                    from drivers/net/ethernet/3com/3c515.c:56:
-> >> >   ./arch/x86/include/asm/module.h:73: warning: "MODULE_ARCH_VERMAGIC" redefined
-> >> >      73 | # define MODULE_ARCH_VERMAGIC MODULE_PROC_FAMILY
-> >> >         |
-> >> >   In file included from drivers/net/ethernet/3com/3c515.c:25:
-> >> >   ./include/linux/vermagic.h:28: note: this is the location of the previous definition
-> >> >      28 | #define MODULE_ARCH_VERMAGIC ""
-> >> >         |
-> >> >
-> >> > Fixes: 6bba2e89a88c ("net/3com: Delete driver and module versions from 3com drivers")
-> >> > Signed-off-by: Borislav Petkov <bp@suse.de>
-> >>
-> >> I'm so confused, that commit in the Fixes: tag is _removing_ code but adding
-> >> new #include directives?!?!
-> >>
-> >> Is vermagic.h really needed in these files?
+> Hi!
+>
+> > > > arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dt.yaml: leds:
+> > > > diy-led:linux,default-trigger:0: 'mmc2' is not one of ['backlight',
+> > > > 'default-on', 'heartbeat', 'disk-activity', 'ide-disk', 'timer', 'pattern']
+> > > > arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dt.yaml: leds:
+> > > > yellow-led:linux,default-trigger:0: 'mmc1' is not one of ['backlight',
+> > > > 'default-on', 'heartbeat', 'disk-activity', 'ide-disk', 'timer', 'pattern']
+> > >
+> > > Maybe we should just get rid of linux,default-trigger then?
 > >
-> > You are completely right, it is not needed at all in those files.
+> > In this particular case, I'd say it's probably time to reevaluate the rather
+> > out-of-date binding. The apparent intent of the "linux,default-trigger"
+> > property seems to be to describe any trigger supported by Linux, so either
+> > the binding wants to be kept in sync with all the triggers Linux actually
+> > supports, or perhaps it should just be redefined as a free-form
 >
-> Ok let's just remove it to fix this.
+> It is enough to keep it in sync with all the triggers we actually use :-).
+>
+> > I'd be slightly inclined towards the latter, since the schema validator
+> > can't know whether the given trigger actually corresponds to the correct
+> > thing for whatever the LED is physically labelled on the board/case, nor
+> > whether the version(s) of Linux that people intend to use actually support
+> > that trigger (since it doesn't have to be the version contemporary with the
+> > schema definition), so strict validation of this particular property seems
+> > to be of limited value.
+>
+> But freeform seems acceptable, too.
 
-Thanks a lot.
+I'd say free form is easier to manage. Being in the list of valid triggers
+doesn't mean the kernel actually has support for it enabled.
 
-How do you want us to handle it? Boris resend, me to send, you to fix?
+> > > > > -             diy-led {
+> > > > > +             diy_led: diy-led {
+> > > > >                        label = "red:diy";
+> > > > >                        gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
+> > > > >                        default-state = "off";
+> > > > >                        linux,default-trigger = "mmc1";
+> > > > >                };
+>
+> This label probably should be "mmc1:red:activity" or something like that.
 
-Thanks
+Is changing this after it has been in some kernel releases OK? Wouldn't
+it be considered a break of sysfs ABI?
+
+Also, is there some guideline on how to name the labels? For sunxi we've
+been doing "${vendor}:${color}:${function}" since forever.
+
+As far as I can tell, the hardware vendor [1] has no specific uses for
+these two (red and yellow) LEDs designed in. And their GPIO lines are
+simply labeled "DIY" (for the red one) and "YELLOW". So I'm not sure
+if putting "our" interpretations and the default-trigger into the
+label is wise.
+
+For reference, the green one has its GPIO line labeled "WORK", and their
+intention from [1] is to have it as some sort of power / activity indicator.
+Hence it is named / labeled "work".
+
+As for the node names, I think we can keep it as is for now. It's not
+the preferred form, but there's really no need to change it either.
+And some overlay or script might actually expect that name.
+
+Regards
+ChenYu
+
+
+[1] http://wiki.t-firefly.com/en/ROC-RK3399-PC/driver_led.html
+
+> > > > > -             yellow-led {
+> > > > > +             yellow_led: yellow-led {
+> > > > >                        label = "yellow:yellow-led";
+> > > > >                        gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
+> > > > >                        default-state = "off";
+>
+> And this label should be changed, too.
+>
+> Best regards,
+>                                                                         Pavel
+> --
+> (english) http://www.livejournal.com/~pavelmachek
+> (cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blog.html
