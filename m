@@ -1,97 +1,191 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: remove bus-width from mmc nodes in rk3308.dtsi
-Date: Tue, 14 Apr 2020 14:01:19 +0200
-Message-ID: <2038198.JSHZf9jCco@diego>
-References: <20200413193652.1952-1-jbx6244@gmail.com> <20c81edc-247c-8db0-2b3c-a6c2fcad6b4e@arm.com> <f19b6b48-2950-abca-7dee-31c24118c3ef@gmail.com>
+From: Leon Romanovsky <leon@kernel.org>
+Subject: Re: [PATCH] net/3com/3c515: Fix MODULE_ARCH_VERMAGIC redefinition
+Date: Tue, 14 Apr 2020 15:23:49 +0300
+Message-ID: <20200414122349.GB1011271@unreal>
+References: <20200413045555.GE334007@unreal>
+ <20200412.220739.516022706077351913.davem@davemloft.net>
+ <20200413052637.GG334007@unreal>
+ <20200412.223604.1160930629964379276.davem@davemloft.net>
+ <20200413080452.GA3772@zn.tnic>
+ <20200413084026.GH334007@unreal>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <f19b6b48-2950-abca-7dee-31c24118c3ef-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200413084026.GH334007@unreal>
+Sender: netdev-owner@vger.kernel.org
+To: Borislav Petkov <bp@alien8.de>
+Cc: David Miller <davem@davemloft.net>, kuba@kernel.org, thomas.lendacky@amd.com, keyur@os.amperecomputing.com, pcnet32@frontier.com, vfalico@gmail.com, j.vosburgh@gmail.com, linux-acenic@sunsite.dk, mripard@kernel.org, heiko@sntech.de, mark.einon@gmail.com, chris.snook@gmail.com, linux-rockchip@lists.infradead.org, iyappan@os.amperecomputing.com, irusskikh@marvell.com, dave@thedillows.org, netanel@amazon.com, quan@os.amperecomputing.com, jcliburn@gmail.com, LinoSanfilippo@gmx.de, linux-arm-kernel@lists.infradead.org, andreas@gaisler.com, andy@greyhouse.net, netdev@vger.kernel.org, thor.thayer@linux.intel.com, linux-kernel@vger.kernel.org, ionut@badula.org, akiyano@amazon.com, jes@trained-monkey.org, nios2-dev@lists.rocketboards.org, wens@csie.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Johan,
+On Mon, Apr 13, 2020 at 11:40:26AM +0300, Leon Romanovsky wrote:
+> On Mon, Apr 13, 2020 at 10:04:52AM +0200, Borislav Petkov wrote:
+> > On Sun, Apr 12, 2020 at 10:36:04PM -0700, David Miller wrote:
+> > > From: Leon Romanovsky <leon@kernel.org>
+> > > Date: Mon, 13 Apr 2020 08:26:37 +0300
+> > >
+> > > > How do you want us to handle it? Boris resend, me to send, you to fix?
+> > >
+> > > Anyone other than me can do it ;-)
+> >
+> > Ok, here's what I'm thinking: that vermagic.h is normally automatically
+> > included in the *mod.c as part of the module creation, see add_header()
+> > in modpost.c.
+> >
+> > So then perhaps drivers should not use it directly due to the current
+> > inclusion order:
+> >
+> > linux/module.h includes asm/module.h and that arch-specific header
+> > defines MODULE_VERMAGIC* for the respective arch.
+> >
+> > linux/vermagic.h defines all those fallbacks for those MODULE_VERMAGIC*
+> > things and if the inclusion order is swapped - we get the redefinition
+> > warning.
+> >
+> > Yesterday I tried the below - basically get rid of all the remaining
+> > includers of linux/vermagic.h but two are left:
+> >
+> > drivers/net/ethernet/hisilicon/hns3/hns3_enet.c:18:#include <linux/vermagic.h>
+> > drivers/net/ethernet/netronome/nfp/nfp_main.c:17:#include <linux/vermagic.h>
+> >
+> > because both use VERMAGIC_STRING directly.
+> >
+> > So,
+> >
+> > * one could either allow that and sort the inclusion order so that, for
+> > example, asm/module.h includes linux/vermagic.h and thus the fallbacks
+> > are there present.
+> >
+> > or
+> >
+> > * remove all uses of VERMAGIC_STRING from the drivers, add a header
+> > guard which prevents people from using it directly and leave
+> > VERMAGIC_STRING only to the internal module machinery in the kernel.
+> >
+> > Judging by how only a handful of old drivers are even using that,
+> > perhaps not too far fetched.
+> >
+> > In any case, this needs a maintainer decision.
+> >
+> > Leon, if you wanna do it whatever you guys end up agreeing on, just go
+> > ahead and submit the patches - it's not like I don't have anything else
+> > on the TODO :-) Just add a Reported-by: me and that should be enough.
+>
+> I broke it so I should fix and will send a patch today/tomorrow.
 
-Am Dienstag, 14. April 2020, 13:45:00 CEST schrieb Johan Jonker:
-> Hi Robin, Heiko,
-> 
-> If the Rockchip DT maintainers(= Heiko) agree that the new line for the
-> 'bus-width' properties is that it should be placed in dtsi I'll produce
-> a version 2. Please advise what should be done with the other Rockchip
-> SoCs. Change them too?
+ok, the patches are here, will wait for the kbuild results and will send.
+https://git.kernel.org/pub/scm/linux/kernel/git/leon/linux-rdma.git/log/?h=vermagic
 
-(1) as Robin pointed out bus-width and pinctrl containing the bus-pins
-    should be in the same file, as they describe parts of the same property
-(2) essentially it is ok for pinctrl-defaults to live in the dtsi, when there
-    are no pin variants ... (like the uartX_mY pin variants), so if you enable
-    a node and only have essentially one pin variant to enable, this should
-    live in the soc dtsi (like essentially all boards using 4-pin sdmmc
-    and 8-pin emmc)
-(3) Fixing other devicetrees is optional, so I won't oppose it of course
-    but it's also not something "that must be done" ;-)
+Thanks
 
-
-Heiko
-
-
-> On 4/14/20 12:02 PM, Robin Murphy wrote:
-> > On 2020-04-13 8:36 pm, Johan Jonker wrote:
-> >> The 'bus-width' property for mmc nodes is defined both in
-> >> 'rk3308.dtsi' and 'rk3308-roc-cc.dts'.
-> >> In line with the other Rockchip SoCs define that in a user dts only,
-> >> so remove all entries from mmc nodes in 'rk3308.dtsi'.
-> > 
-> > Judging by the pinctrl entries, these represent the number of pins
-> > provided by the SoC itself. Obviously boards need to override that if
-> > for some reason they don't wire up all the available data lines, but it
-> > seems backwards to have every board restate the SoC's default value.
-> > 
-> > In fact, having brought it up, for this particular case the pinctrl
-> > setting is inherently related to the bus width, so having one without
-> > the other in either place doesn't smell right.
-> > 
-> > Robin.
-> > 
-> >> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> >> ---
-> >>   arch/arm64/boot/dts/rockchip/rk3308.dtsi | 3 ---
-> >>   1 file changed, 3 deletions(-)
-> >>
-> >> diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-> >> b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-> >> index a9b98555d..130771ede 100644
-> >> --- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-> >> +++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-> >> @@ -587,7 +587,6 @@
-> >>           compatible = "rockchip,rk3308-dw-mshc",
-> >> "rockchip,rk3288-dw-mshc";
-> >>           reg = <0x0 0xff480000 0x0 0x4000>;
-> >>           interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH>;
-> >> -        bus-width = <4>;
-> >>           clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
-> >>                <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
-> >>           clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> >> @@ -602,7 +601,6 @@
-> >>           compatible = "rockchip,rk3308-dw-mshc",
-> >> "rockchip,rk3288-dw-mshc";
-> >>           reg = <0x0 0xff490000 0x0 0x4000>;
-> >>           interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
-> >> -        bus-width = <8>;
-> >>           clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
-> >>                <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
-> >>           clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> >> @@ -615,7 +613,6 @@
-> >>           compatible = "rockchip,rk3308-dw-mshc",
-> >> "rockchip,rk3288-dw-mshc";
-> >>           reg = <0x0 0xff4a0000 0x0 0x4000>;
-> >>           interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_HIGH>;
-> >> -        bus-width = <4>;
-> >>           clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
-> >>                <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
-> >>           clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> >>
-> 
-> 
+>
+> Thanks
+>
+> >
+> > If you're busy too, lemme know and I'll put it on my todo then.
+> >
+> > Thx.
+> >
+> > diff --git a/drivers/net/bonding/bonding_priv.h b/drivers/net/bonding/bonding_priv.h
+> > index 45b77bc8c7b3..48cdf3a49a7d 100644
+> > --- a/drivers/net/bonding/bonding_priv.h
+> > +++ b/drivers/net/bonding/bonding_priv.h
+> > @@ -14,7 +14,7 @@
+> >
+> >  #ifndef _BONDING_PRIV_H
+> >  #define _BONDING_PRIV_H
+> > -#include <linux/vermagic.h>
+> > +#include <generated/utsrelease.h>
+> >
+> >  #define DRV_NAME	"bonding"
+> >  #define DRV_DESCRIPTION	"Ethernet Channel Bonding Driver"
+> > diff --git a/drivers/net/ethernet/3com/3c509.c b/drivers/net/ethernet/3com/3c509.c
+> > index b762176a1406..139d0120f511 100644
+> > --- a/drivers/net/ethernet/3com/3c509.c
+> > +++ b/drivers/net/ethernet/3com/3c509.c
+> > @@ -85,7 +85,6 @@
+> >  #include <linux/device.h>
+> >  #include <linux/eisa.h>
+> >  #include <linux/bitops.h>
+> > -#include <linux/vermagic.h>
+> >
+> >  #include <linux/uaccess.h>
+> >  #include <asm/io.h>
+> > diff --git a/drivers/net/ethernet/3com/3c515.c b/drivers/net/ethernet/3com/3c515.c
+> > index 90312fcd6319..47b4215bb93b 100644
+> > --- a/drivers/net/ethernet/3com/3c515.c
+> > +++ b/drivers/net/ethernet/3com/3c515.c
+> > @@ -22,7 +22,6 @@
+> >
+> >  */
+> >
+> > -#include <linux/vermagic.h>
+> >  #define DRV_NAME		"3c515"
+> >
+> >  #define CORKSCREW 1
+> > diff --git a/drivers/net/ethernet/adaptec/starfire.c b/drivers/net/ethernet/adaptec/starfire.c
+> > index 2db42211329f..a64191fc2af9 100644
+> > --- a/drivers/net/ethernet/adaptec/starfire.c
+> > +++ b/drivers/net/ethernet/adaptec/starfire.c
+> > @@ -45,7 +45,6 @@
+> >  #include <asm/processor.h>		/* Processor type for cache alignment. */
+> >  #include <linux/uaccess.h>
+> >  #include <asm/io.h>
+> > -#include <linux/vermagic.h>
+> >
+> >  /*
+> >   * The current frame processor firmware fails to checksum a fragment
+> > diff --git a/drivers/net/ethernet/pensando/ionic/ionic_main.c b/drivers/net/ethernet/pensando/ionic/ionic_main.c
+> > index 588c62e9add7..3ed150512091 100644
+> > --- a/drivers/net/ethernet/pensando/ionic/ionic_main.c
+> > +++ b/drivers/net/ethernet/pensando/ionic/ionic_main.c
+> > @@ -6,7 +6,7 @@
+> >  #include <linux/module.h>
+> >  #include <linux/netdevice.h>
+> >  #include <linux/utsname.h>
+> > -#include <linux/vermagic.h>
+> > +#include <generated/utsrelease.h>
+> >
+> >  #include "ionic.h"
+> >  #include "ionic_bus.h"
+> > diff --git a/drivers/power/supply/test_power.c b/drivers/power/supply/test_power.c
+> > index 65c23ef6408d..b3c05ff05783 100644
+> > --- a/drivers/power/supply/test_power.c
+> > +++ b/drivers/power/supply/test_power.c
+> > @@ -16,7 +16,7 @@
+> >  #include <linux/power_supply.h>
+> >  #include <linux/errno.h>
+> >  #include <linux/delay.h>
+> > -#include <linux/vermagic.h>
+> > +#include <generated/utsrelease.h>
+> >
+> >  enum test_power_id {
+> >  	TEST_AC,
+> > diff --git a/net/ethtool/ioctl.c b/net/ethtool/ioctl.c
+> > index 89d0b1827aaf..adab97e500cf 100644
+> > --- a/net/ethtool/ioctl.c
+> > +++ b/net/ethtool/ioctl.c
+> > @@ -17,7 +17,6 @@
+> >  #include <linux/phy.h>
+> >  #include <linux/bitops.h>
+> >  #include <linux/uaccess.h>
+> > -#include <linux/vermagic.h>
+> >  #include <linux/vmalloc.h>
+> >  #include <linux/sfp.h>
+> >  #include <linux/slab.h>
+> > @@ -29,6 +28,8 @@
+> >  #include <net/flow_offload.h>
+> >  #include <linux/ethtool_netlink.h>
+> >
+> > +#include <generated/utsrelease.h>
+> > +
+> >  #include "common.h"
+> >
+> >  /*
+> >
+> >
+> > --
+> > Regards/Gruss,
+> >     Boris.
+> >
+> > https://people.kernel.org/tglx/notes-about-netiquette
