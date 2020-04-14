@@ -1,191 +1,82 @@
-From: Leon Romanovsky <leon@kernel.org>
-Subject: Re: [PATCH] net/3com/3c515: Fix MODULE_ARCH_VERMAGIC redefinition
-Date: Tue, 14 Apr 2020 15:23:49 +0300
-Message-ID: <20200414122349.GB1011271@unreal>
-References: <20200413045555.GE334007@unreal>
- <20200412.220739.516022706077351913.davem@davemloft.net>
- <20200413052637.GG334007@unreal>
- <20200412.223604.1160930629964379276.davem@davemloft.net>
- <20200413080452.GA3772@zn.tnic>
- <20200413084026.GH334007@unreal>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [BUG] PCI: rockchip: rk3399: pcie switch support
+Date: Tue, 14 Apr 2020 13:28:05 +0100
+Message-ID: <d02e0b72-5fb3-dd47-468c-08b86db07a9a@arm.com>
+References: <4d03dd8c-14f9-d1ef-6fd2-095423be3dd3@web.de>
+ <3e9d2c53-4f0d-0c97-fbfa-6d799e223747@arm.com>
+ <b088ad0e-bab1-0cff-dc43-eb5709555902@web.de>
+ <1f180d4b-9e5d-c829-555b-c9750940361e@web.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <netdev-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200413084026.GH334007@unreal>
-Sender: netdev-owner@vger.kernel.org
-To: Borislav Petkov <bp@alien8.de>
-Cc: David Miller <davem@davemloft.net>, kuba@kernel.org, thomas.lendacky@amd.com, keyur@os.amperecomputing.com, pcnet32@frontier.com, vfalico@gmail.com, j.vosburgh@gmail.com, linux-acenic@sunsite.dk, mripard@kernel.org, heiko@sntech.de, mark.einon@gmail.com, chris.snook@gmail.com, linux-rockchip@lists.infradead.org, iyappan@os.amperecomputing.com, irusskikh@marvell.com, dave@thedillows.org, netanel@amazon.com, quan@os.amperecomputing.com, jcliburn@gmail.com, LinoSanfilippo@gmx.de, linux-arm-kernel@lists.infradead.org, andreas@gaisler.com, andy@greyhouse.net, netdev@vger.kernel.org, thor.thayer@linux.intel.com, linux-kernel@vger.kernel.org, ionut@badula.org, akiyano@amazon.com, jes@trained-monkey.org, nios2-dev@lists.rocketboards.org, wens@csie.org
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <1f180d4b-9e5d-c829-555b-c9750940361e@web.de>
+Content-Language: en-GB
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Soeren Moch <smoch@web.de>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org, Andrew Murray <amurray@thegoodpenguin.co.uk>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 13, 2020 at 11:40:26AM +0300, Leon Romanovsky wrote:
-> On Mon, Apr 13, 2020 at 10:04:52AM +0200, Borislav Petkov wrote:
-> > On Sun, Apr 12, 2020 at 10:36:04PM -0700, David Miller wrote:
-> > > From: Leon Romanovsky <leon@kernel.org>
-> > > Date: Mon, 13 Apr 2020 08:26:37 +0300
-> > >
-> > > > How do you want us to handle it? Boris resend, me to send, you to fix?
-> > >
-> > > Anyone other than me can do it ;-)
-> >
-> > Ok, here's what I'm thinking: that vermagic.h is normally automatically
-> > included in the *mod.c as part of the module creation, see add_header()
-> > in modpost.c.
-> >
-> > So then perhaps drivers should not use it directly due to the current
-> > inclusion order:
-> >
-> > linux/module.h includes asm/module.h and that arch-specific header
-> > defines MODULE_VERMAGIC* for the respective arch.
-> >
-> > linux/vermagic.h defines all those fallbacks for those MODULE_VERMAGIC*
-> > things and if the inclusion order is swapped - we get the redefinition
-> > warning.
-> >
-> > Yesterday I tried the below - basically get rid of all the remaining
-> > includers of linux/vermagic.h but two are left:
-> >
-> > drivers/net/ethernet/hisilicon/hns3/hns3_enet.c:18:#include <linux/vermagic.h>
-> > drivers/net/ethernet/netronome/nfp/nfp_main.c:17:#include <linux/vermagic.h>
-> >
-> > because both use VERMAGIC_STRING directly.
-> >
-> > So,
-> >
-> > * one could either allow that and sort the inclusion order so that, for
-> > example, asm/module.h includes linux/vermagic.h and thus the fallbacks
-> > are there present.
-> >
-> > or
-> >
-> > * remove all uses of VERMAGIC_STRING from the drivers, add a header
-> > guard which prevents people from using it directly and leave
-> > VERMAGIC_STRING only to the internal module machinery in the kernel.
-> >
-> > Judging by how only a handful of old drivers are even using that,
-> > perhaps not too far fetched.
-> >
-> > In any case, this needs a maintainer decision.
-> >
-> > Leon, if you wanna do it whatever you guys end up agreeing on, just go
-> > ahead and submit the patches - it's not like I don't have anything else
-> > on the TODO :-) Just add a Reported-by: me and that should be enough.
->
-> I broke it so I should fix and will send a patch today/tomorrow.
+On 2020-04-14 12:35 pm, Soeren Moch wrote:
+> On 06.04.20 19:12, Soeren Moch wrote:
+>> On 06.04.20 14:52, Robin Murphy wrote:
+>>> On 2020-04-04 7:41 pm, Soeren Moch wrote:
+>>>> I want to use a PCIe switch on a RK3399 based RockPro64 V2.1 board.
+>>>> "Normal" PCIe cards work (mostly) just fine on this board. The PCIe
+>>>> switches (I tried Pericom and ASMedia based switches) also work fine on
+>>>> other boards. The RK3399 PCIe controller with pcie_rockchip_host driver
+>>>> also recognises the switch, but fails to initialize the buses behind the
+>>>> bridge properly, see syslog from linux-5.6.0.
+>>>>
+>>>> Any ideas what I do wrong, or any suggestions what I can test here?
+>>> See the thread here:
+>>>
+>>> https://lore.kernel.org/linux-pci/CAMdYzYoTwjKz4EN8PtD5pZfu3+SX+68JL+dfvmCrSnLL=K6Few@mail.gmail.com/
+>>>
+>> Thanks Robin!
+>>
+>> I also found out in the meantime that device enumeration fails in this
+>> fatal way when probing non-existent devices. So if I hack my complete
+>> bus topology into rockchip_pcie_valid_device, then all existing devices
+>> come up properly. Of course this is not how PCIe should work.
+>>> The conclusion there seems to be that the RK3399 root complex just
+>>> doesn't handle certain types of response in a sensible manner, and
+>>> there's not much that can reasonably be done to change that.
+>> Hm, at least there is the promising suggestion to take over the SError
+>> handler, maybe in ATF, as workaround.
+> Unfortunately it seems to be not that easy. Only when PCIe device
+> probing runs on one of the Cortex-A72 cores of rk3399 we see the SError.
+> When probing runs on one of the A53 cores, we get a synchronous external
+> abort instead.
+> 
+> Is this expected to see different error types on big.LITTLE systems? Or
+> is this another special property of the rk3399 pcie controller?
 
-ok, the patches are here, will wait for the kbuild results and will send.
-https://git.kernel.org/pub/scm/linux/kernel/git/leon/linux-rdma.git/log/?h=vermagic
+As far as I'm aware, the CPU microarchitecture is indeed one of the 
+factors in whether it takes a given external abort synchronously or 
+asynchronously, so yes, I'd say that probably is expected. I wouldn't 
+necessarily even rely on a single microarchitecture only behaving one 
+way, since in principle it's possible that surrounding instructions 
+might affect whether the core still has enough context left to take the 
+exception synchronously or not at the point the abort does come back.
 
-Thanks
+In general external aborts are a "should never happen" kind of thing, so 
+they're not necessarily expected to be recoverable (I think the RAS 
+extensions might add a more robustness in terms of reporting, but aren't 
+relevant here either way).
 
->
-> Thanks
->
-> >
-> > If you're busy too, lemme know and I'll put it on my todo then.
-> >
-> > Thx.
-> >
-> > diff --git a/drivers/net/bonding/bonding_priv.h b/drivers/net/bonding/bonding_priv.h
-> > index 45b77bc8c7b3..48cdf3a49a7d 100644
-> > --- a/drivers/net/bonding/bonding_priv.h
-> > +++ b/drivers/net/bonding/bonding_priv.h
-> > @@ -14,7 +14,7 @@
-> >
-> >  #ifndef _BONDING_PRIV_H
-> >  #define _BONDING_PRIV_H
-> > -#include <linux/vermagic.h>
-> > +#include <generated/utsrelease.h>
-> >
-> >  #define DRV_NAME	"bonding"
-> >  #define DRV_DESCRIPTION	"Ethernet Channel Bonding Driver"
-> > diff --git a/drivers/net/ethernet/3com/3c509.c b/drivers/net/ethernet/3com/3c509.c
-> > index b762176a1406..139d0120f511 100644
-> > --- a/drivers/net/ethernet/3com/3c509.c
-> > +++ b/drivers/net/ethernet/3com/3c509.c
-> > @@ -85,7 +85,6 @@
-> >  #include <linux/device.h>
-> >  #include <linux/eisa.h>
-> >  #include <linux/bitops.h>
-> > -#include <linux/vermagic.h>
-> >
-> >  #include <linux/uaccess.h>
-> >  #include <asm/io.h>
-> > diff --git a/drivers/net/ethernet/3com/3c515.c b/drivers/net/ethernet/3com/3c515.c
-> > index 90312fcd6319..47b4215bb93b 100644
-> > --- a/drivers/net/ethernet/3com/3c515.c
-> > +++ b/drivers/net/ethernet/3com/3c515.c
-> > @@ -22,7 +22,6 @@
-> >
-> >  */
-> >
-> > -#include <linux/vermagic.h>
-> >  #define DRV_NAME		"3c515"
-> >
-> >  #define CORKSCREW 1
-> > diff --git a/drivers/net/ethernet/adaptec/starfire.c b/drivers/net/ethernet/adaptec/starfire.c
-> > index 2db42211329f..a64191fc2af9 100644
-> > --- a/drivers/net/ethernet/adaptec/starfire.c
-> > +++ b/drivers/net/ethernet/adaptec/starfire.c
-> > @@ -45,7 +45,6 @@
-> >  #include <asm/processor.h>		/* Processor type for cache alignment. */
-> >  #include <linux/uaccess.h>
-> >  #include <asm/io.h>
-> > -#include <linux/vermagic.h>
-> >
-> >  /*
-> >   * The current frame processor firmware fails to checksum a fragment
-> > diff --git a/drivers/net/ethernet/pensando/ionic/ionic_main.c b/drivers/net/ethernet/pensando/ionic/ionic_main.c
-> > index 588c62e9add7..3ed150512091 100644
-> > --- a/drivers/net/ethernet/pensando/ionic/ionic_main.c
-> > +++ b/drivers/net/ethernet/pensando/ionic/ionic_main.c
-> > @@ -6,7 +6,7 @@
-> >  #include <linux/module.h>
-> >  #include <linux/netdevice.h>
-> >  #include <linux/utsname.h>
-> > -#include <linux/vermagic.h>
-> > +#include <generated/utsrelease.h>
-> >
-> >  #include "ionic.h"
-> >  #include "ionic_bus.h"
-> > diff --git a/drivers/power/supply/test_power.c b/drivers/power/supply/test_power.c
-> > index 65c23ef6408d..b3c05ff05783 100644
-> > --- a/drivers/power/supply/test_power.c
-> > +++ b/drivers/power/supply/test_power.c
-> > @@ -16,7 +16,7 @@
-> >  #include <linux/power_supply.h>
-> >  #include <linux/errno.h>
-> >  #include <linux/delay.h>
-> > -#include <linux/vermagic.h>
-> > +#include <generated/utsrelease.h>
-> >
-> >  enum test_power_id {
-> >  	TEST_AC,
-> > diff --git a/net/ethtool/ioctl.c b/net/ethtool/ioctl.c
-> > index 89d0b1827aaf..adab97e500cf 100644
-> > --- a/net/ethtool/ioctl.c
-> > +++ b/net/ethtool/ioctl.c
-> > @@ -17,7 +17,6 @@
-> >  #include <linux/phy.h>
-> >  #include <linux/bitops.h>
-> >  #include <linux/uaccess.h>
-> > -#include <linux/vermagic.h>
-> >  #include <linux/vmalloc.h>
-> >  #include <linux/sfp.h>
-> >  #include <linux/slab.h>
-> > @@ -29,6 +28,8 @@
-> >  #include <net/flow_offload.h>
-> >  #include <linux/ethtool_netlink.h>
-> >
-> > +#include <generated/utsrelease.h>
-> > +
-> >  #include "common.h"
-> >
-> >  /*
-> >
-> >
-> > --
-> > Regards/Gruss,
-> >     Boris.
-> >
-> > https://people.kernel.org/tglx/notes-about-netiquette
+At this point I'm starting to wonder whether it might be possible to do 
+something similar to the Arm N1SDP workaround using the Cortex-M0, 
+albeit with the complication that probing would realistically have to be 
+explicitly invoked from the Linux driver due to clocks and external 
+regulators... :/
+
+Robin.
