@@ -1,34 +1,35 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2] dt-bindings: display: convert rockchip rk3066 hdmi
- bindings to yaml
-Date: Tue, 14 Apr 2020 12:59:11 -0500
-Message-ID: <20200414175911.GA4583@bogus>
-References: <20200403133630.7377-1-jbx6244@gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 5/9] dt-bindings: phy: phy-rockchip-dphy-rx0: move
+ rockchip dphy rx0 bindings out of staging
+Date: Tue, 14 Apr 2020 13:08:22 -0500
+Message-ID: <20200414180822.GA31542@bogus>
+References: <20200403161538.1375908-1-helen.koike@collabora.com>
+ <20200403161538.1375908-6-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Return-path: <linux-media-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20200403133630.7377-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, airlied-cv59FeDIM0c@public.gmane.org, daniel-/w4YWyX8dFk@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <20200403161538.1375908-6-helen.koike@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Helen Koike <helen.koike@collabora.com>
+Cc: devicetree@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, robh+dt@kernel.org, heiko@sntech.de, hverkuil-cisco@xs4all.nl, kernel@collabora.com, dafna.hirschfeld@collabora.com, ezequiel@collabora.com, mark.rutland@arm.com, karthik.poduval@gmail.com, jbx6244@gmail.com, kishon@ti.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri,  3 Apr 2020 15:36:30 +0200, Johan Jonker wrote:
-> Current dts files with 'hdmi' nodes for rk3066 are manually verified.
-> In order to automate this process rockchip,rk3066-hdmi.txt
-> has to be converted to yaml.
+On Fri,  3 Apr 2020 13:15:34 -0300, Helen Koike wrote:
+> Move phy-rockchip-dphy-rx0 bindings to Documentation/devicetree/bindings/phy
 > 
-> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Verified with:
+> make ARCH=arm64 dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
+> 
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
 > ---
-> Changes v2:
->   Fix irq.h already included in arm-gic.h
-> ---
->  .../display/rockchip/rockchip,rk3066-hdmi.txt      |  72 -----------
->  .../display/rockchip/rockchip,rk3066-hdmi.yaml     | 140 +++++++++++++++++++++
->  2 files changed, 140 insertions(+), 72 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,rk3066-hdmi.txt
->  create mode 100644 Documentation/devicetree/bindings/display/rockchip/rockchip,rk3066-hdmi.yaml
+> 
+> V2:
+> - no changes
+> 
+>  .../devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml           | 0
+>  1 file changed, 0 insertions(+), 0 deletions(-)
+>  rename {drivers/staging/media/phy-rockchip-dphy-rx0/Documentation => Documentation}/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml (100%)
 > 
 
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Acked-by: Rob Herring <robh@kernel.org>
