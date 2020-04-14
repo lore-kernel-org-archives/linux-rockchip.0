@@ -1,7 +1,7 @@
 From: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v6 7/8] drm: bridge: dw-mipi-dsi: split low power cfg register into fields
-Date: Tue, 14 Apr 2020 18:19:54 +0300
-Message-ID: <20200414151955.311949-8-adrian.ratiu@collabora.com>
+Subject: [PATCH v6 5/8] dt-bindings: display: add i.MX6 MIPI DSI host controller doc
+Date: Tue, 14 Apr 2020 18:19:52 +0300
+Message-ID: <20200414151955.311949-6-adrian.ratiu@collabora.com>
 References: <20200414151955.311949-1-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -9,187 +9,187 @@ Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <20200414151955.311949-1-adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Martyn Welch <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-According to the Host Registers documentation for IMX, STM and RK
-the LP cfg register should not be written entirely in one go because
-some bits are reserved and should be kept to reset values, for eg.
-BIT(15) which is reserved in all versions.
+This provides an example DT binding for the MIPI DSI host controller
+present on the i.MX6 SoC based on Synopsis DesignWare v1.01 IP.
 
-This also cleans up the code by removing the the ugly defines
-and making field ranges & values written more explicit.
-
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Cc: Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 Tested-by: Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Tested-by: Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Martyn Welch <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Signed-off-by: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
-New in v6.
----
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 105 ++++++------------
- 1 file changed, 33 insertions(+), 72 deletions(-)
+Changes since v5:
+  - Fixed missing reg warning (Fabio)
+  - Updated dt-schema and fixed warnings (Rob)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-index 0ce2697d17a3..cbbe31c0dbac 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-@@ -120,60 +120,6 @@
- #define DSI_TO_CNT_CFG_V101		0x40
- #define DSI_PCKHDL_CFG_V101		0x18
- 
--#define MAX_RD_PKT_SIZE_LP		BIT(24)
--#define DCS_LW_TX_LP			BIT(19)
--#define DCS_SR_0P_TX_LP			BIT(18)
--#define DCS_SW_1P_TX_LP			BIT(17)
--#define DCS_SW_0P_TX_LP			BIT(16)
--#define GEN_LW_TX_LP			BIT(14)
--#define GEN_SR_2P_TX_LP			BIT(13)
--#define GEN_SR_1P_TX_LP			BIT(12)
--#define GEN_SR_0P_TX_LP			BIT(11)
--#define GEN_SW_2P_TX_LP			BIT(10)
--#define GEN_SW_1P_TX_LP			BIT(9)
--#define GEN_SW_0P_TX_LP			BIT(8)
--#define TEAR_FX_EN			BIT(0)
--
--#define CMD_MODE_ALL_LP			(MAX_RD_PKT_SIZE_LP | \
--					 DCS_LW_TX_LP | \
--					 DCS_SR_0P_TX_LP | \
--					 DCS_SW_1P_TX_LP | \
--					 DCS_SW_0P_TX_LP | \
--					 GEN_LW_TX_LP | \
--					 GEN_SR_2P_TX_LP | \
--					 GEN_SR_1P_TX_LP | \
--					 GEN_SR_0P_TX_LP | \
--					 GEN_SW_2P_TX_LP | \
--					 GEN_SW_1P_TX_LP | \
--					 GEN_SW_0P_TX_LP)
--
--#define EN_TEAR_FX_V101			BIT(14)
--#define DCS_LW_TX_LP_V101		BIT(12)
--#define GEN_LW_TX_LP_V101		BIT(11)
--#define MAX_RD_PKT_SIZE_LP_V101		BIT(10)
--#define DCS_SW_2P_TX_LP_V101		BIT(9)
--#define DCS_SW_1P_TX_LP_V101		BIT(8)
--#define DCS_SW_0P_TX_LP_V101		BIT(7)
--#define GEN_SR_2P_TX_LP_V101		BIT(6)
--#define GEN_SR_1P_TX_LP_V101		BIT(5)
--#define GEN_SR_0P_TX_LP_V101		BIT(4)
--#define GEN_SW_2P_TX_LP_V101		BIT(3)
--#define GEN_SW_1P_TX_LP_V101		BIT(2)
--#define GEN_SW_0P_TX_LP_V101		BIT(1)
--
--#define CMD_MODE_ALL_LP_V101		(DCS_LW_TX_LP_V101 | \
--					 GEN_LW_TX_LP_V101 | \
--					 MAX_RD_PKT_SIZE_LP_V101 | \
--					 DCS_SW_2P_TX_LP_V101 | \
--					 DCS_SW_1P_TX_LP_V101 | \
--					 DCS_SW_0P_TX_LP_V101 | \
--					 GEN_SR_2P_TX_LP_V101 | \
--					 GEN_SR_1P_TX_LP_V101 | \
--					 GEN_SR_0P_TX_LP_V101 | \
--					 GEN_SW_2P_TX_LP_V101 | \
--					 GEN_SW_1P_TX_LP_V101 | \
--					 GEN_SW_0P_TX_LP_V101)
--
- #define DSI_GEN_HDR			0x6c
- #define DSI_GEN_PLD_DATA		0x70
- 
-@@ -257,7 +203,11 @@ struct dw_mipi_dsi {
- 	struct regmap_field	*field_dpi_vsync_active_low;
- 	struct regmap_field	*field_dpi_hsync_active_low;
- 	struct regmap_field	*field_cmd_mode_ack_rqst_en;
--	struct regmap_field	*field_cmd_mode_all_lp_en;
-+	struct regmap_field	*field_cmd_mode_gen_sw_sr_en;
-+	struct regmap_field	*field_cmd_mode_dcs_sw_sr_en;
-+	struct regmap_field	*field_cmd_mode_gen_lw_en;
-+	struct regmap_field	*field_cmd_mode_dcs_lw_en;
-+	struct regmap_field	*field_cmd_mode_max_rd_pkt_size;
- 	struct regmap_field	*field_cmd_mode_en;
- 	struct regmap_field	*field_cmd_pkt_status;
- 	struct regmap_field	*field_vid_mode_en;
-@@ -315,7 +265,11 @@ struct dw_mipi_dsi_variant {
- 	struct reg_field	cfg_dpi_hsync_active_low;
- 	struct reg_field	cfg_cmd_mode_en;
- 	struct reg_field	cfg_cmd_mode_ack_rqst_en;
--	struct reg_field	cfg_cmd_mode_all_lp_en;
-+	struct reg_field	cfg_cmd_mode_gen_sw_sr_en;
-+	struct reg_field	cfg_cmd_mode_dcs_sw_sr_en;
-+	struct reg_field	cfg_cmd_mode_gen_lw_en;
-+	struct reg_field	cfg_cmd_mode_dcs_lw_en;
-+	struct reg_field	cfg_cmd_mode_max_rd_pkt_size;
- 	struct reg_field	cfg_cmd_pkt_status;
- 	struct reg_field	cfg_vid_mode_en;
- 	struct reg_field	cfg_vid_mode_type;
-@@ -366,7 +320,11 @@ static const struct dw_mipi_dsi_variant dw_mipi_dsi_v130_v131_layout = {
- 	.cfg_dpi_vsync_active_low =	REG_FIELD(DSI_DPI_CFG_POL, 1, 1),
- 	.cfg_dpi_hsync_active_low =	REG_FIELD(DSI_DPI_CFG_POL, 2, 2),
- 	.cfg_cmd_mode_ack_rqst_en =	REG_FIELD(DSI_CMD_MODE_CFG, 1, 1),
--	.cfg_cmd_mode_all_lp_en =	REG_FIELD(DSI_CMD_MODE_CFG, 8, 24),
-+	.cfg_cmd_mode_gen_sw_sr_en =	REG_FIELD(DSI_CMD_MODE_CFG, 8, 13),
-+	.cfg_cmd_mode_gen_lw_en =	REG_FIELD(DSI_CMD_MODE_CFG, 14, 14),
-+	.cfg_cmd_mode_dcs_sw_sr_en =	REG_FIELD(DSI_CMD_MODE_CFG, 16, 18),
-+	.cfg_cmd_mode_dcs_lw_en =	REG_FIELD(DSI_CMD_MODE_CFG, 19, 19),
-+	.cfg_cmd_mode_max_rd_pkt_size =	REG_FIELD(DSI_CMD_MODE_CFG, 24, 24),
- 	.cfg_cmd_mode_en =		REG_FIELD(DSI_MODE_CFG, 0, 31),
- 	.cfg_cmd_pkt_status =		REG_FIELD(DSI_CMD_PKT_STATUS, 0, 31),
- 	.cfg_vid_mode_en =		REG_FIELD(DSI_MODE_CFG, 0, 31),
-@@ -418,7 +376,11 @@ static const struct dw_mipi_dsi_variant dw_mipi_dsi_v101_layout = {
- 	.cfg_dpi_vsync_active_low =	REG_FIELD(DSI_DPI_CFG, 6, 6),
- 	.cfg_dpi_hsync_active_low =	REG_FIELD(DSI_DPI_CFG, 7, 7),
- 	.cfg_cmd_mode_en =		REG_FIELD(DSI_CMD_MODE_CFG_V101, 0, 0),
--	.cfg_cmd_mode_all_lp_en =	REG_FIELD(DSI_CMD_MODE_CFG_V101, 1, 12),
-+	.cfg_cmd_mode_gen_sw_sr_en =	REG_FIELD(DSI_CMD_MODE_CFG, 1, 6),
-+	.cfg_cmd_mode_dcs_sw_sr_en =	REG_FIELD(DSI_CMD_MODE_CFG, 7, 9),
-+	.cfg_cmd_mode_max_rd_pkt_size =	REG_FIELD(DSI_CMD_MODE_CFG, 10, 10),
-+	.cfg_cmd_mode_gen_lw_en =	REG_FIELD(DSI_CMD_MODE_CFG, 11, 11),
-+	.cfg_cmd_mode_dcs_lw_en =	REG_FIELD(DSI_CMD_MODE_CFG, 12, 12),
- 	.cfg_cmd_mode_ack_rqst_en =	REG_FIELD(DSI_CMD_MODE_CFG_V101, 13, 13),
- 	.cfg_cmd_pkt_status =		REG_FIELD(DSI_CMD_PKT_STATUS_V101, 0, 14),
- 	.cfg_vid_mode_en =		REG_FIELD(DSI_VID_MODE_CFG_V101, 0, 0),
-@@ -554,23 +516,18 @@ static void dw_mipi_message_config(struct dw_mipi_dsi *dsi,
- 				   const struct mipi_dsi_msg *msg)
- {
- 	bool lpm = msg->flags & MIPI_DSI_MSG_USE_LPM;
--	u32 cmd_mode_lp = 0;
--
--	switch (dsi->hw_version) {
--	case HWVER_130:
--	case HWVER_131:
--		cmd_mode_lp = CMD_MODE_ALL_LP;
--		break;
--	case HWVER_101:
--		cmd_mode_lp = CMD_MODE_ALL_LP_V101;
--		break;
--	}
- 
- 	if (msg->flags & MIPI_DSI_MSG_REQ_ACK)
- 		regmap_field_write(dsi->field_cmd_mode_ack_rqst_en, 1);
- 
--	if (lpm)
--		regmap_field_write(dsi->field_cmd_mode_all_lp_en, cmd_mode_lp);
-+	if (lpm) {
-+		regmap_field_write(dsi->field_cmd_mode_gen_sw_sr_en,
-+				   ENABLE_LOW_POWER);
-+		regmap_field_write(dsi->field_cmd_mode_dcs_sw_sr_en, 7);
-+		regmap_field_write(dsi->field_cmd_mode_gen_lw_en, 1);
-+		regmap_field_write(dsi->field_cmd_mode_dcs_lw_en, 1);
-+		regmap_field_write(dsi->field_cmd_mode_max_rd_pkt_size, 1);
-+	}
- 
- 	regmap_field_write(dsi->field_phy_txrequestclkhs, lpm ? 0 : 1);
- }
-@@ -1252,7 +1209,11 @@ static int dw_mipi_dsi_regmap_fields_init(struct dw_mipi_dsi *dsi)
- 	INIT_FIELD(dpi_vsync_active_low);
- 	INIT_FIELD(dpi_hsync_active_low);
- 	INIT_FIELD(cmd_mode_ack_rqst_en);
--	INIT_FIELD(cmd_mode_all_lp_en);
-+	INIT_FIELD(cmd_mode_gen_sw_sr_en);
-+	INIT_FIELD(cmd_mode_dcs_sw_sr_en);
-+	INIT_FIELD(cmd_mode_gen_lw_en);
-+	INIT_FIELD(cmd_mode_dcs_lw_en);
-+	INIT_FIELD(cmd_mode_max_rd_pkt_size);
- 	INIT_FIELD(cmd_mode_en);
- 	INIT_FIELD(cmd_pkt_status);
- 	INIT_FIELD(vid_mode_en);
+Changes since v4:
+  - Fixed yaml binding to pass `make dt_binding_check dtbs_check`
+  and addressed received binding feedback (Rob)
+
+Changes since v3:
+  - Added commit message (Neil)
+  - Converted to yaml format (Neil)
+  - Minor dt node + driver fixes (Rob)
+  - Added small panel example to the host controller binding
+
+Changes since v2:
+  - Fixed commit tags (Emil)
+---
+ .../display/imx/fsl,mipi-dsi-imx6.yaml        | 139 ++++++++++++++++++
+ 1 file changed, 139 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
+
+diff --git a/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml b/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
+new file mode 100644
+index 000000000000..10e289ea219a
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
+@@ -0,0 +1,139 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/imx/fsl,mipi-dsi-imx6.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Freescale i.MX6 DW MIPI DSI Host Controller
++
++maintainers:
++  - Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
++
++description: |
++  The i.MX6 DSI host controller is a Synopsys DesignWare MIPI DSI v1.01
++  IP block with a companion PHY IP.
++
++  These DT bindings follow the Synopsys DW MIPI DSI bindings defined in
++  Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt with
++  the following device-specific properties.
++
++properties:
++  compatible:
++    items:
++      - const: fsl,imx6q-mipi-dsi
++      - const: snps,dw-mipi-dsi
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Module Clock
++      - description: DSI bus clock
++
++  clock-names:
++    items:
++      - const: ref
++      - const: pclk
++
++  fsl,gpr:
++    description: Phandle to the iomuxc-gpr region containing the multiplexer control register.
++    $ref: /schemas/types.yaml#/definitions/phandle
++
++  ports:
++    type: object
++    description: |
++      A node containing DSI input & output port nodes with endpoint
++      definitions as documented in
++      Documentation/devicetree/bindings/media/video-interfaces.txt
++      Documentation/devicetree/bindings/graph.txt
++    properties:
++      port@0:
++        type: object
++        description:
++          DSI input port node, connected to the ltdc rgb output port.
++
++      port@1:
++        type: object
++        description:
++          DSI output port node, connected to a panel or a bridge input port"
++
++patternProperties:
++  "^panel@[0-3]$":
++    type: object
++    description: |
++      A node containing the panel or bridge description as documented in
++      Documentation/devicetree/bindings/display/mipi-dsi-bus.txt
++    properties:
++      port:
++        type: object
++        description:
++          Panel or bridge port node, connected to the DSI output port (port@1)
++
++  "#address-cells":
++    const: 1
++
++  "#size-cells":
++    const: 0
++
++required:
++  - "#address-cells"
++  - "#size-cells"
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - ports
++
++additionalProperties: false
++
++examples:
++  - |+
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/clock/imx6qdl-clock.h>
++    #include <dt-bindings/gpio/gpio.h>
++
++    dsi: dsi@21e0000 {
++        #address-cells = <1>;
++        #size-cells = <0>;
++        compatible = "fsl,imx6q-mipi-dsi", "snps,dw-mipi-dsi";
++        reg = <0x021e0000 0x4000>;
++        interrupts = <0 102 IRQ_TYPE_LEVEL_HIGH>;
++        fsl,gpr = <&gpr>;
++        clocks = <&clks IMX6QDL_CLK_MIPI_CORE_CFG>,
++                 <&clks IMX6QDL_CLK_MIPI_IPG>;
++        clock-names = "ref", "pclk";
++
++        ports {
++            #address-cells = <1>;
++            #size-cells = <0>;
++            port@1 {
++                reg = <1>;
++                dsi_out: endpoint {
++                    remote-endpoint = <&panel_in>;
++                };
++            };
++        };
++
++        panel@0 {
++            compatible = "sharp,ls032b3sx01";
++            reg = <0>;
++            reset-gpios = <&gpio6 8 GPIO_ACTIVE_LOW>;
++            ports {
++                #address-cells = <1>;
++                #size-cells = <0>;
++                port@0 {
++                    reg = <0>;
++                    panel_in: endpoint {
++                        remote-endpoint = <&dsi_out>;
++                    };
++                };
++            };
++        };
++    };
++
++...
 -- 
 2.26.0
