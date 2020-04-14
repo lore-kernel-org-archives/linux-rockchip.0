@@ -1,74 +1,115 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: remove bus-width from mmc nodes in rk3308.dtsi
-Date: Tue, 14 Apr 2020 12:16:05 +0200
-Message-ID: <22353886.YAKSXtfJYZ@diego>
-References: <20200413193652.1952-1-jbx6244@gmail.com> <20c81edc-247c-8db0-2b3c-a6c2fcad6b4e@arm.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH v4 1/2] iio: adc: rockchip_saradc: move all of probe to devm-functions
+Date: Tue, 14 Apr 2020 13:27:55 +0200
+Message-ID: <20200414112756.3015153-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20c81edc-247c-8db0-2b3c-a6c2fcad6b4e-5wv7dgnIgG8@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Cc: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 14. April 2020, 12:02:46 CEST schrieb Robin Murphy:
-> On 2020-04-13 8:36 pm, Johan Jonker wrote:
-> > The 'bus-width' property for mmc nodes is defined both in
-> > 'rk3308.dtsi' and 'rk3308-roc-cc.dts'.
-> > In line with the other Rockchip SoCs define that in a user dts only,
-> > so remove all entries from mmc nodes in 'rk3308.dtsi'.
-> 
-> Judging by the pinctrl entries, these represent the number of pins 
-> provided by the SoC itself. Obviously boards need to override that if 
-> for some reason they don't wire up all the available data lines, but it 
-> seems backwards to have every board restate the SoC's default value.
+From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 
-Yep, especially as most boards follow the reference layout to some extent
-and so far I haven't seen any board not use the full 4 pins for sdmmc
-for example :-)
+Parts of the saradc probe rely on devm functions and later parts do not.
+This makes it more difficult to for example enable triggers via their
+devm-functions and would need more undo-work in remove.
 
+So to make life easier for the driver, move the rest of probe calls
+also to their devm-equivalents.
 
-> In fact, having brought it up, for this particular case the pinctrl 
-> setting is inherently related to the bus width, so having one without 
-> the other in either place doesn't smell right.
+This includes moving the clk- and regulator-disabling to a devm_action
+so that they gets disabled both during remove and in the error case
+in probe, after the action is registered.
 
-So the bus width should be removed from the board file.
+Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+---
+changes in v4:
+- new patch as suggested by Jonathan
 
+ drivers/iio/adc/rockchip_saradc.c | 37 ++++++++++++++++---------------
+ 1 file changed, 19 insertions(+), 18 deletions(-)
 
-> > Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > ---
-> >   arch/arm64/boot/dts/rockchip/rk3308.dtsi | 3 ---
-> >   1 file changed, 3 deletions(-)
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-> > index a9b98555d..130771ede 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-> > @@ -587,7 +587,6 @@
-> >   		compatible = "rockchip,rk3308-dw-mshc", "rockchip,rk3288-dw-mshc";
-> >   		reg = <0x0 0xff480000 0x0 0x4000>;
-> >   		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH>;
-> > -		bus-width = <4>;
-> >   		clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
-> >   			 <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
-> >   		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> > @@ -602,7 +601,6 @@
-> >   		compatible = "rockchip,rk3308-dw-mshc", "rockchip,rk3288-dw-mshc";
-> >   		reg = <0x0 0xff490000 0x0 0x4000>;
-> >   		interrupts = <GIC_SPI 77 IRQ_TYPE_LEVEL_HIGH>;
-> > -		bus-width = <8>;
-> >   		clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
-> >   			 <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
-> >   		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> > @@ -615,7 +613,6 @@
-> >   		compatible = "rockchip,rk3308-dw-mshc", "rockchip,rk3288-dw-mshc";
-> >   		reg = <0x0 0xff4a0000 0x0 0x4000>;
-> >   		interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_HIGH>;
-> > -		bus-width = <4>;
-> >   		clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
-> >   			 <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
-> >   		clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
-> > 
-> 
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index 582ba047c4a6..270eb7e83823 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -193,6 +193,15 @@ static void rockchip_saradc_reset_controller(struct reset_control *reset)
+ 	reset_control_deassert(reset);
+ }
+ 
++static void rockchip_saradc_disable(void *data)
++{
++	struct rockchip_saradc *info = data;
++
++	clk_disable_unprepare(info->clk);
++	clk_disable_unprepare(info->pclk);
++	regulator_disable(info->vref);
++}
++
+ static int rockchip_saradc_probe(struct platform_device *pdev)
+ {
+ 	struct rockchip_saradc *info = NULL;
+@@ -304,6 +313,14 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+ 		goto err_pclk;
+ 	}
+ 
++	ret = devm_add_action_or_reset(&pdev->dev,
++				       rockchip_saradc_disable, info);
++	if (ret) {
++		dev_err(&pdev->dev, "failed to register devm action, %d\n",
++			ret);
++		return ret;
++	}
++
+ 	platform_set_drvdata(pdev, indio_dev);
+ 
+ 	indio_dev->name = dev_name(&pdev->dev);
+@@ -315,14 +332,12 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+ 	indio_dev->channels = info->data->channels;
+ 	indio_dev->num_channels = info->data->num_channels;
+ 
+-	ret = iio_device_register(indio_dev);
++	ret = devm_iio_device_register(&pdev->dev, indio_dev);
+ 	if (ret)
+-		goto err_clk;
++		return ret;
+ 
+ 	return 0;
+ 
+-err_clk:
+-	clk_disable_unprepare(info->clk);
+ err_pclk:
+ 	clk_disable_unprepare(info->pclk);
+ err_reg_voltage:
+@@ -330,19 +345,6 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
+-static int rockchip_saradc_remove(struct platform_device *pdev)
+-{
+-	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
+-	struct rockchip_saradc *info = iio_priv(indio_dev);
+-
+-	iio_device_unregister(indio_dev);
+-	clk_disable_unprepare(info->clk);
+-	clk_disable_unprepare(info->pclk);
+-	regulator_disable(info->vref);
+-
+-	return 0;
+-}
+-
+ #ifdef CONFIG_PM_SLEEP
+ static int rockchip_saradc_suspend(struct device *dev)
+ {
+@@ -383,7 +385,6 @@ static SIMPLE_DEV_PM_OPS(rockchip_saradc_pm_ops,
+ 
+ static struct platform_driver rockchip_saradc_driver = {
+ 	.probe		= rockchip_saradc_probe,
+-	.remove		= rockchip_saradc_remove,
+ 	.driver		= {
+ 		.name	= "rockchip-saradc",
+ 		.of_match_table = rockchip_saradc_match,
+-- 
+2.24.1
