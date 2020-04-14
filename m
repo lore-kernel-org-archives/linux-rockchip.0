@@ -1,55 +1,60 @@
-From: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
-Subject: [PATCH 1/2] arm64: dts: rockchip: fix inverted headphone detection
-Date: Tue, 14 Apr 2020 18:39:51 +0200
-Message-ID: <20200414163952.1093784-2-t.schramm@manjaro.org>
-References: <20200414163952.1093784-1-t.schramm@manjaro.org>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH] dt-bindings: thermal: Get rid of thermal.txt and replace
+ references
+Date: Tue, 14 Apr 2020 11:43:57 -0500
+Message-ID: <20200414164357.GA11178@bogus>
+References: <cbd70c2f0f5ddae0d8e418fcb1e03101e408f6c2.1585753313.git.amit.kucheria@linaro.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200414163952.1093784-1-t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-arm-msm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <cbd70c2f0f5ddae0d8e418fcb1e03101e408f6c2.1585753313.git.amit.kucheria@linaro.org>
+Sender: linux-arm-msm-owner@vger.kernel.org
+To: Amit Kucheria <amit.kucheria@linaro.org>
+Cc: linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, lukasz.luba@arm.com, daniel.lezcano@linaro.org, Sudeep Holla <sudeep.holla@arm.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Viresh Kumar <viresh.kumar@linaro.org>, Jean Delvare <jdelvare@suse.com>, Guenter Roeck <linux@roeck-us.net>, Vasily Khoruzhick <anarsoul@gmail.com>, Yangtao Li <tiny.windzz@gmail.com>, Zhang Rui <rui.zhang@intel.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Maxime Ripard <mripard@kernel.org>, Chen-Yu Tsai <wens@csie.org>, Talel Shenhar <talel@amazon.com>, Nicolas Saenz Julienne <nsaenzjulienne@suse.de>, Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, bcm-kernel-feedback-list@broadcom.com, Thie
 List-Id: linux-rockchip.vger.kernel.org
 
-On the Pinebook Pro the headphone jack is dual use. It can be used either
-as a normal headphone jack or as a debug serial connection. This
-functionality is controlled via a small hardware switch on the mainboard.
-Unfortunately flipping this switch biases the headphone detection switch
-inside the headphone jack at 3.3 V if in `debug UART` position but
-to GND when in `headphone out` position.
-This results in an inversion of the headphone detection logic depending
-on the switch position.
-Since the headphone jack can only be used for audio when in
-`headphone out` position this commit changes the headphone detect GPIO
-logic to be correct for that case rather than for the debug UART.
+On Wed,  1 Apr 2020 20:35:50 +0530, Amit Kucheria wrote:
+> Now that we have yaml bindings for the thermal subsystem, get rid of the
+> old bindings (thermal.txt).
+> 
+> Replace all references to thermal.txt in the Documentation with a link
+> to the appropriate YAML bindings using the following search and replace
+> pattern:
+>  - If the reference is specific to the thermal-sensor-cells property,
+>  replace with a pointer to thermal-sensor.yaml
+>  - If the reference is to the cooling-cells property, replace with a
+>  pointer to thermal-cooling-devices.yaml
+>  - If the reference is generic thermal bindings, replace with a
+>  reference to thermal*.yaml.
+> 
+> Signed-off-by: Amit Kucheria <amit.kucheria@linaro.org>
+> ---
+>  .../devicetree/bindings/arm/arm,scmi.txt      |   2 +-
+>  .../devicetree/bindings/arm/arm,scpi.txt      |   2 +-
+>  .../arm/marvell/ap80x-system-controller.txt   |   2 +-
+>  .../arm/marvell/cp110-system-controller.txt   |   2 +-
+>  .../bindings/cpufreq/cpufreq-dt.txt           |   3 +-
+>  .../bindings/cpufreq/cpufreq-mediatek.txt     |   4 +-
+>  .../devicetree/bindings/hwmon/gpio-fan.txt    |   3 +-
+>  .../devicetree/bindings/hwmon/lm90.txt        |   4 +-
+>  .../thermal/allwinner,sun8i-a83t-ths.yaml     |   2 +-
+>  .../bindings/thermal/amazon,al-thermal.txt    |   2 +-
+>  .../bindings/thermal/brcm,avs-ro-thermal.yaml |   2 +-
+>  .../bindings/thermal/brcm,bcm2835-thermal.txt |   2 +-
+>  .../bindings/thermal/hisilicon-thermal.txt    |   2 +-
+>  .../bindings/thermal/max77620_thermal.txt     |   6 +-
+>  .../bindings/thermal/mediatek-thermal.txt     |   2 +-
+>  .../thermal/nvidia,tegra124-soctherm.txt      |  10 +-
+>  .../thermal/nvidia,tegra186-bpmp-thermal.txt  |   2 +-
+>  .../bindings/thermal/qcom-spmi-temp-alarm.txt |   2 +-
+>  .../bindings/thermal/rockchip-thermal.txt     |   2 +-
+>  .../bindings/thermal/tango-thermal.txt        |   2 +-
+>  .../bindings/thermal/thermal-generic-adc.txt  |   2 +-
+>  .../devicetree/bindings/thermal/thermal.txt   | 586 ------------------
+>  .../bindings/thermal/uniphier-thermal.txt     |   2 +-
+>  23 files changed, 33 insertions(+), 615 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/thermal/thermal.txt
+> 
 
-Signed-off-by: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index 5ea281b55fe2..c3f15f5bd550 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -147,7 +147,7 @@ es8316-sound {
- 			"Speaker", "Speaker Amplifier OUTL",
- 			"Speaker", "Speaker Amplifier OUTR";
- 
--		simple-audio-card,hp-det-gpio = <&gpio0 RK_PB0 GPIO_ACTIVE_LOW>;
-+		simple-audio-card,hp-det-gpio = <&gpio0 RK_PB0 GPIO_ACTIVE_HIGH>;
- 		simple-audio-card,aux-devs = <&speaker_amp>;
- 		simple-audio-card,pin-switches = "Speaker";
- 
-@@ -794,7 +794,7 @@ dc_det_gpio: dc-det-gpio {
- 
- 	es8316 {
- 		hp_det_gpio: hp-det-gpio {
--			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_down>;
-+			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_up>;
- 		};
- 	};
- 
--- 
-2.26.0
+Reviewed-by: Rob Herring <robh@kernel.org>
