@@ -1,38 +1,39 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: media: convert rockchip rga bindings
- to yaml
-Date: Tue, 14 Apr 2020 12:57:19 -0500
-Message-ID: <20200414175719.GA29816@bogus>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v2 2/2] dt-bindings: media: rockchip-rga: add
+ power-domains property
+Date: Tue, 14 Apr 2020 12:57:47 -0500
+Message-ID: <20200414175747.GA30642@bogus>
 References: <20200403130607.6138-1-jbx6244@gmail.com>
+ <20200403130607.6138-2-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
 Content-Disposition: inline
-In-Reply-To: <20200403130607.6138-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+In-Reply-To: <20200403130607.6138-2-jbx6244@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: devicetree@vger.kernel.org, heiko@sntech.de, linux-kernel@vger.kernel.org, robh+dt@kernel.org, linux-rockchip@lists.infradead.org, jacob-chen@iotwrt.com, mchehab@kernel.org, ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri,  3 Apr 2020 15:06:06 +0200, Johan Jonker wrote:
-> Current dts files for Rockchip with 'rga' nodes
-> are manually verified. In order to automate this process
-> rockchip-rga.txt has to be converted to yaml.
+On Fri,  3 Apr 2020 15:06:07 +0200, Johan Jonker wrote:
+> In the old txt situation we add/describe only properties that are used
+> by the driver/hardware itself. With yaml it also filters things in a
+> node that are used by other drivers like 'power-domains' for rk3399,
+> so add it to 'rockchip-rga.yaml'.
 > 
-> Changed:
->   Add missing reg property
-> 
-> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
-> Changes v2:
->   Change MAINTAINERS
-> ---
->  .../devicetree/bindings/media/rockchip-rga.txt     | 34 ----------
->  .../devicetree/bindings/media/rockchip-rga.yaml    | 78 ++++++++++++++++++++++
->  MAINTAINERS                                        |  2 +-
->  3 files changed, 79 insertions(+), 35 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/media/rockchip-rga.txt
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-rga.yaml
+>  Documentation/devicetree/bindings/media/rockchip-rga.yaml | 5 +++++
+>  1 file changed, 5 insertions(+)
 > 
 
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
