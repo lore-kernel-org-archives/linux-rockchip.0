@@ -1,38 +1,40 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] dt-bindings: net: ethernet-phy: add desciption for ethernet-phy-id1234.d400
-Date: Wed, 15 Apr 2020 22:01:49 +0200
-Message-ID: <20200415200149.16986-1-jbx6244@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, andrew-g2DYL2Zd6BY@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Florian Fainelli <f.fainelli@gmail.com>
+Subject: Re: [PATCH] dt-bindings: net: ethernet-phy: add desciption for
+ ethernet-phy-id1234.d400
+Date: Wed, 15 Apr 2020 13:10:22 -0700
+Message-ID: <72dd74f3-eed4-631c-0693-3bdffc8aefd2@gmail.com>
+References: <20200415200149.16986-1-jbx6244@gmail.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <20200415200149.16986-1-jbx6244@gmail.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
+Cc: andrew@lunn.ch, devicetree@vger.kernel.org, netdev@vger.kernel.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, hkallweit1@gmail.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The description below is already in use in
-'rk3228-evb.dts', 'rk3229-xms6.dts' and 'rk3328.dtsi'
-but somehow never added to a document, so add
-"ethernet-phy-id1234.d400", "ethernet-phy-ieee802.3-c22"
-for ethernet-phy nodes on Rockchip platforms to
-'ethernet-phy.yaml'.
 
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- Documentation/devicetree/bindings/net/ethernet-phy.yaml | 3 +++
- 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/ethernet-phy.yaml b/Documentation/devicetree/bindings/net/ethernet-phy.yaml
-index 8927941c7..5aa141ccc 100644
---- a/Documentation/devicetree/bindings/net/ethernet-phy.yaml
-+++ b/Documentation/devicetree/bindings/net/ethernet-phy.yaml
-@@ -45,6 +45,9 @@ properties:
-           bits of a vendor specific ID.
-       - items:
-           - pattern: "^ethernet-phy-id[a-f0-9]{4}\\.[a-f0-9]{4}$"
-+          - const: ethernet-phy-ieee802.3-c22
-+      - items:
-+          - pattern: "^ethernet-phy-id[a-f0-9]{4}\\.[a-f0-9]{4}$"
-           - const: ethernet-phy-ieee802.3-c45
- 
-   reg:
+On 4/15/2020 1:01 PM, Johan Jonker wrote:
+> The description below is already in use in
+> 'rk3228-evb.dts', 'rk3229-xms6.dts' and 'rk3328.dtsi'
+> but somehow never added to a document, so add
+> "ethernet-phy-id1234.d400", "ethernet-phy-ieee802.3-c22"
+> for ethernet-phy nodes on Rockchip platforms to
+> 'ethernet-phy.yaml'.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+
+Acked-by: Florian Fainelli <f.fainelli@gmail.com>
 -- 
-2.11.0
+Florian
