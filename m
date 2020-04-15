@@ -1,68 +1,38 @@
-From: Tom Rini <trini@konsulko.com>
-Subject: Re: [PATCH v2 1/3] environment: distro: Add SF distro command
-Date: Wed, 15 Apr 2020 16:00:17 -0400
-Message-ID: <20200415200017.GH12111@bill-the-cat>
-References: <20200410182631.11951-1-jagan@amarulasolutions.com>
- <20200410182631.11951-2-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="wayzTnRSUXKNfBqd"
-Return-path: <u-boot-bounces@lists.denx.de>
-Content-Disposition: inline
-In-Reply-To: <20200410182631.11951-2-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH] dt-bindings: net: ethernet-phy: add desciption for ethernet-phy-id1234.d400
+Date: Wed, 15 Apr 2020 22:01:49 +0200
+Message-ID: <20200415200149.16986-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, andrew-g2DYL2Zd6BY@public.gmane.org, f.fainelli-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hkallweit1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-I+IVW8TIWO2tmTQ+vhA3Yw@public.gmane.org, davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+The description below is already in use in
+'rk3228-evb.dts', 'rk3229-xms6.dts' and 'rk3328.dtsi'
+but somehow never added to a document, so add
+"ethernet-phy-id1234.d400", "ethernet-phy-ieee802.3-c22"
+for ethernet-phy nodes on Rockchip platforms to
+'ethernet-phy.yaml'.
 
---wayzTnRSUXKNfBqd
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ Documentation/devicetree/bindings/net/ethernet-phy.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-On Fri, Apr 10, 2020 at 11:56:29PM +0530, Jagan Teki wrote:
-
-> Add distro boot command support for SPI flash (SF).
->=20
-> This distro boot will read the boot script at specific
-> location at the flash and start sourcing the same.
->=20
-> This file need to include on required include/config
-> file.
->=20
-> Cc: Tom Rini <trini@konsulko.com>
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-
-Reviewed-by: Tom Rini <trini@konsulko.com>
-
---=20
-Tom
-
---wayzTnRSUXKNfBqd
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQGzBAABCgAdFiEEGjx/cOCPqxcHgJu/FHw5/5Y0tywFAl6XZ9EACgkQFHw5/5Y0
-tyx7JgwAoMrgOz3n3RgpUbpqGAiC3vthKl6cIohB+T2P1V44o/nC81nysrykBb1b
-kTztUHEsZT4nK1k+9OXVKZkGP96fYTcwSzZtUSPiYqOvBgVP4YYJBPLAf0sDsvyY
-fM/LkMpv6uQp8dTjCYBRkFi3pYC0kacad1zLdRGH6HM2Fg4wleXzJuDgsrfrJjiI
-ok9IlX28+zKQ6wkXmEJwFk4N7jcRyqIJ39msc8pSTqDaLtb0J4cnZAY8oVg0+t0G
-ONz2L+ZXTUDRtSy/bT4EpK97MwEcUx3H5Hey7WxE2KittmK3EeAhQpyA3P3oueIy
-MWvO5fKfH7oLyAPL08EctSgsjuG6m/rQTGm0BggzCh+s+CB4cZyY/r38eeJj7LYF
-WakBgyGNw0hVzCUX+mVbF25I+48f5m9tauHhItztwigZ8lHQuAkRwNvC349WIqMy
-eokX9WmTe6GJaiG40CU2Lk3AkOgDxREkyemF49PweCJK3AT4uvjj80Nt0zBDyxI+
-bP807D7X
-=vqDA
------END PGP SIGNATURE-----
-
---wayzTnRSUXKNfBqd--
+diff --git a/Documentation/devicetree/bindings/net/ethernet-phy.yaml b/Documentation/devicetree/bindings/net/ethernet-phy.yaml
+index 8927941c7..5aa141ccc 100644
+--- a/Documentation/devicetree/bindings/net/ethernet-phy.yaml
++++ b/Documentation/devicetree/bindings/net/ethernet-phy.yaml
+@@ -45,6 +45,9 @@ properties:
+           bits of a vendor specific ID.
+       - items:
+           - pattern: "^ethernet-phy-id[a-f0-9]{4}\\.[a-f0-9]{4}$"
++          - const: ethernet-phy-ieee802.3-c22
++      - items:
++          - pattern: "^ethernet-phy-id[a-f0-9]{4}\\.[a-f0-9]{4}$"
+           - const: ethernet-phy-ieee802.3-c45
+ 
+   reg:
+-- 
+2.11.0
