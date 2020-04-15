@@ -1,255 +1,137 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: [PATCH v3 2/4] media: v4l2-common: add helper functions to call s_stream() callbacks
-Date: Tue, 14 Apr 2020 22:30:42 -0300
-Message-ID: <20200415013044.1778572-3-helen.koike@collabora.com>
-References: <20200415013044.1778572-1-helen.koike@collabora.com>
+From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v3 0/4] media: add v4l2_pipeline_stream_{enable,
+ disable} helpers
+Date: Tue, 14 Apr 2020 22:30:40 -0300
+Message-ID: <20200415013044.1778572-1-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200415013044.1778572-1-helen.koike@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, skhan@linuxfoundation.org, niklas.soderlund@ragnatech.se, mchehab@kernel.org, Helen Koike <helen.koike@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, hans.verkuil-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, skhan-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org, niklas.soderlund-1zkq55x86MTxsAP9Fp7wbw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add v4l2_pipeline_stream_{enable,disable} helper functions to iterate
-through the subdevices in a given stream (i.e following links from sink
-to source) and call .s_stream() callback.
+Hi,
 
-Add stream_count on the subdevice object for simultaneous streaming from
-different video devices which shares subdevices.
+Media drivers need to iterate through the pipeline and call .s_stream()
+callbacks in the subdevices.
 
-Prevent calling .s_stream(true) if it was already called previously by
-another stream.
+Instead of repeating code, add helpers for this.
 
-Prevent calling .s_stream(false) from one stream when there are still
-others active.
+These helpers will go walk through the pipeline only visiting entities
+that participates in the stream, i.e. it follows links from sink to source
+(and not the opposite).
 
-If .s_stream(true) fails, call .s_stream(false) in the reverse order.
+Which means that in a topology like this https://bit.ly/3b2MxjI
+calling v4l2_pipeline_stream_enable() from rkisp1_mainpath won't call
+.s_stream(true) for rkisp1_resizer_selfpath.
 
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
----
+stream_count variable was added in v4l2_subdevice to handle nested calls
+to the helpers.
+This is useful when the driver allows streaming from more then one
+capture device sharing subdevices.
 
-Changes in v3:
-- re-write helpers to use media walkers as in v1, but with
-v4l2_pipeline_subdevs_get() to reverse the order we call s_stream(true)
-in subdevices.
-- rename size to max_size (and update docs) in v4l2_pipeline_subdevs_get() to
-reflect the meaning of the argument.
-- add if defined(CONFIG_MEDIA_CONTROLLER) around helpers
+This patch came from the error I was facing when multistreaming from
+rkisp1 driver, where stoping one capture would call s_stream(false) in
+the pipeline, causing a stall in the second capture device.
 
-Changes in v2:
-- re-write helpers to not use media walkers
+Also, the vimc patch https://patchwork.kernel.org/patch/10948833/ won't
+be required with this patchset.
 
- drivers/media/v4l2-core/v4l2-common.c | 125 ++++++++++++++++++++++++++
- include/media/v4l2-common.h           |  43 +++++++++
- include/media/v4l2-subdev.h           |   2 +
- 3 files changed, 170 insertions(+)
+This patchset was tested on rkisp1 and vimc drivers.
 
-diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-index 9e8eb45a5b03c..2f991a1a57d7c 100644
---- a/drivers/media/v4l2-core/v4l2-common.c
-+++ b/drivers/media/v4l2-core/v4l2-common.c
-@@ -442,3 +442,128 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
-+
-+#if defined(CONFIG_MEDIA_CONTROLLER)
-+
-+/*
-+ * v4l2_pipeline_subdevs_get - Assemble a list of subdevices in a pipeline
-+ * @subdevs: the array to be filled.
-+ * @max_size: max number of elements that can fit in subdevs array.
-+ *
-+ * Walk from a video node, following links from sink to source and fill the
-+ * array with subdevices in the path.
-+ * The walker performs a depth-first traversal, which means that, in a topology
-+ * sd1->sd2->sd3->vdev, sd1 will be the first element placed in the array.
-+ *
-+ * Return the number of subdevices filled in the array.
-+ */
-+static int v4l2_pipeline_subdevs_get(struct video_device *vdev,
-+				     struct media_pipeline *pipe,
-+				     struct v4l2_subdev **subdevs,
-+				     unsigned int max_size)
-+{
-+	struct media_entity *entity = &vdev->entity;
-+	struct media_device *mdev = entity->graph_obj.mdev;
-+	int idx = 0;
-+	int ret;
-+
-+	mutex_lock(&mdev->graph_mutex);
-+
-+	if (!pipe->streaming_count) {
-+		ret = media_graph_walk_init(&pipe->graph, mdev);
-+		if (ret) {
-+			mutex_unlock(&mdev->graph_mutex);
-+			return ret;
-+		}
-+	}
-+
-+	media_graph_walk_start(&pipe->graph, entity);
-+
-+	while ((entity = media_graph_walk_next_stream(&pipe->graph))) {
-+		if (!is_media_entity_v4l2_subdev(entity))
-+			continue;
-+		if (WARN_ON(idx >= max_size)) {
-+			mutex_unlock(&mdev->graph_mutex);
-+			return -EINVAL;
-+		}
-+		subdevs[idx++] = media_entity_to_v4l2_subdev(entity);
-+	}
-+
-+	if (!pipe->streaming_count)
-+		media_graph_walk_cleanup(&pipe->graph);
-+
-+	mutex_unlock(&mdev->graph_mutex);
-+
-+	return idx;
-+}
-+
-+__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev,
-+					     struct media_pipeline *pipe)
-+{
-+	struct media_device *mdev = vdev->entity.graph_obj.mdev;
-+	struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
-+	struct v4l2_subdev *sd;
-+	int i, size, ret;
-+
-+	size = v4l2_pipeline_subdevs_get(vdev, pipe,
-+					 subdevs, ARRAY_SIZE(subdevs));
-+	if (size <= 0)
-+		return size;
-+
-+	/* Call s_stream() in reverse order to enable sensors last */
-+	for (i = size - 1; i >= 0; i--) {
-+		sd = subdevs[i];
-+		if (sd->stream_count++)
-+			continue;
-+		dev_dbg(mdev->dev,
-+			"enabling stream for '%s'\n", sd->entity.name);
-+		ret = v4l2_subdev_call(sd, video, s_stream, true);
-+		if (ret && ret != -ENOIOCTLCMD) {
-+			sd->stream_count = 0;
-+			goto err_stream_disable;
-+		}
-+	}
-+
-+	return 0;
-+
-+err_stream_disable:
-+	for (i++; i < size; i++) {
-+		sd = subdevs[i];
-+		if (--sd->stream_count)
-+			continue;
-+		dev_dbg(mdev->dev,
-+			"disabling stream for '%s'\n", sd->entity.name);
-+		v4l2_subdev_call(sd, video, s_stream, false);
-+	};
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_enable);
-+
-+void v4l2_pipeline_stream_disable(struct video_device *vdev,
-+				  struct media_pipeline *pipe)
-+{
-+	struct media_device *mdev = vdev->entity.graph_obj.mdev;
-+	struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
-+	unsigned int i;
-+	int size;
-+
-+	size = v4l2_pipeline_subdevs_get(vdev, pipe,
-+					 subdevs, ARRAY_SIZE(subdevs));
-+	if (WARN_ON(size < 0))
-+		return;
-+
-+	/* Call s_stream() in order to disable sensors first */
-+	for (i = 0; i < size; i++) {
-+		struct v4l2_subdev *sd = subdevs[i];
-+
-+		if (--sd->stream_count)
-+			continue;
-+		dev_dbg(mdev->dev,
-+			"disabling stream for '%s'\n", sd->entity.name);
-+		v4l2_subdev_call(sd, video, s_stream, false);
-+	}
-+}
-+EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_disable);
-+
-+#endif /* CONFIG_MEDIA_CONTROLLER */
-diff --git a/include/media/v4l2-common.h b/include/media/v4l2-common.h
-index 150ee16ebd811..dc46812120cdc 100644
---- a/include/media/v4l2-common.h
-+++ b/include/media/v4l2-common.h
-@@ -539,4 +539,47 @@ static inline void v4l2_buffer_set_timestamp(struct v4l2_buffer *buf,
- 	buf->timestamp.tv_usec = ts.tv_nsec / NSEC_PER_USEC;
- }
- 
-+#if defined(CONFIG_MEDIA_CONTROLLER)
-+
-+/**
-+ * v4l2_pipeline_stream_enable - Call .s_stream(true) callbacks in the stream
-+ * @vdev: Starting video device.
-+ * @pipe: Pipeline this entity belongs to.
-+ *
-+ * Call .s_stream(true) callback in all the subdevices participating in the
-+ * stream, i.e. following links from sink to source.
-+ *
-+ * .s_stream(true) is also called from sink to source, i.e. in a topology
-+ * sd1->sd2->sd3->vdev, .s_stream(true) of sd3 is called first.
-+ *
-+ * Calls to this function can be nested, in which case the same number of
-+ * v4l2_pipeline_stream_disable() calls will be required to disable streaming
-+ * through subdevices in the pipeline.
-+ * The  pipeline pointer must be identical for all nested calls to
-+ * v4l2_pipeline_stream_enable().
-+ */
-+__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev,
-+					     struct media_pipeline *pipe);
-+
-+/**
-+ * v4l2_pipeline_stream_disable - Call .s_stream(false) callbacks in the stream
-+ * @vdev: Starting video device.
-+ * @pipe: Pipeline this entity belongs to.
-+ *
-+ * Call .s_stream(false) callback in all the subdevices participating in the
-+ * stream, i.e. following links from sink to source.
-+ *
-+ * s_stream(false) is called in a reverse order from
-+ * v4l2_pipeline_stream_enable(), i.e. in a topology sd1->sd2->sd3->vdev,
-+ * .s_stream(false) of sd1 is called first.
-+ *
-+ * If multiple calls to v4l2_pipeline_stream_enable() have been made, the same
-+ * number of calls to this function are required to disable streaming through
-+ * subdevices in the pipeline.
-+ */
-+void v4l2_pipeline_stream_disable(struct video_device *vdev,
-+				  struct media_pipeline *pipe);
-+
-+#endif /* CONFIG_MEDIA_CONTROLLER */
-+
- #endif /* V4L2_COMMON_H_ */
-diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
-index a4848de598521..20f913a9f70c5 100644
---- a/include/media/v4l2-subdev.h
-+++ b/include/media/v4l2-subdev.h
-@@ -838,6 +838,7 @@ struct v4l2_subdev_platform_data {
-  * @subdev_notifier: A sub-device notifier implicitly registered for the sub-
-  *		     device using v4l2_device_register_sensor_subdev().
-  * @pdata: common part of subdevice platform data
-+ * @stream_count: Stream count for the subdevice.
-  *
-  * Each instance of a subdev driver should create this struct, either
-  * stand-alone or embedded in a larger struct.
-@@ -869,6 +870,7 @@ struct v4l2_subdev {
- 	struct v4l2_async_notifier *notifier;
- 	struct v4l2_async_notifier *subdev_notifier;
- 	struct v4l2_subdev_platform_data *pdata;
-+	unsigned int stream_count;
- };
- 
- 
+Other cleanup might be possible (but I won't add in this patchset as I
+don't have the hw to test):
+	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/qcom/camss/camss-video.c#n430
+	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/omap3isp/isp.c#n697
+	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/stm32/stm32-dcmi.c#n680
+	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/xilinx/xilinx-dma.c#n97
+
+Changes in V3:
+====================
+Following up Niklas' comments in V2 https://patchwork.kernel.org/patch/11473681/#23270823
+
+* I removed the limitation in topologies with entities with multiple enabled
+links to its sink pads in the topology.
+Now it enables all subdevs in the pipeline that have an enabled link going
+from sink to source while walking from the video device, so it can be
+also useful for rcar-vin driver.
+
+To implement this, I added back in the series the patch from v1:
+    "media: mc-entity.c: add media_graph_walk_next_stream()"
+
+* "size" was renamed to "max_size" in function v4l2_pipeline_subdevs_get()
+to reflect the maximum number of elements that can fit in the subdevs array,
+with proper documentation.
+
+* v4l2_pipeline_subdevs_get() returns a negative number for error, instead
+of returning 0 and printing a warning.
+
+* I also add if defined(CONFIG_MEDIA_CONTROLLER) around helpers to avoid
+compiling errors.
+
+Overview of patches in V3:
+--------------------------
+
+Patch 1/4 adds a new iterator function to follow links from sink to
+source only.
+
+Path 2/4 adds the helpers in v4l2-common.c, allowing nested calls by
+adding stream_count in the subdevice struct.
+
+Patch 3/4 cleanup rkisp1 driver to use the helpers.
+
+Patch 4/4 cleanup vimc driver to use the helpers.
+
+Changes in V2:
+====================
+The first version was calling the s_stream() callbacks from sensor to
+capture.
+
+This was generating errors in the Scarlet Chromebook, when the sensor
+was being enabled before the ISP.
+
+It make sense to enable subdevices from capture to sensor instead (which
+is what most drivers do already).
+
+This v2 drops the changes from mc-entity.c, and re-implement helpers in
+v4l2-common.c
+
+Overview of patches in V2:
+--------------------------
+
+Path 1/3 adds the helpers in v4l2-common.c, allowing nested calls by
+adding stream_count in the subdevice struct.
+
+Patch 2/3 cleanup rkisp1 driver to use the helpers.
+
+Patch 3/3 cleanup vimc driver to use the helpers.
+
+Helen Koike (4):
+  media: mc-entity.c: add media_graph_walk_next_stream()
+  media: v4l2-common: add helper functions to call s_stream() callbacks
+  media: staging: rkisp1: use v4l2_pipeline_stream_{enable,disable}
+    helpers
+  media: vimc: use v4l2_pipeline_stream_{enable,disable} helpers
+
+ drivers/media/mc/mc-entity.c                  |  34 ++++-
+ .../media/test_drivers/vimc/vimc-capture.c    |  28 ++--
+ .../media/test_drivers/vimc/vimc-streamer.c   |  49 +------
+ drivers/media/v4l2-core/v4l2-common.c         | 125 ++++++++++++++++++
+ drivers/staging/media/rkisp1/rkisp1-capture.c |  76 +----------
+ include/media/media-entity.h                  |  15 +++
+ include/media/v4l2-common.h                   |  43 ++++++
+ include/media/v4l2-subdev.h                   |   2 +
+ 8 files changed, 242 insertions(+), 130 deletions(-)
+
 -- 
 2.26.0
