@@ -1,7 +1,7 @@
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: [PATCH 2/4] arm64: dts: rockchip: Add RGA support to the PX30
-Date: Thu, 16 Apr 2020 13:50:45 +0200
-Message-ID: <20200416115047.233720-3-paul.kocialkowski@bootlin.com>
+Subject: [PATCH 3/4] media: rockchip: rga: Add support for the PX30 compatible
+Date: Thu, 16 Apr 2020 13:50:46 +0200
+Message-ID: <20200416115047.233720-4-paul.kocialkowski@bootlin.com>
 References: <20200416115047.233720-1-paul.kocialkowski@bootlin.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,34 +21,35 @@ To: linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@li
 Cc: Mark Rutland <mark.rutland@arm.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Hans Verkuil <hansverk@cisco.com>, Jacob Chen <jacob-chen@iotwrt.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The PX30 features a RGA block: add the necessary node to support it.
+The PX30 SoC has a RGA block, so add the associated compatible to
+support it.
 
 Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 ---
- arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ drivers/media/platform/rockchip/rga/rga.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 75908c587511..4bfbee9d4123 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -1104,6 +1104,17 @@ vopl_mmu: iommu@ff470f00 {
- 		status = "disabled";
- 	};
+diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+index e9ff12b6b5bb..0ebeb9b4c14a 100644
+--- a/drivers/media/platform/rockchip/rga/rga.c
++++ b/drivers/media/platform/rockchip/rga/rga.c
+@@ -880,7 +880,6 @@ static int rga_probe(struct platform_device *pdev)
+ 	rga->cmdbuf_virt = dma_alloc_attrs(rga->dev, RGA_CMDBUF_SIZE,
+ 					   &rga->cmdbuf_phy, GFP_KERNEL,
+ 					   DMA_ATTR_WRITE_COMBINE);
+-
+ 	rga->src_mmu_pages =
+ 		(unsigned int *)__get_free_pages(GFP_KERNEL | __GFP_ZERO, 3);
+ 	rga->dst_mmu_pages =
+@@ -955,6 +954,9 @@ static const struct dev_pm_ops rga_pm = {
+ };
  
-+	rga: rga@ff480000 {
-+		compatible = "rockchip,px30-rga";
-+		reg = <0x0 0xff480000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH 0>;
-+		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
-+		clock-names = "aclk", "hclk", "sclk";
-+		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
-+		reset-names = "core", "axi", "ahb";
-+		power-domains = <&power PX30_PD_VO>;
-+	};
-+
- 	qos_gmac: qos@ff518000 {
- 		compatible = "syscon";
- 		reg = <0x0 0xff518000 0x0 0x20>;
+ static const struct of_device_id rockchip_rga_match[] = {
++	{
++		.compatible = "rockchip,px30-rga",
++	},
+ 	{
+ 		.compatible = "rockchip,rk3288-rga",
+ 	},
 -- 
 2.26.0
