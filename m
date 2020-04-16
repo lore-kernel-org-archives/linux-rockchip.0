@@ -1,35 +1,45 @@
-From: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH 0/4] media: rockchip: rga: PX30 support and YUV2YUV fix
-Date: Thu, 16 Apr 2020 13:50:43 +0200
-Message-ID: <20200416115047.233720-1-paul.kocialkowski@bootlin.com>
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: [PATCH 1/4] dt-bindings: rockchip-rga: Add PX30 compatible
+Date: Thu, 16 Apr 2020 13:50:44 +0200
+Message-ID: <20200416115047.233720-2-paul.kocialkowski@bootlin.com>
+References: <20200416115047.233720-1-paul.kocialkowski@bootlin.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <20200416115047.233720-1-paul.kocialkowski@bootlin.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Mark Rutland <mark.rutland@arm.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Hans Verkuil <hansverk@cisco.com>, Jacob Chen <jacob-chen@iotwrt.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Add a new compatible for the PX30 Rockchip SoC, which also features
+a RGA block.
 
-This series adds support for the Rockchip PX30 SoC in the V4L2 M2M RGA driver.
-It also contains a fix for the YUV2YUV case that was not properly handled.
+Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+---
+ Documentation/devicetree/bindings/media/rockchip-rga.txt | 1 +
+ 1 file changed, 1 insertion(+)
 
-Cheers,
-
-Paul
-
-Paul Kocialkowski (4):
-  dt-bindings: rockchip-rga: Add PX30 compatible
-  arm64: dts: rockchip: Add RGA support to the PX30
-  media: rockchip: rga: Add support for the PX30 compatible
-  media: rockchip: rga: Only set output CSC mode for RGB input
-
- .../devicetree/bindings/media/rockchip-rga.txt |  1 +
- arch/arm64/boot/dts/rockchip/px30.dtsi         | 11 +++++++++++
- drivers/media/platform/rockchip/rga/rga-hw.c   | 18 +++++++++++-------
- drivers/media/platform/rockchip/rga/rga.c      |  4 +++-
- 4 files changed, 26 insertions(+), 8 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.txt b/Documentation/devicetree/bindings/media/rockchip-rga.txt
+index fd5276abfad6..45a9effd05f7 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-rga.txt
++++ b/Documentation/devicetree/bindings/media/rockchip-rga.txt
+@@ -6,6 +6,7 @@ BitBLT, alpha blending and image blur/sharpness.
+ 
+ Required properties:
+ - compatible: value should be one of the following
++		"rockchip,px30-rga";
+ 		"rockchip,rk3288-rga";
+ 		"rockchip,rk3399-rga";
+ 
 -- 
 2.26.0
