@@ -1,192 +1,63 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH 2/3] media: rockchip: Introduce driver for Rockhip's
- camera interface
-Date: Thu, 16 Apr 2020 13:48:35 +0100
-Message-ID: <18d46e23-a7fa-ddaf-690f-f06580a536cb@arm.com>
-References: <20200403142122.297283-1-maxime.chevallier@bootlin.com>
- <20200403142122.297283-3-maxime.chevallier@bootlin.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 2/4] arm64: dts: rockchip: Add RGA support to the PX30
+Date: Thu, 16 Apr 2020 15:02:40 +0200
+Message-ID: <478f0a8b-f819-62f4-83b8-27918c4c2431@gmail.com>
+References: <20200416115047.233720-1-paul.kocialkowski@bootlin.com>
+ <20200416115047.233720-3-paul.kocialkowski@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200403142122.297283-3-maxime.chevallier@bootlin.com>
-Content-Language: en-GB
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200416115047.233720-3-paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Maxime,
+Hi Paul,
 
-Just a handful of drive-by cleanup suggestions to help this smell less 
-like a BSP driver...
+The conversion of rockchip-rga.txt to rockchip-rga.yaml by myself just
+has been approved by robh.
+Maybe place dts patches at the end of a patch serie.
+Could you include a &rga patch if your device is supported in mainline,
+so we can test with:
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-rga.yaml
 
-(one day I still hope to get round to playing with what appears to be 
-the DVP interface populated but unused inside my RK3288 box, and the 
-camera module I picked up to supposedly fit it, but alas not today)
+Johan
 
-On 2020-04-03 3:21 pm, Maxime Chevallier wrote:
-[...]
-> +static int rkcif_plat_probe(struct platform_device *pdev)
-> +{
-> +	const struct of_device_id *match;
-> +	struct device_node *node = pdev->dev.of_node;
-> +	struct device *dev = &pdev->dev;
-> +	struct v4l2_device *v4l2_dev;
-> +	struct rkcif_device *cif_dev;
-> +	const struct cif_match_data *data;
-> +	struct resource *res;
-> +	int i, ret, irq;
-> +
-> +	match = of_match_node(rkcif_plat_of_match, node);
-> +	if (IS_ERR(match))
-> +		return PTR_ERR(match);
+On 4/16/20 1:50 PM, Paul Kocialkowski wrote:
+> The PX30 features a RGA block: add the necessary node to support it.
+> 
+> Signed-off-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
+>  1 file changed, 11 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> index 75908c587511..4bfbee9d4123 100644
+> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> @@ -1104,6 +1104,17 @@ vopl_mmu: iommu@ff470f00 {
+>  		status = "disabled";
+>  	};
+>  
+> +	rga: rga@ff480000 {
+> +		compatible = "rockchip,px30-rga";
+> +		reg = <0x0 0xff480000 0x0 0x10000>;
+> +		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
+> +		clock-names = "aclk", "hclk", "sclk";
+> +		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
+> +		reset-names = "core", "axi", "ahb";
+> +		power-domains = <&power PX30_PD_VO>;
 
-of_device_get_match_data()
+		status = "disabled";
 
+> +	};
 > +
-> +	cif_dev = devm_kzalloc(dev, sizeof(*cif_dev), GFP_KERNEL);
-> +	if (!cif_dev)
-> +		return -ENOMEM;
-> +
-> +	dev_set_drvdata(dev, cif_dev);
-> +	cif_dev->dev = dev;
-> +
-> +	irq = platform_get_irq(pdev, 0);
-> +	if (irq < 0)
-> +		return irq;
-> +
-> +	ret = devm_request_irq(dev, irq, rkcif_irq_handler, IRQF_SHARED,
-> +			       dev_driver_string(dev), dev);
-> +	if (ret < 0) {
-> +		dev_err(dev, "request irq failed: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	cif_dev->irq = irq;
-> +	data = match->data;
-> +	cif_dev->chip_id = data->chip_id;
-
-It pretty much breaks even at the moment, but consider just holding a 
-pointer to data itself rather than copying multiple fields into cif_dev, 
-particularly if there's any likelihood of adding more in future. The 
-couple of places clk_size and chip_id are used here don't really look 
-like critical fast-paths where cache/TLB locality is super-important.
-
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	cif_dev->base_addr = devm_ioremap_resource(dev, res);
-
-devm_platform_ioremap_resource()
-
-> +
-> +	if (IS_ERR(cif_dev->base_addr))
-> +		return PTR_ERR(cif_dev->base_addr);
-> +
-> +	if (data->clks_num > RKCIF_MAX_BUS_CLK ||
-> +		data->rsts_num > RKCIF_MAX_RESET) {
-
-It's silly to have runtime checks of constants - BUILD_BUG_ON() 
-somewhere if you really want to validate that the driver data is 
-self-consistent.
-
-> +		dev_err(dev, "out of range: clks(%d %d) rsts(%d %d)\n",
-> +			data->clks_num, RKCIF_MAX_BUS_CLK,
-> +			data->rsts_num, RKCIF_MAX_RESET);
-> +		return -EINVAL;
-> +	}
-> +
-> +	for (i = 0; i < data->clks_num; i++) {
-> +		struct clk *clk = devm_clk_get(dev, data->clks[i]);
-> +
-> +		if (IS_ERR(clk)) {
-> +			dev_err(dev, "failed to get %s\n", data->clks[i]);
-> +			return PTR_ERR(clk);
-> +		}
-> +
-> +		cif_dev->clks[i] = clk;
-> +	}
-
-All of the clock handling looks like it could use the clk_bulk_* APIs.
-
-> +
-> +	cif_dev->clk_size = data->clks_num;
-> +
-> +	for (i = 0; i < data->rsts_num; i++) {
-> +		struct reset_control *rst =
-> +			devm_reset_control_get(dev, data->rsts[i]);
-> +		if (IS_ERR(rst)) {
-> +			dev_err(dev, "failed to get %s\n", data->rsts[i]);
-> +			return PTR_ERR(rst);
-> +		}
-> +		cif_dev->cif_rst[i] = rst;
-> +	}
-
-And possibly the reset_control_array_* APIs for resets? (assuming there 
-isn't a subtle ordering requirement implicit in data->rsts)
-
-> +
-> +	/* Initialize the stream */
-> +	rkcif_stream_init(cif_dev);
-> +
-> +	strlcpy(cif_dev->media_dev.model, "rkcif",
-> +		sizeof(cif_dev->media_dev.model));
-> +	cif_dev->media_dev.dev = &pdev->dev;
-> +	v4l2_dev = &cif_dev->v4l2_dev;
-> +	v4l2_dev->mdev = &cif_dev->media_dev;
-> +	strlcpy(v4l2_dev->name, "rkcif", sizeof(v4l2_dev->name));
-> +	v4l2_ctrl_handler_init(&cif_dev->ctrl_handler, 8);
-> +	v4l2_dev->ctrl_handler = &cif_dev->ctrl_handler;
-> +
-> +	ret = v4l2_device_register(cif_dev->dev, &cif_dev->v4l2_dev);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	media_device_init(&cif_dev->media_dev);
-> +
-> +	ret = media_device_register(&cif_dev->media_dev);
-> +	if (ret < 0) {
-> +		v4l2_err(v4l2_dev, "Failed to register media device: %d\n",
-> +			 ret);
-> +		goto err_unreg_v4l2_dev;
-> +	}
-> +
-> +	/* create & register platefom subdev (from of_node) */
-> +	ret = rkcif_register_platform_subdevs(cif_dev);
-> +	if (ret < 0)
-> +		goto err_unreg_media_dev;
-> +
-> +	ret = of_reserved_mem_device_init(dev);
-> +	if (ret)
-> +		v4l2_warn(v4l2_dev, "No reserved memory region assign to CIF\n");
-
-It feels like that should probably happen earlier in the "resource 
-acquisition" part of probe, before any external init/register calls that 
-in principle could want to preallocate DMA buffers.
-
-Also, is the lack of reserved memory really a warn-level condition? The 
-DT binding doesn't even appear to treat a "memory-region" property as 
-legal, and with CMA or (as appears to be the case for at least RK3288) 
-an IOMMU, it should be largely moot anyway.
-
-Robin.
-
-> +
-> +	pm_runtime_enable(&pdev->dev);
-> +
-> +	return 0;
-> +
-> +err_unreg_media_dev:
-> +	media_device_unregister(&cif_dev->media_dev);
-> +err_unreg_v4l2_dev:
-> +	v4l2_device_unregister(&cif_dev->v4l2_dev);
-> +	return ret;
-> +}
+>  	qos_gmac: qos@ff518000 {
+>  		compatible = "syscon";
+>  		reg = <0x0 0xff518000 0x0 0x20>;
+> 
