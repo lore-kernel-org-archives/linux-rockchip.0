@@ -1,120 +1,197 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
+From: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 Subject: Re: [PATCH 2/4] arm64: dts: rockchip: Add RGA support to the PX30
-Date: Thu, 16 Apr 2020 11:11:12 -0300
-Message-ID: <765aa9ab4f354df47f587711603fba6ffd358147.camel@collabora.com>
+Date: Thu, 16 Apr 2020 16:12:05 +0200
+Message-ID: <20200416141205.GK125838@aptenodytes>
 References: <20200416115047.233720-1-paul.kocialkowski@bootlin.com>
  <20200416115047.233720-3-paul.kocialkowski@bootlin.com>
  <478f0a8b-f819-62f4-83b8-27918c4c2431@gmail.com>
  <20200416132442.GI125838@aptenodytes>
  <f4ad8ea4-7904-1458-e564-2d20c87ed417@gmail.com>
  <20200416135519.GJ125838@aptenodytes>
+ <f97d7661-834d-3fbf-2cd9-0b37c487e8f7@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200416135519.GJ125838@aptenodytes>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, Johan Jonker <jbx6244@gmail.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Hans Verkuil <hansverk@cisco.com>, linux-rockchip@lists.infradead.org, Jacob Chen <jacob-chen@iotwrt.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="IA03tywDYuoVKXrw"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <f97d7661-834d-3fbf-2cd9-0b37c487e8f7-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 2020-04-16 at 15:55 +0200, Paul Kocialkowski wrote:
-> Hi,
-> 
-> On Thu 16 Apr 20, 15:44, Johan Jonker wrote:
-> > On 4/16/20 3:24 PM, Paul Kocialkowski wrote:
-> > > Hi,
-> > > 
-> > > On Thu 16 Apr 20, 15:02, Johan Jonker wrote:
-> > > > Hi Paul,
-> > > > 
-> > > > The conversion of rockchip-rga.txt to rockchip-rga.yaml by myself just
-> > > > has been approved by robh.
-> > > 
-> > > Huh, I looked around for ongoing related work but missed it.
-> > > I'll definitely rebase on top of your series and use the yaml description
-> > > instead. Thanks!
-> > > 
-> > > > Maybe place dts patches at the end of a patch serie.
-> > > > Could you include a &rga patch if your device is supported in mainline,
-> > > > so we can test with:
-> > > > make ARCH=arm64 dtbs_check
-> > > > DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-rga.yaml
-> > > 
-> > > I tested with the PX30 EVB so I can surely add a node there if that turns
-> > > out necessary (see below).
-> > > 
-> > > > Johan
-> > > > 
-> > > > On 4/16/20 1:50 PM, Paul Kocialkowski wrote:
-> > > > > The PX30 features a RGA block: add the necessary node to support it.
-> > > > > 
-> > > > > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > > > > ---
-> > > > >  arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
-> > > > >  1 file changed, 11 insertions(+)
-> > > > > 
-> > > > > diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> > > > > index 75908c587511..4bfbee9d4123 100644
-> > > > > --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-> > > > > +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> > > > > @@ -1104,6 +1104,17 @@ vopl_mmu: iommu@ff470f00 {
-> > > > >  		status = "disabled";
-> > > > >  	};
-> > > > >  
-> > > > > +	rga: rga@ff480000 {
-> > > > > +		compatible = "rockchip,px30-rga";
-> > > > > +		reg = <0x0 0xff480000 0x0 0x10000>;
-> > > > > +		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > > > +		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
-> > > > > +		clock-names = "aclk", "hclk", "sclk";
-> > > > > +		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
-> > > > > +		reset-names = "core", "axi", "ahb";
-> > > > > +		power-domains = <&power PX30_PD_VO>;
-> > > > 
-> > > > 		status = "disabled";
-> > > 
-> > > As of 5.6, the rk3399 has the node enabled by default. Did that change?
-> > 
-> > 'status' disappeared during review for rk3399 between v2 and v3, but
-> > doesn't mention the reason. If someone can give more info here?
-> > 
-> > https://lore.kernel.org/lkml/1500101920-24039-5-git-send-email-jacob-chen@iotwrt.com/
-> > 
-> > https://lore.kernel.org/lkml/1501470460-12014-5-git-send-email-jacob-chen@iotwrt.com/
-> > 
-> > > Since it's a standalone block that has no I/O dependency, I don't really see
-> > > the point of disabling it by default.
-> > 
-> > Vop, hdmi and other video devices are also disabled.
-> > Follow the rest I think...
-> 
-> Well, these blocks do have related I/O ports so it makes sense not to enable
-> them by default because of pinmux, or because there might be no connector
-> populated/routed.
-> 
-> For a memory to memory internal block, I don't see any reason why.
-> It's definitely not board-specific and having to add these nodes for every board
-> that has them is kind of a pain and might be overlooked. This will easily result
-> in the feature not being available for end users without having to change the
-> dt.
-> 
-> Also, the vpu node is always enabled on rockchip (and sunxi) platforms.
-> I think these are better examples to follow.
-> 
 
-It's exactly as Paul just said :-)
+--IA03tywDYuoVKXrw
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Not board specific, no reason to disable, and also
-no way to know under what condition you'd enable.
+On Thu 16 Apr 20, 16:02, Johan Jonker wrote:
+> On 4/16/20 3:55 PM, Paul Kocialkowski wrote:
+> > Hi,
+> >=20
+> > On Thu 16 Apr 20, 15:44, Johan Jonker wrote:
+> >> On 4/16/20 3:24 PM, Paul Kocialkowski wrote:
+> >>> Hi,
+> >>>
+> >>> On Thu 16 Apr 20, 15:02, Johan Jonker wrote:
+> >>>> Hi Paul,
+> >>>>
+> >>>> The conversion of rockchip-rga.txt to rockchip-rga.yaml by myself ju=
+st
+> >>>> has been approved by robh.
+> >>>
+> >>> Huh, I looked around for ongoing related work but missed it.
+> >>> I'll definitely rebase on top of your series and use the yaml descrip=
+tion
+> >>> instead. Thanks!
+> >>>
+> >>>> Maybe place dts patches at the end of a patch serie.
+> >>>> Could you include a &rga patch if your device is supported in mainli=
+ne,
+> >>>> so we can test with:
+> >>>> make ARCH=3Darm64 dtbs_check
+> >>>> DT_SCHEMA_FILES=3DDocumentation/devicetree/bindings/media/rockchip-r=
+ga.yaml
+> >>>
+> >>> I tested with the PX30 EVB so I can surely add a node there if that t=
+urns
+> >>> out necessary (see below).
+> >>>
+> >>>> Johan
+> >>>>
+> >>>> On 4/16/20 1:50 PM, Paul Kocialkowski wrote:
+> >>>>> The PX30 features a RGA block: add the necessary node to support it.
+> >>>>>
+> >>>>> Signed-off-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+> >>>>> ---
+> >>>>>  arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
+> >>>>>  1 file changed, 11 insertions(+)
+> >>>>>
+> >>>>> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/bo=
+ot/dts/rockchip/px30.dtsi
+> >>>>> index 75908c587511..4bfbee9d4123 100644
+> >>>>> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
+> >>>>> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> >>>>> @@ -1104,6 +1104,17 @@ vopl_mmu: iommu@ff470f00 {
+> >>>>>  		status =3D "disabled";
+> >>>>>  	};
+> >>>>> =20
+> >>>>> +	rga: rga@ff480000 {
+> >>>>> +		compatible =3D "rockchip,px30-rga";
+> >>>>> +		reg =3D <0x0 0xff480000 0x0 0x10000>;
+> >>>>> +		interrupts =3D <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH 0>;
+> >>>>> +		clocks =3D <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE=
+>;
+> >>>>> +		clock-names =3D "aclk", "hclk", "sclk";
+> >>>>> +		resets =3D <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
+> >>>>> +		reset-names =3D "core", "axi", "ahb";
+> >>>>> +		power-domains =3D <&power PX30_PD_VO>;
+> >>>>
+> >>>> 		status =3D "disabled";
+> >>>
+> >>> As of 5.6, the rk3399 has the node enabled by default. Did that chang=
+e?
+> >>
+> >> 'status' disappeared during review for rk3399 between v2 and v3, but
+> >> doesn't mention the reason. If someone can give more info here?
+> >>
+> >> https://lore.kernel.org/lkml/1500101920-24039-5-git-send-email-jacob-c=
+hen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org/
+> >>
+> >> https://lore.kernel.org/lkml/1501470460-12014-5-git-send-email-jacob-c=
+hen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org/
+> >>
+> >>>
+> >>> Since it's a standalone block that has no I/O dependency, I don't rea=
+lly see
+> >>> the point of disabling it by default.
+> >>
+> >> Vop, hdmi and other video devices are also disabled.
+> >> Follow the rest I think...
+> >=20
+> > Well, these blocks do have related I/O ports so it makes sense not to e=
+nable
+> > them by default because of pinmux, or because there might be no connect=
+or
+> > populated/routed.
+> >=20
+> > For a memory to memory internal block, I don't see any reason why.
+> > It's definitely not board-specific and having to add these nodes for ev=
+ery board
+> > that has them is kind of a pain and might be overlooked. This will easi=
+ly result
+> > in the feature not being available for end users without having to chan=
+ge the
+> > dt.
+> >=20
+> > Also, the vpu node is always enabled on rockchip (and sunxi) platforms.
+> > I think these are better examples to follow.
+>=20
+> From PX30 TRM-Part1:
+>=20
+> Power domain is shared by vop and dsi.
+> It's up to the user what blocks he/she enables and what power it uses.
+>=20
+> PD_VO: VOP_M, VOP_S, RGA and DSI
 
-Thanks,
-Ezequiel
+Hum, there is no direct correlation between "node is enabled in dt" and "re=
+lated
+hardware block consumes power". And removing nodes from dt is certainly not=
+ an
+appropriate way to do power management! Device-tree is a way to represent t=
+he
+hardware, not a configuration interface (well, besides the /chosen node).
+
+Besides, the RGA driver seems to have good runtime pm support, so be assured
+that its clocks will be off when unused.
+
+Cheers,
+
+Paul
+
+> >=20
+> > Cheers,
+> >=20
+> > Paul
+> >=20
+> >>>
+> >>> What do you think?
+> >>>
+> >>> Cheers,
+> >>>
+> >>> Paul
+> >>>
+> >>>>> +	};
+> >>>>> +
+> >>>>>  	qos_gmac: qos@ff518000 {
+> >>>>>  		compatible =3D "syscon";
+> >>>>>  		reg =3D <0x0 0xff518000 0x0 0x20>;
+> >>>>>
+> >>>>
+> >>>
+> >>
+> >=20
+>=20
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--IA03tywDYuoVKXrw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl6YZ7UACgkQ3cLmz3+f
+v9H7Bwf/dxe/z672mfjqt4PR187hrwSZUxb8QrJrY0H31hOL2NOEFEufOKHPlA8y
+U+xPF95tT1SWwB+/6cjzhYGy9CF8EvmR0FDkBf2RVSXxbNvWSUMOFAVCA6bchQ5R
+7iuxNcsjeQuEBGu6ljByelGcBFBTrk6MUQEmEKuAaH7F22lfnKTW53SlSXPvsnpD
+CAexlBFsLxN9VKECnc2QZ5qUjpNqRozzOexjDewJWm3BlPg4buAAkSKOQKlwd7q0
+h7hYNx79PY6aFfp2EpdVy7XnbJOGRyRvwWbWsMFnKQo4wSYNtKWD3vMO3y6rX8ag
+JSRQ0iYXDgYz2uvtpi37rQb4y5Z0pg==
+=u/wC
+-----END PGP SIGNATURE-----
+
+--IA03tywDYuoVKXrw--
