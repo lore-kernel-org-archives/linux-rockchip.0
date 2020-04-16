@@ -1,13 +1,16 @@
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH 0/4] media: rockchip: rga: PX30 support and YUV2YUV fix
-Date: Thu, 16 Apr 2020 14:38:34 +0200
-Message-ID: <20200416123834.GG125838@aptenodytes>
-References: <20200416115047.233720-1-paul.kocialkowski@bootlin.com>
- <d33aef355623a5abd6eec176d33a167c456ed915.camel@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH 2/3] media: rockchip: Introduce driver for Rockhip's
+ camera interface
+Date: Thu, 16 Apr 2020 13:48:35 +0100
+Message-ID: <18d46e23-a7fa-ddaf-690f-f06580a536cb@arm.com>
+References: <20200403142122.297283-1-maxime.chevallier@bootlin.com>
+ <20200403142122.297283-3-maxime.chevallier@bootlin.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="===============0354029263760169605=="
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <d33aef355623a5abd6eec176d33a167c456ed915.camel@collabora.com>
+In-Reply-To: <20200403142122.297283-3-maxime.chevallier@bootlin.com>
+Content-Language: en-GB
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -17,100 +20,173 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Hans Verkuil <hansverk@cisco.com>, linux-rockchip@lists.infradead.org, Jacob Chen <jacob-chen@iotwrt.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+To: Maxime Chevallier <maxime.chevallier@bootlin.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-rockchip@lists.infradead.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Miquel Raynal <miquel.raynal@bootlin.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Maxime,
 
---===============0354029263760169605==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="S5HS5MvDw4DmbRmb"
-Content-Disposition: inline
+Just a handful of drive-by cleanup suggestions to help this smell less 
+like a BSP driver...
 
+(one day I still hope to get round to playing with what appears to be 
+the DVP interface populated but unused inside my RK3288 box, and the 
+camera module I picked up to supposedly fit it, but alas not today)
 
---S5HS5MvDw4DmbRmb
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 2020-04-03 3:21 pm, Maxime Chevallier wrote:
+[...]
+> +static int rkcif_plat_probe(struct platform_device *pdev)
+> +{
+> +	const struct of_device_id *match;
+> +	struct device_node *node = pdev->dev.of_node;
+> +	struct device *dev = &pdev->dev;
+> +	struct v4l2_device *v4l2_dev;
+> +	struct rkcif_device *cif_dev;
+> +	const struct cif_match_data *data;
+> +	struct resource *res;
+> +	int i, ret, irq;
+> +
+> +	match = of_match_node(rkcif_plat_of_match, node);
+> +	if (IS_ERR(match))
+> +		return PTR_ERR(match);
 
-Hi Ezequiel,
+of_device_get_match_data()
 
-On Thu 16 Apr 20, 09:22, Ezequiel Garcia wrote:
-> Hi Paul,
->=20
-> Thanks for the patch.
->=20
-> On Thu, 2020-04-16 at 13:50 +0200, Paul Kocialkowski wrote:
-> > Hi,
-> >=20
-> > This series adds support for the Rockchip PX30 SoC in the V4L2 M2M RGA =
-driver.
-> > It also contains a fix for the YUV2YUV case that was not properly handl=
-ed.
->=20
-> How have you been testing this?
+> +
+> +	cif_dev = devm_kzalloc(dev, sizeof(*cif_dev), GFP_KERNEL);
+> +	if (!cif_dev)
+> +		return -ENOMEM;
+> +
+> +	dev_set_drvdata(dev, cif_dev);
+> +	cif_dev->dev = dev;
+> +
+> +	irq = platform_get_irq(pdev, 0);
+> +	if (irq < 0)
+> +		return irq;
+> +
+> +	ret = devm_request_irq(dev, irq, rkcif_irq_handler, IRQF_SHARED,
+> +			       dev_driver_string(dev), dev);
+> +	if (ret < 0) {
+> +		dev_err(dev, "request irq failed: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	cif_dev->irq = irq;
+> +	data = match->data;
+> +	cif_dev->chip_id = data->chip_id;
 
-I tested it with a standalone utility setting V4L2_PIX_FMT_YUV420 on both
-output and capture. The issue should be pretty easy to reproduce.
+It pretty much breaks even at the moment, but consider just holding a 
+pointer to data itself rather than copying multiple fields into cif_dev, 
+particularly if there's any likelihood of adding more in future. The 
+couple of places clk_size and chip_id are used here don't really look 
+like critical fast-paths where cache/TLB locality is super-important.
 
-Cheers,
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	cif_dev->base_addr = devm_ioremap_resource(dev, res);
 
-Paul
+devm_platform_ioremap_resource()
 
-> Thanks,
-> Ezequiel
->=20
-> > Cheers,
-> >=20
-> > Paul
-> >=20
-> > Paul Kocialkowski (4):
-> >   dt-bindings: rockchip-rga: Add PX30 compatible
-> >   arm64: dts: rockchip: Add RGA support to the PX30
-> >   media: rockchip: rga: Add support for the PX30 compatible
-> >   media: rockchip: rga: Only set output CSC mode for RGB input
-> >=20
-> >  .../devicetree/bindings/media/rockchip-rga.txt |  1 +
-> >  arch/arm64/boot/dts/rockchip/px30.dtsi         | 11 +++++++++++
-> >  drivers/media/platform/rockchip/rga/rga-hw.c   | 18 +++++++++++-------
-> >  drivers/media/platform/rockchip/rga/rga.c      |  4 +++-
-> >  4 files changed, 26 insertions(+), 8 deletions(-)
-> >=20
->=20
->=20
+> +
+> +	if (IS_ERR(cif_dev->base_addr))
+> +		return PTR_ERR(cif_dev->base_addr);
+> +
+> +	if (data->clks_num > RKCIF_MAX_BUS_CLK ||
+> +		data->rsts_num > RKCIF_MAX_RESET) {
 
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
+It's silly to have runtime checks of constants - BUILD_BUG_ON() 
+somewhere if you really want to validate that the driver data is 
+self-consistent.
 
---S5HS5MvDw4DmbRmb
-Content-Type: application/pgp-signature; name="signature.asc"
+> +		dev_err(dev, "out of range: clks(%d %d) rsts(%d %d)\n",
+> +			data->clks_num, RKCIF_MAX_BUS_CLK,
+> +			data->rsts_num, RKCIF_MAX_RESET);
+> +		return -EINVAL;
+> +	}
+> +
+> +	for (i = 0; i < data->clks_num; i++) {
+> +		struct clk *clk = devm_clk_get(dev, data->clks[i]);
+> +
+> +		if (IS_ERR(clk)) {
+> +			dev_err(dev, "failed to get %s\n", data->clks[i]);
+> +			return PTR_ERR(clk);
+> +		}
+> +
+> +		cif_dev->clks[i] = clk;
+> +	}
 
------BEGIN PGP SIGNATURE-----
+All of the clock handling looks like it could use the clk_bulk_* APIs.
 
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl6YUcoACgkQ3cLmz3+f
-v9EMAQf8C+o9NTz5s1Go3gR6vgIrpWCEJZ018/7aZT+9I8EdjoBxSH0wE9Nl/Ir6
-99oB3jHnwpjXEisECpuYP29hhXJl8O7wsuJGu21Jq9Nil/wMJRO2sbkkVuNDHNGi
-R6uiCiwoj71YvB5W3QR7wVf+2przwmkdGtg6+xjVa6mFVACIE91EAC3oJHrCAdjO
-WS+3EXhZ6kisMEMOhSKGVqe2X5xLitPfHm5N7owGiCYy210dxmciQhe1mqbagcBO
-QQCFM1DpzUdMz6JFE68azeMHq+InMno9rrlbNBqwJcm2oYIDZ8FlzTP/pitouaFs
-pFewZcsp2SqyCM+TzUdiBighDMz3sg==
-=6ymt
------END PGP SIGNATURE-----
+> +
+> +	cif_dev->clk_size = data->clks_num;
+> +
+> +	for (i = 0; i < data->rsts_num; i++) {
+> +		struct reset_control *rst =
+> +			devm_reset_control_get(dev, data->rsts[i]);
+> +		if (IS_ERR(rst)) {
+> +			dev_err(dev, "failed to get %s\n", data->rsts[i]);
+> +			return PTR_ERR(rst);
+> +		}
+> +		cif_dev->cif_rst[i] = rst;
+> +	}
 
---S5HS5MvDw4DmbRmb--
+And possibly the reset_control_array_* APIs for resets? (assuming there 
+isn't a subtle ordering requirement implicit in data->rsts)
 
+> +
+> +	/* Initialize the stream */
+> +	rkcif_stream_init(cif_dev);
+> +
+> +	strlcpy(cif_dev->media_dev.model, "rkcif",
+> +		sizeof(cif_dev->media_dev.model));
+> +	cif_dev->media_dev.dev = &pdev->dev;
+> +	v4l2_dev = &cif_dev->v4l2_dev;
+> +	v4l2_dev->mdev = &cif_dev->media_dev;
+> +	strlcpy(v4l2_dev->name, "rkcif", sizeof(v4l2_dev->name));
+> +	v4l2_ctrl_handler_init(&cif_dev->ctrl_handler, 8);
+> +	v4l2_dev->ctrl_handler = &cif_dev->ctrl_handler;
+> +
+> +	ret = v4l2_device_register(cif_dev->dev, &cif_dev->v4l2_dev);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	media_device_init(&cif_dev->media_dev);
+> +
+> +	ret = media_device_register(&cif_dev->media_dev);
+> +	if (ret < 0) {
+> +		v4l2_err(v4l2_dev, "Failed to register media device: %d\n",
+> +			 ret);
+> +		goto err_unreg_v4l2_dev;
+> +	}
+> +
+> +	/* create & register platefom subdev (from of_node) */
+> +	ret = rkcif_register_platform_subdevs(cif_dev);
+> +	if (ret < 0)
+> +		goto err_unreg_media_dev;
+> +
+> +	ret = of_reserved_mem_device_init(dev);
+> +	if (ret)
+> +		v4l2_warn(v4l2_dev, "No reserved memory region assign to CIF\n");
 
---===============0354029263760169605==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+It feels like that should probably happen earlier in the "resource 
+acquisition" part of probe, before any external init/register calls that 
+in principle could want to preallocate DMA buffers.
 
-_______________________________________________
-linux-arm-kernel mailing list
-linux-arm-kernel@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+Also, is the lack of reserved memory really a warn-level condition? The 
+DT binding doesn't even appear to treat a "memory-region" property as 
+legal, and with CMA or (as appears to be the case for at least RK3288) 
+an IOMMU, it should be largely moot anyway.
 
---===============0354029263760169605==--
+Robin.
+
+> +
+> +	pm_runtime_enable(&pdev->dev);
+> +
+> +	return 0;
+> +
+> +err_unreg_media_dev:
+> +	media_device_unregister(&cif_dev->media_dev);
+> +err_unreg_v4l2_dev:
+> +	v4l2_device_unregister(&cif_dev->v4l2_dev);
+> +	return ret;
+> +}
