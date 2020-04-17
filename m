@@ -1,131 +1,209 @@
-From: Milan =?utf-8?Q?P=2E_Stani=C4=87?= <mps-OV3VlZ6014XR7s880joybQ@public.gmane.org>
-Subject: Re: PROBLEM: [drm:analogix_dp_bridge_atomic_enable [analogix_dp]]
- *ERROR* Failed to disable psr -110
-Date: Fri, 17 Apr 2020 21:26:14 +0200
-Message-ID: <20200417192614.GA8457@arya.arvanta.net>
-References: <20200329203349.GA15121@arya.arvanta.net>
- <20200410095719.GA914@arya.arvanta.net>
- <CAFqH_53TsmtSFnUoWixsa4v6GvOi0Korv3p8BJfROhtW0Afw-Q@mail.gmail.com>
- <CAD=FV=WWx2KH+qKvGa5yQW7fZHQ_azd69Eza_Gvs18eQPvfHGg@mail.gmail.com>
- <20200410192926.GA24668@arya.arvanta.net>
- <CAD=FV=W-5FiZsj-u7V1Kzdo95RaqhE0FQf=nKt7EwyhT5A_RQw@mail.gmail.com>
- <CAFqH_50ftrsCZjazu_-DOcC4pqZf2UJ2N7e3HqWitz16jyUUOA@mail.gmail.com>
- <20200414182242.GA1769@arya.arvanta.net>
+From: Milan =?utf-8?Q?P=2E_Stani=C4=87?= <mps@arvanta.net>
+Subject: Re: PROBLEM: =?utf-8?Q?mmc=5Fselect=5Fhs40?=
+ =?utf-8?B?MGVzIGZhaWxlZCwgZXJyb3IgLTExMOOAkOivt+azqOaEj++8jOmCruS7tg==?=
+ =?utf-8?B?55SxbGludXgtbW1jLW93bmVyQHZnZXIua2VybmVsLm9yZ+S7o+WPkeOAkQ==?=
+Date: Fri, 17 Apr 2020 21:31:06 +0200
+Message-ID: <20200417193106.GB8457@arya.arvanta.net>
+References: <20200301220242.GA8276@arya.arvanta.net>
+ <20200318214917.GA9112@arya.arvanta.net>
+ <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com>
+ <158bd6f5-2430-19bd-28ef-e18d67becaf3@arm.com>
+ <20200321204652.GA21002@arya.arvanta.net>
+ <20200327171417.GA4387@arya.arvanta.net>
+ <CAPDyKFotyWVXu+Aj6y-DoAtrbimD7ycg=81bf8zjeSg9mrD-4A@mail.gmail.com>
+ <20200331214031.GA30589@arya.arvanta.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20200414182242.GA1769-2zQUq8s2aCOuucbRd6SqTw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+In-Reply-To: <20200331214031.GA30589@arya.arvanta.net>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Robin Murphy <robin.murphy@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgRW5yaWMgYW5kIERvdWcsIGFuZCBhbGwsCgpPbiBUdWUsIDIwMjAtMDQtMTQgYXQgMjA6MjIs
-IE1pbGFuIFAuIFN0YW5pxIcgd3JvdGU6Cj4gSGkgRW5yaWMgYW5kIERvdWcsCj4gCj4gWWVzdGVy
-ZGF5IEkgbWFuYWdlZCB0byBidWlsZCBjaHJvbWVPUyBrZXJuZWwgdmVyc2lvbiA0LjQuMTc0IGFu
-ZCBib290Cj4gd2l0aCBpdCB3aXRob3V0IGFueSBzZXJpb3VzIHByb2JsZW0uCj4gCj4gQ3VycmVu
-dCB1cHRpbWUgaXMgb3ZlciAyMSBob3VyIGFuZCBpdCB3b3JrcyB3ZWxsLCBpLmUuIHdpdGhvdXQg
-cHJvYmxlbQo+IHJlbGF0ZWQgdG8gcm9ja2NoaXAtZHAvYW5hbG9naXggZHJpdmVyLCBldmVuIGFm
-dGVyIHN1c3BlbmQtdG8tcmFtL3Jlc3VtZQo+IGZldyB0aW1lcy4KPiAKPiBJIHdpbGwgbGV0IGl0
-IGZldyBkYXlzIHRvIHdvcmsgd2l0aG91dCBzaHV0ZG93biAod2l0aG91dCBwb3dlcm9mZiBvcgo+
-IHJlYm9vdCkgdG8gc2VlIHdpbGwgaXQgd29yayBvciB3aWxsIGFueSBwcm9ibGVtIGFwcGVhci4K
-PiAKPiAoYmVzaWRlIHRoaXMgYW5hbG9naXggaXNzdWUsIGxvb2tzIGxpa2UgYWxzbyBlbW1jIHdv
-cmtzIGZpbmUgd2l0aCB0aGlzCj4ga2VybmVsLCBhbHRob3VnaCBpdCBkb2Vzbid0IHdvcmsgZmlu
-ZSB3aXRoIG1haW5saW5lIGtlcm5lbHMuIGJ1dCB0aGlzIGlzCj4gbm90IHJlbGF0ZWQpLgo+IAo+
-IElmIHRoZSBtYWNoaW5lIHdvcmsgZm9yIHRocmVlIG9yIG1vcmUgZGF5cyB3aXRob3V0IHByb2Js
-ZW0gSSB3aWxsIHJlcG9ydAo+IHRvIHlvdS4gTWF5YmUgc29tZW9uZSBleHBlcmllbmNlZCBpbiB2
-aWRlby9ncHUgZHJpdmVycyBwcm9ncmFtbWluZyBjb3VsZAo+IG1ha2UgZGlmZnMgYW5kIG1ha2Ug
-aXQgdG8gd29yayB3aXRoIG1haW5saW5lIGtlcm5lbHMuCgpJIGJ1aWx0IGNocm9tZU9TIGtlcm5l
-bCA0LjQuMTc0IGFuZCBhZnRlciB0aHJlZSBkYXlzIGl0IHdvcmtzIGZpbmUKcmVnYXJkaW5nIHRo
-aXMgcHJvYmxlbSB3aXRoIGFuYWxvZ2l4IGJyaWRnZS4KCldvdWxkIGJlIG5pY2UgaWYgc29tZW9u
-ZSB3aXRoIEdQVS9EUk0gcHJvZ3JhbW1pbmcga25vd2xlZGdlIHdvdWxkIGxvb2sKYXQgZGlmZmVy
-ZW5jZXMgYmV0d2VlbiB0aGlzIGNocm9tZU9TIGtlcm5lbCBhbmQgbWFpbmxpbmUgdG8gZmluZCB3
-aGF0IGlzCmNhdXNlIG9mIHRoZSBwcm9ibGVtLgoKSSB3aWxsIHRyeSB0byBidWlsZCBtYWlubGlu
-ZSBrZXJuZWxzIGdvaW5nIGJhY2t3YXJkIGJ5IG1ham9yIHZlcnNpb24KKDUuNCwgNS4zLCA1LjIg
-YW5kIHNvIG9uKSB0byB0cnkgdG8gc2VlIGlmIG9uZSBvZiB0aGUgcHJldmlvdXMgZG9lc24ndApo
-YXZlIHRoaXMgcHJvYmxlbS4gVGhpcyB3aWxsIHRha2Ugc29tZSB0aW1lIGJlY2F1c2UgcHJvYmxl
-bSBhcHBlYXJzCnJhbmRvbWx5LCBzb21ldGltZXMgZmV3IG1pbnV0ZXMgc3RyYWlnaHQgYWZ0ZXIg
-Ym9vdCBidXQgc29tZXRpbWVzIGFmdGVyCmRheSBvciB0d28uCgotLSAKUmVnYXJkcwoKPiBUaGFu
-ayB5b3UgaGVscAo+IAo+IE9uIFR1ZSwgMjAyMC0wNC0xNCBhdCAxODoxNywgRW5yaWMgQmFsbGV0
-Ym8gU2VycmEgd3JvdGU6Cj4gPiBIaSBEb3VnIGFuZCBNaWxhbiwKPiA+IAo+ID4gVGhhbmtzIGZv
-ciBwcm92aWRpbmcgdGhpcyBpbmZvcm1hdGlvbi4KPiA+IAo+ID4gTWlzc2F0Z2UgZGUgRG91ZyBB
-bmRlcnNvbiA8ZGlhbmRlcnNAY2hyb21pdW0ub3JnPiBkZWwgZGlhIGRsLiwgMTMKPiA+IGTigJlh
-YnIuIDIwMjAgYSBsZXMgMTc6MjM6Cj4gPiA+Cj4gPiA+IEhpLAo+ID4gPgo+ID4gPiBPbiBGcmks
-IEFwciAxMCwgMjAyMCBhdCAxMjoyOSBQTSBNaWxhbiBQLiBTdGFuacSHIDxtcHNAYXJ2YW50YS5u
-ZXQ+IHdyb3RlOgo+ID4gPiA+Cj4gPiA+ID4gSGksCj4gPiA+ID4KPiA+ID4gPiBPbiBGcmksIDIw
-MjAtMDQtMTAgYXQgMDg6MjgsIERvdWcgQW5kZXJzb24gd3JvdGU6Cj4gPiA+ID4gPiBIaSwKPiA+
-ID4gPiA+Cj4gPiA+ID4gPiBPbiBGcmksIEFwciAxMCwgMjAyMCBhdCA1OjU2IEFNIEVucmljIEJh
-bGxldGJvIFNlcnJhCj4gPiA+ID4gPiA8ZWJhbGxldGJvQGdtYWlsLmNvbT4gd3JvdGU6Cj4gPiA+
-ID4gPiA+Cj4gPiA+ID4gPiA+IEhpIE1pbGFuLAo+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiBSaWdo
-dCwgdGhpcyBpcyBhbiBhbm5veWluZyBpc3N1ZSBidXQgYWxzbyBrbm93biwgdW5mb3J0dW5hdGVs
-eSwgSQo+ID4gPiA+ID4gPiBwZXJzb25hbGx5IGRpZG4ndCBoYXZlIHRpbWUgdG8gbG9vayBhdC4g
-YnV0IGl0IGlzIGluIG15IFRPRE8uCj4gPiA+ID4gPgo+ID4gPiA+ID4gUmFuZG9tIHNob3QgaW4g
-dGhlIGRhcmssIGJ1dCBhbnkgY2hhbmNlIHNvbWVob3cgeW91ciBQSFkgY2xvY2sgYW5kCj4gPiA+
-ID4gPiBQQ0xLIGZvciB0aGUgZURQIGRvbid0IG1hdGNoPyAgSWYgdGhleSBkb24ndCB0aGVuIChJ
-SVJDKSB5b3UnbGwgZ2V0Cj4gPiA+ID4gPiByYW5kb20gZmFpbHVyZXMgdG8gYWNjZXNzIGVEUCBy
-ZWdpc3RlcnMuCj4gPiA+ID4gPgo+ID4gPiA+ID4gU29tZSBoaXN0b3J5IGluIDxodHRwczovL2Ny
-cmV2LmNvbS9jLzQzMzM5Mz4uICBJdCBsb29rcyBsaWtlIHRoZQo+ID4gPiA+ID4gY2hhbmdlcyBp
-biB0aGF0IHBhdGNoIGFyZSB1cHN0cmVhbSBidXQgaWYgc29tZXRoaW5nIGVsc2UgaGFwcGVuZWQg
-dG8KPiA+ID4gPiA+IG1ha2UgeW91ciBQSFkgYW5kIFBDTEsgbWlzbWF0Y2ggaXQgY291bGQgY2F1
-c2Ugc2ltaWxhciBzeW1wdG9tcy4KPiA+ID4gPiA+Cj4gPiA+ID4gPiAuLi5vZiBjb3Vyc2UgaXQn
-cyBhbHdheXMgcG9zc2libGUgKHByb2JhYmxlKSB0aGF0IGl0J3Mgc29tZXRoaW5nCj4gPiA+ID4g
-PiBkaWZmZXJlbnQsIGJ1dCBzaW5jZSB0aGF0IHdhcyBzdWNoIGEgd2VpcmQgYW5kIGhhcmQtdG8t
-dHJhY2stZG93bgo+ID4gPiA+ID4gcHJvYmxlbSBJIGZpZ3VyZWQgSSdkIGF0IGxlYXN0IG1ha2Ug
-c3VyZSBpdCB3YXNuJ3QgdGhhdC4KPiA+ID4gPgo+ID4gPiA+IE5vdCBzdXJlIEkgdW5kZXJzdG9v
-ZCAoSSdtIG5vdCBncmFwaGljIGhhcmR3YXJlIHByb2dyYW1tZXIpIGJ1dCBJCj4gPiA+ID4gY2hh
-bmdlZCBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS5kdHNpIGZpbGUgYXJvdW5k
-IGxpbmUKPiA+ID4gPiAxMzY3IChjdXJyZW50IG1haW5saW5lIGtlcm5lbCksIHRoaXM6Cj4gPiA+
-ID4gICAgIGFzc2lnbmVkLWNsb2NrcyA9Cj4gPiA+ID4gICAgICAgPCZjcnUgUExMX0dQTEw+LCA8
-JmNydSBQTExfQ1BMTD4sCj4gPiA+ID4gICAgICAgPCZjcnUgUExMX05QTEw+LAo+ID4gPiA+ICAg
-ICAgIDwmY3J1IEFDTEtfUEVSSUhQPiwgPCZjcnUgSENMS19QRVJJSFA+LAo+ID4gPiA+ICAgICAg
-IDwmY3J1IFBDTEtfUEVSSUhQPiwKPiA+ID4gPiAgICAgICA8JmNydSBBQ0xLX1BFUklMUDA+LCA8
-JmNydSBIQ0xLX1BFUklMUDA+LAo+ID4gPiA+ICAgICAgIDwmY3J1IFBDTEtfUEVSSUxQMD4sIDwm
-Y3J1IEFDTEtfQ0NJPiwKPiA+ID4gPiAgICAgICA8JmNydSBIQ0xLX1BFUklMUDE+LCA8JmNydSBQ
-Q0xLX1BFUklMUDE+LAo+ID4gPiA+ICAgICAgIDwmY3J1IEFDTEtfVklPPiwgPCZjcnUgQUNMS19I
-RENQPiwKPiA+ID4gPiAgICAgICA8JmNydSBBQ0xLX0dJQ19QUkU+LAo+ID4gPiA+ICAgICAgIDwm
-Y3J1IFBDTEtfRERSPjsKPiA+ID4gPiAgICAgYXNzaWduZWQtY2xvY2stcmF0ZXMgPQo+ID4gPiA+
-ICAgICAgICA8NTk0MDAwMDAwPiwgIDw4MDAwMDAwMDA+LAo+ID4gPiA+ICAgICAgIDwxMDAwMDAw
-MDAwPiwKPiA+ID4gPiAgICAgICAgPDE1MDAwMDAwMD4sICAgPDc1MDAwMDAwPiwKPiA+ID4gPiAg
-ICAgICAgIDwzNzUwMDAwMD4sCj4gPiA+ID4gICAgICAgIDwxMDAwMDAwMDA+LCAgPDEwMDAwMDAw
-MD4sCj4gPiA+ID4gICAgICAgICA8NTAwMDAwMDA+LCA8NjAwMDAwMDAwPiwKPiA+ID4gPiAgICAg
-ICAgPDEwMDAwMDAwMD4sICAgPDUwMDAwMDAwPiwKPiA+ID4gPiAgICAgICAgPDQwMDAwMDAwMD4s
-IDw0MDAwMDAwMDA+LAo+ID4gPiA+ICAgICAgICA8MjAwMDAwMDAwPiwKPiA+ID4gPiAgICAgICAg
-PDIwMDAwMDAwMD47Cj4gPiA+ID4KPiA+ID4gPiBhbmQgY2hhbmdlZCAgPDU5NDAwMDAwMD4gdG8g
-IDw2MDAwMDAwMDA+Cj4gPiA+ID4gYnVpbGQga2VybmVsIGFuZCBpdCBib290cyBidXQgZGlzcGxh
-eSBpcyBibGFuayBhZnRlciBib290Lgo+ID4gPgo+ID4gPiBJIHRoaW5rIGtldmluIGFscmVhZHkg
-b3ZlcnJpZGVzIHRob3NlIGNsb2NrcyBpbiBpdHMgZHRzLiAgSSB3YXMgbW9yZQo+ID4gPiB0aGlu
-a2luZyBvZiBsb29raW5nIGF0ICIvc3lzL2tlcm5lbC9kZWJ1Zy9jbGsvY2xrX3N1bW1hcnkiIGFu
-ZCBzZWVpbmcKPiA+ID4gaWYgdGhlcmUgd2FzIGEgY2xvY2sgbWlzbWF0Y2guCj4gPiA+Cj4gPiAK
-PiA+IEFsdGhvdWdoIEkgZG9uJ3QgZGlzY2FyZCB0aGF0IHRoaXMgd291bGQgYmUgdGhlIHByb2Js
-ZW0sIEkgdGhpbmsgaXQgaXMKPiA+IG1vcmUgYSByYWNpbmcgcHJvYmxlbSB3aXRoIHRoZSB0cmFj
-a2luZyBzdGF0dXMgb2YgdGhlIGNydGMgYWN0aXZlIGFuZAo+ID4gc2VsZl9yZWZyZXNoX2FjdGl2
-ZSB2YXJpYWJsZXMgZHVyaW5nIHRoZSBzdXNwZW5kIHBhdGggYW5kIFBTUi4gSS5lLCBpZgo+ID4g
-SSBhcHBseSB0aGUgZm9sbG93aW5nIHBhdGNoIHdoaWNoIHNldHMgYSBkZWxheSBvZiAxMDBtcyBp
-biB0aGUgZGVsYXllZAo+ID4gZW50cnkgd29yayB0byBlbnRyeSB0aGUgUFNSIHN0YXRlIChzaW1p
-bGFyIHRvIHdoYXQgd2UgaGFkIGJlZm9yZSB0aGUKPiA+IGNvbW1pdCBJIG1lbnRpb25lZCksIHN1
-c3BlbmQgcmVzdW1lIHdvcmtzIGFzIGV4cGVjdGVkIGZvciBtZS4KPiA+IAo+ID4gQEAgLTIxOCw3
-ICsyMzQsNyBAQCB2b2lkIGRybV9zZWxmX3JlZnJlc2hfaGVscGVyX2FsdGVyX3N0YXRlKHN0cnVj
-dAo+ID4gZHJtX2F0b21pY19zdGF0ZSAqc3RhdGUpCj4gPiAgICAgICAgICAgICAgICAgbXV0ZXhf
-dW5sb2NrKCZzcl9kYXRhLT5hdmdfbXV0ZXgpOwo+ID4gCj4gPiAgICAgICAgICAgICAgICAgbW9k
-X2RlbGF5ZWRfd29yayhzeXN0ZW1fd3EsICZzcl9kYXRhLT5lbnRyeV93b3JrLAo+ID4gLSAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgbXNlY3NfdG9famlmZmllcyhkZWxheSkpOwo+ID4g
-KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbXNlY3NfdG9famlmZmllcygxMDApKTsK
-PiA+ICAgICAgICAgfQo+ID4gIH0KPiA+IAo+ID4gU29tZSBtb3JlIGluZm8gaXMgdGhhdCBJIHdh
-cyBub3QgYWJsZSB0byByZXByb2R1Y2UgdGhlIHByb2JsZW0gYnkKPiA+IHRyaWdnZXJpbmcgYW4g
-J2VjaG8gbWVtID4gL3N5cy9wb3dlci9zdGF0ZScgVGhlIG9ubHkgd2F5IEkgY2FuCj4gPiByZXBy
-b2R1Y2UgdGhlIGlzc3VlIGlzIGRvaW5nIGFzICdzeXN0ZW1jdGwgc3VwZW5kJyBjb21tYW5kLCB3
-aGljaCBpZiBJCj4gPiBhbSBub3QgbWlzdGFrZW4gZG9lcyBhIERQTVMgb2ZmIGJlZm9yZSBzdXNw
-ZW5kaW5nLgo+ID4gCj4gPiAtIEVucmljCj4gPiAKPiA+ID4gLURvdWcKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi all,
+
+I built chromeOS kernel 4.4.174 and after three days with few
+suspend-to-ram and resume mmc driver works fine, i.e. no problem
+occured.
+
+Could someone who know programming mmc drivers look at differences
+between this chromeOS kernel (4.4.174) and some of mainline kernels
+to find cause of the problem and maybe to create fix or patch to send
+for testing.
+
+-- 
+Regards
+
+On Tue, 2020-03-31 at 23:40, Milan P. Stanić wrote:
+> Hi,
+> 
+> On Mon, 2020-03-30 at 20:19, Ulf Hansson wrote:
+> > On Fri, 27 Mar 2020 at 18:14, Milan P. Stanić <mps@arvanta.net> wrote:
+> > > Hi,
+> > > Anyone looked at this problem?
+> > >
+> > > Or, is there better url or mailing list where I should send this bug
+> > > report?
+> > 
+> > This is the mmc-list and since the rock-chips list was added by Shawn
+> > - you have directed your question correctly.
+> > 
+> > The problem is, this isn't a list where everyone can get free support.
+> > People may be working on other platforms, for example.
+> > 
+> > The best option for you, is probably to ping Shawn or to reach out to
+> > some other Rock-chips people, as it seems like these guys needs to
+> > have a closer look.
+> > 
+> > >
+> > > Or, could someone tell me what I could try to fix it, which file and
+> > > parameters to change?
+> > 
+> > Well, if you can narrow down the problem that is always helpful. So
+> > for example, is there any upstream kernel that works - or is it only
+> > working through the chrome-os tree (which likely contains vendor
+> > specific changes that are not upstream).
+> 
+> Problem is in that the in last 5-6 months chrome-os kernels even don't
+> boot, i.e. I only get blank display. I patched it for few releases
+> locally but for about 3-4 months even my patch doesn't work.
+> Maybe I could find chrome-os kernel about year or two old and try, but
+> even then I don't know where to look for this problem.
+> 
+> Other option is to try with mainline kernels from 4.20.x and up one by
+> one major release to look on which version this problem started. This
+> will take time because problem occurs irregularly, sometimes in a few
+> hours but sometimes it works fine for a few days until it appears.
+> 
+> Thank you for pointing me whom to ask and what to try.
+> 
+> -- 
+> Kind regards
+> 
+> > Kind regards
+> > Uff
+> > 
+> > >
+> > > On Sat, 2020-03-21 at 21:46, Milan P. Stanić wrote:
+> > > > Hi,
+> > > >
+> > > > On Thu, 2020-03-19 at 12:28, Robin Murphy wrote:
+> > > > > Hi Shawn,
+> > > > >
+> > > > > On 2020-03-19 3:11 am, Shawn Lin wrote:
+> > > > > > Hi Milan
+> > > > > >
+> > > > > > [+linux-rockchip to see if someone has a Samsung chromebook one plus
+> > > > > > and could confirm if it works]
+> > > > >
+> > > > > FWIW I've also tried suspend on my NanoPC-T4 and seen that the eMMC (also
+> > > > > HS400-ES) fails to come back properly on resume (thus resume never completes
+> > > > > due to the missing root filesystem). IIRC it might even have been
+> > > > > reproducible with suspend-to-idle, but I'd have to double-check that.
+> > > >
+> > > > I forgot to tell that emmc worked without problem on this machine with
+> > > > ChromeOS kernel 4.4.xx downloaded from
+> > > > https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4
+> > > > and with patches from
+> > > > https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-gru
+> > > > for about two years (iirc).
+> > > > Problem started when I switched to mainline kernels, somewhere around
+> > > > 5.1.xx
+> > > >
+> > > > > Robin.
+> > > > >
+> > > > > > On 2020/3/19 5:49, Milan P. Stanić wrote:
+> > > > > > > Hello,
+> > > > > > >
+> > > > > > > Sorry to annoy again, but could you tell me if I sent this bug report
+> > > > > > > to right mail address or I should send it somewhere else.
+> > > > > > >
+> > > > > > > Also, did I sent bug report correctly or I did some mistakes which
+> > > > > > > caused it to be ignored.
+> > > > > > >
+> > > > > > > -- TIA On Sun, 2020-03-01 at 23:02, Milan P. Stanić wrote:
+> > > > > > > > Hello,
+> > > > > > > >
+> > > > > > > > I'm not native English speaker and I'm self taught in English so sorry
+> > > > > > > > if do not write or express correctly. And sorry if I posted bug report
+> > > > > > > > to wrong address.
+> > > > > > > >
+> > > > > > > > I'm running linux 5.6.0-rc3 without any patches on Samsung chromebook
+> > > > > > > > one plus, Arm64 rockchip rk3399 based model name:
+> > > > > > > > Machine model: Google Kevin
+> > > > > > > >
+> > > > > > > > I build kernels from upstream git.kernel.org for this machine for some
+> > > > > > > > time (iirc, from 5.2.1 and up) but I'm getting error messages in kernel
+> > > > > > > > after machine resumes from suspend-to-ram.
+> > > > > >
+> > > > > > It sounds to me suspend-to-ram never works for this machine, at least
+> > > > > > since 5.2.1. Am I right?
+> > > > > >
+> > > > > > > >
+> > > > > > > > excerpt from dmesg output:
+> > > > > > > > -----------------------------------------------------------------------
+> > > > > > > > Restarting tasks ... done.
+> > > > > > > > PM: suspend exit
+> > > > > > > > mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz,
+> > > > > > > > actual 400000HZ div = 0)
+> > > > > > > > mmc1: mmc_select_hs400es failed, error -110
+> > > > > > > > mmc1: error -110 doing runtime resume
+> > > > > > > > mmc1: Got data interrupt 0x00000002 even though no data
+> > > > > > > > operation was in progress.
+> > > > > > > > mmc1: sdhci: ============ SDHCI REGISTER DUMP ===========
+> > > > > > > > mmc1: sdhci: Sys addr:  0x00000008 | Version:  0x00001002
+> > > > > > > > mmc1: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000008
+> > > > > > > > mmc1: sdhci: Argument:  0x00000000 | Trn mode: 0x00000023
+> > > > > > > > mmc1: sdhci: Present:   0x1fff0001 | Host ctl: 0x00000035
+> > > > > > > > mmc1: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
+> > > > > > > > mmc1: sdhci: Wake-up:   0x00000000 | Clock:    0x0000bc07
+> > > > > > > > mmc1: sdhci: Timeout:   0x0000000d | Int stat: 0x00000000
+> > > > > > > > mmc1: sdhci: Int enab:  0x03ff000b | Sig enab: 0x03ff000b
+> > > > > > > > mmc1: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
+> > > > > > > > mmc1: sdhci: Caps:      0x44edc880 | Caps_1:   0x801020f7
+> > > > > > > > mmc1: sdhci: Cmd:       0x00000c1a | Max curr: 0x00000000
+> > > > > > > > mmc1: sdhci: Resp[0]:   0x00000000 | Resp[1]:  0x373300bd
+> > > > > > > > mmc1: sdhci: Resp[2]:   0x35303030 | Resp[3]:  0x00000000
+> > > > > > > > mmc1: sdhci: Host ctl2: 0x00000000
+> > > > > > > > mmc1: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xed41e200
+> > > > > > > > -----------------------------------------------------------------------
+> > > > > > > >
+> > > > > > > > I invoke suspend-to-ram by `echo mem > /sys/power/state` from ACPI power
+> > > > > > > > and LID button handlers.
+> > > > > > > >
+> > > > > > > > This only happens when I boot and use internal emmc card and never when
+> > > > > > > > boot and use external mmc card.
+> > > > > > > >
+> > > > > > > > If suspend-to-ram is not invoked (machine is always in normal state)
+> > > > > > > > this problem never happen (or I missed it somehow).
+> > > > > > > >
+> > > > > > > > I'm attaching kernel .config (file config-5.6.0-rc3-1-gru.conf) which
+> > > > > > > > use to build kernel, output of the `awk -f scripts/ver_linux` as file
+> > > > > > > > ver_linux.txt and  output of dmesg as file mmc-err.txt (from which I
+> > > > > > > > deleted wifi connection logs).
+> > > > > > > >
+> > > > > > > > Sorry if I did something bad or wrong with this bug report, I don't have
+> > > > > > > > much experience with bug reporting, especially for kernel.
+> > > > > > > >
+> > > > > > > > I'm ready to send you more data, and investigate this more, apply
+> > > > > > > > patches and rebuild kernel or whatever you ask me (of course if my
+> > > > > > > > understanding and knowledge is enough for this job).
+> > > > > > > >
+> > > > > > > > Thank in advance
+> > > > > > > >
+> > > > > > > > --
+> > > > > > > > Kind regards
+> > > > > > > >
+> > > > > > > [...]
+> > > > > > >
+> > > > > > >
+> > > > > >
+> > > > > >
+> > > > > >
+> > > > > > _______________________________________________
+> > > > > > Linux-rockchip mailing list
+> > > > > > Linux-rockchip@lists.infradead.org
+> > > > > > http://lists.infradead.org/mailman/listinfo/linux-rockchip
