@@ -1,40 +1,69 @@
-From: Joe Perches <joe-6d6DIl74uiNBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v2 7/9] media: MAINTAINERS: rkisp1: add path to
- dt-bindings
-Date: Fri, 17 Apr 2020 00:30:44 -0700
-Message-ID: <df23fe6083baad4781a2b79bcbd7d3db055eecd3.camel@perches.com>
-References: <20200403161538.1375908-1-helen.koike@collabora.com>
-         <20200403161538.1375908-8-helen.koike@collabora.com>
-         <9a95d227-9592-2c5c-fe6d-dff9b84f4292@xs4all.nl>
+From: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v6 1/8] drm: bridge: dw_mipi_dsi: add initial regmap
+ infrastructure
+Date: Fri, 17 Apr 2020 11:07:37 +0300
+Message-ID: <87imhyk01i.fsf@collabora.com>
+References: <20200414151955.311949-1-adrian.ratiu@collabora.com>
+ <20200414151955.311949-2-adrian.ratiu@collabora.com>
+ <CAFqH_52eKB4jtmn5e4HQubv8ijOPqDqncp1dRGahhU3NOorJMQ@mail.gmail.com>
+ <87lfmvjmt5.fsf@collabora.com>
+ <CAFqH_513KB+En_xbpXSBG6Q38kYxWCgw0KO3NVxCb6fqHDaKBA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; format=flowed
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <9a95d227-9592-2c5c-fe6d-dff9b84f4292-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>
+In-Reply-To: <CAFqH_513KB+En_xbpXSBG6Q38kYxWCgw0KO3NVxCb6fqHDaKBA-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Hans Verkuil <hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org
+To: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, dri-devel <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Collabora Kernel ML <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-imx-3arQi8VN3Tc@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 2020-04-17 at 09:18 +0200, Hans Verkuil wrote:
-> On 03/04/2020 18:15, Helen Koike wrote:
-> > The Rockchip ISP bindings was moved out of staging.
-> > Update MAINTAINERS file with the new path.
+On Thu, 16 Apr 2020, Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> 
+wrote:
+> Hi Adrian, 
 > 
-> Shouldn't there be a reference to Documentation/devicetree/bindings/phy/rockchip-mipi-dphy-rx0.yaml
-> as well in MAINTAINERS?
+> [snip] 
+> 
+>> >> 
+>> >> +static void dw_mipi_dsi_get_hw_version(struct dw_mipi_dsi 
+>> >> *dsi) +{ +       regmap_read(dsi->regs, DSI_VERSION, 
+>> >> &dsi->hw_version); +       dsi->hw_version &= VERSION; + if 
+>> >> (!dsi->hw_version) +               dev_err(dsi->dev, "Failed 
+>> >> to read DSI hw version register\n"); 
+>> > 
+>> > Is this an error that should be ignored? If you can't get the 
+>> > HW version, probably, there is something wrong with your 
+>> > hardware so, don't you need to return an error? 
+>> > 
+>> 
+>> After thinking a bit more about it, that error should be a 
+>> warning. 
+>> 
+>> I added it because in some cases (for eg. if the peripheral 
+>> clock is disabled) the reads can return 0 which is obviously an 
+>> invalid version and the bridge will error in the next step when 
+>> not finding a layout. 
+>> 
+> 
+> If you'll error anyway, why wait? IIUC at this point the clock 
+> *must* be enabled, and if not, something is wrong with the 
+> driver, I don't see any advantage on delay the error. do you 
+> have a use case where this is called and peripheral clock 
+> disabled? 
 
-And please keep the file references F: fields in
-alphabetic order.
+There should be no real use-case (maybe malfunctioning HW), and we 
+could error out here to catch driver bugs ASAP, so I'll go this 
+route then :)
 
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-[]
-> > @@ -14303,6 +14303,7 @@ M:	Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> >  L:	linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> >  S:	Maintained
-> >  F:	drivers/staging/media/rkisp1/
-> > +F:	Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-> >  
-> >  ROCKCHIP RASTER 2D GRAPHIC ACCELERATION UNIT DRIVER
-> >  M:	Jacob Chen <jacob-chen-fyOeoxGR3m/QT0dZR+AlfA@public.gmane.org>
-> > 
+Thank you, much appreciated!
+
+>
+>> So I'll make this a warning in v7 and explicitely mention that
+>> reads version == 0 can be caused by a disabled pclk.
+>>
+>
+> -- Enric
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
