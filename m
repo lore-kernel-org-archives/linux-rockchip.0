@@ -1,33 +1,42 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: add micro SD card regulator to rockpro64
-Date: Sun, 19 Apr 2020 14:35:58 +0200
-Message-ID: <158729964647.70529.2619682470015783245.b4-ty@sntech.de>
-References: <20200416145534.1263575-1-t.schramm@manjaro.org>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] dt-bindings: display: convert rockchip rk3066 hdmi
+ bindings to yaml
+Date: Sun, 19 Apr 2020 14:45:59 +0200
+Message-ID: <158729979661.70728.17123531896433795718.b4-ty@sntech.de>
+References: <20200403133630.7377-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200416145534.1263575-1-t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <20200403133630.7377-1-jbx6244@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 16 Apr 2020 16:55:34 +0200, Tobias Schramm wrote:
-> This patch adds the RockPro64's micro SD card regulator to the
-> RockPro64 dtsi. The regulator is present on all revisions of the
-> device.
-> Previously the regular was missing, resulting in unreliable boot
-> behaviour when booting from SD card.
+On Fri, 3 Apr 2020 15:36:30 +0200, Johan Jonker wrote:
+> Current dts files with 'hdmi' nodes for rk3066 are manually verified.
+> In order to automate this process rockchip,rk3066-hdmi.txt
+> has to be converted to yaml.
 > 
-> Signed-off-by: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: add micro SD card regulator to rockpro64
-      commit: 1f5a3e1679353fb53e955afd8801a7f4f60877ff
+[1/1] dt-bindings: display: convert rockchip rk3066 hdmi bindings to yaml
+      commit: 8eea6e26fc2eda6922e5008ccb7f55bc1775d5b3
 
 Best regards,
 -- 
-Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Heiko Stuebner <heiko@sntech.de>
