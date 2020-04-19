@@ -1,42 +1,47 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] dt-bindings: display: convert rockchip rk3066 hdmi
- bindings to yaml
-Date: Sun, 19 Apr 2020 14:45:59 +0200
-Message-ID: <158729979661.70728.17123531896433795718.b4-ty@sntech.de>
-References: <20200403133630.7377-1-jbx6244@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200403133630.7377-1-jbx6244@gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, airlied@linux.ie, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+From: Justin Swartz <justin.swartz@risingedge.co.za>
+Subject: [PATCH v5 0/1] Add rga to rk322x device tree
+Date: Sun, 19 Apr 2020 12:51:32 +0000
+Message-ID: <20200419125134.29923-1-justin.swartz@risingedge.co.za>
+References: <558b35c3-7f75-8d0d-048b-c55c06fa8a53@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <558b35c3-7f75-8d0d-048b-c55c06fa8a53@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>
+Cc: Justin Swartz <justin.swartz@risingedge.co.za>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 3 Apr 2020 15:36:30 +0200, Johan Jonker wrote:
-> Current dts files with 'hdmi' nodes for rk3066 are manually verified.
-> In order to automate this process rockchip,rk3066-hdmi.txt
-> has to be converted to yaml.
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-> 
-> [...]
+This patchset aims to enable use of Rockchip's RGA, a 2D raster
+graphic acceleration unit, on rk322x based devices.
 
-Applied, thanks!
+Changes in v5:
+  - Remove the patch to rockchip-rga device tree binding documentation
+    as Johan Jonker has already included mention of "rockchip,rk3228-rga"
+    since the conversion to YAML.
 
-[1/1] dt-bindings: display: convert rockchip rk3066 hdmi bindings to yaml
-      commit: 8eea6e26fc2eda6922e5008ccb7f55bc1775d5b3
+  - Remove the assignment of "disabled" to the rga "status" attribute
+    in rk322x.dtsi, as Heiko Stuebner has said:
+      "no status for soc internal components without any board-specifics"
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+  - Remove the now unnecessary patch to enable rga for the rk3229-xms6
+    board.
+
+Changes in v4:
+  - Add a compatible value entry for the rk3228 to the rockchip-rga
+    device tree binding documentation.
+
+Changes in v3:
+  - Relocate rga node to the correct position in rk322x.dtsi, as
+    indicated by Johan Jonker.
+
+Changes in v2:
+  - Remove unnecessary "rockchip,rk3228-rga" device tree compatibility
+    string patch, as advised by Ezequiel Garcia.
+
+  - Use both "rockchip,rk3228-rga" and "rockchip,rk3288-rga" in the
+    rga node's compatibility property, as suggested by Heiko Stuebner.
+
+Justin Swartz (1):
+  ARM: dts: rockchip: add rga node for rk322x
+
+ arch/arm/boot/dts/rk322x.dtsi | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
