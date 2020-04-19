@@ -1,49 +1,39 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: Re: [PATCH v2] dt-bindings: display: convert rockchip rk3066 hdmi
- bindings to yaml
-Date: Sun, 19 Apr 2020 14:11:55 +0200
-Message-ID: <2cf39dcb-1057-5c52-02bd-cc81607414cd@gmail.com>
-References: <20200403133630.7377-1-jbx6244@gmail.com>
- <5903181.62QgbpdqVa@phil>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: fix phy nodename for rk3228-evb
+Date: Sun, 19 Apr 2020 14:13:06 +0200
+Message-ID: <158729833730.67563.9205424674473235719.b4-ty@sntech.de>
+References: <20200416170321.4216-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <5903181.62QgbpdqVa@phil>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: hjc@rock-chips.com, airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200416170321.4216-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+On Thu, 16 Apr 2020 19:03:20 +0200, Johan Jonker wrote:
+> A test with the command below gives for example this error:
+> 
+> arch/arm/boot/dts/rk3228-evb.dt.yaml: phy@0:
+> '#phy-cells' is a required property
+> 
+> The phy nodename is normally used by a phy-handle.
+> This node is however compatible with
+> "ethernet-phy-id1234.d400", "ethernet-phy-ieee802.3-c22"
+> which is just been added to 'ethernet-phy.yaml'.
+> So change nodename to 'ethernet-phy' for which '#phy-cells'
+> is not a required property
+> 
+> [...]
 
-On 4/19/20 2:08 PM, Heiko Stuebner wrote:
-> Hi Johan,
-> 
-> Am Freitag, 3. April 2020, 15:36:30 CEST schrieb Johan Jonker:
->> Current dts files with 'hdmi' nodes for rk3066 are manually verified.
->> In order to automate this process rockchip,rk3066-hdmi.txt
->> has to be converted to yaml.
->>
->> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> 
->> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,rk3066-hdmi.yaml
->> @@ -0,0 +1,140 @@
->> +# SPDX-License-Identifier: GPL-2.0
-> 
-> checkpatch complains about the licensing:
-> 
-> -:100: WARNING:SPDX_LICENSE_TAG: DT binding documents should be licensed (GPL-2.0-only OR BSD-2-Clause)
-> #100: FILE: Documentation/devicetree/bindings/display/rockchip/rockchip,rk3066-hdmi.yaml:1:
-> +# SPDX-License-Identifier: GPL-2.0
-> 
-> please consider adapting the license accordingly
+Applied, thanks!
 
-This is a conversion of a existing document. => GPL-2.0
+[1/2] ARM: dts: rockchip: fix phy nodename for rk3228-evb
+      commit: 806bceeea63f58bde45dbd633092bd9d14da02b0
+[2/2] ARM: dts: rockchip: fix phy nodename for rk3229-xms6
+      commit: 5c5555f7efed273c61152da03cd395a0d06e054c
 
-> 
-> Thanks
-> Heiko
-> 
-> 
+Best regards,
+-- 
+Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
