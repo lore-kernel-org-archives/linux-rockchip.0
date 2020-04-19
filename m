@@ -1,36 +1,33 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 1/3] arm64: dts: rockchip: add core devicetree for rk3326
-Date: Sun, 19 Apr 2020 14:35:56 +0200
-Message-ID: <158729964648.70529.10290347754936450590.b4-ty@sntech.de>
-References: <20200414082938.2977572-1-heiko@sntech.de>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: add micro SD card regulator to rockpro64
+Date: Sun, 19 Apr 2020 14:35:58 +0200
+Message-ID: <158729964647.70529.2619682470015783245.b4-ty@sntech.de>
+References: <20200416145534.1263575-1-t.schramm@manjaro.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200414082938.2977572-1-heiko@sntech.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: christoph.muellner@theobroma-systems.com, kever.yang@rock-chips.com, robh+dt@kernel.org, mark.rutland@arm.com, robin.murphy@arm.com, devicetree@vger.kernel.org, jbx6244@gmail.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200416145534.1263575-1-t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 14 Apr 2020 10:29:36 +0200, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+On Thu, 16 Apr 2020 16:55:34 +0200, Tobias Schramm wrote:
+> This patch adds the RockPro64's micro SD card regulator to the
+> RockPro64 dtsi. The regulator is present on all revisions of the
+> device.
+> Previously the regular was missing, resulting in unreliable boot
+> behaviour when booting from SD card.
 > 
-> The rk3326 is basically a px30 without the second display controller.
-> So add a dtsi based on that, that just removes the affected nodes.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> Signed-off-by: Tobias Schramm <t.schramm-x9ov/VOV9nNAfugRpC6u6w@public.gmane.org>
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] arm64: dts: rockchip: add core devicetree for rk3326
-      commit: df07f7df7e5a61d06b21f89c4ab744fb4e4c2222
-[2/3] dt-bindings: Add binding for Hardkernel Odroid Go Advance
-      commit: 98412e1e57ea776b4581077a68fe6ed598bfba99
-[3/3] arm64: dts: rockchip: add Odroid Advance Go
-      commit: ce33988fb69828dfcb5825f9086d9dc2b37a9282
+[1/1] arm64: dts: rockchip: add micro SD card regulator to rockpro64
+      commit: 1f5a3e1679353fb53e955afd8801a7f4f60877ff
 
 Best regards,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
