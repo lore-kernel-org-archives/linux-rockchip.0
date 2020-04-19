@@ -1,39 +1,97 @@
-From: Lad Prabhakar <prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
-Subject: [PATCH v8 3/8] PCI: rcar: Fix calculating mask for PCIEPAMR register
-Date: Sun, 19 Apr 2020 14:26:58 +0100
-Message-ID: <1587302823-4435-4-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+From: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+Subject: [PATCH v8 4/8] PCI: endpoint: Pass page size as argument to pci_epc_mem_init()
+Date: Sun, 19 Apr 2020 14:26:59 +0100
+Message-ID: <1587302823-4435-5-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
 References: <1587302823-4435-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <1587302823-4435-1-git-send-email-prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yoshihiro Shimoda <yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Andrew Murray <amurray-tUaQ5FxYRYX4aQPF92CzsNBc4/FLrbF6@public.gmane.org>, Tom Joseph <tjoseph-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Marek Vasut <marek.vasut+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Lad Prabhakar <prabhakar.csengg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Lad Prabhakar <prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <1587302823-4435-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Andrew Murray <amurray@thegoodpenguin.co.uk>, Tom Joseph <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Geert Uytterhoeven <geert+renesas@glider.be>, linux-pci@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Lad Prabhakar <prabhakar.csengg@gmail.com>, Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The mask value was calculated incorrectly for PCIEPAMR register if the
-size was less than 128 bytes. Fix this issue by adding a check on size.
+pci_epc_mem_init() internally used page size equal to *PAGE_SIZE* to
+manage the address space so instead just pass the page size as a
+argument to pci_epc_mem_init().
 
-Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
-Reviewed-by: Yoshihiro Shimoda <yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>
+Also make pci_epc_mem_init() as a C function instead of a macro function
+in preparation for adding support for pci-epc-mem core to handle multiple
+windows.
+
+Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 ---
- drivers/pci/controller/pcie-rcar.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/pci/controller/cadence/pcie-cadence-ep.c | 2 +-
+ drivers/pci/controller/pcie-rockchip-ep.c        | 2 +-
+ drivers/pci/endpoint/pci-epc-mem.c               | 7 +++++++
+ include/linux/pci-epc.h                          | 5 ++---
+ 4 files changed, 11 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rcar.c b/drivers/pci/controller/pcie-rcar.c
-index b82f200985ec..b46c69ac62f2 100644
---- a/drivers/pci/controller/pcie-rcar.c
-+++ b/drivers/pci/controller/pcie-rcar.c
-@@ -75,7 +75,10 @@ void rcar_pcie_set_outbound(struct rcar_pcie *pcie, int win,
- 	 * keeps things pretty simple.
- 	 */
- 	size = resource_size(res);
--	mask = (roundup_pow_of_two(size) / SZ_128) - 1;
-+	if (size > 128)
-+		mask = (roundup_pow_of_two(size) / SZ_128) - 1;
-+	else
-+		mask = 0x0;
- 	rcar_pci_write_reg(pcie, mask << 7, PCIEPAMR(win));
+diff --git a/drivers/pci/controller/cadence/pcie-cadence-ep.c b/drivers/pci/controller/cadence/pcie-cadence-ep.c
+index 1c173dad67d1..1c15c8352125 100644
+--- a/drivers/pci/controller/cadence/pcie-cadence-ep.c
++++ b/drivers/pci/controller/cadence/pcie-cadence-ep.c
+@@ -450,7 +450,7 @@ int cdns_pcie_ep_setup(struct cdns_pcie_ep *ep)
+ 		epc->max_functions = 1;
  
- 	if (res->flags & IORESOURCE_IO)
+ 	ret = pci_epc_mem_init(epc, pcie->mem_res->start,
+-			       resource_size(pcie->mem_res));
++			       resource_size(pcie->mem_res), PAGE_SIZE);
+ 	if (ret < 0) {
+ 		dev_err(dev, "failed to initialize the memory space\n");
+ 		goto err_init;
+diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
+index d743b0a48988..5eaf36629a75 100644
+--- a/drivers/pci/controller/pcie-rockchip-ep.c
++++ b/drivers/pci/controller/pcie-rockchip-ep.c
+@@ -615,7 +615,7 @@ static int rockchip_pcie_ep_probe(struct platform_device *pdev)
+ 	rockchip_pcie_write(rockchip, BIT(0), PCIE_CORE_PHY_FUNC_CFG);
+ 
+ 	err = pci_epc_mem_init(epc, rockchip->mem_res->start,
+-			       resource_size(rockchip->mem_res));
++			       resource_size(rockchip->mem_res), PAGE_SIZE);
+ 	if (err < 0) {
+ 		dev_err(dev, "failed to initialize the memory space\n");
+ 		goto err_uninit_port;
+diff --git a/drivers/pci/endpoint/pci-epc-mem.c b/drivers/pci/endpoint/pci-epc-mem.c
+index abfac1109a13..cdd1d3821249 100644
+--- a/drivers/pci/endpoint/pci-epc-mem.c
++++ b/drivers/pci/endpoint/pci-epc-mem.c
+@@ -93,6 +93,13 @@ return ret;
+ }
+ EXPORT_SYMBOL_GPL(__pci_epc_mem_init);
+ 
++int pci_epc_mem_init(struct pci_epc *epc, phys_addr_t base,
++		     size_t size, size_t page_size)
++{
++	return __pci_epc_mem_init(epc, base, size, page_size);
++}
++EXPORT_SYMBOL_GPL(pci_epc_mem_init);
++
+ /**
+  * pci_epc_mem_exit() - cleanup the pci_epc_mem structure
+  * @epc: the EPC device that invoked pci_epc_mem_exit
+diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
+index e0ed9d01f6e5..5bc1de65849e 100644
+--- a/include/linux/pci-epc.h
++++ b/include/linux/pci-epc.h
+@@ -137,9 +137,6 @@ struct pci_epc_features {
+ #define devm_pci_epc_create(dev, ops)    \
+ 		__devm_pci_epc_create((dev), (ops), THIS_MODULE)
+ 
+-#define pci_epc_mem_init(epc, phys_addr, size)	\
+-		__pci_epc_mem_init((epc), (phys_addr), (size), PAGE_SIZE)
+-
+ static inline void epc_set_drvdata(struct pci_epc *epc, void *data)
+ {
+ 	dev_set_drvdata(&epc->dev, data);
+@@ -195,6 +192,8 @@ unsigned int pci_epc_get_first_free_bar(const struct pci_epc_features
+ struct pci_epc *pci_epc_get(const char *epc_name);
+ void pci_epc_put(struct pci_epc *epc);
+ 
++int pci_epc_mem_init(struct pci_epc *epc, phys_addr_t base,
++		     size_t size, size_t page_size);
+ int __pci_epc_mem_init(struct pci_epc *epc, phys_addr_t phys_addr, size_t size,
+ 		       size_t page_size);
+ void pci_epc_mem_exit(struct pci_epc *epc);
 -- 
 2.17.1
