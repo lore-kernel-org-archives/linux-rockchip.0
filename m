@@ -1,507 +1,234 @@
-From: Hadar Gat <hadar.gat-5wv7dgnIgG8@public.gmane.org>
-Subject: [PATCH v3] of_device: removed #include that caused a
- recursion in included headers
-Date: Mon, 20 Apr 2020 18:04:29 +0300
-Message-ID: <1587395080-15722-1-git-send-email-hadar.gat@arm.com>
+From: Milan =?utf-8?Q?P=2E_Stani=C4=87?= <mps@arvanta.net>
+Subject: Re: PROBLEM: =?utf-8?Q?mmc=5Fselect=5Fhs40?=
+ =?utf-8?B?MGVzIGZhaWxlZCwgZXJyb3IgLTExMOOAkOivt+azqOaEj++8jOmCruS7tg==?=
+ =?utf-8?B?55SxbGludXgtbW1jLW93bmVyQHZnZXIua2VybmVsLm9yZ+S7o+WPkeOAkQ==?=
+Date: Mon, 20 Apr 2020 17:15:59 +0200
+Message-ID: <20200420151559.GA28824@arya.arvanta.net>
+References: <20200301220242.GA8276@arya.arvanta.net>
+ <20200318214917.GA9112@arya.arvanta.net>
+ <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com>
+ <158bd6f5-2430-19bd-28ef-e18d67becaf3@arm.com>
+ <20200321204652.GA21002@arya.arvanta.net>
+ <20200327171417.GA4387@arya.arvanta.net>
+ <CAPDyKFotyWVXu+Aj6y-DoAtrbimD7ycg=81bf8zjeSg9mrD-4A@mail.gmail.com>
+ <20200331214031.GA30589@arya.arvanta.net>
+ <20200417193106.GB8457@arya.arvanta.net>
+ <CAPDyKFp2q_=RYVq8T=ReVbyW8tbZs9rvuuWofW6iddheO9aaBw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=unsubscribe>
-List-Archive: <https://lists.freedesktop.org/archives/freedreno>
-List-Post: <mailto:freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-List-Help: <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/freedreno>,
- <mailto:freedreno-request-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org?subject=subscribe>
-Errors-To: freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-Sender: "Freedreno" <freedreno-bounces-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>
-To: "David S. Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Liviu Dudau <liviu.dudau-5wv7dgnIgG8@public.gmane.org>, Sudeep Holla <sudeep.holla-5wv7dgnIgG8@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Michael Turquette <mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Ludovic Desroches <ludovic.desroches-UWL1GkI3JZL3oGB3hsPCZA@public.gmane.org>, Vinod Koul <vkoul-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Maxime Coquelin <mcoquelin.stm32-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Alexandre Torgue <alexandre.torgue-qxv4g6HH51o@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Sean Paul <sean-p7yTbzM4H96eqtR555YLDQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Maxime Ripard <mripard-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Jonathan Cameron <jic23@ke>
-Cc: linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sparclinux-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hadar Gat <hadar.gat-5wv7dgnIgG8@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-omap-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ofir Drang <ofir.drang-5wv7dgnIgG8@public.gmane.org>, Gilad Ben-Yossef <gilad-6S/DczAoZh3WXxRugSxzZg@public.gmane.org>, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, freedreno-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-mmc-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <CAPDyKFp2q_=RYVq8T=ReVbyW8tbZs9rvuuWofW6iddheO9aaBw@mail.gmail.com>
+Sender: linux-mmc-owner@vger.kernel.org
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: Robin Murphy <robin.murphy@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Both of_platform.h and of_device.h were included each other.
-In of_device.h, removed unneeded #include to of_platform.h
-and added include to of_platform.h in the files that needs it.
+On Mon, 2020-04-20 at 09:17, Ulf Hansson wrote:
+> On Fri, 17 Apr 2020 at 21:31, Milan P. Stanić <mps@arvanta.net> wrote:
+> > I built chromeOS kernel 4.4.174 and after three days with few
+> > suspend-to-ram and resume mmc driver works fine, i.e. no problem
+> > occured.
+> >
+> > Could someone who know programming mmc drivers look at differences
+> > between this chromeOS kernel (4.4.174) and some of mainline kernels
+> > to find cause of the problem and maybe to create fix or patch to send
+> > for testing.
+> 
+> That delta is more than 4 years of development. I am not sure
+> investigating the delta would make sense, however I leave that to
+> Rock-chips people to decide - or whomever that are willing to help to
+> debug this.
+ 
+I think it is not needed to look at full delta from this working
+chromeOS kernel and current mainline but maybe to 5.0 or 5.1 releases.
 
-Signed-off-by: Hadar Gat <hadar.gat-5wv7dgnIgG8@public.gmane.org>
-Reported-by: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Acked-by: Jonathan Cameron <Jonathan.Cameron-hv44wF8Li93QT0dZR+AlfA@public.gmane.org> #for-iio
-Acked-by: Stephen Boyd <sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> # clk
----
-v3: add include to of_platform.h in more files. (reported due other builds)
-v2: add include to of_platform.h in more files. (reported due other builds)
+But I'm not sure and because I don't know what to look I can only hope
+that rockchip developers will find what is wrong.
 
- arch/sparc/kernel/pci.c                           | 1 +
- arch/sparc/kernel/pci_sabre.c                     | 1 +
- arch/sparc/kernel/pci_schizo.c                    | 1 +
- arch/sparc/kernel/sbus.c                          | 1 +
- arch/sparc/mm/io-unit.c                           | 1 +
- arch/sparc/mm/iommu.c                             | 1 +
- drivers/base/platform.c                           | 1 +
- drivers/bus/imx-weim.c                            | 1 +
- drivers/bus/vexpress-config.c                     | 1 +
- drivers/clk/mediatek/clk-mt7622-aud.c             | 1 +
- drivers/dma/at_hdmac.c                            | 1 +
- drivers/dma/stm32-dmamux.c                        | 1 +
- drivers/dma/ti/dma-crossbar.c                     | 1 +
- drivers/gpu/drm/msm/adreno/a6xx_gmu.c             | 1 +
- drivers/gpu/drm/msm/hdmi/hdmi.c                   | 1 +
- drivers/gpu/drm/msm/msm_drv.c                     | 1 +
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 1 +
- drivers/gpu/drm/sun4i/sun4i_tcon.c                | 1 +
- drivers/iio/adc/stm32-adc-core.c                  | 1 +
- drivers/iio/adc/stm32-dfsdm-adc.c                 | 1 +
- drivers/iio/adc/stm32-dfsdm-core.c                | 1 +
- drivers/iommu/tegra-smmu.c                        | 1 +
- drivers/media/platform/coda/coda-common.c         | 1 +
- drivers/memory/atmel-ebi.c                        | 1 +
- drivers/mfd/palmas.c                              | 1 +
- drivers/mfd/ssbi.c                                | 1 +
- drivers/mtd/nand/raw/omap2.c                      | 1 +
- drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c | 1 +
- drivers/net/ethernet/ti/cpsw.c                    | 1 +
- drivers/phy/tegra/xusb.c                          | 1 +
- drivers/pinctrl/freescale/pinctrl-imx1-core.c     | 1 +
- drivers/pinctrl/nomadik/pinctrl-nomadik.c         | 1 +
- drivers/soc/samsung/exynos-pmu.c                  | 1 +
- drivers/soc/sunxi/sunxi_sram.c                    | 1 +
- include/linux/of_device.h                         | 2 --
- lib/genalloc.c                                    | 1 +
- 36 files changed, 35 insertions(+), 2 deletions(-)
+Anyway, I use this rk3399 gru-kevin chromebook with external mmc card
+and it works fine if I don't 'touch' emmc. But is slower than when emmc
+is used for root and home filesystem, significantly, and would be nice
+if someone can find fix or just point me where and what to look.
 
-diff --git a/arch/sparc/kernel/pci.c b/arch/sparc/kernel/pci.c
-index 5ed4382..89ea658 100644
---- a/arch/sparc/kernel/pci.c
-+++ b/arch/sparc/kernel/pci.c
-@@ -21,6 +21,7 @@
- #include <linux/init.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- 
- #include <linux/uaccess.h>
- #include <asm/pgtable.h>
-diff --git a/arch/sparc/kernel/pci_sabre.c b/arch/sparc/kernel/pci_sabre.c
-index 3c38ca4..16761d0 100644
---- a/arch/sparc/kernel/pci_sabre.c
-+++ b/arch/sparc/kernel/pci_sabre.c
-@@ -14,6 +14,7 @@
- #include <linux/slab.h>
- #include <linux/interrupt.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- 
- #include <asm/apb.h>
- #include <asm/iommu.h>
-diff --git a/arch/sparc/kernel/pci_schizo.c b/arch/sparc/kernel/pci_schizo.c
-index 421aba0..733f069 100644
---- a/arch/sparc/kernel/pci_schizo.c
-+++ b/arch/sparc/kernel/pci_schizo.c
-@@ -12,6 +12,7 @@
- #include <linux/export.h>
- #include <linux/interrupt.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/numa.h>
- 
- #include <asm/iommu.h>
-diff --git a/arch/sparc/kernel/sbus.c b/arch/sparc/kernel/sbus.c
-index 32141e1..2f4051f 100644
---- a/arch/sparc/kernel/sbus.c
-+++ b/arch/sparc/kernel/sbus.c
-@@ -15,6 +15,7 @@
- #include <linux/interrupt.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/numa.h>
- 
- #include <asm/page.h>
-diff --git a/arch/sparc/mm/io-unit.c b/arch/sparc/mm/io-unit.c
-index 289276b..5638399 100644
---- a/arch/sparc/mm/io-unit.c
-+++ b/arch/sparc/mm/io-unit.c
-@@ -15,6 +15,7 @@
- #include <linux/dma-mapping.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- 
- #include <asm/pgalloc.h>
- #include <asm/pgtable.h>
-diff --git a/arch/sparc/mm/iommu.c b/arch/sparc/mm/iommu.c
-index b00dde1..9cbb2e7 100644
---- a/arch/sparc/mm/iommu.c
-+++ b/arch/sparc/mm/iommu.c
-@@ -16,6 +16,7 @@
- #include <linux/dma-mapping.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- 
- #include <asm/pgalloc.h>
- #include <asm/pgtable.h>
-diff --git a/drivers/base/platform.c b/drivers/base/platform.c
-index 5255550..f549274b 100644
---- a/drivers/base/platform.c
-+++ b/drivers/base/platform.c
-@@ -12,6 +12,7 @@
- #include <linux/string.h>
- #include <linux/platform_device.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/of_irq.h>
- #include <linux/module.h>
- #include <linux/init.h>
-diff --git a/drivers/bus/imx-weim.c b/drivers/bus/imx-weim.c
-index 28bb65a..8c786da 100644
---- a/drivers/bus/imx-weim.c
-+++ b/drivers/bus/imx-weim.c
-@@ -11,6 +11,7 @@
- #include <linux/clk.h>
- #include <linux/io.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/mfd/syscon.h>
- #include <linux/mfd/syscon/imx6q-iomuxc-gpr.h>
- #include <linux/regmap.h>
-diff --git a/drivers/bus/vexpress-config.c b/drivers/bus/vexpress-config.c
-index ff70575..12b8b0b 100644
---- a/drivers/bus/vexpress-config.c
-+++ b/drivers/bus/vexpress-config.c
-@@ -8,6 +8,7 @@
- #include <linux/init.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/vexpress.h>
- 
- 
-diff --git a/drivers/clk/mediatek/clk-mt7622-aud.c b/drivers/clk/mediatek/clk-mt7622-aud.c
-index 2bd4295..8cbb68f 100644
---- a/drivers/clk/mediatek/clk-mt7622-aud.c
-+++ b/drivers/clk/mediatek/clk-mt7622-aud.c
-@@ -9,6 +9,7 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- 
- #include "clk-mtk.h"
-diff --git a/drivers/dma/at_hdmac.c b/drivers/dma/at_hdmac.c
-index 73a2078..388f8e10 100644
---- a/drivers/dma/at_hdmac.c
-+++ b/drivers/dma/at_hdmac.c
-@@ -20,6 +20,7 @@
- #include <linux/slab.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/of_dma.h>
- 
- #include "at_hdmac_regs.h"
-diff --git a/drivers/dma/stm32-dmamux.c b/drivers/dma/stm32-dmamux.c
-index 12f7637..b704896 100644
---- a/drivers/dma/stm32-dmamux.c
-+++ b/drivers/dma/stm32-dmamux.c
-@@ -16,6 +16,7 @@
- #include <linux/init.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/of_dma.h>
- #include <linux/pm_runtime.h>
- #include <linux/reset.h>
-diff --git a/drivers/dma/ti/dma-crossbar.c b/drivers/dma/ti/dma-crossbar.c
-index 4ba8fa5..2c0fd44 100644
---- a/drivers/dma/ti/dma-crossbar.c
-+++ b/drivers/dma/ti/dma-crossbar.c
-@@ -10,6 +10,7 @@
- #include <linux/io.h>
- #include <linux/of_address.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/of_dma.h>
- 
- #define TI_XBAR_DRA7		0
-diff --git a/drivers/gpu/drm/msm/adreno/a6xx_gmu.c b/drivers/gpu/drm/msm/adreno/a6xx_gmu.c
-index c4e71ab..f523254 100644
---- a/drivers/gpu/drm/msm/adreno/a6xx_gmu.c
-+++ b/drivers/gpu/drm/msm/adreno/a6xx_gmu.c
-@@ -6,6 +6,7 @@
- #include <linux/interconnect.h>
- #include <linux/pm_domain.h>
- #include <linux/pm_opp.h>
-+#include <linux/of_platform.h>
- #include <soc/qcom/cmd-db.h>
- 
- #include "a6xx_gpu.h"
-diff --git a/drivers/gpu/drm/msm/hdmi/hdmi.c b/drivers/gpu/drm/msm/hdmi/hdmi.c
-index 737453b..5034d40 100644
---- a/drivers/gpu/drm/msm/hdmi/hdmi.c
-+++ b/drivers/gpu/drm/msm/hdmi/hdmi.c
-@@ -7,6 +7,7 @@
- 
- #include <linux/of_irq.h>
- #include <linux/of_gpio.h>
-+#include <linux/of_platform.h>
- 
- #include <sound/hdmi-codec.h>
- #include "hdmi.h"
-diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
-index 29295de..ddc9e85 100644
---- a/drivers/gpu/drm/msm/msm_drv.c
-+++ b/drivers/gpu/drm/msm/msm_drv.c
-@@ -8,6 +8,7 @@
- #include <linux/dma-mapping.h>
- #include <linux/kthread.h>
- #include <linux/uaccess.h>
-+#include <linux/of_platform.h>
- #include <uapi/linux/sched/types.h>
- 
- #include <drm/drm_drv.h>
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 6e1270e..d038bae 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -12,6 +12,7 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/phy/phy.h>
- #include <linux/pm_runtime.h>
- #include <linux/regmap.h>
-diff --git a/drivers/gpu/drm/sun4i/sun4i_tcon.c b/drivers/gpu/drm/sun4i/sun4i_tcon.c
-index 624437b..aa35757 100644
---- a/drivers/gpu/drm/sun4i/sun4i_tcon.c
-+++ b/drivers/gpu/drm/sun4i/sun4i_tcon.c
-@@ -11,6 +11,7 @@
- #include <linux/module.h>
- #include <linux/of_address.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/of_irq.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
-diff --git a/drivers/iio/adc/stm32-adc-core.c b/drivers/iio/adc/stm32-adc-core.c
-index 2df88d2..3dc3453 100644
---- a/drivers/iio/adc/stm32-adc-core.c
-+++ b/drivers/iio/adc/stm32-adc-core.c
-@@ -17,6 +17,7 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/pm_runtime.h>
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
-diff --git a/drivers/iio/adc/stm32-dfsdm-adc.c b/drivers/iio/adc/stm32-dfsdm-adc.c
-index 76a60d9..e83848cb 100644
---- a/drivers/iio/adc/stm32-dfsdm-adc.c
-+++ b/drivers/iio/adc/stm32-dfsdm-adc.c
-@@ -20,6 +20,7 @@
- #include <linux/interrupt.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/slab.h>
-diff --git a/drivers/iio/adc/stm32-dfsdm-core.c b/drivers/iio/adc/stm32-dfsdm-core.c
-index 26e2011..f6a53ab 100644
---- a/drivers/iio/adc/stm32-dfsdm-core.c
-+++ b/drivers/iio/adc/stm32-dfsdm-core.c
-@@ -12,6 +12,7 @@
- #include <linux/interrupt.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/pinctrl/consumer.h>
- #include <linux/pm_runtime.h>
- #include <linux/regmap.h>
-diff --git a/drivers/iommu/tegra-smmu.c b/drivers/iommu/tegra-smmu.c
-index 63a147b..3797caa 100644
---- a/drivers/iommu/tegra-smmu.c
-+++ b/drivers/iommu/tegra-smmu.c
-@@ -10,6 +10,7 @@
- #include <linux/kernel.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/slab.h>
- #include <linux/dma-mapping.h>
-diff --git a/drivers/media/platform/coda/coda-common.c b/drivers/media/platform/coda/coda-common.c
-index d0d093d..0874824 100644
---- a/drivers/media/platform/coda/coda-common.c
-+++ b/drivers/media/platform/coda/coda-common.c
-@@ -20,6 +20,7 @@
- #include <linux/kfifo.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
- #include <linux/slab.h>
-diff --git a/drivers/memory/atmel-ebi.c b/drivers/memory/atmel-ebi.c
-index 14386d0..272b1a8 100644
---- a/drivers/memory/atmel-ebi.c
-+++ b/drivers/memory/atmel-ebi.c
-@@ -13,6 +13,7 @@
- #include <linux/mfd/syscon/atmel-smc.h>
- #include <linux/init.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/regmap.h>
- #include <soc/at91/atmel-sfr.h>
- 
-diff --git a/drivers/mfd/palmas.c b/drivers/mfd/palmas.c
-index f5b3fa9..cca44bc 100644
---- a/drivers/mfd/palmas.c
-+++ b/drivers/mfd/palmas.c
-@@ -19,6 +19,7 @@
- #include <linux/mfd/core.h>
- #include <linux/mfd/palmas.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- 
- static const struct regmap_config palmas_regmap_config[PALMAS_NUM_CLIENTS] = {
- 	{
-diff --git a/drivers/mfd/ssbi.c b/drivers/mfd/ssbi.c
-index 94f60df..72cd45a 100644
---- a/drivers/mfd/ssbi.c
-+++ b/drivers/mfd/ssbi.c
-@@ -20,6 +20,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- 
- /* SSBI 2.0 controller registers */
- #define SSBI2_CMD			0x0008
-diff --git a/drivers/mtd/nand/raw/omap2.c b/drivers/mtd/nand/raw/omap2.c
-index ad77c11..d851ec7 100644
---- a/drivers/mtd/nand/raw/omap2.c
-+++ b/drivers/mtd/nand/raw/omap2.c
-@@ -22,6 +22,7 @@
- #include <linux/slab.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- 
- #include <linux/mtd/nand_bch.h>
- #include <linux/platform_data/elm.h>
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
-index 58e0511..d704d57 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.c
-@@ -12,6 +12,7 @@
- #include <linux/mfd/syscon.h>
- #include <linux/module.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/phy.h>
-diff --git a/drivers/net/ethernet/ti/cpsw.c b/drivers/net/ethernet/ti/cpsw.c
-index c2c5bf8..6932945 100644
---- a/drivers/net/ethernet/ti/cpsw.c
-+++ b/drivers/net/ethernet/ti/cpsw.c
-@@ -28,6 +28,7 @@
- #include <linux/of_mdio.h>
- #include <linux/of_net.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/if_vlan.h>
- #include <linux/kmemleak.h>
- #include <linux/sys_soc.h>
-diff --git a/drivers/phy/tegra/xusb.c b/drivers/phy/tegra/xusb.c
-index de4a46f..0eac1b8 100644
---- a/drivers/phy/tegra/xusb.c
-+++ b/drivers/phy/tegra/xusb.c
-@@ -9,6 +9,7 @@
- #include <linux/module.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/phy/phy.h>
- #include <linux/phy/tegra/xusb.h>
- #include <linux/platform_device.h>
-diff --git a/drivers/pinctrl/freescale/pinctrl-imx1-core.c b/drivers/pinctrl/freescale/pinctrl-imx1-core.c
-index c00d002..d1c171e 100644
---- a/drivers/pinctrl/freescale/pinctrl-imx1-core.c
-+++ b/drivers/pinctrl/freescale/pinctrl-imx1-core.c
-@@ -16,6 +16,7 @@
- #include <linux/io.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/pinctrl/machine.h>
- #include <linux/pinctrl/pinconf.h>
- #include <linux/pinctrl/pinctrl.h>
-diff --git a/drivers/pinctrl/nomadik/pinctrl-nomadik.c b/drivers/pinctrl/nomadik/pinctrl-nomadik.c
-index ca7bbe4..44974ac 100644
---- a/drivers/pinctrl/nomadik/pinctrl-nomadik.c
-+++ b/drivers/pinctrl/nomadik/pinctrl-nomadik.c
-@@ -19,6 +19,7 @@
- #include <linux/interrupt.h>
- #include <linux/slab.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/of_address.h>
- #include <linux/bitops.h>
- #include <linux/pinctrl/machine.h>
-diff --git a/drivers/soc/samsung/exynos-pmu.c b/drivers/soc/samsung/exynos-pmu.c
-index 17304fa..25129b0 100644
---- a/drivers/soc/samsung/exynos-pmu.c
-+++ b/drivers/soc/samsung/exynos-pmu.c
-@@ -8,6 +8,7 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/mfd/syscon.h>
- #include <linux/platform_device.h>
- #include <linux/delay.h>
-diff --git a/drivers/soc/sunxi/sunxi_sram.c b/drivers/soc/sunxi/sunxi_sram.c
-index 1b0d50f..423cec3 100644
---- a/drivers/soc/sunxi/sunxi_sram.c
-+++ b/drivers/soc/sunxi/sunxi_sram.c
-@@ -16,6 +16,7 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- 
-diff --git a/include/linux/of_device.h b/include/linux/of_device.h
-index 8d31e39..752999b 100644
---- a/include/linux/of_device.h
-+++ b/include/linux/of_device.h
-@@ -4,8 +4,6 @@
- 
- #include <linux/cpu.h>
- #include <linux/platform_device.h>
--#include <linux/of_platform.h> /* temporary until merge */
--
- #include <linux/of.h>
- #include <linux/mod_devicetable.h>
- 
-diff --git a/lib/genalloc.c b/lib/genalloc.c
-index 7f1244b..08e21eeb 100644
---- a/lib/genalloc.c
-+++ b/lib/genalloc.c
-@@ -33,6 +33,7 @@
- #include <linux/interrupt.h>
- #include <linux/genalloc.h>
- #include <linux/of_device.h>
-+#include <linux/of_platform.h>
- #include <linux/vmalloc.h>
- 
- static inline size_t chunk_size(const struct gen_pool_chunk *chunk)
 -- 
-2.7.4
+Kind regards
+
+> Kind regards
+> Uffe
+> 
+> >
+> > --
+> > Regards
+> >
+> > On Tue, 2020-03-31 at 23:40, Milan P. Stanić wrote:
+> > > Hi,
+> > >
+> > > On Mon, 2020-03-30 at 20:19, Ulf Hansson wrote:
+> > > > On Fri, 27 Mar 2020 at 18:14, Milan P. Stanić <mps@arvanta.net> wrote:
+> > > > > Hi,
+> > > > > Anyone looked at this problem?
+> > > > >
+> > > > > Or, is there better url or mailing list where I should send this bug
+> > > > > report?
+> > > >
+> > > > This is the mmc-list and since the rock-chips list was added by Shawn
+> > > > - you have directed your question correctly.
+> > > >
+> > > > The problem is, this isn't a list where everyone can get free support.
+> > > > People may be working on other platforms, for example.
+> > > >
+> > > > The best option for you, is probably to ping Shawn or to reach out to
+> > > > some other Rock-chips people, as it seems like these guys needs to
+> > > > have a closer look.
+> > > >
+> > > > >
+> > > > > Or, could someone tell me what I could try to fix it, which file and
+> > > > > parameters to change?
+> > > >
+> > > > Well, if you can narrow down the problem that is always helpful. So
+> > > > for example, is there any upstream kernel that works - or is it only
+> > > > working through the chrome-os tree (which likely contains vendor
+> > > > specific changes that are not upstream).
+> > >
+> > > Problem is in that the in last 5-6 months chrome-os kernels even don't
+> > > boot, i.e. I only get blank display. I patched it for few releases
+> > > locally but for about 3-4 months even my patch doesn't work.
+> > > Maybe I could find chrome-os kernel about year or two old and try, but
+> > > even then I don't know where to look for this problem.
+> > >
+> > > Other option is to try with mainline kernels from 4.20.x and up one by
+> > > one major release to look on which version this problem started. This
+> > > will take time because problem occurs irregularly, sometimes in a few
+> > > hours but sometimes it works fine for a few days until it appears.
+> > >
+> > > Thank you for pointing me whom to ask and what to try.
+> > >
+> > > --
+> > > Kind regards
+> > >
+> > > > Kind regards
+> > > > Uff
+> > > >
+> > > > >
+> > > > > On Sat, 2020-03-21 at 21:46, Milan P. Stanić wrote:
+> > > > > > Hi,
+> > > > > >
+> > > > > > On Thu, 2020-03-19 at 12:28, Robin Murphy wrote:
+> > > > > > > Hi Shawn,
+> > > > > > >
+> > > > > > > On 2020-03-19 3:11 am, Shawn Lin wrote:
+> > > > > > > > Hi Milan
+> > > > > > > >
+> > > > > > > > [+linux-rockchip to see if someone has a Samsung chromebook one plus
+> > > > > > > > and could confirm if it works]
+> > > > > > >
+> > > > > > > FWIW I've also tried suspend on my NanoPC-T4 and seen that the eMMC (also
+> > > > > > > HS400-ES) fails to come back properly on resume (thus resume never completes
+> > > > > > > due to the missing root filesystem). IIRC it might even have been
+> > > > > > > reproducible with suspend-to-idle, but I'd have to double-check that.
+> > > > > >
+> > > > > > I forgot to tell that emmc worked without problem on this machine with
+> > > > > > ChromeOS kernel 4.4.xx downloaded from
+> > > > > > https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4
+> > > > > > and with patches from
+> > > > > > https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-gru
+> > > > > > for about two years (iirc).
+> > > > > > Problem started when I switched to mainline kernels, somewhere around
+> > > > > > 5.1.xx
+> > > > > >
+> > > > > > > Robin.
+> > > > > > >
+> > > > > > > > On 2020/3/19 5:49, Milan P. Stanić wrote:
+> > > > > > > > > Hello,
+> > > > > > > > >
+> > > > > > > > > Sorry to annoy again, but could you tell me if I sent this bug report
+> > > > > > > > > to right mail address or I should send it somewhere else.
+> > > > > > > > >
+> > > > > > > > > Also, did I sent bug report correctly or I did some mistakes which
+> > > > > > > > > caused it to be ignored.
+> > > > > > > > >
+> > > > > > > > > -- TIA On Sun, 2020-03-01 at 23:02, Milan P. Stanić wrote:
+> > > > > > > > > > Hello,
+> > > > > > > > > >
+> > > > > > > > > > I'm not native English speaker and I'm self taught in English so sorry
+> > > > > > > > > > if do not write or express correctly. And sorry if I posted bug report
+> > > > > > > > > > to wrong address.
+> > > > > > > > > >
+> > > > > > > > > > I'm running linux 5.6.0-rc3 without any patches on Samsung chromebook
+> > > > > > > > > > one plus, Arm64 rockchip rk3399 based model name:
+> > > > > > > > > > Machine model: Google Kevin
+> > > > > > > > > >
+> > > > > > > > > > I build kernels from upstream git.kernel.org for this machine for some
+> > > > > > > > > > time (iirc, from 5.2.1 and up) but I'm getting error messages in kernel
+> > > > > > > > > > after machine resumes from suspend-to-ram.
+> > > > > > > >
+> > > > > > > > It sounds to me suspend-to-ram never works for this machine, at least
+> > > > > > > > since 5.2.1. Am I right?
+> > > > > > > >
+> > > > > > > > > >
+> > > > > > > > > > excerpt from dmesg output:
+> > > > > > > > > > -----------------------------------------------------------------------
+> > > > > > > > > > Restarting tasks ... done.
+> > > > > > > > > > PM: suspend exit
+> > > > > > > > > > mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz,
+> > > > > > > > > > actual 400000HZ div = 0)
+> > > > > > > > > > mmc1: mmc_select_hs400es failed, error -110
+> > > > > > > > > > mmc1: error -110 doing runtime resume
+> > > > > > > > > > mmc1: Got data interrupt 0x00000002 even though no data
+> > > > > > > > > > operation was in progress.
+> > > > > > > > > > mmc1: sdhci: ============ SDHCI REGISTER DUMP ===========
+> > > > > > > > > > mmc1: sdhci: Sys addr:  0x00000008 | Version:  0x00001002
+> > > > > > > > > > mmc1: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000008
+> > > > > > > > > > mmc1: sdhci: Argument:  0x00000000 | Trn mode: 0x00000023
+> > > > > > > > > > mmc1: sdhci: Present:   0x1fff0001 | Host ctl: 0x00000035
+> > > > > > > > > > mmc1: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
+> > > > > > > > > > mmc1: sdhci: Wake-up:   0x00000000 | Clock:    0x0000bc07
+> > > > > > > > > > mmc1: sdhci: Timeout:   0x0000000d | Int stat: 0x00000000
+> > > > > > > > > > mmc1: sdhci: Int enab:  0x03ff000b | Sig enab: 0x03ff000b
+> > > > > > > > > > mmc1: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
+> > > > > > > > > > mmc1: sdhci: Caps:      0x44edc880 | Caps_1:   0x801020f7
+> > > > > > > > > > mmc1: sdhci: Cmd:       0x00000c1a | Max curr: 0x00000000
+> > > > > > > > > > mmc1: sdhci: Resp[0]:   0x00000000 | Resp[1]:  0x373300bd
+> > > > > > > > > > mmc1: sdhci: Resp[2]:   0x35303030 | Resp[3]:  0x00000000
+> > > > > > > > > > mmc1: sdhci: Host ctl2: 0x00000000
+> > > > > > > > > > mmc1: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xed41e200
+> > > > > > > > > > -----------------------------------------------------------------------
+> > > > > > > > > >
+> > > > > > > > > > I invoke suspend-to-ram by `echo mem > /sys/power/state` from ACPI power
+> > > > > > > > > > and LID button handlers.
+> > > > > > > > > >
+> > > > > > > > > > This only happens when I boot and use internal emmc card and never when
+> > > > > > > > > > boot and use external mmc card.
+> > > > > > > > > >
+> > > > > > > > > > If suspend-to-ram is not invoked (machine is always in normal state)
+> > > > > > > > > > this problem never happen (or I missed it somehow).
+> > > > > > > > > >
+> > > > > > > > > > I'm attaching kernel .config (file config-5.6.0-rc3-1-gru.conf) which
+> > > > > > > > > > use to build kernel, output of the `awk -f scripts/ver_linux` as file
+> > > > > > > > > > ver_linux.txt and  output of dmesg as file mmc-err.txt (from which I
+> > > > > > > > > > deleted wifi connection logs).
+> > > > > > > > > >
+> > > > > > > > > > Sorry if I did something bad or wrong with this bug report, I don't have
+> > > > > > > > > > much experience with bug reporting, especially for kernel.
+> > > > > > > > > >
+> > > > > > > > > > I'm ready to send you more data, and investigate this more, apply
+> > > > > > > > > > patches and rebuild kernel or whatever you ask me (of course if my
+> > > > > > > > > > understanding and knowledge is enough for this job).
+> > > > > > > > > >
+> > > > > > > > > > Thank in advance
+> > > > > > > > > >
+> > > > > > > > > > --
+> > > > > > > > > > Kind regards
+> > > > > > > > > >
+> > > > > > > > > [...]
+> > > > > > > > >
+> > > > > > > > >
+> > > > > > > >
+> > > > > > > >
+> > > > > > > >
+> > > > > > > > _______________________________________________
+> > > > > > > > Linux-rockchip mailing list
+> > > > > > > > Linux-rockchip@lists.infradead.org
+> > > > > > > > http://lists.infradead.org/mailman/listinfo/linux-rockchip
