@@ -1,36 +1,44 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH v2 2/3] rk3399: Add boot flash script offset, size
-Date: Mon, 20 Apr 2020 21:55:54 +0530
-Message-ID: <CAMty3ZAhQ78R3wA7_k-_QFTUeprqmwanSUViFeKSK_ryXmnQSQ@mail.gmail.com>
-References: <20200410182631.11951-1-jagan@amarulasolutions.com>
- <20200410182631.11951-3-jagan@amarulasolutions.com>
- <CALeDE9O2QaO7CnHPb1nQ2-J6NCWYD=PDSbhtMi-3N68Azm=nVw@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH v4] dt-bindings: sram: convert rockchip-pmu-sram bindings
+ to yaml
+Date: Mon, 20 Apr 2020 14:12:43 -0500
+Message-ID: <20200420191243.GA31486@bogus>
+References: <20200411122507.4040-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CALeDE9O2QaO7CnHPb1nQ2-J6NCWYD=PDSbhtMi-3N68Azm=nVw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Peter Robinson <pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200411122507.4040-1-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: heiko@sntech.de, robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 20, 2020 at 9:21 PM Peter Robinson <pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> > Most of the SPI flash devices in rockchip (rk3399)
-> > are 16MiB size. So, let's use the script offset at
-> > the end of 8K.
->
-> You wouldn't have the commands for writing the
-> idbloader.img/u-boot.itb to these SPI flash on one of these devices by
-> chance?
+On Sat, 11 Apr 2020 14:25:07 +0200, Johan Jonker wrote:
+> Current dts files with 'rockchip-pmu-sram' compatible nodes
+> are now verified with sram.yaml, although the original
+> text document still exists. Merge rockchip-pmu-sram.txt
+> with sram.yaml by adding it as description with an example.
+> Make #address-cells, #size-cells and ranges optional
+> if there are no child nodes to prevent yaml warnings.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+> Changes v4:
+>   Make some properties optional
+> 
+> Changes v3:
+>   Document the compatible
+> 
+> Changed v2:
+>   Merge with sram.yaml
+> ---
+>  .../devicetree/bindings/sram/rockchip-pmu-sram.txt | 16 -------------
+>  Documentation/devicetree/bindings/sram/sram.yaml   | 26 +++++++++++++++++++---
+>  2 files changed, 23 insertions(+), 19 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/sram/rockchip-pmu-sram.txt
+> 
 
-https://wiki.amarulasolutions.com/bsp/rockchip/rk3399/roc-rk3399-pc.html#booting-from
+Applied, thanks.
+
+Rob
