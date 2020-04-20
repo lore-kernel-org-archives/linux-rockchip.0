@@ -1,252 +1,115 @@
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Subject: =?UTF-8?B?UmU6IFBST0JMRU06IG1tY19zZWxlY3RfaHM0MDBlcyBmYWlsZWQsIGVycm9yIC0xMTA=?=
-        =?UTF-8?B?44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgtbW1jLW93bmVyQHZnZXIua2VybmVsLm9yZ+S7ow==?=
-        =?UTF-8?B?5Y+R44CR?=
-Date: Mon, 20 Apr 2020 09:17:51 +0200
-Message-ID: <CAPDyKFp2q_=RYVq8T=ReVbyW8tbZs9rvuuWofW6iddheO9aaBw@mail.gmail.com>
-References: <20200301220242.GA8276@arya.arvanta.net> <20200318214917.GA9112@arya.arvanta.net>
- <5922bbd7-e91b-d144-6d44-2632cbd11c78@rock-chips.com> <158bd6f5-2430-19bd-28ef-e18d67becaf3@arm.com>
- <20200321204652.GA21002@arya.arvanta.net> <20200327171417.GA4387@arya.arvanta.net>
- <CAPDyKFotyWVXu+Aj6y-DoAtrbimD7ycg=81bf8zjeSg9mrD-4A@mail.gmail.com>
- <20200331214031.GA30589@arya.arvanta.net> <20200417193106.GB8457@arya.arvanta.net>
+From: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+Subject: RE: [PATCH v8 5/8] PCI: endpoint: Add support to handle multiple base
+ for mapping outbound memory
+Date: Mon, 20 Apr 2020 09:04:00 +0000
+Message-ID: <TYAPR01MB4544FDF2FEDBED104F6C6C45D8D40@TYAPR01MB4544.jpnprd01.prod.outlook.com>
+References: <1587302823-4435-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <1587302823-4435-6-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-mmc-owner@vger.kernel.org>
-In-Reply-To: <20200417193106.GB8457@arya.arvanta.net>
-Sender: linux-mmc-owner@vger.kernel.org
-To: =?UTF-8?Q?Milan_P=2E_Stani=C4=87?= <mps@arvanta.net>
-Cc: Robin Murphy <robin.murphy@arm.com>, Shawn Lin <shawn.lin@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <1587302823-4435-6-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Content-Language: ja-JP
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Andrew Murray <amurray@thegoodpenguin.co.uk>, Tom Joseph <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: Geert Uytterhoeven <geert+renesas@glider.be>, "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>, "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, Lad Prabhakar <prabhakar.csengg@gmail.com>, Prabhakar Mahadev Lad <prabhakar.mahadev-lad.rj@bp.renesas.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 17 Apr 2020 at 21:31, Milan P. Stani=C4=87 <mps@arvanta.net> wrote:
->
-> Hi all,
->
-> I built chromeOS kernel 4.4.174 and after three days with few
-> suspend-to-ram and resume mmc driver works fine, i.e. no problem
-> occured.
->
-> Could someone who know programming mmc drivers look at differences
-> between this chromeOS kernel (4.4.174) and some of mainline kernels
-> to find cause of the problem and maybe to create fix or patch to send
-> for testing.
+Hi Prabhakar-san,
 
-That delta is more than 4 years of development. I am not sure
-investigating the delta would make sense, however I leave that to
-Rock-chips people to decide - or whomever that are willing to help to
-debug this.
+Thank you for the patch!
 
-Kind regards
-Uffe
+> From: Lad Prabhakar, Sent: Sunday, April 19, 2020 10:27 PM
+<snip>
+> @@ -109,11 +137,22 @@ EXPORT_SYMBOL_GPL(pci_epc_mem_init);
+>   */
+>  void pci_epc_mem_exit(struct pci_epc *epc)
+>  {
+> -	struct pci_epc_mem *mem =3D epc->mem;
+> +	struct pci_epc_mem *mem;
+> +	int i;
+>=20
+> +	if (!epc->num_windows)
+> +		return;
+> +
+> +	for (i =3D 0; i <=3D epc->num_windows; i++) {
 
->
-> --
-> Regards
->
-> On Tue, 2020-03-31 at 23:40, Milan P. Stani=C4=87 wrote:
-> > Hi,
-> >
-> > On Mon, 2020-03-30 at 20:19, Ulf Hansson wrote:
-> > > On Fri, 27 Mar 2020 at 18:14, Milan P. Stani=C4=87 <mps@arvanta.net> =
-wrote:
-> > > > Hi,
-> > > > Anyone looked at this problem?
-> > > >
-> > > > Or, is there better url or mailing list where I should send this bu=
-g
-> > > > report?
-> > >
-> > > This is the mmc-list and since the rock-chips list was added by Shawn
-> > > - you have directed your question correctly.
-> > >
-> > > The problem is, this isn't a list where everyone can get free support=
-.
-> > > People may be working on other platforms, for example.
-> > >
-> > > The best option for you, is probably to ping Shawn or to reach out to
-> > > some other Rock-chips people, as it seems like these guys needs to
-> > > have a closer look.
-> > >
-> > > >
-> > > > Or, could someone tell me what I could try to fix it, which file an=
-d
-> > > > parameters to change?
-> > >
-> > > Well, if you can narrow down the problem that is always helpful. So
-> > > for example, is there any upstream kernel that works - or is it only
-> > > working through the chrome-os tree (which likely contains vendor
-> > > specific changes that are not upstream).
-> >
-> > Problem is in that the in last 5-6 months chrome-os kernels even don't
-> > boot, i.e. I only get blank display. I patched it for few releases
-> > locally but for about 3-4 months even my patch doesn't work.
-> > Maybe I could find chrome-os kernel about year or two old and try, but
-> > even then I don't know where to look for this problem.
-> >
-> > Other option is to try with mainline kernels from 4.20.x and up one by
-> > one major release to look on which version this problem started. This
-> > will take time because problem occurs irregularly, sometimes in a few
-> > hours but sometimes it works fine for a few days until it appears.
-> >
-> > Thank you for pointing me whom to ask and what to try.
-> >
-> > --
-> > Kind regards
-> >
-> > > Kind regards
-> > > Uff
-> > >
-> > > >
-> > > > On Sat, 2020-03-21 at 21:46, Milan P. Stani=C4=87 wrote:
-> > > > > Hi,
-> > > > >
-> > > > > On Thu, 2020-03-19 at 12:28, Robin Murphy wrote:
-> > > > > > Hi Shawn,
-> > > > > >
-> > > > > > On 2020-03-19 3:11 am, Shawn Lin wrote:
-> > > > > > > Hi Milan
-> > > > > > >
-> > > > > > > [+linux-rockchip to see if someone has a Samsung chromebook o=
-ne plus
-> > > > > > > and could confirm if it works]
-> > > > > >
-> > > > > > FWIW I've also tried suspend on my NanoPC-T4 and seen that the =
-eMMC (also
-> > > > > > HS400-ES) fails to come back properly on resume (thus resume ne=
-ver completes
-> > > > > > due to the missing root filesystem). IIRC it might even have be=
-en
-> > > > > > reproducible with suspend-to-idle, but I'd have to double-check=
- that.
-> > > > >
-> > > > > I forgot to tell that emmc worked without problem on this machine=
- with
-> > > > > ChromeOS kernel 4.4.xx downloaded from
-> > > > > https://chromium.googlesource.com/chromiumos/third_party/kernel/+=
-/chromeos-4.4
-> > > > > and with patches from
-> > > > > https://github.com/archlinuxarm/PKGBUILDs/tree/master/core/linux-=
-gru
-> > > > > for about two years (iirc).
-> > > > > Problem started when I switched to mainline kernels, somewhere ar=
-ound
-> > > > > 5.1.xx
-> > > > >
-> > > > > > Robin.
-> > > > > >
-> > > > > > > On 2020/3/19 5:49, Milan P. Stani=C4=87 wrote:
-> > > > > > > > Hello,
-> > > > > > > >
-> > > > > > > > Sorry to annoy again, but could you tell me if I sent this =
-bug report
-> > > > > > > > to right mail address or I should send it somewhere else.
-> > > > > > > >
-> > > > > > > > Also, did I sent bug report correctly or I did some mistake=
-s which
-> > > > > > > > caused it to be ignored.
-> > > > > > > >
-> > > > > > > > -- TIA On Sun, 2020-03-01 at 23:02, Milan P. Stani=C4=87 wr=
-ote:
-> > > > > > > > > Hello,
-> > > > > > > > >
-> > > > > > > > > I'm not native English speaker and I'm self taught in Eng=
-lish so sorry
-> > > > > > > > > if do not write or express correctly. And sorry if I post=
-ed bug report
-> > > > > > > > > to wrong address.
-> > > > > > > > >
-> > > > > > > > > I'm running linux 5.6.0-rc3 without any patches on Samsun=
-g chromebook
-> > > > > > > > > one plus, Arm64 rockchip rk3399 based model name:
-> > > > > > > > > Machine model: Google Kevin
-> > > > > > > > >
-> > > > > > > > > I build kernels from upstream git.kernel.org for this mac=
-hine for some
-> > > > > > > > > time (iirc, from 5.2.1 and up) but I'm getting error mess=
-ages in kernel
-> > > > > > > > > after machine resumes from suspend-to-ram.
-> > > > > > >
-> > > > > > > It sounds to me suspend-to-ram never works for this machine, =
-at least
-> > > > > > > since 5.2.1. Am I right?
-> > > > > > >
-> > > > > > > > >
-> > > > > > > > > excerpt from dmesg output:
-> > > > > > > > > ---------------------------------------------------------=
---------------
-> > > > > > > > > Restarting tasks ... done.
-> > > > > > > > > PM: suspend exit
-> > > > > > > > > mmc_host mmc0: Bus speed (slot 0) =3D 400000Hz (slot req =
-400000Hz,
-> > > > > > > > > actual 400000HZ div =3D 0)
-> > > > > > > > > mmc1: mmc_select_hs400es failed, error -110
-> > > > > > > > > mmc1: error -110 doing runtime resume
-> > > > > > > > > mmc1: Got data interrupt 0x00000002 even though no data
-> > > > > > > > > operation was in progress.
-> > > > > > > > > mmc1: sdhci: =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D SDHCI R=
-EGISTER DUMP =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> > > > > > > > > mmc1: sdhci: Sys addr:  0x00000008 | Version:  0x00001002
-> > > > > > > > > mmc1: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000008
-> > > > > > > > > mmc1: sdhci: Argument:  0x00000000 | Trn mode: 0x00000023
-> > > > > > > > > mmc1: sdhci: Present:   0x1fff0001 | Host ctl: 0x00000035
-> > > > > > > > > mmc1: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
-> > > > > > > > > mmc1: sdhci: Wake-up:   0x00000000 | Clock:    0x0000bc07
-> > > > > > > > > mmc1: sdhci: Timeout:   0x0000000d | Int stat: 0x00000000
-> > > > > > > > > mmc1: sdhci: Int enab:  0x03ff000b | Sig enab: 0x03ff000b
-> > > > > > > > > mmc1: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
-> > > > > > > > > mmc1: sdhci: Caps:      0x44edc880 | Caps_1:   0x801020f7
-> > > > > > > > > mmc1: sdhci: Cmd:       0x00000c1a | Max curr: 0x00000000
-> > > > > > > > > mmc1: sdhci: Resp[0]:   0x00000000 | Resp[1]:  0x373300bd
-> > > > > > > > > mmc1: sdhci: Resp[2]:   0x35303030 | Resp[3]:  0x00000000
-> > > > > > > > > mmc1: sdhci: Host ctl2: 0x00000000
-> > > > > > > > > mmc1: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xed41e200
-> > > > > > > > > ---------------------------------------------------------=
---------------
-> > > > > > > > >
-> > > > > > > > > I invoke suspend-to-ram by `echo mem > /sys/power/state` =
-from ACPI power
-> > > > > > > > > and LID button handlers.
-> > > > > > > > >
-> > > > > > > > > This only happens when I boot and use internal emmc card =
-and never when
-> > > > > > > > > boot and use external mmc card.
-> > > > > > > > >
-> > > > > > > > > If suspend-to-ram is not invoked (machine is always in no=
-rmal state)
-> > > > > > > > > this problem never happen (or I missed it somehow).
-> > > > > > > > >
-> > > > > > > > > I'm attaching kernel .config (file config-5.6.0-rc3-1-gru=
-.conf) which
-> > > > > > > > > use to build kernel, output of the `awk -f scripts/ver_li=
-nux` as file
-> > > > > > > > > ver_linux.txt and  output of dmesg as file mmc-err.txt (f=
-rom which I
-> > > > > > > > > deleted wifi connection logs).
-> > > > > > > > >
-> > > > > > > > > Sorry if I did something bad or wrong with this bug repor=
-t, I don't have
-> > > > > > > > > much experience with bug reporting, especially for kernel=
-.
-> > > > > > > > >
-> > > > > > > > > I'm ready to send you more data, and investigate this mor=
-e, apply
-> > > > > > > > > patches and rebuild kernel or whatever you ask me (of cou=
-rse if my
-> > > > > > > > > understanding and knowledge is enough for this job).
-> > > > > > > > >
-> > > > > > > > > Thank in advance
-> > > > > > > > >
-> > > > > > > > > --
-> > > > > > > > > Kind regards
-> > > > > > > > >
-> > > > > > > > [...]
-> > > > > > > >
-> > > > > > > >
-> > > > > > >
-> > > > > > >
-> > > > > > >
-> > > > > > > _______________________________________________
-> > > > > > > Linux-rockchip mailing list
-> > > > > > > Linux-rockchip@lists.infradead.org
-> > > > > > > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+I'm sorry, I overlooked when I reviewed before.
+This condition should be "i < epc->num_windows".
+
+> +		mem =3D epc->windows[i];
+> +		kfree(mem->bitmap);
+> +		kfree(mem);
+> +	}
+> +	kfree(epc->windows);
+> +
+> +	epc->windows =3D NULL;
+>  	epc->mem =3D NULL;
+> -	kfree(mem->bitmap);
+> -	kfree(mem);
+> +	epc->num_windows =3D 0;
+>  }
+>  EXPORT_SYMBOL_GPL(pci_epc_mem_exit);
+>=20
+> @@ -129,31 +168,57 @@ EXPORT_SYMBOL_GPL(pci_epc_mem_exit);
+>  void __iomem *pci_epc_mem_alloc_addr(struct pci_epc *epc,
+>  				     phys_addr_t *phys_addr, size_t size)
+>  {
+> -	int pageno;
+>  	void __iomem *virt_addr =3D NULL;
+> -	struct pci_epc_mem *mem =3D epc->mem;
+> -	unsigned int page_shift =3D ilog2(mem->page_size);
+> +	struct pci_epc_mem *mem;
+> +	unsigned int page_shift;
+> +	size_t align_size;
+> +	int pageno;
+>  	int order;
+> +	int i;
+>=20
+> -	size =3D ALIGN(size, mem->page_size);
+> -	order =3D pci_epc_mem_get_order(mem, size);
+> -
+> -	mutex_lock(&mem->lock);
+> -	pageno =3D bitmap_find_free_region(mem->bitmap, mem->pages, order);
+> -	if (pageno < 0)
+> -		goto ret;
+> +	for (i =3D 0; i < epc->num_windows; i++) {
+> +		mem =3D epc->windows[i];
+> +		mutex_lock(&mem->lock);
+> +		align_size =3D ALIGN(size, mem->window.page_size);
+> +		order =3D pci_epc_mem_get_order(mem, align_size);
+>=20
+> -	*phys_addr =3D mem->phys_base + ((phys_addr_t)pageno << page_shift);
+> -	virt_addr =3D ioremap(*phys_addr, size);
+> -	if (!virt_addr)
+> -		bitmap_release_region(mem->bitmap, pageno, order);
+> +		pageno =3D bitmap_find_free_region(mem->bitmap, mem->pages,
+> +						 order);
+> +		if (pageno >=3D 0) {
+> +			page_shift =3D ilog2(mem->window.page_size);
+> +			*phys_addr =3D mem->window.phys_base +
+> +				((phys_addr_t)pageno << page_shift);
+> +			virt_addr =3D ioremap(*phys_addr, align_size);
+> +			if (!virt_addr)
+> +				bitmap_release_region(mem->bitmap,
+> +						      pageno, order);
+
+I'm sorry here again. But, I think we should call mutex_unlock() and "conti=
+nue;"
+here if ioremap() failed for trying remaining windows. What do you think?
+
+> +			mutex_unlock(&mem->lock);
+> +			return virt_addr;
+> +		}
+> +		mutex_unlock(&mem->lock);
+> +	}
+>=20
+> -ret:
+> -	mutex_unlock(&mem->lock);
+>  	return virt_addr;
+>  }
+>  EXPORT_SYMBOL_GPL(pci_epc_mem_alloc_addr);
+
+Best regards,
+Yoshihiro Shimoda
