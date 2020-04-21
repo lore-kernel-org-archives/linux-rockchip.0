@@ -1,46 +1,70 @@
-From: Jonathan Corbet <corbet@lwn.net>
-Subject: Re: [PATCH v2 00/33] Documentation fixes for Kernel 5.8
-Date: Mon, 20 Apr 2020 15:43:16 -0600
-Message-ID: <20200420154316.28e42905@lwn.net>
-References: <cover.1586881715.git.mchehab+huawei@kernel.org>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v4] dt-bindings: rockchip-vpu: Convert bindings to
+ json-schema
+Date: Mon, 20 Apr 2020 23:59:33 -0300
+Message-ID: <2d1da0b9d857c5607c989be85a04c9d7d9d19b38.camel@collabora.com>
+References: <20200326191343.1989-1-ezequiel@collabora.com>
+         <12f6d7cf-6af6-4f54-3188-65e73b703a72@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Return-path: <ecryptfs-owner@vger.kernel.org>
-In-Reply-To: <cover.1586881715.git.mchehab+huawei@kernel.org>
-Sender: ecryptfs-owner@vger.kernel.org
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Linux Doc Mailing List <linux-doc@vger.kernel.org>, linux-kernel@vger.kernel.org, Rob Herring <robh@kernel.org>, Maxime Ripard <maxime@cerno.tech>, Linus Walleij <linus.walleij@linaro.org>, Sudeep Holla <sudeep.holla@arm.com>, Kishon Vijay Abraham I <kishon@ti.com>, Yuti Amonkar <yamonkar@cadence.com>, devicetree@vger.kernel.org, linux-arch@vger.kernel.org, kvm@vger.kernel.org, kvm-ppc@vger.kernel.org, linuxppc-dev@lists.ozlabs.org, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-fsdevel@vger.kernel.org, linux-unionfs@vger.kernel.org, linux-mm@kvack.org, linux-rdma@vger.kernel.org, kvmarm@lists.cs.columbia.edu, linux-crypto@vger.kernel.org, linux-media@vger.kernel.org, linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.orglinux
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <12f6d7cf-6af6-4f54-3188-65e73b703a72@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
+Cc: devicetree@vger.kernel.org, hverkuil@xs4all.nl, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, robh@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 14 Apr 2020 18:48:26 +0200
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+Hey Johan,
 
-> Patches 1 to 5 contain changes to the documentation toolset:
+On Mon, 2020-04-20 at 15:33 +0200, Johan Jonker wrote:
+> Hi Heiko,
 > 
-> - The first 3 patches help to reduce a lot the number of reported
->   kernel-doc issues, by making the tool more smart.
+> This patch was applied by the media people Hans and Ezequil without note
+> and test I think.
 > 
-> - Patches 4 and 5 are meant to partially address the PDF
->   build, with now requires Sphinx version 2.4 or upper.
-> 
-> The remaining patches fix broken references detected by
-> this tool:
-> 
->         ./scripts/documentation-file-ref-check
-> 
-> and address other random errors due to tags being mis-interpreted
-> or mis-used.
-> 
-> They are independent each other, but some may depend on
-> the kernel-doc improvements.
-> 
-> PS.: Due to the large number of C/C, I opted to keep a smaller
-> set of C/C at this first e-mail (only e-mails with "L:" tag from
-> MAINTAINERS file).
 
-OK, I've applied this set, minus #17 which was applied elsewhere.
+I did test it, but I guess something felt thru the cracks.
+If you'd be kind enough to submit a patch, that would be lovely.
 
-Thanks,
+Thanks!
+Ezequiel
 
-jon
+> make ARCH=arm64 dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+> 
+> Errors for example:
+> 
+>   DTC     arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml
+>   CHECK   arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml
+> arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: video-codec@ff350000:
+> interrupts: [[0, 9, 4]] is too short
+> arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: video-codec@ff350000:
+> interrupt-names: ['vdpu'] is too short
+> arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: video-codec@ff350000:
+> interrupt-names:0: 'vepu' was expected
+> 
+> See:
+> https://lore.kernel.org/lkml/20200403124316.5445-1-jbx6244@gmail.com/
+> 
+> +  interrupts:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  interrupt-names:
+> +    oneOf:
+> +      - const: vdpu
+> +      - items:
+> +        - const: vepu
+> +        - const: vdpu
+> 
+> Vs.:
+> 
+> 
+> +  interrupts:
+> +    maxItems: 2
+> +
+> +  interrupt-names:
+> +    items:
+> +      - const: vepu
+> +      - const: vdpu
