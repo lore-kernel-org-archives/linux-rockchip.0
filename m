@@ -1,8 +1,8 @@
-From: Johan Jonker <jbx6244@gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
 Subject: Re: [PATCH v4] dt-bindings: rockchip-vpu: Convert bindings to
  json-schema
-Date: Tue, 21 Apr 2020 15:36:35 +0200
-Message-ID: <0b82a3f1-3b09-15d6-927c-fac1d4a7f631@gmail.com>
+Date: Tue, 21 Apr 2020 15:44:08 +0200
+Message-ID: <30717aac-f589-ffbd-aefb-07c2934f7a2e@xs4all.nl>
 References: <20200326191343.1989-1-ezequiel@collabora.com>
  <12f6d7cf-6af6-4f54-3188-65e73b703a72@gmail.com>
  <9328212d-139f-6a0e-7d0c-3a5529a392f2@gmail.com>
@@ -13,25 +13,29 @@ Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <9328212d-139f-6a0e-7d0c-3a5529a392f2@gmail.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: ezequiel@collabora.com, devicetree@vger.kernel.org, hverkuil@xs4all.nl, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, robh@kernel.org
+To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
+Cc: ezequiel@collabora.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, robh@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-Also add
-
-L:	linux-rockchip@lists.infradead.org
-
-to all Rockchip related MAINTAINERS items.
-
-On 4/21/20 3:19 PM, Johan Jonker wrote:
+On 21/04/2020 15:19, Johan Jonker wrote:
 > Hi,
 > 
 > Question for the media maintainers Hans & Co. :
 > 
 > What's nxp,imx8mq-vpu.yaml doing under rga?
 > Why is rockchip-vpu.yaml inserted under rga instead of vpu?
+
+That's clearly wrong. Probably my fault when trying to resolve
+a conflict.
+
+Ezequiel, can you make a patch fixing this? It's probably a good
+idea if you double-check these entries to make sure I didn't inadvertently
+introduce more mistakes.
+
+Regards,
+
+	Hans
+
 > 
 > Johan
 > 
@@ -62,30 +66,8 @@ On 4/21/20 3:19 PM, Johan Jonker wrote:
 > M:	Jacob Chen <jacob-chen@iotwrt.com>
 > M:	Ezequiel Garcia <ezequiel@collabora.com>
 > L:	linux-media@vger.kernel.org
-
-Add list
-
 > S:	Maintained
 > F:	Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
 > F:	Documentation/devicetree/bindings/media/rockchip-vpu.yaml
 > F:	drivers/media/platform/rockchip/rga/
 > 
-
-ROCKCHIP VIDEO DECODER DRIVER
-M:	Ezequiel Garcia <ezequiel@collabora.com>
-L:	linux-media@vger.kernel.org
-
-Add list
-
-S:	Maintained
-F:	drivers/staging/media/rkvdec/
-F:	Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-
-ROCKCHIP ISP V1 DRIVER
-M:	Helen Koike <helen.koike@collabora.com>
-L:	linux-media@vger.kernel.org
-
-Add list
-
-S:	Maintained
-F:	drivers/staging/media/rkisp1/
