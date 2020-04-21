@@ -1,70 +1,72 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v4] dt-bindings: rockchip-vpu: Convert bindings to
- json-schema
-Date: Mon, 20 Apr 2020 23:59:33 -0300
-Message-ID: <2d1da0b9d857c5607c989be85a04c9d7d9d19b38.camel@collabora.com>
-References: <20200326191343.1989-1-ezequiel@collabora.com>
-         <12f6d7cf-6af6-4f54-3188-65e73b703a72@gmail.com>
+From: Chen-Yu Tsai <wens-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: add bus-width properties to mmc
+ nodes for rk3328.dtsi
+Date: Tue, 21 Apr 2020 11:48:52 +0800
+Message-ID: <CAGb2v67N6t+C8dVKdjuOv1NzD9=3-n0GZQkshy1Pm6PFPJ87dQ@mail.gmail.com>
+References: <20200416181944.5879-1-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <12f6d7cf-6af6-4f54-3188-65e73b703a72@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
-Cc: devicetree@vger.kernel.org, hverkuil@xs4all.nl, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, robh@kernel.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200416181944.5879-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hey Johan,
+On Fri, Apr 17, 2020 at 2:19 AM Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
+>
+> 'bus-width' and pinctrl containing the bus-pins
+> should be in the same file, so add them to
+> all mmc nodes in 'rk3328.dtsi'.
 
-On Mon, 2020-04-20 at 15:33 +0200, Johan Jonker wrote:
-> Hi Heiko,
-> 
-> This patch was applied by the media people Hans and Ezequil without note
-> and test I think.
-> 
+Nope. First of all, pinctrl usage is with pinctrl-N properties, not the
+pinctrl device, and there are no defaults set for any of the mmc nodes.
+Second, these are board design specific. For example, boards are free to
+use just 4 bits for the eMMC if they so desire. So this should be in each
+board dts file. If a board is missing this property, fix the board.
 
-I did test it, but I guess something felt thru the cracks.
-If you'd be kind enough to submit a patch, that would be lovely.
+This applies to all three patches in the series.
 
-Thanks!
-Ezequiel
+ChenYu
 
-> make ARCH=arm64 dtbs_check
-> DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-vpu.yaml
-> 
-> Errors for example:
-> 
->   DTC     arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml
->   CHECK   arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml
-> arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: video-codec@ff350000:
-> interrupts: [[0, 9, 4]] is too short
-> arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: video-codec@ff350000:
-> interrupt-names: ['vdpu'] is too short
-> arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: video-codec@ff350000:
-> interrupt-names:0: 'vepu' was expected
-> 
-> See:
-> https://lore.kernel.org/lkml/20200403124316.5445-1-jbx6244@gmail.com/
-> 
-> +  interrupts:
-> +    minItems: 1
-> +    maxItems: 2
-> +
-> +  interrupt-names:
-> +    oneOf:
-> +      - const: vdpu
-> +      - items:
-> +        - const: vepu
-> +        - const: vdpu
-> 
-> Vs.:
-> 
-> 
-> +  interrupts:
-> +    maxItems: 2
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: vepu
-> +      - const: vdpu
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 3 +++
+>  1 file changed, 3 insertions(+)
+>
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> index 175060695..db2c3085e 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+> @@ -861,6 +861,7 @@
+>                 clocks = <&cru HCLK_SDMMC>, <&cru SCLK_SDMMC>,
+>                          <&cru SCLK_SDMMC_DRV>, <&cru SCLK_SDMMC_SAMPLE>;
+>                 clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> +               bus-width = <4>;
+>                 fifo-depth = <0x100>;
+>                 max-frequency = <150000000>;
+>                 status = "disabled";
+> @@ -873,6 +874,7 @@
+>                 clocks = <&cru HCLK_SDIO>, <&cru SCLK_SDIO>,
+>                          <&cru SCLK_SDIO_DRV>, <&cru SCLK_SDIO_SAMPLE>;
+>                 clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> +               bus-width = <4>;
+>                 fifo-depth = <0x100>;
+>                 max-frequency = <150000000>;
+>                 status = "disabled";
+> @@ -885,6 +887,7 @@
+>                 clocks = <&cru HCLK_EMMC>, <&cru SCLK_EMMC>,
+>                          <&cru SCLK_EMMC_DRV>, <&cru SCLK_EMMC_SAMPLE>;
+>                 clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+> +               bus-width = <8>;
+>                 fifo-depth = <0x100>;
+>                 max-frequency = <150000000>;
+>                 status = "disabled";
+> --
+> 2.11.0
+>
+>
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
