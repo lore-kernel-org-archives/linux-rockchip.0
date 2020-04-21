@@ -1,39 +1,43 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v4] dt-bindings: rockchip-vpu: Convert bindings to
- json-schema
-Date: Tue, 21 Apr 2020 10:52:33 -0300
-Message-ID: <93a4663d03046abd984382f898de15ad2a97cd4e.camel@collabora.com>
-References: <20200326191343.1989-1-ezequiel@collabora.com>
-         <12f6d7cf-6af6-4f54-3188-65e73b703a72@gmail.com>
-         <9328212d-139f-6a0e-7d0c-3a5529a392f2@gmail.com>
-         <30717aac-f589-ffbd-aefb-07c2934f7a2e@xs4all.nl>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v8 4/5] media: rkvdec: Add the rkvdec driver
+Date: Tue, 21 Apr 2020 16:38:11 +0200
+Message-ID: <f596299f-9a4b-6fc7-17c5-b8a720301c86@gmail.com>
+References: <20200403221345.16702-5-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <30717aac-f589-ffbd-aefb-07c2934f7a2e@xs4all.nl>
+In-Reply-To: <20200403221345.16702-5-ezequiel@collabora.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>, Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mark.rutland@arm.com, robh@kernel.org
+To: ezequiel@collabora.com
+Cc: boris.brezillon@collabora.com, heiko@sntech.de, hverkuil@xs4all.nl, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 2020-04-21 at 15:44 +0200, Hans Verkuil wrote:
-> On 21/04/2020 15:19, Johan Jonker wrote:
-> > Hi,
-> > 
-> > Question for the media maintainers Hans & Co. :
-> > 
-> > What's nxp,imx8mq-vpu.yaml doing under rga?
-> > Why is rockchip-vpu.yaml inserted under rga instead of vpu?
-> 
-> That's clearly wrong. Probably my fault when trying to resolve
-> a conflict.
-> 
-> Ezequiel, can you make a patch fixing this? It's probably a good
-> idea if you double-check these entries to make sure I didn't inadvertently
-> introduce more mistakes.
-> 
+Hi,
 
-Sure, no worries.
+The MAINTAINERS document is now sort by entry name and the field names
+sort for all entries.
+Ask Joe Perches.
 
-Ezequiel
+Johan
+
+
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 2b8b3e7f3df3..3cd32c54dcec 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -14298,6 +14298,13 @@ F:	drivers/hid/hid-roccat*
+>  F:	include/linux/hid-roccat*
+>  F:	Documentation/ABI/*/sysfs-driver-hid-roccat*
+>  
+> +ROCKCHIP VIDEO DECODER DRIVER
+> +M:	Ezequiel Garcia <ezequiel@collabora.com>
+> +L:	linux-media@vger.kernel.org
+> +S:	Maintained
+> +F:	drivers/staging/media/rkvdec/
+> +F:	Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> +
+>  ROCKCHIP ISP V1 DRIVER
+>  M:	Helen Koike <helen.koike@collabora.com>
+>  L:	linux-media@vger.kernel.org
