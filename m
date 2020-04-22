@@ -1,241 +1,90 @@
-From: Adrian Ratiu <adrian.ratiu@collabora.com>
-Subject: Re: [PATCH v7 5/8] dt-bindings: display: add i.MX6 MIPI DSI host
- controller doc
-Date: Wed, 22 Apr 2020 13:15:41 +0300
-Message-ID: <877dy7ker6.fsf@collabora.com>
-References: <20200421161610.1501827-1-adrian.ratiu@collabora.com>
- <20200421161610.1501827-6-adrian.ratiu@collabora.com>
- <20200422005832.GK5983@pendragon.ideasonboard.com>
- <20200422010155.GL5983@pendragon.ideasonboard.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH] media: MAINTAINERS: Fix Hantro, Rga and Rkvdec entries
+Date: Wed, 22 Apr 2020 14:01:41 +0200
+Message-ID: <73d3d8c1-1952-aeb1-5bc0-829503cf29bd@gmail.com>
+References: <20200422111403.19114-1-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200422010155.GL5983@pendragon.ideasonboard.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Adrian Ratiu <adrian.ratiu@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, devicetree@vger.kernel.org, Jernej Skrabec <jernej.skrabec@siol.net>, Sjoerd Simons <sjoerd.simons@collabora.com>, Heiko Stuebner <heiko@sntech.de>, Adrian Pop <pop.adrian61@gmail.com>, Jonas Karlman <jonas@kwiboo.se>, Martyn Welch <martyn.welch@collabora.com>, Neil Armstrong <narmstrong@baylibre.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>, linux-rockchip@lists.infradead.org, linux-imx@nxp.com, Arnaud Ferraris <arnaud.ferraris@collabora.com>, kernel@collabora.com, Fabio Estevam <festevam@gmail.com>, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200422111403.19114-1-ezequiel@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Heiko Stuebner <heiko@sntech.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 22 Apr 2020, Laurent Pinchart 
-<laurent.pinchart@ideasonboard.com> wrote:
-> Hi Adrian, 
->
+Hi Ezequiel,
 
-Hi Laurent,
- 
-> On Wed, Apr 22, 2020 at 03:58:33AM +0300, Laurent Pinchart 
-> wrote: 
->> On Tue, Apr 21, 2020 at 07:16:07PM +0300, Adrian Ratiu wrote: 
->> > This provides an example DT binding for the MIPI DSI host 
->> > controller present on the i.MX6 SoC based on Synopsis 
->> > DesignWare v1.01 IP.   Cc: Rob Herring <robh@kernel.org> Cc: 
->> > Neil Armstrong <narmstrong@baylibre.com> Cc: Fabio Estevam 
->> > <festevam@gmail.com> Cc: Laurent Pinchart 
->> > <laurent.pinchart@ideasonboard.com> Cc: 
->> > devicetree@vger.kernel.org Tested-by: Adrian Pop 
->> > <pop.adrian61@gmail.com> Tested-by: Arnaud Ferraris 
->> > <arnaud.ferraris@collabora.com> Signed-off-by: Sjoerd Simons 
->> > <sjoerd.simons@collabora.com> Signed-off-by: Martyn Welch 
->> > <martyn.welch@collabora.com> Signed-off-by: Adrian Ratiu 
->> > <adrian.ratiu@collabora.com> --- Changes since v6: 
->> >   - Added ref to the newly created snps,dw-mipi-dsi.yaml 
->> >   (Laurent) - Moved *-cells properties outside 
->> >   patternProperties (Laurent) - Removed the panel port 
->> >   documentation (Laurent) - Wrapped lines at 80 chars, typo 
->> >   fixes, sort includes (Laurent) 
->> >  Changes since v5: 
->> >   - Fixed missing reg warning (Fabio) - Updated dt-schema and 
->> >   fixed warnings (Rob) 
->> >  Changes since v4: 
->> >   - Fixed yaml binding to pass `make dt_binding_check 
->> >   dtbs_check` and addressed received binding feedback (Rob) 
->> >  Changes since v3: 
->> >   - Added commit message (Neil) - Converted to yaml format 
->> >   (Neil) - Minor dt node + driver fixes (Rob) - Added small 
->> >   panel example to the host controller binding 
->> >  Changes since v2: 
->> >   - Fixed commit tags (Emil) 
->> > --- 
->> >  .../display/imx/fsl,mipi-dsi-imx6.yaml        | 135 
->> >  ++++++++++++++++++ 1 file changed, 135 insertions(+) create 
->> >  mode 100644 
->> >  Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml 
->> >  diff --git 
->> > a/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml 
->> > b/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml 
->> > new file mode 100644 index 0000000000000..b73e3ae33a852 --- 
->> > /dev/null +++ 
->> > b/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml 
->> > @@ -0,0 +1,135 @@ +# SPDX-License-Identifier: (GPL-2.0-only 
->> > OR BSD-2-Clause) +%YAML 1.2 +--- +$id: 
->> > http://devicetree.org/schemas/display/imx/fsl,mipi-dsi-imx6.yaml# 
->> > +$schema: http://devicetree.org/meta-schemas/core.yaml# + 
->> > +title: Freescale i.MX6 DW MIPI DSI Host Controller + 
->> > +maintainers: +  - Adrian Ratiu <adrian.ratiu@collabora.com> 
->> > + +description: | +  The i.MX6 DSI host controller is a 
->> > Synopsys DesignWare MIPI DSI v1.01 +  IP block with a 
->> > companion PHY IP. 
+On 4/22/20 1:14 PM, Ezequiel Garcia wrote:
+> It seems recent merges introduced a couple issues
+> here, so let's fix them all. Also, reorder Rockchip
+> video decoder as per parse-maintainers.pl script
+> and add linux-rockchip mailing list.
 > 
-> I forgot to mention, if there's a companion PHY, shouldn't it be 
-> referenced from the DT bindings ? 
->
+> Reported-by: Johan Jonker <jbx6244@gmail.com>
+> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> ---
+>  MAINTAINERS | 20 ++++++++++----------
+>  1 file changed, 10 insertions(+), 10 deletions(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 09e0137df61d..4d5b06c6fe0f 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -7460,7 +7460,7 @@ L:	linux-media@vger.kernel.org
+>  L:	linux-rockchip@lists.infradead.org
+>  S:	Maintained
+>  F:	Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+> -F:	Documentation/devicetree/bindings/media/rockchip-vpu.txt
+> +F:	Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+>  F:	drivers/staging/media/hantro/
+>  
+>  HARD DRIVE ACTIVE PROTECTION SYSTEM (HDAPS) DRIVER
+> @@ -14465,13 +14465,6 @@ F:	Documentation/ABI/*/sysfs-driver-hid-roccat*
+>  F:	drivers/hid/hid-roccat*
+>  F:	include/linux/hid-roccat*
+>  
+> -ROCKCHIP VIDEO DECODER DRIVER
+> -M:	Ezequiel Garcia <ezequiel@collabora.com>
+> -L:	linux-media@vger.kernel.org
+> -S:	Maintained
+> -F:	drivers/staging/media/rkvdec/
+> -F:	Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> -
+>  ROCKCHIP ISP V1 DRIVER
+>  M:	Helen Koike <helen.koike@collabora.com>
+>  L:	linux-media@vger.kernel.org
 
-I don't think so, that description was copied verbatim from the 
-imx6 ref manual IIRC, the physical layer is the same for MIPI DSI 
-which does TX as for MIPI CSI which does RX, but looking at the 
-ref manual and how drivers are written I don't think it's 
-necessary.
+L:	linux-rockchip@lists.infradead.org
 
-This might change if we wanted to unify the DSI and CSI drivers a 
-bit, but considering the scope already associated with this patch 
-series I'm a bit afraid to open a subject like that =)
+> @@ -14483,12 +14476,19 @@ ROCKCHIP RASTER 2D GRAPHIC ACCELERATION UNIT DRIVER
+>  M:	Jacob Chen <jacob-chen@iotwrt.com>
+>  M:	Ezequiel Garcia <ezequiel@collabora.com>
+>  L:	linux-media@vger.kernel.org
+> +L:	linux-rockchip@lists.infradead.org
+>  S:	Maintained
+> -F:	Documentation/devicetree/bindings/media/nxp,imx8mq-vpu.yaml
+>  F:	Documentation/devicetree/bindings/media/rockchip-rga.yaml
+> -F:	Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+>  F:	drivers/media/platform/rockchip/rga/
+>  
+> +ROCKCHIP VIDEO DECODER DRIVER
+> +M:	Ezequiel Garcia <ezequiel@collabora.com>
+> +L:	linux-media@vger.kernel.org
+> +L:	linux-rockchip@lists.infradead.org
+> +S:	Maintained
 
->> > +
->> > +  These DT bindings follow the Synopsys DW MIPI DSI bindings defined in
->> > +  Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt with
->> > +  the following device-specific properties.
->> > +
->> > +allOf:
->> > +  - $ref: ../bridge/snps,dw-mipi-dsi.yaml#
->> > +
->> > +properties:
->> > +  '#address-cells':
->> > +    const: 1
->> > +
->> > +  '#size-cells':
->> > +    const: 0
->> > +
->> > +  compatible:
->> > +    items:
->> > +      - const: fsl,imx6q-mipi-dsi
->> > +      - const: snps,dw-mipi-dsi
->> > +
->> > +  reg:
->> > +    maxItems: 1
->> > +
->> > +  interrupts:
->> > +    maxItems: 1
->> > +
->> > +  clocks:
->> > +    items:
->> > +      - description: Module Clock
->> > +      - description: DSI bus clock
->> > +
->> > +  clock-names:
->> > +    items:
->> > +      - const: ref
->> > +      - const: pclk
->> > +
->> > +  fsl,gpr:
->> > +    description:
->> > +      Phandle to the iomuxc-gpr region containing the multiplexer ctrl register.
->> > +    $ref: /schemas/types.yaml#/definitions/phandle
->> > +
->> > +  ports:
->> > +    type: object
->> > +    description: |
->> > +      A node containing DSI input & output port nodes with endpoint
->> > +      definitions as documented in
->> > +      Documentation/devicetree/bindings/media/video-interfaces.txt
->> > +      Documentation/devicetree/bindings/graph.txt
->> > +    properties:
->> > +      port@0:
->> > +        type: object
->> > +        description:
->> > +          DSI input port node, connected to the ltdc rgb output port.
->> > +
->> > +      port@1:
->> > +        type: object
->> > +        description:
->> > +          RGB output port node, connected to a panel or a bridge input port.
->> 
->> Isn't it the other way around, doesn't the bridge take RGB input and
->> output DSI ? And to be precise, it's not about RGB, but about the input
->> being parallel interface (DSI will also carry RGB).
->> 
->> I would add
->> 
->>     required:
->>       - port@0
->>       - port@1
->> 
->> > +
->> > +additionalProperties: false
->> > +
->> > +patternProperties:
->> > +  "^panel@[0-3]$":
->> > +    type: object
->> > +
->> > +required:
->> > +  - "#address-cells"
->> > +  - "#size-cells"
->> > +  - compatible
->> > +  - reg
->> > +  - interrupts
->> > +  - clocks
->> > +  - clock-names
->> > +  - ports
->> > +
->> > +examples:
->> > +  - |+
->> > +    #include <dt-bindings/clock/imx6qdl-clock.h>
->> > +    #include <dt-bindings/gpio/gpio.h>
->> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
->> > +
->> > +    dsi: dsi@21e0000 {
->> > +        #address-cells = <1>;
->> > +        #size-cells = <0>;
->> > +        compatible = "fsl,imx6q-mipi-dsi", "snps,dw-mipi-dsi";
->> > +        reg = <0x021e0000 0x4000>;
->> > +        interrupts = <0 102 IRQ_TYPE_LEVEL_HIGH>;
->> > +        fsl,gpr = <&gpr>;
->> > +        clocks = <&clks IMX6QDL_CLK_MIPI_CORE_CFG>,
->> > +                 <&clks IMX6QDL_CLK_MIPI_IPG>;
->> > +        clock-names = "ref", "pclk";
->> > +
->> > +        ports {
->> > +            #address-cells = <1>;
->> > +            #size-cells = <0>;
->> 
->> port@0 is missing.
->> 
->> > +            port@1 {
->> > +                reg = <1>;
->> > +                dsi_out: endpoint {
->> > +                    remote-endpoint = <&panel_in>;
->> > +                };
->> > +            };
->> > +        };
->> > +
->> > +        panel@0 {
->> > +            compatible = "sharp,ls032b3sx01";
->> > +            reg = <0>;
->> > +            reset-gpios = <&gpio6 8 GPIO_ACTIVE_LOW>;
->> > +            ports {
->> > +                #address-cells = <1>;
->> > +                #size-cells = <0>;
->> > +                port@0 {
->> > +                    reg = <0>;
->> > +                    panel_in: endpoint {
->> > +                        remote-endpoint = <&dsi_out>;
->> > +                    };
->> > +                };
->> > +            };
->> > +        };
->> > +    };
->> > +
->> > +...
->
-> -- 
-> Regards,
->
-> Laurent Pinchart
+> +F:	drivers/staging/media/rkvdec/
+> +F:	Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+
+When I look at the other entries 'drivers/' is sort below 'Documentation/'.
+
+./scripts/parse-maintainers.pl --input=MAINTAINERS --output=MAINTAINERS
+--order
+
+> +
+>  ROCKER DRIVER
+>  M:	Jiri Pirko <jiri@resnulli.us>
+>  L:	netdev@vger.kernel.org
+> 
