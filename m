@@ -1,58 +1,28 @@
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: [PATCH v2 4/4] media: rockchip: rga: Only set output CSC mode for RGB input
-Date: Thu, 23 Apr 2020 22:09:37 +0200
-Message-ID: <20200423200937.1039257-5-paul.kocialkowski@bootlin.com>
-References: <20200423200937.1039257-1-paul.kocialkowski@bootlin.com>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH 0/5] add rk3328 usb3 phy driver
+Date: Thu, 23 Apr 2020 16:20:25 -0400
+Message-ID: <CAMdYzYppYADDTGD26uO4zpUCZWSW8eRpcdtLsUQGDqppW3_7vA@mail.gmail.com>
+References: <20191028182254.30739-1-pgwipeout@gmail.com> <5230f80c-9684-72e0-8f96-602428a9e655@arm.com>
+ <9e5546de-f5b6-7f60-96d0-612249e832ce@arm.com> <CAMdYzYrZhof2DtrNH4+Amu1ZN-6sWw57rC+2joqXSyWVn99wWw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200423200937.1039257-1-paul.kocialkowski@bootlin.com>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hansverk@cisco.com>, justin.swartz@risingedge.co.za, Johan Jonker <jbx6244@gmail.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAMdYzYrZhof2DtrNH4+Amu1ZN-6sWw57rC+2joqXSyWVn99wWw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: linux-usb-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, kishon-l0cyMroinI0@public.gmane.org, katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-usb-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Setting the output CSC mode is required for a YUV output, but must not
-be set when the input is also YUV. Doing this (as tested with a YUV420P
-to YUV420P conversion) results in wrong colors.
+As a status update for this, I have spent quite a while working on this driver.
+In the end, it appears the available documentation is insufficient.
+The original driver calls a few registers that are not documented in the TRM.
 
-Adapt the logic to only set the CSC mode when the output is YUV and the
-input is RGB.
+What I have found is the following:
+The 2.0 functionality works as documented in the original rockchip driver.
+The 3.0 functionality does not.
+A 3.0 device does not trigger the interrupt like a 2.0 device does.
+A 3.0 device causes 0x34 bit 6 to toggle, which is usb3otg_pipe3_phystatus
+I've enabled all usb3phy interrupts, and cannot get a 3.0 device to
+trigger any of them.
 
-Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
-Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
----
- drivers/media/platform/rockchip/rga/rga-hw.c | 18 +++++++++++-------
- 1 file changed, 11 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
-index 4be6dcf292ff..cbffcf986ccf 100644
---- a/drivers/media/platform/rockchip/rga/rga-hw.c
-+++ b/drivers/media/platform/rockchip/rga/rga-hw.c
-@@ -216,13 +216,17 @@ static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
- 	}
- 
- 	if (ctx->out.fmt->hw_format >= RGA_COLOR_FMT_YUV422SP) {
--		switch (ctx->out.colorspace) {
--		case V4L2_COLORSPACE_REC709:
--			dst_info.data.csc_mode = RGA_SRC_CSC_MODE_BT709_R0;
--			break;
--		default:
--			dst_info.data.csc_mode = RGA_DST_CSC_MODE_BT601_R0;
--			break;
-+		if (ctx->in.fmt->hw_format < RGA_COLOR_FMT_YUV422SP) {
-+			switch (ctx->out.colorspace) {
-+			case V4L2_COLORSPACE_REC709:
-+				dst_info.data.csc_mode =
-+					RGA_SRC_CSC_MODE_BT709_R0;
-+				break;
-+			default:
-+				dst_info.data.csc_mode =
-+					RGA_DST_CSC_MODE_BT601_R0;
-+				break;
-+			}
- 		}
- 	}
- 
--- 
-2.26.0
+Did the original driver ever work correctly?
