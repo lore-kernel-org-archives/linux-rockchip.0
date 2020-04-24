@@ -1,53 +1,87 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: [PATCH] arm64: dts: rockchip: Fix Pinebook Pro FUSB302 interrupt
-Date: Fri, 24 Apr 2020 14:56:19 +0100
-Message-ID: <f731122c5ccde4e3d6d149a9d7bf01708b4279f7.1587736459.git.robin.murphy@arm.com>
+From: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v2 3/4] media: rockchip: rga: Add support for the PX30
+ compatible
+Date: Fri, 24 Apr 2020 11:34:59 -0300
+Message-ID: <ad0310d6618cd8cd8a88c0eaf27ae83432a61344.camel@collabora.com>
+References: <20200423200937.1039257-1-paul.kocialkowski@bootlin.com>
+         <20200423200937.1039257-4-paul.kocialkowski@bootlin.com>
+         <cf31ae67792aedf60ee4cf8002861edadc305314.camel@collabora.com>
+         <20200424135552.GI610776@aptenodytes>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org, linus.walleij@linaro.org, linux-arm-kernel@lists.infradead.org, t.schramm@manjaro.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200424135552.GI610776@aptenodytes>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Mauro Carvalho Chehab <mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org>, justin.swartz-4mSLLtuPuFdOJuVFMUvaKw@public.gmane.org, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Although the FUSB302 driver has apparently supported the "fcs,int_n"
-property since the beginning, the DT binding has never documented it,
-and in fact defines a standard "interrupts" property as required. It's
-also questionable whether the GPIO specifier with GPIO_ACTIVE_HIGH is
-even correct, since the FUSB302 datasheet says INT_N is an "Active-LOW
-open-drain interrupt output", and the Pinebook Pro schematic shows it
-wired directly to the GPIO pin.
+On Fri, 2020-04-24 at 15:55 +0200, Paul Kocialkowski wrote:
+> Hi Ezequiel,
+> 
+> On Fri 24 Apr 20, 09:54, Ezequiel Garcia wrote:
+> > Hey Paul,
+> > 
+> > Thanks for the patch!
+> > 
+> > On Thu, 2020-04-23 at 22:09 +0200, Paul Kocialkowski wrote:
+> > > The PX30 SoC has a RGA block, so add the associated compatible to
+> > > support it.
+> > > 
+> > > Signed-off-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+> > > ---
+> > >  drivers/media/platform/rockchip/rga/rga.c | 3 +++
+> > >  1 file changed, 3 insertions(+)
+> > > 
+> > > diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
+> > > index 9d122429706e..4fb4615662b7 100644
+> > > --- a/drivers/media/platform/rockchip/rga/rga.c
+> > > +++ b/drivers/media/platform/rockchip/rga/rga.c
+> > > @@ -955,6 +955,9 @@ static const struct dev_pm_ops rga_pm = {
+> > >  };
+> > >  
+> > >  static const struct of_device_id rockchip_rga_match[] = {
+> > > +	{
+> > > +		.compatible = "rockchip,px30-rga",
+> > > +	},
+> > 
+> > Please note that if you don't have anything px30-specific,
+> > then you don't need the compatible in the driver.
+> > 
+> > You can have something like:
+> > 
+> > compatible = "rockchip,px30-rga", "rockchip,rk3288-rga"
+> > 
+> > so you need to add it to the bindings. See Justin Swartz
+> > recent patches for rk3228.
+> 
+> Thanks for the instruction!
+> 
+> I've been a bit confused about that because RK3399 has its own compatible
+> (without a 2nd rk3288 compatible) although there's nothing different with it
+> either. All of these rockchip platforms come with what they call "RGA2", that
+> seems to have no variation across platforms (downstream rockchip even has a
+> single compatible for it).
+> 
 
-Just use the standard property like all the other RK3399 boards sharing
-the same design.
+Yep, and that's an anti pattern, so you can expect to see that elsewhere.
 
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
----
- arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+> Should we add the rk3288 compatible to the rk3399 dtsi? I guess we
+> can't remove it from the driver at this point, for backward compatibility
+> with previous dts (what a strange idea...).
+> 
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-index 5ea281b55fe2..1417c3b2d163 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
-@@ -690,7 +690,8 @@
- 	fusb0: fusb30x@22 {
- 		compatible = "fcs,fusb302";
- 		reg = <0x22>;
--		fcs,int_n = <&gpio1 RK_PA2 GPIO_ACTIVE_HIGH>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <RK_PA2 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&fusb0_int_gpio>;
- 		vbus-supply = <&vbus_typec>;
--- 
-2.23.0.dirty
+No, we don't necesarily need/have to do anything with rk3399,
+not sure if there's any gain at this point.
+
+> > Down the road, if you find something specific for px30,
+> > you can make the driver aware. 
+> 
+> Makes sense, yes.
+> 
+
+Cool.
+
+Thanks,
+Ezequiel
