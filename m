@@ -1,8 +1,8 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 1/6] arm64: dts: rk3399-puma: Move u-boot properties into
+Subject: [PATCH 2/6] arm64: dts: rk3399-evb: Move u-boot properties into
  -u-boot.dtsi
-Date: Sat, 25 Apr 2020 16:23:14 +0530
-Message-ID: <20200425105319.12009-2-jagan@amarulasolutions.com>
+Date: Sat, 25 Apr 2020 16:23:15 +0530
+Message-ID: <20200425105319.12009-3-jagan@amarulasolutions.com>
 References: <20200425105319.12009-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -19,81 +19,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Peter Robinson <pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Move U-Boot specific properties into rk3399-puma u-boot
+Move U-Boot specific properties into rk3399-evb u-boot
 specific dtsi file.
 
 This would help to sync the devicetrees from Linux whenever
 required instead of adding specific nodes.
 
-Cc: Peter Robinson <pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/dts/rk3399-puma-u-boot.dtsi | 16 ++++++++++++++++
- arch/arm/dts/rk3399-puma.dtsi        | 11 -----------
- 2 files changed, 16 insertions(+), 11 deletions(-)
+ arch/arm/dts/rk3399-evb-u-boot.dtsi | 8 ++++++++
+ arch/arm/dts/rk3399-evb.dts         | 2 --
+ 2 files changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/dts/rk3399-puma-u-boot.dtsi b/arch/arm/dts/rk3399-puma-u-boot.dtsi
-index 52f62b5d39..e664779227 100644
---- a/arch/arm/dts/rk3399-puma-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-puma-u-boot.dtsi
-@@ -22,3 +22,19 @@
-        };
- 
+diff --git a/arch/arm/dts/rk3399-evb-u-boot.dtsi b/arch/arm/dts/rk3399-evb-u-boot.dtsi
+index ccb33d34d1..a4d68f3b98 100644
+--- a/arch/arm/dts/rk3399-evb-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-evb-u-boot.dtsi
+@@ -11,3 +11,11 @@
+ 		u-boot,spl-boot-order = &sdhci, &sdmmc;
+ 	};
  };
 +
-+&bios_enable {
++&i2c0 {
 +	u-boot,dm-pre-reloc;
 +};
 +
-+&gpio1 {
++&rk808 {
 +	u-boot,dm-pre-reloc;
 +};
-+
-+&gpio3 {
-+	u-boot,dm-pre-reloc;
-+};
-+
-+&spiflash {
-+	u-boot,dm-pre-reloc;
-+};
-diff --git a/arch/arm/dts/rk3399-puma.dtsi b/arch/arm/dts/rk3399-puma.dtsi
-index 558b6337df..246a892cb7 100644
---- a/arch/arm/dts/rk3399-puma.dtsi
-+++ b/arch/arm/dts/rk3399-puma.dtsi
-@@ -91,7 +91,6 @@
- 	 */
- 	bios_enable: bios_enable {
- 		compatible = "regulator-fixed";
--		u-boot,dm-pre-reloc;
- 		regulator-name = "bios_enable";
- 		enable-active-high;
- 		gpio = <&gpio3 RK_PD5 GPIO_ACTIVE_LOW>;
-@@ -520,14 +519,6 @@
- 	status = "okay";
- };
- 
--&gpio1 {
+diff --git a/arch/arm/dts/rk3399-evb.dts b/arch/arm/dts/rk3399-evb.dts
+index 4129e902a8..c72719c0d3 100644
+--- a/arch/arm/dts/rk3399-evb.dts
++++ b/arch/arm/dts/rk3399-evb.dts
+@@ -199,7 +199,6 @@
+ 	clock-frequency = <400000>;
+ 	i2c-scl-falling-time-ns = <50>;
+ 	i2c-scl-rising-time-ns = <100>;
 -	u-boot,dm-pre-reloc;
--};
--
--&gpio3 {
--	u-boot,dm-pre-reloc;
--};
--
- &pinctrl {
- 	/* Pins that are not explicitely used by any devices */
- 	pinctrl-names = "default";
-@@ -633,8 +624,6 @@
- 	#size-cells = <0>;
  
- 	spiflash: w25q32dw@0 {
+ 	rk808: pmic@1b {
+ 		compatible = "rockchip,rk808";
+@@ -211,7 +210,6 @@
+ 		reg = <0x1b>;
+ 		rockchip,system-power-controller;
+ 		#clock-cells = <1>;
 -		u-boot,dm-pre-reloc;
--
- 		compatible = "jedec,spi-nor";
- 		reg = <0>;
- 		spi-max-frequency = <49500000>;
+ 		status = "okay";
+ 
+ 		vcc12-supply = <&vcc3v3_sys>;
 -- 
 2.17.1
