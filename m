@@ -1,35 +1,79 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH 2/2] arm64: dts: rockchip: remove #sound-dai-cells from &spdif node of rk3399-hugsun-x99.dts
-Date: Fri, 24 Apr 2020 17:56:00 +0200
-Message-ID: <20200424155600.24254-2-jbx6244@gmail.com>
-References: <20200424155600.24254-1-jbx6244@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200424155600.24254-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 0/6] rk3399: Sync linux v5.7-rc1 dts(i)
+Date: Sat, 25 Apr 2020 16:23:13 +0530
+Message-ID: <20200425105319.12009-1-jagan@amarulasolutions.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The '#sound-dai-cells' property is already defined in rk3399.dtsi
-at the 'spdif' node, so remove it from the '&spdif' node in
-'rk3399-hugsun-x99.dts'.
+This would help to add new boards along with new drivers
+like PCIe on rk3399 platform.
 
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts | 1 -
- 1 file changed, 1 deletion(-)
+So, add v5.7-rc1 linux-next dts(i) files on rk3399 platform.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-index aee484a05..4b4a38e59 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
-@@ -633,7 +633,6 @@
- &spdif {
- 	status = "okay";
- 	pinctrl-0 = <&spdif_bus_1>;
--	#sound-dai-cells = <0>;
- };
- 
- &spi1 {
+Any inputs?
+Jagan.
+
+Jagan Teki (5):
+  arm64: dts: rk3399-puma: Move u-boot properties into -u-boot.dtsi
+  arm64: dts: rk3399-evb: Move u-boot properties into -u-boot.dtsi
+  clk: rk3399: Set empty for HCLK_SD assigned-clocks
+  arm64: dts: rk3399: Sync v5.7-rc1 from Linux
+  arm: dts: rk3399: Sync roc-pc-mezzanine from v5.7-rc1
+
+Suniel Mahesh (1):
+  rk3399: Add ROC-RK3399-PC Mezzanine board
+
+ arch/arm/dts/Makefile                         |   1 +
+ arch/arm/dts/cros-ec-keyboard.dtsi            |  10 +-
+ arch/arm/dts/cros-ec-sbs.dtsi                 |  39 +-
+ arch/arm/dts/rk3399-evb-u-boot.dtsi           |   8 +
+ arch/arm/dts/rk3399-evb.dts                   | 522 ++++++++----
+ arch/arm/dts/rk3399-ficus.dts                 |   6 +
+ arch/arm/dts/rk3399-firefly.dts               | 251 ++++--
+ arch/arm/dts/rk3399-gru-bob.dts               |  16 +-
+ arch/arm/dts/rk3399-gru-chromebook.dtsi       |  40 +-
+ arch/arm/dts/rk3399-gru-kevin.dts             |  34 +-
+ arch/arm/dts/rk3399-gru.dtsi                  |  90 +-
+ arch/arm/dts/rk3399-khadas-edge.dtsi          |   3 +
+ arch/arm/dts/rk3399-leez-p710.dts             |  36 +-
+ arch/arm/dts/rk3399-nanopc-t4.dts             |  47 +-
+ arch/arm/dts/rk3399-nanopi4.dtsi              |  66 +-
+ arch/arm/dts/rk3399-orangepi.dts              |  79 +-
+ arch/arm/dts/rk3399-puma-u-boot.dtsi          |  31 +-
+ arch/arm/dts/rk3399-puma.dtsi                 | 578 +++++--------
+ .../dts/rk3399-roc-pc-mezzanine-u-boot.dtsi   |  26 +
+ arch/arm/dts/rk3399-roc-pc-mezzanine.dts      |  93 ++
+ arch/arm/dts/rk3399-roc-pc.dts                |   3 +-
+ arch/arm/dts/rk3399-roc-pc.dtsi               |  35 +-
+ arch/arm/dts/rk3399-rock-pi-4.dts             | 129 +++
+ arch/arm/dts/rk3399-rock960.dts               |  49 ++
+ arch/arm/dts/rk3399-rock960.dtsi              |  13 +-
+ arch/arm/dts/rk3399-rockpro64.dts             | 751 +----------------
+ arch/arm/dts/rk3399-rockpro64.dtsi            | 797 ++++++++++++++++++
+ arch/arm/dts/rk3399-u-boot.dtsi               |   1 +
+ arch/arm/dts/rk3399.dtsi                      | 583 ++++++++-----
+ board/firefly/roc-pc-rk3399/MAINTAINERS       |   2 +
+ configs/roc-pc-mezzanine-rk3399_defconfig     |  67 ++
+ drivers/clk/rockchip/clk_rk3399.c             |   1 +
+ 32 files changed, 2747 insertions(+), 1660 deletions(-)
+ create mode 100644 arch/arm/dts/rk3399-roc-pc-mezzanine-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-roc-pc-mezzanine.dts
+ create mode 100644 arch/arm/dts/rk3399-rockpro64.dtsi
+ create mode 100644 configs/roc-pc-mezzanine-rk3399_defconfig
+
 -- 
-2.11.0
+2.17.1
