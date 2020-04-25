@@ -1,11 +1,13 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 0/8] rockchip: Add PCIe host support
-Date: Sat, 25 Apr 2020 16:33:46 +0530
-Message-ID: <20200425110354.12381-1-jagan@amarulasolutions.com>
+Subject: [PATCH 1/8] iopoll: Add dealy to read poll
+Date: Sat, 25 Apr 2020 16:33:47 +0530
+Message-ID: <20200425110354.12381-2-jagan@amarulasolutions.com>
+References: <20200425110354.12381-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200425110354.12381-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,51 +18,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: patrick-Er2xLVyhcs+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, patrick-Er2xLVyhcs+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Thanks to Patrick for initial work done on this.
+Some drivers and other bsp code not only poll the
+register with timeout but also required to delay
+on each transaction.
 
-This series support PCIe host controller support
-on rockchip rk3399 platform.
+This patch add that requirement by adding sleep_us
+variable so-that read_poll_timeout now support
+delay as well.
 
-Works well on rk3399 boards like rock960, nanopc-t4 
-and roc-kr3399-pc-mezzanine board as Gen1 configurable 
-host.
+Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ include/linux/iopoll.h | 22 ++++++++++++----------
+ 1 file changed, 12 insertions(+), 10 deletions(-)
 
-It has dependency with v5.7-rc1 dts(i) sync series[1]
-
-[1] https://patchwork.ozlabs.org/project/uboot/cover/20200425105319.12009-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org/
-
-Any inputs?
-Jagan.
-
-Jagan Teki (8):
-  iopoll: Add dealy to read poll
-  iopoll: Add readl_poll_sleep_timeout
-  clk: rk3399: Enable PCIE_PHY clock
-  clk: rk3399: Disable PCIE_PHY clock
-  pci: Add Rockchip PCIe controller driver
-  pci: Add Rockchip PCIe PHY controller driver
-  rockchip: Enable PCIe/M.2 on rk3399 board w/ M.2
-  rockchip: Enable PCIe/M.2 on rock960 board
-
- arch/arm/dts/rk3399-u-boot.dtsi             |   1 +
- board/vamrs/rock960_rk3399/rock960-rk3399.c |  20 +
- configs/nanopc-t4-rk3399_defconfig          |   4 +
- configs/roc-pc-mezzanine-rk3399_defconfig   |   4 +
- configs/rock960-rk3399_defconfig            |   5 +
- drivers/clk/rockchip/clk_rk3399.c           |  32 ++
- drivers/pci/Kconfig                         |   8 +
- drivers/pci/Makefile                        |   1 +
- drivers/pci/pcie_rockchip.c                 | 484 ++++++++++++++++++++
- drivers/pci/pcie_rockchip.h                 | 142 ++++++
- drivers/pci/pcie_rockchip_phy.c             | 205 +++++++++
- include/linux/iopoll.h                      |  23 +-
- 12 files changed, 920 insertions(+), 9 deletions(-)
- create mode 100644 drivers/pci/pcie_rockchip.c
- create mode 100644 drivers/pci/pcie_rockchip.h
- create mode 100644 drivers/pci/pcie_rockchip_phy.c
-
+diff --git a/include/linux/iopoll.h b/include/linux/iopoll.h
+index ab0ae1969a..0bbd757939 100644
+--- a/include/linux/iopoll.h
++++ b/include/linux/iopoll.h
+@@ -16,6 +16,7 @@
+  * @addr: Address to poll
+  * @val: Variable to read the value into
+  * @cond: Break condition (usually involving @val)
++ * @sleep_us: Maximum time to sleep in us
+  * @timeout_us: Timeout in us, 0 means never timeout
+  *
+  * Returns 0 on success and -ETIMEDOUT upon a timeout. In either
+@@ -24,7 +25,7 @@
+  * When available, you'll probably want to use one of the specialized
+  * macros defined below rather than this macro directly.
+  */
+-#define readx_poll_timeout(op, addr, val, cond, timeout_us)	\
++#define readx_poll_timeout(op, addr, val, cond, sleep_us, timeout_us)	\
+ ({ \
+ 	unsigned long timeout = timer_get_us() + timeout_us; \
+ 	for (;;) { \
+@@ -35,33 +36,34 @@
+ 			(val) = op(addr); \
+ 			break; \
+ 		} \
++		if (sleep_us) \
++			udelay(sleep_us); \
+ 	} \
+ 	(cond) ? 0 : -ETIMEDOUT; \
+ })
+ 
+-
+ #define readb_poll_timeout(addr, val, cond, timeout_us) \
+-	readx_poll_timeout(readb, addr, val, cond, timeout_us)
++	readx_poll_timeout(readb, addr, val, cond, false, timeout_us)
+ 
+ #define readw_poll_timeout(addr, val, cond, timeout_us) \
+-	readx_poll_timeout(readw, addr, val, cond, timeout_us)
++	readx_poll_timeout(readw, addr, val, cond, false, timeout_us)
+ 
+ #define readl_poll_timeout(addr, val, cond, timeout_us) \
+-	readx_poll_timeout(readl, addr, val, cond, timeout_us)
++	readx_poll_timeout(readl, addr, val, cond, false, timeout_us)
+ 
+ #define readq_poll_timeout(addr, val, cond, timeout_us) \
+-	readx_poll_timeout(readq, addr, val, cond, timeout_us)
++	readx_poll_timeout(readq, addr, val, cond, false, timeout_us)
+ 
+ #define readb_relaxed_poll_timeout(addr, val, cond, timeout_us) \
+-	readx_poll_timeout(readb_relaxed, addr, val, cond, timeout_us)
++	readx_poll_timeout(readb_relaxed, addr, val, cond, false, timeout_us)
+ 
+ #define readw_relaxed_poll_timeout(addr, val, cond, timeout_us) \
+-	readx_poll_timeout(readw_relaxed, addr, val, cond, timeout_us)
++	readx_poll_timeout(readw_relaxed, addr, val, cond, false, timeout_us)
+ 
+ #define readl_relaxed_poll_timeout(addr, val, cond, timeout_us) \
+-	readx_poll_timeout(readl_relaxed, addr, val, cond, timeout_us)
++	readx_poll_timeout(readl_relaxed, addr, val, cond, false, timeout_us)
+ 
+ #define readq_relaxed_poll_timeout(addr, val, cond, timeout_us) \
+-	readx_poll_timeout(readq_relaxed, addr, val, cond, timeout_us)
++	readx_poll_timeout(readq_relaxed, addr, val, cond, false, timeout_us)
+ 
+ #endif /* _LINUX_IOPOLL_H */
 -- 
 2.17.1
