@@ -1,45 +1,35 @@
-From: Anand Moon <linux.amoon@gmail.com>
-Subject: Re: [PATCH v2 0/5] mfd: RK8xx tidyup
-Date: Tue, 28 Apr 2020 00:26:12 +0530
-Message-ID: <CANAwSgQsMnkRyLCbgbWUGnCOzeK+4rucdMCkBGrv=Gp=Etq5JA@mail.gmail.com>
-References: <cover.1578789410.git.robin.murphy@arm.com> <CANAwSgSFPtdvEvacNf6DhzE2fCabgZSBNnZUf0+nQErDWpErOw@mail.gmail.com>
- <c7345431-7585-6052-835e-d9c292978b6e@web.de>
+From: "Mr. Okrapah Adjei" <masud.m-47RfVs+PUcP3oGB3hsPCZA@public.gmane.org>
+Subject: Product Inquiry
+Date: Sun, 26 Apr 2020 16:18:45 -0700
+Message-ID: <E1jT8xo-0000jh-DJ@bombadil.infradead.org>
+Reply-To: okrapahadjei233-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <c7345431-7585-6052-835e-d9c292978b6e@web.de>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Soeren Moch <smoch@web.de>
-Cc: Robin Murphy <robin.murphy@arm.com>, Lee Jones <lee.jones@linaro.org>, linux-rockchip@lists.infradead.org, Linux Kernel <linux-kernel@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Description: Mail message body
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Soeren
+Dear Sir,
 
-On Tue, 28 Apr 2020 at 00:16, Soeren Moch <smoch@web.de> wrote:
->
->
->
-> On 27.04.20 20:41, Anand Moon wrote:
-> > Hi Robin,
-> >
-> > On Sun, 12 Jan 2020 at 07:25, Robin Murphy <robin.murphy@arm.com> wrote:
-> >> Hi all,
-> >>
-> >> Here's a second crack at my RK805-inspired cleanup. There was a bit
-> >> of debate around v1[1], but it seems like we're now all happy that this
-> >> is a reasonable way to go. For clarity I decided to include Soeren's
-> >> patch as #1/5, but since I've rewritten most of my patches I've not
-> >> included the tested-by tags.
-> >>
-> >> Robin.
-> >>
-> > Can you re-spin this series, it seem these patches are lost.
-> >
-> These patches are already merged as
-> d8f083a302f7..42679765faf2
->
-> Soeren
+We got your company information through an exhaustive search.
 
-Thanks for the input.
+Our scope is basically to search for foreign companies to bid for contract supply on commission basis.
 
--Anand
+We are interested in buying your products in a larger quantity if only you can supply and open for business.
+
+Best Regard,
+Mr. Okrapah Adjei
+CEO
+OK-Adjei Sourcing Ltd
+Accra,Ghana
