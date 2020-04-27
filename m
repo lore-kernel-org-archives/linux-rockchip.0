@@ -1,35 +1,34 @@
-From: "Mr. Okrapah Adjei" <masud.m-47RfVs+PUcP3oGB3hsPCZA@public.gmane.org>
-Subject: Product Inquiry
-Date: Sun, 26 Apr 2020 16:18:45 -0700
-Message-ID: <E1jT8xo-0000jh-DJ@bombadil.infradead.org>
-Reply-To: okrapahadjei233-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] drm/rockchip: cdn-dp-core: Make cdn_dp_core_suspend/resume static
+Date: Mon, 27 Apr 2020 21:18:37 +0200
+Message-ID: <158801509401.47920.2598441742545466292.b4-ty@sntech.de>
+References: <20200426161653.7710-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Description: Mail message body
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200426161653.7710-1-enric.balletbo@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, Collabora Kernel ML <kernel@collabora.com>, David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Dear Sir,
+On Sun, 26 Apr 2020 18:16:53 +0200, Enric Balletbo i Serra wrote:
+> This fixes the following warning detected when running make with W=1
+> 
+>     drivers/gpu/drm/rockchip//cdn-dp-core.c:1112:5: warning: no previous
+>     prototype for ‘cdn_dp_suspend’ [-Wmissing-prototypes]
+> 
+>     drivers/gpu/drm/rockchip//cdn-dp-core.c:1126:5: warning: no previous
+>     prototype for ‘cdn_dp_resume’ [-Wmissing-prototypes]
+> 
+> [...]
 
-We got your company information through an exhaustive search.
+Applied, thanks!
 
-Our scope is basically to search for foreign companies to bid for contract supply on commission basis.
+[1/1] drm/rockchip: cdn-dp-core: Make cdn_dp_core_suspend/resume static
+      commit: 7c49abb4c2f8853520abc05b7f7e8b751fbb3086
 
-We are interested in buying your products in a larger quantity if only you can supply and open for business.
-
-Best Regard,
-Mr. Okrapah Adjei
-CEO
-OK-Adjei Sourcing Ltd
-Accra,Ghana
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
