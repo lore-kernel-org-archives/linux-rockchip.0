@@ -1,91 +1,212 @@
-From: Adrian Ratiu <adrian.ratiu@collabora.com>
-Subject: [PATCH v8 04/10] drm: bridge: dw_mipi_dsi: allow bridge daisy chaining
-Date: Mon, 27 Apr 2020 11:19:46 +0300
-Message-ID: <20200427081952.3536741-5-adrian.ratiu@collabora.com>
+From: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v8 07/10] dt-bindings: display: add i.MX6 MIPI DSI host controller doc
+Date: Mon, 27 Apr 2020 11:19:49 +0300
+Message-ID: <20200427081952.3536741-8-adrian.ratiu@collabora.com>
 References: <20200427081952.3536741-1-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200427081952.3536741-1-adrian.ratiu@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: Andrzej Hajda <a.hajda@samsung.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@siol.net>, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-imx@nxp.com, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200427081952.3536741-1-adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Cc: Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Martyn Welch <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Up until now the assumption was that the synopsis dsi bridge will
-directly connect to an encoder provided by the platform driver, but
-the current practice for drivers is to leave the encoder empty via
-the simple encoder API and add their logic to their own drm_bridge.
+This provides an example DT binding for the MIPI DSI host controller
+present on the i.MX6 SoC based on Synopsis DesignWare v1.01 IP.
 
-Thus we need an ablility to connect the DSI bridge to another bridge
-provided by the platform driver, so we extend the dw_mipi_dsi bind()
-API with a new "previous bridge" arg instead of just hardcoding NULL.
-
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Cc: Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Tested-by: Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Tested-by: Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Martyn Welch <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Signed-off-by: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
-New in v8.
----
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c   | 6 ++++--
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 2 +-
- include/drm/bridge/dw_mipi_dsi.h                | 5 ++++-
- 3 files changed, 9 insertions(+), 4 deletions(-)
+Changes since v7:
+  - Clarified port@0,1 descriptions, marked them as required and
+  added missing port@0 in example (Laurent)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-index 16fd87055e7b7..140ff40fa1b62 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-@@ -1456,11 +1456,13 @@ EXPORT_SYMBOL_GPL(dw_mipi_dsi_remove);
- /*
-  * Bind/unbind API, used from platforms based on the component framework.
-  */
--int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi, struct drm_encoder *encoder)
-+int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi,
-+		     struct drm_encoder *encoder,
-+		     struct drm_bridge *prev_bridge)
- {
- 	int ret;
- 
--	ret = drm_bridge_attach(encoder, &dsi->bridge, NULL, 0);
-+	ret = drm_bridge_attach(encoder, &dsi->bridge, prev_bridge, 0);
- 	if (ret) {
- 		DRM_ERROR("Failed to initialize bridge with drm\n");
- 		return ret;
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 3feff0c45b3f7..83ef43be78135 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -929,7 +929,7 @@ static int dw_mipi_dsi_rockchip_bind(struct device *dev,
- 		return ret;
- 	}
- 
--	ret = dw_mipi_dsi_bind(dsi->dmd, &dsi->encoder);
-+	ret = dw_mipi_dsi_bind(dsi->dmd, &dsi->encoder, NULL);
- 	if (ret) {
- 		DRM_DEV_ERROR(dev, "Failed to bind: %d\n", ret);
- 		return ret;
-diff --git a/include/drm/bridge/dw_mipi_dsi.h b/include/drm/bridge/dw_mipi_dsi.h
-index b0e390b3288e8..699b3531f5b36 100644
---- a/include/drm/bridge/dw_mipi_dsi.h
-+++ b/include/drm/bridge/dw_mipi_dsi.h
-@@ -14,6 +14,7 @@
- #include <drm/drm_modes.h>
- 
- struct drm_display_mode;
-+struct drm_bridge;
- struct drm_encoder;
- struct dw_mipi_dsi;
- struct mipi_dsi_device;
-@@ -62,7 +63,9 @@ struct dw_mipi_dsi *dw_mipi_dsi_probe(struct platform_device *pdev,
- 				      const struct dw_mipi_dsi_plat_data
- 				      *plat_data);
- void dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi);
--int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi, struct drm_encoder *encoder);
-+int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi,
-+		     struct drm_encoder *encoder,
-+		     struct drm_bridge *prev_bridge);
- void dw_mipi_dsi_unbind(struct dw_mipi_dsi *dsi);
- void dw_mipi_dsi_set_slave(struct dw_mipi_dsi *dsi, struct dw_mipi_dsi *slave);
- 
+Changes since v6:
+  - Added ref to the newly created snps,dw-mipi-dsi.yaml (Laurent)
+  - Moved *-cells properties outside patternProperties (Laurent)
+  - Removed the panel port documentation (Laurent)
+  - Wrapped lines at 80 chars, typo fixes, sort includes (Laurent)
+
+Changes since v5:
+  - Fixed missing reg warning (Fabio)
+  - Updated dt-schema and fixed warnings (Rob)
+
+Changes since v4:
+  - Fixed yaml binding to pass `make dt_binding_check dtbs_check`
+  and addressed received binding feedback (Rob)
+
+Changes since v3:
+  - Added commit message (Neil)
+  - Converted to yaml format (Neil)
+  - Minor dt node + driver fixes (Rob)
+  - Added small panel example to the host controller binding
+
+Changes since v2:
+  - Fixed commit tags (Emil)
+---
+ .../display/imx/fsl,mipi-dsi-imx6.yaml        | 145 ++++++++++++++++++
+ 1 file changed, 145 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
+
+diff --git a/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml b/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
+new file mode 100644
+index 0000000000000..c2c3489e63fa3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
+@@ -0,0 +1,145 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/imx/fsl,mipi-dsi-imx6.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Freescale i.MX6 DW MIPI DSI Host Controller
++
++maintainers:
++  - Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
++
++description: |
++  The i.MX6 DSI host controller is a Synopsys DesignWare MIPI DSI v1.01
++  IP block with a companion PHY IP.
++
++  These DT bindings follow the Synopsys DW MIPI DSI bindings defined in
++  Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt with
++  the following device-specific properties.
++
++allOf:
++  - $ref: ../bridge/snps,dw-mipi-dsi.yaml#
++
++properties:
++  '#address-cells':
++    const: 1
++
++  '#size-cells':
++    const: 0
++
++  compatible:
++    items:
++      - const: fsl,imx6q-mipi-dsi
++      - const: snps,dw-mipi-dsi
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Module Clock
++      - description: DSI bus clock
++
++  clock-names:
++    items:
++      - const: ref
++      - const: pclk
++
++  fsl,gpr:
++    description:
++      Phandle to the iomuxc-gpr region containing the multiplexer ctrl register.
++    $ref: /schemas/types.yaml#/definitions/phandle
++
++  ports:
++    type: object
++    description: |
++      A node containing DSI input & output port nodes with endpoint
++      definitions as documented in
++      Documentation/devicetree/bindings/media/video-interfaces.txt
++      Documentation/devicetree/bindings/graph.txt
++    properties:
++      port@0:
++        type: object
++        description:
++          DSI input port connected to a parallel RGB LTDC output port.
++
++      port@1:
++        type: object
++        description:
++          DSI serial RGB output port connected to a panel or bridge input port.
++
++    required:
++      - port@0
++      - port@1
++
++additionalProperties: false
++
++patternProperties:
++  "^panel@[0-3]$":
++    type: object
++
++required:
++  - "#address-cells"
++  - "#size-cells"
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - ports
++
++examples:
++  - |+
++    #include <dt-bindings/clock/imx6qdl-clock.h>
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    dsi: dsi@21e0000 {
++        #address-cells = <1>;
++        #size-cells = <0>;
++        compatible = "fsl,imx6q-mipi-dsi", "snps,dw-mipi-dsi";
++        reg = <0x021e0000 0x4000>;
++        interrupts = <0 102 IRQ_TYPE_LEVEL_HIGH>;
++        fsl,gpr = <&gpr>;
++        clocks = <&clks IMX6QDL_CLK_MIPI_CORE_CFG>,
++                 <&clks IMX6QDL_CLK_MIPI_IPG>;
++        clock-names = "ref", "pclk";
++
++        ports {
++            #address-cells = <1>;
++            #size-cells = <0>;
++            port@0 {
++                reg = <0>;
++                mipi_mux_0: endpoint {
++                    remote-endpoint = <&ipu1_di0_mipi>;
++                };
++            };
++            port@1 {
++                reg = <1>;
++                dsi_out: endpoint {
++                    remote-endpoint = <&panel_in>;
++                };
++            };
++        };
++
++        panel@0 {
++            compatible = "sharp,ls032b3sx01";
++            reg = <0>;
++            reset-gpios = <&gpio6 8 GPIO_ACTIVE_LOW>;
++            ports {
++                #address-cells = <1>;
++                #size-cells = <0>;
++                port@0 {
++                    reg = <0>;
++                    panel_in: endpoint {
++                        remote-endpoint = <&dsi_out>;
++                    };
++                };
++            };
++        };
++    };
++
++...
 -- 
 2.26.0
