@@ -1,305 +1,50 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v3 2/4] media: v4l2-common: add helper functions to call
- s_stream() callbacks
-Date: Mon, 27 Apr 2020 10:49:42 -0300
-Message-ID: <0967fd38-e36e-c32c-d4b3-7b7c22a31237@collabora.com>
-References: <20200415013044.1778572-1-helen.koike@collabora.com>
- <20200415013044.1778572-3-helen.koike@collabora.com>
- <20200424134152.GB4040416@oden.dyn.berto.se>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: rk3399-roc-pc: Fix MMC
+ numbering for LED triggers
+Date: Mon, 27 Apr 2020 16:12:51 +0200
+Message-ID: <a81840d3-813b-51b5-767c-e0d9d270200e@gmail.com>
+References: <20200427073132.29997-3-wens@kernel.org>
+ <684132b8-4a84-8295-474b-38ccb992bba7@gmail.com>
+ <CAGb2v66Piu5_2bdqvWV3eEn2Se_y1MNKWvvYBv_J7DA-8jBhbQ@mail.gmail.com>
+ <65d15254-08da-895c-1a0c-ef6ce231b620@gmail.com>
+ <CAGb2v65fGYguNoksq5Dyx3HTKeYg+U82TiQSL+NO8AUcQJQj5w@mail.gmail.com>
+ <74a984fc-ce57-211b-936c-2d77e2e642bb@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200424134152.GB4040416@oden.dyn.berto.se>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-leds-owner@vger.kernel.org>
+In-Reply-To: <74a984fc-ce57-211b-936c-2d77e2e642bb@gmail.com>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund@ragnatech.se>
-Cc: linux-media@vger.kernel.org, kernel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, skhan@linuxfoundation.org, mchehab@kernel.org
+Sender: linux-leds-owner@vger.kernel.org
+To: Chen-Yu Tsai <wens@kernel.org>
+Cc: devicetree <devicetree@vger.kernel.org>, dmurphy@ti.com, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, jacek.anaszewski@gmail.com, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-leds@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Pavel Machek <pavel@ucw.cz>, Rob Herring <robh+dt@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi,
+
+>> So for fixing up the LED node names, we'd probably want the following:
+>>
+>>     diy_led: led-0
+>>     yellow_led: led-1
+>>     work_led: led-2
+
+Change proposal for led nodes to comply with preexisting dts.
+Does this work?
+
+diy_led: led_0: led-0
+yellow_led: led_1: led-1
+work_led: led_2: led-2
 
 
-On 4/24/20 10:41 AM, Niklas Söderlund wrote:
-> Hi Helen,
-> 
-> Thanks for your work.
-> 
-> On 2020-04-14 22:30:42 -0300, Helen Koike wrote:
->> Add v4l2_pipeline_stream_{enable,disable} helper functions to iterate
->> through the subdevices in a given stream (i.e following links from sink
->> to source) and call .s_stream() callback.
->>
->> Add stream_count on the subdevice object for simultaneous streaming from
->> different video devices which shares subdevices.
->>
->> Prevent calling .s_stream(true) if it was already called previously by
->> another stream.
->>
->> Prevent calling .s_stream(false) from one stream when there are still
->> others active.
->>
->> If .s_stream(true) fails, call .s_stream(false) in the reverse order.
->>
->> Signed-off-by: Helen Koike <helen.koike@collabora.com>
->> ---
->>
->> Changes in v3:
->> - re-write helpers to use media walkers as in v1, but with
->> v4l2_pipeline_subdevs_get() to reverse the order we call s_stream(true)
->> in subdevices.
->> - rename size to max_size (and update docs) in v4l2_pipeline_subdevs_get() to
->> reflect the meaning of the argument.
->> - add if defined(CONFIG_MEDIA_CONTROLLER) around helpers
->>
->> Changes in v2:
->> - re-write helpers to not use media walkers
->>
->>  drivers/media/v4l2-core/v4l2-common.c | 125 ++++++++++++++++++++++++++
->>  include/media/v4l2-common.h           |  43 +++++++++
->>  include/media/v4l2-subdev.h           |   2 +
->>  3 files changed, 170 insertions(+)
->>
->> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
->> index 9e8eb45a5b03c..2f991a1a57d7c 100644
->> --- a/drivers/media/v4l2-core/v4l2-common.c
->> +++ b/drivers/media/v4l2-core/v4l2-common.c
->> @@ -442,3 +442,128 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
->>  	return 0;
->>  }
->>  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
->> +
->> +#if defined(CONFIG_MEDIA_CONTROLLER)
->> +
->> +/*
->> + * v4l2_pipeline_subdevs_get - Assemble a list of subdevices in a pipeline
->> + * @subdevs: the array to be filled.
->> + * @max_size: max number of elements that can fit in subdevs array.
->> + *
->> + * Walk from a video node, following links from sink to source and fill the
->> + * array with subdevices in the path.
->> + * The walker performs a depth-first traversal, which means that, in a topology
->> + * sd1->sd2->sd3->vdev, sd1 will be the first element placed in the array.
->> + *
->> + * Return the number of subdevices filled in the array.
->> + */
->> +static int v4l2_pipeline_subdevs_get(struct video_device *vdev,
->> +				     struct media_pipeline *pipe,
->> +				     struct v4l2_subdev **subdevs,
->> +				     unsigned int max_size)
->> +{
->> +	struct media_entity *entity = &vdev->entity;
->> +	struct media_device *mdev = entity->graph_obj.mdev;
->> +	int idx = 0;
->> +	int ret;
->> +
->> +	mutex_lock(&mdev->graph_mutex);
->> +
->> +	if (!pipe->streaming_count) {
->> +		ret = media_graph_walk_init(&pipe->graph, mdev);
->> +		if (ret) {
->> +			mutex_unlock(&mdev->graph_mutex);
->> +			return ret;
->> +		}
->> +	}
-> 
-> This confuses me a bit. Why is this conditional on streaming_count ?  
-> Looking how it's used in mc-entity.c the count is also 
-> increased/decreased with this pattern.
-> 
-> Would it make sens to create a local 'struct media_graph graph' here and 
-> always init and clean it up ?
+blue: led_0: led-0
 
-media_pipeline_start() initialize the walker by calling media_graph_walk_init() when
-pipe->stream_count increases to 1, and it leaves to media_pipeline_stop() to call
-media_graph_walk_cleanup() when pipe->streaming_count reaches 0.
+A check does not give any warnings.
 
-So, if this function is called before any call to media_pipeline_start(),  i.e pipe->streaming_count == 0,
-it needs to init and clean the walker up, otherwise it shouldn't do it.
-If it is called after the last media_pipeline_stop() is called, i.e pipe->streaming_count == 0 again,
-it should also init and clean up.
-
-This is what the conditional checks, if the walker is already initialized or not.
-
-But I think I could use a local struct media_graph to have an independent walker from the media_pipeline_{start,stop}(),
-instead or reusing the struct media_pipeline that is being given (and I could remove the pipe parameter of these functions).
-I was wondering if there was any issue of having an independent walker, but I don't think so, let me do this and re-send the series.
+make -k ARCH=arm dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/leds/leds-gpio.yaml
 
 > 
->> +
->> +	media_graph_walk_start(&pipe->graph, entity);
->> +
->> +	while ((entity = media_graph_walk_next_stream(&pipe->graph))) {
->> +		if (!is_media_entity_v4l2_subdev(entity))
->> +			continue;
->> +		if (WARN_ON(idx >= max_size)) {
->> +			mutex_unlock(&mdev->graph_mutex);
->> +			return -EINVAL;
->> +		}
->> +		subdevs[idx++] = media_entity_to_v4l2_subdev(entity);
->> +	}
->> +
->> +	if (!pipe->streaming_count)
->> +		media_graph_walk_cleanup(&pipe->graph);
->> +
->> +	mutex_unlock(&mdev->graph_mutex);
->> +
->> +	return idx;
->> +}
->> +
->> +__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev,
->> +					     struct media_pipeline *pipe)
->> +{
->> +	struct media_device *mdev = vdev->entity.graph_obj.mdev;
->> +	struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
->> +	struct v4l2_subdev *sd;
->> +	int i, size, ret;
->> +
->> +	size = v4l2_pipeline_subdevs_get(vdev, pipe,
->> +					 subdevs, ARRAY_SIZE(subdevs));
->> +	if (size <= 0)
->> +		return size;
->> +
->> +	/* Call s_stream() in reverse order to enable sensors last */
->> +	for (i = size - 1; i >= 0; i--) {
->> +		sd = subdevs[i];
->  +		if (sd->stream_count++)
->> +			continue;
->> +		dev_dbg(mdev->dev,
->> +			"enabling stream for '%s'\n", sd->entity.name);
->> +		ret = v4l2_subdev_call(sd, video, s_stream, true);
->> +		if (ret && ret != -ENOIOCTLCMD) {
->> +			sd->stream_count = 0;
->> +			goto err_stream_disable;
->> +		}
->> +	}
->> +
->> +	return 0;
->> +
->> +err_stream_disable:
->> +	for (i++; i < size; i++) {
->> +		sd = subdevs[i];
->> +		if (--sd->stream_count)
->> +			continue;
->> +		dev_dbg(mdev->dev,
->> +			"disabling stream for '%s'\n", sd->entity.name);
->> +		v4l2_subdev_call(sd, video, s_stream, false);
->> +	};
->> +
->> +	return ret;
->> +}
->> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_enable);
->> +
->> +void v4l2_pipeline_stream_disable(struct video_device *vdev,
->> +				  struct media_pipeline *pipe)
->> +{
->> +	struct media_device *mdev = vdev->entity.graph_obj.mdev;
->> +	struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
->> +	unsigned int i;
->> +	int size;
->> +
->> +	size = v4l2_pipeline_subdevs_get(vdev, pipe,
->> +					 subdevs, ARRAY_SIZE(subdevs));
->> +	if (WARN_ON(size < 0))
->> +		return;
->> +
->> +	/* Call s_stream() in order to disable sensors first */
->> +	for (i = 0; i < size; i++) {
->> +		struct v4l2_subdev *sd = subdevs[i];
->> +
->> +		if (--sd->stream_count)
->> +			continue;
->> +		dev_dbg(mdev->dev,
->> +			"disabling stream for '%s'\n", sd->entity.name);
->> +		v4l2_subdev_call(sd, video, s_stream, false);
-> 
-> small nit, maybe this can be extracted to a helper as the code is 
-> duplicated here and in the error path v4l2_pipeline_stream_enable ?
-
-ack, I'll see how I can improve this.
-
-
-Thanks for reviewing!
-Helen
-
-> 
->> +	}
->> +}
->> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_disable);
->> +
->> +#endif /* CONFIG_MEDIA_CONTROLLER */
->> diff --git a/include/media/v4l2-common.h b/include/media/v4l2-common.h
->> index 150ee16ebd811..dc46812120cdc 100644
->> --- a/include/media/v4l2-common.h
->> +++ b/include/media/v4l2-common.h
->> @@ -539,4 +539,47 @@ static inline void v4l2_buffer_set_timestamp(struct v4l2_buffer *buf,
->>  	buf->timestamp.tv_usec = ts.tv_nsec / NSEC_PER_USEC;
->>  }
->>  
->> +#if defined(CONFIG_MEDIA_CONTROLLER)
->> +
->> +/**
->> + * v4l2_pipeline_stream_enable - Call .s_stream(true) callbacks in the stream
->> + * @vdev: Starting video device.
->> + * @pipe: Pipeline this entity belongs to.
->> + *
->> + * Call .s_stream(true) callback in all the subdevices participating in the
->> + * stream, i.e. following links from sink to source.
->> + *
->> + * .s_stream(true) is also called from sink to source, i.e. in a topology
->> + * sd1->sd2->sd3->vdev, .s_stream(true) of sd3 is called first.
->> + *
->> + * Calls to this function can be nested, in which case the same number of
->> + * v4l2_pipeline_stream_disable() calls will be required to disable streaming
->> + * through subdevices in the pipeline.
->> + * The  pipeline pointer must be identical for all nested calls to
->> + * v4l2_pipeline_stream_enable().
->> + */
->> +__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev,
->> +					     struct media_pipeline *pipe);
->> +
->> +/**
->> + * v4l2_pipeline_stream_disable - Call .s_stream(false) callbacks in the stream
->> + * @vdev: Starting video device.
->> + * @pipe: Pipeline this entity belongs to.
->> + *
->> + * Call .s_stream(false) callback in all the subdevices participating in the
->> + * stream, i.e. following links from sink to source.
->> + *
->> + * s_stream(false) is called in a reverse order from
->> + * v4l2_pipeline_stream_enable(), i.e. in a topology sd1->sd2->sd3->vdev,
->> + * .s_stream(false) of sd1 is called first.
->> + *
->> + * If multiple calls to v4l2_pipeline_stream_enable() have been made, the same
->> + * number of calls to this function are required to disable streaming through
->> + * subdevices in the pipeline.
->> + */
->> +void v4l2_pipeline_stream_disable(struct video_device *vdev,
->> +				  struct media_pipeline *pipe);
->> +
->> +#endif /* CONFIG_MEDIA_CONTROLLER */
->> +
->>  #endif /* V4L2_COMMON_H_ */
->> diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
->> index a4848de598521..20f913a9f70c5 100644
->> --- a/include/media/v4l2-subdev.h
->> +++ b/include/media/v4l2-subdev.h
->> @@ -838,6 +838,7 @@ struct v4l2_subdev_platform_data {
->>   * @subdev_notifier: A sub-device notifier implicitly registered for the sub-
->>   *		     device using v4l2_device_register_sensor_subdev().
->>   * @pdata: common part of subdevice platform data
->> + * @stream_count: Stream count for the subdevice.
->>   *
->>   * Each instance of a subdev driver should create this struct, either
->>   * stand-alone or embedded in a larger struct.
->> @@ -869,6 +870,7 @@ struct v4l2_subdev {
->>  	struct v4l2_async_notifier *notifier;
->>  	struct v4l2_async_notifier *subdev_notifier;
->>  	struct v4l2_subdev_platform_data *pdata;
->> +	unsigned int stream_count;
->>  };
->>  
->>  
->> -- 
->> 2.26.0
->>
+> That doesn't look pretty either.
+> Would like to hear the maintainers view on how to handle other cases
+> without 'led' like for example 'blue' for mk808.
 > 
