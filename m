@@ -1,549 +1,492 @@
-From: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>
-Subject: Re: [PATCH v7 4/8] drm: imx: Add i.MX 6 MIPI DSI host platform driver
-Date: Tue, 28 Apr 2020 16:30:30 +0200
-Message-ID: <20200428143030.GN3456981@phenom.ffwll.local>
-References: <20200421161610.1501827-1-adrian.ratiu@collabora.com>
- <20200421161610.1501827-5-adrian.ratiu@collabora.com>
- <20200422010727.GM5983@pendragon.ideasonboard.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH v1 2/2] arm64: dts: rockchip: rename and label gpio-led subnodes
+Date: Tue, 28 Apr 2020 16:49:33 +0200
+Message-ID: <20200428144933.10953-2-jbx6244@gmail.com>
+References: <20200428144933.10953-1-jbx6244@gmail.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200422010727.GM5983-N3hz7ZxfLydczECFQUw77jytWr6r+dGw0E9HWUfgJXw@public.gmane.org>
+In-Reply-To: <20200428144933.10953-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-Cc: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Martyn Welch <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-imx-3arQi8VN3Tc@public.gmane.org, Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Emil Velikov <emil.velikov-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Apr 22, 2020 at 04:07:27AM +0300, Laurent Pinchart wrote:
-> Hi Adrian,
-> 
-> On Tue, Apr 21, 2020 at 07:16:06PM +0300, Adrian Ratiu wrote:
-> > This adds support for the Synopsis DesignWare MIPI DSI v1.01 host
-> > controller which is embedded in i.MX 6 SoCs.
-> > 
-> > Based on following patches, but updated/extended to work with existing
-> > support found in the kernel:
-> > 
-> > - drm: imx: Support Synopsys DesignWare MIPI DSI host controller
-> >   Signed-off-by: Liu Ying <Ying.Liu-KZfg59tc24xl57MIdRCFDg@public.gmane.org>
-> > 
-> > Cc: Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > Cc: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > Reviewed-by: Emil Velikov <emil.velikov-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > Tested-by: Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > Tested-by: Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > Signed-off-by: Martyn Welch <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > Signed-off-by: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> > ---
-> > Changes since v6:
-> >   - Replaced custom noop encoder with the simple drm encoder (Enric)
-> >   - Added CONFIG_DRM_IMX6_MIPI_DSI depends on CONFIG_OF (Enric)
-> >   - Dropped imx_mipi_dsi_register() because now it only creates the
-> >   dummy encoder which can easily be done directly in imx_dsi_bind()
-> > 
-> > Changes since v5:
-> >   - Reword to remove unrelated device tree patch mention (Fabio)
-> >   - Move pllref_clk enable/disable to bind/unbind (Ezequiel)
-> >   - Fix freescale.com -> nxp.com email addresses (Fabio)
-> >   - Also added myself as module author (Fabio)
-> >   - Use DRM_DEV_* macros for consistency, print more error msg
-> > 
-> > Changes since v4:
-> >   - Split off driver-specific configuration of phy timings due
-> >   to new upstream API.
-> >   - Move regmap infrastructure logic to separate commit (Ezequiel)
-> >   - Move dsi v1.01 layout addition to a separate commit (Ezequiel)
-> >   - Minor warnings and driver name fixes
-> > 
-> > Changes since v3:
-> >   - Renamed platform driver to reflect it's i.MX6 only. (Fabio)
-> > 
-> > Changes since v2:
-> >   - Fixed commit tags. (Emil)
-> > 
-> > Changes since v1:
-> >   - Moved register definitions & regmap initialization into bridge
-> >   module. Platform drivers get the regmap via plat_data after
-> >   calling the bridge probe. (Emil)
-> > ---
-> >  drivers/gpu/drm/imx/Kconfig            |   8 +
-> >  drivers/gpu/drm/imx/Makefile           |   1 +
-> >  drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c | 391 +++++++++++++++++++++++++
-> >  3 files changed, 400 insertions(+)
-> >  create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c
-> > 
-> > diff --git a/drivers/gpu/drm/imx/Kconfig b/drivers/gpu/drm/imx/Kconfig
-> > index 207bf7409dfba..0dffc72df7922 100644
-> > --- a/drivers/gpu/drm/imx/Kconfig
-> > +++ b/drivers/gpu/drm/imx/Kconfig
-> > @@ -39,3 +39,11 @@ config DRM_IMX_HDMI
-> >  	depends on DRM_IMX
-> >  	help
-> >  	  Choose this if you want to use HDMI on i.MX6.
-> > +
-> > +config DRM_IMX6_MIPI_DSI
-> > +	tristate "Freescale i.MX6 DRM MIPI DSI"
-> > +	select DRM_DW_MIPI_DSI
-> > +	depends on DRM_IMX
-> > +	depends on OF
-> > +	help
-> > +	  Choose this if you want to use MIPI DSI on i.MX6.
-> > diff --git a/drivers/gpu/drm/imx/Makefile b/drivers/gpu/drm/imx/Makefile
-> > index 21cdcc2faabc8..9a7843c593478 100644
-> > --- a/drivers/gpu/drm/imx/Makefile
-> > +++ b/drivers/gpu/drm/imx/Makefile
-> > @@ -9,3 +9,4 @@ obj-$(CONFIG_DRM_IMX_TVE) += imx-tve.o
-> >  obj-$(CONFIG_DRM_IMX_LDB) += imx-ldb.o
-> >  
-> >  obj-$(CONFIG_DRM_IMX_HDMI) += dw_hdmi-imx.o
-> > +obj-$(CONFIG_DRM_IMX6_MIPI_DSI) += dw_mipi_dsi-imx6.o
-> > diff --git a/drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c b/drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c
-> > new file mode 100644
-> > index 0000000000000..f8a0a4fe16e21
-> > --- /dev/null
-> > +++ b/drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c
-> > @@ -0,0 +1,391 @@
-> > +// SPDX-License-Identifier: GPL-2.0+
-> > +/*
-> > + * i.MX6 drm driver - MIPI DSI Host Controller
-> > + *
-> > + * Copyright (C) 2011-2015 Freescale Semiconductor, Inc.
-> > + * Copyright (C) 2019-2020 Collabora, Ltd.
-> > + */
-> > +
-> > +#include <linux/clk.h>
-> > +#include <linux/component.h>
-> > +#include <linux/mfd/syscon.h>
-> > +#include <linux/mfd/syscon/imx6q-iomuxc-gpr.h>
-> > +#include <linux/module.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/regmap.h>
-> > +#include <linux/videodev2.h>
-> > +#include <drm/bridge/dw_mipi_dsi.h>
-> > +#include <drm/drm_crtc_helper.h>
-> > +#include <drm/drm_mipi_dsi.h>
-> > +#include <drm/drm_of.h>
-> > +#include <drm/drm_print.h>
-> > +
-> > +#include "imx-drm.h"
-> > +
-> > +#define DSI_PWR_UP			0x04
-> > +#define RESET				0
-> > +#define POWERUP				BIT(0)
-> > +
-> > +#define DSI_PHY_IF_CTRL			0x5c
-> > +#define PHY_IF_CTRL_RESET		0x0
-> > +
-> > +#define DSI_PHY_TST_CTRL0		0x64
-> > +#define PHY_TESTCLK			BIT(1)
-> > +#define PHY_UNTESTCLK			0
-> > +#define PHY_TESTCLR			BIT(0)
-> > +#define PHY_UNTESTCLR			0
-> > +
-> > +#define DSI_PHY_TST_CTRL1		0x68
-> > +#define PHY_TESTEN			BIT(16)
-> > +#define PHY_UNTESTEN			0
-> > +#define PHY_TESTDOUT(n)			(((n) & 0xff) << 8)
-> > +#define PHY_TESTDIN(n)			(((n) & 0xff) << 0)
-> > +
-> > +struct imx_mipi_dsi {
-> > +	struct drm_encoder encoder;
-> > +	struct device *dev;
-> > +	struct regmap *mux_sel;
-> > +	struct dw_mipi_dsi *mipi_dsi;
-> > +	struct clk *pllref_clk;
-> > +
-> > +	void __iomem *base;
-> > +	unsigned int lane_mbps;
-> > +};
-> > +
-> > +struct dphy_pll_testdin_map {
-> > +	unsigned int max_mbps;
-> > +	u8 testdin;
-> > +};
-> > +
-> > +/* The table is based on 27MHz DPHY pll reference clock. */
-> > +static const struct dphy_pll_testdin_map dptdin_map[] = {
-> > +	{160, 0x04}, {180, 0x24}, {200, 0x44}, {210, 0x06},
-> > +	{240, 0x26}, {250, 0x46}, {270, 0x08}, {300, 0x28},
-> > +	{330, 0x48}, {360, 0x2a}, {400, 0x4a}, {450, 0x0c},
-> > +	{500, 0x2c}, {550, 0x0e}, {600, 0x2e}, {650, 0x10},
-> > +	{700, 0x30}, {750, 0x12}, {800, 0x32}, {850, 0x14},
-> > +	{900, 0x34}, {950, 0x54}, {1000, 0x74}
-> > +};
-> > +
-> > +static inline struct imx_mipi_dsi *enc_to_dsi(struct drm_encoder *enc)
-> > +{
-> > +	return container_of(enc, struct imx_mipi_dsi, encoder);
-> > +}
-> > +
-> > +static void imx_mipi_dsi_set_ipu_di_mux(struct imx_mipi_dsi *dsi, int ipu_di)
-> > +{
-> > +	regmap_update_bits(dsi->mux_sel, IOMUXC_GPR3,
-> > +			   IMX6Q_GPR3_MIPI_MUX_CTL_MASK,
-> > +			   ipu_di << IMX6Q_GPR3_MIPI_MUX_CTL_SHIFT);
-> > +}
-> > +
-> > +static bool imx_mipi_dsi_encoder_mode_fixup(struct drm_encoder *encoder,
-> > +					    const struct drm_display_mode *mode,
-> > +					    struct drm_display_mode *adj_mode)
-> > +{
-> > +	return true;
-> > +}
-> > +
-> > +static int imx_mipi_dsi_encoder_atomic_check(struct drm_encoder *encoder,
-> > +					     struct drm_crtc_state *crtc_state,
-> > +					     struct drm_connector_state *conn)
-> > +{
-> > +	struct imx_crtc_state *imx_crtc_state = to_imx_crtc_state(crtc_state);
-> > +
-> > +	/* The following values are taken from dw_hdmi_imx_atomic_check */
-> > +	imx_crtc_state->bus_format = MEDIA_BUS_FMT_RGB888_1X24;
-> > +	imx_crtc_state->di_hsync_pin = 2;
-> > +	imx_crtc_state->di_vsync_pin = 3;
-> > +
-> > +	return 0;
-> > +}
-> 
-> No encoder functions please. This should be a bridge driver, the encoder
-> should be created by the i.MX display controller driver itself. As that
-> would require quite a bit of refactoring I'm OK having an encoder here
-> for the meantime, but it should be a dummy one, without any operation.
+Current dts files with 'gpio-led' nodes were manually verified.
+In order to automate this process leds-gpio.txt
+has been converted to yaml. With this conversion a check
+for pattern properties was added. A test with the command
+below gives a screen full of warnings like:
 
-+1 on this, came to say the same. This seems to duplicate the dw-hdmi
-design, where the code organization is a bit a mess, with some parts in
-drm/bridge, and some parts in each drm_device driver. Plus drm_encoder in
-there on top.
+arch/arm64/boot/dts/rockchip/rk3368-r88.dt.yaml: gpio-leds:
+'work' does not match any of the regexes:
+'(^led-[0-9a-f]$|led)', 'pinctrl-[0-9]+'
 
-If we want to continue with the drm_bridge abstraction for these kind of
-drivers then imo we need:
+Fix these errors with help of the following rules:
 
-- to make drm_bridge the actual abstraction, no leaking back&forth between
-  the bridge chip and the overall drm_device side of things.
+1: Add nodename in the preferred form.
 
-- move _all_ dw-mipi-dsi related code into drm/bridge
+2: Always add a label that ends with '_led' to prevent conflicts
+   with other labels such as 'power' and 'mmc'
 
-- for the platform specific binding stuff I think drm/bridge/dw-mipi-dsi
-  directory, which contains the main driver, plus a file each for the
-  imx/stm/whatever platform bindings sounds like a reasonable layout.
+3: If leds need pinctrl add a label that ends with '_led_pin'
+   also to prevent conflicts with other labels.
 
-If that doesn't work, then I think dw-mipi-dsi isn't really a bridge
-driver with clear encapsulation, but instead should be structured as a
-helper library to implement a drm_encoder. And no drm_bridge.
+patternProperties:
+  # The first form is preferred, but fall back to just 'led'
+  # anywhere in the node name to at least catch some child nodes.
+  "(^led-[0-9a-f]$|led)":
 
-And yes the exact same problem exists with dw-hdmi. That's the reason why
-I've started to look into these, it's not really a code pattern we should
-repeat imo.
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/leds/
+leds-gpio.yaml
 
-Cheers, Daniel
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts     |  4 +--
+ arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts |  6 ++---
+ arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts     |  4 +--
+ arch/arm64/boot/dts/rockchip/rk3328-rock64.dts     |  4 +--
+ arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts    |  4 +--
+ .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    |  4 +--
+ arch/arm64/boot/dts/rockchip/rk3368-r88.dts        |  2 +-
+ arch/arm64/boot/dts/rockchip/rk3399-ficus.dts      | 29 +++++++++++-----------
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts    | 10 ++++----
+ arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts |  6 ++---
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts      | 10 ++++----
+ arch/arm64/boot/dts/rockchip/rk3399-rock960.dts    | 29 +++++++++++-----------
+ 12 files changed, 57 insertions(+), 55 deletions(-)
 
-> 
-> > +
-> > +static void imx_mipi_dsi_encoder_commit(struct drm_encoder *encoder)
-> > +{
-> > +	struct imx_mipi_dsi *dsi = enc_to_dsi(encoder);
-> > +	int mux = drm_of_encoder_active_port_id(dsi->dev->of_node, encoder);
-> > +
-> > +	imx_mipi_dsi_set_ipu_di_mux(dsi, mux);
-> > +}
-> > +
-> > +static void imx_mipi_dsi_encoder_disable(struct drm_encoder *encoder)
-> > +{
-> > +}
-> > +
-> > +static const struct drm_encoder_helper_funcs imx_mipi_dsi_encoder_helpers = {
-> > +	.mode_fixup = imx_mipi_dsi_encoder_mode_fixup,
-> > +	.commit = imx_mipi_dsi_encoder_commit,
-> > +	.disable = imx_mipi_dsi_encoder_disable,
-> > +	.atomic_check = imx_mipi_dsi_encoder_atomic_check,
-> > +};
-> > +
-> > +static enum drm_mode_status imx_mipi_dsi_mode_valid(void *priv_data,
-> > +					const struct drm_display_mode *mode)
-> > +{
-> > +	/*
-> > +	 * The VID_PKT_SIZE field in the DSI_VID_PKT_CFG
-> > +	 * register is 11-bit.
-> > +	 */
-> > +	if (mode->hdisplay > 0x7ff)
-> > +		return MODE_BAD_HVALUE;
-> > +
-> > +	/*
-> > +	 * The V_ACTIVE_LINES field in the DSI_VTIMING_CFG
-> > +	 * register is 11-bit.
-> > +	 */
-> > +	if (mode->vdisplay > 0x7ff)
-> > +		return MODE_BAD_VVALUE;
-> > +
-> > +	return MODE_OK;
-> > +}
-> > +
-> > +
-> > +static unsigned int max_mbps_to_testdin(unsigned int max_mbps)
-> > +{
-> > +	unsigned int i;
-> > +
-> > +	for (i = 0; i < ARRAY_SIZE(dptdin_map); i++)
-> > +		if (dptdin_map[i].max_mbps == max_mbps)
-> > +			return dptdin_map[i].testdin;
-> > +
-> > +	return -EINVAL;
-> > +}
-> > +
-> > +static inline void dsi_write(struct imx_mipi_dsi *dsi, u32 reg, u32 val)
-> > +{
-> > +	writel(val, dsi->base + reg);
-> > +}
-> > +
-> > +static int imx_mipi_dsi_phy_init(void *priv_data)
-> > +{
-> > +	struct imx_mipi_dsi *dsi = priv_data;
-> > +	int testdin;
-> > +
-> > +	testdin = max_mbps_to_testdin(dsi->lane_mbps);
-> > +	if (testdin < 0) {
-> > +		DRM_DEV_ERROR(dsi->dev,
-> > +			      "failed to get testdin for %dmbps lane clock\n",
-> > +			      dsi->lane_mbps);
-> > +		return testdin;
-> > +	}
-> > +
-> > +	dsi_write(dsi, DSI_PHY_IF_CTRL, PHY_IF_CTRL_RESET);
-> > +	dsi_write(dsi, DSI_PWR_UP, POWERUP);
-> > +
-> > +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLK | PHY_UNTESTCLR);
-> > +	dsi_write(dsi, DSI_PHY_TST_CTRL1, PHY_TESTEN | PHY_TESTDOUT(0) |
-> > +		  PHY_TESTDIN(0x44));
-> > +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
-> > +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLK | PHY_UNTESTCLR);
-> > +	dsi_write(dsi, DSI_PHY_TST_CTRL1, PHY_UNTESTEN | PHY_TESTDOUT(0) |
-> > +		  PHY_TESTDIN(testdin));
-> > +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
-> > +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLK | PHY_UNTESTCLR);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int imx_mipi_dsi_get_lane_mbps(void *priv_data,
-> > +				      const struct drm_display_mode *mode,
-> > +				      unsigned long mode_flags, u32 lanes,
-> > +				      u32 format, unsigned int *lane_mbps)
-> > +{
-> > +	struct imx_mipi_dsi *dsi = priv_data;
-> > +	int bpp;
-> > +	unsigned int i, target_mbps, mpclk;
-> > +	unsigned long pllref;
-> > +
-> > +	bpp = mipi_dsi_pixel_format_to_bpp(format);
-> > +	if (bpp < 0) {
-> > +		DRM_DEV_ERROR(dsi->dev, "failed to get bpp for format %d: %d\n",
-> > +			      format, bpp);
-> > +		return bpp;
-> > +	}
-> > +
-> > +	pllref = clk_get_rate(dsi->pllref_clk);
-> > +	if (pllref != 27000000)
-> > +		DRM_WARN("DSI pllref_clk not set to 27Mhz\n");
-> > +
-> > +	mpclk = DIV_ROUND_UP(mode->clock, MSEC_PER_SEC);
-> > +	if (mpclk) {
-> > +		/* take 1/0.7 blanking overhead into consideration */
-> > +		target_mbps = (mpclk * (bpp / lanes) * 10) / 7;
-> > +	} else {
-> > +		DRM_DEV_ERROR(dsi->dev, "use default 1Gbps DPHY pll clock\n");
-> > +		target_mbps = 1000;
-> > +	}
-> > +
-> > +	DRM_DEV_DEBUG(dsi->dev, "target pllref_clk frequency is %uMbps\n",
-> > +		      target_mbps);
-> > +
-> > +	for (i = 0; i < ARRAY_SIZE(dptdin_map); i++) {
-> > +		if (target_mbps < dptdin_map[i].max_mbps) {
-> > +			*lane_mbps = dptdin_map[i].max_mbps;
-> > +			dsi->lane_mbps = *lane_mbps;
-> > +			DRM_DEV_DEBUG(dsi->dev,
-> > +				      "real pllref_clk frequency is %uMbps\n",
-> > +				      *lane_mbps);
-> > +			return 0;
-> > +		}
-> > +	}
-> > +
-> > +	DRM_DEV_ERROR(dsi->dev, "DPHY clock frequency %uMbps is out of range\n",
-> > +		      target_mbps);
-> > +
-> > +	return -EINVAL;
-> > +}
-> > +
-> > +static int
-> > +dw_mipi_dsi_phy_get_timing(void *priv_data, unsigned int lane_mbps,
-> > +			   struct dw_mipi_dsi_dphy_timing *timing)
-> > +{
-> > +	timing->clk_hs2lp = 0x40;
-> > +	timing->clk_lp2hs = 0x40;
-> > +	timing->data_hs2lp = 0x40;
-> > +	timing->data_lp2hs = 0x40;
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct dw_mipi_dsi_phy_ops dw_mipi_dsi_imx6_phy_ops = {
-> > +	.init = imx_mipi_dsi_phy_init,
-> > +	.get_lane_mbps = imx_mipi_dsi_get_lane_mbps,
-> > +	.get_timing = dw_mipi_dsi_phy_get_timing,
-> > +};
-> > +
-> > +static struct dw_mipi_dsi_plat_data imx6q_mipi_dsi_drv_data = {
-> > +	.max_data_lanes = 2,
-> > +	.mode_valid = imx_mipi_dsi_mode_valid,
-> > +	.phy_ops = &dw_mipi_dsi_imx6_phy_ops,
-> > +};
-> > +
-> > +static const struct of_device_id imx_dsi_dt_ids[] = {
-> > +	{
-> > +		.compatible = "fsl,imx6q-mipi-dsi",
-> > +		.data = &imx6q_mipi_dsi_drv_data,
-> > +	},
-> > +	{ /* sentinel */ }
-> > +};
-> > +MODULE_DEVICE_TABLE(of, imx_dsi_dt_ids);
-> > +
-> > +static int imx_mipi_dsi_bind(struct device *dev, struct device *master,
-> > +			     void *data)
-> > +{
-> > +	struct imx_mipi_dsi *dsi = dev_get_drvdata(dev);
-> > +	struct drm_device *drm = data;
-> > +	int ret;
-> > +
-> > +	ret = clk_prepare_enable(dsi->pllref_clk);
-> > +	if (ret) {
-> > +		DRM_DEV_ERROR(dev, "Failed to enable pllref_clk: %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	ret = imx_drm_create_encoder(drm, &dsi->encoder, dsi->dev->of_node);
-> > +	if (ret) {
-> > +		DRM_DEV_ERROR(dsi->dev, "failed to create drm encoder\n");
-> > +		return ret;
-> > +	}
-> > +
-> > +	drm_encoder_helper_add(&dsi->encoder, &imx_mipi_dsi_encoder_helpers);
-> > +
-> > +	ret = dw_mipi_dsi_bind(dsi->mipi_dsi, &dsi->encoder);
-> > +	if (ret) {
-> > +		DRM_DEV_ERROR(dev, "Failed to bind: %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static void imx_mipi_dsi_unbind(struct device *dev, struct device *master,
-> > +				void *data)
-> > +{
-> > +	struct imx_mipi_dsi *dsi = dev_get_drvdata(dev);
-> > +
-> > +	dw_mipi_dsi_unbind(dsi->mipi_dsi);
-> > +
-> > +	clk_disable_unprepare(dsi->pllref_clk);
-> > +}
-> > +
-> > +static const struct component_ops imx_mipi_dsi_ops = {
-> > +	.bind	= imx_mipi_dsi_bind,
-> > +	.unbind	= imx_mipi_dsi_unbind,
-> > +};
-> > +
-> > +static int imx_mipi_dsi_probe(struct platform_device *pdev)
-> > +{
-> > +	struct device *dev = &pdev->dev;
-> > +	const struct of_device_id *of_id = of_match_device(imx_dsi_dt_ids, dev);
-> > +	struct dw_mipi_dsi_plat_data *pdata = (struct dw_mipi_dsi_plat_data *) of_id->data;
-> > +	struct imx_mipi_dsi *dsi;
-> > +	struct resource *res;
-> > +	int ret;
-> > +
-> > +	dsi = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
-> > +	if (!dsi)
-> > +		return -ENOMEM;
-> > +
-> > +	dsi->dev = dev;
-> > +
-> > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> > +	dsi->base = devm_ioremap_resource(dev, res);
-> > +	if (IS_ERR(dsi->base)) {
-> > +		ret = PTR_ERR(dsi->base);
-> > +		DRM_DEV_ERROR(dev, "Unable to get dsi registers: %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	dsi->pllref_clk = devm_clk_get(dev, "ref");
-> > +	if (IS_ERR(dsi->pllref_clk)) {
-> > +		ret = PTR_ERR(dsi->pllref_clk);
-> > +		DRM_DEV_ERROR(dev, "Unable to get pllref_clk: %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	dsi->mux_sel = syscon_regmap_lookup_by_phandle(dev->of_node, "fsl,gpr");
-> > +	if (IS_ERR(dsi->mux_sel)) {
-> > +		ret = PTR_ERR(dsi->mux_sel);
-> > +		DRM_DEV_ERROR(dev, "Failed to get GPR regmap: %d\n", ret);
-> > +		return ret;
-> > +	}
-> > +
-> > +	dev_set_drvdata(dev, dsi);
-> > +
-> > +	imx6q_mipi_dsi_drv_data.base = dsi->base;
-> > +	imx6q_mipi_dsi_drv_data.priv_data = dsi;
-> > +
-> > +	dsi->mipi_dsi = dw_mipi_dsi_probe(pdev, pdata);
-> > +	if (IS_ERR(dsi->mipi_dsi)) {
-> > +		ret = PTR_ERR(dsi->mipi_dsi);
-> > +		DRM_DEV_ERROR(dev, "Failed to probe DW DSI host: %d\n", ret);
-> > +		goto err_clkdisable;
-> > +	}
-> > +
-> > +	return component_add(&pdev->dev, &imx_mipi_dsi_ops);
-> > +
-> > +err_clkdisable:
-> > +	clk_disable_unprepare(dsi->pllref_clk);
-> > +	return ret;
-> > +}
-> > +
-> > +static int imx_mipi_dsi_remove(struct platform_device *pdev)
-> > +{
-> > +	component_del(&pdev->dev, &imx_mipi_dsi_ops);
-> > +	return 0;
-> > +}
-> > +
-> > +static struct platform_driver imx_mipi_dsi_driver = {
-> > +	.probe		= imx_mipi_dsi_probe,
-> > +	.remove		= imx_mipi_dsi_remove,
-> > +	.driver		= {
-> > +		.of_match_table = imx_dsi_dt_ids,
-> > +		.name	= "dw-mipi-dsi-imx6",
-> > +	},
-> > +};
-> > +module_platform_driver(imx_mipi_dsi_driver);
-> > +
-> > +MODULE_DESCRIPTION("i.MX6 MIPI DSI host controller driver");
-> > +MODULE_AUTHOR("Liu Ying <victor.liu-3arQi8VN3Tc@public.gmane.org>");
-> > +MODULE_AUTHOR("Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>");
-> > +MODULE_LICENSE("GPL");
-> > -- 
-> > 2.26.0
-> > 
-> 
-> -- 
-> Regards,
-> 
-> Laurent Pinchart
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+index 8011e9b12..ccb27023c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3308-roc-cc.dts
+@@ -28,14 +28,14 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 
+-		power {
++		power_led: led-0 {
+ 			label = "firefly:red:power";
+ 			linux,default-trigger = "ir-power-click";
+ 			default-state = "on";
+ 			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
+ 		};
+ 
+-		user {
++		user_led: led-1 {
+ 			label = "firefly:blue:user";
+ 			linux,default-trigger = "ir-user-click";
+ 			default-state = "off";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+index cf20aac5f..fe253669b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+@@ -128,9 +128,9 @@
+ 	leds: gpio-leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "led_pins";
+-		pinctrl-0 = <&led_pins>;
++		pinctrl-0 = <&blue_led_pin>;
+ 
+-		led-0 {
++		blue_led: led-0 {
+ 			label = "blue:heartbeat";
+ 			gpios = <&gpio0 RK_PC1 GPIO_ACTIVE_HIGH>;
+ 			linux,default-trigger = "heartbeat";
+@@ -528,7 +528,7 @@
+ 	};
+ 
+ 	leds {
+-		led_pins: led-pins {
++		blue_led_pin: blue-led-pin {
+ 			rockchip,pins = <0 RK_PC1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index 8d553c921..34db48c27 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -86,7 +86,7 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 
+-		power {
++		power_led: led-0 {
+ 			label = "firefly:blue:power";
+ 			linux,default-trigger = "heartbeat";
+ 			gpios = <&rk805 1 GPIO_ACTIVE_LOW>;
+@@ -94,7 +94,7 @@
+ 			mode = <0x23>;
+ 		};
+ 
+-		user {
++		user_led: led-1 {
+ 			label = "firefly:yellow:user";
+ 			linux,default-trigger = "mmc1";
+ 			gpios = <&rk805 0 GPIO_ACTIVE_LOW>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+index ebf3eb222..6e09c223e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
+@@ -73,12 +73,12 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 
+-		power {
++		power_led: led-0 {
+ 			gpios = <&rk805 1 GPIO_ACTIVE_LOW>;
+ 			linux,default-trigger = "mmc0";
+ 		};
+ 
+-		standby {
++		standby_led: led-1 {
+ 			gpios = <&rk805 0 GPIO_ACTIVE_LOW>;
+ 			linux,default-trigger = "heartbeat";
+ 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
+index 1d0778ff2..46357d1d7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3368-geekbox.dts
+@@ -50,13 +50,13 @@
+ 	leds: gpio-leds {
+ 		compatible = "gpio-leds";
+ 
+-		blue {
++		blue_led: led-0 {
+ 			gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_HIGH>;
+ 			label = "geekbox:blue:led";
+ 			default-state = "on";
+ 		};
+ 
+-		red {
++		red_led: led-1 {
+ 			gpios = <&gpio2 RK_PA3 GPIO_ACTIVE_HIGH>;
+ 			label = "geekbox:red:led";
+ 			default-state = "off";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
+index 6cc310255..b058ce999 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3368-orion-r68-meta.dts
+@@ -50,7 +50,7 @@
+ 	leds: gpio-leds {
+ 		compatible = "gpio-leds";
+ 
+-		red {
++		red_led: led-0 {
+ 			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
+ 			label = "orion:red:led";
+ 			pinctrl-names = "default";
+@@ -58,7 +58,7 @@
+ 			default-state = "on";
+ 		};
+ 
+-		blue {
++		blue_led: led-1 {
+ 			gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
+ 			label = "orion:blue:led";
+ 			pinctrl-names = "default";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
+index 006a1fb6a..236ab0f1b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3368-r88.dts
+@@ -43,7 +43,7 @@
+ 	leds: gpio-leds {
+ 		compatible = "gpio-leds";
+ 
+-		work {
++		work_led: led-0 {
+ 			gpios = <&gpio3 RK_PD5 GPIO_ACTIVE_HIGH>;
+ 			label = "r88:green:led";
+ 			pinctrl-names = "default";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
+index ebe2ee77b..1ce85a581 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-ficus.dts
+@@ -27,42 +27,43 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&user_led1>, <&user_led2>, <&user_led3>,
+-			    <&user_led4>, <&wlan_led>, <&bt_led>;
++		pinctrl-0 = <&user_led1_pin>, <&user_led2_pin>,
++			    <&user_led3_pin>, <&user_led4_pin>,
++			    <&wlan_led_pin>, <&bt_led_pin>;
+ 
+-		user_led1 {
++		user_led1: led-1 {
+ 			label = "red:user1";
+ 			gpios = <&gpio4 25 0>;
+ 			linux,default-trigger = "heartbeat";
+ 		};
+ 
+-		user_led2 {
++		user_led2: led-2 {
+ 			label = "red:user2";
+ 			gpios = <&gpio4 26 0>;
+ 			linux,default-trigger = "mmc0";
+ 		};
+ 
+-		user_led3 {
++		user_led3: led-3 {
+ 			label = "red:user3";
+ 			gpios = <&gpio4 30 0>;
+ 			linux,default-trigger = "mmc1";
+ 		};
+ 
+-		user_led4 {
++		user_led4: led-4 {
+ 			label = "red:user4";
+ 			gpios = <&gpio1 0 0>;
+ 			panic-indicator;
+ 			linux,default-trigger = "none";
+ 		};
+ 
+-		wlan_active_led {
++		wlan_active_led: led-5 {
+ 			label = "red:wlan";
+ 			gpios = <&gpio1 1 0>;
+ 			linux,default-trigger = "phy0tx";
+ 			default-state = "off";
+ 		};
+ 
+-		bt_active_led {
++		bt_active_led: led-6 {
+ 			label = "red:bt";
+ 			gpios = <&gpio1 4 0>;
+ 			linux,default-trigger = "hci0-power";
+@@ -114,32 +115,32 @@
+ 	};
+ 
+ 	leds {
+-		user_led1: user_led1 {
++		user_led1_pin: user-led1-pin {
+ 			rockchip,pins =
+ 				<4 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		user_led2: user_led2 {
++		user_led2_pin: user-led2-pin {
+ 			rockchip,pins =
+ 				<4 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		user_led3: user_led3 {
++		user_led3_pin: user-led3-pin {
+ 			rockchip,pins =
+ 				<4 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		user_led4: user_led4 {
++		user_led4_pin: user-led4-pin {
+ 			rockchip,pins =
+ 				<1 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		wlan_led: wlan_led {
++		wlan_led_pin: wlan-led-pin {
+ 			rockchip,pins =
+ 				<1 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		bt_led: bt_led {
++		bt_led_pin: bt-led-pin {
+ 			rockchip,pins =
+ 				<1 RK_PA4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index d63faf38c..20b5599f5 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -91,15 +91,15 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&work_led_gpio>, <&diy_led_gpio>;
++		pinctrl-0 = <&work_led_pin>, <&diy_led_pin>;
+ 
+-		work-led {
++		work_led: led-0 {
+ 			label = "work";
+ 			default-state = "on";
+ 			gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
+ 		};
+ 
+-		diy-led {
++		diy_led: led-1 {
+ 			label = "diy";
+ 			default-state = "off";
+ 			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
+@@ -629,11 +629,11 @@
+ 	};
+ 
+ 	leds {
+-		work_led_gpio: work_led-gpio {
++		work_led_pin: work-led-pin {
+ 			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		diy_led_gpio: diy_led-gpio {
++		diy_led_pin: diy-led-pin {
+ 			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+index 4b4a38e59..bf87fa32d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-hugsun-x99.dts
+@@ -39,9 +39,9 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&power_led_gpio>;
++		pinctrl-0 = <&power_led_pin>;
+ 
+-		led-0 {
++		power_led: led-0 {
+ 			label = "blue:power";
+ 			gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_HIGH>;
+ 			default-state = "on";
+@@ -510,7 +510,7 @@
+ 	};
+ 
+ 	leds {
+-		power_led_gpio: power-led-gpio {
++		power_led_pin: power-led-pin {
+ 			rockchip,pins = <4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+index d44c73521..cb0245d22 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+@@ -90,9 +90,9 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&pwrled_gpio &slpled_gpio>;
++		pinctrl-0 = <&pwr_led_pin &slp_led_pin>;
+ 
+-		green-led {
++		green_led: led-0 {
+ 			color = <LED_COLOR_ID_GREEN>;
+ 			default-state = "on";
+ 			function = LED_FUNCTION_POWER;
+@@ -100,7 +100,7 @@
+ 			label = "green:power";
+ 		};
+ 
+-		red-led {
++		red_led: led-1 {
+ 			color = <LED_COLOR_ID_RED>;
+ 			default-state = "off";
+ 			function = LED_FUNCTION_STANDBY;
+@@ -825,11 +825,11 @@
+ 	};
+ 
+ 	leds {
+-		pwrled_gpio: pwrled_gpio {
++		pwr_led_pin: pwr-led-pin {
+ 			rockchip,pins = <0 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		slpled_gpio: slpled_gpio {
++		slp_led_pin: slp-led-pin {
+ 			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+index 437a75f31..c88295782 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock960.dts
+@@ -17,42 +17,43 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+-		pinctrl-0 = <&user_led1>, <&user_led2>, <&user_led3>,
+-			    <&user_led4>, <&wlan_led>, <&bt_led>;
++		pinctrl-0 = <&user_led1_pin>, <&user_led2_pin>,
++			    <&user_led3_pin>, <&user_led4_pin>,
++			    <&wlan_led_pin>, <&bt_led_pin>;
+ 
+-		user_led1 {
++		user_led1: led-1 {
+ 			label = "green:user1";
+ 			gpios = <&gpio4 RK_PC2 0>;
+ 			linux,default-trigger = "heartbeat";
+ 		};
+ 
+-		user_led2 {
++		user_led2: led-2 {
+ 			label = "green:user2";
+ 			gpios = <&gpio4 RK_PC6 0>;
+ 			linux,default-trigger = "mmc0";
+ 		};
+ 
+-		user_led3 {
++		user_led3: led-3 {
+ 			label = "green:user3";
+ 			gpios = <&gpio4 RK_PD0 0>;
+ 			linux,default-trigger = "mmc1";
+ 		};
+ 
+-		user_led4 {
++		user_led4: led-4 {
+ 			label = "green:user4";
+ 			gpios = <&gpio4 RK_PD4 0>;
+ 			panic-indicator;
+ 			linux,default-trigger = "none";
+ 		};
+ 
+-		wlan_active_led {
++		wlan_active_led: led-5 {
+ 			label = "yellow:wlan";
+ 			gpios = <&gpio4 RK_PD5 0>;
+ 			linux,default-trigger = "phy0tx";
+ 			default-state = "off";
+ 		};
+ 
+-		bt_active_led {
++		bt_active_led: led-6 {
+ 			label = "blue:bt";
+ 			gpios = <&gpio4 RK_PD6 0>;
+ 			linux,default-trigger = "hci0-power";
+@@ -68,32 +69,32 @@
+ 
+ &pinctrl {
+ 	leds {
+-		user_led1: user_led1 {
++		user_led1_pin: user-led1-pin {
+ 			rockchip,pins =
+ 				<4 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		user_led2: user_led2 {
++		user_led2_pin: user-led2-pin {
+ 			rockchip,pins =
+ 				<4 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		user_led3: user_led3 {
++		user_led3_pin: user-led3-pin {
+ 			rockchip,pins =
+ 				<4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		user_led4: user_led4 {
++		user_led4_pin: user-led4-pin {
+ 			rockchip,pins =
+ 				<4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		wlan_led: wlan_led {
++		wlan_led_pin: wlan-led-pin {
+ 			rockchip,pins =
+ 				<4 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 
+-		bt_led: bt_led {
++		bt_led_pin: bt-led-pin {
+ 			rockchip,pins =
+ 				<4 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+2.11.0
