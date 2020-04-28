@@ -1,11 +1,14 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 0/6] rk3399: Sync linux v5.7-rc1 dts(i)
-Date: Tue, 28 Apr 2020 15:30:13 +0530
-Message-ID: <20200428100019.19155-1-jagan@amarulasolutions.com>
+Subject: [PATCH v2 1/6] arm64: dts: rk3399-puma: Move u-boot properties into
+ -u-boot.dtsi
+Date: Tue, 28 Apr 2020 15:30:14 +0530
+Message-ID: <20200428100019.19155-2-jagan@amarulasolutions.com>
+References: <20200428100019.19155-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200428100019.19155-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -16,70 +19,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Peter Robinson <pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This would help to add new boards along with new drivers
-like DWC3, PCIe on rk3399 platform.
+Move U-Boot specific properties into rk3399-puma u-boot
+specific dtsi file.
 
-So, add v5.7-rc1 linux-next dts(i) files on rk3399 platform.
+This would help to sync the devicetrees from Linux whenever
+required instead of adding specific nodes.
 
+Cc: Peter Robinson <pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
 Changes for v2:
-- keep roc-rk3399-pc dc_12v changes to -u-boot.dtsi 
+- none
 
-[1] https://patchwork.ozlabs.org/project/uboot/cover/20200425105319.12009-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org/
+ arch/arm/dts/rk3399-puma-u-boot.dtsi | 16 ++++++++++++++++
+ arch/arm/dts/rk3399-puma.dtsi        | 11 -----------
+ 2 files changed, 16 insertions(+), 11 deletions(-)
 
-Any inputs?
-Jagan.
-
-Jagan Teki (5):
-  arm64: dts: rk3399-puma: Move u-boot properties into -u-boot.dtsi
-  arm64: dts: rk3399-evb: Move u-boot properties into -u-boot.dtsi
-  clk: rk3399: Set empty for HCLK_SD assigned-clocks
-  arm64: dts: rk3399: Sync v5.7-rc1 from Linux
-  arm: dts: rk3399: Sync roc-pc-mezzanine from v5.7-rc1
-
-Suniel Mahesh (1):
-  rk3399: Add ROC-RK3399-PC Mezzanine board
-
- arch/arm/dts/Makefile                         |   1 +
- arch/arm/dts/cros-ec-keyboard.dtsi            |  10 +-
- arch/arm/dts/cros-ec-sbs.dtsi                 |  39 +-
- arch/arm/dts/rk3399-evb-u-boot.dtsi           |   8 +
- arch/arm/dts/rk3399-evb.dts                   | 522 ++++++++----
- arch/arm/dts/rk3399-ficus.dts                 |   6 +
- arch/arm/dts/rk3399-firefly.dts               | 251 ++++--
- arch/arm/dts/rk3399-gru-bob.dts               |  16 +-
- arch/arm/dts/rk3399-gru-chromebook.dtsi       |  40 +-
- arch/arm/dts/rk3399-gru-kevin.dts             |  34 +-
- arch/arm/dts/rk3399-gru.dtsi                  |  90 +-
- arch/arm/dts/rk3399-khadas-edge.dtsi          |   3 +
- arch/arm/dts/rk3399-leez-p710.dts             |  36 +-
- arch/arm/dts/rk3399-nanopc-t4.dts             |  47 +-
- arch/arm/dts/rk3399-nanopi4.dtsi              |  66 +-
- arch/arm/dts/rk3399-orangepi.dts              |  79 +-
- arch/arm/dts/rk3399-puma-u-boot.dtsi          |  31 +-
- arch/arm/dts/rk3399-puma.dtsi                 | 578 +++++--------
- .../dts/rk3399-roc-pc-mezzanine-u-boot.dtsi   |   6 +
- arch/arm/dts/rk3399-roc-pc-mezzanine.dts      |  93 ++
- arch/arm/dts/rk3399-roc-pc-u-boot.dtsi        |  36 +
- arch/arm/dts/rk3399-roc-pc.dts                |   3 +-
- arch/arm/dts/rk3399-roc-pc.dtsi               |  35 +-
- arch/arm/dts/rk3399-rock-pi-4.dts             | 129 +++
- arch/arm/dts/rk3399-rock960.dts               |  49 ++
- arch/arm/dts/rk3399-rock960.dtsi              |  13 +-
- arch/arm/dts/rk3399-rockpro64.dts             | 751 +----------------
- arch/arm/dts/rk3399-rockpro64.dtsi            | 797 ++++++++++++++++++
- arch/arm/dts/rk3399-u-boot.dtsi               |   1 +
- arch/arm/dts/rk3399.dtsi                      | 583 ++++++++-----
- board/firefly/roc-pc-rk3399/MAINTAINERS       |   2 +
- configs/roc-pc-mezzanine-rk3399_defconfig     |  67 ++
- drivers/clk/rockchip/clk_rk3399.c             |   1 +
- 33 files changed, 2763 insertions(+), 1660 deletions(-)
- create mode 100644 arch/arm/dts/rk3399-roc-pc-mezzanine-u-boot.dtsi
- create mode 100644 arch/arm/dts/rk3399-roc-pc-mezzanine.dts
- create mode 100644 arch/arm/dts/rk3399-rockpro64.dtsi
- create mode 100644 configs/roc-pc-mezzanine-rk3399_defconfig
-
+diff --git a/arch/arm/dts/rk3399-puma-u-boot.dtsi b/arch/arm/dts/rk3399-puma-u-boot.dtsi
+index 52f62b5d39..e664779227 100644
+--- a/arch/arm/dts/rk3399-puma-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-puma-u-boot.dtsi
+@@ -22,3 +22,19 @@
+        };
+ 
+ };
++
++&bios_enable {
++	u-boot,dm-pre-reloc;
++};
++
++&gpio1 {
++	u-boot,dm-pre-reloc;
++};
++
++&gpio3 {
++	u-boot,dm-pre-reloc;
++};
++
++&spiflash {
++	u-boot,dm-pre-reloc;
++};
+diff --git a/arch/arm/dts/rk3399-puma.dtsi b/arch/arm/dts/rk3399-puma.dtsi
+index 558b6337df..246a892cb7 100644
+--- a/arch/arm/dts/rk3399-puma.dtsi
++++ b/arch/arm/dts/rk3399-puma.dtsi
+@@ -91,7 +91,6 @@
+ 	 */
+ 	bios_enable: bios_enable {
+ 		compatible = "regulator-fixed";
+-		u-boot,dm-pre-reloc;
+ 		regulator-name = "bios_enable";
+ 		enable-active-high;
+ 		gpio = <&gpio3 RK_PD5 GPIO_ACTIVE_LOW>;
+@@ -520,14 +519,6 @@
+ 	status = "okay";
+ };
+ 
+-&gpio1 {
+-	u-boot,dm-pre-reloc;
+-};
+-
+-&gpio3 {
+-	u-boot,dm-pre-reloc;
+-};
+-
+ &pinctrl {
+ 	/* Pins that are not explicitely used by any devices */
+ 	pinctrl-names = "default";
+@@ -633,8 +624,6 @@
+ 	#size-cells = <0>;
+ 
+ 	spiflash: w25q32dw@0 {
+-		u-boot,dm-pre-reloc;
+-
+ 		compatible = "jedec,spi-nor";
+ 		reg = <0>;
+ 		spi-max-frequency = <49500000>;
 -- 
 2.17.1
