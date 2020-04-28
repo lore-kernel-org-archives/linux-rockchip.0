@@ -1,8 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 2/6] arm64: dts: rk3399-evb: Move u-boot properties into
- -u-boot.dtsi
-Date: Tue, 28 Apr 2020 15:30:15 +0530
-Message-ID: <20200428100019.19155-3-jagan@amarulasolutions.com>
+Subject: [PATCH v2 3/6] clk: rk3399: Set empty for HCLK_SD assigned-clocks
+Date: Tue, 28 Apr 2020 15:30:16 +0530
+Message-ID: <20200428100019.19155-4-jagan@amarulasolutions.com>
 References: <20200428100019.19155-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -22,56 +21,34 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Move U-Boot specific properties into rk3399-evb u-boot
-specific dtsi file.
+Due to v5.7-rc1 sync the SD controller nodes in rk3399.dtsi
+have HCLK_SD assigned-clocks which are usually required for
+Linux and don't require to handle them in U-Boot.
 
-This would help to sync the devicetrees from Linux whenever
-required instead of adding specific nodes.
+ assigned-clocks = <&cru HCLK_SD>;
+
+So, mark them as empty in clock otherwise device probe on
+those SD controllers would fail.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
 Changes for v2:
 - none
 
- arch/arm/dts/rk3399-evb-u-boot.dtsi | 8 ++++++++
- arch/arm/dts/rk3399-evb.dts         | 2 --
- 2 files changed, 8 insertions(+), 2 deletions(-)
+ drivers/clk/rockchip/clk_rk3399.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/dts/rk3399-evb-u-boot.dtsi b/arch/arm/dts/rk3399-evb-u-boot.dtsi
-index ccb33d34d1..a4d68f3b98 100644
---- a/arch/arm/dts/rk3399-evb-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-evb-u-boot.dtsi
-@@ -11,3 +11,11 @@
- 		u-boot,spl-boot-order = &sdhci, &sdmmc;
- 	};
- };
-+
-+&i2c0 {
-+	u-boot,dm-pre-reloc;
-+};
-+
-+&rk808 {
-+	u-boot,dm-pre-reloc;
-+};
-diff --git a/arch/arm/dts/rk3399-evb.dts b/arch/arm/dts/rk3399-evb.dts
-index 4129e902a8..c72719c0d3 100644
---- a/arch/arm/dts/rk3399-evb.dts
-+++ b/arch/arm/dts/rk3399-evb.dts
-@@ -199,7 +199,6 @@
- 	clock-frequency = <400000>;
- 	i2c-scl-falling-time-ns = <50>;
- 	i2c-scl-rising-time-ns = <100>;
--	u-boot,dm-pre-reloc;
- 
- 	rk808: pmic@1b {
- 		compatible = "rockchip,rk808";
-@@ -211,7 +210,6 @@
- 		reg = <0x1b>;
- 		rockchip,system-power-controller;
- 		#clock-cells = <1>;
--		u-boot,dm-pre-reloc;
- 		status = "okay";
- 
- 		vcc12-supply = <&vcc3v3_sys>;
+diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
+index 1f62376595..d822acace1 100644
+--- a/drivers/clk/rockchip/clk_rk3399.c
++++ b/drivers/clk/rockchip/clk_rk3399.c
+@@ -996,6 +996,7 @@ static ulong rk3399_clk_set_rate(struct clk *clk, ulong rate)
+ 		break;
+ 	case ACLK_VOP1:
+ 	case HCLK_VOP1:
++	case HCLK_SD:
+ 		/**
+ 		 * assigned-clocks handling won't require for vopl, so
+ 		 * return 0 to satisfy clk_set_defaults during device probe.
 -- 
 2.17.1
