@@ -1,62 +1,61 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: rk3399: fix pd_tcpc0 and pd_tcpc1 node position
-Date: Tue, 28 Apr 2020 22:30:03 +0200
-Message-ID: <20200428203003.3318-2-jbx6244@gmail.com>
-References: <20200428203003.3318-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200428203003.3318-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH] drm/rockchip: cdn-dp-core: Make cdn_dp_core_suspend/resume
+ __maybe_unused
+Date: Tue, 28 Apr 2020 23:31:24 +0200
+Message-ID: <20200428213138.3171708-1-arnd@arndb.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Thierry Reding <treding@nvidia.com>, Sam Ravnborg <sam@ravnborg.org>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The pd_tcpc0 and pd_tcpc1 nodes are currently a sub node of pd_vio.
-In the rk3399 TRM figure of the 'Power Domain Partition' and in the
-table of 'Power Domain and Voltage Domain Summary' these power domains
-are positioned directly under VD_LOGIC, so fix that in 'rk3399.dtsi'.
+With the new static annotation, the compiler warns when the functions
+are actually unused:
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+drivers/gpu/drm/rockchip/cdn-dp-core.c:1123:12: error: 'cdn_dp_resume' defined but not used [-Werror=unused-function]
+ 1123 | static int cdn_dp_resume(struct device *dev)
+      |            ^~~~~~~~~~~~~
+
+Mark them __maybe_unused to suppress that warning as well.
+
+Fixes: 7c49abb4c2f8 ("drm/rockchip: cdn-dp-core: Make cdn_dp_core_suspend/resume static")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index 37279db53..a4dc1bf2e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -1056,6 +1056,16 @@
- 				clocks = <&cru HCLK_SDIO>;
- 				pm_qos = <&qos_sdioaudio>;
- 			};
-+			pd_tcpc0@RK3399_PD_TCPD0 {
-+				reg = <RK3399_PD_TCPD0>;
-+				clocks = <&cru SCLK_UPHY0_TCPDCORE>,
-+					 <&cru SCLK_UPHY0_TCPDPHY_REF>;
-+			};
-+			pd_tcpc1@RK3399_PD_TCPD1 {
-+				reg = <RK3399_PD_TCPD1>;
-+				clocks = <&cru SCLK_UPHY1_TCPDCORE>,
-+					 <&cru SCLK_UPHY1_TCPDPHY_REF>;
-+			};
- 			pd_usb3@RK3399_PD_USB3 {
- 				reg = <RK3399_PD_USB3>;
- 				clocks = <&cru ACLK_USB3>;
-@@ -1088,16 +1098,6 @@
- 					pm_qos = <&qos_isp1_m0>,
- 						 <&qos_isp1_m1>;
- 				};
--				pd_tcpc0@RK3399_PD_TCPD0 {
--					reg = <RK3399_PD_TCPD0>;
--					clocks = <&cru SCLK_UPHY0_TCPDCORE>,
--						 <&cru SCLK_UPHY0_TCPDPHY_REF>;
--				};
--				pd_tcpc1@RK3399_PD_TCPD1 {
--					reg = <RK3399_PD_TCPD1>;
--					clocks = <&cru SCLK_UPHY1_TCPDCORE>,
--						 <&cru SCLK_UPHY1_TCPDPHY_REF>;
--				};
- 				pd_vo@RK3399_PD_VO {
- 					reg = <RK3399_PD_VO>;
- 					#address-cells = <1>;
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index c634b95b50f7..1cde98c6b0e6 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -1106,7 +1106,7 @@ static const struct component_ops cdn_dp_component_ops = {
+ 	.unbind = cdn_dp_unbind,
+ };
+ 
+-static int cdn_dp_suspend(struct device *dev)
++static __maybe_unused int cdn_dp_suspend(struct device *dev)
+ {
+ 	struct cdn_dp_device *dp = dev_get_drvdata(dev);
+ 	int ret = 0;
+@@ -1120,7 +1120,7 @@ static int cdn_dp_suspend(struct device *dev)
+ 	return ret;
+ }
+ 
+-static int cdn_dp_resume(struct device *dev)
++static __maybe_unused int cdn_dp_resume(struct device *dev)
+ {
+ 	struct cdn_dp_device *dp = dev_get_drvdata(dev);
+ 
 -- 
-2.11.0
+2.26.0
