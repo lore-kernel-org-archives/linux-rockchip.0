@@ -1,434 +1,187 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH 5/8] pci: Add Rockchip PCIe controller driver
-Date: Wed, 29 Apr 2020 00:39:08 +0530
-Message-ID: <CAMty3ZDZ-_e1W2TifXbt99Tqa5MDhwvVAH=t3xKrN6YLTg1+zg@mail.gmail.com>
-References: <20200425110354.12381-1-jagan@amarulasolutions.com>
- <20200425110354.12381-6-jagan@amarulasolutions.com>
- <016196137a6060e1@bloch.sibelius.xs4all.nl>
- <CAMty3ZC+DiW2gGjN3rWcrwHPXZfxuGhjJN-1caUXW-Ry7VNR+A@mail.gmail.com>
- <016196512107ed26@bloch.sibelius.xs4all.nl>
+From: Milan =?utf-8?Q?P=2E_Stani=C4=87?= <mps-OV3VlZ6014XR7s880joybQ@public.gmane.org>
+Subject: Re: PROBLEM: [drm:analogix_dp_bridge_atomic_enable [analogix_dp]]
+ *ERROR* Failed to disable psr -110
+Date: Tue, 28 Apr 2020 21:38:42 +0200
+Message-ID: <20200428193842.GA2605@arya.arvanta.net>
+References: <20200329203349.GA15121@arya.arvanta.net>
+ <20200410095719.GA914@arya.arvanta.net>
+ <CAFqH_53TsmtSFnUoWixsa4v6GvOi0Korv3p8BJfROhtW0Afw-Q@mail.gmail.com>
+ <CAD=FV=WWx2KH+qKvGa5yQW7fZHQ_azd69Eza_Gvs18eQPvfHGg@mail.gmail.com>
+ <20200410192926.GA24668@arya.arvanta.net>
+ <CAD=FV=W-5FiZsj-u7V1Kzdo95RaqhE0FQf=nKt7EwyhT5A_RQw@mail.gmail.com>
+ <CAFqH_50ftrsCZjazu_-DOcC4pqZf2UJ2N7e3HqWitz16jyUUOA@mail.gmail.com>
+ <20200414182242.GA1769@arya.arvanta.net>
+ <20200417192614.GA8457@arya.arvanta.net>
+ <20200425211139.GA18575@arya.arvanta.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <016196512107ed26@bloch.sibelius.xs4all.nl>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Mark Kettenis <mark.kettenis@xs4all.nl>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Patrick Wildt <patrick@blueri.se>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20200425211139.GA18575-2zQUq8s2aCOuucbRd6SqTw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Enric Balletbo Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Doug Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Apr 26, 2020 at 1:59 AM Mark Kettenis <mark.kettenis@xs4all.nl> wrote:
->
-> > From: Jagan Teki <jagan@amarulasolutions.com>
-> > Date: Sun, 26 Apr 2020 01:06:56 +0530
-> >
-> > On Sun, Apr 26, 2020 at 12:23 AM Mark Kettenis <mark.kettenis@xs4all.nl> wrote:
-> > >
-> > > > From: Jagan Teki <jagan@amarulasolutions.com>
-> > > > Date: Sat, 25 Apr 2020 16:33:51 +0530
-> > > >
-> > > > Add Rockchip PCIe controller driver for rk3399 platform.
-> > > >
-> > > > Driver support Gen1 by operating as a Root complex.
-> > > >
-> > > > Thanks to Patrick for initial work.
-> > >
-> > > Tried to get this to work on my firefly-rk3399 which made me notice
-> > > some shortcomings:
-> > >
-> > > 1. The vpcie1v8 and vpcie0v9 supplies are optional, just like the
-> > >    vpcie3v3 supply.
-> > >
-> > > 2. The vpcie3v3 regulator check doesn't quite work.
-> >
-> > You mean the regulator check?
->
-> I mean the check wether the regulator is actually there in
-> rockchip_pcie_set_vpcie().  See my suggested changes below.
->
-> > >
-> > > See below for suggestions on how to fix this.
-> > >
-> > > Sadly the NVME SSD doesn't seem to be happy and shows up as only 1023 MB.
-> > > But that is probably not caused by this diff.
-> > >
-> > > > Signed-off-by: Patrick Wildt <patrick@blueri.se>
-> > > > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> > > > ---
-> > > >  drivers/pci/Kconfig         |   8 +
-> > > >  drivers/pci/Makefile        |   1 +
-> > > >  drivers/pci/pcie_rockchip.c | 460 ++++++++++++++++++++++++++++++++++++
-> > > >  drivers/pci/pcie_rockchip.h |  79 +++++++
-> > > >  4 files changed, 548 insertions(+)
-> > > >  create mode 100644 drivers/pci/pcie_rockchip.c
-> > > >  create mode 100644 drivers/pci/pcie_rockchip.h
-> > > >
-> > > > diff --git a/drivers/pci/Kconfig b/drivers/pci/Kconfig
-> > > > index 437cd9a055..3dba84103b 100644
-> > > > --- a/drivers/pci/Kconfig
-> > > > +++ b/drivers/pci/Kconfig
-> > > > @@ -197,4 +197,12 @@ config PCIE_MEDIATEK
-> > > >         Say Y here if you want to enable Gen2 PCIe controller,
-> > > >         which could be found on MT7623 SoC family.
-> > > >
-> > > > +config PCIE_ROCKCHIP
-> > > > +     bool "Enable Rockchip PCIe driver"
-> > > > +     select DM_PCI
-> > > > +     default y if ROCKCHIP_RK3399
-> > > > +     help
-> > > > +       Say Y here if you want to enable PCIe controller support on
-> > > > +       Rockchip SoCs.
-> > > > +
-> > > >  endif
-> > > > diff --git a/drivers/pci/Makefile b/drivers/pci/Makefile
-> > > > index c051ecc9f3..493e9354dd 100644
-> > > > --- a/drivers/pci/Makefile
-> > > > +++ b/drivers/pci/Makefile
-> > > > @@ -43,3 +43,4 @@ obj-$(CONFIG_PCI_PHYTIUM) += pcie_phytium.o
-> > > >  obj-$(CONFIG_PCIE_INTEL_FPGA) += pcie_intel_fpga.o
-> > > >  obj-$(CONFIG_PCI_KEYSTONE) += pcie_dw_ti.o
-> > > >  obj-$(CONFIG_PCIE_MEDIATEK) += pcie_mediatek.o
-> > > > +obj-$(CONFIG_PCIE_ROCKCHIP) += pcie_rockchip.o
-> > > > diff --git a/drivers/pci/pcie_rockchip.c b/drivers/pci/pcie_rockchip.c
-> > > > new file mode 100644
-> > > > index 0000000000..adc64aedf5
-> > > > --- /dev/null
-> > > > +++ b/drivers/pci/pcie_rockchip.c
-> > > > @@ -0,0 +1,460 @@
-> > > > +// SPDX-License-Identifier: GPL-2.0+
-> > > > +/*
-> > > > + * Rockchip AXI PCIe host controller driver
-> > > > + *
-> > > > + * Copyright (c) 2016 Rockchip, Inc.
-> > > > + * Copyright (c) 2020 Amarula Solutions(India)
-> > > > + * Copyright (c) 2020 Jagan Teki <jagan@amarulasolutions.com>
-> > > > + * Copyright (c) 2019 Patrick Wildt <patrick@blueri.se>
-> > > > + * Copyright (c) 2018 Mark Kettenis <kettenis@openbsd.org>
-> > > > + *
-> > > > + * Bits taken from Linux Rockchip PCIe host controller.
-> > > > + */
-> > > > +
-> > > > +#include <common.h>
-> > > > +#include <clk.h>
-> > > > +#include <dm.h>
-> > > > +#include <dm/device_compat.h>
-> > > > +#include <pci.h>
-> > > > +#include <power-domain.h>
-> > > > +#include <power/regulator.h>
-> > > > +#include <reset.h>
-> > > > +#include <syscon.h>
-> > > > +#include <asm/io.h>
-> > > > +#include <asm-generic/gpio.h>
-> > > > +#include <asm/arch-rockchip/clock.h>
-> > > > +#include <linux/iopoll.h>
-> > > > +
-> > > > +#include "pcie_rockchip.h"
-> > > > +
-> > > > +DECLARE_GLOBAL_DATA_PTR;
-> > > > +
-> > > > +static int rockchip_pcie_rd_conf(const struct udevice *bus, pci_dev_t bdf,
-> > > > +                              uint offset, ulong *valuep,
-> > > > +                              enum pci_size_t size)
-> > > > +{
-> > > > +     struct rockchip_pcie *priv = dev_get_priv(bus);
-> > > > +     ulong value;
-> > > > +     u32 off;
-> > > > +
-> > > > +     off = (PCI_BUS(bdf) << 20) | (PCI_DEV(bdf) << 15) |
-> > > > +           (PCI_FUNC(bdf) << 12) | (offset & ~0x3);
-> > > > +
-> > > > +     if ((PCI_BUS(bdf) == priv->first_busno) && (PCI_DEV(bdf) == 0)) {
-> > > > +             value = readl(priv->apb_base + PCIE_RC_NORMAL_BASE + off);
-> > > > +             *valuep = pci_conv_32_to_size(value, offset, size);
-> > > > +             return 0;
-> > > > +     }
-> > > > +
-> > > > +     if ((PCI_BUS(bdf) == priv->first_busno + 1) && (PCI_DEV(bdf) == 0)) {
-> > > > +             value = readl(priv->axi_base + off);
-> > > > +             *valuep = pci_conv_32_to_size(value, offset, size);
-> > > > +             return 0;
-> > > > +     }
-> > > > +
-> > > > +     *valuep = pci_get_ff(size);
-> > > > +
-> > > > +     return 0;
-> > > > +}
-> > > > +
-> > > > +static int rockchip_pcie_wr_conf(struct udevice *bus, pci_dev_t bdf,
-> > > > +                              uint offset, ulong value,
-> > > > +                              enum pci_size_t size)
-> > > > +{
-> > > > +     struct rockchip_pcie *priv = dev_get_priv(bus);
-> > > > +     ulong old;
-> > > > +     u32 off;
-> > > > +
-> > > > +     off = (PCI_BUS(bdf) << 20) | (PCI_DEV(bdf) << 15) |
-> > > > +           (PCI_FUNC(bdf) << 12) | (offset & ~0x3);
-> > > > +
-> > > > +     if ((PCI_BUS(bdf) == priv->first_busno) && (PCI_DEV(bdf) == 0)) {
-> > > > +             old = readl(priv->apb_base + PCIE_RC_NORMAL_BASE + off);
-> > > > +             value = pci_conv_size_to_32(old, value, offset, size);
-> > > > +             writel(value, priv->apb_base + PCIE_RC_NORMAL_BASE + off);
-> > > > +             return 0;
-> > > > +     }
-> > > > +
-> > > > +     if ((PCI_BUS(bdf) == priv->first_busno + 1) && (PCI_DEV(bdf) == 0)) {
-> > > > +             old = readl(priv->axi_base + off);
-> > > > +             value = pci_conv_size_to_32(old, value, offset, size);
-> > > > +             writel(value, priv->axi_base + off);
-> > > > +             return 0;
-> > > > +     }
-> > > > +
-> > > > +     return 0;
-> > > > +}
-> > > > +
-> > > > +static int rockchip_pcie_atr_init(struct rockchip_pcie *priv)
-> > > > +{
-> > > > +     struct udevice *ctlr = pci_get_controller(priv->dev);
-> > > > +     struct pci_controller *hose = dev_get_uclass_priv(ctlr);
-> > > > +     u64 addr, size, offset;
-> > > > +     u32 type;
-> > > > +     int i, region;
-> > > > +
-> > > > +     /* Use region 0 to map PCI configuration space. */
-> > > > +     writel(25 - 1, priv->apb_base + PCIE_ATR_OB_ADDR0(0));
-> > > > +     writel(0, priv->apb_base + PCIE_ATR_OB_ADDR1(0));
-> > > > +     writel(PCIE_ATR_HDR_CFG_TYPE0 | PCIE_ATR_HDR_RID,
-> > > > +            priv->apb_base + PCIE_ATR_OB_DESC0(0));
-> > > > +     writel(0, priv->apb_base + PCIE_ATR_OB_DESC1(0));
-> > > > +
-> > > > +     for (i = 0; i < hose->region_count; i++) {
-> > > > +             if (hose->regions[i].flags == PCI_REGION_SYS_MEMORY)
-> > > > +                     continue;
-> > > > +
-> > > > +             if (hose->regions[i].flags == PCI_REGION_IO)
-> > > > +                     type = PCIE_ATR_HDR_IO;
-> > > > +             else
-> > > > +                     type = PCIE_ATR_HDR_MEM;
-> > > > +
-> > > > +             /* Only support identity mappings. */
-> > > > +             if (hose->regions[i].bus_start !=
-> > > > +                 hose->regions[i].phys_start)
-> > > > +                     return -EINVAL;
-> > > > +
-> > > > +             /* Only support mappings aligned on a region boundary. */
-> > > > +             addr = hose->regions[i].bus_start;
-> > > > +             if (addr & (PCIE_ATR_OB_REGION_SIZE - 1))
-> > > > +                     return -EINVAL;
-> > > > +
-> > > > +             /* Mappings should lie between AXI and APB regions. */
-> > > > +             size = hose->regions[i].size;
-> > > > +             if (addr < (u64)priv->axi_base + PCIE_ATR_OB_REGION0_SIZE)
-> > > > +                     return -EINVAL;
-> > > > +             if (addr + size > (u64)priv->apb_base)
-> > > > +                     return -EINVAL;
-> > > > +
-> > > > +             offset = addr - (u64)priv->axi_base - PCIE_ATR_OB_REGION0_SIZE;
-> > > > +             region = 1 + (offset / PCIE_ATR_OB_REGION_SIZE);
-> > > > +             while (size > 0) {
-> > > > +                     writel(32 - 1,
-> > > > +                            priv->apb_base + PCIE_ATR_OB_ADDR0(region));
-> > > > +                     writel(0, priv->apb_base + PCIE_ATR_OB_ADDR1(region));
-> > > > +                     writel(type | PCIE_ATR_HDR_RID,
-> > > > +                            priv->apb_base + PCIE_ATR_OB_DESC0(region));
-> > > > +                     writel(0, priv->apb_base + PCIE_ATR_OB_DESC1(region));
-> > > > +
-> > > > +                     addr += PCIE_ATR_OB_REGION_SIZE;
-> > > > +                     size -= PCIE_ATR_OB_REGION_SIZE;
-> > > > +                     region++;
-> > > > +             }
-> > > > +     }
-> > > > +
-> > > > +     /* Passthrough inbound translations unmodified. */
-> > > > +     writel(32 - 1, priv->apb_base + PCIE_ATR_IB_ADDR0(2));
-> > > > +     writel(0, priv->apb_base + PCIE_ATR_IB_ADDR1(2));
-> > > > +
-> > > > +     return 0;
-> > > > +}
-> > > > +
-> > > > +static int rockchip_pcie_init_port(struct udevice *dev)
-> > > > +{
-> > > > +     struct rockchip_pcie *priv = dev_get_priv(dev);
-> > > > +     u32 cr, val, status;
-> > > > +     int ret;
-> > > > +
-> > > > +     if (dm_gpio_is_valid(&priv->ep_gpio))
-> > > > +             dm_gpio_set_value(&priv->ep_gpio, 0);
-> > > > +
-> > > > +     ret = reset_assert(&priv->aclk_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to assert aclk reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_assert(&priv->pclk_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to assert pclk reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_assert(&priv->pm_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to assert pm reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_assert(&priv->core_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to assert core reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_assert(&priv->mgmt_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to assert mgmt reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_assert(&priv->mgmt_sticky_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to assert mgmt-sticky reset (ret=%d)\n",
-> > > > +                     ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_assert(&priv->pipe_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to assert pipe reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     udelay(10);
-> > > > +
-> > > > +     ret = reset_deassert(&priv->pm_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to deassert pm reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_deassert(&priv->aclk_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to deassert aclk reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_deassert(&priv->pclk_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to deassert pclk reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     /* Select GEN1 for now */
-> > > > +     cr = PCIE_CLIENT_GEN_SEL_1;
-> > > > +     /* Set Root complex mode */
-> > > > +     cr |= PCIE_CLIENT_CONF_ENABLE | PCIE_CLIENT_MODE_RC;
-> > > > +     writel(cr, priv->apb_base + PCIE_CLIENT_CONFIG);
-> > > > +
-> > > > +     ret = reset_deassert(&priv->mgmt_sticky_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to deassert mgmt-sticky reset (ret=%d)\n",
-> > > > +                     ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_deassert(&priv->core_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to deassert core reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_deassert(&priv->mgmt_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to deassert mgmt reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     ret = reset_deassert(&priv->pipe_rst);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "failed to deassert pipe reset (ret=%d)\n", ret);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     /* Enable Gen1 training */
-> > > > +     writel(PCIE_CLIENT_LINK_TRAIN_ENABLE,
-> > > > +            priv->apb_base + PCIE_CLIENT_CONFIG);
-> > > > +
-> > > > +     if (dm_gpio_is_valid(&priv->ep_gpio))
-> > > > +             dm_gpio_set_value(&priv->ep_gpio, 1);
-> > > > +
-> > > > +     ret = readl_poll_sleep_timeout
-> > > > +                     (priv->apb_base + PCIE_CLIENT_BASIC_STATUS1,
-> > > > +                     status, PCIE_LINK_UP(status), 20, 500 * 1000);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "PCIe link training gen1 timeout!\n");
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     /* Initialize Root Complex registers. */
-> > > > +     writel(PCIE_LM_VENDOR_ROCKCHIP, priv->apb_base + PCIE_LM_VENDOR_ID);
-> > > > +     writel(PCI_CLASS_BRIDGE_PCI << 16,
-> > > > +            priv->apb_base + PCIE_RC_BASE + PCI_CLASS_REVISION);
-> > > > +     writel(PCIE_LM_RCBARPIE | PCIE_LM_RCBARPIS,
-> > > > +            priv->apb_base + PCIE_LM_RCBAR);
-> > > > +
-> > > > +     if (dev_read_bool(dev, "aspm-no-l0s")) {
-> > > > +             val = readl(priv->apb_base + PCIE_RC_PCIE_LCAP);
-> > > > +             val &= ~PCIE_RC_PCIE_LCAP_APMS_L0S;
-> > > > +             writel(val, priv->apb_base + PCIE_RC_PCIE_LCAP);
-> > > > +     }
-> > > > +
-> > > > +     /* Configure Address Translation. */
-> > > > +     ret = rockchip_pcie_atr_init(priv);
-> > > > +     if (ret) {
-> > > > +             dev_err(dev, "PCIE-%d: ATR init failed\n", dev->seq);
-> > > > +             return ret;
-> > > > +     }
-> > > > +
-> > > > +     return 0;
-> > > > +}
-> > > > +
-> > > > +static int rockchip_pcie_set_vpcie(struct udevice *dev)
-> > > > +{
-> > > > +     struct rockchip_pcie *priv = dev_get_priv(dev);
-> > > > +     int ret;
-> > > > +
-> > > > +     if (!IS_ERR(priv->vpcie3v3)) {
-> > >
-> > > I think this should be:
-> > >
-> > >         if (priv->vpcie3v3) {
-> >
-> > I didn't find any issue with the board I have optional of this, but
-> > will check it.
-> >
-> > >
-> > > > +             ret = regulator_set_enable(priv->vpcie3v3, true);
-> > > > +             if (ret) {
-> > > > +                     dev_err(dev, "failed to enable vpcie3v3 (ret=%d)\n",
-> > > > +                             ret);
-> > > > +                     return ret;
-> > > > +             }
-> > > > +     }
-> > > > +
-> > >
-> > > And to make this regulator optional, it needs an
-> > >
-> > >         if (priv->vpcie1v8) {
-> >
-> > I can see from v5.7-rc1, 12v, 3v3 are optional and rest not If I'm not wrong.
->
-> The devicetree binding is clear about it.  See
-> Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt.
->
-> And rk3399-firefly.dts doesn't add the properties.
-
-But, at least I can see these two are supplied from SoC Page 12 [1]?
-
-[1] http://download.t-firefly.com/product/RK3399/Docs/Hardware/Schematic%20&%20Components%20Position%20&%20CAD/Firefly-RK3399%20SCH%20&%20POS/Firefly-RK3399_V10_SCH_(2017-2-8).pdf
+SGkgYWxsIGFnYWluLAoKT24gU2F0LCAyMDIwLTA0LTI1IGF0IDIzOjExLCBNaWxhbiBQLiBTdGFu
+acSHIHdyb3RlOgo+IEhpIEVucmljLCBEb3VnIGFuZCBhbGwsCj4gT24gRnJpLCAyMDIwLTA0LTE3
+IGF0IDIxOjI2LCBNaWxhbiBQLiBTdGFuacSHIHdyb3RlOgo+ID4gT24gVHVlLCAyMDIwLTA0LTE0
+IGF0IDIwOjIyLCBNaWxhbiBQLiBTdGFuacSHIHdyb3RlOgo+ID4gPiBZZXN0ZXJkYXkgSSBtYW5h
+Z2VkIHRvIGJ1aWxkIGNocm9tZU9TIGtlcm5lbCB2ZXJzaW9uIDQuNC4xNzQgYW5kIGJvb3QKPiA+
+ID4gd2l0aCBpdCB3aXRob3V0IGFueSBzZXJpb3VzIHByb2JsZW0uCj4gPiA+IAo+ID4gPiBDdXJy
+ZW50IHVwdGltZSBpcyBvdmVyIDIxIGhvdXIgYW5kIGl0IHdvcmtzIHdlbGwsIGkuZS4gd2l0aG91
+dCBwcm9ibGVtCj4gPiA+IHJlbGF0ZWQgdG8gcm9ja2NoaXAtZHAvYW5hbG9naXggZHJpdmVyLCBl
+dmVuIGFmdGVyIHN1c3BlbmQtdG8tcmFtL3Jlc3VtZQo+ID4gPiBmZXcgdGltZXMuCj4gPiA+IAo+
+ID4gPiBJIHdpbGwgbGV0IGl0IGZldyBkYXlzIHRvIHdvcmsgd2l0aG91dCBzaHV0ZG93biAod2l0
+aG91dCBwb3dlcm9mZiBvcgo+ID4gPiByZWJvb3QpIHRvIHNlZSB3aWxsIGl0IHdvcmsgb3Igd2ls
+bCBhbnkgcHJvYmxlbSBhcHBlYXIuCj4gPiA+IAo+ID4gPiAoYmVzaWRlIHRoaXMgYW5hbG9naXgg
+aXNzdWUsIGxvb2tzIGxpa2UgYWxzbyBlbW1jIHdvcmtzIGZpbmUgd2l0aCB0aGlzCj4gPiA+IGtl
+cm5lbCwgYWx0aG91Z2ggaXQgZG9lc24ndCB3b3JrIGZpbmUgd2l0aCBtYWlubGluZSBrZXJuZWxz
+LiBidXQgdGhpcyBpcwo+ID4gPiBub3QgcmVsYXRlZCkuCj4gPiA+IAo+ID4gPiBJZiB0aGUgbWFj
+aGluZSB3b3JrIGZvciB0aHJlZSBvciBtb3JlIGRheXMgd2l0aG91dCBwcm9ibGVtIEkgd2lsbCBy
+ZXBvcnQKPiA+ID4gdG8geW91LiBNYXliZSBzb21lb25lIGV4cGVyaWVuY2VkIGluIHZpZGVvL2dw
+dSBkcml2ZXJzIHByb2dyYW1taW5nIGNvdWxkCj4gPiA+IG1ha2UgZGlmZnMgYW5kIG1ha2UgaXQg
+dG8gd29yayB3aXRoIG1haW5saW5lIGtlcm5lbHMuCj4gPiAKPiA+IEkgYnVpbHQgY2hyb21lT1Mg
+a2VybmVsIDQuNC4xNzQgYW5kIGFmdGVyIHRocmVlIGRheXMgaXQgd29ya3MgZmluZQo+ID4gcmVn
+YXJkaW5nIHRoaXMgcHJvYmxlbSB3aXRoIGFuYWxvZ2l4IGJyaWRnZS4KPiA+IAo+ID4gV291bGQg
+YmUgbmljZSBpZiBzb21lb25lIHdpdGggR1BVL0RSTSBwcm9ncmFtbWluZyBrbm93bGVkZ2Ugd291
+bGQgbG9vawo+ID4gYXQgZGlmZmVyZW5jZXMgYmV0d2VlbiB0aGlzIGNocm9tZU9TIGtlcm5lbCBh
+bmQgbWFpbmxpbmUgdG8gZmluZCB3aGF0IGlzCj4gPiBjYXVzZSBvZiB0aGUgcHJvYmxlbS4KPiA+
+IAo+ID4gSSB3aWxsIHRyeSB0byBidWlsZCBtYWlubGluZSBrZXJuZWxzIGdvaW5nIGJhY2t3YXJk
+IGJ5IG1ham9yIHZlcnNpb24KPiA+ICg1LjQsIDUuMywgNS4yIGFuZCBzbyBvbikgdG8gdHJ5IHRv
+IHNlZSBpZiBvbmUgb2YgdGhlIHByZXZpb3VzIGRvZXNuJ3QKPiA+IGhhdmUgdGhpcyBwcm9ibGVt
+LiBUaGlzIHdpbGwgdGFrZSBzb21lIHRpbWUgYmVjYXVzZSBwcm9ibGVtIGFwcGVhcnMKPiA+IHJh
+bmRvbWx5LCBzb21ldGltZXMgZmV3IG1pbnV0ZXMgc3RyYWlnaHQgYWZ0ZXIgYm9vdCBidXQgc29t
+ZXRpbWVzIGFmdGVyCj4gPiBkYXkgb3IgdHdvLgo+IAo+IEkndmUgYnVpbHQgNS4yLjEga2VybmVs
+IGFuZCB0ZXN0ZWQgaXQgZm9yIHRocmVlIGRheXMgb2YgdXB0aW1lICh3aXRob3V0Cj4gc2h1dGRv
+d24gb3IgcmVib290KSBhbmQgaXQgd29ya2VkIHdpdGhvdXQgbG9ja2luZyBkaXNwbGF5IGJ1dCBo
+YXZlIGZyb20KPiB0aW1lIHRvIHRpbWUgd2FybmluZ3MgaW4gZG1lc2c6Cj4gLS0tLS0tLS0tLS0t
+LS0tLS0KPiAgICAgNC43NjUxMzNdIHJvY2tjaGlwLWRwIGZmOTcwMDAwLmVkcDogbm8gRFAgcGh5
+IGNvbmZpZ3VyZWQKPiAgNjUyNC45Mzk5MzddIHJvY2tjaGlwLWRwIGZmOTcwMDAwLmVkcDogRmFp
+bGVkIHRvIGFwcGx5IFBTUiAtMTEwCj4gMTQ0ODEuODU0MzI1XSByb2NrY2hpcC1kcCBmZjk3MDAw
+MC5lZHA6IEZhaWxlZCB0byBhcHBseSBQU1IgLTExMAo+IDE0NTY1Ljg4MTAxN10gcm9ja2NoaXAt
+ZHAgZmY5NzAwMDAuZWRwOiBGYWlsZWQgdG8gYXBwbHkgUFNSIC0xMTAKPiAxNTc5My4yODA5NzRd
+IHJvY2tjaGlwLWRwIGZmOTcwMDAwLmVkcDogRmFpbGVkIHRvIGFwcGx5IFBTUiAtMTEwCj4gMjI0
+NzQuOTY4MjcxXSByb2NrY2hpcC1kcCBmZjk3MDAwMC5lZHA6IEZhaWxlZCB0byBhcHBseSBQU1Ig
+LTExMAo+IDI0MDU0LjM5MTQ1NF0gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZWRwOiBGYWlsZWQgdG8g
+YXBwbHkgUFNSIC0xMTAKPiA0MTEyNi41MDc3NjVdIHJvY2tjaGlwLWRwIGZmOTcwMDAwLmVkcDog
+QVVYIENIIGNtZCByZXBseSB0aW1lb3V0IQo+IDQzNTI2LjYwNDE5MV0gcm9ja2NoaXAtZHAgZmY5
+NzAwMDAuZWRwOiBGYWlsZWQgdG8gYXBwbHkgUFNSIC0xMTAKPiAxMTE4MDcuODM5NjQxXSByb2Nr
+Y2hpcC1kcCBmZjk3MDAwMC5lZHA6IEZhaWxlZCB0byBhcHBseSBQU1IgLTExMAo+IDExMjcxMC45
+NTk3OTldIHJvY2tjaGlwLWRwIGZmOTcwMDAwLmVkcDogRmFpbGVkIHRvIGFwcGx5IFBTUiAtMTEw
+Cj4gMTEzMTIyLjM4MzIzMl0gcm9ja2NoaXAtZHAgZmY5NzAwMDAuZWRwOiBGYWlsZWQgdG8gYXBw
+bHkgUFNSIC0xMTAKPiAxMTMyMDUuMjYwMzg0XSByb2NrY2hpcC1kcCBmZjk3MDAwMC5lZHA6IEFV
+WCBDSCBjbWQgcmVwbHkgdGltZW91dCEKPiAxMTMzNzkuNjA5OTk4XSByb2NrY2hpcC1kcCBmZjk3
+MDAwMC5lZHA6IEZhaWxlZCB0byBhcHBseSBQU1IgLTExMAo+IC0tLS0tLS0tLS0tLS0tLS0tLS0K
+PiAKPiBTbyBpdCB3b3JrcyB0aG91Z2ggd2l0aCB0aGlzIGEgbGl0dGxlIGFubm95aW5nIHdhcm5p
+bmdzIGJ1dCBpdCBpcwo+IHN0YWJsZSwgbm8gb3RoZXIgaXNzdWVzIGFuZCBzdXNwZW5kL3Jlc3Vt
+ZSB0byByYW0gYWJvdXQgNSB0byA5IHRpbWVzLgo+IAo+IFRoZW4gSSBidWlsdCA1LjMuMSBrZXJu
+ZWwgYW5kIGl0J3MgY3VycmVudCB1cHRpbWUgaXMgZml2ZSBkYXlzLCBhbmQgaXQKPiBsb2NrZWQg
+ZGlzcGxheSBmaXJzdCBkYXkgYnV0IHN1c3BlbmQtdG8tcmFtIGFuZCByZXN1bWUgdW5sb2NrZWQg
+ZGlzcGxheQo+IGFuZCBhZnRlciB0aGF0IG5vIG9uY2UgSSBoYXZlIHNlZW4gZGlzcGxheSBsb2Nr
+LiBBbHNvCj4gc3VzcGVuZC10by1yYW0vcmVzdW1lIHdvcmtzIGZpbmUgZm9yIGZpdmUgZGF5cyB3
+aXRob3V0IHBvd2Vyb2ZmL3JlYm9vdC4KPiAKPiBCdXQgc3RpbGwgaGF2ZSBhbm5veWluZyB3YXJu
+aW5ncyBpbiBkbWVzZyBvdXRwdXQgc2ltaWxhciB0byBhYm92ZSAoYW5kIEkKPiB0aGluayBpdCBk
+b2Vzbid0IG1ha2Ugc2Vuc2UgdG8gcGFzdGUgaXQgYWdhaW4gaGVyZSkuCj4gCj4gVG9tb3Jyb3cg
+SSB3aWxsIGJ1aWxkIDUuNC4xIGtlcm5lbCBhbmQgdGVzdCBpdCBmb3IgZmV3IGRheXMgaW4gaG9w
+ZSB0aGF0Cj4gSSB3aWxsIGZpbmQgYXQgd2hhdCBrZXJuZWwgdmVyc2lvbiBwcm9ibGVtIHN0YXJ0
+ZWQgdG8gYmUgc2VyaW91cy4KCkkndmUgYnVpbHQga2VybmVsIDUuNC4xIG92ZXIgd2Vla2VuZCBh
+bmQgdGVzdGVkIGl0IGZvciB0aGlzIHByb2JsZW0gYW5kCml0IGxvY2tlZCBkaXNwbGF5IHR3byB0
+aW1lcyBpbiBmaXJzdCBkYXlzLCBzbyB0aGUgcHJvYmxlbSBpcyBwcm9iYWJseQppbnRyb2R1Y2Vk
+IGJldHdlZW4gNS4zIGFuZCA1LjQga2VybmVsIHZlcnNpb24uCkkgbG9va2VkIGRpZmYgaW4ga2Vy
+bmVsIHRyZWUgd2l0aDoKZ2l0IGxvZyAtcCB2NS4zLi52NS40IGRyaXZlcnMvZ3B1L2RybS9icmlk
+Z2UvYW5hbG9naXgvYW5hbG9naXhfZHBfY29yZS5jCmFuZCBJIHNlZSBvbmUgYmlnIGNoYW5nZSB3
+aGljaCBJIGRvbid0IGRhcmUgdG8gcmV2ZXJ0IG9yIGNoYW5nZSBiZWNhdXNlCkkgZG9uJ3Qga25v
+dyBhbnl0aGluZyBhYm91dCBncHUvZHJtIGRldmljZSBkcml2ZXIgcHJvZ3JhbW1pbmcuCgpNeSBr
+bm93bGVkZ2Ugc3RvcHMgaGVyZS4KClBsZWFzZSwgaWYgc29tZW9uZSBjYW4gZml4IHRoaXMgYW5k
+IHBvc3QgcGF0Y2hlcyBJJ20gcmVhZHkgdG8gdGVzdC4KCi0tIApLaW5kIHJlZ2FyZHMgCj4gLS0g
+Cj4gS2luZCByZWdhcmRzCj4gCj4gPiAtLSAKPiA+IFJlZ2FyZHMKPiA+IAo+ID4gPiBUaGFuayB5
+b3UgaGVscAo+ID4gPiAKPiA+ID4gT24gVHVlLCAyMDIwLTA0LTE0IGF0IDE4OjE3LCBFbnJpYyBC
+YWxsZXRibyBTZXJyYSB3cm90ZToKPiA+ID4gPiBIaSBEb3VnIGFuZCBNaWxhbiwKPiA+ID4gPiAK
+PiA+ID4gPiBUaGFua3MgZm9yIHByb3ZpZGluZyB0aGlzIGluZm9ybWF0aW9uLgo+ID4gPiA+IAo+
+ID4gPiA+IE1pc3NhdGdlIGRlIERvdWcgQW5kZXJzb24gPGRpYW5kZXJzQGNocm9taXVtLm9yZz4g
+ZGVsIGRpYSBkbC4sIDEzCj4gPiA+ID4gZOKAmWFici4gMjAyMCBhIGxlcyAxNzoyMzoKPiA+ID4g
+PiA+Cj4gPiA+ID4gPiBIaSwKPiA+ID4gPiA+Cj4gPiA+ID4gPiBPbiBGcmksIEFwciAxMCwgMjAy
+MCBhdCAxMjoyOSBQTSBNaWxhbiBQLiBTdGFuacSHIDxtcHNAYXJ2YW50YS5uZXQ+IHdyb3RlOgo+
+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiBIaSwKPiA+ID4gPiA+ID4KPiA+ID4gPiA+ID4gT24gRnJp
+LCAyMDIwLTA0LTEwIGF0IDA4OjI4LCBEb3VnIEFuZGVyc29uIHdyb3RlOgo+ID4gPiA+ID4gPiA+
+IEhpLAo+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gT24gRnJpLCBBcHIgMTAsIDIwMjAgYXQg
+NTo1NiBBTSBFbnJpYyBCYWxsZXRibyBTZXJyYQo+ID4gPiA+ID4gPiA+IDxlYmFsbGV0Ym9AZ21h
+aWwuY29tPiB3cm90ZToKPiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiBIaSBNaWxhbiwK
+PiA+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gPiBSaWdodCwgdGhpcyBpcyBhbiBhbm5veWlu
+ZyBpc3N1ZSBidXQgYWxzbyBrbm93biwgdW5mb3J0dW5hdGVseSwgSQo+ID4gPiA+ID4gPiA+ID4g
+cGVyc29uYWxseSBkaWRuJ3QgaGF2ZSB0aW1lIHRvIGxvb2sgYXQuIGJ1dCBpdCBpcyBpbiBteSBU
+T0RPLgo+ID4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+ID4gUmFuZG9tIHNob3QgaW4gdGhlIGRhcmss
+IGJ1dCBhbnkgY2hhbmNlIHNvbWVob3cgeW91ciBQSFkgY2xvY2sgYW5kCj4gPiA+ID4gPiA+ID4g
+UENMSyBmb3IgdGhlIGVEUCBkb24ndCBtYXRjaD8gIElmIHRoZXkgZG9uJ3QgdGhlbiAoSUlSQykg
+eW91J2xsIGdldAo+ID4gPiA+ID4gPiA+IHJhbmRvbSBmYWlsdXJlcyB0byBhY2Nlc3MgZURQIHJl
+Z2lzdGVycy4KPiA+ID4gPiA+ID4gPgo+ID4gPiA+ID4gPiA+IFNvbWUgaGlzdG9yeSBpbiA8aHR0
+cHM6Ly9jcnJldi5jb20vYy80MzMzOTM+LiAgSXQgbG9va3MgbGlrZSB0aGUKPiA+ID4gPiA+ID4g
+PiBjaGFuZ2VzIGluIHRoYXQgcGF0Y2ggYXJlIHVwc3RyZWFtIGJ1dCBpZiBzb21ldGhpbmcgZWxz
+ZSBoYXBwZW5lZCB0bwo+ID4gPiA+ID4gPiA+IG1ha2UgeW91ciBQSFkgYW5kIFBDTEsgbWlzbWF0
+Y2ggaXQgY291bGQgY2F1c2Ugc2ltaWxhciBzeW1wdG9tcy4KPiA+ID4gPiA+ID4gPgo+ID4gPiA+
+ID4gPiA+IC4uLm9mIGNvdXJzZSBpdCdzIGFsd2F5cyBwb3NzaWJsZSAocHJvYmFibGUpIHRoYXQg
+aXQncyBzb21ldGhpbmcKPiA+ID4gPiA+ID4gPiBkaWZmZXJlbnQsIGJ1dCBzaW5jZSB0aGF0IHdh
+cyBzdWNoIGEgd2VpcmQgYW5kIGhhcmQtdG8tdHJhY2stZG93bgo+ID4gPiA+ID4gPiA+IHByb2Js
+ZW0gSSBmaWd1cmVkIEknZCBhdCBsZWFzdCBtYWtlIHN1cmUgaXQgd2Fzbid0IHRoYXQuCj4gPiA+
+ID4gPiA+Cj4gPiA+ID4gPiA+IE5vdCBzdXJlIEkgdW5kZXJzdG9vZCAoSSdtIG5vdCBncmFwaGlj
+IGhhcmR3YXJlIHByb2dyYW1tZXIpIGJ1dCBJCj4gPiA+ID4gPiA+IGNoYW5nZWQgYXJjaC9hcm02
+NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaSBmaWxlIGFyb3VuZCBsaW5lCj4gPiA+ID4g
+PiA+IDEzNjcgKGN1cnJlbnQgbWFpbmxpbmUga2VybmVsKSwgdGhpczoKPiA+ID4gPiA+ID4gICAg
+IGFzc2lnbmVkLWNsb2NrcyA9Cj4gPiA+ID4gPiA+ICAgICAgIDwmY3J1IFBMTF9HUExMPiwgPCZj
+cnUgUExMX0NQTEw+LAo+ID4gPiA+ID4gPiAgICAgICA8JmNydSBQTExfTlBMTD4sCj4gPiA+ID4g
+PiA+ICAgICAgIDwmY3J1IEFDTEtfUEVSSUhQPiwgPCZjcnUgSENMS19QRVJJSFA+LAo+ID4gPiA+
+ID4gPiAgICAgICA8JmNydSBQQ0xLX1BFUklIUD4sCj4gPiA+ID4gPiA+ICAgICAgIDwmY3J1IEFD
+TEtfUEVSSUxQMD4sIDwmY3J1IEhDTEtfUEVSSUxQMD4sCj4gPiA+ID4gPiA+ICAgICAgIDwmY3J1
+IFBDTEtfUEVSSUxQMD4sIDwmY3J1IEFDTEtfQ0NJPiwKPiA+ID4gPiA+ID4gICAgICAgPCZjcnUg
+SENMS19QRVJJTFAxPiwgPCZjcnUgUENMS19QRVJJTFAxPiwKPiA+ID4gPiA+ID4gICAgICAgPCZj
+cnUgQUNMS19WSU8+LCA8JmNydSBBQ0xLX0hEQ1A+LAo+ID4gPiA+ID4gPiAgICAgICA8JmNydSBB
+Q0xLX0dJQ19QUkU+LAo+ID4gPiA+ID4gPiAgICAgICA8JmNydSBQQ0xLX0REUj47Cj4gPiA+ID4g
+PiA+ICAgICBhc3NpZ25lZC1jbG9jay1yYXRlcyA9Cj4gPiA+ID4gPiA+ICAgICAgICA8NTk0MDAw
+MDAwPiwgIDw4MDAwMDAwMDA+LAo+ID4gPiA+ID4gPiAgICAgICA8MTAwMDAwMDAwMD4sCj4gPiA+
+ID4gPiA+ICAgICAgICA8MTUwMDAwMDAwPiwgICA8NzUwMDAwMDA+LAo+ID4gPiA+ID4gPiAgICAg
+ICAgIDwzNzUwMDAwMD4sCj4gPiA+ID4gPiA+ICAgICAgICA8MTAwMDAwMDAwPiwgIDwxMDAwMDAw
+MDA+LAo+ID4gPiA+ID4gPiAgICAgICAgIDw1MDAwMDAwMD4sIDw2MDAwMDAwMDA+LAo+ID4gPiA+
+ID4gPiAgICAgICAgPDEwMDAwMDAwMD4sICAgPDUwMDAwMDAwPiwKPiA+ID4gPiA+ID4gICAgICAg
+IDw0MDAwMDAwMDA+LCA8NDAwMDAwMDAwPiwKPiA+ID4gPiA+ID4gICAgICAgIDwyMDAwMDAwMDA+
+LAo+ID4gPiA+ID4gPiAgICAgICAgPDIwMDAwMDAwMD47Cj4gPiA+ID4gPiA+Cj4gPiA+ID4gPiA+
+IGFuZCBjaGFuZ2VkICA8NTk0MDAwMDAwPiB0byAgPDYwMDAwMDAwMD4KPiA+ID4gPiA+ID4gYnVp
+bGQga2VybmVsIGFuZCBpdCBib290cyBidXQgZGlzcGxheSBpcyBibGFuayBhZnRlciBib290Lgo+
+ID4gPiA+ID4KPiA+ID4gPiA+IEkgdGhpbmsga2V2aW4gYWxyZWFkeSBvdmVycmlkZXMgdGhvc2Ug
+Y2xvY2tzIGluIGl0cyBkdHMuICBJIHdhcyBtb3JlCj4gPiA+ID4gPiB0aGlua2luZyBvZiBsb29r
+aW5nIGF0ICIvc3lzL2tlcm5lbC9kZWJ1Zy9jbGsvY2xrX3N1bW1hcnkiIGFuZCBzZWVpbmcKPiA+
+ID4gPiA+IGlmIHRoZXJlIHdhcyBhIGNsb2NrIG1pc21hdGNoLgo+ID4gPiA+ID4KPiA+ID4gPiAK
+PiA+ID4gPiBBbHRob3VnaCBJIGRvbid0IGRpc2NhcmQgdGhhdCB0aGlzIHdvdWxkIGJlIHRoZSBw
+cm9ibGVtLCBJIHRoaW5rIGl0IGlzCj4gPiA+ID4gbW9yZSBhIHJhY2luZyBwcm9ibGVtIHdpdGgg
+dGhlIHRyYWNraW5nIHN0YXR1cyBvZiB0aGUgY3J0YyBhY3RpdmUgYW5kCj4gPiA+ID4gc2VsZl9y
+ZWZyZXNoX2FjdGl2ZSB2YXJpYWJsZXMgZHVyaW5nIHRoZSBzdXNwZW5kIHBhdGggYW5kIFBTUi4g
+SS5lLCBpZgo+ID4gPiA+IEkgYXBwbHkgdGhlIGZvbGxvd2luZyBwYXRjaCB3aGljaCBzZXRzIGEg
+ZGVsYXkgb2YgMTAwbXMgaW4gdGhlIGRlbGF5ZWQKPiA+ID4gPiBlbnRyeSB3b3JrIHRvIGVudHJ5
+IHRoZSBQU1Igc3RhdGUgKHNpbWlsYXIgdG8gd2hhdCB3ZSBoYWQgYmVmb3JlIHRoZQo+ID4gPiA+
+IGNvbW1pdCBJIG1lbnRpb25lZCksIHN1c3BlbmQgcmVzdW1lIHdvcmtzIGFzIGV4cGVjdGVkIGZv
+ciBtZS4KPiA+ID4gPiAKPiA+ID4gPiBAQCAtMjE4LDcgKzIzNCw3IEBAIHZvaWQgZHJtX3NlbGZf
+cmVmcmVzaF9oZWxwZXJfYWx0ZXJfc3RhdGUoc3RydWN0Cj4gPiA+ID4gZHJtX2F0b21pY19zdGF0
+ZSAqc3RhdGUpCj4gPiA+ID4gICAgICAgICAgICAgICAgIG11dGV4X3VubG9jaygmc3JfZGF0YS0+
+YXZnX211dGV4KTsKPiA+ID4gPiAKPiA+ID4gPiAgICAgICAgICAgICAgICAgbW9kX2RlbGF5ZWRf
+d29yayhzeXN0ZW1fd3EsICZzcl9kYXRhLT5lbnRyeV93b3JrLAo+ID4gPiA+IC0gICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIG1zZWNzX3RvX2ppZmZpZXMoZGVsYXkpKTsKPiA+ID4gPiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtc2Vjc190b19qaWZmaWVzKDEwMCkpOwo+
+ID4gPiA+ICAgICAgICAgfQo+ID4gPiA+ICB9Cj4gPiA+ID4gCj4gPiA+ID4gU29tZSBtb3JlIGlu
+Zm8gaXMgdGhhdCBJIHdhcyBub3QgYWJsZSB0byByZXByb2R1Y2UgdGhlIHByb2JsZW0gYnkKPiA+
+ID4gPiB0cmlnZ2VyaW5nIGFuICdlY2hvIG1lbSA+IC9zeXMvcG93ZXIvc3RhdGUnIFRoZSBvbmx5
+IHdheSBJIGNhbgo+ID4gPiA+IHJlcHJvZHVjZSB0aGUgaXNzdWUgaXMgZG9pbmcgYXMgJ3N5c3Rl
+bWN0bCBzdXBlbmQnIGNvbW1hbmQsIHdoaWNoIGlmIEkKPiA+ID4gPiBhbSBub3QgbWlzdGFrZW4g
+ZG9lcyBhIERQTVMgb2ZmIGJlZm9yZSBzdXNwZW5kaW5nLgo+ID4gPiA+IAo+ID4gPiA+IC0gRW5y
+aWMKPiA+ID4gPiAKPiA+ID4gPiA+IC1Eb3VnCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
