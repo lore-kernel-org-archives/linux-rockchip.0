@@ -1,8 +1,16 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v3] rockchip: Enable SF distro bootcmd
-Date: Tue, 28 Apr 2020 15:34:28 +0530
-Message-ID: <20200428100428.19739-1-jagan@amarulasolutions.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2 1/6] arm64: dts: rk3399-puma: Move u-boot properties
+ into -u-boot.dtsi
+Date: Tue, 28 Apr 2020 22:12:07 +0800
+Message-ID: <3fecdd07-cebf-89cc-d2d5-ecc7df403190@rock-chips.com>
+References: <20200428100019.19155-1-jagan@amarulasolutions.com>
+ <20200428100019.19155-2-jagan@amarulasolutions.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200428100019.19155-2-jagan@amarulasolutions.com>
+Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <https://lists.denx.de/pipermail/u-boot/>
@@ -12,72 +20,91 @@ List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=subscribe>
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Tom Rini <trini@konsulko.com>, Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Peter Robinson <pbrobinson@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable SPI flash(SF) distro boot command in Rockchip.
 
-This distro boot will read the boot script at specific
-location at the flash and start sourcing the same.
+On 2020/4/28 下午6:00, Jagan Teki wrote:
+> Move U-Boot specific properties into rk3399-puma u-boot
+> specific dtsi file.
+>
+> This would help to sync the devicetrees from Linux whenever
+> required instead of adding specific nodes.
+>
+> Cc: Peter Robinson <pbrobinson@gmail.com>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 
-Included the SF device at the last of the target devices
-list since all the rest of the devices on the list have
-more possibility to boot the distribution due to the
-size of the SPI flash is concern.
 
-Cc: Tom Rini <trini@konsulko.com>
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
-Changes for v3:
-- Don't use SF distro px30
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 
- include/configs/rk3399_common.h   |  1 +
- include/configs/rockchip-common.h | 15 +++++++++++++++
- 2 files changed, 16 insertions(+)
-
-diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
-index 01a9174bd2..f0ae6e67a7 100644
---- a/include/configs/rk3399_common.h
-+++ b/include/configs/rk3399_common.h
-@@ -60,6 +60,7 @@
- #endif
- 
- #include <config_distro_bootcmd.h>
-+#include <environment/distro/sf.h>
- #define CONFIG_EXTRA_ENV_SETTINGS \
- 	ENV_MEM_LAYOUT_SETTINGS \
- 	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \
-diff --git a/include/configs/rockchip-common.h b/include/configs/rockchip-common.h
-index b55e09a9ca..2d5d29849d 100644
---- a/include/configs/rockchip-common.h
-+++ b/include/configs/rockchip-common.h
-@@ -41,11 +41,26 @@
- 	#define BOOT_TARGET_DHCP(func)
- #endif
- 
-+#if CONFIG_IS_ENABLED(CMD_SF)
-+	#define BOOT_TARGET_SF(func)	func(SF, sf, 0)
-+#else
-+	#define BOOT_TARGET_SF(func)
-+#endif
-+
-+#ifndef CONFIG_ROCKCHIP_PX30
-+#define BOOT_TARGET_DEVICES(func) \
-+	BOOT_TARGET_MMC(func) \
-+	BOOT_TARGET_USB(func) \
-+	BOOT_TARGET_PXE(func) \
-+	BOOT_TARGET_DHCP(func) \
-+	BOOT_TARGET_SF(func)
-+#else
- #define BOOT_TARGET_DEVICES(func) \
- 	BOOT_TARGET_MMC(func) \
- 	BOOT_TARGET_USB(func) \
- 	BOOT_TARGET_PXE(func) \
- 	BOOT_TARGET_DHCP(func)
-+#endif
- 
- #ifdef CONFIG_ARM64
- #define ROOT_UUID "B921B045-1DF0-41C3-AF44-4C6F280D3FAE;\0"
--- 
-2.17.1
+Thanks,
+- Kever
+> ---
+> Changes for v2:
+> - none
+>
+>   arch/arm/dts/rk3399-puma-u-boot.dtsi | 16 ++++++++++++++++
+>   arch/arm/dts/rk3399-puma.dtsi        | 11 -----------
+>   2 files changed, 16 insertions(+), 11 deletions(-)
+>
+> diff --git a/arch/arm/dts/rk3399-puma-u-boot.dtsi b/arch/arm/dts/rk3399-puma-u-boot.dtsi
+> index 52f62b5d39..e664779227 100644
+> --- a/arch/arm/dts/rk3399-puma-u-boot.dtsi
+> +++ b/arch/arm/dts/rk3399-puma-u-boot.dtsi
+> @@ -22,3 +22,19 @@
+>          };
+>   
+>   };
+> +
+> +&bios_enable {
+> +	u-boot,dm-pre-reloc;
+> +};
+> +
+> +&gpio1 {
+> +	u-boot,dm-pre-reloc;
+> +};
+> +
+> +&gpio3 {
+> +	u-boot,dm-pre-reloc;
+> +};
+> +
+> +&spiflash {
+> +	u-boot,dm-pre-reloc;
+> +};
+> diff --git a/arch/arm/dts/rk3399-puma.dtsi b/arch/arm/dts/rk3399-puma.dtsi
+> index 558b6337df..246a892cb7 100644
+> --- a/arch/arm/dts/rk3399-puma.dtsi
+> +++ b/arch/arm/dts/rk3399-puma.dtsi
+> @@ -91,7 +91,6 @@
+>   	 */
+>   	bios_enable: bios_enable {
+>   		compatible = "regulator-fixed";
+> -		u-boot,dm-pre-reloc;
+>   		regulator-name = "bios_enable";
+>   		enable-active-high;
+>   		gpio = <&gpio3 RK_PD5 GPIO_ACTIVE_LOW>;
+> @@ -520,14 +519,6 @@
+>   	status = "okay";
+>   };
+>   
+> -&gpio1 {
+> -	u-boot,dm-pre-reloc;
+> -};
+> -
+> -&gpio3 {
+> -	u-boot,dm-pre-reloc;
+> -};
+> -
+>   &pinctrl {
+>   	/* Pins that are not explicitely used by any devices */
+>   	pinctrl-names = "default";
+> @@ -633,8 +624,6 @@
+>   	#size-cells = <0>;
+>   
+>   	spiflash: w25q32dw@0 {
+> -		u-boot,dm-pre-reloc;
+> -
+>   		compatible = "jedec,spi-nor";
+>   		reg = <0>;
+>   		spi-max-frequency = <49500000>;
