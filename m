@@ -1,95 +1,100 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v3] rockchip: Enable SF distro bootcmd
-Date: Tue, 28 Apr 2020 22:15:03 +0800
-Message-ID: <085b994f-7cc3-036b-c3d1-8c908c1a525a@rock-chips.com>
-References: <20200428100428.19739-1-jagan@amarulasolutions.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 6/6] rk3399: Add ROC-RK3399-PC Mezzanine board
+Date: Tue, 28 Apr 2020 22:14:27 +0800
+Message-ID: <e8227f9e-8921-a1f3-1e1f-8266c08bd675@rock-chips.com>
+References: <20200428100019.19155-1-jagan@amarulasolutions.com>
+ <20200428100019.19155-7-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200428100428.19739-1-jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200428100019.19155-7-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Tom Rini <trini@konsulko.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2020/4/28 下午6:04, Jagan Teki wrote:
-> Enable SPI flash(SF) distro boot command in Rockchip.
->
-> This distro boot will read the boot script at specific
-> location at the flash and start sourcing the same.
->
-> Included the SF device at the last of the target devices
-> list since all the rest of the devices on the list have
-> more possibility to boot the distribution due to the
-> size of the SPI flash is concern.
->
-> Cc: Tom Rini <trini@konsulko.com>
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-
-
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
-> ---
-> Changes for v3:
-> - Don't use SF distro px30
->
->   include/configs/rk3399_common.h   |  1 +
->   include/configs/rockchip-common.h | 15 +++++++++++++++
->   2 files changed, 16 insertions(+)
->
-> diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
-> index 01a9174bd2..f0ae6e67a7 100644
-> --- a/include/configs/rk3399_common.h
-> +++ b/include/configs/rk3399_common.h
-> @@ -60,6 +60,7 @@
->   #endif
->   
->   #include <config_distro_bootcmd.h>
-> +#include <environment/distro/sf.h>
->   #define CONFIG_EXTRA_ENV_SETTINGS \
->   	ENV_MEM_LAYOUT_SETTINGS \
->   	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \
-> diff --git a/include/configs/rockchip-common.h b/include/configs/rockchip-common.h
-> index b55e09a9ca..2d5d29849d 100644
-> --- a/include/configs/rockchip-common.h
-> +++ b/include/configs/rockchip-common.h
-> @@ -41,11 +41,26 @@
->   	#define BOOT_TARGET_DHCP(func)
->   #endif
->   
-> +#if CONFIG_IS_ENABLED(CMD_SF)
-> +	#define BOOT_TARGET_SF(func)	func(SF, sf, 0)
-> +#else
-> +	#define BOOT_TARGET_SF(func)
-> +#endif
-> +
-> +#ifndef CONFIG_ROCKCHIP_PX30
-> +#define BOOT_TARGET_DEVICES(func) \
-> +	BOOT_TARGET_MMC(func) \
-> +	BOOT_TARGET_USB(func) \
-> +	BOOT_TARGET_PXE(func) \
-> +	BOOT_TARGET_DHCP(func) \
-> +	BOOT_TARGET_SF(func)
-> +#else
->   #define BOOT_TARGET_DEVICES(func) \
->   	BOOT_TARGET_MMC(func) \
->   	BOOT_TARGET_USB(func) \
->   	BOOT_TARGET_PXE(func) \
->   	BOOT_TARGET_DHCP(func)
-> +#endif
->   
->   #ifdef CONFIG_ARM64
->   #define ROOT_UUID "B921B045-1DF0-41C3-AF44-4C6F280D3FAE;\0"
+Ck9uIDIwMjAvNC8yOCDkuIvljYg2OjAwLCBKYWdhbiBUZWtpIHdyb3RlOgo+IEZyb206IFN1bmll
+bCBNYWhlc2ggPHN1bmlsQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+Cj4gQWRkIEZpcmVmbHkgUk9D
+LVJLMzM5OS1QQyBNZXp6YW5pbmUgYm9hcmQgd2hpY2ggaXMgYW4KPiBleHRlbnNpb24gYm9hcmQg
+b24gdG9wIG9mIHJvYy1yazMzOTktcGMuCj4KPiBXaWxsIGRyb3AgdGhlIHNlcGFyYXRlIGRlZmNv
+bmZpZyBmaWxlLCBvbmNlIHdlIHN1cHBvcnQKPiB0aGUgYm9hcmQgZGV0ZWN0aW9uIGF0IHJ1bnRp
+bWUuCj4KPiBTaWduZWQtb2ZmLWJ5OiBTdW5pZWwgTWFoZXNoIDxzdW5pbEBhbWFydWxhc29sdXRp
+b25zLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRp
+b25zLmNvbT4KCgpSZXZpZXdlZC1ieTogS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBz
+LmNvbT4KClRoYW5rcywKLSBLZXZlcgo+IC0tLQo+IENoYW5nZXMgZm9yIHYyOgo+IC0gaW5jbHVk
+ZSByazMzOTktcm9jLXBjLXUtYm9vdC5kdHNpCj4KPiAgIC4uLi9kdHMvcmszMzk5LXJvYy1wYy1t
+ZXp6YW5pbmUtdS1ib290LmR0c2kgICB8ICA2ICsrCj4gICBib2FyZC9maXJlZmx5L3JvYy1wYy1y
+azMzOTkvTUFJTlRBSU5FUlMgICAgICAgfCAgMiArCj4gICBjb25maWdzL3JvYy1wYy1tZXp6YW5p
+bmUtcmszMzk5X2RlZmNvbmZpZyAgICAgfCA2NyArKysrKysrKysrKysrKysrKysrCj4gICAzIGZp
+bGVzIGNoYW5nZWQsIDc1IGluc2VydGlvbnMoKykKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNo
+L2FybS9kdHMvcmszMzk5LXJvYy1wYy1tZXp6YW5pbmUtdS1ib290LmR0c2kKPiAgIGNyZWF0ZSBt
+b2RlIDEwMDY0NCBjb25maWdzL3JvYy1wYy1tZXp6YW5pbmUtcmszMzk5X2RlZmNvbmZpZwo+Cj4g
+ZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2R0cy9yazMzOTktcm9jLXBjLW1lenphbmluZS11LWJvb3Qu
+ZHRzaSBiL2FyY2gvYXJtL2R0cy9yazMzOTktcm9jLXBjLW1lenphbmluZS11LWJvb3QuZHRzaQo+
+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMC4uZjUwYzE4ZGQzZAo+IC0t
+LSAvZGV2L251bGwKPiArKysgYi9hcmNoL2FybS9kdHMvcmszMzk5LXJvYy1wYy1tZXp6YW5pbmUt
+dS1ib290LmR0c2kKPiBAQCAtMCwwICsxLDYgQEAKPiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZp
+ZXI6IEdQTC0yLjArCj4gKy8qCj4gKyAqIENvcHlyaWdodCAoYykgMjAyMCBBbWFydWxhIFNvbHV0
+aW9ucyhJbmRpYSkKPiArICovCj4gKwo+ICsjaW5jbHVkZSAicmszMzk5LXJvYy1wYy11LWJvb3Qu
+ZHRzaSIKPiBkaWZmIC0tZ2l0IGEvYm9hcmQvZmlyZWZseS9yb2MtcGMtcmszMzk5L01BSU5UQUlO
+RVJTIGIvYm9hcmQvZmlyZWZseS9yb2MtcGMtcmszMzk5L01BSU5UQUlORVJTCj4gaW5kZXggNzU2
+NGRkMjUyZC4uNjhhNWI3NTdkMSAxMDA2NDQKPiAtLS0gYS9ib2FyZC9maXJlZmx5L3JvYy1wYy1y
+azMzOTkvTUFJTlRBSU5FUlMKPiArKysgYi9ib2FyZC9maXJlZmx5L3JvYy1wYy1yazMzOTkvTUFJ
+TlRBSU5FUlMKPiBAQCAtMSw2ICsxLDggQEAKPiAgIFJPQy1SSzMzOTktUEMKPiAgIE06CUxldmlu
+IER1IDxkandAdC1jaGlwLmNvbS5jbj4KPiArTToJU3VuaWVsIE1haGVzaCA8c3VuaWxAYW1hcnVs
+YXNvbHV0aW9ucy5jb20+Cj4gICBTOglNYWludGFpbmVkCj4gICBGOglib2FyZC9maXJlZmx5L3Jv
+Yy1wYy1yazMzOTkKPiAgIEY6CWluY2x1ZGUvY29uZmlncy9yb2MtcGMtcmszMzk5LmgKPiAgIEY6
+CWNvbmZpZ3Mvcm9jLXBjLXJrMzM5OV9kZWZjb25maWcKPiArRjoJY29uZmlncy9yb2MtcGMtbWV6
+emFuaW5lLXJrMzM5OV9kZWZjb25maWcKPiBkaWZmIC0tZ2l0IGEvY29uZmlncy9yb2MtcGMtbWV6
+emFuaW5lLXJrMzM5OV9kZWZjb25maWcgYi9jb25maWdzL3JvYy1wYy1tZXp6YW5pbmUtcmszMzk5
+X2RlZmNvbmZpZwo+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMC4uNWE2
+OTRlZGMwMwo+IC0tLSAvZGV2L251bGwKPiArKysgYi9jb25maWdzL3JvYy1wYy1tZXp6YW5pbmUt
+cmszMzk5X2RlZmNvbmZpZwo+IEBAIC0wLDAgKzEsNjcgQEAKPiArQ09ORklHX0FSTT15Cj4gK0NP
+TkZJR19BUkNIX1JPQ0tDSElQPXkKPiArQ09ORklHX1NZU19URVhUX0JBU0U9MHgwMDIwMDAwMAo+
+ICtDT05GSUdfRU5WX09GRlNFVD0weDNGODAwMAo+ICtDT05GSUdfUk9DS0NISVBfUkszMzk5PXkK
+PiArQ09ORklHX1RBUkdFVF9ST0NfUENfUkszMzk5PXkKPiArQ09ORklHX05SX0RSQU1fQkFOS1M9
+MQo+ICtDT05GSUdfREVCVUdfVUFSVF9CQVNFPTB4RkYxQTAwMDAKPiArQ09ORklHX0RFQlVHX1VB
+UlRfQ0xPQ0s9MjQwMDAwMDAKPiArQ09ORklHX0RFQlVHX1VBUlQ9eQo+ICtDT05GSUdfREVGQVVM
+VF9GRFRfRklMRT0icm9ja2NoaXAvcmszMzk5LXJvYy1wYy1tZXp6YW5pbmUuZHRiIgo+ICtDT05G
+SUdfRElTUExBWV9CT0FSRElORk9fTEFURT15Cj4gKyMgQ09ORklHX1NQTF9SQVdfSU1BR0VfU1VQ
+UE9SVCBpcyBub3Qgc2V0Cj4gK0NPTkZJR19TUExfU1RBQ0tfUj15Cj4gK0NPTkZJR19TUExfU1RB
+Q0tfUl9NQUxMT0NfU0lNUExFX0xFTj0weDEwMDAwCj4gK0NPTkZJR19UUEw9eQo+ICtDT05GSUdf
+VFBMX0dQSU9fU1VQUE9SVD15Cj4gK0NPTkZJR19DTURfQk9PVFo9eQo+ICtDT05GSUdfQ01EX0dQ
+VD15Cj4gK0NPTkZJR19DTURfTU1DPXkKPiArQ09ORklHX0NNRF9VU0I9eQo+ICsjIENPTkZJR19D
+TURfU0VURVhQUiBpcyBub3Qgc2V0Cj4gK0NPTkZJR19DTURfVElNRT15Cj4gK0NPTkZJR19TUExf
+T0ZfQ09OVFJPTD15Cj4gK0NPTkZJR19ERUZBVUxUX0RFVklDRV9UUkVFPSJyazMzOTktcm9jLXBj
+LW1lenphbmluZSIKPiArQ09ORklHX09GX1NQTF9SRU1PVkVfUFJPUFM9InBpbmN0cmwtMCBwaW5j
+dHJsLW5hbWVzIGNsb2NrLW5hbWVzIGludGVycnVwdC1wYXJlbnQgYXNzaWduZWQtY2xvY2tzIGFz
+c2lnbmVkLWNsb2NrLXJhdGVzIGFzc2lnbmVkLWNsb2NrLXBhcmVudHMiCj4gK0NPTkZJR19FTlZf
+SVNfSU5fTU1DPXkKPiArQ09ORklHX1NZU19SRUxPQ19HRF9FTlZfQUREUj15Cj4gK0NPTkZJR19S
+T0NLQ0hJUF9HUElPPXkKPiArQ09ORklHX1NZU19JMkNfUk9DS0NISVA9eQo+ICtDT05GSUdfTU1D
+X0RXPXkKPiArQ09ORklHX01NQ19EV19ST0NLQ0hJUD15Cj4gK0NPTkZJR19NTUNfU0RIQ0k9eQo+
+ICtDT05GSUdfTU1DX1NESENJX1JPQ0tDSElQPXkKPiArQ09ORklHX1NQSV9GTEFTSF9XSU5CT05E
+PXkKPiArQ09ORklHX0RNX0VUSD15Cj4gK0NPTkZJR19FVEhfREVTSUdOV0FSRT15Cj4gK0NPTkZJ
+R19HTUFDX1JPQ0tDSElQPXkKPiArQ09ORklHX1BNSUNfUks4WFg9eQo+ICtDT05GSUdfUkVHVUxB
+VE9SX1BXTT15Cj4gK0NPTkZJR19SRUdVTEFUT1JfUks4WFg9eQo+ICtDT05GSUdfUFdNX1JPQ0tD
+SElQPXkKPiArQ09ORklHX1JBTV9SSzMzOTlfTFBERFI0PXkKPiArQ09ORklHX0JBVURSQVRFPTE1
+MDAwMDAKPiArQ09ORklHX0RFQlVHX1VBUlRfU0hJRlQ9Mgo+ICtDT05GSUdfUk9DS0NISVBfU1BJ
+PXkKPiArQ09ORklHX1NZU1JFU0VUPXkKPiArQ09ORklHX1VTQj15Cj4gK0NPTkZJR19VU0JfWEhD
+SV9IQ0Q9eQo+ICtDT05GSUdfVVNCX1hIQ0lfRFdDMz15Cj4gK0NPTkZJR19VU0JfRUhDSV9IQ0Q9
+eQo+ICtDT05GSUdfVVNCX0VIQ0lfR0VORVJJQz15Cj4gK0NPTkZJR19VU0JfSE9TVF9FVEhFUj15
+Cj4gK0NPTkZJR19VU0JfRVRIRVJfQVNJWD15Cj4gK0NPTkZJR19VU0JfRVRIRVJfQVNJWDg4MTc5
+PXkKPiArQ09ORklHX1VTQl9FVEhFUl9NQ1M3ODMwPXkKPiArQ09ORklHX1VTQl9FVEhFUl9SVEw4
+MTUyPXkKPiArQ09ORklHX1VTQl9FVEhFUl9TTVNDOTVYWD15Cj4gK0NPTkZJR19VU0JfS0VZQk9B
+UkQ9eQo+ICtDT05GSUdfU1BMX1RJTllfTUVNU0VUPXkKPiArQ09ORklHX0VSUk5PX1NUUj15Cj4g
+K0NPTkZJR19ETV9WSURFTz15Cj4gK0NPTkZJR19WSURFT19CUFAxNj15Cj4gK0NPTkZJR19WSURF
+T19CUFAzMj15Cj4gK0NPTkZJR19ESVNQTEFZPXkKPiArQ09ORklHX1ZJREVPX1JPQ0tDSElQPXkK
+PiArQ09ORklHX0RJU1BMQVlfUk9DS0NISVBfSERNST15CgoKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
