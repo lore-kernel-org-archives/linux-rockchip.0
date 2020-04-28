@@ -1,532 +1,434 @@
-From: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v7 4/8] drm: imx: Add i.MX 6 MIPI DSI host platform driver
-Date: Tue, 28 Apr 2020 22:08:04 +0300
-Message-ID: <87pnbrig2z.fsf@collabora.com>
-References: <20200421161610.1501827-1-adrian.ratiu@collabora.com>
- <20200421161610.1501827-5-adrian.ratiu@collabora.com>
- <20200422010727.GM5983@pendragon.ideasonboard.com>
- <20200428143030.GN3456981@phenom.ffwll.local>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH 5/8] pci: Add Rockchip PCIe controller driver
+Date: Wed, 29 Apr 2020 00:39:08 +0530
+Message-ID: <CAMty3ZDZ-_e1W2TifXbt99Tqa5MDhwvVAH=t3xKrN6YLTg1+zg@mail.gmail.com>
+References: <20200425110354.12381-1-jagan@amarulasolutions.com>
+ <20200425110354.12381-6-jagan@amarulasolutions.com>
+ <016196137a6060e1@bloch.sibelius.xs4all.nl>
+ <CAMty3ZC+DiW2gGjN3rWcrwHPXZfxuGhjJN-1caUXW-Ry7VNR+A@mail.gmail.com>
+ <016196512107ed26@bloch.sibelius.xs4all.nl>
 Mime-Version: 1.0
-Content-Type: text/plain; format=flowed
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200428143030.GN3456981-dv86pmgwkMBes7Z6vYuT8azUEOm+Xw19@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Martyn Welch <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-imx-3arQi8VN3Tc@public.gmane.org, Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Emil Velikov <emil.velikov-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <016196512107ed26@bloch.sibelius.xs4all.nl>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Mark Kettenis <mark.kettenis@xs4all.nl>
+Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Patrick Wildt <patrick@blueri.se>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Daniel,
-
-On Tue, 28 Apr 2020, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org> wrote:
-> On Wed, Apr 22, 2020 at 04:07:27AM +0300, Laurent Pinchart 
-> wrote: 
->> Hi Adrian,  On Tue, Apr 21, 2020 at 07:16:06PM +0300, Adrian 
->> Ratiu wrote: 
->> > This adds support for the Synopsis DesignWare MIPI DSI v1.01 
->> > host controller which is embedded in i.MX 6 SoCs.   Based on 
->> > following patches, but updated/extended to work with existing 
->> > support found in the kernel:  - drm: imx: Support Synopsys 
->> > DesignWare MIPI DSI host controller 
->> >   Signed-off-by: Liu Ying <Ying.Liu-KZfg59tc24xl57MIdRCFDg@public.gmane.org> 
->> >  Cc: Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> Cc: Enric Balletbo 
->> > Serra <eballetbo-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> Reviewed-by: Emil Velikov 
->> > <emil.velikov-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> Tested-by: Adrian Pop 
->> > <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> Tested-by: Arnaud Ferraris 
->> > <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> Signed-off-by: Sjoerd Simons 
->> > <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> Signed-off-by: Martyn Welch 
->> > <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> Signed-off-by: Adrian Ratiu 
->> > <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> --- Changes since v6: 
->> >   - Replaced custom noop encoder with the simple drm encoder 
->> >   (Enric) - Added CONFIG_DRM_IMX6_MIPI_DSI depends on 
->> >   CONFIG_OF (Enric) - Dropped imx_mipi_dsi_register() because 
->> >   now it only creates the dummy encoder which can easily be 
->> >   done directly in imx_dsi_bind() 
->> >  Changes since v5: 
->> >   - Reword to remove unrelated device tree patch mention 
->> >   (Fabio) - Move pllref_clk enable/disable to bind/unbind 
->> >   (Ezequiel) - Fix freescale.com -> nxp.com email addresses 
->> >   (Fabio) - Also added myself as module author (Fabio) - Use 
->> >   DRM_DEV_* macros for consistency, print more error msg 
->> >  Changes since v4: 
->> >   - Split off driver-specific configuration of phy timings 
->> >   due to new upstream API.  - Move regmap infrastructure 
->> >   logic to separate commit (Ezequiel) - Move dsi v1.01 layout 
->> >   addition to a separate commit (Ezequiel) - Minor warnings 
->> >   and driver name fixes 
->> >  Changes since v3: 
->> >   - Renamed platform driver to reflect it's i.MX6 
->> >   only. (Fabio) 
->> >  Changes since v2: 
->> >   - Fixed commit tags. (Emil) 
->> >  Changes since v1: 
->> >   - Moved register definitions & regmap initialization into 
->> >   bridge module. Platform drivers get the regmap via 
->> >   plat_data after calling the bridge probe. (Emil) 
->> > --- 
->> >  drivers/gpu/drm/imx/Kconfig            |   8 + 
->> >  drivers/gpu/drm/imx/Makefile           |   1 + 
->> >  drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c | 391 
->> >  +++++++++++++++++++++++++ 3 files changed, 400 insertions(+) 
->> >  create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c 
->> >  diff --git a/drivers/gpu/drm/imx/Kconfig 
->> > b/drivers/gpu/drm/imx/Kconfig index 
->> > 207bf7409dfba..0dffc72df7922 100644 --- 
->> > a/drivers/gpu/drm/imx/Kconfig +++ 
->> > b/drivers/gpu/drm/imx/Kconfig @@ -39,3 +39,11 @@ config 
->> > DRM_IMX_HDMI 
->> >  	depends on DRM_IMX help Choose this if you want to use 
->> >  HDMI on i.MX6. 
->> > + +config DRM_IMX6_MIPI_DSI +	tristate "Freescale i.MX6 
->> > DRM MIPI DSI" +	select DRM_DW_MIPI_DSI +	depends on 
->> > DRM_IMX +	depends on OF +	help +	  Choose this if you want 
->> > to use MIPI DSI on i.MX6.  diff --git 
->> > a/drivers/gpu/drm/imx/Makefile b/drivers/gpu/drm/imx/Makefile 
->> > index 21cdcc2faabc8..9a7843c593478 100644 --- 
->> > a/drivers/gpu/drm/imx/Makefile +++ 
->> > b/drivers/gpu/drm/imx/Makefile @@ -9,3 +9,4 @@ 
->> > obj-$(CONFIG_DRM_IMX_TVE) += imx-tve.o 
->> >  obj-$(CONFIG_DRM_IMX_LDB) += imx-ldb.o 
->> >  obj-$(CONFIG_DRM_IMX_HDMI) += dw_hdmi-imx.o 
->> > +obj-$(CONFIG_DRM_IMX6_MIPI_DSI) += dw_mipi_dsi-imx6.o diff 
->> > --git a/drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c 
->> > b/drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c new file mode 100644 
->> > index 0000000000000..f8a0a4fe16e21 --- /dev/null +++ 
->> > b/drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c @@ -0,0 +1,391 @@ 
->> > +// SPDX-License-Identifier: GPL-2.0+ +/* + * i.MX6 drm 
->> > driver - MIPI DSI Host Controller + * + * Copyright (C) 
->> > 2011-2015 Freescale Semiconductor, Inc.  + * Copyright (C) 
->> > 2019-2020 Collabora, Ltd.  + */ + +#include <linux/clk.h> 
->> > +#include <linux/component.h> +#include <linux/mfd/syscon.h> 
->> > +#include <linux/mfd/syscon/imx6q-iomuxc-gpr.h> +#include 
->> > <linux/module.h> +#include <linux/of_device.h> +#include 
->> > <linux/regmap.h> +#include <linux/videodev2.h> +#include 
->> > <drm/bridge/dw_mipi_dsi.h> +#include <drm/drm_crtc_helper.h> 
->> > +#include <drm/drm_mipi_dsi.h> +#include <drm/drm_of.h> 
->> > +#include <drm/drm_print.h> + +#include "imx-drm.h" + 
->> > +#define DSI_PWR_UP			0x04 +#define 
->> > RESET				0 +#define POWERUP 
->> > BIT(0) + +#define DSI_PHY_IF_CTRL			0x5c 
->> > +#define PHY_IF_CTRL_RESET		0x0 + +#define 
->> > DSI_PHY_TST_CTRL0		0x64 +#define PHY_TESTCLK 
->> > BIT(1) +#define PHY_UNTESTCLK			0 +#define 
->> > PHY_TESTCLR			BIT(0) +#define 
->> > PHY_UNTESTCLR			0 + +#define 
->> > DSI_PHY_TST_CTRL1		0x68 +#define PHY_TESTEN 
->> > BIT(16) +#define PHY_UNTESTEN			0 +#define 
->> > PHY_TESTDOUT(n)			(((n) & 0xff) << 8) 
->> > +#define PHY_TESTDIN(n)			(((n) & 0xff) << 
->> > 0) + +struct imx_mipi_dsi { +	struct drm_encoder 
->> > encoder; +	struct device *dev; +	struct regmap *mux_sel; + 
->> > struct dw_mipi_dsi *mipi_dsi; +	struct clk *pllref_clk; + 
->> > +	void __iomem *base; +	unsigned int lane_mbps; +}; + 
->> > +struct dphy_pll_testdin_map { +	unsigned int max_mbps; + 
->> > u8 testdin; +}; + +/* The table is based on 27MHz DPHY pll 
->> > reference clock. */ +static const struct dphy_pll_testdin_map 
->> > dptdin_map[] = { +	{160, 0x04}, {180, 0x24}, {200, 0x44}, 
->> > {210, 0x06}, +	{240, 0x26}, {250, 0x46}, {270, 0x08}, 
->> > {300, 0x28}, +	{330, 0x48}, {360, 0x2a}, {400, 0x4a}, 
->> > {450, 0x0c}, +	{500, 0x2c}, {550, 0x0e}, {600, 0x2e}, 
->> > {650, 0x10}, +	{700, 0x30}, {750, 0x12}, {800, 0x32}, 
->> > {850, 0x14}, +	{900, 0x34}, {950, 0x54}, {1000, 0x74} +}; 
->> > + +static inline struct imx_mipi_dsi *enc_to_dsi(struct 
->> > drm_encoder *enc) +{ +	return container_of(enc, struct 
->> > imx_mipi_dsi, encoder); +} + +static void 
->> > imx_mipi_dsi_set_ipu_di_mux(struct imx_mipi_dsi *dsi, int 
->> > ipu_di) +{ +	regmap_update_bits(dsi->mux_sel, 
->> > IOMUXC_GPR3, + 
->> > IMX6Q_GPR3_MIPI_MUX_CTL_MASK, +			   ipu_di 
->> > << IMX6Q_GPR3_MIPI_MUX_CTL_SHIFT); +} + +static bool 
->> > imx_mipi_dsi_encoder_mode_fixup(struct drm_encoder *encoder, 
->> > +					    const struct 
->> > drm_display_mode *mode, + 
->> > struct drm_display_mode *adj_mode) +{ +	return true; +} + 
->> > +static int imx_mipi_dsi_encoder_atomic_check(struct 
->> > drm_encoder *encoder, + 
->> > struct drm_crtc_state *crtc_state, + 
->> > struct drm_connector_state *conn) +{ +	struct 
->> > imx_crtc_state *imx_crtc_state = 
->> > to_imx_crtc_state(crtc_state); + +	/* The following values 
->> > are taken from dw_hdmi_imx_atomic_check */ + 
->> > imx_crtc_state->bus_format = MEDIA_BUS_FMT_RGB888_1X24; + 
->> > imx_crtc_state->di_hsync_pin = 2; + 
->> > imx_crtc_state->di_vsync_pin = 3; + +	return 0; +} 
->>  No encoder functions please. This should be a bridge driver, 
->> the encoder should be created by the i.MX display controller 
->> driver itself. As that would require quite a bit of refactoring 
->> I'm OK having an encoder here for the meantime, but it should 
->> be a dummy one, without any operation. 
-> 
-> +1 on this, came to say the same. This seems to duplicate the 
-> dw-hdmi design, where the code organization is a bit a mess, 
-> with some parts in drm/bridge, and some parts in each drm_device 
-> driver. Plus drm_encoder in there on top. 
-> 
-> If we want to continue with the drm_bridge abstraction for these 
-> kind of drivers then imo we need: 
-> 
-> - to make drm_bridge the actual abstraction, no leaking 
-> back&forth between 
->   the bridge chip and the overall drm_device side of things. 
-> 
-> - move _all_ dw-mipi-dsi related code into drm/bridge 
-> 
-> - for the platform specific binding stuff I think 
-> drm/bridge/dw-mipi-dsi 
->   directory, which contains the main driver, plus a file each 
->   for the imx/stm/whatever platform bindings sounds like a 
->   reasonable layout. 
-> 
-> If that doesn't work, then I think dw-mipi-dsi isn't really a 
-> bridge driver with clear encapsulation, but instead should be 
-> structured as a helper library to implement a drm_encoder. And 
-> no drm_bridge. 
-> 
-> And yes the exact same problem exists with dw-hdmi. That's the 
-> reason why I've started to look into these, it's not really a 
-> code pattern we should repeat imo.
-
-The code structure you propose should be doable and I was actually 
-thinking of something like it when writing the cover letter for v8 
-of this series, about how to consolidate the Synopsis DW MIPI DSI 
-logic at the same time while consolidating the rest of imx drivers 
-to unify their simple encoder management.
-
-Thank you for fleshing it out! It's very helpful :)
-
-BTW have you seen what I did with the bridge in v8 for the imx6 
-driver?  [1]
-
-What I'd like to avoid is feature creep in this patch series which 
-is about adding the imx6 driver, because I think moving the logic 
-and refactoring all the drivers is a separate issue and already 
-this series is big and increasing.
-
-So would you be ok with merging the imx6 mipi dsi driver with its 
-dw-mipi-dsi regamp rework and doing the refactoring to consolidate 
-all the bridge logic in a separate patch series which also 
-includes moving the rockchip and stm encoder logic to a 
-drm_bridge?
-
-Or would you like me to do this consolidation rework in advance 
-just for the new imx6 mipi-dsi driver in this series and tackle 
-the rest of drivers in a separate patch series?
-
-@Laurent, do you also have suggestions how to proceed?
-
-[1] 
-https://lore.kernel.org/linux-arm-kernel/20200427081952.3536741-1-adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org/
-
-Thank you,
-Adrian
-
+On Sun, Apr 26, 2020 at 1:59 AM Mark Kettenis <mark.kettenis@xs4all.nl> wrote:
 >
-> Cheers, Daniel
+> > From: Jagan Teki <jagan@amarulasolutions.com>
+> > Date: Sun, 26 Apr 2020 01:06:56 +0530
+> >
+> > On Sun, Apr 26, 2020 at 12:23 AM Mark Kettenis <mark.kettenis@xs4all.nl> wrote:
+> > >
+> > > > From: Jagan Teki <jagan@amarulasolutions.com>
+> > > > Date: Sat, 25 Apr 2020 16:33:51 +0530
+> > > >
+> > > > Add Rockchip PCIe controller driver for rk3399 platform.
+> > > >
+> > > > Driver support Gen1 by operating as a Root complex.
+> > > >
+> > > > Thanks to Patrick for initial work.
+> > >
+> > > Tried to get this to work on my firefly-rk3399 which made me notice
+> > > some shortcomings:
+> > >
+> > > 1. The vpcie1v8 and vpcie0v9 supplies are optional, just like the
+> > >    vpcie3v3 supply.
+> > >
+> > > 2. The vpcie3v3 regulator check doesn't quite work.
+> >
+> > You mean the regulator check?
 >
->> 
->> > +
->> > +static void imx_mipi_dsi_encoder_commit(struct drm_encoder *encoder)
->> > +{
->> > +	struct imx_mipi_dsi *dsi = enc_to_dsi(encoder);
->> > +	int mux = drm_of_encoder_active_port_id(dsi->dev->of_node, encoder);
->> > +
->> > +	imx_mipi_dsi_set_ipu_di_mux(dsi, mux);
->> > +}
->> > +
->> > +static void imx_mipi_dsi_encoder_disable(struct drm_encoder *encoder)
->> > +{
->> > +}
->> > +
->> > +static const struct drm_encoder_helper_funcs imx_mipi_dsi_encoder_helpers = {
->> > +	.mode_fixup = imx_mipi_dsi_encoder_mode_fixup,
->> > +	.commit = imx_mipi_dsi_encoder_commit,
->> > +	.disable = imx_mipi_dsi_encoder_disable,
->> > +	.atomic_check = imx_mipi_dsi_encoder_atomic_check,
->> > +};
->> > +
->> > +static enum drm_mode_status imx_mipi_dsi_mode_valid(void *priv_data,
->> > +					const struct drm_display_mode *mode)
->> > +{
->> > +	/*
->> > +	 * The VID_PKT_SIZE field in the DSI_VID_PKT_CFG
->> > +	 * register is 11-bit.
->> > +	 */
->> > +	if (mode->hdisplay > 0x7ff)
->> > +		return MODE_BAD_HVALUE;
->> > +
->> > +	/*
->> > +	 * The V_ACTIVE_LINES field in the DSI_VTIMING_CFG
->> > +	 * register is 11-bit.
->> > +	 */
->> > +	if (mode->vdisplay > 0x7ff)
->> > +		return MODE_BAD_VVALUE;
->> > +
->> > +	return MODE_OK;
->> > +}
->> > +
->> > +
->> > +static unsigned int max_mbps_to_testdin(unsigned int max_mbps)
->> > +{
->> > +	unsigned int i;
->> > +
->> > +	for (i = 0; i < ARRAY_SIZE(dptdin_map); i++)
->> > +		if (dptdin_map[i].max_mbps == max_mbps)
->> > +			return dptdin_map[i].testdin;
->> > +
->> > +	return -EINVAL;
->> > +}
->> > +
->> > +static inline void dsi_write(struct imx_mipi_dsi *dsi, u32 reg, u32 val)
->> > +{
->> > +	writel(val, dsi->base + reg);
->> > +}
->> > +
->> > +static int imx_mipi_dsi_phy_init(void *priv_data)
->> > +{
->> > +	struct imx_mipi_dsi *dsi = priv_data;
->> > +	int testdin;
->> > +
->> > +	testdin = max_mbps_to_testdin(dsi->lane_mbps);
->> > +	if (testdin < 0) {
->> > +		DRM_DEV_ERROR(dsi->dev,
->> > +			      "failed to get testdin for %dmbps lane clock\n",
->> > +			      dsi->lane_mbps);
->> > +		return testdin;
->> > +	}
->> > +
->> > +	dsi_write(dsi, DSI_PHY_IF_CTRL, PHY_IF_CTRL_RESET);
->> > +	dsi_write(dsi, DSI_PWR_UP, POWERUP);
->> > +
->> > +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLK | PHY_UNTESTCLR);
->> > +	dsi_write(dsi, DSI_PHY_TST_CTRL1, PHY_TESTEN | PHY_TESTDOUT(0) |
->> > +		  PHY_TESTDIN(0x44));
->> > +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
->> > +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLK | PHY_UNTESTCLR);
->> > +	dsi_write(dsi, DSI_PHY_TST_CTRL1, PHY_UNTESTEN | PHY_TESTDOUT(0) |
->> > +		  PHY_TESTDIN(testdin));
->> > +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_TESTCLK | PHY_UNTESTCLR);
->> > +	dsi_write(dsi, DSI_PHY_TST_CTRL0, PHY_UNTESTCLK | PHY_UNTESTCLR);
->> > +
->> > +	return 0;
->> > +}
->> > +
->> > +static int imx_mipi_dsi_get_lane_mbps(void *priv_data,
->> > +				      const struct drm_display_mode *mode,
->> > +				      unsigned long mode_flags, u32 lanes,
->> > +				      u32 format, unsigned int *lane_mbps)
->> > +{
->> > +	struct imx_mipi_dsi *dsi = priv_data;
->> > +	int bpp;
->> > +	unsigned int i, target_mbps, mpclk;
->> > +	unsigned long pllref;
->> > +
->> > +	bpp = mipi_dsi_pixel_format_to_bpp(format);
->> > +	if (bpp < 0) {
->> > +		DRM_DEV_ERROR(dsi->dev, "failed to get bpp for format %d: %d\n",
->> > +			      format, bpp);
->> > +		return bpp;
->> > +	}
->> > +
->> > +	pllref = clk_get_rate(dsi->pllref_clk);
->> > +	if (pllref != 27000000)
->> > +		DRM_WARN("DSI pllref_clk not set to 27Mhz\n");
->> > +
->> > +	mpclk = DIV_ROUND_UP(mode->clock, MSEC_PER_SEC);
->> > +	if (mpclk) {
->> > +		/* take 1/0.7 blanking overhead into consideration */
->> > +		target_mbps = (mpclk * (bpp / lanes) * 10) / 7;
->> > +	} else {
->> > +		DRM_DEV_ERROR(dsi->dev, "use default 1Gbps DPHY pll clock\n");
->> > +		target_mbps = 1000;
->> > +	}
->> > +
->> > +	DRM_DEV_DEBUG(dsi->dev, "target pllref_clk frequency is %uMbps\n",
->> > +		      target_mbps);
->> > +
->> > +	for (i = 0; i < ARRAY_SIZE(dptdin_map); i++) {
->> > +		if (target_mbps < dptdin_map[i].max_mbps) {
->> > +			*lane_mbps = dptdin_map[i].max_mbps;
->> > +			dsi->lane_mbps = *lane_mbps;
->> > +			DRM_DEV_DEBUG(dsi->dev,
->> > +				      "real pllref_clk frequency is %uMbps\n",
->> > +				      *lane_mbps);
->> > +			return 0;
->> > +		}
->> > +	}
->> > +
->> > +	DRM_DEV_ERROR(dsi->dev, "DPHY clock frequency %uMbps is out of range\n",
->> > +		      target_mbps);
->> > +
->> > +	return -EINVAL;
->> > +}
->> > +
->> > +static int
->> > +dw_mipi_dsi_phy_get_timing(void *priv_data, unsigned int lane_mbps,
->> > +			   struct dw_mipi_dsi_dphy_timing *timing)
->> > +{
->> > +	timing->clk_hs2lp = 0x40;
->> > +	timing->clk_lp2hs = 0x40;
->> > +	timing->data_hs2lp = 0x40;
->> > +	timing->data_lp2hs = 0x40;
->> > +
->> > +	return 0;
->> > +}
->> > +
->> > +static const struct dw_mipi_dsi_phy_ops dw_mipi_dsi_imx6_phy_ops = {
->> > +	.init = imx_mipi_dsi_phy_init,
->> > +	.get_lane_mbps = imx_mipi_dsi_get_lane_mbps,
->> > +	.get_timing = dw_mipi_dsi_phy_get_timing,
->> > +};
->> > +
->> > +static struct dw_mipi_dsi_plat_data imx6q_mipi_dsi_drv_data = {
->> > +	.max_data_lanes = 2,
->> > +	.mode_valid = imx_mipi_dsi_mode_valid,
->> > +	.phy_ops = &dw_mipi_dsi_imx6_phy_ops,
->> > +};
->> > +
->> > +static const struct of_device_id imx_dsi_dt_ids[] = {
->> > +	{
->> > +		.compatible = "fsl,imx6q-mipi-dsi",
->> > +		.data = &imx6q_mipi_dsi_drv_data,
->> > +	},
->> > +	{ /* sentinel */ }
->> > +};
->> > +MODULE_DEVICE_TABLE(of, imx_dsi_dt_ids);
->> > +
->> > +static int imx_mipi_dsi_bind(struct device *dev, struct device *master,
->> > +			     void *data)
->> > +{
->> > +	struct imx_mipi_dsi *dsi = dev_get_drvdata(dev);
->> > +	struct drm_device *drm = data;
->> > +	int ret;
->> > +
->> > +	ret = clk_prepare_enable(dsi->pllref_clk);
->> > +	if (ret) {
->> > +		DRM_DEV_ERROR(dev, "Failed to enable pllref_clk: %d\n", ret);
->> > +		return ret;
->> > +	}
->> > +
->> > +	ret = imx_drm_create_encoder(drm, &dsi->encoder, dsi->dev->of_node);
->> > +	if (ret) {
->> > +		DRM_DEV_ERROR(dsi->dev, "failed to create drm encoder\n");
->> > +		return ret;
->> > +	}
->> > +
->> > +	drm_encoder_helper_add(&dsi->encoder, &imx_mipi_dsi_encoder_helpers);
->> > +
->> > +	ret = dw_mipi_dsi_bind(dsi->mipi_dsi, &dsi->encoder);
->> > +	if (ret) {
->> > +		DRM_DEV_ERROR(dev, "Failed to bind: %d\n", ret);
->> > +		return ret;
->> > +	}
->> > +
->> > +	return 0;
->> > +}
->> > +
->> > +static void imx_mipi_dsi_unbind(struct device *dev, struct device *master,
->> > +				void *data)
->> > +{
->> > +	struct imx_mipi_dsi *dsi = dev_get_drvdata(dev);
->> > +
->> > +	dw_mipi_dsi_unbind(dsi->mipi_dsi);
->> > +
->> > +	clk_disable_unprepare(dsi->pllref_clk);
->> > +}
->> > +
->> > +static const struct component_ops imx_mipi_dsi_ops = {
->> > +	.bind	= imx_mipi_dsi_bind,
->> > +	.unbind	= imx_mipi_dsi_unbind,
->> > +};
->> > +
->> > +static int imx_mipi_dsi_probe(struct platform_device *pdev)
->> > +{
->> > +	struct device *dev = &pdev->dev;
->> > +	const struct of_device_id *of_id = of_match_device(imx_dsi_dt_ids, dev);
->> > +	struct dw_mipi_dsi_plat_data *pdata = (struct dw_mipi_dsi_plat_data *) of_id->data;
->> > +	struct imx_mipi_dsi *dsi;
->> > +	struct resource *res;
->> > +	int ret;
->> > +
->> > +	dsi = devm_kzalloc(dev, sizeof(*dsi), GFP_KERNEL);
->> > +	if (!dsi)
->> > +		return -ENOMEM;
->> > +
->> > +	dsi->dev = dev;
->> > +
->> > +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
->> > +	dsi->base = devm_ioremap_resource(dev, res);
->> > +	if (IS_ERR(dsi->base)) {
->> > +		ret = PTR_ERR(dsi->base);
->> > +		DRM_DEV_ERROR(dev, "Unable to get dsi registers: %d\n", ret);
->> > +		return ret;
->> > +	}
->> > +
->> > +	dsi->pllref_clk = devm_clk_get(dev, "ref");
->> > +	if (IS_ERR(dsi->pllref_clk)) {
->> > +		ret = PTR_ERR(dsi->pllref_clk);
->> > +		DRM_DEV_ERROR(dev, "Unable to get pllref_clk: %d\n", ret);
->> > +		return ret;
->> > +	}
->> > +
->> > +	dsi->mux_sel = syscon_regmap_lookup_by_phandle(dev->of_node, "fsl,gpr");
->> > +	if (IS_ERR(dsi->mux_sel)) {
->> > +		ret = PTR_ERR(dsi->mux_sel);
->> > +		DRM_DEV_ERROR(dev, "Failed to get GPR regmap: %d\n", ret);
->> > +		return ret;
->> > +	}
->> > +
->> > +	dev_set_drvdata(dev, dsi);
->> > +
->> > +	imx6q_mipi_dsi_drv_data.base = dsi->base;
->> > +	imx6q_mipi_dsi_drv_data.priv_data = dsi;
->> > +
->> > +	dsi->mipi_dsi = dw_mipi_dsi_probe(pdev, pdata);
->> > +	if (IS_ERR(dsi->mipi_dsi)) {
->> > +		ret = PTR_ERR(dsi->mipi_dsi);
->> > +		DRM_DEV_ERROR(dev, "Failed to probe DW DSI host: %d\n", ret);
->> > +		goto err_clkdisable;
->> > +	}
->> > +
->> > +	return component_add(&pdev->dev, &imx_mipi_dsi_ops);
->> > +
->> > +err_clkdisable:
->> > +	clk_disable_unprepare(dsi->pllref_clk);
->> > +	return ret;
->> > +}
->> > +
->> > +static int imx_mipi_dsi_remove(struct platform_device *pdev)
->> > +{
->> > +	component_del(&pdev->dev, &imx_mipi_dsi_ops);
->> > +	return 0;
->> > +}
->> > +
->> > +static struct platform_driver imx_mipi_dsi_driver = {
->> > +	.probe		= imx_mipi_dsi_probe,
->> > +	.remove		= imx_mipi_dsi_remove,
->> > +	.driver		= {
->> > +		.of_match_table = imx_dsi_dt_ids,
->> > +		.name	= "dw-mipi-dsi-imx6",
->> > +	},
->> > +};
->> > +module_platform_driver(imx_mipi_dsi_driver);
->> > +
->> > +MODULE_DESCRIPTION("i.MX6 MIPI DSI host controller driver");
->> > +MODULE_AUTHOR("Liu Ying <victor.liu-3arQi8VN3Tc@public.gmane.org>");
->> > +MODULE_AUTHOR("Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>");
->> > +MODULE_LICENSE("GPL");
->> > -- 
->> > 2.26.0
->> > 
->> 
->> -- 
->> Regards,
->> 
->> Laurent Pinchart
->> _______________________________________________
->> dri-devel mailing list
->> dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org
->> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+> I mean the check wether the regulator is actually there in
+> rockchip_pcie_set_vpcie().  See my suggested changes below.
 >
-> -- 
-> Daniel Vetter
-> Software Engineer, Intel Corporation
-> http://blog.ffwll.ch
+> > >
+> > > See below for suggestions on how to fix this.
+> > >
+> > > Sadly the NVME SSD doesn't seem to be happy and shows up as only 1023 MB.
+> > > But that is probably not caused by this diff.
+> > >
+> > > > Signed-off-by: Patrick Wildt <patrick@blueri.se>
+> > > > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> > > > ---
+> > > >  drivers/pci/Kconfig         |   8 +
+> > > >  drivers/pci/Makefile        |   1 +
+> > > >  drivers/pci/pcie_rockchip.c | 460 ++++++++++++++++++++++++++++++++++++
+> > > >  drivers/pci/pcie_rockchip.h |  79 +++++++
+> > > >  4 files changed, 548 insertions(+)
+> > > >  create mode 100644 drivers/pci/pcie_rockchip.c
+> > > >  create mode 100644 drivers/pci/pcie_rockchip.h
+> > > >
+> > > > diff --git a/drivers/pci/Kconfig b/drivers/pci/Kconfig
+> > > > index 437cd9a055..3dba84103b 100644
+> > > > --- a/drivers/pci/Kconfig
+> > > > +++ b/drivers/pci/Kconfig
+> > > > @@ -197,4 +197,12 @@ config PCIE_MEDIATEK
+> > > >         Say Y here if you want to enable Gen2 PCIe controller,
+> > > >         which could be found on MT7623 SoC family.
+> > > >
+> > > > +config PCIE_ROCKCHIP
+> > > > +     bool "Enable Rockchip PCIe driver"
+> > > > +     select DM_PCI
+> > > > +     default y if ROCKCHIP_RK3399
+> > > > +     help
+> > > > +       Say Y here if you want to enable PCIe controller support on
+> > > > +       Rockchip SoCs.
+> > > > +
+> > > >  endif
+> > > > diff --git a/drivers/pci/Makefile b/drivers/pci/Makefile
+> > > > index c051ecc9f3..493e9354dd 100644
+> > > > --- a/drivers/pci/Makefile
+> > > > +++ b/drivers/pci/Makefile
+> > > > @@ -43,3 +43,4 @@ obj-$(CONFIG_PCI_PHYTIUM) += pcie_phytium.o
+> > > >  obj-$(CONFIG_PCIE_INTEL_FPGA) += pcie_intel_fpga.o
+> > > >  obj-$(CONFIG_PCI_KEYSTONE) += pcie_dw_ti.o
+> > > >  obj-$(CONFIG_PCIE_MEDIATEK) += pcie_mediatek.o
+> > > > +obj-$(CONFIG_PCIE_ROCKCHIP) += pcie_rockchip.o
+> > > > diff --git a/drivers/pci/pcie_rockchip.c b/drivers/pci/pcie_rockchip.c
+> > > > new file mode 100644
+> > > > index 0000000000..adc64aedf5
+> > > > --- /dev/null
+> > > > +++ b/drivers/pci/pcie_rockchip.c
+> > > > @@ -0,0 +1,460 @@
+> > > > +// SPDX-License-Identifier: GPL-2.0+
+> > > > +/*
+> > > > + * Rockchip AXI PCIe host controller driver
+> > > > + *
+> > > > + * Copyright (c) 2016 Rockchip, Inc.
+> > > > + * Copyright (c) 2020 Amarula Solutions(India)
+> > > > + * Copyright (c) 2020 Jagan Teki <jagan@amarulasolutions.com>
+> > > > + * Copyright (c) 2019 Patrick Wildt <patrick@blueri.se>
+> > > > + * Copyright (c) 2018 Mark Kettenis <kettenis@openbsd.org>
+> > > > + *
+> > > > + * Bits taken from Linux Rockchip PCIe host controller.
+> > > > + */
+> > > > +
+> > > > +#include <common.h>
+> > > > +#include <clk.h>
+> > > > +#include <dm.h>
+> > > > +#include <dm/device_compat.h>
+> > > > +#include <pci.h>
+> > > > +#include <power-domain.h>
+> > > > +#include <power/regulator.h>
+> > > > +#include <reset.h>
+> > > > +#include <syscon.h>
+> > > > +#include <asm/io.h>
+> > > > +#include <asm-generic/gpio.h>
+> > > > +#include <asm/arch-rockchip/clock.h>
+> > > > +#include <linux/iopoll.h>
+> > > > +
+> > > > +#include "pcie_rockchip.h"
+> > > > +
+> > > > +DECLARE_GLOBAL_DATA_PTR;
+> > > > +
+> > > > +static int rockchip_pcie_rd_conf(const struct udevice *bus, pci_dev_t bdf,
+> > > > +                              uint offset, ulong *valuep,
+> > > > +                              enum pci_size_t size)
+> > > > +{
+> > > > +     struct rockchip_pcie *priv = dev_get_priv(bus);
+> > > > +     ulong value;
+> > > > +     u32 off;
+> > > > +
+> > > > +     off = (PCI_BUS(bdf) << 20) | (PCI_DEV(bdf) << 15) |
+> > > > +           (PCI_FUNC(bdf) << 12) | (offset & ~0x3);
+> > > > +
+> > > > +     if ((PCI_BUS(bdf) == priv->first_busno) && (PCI_DEV(bdf) == 0)) {
+> > > > +             value = readl(priv->apb_base + PCIE_RC_NORMAL_BASE + off);
+> > > > +             *valuep = pci_conv_32_to_size(value, offset, size);
+> > > > +             return 0;
+> > > > +     }
+> > > > +
+> > > > +     if ((PCI_BUS(bdf) == priv->first_busno + 1) && (PCI_DEV(bdf) == 0)) {
+> > > > +             value = readl(priv->axi_base + off);
+> > > > +             *valuep = pci_conv_32_to_size(value, offset, size);
+> > > > +             return 0;
+> > > > +     }
+> > > > +
+> > > > +     *valuep = pci_get_ff(size);
+> > > > +
+> > > > +     return 0;
+> > > > +}
+> > > > +
+> > > > +static int rockchip_pcie_wr_conf(struct udevice *bus, pci_dev_t bdf,
+> > > > +                              uint offset, ulong value,
+> > > > +                              enum pci_size_t size)
+> > > > +{
+> > > > +     struct rockchip_pcie *priv = dev_get_priv(bus);
+> > > > +     ulong old;
+> > > > +     u32 off;
+> > > > +
+> > > > +     off = (PCI_BUS(bdf) << 20) | (PCI_DEV(bdf) << 15) |
+> > > > +           (PCI_FUNC(bdf) << 12) | (offset & ~0x3);
+> > > > +
+> > > > +     if ((PCI_BUS(bdf) == priv->first_busno) && (PCI_DEV(bdf) == 0)) {
+> > > > +             old = readl(priv->apb_base + PCIE_RC_NORMAL_BASE + off);
+> > > > +             value = pci_conv_size_to_32(old, value, offset, size);
+> > > > +             writel(value, priv->apb_base + PCIE_RC_NORMAL_BASE + off);
+> > > > +             return 0;
+> > > > +     }
+> > > > +
+> > > > +     if ((PCI_BUS(bdf) == priv->first_busno + 1) && (PCI_DEV(bdf) == 0)) {
+> > > > +             old = readl(priv->axi_base + off);
+> > > > +             value = pci_conv_size_to_32(old, value, offset, size);
+> > > > +             writel(value, priv->axi_base + off);
+> > > > +             return 0;
+> > > > +     }
+> > > > +
+> > > > +     return 0;
+> > > > +}
+> > > > +
+> > > > +static int rockchip_pcie_atr_init(struct rockchip_pcie *priv)
+> > > > +{
+> > > > +     struct udevice *ctlr = pci_get_controller(priv->dev);
+> > > > +     struct pci_controller *hose = dev_get_uclass_priv(ctlr);
+> > > > +     u64 addr, size, offset;
+> > > > +     u32 type;
+> > > > +     int i, region;
+> > > > +
+> > > > +     /* Use region 0 to map PCI configuration space. */
+> > > > +     writel(25 - 1, priv->apb_base + PCIE_ATR_OB_ADDR0(0));
+> > > > +     writel(0, priv->apb_base + PCIE_ATR_OB_ADDR1(0));
+> > > > +     writel(PCIE_ATR_HDR_CFG_TYPE0 | PCIE_ATR_HDR_RID,
+> > > > +            priv->apb_base + PCIE_ATR_OB_DESC0(0));
+> > > > +     writel(0, priv->apb_base + PCIE_ATR_OB_DESC1(0));
+> > > > +
+> > > > +     for (i = 0; i < hose->region_count; i++) {
+> > > > +             if (hose->regions[i].flags == PCI_REGION_SYS_MEMORY)
+> > > > +                     continue;
+> > > > +
+> > > > +             if (hose->regions[i].flags == PCI_REGION_IO)
+> > > > +                     type = PCIE_ATR_HDR_IO;
+> > > > +             else
+> > > > +                     type = PCIE_ATR_HDR_MEM;
+> > > > +
+> > > > +             /* Only support identity mappings. */
+> > > > +             if (hose->regions[i].bus_start !=
+> > > > +                 hose->regions[i].phys_start)
+> > > > +                     return -EINVAL;
+> > > > +
+> > > > +             /* Only support mappings aligned on a region boundary. */
+> > > > +             addr = hose->regions[i].bus_start;
+> > > > +             if (addr & (PCIE_ATR_OB_REGION_SIZE - 1))
+> > > > +                     return -EINVAL;
+> > > > +
+> > > > +             /* Mappings should lie between AXI and APB regions. */
+> > > > +             size = hose->regions[i].size;
+> > > > +             if (addr < (u64)priv->axi_base + PCIE_ATR_OB_REGION0_SIZE)
+> > > > +                     return -EINVAL;
+> > > > +             if (addr + size > (u64)priv->apb_base)
+> > > > +                     return -EINVAL;
+> > > > +
+> > > > +             offset = addr - (u64)priv->axi_base - PCIE_ATR_OB_REGION0_SIZE;
+> > > > +             region = 1 + (offset / PCIE_ATR_OB_REGION_SIZE);
+> > > > +             while (size > 0) {
+> > > > +                     writel(32 - 1,
+> > > > +                            priv->apb_base + PCIE_ATR_OB_ADDR0(region));
+> > > > +                     writel(0, priv->apb_base + PCIE_ATR_OB_ADDR1(region));
+> > > > +                     writel(type | PCIE_ATR_HDR_RID,
+> > > > +                            priv->apb_base + PCIE_ATR_OB_DESC0(region));
+> > > > +                     writel(0, priv->apb_base + PCIE_ATR_OB_DESC1(region));
+> > > > +
+> > > > +                     addr += PCIE_ATR_OB_REGION_SIZE;
+> > > > +                     size -= PCIE_ATR_OB_REGION_SIZE;
+> > > > +                     region++;
+> > > > +             }
+> > > > +     }
+> > > > +
+> > > > +     /* Passthrough inbound translations unmodified. */
+> > > > +     writel(32 - 1, priv->apb_base + PCIE_ATR_IB_ADDR0(2));
+> > > > +     writel(0, priv->apb_base + PCIE_ATR_IB_ADDR1(2));
+> > > > +
+> > > > +     return 0;
+> > > > +}
+> > > > +
+> > > > +static int rockchip_pcie_init_port(struct udevice *dev)
+> > > > +{
+> > > > +     struct rockchip_pcie *priv = dev_get_priv(dev);
+> > > > +     u32 cr, val, status;
+> > > > +     int ret;
+> > > > +
+> > > > +     if (dm_gpio_is_valid(&priv->ep_gpio))
+> > > > +             dm_gpio_set_value(&priv->ep_gpio, 0);
+> > > > +
+> > > > +     ret = reset_assert(&priv->aclk_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to assert aclk reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_assert(&priv->pclk_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to assert pclk reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_assert(&priv->pm_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to assert pm reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_assert(&priv->core_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to assert core reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_assert(&priv->mgmt_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to assert mgmt reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_assert(&priv->mgmt_sticky_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to assert mgmt-sticky reset (ret=%d)\n",
+> > > > +                     ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_assert(&priv->pipe_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to assert pipe reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     udelay(10);
+> > > > +
+> > > > +     ret = reset_deassert(&priv->pm_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to deassert pm reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_deassert(&priv->aclk_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to deassert aclk reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_deassert(&priv->pclk_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to deassert pclk reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     /* Select GEN1 for now */
+> > > > +     cr = PCIE_CLIENT_GEN_SEL_1;
+> > > > +     /* Set Root complex mode */
+> > > > +     cr |= PCIE_CLIENT_CONF_ENABLE | PCIE_CLIENT_MODE_RC;
+> > > > +     writel(cr, priv->apb_base + PCIE_CLIENT_CONFIG);
+> > > > +
+> > > > +     ret = reset_deassert(&priv->mgmt_sticky_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to deassert mgmt-sticky reset (ret=%d)\n",
+> > > > +                     ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_deassert(&priv->core_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to deassert core reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_deassert(&priv->mgmt_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to deassert mgmt reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     ret = reset_deassert(&priv->pipe_rst);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "failed to deassert pipe reset (ret=%d)\n", ret);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     /* Enable Gen1 training */
+> > > > +     writel(PCIE_CLIENT_LINK_TRAIN_ENABLE,
+> > > > +            priv->apb_base + PCIE_CLIENT_CONFIG);
+> > > > +
+> > > > +     if (dm_gpio_is_valid(&priv->ep_gpio))
+> > > > +             dm_gpio_set_value(&priv->ep_gpio, 1);
+> > > > +
+> > > > +     ret = readl_poll_sleep_timeout
+> > > > +                     (priv->apb_base + PCIE_CLIENT_BASIC_STATUS1,
+> > > > +                     status, PCIE_LINK_UP(status), 20, 500 * 1000);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "PCIe link training gen1 timeout!\n");
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     /* Initialize Root Complex registers. */
+> > > > +     writel(PCIE_LM_VENDOR_ROCKCHIP, priv->apb_base + PCIE_LM_VENDOR_ID);
+> > > > +     writel(PCI_CLASS_BRIDGE_PCI << 16,
+> > > > +            priv->apb_base + PCIE_RC_BASE + PCI_CLASS_REVISION);
+> > > > +     writel(PCIE_LM_RCBARPIE | PCIE_LM_RCBARPIS,
+> > > > +            priv->apb_base + PCIE_LM_RCBAR);
+> > > > +
+> > > > +     if (dev_read_bool(dev, "aspm-no-l0s")) {
+> > > > +             val = readl(priv->apb_base + PCIE_RC_PCIE_LCAP);
+> > > > +             val &= ~PCIE_RC_PCIE_LCAP_APMS_L0S;
+> > > > +             writel(val, priv->apb_base + PCIE_RC_PCIE_LCAP);
+> > > > +     }
+> > > > +
+> > > > +     /* Configure Address Translation. */
+> > > > +     ret = rockchip_pcie_atr_init(priv);
+> > > > +     if (ret) {
+> > > > +             dev_err(dev, "PCIE-%d: ATR init failed\n", dev->seq);
+> > > > +             return ret;
+> > > > +     }
+> > > > +
+> > > > +     return 0;
+> > > > +}
+> > > > +
+> > > > +static int rockchip_pcie_set_vpcie(struct udevice *dev)
+> > > > +{
+> > > > +     struct rockchip_pcie *priv = dev_get_priv(dev);
+> > > > +     int ret;
+> > > > +
+> > > > +     if (!IS_ERR(priv->vpcie3v3)) {
+> > >
+> > > I think this should be:
+> > >
+> > >         if (priv->vpcie3v3) {
+> >
+> > I didn't find any issue with the board I have optional of this, but
+> > will check it.
+> >
+> > >
+> > > > +             ret = regulator_set_enable(priv->vpcie3v3, true);
+> > > > +             if (ret) {
+> > > > +                     dev_err(dev, "failed to enable vpcie3v3 (ret=%d)\n",
+> > > > +                             ret);
+> > > > +                     return ret;
+> > > > +             }
+> > > > +     }
+> > > > +
+> > >
+> > > And to make this regulator optional, it needs an
+> > >
+> > >         if (priv->vpcie1v8) {
+> >
+> > I can see from v5.7-rc1, 12v, 3v3 are optional and rest not If I'm not wrong.
+>
+> The devicetree binding is clear about it.  See
+> Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt.
+>
+> And rk3399-firefly.dts doesn't add the properties.
+
+But, at least I can see these two are supplied from SoC Page 12 [1]?
+
+[1] http://download.t-firefly.com/product/RK3399/Docs/Hardware/Schematic%20&%20Components%20Position%20&%20CAD/Firefly-RK3399%20SCH%20&%20POS/Firefly-RK3399_V10_SCH_(2017-2-8).pdf
