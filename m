@@ -1,8 +1,10 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 1/6] arm64: dts: rk3399-puma: Move u-boot properties
- into -u-boot.dtsi
-Date: Tue, 28 Apr 2020 22:12:07 +0800
-Message-ID: <3fecdd07-cebf-89cc-d2d5-ecc7df403190@rock-chips.com>
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH_v2_1/6=5d_arm64=3a_dts=3a_rk3399-puma=3a_M?=
+ =?UTF-8?B?b3ZlIHUtYm9vdCBwcm9wZXJ0aWVzIGludG8gLXUtYm9vdC5kdHNp44CQ6K+35rOo?=
+ =?UTF-8?B?5oSP77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcytrZXZlci55YW5n?=
+ =?UTF-8?B?PXJvY2stY2hpcHMuY29tQGxpc3RzLmluZnJhZGVhZC5vcmfku6Plj5HjgJE=?=
+Date: Tue, 28 Apr 2020 22:12:20 +0800
+Message-ID: <00538470-fd55-da15-780c-13ea90bd3f9e@rock-chips.com>
 References: <20200428100019.19155-1-jagan@amarulasolutions.com>
  <20200428100019.19155-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
@@ -21,7 +23,7 @@ List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
 To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Peter Robinson <pbrobinson@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, u-boot@lists.denx.de, Peter Robinson <pbrobinson@gmail.com>, sunil@amarulasolutions.com, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
 
