@@ -1,112 +1,57 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_v2_1/6=5d_arm64=3a_dts=3a_rk3399-puma=3a_M?=
- =?UTF-8?B?b3ZlIHUtYm9vdCBwcm9wZXJ0aWVzIGludG8gLXUtYm9vdC5kdHNp44CQ6K+35rOo?=
- =?UTF-8?B?5oSP77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcytrZXZlci55YW5n?=
- =?UTF-8?B?PXJvY2stY2hpcHMuY29tQGxpc3RzLmluZnJhZGVhZC5vcmfku6Plj5HjgJE=?=
-Date: Tue, 28 Apr 2020 22:12:20 +0800
-Message-ID: <00538470-fd55-da15-780c-13ea90bd3f9e@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 2/6] arm64: dts: rk3399-evb: Move u-boot properties
+ into -u-boot.dtsi
+Date: Tue, 28 Apr 2020 22:12:51 +0800
+Message-ID: <fe5e0653-8d8d-fbd0-4779-3577090fc291@rock-chips.com>
 References: <20200428100019.19155-1-jagan@amarulasolutions.com>
- <20200428100019.19155-2-jagan@amarulasolutions.com>
+ <20200428100019.19155-3-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200428100019.19155-2-jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200428100019.19155-3-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: linux-rockchip@lists.infradead.org, u-boot@lists.denx.de, Peter Robinson <pbrobinson@gmail.com>, sunil@amarulasolutions.com, linux-amarula@amarulasolutions.com
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2020/4/28 下午6:00, Jagan Teki wrote:
-> Move U-Boot specific properties into rk3399-puma u-boot
-> specific dtsi file.
->
-> This would help to sync the devicetrees from Linux whenever
-> required instead of adding specific nodes.
->
-> Cc: Peter Robinson <pbrobinson@gmail.com>
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-
-
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
-> ---
-> Changes for v2:
-> - none
->
->   arch/arm/dts/rk3399-puma-u-boot.dtsi | 16 ++++++++++++++++
->   arch/arm/dts/rk3399-puma.dtsi        | 11 -----------
->   2 files changed, 16 insertions(+), 11 deletions(-)
->
-> diff --git a/arch/arm/dts/rk3399-puma-u-boot.dtsi b/arch/arm/dts/rk3399-puma-u-boot.dtsi
-> index 52f62b5d39..e664779227 100644
-> --- a/arch/arm/dts/rk3399-puma-u-boot.dtsi
-> +++ b/arch/arm/dts/rk3399-puma-u-boot.dtsi
-> @@ -22,3 +22,19 @@
->          };
->   
->   };
-> +
-> +&bios_enable {
-> +	u-boot,dm-pre-reloc;
-> +};
-> +
-> +&gpio1 {
-> +	u-boot,dm-pre-reloc;
-> +};
-> +
-> +&gpio3 {
-> +	u-boot,dm-pre-reloc;
-> +};
-> +
-> +&spiflash {
-> +	u-boot,dm-pre-reloc;
-> +};
-> diff --git a/arch/arm/dts/rk3399-puma.dtsi b/arch/arm/dts/rk3399-puma.dtsi
-> index 558b6337df..246a892cb7 100644
-> --- a/arch/arm/dts/rk3399-puma.dtsi
-> +++ b/arch/arm/dts/rk3399-puma.dtsi
-> @@ -91,7 +91,6 @@
->   	 */
->   	bios_enable: bios_enable {
->   		compatible = "regulator-fixed";
-> -		u-boot,dm-pre-reloc;
->   		regulator-name = "bios_enable";
->   		enable-active-high;
->   		gpio = <&gpio3 RK_PD5 GPIO_ACTIVE_LOW>;
-> @@ -520,14 +519,6 @@
->   	status = "okay";
->   };
->   
-> -&gpio1 {
-> -	u-boot,dm-pre-reloc;
-> -};
-> -
-> -&gpio3 {
-> -	u-boot,dm-pre-reloc;
-> -};
-> -
->   &pinctrl {
->   	/* Pins that are not explicitely used by any devices */
->   	pinctrl-names = "default";
-> @@ -633,8 +624,6 @@
->   	#size-cells = <0>;
->   
->   	spiflash: w25q32dw@0 {
-> -		u-boot,dm-pre-reloc;
-> -
->   		compatible = "jedec,spi-nor";
->   		reg = <0>;
->   		spi-max-frequency = <49500000>;
+Ck9uIDIwMjAvNC8yOCDkuIvljYg2OjAwLCBKYWdhbiBUZWtpIHdyb3RlOgo+IE1vdmUgVS1Cb290
+IHNwZWNpZmljIHByb3BlcnRpZXMgaW50byByazMzOTktZXZiIHUtYm9vdAo+IHNwZWNpZmljIGR0
+c2kgZmlsZS4KPgo+IFRoaXMgd291bGQgaGVscCB0byBzeW5jIHRoZSBkZXZpY2V0cmVlcyBmcm9t
+IExpbnV4IHdoZW5ldmVyCj4gcmVxdWlyZWQgaW5zdGVhZCBvZiBhZGRpbmcgc3BlY2lmaWMgbm9k
+ZXMuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25z
+LmNvbT4KCgpSZXZpZXdlZC1ieTogS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNv
+bT4KClRoYW5rcywKLSBLZXZlcgo+IC0tLQo+IENoYW5nZXMgZm9yIHYyOgo+IC0gbm9uZQo+Cj4g
+ICBhcmNoL2FybS9kdHMvcmszMzk5LWV2Yi11LWJvb3QuZHRzaSB8IDggKysrKysrKysKPiAgIGFy
+Y2gvYXJtL2R0cy9yazMzOTktZXZiLmR0cyAgICAgICAgIHwgMiAtLQo+ICAgMiBmaWxlcyBjaGFu
+Z2VkLCA4IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvYXJj
+aC9hcm0vZHRzL3JrMzM5OS1ldmItdS1ib290LmR0c2kgYi9hcmNoL2FybS9kdHMvcmszMzk5LWV2
+Yi11LWJvb3QuZHRzaQo+IGluZGV4IGNjYjMzZDM0ZDEuLmE0ZDY4ZjNiOTggMTAwNjQ0Cj4gLS0t
+IGEvYXJjaC9hcm0vZHRzL3JrMzM5OS1ldmItdS1ib290LmR0c2kKPiArKysgYi9hcmNoL2FybS9k
+dHMvcmszMzk5LWV2Yi11LWJvb3QuZHRzaQo+IEBAIC0xMSwzICsxMSwxMSBAQAo+ICAgCQl1LWJv
+b3Qsc3BsLWJvb3Qtb3JkZXIgPSAmc2RoY2ksICZzZG1tYzsKPiAgIAl9Owo+ICAgfTsKPiArCj4g
+KyZpMmMwIHsKPiArCXUtYm9vdCxkbS1wcmUtcmVsb2M7Cj4gK307Cj4gKwo+ICsmcms4MDggewo+
+ICsJdS1ib290LGRtLXByZS1yZWxvYzsKPiArfTsKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vZHRz
+L3JrMzM5OS1ldmIuZHRzIGIvYXJjaC9hcm0vZHRzL3JrMzM5OS1ldmIuZHRzCj4gaW5kZXggNDEy
+OWU5MDJhOC4uYzcyNzE5YzBkMyAxMDA2NDQKPiAtLS0gYS9hcmNoL2FybS9kdHMvcmszMzk5LWV2
+Yi5kdHMKPiArKysgYi9hcmNoL2FybS9kdHMvcmszMzk5LWV2Yi5kdHMKPiBAQCAtMTk5LDcgKzE5
+OSw2IEBACj4gICAJY2xvY2stZnJlcXVlbmN5ID0gPDQwMDAwMD47Cj4gICAJaTJjLXNjbC1mYWxs
+aW5nLXRpbWUtbnMgPSA8NTA+Owo+ICAgCWkyYy1zY2wtcmlzaW5nLXRpbWUtbnMgPSA8MTAwPjsK
+PiAtCXUtYm9vdCxkbS1wcmUtcmVsb2M7Cj4gICAKPiAgIAlyazgwODogcG1pY0AxYiB7Cj4gICAJ
+CWNvbXBhdGlibGUgPSAicm9ja2NoaXAscms4MDgiOwo+IEBAIC0yMTEsNyArMjEwLDYgQEAKPiAg
+IAkJcmVnID0gPDB4MWI+Owo+ICAgCQlyb2NrY2hpcCxzeXN0ZW0tcG93ZXItY29udHJvbGxlcjsK
+PiAgIAkJI2Nsb2NrLWNlbGxzID0gPDE+Owo+IC0JCXUtYm9vdCxkbS1wcmUtcmVsb2M7Cj4gICAJ
+CXN0YXR1cyA9ICJva2F5IjsKPiAgIAo+ICAgCQl2Y2MxMi1zdXBwbHkgPSA8JnZjYzN2M19zeXM+
+OwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
