@@ -1,93 +1,95 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 5/6] arm: dts: rk3399: Sync roc-pc-mezzanine from
- v5.7-rc1
-Date: Tue, 28 Apr 2020 22:14:01 +0800
-Message-ID: <2180b3a1-59af-3686-54d8-d9b868854d8d@rock-chips.com>
-References: <20200428100019.19155-1-jagan@amarulasolutions.com>
- <20200428100019.19155-6-jagan@amarulasolutions.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v3] rockchip: Enable SF distro bootcmd
+Date: Tue, 28 Apr 2020 22:15:03 +0800
+Message-ID: <085b994f-7cc3-036b-c3d1-8c908c1a525a@rock-chips.com>
+References: <20200428100428.19739-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200428100019.19155-6-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200428100428.19739-1-jagan@amarulasolutions.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Tom Rini <trini@konsulko.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMjAvNC8yOCDkuIvljYg2OjAwLCBKYWdhbiBUZWtpIHdyb3RlOgo+IFN5bmMgRmlyZWZs
-eSBST0MtUkszMzk5LVBDIE1lenphbmluZSBCb2FyZCBkdHMgZmlsZQo+IGZyb20gTGludXggdjUu
-Ny1yYzEuCj4KPiBTaWduZWQtb2ZmLWJ5OiBTdW5pZWwgTWFoZXNoIDxzdW5pbEBhbWFydWxhc29s
-dXRpb25zLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29s
-dXRpb25zLmNvbT4KCgpSZXZpZXdlZC1ieTogS2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNo
-aXBzLmNvbT4KClRoYW5rcywKLSBLZXZlcgo+IC0tLQo+IENoYW5nZXMgZm9yIHYyOgo+IC0gbm9u
-ZQo+Cj4gICBhcmNoL2FybS9kdHMvTWFrZWZpbGUgICAgICAgICAgICAgICAgICAgIHwgIDEgKwo+
-ICAgYXJjaC9hcm0vZHRzL3JrMzM5OS1yb2MtcGMtbWV6emFuaW5lLmR0cyB8IDkzICsrKysrKysr
-KysrKysrKysrKysrKysrKwo+ICAgMiBmaWxlcyBjaGFuZ2VkLCA5NCBpbnNlcnRpb25zKCspCj4g
-ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3JrMzM5OS1yb2MtcGMtbWV6emFuaW5l
-LmR0cwo+Cj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2R0cy9NYWtlZmlsZSBiL2FyY2gvYXJtL2R0
-cy9NYWtlZmlsZQo+IGluZGV4IGFmN2Q4MDRiNjYuLjQwOWIwZDFiM2YgMTAwNjQ0Cj4gLS0tIGEv
-YXJjaC9hcm0vZHRzL01ha2VmaWxlCj4gKysrIGIvYXJjaC9hcm0vZHRzL01ha2VmaWxlCj4gQEAg
-LTEzMSw2ICsxMzEsNyBAQCBkdGItJChDT05GSUdfUk9DS0NISVBfUkszMzk5KSArPSBcCj4gICAJ
-cmszMzk5LXB1bWEtZGRyMTYwMC5kdGIgXAo+ICAgCXJrMzM5OS1wdW1hLWRkcjE4NjYuZHRiIFwK
-PiAgIAlyazMzOTktcm9jLXBjLmR0YiBcCj4gKwlyazMzOTktcm9jLXBjLW1lenphbmluZS5kdGIg
-XAo+ICAgCXJrMzM5OS1yb2NrLXBpLTQuZHRiIFwKPiAgIAlyazMzOTktcm9jazk2MC5kdGIgXAo+
-ICAgCXJrMzM5OS1yb2NrcHJvNjQuZHRiCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2R0cy9yazMz
-OTktcm9jLXBjLW1lenphbmluZS5kdHMgYi9hcmNoL2FybS9kdHMvcmszMzk5LXJvYy1wYy1tZXp6
-YW5pbmUuZHRzCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwMDAwLi4yYWNi
-M2Q1MDBmCj4gLS0tIC9kZXYvbnVsbAo+ICsrKyBiL2FyY2gvYXJtL2R0cy9yazMzOTktcm9jLXBj
-LW1lenphbmluZS5kdHMKPiBAQCAtMCwwICsxLDkzIEBACj4gKy8vIFNQRFgtTGljZW5zZS1JZGVu
-dGlmaWVyOiAoR1BMLTIuMCsgT1IgTUlUKQo+ICsvKgo+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMTcg
-VC1DaGlwIEludGVsbGlnZW50IFRlY2hub2xvZ3kgQ28uLCBMdGQKPiArICogQ29weXJpZ2h0IChj
-KSAyMDE5IE1hcmt1cyBSZWljaGwgPG0ucmVpY2hsQGZpdmV0ZWNobm8uZGU+Cj4gKyAqLwo+ICsK
-PiArL2R0cy12MS87Cj4gKyNpbmNsdWRlICJyazMzOTktcm9jLXBjLmR0c2kiCj4gKwo+ICsvIHsK
-PiArCW1vZGVsID0gIkZpcmVmbHkgUk9DLVJLMzM5OS1QQyBNZXp6YW5pbmUgQm9hcmQiOwo+ICsJ
-Y29tcGF0aWJsZSA9ICJmaXJlZmx5LHJvYy1yazMzOTktcGMtbWV6emFuaW5lIiwgInJvY2tjaGlw
-LHJrMzM5OSI7Cj4gKwo+ICsJdmNjM3YzX25nZmY6IHZjYzN2My1uZ2ZmIHsKPiArCQljb21wYXRp
-YmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4gKwkJcmVndWxhdG9yLW5hbWUgPSAidmNjM3YzX25n
-ZmYiOwo+ICsJCWVuYWJsZS1hY3RpdmUtaGlnaDsKPiArCQlncGlvID0gPCZncGlvNCBSS19QRDMg
-R1BJT19BQ1RJVkVfSElHSD47Cj4gKwkJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiArCQlw
-aW5jdHJsLTAgPSA8JnZjYzN2M19uZ2ZmX2VuPjsKPiArCQlyZWd1bGF0b3ItYWx3YXlzLW9uOwo+
-ICsJCXJlZ3VsYXRvci1ib290LW9uOwo+ICsJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDMz
-MDAwMDA+Owo+ICsJCXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDMzMDAwMDA+Owo+ICsJCXZp
-bi1zdXBwbHkgPSA8JmRjXzEydj47Cj4gKwl9Owo+ICsKPiArCXZjYzN2M19wY2llOiB2Y2MzdjMt
-cGNpZSB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyZWd1bGF0b3ItZml4ZWQiOwo+ICsJCXJlZ3VsYXRv
-ci1uYW1lID0gInZjYzN2M19wY2llIjsKPiArCQllbmFibGUtYWN0aXZlLWhpZ2g7Cj4gKwkJZ3Bp
-byA9IDwmZ3BpbzEgUktfUEMxIEdQSU9fQUNUSVZFX0hJR0g+Owo+ICsJCXBpbmN0cmwtbmFtZXMg
-PSAiZGVmYXVsdCI7Cj4gKwkJcGluY3RybC0wID0gPCZ2Y2MzdjNfcGNpZV9lbj47Cj4gKwkJcmVn
-dWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzMwMDAwMD47Cj4gKwkJcmVndWxhdG9yLW1heC1taWNy
-b3ZvbHQgPSA8MzMwMDAwMD47Cj4gKwkJdmluLXN1cHBseSA9IDwmZGNfMTJ2PjsKPiArCX07Cj4g
-K307Cj4gKwo+ICsmcGNpZV9waHkgewo+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiAr
-JnBjaWUwIHsKPiArCWVwLWdwaW9zID0gPCZncGlvNCBSS19QRDEgR1BJT19BQ1RJVkVfSElHSD47
-Cj4gKwludW0tbGFuZXMgPSA8ND47Cj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ICsJ
-cGluY3RybC0wID0gPCZwY2llX3BlcnN0PjsKPiArCXZwY2llM3YzLXN1cHBseSA9IDwmdmNjM3Yz
-X3BjaWU+Owo+ICsJdnBjaWUxdjgtc3VwcGx5ID0gPCZ2Y2MxdjhfcG11PjsKPiArCXZwY2llMHY5
-LXN1cHBseSA9IDwmdmNjYV8wdjk+Owo+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiAr
-JnBpbmN0cmwgewo+ICsJbmdmZiB7Cj4gKwkJdmNjM3YzX25nZmZfZW46IHZjYzN2My1uZ2ZmLWVu
-IHsKPiArCQkJcm9ja2NoaXAscGlucyA9IDw0IFJLX1BEMyBSS19GVU5DX0dQSU8gJnBjZmdfcHVs
-bF9ub25lPjsKPiArCQl9Owo+ICsJfTsKPiArCj4gKwlwY2llIHsKPiArCQl2Y2MzdjNfcGNpZV9l
-bjogdmNjM3YzLXBjaWUtZW4gewo+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDEgUktfUEMxIFJLX0ZV
-TkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+Owo+ICsJCX07Cj4gKwo+ICsJCXBjaWVfcGVyc3Q6IHBj
-aWUtcGVyc3Qgewo+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDQgUktfUEQxIFJLX0ZVTkNfR1BJTyAm
-cGNmZ19wdWxsX25vbmU+Owo+ICsJCX07Cj4gKwl9Owo+ICt9Owo+ICsKPiArJnNkaW8wIHsKPiAr
-CWJ1cy13aWR0aCA9IDw0PjsKPiArCWNhcC1zZC1oaWdoc3BlZWQ7Cj4gKwljYXAtc2Rpby1pcnE7
-Cj4gKwlrZWVwLXBvd2VyLWluLXN1c3BlbmQ7Cj4gKwltbWMtcHdyc2VxID0gPCZzZGlvX3B3cnNl
-cT47Cj4gKwlub24tcmVtb3ZhYmxlOwo+ICsJcGluY3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKPiAr
-CXBpbmN0cmwtMCA9IDwmc2RpbzBfYnVzNCAmc2RpbzBfY21kICZzZGlvMF9jbGs+Owo+ICsJc2Qt
-dWhzLXNkcjEwNDsKPiArCXZtbWMtc3VwcGx5ID0gPCZ2Y2MzdjNfbmdmZj47Cj4gKwl2cW1tYy1z
-dXBwbHkgPSA8JnZjY18xdjg+Owo+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJnVh
-cnQwIHsKPiArCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwlwaW5jdHJsLTAgPSA8JnVh
-cnQwX3hmZXIgJnVhcnQwX2N0cyAmdWFydDBfcnRzPjsKPiArCXN0YXR1cyA9ICJva2F5IjsKPiAr
-fTsKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+
+On 2020/4/28 下午6:04, Jagan Teki wrote:
+> Enable SPI flash(SF) distro boot command in Rockchip.
+>
+> This distro boot will read the boot script at specific
+> location at the flash and start sourcing the same.
+>
+> Included the SF device at the last of the target devices
+> list since all the rest of the devices on the list have
+> more possibility to boot the distribution due to the
+> size of the SPI flash is concern.
+>
+> Cc: Tom Rini <trini@konsulko.com>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+
+
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+
+Thanks,
+- Kever
+> ---
+> Changes for v3:
+> - Don't use SF distro px30
+>
+>   include/configs/rk3399_common.h   |  1 +
+>   include/configs/rockchip-common.h | 15 +++++++++++++++
+>   2 files changed, 16 insertions(+)
+>
+> diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
+> index 01a9174bd2..f0ae6e67a7 100644
+> --- a/include/configs/rk3399_common.h
+> +++ b/include/configs/rk3399_common.h
+> @@ -60,6 +60,7 @@
+>   #endif
+>   
+>   #include <config_distro_bootcmd.h>
+> +#include <environment/distro/sf.h>
+>   #define CONFIG_EXTRA_ENV_SETTINGS \
+>   	ENV_MEM_LAYOUT_SETTINGS \
+>   	"fdtfile=" CONFIG_DEFAULT_FDT_FILE "\0" \
+> diff --git a/include/configs/rockchip-common.h b/include/configs/rockchip-common.h
+> index b55e09a9ca..2d5d29849d 100644
+> --- a/include/configs/rockchip-common.h
+> +++ b/include/configs/rockchip-common.h
+> @@ -41,11 +41,26 @@
+>   	#define BOOT_TARGET_DHCP(func)
+>   #endif
+>   
+> +#if CONFIG_IS_ENABLED(CMD_SF)
+> +	#define BOOT_TARGET_SF(func)	func(SF, sf, 0)
+> +#else
+> +	#define BOOT_TARGET_SF(func)
+> +#endif
+> +
+> +#ifndef CONFIG_ROCKCHIP_PX30
+> +#define BOOT_TARGET_DEVICES(func) \
+> +	BOOT_TARGET_MMC(func) \
+> +	BOOT_TARGET_USB(func) \
+> +	BOOT_TARGET_PXE(func) \
+> +	BOOT_TARGET_DHCP(func) \
+> +	BOOT_TARGET_SF(func)
+> +#else
+>   #define BOOT_TARGET_DEVICES(func) \
+>   	BOOT_TARGET_MMC(func) \
+>   	BOOT_TARGET_USB(func) \
+>   	BOOT_TARGET_PXE(func) \
+>   	BOOT_TARGET_DHCP(func)
+> +#endif
+>   
+>   #ifdef CONFIG_ARM64
+>   #define ROOT_UUID "B921B045-1DF0-41C3-AF44-4C6F280D3FAE;\0"
