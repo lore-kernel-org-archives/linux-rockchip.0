@@ -1,117 +1,47 @@
-From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v5 2/7] mtd: rawnand: rockchip: NFC drivers for RK3308,
- RK3188 and others
-Date: Wed, 29 Apr 2020 19:04:28 +0200
-Message-ID: <20200429190428.33ca0523@xps13>
-References: <20200426100250.14678-1-yifeng.zhao@rock-chips.com>
-        <20200426100250.14678-3-yifeng.zhao@rock-chips.com>
-        <4dbe907c-a6c2-a163-0cab-234b08336b5c@gmail.com>
+From: Lu Baolu <baolu.lu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Subject: Re: [PATCH v3 04/34] iommu/vt-d: Wire up iommu_ops->def_domain_type
+Date: Thu, 30 Apr 2020 07:58:18 +0800
+Message-ID: <b091a9e0-4bbb-2cd9-861e-e958bc691f73@linux.intel.com>
+References: <20200429133712.31431-1-joro@8bytes.org>
+ <20200429133712.31431-5-joro@8bytes.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <4dbe907c-a6c2-a163-0cab-234b08336b5c-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200429133712.31431-5-joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Content-Language: en-US
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Jean-Philippe Brucker <jean-philippe-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: baolu.lu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, Daniel Drake <drake-6IF/jdPJHihWk0Htik3J/w@public.gmane.org>, jonathan.derrick-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Yifeng,
-
-Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote on Wed, 29 Apr 2020 17:55:56
-+0200:
-
-> Hi Yifeng,
+On 2020/4/29 21:36, Joerg Roedel wrote:
+> From: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
 > 
-> A few more comments below for now (part 2).
+> The Intel VT-d driver already has a matching function to determine the
+> default domain type for a device. Wire it up in intel_iommu_ops.
 > 
-> On 4/26/20 12:02 PM, Yifeng Zhao wrote:
+> Signed-off-by: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
+
+Reviewed-by: Lu Baolu <baolu.lu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+
+Best regards,
+baolu
+
+> ---
+>   drivers/iommu/intel-iommu.c | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> [..]
+> diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
+> index ef0a5246700e..b9f905a55dda 100644
+> --- a/drivers/iommu/intel-iommu.c
+> +++ b/drivers/iommu/intel-iommu.c
+> @@ -6209,6 +6209,7 @@ const struct iommu_ops intel_iommu_ops = {
+>   	.dev_enable_feat	= intel_iommu_dev_enable_feat,
+>   	.dev_disable_feat	= intel_iommu_dev_disable_feat,
+>   	.is_attach_deferred	= intel_iommu_is_attach_deferred,
+> +	.def_domain_type	= device_def_domain_type,
+>   	.pgsize_bitmap		= INTEL_IOMMU_PGSIZES,
+>   };
+>   
 > 
-> > +#define	THIS_NAME		"rk-nand"  
-> 
-> > +static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
-> > +				 struct device_node *np)
-> > +{
-> > +	struct rk_nfc_nand_chip *nand;
-> > +	struct nand_chip *chip;
-> > +	struct mtd_info *mtd;
-> > +	int nsels;
-> > +	u32 tmp;
-> > +	int ret;
-> > +	int i;
-> > +
-> > +	if (!of_get_property(np, "reg", &nsels))
-> > +		return -ENODEV;
-> > +	nsels /= sizeof(u32);
-> > +	if (!nsels || nsels > NFC_MAX_NSELS) {
-> > +		dev_err(dev, "invalid reg property size %d\n", nsels);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	nand = devm_kzalloc(dev, sizeof(*nand) + nsels * sizeof(u8),
-> > +			    GFP_KERNEL);
-> > +	if (!nand)
-> > +		return -ENOMEM;
-> > +
-> > +	nand->nsels = nsels;
-> > +	for (i = 0; i < nsels; i++) {
-> > +		ret = of_property_read_u32_index(np, "reg", i, &tmp);
-> > +		if (ret) {
-> > +			dev_err(dev, "reg property failure : %d\n", ret);
-> > +			return ret;
-> > +		}
-> > +
-> > +		if (tmp >= NFC_MAX_NSELS) {
-> > +			dev_err(dev, "invalid CS: %u\n", tmp);
-> > +			return -EINVAL;
-> > +		}
-> > +
-> > +		if (test_and_set_bit(tmp, &nfc->assigned_cs)) {
-> > +			dev_err(dev, "CS %u already assigned\n", tmp);
-> > +			return -EINVAL;
-> > +		}
-> > +
-> > +		nand->sels[i] = tmp;
-> > +	}
-> > +
-> > +	chip = &nand->chip;
-> > +	chip->controller = &nfc->controller;
-> > +
-> > +	nand_set_flash_node(chip, np);
-> > +	nand_set_controller_data(chip, nfc);
-> > +
-> > +	chip->options |= NAND_USE_BOUNCE_BUFFER | NAND_NO_SUBPAGE_WRITE;
-> > +	chip->bbt_options = NAND_BBT_USE_FLASH | NAND_BBT_NO_OOB;
-> > +
-> > +	/* set default mode in case dt entry is missing */
-> > +	chip->ecc.mode = NAND_ECC_HW;
-> > +
-> > +	mtd = nand_to_mtd(chip);
-> > +	mtd->owner = THIS_MODULE;
-> > +	mtd->dev.parent = dev;  
-> 
-> > +	mtd->name = THIS_NAME;  
-> 
-> The 'mtd->name' shows up somewhere in file tree.
-
-Good catch.
-
-> The rk3288 has 2 nfc's. In theory 2 probes and also 2 device names, so I
-> think that we shouldn't use a fixed define for 'mtd->name'.
-> Maybe use something like this:
-
-Yifeng, please use the NAND chip "label" DT property, which is parsed
-by the core automatically and will give you meaningful names for every
-chip:
-
-nand_set_flash_node(chip, np);
-if (!mtd->name) {
-	dev_err(nfc->dev, "NAND label property is mandatory\n");
-	return -EINVAL;
-}
-
-
-Thanks,
-Miquèl
