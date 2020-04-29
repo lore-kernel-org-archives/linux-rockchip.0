@@ -1,198 +1,152 @@
-From: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH v3 15/34] iommu/amd: Convert to probe/release_device()
- call-backs
-Date: Wed, 29 Apr 2020 15:36:53 +0200
-Message-ID: <20200429133712.31431-16-joro@8bytes.org>
-References: <20200429133712.31431-1-joro@8bytes.org>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v5 2/7] mtd: rawnand: rockchip: NFC drivers for RK3308,
+ RK3188 and others
+Date: Wed, 29 Apr 2020 17:55:56 +0200
+Message-ID: <4dbe907c-a6c2-a163-0cab-234b08336b5c@gmail.com>
+References: <20200426100250.14678-1-yifeng.zhao@rock-chips.com>
+ <20200426100250.14678-3-yifeng.zhao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200429133712.31431-1-joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Lu Baolu <baolu.lu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Jean-Philippe Brucker <jean-philippe-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Daniel Drake <drake-6IF/jdPJHihWk0Htik3J/w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, jonathan.derrick-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200426100250.14678-3-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
+Hi Yifeng,
 
-Convert the AMD IOMMU Driver to use the probe_device() and
-release_device() call-backs of iommu_ops, so that the iommu core code
-does the group and sysfs setup.
+A few more comments below for now (part 2).
 
-Signed-off-by: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
----
- drivers/iommu/amd_iommu.c | 71 ++++++++++++---------------------------
- 1 file changed, 22 insertions(+), 49 deletions(-)
+On 4/26/20 12:02 PM, Yifeng Zhao wrote:
 
-diff --git a/drivers/iommu/amd_iommu.c b/drivers/iommu/amd_iommu.c
-index 0b4b4faa876d..c30367413683 100644
---- a/drivers/iommu/amd_iommu.c
-+++ b/drivers/iommu/amd_iommu.c
-@@ -343,21 +343,9 @@ static bool check_device(struct device *dev)
- 	return true;
- }
- 
--static void init_iommu_group(struct device *dev)
--{
--	struct iommu_group *group;
--
--	group = iommu_group_get_for_dev(dev);
--	if (IS_ERR(group))
--		return;
--
--	iommu_group_put(group);
--}
--
- static int iommu_init_device(struct device *dev)
- {
- 	struct iommu_dev_data *dev_data;
--	struct amd_iommu *iommu;
- 	int devid;
- 
- 	if (dev->archdata.iommu)
-@@ -367,8 +355,6 @@ static int iommu_init_device(struct device *dev)
- 	if (devid < 0)
- 		return devid;
- 
--	iommu = amd_iommu_rlookup_table[devid];
--
- 	dev_data = find_dev_data(devid);
- 	if (!dev_data)
- 		return -ENOMEM;
-@@ -391,8 +377,6 @@ static int iommu_init_device(struct device *dev)
- 
- 	dev->archdata.iommu = dev_data;
- 
--	iommu_device_link(&iommu->iommu, dev);
--
- 	return 0;
- }
- 
-@@ -410,7 +394,7 @@ static void iommu_ignore_device(struct device *dev)
- 	setup_aliases(dev);
- }
- 
--static void iommu_uninit_device(struct device *dev)
-+static void amd_iommu_uninit_device(struct device *dev)
- {
- 	struct iommu_dev_data *dev_data;
- 	struct amd_iommu *iommu;
-@@ -429,13 +413,6 @@ static void iommu_uninit_device(struct device *dev)
- 	if (dev_data->domain)
- 		detach_device(dev);
- 
--	iommu_device_unlink(&iommu->iommu, dev);
--
--	iommu_group_remove_device(dev);
--
--	/* Remove dma-ops */
--	dev->dma_ops = NULL;
--
- 	/*
- 	 * We keep dev_data around for unplugged devices and reuse it when the
- 	 * device is re-plugged - not doing so would introduce a ton of races.
-@@ -2152,55 +2129,50 @@ static void detach_device(struct device *dev)
- 	spin_unlock_irqrestore(&domain->lock, flags);
- }
- 
--static int amd_iommu_add_device(struct device *dev)
-+static struct iommu_device *amd_iommu_probe_device(struct device *dev)
- {
--	struct iommu_dev_data *dev_data;
--	struct iommu_domain *domain;
-+	struct iommu_device *iommu_dev;
- 	struct amd_iommu *iommu;
- 	int ret, devid;
- 
--	if (get_dev_data(dev))
--		return 0;
--
- 	if (!check_device(dev))
--		return -ENODEV;
-+		return ERR_PTR(-ENODEV);
- 
- 	devid = get_device_id(dev);
- 	if (devid < 0)
--		return devid;
-+		return ERR_PTR(devid);
- 
- 	iommu = amd_iommu_rlookup_table[devid];
- 
-+	if (get_dev_data(dev))
-+		return &iommu->iommu;
-+
- 	ret = iommu_init_device(dev);
- 	if (ret) {
- 		if (ret != -ENOTSUPP)
- 			dev_err(dev, "Failed to initialize - trying to proceed anyway\n");
--
-+		iommu_dev = ERR_PTR(ret);
- 		iommu_ignore_device(dev);
--		dev->dma_ops = NULL;
--		goto out;
-+	} else {
-+		iommu_dev = &iommu->iommu;
- 	}
--	init_iommu_group(dev);
- 
--	dev_data = get_dev_data(dev);
-+	iommu_completion_wait(iommu);
- 
--	BUG_ON(!dev_data);
-+	return iommu_dev;
-+}
- 
--	if (dev_data->iommu_v2)
--		iommu_request_dm_for_dev(dev);
-+static void amd_iommu_probe_finalize(struct device *dev)
-+{
-+	struct iommu_domain *domain;
- 
- 	/* Domains are initialized for this device - have a look what we ended up with */
- 	domain = iommu_get_domain_for_dev(dev);
- 	if (domain->type == IOMMU_DOMAIN_DMA)
- 		iommu_setup_dma_ops(dev, IOVA_START_PFN << PAGE_SHIFT, 0);
--
--out:
--	iommu_completion_wait(iommu);
--
--	return 0;
- }
- 
--static void amd_iommu_remove_device(struct device *dev)
-+static void amd_iommu_release_device(struct device *dev)
- {
- 	struct amd_iommu *iommu;
- 	int devid;
-@@ -2214,7 +2186,7 @@ static void amd_iommu_remove_device(struct device *dev)
- 
- 	iommu = amd_iommu_rlookup_table[devid];
- 
--	iommu_uninit_device(dev);
-+	amd_iommu_uninit_device(dev);
- 	iommu_completion_wait(iommu);
- }
- 
-@@ -2687,8 +2659,9 @@ const struct iommu_ops amd_iommu_ops = {
- 	.map = amd_iommu_map,
- 	.unmap = amd_iommu_unmap,
- 	.iova_to_phys = amd_iommu_iova_to_phys,
--	.add_device = amd_iommu_add_device,
--	.remove_device = amd_iommu_remove_device,
-+	.probe_device = amd_iommu_probe_device,
-+	.release_device = amd_iommu_release_device,
-+	.probe_finalize = amd_iommu_probe_finalize,
- 	.device_group = amd_iommu_device_group,
- 	.domain_get_attr = amd_iommu_domain_get_attr,
- 	.get_resv_regions = amd_iommu_get_resv_regions,
--- 
-2.17.1
+[..]
+
+> +#define	THIS_NAME		"rk-nand"
+
+> +static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
+> +				 struct device_node *np)
+> +{
+> +	struct rk_nfc_nand_chip *nand;
+> +	struct nand_chip *chip;
+> +	struct mtd_info *mtd;
+> +	int nsels;
+> +	u32 tmp;
+> +	int ret;
+> +	int i;
+> +
+> +	if (!of_get_property(np, "reg", &nsels))
+> +		return -ENODEV;
+> +	nsels /= sizeof(u32);
+> +	if (!nsels || nsels > NFC_MAX_NSELS) {
+> +		dev_err(dev, "invalid reg property size %d\n", nsels);
+> +		return -EINVAL;
+> +	}
+> +
+> +	nand = devm_kzalloc(dev, sizeof(*nand) + nsels * sizeof(u8),
+> +			    GFP_KERNEL);
+> +	if (!nand)
+> +		return -ENOMEM;
+> +
+> +	nand->nsels = nsels;
+> +	for (i = 0; i < nsels; i++) {
+> +		ret = of_property_read_u32_index(np, "reg", i, &tmp);
+> +		if (ret) {
+> +			dev_err(dev, "reg property failure : %d\n", ret);
+> +			return ret;
+> +		}
+> +
+> +		if (tmp >= NFC_MAX_NSELS) {
+> +			dev_err(dev, "invalid CS: %u\n", tmp);
+> +			return -EINVAL;
+> +		}
+> +
+> +		if (test_and_set_bit(tmp, &nfc->assigned_cs)) {
+> +			dev_err(dev, "CS %u already assigned\n", tmp);
+> +			return -EINVAL;
+> +		}
+> +
+> +		nand->sels[i] = tmp;
+> +	}
+> +
+> +	chip = &nand->chip;
+> +	chip->controller = &nfc->controller;
+> +
+> +	nand_set_flash_node(chip, np);
+> +	nand_set_controller_data(chip, nfc);
+> +
+> +	chip->options |= NAND_USE_BOUNCE_BUFFER | NAND_NO_SUBPAGE_WRITE;
+> +	chip->bbt_options = NAND_BBT_USE_FLASH | NAND_BBT_NO_OOB;
+> +
+> +	/* set default mode in case dt entry is missing */
+> +	chip->ecc.mode = NAND_ECC_HW;
+> +
+> +	mtd = nand_to_mtd(chip);
+> +	mtd->owner = THIS_MODULE;
+> +	mtd->dev.parent = dev;
+
+> +	mtd->name = THIS_NAME;
+
+The 'mtd->name' shows up somewhere in file tree.
+The rk3288 has 2 nfc's. In theory 2 probes and also 2 device names, so I
+think that we shouldn't use a fixed define for 'mtd->name'.
+Maybe use something like this:
+
+	mtd->name = devm_kasprintf(ctrl->dev, GFP_KERNEL, "%s",
+				   dev_name(ctrl->dev));
+
+> +	mtd_set_ooblayout(mtd, &rk_nfc_ooblayout_ops);
+> +	rk_nfc_hw_init(nfc);
+> +	ret = nand_scan(chip, nsels);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (chip->options & NAND_IS_BOOT_MEDIUM) {
+> +		ret = of_property_read_u32(np, "rockchip-boot-blks", &tmp);
+> +		nand->boot_blks = ret ? 0 : tmp;
+> +
+> +		ret = of_property_read_u32(np, "rockchip-boot-ecc-strength",
+> +					   &tmp);
+> +		nand->boot_ecc = ret ? chip->ecc.strength : tmp;
+> +	}
+> +
+> +	ret = mtd_device_register(mtd, NULL, 0);
+> +	if (ret) {
+> +		dev_err(dev, "mtd parse partition error\n");
+> +		nand_release(chip);
+> +		return ret;
+> +	}
+> +
+> +	list_add_tail(&nand->node, &nfc->chips);
+> +
+> +	return 0;
+> +}
+
+[..]
+
+> +static struct platform_driver rk_nfc_driver = {
+> +	.probe  = rk_nfc_probe,
+> +	.remove = rk_nfc_remove,
+> +	.driver = {
+
+> +		.name  = THIS_NAME,
+
+		.name  = "rockchip-nfc",
+		.name  = "rockchip-nand-controller",
+
+The driver name shows up in the kernel log and is used in combination
+with 'greb'.
+This name should stay in line with all other rockchip drivers.
+
+rockchip-drm
+rockchip-rk3066-hdmi
+rockchip-pm-domain
+rockchip-u3phy
+rockchip-thermal
+
+> +		.of_match_table = rk_nfc_id_table,
+> +		.pm = &rk_nfc_pm_ops,
+> +	},
+> +};
