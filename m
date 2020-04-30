@@ -1,141 +1,198 @@
-From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
-Subject: Re: [PATCH v9 0/8] Add endpoint driver for R-Car PCIe controller
-Date: Thu, 30 Apr 2020 09:43:20 +0100
-Message-ID: <CA+V-a8u1rEF1DMAVkZ1=-d_MjLa_49X2Nny_VaEN0Y398GOJhw@mail.gmail.com>
-References: <1587666159-6035-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+From: =?utf-8?B?6LW15Luq5bOw?= <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: Re: [PATCH v5 1/7] dt-bindings: mtd: Describe Rockchip RK3xxx NAND flash controller
+Date: Thu, 30 Apr 2020 21:02:33 +0800
+Message-ID: <20200430210133361359203@rock-chips.com>
+References: <20200426100250.14678-1-yifeng.zhao@rock-chips.com>,
+        <20200426100250.14678-2-yifeng.zhao@rock-chips.com>,
+        <4a83e5d2-90cc-1db7-cdfd-47b7ceb4fcef@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1587666159-6035-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Andrew Murray <amurray@thegoodpenguin.co.uk>, Tom Joseph <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-pci <linux-pci@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LAK <linux-arm-kernel@lists.i>
+Content-Type: text/plain;
+        charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, richard <richard-/L3Ra7n9ekc@public.gmane.org>, vigneshr <vigneshr-l0cyMroinI0@public.gmane.org>, robh+dt <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mtd <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, =?utf-8?B?SGVpa29TdMO8Ym5lcg==?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kishon,
-
-On Thu, Apr 23, 2020 at 7:23 PM Lad Prabhakar
-<prabhakar.mahadev-lad.rj@bp.renesas.com> wrote:
->
-> Hi All,
->
-> This patch series adds support for endpoint driver for R-Car PCIe controller on
-> R-Car/RZ-G2x SoC's, this also extends the epf framework to handle multiple windows
-> supported by the controller for mapping PCI address locally.
->
-> Note:
-> The cadence/rockchip/designware endpoint drivers are build tested only.
->
-> Changes for v9 (Re-spun this series as there were minimal changes requested):
-> * Rebased patches on top of v5.7.rc1
-> * Replaced mdelay(1) with usleep_range(1000, 1001) in rcar_pcie_ep_assert_intx()
-> * Added a check for max_functions read from DT to restrict with
->   RCAR_EPC_MAX_FUNCTIONS
-> * Replaced MSICAP0_MMENUM with MSICAP0_MMESE
-> * Retry ioremap for other windows on failure in pci_epc_mem_alloc_addr()
-> * Fixed looping for number windows in pci_epc_mem_exit()
-> * Set maximum to 1 for max-functions in DT binding (I have restored the acks
->   from  Rob and Shimoda-san)
-> * Sorted the entry in MAINTAINERS
->
-> Changes for v8:
-> * Dropped adding R8A774C0 (0x002d) pci-id in pci_ids.h
-> * Fixed typo in commit message for patch 2/8
-> * Reworded commit message for patch 5/8 as suggested by Bjorn
-> * Split up patch to add pci_epc_mem_init() interface to add page_size argument
->   as suggested by Bjorn.
->
-> Changes for v7:
-> * Fixed review comments pointed by Shimoda-san
->   1] Made DT bindings dual licensed, added Shimoda-san as maintainer and fixed
->      the example as its built with #{address,size}-cells = <1>. I have still
->      restored the Ack from Rob and Shimoda-san with these changes.
->   2] Split up the patches so that they can be picked up by respective subsystem
->      patches 1/4-9/11 are now part of this series.
->   3] Dropped altering a comment in pci-epc.h
->   4] Used a local variable align_size in pci_epc_mem_alloc_addr() so that size
->      variable doesn't get overwritten in the loop.
->   5] Replaced i-=1 with i--
->   6] Replaced rcar with R-Car in patch subject and description.
->   7] Set MACCTLR in init() callback
->
-> Changes for v6:
-> 1] Rebased patches on endpoint branch of https://git.kernel.org/pub/
->    scm/linux/kernel/git/lpieralisi/pci.git/
-> 2] Fixed review comments from Shimoda-san
->    a] Made sure defconfig changes were in separate patch
->    b] Created rcar_pcie_host/rcar_pcie_ep structures
->    c] Added pci-id for R8A774C0
->    d] Added entry in MAINTAINERS for dt-binding
->    e] Dropped unnecessary braces
-> 3] Added support for msi.
->
-> Changes for v5:
-> 1] Rebased patches on next branch of https://git.kernel.org/pub/scm/
->    linux/kernel/git/helgaas/pci.git
-> 2] Fixed review comments reported by Kishon while fetching the matching
->    window in function pci_epc_get_matching_window()
-> 3] Fixed review comments reported by Bjorn
->    a] Split patch up first patch so that its easier to review and incremental
->    b] Fixed typos
-> 4] Included Reviewed tag from Rob for the dt-binding patch
-> 5] Fixed issue reported by Nathan for assigning variable to itself
->
-> Changes for v4:
-> 1] Fixed dtb_check error reported by Rob
-> 2] Fixed review comments reported by Kishon
->    a] Dropped pci_epc_find_best_fit_window()
->    b] Fixed initializing mem ptr in __pci_epc_mem_init()
->    c] Dropped map_size from pci_epc_mem_window structure
->
-> Changes for v3:
-> 1] Fixed review comments from Bjorn and Kishon.
-> 3] Converted to DT schema
->
-> Changes for v2:
-> 1] Fixed review comments from Biju for dt-bindings to include an example
->    for a tested platform.
-> 2] Fixed review comments from Kishon to extend the features of outbound
->    regions in epf framework.
-> 3] Added support to parse outbound-ranges in OF.
->
-> Lad Prabhakar (8):
->   PCI: rcar: Rename pcie-rcar.c to pcie-rcar-host.c
->   PCI: rcar: Move shareable code to a common file
->   PCI: rcar: Fix calculating mask for PCIEPAMR register
->   PCI: endpoint: Pass page size as argument to pci_epc_mem_init()
->   PCI: endpoint: Add support to handle multiple base for mapping
->     outbound memory
-Could you please do the needy for the above two patches, so that this
-can be picked up by Lorenzo.
-
-Cheers,
---Prabhakar
-
->   dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
->     controller
->   PCI: rcar: Add endpoint mode support
->   MAINTAINERS: Add file patterns for rcar PCI device tree bindings
->
->  .../devicetree/bindings/pci/rcar-pci-ep.yaml  |   77 ++
->  MAINTAINERS                                   |    1 +
->  drivers/pci/controller/Kconfig                |   18 +
->  drivers/pci/controller/Makefile               |    3 +-
->  .../pci/controller/cadence/pcie-cadence-ep.c  |    2 +-
->  .../pci/controller/dwc/pcie-designware-ep.c   |   16 +-
->  drivers/pci/controller/pcie-rcar-ep.c         |  557 ++++++++
->  drivers/pci/controller/pcie-rcar-host.c       | 1065 +++++++++++++++
->  drivers/pci/controller/pcie-rcar.c            | 1206 +----------------
->  drivers/pci/controller/pcie-rcar.h            |  140 ++
->  drivers/pci/controller/pcie-rockchip-ep.c     |    2 +-
->  drivers/pci/endpoint/pci-epc-mem.c            |  204 ++-
->  include/linux/pci-epc.h                       |   38 +-
->  13 files changed, 2078 insertions(+), 1251 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
->  create mode 100644 drivers/pci/controller/pcie-rcar-ep.c
->  create mode 100644 drivers/pci/controller/pcie-rcar-host.c
->  create mode 100644 drivers/pci/controller/pcie-rcar.h
->
-> --
-> 2.17.1
->
+SGkgSm9oYW4sCgo+SGkgWWlmZW5nLAo+Cj4+IE9uIFN1biwgQXByIDI2LCAyMDIwIGF0IDA2OjAy
+OjQ0UE0gKzA4MDAsIFlpZmVuZyBaaGFvIHdyb3RlOgo+Pj4gRG9jdW1lbnRhdGlvbiBzdXBwb3J0
+IGZvciBSb2NrY2hpcCBSSzN4eHggTkFORCBmbGFzaCBjb250cm9sbGVycwo+Pj4KPj4+IFNpZ25l
+ZC1vZmYtYnk6IFlpZmVuZyBaaGFvIDx5aWZlbmcuemhhb0Byb2NrLWNoaXBzLmNvbT4KPj4+IC0t
+LQo+Pj4KPj4+IENoYW5nZXMgaW4gdjU6Cj4+PiAtIEZpeCBzb21lIHdyb25nIGRlZmluZQo+Pj4g
+LSBBZGQgYm9vdC1tZWRpdW0gZGVmaW5lCj4+PiAtIFJlbW92ZSBzb21lIGNvbXBhdGlibGUgZGVm
+aW5lCj4+Pgo+Pj4gQ2hhbmdlcyBpbiB2NDoKPj4+IC0gVGhlIGNvbXBhdGlibGUgZGVmaW5lIHdp
+dGggcmt4eF9uZmMKPj4+IC0gQWRkIGFzc2lnbmVkLWNsb2Nrcwo+Pj4gLSBGaXggc29tZSB3cm9u
+ZyBkZWZpbmUKPj4+Cj4+PiBDaGFuZ2VzIGluIHYzOgo+Pj4gLSBDaGFuZ2UgdGhlIHRpdGxlIGZv
+ciB0aGUgZHQtYmluZGluZ3MKPj4+Cj4+PiBDaGFuZ2VzIGluIHYyOiBOb25lCj4+Pgo+Pj7CoCAu
+Li4vbXRkL3JvY2tjaGlwLG5hbmQtY29udHJvbGxlci55YW1swqDCoMKgwqDCoMKgwqDCoCB8IDEy
+NCArKysrKysrKysrKysrKysrKysKPj4+wqAgMSBmaWxlIGNoYW5nZWQsIDEyNCBpbnNlcnRpb25z
+KCspCj4+PsKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvbXRkL3JvY2tjaGlwLG5hbmQtY29udHJvbGxlci55YW1sCj4+Pgo+Pj4gZGlmZiAtLWdp
+dCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tdGQvcm9ja2NoaXAsbmFuZC1j
+b250cm9sbGVyLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbXRkL3Jv
+Y2tjaGlwLG5hbmQtY29udHJvbGxlci55YW1sCj4KPlRoZSBuYW1lIG9mIHRoaXMgZmlsZSBpcyBi
+YXNlZCBvbiBNaXF1ZWwncyBvcGluaW9uLCBidXQgdGhlCj5jb21wYXRpYmlsaXR5IHN0cmluZ3Ms
+IChmb3Igd2hpY2ggcm9iaCBoYXMgZ2l2ZW4gYSAncmV2aWV3ZWQgYnknIHRhZykgaW4KPnZlcnNp
+b24gNCBkb24ndCBmaXQgd2l0aCB0aGlzIGZvcm1hdC4KPgo+Pj4gbmV3IGZpbGUgbW9kZSAxMDA2
+NDQKPj4+IGluZGV4IDAwMDAwMDAwMDAwMC4uMTIzNTRjNzlkMjc1Cj4+PiAtLS0gL2Rldi9udWxs
+Cj4+PiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbXRkL3JvY2tjaGlw
+LG5hbmQtY29udHJvbGxlci55YW1sCj4+PiBAQCAtMCwwICsxLDEyNCBAQAo+Pj4gKyMgU1BEWC1M
+aWNlbnNlLUlkZW50aWZpZXI6IChHUEwtMi4wLW9ubHkgT1IgQlNELTItQ2xhdXNlKQo+Pj4gKyVZ
+QU1MIDEuMgo+Pj4gKy0tLQo+Pj4gKyRpZDogaHR0cDovL2RldmljZXRyZWUub3JnL3NjaGVtYXMv
+bXRkL3JvY2tjaGlwLG5hbmQtY29udHJvbGxlci55YW1sIwo+Pj4gKyRzY2hlbWE6IGh0dHA6Ly9k
+ZXZpY2V0cmVlLm9yZy9tZXRhLXNjaGVtYXMvY29yZS55YW1sIwo+Pj4gKwo+Pj4gK3RpdGxlOiBS
+b2NrY2hpcCBTb0NzIE5BTkQgRkxBU0ggQ29udHJvbGxlciAoTkZDKQo+Pj4gKwo+Cj4+PiArYWxs
+T2Y6Cj4+PiArwqAgLSAkcmVmOiAibmFuZC1jb250cm9sbGVyLnlhbWwjIgo+Cj5UaGUgaWRlYSBv
+ZiBhIGNvbW1vbiBmaWxlIGlzIHRoYXQgeW91IGFkZCBhZGRpdGlvbmFsIHByb3BlcnRpZXMgdGhh
+dCBhcmUKPm5vdCBhbHJlYWR5IGluY2x1ZGVkLiBUaGlzIGRvY3VtZW50IGhhcyBhIG1vcmUgcmVz
+dHJpY3RpbmcgY2hhcmFjdGVyLgo+VGhlcmVmb3JlIHlvdSBtdXN0IHRoZSBzYW1lIHByb3BlcnR5
+IG5hbWVzIGFuZCBwYXR0ZXJucyB0byBiZSBlZmZlY3RpdmUuCj5TZWUgY29tbWVudCBhYm91dCAi
+Xm5hbmRAWzAtM10kIi4KClJvYiBIZXJyaW5nIHJlcGxpZWQgZm9yIFYzOgpCYXNlZCBvbiByZWcs
+IHNob3VsZCBiZSBvbmx5ICdbMC0zXScKCj4+PiArCj4+PiArbWFpbnRhaW5lcnM6Cj4+PiArwqAg
+LSBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+Pj4gKwo+Pj4gK3Byb3BlcnRpZXM6
+Cj4+PiArwqAgY29tcGF0aWJsZToKPj4+ICvCoMKgwqAgZW51bToKPj4+ICvCoMKgwqDCoMKgIC0g
+cm9ja2NoaXAscHgzMF9uZmMKPj4+ICvCoMKgwqDCoMKgIC0gcm9ja2NoaXAscmszeHh4X25mYwo+
+Cj5BcyB0b2xkIGJlZm9yZSB0aGUgYmluZGluZyBzdHJpbmdzIGFyZSBTb0Mgb3JpZW50YXRlZC4K
+PlVzZSB0aGUgU29jIGZpcnN0IGluIGxpbmUgZm9yIFY2MDAgYW5kIHJlcGxhY2UKPidyb2NrY2hp
+cCxyazN4eHhfbmZjJyBieSAncm9ja2NoaXAscmszMDY2LW5mYycKClJLMzA2NixSSzMxODggYW5k
+IFJLMjkyOCBhcmUgaW5jbHVkZWQgdGhlIHNhbWUgZHRzae+8mmFyY2hcYXJtXGJvb3RcZHRzXHJr
+M3h4eC5kdHNpLApTbyBJIGNhbiBkZWZpbmUgwqBvbmx5IG9uZSBjb21wYXRpYmxlICdyb2NrY2hp
+cCxyazN4eHgtbmZjJyBmb3IgdGhpcyB0aHJlZSBTb0Nz44CCCk9yIGdpdmUgbWUgYSBhcHByb3By
+aWF0ZcKgZGVmaW5pdGlvbi4KCj4+PiArwqDCoMKgwqDCoCAtIHJvY2tjaGlwLHJrMzMwOF9uZmMK
+Pj4+ICvCoMKgwqDCoMKgIC0gcm9ja2NoaXAscnYxMTA4X25mYwo+Pgo+PiBVc2UgJy0nLCBub3Qg
+J18nLgo+Pgo+Cj5JbiB5b3VyIGRyaXZlciB0aGVyZSBhcmUgY3VycmVudGx5IDMgZGF0YSBzZXRz
+Ogo+VjYyMiwgVjgwMCwgVjkwMAo+RWFjaCBhZGRpdGlvbmFsIFNvQyB3aWxsIHRoZW4gdXNlIGEg
+ZmFsbGJhY2sgc3RyaW5nLgo+Cj5wcm9wZXJ0aWVzOgo+wqAgY29tcGF0aWJsZToKPsKgwqDCoCBv
+bmVPZjoKPsKgwqDCoMKgwqAgLSBjb25zdDogcm9ja2NoaXAscHgzMC1uZmMKPsKgwqDCoMKgwqAg
+LSBjb25zdDogcm9ja2NoaXAscmszMDY2LW5mYwo+wqDCoMKgwqDCoCAtIGNvbnN0OiByb2NrY2hp
+cCxyazMzMDgtbmZjCj7CoMKgwqDCoMKgIC0gSXRlbToKPsKgwqDCoMKgwqDCoMKgwqDCoCAtIGVu
+dW06Cj7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAtIHJvY2tjaGlwLHJ2MTEwOC1uZmMKPsKg
+wqDCoMKgwqDCoMKgwqDCoCAtIGNvbnN0OiByb2NrY2hpcCxyazMzMDgtbmZjCj4KPkkgcHJvcG9z
+ZSB0byBhbHNvIGluY2x1ZGUgYSBWNjAwIGRhdGEgc2V0IGluIHRoZSBkcml2ZXIgYW5kIGFuIGV4
+dHJhIGR0cwo+ZW50cnkgZm9yIHJrMzI4OCB0byB0aGlzIHNlcmllLiBBZGQgc3VwcG9ydCBmb3Ig
+Q1MgOCB0byB5b3VyIGRyaXZlci4KClRoZcKgVjYwMCBhbmQgdjYyMiBhcmUgc2ltaWxhci4gVGhl
+IG1haW4gZGlmZmVyZW5jZSBpcyB0aGF0IFY2MDAgb25seSBoYXMgQUhCIGNsb2NrLCAKd2hpbGUg
+djYyMiBoYXMgQUhCIGFuZCBORkMgY2xvY2tzLsKgCgo+cHJvcGVydGllczoKPsKgIGNvbXBhdGli
+bGU6Cj7CoMKgwqAgb25lT2Y6Cj7CoMKgwqDCoMKgIC0gY29uc3Q6IHJvY2tjaGlwLHB4MzAtbmZj
+Cj7CoMKgwqDCoMKgIC0gY29uc3Q6IHJvY2tjaGlwLHJrMzA2Ni1uZmMKPsKgwqDCoMKgwqAgLSBj
+b25zdDogcm9ja2NoaXAscmszMjg4LW5mYwo+wqDCoMKgwqDCoCAtIGNvbnN0OiByb2NrY2hpcCxy
+azMzMDgtbmZjCj7CoMKgwqDCoMKgIC0gSXRlbToKPsKgwqDCoMKgwqDCoMKgwqDCoCAtIGVudW06
+Cj7CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAtIHJvY2tjaGlwLHJrMzM2OC1uZmMKPsKgwqDC
+oMKgwqDCoMKgwqDCoCAtIGNvbnN0OiByb2NrY2hpcCxyazMyODgtbmZjCj7CoMKgwqDCoMKgIC0g
+SXRlbToKPsKgwqDCoMKgwqDCoMKgwqDCoCAtIGVudW06Cj7CoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoCAtIHJvY2tjaGlwLHJ2MTEwOC1uZmMKPsKgwqDCoMKgwqDCoMKgwqDCoCAtIGNvbnN0OiBy
+b2NrY2hpcCxyazMzMDgtbmZjCj4KPgo+Pj4gKwo+Pj4gK8KgIHJlZzoKPgo+Pj4gK8KgwqDCoCBt
+aW5JdGVtczogMQo+Cj5DaGFuZ2UgdGhpcyBiYWNrIHRvIHZlcnNpb24gNDoKPgo+wqDCoMKgIG1h
+eEl0ZW1zOiAxCj4KPj4+ICsKPj4+ICvCoCBpbnRlcnJ1cHRzOgo+Cj4+PiArwqDCoMKgIG1pbkl0
+ZW1zOiAxCj4KPkNoYW5nZSB0aGlzIGJhY2sgdG8gdmVyc2lvbiA0Ogo+Cj7CoMKgwqAgbWF4SXRl
+bXM6IDEKPgo+Pj4gKwo+Pj4gK8KgIGNsb2NrczoKPj4+ICvCoMKgwqAgbWluSXRlbXM6IDEKPj4+
+ICvCoMKgwqAgaXRlbXM6Cj4+PiArwqDCoMKgwqDCoCAtIGRlc2NyaXB0aW9uOiBCdXMgQ2xvY2sK
+Pj4+ICvCoMKgwqDCoMKgIC0gZGVzY3JpcHRpb246IE1vZHVsZSBDbG9jawo+Pj4gKwo+Pj4gK8Kg
+IGNsb2NrLW5hbWVzOgo+Pj4gK8KgwqDCoCBtaW5JdGVtczogMQo+Pgo+PiBTbyAnYWhiJyBpcyBy
+ZXF1aXJlZCBhbmQgJ25mYycgaXMgb3B0aW9uYWw/IFRoYXQncyB3aGF0IHlvdSBkZWZpbmVkLCBi
+dXQKPj4gdGhhdCBzZWVtcyBiYWNrd2FyZHMuCj4KPlRoaXMgaXMgbmVlZGVkIGZvciByazMwNjYg
+VjYwMC4KPgo+Pgo+Pj4gK8KgwqDCoCBpdGVtczoKPj4+ICvCoMKgwqDCoMKgIC0gY29uc3Q6IGFo
+Ygo+Pj4gK8KgwqDCoMKgwqAgLSBjb25zdDogbmZjCj4+PiArCj4KPkFsc28gdGhlIHVzZSBvZiBh
+bGxPZiBkb2Vzbid0IGNoZWNrIGZvciBib2d1cyBwcm9wZXJ0aWVzIHdpdGhvdXQgdGhlIHVzZQo+
+b2Y6ICdhZGRpdGlvbmFsUHJvcGVydGllczogZmFsc2UnLiBDaGVjayB0aGlzIGRvY3VtZW50IGJ5
+IGNvbWJpbmluZyBpdAo+aW50byBhIHNpbmdsZSBmaWxlIGFuZCBhZGQgYWRkaXRpb25hbFByb3Bl
+cnRpZXMuCj4KPsKgIGFzc2lnbmVkLWNsb2NrczoKPsKgwqDCoCBtYXhJdGVtczogMQo+Cj7CoCBh
+c3NpZ25lZC1jbG9jay1yYXRlczoKPsKgwqDCoCBtYXhJdGVtczogMQo+Cj7CoCBwaW5jdHJsLTA6
+Cj7CoMKgwqAgbWF4SXRlbXM6IDEKPgo+wqAgcGluY3RybC1uYW1lczoKPsKgwqDCoCBjb25zdDog
+ZGVmYXVsdAo+Cj4+PiArcGF0dGVyblByb3BlcnRpZXM6Cj4KPj4+ICvCoCAiXm5hbmRAWzAtM10k
+IjoKPgo+SW4gY29tYmluYXRpb24gd2l0aCAkcmVmOiAibmFuZC1jb250cm9sbGVyLnlhbWwjIiB5
+b3UgY3JlYXRlIDIgcmVnLWV4ZXMuCj5PbmUgd2l0aDoKPiJebmFuZEBbMC0zXSQiICsgbWluaW11
+bSAwIGFuZCBtYXhpbXVtIDMKPgo+QSBzZWNvbmQgd2l0aDoKPiJebmFuZEBbYS1mMC05XSQiICsg
+bm8gcmVzdHJpY3Rpb25zCj4KPlJlc3VsdCBhbGwgcGFzcywgc28gdXNlIHRoZSBzYW1lIHJlZ2V4
+IGFzIGluIHRoZSBjb21tb24gZmlsZS4KPkRvbid0IHRyeSB0byByZXN0cmljdCBib3RoIGluIHRo
+ZSByZWdleCBhbmQgaW4gdGhlIHJlZyBwcm9wZXJ0aWVzLgo+Cj4+PiArwqDCoMKgIHR5cGU6IG9i
+amVjdAo+Pj4gK8KgwqDCoCBwcm9wZXJ0aWVzOgo+Pj4gK8KgwqDCoMKgwqAgcmVnOgo+Pj4gK8Kg
+wqDCoMKgwqDCoMKgIG1pbmltdW06IDAKPj4+ICvCoMKgwqDCoMKgwqDCoCBtYXhpbXVtOiAzCgpB
+bGwgdGhlIG5mYyBjYW4gc3VwcG9ydCA4IGNz77yMYnV0IHRoZSBjcyBpbyBsaW1pdCB0byAxLzIv
+NC84IGZvciBkaWZmZXJlbnQgU29Dcy4KTWF5YmUgdXNlICdtYXhpbXVuOiA3JyBmb3IgYWxsIHRo
+ZSBuZmMgaXMgb2theS4KCsKgIMKgIMKgIHJlZzoKwqAgwqAgwqAgwqAgbWluaW11bTogMArCoCDC
+oCDCoCDCoCBtYXhpbXVtOiA3Cgo+VjYwMCBoYXMgQ1MgOC4KPk1heWJlIHVzZSB0aGlzIGlmIGEg
+VjYwMCBkYXRhIHNldCBpcyBpbmNsdWRlZDoKPgo+aWY6Cj7CoCBwcm9wZXJ0aWVzOgo+wqDCoMKg
+IGNvbXBhdGlibGU6Cj7CoMKgwqDCoMKgIGNvbnRhaW5zOgo+wqDCoMKgwqDCoMKgwqAgY29uc3Q6
+IHJvY2tjaGlwLHJrMzA2Ni1uZmMKPgo+dGhlbjoKPsKgwqDCoMKgwqAgcmVnOgo+wqDCoMKgwqDC
+oMKgwqAgbWluaW11bTogMAo+wqDCoMKgwqDCoMKgwqAgbWF4aW11bTogNwo+Cj5lbHNlOgo+wqDC
+oMKgwqDCoCByZWc6Cj7CoMKgwqDCoMKgwqDCoCBtaW5pbXVtOiAwCj7CoMKgwqDCoMKgwqDCoCBt
+YXhpbXVtOiAzCj4KPj4+ICsKPj4+ICvCoMKgwqDCoMKgIG5hbmQtZWNjLW1vZGU6Cj4+PiArwqDC
+oMKgwqDCoMKgwqAgY29uc3Q6IGh3Cj4+PiArCj4+PiArwqDCoMKgwqDCoCBuYW5kLWVjYy1zdGVw
+LXNpemU6Cj4+PiArwqDCoMKgwqDCoMKgwqAgY29uc3Q6IDEwMjQKPj4+ICsKPj4+ICvCoMKgwqDC
+oMKgIG5hbmQtZWNjLXN0cmVuZ3RoOgo+Cj4+PiArwqDCoMKgwqDCoMKgwqAgZW51bTogWzE2LDI0
+LDQwLDYwLDcwXQo+Cj5BZGQgc3BhY2XCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgXsKgIF7CoCBe
+wqAgXgoKCj7CoMKgwqDCoMKgwqDCoCBlbnVtOiBbMTYsIDI0LCA0MCwgNjAsIDcwXQo+Cj4+PiAr
+Cj4+PiArwqDCoMKgwqDCoCBuYW5kLWJ1cy13aWR0aDoKPj4+ICvCoMKgwqDCoMKgwqDCoCBjb25z
+dDogOAo+Pj4gKwo+Cj4+PiArwqDCoMKgwqDCoCBuYW5kLWlzLWJvb3QtbWVkaXVtOiB0cnVlCj4K
+Pk5vdGhpbmcgY2hhbmdlZC4gQWxyZWFkeSBpbiBuYW5kLWNvbnRyb2xsZXIueWFtbCA9PiByZW1v
+dmUKPgo+Pj4gKwo+Pj4gK8KgwqDCoMKgwqAgcm9ja2NoaXAtYm9vdC1ibGtzOgo+Pgo+PiByb2Nr
+Y2hpcCxib290LWJsa3MKPj4KPj4+ICvCoMKgwqDCoMKgwqDCoCBtaW5pbXVtOiAyCj4+PiArwqDC
+oMKgwqDCoMKgwqAgZGVmYXVsdDogMTYKPj4+ICvCoMKgwqDCoMKgwqDCoCBhbGxPZjoKPj4+ICvC
+oMKgwqDCoMKgwqDCoCAtICRyZWY6IC9zY2hlbWFzL3R5cGVzLnlhbWwjL2RlZmluaXRpb25zL3Vp
+bnQzMgo+Pj4gK8KgwqDCoMKgwqDCoMKgIGRlc2NyaXB0aW9uOgo+Pj4gK8KgwqDCoMKgwqDCoMKg
+wqDCoCBGb3IgbGVnYWN5IGRldmljZXMgd2hlcmUgdGhlIGJvb3Ryb20gY2FuIG9ubHkgaGFuZGxl
+IDE2LzI0IGJpdAo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoCBCQ0gvRUNDLCBhbmQgZm9yIHNvbWUg
+b3RoZXIgZGV2aWNlcyB3aGVyZSB0aGUgYm9vdHJvbSBjYW4gc3VwcG9ydAo+Pj4gK8KgwqDCoMKg
+wqDCoMKgwqDCoCA2MC83MCBiaXQgQkNIL0VDQy4KPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqAgSW4g
+YWRkaXRpb24sIHdoZW4gcHJvZ3JhbW1pbmcgdGhlIGxvYWRlciwgYSBsaW5rZWQgbGlzdCBuZWVk
+cyB0bwo+Cj5Db3VsZCB5b3UgdXNlIGEgYmV0dGVyIGRlc2NyaXB0aW9uP8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIF4KPklzIHRoaXMgYSBiaXQsIGJ5
+dGUsIHdvcmQsIHBvaW50ZXIgb3IgY3VzdG9tIGFuZCBhdCB3aGF0IHBvc2l0aW9uPwo+Cj4+PiAr
+wqDCoMKgwqDCoMKgwqDCoMKgIGJlIHdyaXR0ZW4gaW4gb29iIGZvciBCb290cm9tIHRvIHJlYWQg
+dGhlIGNvcnJlY3QgZGF0YSBzZXF1ZW5jZS4KPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqAgSWYgc3Bl
+Y2lmaWVkIGl0IGluZGljYXRlcyB0aGUgbnVtYmVyIG9mIGVyYXNlIGJsb2NrcyBpbiB1c2UgYnkK
+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqAgdGhlIGJvb3Rsb2FkZXIgdGhhdCBuZWVkIGEgZGlmZmVy
+ZW50IEJDSC9FQ0Mgc2V0dGluZy4KPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqAgT25seSB1c2VkIGlu
+IGNvbWJpbmF0aW9uIHdpdGggJ25hbmQtaXMtYm9vdC1tZWRpdW0nLgo+Cj5Db3VsZCB5b3UgZGlz
+Y2xvc2UgdGhlIGZsb3cvcmVzcG9uc2Ugb2YgdGhlIGJvb3Ryb20gaWYgd2UgaGl0IGEgYmFkCj5i
+bG9jaz8gRG9lcyBpdCBtYXJrIHRoYXQgYmxvY2sgYmFkPwo+Cj5EZXNjcmliZSB3aHkgd2UgaGF2
+ZSBhIG1pbmltdW0gb2YgMiAoMSBzdGFuZGFyZCArIDEgc3BhcmUgYmxvY2spLgo+RG9lcyB0aGUg
+Ym9vdHJvbSBmb3IgVjYwMCwgVjYyMiBoYXZlIGEgbWF4aW11bSBmcm9tIHRoZSBzb2Z0d2FyZSBw
+b2ludAo+b2Ygdmlldz8KClRoZSBib290b3JtIGRvZXMgbm90IGNoZWNrIHRoZSBiYWQgYmxvY2sg
+bWFzaywgaXQgd2lsbCB0cnkgdG8gcmVhZCBuZXh0IGJsb2NrIGlmIHRoZSBlY2MKZXJyb3Igb2Nj
+dXIgaW4gY3VycmVudCBibG9jayB3aGlsZSBsb2FkIGRhdGEuwqAKVGhlIG1heGltdW4gYmxvY2tz
+IHRoYXQgYm9vdHJvbSB3aWxsIHNjYW4gaXMgYmlnZ2VyIHRoYW4gMTYsIGJ1dCBpdCBpcyBubyBu
+ZWVkCnRvIGRlZmluZSBhIGxhcmdlIHZhbHVlLCBvdGhlcndpc2UgaXQgd2lsbCB3YXN0ZSBuYW5k
+IGZsYXNoIHNwYWNlLgoKSSByZWNvbW1lbmQgYXQgbGVhc3QgaGFzIHR3byBjb3B5cyBmb3IgbG9h
+ZGVyIGNvbnNpZGVyaW5nIHRvIE9UQSB1cGdyYWRlIHJlcXVpcmVtZW50cy4KSWYgd2UgY29uc2lk
+ZXIgdGhlIGJhZCBibG9jaywgbWF5IGJlIG5lZWQgYXQgbGVhc3QgMyBvciA0IGJsb2Nrcy4KCj4+
+PiArCj4+PiArwqDCoMKgwqDCoCByb2NrY2hpcC1ib290LWVjYy1zdHJlbmd0aDoKPj4KPj4gcm9j
+a2NoaXAsYm9vdC1lY2Mtc3RyZW5ndGgKPj4KPj4+ICvCoMKgwqDCoMKgwqDCoCBlbnVtOiBbMTYs
+MjQsNDAsNjAsNzBdCj4KPkFkZCBzcGFjZcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBewqAgXsKg
+IF7CoCBeCj4KPsKgwqDCoMKgwqDCoMKgIGVudW06IFsxNiwgMjQsIDQwLCA2MCwgNzBdCj4KPj4+
+ICvCoMKgwqDCoMKgwqDCoCBkZXNjcmlwdGlvbjoKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqAgSWYg
+c3BlY2lmaWVkIGl0IGluZGljYXRlcyB0aGF0IHVzZSBhIGRpZmZlcmVudCBCQ0gvRUNDIHNldHRp
+bmcgZm9yCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgIGJvb3Ryb20uCj4KPlRoZSBwaHJhc2UgYWJv
+dmUgaXMgaW4gbmVlZCBmb3Igc29tZSBpbXByb3ZlbWVudC4KPkNvdWxkIGFuIEVuZ2xpc2ggc3Bl
+YWtlciBoZWxwIGhlcmU/Cj4KPklmIHNwZWNpZmllZCBpdCBpbmRpY2F0ZXMgdGhhdCBhIGRpZmZl
+cmVudCBCQ0gvRUNDIHNldHRpbmcgaXMgdXNlZCBieQo+dGhlIGJvb3Ryb20uCj4KPklmIHNwZWNp
+ZmllZCBpdCBkZXNjcmliZXMgdGhlIEJDSC9FQ0Mgc2V0dGluZyB1c2VkIGJ5IHRoZSBib290cm9t
+Lgo+Cj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgIE9ubHkgdXNlZCBpbiBjb21iaW5hdGlvbiB3aXRo
+ICduYW5kLWlzLWJvb3QtbWVkaXVtJy4KPj4+ICsKPj4+ICtyZXF1aXJlZDoKPj4+ICvCoCAtIGNv
+bXBhdGlibGUKPj4+ICvCoCAtIHJlZwo+Pj4gK8KgIC0gaW50ZXJydXB0cwo+Pj4gK8KgIC0gY2xv
+Y2tzCj4+PiArwqAgLSBjbG9jay1uYW1lcwo+Pj4gKwo+Pj4gK2V4YW1wbGVzOgo+Pj4gK8KgIC0g
+fAo+Pj4gK8KgwqDCoCAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvY2xvY2svcmszMzA4LWNydS5oPgo+
+Pj4gK8KgwqDCoCAjaW5jbHVkZSA8ZHQtYmluZGluZ3MvaW50ZXJydXB0LWNvbnRyb2xsZXIvYXJt
+LWdpYy5oPgo+Pj4gK8KgwqDCoCBuZmM6IG5hbmQtY29udHJvbGxlckBmZjRiMDAwMCB7Cj4+PiAr
+wqDCoMKgwqDCoCBjb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzMwOF9uZmMiOwo+Pj4gK8KgwqDC
+oMKgwqAgcmVnID0gPDB4MCAweGZmNGIwMDAwIDB4MCAweDQwMDA+Owo+Pj4gK8KgwqDCoMKgwqAg
+aW50ZXJydXB0cyA9IDxHSUNfU1BJIDgxIElSUV9UWVBFX0xFVkVMX0hJR0g+Owo+Pj4gK8KgwqDC
+oMKgwqAgY2xvY2tzID0gPCZjcnUgSENMS19OQU5EQz4sIDwmY3J1IFNDTEtfTkFOREM+Owo+Pj4g
+K8KgwqDCoMKgwqAgY2xvY2stbmFtZXMgPSAiYWhiIiwgIm5mYyI7Cj4+PiArwqDCoMKgwqDCoCBh
+c3NpZ25lZC1jbG9ja3MgPSA8JmNsa3MgU0NMS19OQU5EQz47Cj4+PiArwqDCoMKgwqDCoCBhc3Np
+Z25lZC1jbG9jay1yYXRlcyA9IDwxNTAwMDAwMDA+Owo+Pj4gKwo+Pj4gK8KgwqDCoMKgwqAgcGlu
+Y3RybC0wID0gPCZmbGFzaF9hbGUgJmZsYXNoX2J1czggJmZsYXNoX2NsZSAmZmxhc2hfY3NuMAo+
+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAmZmxhc2hfcmRuICZmbGFz
+aF9yZHkgJmZsYXNoX3dybj47Cj4+PiArwqDCoMKgwqDCoCBwaW5jdHJsLW5hbWVzID0gImRlZmF1
+bHQiOwo+Pj4gKwo+Pj4gK8KgwqDCoMKgwqAgI2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4+PiArwqDC
+oMKgwqDCoCAjc2l6ZS1jZWxscyA9IDwwPjsKPj4+ICsKPj4+ICvCoMKgwqDCoMKgIG5hbmRAMCB7
+Cj4+PiArwqDCoMKgwqDCoMKgwqAgcmVnID0gPDA+Owo+Pj4gK8KgwqDCoMKgwqDCoMKgIG5hbmQt
+YnVzLXdpZHRoID0gPDg+Owo+Pj4gK8KgwqDCoMKgwqDCoMKgIG5hbmQtZWNjLW1vZGUgPSAiaHci
+Owo+Cj4+PiArwqDCoMKgwqDCoMKgwqAgbmFuZC1lY2Mtc3RyZW5ndGggPSA8MTY+Owo+Pj4gK8Kg
+wqDCoMKgwqDCoMKgIG5hbmQtZWNjLXN0ZXAtc2l6ZSA9IDwxMDI0PjsKPgo+c29ydAo+Cj4+PiAr
+wqDCoMKgwqDCoMKgwqAgbmFuZC1pcy1ib290LW1lZGl1bTsKPj4+ICvCoMKgwqDCoMKgwqDCoCBy
+b2NrY2hpcC1ib290LWJsa3MgPSA8OD47Cj4+PiArwqDCoMKgwqDCoMKgwqAgcm9ja2NoaXAtYm9v
+dC1lY2Mtc3RyZW5ndGggPSA8MTY+Owo+Pj4gK8KgwqDCoMKgwqAgfTsKPj4+ICvCoMKgwqAgfTsK
+Pj4+ICsKPj4+ICsuLi4KPj4+IC0tCj4+PiAyLjE3LjEKPj4+Cj4+Pgo+Pj4KPgo+Cj4KPg==
