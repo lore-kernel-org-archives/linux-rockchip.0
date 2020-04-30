@@ -1,59 +1,81 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 2/4] arm64: dts: rockchip: Add RGA support to the PX30
-Date: Fri, 1 May 2020 00:05:15 +0200
-Message-ID: <c3954924-c220-73ef-06dd-85b6876be819@gmail.com>
-References: <20200430164245.1630174-3-paul.kocialkowski@bootlin.com>
+From: Tom Rini <trini@konsulko.com>
+Subject: Re: [PATCH v2 1/8] iopoll: Add dealy to read poll
+Date: Thu, 30 Apr 2020 18:06:44 -0400
+Message-ID: <20200430220644.GC4468@bill-the-cat>
+References: <20200430070412.12499-1-jagan@amarulasolutions.com>
+ <20200430070412.12499-2-jagan@amarulasolutions.com>
+ <20200430144628.GU4468@bill-the-cat>
+ <CAMty3ZA77GU+f=_J23m65=RwRY3L3bibqgdzZyLR_HBejfsoTg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200430164245.1630174-3-paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="5YKxbtAlDq2FnV+Q"
+Return-path: <u-boot-bounces@lists.denx.de>
+Content-Disposition: inline
+In-Reply-To: <CAMty3ZA77GU+f=_J23m65=RwRY3L3bibqgdzZyLR_HBejfsoTg@mail.gmail.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Patrick Wildt <patrick@blueri.se>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Paul,
 
-> The PX30 features a RGA block: add the necessary node to support it.
-> 
-> Signed-off-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-> ---
->  arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
->  1 file changed, 11 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> index f809dd6d5dc3..3de70aa4f1ce 100644
-> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> @@ -1102,6 +1102,17 @@ vopl_mmu: iommu@ff470f00 {
->  		status = "disabled";
->  	};
->  
-> +	rga: rga@ff480000 {
-> +		compatible = "rockchip,px30-rga", "rockchip,rk3288-rga";
-> +		reg = <0x0 0xff480000 0x0 0x10000>;
-> +		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH 0>;
-> +		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
-> +		clock-names = "aclk", "hclk", "sclk";
+--5YKxbtAlDq2FnV+Q
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> +		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
-> +		reset-names = "core", "axi", "ahb";
-> +		power-domains = <&power PX30_PD_VO>;
+On Fri, May 01, 2020 at 02:33:17AM +0530, Jagan Teki wrote:
+> On Thu, Apr 30, 2020 at 8:16 PM Tom Rini <trini@konsulko.com> wrote:
+> >
+> > On Thu, Apr 30, 2020 at 12:34:05PM +0530, Jagan Teki wrote:
+> >
+> > > Some drivers and other bsp code not only poll the
+> > > register with timeout but also required to delay
+> > > on each transaction.
+> > >
+> > > This patch add that requirement by adding sleep_us
+> > > variable so-that read_poll_timeout now support
+> > > delay as well.
+> > >
+> > > Cc: Tom Rini <trini@konsulko.com>
+> > > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> >
+> > This (and 2/8) need to say what kernel commit you're taking this from,
+> > thanks.
+>=20
+> Linux supports sleep_us at the beginning where read_poll_timeout
+> supports, i.e. the reason I didn't add the sha1. If that works, I will
+> add the same sha1 and apply via my tree (since it has some SPI changes
+> dependency patch)?
 
-sort
+Yes, I think that sounds right, thanks!
 
-		power-domains = <&power PX30_PD_VO>;
-		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
-		reset-names = "core", "axi", "ahb";
+--=20
+Tom
 
+--5YKxbtAlDq2FnV+Q
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
-> +	};
-> +
->  	qos_gmac: qos@ff518000 {
->  		compatible = "syscon";
->  		reg = <0x0 0xff518000 0x0 0x20>;
-> -- 
-> 2.26.0
+iQGzBAABCgAdFiEEGjx/cOCPqxcHgJu/FHw5/5Y0tywFAl6rS/QACgkQFHw5/5Y0
+tyyMLQv/W889DXRmlyXPVfzhMERv1e0eY9cfXOV/ZpIJfPBOXojy7J8emAb/zEbj
+G4U/+66r0VAtQIAn5ceFacDYGUVq0YE0MLAosv1GzJQib0+RSlCovr0OGcM7XS9a
+9rfEOmScK6Ao5qhG1DrIHLuMiPgnOLaVSuC1yoooaezGN04oYsgEgDjZxLpJxkFt
+zPcT8dw8HaqBh+JDhI9JuO6LxJUnrUXryuNk7YbwTEw+6DKcGPOuHYVzJTAmhy0b
+foUVybqnUhtOoO24O3i2xNU80hj4f7R+VM17VCXnce9zXC3gP4xa55sA54qQ/1Al
+cIifsKJw4fMwewIY5INy0oC+gJlETz+5trDrf7dycvIhbFapvDYP/RAcO52KL4Vv
+fSt8oYCHeBHgpjXs+ofP6sD52iwHuaVds3KaqO72Y5C7WozTVDyxHvIO5AOSP127
+ITY3zLD2zAPn04YIzDWn3l0DDQd8/Vb4R3szdHFaBE4Zy5a1hWNjKF8BdAV1Fjsx
+0uaQWC79
+=gJIO
+-----END PGP SIGNATURE-----
+
+--5YKxbtAlDq2FnV+Q--
