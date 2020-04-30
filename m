@@ -1,15 +1,23 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.6 02/79] drm/bridge: analogix_dp: Split bind() into probe() and real bind()
-Date: Thu, 30 Apr 2020 09:49:26 -0400
-Message-ID: <20200430135043.19851-2-sashal@kernel.org>
-References: <20200430135043.19851-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 01/57] drm/bridge: analogix_dp: Split bind() into
+ probe() and real bind()
+Date: Thu, 30 Apr 2020 09:51:22 -0400
+Message-ID: <20200430135218.20372-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-samsung-soc-owner@vger.kernel.org>
-In-Reply-To: <20200430135043.19851-1-sashal@kernel.org>
-Sender: linux-samsung-soc-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
 To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Marek Szyprowski <m.szyprowski@samsung.com>, Andy Yan <andy.yan@rock-chips.com>, Andrzej Hajda <a.hajda@samsung.com>, Sasha Levin <sashal@kernel.org>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: Sasha Levin <sashal@kernel.org>, linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Andrzej Hajda <a.hajda@samsung.com>, Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Marek Szyprowski <m.szyprowski@samsung.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Marek Szyprowski <m.szyprowski@samsung.com>
@@ -63,10 +71,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  4 files changed, 61 insertions(+), 42 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 6effe532f8200..461eff94d2767 100644
+index 22885dceaa177..1f26890a8da6e 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1636,8 +1636,7 @@ static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
+@@ -1635,8 +1635,7 @@ static ssize_t analogix_dpaux_transfer(struct drm_dp_aux *aux,
  }
  
  struct analogix_dp_device *
@@ -76,7 +84,7 @@ index 6effe532f8200..461eff94d2767 100644
  {
  	struct platform_device *pdev = to_platform_device(dev);
  	struct analogix_dp_device *dp;
-@@ -1740,22 +1739,30 @@ analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
+@@ -1739,22 +1738,30 @@ analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
  					irq_flags, "analogix-dp", dp);
  	if (ret) {
  		dev_err(&pdev->dev, "failed to request irq\n");
@@ -111,7 +119,7 @@ index 6effe532f8200..461eff94d2767 100644
  
  	ret = analogix_dp_create_bridge(drm_dev, dp);
  	if (ret) {
-@@ -1763,13 +1770,12 @@ analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
+@@ -1762,13 +1769,12 @@ analogix_dp_bind(struct device *dev, struct drm_device *drm_dev,
  		goto err_disable_pm_runtime;
  	}
  
@@ -128,7 +136,7 @@ index 6effe532f8200..461eff94d2767 100644
  }
  EXPORT_SYMBOL_GPL(analogix_dp_bind);
  
-@@ -1786,10 +1792,15 @@ void analogix_dp_unbind(struct analogix_dp_device *dp)
+@@ -1785,10 +1791,15 @@ void analogix_dp_unbind(struct analogix_dp_device *dp)
  
  	drm_dp_aux_unregister(&dp->aux);
  	pm_runtime_disable(dp->dev);
@@ -146,7 +154,7 @@ index 6effe532f8200..461eff94d2767 100644
  int analogix_dp_suspend(struct analogix_dp_device *dp)
  {
 diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index 4785885c0f4f9..065a1cb2a5444 100644
+index 3a0f0ba8c63a0..e0cfae744afc9 100644
 --- a/drivers/gpu/drm/exynos/exynos_dp.c
 +++ b/drivers/gpu/drm/exynos/exynos_dp.c
 @@ -158,15 +158,8 @@ static int exynos_dp_bind(struct device *dev, struct device *master, void *data)
