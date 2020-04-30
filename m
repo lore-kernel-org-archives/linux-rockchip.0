@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [RFC 4/7] arm64: dts: rk3399: Move u2phy into root port
-Date: Fri,  1 May 2020 03:15:26 +0530
-Message-ID: <20200430214529.18887-5-jagan@amarulasolutions.com>
+Subject: [RFC 5/7] arm64: dts: rk3399: Move pcie_phy into root port
+Date: Fri,  1 May 2020 03:15:27 +0530
+Message-ID: <20200430214529.18887-6-jagan@amarulasolutions.com>
 References: <20200430214529.18887-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20200430214529.18887-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -21,145 +21,30 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Yes, This is changing the actual device tree u2phy
-structure but the problem with the current Generic
-PHY subsystem is unable to find PHY if the PHY node
-is not part of the root structure.
-
-This will be reverted once we support the PHY subsystem
-to get the PHY even though it is not part of the root
-node or any other relevant solution.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- arch/arm/dts/rk3399.dtsi | 108 +++++++++++++++++++--------------------
- 1 file changed, 54 insertions(+), 54 deletions(-)
-
-diff --git a/arch/arm/dts/rk3399.dtsi b/arch/arm/dts/rk3399.dtsi
-index 74f2c3d490..6c77f25f23 100644
---- a/arch/arm/dts/rk3399.dtsi
-+++ b/arch/arm/dts/rk3399.dtsi
-@@ -1387,60 +1387,6 @@
- 			status = "disabled";
- 		};
- 
--		u2phy0: usb2-phy@e450 {
--			compatible = "rockchip,rk3399-usb2phy";
--			reg = <0xe450 0x10>;
--			clocks = <&cru SCLK_USB2PHY0_REF>;
--			clock-names = "phyclk";
--			#clock-cells = <0>;
--			clock-output-names = "clk_usbphy0_480m";
--			status = "disabled";
--
--			u2phy0_host: host-port {
--				#phy-cells = <0>;
--				interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH 0>;
--				interrupt-names = "linestate";
--				status = "disabled";
--			};
--
--			u2phy0_otg: otg-port {
--				#phy-cells = <0>;
--				interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>,
--					     <GIC_SPI 104 IRQ_TYPE_LEVEL_HIGH 0>,
--					     <GIC_SPI 106 IRQ_TYPE_LEVEL_HIGH 0>;
--				interrupt-names = "otg-bvalid", "otg-id",
--						  "linestate";
--				status = "disabled";
--			};
--		};
--
--		u2phy1: usb2-phy@e460 {
--			compatible = "rockchip,rk3399-usb2phy";
--			reg = <0xe460 0x10>;
--			clocks = <&cru SCLK_USB2PHY1_REF>;
--			clock-names = "phyclk";
--			#clock-cells = <0>;
--			clock-output-names = "clk_usbphy1_480m";
--			status = "disabled";
--
--			u2phy1_host: host-port {
--				#phy-cells = <0>;
--				interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH 0>;
--				interrupt-names = "linestate";
--				status = "disabled";
--			};
--
--			u2phy1_otg: otg-port {
--				#phy-cells = <0>;
--				interrupts = <GIC_SPI 108 IRQ_TYPE_LEVEL_HIGH 0>,
--					     <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>,
--					     <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH 0>;
--				interrupt-names = "otg-bvalid", "otg-id",
--						  "linestate";
--				status = "disabled";
--			};
--		};
--
- 		emmc_phy: phy@f780 {
- 			compatible = "rockchip,rk3399-emmc-phy";
- 			reg = <0xf780 0x24>;
-@@ -1462,6 +1408,60 @@
- 		};
- 	};
- 
-+	u2phy0: usb2-phy@e450 {
-+		compatible = "rockchip,rk3399-usb2phy";
-+		reg = <0x0 0xe450 0x0 0x10>;
-+		clocks = <&cru SCLK_USB2PHY0_REF>;
-+		clock-names = "phyclk";
-+		#clock-cells = <0>;
-+		clock-output-names = "clk_usbphy0_480m";
-+		status = "disabled";
-+
-+		u2phy0_host: host-port {
-+			#phy-cells = <0>;
-+			interrupts = <GIC_SPI 27 IRQ_TYPE_LEVEL_HIGH 0>;
-+			interrupt-names = "linestate";
-+			status = "disabled";
-+		};
-+
-+		u2phy0_otg: otg-port {
-+			#phy-cells = <0>;
-+			interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH 0>,
-+				     <GIC_SPI 104 IRQ_TYPE_LEVEL_HIGH 0>,
-+				     <GIC_SPI 106 IRQ_TYPE_LEVEL_HIGH 0>;
-+			interrupt-names = "otg-bvalid", "otg-id",
-+					  "linestate";
-+			status = "disabled";
-+		};
-+	};
-+
-+	u2phy1: usb2-phy@e460 {
-+		compatible = "rockchip,rk3399-usb2phy";
-+		reg = <0x0 0xe460 0x0 0x10>;
-+		clocks = <&cru SCLK_USB2PHY1_REF>;
-+		clock-names = "phyclk";
-+		#clock-cells = <0>;
-+		clock-output-names = "clk_usbphy1_480m";
-+		status = "disabled";
-+
-+		u2phy1_host: host-port {
-+			#phy-cells = <0>;
-+			interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH 0>;
-+			interrupt-names = "linestate";
-+			status = "disabled";
-+		};
-+
-+		u2phy1_otg: otg-port {
-+			#phy-cells = <0>;
-+			interrupts = <GIC_SPI 108 IRQ_TYPE_LEVEL_HIGH 0>,
-+				     <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>,
-+				     <GIC_SPI 111 IRQ_TYPE_LEVEL_HIGH 0>;
-+			interrupt-names = "otg-bvalid", "otg-id",
-+					  "linestate";
-+			status = "disabled";
-+		};
-+	};
-+
- 	tcphy0: phy@ff7c0000 {
- 		compatible = "rockchip,rk3399-typec-phy";
- 		reg = <0x0 0xff7c0000 0x0 0x40000>;
--- 
-2.17.1
+WWVzLCBUaGlzIGlzIGNoYW5naW5nIHRoZSBhY3R1YWwgZGV2aWNlIHRyZWUgcGNpZV9waHkKc3Ry
+dWN0dXJlIGJ1dCB0aGUgcHJvYmxlbSB3aXRoIHRoZSBjdXJyZW50IEdlbmVyaWMgUEhZCnN1YnN5
+c3RlbSBpcyB1bmFibGUgdG8gZmluZCBQSFkgaWYgdGhlIFBIWSBub2RlIGlzIG5vdApwYXJ0IG9m
+IHRoZSByb290IHN0cnVjdHVyZSBhbmQgYWxzbyBQSFkgcGFyZW50IGlzCm5vbi1QSFkgdHlwZS4K
+ClRoaXMgd2lsbCBiZSByZXZlcnRlZCBvbmNlIHdlIHN1cHBvcnQgdGhlIFBIWSBzdWJzeXN0ZW0K
+dG8gZ2V0IHRoZSBQSFkgd2hvc2UgcGFyZW50IGhhcyBub24tUEhZIHR5cGUgb3IgYW55IG90aGVy
+CnJlbGV2YW50IHNvbHV0aW9uLsKgIMKgCgpTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdh
+bkBhbWFydWxhc29sdXRpb25zLmNvbT4KLS0tCiBhcmNoL2FybS9kdHMvcmszMzk5LmR0c2kgfCAy
+MCArKysrKysrKysrLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKyks
+IDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2R0cy9yazMzOTkuZHRzaSBi
+L2FyY2gvYXJtL2R0cy9yazMzOTkuZHRzaQppbmRleCA2Yzc3ZjI1ZjIzLi5kZWE3NjAzMmJmIDEw
+MDY0NAotLS0gYS9hcmNoL2FybS9kdHMvcmszMzk5LmR0c2kKKysrIGIvYXJjaC9hcm0vZHRzL3Jr
+MzM5OS5kdHNpCkBAIC0xMzk1LDE3ICsxMzk1LDE3IEBACiAJCQkjcGh5LWNlbGxzID0gPDA+Owog
+CQkJc3RhdHVzID0gImRpc2FibGVkIjsKIAkJfTsKKwl9OwogCi0JCXBjaWVfcGh5OiBwY2llLXBo
+eSB7Ci0JCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1wY2llLXBoeSI7Ci0JCQljbG9j
+a3MgPSA8JmNydSBTQ0xLX1BDSUVQSFlfUkVGPjsKLQkJCWNsb2NrLW5hbWVzID0gInJlZmNsayI7
+Ci0JCQkjcGh5LWNlbGxzID0gPDE+OwotCQkJcmVzZXRzID0gPCZjcnUgU1JTVF9QQ0lFUEhZPjsK
+LQkJCWRyaXZlLWltcGVkYW5jZS1vaG0gPSA8NTA+OwotCQkJcmVzZXQtbmFtZXMgPSAicGh5IjsK
+LQkJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Ci0JCX07CisJcGNpZV9waHk6IHBjaWUtcGh5IHsKKwkJ
+Y29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktcGNpZS1waHkiOworCQljbG9ja3MgPSA8JmNy
+dSBTQ0xLX1BDSUVQSFlfUkVGPjsKKwkJY2xvY2stbmFtZXMgPSAicmVmY2xrIjsKKwkJI3BoeS1j
+ZWxscyA9IDwxPjsKKwkJcmVzZXRzID0gPCZjcnUgU1JTVF9QQ0lFUEhZPjsKKwkJZHJpdmUtaW1w
+ZWRhbmNlLW9obSA9IDw1MD47CisJCXJlc2V0LW5hbWVzID0gInBoeSI7CisJCXN0YXR1cyA9ICJk
+aXNhYmxlZCI7CiAJfTsKIAogCXUycGh5MDogdXNiMi1waHlAZTQ1MCB7Ci0tIAoyLjE3LjEKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
