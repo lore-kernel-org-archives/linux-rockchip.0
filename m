@@ -1,49 +1,54 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH v2 1/8] iopoll: Add dealy to read poll
-Date: Fri, 1 May 2020 02:33:17 +0530
-Message-ID: <CAMty3ZA77GU+f=_J23m65=RwRY3L3bibqgdzZyLR_HBejfsoTg@mail.gmail.com>
-References: <20200430070412.12499-1-jagan@amarulasolutions.com>
- <20200430070412.12499-2-jagan@amarulasolutions.com>
- <20200430144628.GU4468@bill-the-cat>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v3 1/4] dt-bindings: rockchip-rga: Add PX30 compatible
+Date: Thu, 30 Apr 2020 23:24:17 +0200
+Message-ID: <ed1ac7d6-12d3-5480-3699-70a88595cac2@gmail.com>
+References: <20200430164245.1630174-2-paul.kocialkowski@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200430144628.GU4468@bill-the-cat>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
-Cc: Patrick Wildt <patrick-Er2xLVyhcs+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200430164245.1630174-2-paul.kocialkowski@bootlin.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: paul.kocialkowski@bootlin.com
+Cc: devicetree@vger.kernel.org, ezequiel@collabora.com, hansverk@cisco.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mchehab@kernel.org, robh+dt@kernel.org, thomas.petazzoni@bootlin.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Apr 30, 2020 at 8:16 PM Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org> wrote:
->
-> On Thu, Apr 30, 2020 at 12:34:05PM +0530, Jagan Teki wrote:
->
-> > Some drivers and other bsp code not only poll the
-> > register with timeout but also required to delay
-> > on each transaction.
-> >
-> > This patch add that requirement by adding sleep_us
-> > variable so-that read_poll_timeout now support
-> > delay as well.
-> >
-> > Cc: Tom Rini <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>
-> > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
->
-> This (and 2/8) need to say what kernel commit you're taking this from,
-> thanks.
+Hi Paul,
 
-Linux supports sleep_us at the beginning where read_poll_timeout
-supports, i.e. the reason I didn't add the sha1. If that works, I will
-add the same sha1 and apply via my tree (since it has some SPI changes
-dependency patch)?
+> 
+> Add a new compatible for the PX30 Rockchip SoC, which also features
+> a RGA block. It is compatible with the RK3288 RGA block.
+> 
+> Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> ---
+>  Documentation/devicetree/bindings/media/rockchip-rga.yaml | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.yaml b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+> index dd645ddccb07..740586299da9 100644
+> --- a/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+> +++ b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+> @@ -23,6 +23,9 @@ properties:
 
-Jagan.
+
+>        - items:
+>            - const: rockchip,rk3228-rga
+>            - const: rockchip,rk3288-rga
+> +      - items:
+> +          - const: rockchip,px30-rga
+> +          - const: rockchip,rk3288-rga
+
+Use enum.
+
+      - items:
+          - enum:
+            - rockchip,px30-rga
+            - rockchip,rk3228-rga
+          - const: rockchip,rk3288-rga
+
+>  
+>    reg:
+>      maxItems: 1
+> -- 
+> 2.26.0
