@@ -1,82 +1,135 @@
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: [PATCH v3 3/4] media: rockchip: rga: Introduce color fmt macros and refactor CSC mode logic
-Date: Thu, 30 Apr 2020 18:42:44 +0200
-Message-ID: <20200430164245.1630174-4-paul.kocialkowski@bootlin.com>
-References: <20200430164245.1630174-1-paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH v2 4/4] media: rockchip: rga: Only set output CSC mode
+ for RGB input
+Date: Thu, 30 Apr 2020 18:43:43 +0200
+Message-ID: <20200430164343.GB1526319@aptenodytes>
+References: <20200423200937.1039257-1-paul.kocialkowski@bootlin.com>
+ <20200423200937.1039257-5-paul.kocialkowski@bootlin.com>
+ <c49a060e7f5da9564e375fdd47117d3f901e5d00.camel@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="eRtJSFbw+EEWtPj3"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200430164245.1630174-1-paul.kocialkowski@bootlin.com>
+Content-Disposition: inline
+In-Reply-To: <c49a060e7f5da9564e375fdd47117d3f901e5d00.camel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Ezequiel Garcia <ezequiel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hansverk@cisco.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hansverk@cisco.com>, justin.swartz@risingedge.co.za, Johan Jonker <jbx6244@gmail.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This introduces two macros: RGA_COLOR_FMT_IS_YUV and RGA_COLOR_FMT_IS_RGB
-which allow quick checking of the colorspace familily of a RGA color format.
 
-These macros are then used to refactor the logic for CSC mode selection.
-The two nested tests for input colorspace are simplified into a single one,
-with a logical and, making the whole more readable.
+--eRtJSFbw+EEWtPj3
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
----
- drivers/media/platform/rockchip/rga/rga-hw.c | 23 +++++++++-----------
- drivers/media/platform/rockchip/rga/rga-hw.h |  5 +++++
- 2 files changed, 15 insertions(+), 13 deletions(-)
+Hi Ezequiel,
 
-diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
-index 4be6dcf292ff..5607ee8d1917 100644
---- a/drivers/media/platform/rockchip/rga/rga-hw.c
-+++ b/drivers/media/platform/rockchip/rga/rga-hw.c
-@@ -200,22 +200,19 @@ static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
- 	dst_info.data.format = ctx->out.fmt->hw_format;
- 	dst_info.data.swap = ctx->out.fmt->color_swap;
- 
--	if (ctx->in.fmt->hw_format >= RGA_COLOR_FMT_YUV422SP) {
--		if (ctx->out.fmt->hw_format < RGA_COLOR_FMT_YUV422SP) {
--			switch (ctx->in.colorspace) {
--			case V4L2_COLORSPACE_REC709:
--				src_info.data.csc_mode =
--					RGA_SRC_CSC_MODE_BT709_R0;
--				break;
--			default:
--				src_info.data.csc_mode =
--					RGA_SRC_CSC_MODE_BT601_R0;
--				break;
--			}
-+	if (RGA_COLOR_FMT_IS_YUV(ctx->in.fmt->hw_format) &&
-+	    RGA_COLOR_FMT_IS_RGB(ctx->out.fmt->hw_format)) {
-+		switch (ctx->in.colorspace) {
-+		case V4L2_COLORSPACE_REC709:
-+			src_info.data.csc_mode = RGA_SRC_CSC_MODE_BT709_R0;
-+			break;
-+		default:
-+			src_info.data.csc_mode = RGA_SRC_CSC_MODE_BT601_R0;
-+			break;
- 		}
- 	}
- 
--	if (ctx->out.fmt->hw_format >= RGA_COLOR_FMT_YUV422SP) {
-+	if (RGA_COLOR_FMT_IS_YUV(ctx->out.fmt->hw_format)) {
- 		switch (ctx->out.colorspace) {
- 		case V4L2_COLORSPACE_REC709:
- 			dst_info.data.csc_mode = RGA_SRC_CSC_MODE_BT709_R0;
-diff --git a/drivers/media/platform/rockchip/rga/rga-hw.h b/drivers/media/platform/rockchip/rga/rga-hw.h
-index 96cb0314dfa7..e8917e5630a4 100644
---- a/drivers/media/platform/rockchip/rga/rga-hw.h
-+++ b/drivers/media/platform/rockchip/rga/rga-hw.h
-@@ -95,6 +95,11 @@
- #define RGA_COLOR_FMT_CP_8BPP 15
- #define RGA_COLOR_FMT_MASK 15
- 
-+#define RGA_COLOR_FMT_IS_YUV(fmt) \
-+	(((fmt) >= RGA_COLOR_FMT_YUV422SP) && ((fmt) < RGA_COLOR_FMT_CP_1BPP))
-+#define RGA_COLOR_FMT_IS_RGB(fmt) \
-+	((fmt) < RGA_COLOR_FMT_YUV422SP)
-+
- #define RGA_COLOR_NONE_SWAP 0
- #define RGA_COLOR_RB_SWAP 1
- #define RGA_COLOR_ALPHA_SWAP 2
--- 
-2.26.0
+On Sat 25 Apr 20, 10:46, Ezequiel Garcia wrote:
+> Hi Paul,
+>=20
+> Thanks a lot for the patch.
+>=20
+> I haven't had the chance to test this,
+> but I'd say you are fixing a long time issue here.
+>=20
+> I really appreciate that.
+>=20
+> On Thu, 2020-04-23 at 22:09 +0200, Paul Kocialkowski wrote:
+> > Setting the output CSC mode is required for a YUV output, but must not
+> > be set when the input is also YUV. Doing this (as tested with a YUV420P
+> > to YUV420P conversion) results in wrong colors.
+> >=20
+> > Adapt the logic to only set the CSC mode when the output is YUV and the
+> > input is RGB.
+> >=20
+> > Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
+> > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+> > ---
+> >  drivers/media/platform/rockchip/rga/rga-hw.c | 18 +++++++++++-------
+> >  1 file changed, 11 insertions(+), 7 deletions(-)
+> >=20
+> > diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/med=
+ia/platform/rockchip/rga/rga-hw.c
+> > index 4be6dcf292ff..cbffcf986ccf 100644
+> > --- a/drivers/media/platform/rockchip/rga/rga-hw.c
+> > +++ b/drivers/media/platform/rockchip/rga/rga-hw.c
+> > @@ -216,13 +216,17 @@ static void rga_cmd_set_trans_info(struct rga_ctx=
+ *ctx)
+> >  	}
+> > =20
+> >  	if (ctx->out.fmt->hw_format >=3D RGA_COLOR_FMT_YUV422SP) {
+>=20
+> Since we are already here touching this code, would you mind
+> adding another patch, to do some cleaning first?
+>=20
+> First, replace the nested ifs with a boolean operator.
+> Then, introduce some IS_YUV (or IS_RGB) macro, making the above test
+> more like IS_YUV(out_hw_format).
+>=20
+> Finally, perhaps a comment along the lines of your commit message:
+>=20
+> """
+> Setting the output CSC mode is required for a YUV output,
+> but must not be set when the input is also YUV.
+> """
+>=20
+> Details up to you :-)
+>=20
+> After the clean-up patch, which would be just cosmetics,
+> your fix should be cleaner and more clear.
+
+All done in v3, thanks for the feedback :)
+
+Cheers,
+
+Paul
+
+> Thanks,
+> Ezequiel
+> =20
+> > -		switch (ctx->out.colorspace) {
+> > -		case V4L2_COLORSPACE_REC709:
+> > -			dst_info.data.csc_mode =3D RGA_SRC_CSC_MODE_BT709_R0;
+> > -			break;
+> > -		default:
+> > -			dst_info.data.csc_mode =3D RGA_DST_CSC_MODE_BT601_R0;
+> > -			break;
+> > +		if (ctx->in.fmt->hw_format < RGA_COLOR_FMT_YUV422SP) {
+> > +			switch (ctx->out.colorspace) {
+> > +			case V4L2_COLORSPACE_REC709:
+> > +				dst_info.data.csc_mode =3D
+> > +					RGA_SRC_CSC_MODE_BT709_R0;
+> > +				break;
+> > +			default:
+> > +				dst_info.data.csc_mode =3D
+> > +					RGA_DST_CSC_MODE_BT601_R0;
+> > +				break;
+> > +			}
+> >  		}
+> >  	}
+> > =20
+>=20
+>=20
+
+--=20
+Paul Kocialkowski, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
+--eRtJSFbw+EEWtPj3
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl6rAD8ACgkQ3cLmz3+f
+v9EZUgf/ZXVht/wSchF8mkR6JIJf2Oywvx2GVKvvg/AmHfOt1XTsRKHpmGz8hQEH
+NbOjsdq8EVD+tGKnOgP/DyjN4cTtkpNFJj89Bi95hb+7AyBu+ixbDH25hV2jYija
+hYHjahA0/MqEN6hFxB4JKlYtd642n5RZ14NCxWqerWKha6LmfsLFT5tdytpQQ/8W
+2DTfATXGqnDr5Mmds+uFfRoXGhN9D9OxH+XLSmKsVOtsYurEShfPLIXscec00Mdn
+gjvMhqTTat/ttKD1OWnT6C3wuxAE0QrxHg0VvZ2LchjGq4VZbRdF/iQ+DJ4TlASi
+5NDfLWJCRezzUYzh000lLcAHVxOAQw==
+=2n7E
+-----END PGP SIGNATURE-----
+
+--eRtJSFbw+EEWtPj3--
