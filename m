@@ -1,104 +1,141 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 8/8] rockchip: Enable PCIe/M.2 on rock960 board
-Date: Thu, 30 Apr 2020 12:34:12 +0530
-Message-ID: <20200430070412.12499-9-jagan@amarulasolutions.com>
-References: <20200430070412.12499-1-jagan@amarulasolutions.com>
+From: "Lad, Prabhakar" <prabhakar.csengg@gmail.com>
+Subject: Re: [PATCH v9 0/8] Add endpoint driver for R-Car PCIe controller
+Date: Thu, 30 Apr 2020 09:43:20 +0100
+Message-ID: <CA+V-a8u1rEF1DMAVkZ1=-d_MjLa_49X2Nny_VaEN0Y398GOJhw@mail.gmail.com>
+References: <1587666159-6035-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200430070412.12499-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: patrick-Er2xLVyhcs+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>, Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <1587666159-6035-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Kishon Vijay Abraham I <kishon@ti.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>, Andrew Murray <amurray@thegoodpenguin.co.uk>, Tom Joseph <tjoseph@cadence.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Marek Vasut <marek.vasut+renesas@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Geert Uytterhoeven <geert@linux-m68k.org>, linux-pci <linux-pci@vger.kernel.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, Linux-Renesas <linux-renesas-soc@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, LAK <linux-arm-kernel@lists.i>
 List-Id: linux-rockchip.vger.kernel.org
 
-Due to some on board limitation rock960 PCIe
-works only with 1.8V IO domain.
+Hi Kishon,
 
-So, this patch enables grf io_sel explicitly
-to make PCIe/M.2 to work.
+On Thu, Apr 23, 2020 at 7:23 PM Lad Prabhakar
+<prabhakar.mahadev-lad.rj@bp.renesas.com> wrote:
+>
+> Hi All,
+>
+> This patch series adds support for endpoint driver for R-Car PCIe controller on
+> R-Car/RZ-G2x SoC's, this also extends the epf framework to handle multiple windows
+> supported by the controller for mapping PCI address locally.
+>
+> Note:
+> The cadence/rockchip/designware endpoint drivers are build tested only.
+>
+> Changes for v9 (Re-spun this series as there were minimal changes requested):
+> * Rebased patches on top of v5.7.rc1
+> * Replaced mdelay(1) with usleep_range(1000, 1001) in rcar_pcie_ep_assert_intx()
+> * Added a check for max_functions read from DT to restrict with
+>   RCAR_EPC_MAX_FUNCTIONS
+> * Replaced MSICAP0_MMENUM with MSICAP0_MMESE
+> * Retry ioremap for other windows on failure in pci_epc_mem_alloc_addr()
+> * Fixed looping for number windows in pci_epc_mem_exit()
+> * Set maximum to 1 for max-functions in DT binding (I have restored the acks
+>   from  Rob and Shimoda-san)
+> * Sorted the entry in MAINTAINERS
+>
+> Changes for v8:
+> * Dropped adding R8A774C0 (0x002d) pci-id in pci_ids.h
+> * Fixed typo in commit message for patch 2/8
+> * Reworded commit message for patch 5/8 as suggested by Bjorn
+> * Split up patch to add pci_epc_mem_init() interface to add page_size argument
+>   as suggested by Bjorn.
+>
+> Changes for v7:
+> * Fixed review comments pointed by Shimoda-san
+>   1] Made DT bindings dual licensed, added Shimoda-san as maintainer and fixed
+>      the example as its built with #{address,size}-cells = <1>. I have still
+>      restored the Ack from Rob and Shimoda-san with these changes.
+>   2] Split up the patches so that they can be picked up by respective subsystem
+>      patches 1/4-9/11 are now part of this series.
+>   3] Dropped altering a comment in pci-epc.h
+>   4] Used a local variable align_size in pci_epc_mem_alloc_addr() so that size
+>      variable doesn't get overwritten in the loop.
+>   5] Replaced i-=1 with i--
+>   6] Replaced rcar with R-Car in patch subject and description.
+>   7] Set MACCTLR in init() callback
+>
+> Changes for v6:
+> 1] Rebased patches on endpoint branch of https://git.kernel.org/pub/
+>    scm/linux/kernel/git/lpieralisi/pci.git/
+> 2] Fixed review comments from Shimoda-san
+>    a] Made sure defconfig changes were in separate patch
+>    b] Created rcar_pcie_host/rcar_pcie_ep structures
+>    c] Added pci-id for R8A774C0
+>    d] Added entry in MAINTAINERS for dt-binding
+>    e] Dropped unnecessary braces
+> 3] Added support for msi.
+>
+> Changes for v5:
+> 1] Rebased patches on next branch of https://git.kernel.org/pub/scm/
+>    linux/kernel/git/helgaas/pci.git
+> 2] Fixed review comments reported by Kishon while fetching the matching
+>    window in function pci_epc_get_matching_window()
+> 3] Fixed review comments reported by Bjorn
+>    a] Split patch up first patch so that its easier to review and incremental
+>    b] Fixed typos
+> 4] Included Reviewed tag from Rob for the dt-binding patch
+> 5] Fixed issue reported by Nathan for assigning variable to itself
+>
+> Changes for v4:
+> 1] Fixed dtb_check error reported by Rob
+> 2] Fixed review comments reported by Kishon
+>    a] Dropped pci_epc_find_best_fit_window()
+>    b] Fixed initializing mem ptr in __pci_epc_mem_init()
+>    c] Dropped map_size from pci_epc_mem_window structure
+>
+> Changes for v3:
+> 1] Fixed review comments from Bjorn and Kishon.
+> 3] Converted to DT schema
+>
+> Changes for v2:
+> 1] Fixed review comments from Biju for dt-bindings to include an example
+>    for a tested platform.
+> 2] Fixed review comments from Kishon to extend the features of outbound
+>    regions in epf framework.
+> 3] Added support to parse outbound-ranges in OF.
+>
+> Lad Prabhakar (8):
+>   PCI: rcar: Rename pcie-rcar.c to pcie-rcar-host.c
+>   PCI: rcar: Move shareable code to a common file
+>   PCI: rcar: Fix calculating mask for PCIEPAMR register
+>   PCI: endpoint: Pass page size as argument to pci_epc_mem_init()
+>   PCI: endpoint: Add support to handle multiple base for mapping
+>     outbound memory
+Could you please do the needy for the above two patches, so that this
+can be picked up by Lorenzo.
 
-Cc: Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
-Changes for v2:
-- none
+Cheers,
+--Prabhakar
 
- board/vamrs/rock960_rk3399/rock960-rk3399.c | 20 ++++++++++++++++++++
- configs/rock960-rk3399_defconfig            |  5 +++++
- 2 files changed, 25 insertions(+)
-
-diff --git a/board/vamrs/rock960_rk3399/rock960-rk3399.c b/board/vamrs/rock960_rk3399/rock960-rk3399.c
-index 68a127b9ac..98d62e89ca 100644
---- a/board/vamrs/rock960_rk3399/rock960-rk3399.c
-+++ b/board/vamrs/rock960_rk3399/rock960-rk3399.c
-@@ -2,3 +2,23 @@
- /*
-  * Copyright (C) 2018 Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-  */
-+
-+#include <common.h>
-+#include <syscon.h>
-+#include <asm/io.h>
-+#include <asm/arch-rockchip/clock.h>
-+#include <asm/arch-rockchip/grf_rk3399.h>
-+#include <asm/arch-rockchip/hardware.h>
-+
-+#ifdef CONFIG_MISC_INIT_R
-+int misc_init_r(void)
-+{
-+	struct rk3399_grf_regs *grf =
-+	    syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
-+
-+	/* BT565 is in 1.8v domain */
-+	rk_setreg(&grf->io_vsel, BIT(0));
-+
-+	return 0;
-+}
-+#endif
-diff --git a/configs/rock960-rk3399_defconfig b/configs/rock960-rk3399_defconfig
-index c4e954731a..cb1ec3c26b 100644
---- a/configs/rock960-rk3399_defconfig
-+++ b/configs/rock960-rk3399_defconfig
-@@ -9,6 +9,7 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock960.dtb"
-+CONFIG_MISC_INIT_R=y
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-@@ -19,6 +20,7 @@ CONFIG_CMD_BOOTZ=y
- CONFIG_CMD_GPT=y
- CONFIG_CMD_MMC=y
- CONFIG_CMD_USB=y
-+CONFIG_CMD_PCI=y
- # CONFIG_CMD_SETEXPR is not set
- CONFIG_CMD_TIME=y
- CONFIG_CMD_PMIC=y
-@@ -36,10 +38,13 @@ CONFIG_MMC_SDHCI=y
- CONFIG_MMC_SDHCI_SDMA=y
- CONFIG_MMC_SDHCI_ROCKCHIP=y
- CONFIG_DM_ETH=y
-+CONFIG_NVME=y
-+CONFIG_PCI=y
- CONFIG_PMIC_RK8XX=y
- CONFIG_REGULATOR_PWM=y
- CONFIG_REGULATOR_RK8XX=y
- CONFIG_PWM_ROCKCHIP=y
-+CONFIG_DM_RESET=y
- CONFIG_BAUDRATE=1500000
- CONFIG_DEBUG_UART_SHIFT=2
- CONFIG_SYSRESET=y
--- 
-2.17.1
+>   dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
+>     controller
+>   PCI: rcar: Add endpoint mode support
+>   MAINTAINERS: Add file patterns for rcar PCI device tree bindings
+>
+>  .../devicetree/bindings/pci/rcar-pci-ep.yaml  |   77 ++
+>  MAINTAINERS                                   |    1 +
+>  drivers/pci/controller/Kconfig                |   18 +
+>  drivers/pci/controller/Makefile               |    3 +-
+>  .../pci/controller/cadence/pcie-cadence-ep.c  |    2 +-
+>  .../pci/controller/dwc/pcie-designware-ep.c   |   16 +-
+>  drivers/pci/controller/pcie-rcar-ep.c         |  557 ++++++++
+>  drivers/pci/controller/pcie-rcar-host.c       | 1065 +++++++++++++++
+>  drivers/pci/controller/pcie-rcar.c            | 1206 +----------------
+>  drivers/pci/controller/pcie-rcar.h            |  140 ++
+>  drivers/pci/controller/pcie-rockchip-ep.c     |    2 +-
+>  drivers/pci/endpoint/pci-epc-mem.c            |  204 ++-
+>  include/linux/pci-epc.h                       |   38 +-
+>  13 files changed, 2078 insertions(+), 1251 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
+>  create mode 100644 drivers/pci/controller/pcie-rcar-ep.c
+>  create mode 100644 drivers/pci/controller/pcie-rcar-host.c
+>  create mode 100644 drivers/pci/controller/pcie-rcar.h
+>
+> --
+> 2.17.1
+>
