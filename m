@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [RFC 5/7] arm64: dts: rk3399: Move pcie_phy into root port
-Date: Fri,  1 May 2020 03:15:27 +0530
-Message-ID: <20200430214529.18887-6-jagan@amarulasolutions.com>
+Subject: [RFC 6/7] pci: rockchip: Switch to generic-phy
+Date: Fri,  1 May 2020 03:15:28 +0530
+Message-ID: <20200430214529.18887-7-jagan@amarulasolutions.com>
 References: <20200430214529.18887-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20200430214529.18887-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -21,30 +21,104 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass
 Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-WWVzLCBUaGlzIGlzIGNoYW5naW5nIHRoZSBhY3R1YWwgZGV2aWNlIHRyZWUgcGNpZV9waHkKc3Ry
-dWN0dXJlIGJ1dCB0aGUgcHJvYmxlbSB3aXRoIHRoZSBjdXJyZW50IEdlbmVyaWMgUEhZCnN1YnN5
-c3RlbSBpcyB1bmFibGUgdG8gZmluZCBQSFkgaWYgdGhlIFBIWSBub2RlIGlzIG5vdApwYXJ0IG9m
-IHRoZSByb290IHN0cnVjdHVyZSBhbmQgYWxzbyBQSFkgcGFyZW50IGlzCm5vbi1QSFkgdHlwZS4K
-ClRoaXMgd2lsbCBiZSByZXZlcnRlZCBvbmNlIHdlIHN1cHBvcnQgdGhlIFBIWSBzdWJzeXN0ZW0K
-dG8gZ2V0IHRoZSBQSFkgd2hvc2UgcGFyZW50IGhhcyBub24tUEhZIHR5cGUgb3IgYW55IG90aGVy
-CnJlbGV2YW50IHNvbHV0aW9uLsKgIMKgCgpTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdh
-bkBhbWFydWxhc29sdXRpb25zLmNvbT4KLS0tCiBhcmNoL2FybS9kdHMvcmszMzk5LmR0c2kgfCAy
-MCArKysrKysrKysrLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKyks
-IDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2R0cy9yazMzOTkuZHRzaSBi
-L2FyY2gvYXJtL2R0cy9yazMzOTkuZHRzaQppbmRleCA2Yzc3ZjI1ZjIzLi5kZWE3NjAzMmJmIDEw
-MDY0NAotLS0gYS9hcmNoL2FybS9kdHMvcmszMzk5LmR0c2kKKysrIGIvYXJjaC9hcm0vZHRzL3Jr
-MzM5OS5kdHNpCkBAIC0xMzk1LDE3ICsxMzk1LDE3IEBACiAJCQkjcGh5LWNlbGxzID0gPDA+Owog
-CQkJc3RhdHVzID0gImRpc2FibGVkIjsKIAkJfTsKKwl9OwogCi0JCXBjaWVfcGh5OiBwY2llLXBo
-eSB7Ci0JCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1wY2llLXBoeSI7Ci0JCQljbG9j
-a3MgPSA8JmNydSBTQ0xLX1BDSUVQSFlfUkVGPjsKLQkJCWNsb2NrLW5hbWVzID0gInJlZmNsayI7
-Ci0JCQkjcGh5LWNlbGxzID0gPDE+OwotCQkJcmVzZXRzID0gPCZjcnUgU1JTVF9QQ0lFUEhZPjsK
-LQkJCWRyaXZlLWltcGVkYW5jZS1vaG0gPSA8NTA+OwotCQkJcmVzZXQtbmFtZXMgPSAicGh5IjsK
-LQkJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Ci0JCX07CisJcGNpZV9waHk6IHBjaWUtcGh5IHsKKwkJ
-Y29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktcGNpZS1waHkiOworCQljbG9ja3MgPSA8JmNy
-dSBTQ0xLX1BDSUVQSFlfUkVGPjsKKwkJY2xvY2stbmFtZXMgPSAicmVmY2xrIjsKKwkJI3BoeS1j
-ZWxscyA9IDwxPjsKKwkJcmVzZXRzID0gPCZjcnUgU1JTVF9QQ0lFUEhZPjsKKwkJZHJpdmUtaW1w
-ZWRhbmNlLW9obSA9IDw1MD47CisJCXJlc2V0LW5hbWVzID0gInBoeSI7CisJCXN0YXR1cyA9ICJk
-aXNhYmxlZCI7CiAJfTsKIAogCXUycGh5MDogdXNiMi1waHlAZTQ1MCB7Ci0tIAoyLjE3LjEKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Now, we have a PCIe PHY driver as part of the Generic
+PHY framework. Let's use it instead of legacy PHY driver.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ drivers/pci/pcie_rockchip.c | 20 ++++++++++----------
+ drivers/pci/pcie_rockchip.h |  5 +++++
+ 2 files changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/pci/pcie_rockchip.c b/drivers/pci/pcie_rockchip.c
+index 82a8396e42..3e4ba9635f 100644
+--- a/drivers/pci/pcie_rockchip.c
++++ b/drivers/pci/pcie_rockchip.c
+@@ -159,8 +159,6 @@ static int rockchip_pcie_atr_init(struct rockchip_pcie *priv)
+ static int rockchip_pcie_init_port(struct udevice *dev)
+ {
+ 	struct rockchip_pcie *priv = dev_get_priv(dev);
+-	struct rockchip_pcie_phy *phy = pcie_get_phy(priv);
+-	struct rockchip_pcie_phy_ops *ops = phy_get_ops(phy);
+ 	u32 cr, val, status;
+ 	int ret;
+ 
+@@ -185,7 +183,7 @@ static int rockchip_pcie_init_port(struct udevice *dev)
+ 		return ret;
+ 	}
+ 
+-	ret = ops->init(phy);
++	ret = generic_phy_init(&priv->pcie_phy);
+ 	if (ret) {
+ 		dev_err(dev, "failed to init phy (ret=%d)\n", ret);
+ 		goto err_exit_phy;
+@@ -242,7 +240,7 @@ static int rockchip_pcie_init_port(struct udevice *dev)
+ 	cr |= PCIE_CLIENT_CONF_ENABLE | PCIE_CLIENT_MODE_RC;
+ 	writel(cr, priv->apb_base + PCIE_CLIENT_CONFIG);
+ 
+-	ret = ops->power_on(phy);
++	ret = generic_phy_power_on(&priv->pcie_phy);
+ 	if (ret) {
+ 		dev_err(dev, "failed to power on phy (ret=%d)\n", ret);
+ 		goto err_power_off_phy;
+@@ -311,9 +309,9 @@ static int rockchip_pcie_init_port(struct udevice *dev)
+ 	return 0;
+ 
+ err_power_off_phy:
+-	ops->power_off(phy);
++	generic_phy_power_off(&priv->pcie_phy);
+ err_exit_phy:
+-	ops->exit(phy);
++	generic_phy_exit(&priv->pcie_phy);
+ 	return ret;
+ }
+ 
+@@ -436,6 +434,12 @@ static int rockchip_pcie_parse_dt(struct udevice *dev)
+ 		return ret;
+ 	}
+ 
++	ret = generic_phy_get_by_index(dev, 0, &priv->pcie_phy);
++	if (ret) {
++		dev_err(dev, "failed to get pcie-phy (ret=%d)\n", ret);
++		return ret;
++	}
++
+ 	return 0;
+ }
+ 
+@@ -453,10 +457,6 @@ static int rockchip_pcie_probe(struct udevice *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	ret = rockchip_pcie_phy_get(dev);
+-	if (ret)
+-		return ret;
+-
+ 	ret = rockchip_pcie_set_vpcie(dev);
+ 	if (ret)
+ 		return ret;
+diff --git a/drivers/pci/pcie_rockchip.h b/drivers/pci/pcie_rockchip.h
+index c3a0a2846d..4b06110bfe 100644
+--- a/drivers/pci/pcie_rockchip.h
++++ b/drivers/pci/pcie_rockchip.h
+@@ -9,6 +9,8 @@
+  *
+  */
+ 
++#include <generic-phy.h>
++
+ #define HIWORD_UPDATE(mask, val)        (((mask) << 16) | (val))
+ #define HIWORD_UPDATE_BIT(val)          HIWORD_UPDATE(val, val)
+ 
+@@ -126,6 +128,9 @@ struct rockchip_pcie {
+ 	struct udevice *vpcie3v3;
+ 	struct udevice *vpcie1v8;
+ 	struct udevice *vpcie0v9;
++
++	/* phy */
++	struct phy pcie_phy;
+ };
+ 
+ int rockchip_pcie_phy_get(struct udevice *dev);
+-- 
+2.17.1
