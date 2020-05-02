@@ -1,227 +1,73 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v8 07/10] dt-bindings: display: add i.MX6 MIPI DSI host
- controller doc
-Date: Fri, 1 May 2020 15:26:07 -0500
-Message-ID: <20200501202607.GA13720@bogus>
-References: <20200427081952.3536741-1-adrian.ratiu@collabora.com>
- <20200427081952.3536741-8-adrian.ratiu@collabora.com>
+From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v2 2/3] media: uapi: Add VP9 stateless decoder controls
+Date: Sat, 2 May 2020 20:37:07 +0200
+Message-ID: <20200502203707.402ea3cd@collabora.com>
+References: <20200410115113.31728-1-ezequiel@collabora.com>
+ <20200410115113.31728-3-ezequiel@collabora.com>
+ <9126475c-275d-71ab-0308-6ae85e22446b@xs4all.nl>
+ <bf475e70cca6f9ebf645aed51276e57668eaf43b.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200427081952.3536741-8-adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Martyn Welch <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <bf475e70cca6f9ebf645aed51276e57668eaf43b.camel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jeffrey Kardatzke <jkardatzke-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 27, 2020 at 11:19:49AM +0300, Adrian Ratiu wrote:
-> This provides an example DT binding for the MIPI DSI host controller
-> present on the i.MX6 SoC based on Synopsis DesignWare v1.01 IP.
-> 
-> Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-> Cc: Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Cc: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> Tested-by: Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Tested-by: Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Signed-off-by: Martyn Welch <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Signed-off-by: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
-> Changes since v7:
->   - Clarified port@0,1 descriptions, marked them as required and
->   added missing port@0 in example (Laurent)
-> 
-> Changes since v6:
->   - Added ref to the newly created snps,dw-mipi-dsi.yaml (Laurent)
->   - Moved *-cells properties outside patternProperties (Laurent)
->   - Removed the panel port documentation (Laurent)
->   - Wrapped lines at 80 chars, typo fixes, sort includes (Laurent)
-> 
-> Changes since v5:
->   - Fixed missing reg warning (Fabio)
->   - Updated dt-schema and fixed warnings (Rob)
-> 
-> Changes since v4:
->   - Fixed yaml binding to pass `make dt_binding_check dtbs_check`
->   and addressed received binding feedback (Rob)
-> 
-> Changes since v3:
->   - Added commit message (Neil)
->   - Converted to yaml format (Neil)
->   - Minor dt node + driver fixes (Rob)
->   - Added small panel example to the host controller binding
-> 
-> Changes since v2:
->   - Fixed commit tags (Emil)
-> ---
->  .../display/imx/fsl,mipi-dsi-imx6.yaml        | 145 ++++++++++++++++++
->  1 file changed, 145 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml b/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
-> new file mode 100644
-> index 0000000000000..c2c3489e63fa3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
-> @@ -0,0 +1,145 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/imx/fsl,mipi-dsi-imx6.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Freescale i.MX6 DW MIPI DSI Host Controller
-> +
-> +maintainers:
-> +  - Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> +
-> +description: |
-> +  The i.MX6 DSI host controller is a Synopsys DesignWare MIPI DSI v1.01
-> +  IP block with a companion PHY IP.
-> +
-> +  These DT bindings follow the Synopsys DW MIPI DSI bindings defined in
-> +  Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt with
-> +  the following device-specific properties.
-> +
-> +allOf:
-> +  - $ref: ../bridge/snps,dw-mipi-dsi.yaml#
-> +
-> +properties:
-> +  '#address-cells':
-> +    const: 1
-> +
-> +  '#size-cells':
-> +    const: 0
-> +
-> +  compatible:
-> +    items:
-> +      - const: fsl,imx6q-mipi-dsi
-> +      - const: snps,dw-mipi-dsi
+On Fri, 01 May 2020 13:57:49 -0300
+Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
 
-This schema is going to be applied on any node with 'snps,dw-mipi-dsi'. 
-You'll need a custom 'select' with only 'fsl,imx6q-mipi-dsi'. There's a 
-few examples in the tree.
-
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: Module Clock
-> +      - description: DSI bus clock
-> +
-> +  clock-names:
-> +    items:
-> +      - const: ref
-> +      - const: pclk
-> +
-> +  fsl,gpr:
-> +    description:
-> +      Phandle to the iomuxc-gpr region containing the multiplexer ctrl register.
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +
-> +  ports:
-> +    type: object
-> +    description: |
-> +      A node containing DSI input & output port nodes with endpoint
-> +      definitions as documented in
-> +      Documentation/devicetree/bindings/media/video-interfaces.txt
-> +      Documentation/devicetree/bindings/graph.txt
-> +    properties:
-> +      port@0:
-> +        type: object
-> +        description:
-> +          DSI input port connected to a parallel RGB LTDC output port.
-> +
-> +      port@1:
-> +        type: object
-> +        description:
-> +          DSI serial RGB output port connected to a panel or bridge input port.
-> +
-> +    required:
-> +      - port@0
-> +      - port@1
-> +
-> +additionalProperties: false
-
-When including other schemas, you need 'unevalatedProperties: false' 
-instead. Then you can drop anything here that doesn't have more 
-constraints like the next property:
-
-> +
-> +patternProperties:
-> +  "^panel@[0-3]$":
-> +    type: object
-> +
-> +required:
-> +  - "#address-cells"
-> +  - "#size-cells"
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-> +  - clock-names
-> +  - ports
-> +
-> +examples:
-> +  - |+
-> +    #include <dt-bindings/clock/imx6qdl-clock.h>
-> +    #include <dt-bindings/gpio/gpio.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    dsi: dsi@21e0000 {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +        compatible = "fsl,imx6q-mipi-dsi", "snps,dw-mipi-dsi";
-> +        reg = <0x021e0000 0x4000>;
-> +        interrupts = <0 102 IRQ_TYPE_LEVEL_HIGH>;
-> +        fsl,gpr = <&gpr>;
-> +        clocks = <&clks IMX6QDL_CLK_MIPI_CORE_CFG>,
-> +                 <&clks IMX6QDL_CLK_MIPI_IPG>;
-> +        clock-names = "ref", "pclk";
-> +
-> +        ports {
-> +            #address-cells = <1>;
-> +            #size-cells = <0>;
-> +            port@0 {
-> +                reg = <0>;
-> +                mipi_mux_0: endpoint {
-> +                    remote-endpoint = <&ipu1_di0_mipi>;
-> +                };
-> +            };
-> +            port@1 {
-> +                reg = <1>;
-> +                dsi_out: endpoint {
-> +                    remote-endpoint = <&panel_in>;
-> +                };
-> +            };
-> +        };
-> +
-> +        panel@0 {
-> +            compatible = "sharp,ls032b3sx01";
-> +            reg = <0>;
-> +            reset-gpios = <&gpio6 8 GPIO_ACTIVE_LOW>;
-> +            ports {
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
-> +                port@0 {
-> +                    reg = <0>;
-> +                    panel_in: endpoint {
-> +                        remote-endpoint = <&dsi_out>;
-> +                    };
-> +                };
-> +            };
-> +        };
-> +    };
-> +
-> +...
-> -- 
-> 2.26.0
+> > > +
+> > > +.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
+> > > +
+> > > +.. flat-table:: enum v4l2_vp9_reset_frame_context
+> > > +    :header-rows:  0
+> > > +    :stub-columns: 0
+> > > +    :widths:       1 2
+> > > +
+> > > +    * - ``V4L2_VP9_RESET_FRAME_CTX_NONE``
+> > > +      - Do not reset any frame context.
+> > > +    * - ``V4L2_VP9_RESET_FRAME_CTX_NONE_ALT``
+> > > +      - Do not reset any frame context. This is an alternative value for
+> > > +        V4L2_VP9_RESET_FRAME_CTX_NONE.  
+> > 
+> > Add `` around V4L2_VP9_RESET_FRAME_CTX_NONE.
+> >   
 > 
+> Hm, now that I look closer, what's the point
+> of having the NONE_ALT in our uAPI if it
+> has same meaning as NONE?
+> 
+> I think it can be removed.
+
+The intent was to match the spec so that one can pass the value
+extracted from the bitstream directly.
+
+> > 
+> > I got several smatch warnings:
+> > 
+> > smatch: ERRORS
+> > drivers/media/v4l2-core/v4l2-ctrls.c:1880 validate_vp9_frame_decode_params() warn: was && intended here instead of ||?
+> > 
+> > (Commented on this ^^^ one above)
+> > 
+> > drivers/staging/media/rkvdec/rkvdec-vp9.c:426 init_intra_only_probs() error: buffer overflow 'ptr' 9 <= 69
+> > drivers/staging/media/rkvdec/rkvdec-vp9.c:1478 rkvdec_vp9_done() error: potentially dereferencing uninitialized 'ctrl'.
+> > drivers/staging/media/rkvdec/rkvdec-vp9.c:1483 rkvdec_vp9_done() error: uninitialized symbol 'dec_dst_buf'.
+> > drivers/staging/media/rkvdec/rkvdec-vp9.c:941:6: warning: variable 'ret' set but not used [-Wunused-but-set-variable]
+> > drivers/staging/media/rkvdec/rkvdec-vp9.c:1466:40: warning: variable 'fctx' set but not used [-Wunused-but-set-variable]
+> >   
+> 
+> Oh, I'll run smatch and fix them all.
+
+Oops!
