@@ -1,38 +1,82 @@
-From: Joe Perches <joe@perches.com>
-Subject: Re: [PATCH] docs: dt: fix broken links due to txt->yaml renames
-Date: Mon, 04 May 2020 12:04:00 -0700
-Message-ID: <7af4a2979fb5c060af769a996d3e5917b4d265d0.camel@perches.com>
-References: <967df5c3303b478b76199d4379fe40f5094f3f9b.1588584538.git.mchehab+huawei@kernel.org>
-         <20200504174522.GA3383@ravnborg.org>
-         <20200504175553.jdm7a7aabloevxba@pengutronix.de>
+From: Boris Brezillon <boris.brezillon@collabora.com>
+Subject: Re: [PATCH v2 2/3] media: uapi: Add VP9 stateless decoder controls
+Date: Mon, 4 May 2020 21:06:30 +0200
+Message-ID: <20200504210630.1489df6e@collabora.com>
+References: <20200410115113.31728-1-ezequiel@collabora.com>
+        <20200410115113.31728-3-ezequiel@collabora.com>
+        <9126475c-275d-71ab-0308-6ae85e22446b@xs4all.nl>
+        <bf475e70cca6f9ebf645aed51276e57668eaf43b.camel@collabora.com>
+        <20200502203707.402ea3cd@collabora.com>
+        <db9fa91be8084fe9c87f263a4a97dc38d46f9bd1.camel@collabora.com>
+        <e53824aed3eeb27419e5399576cce028f0ba8203.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-doc-owner@vger.kernel.org>
-In-Reply-To: <20200504175553.jdm7a7aabloevxba@pengutronix.de>
-Sender: linux-doc-owner@vger.kernel.org
-To: Uwe =?ISO-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>, Sam Ravnborg <sam@ravnborg.org>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, alsa-devel@alsa-project.org, Olivier Moysan <olivier.moysan@st.com>, Linux Doc Mailing List <linux-doc@vger.kernel.org>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-mips@vger.kernel.org, Andrzej Hajda <a.hajda@samsung.com>, Jonathan Corbet <corbet@lwn.net>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Sean Wang <sean.wang@mediatek.com>, Jyri Sarha <jsarha@ti.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Arnaud
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <e53824aed3eeb27419e5399576cce028f0ba8203.camel@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 2020-05-04 at 19:55 +0200, Uwe Kleine-K�nig wrote:
-> Hi Sam,
-> 
-> On Mon, May 04, 2020 at 07:45:22PM +0200, Sam Ravnborg wrote:
-> > On Mon, May 04, 2020 at 11:30:20AM +0200, Mauro Carvalho Chehab wrote:
-> > > There are some new broken doc links due to yaml renames
-> > > at DT. Developers should really run:
-> > > 
-> > > 	./scripts/documentation-file-ref-check
-> > > 
-> > > in order to solve those issues while submitting patches.
-> > Would love if some bot could do this for me on any patches that creates
-> > .yaml files or so.
-> > I know I will forget this and it can be automated.
-> > If I get a bot mail that my patch would broke a link I would
-> > have it fixed before it hits any tree.
-> 
-> What about adding a check to check_patch?
+On Mon, 04 May 2020 14:01:32 -0400
+Nicolas Dufresne <nicolas.dufresne@collabora.com> wrote:
 
-There's already a checkpatch warning when a patch renames
-a file without a MAINTAINERS update.
+> Le samedi 02 mai 2020 à 19:55 -0300, Ezequiel Garcia a écrit :
+> > +Nicolas
+> > 
+> > On Sat, 2020-05-02 at 20:37 +0200, Boris Brezillon wrote:  
+> > > On Fri, 01 May 2020 13:57:49 -0300
+> > > Ezequiel Garcia <ezequiel@collabora.com> wrote:
+> > >   
+> > > > > > +
+> > > > > > +.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
+> > > > > > +
+> > > > > > +.. flat-table:: enum v4l2_vp9_reset_frame_context
+> > > > > > +    :header-rows:  0
+> > > > > > +    :stub-columns: 0
+> > > > > > +    :widths:       1 2
+> > > > > > +
+> > > > > > +    * - ``V4L2_VP9_RESET_FRAME_CTX_NONE``
+> > > > > > +      - Do not reset any frame context.
+> > > > > > +    * - ``V4L2_VP9_RESET_FRAME_CTX_NONE_ALT``
+> > > > > > +      - Do not reset any frame context. This is an alternative value for
+> > > > > > +        V4L2_VP9_RESET_FRAME_CTX_NONE.    
+> > > > > 
+> > > > > Add `` around V4L2_VP9_RESET_FRAME_CTX_NONE.
+> > > > >     
+> > > > 
+> > > > Hm, now that I look closer, what's the point
+> > > > of having the NONE_ALT in our uAPI if it
+> > > > has same meaning as NONE?
+> > > > 
+> > > > I think it can be removed.  
+> > > 
+> > > The intent was to match the spec so that one can pass the value
+> > > extracted from the bitstream directly.  
+> 
+> reset_frame_contextspecifies whether the frame context should be reset
+> to default values:
+>   − 0 or 1 means do not reset any frame context
+>   − 2 resets just the context specified in the frame header
+>   − 3 resets all cont
+> 
+> But aren't we going too far by making this an emum ?
+
+I like to not have to constantly go back to the spec when I read code,
+and having constant values defined through enums definitely helps in
+this regard, but maybe it's just me.
+
+> In Microsfot DXVA,
+> we pass that value without interpreting it in userspace. For the
+> following RKVDEC, it is (suspiciously ?) ignored.
+
+IIRC, the prob context has to be kept in userspace anyway (and reset
+when needed), and the rkvdec engine does not have any hardware context.
+That's probably why this value is ignored here.
+
+> Maybe just passing
+> over the value would make more sense, less work ?
+
+I don't see how adding an enum adds more work, given the enum values
+match the ones defined VP 9 spec, but maybe I'm missing something.
