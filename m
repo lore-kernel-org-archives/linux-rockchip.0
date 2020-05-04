@@ -1,52 +1,111 @@
-From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>
-Subject: Re: [PATCH] docs: dt: fix broken links due to txt->yaml renames
-Date: Mon, 4 May 2020 19:55:53 +0200
-Message-ID: <20200504175553.jdm7a7aabloevxba@pengutronix.de>
-References: <967df5c3303b478b76199d4379fe40f5094f3f9b.1588584538.git.mchehab+huawei@kernel.org>
- <20200504174522.GA3383@ravnborg.org>
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Subject: Re: [PATCH v2 2/3] media: uapi: Add VP9 stateless decoder controls
+Date: Mon, 04 May 2020 14:01:32 -0400
+Message-ID: <e53824aed3eeb27419e5399576cce028f0ba8203.camel@collabora.com>
+References: <20200410115113.31728-1-ezequiel@collabora.com>
+         <20200410115113.31728-3-ezequiel@collabora.com>
+         <9126475c-275d-71ab-0308-6ae85e22446b@xs4all.nl>
+         <bf475e70cca6f9ebf645aed51276e57668eaf43b.camel@collabora.com>
+         <20200502203707.402ea3cd@collabora.com>
+         <db9fa91be8084fe9c87f263a4a97dc38d46f9bd1.camel@collabora.com>
+Reply-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200504174522.GA3383-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Olivier Moysan <olivier.moysan-qxv4g6HH51o@public.gmane.org>, Linux Doc Mailing List <linux-doc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Liam Girdwood <lgirdwood-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonathan Corbet <corbet-T1hC0tSOHrs@public.gmane.org>, Mauro Carvalho Chehab <mchehab+huawei-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Sean Wang <sean.wang-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Jyri Sarha <jsarha-l0cyMroinI0@public.gmane.org>, Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Thomas Bogendoerfer <tsbogend-I1c7kopa9pxLokYuJOExCg@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, Arnaud Pouliquen <arnaud.pouliquen-qxv4g6HH51o@public.gmane.org>, linux-mips-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-bluetooth-u79uwXL29TY@public.gmane.org
+Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
+        boundary="=-OSiYpnCOHGwM5bzGy/T7"
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <db9fa91be8084fe9c87f263a4a97dc38d46f9bd1.camel@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sam,
 
-On Mon, May 04, 2020 at 07:45:22PM +0200, Sam Ravnborg wrote:
-> On Mon, May 04, 2020 at 11:30:20AM +0200, Mauro Carvalho Chehab wrote:
-> > There are some new broken doc links due to yaml renames
-> > at DT. Developers should really run:
-> > =
+--=-OSiYpnCOHGwM5bzGy/T7
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> > 	./scripts/documentation-file-ref-check
-> > =
+Le samedi 02 mai 2020 =C3=A0 19:55 -0300, Ezequiel Garcia a =C3=A9crit :
+> +Nicolas
+>=20
+> On Sat, 2020-05-02 at 20:37 +0200, Boris Brezillon wrote:
+> > On Fri, 01 May 2020 13:57:49 -0300
+> > Ezequiel Garcia <ezequiel@collabora.com> wrote:
+> >=20
+> > > > > +
+> > > > > +.. tabularcolumns:: |p{1.5cm}|p{6.3cm}|p{9.4cm}|
+> > > > > +
+> > > > > +.. flat-table:: enum v4l2_vp9_reset_frame_context
+> > > > > +    :header-rows:  0
+> > > > > +    :stub-columns: 0
+> > > > > +    :widths:       1 2
+> > > > > +
+> > > > > +    * - ``V4L2_VP9_RESET_FRAME_CTX_NONE``
+> > > > > +      - Do not reset any frame context.
+> > > > > +    * - ``V4L2_VP9_RESET_FRAME_CTX_NONE_ALT``
+> > > > > +      - Do not reset any frame context. This is an alternative v=
+alue for
+> > > > > +        V4L2_VP9_RESET_FRAME_CTX_NONE. =20
+> > > >=20
+> > > > Add `` around V4L2_VP9_RESET_FRAME_CTX_NONE.
+> > > >  =20
+> > >=20
+> > > Hm, now that I look closer, what's the point
+> > > of having the NONE_ALT in our uAPI if it
+> > > has same meaning as NONE?
+> > >=20
+> > > I think it can be removed.
+> >=20
+> > The intent was to match the spec so that one can pass the value
+> > extracted from the bitstream directly.
 
-> > in order to solve those issues while submitting patches.
-> Would love if some bot could do this for me on any patches that creates
-> .yaml files or so.
-> I know I will forget this and it can be automated.
-> If I get a bot mail that my patch would broke a link I would
-> have it fixed before it hits any tree.
+reset_frame_contextspecifies whether the frame context should be reset
+to default values:
+  =E2=88=92 0 or 1 means do not reset any frame context
+  =E2=88=92 2 resets just the context specified in the frame header
+  =E2=88=92 3 resets all cont
 
-What about adding a check to check_patch?
+But aren't we going too far by making this an emum ? In Microsfot DXVA,
+we pass that value without interpreting it in userspace. For the
+following RKVDEC, it is (suspiciously ?) ignored. Maybe just passing
+over the value would make more sense, less work ?
 
-Best regards
-Uwe
+> >=20
+> > > > I got several smatch warnings:
+> > > >=20
+> > > > smatch: ERRORS
+> > > > drivers/media/v4l2-core/v4l2-ctrls.c:1880 validate_vp9_frame_decode=
+_params() warn: was && intended here instead of ||?
+> > > >=20
+> > > > (Commented on this ^^^ one above)
+> > > >=20
+> > > > drivers/staging/media/rkvdec/rkvdec-vp9.c:426 init_intra_only_probs=
+() error: buffer overflow 'ptr' 9 <=3D 69
+> > > > drivers/staging/media/rkvdec/rkvdec-vp9.c:1478 rkvdec_vp9_done() er=
+ror: potentially dereferencing uninitialized 'ctrl'.
+> > > > drivers/staging/media/rkvdec/rkvdec-vp9.c:1483 rkvdec_vp9_done() er=
+ror: uninitialized symbol 'dec_dst_buf'.
+> > > > drivers/staging/media/rkvdec/rkvdec-vp9.c:941:6: warning: variable =
+'ret' set but not used [-Wunused-but-set-variable]
+> > > > drivers/staging/media/rkvdec/rkvdec-vp9.c:1466:40: warning: variabl=
+e 'fctx' set but not used [-Wunused-but-set-variable]
+> > > >  =20
+> > >=20
+> > > Oh, I'll run smatch and fix them all.
+> >=20
+> > Oops!
+>=20
+>=20
 
--- =
+--=-OSiYpnCOHGwM5bzGy/T7
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXrBYfAAKCRBxUwItrAao
+HEl0AKCsffGNkgR8IRMvRvpqEdfuIJofVACgwecGH6S4+u9ily9wRCE4jpdn++E=
+=ONvy
+-----END PGP SIGNATURE-----
+
+--=-OSiYpnCOHGwM5bzGy/T7--
