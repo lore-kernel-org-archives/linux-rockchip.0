@@ -1,110 +1,150 @@
-From: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH v3 12/25] drm: rockchip: fix common struct sg_table related
- issues
-Date: Tue,  5 May 2020 10:46:01 +0200
-Message-ID: <20200505084614.30424-12-m.szyprowski@samsung.com>
-References: <20200505083926.28503-1-m.szyprowski@samsung.com>
- <20200505084614.30424-1-m.szyprowski@samsung.com>
- <CGME20200505084630eucas1p2199401486591b681b84a4b24496295fb@eucas1p2.samsung.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v9 0/8] Add endpoint driver for R-Car PCIe controller
+Date: Tue, 5 May 2020 10:44:16 +0100
+Message-ID: <20200505094416.GA12543@e121166-lin.cambridge.arm.com>
+References: <1587666159-6035-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <CA+V-a8u1rEF1DMAVkZ1=-d_MjLa_49X2Nny_VaEN0Y398GOJhw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20200505084614.30424-1-m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
- <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
- <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Sender: "iommu" <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linaro-mm-sig-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Christoph Hellwig <hch-jcswGhMUV9g@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <CA+V-a8u1rEF1DMAVkZ1=-d_MjLa_49X2Nny_VaEN0Y398GOJhw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: "Lad, Prabhakar" <prabhakar.csengg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>
+Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Andrew Murray <amurray-tUaQ5FxYRYX4aQPF92CzsNBc4/FLrbF6@public.gmane.org>, Tom Joseph <tjoseph-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Marek Vasut <marek.vasut+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>, linux-pci <linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, LKML <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linux-Renesas <linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, LAK <linux-arm-kernel@lists.i>
 List-Id: linux-rockchip.vger.kernel.org
 
-The Documentation/DMA-API-HOWTO.txt states that dma_map_sg returns the
-numer of the created entries in the DMA address space. However the
-subsequent calls to dma_sync_sg_for_{device,cpu} and dma_unmap_sg must be
-called with the original number of the entries passed to dma_map_sg. The
-sg_table->nents in turn holds the result of the dma_map_sg call as stated
-in include/linux/scatterlist.h. A common mistake was to ignore a result
-of the dma_map_sg function and don't use the sg_table->orig_nents at all.
+On Thu, Apr 30, 2020 at 09:43:20AM +0100, Lad, Prabhakar wrote:
+> Hi Kishon,
+> 
+> On Thu, Apr 23, 2020 at 7:23 PM Lad Prabhakar
+> <prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org> wrote:
+> >
+> > Hi All,
+> >
+> > This patch series adds support for endpoint driver for R-Car PCIe controller on
+> > R-Car/RZ-G2x SoC's, this also extends the epf framework to handle multiple windows
+> > supported by the controller for mapping PCI address locally.
+> >
+> > Note:
+> > The cadence/rockchip/designware endpoint drivers are build tested only.
+> >
+> > Changes for v9 (Re-spun this series as there were minimal changes requested):
+> > * Rebased patches on top of v5.7.rc1
+> > * Replaced mdelay(1) with usleep_range(1000, 1001) in rcar_pcie_ep_assert_intx()
+> > * Added a check for max_functions read from DT to restrict with
+> >   RCAR_EPC_MAX_FUNCTIONS
+> > * Replaced MSICAP0_MMENUM with MSICAP0_MMESE
+> > * Retry ioremap for other windows on failure in pci_epc_mem_alloc_addr()
+> > * Fixed looping for number windows in pci_epc_mem_exit()
+> > * Set maximum to 1 for max-functions in DT binding (I have restored the acks
+> >   from  Rob and Shimoda-san)
+> > * Sorted the entry in MAINTAINERS
+> >
+> > Changes for v8:
+> > * Dropped adding R8A774C0 (0x002d) pci-id in pci_ids.h
+> > * Fixed typo in commit message for patch 2/8
+> > * Reworded commit message for patch 5/8 as suggested by Bjorn
+> > * Split up patch to add pci_epc_mem_init() interface to add page_size argument
+> >   as suggested by Bjorn.
+> >
+> > Changes for v7:
+> > * Fixed review comments pointed by Shimoda-san
+> >   1] Made DT bindings dual licensed, added Shimoda-san as maintainer and fixed
+> >      the example as its built with #{address,size}-cells = <1>. I have still
+> >      restored the Ack from Rob and Shimoda-san with these changes.
+> >   2] Split up the patches so that they can be picked up by respective subsystem
+> >      patches 1/4-9/11 are now part of this series.
+> >   3] Dropped altering a comment in pci-epc.h
+> >   4] Used a local variable align_size in pci_epc_mem_alloc_addr() so that size
+> >      variable doesn't get overwritten in the loop.
+> >   5] Replaced i-=1 with i--
+> >   6] Replaced rcar with R-Car in patch subject and description.
+> >   7] Set MACCTLR in init() callback
+> >
+> > Changes for v6:
+> > 1] Rebased patches on endpoint branch of https://git.kernel.org/pub/
+> >    scm/linux/kernel/git/lpieralisi/pci.git/
+> > 2] Fixed review comments from Shimoda-san
+> >    a] Made sure defconfig changes were in separate patch
+> >    b] Created rcar_pcie_host/rcar_pcie_ep structures
+> >    c] Added pci-id for R8A774C0
+> >    d] Added entry in MAINTAINERS for dt-binding
+> >    e] Dropped unnecessary braces
+> > 3] Added support for msi.
+> >
+> > Changes for v5:
+> > 1] Rebased patches on next branch of https://git.kernel.org/pub/scm/
+> >    linux/kernel/git/helgaas/pci.git
+> > 2] Fixed review comments reported by Kishon while fetching the matching
+> >    window in function pci_epc_get_matching_window()
+> > 3] Fixed review comments reported by Bjorn
+> >    a] Split patch up first patch so that its easier to review and incremental
+> >    b] Fixed typos
+> > 4] Included Reviewed tag from Rob for the dt-binding patch
+> > 5] Fixed issue reported by Nathan for assigning variable to itself
+> >
+> > Changes for v4:
+> > 1] Fixed dtb_check error reported by Rob
+> > 2] Fixed review comments reported by Kishon
+> >    a] Dropped pci_epc_find_best_fit_window()
+> >    b] Fixed initializing mem ptr in __pci_epc_mem_init()
+> >    c] Dropped map_size from pci_epc_mem_window structure
+> >
+> > Changes for v3:
+> > 1] Fixed review comments from Bjorn and Kishon.
+> > 3] Converted to DT schema
+> >
+> > Changes for v2:
+> > 1] Fixed review comments from Biju for dt-bindings to include an example
+> >    for a tested platform.
+> > 2] Fixed review comments from Kishon to extend the features of outbound
+> >    regions in epf framework.
+> > 3] Added support to parse outbound-ranges in OF.
+> >
+> > Lad Prabhakar (8):
+> >   PCI: rcar: Rename pcie-rcar.c to pcie-rcar-host.c
+> >   PCI: rcar: Move shareable code to a common file
+> >   PCI: rcar: Fix calculating mask for PCIEPAMR register
+> >   PCI: endpoint: Pass page size as argument to pci_epc_mem_init()
+> >   PCI: endpoint: Add support to handle multiple base for mapping
+> >     outbound memory
+> Could you please do the needy for the above two patches, so that this
+> can be picked up by Lorenzo.
 
-To avoid such issues, lets use common dma-mapping wrappers operating
-directly on the struct sg_table objects and adjust references to the
-nents and orig_nents respectively.
+Yes please. I would kindly ask you to rebase it on top of my
+pci/rcar branch - with Kishon's ACK when provided.
 
-Signed-off-by: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
----
-For more information, see '[PATCH v3 00/25] DRM: fix struct sg_table nents
-vs. orig_nents misuse' thread: https://lkml.org/lkml/2020/5/5/187
----
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 26 ++++++++++++--------------
- 1 file changed, 12 insertions(+), 14 deletions(-)
+Thanks,
+Lorenzo
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index 0d18846..9df7d7d 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -36,8 +36,8 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
- 
- 	rk_obj->dma_addr = rk_obj->mm.start;
- 
--	ret = iommu_map_sg(private->domain, rk_obj->dma_addr, rk_obj->sgt->sgl,
--			   rk_obj->sgt->nents, prot);
-+	ret = iommu_map_sgtable(private->domain, rk_obj->dma_addr, rk_obj->sgt,
-+				prot);
- 	if (ret < rk_obj->base.size) {
- 		DRM_ERROR("failed to map buffer: size=%zd request_size=%zd\n",
- 			  ret, rk_obj->base.size);
-@@ -98,11 +98,10 @@ static int rockchip_gem_get_pages(struct rockchip_gem_object *rk_obj)
- 	 * TODO: Replace this by drm_clflush_sg() once it can be implemented
- 	 * without relying on symbols that are not exported.
- 	 */
--	for_each_sg(rk_obj->sgt->sgl, s, rk_obj->sgt->nents, i)
-+	for_each_sg(rk_obj->sgt->sgl, s, rk_obj->sgt->orig_nents, i)
- 		sg_dma_address(s) = sg_phys(s);
- 
--	dma_sync_sg_for_device(drm->dev, rk_obj->sgt->sgl, rk_obj->sgt->nents,
--			       DMA_TO_DEVICE);
-+	dma_sync_sgtable_for_device(drm->dev, rk_obj->sgt, DMA_TO_DEVICE);
- 
- 	return 0;
- 
-@@ -350,8 +349,8 @@ void rockchip_gem_free_object(struct drm_gem_object *obj)
- 		if (private->domain) {
- 			rockchip_gem_iommu_unmap(rk_obj);
- 		} else {
--			dma_unmap_sg(drm->dev, rk_obj->sgt->sgl,
--				     rk_obj->sgt->nents, DMA_BIDIRECTIONAL);
-+			dma_unmap_sgtable(drm->dev, rk_obj->sgt,
-+					  DMA_BIDIRECTIONAL);
- 		}
- 		drm_prime_gem_destroy(obj, rk_obj->sgt);
- 	} else {
-@@ -493,15 +492,14 @@ static unsigned long rockchip_sg_get_contiguous_size(struct sg_table *sgt,
- 			struct sg_table *sg,
- 			struct rockchip_gem_object *rk_obj)
- {
--	int count = dma_map_sg(drm->dev, sg->sgl, sg->nents,
--			       DMA_BIDIRECTIONAL);
--	if (!count)
--		return -EINVAL;
-+	int err = dma_map_sgtable(drm->dev, sg, DMA_BIDIRECTIONAL);
-+	if (err)
-+		return err;
- 
--	if (rockchip_sg_get_contiguous_size(sg, count) < attach->dmabuf->size) {
-+	if (rockchip_sg_get_contiguous_size(sg, sg->nents) <
-+	    attach->dmabuf->size) {
- 		DRM_ERROR("failed to map sg_table to contiguous linear address.\n");
--		dma_unmap_sg(drm->dev, sg->sgl, sg->nents,
--			     DMA_BIDIRECTIONAL);
-+		dma_unmap_sgtable(drm->dev, sg, DMA_BIDIRECTIONAL);
- 		return -EINVAL;
- 	}
- 
--- 
-1.9.1
+> Cheers,
+> --Prabhakar
+> 
+> >   dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
+> >     controller
+> >   PCI: rcar: Add endpoint mode support
+> >   MAINTAINERS: Add file patterns for rcar PCI device tree bindings
+> >
+> >  .../devicetree/bindings/pci/rcar-pci-ep.yaml  |   77 ++
+> >  MAINTAINERS                                   |    1 +
+> >  drivers/pci/controller/Kconfig                |   18 +
+> >  drivers/pci/controller/Makefile               |    3 +-
+> >  .../pci/controller/cadence/pcie-cadence-ep.c  |    2 +-
+> >  .../pci/controller/dwc/pcie-designware-ep.c   |   16 +-
+> >  drivers/pci/controller/pcie-rcar-ep.c         |  557 ++++++++
+> >  drivers/pci/controller/pcie-rcar-host.c       | 1065 +++++++++++++++
+> >  drivers/pci/controller/pcie-rcar.c            | 1206 +----------------
+> >  drivers/pci/controller/pcie-rcar.h            |  140 ++
+> >  drivers/pci/controller/pcie-rockchip-ep.c     |    2 +-
+> >  drivers/pci/endpoint/pci-epc-mem.c            |  204 ++-
+> >  include/linux/pci-epc.h                       |   38 +-
+> >  13 files changed, 2078 insertions(+), 1251 deletions(-)
+> >  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
+> >  create mode 100644 drivers/pci/controller/pcie-rcar-ep.c
+> >  create mode 100644 drivers/pci/controller/pcie-rcar-host.c
+> >  create mode 100644 drivers/pci/controller/pcie-rcar.h
+> >
+> > --
+> > 2.17.1
+> >
