@@ -1,30 +1,36 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] pinctrl: rockchip: fix memleak in rockchip_dt_node_to_map
-Date: Wed, 06 May 2020 12:57:41 +0200
-Message-ID: <12037872.zK0gPHFAvL@diego>
-References: <20200506100903.15420-1-dafna.hirschfeld@collabora.com>
+From: Marek Vasut <marex-ynQEQJNshbs@public.gmane.org>
+Subject: Re: [PATCH v2 7/7] usb: dwc3: add dis_del_phy_power_chg_quirk
+Date: Wed, 6 May 2020 13:44:15 +0200
+Message-ID: <d23b5bc0-381a-d9ff-44fa-b50506c313dc@denx.de>
+References: <20200506075025.1677-1-jagan@amarulasolutions.com>
+ <20200506075025.1677-8-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <20200506100903.15420-1-dafna.hirschfeld@collabora.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, helen.koike@collabora.com, ezequiel@collabora.com, dafna3@gmail.com, kernel@collabora.com, linus.walleij@linaro.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200506075025.1677-8-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Belisko Marek <marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Mittwoch, 6. Mai 2020, 12:09:03 CEST schrieb Dafna Hirschfeld:
-> In function rockchip_dt_node_to_map, a new_map variable is
-> allocated by:
+On 5/6/20 9:50 AM, Jagan Teki wrote:
+> Add a quirk to clear the GUSB3PIPECTL.DELAYP1TRANS bit,
+> which specifies whether disable delay PHY power change
+> from P0 to P1/P2/P3 when link state changing from U0
+> to U1/U2/U3 respectively.
 > 
-> new_map = devm_kcalloc(pctldev->dev, map_num, sizeof(*new_map),
-> 		       GFP_KERNEL);
+> Reference from below Linux commit,
 > 
-> This uses devres and attaches new_map to the pinctrl driver.
-> This cause a leak since new_map is not released when the probed
-> driver is removed. Fix it by using kcalloc to allocate new_map
-> and free it in `rockchip_dt_free_map`
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> commit <00fe081dc3a3> ("usb: dwc3: add dis_del_phy_power_chg_quirk")
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Applied, thanks.
