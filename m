@@ -1,100 +1,60 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 7/7] usb: dwc3: add dis_del_phy_power_chg_quirk
-Date: Wed,  6 May 2020 13:20:25 +0530
-Message-ID: <20200506075025.1677-8-jagan@amarulasolutions.com>
-References: <20200506075025.1677-1-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200506075025.1677-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: Marek Vasut <marex-ynQEQJNshbs@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Belisko Marek <marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: [PATCH] pinctrl: rockchip: fix memleak in rockchip_dt_node_to_map
+Date: Wed,  6 May 2020 12:09:03 +0200
+Message-ID: <20200506100903.15420-1-dafna.hirschfeld@collabora.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+Sender: linux-gpio-owner@vger.kernel.org
+To: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: helen.koike@collabora.com, dafna.hirschfeld@collabora.com, ezequiel@collabora.com, dafna3@gmail.com, kernel@collabora.com, linus.walleij@linaro.org, heiko@sntech.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Add a quirk to clear the GUSB3PIPECTL.DELAYP1TRANS bit,
-which specifies whether disable delay PHY power change
-from P0 to P1/P2/P3 when link state changing from U0
-to U1/U2/U3 respectively.
+In function rockchip_dt_node_to_map, a new_map variable is
+allocated by:
 
-Reference from below Linux commit,
+new_map = devm_kcalloc(pctldev->dev, map_num, sizeof(*new_map),
+		       GFP_KERNEL);
 
-commit <00fe081dc3a3> ("usb: dwc3: add dis_del_phy_power_chg_quirk")
+This uses devres and attaches new_map to the pinctrl driver.
+This cause a leak since new_map is not released when the probed
+driver is removed. Fix it by using kcalloc to allocate new_map
+and free it in `rockchip_dt_free_map`
 
-Cc: Marek Vasut <marex-ynQEQJNshbs@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
-Changes for v2:
-- new patch
+ drivers/pinctrl/pinctrl-rockchip.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
- drivers/usb/dwc3/core.c | 6 ++++++
- drivers/usb/dwc3/core.h | 1 +
- include/dwc3-uboot.h    | 1 +
- 3 files changed, 8 insertions(+)
-
-diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index 4ec3f6df6a..6e438e5604 100644
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -377,6 +377,9 @@ static void dwc3_phy_setup(struct dwc3 *dwc)
- 	if (dwc->dis_u3_susphy_quirk)
- 		reg &= ~DWC3_GUSB3PIPECTL_SUSPHY;
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index a9299f0bd21e..c07324d1f265 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -508,8 +508,8 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	}
  
-+	if (dwc->dis_del_phy_power_chg_quirk)
-+		reg &= ~DWC3_GUSB3PIPECTL_DEPOCHANGE;
+ 	map_num += grp->npins;
+-	new_map = devm_kcalloc(pctldev->dev, map_num, sizeof(*new_map),
+-								GFP_KERNEL);
 +
- 	dwc3_writel(dwc->regs, DWC3_GUSB3PIPECTL(0), reg);
++	new_map = kcalloc(map_num, sizeof(*new_map), GFP_KERNEL);
+ 	if (!new_map)
+ 		return -ENOMEM;
  
- 	mdelay(100);
-@@ -715,6 +718,7 @@ int dwc3_uboot_init(struct dwc3_device *dwc3_dev)
- 	dwc->rx_detect_poll_quirk = dwc3_dev->rx_detect_poll_quirk;
- 	dwc->dis_u3_susphy_quirk = dwc3_dev->dis_u3_susphy_quirk;
- 	dwc->dis_u2_susphy_quirk = dwc3_dev->dis_u2_susphy_quirk;
-+	dwc->dis_del_phy_power_chg_quirk = dwc3_dev->dis_del_phy_power_chg_quirk;
+@@ -519,7 +519,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+ 	/* create mux map */
+ 	parent = of_get_parent(np);
+ 	if (!parent) {
+-		devm_kfree(pctldev->dev, new_map);
++		kfree(new_map);
+ 		return -EINVAL;
+ 	}
+ 	new_map[0].type = PIN_MAP_TYPE_MUX_GROUP;
+@@ -546,6 +546,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+ static void rockchip_dt_free_map(struct pinctrl_dev *pctldev,
+ 				    struct pinctrl_map *map, unsigned num_maps)
+ {
++	kfree(map);
+ }
  
- 	dwc->tx_de_emphasis_quirk = dwc3_dev->tx_de_emphasis_quirk;
- 	if (dwc3_dev->tx_de_emphasis)
-@@ -975,6 +979,8 @@ void dwc3_of_parse(struct dwc3 *dwc)
- 				"snps,dis_u3_susphy_quirk");
- 	dwc->dis_u2_susphy_quirk = dev_read_bool(dev,
- 				"snps,dis_u2_susphy_quirk");
-+	dwc->dis_del_phy_power_chg_quirk = dev_read_bool(dev,
-+				"snps,dis-del-phy-power-chg-quirk");
- 	dwc->tx_de_emphasis_quirk = dev_read_bool(dev,
- 				"snps,tx_de_emphasis_quirk");
- 	tmp = dev_read_u8_array_ptr(dev, "snps,tx_de_emphasis", 1);
-diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index 1c08a2c5b6..7f45a9c459 100644
---- a/drivers/usb/dwc3/core.h
-+++ b/drivers/usb/dwc3/core.h
-@@ -821,6 +821,7 @@ struct dwc3 {
- 	unsigned		rx_detect_poll_quirk:1;
- 	unsigned		dis_u3_susphy_quirk:1;
- 	unsigned		dis_u2_susphy_quirk:1;
-+	unsigned		dis_del_phy_power_chg_quirk:1;
- 
- 	unsigned		tx_de_emphasis_quirk:1;
- 	unsigned		tx_de_emphasis:2;
-diff --git a/include/dwc3-uboot.h b/include/dwc3-uboot.h
-index 3c9e204cf0..f5086fb946 100644
---- a/include/dwc3-uboot.h
-+++ b/include/dwc3-uboot.h
-@@ -32,6 +32,7 @@ struct dwc3_device {
- 	unsigned rx_detect_poll_quirk;
- 	unsigned dis_u3_susphy_quirk;
- 	unsigned dis_u2_susphy_quirk;
-+	unsigned dis_del_phy_power_chg_quirk;
- 	unsigned tx_de_emphasis_quirk;
- 	unsigned tx_de_emphasis;
- 	int index;
+ static const struct pinctrl_ops rockchip_pctrl_ops = {
 -- 
 2.17.1
