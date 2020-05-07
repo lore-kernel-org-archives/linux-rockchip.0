@@ -1,102 +1,116 @@
-From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH v3 2/4] arm64: dts: rockchip: Add RGA support to the PX30
-Date: Thu, 7 May 2020 22:25:58 +0200
-Message-ID: <20200507202558.GK2422122@aptenodytes>
-References: <20200430164245.1630174-3-paul.kocialkowski@bootlin.com>
- <c3954924-c220-73ef-06dd-85b6876be819@gmail.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v3 1/4] dt-bindings: rockchip-rga: Add PX30 compatible
+Date: Fri, 8 May 2020 01:01:47 +0200
+Message-ID: <b3d65325-7383-f89b-f493-6219904c8931@gmail.com>
+References: <20200430164245.1630174-2-paul.kocialkowski@bootlin.com>
+ <ed1ac7d6-12d3-5480-3699-70a88595cac2@gmail.com>
+ <20200507202337.GJ2422122@aptenodytes>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="aqWxf8ydqYKP8htK"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <c3954924-c220-73ef-06dd-85b6876be819@gmail.com>
+In-Reply-To: <20200507202337.GJ2422122@aptenodytes>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Jonker <jbx6244@gmail.com>
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 Cc: devicetree@vger.kernel.org, ezequiel@collabora.com, hansverk@cisco.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, mchehab@kernel.org, robh+dt@kernel.org, thomas.petazzoni@bootlin.com
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Paul,
 
---aqWxf8ydqYKP8htK
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+With help of enum each additional compatibility string with fall back
+'rockchip,rk3288-rga' adds only 1 extra line instead of 3.
 
-Hi,
+See my and Heiko's response at the review of 'rockchip-saradc.yaml'.
 
-On Fri 01 May 20, 00:05, Johan Jonker wrote:
-> Hi Paul,
->=20
-> > The PX30 features a RGA block: add the necessary node to support it.
-> >=20
-> > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
-> >  1 file changed, 11 insertions(+)
-> >=20
-> > diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/d=
-ts/rockchip/px30.dtsi
-> > index f809dd6d5dc3..3de70aa4f1ce 100644
-> > --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> > @@ -1102,6 +1102,17 @@ vopl_mmu: iommu@ff470f00 {
-> >  		status =3D "disabled";
-> >  	};
-> > =20
-> > +	rga: rga@ff480000 {
-> > +		compatible =3D "rockchip,px30-rga", "rockchip,rk3288-rga";
-> > +		reg =3D <0x0 0xff480000 0x0 0x10000>;
-> > +		interrupts =3D <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH 0>;
-> > +		clocks =3D <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
-> > +		clock-names =3D "aclk", "hclk", "sclk";
->=20
-> > +		resets =3D <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
-> > +		reset-names =3D "core", "axi", "ahb";
-> > +		power-domains =3D <&power PX30_PD_VO>;
->=20
-> sort
->=20
-> 		power-domains =3D <&power PX30_PD_VO>;
-> 		resets =3D <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
-> 		reset-names =3D "core", "axi", "ahb";
+Re: [PATCH v1 1/3] dt-bindings: iio: adc: convert rockchip saradc
+bindings to yaml
+https://lore.kernel.org/lkml/a35bdff4-601e-6186-584e-9a0b88cf3dbb@gmail.com/
 
-What's the rationale behind this (besides alphabetic sorting, which I don't
-believe is a rule for dt properties)? Some nodes above in the file have it =
-in
-the same order that I do, and I like to see clocks followed by resets.
+The response of robh when I did something similar wrong as this patch.
 
-Cheers,
+Re: [PATCH 1/2] dt-bindings: usb: dwc2: add compatible property for
+rk3328 usb
+https://lore.kernel.org/lkml/20200310192933.GA15236@bogus/
 
-Paul
+Example of an approved patch with enum.
 
->=20
->=20
-> > +	};
-> > +
-> >  	qos_gmac: qos@ff518000 {
-> >  		compatible =3D "syscon";
-> >  		reg =3D <0x0 0xff518000 0x0 0x20>;
-> > --=20
-> > 2.26.0
->=20
+[PATCH v2 1/2] dt-bindings: usb: dwc2: add compatible property for
+rk3328 usb
+https://lore.kernel.org/lkml/20200311122121.8912-1-jbx6244@gmail.com/
 
---=20
-Paul Kocialkowski, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
+Kind regards,
 
---aqWxf8ydqYKP8htK
-Content-Type: application/pgp-signature; name="signature.asc"
+Johan
 
------BEGIN PGP SIGNATURE-----
+On 5/7/20 10:23 PM, Paul Kocialkowski wrote:
+> Hi,
+> 
+> On Thu 30 Apr 20, 23:24, Johan Jonker wrote:
+>> Hi Paul,
+>>
+>>>
+>>> Add a new compatible for the PX30 Rockchip SoC, which also features
+>>> a RGA block. It is compatible with the RK3288 RGA block.
+>>>
+>>> Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+>>> ---
+>>>  Documentation/devicetree/bindings/media/rockchip-rga.yaml | 3 +++
+>>>  1 file changed, 3 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.yaml b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+>>> index dd645ddccb07..740586299da9 100644
+>>> --- a/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+>>> +++ b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+>>> @@ -23,6 +23,9 @@ properties:
+>>
+>>
+>>>        - items:
+>>>            - const: rockchip,rk3228-rga
+>>>            - const: rockchip,rk3288-rga
+>>> +      - items:
+>>> +          - const: rockchip,px30-rga
+>>> +          - const: rockchip,rk3288-rga
+>>
+>> Use enum.
+>>
+>>       - items:
+>>           - enum:
+>>             - rockchip,px30-rga
+>>             - rockchip,rk3228-rga
+>>           - const: rockchip,rk3288-rga
+> 
+> Are you sure about this? The rk3228 above does it as I did it and other examples
+> like allwinner,sun4i-a10-csi.yaml appear to be doing the same too.
 
-iQEzBAEBCAAdFiEEJZpWjZeIetVBefti3cLmz3+fv9EFAl60btYACgkQ3cLmz3+f
-v9Ha1Qf/Xr5JD/LpgWWDus3bRN+aBAhQYAdGgLJOCLzfZ73l5ovYy4znYccQvOP7
-9jefTg3IgTEVV/Dxsh+EFuaWAJzHmEREpDRMSCywxGQgrkWyU8rgB2z7GHjT0xUM
-DV0SU5Hi8mL2SDyXXMjAu+VQRu2ewNCXTSrNGMNey2R9ii5XZB51VZ61lYh4Zct8
-wZ/M1S+jG6x/JbZT4UalUqvUyQIvNHS27RlkBROLBHcEBngSWCB/iQCOuLl5kjwa
-3FFE9oLKQC/8C0q8Ys8o0Oz7lnfH5EEQ+3y4wLuHBTLGjMBrED3AREihwZOaLoHS
-OmTf3luRVKugDzmY3MKRI6vUPxK0lA==
-=fLpQ
------END PGP SIGNATURE-----
+The use of enum starts from 2 or more identical fall back strings.
+'allwinner,sun4i-a10-csi.yaml' has 2 different fall back strings.
 
---aqWxf8ydqYKP8htK--
+properties:
+  compatible:
+    oneOf:
+      - const: allwinner,sun4i-a10-csi1
+      - const: allwinner,sun7i-a20-csi0
+      - items:
+        - const: allwinner,sun7i-a20-csi1
+        - const: allwinner,sun4i-a10-csi1
+      - items:
+        - const: allwinner,sun8i-r40-csi0
+        - const: allwinner,sun7i-a20-csi0
+
+> 
+> The case with rockchip,rk3288-rga alone already seems covered.
+See yaml examples in the links above.
+
+> 
+> Cheers,
+> 
+> Paul
+> 
+>>>  
+>>>    reg:
+>>>      maxItems: 1
+>>> -- 
+>>> 2.26.0
+>>
+> 
