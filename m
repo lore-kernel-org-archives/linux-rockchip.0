@@ -1,121 +1,56 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v3 2/4] arm64: dts: rockchip: Add RGA support to the PX30
-Date: Fri, 08 May 2020 12:55:48 +0200
-Message-ID: <2855296.rNCsY6NMd3@phil>
-References: <20200430164245.1630174-3-paul.kocialkowski@bootlin.com> <20200507202558.GK2422122@aptenodytes> <7112d1fa-a872-c66f-0ece-a77ba1f852de@gmail.com>
+From: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3 3/3] media: rkvdec: Add the VP9 backend
+Date: Fri, 08 May 2020 11:21:08 +0000 (UTC)
+Message-ID: <4ac628c6-0845-7bca-2c1a-4d6ef2a4019f@kwiboo.se>
+References: <20200505134110.3435-1-ezequiel@collabora.com>
+ <20200505134110.3435-4-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <7112d1fa-a872-c66f-0ece-a77ba1f852de-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200505134110.3435-4-ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: sv
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Alexandre Courbot <acourbot-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hans Verkuil <hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, gustavo.padovan-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Jeffrey Kardatzke <jkardatzke-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 8. Mai 2020, 01:40:08 CEST schrieb Johan Jonker:
-> Hi Paul,
+On 2020-05-05 15:41, Ezequiel Garcia wrote:
+> From: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 > 
-> On 5/7/20 10:25 PM, Paul Kocialkowski wrote:
-> > Hi,
-> > 
-> > On Fri 01 May 20, 00:05, Johan Jonker wrote:
-> >> Hi Paul,
-> >>
-> >>> The PX30 features a RGA block: add the necessary node to support it.
-> >>>
-> >>> Signed-off-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-> >>> ---
-> >>>  arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
-> >>>  1 file changed, 11 insertions(+)
-> >>>
-> >>> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> >>> index f809dd6d5dc3..3de70aa4f1ce 100644
-> >>> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-> >>> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-> >>> @@ -1102,6 +1102,17 @@ vopl_mmu: iommu@ff470f00 {
-> >>>  		status = "disabled";
-> >>>  	};
-> >>>  
-> >>> +	rga: rga@ff480000 {
-> >>> +		compatible = "rockchip,px30-rga", "rockchip,rk3288-rga";
-> >>> +		reg = <0x0 0xff480000 0x0 0x10000>;
-> >>> +		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH 0>;
-> >>> +		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
-> >>> +		clock-names = "aclk", "hclk", "sclk";
-> >>
-> >>> +		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
-> >>> +		reset-names = "core", "axi", "ahb";
-> >>> +		power-domains = <&power PX30_PD_VO>;
-> >>
-> >> sort
-> >>
-> >> 		power-domains = <&power PX30_PD_VO>;
-> >> 		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
-> >> 		reset-names = "core", "axi", "ahb";
-> > 
-> > What's the rationale behind this (besides alphabetic sorting, which I don't
-> > believe is a rule for dt properties)? Some nodes above in the file have it in
-> > the same order that I do, and I like to see clocks followed by resets.
+> The Rockchip VDEC supports VP9 profile 0 up to 4096x2304@30fps. Add
+> a backend for this new format.
 > 
-> My short list.
-> There is no hard rule... It mostly depend on Heiko...
+> Signed-off-by: Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> Signed-off-by: Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 
-For the record, if needed I do any re-sorting myself normally, so there is
-no need to respin patches just because nodes are sorted differently.
+I have tested this series on a Rock Pi 4 RK3399 device using
+the ffmpeg vp9 request api hwaccel at [1].
+Decoding up to 3840x2160@30fps media is working great.
+(frame scaling was not tested or fully implemented in ffmpeg hwaccel)
 
-But yes, since the early Chromebook project in 2014 we agreed on
-doing in Rockchip dts files:
+Tested-by: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
 
-----
-compatible
-reg
-interrupts
-[alphabetical]
-status [if needed]
-----
+[1] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-hwaccel-4.2.2
 
-This works most of the time, but sometimes gets missed but is not _that_
-big a deal if that happens ;-) .
+Regards,
+Jonas
 
-
-Heiko
-
-
-> For nodes:
-> If exists on top: model, compatible and chosen.
-> Sort things without reg alphabetical first,
-> then sort the rest by reg address.
+> ---
+>  drivers/staging/media/rkvdec/Makefile     |    2 +-
+>  drivers/staging/media/rkvdec/rkvdec-vp9.c | 1577 +++++++++++++++++++++
+>  drivers/staging/media/rkvdec/rkvdec.c     |   56 +-
+>  drivers/staging/media/rkvdec/rkvdec.h     |    6 +
+>  4 files changed, 1637 insertions(+), 4 deletions(-)
+>  create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
 > 
-> Inside nodes:
-> If exists on top: compatible, reg and interrupts.
-> In alphabetical order the required properties.
-> Then in alphabetical order the other properties.
-> And as last things that start with '#' in alphabetical order.
-> Add status below all other properties for soc internal components with
-> any board-specifics.
-> Keep an empty line between properties and nodes.
-> 
-> Exceptions:
-> Sort pinctrl-0 above pinctrl-names, so it stays in line with clock-names
-> and dma-names.
-> Sort simple-audio-card,name above other simple-audio-card properties.
-> Sort regulator-name above other regulator properties.
-> Sort regulator-min-microvolt above regulator-max-microvolt.
-> 
-> > 
-> > Cheers,
-> > 
-> > Paul
-> > 
-> >>
-> >>
-> >>> +	};
-> >>> +
-> >>>  	qos_gmac: qos@ff518000 {
-> >>>  		compatible = "syscon";
-> >>>  		reg = <0x0 0xff518000 0x0 0x20>;
-> >>
-> > 
-> 
-> 
+
+[...]
