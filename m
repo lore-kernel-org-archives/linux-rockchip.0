@@ -1,102 +1,89 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v3 2/4] arm64: dts: rockchip: Add RGA support to the PX30
-Date: Fri, 8 May 2020 01:40:08 +0200
-Message-ID: <7112d1fa-a872-c66f-0ece-a77ba1f852de@gmail.com>
-References: <20200430164245.1630174-3-paul.kocialkowski@bootlin.com>
- <c3954924-c220-73ef-06dd-85b6876be819@gmail.com>
- <20200507202558.GK2422122@aptenodytes>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v3 3/4] media: rockchip: rga: Introduce color fmt macros
+ and refactor CSC mode logic
+Date: Fri, 08 May 2020 01:18:49 -0300
+Message-ID: <d765f2ef6da5db7927d3718ceb43ab66f18686d3.camel@collabora.com>
+References: <20200430164245.1630174-1-paul.kocialkowski@bootlin.com>
+         <20200430164245.1630174-4-paul.kocialkowski@bootlin.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200507202558.GK2422122@aptenodytes>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200430164245.1630174-4-paul.kocialkowski@bootlin.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hansverk@cisco.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Paul,
-
-On 5/7/20 10:25 PM, Paul Kocialkowski wrote:
-> Hi,
+On Thu, 2020-04-30 at 18:42 +0200, Paul Kocialkowski wrote:
+> This introduces two macros: RGA_COLOR_FMT_IS_YUV and RGA_COLOR_FMT_IS_RGB
+> which allow quick checking of the colorspace familily of a RGA color format.
 > 
-> On Fri 01 May 20, 00:05, Johan Jonker wrote:
->> Hi Paul,
->>
->>> The PX30 features a RGA block: add the necessary node to support it.
->>>
->>> Signed-off-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
->>> ---
->>>  arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
->>>  1 file changed, 11 insertions(+)
->>>
->>> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
->>> index f809dd6d5dc3..3de70aa4f1ce 100644
->>> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
->>> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
->>> @@ -1102,6 +1102,17 @@ vopl_mmu: iommu@ff470f00 {
->>>  		status = "disabled";
->>>  	};
->>>  
->>> +	rga: rga@ff480000 {
->>> +		compatible = "rockchip,px30-rga", "rockchip,rk3288-rga";
->>> +		reg = <0x0 0xff480000 0x0 0x10000>;
->>> +		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH 0>;
->>> +		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
->>> +		clock-names = "aclk", "hclk", "sclk";
->>
->>> +		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
->>> +		reset-names = "core", "axi", "ahb";
->>> +		power-domains = <&power PX30_PD_VO>;
->>
->> sort
->>
->> 		power-domains = <&power PX30_PD_VO>;
->> 		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
->> 		reset-names = "core", "axi", "ahb";
+> These macros are then used to refactor the logic for CSC mode selection.
+> The two nested tests for input colorspace are simplified into a single one,
+> with a logical and, making the whole more readable.
 > 
-> What's the rationale behind this (besides alphabetic sorting, which I don't
-> believe is a rule for dt properties)? Some nodes above in the file have it in
-> the same order that I do, and I like to see clocks followed by resets.
+> Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 
-My short list.
-There is no hard rule... It mostly depend on Heiko...
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 
-For nodes:
-If exists on top: model, compatible and chosen.
-Sort things without reg alphabetical first,
-then sort the rest by reg address.
+Thanks a lot for the nice cleanup.
 
-Inside nodes:
-If exists on top: compatible, reg and interrupts.
-In alphabetical order the required properties.
-Then in alphabetical order the other properties.
-And as last things that start with '#' in alphabetical order.
-Add status below all other properties for soc internal components with
-any board-specifics.
-Keep an empty line between properties and nodes.
-
-Exceptions:
-Sort pinctrl-0 above pinctrl-names, so it stays in line with clock-names
-and dma-names.
-Sort simple-audio-card,name above other simple-audio-card properties.
-Sort regulator-name above other regulator properties.
-Sort regulator-min-microvolt above regulator-max-microvolt.
-
+> ---
+>  drivers/media/platform/rockchip/rga/rga-hw.c | 23 +++++++++-----------
+>  drivers/media/platform/rockchip/rga/rga-hw.h |  5 +++++
+>  2 files changed, 15 insertions(+), 13 deletions(-)
 > 
-> Cheers,
-> 
-> Paul
-> 
->>
->>
->>> +	};
->>> +
->>>  	qos_gmac: qos@ff518000 {
->>>  		compatible = "syscon";
->>>  		reg = <0x0 0xff518000 0x0 0x20>;
->>> -- 
->>> 2.26.0
->>
-> 
+> diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media/platform/rockchip/rga/rga-hw.c
+> index 4be6dcf292ff..5607ee8d1917 100644
+> --- a/drivers/media/platform/rockchip/rga/rga-hw.c
+> +++ b/drivers/media/platform/rockchip/rga/rga-hw.c
+> @@ -200,22 +200,19 @@ static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
+>  	dst_info.data.format = ctx->out.fmt->hw_format;
+>  	dst_info.data.swap = ctx->out.fmt->color_swap;
+>  
+> -	if (ctx->in.fmt->hw_format >= RGA_COLOR_FMT_YUV422SP) {
+> -		if (ctx->out.fmt->hw_format < RGA_COLOR_FMT_YUV422SP) {
+> -			switch (ctx->in.colorspace) {
+> -			case V4L2_COLORSPACE_REC709:
+> -				src_info.data.csc_mode =
+> -					RGA_SRC_CSC_MODE_BT709_R0;
+> -				break;
+> -			default:
+> -				src_info.data.csc_mode =
+> -					RGA_SRC_CSC_MODE_BT601_R0;
+> -				break;
+> -			}
+> +	if (RGA_COLOR_FMT_IS_YUV(ctx->in.fmt->hw_format) &&
+> +	    RGA_COLOR_FMT_IS_RGB(ctx->out.fmt->hw_format)) {
+> +		switch (ctx->in.colorspace) {
+> +		case V4L2_COLORSPACE_REC709:
+> +			src_info.data.csc_mode = RGA_SRC_CSC_MODE_BT709_R0;
+> +			break;
+> +		default:
+> +			src_info.data.csc_mode = RGA_SRC_CSC_MODE_BT601_R0;
+> +			break;
+>  		}
+>  	}
+>  
+> -	if (ctx->out.fmt->hw_format >= RGA_COLOR_FMT_YUV422SP) {
+> +	if (RGA_COLOR_FMT_IS_YUV(ctx->out.fmt->hw_format)) {
+>  		switch (ctx->out.colorspace) {
+>  		case V4L2_COLORSPACE_REC709:
+>  			dst_info.data.csc_mode = RGA_SRC_CSC_MODE_BT709_R0;
+> diff --git a/drivers/media/platform/rockchip/rga/rga-hw.h b/drivers/media/platform/rockchip/rga/rga-hw.h
+> index 96cb0314dfa7..e8917e5630a4 100644
+> --- a/drivers/media/platform/rockchip/rga/rga-hw.h
+> +++ b/drivers/media/platform/rockchip/rga/rga-hw.h
+> @@ -95,6 +95,11 @@
+>  #define RGA_COLOR_FMT_CP_8BPP 15
+>  #define RGA_COLOR_FMT_MASK 15
+>  
+> +#define RGA_COLOR_FMT_IS_YUV(fmt) \
+> +	(((fmt) >= RGA_COLOR_FMT_YUV422SP) && ((fmt) < RGA_COLOR_FMT_CP_1BPP))
+> +#define RGA_COLOR_FMT_IS_RGB(fmt) \
+> +	((fmt) < RGA_COLOR_FMT_YUV422SP)
+> +
+>  #define RGA_COLOR_NONE_SWAP 0
+>  #define RGA_COLOR_RB_SWAP 1
+>  #define RGA_COLOR_ALPHA_SWAP 2
