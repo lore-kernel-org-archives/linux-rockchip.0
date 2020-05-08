@@ -1,130 +1,121 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v3 3/3] media: rkvdec: Add the VP9 backend
-Date: Fri, 8 May 2020 12:34:47 +0200
-Message-ID: <8e8eda07-e5f5-86dc-899b-0823ea0479f2@xs4all.nl>
-References: <20200505134110.3435-1-ezequiel@collabora.com>
- <20200505134110.3435-4-ezequiel@collabora.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3 2/4] arm64: dts: rockchip: Add RGA support to the PX30
+Date: Fri, 08 May 2020 12:55:48 +0200
+Message-ID: <2855296.rNCsY6NMd3@phil>
+References: <20200430164245.1630174-3-paul.kocialkowski@bootlin.com> <20200507202558.GK2422122@aptenodytes> <7112d1fa-a872-c66f-0ece-a77ba1f852de@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200505134110.3435-4-ezequiel@collabora.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, gustavo.padovan@collabora.com, Boris Brezillon <boris.brezillon@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <7112d1fa-a872-c66f-0ece-a77ba1f852de-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, hansverk-FYB4Gu1CFyUAvxtiuMwx3w@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 05/05/2020 15:41, Ezequiel Garcia wrote:
-> From: Boris Brezillon <boris.brezillon@collabora.com>
+Am Freitag, 8. Mai 2020, 01:40:08 CEST schrieb Johan Jonker:
+> Hi Paul,
 > 
-> The Rockchip VDEC supports VP9 profile 0 up to 4096x2304@30fps. Add
-> a backend for this new format.
+> On 5/7/20 10:25 PM, Paul Kocialkowski wrote:
+> > Hi,
+> > 
+> > On Fri 01 May 20, 00:05, Johan Jonker wrote:
+> >> Hi Paul,
+> >>
+> >>> The PX30 features a RGA block: add the necessary node to support it.
+> >>>
+> >>> Signed-off-by: Paul Kocialkowski <paul.kocialkowski-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+> >>> ---
+> >>>  arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
+> >>>  1 file changed, 11 insertions(+)
+> >>>
+> >>> diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> >>> index f809dd6d5dc3..3de70aa4f1ce 100644
+> >>> --- a/arch/arm64/boot/dts/rockchip/px30.dtsi
+> >>> +++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+> >>> @@ -1102,6 +1102,17 @@ vopl_mmu: iommu@ff470f00 {
+> >>>  		status = "disabled";
+> >>>  	};
+> >>>  
+> >>> +	rga: rga@ff480000 {
+> >>> +		compatible = "rockchip,px30-rga", "rockchip,rk3288-rga";
+> >>> +		reg = <0x0 0xff480000 0x0 0x10000>;
+> >>> +		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH 0>;
+> >>> +		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
+> >>> +		clock-names = "aclk", "hclk", "sclk";
+> >>
+> >>> +		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
+> >>> +		reset-names = "core", "axi", "ahb";
+> >>> +		power-domains = <&power PX30_PD_VO>;
+> >>
+> >> sort
+> >>
+> >> 		power-domains = <&power PX30_PD_VO>;
+> >> 		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
+> >> 		reset-names = "core", "axi", "ahb";
+> > 
+> > What's the rationale behind this (besides alphabetic sorting, which I don't
+> > believe is a rule for dt properties)? Some nodes above in the file have it in
+> > the same order that I do, and I like to see clocks followed by resets.
 > 
-> Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> ---
->  drivers/staging/media/rkvdec/Makefile     |    2 +-
->  drivers/staging/media/rkvdec/rkvdec-vp9.c | 1577 +++++++++++++++++++++
->  drivers/staging/media/rkvdec/rkvdec.c     |   56 +-
->  drivers/staging/media/rkvdec/rkvdec.h     |    6 +
->  4 files changed, 1637 insertions(+), 4 deletions(-)
->  create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
+> My short list.
+> There is no hard rule... It mostly depend on Heiko...
+
+For the record, if needed I do any re-sorting myself normally, so there is
+no need to respin patches just because nodes are sorted differently.
+
+But yes, since the early Chromebook project in 2014 we agreed on
+doing in Rockchip dts files:
+
+----
+compatible
+reg
+interrupts
+[alphabetical]
+status [if needed]
+----
+
+This works most of the time, but sometimes gets missed but is not _that_
+big a deal if that happens ;-) .
+
+
+Heiko
+
+
+> For nodes:
+> If exists on top: model, compatible and chosen.
+> Sort things without reg alphabetical first,
+> then sort the rest by reg address.
 > 
-> diff --git a/drivers/staging/media/rkvdec/Makefile b/drivers/staging/media/rkvdec/Makefile
-> index c08fed0a39f9..cb86b429cfaa 100644
-> --- a/drivers/staging/media/rkvdec/Makefile
-> +++ b/drivers/staging/media/rkvdec/Makefile
-> @@ -1,3 +1,3 @@
->  obj-$(CONFIG_VIDEO_ROCKCHIP_VDEC) += rockchip-vdec.o
->  
-> -rockchip-vdec-y += rkvdec.o rkvdec-h264.o
-> +rockchip-vdec-y += rkvdec.o rkvdec-h264.o rkvdec-vp9.o
-> diff --git a/drivers/staging/media/rkvdec/rkvdec-vp9.c b/drivers/staging/media/rkvdec/rkvdec-vp9.c
-> new file mode 100644
-> index 000000000000..37d0ea4e3570
-> --- /dev/null
-> +++ b/drivers/staging/media/rkvdec/rkvdec-vp9.c
-> @@ -0,0 +1,1577 @@
-
-<snip>
-
-> +static void init_inter_probs(struct rkvdec_ctx *ctx,
-> +			     const struct rkvdec_vp9_run *run)
-> +{
-> +	const struct v4l2_ctrl_vp9_frame_decode_params *dec_params;
-> +	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-> +	struct rkvdec_vp9_priv_tbl *tbl = vp9_ctx->priv_tbl.cpu;
-> +	struct rkvdec_vp9_inter_frame_probs *rkprobs;
-> +	const struct v4l2_vp9_probabilities *probs;
-> +	unsigned int i, j, k;
-> +
-> +	rkprobs = &tbl->probs.inter;
-> +	dec_params = run->decode_params;
-> +	probs = &dec_params->probs;
-> +
-> +	/*
-> +	 * inter probs
-> +	 * 151 x 128 bits, aligned to 152 x 128 bits
-> +	 * inter only
-> +	 * intra_y_mode & inter_block info 6 x 128 bits
-> +	 */
-> +
-> +	memcpy(rkprobs->y_mode, probs->y_mode, sizeof(rkprobs->y_mode));
-> +	memcpy(rkprobs->comp_mode, probs->comp_mode,
-> +	       sizeof(rkprobs->comp_mode));
-> +	memcpy(rkprobs->comp_ref, probs->comp_ref,
-> +	       sizeof(rkprobs->comp_ref));
-> +	memcpy(rkprobs->single_ref, probs->single_ref,
-> +	       sizeof(rkprobs->single_ref));
-> +	memcpy(rkprobs->inter_mode, probs->inter_mode,
-> +	       sizeof(rkprobs->inter_mode));
-> +	memcpy(rkprobs->interp_filter, probs->interp_filter,
-> +	       sizeof(rkprobs->interp_filter));
-> +
-> +	/* 128 x 128 bits coeff related */
-> +	for (i = 0; i < ARRAY_SIZE(probs->coef); i++) {
-> +		for (j = 0; j < ARRAY_SIZE(probs->coef[0]); j++) {
-> +			for (k = 0; k < ARRAY_SIZE(probs->coef[0][0]); k++)
-> +				write_coeff_plane(probs->coef[i][j][k],
-> +						  rkprobs->coef[k][i][j]);
-> +		}
-> +	}
-> +
-> +	/* intra uv mode 6 x 128 */
-> +	memcpy(rkprobs->uv_mode_0_2, &probs->uv_mode[0],
-> +	       sizeof(rkprobs->uv_mode_0_2));
-> +	memcpy(rkprobs->uv_mode_3_5, &probs->uv_mode[3],
-> +	       sizeof(rkprobs->uv_mode_3_5));
-> +	memcpy(rkprobs->uv_mode_6_8, &probs->uv_mode[6],
-> +	       sizeof(rkprobs->uv_mode_6_8));
-> +	memcpy(rkprobs->uv_mode_9, &probs->uv_mode[9],
-> +	       sizeof(rkprobs->uv_mode_9));
-> +
-> +	/* mv related 6 x 128 */
-> +	memcpy(rkprobs->mv.joint, probs->mv.joint,
-> +	       sizeof(rkprobs->mv.joint));
-> +	memcpy(rkprobs->mv.sign, probs->mv.sign,
-> +	       sizeof(rkprobs->mv.sign));
-> +	memcpy(rkprobs->mv.class, probs->mv.class,
-> +	       sizeof(rkprobs->mv.class));
-> +	memcpy(rkprobs->mv.class0_bit, probs->mv.class0_bit,
-> +	       sizeof(rkprobs->mv.class0_bit));
-> +	memcpy(rkprobs->mv.bits, probs->mv.bits,
-> +	       sizeof(rkprobs->mv.bits));
-> +	memcpy(rkprobs->mv.class0_fr, probs->mv.class0_fr,
-> +	       sizeof(rkprobs->mv.class0_fr));
-> +	memcpy(rkprobs->mv.fr, probs->mv.fr,
-> +	       sizeof(rkprobs->mv.fr));
-> +	memcpy(rkprobs->mv.class0_hp, probs->mv.class0_hp,
-> +	       sizeof(rkprobs->mv.class0_hp));
-> +	memcpy(rkprobs->mv.hp, probs->mv.hp,
-> +	       sizeof(rkprobs->mv.hp));
-
-Can't you just do: 'rkprobs->mv = probs->mv'?
-
-> +}
-
-Regards,
-
-	Hans
+> Inside nodes:
+> If exists on top: compatible, reg and interrupts.
+> In alphabetical order the required properties.
+> Then in alphabetical order the other properties.
+> And as last things that start with '#' in alphabetical order.
+> Add status below all other properties for soc internal components with
+> any board-specifics.
+> Keep an empty line between properties and nodes.
+> 
+> Exceptions:
+> Sort pinctrl-0 above pinctrl-names, so it stays in line with clock-names
+> and dma-names.
+> Sort simple-audio-card,name above other simple-audio-card properties.
+> Sort regulator-name above other regulator properties.
+> Sort regulator-min-microvolt above regulator-max-microvolt.
+> 
+> > 
+> > Cheers,
+> > 
+> > Paul
+> > 
+> >>
+> >>
+> >>> +	};
+> >>> +
+> >>>  	qos_gmac: qos@ff518000 {
+> >>>  		compatible = "syscon";
+> >>>  		reg = <0x0 0xff518000 0x0 0x20>;
+> >>
+> > 
+> 
+> 
