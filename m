@@ -1,57 +1,82 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH 2/2] media: staging: rkisp1: stats: don't set stats flags in rkisp1_stats_send_measurement
-Date: Sat,  9 May 2020 17:29:04 +0200
-Message-ID: <20200509152904.26348-2-dafna.hirschfeld@collabora.com>
-References: <20200509152904.26348-1-dafna.hirschfeld@collabora.com>
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200509152904.26348-1-dafna.hirschfeld@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: helen.koike@collabora.com, dafna.hirschfeld@collabora.com, ezequiel@collabora.com, dafna3@gmail.com, kernel@collabora.com, hverkuil@xs4all.nl, sakari.ailus@linux.intel.com, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: Re: [PATCH v2 8/8] rockchip: Enable PCIe/M.2 on rock960 board
+Date: Sat, 9 May 2020 22:16:53 +0530
+Message-ID: <CAMty3ZCsW+XnT7NHh08N8FpTx4XYPnH0_9K_6PbMqG50xAp2vw@mail.gmail.com>
+References: <20200430070412.12499-1-jagan@amarulasolutions.com>
+ <20200430070412.12499-9-jagan@amarulasolutions.com>
+ <20200503133944.GA28003@Mani-XPS-13-9360>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200503133944.GA28003@Mani-XPS-13-9360>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Cc: Patrick Wildt <patrick-Er2xLVyhcs+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Peter Robinson <pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The flags that indicate which statistics are read are already
-set in the functions that read them so there is no need to
-set them in the function rkisp1_stats_send_measurement.
+On Sun, May 3, 2020 at 7:09 PM Manivannan Sadhasivam
+<manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
+>
+> On Thu, Apr 30, 2020 at 12:34:12PM +0530, Jagan Teki wrote:
+> > Due to some on board limitation rock960 PCIe
+> > works only with 1.8V IO domain.
+> >
+> > So, this patch enables grf io_sel explicitly
+> > to make PCIe/M.2 to work.
+> >
+> > Cc: Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>
+> > Cc: Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> > ---
+> > Changes for v2:
+> > - none
+> >
+> >  board/vamrs/rock960_rk3399/rock960-rk3399.c | 20 ++++++++++++++++++++
+> >  configs/rock960-rk3399_defconfig            |  5 +++++
+> >  2 files changed, 25 insertions(+)
+> >
+> > diff --git a/board/vamrs/rock960_rk3399/rock960-rk3399.c b/board/vamrs/rock960_rk3399/rock960-rk3399.c
+> > index 68a127b9ac..98d62e89ca 100644
+> > --- a/board/vamrs/rock960_rk3399/rock960-rk3399.c
+> > +++ b/board/vamrs/rock960_rk3399/rock960-rk3399.c
+> > @@ -2,3 +2,23 @@
+> >  /*
+> >   * Copyright (C) 2018 Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+> >   */
+> > +
+> > +#include <common.h>
+> > +#include <syscon.h>
+> > +#include <asm/io.h>
+> > +#include <asm/arch-rockchip/clock.h>
+> > +#include <asm/arch-rockchip/grf_rk3399.h>
+> > +#include <asm/arch-rockchip/hardware.h>
+> > +
+> > +#ifdef CONFIG_MISC_INIT_R
+> > +int misc_init_r(void)
+> > +{
+> > +     struct rk3399_grf_regs *grf =
+> > +         syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
+> > +
+> > +     /* BT565 is in 1.8v domain */
+>
+> From where this BT565 comes in?
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- drivers/staging/media/rkisp1/rkisp1-stats.c | 13 +++----------
- 1 file changed, 3 insertions(+), 10 deletions(-)
+If my understanding was correct, some SSD's to work on this board do
+require this explicit domain voltage change. Usually it requires GPIO
+enablement followed by grf voltage domain update [1] but in my case it
+worked w/o gpio.
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
-index 8351bda0be03..0616793ae395 100644
---- a/drivers/staging/media/rkisp1/rkisp1-stats.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
-@@ -356,26 +356,19 @@ rkisp1_stats_send_measurement(struct rkisp1_stats *stats,
- 	cur_stat_buf =
- 		(struct rkisp1_stat_buffer *)(cur_buf->vaddr[0]);
- 
--	if (meas_work->isp_ris & RKISP1_CIF_ISP_AWB_DONE) {
-+	if (meas_work->isp_ris & RKISP1_CIF_ISP_AWB_DONE)
- 		rkisp1_stats_get_awb_meas(stats, cur_stat_buf);
--		cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AWB;
--	}
- 
--	if (meas_work->isp_ris & RKISP1_CIF_ISP_AFM_FIN) {
-+	if (meas_work->isp_ris & RKISP1_CIF_ISP_AFM_FIN)
- 		rkisp1_stats_get_afc_meas(stats, cur_stat_buf);
--		cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AFM_FIN;
--	}
- 
- 	if (meas_work->isp_ris & RKISP1_CIF_ISP_EXP_END) {
- 		rkisp1_stats_get_aec_meas(stats, cur_stat_buf);
- 		rkisp1_stats_get_bls_meas(stats, cur_stat_buf);
--		cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AUTOEXP;
- 	}
- 
--	if (meas_work->isp_ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY) {
-+	if (meas_work->isp_ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY)
- 		rkisp1_stats_get_hst_meas(stats, cur_stat_buf);
--		cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_HIST;
--	}
- 
- 	vb2_set_plane_payload(&cur_buf->vb.vb2_buf, 0,
- 			      sizeof(struct rkisp1_stat_buffer));
--- 
-2.17.1
+Maybe I will update this details in the commit message and also in the code.
+
+[1] https://github.com/radxa/u-boot/blob/stable-4.4-rockpi4/board/rockchip/evb_rk3399/evb-rk3399.c#L194
+
+Jagan.
