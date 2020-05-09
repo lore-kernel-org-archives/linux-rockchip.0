@@ -1,82 +1,66 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: Re: [PATCH v2 8/8] rockchip: Enable PCIe/M.2 on rock960 board
-Date: Sat, 9 May 2020 22:16:53 +0530
-Message-ID: <CAMty3ZCsW+XnT7NHh08N8FpTx4XYPnH0_9K_6PbMqG50xAp2vw@mail.gmail.com>
-References: <20200430070412.12499-1-jagan@amarulasolutions.com>
- <20200430070412.12499-9-jagan@amarulasolutions.com>
- <20200503133944.GA28003@Mani-XPS-13-9360>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200503133944.GA28003@Mani-XPS-13-9360>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-Cc: Patrick Wildt <patrick-Er2xLVyhcs+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Peter Robinson <pbrobinson-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v3 0/6] rockchip: Add PCIe host support
+Date: Sat,  9 May 2020 22:26:18 +0530
+Message-ID: <20200509165624.20791-1-jagan@amarulasolutions.com>
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: shawn.lin@rock-chips.com, patrick@blueri.se, sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, May 3, 2020 at 7:09 PM Manivannan Sadhasivam
-<manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org> wrote:
->
-> On Thu, Apr 30, 2020 at 12:34:12PM +0530, Jagan Teki wrote:
-> > Due to some on board limitation rock960 PCIe
-> > works only with 1.8V IO domain.
-> >
-> > So, this patch enables grf io_sel explicitly
-> > to make PCIe/M.2 to work.
-> >
-> > Cc: Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>
-> > Cc: Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> > ---
-> > Changes for v2:
-> > - none
-> >
-> >  board/vamrs/rock960_rk3399/rock960-rk3399.c | 20 ++++++++++++++++++++
-> >  configs/rock960-rk3399_defconfig            |  5 +++++
-> >  2 files changed, 25 insertions(+)
-> >
-> > diff --git a/board/vamrs/rock960_rk3399/rock960-rk3399.c b/board/vamrs/rock960_rk3399/rock960-rk3399.c
-> > index 68a127b9ac..98d62e89ca 100644
-> > --- a/board/vamrs/rock960_rk3399/rock960-rk3399.c
-> > +++ b/board/vamrs/rock960_rk3399/rock960-rk3399.c
-> > @@ -2,3 +2,23 @@
-> >  /*
-> >   * Copyright (C) 2018 Manivannan Sadhasivam <manivannan.sadhasivam-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
-> >   */
-> > +
-> > +#include <common.h>
-> > +#include <syscon.h>
-> > +#include <asm/io.h>
-> > +#include <asm/arch-rockchip/clock.h>
-> > +#include <asm/arch-rockchip/grf_rk3399.h>
-> > +#include <asm/arch-rockchip/hardware.h>
-> > +
-> > +#ifdef CONFIG_MISC_INIT_R
-> > +int misc_init_r(void)
-> > +{
-> > +     struct rk3399_grf_regs *grf =
-> > +         syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
-> > +
-> > +     /* BT565 is in 1.8v domain */
->
-> From where this BT565 comes in?
+This series support PCIe host controller support
+on rockchip rk3399 platform.
 
-If my understanding was correct, some SSD's to work on this board do
-require this explicit domain voltage change. Usually it requires GPIO
-enablement followed by grf voltage domain update [1] but in my case it
-worked w/o gpio.
+It is based on previous version[1] changes.
 
-Maybe I will update this details in the commit message and also in the code.
+Works well on rk3399 boards like rock960, nanopc-t4 
+and roc-kr3399-pc-mezzanine board as Gen1 configurable 
+host with M.2 SSD.
 
-[1] https://github.com/radxa/u-boot/blob/stable-4.4-rockpi4/board/rockchip/evb_rk3399/evb-rk3399.c#L194
+Changes for v3:
+- fix few clock register values
+- collect mani a-b
+Changes for v2:
+- handle USB, GMAC clocks
+- collect kever r-o-b tag
+- simplify rd and wr conf API 
 
+[1] https://patchwork.ozlabs.org/project/uboot/cover/20200430070412.12499-1-jagan@amarulasolutions.com/
+
+Any inputs?
 Jagan.
+
+Jagan Teki (6):
+  clk: rk3399: Add enable/disable clks
+  clk: rk3399: Enable/Disable the PCIEPHY clk
+  pci: Add Rockchip PCIe controller driver
+  pci: Add Rockchip PCIe PHY controller driver
+  rockchip: Enable PCIe/M.2 on rk3399 board w/ M.2
+  rockchip: Enable PCIe/M.2 on rock960 board
+
+ arch/arm/dts/rk3399-u-boot.dtsi             |   1 +
+ board/vamrs/rock960_rk3399/rock960-rk3399.c |  23 +
+ configs/nanopc-t4-rk3399_defconfig          |   4 +
+ configs/roc-pc-mezzanine-rk3399_defconfig   |   4 +
+ configs/rock960-rk3399_defconfig            |   5 +
+ drivers/clk/rockchip/clk_rk3399.c           | 154 ++++++
+ drivers/pci/Kconfig                         |   8 +
+ drivers/pci/Makefile                        |   1 +
+ drivers/pci/pcie_rockchip.c                 | 491 ++++++++++++++++++++
+ drivers/pci/pcie_rockchip.h                 | 142 ++++++
+ drivers/pci/pcie_rockchip_phy.c             | 205 ++++++++
+ 11 files changed, 1038 insertions(+)
+ create mode 100644 drivers/pci/pcie_rockchip.c
+ create mode 100644 drivers/pci/pcie_rockchip.h
+ create mode 100644 drivers/pci/pcie_rockchip_phy.c
+
+-- 
+2.17.1
