@@ -1,136 +1,191 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v3 3/3] media: rkvdec: Add the VP9 backend
-Date: Fri, 8 May 2020 18:56:18 +0200
-Message-ID: <CAAFQd5C3MpWqRRMGQJTW8rNz65T2CRYj6yFa56mJWR+DFqrFzg@mail.gmail.com>
-References: <20200505134110.3435-1-ezequiel@collabora.com> <20200505134110.3435-4-ezequiel@collabora.com>
- <8e8eda07-e5f5-86dc-899b-0823ea0479f2@xs4all.nl> <b2160325f5b9bae5b437a37069db926d2a464e8d.camel@collabora.com>
+From: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+Subject: Re: [PATCH v0 1/1] spi: spi-rockchip: add support for spi slave_mode
+Date: Sat, 9 May 2020 08:10:16 +0800
+Message-ID: <3890ba80-f9f7-7f22-5cb5-5b78bbf042e7@gtsys.com.hk>
+References: <20200508083729.5560-1-chris.ruehl@gtsys.com.hk>
+ <20200508083729.5560-2-chris.ruehl@gtsys.com.hk>
+ <CANBLGcwA+=OB-_nOYUijWrDBSkLYhR7_PNG1ewO7LZ-zRVGoxg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <b2160325f5b9bae5b437a37069db926d2a464e8d.camel@collabora.com>
+In-Reply-To: <CANBLGcwA+=OB-_nOYUijWrDBSkLYhR7_PNG1ewO7LZ-zRVGoxg@mail.gmail.com>
+Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, Linux Media Mailing List <linux-media@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Gustavo Padovan <gustavo.padovan@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>
+To: Emil Renner Berthing <emil.renner.berthing@gmail.com>
+Cc: Jack Lo <jack.lo@gtsys.com.hk>, Heiko Stuebner <heiko@sntech.de>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-spi@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Brown <broonie@kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, May 8, 2020 at 6:26 PM Ezequiel Garcia <ezequiel@collabora.com> wrote:
->
-> On Fri, 2020-05-08 at 12:34 +0200, Hans Verkuil wrote:
-> > On 05/05/2020 15:41, Ezequiel Garcia wrote:
-> > > From: Boris Brezillon <boris.brezillon@collabora.com>
-> > >
-> > > The Rockchip VDEC supports VP9 profile 0 up to 4096x2304@30fps. Add
-> > > a backend for this new format.
-> > >
-> > > Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-> > > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > > ---
-> > >  drivers/staging/media/rkvdec/Makefile     |    2 +-
-> > >  drivers/staging/media/rkvdec/rkvdec-vp9.c | 1577 +++++++++++++++++++++
-> > >  drivers/staging/media/rkvdec/rkvdec.c     |   56 +-
-> > >  drivers/staging/media/rkvdec/rkvdec.h     |    6 +
-> > >  4 files changed, 1637 insertions(+), 4 deletions(-)
-> > >  create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
-> > >
-> > > diff --git a/drivers/staging/media/rkvdec/Makefile b/drivers/staging/media/rkvdec/Makefile
-> > > index c08fed0a39f9..cb86b429cfaa 100644
-> > > --- a/drivers/staging/media/rkvdec/Makefile
-> > > +++ b/drivers/staging/media/rkvdec/Makefile
-> > > @@ -1,3 +1,3 @@
-> > >  obj-$(CONFIG_VIDEO_ROCKCHIP_VDEC) += rockchip-vdec.o
-> > >
-> > > -rockchip-vdec-y += rkvdec.o rkvdec-h264.o
-> > > +rockchip-vdec-y += rkvdec.o rkvdec-h264.o rkvdec-vp9.o
-> > > diff --git a/drivers/staging/media/rkvdec/rkvdec-vp9.c b/drivers/staging/media/rkvdec/rkvdec-vp9.c
-> > > new file mode 100644
-> > > index 000000000000..37d0ea4e3570
-> > > --- /dev/null
-> > > +++ b/drivers/staging/media/rkvdec/rkvdec-vp9.c
-> > > @@ -0,0 +1,1577 @@
-> >
-> > <snip>
-> >
-> > > +static void init_inter_probs(struct rkvdec_ctx *ctx,
-> > > +                        const struct rkvdec_vp9_run *run)
-> > > +{
-> > > +   const struct v4l2_ctrl_vp9_frame_decode_params *dec_params;
-> > > +   struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
-> > > +   struct rkvdec_vp9_priv_tbl *tbl = vp9_ctx->priv_tbl.cpu;
-> > > +   struct rkvdec_vp9_inter_frame_probs *rkprobs;
-> > > +   const struct v4l2_vp9_probabilities *probs;
-> > > +   unsigned int i, j, k;
-> > > +
-> > > +   rkprobs = &tbl->probs.inter;
-> > > +   dec_params = run->decode_params;
-> > > +   probs = &dec_params->probs;
-> > > +
-> > > +   /*
-> > > +    * inter probs
-> > > +    * 151 x 128 bits, aligned to 152 x 128 bits
-> > > +    * inter only
-> > > +    * intra_y_mode & inter_block info 6 x 128 bits
-> > > +    */
-> > > +
-> > > +   memcpy(rkprobs->y_mode, probs->y_mode, sizeof(rkprobs->y_mode));
-> > > +   memcpy(rkprobs->comp_mode, probs->comp_mode,
-> > > +          sizeof(rkprobs->comp_mode));
-> > > +   memcpy(rkprobs->comp_ref, probs->comp_ref,
-> > > +          sizeof(rkprobs->comp_ref));
-> > > +   memcpy(rkprobs->single_ref, probs->single_ref,
-> > > +          sizeof(rkprobs->single_ref));
-> > > +   memcpy(rkprobs->inter_mode, probs->inter_mode,
-> > > +          sizeof(rkprobs->inter_mode));
-> > > +   memcpy(rkprobs->interp_filter, probs->interp_filter,
-> > > +          sizeof(rkprobs->interp_filter));
-> > > +
-> > > +   /* 128 x 128 bits coeff related */
-> > > +   for (i = 0; i < ARRAY_SIZE(probs->coef); i++) {
-> > > +           for (j = 0; j < ARRAY_SIZE(probs->coef[0]); j++) {
-> > > +                   for (k = 0; k < ARRAY_SIZE(probs->coef[0][0]); k++)
-> > > +                           write_coeff_plane(probs->coef[i][j][k],
-> > > +                                             rkprobs->coef[k][i][j]);
-> > > +           }
-> > > +   }
-> > > +
-> > > +   /* intra uv mode 6 x 128 */
-> > > +   memcpy(rkprobs->uv_mode_0_2, &probs->uv_mode[0],
-> > > +          sizeof(rkprobs->uv_mode_0_2));
-> > > +   memcpy(rkprobs->uv_mode_3_5, &probs->uv_mode[3],
-> > > +          sizeof(rkprobs->uv_mode_3_5));
-> > > +   memcpy(rkprobs->uv_mode_6_8, &probs->uv_mode[6],
-> > > +          sizeof(rkprobs->uv_mode_6_8));
-> > > +   memcpy(rkprobs->uv_mode_9, &probs->uv_mode[9],
-> > > +          sizeof(rkprobs->uv_mode_9));
-> > > +
-> > > +   /* mv related 6 x 128 */
-> > > +   memcpy(rkprobs->mv.joint, probs->mv.joint,
-> > > +          sizeof(rkprobs->mv.joint));
-> > > +   memcpy(rkprobs->mv.sign, probs->mv.sign,
-> > > +          sizeof(rkprobs->mv.sign));
-> > > +   memcpy(rkprobs->mv.class, probs->mv.class,
-> > > +          sizeof(rkprobs->mv.class));
-> > > +   memcpy(rkprobs->mv.class0_bit, probs->mv.class0_bit,
-> > > +          sizeof(rkprobs->mv.class0_bit));
-> > > +   memcpy(rkprobs->mv.bits, probs->mv.bits,
-> > > +          sizeof(rkprobs->mv.bits));
-> > > +   memcpy(rkprobs->mv.class0_fr, probs->mv.class0_fr,
-> > > +          sizeof(rkprobs->mv.class0_fr));
-> > > +   memcpy(rkprobs->mv.fr, probs->mv.fr,
-> > > +          sizeof(rkprobs->mv.fr));
-> > > +   memcpy(rkprobs->mv.class0_hp, probs->mv.class0_hp,
-> > > +          sizeof(rkprobs->mv.class0_hp));
-> > > +   memcpy(rkprobs->mv.hp, probs->mv.hp,
-> > > +          sizeof(rkprobs->mv.hp));
-> >
-> > Can't you just do: 'rkprobs->mv = probs->mv'?
-> >
->
-> I think I'd like to keep this as-is.
->
-> Having the memcpy makes it explicit that we are copying
-> these structs around. While the assignment would
-> bring type checking, it can be misleading for readers.
+Hi Emil,
 
-On the other hand, it's not obvious from the code that all fields of
-the structure are copied. Perhaps memcpy(&rkprobs->mv, &probs->mv,
-sizeof(rkprobs->mv)) would be a good compromise?
+thanks for the review and your comments
+
+On 8/5/2020 9:13 pm, Emil Renner Berthing wrote:
+> Hi Chris,
+>
+> On Fri, 8 May 2020 at 10:47, Chris Ruehl <chris.ruehl@gtsys.com.hk> wrote:
+>> This patch aim to add spi slave mode support to the rockchip driver.
+>> Fix the wrong usage of num_cs set fix to ROCKCHIP_SPI_MAX_CS_NUM,
+>> instead use max_native_cs flag to set the limit of native chip-select.
+>> Enable use_gpio_descriptors to have cs_gpiod for gpio based chip-selects.
+>>
+>> Signed-off-by: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+>> ---
+>>   drivers/spi/spi-rockchip.c | 46 +++++++++++++++++++++++++++++++++-----
+>>   1 file changed, 41 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+>> index 70ef63e0b6b8..9c1ff52c0f85 100644
+>> --- a/drivers/spi/spi-rockchip.c
+>> +++ b/drivers/spi/spi-rockchip.c
+>> @@ -183,6 +183,9 @@ struct rockchip_spi {
+>>          u8 rsd;
+>>
+>>          bool cs_asserted[ROCKCHIP_SPI_MAX_CS_NUM];
+>> +
+>> +       bool slave_mode;
+>> +       bool slave_abort;
+>>   };
+>>
+>>   static inline void spi_enable_chip(struct rockchip_spi *rs, bool enable)
+>> @@ -359,7 +362,7 @@ static void rockchip_spi_dma_rxcb(void *data)
+>>          struct rockchip_spi *rs = spi_master_get_devdata(master);
+>>          int state = atomic_fetch_andnot(RXDMA, &rs->state);
+>>
+>> -       if (state & TXDMA)
+>> +       if (state & TXDMA && !rs->slave_abort)
+>>                  return;
+>>
+>>          spi_enable_chip(rs, false);
+>> @@ -372,7 +375,7 @@ static void rockchip_spi_dma_txcb(void *data)
+>>          struct rockchip_spi *rs = spi_master_get_devdata(master);
+>>          int state = atomic_fetch_andnot(TXDMA, &rs->state);
+>>
+>> -       if (state & RXDMA)
+>> +       if (state & RXDMA && !rs->slave_abort)
+>>                  return;
+>>
+>>          /* Wait until the FIFO data completely. */
+>> @@ -466,6 +469,10 @@ static void rockchip_spi_config(struct rockchip_spi *rs,
+>>          u32 cr1;
+>>          u32 dmacr = 0;
+>>
+>> +       if (rs->slavemode)
+>> +               cr0 |= CR0_OPM_SLAVE << CR0_OPM_OFFSET;
+>> +       rs->slave_abort = false;
+>> +
+>>          cr0 |= rs->rsd << CR0_RSD_OFFSET;
+>>          cr0 |= (spi->mode & 0x3U) << CR0_SCPH_OFFSET;
+>>          if (spi->mode & SPI_LSB_FIRST)
+>> @@ -535,6 +542,16 @@ static size_t rockchip_spi_max_transfer_size(struct spi_device *spi)
+>>          return ROCKCHIP_SPI_MAX_TRANLEN;
+>>   }
+>>
+>> +static int rockchip_spi_slave_abort(struct spi_master *master)
+>> +{
+>> +       struct rockchip_spi *rs = spi_master_get_devdata(master);
+>> +
+>> +       rs->slave_abort = true;
+>> +       complete(master);
+>> +
+>> +       return 0;
+>> +}
+>> +
+>>   static int rockchip_spi_transfer_one(
+>>                  struct spi_master *master,
+>>                  struct spi_device *spi,
+>> @@ -589,14 +606,25 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+>>          struct spi_master *master;
+>>          struct resource *mem;
+>>          u32 rsd_nsecs;
+>> +       bool slave_mode;
+>> +       u32 num_cs = 1;
+>> +
+>> +       slave_mode = of_property_read_bool(np, "spi-slave");
+>> +
+>> +       if (slave_mode)
+>> +               master = spi_alloc_slave(&pdev->dev,
+>> +                               sizeof(struct rockchip_spi));
+>> +       else
+>> +               master = spi_alloc_master(&pdev->dev,
+>> +                               sizeof(struct rockchip_spi));
+>>
+>> -       master = spi_alloc_master(&pdev->dev, sizeof(struct rockchip_spi));
+>>          if (!master)
+>>                  return -ENOMEM;
+>>
+>>          platform_set_drvdata(pdev, master);
+>>
+>>          rs = spi_master_get_devdata(master);
+>> +       rs->slave_mode = slave_mode;
+> This entry doesn't seem to be read from any of your code, and even it
+> it was, the same information is available in master->slave, so I don't
+> see why you need it in the rockchip_spi struct.
+I haven't see the slave flag in the spi_controller struct, I will store the 
+information
+there.
+>
+> Also spi_master is just #defined to spi_controller in spi.h, so maybe
+> consider changing all 'struct spi_master *master' to 'struct
+> spi_controller *ctrl' now that the driver supports both modes.
+Can do,  but I think that is better to have a separate patch for it,
+make it easier for review.
+>
+>>          /* Get basic io resource and map it */
+>>          mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>> @@ -676,7 +704,16 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+>>          master->auto_runtime_pm = true;
+>>          master->bus_num = pdev->id;
+>>          master->mode_bits = SPI_CPOL | SPI_CPHA | SPI_LOOP | SPI_LSB_FIRST;
+>> -       master->num_chipselect = ROCKCHIP_SPI_MAX_CS_NUM;
+>> +       if (slave_mode) {
+>> +               master->mode_bits |= SPI_NO_CS;
+>> +               master->slave_abort = rockchip_spi_slave_abort;
+>> +       } else {
+>> +               of_property_read_u32(np, "num-cs", &num_cs);
+>> +               master->num_chipselect = num_cs;
+> If you do something like this you won't need the temporary num_cs variable:
+>
+> if (of_property_read_u32(np, "num-cs", &master->num_chipselect))
+>      master->num_chipselect = 1;
+Like it , can see clearly the fallback to a default if num-cs isn't set in the
+dts.
+>
+> Also it seems like you're changing the default from
+> ROCKCHIP_SPI_MAX_CS_NUM to 1 if there is no num-cs property. Did you
+> check that all boards either have the num-cs property defined or only
+> needs num_chipselect = 1?
+Only spi0 of the rockchip has a 2nd native chip select, all others a single only
+therefore I find it less evil to use 1 vs. ROCKCHIP_SPI_MAX_CS_NUM
+
+>> +               master->use_gpio_descriptors = true;
+>> +               master->max_native_cs = ROCKCHIP_SPI_MAX_CS_NUM;
+>> +               master->flags = SPI_MASTER_GPIO_SS;
+>> +       }
+>>          master->dev.of_node = pdev->dev.of_node;
+>>          master->bits_per_word_mask = SPI_BPW_MASK(16) | SPI_BPW_MASK(8) | SPI_BPW_MASK(4);
+>>          master->min_speed_hz = rs->freq / BAUDR_SCKDV_MAX;
+>> @@ -686,7 +723,6 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+>>          master->transfer_one = rockchip_spi_transfer_one;
+>>          master->max_transfer_size = rockchip_spi_max_transfer_size;
+>>          master->handle_err = rockchip_spi_handle_err;
+>> -       master->flags = SPI_MASTER_GPIO_SS;
+>>
+>>          master->dma_tx = dma_request_chan(rs->dev, "tx");
+>>          if (IS_ERR(master->dma_tx)) {
+>> --
+>> 2.20.1
+>>
+>>
+>> _______________________________________________
+>> Linux-rockchip mailing list
+>> Linux-rockchip@lists.infradead.org
+>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+-- 
+GTSYS Limited RFID Technology
+9/F, Unit E, R07, Kwai Shing Industrial Building Phase 2,
+42-46 Tai Lin Pai Road, Kwai Chung, N.T., Hong Kong
+Tel (852) 9079 9521
+
+Disclaimer: https://www.gtsys.com.hk/email/classified.html
