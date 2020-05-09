@@ -1,66 +1,207 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v3 0/6] rockchip: Add PCIe host support
-Date: Sat,  9 May 2020 22:26:18 +0530
-Message-ID: <20200509165624.20791-1-jagan@amarulasolutions.com>
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: shawn.lin@rock-chips.com, patrick@blueri.se, sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v3 1/6] clk: rk3399: Add enable/disable clks
+Date: Sat,  9 May 2020 22:26:19 +0530
+Message-ID: <20200509165624.20791-2-jagan@amarulasolutions.com>
+References: <20200509165624.20791-1-jagan@amarulasolutions.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200509165624.20791-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: patrick-Er2xLVyhcs+zQB+pC5nmwQ@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This series support PCIe host controller support
-on rockchip rk3399 platform.
+Yes, most of the high speed peripheral clocks
+in rk3399 enabled by default.
 
-It is based on previous version[1] changes.
+But it would be better to handle them via clk
+enable/disable API for handling proper reset
+conditions like 'usb reset' over command line.
 
-Works well on rk3399 boards like rock960, nanopc-t4 
-and roc-kr3399-pc-mezzanine board as Gen1 configurable 
-host with M.2 SSD.
+So, enable USB, GMAC clock via enable/disable ops.
 
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
 Changes for v3:
-- fix few clock register values
-- collect mani a-b
-Changes for v2:
-- handle USB, GMAC clocks
-- collect kever r-o-b tag
-- simplify rd and wr conf API 
+- Update USB clock registers
 
-[1] https://patchwork.ozlabs.org/project/uboot/cover/20200430070412.12499-1-jagan@amarulasolutions.com/
+ drivers/clk/rockchip/clk_rk3399.c | 148 ++++++++++++++++++++++++++++++
+ 1 file changed, 148 insertions(+)
 
-Any inputs?
-Jagan.
-
-Jagan Teki (6):
-  clk: rk3399: Add enable/disable clks
-  clk: rk3399: Enable/Disable the PCIEPHY clk
-  pci: Add Rockchip PCIe controller driver
-  pci: Add Rockchip PCIe PHY controller driver
-  rockchip: Enable PCIe/M.2 on rk3399 board w/ M.2
-  rockchip: Enable PCIe/M.2 on rock960 board
-
- arch/arm/dts/rk3399-u-boot.dtsi             |   1 +
- board/vamrs/rock960_rk3399/rock960-rk3399.c |  23 +
- configs/nanopc-t4-rk3399_defconfig          |   4 +
- configs/roc-pc-mezzanine-rk3399_defconfig   |   4 +
- configs/rock960-rk3399_defconfig            |   5 +
- drivers/clk/rockchip/clk_rk3399.c           | 154 ++++++
- drivers/pci/Kconfig                         |   8 +
- drivers/pci/Makefile                        |   1 +
- drivers/pci/pcie_rockchip.c                 | 491 ++++++++++++++++++++
- drivers/pci/pcie_rockchip.h                 | 142 ++++++
- drivers/pci/pcie_rockchip_phy.c             | 205 ++++++++
- 11 files changed, 1038 insertions(+)
- create mode 100644 drivers/pci/pcie_rockchip.c
- create mode 100644 drivers/pci/pcie_rockchip.h
- create mode 100644 drivers/pci/pcie_rockchip_phy.c
-
+diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
+index d822acace1..5d2bdb42c7 100644
+--- a/drivers/clk/rockchip/clk_rk3399.c
++++ b/drivers/clk/rockchip/clk_rk3399.c
+@@ -1071,12 +1071,160 @@ static int __maybe_unused rk3399_clk_set_parent(struct clk *clk,
+ 	return -ENOENT;
+ }
+ 
++static int rk3399_clk_enable(struct clk *clk)
++{
++	struct rk3399_clk_priv *priv = dev_get_priv(clk->dev);
++
++	switch (clk->id) {
++	case SCLK_MAC:
++		rk_clrreg(&priv->cru->clkgate_con[5], BIT(5));
++		break;
++	case SCLK_MAC_RX:
++		rk_clrreg(&priv->cru->clkgate_con[5], BIT(8));
++		break;
++	case SCLK_MAC_TX:
++		rk_clrreg(&priv->cru->clkgate_con[5], BIT(9));
++		break;
++	case SCLK_MACREF:
++		rk_clrreg(&priv->cru->clkgate_con[5], BIT(7));
++		break;
++	case SCLK_MACREF_OUT:
++		rk_clrreg(&priv->cru->clkgate_con[5], BIT(6));
++		break;
++	case ACLK_GMAC:
++		rk_clrreg(&priv->cru->clkgate_con[32], BIT(0));
++		break;
++	case PCLK_GMAC:
++		rk_clrreg(&priv->cru->clkgate_con[32], BIT(2));
++		break;
++	case SCLK_USB3OTG0_REF:
++		rk_clrreg(&priv->cru->clkgate_con[12], BIT(1));
++		break;
++	case SCLK_USB3OTG1_REF:
++		rk_clrreg(&priv->cru->clkgate_con[12], BIT(2));
++		break;
++	case SCLK_USB3OTG0_SUSPEND:
++		rk_clrreg(&priv->cru->clkgate_con[12], BIT(3));
++		break;
++	case SCLK_USB3OTG1_SUSPEND:
++		rk_clrreg(&priv->cru->clkgate_con[12], BIT(4));
++		break;
++	case ACLK_USB3OTG0:
++		rk_clrreg(&priv->cru->clkgate_con[30], BIT(1));
++		break;
++	case ACLK_USB3OTG1:
++		rk_clrreg(&priv->cru->clkgate_con[30], BIT(2));
++		break;
++	case ACLK_USB3_RKSOC_AXI_PERF:
++		rk_clrreg(&priv->cru->clkgate_con[30], BIT(3));
++		break;
++	case ACLK_USB3:
++		rk_clrreg(&priv->cru->clkgate_con[12], BIT(0));
++		break;
++	case ACLK_USB3_GRF:
++		rk_clrreg(&priv->cru->clkgate_con[30], BIT(4));
++		break;
++	case HCLK_HOST0:
++		rk_clrreg(&priv->cru->clksel_con[20], BIT(5));
++		break;
++	case HCLK_HOST0_ARB:
++		rk_clrreg(&priv->cru->clksel_con[20], BIT(6));
++		break;
++	case HCLK_HOST1:
++		rk_clrreg(&priv->cru->clksel_con[20], BIT(7));
++		break;
++	case HCLK_HOST1_ARB:
++		rk_clrreg(&priv->cru->clksel_con[20], BIT(8));
++		break;
++	default:
++		debug("%s: unsupported clk %ld\n", __func__, clk->id);
++		return -ENOENT;
++	}
++
++	return 0;
++}
++
++static int rk3399_clk_disable(struct clk *clk)
++{
++	struct rk3399_clk_priv *priv = dev_get_priv(clk->dev);
++
++	switch (clk->id) {
++	case SCLK_MAC:
++		rk_setreg(&priv->cru->clkgate_con[5], BIT(5));
++		break;
++	case SCLK_MAC_RX:
++		rk_setreg(&priv->cru->clkgate_con[5], BIT(8));
++		break;
++	case SCLK_MAC_TX:
++		rk_setreg(&priv->cru->clkgate_con[5], BIT(9));
++		break;
++	case SCLK_MACREF:
++		rk_setreg(&priv->cru->clkgate_con[5], BIT(7));
++		break;
++	case SCLK_MACREF_OUT:
++		rk_setreg(&priv->cru->clkgate_con[5], BIT(6));
++		break;
++	case ACLK_GMAC:
++		rk_setreg(&priv->cru->clkgate_con[32], BIT(0));
++		break;
++	case PCLK_GMAC:
++		rk_setreg(&priv->cru->clkgate_con[32], BIT(2));
++		break;
++	case SCLK_USB3OTG0_REF:
++		rk_setreg(&priv->cru->clkgate_con[12], BIT(1));
++		break;
++	case SCLK_USB3OTG1_REF:
++		rk_setreg(&priv->cru->clkgate_con[12], BIT(2));
++		break;
++	case SCLK_USB3OTG0_SUSPEND:
++		rk_setreg(&priv->cru->clkgate_con[12], BIT(3));
++		break;
++	case SCLK_USB3OTG1_SUSPEND:
++		rk_setreg(&priv->cru->clkgate_con[12], BIT(4));
++		break;
++	case ACLK_USB3OTG0:
++		rk_setreg(&priv->cru->clkgate_con[30], BIT(1));
++		break;
++	case ACLK_USB3OTG1:
++		rk_setreg(&priv->cru->clkgate_con[30], BIT(2));
++		break;
++	case ACLK_USB3_RKSOC_AXI_PERF:
++		rk_setreg(&priv->cru->clkgate_con[30], BIT(3));
++		break;
++	case ACLK_USB3:
++		rk_setreg(&priv->cru->clkgate_con[12], BIT(0));
++		break;
++	case ACLK_USB3_GRF:
++		rk_setreg(&priv->cru->clkgate_con[30], BIT(4));
++		break;
++	case HCLK_HOST0:
++		rk_setreg(&priv->cru->clksel_con[20], BIT(5));
++		break;
++	case HCLK_HOST0_ARB:
++		rk_setreg(&priv->cru->clksel_con[20], BIT(6));
++		break;
++	case HCLK_HOST1:
++		rk_setreg(&priv->cru->clksel_con[20], BIT(7));
++		break;
++	case HCLK_HOST1_ARB:
++		rk_setreg(&priv->cru->clksel_con[20], BIT(8));
++		break;
++	default:
++		debug("%s: unsupported clk %ld\n", __func__, clk->id);
++		return -ENOENT;
++	}
++
++	return 0;
++}
++
+ static struct clk_ops rk3399_clk_ops = {
+ 	.get_rate = rk3399_clk_get_rate,
+ 	.set_rate = rk3399_clk_set_rate,
+ #if CONFIG_IS_ENABLED(OF_CONTROL) && !CONFIG_IS_ENABLED(OF_PLATDATA)
+ 	.set_parent = rk3399_clk_set_parent,
+ #endif
++	.enable = rk3399_clk_enable,
++	.disable = rk3399_clk_disable,
+ };
+ 
+ #ifdef CONFIG_SPL_BUILD
 -- 
 2.17.1
