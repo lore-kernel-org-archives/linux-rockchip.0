@@ -1,201 +1,215 @@
-From: Emil Renner Berthing <emil.renner.berthing@gmail.com>
-Subject: Re: [PATCH v0 1/1] spi: spi-rockchip: add support for spi slave_mode
-Date: Sun, 10 May 2020 18:15:27 +0200
-Message-ID: <CANBLGcxmAyPhnUB0hKdxcg7dQCfQLaHYY1Uxc6-GOmmF6rvK8Q@mail.gmail.com>
-References: <20200508083729.5560-1-chris.ruehl@gtsys.com.hk>
- <20200508083729.5560-2-chris.ruehl@gtsys.com.hk> <CANBLGcwA+=OB-_nOYUijWrDBSkLYhR7_PNG1ewO7LZ-zRVGoxg@mail.gmail.com>
- <3890ba80-f9f7-7f22-5cb5-5b78bbf042e7@gtsys.com.hk>
+From: Suniel Mahesh <sunil@amarulasolutions.com>
+Subject: Re: [PATCH v3 1/6] clk: rk3399: Add enable/disable clks
+Date: Mon, 11 May 2020 01:52:52 +0530
+Message-ID: <CAM+7aWtqJWch10i06+A0DySKVnN=m6TE5U3iUDjowpden4bFiw@mail.gmail.com>
+References: <20200509165624.20791-1-jagan@amarulasolutions.com>
+ <20200509165624.20791-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <3890ba80-f9f7-7f22-5cb5-5b78bbf042e7@gtsys.com.hk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Chris Ruehl <chris.ruehl@gtsys.com.hk>
-Cc: Jack Lo <jack.lo@gtsys.com.hk>, Heiko Stuebner <heiko@sntech.de>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-spi@vger.kernel.org, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mark Brown <broonie@kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200509165624.20791-2-jagan@amarulasolutions.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, shawn.lin@rock-chips.com, patrick@blueri.se, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Chris,
+On Sat, May 9, 2020 at 10:26 PM Jagan Teki <jagan@amarulasolutions.com>
+wrote:
 
-On Sat, 9 May 2020 at 02:10, Chris Ruehl <chris.ruehl@gtsys.com.hk> wrote:
+> Yes, most of the high speed peripheral clocks
+> in rk3399 enabled by default.
 >
-> Hi Emil,
+> But it would be better to handle them via clk
+> enable/disable API for handling proper reset
+> conditions like 'usb reset' over command line.
 >
-> thanks for the review and your comments
+> So, enable USB, GMAC clock via enable/disable ops.
 >
-> On 8/5/2020 9:13 pm, Emil Renner Berthing wrote:
-> > Hi Chris,
-> >
-> > On Fri, 8 May 2020 at 10:47, Chris Ruehl <chris.ruehl@gtsys.com.hk> wrote:
-> >> This patch aim to add spi slave mode support to the rockchip driver.
-> >> Fix the wrong usage of num_cs set fix to ROCKCHIP_SPI_MAX_CS_NUM,
-> >> instead use max_native_cs flag to set the limit of native chip-select.
-> >> Enable use_gpio_descriptors to have cs_gpiod for gpio based chip-selects.
-> >>
-> >> Signed-off-by: Chris Ruehl <chris.ruehl@gtsys.com.hk>
-> >> ---
-> >>   drivers/spi/spi-rockchip.c | 46 +++++++++++++++++++++++++++++++++-----
-> >>   1 file changed, 41 insertions(+), 5 deletions(-)
-> >>
-> >> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-> >> index 70ef63e0b6b8..9c1ff52c0f85 100644
-> >> --- a/drivers/spi/spi-rockchip.c
-> >> +++ b/drivers/spi/spi-rockchip.c
-> >> @@ -183,6 +183,9 @@ struct rockchip_spi {
-> >>          u8 rsd;
-> >>
-> >>          bool cs_asserted[ROCKCHIP_SPI_MAX_CS_NUM];
-> >> +
-> >> +       bool slave_mode;
-> >> +       bool slave_abort;
-> >>   };
-> >>
-> >>   static inline void spi_enable_chip(struct rockchip_spi *rs, bool enable)
-> >> @@ -359,7 +362,7 @@ static void rockchip_spi_dma_rxcb(void *data)
-> >>          struct rockchip_spi *rs = spi_master_get_devdata(master);
-> >>          int state = atomic_fetch_andnot(RXDMA, &rs->state);
-> >>
-> >> -       if (state & TXDMA)
-> >> +       if (state & TXDMA && !rs->slave_abort)
-> >>                  return;
-> >>
-> >>          spi_enable_chip(rs, false);
-> >> @@ -372,7 +375,7 @@ static void rockchip_spi_dma_txcb(void *data)
-> >>          struct rockchip_spi *rs = spi_master_get_devdata(master);
-> >>          int state = atomic_fetch_andnot(TXDMA, &rs->state);
-> >>
-> >> -       if (state & RXDMA)
-> >> +       if (state & RXDMA && !rs->slave_abort)
-> >>                  return;
-> >>
-> >>          /* Wait until the FIFO data completely. */
-> >> @@ -466,6 +469,10 @@ static void rockchip_spi_config(struct rockchip_spi *rs,
-> >>          u32 cr1;
-> >>          u32 dmacr = 0;
-> >>
-> >> +       if (rs->slavemode)
-> >> +               cr0 |= CR0_OPM_SLAVE << CR0_OPM_OFFSET;
-> >> +       rs->slave_abort = false;
-> >> +
-> >>          cr0 |= rs->rsd << CR0_RSD_OFFSET;
-> >>          cr0 |= (spi->mode & 0x3U) << CR0_SCPH_OFFSET;
-> >>          if (spi->mode & SPI_LSB_FIRST)
-> >> @@ -535,6 +542,16 @@ static size_t rockchip_spi_max_transfer_size(struct spi_device *spi)
-> >>          return ROCKCHIP_SPI_MAX_TRANLEN;
-> >>   }
-> >>
-> >> +static int rockchip_spi_slave_abort(struct spi_master *master)
-> >> +{
-> >> +       struct rockchip_spi *rs = spi_master_get_devdata(master);
-> >> +
-> >> +       rs->slave_abort = true;
-> >> +       complete(master);
-> >> +
-> >> +       return 0;
-> >> +}
-> >> +
-> >>   static int rockchip_spi_transfer_one(
-> >>                  struct spi_master *master,
-> >>                  struct spi_device *spi,
-> >> @@ -589,14 +606,25 @@ static int rockchip_spi_probe(struct platform_device *pdev)
-> >>          struct spi_master *master;
-> >>          struct resource *mem;
-> >>          u32 rsd_nsecs;
-> >> +       bool slave_mode;
-> >> +       u32 num_cs = 1;
-> >> +
-> >> +       slave_mode = of_property_read_bool(np, "spi-slave");
-> >> +
-> >> +       if (slave_mode)
-> >> +               master = spi_alloc_slave(&pdev->dev,
-> >> +                               sizeof(struct rockchip_spi));
-> >> +       else
-> >> +               master = spi_alloc_master(&pdev->dev,
-> >> +                               sizeof(struct rockchip_spi));
-> >>
-> >> -       master = spi_alloc_master(&pdev->dev, sizeof(struct rockchip_spi));
-> >>          if (!master)
-> >>                  return -ENOMEM;
-> >>
-> >>          platform_set_drvdata(pdev, master);
-> >>
-> >>          rs = spi_master_get_devdata(master);
-> >> +       rs->slave_mode = slave_mode;
-> > This entry doesn't seem to be read from any of your code, and even it
-> > it was, the same information is available in master->slave, so I don't
-> > see why you need it in the rockchip_spi struct.
-> I haven't see the slave flag in the spi_controller struct, I will store the
-> information
-> there.
-> >
-> > Also spi_master is just #defined to spi_controller in spi.h, so maybe
-> > consider changing all 'struct spi_master *master' to 'struct
-> > spi_controller *ctrl' now that the driver supports both modes.
-> Can do,  but I think that is better to have a separate patch for it,
-> make it easier for review.
-
-Yes, you should probably do something like
-
-patch 1/3: change struct spi_master *master to struct spi_controller *ctrl
-patch 2/3: add slave slave mode
-patch 3/3: use num-cs property for ctrl->num_chipselect
-
-> >
-> >>          /* Get basic io resource and map it */
-> >>          mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >> @@ -676,7 +704,16 @@ static int rockchip_spi_probe(struct platform_device *pdev)
-> >>          master->auto_runtime_pm = true;
-> >>          master->bus_num = pdev->id;
-> >>          master->mode_bits = SPI_CPOL | SPI_CPHA | SPI_LOOP | SPI_LSB_FIRST;
-> >> -       master->num_chipselect = ROCKCHIP_SPI_MAX_CS_NUM;
-> >> +       if (slave_mode) {
-> >> +               master->mode_bits |= SPI_NO_CS;
-> >> +               master->slave_abort = rockchip_spi_slave_abort;
-> >> +       } else {
-> >> +               of_property_read_u32(np, "num-cs", &num_cs);
-> >> +               master->num_chipselect = num_cs;
-> > If you do something like this you won't need the temporary num_cs variable:
-> >
-> > if (of_property_read_u32(np, "num-cs", &master->num_chipselect))
-> >      master->num_chipselect = 1;
-> Like it , can see clearly the fallback to a default if num-cs isn't set in the
-> dts.
-> >
-> > Also it seems like you're changing the default from
-> > ROCKCHIP_SPI_MAX_CS_NUM to 1 if there is no num-cs property. Did you
-> > check that all boards either have the num-cs property defined or only
-> > needs num_chipselect = 1?
-> Only spi0 of the rockchip has a 2nd native chip select, all others a single only
-> therefore I find it less evil to use 1 vs. ROCKCHIP_SPI_MAX_CS_NUM
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> ---
+> Changes for v3:
+> - Update USB clock registers
 >
-> >> +               master->use_gpio_descriptors = true;
-> >> +               master->max_native_cs = ROCKCHIP_SPI_MAX_CS_NUM;
-> >> +               master->flags = SPI_MASTER_GPIO_SS;
-> >> +       }
-> >>          master->dev.of_node = pdev->dev.of_node;
-> >>          master->bits_per_word_mask = SPI_BPW_MASK(16) | SPI_BPW_MASK(8) | SPI_BPW_MASK(4);
-> >>          master->min_speed_hz = rs->freq / BAUDR_SCKDV_MAX;
-> >> @@ -686,7 +723,6 @@ static int rockchip_spi_probe(struct platform_device *pdev)
-> >>          master->transfer_one = rockchip_spi_transfer_one;
-> >>          master->max_transfer_size = rockchip_spi_max_transfer_size;
-> >>          master->handle_err = rockchip_spi_handle_err;
-> >> -       master->flags = SPI_MASTER_GPIO_SS;
-> >>
-> >>          master->dma_tx = dma_request_chan(rs->dev, "tx");
-> >>          if (IS_ERR(master->dma_tx)) {
-> >> --
-> >> 2.20.1
-> >>
-> >>
-> >> _______________________________________________
-> >> Linux-rockchip mailing list
-> >> Linux-rockchip@lists.infradead.org
-> >> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>  drivers/clk/rockchip/clk_rk3399.c | 148 ++++++++++++++++++++++++++++++
+>  1 file changed, 148 insertions(+)
 >
+> diff --git a/drivers/clk/rockchip/clk_rk3399.c
+> b/drivers/clk/rockchip/clk_rk3399.c
+> index d822acace1..5d2bdb42c7 100644
+> --- a/drivers/clk/rockchip/clk_rk3399.c
+> +++ b/drivers/clk/rockchip/clk_rk3399.c
+> @@ -1071,12 +1071,160 @@ static int __maybe_unused
+> rk3399_clk_set_parent(struct clk *clk,
+>         return -ENOENT;
+>  }
+>
+> +static int rk3399_clk_enable(struct clk *clk)
+> +{
+> +       struct rk3399_clk_priv *priv = dev_get_priv(clk->dev);
+> +
+> +       switch (clk->id) {
+> +       case SCLK_MAC:
+> +               rk_clrreg(&priv->cru->clkgate_con[5], BIT(5));
+> +               break;
+> +       case SCLK_MAC_RX:
+> +               rk_clrreg(&priv->cru->clkgate_con[5], BIT(8));
+> +               break;
+> +       case SCLK_MAC_TX:
+> +               rk_clrreg(&priv->cru->clkgate_con[5], BIT(9));
+> +               break;
+> +       case SCLK_MACREF:
+> +               rk_clrreg(&priv->cru->clkgate_con[5], BIT(7));
+> +               break;
+> +       case SCLK_MACREF_OUT:
+> +               rk_clrreg(&priv->cru->clkgate_con[5], BIT(6));
+> +               break;
+> +       case ACLK_GMAC:
+> +               rk_clrreg(&priv->cru->clkgate_con[32], BIT(0));
+> +               break;
+> +       case PCLK_GMAC:
+> +               rk_clrreg(&priv->cru->clkgate_con[32], BIT(2));
+> +               break;
+> +       case SCLK_USB3OTG0_REF:
+> +               rk_clrreg(&priv->cru->clkgate_con[12], BIT(1));
+> +               break;
+> +       case SCLK_USB3OTG1_REF:
+> +               rk_clrreg(&priv->cru->clkgate_con[12], BIT(2));
+> +               break;
+> +       case SCLK_USB3OTG0_SUSPEND:
+> +               rk_clrreg(&priv->cru->clkgate_con[12], BIT(3));
+> +               break;
+> +       case SCLK_USB3OTG1_SUSPEND:
+> +               rk_clrreg(&priv->cru->clkgate_con[12], BIT(4));
+> +               break;
+> +       case ACLK_USB3OTG0:
+> +               rk_clrreg(&priv->cru->clkgate_con[30], BIT(1));
+> +               break;
+> +       case ACLK_USB3OTG1:
+> +               rk_clrreg(&priv->cru->clkgate_con[30], BIT(2));
+> +               break;
+> +       case ACLK_USB3_RKSOC_AXI_PERF:
+> +               rk_clrreg(&priv->cru->clkgate_con[30], BIT(3));
+> +               break;
+> +       case ACLK_USB3:
+> +               rk_clrreg(&priv->cru->clkgate_con[12], BIT(0));
+> +               break;
+> +       case ACLK_USB3_GRF:
+> +               rk_clrreg(&priv->cru->clkgate_con[30], BIT(4));
+> +               break;
+> +       case HCLK_HOST0:
+> +               rk_clrreg(&priv->cru->clksel_con[20], BIT(5));
+> +               break;
+> +       case HCLK_HOST0_ARB:
+> +               rk_clrreg(&priv->cru->clksel_con[20], BIT(6));
+> +               break;
+> +       case HCLK_HOST1:
+> +               rk_clrreg(&priv->cru->clksel_con[20], BIT(7));
+> +               break;
+> +       case HCLK_HOST1_ARB:
+> +               rk_clrreg(&priv->cru->clksel_con[20], BIT(8));
+> +               break;
+> +       default:
+> +               debug("%s: unsupported clk %ld\n", __func__, clk->id);
+> +               return -ENOENT;
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+> +static int rk3399_clk_disable(struct clk *clk)
+> +{
+> +       struct rk3399_clk_priv *priv = dev_get_priv(clk->dev);
+> +
+> +       switch (clk->id) {
+> +       case SCLK_MAC:
+> +               rk_setreg(&priv->cru->clkgate_con[5], BIT(5));
+> +               break;
+> +       case SCLK_MAC_RX:
+> +               rk_setreg(&priv->cru->clkgate_con[5], BIT(8));
+> +               break;
+> +       case SCLK_MAC_TX:
+> +               rk_setreg(&priv->cru->clkgate_con[5], BIT(9));
+> +               break;
+> +       case SCLK_MACREF:
+> +               rk_setreg(&priv->cru->clkgate_con[5], BIT(7));
+> +               break;
+> +       case SCLK_MACREF_OUT:
+> +               rk_setreg(&priv->cru->clkgate_con[5], BIT(6));
+> +               break;
+> +       case ACLK_GMAC:
+> +               rk_setreg(&priv->cru->clkgate_con[32], BIT(0));
+> +               break;
+> +       case PCLK_GMAC:
+> +               rk_setreg(&priv->cru->clkgate_con[32], BIT(2));
+> +               break;
+> +       case SCLK_USB3OTG0_REF:
+> +               rk_setreg(&priv->cru->clkgate_con[12], BIT(1));
+> +               break;
+> +       case SCLK_USB3OTG1_REF:
+> +               rk_setreg(&priv->cru->clkgate_con[12], BIT(2));
+> +               break;
+> +       case SCLK_USB3OTG0_SUSPEND:
+> +               rk_setreg(&priv->cru->clkgate_con[12], BIT(3));
+> +               break;
+> +       case SCLK_USB3OTG1_SUSPEND:
+> +               rk_setreg(&priv->cru->clkgate_con[12], BIT(4));
+> +               break;
+> +       case ACLK_USB3OTG0:
+> +               rk_setreg(&priv->cru->clkgate_con[30], BIT(1));
+> +               break;
+> +       case ACLK_USB3OTG1:
+> +               rk_setreg(&priv->cru->clkgate_con[30], BIT(2));
+> +               break;
+> +       case ACLK_USB3_RKSOC_AXI_PERF:
+> +               rk_setreg(&priv->cru->clkgate_con[30], BIT(3));
+> +               break;
+> +       case ACLK_USB3:
+> +               rk_setreg(&priv->cru->clkgate_con[12], BIT(0));
+> +               break;
+> +       case ACLK_USB3_GRF:
+> +               rk_setreg(&priv->cru->clkgate_con[30], BIT(4));
+> +               break;
+> +       case HCLK_HOST0:
+> +               rk_setreg(&priv->cru->clksel_con[20], BIT(5));
+> +               break;
+> +       case HCLK_HOST0_ARB:
+> +               rk_setreg(&priv->cru->clksel_con[20], BIT(6));
+> +               break;
+> +       case HCLK_HOST1:
+> +               rk_setreg(&priv->cru->clksel_con[20], BIT(7));
+> +               break;
+> +       case HCLK_HOST1_ARB:
+> +               rk_setreg(&priv->cru->clksel_con[20], BIT(8));
+> +               break;
+> +       default:
+> +               debug("%s: unsupported clk %ld\n", __func__, clk->id);
+> +               return -ENOENT;
+> +       }
+> +
+> +       return 0;
+> +}
+> +
+>  static struct clk_ops rk3399_clk_ops = {
+>         .get_rate = rk3399_clk_get_rate,
+>         .set_rate = rk3399_clk_set_rate,
+>  #if CONFIG_IS_ENABLED(OF_CONTROL) && !CONFIG_IS_ENABLED(OF_PLATDATA)
+>         .set_parent = rk3399_clk_set_parent,
+>  #endif
+> +       .enable = rk3399_clk_enable,
+> +       .disable = rk3399_clk_disable,
+>  };
+>
+>  #ifdef CONFIG_SPL_BUILD
 > --
-> GTSYS Limited RFID Technology
-> 9/F, Unit E, R07, Kwai Shing Industrial Building Phase 2,
-> 42-46 Tai Lin Pai Road, Kwai Chung, N.T., Hong Kong
-> Tel (852) 9079 9521
+> 2.17.1
 >
-> Disclaimer: https://www.gtsys.com.hk/email/classified.html
->
+
+Tested-by: Suniel Mahesh <sunil.m@amarulasolutions.com> # roc-rk3399-pc
