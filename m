@@ -1,39 +1,141 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v4 08/16] usb: dwc3: add dis_u2_freeclk_exists_quirk
-Date: Mon, 11 May 2020 14:20:17 +0530
-Message-ID: <CAMty3ZDw0vUeNVAu4VxO2pEUaoTwrfEwKfFdzogWWthpvVZ4Dw@mail.gmail.com>
-References: <20200511075330.26462-1-frank.wang@rock-chips.com>
- <20200511075520.26557-1-frank.wang@rock-chips.com>
- <20200511075520.26557-4-frank.wang@rock-chips.com>
+From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v10 0/8] Add endpoint driver for R-Car PCIe controller
+Date: Mon, 11 May 2020 11:36:54 +0100
+Message-ID: <20200511103654.GD24149@e121166-lin.cambridge.arm.com>
+References: <1588854799-13710-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200511075520.26557-4-frank.wang@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Frank Wang <frank.wang@rock-chips.com>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Marek Vasut <marex@denx.de>, Bin Meng <bmeng.cn@gmail.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Klaus Goger <klaus.goger@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, Kever Yang <kever.yang@rock-chips.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>, Belisko Marek <marek.belisko@gmail.com>, William Wu <william.wu@rock-chips.com>, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1588854799-13710-1-git-send-email-prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Lad Prabhakar <prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tom Joseph <tjoseph-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Marek Vasut <marek.vasut+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Prabhakar <prabhakar.csengg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, May 11, 2020 at 1:25 PM Frank Wang <frank.wang@rock-chips.com> wrote:
->
-> Add a quirk to clear the GUSB2PHYCFG.U2_FREECLK_EXISTS bit,
-> which specifies whether the USB2.0 PHY provides a free-running
-> PHY clock, which is active when the clock control input is active.
->
-> Refer to commit 27f83eeb6b42("usb: dwc3: add dis_u2_freeclk_exists_quirk")
-> in Linux Rockchip Kernel.
->
-> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
-> Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-> ---
+On Thu, May 07, 2020 at 01:33:11PM +0100, Lad Prabhakar wrote:
+> Hi All,
+> 
+> This patch series adds support for endpoint driver for R-Car PCIe controller on
+> R-Car/RZ-G2x SoC's, this also extends the epf framework to handle multiple windows
+> supported by the controller for mapping PCI address locally.
+> 
+> Note:
+> The rockchip/dwc endpoint drivers are build tested only and was tested on cadence
+> by Kishon (https://lkml.org/lkml/2020/5/6/1535)
+> 
+> Changes for v10:
+> * Rebased patches on top of pci/rcar branch on tree
+>   https://git.kernel.org/pub/scm/linux/kernel/git/lpieralisi/pci.git
+> * Made pci_epc_get_matching_window() as static
+> * Included Ack's from Kishon for patches 4/8 and 5/8
+> * Included Reviewed-by tag from Shimoda-san for patches 4/8 and 5/8
+> 
+> Changes for v9:
+> * Rebased patches on top of v5.7.rc1
+> * Replaced mdelay(1) with usleep_range(1000, 1001) in rcar_pcie_ep_assert_intx()
+> * Added a check for max_functions read from DT to restrict with
+>   RCAR_EPC_MAX_FUNCTIONS
+> * Replaced MSICAP0_MMENUM with MSICAP0_MMESE
+> * Retry ioremap for other windows on failure in pci_epc_mem_alloc_addr()
+> * Fixed looping for number windows in pci_epc_mem_exit()
+> * Set maximum to 1 for max-functions in DT binding (I have restored the acks
+>   from  Rob and Shimoda-san)
+> * Sorted the entry in MAINTAINERS
+> 
+> Changes for v8:
+> * Dropped adding R8A774C0 (0x002d) pci-id in pci_ids.h
+> * Fixed typo in commit message for patch 2/8
+> * Reworded commit message for patch 5/8 as suggested by Bjorn
+> * Split up patch to add pci_epc_mem_init() interface to add page_size argument
+>   as suggested by Bjorn.
+> 
+> Changes for v7:
+> * Fixed review comments pointed by Shimoda-san
+>   1] Made DT bindings dual licensed, added Shimoda-san as maintainer and fixed
+>      the example as its built with #{address,size}-cells = <1>. I have still
+>      restored the Ack from Rob and Shimoda-san with these changes.
+>   2] Split up the patches so that they can be picked up by respective subsystem
+>      patches 1/4-9/11 are now part of this series.
+>   3] Dropped altering a comment in pci-epc.h
+>   4] Used a local variable align_size in pci_epc_mem_alloc_addr() so that size
+>      variable doesn't get overwritten in the loop.
+>   5] Replaced i-=1 with i--
+>   6] Replaced rcar with R-Car in patch subject and description.
+>   7] Set MACCTLR in init() callback
+> 
+> Changes for v6:
+> 1] Rebased patches on endpoint branch of https://git.kernel.org/pub/
+>    scm/linux/kernel/git/lpieralisi/pci.git/
+> 2] Fixed review comments from Shimoda-san
+>    a] Made sure defconfig changes were in separate patch
+>    b] Created rcar_pcie_host/rcar_pcie_ep structures
+>    c] Added pci-id for R8A774C0
+>    d] Added entry in MAINTAINERS for dt-binding
+>    e] Dropped unnecessary braces
+> 3] Added support for msi.
+> 
+> Changes for v5:
+> 1] Rebased patches on next branch of https://git.kernel.org/pub/scm/
+>    linux/kernel/git/helgaas/pci.git
+> 2] Fixed review comments reported by Kishon while fetching the matching
+>    window in function pci_epc_get_matching_window()
+> 3] Fixed review comments reported by Bjorn
+>    a] Split patch up first patch so that its easier to review and incremental
+>    b] Fixed typos
+> 4] Included Reviewed tag from Rob for the dt-binding patch
+> 5] Fixed issue reported by Nathan for assigning variable to itself
+> 
+> Changes for v4:
+> 1] Fixed dtb_check error reported by Rob
+> 2] Fixed review comments reported by Kishon
+>    a] Dropped pci_epc_find_best_fit_window()
+>    b] Fixed initializing mem ptr in __pci_epc_mem_init()
+>    c] Dropped map_size from pci_epc_mem_window structure
+> 
+> Changes for v3:
+> 1] Fixed review comments from Bjorn and Kishon.
+> 3] Converted to DT schema
+> 
+> Changes for v2:
+> 1] Fixed review comments from Biju for dt-bindings to include an example
+>    for a tested platform.
+> 2] Fixed review comments from Kishon to extend the features of outbound
+>    regions in epf framework.
+> 3] Added support to parse outbound-ranges in OF.
+> 
+> Lad Prabhakar (8):
+>   PCI: rcar: Rename pcie-rcar.c to pcie-rcar-host.c
+>   PCI: rcar: Move shareable code to a common file
+>   PCI: rcar: Fix calculating mask for PCIEPAMR register
+>   PCI: endpoint: Pass page size as argument to pci_epc_mem_init()
+>   PCI: endpoint: Add support to handle multiple base for mapping
+>     outbound memory
+>   dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
+>     controller
+>   PCI: rcar: Add endpoint mode support
+>   MAINTAINERS: Add file patterns for rcar PCI device tree bindings
+> 
+>  .../devicetree/bindings/pci/rcar-pci-ep.yaml  |   77 +
+>  MAINTAINERS                                   |    1 +
+>  drivers/pci/controller/Kconfig                |   18 +
+>  drivers/pci/controller/Makefile               |    3 +-
+>  .../pci/controller/cadence/pcie-cadence-ep.c  |    2 +-
+>  .../pci/controller/dwc/pcie-designware-ep.c   |   16 +-
+>  drivers/pci/controller/pcie-rcar-ep.c         |  563 ++++++++
+>  drivers/pci/controller/pcie-rcar-host.c       | 1130 +++++++++++++++
+>  drivers/pci/controller/pcie-rcar.c            | 1268 +----------------
+>  drivers/pci/controller/pcie-rcar.h            |  140 ++
+>  drivers/pci/controller/pcie-rockchip-ep.c     |    2 +-
+>  drivers/pci/endpoint/pci-epc-mem.c            |  204 ++-
+>  include/linux/pci-epc.h                       |   38 +-
+>  13 files changed, 2150 insertions(+), 1312 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
+>  create mode 100644 drivers/pci/controller/pcie-rcar-ep.c
+>  create mode 100644 drivers/pci/controller/pcie-rcar-host.c
+>  create mode 100644 drivers/pci/controller/pcie-rcar.h
+ 
 
-Reviewed-by: Jagan Teki <jagan@amarulasolutions.com>
-Tested-by: Jagan Teki <jagan@amarulasolutions.com> # roc-rk3399-pc
+Applied to pci/rcar, thanks !
+
+Lorenzo
