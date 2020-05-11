@@ -1,13 +1,10 @@
-From: Suniel Mahesh <sunil@amarulasolutions.com>
-Subject: Re: [PATCH v3 1/6] clk: rk3399: Add enable/disable clks
-Date: Mon, 11 May 2020 02:02:38 +0530
-Message-ID: <CAM+7aWu6DmP3SvTz9Kh9W0D6e1dEOBW_0eZ5ztHbQ+O7BGBpug@mail.gmail.com>
-References: <20200509165624.20791-1-jagan@amarulasolutions.com>
- <20200509165624.20791-2-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH v4 01/16] clk: rk3399: Enable/Disable the USB2PHY clk
+Date: Mon, 11 May 2020 15:53:15 +0800
+Message-ID: <20200511075330.26462-2-frank.wang@rock-chips.com>
+References: <20200511075330.26462-1-frank.wang@rock-chips.com>
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200509165624.20791-2-jagan@amarulasolutions.com>
+In-Reply-To: <20200511075330.26462-1-frank.wang@rock-chips.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <https://lists.denx.de/pipermail/u-boot/>
@@ -17,199 +14,50 @@ List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=subscribe>
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, shawn.lin@rock-chips.com, patrick@blueri.se, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
+To: heiko@sntech.de, marex@denx.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org, kever.yang@rock-chips.com
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, May 9, 2020 at 10:26 PM Jagan Teki <jagan@amarulasolutions.com>
-wrote:
+From: Jagan Teki <jagan@amarulasolutions.com>
 
-> Yes, most of the high speed peripheral clocks
-> in rk3399 enabled by default.
->
-> But it would be better to handle them via clk
-> enable/disable API for handling proper reset
-> conditions like 'usb reset' over command line.
->
-> So, enable USB, GMAC clock via enable/disable ops.
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> ---
-> Changes for v3:
-> - Update USB clock registers
->
->  drivers/clk/rockchip/clk_rk3399.c | 148 ++++++++++++++++++++++++++++++
->  1 file changed, 148 insertions(+)
->
-> diff --git a/drivers/clk/rockchip/clk_rk3399.c
-> b/drivers/clk/rockchip/clk_rk3399.c
-> index d822acace1..5d2bdb42c7 100644
-> --- a/drivers/clk/rockchip/clk_rk3399.c
-> +++ b/drivers/clk/rockchip/clk_rk3399.c
-> @@ -1071,12 +1071,160 @@ static int __maybe_unused
-> rk3399_clk_set_parent(struct clk *clk,
->         return -ENOENT;
->  }
->
-> +static int rk3399_clk_enable(struct clk *clk)
-> +{
-> +       struct rk3399_clk_priv *priv = dev_get_priv(clk->dev);
-> +
-> +       switch (clk->id) {
-> +       case SCLK_MAC:
-> +               rk_clrreg(&priv->cru->clkgate_con[5], BIT(5));
-> +               break;
-> +       case SCLK_MAC_RX:
-> +               rk_clrreg(&priv->cru->clkgate_con[5], BIT(8));
-> +               break;
-> +       case SCLK_MAC_TX:
-> +               rk_clrreg(&priv->cru->clkgate_con[5], BIT(9));
-> +               break;
-> +       case SCLK_MACREF:
-> +               rk_clrreg(&priv->cru->clkgate_con[5], BIT(7));
-> +               break;
-> +       case SCLK_MACREF_OUT:
-> +               rk_clrreg(&priv->cru->clkgate_con[5], BIT(6));
-> +               break;
-> +       case ACLK_GMAC:
-> +               rk_clrreg(&priv->cru->clkgate_con[32], BIT(0));
-> +               break;
-> +       case PCLK_GMAC:
-> +               rk_clrreg(&priv->cru->clkgate_con[32], BIT(2));
-> +               break;
-> +       case SCLK_USB3OTG0_REF:
-> +               rk_clrreg(&priv->cru->clkgate_con[12], BIT(1));
-> +               break;
-> +       case SCLK_USB3OTG1_REF:
-> +               rk_clrreg(&priv->cru->clkgate_con[12], BIT(2));
-> +               break;
-> +       case SCLK_USB3OTG0_SUSPEND:
-> +               rk_clrreg(&priv->cru->clkgate_con[12], BIT(3));
-> +               break;
-> +       case SCLK_USB3OTG1_SUSPEND:
-> +               rk_clrreg(&priv->cru->clkgate_con[12], BIT(4));
-> +               break;
-> +       case ACLK_USB3OTG0:
-> +               rk_clrreg(&priv->cru->clkgate_con[30], BIT(1));
-> +               break;
-> +       case ACLK_USB3OTG1:
-> +               rk_clrreg(&priv->cru->clkgate_con[30], BIT(2));
-> +               break;
-> +       case ACLK_USB3_RKSOC_AXI_PERF:
-> +               rk_clrreg(&priv->cru->clkgate_con[30], BIT(3));
-> +               break;
-> +       case ACLK_USB3:
-> +               rk_clrreg(&priv->cru->clkgate_con[12], BIT(0));
-> +               break;
-> +       case ACLK_USB3_GRF:
-> +               rk_clrreg(&priv->cru->clkgate_con[30], BIT(4));
-> +               break;
-> +       case HCLK_HOST0:
-> +               rk_clrreg(&priv->cru->clksel_con[20], BIT(5));
-> +               break;
-> +       case HCLK_HOST0_ARB:
-> +               rk_clrreg(&priv->cru->clksel_con[20], BIT(6));
-> +               break;
-> +       case HCLK_HOST1:
-> +               rk_clrreg(&priv->cru->clksel_con[20], BIT(7));
-> +               break;
-> +       case HCLK_HOST1_ARB:
-> +               rk_clrreg(&priv->cru->clksel_con[20], BIT(8));
-> +               break;
-> +       default:
-> +               debug("%s: unsupported clk %ld\n", __func__, clk->id);
-> +               return -ENOENT;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk3399_clk_disable(struct clk *clk)
-> +{
-> +       struct rk3399_clk_priv *priv = dev_get_priv(clk->dev);
-> +
-> +       switch (clk->id) {
-> +       case SCLK_MAC:
-> +               rk_setreg(&priv->cru->clkgate_con[5], BIT(5));
-> +               break;
-> +       case SCLK_MAC_RX:
-> +               rk_setreg(&priv->cru->clkgate_con[5], BIT(8));
-> +               break;
-> +       case SCLK_MAC_TX:
-> +               rk_setreg(&priv->cru->clkgate_con[5], BIT(9));
-> +               break;
-> +       case SCLK_MACREF:
-> +               rk_setreg(&priv->cru->clkgate_con[5], BIT(7));
-> +               break;
-> +       case SCLK_MACREF_OUT:
-> +               rk_setreg(&priv->cru->clkgate_con[5], BIT(6));
-> +               break;
-> +       case ACLK_GMAC:
-> +               rk_setreg(&priv->cru->clkgate_con[32], BIT(0));
-> +               break;
-> +       case PCLK_GMAC:
-> +               rk_setreg(&priv->cru->clkgate_con[32], BIT(2));
-> +               break;
-> +       case SCLK_USB3OTG0_REF:
-> +               rk_setreg(&priv->cru->clkgate_con[12], BIT(1));
-> +               break;
-> +       case SCLK_USB3OTG1_REF:
-> +               rk_setreg(&priv->cru->clkgate_con[12], BIT(2));
-> +               break;
-> +       case SCLK_USB3OTG0_SUSPEND:
-> +               rk_setreg(&priv->cru->clkgate_con[12], BIT(3));
-> +               break;
-> +       case SCLK_USB3OTG1_SUSPEND:
-> +               rk_setreg(&priv->cru->clkgate_con[12], BIT(4));
-> +               break;
-> +       case ACLK_USB3OTG0:
-> +               rk_setreg(&priv->cru->clkgate_con[30], BIT(1));
-> +               break;
-> +       case ACLK_USB3OTG1:
-> +               rk_setreg(&priv->cru->clkgate_con[30], BIT(2));
-> +               break;
-> +       case ACLK_USB3_RKSOC_AXI_PERF:
-> +               rk_setreg(&priv->cru->clkgate_con[30], BIT(3));
-> +               break;
-> +       case ACLK_USB3:
-> +               rk_setreg(&priv->cru->clkgate_con[12], BIT(0));
-> +               break;
-> +       case ACLK_USB3_GRF:
-> +               rk_setreg(&priv->cru->clkgate_con[30], BIT(4));
-> +               break;
-> +       case HCLK_HOST0:
-> +               rk_setreg(&priv->cru->clksel_con[20], BIT(5));
-> +               break;
-> +       case HCLK_HOST0_ARB:
-> +               rk_setreg(&priv->cru->clksel_con[20], BIT(6));
-> +               break;
-> +       case HCLK_HOST1:
-> +               rk_setreg(&priv->cru->clksel_con[20], BIT(7));
-> +               break;
-> +       case HCLK_HOST1_ARB:
-> +               rk_setreg(&priv->cru->clksel_con[20], BIT(8));
-> +               break;
-> +       default:
-> +               debug("%s: unsupported clk %ld\n", __func__, clk->id);
-> +               return -ENOENT;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
->  static struct clk_ops rk3399_clk_ops = {
->         .get_rate = rk3399_clk_get_rate,
->         .set_rate = rk3399_clk_set_rate,
->  #if CONFIG_IS_ENABLED(OF_CONTROL) && !CONFIG_IS_ENABLED(OF_PLATDATA)
->         .set_parent = rk3399_clk_set_parent,
->  #endif
-> +       .enable = rk3399_clk_enable,
-> +       .disable = rk3399_clk_disable,
->  };
->
->  #ifdef CONFIG_SPL_BUILD
-> --
-> 2.17.1
->
+Enable/Disable the USB2PHY clk for rk3399.
 
-Tested-by: Suniel Mahesh <sunil@amarulasolutions.com> #roc-rk3399-pc
+CLK is clear in enable and set in disable functionality.
+
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+ drivers/clk/rockchip/clk_rk3399.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
+index 5fb72d83c2..b53f2f984e 100644
+--- a/drivers/clk/rockchip/clk_rk3399.c
++++ b/drivers/clk/rockchip/clk_rk3399.c
+@@ -1091,6 +1091,12 @@ static int rk3399_clk_enable(struct clk *clk)
+ 	case SCLK_MACREF_OUT:
+ 		rk_clrreg(&priv->cru->clkgate_con[5], BIT(6));
+ 		break;
++	case SCLK_USB2PHY0_REF:
++		rk_clrreg(&priv->cru->clkgate_con[6], BIT(5));
++		break;
++	case SCLK_USB2PHY1_REF:
++		rk_clrreg(&priv->cru->clkgate_con[6], BIT(6));
++		break;
+ 	case ACLK_GMAC:
+ 		rk_clrreg(&priv->cru->clkgate_con[32], BIT(0));
+ 		break;
+@@ -1167,6 +1173,12 @@ static int rk3399_clk_disable(struct clk *clk)
+ 	case SCLK_MACREF_OUT:
+ 		rk_setreg(&priv->cru->clkgate_con[5], BIT(6));
+ 		break;
++	case SCLK_USB2PHY0_REF:
++		rk_setreg(&priv->cru->clkgate_con[6], BIT(5));
++		break;
++	case SCLK_USB2PHY1_REF:
++		rk_setreg(&priv->cru->clkgate_con[6], BIT(6));
++		break;
+ 	case ACLK_GMAC:
+ 		rk_setreg(&priv->cru->clkgate_con[32], BIT(0));
+ 		break;
+-- 
+2.17.1
