@@ -1,141 +1,63 @@
-From: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v10 0/8] Add endpoint driver for R-Car PCIe controller
-Date: Mon, 11 May 2020 11:36:54 +0100
-Message-ID: <20200511103654.GD24149@e121166-lin.cambridge.arm.com>
-References: <1588854799-13710-1-git-send-email-prabhakar.mahadev-lad.rj@bp.renesas.com>
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Subject: Re: [PATCH v3 2/3] media: uapi: Add VP9 stateless decoder controls
+Date: Mon, 11 May 2020 08:17:06 -0400
+Message-ID: <49a15300a5db8b4c61115c4a89eac1762dc3f31a.camel@collabora.com>
+References: <20200505134110.3435-1-ezequiel@collabora.com>
+         <20200505134110.3435-3-ezequiel@collabora.com>
+         <6459bd9f-20f6-9910-8d45-04870a19019d@xs4all.nl>
+         <f885e94250778916c09a29269f9c9f42eb67cb66.camel@collabora.com>
+         <7846cb19-c5e0-4f95-c361-cf78d2c1b16a@xs4all.nl>
+Reply-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <1588854799-13710-1-git-send-email-prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Lad Prabhakar <prabhakar.mahadev-lad.rj-kTT6dE0pTRh9uiUsa/gSgQ@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Tom Joseph <tjoseph-vna1KIf7WgpBDgjK7y7TUQ@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Marek Vasut <marek.vasut+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Yoshihiro Shimoda <yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Geert Uytterhoeven <geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Prabhakar <prabhakar.csengg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
+        boundary="=-7FJdwtw3aqO6RvgErWDP"
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <7846cb19-c5e0-4f95-c361-cf78d2c1b16a@xs4all.nl>
+Sender: linux-media-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, gustavo.padovan@collabora.com, Boris Brezillon <boris.brezillon@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, May 07, 2020 at 01:33:11PM +0100, Lad Prabhakar wrote:
-> Hi All,
-> 
-> This patch series adds support for endpoint driver for R-Car PCIe controller on
-> R-Car/RZ-G2x SoC's, this also extends the epf framework to handle multiple windows
-> supported by the controller for mapping PCI address locally.
-> 
-> Note:
-> The rockchip/dwc endpoint drivers are build tested only and was tested on cadence
-> by Kishon (https://lkml.org/lkml/2020/5/6/1535)
-> 
-> Changes for v10:
-> * Rebased patches on top of pci/rcar branch on tree
->   https://git.kernel.org/pub/scm/linux/kernel/git/lpieralisi/pci.git
-> * Made pci_epc_get_matching_window() as static
-> * Included Ack's from Kishon for patches 4/8 and 5/8
-> * Included Reviewed-by tag from Shimoda-san for patches 4/8 and 5/8
-> 
-> Changes for v9:
-> * Rebased patches on top of v5.7.rc1
-> * Replaced mdelay(1) with usleep_range(1000, 1001) in rcar_pcie_ep_assert_intx()
-> * Added a check for max_functions read from DT to restrict with
->   RCAR_EPC_MAX_FUNCTIONS
-> * Replaced MSICAP0_MMENUM with MSICAP0_MMESE
-> * Retry ioremap for other windows on failure in pci_epc_mem_alloc_addr()
-> * Fixed looping for number windows in pci_epc_mem_exit()
-> * Set maximum to 1 for max-functions in DT binding (I have restored the acks
->   from  Rob and Shimoda-san)
-> * Sorted the entry in MAINTAINERS
-> 
-> Changes for v8:
-> * Dropped adding R8A774C0 (0x002d) pci-id in pci_ids.h
-> * Fixed typo in commit message for patch 2/8
-> * Reworded commit message for patch 5/8 as suggested by Bjorn
-> * Split up patch to add pci_epc_mem_init() interface to add page_size argument
->   as suggested by Bjorn.
-> 
-> Changes for v7:
-> * Fixed review comments pointed by Shimoda-san
->   1] Made DT bindings dual licensed, added Shimoda-san as maintainer and fixed
->      the example as its built with #{address,size}-cells = <1>. I have still
->      restored the Ack from Rob and Shimoda-san with these changes.
->   2] Split up the patches so that they can be picked up by respective subsystem
->      patches 1/4-9/11 are now part of this series.
->   3] Dropped altering a comment in pci-epc.h
->   4] Used a local variable align_size in pci_epc_mem_alloc_addr() so that size
->      variable doesn't get overwritten in the loop.
->   5] Replaced i-=1 with i--
->   6] Replaced rcar with R-Car in patch subject and description.
->   7] Set MACCTLR in init() callback
-> 
-> Changes for v6:
-> 1] Rebased patches on endpoint branch of https://git.kernel.org/pub/
->    scm/linux/kernel/git/lpieralisi/pci.git/
-> 2] Fixed review comments from Shimoda-san
->    a] Made sure defconfig changes were in separate patch
->    b] Created rcar_pcie_host/rcar_pcie_ep structures
->    c] Added pci-id for R8A774C0
->    d] Added entry in MAINTAINERS for dt-binding
->    e] Dropped unnecessary braces
-> 3] Added support for msi.
-> 
-> Changes for v5:
-> 1] Rebased patches on next branch of https://git.kernel.org/pub/scm/
->    linux/kernel/git/helgaas/pci.git
-> 2] Fixed review comments reported by Kishon while fetching the matching
->    window in function pci_epc_get_matching_window()
-> 3] Fixed review comments reported by Bjorn
->    a] Split patch up first patch so that its easier to review and incremental
->    b] Fixed typos
-> 4] Included Reviewed tag from Rob for the dt-binding patch
-> 5] Fixed issue reported by Nathan for assigning variable to itself
-> 
-> Changes for v4:
-> 1] Fixed dtb_check error reported by Rob
-> 2] Fixed review comments reported by Kishon
->    a] Dropped pci_epc_find_best_fit_window()
->    b] Fixed initializing mem ptr in __pci_epc_mem_init()
->    c] Dropped map_size from pci_epc_mem_window structure
-> 
-> Changes for v3:
-> 1] Fixed review comments from Bjorn and Kishon.
-> 3] Converted to DT schema
-> 
-> Changes for v2:
-> 1] Fixed review comments from Biju for dt-bindings to include an example
->    for a tested platform.
-> 2] Fixed review comments from Kishon to extend the features of outbound
->    regions in epf framework.
-> 3] Added support to parse outbound-ranges in OF.
-> 
-> Lad Prabhakar (8):
->   PCI: rcar: Rename pcie-rcar.c to pcie-rcar-host.c
->   PCI: rcar: Move shareable code to a common file
->   PCI: rcar: Fix calculating mask for PCIEPAMR register
->   PCI: endpoint: Pass page size as argument to pci_epc_mem_init()
->   PCI: endpoint: Add support to handle multiple base for mapping
->     outbound memory
->   dt-bindings: PCI: rcar: Add bindings for R-Car PCIe endpoint
->     controller
->   PCI: rcar: Add endpoint mode support
->   MAINTAINERS: Add file patterns for rcar PCI device tree bindings
-> 
->  .../devicetree/bindings/pci/rcar-pci-ep.yaml  |   77 +
->  MAINTAINERS                                   |    1 +
->  drivers/pci/controller/Kconfig                |   18 +
->  drivers/pci/controller/Makefile               |    3 +-
->  .../pci/controller/cadence/pcie-cadence-ep.c  |    2 +-
->  .../pci/controller/dwc/pcie-designware-ep.c   |   16 +-
->  drivers/pci/controller/pcie-rcar-ep.c         |  563 ++++++++
->  drivers/pci/controller/pcie-rcar-host.c       | 1130 +++++++++++++++
->  drivers/pci/controller/pcie-rcar.c            | 1268 +----------------
->  drivers/pci/controller/pcie-rcar.h            |  140 ++
->  drivers/pci/controller/pcie-rockchip-ep.c     |    2 +-
->  drivers/pci/endpoint/pci-epc-mem.c            |  204 ++-
->  include/linux/pci-epc.h                       |   38 +-
->  13 files changed, 2150 insertions(+), 1312 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/pci/rcar-pci-ep.yaml
->  create mode 100644 drivers/pci/controller/pcie-rcar-ep.c
->  create mode 100644 drivers/pci/controller/pcie-rcar-host.c
->  create mode 100644 drivers/pci/controller/pcie-rcar.h
- 
 
-Applied to pci/rcar, thanks !
+--=-7FJdwtw3aqO6RvgErWDP
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Lorenzo
+Le vendredi 08 mai 2020 =C3=A0 15:16 +0200, Hans Verkuil a =C3=A9crit :
+> > I think this comes directly from the spec. The Rockchip VDEC doesn't
+> > seem to use it.
+> > Do you think we can drop it from here, and rely on the V4L2 colorspace
+> > passed in the format negotiation?
+>=20
+>=20
+> That would be preferred, yes. Otherwise you would have two places where y=
+ou can
+> define colorspaces, and that's confusing.
+
+This is indeed redundant with the color information in the format. In
+VP8/9 there is only 1 header for everything, so it's harder to figure-
+out what to filter. While in H.264/HEVC this information is usually set
+an an extension header.
+
+Though this do re-open the discussion about SPS in H.264/HEVC. In there
+you will find the coded size and the crop window and the sub-sampling.
+I don't remember exactly what was the conclusion, but I think it was
+kept to allow allow bitstream reconstruction. But it will effectively
+overlap directly (or indirectly) with some V4L2 generic API.
+
+regards,
+Nicolas
+
+--=-7FJdwtw3aqO6RvgErWDP
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXrlCQgAKCRBxUwItrAao
+HBt3AJ9qVuHoo7obOay42xsXt2h91zXANwCfTanxrgZ1TNarsZjy64md+ngxdW4=
+=eeld
+-----END PGP SIGNATURE-----
+
+--=-7FJdwtw3aqO6RvgErWDP--
