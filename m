@@ -1,63 +1,49 @@
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Subject: Re: [PATCH v3 2/3] media: uapi: Add VP9 stateless decoder controls
-Date: Mon, 11 May 2020 08:17:06 -0400
-Message-ID: <49a15300a5db8b4c61115c4a89eac1762dc3f31a.camel@collabora.com>
-References: <20200505134110.3435-1-ezequiel@collabora.com>
-         <20200505134110.3435-3-ezequiel@collabora.com>
-         <6459bd9f-20f6-9910-8d45-04870a19019d@xs4all.nl>
-         <f885e94250778916c09a29269f9c9f42eb67cb66.camel@collabora.com>
-         <7846cb19-c5e0-4f95-c361-cf78d2c1b16a@xs4all.nl>
-Reply-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+From: Marek Vasut <marex@denx.de>
+Subject: Re: [PATCH v4 12/16] usb: dwc3: add make compatible for rockchip
+ platform
+Date: Mon, 11 May 2020 11:48:20 +0200
+Message-ID: <502d8fff-5ae2-b47f-f483-62cd24177ed1@denx.de>
+References: <20200511075330.26462-1-frank.wang@rock-chips.com>
+ <20200511075725.26665-1-frank.wang@rock-chips.com>
+ <20200511075725.26665-3-frank.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg="pgp-sha1"; protocol="application/pgp-signature";
-        boundary="=-7FJdwtw3aqO6RvgErWDP"
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <7846cb19-c5e0-4f95-c361-cf78d2c1b16a@xs4all.nl>
-Sender: linux-media-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>, Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, gustavo.padovan@collabora.com, Boris Brezillon <boris.brezillon@collabora.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200511075725.26665-3-frank.wang@rock-chips.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Frank Wang <frank.wang@rock-chips.com>, heiko@sntech.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org, kever.yang@rock-chips.com
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
+On 5/11/20 9:57 AM, Frank Wang wrote:
+[...]
 
---=-7FJdwtw3aqO6RvgErWDP
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+> @@ -394,6 +407,12 @@ static int dwc3_glue_probe(struct udevice *dev)
+>  	if (ret)
+>  		return ret;
+>  
+> +	if (glue->resets.count < 1) {
 
-Le vendredi 08 mai 2020 =C3=A0 15:16 +0200, Hans Verkuil a =C3=A9crit :
-> > I think this comes directly from the spec. The Rockchip VDEC doesn't
-> > seem to use it.
-> > Do you think we can drop it from here, and rely on the V4L2 colorspace
-> > passed in the format negotiation?
->=20
->=20
-> That would be preferred, yes. Otherwise you would have two places where y=
-ou can
-> define colorspaces, and that's confusing.
+This condition is only true if count == 0 ?
+What's the purpose of this test ?
 
-This is indeed redundant with the color information in the format. In
-VP8/9 there is only 1 header for everything, so it's harder to figure-
-out what to filter. While in H.264/HEVC this information is usually set
-an an extension header.
+> +		ret = dwc3_glue_reset_init(child, glue);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+>  	while (child) {
+>  		enum usb_dr_mode dr_mode;
+>  
 
-Though this do re-open the discussion about SPS in H.264/HEVC. In there
-you will find the coded size and the crop window and the sub-sampling.
-I don't remember exactly what was the conclusion, but I think it was
-kept to allow allow bitstream reconstruction. But it will effectively
-overlap directly (or indirectly) with some V4L2 generic API.
-
-regards,
-Nicolas
-
---=-7FJdwtw3aqO6RvgErWDP
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iF0EABECAB0WIQSScpfJiL+hb5vvd45xUwItrAaoHAUCXrlCQgAKCRBxUwItrAao
-HBt3AJ9qVuHoo7obOay42xsXt2h91zXANwCfTanxrgZ1TNarsZjy64md+ngxdW4=
-=eeld
------END PGP SIGNATURE-----
-
---=-7FJdwtw3aqO6RvgErWDP--
+[...]
