@@ -1,14 +1,14 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v4 07/16] usb: dwc3: add dis_enblslpm_quirk
-Date: Mon, 11 May 2020 14:19:49 +0530
-Message-ID: <CAMty3ZBFykcDBWeVuA0kHvUoMYQCYLWGaTa+fmdrdKzZTtunRA@mail.gmail.com>
+Subject: Re: [PATCH v4 08/16] usb: dwc3: add dis_u2_freeclk_exists_quirk
+Date: Mon, 11 May 2020 14:20:17 +0530
+Message-ID: <CAMty3ZDw0vUeNVAu4VxO2pEUaoTwrfEwKfFdzogWWthpvVZ4Dw@mail.gmail.com>
 References: <20200511075330.26462-1-frank.wang@rock-chips.com>
  <20200511075520.26557-1-frank.wang@rock-chips.com>
- <20200511075520.26557-3-frank.wang@rock-chips.com>
+ <20200511075520.26557-4-frank.wang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200511075520.26557-3-frank.wang@rock-chips.com>
+In-Reply-To: <20200511075520.26557-4-frank.wang@rock-chips.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <https://lists.denx.de/pipermail/u-boot/>
@@ -24,11 +24,12 @@ List-Id: linux-rockchip.vger.kernel.org
 
 On Mon, May 11, 2020 at 1:25 PM Frank Wang <frank.wang@rock-chips.com> wrote:
 >
-> Add a quirk to clear the GUSB2PHYCFG.ENBLSLPM bit, which controls
-> whether the PHY receives the suspend signal from the controller.
+> Add a quirk to clear the GUSB2PHYCFG.U2_FREECLK_EXISTS bit,
+> which specifies whether the USB2.0 PHY provides a free-running
+> PHY clock, which is active when the clock control input is active.
 >
-> Refer to commit ec791d149bca("usb: dwc3: Add dis_enblslpm_quirk")
-> in Linux Kernel.
+> Refer to commit 27f83eeb6b42("usb: dwc3: add dis_u2_freeclk_exists_quirk")
+> in Linux Rockchip Kernel.
 >
 > Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
 > Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
