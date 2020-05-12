@@ -1,34 +1,47 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: rockchip: fix memleak in rockchip_dt_node_to_map
-Date: Tue, 12 May 2020 19:46:13 +0200
-Message-ID: <CACRpkdZ7QSNfMSm1NEFC9zbH8tkOieoPr39Fx3kzxgmER1cqAw@mail.gmail.com>
-References: <20200506100903.15420-1-dafna.hirschfeld@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-gpio-owner@vger.kernel.org>
-In-Reply-To: <20200506100903.15420-1-dafna.hirschfeld@collabora.com>
-Sender: linux-gpio-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, helen.koike@collabora.com, ezequiel@collabora.com, dafna3@gmail.com, kernel@collabora.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [PATCH 1/3] arm64: dts: rockchip: replace RK_FUNC defines in rk3326-odroid-go2.dts
+Date: Tue, 12 May 2020 22:35:22 +0200
+Message-ID: <20200512203524.7317-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-gpio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, May 6, 2020 at 12:09 PM Dafna Hirschfeld
-<dafna.hirschfeld@collabora.com> wrote:
+The defines RK_FUNC_1 and RK_FUNC_2 are deprecated,
+so replace them with the preferred form.
+Restyle properties in the same line.
 
-> In function rockchip_dt_node_to_map, a new_map variable is
-> allocated by:
->
-> new_map = devm_kcalloc(pctldev->dev, map_num, sizeof(*new_map),
->                        GFP_KERNEL);
->
-> This uses devres and attaches new_map to the pinctrl driver.
-> This cause a leak since new_map is not released when the probed
-> driver is removed. Fix it by using kcalloc to allocate new_map
-> and free it in `rockchip_dt_free_map`
->
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-Patch applied.
-
-Yours,
-Linus Walleij
+diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+index fe253669b..46826b6e2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
+@@ -543,18 +543,15 @@
+ 		};
+ 
+ 		soc_slppin_gpio: soc_slppin_gpio {
+-			rockchip,pins =
+-				<0 RK_PA4 RK_FUNC_GPIO &pcfg_output_low>;
++			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_output_low>;
+ 		};
+ 
+ 		soc_slppin_rst: soc_slppin_rst {
+-			rockchip,pins =
+-				<0 RK_PA4 RK_FUNC_2 &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PA4 2 &pcfg_pull_none>;
+ 		};
+ 
+ 		soc_slppin_slp: soc_slppin_slp {
+-			rockchip,pins =
+-				<0 RK_PA4 RK_FUNC_1 &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PA4 1 &pcfg_pull_none>;
+ 		};
+ 	};
+ };
+-- 
+2.11.0
