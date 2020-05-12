@@ -1,11 +1,11 @@
 From: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH v4 22/38] drm: rockchip: fix common struct sg_table related
- issues
-Date: Tue, 12 May 2020 11:00:42 +0200
-Message-ID: <20200512090058.14910-22-m.szyprowski@samsung.com>
+Subject: [PATCH v4 21/38] drm: rockchip: use common helper for a scatterlist
+ contiguity check
+Date: Tue, 12 May 2020 11:00:41 +0200
+Message-ID: <20200512090058.14910-21-m.szyprowski@samsung.com>
 References: <20200512085710.14688-1-m.szyprowski@samsung.com>
  <20200512090058.14910-1-m.szyprowski@samsung.com>
- <CGME20200512090120eucas1p28cc382480b2e3298b59fb6bf5ffde80b@eucas1p2.samsung.com>
+ <CGME20200512090119eucas1p2b3e1a858d8893f8d209d5c19fcbab941@eucas1p2.samsung.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -24,28 +24,7 @@ To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, iommu-cunTk1MwB
 Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Christoph Hellwig <hch-jcswGhMUV9g@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The Documentation/DMA-API-HOWTO.txt states that the dma_map_sg() function
-returns the number of the created entries in the DMA address space.
-However the subsequent calls to the dma_sync_sg_for_{device,cpu}() and
-dma_unmap_sg must be called with the original number of the entries
-passed to the dma_map_sg().
-
-struct sg_table is a common structure used for describing a non-contiguous
-memory buffer, used commonly in the DRM and graphics subsystems. It
-consists of a scatterlist with memory pages and DMA addresses (sgl entry),
-as well as the number of scatterlist entries: CPU pages (orig_nents entry)
-and DMA mapped pages (nents entry).
-
-It turned out that it was a common mistake to misuse nents and orig_nents
-entries, calling DMA-mapping functions with a wrong number of entries or
-ignoring the number of mapped entries returned by the dma_map_sg()
-function.
-
-To avoid such issues, lets use a common dma-mapping wrappers operating
-directly on the struct sg_table objects and use scatterlist page
-iterators where possible. This, almost always, hides references to the
-nents and orig_nents entries, making the code robust, easier to follow
-and copy/paste safe.
+Use common helper for checking the contiguity of the imported dma-buf.
 
 Signed-off-by: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 ---
@@ -53,68 +32,45 @@ For more information, see '[PATCH v4 00/38] DRM: fix struct sg_table nents
 vs. orig_nents misuse' thread:
 https://lore.kernel.org/dri-devel/20200512085710.14688-1-m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org/T/
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 23 ++++++++++-------------
- 1 file changed, 10 insertions(+), 13 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 19 +------------------
+ 1 file changed, 1 insertion(+), 18 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index 21f8cb2..566557b 100644
+index 0d18846..21f8cb2 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -36,8 +36,8 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
+@@ -460,23 +460,6 @@ struct sg_table *rockchip_gem_prime_get_sg_table(struct drm_gem_object *obj)
+ 	return sgt;
+ }
  
- 	rk_obj->dma_addr = rk_obj->mm.start;
- 
--	ret = iommu_map_sg(private->domain, rk_obj->dma_addr, rk_obj->sgt->sgl,
--			   rk_obj->sgt->nents, prot);
-+	ret = iommu_map_sgtable(private->domain, rk_obj->dma_addr, rk_obj->sgt,
-+				prot);
- 	if (ret < rk_obj->base.size) {
- 		DRM_ERROR("failed to map buffer: size=%zd request_size=%zd\n",
- 			  ret, rk_obj->base.size);
-@@ -98,11 +98,10 @@ static int rockchip_gem_get_pages(struct rockchip_gem_object *rk_obj)
- 	 * TODO: Replace this by drm_clflush_sg() once it can be implemented
- 	 * without relying on symbols that are not exported.
- 	 */
--	for_each_sg(rk_obj->sgt->sgl, s, rk_obj->sgt->nents, i)
-+	for_each_sgtable_sg(rk_obj->sgt, s, i)
- 		sg_dma_address(s) = sg_phys(s);
- 
--	dma_sync_sg_for_device(drm->dev, rk_obj->sgt->sgl, rk_obj->sgt->nents,
--			       DMA_TO_DEVICE);
-+	dma_sync_sgtable_for_device(drm->dev, rk_obj->sgt, DMA_TO_DEVICE);
- 
- 	return 0;
- 
-@@ -350,8 +349,8 @@ void rockchip_gem_free_object(struct drm_gem_object *obj)
- 		if (private->domain) {
- 			rockchip_gem_iommu_unmap(rk_obj);
- 		} else {
--			dma_unmap_sg(drm->dev, rk_obj->sgt->sgl,
--				     rk_obj->sgt->nents, DMA_BIDIRECTIONAL);
-+			dma_unmap_sgtable(drm->dev, rk_obj->sgt,
-+					  DMA_BIDIRECTIONAL, 0);
- 		}
- 		drm_prime_gem_destroy(obj, rk_obj->sgt);
- 	} else {
-@@ -476,15 +475,13 @@ struct sg_table *rockchip_gem_prime_get_sg_table(struct drm_gem_object *obj)
- 			struct sg_table *sg,
- 			struct rockchip_gem_object *rk_obj)
- {
--	int count = dma_map_sg(drm->dev, sg->sgl, sg->nents,
--			       DMA_BIDIRECTIONAL);
--	if (!count)
--		return -EINVAL;
-+	int err = dma_map_sgtable(drm->dev, sg, DMA_BIDIRECTIONAL, 0);
-+	if (err)
-+		return err;
- 
- 	if (drm_prime_get_contiguous_size(sg) < attach->dmabuf->size) {
- 		DRM_ERROR("failed to map sg_table to contiguous linear address.\n");
--		dma_unmap_sg(drm->dev, sg->sgl, sg->nents,
--			     DMA_BIDIRECTIONAL);
-+		dma_unmap_sgtable(drm->dev, sg, DMA_BIDIRECTIONAL, 0);
+-static unsigned long rockchip_sg_get_contiguous_size(struct sg_table *sgt,
+-						     int count)
+-{
+-	struct scatterlist *s;
+-	dma_addr_t expected = sg_dma_address(sgt->sgl);
+-	unsigned int i;
+-	unsigned long size = 0;
+-
+-	for_each_sg(sgt->sgl, s, count, i) {
+-		if (sg_dma_address(s) != expected)
+-			break;
+-		expected = sg_dma_address(s) + sg_dma_len(s);
+-		size += sg_dma_len(s);
+-	}
+-	return size;
+-}
+-
+ static int
+ rockchip_gem_iommu_map_sg(struct drm_device *drm,
+ 			  struct dma_buf_attachment *attach,
+@@ -498,7 +481,7 @@ static unsigned long rockchip_sg_get_contiguous_size(struct sg_table *sgt,
+ 	if (!count)
  		return -EINVAL;
- 	}
  
+-	if (rockchip_sg_get_contiguous_size(sg, count) < attach->dmabuf->size) {
++	if (drm_prime_get_contiguous_size(sg) < attach->dmabuf->size) {
+ 		DRM_ERROR("failed to map sg_table to contiguous linear address.\n");
+ 		dma_unmap_sg(drm->dev, sg->sgl, sg->nents,
+ 			     DMA_BIDIRECTIONAL);
 -- 
 1.9.1
