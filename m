@@ -1,35 +1,27 @@
-From: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/5] media: staging: rkisp1: return IRQ_NONE in isr when
- irq isn't for ISP
-Date: Tue, 12 May 2020 23:42:09 +0800
-Message-ID: <202005122313.veIpO2OH%lkp@intel.com>
-References: <20200512120522.25960-2-dafna.hirschfeld@collabora.com>
+From: kbuild test robot <lkp@intel.com>
+Subject: Re: [PATCH 5/5] media: staging: rkisp1: replace workqueue with
+ threaded irq for reading statistics registers
+Date: Wed, 13 May 2020 00:41:11 +0800
+Message-ID: <202005130014.6crueEVz%lkp@intel.com>
+References: <20200512120522.25960-6-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Type: multipart/mixed; boundary="sdtB3X0nJg68CQEu"
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: multipart/mixed; boundary="7AUc2qLy4jB3hD7Z"
+Return-path: <linux-media-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20200512120522.25960-2-dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna3-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, kbuild-all-hn68Rpc1hR1g9hUCZPvPmw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+In-Reply-To: <20200512120522.25960-6-dafna.hirschfeld@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: linux-media@vger.kernel.org
+Cc: kbuild-all@lists.01.org, dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 
---sdtB3X0nJg68CQEu
+--7AUc2qLy4jB3hD7Z
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 Hi Dafna,
 
-I love your patch! Yet something to improve:
+Thank you for the patch! Yet something to improve:
 
 [auto build test ERROR on linuxtv-media/master]
 [also build test ERROR on v5.7-rc5 next-20200512]
@@ -49,107 +41,174 @@ reproduce:
         COMPILER_INSTALL_PATH=$HOME/0day GCC_VERSION=9.3.0 make.cross ARCH=nios2 
 
 If you fix the issue, kindly add following tag as appropriate
-Reported-by: kbuild test robot <lkp-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
+Reported-by: kbuild test robot <lkp@intel.com>
 
 All error/warnings (new ones prefixed by >>):
 
-In file included from drivers/staging/media/rkisp1/rkisp1-capture.c:21:
->> drivers/staging/media/rkisp1/rkisp1-common.h:308:1: error: unknown type name 'irqreturn_t'
-308 | irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1);
-| ^~~~~~~~~~~
+In file included from drivers/staging/media/rkisp1/rkisp1-stats.c:14:
 drivers/staging/media/rkisp1/rkisp1-common.h:309:1: error: unknown type name 'irqreturn_t'
-309 | irqreturn_t rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
+309 | irqreturn_t rkisp1_read_stats_threaded_irq(int irq, void *ctx);
 | ^~~~~~~~~~~
 drivers/staging/media/rkisp1/rkisp1-common.h:310:1: error: unknown type name 'irqreturn_t'
-310 | irqreturn_t rkisp1_capture_isr(struct rkisp1_device *rkisp1);
+310 | irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1);
 | ^~~~~~~~~~~
->> drivers/staging/media/rkisp1/rkisp1-capture.c:652:1: error: unknown type name 'irqreturn_t'
-652 | irqreturn_t rkisp1_capture_isr(struct rkisp1_device *rkisp1)
+drivers/staging/media/rkisp1/rkisp1-common.h:311:1: error: unknown type name 'irqreturn_t'
+311 | irqreturn_t rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
 | ^~~~~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-capture.c: In function 'rkisp1_capture_isr':
->> drivers/staging/media/rkisp1/rkisp1-capture.c:659:10: error: 'IRQ_NONE' undeclared (first use in this function)
-659 |   return IRQ_NONE;
-|          ^~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-capture.c:659:10: note: each undeclared identifier is reported only once for each function it appears in
->> drivers/staging/media/rkisp1/rkisp1-capture.c:689:9: error: 'IRQ_HANDLED' undeclared (first use in this function)
-689 |  return IRQ_HANDLED;
-|         ^~~~~~~~~~~
->> drivers/staging/media/rkisp1/rkisp1-capture.c:690:1: warning: control reaches end of non-void function [-Wreturn-type]
-690 | }
-| ^
---
-In file included from drivers/staging/media/rkisp1/rkisp1-common.c:10:
->> drivers/staging/media/rkisp1/rkisp1-common.h:308:1: error: unknown type name 'irqreturn_t'
-308 | irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1);
+drivers/staging/media/rkisp1/rkisp1-common.h:312:1: error: unknown type name 'irqreturn_t'
+312 | irqreturn_t rkisp1_capture_isr(struct rkisp1_device *rkisp1);
 | ^~~~~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-common.h:309:1: error: unknown type name 'irqreturn_t'
-309 | irqreturn_t rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
+drivers/staging/media/rkisp1/rkisp1-common.h:313:1: error: unknown type name 'irqreturn_t'
+313 | irqreturn_t rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris);
 | ^~~~~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-common.h:310:1: error: unknown type name 'irqreturn_t'
-310 | irqreturn_t rkisp1_capture_isr(struct rkisp1_device *rkisp1);
+>> drivers/staging/media/rkisp1/rkisp1-stats.c:313:1: error: unknown type name 'irqreturn_t'
+313 | irqreturn_t rkisp1_read_stats_threaded_irq(int irq, void *ctx)
 | ^~~~~~~~~~~
---
-In file included from drivers/staging/media/rkisp1/rkisp1-isp.c:19:
->> drivers/staging/media/rkisp1/rkisp1-common.h:308:1: error: unknown type name 'irqreturn_t'
-308 | irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1);
+drivers/staging/media/rkisp1/rkisp1-stats.c: In function 'rkisp1_read_stats_threaded_irq':
+>> drivers/staging/media/rkisp1/rkisp1-stats.c:326:10: error: 'IRQ_HANDLED' undeclared (first use in this function)
+326 |   return IRQ_HANDLED;
+|          ^~~~~~~~~~~
+drivers/staging/media/rkisp1/rkisp1-stats.c:326:10: note: each undeclared identifier is reported only once for each function it appears in
+drivers/staging/media/rkisp1/rkisp1-stats.c: At top level:
+drivers/staging/media/rkisp1/rkisp1-stats.c:382:1: error: unknown type name 'irqreturn_t'
+382 | irqreturn_t rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
 | ^~~~~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-common.h:309:1: error: unknown type name 'irqreturn_t'
-309 | irqreturn_t rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
-| ^~~~~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-common.h:310:1: error: unknown type name 'irqreturn_t'
-310 | irqreturn_t rkisp1_capture_isr(struct rkisp1_device *rkisp1);
-| ^~~~~~~~~~~
->> drivers/staging/media/rkisp1/rkisp1-isp.c:1049:1: error: unknown type name 'irqreturn_t'
-1049 | irqreturn_t rkisp1_mipi_isr(struct rkisp1_device *rkisp1)
-| ^~~~~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-isp.c: In function 'rkisp1_mipi_isr':
->> drivers/staging/media/rkisp1/rkisp1-isp.c:1055:10: error: 'IRQ_NONE' undeclared (first use in this function)
-1055 |   return IRQ_NONE;
-|          ^~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-isp.c:1055:10: note: each undeclared identifier is reported only once for each function it appears in
->> drivers/staging/media/rkisp1/rkisp1-isp.c:1091:9: error: 'IRQ_HANDLED' undeclared (first use in this function)
-1091 |  return IRQ_HANDLED;
-|         ^~~~~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-isp.c: At top level:
-drivers/staging/media/rkisp1/rkisp1-isp.c:1111:1: error: unknown type name 'irqreturn_t'
-1111 | irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1)
-| ^~~~~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-isp.c: In function 'rkisp1_isp_isr':
-drivers/staging/media/rkisp1/rkisp1-isp.c:1117:10: error: 'IRQ_NONE' undeclared (first use in this function)
-1117 |   return IRQ_NONE;
-|          ^~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-isp.c:1154:9: error: 'IRQ_HANDLED' undeclared (first use in this function)
-1154 |  return IRQ_HANDLED;
-|         ^~~~~~~~~~~
-drivers/staging/media/rkisp1/rkisp1-isp.c: In function 'rkisp1_mipi_isr':
->> drivers/staging/media/rkisp1/rkisp1-isp.c:1092:1: warning: control reaches end of non-void function [-Wreturn-type]
-1092 | }
-| ^
-drivers/staging/media/rkisp1/rkisp1-isp.c: In function 'rkisp1_isp_isr':
-drivers/staging/media/rkisp1/rkisp1-isp.c:1155:1: warning: control reaches end of non-void function [-Wreturn-type]
-1155 | }
+drivers/staging/media/rkisp1/rkisp1-stats.c: In function 'rkisp1_stats_isr':
+drivers/staging/media/rkisp1/rkisp1-stats.c:387:2: error: unknown type name 'irqreturn_t'
+387 |  irqreturn_t ret = IRQ_HANDLED;
+|  ^~~~~~~~~~~
+drivers/staging/media/rkisp1/rkisp1-stats.c:387:20: error: 'IRQ_HANDLED' undeclared (first use in this function)
+387 |  irqreturn_t ret = IRQ_HANDLED;
+|                    ^~~~~~~~~~~
+>> drivers/staging/media/rkisp1/rkisp1-stats.c:409:10: error: 'IRQ_WAKE_THREAD' undeclared (first use in this function); did you mean 'RUSAGE_THREAD'?
+409 |    ret = IRQ_WAKE_THREAD;
+|          ^~~~~~~~~~~~~~~
+|          RUSAGE_THREAD
+drivers/staging/media/rkisp1/rkisp1-stats.c: In function 'rkisp1_read_stats_threaded_irq':
+>> drivers/staging/media/rkisp1/rkisp1-stats.c:379:1: warning: control reaches end of non-void function [-Wreturn-type]
+379 | }
 | ^
 
-vim +/irqreturn_t +308 drivers/staging/media/rkisp1/rkisp1-common.h
+vim +/irqreturn_t +313 drivers/staging/media/rkisp1/rkisp1-stats.c
 
-   307	
- > 308	irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1);
-   309	irqreturn_t rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
-   310	irqreturn_t rkisp1_capture_isr(struct rkisp1_device *rkisp1);
-   311	void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris);
-   312	void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis);
-   313	
+   312	
+ > 313	irqreturn_t rkisp1_read_stats_threaded_irq(int irq, void *ctx)
+   314	{
+   315		struct device *dev = ctx;
+   316		struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
+   317		struct rkisp1_stats *stats = &rkisp1->stats;
+   318		struct rkisp1_kstats_buffer *kstats_buf = NULL;
+   319		struct rkisp1_stat_buffer *cur_stat_buf;
+   320		unsigned long flags;
+   321		u64 timestamp = ktime_get_ns();
+   322	
+   323		spin_lock_irqsave(&stats->stats_lock, flags);
+   324		if (!stats->is_streaming) {
+   325			spin_unlock_irqrestore(&stats->stats_lock, flags);
+ > 326			return IRQ_HANDLED;
+   327		}
+   328		if (list_empty(&stats->stat)) {
+   329			spin_unlock_irqrestore(&stats->stats_lock, flags);
+   330			WARN("%s: threaded irq waked but there are no buffers",
+   331			     __func__);
+   332			return IRQ_HANDLED;
+   333		}
+   334		kstats_buf = list_first_entry(&stats->stat,
+   335					      struct rkisp1_kstats_buffer, buff.queue);
+   336	
+   337		/*
+   338		 * each waked irq thread reads exactly one ready statistics
+   339		 * so it is a bug  if no statistics are ready
+   340		 */
+   341		if (!kstats_buf->ris) {
+   342			spin_unlock_irqrestore(&stats->stats_lock, flags);
+   343			WARN("%s: threaded irq waked but buffer holds no measures",
+   344			     __func__);
+   345			return IRQ_HANDLED;
+   346		}
+   347		list_del(&kstats_buf->buff.queue);
+   348		spin_unlock_irqrestore(&stats->stats_lock, flags);
+   349	
+   350		cur_stat_buf =
+   351			(struct rkisp1_stat_buffer *)(kstats_buf->buff.vaddr[0]);
+   352	
+   353		if (kstats_buf->ris & RKISP1_CIF_ISP_AWB_DONE) {
+   354			rkisp1_stats_get_awb_meas(stats, cur_stat_buf);
+   355			cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AWB;
+   356		}
+   357	
+   358		if (kstats_buf->ris & RKISP1_CIF_ISP_AFM_FIN) {
+   359			rkisp1_stats_get_afc_meas(stats, cur_stat_buf);
+   360			cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AFM_FIN;
+   361		}
+   362	
+   363		if (kstats_buf->ris & RKISP1_CIF_ISP_EXP_END) {
+   364			rkisp1_stats_get_aec_meas(stats, cur_stat_buf);
+   365			rkisp1_stats_get_bls_meas(stats, cur_stat_buf);
+   366			cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AUTOEXP;
+   367		}
+   368	
+   369		if (kstats_buf->ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY) {
+   370			rkisp1_stats_get_hst_meas(stats, cur_stat_buf);
+   371			cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_HIST;
+   372		}
+   373	
+   374		vb2_set_plane_payload(&kstats_buf->buff.vb.vb2_buf, 0,
+   375				      sizeof(struct rkisp1_stat_buffer));
+   376		kstats_buf->buff.vb.vb2_buf.timestamp = timestamp;
+   377		vb2_buffer_done(&kstats_buf->buff.vb.vb2_buf, VB2_BUF_STATE_DONE);
+   378		return IRQ_HANDLED;
+ > 379	}
+   380	
+   381	
+   382	irqreturn_t rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
+   383	{
+   384		struct rkisp1_device *rkisp1 = stats->rkisp1;
+   385		struct rkisp1_isp *isp = &rkisp1->isp;
+   386		struct rkisp1_kstats_buffer *buf = NULL;
+ > 387		irqreturn_t ret = IRQ_HANDLED;
+   388		unsigned int isp_mis_tmp = 0;
+   389		unsigned long flags;
+   390		u32 val;
+   391	
+   392		spin_lock_irqsave(&stats->stats_lock, flags);
+   393	
+   394		val = RKISP1_STATS_MEAS_MASK;
+   395		rkisp1_write(rkisp1, val, RKISP1_CIF_ISP_ICR);
+   396	
+   397		isp_mis_tmp = rkisp1_read(rkisp1, RKISP1_CIF_ISP_MIS);
+   398		if (isp_mis_tmp & RKISP1_STATS_MEAS_MASK)
+   399			rkisp1->debug.stats_error++;
+   400	
+   401		if (!stats->is_streaming || !(isp_ris & RKISP1_STATS_MEAS_MASK))
+   402			goto unlock;
+   403	
+   404		list_for_each_entry(buf, &stats->stat, buff.queue) {
+   405			if (!buf->ris) {
+   406				buf->buff.vb.sequence =
+   407					atomic_read(&isp->frame_sequence);
+   408				buf->ris = isp_ris;
+ > 409				ret = IRQ_WAKE_THREAD;
+   410				break;
+   411			}
+   412		}
+   413	
+   414	unlock:
+   415		spin_unlock_irqrestore(&stats->stats_lock, flags);
+   416		return ret;
+   417	}
+   418	
 
 ---
 0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all-hn68Rpc1hR1g9hUCZPvPmw@public.gmane.org
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
---sdtB3X0nJg68CQEu
+--7AUc2qLy4jB3hD7Z
 Content-Type: application/gzip
 Content-Disposition: attachment; filename=".config.gz"
 Content-Transfer-Encoding: base64
 
-H4sICACvul4AAy5jb25maWcAjFxLc+M2Er7nV6gml91DEj9mlMlu+QCSIImILxOgbPnC0ng0
+H4sICFvMul4AAy5jb25maWcAjFxLc+M2Er7nV6gml91DEj9mlMlu+QCSIImILxOgbPnC0ng0
 E1c8lsuSs8m/327whQZAeVKpGrO/Bgg0Gv0CqB9/+HHBXo/7b9vjw/328fGfxdfd0+5le9x9
 Xnx5eNz9dxGVi6JUCx4J9TMwZw9Pr3//8vSwP1wsPvz8689nP73cXyxWu5en3eMi3D99efj6
 Cs0f9k8//PgD/P8jEL89Q08v/1noVj89Yg8/fb2/X/wrCcN/L377+fLnM+AMyyIWSRuGrZAt
@@ -1180,15 +1239,4 @@ sqOfWUcpBg0rT2+lfR9rrdeszrSd+Zrf4hJsXoopwepefS/WPwK14bx++OaVu0yywGk6tFLx
 oM37srMvJttvoMwW2Sd8yIyjANhy2dn9yzHSaZ62qXym/bajrUbmV3jLgOvv/wFPLW9M3pED
 AA==
 
---sdtB3X0nJg68CQEu
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---sdtB3X0nJg68CQEu--
+--7AUc2qLy4jB3hD7Z--
