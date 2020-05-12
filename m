@@ -1,7 +1,7 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH 1/5] media: staging: rkisp1: return IRQ_NONE in isr when irq isn't for ISP
-Date: Tue, 12 May 2020 14:05:18 +0200
-Message-ID: <20200512120522.25960-2-dafna.hirschfeld@collabora.com>
+Subject: [PATCH 3/5] media: staging: rkisp1: stats: use spin_lock_irqsave for irq_lock
+Date: Tue, 12 May 2020 14:05:20 +0200
+Message-ID: <20200512120522.25960-4-dafna.hirschfeld@collabora.com>
 References: <20200512120522.25960-1-dafna.hirschfeld@collabora.com>
 Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <20200512120522.25960-1-dafna.hirschfeld@collabora.com>
@@ -10,158 +10,39 @@ To: linux-media@vger.kernel.org
 Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Helen Koike <helen.koike@collabora.com>
+Currently 'spin_lock' is used in order to lock the 'irq_lock'.
+This should be replaced with 'spin_lock_irqsave' since it is
+used in the irq handler.
 
-rkisp1 shares the interrupt line, then it shouldn't always return
-IRQ_HANDLED, otherwise it can flag as handled an interrupt that wans't
-meant for ISP.
-
-return IRQ_NONE when the interrupt wans't meant for ISP
-
-Fixes: d65dd85281fb ("media: staging: rkisp1: add Rockchip ISP1 base driver")
-
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- drivers/staging/media/rkisp1/rkisp1-capture.c |  7 ++++++-
- drivers/staging/media/rkisp1/rkisp1-common.h  |  6 +++---
- drivers/staging/media/rkisp1/rkisp1-dev.c     | 14 ++++++++++----
- drivers/staging/media/rkisp1/rkisp1-isp.c     | 12 ++++++++----
- 4 files changed, 27 insertions(+), 12 deletions(-)
+ drivers/staging/media/rkisp1/rkisp1-stats.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index f69235f82c45..19021875e8a9 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -649,12 +649,15 @@ static void rkisp1_handle_buffer(struct rkisp1_capture *cap)
- 	rkisp1_set_next_buf(cap);
- }
+diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
+index 12998db955e6..5578fdeb8a18 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-stats.c
++++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
+@@ -403,9 +403,10 @@ void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
+ 	struct rkisp1_device *rkisp1 = stats->rkisp1;
+ 	struct rkisp1_isp_readout_work *work;
+ 	unsigned int isp_mis_tmp = 0;
++	unsigned long flags;
+ 	u32 val;
  
--void rkisp1_capture_isr(struct rkisp1_device *rkisp1)
-+irqreturn_t rkisp1_capture_isr(struct rkisp1_device *rkisp1)
- {
- 	unsigned int i;
- 	u32 status;
+-	spin_lock(&stats->irq_lock);
++	spin_lock_irqsave(&stats->irq_lock, flags);
  
- 	status = rkisp1_read(rkisp1, RKISP1_CIF_MI_MIS);
-+	if (!status)
-+		return IRQ_NONE;
-+
- 	rkisp1_write(rkisp1, status, RKISP1_CIF_MI_ICR);
- 
- 	for (i = 0; i < ARRAY_SIZE(rkisp1->capture_devs); ++i) {
-@@ -682,6 +685,8 @@ void rkisp1_capture_isr(struct rkisp1_device *rkisp1)
- 		cap->is_streaming = false;
- 		wake_up(&cap->done);
+ 	val = RKISP1_STATS_MEAS_MASK;
+ 	rkisp1_write(rkisp1, val, RKISP1_CIF_ISP_ICR);
+@@ -435,7 +436,7 @@ void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
  	}
-+
-+	return IRQ_HANDLED;
+ 
+ unlock:
+-	spin_unlock(&stats->irq_lock);
++	spin_unlock_irqrestore(&stats->irq_lock, flags);
  }
  
- /* ----------------------------------------------------------------------------
-diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-index 0c4fe503adc9..33dffe21c769 100644
---- a/drivers/staging/media/rkisp1/rkisp1-common.h
-+++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-@@ -305,9 +305,9 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1);
- 
- const struct rkisp1_isp_mbus_info *rkisp1_isp_mbus_info_get(u32 mbus_code);
- 
--void rkisp1_isp_isr(struct rkisp1_device *rkisp1);
--void rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
--void rkisp1_capture_isr(struct rkisp1_device *rkisp1);
-+irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1);
-+irqreturn_t rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
-+irqreturn_t rkisp1_capture_isr(struct rkisp1_device *rkisp1);
- void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris);
- void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis);
- 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
-index 9ac38bafb839..b7f43dab71c8 100644
---- a/drivers/staging/media/rkisp1/rkisp1-dev.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
-@@ -387,10 +387,13 @@ static int rkisp1_entities_register(struct rkisp1_device *rkisp1)
- 	return ret;
- }
- 
--static irqreturn_t rkisp1_isr(int irq, void *ctx)
-+irqreturn_t rkisp1_isr(int irq, void *ctx)
- {
- 	struct device *dev = ctx;
- 	struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
-+	irqreturn_t isp_ret;
-+	irqreturn_t cap_ret;
-+	irqreturn_t mipi_ret;
- 
- 	/*
- 	 * Call rkisp1_capture_isr() first to handle the frame that
-@@ -398,9 +401,12 @@ static irqreturn_t rkisp1_isr(int irq, void *ctx)
- 	 * it is potentially incremented by rkisp1_isp_isr() in the vertical
- 	 * sync.
- 	 */
--	rkisp1_capture_isr(rkisp1);
--	rkisp1_isp_isr(rkisp1);
--	rkisp1_mipi_isr(rkisp1);
-+	cap_ret = rkisp1_capture_isr(rkisp1);
-+	isp_ret = rkisp1_isp_isr(rkisp1);
-+	mipi_ret = rkisp1_mipi_isr(rkisp1);
-+
-+	if (isp_ret == IRQ_NONE && cap_ret == IRQ_NONE && mipi_ret == IRQ_NONE)
-+		return IRQ_NONE;
- 
- 	return IRQ_HANDLED;
- }
-diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-index dc2b59a0160a..19ab0ed323aa 100644
---- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-@@ -1046,13 +1046,13 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
-  * Interrupt handlers
-  */
- 
--void rkisp1_mipi_isr(struct rkisp1_device *rkisp1)
-+irqreturn_t rkisp1_mipi_isr(struct rkisp1_device *rkisp1)
- {
- 	u32 val, status;
- 
- 	status = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_MIS);
- 	if (!status)
--		return;
-+		return IRQ_NONE;
- 
- 	rkisp1_write(rkisp1, status, RKISP1_CIF_MIPI_ICR);
- 
-@@ -1087,6 +1087,8 @@ void rkisp1_mipi_isr(struct rkisp1_device *rkisp1)
- 	} else {
- 		rkisp1->debug.mipi_error++;
- 	}
-+
-+	return IRQ_HANDLED;
- }
- 
- static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
-@@ -1106,13 +1108,13 @@ static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
- 	v4l2_event_queue(isp->sd.devnode, &event);
- }
- 
--void rkisp1_isp_isr(struct rkisp1_device *rkisp1)
-+irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1)
- {
- 	u32 status, isp_err;
- 
- 	status = rkisp1_read(rkisp1, RKISP1_CIF_ISP_MIS);
- 	if (!status)
--		return;
-+		return IRQ_NONE;
- 
- 	rkisp1_write(rkisp1, status, RKISP1_CIF_ISP_ICR);
- 
-@@ -1148,4 +1150,6 @@ void rkisp1_isp_isr(struct rkisp1_device *rkisp1)
- 	 * Do the updates in the order of the processing flow.
- 	 */
- 	rkisp1_params_isr(rkisp1, status);
-+
-+	return IRQ_HANDLED;
- }
+ static void rkisp1_init_stats(struct rkisp1_stats *stats)
 -- 
 2.17.1
