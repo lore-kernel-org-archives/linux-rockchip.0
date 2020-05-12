@@ -1,72 +1,63 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/3] dt-bindings: leds: common: Drop enumeration for
- linux,default-triggers
-Date: Mon, 11 May 2020 18:12:55 -0500
-Message-ID: <20200511231255.GA24112@bogus>
-References: <20200427073132.29997-1-wens@kernel.org>
- <20200427073132.29997-2-wens@kernel.org>
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: Re: [PATCH v4 12/16] usb: dwc3: add make compatible for rockchip
+ platform
+Date: Tue, 12 May 2020 09:08:21 +0800
+Message-ID: <618d46f5-7970-9b27-e912-36f21b24a957@rock-chips.com>
+References: <20200511075330.26462-1-frank.wang@rock-chips.com>
+ <20200511075725.26665-1-frank.wang@rock-chips.com>
+ <20200511075725.26665-3-frank.wang@rock-chips.com>
+ <502d8fff-5ae2-b47f-f483-62cd24177ed1@denx.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200427073132.29997-2-wens-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Chen-Yu Tsai <wens-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jacek Anaszewski <jacek.anaszewski-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Pavel Machek <pavel-+ZI9xUNit7I@public.gmane.org>, Dan Murphy <dmurphy-l0cyMroinI0@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-leds-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <502d8fff-5ae2-b47f-f483-62cd24177ed1@denx.de>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Marek Vasut <marex@denx.de>, heiko@sntech.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org, kever.yang@rock-chips.com
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Apr 27, 2020 at 03:31:30PM +0800, Chen-Yu Tsai wrote:
-> From: Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>
-> 
-> The bindings currently list a very small subset of valid triggers for
-> LEDs. Since many drivers or subsystems in Linux register custom
-> triggers, the list would become very hard to maintain.
+Hi Marek,
 
-The idea was we'll consolidate around standardized names and that new 
-users should use 'function' instead.
+On 2020/5/11 17:48, Marek Vasut wrote:
+> On 5/11/20 9:57 AM, Frank Wang wrote:
+> [...]
+>
+>> @@ -394,6 +407,12 @@ static int dwc3_glue_probe(struct udevice *dev)
+>>   	if (ret)
+>>   		return ret;
+>>   
+>> +	if (glue->resets.count < 1) {
+> This condition is only true if count == 0 ?
+> What's the purpose of this test ?
 
-There was discussion around this when adding 'function'.
+For previous dts of the Linux kernel, the reset phandles were in 
+dwc3-glue nodes, however, they are moved recently into dwc3 that is a 
+child node of dwc3-glue.
 
-> 
-> Instead, just drop the list and allow free form strings.
-> 
-> Signed-off-by: Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>
-> ---
->  .../devicetree/bindings/leds/common.yaml      | 21 +------------------
->  1 file changed, 1 insertion(+), 20 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/leds/common.yaml b/Documentation/devicetree/bindings/leds/common.yaml
-> index 4c270fde4567..3b3cdab3fc15 100644
-> --- a/Documentation/devicetree/bindings/leds/common.yaml
-> +++ b/Documentation/devicetree/bindings/leds/common.yaml
-> @@ -79,26 +79,7 @@ properties:
->      description:
->        This parameter, if present, is a string defining the trigger assigned to
->        the LED.
-> -    allOf:
-> -      - $ref: /schemas/types.yaml#definitions/string
-> -    enum:
-> -        # LED will act as a back-light, controlled by the framebuffer system
-> -      - backlight
-> -        # LED will turn on (but for leds-gpio see "default-state" property in
-> -        # Documentation/devicetree/bindings/leds/leds-gpio.yaml)
-> -      - default-on
-> -        # LED "double" flashes at a load average based rate
-> -      - heartbeat
-> -        # LED indicates disk activity
-> -      - disk-activity
-> -        # LED indicates IDE disk activity (deprecated), in new implementations
-> -        # use "disk-activity"
-> -      - ide-disk
-> -        # LED flashes at a fixed, configurable rate
-> -      - timer
-> -        # LED alters the brightness for the specified duration with one software
-> -        # timer (requires "led-pattern" property)
-> -      - pattern
-> +    $ref: /schemas/types.yaml#definitions/string
->  
->    led-pattern:
->      description: |
-> -- 
-> 2.26.0
-> 
+So the above codes is to make compatible.
+
+
+>> +		ret = dwc3_glue_reset_init(child, glue);
+>> +		if (ret)
+>> +			return ret;
+>> +	}
+>> +
+>>   	while (child) {
+>>   		enum usb_dr_mode dr_mode;
+>>   
+> [...]
+>
+>
+
+BR,
+Frank
