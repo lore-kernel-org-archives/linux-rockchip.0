@@ -1,47 +1,34 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH v1] ASoC: rockchip-i2s: add description for rk3308
-Date: Tue, 12 May 2020 17:44:44 +0100
-Message-ID: <158930188455.55827.16068992221946601782.b4-ty@kernel.org>
-References: <20200507113238.7904-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200507113238.7904-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: heiko@sntech.de, Johan Jonker <jbx6244@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, robh+dt@kernel.org, lgirdwood@gmail.com, linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH] pinctrl: rockchip: fix memleak in rockchip_dt_node_to_map
+Date: Tue, 12 May 2020 19:46:13 +0200
+Message-ID: <CACRpkdZ7QSNfMSm1NEFC9zbH8tkOieoPr39Fx3kzxgmER1cqAw@mail.gmail.com>
+References: <20200506100903.15420-1-dafna.hirschfeld@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <20200506100903.15420-1-dafna.hirschfeld@collabora.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, helen.koike@collabora.com, ezequiel@collabora.com, dafna3@gmail.com, kernel@collabora.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 7 May 2020 13:32:38 +0200, Johan Jonker wrote:
-> The description below is already in use for rk3308.dtsi,
-> but was somehow never added to a document, so add
-> "rockchip,rk3308-i2s", "rockchip,rk3066-i2s"
-> for i2s nodes on a rk3308 platform to rockchip-i2s.yaml.
-> One of the rk3308 i2s nodes also has a different dma layout,
-> so change that as well.
+On Wed, May 6, 2020 at 12:09 PM Dafna Hirschfeld
+<dafna.hirschfeld@collabora.com> wrote:
 
-Applied to
+> In function rockchip_dt_node_to_map, a new_map variable is
+> allocated by:
+>
+> new_map = devm_kcalloc(pctldev->dev, map_num, sizeof(*new_map),
+>                        GFP_KERNEL);
+>
+> This uses devres and attaches new_map to the pinctrl driver.
+> This cause a leak since new_map is not released when the probed
+> driver is removed. Fix it by using kcalloc to allocate new_map
+> and free it in `rockchip_dt_free_map`
+>
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-5.8
+Patch applied.
 
-Thanks!
-
-[1/1] ASoC: rockchip-i2s: add description for rk3308
-      commit: ab436c974e08d9254999d7a84d86b1d4c1749230
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+Yours,
+Linus Walleij
