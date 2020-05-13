@@ -1,157 +1,58 @@
-From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v5 16/16] roc-rk3399-pc: Enable USB3.0 Host
-Date: Wed, 13 May 2020 15:18:03 +0800
-Message-ID: <20200513071803.5781-1-frank.wang@rock-chips.com>
-References: <20200513071344.5430-1-frank.wang@rock-chips.com>
+From: Marek Vasut <marex@denx.de>
+Subject: Re: [PATCH v4 12/16] usb: dwc3: add make compatible for rockchip
+ platform
+Date: Wed, 13 May 2020 13:41:02 +0200
+Message-ID: <16a2e9f6-45e5-cbc3-6d2c-d53c4b0afc0d@denx.de>
+References: <20200511075330.26462-1-frank.wang@rock-chips.com>
+ <20200511075725.26665-1-frank.wang@rock-chips.com>
+ <20200511075725.26665-3-frank.wang@rock-chips.com>
+ <502d8fff-5ae2-b47f-f483-62cd24177ed1@denx.de>
+ <618d46f5-7970-9b27-e912-36f21b24a957@rock-chips.com>
+ <6f0482e0-eedc-b7e4-f6ab-cf82b26c22ec@denx.de>
+ <9d80fda2-9760-0aec-6bb7-5680279b3a0f@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200513071344.5430-1-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, marex-ynQEQJNshbs@public.gmane.org, bmeng.cn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: jianing.ren-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <9d80fda2-9760-0aec-6bb7-5680279b3a0f@rock-chips.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Frank Wang <frank.wang@rock-chips.com>, heiko@sntech.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org, kever.yang@rock-chips.com
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+On 5/13/20 2:47 AM, Frank Wang wrote:
+> Hi Marek,
+> 
+> On 2020/5/12 15:26, Marek Vasut wrote:
+>> On 5/12/20 3:08 AM, Frank Wang wrote:
+>>> Hi Marek,
+>>>
+>>> On 2020/5/11 17:48, Marek Vasut wrote:
+>>>> On 5/11/20 9:57 AM, Frank Wang wrote:
+>>>> [...]
+>>>>
+>>>>> @@ -394,6 +407,12 @@ static int dwc3_glue_probe(struct udevice *dev)
+>>>>>        if (ret)
+>>>>>            return ret;
+>>>>>    +    if (glue->resets.count < 1) {
+>>>> This condition is only true if count == 0 ?
+>>>> What's the purpose of this test ?
+>>> For previous dts of the Linux kernel, the reset phandles were in
+>>> dwc3-glue nodes, however, they are moved recently into dwc3 that is a
+>>> child node of dwc3-glue.
+>>>
+>>> So the above codes is to make compatible.
+>> Why doesn't it check for count == 0 then ?
+>>
+> Will fix.
 
-Enable USB3.0 Host support for ROC-RK3399-PC boards.
-
-Tested USB3.0 SSD on Type C1 port on board.
-
-=> usb start
-starting USB...
-Bus usb@fe380000: USB EHCI 1.00
-Bus usb@fe3c0000: USB EHCI 1.00
-Bus dwc3: usb maximum-speed not found
-Register 2000140 NbrPorts 2
-Starting the controller
-USB XHCI 1.10
-scanning bus usb@fe380000 for devices... 1 USB Device(s) found
-scanning bus usb@fe3c0000 for devices... 2 USB Device(s) found
-scanning bus dwc3 for devices... 6 USB Device(s) found
-       scanning usb for storage devices... 1 Storage Device(s) found
-=> usb tree
-USB device tree:
-  1  Hub (480 Mb/s, 0mA)
-     u-boot EHCI Host Controller
-
-  1  Hub (480 Mb/s, 0mA)
-  |  u-boot EHCI Host Controller
-  |
-  +-2  Hub (480 Mb/s, 100mA)
-        USB 2.0 Hub [MTT]
-
-  1  Hub (5 Gb/s, 0mA)
-  |  U-Boot XHCI Host Controller
-  |
-  +-2  Hub (480 Mb/s, 0mA)
-  | |  VIA Labs, Inc. USB2.0 Hub
-  | |
-  | +-4  Hub (480 Mb/s, 100mA)
-  |   |   USB 2.0 Hub
-  |   |
-  |   +-5   (480 Mb/s, 100mA)
-  |        VIA Technologies Inc. USB 2.0 BILLBOARD  0000000000000001
-  |
-  +-3  Hub (5 Gb/s, 0mA)
-    |  VIA Labs, Inc. USB3.0 Hub
-    |
-    +-6  Mass Storage (5 Gb/s, 224mA)
-         JMicron External Disk 3.0 DB12345678A2
-
-=> usb reset
-resetting USB...
-Bus usb@fe380000: USB EHCI 1.00
-Bus usb@fe3c0000: USB EHCI 1.00
-Bus dwc3: usb maximum-speed not found
-Register 2000140 NbrPorts 2
-Starting the controller
-USB XHCI 1.10
-scanning bus usb@fe380000 for devices... 1 USB Device(s) found
-scanning bus usb@fe3c0000 for devices... 2 USB Device(s) found
-scanning bus dwc3 for devices... 6 USB Device(s) found
-       scanning usb for storage devices... 1 Storage Device(s) found
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- configs/roc-pc-mezzanine-rk3399_defconfig | 5 +++++
- configs/roc-pc-rk3399_defconfig           | 6 ++++++
- 2 files changed, 11 insertions(+)
-
-diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
-index 0b853805f3..1f10856caa 100644
---- a/configs/roc-pc-mezzanine-rk3399_defconfig
-+++ b/configs/roc-pc-mezzanine-rk3399_defconfig
-@@ -29,6 +29,7 @@ CONFIG_ENV_IS_IN_MMC=y
- CONFIG_SYS_RELOC_GD_ENV_ADDR=y
- CONFIG_ROCKCHIP_GPIO=y
- CONFIG_SYS_I2C_ROCKCHIP=y
-+CONFIG_MISC=y
- CONFIG_MMC_DW=y
- CONFIG_MMC_DW_ROCKCHIP=y
- CONFIG_MMC_SDHCI=y
-@@ -39,6 +40,8 @@ CONFIG_ETH_DESIGNWARE=y
- CONFIG_GMAC_ROCKCHIP=y
- CONFIG_NVME=y
- CONFIG_PCI=y
-+CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-+CONFIG_PHY_ROCKCHIP_TYPEC=y
- CONFIG_PMIC_RK8XX=y
- CONFIG_REGULATOR_PWM=y
- CONFIG_REGULATOR_RK8XX=y
-@@ -54,6 +57,8 @@ CONFIG_USB_XHCI_HCD=y
- CONFIG_USB_XHCI_DWC3=y
- CONFIG_USB_EHCI_HCD=y
- CONFIG_USB_EHCI_GENERIC=y
-+CONFIG_USB_DWC3=y
-+CONFIG_USB_DWC3_GENERIC=y
- CONFIG_USB_HOST_ETHER=y
- CONFIG_USB_ETHER_ASIX=y
- CONFIG_USB_ETHER_ASIX88179=y
-diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index aff690f039..76e76c160e 100644
---- a/configs/roc-pc-rk3399_defconfig
-+++ b/configs/roc-pc-rk3399_defconfig
-@@ -28,6 +28,7 @@ CONFIG_ENV_IS_IN_MMC=y
- CONFIG_SYS_RELOC_GD_ENV_ADDR=y
- CONFIG_ROCKCHIP_GPIO=y
- CONFIG_SYS_I2C_ROCKCHIP=y
-+CONFIG_MISC=y
- CONFIG_MMC_DW=y
- CONFIG_MMC_DW_ROCKCHIP=y
- CONFIG_MMC_SDHCI=y
-@@ -36,11 +37,14 @@ CONFIG_SPI_FLASH_WINBOND=y
- CONFIG_DM_ETH=y
- CONFIG_ETH_DESIGNWARE=y
- CONFIG_GMAC_ROCKCHIP=y
-+CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-+CONFIG_PHY_ROCKCHIP_TYPEC=y
- CONFIG_PMIC_RK8XX=y
- CONFIG_REGULATOR_PWM=y
- CONFIG_REGULATOR_RK8XX=y
- CONFIG_PWM_ROCKCHIP=y
- CONFIG_RAM_RK3399_LPDDR4=y
-+CONFIG_DM_RESET=y
- CONFIG_BAUDRATE=1500000
- CONFIG_DEBUG_UART_SHIFT=2
- CONFIG_ROCKCHIP_SPI=y
-@@ -50,6 +54,8 @@ CONFIG_USB_XHCI_HCD=y
- CONFIG_USB_XHCI_DWC3=y
- CONFIG_USB_EHCI_HCD=y
- CONFIG_USB_EHCI_GENERIC=y
-+CONFIG_USB_DWC3=y
-+CONFIG_USB_DWC3_GENERIC=y
- CONFIG_USB_KEYBOARD=y
- CONFIG_USB_HOST_ETHER=y
- CONFIG_USB_ETHER_ASIX=y
--- 
-2.17.1
+Thanks.
