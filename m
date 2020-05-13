@@ -1,14 +1,13 @@
 From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v5 08/16] usb: dwc3: add dis_u2_freeclk_exists_quirk
-Date: Wed, 13 May 2020 15:15:38 +0800
-Message-ID: <20200513071546.5560-4-frank.wang@rock-chips.com>
+Subject: [PATCH v5 16/16] roc-rk3399-pc: Enable USB3.0 Host
+Date: Wed, 13 May 2020 15:18:03 +0800
+Message-ID: <20200513071803.5781-1-frank.wang@rock-chips.com>
 References: <20200513071344.5430-1-frank.wang@rock-chips.com>
- <20200513071546.5560-1-frank.wang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200513071546.5560-1-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+In-Reply-To: <20200513071344.5430-1-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,88 +18,140 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, marex-ynQEQJNshbs@public.gmane.org, bmeng.cn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
-Cc: jianing.ren-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: jianing.ren-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add a quirk to clear the GUSB2PHYCFG.U2_FREECLK_EXISTS bit,
-which specifies whether the USB2.0 PHY provides a free-running
-PHY clock, which is active when the clock control input is active.
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 
-Refer to commit 27f83eeb6b42("usb: dwc3: add dis_u2_freeclk_exists_quirk")
-in Linux Rockchip Kernel.
+Enable USB3.0 Host support for ROC-RK3399-PC boards.
 
-Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Reviewed-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Tested-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Tested USB3.0 SSD on Type C1 port on board.
+
+=> usb start
+starting USB...
+Bus usb@fe380000: USB EHCI 1.00
+Bus usb@fe3c0000: USB EHCI 1.00
+Bus dwc3: usb maximum-speed not found
+Register 2000140 NbrPorts 2
+Starting the controller
+USB XHCI 1.10
+scanning bus usb@fe380000 for devices... 1 USB Device(s) found
+scanning bus usb@fe3c0000 for devices... 2 USB Device(s) found
+scanning bus dwc3 for devices... 6 USB Device(s) found
+       scanning usb for storage devices... 1 Storage Device(s) found
+=> usb tree
+USB device tree:
+  1  Hub (480 Mb/s, 0mA)
+     u-boot EHCI Host Controller
+
+  1  Hub (480 Mb/s, 0mA)
+  |  u-boot EHCI Host Controller
+  |
+  +-2  Hub (480 Mb/s, 100mA)
+        USB 2.0 Hub [MTT]
+
+  1  Hub (5 Gb/s, 0mA)
+  |  U-Boot XHCI Host Controller
+  |
+  +-2  Hub (480 Mb/s, 0mA)
+  | |  VIA Labs, Inc. USB2.0 Hub
+  | |
+  | +-4  Hub (480 Mb/s, 100mA)
+  |   |   USB 2.0 Hub
+  |   |
+  |   +-5   (480 Mb/s, 100mA)
+  |        VIA Technologies Inc. USB 2.0 BILLBOARD  0000000000000001
+  |
+  +-3  Hub (5 Gb/s, 0mA)
+    |  VIA Labs, Inc. USB3.0 Hub
+    |
+    +-6  Mass Storage (5 Gb/s, 224mA)
+         JMicron External Disk 3.0 DB12345678A2
+
+=> usb reset
+resetting USB...
+Bus usb@fe380000: USB EHCI 1.00
+Bus usb@fe3c0000: USB EHCI 1.00
+Bus dwc3: usb maximum-speed not found
+Register 2000140 NbrPorts 2
+Starting the controller
+USB XHCI 1.10
+scanning bus usb@fe380000 for devices... 1 USB Device(s) found
+scanning bus usb@fe3c0000 for devices... 2 USB Device(s) found
+scanning bus dwc3 for devices... 6 USB Device(s) found
+       scanning usb for storage devices... 1 Storage Device(s) found
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/usb/dwc3/core.c | 6 ++++++
- drivers/usb/dwc3/core.h | 2 ++
- include/dwc3-uboot.h    | 1 +
- 3 files changed, 9 insertions(+)
+ configs/roc-pc-mezzanine-rk3399_defconfig | 5 +++++
+ configs/roc-pc-rk3399_defconfig           | 6 ++++++
+ 2 files changed, 11 insertions(+)
 
-diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index 20be617fd4..3cb66515a2 100644
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -401,6 +401,9 @@ static void dwc3_phy_setup(struct dwc3 *dwc)
- 	if (dwc->dis_enblslpm_quirk)
- 		reg &= ~DWC3_GUSB2PHYCFG_ENBLSLPM;
- 
-+	if (dwc->dis_u2_freeclk_exists_quirk)
-+		reg &= ~DWC3_GUSB2PHYCFG_U2_FREECLK_EXISTS;
-+
- 	dwc3_writel(dwc->regs, DWC3_GUSB2PHYCFG(0), reg);
- 
- 	mdelay(100);
-@@ -723,6 +726,7 @@ int dwc3_uboot_init(struct dwc3_device *dwc3_dev)
- 	dwc->dis_u2_susphy_quirk = dwc3_dev->dis_u2_susphy_quirk;
- 	dwc->dis_del_phy_power_chg_quirk = dwc3_dev->dis_del_phy_power_chg_quirk;
- 	dwc->dis_enblslpm_quirk = dwc3_dev->dis_enblslpm_quirk;
-+	dwc->dis_u2_freeclk_exists_quirk = dwc3_dev->dis_u2_freeclk_exists_quirk;
- 
- 	dwc->tx_de_emphasis_quirk = dwc3_dev->tx_de_emphasis_quirk;
- 	if (dwc3_dev->tx_de_emphasis)
-@@ -932,6 +936,8 @@ void dwc3_of_parse(struct dwc3 *dwc)
- 				"snps,dis-del-phy-power-chg-quirk");
- 	dwc->dis_enblslpm_quirk = dev_read_bool(dev,
- 				"snps,dis_enblslpm_quirk");
-+	dwc->dis_u2_freeclk_exists_quirk = dev_read_bool(dev,
-+				"snps,dis-u2-freeclk-exists-quirk");
- 	dwc->tx_de_emphasis_quirk = dev_read_bool(dev,
- 				"snps,tx_de_emphasis_quirk");
- 	tmp = dev_read_u8_array_ptr(dev, "snps,tx_de_emphasis", 1);
-diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index e76e357f1e..c5e656885a 100644
---- a/drivers/usb/dwc3/core.h
-+++ b/drivers/usb/dwc3/core.h
-@@ -161,6 +161,7 @@
- 
- /* Global USB2 PHY Configuration Register */
- #define DWC3_GUSB2PHYCFG_PHYSOFTRST	(1 << 31)
-+#define DWC3_GUSB2PHYCFG_U2_FREECLK_EXISTS	(1 << 30)
- #define DWC3_GUSB2PHYCFG_SUSPHY		(1 << 6)
- #define DWC3_GUSB2PHYCFG_ENBLSLPM	(1 << 8)
- #define DWC3_GUSB2PHYCFG_PHYIF(n)	((n) << 3)
-@@ -824,6 +825,7 @@ struct dwc3 {
- 	unsigned		dis_u2_susphy_quirk:1;
- 	unsigned		dis_del_phy_power_chg_quirk:1;
- 	unsigned		dis_enblslpm_quirk:1;
-+	unsigned		dis_u2_freeclk_exists_quirk:1;
- 
- 	unsigned		tx_de_emphasis_quirk:1;
- 	unsigned		tx_de_emphasis:2;
-diff --git a/include/dwc3-uboot.h b/include/dwc3-uboot.h
-index 98d51e05e1..193d225d31 100644
---- a/include/dwc3-uboot.h
-+++ b/include/dwc3-uboot.h
-@@ -35,6 +35,7 @@ struct dwc3_device {
- 	unsigned dis_u2_susphy_quirk;
- 	unsigned dis_del_phy_power_chg_quirk;
- 	unsigned dis_enblslpm_quirk;
-+	unsigned dis_u2_freeclk_exists_quirk;
- 	unsigned tx_de_emphasis_quirk;
- 	unsigned tx_de_emphasis;
- 	int index;
+diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
+index 0b853805f3..1f10856caa 100644
+--- a/configs/roc-pc-mezzanine-rk3399_defconfig
++++ b/configs/roc-pc-mezzanine-rk3399_defconfig
+@@ -29,6 +29,7 @@ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ROCKCHIP_GPIO=y
+ CONFIG_SYS_I2C_ROCKCHIP=y
++CONFIG_MISC=y
+ CONFIG_MMC_DW=y
+ CONFIG_MMC_DW_ROCKCHIP=y
+ CONFIG_MMC_SDHCI=y
+@@ -39,6 +40,8 @@ CONFIG_ETH_DESIGNWARE=y
+ CONFIG_GMAC_ROCKCHIP=y
+ CONFIG_NVME=y
+ CONFIG_PCI=y
++CONFIG_PHY_ROCKCHIP_INNO_USB2=y
++CONFIG_PHY_ROCKCHIP_TYPEC=y
+ CONFIG_PMIC_RK8XX=y
+ CONFIG_REGULATOR_PWM=y
+ CONFIG_REGULATOR_RK8XX=y
+@@ -54,6 +57,8 @@ CONFIG_USB_XHCI_HCD=y
+ CONFIG_USB_XHCI_DWC3=y
+ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_GENERIC=y
++CONFIG_USB_DWC3=y
++CONFIG_USB_DWC3_GENERIC=y
+ CONFIG_USB_HOST_ETHER=y
+ CONFIG_USB_ETHER_ASIX=y
+ CONFIG_USB_ETHER_ASIX88179=y
+diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+index aff690f039..76e76c160e 100644
+--- a/configs/roc-pc-rk3399_defconfig
++++ b/configs/roc-pc-rk3399_defconfig
+@@ -28,6 +28,7 @@ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ROCKCHIP_GPIO=y
+ CONFIG_SYS_I2C_ROCKCHIP=y
++CONFIG_MISC=y
+ CONFIG_MMC_DW=y
+ CONFIG_MMC_DW_ROCKCHIP=y
+ CONFIG_MMC_SDHCI=y
+@@ -36,11 +37,14 @@ CONFIG_SPI_FLASH_WINBOND=y
+ CONFIG_DM_ETH=y
+ CONFIG_ETH_DESIGNWARE=y
+ CONFIG_GMAC_ROCKCHIP=y
++CONFIG_PHY_ROCKCHIP_INNO_USB2=y
++CONFIG_PHY_ROCKCHIP_TYPEC=y
+ CONFIG_PMIC_RK8XX=y
+ CONFIG_REGULATOR_PWM=y
+ CONFIG_REGULATOR_RK8XX=y
+ CONFIG_PWM_ROCKCHIP=y
+ CONFIG_RAM_RK3399_LPDDR4=y
++CONFIG_DM_RESET=y
+ CONFIG_BAUDRATE=1500000
+ CONFIG_DEBUG_UART_SHIFT=2
+ CONFIG_ROCKCHIP_SPI=y
+@@ -50,6 +54,8 @@ CONFIG_USB_XHCI_HCD=y
+ CONFIG_USB_XHCI_DWC3=y
+ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_GENERIC=y
++CONFIG_USB_DWC3=y
++CONFIG_USB_DWC3_GENERIC=y
+ CONFIG_USB_KEYBOARD=y
+ CONFIG_USB_HOST_ETHER=y
+ CONFIG_USB_ETHER_ASIX=y
 -- 
 2.17.1
