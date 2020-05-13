@@ -1,7 +1,7 @@
 From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v5 13/16] driver: usb: drop legacy rockchip xhci driver
-Date: Wed, 13 May 2020 15:17:07 +0800
-Message-ID: <20200513071710.5651-4-frank.wang@rock-chips.com>
+Subject: [PATCH v5 14/16] ARM: dts: rk3399-evb: usb3.0 host support
+Date: Wed, 13 May 2020 15:17:08 +0800
+Message-ID: <20200513071710.5651-5-frank.wang@rock-chips.com>
 References: <20200513071344.5430-1-frank.wang@rock-chips.com>
  <20200513071710.5651-1-frank.wang@rock-chips.com>
 Mime-Version: 1.0
@@ -22,251 +22,35 @@ To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, marex-ynQEQJNshbs@public.gman
 Cc: jianing.ren-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-We have changed to use dwc3 generic driver for usb3.0 host, so the
-legacy Rockchip's xHCI driver is not needed, and drop it.
+Configure 'tcphy1' and 'usbdrd_dwc3_1' nodes to support USB3.0 host
+for Rockchip RK3399 Evaluation Board.
 
 Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Reviewed-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/usb/host/Kconfig         |   9 --
- drivers/usb/host/Makefile        |   1 -
- drivers/usb/host/xhci-rockchip.c | 196 -------------------------------
- 3 files changed, 206 deletions(-)
- delete mode 100644 drivers/usb/host/xhci-rockchip.c
+ arch/arm/dts/rk3399-evb-u-boot.dtsi | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/drivers/usb/host/Kconfig b/drivers/usb/host/Kconfig
-index 2f381dc958..088931a6b9 100644
---- a/drivers/usb/host/Kconfig
-+++ b/drivers/usb/host/Kconfig
-@@ -53,15 +53,6 @@ config USB_XHCI_PCI
- 	help
- 	  Enables support for the PCI-based xHCI controller.
- 
--config USB_XHCI_ROCKCHIP
--	bool "Support for Rockchip on-chip xHCI USB controller"
--	depends on ARCH_ROCKCHIP
--	depends on DM_REGULATOR
--	depends on DM_USB
--	default y
--	help
--	  Enables support for the on-chip xHCI controller on Rockchip SoCs.
--
- config USB_XHCI_RCAR
- 	bool "Renesas RCar USB 3.0 support"
- 	default y
-diff --git a/drivers/usb/host/Makefile b/drivers/usb/host/Makefile
-index e8e3b17e42..29d4f87e38 100644
---- a/drivers/usb/host/Makefile
-+++ b/drivers/usb/host/Makefile
-@@ -48,7 +48,6 @@ obj-$(CONFIG_USB_XHCI_BRCM) += xhci-brcm.o
- obj-$(CONFIG_USB_XHCI_HCD) += xhci.o xhci-mem.o xhci-ring.o
- obj-$(CONFIG_USB_XHCI_DWC3) += xhci-dwc3.o
- obj-$(CONFIG_USB_XHCI_DWC3_OF_SIMPLE) += dwc3-of-simple.o
--obj-$(CONFIG_USB_XHCI_ROCKCHIP) += xhci-rockchip.o
- obj-$(CONFIG_USB_XHCI_EXYNOS) += xhci-exynos5.o
- obj-$(CONFIG_USB_XHCI_FSL) += xhci-fsl.o
- obj-$(CONFIG_USB_XHCI_MTK) += xhci-mtk.o
-diff --git a/drivers/usb/host/xhci-rockchip.c b/drivers/usb/host/xhci-rockchip.c
-deleted file mode 100644
-index b67722fe45..0000000000
---- a/drivers/usb/host/xhci-rockchip.c
-+++ /dev/null
-@@ -1,196 +0,0 @@
--// SPDX-License-Identifier: GPL-2.0+
--/*
-- * Copyright (c) 2016 Rockchip, Inc.
-- * Authors: Daniel Meng <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-- */
--#include <common.h>
--#include <dm.h>
--#include <malloc.h>
--#include <usb.h>
--#include <watchdog.h>
--#include <linux/errno.h>
--#include <linux/compat.h>
--#include <linux/usb/dwc3.h>
--#include <power/regulator.h>
--
--#include <usb/xhci.h>
--
--struct rockchip_xhci_platdata {
--	fdt_addr_t hcd_base;
--	struct udevice *vbus_supply;
--};
--
--/*
-- * Contains pointers to register base addresses
-- * for the usb controller.
-- */
--struct rockchip_xhci {
--	struct usb_platdata usb_plat;
--	struct xhci_ctrl ctrl;
--	struct xhci_hccr *hcd;
--	struct dwc3 *dwc3_reg;
--};
--
--static int xhci_usb_ofdata_to_platdata(struct udevice *dev)
--{
--	struct rockchip_xhci_platdata *plat = dev_get_platdata(dev);
--	int ret = 0;
--
--	/*
--	 * Get the base address for XHCI controller from the device node
--	 */
--	plat->hcd_base = dev_read_addr(dev);
--	if (plat->hcd_base == FDT_ADDR_T_NONE) {
--		pr_err("Can't get the XHCI register base address\n");
--		return -ENXIO;
--	}
--
--	/* Vbus regulator */
--	ret = device_get_supply_regulator(dev, "vbus-supply",
--					  &plat->vbus_supply);
--	if (ret)
--		debug("Can't get VBus regulator!\n");
--
--	return 0;
--}
--
--/*
-- * rockchip_dwc3_phy_setup() - Configure USB PHY Interface of DWC3 Core
-- * @dwc: Pointer to our controller context structure
-- * @dev: Pointer to ulcass device
-- */
--static void rockchip_dwc3_phy_setup(struct dwc3 *dwc3_reg,
--				    struct udevice *dev)
--{
--	u32 reg;
--	u32 utmi_bits;
--
--	/* Set dwc3 usb2 phy config */
--	reg = readl(&dwc3_reg->g_usb2phycfg[0]);
--
--	if (dev_read_bool(dev, "snps,dis-enblslpm-quirk"))
--		reg &= ~DWC3_GUSB2PHYCFG_ENBLSLPM;
--
--	utmi_bits = dev_read_u32_default(dev, "snps,phyif-utmi-bits", -1);
--	if (utmi_bits == 16) {
--		reg |= DWC3_GUSB2PHYCFG_PHYIF;
--		reg &= ~DWC3_GUSB2PHYCFG_USBTRDTIM_MASK;
--		reg |= DWC3_GUSB2PHYCFG_USBTRDTIM_16BIT;
--	} else if (utmi_bits == 8) {
--		reg &= ~DWC3_GUSB2PHYCFG_PHYIF;
--		reg &= ~DWC3_GUSB2PHYCFG_USBTRDTIM_MASK;
--		reg |= DWC3_GUSB2PHYCFG_USBTRDTIM_8BIT;
--	}
--
--	if (dev_read_bool(dev, "snps,dis-u2-freeclk-exists-quirk"))
--		reg &= ~DWC3_GUSB2PHYCFG_U2_FREECLK_EXISTS;
--
--	if (dev_read_bool(dev, "snps,dis-u2-susphy-quirk"))
--		reg &= ~DWC3_GUSB2PHYCFG_SUSPHY;
--
--	writel(reg, &dwc3_reg->g_usb2phycfg[0]);
--}
--
--static int rockchip_xhci_core_init(struct rockchip_xhci *rkxhci,
--				   struct udevice *dev)
--{
--	int ret;
--
--	ret = dwc3_core_init(rkxhci->dwc3_reg);
--	if (ret) {
--		pr_err("failed to initialize core\n");
--		return ret;
--	}
--
--	rockchip_dwc3_phy_setup(rkxhci->dwc3_reg, dev);
--
--	/* We are hard-coding DWC3 core to Host Mode */
--	dwc3_set_mode(rkxhci->dwc3_reg, DWC3_GCTL_PRTCAP_HOST);
--
--	return 0;
--}
--
--static int rockchip_xhci_core_exit(struct rockchip_xhci *rkxhci)
--{
--	return 0;
--}
--
--static int xhci_usb_probe(struct udevice *dev)
--{
--	struct rockchip_xhci_platdata *plat = dev_get_platdata(dev);
--	struct rockchip_xhci *ctx = dev_get_priv(dev);
--	struct xhci_hcor *hcor;
--	int ret;
--
--	ctx->hcd = (struct xhci_hccr *)plat->hcd_base;
--	ctx->dwc3_reg = (struct dwc3 *)((char *)(ctx->hcd) + DWC3_REG_OFFSET);
--	hcor = (struct xhci_hcor *)((uint64_t)ctx->hcd +
--			HC_LENGTH(xhci_readl(&ctx->hcd->cr_capbase)));
--
--	if (plat->vbus_supply) {
--		ret = regulator_set_enable(plat->vbus_supply, true);
--		if (ret) {
--			pr_err("XHCI: failed to set VBus supply\n");
--			return ret;
--		}
--	}
--
--	ret = rockchip_xhci_core_init(ctx, dev);
--	if (ret) {
--		pr_err("XHCI: failed to initialize controller\n");
--		return ret;
--	}
--
--	return xhci_register(dev, ctx->hcd, hcor);
--}
--
--static int xhci_usb_remove(struct udevice *dev)
--{
--	struct rockchip_xhci_platdata *plat = dev_get_platdata(dev);
--	struct rockchip_xhci *ctx = dev_get_priv(dev);
--	int ret;
--
--	ret = xhci_deregister(dev);
--	if (ret)
--		return ret;
--	ret = rockchip_xhci_core_exit(ctx);
--	if (ret)
--		return ret;
--
--	if (plat->vbus_supply) {
--		ret = regulator_set_enable(plat->vbus_supply, false);
--		if (ret)
--			pr_err("XHCI: failed to set VBus supply\n");
--	}
--
--	return ret;
--}
--
--static const struct udevice_id xhci_usb_ids[] = {
--	{ .compatible = "rockchip,rk3328-xhci" },
--	{ }
--};
--
--U_BOOT_DRIVER(usb_xhci) = {
--	.name	= "xhci_rockchip",
--	.id	= UCLASS_USB,
--	.of_match = xhci_usb_ids,
--	.ofdata_to_platdata = xhci_usb_ofdata_to_platdata,
--	.probe = xhci_usb_probe,
--	.remove = xhci_usb_remove,
--	.ops	= &xhci_usb_ops,
--	.bind	= dm_scan_fdt_dev,
--	.platdata_auto_alloc_size = sizeof(struct rockchip_xhci_platdata),
--	.priv_auto_alloc_size = sizeof(struct rockchip_xhci),
--	.flags	= DM_FLAG_ALLOC_PRIV_DMA,
--};
--
--static const struct udevice_id usb_phy_ids[] = {
--	{ .compatible = "rockchip,rk3328-usb3-phy" },
--	{ }
--};
--
--U_BOOT_DRIVER(usb_phy) = {
--	.name = "usb_phy_rockchip",
--	.of_match = usb_phy_ids,
--};
+diff --git a/arch/arm/dts/rk3399-evb-u-boot.dtsi b/arch/arm/dts/rk3399-evb-u-boot.dtsi
+index e5659d7999..1bebe258f0 100644
+--- a/arch/arm/dts/rk3399-evb-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-evb-u-boot.dtsi
+@@ -23,3 +23,16 @@
+ &rk808 {
+ 	u-boot,dm-pre-reloc;
+ };
++
++&tcphy1 {
++	status = "okay";
++};
++
++&usbdrd3_1 {
++	status = "okay";
++};
++
++&usbdrd_dwc3_1 {
++	dr_mode = "host";
++	status = "okay";
++};
 -- 
 2.17.1
