@@ -1,63 +1,62 @@
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-Subject: Re: [PATCH v3 1/3] media: rkvdec: Fix .buf_prepare
-Date: Wed, 13 May 2020 19:38:32 -0400
-Message-ID: <b7122cb49cfa0bcfa433c154f6cb64ee0dba55da.camel@ndufresne.ca>
-References: <20200505134110.3435-1-ezequiel@collabora.com>
-         <20200505134110.3435-2-ezequiel@collabora.com>
-         <CAAFQd5AWZFoPk2YTp2k8M7LvJshxw46-z+wK2VoM9EzB2CqiFA@mail.gmail.com>
-         <c29fcc922a4917ac695043e605973ba9649f9c9b.camel@collabora.com>
-         <CAAFQd5A458E8iqwakKTDEyTHC+NYY-M1SaTS3m0MARwPaRyOuw@mail.gmail.com>
-         <ac6e162a24a8e2b2180b1a743e5ecd9a2023ac65.camel@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: [PATCH] Revert "clk: rockchip: fix wrong mmc sample phase shift for rk3328"
+Date: Thu, 14 May 2020 13:58:14 +0100
+Message-ID: <e563eea358181446dc42c99e842c33f7ce911936.1589460539.git.robin.murphy@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <ac6e162a24a8e2b2180b1a743e5ecd9a2023ac65.camel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, Tomasz Figa <tfiga@chromium.org>
-Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, Gustavo Padovan <gustavo.padovan@collabora.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@kernel.org, heiko@sntech.de
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Le mardi 05 mai 2020 à 11:27 -0300, Ezequiel Garcia a écrit :
-> On Tue, 2020-05-05 at 16:05 +0200, Tomasz Figa wrote:
-> > On Tue, May 5, 2020 at 3:59 PM Ezequiel Garcia <ezequiel@collabora.com> wrote:
-> > > On Tue, 2020-05-05 at 15:56 +0200, Tomasz Figa wrote:
-> > > > Hi Ezequiel,
-> > > > 
-> > > > On Tue, May 5, 2020 at 3:41 PM Ezequiel Garcia <ezequiel@collabora.com> wrote:
-> > > > > The driver should only set the payload on .buf_prepare
-> > > > > if the buffer is CAPTURE type, or if an OUTPUT buffer
-> > > > > has a zeroed payload.
-> > > > 
-> > > > Thanks for the patch. Just one question below.
-> > > > 
-> > > > Where does the requirement to set OUTPUT buffer bytesused to sizeimage
-> > > > if the original bytesused is 0 come from?
-> > > > 
-> > > 
-> > > If I'm reading english correctly, it's here:
-> > > 
-> > > https://www.kernel.org/doc/html/latest/media/uapi/v4l/buffer.html
-> > > 
-> > > """
-> > > The number of bytes occupied by the data in the buffer. It depends on the negotiated data format and may change with each buffer for compressed
-> > > variable size data like JPEG images. Drivers must set this field when type refers to a capture stream, applications when it refers to an output
-> > > stream. If the application sets this to 0 for an output stream, then bytesused will be set to the size of the buffer (see the length field of this
-> > > struct) by the driver. For multiplanar formats this field is ignored and the planes pointer is used instead.
-> > > """
-> > 
-> > Okay, thanks. I wonder if this shouldn't be handled by the core,
-> > though. Especially given that the document refers to the length field
-> > specifically and not the sizeimage set in the format.
-> > 
-> 
-> Yes, either core or helper, this definitely calls for a generic solution.
+This reverts commit 82f4b67f018c88a7cc9337f0067ed3d6ec352648.
 
-For the context, this is for backward compatibility. I'm not certain it
-make sense for new driver interface like RKVDEC. Specially that if the
-user did pass an empty buffer by accident, this will push garbage into
-the driver. That being said, it seems to match the spec.
+According to a subsequent revert in the vendor kernel, the original
+change was based on unclear documentation and was in fact incorrect.
 
-> 
-> Ezequiel
-> 
+Emprically, my board's SD card at 50MHz and eMMC at 200MHZ seem to get
+lucky with a phase where it had no impact, but limiting the eMMC clock
+to 150MHz to match the nominal limit for the I/O pins made it virtually
+unusable, constantly throwing errors and retuning. With this revert, it
+starts behaving perfectly at 150MHz too.
+
+Fixes: 82f4b67f018c ("clk: rockchip: fix wrong mmc sample phase shift for rk3328")
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+---
+ drivers/clk/rockchip/clk-rk3328.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
+index c186a1985bf4..2429b7c2a8b3 100644
+--- a/drivers/clk/rockchip/clk-rk3328.c
++++ b/drivers/clk/rockchip/clk-rk3328.c
+@@ -808,22 +808,22 @@ static struct rockchip_clk_branch rk3328_clk_branches[] __initdata = {
+ 	MMC(SCLK_SDMMC_DRV, "sdmmc_drv", "clk_sdmmc",
+ 	    RK3328_SDMMC_CON0, 1),
+ 	MMC(SCLK_SDMMC_SAMPLE, "sdmmc_sample", "clk_sdmmc",
+-	    RK3328_SDMMC_CON1, 0),
++	    RK3328_SDMMC_CON1, 1),
+ 
+ 	MMC(SCLK_SDIO_DRV, "sdio_drv", "clk_sdio",
+ 	    RK3328_SDIO_CON0, 1),
+ 	MMC(SCLK_SDIO_SAMPLE, "sdio_sample", "clk_sdio",
+-	    RK3328_SDIO_CON1, 0),
++	    RK3328_SDIO_CON1, 1),
+ 
+ 	MMC(SCLK_EMMC_DRV, "emmc_drv", "clk_emmc",
+ 	    RK3328_EMMC_CON0, 1),
+ 	MMC(SCLK_EMMC_SAMPLE, "emmc_sample", "clk_emmc",
+-	    RK3328_EMMC_CON1, 0),
++	    RK3328_EMMC_CON1, 1),
+ 
+ 	MMC(SCLK_SDMMC_EXT_DRV, "sdmmc_ext_drv", "clk_sdmmc_ext",
+ 	    RK3328_SDMMC_EXT_CON0, 1),
+ 	MMC(SCLK_SDMMC_EXT_SAMPLE, "sdmmc_ext_sample", "clk_sdmmc_ext",
+-	    RK3328_SDMMC_EXT_CON1, 0),
++	    RK3328_SDMMC_EXT_CON1, 1),
+ };
+ 
+ static const char *const rk3328_critical_clocks[] __initconst = {
+-- 
+2.23.0.dirty
