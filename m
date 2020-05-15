@@ -1,48 +1,75 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_v5_14/16=5d_ARM=3a_dts=3a_rk3399-evb=3a_us?=
- =?UTF-8?B?YjMuMCBob3N0IHN1cHBvcnTjgJDor7fms6jmhI/vvIzpgq7ku7bnlLFsaW51eC1y?=
- =?UTF-8?Q?ockchip-bounces+kever=2eyang=3drock-chips=2ecom=40lists=2einfrade?=
- =?UTF-8?B?YWQub3Jn5Luj5Y+R44CR?=
-Date: Fri, 15 May 2020 10:50:34 +0800
-Message-ID: <af446dc3-ae6d-27e7-cea7-e0cd3b64b05c@rock-chips.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v5 15/16] configs: evb-rk3399: update support usb3.0 host
+Date: Fri, 15 May 2020 10:50:55 +0800
+Message-ID: <253d687c-7bf3-7722-25a8-f426c5fc9ec6@rock-chips.com>
 References: <20200513071344.5430-1-frank.wang@rock-chips.com>
- <20200513071710.5651-1-frank.wang@rock-chips.com>
- <20200513071710.5651-5-frank.wang@rock-chips.com>
+ <20200513071747.5727-1-frank.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200513071710.5651-5-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200513071747.5727-1-frank.wang@rock-chips.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, marex-ynQEQJNshbs@public.gmane.org, bmeng.cn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: jianing.ren-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Frank Wang <frank.wang@rock-chips.com>, heiko@sntech.de, marex@denx.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMjAvNS8xMyDkuIvljYgzOjE3LCBGcmFuayBXYW5nIHdyb3RlOgo+IENvbmZpZ3VyZSAn
-dGNwaHkxJyBhbmQgJ3VzYmRyZF9kd2MzXzEnIG5vZGVzIHRvIHN1cHBvcnQgVVNCMy4wIGhvc3QK
-PiBmb3IgUm9ja2NoaXAgUkszMzk5IEV2YWx1YXRpb24gQm9hcmQuCj4KPiBTaWduZWQtb2ZmLWJ5
-OiBGcmFuayBXYW5nIDxmcmFuay53YW5nQHJvY2stY2hpcHMuY29tPgo+IFJldmlld2VkLWJ5OiBK
-YWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbT4KClJldmlld2VkLWJ5OiBLZXZl
-ciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLAotIEtldmVyCj4gLS0t
-Cj4gICBhcmNoL2FybS9kdHMvcmszMzk5LWV2Yi11LWJvb3QuZHRzaSB8IDEzICsrKysrKysrKysr
-KysKPiAgIDEgZmlsZSBjaGFuZ2VkLCAxMyBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEv
-YXJjaC9hcm0vZHRzL3JrMzM5OS1ldmItdS1ib290LmR0c2kgYi9hcmNoL2FybS9kdHMvcmszMzk5
-LWV2Yi11LWJvb3QuZHRzaQo+IGluZGV4IGU1NjU5ZDc5OTkuLjFiZWJlMjU4ZjAgMTAwNjQ0Cj4g
-LS0tIGEvYXJjaC9hcm0vZHRzL3JrMzM5OS1ldmItdS1ib290LmR0c2kKPiArKysgYi9hcmNoL2Fy
-bS9kdHMvcmszMzk5LWV2Yi11LWJvb3QuZHRzaQo+IEBAIC0yMywzICsyMywxNiBAQAo+ICAgJnJr
-ODA4IHsKPiAgIAl1LWJvb3QsZG0tcHJlLXJlbG9jOwo+ICAgfTsKPiArCj4gKyZ0Y3BoeTEgewo+
-ICsJc3RhdHVzID0gIm9rYXkiOwo+ICt9Owo+ICsKPiArJnVzYmRyZDNfMSB7Cj4gKwlzdGF0dXMg
-PSAib2theSI7Cj4gK307Cj4gKwo+ICsmdXNiZHJkX2R3YzNfMSB7Cj4gKwlkcl9tb2RlID0gImhv
-c3QiOwo+ICsJc3RhdHVzID0gIm9rYXkiOwo+ICt9OwoKCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+On 2020/5/13 下午3:17, Frank Wang wrote:
+> Update evb-rk3399 default config to support USB3.0 Host.
+>
+> Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+> Reviewed-by: Jagan Teki <jagan@amarulasolutions.com>
+
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+
+Thanks,
+- Kever
+> ---
+>   configs/evb-rk3399_defconfig | 6 ++++++
+>   1 file changed, 6 insertions(+)
+>
+> diff --git a/configs/evb-rk3399_defconfig b/configs/evb-rk3399_defconfig
+> index 7f14e18b1b..6cfb4e5dac 100644
+> --- a/configs/evb-rk3399_defconfig
+> +++ b/configs/evb-rk3399_defconfig
+> @@ -28,6 +28,7 @@ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+>   CONFIG_NET_RANDOM_ETHADDR=y
+>   CONFIG_ROCKCHIP_GPIO=y
+>   CONFIG_SYS_I2C_ROCKCHIP=y
+> +CONFIG_MISC=y
+>   CONFIG_MMC_DW=y
+>   CONFIG_MMC_SDHCI=y
+>   CONFIG_MMC_SDHCI_ROCKCHIP=y
+> @@ -35,10 +36,13 @@ CONFIG_SF_DEFAULT_SPEED=20000000
+>   CONFIG_DM_ETH=y
+>   CONFIG_ETH_DESIGNWARE=y
+>   CONFIG_GMAC_ROCKCHIP=y
+> +CONFIG_PHY_ROCKCHIP_INNO_USB2=y
+> +CONFIG_PHY_ROCKCHIP_TYPEC=y
+>   CONFIG_PMIC_RK8XX=y
+>   CONFIG_REGULATOR_PWM=y
+>   CONFIG_REGULATOR_RK8XX=y
+>   CONFIG_PWM_ROCKCHIP=y
+> +CONFIG_DM_RESET=y
+>   CONFIG_DM_RNG=y
+>   CONFIG_RNG_ROCKCHIP=y
+>   CONFIG_BAUDRATE=1500000
+> @@ -49,6 +53,8 @@ CONFIG_USB_XHCI_HCD=y
+>   CONFIG_USB_XHCI_DWC3=y
+>   CONFIG_USB_EHCI_HCD=y
+>   CONFIG_USB_EHCI_GENERIC=y
+> +CONFIG_USB_DWC3=y
+> +CONFIG_USB_DWC3_GENERIC=y
+>   CONFIG_USB_HOST_ETHER=y
+>   CONFIG_USB_ETHER_ASIX=y
+>   CONFIG_USB_ETHER_ASIX88179=y
