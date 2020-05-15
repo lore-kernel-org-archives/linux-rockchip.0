@@ -1,14 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v5 01/16] clk: rk3399: Enable/Disable the USB2PHY clk
-Date: Fri, 15 May 2020 10:15:15 +0800
-Message-ID: <932ce156-6947-4ffe-74f3-a3fbde39d65a@rock-chips.com>
+Subject: Re: [PATCH v5 02/16] clk: rk3399: Set empty for TCPHY assigned-clocks
+Date: Fri, 15 May 2020 10:15:29 +0800
+Message-ID: <44dd1187-6a74-ba67-fa78-c34501152867@rock-chips.com>
 References: <20200513071344.5430-1-frank.wang@rock-chips.com>
- <20200513071344.5430-2-frank.wang@rock-chips.com>
+ <20200513071344.5430-3-frank.wang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200513071344.5430-2-frank.wang@rock-chips.com>
+In-Reply-To: <20200513071344.5430-3-frank.wang@rock-chips.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -27,9 +27,16 @@ List-Id: linux-rockchip.vger.kernel.org
 On 2020/5/13 下午3:13, Frank Wang wrote:
 > From: Jagan Teki <jagan@amarulasolutions.com>
 >
-> Enable/Disable the USB2PHY clk for rk3399.
+> Due to v5.7-rc1 sync the SD controller nodes in rk3399.dtsi
+> have SCLK_UPHY0_TCPDCORE, SCLK_UPHY1_TCPDCORE assigned-clocks
+> which are usually required for Linux and don't require to
+> handle them in U-Boot.
 >
-> CLK is clear in enable and set in disable functionality.
+>    assigned-clocks = <&cru SCLK_UPHY0_TCPDCORE>;
+>    assigned-clocks = <&cru SCLK_UPHY1_TCPDCORE>;
+>
+> So, mark them as empty in clock otherwise device probe on
+> those typec phy driver would fail.
 >
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
@@ -37,36 +44,19 @@ Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 Thanks,
 - Kever
 > ---
->   drivers/clk/rockchip/clk_rk3399.c | 12 ++++++++++++
->   1 file changed, 12 insertions(+)
+>   drivers/clk/rockchip/clk_rk3399.c | 2 ++
+>   1 file changed, 2 insertions(+)
 >
 > diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
-> index 5fb72d83c2..b53f2f984e 100644
+> index b53f2f984e..98fc6a3267 100644
 > --- a/drivers/clk/rockchip/clk_rk3399.c
 > +++ b/drivers/clk/rockchip/clk_rk3399.c
-> @@ -1091,6 +1091,12 @@ static int rk3399_clk_enable(struct clk *clk)
->   	case SCLK_MACREF_OUT:
->   		rk_clrreg(&priv->cru->clkgate_con[5], BIT(6));
->   		break;
-> +	case SCLK_USB2PHY0_REF:
-> +		rk_clrreg(&priv->cru->clkgate_con[6], BIT(5));
-> +		break;
-> +	case SCLK_USB2PHY1_REF:
-> +		rk_clrreg(&priv->cru->clkgate_con[6], BIT(6));
-> +		break;
->   	case ACLK_GMAC:
->   		rk_clrreg(&priv->cru->clkgate_con[32], BIT(0));
->   		break;
-> @@ -1167,6 +1173,12 @@ static int rk3399_clk_disable(struct clk *clk)
->   	case SCLK_MACREF_OUT:
->   		rk_setreg(&priv->cru->clkgate_con[5], BIT(6));
->   		break;
-> +	case SCLK_USB2PHY0_REF:
-> +		rk_setreg(&priv->cru->clkgate_con[6], BIT(5));
-> +		break;
-> +	case SCLK_USB2PHY1_REF:
-> +		rk_setreg(&priv->cru->clkgate_con[6], BIT(6));
-> +		break;
->   	case ACLK_GMAC:
->   		rk_setreg(&priv->cru->clkgate_con[32], BIT(0));
->   		break;
+> @@ -997,6 +997,8 @@ static ulong rk3399_clk_set_rate(struct clk *clk, ulong rate)
+>   	case ACLK_VOP1:
+>   	case HCLK_VOP1:
+>   	case HCLK_SD:
+> +	case SCLK_UPHY0_TCPDCORE:
+> +	case SCLK_UPHY1_TCPDCORE:
+>   		/**
+>   		 * assigned-clocks handling won't require for vopl, so
+>   		 * return 0 to satisfy clk_set_defaults during device probe.
