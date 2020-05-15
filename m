@@ -1,164 +1,123 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v5 16/16] roc-rk3399-pc: Enable USB3.0 Host
-Date: Fri, 15 May 2020 10:51:12 +0800
-Message-ID: <de3ee626-84c0-2d5f-24f2-d9b5f933f58a@rock-chips.com>
-References: <20200513071344.5430-1-frank.wang@rock-chips.com>
- <20200513071803.5781-1-frank.wang@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v3 1/6] clk: rk3399: Add enable/disable clks
+Date: Fri, 15 May 2020 10:52:39 +0800
+Message-ID: <649aefb7-4c0b-4b08-e2ce-2bb13d3839e1@rock-chips.com>
+References: <20200509165624.20791-1-jagan@amarulasolutions.com>
+ <20200509165624.20791-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200513071803.5781-1-frank.wang@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200509165624.20791-2-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Frank Wang <frank.wang@rock-chips.com>, heiko@sntech.de, marex@denx.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: patrick-Er2xLVyhcs+zQB+pC5nmwQ@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2020/5/13 下午3:18, Frank Wang wrote:
-> From: Jagan Teki <jagan@amarulasolutions.com>
->
-> Enable USB3.0 Host support for ROC-RK3399-PC boards.
->
-> Tested USB3.0 SSD on Type C1 port on board.
->
-> => usb start
-> starting USB...
-> Bus usb@fe380000: USB EHCI 1.00
-> Bus usb@fe3c0000: USB EHCI 1.00
-> Bus dwc3: usb maximum-speed not found
-> Register 2000140 NbrPorts 2
-> Starting the controller
-> USB XHCI 1.10
-> scanning bus usb@fe380000 for devices... 1 USB Device(s) found
-> scanning bus usb@fe3c0000 for devices... 2 USB Device(s) found
-> scanning bus dwc3 for devices... 6 USB Device(s) found
->         scanning usb for storage devices... 1 Storage Device(s) found
-> => usb tree
-> USB device tree:
->    1  Hub (480 Mb/s, 0mA)
->       u-boot EHCI Host Controller
->
->    1  Hub (480 Mb/s, 0mA)
->    |  u-boot EHCI Host Controller
->    |
->    +-2  Hub (480 Mb/s, 100mA)
->          USB 2.0 Hub [MTT]
->
->    1  Hub (5 Gb/s, 0mA)
->    |  U-Boot XHCI Host Controller
->    |
->    +-2  Hub (480 Mb/s, 0mA)
->    | |  VIA Labs, Inc. USB2.0 Hub
->    | |
->    | +-4  Hub (480 Mb/s, 100mA)
->    |   |   USB 2.0 Hub
->    |   |
->    |   +-5   (480 Mb/s, 100mA)
->    |        VIA Technologies Inc. USB 2.0 BILLBOARD  0000000000000001
->    |
->    +-3  Hub (5 Gb/s, 0mA)
->      |  VIA Labs, Inc. USB3.0 Hub
->      |
->      +-6  Mass Storage (5 Gb/s, 224mA)
->           JMicron External Disk 3.0 DB12345678A2
->
-> => usb reset
-> resetting USB...
-> Bus usb@fe380000: USB EHCI 1.00
-> Bus usb@fe3c0000: USB EHCI 1.00
-> Bus dwc3: usb maximum-speed not found
-> Register 2000140 NbrPorts 2
-> Starting the controller
-> USB XHCI 1.10
-> scanning bus usb@fe380000 for devices... 1 USB Device(s) found
-> scanning bus usb@fe3c0000 for devices... 2 USB Device(s) found
-> scanning bus dwc3 for devices... 6 USB Device(s) found
->         scanning usb for storage devices... 1 Storage Device(s) found
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
-> ---
->   configs/roc-pc-mezzanine-rk3399_defconfig | 5 +++++
->   configs/roc-pc-rk3399_defconfig           | 6 ++++++
->   2 files changed, 11 insertions(+)
->
-> diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
-> index 0b853805f3..1f10856caa 100644
-> --- a/configs/roc-pc-mezzanine-rk3399_defconfig
-> +++ b/configs/roc-pc-mezzanine-rk3399_defconfig
-> @@ -29,6 +29,7 @@ CONFIG_ENV_IS_IN_MMC=y
->   CONFIG_SYS_RELOC_GD_ENV_ADDR=y
->   CONFIG_ROCKCHIP_GPIO=y
->   CONFIG_SYS_I2C_ROCKCHIP=y
-> +CONFIG_MISC=y
->   CONFIG_MMC_DW=y
->   CONFIG_MMC_DW_ROCKCHIP=y
->   CONFIG_MMC_SDHCI=y
-> @@ -39,6 +40,8 @@ CONFIG_ETH_DESIGNWARE=y
->   CONFIG_GMAC_ROCKCHIP=y
->   CONFIG_NVME=y
->   CONFIG_PCI=y
-> +CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-> +CONFIG_PHY_ROCKCHIP_TYPEC=y
->   CONFIG_PMIC_RK8XX=y
->   CONFIG_REGULATOR_PWM=y
->   CONFIG_REGULATOR_RK8XX=y
-> @@ -54,6 +57,8 @@ CONFIG_USB_XHCI_HCD=y
->   CONFIG_USB_XHCI_DWC3=y
->   CONFIG_USB_EHCI_HCD=y
->   CONFIG_USB_EHCI_GENERIC=y
-> +CONFIG_USB_DWC3=y
-> +CONFIG_USB_DWC3_GENERIC=y
->   CONFIG_USB_HOST_ETHER=y
->   CONFIG_USB_ETHER_ASIX=y
->   CONFIG_USB_ETHER_ASIX88179=y
-> diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-> index aff690f039..76e76c160e 100644
-> --- a/configs/roc-pc-rk3399_defconfig
-> +++ b/configs/roc-pc-rk3399_defconfig
-> @@ -28,6 +28,7 @@ CONFIG_ENV_IS_IN_MMC=y
->   CONFIG_SYS_RELOC_GD_ENV_ADDR=y
->   CONFIG_ROCKCHIP_GPIO=y
->   CONFIG_SYS_I2C_ROCKCHIP=y
-> +CONFIG_MISC=y
->   CONFIG_MMC_DW=y
->   CONFIG_MMC_DW_ROCKCHIP=y
->   CONFIG_MMC_SDHCI=y
-> @@ -36,11 +37,14 @@ CONFIG_SPI_FLASH_WINBOND=y
->   CONFIG_DM_ETH=y
->   CONFIG_ETH_DESIGNWARE=y
->   CONFIG_GMAC_ROCKCHIP=y
-> +CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-> +CONFIG_PHY_ROCKCHIP_TYPEC=y
->   CONFIG_PMIC_RK8XX=y
->   CONFIG_REGULATOR_PWM=y
->   CONFIG_REGULATOR_RK8XX=y
->   CONFIG_PWM_ROCKCHIP=y
->   CONFIG_RAM_RK3399_LPDDR4=y
-> +CONFIG_DM_RESET=y
->   CONFIG_BAUDRATE=1500000
->   CONFIG_DEBUG_UART_SHIFT=2
->   CONFIG_ROCKCHIP_SPI=y
-> @@ -50,6 +54,8 @@ CONFIG_USB_XHCI_HCD=y
->   CONFIG_USB_XHCI_DWC3=y
->   CONFIG_USB_EHCI_HCD=y
->   CONFIG_USB_EHCI_GENERIC=y
-> +CONFIG_USB_DWC3=y
-> +CONFIG_USB_DWC3_GENERIC=y
->   CONFIG_USB_KEYBOARD=y
->   CONFIG_USB_HOST_ETHER=y
->   CONFIG_USB_ETHER_ASIX=y
+Ck9uIDIwMjAvNS8xMCDkuIrljYgxMjo1NiwgSmFnYW4gVGVraSB3cm90ZToKPiBZZXMsIG1vc3Qg
+b2YgdGhlIGhpZ2ggc3BlZWQgcGVyaXBoZXJhbCBjbG9ja3MKPiBpbiByazMzOTkgZW5hYmxlZCBi
+eSBkZWZhdWx0Lgo+Cj4gQnV0IGl0IHdvdWxkIGJlIGJldHRlciB0byBoYW5kbGUgdGhlbSB2aWEg
+Y2xrCj4gZW5hYmxlL2Rpc2FibGUgQVBJIGZvciBoYW5kbGluZyBwcm9wZXIgcmVzZXQKPiBjb25k
+aXRpb25zIGxpa2UgJ3VzYiByZXNldCcgb3ZlciBjb21tYW5kIGxpbmUuCj4KPiBTbywgZW5hYmxl
+IFVTQiwgR01BQyBjbG9jayB2aWEgZW5hYmxlL2Rpc2FibGUgb3BzLgo+Cj4gU2lnbmVkLW9mZi1i
+eTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+CgpSZXZpZXdlZC1ieTog
+S2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KClRoYW5rcywKLSBLZXZlcgo+
+IC0tLQo+IENoYW5nZXMgZm9yIHYzOgo+IC0gVXBkYXRlIFVTQiBjbG9jayByZWdpc3RlcnMKPgo+
+ICAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrX3JrMzM5OS5jIHwgMTQ4ICsrKysrKysrKysrKysr
+KysrKysrKysrKysrKysrKwo+ICAgMSBmaWxlIGNoYW5nZWQsIDE0OCBpbnNlcnRpb25zKCspCj4K
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrX3JrMzM5OS5jIGIvZHJpdmVy
+cy9jbGsvcm9ja2NoaXAvY2xrX3JrMzM5OS5jCj4gaW5kZXggZDgyMmFjYWNlMS4uNWQyYmRiNDJj
+NyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGtfcmszMzk5LmMKPiArKysg
+Yi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGtfcmszMzk5LmMKPiBAQCAtMTA3MSwxMiArMTA3MSwx
+NjAgQEAgc3RhdGljIGludCBfX21heWJlX3VudXNlZCByazMzOTlfY2xrX3NldF9wYXJlbnQoc3Ry
+dWN0IGNsayAqY2xrLAo+ICAgCXJldHVybiAtRU5PRU5UOwo+ICAgfQo+ICAgCj4gK3N0YXRpYyBp
+bnQgcmszMzk5X2Nsa19lbmFibGUoc3RydWN0IGNsayAqY2xrKQo+ICt7Cj4gKwlzdHJ1Y3Qgcmsz
+Mzk5X2Nsa19wcml2ICpwcml2ID0gZGV2X2dldF9wcml2KGNsay0+ZGV2KTsKPiArCj4gKwlzd2l0
+Y2ggKGNsay0+aWQpIHsKPiArCWNhc2UgU0NMS19NQUM6Cj4gKwkJcmtfY2xycmVnKCZwcml2LT5j
+cnUtPmNsa2dhdGVfY29uWzVdLCBCSVQoNSkpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBTQ0xLX01B
+Q19SWDoKPiArCQlya19jbHJyZWcoJnByaXYtPmNydS0+Y2xrZ2F0ZV9jb25bNV0sIEJJVCg4KSk7
+Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIFNDTEtfTUFDX1RYOgo+ICsJCXJrX2NscnJlZygmcHJpdi0+
+Y3J1LT5jbGtnYXRlX2Nvbls1XSwgQklUKDkpKTsKPiArCQlicmVhazsKPiArCWNhc2UgU0NMS19N
+QUNSRUY6Cj4gKwkJcmtfY2xycmVnKCZwcml2LT5jcnUtPmNsa2dhdGVfY29uWzVdLCBCSVQoNykp
+Owo+ICsJCWJyZWFrOwo+ICsJY2FzZSBTQ0xLX01BQ1JFRl9PVVQ6Cj4gKwkJcmtfY2xycmVnKCZw
+cml2LT5jcnUtPmNsa2dhdGVfY29uWzVdLCBCSVQoNikpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBB
+Q0xLX0dNQUM6Cj4gKwkJcmtfY2xycmVnKCZwcml2LT5jcnUtPmNsa2dhdGVfY29uWzMyXSwgQklU
+KDApKTsKPiArCQlicmVhazsKPiArCWNhc2UgUENMS19HTUFDOgo+ICsJCXJrX2NscnJlZygmcHJp
+di0+Y3J1LT5jbGtnYXRlX2NvblszMl0sIEJJVCgyKSk7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIFND
+TEtfVVNCM09URzBfUkVGOgo+ICsJCXJrX2NscnJlZygmcHJpdi0+Y3J1LT5jbGtnYXRlX2Nvblsx
+Ml0sIEJJVCgxKSk7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIFNDTEtfVVNCM09URzFfUkVGOgo+ICsJ
+CXJrX2NscnJlZygmcHJpdi0+Y3J1LT5jbGtnYXRlX2NvblsxMl0sIEJJVCgyKSk7Cj4gKwkJYnJl
+YWs7Cj4gKwljYXNlIFNDTEtfVVNCM09URzBfU1VTUEVORDoKPiArCQlya19jbHJyZWcoJnByaXYt
+PmNydS0+Y2xrZ2F0ZV9jb25bMTJdLCBCSVQoMykpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBTQ0xL
+X1VTQjNPVEcxX1NVU1BFTkQ6Cj4gKwkJcmtfY2xycmVnKCZwcml2LT5jcnUtPmNsa2dhdGVfY29u
+WzEyXSwgQklUKDQpKTsKPiArCQlicmVhazsKPiArCWNhc2UgQUNMS19VU0IzT1RHMDoKPiArCQly
+a19jbHJyZWcoJnByaXYtPmNydS0+Y2xrZ2F0ZV9jb25bMzBdLCBCSVQoMSkpOwo+ICsJCWJyZWFr
+Owo+ICsJY2FzZSBBQ0xLX1VTQjNPVEcxOgo+ICsJCXJrX2NscnJlZygmcHJpdi0+Y3J1LT5jbGtn
+YXRlX2NvblszMF0sIEJJVCgyKSk7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIEFDTEtfVVNCM19SS1NP
+Q19BWElfUEVSRjoKPiArCQlya19jbHJyZWcoJnByaXYtPmNydS0+Y2xrZ2F0ZV9jb25bMzBdLCBC
+SVQoMykpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBBQ0xLX1VTQjM6Cj4gKwkJcmtfY2xycmVnKCZw
+cml2LT5jcnUtPmNsa2dhdGVfY29uWzEyXSwgQklUKDApKTsKPiArCQlicmVhazsKPiArCWNhc2Ug
+QUNMS19VU0IzX0dSRjoKPiArCQlya19jbHJyZWcoJnByaXYtPmNydS0+Y2xrZ2F0ZV9jb25bMzBd
+LCBCSVQoNCkpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBIQ0xLX0hPU1QwOgo+ICsJCXJrX2NscnJl
+ZygmcHJpdi0+Y3J1LT5jbGtzZWxfY29uWzIwXSwgQklUKDUpKTsKPiArCQlicmVhazsKPiArCWNh
+c2UgSENMS19IT1NUMF9BUkI6Cj4gKwkJcmtfY2xycmVnKCZwcml2LT5jcnUtPmNsa3NlbF9jb25b
+MjBdLCBCSVQoNikpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBIQ0xLX0hPU1QxOgo+ICsJCXJrX2Ns
+cnJlZygmcHJpdi0+Y3J1LT5jbGtzZWxfY29uWzIwXSwgQklUKDcpKTsKPiArCQlicmVhazsKPiAr
+CWNhc2UgSENMS19IT1NUMV9BUkI6Cj4gKwkJcmtfY2xycmVnKCZwcml2LT5jcnUtPmNsa3NlbF9j
+b25bMjBdLCBCSVQoOCkpOwo+ICsJCWJyZWFrOwo+ICsJZGVmYXVsdDoKPiArCQlkZWJ1ZygiJXM6
+IHVuc3VwcG9ydGVkIGNsayAlbGRcbiIsIF9fZnVuY19fLCBjbGstPmlkKTsKPiArCQlyZXR1cm4g
+LUVOT0VOVDsKPiArCX0KPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiArc3RhdGljIGludCBy
+azMzOTlfY2xrX2Rpc2FibGUoc3RydWN0IGNsayAqY2xrKQo+ICt7Cj4gKwlzdHJ1Y3QgcmszMzk5
+X2Nsa19wcml2ICpwcml2ID0gZGV2X2dldF9wcml2KGNsay0+ZGV2KTsKPiArCj4gKwlzd2l0Y2gg
+KGNsay0+aWQpIHsKPiArCWNhc2UgU0NMS19NQUM6Cj4gKwkJcmtfc2V0cmVnKCZwcml2LT5jcnUt
+PmNsa2dhdGVfY29uWzVdLCBCSVQoNSkpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBTQ0xLX01BQ19S
+WDoKPiArCQlya19zZXRyZWcoJnByaXYtPmNydS0+Y2xrZ2F0ZV9jb25bNV0sIEJJVCg4KSk7Cj4g
+KwkJYnJlYWs7Cj4gKwljYXNlIFNDTEtfTUFDX1RYOgo+ICsJCXJrX3NldHJlZygmcHJpdi0+Y3J1
+LT5jbGtnYXRlX2Nvbls1XSwgQklUKDkpKTsKPiArCQlicmVhazsKPiArCWNhc2UgU0NMS19NQUNS
+RUY6Cj4gKwkJcmtfc2V0cmVnKCZwcml2LT5jcnUtPmNsa2dhdGVfY29uWzVdLCBCSVQoNykpOwo+
+ICsJCWJyZWFrOwo+ICsJY2FzZSBTQ0xLX01BQ1JFRl9PVVQ6Cj4gKwkJcmtfc2V0cmVnKCZwcml2
+LT5jcnUtPmNsa2dhdGVfY29uWzVdLCBCSVQoNikpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBBQ0xL
+X0dNQUM6Cj4gKwkJcmtfc2V0cmVnKCZwcml2LT5jcnUtPmNsa2dhdGVfY29uWzMyXSwgQklUKDAp
+KTsKPiArCQlicmVhazsKPiArCWNhc2UgUENMS19HTUFDOgo+ICsJCXJrX3NldHJlZygmcHJpdi0+
+Y3J1LT5jbGtnYXRlX2NvblszMl0sIEJJVCgyKSk7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIFNDTEtf
+VVNCM09URzBfUkVGOgo+ICsJCXJrX3NldHJlZygmcHJpdi0+Y3J1LT5jbGtnYXRlX2NvblsxMl0s
+IEJJVCgxKSk7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIFNDTEtfVVNCM09URzFfUkVGOgo+ICsJCXJr
+X3NldHJlZygmcHJpdi0+Y3J1LT5jbGtnYXRlX2NvblsxMl0sIEJJVCgyKSk7Cj4gKwkJYnJlYWs7
+Cj4gKwljYXNlIFNDTEtfVVNCM09URzBfU1VTUEVORDoKPiArCQlya19zZXRyZWcoJnByaXYtPmNy
+dS0+Y2xrZ2F0ZV9jb25bMTJdLCBCSVQoMykpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBTQ0xLX1VT
+QjNPVEcxX1NVU1BFTkQ6Cj4gKwkJcmtfc2V0cmVnKCZwcml2LT5jcnUtPmNsa2dhdGVfY29uWzEy
+XSwgQklUKDQpKTsKPiArCQlicmVhazsKPiArCWNhc2UgQUNMS19VU0IzT1RHMDoKPiArCQlya19z
+ZXRyZWcoJnByaXYtPmNydS0+Y2xrZ2F0ZV9jb25bMzBdLCBCSVQoMSkpOwo+ICsJCWJyZWFrOwo+
+ICsJY2FzZSBBQ0xLX1VTQjNPVEcxOgo+ICsJCXJrX3NldHJlZygmcHJpdi0+Y3J1LT5jbGtnYXRl
+X2NvblszMF0sIEJJVCgyKSk7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIEFDTEtfVVNCM19SS1NPQ19B
+WElfUEVSRjoKPiArCQlya19zZXRyZWcoJnByaXYtPmNydS0+Y2xrZ2F0ZV9jb25bMzBdLCBCSVQo
+MykpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBBQ0xLX1VTQjM6Cj4gKwkJcmtfc2V0cmVnKCZwcml2
+LT5jcnUtPmNsa2dhdGVfY29uWzEyXSwgQklUKDApKTsKPiArCQlicmVhazsKPiArCWNhc2UgQUNM
+S19VU0IzX0dSRjoKPiArCQlya19zZXRyZWcoJnByaXYtPmNydS0+Y2xrZ2F0ZV9jb25bMzBdLCBC
+SVQoNCkpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBIQ0xLX0hPU1QwOgo+ICsJCXJrX3NldHJlZygm
+cHJpdi0+Y3J1LT5jbGtzZWxfY29uWzIwXSwgQklUKDUpKTsKPiArCQlicmVhazsKPiArCWNhc2Ug
+SENMS19IT1NUMF9BUkI6Cj4gKwkJcmtfc2V0cmVnKCZwcml2LT5jcnUtPmNsa3NlbF9jb25bMjBd
+LCBCSVQoNikpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBIQ0xLX0hPU1QxOgo+ICsJCXJrX3NldHJl
+ZygmcHJpdi0+Y3J1LT5jbGtzZWxfY29uWzIwXSwgQklUKDcpKTsKPiArCQlicmVhazsKPiArCWNh
+c2UgSENMS19IT1NUMV9BUkI6Cj4gKwkJcmtfc2V0cmVnKCZwcml2LT5jcnUtPmNsa3NlbF9jb25b
+MjBdLCBCSVQoOCkpOwo+ICsJCWJyZWFrOwo+ICsJZGVmYXVsdDoKPiArCQlkZWJ1ZygiJXM6IHVu
+c3VwcG9ydGVkIGNsayAlbGRcbiIsIF9fZnVuY19fLCBjbGstPmlkKTsKPiArCQlyZXR1cm4gLUVO
+T0VOVDsKPiArCX0KPiArCj4gKwlyZXR1cm4gMDsKPiArfQo+ICsKPiAgIHN0YXRpYyBzdHJ1Y3Qg
+Y2xrX29wcyByazMzOTlfY2xrX29wcyA9IHsKPiAgIAkuZ2V0X3JhdGUgPSByazMzOTlfY2xrX2dl
+dF9yYXRlLAo+ICAgCS5zZXRfcmF0ZSA9IHJrMzM5OV9jbGtfc2V0X3JhdGUsCj4gICAjaWYgQ09O
+RklHX0lTX0VOQUJMRUQoT0ZfQ09OVFJPTCkgJiYgIUNPTkZJR19JU19FTkFCTEVEKE9GX1BMQVRE
+QVRBKQo+ICAgCS5zZXRfcGFyZW50ID0gcmszMzk5X2Nsa19zZXRfcGFyZW50LAo+ICAgI2VuZGlm
+Cj4gKwkuZW5hYmxlID0gcmszMzk5X2Nsa19lbmFibGUsCj4gKwkuZGlzYWJsZSA9IHJrMzM5OV9j
+bGtfZGlzYWJsZSwKPiAgIH07Cj4gICAKPiAgICNpZmRlZiBDT05GSUdfU1BMX0JVSUxECgoKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
