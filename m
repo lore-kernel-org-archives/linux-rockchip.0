@@ -1,425 +1,109 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v5 04/16] phy: rockchip: Add Rockchip USB2PHY driver
-Date: Fri, 15 May 2020 10:16:25 +0800
-Message-ID: <621f90d6-4213-49a7-4313-ac11fa8ad5a2@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v5 05/16] arm64: dts: rk3399: Move u2phy into root port
+Date: Fri, 15 May 2020 10:40:15 +0800
+Message-ID: <2ec538ea-9ca2-92b7-3b57-be96862f3117@rock-chips.com>
 References: <20200513071344.5430-1-frank.wang@rock-chips.com>
- <20200513071344.5430-5-frank.wang@rock-chips.com>
+ <20200513071546.5560-1-frank.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200513071344.5430-5-frank.wang@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200513071546.5560-1-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Frank Wang <frank.wang@rock-chips.com>, heiko@sntech.de, marex@denx.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, marex-ynQEQJNshbs@public.gmane.org, bmeng.cn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: jianing.ren-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2020/5/13 下午3:13, Frank Wang wrote:
-> From: Jagan Teki <jagan@amarulasolutions.com>
->
-> Add Rockchip USB2PHY driver with initial support.
->
-> This will help to use it for EHCI controller in host
-> mode, and USB 3.0 controller in otg mode.
->
-> More functionality like charge, vbus detection will
-> add it in future changes.
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
-> ---
->   drivers/Makefile                              |   1 +
->   drivers/phy/Kconfig                           |   1 +
->   drivers/phy/rockchip/Kconfig                  |  14 +
->   drivers/phy/rockchip/Makefile                 |   6 +
->   drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 312 ++++++++++++++++++
->   5 files changed, 334 insertions(+)
->   create mode 100644 drivers/phy/rockchip/Kconfig
->   create mode 100644 drivers/phy/rockchip/Makefile
->   create mode 100644 drivers/phy/rockchip/phy-rockchip-inno-usb2.c
->
-> diff --git a/drivers/Makefile b/drivers/Makefile
-> index 4208750428..94e8c5da17 100644
-> --- a/drivers/Makefile
-> +++ b/drivers/Makefile
-> @@ -91,6 +91,7 @@ obj-y += dfu/
->   obj-$(CONFIG_PCH) += pch/
->   obj-y += phy/allwinner/
->   obj-y += phy/marvell/
-> +obj-y += phy/rockchip/
->   obj-y += rtc/
->   obj-y += scsi/
->   obj-y += sound/
-> diff --git a/drivers/phy/Kconfig b/drivers/phy/Kconfig
-> index 1e38c8741f..9c775107e9 100644
-> --- a/drivers/phy/Kconfig
-> +++ b/drivers/phy/Kconfig
-> @@ -225,4 +225,5 @@ config PHY_MTK_TPHY
->   	  multi-ports is first version, otherwise is second veriosn,
->   	  so you can easily distinguish them by banks layout.
->   
-> +source "drivers/phy/rockchip/Kconfig"
->   endmenu
-> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-> new file mode 100644
-> index 0000000000..d73ac695e1
-> --- /dev/null
-> +++ b/drivers/phy/rockchip/Kconfig
-> @@ -0,0 +1,14 @@
-> +#
-> +# Phy drivers for Rockchip platforms
-> +#
-> +
-> +menu "Rockchip PHY driver"
-> +
-> +config PHY_ROCKCHIP_INNO_USB2
-> +	bool "Rockchip INNO USB2PHY Driver"
-> +	depends on ARCH_ROCKCHIP
-> +	select PHY
-> +	help
-> +	  Support for Rockchip USB2.0 PHY with Innosilicon IP block.
-> +
-> +endmenu
-> diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
-> new file mode 100644
-> index 0000000000..9b0cbc6acf
-> --- /dev/null
-> +++ b/drivers/phy/rockchip/Makefile
-> @@ -0,0 +1,6 @@
-> +# SPDX-License-Identifier: GPL-2.0+
-> +#
-> +# Copyright (C) 2020 Amarula Solutions(India)
-> +#
-> +
-> +obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
-> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> new file mode 100644
-> index 0000000000..dd4905d834
-> --- /dev/null
-> +++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-> @@ -0,0 +1,312 @@
-> +// SPDX-License-Identifier: GPL-2.0-or-later
-> +/*
-> + * Rockchip USB2.0 PHY with Innosilicon IP block driver
-> + *
-> + * Copyright (C) 2016 Fuzhou Rockchip Electronics Co., Ltd
-> + * Copyright (C) 2020 Amarula Solutions(India)
-> + */
-> +
-> +#include <common.h>
-> +#include <clk.h>
-> +#include <dm.h>
-> +#include <dm/device_compat.h>
-> +#include <dm/lists.h>
-> +#include <generic-phy.h>
-> +#include <reset.h>
-> +#include <syscon.h>
-> +#include <asm/gpio.h>
-> +#include <asm/io.h>
-> +#include <linux/iopoll.h>
-> +#include <asm/arch-rockchip/clock.h>
-> +
-> +DECLARE_GLOBAL_DATA_PTR;
-> +
-> +#define usleep_range(a, b) udelay((b))
-> +#define BIT_WRITEABLE_SHIFT	16
-> +
-> +enum rockchip_usb2phy_port_id {
-> +	USB2PHY_PORT_OTG,
-> +	USB2PHY_PORT_HOST,
-> +	USB2PHY_NUM_PORTS,
-> +};
-> +
-> +struct usb2phy_reg {
-> +	unsigned int	offset;
-> +	unsigned int	bitend;
-> +	unsigned int	bitstart;
-> +	unsigned int	disable;
-> +	unsigned int	enable;
-> +};
-> +
-> +struct rockchip_usb2phy_port_cfg {
-> +	struct usb2phy_reg	phy_sus;
-> +	struct usb2phy_reg	bvalid_det_en;
-> +	struct usb2phy_reg	bvalid_det_st;
-> +	struct usb2phy_reg	bvalid_det_clr;
-> +	struct usb2phy_reg	ls_det_en;
-> +	struct usb2phy_reg	ls_det_st;
-> +	struct usb2phy_reg	ls_det_clr;
-> +	struct usb2phy_reg	utmi_avalid;
-> +	struct usb2phy_reg	utmi_bvalid;
-> +	struct usb2phy_reg	utmi_ls;
-> +	struct usb2phy_reg	utmi_hstdet;
-> +};
-> +
-> +struct rockchip_usb2phy_cfg {
-> +	unsigned int reg;
-> +	const struct rockchip_usb2phy_port_cfg port_cfgs[USB2PHY_NUM_PORTS];
-> +};
-> +
-> +struct rockchip_usb2phy {
-> +	void *reg_base;
-> +	struct clk phyclk;
-> +	const struct rockchip_usb2phy_cfg *phy_cfg;
-> +};
-> +
-> +static inline int property_enable(void *reg_base,
-> +				  const struct usb2phy_reg *reg, bool en)
-> +{
-> +	unsigned int val, mask, tmp;
-> +
-> +	tmp = en ? reg->enable : reg->disable;
-> +	mask = GENMASK(reg->bitend, reg->bitstart);
-> +	val = (tmp << reg->bitstart) | (mask << BIT_WRITEABLE_SHIFT);
-> +
-> +	return writel(val, reg_base + reg->offset);
-> +}
-> +
-> +static const
-> +struct rockchip_usb2phy_port_cfg *us2phy_get_port(struct phy *phy)
-> +{
-> +	struct udevice *parent = dev_get_parent(phy->dev);
-> +	struct rockchip_usb2phy *priv = dev_get_priv(parent);
-> +	const struct rockchip_usb2phy_cfg *phy_cfg = priv->phy_cfg;
-> +
-> +	return &phy_cfg->port_cfgs[phy->id];
-> +}
-> +
-> +static int rockchip_usb2phy_power_on(struct phy *phy)
-> +{
-> +	struct udevice *parent = dev_get_parent(phy->dev);
-> +	struct rockchip_usb2phy *priv = dev_get_priv(parent);
-> +	const struct rockchip_usb2phy_port_cfg *port_cfg = us2phy_get_port(phy);
-> +
-> +	property_enable(priv->reg_base, &port_cfg->phy_sus, false);
-> +
-> +	/* waiting for the utmi_clk to become stable */
-> +	usleep_range(1500, 2000);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_usb2phy_power_off(struct phy *phy)
-> +{
-> +	struct udevice *parent = dev_get_parent(phy->dev);
-> +	struct rockchip_usb2phy *priv = dev_get_priv(parent);
-> +	const struct rockchip_usb2phy_port_cfg *port_cfg = us2phy_get_port(phy);
-> +
-> +	property_enable(priv->reg_base, &port_cfg->phy_sus, true);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_usb2phy_init(struct phy *phy)
-> +{
-> +	struct udevice *parent = dev_get_parent(phy->dev);
-> +	struct rockchip_usb2phy *priv = dev_get_priv(parent);
-> +	const struct rockchip_usb2phy_port_cfg *port_cfg = us2phy_get_port(phy);
-> +	int ret;
-> +
-> +	ret = clk_enable(&priv->phyclk);
-> +	if (ret) {
-> +		dev_err(phy->dev, "failed to enable phyclk (ret=%d)\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	if (phy->id == USB2PHY_PORT_OTG) {
-> +		property_enable(priv->reg_base, &port_cfg->bvalid_det_clr, true);
-> +		property_enable(priv->reg_base, &port_cfg->bvalid_det_en, true);
-> +	} else if (phy->id == USB2PHY_PORT_HOST) {
-> +		property_enable(priv->reg_base, &port_cfg->bvalid_det_clr, true);
-> +		property_enable(priv->reg_base, &port_cfg->bvalid_det_en, true);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_usb2phy_exit(struct phy *phy)
-> +{
-> +	struct udevice *parent = dev_get_parent(phy->dev);
-> +	struct rockchip_usb2phy *priv = dev_get_priv(parent);
-> +
-> +	clk_disable(&priv->phyclk);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_usb2phy_of_xlate(struct phy *phy,
-> +				     struct ofnode_phandle_args *args)
-> +{
-> +	const char *name = phy->dev->name;
-> +
-> +	if (!strcasecmp(name, "host-port"))
-> +		phy->id = USB2PHY_PORT_HOST;
-> +	else if (!strcasecmp(name, "otg-port"))
-> +		phy->id = USB2PHY_PORT_OTG;
-> +	else
-> +		dev_err(phy->dev, "improper %s device\n", name);
-> +
-> +	return 0;
-> +}
-> +
-> +static struct phy_ops rockchip_usb2phy_ops = {
-> +	.init = rockchip_usb2phy_init,
-> +	.exit = rockchip_usb2phy_exit,
-> +	.power_on = rockchip_usb2phy_power_on,
-> +	.power_off = rockchip_usb2phy_power_off,
-> +	.of_xlate = rockchip_usb2phy_of_xlate,
-> +};
-> +
-> +static int rockchip_usb2phy_probe(struct udevice *dev)
-> +{
-> +	struct rockchip_usb2phy *priv = dev_get_priv(dev);
-> +	const struct rockchip_usb2phy_cfg *phy_cfgs;
-> +	unsigned int reg;
-> +	int index, ret;
-> +
-> +	priv->reg_base = syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
-> +	if (IS_ERR(priv->reg_base))
-> +		return PTR_ERR(priv->reg_base);
-> +
-> +	ret = dev_read_u32_index(dev, "reg", 1, &reg);
-> +	if (ret) {
-> +		dev_err(dev, "failed to read reg property (ret = %d)\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	phy_cfgs = (const struct rockchip_usb2phy_cfg *)
-> +					dev_get_driver_data(dev);
-> +	if (!phy_cfgs)
-> +		return -EINVAL;
-> +
-> +	/* find out a proper config which can be matched with dt. */
-> +	index = 0;
-> +	while (phy_cfgs[index].reg) {
-> +		if (phy_cfgs[index].reg == reg) {
-> +			priv->phy_cfg = &phy_cfgs[index];
-> +			break;
-> +		}
-> +
-> +		++index;
-> +	}
-> +
-> +	if (!priv->phy_cfg) {
-> +		dev_err(dev, "failed find proper phy-cfg\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	ret = clk_get_by_name(dev, "phyclk", &priv->phyclk);
-> +	if (ret) {
-> +		dev_err(dev, "failed to get the phyclk (ret=%d)\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int rockchip_usb2phy_bind(struct udevice *dev)
-> +{
-> +	struct udevice *usb2phy_dev;
-> +	ofnode node;
-> +	const char *name;
-> +	int ret = 0;
-> +
-> +	dev_for_each_subnode(node, dev) {
-> +		if (!ofnode_valid(node)) {
-> +			dev_info(dev, "subnode %s not found\n", dev->name);
-> +			return -ENXIO;
-> +		}
-> +
-> +		name = ofnode_get_name(node);
-> +		dev_dbg(dev, "subnode %s\n", name);
-> +
-> +		ret = device_bind_driver_to_node(dev, "rockchip_usb2phy_port",
-> +						 name, node, &usb2phy_dev);
-> +		if (ret) {
-> +			dev_err(dev,
-> +				"'%s' cannot bind 'rockchip_usb2phy_port'\n", name);
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static const struct rockchip_usb2phy_cfg rk3399_usb2phy_cfgs[] = {
-> +	{
-> +		.reg		= 0xe450,
-> +		.port_cfgs	= {
-> +			[USB2PHY_PORT_OTG] = {
-> +				.phy_sus	= { 0xe454, 1, 0, 2, 1 },
-> +				.bvalid_det_en	= { 0xe3c0, 3, 3, 0, 1 },
-> +				.bvalid_det_st	= { 0xe3e0, 3, 3, 0, 1 },
-> +				.bvalid_det_clr	= { 0xe3d0, 3, 3, 0, 1 },
-> +				.utmi_avalid	= { 0xe2ac, 7, 7, 0, 1 },
-> +				.utmi_bvalid	= { 0xe2ac, 12, 12, 0, 1 },
-> +			},
-> +			[USB2PHY_PORT_HOST] = {
-> +				.phy_sus	= { 0xe458, 1, 0, 0x2, 0x1 },
-> +				.ls_det_en	= { 0xe3c0, 6, 6, 0, 1 },
-> +				.ls_det_st	= { 0xe3e0, 6, 6, 0, 1 },
-> +				.ls_det_clr	= { 0xe3d0, 6, 6, 0, 1 },
-> +				.utmi_ls	= { 0xe2ac, 22, 21, 0, 1 },
-> +				.utmi_hstdet	= { 0xe2ac, 23, 23, 0, 1 }
-> +			}
-> +		},
-> +	},
-> +	{
-> +		.reg		= 0xe460,
-> +		.port_cfgs	= {
-> +			[USB2PHY_PORT_OTG] = {
-> +				.phy_sus        = { 0xe464, 1, 0, 2, 1 },
-> +				.bvalid_det_en  = { 0xe3c0, 8, 8, 0, 1 },
-> +				.bvalid_det_st  = { 0xe3e0, 8, 8, 0, 1 },
-> +				.bvalid_det_clr = { 0xe3d0, 8, 8, 0, 1 },
-> +				.utmi_avalid	= { 0xe2ac, 10, 10, 0, 1 },
-> +				.utmi_bvalid    = { 0xe2ac, 16, 16, 0, 1 },
-> +			},
-> +			[USB2PHY_PORT_HOST] = {
-> +				.phy_sus	= { 0xe468, 1, 0, 0x2, 0x1 },
-> +				.ls_det_en	= { 0xe3c0, 11, 11, 0, 1 },
-> +				.ls_det_st	= { 0xe3e0, 11, 11, 0, 1 },
-> +				.ls_det_clr	= { 0xe3d0, 11, 11, 0, 1 },
-> +				.utmi_ls	= { 0xe2ac, 26, 25, 0, 1 },
-> +				.utmi_hstdet	= { 0xe2ac, 27, 27, 0, 1 }
-> +			}
-> +		},
-> +	},
-> +	{ /* sentinel */ }
-> +};
-> +
-> +static const struct udevice_id rockchip_usb2phy_ids[] = {
-> +	{
-> +		.compatible = "rockchip,rk3399-usb2phy",
-> +		.data = (ulong)&rk3399_usb2phy_cfgs,
-> +	},
-> +	{ /* sentinel */ }
-> +};
-> +
-> +U_BOOT_DRIVER(rockchip_usb2phy_port) = {
-> +	.name		= "rockchip_usb2phy_port",
-> +	.id		= UCLASS_PHY,
-> +	.ops		= &rockchip_usb2phy_ops,
-> +};
-> +
-> +U_BOOT_DRIVER(rockchip_usb2phy) = {
-> +	.name	= "rockchip_usb2phy",
-> +	.id	= UCLASS_PHY,
-> +	.of_match = rockchip_usb2phy_ids,
-> +	.probe = rockchip_usb2phy_probe,
-> +	.bind = rockchip_usb2phy_bind,
-> +	.priv_auto_alloc_size = sizeof(struct rockchip_usb2phy),
-> +};
+SGkgSmFnYW4sIEZyYW5rLAoKT24gMjAyMC81LzEzIOS4i+WNiDM6MTUsIEZyYW5rIFdhbmcgd3Jv
+dGU6Cj4gRnJvbTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4KPiBZ
+ZXMsIFRoaXMgaXMgY2hhbmdpbmcgdGhlIGFjdHVhbCBkZXZpY2UgdHJlZSB1MnBoeQo+IHN0cnVj
+dHVyZSBidXQgdGhlIHByb2JsZW0gd2l0aCB0aGUgY3VycmVudCBHZW5lcmljCj4gUEhZIHN1YnN5
+c3RlbSBpcyB1bmFibGUgdG8gZmluZCBQSFkgaWYgdGhlIFBIWSBub2RlCj4gaXMgbm90IHBhcnQg
+b2YgdGhlIHJvb3Qgc3RydWN0dXJlLgoKSSBkb24ndCB1bmRlcnN0YW5kIGZvciB0aGlzLCBpdCBz
+aG91bGQgYmUgYWJsZSB0byBiaW5kIHRoZSBkZXZpY2Ugd2hlbgoKZG0gc2NhbiBmZHQuCgpSb2Nr
+Y2hpcCBjb2RlIGFsd2F5cyBjYW4gdXNlIHRoaXMgbm9kZSBkaXJlY3RseSB3aXRob3V0IG1vZGlm
+eSwgY291bGQKCnlvdSBjaGVjayBhZ2Fpbj8KCgpUaGFua3MsCgotIEtldmVyCgo+Cj4gVGhpcyB3
+aWxsIGJlIHJldmVydGVkLAo+IC0gT25jZSB3ZSBzdXBwb3J0IHRoZSBQSFkgc3Vic3lzdGVtIHRv
+IGdldCB0aGUgUEhZCj4gICAgZXZlbiB0aG91Z2ggaXQgaXMgbm90IHBhcnQgb2YgdGhlIHJvb3Qg
+bm9kZSBvcgo+IC0gYW55IG90aGVyIHJlbGV2YW50IHNvbHV0aW9uIHRoYXQgZ2V0IHRoZSBwaHkK
+PiAgICBkaXJlY3RseSB3aXRob3V0IHRyYXZlcnNpbmcgYWxsIG5vZGVzLgo+Cj4gU2lnbmVkLW9m
+Zi1ieTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gLS0tCj4gICBh
+cmNoL2FybS9kdHMvcmszMzk5LmR0c2kgfCAxMDggKysrKysrKysrKysrKysrKysrKy0tLS0tLS0t
+LS0tLS0tLS0tLS0tCj4gICAxIGZpbGUgY2hhbmdlZCwgNTQgaW5zZXJ0aW9ucygrKSwgNTQgZGVs
+ZXRpb25zKC0pCj4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vZHRzL3JrMzM5OS5kdHNpIGIvYXJj
+aC9hcm0vZHRzL3JrMzM5OS5kdHNpCj4gaW5kZXggNzRmMmMzZDQ5MC4uNmM3N2YyNWYyMyAxMDA2
+NDQKPiAtLS0gYS9hcmNoL2FybS9kdHMvcmszMzk5LmR0c2kKPiArKysgYi9hcmNoL2FybS9kdHMv
+cmszMzk5LmR0c2kKPiBAQCAtMTM4Nyw2MCArMTM4Nyw2IEBACj4gICAJCQlzdGF0dXMgPSAiZGlz
+YWJsZWQiOwo+ICAgCQl9Owo+ICAgCj4gLQkJdTJwaHkwOiB1c2IyLXBoeUBlNDUwIHsKPiAtCQkJ
+Y29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktdXNiMnBoeSI7Cj4gLQkJCXJlZyA9IDwweGU0
+NTAgMHgxMD47Cj4gLQkJCWNsb2NrcyA9IDwmY3J1IFNDTEtfVVNCMlBIWTBfUkVGPjsKPiAtCQkJ
+Y2xvY2stbmFtZXMgPSAicGh5Y2xrIjsKPiAtCQkJI2Nsb2NrLWNlbGxzID0gPDA+Owo+IC0JCQlj
+bG9jay1vdXRwdXQtbmFtZXMgPSAiY2xrX3VzYnBoeTBfNDgwbSI7Cj4gLQkJCXN0YXR1cyA9ICJk
+aXNhYmxlZCI7Cj4gLQo+IC0JCQl1MnBoeTBfaG9zdDogaG9zdC1wb3J0IHsKPiAtCQkJCSNwaHkt
+Y2VsbHMgPSA8MD47Cj4gLQkJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMjcgSVJRX1RZUEVfTEVW
+RUxfSElHSCAwPjsKPiAtCQkJCWludGVycnVwdC1uYW1lcyA9ICJsaW5lc3RhdGUiOwo+IC0JCQkJ
+c3RhdHVzID0gImRpc2FibGVkIjsKPiAtCQkJfTsKPiAtCj4gLQkJCXUycGh5MF9vdGc6IG90Zy1w
+b3J0IHsKPiAtCQkJCSNwaHktY2VsbHMgPSA8MD47Cj4gLQkJCQlpbnRlcnJ1cHRzID0gPEdJQ19T
+UEkgMTAzIElSUV9UWVBFX0xFVkVMX0hJR0ggMD4sCj4gLQkJCQkJICAgICA8R0lDX1NQSSAxMDQg
+SVJRX1RZUEVfTEVWRUxfSElHSCAwPiwKPiAtCQkJCQkgICAgIDxHSUNfU1BJIDEwNiBJUlFfVFlQ
+RV9MRVZFTF9ISUdIIDA+Owo+IC0JCQkJaW50ZXJydXB0LW5hbWVzID0gIm90Zy1idmFsaWQiLCAi
+b3RnLWlkIiwKPiAtCQkJCQkJICAibGluZXN0YXRlIjsKPiAtCQkJCXN0YXR1cyA9ICJkaXNhYmxl
+ZCI7Cj4gLQkJCX07Cj4gLQkJfTsKPiAtCj4gLQkJdTJwaHkxOiB1c2IyLXBoeUBlNDYwIHsKPiAt
+CQkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktdXNiMnBoeSI7Cj4gLQkJCXJlZyA9IDww
+eGU0NjAgMHgxMD47Cj4gLQkJCWNsb2NrcyA9IDwmY3J1IFNDTEtfVVNCMlBIWTFfUkVGPjsKPiAt
+CQkJY2xvY2stbmFtZXMgPSAicGh5Y2xrIjsKPiAtCQkJI2Nsb2NrLWNlbGxzID0gPDA+Owo+IC0J
+CQljbG9jay1vdXRwdXQtbmFtZXMgPSAiY2xrX3VzYnBoeTFfNDgwbSI7Cj4gLQkJCXN0YXR1cyA9
+ICJkaXNhYmxlZCI7Cj4gLQo+IC0JCQl1MnBoeTFfaG9zdDogaG9zdC1wb3J0IHsKPiAtCQkJCSNw
+aHktY2VsbHMgPSA8MD47Cj4gLQkJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMzEgSVJRX1RZUEVf
+TEVWRUxfSElHSCAwPjsKPiAtCQkJCWludGVycnVwdC1uYW1lcyA9ICJsaW5lc3RhdGUiOwo+IC0J
+CQkJc3RhdHVzID0gImRpc2FibGVkIjsKPiAtCQkJfTsKPiAtCj4gLQkJCXUycGh5MV9vdGc6IG90
+Zy1wb3J0IHsKPiAtCQkJCSNwaHktY2VsbHMgPSA8MD47Cj4gLQkJCQlpbnRlcnJ1cHRzID0gPEdJ
+Q19TUEkgMTA4IElSUV9UWVBFX0xFVkVMX0hJR0ggMD4sCj4gLQkJCQkJICAgICA8R0lDX1NQSSAx
+MDkgSVJRX1RZUEVfTEVWRUxfSElHSCAwPiwKPiAtCQkJCQkgICAgIDxHSUNfU1BJIDExMSBJUlFf
+VFlQRV9MRVZFTF9ISUdIIDA+Owo+IC0JCQkJaW50ZXJydXB0LW5hbWVzID0gIm90Zy1idmFsaWQi
+LCAib3RnLWlkIiwKPiAtCQkJCQkJICAibGluZXN0YXRlIjsKPiAtCQkJCXN0YXR1cyA9ICJkaXNh
+YmxlZCI7Cj4gLQkJCX07Cj4gLQkJfTsKPiAtCj4gICAJCWVtbWNfcGh5OiBwaHlAZjc4MCB7Cj4g
+ICAJCQljb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1lbW1jLXBoeSI7Cj4gICAJCQlyZWcg
+PSA8MHhmNzgwIDB4MjQ+Owo+IEBAIC0xNDYyLDYgKzE0MDgsNjAgQEAKPiAgIAkJfTsKPiAgIAl9
+Owo+ICAgCj4gKwl1MnBoeTA6IHVzYjItcGh5QGU0NTAgewo+ICsJCWNvbXBhdGlibGUgPSAicm9j
+a2NoaXAscmszMzk5LXVzYjJwaHkiOwo+ICsJCXJlZyA9IDwweDAgMHhlNDUwIDB4MCAweDEwPjsK
+PiArCQljbG9ja3MgPSA8JmNydSBTQ0xLX1VTQjJQSFkwX1JFRj47Cj4gKwkJY2xvY2stbmFtZXMg
+PSAicGh5Y2xrIjsKPiArCQkjY2xvY2stY2VsbHMgPSA8MD47Cj4gKwkJY2xvY2stb3V0cHV0LW5h
+bWVzID0gImNsa191c2JwaHkwXzQ4MG0iOwo+ICsJCXN0YXR1cyA9ICJkaXNhYmxlZCI7Cj4gKwo+
+ICsJCXUycGh5MF9ob3N0OiBob3N0LXBvcnQgewo+ICsJCQkjcGh5LWNlbGxzID0gPDA+Owo+ICsJ
+CQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMjcgSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKPiArCQkJ
+aW50ZXJydXB0LW5hbWVzID0gImxpbmVzdGF0ZSI7Cj4gKwkJCXN0YXR1cyA9ICJkaXNhYmxlZCI7
+Cj4gKwkJfTsKPiArCj4gKwkJdTJwaHkwX290Zzogb3RnLXBvcnQgewo+ICsJCQkjcGh5LWNlbGxz
+ID0gPDA+Owo+ICsJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTAzIElSUV9UWVBFX0xFVkVMX0hJ
+R0ggMD4sCj4gKwkJCQkgICAgIDxHSUNfU1BJIDEwNCBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+LAo+
+ICsJCQkJICAgICA8R0lDX1NQSSAxMDYgSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKPiArCQkJaW50
+ZXJydXB0LW5hbWVzID0gIm90Zy1idmFsaWQiLCAib3RnLWlkIiwKPiArCQkJCQkgICJsaW5lc3Rh
+dGUiOwo+ICsJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ICsJCX07Cj4gKwl9Owo+ICsKPiArCXUy
+cGh5MTogdXNiMi1waHlAZTQ2MCB7Cj4gKwkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTkt
+dXNiMnBoeSI7Cj4gKwkJcmVnID0gPDB4MCAweGU0NjAgMHgwIDB4MTA+Owo+ICsJCWNsb2NrcyA9
+IDwmY3J1IFNDTEtfVVNCMlBIWTFfUkVGPjsKPiArCQljbG9jay1uYW1lcyA9ICJwaHljbGsiOwo+
+ICsJCSNjbG9jay1jZWxscyA9IDwwPjsKPiArCQljbG9jay1vdXRwdXQtbmFtZXMgPSAiY2xrX3Vz
+YnBoeTFfNDgwbSI7Cj4gKwkJc3RhdHVzID0gImRpc2FibGVkIjsKPiArCj4gKwkJdTJwaHkxX2hv
+c3Q6IGhvc3QtcG9ydCB7Cj4gKwkJCSNwaHktY2VsbHMgPSA8MD47Cj4gKwkJCWludGVycnVwdHMg
+PSA8R0lDX1NQSSAzMSBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+Owo+ICsJCQlpbnRlcnJ1cHQtbmFt
+ZXMgPSAibGluZXN0YXRlIjsKPiArCQkJc3RhdHVzID0gImRpc2FibGVkIjsKPiArCQl9Owo+ICsK
+PiArCQl1MnBoeTFfb3RnOiBvdGctcG9ydCB7Cj4gKwkJCSNwaHktY2VsbHMgPSA8MD47Cj4gKwkJ
+CWludGVycnVwdHMgPSA8R0lDX1NQSSAxMDggSVJRX1RZUEVfTEVWRUxfSElHSCAwPiwKPiArCQkJ
+CSAgICAgPEdJQ19TUEkgMTA5IElSUV9UWVBFX0xFVkVMX0hJR0ggMD4sCj4gKwkJCQkgICAgIDxH
+SUNfU1BJIDExMSBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+Owo+ICsJCQlpbnRlcnJ1cHQtbmFtZXMg
+PSAib3RnLWJ2YWxpZCIsICJvdGctaWQiLAo+ICsJCQkJCSAgImxpbmVzdGF0ZSI7Cj4gKwkJCXN0
+YXR1cyA9ICJkaXNhYmxlZCI7Cj4gKwkJfTsKPiArCX07Cj4gKwo+ICAgCXRjcGh5MDogcGh5QGZm
+N2MwMDAwIHsKPiAgIAkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzOTktdHlwZWMtcGh5IjsK
+PiAgIAkJcmVnID0gPDB4MCAweGZmN2MwMDAwIDB4MCAweDQwMDAwPjsKCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
+ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
