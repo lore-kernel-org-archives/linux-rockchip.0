@@ -1,41 +1,72 @@
-From: "Emili Berker" <info-uCryyg791+PLScNJCOYpQQ@public.gmane.org>
-Subject: Hello
-Date: Thu, 14 May 2020 18:07:47 +0200
-Message-ID: <E1jZGiu-00016z-Te@bombadil.infradead.org>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v5 01/16] clk: rk3399: Enable/Disable the USB2PHY clk
+Date: Fri, 15 May 2020 10:15:15 +0800
+Message-ID: <932ce156-6947-4ffe-74f3-a3fbde39d65a@rock-chips.com>
+References: <20200513071344.5430-1-frank.wang@rock-chips.com>
+ <20200513071344.5430-2-frank.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Description: Mail message body
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200513071344.5430-2-frank.wang@rock-chips.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Frank Wang <frank.wang@rock-chips.com>, heiko@sntech.de, marex@denx.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello,
 
-I am Mrs. Emili Berker, I'm a Cambodian American Citizen, I'm the wife of late Mr. Jon Berker, my husband worked with the Brunei Shell Petroleum Co Sdn Bhd (BSP) for twenty years and worked in Istanbul Turkey as a contractor before he died in the year 2010.
-
-We were married for 14 years without a child. My Husband died after a brief illness that lasted for only two weeks. Since his death I decided not to re-marry or get a child outside my matrimonial home. When my late husband was alive we deposited the sum of $6,500,000 Million with a Bank in Turkey. The bank management just wrote me as the beneficiary to come forward to sign for the release of this fund or rather issue a letter of authorization to somebody to receive it on my behalf if I can not come over.
-
-Presently, I'm in the hospital where I have been undergoing treatment for esophageal cancer. My doctor have told me that I have only a few months to live. It is my last wish to see this money distributed to charity organizations, Because my husband relatives and friends have plundered so much of my wealth since my illness, I cannot live with the agony of entrusting this huge responsibility to any of them.
-
-Please, I'm seeking for any honest person who will get the Funds from the Bank. And  use this money to fund the poor, orphanages, widows and charity organizations. I took this decision because I don't have any child that will inherit this money and I don't want my husband's hard earned money to be misused by his greedy relatives.
-
-Due to the state of my health. I can not communicate by phone because my illness have affected my throat. I prefer to communicate here on email. I will appreciate if you give me more light about you and your details.
-
-I don't want a situation where this money will be used in an ungodly manner. Hence the reason for taking this bold decision. I am not afraid of death hence I know where I am going if i die. As soon as I receive your reply I shall give you the contact detail`s of my lawyer who is conversant with the unclaimed funds and my presents situation. However I shall forward to you the bank details with the letter i will give you as she will be the one to assist you in laying claims for this funds.
-
-Above all, I wish to assure you that the funds in question is not an act of Terrorist Funding, neither Money Laundering nor
-Drug-funding. Thus, the transfer will follow the normal protocol of funds transfer, backed up with its papers so that you will not encounter any difficulties or problem with your Federal Monetary Control authorities. Kindly contact me via my private email for more details. (emiliberker11-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org)
+On 2020/5/13 下午3:13, Frank Wang wrote:
+> From: Jagan Teki <jagan@amarulasolutions.com>
+>
+> Enable/Disable the USB2PHY clk for rk3399.
+>
+> CLK is clear in enable and set in disable functionality.
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 
 Thanks,
-Yours Truly,
-Mrs. Emili Berker.
+- Kever
+> ---
+>   drivers/clk/rockchip/clk_rk3399.c | 12 ++++++++++++
+>   1 file changed, 12 insertions(+)
+>
+> diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
+> index 5fb72d83c2..b53f2f984e 100644
+> --- a/drivers/clk/rockchip/clk_rk3399.c
+> +++ b/drivers/clk/rockchip/clk_rk3399.c
+> @@ -1091,6 +1091,12 @@ static int rk3399_clk_enable(struct clk *clk)
+>   	case SCLK_MACREF_OUT:
+>   		rk_clrreg(&priv->cru->clkgate_con[5], BIT(6));
+>   		break;
+> +	case SCLK_USB2PHY0_REF:
+> +		rk_clrreg(&priv->cru->clkgate_con[6], BIT(5));
+> +		break;
+> +	case SCLK_USB2PHY1_REF:
+> +		rk_clrreg(&priv->cru->clkgate_con[6], BIT(6));
+> +		break;
+>   	case ACLK_GMAC:
+>   		rk_clrreg(&priv->cru->clkgate_con[32], BIT(0));
+>   		break;
+> @@ -1167,6 +1173,12 @@ static int rk3399_clk_disable(struct clk *clk)
+>   	case SCLK_MACREF_OUT:
+>   		rk_setreg(&priv->cru->clkgate_con[5], BIT(6));
+>   		break;
+> +	case SCLK_USB2PHY0_REF:
+> +		rk_setreg(&priv->cru->clkgate_con[6], BIT(5));
+> +		break;
+> +	case SCLK_USB2PHY1_REF:
+> +		rk_setreg(&priv->cru->clkgate_con[6], BIT(6));
+> +		break;
+>   	case ACLK_GMAC:
+>   		rk_setreg(&priv->cru->clkgate_con[32], BIT(0));
+>   		break;
