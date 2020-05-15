@@ -1,62 +1,62 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v5 02/16] clk: rk3399: Set empty for TCPHY assigned-clocks
-Date: Fri, 15 May 2020 10:15:29 +0800
-Message-ID: <44dd1187-6a74-ba67-fa78-c34501152867@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v5 03/16] clk: rk3399: Enable/Disable TCPHY clocks
+Date: Fri, 15 May 2020 10:15:41 +0800
+Message-ID: <07857210-2dd4-a741-c2b8-1b2e223b2f5e@rock-chips.com>
 References: <20200513071344.5430-1-frank.wang@rock-chips.com>
- <20200513071344.5430-3-frank.wang@rock-chips.com>
+ <20200513071344.5430-4-frank.wang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200513071344.5430-3-frank.wang@rock-chips.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200513071344.5430-4-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Frank Wang <frank.wang@rock-chips.com>, heiko@sntech.de, marex@denx.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, marex-ynQEQJNshbs@public.gmane.org, bmeng.cn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
+Cc: jianing.ren-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2020/5/13 下午3:13, Frank Wang wrote:
-> From: Jagan Teki <jagan@amarulasolutions.com>
->
-> Due to v5.7-rc1 sync the SD controller nodes in rk3399.dtsi
-> have SCLK_UPHY0_TCPDCORE, SCLK_UPHY1_TCPDCORE assigned-clocks
-> which are usually required for Linux and don't require to
-> handle them in U-Boot.
->
->    assigned-clocks = <&cru SCLK_UPHY0_TCPDCORE>;
->    assigned-clocks = <&cru SCLK_UPHY1_TCPDCORE>;
->
-> So, mark them as empty in clock otherwise device probe on
-> those typec phy driver would fail.
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
-> ---
->   drivers/clk/rockchip/clk_rk3399.c | 2 ++
->   1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
-> index b53f2f984e..98fc6a3267 100644
-> --- a/drivers/clk/rockchip/clk_rk3399.c
-> +++ b/drivers/clk/rockchip/clk_rk3399.c
-> @@ -997,6 +997,8 @@ static ulong rk3399_clk_set_rate(struct clk *clk, ulong rate)
->   	case ACLK_VOP1:
->   	case HCLK_VOP1:
->   	case HCLK_SD:
-> +	case SCLK_UPHY0_TCPDCORE:
-> +	case SCLK_UPHY1_TCPDCORE:
->   		/**
->   		 * assigned-clocks handling won't require for vopl, so
->   		 * return 0 to satisfy clk_set_defaults during device probe.
+Ck9uIDIwMjAvNS8xMyDkuIvljYgzOjEzLCBGcmFuayBXYW5nIHdyb3RlOgo+IEZyb206IEphZ2Fu
+IFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+Cj4gRW5hYmxlL0Rpc2FibGUgVENQ
+SFkgY2xvY2sgZm9yIHJrMzM5OSBwbGF0Zm9ybS4KPgo+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRl
+a2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgpSZXZpZXdlZC1ieTogS2V2ZXIgWWFuZyA8
+a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KClRoYW5rcywKLSBLZXZlcgo+IC0tLQo+ICAgZHJp
+dmVycy9jbGsvcm9ja2NoaXAvY2xrX3JrMzM5OS5jIHwgMjQgKysrKysrKysrKysrKysrKysrKysr
+KysrCj4gICAxIGZpbGUgY2hhbmdlZCwgMjQgaW5zZXJ0aW9ucygrKQo+Cj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsa19yazMzOTkuYyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlw
+L2Nsa19yazMzOTkuYwo+IGluZGV4IDk4ZmM2YTMyNjcuLjA2MjMyZjE5MDMgMTAwNjQ0Cj4gLS0t
+IGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrX3JrMzM5OS5jCj4gKysrIGIvZHJpdmVycy9jbGsv
+cm9ja2NoaXAvY2xrX3JrMzM5OS5jCj4gQEAgLTExNDQsNiArMTE0NCwxOCBAQCBzdGF0aWMgaW50
+IHJrMzM5OV9jbGtfZW5hYmxlKHN0cnVjdCBjbGsgKmNsaykKPiAgIAljYXNlIEhDTEtfSE9TVDFf
+QVJCOgo+ICAgCQlya19jbHJyZWcoJnByaXYtPmNydS0+Y2xrc2VsX2NvblsyMF0sIEJJVCg4KSk7
+Cj4gICAJCWJyZWFrOwo+ICsJY2FzZSBTQ0xLX1VQSFkwX1RDUERQSFlfUkVGOgo+ICsJCXJrX2Ns
+cnJlZygmcHJpdi0+Y3J1LT5jbGtnYXRlX2NvblsxM10sIEJJVCg0KSk7Cj4gKwkJYnJlYWs7Cj4g
+KwljYXNlIFNDTEtfVVBIWTBfVENQRENPUkU6Cj4gKwkJcmtfY2xycmVnKCZwcml2LT5jcnUtPmNs
+a2dhdGVfY29uWzEzXSwgQklUKDUpKTsKPiArCQlicmVhazsKPiArCWNhc2UgU0NMS19VUEhZMV9U
+Q1BEUEhZX1JFRjoKPiArCQlya19jbHJyZWcoJnByaXYtPmNydS0+Y2xrZ2F0ZV9jb25bMTNdLCBC
+SVQoNikpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBTQ0xLX1VQSFkxX1RDUERDT1JFOgo+ICsJCXJr
+X2NscnJlZygmcHJpdi0+Y3J1LT5jbGtnYXRlX2NvblsxM10sIEJJVCg3KSk7Cj4gKwkJYnJlYWs7
+Cj4gICAJY2FzZSBTQ0xLX1BDSUVQSFlfUkVGOgo+ICAgCQlya19jbHJyZWcoJnByaXYtPmNydS0+
+Y2xrc2VsX2NvblsxOF0sIEJJVCgxMCkpOwo+ICAgCQlicmVhazsKPiBAQCAtMTIyNiw2ICsxMjM4
+LDE4IEBAIHN0YXRpYyBpbnQgcmszMzk5X2Nsa19kaXNhYmxlKHN0cnVjdCBjbGsgKmNsaykKPiAg
+IAljYXNlIEhDTEtfSE9TVDFfQVJCOgo+ICAgCQlya19zZXRyZWcoJnByaXYtPmNydS0+Y2xrc2Vs
+X2NvblsyMF0sIEJJVCg4KSk7Cj4gICAJCWJyZWFrOwo+ICsJY2FzZSBTQ0xLX1VQSFkwX1RDUERQ
+SFlfUkVGOgo+ICsJCXJrX3NldHJlZygmcHJpdi0+Y3J1LT5jbGtnYXRlX2NvblsxM10sIEJJVCg0
+KSk7Cj4gKwkJYnJlYWs7Cj4gKwljYXNlIFNDTEtfVVBIWTBfVENQRENPUkU6Cj4gKwkJcmtfc2V0
+cmVnKCZwcml2LT5jcnUtPmNsa2dhdGVfY29uWzEzXSwgQklUKDUpKTsKPiArCQlicmVhazsKPiAr
+CWNhc2UgU0NMS19VUEhZMV9UQ1BEUEhZX1JFRjoKPiArCQlya19zZXRyZWcoJnByaXYtPmNydS0+
+Y2xrZ2F0ZV9jb25bMTNdLCBCSVQoNikpOwo+ICsJCWJyZWFrOwo+ICsJY2FzZSBTQ0xLX1VQSFkx
+X1RDUERDT1JFOgo+ICsJCXJrX3NldHJlZygmcHJpdi0+Y3J1LT5jbGtnYXRlX2NvblsxM10sIEJJ
+VCg3KSk7Cj4gKwkJYnJlYWs7Cj4gICAJY2FzZSBTQ0xLX1BDSUVQSFlfUkVGOgo+ICAgCQlya19j
+bHJyZWcoJnByaXYtPmNydS0+Y2xrc2VsX2NvblsxOF0sIEJJVCgxMCkpOwo+ICAgCQlicmVhazsK
+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
