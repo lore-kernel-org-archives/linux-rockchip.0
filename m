@@ -1,72 +1,71 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v3 5/6] rockchip: Enable PCIe/M.2 on rk3399 board w/ M.2
-Date: Fri, 15 May 2020 10:54:21 +0800
-Message-ID: <71fb5935-b0f9-2692-ec2b-a9de350559a1@rock-chips.com>
-References: <20200509165624.20791-1-jagan@amarulasolutions.com>
- <20200509165624.20791-6-jagan@amarulasolutions.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH] media: staging: rkisp1: cap: change RGB24 format to
+ XBGR32
+Date: Fri, 15 May 2020 08:16:16 +0200
+Message-ID: <e9b91595-be82-c0d6-339c-daf61faa9821@collabora.com>
+References: <20200328135311.21221-1-dafna.hirschfeld@collabora.com>
+ <7d387293-5fc8-6d6e-bc5a-03138a247d50@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200509165624.20791-6-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <7d387293-5fc8-6d6e-bc5a-03138a247d50@collabora.com>
 Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: patrick-Er2xLVyhcs+zQB+pC5nmwQ@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+Sender: linux-media-owner@vger.kernel.org
+To: Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMjAvNS8xMCDkuIrljYgxMjo1NiwgSmFnYW4gVGVraSB3cm90ZToKPiBFbmFibGUgUENJ
-ZS9NLjIgc3VwcG9ydCBvbgo+IC0gTmFub1BDLVQ0Cj4gLSBST0MtUkszMzk5LVBDIE1lenphbmlu
-ZSBib2FyZHMuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdhbkBhbWFydWxhc29s
-dXRpb25zLmNvbT4KClJldmlld2VkLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55YW5nQHJvY2stY2hp
-cHMuY29tPgoKVGhhbmtzLAotIEtldmVyCj4gLS0tCj4gQ2hhbmdlcyBmb3IgdjM6Cj4gLSBub25l
-Cj4KPiAgIGFyY2gvYXJtL2R0cy9yazMzOTktdS1ib290LmR0c2kgICAgICAgICAgIHwgMSArCj4g
-ICBjb25maWdzL25hbm9wYy10NC1yazMzOTlfZGVmY29uZmlnICAgICAgICB8IDQgKysrKwo+ICAg
-Y29uZmlncy9yb2MtcGMtbWV6emFuaW5lLXJrMzM5OV9kZWZjb25maWcgfCA0ICsrKysKPiAgIDMg
-ZmlsZXMgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0v
-ZHRzL3JrMzM5OS11LWJvb3QuZHRzaSBiL2FyY2gvYXJtL2R0cy9yazMzOTktdS1ib290LmR0c2kK
-PiBpbmRleCA5YmIxMzBhOTJhLi5kNjZkNWI2YTM4IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtL2R0
-cy9yazMzOTktdS1ib290LmR0c2kKPiArKysgYi9hcmNoL2FybS9kdHMvcmszMzk5LXUtYm9vdC5k
-dHNpCj4gQEAgLTgsNiArOCw3IEBACj4gICAJYWxpYXNlcyB7Cj4gICAJCW1tYzAgPSAmc2RoY2k7
-Cj4gICAJCW1tYzEgPSAmc2RtbWM7Cj4gKwkJcGNpMCA9ICZwY2llMDsKPiAgIAl9Owo+ICAgCj4g
-ICAJY2ljOiBzeXNjb25AZmY2MjAwMDAgewo+IGRpZmYgLS1naXQgYS9jb25maWdzL25hbm9wYy10
-NC1yazMzOTlfZGVmY29uZmlnIGIvY29uZmlncy9uYW5vcGMtdDQtcmszMzk5X2RlZmNvbmZpZwo+
-IGluZGV4IGFlODY1OTA4ZDguLjNiYjViNDk4ZjIgMTAwNjQ0Cj4gLS0tIGEvY29uZmlncy9uYW5v
-cGMtdDQtcmszMzk5X2RlZmNvbmZpZwo+ICsrKyBiL2NvbmZpZ3MvbmFub3BjLXQ0LXJrMzM5OV9k
-ZWZjb25maWcKPiBAQCAtMTgsNiArMTgsNyBAQCBDT05GSUdfQ01EX0JPT1RaPXkKPiAgIENPTkZJ
-R19DTURfR1BUPXkKPiAgIENPTkZJR19DTURfTU1DPXkKPiAgIENPTkZJR19DTURfVVNCPXkKPiAr
-Q09ORklHX0NNRF9QQ0k9eQo+ICAgIyBDT05GSUdfQ01EX1NFVEVYUFIgaXMgbm90IHNldAo+ICAg
-Q09ORklHX0NNRF9USU1FPXkKPiAgIENPTkZJR19TUExfT0ZfQ09OVFJPTD15Cj4gQEAgLTM0LDEw
-ICszNSwxMyBAQCBDT05GSUdfTU1DX1NESENJX1JPQ0tDSElQPXkKPiAgIENPTkZJR19ETV9FVEg9
-eQo+ICAgQ09ORklHX0VUSF9ERVNJR05XQVJFPXkKPiAgIENPTkZJR19HTUFDX1JPQ0tDSElQPXkK
-PiArQ09ORklHX05WTUU9eQo+ICtDT05GSUdfUENJPXkKPiAgIENPTkZJR19QTUlDX1JLOFhYPXkK
-PiAgIENPTkZJR19SRUdVTEFUT1JfUFdNPXkKPiAgIENPTkZJR19SRUdVTEFUT1JfUks4WFg9eQo+
-ICAgQ09ORklHX1BXTV9ST0NLQ0hJUD15Cj4gK0NPTkZJR19ETV9SRVNFVD15Cj4gICBDT05GSUdf
-QkFVRFJBVEU9MTUwMDAwMAo+ICAgQ09ORklHX0RFQlVHX1VBUlRfU0hJRlQ9Mgo+ICAgQ09ORklH
-X1NZU1JFU0VUPXkKPiBkaWZmIC0tZ2l0IGEvY29uZmlncy9yb2MtcGMtbWV6emFuaW5lLXJrMzM5
-OV9kZWZjb25maWcgYi9jb25maWdzL3JvYy1wYy1tZXp6YW5pbmUtcmszMzk5X2RlZmNvbmZpZwo+
-IGluZGV4IDVhNjk0ZWRjMDMuLjBiODUzODA1ZjMgMTAwNjQ0Cj4gLS0tIGEvY29uZmlncy9yb2Mt
-cGMtbWV6emFuaW5lLXJrMzM5OV9kZWZjb25maWcKPiArKysgYi9jb25maWdzL3JvYy1wYy1tZXp6
-YW5pbmUtcmszMzk5X2RlZmNvbmZpZwo+IEBAIC0xOSw2ICsxOSw3IEBAIENPTkZJR19DTURfQk9P
-VFo9eQo+ICAgQ09ORklHX0NNRF9HUFQ9eQo+ICAgQ09ORklHX0NNRF9NTUM9eQo+ICAgQ09ORklH
-X0NNRF9VU0I9eQo+ICtDT05GSUdfQ01EX1BDST15Cj4gICAjIENPTkZJR19DTURfU0VURVhQUiBp
-cyBub3Qgc2V0Cj4gICBDT05GSUdfQ01EX1RJTUU9eQo+ICAgQ09ORklHX1NQTF9PRl9DT05UUk9M
-PXkKPiBAQCAtMzYsMTEgKzM3LDE0IEBAIENPTkZJR19TUElfRkxBU0hfV0lOQk9ORD15Cj4gICBD
-T05GSUdfRE1fRVRIPXkKPiAgIENPTkZJR19FVEhfREVTSUdOV0FSRT15Cj4gICBDT05GSUdfR01B
-Q19ST0NLQ0hJUD15Cj4gK0NPTkZJR19OVk1FPXkKPiArQ09ORklHX1BDST15Cj4gICBDT05GSUdf
-UE1JQ19SSzhYWD15Cj4gICBDT05GSUdfUkVHVUxBVE9SX1BXTT15Cj4gICBDT05GSUdfUkVHVUxB
-VE9SX1JLOFhYPXkKPiAgIENPTkZJR19QV01fUk9DS0NISVA9eQo+ICAgQ09ORklHX1JBTV9SSzMz
-OTlfTFBERFI0PXkKPiArQ09ORklHX0RNX1JFU0VUPXkKPiAgIENPTkZJR19CQVVEUkFURT0xNTAw
-MDAwCj4gICBDT05GSUdfREVCVUdfVUFSVF9TSElGVD0yCj4gICBDT05GSUdfUk9DS0NISVBfU1BJ
-PXkKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
-Y2hpcAo=
+hi,
+thanks for the review
+
+On 30.03.20 22:19, Helen Koike wrote:
+> 
+> 
+> On 3/28/20 10:53 AM, Dafna Hirschfeld wrote:
+>> According to the manual, the YUV->RGB conversion outputs
+> 
+> s/manual/datasheet
+It is actually from the TRM
+> 
+>> "24 bit word" that means that each pixel is 4 byte but the last
+>> one should be ignored. This matches format V4L2_PIX_FMT_XBGR32.
+> 
+> I think you can re-word this a bit, since 24bits is 3 bytes, and this doesn't mean 4 bytes are used.
+> 
+> I guess you meant that datasheet says 4 bytes are used, with 24bits for the RGB and the last byte is ignored.
+indeed, i'll change that
+> 
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>> ---
+>> The patch rebased on to of the patch
+>> "media: staging: rkisp1: cap: remove field fmt_type from struct rkisp1_capture_fmt_cfg"
+>>
+>>   drivers/staging/media/rkisp1/rkisp1-capture.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> index 3abf38362f5a..5f248b68190e 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> @@ -281,7 +281,7 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>>   	},
+>>   	/* rgb */
+>>   	{
+>> -		.fourcc = V4L2_PIX_FMT_RGB24,
+>> +		.fourcc = V4L2_PIX_FMT_XBGR32,
+> 
+> Shouldn't it be V4L2_PIX_FMT_RGBX32 ?> 
+> Or the colors are inverted as well?
+yes, the bytes are inverted
+
+Thanks,
+Dafna
+> 
+> Regards,
+> Helen
+> 
+>>   		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+>>   		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
+>>   	}, {
+>>
