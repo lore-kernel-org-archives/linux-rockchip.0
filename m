@@ -1,23 +1,25 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH 3/3] media: rkvdec: Add the VP9 backend
-Date: Mon, 18 May 2020 14:53:44 -0300
-Message-ID: <65300f1bacda58e5752e27c781eb49de0198f56f.camel@collabora.com>
-References: <20200518174011.15543-1-ezequiel@collabora.com>
-         <20200518174011.15543-4-ezequiel@collabora.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3 1/4] ARM: dts: rockchip: remove identical #include from rk3288.dtsi
+Date: Tue, 19 May 2020 00:28:02 +0200
+Message-ID: <158984064169.2259329.2459091557844833236.b4-ty@sntech.de>
+References: <20200403180159.13387-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200518174011.15543-4-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, gustavo.padovan@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200403180159.13387-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 2020-05-18 at 14:40 -0300, Ezequiel Garcia wrote:
-> [PATCH 3/3] media: rkvdec: Add the VP9 backend
+On Fri, 3 Apr 2020 20:01:56 +0200, Johan Jonker wrote:
+> There are 2 identical '#include' for 'rk3288-power.h',
+> so remove one of them.
 
-Oops, ^ should be v4 here.
+Applied, thanks!
 
-Thanks,
-Ezequiel
+[1/1] ARM: dts: rockchip: remove identical #include from rk3288.dtsi
+
+Best regards,
+-- 
+Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
