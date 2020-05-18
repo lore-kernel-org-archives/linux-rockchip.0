@@ -1,36 +1,43 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: fix phy nodename for rk3328
-Date: Tue, 19 May 2020 00:28:01 +0200
-Message-ID: <158984064169.2259329.15579989069543124777.b4-ty@sntech.de>
-References: <20200321215423.12176-1-jbx6244@gmail.com> <20200505170227.6503-1-jbx6244@gmail.com>
+Subject: Re: [PATCH v1 1/2] ARM: dts: rockchip: rename and label gpio-led
+ subnodes
+Date: Tue, 19 May 2020 00:27:59 +0200
+Message-ID: <158984064169.2259329.4243090830868839814.b4-ty@sntech.de>
+References: <20200428144933.10953-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200505170227.6503-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <20200428144933.10953-1-jbx6244@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
 To: Johan Jonker <jbx6244@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 5 May 2020 19:02:27 +0200, Johan Jonker wrote:
-> A test with the command below gives for example this error:
+On Tue, 28 Apr 2020 16:49:32 +0200, Johan Jonker wrote:
+> Current dts files with 'gpio-led' nodes were manually verified.
+> In order to automate this process leds-gpio.txt
+> has been converted to yaml. With this conversion a check
+> for pattern properties was added. A test with the command
+> below gives a screen full of warnings like:
 > 
-> arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: phy@0:
-> '#phy-cells' is a required property
-> 
-> The phy nodename is normally used by a phy-handle.
-> This node is however compatible with
-> "ethernet-phy-id1234.d400", "ethernet-phy-ieee802.3-c22"
-> which is just been added to 'ethernet-phy.yaml'.
-> So change nodename to 'ethernet-phy' for which '#phy-cells'
-> is not a required property
+> arch/arm/boot/dts/rk3188-radxarock.dt.yaml: gpio-leds:
+> 'blue', 'green', 'sleep'
+> do not match any of the regexes:
+> '(^led-[0-9a-f]$|led)', 'pinctrl-[0-9]+'
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: fix phy nodename for rk3328
-      commit: 8370cc5533b3baa5e0f18075ae638b050458aabd
 
 Best regards,
 -- 
