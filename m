@@ -1,68 +1,49 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v4 0/3] media: rkvdec: Add a VP9 backend
-Date: Mon, 18 May 2020 14:40:08 -0300
-Message-ID: <20200518174011.15543-1-ezequiel@collabora.com>
+Subject: [PATCH v4 1/3] media: rkvdec: Fix .buf_prepare
+Date: Mon, 18 May 2020 14:40:09 -0300
+Message-ID: <20200518174011.15543-2-ezequiel@collabora.com>
+References: <20200518174011.15543-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200518174011.15543-1-ezequiel@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
 To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil@xs4all.nl>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, gustavo.padovan@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Fourth iteration of the VP9 stateless codec uAPI, plus
-support for Rockchip VDEC, just minor changes since v3.
+The driver should only set the payload on .buf_prepare
+if the buffer is CAPTURE type, or if an OUTPUT buffer
+has a zeroed payload.
 
-Thanks!
-Ezequiel
+Fix it.
 
-Changelog
----------
+Fixes: cd33c830448ba ("media: rkvdec: Add the rkvdec driver")
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+---
+ drivers/staging/media/rkvdec/rkvdec.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-v4:
-
-* Drop color_space field from the VP9 interface.
-  V4L2 API should be used for it.
-* Clarified Segment-ID comments.
-* Moved motion vector probabilities to a separate
-  struct.
-
-v3:
-
-* Fix documentation issues found by Hans.
-* Fix smatch detected issues as pointed out by Hans.
-* Added patch to fix wrong bytesused set on .buf_prepare.
-
-v2:
-
-* Documentation style issues pointed out by Nicolas internally.
-* s/VP9_PROFILE_MAX/V4L2_VP9_PROFILE_MAX/
-* Fix wrong kfree(ctx).
-* constify a couple structs on rkvdec-vp9.c
-
-
-*** BLURB HERE ***
-
-Boris Brezillon (2):
-  media: uapi: Add VP9 stateless decoder controls
-  media: rkvdec: Add the VP9 backend
-
-Ezequiel Garcia (1):
-  media: rkvdec: Fix .buf_prepare
-
- .../userspace-api/media/v4l/biblio.rst        |   10 +
- .../media/v4l/ext-ctrls-codec.rst             |  550 ++++++
- drivers/media/v4l2-core/v4l2-ctrls.c          |  239 +++
- drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
- drivers/staging/media/rkvdec/Makefile         |    2 +-
- drivers/staging/media/rkvdec/rkvdec-vp9.c     | 1577 +++++++++++++++++
- drivers/staging/media/rkvdec/rkvdec.c         |   66 +-
- drivers/staging/media/rkvdec/rkvdec.h         |    6 +
- include/media/v4l2-ctrls.h                    |    1 +
- include/media/vp9-ctrls.h                     |  485 +++++
- 10 files changed, 2932 insertions(+), 5 deletions(-)
- create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
- create mode 100644 include/media/vp9-ctrls.h
-
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index 225eeca73356..4df2a248ab96 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -456,7 +456,15 @@ static int rkvdec_buf_prepare(struct vb2_buffer *vb)
+ 		if (vb2_plane_size(vb, i) < sizeimage)
+ 			return -EINVAL;
+ 	}
+-	vb2_set_plane_payload(vb, 0, f->fmt.pix_mp.plane_fmt[0].sizeimage);
++
++	/*
++	 * Buffer's bytesused is written by the driver for CAPTURE buffers,
++	 * or if the application passed zero bytesused on an OUTPUT buffer.
++	 */
++	if (!V4L2_TYPE_IS_OUTPUT(vq->type) ||
++	    (V4L2_TYPE_IS_OUTPUT(vq->type) && !vb2_get_plane_payload(vb, 0)))
++		vb2_set_plane_payload(vb, 0,
++				      f->fmt.pix_mp.plane_fmt[0].sizeimage);
+ 	return 0;
+ }
+ 
 -- 
 2.26.0.rc2
