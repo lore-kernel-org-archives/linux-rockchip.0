@@ -1,73 +1,34 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: rk3399: fix pd_tcpc0 and pd_tcpc1 node position
-Date: Tue, 19 May 2020 00:29:08 +0200
-Message-ID: <2978296.PvbIKR7951@diego>
-References: <20200428203003.3318-1-jbx6244@gmail.com> <20200428203003.3318-2-jbx6244@gmail.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v2] ARM: dts: enable WLAN for Mecer Xtreme Mini S6
+Date: Tue, 19 May 2020 00:42:23 +0200
+Message-ID: <158984169638.2264085.17568438379923007784.b4-ty@sntech.de>
+References: <e602c1b8-3606-a8d3-c64c-ec9e58315974@gmail.com> <20200406135006.23759-1-justin.swartz@risingedge.co.za>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200428203003.3318-2-jbx6244@gmail.com>
+In-Reply-To: <20200406135006.23759-1-justin.swartz@risingedge.co.za>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Jonker <jbx6244@gmail.com>, kever.yang@rock-chips.com, Caesar Wang <wxt@rock-chips.com>
-Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Rob Herring <robh+dt@kernel.org>, Justin Swartz <justin.swartz@risingedge.co.za>, Mark Rutland <mark.rutland@arm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kever, Caesar,
-
-could you double check where the type-c power-domains are located
-in the power-tree, as Caesar did add them under pd_vio back in 2016.
-
-Thanks
-Heiko
-
-Am Dienstag, 28. April 2020, 22:30:03 CEST schrieb Johan Jonker:
-> The pd_tcpc0 and pd_tcpc1 nodes are currently a sub node of pd_vio.
-> In the rk3399 TRM figure of the 'Power Domain Partition' and in the
-> table of 'Power Domain and Voltage Domain Summary' these power domains
-> are positioned directly under VD_LOGIC, so fix that in 'rk3399.dtsi'.
+On Mon, 6 Apr 2020 13:50:04 +0000, Justin Swartz wrote:
+> The Mecer Xtreme Mini S6 features a wireless module, based on a
+> Realtek 8723BS, which provides WLAN and Bluetooth connectivity via
+> SDIO and UART interfaces respectively.
 > 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> ---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 20 ++++++++++----------
->  1 file changed, 10 insertions(+), 10 deletions(-)
+> Define a simple MMC power sequence that declares the GPIO pins
+> connected to the module's WLAN Disable and Bluetooth Disable pins
+> as active low reset signals, because both signals must be deasserted
+> for WLAN radio operation.
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> index 37279db53..a4dc1bf2e 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-> @@ -1056,6 +1056,16 @@
->  				clocks = <&cru HCLK_SDIO>;
->  				pm_qos = <&qos_sdioaudio>;
->  			};
-> +			pd_tcpc0@RK3399_PD_TCPD0 {
-> +				reg = <RK3399_PD_TCPD0>;
-> +				clocks = <&cru SCLK_UPHY0_TCPDCORE>,
-> +					 <&cru SCLK_UPHY0_TCPDPHY_REF>;
-> +			};
-> +			pd_tcpc1@RK3399_PD_TCPD1 {
-> +				reg = <RK3399_PD_TCPD1>;
-> +				clocks = <&cru SCLK_UPHY1_TCPDCORE>,
-> +					 <&cru SCLK_UPHY1_TCPDPHY_REF>;
-> +			};
->  			pd_usb3@RK3399_PD_USB3 {
->  				reg = <RK3399_PD_USB3>;
->  				clocks = <&cru ACLK_USB3>;
-> @@ -1088,16 +1098,6 @@
->  					pm_qos = <&qos_isp1_m0>,
->  						 <&qos_isp1_m1>;
->  				};
-> -				pd_tcpc0@RK3399_PD_TCPD0 {
-> -					reg = <RK3399_PD_TCPD0>;
-> -					clocks = <&cru SCLK_UPHY0_TCPDCORE>,
-> -						 <&cru SCLK_UPHY0_TCPDPHY_REF>;
-> -				};
-> -				pd_tcpc1@RK3399_PD_TCPD1 {
-> -					reg = <RK3399_PD_TCPD1>;
-> -					clocks = <&cru SCLK_UPHY1_TCPDCORE>,
-> -						 <&cru SCLK_UPHY1_TCPDPHY_REF>;
-> -				};
->  				pd_vo@RK3399_PD_VO {
->  					reg = <RK3399_PD_VO>;
->  					#address-cells = <1>;
-> 
+> [...]
+
+Applied, thanks!
+
+[1/1] ARM: dts: enable WLAN for Mecer Xtreme Mini S6
+      commit: 6067ec2c7ffacab4689ddfed3df74a467d112efe
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
