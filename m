@@ -1,27 +1,36 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] arm64: dts: rockchip: remove disable-wp from rk3308-roc-cc emmc node
-Date: Tue, 19 May 2020 00:27:58 +0200
-Message-ID: <158984064169.2259329.2215953121884920884.b4-ty@sntech.de>
-References: <20191219121954.2450-1-jbx6244@gmail.com>
+Subject: Re: [PATCH v2] arm64: dts: rockchip: fix phy nodename for rk3328
+Date: Tue, 19 May 2020 00:28:01 +0200
+Message-ID: <158984064169.2259329.15579989069543124777.b4-ty@sntech.de>
+References: <20200321215423.12176-1-jbx6244@gmail.com> <20200505170227.6503-1-jbx6244@gmail.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20191219121954.2450-1-jbx6244@gmail.com>
+In-Reply-To: <20200505170227.6503-1-jbx6244@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: Johan Jonker <jbx6244@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, mark.rutland@arm.com
+Cc: Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 19 Dec 2019 13:19:54 +0100, Johan Jonker wrote:
-> The mmc-controller.yaml didn't explicitly say disable-wp is
-> for SD card slot only, but that is what it was designed for
-> in the first place.
-> Remove all disable-wp from emmc or sdio controllers.
+On Tue, 5 May 2020 19:02:27 +0200, Johan Jonker wrote:
+> A test with the command below gives for example this error:
+> 
+> arch/arm64/boot/dts/rockchip/rk3328-evb.dt.yaml: phy@0:
+> '#phy-cells' is a required property
+> 
+> The phy nodename is normally used by a phy-handle.
+> This node is however compatible with
+> "ethernet-phy-id1234.d400", "ethernet-phy-ieee802.3-c22"
+> which is just been added to 'ethernet-phy.yaml'.
+> So change nodename to 'ethernet-phy' for which '#phy-cells'
+> is not a required property
+> 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: remove disable-wp from rk3308-roc-cc emmc node
-      commit: 1fab4cf51e48e9525cf70a9604e90dd3dd666a2f
+[1/1] arm64: dts: rockchip: fix phy nodename for rk3328
+      commit: 8370cc5533b3baa5e0f18075ae638b050458aabd
 
 Best regards,
 -- 
