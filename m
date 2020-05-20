@@ -1,128 +1,56 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v4 2/3] media: uapi: Add VP9 stateless decoder controls
-Date: Wed, 20 May 2020 15:26:30 +0200
-Message-ID: <c9e71d67-746c-b71e-c8df-d41d7074c20a@xs4all.nl>
-References: <20200518174011.15543-1-ezequiel@collabora.com>
- <20200518174011.15543-3-ezequiel@collabora.com>
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+Subject: Re: [PATCH] dt-bindings: input: touchscreen: edt-ft5x06: change reg
+ property
+Date: Wed, 20 May 2020 10:13:24 -0700
+Message-ID: <20200520171324.GS89269@dtor-ws>
+References: <20200520073327.6016-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200518174011.15543-3-ezequiel@collabora.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20200520073327.6016-1-jbx6244@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Tomasz Figa <tfiga@chromium.org>, kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, Alexandre Courbot <acourbot@chromium.org>, Jeffrey Kardatzke <jkardatzke@chromium.org>, gustavo.padovan@collabora.com, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Boris Brezillon <boris.brezillon@collabora.com>
+To: Johan Jonker <jbx6244@gmail.com>
+Cc: heiko@sntech.de, robh+dt@kernel.org, linux-input@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 18/05/2020 19:40, Ezequiel Garcia wrote:
-> From: Boris Brezillon <boris.brezillon@collabora.com>
+Hi Johan,
+
+On Wed, May 20, 2020 at 09:33:27AM +0200, Johan Jonker wrote:
+> A test with the command below gives this error:
 > 
-> Add the VP9 stateless decoder controls plus the documentation that goes
-> with it.
+> arch/arm/boot/dts/rk3188-bqedison2qc.dt.yaml:
+> touchscreen@3e: reg:0:0: 56 was expected
 > 
-> Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> The touchscreen chip on 'rk3188-bqedison2qc' and other BQ models
+> was shipped with different addresses then the binding currently allows.
+> Change the reg property that any address will pass.
+> 
+> make ARCH=arm dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/input/touchscreen/
+> edt-ft5x06.yaml
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 > ---
->  .../userspace-api/media/v4l/biblio.rst        |  10 +
->  .../media/v4l/ext-ctrls-codec.rst             | 550 ++++++++++++++++++
->  drivers/media/v4l2-core/v4l2-ctrls.c          | 239 ++++++++
->  drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
->  include/media/v4l2-ctrls.h                    |   1 +
->  include/media/vp9-ctrls.h                     | 485 +++++++++++++++
->  6 files changed, 1286 insertions(+)
->  create mode 100644 include/media/vp9-ctrls.h
+>  Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
+> diff --git a/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml b/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml
+> index 383d64a91..baa8e8f7e 100644
+> --- a/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml
+> +++ b/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml
+> @@ -42,7 +42,7 @@ properties:
+>        - focaltech,ft6236
+>  
+>    reg:
+> -    const: 0x38
+> +    maxItems: 1
 
-<snip>
+Should we have a list of valid addresses instead of allowing any
+address? Controllers usually have only a couple of addresses that they
+support.
 
-> +/**
-> + * struct v4l2_vp9_quantization - VP9 quantization parameters
-> + *
-> + * @base_q_idx: indicates the base frame qindex
-> + * @delta_q_y_dc: indicates the Y DC quantizer relative to base_q_idx
-> + * @delta_q_uv_dc: indicates the UV DC quantizer relative to base_q_idx
-> + * @delta_q_uv_ac indicates the UV AC quantizer relative to base_q_idx
-> + * @padding: padding bytes to align things on 64 bits. Must be set to 0
-> + *
-> + * Encodes the quantization parameters. See section '7.2.9 Quantization params
-> + * syntax' of the VP9 specification for more details.
-> + */
-> +struct v4l2_vp9_quantization {
-> +	__u8 base_q_idx;
-> +	__s8 delta_q_y_dc;
-> +	__s8 delta_q_uv_dc;
-> +	__s8 delta_q_uv_ac;
-> +	__u8 padding[4];
+Thanks.
 
-Are you sure this padding field is needed? What goes wrong if this is dropped?
-
-> +};
-
-<snip>
-
-> +struct v4l2_ctrl_vp9_frame_decode_params {
-> +	__u32 flags;
-> +	__u16 compressed_header_size;
-> +	__u16 uncompressed_header_size;
-> +	__u8 profile;
-> +	__u8 reset_frame_context;
-> +	__u8 frame_context_idx;
-> +	__u8 bit_depth;
-> +	__u8 interpolation_filter;
-> +	__u8 tile_cols_log2;
-> +	__u8 tile_rows_log2;
-> +	__u8 tx_mode;
-> +	__u8 reference_mode;
-> +	__u8 padding[6];
-
-This doesn't look right: this should be 7 if you want to align at 64 bits. Don't
-forget to update the documentation when you change this. In fact, the documentation
-doesn't mention the size of the array, it just says 'u8 padding'.
-
-I thought pahole flags something like this?
-
-> +	__u16 frame_width_minus_1;
-> +	__u16 frame_height_minus_1;
-> +	__u16 render_width_minus_1;
-> +	__u16 render_height_minus_1;
-> +	__u64 refs[V4L2_REF_ID_CNT];
-> +	struct v4l2_vp9_loop_filter lf;
-
-sizeof(lf) is an odd-number of bytes, so...
-
-> +	struct v4l2_vp9_quantization quant;
-
-... even though sizeof(quant) == 8 with the padding bytes, that would still not
-align at 64 bits.
-
-> +	struct v4l2_vp9_segmentation seg;
-> +	struct v4l2_vp9_probabilities probs;
-> +};
-> +
-> +#define V4L2_VP9_NUM_FRAME_CTX	4
-> +
-> +/**
-> + * struct v4l2_ctrl_vp9_frame_ctx - VP9 frame context control
-> + *
-> + * @probs: VP9 probabilities
-> + *
-> + * This control is accessed in both direction. The user should initialize the
-> + * 4 contexts with default values just after starting the stream. Then before
-> + * decoding a frame it should query the current frame context (the one passed
-> + * through &v4l2_ctrl_vp9_frame_decode_params.frame_context_idx) to initialize
-> + * &v4l2_ctrl_vp9_frame_decode_params.probs. The probs are then adjusted based
-> + * on the bitstream info and passed to the kernel. The codec should update
-> + * the frame context after the frame has been decoded, so that next time
-> + * userspace query this context it contains the updated probabilities.
-> + */
-> +struct v4l2_ctrl_vp9_frame_ctx {
-> +	struct v4l2_vp9_probabilities probs;
-> +};
-> +
-> +#endif /* _VP9_CTRLS_H_ */
-> 
-
-Regards,
-
-	Hans
+-- 
+Dmitry
