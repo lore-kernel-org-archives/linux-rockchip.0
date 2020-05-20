@@ -1,73 +1,40 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH 2/2] media: staging: rkisp1: stats: don't set stats flags
- in rkisp1_stats_send_measurement
-Date: Wed, 20 May 2020 03:16:01 +0300
-Message-ID: <20200520001601.GN3820@pendragon.ideasonboard.com>
-References: <20200509152904.26348-1-dafna.hirschfeld@collabora.com>
- <20200509152904.26348-2-dafna.hirschfeld@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Return-path: <linux-media-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200509152904.26348-2-dafna.hirschfeld@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, helen.koike@collabora.com, ezequiel@collabora.com, dafna3@gmail.com, kernel@collabora.com, hverkuil@xs4all.nl, sakari.ailus@linux.intel.com, mchehab@kernel.org
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [RFC PATCH] arm64: dts: rockchip: fix dmas dma-names for rk3308 i2s node
+Date: Wed, 20 May 2020 08:48:16 +0200
+Message-ID: <20200520064816.3954-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
+One of the current rk3308 'i2s' nodes has a different dma layout
+with only 1 item. Table 9-2 DMAC1 Request Mapping Table shows that
+there 2 dma sources available, so fix the dmas and dma-names
+for the rk3308 'i2s' node.
 
-Thank you for the patch.
+10 I2S/PCM_2CH_1 tx High level
+11 I2S/PCM_2CH_1 rx High level
 
-On Sat, May 09, 2020 at 05:29:04PM +0200, Dafna Hirschfeld wrote:
-> The flags that indicate which statistics are read are already
-> set in the functions that read them so there is no need to
-> set them in the function rkisp1_stats_send_measurement.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
-> ---
->  drivers/staging/media/rkisp1/rkisp1-stats.c | 13 +++----------
->  1 file changed, 3 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> index 8351bda0be03..0616793ae395 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-stats.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> @@ -356,26 +356,19 @@ rkisp1_stats_send_measurement(struct rkisp1_stats *stats,
->  	cur_stat_buf =
->  		(struct rkisp1_stat_buffer *)(cur_buf->vaddr[0]);
->  
-> -	if (meas_work->isp_ris & RKISP1_CIF_ISP_AWB_DONE) {
-> +	if (meas_work->isp_ris & RKISP1_CIF_ISP_AWB_DONE)
->  		rkisp1_stats_get_awb_meas(stats, cur_stat_buf);
-> -		cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AWB;
-> -	}
->  
-> -	if (meas_work->isp_ris & RKISP1_CIF_ISP_AFM_FIN) {
-> +	if (meas_work->isp_ris & RKISP1_CIF_ISP_AFM_FIN)
->  		rkisp1_stats_get_afc_meas(stats, cur_stat_buf);
-> -		cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AFM_FIN;
-> -	}
->  
->  	if (meas_work->isp_ris & RKISP1_CIF_ISP_EXP_END) {
->  		rkisp1_stats_get_aec_meas(stats, cur_stat_buf);
->  		rkisp1_stats_get_bls_meas(stats, cur_stat_buf);
-> -		cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AUTOEXP;
->  	}
->  
-> -	if (meas_work->isp_ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY) {
-> +	if (meas_work->isp_ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY)
->  		rkisp1_stats_get_hst_meas(stats, cur_stat_buf);
-> -		cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_HIST;
-> -	}
->  
->  	vb2_set_plane_payload(&cur_buf->vb.vb2_buf, 0,
->  			      sizeof(struct rkisp1_stat_buffer));
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index ac7f69407..79c1dd1fe 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -564,8 +564,8 @@
+ 		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
+ 		clocks = <&cru SCLK_I2S1_2CH>, <&cru HCLK_I2S1_2CH>;
+ 		clock-names = "i2s_clk", "i2s_hclk";
+-		dmas = <&dmac1 11>;
+-		dma-names = "rx";
++		dmas = <&dmac1 10>, <&dmac1 11>;
++		dma-names = "tx", "rx";
+ 		resets = <&cru SRST_I2S1_2CH_M>, <&cru SRST_I2S1_2CH_H>;
+ 		reset-names = "reset-m", "reset-h";
+ 		status = "disabled";
 -- 
-Regards,
-
-Laurent Pinchart
+2.11.0
