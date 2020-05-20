@@ -1,68 +1,77 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] dt-bindings: input: touchscreen: edt-ft5x06: change reg property
-Date: Wed, 20 May 2020 20:41:59 +0200
-Message-ID: <4727344.YYj2SkWT1V@diego>
-References: <20200520073327.6016-1-jbx6244@gmail.com> <20200520171324.GS89269@dtor-ws>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH 3/5] media: staging: rkisp1: stats: use spin_lock_irqsave
+ for irq_lock
+Date: Wed, 20 May 2020 21:22:29 +0200
+Message-ID: <5c76ffe9-db3e-20a0-f280-75ded6c72e2c@collabora.com>
+References: <20200512120522.25960-1-dafna.hirschfeld@collabora.com>
+ <20200512120522.25960-4-dafna.hirschfeld@collabora.com>
+ <2d3f52d2-73d7-1e8d-eee3-669012854491@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200520171324.GS89269@dtor-ws>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Dmitry Torokhov <dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <2d3f52d2-73d7-1e8d-eee3-669012854491@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org
+Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dmitry,
 
-Am Mittwoch, 20. Mai 2020, 19:13:24 CEST schrieb Dmitry Torokhov:
-> Hi Johan,
+
+On 20.05.20 13:11, Helen Koike wrote:
+> Hi Dafna,
 > 
-> On Wed, May 20, 2020 at 09:33:27AM +0200, Johan Jonker wrote:
-> > A test with the command below gives this error:
-> > 
-> > arch/arm/boot/dts/rk3188-bqedison2qc.dt.yaml:
-> > touchscreen@3e: reg:0:0: 56 was expected
-> > 
-> > The touchscreen chip on 'rk3188-bqedison2qc' and other BQ models
-> > was shipped with different addresses then the binding currently allows.
-> > Change the reg property that any address will pass.
-> > 
-> > make ARCH=arm dtbs_check
-> > DT_SCHEMA_FILES=Documentation/devicetree/bindings/input/touchscreen/
-> > edt-ft5x06.yaml
-> > 
-> > Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > ---
-> >  Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml b/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml
-> > index 383d64a91..baa8e8f7e 100644
-> > --- a/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml
-> > +++ b/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml
-> > @@ -42,7 +42,7 @@ properties:
-> >        - focaltech,ft6236
-> >  
-> >    reg:
-> > -    const: 0x38
-> > +    maxItems: 1
+> On 5/12/20 9:05 AM, Dafna Hirschfeld wrote:
+>> Currently 'spin_lock' is used in order to lock the 'irq_lock'.
+>> This should be replaced with 'spin_lock_irqsave' since it is
+>> used in the irq handler.
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>> ---
+>>   drivers/staging/media/rkisp1/rkisp1-stats.c | 5 +++--
+>>   1 file changed, 3 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
+>> index 12998db955e6..5578fdeb8a18 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-stats.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
+>> @@ -403,9 +403,10 @@ void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
+>>   	struct rkisp1_device *rkisp1 = stats->rkisp1;
+>>   	struct rkisp1_isp_readout_work *work;
+>>   	unsigned int isp_mis_tmp = 0;
+>> +	unsigned long flags;
+>>   	u32 val;
+>>   
+>> -	spin_lock(&stats->irq_lock);
+>> +	spin_lock_irqsave(&stats->irq_lock, flags);
 > 
-> Should we have a list of valid addresses instead of allowing any
-> address? Controllers usually have only a couple of addresses that they
-> support.
+> Since you are moving this function to a threaded irq handler, you won't be in interrupt context.
+> 
+> The spin_lock_irqsave() function disable interrupts for the critical section, are you sure this is
+> required?
+Hi,
+The lock is also used in the hard irq handler in the patch that moves the statistics to threaded interrupt.
+The code in the hard irq iterates the buffers queue to find the next buffer available and set the flags of
+the ready statistics on it.
 
-from what I've read, the fdt touchscreen controllers are just a generic
-cpu with device-specific (or better panel-specific) firmware, which seems
-to include the address as well - so it looks to be variable.
+Thanks,
+Dafna
 
-But of course that is only 2nd hand knowledge for me ;-)
-
-
-But also, the i2c address is something you cannot really mess up,
-either it is correct and your touchscreen works, or it isn't and and
-adding entries to this list every time a new address variant pops up
-feels clumsy.
-
-
-Heiko
+> 
+> Regards,
+> Helen
+> 
+>>   
+>>   	val = RKISP1_STATS_MEAS_MASK;
+>>   	rkisp1_write(rkisp1, val, RKISP1_CIF_ISP_ICR);
+>> @@ -435,7 +436,7 @@ void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
+>>   	}
+>>   
+>>   unlock:
+>> -	spin_unlock(&stats->irq_lock);
+>> +	spin_unlock_irqrestore(&stats->irq_lock, flags);
+>>   }
+>>   
+>>   static void rkisp1_init_stats(struct rkisp1_stats *stats)
+>>
