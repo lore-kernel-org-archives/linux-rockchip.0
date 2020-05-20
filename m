@@ -1,65 +1,45 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 3/5] media: staging: rkisp1: stats: use spin_lock_irqsave
- for irq_lock
-Date: Wed, 20 May 2020 08:11:37 -0300
-Message-ID: <2d3f52d2-73d7-1e8d-eee3-669012854491@collabora.com>
-References: <20200512120522.25960-1-dafna.hirschfeld@collabora.com>
- <20200512120522.25960-4-dafna.hirschfeld@collabora.com>
+From: Emmanuel Grumbach <egrumbach-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: iwlwifi firmware loading problems, rk3399
+Date: Wed, 20 May 2020 15:27:50 +0300
+Message-ID: <CANUX_P1q22J6ONRqTCDwwEMtmbGbCmS=C1WK6Zz0OqG_v2qcSA@mail.gmail.com>
+References: <9122588d-683a-936e-1305-c34124e6702c@nextfour.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200512120522.25960-4-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org
-Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, laurent.pinchart@ideasonboard.com
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <9122588d-683a-936e-1305-c34124e6702c-MRsr7dthA9VWk0Htik3J/w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?UTF-8?Q?Mika_Penttil=C3=A4?= <mika.penttila-MRsr7dthA9VWk0Htik3J/w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Emmanuel Grumbach <emmanuel.grumbach-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-wireless <linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Johannes Berg <johannes.berg-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
+>
+> Hi,
+>
+> We have custom made, Rockchip rk3399 based board with a standard M.2
+> socket for wifi/bt card.
+>
+> We have tried man different cards, like Intel 9260 and Intel AX200, but
+> are experiencing problems while loading the firmware.
+>
+>    Failed to load firmware chunk!
+>
+> etc. I have a little debugged and the problem seems that the interrupts
+> that acknowledges the load to proceed, is not coming, randomly.
+> I have tried many firmwares. Do you have any pointers where to look next?
 
-On 5/12/20 9:05 AM, Dafna Hirschfeld wrote:
-> Currently 'spin_lock' is used in order to lock the 'irq_lock'.
-> This should be replaced with 'spin_lock_irqsave' since it is
-> used in the irq handler.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> ---
->  drivers/staging/media/rkisp1/rkisp1-stats.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> index 12998db955e6..5578fdeb8a18 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-stats.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> @@ -403,9 +403,10 @@ void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
->  	struct rkisp1_device *rkisp1 = stats->rkisp1;
->  	struct rkisp1_isp_readout_work *work;
->  	unsigned int isp_mis_tmp = 0;
-> +	unsigned long flags;
->  	u32 val;
->  
-> -	spin_lock(&stats->irq_lock);
-> +	spin_lock_irqsave(&stats->irq_lock, flags);
+I guess you need to debug your board :)
+The interrupt is not coming, then.. there isn't much the driver can do.
 
-Since you are moving this function to a threaded irq handler, you won't be in interrupt context.
-
-The spin_lock_irqsave() function disable interrupts for the critical section, are you sure this is
-required?
-
-Regards,
-Helen
-
->  
->  	val = RKISP1_STATS_MEAS_MASK;
->  	rkisp1_write(rkisp1, val, RKISP1_CIF_ISP_ICR);
-> @@ -435,7 +436,7 @@ void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
->  	}
->  
->  unlock:
-> -	spin_unlock(&stats->irq_lock);
-> +	spin_unlock_irqrestore(&stats->irq_lock, flags);
->  }
->  
->  static void rkisp1_init_stats(struct rkisp1_stats *stats)
-> 
+>
+> Thanks,
+> Mika
+>
