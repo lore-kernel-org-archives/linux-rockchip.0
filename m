@@ -1,40 +1,43 @@
 From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [RFC PATCH] arm64: dts: rockchip: fix dmas dma-names for rk3308 i2s node
-Date: Wed, 20 May 2020 08:48:16 +0200
-Message-ID: <20200520064816.3954-1-jbx6244@gmail.com>
+Subject: [PATCH] dt-bindings: input: touchscreen: edt-ft5x06: change reg property
+Date: Wed, 20 May 2020 09:33:27 +0200
+Message-ID: <20200520073327.6016-1-jbx6244@gmail.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dmitry.torokhov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-One of the current rk3308 'i2s' nodes has a different dma layout
-with only 1 item. Table 9-2 DMAC1 Request Mapping Table shows that
-there 2 dma sources available, so fix the dmas and dma-names
-for the rk3308 'i2s' node.
+A test with the command below gives this error:
 
-10 I2S/PCM_2CH_1 tx High level
-11 I2S/PCM_2CH_1 rx High level
+arch/arm/boot/dts/rk3188-bqedison2qc.dt.yaml:
+touchscreen@3e: reg:0:0: 56 was expected
+
+The touchscreen chip on 'rk3188-bqedison2qc' and other BQ models
+was shipped with different addresses then the binding currently allows.
+Change the reg property that any address will pass.
+
+make ARCH=arm dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/input/touchscreen/
+edt-ft5x06.yaml
 
 Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index ac7f69407..79c1dd1fe 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -564,8 +564,8 @@
- 		interrupts = <GIC_SPI 53 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru SCLK_I2S1_2CH>, <&cru HCLK_I2S1_2CH>;
- 		clock-names = "i2s_clk", "i2s_hclk";
--		dmas = <&dmac1 11>;
--		dma-names = "rx";
-+		dmas = <&dmac1 10>, <&dmac1 11>;
-+		dma-names = "tx", "rx";
- 		resets = <&cru SRST_I2S1_2CH_M>, <&cru SRST_I2S1_2CH_H>;
- 		reset-names = "reset-m", "reset-h";
- 		status = "disabled";
+diff --git a/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml b/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml
+index 383d64a91..baa8e8f7e 100644
+--- a/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml
++++ b/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yaml
+@@ -42,7 +42,7 @@ properties:
+       - focaltech,ft6236
+ 
+   reg:
+-    const: 0x38
++    maxItems: 1
+ 
+   interrupts:
+     maxItems: 1
 -- 
 2.11.0
