@@ -1,44 +1,49 @@
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 2/2] PCI: rockchip: Add 100ms delay before enabling training
-Date: Thu, 21 May 2020 09:05:30 +0800
-Message-ID: <1590023130-137406-2-git-send-email-shawn.lin@rock-chips.com>
-References: <1590023130-137406-1-git-send-email-shawn.lin@rock-chips.com>
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <1590023130-137406-1-git-send-email-shawn.lin@rock-chips.com>
-Sender: linux-pci-owner@vger.kernel.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-pci@vger.kernel.org, Simon Xue <xxm@rock-chips.com>, linux-rockchip@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL 3/3] Rockchip soc32 changes for 5.8
+Date: Thu, 21 May 2020 03:18:55 +0200
+Message-ID: <2307012.mB7vfBFN1M@phil>
+References: <1970481.V9vR1fIhX2@phil>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <1970481.V9vR1fIhX2@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: arm@kernel.org
+Cc: linux-rockchip@lists.infradead.org, soc@kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-According to PCI Express Card Electromechanical Specification
-Revision 3.0, Table 2-4, power stable and reference clk stable
-before PERST# inactive should be at least 100ms and 100us
-respectively. Otherwise we do see some failures for link training.
+The following changes since commit 8f3d9f354286745c751374f5f1fcafee6b3f3136:
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+  Linux 5.7-rc1 (2020-04-12 12:35:55 -0700)
 
- drivers/pci/controller/pcie-rockchip-host.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+are available in the Git repository at:
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 94af6f5..2f4d909 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -331,6 +331,14 @@ static int rockchip_pcie_host_init_port(struct rockchip_pcie *rockchip)
- 	rockchip_pcie_write(rockchip, PCIE_CLIENT_LINK_TRAIN_ENABLE,
- 			    PCIE_CLIENT_CONFIG);
- 
-+	/*
-+	 * According to PCI Express Card Electromechanical Specification
-+	 * Revision 3.0, Table 2-4, power stable and reference clk stable
-+	 * before PERST# inactive should be at least 100ms and 100us
-+	 * respectively. Otherwise we do see some failures for link training.
-+	 */
-+	msleep(100);
-+
- 	gpiod_set_value_cansleep(rockchip->ep_gpio, 1);
- 
- 	/* 500ms timeout value should be enough for Gen1/2 training */
--- 
-2.7.4
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.8-rockchip-soc32-1
+
+for you to fetch changes up to 0b973c65d2f2da049252bc8370e4cf037b99c7e9:
+
+  ARM: rockchip: fix spelling mistake "to" -> "too" (2020-04-13 09:40:45 +0200)
+
+----------------------------------------------------------------
+A spelling fix and stop using clk_provider.h when of_clk.h is enough
+as the soc file is only a clock user, not a provider.
+
+----------------------------------------------------------------
+Colin Ian King (1):
+      ARM: rockchip: fix spelling mistake "to" -> "too"
+
+Geert Uytterhoeven (1):
+      ARM: rockchip: Replace <linux/clk-provider.h> by <linux/of_clk.h>
+
+ arch/arm/mach-rockchip/platsmp.c  | 2 +-
+ arch/arm/mach-rockchip/rockchip.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
