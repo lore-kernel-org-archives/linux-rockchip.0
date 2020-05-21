@@ -1,482 +1,122 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH 5/5] media: staging: rkisp1: replace workqueue with
- threaded irq for reading statistics registers
-Date: Thu, 21 May 2020 12:38:23 +0200
-Message-ID: <CAAFQd5AKrbtYMN+h6phaOYveNoUZptVdy+KD-Ef1+on_HXenyA@mail.gmail.com>
-References: <20200512120522.25960-1-dafna.hirschfeld@collabora.com>
- <20200512120522.25960-6-dafna.hirschfeld@collabora.com> <20200521000901.GE25474@pendragon.ideasonboard.com>
+From: Anand Moon <linux.amoon@gmail.com>
+Subject: Re: [PATCH 1/2] PCI: rockchip: Enable IO base and limit registers
+Date: Thu, 21 May 2020 16:21:40 +0530
+Message-ID: <CANAwSgRXuMQaytB4BXL89JQAmU=XutBXj6iMhfKdZp3JwM9a4g@mail.gmail.com>
+References: <1590023130-137406-1-git-send-email-shawn.lin@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200521000901.GE25474@pendragon.ideasonboard.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Helen Koike <helen.koike@collabora.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <1590023130-137406-1-git-send-email-shawn.lin@rock-chips.com>
+Sender: linux-pci-owner@vger.kernel.org
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, Simon Xue <xxm@rock-chips.com>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
+Hi Shawn,
 
-On Thu, May 21, 2020 at 2:09 AM Laurent Pinchart
-<laurent.pinchart@ideasonboard.com> wrote:
+On Thu, 21 May 2020 at 06:35, Shawn Lin <shawn.lin@rock-chips.com> wrote:
 >
-> Hi Dafna,
+> According to RK3399 user manual, bit 9 in PCIE_RC_BAR_CONF should
+> be set, otherwise accessing to IO base and limit registers would
+> fail.
 >
-> Thank you for the patch.
+> [    0.411318] pci_bus 0000:00: root bus resource [bus 00-1f]
+> [    0.411822] pci_bus 0000:00: root bus resource [mem 0xfa000000-0xfbdfffff]
+> [    0.412440] pci_bus 0000:00: root bus resource [io  0x0000-0xfffff] (bus address [0xfbe00000-0xfbefffff])
+> [    0.413665] pci 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+> [    0.414698] pci 0000:01:00.0: reg 0x10: initial BAR value 0x00000000 invalid
+> [    0.415412] pci 0000:01:00.0: reg 0x18: initial BAR value 0x00000000 invalid
+> [    0.418456] pci 0000:00:00.0: BAR 8: assigned [mem 0xfa000000-0xfa0fffff]
+> [    0.419065] pci 0000:01:00.0: BAR 1: assigned [mem 0xfa000000-0xfa007fff pref]
+> [    0.419728] pci 0000:01:00.0: BAR 6: assigned [mem 0xfa008000-0xfa00ffff pref]
+> [    0.420377] pci 0000:01:00.0: BAR 0: no space for [io  size 0x0100]
+> [    0.420935] pci 0000:01:00.0: BAR 0: failed to assign [io  size 0x0100]
+> [    0.421526] pci 0000:01:00.0: BAR 2: no space for [io  size 0x0004]
+> [    0.422084] pci 0000:01:00.0: BAR 2: failed to assign [io  size 0x0004]
+> [    0.422687] pci 0000:00:00.0: PCI bridge to [bus 01]
+> [    0.423135] pci 0000:00:00.0:   bridge window [mem 0xfa000000-0xfa0fffff]
+> [    0.423794] pcieport 0000:00:00.0: enabling device (0000 -> 0002)
+> [    0.424566] pcieport 0000:00:00.0: Signaling PME through PCIe PME interrupt
+> [    0.425182] pci 0000:01:00.0: Signaling PME through PCIe PME interrupt
 >
-> On Tue, May 12, 2020 at 02:05:22PM +0200, Dafna Hirschfeld wrote:
-> > Reading the statistics registers might take too long
-> > to run inside the irq handler. Currently it is deferred
-> > to bottom half using workqueues. This patch replaces the
-> > workqueue with threaded interrupts for reading the
-> > statistics registers.
+> 01:00.0 Class 0700: Device 1c00:3853 (rev 10) (prog-if 05)
+>         Subsystem: Device 1c00:3853
+>         Control: I/O- Mem- BusMaster- SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx-
+>         Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+>         Interrupt: pin A routed to IRQ 230
+>         Region 0: I/O ports at <unassigned> [disabled]
+>         Region 1: Memory at fa000000 (32-bit, prefetchable) [disabled] [size=32K]
+>         Region 2: I/O ports at <unassigned> [disabled]
+>         [virtual] Expansion ROM at fa008000 [disabled] [size=32K]
 >
-> Could you please explain why this is needed/desired ? Removal of the
-> kzalloc(GFP_ATOMIC) is very nice, but I'm sure there would have been
-> ways to avoid it while keeping a workqueue. I'm not claiming the patch
-> is bad, but I'd like to understand the reason.
->
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
 
-Thanks a lot for working on this driver!
+I have old development board Odroid N1 (RK3399),  It has onboard PCIe
+2 dual sata bridge.
+I have tested this patch, but I am still getting following log on
+Odroid N1 board.
+Is their any more configuration needed for sata ports ?
 
-I'll second what Laurent said. In general, a description of the patch
-should explain why a change is needed, e.g. what issues it fixes or
-what improvements it brings.
+[    7.444504] pci_bus 0000:01: busn_res: [bus 01-1f] end is updated to 01
+[    7.445521] panfrost ff9a0000.gpu: Features: L2:0x07120206
+Shader:0x00000000 Tiler:0x00000809 Mem:0x1 MMU:0x00002830 AS:0xff
+JS:0x7
+[    7.452246] pci 0000:00:00.0: BAR 14: assigned [mem 0xfa000000-0xfa0fffff]
+[    7.460106] panfrost ff9a0000.gpu: shader_present=0xf l2_present=0x1
+[    7.466459] pci 0000:01:00.0: BAR 6: assigned [mem
+0xfa000000-0xfa00ffff pref]
+[    7.473679] panfrost ff9a0000.gpu: [drm:panfrost_devfreq_init
+[panfrost]] Failed to register cooling device
+[    7.479703] pci 0000:01:00.0: BAR 5: assigned [mem 0xfa010000-0xfa0101ff]
+[    7.487706] [drm] Initialized panfrost 1.1.0 20180908 for
+ff9a0000.gpu on minor 0
+[    7.494343] pci 0000:01:00.0: BAR 4: no space for [io  size 0x0010]
+[    7.494348] pci 0000:01:00.0: BAR 4: failed to assign [io  size 0x0010]
+[    7.494352] pci 0000:01:00.0: BAR 0: no space for [io  size 0x0008]
+[    7.494356] pci 0000:01:00.0: BAR 0: failed to assign [io  size 0x0008]
+[    7.494360] pci 0000:01:00.0: BAR 2: no space for [io  size 0x0008]
+[    7.494364] pci 0000:01:00.0: BAR 2: failed to assign [io  size 0x0008]
+[    7.494368] pci 0000:01:00.0: BAR 1: no space for [io  size 0x0004]
+[    7.494372] pci 0000:01:00.0: BAR 1: failed to assign [io  size 0x0004]
+[    7.578910] rockchip-vop ff8f0000.vop: Adding to iommu group 3
+[    7.587074] pci 0000:01:00.0: BAR 3: no space for [io  size 0x0004]
+[    7.594780] rockchip-vop ff900000.vop: Adding to iommu group 4
+[    7.607701] pci 0000:01:00.0: BAR 3: failed to assign [io  size 0x0004]
 
-Also, would you mind adding me on CC for any patches for this driver?
-Since we use this driver in Chrome OS, I'd like to stay on top of any
-updates. Thanks in advance!
+# lspci -v
+00:00.0 PCI bridge: Fuzhou Rockchip Electronics Co., Ltd RK3399 PCI
+Express Root Port (prog-if 00 [Normal decode])
+        Flags: bus master, fast devsel, latency 0, IRQ 237
+        Bus: primary=00, secondary=01, subordinate=01, sec-latency=0
+        I/O behind bridge: 00000000-00000fff [size=4K]
+        Memory behind bridge: fa000000-fa0fffff [size=1M]
+        Prefetchable memory behind bridge: 00000000-000fffff [size=1M]
+        Capabilities: [80] Power Management version 3
+        Capabilities: [90] MSI: Enable+ Count=1/1 Maskable+ 64bit+
+        Capabilities: [b0] MSI-X: Enable- Count=1 Masked-
+        Capabilities: [c0] Express Root Port (Slot+), MSI 00
+        Capabilities: [100] Advanced Error Reporting
+        Capabilities: [274] Transaction Processing Hints
+        Kernel driver in use: pcieport
 
-Best regards,
-Tomasz
+01:00.0 IDE interface: ASMedia Technology Inc. ASM1061 SATA IDE
+Controller (rev 02) (prog-if 85 [PCI native mode-only controller,
+supports bus mastering])
+        Subsystem: ASMedia Technology Inc. ASM1061 SATA IDE Controller
+        Flags: bus master, fast devsel, latency 0, IRQ 238
+        I/O ports at <unassigned> [disabled]
+        I/O ports at <unassigned> [disabled]
+        I/O ports at <unassigned> [disabled]
+        I/O ports at <unassigned> [disabled]
+        I/O ports at <unassigned> [disabled]
+        Memory at fa010000 (32-bit, non-prefetchable) [size=512]
+        Expansion ROM at fa000000 [virtual] [disabled] [size=64K]
+        Capabilities: [50] MSI: Enable+ Count=1/1 Maskable- 64bit-
+        Capabilities: [78] Power Management version 3
+        Capabilities: [80] Express Legacy Endpoint, MSI 00
+        Capabilities: [100] Virtual Channel
+        Kernel driver in use: ahci
 
-> > A new struct type 'rkisp1_kstats_buffer' is used as the statistics
-> > buffers. The struct has a field 'ris' which is the flags of ready
-> > statistics. If new statistics are ready, the irq handler sets
-> > this variable and the frame sequence on the next available buffer
-> > and returns IRQ_WAKE_THREAD.
-> > Then the threaded interrupt reads the registers and calls
-> > vb2_buffer_done.
-> >
-> > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> > ---
-> >  drivers/staging/media/rkisp1/TODO            |   1 -
-> >  drivers/staging/media/rkisp1/rkisp1-common.h |   5 +-
-> >  drivers/staging/media/rkisp1/rkisp1-dev.c    |   8 +-
-> >  drivers/staging/media/rkisp1/rkisp1-isp.c    |   5 +-
-> >  drivers/staging/media/rkisp1/rkisp1-stats.c  | 167 ++++++++-----------
-> >  5 files changed, 76 insertions(+), 110 deletions(-)
-> >
-> > diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
-> > index c0cbec0a164d..bdb1b8f73556 100644
-> > --- a/drivers/staging/media/rkisp1/TODO
-> > +++ b/drivers/staging/media/rkisp1/TODO
-> > @@ -1,5 +1,4 @@
-> >  * Fix pad format size for statistics and parameters entities.
-> > -* Use threaded interrupt for rkisp1_stats_isr(), remove work queue.
-> >  * Fix checkpatch errors.
-> >  * Review and comment every lock
-> >  * Handle quantization
-> > diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-> > index c635bb0a7727..c8adcdf661ab 100644
-> > --- a/drivers/staging/media/rkisp1/rkisp1-common.h
-> > +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-> > @@ -190,8 +190,6 @@ struct rkisp1_stats {
-> >       struct list_head stat;
-> >       struct v4l2_format vdev_fmt;
-> >       bool is_streaming;
-> > -
-> > -     struct workqueue_struct *readout_wq;
-> >  };
-> >
-> >  /*
-> > @@ -308,10 +306,11 @@ void rkisp1_isp_unregister(struct rkisp1_device *rkisp1);
-> >
-> >  const struct rkisp1_isp_mbus_info *rkisp1_isp_mbus_info_get(u32 mbus_code);
-> >
-> > +irqreturn_t rkisp1_read_stats_threaded_irq(int irq, void *ctx);
-> >  irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1);
-> >  irqreturn_t rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
-> >  irqreturn_t rkisp1_capture_isr(struct rkisp1_device *rkisp1);
-> > -void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris);
-> > +irqreturn_t rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris);
-> >  void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis);
-> >
-> >  int rkisp1_capture_devs_register(struct rkisp1_device *rkisp1);
-> > diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
-> > index b7f43dab71c8..12e2e8559acd 100644
-> > --- a/drivers/staging/media/rkisp1/rkisp1-dev.c
-> > +++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
-> > @@ -405,6 +405,8 @@ irqreturn_t rkisp1_isr(int irq, void *ctx)
-> >       isp_ret = rkisp1_isp_isr(rkisp1);
-> >       mipi_ret = rkisp1_mipi_isr(rkisp1);
-> >
-> > +     if (isp_ret == IRQ_WAKE_THREAD)
-> > +             return IRQ_WAKE_THREAD;
-> >       if (isp_ret == IRQ_NONE && cap_ret == IRQ_NONE && mipi_ret == IRQ_NONE)
-> >               return IRQ_NONE;
->
-> Let me slightly modify my proposal from another patch in this series:
->
->         irqreturn_t ret = IRQ_NONE;
->         ...
->
->         ret |= rkisp1_capture_isr(rkisp1);
->         ret |= rkisp1_isp_isr(rkisp1);
->         ret |= rkisp1_mipi_isr(rkisp1);
->
->         return ret & IRQ_WAKE_THREAD ? IRQ_WAKE_THREAD : ret;
->
-> Up to you.
->
-> >
-> > @@ -490,8 +492,10 @@ static int rkisp1_probe(struct platform_device *pdev)
-> >       if (irq < 0)
-> >               return irq;
-> >
-> > -     ret = devm_request_irq(dev, irq, rkisp1_isr, IRQF_SHARED,
-> > -                            dev_driver_string(dev), dev);
-> > +     ret = devm_request_threaded_irq(dev, irq, rkisp1_isr,
-> > +                                     rkisp1_read_stats_threaded_irq,
-> > +                                     IRQF_SHARED,
-> > +                                     dev_driver_string(dev), dev);
-> >       if (ret) {
-> >               dev_err(dev, "request irq failed: %d\n", ret);
-> >               return ret;
-> > diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-> > index 49b47e1734b0..09893073af00 100644
-> > --- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-> > +++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-> > @@ -1111,6 +1111,7 @@ static void rkisp1_isp_queue_event_sof(struct rkisp1_isp *isp)
-> >  irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1)
-> >  {
-> >       u32 status, isp_err;
-> > +     irqreturn_t ret = IRQ_HANDLED;
-> >
-> >       status = rkisp1_read(rkisp1, RKISP1_CIF_ISP_MIS);
-> >       if (!status)
-> > @@ -1138,7 +1139,7 @@ irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1)
-> >               /* New frame from the sensor received */
-> >               isp_ris = rkisp1_read(rkisp1, RKISP1_CIF_ISP_RIS);
-> >               if (isp_ris & RKISP1_STATS_MEAS_MASK)
-> > -                     rkisp1_stats_isr(&rkisp1->stats, isp_ris);
-> > +                     ret = rkisp1_stats_isr(&rkisp1->stats, isp_ris);
->
-> Overriding the ret variable isn't very nice, even if it should work in
-> practice here as ret is already equal to IRQ_HANDLED and
-> rkisp1_stats_isr() returns IRQ_HANDLED or IRQ_WAKE_THREAD, never
-> IRQ_NONE. You could however write
->
->                         ret |= rkisp1_stats_isr(&rkisp1->stats, isp_ris);
->
-> as IRQ_HANDLED and IRQ_WAKE_THREAD are independent bit flags to
-> accumulate them, provided you return IRQ_WAKE_THREAD from rkisp1_isr()
-> when both IRQ_WAKE_THREAD and IRQ_HANDLED are set (it seems the the core
-> IRQ code can't deal with both being set).
->
-> >       }
-> >
-> >       /*
-> > @@ -1148,5 +1149,5 @@ irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1)
-> >        */
-> >       rkisp1_params_isr(rkisp1, status);
-> >
-> > -     return IRQ_HANDLED;
-> > +     return ret;
-> >  }
-> > diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> > index e6fb2c5f3b3e..f5eaa81362ea 100644
-> > --- a/drivers/staging/media/rkisp1/rkisp1-stats.c
-> > +++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> > @@ -18,19 +18,9 @@
-> >  #define RKISP1_ISP_STATS_REQ_BUFS_MIN 2
-> >  #define RKISP1_ISP_STATS_REQ_BUFS_MAX 8
-> >
-> > -enum rkisp1_isp_readout_cmd {
-> > -     RKISP1_ISP_READOUT_MEAS,
-> > -     RKISP1_ISP_READOUT_META,
-> > -};
-> > -
-> > -struct rkisp1_isp_readout_work {
-> > -     struct work_struct work;
-> > -     struct rkisp1_stats *stats;
-> > -
-> > -     unsigned int frame_id;
-> > -     unsigned int isp_ris;
-> > -     enum rkisp1_isp_readout_cmd readout;
-> > -     struct vb2_buffer *vb;
-> > +struct rkisp1_kstats_buffer {
-> > +     struct rkisp1_buffer buff;
-> > +     u32 ris;
-> >  };
-> >
-> >  static int rkisp1_stats_enum_fmt_meta_cap(struct file *file, void *priv,
-> > @@ -126,16 +116,17 @@ static int rkisp1_stats_vb2_queue_setup(struct vb2_queue *vq,
-> >  static void rkisp1_stats_vb2_buf_queue(struct vb2_buffer *vb)
-> >  {
-> >       struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-> > -     struct rkisp1_buffer *stats_buf =
-> > -             container_of(vbuf, struct rkisp1_buffer, vb);
-> > +     struct rkisp1_kstats_buffer *kstats_buf =
-> > +             container_of(vbuf, struct rkisp1_kstats_buffer, buff.vb);
-> >       struct vb2_queue *vq = vb->vb2_queue;
-> >       struct rkisp1_stats *stats_dev = vq->drv_priv;
-> >       unsigned long flags;
-> >
-> > -     stats_buf->vaddr[0] = vb2_plane_vaddr(vb, 0);
-> > +     kstats_buf->buff.vaddr[0] = vb2_plane_vaddr(vb, 0);
-> > +     kstats_buf->ris = 0;
-> >
-> >       spin_lock_irqsave(&stats_dev->stats_lock, flags);
-> > -     list_add_tail(&stats_buf->queue, &stats_dev->stat);
-> > +     list_add_tail(&kstats_buf->buff.queue, &stats_dev->stat);
-> >       spin_unlock_irqrestore(&stats_dev->stats_lock, flags);
-> >  }
-> >
-> > @@ -152,25 +143,19 @@ static int rkisp1_stats_vb2_buf_prepare(struct vb2_buffer *vb)
-> >  static void rkisp1_stats_vb2_stop_streaming(struct vb2_queue *vq)
-> >  {
-> >       struct rkisp1_stats *stats = vq->drv_priv;
-> > -     struct rkisp1_buffer *buf;
-> > +     struct rkisp1_kstats_buffer *buf;
-> >       unsigned long flags;
-> >       unsigned int i;
-> >
-> > -     /* Make sure no new work queued in isr before draining wq */
-> >       spin_lock_irqsave(&stats->stats_lock, flags);
-> >       stats->is_streaming = false;
-> > -     spin_unlock_irqrestore(&stats->stats_lock, flags);
-> > -
-> > -     drain_workqueue(stats->readout_wq);
-> > -
-> > -     spin_lock_irqsave(&stats->stats_lock, flags);
-> >       for (i = 0; i < RKISP1_ISP_STATS_REQ_BUFS_MAX; i++) {
-> >               if (list_empty(&stats->stat))
-> >                       break;
-> >               buf = list_first_entry(&stats->stat,
-> > -                                    struct rkisp1_buffer, queue);
-> > -             list_del(&buf->queue);
-> > -             vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
-> > +                                    struct rkisp1_kstats_buffer, buff.queue);
-> > +             list_del(&buf->buff.queue);
-> > +             vb2_buffer_done(&buf->buff.vb.vb2_buf, VB2_BUF_STATE_ERROR);
-> >       }
-> >       spin_unlock_irqrestore(&stats->stats_lock, flags);
-> >  }
-> > @@ -207,7 +192,7 @@ rkisp1_stats_init_vb2_queue(struct vb2_queue *q, struct rkisp1_stats *stats)
-> >       q->drv_priv = stats;
-> >       q->ops = &rkisp1_stats_vb2_ops;
-> >       q->mem_ops = &vb2_vmalloc_memops;
-> > -     q->buf_struct_size = sizeof(struct rkisp1_buffer);
-> > +     q->buf_struct_size = sizeof(struct rkisp1_kstats_buffer);
-> >       q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
-> >       q->lock = &node->vlock;
-> >
-> > @@ -325,85 +310,81 @@ static void rkisp1_stats_get_bls_meas(struct rkisp1_stats *stats,
-> >       }
-> >  }
-> >
-> > -static void
-> > -rkisp1_stats_send_measurement(struct rkisp1_stats *stats,
-> > -                           struct rkisp1_isp_readout_work *meas_work)
-> > +irqreturn_t rkisp1_read_stats_threaded_irq(int irq, void *ctx)
-> >  {
-> > +     struct device *dev = ctx;
-> > +     struct rkisp1_device *rkisp1 = dev_get_drvdata(dev);
-> > +     struct rkisp1_stats *stats = &rkisp1->stats;
-> > +     struct rkisp1_kstats_buffer *kstats_buf = NULL;
-> >       struct rkisp1_stat_buffer *cur_stat_buf;
-> > -     struct rkisp1_buffer *cur_buf = NULL;
-> > -     unsigned int frame_sequence =
-> > -             atomic_read(&stats->rkisp1->isp.frame_sequence);
-> > -     u64 timestamp = ktime_get_ns();
-> >       unsigned long flags;
-> > -
-> > -     if (frame_sequence != meas_work->frame_id) {
-> > -             dev_warn(stats->rkisp1->dev,
-> > -                      "Measurement late(%d, %d)\n",
-> > -                      frame_sequence, meas_work->frame_id);
-> > -             frame_sequence = meas_work->frame_id;
-> > -     }
-> > +     u64 timestamp = ktime_get_ns();
-> >
-> >       spin_lock_irqsave(&stats->stats_lock, flags);
-> > -     /* get one empty buffer */
-> > -     if (!list_empty(&stats->stat)) {
-> > -             cur_buf = list_first_entry(&stats->stat,
-> > -                                        struct rkisp1_buffer, queue);
-> > -             list_del(&cur_buf->queue);
-> > +     if (!stats->is_streaming) {
-> > +             spin_unlock_irqrestore(&stats->stats_lock, flags);
-> > +             return IRQ_HANDLED;
-> > +     }
-> > +     if (list_empty(&stats->stat)) {
-> > +             spin_unlock_irqrestore(&stats->stats_lock, flags);
-> > +             WARN("%s: threaded irq waked but there are no buffers",
-> > +                  __func__);
-> > +             return IRQ_HANDLED;
-> > +     }
-> > +     kstats_buf = list_first_entry(&stats->stat,
-> > +                                   struct rkisp1_kstats_buffer, buff.queue);
-> > +
-> > +     /*
-> > +      * each waked irq thread reads exactly one ready statistics
-> > +      * so it is a bug  if no statistics are ready
-> > +      */
->
-> What happens if this function takes too long to run ? With the
-> workqueue, if the work gets delayed once in a while, the work items will
-> accumulate, and all of them will be handled eventually. Here it seems
-> that an IRQ could get lost.
->
-> > +     if (!kstats_buf->ris) {
-> > +             spin_unlock_irqrestore(&stats->stats_lock, flags);
-> > +             WARN("%s: threaded irq waked but buffer holds no measures",
-> > +                  __func__);
-> > +             return IRQ_HANDLED;
-> >       }
-> > +     list_del(&kstats_buf->buff.queue);
-> >       spin_unlock_irqrestore(&stats->stats_lock, flags);
-> >
-> > -     if (!cur_buf)
-> > -             return;
-> > -
-> >       cur_stat_buf =
-> > -             (struct rkisp1_stat_buffer *)(cur_buf->vaddr[0]);
-> > +             (struct rkisp1_stat_buffer *)(kstats_buf->buff.vaddr[0]);
-> >
-> > -     if (meas_work->isp_ris & RKISP1_CIF_ISP_AWB_DONE) {
-> > +     if (kstats_buf->ris & RKISP1_CIF_ISP_AWB_DONE) {
-> >               rkisp1_stats_get_awb_meas(stats, cur_stat_buf);
-> >               cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AWB;
-> >       }
-> >
-> > -     if (meas_work->isp_ris & RKISP1_CIF_ISP_AFM_FIN) {
-> > +     if (kstats_buf->ris & RKISP1_CIF_ISP_AFM_FIN) {
-> >               rkisp1_stats_get_afc_meas(stats, cur_stat_buf);
-> >               cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AFM_FIN;
-> >       }
-> >
-> > -     if (meas_work->isp_ris & RKISP1_CIF_ISP_EXP_END) {
-> > +     if (kstats_buf->ris & RKISP1_CIF_ISP_EXP_END) {
-> >               rkisp1_stats_get_aec_meas(stats, cur_stat_buf);
-> >               rkisp1_stats_get_bls_meas(stats, cur_stat_buf);
-> >               cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_AUTOEXP;
-> >       }
-> >
-> > -     if (meas_work->isp_ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY) {
-> > +     if (kstats_buf->ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY) {
-> >               rkisp1_stats_get_hst_meas(stats, cur_stat_buf);
-> >               cur_stat_buf->meas_type |= RKISP1_CIF_ISP_STAT_HIST;
-> >       }
-> >
-> > -     vb2_set_plane_payload(&cur_buf->vb.vb2_buf, 0,
-> > +     vb2_set_plane_payload(&kstats_buf->buff.vb.vb2_buf, 0,
-> >                             sizeof(struct rkisp1_stat_buffer));
-> > -     cur_buf->vb.sequence = frame_sequence;
-> > -     cur_buf->vb.vb2_buf.timestamp = timestamp;
-> > -     vb2_buffer_done(&cur_buf->vb.vb2_buf, VB2_BUF_STATE_DONE);
-> > +     kstats_buf->buff.vb.vb2_buf.timestamp = timestamp;
-> > +     vb2_buffer_done(&kstats_buf->buff.vb.vb2_buf, VB2_BUF_STATE_DONE);
-> > +     return IRQ_HANDLED;
-> >  }
-> >
-> > -static void rkisp1_stats_readout_work(struct work_struct *work)
-> > -{
-> > -     struct rkisp1_isp_readout_work *readout_work =
-> > -             container_of(work, struct rkisp1_isp_readout_work, work);
-> > -     struct rkisp1_stats *stats = readout_work->stats;
-> > -
-> > -     if (readout_work->readout == RKISP1_ISP_READOUT_MEAS)
-> > -             rkisp1_stats_send_measurement(stats, readout_work);
-> >
->
-> Is the second blank line intentional ?
->
-> > -     kfree(readout_work);
-> > -}
-> > -
-> > -void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
-> > +irqreturn_t rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
-> >  {
-> > -     unsigned int frame_sequence =
-> > -             atomic_read(&stats->rkisp1->isp.frame_sequence);
-> >       struct rkisp1_device *rkisp1 = stats->rkisp1;
-> > -     struct rkisp1_isp_readout_work *work;
-> > +     struct rkisp1_isp *isp = &rkisp1->isp;
-> > +     struct rkisp1_kstats_buffer *buf = NULL;
-> > +     irqreturn_t ret = IRQ_HANDLED;
-> >       unsigned int isp_mis_tmp = 0;
-> >       unsigned long flags;
-> >       u32 val;
-> > @@ -417,28 +398,22 @@ void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
-> >       if (isp_mis_tmp & RKISP1_STATS_MEAS_MASK)
-> >               rkisp1->debug.stats_error++;
-> >
-> > -     if (!stats->is_streaming)
-> > +     if (!stats->is_streaming || !(isp_ris & RKISP1_STATS_MEAS_MASK))
-> >               goto unlock;
-> > -     if (isp_ris & RKISP1_STATS_MEAS_MASK) {
-> > -             work = kzalloc(sizeof(*work), GFP_ATOMIC);
-> > -             if (work) {
-> > -                     INIT_WORK(&work->work,
-> > -                               rkisp1_stats_readout_work);
-> > -                     work->readout = RKISP1_ISP_READOUT_MEAS;
-> > -                     work->stats = stats;
-> > -                     work->frame_id = frame_sequence;
-> > -                     work->isp_ris = isp_ris;
-> > -                     if (!queue_work(stats->readout_wq,
-> > -                                     &work->work))
-> > -                             kfree(work);
-> > -             } else {
-> > -                     dev_err(stats->rkisp1->dev,
-> > -                             "Could not allocate work\n");
-> > +
-> > +     list_for_each_entry(buf, &stats->stat, buff.queue) {
-> > +             if (!buf->ris) {
-> > +                     buf->buff.vb.sequence =
-> > +                             atomic_read(&isp->frame_sequence);
-> > +                     buf->ris = isp_ris;
-> > +                     ret = IRQ_WAKE_THREAD;
-> > +                     break;
-> >               }
-> >       }
-> >
-> >  unlock:
-> >       spin_unlock_irqrestore(&stats->stats_lock, flags);
-> > +     return ret;
-> >  }
-> >
-> >  static void rkisp1_init_stats(struct rkisp1_stats *stats)
-> > @@ -489,19 +464,8 @@ int rkisp1_stats_register(struct rkisp1_stats *stats,
-> >               goto err_cleanup_media_entity;
-> >       }
-> >
-> > -     stats->readout_wq = alloc_workqueue("measurement_queue",
-> > -                                         WQ_UNBOUND | WQ_MEM_RECLAIM,
-> > -                                         1);
-> > -
-> > -     if (!stats->readout_wq) {
-> > -             ret = -ENOMEM;
-> > -             goto err_unreg_vdev;
-> > -     }
-> > -
-> >       return 0;
-> >
-> > -err_unreg_vdev:
-> > -     video_unregister_device(vdev);
-> >  err_cleanup_media_entity:
-> >       media_entity_cleanup(&vdev->entity);
-> >  err_release_queue:
-> > @@ -515,7 +479,6 @@ void rkisp1_stats_unregister(struct rkisp1_stats *stats)
-> >       struct rkisp1_vdev_node *node = &stats->vnode;
-> >       struct video_device *vdev = &node->vdev;
-> >
-> > -     destroy_workqueue(stats->readout_wq);
-> >       video_unregister_device(vdev);
-> >       media_entity_cleanup(&vdev->entity);
-> >       vb2_queue_release(vdev->queue);
->
-> --
-> Regards,
->
-> Laurent Pinchart
+Best Regards
+-Anand
