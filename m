@@ -1,289 +1,144 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v3 2/4] media: v4l2-common: add helper functions to call
- s_stream() callbacks
-Date: Thu, 21 May 2020 09:53:02 -0300
-Message-ID: <8223dc91-6299-8835-c397-74246bd8c54a@collabora.com>
-References: <20200415013044.1778572-1-helen.koike@collabora.com>
- <20200415013044.1778572-3-helen.koike@collabora.com>
- <31557623-2b8c-6cfe-19f7-7854ed51bc86@collabora.com>
+From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH_1/2=5d_PCI=3a_rockchip=3a_Enable_IO_base_a?=
+ =?UTF-8?B?bmQgbGltaXQgcmVnaXN0ZXJz44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgt?=
+ =?UTF-8?Q?rockchip-bounces+shawn=2elin=3drock-chips=2ecom=40lists=2einfrade?=
+ =?UTF-8?B?YWQub3Jn5Luj5Y+R44CR?=
+Date: Fri, 22 May 2020 11:00:04 +0800
+Message-ID: <eb0acd3d-92d0-db00-78e4-8a17033f7f0a@rock-chips.com>
+References: <1590023130-137406-1-git-send-email-shawn.lin@rock-chips.com>
+ <CANAwSgRXuMQaytB4BXL89JQAmU=XutBXj6iMhfKdZp3JwM9a4g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <31557623-2b8c-6cfe-19f7-7854ed51bc86@collabora.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, skhan@linuxfoundation.org, niklas.soderlund@ragnatech.se, mchehab@kernel.org, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Tomasz Figa <tfiga@chromium.org>, Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <CANAwSgRXuMQaytB4BXL89JQAmU=XutBXj6iMhfKdZp3JwM9a4g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Anand Moon <linux.amoon-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
-
-On 5/21/20 9:03 AM, Dafna Hirschfeld wrote:
-> Hi
-> 
-> On 15.04.20 03:30, Helen Koike wrote:
->> Add v4l2_pipeline_stream_{enable,disable} helper functions to iterate
->> through the subdevices in a given stream (i.e following links from sink
->> to source) and call .s_stream() callback.
->>
->> Add stream_count on the subdevice object for simultaneous streaming from
->> different video devices which shares subdevices.
->>
->> Prevent calling .s_stream(true) if it was already called previously by
->> another stream.
->>
->> Prevent calling .s_stream(false) from one stream when there are still
->> others active.
->>
->> If .s_stream(true) fails, call .s_stream(false) in the reverse order.
->>
->> Signed-off-by: Helen Koike <helen.koike@collabora.com>
->> ---
->>
->> Changes in v3:
->> - re-write helpers to use media walkers as in v1, but with
->> v4l2_pipeline_subdevs_get() to reverse the order we call s_stream(true)
->> in subdevices.
->> - rename size to max_size (and update docs) in v4l2_pipeline_subdevs_get() to
->> reflect the meaning of the argument.
->> - add if defined(CONFIG_MEDIA_CONTROLLER) around helpers
->>
->> Changes in v2:
->> - re-write helpers to not use media walkers
->>
->>   drivers/media/v4l2-core/v4l2-common.c | 125 ++++++++++++++++++++++++++
->>   include/media/v4l2-common.h           |  43 +++++++++
->>   include/media/v4l2-subdev.h           |   2 +
->>   3 files changed, 170 insertions(+)
->>
->> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
->> index 9e8eb45a5b03c..2f991a1a57d7c 100644
->> --- a/drivers/media/v4l2-core/v4l2-common.c
->> +++ b/drivers/media/v4l2-core/v4l2-common.c
->> @@ -442,3 +442,128 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
->>       return 0;
->>   }
->>   EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
->> +
->> +#if defined(CONFIG_MEDIA_CONTROLLER)
->> +
->> +/*
->> + * v4l2_pipeline_subdevs_get - Assemble a list of subdevices in a pipeline
->> + * @subdevs: the array to be filled.
->> + * @max_size: max number of elements that can fit in subdevs array.
->> + *
->> + * Walk from a video node, following links from sink to source and fill the
->> + * array with subdevices in the path.
->> + * The walker performs a depth-first traversal, which means that, in a topology
->> + * sd1->sd2->sd3->vdev, sd1 will be the first element placed in the array.
->> + *
->> + * Return the number of subdevices filled in the array.
->> + */
->> +static int v4l2_pipeline_subdevs_get(struct video_device *vdev,
->> +                     struct media_pipeline *pipe,
->> +                     struct v4l2_subdev **subdevs,
->> +                     unsigned int max_size)
->> +{
->> +    struct media_entity *entity = &vdev->entity;
->> +    struct media_device *mdev = entity->graph_obj.mdev;
->> +    int idx = 0;
->> +    int ret;
->> +
->> +    mutex_lock(&mdev->graph_mutex);
->> +
->> +    if (!pipe->streaming_count) {
->> +        ret = media_graph_walk_init(&pipe->graph, mdev);
->> +        if (ret) {
->> +            mutex_unlock(&mdev->graph_mutex);
->> +            return ret;
->> +        }
->> +    }
->> +
->> +    media_graph_walk_start(&pipe->graph, entity);
->> +
->> +    while ((entity = media_graph_walk_next_stream(&pipe->graph))) {
->> +        if (!is_media_entity_v4l2_subdev(entity))
->> +            continue;
->> +        if (WARN_ON(idx >= max_size)) {
->> +            mutex_unlock(&mdev->graph_mutex);
->> +            return -EINVAL;
->> +        }
->> +        subdevs[idx++] = media_entity_to_v4l2_subdev(entity);
->> +    }
->> +
->> +    if (!pipe->streaming_count)
->> +        media_graph_walk_cleanup(&pipe->graph);
->> +
->> +    mutex_unlock(&mdev->graph_mutex);
->> +
->> +    return idx;
->> +}
->> +
->> +__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev,
->> +                         struct media_pipeline *pipe)
->> +{
->> +    struct media_device *mdev = vdev->entity.graph_obj.mdev;
->> +    struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
->> +    struct v4l2_subdev *sd;
->> +    int i, size, ret;
->> +
->> +    size = v4l2_pipeline_subdevs_get(vdev, pipe,
->> +                     subdevs, ARRAY_SIZE(subdevs));
->> +    if (size <= 0)
->> +        return size;
->> +
->> +    /* Call s_stream() in reverse order to enable sensors last */
->> +    for (i = size - 1; i >= 0; i--) {
->> +        sd = subdevs[i];
->> +        if (sd->stream_count++)
->> +            continue;
->> +        dev_dbg(mdev->dev,
->> +            "enabling stream for '%s'\n", sd->entity.name);
->> +        ret = v4l2_subdev_call(sd, video, s_stream, true);
->> +        if (ret && ret != -ENOIOCTLCMD) {
->> +            sd->stream_count = 0;
->> +            goto err_stream_disable;
->> +        }
->> +    }
->> +
->> +    return 0;
->> +
->> +err_stream_disable:
->> +    for (i++; i < size; i++) {
->> +        sd = subdevs[i];
->> +        if (--sd->stream_count)
->> +            continue;
->> +        dev_dbg(mdev->dev,
->> +            "disabling stream for '%s'\n", sd->entity.name);
->> +        v4l2_subdev_call(sd, video, s_stream, false);
->> +    };
->> +
->> +    return ret;
->> +}
->> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_enable);
->> +
->> +void v4l2_pipeline_stream_disable(struct video_device *vdev,
->> +                  struct media_pipeline *pipe)
->> +{
->> +    struct media_device *mdev = vdev->entity.graph_obj.mdev;
->> +    struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
->> +    unsigned int i;
->> +    int size;
->> +
->> +    size = v4l2_pipeline_subdevs_get(vdev, pipe,
->> +                     subdevs, ARRAY_SIZE(subdevs));
->> +    if (WARN_ON(size < 0))
->> +        return;
->> +
->> +    /* Call s_stream() in order to disable sensors first */
->> +    for (i = 0; i < size; i++) {
->> +        struct v4l2_subdev *sd = subdevs[i];
->> +
->> +        if (--sd->stream_count)
->> +            continue;
->> +        dev_dbg(mdev->dev,
->> +            "disabling stream for '%s'\n", sd->entity.name);
->> +        v4l2_subdev_call(sd, video, s_stream, false);
->> +    }
->> +}
->> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_disable);
->> +
->> +#endif /* CONFIG_MEDIA_CONTROLLER */
->> diff --git a/include/media/v4l2-common.h b/include/media/v4l2-common.h
->> index 150ee16ebd811..dc46812120cdc 100644
->> --- a/include/media/v4l2-common.h
->> +++ b/include/media/v4l2-common.h
->> @@ -539,4 +539,47 @@ static inline void v4l2_buffer_set_timestamp(struct v4l2_buffer *buf,
->>       buf->timestamp.tv_usec = ts.tv_nsec / NSEC_PER_USEC;
->>   }
->>   +#if defined(CONFIG_MEDIA_CONTROLLER)
->> +
->> +/**
->> + * v4l2_pipeline_stream_enable - Call .s_stream(true) callbacks in the stream
->> + * @vdev: Starting video device.
->> + * @pipe: Pipeline this entity belongs to.
->> + *
->> + * Call .s_stream(true) callback in all the subdevices participating in the
->> + * stream, i.e. following links from sink to source.
->> + *
->> + * .s_stream(true) is also called from sink to source, i.e. in a topology
->> + * sd1->sd2->sd3->vdev, .s_stream(true) of sd3 is called first.
->> + *
->> + * Calls to this function can be nested, in which case the same number of
->> + * v4l2_pipeline_stream_disable() calls will be required to disable streaming
->> + * through subdevices in the pipeline.
->> + * The  pipeline pointer must be identical for all nested calls to
->> + * v4l2_pipeline_stream_enable().
->> + */
->> +__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev,
->> +                         struct media_pipeline *pipe);
->> +
->> +/**
->> + * v4l2_pipeline_stream_disable - Call .s_stream(false) callbacks in the stream
->> + * @vdev: Starting video device.
->> + * @pipe: Pipeline this entity belongs to.
->> + *
->> + * Call .s_stream(false) callback in all the subdevices participating in the
->> + * stream, i.e. following links from sink to source.
->> + *
->> + * s_stream(false) is called in a reverse order from
->> + * v4l2_pipeline_stream_enable(), i.e. in a topology sd1->sd2->sd3->vdev,
->> + * .s_stream(false) of sd1 is called first.
->> + *
->> + * If multiple calls to v4l2_pipeline_stream_enable() have been made, the same
->> + * number of calls to this function are required to disable streaming through
->> + * subdevices in the pipeline.
->> + */
->> +void v4l2_pipeline_stream_disable(struct video_device *vdev,
->> +                  struct media_pipeline *pipe);
->> +
->> +#endif /* CONFIG_MEDIA_CONTROLLER */
->> +
->>   #endif /* V4L2_COMMON_H_ */
->> diff --git a/include/media/v4l2-subdev.h b/include/media/v4l2-subdev.h
->> index a4848de598521..20f913a9f70c5 100644
->> --- a/include/media/v4l2-subdev.h
->> +++ b/include/media/v4l2-subdev.h
->> @@ -838,6 +838,7 @@ struct v4l2_subdev_platform_data {
->>    * @subdev_notifier: A sub-device notifier implicitly registered for the sub-
->>    *             device using v4l2_device_register_sensor_subdev().
->>    * @pdata: common part of subdevice platform data
->> + * @stream_count: Stream count for the subdevice.
->>    *
->>    * Each instance of a subdev driver should create this struct, either
->>    * stand-alone or embedded in a larger struct.
->> @@ -869,6 +870,7 @@ struct v4l2_subdev {
->>       struct v4l2_async_notifier *notifier;
->>       struct v4l2_async_notifier *subdev_notifier;
->>       struct v4l2_subdev_platform_data *pdata;
->> +    unsigned int stream_count;
-> I wonder if it is worth it to add a new field to v4l2_subdev that is used only
-> for the specific case, it seems that except of rkisp1 and vimc, the other drivers you pointed to that
-> could use the helpers don't need this counter and they call s_stream without checking if it was already called.
-> This counter is updated only by the new introduced functions and not when s_stream is called from other places.
-
-Other drivers implement their own loop that navigates through the pipeline calling .s_stream().
-They are very similar. The only difference from rkisp1/vimc is that they don't support simultaneous streaming from different
-capture nodes.
-
-Also, drivers usually don't handle errors very well, in cases of failures where .s_stream() should be called in reversed order.
-
-Adding this counter + helpers allows a common generic implementation that can be used for both cases.
-So we re-use a code that should be well tested in the core and avoid re-implementing it.
-
-> Maybe we can add a helper that just return the next subdevice connected to the current entity as a source, and drivers can
-> iterate it and can decide themselves if s_stream should be called or not
-
-Patch 1/4 in the series provides this iterator :)
-Unless if you think we could add helpers to make things easier.
-
-Regards,
-Helen
-
-> 
-> Thanks,
-> Dafna
-> 
->>   };
->>    
+CtTaIDIwMjAvNS8yMSAxODo1MSwgQW5hbmQgTW9vbiDQtLXAOgo+IEhpIFNoYXduLAo+IAo+IE9u
+IFRodSwgMjEgTWF5IDIwMjAgYXQgMDY6MzUsIFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hp
+cHMuY29tPiB3cm90ZToKPj4KPj4gQWNjb3JkaW5nIHRvIFJLMzM5OSB1c2VyIG1hbnVhbCwgYml0
+IDkgaW4gUENJRV9SQ19CQVJfQ09ORiBzaG91bGQKPj4gYmUgc2V0LCBvdGhlcndpc2UgYWNjZXNz
+aW5nIHRvIElPIGJhc2UgYW5kIGxpbWl0IHJlZ2lzdGVycyB3b3VsZAo+PiBmYWlsLgo+Pgo+PiBb
+ICAgIDAuNDExMzE4XSBwY2lfYnVzIDAwMDA6MDA6IHJvb3QgYnVzIHJlc291cmNlIFtidXMgMDAt
+MWZdCj4+IFsgICAgMC40MTE4MjJdIHBjaV9idXMgMDAwMDowMDogcm9vdCBidXMgcmVzb3VyY2Ug
+W21lbSAweGZhMDAwMDAwLTB4ZmJkZmZmZmZdCj4+IFsgICAgMC40MTI0NDBdIHBjaV9idXMgMDAw
+MDowMDogcm9vdCBidXMgcmVzb3VyY2UgW2lvICAweDAwMDAtMHhmZmZmZl0gKGJ1cyBhZGRyZXNz
+IFsweGZiZTAwMDAwLTB4ZmJlZmZmZmZdKQo+PiBbICAgIDAuNDEzNjY1XSBwY2kgMDAwMDowMDow
+MC4wOiBicmlkZ2UgY29uZmlndXJhdGlvbiBpbnZhbGlkIChbYnVzIDAwLTAwXSksIHJlY29uZmln
+dXJpbmcKPj4gWyAgICAwLjQxNDY5OF0gcGNpIDAwMDA6MDE6MDAuMDogcmVnIDB4MTA6IGluaXRp
+YWwgQkFSIHZhbHVlIDB4MDAwMDAwMDAgaW52YWxpZAo+PiBbICAgIDAuNDE1NDEyXSBwY2kgMDAw
+MDowMTowMC4wOiByZWcgMHgxODogaW5pdGlhbCBCQVIgdmFsdWUgMHgwMDAwMDAwMCBpbnZhbGlk
+Cj4+IFsgICAgMC40MTg0NTZdIHBjaSAwMDAwOjAwOjAwLjA6IEJBUiA4OiBhc3NpZ25lZCBbbWVt
+IDB4ZmEwMDAwMDAtMHhmYTBmZmZmZl0KPj4gWyAgICAwLjQxOTA2NV0gcGNpIDAwMDA6MDE6MDAu
+MDogQkFSIDE6IGFzc2lnbmVkIFttZW0gMHhmYTAwMDAwMC0weGZhMDA3ZmZmIHByZWZdCj4+IFsg
+ICAgMC40MTk3MjhdIHBjaSAwMDAwOjAxOjAwLjA6IEJBUiA2OiBhc3NpZ25lZCBbbWVtIDB4ZmEw
+MDgwMDAtMHhmYTAwZmZmZiBwcmVmXQo+PiBbICAgIDAuNDIwMzc3XSBwY2kgMDAwMDowMTowMC4w
+OiBCQVIgMDogbm8gc3BhY2UgZm9yIFtpbyAgc2l6ZSAweDAxMDBdCj4+IFsgICAgMC40MjA5MzVd
+IHBjaSAwMDAwOjAxOjAwLjA6IEJBUiAwOiBmYWlsZWQgdG8gYXNzaWduIFtpbyAgc2l6ZSAweDAx
+MDBdCj4+IFsgICAgMC40MjE1MjZdIHBjaSAwMDAwOjAxOjAwLjA6IEJBUiAyOiBubyBzcGFjZSBm
+b3IgW2lvICBzaXplIDB4MDAwNF0KPj4gWyAgICAwLjQyMjA4NF0gcGNpIDAwMDA6MDE6MDAuMDog
+QkFSIDI6IGZhaWxlZCB0byBhc3NpZ24gW2lvICBzaXplIDB4MDAwNF0KPj4gWyAgICAwLjQyMjY4
+N10gcGNpIDAwMDA6MDA6MDAuMDogUENJIGJyaWRnZSB0byBbYnVzIDAxXQo+PiBbICAgIDAuNDIz
+MTM1XSBwY2kgMDAwMDowMDowMC4wOiAgIGJyaWRnZSB3aW5kb3cgW21lbSAweGZhMDAwMDAwLTB4
+ZmEwZmZmZmZdCj4+IFsgICAgMC40MjM3OTRdIHBjaWVwb3J0IDAwMDA6MDA6MDAuMDogZW5hYmxp
+bmcgZGV2aWNlICgwMDAwIC0+IDAwMDIpCj4+IFsgICAgMC40MjQ1NjZdIHBjaWVwb3J0IDAwMDA6
+MDA6MDAuMDogU2lnbmFsaW5nIFBNRSB0aHJvdWdoIFBDSWUgUE1FIGludGVycnVwdAo+PiBbICAg
+IDAuNDI1MTgyXSBwY2kgMDAwMDowMTowMC4wOiBTaWduYWxpbmcgUE1FIHRocm91Z2ggUENJZSBQ
+TUUgaW50ZXJydXB0Cj4+Cj4+IDAxOjAwLjAgQ2xhc3MgMDcwMDogRGV2aWNlIDFjMDA6Mzg1MyAo
+cmV2IDEwKSAocHJvZy1pZiAwNSkKPj4gICAgICAgICAgU3Vic3lzdGVtOiBEZXZpY2UgMWMwMDoz
+ODUzCj4+ICAgICAgICAgIENvbnRyb2w6IEkvTy0gTWVtLSBCdXNNYXN0ZXItIFNwZWNDeWNsZS0g
+TWVtV0lOVi0gVkdBU25vb3AtIFBhckVyci0gU3RlcHBpbmctIFNFUlItIEZhc3RCMkItIERpc0lO
+VHgtCj4+ICAgICAgICAgIFN0YXR1czogQ2FwKyA2Nk1Iei0gVURGLSBGYXN0QjJCLSBQYXJFcnIt
+IERFVlNFTD1mYXN0ID5UQWJvcnQtIDxUQWJvcnQtIDxNQWJvcnQtID5TRVJSLSA8UEVSUi0gSU5U
+eC0KPj4gICAgICAgICAgSW50ZXJydXB0OiBwaW4gQSByb3V0ZWQgdG8gSVJRIDIzMAo+PiAgICAg
+ICAgICBSZWdpb24gMDogSS9PIHBvcnRzIGF0IDx1bmFzc2lnbmVkPiBbZGlzYWJsZWRdCj4+ICAg
+ICAgICAgIFJlZ2lvbiAxOiBNZW1vcnkgYXQgZmEwMDAwMDAgKDMyLWJpdCwgcHJlZmV0Y2hhYmxl
+KSBbZGlzYWJsZWRdIFtzaXplPTMyS10KPj4gICAgICAgICAgUmVnaW9uIDI6IEkvTyBwb3J0cyBh
+dCA8dW5hc3NpZ25lZD4gW2Rpc2FibGVkXQo+PiAgICAgICAgICBbdmlydHVhbF0gRXhwYW5zaW9u
+IFJPTSBhdCBmYTAwODAwMCBbZGlzYWJsZWRdIFtzaXplPTMyS10KPj4KPj4gU2lnbmVkLW9mZi1i
+eTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+IC0tLQo+IAo+IEkgaGF2
+ZSBvbGQgZGV2ZWxvcG1lbnQgYm9hcmQgT2Ryb2lkIE4xIChSSzMzOTkpLCAgSXQgaGFzIG9uYm9h
+cmQgUENJZQo+IDIgZHVhbCBzYXRhIGJyaWRnZS4KPiBJIGhhdmUgdGVzdGVkIHRoaXMgcGF0Y2gs
+IGJ1dCBJIGFtIHN0aWxsIGdldHRpbmcgZm9sbG93aW5nIGxvZyBvbgo+IE9kcm9pZCBOMSBib2Fy
+ZC4KPiBJcyB0aGVpciBhbnkgbW9yZSBjb25maWd1cmF0aW9uIG5lZWRlZCBmb3Igc2F0YSBwb3J0
+cyA/CgpUaGFua3MgZm9yIHRlc3RpbmcuIEkgbWFkZSBhIG1pc3Rha2UgdGhhdCBpdCBzaG91bGQg
+YmUgYml0IDE5LCBzbwpjYW4geW91IHRyeSB1c2luZyBCSVQoMTkpPwoKPiAKPiBbICAgIDcuNDQ0
+NTA0XSBwY2lfYnVzIDAwMDA6MDE6IGJ1c25fcmVzOiBbYnVzIDAxLTFmXSBlbmQgaXMgdXBkYXRl
+ZCB0byAwMQo+IFsgICAgNy40NDU1MjFdIHBhbmZyb3N0IGZmOWEwMDAwLmdwdTogRmVhdHVyZXM6
+IEwyOjB4MDcxMjAyMDYKPiBTaGFkZXI6MHgwMDAwMDAwMCBUaWxlcjoweDAwMDAwODA5IE1lbTow
+eDEgTU1VOjB4MDAwMDI4MzAgQVM6MHhmZgo+IEpTOjB4Nwo+IFsgICAgNy40NTIyNDZdIHBjaSAw
+MDAwOjAwOjAwLjA6IEJBUiAxNDogYXNzaWduZWQgW21lbSAweGZhMDAwMDAwLTB4ZmEwZmZmZmZd
+Cj4gWyAgICA3LjQ2MDEwNl0gcGFuZnJvc3QgZmY5YTAwMDAuZ3B1OiBzaGFkZXJfcHJlc2VudD0w
+eGYgbDJfcHJlc2VudD0weDEKPiBbICAgIDcuNDY2NDU5XSBwY2kgMDAwMDowMTowMC4wOiBCQVIg
+NjogYXNzaWduZWQgW21lbQo+IDB4ZmEwMDAwMDAtMHhmYTAwZmZmZiBwcmVmXQo+IFsgICAgNy40
+NzM2NzldIHBhbmZyb3N0IGZmOWEwMDAwLmdwdTogW2RybTpwYW5mcm9zdF9kZXZmcmVxX2luaXQK
+PiBbcGFuZnJvc3RdXSBGYWlsZWQgdG8gcmVnaXN0ZXIgY29vbGluZyBkZXZpY2UKPiBbICAgIDcu
+NDc5NzAzXSBwY2kgMDAwMDowMTowMC4wOiBCQVIgNTogYXNzaWduZWQgW21lbSAweGZhMDEwMDAw
+LTB4ZmEwMTAxZmZdCj4gWyAgICA3LjQ4NzcwNl0gW2RybV0gSW5pdGlhbGl6ZWQgcGFuZnJvc3Qg
+MS4xLjAgMjAxODA5MDggZm9yCj4gZmY5YTAwMDAuZ3B1IG9uIG1pbm9yIDAKPiBbICAgIDcuNDk0
+MzQzXSBwY2kgMDAwMDowMTowMC4wOiBCQVIgNDogbm8gc3BhY2UgZm9yIFtpbyAgc2l6ZSAweDAw
+MTBdCj4gWyAgICA3LjQ5NDM0OF0gcGNpIDAwMDA6MDE6MDAuMDogQkFSIDQ6IGZhaWxlZCB0byBh
+c3NpZ24gW2lvICBzaXplIDB4MDAxMF0KPiBbICAgIDcuNDk0MzUyXSBwY2kgMDAwMDowMTowMC4w
+OiBCQVIgMDogbm8gc3BhY2UgZm9yIFtpbyAgc2l6ZSAweDAwMDhdCj4gWyAgICA3LjQ5NDM1Nl0g
+cGNpIDAwMDA6MDE6MDAuMDogQkFSIDA6IGZhaWxlZCB0byBhc3NpZ24gW2lvICBzaXplIDB4MDAw
+OF0KPiBbICAgIDcuNDk0MzYwXSBwY2kgMDAwMDowMTowMC4wOiBCQVIgMjogbm8gc3BhY2UgZm9y
+IFtpbyAgc2l6ZSAweDAwMDhdCj4gWyAgICA3LjQ5NDM2NF0gcGNpIDAwMDA6MDE6MDAuMDogQkFS
+IDI6IGZhaWxlZCB0byBhc3NpZ24gW2lvICBzaXplIDB4MDAwOF0KPiBbICAgIDcuNDk0MzY4XSBw
+Y2kgMDAwMDowMTowMC4wOiBCQVIgMTogbm8gc3BhY2UgZm9yIFtpbyAgc2l6ZSAweDAwMDRdCj4g
+WyAgICA3LjQ5NDM3Ml0gcGNpIDAwMDA6MDE6MDAuMDogQkFSIDE6IGZhaWxlZCB0byBhc3NpZ24g
+W2lvICBzaXplIDB4MDAwNF0KPiBbICAgIDcuNTc4OTEwXSByb2NrY2hpcC12b3AgZmY4ZjAwMDAu
+dm9wOiBBZGRpbmcgdG8gaW9tbXUgZ3JvdXAgMwo+IFsgICAgNy41ODcwNzRdIHBjaSAwMDAwOjAx
+OjAwLjA6IEJBUiAzOiBubyBzcGFjZSBmb3IgW2lvICBzaXplIDB4MDAwNF0KPiBbICAgIDcuNTk0
+NzgwXSByb2NrY2hpcC12b3AgZmY5MDAwMDAudm9wOiBBZGRpbmcgdG8gaW9tbXUgZ3JvdXAgNAo+
+IFsgICAgNy42MDc3MDFdIHBjaSAwMDAwOjAxOjAwLjA6IEJBUiAzOiBmYWlsZWQgdG8gYXNzaWdu
+IFtpbyAgc2l6ZSAweDAwMDRdCj4gCj4gIyBsc3BjaSAtdgo+IDAwOjAwLjAgUENJIGJyaWRnZTog
+RnV6aG91IFJvY2tjaGlwIEVsZWN0cm9uaWNzIENvLiwgTHRkIFJLMzM5OSBQQ0kKPiBFeHByZXNz
+IFJvb3QgUG9ydCAocHJvZy1pZiAwMCBbTm9ybWFsIGRlY29kZV0pCj4gICAgICAgICAgRmxhZ3M6
+IGJ1cyBtYXN0ZXIsIGZhc3QgZGV2c2VsLCBsYXRlbmN5IDAsIElSUSAyMzcKPiAgICAgICAgICBC
+dXM6IHByaW1hcnk9MDAsIHNlY29uZGFyeT0wMSwgc3Vib3JkaW5hdGU9MDEsIHNlYy1sYXRlbmN5
+PTAKPiAgICAgICAgICBJL08gYmVoaW5kIGJyaWRnZTogMDAwMDAwMDAtMDAwMDBmZmYgW3NpemU9
+NEtdCj4gICAgICAgICAgTWVtb3J5IGJlaGluZCBicmlkZ2U6IGZhMDAwMDAwLWZhMGZmZmZmIFtz
+aXplPTFNXQo+ICAgICAgICAgIFByZWZldGNoYWJsZSBtZW1vcnkgYmVoaW5kIGJyaWRnZTogMDAw
+MDAwMDAtMDAwZmZmZmYgW3NpemU9MU1dCj4gICAgICAgICAgQ2FwYWJpbGl0aWVzOiBbODBdIFBv
+d2VyIE1hbmFnZW1lbnQgdmVyc2lvbiAzCj4gICAgICAgICAgQ2FwYWJpbGl0aWVzOiBbOTBdIE1T
+STogRW5hYmxlKyBDb3VudD0xLzEgTWFza2FibGUrIDY0Yml0Kwo+ICAgICAgICAgIENhcGFiaWxp
+dGllczogW2IwXSBNU0ktWDogRW5hYmxlLSBDb3VudD0xIE1hc2tlZC0KPiAgICAgICAgICBDYXBh
+YmlsaXRpZXM6IFtjMF0gRXhwcmVzcyBSb290IFBvcnQgKFNsb3QrKSwgTVNJIDAwCj4gICAgICAg
+ICAgQ2FwYWJpbGl0aWVzOiBbMTAwXSBBZHZhbmNlZCBFcnJvciBSZXBvcnRpbmcKPiAgICAgICAg
+ICBDYXBhYmlsaXRpZXM6IFsyNzRdIFRyYW5zYWN0aW9uIFByb2Nlc3NpbmcgSGludHMKPiAgICAg
+ICAgICBLZXJuZWwgZHJpdmVyIGluIHVzZTogcGNpZXBvcnQKPiAKPiAwMTowMC4wIElERSBpbnRl
+cmZhY2U6IEFTTWVkaWEgVGVjaG5vbG9neSBJbmMuIEFTTTEwNjEgU0FUQSBJREUKPiBDb250cm9s
+bGVyIChyZXYgMDIpIChwcm9nLWlmIDg1IFtQQ0kgbmF0aXZlIG1vZGUtb25seSBjb250cm9sbGVy
+LAo+IHN1cHBvcnRzIGJ1cyBtYXN0ZXJpbmddKQo+ICAgICAgICAgIFN1YnN5c3RlbTogQVNNZWRp
+YSBUZWNobm9sb2d5IEluYy4gQVNNMTA2MSBTQVRBIElERSBDb250cm9sbGVyCj4gICAgICAgICAg
+RmxhZ3M6IGJ1cyBtYXN0ZXIsIGZhc3QgZGV2c2VsLCBsYXRlbmN5IDAsIElSUSAyMzgKPiAgICAg
+ICAgICBJL08gcG9ydHMgYXQgPHVuYXNzaWduZWQ+IFtkaXNhYmxlZF0KPiAgICAgICAgICBJL08g
+cG9ydHMgYXQgPHVuYXNzaWduZWQ+IFtkaXNhYmxlZF0KPiAgICAgICAgICBJL08gcG9ydHMgYXQg
+PHVuYXNzaWduZWQ+IFtkaXNhYmxlZF0KPiAgICAgICAgICBJL08gcG9ydHMgYXQgPHVuYXNzaWdu
+ZWQ+IFtkaXNhYmxlZF0KPiAgICAgICAgICBJL08gcG9ydHMgYXQgPHVuYXNzaWduZWQ+IFtkaXNh
+YmxlZF0KPiAgICAgICAgICBNZW1vcnkgYXQgZmEwMTAwMDAgKDMyLWJpdCwgbm9uLXByZWZldGNo
+YWJsZSkgW3NpemU9NTEyXQo+ICAgICAgICAgIEV4cGFuc2lvbiBST00gYXQgZmEwMDAwMDAgW3Zp
+cnR1YWxdIFtkaXNhYmxlZF0gW3NpemU9NjRLXQo+ICAgICAgICAgIENhcGFiaWxpdGllczogWzUw
+XSBNU0k6IEVuYWJsZSsgQ291bnQ9MS8xIE1hc2thYmxlLSA2NGJpdC0KPiAgICAgICAgICBDYXBh
+YmlsaXRpZXM6IFs3OF0gUG93ZXIgTWFuYWdlbWVudCB2ZXJzaW9uIDMKPiAgICAgICAgICBDYXBh
+YmlsaXRpZXM6IFs4MF0gRXhwcmVzcyBMZWdhY3kgRW5kcG9pbnQsIE1TSSAwMAo+ICAgICAgICAg
+IENhcGFiaWxpdGllczogWzEwMF0gVmlydHVhbCBDaGFubmVsCj4gICAgICAgICAgS2VybmVsIGRy
+aXZlciBpbiB1c2U6IGFoY2kKPiAKPiBCZXN0IFJlZ2FyZHMKPiAtQW5hbmQKPiAKPiBfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4g
+Cj4gCj4gCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
