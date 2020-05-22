@@ -1,217 +1,236 @@
-From: Andy Shevchenko <andy.shevchenko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH 1/5] iio: core: pass parent device as parameter during
- allocation
-Date: Fri, 22 May 2020 11:56:40 +0300
-Message-ID: <CAHp75VfqxJxa1Uk3h4vfzQOdZDRr8Lqvt3Z5vzpp5NAw=u_ZPQ@mail.gmail.com>
-References: <20200522082208.383631-1-alexandru.ardelean@analog.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH v4 0/5] media: add v4l2_pipeline_stream_{enable,disable}
+Date: Fri, 22 May 2020 06:06:41 -0300
+Message-ID: <1c8bd467-5a9c-7285-ec23-d0d864a5f938@collabora.com>
+References: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200522082208.383631-1-alexandru.ardelean-OyLXuOCK7orQT0dZR+AlfA@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Alexandru Ardelean <alexandru.ardelean-OyLXuOCK7orQT0dZR+AlfA@public.gmane.org>
-Cc: milo.kim-l0cyMroinI0@public.gmane.org, tomislav.denis-jb26L5wWkzc@public.gmane.org, Dan Robertson <dan-d1oNz5vA2fxXqviUI+FSNg@public.gmane.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-aspeed-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org, linux-iio <linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Eddie James <eajames-tEXmvtCZX7AybS5Ee8rs3A@public.gmane.org>, Platform Driver <platform-driver-x86-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, Paul Cercueil <paul-icTtO2rgO2OTuSrc4Mpeew@public.gmane.org>, Lorenzo Bianconi <lorenzo.bianconi83-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Song Qiang <songqiang1304521-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Srinivas Pandruvada <srinivas.pandruvada-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, "open list:STAGING SUBSYSTEM" <devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, tduszyns-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, bcm-kernel-feedback-list <bcm-k>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, niklas.soderlund@ragnatech.se--annotate
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, May 22, 2020 at 11:36 AM Alexandru Ardelean
-<alexandru.ardelean-OyLXuOCK7orQT0dZR+AlfA@public.gmane.org> wrote:
->
-> The change passes the parent device to the iio_device_alloc() call. This
-> also updates the devm_iio_device_alloc() call to consider the device object
-> as the parent device by default.
->
-> Having it passed like this, should ensure that any IIO device object
-> already has a device object as parent, allowing for neater control, like
-> passing the 'indio_dev' object for other stuff [like buffers/triggers/etc],
-> and potentially creating iiom_xxx(indio_dev) functions.
->
-> With this patch, only the 'drivers/platform/x86/toshiba_acpi.c' needs an
-> update to pass the parent object as a parameter.
+Hi Dafna,
 
-Acked-by: Andy Shevchenko <andy.shevchenko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Thanks for working on this.
 
->
-> In the next patch all devm_iio_device_alloc() calls will be handled.
->
-> Signed-off-by: Alexandru Ardelean <alexandru.ardelean-OyLXuOCK7orQT0dZR+AlfA@public.gmane.org>
-> ---
->  drivers/iio/dummy/iio_simple_dummy.c         | 14 ++++++++------
->  drivers/iio/industrialio-core.c              | 11 ++++++-----
->  drivers/platform/x86/toshiba_acpi.c          |  3 +--
->  drivers/staging/iio/Documentation/device.txt |  4 +---
->  include/linux/iio/iio.h                      |  4 ++--
->  5 files changed, 18 insertions(+), 18 deletions(-)
->
-> diff --git a/drivers/iio/dummy/iio_simple_dummy.c b/drivers/iio/dummy/iio_simple_dummy.c
-> index 6cb02299a215..b35ae7c039f7 100644
-> --- a/drivers/iio/dummy/iio_simple_dummy.c
-> +++ b/drivers/iio/dummy/iio_simple_dummy.c
-> @@ -566,6 +566,13 @@ static struct iio_sw_device *iio_dummy_probe(const char *name)
->         struct iio_dev *indio_dev;
->         struct iio_dummy_state *st;
->         struct iio_sw_device *swd;
-> +       struct device *parent = NULL;
-> +
-> +       /*
-> +        * With hardware: Set the parent device.
-> +        * parent = &spi->dev;
-> +        * parent = &client->dev;
-> +        */
->
->         swd = kzalloc(sizeof(*swd), GFP_KERNEL);
->         if (!swd) {
-> @@ -580,7 +587,7 @@ static struct iio_sw_device *iio_dummy_probe(const char *name)
->          * It also has a region (accessed by iio_priv()
->          * for chip specific state information.
->          */
-> -       indio_dev = iio_device_alloc(sizeof(*st));
-> +       indio_dev = iio_device_alloc(parent, sizeof(*st));
->         if (!indio_dev) {
->                 ret = -ENOMEM;
->                 goto error_ret;
-> @@ -590,11 +597,6 @@ static struct iio_sw_device *iio_dummy_probe(const char *name)
->         mutex_init(&st->lock);
->
->         iio_dummy_init_device(indio_dev);
-> -       /*
-> -        * With hardware: Set the parent device.
-> -        * indio_dev->dev.parent = &spi->dev;
-> -        * indio_dev->dev.parent = &client->dev;
-> -        */
->
->          /*
->          * Make the iio_dev struct available to remove function.
-> diff --git a/drivers/iio/industrialio-core.c b/drivers/iio/industrialio-core.c
-> index 1527f01a44f1..75661661aaba 100644
-> --- a/drivers/iio/industrialio-core.c
-> +++ b/drivers/iio/industrialio-core.c
-> @@ -1493,7 +1493,7 @@ struct device_type iio_device_type = {
->   * iio_device_alloc() - allocate an iio_dev from a driver
->   * @sizeof_priv:       Space to allocate for private structure.
->   **/
-> -struct iio_dev *iio_device_alloc(int sizeof_priv)
-> +struct iio_dev *iio_device_alloc(struct device *parent, int sizeof_priv)
->  {
->         struct iio_dev *dev;
->         size_t alloc_size;
-> @@ -1510,6 +1510,7 @@ struct iio_dev *iio_device_alloc(int sizeof_priv)
->         if (!dev)
->                 return NULL;
->
-> +       dev->dev.parent = parent;
->         dev->dev.groups = dev->groups;
->         dev->dev.type = &iio_device_type;
->         dev->dev.bus = &iio_bus_type;
-> @@ -1551,7 +1552,7 @@ static void devm_iio_device_release(struct device *dev, void *res)
->
->  /**
->   * devm_iio_device_alloc - Resource-managed iio_device_alloc()
-> - * @dev:               Device to allocate iio_dev for
-> + * @parent:            Device to allocate iio_dev for, and parent for this IIO device
->   * @sizeof_priv:       Space to allocate for private structure.
->   *
->   * Managed iio_device_alloc. iio_dev allocated with this function is
-> @@ -1560,7 +1561,7 @@ static void devm_iio_device_release(struct device *dev, void *res)
->   * RETURNS:
->   * Pointer to allocated iio_dev on success, NULL on failure.
->   */
-> -struct iio_dev *devm_iio_device_alloc(struct device *dev, int sizeof_priv)
-> +struct iio_dev *devm_iio_device_alloc(struct device *parent, int sizeof_priv)
->  {
->         struct iio_dev **ptr, *iio_dev;
->
-> @@ -1569,10 +1570,10 @@ struct iio_dev *devm_iio_device_alloc(struct device *dev, int sizeof_priv)
->         if (!ptr)
->                 return NULL;
->
-> -       iio_dev = iio_device_alloc(sizeof_priv);
-> +       iio_dev = iio_device_alloc(parent, sizeof_priv);
->         if (iio_dev) {
->                 *ptr = iio_dev;
-> -               devres_add(dev, ptr);
-> +               devres_add(parent, ptr);
->         } else {
->                 devres_free(ptr);
->         }
-> diff --git a/drivers/platform/x86/toshiba_acpi.c b/drivers/platform/x86/toshiba_acpi.c
-> index 808944546739..4a4d09c352dd 100644
-> --- a/drivers/platform/x86/toshiba_acpi.c
-> +++ b/drivers/platform/x86/toshiba_acpi.c
-> @@ -3128,7 +3128,7 @@ static int toshiba_acpi_add(struct acpi_device *acpi_dev)
->
->         toshiba_accelerometer_available(dev);
->         if (dev->accelerometer_supported) {
-> -               dev->indio_dev = iio_device_alloc(sizeof(*dev));
-> +               dev->indio_dev = iio_device_alloc(&acpi_dev->dev, sizeof(*dev));
->                 if (!dev->indio_dev) {
->                         pr_err("Unable to allocate iio device\n");
->                         goto iio_error;
-> @@ -3138,7 +3138,6 @@ static int toshiba_acpi_add(struct acpi_device *acpi_dev)
->
->                 dev->indio_dev->info = &toshiba_iio_accel_info;
->                 dev->indio_dev->name = "Toshiba accelerometer";
-> -               dev->indio_dev->dev.parent = &acpi_dev->dev;
->                 dev->indio_dev->modes = INDIO_DIRECT_MODE;
->                 dev->indio_dev->channels = toshiba_iio_accel_channels;
->                 dev->indio_dev->num_channels =
-> diff --git a/drivers/staging/iio/Documentation/device.txt b/drivers/staging/iio/Documentation/device.txt
-> index ec42544a46aa..0d1275b1eb3f 100644
-> --- a/drivers/staging/iio/Documentation/device.txt
-> +++ b/drivers/staging/iio/Documentation/device.txt
-> @@ -8,7 +8,7 @@ The crucial structure for device drivers in iio is iio_dev.
->
->  First allocate one using:
->
-> -struct iio_dev *indio_dev = iio_device_alloc(sizeof(struct chip_state));
-> +struct iio_dev *indio_dev = iio_device_alloc(parent, sizeof(struct chip_state));
->  where chip_state is a structure of local state data for this instance of
->  the chip.
->
-> @@ -16,8 +16,6 @@ That data can be accessed using iio_priv(struct iio_dev *).
->
->  Then fill in the following:
->
-> -- indio_dev->dev.parent
-> -       Struct device associated with the underlying hardware.
->  - indio_dev->name
->         Name of the device being driven - made available as the name
->         attribute in sysfs.
-> diff --git a/include/linux/iio/iio.h b/include/linux/iio/iio.h
-> index a1be82e74c93..91a69f4751aa 100644
-> --- a/include/linux/iio/iio.h
-> +++ b/include/linux/iio/iio.h
-> @@ -676,7 +676,7 @@ static inline void *iio_device_get_drvdata(struct iio_dev *indio_dev)
->
->  /* Can we make this smaller? */
->  #define IIO_ALIGN L1_CACHE_BYTES
-> -struct iio_dev *iio_device_alloc(int sizeof_priv);
-> +struct iio_dev *iio_device_alloc(struct device *parent, int sizeof_priv);
->
->  static inline void *iio_priv(const struct iio_dev *indio_dev)
->  {
-> @@ -690,7 +690,7 @@ static inline struct iio_dev *iio_priv_to_dev(void *priv)
->  }
->
->  void iio_device_free(struct iio_dev *indio_dev);
-> -struct iio_dev *devm_iio_device_alloc(struct device *dev, int sizeof_priv);
-> +struct iio_dev *devm_iio_device_alloc(struct device *parent, int sizeof_priv);
->  struct iio_trigger *devm_iio_trigger_alloc(struct device *dev,
->                                                 const char *fmt, ...);
->  /**
-> --
-> 2.25.1
->
+On 5/22/20 4:55 AM, Dafna Hirschfeld wrote:
+> Hi,
+> This is v4 of the patchset that was sent by Helen Koike.
+> 
+> Media drivers need to iterate through the pipeline and call .s_stream()
+> callbacks in the subdevices.
+> 
+> Instead of repeating code, add helpers for this.
+> 
+> These helpers will go walk through the pipeline only visiting entities
+> that participates in the stream, i.e. it follows links from sink to source
+> (and not the opposite).
+> For example, in a topology like this https://bit.ly/3b2MxjI
+> calling v4l2_pipeline_stream_enable() from rkisp1_mainpath won't call
+> .s_stream(true) for rkisp1_resizer_selfpath.
+> 
+> stream_count variable was added in v4l2_subdevice to handle nested calls
+> to the helpers.
+> This is useful when the driver allows streaming from more then one
+> capture device sharing subdevices.
 
+If I understand correctly, this isn't  true anymore right? Nested calls aren't
+possible anymore since this version doesn't contain stream_count in struct v4l2_subdevice.
 
--- 
-With Best Regards,
-Andy Shevchenko
+Documentation of v4l2_pipeline_stream_*() should also be updated.
+
+Just to be clear, without the nested call, vimc will require to add its own
+counters, patch https://patchwork.kernel.org/patch/10948833/ will be
+required again to allow multi streaming.
+
+Also, patch "media: staging: rkisp1: cap: use v4l2_pipeline_stream_{enable,disable}"
+is cleaner in the previous version (with stream_count in struct v4l2_subdevice).
+
+All drivers that allows multi streaming will need to implement some special handling.
+
+Adding stream_count in struct v4l2_subdevice still seems cleaner to me. I'd like to hear
+what others think.
+
+> 
+> This patchset was tested on rkisp1 and vimc drivers.
+> 
+> Other cleanup might be possible (but I won't add in this patchset as I
+> don't have the hw to test):
+> 	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/qcom/camss/camss-video.c#n430
+> 	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/omap3isp/isp.c#n697
+> 	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/stm32/stm32-dcmi.c#n680
+> 	https://git.linuxtv.org/media_tree.git/tree/drivers/media/platform/xilinx/xilinx-dma.c#n97
+> 
+> Testing:
+> --------
+> 
+> SEN_DEV=/dev/v4l-subdev3
+> ISP_DEV=/dev/v4l-subdev0
+> RSZ_SP_DEV=/dev/v4l-subdev2
+> RSZ_MP_DEV=/dev/v4l-subdev1
+> CAP_SP_DEV=/dev/video1
+> CAP_MP_DEV=/dev/video0
+> 
+> WIDTH=1920
+> HEIGHT=1080
+> RAW_CODE=SRGGB10_1X10
+> YUV_CODE=YUYV8_2X8
+> 
+> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$RAW_CODE -d $SEN_DEV
+> 
+> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$RAW_CODE -d $ISP_DEV
+> v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $ISP_DEV
+> 
+> v4l2-ctl --set-subdev-selection pad=2,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $ISP_DEV
+> v4l2-ctl --set-subdev-fmt pad=2,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $ISP_DEV
+> 
+> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_SP_DEV
+> v4l2-ctl --set-subdev-fmt pad=1,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_SP_DEV
+> 
+> v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $RSZ_SP_DEV
+> 
+> v4l2-ctl --set-subdev-fmt pad=0,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_MP_DEV
+> v4l2-ctl --set-subdev-fmt pad=1,width=$WIDTH,height=$HEIGHT,code=$YUV_CODE -d $RSZ_MP_DEV
+> 
+> v4l2-ctl --set-subdev-selection pad=0,target=crop,top=0,left=0,width=$WIDTH,height=$HEIGHT -d $RSZ_MP_DEV
+> 
+> v4l2-ctl -v width=$WIDTH,height=$HEIGHT,pixelformat=NV12 -d $CAP_SP_DEV
+> v4l2-ctl -v width=$WIDTH,height=$HEIGHT,pixelformat=NV12 -d $CAP_MP_DEV
+> 
+> sleep 1
+> 
+> v4l2-ctl --stream-mmap --stream-count=100 -d $CAP_SP_DEV --stream-to=/tmp/test_sp.raw &
+> v4l2-ctl --stream-mmap --stream-count=100 -d $CAP_MP_DEV --stream-to=/tmp/test_mp.raw &
+> 
+> wait
+> echo "Completed"
+> 
+> 
+> Changes in v4:
+> ==============
+> patch 1: fix coding style issues
+> 
+> patch 2:
+> - in function v4l2_pipeline_subdevs_get, use a local media_graph to walk on the topology so a lock is not needed
+> and also the pipe parameter is not needed.
+
+You are assuming that media_pipeline_start() will always be called before v4l2_pipeline_stream_enable().
+I think this is fine, but it should reflect in the docs.
+
+Regards,
+Helen
+
+> - adding a function v4l2_subdevs_stream_disable to avoid code duplication
+> - change v4l2_pipeline_stream_disable to return an error code if failed
+> - don't add a new field to subdevice "stream_counter" when calling s_stream, since this counter is updated only in
+> the helper functions, and might be confusing that it is generally not an indication of the number of calls to s_stream.
+> Also, except of rkisp1, and vimc, it seems that the other drivers that might use the new helpers don't use a counter.
+> 
+> new added - patch 3: the call to media_pipeline_start should be called before calling s_stream on the subdevices in order
+> to validate the links and prevents them from changing, this patch fixes it.
+> 
+> patch 4: (use the helpers in rkisp1). The helpers now don't have a counter for the number of calls to s_stream, so rkisp1
+> should check if the other capture is streaming and in that case call s_stream only for its resizer.
+> 
+> patch 5: - (use the helpers in vimc)
+> - test the return value of v4l2_pipeline_stream_disable
+> - the call to the helerps now doesn't need the pipe parameter.
+> 
+> Overview of patches in V3:
+> --------------------------
+> 
+> Patch 1/5 adds a new iterator function in media-controller to follow links from sink to
+> source only.
+> 
+> Patch 2/5 adds the helpers in v4l2-common.c,
+> 
+> Patch 3/5 calles media_pipeline_start before calling s_stream on the subdevices
+> 
+> Patch 4/5 cleanup rkisp1 driver to use the helpers.
+> 
+> Patch 5/5 cleanup vimc driver to use the helpers.
+> 
+> Changes in V3:
+> ====================
+> Following up Niklas' comments in V2 https://patchwork.kernel.org/patch/11473681/#23270823
+> 
+> * I removed the limitation in topologies with entities with multiple enabled
+> links to its sink pads in the topology.
+> Now it enables all subdevs in the pipeline that have an enabled link going
+> from sink to source while walking from the video device, so it can be
+> also useful for rcar-vin driver.
+> 
+> To implement this, I added back in the series the patch from v1:
+>     "media: mc-entity.c: add media_graph_walk_next_stream()"
+> 
+> * "size" was renamed to "max_size" in function v4l2_pipeline_subdevs_get()
+> to reflect the maximum number of elements that can fit in the subdevs array,
+> with proper documentation.
+> 
+> * v4l2_pipeline_subdevs_get() returns a negative number for error, instead
+> of returning 0 and printing a warning.
+> 
+> * I also add if defined(CONFIG_MEDIA_CONTROLLER) around helpers to avoid
+> compiling errors.
+> 
+> Overview of patches in V3:
+> --------------------------
+> 
+> Patch 1/4 adds a new iterator function in media-controller to follow links from sink to
+> source only.
+> 
+> Patch 2/4 adds the helpers in v4l2-common.c, allowing nested calls by
+> adding stream_count in the subdevice struct.
+> 
+> Patch 3/4 cleanup rkisp1 driver to use the helpers.
+> 
+> Patch 4/4 cleanup vimc driver to use the helpers.
+> 
+> Changes in V2:
+> ====================
+> The first version was calling the s_stream() callbacks from sensor to
+> capture.
+> 
+> This was generating errors in the Scarlet Chromebook, when the sensor
+> was being enabled before the ISP.
+> 
+> It make sense to enable subdevices from capture to sensor instead (which
+> is what most drivers do already).
+> 
+> This v2 drops the changes from mc-entity.c, and re-implement helpers in
+> v4l2-common.c
+> 
+> Overview of patches in V2:
+> --------------------------
+> 
+> Path 1/3 adds the helpers in v4l2-common.c, allowing nested calls by
+> adding stream_count in the subdevice struct.
+> 
+> Patch 2/3 cleanup rkisp1 driver to use the helpers.
+> 
+> Patch 3/3 cleanup vimc driver to use the helpers.
+> 
+> Dafna Hirschfeld (1):
+>   media: staging: rkisp1: validate links before powering and streaming
+> 
+> Helen Koike (4):
+>   media: mc-entity.c: add media_graph_walk_next_stream()
+>   media: v4l2-common: add helper functions to call s_stream() callbacks
+>   media: staging: rkisp1: cap: use v4l2_pipeline_stream_{enable,disable}
+>     helpers
+>   media: vimc: use v4l2_pipeline_stream_{enable,disable} helpers
+> 
+>  drivers/media/mc/mc-entity.c                  |  34 ++++-
+>  .../media/test-drivers/vimc/vimc-capture.c    |  31 +++--
+>  .../media/test-drivers/vimc/vimc-streamer.c   |  49 +------
+>  drivers/media/v4l2-core/v4l2-common.c         |  99 ++++++++++++++
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 125 ++++++------------
+>  include/media/media-entity.h                  |  15 +++
+>  include/media/v4l2-common.h                   |  39 ++++++
+>  7 files changed, 253 insertions(+), 139 deletions(-)
+> 
