@@ -1,69 +1,57 @@
-From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH AUTOSEL 4.14 03/13] ARM: dts: rockchip: fix pinctrl sub nodename for spi in rk322x.dtsi
-Date: Fri, 22 May 2020 10:51:32 -0400
-Message-ID: <20200522145142.435086-3-sashal@kernel.org>
+From: Sasha Levin <sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.14 02/13] arm64: dts: rockchip: swap interrupts interrupt-names rk3399 gpu node
+Date: Fri, 22 May 2020 10:51:31 -0400
+Message-ID: <20200522145142.435086-2-sashal@kernel.org>
 References: <20200522145142.435086-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200522145142.435086-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200522145142.435086-1-sashal@kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit 855bdca1781c79eb661f89c8944c4a719ce720e8 ]
+[ Upstream commit c604fd810bda667bdc20b2c041917baa7803e0fb ]
 
-A test with the command below gives these errors:
+Dts files with Rockchip rk3399 'gpu' nodes were manually verified.
+In order to automate this process arm,mali-midgard.txt
+has been converted to yaml. In the new setup dtbs_check with
+arm,mali-midgard.yaml expects interrupts and interrupt-names values
+in the same order. Fix this for rk3399.
 
-arch/arm/boot/dts/rk3229-evb.dt.yaml: spi-0:
-'#address-cells' is a required property
-arch/arm/boot/dts/rk3229-evb.dt.yaml: spi-1:
-'#address-cells' is a required property
-arch/arm/boot/dts/rk3229-xms6.dt.yaml: spi-0:
-'#address-cells' is a required property
-arch/arm/boot/dts/rk3229-xms6.dt.yaml: spi-1:
-'#address-cells' is a required property
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/gpu/
+arm,mali-midgard.yaml
 
-The $nodename pattern for spi nodes is
-"^spi(@.*|-[0-9a-f])*$". To prevent warnings rename
-'spi-0' and 'spi-1' pinctrl sub nodenames to
-'spi0' and 'spi1' in 'rk322x.dtsi'.
-
-make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/spi/spi-controller.yaml
-
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Link: https://lore.kernel.org/r/20200424123923.8192-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Link: https://lore.kernel.org/r/20200425143837.18706-1-jbx6244@gmail.com
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk322x.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index f59f7cc62be6..0c60dbc4b46a 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -950,7 +950,7 @@
- 			};
- 		};
- 
--		spi-0 {
-+		spi0 {
- 			spi0_clk: spi0-clk {
- 				rockchip,pins = <0 9 RK_FUNC_2 &pcfg_pull_up>;
- 			};
-@@ -968,7 +968,7 @@
- 			};
- 		};
- 
--		spi-1 {
-+		spi1 {
- 			spi1_clk: spi1-clk {
- 				rockchip,pins = <0 23 RK_FUNC_2 &pcfg_pull_up>;
- 			};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index ff8df7fd44a7..b63d9653ff55 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1691,10 +1691,10 @@
+ 	gpu: gpu@ff9a0000 {
+ 		compatible = "rockchip,rk3399-mali", "arm,mali-t860";
+ 		reg = <0x0 0xff9a0000 0x0 0x10000>;
+-		interrupts = <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH 0>,
+-			     <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH 0>,
+-			     <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH 0>;
+-		interrupt-names = "gpu", "job", "mmu";
++		interrupts = <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "job", "mmu", "gpu";
+ 		clocks = <&cru ACLK_GPU>;
+ 		power-domains = <&power RK3399_PD_GPU>;
+ 		status = "disabled";
 -- 
 2.25.1
