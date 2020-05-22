@@ -1,105 +1,144 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v4 6/6] rockchip: Enable PCIe/M.2 on rock960 board
-Date: Fri, 22 May 2020 12:35:41 +0530
-Message-ID: <20200522070541.27046-1-jagan@amarulasolutions.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: [PATCH v4 1/5] media: mc-entity.c: add media_graph_walk_next_stream()
+Date: Fri, 22 May 2020 09:55:18 +0200
+Message-ID: <20200522075522.6190-2-dafna.hirschfeld@collabora.com>
+References: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Shawn Lin <shawn.lin@rock-chips.com>, Patrick Wildt <patrick@blueri.se>
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, Jagan Teki <jagan@amarulasolutions.com>, Tom Cubie <tom@radxa.com>, Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, niklas.soderlund@ragnatech.se--annotate
 List-Id: linux-rockchip.vger.kernel.org
 
-Due to board limitation some SSD's would work
-on rock960 PCIe M.2 only with 1.8V IO domain.
+From: Helen Koike <helen.koike@collabora.com>
 
-So, this patch enables grf io_sel explicitly to
-make PCIe/M.2 to work.
+Add media_graph_walk_next_stream() function to follow links only from
+sink to source (not the opposite) to allow iteration only through the
+entities participating in a given stream.
 
-Cc: Tom Cubie <tom@radxa.com>
-Acked-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+This is useful to allow calling .s_stream() callback only in the
+subdevices that requires to be enabled/disabled, and avoid calling this
+callback when not required.
+
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
+Reviewed-by: Niklas Söderlund <niklas.soderlund+renesas@ragnatech.se>
+[Dafna: fixing coding style issues]
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
-Changes for v4:
-- Add missing header bitops.h
+ drivers/media/mc/mc-entity.c | 34 +++++++++++++++++++++++++++++++---
+ include/media/media-entity.h | 15 +++++++++++++++
+ 2 files changed, 46 insertions(+), 3 deletions(-)
 
- board/vamrs/rock960_rk3399/rock960-rk3399.c | 24 +++++++++++++++++++++
- configs/rock960-rk3399_defconfig            |  5 +++++
- 2 files changed, 29 insertions(+)
-
-diff --git a/board/vamrs/rock960_rk3399/rock960-rk3399.c b/board/vamrs/rock960_rk3399/rock960-rk3399.c
-index 68a127b9ac..a7fc38d42f 100644
---- a/board/vamrs/rock960_rk3399/rock960-rk3399.c
-+++ b/board/vamrs/rock960_rk3399/rock960-rk3399.c
-@@ -2,3 +2,27 @@
- /*
-  * Copyright (C) 2018 Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+diff --git a/drivers/media/mc/mc-entity.c b/drivers/media/mc/mc-entity.c
+index 12b45e669bcc..555f9dd9f7f2 100644
+--- a/drivers/media/mc/mc-entity.c
++++ b/drivers/media/mc/mc-entity.c
+@@ -228,6 +228,11 @@ EXPORT_SYMBOL_GPL(media_entity_pads_init);
+  * Graph traversal
   */
+ 
++enum media_graph_walk_type {
++	MEDIA_GRAPH_WALK_CONNECTED_NODES,
++	MEDIA_GRAPH_WALK_STREAM_NODES,
++};
 +
-+#include <common.h>
-+#include <syscon.h>
-+#include <asm/io.h>
-+#include <asm/arch-rockchip/clock.h>
-+#include <asm/arch-rockchip/grf_rk3399.h>
-+#include <asm/arch-rockchip/hardware.h>
-+#include <linux/bitops.h>
+ static struct media_entity *
+ media_entity_other(struct media_entity *entity, struct media_link *link)
+ {
+@@ -305,7 +310,8 @@ void media_graph_walk_start(struct media_graph *graph,
+ }
+ EXPORT_SYMBOL_GPL(media_graph_walk_start);
+ 
+-static void media_graph_walk_iter(struct media_graph *graph)
++static void media_graph_walk_iter(struct media_graph *graph,
++				  enum media_graph_walk_type type)
+ {
+ 	struct media_entity *entity = stack_top(graph);
+ 	struct media_link *link;
+@@ -326,6 +332,15 @@ static void media_graph_walk_iter(struct media_graph *graph)
+ 	/* Get the entity in the other end of the link . */
+ 	next = media_entity_other(entity, link);
+ 
++	if (type == MEDIA_GRAPH_WALK_STREAM_NODES &&
++	    next == link->sink->entity) {
++		link_top(graph) = link_top(graph)->next;
++		dev_dbg(entity->graph_obj.mdev->dev,
++			"walk: skipping '%s' (outside of the stream path)\n",
++			link->sink->entity->name);
++		return;
++	}
 +
-+#ifdef CONFIG_MISC_INIT_R
-+int misc_init_r(void)
+ 	/* Has the entity already been visited? */
+ 	if (media_entity_enum_test_and_set(&graph->ent_enum, next)) {
+ 		link_top(graph) = link_top(graph)->next;
+@@ -342,7 +357,9 @@ static void media_graph_walk_iter(struct media_graph *graph)
+ 		next->name);
+ }
+ 
+-struct media_entity *media_graph_walk_next(struct media_graph *graph)
++static struct media_entity *
++__media_graph_walk_next(struct media_graph *graph,
++			enum media_graph_walk_type type)
+ {
+ 	struct media_entity *entity;
+ 
+@@ -355,7 +372,7 @@ struct media_entity *media_graph_walk_next(struct media_graph *graph)
+ 	 * found.
+ 	 */
+ 	while (link_top(graph) != &stack_top(graph)->links)
+-		media_graph_walk_iter(graph);
++		media_graph_walk_iter(graph, type);
+ 
+ 	entity = stack_pop(graph);
+ 	dev_dbg(entity->graph_obj.mdev->dev,
+@@ -363,8 +380,19 @@ struct media_entity *media_graph_walk_next(struct media_graph *graph)
+ 
+ 	return entity;
+ }
++
++struct media_entity *media_graph_walk_next(struct media_graph *graph)
 +{
-+	struct rk3399_grf_regs *grf =
-+	    syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
-+
-+	/**
-+	 * Some SSD's to work on rock960 would require explicit
-+	 * domain voltage change, so BT565 is in 1.8v domain
-+	 */
-+	rk_setreg(&grf->io_vsel, BIT(0));
-+
-+	return 0;
++	return __media_graph_walk_next(graph, MEDIA_GRAPH_WALK_CONNECTED_NODES);
 +}
-+#endif
-diff --git a/configs/rock960-rk3399_defconfig b/configs/rock960-rk3399_defconfig
-index 045d989a19..64517f9623 100644
---- a/configs/rock960-rk3399_defconfig
-+++ b/configs/rock960-rk3399_defconfig
-@@ -9,6 +9,7 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock960.dtb"
-+CONFIG_MISC_INIT_R=y
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
-@@ -19,6 +20,7 @@ CONFIG_CMD_BOOTZ=y
- CONFIG_CMD_GPT=y
- CONFIG_CMD_MMC=y
- CONFIG_CMD_USB=y
-+CONFIG_CMD_PCI=y
- # CONFIG_CMD_SETEXPR is not set
- CONFIG_CMD_TIME=y
- CONFIG_CMD_PMIC=y
-@@ -36,10 +38,13 @@ CONFIG_MMC_SDHCI=y
- CONFIG_MMC_SDHCI_SDMA=y
- CONFIG_MMC_SDHCI_ROCKCHIP=y
- CONFIG_DM_ETH=y
-+CONFIG_NVME=y
-+CONFIG_PCI=y
- CONFIG_PMIC_RK8XX=y
- CONFIG_REGULATOR_PWM=y
- CONFIG_REGULATOR_RK8XX=y
- CONFIG_PWM_ROCKCHIP=y
-+CONFIG_DM_RESET=y
- CONFIG_BAUDRATE=1500000
- CONFIG_DEBUG_UART_SHIFT=2
- CONFIG_SYSRESET=y
+ EXPORT_SYMBOL_GPL(media_graph_walk_next);
+ 
++struct media_entity *media_graph_walk_next_stream(struct media_graph *graph)
++{
++	return __media_graph_walk_next(graph, MEDIA_GRAPH_WALK_STREAM_NODES);
++}
++EXPORT_SYMBOL_GPL(media_graph_walk_next_stream);
++
+ int media_entity_get_fwnode_pad(struct media_entity *entity,
+ 				struct fwnode_handle *fwnode,
+ 				unsigned long direction_flags)
+diff --git a/include/media/media-entity.h b/include/media/media-entity.h
+index cde80ad029b7..9035a36e9442 100644
+--- a/include/media/media-entity.h
++++ b/include/media/media-entity.h
+@@ -928,6 +928,21 @@ void media_graph_walk_start(struct media_graph *graph,
+  */
+ struct media_entity *media_graph_walk_next(struct media_graph *graph);
+ 
++/**
++ * media_graph_walk_next_stream - Get the next entity in the graph
++ * @graph: Media graph structure
++ *
++ * Perform a depth-first traversal of the given media entities graph only
++ * following links from sink to source (and not the opposite).
++ *
++ * The graph structure must have been previously initialized with a call to
++ * media_graph_walk_start().
++ *
++ * Return: returns the next entity in the graph in the stream path
++ * or %NULL if the whole stream path have been traversed.
++ */
++struct media_entity *media_graph_walk_next_stream(struct media_graph *graph);
++
+ /**
+  * media_pipeline_start - Mark a pipeline as streaming
+  * @entity: Starting entity
 -- 
-2.20.1
+2.17.1
