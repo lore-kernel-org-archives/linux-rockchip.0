@@ -1,45 +1,57 @@
-From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: [PATCH AUTOSEL 4.19 02/19] arm64: dts: rockchip: fix status for &gmac2phy in rk3328-evb.dts
-Date: Fri, 22 May 2020 10:51:03 -0400
-Message-ID: <20200522145120.434921-2-sashal@kernel.org>
+From: Sasha Levin <sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 03/19] arm64: dts: rockchip: swap interrupts interrupt-names rk3399 gpu node
+Date: Fri, 22 May 2020 10:51:04 -0400
+Message-ID: <20200522145120.434921-3-sashal@kernel.org>
 References: <20200522145120.434921-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200522145120.434921-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20200522145120.434921-1-sashal@kernel.org>
+Sender: stable-owner@vger.kernel.org
+To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit c617ed88502d0b05149e7f32f3b3fd8a0663f7e2 ]
+[ Upstream commit c604fd810bda667bdc20b2c041917baa7803e0fb ]
 
-The status was removed of the '&gmac2phy' node with the apply
-of a patch long time ago, so fix status for '&gmac2phy'
-in 'rk3328-evb.dts'.
+Dts files with Rockchip rk3399 'gpu' nodes were manually verified.
+In order to automate this process arm,mali-midgard.txt
+has been converted to yaml. In the new setup dtbs_check with
+arm,mali-midgard.yaml expects interrupts and interrupt-names values
+in the same order. Fix this for rk3399.
 
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Link: https://lore.kernel.org/r/20200425122345.12902-2-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org
-Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Signed-off-by: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/gpu/
+arm,mali-midgard.yaml
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+Link: https://lore.kernel.org/r/20200425143837.18706-1-jbx6244@gmail.com
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-index 212dd8159da9..d89f3451ace5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-@@ -86,7 +86,7 @@
- 	assigned-clock-rate = <50000000>;
- 	assigned-clocks = <&cru SCLK_MAC2PHY>;
- 	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
--
-+	status = "okay";
- };
- 
- &i2c1 {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 451f00a631c4..f14e8c5c41ac 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1817,10 +1817,10 @@
+ 	gpu: gpu@ff9a0000 {
+ 		compatible = "rockchip,rk3399-mali", "arm,mali-t860";
+ 		reg = <0x0 0xff9a0000 0x0 0x10000>;
+-		interrupts = <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH 0>,
+-			     <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH 0>,
+-			     <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH 0>;
+-		interrupt-names = "gpu", "job", "mmu";
++		interrupts = <GIC_SPI 20 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 21 IRQ_TYPE_LEVEL_HIGH 0>,
++			     <GIC_SPI 19 IRQ_TYPE_LEVEL_HIGH 0>;
++		interrupt-names = "job", "mmu", "gpu";
+ 		clocks = <&cru ACLK_GPU>;
+ 		power-domains = <&power RK3399_PD_GPU>;
+ 		status = "disabled";
 -- 
 2.25.1
