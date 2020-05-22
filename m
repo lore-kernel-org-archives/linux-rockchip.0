@@ -1,200 +1,194 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v4 5/5] media: vimc: use v4l2_pipeline_stream_{enable,disable} helpers
-Date: Fri, 22 May 2020 09:55:22 +0200
-Message-ID: <20200522075522.6190-6-dafna.hirschfeld@collabora.com>
-References: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, niklas.soderlund@ragnatech.se--annotate
+From: Alexandru Ardelean <alexandru.ardelean-OyLXuOCK7orQT0dZR+AlfA@public.gmane.org>
+Subject: [PATCH 1/5] iio: core: pass parent device as parameter during allocation
+Date: Fri, 22 May 2020 11:22:04 +0300
+Message-ID: <20200522082208.383631-1-alexandru.ardelean@analog.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7BIT
+Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: bcm-kernel-feedback-list-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-input-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-aspeed-uLR06cmDAlY/bJ5BZ2RsiQ@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amlogic-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, platform-driver-x86-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org
+Cc: vilhelm.gray-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, syednwaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, fabrice.gasnier-qxv4g6HH51o@public.gmane.org, mcoquelin.stm32-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, alexandre.torgue-qxv4g6HH51o@public.gmane.org, jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dan-d1oNz5vA2fxXqviUI+FSNg@public.gmane.org, jikos-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, srinivas.pandruvada-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, wens-jdAy2FN1RRM@public.gmane.org, hdegoede-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org, rjui-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, sbranden-dY08KVG/lbpWk0Htik3J/w@public.gmane.org, peda-koto5C5qi+TLoDKTGw+V6w@public.gmane.org, kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org, ak-n176/SwNRljddJNmlsFzeA@public.gmane.org, paul-icTtO2rgO2OTuSrc4Mpeew@public.gmane.org, milo.kim-l0cyMroinI0@public.gmane.org, vz-ChpfBGZJDbMAvxtiuMwx3w@public.gmane.org, slemieux.tyco-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, orsonzhai-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, baolin.wang7-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, zhang.lyra-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, mripard-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, tduszyns@gmail.
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Helen Koike <helen.koike@collabora.com>
+The change passes the parent device to the iio_device_alloc() call. This
+also updates the devm_iio_device_alloc() call to consider the device object
+as the parent device by default.
 
-Use v4l2_pipeline_stream_{enable,disable} to call .s_stream() subdevice
-callbacks through the pipeline.
+Having it passed like this, should ensure that any IIO device object
+already has a device object as parent, allowing for neater control, like
+passing the 'indio_dev' object for other stuff [like buffers/triggers/etc],
+and potentially creating iiom_xxx(indio_dev) functions.
 
-Tested streaming works with:
+With this patch, only the 'drivers/platform/x86/toshiba_acpi.c' needs an
+update to pass the parent object as a parameter.
 
-media-ctl -d /dev/media0 -V '"Sensor A":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d /dev/media0 -V '"Debayer A":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d /dev/media0 -V '"Sensor B":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d /dev/media0 -V '"Debayer B":0[fmt:SBGGR8_1X8/640x480]'
-media-ctl -d /dev/media0 -V '"Scaler":0[fmt:RGB888_1X24/640x480]'
-media-ctl -d /dev/media0 -V '"Scaler":0[crop:(100,50)/400x150]'
-media-ctl -d /dev/media0 -V '"Scaler":1[fmt:RGB888_1X24/1920x1440]'
-v4l2-ctl -d /dev/video2 -v width=1200,height=450
-v4l2-ctl -d /dev/video0 -v pixelformat=BA81
-v4l2-ctl -d /dev/video1 -v pixelformat=BA81
-v4l2-ctl --stream-mmap --stream-count=10 -d /dev/video2 --stream-to=/tmp/test.raw
+In the next patch all devm_iio_device_alloc() calls will be handled.
 
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Signed-off-by: Alexandru Ardelean <alexandru.ardelean-OyLXuOCK7orQT0dZR+AlfA@public.gmane.org>
 ---
- .../media/test-drivers/vimc/vimc-capture.c    | 31 ++++++++----
- .../media/test-drivers/vimc/vimc-streamer.c   | 49 ++-----------------
- 2 files changed, 26 insertions(+), 54 deletions(-)
+ drivers/iio/dummy/iio_simple_dummy.c         | 14 ++++++++------
+ drivers/iio/industrialio-core.c              | 11 ++++++-----
+ drivers/platform/x86/toshiba_acpi.c          |  3 +--
+ drivers/staging/iio/Documentation/device.txt |  4 +---
+ include/linux/iio/iio.h                      |  4 ++--
+ 5 files changed, 18 insertions(+), 18 deletions(-)
 
-diff --git a/drivers/media/test-drivers/vimc/vimc-capture.c b/drivers/media/test-drivers/vimc/vimc-capture.c
-index c63496b17b9a..36ba664db092 100644
---- a/drivers/media/test-drivers/vimc/vimc-capture.c
-+++ b/drivers/media/test-drivers/vimc/vimc-capture.c
-@@ -245,21 +245,27 @@ static int vimc_cap_start_streaming(struct vb2_queue *vq, unsigned int count)
- 
- 	vcap->sequence = 0;
- 
--	/* Start the media pipeline */
- 	ret = media_pipeline_start(entity, &vcap->stream.pipe);
--	if (ret) {
--		vimc_cap_return_all_buffers(vcap, VB2_BUF_STATE_QUEUED);
--		return ret;
--	}
-+	if (ret)
-+		goto err_return_all_buffers;
+diff --git a/drivers/iio/dummy/iio_simple_dummy.c b/drivers/iio/dummy/iio_simple_dummy.c
+index 6cb02299a215..b35ae7c039f7 100644
+--- a/drivers/iio/dummy/iio_simple_dummy.c
++++ b/drivers/iio/dummy/iio_simple_dummy.c
+@@ -566,6 +566,13 @@ static struct iio_sw_device *iio_dummy_probe(const char *name)
+ 	struct iio_dev *indio_dev;
+ 	struct iio_dummy_state *st;
+ 	struct iio_sw_device *swd;
++	struct device *parent = NULL;
 +
-+	ret = v4l2_pipeline_stream_enable(&vcap->vdev);
-+	if (ret)
-+		goto err_stop_media_pipe;
++	/*
++	 * With hardware: Set the parent device.
++	 * parent = &spi->dev;
++	 * parent = &client->dev;
++	 */
  
- 	ret = vimc_streamer_s_stream(&vcap->stream, &vcap->ved, 1);
--	if (ret) {
--		media_pipeline_stop(entity);
--		vimc_cap_return_all_buffers(vcap, VB2_BUF_STATE_QUEUED);
--		return ret;
--	}
-+	if (ret)
-+		goto err_stop_stream;
+ 	swd = kzalloc(sizeof(*swd), GFP_KERNEL);
+ 	if (!swd) {
+@@ -580,7 +587,7 @@ static struct iio_sw_device *iio_dummy_probe(const char *name)
+ 	 * It also has a region (accessed by iio_priv()
+ 	 * for chip specific state information.
+ 	 */
+-	indio_dev = iio_device_alloc(sizeof(*st));
++	indio_dev = iio_device_alloc(parent, sizeof(*st));
+ 	if (!indio_dev) {
+ 		ret = -ENOMEM;
+ 		goto error_ret;
+@@ -590,11 +597,6 @@ static struct iio_sw_device *iio_dummy_probe(const char *name)
+ 	mutex_init(&st->lock);
  
- 	return 0;
-+
-+err_stop_stream:
-+	v4l2_pipeline_stream_disable(&vcap->vdev);
-+err_stop_media_pipe:
-+	media_pipeline_stop(entity);
-+err_return_all_buffers:
-+	vimc_cap_return_all_buffers(vcap, VB2_BUF_STATE_QUEUED);
-+	return ret;
- }
+ 	iio_dummy_init_device(indio_dev);
+-	/*
+-	 * With hardware: Set the parent device.
+-	 * indio_dev->dev.parent = &spi->dev;
+-	 * indio_dev->dev.parent = &client->dev;
+-	 */
  
- /*
-@@ -269,9 +275,14 @@ static int vimc_cap_start_streaming(struct vb2_queue *vq, unsigned int count)
- static void vimc_cap_stop_streaming(struct vb2_queue *vq)
+ 	 /*
+ 	 * Make the iio_dev struct available to remove function.
+diff --git a/drivers/iio/industrialio-core.c b/drivers/iio/industrialio-core.c
+index 1527f01a44f1..75661661aaba 100644
+--- a/drivers/iio/industrialio-core.c
++++ b/drivers/iio/industrialio-core.c
+@@ -1493,7 +1493,7 @@ struct device_type iio_device_type = {
+  * iio_device_alloc() - allocate an iio_dev from a driver
+  * @sizeof_priv:	Space to allocate for private structure.
+  **/
+-struct iio_dev *iio_device_alloc(int sizeof_priv)
++struct iio_dev *iio_device_alloc(struct device *parent, int sizeof_priv)
  {
- 	struct vimc_cap_device *vcap = vb2_get_drv_priv(vq);
-+	int ret;
+ 	struct iio_dev *dev;
+ 	size_t alloc_size;
+@@ -1510,6 +1510,7 @@ struct iio_dev *iio_device_alloc(int sizeof_priv)
+ 	if (!dev)
+ 		return NULL;
  
- 	vimc_streamer_s_stream(&vcap->stream, &vcap->ved, 0);
++	dev->dev.parent = parent;
+ 	dev->dev.groups = dev->groups;
+ 	dev->dev.type = &iio_device_type;
+ 	dev->dev.bus = &iio_bus_type;
+@@ -1551,7 +1552,7 @@ static void devm_iio_device_release(struct device *dev, void *res)
  
-+	ret = v4l2_pipeline_stream_disable(&vcap->vdev);
-+	if (ret)
-+		dev_err(vcap->ved.dev, "stream disable failed: %d\n", ret);
-+
- 	/* Stop the media pipeline */
- 	media_pipeline_stop(&vcap->vdev.entity);
- 
-diff --git a/drivers/media/test-drivers/vimc/vimc-streamer.c b/drivers/media/test-drivers/vimc/vimc-streamer.c
-index 65feb3c596db..c0085f4695c2 100644
---- a/drivers/media/test-drivers/vimc/vimc-streamer.c
-+++ b/drivers/media/test-drivers/vimc/vimc-streamer.c
-@@ -36,33 +36,6 @@ static struct media_entity *vimc_get_source_entity(struct media_entity *ent)
- 	return NULL;
- }
- 
--/**
-- * vimc_streamer_pipeline_terminate - Disable stream in all ved in stream
-- *
-- * @stream: the pointer to the stream structure with the pipeline to be
-- *	    disabled.
-- *
-- * Calls s_stream to disable the stream in each entity of the pipeline
-- *
-- */
--static void vimc_streamer_pipeline_terminate(struct vimc_stream *stream)
--{
--	struct vimc_ent_device *ved;
--	struct v4l2_subdev *sd;
--
--	while (stream->pipe_size) {
--		stream->pipe_size--;
--		ved = stream->ved_pipeline[stream->pipe_size];
--		stream->ved_pipeline[stream->pipe_size] = NULL;
--
--		if (!is_media_entity_v4l2_subdev(ved->ent))
--			continue;
--
--		sd = media_entity_to_v4l2_subdev(ved->ent);
--		v4l2_subdev_call(sd, video, s_stream, 0);
--	}
--}
--
  /**
-  * vimc_streamer_pipeline_init - Initializes the stream structure
+  * devm_iio_device_alloc - Resource-managed iio_device_alloc()
+- * @dev:		Device to allocate iio_dev for
++ * @parent:		Device to allocate iio_dev for, and parent for this IIO device
+  * @sizeof_priv:	Space to allocate for private structure.
   *
-@@ -82,27 +55,15 @@ static int vimc_streamer_pipeline_init(struct vimc_stream *stream,
- 	struct media_entity *entity;
- 	struct video_device *vdev;
- 	struct v4l2_subdev *sd;
--	int ret = 0;
+  * Managed iio_device_alloc. iio_dev allocated with this function is
+@@ -1560,7 +1561,7 @@ static void devm_iio_device_release(struct device *dev, void *res)
+  * RETURNS:
+  * Pointer to allocated iio_dev on success, NULL on failure.
+  */
+-struct iio_dev *devm_iio_device_alloc(struct device *dev, int sizeof_priv)
++struct iio_dev *devm_iio_device_alloc(struct device *parent, int sizeof_priv)
+ {
+ 	struct iio_dev **ptr, *iio_dev;
  
- 	stream->pipe_size = 0;
- 	while (stream->pipe_size < VIMC_STREAMER_PIPELINE_MAX_SIZE) {
- 		if (!ved) {
--			vimc_streamer_pipeline_terminate(stream);
-+			stream->pipe_size = 0;
- 			return -EINVAL;
- 		}
- 		stream->ved_pipeline[stream->pipe_size++] = ved;
+@@ -1569,10 +1570,10 @@ struct iio_dev *devm_iio_device_alloc(struct device *dev, int sizeof_priv)
+ 	if (!ptr)
+ 		return NULL;
  
--		if (is_media_entity_v4l2_subdev(ved->ent)) {
--			sd = media_entity_to_v4l2_subdev(ved->ent);
--			ret = v4l2_subdev_call(sd, video, s_stream, 1);
--			if (ret && ret != -ENOIOCTLCMD) {
--				dev_err(ved->dev, "subdev_call error %s\n",
--					ved->ent->name);
--				vimc_streamer_pipeline_terminate(stream);
--				return ret;
--			}
--		}
--
- 		entity = vimc_get_source_entity(ved->ent);
- 		/* Check if the end of the pipeline was reached */
- 		if (!entity) {
-@@ -111,7 +72,7 @@ static int vimc_streamer_pipeline_init(struct vimc_stream *stream,
- 				dev_err(ved->dev,
- 					"first entity in the pipe '%s' is not a source\n",
- 					ved->ent->name);
--				vimc_streamer_pipeline_terminate(stream);
-+				stream->pipe_size = 0;
- 				return -EPIPE;
- 			}
- 			return 0;
-@@ -129,7 +90,7 @@ static int vimc_streamer_pipeline_init(struct vimc_stream *stream,
- 		}
+-	iio_dev = iio_device_alloc(sizeof_priv);
++	iio_dev = iio_device_alloc(parent, sizeof_priv);
+ 	if (iio_dev) {
+ 		*ptr = iio_dev;
+-		devres_add(dev, ptr);
++		devres_add(parent, ptr);
+ 	} else {
+ 		devres_free(ptr);
  	}
+diff --git a/drivers/platform/x86/toshiba_acpi.c b/drivers/platform/x86/toshiba_acpi.c
+index 808944546739..4a4d09c352dd 100644
+--- a/drivers/platform/x86/toshiba_acpi.c
++++ b/drivers/platform/x86/toshiba_acpi.c
+@@ -3128,7 +3128,7 @@ static int toshiba_acpi_add(struct acpi_device *acpi_dev)
  
--	vimc_streamer_pipeline_terminate(stream);
-+	stream->pipe_size = 0;
- 	return -EINVAL;
+ 	toshiba_accelerometer_available(dev);
+ 	if (dev->accelerometer_supported) {
+-		dev->indio_dev = iio_device_alloc(sizeof(*dev));
++		dev->indio_dev = iio_device_alloc(&acpi_dev->dev, sizeof(*dev));
+ 		if (!dev->indio_dev) {
+ 			pr_err("Unable to allocate iio device\n");
+ 			goto iio_error;
+@@ -3138,7 +3138,6 @@ static int toshiba_acpi_add(struct acpi_device *acpi_dev)
+ 
+ 		dev->indio_dev->info = &toshiba_iio_accel_info;
+ 		dev->indio_dev->name = "Toshiba accelerometer";
+-		dev->indio_dev->dev.parent = &acpi_dev->dev;
+ 		dev->indio_dev->modes = INDIO_DIRECT_MODE;
+ 		dev->indio_dev->channels = toshiba_iio_accel_channels;
+ 		dev->indio_dev->num_channels =
+diff --git a/drivers/staging/iio/Documentation/device.txt b/drivers/staging/iio/Documentation/device.txt
+index ec42544a46aa..0d1275b1eb3f 100644
+--- a/drivers/staging/iio/Documentation/device.txt
++++ b/drivers/staging/iio/Documentation/device.txt
+@@ -8,7 +8,7 @@ The crucial structure for device drivers in iio is iio_dev.
+ 
+ First allocate one using:
+ 
+-struct iio_dev *indio_dev = iio_device_alloc(sizeof(struct chip_state));
++struct iio_dev *indio_dev = iio_device_alloc(parent, sizeof(struct chip_state));
+ where chip_state is a structure of local state data for this instance of
+ the chip.
+ 
+@@ -16,8 +16,6 @@ That data can be accessed using iio_priv(struct iio_dev *).
+ 
+ Then fill in the following:
+ 
+-- indio_dev->dev.parent
+-	Struct device associated with the underlying hardware.
+ - indio_dev->name
+ 	Name of the device being driven - made available as the name
+ 	attribute in sysfs.
+diff --git a/include/linux/iio/iio.h b/include/linux/iio/iio.h
+index a1be82e74c93..91a69f4751aa 100644
+--- a/include/linux/iio/iio.h
++++ b/include/linux/iio/iio.h
+@@ -676,7 +676,7 @@ static inline void *iio_device_get_drvdata(struct iio_dev *indio_dev)
+ 
+ /* Can we make this smaller? */
+ #define IIO_ALIGN L1_CACHE_BYTES
+-struct iio_dev *iio_device_alloc(int sizeof_priv);
++struct iio_dev *iio_device_alloc(struct device *parent, int sizeof_priv);
+ 
+ static inline void *iio_priv(const struct iio_dev *indio_dev)
+ {
+@@ -690,7 +690,7 @@ static inline struct iio_dev *iio_priv_to_dev(void *priv)
  }
  
-@@ -210,7 +171,7 @@ int vimc_streamer_s_stream(struct vimc_stream *stream,
- 		if (IS_ERR(stream->kthread)) {
- 			ret = PTR_ERR(stream->kthread);
- 			dev_err(ved->dev, "kthread_run failed with %d\n", ret);
--			vimc_streamer_pipeline_terminate(stream);
-+			stream->pipe_size = 0;
- 			stream->kthread = NULL;
- 			return ret;
- 		}
-@@ -231,7 +192,7 @@ int vimc_streamer_s_stream(struct vimc_stream *stream,
- 
- 		stream->kthread = NULL;
- 
--		vimc_streamer_pipeline_terminate(stream);
-+		stream->pipe_size = 0;
- 	}
- 
- 	return 0;
+ void iio_device_free(struct iio_dev *indio_dev);
+-struct iio_dev *devm_iio_device_alloc(struct device *dev, int sizeof_priv);
++struct iio_dev *devm_iio_device_alloc(struct device *parent, int sizeof_priv);
+ struct iio_trigger *devm_iio_trigger_alloc(struct device *dev,
+ 						const char *fmt, ...);
+ /**
 -- 
-2.17.1
+2.25.1
