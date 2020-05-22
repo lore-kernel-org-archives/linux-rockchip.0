@@ -1,15 +1,25 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.19 05/19] ARM: dts: rockchip: fix pinctrl sub nodename for spi in rk322x.dtsi
-Date: Fri, 22 May 2020 10:51:06 -0400
-Message-ID: <20200522145120.434921-5-sashal@kernel.org>
-References: <20200522145120.434921-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 5.4 06/32] ARM: dts: rockchip: fix pinctrl sub
+ nodename for spi in rk322x.dtsi
+Date: Fri, 22 May 2020 10:50:18 -0400
+Message-ID: <20200522145044.434677-6-sashal@kernel.org>
+References: <20200522145044.434677-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20200522145120.434921-1-sashal@kernel.org>
-Sender: stable-owner@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <20200522145044.434677-1-sashal@kernel.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
 To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
+Cc: Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Johan Jonker <jbx6244@gmail.com>
@@ -44,26 +54,26 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index bada942ef38d..2aa74267ae51 100644
+index c60784f3aa75..6bb78b19c555 100644
 --- a/arch/arm/boot/dts/rk322x.dtsi
 +++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -944,7 +944,7 @@
+@@ -1033,7 +1033,7 @@
  			};
  		};
  
 -		spi-0 {
 +		spi0 {
  			spi0_clk: spi0-clk {
- 				rockchip,pins = <0 9 RK_FUNC_2 &pcfg_pull_up>;
+ 				rockchip,pins = <0 RK_PB1 2 &pcfg_pull_up>;
  			};
-@@ -962,7 +962,7 @@
+@@ -1051,7 +1051,7 @@
  			};
  		};
  
 -		spi-1 {
 +		spi1 {
  			spi1_clk: spi1-clk {
- 				rockchip,pins = <0 23 RK_FUNC_2 &pcfg_pull_up>;
+ 				rockchip,pins = <0 RK_PC7 2 &pcfg_pull_up>;
  			};
 -- 
 2.25.1
