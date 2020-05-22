@@ -1,79 +1,55 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.4 06/32] ARM: dts: rockchip: fix pinctrl sub
- nodename for spi in rk322x.dtsi
-Date: Fri, 22 May 2020 10:50:18 -0400
-Message-ID: <20200522145044.434677-6-sashal@kernel.org>
-References: <20200522145044.434677-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 01/19] ARM: dts: rockchip: fix phy nodename for rk3228-evb
+Date: Fri, 22 May 2020 10:51:02 -0400
+Message-ID: <20200522145120.434921-1-sashal@kernel.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200522145044.434677-1-sashal@kernel.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <stable-owner@vger.kernel.org>
+Sender: stable-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org
+Cc: Johan Jonker <jbx6244@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Sasha Levin <sashal@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
 From: Johan Jonker <jbx6244@gmail.com>
 
-[ Upstream commit 855bdca1781c79eb661f89c8944c4a719ce720e8 ]
+[ Upstream commit 287e0d538fcec2f6e8eb1e565bf0749f3b90186d ]
 
-A test with the command below gives these errors:
+A test with the command below gives for example this error:
 
-arch/arm/boot/dts/rk3229-evb.dt.yaml: spi-0:
-'#address-cells' is a required property
-arch/arm/boot/dts/rk3229-evb.dt.yaml: spi-1:
-'#address-cells' is a required property
-arch/arm/boot/dts/rk3229-xms6.dt.yaml: spi-0:
-'#address-cells' is a required property
-arch/arm/boot/dts/rk3229-xms6.dt.yaml: spi-1:
-'#address-cells' is a required property
+arch/arm/boot/dts/rk3228-evb.dt.yaml: phy@0:
+'#phy-cells' is a required property
 
-The $nodename pattern for spi nodes is
-"^spi(@.*|-[0-9a-f])*$". To prevent warnings rename
-'spi-0' and 'spi-1' pinctrl sub nodenames to
-'spi0' and 'spi1' in 'rk322x.dtsi'.
+The phy nodename is normally used by a phy-handle.
+This node is however compatible with
+"ethernet-phy-id1234.d400", "ethernet-phy-ieee802.3-c22"
+which is just been added to 'ethernet-phy.yaml'.
+So change nodename to 'ethernet-phy' for which '#phy-cells'
+is not a required property
 
 make ARCH=arm dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/spi/spi-controller.yaml
+DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/schemas/
+phy/phy-provider.yaml
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-Link: https://lore.kernel.org/r/20200424123923.8192-1-jbx6244@gmail.com
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Link: https://lore.kernel.org/r/20200416170321.4216-1-jbx6244@gmail.com
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- arch/arm/boot/dts/rk322x.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ arch/arm/boot/dts/rk3228-evb.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
-index c60784f3aa75..6bb78b19c555 100644
---- a/arch/arm/boot/dts/rk322x.dtsi
-+++ b/arch/arm/boot/dts/rk322x.dtsi
-@@ -1033,7 +1033,7 @@
- 			};
- 		};
+diff --git a/arch/arm/boot/dts/rk3228-evb.dts b/arch/arm/boot/dts/rk3228-evb.dts
+index 5670b33fd1bd..aed879db6c15 100644
+--- a/arch/arm/boot/dts/rk3228-evb.dts
++++ b/arch/arm/boot/dts/rk3228-evb.dts
+@@ -46,7 +46,7 @@
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
  
--		spi-0 {
-+		spi0 {
- 			spi0_clk: spi0-clk {
- 				rockchip,pins = <0 RK_PB1 2 &pcfg_pull_up>;
- 			};
-@@ -1051,7 +1051,7 @@
- 			};
- 		};
- 
--		spi-1 {
-+		spi1 {
- 			spi1_clk: spi1-clk {
- 				rockchip,pins = <0 RK_PC7 2 &pcfg_pull_up>;
- 			};
+-		phy: phy@0 {
++		phy: ethernet-phy@0 {
+ 			compatible = "ethernet-phy-id1234.d400", "ethernet-phy-ieee802.3-c22";
+ 			reg = <0>;
+ 			clocks = <&cru SCLK_MAC_PHY>;
 -- 
 2.25.1
