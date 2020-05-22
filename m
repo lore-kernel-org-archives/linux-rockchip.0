@@ -1,144 +1,132 @@
-From: Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_1/2=5d_PCI=3a_rockchip=3a_Enable_IO_base_a?=
- =?UTF-8?B?bmQgbGltaXQgcmVnaXN0ZXJz44CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgt?=
- =?UTF-8?Q?rockchip-bounces+shawn=2elin=3drock-chips=2ecom=40lists=2einfrade?=
- =?UTF-8?B?YWQub3Jn5Luj5Y+R44CR?=
-Date: Fri, 22 May 2020 11:00:04 +0800
-Message-ID: <eb0acd3d-92d0-db00-78e4-8a17033f7f0a@rock-chips.com>
-References: <1590023130-137406-1-git-send-email-shawn.lin@rock-chips.com>
- <CANAwSgRXuMQaytB4BXL89JQAmU=XutBXj6iMhfKdZp3JwM9a4g@mail.gmail.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v3 6/6] rockchip: Enable PCIe/M.2 on rock960 board
+Date: Fri, 22 May 2020 11:15:35 +0800
+Message-ID: <ba64b7ac-84d1-2763-1fa0-a332dab03e6a@rock-chips.com>
+References: <20200509165624.20791-1-jagan@amarulasolutions.com>
+ <20200509165624.20791-7-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="gbk"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <CANAwSgRXuMQaytB4BXL89JQAmU=XutBXj6iMhfKdZp3JwM9a4g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Anand Moon <linux.amoon-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Simon Xue <xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-pci-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200509165624.20791-7-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: shawn.lin@rock-chips.com, patrick@blueri.se, sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Tom Cubie <tom@radxa.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-CtTaIDIwMjAvNS8yMSAxODo1MSwgQW5hbmQgTW9vbiDQtLXAOgo+IEhpIFNoYXduLAo+IAo+IE9u
-IFRodSwgMjEgTWF5IDIwMjAgYXQgMDY6MzUsIFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hp
-cHMuY29tPiB3cm90ZToKPj4KPj4gQWNjb3JkaW5nIHRvIFJLMzM5OSB1c2VyIG1hbnVhbCwgYml0
-IDkgaW4gUENJRV9SQ19CQVJfQ09ORiBzaG91bGQKPj4gYmUgc2V0LCBvdGhlcndpc2UgYWNjZXNz
-aW5nIHRvIElPIGJhc2UgYW5kIGxpbWl0IHJlZ2lzdGVycyB3b3VsZAo+PiBmYWlsLgo+Pgo+PiBb
-ICAgIDAuNDExMzE4XSBwY2lfYnVzIDAwMDA6MDA6IHJvb3QgYnVzIHJlc291cmNlIFtidXMgMDAt
-MWZdCj4+IFsgICAgMC40MTE4MjJdIHBjaV9idXMgMDAwMDowMDogcm9vdCBidXMgcmVzb3VyY2Ug
-W21lbSAweGZhMDAwMDAwLTB4ZmJkZmZmZmZdCj4+IFsgICAgMC40MTI0NDBdIHBjaV9idXMgMDAw
-MDowMDogcm9vdCBidXMgcmVzb3VyY2UgW2lvICAweDAwMDAtMHhmZmZmZl0gKGJ1cyBhZGRyZXNz
-IFsweGZiZTAwMDAwLTB4ZmJlZmZmZmZdKQo+PiBbICAgIDAuNDEzNjY1XSBwY2kgMDAwMDowMDow
-MC4wOiBicmlkZ2UgY29uZmlndXJhdGlvbiBpbnZhbGlkIChbYnVzIDAwLTAwXSksIHJlY29uZmln
-dXJpbmcKPj4gWyAgICAwLjQxNDY5OF0gcGNpIDAwMDA6MDE6MDAuMDogcmVnIDB4MTA6IGluaXRp
-YWwgQkFSIHZhbHVlIDB4MDAwMDAwMDAgaW52YWxpZAo+PiBbICAgIDAuNDE1NDEyXSBwY2kgMDAw
-MDowMTowMC4wOiByZWcgMHgxODogaW5pdGlhbCBCQVIgdmFsdWUgMHgwMDAwMDAwMCBpbnZhbGlk
-Cj4+IFsgICAgMC40MTg0NTZdIHBjaSAwMDAwOjAwOjAwLjA6IEJBUiA4OiBhc3NpZ25lZCBbbWVt
-IDB4ZmEwMDAwMDAtMHhmYTBmZmZmZl0KPj4gWyAgICAwLjQxOTA2NV0gcGNpIDAwMDA6MDE6MDAu
-MDogQkFSIDE6IGFzc2lnbmVkIFttZW0gMHhmYTAwMDAwMC0weGZhMDA3ZmZmIHByZWZdCj4+IFsg
-ICAgMC40MTk3MjhdIHBjaSAwMDAwOjAxOjAwLjA6IEJBUiA2OiBhc3NpZ25lZCBbbWVtIDB4ZmEw
-MDgwMDAtMHhmYTAwZmZmZiBwcmVmXQo+PiBbICAgIDAuNDIwMzc3XSBwY2kgMDAwMDowMTowMC4w
-OiBCQVIgMDogbm8gc3BhY2UgZm9yIFtpbyAgc2l6ZSAweDAxMDBdCj4+IFsgICAgMC40MjA5MzVd
-IHBjaSAwMDAwOjAxOjAwLjA6IEJBUiAwOiBmYWlsZWQgdG8gYXNzaWduIFtpbyAgc2l6ZSAweDAx
-MDBdCj4+IFsgICAgMC40MjE1MjZdIHBjaSAwMDAwOjAxOjAwLjA6IEJBUiAyOiBubyBzcGFjZSBm
-b3IgW2lvICBzaXplIDB4MDAwNF0KPj4gWyAgICAwLjQyMjA4NF0gcGNpIDAwMDA6MDE6MDAuMDog
-QkFSIDI6IGZhaWxlZCB0byBhc3NpZ24gW2lvICBzaXplIDB4MDAwNF0KPj4gWyAgICAwLjQyMjY4
-N10gcGNpIDAwMDA6MDA6MDAuMDogUENJIGJyaWRnZSB0byBbYnVzIDAxXQo+PiBbICAgIDAuNDIz
-MTM1XSBwY2kgMDAwMDowMDowMC4wOiAgIGJyaWRnZSB3aW5kb3cgW21lbSAweGZhMDAwMDAwLTB4
-ZmEwZmZmZmZdCj4+IFsgICAgMC40MjM3OTRdIHBjaWVwb3J0IDAwMDA6MDA6MDAuMDogZW5hYmxp
-bmcgZGV2aWNlICgwMDAwIC0+IDAwMDIpCj4+IFsgICAgMC40MjQ1NjZdIHBjaWVwb3J0IDAwMDA6
-MDA6MDAuMDogU2lnbmFsaW5nIFBNRSB0aHJvdWdoIFBDSWUgUE1FIGludGVycnVwdAo+PiBbICAg
-IDAuNDI1MTgyXSBwY2kgMDAwMDowMTowMC4wOiBTaWduYWxpbmcgUE1FIHRocm91Z2ggUENJZSBQ
-TUUgaW50ZXJydXB0Cj4+Cj4+IDAxOjAwLjAgQ2xhc3MgMDcwMDogRGV2aWNlIDFjMDA6Mzg1MyAo
-cmV2IDEwKSAocHJvZy1pZiAwNSkKPj4gICAgICAgICAgU3Vic3lzdGVtOiBEZXZpY2UgMWMwMDoz
-ODUzCj4+ICAgICAgICAgIENvbnRyb2w6IEkvTy0gTWVtLSBCdXNNYXN0ZXItIFNwZWNDeWNsZS0g
-TWVtV0lOVi0gVkdBU25vb3AtIFBhckVyci0gU3RlcHBpbmctIFNFUlItIEZhc3RCMkItIERpc0lO
-VHgtCj4+ICAgICAgICAgIFN0YXR1czogQ2FwKyA2Nk1Iei0gVURGLSBGYXN0QjJCLSBQYXJFcnIt
-IERFVlNFTD1mYXN0ID5UQWJvcnQtIDxUQWJvcnQtIDxNQWJvcnQtID5TRVJSLSA8UEVSUi0gSU5U
-eC0KPj4gICAgICAgICAgSW50ZXJydXB0OiBwaW4gQSByb3V0ZWQgdG8gSVJRIDIzMAo+PiAgICAg
-ICAgICBSZWdpb24gMDogSS9PIHBvcnRzIGF0IDx1bmFzc2lnbmVkPiBbZGlzYWJsZWRdCj4+ICAg
-ICAgICAgIFJlZ2lvbiAxOiBNZW1vcnkgYXQgZmEwMDAwMDAgKDMyLWJpdCwgcHJlZmV0Y2hhYmxl
-KSBbZGlzYWJsZWRdIFtzaXplPTMyS10KPj4gICAgICAgICAgUmVnaW9uIDI6IEkvTyBwb3J0cyBh
-dCA8dW5hc3NpZ25lZD4gW2Rpc2FibGVkXQo+PiAgICAgICAgICBbdmlydHVhbF0gRXhwYW5zaW9u
-IFJPTSBhdCBmYTAwODAwMCBbZGlzYWJsZWRdIFtzaXplPTMyS10KPj4KPj4gU2lnbmVkLW9mZi1i
-eTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+IC0tLQo+IAo+IEkgaGF2
-ZSBvbGQgZGV2ZWxvcG1lbnQgYm9hcmQgT2Ryb2lkIE4xIChSSzMzOTkpLCAgSXQgaGFzIG9uYm9h
-cmQgUENJZQo+IDIgZHVhbCBzYXRhIGJyaWRnZS4KPiBJIGhhdmUgdGVzdGVkIHRoaXMgcGF0Y2gs
-IGJ1dCBJIGFtIHN0aWxsIGdldHRpbmcgZm9sbG93aW5nIGxvZyBvbgo+IE9kcm9pZCBOMSBib2Fy
-ZC4KPiBJcyB0aGVpciBhbnkgbW9yZSBjb25maWd1cmF0aW9uIG5lZWRlZCBmb3Igc2F0YSBwb3J0
-cyA/CgpUaGFua3MgZm9yIHRlc3RpbmcuIEkgbWFkZSBhIG1pc3Rha2UgdGhhdCBpdCBzaG91bGQg
-YmUgYml0IDE5LCBzbwpjYW4geW91IHRyeSB1c2luZyBCSVQoMTkpPwoKPiAKPiBbICAgIDcuNDQ0
-NTA0XSBwY2lfYnVzIDAwMDA6MDE6IGJ1c25fcmVzOiBbYnVzIDAxLTFmXSBlbmQgaXMgdXBkYXRl
-ZCB0byAwMQo+IFsgICAgNy40NDU1MjFdIHBhbmZyb3N0IGZmOWEwMDAwLmdwdTogRmVhdHVyZXM6
-IEwyOjB4MDcxMjAyMDYKPiBTaGFkZXI6MHgwMDAwMDAwMCBUaWxlcjoweDAwMDAwODA5IE1lbTow
-eDEgTU1VOjB4MDAwMDI4MzAgQVM6MHhmZgo+IEpTOjB4Nwo+IFsgICAgNy40NTIyNDZdIHBjaSAw
-MDAwOjAwOjAwLjA6IEJBUiAxNDogYXNzaWduZWQgW21lbSAweGZhMDAwMDAwLTB4ZmEwZmZmZmZd
-Cj4gWyAgICA3LjQ2MDEwNl0gcGFuZnJvc3QgZmY5YTAwMDAuZ3B1OiBzaGFkZXJfcHJlc2VudD0w
-eGYgbDJfcHJlc2VudD0weDEKPiBbICAgIDcuNDY2NDU5XSBwY2kgMDAwMDowMTowMC4wOiBCQVIg
-NjogYXNzaWduZWQgW21lbQo+IDB4ZmEwMDAwMDAtMHhmYTAwZmZmZiBwcmVmXQo+IFsgICAgNy40
-NzM2NzldIHBhbmZyb3N0IGZmOWEwMDAwLmdwdTogW2RybTpwYW5mcm9zdF9kZXZmcmVxX2luaXQK
-PiBbcGFuZnJvc3RdXSBGYWlsZWQgdG8gcmVnaXN0ZXIgY29vbGluZyBkZXZpY2UKPiBbICAgIDcu
-NDc5NzAzXSBwY2kgMDAwMDowMTowMC4wOiBCQVIgNTogYXNzaWduZWQgW21lbSAweGZhMDEwMDAw
-LTB4ZmEwMTAxZmZdCj4gWyAgICA3LjQ4NzcwNl0gW2RybV0gSW5pdGlhbGl6ZWQgcGFuZnJvc3Qg
-MS4xLjAgMjAxODA5MDggZm9yCj4gZmY5YTAwMDAuZ3B1IG9uIG1pbm9yIDAKPiBbICAgIDcuNDk0
-MzQzXSBwY2kgMDAwMDowMTowMC4wOiBCQVIgNDogbm8gc3BhY2UgZm9yIFtpbyAgc2l6ZSAweDAw
-MTBdCj4gWyAgICA3LjQ5NDM0OF0gcGNpIDAwMDA6MDE6MDAuMDogQkFSIDQ6IGZhaWxlZCB0byBh
-c3NpZ24gW2lvICBzaXplIDB4MDAxMF0KPiBbICAgIDcuNDk0MzUyXSBwY2kgMDAwMDowMTowMC4w
-OiBCQVIgMDogbm8gc3BhY2UgZm9yIFtpbyAgc2l6ZSAweDAwMDhdCj4gWyAgICA3LjQ5NDM1Nl0g
-cGNpIDAwMDA6MDE6MDAuMDogQkFSIDA6IGZhaWxlZCB0byBhc3NpZ24gW2lvICBzaXplIDB4MDAw
-OF0KPiBbICAgIDcuNDk0MzYwXSBwY2kgMDAwMDowMTowMC4wOiBCQVIgMjogbm8gc3BhY2UgZm9y
-IFtpbyAgc2l6ZSAweDAwMDhdCj4gWyAgICA3LjQ5NDM2NF0gcGNpIDAwMDA6MDE6MDAuMDogQkFS
-IDI6IGZhaWxlZCB0byBhc3NpZ24gW2lvICBzaXplIDB4MDAwOF0KPiBbICAgIDcuNDk0MzY4XSBw
-Y2kgMDAwMDowMTowMC4wOiBCQVIgMTogbm8gc3BhY2UgZm9yIFtpbyAgc2l6ZSAweDAwMDRdCj4g
-WyAgICA3LjQ5NDM3Ml0gcGNpIDAwMDA6MDE6MDAuMDogQkFSIDE6IGZhaWxlZCB0byBhc3NpZ24g
-W2lvICBzaXplIDB4MDAwNF0KPiBbICAgIDcuNTc4OTEwXSByb2NrY2hpcC12b3AgZmY4ZjAwMDAu
-dm9wOiBBZGRpbmcgdG8gaW9tbXUgZ3JvdXAgMwo+IFsgICAgNy41ODcwNzRdIHBjaSAwMDAwOjAx
-OjAwLjA6IEJBUiAzOiBubyBzcGFjZSBmb3IgW2lvICBzaXplIDB4MDAwNF0KPiBbICAgIDcuNTk0
-NzgwXSByb2NrY2hpcC12b3AgZmY5MDAwMDAudm9wOiBBZGRpbmcgdG8gaW9tbXUgZ3JvdXAgNAo+
-IFsgICAgNy42MDc3MDFdIHBjaSAwMDAwOjAxOjAwLjA6IEJBUiAzOiBmYWlsZWQgdG8gYXNzaWdu
-IFtpbyAgc2l6ZSAweDAwMDRdCj4gCj4gIyBsc3BjaSAtdgo+IDAwOjAwLjAgUENJIGJyaWRnZTog
-RnV6aG91IFJvY2tjaGlwIEVsZWN0cm9uaWNzIENvLiwgTHRkIFJLMzM5OSBQQ0kKPiBFeHByZXNz
-IFJvb3QgUG9ydCAocHJvZy1pZiAwMCBbTm9ybWFsIGRlY29kZV0pCj4gICAgICAgICAgRmxhZ3M6
-IGJ1cyBtYXN0ZXIsIGZhc3QgZGV2c2VsLCBsYXRlbmN5IDAsIElSUSAyMzcKPiAgICAgICAgICBC
-dXM6IHByaW1hcnk9MDAsIHNlY29uZGFyeT0wMSwgc3Vib3JkaW5hdGU9MDEsIHNlYy1sYXRlbmN5
-PTAKPiAgICAgICAgICBJL08gYmVoaW5kIGJyaWRnZTogMDAwMDAwMDAtMDAwMDBmZmYgW3NpemU9
-NEtdCj4gICAgICAgICAgTWVtb3J5IGJlaGluZCBicmlkZ2U6IGZhMDAwMDAwLWZhMGZmZmZmIFtz
-aXplPTFNXQo+ICAgICAgICAgIFByZWZldGNoYWJsZSBtZW1vcnkgYmVoaW5kIGJyaWRnZTogMDAw
-MDAwMDAtMDAwZmZmZmYgW3NpemU9MU1dCj4gICAgICAgICAgQ2FwYWJpbGl0aWVzOiBbODBdIFBv
-d2VyIE1hbmFnZW1lbnQgdmVyc2lvbiAzCj4gICAgICAgICAgQ2FwYWJpbGl0aWVzOiBbOTBdIE1T
-STogRW5hYmxlKyBDb3VudD0xLzEgTWFza2FibGUrIDY0Yml0Kwo+ICAgICAgICAgIENhcGFiaWxp
-dGllczogW2IwXSBNU0ktWDogRW5hYmxlLSBDb3VudD0xIE1hc2tlZC0KPiAgICAgICAgICBDYXBh
-YmlsaXRpZXM6IFtjMF0gRXhwcmVzcyBSb290IFBvcnQgKFNsb3QrKSwgTVNJIDAwCj4gICAgICAg
-ICAgQ2FwYWJpbGl0aWVzOiBbMTAwXSBBZHZhbmNlZCBFcnJvciBSZXBvcnRpbmcKPiAgICAgICAg
-ICBDYXBhYmlsaXRpZXM6IFsyNzRdIFRyYW5zYWN0aW9uIFByb2Nlc3NpbmcgSGludHMKPiAgICAg
-ICAgICBLZXJuZWwgZHJpdmVyIGluIHVzZTogcGNpZXBvcnQKPiAKPiAwMTowMC4wIElERSBpbnRl
-cmZhY2U6IEFTTWVkaWEgVGVjaG5vbG9neSBJbmMuIEFTTTEwNjEgU0FUQSBJREUKPiBDb250cm9s
-bGVyIChyZXYgMDIpIChwcm9nLWlmIDg1IFtQQ0kgbmF0aXZlIG1vZGUtb25seSBjb250cm9sbGVy
-LAo+IHN1cHBvcnRzIGJ1cyBtYXN0ZXJpbmddKQo+ICAgICAgICAgIFN1YnN5c3RlbTogQVNNZWRp
-YSBUZWNobm9sb2d5IEluYy4gQVNNMTA2MSBTQVRBIElERSBDb250cm9sbGVyCj4gICAgICAgICAg
-RmxhZ3M6IGJ1cyBtYXN0ZXIsIGZhc3QgZGV2c2VsLCBsYXRlbmN5IDAsIElSUSAyMzgKPiAgICAg
-ICAgICBJL08gcG9ydHMgYXQgPHVuYXNzaWduZWQ+IFtkaXNhYmxlZF0KPiAgICAgICAgICBJL08g
-cG9ydHMgYXQgPHVuYXNzaWduZWQ+IFtkaXNhYmxlZF0KPiAgICAgICAgICBJL08gcG9ydHMgYXQg
-PHVuYXNzaWduZWQ+IFtkaXNhYmxlZF0KPiAgICAgICAgICBJL08gcG9ydHMgYXQgPHVuYXNzaWdu
-ZWQ+IFtkaXNhYmxlZF0KPiAgICAgICAgICBJL08gcG9ydHMgYXQgPHVuYXNzaWduZWQ+IFtkaXNh
-YmxlZF0KPiAgICAgICAgICBNZW1vcnkgYXQgZmEwMTAwMDAgKDMyLWJpdCwgbm9uLXByZWZldGNo
-YWJsZSkgW3NpemU9NTEyXQo+ICAgICAgICAgIEV4cGFuc2lvbiBST00gYXQgZmEwMDAwMDAgW3Zp
-cnR1YWxdIFtkaXNhYmxlZF0gW3NpemU9NjRLXQo+ICAgICAgICAgIENhcGFiaWxpdGllczogWzUw
-XSBNU0k6IEVuYWJsZSsgQ291bnQ9MS8xIE1hc2thYmxlLSA2NGJpdC0KPiAgICAgICAgICBDYXBh
-YmlsaXRpZXM6IFs3OF0gUG93ZXIgTWFuYWdlbWVudCB2ZXJzaW9uIDMKPiAgICAgICAgICBDYXBh
-YmlsaXRpZXM6IFs4MF0gRXhwcmVzcyBMZWdhY3kgRW5kcG9pbnQsIE1TSSAwMAo+ICAgICAgICAg
-IENhcGFiaWxpdGllczogWzEwMF0gVmlydHVhbCBDaGFubmVsCj4gICAgICAgICAgS2VybmVsIGRy
-aXZlciBpbiB1c2U6IGFoY2kKPiAKPiBCZXN0IFJlZ2FyZHMKPiAtQW5hbmQKPiAKPiBfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlw
-IG1haWxpbmcgbGlzdAo+IExpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4g
-Cj4gCj4gCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-cm9ja2NoaXAK
+Hi Jagan,
+
+On 2020/5/10 上午12:56, Jagan Teki wrote:
+> Due to board limitation some SSD's would work
+> on rock960 PCIe M.2 only with 1.8V IO domain.
+>
+> So, this patch enables grf io_sel explicitly to
+> make PCIe/M.2 to work.
+>
+> Cc: Tom Cubie <tom@radxa.com>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> Acked-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+> ---
+> Changes for v3:
+> - collect mani a-b
+> - add comments
+>
+>   board/vamrs/rock960_rk3399/rock960-rk3399.c | 23 +++++++++++++++++++++
+>   configs/rock960-rk3399_defconfig            |  5 +++++
+>   2 files changed, 28 insertions(+)
+>
+> diff --git a/board/vamrs/rock960_rk3399/rock960-rk3399.c b/board/vamrs/rock960_rk3399/rock960-rk3399.c
+> index 68a127b9ac..ef1eb2d0b7 100644
+> --- a/board/vamrs/rock960_rk3399/rock960-rk3399.c
+> +++ b/board/vamrs/rock960_rk3399/rock960-rk3399.c
+> @@ -2,3 +2,26 @@
+>   /*
+>    * Copyright (C) 2018 Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
+>    */
+> +
+> +#include <common.h>
+> +#include <syscon.h>
+> +#include <asm/io.h>
+> +#include <asm/arch-rockchip/clock.h>
+> +#include <asm/arch-rockchip/grf_rk3399.h>
+> +#include <asm/arch-rockchip/hardware.h>
+> +
+> +#ifdef CONFIG_MISC_INIT_R
+> +int misc_init_r(void)
+> +{
+> +	struct rk3399_grf_regs *grf =
+> +	    syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
+> +
+> +	/**
+> +	 * Some SSD's to work on rock960 would require explicit
+> +	 * domain voltage change, so BT565 is in 1.8v domain
+> +	 */
+> +	rk_setreg(&grf->io_vsel, BIT(0));
++  rk_setreg(&grf->io_vsel, BIT(0));
++                           ^
++arch/arm/include/asm/io.h:118:34: note: in definition of macro ‘writel’
++ #define writel(v,c) ({ u32 __v = v; __iowmb(); __arch_putl(__v,c); __v; })
++                                  ^
++board/vamrs/rock960_rk3399/rock960-rk3399.c:23:2: note: in expansion of 
+macro ‘rk_setreg’
++  ^~~~~~~~~
++board/vamrs/rock960_rk3399/built-in.o: In function `misc_init_r':
++board/vamrs/rock960_rk3399/rock960-rk3399.c:23: undefined reference to 
+`BIT'
++make[1]: *** [u-boot] Error 139
+
+
+Did you get this error when build the code?
+
+
+Thanks,
+
+- Kever
+
+> +
+> +	return 0;
+> +}
+> +#endif
+> diff --git a/configs/rock960-rk3399_defconfig b/configs/rock960-rk3399_defconfig
+> index 045d989a19..64517f9623 100644
+> --- a/configs/rock960-rk3399_defconfig
+> +++ b/configs/rock960-rk3399_defconfig
+> @@ -9,6 +9,7 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock960.dtb"
+> +CONFIG_MISC_INIT_R=y
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+>   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+>   CONFIG_SPL_STACK_R=y
+> @@ -19,6 +20,7 @@ CONFIG_CMD_BOOTZ=y
+>   CONFIG_CMD_GPT=y
+>   CONFIG_CMD_MMC=y
+>   CONFIG_CMD_USB=y
+> +CONFIG_CMD_PCI=y
+>   # CONFIG_CMD_SETEXPR is not set
+>   CONFIG_CMD_TIME=y
+>   CONFIG_CMD_PMIC=y
+> @@ -36,10 +38,13 @@ CONFIG_MMC_SDHCI=y
+>   CONFIG_MMC_SDHCI_SDMA=y
+>   CONFIG_MMC_SDHCI_ROCKCHIP=y
+>   CONFIG_DM_ETH=y
+> +CONFIG_NVME=y
+> +CONFIG_PCI=y
+>   CONFIG_PMIC_RK8XX=y
+>   CONFIG_REGULATOR_PWM=y
+>   CONFIG_REGULATOR_RK8XX=y
+>   CONFIG_PWM_ROCKCHIP=y
+> +CONFIG_DM_RESET=y
+>   CONFIG_BAUDRATE=1500000
+>   CONFIG_DEBUG_UART_SHIFT=2
+>   CONFIG_SYSRESET=y
