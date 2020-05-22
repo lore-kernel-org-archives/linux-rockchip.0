@@ -1,313 +1,141 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: rename and label gpio-led subnodes part 2
-Date: Fri, 22 May 2020 17:46:57 +0200
-Message-ID: <20200522154657.9472-1-jbx6244@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH] media: rkvdec: Fix H264 scaling list order
+Date: Fri, 22 May 2020 20:21:33 +0000 (UTC)
+Message-ID: <20200522202130.13306-1-jonas@kwiboo.se>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+Sender: linux-media-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Boris Brezillon <boris.brezillon@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Jonas Karlman <jonas@kwiboo.se>
 List-Id: linux-rockchip.vger.kernel.org
 
-Current dts files with 'gpio-led' nodes were manually verified.
-In order to automate this process leds-gpio.txt
-has been converted to yaml. With this conversion a check
-for pattern properties was added. In part 2 rename and label
-gpio-led subnodes that passed the regex, but still don't have
-the preferred form. Any pin subnode that ends with '-gpio'
-in the pinctrl node generates a warning.
+The Rockchip Video Decoder driver is expecting that the values in a
+scaling list are in zig-zag order and applies the inverse scanning process
+to get the values in matrix order.
 
-Fix with help of the following rules:
+Commit 0b0393d59eb4 ("media: uapi: h264: clarify expected
+scaling_list_4x4/8x8 order") clarified that the values in the scaling list
+should already be in matrix order.
 
-1: Add nodename in the preferred form.
+Fix this by removing the reordering and change to use two memcpy.
 
-2: Always add a label that ends with '_led' to prevent conflicts
-   with other labels such as 'power' and 'mmc'
-
-3: If leds need pinctrl add a label that ends with '_led_pin'
-   also to prevent conflicts with other labels.
-
-patternProperties:
-  # The first form is preferred, but fall back to just 'led'
-  # anywhere in the node name to at least catch some child nodes.
-  "(^led-[0-9a-f]$|led)":
-
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/leds/
-leds-gpio.yaml
-
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/dtschema/
-schemas/gpio/gpio.yaml
-
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Fixes: cd33c830448b ("media: rkvdec: Add the rkvdec driver")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts  |  6 +++---
- arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi        |  8 ++++----
- arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi | 10 +++++-----
- arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi     |  6 +++---
- arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts  |  6 +++---
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi        |  6 +++---
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi      | 14 +++++++-------
- arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi   | 10 +++++-----
- 8 files changed, 33 insertions(+), 33 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 70 +++++++---------------
+ 1 file changed, 22 insertions(+), 48 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-index cbde279ae..e8774347b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou.dts
-@@ -25,9 +25,9 @@
- 	};
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index cd4980d06be7..2719f0c66a4a 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -18,11 +18,16 @@
+ /* Size with u32 units. */
+ #define RKV_CABAC_INIT_BUFFER_SIZE	(3680 + 128)
+ #define RKV_RPS_SIZE			((128 + 128) / 4)
+-#define RKV_SCALING_LIST_SIZE		(6 * 16 + 6 * 64 + 128)
+ #define RKV_ERROR_INFO_SIZE		(256 * 144 * 4)
  
- 	leds {
--		pinctrl-0 = <&led_pins_module>, <&led_sd_haikou>;
-+		pinctrl-0 = <&module_led_pins>, <&sd_card_led_pin>;
+ #define RKVDEC_NUM_REFLIST		3
  
--		sd-card-led {
-+		sd_card_led: led-3 {
- 			label = "sd_card_led";
- 			gpios = <&gpio0 RK_PD2 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "mmc0";
-@@ -118,7 +118,7 @@
- 	};
++struct rkvdec_scaling_matrix {
++	u8 scaling_list_4x4[6][16];
++	u8 scaling_list_8x8[6][64];
++	u8 padding[128];
++};
++
+ struct rkvdec_sps_pps_packet {
+ 	u32 info[8];
+ };
+@@ -86,7 +91,7 @@ struct rkvdec_ps_field {
+ /* Data structure describing auxiliary buffer format. */
+ struct rkvdec_h264_priv_tbl {
+ 	s8 cabac_table[4][464][2];
+-	u8 scaling_list[RKV_SCALING_LIST_SIZE];
++	struct rkvdec_scaling_matrix scaling_list;
+ 	u32 rps[RKV_RPS_SIZE];
+ 	struct rkvdec_sps_pps_packet param_set[256];
+ 	u8 err_info[RKV_ERROR_INFO_SIZE];
+@@ -785,56 +790,25 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
+ 	}
+ }
  
- 	leds {
--		led_sd_haikou: led-sd-gpio {
-+		sd_card_led_pin: sd-card-led-pin {
- 			rockchip,pins =
- 				<0 RK_PD2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi b/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-index e17311e09..eeef64e35 100644
---- a/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi
-@@ -76,16 +76,16 @@
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&led_pins_module>;
-+		pinctrl-0 = <&module_led_pins>;
+-/*
+- * NOTE: The values in a scaling list are in zig-zag order, apply inverse
+- * scanning process to get the values in matrix order.
+- */
+-static const u32 zig_zag_4x4[16] = {
+-	0, 1, 4, 8, 5, 2, 3, 6, 9, 12, 13, 10, 7, 11, 14, 15
+-};
+-
+-static const u32 zig_zag_8x8[64] = {
+-	0,  1,  8, 16,  9,  2,  3, 10, 17, 24, 32, 25, 18, 11,  4,  5,
+-	12, 19, 26, 33, 40, 48, 41, 34, 27, 20, 13,  6,  7, 14, 21, 28,
+-	35, 42, 49, 56, 57, 50, 43, 36, 29, 22, 15, 23, 30, 37, 44, 51,
+-	58, 59, 52, 45, 38, 31, 39, 46, 53, 60, 61, 54, 47, 55, 62, 63
+-};
+-
+-static void reorder_scaling_list(struct rkvdec_ctx *ctx,
+-				 struct rkvdec_h264_run *run)
++static void assemble_hw_scaling_list(struct rkvdec_ctx *ctx,
++				     struct rkvdec_h264_run *run)
+ {
+ 	const struct v4l2_ctrl_h264_scaling_matrix *scaling = run->scaling_matrix;
+-	const size_t num_list_4x4 = ARRAY_SIZE(scaling->scaling_list_4x4);
+-	const size_t list_len_4x4 = ARRAY_SIZE(scaling->scaling_list_4x4[0]);
+-	const size_t num_list_8x8 = ARRAY_SIZE(scaling->scaling_list_8x8);
+-	const size_t list_len_8x8 = ARRAY_SIZE(scaling->scaling_list_8x8[0]);
+ 	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
+ 	struct rkvdec_h264_priv_tbl *tbl = h264_ctx->priv_tbl.cpu;
+-	u8 *dst = tbl->scaling_list;
+-	const u8 *src;
+-	int i, j;
+-
+-	BUILD_BUG_ON(ARRAY_SIZE(zig_zag_4x4) != list_len_4x4);
+-	BUILD_BUG_ON(ARRAY_SIZE(zig_zag_8x8) != list_len_8x8);
+-	BUILD_BUG_ON(ARRAY_SIZE(tbl->scaling_list) <
+-		     num_list_4x4 * list_len_4x4 +
+-		     num_list_8x8 * list_len_8x8);
+-
+-	src = &scaling->scaling_list_4x4[0][0];
+-	for (i = 0; i < num_list_4x4; ++i) {
+-		for (j = 0; j < list_len_4x4; ++j)
+-			dst[zig_zag_4x4[j]] = src[j];
+-		src += list_len_4x4;
+-		dst += list_len_4x4;
+-	}
  
--		module_led1 {
-+		module_led1: led-1 {
- 			label = "module_led1";
- 			gpios = <&gpio2 RK_PB5 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "heartbeat";
- 			panic-indicator;
- 		};
+-	src = &scaling->scaling_list_8x8[0][0];
+-	for (i = 0; i < num_list_8x8; ++i) {
+-		for (j = 0; j < list_len_8x8; ++j)
+-			dst[zig_zag_8x8[j]] = src[j];
+-		src += list_len_8x8;
+-		dst += list_len_8x8;
+-	}
++	BUILD_BUG_ON(sizeof(tbl->scaling_list.scaling_list_4x4) !=
++		     sizeof(scaling->scaling_list_4x4));
++	BUILD_BUG_ON(sizeof(tbl->scaling_list.scaling_list_8x8) !=
++		     sizeof(scaling->scaling_list_8x8));
++
++	memcpy(tbl->scaling_list.scaling_list_4x4,
++	       scaling->scaling_list_4x4,
++	       sizeof(scaling->scaling_list_4x4));
++
++	memcpy(tbl->scaling_list.scaling_list_8x8,
++	       scaling->scaling_list_8x8,
++	       sizeof(scaling->scaling_list_8x8));
+ }
  
--		module_led2 {
-+		module_led2: led-2 {
- 			label = "module_led2";
- 			gpios = <&gpio3 RK_PA3 GPIO_ACTIVE_HIGH>;
- 			default-state = "off";
-@@ -270,7 +270,7 @@
+ /*
+@@ -1126,7 +1100,7 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
+ 	v4l2_h264_build_b_ref_lists(&reflist_builder, h264_ctx->reflists.b0,
+ 				    h264_ctx->reflists.b1);
  
- &pinctrl {
- 	leds {
--		led_pins_module: led-module-gpio {
-+		module_led_pins: module-led-pins {
- 			rockchip,pins =
- 				<2 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>,
- 				<3 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-index e87a04477..e36837c04 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-khadas-edge.dtsi
-@@ -141,15 +141,15 @@
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&sys_led_gpio>, <&user_led_gpio>;
-+		pinctrl-0 = <&sys_led_pin>, <&user_led_pin>;
- 
--		sys-led {
-+		sys_led: led-0 {
- 			label = "sys_led";
- 			linux,default-trigger = "heartbeat";
- 			gpios = <&gpio0 RK_PA6 GPIO_ACTIVE_HIGH>;
- 		};
- 
--		user-led {
-+		user_led: led-1 {
- 			label = "user_led";
- 			default-state = "off";
- 			gpios = <&gpio4 RK_PD0 GPIO_ACTIVE_HIGH>;
-@@ -586,11 +586,11 @@
- 	};
- 
- 	leds {
--		sys_led_gpio: sys_led-gpio {
-+		sys_led_pin: sys-led-pin {
- 			rockchip,pins = <0 RK_PA6 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
--		user_led_gpio: user_led-gpio {
-+		user_led_pin: user-led-pin {
- 			rockchip,pins = <4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-index c88018a0e..b24d54570 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -117,9 +117,9 @@
- 	leds: gpio-leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&leds_gpio>;
-+		pinctrl-0 = <&status_led_pin>;
- 
--		status {
-+		status_led: led-0 {
- 			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
- 			label = "status_led";
- 			linux,default-trigger = "heartbeat";
-@@ -520,7 +520,7 @@
- 	};
- 
- 	gpio-leds {
--		leds_gpio: leds-gpio {
-+		status_led_pin: status-led-pin {
- 			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-index d80d6b726..a8d363568 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma-haikou.dts
-@@ -15,9 +15,9 @@
- 	};
- 
- 	leds {
--		pinctrl-0 = <&led_pin_module>, <&led_sd_haikou>;
-+		pinctrl-0 = <&module_led_pin>, <&sd_card_led_pin>;
- 
--		sd-card-led {
-+		sd_card_led: led-1 {
- 			label = "sd_card_led";
- 			gpios = <&gpio1 RK_PA2 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "mmc0";
-@@ -179,7 +179,7 @@
- 	};
- 
- 	leds {
--		led_sd_haikou: led-sd-gpio {
-+		sd_card_led_pin: sd-card-led-pin {
- 			rockchip,pins =
- 			  <1 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index 07694b196..ae31299cb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -11,9 +11,9 @@
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&led_pin_module>;
-+		pinctrl-0 = <&module_led_pin>;
- 
--		module-led {
-+		module_led: led-0 {
- 			label = "module_led";
- 			gpios = <&gpio2 RK_PD1 GPIO_ACTIVE_HIGH>;
- 			linux,default-trigger = "heartbeat";
-@@ -450,7 +450,7 @@
- 	};
- 
- 	leds {
--		led_pin_module: led-module-gpio {
-+		module_led_pin: module-led-pin {
- 			rockchip,pins =
- 			  <2 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-index 9f225e9c3..cec70f2bf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
-@@ -61,23 +61,23 @@
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&work_led_gpio>, <&diy_led_gpio>, <&yellow_led_gpio>;
-+		pinctrl-0 = <&work_led_pin>, <&diy_led_pin>, <&yellow_led_pin>;
- 
--		work-led {
-+		work_led: led-0 {
- 			label = "green:work";
- 			gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
- 			default-state = "on";
- 			linux,default-trigger = "heartbeat";
- 		};
- 
--		diy-led {
-+		diy_led: led-1 {
- 			label = "red:diy";
- 			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
- 			default-state = "off";
- 			linux,default-trigger = "mmc1";
- 		};
- 
--		yellow-led {
-+		yellow_led: led-2 {
- 			label = "yellow:yellow-led";
- 			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
- 			default-state = "off";
-@@ -595,15 +595,15 @@
- 	};
- 
- 	leds {
--		diy_led_gpio: diy_led-gpio {
-+		diy_led_pin: diy-led-pin {
- 			rockchip,pins = <0 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
--		work_led_gpio: work_led-gpio {
-+		work_led_pin: work-led-pin {
- 			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
--		yellow_led_gpio: yellow_led-gpio {
-+		yellow_led_pin: yellow-led-pin {
- 			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-index 6788ab28f..c39d0f411 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-@@ -39,15 +39,15 @@
- 	leds {
- 		compatible = "gpio-leds";
- 		pinctrl-names = "default";
--		pinctrl-0 = <&work_led_gpio>, <&diy_led_gpio>;
-+		pinctrl-0 = <&work_led_pin>, <&diy_led_pin>;
- 
--		work-led {
-+		work_led: led-0 {
- 			label = "work";
- 			default-state = "on";
- 			gpios = <&gpio0 RK_PB3 GPIO_ACTIVE_HIGH>;
- 		};
- 
--		diy-led {
-+		diy_led: led-1 {
- 			label = "diy";
- 			default-state = "off";
- 			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-@@ -588,11 +588,11 @@
- 	};
- 
- 	leds {
--		work_led_gpio: work_led-gpio {
-+		work_led_pin: work-led-pin {
- 			rockchip,pins = <0 RK_PB3 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 
--		diy_led_gpio: diy_led-gpio {
-+		diy_led_pin: diy-led-pin {
- 			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
+-	reorder_scaling_list(ctx, &run);
++	assemble_hw_scaling_list(ctx, &run);
+ 	assemble_hw_pps(ctx, &run);
+ 	assemble_hw_rps(ctx, &run);
+ 	config_registers(ctx, &run);
 -- 
-2.11.0
+2.17.1
