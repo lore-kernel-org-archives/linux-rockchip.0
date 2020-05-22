@@ -1,132 +1,72 @@
-From: Kever Yang <kever.yang@rock-chips.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Subject: Re: [PATCH v3 6/6] rockchip: Enable PCIe/M.2 on rock960 board
-Date: Fri, 22 May 2020 11:15:35 +0800
-Message-ID: <ba64b7ac-84d1-2763-1fa0-a332dab03e6a@rock-chips.com>
+Date: Fri, 22 May 2020 12:32:45 +0530
+Message-ID: <CAMty3ZD64YSaH21UbJ1dwMLtHGOcKgG8gfE_T_fGzk2fBQnBMw@mail.gmail.com>
 References: <20200509165624.20791-1-jagan@amarulasolutions.com>
  <20200509165624.20791-7-jagan@amarulasolutions.com>
+ <ba64b7ac-84d1-2763-1fa0-a332dab03e6a@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200509165624.20791-7-jagan@amarulasolutions.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: shawn.lin@rock-chips.com, patrick@blueri.se, sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Tom Cubie <tom@radxa.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <ba64b7ac-84d1-2763-1fa0-a332dab03e6a-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Patrick Wildt <patrick-Er2xLVyhcs+zQB+pC5nmwQ@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Shawn Lin <shawn.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jagan,
-
-On 2020/5/10 上午12:56, Jagan Teki wrote:
-> Due to board limitation some SSD's would work
-> on rock960 PCIe M.2 only with 1.8V IO domain.
->
-> So, this patch enables grf io_sel explicitly to
-> make PCIe/M.2 to work.
->
-> Cc: Tom Cubie <tom@radxa.com>
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> Acked-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
-> ---
-> Changes for v3:
-> - collect mani a-b
-> - add comments
->
->   board/vamrs/rock960_rk3399/rock960-rk3399.c | 23 +++++++++++++++++++++
->   configs/rock960-rk3399_defconfig            |  5 +++++
->   2 files changed, 28 insertions(+)
->
-> diff --git a/board/vamrs/rock960_rk3399/rock960-rk3399.c b/board/vamrs/rock960_rk3399/rock960-rk3399.c
-> index 68a127b9ac..ef1eb2d0b7 100644
-> --- a/board/vamrs/rock960_rk3399/rock960-rk3399.c
-> +++ b/board/vamrs/rock960_rk3399/rock960-rk3399.c
-> @@ -2,3 +2,26 @@
->   /*
->    * Copyright (C) 2018 Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
->    */
-> +
-> +#include <common.h>
-> +#include <syscon.h>
-> +#include <asm/io.h>
-> +#include <asm/arch-rockchip/clock.h>
-> +#include <asm/arch-rockchip/grf_rk3399.h>
-> +#include <asm/arch-rockchip/hardware.h>
-> +
-> +#ifdef CONFIG_MISC_INIT_R
-> +int misc_init_r(void)
-> +{
-> +	struct rk3399_grf_regs *grf =
-> +	    syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
-> +
-> +	/**
-> +	 * Some SSD's to work on rock960 would require explicit
-> +	 * domain voltage change, so BT565 is in 1.8v domain
-> +	 */
-> +	rk_setreg(&grf->io_vsel, BIT(0));
-+  rk_setreg(&grf->io_vsel, BIT(0));
-+                           ^
-+arch/arm/include/asm/io.h:118:34: note: in definition of macro ‘writel’
-+ #define writel(v,c) ({ u32 __v = v; __iowmb(); __arch_putl(__v,c); __v; })
-+                                  ^
-+board/vamrs/rock960_rk3399/rock960-rk3399.c:23:2: note: in expansion of 
-macro ‘rk_setreg’
-+  ^~~~~~~~~
-+board/vamrs/rock960_rk3399/built-in.o: In function `misc_init_r':
-+board/vamrs/rock960_rk3399/rock960-rk3399.c:23: undefined reference to 
-`BIT'
-+make[1]: *** [u-boot] Error 139
-
-
-Did you get this error when build the code?
-
-
-Thanks,
-
-- Kever
-
-> +
-> +	return 0;
-> +}
-> +#endif
-> diff --git a/configs/rock960-rk3399_defconfig b/configs/rock960-rk3399_defconfig
-> index 045d989a19..64517f9623 100644
-> --- a/configs/rock960-rk3399_defconfig
-> +++ b/configs/rock960-rk3399_defconfig
-> @@ -9,6 +9,7 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
->   CONFIG_DEBUG_UART_CLOCK=24000000
->   CONFIG_DEBUG_UART=y
->   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock960.dtb"
-> +CONFIG_MISC_INIT_R=y
->   CONFIG_DISPLAY_BOARDINFO_LATE=y
->   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
->   CONFIG_SPL_STACK_R=y
-> @@ -19,6 +20,7 @@ CONFIG_CMD_BOOTZ=y
->   CONFIG_CMD_GPT=y
->   CONFIG_CMD_MMC=y
->   CONFIG_CMD_USB=y
-> +CONFIG_CMD_PCI=y
->   # CONFIG_CMD_SETEXPR is not set
->   CONFIG_CMD_TIME=y
->   CONFIG_CMD_PMIC=y
-> @@ -36,10 +38,13 @@ CONFIG_MMC_SDHCI=y
->   CONFIG_MMC_SDHCI_SDMA=y
->   CONFIG_MMC_SDHCI_ROCKCHIP=y
->   CONFIG_DM_ETH=y
-> +CONFIG_NVME=y
-> +CONFIG_PCI=y
->   CONFIG_PMIC_RK8XX=y
->   CONFIG_REGULATOR_PWM=y
->   CONFIG_REGULATOR_RK8XX=y
->   CONFIG_PWM_ROCKCHIP=y
-> +CONFIG_DM_RESET=y
->   CONFIG_BAUDRATE=1500000
->   CONFIG_DEBUG_UART_SHIFT=2
->   CONFIG_SYSRESET=y
+SGkgS2V2ZXIsCgpPbiBGcmksIE1heSAyMiwgMjAyMCBhdCA4OjQ1IEFNIEtldmVyIFlhbmcgPGtl
+dmVyLnlhbmdAcm9jay1jaGlwcy5jb20+IHdyb3RlOgo+Cj4gSGkgSmFnYW4sCj4KPiBPbiAyMDIw
+LzUvMTAg5LiK5Y2IMTI6NTYsIEphZ2FuIFRla2kgd3JvdGU6Cj4gPiBEdWUgdG8gYm9hcmQgbGlt
+aXRhdGlvbiBzb21lIFNTRCdzIHdvdWxkIHdvcmsKPiA+IG9uIHJvY2s5NjAgUENJZSBNLjIgb25s
+eSB3aXRoIDEuOFYgSU8gZG9tYWluLgo+ID4KPiA+IFNvLCB0aGlzIHBhdGNoIGVuYWJsZXMgZ3Jm
+IGlvX3NlbCBleHBsaWNpdGx5IHRvCj4gPiBtYWtlIFBDSWUvTS4yIHRvIHdvcmsuCj4gPgo+ID4g
+Q2M6IFRvbSBDdWJpZSA8dG9tQHJhZHhhLmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRl
+a2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+ID4gQWNrZWQtYnk6IE1hbml2YW5uYW4g
+U2FkaGFzaXZhbSA8bWFuaXZhbm5hbi5zYWRoYXNpdmFtQGxpbmFyby5vcmc+Cj4gPiAtLS0KPiA+
+IENoYW5nZXMgZm9yIHYzOgo+ID4gLSBjb2xsZWN0IG1hbmkgYS1iCj4gPiAtIGFkZCBjb21tZW50
+cwo+ID4KPiA+ICAgYm9hcmQvdmFtcnMvcm9jazk2MF9yazMzOTkvcm9jazk2MC1yazMzOTkuYyB8
+IDIzICsrKysrKysrKysrKysrKysrKysrKwo+ID4gICBjb25maWdzL3JvY2s5NjAtcmszMzk5X2Rl
+ZmNvbmZpZyAgICAgICAgICAgIHwgIDUgKysrKysKPiA+ICAgMiBmaWxlcyBjaGFuZ2VkLCAyOCBp
+bnNlcnRpb25zKCspCj4gPgo+ID4gZGlmZiAtLWdpdCBhL2JvYXJkL3ZhbXJzL3JvY2s5NjBfcmsz
+Mzk5L3JvY2s5NjAtcmszMzk5LmMgYi9ib2FyZC92YW1ycy9yb2NrOTYwX3JrMzM5OS9yb2NrOTYw
+LXJrMzM5OS5jCj4gPiBpbmRleCA2OGExMjdiOWFjLi5lZjFlYjJkMGI3IDEwMDY0NAo+ID4gLS0t
+IGEvYm9hcmQvdmFtcnMvcm9jazk2MF9yazMzOTkvcm9jazk2MC1yazMzOTkuYwo+ID4gKysrIGIv
+Ym9hcmQvdmFtcnMvcm9jazk2MF9yazMzOTkvcm9jazk2MC1yazMzOTkuYwo+ID4gQEAgLTIsMyAr
+MiwyNiBAQAo+ID4gICAvKgo+ID4gICAgKiBDb3B5cmlnaHQgKEMpIDIwMTggTWFuaXZhbm5hbiBT
+YWRoYXNpdmFtIDxtYW5pdmFubmFuLnNhZGhhc2l2YW1AbGluYXJvLm9yZz4KPiA+ICAgICovCj4g
+PiArCj4gPiArI2luY2x1ZGUgPGNvbW1vbi5oPgo+ID4gKyNpbmNsdWRlIDxzeXNjb24uaD4KPiA+
+ICsjaW5jbHVkZSA8YXNtL2lvLmg+Cj4gPiArI2luY2x1ZGUgPGFzbS9hcmNoLXJvY2tjaGlwL2Ns
+b2NrLmg+Cj4gPiArI2luY2x1ZGUgPGFzbS9hcmNoLXJvY2tjaGlwL2dyZl9yazMzOTkuaD4KPiA+
+ICsjaW5jbHVkZSA8YXNtL2FyY2gtcm9ja2NoaXAvaGFyZHdhcmUuaD4KPiA+ICsKPiA+ICsjaWZk
+ZWYgQ09ORklHX01JU0NfSU5JVF9SCj4gPiAraW50IG1pc2NfaW5pdF9yKHZvaWQpCj4gPiArewo+
+ID4gKyAgICAgc3RydWN0IHJrMzM5OV9ncmZfcmVncyAqZ3JmID0KPiA+ICsgICAgICAgICBzeXNj
+b25fZ2V0X2ZpcnN0X3JhbmdlKFJPQ0tDSElQX1NZU0NPTl9HUkYpOwo+ID4gKwo+ID4gKyAgICAg
+LyoqCj4gPiArICAgICAgKiBTb21lIFNTRCdzIHRvIHdvcmsgb24gcm9jazk2MCB3b3VsZCByZXF1
+aXJlIGV4cGxpY2l0Cj4gPiArICAgICAgKiBkb21haW4gdm9sdGFnZSBjaGFuZ2UsIHNvIEJUNTY1
+IGlzIGluIDEuOHYgZG9tYWluCj4gPiArICAgICAgKi8KPiA+ICsgICAgIHJrX3NldHJlZygmZ3Jm
+LT5pb192c2VsLCBCSVQoMCkpOwo+ICsgIHJrX3NldHJlZygmZ3JmLT5pb192c2VsLCBCSVQoMCkp
+Owo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICBeCj4gK2FyY2gvYXJtL2luY2x1ZGUvYXNt
+L2lvLmg6MTE4OjM0OiBub3RlOiBpbiBkZWZpbml0aW9uIG9mIG1hY3JvIOKAmHdyaXRlbOKAmQo+
+ICsgI2RlZmluZSB3cml0ZWwodixjKSAoeyB1MzIgX192ID0gdjsgX19pb3dtYigpOyBfX2FyY2hf
+cHV0bChfX3YsYyk7IF9fdjsgfSkKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+IF4KPiArYm9hcmQvdmFtcnMvcm9jazk2MF9yazMzOTkvcm9jazk2MC1yazMzOTkuYzoyMzoyOiBu
+b3RlOiBpbiBleHBhbnNpb24gb2YKPiBtYWNybyDigJhya19zZXRyZWfigJkKPiArICBefn5+fn5+
+fn4KPiArYm9hcmQvdmFtcnMvcm9jazk2MF9yazMzOTkvYnVpbHQtaW4ubzogSW4gZnVuY3Rpb24g
+YG1pc2NfaW5pdF9yJzoKPiArYm9hcmQvdmFtcnMvcm9jazk2MF9yazMzOTkvcm9jazk2MC1yazMz
+OTkuYzoyMzogdW5kZWZpbmVkIHJlZmVyZW5jZSB0bwo+IGBCSVQnCj4gK21ha2VbMV06ICoqKiBb
+dS1ib290XSBFcnJvciAxMzkKPgo+Cj4gRGlkIHlvdSBnZXQgdGhpcyBlcnJvciB3aGVuIGJ1aWxk
+IHRoZSBjb2RlPwoKU29ycnksIEkgaGF2ZSBmb3Jnb3R0ZW4gdG8gY29tbWl0IGJpdG9wcyBoZWFk
+ZXIsIHdpbGwgc2VuZCB0aGlzIHBhdGNoCmFsb25lIGZvciB0aGUgbmV4dCB2ZXJzaW9uLgoKSmFn
+YW4uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
