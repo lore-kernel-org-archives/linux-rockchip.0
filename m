@@ -1,87 +1,38 @@
-From: Rob Herring <robh@kernel.org>
-Subject: [PATCH 13/15] PCI: rockchip: Use pci_host_probe() to register host
-Date: Fri, 22 May 2020 17:48:30 -0600
-Message-ID: <20200522234832.954484-14-robh@kernel.org>
-References: <20200522234832.954484-1-robh@kernel.org>
+From: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 01/32] pwm: sun4i: convert to
+ devm_platform_ioremap_resource
+Date: Sat, 23 May 2020 19:11:28 +0200
+Message-ID: <20200523171128.suii6ixbb5kpem34@pengutronix.de>
+References: <20191229080610.7597-1-tiny.windzz@gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20200522234832.954484-1-robh@kernel.org>
-Sender: linux-pci-owner@vger.kernel.org
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+Content-Disposition: inline
+In-Reply-To: <20191229080610.7597-1-tiny.windzz@gmail.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Yangtao Li <tiny.windzz@gmail.com>
+Cc: alexandre.belloni@bootlin.com, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, thierry.reding@gmail.com, linux-riscv@lists.infradead.org, festevam@gmail.com, f.fainelli@gmail.com, shc_work@mail.ru, khilman@baylibre.com, wens@csie.org, jonathanh@nvidia.com, linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com, bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com, slemieux.tyco@gmail.com, linux-pwm@vger.kernel.org, rjui@broadcom.com, s.hauer@pengutronix.de, mripard@kernel.org, vz@mleia.com, linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org, paul.walmsley@sifive.com, matthias.bgg@gmail.com, linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org, sbranden@broadcom.com, linux@prisktech.co.nz, palmer@dabbelt.com, kernel@pengutronix.de, shawnguo@kernel.org, claudiu.beznea@microchip.com, nsaen
 List-Id: linux-rockchip.vger.kernel.org
 
-The rockchip host driver does the same host registration and bus scanning
-calls as pci_host_probe, so let's use it instead.
+On Sun, Dec 29, 2019 at 08:05:39AM +0000, Yangtao Li wrote:
+> Use devm_platform_ioremap_resource() to simplify code.
+> =
 
-Cc: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-rockchip@lists.infradead.org
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- drivers/pci/controller/pcie-rockchip-host.c | 18 ++++--------------
- drivers/pci/controller/pcie-rockchip.h      |  1 -
- 2 files changed, 4 insertions(+), 15 deletions(-)
+> Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 94af6f5828a3..6a3c8442258b 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -949,7 +949,6 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- {
- 	struct rockchip_pcie *rockchip;
- 	struct device *dev = &pdev->dev;
--	struct pci_bus *bus, *child;
- 	struct pci_host_bridge *bridge;
- 	struct resource *bus_res;
- 	int err;
-@@ -1015,20 +1014,10 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 	bridge->map_irq = of_irq_parse_and_map_pci;
- 	bridge->swizzle_irq = pci_common_swizzle;
- 
--	err = pci_scan_root_bus_bridge(bridge);
-+	err = pci_host_probe(bridge);
- 	if (err < 0)
- 		goto err_remove_irq_domain;
- 
--	bus = bridge->bus;
--
--	rockchip->root_bus = bus;
--
--	pci_bus_size_bridges(bus);
--	pci_bus_assign_resources(bus);
--	list_for_each_entry(child, &bus->children, node)
--		pcie_bus_configure_settings(child);
--
--	pci_bus_add_devices(bus);
- 	return 0;
- 
- err_remove_irq_domain:
-@@ -1051,9 +1040,10 @@ static int rockchip_pcie_remove(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct rockchip_pcie *rockchip = dev_get_drvdata(dev);
-+	struct pci_host_bridge *bridge = pci_host_bridge_from_priv(rockchip);
- 
--	pci_stop_root_bus(rockchip->root_bus);
--	pci_remove_root_bus(rockchip->root_bus);
-+	pci_stop_root_bus(bridge->bus);
-+	pci_remove_root_bus(bridge->bus);
- 	irq_domain_remove(rockchip->irq_domain);
- 
- 	rockchip_pcie_deinit_phys(rockchip);
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index d90dfb354573..4012543bafbe 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -303,7 +303,6 @@ struct rockchip_pcie {
- 	struct	device *dev;
- 	struct	irq_domain *irq_domain;
- 	int     offset;
--	struct pci_bus *root_bus;
- 	void    __iomem *msg_region;
- 	phys_addr_t msg_bus_addr;
- 	bool is_rc;
--- 
-2.25.1
+Reviewed-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
+
+
+-- =
+
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
