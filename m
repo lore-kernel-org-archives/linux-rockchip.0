@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH] clk: rk3399: Fix eMMC get_clk reg offset
-Date: Sun, 24 May 2020 22:13:15 +0530
-Message-ID: <20200524164315.124527-1-jagan@amarulasolutions.com>
+Subject: [PATCH] mmc: sdhci: Fix HISPD bit handling
+Date: Sun, 24 May 2020 22:55:13 +0530
+Message-ID: <20200524172513.199962-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
@@ -14,32 +14,71 @@ List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=subscribe>
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
+To: u-boot@lists.denx.de
+Cc: sunil@amarulasolutions.com, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>, Kever Yang <kever.yang@rock-chips.com>, Peng Fan <peng.fan@nxp.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Actual eMMC get_clk register is clksel_con22 instead of
-clksel_con21.
+SDHCI HISPD bits need to be configured based on desired mmc
+timings mode and some HISPD quirks.
 
-Fix it.
+So, handle the HISPD bit based on the mmc computed selected
+mode(timing parameter) rather than fixed mmc card clock
+frequency.
 
+Linux handle the HISPD similar like this in below commit,
+
+commit <501639bf2173> ("mmc: sdhci: fix SDHCI_QUIRK_NO_HISPD_BIT handling")
+
+This eventually fixed the mmc write issue observed in
+rk3399 sdhci controller.
+
+Bug log for refernece,
+=> gpt write mmc 0 $partitions
+Writing GPT: mmc write failed
+** Can't write to device 0 **
+** Can't write to device 0 **
+error!
+
+Cc: Kever Yang <kever.yang@rock-chips.com>
+Cc: Peng Fan <peng.fan@nxp.com>
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
- drivers/clk/rockchip/clk_rk3399.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/mmc/sdhci.c | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
-index 6a78837619..4caf3b5617 100644
---- a/drivers/clk/rockchip/clk_rk3399.c
-+++ b/drivers/clk/rockchip/clk_rk3399.c
-@@ -728,7 +728,7 @@ static ulong rk3399_mmc_get_clk(struct rockchip_cru *cru, uint clk_id)
- 		div = 2;
- 		break;
- 	case SCLK_EMMC:
--		con = readl(&cru->clksel_con[21]);
-+		con = readl(&cru->clksel_con[22]);
- 		div = 1;
- 		break;
- 	default:
+diff --git a/drivers/mmc/sdhci.c b/drivers/mmc/sdhci.c
+index 92cc8434af..280b8c88eb 100644
+--- a/drivers/mmc/sdhci.c
++++ b/drivers/mmc/sdhci.c
+@@ -594,14 +594,21 @@ static int sdhci_set_ios(struct mmc *mmc)
+ 			ctrl &= ~SDHCI_CTRL_4BITBUS;
+ 	}
+ 
+-	if (mmc->clock > 26000000)
+-		ctrl |= SDHCI_CTRL_HISPD;
+-	else
+-		ctrl &= ~SDHCI_CTRL_HISPD;
+-
+-	if ((host->quirks & SDHCI_QUIRK_NO_HISPD_BIT) ||
+-	    (host->quirks & SDHCI_QUIRK_BROKEN_HISPD_MODE))
+-		ctrl &= ~SDHCI_CTRL_HISPD;
++	if (!(host->quirks & SDHCI_QUIRK_NO_HISPD_BIT) ||
++	    !(host->quirks & SDHCI_QUIRK_BROKEN_HISPD_MODE)) {
++		if (mmc->selected_mode == MMC_HS ||
++		    mmc->selected_mode == SD_HS ||
++		    mmc->selected_mode == MMC_DDR_52 ||
++		    mmc->selected_mode == MMC_HS_200 ||
++		    mmc->selected_mode == MMC_HS_400 ||
++		    mmc->selected_mode == UHS_SDR25 ||
++		    mmc->selected_mode == UHS_SDR50 ||
++		    mmc->selected_mode == UHS_SDR104 ||
++		    mmc->selected_mode == UHS_DDR50)
++			ctrl |= SDHCI_CTRL_HISPD;
++		else
++			ctrl &= ~SDHCI_CTRL_HISPD;
++	}
+ 
+ 	sdhci_writeb(host, ctrl, SDHCI_HOST_CONTROL);
+ 
 -- 
 2.25.1
