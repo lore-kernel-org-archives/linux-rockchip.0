@@ -1,133 +1,255 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v2] rockchip: Fix spl mmc boot device ofpath
-Date: Sun, 24 May 2020 20:26:18 +0530
-Message-ID: <20200524145618.78951-1-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH 1/2] ARM: dts: rockchip: rename label and nodename pinctrl subnodes that end with gpio
+Date: Sun, 24 May 2020 18:06:35 +0200
+Message-ID: <20200524160636.16547-1-jbx6244@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: heiko@sntech.de
+Cc: robh+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Linux v5.7-rc1 dts(i) sync has changed the sdmmc node from
-dwmmc@fe320000 to mmc@fe320000 and this ofpath is being
-used in rockchip spl bootdevice code.
+A test with the command below gives for example this error:
 
-So, update the ofpath with a new node name and prefix "same-as-spl" 
-to missing u-boot,spl-boot-order.
+arch/arm/boot/dts/rk3288-tinker.dt.yaml: tsadc: otp-gpio:
+{'phandle': [[54]], 'rockchip,pins': [[0, 10, 0, 118]]}
+is not of type 'array'
 
-Bug log:
-U-Boot SPL 2020.07-rc2-00256-g9c5fef5774 (May 24 2020 - 20:20:43 +0530)
-Trying to boot from MMC2
-mmc_load_image_raw_sector: mmc block read error
-Trying to boot from MMC1
-mmc_load_image_raw_sector: mmc block read error
-SPL: failed to boot from all boot devices
+'gpio' is a sort of reserved nodename and should not be used
+for pinctrl in combination with 'rockchip,pins', so change
+nodes that end with 'gpio' to end with 'pin' or 'pins'.
 
-Fixes: 167efc2c7a46 ("arm64: dts: rk3399: Sync v5.7-rc1 from Linux"
-Signed-off-by: Suniel Mahesh <sunil@amarulasolutions.com>
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+make ARCH=arm dtbs_check
+DT_SCHEMA_FILES=~/.local/lib/python3.5/site-packages/
+dtschema/schemas/gpio/gpio.yaml
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
-Changes for v2:
-- prefix "same-as-spl" to missing u-boot,spl-boot-order
+ arch/arm/boot/dts/rk322x.dtsi              |  6 +++---
+ arch/arm/boot/dts/rk3288-veyron-jaq.dts    |  2 +-
+ arch/arm/boot/dts/rk3288-veyron-jerry.dts  |  2 +-
+ arch/arm/boot/dts/rk3288-veyron-mighty.dts |  6 +++---
+ arch/arm/boot/dts/rk3288-veyron-minnie.dts |  2 +-
+ arch/arm/boot/dts/rk3288-veyron-pinky.dts  |  6 +++---
+ arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi |  2 +-
+ arch/arm/boot/dts/rk3288-veyron-speedy.dts |  2 +-
+ arch/arm/boot/dts/rk3288.dtsi              |  6 +++---
+ arch/arm/boot/dts/rv1108.dtsi              | 12 ++++++------
+ 10 files changed, 23 insertions(+), 23 deletions(-)
 
- arch/arm/dts/rk3399-evb-u-boot.dtsi               | 2 +-
- arch/arm/dts/rk3399-ficus-u-boot.dtsi             | 2 +-
- arch/arm/dts/rk3399-rock960-u-boot.dtsi           | 2 +-
- arch/arm/mach-rockchip/rk3399/rk3399.c            | 4 ++--
- board/theobroma-systems/puma_rk3399/puma-rk3399.c | 4 ++--
- 5 files changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/arch/arm/dts/rk3399-evb-u-boot.dtsi b/arch/arm/dts/rk3399-evb-u-boot.dtsi
-index e5659d7999..0bb50b01da 100644
---- a/arch/arm/dts/rk3399-evb-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-evb-u-boot.dtsi
-@@ -8,7 +8,7 @@
+diff --git a/arch/arm/boot/dts/rk322x.dtsi b/arch/arm/boot/dts/rk322x.dtsi
+index 7a1a69183..3590ce15a 100644
+--- a/arch/arm/boot/dts/rk322x.dtsi
++++ b/arch/arm/boot/dts/rk322x.dtsi
+@@ -522,9 +522,9 @@
+ 		resets = <&cru SRST_TSADC>;
+ 		reset-names = "tsadc-apb";
+ 		pinctrl-names = "init", "default", "sleep";
+-		pinctrl-0 = <&otp_gpio>;
++		pinctrl-0 = <&otp_pin>;
+ 		pinctrl-1 = <&otp_out>;
+-		pinctrl-2 = <&otp_gpio>;
++		pinctrl-2 = <&otp_pin>;
+ 		#thermal-sensor-cells = <0>;
+ 		rockchip,hw-tshut-temp = <95000>;
+ 		status = "disabled";
+@@ -1103,7 +1103,7 @@
+ 		};
  
- / {
- 	chosen {
--		u-boot,spl-boot-order = &sdhci, &sdmmc;
-+		u-boot,spl-boot-order = "same-as-spl", &sdhci, &sdmmc;
- 	};
+ 		tsadc {
+-			otp_gpio: otp-gpio {
++			otp_pin: otp-pin {
+ 				rockchip,pins = <0 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+ 
+diff --git a/arch/arm/boot/dts/rk3288-veyron-jaq.dts b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
+index 171ba6185..8efba9dea 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-jaq.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
+@@ -47,7 +47,7 @@
+ &sdmmc {
+ 	disable-wp;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_gpio
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_pin
+ 			&sdmmc_bus4>;
  };
  
-diff --git a/arch/arm/dts/rk3399-ficus-u-boot.dtsi b/arch/arm/dts/rk3399-ficus-u-boot.dtsi
-index f3f7aa7c45..38e0897db9 100644
---- a/arch/arm/dts/rk3399-ficus-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-ficus-u-boot.dtsi
-@@ -8,6 +8,6 @@
- 
- / {
- 	chosen {
--		u-boot,spl-boot-order = &sdhci, &sdmmc;
-+		u-boot,spl-boot-order = "same-as-spl", &sdhci, &sdmmc;
- 	};
- };
-diff --git a/arch/arm/dts/rk3399-rock960-u-boot.dtsi b/arch/arm/dts/rk3399-rock960-u-boot.dtsi
-index 82f2c311af..c190089e26 100644
---- a/arch/arm/dts/rk3399-rock960-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-rock960-u-boot.dtsi
-@@ -8,7 +8,7 @@
- 
- / {
- 	chosen {
--		u-boot,spl-boot-order = &sdhci, &sdmmc;
-+		u-boot,spl-boot-order = "same-as-spl", &sdhci, &sdmmc;
- 	};
- 
- 	vdd_log: vdd-log {
-diff --git a/arch/arm/mach-rockchip/rk3399/rk3399.c b/arch/arm/mach-rockchip/rk3399/rk3399.c
-index 09b0d6ebe8..4fda93b152 100644
---- a/arch/arm/mach-rockchip/rk3399/rk3399.c
-+++ b/arch/arm/mach-rockchip/rk3399/rk3399.c
-@@ -28,7 +28,7 @@ DECLARE_GLOBAL_DATA_PTR;
- const char * const boot_devices[BROM_LAST_BOOTSOURCE + 1] = {
- 	[BROM_BOOTSOURCE_EMMC] = "/sdhci@fe330000",
- 	[BROM_BOOTSOURCE_SPINOR] = "/spi@ff1d0000",
--	[BROM_BOOTSOURCE_SD] = "/dwmmc@fe320000",
-+	[BROM_BOOTSOURCE_SD] = "/mmc@fe320000",
+diff --git a/arch/arm/boot/dts/rk3288-veyron-jerry.dts b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
+index 66f00d288..2c916c50d 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-jerry.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-jerry.dts
+@@ -192,7 +192,7 @@
+ &sdmmc {
+ 	disable-wp;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_gpio
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_pin
+ 			&sdmmc_bus4>;
  };
  
- static struct mm_region rk3399_mem_map[] = {
-@@ -176,7 +176,7 @@ const char *spl_decode_boot_device(u32 boot_device)
- 		u32 boot_device;
- 		const char *ofpath;
- 	} spl_boot_devices_tbl[] = {
--		{ BOOT_DEVICE_MMC1, "/dwmmc@fe320000" },
-+		{ BOOT_DEVICE_MMC1, "/mmc@fe320000" },
- 		{ BOOT_DEVICE_MMC2, "/sdhci@fe330000" },
- 		{ BOOT_DEVICE_SPI, "/spi@ff1d0000" },
+diff --git a/arch/arm/boot/dts/rk3288-veyron-mighty.dts b/arch/arm/boot/dts/rk3288-veyron-mighty.dts
+index 27fbc0747..fa695a88f 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-mighty.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-mighty.dts
+@@ -18,8 +18,8 @@
+ };
+ 
+ &sdmmc {
+-	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_gpio
+-			&sdmmc_wp_gpio &sdmmc_bus4>;
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_pin
++			&sdmmc_wp_pin &sdmmc_bus4>;
+ 	wp-gpios = <&gpio7 10 GPIO_ACTIVE_HIGH>;
+ 
+ 	/delete-property/ disable-wp;
+@@ -27,7 +27,7 @@
+ 
+ &pinctrl {
+ 	sdmmc {
+-		sdmmc_wp_gpio: sdmmc-wp-gpio {
++		sdmmc_wp_pin: sdmmc-wp-pin {
+ 			rockchip,pins = <7 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
  	};
-diff --git a/board/theobroma-systems/puma_rk3399/puma-rk3399.c b/board/theobroma-systems/puma_rk3399/puma-rk3399.c
-index 561579d056..f7f08ae617 100644
---- a/board/theobroma-systems/puma_rk3399/puma-rk3399.c
-+++ b/board/theobroma-systems/puma_rk3399/puma-rk3399.c
-@@ -77,7 +77,7 @@ static int setup_boottargets(void)
- 	}
+diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+index 383fad1a8..f8b69e0a1 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
+@@ -114,7 +114,7 @@
+ &sdmmc {
+ 	disable-wp;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_gpio
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_pin
+ 			&sdmmc_bus4>;
+ };
  
- 	/*
--	 * Only run, if booting from mmc1 (i.e. /dwmmc@fe320000) and
-+	 * Only run, if booting from mmc1 (i.e. /mmc@fe320000) and
- 	 * only consider cases where the default boot-order first
- 	 * tries to boot from mmc0 (eMMC) and then from mmc1
- 	 * (i.e. external SD).
-@@ -85,7 +85,7 @@ static int setup_boottargets(void)
- 	 * In other words: the SD card will be moved to earlier in the
- 	 * order, if U-Boot was also loaded from the SD-card.
- 	 */
--	if (!strcmp(boot_device, "/dwmmc@fe320000")) {
-+	if (!strcmp(boot_device, "/mmc@fe320000")) {
- 		char *mmc0, *mmc1;
+diff --git a/arch/arm/boot/dts/rk3288-veyron-pinky.dts b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
+index 71e6629cc..4e9fdb0f7 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-pinky.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-pinky.dts
+@@ -105,7 +105,7 @@
+ 	};
  
- 		debug("%s: booted from SD-Card\n", __func__);
+ 	sdmmc {
+-		sdmmc_wp_gpio: sdmmc-wp-gpio {
++		sdmmc_wp_pin: sdmmc-wp-pin {
+ 			rockchip,pins = <7 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
+ 		};
+ 	};
+@@ -126,8 +126,8 @@
+ 
+ &sdmmc {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_gpio
+-		     &sdmmc_wp_gpio &sdmmc_bus4>;
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_pin
++		     &sdmmc_wp_pin &sdmmc_bus4>;
+ 	wp-gpios = <&gpio7 RK_PB2 GPIO_ACTIVE_HIGH>;
+ };
+ 
+diff --git a/arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi b/arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi
+index fe950f986..27fb06ce9 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi
++++ b/arch/arm/boot/dts/rk3288-veyron-sdmmc.dtsi
+@@ -41,7 +41,7 @@
+ 		};
+ 
+ 		/* This is where we actually hook up CD */
+-		sdmmc_cd_gpio: sdmmc-cd-gpio {
++		sdmmc_cd_pin: sdmmc-cd-pin {
+ 			rockchip,pins = <7 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+diff --git a/arch/arm/boot/dts/rk3288-veyron-speedy.dts b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+index e354c61a4..4a3ea934d 100644
+--- a/arch/arm/boot/dts/rk3288-veyron-speedy.dts
++++ b/arch/arm/boot/dts/rk3288-veyron-speedy.dts
+@@ -54,7 +54,7 @@
+ &sdmmc {
+ 	disable-wp;
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_gpio
++	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd_disabled &sdmmc_cd_pin
+ 			&sdmmc_bus4>;
+ };
+ 
+diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+index 0cd88774d..d052a4758 100644
+--- a/arch/arm/boot/dts/rk3288.dtsi
++++ b/arch/arm/boot/dts/rk3288.dtsi
+@@ -575,9 +575,9 @@
+ 		resets = <&cru SRST_TSADC>;
+ 		reset-names = "tsadc-apb";
+ 		pinctrl-names = "init", "default", "sleep";
+-		pinctrl-0 = <&otp_gpio>;
++		pinctrl-0 = <&otp_pin>;
+ 		pinctrl-1 = <&otp_out>;
+-		pinctrl-2 = <&otp_gpio>;
++		pinctrl-2 = <&otp_pin>;
+ 		#thermal-sensor-cells = <1>;
+ 		rockchip,grf = <&grf>;
+ 		rockchip,hw-tshut-temp = <95000>;
+@@ -1930,7 +1930,7 @@
+ 		};
+ 
+ 		tsadc {
+-			otp_gpio: otp-gpio {
++			otp_pin: otp-pin {
+ 				rockchip,pins = <0 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+ 
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index b453f8d0f..f3ff54753 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -352,9 +352,9 @@
+ 		clocks = <&cru SCLK_TSADC>, <&cru PCLK_TSADC>;
+ 		clock-names = "tsadc", "apb_pclk";
+ 		pinctrl-names = "init", "default", "sleep";
+-		pinctrl-0 = <&otp_gpio>;
++		pinctrl-0 = <&otp_pin>;
+ 		pinctrl-1 = <&otp_out>;
+-		pinctrl-2 = <&otp_gpio>;
++		pinctrl-2 = <&otp_pin>;
+ 		resets = <&cru SRST_TSADC>;
+ 		reset-names = "tsadc-apb";
+ 		rockchip,hw-tshut-temp = <120000>;
+@@ -729,7 +729,7 @@
+ 						<0 RK_PC6 3 &pcfg_pull_none>;
+ 			};
+ 
+-			i2c2m1_gpio: i2c2m1-gpio {
++			i2c2m1_pins: i2c2m1-pins {
+ 				rockchip,pins = <0 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>,
+ 						<0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+@@ -741,7 +741,7 @@
+ 						<1 RK_PD4 2 &pcfg_pull_none>;
+ 			};
+ 
+-			i2c2m05v_gpio: i2c2m05v-gpio {
++			i2c2m05v_pins: i2c2m05v-pins {
+ 				rockchip,pins = <1 RK_PD5 RK_FUNC_GPIO &pcfg_pull_none>,
+ 						<1 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+@@ -868,7 +868,7 @@
+ 				rockchip,pins = <0 RK_PB7 1 &pcfg_pull_none>;
+ 			};
+ 
+-			otp_gpio: otp-gpio {
++			otp_pin: otp-pin {
+ 				rockchip,pins = <0 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+ 		};
+@@ -887,7 +887,7 @@
+ 				rockchip,pins = <3 RK_PA3 1 &pcfg_pull_none>;
+ 			};
+ 
+-			uart0_rts_gpio: uart0-rts-gpio {
++			uart0_rts_pin: uart0-rts-pin {
+ 				rockchip,pins = <3 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
+ 			};
+ 		};
 -- 
-2.25.1
+2.11.0
