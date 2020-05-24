@@ -1,84 +1,48 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH] mmc: sdhci: Fix HISPD bit handling
-Date: Sun, 24 May 2020 22:55:13 +0530
-Message-ID: <20200524172513.199962-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 1/3] arm64: dts: rk3399-nanopi4: Add u-boot,spl-boot-order
+Date: Sun, 24 May 2020 23:02:11 +0530
+Message-ID: <20200524173213.201123-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: u-boot@lists.denx.de
-Cc: sunil@amarulasolutions.com, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>, Kever Yang <kever.yang@rock-chips.com>, Peng Fan <peng.fan@nxp.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SDHCI HISPD bits need to be configured based on desired mmc
-timings mode and some HISPD quirks.
+Add u-boot,spl-boot-order as sdhci and sdmmc for booting
+from eMMC and SD card.
 
-So, handle the HISPD bit based on the mmc computed selected
-mode(timing parameter) rather than fixed mmc card clock
-frequency.
-
-Linux handle the HISPD similar like this in below commit,
-
-commit <501639bf2173> ("mmc: sdhci: fix SDHCI_QUIRK_NO_HISPD_BIT handling")
-
-This eventually fixed the mmc write issue observed in
-rk3399 sdhci controller.
-
-Bug log for refernece,
-=> gpt write mmc 0 $partitions
-Writing GPT: mmc write failed
-** Can't write to device 0 **
-** Can't write to device 0 **
-error!
-
-Cc: Kever Yang <kever.yang@rock-chips.com>
-Cc: Peng Fan <peng.fan@nxp.com>
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- drivers/mmc/sdhci.c | 23 +++++++++++++++--------
- 1 file changed, 15 insertions(+), 8 deletions(-)
+ arch/arm/dts/rk3399-nanopi4-u-boot.dtsi | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/mmc/sdhci.c b/drivers/mmc/sdhci.c
-index 92cc8434af..280b8c88eb 100644
---- a/drivers/mmc/sdhci.c
-+++ b/drivers/mmc/sdhci.c
-@@ -594,14 +594,21 @@ static int sdhci_set_ios(struct mmc *mmc)
- 			ctrl &= ~SDHCI_CTRL_4BITBUS;
- 	}
+diff --git a/arch/arm/dts/rk3399-nanopi4-u-boot.dtsi b/arch/arm/dts/rk3399-nanopi4-u-boot.dtsi
+index a126bbaf08..a9d10592d5 100644
+--- a/arch/arm/dts/rk3399-nanopi4-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-nanopi4-u-boot.dtsi
+@@ -5,6 +5,12 @@
  
--	if (mmc->clock > 26000000)
--		ctrl |= SDHCI_CTRL_HISPD;
--	else
--		ctrl &= ~SDHCI_CTRL_HISPD;
--
--	if ((host->quirks & SDHCI_QUIRK_NO_HISPD_BIT) ||
--	    (host->quirks & SDHCI_QUIRK_BROKEN_HISPD_MODE))
--		ctrl &= ~SDHCI_CTRL_HISPD;
-+	if (!(host->quirks & SDHCI_QUIRK_NO_HISPD_BIT) ||
-+	    !(host->quirks & SDHCI_QUIRK_BROKEN_HISPD_MODE)) {
-+		if (mmc->selected_mode == MMC_HS ||
-+		    mmc->selected_mode == SD_HS ||
-+		    mmc->selected_mode == MMC_DDR_52 ||
-+		    mmc->selected_mode == MMC_HS_200 ||
-+		    mmc->selected_mode == MMC_HS_400 ||
-+		    mmc->selected_mode == UHS_SDR25 ||
-+		    mmc->selected_mode == UHS_SDR50 ||
-+		    mmc->selected_mode == UHS_SDR104 ||
-+		    mmc->selected_mode == UHS_DDR50)
-+			ctrl |= SDHCI_CTRL_HISPD;
-+		else
-+			ctrl &= ~SDHCI_CTRL_HISPD;
-+	}
+ #include "rk3399-u-boot.dtsi"
  
- 	sdhci_writeb(host, ctrl, SDHCI_HOST_CONTROL);
- 
++/{
++	chosen {
++		u-boot,spl-boot-order = "same-as-spl", &sdhci, &sdmmc;
++	};
++};
++
+ &sdmmc {
+ 	pinctrl-0 = <&sdmmc_bus4 &sdmmc_clk &sdmmc_cmd &sdmmc_cd>;
+ };
 -- 
 2.25.1
