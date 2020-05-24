@@ -1,49 +1,81 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 2/3] nanopc-t4: Enable USB Gadget
-Date: Sun, 24 May 2020 23:02:12 +0530
-Message-ID: <20200524173213.201123-2-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH 3/3] doc: rockchip: Document eMMC program steps
+Date: Sun, 24 May 2020 23:02:13 +0530
+Message-ID: <20200524173213.201123-3-jagan@amarulasolutions.com>
 References: <20200524173213.201123-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200524173213.201123-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-Cc: u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200524173213.201123-1-jagan@amarulasolutions.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable DWC3 core, gadget for nanopc-t4 board.
+Document eMMC partition creation and program steps for
+rockchip platforms.
 
-This would help to use fastboot by default.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
- configs/nanopc-t4-rk3399_defconfig | 3 +++
- 1 file changed, 3 insertions(+)
+ doc/board/rockchip/rockchip.rst | 32 ++++++++++++++++++++++++++++++--
+ 1 file changed, 30 insertions(+), 2 deletions(-)
 
-diff --git a/configs/nanopc-t4-rk3399_defconfig b/configs/nanopc-t4-rk3399_defconfig
-index 3bb5b498f2..40fb797c49 100644
---- a/configs/nanopc-t4-rk3399_defconfig
-+++ b/configs/nanopc-t4-rk3399_defconfig
-@@ -50,7 +50,10 @@ CONFIG_USB_XHCI_HCD=y
- CONFIG_USB_XHCI_DWC3=y
- CONFIG_USB_EHCI_HCD=y
- CONFIG_USB_EHCI_GENERIC=y
-+CONFIG_USB_DWC3=y
-+CONFIG_ROCKCHIP_USB2_PHY=y
- CONFIG_USB_KEYBOARD=y
-+CONFIG_USB_GADGET=y
- CONFIG_USB_HOST_ETHER=y
- CONFIG_USB_ETHER_ASIX=y
- CONFIG_USB_ETHER_ASIX88179=y
+diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
+index cd9c8d6dc4..1faa675aa8 100644
+--- a/doc/board/rockchip/rockchip.rst
++++ b/doc/board/rockchip/rockchip.rst
+@@ -117,14 +117,42 @@ To write an image that boots from an SD card (assumed to be /dev/sda)::
+         sudo dd if=u-boot-rockchip.bin of=/dev/sda seek=64
+         sync
+ 
++eMMC
++^^^^
++
++eMMC flash would probe on mmc0 in most of the rockchip platforms.
++
++Create GPT partition layout as defined in configurations::
++
++        mmc dev 0
++        gpt write mmc 0 $partitions
++
++Connect the USB-OTG cable between host and target device.
++
++Launch fastboot at target::
++
++        fastboot 0
++
++Upon successful gadget connection,host show the USB device like::
++
++        lsusb
++        Bus 001 Device 020: ID 2207:330c Fuzhou Rockchip Electronics Company RK3399 in Mask ROM mode
++
++Program the flash::
++
++        sudo fastboot -i 0x2207 flash loader1 idbloader.img
++        sudo fastboot -i 0x2207 flash loader2 u-boot.itb
++
++Note: for rockchip 32-bit platforms the U-Boot proper image
++is u-boot-dtb.img
++
+ TODO
+ ----
+ 
+ - Add rockchip idbloader image building
+ - Add rockchip TPL image building
+ - Document SPI flash boot
+-- Describe steps for eMMC flashing
+ - Add missing SoC's with it boards list
+ 
+ .. Jagan Teki <jagan@amarulasolutions.com>
+-.. Fri Jan 10 00:08:40 IST 2020
++.. Sunday 24 May 2020 10:08:41 PM IST
 -- 
 2.25.1
