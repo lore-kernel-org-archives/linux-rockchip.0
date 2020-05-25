@@ -1,86 +1,205 @@
-From: Zanella Francesco <Francesco.Zanella-NG0QodRFT4YAvxtiuMwx3w@public.gmane.org>
-Subject: spi-rockchip issue with receive only mode
-Date: Mon, 25 May 2020 08:42:15 +0000
-Message-ID: <DB8PR08MB503622ECEC5FD7F9847B9232E9B30@DB8PR08MB5036.eurprd08.prod.outlook.com>
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+Subject: Re: [PATCH v4 2/5] media: v4l2-common: add helper functions to call
+ s_stream() callbacks
+Date: Mon, 25 May 2020 12:23:47 +0300
+Message-ID: <20200525092347.GD7618@paasikivi.fi.intel.com>
+References: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
+ <20200522075522.6190-3-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Content-Language: it-IT
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Cc: Valotto Lorenzo <Lorenzo.Valotto-NG0QodRFT4YAvxtiuMwx3w@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-media-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200522075522.6190-3-dafna.hirschfeld@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, niklas.soderlund@ragnatech.se--annotate
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi all,
+Hi Dafna,
 
-We found an issue on RK SPI controller driver spi-rockchip.c on kernel 5.4.0 with a PX30 chip.
-In our driver which use it, we use this mode
+My apologies for not reviewing this earlier.
 
-spi->bits_per_word = 8;
-spi->mode = SPI_MODE_3;
-status = spi_setup(spi);
+On Fri, May 22, 2020 at 09:55:19AM +0200, Dafna Hirschfeld wrote:
+> From: Helen Koike <helen.koike@collabora.com>
+> 
+> Add v4l2_pipeline_stream_{enable,disable} helper functions to iterate
+> through the subdevices in a given stream (i.e following links from sink
+> to source) and call .s_stream() callback.
+> 
+> If .s_stream(true) fails, call .s_stream(false) in the reverse order.
+> 
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> ---
+>  drivers/media/v4l2-core/v4l2-common.c | 99 +++++++++++++++++++++++++++
+>  include/media/v4l2-common.h           | 39 +++++++++++
+>  2 files changed, 138 insertions(+)
+> 
+> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+> index 9e8eb45a5b03..734db2bf5ca9 100644
+> --- a/drivers/media/v4l2-core/v4l2-common.c
+> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> @@ -442,3 +442,102 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
+> +
+> +#if defined(CONFIG_MEDIA_CONTROLLER)
+> +
+> +/*
+> + * v4l2_pipeline_subdevs_get - Assemble a list of subdevices in a pipeline
+> + * @subdevs: the array to be filled.
+> + * @max_size: max number of elements that can fit in subdevs array.
+> + *
+> + * Walk from a video node, following links from sink to source and fill the
+> + * array with subdevices in the path.
+> + * The walker performs a depth-first traversal, which means that, in a topology
+> + * sd1->sd2->sd3->vdev, sd1 will be the first element placed in the array.
+> + *
+> + * Return the number of subdevices filled in the array.
+> + */
+> +static int v4l2_pipeline_subdevs_get(struct video_device *vdev,
+> +				     struct v4l2_subdev **subdevs,
+> +				     unsigned int max_size)
+> +{
+> +	struct media_entity *entity = &vdev->entity;
+> +	struct media_device *mdev = entity->graph_obj.mdev;
+> +	struct media_graph graph;
+> +	int idx = 0;
+> +	int ret;
+> +
+> +	ret = media_graph_walk_init(&graph, mdev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	media_graph_walk_start(&graph, entity);
+> +
+> +	while ((entity = media_graph_walk_next_stream(&graph))) {
+> +		if (!is_media_entity_v4l2_subdev(entity))
+> +			continue;
+> +		if (WARN_ON(idx >= max_size))
+> +			return -EINVAL;
+> +		subdevs[idx++] = media_entity_to_v4l2_subdev(entity);
+> +	}
+> +
+> +	media_graph_walk_cleanup(&graph);
+> +
+> +	return idx;
+> +}
+> +
+> +static void v4l2_subdevs_stream_disable(struct v4l2_subdev **subdevs, int size)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < size; i++) {
+> +		struct v4l2_subdev *sd = subdevs[i];
+> +
+> +		dev_dbg(sd->dev,
+> +			"disabling stream for '%s'\n", sd->entity.name);
+> +		v4l2_subdev_call(sd, video, s_stream, false);
+> +	}
+> +}
+> +
+> +__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev)
+> +{
+> +	struct media_device *mdev = vdev->entity.graph_obj.mdev;
+> +	struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
+> +	struct v4l2_subdev *sd;
+> +	int i, size, ret;
+> +
+> +	size = v4l2_pipeline_subdevs_get(vdev, subdevs, ARRAY_SIZE(subdevs));
+> +	if (size <= 0)
+> +		return size;
+> +
+> +	/* Call s_stream() in reverse order to enable sensors last */
+> +	for (i = size - 1; i >= 0; i--) {
+> +		sd = subdevs[i];
+> +		dev_dbg(mdev->dev,
+> +			"enabling stream for '%s'\n", sd->entity.name);
+> +		ret = v4l2_subdev_call(sd, video, s_stream, true);
 
-The issue triggers when we use APIs spi_read() or spi_write_then_read() with tx_buf = NULL
-In these situations rockchip_spi_config() sets the SPI controller in receive only mode:
+The s_stream callback is only called on the very next sub-device upstream
+in the pipeline, not on any further sub-devices. This is because a driver
+for the device knows best in which order things need to be set up.
 
-if (xfer->rx_buf && xfer->tx_buf)
-cr0 |= CR0_XFM_TR << CR0_XFM_OFFSET;
-else if (xfer->rx_buf)
-cr0 |= CR0_XFM_RO << CR0_XFM_OFFSET;
+This could include, for instance, telling a sensor to place its CSI-2
+transmitter to LP-11 state.
 
-and here comes the problem: we see that in this mode the controller receives 1 Byte more than expected (8 more clock cycles on the oscilloscope). The big problem is when rockchip_spi_isr() is triggered, because it finalizes the transfer only when rx_left is 0, but in rockchip_spi_pio_reader() we have:
+> +		if (ret && ret != -ENOIOCTLCMD) {
+> +			v4l2_subdevs_stream_disable(subdevs + i + 1,
+> +						    size - i - 1);
+> +			return ret;
+> +		}
+> +	}
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_enable);
+> +
+> +int v4l2_pipeline_stream_disable(struct video_device *vdev)
+> +{
+> +	struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
+> +	int size;
+> +
+> +	size = v4l2_pipeline_subdevs_get(vdev, subdevs, ARRAY_SIZE(subdevs));
+> +	if (size < 0)
+> +		return size;
+> +
+> +	v4l2_subdevs_stream_disable(subdevs, size);
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_disable);
+> +
+> +#endif /* CONFIG_MEDIA_CONTROLLER */
+> diff --git a/include/media/v4l2-common.h b/include/media/v4l2-common.h
+> index 150ee16ebd81..a278bcf3c5bc 100644
+> --- a/include/media/v4l2-common.h
+> +++ b/include/media/v4l2-common.h
+> @@ -539,4 +539,43 @@ static inline void v4l2_buffer_set_timestamp(struct v4l2_buffer *buf,
+>  	buf->timestamp.tv_usec = ts.tv_nsec / NSEC_PER_USEC;
+>  }
+>  
+> +#if defined(CONFIG_MEDIA_CONTROLLER)
+> +
+> +/**
+> + * v4l2_pipeline_stream_enable - Call .s_stream(true) callbacks in the stream
+> + * @vdev: Starting video device.
+> + *
+> + * Call .s_stream(true) callback in all the subdevices participating in the
+> + * stream, i.e. following links from sink to source.
+> + *
+> + * .s_stream(true) is also called from sink to source, i.e. in a topology
+> + * sd1->sd2->sd3->vdev, .s_stream(true) of sd3 is called first.
+> + *
+> + * Calls to this function can be nested, in which case the same number of
+> + * v4l2_pipeline_stream_disable() calls will be required to disable streaming
+> + * through subdevices in the pipeline.
+> + * The  pipeline pointer must be identical for all nested calls to
+> + * v4l2_pipeline_stream_enable().
+> + */
+> +__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev);
+> +
+> +/**
+> + * v4l2_pipeline_stream_disable - Call .s_stream(false) callbacks in the stream
+> + * @vdev: Starting video device.
+> + *
+> + * Call .s_stream(false) callback in all the subdevices participating in the
+> + * stream, i.e. following links from sink to source.
+> + *
+> + * s_stream(false) is called in a reverse order from
+> + * v4l2_pipeline_stream_enable(), i.e. in a topology sd1->sd2->sd3->vdev,
+> + * .s_stream(false) of sd1 is called first.
+> + *
+> + * If multiple calls to v4l2_pipeline_stream_enable() have been made, the same
+> + * number of calls to this function are required to disable streaming through
+> + * subdevices in the pipeline.
+> + */
+> +int v4l2_pipeline_stream_disable(struct video_device *vdev);
+> +
+> +#endif /* CONFIG_MEDIA_CONTROLLER */
+> +
+>  #endif /* V4L2_COMMON_H_ */
 
-u32 words = readl_relaxed(rs->regs + ROCKCHIP_SPI_RXFLR);
-u32 rx_left = rs->rx_left - words;
+-- 
+Kind regards,
 
-but words is rs->rx_left + 1 for the issue, so we have -1 which is wrapped around, causing a lot of troubles and however not = 0.
-
-We temporary solved the issue adding a check:
-
-u32 words = readl_relaxed(rs->regs + ROCKCHIP_SPI_RXFLR);
-u32 rx_left;
-if(words > rs->rx_left) // ADDED CHECK
-     words = rs->rx_left;
-rx_left = rs->rx_left - words;
-
-Using simultaneus tx and rx it doesn't happen.
-
-Another way to solve our specific problem (not sure if it solves the problem with other configurations) is in rockchip_spi_config (this also removes the extra clock cycles):
-
-case 8:
-     cr0 |= CR0_DFS_8BIT << CR0_DFS_OFFSET;
-     cr1 = xfer->len - 2;
-break;
-
-Instead of
-
-case 8:
-     cr0 |= CR0_DFS_8BIT << CR0_DFS_OFFSET;
-     cr1 = xfer->len - 1;
-break;
-
-But in the documentation, for example
-http://rockchip.fr/RK3288%20TRM/rk3288-chapter-42-serial-peripheral-interface-(spi).pdf
-it seems correct len - 1:
-
-[quotation]
-NDM
-Number of Data Frames
-When Transfer Mode is receive only, this register field sets the number of data frames to be continuously received by the SPI. The SPI continues to receive serial data until the number of data frames received is equal to this register value plus 1, which enables you to receive up to 64 KB of data in a continuous transfer.
-
-Has anyone experienced this issue?
-
-Please keep us on CC in this thread.
-
-Thanks, best regards,
-
-Francesco Zanella
+Sakari Ailus
