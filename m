@@ -1,89 +1,47 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 3/3] doc: rockchip: Document eMMC program steps
-Date: Mon, 25 May 2020 10:53:16 +0800
-Message-ID: <9d3497a8-10b6-8968-0a80-29bdfa3837cd@rock-chips.com>
-References: <20200524173213.201123-1-jagan@amarulasolutions.com>
- <20200524173213.201123-3-jagan@amarulasolutions.com>
+From: Tiezhu Yang <yangtiezhu-cXZgJK919ebM1kAEIRd3EQ@public.gmane.org>
+Subject: [PATCH 1/2] phy: rockchip: Fix return value of inno_dsidphy_probe()
+Date: Mon, 25 May 2020 12:08:58 +0800
+Message-ID: <1590379739-18729-1-git-send-email-yangtiezhu@loongson.cn>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200524173213.201123-3-jagan@amarulasolutions.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
-Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Kishon Vijay Abraham I <kishon-l0cyMroinI0@public.gmane.org>, Vinod Koul <vkoul-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tiezhu Yang <yangtiezhu-cXZgJK919ebM1kAEIRd3EQ@public.gmane.org>, Xuefeng Li <lixuefeng-cXZgJK919ebM1kAEIRd3EQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+When call function devm_platform_ioremap_resource(), we should use IS_ERR()
+to check the return value and return PTR_ERR() if failed.
 
-On 2020/5/25 上午1:32, Jagan Teki wrote:
-> Document eMMC partition creation and program steps for
-> rockchip platforms.
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Fixes: b7535a3bc0ba ("phy/rockchip: Add support for Innosilicon MIPI/LVDS/TTL PHY")
+Signed-off-by: Tiezhu Yang <yangtiezhu-cXZgJK919ebM1kAEIRd3EQ@public.gmane.org>
+---
+ drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
-> ---
->   doc/board/rockchip/rockchip.rst | 32 ++++++++++++++++++++++++++++++--
->   1 file changed, 30 insertions(+), 2 deletions(-)
->
-> diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
-> index cd9c8d6dc4..1faa675aa8 100644
-> --- a/doc/board/rockchip/rockchip.rst
-> +++ b/doc/board/rockchip/rockchip.rst
-> @@ -117,14 +117,42 @@ To write an image that boots from an SD card (assumed to be /dev/sda)::
->           sudo dd if=u-boot-rockchip.bin of=/dev/sda seek=64
->           sync
->   
-> +eMMC
-> +^^^^
-> +
-> +eMMC flash would probe on mmc0 in most of the rockchip platforms.
-> +
-> +Create GPT partition layout as defined in configurations::
-> +
-> +        mmc dev 0
-> +        gpt write mmc 0 $partitions
-> +
-> +Connect the USB-OTG cable between host and target device.
-> +
-> +Launch fastboot at target::
-> +
-> +        fastboot 0
-> +
-> +Upon successful gadget connection,host show the USB device like::
-> +
-> +        lsusb
-> +        Bus 001 Device 020: ID 2207:330c Fuzhou Rockchip Electronics Company RK3399 in Mask ROM mode
-> +
-> +Program the flash::
-> +
-> +        sudo fastboot -i 0x2207 flash loader1 idbloader.img
-> +        sudo fastboot -i 0x2207 flash loader2 u-boot.itb
-> +
-> +Note: for rockchip 32-bit platforms the U-Boot proper image
-> +is u-boot-dtb.img
-> +
->   TODO
->   ----
->   
->   - Add rockchip idbloader image building
->   - Add rockchip TPL image building
->   - Document SPI flash boot
-> -- Describe steps for eMMC flashing
->   - Add missing SoC's with it boards list
->   
->   .. Jagan Teki <jagan@amarulasolutions.com>
-> -.. Fri Jan 10 00:08:40 IST 2020
-> +.. Sunday 24 May 2020 10:08:41 PM IST
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+index a7c6c94..8af8c6c 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-dsidphy.c
+@@ -607,8 +607,8 @@ static int inno_dsidphy_probe(struct platform_device *pdev)
+ 	platform_set_drvdata(pdev, inno);
+ 
+ 	inno->phy_base = devm_platform_ioremap_resource(pdev, 0);
+-	if (!inno->phy_base)
+-		return -ENOMEM;
++	if (IS_ERR(inno->phy_base))
++		return PTR_ERR(inno->phy_base);
+ 
+ 	inno->ref_clk = devm_clk_get(dev, "ref");
+ 	if (IS_ERR(inno->ref_clk)) {
+-- 
+2.1.0
