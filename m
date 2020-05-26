@@ -1,83 +1,64 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v2 2/2] phy: Remove CONFIG_ARCH_* check for related subdir in Makefile
-Date: Mon, 25 May 2020 17:01:38 +0200
-Message-ID: <10793802.6Woqi72AOj@diego>
-References: <1590412138-13903-1-git-send-email-yangtiezhu@loongson.cn> <1590412138-13903-2-git-send-email-yangtiezhu@loongson.cn>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1590412138-13903-2-git-send-email-yangtiezhu@loongson.cn>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tiezhu Yang <yangtiezhu@loongson.cn>
-Cc: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Xuefeng Li <lixuefeng@loongson.cn>
+From: Frank Wang <frank.wang@rock-chips.com>
+Subject: [PATCH v6 01/16] clk: rk3399: Enable/Disable the USB2PHY clk
+Date: Tue, 26 May 2020 11:32:05 +0800
+Message-ID: <20200526033220.20047-2-frank.wang@rock-chips.com>
+References: <20200526033220.20047-1-frank.wang@rock-chips.com>
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200526033220.20047-1-frank.wang@rock-chips.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: heiko@sntech.de, marex@denx.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org, kever.yang@rock-chips.com
+Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Montag, 25. Mai 2020, 15:08:58 CEST schrieb Tiezhu Yang:
-> If CONFIG_ARCH_ROCKCHIP is not set but COMPILE_TEST is set, the file in
-> the subdir rockchip can not be built due to CONFIG_ARCH_ROCKCHIP check
-> in drivers/phy/Makefile.
-> 
-> Since the related configs in drivers/phy/rockchip/Kconfig depend on
-> ARCH_ROCKCHIP, so remove CONFIG_ARCH_ROCKCHIP check for subdir rockchip
-> in drivers/phy/Makefile.
-> 
-> The other CONFIG_ARCH_* about allwinner, amlogic, mediatek, renesas and
-> tegra have the same situation, so remove them too.
-> 
-> Signed-off-by: Tiezhu Yang <yangtiezhu@loongson.cn>
+From: Jagan Teki <jagan@amarulasolutions.com>
 
-I did check the other vendor directories and all options there do
-seem to depend on some ARCH_foo || COMPILE_TEST variant, so
+Enable/Disable the USB2PHY clk for rk3399.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+CLK is clear in enable and set in disable functionality.
 
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+---
+ drivers/clk/rockchip/clk_rk3399.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-Heiko
-
-> ---
-> 
-> v2:
->   - Remove all the CONFIG_ARCH_* check for related subdir in Makefile
->   - Modify the patch subject and update commit message
-> 
->  drivers/phy/Makefile | 14 +++++++-------
->  1 file changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/phy/Makefile b/drivers/phy/Makefile
-> index 310c149..16e2622 100644
-> --- a/drivers/phy/Makefile
-> +++ b/drivers/phy/Makefile
-> @@ -8,24 +8,24 @@ obj-$(CONFIG_GENERIC_PHY_MIPI_DPHY)	+= phy-core-mipi-dphy.o
->  obj-$(CONFIG_PHY_LPC18XX_USB_OTG)	+= phy-lpc18xx-usb-otg.o
->  obj-$(CONFIG_PHY_XGENE)			+= phy-xgene.o
->  obj-$(CONFIG_PHY_PISTACHIO_USB)		+= phy-pistachio-usb.o
-> -obj-$(CONFIG_ARCH_SUNXI)		+= allwinner/
-> -obj-$(CONFIG_ARCH_MESON)		+= amlogic/
-> -obj-$(CONFIG_ARCH_MEDIATEK)		+= mediatek/
-> -obj-$(CONFIG_ARCH_RENESAS)		+= renesas/
-> -obj-$(CONFIG_ARCH_ROCKCHIP)		+= rockchip/
-> -obj-$(CONFIG_ARCH_TEGRA)		+= tegra/
-> -obj-y					+= broadcom/	\
-> +obj-y					+= allwinner/	\
-> +					   amlogic/	\
-> +					   broadcom/	\
->  					   cadence/	\
->  					   freescale/	\
->  					   hisilicon/	\
->  					   intel/	\
->  					   lantiq/	\
->  					   marvell/	\
-> +					   mediatek/	\
->  					   motorola/	\
->  					   mscc/	\
->  					   qualcomm/	\
->  					   ralink/	\
-> +					   renesas/	\
-> +					   rockchip/	\
->  					   samsung/	\
->  					   socionext/	\
->  					   st/		\
-> +					   tegra/	\
->  					   ti/
-> 
+diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
+index 5fb72d83c2..b53f2f984e 100644
+--- a/drivers/clk/rockchip/clk_rk3399.c
++++ b/drivers/clk/rockchip/clk_rk3399.c
+@@ -1091,6 +1091,12 @@ static int rk3399_clk_enable(struct clk *clk)
+ 	case SCLK_MACREF_OUT:
+ 		rk_clrreg(&priv->cru->clkgate_con[5], BIT(6));
+ 		break;
++	case SCLK_USB2PHY0_REF:
++		rk_clrreg(&priv->cru->clkgate_con[6], BIT(5));
++		break;
++	case SCLK_USB2PHY1_REF:
++		rk_clrreg(&priv->cru->clkgate_con[6], BIT(6));
++		break;
+ 	case ACLK_GMAC:
+ 		rk_clrreg(&priv->cru->clkgate_con[32], BIT(0));
+ 		break;
+@@ -1167,6 +1173,12 @@ static int rk3399_clk_disable(struct clk *clk)
+ 	case SCLK_MACREF_OUT:
+ 		rk_setreg(&priv->cru->clkgate_con[5], BIT(6));
+ 		break;
++	case SCLK_USB2PHY0_REF:
++		rk_setreg(&priv->cru->clkgate_con[6], BIT(5));
++		break;
++	case SCLK_USB2PHY1_REF:
++		rk_setreg(&priv->cru->clkgate_con[6], BIT(6));
++		break;
+ 	case ACLK_GMAC:
+ 		rk_setreg(&priv->cru->clkgate_con[32], BIT(0));
+ 		break;
+-- 
+2.17.1
