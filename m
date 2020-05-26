@@ -1,7 +1,7 @@
 From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v6 11/16] usb: dwc3: amend UTMI/UTMIW phy interface setup
-Date: Tue, 26 May 2020 11:34:30 +0800
-Message-ID: <20200526033435.20235-2-frank.wang@rock-chips.com>
+Subject: [PATCH v6 13/16] driver: usb: drop legacy rockchip xhci driver
+Date: Tue, 26 May 2020 11:34:32 +0800
+Message-ID: <20200526033435.20235-4-frank.wang@rock-chips.com>
 References: <20200526033220.20047-1-frank.wang@rock-chips.com>
  <20200526033435.20235-1-frank.wang@rock-chips.com>
 Mime-Version: 1.0
@@ -22,232 +22,252 @@ To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, marex-ynQEQJNshbs@public.gman
 Cc: jianing.ren-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Let move 8/16-bit UTMI+ interface initialization into DWC3 core init
-that is convenient for both DM_USB and u-boot traditional process.
+We have changed to use dwc3 generic driver for usb3.0 host, so the
+legacy Rockchip's xHCI driver is not needed, and drop it.
 
 Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Reviewed-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/usb/common/common.c | 25 ++++++++++++++
- drivers/usb/dwc3/core.c     | 65 +++++++++++++++++++------------------
- drivers/usb/dwc3/core.h     |  5 +++
- include/linux/usb/phy.h     | 18 ++++++++++
- 4 files changed, 82 insertions(+), 31 deletions(-)
+ drivers/usb/host/Kconfig         |   9 --
+ drivers/usb/host/Makefile        |   1 -
+ drivers/usb/host/xhci-rockchip.c | 196 -------------------------------
+ 3 files changed, 206 deletions(-)
+ delete mode 100644 drivers/usb/host/xhci-rockchip.c
 
-diff --git a/drivers/usb/common/common.c b/drivers/usb/common/common.c
-index 0db281b970..d4ae18693c 100644
---- a/drivers/usb/common/common.c
-+++ b/drivers/usb/common/common.c
-@@ -10,6 +10,7 @@
- #include <dm.h>
- #include <linux/usb/otg.h>
- #include <linux/usb/ch9.h>
-+#include <linux/usb/phy.h>
+diff --git a/drivers/usb/host/Kconfig b/drivers/usb/host/Kconfig
+index 2f381dc958..088931a6b9 100644
+--- a/drivers/usb/host/Kconfig
++++ b/drivers/usb/host/Kconfig
+@@ -53,15 +53,6 @@ config USB_XHCI_PCI
+ 	help
+ 	  Enables support for the PCI-based xHCI controller.
  
- DECLARE_GLOBAL_DATA_PTR;
- 
-@@ -64,3 +65,27 @@ enum usb_device_speed usb_get_maximum_speed(ofnode node)
- 
- 	return USB_SPEED_UNKNOWN;
- }
-+
-+#if CONFIG_IS_ENABLED(DM_USB)
-+static const char *const usbphy_modes[] = {
-+	[USBPHY_INTERFACE_MODE_UNKNOWN]	= "",
-+	[USBPHY_INTERFACE_MODE_UTMI]	= "utmi",
-+	[USBPHY_INTERFACE_MODE_UTMIW]	= "utmi_wide",
-+};
-+
-+enum usb_phy_interface usb_get_phy_mode(ofnode node)
-+{
-+	const char *phy_type;
-+	int i;
-+
-+	phy_type = ofnode_get_property(node, "phy_type", NULL);
-+	if (!phy_type)
-+		return USBPHY_INTERFACE_MODE_UNKNOWN;
-+
-+	for (i = 0; i < ARRAY_SIZE(usbphy_modes); i++)
-+		if (!strcmp(phy_type, usbphy_modes[i]))
-+			return i;
-+
-+	return USBPHY_INTERFACE_MODE_UNKNOWN;
-+}
-+#endif
-diff --git a/drivers/usb/dwc3/core.c b/drivers/usb/dwc3/core.c
-index aab6c34c2d..c8cb9e13b2 100644
---- a/drivers/usb/dwc3/core.c
-+++ b/drivers/usb/dwc3/core.c
-@@ -334,6 +334,34 @@ static void dwc3_cache_hwparams(struct dwc3 *dwc)
- 	parms->hwparams8 = dwc3_readl(dwc->regs, DWC3_GHWPARAMS8);
- }
- 
-+static void dwc3_hsphy_mode_setup(struct dwc3 *dwc)
-+{
-+	enum usb_phy_interface hsphy_mode = dwc->hsphy_mode;
-+	u32 reg;
-+
-+	/* Set dwc3 usb2 phy config */
-+	reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYCFG(0));
-+
-+	switch (hsphy_mode) {
-+	case USBPHY_INTERFACE_MODE_UTMI:
-+		reg &= ~(DWC3_GUSB2PHYCFG_PHYIF_MASK |
-+			DWC3_GUSB2PHYCFG_USBTRDTIM_MASK);
-+		reg |= DWC3_GUSB2PHYCFG_PHYIF(UTMI_PHYIF_8_BIT) |
-+			DWC3_GUSB2PHYCFG_USBTRDTIM(USBTRDTIM_UTMI_8_BIT);
-+		break;
-+	case USBPHY_INTERFACE_MODE_UTMIW:
-+		reg &= ~(DWC3_GUSB2PHYCFG_PHYIF_MASK |
-+			DWC3_GUSB2PHYCFG_USBTRDTIM_MASK);
-+		reg |= DWC3_GUSB2PHYCFG_PHYIF(UTMI_PHYIF_16_BIT) |
-+			DWC3_GUSB2PHYCFG_USBTRDTIM(USBTRDTIM_UTMI_16_BIT);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	dwc3_writel(dwc->regs, DWC3_GUSB2PHYCFG(0), reg);
-+}
-+
- /**
-  * dwc3_phy_setup - Configure USB PHY Interface of DWC3 Core
-  * @dwc: Pointer to our controller context structure
-@@ -382,6 +410,8 @@ static void dwc3_phy_setup(struct dwc3 *dwc)
- 
- 	dwc3_writel(dwc->regs, DWC3_GUSB3PIPECTL(0), reg);
- 
-+	dwc3_hsphy_mode_setup(dwc);
-+
- 	mdelay(100);
- 
- 	reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYCFG(0));
-@@ -626,35 +656,6 @@ static void dwc3_core_exit_mode(struct dwc3 *dwc)
- 	dwc3_gadget_run(dwc);
- }
- 
--static void dwc3_uboot_hsphy_mode(struct dwc3_device *dwc3_dev,
--				  struct dwc3 *dwc)
+-config USB_XHCI_ROCKCHIP
+-	bool "Support for Rockchip on-chip xHCI USB controller"
+-	depends on ARCH_ROCKCHIP
+-	depends on DM_REGULATOR
+-	depends on DM_USB
+-	default y
+-	help
+-	  Enables support for the on-chip xHCI controller on Rockchip SoCs.
+-
+ config USB_XHCI_RCAR
+ 	bool "Renesas RCar USB 3.0 support"
+ 	default y
+diff --git a/drivers/usb/host/Makefile b/drivers/usb/host/Makefile
+index e8e3b17e42..29d4f87e38 100644
+--- a/drivers/usb/host/Makefile
++++ b/drivers/usb/host/Makefile
+@@ -48,7 +48,6 @@ obj-$(CONFIG_USB_XHCI_BRCM) += xhci-brcm.o
+ obj-$(CONFIG_USB_XHCI_HCD) += xhci.o xhci-mem.o xhci-ring.o
+ obj-$(CONFIG_USB_XHCI_DWC3) += xhci-dwc3.o
+ obj-$(CONFIG_USB_XHCI_DWC3_OF_SIMPLE) += dwc3-of-simple.o
+-obj-$(CONFIG_USB_XHCI_ROCKCHIP) += xhci-rockchip.o
+ obj-$(CONFIG_USB_XHCI_EXYNOS) += xhci-exynos5.o
+ obj-$(CONFIG_USB_XHCI_FSL) += xhci-fsl.o
+ obj-$(CONFIG_USB_XHCI_MTK) += xhci-mtk.o
+diff --git a/drivers/usb/host/xhci-rockchip.c b/drivers/usb/host/xhci-rockchip.c
+deleted file mode 100644
+index b67722fe45..0000000000
+--- a/drivers/usb/host/xhci-rockchip.c
++++ /dev/null
+@@ -1,196 +0,0 @@
+-// SPDX-License-Identifier: GPL-2.0+
+-/*
+- * Copyright (c) 2016 Rockchip, Inc.
+- * Authors: Daniel Meng <daniel.meng-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+- */
+-#include <common.h>
+-#include <dm.h>
+-#include <malloc.h>
+-#include <usb.h>
+-#include <watchdog.h>
+-#include <linux/errno.h>
+-#include <linux/compat.h>
+-#include <linux/usb/dwc3.h>
+-#include <power/regulator.h>
+-
+-#include <usb/xhci.h>
+-
+-struct rockchip_xhci_platdata {
+-	fdt_addr_t hcd_base;
+-	struct udevice *vbus_supply;
+-};
+-
+-/*
+- * Contains pointers to register base addresses
+- * for the usb controller.
+- */
+-struct rockchip_xhci {
+-	struct usb_platdata usb_plat;
+-	struct xhci_ctrl ctrl;
+-	struct xhci_hccr *hcd;
+-	struct dwc3 *dwc3_reg;
+-};
+-
+-static int xhci_usb_ofdata_to_platdata(struct udevice *dev)
 -{
--	enum usb_phy_interface hsphy_mode = dwc3_dev->hsphy_mode;
--	u32 reg;
+-	struct rockchip_xhci_platdata *plat = dev_get_platdata(dev);
+-	int ret = 0;
 -
--	/* Set dwc3 usb2 phy config */
--	reg = dwc3_readl(dwc->regs, DWC3_GUSB2PHYCFG(0));
--
--	switch (hsphy_mode) {
--	case USBPHY_INTERFACE_MODE_UTMI:
--		reg &= ~(DWC3_GUSB2PHYCFG_PHYIF_MASK |
--			DWC3_GUSB2PHYCFG_USBTRDTIM_MASK);
--		reg |= DWC3_GUSB2PHYCFG_PHYIF(UTMI_PHYIF_8_BIT) |
--			DWC3_GUSB2PHYCFG_USBTRDTIM(USBTRDTIM_UTMI_8_BIT);
--		break;
--	case USBPHY_INTERFACE_MODE_UTMIW:
--		reg &= ~(DWC3_GUSB2PHYCFG_PHYIF_MASK |
--			DWC3_GUSB2PHYCFG_USBTRDTIM_MASK);
--		reg |= DWC3_GUSB2PHYCFG_PHYIF(UTMI_PHYIF_16_BIT) |
--			DWC3_GUSB2PHYCFG_USBTRDTIM(USBTRDTIM_UTMI_16_BIT);
--		break;
--	default:
--		break;
+-	/*
+-	 * Get the base address for XHCI controller from the device node
+-	 */
+-	plat->hcd_base = dev_read_addr(dev);
+-	if (plat->hcd_base == FDT_ADDR_T_NONE) {
+-		pr_err("Can't get the XHCI register base address\n");
+-		return -ENXIO;
 -	}
 -
--	dwc3_writel(dwc->regs, DWC3_GUSB2PHYCFG(0), reg);
+-	/* Vbus regulator */
+-	ret = device_get_supply_regulator(dev, "vbus-supply",
+-					  &plat->vbus_supply);
+-	if (ret)
+-		debug("Can't get VBus regulator!\n");
+-
+-	return 0;
 -}
 -
- #define DWC3_ALIGN_MASK		(16 - 1)
- 
- /**
-@@ -743,6 +744,8 @@ int dwc3_uboot_init(struct dwc3_device *dwc3_dev)
- 	dwc->hird_threshold = hird_threshold
- 		| (dwc->is_utmi_l1_suspend << 4);
- 
-+	dwc->hsphy_mode = dwc3_dev->hsphy_mode;
-+
- 	dwc->index = dwc3_dev->index;
- 
- 	dwc3_cache_hwparams(dwc);
-@@ -767,8 +770,6 @@ int dwc3_uboot_init(struct dwc3_device *dwc3_dev)
- 		goto err0;
- 	}
- 
--	dwc3_uboot_hsphy_mode(dwc3_dev, dwc);
+-/*
+- * rockchip_dwc3_phy_setup() - Configure USB PHY Interface of DWC3 Core
+- * @dwc: Pointer to our controller context structure
+- * @dev: Pointer to ulcass device
+- */
+-static void rockchip_dwc3_phy_setup(struct dwc3 *dwc3_reg,
+-				    struct udevice *dev)
+-{
+-	u32 reg;
+-	u32 utmi_bits;
 -
- 	ret = dwc3_event_buffers_setup(dwc);
- 	if (ret) {
- 		dev_err(dwc->dev, "failed to setup event buffers\n");
-@@ -901,6 +902,8 @@ void dwc3_of_parse(struct dwc3 *dwc)
- 	 */
- 	hird_threshold = 12;
- 
-+	dwc->hsphy_mode = usb_get_phy_mode(dev->node);
-+
- 	dwc->has_lpm_erratum = dev_read_bool(dev,
- 				"snps,has-lpm-erratum");
- 	tmp = dev_read_u8_array_ptr(dev, "snps,lpm-nyet-threshold", 1);
-diff --git a/drivers/usb/dwc3/core.h b/drivers/usb/dwc3/core.h
-index 2adcaf0029..8e562ae6c4 100644
---- a/drivers/usb/dwc3/core.h
-+++ b/drivers/usb/dwc3/core.h
-@@ -21,6 +21,7 @@
- 
- #include <linux/usb/ch9.h>
- #include <linux/usb/otg.h>
-+#include <linux/usb/phy.h>
- 
- #define DWC3_MSG_MAX	500
- 
-@@ -658,6 +659,9 @@ struct dwc3_scratchpad_array {
-  * @maximum_speed: maximum speed requested (mainly for testing purposes)
-  * @revision: revision register contents
-  * @dr_mode: requested mode of operation
-+ * @hsphy_mode: UTMI phy mode, one of following:
-+ *		- USBPHY_INTERFACE_MODE_UTMI
-+ *		- USBPHY_INTERFACE_MODE_UTMIW
-  * @dcfg: saved contents of DCFG register
-  * @gctl: saved contents of GCTL register
-  * @isoch_delay: wValue from Set Isochronous Delay request;
-@@ -749,6 +753,7 @@ struct dwc3 {
- 	size_t			regs_size;
- 
- 	enum usb_dr_mode	dr_mode;
-+	enum usb_phy_interface	hsphy_mode;
- 
- 	/* used for suspend/resume */
- 	u32			dcfg;
-diff --git a/include/linux/usb/phy.h b/include/linux/usb/phy.h
-index 158ca9cd85..1e1217a958 100644
---- a/include/linux/usb/phy.h
-+++ b/include/linux/usb/phy.h
-@@ -10,10 +10,28 @@
- #ifndef __LINUX_USB_PHY_H
- #define __LINUX_USB_PHY_H
- 
-+#include <dm/ofnode.h>
-+
- enum usb_phy_interface {
- 	USBPHY_INTERFACE_MODE_UNKNOWN,
- 	USBPHY_INTERFACE_MODE_UTMI,
- 	USBPHY_INTERFACE_MODE_UTMIW,
- };
- 
-+#if CONFIG_IS_ENABLED(DM_USB)
-+/**
-+ * usb_get_phy_mode - Get phy mode for given device_node
-+ * @np:	Pointer to the given device_node
-+ *
-+ * The function gets phy interface string from property 'phy_type',
-+ * and returns the corresponding enum usb_phy_interface
-+ */
-+enum usb_phy_interface usb_get_phy_mode(ofnode node);
-+#else
-+static inline enum usb_phy_interface usb_get_phy_mode(ofnode node)
-+{
-+	return USBPHY_INTERFACE_MODE_UNKNOWN;
-+}
-+#endif
-+
- #endif /* __LINUX_USB_PHY_H */
+-	/* Set dwc3 usb2 phy config */
+-	reg = readl(&dwc3_reg->g_usb2phycfg[0]);
+-
+-	if (dev_read_bool(dev, "snps,dis-enblslpm-quirk"))
+-		reg &= ~DWC3_GUSB2PHYCFG_ENBLSLPM;
+-
+-	utmi_bits = dev_read_u32_default(dev, "snps,phyif-utmi-bits", -1);
+-	if (utmi_bits == 16) {
+-		reg |= DWC3_GUSB2PHYCFG_PHYIF;
+-		reg &= ~DWC3_GUSB2PHYCFG_USBTRDTIM_MASK;
+-		reg |= DWC3_GUSB2PHYCFG_USBTRDTIM_16BIT;
+-	} else if (utmi_bits == 8) {
+-		reg &= ~DWC3_GUSB2PHYCFG_PHYIF;
+-		reg &= ~DWC3_GUSB2PHYCFG_USBTRDTIM_MASK;
+-		reg |= DWC3_GUSB2PHYCFG_USBTRDTIM_8BIT;
+-	}
+-
+-	if (dev_read_bool(dev, "snps,dis-u2-freeclk-exists-quirk"))
+-		reg &= ~DWC3_GUSB2PHYCFG_U2_FREECLK_EXISTS;
+-
+-	if (dev_read_bool(dev, "snps,dis-u2-susphy-quirk"))
+-		reg &= ~DWC3_GUSB2PHYCFG_SUSPHY;
+-
+-	writel(reg, &dwc3_reg->g_usb2phycfg[0]);
+-}
+-
+-static int rockchip_xhci_core_init(struct rockchip_xhci *rkxhci,
+-				   struct udevice *dev)
+-{
+-	int ret;
+-
+-	ret = dwc3_core_init(rkxhci->dwc3_reg);
+-	if (ret) {
+-		pr_err("failed to initialize core\n");
+-		return ret;
+-	}
+-
+-	rockchip_dwc3_phy_setup(rkxhci->dwc3_reg, dev);
+-
+-	/* We are hard-coding DWC3 core to Host Mode */
+-	dwc3_set_mode(rkxhci->dwc3_reg, DWC3_GCTL_PRTCAP_HOST);
+-
+-	return 0;
+-}
+-
+-static int rockchip_xhci_core_exit(struct rockchip_xhci *rkxhci)
+-{
+-	return 0;
+-}
+-
+-static int xhci_usb_probe(struct udevice *dev)
+-{
+-	struct rockchip_xhci_platdata *plat = dev_get_platdata(dev);
+-	struct rockchip_xhci *ctx = dev_get_priv(dev);
+-	struct xhci_hcor *hcor;
+-	int ret;
+-
+-	ctx->hcd = (struct xhci_hccr *)plat->hcd_base;
+-	ctx->dwc3_reg = (struct dwc3 *)((char *)(ctx->hcd) + DWC3_REG_OFFSET);
+-	hcor = (struct xhci_hcor *)((uint64_t)ctx->hcd +
+-			HC_LENGTH(xhci_readl(&ctx->hcd->cr_capbase)));
+-
+-	if (plat->vbus_supply) {
+-		ret = regulator_set_enable(plat->vbus_supply, true);
+-		if (ret) {
+-			pr_err("XHCI: failed to set VBus supply\n");
+-			return ret;
+-		}
+-	}
+-
+-	ret = rockchip_xhci_core_init(ctx, dev);
+-	if (ret) {
+-		pr_err("XHCI: failed to initialize controller\n");
+-		return ret;
+-	}
+-
+-	return xhci_register(dev, ctx->hcd, hcor);
+-}
+-
+-static int xhci_usb_remove(struct udevice *dev)
+-{
+-	struct rockchip_xhci_platdata *plat = dev_get_platdata(dev);
+-	struct rockchip_xhci *ctx = dev_get_priv(dev);
+-	int ret;
+-
+-	ret = xhci_deregister(dev);
+-	if (ret)
+-		return ret;
+-	ret = rockchip_xhci_core_exit(ctx);
+-	if (ret)
+-		return ret;
+-
+-	if (plat->vbus_supply) {
+-		ret = regulator_set_enable(plat->vbus_supply, false);
+-		if (ret)
+-			pr_err("XHCI: failed to set VBus supply\n");
+-	}
+-
+-	return ret;
+-}
+-
+-static const struct udevice_id xhci_usb_ids[] = {
+-	{ .compatible = "rockchip,rk3328-xhci" },
+-	{ }
+-};
+-
+-U_BOOT_DRIVER(usb_xhci) = {
+-	.name	= "xhci_rockchip",
+-	.id	= UCLASS_USB,
+-	.of_match = xhci_usb_ids,
+-	.ofdata_to_platdata = xhci_usb_ofdata_to_platdata,
+-	.probe = xhci_usb_probe,
+-	.remove = xhci_usb_remove,
+-	.ops	= &xhci_usb_ops,
+-	.bind	= dm_scan_fdt_dev,
+-	.platdata_auto_alloc_size = sizeof(struct rockchip_xhci_platdata),
+-	.priv_auto_alloc_size = sizeof(struct rockchip_xhci),
+-	.flags	= DM_FLAG_ALLOC_PRIV_DMA,
+-};
+-
+-static const struct udevice_id usb_phy_ids[] = {
+-	{ .compatible = "rockchip,rk3328-usb3-phy" },
+-	{ }
+-};
+-
+-U_BOOT_DRIVER(usb_phy) = {
+-	.name = "usb_phy_rockchip",
+-	.of_match = usb_phy_ids,
+-};
 -- 
 2.17.1
