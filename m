@@ -1,64 +1,47 @@
-From: Frank Wang <frank.wang@rock-chips.com>
-Subject: [PATCH v6 01/16] clk: rk3399: Enable/Disable the USB2PHY clk
-Date: Tue, 26 May 2020 11:32:05 +0800
-Message-ID: <20200526033220.20047-2-frank.wang@rock-chips.com>
+From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v6 04/16] arm: mach-rockchip: bind sub-nodes for rk3399_syscon
+Date: Tue, 26 May 2020 11:32:08 +0800
+Message-ID: <20200526033220.20047-5-frank.wang@rock-chips.com>
 References: <20200526033220.20047-1-frank.wang@rock-chips.com>
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200526033220.20047-1-frank.wang@rock-chips.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: heiko@sntech.de, marex@denx.de, bmeng.cn@gmail.com, philipp.tomsich@theobroma-systems.com, klaus.goger@theobroma-systems.com, jagan@amarulasolutions.com, sjg@chromium.org, kever.yang@rock-chips.com
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, marek.belisko@gmail.com, william.wu@rock-chips.com, jianing.ren@rock-chips.com, chenjh@rock-chips.com, wmc@rock-chips.com
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200526033220.20047-1-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, marex-ynQEQJNshbs@public.gmane.org, bmeng.cn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Cc: jianing.ren-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Jagan Teki <jagan@amarulasolutions.com>
+There are some sub-nodes under the grf DT, so add bind callback
+function in rk3399 syscon driver to scan them recursively.
 
-Enable/Disable the USB2PHY clk for rk3399.
-
-CLK is clear in enable and set in disable functionality.
-
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+Signed-off-by: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/clk/rockchip/clk_rk3399.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ arch/arm/mach-rockchip/rk3399/syscon_rk3399.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
-index 5fb72d83c2..b53f2f984e 100644
---- a/drivers/clk/rockchip/clk_rk3399.c
-+++ b/drivers/clk/rockchip/clk_rk3399.c
-@@ -1091,6 +1091,12 @@ static int rk3399_clk_enable(struct clk *clk)
- 	case SCLK_MACREF_OUT:
- 		rk_clrreg(&priv->cru->clkgate_con[5], BIT(6));
- 		break;
-+	case SCLK_USB2PHY0_REF:
-+		rk_clrreg(&priv->cru->clkgate_con[6], BIT(5));
-+		break;
-+	case SCLK_USB2PHY1_REF:
-+		rk_clrreg(&priv->cru->clkgate_con[6], BIT(6));
-+		break;
- 	case ACLK_GMAC:
- 		rk_clrreg(&priv->cru->clkgate_con[32], BIT(0));
- 		break;
-@@ -1167,6 +1173,12 @@ static int rk3399_clk_disable(struct clk *clk)
- 	case SCLK_MACREF_OUT:
- 		rk_setreg(&priv->cru->clkgate_con[5], BIT(6));
- 		break;
-+	case SCLK_USB2PHY0_REF:
-+		rk_setreg(&priv->cru->clkgate_con[6], BIT(5));
-+		break;
-+	case SCLK_USB2PHY1_REF:
-+		rk_setreg(&priv->cru->clkgate_con[6], BIT(6));
-+		break;
- 	case ACLK_GMAC:
- 		rk_setreg(&priv->cru->clkgate_con[32], BIT(0));
- 		break;
+diff --git a/arch/arm/mach-rockchip/rk3399/syscon_rk3399.c b/arch/arm/mach-rockchip/rk3399/syscon_rk3399.c
+index 259ca44d68..f27b0ced82 100644
+--- a/arch/arm/mach-rockchip/rk3399/syscon_rk3399.c
++++ b/arch/arm/mach-rockchip/rk3399/syscon_rk3399.c
+@@ -20,6 +20,9 @@ static const struct udevice_id rk3399_syscon_ids[] = {
+ U_BOOT_DRIVER(syscon_rk3399) = {
+ 	.name = "rk3399_syscon",
+ 	.id = UCLASS_SYSCON,
++#if !CONFIG_IS_ENABLED(OF_PLATDATA)
++	.bind = dm_scan_fdt_dev,
++#endif
+ 	.of_match = rk3399_syscon_ids,
+ };
+ 
 -- 
 2.17.1
