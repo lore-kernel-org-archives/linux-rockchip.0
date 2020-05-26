@@ -1,7 +1,7 @@
 From: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v6 03/16] clk: rk3399: Enable/Disable TCPHY clocks
-Date: Tue, 26 May 2020 11:32:07 +0800
-Message-ID: <20200526033220.20047-4-frank.wang@rock-chips.com>
+Subject: [PATCH v6 02/16] clk: rk3399: Set empty for TCPHY assigned-clocks
+Date: Tue, 26 May 2020 11:32:06 +0800
+Message-ID: <20200526033220.20047-3-frank.wang@rock-chips.com>
 References: <20200526033220.20047-1-frank.wang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -23,55 +23,35 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 
-Enable/Disable TCPHY clock for rk3399 platform.
+Due to v5.7-rc1 sync the SD controller nodes in rk3399.dtsi
+have SCLK_UPHY0_TCPDCORE, SCLK_UPHY1_TCPDCORE assigned-clocks
+which are usually required for Linux and don't require to
+handle them in U-Boot.
+
+  assigned-clocks = <&cru SCLK_UPHY0_TCPDCORE>;
+  assigned-clocks = <&cru SCLK_UPHY1_TCPDCORE>;
+
+So, mark them as empty in clock otherwise device probe on
+those typec phy driver would fail.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
- drivers/clk/rockchip/clk_rk3399.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ drivers/clk/rockchip/clk_rk3399.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/drivers/clk/rockchip/clk_rk3399.c b/drivers/clk/rockchip/clk_rk3399.c
-index 98fc6a3267..06232f1903 100644
+index b53f2f984e..98fc6a3267 100644
 --- a/drivers/clk/rockchip/clk_rk3399.c
 +++ b/drivers/clk/rockchip/clk_rk3399.c
-@@ -1144,6 +1144,18 @@ static int rk3399_clk_enable(struct clk *clk)
- 	case HCLK_HOST1_ARB:
- 		rk_clrreg(&priv->cru->clksel_con[20], BIT(8));
- 		break;
-+	case SCLK_UPHY0_TCPDPHY_REF:
-+		rk_clrreg(&priv->cru->clkgate_con[13], BIT(4));
-+		break;
+@@ -997,6 +997,8 @@ static ulong rk3399_clk_set_rate(struct clk *clk, ulong rate)
+ 	case ACLK_VOP1:
+ 	case HCLK_VOP1:
+ 	case HCLK_SD:
 +	case SCLK_UPHY0_TCPDCORE:
-+		rk_clrreg(&priv->cru->clkgate_con[13], BIT(5));
-+		break;
-+	case SCLK_UPHY1_TCPDPHY_REF:
-+		rk_clrreg(&priv->cru->clkgate_con[13], BIT(6));
-+		break;
 +	case SCLK_UPHY1_TCPDCORE:
-+		rk_clrreg(&priv->cru->clkgate_con[13], BIT(7));
-+		break;
- 	case SCLK_PCIEPHY_REF:
- 		rk_clrreg(&priv->cru->clksel_con[18], BIT(10));
- 		break;
-@@ -1226,6 +1238,18 @@ static int rk3399_clk_disable(struct clk *clk)
- 	case HCLK_HOST1_ARB:
- 		rk_setreg(&priv->cru->clksel_con[20], BIT(8));
- 		break;
-+	case SCLK_UPHY0_TCPDPHY_REF:
-+		rk_setreg(&priv->cru->clkgate_con[13], BIT(4));
-+		break;
-+	case SCLK_UPHY0_TCPDCORE:
-+		rk_setreg(&priv->cru->clkgate_con[13], BIT(5));
-+		break;
-+	case SCLK_UPHY1_TCPDPHY_REF:
-+		rk_setreg(&priv->cru->clkgate_con[13], BIT(6));
-+		break;
-+	case SCLK_UPHY1_TCPDCORE:
-+		rk_setreg(&priv->cru->clkgate_con[13], BIT(7));
-+		break;
- 	case SCLK_PCIEPHY_REF:
- 		rk_clrreg(&priv->cru->clksel_con[18], BIT(10));
- 		break;
+ 		/**
+ 		 * assigned-clocks handling won't require for vopl, so
+ 		 * return 0 to satisfy clk_set_defaults during device probe.
 -- 
 2.17.1
