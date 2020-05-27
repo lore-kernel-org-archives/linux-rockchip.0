@@ -1,92 +1,33 @@
-From: Jaehoon Chung <jh80.chung@samsung.com>
-Subject: Re: [PATCH] mmc: sdhci: Fix HISPD bit handling
-Date: Wed, 27 May 2020 15:20:10 +0900
-Message-ID: <39f02255-e362-9eeb-051b-dd11176d9fea@samsung.com>
-References: <CGME20200524172612epcas1p1c809e840da784f84dfa6296a3b6d03de@epcas1p1.samsung.com>
- <20200524172513.199962-1-jagan@amarulasolutions.com>
+From: Stephen Boyd <sboyd@kernel.org>
+Subject: Re: [PATCH] Revert "clk: rockchip: fix wrong mmc sample phase shift for rk3328"
+Date: Tue, 26 May 2020 23:36:04 -0700
+Message-ID: <159056136421.88029.13822814553469355422@swboyd.mtv.corp.google.com>
+References: <e563eea358181446dc42c99e842c33f7ce911936.1589460539.git.robin.murphy@arm.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200524172513.199962-1-jagan@amarulasolutions.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, u-boot@lists.denx.de
-Cc: sunil@amarulasolutions.com, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Kever Yang <kever.yang@rock-chips.com>, Peng Fan <peng.fan@nxp.com>
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <e563eea358181446dc42c99e842c33f7ce911936.1589460539.git.robin.murphy@arm.com>
+Sender: linux-clk-owner@vger.kernel.org
+To: Robin Murphy <robin.murphy@arm.com>, heiko@sntech.de, mturquette@baylibre.com
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 5/25/20 2:25 AM, Jagan Teki wrote:
-> SDHCI HISPD bits need to be configured based on desired mmc
-> timings mode and some HISPD quirks.
-> 
-> So, handle the HISPD bit based on the mmc computed selected
-> mode(timing parameter) rather than fixed mmc card clock
-> frequency.
-> 
-> Linux handle the HISPD similar like this in below commit,
-> 
-> commit <501639bf2173> ("mmc: sdhci: fix SDHCI_QUIRK_NO_HISPD_BIT handling")
-> 
-> This eventually fixed the mmc write issue observed in
-> rk3399 sdhci controller.
-> 
-> Bug log for refernece,
-> => gpt write mmc 0 $partitions
-> Writing GPT: mmc write failed
-> ** Can't write to device 0 **
-> ** Can't write to device 0 **
-> error!
-> 
-> Cc: Kever Yang <kever.yang@rock-chips.com>
-> Cc: Peng Fan <peng.fan@nxp.com>
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-
-Reviewed-by: Jaehoon Chung <jh80.chung@samsung.com>
-
+Quoting Robin Murphy (2020-05-14 05:58:14)
+> This reverts commit 82f4b67f018c88a7cc9337f0067ed3d6ec352648.
+>=20
+> According to a subsequent revert in the vendor kernel, the original
+> change was based on unclear documentation and was in fact incorrect.
+>=20
+> Emprically, my board's SD card at 50MHz and eMMC at 200MHZ seem to get
+> lucky with a phase where it had no impact, but limiting the eMMC clock
+> to 150MHz to match the nominal limit for the I/O pins made it virtually
+> unusable, constantly throwing errors and retuning. With this revert, it
+> starts behaving perfectly at 150MHz too.
+>=20
+> Fixes: 82f4b67f018c ("clk: rockchip: fix wrong mmc sample phase shift for=
+ rk3328")
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 > ---
->  drivers/mmc/sdhci.c | 23 +++++++++++++++--------
->  1 file changed, 15 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/mmc/sdhci.c b/drivers/mmc/sdhci.c
-> index 92cc8434af..280b8c88eb 100644
-> --- a/drivers/mmc/sdhci.c
-> +++ b/drivers/mmc/sdhci.c
-> @@ -594,14 +594,21 @@ static int sdhci_set_ios(struct mmc *mmc)
->  			ctrl &= ~SDHCI_CTRL_4BITBUS;
->  	}
->  
-> -	if (mmc->clock > 26000000)
-> -		ctrl |= SDHCI_CTRL_HISPD;
-> -	else
-> -		ctrl &= ~SDHCI_CTRL_HISPD;
-> -
-> -	if ((host->quirks & SDHCI_QUIRK_NO_HISPD_BIT) ||
-> -	    (host->quirks & SDHCI_QUIRK_BROKEN_HISPD_MODE))
-> -		ctrl &= ~SDHCI_CTRL_HISPD;
-> +	if (!(host->quirks & SDHCI_QUIRK_NO_HISPD_BIT) ||
-> +	    !(host->quirks & SDHCI_QUIRK_BROKEN_HISPD_MODE)) {
-> +		if (mmc->selected_mode == MMC_HS ||
-> +		    mmc->selected_mode == SD_HS ||
-> +		    mmc->selected_mode == MMC_DDR_52 ||
-> +		    mmc->selected_mode == MMC_HS_200 ||
-> +		    mmc->selected_mode == MMC_HS_400 ||
-> +		    mmc->selected_mode == UHS_SDR25 ||
-> +		    mmc->selected_mode == UHS_SDR50 ||
-> +		    mmc->selected_mode == UHS_SDR104 ||
-> +		    mmc->selected_mode == UHS_DDR50)
-> +			ctrl |= SDHCI_CTRL_HISPD;
-> +		else
-> +			ctrl &= ~SDHCI_CTRL_HISPD;
-> +	}
->  
->  	sdhci_writeb(host, ctrl, SDHCI_HOST_CONTROL);
->  
-> 
+
+Heiko?
