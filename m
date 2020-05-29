@@ -1,216 +1,203 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v4 0/5] media: add v4l2_pipeline_stream_{enable,disable}
-Date: Fri, 29 May 2020 16:48:04 +0200
-Message-ID: <CAAFQd5BwAZPKSELm29vdfPEn838vy6Mu02WjJp5f1B=ZzLU_5Q@mail.gmail.com>
-References: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
- <1c8bd467-5a9c-7285-ec23-d0d864a5f938@collabora.com> <CAAFQd5BW9TF0iMRPCUwk3oZn-WrisMW794EuwfqZRTkmNqeKoA@mail.gmail.com>
- <20200526185754.GA25880@pendragon.ideasonboard.com> <50929a55-a071-aa09-eb1a-96776c61c147@collabora.com>
- <CAAFQd5ASEvyzHKQZjunpF-=du5AA0w6b9fGMi9xjTCbMrPhLVw@mail.gmail.com>
- <CAAFQd5Bcu+OP-2Uwkrq79C+0WAvFox-gxmcqYqkB6gpEPoABrw@mail.gmail.com> <7ce3e2cb-60ab-bf0f-6d0a-7bcf0c73d6b8@collabora.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Subject: Re: [PATCH v4 02/11] thermal: Store thermal mode in a dedicated enum
+Date: Fri, 29 May 2020 07:48:21 -0700
+Message-ID: <20200529144821.GA93994@roeck-us.net>
+References: <4493c0e4-51aa-3907-810c-74949ff27ca4@samsung.com>
+ <20200528192051.28034-1-andrzej.p@collabora.com>
+ <20200528192051.28034-3-andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <7ce3e2cb-60ab-bf0f-6d0a-7bcf0c73d6b8@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Shuah Khan <skhan@linuxfoundation.org>, =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <netdev-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200528192051.28034-3-andrzej.p@collabora.com>
+Sender: netdev-owner@vger.kernel.org
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Cc: linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Vishal Kulkarni <vishal@chelsio.com>, Luca Coelho <luciano.coelho@intel.com>, Miquel Raynal <miquel.raynal@bootlin.com>, kernel@collabora.com, Fabio Estevam <festevam@gmail.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Allison Randal <allison@lohutok.net>, NXP Linux Team <linux-imx@nxp.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, May 29, 2020 at 3:49 PM Helen Koike <helen.koike@collabora.com> wrote:
->
-> Hi,
->
-> On 5/29/20 10:27 AM, Tomasz Figa wrote:
-> > [Fixing Niklas's address.]
-> >
-> > On Fri, May 29, 2020 at 3:26 PM Tomasz Figa <tfiga@chromium.org> wrote:
-> >>
-> >> On Thu, May 28, 2020 at 6:21 PM Dafna Hirschfeld
-> >> <dafna.hirschfeld@collabora.com> wrote:
-> >>>
-> >>> Hi Tomasz, Helen, Laurent
-> >>>
-> >>> On 26.05.20 20:57, Laurent Pinchart wrote:
-> >>>> Hi Tomasz,
-> >>>>
-> >>>> On Tue, May 26, 2020 at 06:11:00PM +0200, Tomasz Figa wrote:
-> >>>>> On Fri, May 22, 2020 at 11:06 AM Helen Koike <helen.koike@collabora.com> wrote:
-> >>>>>> On 5/22/20 4:55 AM, Dafna Hirschfeld wrote:
-> >>>>>>> Hi,
-> >>>>>>> This is v4 of the patchset that was sent by Helen Koike.
-> >>>>>>>
-> >>>>>>> Media drivers need to iterate through the pipeline and call .s_stream()
-> >>>>>>> callbacks in the subdevices.
-> >>>>>>>
-> >>>>>>> Instead of repeating code, add helpers for this.
-> >>>>>>>
-> >>>>>>> These helpers will go walk through the pipeline only visiting entities
-> >>>>>>> that participates in the stream, i.e. it follows links from sink to source
-> >>>>>>> (and not the opposite).
-> >>>>>>> For example, in a topology like this https://bit.ly/3b2MxjI
-> >>>>>>> calling v4l2_pipeline_stream_enable() from rkisp1_mainpath won't call
-> >>>>>>> .s_stream(true) for rkisp1_resizer_selfpath.
-> >>>>>>>
-> >>>>>>> stream_count variable was added in v4l2_subdevice to handle nested calls
-> >>>>>>> to the helpers.
-> >>>>>>> This is useful when the driver allows streaming from more then one
-> >>>>>>> capture device sharing subdevices.
-> >>>>>>
-> >>>>>> If I understand correctly, this isn't  true anymore right? Nested calls aren't
-> >>>>>> possible anymore since this version doesn't contain stream_count in struct v4l2_subdevice.
-> >>>>>>
-> >>>>>> Documentation of v4l2_pipeline_stream_*() should also be updated.
-> >>>>>>
-> >>>>>> Just to be clear, without the nested call, vimc will require to add its own
-> >>>>>> counters, patch https://patchwork.kernel.org/patch/10948833/ will be
-> >>>>>> required again to allow multi streaming.
-> >>>>>>
-> >>>>>> Also, patch "media: staging: rkisp1: cap: use v4l2_pipeline_stream_{enable,disable}"
-> >>>>>> is cleaner in the previous version (with stream_count in struct v4l2_subdevice).
-> >>>>>>
-> >>>>>> All drivers that allows multi streaming will need to implement some special handling.
-> >>>>>>
-> >>>>>> Adding stream_count in struct v4l2_subdevice still seems cleaner to me. I'd like to hear
-> >>>>>> what others think.
-> >>>>>
-> >>>>> I certainly would see this reference counting done in generic code,
-> >>>>> because requiring every driver to do it simply adds to the endless
-> >>>
-> >>> It is required only for drivers that support multistreaming. I don't know much
-> >>> about other driver except of the ones I am working on, is it a common case?
-> >>>
-> >>
-> >> I'm not very familiar with the older camera I/F drivers, but multiple
-> >> streams isn't anything unusual for camera hardware. I recall the old
-> >> Samsung FIMC already having support for separate preview and capture
-> >> outputs.
-> >>
-> >> Also adding the reference counting on framework level probably
-> >> wouldn't really hurt drivers which only have 1 stream anyway.
-> >>
-> >>>>> amount of boiler plate that V4L2 currently requires from the drivers.
-> >>>>> :(
-> >>>>>
-> >>>>> I wonder if it wouldn't be possible to redesign the framework so that
-> >>>>> .s_stream() at the subdev level is only called when it's expected to
-> >>>>> either start or stop this particular subdev and driver's
-> >>>>> implementation can simply execute the requested action.
-> >>>
-> >>> You mean that a generic code similar to the helper functions in this patchset
-> >>> will be used for all drivers, so that drivers don't call s_stream for subdevices
-> >>> anymore?
-> >>> Anyway, this patchset just adds helper functions, it does not redesign the code.
-> >>> Maybe the stream_count can be updated in the v4l2_subdev_call macro ?
-> >>> This why it can be used not just for the helper functions.
-> >>
-> >> Sorry, just thinking out loud. Generally if we look at other kAPIs,
-> >> such as the drm_crtc_helper_funcs [1] or regulator_ops [2], the driver
-> >> provided implementation doesn't have to care about duplicate
-> >> enable/disable requests.
->
-> Thanks for this pointer.
->
-> >>
-> >> [1] https://elixir.bootlin.com/linux/v5.7-rc7/source/include/drm/drm_modeset_helper_vtables.h#L61
-> >> [2] https://elixir.bootlin.com/linux/v5.7-rc7/source/include/linux/regulator/driver.h#L144
-> >>
-> >> If we could prohibit calling v4l2_subdev_ops::s_stream() by the
-> >> drivers directly and instead add something like
-> >> v4l2_subdev_s_stream(), the latter could do reference counting on its
-> >> own and then only call v4l2_subdev_ops::s_stream() when the reference
-> >> count changes between 0 and 1.
->
-> This is basically how v3 was implemented https://patchwork.kernel.org/patch/11489583/
+On Thu, May 28, 2020 at 09:20:42PM +0200, Andrzej Pietrasiewicz wrote:
+> Prepare for storing mode in struct thermal_zone_device.
+> 
+> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+> ---
+>  drivers/acpi/thermal.c                        | 27 +++++++++----------
+>  drivers/platform/x86/acerhdf.c                |  8 ++++--
+>  .../intel/int340x_thermal/int3400_thermal.c   | 18 +++++--------
+>  3 files changed, 25 insertions(+), 28 deletions(-)
+> 
+> diff --git a/drivers/acpi/thermal.c b/drivers/acpi/thermal.c
+> index 6de8066ca1e7..fb46070c66d8 100644
+> --- a/drivers/acpi/thermal.c
+> +++ b/drivers/acpi/thermal.c
+> @@ -172,7 +172,7 @@ struct acpi_thermal {
+>  	struct acpi_thermal_trips trips;
+>  	struct acpi_handle_list devices;
+>  	struct thermal_zone_device *thermal_zone;
+> -	int tz_enabled;
+> +	enum thermal_device_mode mode;
+>  	int kelvin_offset;	/* in millidegrees */
+>  	struct work_struct thermal_check_work;
+>  };
+> @@ -500,7 +500,7 @@ static void acpi_thermal_check(void *data)
+>  {
+>  	struct acpi_thermal *tz = data;
+>  
+> -	if (!tz->tz_enabled)
+> +	if (tz->mode != THERMAL_DEVICE_ENABLED)
+>  		return;
+>  
+>  	thermal_zone_device_update(tz->thermal_zone,
+> @@ -534,8 +534,7 @@ static int thermal_get_mode(struct thermal_zone_device *thermal,
+>  	if (!tz)
+>  		return -EINVAL;
+>  
+> -	*mode = tz->tz_enabled ? THERMAL_DEVICE_ENABLED :
+> -		THERMAL_DEVICE_DISABLED;
+> +	*mode = tz->mode;
+>  
+>  	return 0;
+>  }
+> @@ -544,27 +543,25 @@ static int thermal_set_mode(struct thermal_zone_device *thermal,
+>  				enum thermal_device_mode mode)
+>  {
+>  	struct acpi_thermal *tz = thermal->devdata;
+> -	int enable;
+>  
+>  	if (!tz)
+>  		return -EINVAL;
+>  
+> +	if (mode != THERMAL_DEVICE_DISABLED &&
+> +	    mode != THERMAL_DEVICE_ENABLED)
+> +		return -EINVAL;
 
-Not exactly. There are 2 separate problems being addressed here:
-1) Iterating over the pipeline and starting streaming on all the entities,
-2) Preventing duplicate calls to s_stream().
+Personally I find this check unnecessary: The enum has no other values,
+and it is verifyable that the callers provide the enum and not some other
+value.
 
-v3 attempted to address problem 2) by the way of addressing problem
-1). However problem 2) can also occur on its own, outside of the
-pipeline start/stop, because s_stream is a standalone subdev
-operation, exposed both to the userspace via UAPI and to the drivers
-via the pseudo-kAPI (v4l2_subdev_call()). If 2) was solved on the
-level of the kAPI, i.e. removing v4l2_subdev_call() and replacing it
-with dedicated functions for operations like s_stream, refcounting
-could be implemented inside of such functions, without the need to do
-it in the pipeline iteration helpers.
+>  	/*
+>  	 * enable/disable thermal management from ACPI thermal driver
+>  	 */
+> -	if (mode == THERMAL_DEVICE_ENABLED)
+> -		enable = 1;
+> -	else if (mode == THERMAL_DEVICE_DISABLED) {
+> -		enable = 0;
+> +	if (mode == THERMAL_DEVICE_DISABLED)
+>  		pr_warn("thermal zone will be disabled\n");
+> -	} else
+> -		return -EINVAL;
+>  
+> -	if (enable != tz->tz_enabled) {
+> -		tz->tz_enabled = enable;
+> +	if (mode != tz->mode) {
+> +		tz->mode = mode;
+>  		ACPI_DEBUG_PRINT((ACPI_DB_INFO,
+>  			"%s kernel ACPI thermal control\n",
+> -			tz->tz_enabled ? "Enable" : "Disable"));
+> +			tz->mode == THERMAL_DEVICE_ENABLED ?
+> +			"Enable" : "Disable"));
+>  		acpi_thermal_check(tz);
+>  	}
+>  	return 0;
+> @@ -915,7 +912,7 @@ static int acpi_thermal_register_thermal_zone(struct acpi_thermal *tz)
+>  		goto remove_dev_link;
+>  	}
+>  
+> -	tz->tz_enabled = 1;
+> +	tz->mode = THERMAL_DEVICE_ENABLED;
+>  
+>  	dev_info(&tz->device->dev, "registered as thermal_zone%d\n",
+>  		 tz->thermal_zone->id);
+> diff --git a/drivers/platform/x86/acerhdf.c b/drivers/platform/x86/acerhdf.c
+> index 8cc86f4e3ac1..830a8b060e74 100644
+> --- a/drivers/platform/x86/acerhdf.c
+> +++ b/drivers/platform/x86/acerhdf.c
+> @@ -68,6 +68,7 @@ static int kernelmode = 1;
+>  #else
+>  static int kernelmode;
+>  #endif
+> +static enum thermal_device_mode thermal_mode;
+>  
+>  static unsigned int interval = 10;
+>  static unsigned int fanon = 60000;
+> @@ -397,6 +398,7 @@ static inline void acerhdf_revert_to_bios_mode(void)
+>  {
+>  	acerhdf_change_fanstate(ACERHDF_FAN_AUTO);
+>  	kernelmode = 0;
+> +	thermal_mode = THERMAL_DEVICE_DISABLED;
+>  	if (thz_dev)
+>  		thz_dev->polling_delay = 0;
+>  	pr_notice("kernel mode fan control OFF\n");
+> @@ -404,6 +406,7 @@ static inline void acerhdf_revert_to_bios_mode(void)
+>  static inline void acerhdf_enable_kernelmode(void)
+>  {
+>  	kernelmode = 1;
+> +	thermal_mode = THERMAL_DEVICE_ENABLED;
+>  
+>  	thz_dev->polling_delay = interval*1000;
+>  	thermal_zone_device_update(thz_dev, THERMAL_EVENT_UNSPECIFIED);
+> @@ -416,8 +419,7 @@ static int acerhdf_get_mode(struct thermal_zone_device *thermal,
+>  	if (verbose)
+>  		pr_notice("kernel mode fan control %d\n", kernelmode);
+>  
+> -	*mode = (kernelmode) ? THERMAL_DEVICE_ENABLED
+> -			     : THERMAL_DEVICE_DISABLED;
+> +	*mode = thermal_mode;
+>  
+>  	return 0;
+>  }
+> @@ -739,6 +741,8 @@ static int __init acerhdf_register_thermal(void)
+>  	if (IS_ERR(cl_dev))
+>  		return -EINVAL;
+>  
+> +	thermal_mode = kernelmode ?
+> +		THERMAL_DEVICE_ENABLED : THERMAL_DEVICE_DISABLED;
+>  	thz_dev = thermal_zone_device_register("acerhdf", 2, 0, NULL,
+>  					      &acerhdf_dev_ops,
+>  					      &acerhdf_zone_params, 0,
+> diff --git a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+> index 0b3a62655843..e84faaadff87 100644
+> --- a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+> +++ b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+> @@ -48,7 +48,7 @@ struct int3400_thermal_priv {
+>  	struct acpi_device *adev;
+>  	struct platform_device *pdev;
+>  	struct thermal_zone_device *thermal;
+> -	int mode;
+> +	enum thermal_device_mode mode;
+>  	int art_count;
+>  	struct art *arts;
+>  	int trt_count;
+> @@ -395,24 +395,20 @@ static int int3400_thermal_set_mode(struct thermal_zone_device *thermal,
+>  				enum thermal_device_mode mode)
+>  {
+>  	struct int3400_thermal_priv *priv = thermal->devdata;
+> -	bool enable;
+>  	int result = 0;
+>  
+>  	if (!priv)
+>  		return -EINVAL;
+>  
+> -	if (mode == THERMAL_DEVICE_ENABLED)
+> -		enable = true;
+> -	else if (mode == THERMAL_DEVICE_DISABLED)
+> -		enable = false;
+> -	else
+> +	if (mode != THERMAL_DEVICE_ENABLED &&
+> +	    mode != THERMAL_DEVICE_DISABLED)
+>  		return -EINVAL;
 
->
-> And the main concern (from what I understood) was to add a stream_count
-> under struct v4l2_subdev, that is only touched by the helpers, so this
-> stream_count field would be useless for drivers not using the helpers.
-> which, imho, it is not a big problem.
+Same as above.
 
-I believe that's exactly because the two problems I mentioned above
-are actually separate problems and a solution for 1) can't solve 2)
-fully.
-
->
-> I think we gain more with a common implementation.
->
-> >>
-> >> One problem I see with this series is that I'm not sure if it's always
-> >> guaranteed that all the drivers in the pipeline would actually use the
-> >> generic helpers.
->
-> I'm not sure we should always guarantee usage of generic helpers, since
-> drivers may want to initialize subdevices in a specific order.
->
-
-If we treat the 2 problems separately, the helpers for 1) could be
-still optional, but the new calls for 2) would be mandatory.
-
-> >> If there is a driver in the pipeline which just calls
-> >> v4l2_subdev_ops::s_stream() on some other subdev on its own, it
-> >> wouldn't be aware of the reference count and bad things could happen
-> >> (e.g. the subdev stopped despite the count being > 0).
->
-> I don't think this is a problem, since v4l2_subdev_ops::s_stream() are
-> usually triggered by a STREAM_ON on a video node. So or the video node driver
-> uses the helpers, or it calls v4l2_subdev_ops::s_stream() on subdevices directly.
->
-
-That's not a kAPI guarantee. Any driver is free to call
-v4l2_subdev_call(..., s_stream) whenever it wants.
-
-> Unless if, we could have a case where we have multiple video nodes in the
-> same topology that is implemented by different drivers, which seems odd
-> to me.
-
-That's not the only case. There are some devices, such as the adv748x
-CSI-2 transmitter which manage the rest of the pipeline on their own,
-e.g.
-
-https://elixir.bootlin.com/linux/v5.7-rc7/source/drivers/media/i2c/adv748x/adv748x-csi2.c#L116
-
-In this case, the generic helpers invoked by the ISP driver would
-compete with the explicit configuration done by the driver. However,
-if we solve the problem 2) at the kAPI level, that wouldn't be an
-issue anymore, because the generic helpers and explicit calls would
-simply grab additional reference counts.
-
-Best regards,
-Tomasz
-
->
-> Regards,
-> Helen
->
-> >>
-> >> However, I'm afraid this is more of the kAPI design issue and could be
-> >> require quite a significant effort to be straightened out.
-> >>
-> >> Best regards,
-> >> Tomasz
-> >>
-> >>>
-> >>> Thanks,
-> >>> Dafna
-> >>>
-> >>>>
-> >>>> I'd very much like that. Note that I think a few drivers abuse the on
-> >>>> parameter to the function to pass other values than 0 or 1. We'd have to
-> >>>> fix those first (or maybe it has been done already, it's been a long
-> >>>> time since I last checked).
-> >>>>
+>  
+> -	if (enable != priv->mode) {
+> -		priv->mode = enable;
+> +	if (mode != priv->mode) {
+> +		priv->mode = mode;
+>  		result = int3400_thermal_run_osc(priv->adev->handle,
+> -						 priv->current_uuid_index,
+> -						 enable);
+> +						priv->current_uuid_index,
+> +						mode == THERMAL_DEVICE_ENABLED);
+>  	}
+>  
+>  	evaluate_odvp(priv);
