@@ -1,384 +1,84 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v4 05/11] thermal: remove get_mode() operation of drivers
-Date: Fri, 29 May 2020 12:10:33 -0700
-Message-ID: <20200529191033.GA174642@roeck-us.net>
+From: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH 0/8] Convert the intel iommu driver to the dma-iommu api
+Date: Fri, 29 May 2020 23:11:49 +0200
+Message-ID: <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
+References: <20191221150402.13868-1-murphyt7@tcd.ie>
+        <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
+        <20200529124523.GA11817@infradead.org>
+        <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
+        <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-acpi-owner@vger.kernel.org>
-Content-Disposition: inline
-Sender: linux-acpi-owner@vger.kernel.org
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Vishal Kulkarni <vishal@chelsio.com>, Luca Coelho <luciano.coelho@intel.com>, Miquel Raynal <miquel.raynal@bootlin.com>, kernel@collabora.com, Fabio Estevam <festevam@gmail.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Allison Randal <allison@lohutok.net>, NXP Linux Team <linux-imx@nxp.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <33137cfb-603c-86e8-1091-f36117ecfaf3-OTvnGxWRz7hWk0Htik3J/w@public.gmane.org>
+Content-Language: en-US
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Logan Gunthorpe <logang-OTvnGxWRz7hWk0Htik3J/w@public.gmane.org>, Christoph Hellwig <hch-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>
+Cc: Tom Murphy <murphyt7-/Zw1syy4LHg@public.gmane.org>, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, kvm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Julien Grall <julien.grall-5wv7dgnIgG8@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jean-Philippe Brucker <jean-philippe-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Marc Zyngier <maz-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, intel-gfx-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Alex
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, May 28, 2020 at 09:20:45PM +0200, Andrzej Pietrasiewicz wrote:
-> get_mode() is now redundant, as the state is stored in struct
-> thermal_zone_device.
-> 
-> Consequently the "mode" attribute in sysfs can always be visible, because
-> it is always possible to get the mode from struct tzd.
-> 
-> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Hi Logan,
 
-Based on separate feedback/dscussion:
+On 29.05.2020 21:05, Logan Gunthorpe wrote:
+> On 2020-05-29 6:45 a.m., Christoph Hellwig wrote:
+>> On Thu, May 28, 2020 at 06:00:44PM -0600, Logan Gunthorpe wrote:
+>>>> This issue is most likely in the i915 driver and is most likely caused by the driver not respecting the return value of the dma_map_ops::map_sg function. You can see the driver ignoring the return value here:
+>>>> https://protect2.fireeye.com/url?k=ca25a34b-97f7b813-ca242804-0cc47a31c8b4-0ecdffc9f56851e1&q=1&u=https%3A%2F%2Fgithub.com%2Ftorvalds%2Flinux%2Fblob%2F7e0165b2f1a912a06e381e91f0f4e495f4ac3736%2Fdrivers%2Fgpu%2Fdrm%2Fi915%2Fgem%2Fi915_gem_dmabuf.c%23L51
+>>>>
+>>>> Previously this didn’t cause issues because the intel map_sg always returned the same number of elements as the input scatter gather list but with the change to this dma-iommu api this is no longer the case. I wasn’t able to track the bug down to a specific line of code unfortunately.
+>> Mark did a big audit into the map_sg API abuse and initially had
+>> some i915 patches, but then gave up on them with this comment:
+>>
+>> "The biggest TODO is DRM/i915 driver and I don't feel brave enough to fix
+>>   it fully. The driver creatively uses sg_table->orig_nents to store the
+>>   size of the allocate scatterlist and ignores the number of the entries
+>>   returned by dma_map_sg function. In this patchset I only fixed the
+>>   sg_table objects exported by dmabuf related functions. I hope that I
+>>   didn't break anything there."
+>>
+>> it would be really nice if the i915 maintainers could help with sorting
+>> that API abuse out.
+>>
+> I agree completely that the API abuse should be sorted out, but I think
+> that's much larger than just the i915 driver. Pretty much every dma-buf
+> map_dma_buf implementation I looked at ignores the returned nents of
+> sg_attrs. This sucks, but I don't think it's the bug Tom ran into. See:
+>
+> amdgpu_dma_buf_map
+> armada_gem_prime_map_dma_buf
+> drm_gem_map_dma_buf
+> i915_gem_map_dma_buf
+> tegra_gem_prime_map_dma_buf
+>
+> So this should probably be addressed by the whole GPU community.
 
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+Patches are pending:
+https://lore.kernel.org/linux-iommu/20200513132114.6046-1-m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org/T/
 
-Guenter
+> However, as Robin pointed out, there are other ugly tricks like stopping
+> iterating through the SGL when sg_dma_len() is zero. For example, the
+> AMD driver appears to use drm_prime_sg_to_page_addr_arrays() which does
+> this trick and thus likely isn't buggy (otherwise, I'd expect someone to
+> have complained by now seeing AMD has already switched to IOMMU-DMA.
 
-> ---
->  drivers/acpi/thermal.c                        |  9 ------
->  .../ethernet/mellanox/mlxsw/core_thermal.c    | 19 ------------
->  drivers/platform/x86/acerhdf.c                | 12 --------
->  drivers/thermal/da9062-thermal.c              |  8 -----
->  drivers/thermal/imx_thermal.c                 |  9 ------
->  .../intel/int340x_thermal/int3400_thermal.c   |  9 ------
->  .../thermal/intel/intel_quark_dts_thermal.c   |  8 -----
->  drivers/thermal/thermal_core.c                |  7 +----
->  drivers/thermal/thermal_of.c                  |  9 ------
->  drivers/thermal/thermal_sysfs.c               | 30 ++-----------------
->  include/linux/thermal.h                       |  2 --
->  11 files changed, 3 insertions(+), 119 deletions(-)
-> 
-> diff --git a/drivers/acpi/thermal.c b/drivers/acpi/thermal.c
-> index 4ba273f49d87..592be97c4456 100644
-> --- a/drivers/acpi/thermal.c
-> +++ b/drivers/acpi/thermal.c
-> @@ -525,14 +525,6 @@ static int thermal_get_temp(struct thermal_zone_device *thermal, int *temp)
->  	return 0;
->  }
->  
-> -static int thermal_get_mode(struct thermal_zone_device *thermal,
-> -				enum thermal_device_mode *mode)
-> -{
-> -	*mode = thermal->mode;
-> -
-> -	return 0;
-> -}
-> -
->  static int thermal_set_mode(struct thermal_zone_device *thermal,
->  				enum thermal_device_mode mode)
->  {
-> @@ -847,7 +839,6 @@ static struct thermal_zone_device_ops acpi_thermal_zone_ops = {
->  	.bind = acpi_thermal_bind_cooling_device,
->  	.unbind	= acpi_thermal_unbind_cooling_device,
->  	.get_temp = thermal_get_temp,
-> -	.get_mode = thermal_get_mode,
->  	.set_mode = thermal_set_mode,
->  	.get_trip_type = thermal_get_trip_type,
->  	.get_trip_temp = thermal_get_trip_temp,
-> diff --git a/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c b/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
-> index aa082e8a0b13..6e26678ac312 100644
-> --- a/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
-> +++ b/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
-> @@ -275,14 +275,6 @@ static int mlxsw_thermal_unbind(struct thermal_zone_device *tzdev,
->  	return 0;
->  }
->  
-> -static int mlxsw_thermal_get_mode(struct thermal_zone_device *tzdev,
-> -				  enum thermal_device_mode *mode)
-> -{
-> -	*mode = tzdev->mode;
-> -
-> -	return 0;
-> -}
-> -
->  static int mlxsw_thermal_set_mode(struct thermal_zone_device *tzdev,
->  				  enum thermal_device_mode mode)
->  {
-> @@ -403,7 +395,6 @@ static int mlxsw_thermal_trend_get(struct thermal_zone_device *tzdev,
->  static struct thermal_zone_device_ops mlxsw_thermal_ops = {
->  	.bind = mlxsw_thermal_bind,
->  	.unbind = mlxsw_thermal_unbind,
-> -	.get_mode = mlxsw_thermal_get_mode,
->  	.set_mode = mlxsw_thermal_set_mode,
->  	.get_temp = mlxsw_thermal_get_temp,
->  	.get_trip_type	= mlxsw_thermal_get_trip_type,
-> @@ -462,14 +453,6 @@ static int mlxsw_thermal_module_unbind(struct thermal_zone_device *tzdev,
->  	return err;
->  }
->  
-> -static int mlxsw_thermal_module_mode_get(struct thermal_zone_device *tzdev,
-> -					 enum thermal_device_mode *mode)
-> -{
-> -	*mode = tzdev->mode;
-> -
-> -	return 0;
-> -}
-> -
->  static int mlxsw_thermal_module_mode_set(struct thermal_zone_device *tzdev,
->  					 enum thermal_device_mode mode)
->  {
-> @@ -591,7 +574,6 @@ mlxsw_thermal_module_trip_hyst_set(struct thermal_zone_device *tzdev, int trip,
->  static struct thermal_zone_device_ops mlxsw_thermal_module_ops = {
->  	.bind		= mlxsw_thermal_module_bind,
->  	.unbind		= mlxsw_thermal_module_unbind,
-> -	.get_mode	= mlxsw_thermal_module_mode_get,
->  	.set_mode	= mlxsw_thermal_module_mode_set,
->  	.get_temp	= mlxsw_thermal_module_temp_get,
->  	.get_trip_type	= mlxsw_thermal_module_trip_type_get,
-> @@ -630,7 +612,6 @@ static int mlxsw_thermal_gearbox_temp_get(struct thermal_zone_device *tzdev,
->  static struct thermal_zone_device_ops mlxsw_thermal_gearbox_ops = {
->  	.bind		= mlxsw_thermal_module_bind,
->  	.unbind		= mlxsw_thermal_module_unbind,
-> -	.get_mode	= mlxsw_thermal_module_mode_get,
->  	.set_mode	= mlxsw_thermal_module_mode_set,
->  	.get_temp	= mlxsw_thermal_gearbox_temp_get,
->  	.get_trip_type	= mlxsw_thermal_module_trip_type_get,
-> diff --git a/drivers/platform/x86/acerhdf.c b/drivers/platform/x86/acerhdf.c
-> index 97b288485837..32c5fe16b7f7 100644
-> --- a/drivers/platform/x86/acerhdf.c
-> +++ b/drivers/platform/x86/acerhdf.c
-> @@ -413,17 +413,6 @@ static inline void acerhdf_enable_kernelmode(void)
->  	pr_notice("kernel mode fan control ON\n");
->  }
->  
-> -static int acerhdf_get_mode(struct thermal_zone_device *thermal,
-> -			    enum thermal_device_mode *mode)
-> -{
-> -	if (verbose)
-> -		pr_notice("kernel mode fan control %d\n", kernelmode);
-> -
-> -	*mode = thermal->mode;
-> -
-> -	return 0;
-> -}
-> -
->  /*
->   * set operation mode;
->   * enabled: the thermal layer of the kernel takes care about
-> @@ -490,7 +479,6 @@ static struct thermal_zone_device_ops acerhdf_dev_ops = {
->  	.bind = acerhdf_bind,
->  	.unbind = acerhdf_unbind,
->  	.get_temp = acerhdf_get_ec_temp,
-> -	.get_mode = acerhdf_get_mode,
->  	.set_mode = acerhdf_set_mode,
->  	.get_trip_type = acerhdf_get_trip_type,
->  	.get_trip_hyst = acerhdf_get_trip_hyst,
-> diff --git a/drivers/thermal/da9062-thermal.c b/drivers/thermal/da9062-thermal.c
-> index a14c7981c7c7..a7ac8afb063e 100644
-> --- a/drivers/thermal/da9062-thermal.c
-> +++ b/drivers/thermal/da9062-thermal.c
-> @@ -120,13 +120,6 @@ static irqreturn_t da9062_thermal_irq_handler(int irq, void *data)
->  	return IRQ_HANDLED;
->  }
->  
-> -static int da9062_thermal_get_mode(struct thermal_zone_device *z,
-> -				   enum thermal_device_mode *mode)
-> -{
-> -	*mode = z->mode;
-> -	return 0;
-> -}
-> -
->  static int da9062_thermal_get_trip_type(struct thermal_zone_device *z,
->  					int trip,
->  					enum thermal_trip_type *type)
-> @@ -179,7 +172,6 @@ static int da9062_thermal_get_temp(struct thermal_zone_device *z,
->  
->  static struct thermal_zone_device_ops da9062_thermal_ops = {
->  	.get_temp	= da9062_thermal_get_temp,
-> -	.get_mode	= da9062_thermal_get_mode,
->  	.get_trip_type	= da9062_thermal_get_trip_type,
->  	.get_trip_temp	= da9062_thermal_get_trip_temp,
->  };
-> diff --git a/drivers/thermal/imx_thermal.c b/drivers/thermal/imx_thermal.c
-> index 9a1114d721b6..2c7ee5da608a 100644
-> --- a/drivers/thermal/imx_thermal.c
-> +++ b/drivers/thermal/imx_thermal.c
-> @@ -330,14 +330,6 @@ static int imx_get_temp(struct thermal_zone_device *tz, int *temp)
->  	return 0;
->  }
->  
-> -static int imx_get_mode(struct thermal_zone_device *tz,
-> -			enum thermal_device_mode *mode)
-> -{
-> -	*mode = tz->mode;
-> -
-> -	return 0;
-> -}
-> -
->  static int imx_set_mode(struct thermal_zone_device *tz,
->  			enum thermal_device_mode mode)
->  {
-> @@ -464,7 +456,6 @@ static struct thermal_zone_device_ops imx_tz_ops = {
->  	.bind = imx_bind,
->  	.unbind = imx_unbind,
->  	.get_temp = imx_get_temp,
-> -	.get_mode = imx_get_mode,
->  	.set_mode = imx_set_mode,
->  	.get_trip_type = imx_get_trip_type,
->  	.get_trip_temp = imx_get_trip_temp,
-> diff --git a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-> index f65b2fc09198..9a622aaf29dd 100644
-> --- a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-> +++ b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-> @@ -377,14 +377,6 @@ static int int3400_thermal_get_temp(struct thermal_zone_device *thermal,
->  	return 0;
->  }
->  
-> -static int int3400_thermal_get_mode(struct thermal_zone_device *thermal,
-> -				enum thermal_device_mode *mode)
-> -{
-> -	*mode = thermal->mode;
-> -
-> -	return 0;
-> -}
-> -
->  static int int3400_thermal_set_mode(struct thermal_zone_device *thermal,
->  				enum thermal_device_mode mode)
->  {
-> @@ -412,7 +404,6 @@ static int int3400_thermal_set_mode(struct thermal_zone_device *thermal,
->  
->  static struct thermal_zone_device_ops int3400_thermal_ops = {
->  	.get_temp = int3400_thermal_get_temp,
-> -	.get_mode = int3400_thermal_get_mode,
->  	.set_mode = int3400_thermal_set_mode,
->  };
->  
-> diff --git a/drivers/thermal/intel/intel_quark_dts_thermal.c b/drivers/thermal/intel/intel_quark_dts_thermal.c
-> index d77cb3df5ade..c4879b4bfbf1 100644
-> --- a/drivers/thermal/intel/intel_quark_dts_thermal.c
-> +++ b/drivers/thermal/intel/intel_quark_dts_thermal.c
-> @@ -308,13 +308,6 @@ static int sys_get_curr_temp(struct thermal_zone_device *tzd,
->  	return 0;
->  }
->  
-> -static int sys_get_mode(struct thermal_zone_device *tzd,
-> -				enum thermal_device_mode *mode)
-> -{
-> -	*mode = tzd->mode;
-> -	return 0;
-> -}
-> -
->  static int sys_set_mode(struct thermal_zone_device *tzd,
->  				enum thermal_device_mode mode)
->  {
-> @@ -336,7 +329,6 @@ static struct thermal_zone_device_ops tzone_ops = {
->  	.get_trip_type = sys_get_trip_type,
->  	.set_trip_temp = sys_set_trip_temp,
->  	.get_crit_temp = sys_get_crit_temp,
-> -	.get_mode = sys_get_mode,
->  	.set_mode = sys_set_mode,
->  };
->  
-> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
-> index b71196eaf90e..14d3b1b94c4f 100644
-> --- a/drivers/thermal/thermal_core.c
-> +++ b/drivers/thermal/thermal_core.c
-> @@ -1456,7 +1456,6 @@ static int thermal_pm_notify(struct notifier_block *nb,
->  			     unsigned long mode, void *_unused)
->  {
->  	struct thermal_zone_device *tz;
-> -	enum thermal_device_mode tz_mode;
->  
->  	switch (mode) {
->  	case PM_HIBERNATION_PREPARE:
-> @@ -1469,11 +1468,7 @@ static int thermal_pm_notify(struct notifier_block *nb,
->  	case PM_POST_SUSPEND:
->  		atomic_set(&in_suspend, 0);
->  		list_for_each_entry(tz, &thermal_tz_list, node) {
-> -			tz_mode = THERMAL_DEVICE_ENABLED;
-> -			if (tz->ops->get_mode)
-> -				tz->ops->get_mode(tz, &tz_mode);
-> -
-> -			if (tz_mode == THERMAL_DEVICE_DISABLED)
-> +			if (tz->mode == THERMAL_DEVICE_DISABLED)
->  				continue;
->  
->  			thermal_zone_device_init(tz);
-> diff --git a/drivers/thermal/thermal_of.c b/drivers/thermal/thermal_of.c
-> index c495b1e48ef2..ba65d48a48cb 100644
-> --- a/drivers/thermal/thermal_of.c
-> +++ b/drivers/thermal/thermal_of.c
-> @@ -267,14 +267,6 @@ static int of_thermal_unbind(struct thermal_zone_device *thermal,
->  	return 0;
->  }
->  
-> -static int of_thermal_get_mode(struct thermal_zone_device *tz,
-> -			       enum thermal_device_mode *mode)
-> -{
-> -	*mode = tz->mode;
-> -
-> -	return 0;
-> -}
-> -
->  static int of_thermal_set_mode(struct thermal_zone_device *tz,
->  			       enum thermal_device_mode mode)
->  {
-> @@ -389,7 +381,6 @@ static int of_thermal_get_crit_temp(struct thermal_zone_device *tz,
->  }
->  
->  static struct thermal_zone_device_ops of_thermal_ops = {
-> -	.get_mode = of_thermal_get_mode,
->  	.set_mode = of_thermal_set_mode,
->  
->  	.get_trip_type = of_thermal_get_trip_type,
-> diff --git a/drivers/thermal/thermal_sysfs.c b/drivers/thermal/thermal_sysfs.c
-> index aa99edb4dff7..096370977068 100644
-> --- a/drivers/thermal/thermal_sysfs.c
-> +++ b/drivers/thermal/thermal_sysfs.c
-> @@ -49,18 +49,9 @@ static ssize_t
->  mode_show(struct device *dev, struct device_attribute *attr, char *buf)
->  {
->  	struct thermal_zone_device *tz = to_thermal_zone(dev);
-> -	enum thermal_device_mode mode;
-> -	int result;
-> -
-> -	if (!tz->ops->get_mode)
-> -		return -EPERM;
->  
-> -	result = tz->ops->get_mode(tz, &mode);
-> -	if (result)
-> -		return result;
-> -
-> -	return sprintf(buf, "%s\n", mode == THERMAL_DEVICE_ENABLED ? "enabled"
-> -		       : "disabled");
-> +	return sprintf(buf, "%s\n", tz->mode == THERMAL_DEVICE_ENABLED ?
-> +		       "enabled" : "disabled");
->  }
->  
->  static ssize_t
-> @@ -428,30 +419,13 @@ static struct attribute_group thermal_zone_attribute_group = {
->  	.attrs = thermal_zone_dev_attrs,
->  };
->  
-> -/* We expose mode only if .get_mode is present */
->  static struct attribute *thermal_zone_mode_attrs[] = {
->  	&dev_attr_mode.attr,
->  	NULL,
->  };
->  
-> -static umode_t thermal_zone_mode_is_visible(struct kobject *kobj,
-> -					    struct attribute *attr,
-> -					    int attrno)
-> -{
-> -	struct device *dev = container_of(kobj, struct device, kobj);
-> -	struct thermal_zone_device *tz;
-> -
-> -	tz = container_of(dev, struct thermal_zone_device, device);
-> -
-> -	if (tz->ops->get_mode)
-> -		return attr->mode;
-> -
-> -	return 0;
-> -}
-> -
->  static struct attribute_group thermal_zone_mode_attribute_group = {
->  	.attrs = thermal_zone_mode_attrs,
-> -	.is_visible = thermal_zone_mode_is_visible,
->  };
->  
->  /* We expose passive only if passive trips are present */
-> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
-> index 5f91d7f04512..a808f6fa2777 100644
-> --- a/include/linux/thermal.h
-> +++ b/include/linux/thermal.h
-> @@ -76,8 +76,6 @@ struct thermal_zone_device_ops {
->  		       struct thermal_cooling_device *);
->  	int (*get_temp) (struct thermal_zone_device *, int *);
->  	int (*set_trips) (struct thermal_zone_device *, int, int);
-> -	int (*get_mode) (struct thermal_zone_device *,
-> -			 enum thermal_device_mode *);
->  	int (*set_mode) (struct thermal_zone_device *,
->  		enum thermal_device_mode);
->  	int (*get_trip_type) (struct thermal_zone_device *, int,
+I'm not sure that this is a trick. Stopping at zero sg_dma_len() was 
+somewhere documented.
+
+> As I tried to point out in my previous email, i915 does not do this
+> trick. In fact, it completely ignores sg_dma_len() and is thus
+> completely broken. See i915_scatterlist.h and the __sgt_iter() function.
+> So it doesn't sound to me like Mark's fix would address the issue at
+> all. Per my previous email, I'd guess that it can be fixed simply by
+> adjusting the __sgt_iter() function to do something more sensible.
+> (Better yet, if possible, ditch __sgt_iter() and use the common DRM
+> function that AMD uses).
+>
+> This would at least allow us to make progress with Tom's IOMMU-DMA patch
+> set and once that gets in, it will be harder for other drivers to make
+> the same mistake.
+
+Best regards
+-- 
+Marek Szyprowski, PhD
+Samsung R&D Institute Poland
