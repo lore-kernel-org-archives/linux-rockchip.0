@@ -1,115 +1,64 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH] dt-bindings: input: touchscreen: edt-ft5x06: change reg
- property
-Date: Fri, 29 May 2020 00:02:49 +0200
-Message-ID: <12739492.Qs6HZxOyHu@diego>
-References: <20200520073327.6016-1-jbx6244@gmail.com>
- <4727344.YYj2SkWT1V@diego> <20200528220136.GA748777@bogus>
+From: Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [PATCH 0/8] Convert the intel iommu driver to the
+ dma-iommu api
+Date: Thu, 28 May 2020 18:00:44 -0600
+Message-ID: <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
+References: <20191221150402.13868-1-murphyt7@tcd.ie>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200528220136.GA748777@bogus>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Rob Herring <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, Dmitry Torokhov <dmitry.torokhov@gmail.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org, Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <intel-gfx-bounces@lists.freedesktop.org>
+In-Reply-To: <20191221150402.13868-1-murphyt7@tcd.ie>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.freedesktop.org/mailman/options/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=unsubscribe>
+List-Archive: <https://lists.freedesktop.org/archives/intel-gfx>
+List-Post: <mailto:intel-gfx@lists.freedesktop.org>
+List-Help: <mailto:intel-gfx-request@lists.freedesktop.org?subject=help>
+List-Subscribe: <https://lists.freedesktop.org/mailman/listinfo/intel-gfx>,
+ <mailto:intel-gfx-request@lists.freedesktop.org?subject=subscribe>
+Errors-To: intel-gfx-bounces@lists.freedesktop.org
+Sender: "Intel-gfx" <intel-gfx-bounces@lists.freedesktop.org>
+To: Tom Murphy <murphyt7@tcd.ie>, iommu@lists.linux-foundation.org
+Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Julien Grall <julien.grall@arm.com>, Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Jean-Philippe Brucker <jean-philippe@linaro.org>, linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org, intel-gfx@lists.freedesktop.org, Eric Auger <eric.auger@redhat.com>, linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org, Thomas Gleixner <tglx@linutronix.de>, virtualization@lists.linux-foundation.org, linux-arm-k
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 29. Mai 2020, 00:01:36 CEST schrieb Rob Herring:
-> On Wed, May 20, 2020 at 08:41:59PM +0200, Heiko St=FCbner wrote:
-> > Hi Dmitry,
-> > =
-
-> > Am Mittwoch, 20. Mai 2020, 19:13:24 CEST schrieb Dmitry Torokhov:
-> > > Hi Johan,
-> > > =
-
-> > > On Wed, May 20, 2020 at 09:33:27AM +0200, Johan Jonker wrote:
-> > > > A test with the command below gives this error:
-> > > > =
-
-> > > > arch/arm/boot/dts/rk3188-bqedison2qc.dt.yaml:
-> > > > touchscreen@3e: reg:0:0: 56 was expected
-> > > > =
-
-> > > > The touchscreen chip on 'rk3188-bqedison2qc' and other BQ models
-> > > > was shipped with different addresses then the binding currently all=
-ows.
-> > > > Change the reg property that any address will pass.
-> > > > =
-
-> > > > make ARCH=3Darm dtbs_check
-> > > > DT_SCHEMA_FILES=3DDocumentation/devicetree/bindings/input/touchscre=
-en/
-> > > > edt-ft5x06.yaml
-> > > > =
-
-> > > > Signed-off-by: Johan Jonker <jbx6244@gmail.com>
-> > > > ---
-> > > >  Documentation/devicetree/bindings/input/touchscreen/edt-ft5x06.yam=
-l | 2 +-
-> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > > > =
-
-> > > > diff --git a/Documentation/devicetree/bindings/input/touchscreen/ed=
-t-ft5x06.yaml b/Documentation/devicetree/bindings/input/touchscreen/edt-ft5=
-x06.yaml
-> > > > index 383d64a91..baa8e8f7e 100644
-> > > > --- a/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x0=
-6.yaml
-> > > > +++ b/Documentation/devicetree/bindings/input/touchscreen/edt-ft5x0=
-6.yaml
-> > > > @@ -42,7 +42,7 @@ properties:
-> > > >        - focaltech,ft6236
-> > > >  =
-
-> > > >    reg:
-> > > > -    const: 0x38
-> > > > +    maxItems: 1
-> > > =
-
-> > > Should we have a list of valid addresses instead of allowing any
-> > > address? Controllers usually have only a couple of addresses that they
-> > > support.
-> > =
-
-> > from what I've read, the fdt touchscreen controllers are just a generic
-> > cpu with device-specific (or better panel-specific) firmware, which see=
-ms
-> > to include the address as well - so it looks to be variable.
-> > =
-
-> > But of course that is only 2nd hand knowledge for me ;-)
-> > =
-
-> > =
-
-> > But also, the i2c address is something you cannot really mess up,
-> > either it is correct and your touchscreen works, or it isn't and and
-> > adding entries to this list every time a new address variant pops up
-> > feels clumsy.
-> =
-
-> Is that an Ack?
-
-for the patch itself:
-Acked-by: Heiko Stuebner <heiko@sntech.de>
-
-
-> I'm fine either way. It's really only useful if there's a single =
-
-> address because with a list it could still be wrong just as any other =
-
-> data like an interrupt number could be wrong.
-> =
-
-> Rob
-> =
+SGkgVG9tLAoKT24gMjAxOS0xMi0yMSA4OjAzIGEubS4sIFRvbSBNdXJwaHkgd3JvdGU6Cj4gVGhp
+cyBwYXRjaHNldCBjb252ZXJ0cyB0aGUgaW50ZWwgaW9tbXUgZHJpdmVyIHRvIHRoZSBkbWEtaW9t
+bXUgYXBpLgoKSnVzdCB3YW50ZWQgdG8gbm90ZSB0aGF0IEkndmUgcmViYXNlZCB5b3VyIHNlcmll
+cyBvbiByZWNlbnQga2VybmVscyBhbmQKaGF2ZSBkb25lIHNvbWUgdGVzdGluZyBvbiBteSBvbGQg
+U2FuZHlicmlkZ2UgbWFjaGluZSAod2l0aG91dCB0aGUgRE8gTk9UCk1FUkdFIHBhdGNoKSBhbmQg
+aGF2ZSBmb3VuZCBubyBpc3N1ZXMuIEkgaG9wZSB0aGlzIGNhbiBtYWtlIHByb2dyZXNzCnNvb24g
+YW5kIGdldCBtZXJnZWQgc29vbi4gSWYgeW91IGxpa2UgeW91IGNhbiBhZGQ6CgpUZXN0ZWQtQnk6
+IExvZ2FuIEd1bnRob3JwZSA8bG9nYW5nQGRlbHRhdGVlLmNvbT4KCj4gV2hpbGUgY29udmVydGlu
+ZyB0aGUgZHJpdmVyIEkgZXhwb3NlZCBhIGJ1ZyBpbiB0aGUgaW50ZWwgaTkxNSBkcml2ZXIgd2hp
+Y2ggY2F1c2VzIGEgaHVnZSBhbW91bnQgb2YgYXJ0aWZhY3RzIG9uIHRoZSBzY3JlZW4gb2YgbXkg
+bGFwdG9wLiBZb3UgY2FuIHNlZSBhIHBpY3R1cmUgb2YgaXQgaGVyZToKPiBodHRwczovL2dpdGh1
+Yi5jb20vcGlwcHkzNjAva2VybmVsUGF0Y2hlcy9ibG9iL21hc3Rlci9JTUdfMjAxOTEyMTlfMjI1
+OTIyLmpwZwo+IAo+IFRoaXMgaXNzdWUgaXMgbW9zdCBsaWtlbHkgaW4gdGhlIGk5MTUgZHJpdmVy
+IGFuZCBpcyBtb3N0IGxpa2VseSBjYXVzZWQgYnkgdGhlIGRyaXZlciBub3QgcmVzcGVjdGluZyB0
+aGUgcmV0dXJuIHZhbHVlIG9mIHRoZSBkbWFfbWFwX29wczo6bWFwX3NnIGZ1bmN0aW9uLiBZb3Ug
+Y2FuIHNlZSB0aGUgZHJpdmVyIGlnbm9yaW5nIHRoZSByZXR1cm4gdmFsdWUgaGVyZToKPiBodHRw
+czovL2dpdGh1Yi5jb20vdG9ydmFsZHMvbGludXgvYmxvYi83ZTAxNjViMmYxYTkxMmEwNmUzODFl
+OTFmMGY0ZTQ5NWY0YWMzNzM2L2RyaXZlcnMvZ3B1L2RybS9pOTE1L2dlbS9pOTE1X2dlbV9kbWFi
+dWYuYyNMNTEKPiAKPiBQcmV2aW91c2x5IHRoaXMgZGlkbuKAmXQgY2F1c2UgaXNzdWVzIGJlY2F1
+c2UgdGhlIGludGVsIG1hcF9zZyBhbHdheXMgcmV0dXJuZWQgdGhlIHNhbWUgbnVtYmVyIG9mIGVs
+ZW1lbnRzIGFzIHRoZSBpbnB1dCBzY2F0dGVyIGdhdGhlciBsaXN0IGJ1dCB3aXRoIHRoZSBjaGFu
+Z2UgdG8gdGhpcyBkbWEtaW9tbXUgYXBpIHRoaXMgaXMgbm8gbG9uZ2VyIHRoZSBjYXNlLiBJIHdh
+c27igJl0IGFibGUgdG8gdHJhY2sgdGhlIGJ1ZyBkb3duIHRvIGEgc3BlY2lmaWMgbGluZSBvZiBj
+b2RlIHVuZm9ydHVuYXRlbHkuICAKCkkgZGlkIHNvbWUgZGlnZ2luZyBpbnRvIHRoaXMgbXlzZWxm
+IGFuZCB3aGlsZSBJIGRvbid0IGhhdmUgZnVsbCBwYXRjaCwgSQp0aGluayBJIHRyYWNlZCBpdCBj
+bG9zZXIgdG8gdGhlIHByb2JsZW0uCgpTYWRseSwgaWdub3JpbmcgdGhlIG51bWJlciBvZiBuZW50
+cyByZXR1cm5lZCBieSBtYXBfc2coKSBpcyBlbmRlbWljIHRvCmRtYS1idWYgdXNlcnMsIGJ1dCBB
+TUQncyBHUFUgZHJpdmVyIHNlZW1zIHRvIGRvIHRoZSBzYW1lIHRoaW5nLApwcmVzdW1hYmx5IHdp
+dGhvdXQgaXNzdWVzLgoKRGlnZ2luZyBhIGJpdCBmdXJ0aGVyLCBJIGZvdW5kIHRoYXQgdGhlIGk5
+MTUgaGFzIGFuICJpbm5vdmF0aXZlIiB3YXkgb2YKaXRlcmF0aW5nIHRocm91Z2ggU0dMcywgc2Vl
+IFsxXS4gSSBzdXNwZWN0IGlmIF9fc2d0X2l0ZXIgaXMgY2hhbmdlZCB0bwppbmNyZW1lbnQgd2l0
+aCBzZ19kbWFfbGVuKCkgYW5kIHJldHVybiBOVUxMIHdoZW4gdGhlcmUgaXMgbm8gbGVuZ3RoCmxl
+ZnQsIGl0IG1heSBmaXggdGhlIGlzc3VlLgoKQnV0LCBzb3JyeSwgSSBkb24ndCByZWFsbHkgaGF2
+ZSB0aGUgbWVhbnMgb3IgdGltZSB0byBmaXggYW5kIHRlc3QgdGhpcwpteXNlbGYuCgpUaGFua3Ms
+CgpMb2dhbgoKWzFdCmh0dHBzOi8vZWxpeGlyLmJvb3RsaW4uY29tL2xpbnV4L3Y1LjctcmM3L3Nv
+dXJjZS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X3NjYXR0ZXJsaXN0LmgjTDc2Cl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLWdmeCBtYWlsaW5n
+IGxpc3QKSW50ZWwtZ2Z4QGxpc3RzLmZyZWVkZXNrdG9wLm9yZwpodHRwczovL2xpc3RzLmZyZWVk
+ZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLWdmeAo=
