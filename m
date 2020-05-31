@@ -1,126 +1,388 @@
-From: Jerry Snitselaar <jsnitsel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v2 00/33] iommu: Move iommu_group setup to IOMMU core code
-Date: Fri, 29 May 2020 15:16:23 -0700
-Message-ID: <20200529221623.qc6twmpzryh7nkvb@cantor>
-References: <20200414131542.25608-1-joro@8bytes.org>
-Reply-To: Jerry Snitselaar <jsnitsel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+From: "=?utf-8?B?Yi5sLmh1YW5n?=" <banglang.huang-H32Fclmsjq1BDgjK7y7TUQ@public.gmane.org>
+Subject: [PATCHv4][1/2] rockchip: rk3328: add rock-pi-e dts file
+Date: Sun, 31 May 2020 17:43:35 +0800
+Message-ID: <tencent_512E4A30DC48A95E5030CEDC1E833E38E805@qq.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200414131542.25608-1-joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
-Cc: Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Lu Baolu <baolu.lu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Jean-Philippe Brucker <jean-philippe-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, virtualiza
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: =?utf-8?B?dS1ib290?= <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>
+Cc: =?utf-8?B?cGhpbGlwcC50b21zaWNo?= <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, =?utf-8?B?dHJpbmk=?= <trini-OWPKS81ov/FWk0Htik3J/w@public.gmane.org>, =?utf-8?B?Q2hlbi1ZdSZuYnNwO1RzYWk=?= <wens-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, =?utf-8?B?a2V2ZXIueWFuZw==?= <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, =?utf-8?B?bGludXgtcm9ja2NoaXA=?= <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue Apr 14 20, Joerg Roedel wrote:
->Hi,
->
->here is the second version of this patch-set. The first version with
->some more introductory text can be found here:
->
->	https://lore.kernel.org/lkml/20200407183742.4344-1-joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org/
->
->Changes v1->v2:
->
->	* Rebased to v5.7-rc1
->
->	* Re-wrote the arm-smmu changes as suggested by Robin Murphy
->
->	* Re-worked the Exynos patches to hopefully not break the
->	  driver anymore
->
->	* Fixed a missing mutex_unlock() reported by Marek Szyprowski,
->	  thanks for that.
->
->There is also a git-branch available with these patches applied:
->
->	https://git.kernel.org/pub/scm/linux/kernel/git/joro/linux.git/log/?h=iommu-probe-device-v2
->
->Please review.
->
->Thanks,
->
->	Joerg
->
->Joerg Roedel (32):
->  iommu: Move default domain allocation to separate function
->  iommu/amd: Implement iommu_ops->def_domain_type call-back
->  iommu/vt-d: Wire up iommu_ops->def_domain_type
->  iommu/amd: Remove dma_mask check from check_device()
->  iommu/amd: Return -ENODEV in add_device when device is not handled by
->    IOMMU
->  iommu: Add probe_device() and remove_device() call-backs
->  iommu: Move default domain allocation to iommu_probe_device()
->  iommu: Keep a list of allocated groups in __iommu_probe_device()
->  iommu: Move new probe_device path to separate function
->  iommu: Split off default domain allocation from group assignment
->  iommu: Move iommu_group_create_direct_mappings() out of
->    iommu_group_add_device()
->  iommu: Export bus_iommu_probe() and make is safe for re-probing
->  iommu/amd: Remove dev_data->passthrough
->  iommu/amd: Convert to probe/release_device() call-backs
->  iommu/vt-d: Convert to probe/release_device() call-backs
->  iommu/arm-smmu: Convert to probe/release_device() call-backs
->  iommu/pamu: Convert to probe/release_device() call-backs
->  iommu/s390: Convert to probe/release_device() call-backs
->  iommu/virtio: Convert to probe/release_device() call-backs
->  iommu/msm: Convert to probe/release_device() call-backs
->  iommu/mediatek: Convert to probe/release_device() call-backs
->  iommu/mediatek-v1 Convert to probe/release_device() call-backs
->  iommu/qcom: Convert to probe/release_device() call-backs
->  iommu/rockchip: Convert to probe/release_device() call-backs
->  iommu/tegra: Convert to probe/release_device() call-backs
->  iommu/renesas: Convert to probe/release_device() call-backs
->  iommu/omap: Remove orphan_dev tracking
->  iommu/omap: Convert to probe/release_device() call-backs
->  iommu/exynos: Use first SYSMMU in controllers list for IOMMU core
->  iommu/exynos: Convert to probe/release_device() call-backs
->  iommu: Remove add_device()/remove_device() code-paths
->  iommu: Unexport iommu_group_get_for_dev()
->
->Sai Praneeth Prakhya (1):
->  iommu: Add def_domain_type() callback in iommu_ops
->
-> drivers/iommu/amd_iommu.c       |  97 ++++----
-> drivers/iommu/amd_iommu_types.h |   1 -
-> drivers/iommu/arm-smmu-v3.c     |  38 +--
-> drivers/iommu/arm-smmu.c        |  39 ++--
-> drivers/iommu/exynos-iommu.c    |  24 +-
-> drivers/iommu/fsl_pamu_domain.c |  22 +-
-> drivers/iommu/intel-iommu.c     |  68 +-----
-> drivers/iommu/iommu.c           | 393 +++++++++++++++++++++++++-------
-> drivers/iommu/ipmmu-vmsa.c      |  60 ++---
-> drivers/iommu/msm_iommu.c       |  34 +--
-> drivers/iommu/mtk_iommu.c       |  24 +-
-> drivers/iommu/mtk_iommu_v1.c    |  50 ++--
-> drivers/iommu/omap-iommu.c      |  99 ++------
-> drivers/iommu/qcom_iommu.c      |  24 +-
-> drivers/iommu/rockchip-iommu.c  |  26 +--
-> drivers/iommu/s390-iommu.c      |  22 +-
-> drivers/iommu/tegra-gart.c      |  24 +-
-> drivers/iommu/tegra-smmu.c      |  31 +--
-> drivers/iommu/virtio-iommu.c    |  41 +---
-> include/linux/iommu.h           |  21 +-
-> 20 files changed, 533 insertions(+), 605 deletions(-)
->
->-- 
->2.17.1
->
->_______________________________________________
->iommu mailing list
->iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
->https://lists.linuxfoundation.org/mailman/listinfo/iommu
->
+The ROCK-PI-E is a credit card size SBC based on Rockchip RK3328
+Quad-Core ARM Cortex A53.
 
-Hi Joerg,
+    Net - Dual ethernet port, 1 X Gbe, 1 X 100M
+    USB - USB 3.0
+    DC  - USB-Type C, 5V 2A
+    Storage - TF card, eMMC
 
-With this patchset, I have an epyc system where if I boot with
-iommu=nopt and force a dump I will see some io page faults for a nic
-on the system. The vmcore is harvested and the system reboots. I
-haven't reproduced it on other systems yet, but without the patchset I
-don't see the io page faults during the kdump.
+Just build idbloader.img and u-boot.itb for Rockpi E board and
+follow the blow steps to replace the relevant partition.
 
-Regards,
-Jerry
+    dd if=idbloader.img of=/dev/sdcard seek=64 conv=notrunc
+    dd if=u-boot.itb of=/dev/sdcard seek=16384 conv=notrunc
+
+Signed-off-by: Banglang Huang <banglang.huang-H32Fclmsjq1BDgjK7y7TUQ@public.gmane.org>
+---
+
+Changes for v4
+
+    - separate dts file to another commit
+    - fix bootup on tpl / spl mode
+
+Changes for v3
+
+    - rename to rock-pi-e
+
+Changes for v2
+
+    - add introduction for rockpie in doc/README.rockchip
+    - enable CONFIG_MISC_INIT_R, CONFIG_SMBIOS_MANUFACTURER,
+      and CONFIG_SMBIOS_PRODUCT_NAME
+---
+ arch/arm/dts/Makefile                     |   3 +-
+ arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi |  33 +++
+ arch/arm/dts/rk3328-rock-pi-e.dts         | 267 ++++++++++++++++++++++
+ 3 files changed, 302 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3328-rock-pi-e.dts
+
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index 12ec6c71dc..67d1adea2d 100644
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -107,7 +107,8 @@ dtb-$(CONFIG_ROCKCHIP_RK3308) += \
+ dtb-$(CONFIG_ROCKCHIP_RK3328) += \
+ 	rk3328-evb.dtb \
+ 	rk3328-roc-cc.dtb \
+-	rk3328-rock64.dtb
++	rk3328-rock64.dtb \
++	rk3328-rock-pi-e.dtb
+ 
+ dtb-$(CONFIG_ROCKCHIP_RK3368) += \
+ 	rk3368-lion.dtb \
+diff --git a/arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi b/arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi
+new file mode 100644
+index 0000000000..bf5b1f3adc
+--- /dev/null
++++ b/arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi
+@@ -0,0 +1,33 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * (C) Copyright 2020 Radxa
++ */
++
++#include "rk3328-u-boot.dtsi"
++#include "rk3328-sdram-ddr3-666.dtsi"
++
++&gpio0 {
++	u-boot,dm-spl;
++};
++
++&pinctrl {
++	u-boot,dm-spl;
++};
++
++&sdmmc0m1_gpio {
++	u-boot,dm-spl;
++};
++
++&pcfg_pull_up_4ma {
++	u-boot,dm-spl;
++};
++
++&usb_host0_xhci {
++	vbus-supply = <&vcc5v0_host_xhci>;
++	status = "okay";
++};
++
++/* Need this and all the pinctrl/gpio stuff above to set pinmux */
++&vcc_sd {
++	u-boot,dm-spl;
++};
+diff --git a/arch/arm/dts/rk3328-rock-pi-e.dts b/arch/arm/dts/rk3328-rock-pi-e.dts
+new file mode 100644
+index 0000000000..21656b64a2
+--- /dev/null
++++ b/arch/arm/dts/rk3328-rock-pi-e.dts
+@@ -0,0 +1,267 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * (C) Copyright 2020 Radxa
++ */
++
++/dts-v1/;
++#include "rk3328.dtsi"
++
++/ {
++	model = "Radxa Rockpi E";
++	compatible = "radxa,rock-pi-e", "rockchip,rk3328";
++
++	chosen {
++	stdout-path = "serial2:1500000n8";
++	};
++
++	gmac_clkin: external-gmac-clock {
++	compatible = "fixed-clock";
++	clock-frequency = <125000000>;
++	clock-output-names = "gmac_clkin";
++	#clock-cells = <0>;
++	};
++
++	vcc_sd: sdmmc-regulator {
++	compatible = "regulator-fixed";
++	gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc0m1_gpio>;
++	regulator-name = "vcc_sd";
++	regulator-always-on;
++	regulator-boot-on;
++	regulator-min-microvolt = <3300000>;
++	regulator-max-microvolt = <3300000>;
++	vin-supply = <&vcc_io>;
++	};
++
++	vcc5v0_host_xhci: vcc5v0-host-xhci-drv {
++	compatible = "regulator-fixed";
++	enable-active-high;
++	regulator-name = "vcc5v0_host_xhci";
++	gpio = <&gpio3 RK_PA7 GPIO_ACTIVE_HIGH>;
++	regulator-min-microvolt = <5000000>;
++	regulator-max-microvolt = <5000000>;
++	};
++
++	vcc_sys: vcc-sys {
++	compatible = "regulator-fixed";
++	regulator-name = "vcc_sys";
++	regulator-always-on;
++	regulator-boot-on;
++	regulator-min-microvolt = <5000000>;
++	regulator-max-microvolt = <5000000>;
++	};
++};
++
++&cpu0 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu1 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&emmc {
++	bus-width = <8>;
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	supports-emmc;
++	disable-wp;
++	non-removable;
++	num-slots = <1>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
++	vmmc-supply = <&vcc_io>;
++	vqmmc-supply = <&vcc18_emmc>;
++	status = "okay";
++};
++
++&gmac2io {
++	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
++	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
++	clock_in_out = "input";
++	phy-supply = <&vcc_io>;
++	phy-mode = "rgmii";
++	pinctrl-names = "default";
++	pinctrl-0 = <&rgmiim1_pins>;
++	snps,force_thresh_dma_mode;
++	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 10000 50000>;
++	tx_delay = <0x26>;
++	rx_delay = <0x11>;
++	status = "okay";
++};
++
++&i2c1 {
++	status = "okay";
++
++	rk805: rk805@18 {
++	compatible = "rockchip,rk805";
++	status = "okay";
++	reg = <0x18>;
++	interrupt-parent = <&gpio2>;
++	interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
++	#clock-cells = <1>;
++	clock-output-names = "xin32k", "rk805-clkout2";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pmic_int_l>;
++	rockchip,system-power-controller;
++	wakeup-source;
++
++	vcc1-supply = <&vcc_sys>;
++	vcc2-supply = <&vcc_sys>;
++	vcc3-supply = <&vcc_sys>;
++	vcc4-supply = <&vcc_sys>;
++	vcc5-supply = <&vcc_io>;
++	vcc6-supply = <&vcc_sys>;
++
++	regulators {
++	vdd_logic: DCDC_REG1 {
++	regulator-name = "vdd_logic";
++	regulator-min-microvolt = <712500>;
++	regulator-max-microvolt = <1450000>;
++	regulator-ramp-delay = <12500>;
++	regulator-always-on;
++	regulator-boot-on;
++	regulator-state-mem {
++	regulator-on-in-suspend;
++	regulator-suspend-microvolt = <1000000>;
++	};
++	};
++
++	vdd_arm: DCDC_REG2 {
++	regulator-name = "vdd_arm";
++	regulator-min-microvolt = <712500>;
++	regulator-max-microvolt = <1450000>;
++	regulator-ramp-delay = <12500>;
++	regulator-always-on;
++	regulator-boot-on;
++	regulator-state-mem {
++	regulator-on-in-suspend;
++	regulator-suspend-microvolt = <950000>;
++	};
++	};
++
++	vcc_ddr: DCDC_REG3 {
++	regulator-name = "vcc_ddr";
++	regulator-always-on;
++	regulator-boot-on;
++	regulator-state-mem {
++	regulator-on-in-suspend;
++	};
++	};
++
++	vcc_io: DCDC_REG4 {
++	regulator-name = "vcc_io";
++	regulator-min-microvolt = <3300000>;
++	regulator-max-microvolt = <3300000>;
++	regulator-always-on;
++	regulator-boot-on;
++	regulator-state-mem {
++	regulator-on-in-suspend;
++	regulator-suspend-microvolt = <3300000>;
++	};
++	};
++
++	vcc_18: LDO_REG1 {
++	regulator-name = "vcc_18";
++	regulator-min-microvolt = <1800000>;
++	regulator-max-microvolt = <1800000>;
++	regulator-always-on;
++	regulator-boot-on;
++	regulator-state-mem {
++	regulator-on-in-suspend;
++	regulator-suspend-microvolt = <1800000>;
++	};
++	};
++
++	vcc18_emmc: LDO_REG2 {
++	regulator-name = "vcc18_emmc";
++	regulator-min-microvolt = <1800000>;
++	regulator-max-microvolt = <1800000>;
++	regulator-always-on;
++	regulator-boot-on;
++	regulator-state-mem {
++	regulator-on-in-suspend;
++	regulator-suspend-microvolt = <1800000>;
++	};
++	};
++
++	vdd_10: LDO_REG3 {
++	regulator-name = "vdd_10";
++	regulator-min-microvolt = <1000000>;
++	regulator-max-microvolt = <1000000>;
++	regulator-always-on;
++	regulator-boot-on;
++	regulator-state-mem {
++	regulator-on-in-suspend;
++	regulator-suspend-microvolt = <1000000>;
++	};
++	};
++	};
++	};
++};
++
++&io_domains {
++	status = "okay";
++
++	vccio1-supply = <&vcc_io>;
++	vccio2-supply = <&vcc18_emmc>;
++	vccio3-supply = <&vcc_io>;
++	vccio4-supply = <&vcc_io>;
++	vccio5-supply = <&vcc_io>;
++	vccio6-supply = <&vcc_io>;
++	pmuio-supply = <&vcc_io>;
++};
++
++&pinctrl {
++	pmic {
++	pmic_int_l: pmic-int-l {
++	rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
++	};
++	};
++};
++
++&sdmmc {
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	card-detect-delay = <200>;
++	disable-wp;
++	max-frequency = <150000000>;
++	num-slots = <1>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
++	supports-sd;
++	vmmc-supply = <&vcc_sd>;
++	status = "okay";
++};
++
++&saradc {
++	status = "okay";
++};
++
++&uart2 {
++	status = "okay";
++};
++
++&usb20_otg {
++	status = "okay";
++};
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_ohci {
++	status = "okay";
++};
+-- 
+2.17.1
