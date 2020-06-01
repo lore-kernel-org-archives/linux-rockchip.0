@@ -1,74 +1,69 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 4/4] doc: rockchip: Document SPI flash program steps
-Date: Tue,  2 Jun 2020 02:12:13 +0530
-Message-ID: <20200601204213.466120-5-jagan@amarulasolutions.com>
-References: <20200601204213.466120-1-jagan@amarulasolutions.com>
+From: Lu Baolu <baolu.lu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>
+Subject: Re: [PATCH v2 00/33] iommu: Move iommu_group setup to IOMMU core code
+Date: Tue, 2 Jun 2020 07:16:22 +0800
+Message-ID: <47711845-98ee-95b8-aa95-423a36ed9741@linux.intel.com>
+References: <20200414131542.25608-1-joro@8bytes.org>
+ <20200529221623.qc6twmpzryh7nkvb@cantor>
+ <20200601104240.7f5xhz7gooqhaq4n@cantor>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200601204213.466120-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200601104240.7f5xhz7gooqhaq4n@cantor>
+Content-Language: en-US
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Jean-Philippe Brucker <jean-philippe-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, virtualization@
+Cc: baolu.lu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Document SPI flash program steps for rockchip platforms.
+Hi Jerry,
 
-Suggested-by: Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- doc/board/rockchip/rockchip.rst | 26 +++++++++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
+On 6/1/20 6:42 PM, Jerry Snitselaar wrote:
+>>
+>> Hi Joerg,
+>>
+>> With this patchset, I have an epyc system where if I boot with
+>> iommu=nopt and force a dump I will see some io page faults for a nic
+>> on the system. The vmcore is harvested and the system reboots. I
+>> haven't reproduced it on other systems yet, but without the patchset I
+>> don't see the io page faults during the kdump.
+>>
+>> Regards,
+>> Jerry
+> 
+> I just hit an issue on a separate intel based system (kdump iommu=nopt),
+> where it panics in during intel_iommu_attach_device, in is_aux_domain,
+> due to device_domain_info being DEFER_DEVICE_DOMAIN_INFO. That doesn't
+> get set to a valid address until the domain_add_dev_info call.
+> 
+> Is it as simple as the following?
 
-diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
-index 7b72fab496..76b228a046 100644
---- a/doc/board/rockchip/rockchip.rst
-+++ b/doc/board/rockchip/rockchip.rst
-@@ -162,6 +162,30 @@ Program the flash::
- Note: for rockchip 32-bit platforms the U-Boot proper image
- is u-boot-dtb.img
- 
-+SPI
-+^^^
-+
-+Generating idbloader for SPI boot would require to input a multi image
-+image format to mkimage tool instead of concerting (like for MMC boot).
-+
-+SPL-alone SPI boot image::
-+
-+        ./tools/mkimage -n rk3399 -T rkspi -d spl/u-boot-spl.bin idbloader.img
-+
-+TPL+SPL SPI boot image::
-+
-+        ./tools/mkimage -n rk3399 -T rkspi -d tpl/u-boot-tpl.bin:spl/u-boot-spl.bin idbloader.img
-+
-+Copy SPI boot images into SD card and boot from SD::
-+
-+        sf probe
-+        load mmc 1:1 $kernel_addr_r idbloader.img
-+        sf erase 0 +$filesize
-+        sf write $kernel_addr_r 0 ${filesize}
-+        load mmc 1:1 ${kernel_addr_r} u-boot.itb
-+        sf erase 0x60000 +$filesize
-+        sf write $kernel_addr_r 0x60000 ${filesize}
-+
- TODO
- ----
- 
-@@ -171,4 +195,4 @@ TODO
- - Add missing SoC's with it boards list
- 
- .. Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
--.. Sunday 24 May 2020 10:08:41 PM IST
-+.. Tuesday 02 June 2020 12:18:57 AM IST
--- 
-2.25.1
+I guess you won't hit this issue if you use iommu/next branch of Joerg's
+tree. We've changed to use a generic helper to retrieve the valid per
+device iommu data or NULL (if there's no).
+
+Best regards,
+baolu
+
+> 
+> diff --git a/drivers/iommu/intel-iommu.c b/drivers/iommu/intel-iommu.c
+> index 29d3940847d3..f1bbeed46a4c 100644
+> --- a/drivers/iommu/intel-iommu.c
+> +++ b/drivers/iommu/intel-iommu.c
+> @@ -5053,8 +5053,8 @@ is_aux_domain(struct device *dev, struct 
+> iommu_domain *domain)
+>   {
+>          struct device_domain_info *info = dev->archdata.iommu;
+> 
+> -       return info && info->auxd_enabled &&
+> -                       domain->type == IOMMU_DOMAIN_UNMANAGED;
+> +       return info && info != DEFER_DEVICE_DOMAIN_INFO &&
+> +               info->auxd_enabled && domain->type == 
+> IOMMU_DOMAIN_UNMANAGED;
+>   }
+> 
+>   static void auxiliary_link_device(struct dmar_domain *domain,
+> 
+> 
+> Regards,
+> Jerry
