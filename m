@@ -1,11 +1,13 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 0/4] rockchip: rk3399: Add SPI boot
-Date: Tue,  2 Jun 2020 02:12:09 +0530
-Message-ID: <20200601204213.466120-1-jagan@amarulasolutions.com>
+Subject: [PATCH v2 1/4] Makefile: Drop to handle rkspi image type
+Date: Tue,  2 Jun 2020 02:12:10 +0530
+Message-ID: <20200601204213.466120-2-jagan@amarulasolutions.com>
+References: <20200601204213.466120-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200601204213.466120-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,32 +21,47 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tom
 Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-I have marked this series as v2, since the previous 
-one has SPL SPI boot via different defconfig.
+On rockchip platforms, SPI boot image creation is not
+straightforward like MMC boot image creation where former
+requires to specify tpl, spl in multimage format in mkimage,
+and later simply do a concatenate mkimaged-tpl with spl.
 
-Thanks to Hugh Cole-Baker for inputs about SPI boot
-image creation.
+On this note, let drop rkspi image type creation via kbuild
+and let inform via rockchip.rst
 
-Changes for v2:
-- same defconfig to support both MMC, SPI boot
-- add spi flash program document 
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ Makefile | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-Any inputs?
-Jagan.
-
-Jagan Teki (4):
-  Makefile: Drop to handle rkspi image type
-  roc-rk3399-pc: Mark default env from SPI
-  roc-rk3399-pc: Add SPI boot
-  doc: rockchip: Document SPI flash program steps
-
- Makefile                                  | 11 ++--------
- arch/arm/dts/rk3399-roc-pc-u-boot.dtsi    | 12 ++++++++++-
- configs/roc-pc-mezzanine-rk3399_defconfig |  3 +++
- configs/roc-pc-rk3399_defconfig           |  6 +++++-
- doc/board/rockchip/rockchip.rst           | 26 ++++++++++++++++++++++-
- include/configs/roc-pc-rk3399.h           |  4 ----
- 6 files changed, 46 insertions(+), 16 deletions(-)
-
+diff --git a/Makefile b/Makefile
+index 3851dd9fa0..db3b6b9991 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1438,22 +1438,15 @@ u-boot-with-spl.bin: $(SPL_IMAGE) $(SPL_PAYLOAD) FORCE
+ 
+ ifeq ($(CONFIG_ARCH_ROCKCHIP),y)
+ 
+-# rockchip image type
+-ifeq ($(CONFIG_SPL_SPI_LOAD),y)
+-ROCKCHIP_IMG_TYPE := rkspi
+-else
+-ROCKCHIP_IMG_TYPE := rksd
+-endif
+-
+ # TPL + SPL
+ ifeq ($(CONFIG_SPL)$(CONFIG_TPL),yy)
+-MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
++MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T rksd
+ tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
+ 	$(call if_changed,mkimage)
+ idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
+ 	$(call if_changed,cat)
+ else
+-MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
++MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T rksd
+ idbloader.img: spl/u-boot-spl.bin FORCE
+ 	$(call if_changed,mkimage)
+ endif
 -- 
 2.25.1
