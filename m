@@ -1,13 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCHv5][1/2] rockchip: rk3328: add rock-pi-e dts file
-Date: Mon, 1 Jun 2020 16:43:07 +0800
-Message-ID: <88c74f0b-fc11-73cf-1673-0bd0b46a6ad2@rock-chips.com>
-References: <tencent_11E1448585BB288D0AB6C505D8BBD1FF070A@qq.com>
+Subject: Re: [PATCHv5][2/2] rockchip: rk3328: add rock-pi-e-rk3328_defconfig
+ file
+Date: Mon, 1 Jun 2020 16:43:19 +0800
+Message-ID: <336558d9-2bf5-f4e7-087d-af123ed15cc0@rock-chips.com>
+References: <tencent_F69432040DE3A0ED4FE96B829EA38AC2BD09@qq.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <tencent_11E1448585BB288D0AB6C505D8BBD1FF070A@qq.com>
+In-Reply-To: <tencent_F69432040DE3A0ED4FE96B829EA38AC2BD09@qq.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -23,20 +24,9 @@ Cc: trini <trini@konsulko.com>, "Chen-Yu&nbsp,Tsai" <wens@kernel.org>, "philipp.
 List-Id: linux-rockchip.vger.kernel.org
 
 
-On 2020/6/1 上午12:01, b.l.huang wrote:
-> The ROCK-PI-E is a credit card size SBC based on Rockchip RK3328
-> Quad-Core ARM Cortex A53.
->
->      Net - Dual ethernet port, 1 X Gbe, 1 X 100M
->      USB - USB 3.0
->      DC  - USB-Type C, 5V 2A
->      Storage - TF card, eMMC
->
-> Just build idbloader.img and u-boot.itb for Rockpi E board and
-> follow the blow steps to replace the relevant partition.
->
->      dd if=idbloader.img of=/dev/sdcard seek=64 conv=notrunc
->      dd if=u-boot.itb of=/dev/sdcard seek=16384 conv=notrunc
+On 2020/6/1 上午12:02, b.l.huang wrote:
+> This commit add the default configuration file and relevant description
+> for rock-pi-e board
 >
 > Signed-off-by: Banglang Huang <banglang.huang@foxmail.com>
 Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
@@ -44,356 +34,146 @@ Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 Thanks,
 - Kever
 > ---
+>   board/rockchip/evb_rk3328/MAINTAINERS |   7 ++
+>   configs/rock-pi-e-rk3328_defconfig    | 104 ++++++++++++++++++++++++++
+>   doc/board/rockchip/rockchip.rst       |   1 +
+>   3 files changed, 112 insertions(+)
+>   create mode 100644 configs/rock-pi-e-rk3328_defconfig
 >
-> Changes for v5
->      - Update the board information to
->        doc/board/rockchip/rockchip.rst
->
-> Changes for v4
->
->      - separate dts file to another commit
->      - fix bootup on tpl / spl mode
->
-> Changes for v3
->
->      - rename to rock-pi-e
->
-> Changes for v2
->
->      - add introduction for rockpie in doc/README.rockchip
->      - enable CONFIG_MISC_INIT_R, CONFIG_SMBIOS_MANUFACTURER,
->        and CONFIG_SMBIOS_PRODUCT_NAME
-> ---
->   arch/arm/dts/Makefile                     |   3 +-
->   arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi |  33 +++
->   arch/arm/dts/rk3328-rock-pi-e.dts         | 267 ++++++++++++++++++++++
->   3 files changed, 302 insertions(+), 1 deletion(-)
->   create mode 100644 arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi
->   create mode 100644 arch/arm/dts/rk3328-rock-pi-e.dts
->
-> diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-> index 12ec6c71dc..67d1adea2d 100644
-> --- a/arch/arm/dts/Makefile
-> +++ b/arch/arm/dts/Makefile
-> @@ -107,7 +107,8 @@ dtb-$(CONFIG_ROCKCHIP_RK3308) += \
->   dtb-$(CONFIG_ROCKCHIP_RK3328) += \
->   	rk3328-evb.dtb \
->   	rk3328-roc-cc.dtb \
-> -	rk3328-rock64.dtb
-> +	rk3328-rock64.dtb \
-> +	rk3328-rock-pi-e.dtb
->   
->   dtb-$(CONFIG_ROCKCHIP_RK3368) += \
->   	rk3368-lion.dtb \
-> diff --git a/arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi b/arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi
+> diff --git a/board/rockchip/evb_rk3328/MAINTAINERS b/board/rockchip/evb_rk3328/MAINTAINERS
+> index 89becf41c5..e7dd59ff4e 100644
+> --- a/board/rockchip/evb_rk3328/MAINTAINERS
+> +++ b/board/rockchip/evb_rk3328/MAINTAINERS
+> @@ -17,3 +17,10 @@ M:      Matwey V. Kornilov <matwey.kornilov@gmail.com>
+>   S:      Maintained
+>   F:      configs/rock64-rk3328_defconfig
+>   F:      arch/arm/dts/rk3328-rock64-u-boot.dtsi
+> +
+> +ROCKPIE-RK3328
+> +M:      Banglang Huang <banglang.huang@foxmail.com>
+> +S:      Maintained
+> +F:      configs/rock-pi-e-rk3328_defconfig
+> +F:      arch/arm/dts/rk3328-rock-pi-e.dts
+> +F:      arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi
+> diff --git a/configs/rock-pi-e-rk3328_defconfig b/configs/rock-pi-e-rk3328_defconfig
 > new file mode 100644
-> index 0000000000..bf5b1f3adc
+> index 0000000000..759838775f
 > --- /dev/null
-> +++ b/arch/arm/dts/rk3328-rock-pi-e-u-boot.dtsi
-> @@ -0,0 +1,33 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +/*
-> + * (C) Copyright 2020 Radxa
-> + */
-> +
-> +#include "rk3328-u-boot.dtsi"
-> +#include "rk3328-sdram-ddr3-666.dtsi"
-> +
-> +&gpio0 {
-> +	u-boot,dm-spl;
-> +};
-> +
-> +&pinctrl {
-> +	u-boot,dm-spl;
-> +};
-> +
-> +&sdmmc0m1_gpio {
-> +	u-boot,dm-spl;
-> +};
-> +
-> +&pcfg_pull_up_4ma {
-> +	u-boot,dm-spl;
-> +};
-> +
-> +&usb_host0_xhci {
-> +	vbus-supply = <&vcc5v0_host_xhci>;
-> +	status = "okay";
-> +};
-> +
-> +/* Need this and all the pinctrl/gpio stuff above to set pinmux */
-> +&vcc_sd {
-> +	u-boot,dm-spl;
-> +};
-> diff --git a/arch/arm/dts/rk3328-rock-pi-e.dts b/arch/arm/dts/rk3328-rock-pi-e.dts
-> new file mode 100644
-> index 0000000000..21656b64a2
-> --- /dev/null
-> +++ b/arch/arm/dts/rk3328-rock-pi-e.dts
-> @@ -0,0 +1,267 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +/*
-> + * (C) Copyright 2020 Radxa
-> + */
-> +
-> +/dts-v1/;
-> +#include "rk3328.dtsi"
-> +
-> +/ {
-> +	model = "Radxa Rockpi E";
-> +	compatible = "radxa,rock-pi-e", "rockchip,rk3328";
-> +
-> +	chosen {
-> +	stdout-path = "serial2:1500000n8";
-> +	};
-> +
-> +	gmac_clkin: external-gmac-clock {
-> +	compatible = "fixed-clock";
-> +	clock-frequency = <125000000>;
-> +	clock-output-names = "gmac_clkin";
-> +	#clock-cells = <0>;
-> +	};
-> +
-> +	vcc_sd: sdmmc-regulator {
-> +	compatible = "regulator-fixed";
-> +	gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc0m1_gpio>;
-> +	regulator-name = "vcc_sd";
-> +	regulator-always-on;
-> +	regulator-boot-on;
-> +	regulator-min-microvolt = <3300000>;
-> +	regulator-max-microvolt = <3300000>;
-> +	vin-supply = <&vcc_io>;
-> +	};
-> +
-> +	vcc5v0_host_xhci: vcc5v0-host-xhci-drv {
-> +	compatible = "regulator-fixed";
-> +	enable-active-high;
-> +	regulator-name = "vcc5v0_host_xhci";
-> +	gpio = <&gpio3 RK_PA7 GPIO_ACTIVE_HIGH>;
-> +	regulator-min-microvolt = <5000000>;
-> +	regulator-max-microvolt = <5000000>;
-> +	};
-> +
-> +	vcc_sys: vcc-sys {
-> +	compatible = "regulator-fixed";
-> +	regulator-name = "vcc_sys";
-> +	regulator-always-on;
-> +	regulator-boot-on;
-> +	regulator-min-microvolt = <5000000>;
-> +	regulator-max-microvolt = <5000000>;
-> +	};
-> +};
-> +
-> +&cpu0 {
-> +	cpu-supply = <&vdd_arm>;
-> +};
-> +
-> +&cpu1 {
-> +	cpu-supply = <&vdd_arm>;
-> +};
-> +
-> +&cpu2 {
-> +	cpu-supply = <&vdd_arm>;
-> +};
-> +
-> +&cpu3 {
-> +	cpu-supply = <&vdd_arm>;
-> +};
-> +
-> +&emmc {
-> +	bus-width = <8>;
-> +	cap-mmc-highspeed;
-> +	mmc-hs200-1_8v;
-> +	supports-emmc;
-> +	disable-wp;
-> +	non-removable;
-> +	num-slots = <1>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
-> +	vmmc-supply = <&vcc_io>;
-> +	vqmmc-supply = <&vcc18_emmc>;
-> +	status = "okay";
-> +};
-> +
-> +&gmac2io {
-> +	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
-> +	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
-> +	clock_in_out = "input";
-> +	phy-supply = <&vcc_io>;
-> +	phy-mode = "rgmii";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&rgmiim1_pins>;
-> +	snps,force_thresh_dma_mode;
-> +	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
-> +	snps,reset-active-low;
-> +	snps,reset-delays-us = <0 10000 50000>;
-> +	tx_delay = <0x26>;
-> +	rx_delay = <0x11>;
-> +	status = "okay";
-> +};
-> +
-> +&i2c1 {
-> +	status = "okay";
-> +
-> +	rk805: rk805@18 {
-> +	compatible = "rockchip,rk805";
-> +	status = "okay";
-> +	reg = <0x18>;
-> +	interrupt-parent = <&gpio2>;
-> +	interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
-> +	#clock-cells = <1>;
-> +	clock-output-names = "xin32k", "rk805-clkout2";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&pmic_int_l>;
-> +	rockchip,system-power-controller;
-> +	wakeup-source;
-> +
-> +	vcc1-supply = <&vcc_sys>;
-> +	vcc2-supply = <&vcc_sys>;
-> +	vcc3-supply = <&vcc_sys>;
-> +	vcc4-supply = <&vcc_sys>;
-> +	vcc5-supply = <&vcc_io>;
-> +	vcc6-supply = <&vcc_sys>;
-> +
-> +	regulators {
-> +	vdd_logic: DCDC_REG1 {
-> +	regulator-name = "vdd_logic";
-> +	regulator-min-microvolt = <712500>;
-> +	regulator-max-microvolt = <1450000>;
-> +	regulator-ramp-delay = <12500>;
-> +	regulator-always-on;
-> +	regulator-boot-on;
-> +	regulator-state-mem {
-> +	regulator-on-in-suspend;
-> +	regulator-suspend-microvolt = <1000000>;
-> +	};
-> +	};
-> +
-> +	vdd_arm: DCDC_REG2 {
-> +	regulator-name = "vdd_arm";
-> +	regulator-min-microvolt = <712500>;
-> +	regulator-max-microvolt = <1450000>;
-> +	regulator-ramp-delay = <12500>;
-> +	regulator-always-on;
-> +	regulator-boot-on;
-> +	regulator-state-mem {
-> +	regulator-on-in-suspend;
-> +	regulator-suspend-microvolt = <950000>;
-> +	};
-> +	};
-> +
-> +	vcc_ddr: DCDC_REG3 {
-> +	regulator-name = "vcc_ddr";
-> +	regulator-always-on;
-> +	regulator-boot-on;
-> +	regulator-state-mem {
-> +	regulator-on-in-suspend;
-> +	};
-> +	};
-> +
-> +	vcc_io: DCDC_REG4 {
-> +	regulator-name = "vcc_io";
-> +	regulator-min-microvolt = <3300000>;
-> +	regulator-max-microvolt = <3300000>;
-> +	regulator-always-on;
-> +	regulator-boot-on;
-> +	regulator-state-mem {
-> +	regulator-on-in-suspend;
-> +	regulator-suspend-microvolt = <3300000>;
-> +	};
-> +	};
-> +
-> +	vcc_18: LDO_REG1 {
-> +	regulator-name = "vcc_18";
-> +	regulator-min-microvolt = <1800000>;
-> +	regulator-max-microvolt = <1800000>;
-> +	regulator-always-on;
-> +	regulator-boot-on;
-> +	regulator-state-mem {
-> +	regulator-on-in-suspend;
-> +	regulator-suspend-microvolt = <1800000>;
-> +	};
-> +	};
-> +
-> +	vcc18_emmc: LDO_REG2 {
-> +	regulator-name = "vcc18_emmc";
-> +	regulator-min-microvolt = <1800000>;
-> +	regulator-max-microvolt = <1800000>;
-> +	regulator-always-on;
-> +	regulator-boot-on;
-> +	regulator-state-mem {
-> +	regulator-on-in-suspend;
-> +	regulator-suspend-microvolt = <1800000>;
-> +	};
-> +	};
-> +
-> +	vdd_10: LDO_REG3 {
-> +	regulator-name = "vdd_10";
-> +	regulator-min-microvolt = <1000000>;
-> +	regulator-max-microvolt = <1000000>;
-> +	regulator-always-on;
-> +	regulator-boot-on;
-> +	regulator-state-mem {
-> +	regulator-on-in-suspend;
-> +	regulator-suspend-microvolt = <1000000>;
-> +	};
-> +	};
-> +	};
-> +	};
-> +};
-> +
-> +&io_domains {
-> +	status = "okay";
-> +
-> +	vccio1-supply = <&vcc_io>;
-> +	vccio2-supply = <&vcc18_emmc>;
-> +	vccio3-supply = <&vcc_io>;
-> +	vccio4-supply = <&vcc_io>;
-> +	vccio5-supply = <&vcc_io>;
-> +	vccio6-supply = <&vcc_io>;
-> +	pmuio-supply = <&vcc_io>;
-> +};
-> +
-> +&pinctrl {
-> +	pmic {
-> +	pmic_int_l: pmic-int-l {
-> +	rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-> +	};
-> +	};
-> +};
-> +
-> +&sdmmc {
-> +	bus-width = <4>;
-> +	cap-mmc-highspeed;
-> +	cap-sd-highspeed;
-> +	card-detect-delay = <200>;
-> +	disable-wp;
-> +	max-frequency = <150000000>;
-> +	num-slots = <1>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
-> +	supports-sd;
-> +	vmmc-supply = <&vcc_sd>;
-> +	status = "okay";
-> +};
-> +
-> +&saradc {
-> +	status = "okay";
-> +};
-> +
-> +&uart2 {
-> +	status = "okay";
-> +};
-> +
-> +&usb20_otg {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host0_ehci {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host0_ohci {
-> +	status = "okay";
-> +};
+> +++ b/configs/rock-pi-e-rk3328_defconfig
+> @@ -0,0 +1,104 @@
+> +CONFIG_ARM=y
+> +CONFIG_ARCH_ROCKCHIP=y
+> +CONFIG_SYS_TEXT_BASE=0x00200000
+> +CONFIG_SPL_GPIO_SUPPORT=y
+> +CONFIG_ENV_OFFSET=0x3F8000
+> +CONFIG_ROCKCHIP_RK3328=y
+> +CONFIG_TPL_ROCKCHIP_COMMON_BOARD=y
+> +CONFIG_TPL_LIBCOMMON_SUPPORT=y
+> +CONFIG_TPL_LIBGENERIC_SUPPORT=y
+> +CONFIG_SPL_DRIVERS_MISC_SUPPORT=y
+> +CONFIG_SPL_STACK_R_ADDR=0x4000000
+> +CONFIG_SPL_SYS_MALLOC_F_LEN=0x4000
+> +CONFIG_NR_DRAM_BANKS=1
+> +CONFIG_DEBUG_UART_BASE=0xFF130000
+> +CONFIG_DEBUG_UART_CLOCK=24000000
+> +CONFIG_SMBIOS_PRODUCT_NAME="rock-pi-e_rk3328"
+> +CONFIG_DEBUG_UART=y
+> +CONFIG_TPL_SYS_MALLOC_F_LEN=0x800
+> +# CONFIG_ANDROID_BOOT_IMAGE is not set
+> +CONFIG_FIT=y
+> +CONFIG_FIT_VERBOSE=y
+> +CONFIG_SPL_LOAD_FIT=y
+> +CONFIG_DEFAULT_FDT_FILE="rockchip/rk3328-rock-pi-e.dtb"
+> +CONFIG_MISC_INIT_R=y
+> +# CONFIG_DISPLAY_CPUINFO is not set
+> +CONFIG_DISPLAY_BOARDINFO_LATE=y
+> +# CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+> +CONFIG_TPL_SYS_MALLOC_SIMPLE=y
+> +CONFIG_SPL_STACK_R=y
+> +CONFIG_SPL_I2C_SUPPORT=y
+> +CONFIG_SPL_POWER_SUPPORT=y
+> +CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
+> +CONFIG_SPL_ATF=y
+> +CONFIG_SPL_ATF_NO_PLATFORM_PARAM=y
+> +CONFIG_TPL_DRIVERS_MISC_SUPPORT=y
+> +CONFIG_CMD_BOOTZ=y
+> +CONFIG_CMD_GPT=y
+> +CONFIG_CMD_MMC=y
+> +CONFIG_CMD_USB=y
+> +CONFIG_CMD_TIME=y
+> +CONFIG_SPL_OF_CONTROL=y
+> +CONFIG_TPL_OF_CONTROL=y
+> +CONFIG_DEFAULT_DEVICE_TREE="rk3328-rock-pi-e"
+> +CONFIG_OF_SPL_REMOVE_PROPS="clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
+> +CONFIG_TPL_OF_PLATDATA=y
+> +CONFIG_ENV_IS_IN_MMC=y
+> +CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+> +CONFIG_NET_RANDOM_ETHADDR=y
+> +CONFIG_TPL_DM=y
+> +CONFIG_REGMAP=y
+> +CONFIG_SPL_REGMAP=y
+> +CONFIG_TPL_REGMAP=y
+> +CONFIG_SYSCON=y
+> +CONFIG_SPL_SYSCON=y
+> +CONFIG_TPL_SYSCON=y
+> +CONFIG_CLK=y
+> +CONFIG_SPL_CLK=y
+> +CONFIG_FASTBOOT_BUF_ADDR=0x800800
+> +CONFIG_FASTBOOT_CMD_OEM_FORMAT=y
+> +CONFIG_ROCKCHIP_GPIO=y
+> +CONFIG_SYS_I2C_ROCKCHIP=y
+> +CONFIG_MMC_DW=y
+> +CONFIG_MMC_DW_ROCKCHIP=y
+> +CONFIG_SF_DEFAULT_SPEED=20000000
+> +CONFIG_DM_ETH=y
+> +CONFIG_ETH_DESIGNWARE=y
+> +CONFIG_GMAC_ROCKCHIP=y
+> +CONFIG_PHY=y
+> +CONFIG_PINCTRL=y
+> +CONFIG_SPL_PINCTRL=y
+> +CONFIG_DM_PMIC=y
+> +CONFIG_PMIC_RK8XX=y
+> +CONFIG_SPL_DM_REGULATOR=y
+> +CONFIG_REGULATOR_PWM=y
+> +CONFIG_SPL_DM_REGULATOR_FIXED=y
+> +CONFIG_DM_REGULATOR_FIXED=y
+> +CONFIG_REGULATOR_RK8XX=y
+> +CONFIG_PWM_ROCKCHIP=y
+> +CONFIG_RAM=y
+> +CONFIG_SPL_RAM=y
+> +CONFIG_TPL_RAM=y
+> +CONFIG_DM_RESET=y
+> +CONFIG_BAUDRATE=1500000
+> +CONFIG_DEBUG_UART_SHIFT=2
+> +CONFIG_DEBUG_UART_ANNOUNCE=y
+> +CONFIG_DEBUG_UART_SKIP_INIT=y
+> +CONFIG_SYSRESET=y
+> +# CONFIG_TPL_SYSRESET is not set
+> +CONFIG_USB=y
+> +CONFIG_USB_XHCI_HCD=y
+> +CONFIG_USB_XHCI_DWC3=y
+> +CONFIG_USB_EHCI_HCD=y
+> +CONFIG_USB_EHCI_GENERIC=y
+> +CONFIG_USB_OHCI_HCD=y
+> +CONFIG_USB_OHCI_GENERIC=y
+> +CONFIG_USB_DWC2=y
+> +CONFIG_USB_DWC3=y
+> +# CONFIG_USB_DWC3_GADGET is not set
+> +CONFIG_USB_GADGET=y
+> +CONFIG_USB_GADGET_DWC2_OTG=y
+> +CONFIG_SPL_TINY_MEMSET=y
+> +CONFIG_TPL_TINY_MEMSET=y
+> +CONFIG_ERRNO_STR=y
+> +CONFIG_SMBIOS_MANUFACTURER="radxa"
+> diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
+> index 7b72fab496..e7dee7d0ac 100644
+> --- a/doc/board/rockchip/rockchip.rst
+> +++ b/doc/board/rockchip/rockchip.rst
+> @@ -48,6 +48,7 @@ List of mainline supported rockchip boards:
+>        - Rockchip Evb-RK3328 (evb-rk3328)
+>        - Pine64 Rock64 (rock64-rk3328)
+>        - Firefly-RK3328 (roc-cc-rk3328)
+> +     - Radxa Rockpi E (rock-pi-e-rk3328)
+>   * rk3368
+>        - GeekBox (geekbox)
+>        - PX5 EVB (evb-px5)
