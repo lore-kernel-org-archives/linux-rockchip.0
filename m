@@ -1,55 +1,80 @@
 From: =?UTF-8?q?Myl=C3=A8ne=20Josserand?=
         <mylene.josserand@collabora.com>
-Subject: [PATCH v3 0/1] ARM: Add Rockchip rk3288w support
-Date: Mon,  1 Jun 2020 17:14:41 +0200
-Message-ID: <20200601151442.156184-1-mylene.josserand@collabora.com>
+Subject: [PATCH v3 1/1] clk: rockchip: rk3288: Handle clock tree for rk3288w
+Date: Mon,  1 Jun 2020 17:14:42 +0200
+Message-ID: <20200601151442.156184-2-mylene.josserand@collabora.com>
+References: <20200601151442.156184-1-mylene.josserand@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20200601151442.156184-1-mylene.josserand@collabora.com>
 Sender: linux-clk-owner@vger.kernel.org
 To: mturquette@baylibre.com, sboyd@kernel.org, heiko@sntech.de
 Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, mylene.josserand@collabora.com, kever.yang@rock-chips.com, geert@linux-m68k.org, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hello everyone,
+The revision rk3288w has a different clock tree about "hclk_vio"
+clock, according to the BSP kernel code.
 
-Context
--------
+This patch handles this difference by detecting which device-tree
+we are using. If it is a "rockchip,rk3288-cru", let's register
+the clock tree as it was before. If the compatible is
+"rockchip,rk3288w-cru", we will apply the difference according to this
+version of this SoC.
 
-Here is my V3 of my patches that add the support for the Rockchip
-RK3288w which is a revision of the RK3288. It is mostly the same SOC
-except for, at least, one clock tree which is different.
-This difference is only known by looking at the BSP kernel [1].
+Noticed that this new device-tree compatible must be handled by
+bootloader.
 
-Currently, the mainline kernel will not hang on rk3288w but it is
-probably by "chance" because we got an issue on a lower kernel version.
-
-According to Rockchip's U-Boot [2], the rk3288w can be detected using
-the HDMI revision number (= 0x1A) in this version of the SOC.
-
-Changelog
----------
-
-In this V3, the revision's detection is not done in the kernel anymore.
-This patch will handle the rk3288w clock tree according to a new
-compatible "rockchip,rk3288w-cru" that must be provided by bootloaders.
-
-Changes since v2:
-   - Remove all codes about revision detection, let's handle that by
-   Bootloaders
-
-Best regards,
-Mylène Josserand
-
-[1] https://github.com/rockchip-linux/kernel/blob/develop-4.4/drivers/clk/rockchip/clk-rk3288.c#L960..L964
-[2] https://github.com/rockchip-linux/u-boot/blob/next-dev/arch/arm/mach-rockchip/rk3288/rk3288.c#L378..L388
-
-Mylène Josserand (1):
-  clk: rockchip: rk3288: Handle clock tree for rk3288w
-
+Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
+---
  drivers/clk/rockchip/clk-rk3288.c | 20 ++++++++++++++++++--
  1 file changed, 18 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index cc2a177bbdbf..5018d2f1e54c 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -425,8 +425,6 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	COMPOSITE(0, "aclk_vio0", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
+ 			RK3288_CLKSEL_CON(31), 6, 2, MFLAGS, 0, 5, DFLAGS,
+ 			RK3288_CLKGATE_CON(3), 0, GFLAGS),
+-	DIV(0, "hclk_vio", "aclk_vio0", 0,
+-			RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
+ 	COMPOSITE(0, "aclk_vio1", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
+ 			RK3288_CLKSEL_CON(31), 14, 2, MFLAGS, 8, 5, DFLAGS,
+ 			RK3288_CLKGATE_CON(3), 2, GFLAGS),
+@@ -819,6 +817,16 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+ 	INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
+ };
+ 
++static struct rockchip_clk_branch rk3288w_hclkvio_branch[] __initdata = {
++	DIV(0, "hclk_vio", "aclk_vio1", 0,
++	    RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
++};
++
++static struct rockchip_clk_branch rk3288_hclkvio_branch[] __initdata = {
++	DIV(0, "hclk_vio", "aclk_vio0", 0,
++	    RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
++};
++
+ static const char *const rk3288_critical_clocks[] __initconst = {
+ 	"aclk_cpu",
+ 	"aclk_peri",
+@@ -936,6 +944,14 @@ static void __init rk3288_clk_init(struct device_node *np)
+ 				   RK3288_GRF_SOC_STATUS1);
+ 	rockchip_clk_register_branches(ctx, rk3288_clk_branches,
+ 				  ARRAY_SIZE(rk3288_clk_branches));
++
++	if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
++		rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
++					       ARRAY_SIZE(rk3288w_hclkvio_branch));
++	else
++		rockchip_clk_register_branches(ctx, rk3288_hclkvio_branch,
++					       ARRAY_SIZE(rk3288_hclkvio_branch));
++
+ 	rockchip_clk_protect_critical(rk3288_critical_clocks,
+ 				      ARRAY_SIZE(rk3288_critical_clocks));
+ 
 -- 
 2.26.2
