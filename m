@@ -1,96 +1,50 @@
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Subject: Re: [PATCH v3 1/1] clk: rockchip: rk3288: Handle clock tree for rk3288w
-Date: Mon, 01 Jun 2020 22:09:25 +0200
-Message-ID: <8288442.SvGebX2C5V@diego>
-References: <20200601151442.156184-1-mylene.josserand@collabora.com> <20200601151442.156184-2-mylene.josserand@collabora.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH v2 0/4] rockchip: rk3399: Add SPI boot
+Date: Tue,  2 Jun 2020 02:12:09 +0530
+Message-ID: <20200601204213.466120-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20200601151442.156184-2-mylene.josserand@collabora.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: =?ISO-8859-1?Q?Myl=E8ne?= Josserand <mylene.josserand@collabora.com>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, geert@linux-m68k.org, kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mylène,
+I have marked this series as v2, since the previous 
+one has SPL SPI boot via different defconfig.
 
-Am Montag, 1. Juni 2020, 17:14:42 CEST schrieb Mylène Josserand:
-> The revision rk3288w has a different clock tree about "hclk_vio"
-> clock, according to the BSP kernel code.
-> 
-> This patch handles this difference by detecting which device-tree
-> we are using. If it is a "rockchip,rk3288-cru", let's register
-> the clock tree as it was before. If the compatible is
-> "rockchip,rk3288w-cru", we will apply the difference according to this
-> version of this SoC.
-> 
-> Noticed that this new device-tree compatible must be handled by
-> bootloader.
-> 
-> Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
+Thanks to Hugh Cole-Baker for inputs about SPI boot
+image creation.
 
-approach looks good, but you should also update the clock-controller
-dt-binding for the new compatible.
+Changes for v2:
+- same defconfig to support both MMC, SPI boot
+- add spi flash program document 
 
-Style nits below.
+Any inputs?
+Jagan.
 
+Jagan Teki (4):
+  Makefile: Drop to handle rkspi image type
+  roc-rk3399-pc: Mark default env from SPI
+  roc-rk3399-pc: Add SPI boot
+  doc: rockchip: Document SPI flash program steps
 
-> ---
->  drivers/clk/rockchip/clk-rk3288.c | 20 ++++++++++++++++++--
->  1 file changed, 18 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> index cc2a177bbdbf..5018d2f1e54c 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -425,8 +425,6 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->  	COMPOSITE(0, "aclk_vio0", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
->  			RK3288_CLKSEL_CON(31), 6, 2, MFLAGS, 0, 5, DFLAGS,
->  			RK3288_CLKGATE_CON(3), 0, GFLAGS),
-> -	DIV(0, "hclk_vio", "aclk_vio0", 0,
-> -			RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
->  	COMPOSITE(0, "aclk_vio1", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
->  			RK3288_CLKSEL_CON(31), 14, 2, MFLAGS, 8, 5, DFLAGS,
->  			RK3288_CLKGATE_CON(3), 2, GFLAGS),
-> @@ -819,6 +817,16 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->  	INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
->  };
->  
-> +static struct rockchip_clk_branch rk3288w_hclkvio_branch[] __initdata = {
-> +	DIV(0, "hclk_vio", "aclk_vio1", 0,
-> +	    RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
+ Makefile                                  | 11 ++--------
+ arch/arm/dts/rk3399-roc-pc-u-boot.dtsi    | 12 ++++++++++-
+ configs/roc-pc-mezzanine-rk3399_defconfig |  3 +++
+ configs/roc-pc-rk3399_defconfig           |  6 +++++-
+ doc/board/rockchip/rockchip.rst           | 26 ++++++++++++++++++++++-
+ include/configs/roc-pc-rk3399.h           |  4 ----
+ 6 files changed, 46 insertions(+), 16 deletions(-)
 
-please keep indentations as they were, the sub-lines starting where they
-are is actually intentional :-)
-
-
-> +};
-> +
-> +static struct rockchip_clk_branch rk3288_hclkvio_branch[] __initdata = {
-> +	DIV(0, "hclk_vio", "aclk_vio0", 0,
-> +	    RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-
-same here
-
-> +};
-> +
->  static const char *const rk3288_critical_clocks[] __initconst = {
->  	"aclk_cpu",
->  	"aclk_peri",
-> @@ -936,6 +944,14 @@ static void __init rk3288_clk_init(struct device_node *np)
->  				   RK3288_GRF_SOC_STATUS1);
->  	rockchip_clk_register_branches(ctx, rk3288_clk_branches,
->  				  ARRAY_SIZE(rk3288_clk_branches));
-> +
-> +	if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
-> +		rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
-> +					       ARRAY_SIZE(rk3288w_hclkvio_branch));
-> +	else
-> +		rockchip_clk_register_branches(ctx, rk3288_hclkvio_branch,
-> +					       ARRAY_SIZE(rk3288_hclkvio_branch));
-> +
->  	rockchip_clk_protect_critical(rk3288_critical_clocks,
->  				      ARRAY_SIZE(rk3288_critical_clocks));
->  
-> 
+-- 
+2.25.1
