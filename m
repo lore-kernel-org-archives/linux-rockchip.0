@@ -1,52 +1,55 @@
-From: Guenter Roeck <linux@roeck-us.net>
-Subject: Re: [PATCH v4 06/11] thermal: Add mode helpers
-Date: Mon, 1 Jun 2020 06:40:11 -0700
-Message-ID: <c5780899-c471-4ce3-7581-5ab39a3cf219@roeck-us.net>
-References: <20200529155206.GA158553@roeck-us.net>
- <526286da-70d2-7c55-3c41-15fd2c969a39@collabora.com>
+From: =?UTF-8?q?Myl=C3=A8ne=20Josserand?=
+        <mylene.josserand@collabora.com>
+Subject: [PATCH v3 0/1] ARM: Add Rockchip rk3288w support
+Date: Mon,  1 Jun 2020 17:14:41 +0200
+Message-ID: <20200601151442.156184-1-mylene.josserand@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-renesas-soc-owner@vger.kernel.org>
-In-Reply-To: <526286da-70d2-7c55-3c41-15fd2c969a39@collabora.com>
-Content-Language: en-US
-Sender: linux-renesas-soc-owner@vger.kernel.org
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Heiko Stuebner <heiko@sntech.de>, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Vishal Kulkarni <vishal@chelsio.com>, Luca Coelho <luciano.coelho@intel.com>, Miquel Raynal <miquel.raynal@bootlin.com>, kernel@collabora.com, Fabio Estevam <festevam@gmail.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Allison Randal <allison@lohutok.net>, NXP Linux Team <linux-imx@nxp.com>
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, sboyd@kernel.org, heiko@sntech.de
+Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, mylene.josserand@collabora.com, kever.yang@rock-chips.com, geert@linux-m68k.org, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 6/1/20 4:16 AM, Andrzej Pietrasiewicz wrote:
-> Hi Guenter,
-> 
-> W dniu 29.05.2020 o 17:52, Guenter Roeck pisze:
->> On Thu, May 28, 2020 at 09:20:46PM +0200, Andrzej Pietrasiewicz wrote:
->>> Prepare for making the drivers not access tzd's private members.
->>>
->>> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-> 
-> <snip>
-> 
->>> +
->> Nit: unnecessary empty line.
->>
->>> +        return ret;
-> 
-> <snip>
-> 
->>> +    return thermal_zone_device_set_mode(tz, THERMAL_DEVICE_ENABLED);
->>> +}
->>> +EXPORT_SYMBOL(thermal_zone_device_enable);
->>
->> Other exports in thermal/ use EXPORT_SYMBOL_GPL.
-> 
-> Other than that does it look good to you?
+Hello everyone,
 
-Yes, it does.
+Context
+-------
 
-> I can send a v5 where the two above will be corrected, but did you have
-> a chance to review patches 7-11?
-> 
-Not yet. I got distracted, sorry. Hopefully I'll get to it
-today or tomorrow.
+Here is my V3 of my patches that add the support for the Rockchip
+RK3288w which is a revision of the RK3288. It is mostly the same SOC
+except for, at least, one clock tree which is different.
+This difference is only known by looking at the BSP kernel [1].
 
-Guenter
+Currently, the mainline kernel will not hang on rk3288w but it is
+probably by "chance" because we got an issue on a lower kernel version.
+
+According to Rockchip's U-Boot [2], the rk3288w can be detected using
+the HDMI revision number (= 0x1A) in this version of the SOC.
+
+Changelog
+---------
+
+In this V3, the revision's detection is not done in the kernel anymore.
+This patch will handle the rk3288w clock tree according to a new
+compatible "rockchip,rk3288w-cru" that must be provided by bootloaders.
+
+Changes since v2:
+   - Remove all codes about revision detection, let's handle that by
+   Bootloaders
+
+Best regards,
+Mylène Josserand
+
+[1] https://github.com/rockchip-linux/kernel/blob/develop-4.4/drivers/clk/rockchip/clk-rk3288.c#L960..L964
+[2] https://github.com/rockchip-linux/u-boot/blob/next-dev/arch/arm/mach-rockchip/rk3288/rk3288.c#L378..L388
+
+Mylène Josserand (1):
+  clk: rockchip: rk3288: Handle clock tree for rk3288w
+
+ drivers/clk/rockchip/clk-rk3288.c | 20 ++++++++++++++++++--
+ 1 file changed, 18 insertions(+), 2 deletions(-)
+
+-- 
+2.26.2
