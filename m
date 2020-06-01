@@ -1,96 +1,87 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v6 00/16] Add Rockchip RK3399 USB3.0 Host support
-Date: Mon, 1 Jun 2020 08:54:45 +0800
-Message-ID: <4e857cda-d776-31d5-0e70-75a01eb0c22f@rock-chips.com>
-References: <20200526033220.20047-1-frank.wang@rock-chips.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200526033220.20047-1-frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Content-Language: en-US
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Frank Wang <frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, marex-ynQEQJNshbs@public.gmane.org, bmeng.cn-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org
-Cc: jianing.ren-TNX95d0MmH7DzftRWevZcw@public.gmane.org, marek.belisko-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, wmc-TNX95d0MmH7DzftRWevZcw@public.gmane.org, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, chenjh-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+From: sandor.yu@nxp.com
+Subject: [PATCH 0/7] Initial support for Cadence MHDP(HDMI/DP)
+Date: Mon,  1 Jun 2020 14:17:30 +0800
+Message-ID: <cover.1590982881.git.Sandor.yu@nxp.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: a.hajda@samsung.com, narmstrong@baylibre.com, Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se, jernej.skrabec@siol.net, heiko@sntech.de, hjc@rock-chips.com, Sandor.yu@nxp.com, dkos@cadence.com, dri-devel@lists.freedesktop.org
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-imx@nxp.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMjAvNS8yNiDkuIrljYgxMTozMiwgRnJhbmsgV2FuZyB3cm90ZToKPiBUaGlzIHNlcmll
-cyBhZGQgcXVpcmtzIGZvciBEV0MzIGFuZCBhZGQgUm9ja2NoaXAgUkszMzk5IFVTQjMuMCBob3N0
-IHN1cHBvcnQuCj4KPiBUaGUgZnVuY3Rpb24gaGFzIGJlZW4gdGVzdGVkIHBhc3Mgb24gcmszMzk5
-LWV2YiBhbmQgcm9jLXJrMzM5OS1wYyBib2FyZC4KPgo+IEZvciBWNiB1cGRhdGU6Cj4gICAtIFVz
-ZSBbUEFUQ0ggdjYgMDQvMTZdIGluc3RlYWQgb2YgW1BBVENIIHY1IDA1LzE2XSB0byBmaXggdGhh
-dCB0aGUgY3VycmVudAo+ICAgICBHZW5lcmljIFBIWSBzdWJzeXN0ZW0gaXMgdW5hYmxlIHRvIGZp
-bmQgUEhZIGlmIHRoZSBQSFkgbm9kZSBpcyBub3QgcGFydCBvZgo+ICAgICB0aGUgcm9vdCBzdHJ1
-Y3R1cmUuCj4gICAtIEFkZCAnUmV2aWV3ZWQtYnknIHRhZyBmb3IgYWxsIHBhdGNoZXMgZXhjZXB0
-IFtQQVRDSCB2NiAwNC8xNl0uCj4KPiBGb3IgVjUgdXBkYXRlOgo+ICAgLSBGaXggZHdjMy1nZW5l
-cmljIGRyaXZlciBmb2xsb3dlZCBNYXJlaydzIGNvbW1lbnRzIGZvciBbUEFUQ0ggdjQgMTIvMTZd
-Lgo+ICAgLSBBZGQgJ1Jldmlld2VkLWJ5JyBhbmQgJ1Rlc3RlZC1ieScgdGFnIGZvciBbUEFUQ0gg
-djQgMDcvMTZdIGFuZCBbUEFUQ0ggdjQgMDgvMTZdLgo+Cj4gRm9yIFY0IHVwZGF0ZToKPiAgIC0g
-Q29sbGVjdCBKYWdhbidzIGFsbCBmaXhlZCBwYXRjaGVzIFsxXS4KPiAgIC0gQW1lbmQgc3BlY2lm
-aWMgdS1ib290IGNoYW5nZXMgZnJvbSBkdHMgdG8gZHRzaSBmb3IgW1BBVENIIHYzIDYvN10uCj4K
-PiBGb3IgVjMgdXBkYXRlOgo+ICAgLSBGaXggY29tcGlsZSBlcnJvciBmb3IgW1BBVENIIHYyIDEv
-OV0uCj4gICAtIFVzZSBKYWdhbidzIFR5cGUtQyBkcml2ZXIgaW5zdGVhZCBvZiBbUEFUQ0ggdjIg
-NS85XS4KPiAgIC0gQ2xlYW51cCBkdHMgY2hhbmdlcyBmb3IgW1BBVENIIHYyIDcvOV0uCj4gICAt
-IENsZWFudXAgY29uZmlnIGNoYW5nZXMgZm9yIFtQQVRDSCB2MiA4LzldIGFuZCBbUEFUQ0ggdjIg
-OS85XS4KPgo+IEZvciBWMiB1cGRhdGU6Cj4gICAtIEFtZW5kIHR5cGUtYyBkcml2ZXIgZm9sbG93
-ZWQgSmFnYW4ncyBjb21tZW50cyBmb3IgW1BBVENIIDUvOF0uCj4gICAtIEZpeCBkdHMgY29tbWl0
-IGZvciBbUEFUQ0ggNy84XS4KPiAgIC0gU3BsaXQgUkszMzk5IGRlZmF1bHQgY29uZmlnIGZvciBb
-UEFUQ0ggOC84XS4KPiAgIC0gQWRkICdSZXZpZXdlZC1ieScgdGFnIGZvciBbUEFUQ0ggMS84XSwg
-W1BBVENIIDIvOF0gYW5kIFtQQVRDSCAzLzhdLgo+Cj4gWzFdIGh0dHBzOi8vcGF0Y2h3b3JrLm96
-bGFicy5vcmcvcHJvamVjdC91Ym9vdC9jb3Zlci8yMDIwMDUwNjA3NTAyNS4xNjc3LTEtamFnYW5A
-YW1hcnVsYXNvbHV0aW9ucy5jb20KPgo+IEJSLAo+IEZyYW5rCj4KPiBGcmFuayBXYW5nICg4KToK
-PiAgICBhcm06IG1hY2gtcm9ja2NoaXA6IGJpbmQgc3ViLW5vZGVzIGZvciByazMzOTlfc3lzY29u
-Cj4gICAgdXNiOiBkd2MzOiBhZGQgZGlzX2VuYmxzbHBtX3F1aXJrCj4gICAgdXNiOiBkd2MzOiBh
-ZGQgZGlzX3UyX2ZyZWVjbGtfZXhpc3RzX3F1aXJrCj4gICAgdXNiOiBkd2MzOiBhbWVuZCBVVE1J
-L1VUTUlXIHBoeSBpbnRlcmZhY2Ugc2V0dXAKPiAgICB1c2I6IGR3YzM6IGFkZCBtYWtlIGNvbXBh
-dGlibGUgZm9yIHJvY2tjaGlwIHBsYXRmb3JtCj4gICAgZHJpdmVyOiB1c2I6IGRyb3AgbGVnYWN5
-IHJvY2tjaGlwIHhoY2kgZHJpdmVyCj4gICAgQVJNOiBkdHM6IHJrMzM5OS1ldmI6IHVzYjMuMCBo
-b3N0IHN1cHBvcnQKPiAgICBjb25maWdzOiBldmItcmszMzk5OiB1cGRhdGUgc3VwcG9ydCB1c2Iz
-LjAgaG9zdAo+Cj4gSmFnYW4gVGVraSAoOCk6Cj4gICAgY2xrOiByazMzOTk6IEVuYWJsZS9EaXNh
-YmxlIHRoZSBVU0IyUEhZIGNsawo+ICAgIGNsazogcmszMzk5OiBTZXQgZW1wdHkgZm9yIFRDUEhZ
-IGFzc2lnbmVkLWNsb2Nrcwo+ICAgIGNsazogcmszMzk5OiBFbmFibGUvRGlzYWJsZSBUQ1BIWSBj
-bG9ja3MKPiAgICBwaHk6IHJvY2tjaGlwOiBBZGQgUm9ja2NoaXAgVVNCMlBIWSBkcml2ZXIKPiAg
-ICBwaHk6IHJvY2tjaGlwOiBBZGQgUm9ja2NoaXAgVVNCIFR5cGVDIFBIWSBkcml2ZXIKPiAgICB1
-c2I6IGR3YzM6IEFkZCBkaXNhYmxlIHUybWFjIGxpbmVzdGF0ZSBjaGVjayBxdWlyawo+ICAgIHVz
-YjogZHdjMzogRW5hYmxlIEF1dG9SZXRyeSBmZWF0dXJlIGluIHRoZSBjb250cm9sbGVyCj4gICAg
-cm9jLXJrMzM5OS1wYzogRW5hYmxlIFVTQjMuMCBIb3N0Cj4KPiAgIGFyY2gvYXJtL2R0cy9yazMz
-OTktZXZiLXUtYm9vdC5kdHNpICAgICAgICAgICB8ICAxMyArCj4gICBhcmNoL2FybS9tYWNoLXJv
-Y2tjaGlwL3JrMzM5OS9zeXNjb25fcmszMzk5LmMgfCAgIDMgKwo+ICAgY29uZmlncy9ldmItcmsz
-Mzk5X2RlZmNvbmZpZyAgICAgICAgICAgICAgICAgIHwgICA2ICsKPiAgIGNvbmZpZ3Mvcm9jLXBj
-LW1lenphbmluZS1yazMzOTlfZGVmY29uZmlnICAgICB8ICAgNSArCj4gICBjb25maWdzL3JvYy1w
-Yy1yazMzOTlfZGVmY29uZmlnICAgICAgICAgICAgICAgfCAgIDYgKwo+ICAgZHJpdmVycy9NYWtl
-ZmlsZSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAxICsKPiAgIGRyaXZlcnMvY2xr
-L3JvY2tjaGlwL2Nsa19yazMzOTkuYyAgICAgICAgICAgICB8ICAzOCArCj4gICBkcml2ZXJzL3Bo
-eS9LY29uZmlnICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwo+ICAgZHJpdmVycy9w
-aHkvcm9ja2NoaXAvS2NvbmZpZyAgICAgICAgICAgICAgICAgIHwgIDIxICsKPiAgIGRyaXZlcnMv
-cGh5L3JvY2tjaGlwL01ha2VmaWxlICAgICAgICAgICAgICAgICB8ICAgNyArCj4gICBkcml2ZXJz
-L3BoeS9yb2NrY2hpcC9waHktcm9ja2NoaXAtaW5uby11c2IyLmMgfCAzMTIgKysrKysrKwo+ICAg
-ZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXR5cGVjLmMgICAgIHwgNzk2ICsrKysr
-KysrKysrKysrKysrKwo+ICAgZHJpdmVycy91c2IvY29tbW9uL2NvbW1vbi5jICAgICAgICAgICAg
-ICAgICAgIHwgIDI1ICsKPiAgIGRyaXZlcnMvdXNiL2R3YzMvY29yZS5jICAgICAgICAgICAgICAg
-ICAgICAgICB8IDEwNiArKy0KPiAgIGRyaXZlcnMvdXNiL2R3YzMvY29yZS5oICAgICAgICAgICAg
-ICAgICAgICAgICB8ICAxOSArCj4gICBkcml2ZXJzL3VzYi9kd2MzL2R3YzMtZ2VuZXJpYy5jICAg
-ICAgICAgICAgICAgfCAgMzMgKy0KPiAgIGRyaXZlcnMvdXNiL2hvc3QvS2NvbmZpZyAgICAgICAg
-ICAgICAgICAgICAgICB8ICAgOSAtCj4gICBkcml2ZXJzL3VzYi9ob3N0L01ha2VmaWxlICAgICAg
-ICAgICAgICAgICAgICAgfCAgIDEgLQo+ICAgZHJpdmVycy91c2IvaG9zdC94aGNpLXJvY2tjaGlw
-LmMgICAgICAgICAgICAgIHwgMTk2IC0tLS0tCj4gICBpbmNsdWRlL2R3YzMtdWJvb3QuaCAgICAg
-ICAgICAgICAgICAgICAgICAgICAgfCAgIDMgKwo+ICAgaW5jbHVkZS9saW51eC91c2IvcGh5Lmgg
-ICAgICAgICAgICAgICAgICAgICAgIHwgIDE4ICsKPiAgIDIxIGZpbGVzIGNoYW5nZWQsIDEzNzYg
-aW5zZXJ0aW9ucygrKSwgMjQzIGRlbGV0aW9ucygtKQo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvcGh5L3JvY2tjaGlwL0tjb25maWcKPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
-L3BoeS9yb2NrY2hpcC9NYWtlZmlsZQo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvcGh5
-L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1pbm5vLXVzYjIuYwo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0
-IGRyaXZlcnMvcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC10eXBlYy5jCj4gICBkZWxldGUgbW9k
-ZSAxMDA2NDQgZHJpdmVycy91c2IvaG9zdC94aGNpLXJvY2tjaGlwLmMKPgpBcHBsaWVkIHRvIHUt
-Ym9vdC1yb2NrY2hpcCBtYXN0ZXIuCgpUaGFua3MsCi0gS2V2ZXIKCgoKX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
-aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Sandor Yu <Sandor.yu@nxp.com>
+
+The patch set initial support for Cadence MHDP(HDMI/DP) drm bridge
+driver and iMX8MQ HDMI/DP.
+
+The first patch drm/rockchip: prepare common code for cdns and rk dpi/dp driver
+is from the link https://patchwork.kernel.org/patch/10788309/
+that still in reviewing.
+
+Files in drm/bridge/cadence compose with serveral parties,
+drm bridge driver, Audio and API functions.
+ -cdns-dp-core.c: Displayport bridge driver
+ -cdns-hdmi-core.c: HDMI bridge driver 
+ -cdns-mhdp-audio.c: DP/HDMI Audio
+ -cdns-mhdp-common.c: MHDP common API functions
+ -cdns-mhdp-dp.c: MHDP DP API functions
+ -cdns-mhdp-hdmi.c: MHDP HDMI API functions
+
+Sandor Yu (7):
+  drm/rockchip: prepare common code for cdns and rk dpi/dp driver
+  drm: bridge: cadence: Create cadence fold
+  drm: bridge: cadence: initial support for MHDP DP bridge driver
+  drm: imx: mhdp: initial support for i.MX8MQ MHDP Displayport
+  drm: bridge: cadence: Initial support for MHDP HDMI bridge driver
+  drm: imx: mhdp: Initial support for i.MX8MQ MHDP HDMI
+  dt-bindings: display: Document Cadence MHDP HDMI/DP bindings
+
+ .../bindings/display/bridge/cdns,mhdp.yaml    |  46 +
+ .../devicetree/bindings/display/imx/mhdp.yaml |  59 ++
+ drivers/gpu/drm/bridge/Kconfig                |   2 +
+ drivers/gpu/drm/bridge/Makefile               |   1 +
+ drivers/gpu/drm/bridge/cadence/Kconfig        |  15 +
+ drivers/gpu/drm/bridge/cadence/Makefile       |   5 +
+ drivers/gpu/drm/bridge/cadence/cdns-dp-core.c | 530 ++++++++++
+ .../gpu/drm/bridge/cadence/cdns-hdmi-core.c   | 600 +++++++++++
+ .../gpu/drm/bridge/cadence/cdns-mhdp-audio.c  | 298 ++++++
+ .../gpu/drm/bridge/cadence/cdns-mhdp-common.c | 682 +++++++++++++
+ .../gpu/drm/bridge/cadence/cdns-mhdp-common.h |  40 +
+ drivers/gpu/drm/bridge/cadence/cdns-mhdp-dp.c | 206 ++++
+ .../gpu/drm/bridge/cadence/cdns-mhdp-hdmi.c   | 330 ++++++
+ drivers/gpu/drm/imx/Kconfig                   |   1 +
+ drivers/gpu/drm/imx/Makefile                  |   1 +
+ drivers/gpu/drm/imx/mhdp/Kconfig              |   9 +
+ drivers/gpu/drm/imx/mhdp/Makefile             |   4 +
+ drivers/gpu/drm/imx/mhdp/cdns-mhdp-dp-phy.c   | 390 +++++++
+ drivers/gpu/drm/imx/mhdp/cdns-mhdp-hdmi-phy.c | 588 +++++++++++
+ drivers/gpu/drm/imx/mhdp/cdns-mhdp-imxdrv.c   | 142 +++
+ drivers/gpu/drm/imx/mhdp/cdns-mhdp-phy.h      | 148 +++
+ drivers/gpu/drm/rockchip/Kconfig              |   1 +
+ drivers/gpu/drm/rockchip/Makefile             |   2 +-
+ drivers/gpu/drm/rockchip/cdn-dp-core.c        | 247 ++---
+ drivers/gpu/drm/rockchip/cdn-dp-core.h        |  44 +-
+ drivers/gpu/drm/rockchip/cdn-dp-reg.c         | 960 ------------------
+ .../drm/bridge/cdns-mhdp.h                    | 257 ++++-
+ 27 files changed, 4464 insertions(+), 1144 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/bridge/cdns,mhdp.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/imx/mhdp.yaml
+ create mode 100644 drivers/gpu/drm/bridge/cadence/Kconfig
+ create mode 100644 drivers/gpu/drm/bridge/cadence/Makefile
+ create mode 100644 drivers/gpu/drm/bridge/cadence/cdns-dp-core.c
+ create mode 100644 drivers/gpu/drm/bridge/cadence/cdns-hdmi-core.c
+ create mode 100644 drivers/gpu/drm/bridge/cadence/cdns-mhdp-audio.c
+ create mode 100644 drivers/gpu/drm/bridge/cadence/cdns-mhdp-common.c
+ create mode 100644 drivers/gpu/drm/bridge/cadence/cdns-mhdp-common.h
+ create mode 100644 drivers/gpu/drm/bridge/cadence/cdns-mhdp-dp.c
+ create mode 100644 drivers/gpu/drm/bridge/cadence/cdns-mhdp-hdmi.c
+ create mode 100644 drivers/gpu/drm/imx/mhdp/Kconfig
+ create mode 100644 drivers/gpu/drm/imx/mhdp/Makefile
+ create mode 100644 drivers/gpu/drm/imx/mhdp/cdns-mhdp-dp-phy.c
+ create mode 100644 drivers/gpu/drm/imx/mhdp/cdns-mhdp-hdmi-phy.c
+ create mode 100644 drivers/gpu/drm/imx/mhdp/cdns-mhdp-imxdrv.c
+ create mode 100644 drivers/gpu/drm/imx/mhdp/cdns-mhdp-phy.h
+ delete mode 100644 drivers/gpu/drm/rockchip/cdn-dp-reg.c
+ rename drivers/gpu/drm/rockchip/cdn-dp-reg.h => include/drm/bridge/cdns-mhdp.h (64%)
+
+-- 
+2.17.1
