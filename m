@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 3/4] roc-rk3399-pc: Add SPI boot
-Date: Tue,  2 Jun 2020 02:12:12 +0530
-Message-ID: <20200601204213.466120-4-jagan@amarulasolutions.com>
+Subject: [PATCH v2 4/4] doc: rockchip: Document SPI flash program steps
+Date: Tue,  2 Jun 2020 02:12:13 +0530
+Message-ID: <20200601204213.466120-5-jagan@amarulasolutions.com>
 References: <20200601204213.466120-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,115 +21,54 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tom
 Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-U-Boot TPL 2020.07-rc3-00090-gd4e919f927-dirty (Jun 01 2020 - 23:45:53)
-Channel 0: LPDDR4, 50MHz
-BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
-Channel 1: LPDDR4, 50MHz
-BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
-256B stride
-256B stride
-lpddr4_set_rate: change freq to 400000000 mhz 0, 1
-lpddr4_set_rate: change freq to 800000000 mhz 1, 0
-Trying to boot from BOOTROM
-Returning to boot ROM...
+Document SPI flash program steps for rockchip platforms.
 
-U-Boot SPL 2020.07-rc3-00087-ga21e9fd385 (Jun 02 2020 - 00:09:45 +0530)
-Trying to boot from MMC1
-NOTICE:  BL31: v2.2(release):
-NOTICE:  BL31: Built : 15:05:37, May 12 2020
-
-U-Boot 2020.07-rc3-00087-ga21e9fd385 (Jun 02 2020 - 00:09:45 +0530)
-
-SoC: Rockchip rk3399
-Reset cause: POR
-Model: Firefly ROC-RK3399-PC Board
-DRAM:  3.9 GiB
-PMIC:  RK808
-MMC:   mmc@fe320000: 1, sdhci@fe330000: 0
-Loading Environment from SPI Flash... SF: Detected w25q128 with page size 256 Bytes, erase size 4 KiB, total 16 MiB
-*** Warning - bad CRC, using default environment
-
-In:    serial
-Out:   serial
-Err:   serial
-Model: Firefly ROC-RK3399-PC Board
-
+Suggested-by: Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- arch/arm/dts/rk3399-roc-pc-u-boot.dtsi    | 12 +++++++++++-
- configs/roc-pc-mezzanine-rk3399_defconfig |  3 +++
- configs/roc-pc-rk3399_defconfig           |  3 +++
- 3 files changed, 17 insertions(+), 1 deletion(-)
+ doc/board/rockchip/rockchip.rst | 26 +++++++++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi b/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
-index 141dd0b306..fc155e6903 100644
---- a/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
-@@ -12,7 +12,11 @@
- 	};
+diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
+index 7b72fab496..76b228a046 100644
+--- a/doc/board/rockchip/rockchip.rst
++++ b/doc/board/rockchip/rockchip.rst
+@@ -162,6 +162,30 @@ Program the flash::
+ Note: for rockchip 32-bit platforms the U-Boot proper image
+ is u-boot-dtb.img
  
- 	chosen {
--		u-boot,spl-boot-order = "same-as-spl", &sdhci, &sdmmc;
-+		u-boot,spl-boot-order = "same-as-spl", &spi_flash, &sdhci, &sdmmc;
-+	};
++SPI
++^^^
 +
-+	config {
-+		u-boot,spl-payload-offset = <0x60000>; /* @ 384KB */
- 	};
- 
- 	vcc_hub_en: vcc_hub_en-regulator {
-@@ -40,6 +44,12 @@
- 	vin-supply = <&vcc_vbus_typec0>;
- };
- 
-+&spi1 {
-+	spi_flash: flash@0 {
-+		u-boot,dm-pre-reloc;
-+	};
-+};
++Generating idbloader for SPI boot would require to input a multi image
++image format to mkimage tool instead of concerting (like for MMC boot).
 +
- &vdd_log {
- 	regulator-min-microvolt = <430000>;
- 	regulator-init-microvolt = <950000>;
-diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
-index 1c1539bcb9..4b98dd9cfc 100644
---- a/configs/roc-pc-mezzanine-rk3399_defconfig
-+++ b/configs/roc-pc-mezzanine-rk3399_defconfig
-@@ -7,12 +7,15 @@ CONFIG_TARGET_ROC_PC_RK3399=y
- CONFIG_NR_DRAM_BANKS=1
- CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
-+CONFIG_SPL_SPI_FLASH_SUPPORT=y
-+CONFIG_SPL_SPI_SUPPORT=y
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-roc-pc-mezzanine.dtb"
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
-+CONFIG_SPL_SPI_LOAD=y
- CONFIG_TPL=y
- CONFIG_TPL_GPIO_SUPPORT=y
- CONFIG_CMD_BOOTZ=y
-diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index 18c343f9f9..e5ff570b87 100644
---- a/configs/roc-pc-rk3399_defconfig
-+++ b/configs/roc-pc-rk3399_defconfig
-@@ -8,12 +8,15 @@ CONFIG_TARGET_ROC_PC_RK3399=y
- CONFIG_NR_DRAM_BANKS=1
- CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
-+CONFIG_SPL_SPI_FLASH_SUPPORT=y
-+CONFIG_SPL_SPI_SUPPORT=y
- CONFIG_DEBUG_UART=y
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-roc-pc.dtb"
- CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
-+CONFIG_SPL_SPI_LOAD=y
- CONFIG_TPL=y
- CONFIG_TPL_GPIO_SUPPORT=y
- CONFIG_CMD_BOOTZ=y
++SPL-alone SPI boot image::
++
++        ./tools/mkimage -n rk3399 -T rkspi -d spl/u-boot-spl.bin idbloader.img
++
++TPL+SPL SPI boot image::
++
++        ./tools/mkimage -n rk3399 -T rkspi -d tpl/u-boot-tpl.bin:spl/u-boot-spl.bin idbloader.img
++
++Copy SPI boot images into SD card and boot from SD::
++
++        sf probe
++        load mmc 1:1 $kernel_addr_r idbloader.img
++        sf erase 0 +$filesize
++        sf write $kernel_addr_r 0 ${filesize}
++        load mmc 1:1 ${kernel_addr_r} u-boot.itb
++        sf erase 0x60000 +$filesize
++        sf write $kernel_addr_r 0x60000 ${filesize}
++
+ TODO
+ ----
+ 
+@@ -171,4 +195,4 @@ TODO
+ - Add missing SoC's with it boards list
+ 
+ .. Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+-.. Sunday 24 May 2020 10:08:41 PM IST
++.. Tuesday 02 June 2020 12:18:57 AM IST
 -- 
 2.25.1
