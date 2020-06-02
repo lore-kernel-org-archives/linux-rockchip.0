@@ -1,47 +1,78 @@
-From: Emil Velikov <emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [Linux-stm32] [PATCH v8 08/10] drm: stm: dw-mipi-dsi: let the
- bridge handle the HW version check
-Date: Tue, 2 Jun 2020 13:53:40 +0100
-Message-ID: <CACvgo51QyzEa8LFpGq5zjYV-0TifQRtNh4WhMYy8jNtaswxd7Q@mail.gmail.com>
-References: <20200427081952.3536741-1-adrian.ratiu@collabora.com>
- <20200427081952.3536741-9-adrian.ratiu@collabora.com> <4acc09e8-0610-01f6-b18d-3ffc390c45a3@st.com>
- <87blm387vt.fsf@iwork.i-did-not-set--mail-host-address--so-tickle-me>
+From: Emil Velikov <emil.l.velikov@gmail.com>
+Subject: Re: [PATCH 1/7] drm/rockchip: prepare common code for cdns and rk
+ dpi/dp driver
+Date: Tue, 2 Jun 2020 14:55:52 +0100
+Message-ID: <CACvgo52NeUSQV5p8+4DkCjpkv12cs8fCkQqy4MFn8pVaorVaHg@mail.gmail.com>
+References: <cover.1590982881.git.Sandor.yu@nxp.com> <d3d707cf37e7928a839071242c752779061cc094.1590982881.git.Sandor.yu@nxp.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <87blm387vt.fsf-Hx0R3YBcjnrrDJPETb4MAhUsoSCIEsfjNWc2n73sL8y+gHQt+EBHu/rpjleITZ0KWu6Lckefmi4@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "linux-imx-3arQi8VN3Tc@public.gmane.org" <linux-imx-3arQi8VN3Tc@public.gmane.org>, "kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <d3d707cf37e7928a839071242c752779061cc094.1590982881.git.Sandor.yu@nxp.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: sandor.yu@nxp.com
+Cc: Andrzej Hajda <a.hajda@samsung.com>, Neil Armstrong <narmstrong@baylibre.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@siol.net>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, dkos@cadence.com, ML dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, LAKML <linux-arm-kernel@lists.infradead.org>, NXP Linux Team <linux-imx@nxp.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Adrian,
+HI Sandor Yu
 
-On Mon, 1 Jun 2020 at 10:14, Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+On Mon, 1 Jun 2020 at 07:29, <sandor.yu@nxp.com> wrote:
 >
-> On Fri, 29 May 2020, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org> wrote:
-> > Hi Adrian, and thank you very much for the patchset.  Thank you
-> > also for having tested it on STM32F769 and STM32MP1.  Sorry for
-> > the late response, Yannick and I will review it as soon as
-> > possible and we will keep you posted.  Note: Do not hesitate to
-> > put us in copy for the next version  (philippe.cornu-qxv4g6HH51o@public.gmane.org,
-> > yannick.fertre-qxv4g6HH51o@public.gmane.org) Regards, Philippe :-)
+> From: Sandor Yu <Sandor.yu@nxp.com>
 >
-> Hi Philippe,
+> - Extracted common fields from cdn_dp_device to a new cdns_mhdp_device
+>   structure which will be used by two separate drivers later on.
+> - Moved some datatypes (audio_format, audio_info, vic_pxl_encoding_format,
+>   video_info) from cdn-dp-core.c to cdn-dp-reg.h.
+> - Changed prefixes from cdn_dp to cdns_mhdp
+>     cdn -> cdns to match the other Cadence's drivers
+>     dp -> mhdp to distinguish it from a "just a DP" as the IP underneath
+>       this registers map can be a HDMI (which is internally different,
+>       but the interface for commands, events is pretty much the same).
+> - Modified cdn-dp-core.c to use the new driver structure and new function
+>   names.
+> - writel and readl are replaced by cdns_mhdp_bus_write and
+>   cdns_mhdp_bus_read.
 >
-> Thank you very much for your previous and future STM testing,
-> really appreciate it! I've CC'd Yannick until now but I'll also CC
-> you sure :)
->
-> It's been over a month since I posted v8 and I was just gearing up
-> to address all feedback, rebase & retest to prepare v9 but I'll
-> wait a little longer, no problem, it's no rush.
->
-Small idea, pardon for joining so late:
+The high-level idea is great - split, refactor and reuse the existing drivers.
 
-Might be a good idea to add inline comment, why the clocks are disabled so late.
-Effectively a 2 line version of the commit summary.
+Although looking at the patches themselves - they seems to be doing
+multiple things at once.
+As indicated by the extensive list in the commit log.
 
-Feel free to make that a separate/follow-up patch.
+I would suggest splitting those up a bit, roughly in line of the
+itemisation as per the commit message.
 
--Emil
+Here is one hand wavy way to chunk this patch:
+ 1) use put_unalligned*
+ 2) 'use local variable dev' style of changes (as seem in cdn_dp_clk_enable)
+ 3) add writel/readl wrappers
+ 4) hookup struct cdns_mhdp_device, keep dp->mhdp detail internal.
+The cdn-dp-reg.h function names/signatures will stay the same.
+ 5) finalize the helpers - use mhdp directly, rename
+
+HTH
+Emil
+
+Examples:
+4)
+ static int cdn_dp_mailbox_read(struct cdn_dp_device *dp)
+ {
++"  struct cdns_mhdp_device *mhdp = dp->mhdp;
+   int val, ret;
+
+-  ret = readx_poll_timeout(readl, dp->regs + MAILBOX_EMPTY_ADDR,
++  ret = readx_poll_timeout(readl, mhdp->regs_base + MAILBOX_EMPTY_ADDR,
+...
+   return fancy_readl(dp, MAILBOX0_RD_DATA) & 0xff;
+ }
+
+5)
+-static int cdn_dp_mailbox_read(struct cdn_dp_device *dp)
++static int mhdp_mailbox_read(struct cdns_mhdp_device *mhdp)
+ {
+-  struct cdns_mhdp_device *mhdp = dp->mhdp;
+   int val, ret;
+...
+-  return fancy_readl(dp, MAILBOX0_RD_DATA) & 0xff;
++  return cdns_mhdp_bus_read(mhdp, MAILBOX0_RD_DATA) & 0xff;
+ }
