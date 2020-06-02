@@ -1,64 +1,47 @@
-From: Thierry Reding <thierry.reding@gmail.com>
-Subject: Re: [PATCH] pwm: rockchip: simplify rockchip_pwm_get_state()
-Date: Tue, 2 Jun 2020 14:39:14 +0200
-Message-ID: <20200602123914.GA3360525@ulmo>
-References: <20190919091728.24756-1-linux@rasmusvillemoes.dk>
+From: Emil Velikov <emil.l.velikov-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [Linux-stm32] [PATCH v8 08/10] drm: stm: dw-mipi-dsi: let the
+ bridge handle the HW version check
+Date: Tue, 2 Jun 2020 13:53:40 +0100
+Message-ID: <CACvgo51QyzEa8LFpGq5zjYV-0TifQRtNh4WhMYy8jNtaswxd7Q@mail.gmail.com>
+References: <20200427081952.3536741-1-adrian.ratiu@collabora.com>
+ <20200427081952.3536741-9-adrian.ratiu@collabora.com> <4acc09e8-0610-01f6-b18d-3ffc390c45a3@st.com>
+ <87blm387vt.fsf@iwork.i-did-not-set--mail-host-address--so-tickle-me>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="IJpNTDwzlM2Ie8A6"
-Return-path: <linux-pwm-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20190919091728.24756-1-linux@rasmusvillemoes.dk>
-Sender: linux-pwm-owner@vger.kernel.org
-To: Rasmus Villemoes <linux@rasmusvillemoes.dk>
-Cc: Heiko Stuebner <heiko@sntech.de>, David Wu <david.wu@rock-chips.com>, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <87blm387vt.fsf-Hx0R3YBcjnrrDJPETb4MAhUsoSCIEsfjNWc2n73sL8y+gHQt+EBHu/rpjleITZ0KWu6Lckefmi4@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, "linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org" <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org" <dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org>, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, "linux-imx-3arQi8VN3Tc@public.gmane.org" <linux-imx-3arQi8VN3Tc@public.gmane.org>, "kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org" <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Adrian,
 
---IJpNTDwzlM2Ie8A6
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Mon, 1 Jun 2020 at 10:14, Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+>
+> On Fri, 29 May 2020, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org> wrote:
+> > Hi Adrian, and thank you very much for the patchset.  Thank you
+> > also for having tested it on STM32F769 and STM32MP1.  Sorry for
+> > the late response, Yannick and I will review it as soon as
+> > possible and we will keep you posted.  Note: Do not hesitate to
+> > put us in copy for the next version  (philippe.cornu-qxv4g6HH51o@public.gmane.org,
+> > yannick.fertre-qxv4g6HH51o@public.gmane.org) Regards, Philippe :-)
+>
+> Hi Philippe,
+>
+> Thank you very much for your previous and future STM testing,
+> really appreciate it! I've CC'd Yannick until now but I'll also CC
+> you sure :)
+>
+> It's been over a month since I posted v8 and I was just gearing up
+> to address all feedback, rebase & retest to prepare v9 but I'll
+> wait a little longer, no problem, it's no rush.
+>
+Small idea, pardon for joining so late:
 
-On Thu, Sep 19, 2019 at 11:17:27AM +0200, Rasmus Villemoes wrote:
-> The way state->enabled is computed is rather convoluted and hard to
-> read - both branches of the if() actually do the exact same thing. So
-> remove the if(), and further simplify "<boolean condition> ? true :
-> false" to "<boolean condition>".
->=20
-> Signed-off-by: Rasmus Villemoes <linux@rasmusvillemoes.dk>
-> ---
-> I stumbled on this while trying to understand how the pwm subsystem
-> works. This patch is a semantic no-op, but it's also possible that,
-> say, the first branch simply contains a "double negative" so either
-> the !=3D should be =3D=3D or the "false : true" should be "true : false".
->=20
->  drivers/pwm/pwm-rockchip.c | 7 +------
->  1 file changed, 1 insertion(+), 6 deletions(-)
+Might be a good idea to add inline comment, why the clocks are disabled so late.
+Effectively a 2 line version of the commit summary.
 
-I've applied this. Irrespective of any feedback David would have this is
-correct and a nice simplification.
+Feel free to make that a separate/follow-up patch.
 
-Thierry
-
---IJpNTDwzlM2Ie8A6
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl7WSHEACgkQ3SOs138+
-s6EIvA//U+YBcRa/yOWyp3jhnv0UxhIHPIk4tcP1l5N4cNtnj23Y4VCdv7baJM4M
-k2OKqKanjnp0AROTYeu150CEqI+xXuND8W7PKRIcCTLkS2Gy7WBXh1ezlCRupzyH
-uYRPi+PY5ZkX/owSFRy+2Ii5o5ywzPc5aH6hqsLfKGzkUrJA/wFsTH85JfmEwwTu
-8WOYkvO8zGqaA32B5Orx42x4jH020aa/PorZsl1WXjEnqN7zc0Ke5CZxZN/puoE+
-YuTAqG9NDMFiZzkeN2vHbuafUyBk0zSRiz+/1KTkKPnubJ0bLncbCZRonghCCCNV
-3hWEB8Fm5pP9mo5Ht4q6Z4or2JkuWbcu3IwyE9SrerLtcTbkbCqaU3kkvKFm72Gy
-QN2iUJiGHk4i7PYqNEAWfQ9i16U7+2nbb6rroHiHcKR8G1boWJcwyg6dwVto5uUN
-47k4J8HTAZBsDysAH4GVavggIig9WwMMqprGhVRA7CLhMtp5i/g+9fyN6OmxmwAO
-9N4Sxs/ScWdReU63b0DbWRdEQa9OVK0BWz13uoESETZcfeH9ggZpY2EDBQ96KRY5
-cG9Ka88WfHJJ7qth/PcHsu94fFnbcPkZeca16guCWoYIi5SdCJeDuPVfbjV1xn9T
-Fu/bhyvbAecyGACpTbIwZb5DhtT4HYr0IX4Q4mJ8PfM8b0BdR4o=
-=OaiW
------END PGP SIGNATURE-----
-
---IJpNTDwzlM2Ie8A6--
+-Emil
