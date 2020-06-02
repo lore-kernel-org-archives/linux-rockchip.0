@@ -1,118 +1,57 @@
-From: Mylene Josserand <mylene.josserand@collabora.com>
-Subject: Re: [PATCH v3 1/1] clk: rockchip: rk3288: Handle clock tree for
- rk3288w
-Date: Tue, 2 Jun 2020 07:34:37 +0200
-Message-ID: <f7e98a83-5c4d-6de4-f6bf-1a02d5bfe25a@collabora.com>
-References: <20200601151442.156184-1-mylene.josserand@collabora.com>
- <20200601151442.156184-2-mylene.josserand@collabora.com>
- <8288442.SvGebX2C5V@diego>
+From: =?UTF-8?q?Myl=C3=A8ne=20Josserand?=
+        <mylene.josserand-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH v4 0/2] ARM: Add Rockchip rk3288w support
+Date: Tue,  2 Jun 2020 10:06:42 +0200
+Message-ID: <20200602080644.11333-1-mylene.josserand@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <8288442.SvGebX2C5V@diego>
-Content-Language: en-US
-Sender: linux-clk-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, geert@linux-m68k.org, kernel@collabora.com
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: mturquette-rdvid1DuHRBWk0Htik3J/w@public.gmane.org, sboyd-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: linux-clk-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, mylene.josserand-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Hello everyone,
 
-Thank you very much for your quick review!
+Context
+-------
 
-On 6/1/20 10:09 PM, Heiko Stübner wrote:
-> Hi Mylène,
-> 
-> Am Montag, 1. Juni 2020, 17:14:42 CEST schrieb Mylène Josserand:
->> The revision rk3288w has a different clock tree about "hclk_vio"
->> clock, according to the BSP kernel code.
->>
->> This patch handles this difference by detecting which device-tree
->> we are using. If it is a "rockchip,rk3288-cru", let's register
->> the clock tree as it was before. If the compatible is
->> "rockchip,rk3288w-cru", we will apply the difference according to this
->> version of this SoC.
->>
->> Noticed that this new device-tree compatible must be handled by
->> bootloader.
->>
->> Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
-> 
-> approach looks good, but you should also update the clock-controller
-> dt-binding for the new compatible.
+Here is my V4 of my patches that add the support for the Rockchip
+RK3288w which is a revision of the RK3288. It is mostly the same SOC
+except for, at least, one clock tree which is different.
+This difference is only known by looking at the BSP kernel [1].
 
-Okay, I will. As it was not implemented in the Kernel, I didn't know if 
-I should add it.
+Currently, the mainline kernel will not hang on rk3288w but it is
+probably by "chance" because we got an issue on a lower kernel version.
 
-> 
-> Style nits below.
-> 
-> 
->> ---
->>   drivers/clk/rockchip/clk-rk3288.c | 20 ++++++++++++++++++--
->>   1 file changed, 18 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
->> index cc2a177bbdbf..5018d2f1e54c 100644
->> --- a/drivers/clk/rockchip/clk-rk3288.c
->> +++ b/drivers/clk/rockchip/clk-rk3288.c
->> @@ -425,8 +425,6 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->>   	COMPOSITE(0, "aclk_vio0", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
->>   			RK3288_CLKSEL_CON(31), 6, 2, MFLAGS, 0, 5, DFLAGS,
->>   			RK3288_CLKGATE_CON(3), 0, GFLAGS),
->> -	DIV(0, "hclk_vio", "aclk_vio0", 0,
->> -			RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
->>   	COMPOSITE(0, "aclk_vio1", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
->>   			RK3288_CLKSEL_CON(31), 14, 2, MFLAGS, 8, 5, DFLAGS,
->>   			RK3288_CLKGATE_CON(3), 2, GFLAGS),
->> @@ -819,6 +817,16 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
->>   	INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
->>   };
->>   
->> +static struct rockchip_clk_branch rk3288w_hclkvio_branch[] __initdata = {
->> +	DIV(0, "hclk_vio", "aclk_vio1", 0,
->> +	    RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-> 
-> please keep indentations as they were, the sub-lines starting where they
-> are is actually intentional :-)
+According to Rockchip's U-Boot [2], the rk3288w can be detected using
+the HDMI revision number (= 0x1A) in this version of the SOC.
 
-Oups, I didn't know, I will update this in my V4.
+Changelog
+---------
 
-> 
-> 
->> +};
->> +
->> +static struct rockchip_clk_branch rk3288_hclkvio_branch[] __initdata = {
->> +	DIV(0, "hclk_vio", "aclk_vio0", 0,
->> +	    RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-> 
-> same here
+This V4 is pretty much the same than the V3. Added the dt-bindings
+documentation in clock-controller dt-bindings and fixed some typos
+according to Heiko's reviews.
 
-same here
-
-> 
->> +};
->> +
->>   static const char *const rk3288_critical_clocks[] __initconst = {
->>   	"aclk_cpu",
->>   	"aclk_peri",
->> @@ -936,6 +944,14 @@ static void __init rk3288_clk_init(struct device_node *np)
->>   				   RK3288_GRF_SOC_STATUS1);
->>   	rockchip_clk_register_branches(ctx, rk3288_clk_branches,
->>   				  ARRAY_SIZE(rk3288_clk_branches));
->> +
->> +	if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
->> +		rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
->> +					       ARRAY_SIZE(rk3288w_hclkvio_branch));
->> +	else
->> +		rockchip_clk_register_branches(ctx, rk3288_hclkvio_branch,
->> +					       ARRAY_SIZE(rk3288_hclkvio_branch));
->> +
->>   	rockchip_clk_protect_critical(rk3288_critical_clocks,
->>   				      ARRAY_SIZE(rk3288_critical_clocks));
->>   
->>
+Changes since v3:
+   - Updated clock-controller's dt-bindings
+   - Fixed indentation
 
 Best regards,
-Mylène
+Mylène Josserand
+
+[1] https://github.com/rockchip-linux/kernel/blob/develop-4.4/drivers/clk/rockchip/clk-rk3288.c#L960..L964
+[2] https://github.com/rockchip-linux/u-boot/blob/next-dev/arch/arm/mach-rockchip/rk3288/rk3288.c#L378..L388
+
+Mylène Josserand (2):
+  clk: rockchip: rk3288: Handle clock tree for rk3288w
+  dt-bindings: clocks: rk3288: add possible rk3288w
+
+ .../bindings/clock/rockchip,rk3288-cru.txt    |  8 +++++++-
+ drivers/clk/rockchip/clk-rk3288.c             | 20 +++++++++++++++++--
+ 2 files changed, 25 insertions(+), 3 deletions(-)
+
+-- 
+2.26.2
