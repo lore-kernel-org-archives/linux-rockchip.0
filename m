@@ -1,49 +1,64 @@
-From: =?UTF-8?q?Myl=C3=A8ne=20Josserand?=
-        <mylene.josserand@collabora.com>
-Subject: [PATCH v4 2/2] dt-bindings: clocks: rk3288: add rk3288w compatible
-Date: Tue,  2 Jun 2020 10:06:44 +0200
-Message-ID: <20200602080644.11333-3-mylene.josserand@collabora.com>
-References: <20200602080644.11333-1-mylene.josserand@collabora.com>
+From: Thierry Reding <thierry.reding@gmail.com>
+Subject: Re: [PATCH] pwm: rockchip: simplify rockchip_pwm_get_state()
+Date: Tue, 2 Jun 2020 14:39:14 +0200
+Message-ID: <20200602123914.GA3360525@ulmo>
+References: <20190919091728.24756-1-linux@rasmusvillemoes.dk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <20200602080644.11333-1-mylene.josserand@collabora.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, sboyd@kernel.org, heiko@sntech.de, robh+dt@kernel.org
-Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, mylene.josserand@collabora.com, kernel@collabora.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+        protocol="application/pgp-signature"; boundary="IJpNTDwzlM2Ie8A6"
+Return-path: <linux-pwm-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20190919091728.24756-1-linux@rasmusvillemoes.dk>
+Sender: linux-pwm-owner@vger.kernel.org
+To: Rasmus Villemoes <linux@rasmusvillemoes.dk>
+Cc: Heiko Stuebner <heiko@sntech.de>, David Wu <david.wu@rock-chips.com>, linux-pwm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the possible compatible "rockchip,rk3288w-cru" that handles
-the difference between the rk3288 and the new revision rk3288w.
 
-This compatible will be added by bootloaders.
+--IJpNTDwzlM2Ie8A6
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
----
- .../devicetree/bindings/clock/rockchip,rk3288-cru.txt     | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+On Thu, Sep 19, 2019 at 11:17:27AM +0200, Rasmus Villemoes wrote:
+> The way state->enabled is computed is rather convoluted and hard to
+> read - both branches of the if() actually do the exact same thing. So
+> remove the if(), and further simplify "<boolean condition> ? true :
+> false" to "<boolean condition>".
+>=20
+> Signed-off-by: Rasmus Villemoes <linux@rasmusvillemoes.dk>
+> ---
+> I stumbled on this while trying to understand how the pwm subsystem
+> works. This patch is a semantic no-op, but it's also possible that,
+> say, the first branch simply contains a "double negative" so either
+> the !=3D should be =3D=3D or the "false : true" should be "true : false".
+>=20
+>  drivers/pwm/pwm-rockchip.c | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
-index 8cb47c39ba53..bf3a9ec19241 100644
---- a/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
-+++ b/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
-@@ -4,9 +4,15 @@ The RK3288 clock controller generates and supplies clock to various
- controllers within the SoC and also implements a reset controller for SoC
- peripherals.
- 
-+A revision of this SoC is available: rk3288w. The clock tree is a bit
-+different so another dt-compatible is available. Noticed that it is only
-+setting the difference but there is no automatic revision detection. This
-+should be performed by bootloaders.
-+
- Required Properties:
- 
--- compatible: should be "rockchip,rk3288-cru"
-+- compatible: should be "rockchip,rk3288-cru" or "rockchip,rk3288w-cru" in
-+  case of this revision of Rockchip rk3288.
- - reg: physical base address of the controller and length of memory mapped
-   region.
- - #clock-cells: should be 1.
--- 
-2.26.2
+I've applied this. Irrespective of any feedback David would have this is
+correct and a nice simplification.
+
+Thierry
+
+--IJpNTDwzlM2Ie8A6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl7WSHEACgkQ3SOs138+
+s6EIvA//U+YBcRa/yOWyp3jhnv0UxhIHPIk4tcP1l5N4cNtnj23Y4VCdv7baJM4M
+k2OKqKanjnp0AROTYeu150CEqI+xXuND8W7PKRIcCTLkS2Gy7WBXh1ezlCRupzyH
+uYRPi+PY5ZkX/owSFRy+2Ii5o5ywzPc5aH6hqsLfKGzkUrJA/wFsTH85JfmEwwTu
+8WOYkvO8zGqaA32B5Orx42x4jH020aa/PorZsl1WXjEnqN7zc0Ke5CZxZN/puoE+
+YuTAqG9NDMFiZzkeN2vHbuafUyBk0zSRiz+/1KTkKPnubJ0bLncbCZRonghCCCNV
+3hWEB8Fm5pP9mo5Ht4q6Z4or2JkuWbcu3IwyE9SrerLtcTbkbCqaU3kkvKFm72Gy
+QN2iUJiGHk4i7PYqNEAWfQ9i16U7+2nbb6rroHiHcKR8G1boWJcwyg6dwVto5uUN
+47k4J8HTAZBsDysAH4GVavggIig9WwMMqprGhVRA7CLhMtp5i/g+9fyN6OmxmwAO
+9N4Sxs/ScWdReU63b0DbWRdEQa9OVK0BWz13uoESETZcfeH9ggZpY2EDBQ96KRY5
+cG9Ka88WfHJJ7qth/PcHsu94fFnbcPkZeca16guCWoYIi5SdCJeDuPVfbjV1xn9T
+Fu/bhyvbAecyGACpTbIwZb5DhtT4HYr0IX4Q4mJ8PfM8b0BdR4o=
+=OaiW
+-----END PGP SIGNATURE-----
+
+--IJpNTDwzlM2Ie8A6--
