@@ -1,8 +1,8 @@
 From: =?UTF-8?q?Myl=C3=A8ne=20Josserand?=
         <mylene.josserand@collabora.com>
-Subject: [PATCH v4 1/2] clk: rockchip: rk3288: Handle clock tree for rk3288w
-Date: Tue,  2 Jun 2020 10:06:43 +0200
-Message-ID: <20200602080644.11333-2-mylene.josserand@collabora.com>
+Subject: [PATCH v4 2/2] dt-bindings: clocks: rk3288: add rk3288w compatible
+Date: Tue,  2 Jun 2020 10:06:44 +0200
+Message-ID: <20200602080644.11333-3-mylene.josserand@collabora.com>
 References: <20200602080644.11333-1-mylene.josserand@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -14,67 +14,36 @@ To: mturquette@baylibre.com, sboyd@kernel.org, heiko@sntech.de, robh+dt@kernel.o
 Cc: linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, mylene.josserand@collabora.com, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The revision rk3288w has a different clock tree about "hclk_vio"
-clock, according to the BSP kernel code.
+Add the possible compatible "rockchip,rk3288w-cru" that handles
+the difference between the rk3288 and the new revision rk3288w.
 
-This patch handles this difference by detecting which device-tree
-we are using. If it is a "rockchip,rk3288-cru", let's register
-the clock tree as it was before. If the device-tree node is
-"rockchip,rk3288w-cru", we will apply the difference with this
-version of this SoC.
-
-Noticed that this new device-tree compatible must be handled in
-bootloader such as u-boot.
+This compatible will be added by bootloaders.
 
 Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
 ---
- drivers/clk/rockchip/clk-rk3288.c | 20 ++++++++++++++++++--
- 1 file changed, 18 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/clock/rockchip,rk3288-cru.txt     | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-index cc2a177bbdbf..204976e2d0cb 100644
---- a/drivers/clk/rockchip/clk-rk3288.c
-+++ b/drivers/clk/rockchip/clk-rk3288.c
-@@ -425,8 +425,6 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	COMPOSITE(0, "aclk_vio0", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
- 			RK3288_CLKSEL_CON(31), 6, 2, MFLAGS, 0, 5, DFLAGS,
- 			RK3288_CLKGATE_CON(3), 0, GFLAGS),
--	DIV(0, "hclk_vio", "aclk_vio0", 0,
--			RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
- 	COMPOSITE(0, "aclk_vio1", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
- 			RK3288_CLKSEL_CON(31), 14, 2, MFLAGS, 8, 5, DFLAGS,
- 			RK3288_CLKGATE_CON(3), 2, GFLAGS),
-@@ -819,6 +817,16 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
- 	INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
- };
+diff --git a/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt b/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
+index 8cb47c39ba53..bf3a9ec19241 100644
+--- a/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
++++ b/Documentation/devicetree/bindings/clock/rockchip,rk3288-cru.txt
+@@ -4,9 +4,15 @@ The RK3288 clock controller generates and supplies clock to various
+ controllers within the SoC and also implements a reset controller for SoC
+ peripherals.
  
-+static struct rockchip_clk_branch rk3288w_hclkvio_branch[] __initdata = {
-+	DIV(0, "hclk_vio", "aclk_vio1", 0,
-+			RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-+};
++A revision of this SoC is available: rk3288w. The clock tree is a bit
++different so another dt-compatible is available. Noticed that it is only
++setting the difference but there is no automatic revision detection. This
++should be performed by bootloaders.
 +
-+static struct rockchip_clk_branch rk3288_hclkvio_branch[] __initdata = {
-+	DIV(0, "hclk_vio", "aclk_vio0", 0,
-+			RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-+};
-+
- static const char *const rk3288_critical_clocks[] __initconst = {
- 	"aclk_cpu",
- 	"aclk_peri",
-@@ -936,6 +944,14 @@ static void __init rk3288_clk_init(struct device_node *np)
- 				   RK3288_GRF_SOC_STATUS1);
- 	rockchip_clk_register_branches(ctx, rk3288_clk_branches,
- 				  ARRAY_SIZE(rk3288_clk_branches));
-+
-+	if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
-+		rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
-+					       ARRAY_SIZE(rk3288w_hclkvio_branch));
-+	else
-+		rockchip_clk_register_branches(ctx, rk3288_hclkvio_branch,
-+					       ARRAY_SIZE(rk3288_hclkvio_branch));
-+
- 	rockchip_clk_protect_critical(rk3288_critical_clocks,
- 				      ARRAY_SIZE(rk3288_critical_clocks));
+ Required Properties:
  
+-- compatible: should be "rockchip,rk3288-cru"
++- compatible: should be "rockchip,rk3288-cru" or "rockchip,rk3288w-cru" in
++  case of this revision of Rockchip rk3288.
+ - reg: physical base address of the controller and length of memory mapped
+   region.
+ - #clock-cells: should be 1.
 -- 
 2.26.2
