@@ -1,190 +1,118 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH] media: rkvdec: Fix H264 scaling list order
-Date: Tue, 02 Jun 2020 01:36:37 -0300
-Message-ID: <0aef6cd5cc7019912a973ad8c5ba5e7b6105baf9.camel@collabora.com>
-References: <20200522202130.13306-1-jonas@kwiboo.se>
+From: Mylene Josserand <mylene.josserand@collabora.com>
+Subject: Re: [PATCH v3 1/1] clk: rockchip: rk3288: Handle clock tree for
+ rk3288w
+Date: Tue, 2 Jun 2020 07:34:37 +0200
+Message-ID: <f7e98a83-5c4d-6de4-f6bf-1a02d5bfe25a@collabora.com>
+References: <20200601151442.156184-1-mylene.josserand@collabora.com>
+ <20200601151442.156184-2-mylene.josserand@collabora.com>
+ <8288442.SvGebX2C5V@diego>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200522202130.13306-1-jonas@kwiboo.se>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Jeffrey Kardatzke <jkardatzke@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, Boris Brezillon <boris.brezillon@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <8288442.SvGebX2C5V@diego>
+Content-Language: en-US
+Sender: linux-clk-owner@vger.kernel.org
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, geert@linux-m68k.org, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jonas,
+Hi Heiko,
 
-Thanks a lot for the fix! Indeed it fixes
-a few bitstream that had artifacts :)
+Thank you very much for your quick review!
 
-On Fri, 2020-05-22 at 20:21 +0000, Jonas Karlman wrote:
-> The Rockchip Video Decoder driver is expecting that the values in a
-> scaling list are in zig-zag order and applies the inverse scanning process
-> to get the values in matrix order.
+On 6/1/20 10:09 PM, Heiko Stübner wrote:
+> Hi Mylène,
 > 
-> Commit 0b0393d59eb4 ("media: uapi: h264: clarify expected
-> scaling_list_4x4/8x8 order") clarified that the values in the scaling list
-> should already be in matrix order.
+> Am Montag, 1. Juni 2020, 17:14:42 CEST schrieb Mylène Josserand:
+>> The revision rk3288w has a different clock tree about "hclk_vio"
+>> clock, according to the BSP kernel code.
+>>
+>> This patch handles this difference by detecting which device-tree
+>> we are using. If it is a "rockchip,rk3288-cru", let's register
+>> the clock tree as it was before. If the compatible is
+>> "rockchip,rk3288w-cru", we will apply the difference according to this
+>> version of this SoC.
+>>
+>> Noticed that this new device-tree compatible must be handled by
+>> bootloader.
+>>
+>> Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
 > 
-> Fix this by removing the reordering and change to use two memcpy.
+> approach looks good, but you should also update the clock-controller
+> dt-binding for the new compatible.
+
+Okay, I will. As it was not implemented in the Kernel, I didn't know if 
+I should add it.
+
 > 
-> Fixes: cd33c830448b ("media: rkvdec: Add the rkvdec driver")
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
->  drivers/staging/media/rkvdec/rkvdec-h264.c | 70 +++++++---------------
->  1 file changed, 22 insertions(+), 48 deletions(-)
+> Style nits below.
 > 
-> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-> index cd4980d06be7..2719f0c66a4a 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-> @@ -18,11 +18,16 @@
->  /* Size with u32 units. */
->  #define RKV_CABAC_INIT_BUFFER_SIZE	(3680 + 128)
->  #define RKV_RPS_SIZE			((128 + 128) / 4)
-> -#define RKV_SCALING_LIST_SIZE		(6 * 16 + 6 * 64 + 128)
->  #define RKV_ERROR_INFO_SIZE		(256 * 144 * 4)
->  
->  #define RKVDEC_NUM_REFLIST		3
->  
-> +struct rkvdec_scaling_matrix {
+> 
+>> ---
+>>   drivers/clk/rockchip/clk-rk3288.c | 20 ++++++++++++++++++--
+>>   1 file changed, 18 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+>> index cc2a177bbdbf..5018d2f1e54c 100644
+>> --- a/drivers/clk/rockchip/clk-rk3288.c
+>> +++ b/drivers/clk/rockchip/clk-rk3288.c
+>> @@ -425,8 +425,6 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+>>   	COMPOSITE(0, "aclk_vio0", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
+>>   			RK3288_CLKSEL_CON(31), 6, 2, MFLAGS, 0, 5, DFLAGS,
+>>   			RK3288_CLKGATE_CON(3), 0, GFLAGS),
+>> -	DIV(0, "hclk_vio", "aclk_vio0", 0,
+>> -			RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
+>>   	COMPOSITE(0, "aclk_vio1", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
+>>   			RK3288_CLKSEL_CON(31), 14, 2, MFLAGS, 8, 5, DFLAGS,
+>>   			RK3288_CLKGATE_CON(3), 2, GFLAGS),
+>> @@ -819,6 +817,16 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
+>>   	INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
+>>   };
+>>   
+>> +static struct rockchip_clk_branch rk3288w_hclkvio_branch[] __initdata = {
+>> +	DIV(0, "hclk_vio", "aclk_vio1", 0,
+>> +	    RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
+> 
+> please keep indentations as they were, the sub-lines starting where they
+> are is actually intentional :-)
 
-How about we call this rkvdec_scaling_list
-or even rkvdec_h264_scaling_list?
+Oups, I didn't know, I will update this in my V4.
 
-It'll make code more readable and easier to grep.
+> 
+> 
+>> +};
+>> +
+>> +static struct rockchip_clk_branch rk3288_hclkvio_branch[] __initdata = {
+>> +	DIV(0, "hclk_vio", "aclk_vio0", 0,
+>> +	    RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
+> 
+> same here
 
-> +	u8 scaling_list_4x4[6][16];
-> +	u8 scaling_list_8x8[6][64];
-> +	u8 padding[128];
+same here
 
-Oops, something is wrong here, maybe some
-mistake when porting code around.
+> 
+>> +};
+>> +
+>>   static const char *const rk3288_critical_clocks[] __initconst = {
+>>   	"aclk_cpu",
+>>   	"aclk_peri",
+>> @@ -936,6 +944,14 @@ static void __init rk3288_clk_init(struct device_node *np)
+>>   				   RK3288_GRF_SOC_STATUS1);
+>>   	rockchip_clk_register_branches(ctx, rk3288_clk_branches,
+>>   				  ARRAY_SIZE(rk3288_clk_branches));
+>> +
+>> +	if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
+>> +		rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
+>> +					       ARRAY_SIZE(rk3288w_hclkvio_branch));
+>> +	else
+>> +		rockchip_clk_register_branches(ctx, rk3288_hclkvio_branch,
+>> +					       ARRAY_SIZE(rk3288_hclkvio_branch));
+>> +
+>>   	rockchip_clk_protect_critical(rk3288_critical_clocks,
+>>   				      ARRAY_SIZE(rk3288_critical_clocks));
+>>   
+>>
 
-Rockchip MPP defines the scaling list size as:
-
-#define RKV_SCALING_LIST_SIZE (6*16 + 2*64 + 128)
-
-Consistently with the fact that 4:4:4 sampling
-is not supported (chroma_format_idc == 3),
-only the first two scaling matrices are used.
-
-Moreover, given all these buffers are specified separately
-(see below), I bet not even the 128 padding bytes
-are needed.
- 
-> +};
-> +
->  struct rkvdec_sps_pps_packet {
->  	u32 info[8];
->  };
-> @@ -86,7 +91,7 @@ struct rkvdec_ps_field {
->  /* Data structure describing auxiliary buffer format. */
->  struct rkvdec_h264_priv_tbl {
->  	s8 cabac_table[4][464][2];
-
-As can be seen, all these buffers can be allocated
-independently, which perhaps could reduce the
-pressure on the DMA allocator.
-
-> -	u8 scaling_list[RKV_SCALING_LIST_SIZE];
-> +	struct rkvdec_scaling_matrix scaling_list;
->  	u32 rps[RKV_RPS_SIZE];
->  	struct rkvdec_sps_pps_packet param_set[256];
->  	u8 err_info[RKV_ERROR_INFO_SIZE];
-
-In particular, I wonder if the error info stuff
-is really required.
-
-I guess we'll want to merge a simple fix,
-so no need to address any of these questions
-for now.
-
-With the struct rkvdec_scaling_matrix rename:
-
-Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
-
-Thanks,
-Ezequiel
-
-> @@ -785,56 +790,25 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
->  	}
->  }
->  
-> -/*
-> - * NOTE: The values in a scaling list are in zig-zag order, apply inverse
-> - * scanning process to get the values in matrix order.
-> - */
-> -static const u32 zig_zag_4x4[16] = {
-> -	0, 1, 4, 8, 5, 2, 3, 6, 9, 12, 13, 10, 7, 11, 14, 15
-> -};
-> -
-> -static const u32 zig_zag_8x8[64] = {
-> -	0,  1,  8, 16,  9,  2,  3, 10, 17, 24, 32, 25, 18, 11,  4,  5,
-> -	12, 19, 26, 33, 40, 48, 41, 34, 27, 20, 13,  6,  7, 14, 21, 28,
-> -	35, 42, 49, 56, 57, 50, 43, 36, 29, 22, 15, 23, 30, 37, 44, 51,
-> -	58, 59, 52, 45, 38, 31, 39, 46, 53, 60, 61, 54, 47, 55, 62, 63
-> -};
-> -
-> -static void reorder_scaling_list(struct rkvdec_ctx *ctx,
-> -				 struct rkvdec_h264_run *run)
-> +static void assemble_hw_scaling_list(struct rkvdec_ctx *ctx,
-> +				     struct rkvdec_h264_run *run)
->  {
->  	const struct v4l2_ctrl_h264_scaling_matrix *scaling = run->scaling_matrix;
-> -	const size_t num_list_4x4 = ARRAY_SIZE(scaling->scaling_list_4x4);
-> -	const size_t list_len_4x4 = ARRAY_SIZE(scaling->scaling_list_4x4[0]);
-> -	const size_t num_list_8x8 = ARRAY_SIZE(scaling->scaling_list_8x8);
-> -	const size_t list_len_8x8 = ARRAY_SIZE(scaling->scaling_list_8x8[0]);
->  	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
->  	struct rkvdec_h264_priv_tbl *tbl = h264_ctx->priv_tbl.cpu;
-> -	u8 *dst = tbl->scaling_list;
-> -	const u8 *src;
-> -	int i, j;
-> -
-> -	BUILD_BUG_ON(ARRAY_SIZE(zig_zag_4x4) != list_len_4x4);
-> -	BUILD_BUG_ON(ARRAY_SIZE(zig_zag_8x8) != list_len_8x8);
-> -	BUILD_BUG_ON(ARRAY_SIZE(tbl->scaling_list) <
-> -		     num_list_4x4 * list_len_4x4 +
-> -		     num_list_8x8 * list_len_8x8);
-> -
-> -	src = &scaling->scaling_list_4x4[0][0];
-> -	for (i = 0; i < num_list_4x4; ++i) {
-> -		for (j = 0; j < list_len_4x4; ++j)
-> -			dst[zig_zag_4x4[j]] = src[j];
-> -		src += list_len_4x4;
-> -		dst += list_len_4x4;
-> -	}
->  
-> -	src = &scaling->scaling_list_8x8[0][0];
-> -	for (i = 0; i < num_list_8x8; ++i) {
-> -		for (j = 0; j < list_len_8x8; ++j)
-> -			dst[zig_zag_8x8[j]] = src[j];
-> -		src += list_len_8x8;
-> -		dst += list_len_8x8;
-> -	}
-> +	BUILD_BUG_ON(sizeof(tbl->scaling_list.scaling_list_4x4) !=
-> +		     sizeof(scaling->scaling_list_4x4));
-> +	BUILD_BUG_ON(sizeof(tbl->scaling_list.scaling_list_8x8) !=
-> +		     sizeof(scaling->scaling_list_8x8));
-> +
-> +	memcpy(tbl->scaling_list.scaling_list_4x4,
-> +	       scaling->scaling_list_4x4,
-> +	       sizeof(scaling->scaling_list_4x4));
-> +
-> +	memcpy(tbl->scaling_list.scaling_list_8x8,
-> +	       scaling->scaling_list_8x8,
-> +	       sizeof(scaling->scaling_list_8x8));
->  }
->  
->  /*
-> @@ -1126,7 +1100,7 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
->  	v4l2_h264_build_b_ref_lists(&reflist_builder, h264_ctx->reflists.b0,
->  				    h264_ctx->reflists.b1);
->  
-> -	reorder_scaling_list(ctx, &run);
-> +	assemble_hw_scaling_list(ctx, &run);
->  	assemble_hw_pps(ctx, &run);
->  	assemble_hw_rps(ctx, &run);
->  	config_registers(ctx, &run);
+Best regards,
+Mylène
