@@ -1,186 +1,109 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [PATCH 7/7] dt-bindings: display: Document Cadence MHDP HDMI/DP
- bindings
-Date: Wed, 3 Jun 2020 02:44:22 +0300
-Message-ID: <20200602234422.GR6547@pendragon.ideasonboard.com>
-References: <cover.1590982881.git.Sandor.yu@nxp.com>
- <9fa979f1099f7c02fd746f25002d8a652253d70f.1590982881.git.Sandor.yu@nxp.com>
+From: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Subject: Re: [PATCH v8 04/10] drm: bridge: dw_mipi_dsi: allow bridge daisy
+ chaining
+Date: Wed, 3 Jun 2020 02:51:39 +0300
+Message-ID: <20200602235139.GS6547@pendragon.ideasonboard.com>
+References: <20200427081952.3536741-1-adrian.ratiu@collabora.com>
+ <20200427081952.3536741-5-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <9fa979f1099f7c02fd746f25002d8a652253d70f.1590982881.git.Sandor.yu@nxp.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: sandor.yu@nxp.com
-Cc: a.hajda@samsung.com, narmstrong@baylibre.com, jonas@kwiboo.se, jernej.skrabec@siol.net, heiko@sntech.de, hjc@rock-chips.com, dkos@cadence.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-imx@nxp.com
+In-Reply-To: <20200427081952.3536741-5-adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Sandor,
+Hi Adrian,
 
 Thank you for the patch.
 
-On Mon, Jun 01, 2020 at 02:17:37PM +0800, sandor.yu@nxp.com wrote:
-> From: Sandor Yu <Sandor.yu@nxp.com>
+On Mon, Apr 27, 2020 at 11:19:46AM +0300, Adrian Ratiu wrote:
+> Up until now the assumption was that the synopsis dsi bridge will
+> directly connect to an encoder provided by the platform driver, but
+> the current practice for drivers is to leave the encoder empty via
+> the simple encoder API and add their logic to their own drm_bridge.
 > 
-> Document the bindings used for the Cadence MHDP HDMI/DP bridge.
+> Thus we need an ablility to connect the DSI bridge to another bridge
+> provided by the platform driver, so we extend the dw_mipi_dsi bind()
+> API with a new "previous bridge" arg instead of just hardcoding NULL.
 > 
-> Signed-off-by: Sandor Yu <Sandor.yu@nxp.com>
+> Cc: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+> Signed-off-by: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 > ---
->  .../bindings/display/bridge/cdns,mhdp.yaml    | 46 +++++++++++++++
->  .../devicetree/bindings/display/imx/mhdp.yaml | 59 +++++++++++++++++++
-
-Please split the patch in two.
-
->  2 files changed, 105 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/bridge/cdns,mhdp.yaml
->  create mode 100644 Documentation/devicetree/bindings/display/imx/mhdp.yaml
+> New in v8.
+> ---
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c   | 6 ++++--
+>  drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 2 +-
+>  include/drm/bridge/dw_mipi_dsi.h                | 5 ++++-
+>  3 files changed, 9 insertions(+), 4 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/display/bridge/cdns,mhdp.yaml b/Documentation/devicetree/bindings/display/bridge/cdns,mhdp.yaml
-> new file mode 100644
-> index 000000000000..aa23feba744a
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/bridge/cdns,mhdp.yaml
-> @@ -0,0 +1,46 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause))
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/bridge/cdns,mhdp.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Cadence MHDP TX Encoder
-> +
-> +maintainers:
-> +  - Sandor Yu <Sandoryu@nxp.com>
-> +
-> +description: |
-> +  Cadence MHDP Controller supports one or more of the protocols,
-> +  such as HDMI and DisplayPort.
-> +  Each protocol requires a different FW binaries.
-> +
-> +  This document defines device tree properties for the Cadence MHDP Encoder
-> +  (CDNS MHDP TX). It doesn't constitue a device tree binding
-> +  specification by itself but is meant to be referenced by platform-specific
-> +  device tree bindings.
-> +
-> +  When referenced from platform device tree bindings the properties defined in
-> +  this document are defined as follows. The platform device tree bindings are
-> +  responsible for defining whether each property is required or optional.
-> +
-> +properties:
-> +  reg:
-> +    maxItems: 1
-> +    description: Memory mapped base address and length of the MHDP TX registers.
-> +
-> +  interrupts:
-> +    maxItems: 2
-> +
-> +  interrupt-names:
-> +    - const: plug_in
-> +      description: Hotplug detect interrupter for cable plugin event.
-> +    - const: plug_out
-> +      description: Hotplug detect interrupter for cable plugout event.
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> index 16fd87055e7b7..140ff40fa1b62 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> @@ -1456,11 +1456,13 @@ EXPORT_SYMBOL_GPL(dw_mipi_dsi_remove);
+>  /*
+>   * Bind/unbind API, used from platforms based on the component framework.
+>   */
+> -int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi, struct drm_encoder *encoder)
+> +int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi,
+> +		     struct drm_encoder *encoder,
+> +		     struct drm_bridge *prev_bridge)
+>  {
+>  	int ret;
+>  
+> -	ret = drm_bridge_attach(encoder, &dsi->bridge, NULL, 0);
+> +	ret = drm_bridge_attach(encoder, &dsi->bridge, prev_bridge, 0);
 
-Does the IP core really have two different interrupt lines, one for
-hot-plug and one for hot-unplug ? That's a very unusual design.
+Please note that chaining of bridges doesn't work well if multiple
+bridges in the chain try to create a connector. This is why a
+DRM_BRIDGE_ATTACH_NO_CONNECTOR flag has been added, with a helper to
+create a connector for a chain of bridges (drm_bridge_connector_init()).
+This won't play well with the component framework. I would recommend
+using the of_drm_find_bridge() instead in the rockchip driver, and
+deprecating dw_mipi_dsi_bind().
 
-> +
-> +  port:
-> +    type: object
-> +    description: |
-> +      The connectivity of the MHDP TX with the rest of the system is
-> +      expressed in using ports as specified in the device graph bindings defined
-> +      in Documentation/devicetree/bindings/graph.txt. The numbering of the ports
-> +      is platform-specific.
-> diff --git a/Documentation/devicetree/bindings/display/imx/mhdp.yaml b/Documentation/devicetree/bindings/display/imx/mhdp.yaml
-> new file mode 100644
-> index 000000000000..17850cfd1cb1
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/imx/mhdp.yaml
-> @@ -0,0 +1,59 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/bridge/mhdp.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Cadence MHDP Encoder
-> +
-> +maintainers:
-> +  - Sandor Yu <Sandoryu@nxp.com>
-> +
-> +description: |
-> +  The MHDP transmitter is a Cadence HD Display TX controller IP
-> +  with a companion PHY IP.
-> +  The MHDP supports one or more of the protocols,
-> +  such as HDMI(1.4 & 2.0), DisplayPort(1.2).
-> +  switching between the two modes (HDMI and DisplayPort)
-> +  requires reloading the appropriate FW
-
-Does the IP core integrated in the imx8mp SoCs (as that is what this
-binding targets) support both HDMI and DP ? If not this should be
-reworded to be more specific to the SoC.
-
-> +
-> +  These DT bindings follow the Cadence MHDP TX bindings defined in
-> +  Documentation/devicetree/bindings/display/bridge/cdns,mhdp.yaml with the
-> +  following device-specific properties.
-> +
-> +Properties:
-
-Have you tried validating this with make dt_binding_check ? See
-Documentation/devicetree/writing-schema.rst for more information.
-
-> +  compatible:
-> +    enum:
-> +      - nxp,imx8mq-cdns-hdmi
-> +      - nxp,imx8mq-cdns-dp
-> +
-> +  reg: See cdns,mhdp.yaml.
-
-This isn't how bindings are referenced. You need to reference the parent
-binding with $ref, either globally, or on an individual property basis.
-
-> +
-> +  interrupts: See cdns,mhdp.yaml.
-> +
-> +  interrupt-names: See cdns,mhdp.yaml.
-
-That's it ? No clocks, no power domains, no resets, no PHYs (especially
-given that you mention a PHY companion IP above) ?
-
-> +
-> +  ports: See cdns,mhdp.yaml.
-
-This isn't correct. Please soo of-graph.txt. If can have either one port
-node, or one ports node that contains one of more port subnodes. In this
-case you need at least two ports, one for the input to the HDMI encoder,
-and one for the HDMI output. The latter should be connected to a DT node
-representing the HDMI connector. Yuo can search for "hdmi-connector" in
-the .dts files in the kernel for plenty of examples.
-
-> +
-> +Required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - interrupt-names
-> +  - ports
-> +
-> +Example:
-> +  - |
-> +    mhdp: mhdp@32c00000 {
-> +      compatible = "nxp,imx8mq-cdns-hdmi";
-> +      reg = <0x32c00000 0x100000>;
-> +      interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>,
-> +                   <GIC_SPI 25 IRQ_TYPE_LEVEL_HIGH>;
-> +      interrupt-names = "plug_in", "plug_out";
-> +
-> +      ports {
-> +        mhdp_in: endpoint {
-> +          remote-endpoint = <&dcss_out>;
-> +        };
-> +      };
-> +    };
+>  	if (ret) {
+>  		DRM_ERROR("Failed to initialize bridge with drm\n");
+>  		return ret;
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> index 3feff0c45b3f7..83ef43be78135 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> @@ -929,7 +929,7 @@ static int dw_mipi_dsi_rockchip_bind(struct device *dev,
+>  		return ret;
+>  	}
+>  
+> -	ret = dw_mipi_dsi_bind(dsi->dmd, &dsi->encoder);
+> +	ret = dw_mipi_dsi_bind(dsi->dmd, &dsi->encoder, NULL);
+>  	if (ret) {
+>  		DRM_DEV_ERROR(dev, "Failed to bind: %d\n", ret);
+>  		return ret;
+> diff --git a/include/drm/bridge/dw_mipi_dsi.h b/include/drm/bridge/dw_mipi_dsi.h
+> index b0e390b3288e8..699b3531f5b36 100644
+> --- a/include/drm/bridge/dw_mipi_dsi.h
+> +++ b/include/drm/bridge/dw_mipi_dsi.h
+> @@ -14,6 +14,7 @@
+>  #include <drm/drm_modes.h>
+>  
+>  struct drm_display_mode;
+> +struct drm_bridge;
+>  struct drm_encoder;
+>  struct dw_mipi_dsi;
+>  struct mipi_dsi_device;
+> @@ -62,7 +63,9 @@ struct dw_mipi_dsi *dw_mipi_dsi_probe(struct platform_device *pdev,
+>  				      const struct dw_mipi_dsi_plat_data
+>  				      *plat_data);
+>  void dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi);
+> -int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi, struct drm_encoder *encoder);
+> +int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi,
+> +		     struct drm_encoder *encoder,
+> +		     struct drm_bridge *prev_bridge);
+>  void dw_mipi_dsi_unbind(struct dw_mipi_dsi *dsi);
+>  void dw_mipi_dsi_set_slave(struct dw_mipi_dsi *dsi, struct dw_mipi_dsi *slave);
+>  
 
 -- 
 Regards,
