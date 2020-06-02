@@ -1,79 +1,84 @@
-From: Jerry Snitselaar <jsnitsel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
-Subject: Re: [PATCH v2 00/33] iommu: Move iommu_group setup to IOMMU core code
-Date: Tue, 2 Jun 2020 14:17:16 -0700
-Message-ID: <20200602211716.mcwacflxvh7kycya__29684.8234416515$1591132662$gmane$org@cantor>
-References: <20200414131542.25608-1-joro@8bytes.org>
- <20200529221623.qc6twmpzryh7nkvb@cantor>
- <20200601104240.7f5xhz7gooqhaq4n@cantor>
- <47711845-98ee-95b8-aa95-423a36ed9741@linux.intel.com>
- <20200602000236.j4m3jvluzdhjngdc@cantor>
- <20200602142312.GJ14598@8bytes.org>
- <20200602163806.o5dpj2tpemwdzyiw@cantor>
-Reply-To: Jerry Snitselaar <jsnitsel-H+wXaHxf7aLQT0dZR+AlfA@public.gmane.org>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [PATCH 1/7] drm/rockchip: prepare common code for cdns and rk
+ dpi/dp driver
+Date: Wed, 3 Jun 2020 02:28:40 +0300
+Message-ID: <20200602232840.GP6547@pendragon.ideasonboard.com>
+References: <cover.1590982881.git.Sandor.yu@nxp.com>
+ <d3d707cf37e7928a839071242c752779061cc094.1590982881.git.Sandor.yu@nxp.com>
+ <CACvgo52NeUSQV5p8+4DkCjpkv12cs8fCkQqy4MFn8pVaorVaHg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-mediatek-bounces+glpam-linux-mediatek=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200602163806.o5dpj2tpemwdzyiw@cantor>
+Content-Type: text/plain; charset=utf-8
+Return-path: <linux-kernel-owner@vger.kernel.org>
 Content-Disposition: inline
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
-List-Post: <mailto:linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
- <mailto:linux-mediatek-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-mediatek" <linux-mediatek-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-mediatek-bounces+glpam-linux-mediatek=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Lu Baolu <baolu.lu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Clark <robdclark-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Jean-Philippe Brucker <jean-philippe-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, iommu-cunTk1MwBs+XwC/5MpYmKg@public.gmane.org
+In-Reply-To: <CACvgo52NeUSQV5p8+4DkCjpkv12cs8fCkQqy4MFn8pVaorVaHg@mail.gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Emil Velikov <emil.l.velikov@gmail.com>
+Cc: sandor.yu@nxp.com, Andrzej Hajda <a.hajda@samsung.com>, Neil Armstrong <narmstrong@baylibre.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@siol.net>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, dkos@cadence.com, ML dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, LAKML <linux-arm-kernel@lists.infradead.org>, NXP Linux Team <linux-imx@nxp.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue Jun 02 20, Jerry Snitselaar wrote:
->On Tue Jun 02 20, Joerg Roedel wrote:
->>Hi Jerry,
->>
->>On Mon, Jun 01, 2020 at 05:02:36PM -0700, Jerry Snitselaar wrote:
->>>
->>>Yeah, that will solve the panic.
->>>
->>
->>If you still see the kdump faults, can you please try with the attached
->>diff? I was not able to reproduce them in my setup.
->>
->>Regards,
->>
->>	Joerg
->>
->
->I have another hp proliant server now, and reproduced. I will have the
->patch below tested shortly. Minor change, I switched group->domain to
->domain since group isn't an argument, and *data being passed in comes
->from group->domain anyways.
->
+On Tue, Jun 02, 2020 at 02:55:52PM +0100, Emil Velikov wrote:
+> On Mon, 1 Jun 2020 at 07:29, <sandor.yu@nxp.com> wrote:
+> >
+> > From: Sandor Yu <Sandor.yu@nxp.com>
+> >
+> > - Extracted common fields from cdn_dp_device to a new cdns_mhdp_device
+> >   structure which will be used by two separate drivers later on.
+> > - Moved some datatypes (audio_format, audio_info, vic_pxl_encoding_format,
+> >   video_info) from cdn-dp-core.c to cdn-dp-reg.h.
+> > - Changed prefixes from cdn_dp to cdns_mhdp
+> >     cdn -> cdns to match the other Cadence's drivers
+> >     dp -> mhdp to distinguish it from a "just a DP" as the IP underneath
+> >       this registers map can be a HDMI (which is internally different,
+> >       but the interface for commands, events is pretty much the same).
+> > - Modified cdn-dp-core.c to use the new driver structure and new function
+> >   names.
+> > - writel and readl are replaced by cdns_mhdp_bus_write and
+> >   cdns_mhdp_bus_read.
+> >
+> The high-level idea is great - split, refactor and reuse the existing drivers.
+> 
+> Although looking at the patches themselves - they seems to be doing
+> multiple things at once.
+> As indicated by the extensive list in the commit log.
+> 
+> I would suggest splitting those up a bit, roughly in line of the
+> itemisation as per the commit message.
+> 
+> Here is one hand wavy way to chunk this patch:
+>  1) use put_unalligned*
+>  2) 'use local variable dev' style of changes (as seem in cdn_dp_clk_enable)
+>  3) add writel/readl wrappers
+>  4) hookup struct cdns_mhdp_device, keep dp->mhdp detail internal.
+> The cdn-dp-reg.h function names/signatures will stay the same.
+>  5) finalize the helpers - use mhdp directly, rename
 
-Looks like it solves problem for both the epyc system, and the hp proliant
-server,
+I second this, otherwise review is very hard.
 
->>diff --git a/drivers/iommu/iommu.c b/drivers/iommu/iommu.c
->>index b5ea203f6c68..5a6d509f72b6 100644
->>--- a/drivers/iommu/iommu.c
->>+++ b/drivers/iommu/iommu.c
->>@@ -1680,8 +1680,12 @@ static void probe_alloc_default_domain(struct bus_type *bus,
->>static int iommu_group_do_dma_attach(struct device *dev, void *data)
->>{
->>	struct iommu_domain *domain = data;
->>+	int ret = 0;
->>
->>-	return __iommu_attach_device(domain, dev);
->>+	if (!iommu_is_attach_deferred(group->domain, dev))
->>+		ret = __iommu_attach_device(group->domain, dev);
->>+
->>+	return ret;
->>}
->>
->>static int __iommu_group_dma_attach(struct iommu_group *group)
->>_______________________________________________
->>iommu mailing list
->>iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
->>https://lists.linuxfoundation.org/mailman/listinfo/iommu
->>
+> Examples:
+> 4)
+>  static int cdn_dp_mailbox_read(struct cdn_dp_device *dp)
+>  {
+> +"  struct cdns_mhdp_device *mhdp = dp->mhdp;
+>    int val, ret;
+> 
+> -  ret = readx_poll_timeout(readl, dp->regs + MAILBOX_EMPTY_ADDR,
+> +  ret = readx_poll_timeout(readl, mhdp->regs_base + MAILBOX_EMPTY_ADDR,
+> ...
+>    return fancy_readl(dp, MAILBOX0_RD_DATA) & 0xff;
+>  }
+> 
+> 5)
+> -static int cdn_dp_mailbox_read(struct cdn_dp_device *dp)
+> +static int mhdp_mailbox_read(struct cdns_mhdp_device *mhdp)
+>  {
+> -  struct cdns_mhdp_device *mhdp = dp->mhdp;
+>    int val, ret;
+> ...
+> -  return fancy_readl(dp, MAILBOX0_RD_DATA) & 0xff;
+> +  return cdns_mhdp_bus_read(mhdp, MAILBOX0_RD_DATA) & 0xff;
+>  }
+
+-- 
+Regards,
+
+Laurent Pinchart
