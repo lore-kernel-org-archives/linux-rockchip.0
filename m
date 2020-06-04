@@ -1,15 +1,11 @@
-From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: Re: [PATCH v2 4/4] doc: rockchip: Document SPI flash program steps
-Date: Thu, 4 Jun 2020 11:14:26 +0800
-Message-ID: <061a1b2c-4618-904e-8ddd-0184270c913a@rock-chips.com>
-References: <20200601204213.466120-1-jagan@amarulasolutions.com>
- <20200601204213.466120-5-jagan@amarulasolutions.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: [PATCH] arm64: dts: rockchip: fix rk3399-puma vcc5v0-host gpio
+Date: Thu,  4 Jun 2020 11:12:39 +0200
+Message-ID: <20200604091239.424318-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200601204213.466120-5-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -19,42 +15,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Ck9uIDIwMjAvNi8yIOS4iuWNiDQ6NDIsIEphZ2FuIFRla2kgd3JvdGU6Cj4gRG9jdW1lbnQgU1BJ
-IGZsYXNoIHByb2dyYW0gc3RlcHMgZm9yIHJvY2tjaGlwIHBsYXRmb3Jtcy4KPgo+IFN1Z2dlc3Rl
-ZC1ieTogSHVnaCBDb2xlLUJha2VyIDxzaWdtYXJpc0BnbWFpbC5jb20+Cj4gU2lnbmVkLW9mZi1i
-eTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+CgpSZXZpZXdlZC1ieTog
-S2V2ZXIgWWFuZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KClRoYW5rcywKLSBLZXZlcgo+
-IC0tLQo+ICAgZG9jL2JvYXJkL3JvY2tjaGlwL3JvY2tjaGlwLnJzdCB8IDI2ICsrKysrKysrKysr
-KysrKysrKysrKysrKystCj4gICAxIGZpbGUgY2hhbmdlZCwgMjUgaW5zZXJ0aW9ucygrKSwgMSBk
-ZWxldGlvbigtKQo+Cj4gZGlmZiAtLWdpdCBhL2RvYy9ib2FyZC9yb2NrY2hpcC9yb2NrY2hpcC5y
-c3QgYi9kb2MvYm9hcmQvcm9ja2NoaXAvcm9ja2NoaXAucnN0Cj4gaW5kZXggN2I3MmZhYjQ5Ni4u
-NzZiMjI4YTA0NiAxMDA2NDQKPiAtLS0gYS9kb2MvYm9hcmQvcm9ja2NoaXAvcm9ja2NoaXAucnN0
-Cj4gKysrIGIvZG9jL2JvYXJkL3JvY2tjaGlwL3JvY2tjaGlwLnJzdAo+IEBAIC0xNjIsNiArMTYy
-LDMwIEBAIFByb2dyYW0gdGhlIGZsYXNoOjoKPiAgIE5vdGU6IGZvciByb2NrY2hpcCAzMi1iaXQg
-cGxhdGZvcm1zIHRoZSBVLUJvb3QgcHJvcGVyIGltYWdlCj4gICBpcyB1LWJvb3QtZHRiLmltZwo+
-ICAgCj4gK1NQSQo+ICteXl4KPiArCj4gK0dlbmVyYXRpbmcgaWRibG9hZGVyIGZvciBTUEkgYm9v
-dCB3b3VsZCByZXF1aXJlIHRvIGlucHV0IGEgbXVsdGkgaW1hZ2UKPiAraW1hZ2UgZm9ybWF0IHRv
-IG1raW1hZ2UgdG9vbCBpbnN0ZWFkIG9mIGNvbmNlcnRpbmcgKGxpa2UgZm9yIE1NQyBib290KS4K
-PiArCj4gK1NQTC1hbG9uZSBTUEkgYm9vdCBpbWFnZTo6Cj4gKwo+ICsgICAgICAgIC4vdG9vbHMv
-bWtpbWFnZSAtbiByazMzOTkgLVQgcmtzcGkgLWQgc3BsL3UtYm9vdC1zcGwuYmluIGlkYmxvYWRl
-ci5pbWcKPiArCj4gK1RQTCtTUEwgU1BJIGJvb3QgaW1hZ2U6Ogo+ICsKPiArICAgICAgICAuL3Rv
-b2xzL21raW1hZ2UgLW4gcmszMzk5IC1UIHJrc3BpIC1kIHRwbC91LWJvb3QtdHBsLmJpbjpzcGwv
-dS1ib290LXNwbC5iaW4gaWRibG9hZGVyLmltZwo+ICsKPiArQ29weSBTUEkgYm9vdCBpbWFnZXMg
-aW50byBTRCBjYXJkIGFuZCBib290IGZyb20gU0Q6Ogo+ICsKPiArICAgICAgICBzZiBwcm9iZQo+
-ICsgICAgICAgIGxvYWQgbW1jIDE6MSAka2VybmVsX2FkZHJfciBpZGJsb2FkZXIuaW1nCj4gKyAg
-ICAgICAgc2YgZXJhc2UgMCArJGZpbGVzaXplCj4gKyAgICAgICAgc2Ygd3JpdGUgJGtlcm5lbF9h
-ZGRyX3IgMCAke2ZpbGVzaXplfQo+ICsgICAgICAgIGxvYWQgbW1jIDE6MSAke2tlcm5lbF9hZGRy
-X3J9IHUtYm9vdC5pdGIKPiArICAgICAgICBzZiBlcmFzZSAweDYwMDAwICskZmlsZXNpemUKPiAr
-ICAgICAgICBzZiB3cml0ZSAka2VybmVsX2FkZHJfciAweDYwMDAwICR7ZmlsZXNpemV9Cj4gKwo+
-ICAgVE9ETwo+ICAgLS0tLQo+ICAgCj4gQEAgLTE3MSw0ICsxOTUsNCBAQCBUT0RPCj4gICAtIEFk
-ZCBtaXNzaW5nIFNvQydzIHdpdGggaXQgYm9hcmRzIGxpc3QKPiAgIAo+ICAgLi4gSmFnYW4gVGVr
-aSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+Cj4gLS4uIFN1bmRheSAyNCBNYXkgMjAyMCAx
-MDowODo0MSBQTSBJU1QKPiArLi4gVHVlc2RheSAwMiBKdW5lIDIwMjAgMTI6MTg6NTcgQU0gSVNU
-CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+
+The puma vcc5v0_host regulator node currently uses opposite active-values
+for the enable pin. The gpio-declaration uses active-high while the
+separate enable-active-low property marks the pin as active low.
+
+While on the kernel side this works ok, other DT users may get
+confused - as seen with uboot right now.
+
+So bring this in line and make both properties match, similar to the
+gmac fix.
+
+Fixes: 2c66fc34e945 ("arm64: dts: rockchip: add RK3399-Q7 (Puma) SoM")
+Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+index 531520e771e7..72c06abd27ea 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
+@@ -101,7 +101,7 @@ vcc3v3_sys: vcc3v3-sys {
+ 
+ 	vcc5v0_host: vcc5v0-host-regulator {
+ 		compatible = "regulator-fixed";
+-		gpio = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
++		gpio = <&gpio4 RK_PA3 GPIO_ACTIVE_LOW>;
+ 		enable-active-low;
+ 		pinctrl-names = "default";
+ 		pinctrl-0 = <&vcc5v0_host_en>;
+-- 
+2.25.1
