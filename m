@@ -1,54 +1,74 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: fix rk3399-puma gmac reset gpio
-Date: Wed,  3 Jun 2020 15:28:36 +0200
-Message-ID: <20200603132836.362519-1-heiko@sntech.de>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v2 1/4] Makefile: Drop to handle rkspi image type
+Date: Thu, 4 Jun 2020 11:13:57 +0800
+Message-ID: <5b699185-38e4-4251-8013-cd4db066370e@rock-chips.com>
+References: <20200601204213.466120-1-jagan@amarulasolutions.com>
+ <20200601204213.466120-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200601204213.466120-2-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, Hugh Cole-Baker <sigmaris@gmail.com>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 
-The puma gmac node currently uses opposite active-values for the
-gmac phy reset pin. The gpio-declaration uses active-high while the
-separate snps,reset-active-low property marks the pin as active low.
+On 2020/6/2 上午4:42, Jagan Teki wrote:
+> On rockchip platforms, SPI boot image creation is not
+> straightforward like MMC boot image creation where former
+> requires to specify tpl, spl in multimage format in mkimage,
+> and later simply do a concatenate mkimaged-tpl with spl.
+>
+> On this note, let drop rkspi image type creation via kbuild
+> and let inform via rockchip.rst
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 
-While on the kernel side this works ok, other DT users may get
-confused - as seen with uboot right now.
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 
-So bring this in line and make both properties match, similar to the
-other Rockchip board.
-
-Fixes: 2c66fc34e945 ("arm64: dts: rockchip: add RK3399-Q7 (Puma) SoM")
-Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index 07694b196fdb..531520e771e7 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -157,7 +157,7 @@ &gmac {
- 	phy-mode = "rgmii";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&rgmii_pins>;
--	snps,reset-gpio = <&gpio3 RK_PC0 GPIO_ACTIVE_HIGH>;
-+	snps,reset-gpio = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
- 	snps,reset-active-low;
- 	snps,reset-delays-us = <0 10000 50000>;
- 	tx_delay = <0x10>;
--- 
-2.25.1
+Thanks,
+- Kever
+> ---
+>   Makefile | 11 ++---------
+>   1 file changed, 2 insertions(+), 9 deletions(-)
+>
+> diff --git a/Makefile b/Makefile
+> index 3851dd9fa0..db3b6b9991 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -1438,22 +1438,15 @@ u-boot-with-spl.bin: $(SPL_IMAGE) $(SPL_PAYLOAD) FORCE
+>   
+>   ifeq ($(CONFIG_ARCH_ROCKCHIP),y)
+>   
+> -# rockchip image type
+> -ifeq ($(CONFIG_SPL_SPI_LOAD),y)
+> -ROCKCHIP_IMG_TYPE := rkspi
+> -else
+> -ROCKCHIP_IMG_TYPE := rksd
+> -endif
+> -
+>   # TPL + SPL
+>   ifeq ($(CONFIG_SPL)$(CONFIG_TPL),yy)
+> -MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
+> +MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T rksd
+>   tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
+>   	$(call if_changed,mkimage)
+>   idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
+>   	$(call if_changed,cat)
+>   else
+> -MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
+> +MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T rksd
+>   idbloader.img: spl/u-boot-spl.bin FORCE
+>   	$(call if_changed,mkimage)
+>   endif
