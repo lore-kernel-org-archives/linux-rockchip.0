@@ -1,54 +1,83 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: fix rk3399-puma vcc5v0-host gpio
-Date: Thu,  4 Jun 2020 11:12:39 +0200
-Message-ID: <20200604091239.424318-1-heiko@sntech.de>
+From: Sandor Yu <sandor.yu@nxp.com>
+Subject: RE: [EXT] Re: [PATCH 1/7] drm/rockchip: prepare common code for cdns
+ and rk dpi/dp driver
+Date: Thu, 4 Jun 2020 09:28:18 +0000
+Message-ID: <DB8PR04MB682817AED57AF25816BF9147F4890@DB8PR04MB6828.eurprd04.prod.outlook.com>
+References: <cover.1590982881.git.Sandor.yu@nxp.com>
+ <d3d707cf37e7928a839071242c752779061cc094.1590982881.git.Sandor.yu@nxp.com>
+ <CACvgo52NeUSQV5p8+4DkCjpkv12cs8fCkQqy4MFn8pVaorVaHg@mail.gmail.com>
+ <20200602232840.GP6547@pendragon.ideasonboard.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200602232840.GP6547@pendragon.ideasonboard.com>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Emil Velikov <emil.l.velikov@gmail.com>
+Cc: Andrzej Hajda <a.hajda@samsung.com>, Neil Armstrong <narmstrong@baylibre.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@siol.net>, =?utf-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>, "dkos@cadence.com" <dkos@cadence.com>, ML dri-devel <dri-devel@lists.freedesktop.org>, linux-rockchip <linux-rockchip@lists.infradead.org>, "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>, LAKML <linux-arm-kernel@lists.infradead.org>, dl-linux-imx <linux-imx@nxp.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-
-The puma vcc5v0_host regulator node currently uses opposite active-values
-for the enable pin. The gpio-declaration uses active-high while the
-separate enable-active-low property marks the pin as active low.
-
-While on the kernel side this works ok, other DT users may get
-confused - as seen with uboot right now.
-
-So bring this in line and make both properties match, similar to the
-gmac fix.
-
-Fixes: 2c66fc34e945 ("arm64: dts: rockchip: add RK3399-Q7 (Puma) SoM")
-Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index 531520e771e7..72c06abd27ea 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -101,7 +101,7 @@ vcc3v3_sys: vcc3v3-sys {
- 
- 	vcc5v0_host: vcc5v0-host-regulator {
- 		compatible = "regulator-fixed";
--		gpio = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
-+		gpio = <&gpio4 RK_PA3 GPIO_ACTIVE_LOW>;
- 		enable-active-low;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&vcc5v0_host_en>;
--- 
-2.25.1
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogTGF1cmVudCBQaW5jaGFy
+dCA8bGF1cmVudC5waW5jaGFydEBpZGVhc29uYm9hcmQuY29tPg0KPiBTZW50OiBXZWRuZXNkYXks
+IEp1bmUgMywgMjAyMCA3OjI5IEFNDQo+IFRvOiBFbWlsIFZlbGlrb3YgPGVtaWwubC52ZWxpa292
+QGdtYWlsLmNvbT4NCj4gQ2M6IFNhbmRvciBZdSA8c2FuZG9yLnl1QG54cC5jb20+OyBBbmRyemVq
+IEhhamRhIDxhLmhhamRhQHNhbXN1bmcuY29tPjsNCj4gTmVpbCBBcm1zdHJvbmcgPG5hcm1zdHJv
+bmdAYmF5bGlicmUuY29tPjsgSm9uYXMgS2FybG1hbg0KPiA8am9uYXNAa3dpYm9vLnNlPjsgSmVy
+bmVqIFNrcmFiZWMgPGplcm5lai5za3JhYmVjQHNpb2wubmV0PjsgSGVpa28gU3TDvGJuZXINCj4g
+PGhlaWtvQHNudGVjaC5kZT47IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+Ow0KPiBk
+a29zQGNhZGVuY2UuY29tOyBNTCBkcmktZGV2ZWwgPGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVza3Rv
+cC5vcmc+Ow0KPiBsaW51eC1yb2NrY2hpcCA8bGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZz47IExpbnV4LUtlcm5lbEBWZ2VyLg0KPiBLZXJuZWwuIE9yZyA8bGludXgta2VybmVsQHZn
+ZXIua2VybmVsLm9yZz47IExBS01MDQo+IDxsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVh
+ZC5vcmc+OyBkbC1saW51eC1pbXggPGxpbnV4LWlteEBueHAuY29tPg0KPiBTdWJqZWN0OiBbRVhU
+XSBSZTogW1BBVENIIDEvN10gZHJtL3JvY2tjaGlwOiBwcmVwYXJlIGNvbW1vbiBjb2RlIGZvciBj
+ZG5zDQo+IGFuZCByayBkcGkvZHAgZHJpdmVyDQo+IA0KPiBDYXV0aW9uOiBFWFQgRW1haWwNCj4g
+DQo+IE9uIFR1ZSwgSnVuIDAyLCAyMDIwIGF0IDAyOjU1OjUyUE0gKzAxMDAsIEVtaWwgVmVsaWtv
+diB3cm90ZToNCj4gPiBPbiBNb24sIDEgSnVuIDIwMjAgYXQgMDc6MjksIDxzYW5kb3IueXVAbnhw
+LmNvbT4gd3JvdGU6DQo+ID4gPg0KPiA+ID4gRnJvbTogU2FuZG9yIFl1IDxTYW5kb3IueXVAbnhw
+LmNvbT4NCj4gPiA+DQo+ID4gPiAtIEV4dHJhY3RlZCBjb21tb24gZmllbGRzIGZyb20gY2RuX2Rw
+X2RldmljZSB0byBhIG5ldw0KPiBjZG5zX21oZHBfZGV2aWNlDQo+ID4gPiAgIHN0cnVjdHVyZSB3
+aGljaCB3aWxsIGJlIHVzZWQgYnkgdHdvIHNlcGFyYXRlIGRyaXZlcnMgbGF0ZXIgb24uDQo+ID4g
+PiAtIE1vdmVkIHNvbWUgZGF0YXR5cGVzIChhdWRpb19mb3JtYXQsIGF1ZGlvX2luZm8sDQo+IHZp
+Y19weGxfZW5jb2RpbmdfZm9ybWF0LA0KPiA+ID4gICB2aWRlb19pbmZvKSBmcm9tIGNkbi1kcC1j
+b3JlLmMgdG8gY2RuLWRwLXJlZy5oLg0KPiA+ID4gLSBDaGFuZ2VkIHByZWZpeGVzIGZyb20gY2Ru
+X2RwIHRvIGNkbnNfbWhkcA0KPiA+ID4gICAgIGNkbiAtPiBjZG5zIHRvIG1hdGNoIHRoZSBvdGhl
+ciBDYWRlbmNlJ3MgZHJpdmVycw0KPiA+ID4gICAgIGRwIC0+IG1oZHAgdG8gZGlzdGluZ3Vpc2gg
+aXQgZnJvbSBhICJqdXN0IGEgRFAiIGFzIHRoZSBJUCB1bmRlcm5lYXRoDQo+ID4gPiAgICAgICB0
+aGlzIHJlZ2lzdGVycyBtYXAgY2FuIGJlIGEgSERNSSAod2hpY2ggaXMgaW50ZXJuYWxseSBkaWZm
+ZXJlbnQsDQo+ID4gPiAgICAgICBidXQgdGhlIGludGVyZmFjZSBmb3IgY29tbWFuZHMsIGV2ZW50
+cyBpcyBwcmV0dHkgbXVjaCB0aGUgc2FtZSkuDQo+ID4gPiAtIE1vZGlmaWVkIGNkbi1kcC1jb3Jl
+LmMgdG8gdXNlIHRoZSBuZXcgZHJpdmVyIHN0cnVjdHVyZSBhbmQgbmV3IGZ1bmN0aW9uDQo+ID4g
+PiAgIG5hbWVzLg0KPiA+ID4gLSB3cml0ZWwgYW5kIHJlYWRsIGFyZSByZXBsYWNlZCBieSBjZG5z
+X21oZHBfYnVzX3dyaXRlIGFuZA0KPiA+ID4gICBjZG5zX21oZHBfYnVzX3JlYWQuDQo+ID4gPg0K
+PiA+IFRoZSBoaWdoLWxldmVsIGlkZWEgaXMgZ3JlYXQgLSBzcGxpdCwgcmVmYWN0b3IgYW5kIHJl
+dXNlIHRoZSBleGlzdGluZyBkcml2ZXJzLg0KPiA+DQo+ID4gQWx0aG91Z2ggbG9va2luZyBhdCB0
+aGUgcGF0Y2hlcyB0aGVtc2VsdmVzIC0gdGhleSBzZWVtcyB0byBiZSBkb2luZw0KPiA+IG11bHRp
+cGxlIHRoaW5ncyBhdCBvbmNlLg0KPiA+IEFzIGluZGljYXRlZCBieSB0aGUgZXh0ZW5zaXZlIGxp
+c3QgaW4gdGhlIGNvbW1pdCBsb2cuDQo+ID4NCj4gPiBJIHdvdWxkIHN1Z2dlc3Qgc3BsaXR0aW5n
+IHRob3NlIHVwIGEgYml0LCByb3VnaGx5IGluIGxpbmUgb2YgdGhlDQo+ID4gaXRlbWlzYXRpb24g
+YXMgcGVyIHRoZSBjb21taXQgbWVzc2FnZS4NCj4gPg0KPiA+IEhlcmUgaXMgb25lIGhhbmQgd2F2
+eSB3YXkgdG8gY2h1bmsgdGhpcyBwYXRjaDoNCj4gPiAgMSkgdXNlIHB1dF91bmFsbGlnbmVkKg0K
+PiA+ICAyKSAndXNlIGxvY2FsIHZhcmlhYmxlIGRldicgc3R5bGUgb2YgY2hhbmdlcyAoYXMgc2Vl
+bSBpbg0KPiA+IGNkbl9kcF9jbGtfZW5hYmxlKQ0KPiA+ICAzKSBhZGQgd3JpdGVsL3JlYWRsIHdy
+YXBwZXJzDQo+ID4gIDQpIGhvb2t1cCBzdHJ1Y3QgY2Ruc19taGRwX2RldmljZSwga2VlcCBkcC0+
+bWhkcCBkZXRhaWwgaW50ZXJuYWwuDQo+ID4gVGhlIGNkbi1kcC1yZWcuaCBmdW5jdGlvbiBuYW1l
+cy9zaWduYXR1cmVzIHdpbGwgc3RheSB0aGUgc2FtZS4NCj4gPiAgNSkgZmluYWxpemUgdGhlIGhl
+bHBlcnMgLSB1c2UgbWhkcCBkaXJlY3RseSwgcmVuYW1lDQo+IA0KPiBJIHNlY29uZCB0aGlzLCBv
+dGhlcndpc2UgcmV2aWV3IGlzIHZlcnkgaGFyZC4NCj4gDQpJIHdpbGwgc3BsaXQgdGhlIHBhdGNo
+IGxhdGVyLCB0aGFua3MuDQoNCj4gPiBFeGFtcGxlczoNCj4gPiA0KQ0KPiA+ICBzdGF0aWMgaW50
+IGNkbl9kcF9tYWlsYm94X3JlYWQoc3RydWN0IGNkbl9kcF9kZXZpY2UgKmRwKSAgew0KPiA+ICsi
+ICBzdHJ1Y3QgY2Ruc19taGRwX2RldmljZSAqbWhkcCA9IGRwLT5taGRwOw0KPiA+ICAgIGludCB2
+YWwsIHJldDsNCj4gPg0KPiA+IC0gIHJldCA9IHJlYWR4X3BvbGxfdGltZW91dChyZWFkbCwgZHAt
+PnJlZ3MgKyBNQUlMQk9YX0VNUFRZX0FERFIsDQo+ID4gKyAgcmV0ID0gcmVhZHhfcG9sbF90aW1l
+b3V0KHJlYWRsLCBtaGRwLT5yZWdzX2Jhc2UgKw0KPiA+ICsgTUFJTEJPWF9FTVBUWV9BRERSLA0K
+PiA+IC4uLg0KPiA+ICAgIHJldHVybiBmYW5jeV9yZWFkbChkcCwgTUFJTEJPWDBfUkRfREFUQSkg
+JiAweGZmOyAgfQ0KPiA+DQo+ID4gNSkNCj4gPiAtc3RhdGljIGludCBjZG5fZHBfbWFpbGJveF9y
+ZWFkKHN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCkNCj4gPiArc3RhdGljIGludCBtaGRwX21haWxi
+b3hfcmVhZChzdHJ1Y3QgY2Ruc19taGRwX2RldmljZSAqbWhkcCkNCj4gPiAgew0KPiA+IC0gIHN0
+cnVjdCBjZG5zX21oZHBfZGV2aWNlICptaGRwID0gZHAtPm1oZHA7DQo+ID4gICAgaW50IHZhbCwg
+cmV0Ow0KPiA+IC4uLg0KPiA+IC0gIHJldHVybiBmYW5jeV9yZWFkbChkcCwgTUFJTEJPWDBfUkRf
+REFUQSkgJiAweGZmOw0KPiA+ICsgIHJldHVybiBjZG5zX21oZHBfYnVzX3JlYWQobWhkcCwgTUFJ
+TEJPWDBfUkRfREFUQSkgJiAweGZmOw0KPiA+ICB9DQo+IA0KPiAtLQ0KPiBSZWdhcmRzLA0KPiAN
+Cj4gTGF1cmVudCBQaW5jaGFydA0K
