@@ -1,78 +1,96 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 4/4] doc: rockchip: Document SPI flash program steps
-Date: Thu,  4 Jun 2020 20:21:41 +0530
-Message-ID: <20200604145141.356702-5-jagan@amarulasolutions.com>
+From: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+Subject: Re: [PATCH v3 1/4] Makefile: Drop to handle rkspi image type
+Date: Thu, 4 Jun 2020 16:55:43 +0200
+Message-ID: <56A28F79-EB4C-4091-A72D-F4CDF3B0F60F@theobroma-systems.com>
 References: <20200604145141.356702-1-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200604145141.356702-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+ <20200604145141.356702-2-jagan@amarulasolutions.com>
+Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.80.23.2.2\))
+Content-Type: text/plain;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200604145141.356702-2-jagan@amarulasolutions.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Hugh Cole-Baker <sigmaris@gmail.com>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, =?utf-8?Q?Christoph_M=C3=BCllner?= <christoph.muellner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Document SPI flash program steps for rockchip platforms.
 
-Suggested-by: Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
-Changes for v3:
-- none
- 
- doc/board/rockchip/rockchip.rst | 26 +++++++++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
 
-diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
-index 7b72fab496..76b228a046 100644
---- a/doc/board/rockchip/rockchip.rst
-+++ b/doc/board/rockchip/rockchip.rst
-@@ -162,6 +162,30 @@ Program the flash::
- Note: for rockchip 32-bit platforms the U-Boot proper image
- is u-boot-dtb.img
- 
-+SPI
-+^^^
-+
-+Generating idbloader for SPI boot would require to input a multi image
-+image format to mkimage tool instead of concerting (like for MMC boot).
-+
-+SPL-alone SPI boot image::
-+
-+        ./tools/mkimage -n rk3399 -T rkspi -d spl/u-boot-spl.bin idbloader.img
-+
-+TPL+SPL SPI boot image::
-+
-+        ./tools/mkimage -n rk3399 -T rkspi -d tpl/u-boot-tpl.bin:spl/u-boot-spl.bin idbloader.img
-+
-+Copy SPI boot images into SD card and boot from SD::
-+
-+        sf probe
-+        load mmc 1:1 $kernel_addr_r idbloader.img
-+        sf erase 0 +$filesize
-+        sf write $kernel_addr_r 0 ${filesize}
-+        load mmc 1:1 ${kernel_addr_r} u-boot.itb
-+        sf erase 0x60000 +$filesize
-+        sf write $kernel_addr_r 0x60000 ${filesize}
-+
- TODO
- ----
- 
-@@ -171,4 +195,4 @@ TODO
- - Add missing SoC's with it boards list
- 
- .. Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
--.. Sunday 24 May 2020 10:08:41 PM IST
-+.. Tuesday 02 June 2020 12:18:57 AM IST
--- 
-2.25.1
+> On 04.06.2020, at 16:51, Jagan Teki <jagan@amarulasolutions.com> =
+wrote:
+>=20
+> On rockchip platforms, SPI boot image creation is not
+> straightforward like MMC boot image creation where former
+> requires to specify tpl, spl in multimage format in mkimage,
+> and later simply do a concatenate mkimaged-tpl with spl.
+>=20
+> On this note, let drop rkspi image type creation via kbuild
+> and let inform via rockchip.rst
+>=20
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
+> Changes for v3:
+> - none
+>=20
+> Makefile | 11 ++---------
+> 1 file changed, 2 insertions(+), 9 deletions(-)
+>=20
+> diff --git a/Makefile b/Makefile
+> index 3851dd9fa0..db3b6b9991 100644
+> --- a/Makefile
+> +++ b/Makefile
+> @@ -1438,22 +1438,15 @@ u-boot-with-spl.bin: $(SPL_IMAGE) =
+$(SPL_PAYLOAD) FORCE
+>=20
+> ifeq ($(CONFIG_ARCH_ROCKCHIP),y)
+>=20
+> -# rockchip image type
+> -ifeq ($(CONFIG_SPL_SPI_LOAD),y)
+> -ROCKCHIP_IMG_TYPE :=3D rkspi
+> -else
+> -ROCKCHIP_IMG_TYPE :=3D rksd
+> -endif
+
+This should not be either-or, but rather allow the creation of both a =
+SPI and SD/eMMC image
+for a platform, if so desired =E2=80=94 e.g. the RK3399-Q7 supports both =
+SPI and eMMC boot and it
+is a user-choice which location will be used for the bootloader.
+
+In other words: make this a =E2=80=9Ccheckbox=E2=80=9D option in Kconfig =
+and output a rkspi, a rksd or both
+images depending on what is selected.
+
+Thanks,
+Philipp.
+
+> -
+> # TPL + SPL
+> ifeq ($(CONFIG_SPL)$(CONFIG_TPL),yy)
+> -MKIMAGEFLAGS_u-boot-tpl-rockchip.bin =3D -n $(CONFIG_SYS_SOC) -T =
+$(ROCKCHIP_IMG_TYPE)
+> +MKIMAGEFLAGS_u-boot-tpl-rockchip.bin =3D -n $(CONFIG_SYS_SOC) -T rksd
+> tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
+> 	$(call if_changed,mkimage)
+> idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
+> 	$(call if_changed,cat)
+> else
+> -MKIMAGEFLAGS_idbloader.img =3D -n $(CONFIG_SYS_SOC) -T =
+$(ROCKCHIP_IMG_TYPE)
+> +MKIMAGEFLAGS_idbloader.img =3D -n $(CONFIG_SYS_SOC) -T rksd
+> idbloader.img: spl/u-boot-spl.bin FORCE
+> 	$(call if_changed,mkimage)
+> endif
+> --=20
+> 2.25.1
+>=20
