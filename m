@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 2/4] roc-rk3399-pc: Mark default env from SPI
-Date: Thu,  4 Jun 2020 20:21:39 +0530
-Message-ID: <20200604145141.356702-3-jagan@amarulasolutions.com>
+Subject: [PATCH v3 3/4] roc-rk3399-pc: Add SPI boot
+Date: Thu,  4 Jun 2020 20:21:40 +0530
+Message-ID: <20200604145141.356702-4-jagan@amarulasolutions.com>
 References: <20200604145141.356702-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,85 +21,119 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tom
 Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Mark the default U-Boot environment as SPI flash since
-this is an on board flash device.
+U-Boot TPL 2020.07-rc3-00090-gd4e919f927-dirty (Jun 01 2020 - 23:45:53)
+Channel 0: LPDDR4, 50MHz
+BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
+Channel 1: LPDDR4, 50MHz
+BW=32 Col=10 Bk=8 CS0 Row=15 CS1 Row=15 CS=2 Die BW=16 Size=2048MB
+256B stride
+256B stride
+lpddr4_set_rate: change freq to 400000000 mhz 0, 1
+lpddr4_set_rate: change freq to 800000000 mhz 1, 0
+Trying to boot from BOOTROM
+Returning to boot ROM...
 
-Updated env offset, size in contrast with default since
-the U-Boot proper has to start from 384K.
+U-Boot SPL 2020.07-rc3-00087-ga21e9fd385 (Jun 02 2020 - 00:09:45 +0530)
+Trying to boot from MMC1
+NOTICE:  BL31: v2.2(release):
+NOTICE:  BL31: Built : 15:05:37, May 12 2020
+
+U-Boot 2020.07-rc3-00087-ga21e9fd385 (Jun 02 2020 - 00:09:45 +0530)
+
+SoC: Rockchip rk3399
+Reset cause: POR
+Model: Firefly ROC-RK3399-PC Board
+DRAM:  3.9 GiB
+PMIC:  RK808
+MMC:   mmc@fe320000: 1, sdhci@fe330000: 0
+Loading Environment from SPI Flash... SF: Detected w25q128 with page size 256 Bytes, erase size 4 KiB, total 16 MiB
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Model: Firefly ROC-RK3399-PC Board
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 Changes for v3:
-- updated env settings
+- none
 
- configs/roc-pc-mezzanine-rk3399_defconfig | 6 ++++--
- configs/roc-pc-rk3399_defconfig           | 6 ++++--
- include/configs/roc-pc-rk3399.h           | 4 ----
- 3 files changed, 8 insertions(+), 8 deletions(-)
+ arch/arm/dts/rk3399-roc-pc-u-boot.dtsi    | 12 +++++++++++-
+ configs/roc-pc-mezzanine-rk3399_defconfig |  3 +++
+ configs/roc-pc-rk3399_defconfig           |  3 +++
+ 3 files changed, 17 insertions(+), 1 deletion(-)
 
+diff --git a/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi b/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
+index 141dd0b306..fc155e6903 100644
+--- a/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
+@@ -12,7 +12,11 @@
+ 	};
+ 
+ 	chosen {
+-		u-boot,spl-boot-order = "same-as-spl", &sdhci, &sdmmc;
++		u-boot,spl-boot-order = "same-as-spl", &spi_flash, &sdhci, &sdmmc;
++	};
++
++	config {
++		u-boot,spl-payload-offset = <0x60000>; /* @ 384KB */
+ 	};
+ 
+ 	vcc_hub_en: vcc_hub_en-regulator {
+@@ -40,6 +44,12 @@
+ 	vin-supply = <&vcc_vbus_typec0>;
+ };
+ 
++&spi1 {
++	spi_flash: flash@0 {
++		u-boot,dm-pre-reloc;
++	};
++};
++
+ &vdd_log {
+ 	regulator-min-microvolt = <430000>;
+ 	regulator-init-microvolt = <950000>;
 diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
-index 1c1539bcb9..3b91c25ff4 100644
+index 3b91c25ff4..fd1b85c1e4 100644
 --- a/configs/roc-pc-mezzanine-rk3399_defconfig
 +++ b/configs/roc-pc-mezzanine-rk3399_defconfig
-@@ -1,7 +1,9 @@
- CONFIG_ARM=y
- CONFIG_ARCH_ROCKCHIP=y
- CONFIG_SYS_TEXT_BASE=0x00200000
--CONFIG_ENV_OFFSET=0x3F8000
-+CONFIG_ENV_SIZE=0x6000
-+CONFIG_ENV_OFFSET=0x460000
-+CONFIG_ENV_SECT_SIZE=0x1000
- CONFIG_ROCKCHIP_RK3399=y
- CONFIG_TARGET_ROC_PC_RK3399=y
+@@ -9,12 +9,15 @@ CONFIG_TARGET_ROC_PC_RK3399=y
  CONFIG_NR_DRAM_BANKS=1
-@@ -25,7 +27,7 @@ CONFIG_CMD_TIME=y
- CONFIG_SPL_OF_CONTROL=y
- CONFIG_DEFAULT_DEVICE_TREE="rk3399-roc-pc-mezzanine"
- CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
--CONFIG_ENV_IS_IN_MMC=y
-+CONFIG_ENV_IS_IN_SPI_FLASH=y
- CONFIG_SYS_RELOC_GD_ENV_ADDR=y
- CONFIG_ROCKCHIP_GPIO=y
- CONFIG_SYS_I2C_ROCKCHIP=y
+ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+ CONFIG_DEBUG_UART_CLOCK=24000000
++CONFIG_SPL_SPI_FLASH_SUPPORT=y
++CONFIG_SPL_SPI_SUPPORT=y
+ CONFIG_DEBUG_UART=y
+ CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-roc-pc-mezzanine.dtb"
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+ # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+ CONFIG_SPL_STACK_R=y
+ CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
++CONFIG_SPL_SPI_LOAD=y
+ CONFIG_TPL=y
+ CONFIG_TPL_GPIO_SUPPORT=y
+ CONFIG_CMD_BOOTZ=y
 diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index 76e76c160e..6edd4a8822 100644
+index 6edd4a8822..80e7001481 100644
 --- a/configs/roc-pc-rk3399_defconfig
 +++ b/configs/roc-pc-rk3399_defconfig
-@@ -1,7 +1,9 @@
- CONFIG_ARM=y
- CONFIG_ARCH_ROCKCHIP=y
- CONFIG_SYS_TEXT_BASE=0x00200000
--CONFIG_ENV_OFFSET=0x3F8000
-+CONFIG_ENV_SIZE=0x6000
-+CONFIG_ENV_OFFSET=0x460000
-+CONFIG_ENV_SECT_SIZE=0x1000
- CONFIG_ROCKCHIP_RK3399=y
- CONFIG_TARGET_ROC_PC_RK3399=y
+@@ -9,12 +9,15 @@ CONFIG_TARGET_ROC_PC_RK3399=y
  CONFIG_NR_DRAM_BANKS=1
-@@ -24,7 +26,7 @@ CONFIG_CMD_TIME=y
- CONFIG_SPL_OF_CONTROL=y
- CONFIG_DEFAULT_DEVICE_TREE="rk3399-roc-pc"
- CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
--CONFIG_ENV_IS_IN_MMC=y
-+CONFIG_ENV_IS_IN_SPI_FLASH=y
- CONFIG_SYS_RELOC_GD_ENV_ADDR=y
- CONFIG_ROCKCHIP_GPIO=y
- CONFIG_SYS_I2C_ROCKCHIP=y
-diff --git a/include/configs/roc-pc-rk3399.h b/include/configs/roc-pc-rk3399.h
-index d4cbc3532e..59fe22289c 100644
---- a/include/configs/roc-pc-rk3399.h
-+++ b/include/configs/roc-pc-rk3399.h
-@@ -13,10 +13,6 @@
- 
- #include <configs/rk3399_common.h>
- 
--#if defined(CONFIG_ENV_IS_IN_MMC)
--# define CONFIG_SYS_MMC_ENV_DEV		0
--#endif
--
- #define SDRAM_BANK_SIZE			(2UL << 30)
- 
- #endif
+ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+ CONFIG_DEBUG_UART_CLOCK=24000000
++CONFIG_SPL_SPI_FLASH_SUPPORT=y
++CONFIG_SPL_SPI_SUPPORT=y
+ CONFIG_DEBUG_UART=y
+ CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-roc-pc.dtb"
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+ # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+ CONFIG_SPL_STACK_R=y
+ CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
++CONFIG_SPL_SPI_LOAD=y
+ CONFIG_TPL=y
+ CONFIG_TPL_GPIO_SUPPORT=y
+ CONFIG_CMD_BOOTZ=y
 -- 
 2.25.1
