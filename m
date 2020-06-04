@@ -1,96 +1,65 @@
-From: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Subject: Re: [PATCH v3 1/4] Makefile: Drop to handle rkspi image type
-Date: Thu, 4 Jun 2020 16:55:43 +0200
-Message-ID: <56A28F79-EB4C-4091-A72D-F4CDF3B0F60F@theobroma-systems.com>
+Date: Thu, 4 Jun 2020 20:38:43 +0530
+Message-ID: <CAMty3ZBSx3BYWMC1F2Ja3P8S=HP93gkyb50wmKwLEWvuwCed6Q@mail.gmail.com>
 References: <20200604145141.356702-1-jagan@amarulasolutions.com>
  <20200604145141.356702-2-jagan@amarulasolutions.com>
-Mime-Version: 1.0 (Mac OS X Mail 13.4 \(3608.80.23.2.2\))
-Content-Type: text/plain;
-	charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200604145141.356702-2-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Simon Glass <sjg@chromium.org>, Hugh Cole-Baker <sigmaris@gmail.com>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, =?utf-8?Q?Christoph_M=C3=BCllner?= <christoph.muellner@theobroma-systems.com>
+ <56A28F79-EB4C-4091-A72D-F4CDF3B0F60F@theobroma-systems.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <56A28F79-EB4C-4091-A72D-F4CDF3B0F60F-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
+Cc: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?Christoph_M=C3=BCllner?= <christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-> On 04.06.2020, at 16:51, Jagan Teki <jagan@amarulasolutions.com> =
-wrote:
->=20
-> On rockchip platforms, SPI boot image creation is not
-> straightforward like MMC boot image creation where former
-> requires to specify tpl, spl in multimage format in mkimage,
-> and later simply do a concatenate mkimaged-tpl with spl.
->=20
-> On this note, let drop rkspi image type creation via kbuild
-> and let inform via rockchip.rst
->=20
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-> ---
-> Changes for v3:
-> - none
->=20
-> Makefile | 11 ++---------
-> 1 file changed, 2 insertions(+), 9 deletions(-)
->=20
-> diff --git a/Makefile b/Makefile
-> index 3851dd9fa0..db3b6b9991 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -1438,22 +1438,15 @@ u-boot-with-spl.bin: $(SPL_IMAGE) =
-$(SPL_PAYLOAD) FORCE
->=20
-> ifeq ($(CONFIG_ARCH_ROCKCHIP),y)
->=20
-> -# rockchip image type
-> -ifeq ($(CONFIG_SPL_SPI_LOAD),y)
-> -ROCKCHIP_IMG_TYPE :=3D rkspi
-> -else
-> -ROCKCHIP_IMG_TYPE :=3D rksd
-> -endif
-
-This should not be either-or, but rather allow the creation of both a =
-SPI and SD/eMMC image
-for a platform, if so desired =E2=80=94 e.g. the RK3399-Q7 supports both =
-SPI and eMMC boot and it
-is a user-choice which location will be used for the bootloader.
-
-In other words: make this a =E2=80=9Ccheckbox=E2=80=9D option in Kconfig =
-and output a rkspi, a rksd or both
-images depending on what is selected.
-
-Thanks,
-Philipp.
-
-> -
-> # TPL + SPL
-> ifeq ($(CONFIG_SPL)$(CONFIG_TPL),yy)
-> -MKIMAGEFLAGS_u-boot-tpl-rockchip.bin =3D -n $(CONFIG_SYS_SOC) -T =
-$(ROCKCHIP_IMG_TYPE)
-> +MKIMAGEFLAGS_u-boot-tpl-rockchip.bin =3D -n $(CONFIG_SYS_SOC) -T rksd
-> tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
-> 	$(call if_changed,mkimage)
-> idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
-> 	$(call if_changed,cat)
-> else
-> -MKIMAGEFLAGS_idbloader.img =3D -n $(CONFIG_SYS_SOC) -T =
-$(ROCKCHIP_IMG_TYPE)
-> +MKIMAGEFLAGS_idbloader.img =3D -n $(CONFIG_SYS_SOC) -T rksd
-> idbloader.img: spl/u-boot-spl.bin FORCE
-> 	$(call if_changed,mkimage)
-> endif
-> --=20
-> 2.25.1
->=20
+T24gVGh1LCBKdW4gNCwgMjAyMCBhdCA4OjI1IFBNIFBoaWxpcHAgVG9tc2ljaAo8cGhpbGlwcC50
+b21zaWNoQHRoZW9icm9tYS1zeXN0ZW1zLmNvbT4gd3JvdGU6Cj4KPgo+Cj4gPiBPbiAwNC4wNi4y
+MDIwLCBhdCAxNjo1MSwgSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+IHdy
+b3RlOgo+ID4KPiA+IE9uIHJvY2tjaGlwIHBsYXRmb3JtcywgU1BJIGJvb3QgaW1hZ2UgY3JlYXRp
+b24gaXMgbm90Cj4gPiBzdHJhaWdodGZvcndhcmQgbGlrZSBNTUMgYm9vdCBpbWFnZSBjcmVhdGlv
+biB3aGVyZSBmb3JtZXIKPiA+IHJlcXVpcmVzIHRvIHNwZWNpZnkgdHBsLCBzcGwgaW4gbXVsdGlt
+YWdlIGZvcm1hdCBpbiBta2ltYWdlLAo+ID4gYW5kIGxhdGVyIHNpbXBseSBkbyBhIGNvbmNhdGVu
+YXRlIG1raW1hZ2VkLXRwbCB3aXRoIHNwbC4KPiA+Cj4gPiBPbiB0aGlzIG5vdGUsIGxldCBkcm9w
+IHJrc3BpIGltYWdlIHR5cGUgY3JlYXRpb24gdmlhIGtidWlsZAo+ID4gYW5kIGxldCBpbmZvcm0g
+dmlhIHJvY2tjaGlwLnJzdAo+ID4KPiA+IFNpZ25lZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2Fu
+QGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+ID4gUmV2aWV3ZWQtYnk6IEtldmVyIFlhbmcgPGtldmVy
+LnlhbmdAcm9jay1jaGlwcy5jb20+Cj4gPiAtLS0KPiA+IENoYW5nZXMgZm9yIHYzOgo+ID4gLSBu
+b25lCj4gPgo+ID4gTWFrZWZpbGUgfCAxMSArKy0tLS0tLS0tLQo+ID4gMSBmaWxlIGNoYW5nZWQs
+IDIgaW5zZXJ0aW9ucygrKSwgOSBkZWxldGlvbnMoLSkKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvTWFr
+ZWZpbGUgYi9NYWtlZmlsZQo+ID4gaW5kZXggMzg1MWRkOWZhMC4uZGIzYjZiOTk5MSAxMDA2NDQK
+PiA+IC0tLSBhL01ha2VmaWxlCj4gPiArKysgYi9NYWtlZmlsZQo+ID4gQEAgLTE0MzgsMjIgKzE0
+MzgsMTUgQEAgdS1ib290LXdpdGgtc3BsLmJpbjogJChTUExfSU1BR0UpICQoU1BMX1BBWUxPQUQp
+IEZPUkNFCj4gPgo+ID4gaWZlcSAoJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkseSkKPiA+Cj4gPiAt
+IyByb2NrY2hpcCBpbWFnZSB0eXBlCj4gPiAtaWZlcSAoJChDT05GSUdfU1BMX1NQSV9MT0FEKSx5
+KQo+ID4gLVJPQ0tDSElQX0lNR19UWVBFIDo9IHJrc3BpCj4gPiAtZWxzZQo+ID4gLVJPQ0tDSElQ
+X0lNR19UWVBFIDo9IHJrc2QKPiA+IC1lbmRpZgo+Cj4gVGhpcyBzaG91bGQgbm90IGJlIGVpdGhl
+ci1vciwgYnV0IHJhdGhlciBhbGxvdyB0aGUgY3JlYXRpb24gb2YgYm90aCBhIFNQSSBhbmQgU0Qv
+ZU1NQyBpbWFnZQo+IGZvciBhIHBsYXRmb3JtLCBpZiBzbyBkZXNpcmVkIOKAlCBlLmcuIHRoZSBS
+SzMzOTktUTcgc3VwcG9ydHMgYm90aCBTUEkgYW5kIGVNTUMgYm9vdCBhbmQgaXQKPiBpcyBhIHVz
+ZXItY2hvaWNlIHdoaWNoIGxvY2F0aW9uIHdpbGwgYmUgdXNlZCBmb3IgdGhlIGJvb3Rsb2FkZXIu
+Cj4KPiBJbiBvdGhlciB3b3JkczogbWFrZSB0aGlzIGEg4oCcY2hlY2tib3jigJ0gb3B0aW9uIGlu
+IEtjb25maWcgYW5kIG91dHB1dCBhIHJrc3BpLCBhIHJrc2Qgb3IgYm90aAo+IGltYWdlcyBkZXBl
+bmRpbmcgb24gd2hhdCBpcyBzZWxlY3RlZC4KCkFncmVlIG9uIHRoZSBwb2ludCB0aGF0IHRoZSBi
+dWlsZCBjYW5ub3QgY3JlYXRlIGltYWdlcyB3aGVuIFNQSSBvcgpib3RoIFNQSS9NTUMgZW5hYmxl
+ZC4gSSBkbyBoYXZlIGEgcGF0Y2ggdG8gdGFrZSBjYXJlIG9mIHRoYXQgYnV0IHRoZQpTUEkgYm9v
+dCBpbWFnZSBjcmVhdGlvbiBpbiBUUEwtZmxvdyBzZWVtcyBub3QgYnVpbGRpbmcgdmlhIE1ha2Vm
+aWxlLgoKLi90b29scy9ta2ltYWdlIC1uIHJrMzM5OSAtVCBya3NwaSAtZAp0cGwvdS1ib290LXRw
+bC5iaW46c3BsL3UtYm9vdC1zcGwuYmluIGlkYmxvYWRlci5pbWcKClRlY2huaWNhbGx5IHRoaXMg
+cGF0Y2ggYWxsb3dzIHVzIHRvIGJ1aWxkIE1NQyBib290IGltYWdlIHNpbmNlIGl0IGlzIGEKZGVm
+YXVsdCBib290IGltYWdlIHJlcXVpcmVtZW50IGZvciBtb3N0IG9mIHRoZSBib2FyZC4gIEFuZCB5
+ZXMgd2lsbAp0cnkgdG8gdXBkYXRlIE1ha2VmaWxlIG9uY2UgSSBoYXZlIGZpeGVkIHRoZSBhYm92
+ZSBwcm9ibGVtIHdpdGggU1BJClRQTC1mbG93LgoKSmFnYW4uCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
