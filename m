@@ -1,74 +1,58 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 1/4] Makefile: Drop to handle rkspi image type
-Date: Thu, 4 Jun 2020 11:13:57 +0800
-Message-ID: <5b699185-38e4-4251-8013-cd4db066370e@rock-chips.com>
+From: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: Re: [PATCH v2 2/4] roc-rk3399-pc: Mark default env from SPI
+Date: Thu, 4 Jun 2020 11:14:05 +0800
+Message-ID: <ae1e0a20-9055-3f5d-d381-628ce6ffe8d9@rock-chips.com>
 References: <20200601204213.466120-1-jagan@amarulasolutions.com>
- <20200601204213.466120-2-jagan@amarulasolutions.com>
+ <20200601204213.466120-3-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200601204213.466120-2-jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200601204213.466120-3-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, Hugh Cole-Baker <sigmaris@gmail.com>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-On 2020/6/2 上午4:42, Jagan Teki wrote:
-> On rockchip platforms, SPI boot image creation is not
-> straightforward like MMC boot image creation where former
-> requires to specify tpl, spl in multimage format in mkimage,
-> and later simply do a concatenate mkimaged-tpl with spl.
->
-> On this note, let drop rkspi image type creation via kbuild
-> and let inform via rockchip.rst
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
-> ---
->   Makefile | 11 ++---------
->   1 file changed, 2 insertions(+), 9 deletions(-)
->
-> diff --git a/Makefile b/Makefile
-> index 3851dd9fa0..db3b6b9991 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -1438,22 +1438,15 @@ u-boot-with-spl.bin: $(SPL_IMAGE) $(SPL_PAYLOAD) FORCE
->   
->   ifeq ($(CONFIG_ARCH_ROCKCHIP),y)
->   
-> -# rockchip image type
-> -ifeq ($(CONFIG_SPL_SPI_LOAD),y)
-> -ROCKCHIP_IMG_TYPE := rkspi
-> -else
-> -ROCKCHIP_IMG_TYPE := rksd
-> -endif
-> -
->   # TPL + SPL
->   ifeq ($(CONFIG_SPL)$(CONFIG_TPL),yy)
-> -MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
-> +MKIMAGEFLAGS_u-boot-tpl-rockchip.bin = -n $(CONFIG_SYS_SOC) -T rksd
->   tpl/u-boot-tpl-rockchip.bin: tpl/u-boot-tpl.bin FORCE
->   	$(call if_changed,mkimage)
->   idbloader.img: tpl/u-boot-tpl-rockchip.bin spl/u-boot-spl.bin FORCE
->   	$(call if_changed,cat)
->   else
-> -MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T $(ROCKCHIP_IMG_TYPE)
-> +MKIMAGEFLAGS_idbloader.img = -n $(CONFIG_SYS_SOC) -T rksd
->   idbloader.img: spl/u-boot-spl.bin FORCE
->   	$(call if_changed,mkimage)
->   endif
+Ck9uIDIwMjAvNi8yIOS4iuWNiDQ6NDIsIEphZ2FuIFRla2kgd3JvdGU6Cj4gTWFyayB0aGUgZGVm
+YXVsdCBVLUJvb3QgZW52aXJvbm1lbnQgYXMgU1BJIGZsYXNoIHNpbmNlCj4gdGhpcyBpcyBhbiBv
+biBib2FyZCBmbGFzaCBkZXZpY2UuCj4KPiBTaWduZWQtb2ZmLWJ5OiBKYWdhbiBUZWtpIDxqYWdh
+bkBhbWFydWxhc29sdXRpb25zLmNvbT4KClJldmlld2VkLWJ5OiBLZXZlciBZYW5nIDxrZXZlci55
+YW5nQHJvY2stY2hpcHMuY29tPgoKVGhhbmtzLAotIEtldmVyCj4gLS0tCj4gICBjb25maWdzL3Jv
+Yy1wYy1yazMzOTlfZGVmY29uZmlnIHwgMyArKy0KPiAgIGluY2x1ZGUvY29uZmlncy9yb2MtcGMt
+cmszMzk5LmggfCA0IC0tLS0KPiAgIDIgZmlsZXMgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCA1
+IGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2NvbmZpZ3Mvcm9jLXBjLXJrMzM5OV9kZWZj
+b25maWcgYi9jb25maWdzL3JvYy1wYy1yazMzOTlfZGVmY29uZmlnCj4gaW5kZXggNzZlNzZjMTYw
+ZS4uMThjMzQzZjlmOSAxMDA2NDQKPiAtLS0gYS9jb25maWdzL3JvYy1wYy1yazMzOTlfZGVmY29u
+ZmlnCj4gKysrIGIvY29uZmlncy9yb2MtcGMtcmszMzk5X2RlZmNvbmZpZwo+IEBAIC0xLDYgKzEs
+NyBAQAo+ICAgQ09ORklHX0FSTT15Cj4gICBDT05GSUdfQVJDSF9ST0NLQ0hJUD15Cj4gICBDT05G
+SUdfU1lTX1RFWFRfQkFTRT0weDAwMjAwMDAwCj4gK0NPTkZJR19FTlZfU0laRT0weDgwMDAKPiAg
+IENPTkZJR19FTlZfT0ZGU0VUPTB4M0Y4MDAwCj4gICBDT05GSUdfUk9DS0NISVBfUkszMzk5PXkK
+PiAgIENPTkZJR19UQVJHRVRfUk9DX1BDX1JLMzM5OT15Cj4gQEAgLTI0LDcgKzI1LDcgQEAgQ09O
+RklHX0NNRF9USU1FPXkKPiAgIENPTkZJR19TUExfT0ZfQ09OVFJPTD15Cj4gICBDT05GSUdfREVG
+QVVMVF9ERVZJQ0VfVFJFRT0icmszMzk5LXJvYy1wYyIKPiAgIENPTkZJR19PRl9TUExfUkVNT1ZF
+X1BST1BTPSJwaW5jdHJsLTAgcGluY3RybC1uYW1lcyBjbG9jay1uYW1lcyBpbnRlcnJ1cHQtcGFy
+ZW50IGFzc2lnbmVkLWNsb2NrcyBhc3NpZ25lZC1jbG9jay1yYXRlcyBhc3NpZ25lZC1jbG9jay1w
+YXJlbnRzIgo+IC1DT05GSUdfRU5WX0lTX0lOX01NQz15Cj4gK0NPTkZJR19FTlZfSVNfSU5fU1BJ
+X0ZMQVNIPXkKPiAgIENPTkZJR19TWVNfUkVMT0NfR0RfRU5WX0FERFI9eQo+ICAgQ09ORklHX1JP
+Q0tDSElQX0dQSU89eQo+ICAgQ09ORklHX1NZU19JMkNfUk9DS0NISVA9eQo+IGRpZmYgLS1naXQg
+YS9pbmNsdWRlL2NvbmZpZ3Mvcm9jLXBjLXJrMzM5OS5oIGIvaW5jbHVkZS9jb25maWdzL3JvYy1w
+Yy1yazMzOTkuaAo+IGluZGV4IGQ0Y2JjMzUzMmUuLjU5ZmUyMjI4OWMgMTAwNjQ0Cj4gLS0tIGEv
+aW5jbHVkZS9jb25maWdzL3JvYy1wYy1yazMzOTkuaAo+ICsrKyBiL2luY2x1ZGUvY29uZmlncy9y
+b2MtcGMtcmszMzk5LmgKPiBAQCAtMTMsMTAgKzEzLDYgQEAKPiAgIAo+ICAgI2luY2x1ZGUgPGNv
+bmZpZ3MvcmszMzk5X2NvbW1vbi5oPgo+ICAgCj4gLSNpZiBkZWZpbmVkKENPTkZJR19FTlZfSVNf
+SU5fTU1DKQo+IC0jIGRlZmluZSBDT05GSUdfU1lTX01NQ19FTlZfREVWCQkwCj4gLSNlbmRpZgo+
+IC0KPiAgICNkZWZpbmUgU0RSQU1fQkFOS19TSVpFCQkJKDJVTCA8PCAzMCkKPiAgIAo+ICAgI2Vu
+ZGlmCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
+bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
+b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
+a2NoaXAK
