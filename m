@@ -1,7 +1,7 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [RFC v4 8/8] media: v4l2: add support for the CSC API for hsv_enc on mediabus
-Date: Fri,  5 Jun 2020 19:26:25 +0200
-Message-ID: <20200605172625.19777-9-dafna.hirschfeld@collabora.com>
+Subject: [RFC v4 5/8] media: staging: rkisp1: allow quantization conversion from userspace for isp source pad
+Date: Fri,  5 Jun 2020 19:26:22 +0200
+Message-ID: <20200605172625.19777-6-dafna.hirschfeld@collabora.com>
 References: <20200605172625.19777-1-dafna.hirschfeld@collabora.com>
 Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <20200605172625.19777-1-dafna.hirschfeld@collabora.com>
@@ -10,104 +10,166 @@ To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
 Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, p.zabel@pengutronix.de
 List-Id: linux-rockchip.vger.kernel.org
 
-Add the flag V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC that drivers
-can set when enumerating the supported mediabus formats
-on subdevices to indicate that the userspace can ask to
-set the 'hsv_enc'. The patch also replaces the 'ycbcr_enc'
-field in 'struct v4l2_mbus_framefmt' with a union that
-includes 'hsv_enc'
+The isp entity has a hardware support to force full range quantization
+for YUV formats. Use the CSC API to allow userspace to set the
+quantization for YUV formats on the isp, resizer and capture entities.
+
+- The flag V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION is set on
+YUV formats during enumeration of the resizer and isp formats.
+- The flag V4L2_FMT_FLAG_CSC_QUANTIZATION is set on the YUV formats
+during enumeration of the capture formats.
+- The full quantization is set on YUV formats if userspace ask it
+on the entities using the flag V4L2_MBUS_FRAMEFMT_SET_CSC
+for subdevices and the flag V4L2_PIX_FMT_FLAG_SET_CSC on for
+the capture entity.
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- .../media/v4l/subdev-formats.rst              | 22 +++++++++++++++++--
- include/uapi/linux/v4l2-mediabus.h            |  8 ++++++-
- include/uapi/linux/v4l2-subdev.h              |  1 +
- 3 files changed, 28 insertions(+), 3 deletions(-)
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 23 ++++++++++++-------
+ drivers/staging/media/rkisp1/rkisp1-isp.c     | 22 ++++++++++++++----
+ drivers/staging/media/rkisp1/rkisp1-resizer.c | 22 ++++++++++++++++++
+ 3 files changed, 55 insertions(+), 12 deletions(-)
 
-diff --git a/Documentation/userspace-api/media/v4l/subdev-formats.rst b/Documentation/userspace-api/media/v4l/subdev-formats.rst
-index 75eb7f8bb4c5..d06d1ac95452 100644
---- a/Documentation/userspace-api/media/v4l/subdev-formats.rst
-+++ b/Documentation/userspace-api/media/v4l/subdev-formats.rst
-@@ -44,6 +44,8 @@ Media Bus Formats
-       - Image colorspace, from enum
- 	:c:type:`v4l2_colorspace`. See
- 	:ref:`colorspaces` for details.
-+    * - union {
-+      - (anonymous)
-     * - __u16
-       - ``ycbcr_enc``
-       - Y'CbCr encoding, from enum :c:type:`v4l2_ycbcr_encoding`.
-@@ -59,7 +61,23 @@ Media Bus Formats
- 	V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC in the corresponding struct
- 	:c:type:`v4l2_subdev_mbus_code_enum` during enumeration.
- 	See :ref:`v4l2-subdev-mbus-code-flags`
--
-+    * - __u16
-+      - ``hsv_enc``
-+      - HSV encoding, from enum :c:type:`v4l2_hsv_encoding`.
-+        This information supplements the ``colorspace`` and must be set by
-+	the driver for capture streams and by the application for output
-+	streams, see :ref:`colorspaces`. If the application sets the
-+	flag ``V4L2_MBUS_FRAMEFMT_SET_CSC`` then the application can set
-+	this field for a capture stream to request a specific HSV encoding
-+	for the media bus data. If the driver cannot handle requested
-+	conversion, it will return another supported encoding.
-+	This field is ignored for Y'CbCr media bus formats. The driver indicates
-+	that hsv_enc conversion is supported by setting the flag
-+	V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC in the corresponding struct
-+	:c:type:`v4l2_subdev_mbus_code_enum` during enumeration.
-+	See :ref:`v4l2-subdev-mbus-code-flags`
-+    * - }
-+      -
-     * - __u16
-       - ``quantization``
-       - Quantization range, from enum :c:type:`v4l2_quantization`.
-@@ -103,7 +121,7 @@ Media Bus Formats
-       - Set by the application. It is only used for capture and is
- 	ignored for output streams. If set, then request the subdevice to do
- 	colorspace conversion from the received colorspace to the requested
--	colorspace values. If colorimetry field (``ycbcr_enc`` or
-+	colorspace values. If colorimetry field (``ycbcr_enc``, ``hsv_enc`` or
- 	``quantization``) is set to 0, then that colorimetry setting will remain
- 	unchanged from what was received. So to change the quantization, only the
- 	``quantization`` field shall be set to non-zero values
-diff --git a/include/uapi/linux/v4l2-mediabus.h b/include/uapi/linux/v4l2-mediabus.h
-index 0f916278137a..9c4a10d21a49 100644
---- a/include/uapi/linux/v4l2-mediabus.h
-+++ b/include/uapi/linux/v4l2-mediabus.h
-@@ -26,6 +26,7 @@
-  * @field:	used interlacing type (from enum v4l2_field)
-  * @colorspace:	colorspace of the data (from enum v4l2_colorspace)
-  * @ycbcr_enc:	YCbCr encoding of the data (from enum v4l2_ycbcr_encoding)
-+ * @hsv_enc:	HSV encoding of the data (from enum v4l2_hsv_encoding)
-  * @quantization: quantization of the data (from enum v4l2_quantization)
-  * @xfer_func:  transfer function of the data (from enum v4l2_xfer_func)
-  */
-@@ -35,7 +36,12 @@ struct v4l2_mbus_framefmt {
- 	__u32			code;
- 	__u32			field;
- 	__u32			colorspace;
--	__u16			ycbcr_enc;
-+	union {
-+		/* enum v4l2_ycbcr_encoding */
-+		__u16			ycbcr_enc;
-+		/* enum v4l2_hsv_encoding */
-+		__u16			hsv_enc;
-+	};
- 	__u16			quantization;
- 	__u16			xfer_func;
- 	__u16			flags;
-diff --git a/include/uapi/linux/v4l2-subdev.h b/include/uapi/linux/v4l2-subdev.h
-index 972e64d8b54e..685f920de5c7 100644
---- a/include/uapi/linux/v4l2-subdev.h
-+++ b/include/uapi/linux/v4l2-subdev.h
-@@ -66,6 +66,7 @@ struct v4l2_subdev_crop {
- };
+diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+index f69235f82c45..66856d5eb576 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-capture.c
++++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+@@ -1085,8 +1085,6 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
+ 			   const struct v4l2_format_info **fmt_info)
+ {
+ 	const struct rkisp1_capture_config *config = cap->config;
+-	struct rkisp1_capture *other_cap =
+-			&cap->rkisp1->capture_devs[cap->id ^ 1];
+ 	const struct rkisp1_capture_fmt_cfg *fmt;
+ 	const struct v4l2_format_info *info;
+ 	const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
+@@ -1108,16 +1106,21 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
+ 	pixm->field = V4L2_FIELD_NONE;
+ 	pixm->colorspace = V4L2_COLORSPACE_DEFAULT;
+ 	pixm->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
++	pixm->xfer_func = V4L2_XFER_FUNC_DEFAULT;
  
- #define V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC	0x00000001
-+#define V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC	0x00000001
- #define V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION	0x00000002
- /**
-  * struct v4l2_subdev_mbus_code_enum - Media bus format enumeration
+ 	info = rkisp1_fill_pixfmt(pixm, cap->id);
+ 
+-	/* can not change quantization when stream-on */
+-	if (other_cap->is_streaming)
+-		pixm->quantization = other_cap->pix.fmt.quantization;
+-	/* output full range by default, take effect in params */
+-	else if (!pixm->quantization ||
+-		 pixm->quantization > V4L2_QUANTIZATION_LIM_RANGE)
++	/*
++	 * isp has a feature to select between limited and full range for YUV
++	 * formats.
++	 * So we should also support it in the capture using the CSC API
++	 */
++	if (pixm->flags & V4L2_PIX_FMT_FLAG_SET_CSC &&
++	    pixm->quantization == V4L2_QUANTIZATION_FULL_RANGE &&
++	    v4l2_is_format_yuv(info))
+ 		pixm->quantization = V4L2_QUANTIZATION_FULL_RANGE;
++	else
++		pixm->quantization = V4L2_QUANTIZATION_DEFAULT;
+ 
+ 	if (fmt_cfg)
+ 		*fmt_cfg = fmt;
+@@ -1152,12 +1155,16 @@ static int rkisp1_enum_fmt_vid_cap_mplane(struct file *file, void *priv,
+ {
+ 	struct rkisp1_capture *cap = video_drvdata(file);
+ 	const struct rkisp1_capture_fmt_cfg *fmt = NULL;
++	const struct v4l2_format_info *info;
+ 
+ 	if (f->index >= cap->config->fmt_size)
+ 		return -EINVAL;
+ 
+ 	fmt = &cap->config->fmts[f->index];
+ 	f->pixelformat = fmt->fourcc;
++	info = v4l2_format_info(f->pixelformat);
++	if (v4l2_is_format_yuv(info))
++		f->flags = V4L2_FMT_FLAG_CSC_QUANTIZATION;
+ 
+ 	return 0;
+ }
+diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
+index e66e87d6ea8b..28e0a3c594aa 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-isp.c
++++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
+@@ -591,6 +591,10 @@ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
+ 
+ 		if (code->index == pos - 1) {
+ 			code->code = fmt->mbus_code;
++			if (fmt->pixel_enc == V4L2_PIXEL_ENC_YUV &&
++			    dir == RKISP1_DIR_SRC)
++				code->flags =
++					V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION;
+ 			return 0;
+ 		}
+ 	}
+@@ -622,7 +626,6 @@ static int rkisp1_isp_init_config(struct v4l2_subdev *sd,
+ 					     RKISP1_ISP_PAD_SOURCE_VIDEO);
+ 	*src_fmt = *sink_fmt;
+ 	src_fmt->code = RKISP1_DEF_SRC_PAD_FMT;
+-	src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
+ 
+ 	src_crop = v4l2_subdev_get_try_crop(sd, cfg,
+ 					    RKISP1_ISP_PAD_SOURCE_VIDEO);
+@@ -665,10 +668,21 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+ 		isp->src_fmt = mbus_info;
+ 	src_fmt->width  = src_crop->width;
+ 	src_fmt->height = src_crop->height;
+-	src_fmt->quantization = format->quantization;
+-	/* full range by default */
+-	if (!src_fmt->quantization)
++
++	src_fmt->colorspace = V4L2_COLORSPACE_DEFAULT;
++	src_fmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
++	src_fmt->xfer_func = V4L2_XFER_FUNC_DEFAULT;
++
++	/*
++	 * The CSC API is used to allow userspace to force full
++	 * quantization on YUV formats.
++	 */
++	if (format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC &&
++	    format->quantization == V4L2_QUANTIZATION_FULL_RANGE &&
++	    mbus_info->pixel_enc == V4L2_PIXEL_ENC_YUV)
+ 		src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
++	else
++		src_fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
+ 
+ 	*format = *src_fmt;
+ }
+diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+index fa28f4bd65c0..237cce9183f7 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
++++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+@@ -549,8 +549,30 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
+ 	if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
+ 		rsz->pixel_enc = mbus_info->pixel_enc;
+ 
++	sink_fmt->colorspace = V4L2_COLORSPACE_DEFAULT;
++	sink_fmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
++	sink_fmt->xfer_func = V4L2_XFER_FUNC_DEFAULT;
++
++	/*
++	 * isp has a feature to select between limited and full range for
++	 * YUV formats.
++	 * so we should support it in the resizer using the CSC API
++	 */
++
++	if (format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC &&
++	    format->quantization == V4L2_QUANTIZATION_FULL_RANGE &&
++	    mbus_info->pixel_enc == V4L2_PIXEL_ENC_YUV)
++		sink_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
++	else
++		sink_fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
++
+ 	/* Propagete to source pad */
+ 	src_fmt->code = sink_fmt->code;
++	src_fmt->field = sink_fmt->field;
++	src_fmt->colorspace = sink_fmt->colorspace;
++	src_fmt->ycbcr_enc = sink_fmt->ycbcr_enc;
++	src_fmt->xfer_func = sink_fmt->xfer_func;
++	src_fmt->quantization = sink_fmt->quantization;
+ 
+ 	sink_fmt->width = clamp_t(u32, format->width,
+ 				  rsz->config->min_rsz_width,
 -- 
 2.17.1
