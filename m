@@ -1,108 +1,45 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v4l-utils 4/4] v4l2-ctl: subdev: Add the flags to the list of supported mbus formats
-Date: Sat,  6 Jun 2020 12:55:38 +0200
-Message-ID: <20200606105538.30147-5-dafna.hirschfeld@collabora.com>
-References: <20200606105538.30147-1-dafna.hirschfeld@collabora.com>
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200606105538.30147-1-dafna.hirschfeld@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, p.zabel@pengutronix.de
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 0/2] drm: rockchip: add NV15 and NV20 support
+Date: Sun, 07 Jun 2020 20:25:25 +0000 (UTC)
+Message-ID: <20200607202521.18438-1-jonas@kwiboo.se>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sandy Huang <hjc@rock-chips.com>, Heiko =?iso-8859-1?q?St=FCbner?= <heiko@sntech.de>
+Cc: Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Ben Davis <ben.davis@arm.com>, Brian Starkey <brian.starkey@arm.com>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add a new function mbus2s to that prints a descriptive
-string of the supported flags of the the v4l2_subdev_mbus_code_enum
-Use this function in the print_mbus_code function.
-Also add a macro MBUS_DEF(enc_type) to create the two
-arries 'mbus_hsv_def' and mbus_ycbcr_def' that maps flags to
-string according to the enc_type (ycbcr/hsv)
+Hi,
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- utils/common/v4l2-info.cpp         | 17 +++++++++++++++++
- utils/common/v4l2-info.h           |  4 ++++
- utils/v4l2-ctl/v4l2-ctl-subdev.cpp | 10 ++++++++--
- 3 files changed, 29 insertions(+), 2 deletions(-)
+This series adds support for displaying 10-bit 4:2:0 and 4:2:2 formats produced
+by the Rockchip Video Decoder on RK322X, RK3288, RK3328, RK3368 and RK3399.
 
-diff --git a/utils/common/v4l2-info.cpp b/utils/common/v4l2-info.cpp
-index 73ee4252..ed4cf807 100644
---- a/utils/common/v4l2-info.cpp
-+++ b/utils/common/v4l2-info.cpp
-@@ -386,6 +386,23 @@ std::string fmtdesc2s(unsigned flags, bool is_hsv)
- 	return flags2s(flags, fmtdesc_ycbcr_def);
- }
- 
-+#define MBUS_DEF(enc_type)						\
-+static const flag_def mbus_ ## enc_type ## _def[] = { 			\
-+	{ V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION, "csc-quantization" }, \
-+	{ V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC, "csc-"#enc_type },	\
-+	{ 0, NULL }							\
-+};
-+
-+MBUS_DEF(ycbcr)
-+MBUS_DEF(hsv)
-+
-+std::string mbus2s(unsigned flags, bool is_hsv)
-+{
-+	if (is_hsv)
-+		return flags2s(flags, mbus_hsv_def);
-+	return flags2s(flags, mbus_ycbcr_def);
-+}
-+
- static const flag_def selection_targets_def[] = {
- 	{ V4L2_SEL_TGT_CROP_ACTIVE, "crop" },
- 	{ V4L2_SEL_TGT_CROP_DEFAULT, "crop_default" },
-diff --git a/utils/common/v4l2-info.h b/utils/common/v4l2-info.h
-index 5b34409c..97c1e64a 100644
---- a/utils/common/v4l2-info.h
-+++ b/utils/common/v4l2-info.h
-@@ -8,6 +8,7 @@
- 
- #include <string>
- #include <linux/videodev2.h>
-+#include <linux/v4l2-subdev.h>
- 
- /* Print capability information */
- void v4l2_info_capability(const v4l2_capability &cap);
-@@ -50,6 +51,9 @@ std::string pixflags2s(unsigned flags);
- /* Return sliced vbi services description */
- std::string service2s(unsigned service);
- 
-+/* Return v4l2_subdev_mbus_code_enum flags description */
-+std::string mbus2s(unsigned flags, bool is_hsv);
-+
- /* Return v4l2_fmtdesc flags description */
- std::string fmtdesc2s(unsigned flags, bool is_hsv);
- 
-diff --git a/utils/v4l2-ctl/v4l2-ctl-subdev.cpp b/utils/v4l2-ctl/v4l2-ctl-subdev.cpp
-index bc9ee101..7fde042a 100644
---- a/utils/v4l2-ctl/v4l2-ctl-subdev.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-subdev.cpp
-@@ -573,10 +573,10 @@ static void print_mbus_code(__u32 code)
- 		if (mbus_names[i].code == code)
- 			break;
- 	if (mbus_names[i].name)
--		printf("\t0x%04x: MEDIA_BUS_FMT_%s\n",
-+		printf("\t0x%04x: MEDIA_BUS_FMT_%s",
- 		       mbus_names[i].code, mbus_names[i].name);
- 	else
--		printf("\t0x%04x\n", code);
-+		printf("\t0x%04x", code);
- }
- 
- static void print_mbus_codes(int fd, __u32 pad)
-@@ -593,6 +593,12 @@ static void print_mbus_codes(int fd, __u32 pad)
- 		if (ret)
- 			break;
- 		print_mbus_code(mbus_code.code);
-+		if (mbus_code.flags) {
-+			bool is_hsv = mbus_code.code == MEDIA_BUS_FMT_AHSV8888_1X32;
-+
-+			printf(", %s", mbus2s(mbus_code.flags, is_hsv).c_str());
-+		}
-+		printf("\n");
- 		mbus_code.index++;
- 	}
- }
+First patch adds a new fourcc 10-bit YUV format with 4:2:2 sub-sampling.
+Second patch adds support for using the the two new fourcc formats.
+Both depend on "drm: drm_fourcc: add NV15, Q410, Q401 YUV formats" at [1].
+
+This series can also be found at [2], and can be tested on RK3399 using an
+upcoming rkvdec series at [3] together with ffmpeg at [4] and kodi-gbm or mpv.
+
+[1] https://patchwork.freedesktop.org/series/76326/
+[2] https://github.com/Kwiboo/linux-rockchip/commits/next-20200605-fmt_10
+[3] https://github.com/Kwiboo/linux-rockchip/commits/next-20200605-rkvdec
+[4] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-hwaccel-4.2.2-rkvdec
+
+Regards,
+Jonas
+
+Jonas Karlman (2):
+  drm: drm_fourcc: add NV20 YUV format
+  drm: rockchip: add NV15 and NV20 support
+
+ drivers/gpu/drm/drm_fourcc.c                |  4 +++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 27 ++++++++++++++++--
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  1 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 31 +++++++++++++++++----
+ include/uapi/drm/drm_fourcc.h               |  1 +
+ 5 files changed, 56 insertions(+), 8 deletions(-)
+
 -- 
 2.17.1
