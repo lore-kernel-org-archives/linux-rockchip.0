@@ -1,63 +1,58 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.6 060/606] arm64: dts: rockchip: Replace RK805 PMIC node name with "pmic" on rk3328 boards
-Date: Mon,  8 Jun 2020 19:03:05 -0400
-Message-ID: <20200608231211.3363633-60-sashal@kernel.org>
+From: Sasha Levin <sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: [PATCH AUTOSEL 5.6 061/606] arm64: dts: rockchip: Rename dwc3 device nodes on rk3399 to make dtc happy
+Date: Mon,  8 Jun 2020 19:03:06 -0400
+Message-ID: <20200608231211.3363633-61-sashal@kernel.org>
 References: <20200608231211.3363633-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20200608231211.3363633-1-sashal@kernel.org>
-Sender: stable-owner@vger.kernel.org
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Chen-Yu Tsai <wens@csie.org>, Heiko Stuebner <heiko@sntech.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200608231211.3363633-1-sashal-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Chen-Yu Tsai <wens@csie.org>
+From: Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>
 
-commit 83b994129fb4c18a8460fd395864a28740e5e7fb upstream.
+commit 190c7f6fd43a776d4a6da1dac44408104649e9b7 upstream.
 
-In some board device tree files, "rk805" was used for the RK805 PMIC's
-node name. However the policy for device trees is that generic names
-should be used.
+The device tree compiler complains that the dwc3 nodes have regs
+properties but no matching unit addresses.
 
-Replace the "rk805" node name with the generic "pmic" name.
+Add the unit addresses to the device node name. While at it, also rename
+the nodes from "dwc3" to "usb", as guidelines require device nodes have
+generic names.
 
-Fixes: 1e28037ec88e ("arm64: dts: rockchip: add rk805 node for rk3328-evb")
-Fixes: 955bebde057e ("arm64: dts: rockchip: add rk3328-rock64 board")
-Signed-off-by: Chen-Yu Tsai <wens@csie.org>
-Link: https://lore.kernel.org/r/20200327030414.5903-3-wens@kernel.org
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Fixes: 7144224f2c2b ("arm64: dts: rockchip: support dwc3 USB for rk3399")
+Signed-off-by: Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>
+Link: https://lore.kernel.org/r/20200327030414.5903-7-wens-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Signed-off-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh-hQyY1W1yCW8ekmWlsbkhG0B+6BGkLq7r@public.gmane.org>
 ---
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts    | 2 +-
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-index 49c4b96da3d4..6abc6f4a86cf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-evb.dts
-@@ -92,7 +92,7 @@ &gmac2phy {
- &i2c1 {
- 	status = "okay";
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 33cc21fcf4c1..5c4238a80144 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -410,7 +410,7 @@ usbdrd3_0: usb@fe800000 {
+ 		reset-names = "usb3-otg";
+ 		status = "disabled";
  
--	rk805: rk805@18 {
-+	rk805: pmic@18 {
- 		compatible = "rockchip,rk805";
- 		reg = <0x18>;
- 		interrupt-parent = <&gpio2>;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 62936b432f9a..304fad1a0b57 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -169,7 +169,7 @@ &hdmiphy {
- &i2c1 {
- 	status = "okay";
+-		usbdrd_dwc3_0: dwc3 {
++		usbdrd_dwc3_0: usb@fe800000 {
+ 			compatible = "snps,dwc3";
+ 			reg = <0x0 0xfe800000 0x0 0x100000>;
+ 			interrupts = <GIC_SPI 105 IRQ_TYPE_LEVEL_HIGH 0>;
+@@ -446,7 +446,7 @@ usbdrd3_1: usb@fe900000 {
+ 		reset-names = "usb3-otg";
+ 		status = "disabled";
  
--	rk805: rk805@18 {
-+	rk805: pmic@18 {
- 		compatible = "rockchip,rk805";
- 		reg = <0x18>;
- 		interrupt-parent = <&gpio2>;
+-		usbdrd_dwc3_1: dwc3 {
++		usbdrd_dwc3_1: usb@fe900000 {
+ 			compatible = "snps,dwc3";
+ 			reg = <0x0 0xfe900000 0x0 0x100000>;
+ 			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
 -- 
 2.25.1
