@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v4 2/4] roc-rk3399-pc: Mark default env from SPI
-Date: Mon,  8 Jun 2020 14:17:06 -0400
-Message-ID: <20200608181708.17842-3-jagan@amarulasolutions.com>
+Subject: [PATCH v4 4/4] doc: rockchip: Document SPI flash program steps
+Date: Mon,  8 Jun 2020 14:17:08 -0400
+Message-ID: <20200608181708.17842-5-jagan@amarulasolutions.com>
 References: <20200608181708.17842-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,85 +18,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Mark the default U-Boot environment as SPI flash since
-this is an on board flash device.
+Document SPI flash program steps for rockchip platforms.
 
-Updated env offset, size in contrast with default since
-the U-Boot proper has starting from 384K.
-
+Suggested-by: Hugh Cole-Baker <sigmaris-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Reviewed-by: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 Changes for v4:
-- adjust env offset, size
+- none
 
- configs/roc-pc-mezzanine-rk3399_defconfig | 4 +++-
- configs/roc-pc-rk3399_defconfig           | 4 +++-
- include/configs/roc-pc-rk3399.h           | 4 ----
- 3 files changed, 6 insertions(+), 6 deletions(-)
+ doc/board/rockchip/rockchip.rst | 26 +++++++++++++++++++++++++-
+ 1 file changed, 25 insertions(+), 1 deletion(-)
 
-diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
-index 1c1539bcb9..9c6fd0c98c 100644
---- a/configs/roc-pc-mezzanine-rk3399_defconfig
-+++ b/configs/roc-pc-mezzanine-rk3399_defconfig
-@@ -1,7 +1,9 @@
- CONFIG_ARM=y
- CONFIG_ARCH_ROCKCHIP=y
- CONFIG_SYS_TEXT_BASE=0x00200000
-+CONFIG_ENV_SIZE=0x8000
- CONFIG_ENV_OFFSET=0x3F8000
-+CONFIG_ENV_SECT_SIZE=0x1000
- CONFIG_ROCKCHIP_RK3399=y
- CONFIG_TARGET_ROC_PC_RK3399=y
- CONFIG_NR_DRAM_BANKS=1
-@@ -25,7 +27,7 @@ CONFIG_CMD_TIME=y
- CONFIG_SPL_OF_CONTROL=y
- CONFIG_DEFAULT_DEVICE_TREE="rk3399-roc-pc-mezzanine"
- CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
--CONFIG_ENV_IS_IN_MMC=y
-+CONFIG_ENV_IS_IN_SPI_FLASH=y
- CONFIG_SYS_RELOC_GD_ENV_ADDR=y
- CONFIG_ROCKCHIP_GPIO=y
- CONFIG_SYS_I2C_ROCKCHIP=y
-diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index 76e76c160e..b225eb38fe 100644
---- a/configs/roc-pc-rk3399_defconfig
-+++ b/configs/roc-pc-rk3399_defconfig
-@@ -1,7 +1,9 @@
- CONFIG_ARM=y
- CONFIG_ARCH_ROCKCHIP=y
- CONFIG_SYS_TEXT_BASE=0x00200000
-+CONFIG_ENV_SIZE=0x8000
- CONFIG_ENV_OFFSET=0x3F8000
-+CONFIG_ENV_SECT_SIZE=0x1000
- CONFIG_ROCKCHIP_RK3399=y
- CONFIG_TARGET_ROC_PC_RK3399=y
- CONFIG_NR_DRAM_BANKS=1
-@@ -24,7 +26,7 @@ CONFIG_CMD_TIME=y
- CONFIG_SPL_OF_CONTROL=y
- CONFIG_DEFAULT_DEVICE_TREE="rk3399-roc-pc"
- CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
--CONFIG_ENV_IS_IN_MMC=y
-+CONFIG_ENV_IS_IN_SPI_FLASH=y
- CONFIG_SYS_RELOC_GD_ENV_ADDR=y
- CONFIG_ROCKCHIP_GPIO=y
- CONFIG_SYS_I2C_ROCKCHIP=y
-diff --git a/include/configs/roc-pc-rk3399.h b/include/configs/roc-pc-rk3399.h
-index d4cbc3532e..59fe22289c 100644
---- a/include/configs/roc-pc-rk3399.h
-+++ b/include/configs/roc-pc-rk3399.h
-@@ -13,10 +13,6 @@
+diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
+index 7b72fab496..76b228a046 100644
+--- a/doc/board/rockchip/rockchip.rst
++++ b/doc/board/rockchip/rockchip.rst
+@@ -162,6 +162,30 @@ Program the flash::
+ Note: for rockchip 32-bit platforms the U-Boot proper image
+ is u-boot-dtb.img
  
- #include <configs/rk3399_common.h>
++SPI
++^^^
++
++Generating idbloader for SPI boot would require to input a multi image
++image format to mkimage tool instead of concerting (like for MMC boot).
++
++SPL-alone SPI boot image::
++
++        ./tools/mkimage -n rk3399 -T rkspi -d spl/u-boot-spl.bin idbloader.img
++
++TPL+SPL SPI boot image::
++
++        ./tools/mkimage -n rk3399 -T rkspi -d tpl/u-boot-tpl.bin:spl/u-boot-spl.bin idbloader.img
++
++Copy SPI boot images into SD card and boot from SD::
++
++        sf probe
++        load mmc 1:1 $kernel_addr_r idbloader.img
++        sf erase 0 +$filesize
++        sf write $kernel_addr_r 0 ${filesize}
++        load mmc 1:1 ${kernel_addr_r} u-boot.itb
++        sf erase 0x60000 +$filesize
++        sf write $kernel_addr_r 0x60000 ${filesize}
++
+ TODO
+ ----
  
--#if defined(CONFIG_ENV_IS_IN_MMC)
--# define CONFIG_SYS_MMC_ENV_DEV		0
--#endif
--
- #define SDRAM_BANK_SIZE			(2UL << 30)
+@@ -171,4 +195,4 @@ TODO
+ - Add missing SoC's with it boards list
  
- #endif
+ .. Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+-.. Sunday 24 May 2020 10:08:41 PM IST
++.. Tuesday 02 June 2020 12:18:57 AM IST
 -- 
 2.20.1
