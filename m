@@ -1,7 +1,7 @@
 From: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v1 06/13] ARM: dts: rk3288: Add 'arm,pl330-periph-burst' for dmac
-Date: Mon,  8 Jun 2020 18:04:24 +0800
-Message-ID: <1591610671-71238-2-git-send-email-sugar.zhang@rock-chips.com>
+Subject: [PATCH v1 11/13] arm64: dts: rk3328: Add 'arm,pl330-periph-burst' for dmac
+Date: Mon,  8 Jun 2020 18:07:40 +0800
+Message-ID: <1591610862-71359-2-git-send-email-sugar.zhang@rock-chips.com>
 References: <1591602567-43788-1-git-send-email-sugar.zhang@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1591602567-43788-1-git-send-email-sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
@@ -16,36 +16,20 @@ for better compatible and higher performance.
 Signed-off-by: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 
- arch/arm/boot/dts/rk3288.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
-index 0cd8877..b0de4f4 100644
---- a/arch/arm/boot/dts/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rk3288.dtsi
-@@ -168,6 +168,7 @@
- 				     <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>;
- 			#dma-cells = <1>;
- 			arm,pl330-broken-no-flushp;
-++			arm,pl330-periph-burst;
- 			clocks = <&cru ACLK_DMAC2>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index a4d591d..5f5efb0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -156,6 +156,7 @@
+ 			clocks = <&cru ACLK_DMAC>;
  			clock-names = "apb_pclk";
+ 			#dma-cells = <1>;
+++			arm,pl330-periph-burst;
  		};
-@@ -179,6 +180,7 @@
- 				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
- 			#dma-cells = <1>;
- 			arm,pl330-broken-no-flushp;
-++			arm,pl330-periph-burst;
- 			clocks = <&cru ACLK_DMAC1>;
- 			clock-names = "apb_pclk";
- 			status = "disabled";
-@@ -191,6 +193,7 @@
- 				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
- 			#dma-cells = <1>;
- 			arm,pl330-broken-no-flushp;
-++			arm,pl330-periph-burst;
- 			clocks = <&cru ACLK_DMAC1>;
- 			clock-names = "apb_pclk";
- 		};
+ 	};
+ 
 -- 
 2.7.4
