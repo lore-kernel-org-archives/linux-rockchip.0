@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 2/5] rk3399: spl: Print SPL banner after relocation
-Date: Mon,  8 Jun 2020 14:31:41 -0400
-Message-ID: <20200608183144.26809-3-jagan@amarulasolutions.com>
+Subject: [PATCH v3 3/5] roc-rk3399-pc: Move leds setup in SPL
+Date: Mon,  8 Jun 2020 14:31:42 -0400
+Message-ID: <20200608183144.26809-4-jagan@amarulasolutions.com>
 References: <20200608183144.26809-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20200608183144.26809-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -21,45 +21,173 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tom
 Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-VXN1YWxseSBwcmludGluZyB0aGUgU1BMIGJhbm5lciB2YXJpZXMgYmV0d2VlbiBhcmNoaXRlY3R1
-cmUKb3IgYm9hcmQgY29kZXMuCi0gU29tZSB3b3VsZCBwcmludCBiZWZvcmUgcmVsb2NhdGlvbiBh
-dCB0aGUgZW5kIGJvYXJkX2luaXRfZgrCoCBmb3IgbWFraW5nIHN1cmUgYWxsIGluaXRpYWxpemF0
-aW9uIHByaW9yIHRvIHRoaXMgd291bGQgaGFwcGVuCsKgIHByb3Blcmx5LiBpZiBhdCBhbGwgdGhl
-cmUgaXMgYSByZXF1aXJlbWVudCBmb3Igc2VyaWFsIGluaXQsCsKgIHRoYXQgaGFwcGVucyBwcm9w
-ZXJseSBzaW5jZSBpdCBwcmludHMgYWxsIGFmdGVyIHRoYXQuCi0gU29tZSB3b3VsZCBwcmludCBh
-ZnRlciByZWxvY2F0aW9uIGF0IHRoZSBzcGxfYm9hcmRfaW5pdCBmb3IKwqAgbWFraW5nIHN1cmUg
-YWxsIGluaXRpYWxpemF0aW9uIHByaW9yIHRvIHJlbG9jYXRpb24gd291bGQKICBoYXBwZW4gcHJv
-cGVybHkuIEFsc28gZGVidWcgdWFydCBvbiB0aGVzZSBjYXNlcyB3b3VsZCBiZQogIGF2YWlsYWJs
-ZSBiZWZvcmUgcmVsb2NhdGlvbi4gU28gZGVidWcgc3VwcG9ydCBpcyBhdmFpbGFibGUKICBpbiBi
-ZWZvcmUgYW5kIGFmdGVyIHJlbG9jYXRpb24uCgpSb2NrY2hpcCBTUEwgaXMgZm9sbG93aW5nIGZv
-cm1hciBzdGVwIHRvIHByaW50IHRoZSBiYW5uZXIgYXQKdGhlIGVuZCBvZiBib2FyZF9pbml0X2Yu
-CgpUbyBzdXBwb3J0IHZhcmlvdXMgY3VzdG9tIHVzZSBjYXNlcyBpbiBTUEwgbGlrZSBsZWRzLCBl
-bnZpcm9ubWVudCwKYm9hcmQgZGV0ZWN0aW9ucyBsYXRlciBvcHRpb25zIGxpa2UgcHJpbnRpbmcg
-dGhlIGJhbm5lciBhZnRlcgpyZWxvY2F0aW9uIHdvdWxkIGJlIGEgYmV0dGVyIG9wdGlvbi4gUHJp
-bnRpbmcgYmFubmVyIHdvdWxkIGFsc28KaGVscCB0byBzdXBwb3J0IGRlYnVnZ2luZyBhdmFpbGFi
-aWxpdHkgYmV0d2VlbiByZWxvY2F0aW9uIGNvZGVzLApsaWtlIGRlYnVnIHVhcnQgYXZhaWxhYmxl
-IGJlZm9yZSByZWxvY2F0aW9uIGFuZCBiYW5uZXIgYXZhaWxhYmlsaXR5CmFmdGVyIHJlbGF0aW9u
-LgoKQnkgZGVtb25zdHJhdGluZyBhbGwgdGhlIGFib3ZlIHVzZSBjYXNlcywgdGhpcyBwYXRjaCBp
-cyB0cnlpbmcKdG8gcHJpbnQgdGhlIFNQTCBiYW5uZXIgYWZ0ZXIgcmVsb2NhdGlvbi4KClNpZ25l
-ZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgpUZXN0ZWQt
-Ynk6IFN1bmllbCBNYWhlc2ggPHN1bmlsQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgotLS0KQ2hhbmdl
-cyBmb3IgdjM6Ci0gbmV3IHBhdGNoCgogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTkvcmsz
-Mzk5LmMgfCAyICsrCiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NwbC5jICAgICAgICAgICB8IDEg
-LQogMiBmaWxlcyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYg
-LS1naXQgYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzM5OS9yazMzOTkuYyBiL2FyY2gvYXJt
-L21hY2gtcm9ja2NoaXAvcmszMzk5L3JrMzM5OS5jCmluZGV4IDY4MWY4MGYzMzkuLmFmNGIwZTI3
-MWIgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5L3JrMzM5OS5jCisr
-KyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5L3JrMzM5OS5jCkBAIC0yNzksNiArMjc5
-LDggQEAgdm9pZCBzcGxfYm9hcmRfaW5pdCh2b2lkKQogewogCS8qIGJvYXJkIHNwZWNpZmljIHNw
-bCBpbml0ICovCiAJcmtfc3BsX2JvYXJkX2luaXQoKTsKKworCXByZWxvYWRlcl9jb25zb2xlX2lu
-aXQoKTsKIH0KIAogI2VuZGlmCmRpZmYgLS1naXQgYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3Nw
-bC5jIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zcGwuYwppbmRleCBjZGRmNGZkM2Q1Li4xYzJk
-Y2E4YTcyIDEwMDY0NAotLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NwbC5jCisrKyBiL2Fy
-Y2gvYXJtL21hY2gtcm9ja2NoaXAvc3BsLmMKQEAgLTE0Nyw3ICsxNDcsNiBAQCB2b2lkIGJvYXJk
-X2luaXRfZih1bG9uZyBkdW1teSkKIAlnZC0+cmFtX3RvcCA9IGdkLT5yYW1fYmFzZSArIGdldF9l
-ZmZlY3RpdmVfbWVtc2l6ZSgpOwogCWdkLT5yYW1fdG9wID0gYm9hcmRfZ2V0X3VzYWJsZV9yYW1f
-dG9wKGdkLT5yYW1fc2l6ZSk7CiAjZW5kaWYKLQlwcmVsb2FkZXJfY29uc29sZV9pbml0KCk7CiB9
-CiAKICNpZmRlZiBDT05GSUdfU1BMX0xPQURfRklUCi0tIAoyLjIwLjEKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+roc-rk3399-pc has some specific requirements to support LEDS,
+environment. board detection and etc prior to U-Boot proper.
+
+So as of now SPL would be a better stage for these custom board
+requirements to support unlike TPL. Adding few of these custom
+requirements like LEDS in TPL would require extra code pulling
+and also the size of TPL can grow.
+
+So, this patch moves the leds code from TPL into SPL after relocation.
+
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Tested-by: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+Changes for v3:
+- new patch
+
+ arch/arm/mach-rockchip/tpl.c                |  7 -------
+ board/firefly/roc-pc-rk3399/Makefile        |  4 ++++
+ board/firefly/roc-pc-rk3399/roc-pc-rk3399.c | 21 -------------------
+ board/firefly/roc-pc-rk3399/spl.c           | 23 +++++++++++++++++++++
+ configs/roc-pc-mezzanine-rk3399_defconfig   |  2 +-
+ configs/roc-pc-rk3399_defconfig             |  2 +-
+ 6 files changed, 29 insertions(+), 30 deletions(-)
+ create mode 100644 board/firefly/roc-pc-rk3399/spl.c
+
+diff --git a/arch/arm/mach-rockchip/tpl.c b/arch/arm/mach-rockchip/tpl.c
+index 88f80b05a9..cc908e1b0e 100644
+--- a/arch/arm/mach-rockchip/tpl.c
++++ b/arch/arm/mach-rockchip/tpl.c
+@@ -43,18 +43,11 @@ __weak void rockchip_stimer_init(void)
+ 	       TIMER_CONTROL_REG);
+ }
+ 
+-__weak int board_early_init_f(void)
+-{
+-	return 0;
+-}
+-
+ void board_init_f(ulong dummy)
+ {
+ 	struct udevice *dev;
+ 	int ret;
+ 
+-	board_early_init_f();
+-
+ #if defined(CONFIG_DEBUG_UART) && defined(CONFIG_TPL_SERIAL_SUPPORT)
+ 	/*
+ 	 * Debug UART can be used from here if required:
+diff --git a/board/firefly/roc-pc-rk3399/Makefile b/board/firefly/roc-pc-rk3399/Makefile
+index 29c79b25d7..3a9c4c744d 100644
+--- a/board/firefly/roc-pc-rk3399/Makefile
++++ b/board/firefly/roc-pc-rk3399/Makefile
+@@ -4,4 +4,8 @@
+ # SPDX-License-Identifier:     GPL-2.0+
+ #
+ 
++ifdef CONFIG_SPL_BUILD
++obj-y	+= spl.o
++else
+ obj-y	+= roc-pc-rk3399.o
++endif
+diff --git a/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c b/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
+index 7c3a803654..581cdcd3b0 100644
+--- a/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
++++ b/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
+@@ -6,13 +6,8 @@
+ #include <common.h>
+ #include <dm.h>
+ #include <log.h>
+-#include <asm/arch-rockchip/periph.h>
+ #include <power/regulator.h>
+-#include <spl_gpio.h>
+-#include <asm/io.h>
+-#include <asm/arch-rockchip/gpio.h>
+ 
+-#ifndef CONFIG_SPL_BUILD
+ int board_early_init_f(void)
+ {
+ 	struct udevice *regulator;
+@@ -30,19 +25,3 @@ int board_early_init_f(void)
+ out:
+ 	return 0;
+ }
+-#endif
+-
+-#if defined(CONFIG_TPL_BUILD)
+-
+-#define GPIO0_BASE      0xff720000
+-
+-int board_early_init_f(void)
+-{
+-	struct rockchip_gpio_regs * const gpio0 = (void *)GPIO0_BASE;
+-
+-	/* Turn on red LED, indicating full power mode */
+-	spl_gpio_output(gpio0, GPIO(BANK_B, 5), 1);
+-
+-	return 0;
+-}
+-#endif
+diff --git a/board/firefly/roc-pc-rk3399/spl.c b/board/firefly/roc-pc-rk3399/spl.c
+new file mode 100644
+index 0000000000..a7664c6b86
+--- /dev/null
++++ b/board/firefly/roc-pc-rk3399/spl.c
+@@ -0,0 +1,23 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (c) 2020 Amarula Solutions(India)
++ */
++
++#include <common.h>
++#include <spl_gpio.h>
++#include <asm/arch-rockchip/gpio.h>
++
++#define GPIO0_BASE		0xff720000
++
++static void led_setup(void)
++{
++	struct rockchip_gpio_regs * const gpio0 = (void *)GPIO0_BASE;
++
++	/* Turn on red LED, indicating full power mode */
++	spl_gpio_output(gpio0, GPIO(BANK_B, 5), 1);
++}
++
++void rk_spl_board_init(void)
++{
++	led_setup();
++}
+diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
+index 03ba519af1..8ad74dc408 100644
+--- a/configs/roc-pc-mezzanine-rk3399_defconfig
++++ b/configs/roc-pc-mezzanine-rk3399_defconfig
+@@ -1,6 +1,7 @@
+ CONFIG_ARM=y
+ CONFIG_ARCH_ROCKCHIP=y
+ CONFIG_SYS_TEXT_BASE=0x00200000
++CONFIG_SPL_GPIO_SUPPORT=y
+ CONFIG_ENV_SIZE=0x8000
+ CONFIG_ENV_OFFSET=0x3F8000
+ CONFIG_ENV_SECT_SIZE=0x1000
+@@ -19,7 +20,6 @@ CONFIG_SPL_STACK_R=y
+ CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
+ CONFIG_SPL_SPI_LOAD=y
+ CONFIG_TPL=y
+-CONFIG_TPL_GPIO_SUPPORT=y
+ CONFIG_CMD_BOOTZ=y
+ CONFIG_CMD_GPT=y
+ CONFIG_CMD_MMC=y
+diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+index b59b54bd89..6fd06d6381 100644
+--- a/configs/roc-pc-rk3399_defconfig
++++ b/configs/roc-pc-rk3399_defconfig
+@@ -1,6 +1,7 @@
+ CONFIG_ARM=y
+ CONFIG_ARCH_ROCKCHIP=y
+ CONFIG_SYS_TEXT_BASE=0x00200000
++CONFIG_SPL_GPIO_SUPPORT=y
+ CONFIG_ENV_SIZE=0x8000
+ CONFIG_ENV_OFFSET=0x3F8000
+ CONFIG_ENV_SECT_SIZE=0x1000
+@@ -19,7 +20,6 @@ CONFIG_SPL_STACK_R=y
+ CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
+ CONFIG_SPL_SPI_LOAD=y
+ CONFIG_TPL=y
+-CONFIG_TPL_GPIO_SUPPORT=y
+ CONFIG_CMD_BOOTZ=y
+ CONFIG_CMD_GPT=y
+ CONFIG_CMD_MMC=y
+-- 
+2.20.1
