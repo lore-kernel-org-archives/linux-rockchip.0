@@ -1,56 +1,47 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [RFC v4 1/8] media: staging: rkisp1: rsz: supported formats are
- the isp's src formats, not sink formats
-Date: Mon, 8 Jun 2020 13:33:25 +0200
-Message-ID: <a929b94b-ab8b-42cc-6ffa-d7a3e8a8332b@xs4all.nl>
-References: <20200605172625.19777-1-dafna.hirschfeld@collabora.com>
- <20200605172625.19777-2-dafna.hirschfeld@collabora.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH] rk3399: Add BOOTENV_SF command
+Date: Mon,  8 Jun 2020 10:17:08 -0400
+Message-ID: <20200608141708.31844-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200605172625.19777-2-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: helen.koike@collabora.com, ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, p.zabel@pengutronix.de
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 05/06/2020 19:26, Dafna Hirschfeld wrote:
-> The rkisp1_resizer's enum callback 'rkisp1_rsz_enum_mbus_code'
-> calls the enum callback of the 'rkisp1_isp' on it's video sink pad.
-> This is a bug, the resizer should support the same formats
-> supported by the 'rkisp1_isp' on the source pad (not the sink pad).
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Add missing BOOTENV_SF command in rk3399 config.
 
-Please include Helen's Ack when you post a v5.
+Fix it.
 
-(https://patchwork.linuxtv.org/patch/64291/)
+Fixes: f263b860acf8 ("rk3399: Enable SF distro bootcmd")
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Reported-by: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Tested-by: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ include/configs/rk3399_common.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-For that matter, shouldn't this be a 'Fixes:' patch with a Cc to stable?
-
-Regards,
-
-	Hans
-
-> ---
->  drivers/staging/media/rkisp1/rkisp1-resizer.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> index d049374413dc..d64c064bdb1d 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> @@ -437,8 +437,8 @@ static int rkisp1_rsz_enum_mbus_code(struct v4l2_subdev *sd,
->  	u32 pad = code->pad;
->  	int ret;
->  
-> -	/* supported mbus codes are the same in isp sink pad */
-> -	code->pad = RKISP1_ISP_PAD_SINK_VIDEO;
-> +	/* supported mbus codes are the same in isp video src pad */
-> +	code->pad = RKISP1_ISP_PAD_SOURCE_VIDEO;
->  	ret = v4l2_subdev_call(&rsz->rkisp1->isp.sd, pad, enum_mbus_code,
->  			       &dummy_cfg, code);
->  
-> 
+diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
+index f0ae6e67a7..e63ebb14f7 100644
+--- a/include/configs/rk3399_common.h
++++ b/include/configs/rk3399_common.h
+@@ -67,6 +67,7 @@
+ 	"partitions=" PARTS_DEFAULT \
+ 	ROCKCHIP_DEVICE_SETTINGS \
+ 	BOOTENV \
++	BOOTENV_SF \
+ 	"altbootcmd=" \
+ 		"setenv boot_syslinux_conf extlinux/extlinux-rollback.conf;" \
+ 		"run distro_bootcmd\0"
+-- 
+2.20.1
