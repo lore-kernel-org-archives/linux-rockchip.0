@@ -1,8 +1,8 @@
 From: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v1 09/13] arm64: dts: px30: Add 'arm,
+Subject: [PATCH v1 08/13] ARM: dts: rv1108: Add 'arm,
  pl330-periph-burst' for dmac
-Date: Mon,  8 Jun 2020 18:04:27 +0800
-Message-ID: <1591610671-71238-5-git-send-email-sugar.zhang@rock-chips.com>
+Date: Mon,  8 Jun 2020 18:04:26 +0800
+Message-ID: <1591610671-71238-4-git-send-email-sugar.zhang@rock-chips.com>
 References: <1591602567-43788-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -28,20 +28,20 @@ for better compatible and higher performance.
 Signed-off-by: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
 
- arch/arm64/boot/dts/rockchip/px30.dtsi | 1 +
+ arch/arm/boot/dts/rv1108.dtsi | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index adc9b8b..745a4a5 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -717,6 +717,7 @@
+diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
+index f9cfe2c..e8e3b36 100644
+--- a/arch/arm/boot/dts/rv1108.dtsi
++++ b/arch/arm/boot/dts/rv1108.dtsi
+@@ -97,6 +97,7 @@
+ 			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>;
+ 			#dma-cells = <1>;
+ 			arm,pl330-broken-no-flushp;
+++			arm,pl330-periph-burst;
  			clocks = <&cru ACLK_DMAC>;
  			clock-names = "apb_pclk";
- 			#dma-cells = <1>;
-++			arm,pl330-periph-burst;
  		};
- 	};
- 
 -- 
 2.7.4
