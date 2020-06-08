@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v3 1/5] rk3399: spl: Add rk_spl_board_init as __weak
-Date: Mon,  8 Jun 2020 14:31:40 -0400
-Message-ID: <20200608183144.26809-2-jagan@amarulasolutions.com>
+Subject: [PATCH v3 2/5] rk3399: spl: Print SPL banner after relocation
+Date: Mon,  8 Jun 2020 14:31:41 -0400
+Message-ID: <20200608183144.26809-3-jagan@amarulasolutions.com>
 References: <20200608183144.26809-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20200608183144.26809-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -21,52 +21,45 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tom
 Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Current spl_board_init is mostly specific to puma-rk3399
-target and in other words it cannot be required or useful
-for other rk3399 boards.
-
-Some boards require their custom initialization to be part
-of spl_board_init like roc-rk3399-pc require leds setup,
-environments.
-
-So, this patch handles all these possible scenarios.
-Add rk_spl_board_init as __weak so that boards that require
-their own custom initialization can be defined on their
-board file.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Tested-by: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
-Changes for v3:
-- new patch
-
- arch/arm/mach-rockchip/rk3399/rk3399.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm/mach-rockchip/rk3399/rk3399.c b/arch/arm/mach-rockchip/rk3399/rk3399.c
-index 4fda93b152..681f80f339 100644
---- a/arch/arm/mach-rockchip/rk3399/rk3399.c
-+++ b/arch/arm/mach-rockchip/rk3399/rk3399.c
-@@ -241,7 +241,7 @@ static void rk3399_force_power_on_reset(void)
- }
- #endif
- 
--void spl_board_init(void)
-+__weak void rk_spl_board_init(void)
- {
- #if defined(SPL_GPIO_SUPPORT)
- 	struct rockchip_cru *cru = rockchip_get_cru();
-@@ -274,4 +274,11 @@ void spl_board_init(void)
- 		debug("%s: Cannot enable boot on regulator\n", __func__);
- #endif
- }
-+
-+void spl_board_init(void)
-+{
-+	/* board specific spl init */
-+	rk_spl_board_init();
-+}
-+
- #endif
--- 
-2.20.1
+VXN1YWxseSBwcmludGluZyB0aGUgU1BMIGJhbm5lciB2YXJpZXMgYmV0d2VlbiBhcmNoaXRlY3R1
+cmUKb3IgYm9hcmQgY29kZXMuCi0gU29tZSB3b3VsZCBwcmludCBiZWZvcmUgcmVsb2NhdGlvbiBh
+dCB0aGUgZW5kIGJvYXJkX2luaXRfZgrCoCBmb3IgbWFraW5nIHN1cmUgYWxsIGluaXRpYWxpemF0
+aW9uIHByaW9yIHRvIHRoaXMgd291bGQgaGFwcGVuCsKgIHByb3Blcmx5LiBpZiBhdCBhbGwgdGhl
+cmUgaXMgYSByZXF1aXJlbWVudCBmb3Igc2VyaWFsIGluaXQsCsKgIHRoYXQgaGFwcGVucyBwcm9w
+ZXJseSBzaW5jZSBpdCBwcmludHMgYWxsIGFmdGVyIHRoYXQuCi0gU29tZSB3b3VsZCBwcmludCBh
+ZnRlciByZWxvY2F0aW9uIGF0IHRoZSBzcGxfYm9hcmRfaW5pdCBmb3IKwqAgbWFraW5nIHN1cmUg
+YWxsIGluaXRpYWxpemF0aW9uIHByaW9yIHRvIHJlbG9jYXRpb24gd291bGQKICBoYXBwZW4gcHJv
+cGVybHkuIEFsc28gZGVidWcgdWFydCBvbiB0aGVzZSBjYXNlcyB3b3VsZCBiZQogIGF2YWlsYWJs
+ZSBiZWZvcmUgcmVsb2NhdGlvbi4gU28gZGVidWcgc3VwcG9ydCBpcyBhdmFpbGFibGUKICBpbiBi
+ZWZvcmUgYW5kIGFmdGVyIHJlbG9jYXRpb24uCgpSb2NrY2hpcCBTUEwgaXMgZm9sbG93aW5nIGZv
+cm1hciBzdGVwIHRvIHByaW50IHRoZSBiYW5uZXIgYXQKdGhlIGVuZCBvZiBib2FyZF9pbml0X2Yu
+CgpUbyBzdXBwb3J0IHZhcmlvdXMgY3VzdG9tIHVzZSBjYXNlcyBpbiBTUEwgbGlrZSBsZWRzLCBl
+bnZpcm9ubWVudCwKYm9hcmQgZGV0ZWN0aW9ucyBsYXRlciBvcHRpb25zIGxpa2UgcHJpbnRpbmcg
+dGhlIGJhbm5lciBhZnRlcgpyZWxvY2F0aW9uIHdvdWxkIGJlIGEgYmV0dGVyIG9wdGlvbi4gUHJp
+bnRpbmcgYmFubmVyIHdvdWxkIGFsc28KaGVscCB0byBzdXBwb3J0IGRlYnVnZ2luZyBhdmFpbGFi
+aWxpdHkgYmV0d2VlbiByZWxvY2F0aW9uIGNvZGVzLApsaWtlIGRlYnVnIHVhcnQgYXZhaWxhYmxl
+IGJlZm9yZSByZWxvY2F0aW9uIGFuZCBiYW5uZXIgYXZhaWxhYmlsaXR5CmFmdGVyIHJlbGF0aW9u
+LgoKQnkgZGVtb25zdHJhdGluZyBhbGwgdGhlIGFib3ZlIHVzZSBjYXNlcywgdGhpcyBwYXRjaCBp
+cyB0cnlpbmcKdG8gcHJpbnQgdGhlIFNQTCBiYW5uZXIgYWZ0ZXIgcmVsb2NhdGlvbi4KClNpZ25l
+ZC1vZmYtYnk6IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgpUZXN0ZWQt
+Ynk6IFN1bmllbCBNYWhlc2ggPHN1bmlsQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgotLS0KQ2hhbmdl
+cyBmb3IgdjM6Ci0gbmV3IHBhdGNoCgogYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9yazMzOTkvcmsz
+Mzk5LmMgfCAyICsrCiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NwbC5jICAgICAgICAgICB8IDEg
+LQogMiBmaWxlcyBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKCmRpZmYg
+LS1naXQgYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3JrMzM5OS9yazMzOTkuYyBiL2FyY2gvYXJt
+L21hY2gtcm9ja2NoaXAvcmszMzk5L3JrMzM5OS5jCmluZGV4IDY4MWY4MGYzMzkuLmFmNGIwZTI3
+MWIgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5L3JrMzM5OS5jCisr
+KyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcmszMzk5L3JrMzM5OS5jCkBAIC0yNzksNiArMjc5
+LDggQEAgdm9pZCBzcGxfYm9hcmRfaW5pdCh2b2lkKQogewogCS8qIGJvYXJkIHNwZWNpZmljIHNw
+bCBpbml0ICovCiAJcmtfc3BsX2JvYXJkX2luaXQoKTsKKworCXByZWxvYWRlcl9jb25zb2xlX2lu
+aXQoKTsKIH0KIAogI2VuZGlmCmRpZmYgLS1naXQgYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3Nw
+bC5jIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9zcGwuYwppbmRleCBjZGRmNGZkM2Q1Li4xYzJk
+Y2E4YTcyIDEwMDY0NAotLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3NwbC5jCisrKyBiL2Fy
+Y2gvYXJtL21hY2gtcm9ja2NoaXAvc3BsLmMKQEAgLTE0Nyw3ICsxNDcsNiBAQCB2b2lkIGJvYXJk
+X2luaXRfZih1bG9uZyBkdW1teSkKIAlnZC0+cmFtX3RvcCA9IGdkLT5yYW1fYmFzZSArIGdldF9l
+ZmZlY3RpdmVfbWVtc2l6ZSgpOwogCWdkLT5yYW1fdG9wID0gYm9hcmRfZ2V0X3VzYWJsZV9yYW1f
+dG9wKGdkLT5yYW1fc2l6ZSk7CiAjZW5kaWYKLQlwcmVsb2FkZXJfY29uc29sZV9pbml0KCk7CiB9
+CiAKICNpZmRlZiBDT05GSUdfU1BMX0xPQURfRklUCi0tIAoyLjIwLjEKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
