@@ -1,88 +1,106 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v2] mmc: sdhci: Fix HISPD bit handling
-Date: Tue,  9 Jun 2020 19:31:35 +0530
-Message-ID: <20200609140135.131887-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 1/3] rock-pi-4: Enable USB3 Host
+Date: Tue,  9 Jun 2020 19:35:12 +0530
+Message-ID: <20200609140514.132579-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Peng Fan <peng.fan@nxp.com>, Jaehoon Chung <jh80.chung@samsung.com>, Kever Yang <kever.yang@rock-chips.com>
-Cc: sunil@amarulasolutions.com, u-boot@lists.denx.de, linux-rockchip@lists.infradead.org, linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SDHCI HISPD bits need to be configured based on desired mmc
-timings mode and some HISPD quirks.
+Enable USB3.0 Host support for RockPI-4 boards.
 
-So, handle the HISPD bit based on the mmc computed selected
-mode(timing parameter) rather than fixed mmc card clock
-frequency.
+Note that the Upper USB3.0 port is marked as otg and
+lower USB3.0 port marked as host, so this below log
+capture when USB3.0 mass storage plug in at lower
+USB 3.0 port.
 
-Linux handle the HISPD similar like this in below commit,
+Log:
+Bus usb@fe380000: USB EHCI 1.00
+Bus usb@fe3c0000: USB EHCI 1.00
+Bus dwc3: usb maximum-speed not found
+Register 2000140 NbrPorts 2
+Starting the controller
+USB XHCI 1.10
+Bus dwc3: usb maximum-speed not found
+Register 2000140 NbrPorts 2
+Starting the controller
+USB XHCI 1.10
+scanning bus usb@fe380000 for devices... 1 USB Device(s) found
+scanning bus usb@fe3c0000 for devices... 1 USB Device(s) found
+scanning bus dwc3 for devices... 1 USB Device(s) found
+scanning bus dwc3 for devices... cannot reset port 1!?
+2 USB Device(s) found
+       scanning usb for storage devices... 1 Storage Device(s) found
+=> usb tree
+USB device tree:
+  1  Hub (480 Mb/s, 0mA)
+     u-boot EHCI Host Controller
 
-commit <501639bf2173> ("mmc: sdhci: fix SDHCI_QUIRK_NO_HISPD_BIT handling")
+  1  Hub (480 Mb/s, 0mA)
+     u-boot EHCI Host Controller
 
-This eventually fixed the mmc write issue observed in
-rk3399 sdhci controller.
+  1  Hub (5 Gb/s, 0mA)
+     U-Boot XHCI Host Controller
 
-Bug log for refernece,
-=> gpt write mmc 0 $partitions
-Writing GPT: mmc write failed
-** Can't write to device 0 **
-** Can't write to device 0 **
-error!
+  1  Hub (5 Gb/s, 0mA)
+  |  U-Boot XHCI Host Controller
+  |
+  +-2  Mass Storage (5 Gb/s, 224mA)
+       SanDisk Dual Drive 040130e3ee554b7078843f4eb331646
 
-Cc: Kever Yang <kever.yang@rock-chips.com>
-Cc: Peng Fan <peng.fan@nxp.com>
-Reviewed-by: Jaehoon Chung <jh80.chung@samsung.com>
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
-Changes for v2:
-- collect Jaehoon R-b
+ configs/rock-pi-4-rk3399_defconfig | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
- drivers/mmc/sdhci.c | 23 +++++++++++++++--------
- 1 file changed, 15 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/mmc/sdhci.c b/drivers/mmc/sdhci.c
-index 92cc8434af..280b8c88eb 100644
---- a/drivers/mmc/sdhci.c
-+++ b/drivers/mmc/sdhci.c
-@@ -594,14 +594,21 @@ static int sdhci_set_ios(struct mmc *mmc)
- 			ctrl &= ~SDHCI_CTRL_4BITBUS;
- 	}
- 
--	if (mmc->clock > 26000000)
--		ctrl |= SDHCI_CTRL_HISPD;
--	else
--		ctrl &= ~SDHCI_CTRL_HISPD;
--
--	if ((host->quirks & SDHCI_QUIRK_NO_HISPD_BIT) ||
--	    (host->quirks & SDHCI_QUIRK_BROKEN_HISPD_MODE))
--		ctrl &= ~SDHCI_CTRL_HISPD;
-+	if (!(host->quirks & SDHCI_QUIRK_NO_HISPD_BIT) ||
-+	    !(host->quirks & SDHCI_QUIRK_BROKEN_HISPD_MODE)) {
-+		if (mmc->selected_mode == MMC_HS ||
-+		    mmc->selected_mode == SD_HS ||
-+		    mmc->selected_mode == MMC_DDR_52 ||
-+		    mmc->selected_mode == MMC_HS_200 ||
-+		    mmc->selected_mode == MMC_HS_400 ||
-+		    mmc->selected_mode == UHS_SDR25 ||
-+		    mmc->selected_mode == UHS_SDR50 ||
-+		    mmc->selected_mode == UHS_SDR104 ||
-+		    mmc->selected_mode == UHS_DDR50)
-+			ctrl |= SDHCI_CTRL_HISPD;
-+		else
-+			ctrl &= ~SDHCI_CTRL_HISPD;
-+	}
- 
- 	sdhci_writeb(host, ctrl, SDHCI_HOST_CONTROL);
- 
+diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
+index 0d86fdc895..2487872219 100644
+--- a/configs/rock-pi-4-rk3399_defconfig
++++ b/configs/rock-pi-4-rk3399_defconfig
+@@ -28,6 +28,7 @@ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ROCKCHIP_GPIO=y
+ CONFIG_SYS_I2C_ROCKCHIP=y
++CONFIG_MISC=y
+ CONFIG_MMC_DW=y
+ CONFIG_MMC_DW_ROCKCHIP=y
+ CONFIG_MMC_SDHCI=y
+@@ -35,11 +36,14 @@ CONFIG_MMC_SDHCI_ROCKCHIP=y
+ CONFIG_DM_ETH=y
+ CONFIG_ETH_DESIGNWARE=y
+ CONFIG_GMAC_ROCKCHIP=y
++CONFIG_PHY_ROCKCHIP_INNO_USB2=y
++CONFIG_PHY_ROCKCHIP_TYPEC=y
+ CONFIG_PMIC_RK8XX=y
+ CONFIG_REGULATOR_PWM=y
+ CONFIG_REGULATOR_RK8XX=y
+ CONFIG_PWM_ROCKCHIP=y
+ CONFIG_RAM_RK3399_LPDDR4=y
++CONFIG_DM_RESET=y
+ CONFIG_BAUDRATE=1500000
+ CONFIG_DEBUG_UART_SHIFT=2
+ CONFIG_SYSRESET=y
+@@ -48,6 +52,8 @@ CONFIG_USB_XHCI_HCD=y
+ CONFIG_USB_XHCI_DWC3=y
+ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_GENERIC=y
++CONFIG_USB_DWC3=y
++CONFIG_USB_DWC3_GENERIC=y
+ CONFIG_USB_HOST_ETHER=y
+ CONFIG_USB_ETHER_ASIX=y
+ CONFIG_USB_ETHER_ASIX88179=y
 -- 
 2.25.1
