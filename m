@@ -1,7 +1,7 @@
 From: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 08/13] ARM: dts: rv1108: Add 'arm,pl330-periph-burst' for dmac
-Date: Tue,  9 Jun 2020 09:20:18 +0800
-Message-ID: <1591665623-38275-4-git-send-email-sugar.zhang@rock-chips.com>
+Subject: [PATCH v2 07/13] ARM: dts: rk3xxx: Add 'arm,pl330-periph-burst' for dmac
+Date: Tue,  9 Jun 2020 09:20:17 +0800
+Message-ID: <1591665623-38275-3-git-send-email-sugar.zhang@rock-chips.com>
 References: <1591665267-37713-1-git-send-email-sugar.zhang@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1591665267-37713-1-git-send-email-sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
@@ -20,19 +20,35 @@ Signed-off-by: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Changes in v2:
 - fix FATAL ERROR: Unable to parse input tree
 
- arch/arm/boot/dts/rv1108.dtsi | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm/boot/dts/rk3xxx.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-index f9cfe2c..4c3444a 100644
---- a/arch/arm/boot/dts/rv1108.dtsi
-+++ b/arch/arm/boot/dts/rv1108.dtsi
-@@ -97,6 +97,7 @@
- 			interrupts = <GIC_SPI 0 IRQ_TYPE_LEVEL_HIGH>;
+diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
+index d929b60..859a747 100644
+--- a/arch/arm/boot/dts/rk3xxx.dtsi
++++ b/arch/arm/boot/dts/rk3xxx.dtsi
+@@ -45,6 +45,7 @@
+ 				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
  			#dma-cells = <1>;
  			arm,pl330-broken-no-flushp;
 +			arm,pl330-periph-burst;
- 			clocks = <&cru ACLK_DMAC>;
+ 			clocks = <&cru ACLK_DMA1>;
+ 			clock-names = "apb_pclk";
+ 		};
+@@ -56,6 +57,7 @@
+ 				     <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
+ 			#dma-cells = <1>;
+ 			arm,pl330-broken-no-flushp;
++			arm,pl330-periph-burst;
+ 			clocks = <&cru ACLK_DMA1>;
+ 			clock-names = "apb_pclk";
+ 			status = "disabled";
+@@ -68,6 +70,7 @@
+ 				     <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>;
+ 			#dma-cells = <1>;
+ 			arm,pl330-broken-no-flushp;
++			arm,pl330-periph-burst;
+ 			clocks = <&cru ACLK_DMA2>;
  			clock-names = "apb_pclk";
  		};
 -- 
