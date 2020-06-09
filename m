@@ -1,7 +1,8 @@
 From: Adrian Ratiu <adrian.ratiu@collabora.com>
-Subject: [PATCH v9 04/11] drm: bridge: dw_mipi_dsi: remove bind/unbind API
-Date: Tue,  9 Jun 2020 20:49:52 +0300
-Message-ID: <20200609174959.955926-5-adrian.ratiu@collabora.com>
+Subject: [PATCH v9 08/11] drm: stm: dw-mipi-dsi: let the bridge handle the HW
+ version check
+Date: Tue,  9 Jun 2020 20:49:56 +0300
+Message-ID: <20200609174959.955926-9-adrian.ratiu@collabora.com>
 References: <20200609174959.955926-1-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,98 +19,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
 To: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Philippe CORNU <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick FERTRE <yannick.fertre@st.com>, Andrzej Hajda <a.hajda@samsung.com>, linux-imx@nxp.com, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Jernej Skrabec <jernej.skrabec@siol.net>, Heiko Stuebner <heiko@sntech.de>, Adrian Pop <pop.adrian61@gmail.com>, Jonas Karlman <jonas@kwiboo.se>, Philippe CORNU <philippe.cornu@st.com>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Yannick FERTRE <yannick.fertre@st.com>, Andrzej Hajda <a.hajda@samsung.com>, linux-imx@nxp.com, kernel@collabora.com, linux-stm32@st-md-mailman.stormreply.com, Arnaud Ferraris <arnaud.ferraris@collabora.com>, Emil Velikov <emil.velikov@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The DW mipi-dsi bind/unbind API was only used to attach the bridge to
-the encoder in the Rockchip driver, but with the addition of i.MX6 it
-gets more complicated because the i.MX6 part of the bridge is another
-bridge in itself which needs to daisy chain to the dw-mipi-dsi core.
+The stm mipi-dsi platform driver added a version test in
+commit fa6251a747b7 ("drm/stm: dsi: check hardware version")
+so that HW revisions other than v1.3x get rejected. The rockchip
+driver had no such check and just assumed register layouts are
+v1.3x compatible.
 
-So, instead of extending this API to allow daisy-chaining bridges and
-risk having trouble with multiple connectors added by various bridges
-just delete it and let the DW core bridge be accesed by SoC-specific
-parts via the of_drm_find_bridge() API.
+Having such tests was a good idea because only v130/v131 layouts
+were supported at the time, however since adding multiple layout
+support in the bridge, the version is automatically checked for
+all drivers, compatible layouts get picked and unsupported HW is
+automatically rejected by the bridge, so there's no use keeping
+the test in the stm driver.
 
-This just fixes the Rockchip driver for the bind() deprecation, it
-doesn't convert it to a proper bridge daisy-chain with simple encoder
-and bridge .attach call-backs, that refactoring work should be done
-separately (and the i.MX6 driver can be used as reference).
+The main reason prompting this change is that the stm driver
+test immediately disabled the peripheral clock after reading
+the version, making the bridge read version 0x0 immediately
+after in its own probe(), so we move the clock disabling after
+the bridge does the version test.
 
-Suggested-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Tested on STM32F769 and STM32MP1.
+
+Cc: linux-stm32@st-md-mailman.stormreply.com
+Cc: Emil Velikov <emil.velikov@collabora.com>
+Reported-by: Adrian Pop <pop.adrian61@gmail.com>
+Tested-by: Adrian Pop <pop.adrian61@gmail.com>
+Tested-by: Arnaud Ferraris <arnaud.ferraris@collabora.com>
 Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
 ---
-New in v9.
+New in v6.
 ---
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 22 -------------------
- .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |  7 +++---
- 2 files changed, 3 insertions(+), 26 deletions(-)
+ drivers/gpu/drm/stm/dw_mipi_dsi-stm.c | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-index 16fd87055e7b7..70df0578cbe7b 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-@@ -1453,28 +1453,6 @@ void dw_mipi_dsi_remove(struct dw_mipi_dsi *dsi)
- }
- EXPORT_SYMBOL_GPL(dw_mipi_dsi_remove);
+diff --git a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+index 2e1f2664495d0..45f67f8a5f6c8 100644
+--- a/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
++++ b/drivers/gpu/drm/stm/dw_mipi_dsi-stm.c
+@@ -396,26 +396,19 @@ static int dw_mipi_dsi_stm_probe(struct platform_device *pdev)
+ 		goto err_dsi_probe;
+ 	}
  
--/*
-- * Bind/unbind API, used from platforms based on the component framework.
-- */
--int dw_mipi_dsi_bind(struct dw_mipi_dsi *dsi, struct drm_encoder *encoder)
--{
--	int ret;
++	/* enable pclk so MMIO register values can be read, else reads == 0x0 */
+ 	ret = clk_prepare_enable(pclk);
+ 	if (ret) {
+ 		DRM_ERROR("%s: Failed to enable peripheral clk\n", __func__);
+ 		goto err_dsi_probe;
+ 	}
+ 
+-	dsi->hw_version = dsi_read(dsi, DSI_VERSION) & VERSION;
+-	clk_disable_unprepare(pclk);
 -
--	ret = drm_bridge_attach(encoder, &dsi->bridge, NULL, 0);
--	if (ret) {
--		DRM_ERROR("Failed to initialize bridge with drm\n");
--		return ret;
+-	if (dsi->hw_version != HWVER_130 && dsi->hw_version != HWVER_131) {
+-		ret = -ENODEV;
+-		DRM_ERROR("bad dsi hardware version\n");
+-		goto err_dsi_probe;
 -	}
 -
--	return ret;
--}
--EXPORT_SYMBOL_GPL(dw_mipi_dsi_bind);
--
--void dw_mipi_dsi_unbind(struct dw_mipi_dsi *dsi)
--{
--}
--EXPORT_SYMBOL_GPL(dw_mipi_dsi_unbind);
--
- MODULE_AUTHOR("Chris Zhong <zyw@rock-chips.com>");
- MODULE_AUTHOR("Philippe Cornu <philippe.cornu@st.com>");
- MODULE_DESCRIPTION("DW MIPI DSI host controller driver");
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 3feff0c45b3f7..86f87c7ea03cf 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -876,6 +876,7 @@ static int dw_mipi_dsi_rockchip_bind(struct device *dev,
- {
- 	struct dw_mipi_dsi_rockchip *dsi = dev_get_drvdata(dev);
- 	struct drm_device *drm_dev = data;
-+	struct drm_bridge *dw_bridge = of_drm_find_bridge(dev->of_node);
- 	struct device *second;
- 	bool master1, master2;
- 	int ret;
-@@ -929,9 +930,9 @@ static int dw_mipi_dsi_rockchip_bind(struct device *dev,
- 		return ret;
+ 	dw_mipi_dsi_stm_plat_data.base = dsi->base;
+ 	dw_mipi_dsi_stm_plat_data.priv_data = dsi;
+ 
+ 	platform_set_drvdata(pdev, dsi);
+ 
++	/* setup the bridge, this will also access MMIO registers via regmap */
+ 	dsi->dsi = dw_mipi_dsi_probe(pdev, &dw_mipi_dsi_stm_plat_data);
+ 	if (IS_ERR(dsi->dsi)) {
+ 		ret = PTR_ERR(dsi->dsi);
+@@ -423,6 +416,11 @@ static int dw_mipi_dsi_stm_probe(struct platform_device *pdev)
+ 		goto err_dsi_probe;
  	}
  
--	ret = dw_mipi_dsi_bind(dsi->dmd, &dsi->encoder);
-+	ret = drm_bridge_attach(&dsi->encoder, dw_bridge, NULL, 0);
- 	if (ret) {
--		DRM_DEV_ERROR(dev, "Failed to bind: %d\n", ret);
-+		DRM_DEV_ERROR(dev, "Failed to attach DW DSI bridge: %d\n", ret);
- 		return ret;
- 	}
++	dsi->hw_version = dsi_read(dsi, DSI_VERSION) & VERSION;
++
++	/* initial MMIO config done, disable clk to save power */
++	clk_disable_unprepare(pclk);
++
+ 	return 0;
  
-@@ -947,8 +948,6 @@ static void dw_mipi_dsi_rockchip_unbind(struct device *dev,
- 	if (dsi->is_slave)
- 		return;
- 
--	dw_mipi_dsi_unbind(dsi->dmd);
--
- 	clk_disable_unprepare(dsi->pllref_clk);
- }
- 
+ err_dsi_probe:
 -- 
 2.27.0
