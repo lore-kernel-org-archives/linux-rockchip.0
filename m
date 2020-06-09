@@ -1,94 +1,49 @@
 From: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v9 11/11] Documentation: gpu: todo: Add dw-mipi-dsi
- consolidation plan
-Date: Tue, 09 Jun 2020 20:44:26 +0300
-Message-ID: <87sgf4i16t.fsf@iwork.i-did-not-set--mail-host-address--so-tickle-me>
-References: <20200609162700.953260-1-adrian.ratiu@collabora.com>
- <20200609162700.953260-12-adrian.ratiu@collabora.com>
- <CAKMK7uGLQCj_oJcbXynt_1bmwBQy6ncUgc49DPejyfCtb68e_g@mail.gmail.com>
+Subject: [PATCH v9 06/11] ARM: dts: imx6qdl: add missing mipi dsi properties
+Date: Tue,  9 Jun 2020 20:49:54 +0300
+Message-ID: <20200609174959.955926-7-adrian.ratiu@collabora.com>
+References: <20200609174959.955926-1-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAKMK7uGLQCj_oJcbXynt_1bmwBQy6ncUgc49DPejyfCtb68e_g-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+In-Reply-To: <20200609174959.955926-1-adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org>
-Cc: Linux ARM <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, dl-linux-imx <linux-imx-3arQi8VN3Tc@public.gmane.org>, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sam Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org>
+To: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 09 Jun 2020, Daniel Vetter <daniel.vetter-/w4YWyX8dFk@public.gmane.org> wrote:
-> On Tue, Jun 9, 2020 at 6:25 PM Adrian Ratiu 
-> <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote: 
->> 
->> This documents the longer-term plan to cleanup the dw-mipi-dsi 
->> bridge based drivers after the regmap refactor and i.MX6 driver 
->> have landed. 
->> 
->> The goal is to get the entire bridge logic in one place and 
->> continue the refactorings under the drm/bridge tree. 
->> 
->> Cc: Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org> Cc: 
->> Boris Brezillon <boris.brezillon-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> Cc: Sam 
->> Ravnborg <sam-uyr5N9Q2VtJg9hUCZPvPmw@public.gmane.org> Cc: Daniel Vetter 
->> <daniel.vetter-/w4YWyX8dFk@public.gmane.org> Signed-off-by: Adrian Ratiu 
->> <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> 
-> 
-> This cc's the world, but not dri-devel. Can you pls resubmit 
-> with that added? 
+Now that we have a proper driver for the imx6 mipi dsi host controller
+we can fill in the missing properties to get it working.
 
-Yes, sorry about omitting dri-devel, it was unintentional. Will 
-resubmit the same version.
+Cc: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Signed-off-by: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
+New in v8.
+---
+ arch/arm/boot/dts/imx6qdl.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Adrian
-
->
-> Thanks, Daniel
->
->> ---
->>  Documentation/gpu/todo.rst | 25 +++++++++++++++++++++++++
->>  1 file changed, 25 insertions(+)
->>
->> diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
->> index 658b52f7ffc6c..2b142980a4b16 100644
->> --- a/Documentation/gpu/todo.rst
->> +++ b/Documentation/gpu/todo.rst
->> @@ -548,6 +548,31 @@ See drivers/gpu/drm/amd/display/TODO for tasks.
->>
->>  Contact: Harry Wentland, Alex Deucher
->>
->> +Reorganize dw-mipi-dsi bridge-based host-controller drivers
->> +-----------------------------------------------------------
->> +
->> +The Synopsys DW MIPI DSI bridge is used by a number of SoC platform drivers
->> +(STM, Rockchip, i.MX) which don't cleanly encapsulate their bridge logic which
->> +gets split between the Synopsys bridge (drm/bridge/synopsys/dw-mipi-dsi.c) and
->> +platform drivers like drm/imx/dw_mipi_dsi-imx6.c by passing around the bridge
->> +configuration regmap, creating new bridges / daisy chaining in platform drivers,
->> +duplicating encoder creation, having too much encoder logic instead of using the
->> +simple encoder interface and so on.
->> +
->> +The goal of this rework is to make the dw-mipi-dsi driver a better encapsulated
->> +bridge by moving all bridge-related logic under drm/bridge, including the SoC
->> +bindings which chain to the core Synopsys code under drm/bridge/dw-mipi-dsi/
->> +from which they can be further consolidated and cleaned up.
->> +
->> +If this goal proves to be impossible then drm_bridge might not be the correct
->> +abstraction for these host controllers and unifying their logic into a helper
->> +library encapsulating a drm_encoder might be more desirable, in other words to
->> +move away from drm_bridge entirely.
->> +
->> +Contact: Adrian Ratiu, Daniel Vetter, Laurent Pinchart
->> +
->> +Level: Intermediate
->> +
->>  Bootsplash
->>  ==========
->>
->> --
->> 2.27.0
->>
->
->
-> -- 
-> Daniel Vetter
-> Software Engineer, Intel Corporation
-> http://blog.ffwll.ch
+diff --git a/arch/arm/boot/dts/imx6qdl.dtsi b/arch/arm/boot/dts/imx6qdl.dtsi
+index 7eec1122e5d74..d2f4fdfe4a252 100644
+--- a/arch/arm/boot/dts/imx6qdl.dtsi
++++ b/arch/arm/boot/dts/imx6qdl.dtsi
+@@ -1222,7 +1222,15 @@ mipi_csi: mipi@21dc000 {
+ 			};
+ 
+ 			mipi_dsi: mipi@21e0000 {
++				compatible = "fsl,imx6-mipi-dsi", "snps,dw-mipi-dsi";
++				#address-cells = <1>;
++				#size-cells = <0>;
+ 				reg = <0x021e0000 0x4000>;
++				interrupts = <0 102 IRQ_TYPE_LEVEL_HIGH>;
++				fsl,gpr = <&gpr>;
++				clocks = <&clks IMX6QDL_CLK_MIPI_CORE_CFG>,
++					 <&clks IMX6QDL_CLK_MIPI_IPG>;
++				clock-names = "ref", "pclk";
+ 				status = "disabled";
+ 
+ 				ports {
+-- 
+2.27.0
