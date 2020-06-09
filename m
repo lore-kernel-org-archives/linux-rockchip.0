@@ -1,7 +1,7 @@
 From: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v2 10/13] arm64: dts: rk3308: Add 'arm,pl330-periph-burst' for dmac
-Date: Tue,  9 Jun 2020 09:22:20 +0800
-Message-ID: <1591665743-38416-1-git-send-email-sugar.zhang@rock-chips.com>
+Subject: [PATCH v2 11/13] arm64: dts: rk3328: Add 'arm,pl330-periph-burst' for dmac
+Date: Tue,  9 Jun 2020 09:22:21 +0800
+Message-ID: <1591665743-38416-2-git-send-email-sugar.zhang@rock-chips.com>
 References: <1591665267-37713-1-git-send-email-sugar.zhang@rock-chips.com>
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 In-Reply-To: <1591665267-37713-1-git-send-email-sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
@@ -20,23 +20,15 @@ Signed-off-by: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Changes in v2:
 - fix FATAL ERROR: Unable to parse input tree
 
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index ac7f694..0a881d1 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -527,6 +527,7 @@
- 			clocks = <&cru ACLK_DMAC0>;
- 			clock-names = "apb_pclk";
- 			#dma-cells = <1>;
-+			arm,pl330-periph-burst;
- 		};
- 
- 		dmac1: dma-controller@ff2d0000 {
-@@ -537,6 +538,7 @@
- 			clocks = <&cru ACLK_DMAC1>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index a4d591d..8a9ce1e 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -156,6 +156,7 @@
+ 			clocks = <&cru ACLK_DMAC>;
  			clock-names = "apb_pclk";
  			#dma-cells = <1>;
 +			arm,pl330-periph-burst;
