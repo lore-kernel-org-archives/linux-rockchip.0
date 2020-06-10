@@ -1,14 +1,16 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH 4/4] arm64: dts: rockchip: Add Radxa Rock Pi N10 initial
- support
-Date: Wed, 10 Jun 2020 16:06:58 +0530
-Message-ID: <20200610103658.96678-5-jagan@amarulasolutions.com>
-References: <20200610103658.96678-1-jagan@amarulasolutions.com>
+From: Marc Zyngier <maz-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2] mmc: sdhci: Fix HISPD bit handling
+Date: Wed, 10 Jun 2020 11:37:52 +0100
+Message-ID: <20200610113752.65d6f537@why>
+References: <20200609140135.131887-1-jagan@amarulasolutions.com>
+ <CGME20200609143823epcas1p24772f20296869f9a7dc5ed53460ea0a4@epcas1p2.samsung.com>
+ <097786ed-37ca-cf20-35f4-20a57e6c3b63@arm.com>
+ <b46fe992-89d4-4a5f-fdb3-e2ec53de2b11@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200610103658.96678-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+In-Reply-To: <b46fe992-89d4-4a5f-fdb3-e2ec53de2b11-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -18,169 +20,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+To: Jaehoon Chung <jh80.chung-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
+Cc: Peng Fan <peng.fan-3arQi8VN3Tc@public.gmane.org>, u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org, linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rock Pi N10 is a Rockchip RK3399Pro based SBC, which has
-- VMARC RK3399Pro SOM (as per SMARC standard) from Vamrs.
-- Compatible carrier board from Radxa.
-
-VAMRC RK3399Pro SOM need to mount on top of radxa dalang
-carrier board for making Rock Pi N10 SBC.
-
-So, add initial support for Rock Pi N10 by including rk3399,
-rk3399pro vamrc-som and raxda dalang carrier board dtsi files.
-
-rk3399pro-rock-pi-n10.dts was synced from linux-next v5.7-rc1.
-
-Tested
-- ROCK PI N10 Model B
-- ROCK PI N10 Model C
-- Boot from SD
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
- arch/arm/dts/Makefile                         |  3 +-
- .../arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi |  7 +++
- arch/arm/dts/rk3399pro-rock-pi-n10.dts        | 18 ++++++++
- arch/arm/dts/rk3399pro-u-boot.dtsi            |  6 +++
- board/rockchip/evb_rk3399/MAINTAINERS         |  6 +++
- configs/rock-pi-n10-rk3399pro_defconfig       | 46 +++++++++++++++++++
- 6 files changed, 85 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
- create mode 100644 arch/arm/dts/rk3399pro-rock-pi-n10.dts
- create mode 100644 arch/arm/dts/rk3399pro-u-boot.dtsi
- create mode 100644 configs/rock-pi-n10-rk3399pro_defconfig
-
-diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index 9900b44274..07dfe06230 100644
---- a/arch/arm/dts/Makefile
-+++ b/arch/arm/dts/Makefile
-@@ -136,7 +136,8 @@ dtb-$(CONFIG_ROCKCHIP_RK3399) += \
- 	rk3399-roc-pc-mezzanine.dtb \
- 	rk3399-rock-pi-4.dtb \
- 	rk3399-rock960.dtb \
--	rk3399-rockpro64.dtb
-+	rk3399-rockpro64.dtb \
-+	rk3399pro-rock-pi-n10.dtb
- 
- dtb-$(CONFIG_ROCKCHIP_RV1108) += \
- 	rv1108-elgin-r1.dtb \
-diff --git a/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi b/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
-new file mode 100644
-index 0000000000..946a0230db
---- /dev/null
-+++ b/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
-@@ -0,0 +1,7 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+ */
-+
-+#include "rk3399pro-u-boot.dtsi"
-+#include "rk3399-sdram-lpddr3-4GB-1600.dtsi"
-diff --git a/arch/arm/dts/rk3399pro-rock-pi-n10.dts b/arch/arm/dts/rk3399pro-rock-pi-n10.dts
-new file mode 100644
-index 0000000000..6ac2d4d721
---- /dev/null
-+++ b/arch/arm/dts/rk3399pro-rock-pi-n10.dts
-@@ -0,0 +1,18 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
-+ * Copyright (c) 2019 Radxa Limited
-+ * Copyright (c) 2019 Amarula Solutions(India)
-+ */
-+
-+/dts-v1/;
-+#include "rk3399.dtsi"
-+#include "rk3399-opp.dtsi"
-+#include "rk3399pro-vmarc-som.dtsi"
-+#include <rockchip-radxa-dalang-carrier.dtsi>
-+
-+/ {
-+	model = "Radxa ROCK Pi N10";
-+	compatible = "radxa,rockpi-n10", "vamrs,rk3399pro-vmarc-som",
-+		     "rockchip,rk3399pro";
-+};
-diff --git a/arch/arm/dts/rk3399pro-u-boot.dtsi b/arch/arm/dts/rk3399pro-u-boot.dtsi
-new file mode 100644
-index 0000000000..7bddc3acdb
---- /dev/null
-+++ b/arch/arm/dts/rk3399pro-u-boot.dtsi
-@@ -0,0 +1,6 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (C) 2019 Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+ */
-+
-+#include "rk3399-u-boot.dtsi"
-diff --git a/board/rockchip/evb_rk3399/MAINTAINERS b/board/rockchip/evb_rk3399/MAINTAINERS
-index 792df1087f..578638a58b 100644
---- a/board/rockchip/evb_rk3399/MAINTAINERS
-+++ b/board/rockchip/evb_rk3399/MAINTAINERS
-@@ -68,3 +68,9 @@ M:	Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
- S:	Maintained
- F:	configs/rock-pi-4-rk3399_defconfig
- F:	arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
-+
-+ROCK-PI-N10
-+M:	Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-+S:	Maintained
-+F:	configs/rock-pi-n10-rk3399pro_defconfig
-+F:	arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
-diff --git a/configs/rock-pi-n10-rk3399pro_defconfig b/configs/rock-pi-n10-rk3399pro_defconfig
-new file mode 100644
-index 0000000000..c705ce01ce
---- /dev/null
-+++ b/configs/rock-pi-n10-rk3399pro_defconfig
-@@ -0,0 +1,46 @@
-+CONFIG_ARM=y
-+CONFIG_ARCH_ROCKCHIP=y
-+CONFIG_SYS_TEXT_BASE=0x00200000
-+CONFIG_SPL_GPIO_SUPPORT=y
-+CONFIG_ENV_OFFSET=0x3F8000
-+CONFIG_ROCKCHIP_RK3399=y
-+CONFIG_TARGET_EVB_RK3399=y
-+CONFIG_NR_DRAM_BANKS=1
-+CONFIG_DEBUG_UART_BASE=0xFF1A0000
-+CONFIG_DEBUG_UART_CLOCK=24000000
-+CONFIG_DEBUG_UART=y
-+CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399pro-rock-pi-n10.dtb"
-+CONFIG_MISC_INIT_R=y
-+CONFIG_DISPLAY_BOARDINFO_LATE=y
-+# CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
-+CONFIG_SPL_STACK_R=y
-+CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
-+CONFIG_TPL=y
-+CONFIG_CMD_BOOTZ=y
-+CONFIG_CMD_GPT=y
-+CONFIG_CMD_MMC=y
-+# CONFIG_CMD_SETEXPR is not set
-+CONFIG_CMD_TIME=y
-+CONFIG_SPL_OF_CONTROL=y
-+CONFIG_DEFAULT_DEVICE_TREE="rk3399pro-rock-pi-n10"
-+CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
-+CONFIG_ENV_IS_IN_MMC=y
-+CONFIG_SYS_RELOC_GD_ENV_ADDR=y
-+CONFIG_ROCKCHIP_GPIO=y
-+CONFIG_SYS_I2C_ROCKCHIP=y
-+CONFIG_MISC=y
-+CONFIG_MMC_DW=y
-+CONFIG_MMC_DW_ROCKCHIP=y
-+CONFIG_MMC_SDHCI=y
-+CONFIG_MMC_SDHCI_ROCKCHIP=y
-+CONFIG_DM_ETH=y
-+CONFIG_ETH_DESIGNWARE=y
-+CONFIG_GMAC_ROCKCHIP=y
-+CONFIG_PMIC_RK8XX=y
-+CONFIG_REGULATOR_PWM=y
-+CONFIG_REGULATOR_RK8XX=y
-+CONFIG_PWM_ROCKCHIP=y
-+CONFIG_BAUDRATE=1500000
-+CONFIG_DEBUG_UART_SHIFT=2
-+CONFIG_SYSRESET=y
-+CONFIG_ERRNO_STR=y
--- 
-2.25.1
+T24gV2VkLCAxMCBKdW4gMjAyMCAxMjo0NTozMyArMDkwMApKYWVob29uIENodW5nIDxqaDgwLmNo
+dW5nQHNhbXN1bmcuY29tPiB3cm90ZToKCj4gT24gNi85LzIwIDExOjM4IFBNLCBSb2JpbiBNdXJw
+aHkgd3JvdGU6Cj4gPiBPbiAyMDIwLTA2LTA5IDE1OjAxLCBKYWdhbiBUZWtpIHdyb3RlOiAgCj4g
+Pj4gU0RIQ0kgSElTUEQgYml0cyBuZWVkIHRvIGJlIGNvbmZpZ3VyZWQgYmFzZWQgb24gZGVzaXJl
+ZCBtbWMKPiA+PiB0aW1pbmdzIG1vZGUgYW5kIHNvbWUgSElTUEQgcXVpcmtzLgo+ID4+Cj4gPj4g
+U28sIGhhbmRsZSB0aGUgSElTUEQgYml0IGJhc2VkIG9uIHRoZSBtbWMgY29tcHV0ZWQgc2VsZWN0
+ZWQKPiA+PiBtb2RlKHRpbWluZyBwYXJhbWV0ZXIpIHJhdGhlciB0aGFuIGZpeGVkIG1tYyBjYXJk
+IGNsb2NrCj4gPj4gZnJlcXVlbmN5Lgo+ID4+Cj4gPj4gTGludXggaGFuZGxlIHRoZSBISVNQRCBz
+aW1pbGFyIGxpa2UgdGhpcyBpbiBiZWxvdyBjb21taXQsCj4gPj4KPiA+PiBjb21taXQgPDUwMTYz
+OWJmMjE3Mz4gKCJtbWM6IHNkaGNpOiBmaXggU0RIQ0lfUVVJUktfTk9fSElTUERfQklUIGhhbmRs
+aW5nIikKPiA+Pgo+ID4+IFRoaXMgZXZlbnR1YWxseSBmaXhlZCB0aGUgbW1jIHdyaXRlIGlzc3Vl
+IG9ic2VydmVkIGluCj4gPj4gcmszMzk5IHNkaGNpIGNvbnRyb2xsZXIuCj4gPj4KPiA+PiBCdWcg
+bG9nIGZvciByZWZlcm5lY2UsICAKPiA+PiA9PiBncHQgd3JpdGUgbW1jIDAgJHBhcnRpdGlvbnMg
+IAo+ID4+IFdyaXRpbmcgR1BUOiBtbWMgd3JpdGUgZmFpbGVkCj4gPj4gKiogQ2FuJ3Qgd3JpdGUg
+dG8gZGV2aWNlIDAgKioKPiA+PiAqKiBDYW4ndCB3cml0ZSB0byBkZXZpY2UgMCAqKgo+ID4+IGVy
+cm9yIQo+ID4+Cj4gPj4gQ2M6IEtldmVyIFlhbmcgPGtldmVyLnlhbmdAcm9jay1jaGlwcy5jb20+
+Cj4gPj4gQ2M6IFBlbmcgRmFuIDxwZW5nLmZhbkBueHAuY29tPgo+ID4+IFJldmlld2VkLWJ5OiBK
+YWVob29uIENodW5nIDxqaDgwLmNodW5nQHNhbXN1bmcuY29tPgo+ID4+IFNpZ25lZC1vZmYtYnk6
+IEphZ2FuIFRla2kgPGphZ2FuQGFtYXJ1bGFzb2x1dGlvbnMuY29tPgo+ID4+IC0tLQo+ID4+IENo
+YW5nZXMgZm9yIHYyOgo+ID4+IC0gY29sbGVjdCBKYWVob29uIFItYgo+ID4+Cj4gPj4gwqAgZHJp
+dmVycy9tbWMvc2RoY2kuYyB8IDIzICsrKysrKysrKysrKysrKy0tLS0tLS0tCj4gPj4gwqAgMSBm
+aWxlIGNoYW5nZWQsIDE1IGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pCj4gPj4KPiA+PiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9tbWMvc2RoY2kuYyBiL2RyaXZlcnMvbW1jL3NkaGNpLmMKPiA+
+PiBpbmRleCA5MmNjODQzNGFmLi4yODBiOGM4OGViIDEwMDY0NAo+ID4+IC0tLSBhL2RyaXZlcnMv
+bW1jL3NkaGNpLmMKPiA+PiArKysgYi9kcml2ZXJzL21tYy9zZGhjaS5jCj4gPj4gQEAgLTU5NCwx
+NCArNTk0LDIxIEBAIHN0YXRpYyBpbnQgc2RoY2lfc2V0X2lvcyhzdHJ1Y3QgbW1jICptbWMpCj4g
+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY3RybCAmPSB+U0RIQ0lfQ1RSTF80QklUQlVT
+Owo+ID4+IMKgwqDCoMKgwqAgfQo+ID4+IMKgIC3CoMKgwqAgaWYgKG1tYy0+Y2xvY2sgPiAyNjAw
+MDAwMCkKPiA+PiAtwqDCoMKgwqDCoMKgwqAgY3RybCB8PSBTREhDSV9DVFJMX0hJU1BEOwo+ID4+
+IC3CoMKgwqAgZWxzZQo+ID4+IC3CoMKgwqDCoMKgwqDCoCBjdHJsICY9IH5TREhDSV9DVFJMX0hJ
+U1BEOwo+ID4+IC0KPiA+PiAtwqDCoMKgIGlmICgoaG9zdC0+cXVpcmtzICYgU0RIQ0lfUVVJUktf
+Tk9fSElTUERfQklUKSB8fAo+ID4+IC3CoMKgwqDCoMKgwqDCoCAoaG9zdC0+cXVpcmtzICYgU0RI
+Q0lfUVVJUktfQlJPS0VOX0hJU1BEX01PREUpKQo+ID4+IC3CoMKgwqDCoMKgwqDCoCBjdHJsICY9
+IH5TREhDSV9DVFJMX0hJU1BEOwo+ID4+ICvCoMKgwqAgaWYgKCEoaG9zdC0+cXVpcmtzICYgU0RI
+Q0lfUVVJUktfTk9fSElTUERfQklUKSB8fCAgCj4gPiAKPiA+IFNob3VsZCB0aGF0IGJlICImJiIg
+cmF0aGVyIHRoYW4gInx8Ij8gT3RoZXJ3aXNlIHRoaXMgd2lsbCBhbHdheXMKPiA+IGV2YWx1YXRl
+IHRvIHRydWUgdW5sZXNzICpib3RoKiBxdWlya3MgYXJlIHNldCwgd2hpY2ggaXNuJ3QKPiA+IGVx
+dWl2YWxlbnQgdG8gdGhlIGNoZWNrIGJlaW5nIHJlbW92ZWQgYWJvdmUuICAKPiAKPiAKPiBZb3Un
+cmUgcmlnaHQuCgpJdCdkIGJlIGdyZWF0IGlmIHlvdSBjb3VsZCByZXNwaW4gdGhpcyBwYXRjaCBx
+dWlja2x5IGFuZCBnZXQgaXQgbWVyZ2VkLAphcyBpdCBqdXN0IGhlbHBlZCBtZSBnZXR0aW5nIG15
+IE5hbm9QQy1UNCB1cCBhbmQgcnVubmluZy4KCkZXSVc6CgpUZXN0ZWQtYnk6IE1hcmMgWnluZ2ll
+ciA8bWF6QGtlcm5lbC5vcmc+CgoJTS4KLS0gCkphenogaXMgbm90IGRlYWQuIEl0IGp1c3Qgc21l
+bGxzIGZ1bm55Li4uCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
