@@ -1,57 +1,61 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 0/4] rockchip: rk3399pro: Add Add Rock Pi N10 support
-Date: Wed, 10 Jun 2020 16:06:54 +0530
-Message-ID: <20200610103658.96678-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 1/4] arm64: dts: rockchip: Sync v5.7-rc1 rk3399pro.dtsi
+Date: Wed, 10 Jun 2020 16:06:55 +0530
+Message-ID: <20200610103658.96678-2-jagan@amarulasolutions.com>
+References: <20200610103658.96678-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
-Cc: Tom Cubie <tom@radxa.com>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200610103658.96678-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rock Pi N10 is a Rockchip RK3399Pro based SBC, which has
-- VMARC RK3399Pro SOM (as per SMARC standard) from Vamrs.
-- Dalang carrier board from Radxa.
+Sync linux-next v5.7-rc1 rk3399pro.dtsi.
 
-All the required dts(i) files are synced from linux-next
-v5.7-rc1 since the current sync available for rk3399 is 
-the same.
-
-Any inputs?
-Jagan.
-
-Jagan Teki (4):
-  arm64: dts: rockchip: Sync v5.7-rc1 rk3399pro.dtsi
-  arm64: dts: rockchip: Sync v5.7-rc1 VMARC RK3399Pro SOM
-  ARM: dts: rockchip: Sync v5.7-rc1 Radxa Dalang Carrier
-  arm64: dts: rockchip: Add Radxa Rock Pi N10 initial support
-
- arch/arm/dts/Makefile                         |   3 +-
- .../arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi |   7 +
- arch/arm/dts/rk3399pro-rock-pi-n10.dts        |  18 +
- arch/arm/dts/rk3399pro-u-boot.dtsi            |   6 +
- arch/arm/dts/rk3399pro-vmarc-som.dtsi         | 333 ++++++++++++++++++
- arch/arm/dts/rk3399pro.dtsi                   |  22 ++
- .../dts/rockchip-radxa-dalang-carrier.dtsi    |  81 +++++
- board/rockchip/evb_rk3399/MAINTAINERS         |   6 +
- configs/rock-pi-n10-rk3399pro_defconfig       |  46 +++
- 9 files changed, 521 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
- create mode 100644 arch/arm/dts/rk3399pro-rock-pi-n10.dts
- create mode 100644 arch/arm/dts/rk3399pro-u-boot.dtsi
- create mode 100644 arch/arm/dts/rk3399pro-vmarc-som.dtsi
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+---
+ arch/arm/dts/rk3399pro.dtsi | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
  create mode 100644 arch/arm/dts/rk3399pro.dtsi
- create mode 100644 arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi
- create mode 100644 configs/rock-pi-n10-rk3399pro_defconfig
 
+diff --git a/arch/arm/dts/rk3399pro.dtsi b/arch/arm/dts/rk3399pro.dtsi
+new file mode 100644
+index 0000000000..bb5ebf6608
+--- /dev/null
++++ b/arch/arm/dts/rk3399pro.dtsi
+@@ -0,0 +1,22 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++// Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd.
++
++#include "rk3399.dtsi"
++
++/ {
++	compatible = "rockchip,rk3399pro";
++};
++
++/* Default to enabled since AP talk to NPU part over pcie */
++&pcie_phy {
++	status = "okay";
++};
++
++/* Default to enabled since AP talk to NPU part over pcie */
++&pcie0 {
++	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
++	num-lanes = <4>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pcie_clkreqn_cpm>;
++	status = "okay";
++};
 -- 
 2.25.1
