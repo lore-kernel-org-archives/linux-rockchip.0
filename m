@@ -1,50 +1,35 @@
 From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 0/2] media: staging: rkisp1: allow simultaneous
- streaming from multiple capture devices
-Date: Wed, 10 Jun 2020 16:37:13 +0000
-Message-ID: <20200610163713.GA201868@chromium.org>
-References: <20200316210044.595312-1-helen.koike@collabora.com>
+Subject: Re: [PATCH v4 3/5] media: staging: rkisp1: validate links before
+ powering and streaming
+Date: Wed, 10 Jun 2020 17:00:07 +0000
+Message-ID: <20200610170007.GB201868@chromium.org>
+References: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
+ <20200522075522.6190-4-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-media-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20200316210044.595312-1-helen.koike@collabora.com>
+In-Reply-To: <20200522075522.6190-4-dafna.hirschfeld@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>
-Cc: linux-media@vger.kernel.org, mchehab@kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com, kernel@collabora.com
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, skhan@linuxfoundation.org, niklas.soderlund@ragnatech.se--annotate
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Mar 16, 2020 at 06:00:42PM -0300, Helen Koike wrote:
-> Hi,
+On Fri, May 22, 2020 at 09:55:20AM +0200, Dafna Hirschfeld wrote:
+> In function rkisp1_vb2_start_streaming, the call to
+> media_pipeline_start should be the first thing in order
+> to validate the links and prevents their state from being modified
+> before power up and streaming.
 > 
-> This series adds support for simultaneous streaming from both capture
-> devices (rkisp1_selfpath and rkisp1_mainpath).
+> Adjust stop streaming to the same logic, call media_pipeline_stop
+> after we disable streaming on the entities in the topology.
 > 
-> It depends on the following series for multistream to work properly, but
-> it doesn't mean it can't be merged before:
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 21 ++++++++++---------
+>  1 file changed, 11 insertions(+), 10 deletions(-)
 > 
-> 	"media: add v4l2_pipeline_stream_{enable,disable} helpers"
-> 	https://patchwork.linuxtv.org/cover/62233/
-> 
-> And it is also available at:
-> 
-> 	https://gitlab.collabora.com/koike/linux/tree/rockchip/isp/multistream
-> 
-> Patch 1/2 fixes return error handling from pm functions, which was
-> preventing the second stream to start.
-> 
-> Patch 2/2 serializes start/stop streaming calls, since they both
-> and modify shared variables.
-> 
-> Changes in v2:
-> - Rebased on media/master
-> - Removed the following patch from the series:
-> "media: staging: rkisp1: do not call s_stream if the entity is still in use"
-> It was replaced by "media: add v4l2_pipeline_stream_{enable,disable} helpers"
-> https://patchwork.linuxtv.org/cover/62233/
-> 
-
-For the whole series:
 
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 
