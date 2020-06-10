@@ -1,55 +1,85 @@
 From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 4/4] media: staging: rkisp1: rename the field
- 'direction' in 'rkisp1_isp_mbus_info' to 'isp_pads_flags'
-Date: Wed, 10 Jun 2020 17:26:22 +0000
-Message-ID: <20200610172622.GG201868@chromium.org>
-References: <20200609152825.24772-1-dafna.hirschfeld@collabora.com>
- <20200609152825.24772-5-dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH v4 4/5] media: staging: rkisp1: cap: use
+ v4l2_pipeline_stream_{enable,disable} helpers
+Date: Wed, 10 Jun 2020 17:28:57 +0000
+Message-ID: <20200610172857.GH201868@chromium.org>
+References: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
+ <20200522075522.6190-5-dafna.hirschfeld@collabora.com>
+ <20200610170344.GC201868@chromium.org>
+ <02c8bd4a-0fc1-fcc5-4d8b-63ff1d406988@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Return-path: <linux-media-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <20200609152825.24772-5-dafna.hirschfeld@collabora.com>
+In-Reply-To: <02c8bd4a-0fc1-fcc5-4d8b-63ff1d406988@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
+Cc: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, skhan@linuxfoundation.org, niklas.soderlund@ragnatech.se--annotate
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
-
-On Tue, Jun 09, 2020 at 05:28:25PM +0200, Dafna Hirschfeld wrote:
-> The field 'direction' in 'struct rkisp1_isp_mbus_info' holds
-> the flags of the supported pads of the mbus code. Therefore
-> the name 'isp_pads_flags' is better.
-> The patch also rename a local variable 'dir' that holds such flag
-> to 'pad'.
+On Wed, Jun 10, 2020 at 07:22:04PM +0200, Dafna Hirschfeld wrote:
 > 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> ---
->  drivers/staging/media/rkisp1/rkisp1-common.h  |  2 +-
->  drivers/staging/media/rkisp1/rkisp1-isp.c     | 46 +++++++++----------
->  drivers/staging/media/rkisp1/rkisp1-resizer.c |  2 +-
->  3 files changed, 25 insertions(+), 25 deletions(-)
 > 
+> On 10.06.20 19:03, Tomasz Figa wrote:
+> > Hi Dafna,
+> > 
+> > On Fri, May 22, 2020 at 09:55:21AM +0200, Dafna Hirschfeld wrote:
+> > > From: Helen Koike <helen.koike@collabora.com>
+> > > 
+> > > Use v4l2_pipeline_stream_{enable,disable} to call .s_stream()
+> > > subdevice callbacks through the pipeline.
+> > > Those helpers are called only if the other capture is not streaming.
+> > > 
+> > > If the other capture is streaming then he already did that for us
+> > > so we call s_stream only on the resizer that is connected to the
+> > > capture node.
+> > > 
+> > > Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> > > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> > > ---
+> > >   drivers/staging/media/rkisp1/rkisp1-capture.c | 104 ++++++------------
+> > >   1 file changed, 32 insertions(+), 72 deletions(-)
+> > > 
+> > 
+> > Thank you for the patch. Please see my comments inline.
+> > 
+> > [snip]
+> > > +static int rkisp1_s_stream_subdev(struct rkisp1_capture *cap, int enable)
+> > > +{
+> > > +	struct rkisp1_device *rkisp1 = cap->rkisp1;
+> > > +	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
+> > > +	int ret;
+> > > +
+> > > +	/*
+> > > +	 * if the other capture is already streaming then we only need to
+> > > +	 * call s_stream of our reszier
+> > > +	 */
+> > > +	if (other->is_streaming) {
+> > > +		struct v4l2_subdev *rsz_sd  = &rkisp1->resizer_devs[cap->id].sd;
+> > > +
+> > > +		ret = v4l2_subdev_call(rsz_sd, video, s_stream, enable);
+> > > +		if (ret && ret != -ENOIOCTLCMD)
+> > > +			dev_err(rkisp1->dev,
+> > > +				"stream %s resizer '%s' failed (%d)\n",
+> > > +				enable ? "on" : "off", rsz_sd->name, ret);
+> > 
+> > Do we need this special case? Wouldn't v4l2_pipeline_stream_*() simply
+> > increment reference counters for the other entities?
+> 
+> I removed the stream count in v4 of the patchset since I thought it
+> might be problematic/confusing to add a field "stream_count" in
+> "struct v4l2_subdev" that is used and updated only by those helper functions
+> 
+> What do you think?
+> 
+> There is also the issue that both you and Sakari Ailus mentioned that
+> an isp driver can't know the subtopology of a sensor driver and how it handle the
+> s_stream callback on it's entities.
 
-Thank you for the patch. Please see my comments inline.
+Ah, okay, so we settled on removing the refcounting from the helpers.
+Fair enough. Sorry for the noise.
 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-> index a6cd9fc13b3d..1dda6d53adea 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
-> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-> @@ -283,7 +283,7 @@ struct rkisp1_isp_mbus_info {
-
-FYI, there is some missing documentation of the fields above. If
-changing this field, perhaps its documentation could be added as well?
-
->  	u32 yuv_seq;
->  	u8 bus_width;
->  	enum rkisp1_fmt_raw_pat_type bayer_pat;
-> -	unsigned int direction;
-> +	unsigned int isp_pads_flags;
-
-nit: Wouldn't "isp_pads_mask" represent the usage more precisely?
+Feel free to add my Reviewed-by.
 
 Best regards,
 Tomasz
