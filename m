@@ -1,85 +1,79 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v4 4/5] media: staging: rkisp1: cap: use
- v4l2_pipeline_stream_{enable,disable} helpers
-Date: Wed, 10 Jun 2020 17:28:57 +0000
-Message-ID: <20200610172857.GH201868@chromium.org>
-References: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
- <20200522075522.6190-5-dafna.hirschfeld@collabora.com>
- <20200610170344.GC201868@chromium.org>
- <02c8bd4a-0fc1-fcc5-4d8b-63ff1d406988@collabora.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH v2 1/4] media: staging: rkisp1: rsz: supported formats are
+ the isp's src formats, not sink formats
+Date: Wed, 10 Jun 2020 20:36:51 +0200
+Message-ID: <bf42a283-7aa5-330e-8a50-8bf7680cbd1f@collabora.com>
+References: <20200609152825.24772-1-dafna.hirschfeld@collabora.com>
+ <20200609152825.24772-2-dafna.hirschfeld@collabora.com>
+ <20200610171511.GD201868@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <02c8bd4a-0fc1-fcc5-4d8b-63ff1d406988@collabora.com>
+In-Reply-To: <20200610171511.GD201868@chromium.org>
+Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, skhan@linuxfoundation.org, niklas.soderlund@ragnatech.se--annotate
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jun 10, 2020 at 07:22:04PM +0200, Dafna Hirschfeld wrote:
-> 
-> 
-> On 10.06.20 19:03, Tomasz Figa wrote:
-> > Hi Dafna,
-> > 
-> > On Fri, May 22, 2020 at 09:55:21AM +0200, Dafna Hirschfeld wrote:
-> > > From: Helen Koike <helen.koike@collabora.com>
-> > > 
-> > > Use v4l2_pipeline_stream_{enable,disable} to call .s_stream()
-> > > subdevice callbacks through the pipeline.
-> > > Those helpers are called only if the other capture is not streaming.
-> > > 
-> > > If the other capture is streaming then he already did that for us
-> > > so we call s_stream only on the resizer that is connected to the
-> > > capture node.
-> > > 
-> > > Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> > > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> > > ---
-> > >   drivers/staging/media/rkisp1/rkisp1-capture.c | 104 ++++++------------
-> > >   1 file changed, 32 insertions(+), 72 deletions(-)
-> > > 
-> > 
-> > Thank you for the patch. Please see my comments inline.
-> > 
-> > [snip]
-> > > +static int rkisp1_s_stream_subdev(struct rkisp1_capture *cap, int enable)
-> > > +{
-> > > +	struct rkisp1_device *rkisp1 = cap->rkisp1;
-> > > +	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
-> > > +	int ret;
-> > > +
-> > > +	/*
-> > > +	 * if the other capture is already streaming then we only need to
-> > > +	 * call s_stream of our reszier
-> > > +	 */
-> > > +	if (other->is_streaming) {
-> > > +		struct v4l2_subdev *rsz_sd  = &rkisp1->resizer_devs[cap->id].sd;
-> > > +
-> > > +		ret = v4l2_subdev_call(rsz_sd, video, s_stream, enable);
-> > > +		if (ret && ret != -ENOIOCTLCMD)
-> > > +			dev_err(rkisp1->dev,
-> > > +				"stream %s resizer '%s' failed (%d)\n",
-> > > +				enable ? "on" : "off", rsz_sd->name, ret);
-> > 
-> > Do we need this special case? Wouldn't v4l2_pipeline_stream_*() simply
-> > increment reference counters for the other entities?
-> 
-> I removed the stream count in v4 of the patchset since I thought it
-> might be problematic/confusing to add a field "stream_count" in
-> "struct v4l2_subdev" that is used and updated only by those helper functions
-> 
-> What do you think?
-> 
-> There is also the issue that both you and Sakari Ailus mentioned that
-> an isp driver can't know the subtopology of a sensor driver and how it handle the
-> s_stream callback on it's entities.
 
-Ah, okay, so we settled on removing the refcounting from the helpers.
-Fair enough. Sorry for the noise.
 
-Feel free to add my Reviewed-by.
+On 10.06.20 19:15, Tomasz Figa wrote:
+> Hi Dafna,
+> 
+> On Tue, Jun 09, 2020 at 05:28:22PM +0200, Dafna Hirschfeld wrote:
+>> The rkisp1_resizer's enum callback 'rkisp1_rsz_enum_mbus_code'
+>> calls the enum callback of the 'rkisp1_isp' on it's video sink pad.
+>> This is a bug, the resizer should support the same formats
+>> supported by the 'rkisp1_isp' on the source pad (not the sink pad).
+>>
+>> Fixes: 56e3b29f9f6b "media: staging: rkisp1: add streaming paths"
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>> Acked-by: Helen Koike <helen.koike@collabora.com>
+>> ---
+>>   drivers/staging/media/rkisp1/rkisp1-resizer.c | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+> 
+> Thank you for the patch. Please see my comments inline.
+> 
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> index d049374413dc..d64c064bdb1d 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> @@ -437,8 +437,8 @@ static int rkisp1_rsz_enum_mbus_code(struct v4l2_subdev *sd,
+>>   	u32 pad = code->pad;
+>>   	int ret;
+>>   
+>> -	/* supported mbus codes are the same in isp sink pad */
+>> -	code->pad = RKISP1_ISP_PAD_SINK_VIDEO;
+>> +	/* supported mbus codes are the same in isp video src pad */
+>> +	code->pad = RKISP1_ISP_PAD_SOURCE_VIDEO;
+>>   	ret = v4l2_subdev_call(&rsz->rkisp1->isp.sd, pad, enum_mbus_code,
+>>   			       &dummy_cfg, code);
+> 
+> Actually, is this really the true? AFAIR the ISP itself can only output
+> either Bayer or YUV 4:2:2. The resizer can take YUV 4:2:2 at its input
+> and output YUV 4:4:4, 4:2:2 and 4:2:0. Bayer capture is handled with
+> resizer bypass mode. We haven't tested that, but if implemented, it
+> should probably be done by exposing a link between the ISP entity and a
+> video node directly, without the resizer involved.
+> 
+> WDYT?
 
-Best regards,
-Tomasz
+We can also implement it that way. Only the mainpath needs
+a direct link from the isp since selfpath does not support bayer formats.
+It makes it easier on userspace for bayer formats since it does not have to
+configure the resizer.
+On the other hand if the format is YUV it has the option
+to either use the the resizer or not.
+
+Thanks,
+Dafna
+
+> 
+> Best regards,
+> Tomasz
+> 
