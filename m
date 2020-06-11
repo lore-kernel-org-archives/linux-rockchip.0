@@ -1,153 +1,52 @@
-From: Greg KH <gregkh@linuxfoundation.org>
-Subject: Re: [RESEND PATCH v3 3/6] media: staging: rkisp1: remove macro
- RKISP1_DIR_SINK_SRC
-Date: Thu, 11 Jun 2020 17:51:28 +0200
-Message-ID: <20200611155128.GF1456044@kroah.com>
-References: <20200611154551.25022-1-dafna.hirschfeld@collabora.com>
- <20200611154551.25022-4-dafna.hirschfeld@collabora.com>
+From: "Alex Xu (Hello71)" <alex_y_xu@yahoo.ca>
+Subject: AMD IOMMU + SME + amdgpu regression
+Date: Thu, 11 Jun 2020 19:05:21 -0400
+Message-ID: <1591915710.rakbpzst8h.none@localhost>
+References: <1591915710.rakbpzst8h.none.ref@localhost>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-media-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200611154551.25022-4-dafna.hirschfeld@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, stable@vger.kernel.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Joerg Roedel <joro@8bytes.org>, linux-kernel@vger.kernel.org, David Rientjes <rientjes@google.com>, Christoph Hellwig <hch@lst.de>
+Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Jean-Philippe Brucker <jean-philippe@linaro.org>, Daniel Drake <drake@endlessm.com>, jonathan.derrick@intel.com, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.orglinux
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jun 11, 2020 at 05:45:48PM +0200, Dafna Hirschfeld wrote:
-> The macro RKISP1_DIR_SINK_SRC is a mask of two flags.
-> The macro hides the fact that it's a mask and the code
-> is actually more clear if we replace it the with bitwise-or explicitly.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> ---
->  drivers/staging/media/rkisp1/rkisp1-common.h |  1 -
->  drivers/staging/media/rkisp1/rkisp1-isp.c    | 24 ++++++++++----------
->  2 files changed, 12 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-> index 39d8e46d8d8a..0ec8718037a4 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
-> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-> @@ -24,7 +24,6 @@
->  
->  #define RKISP1_DIR_SRC BIT(0)
->  #define RKISP1_DIR_SINK BIT(1)
-> -#define RKISP1_DIR_SINK_SRC (RKISP1_DIR_SINK | RKISP1_DIR_SRC)
->  
->  #define RKISP1_ISP_MAX_WIDTH		4032
->  #define RKISP1_ISP_MAX_HEIGHT		3024
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-> index e66e87d6ea8b..157ac58c2efc 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-> @@ -65,84 +65,84 @@ static const struct rkisp1_isp_mbus_info rkisp1_isp_formats[] = {
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
->  		.bayer_pat	= RKISP1_RAW_RGGB,
->  		.bus_width	= 10,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
->  		.bayer_pat	= RKISP1_RAW_BGGR,
->  		.bus_width	= 10,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGBRG10_1X10,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
->  		.bayer_pat	= RKISP1_RAW_GBRG,
->  		.bus_width	= 10,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
->  		.bayer_pat	= RKISP1_RAW_GRBG,
->  		.bus_width	= 10,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SRGGB12_1X12,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
->  		.bayer_pat	= RKISP1_RAW_RGGB,
->  		.bus_width	= 12,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SBGGR12_1X12,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
->  		.bayer_pat	= RKISP1_RAW_BGGR,
->  		.bus_width	= 12,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGBRG12_1X12,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
->  		.bayer_pat	= RKISP1_RAW_GBRG,
->  		.bus_width	= 12,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGRBG12_1X12,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
->  		.bayer_pat	= RKISP1_RAW_GRBG,
->  		.bus_width	= 12,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SRGGB8_1X8,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
->  		.bayer_pat	= RKISP1_RAW_RGGB,
->  		.bus_width	= 8,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SBGGR8_1X8,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
->  		.bayer_pat	= RKISP1_RAW_BGGR,
->  		.bus_width	= 8,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGBRG8_1X8,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
->  		.bayer_pat	= RKISP1_RAW_GBRG,
->  		.bus_width	= 8,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGRBG8_1X8,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
->  		.bayer_pat	= RKISP1_RAW_GRBG,
->  		.bus_width	= 8,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_YUYV8_1X16,
->  		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
-> -- 
-> 2.17.1
-> 
+Hi,
 
-<formletter>
+amdgpu + IOMMU + SME is now working for me on 5.7, yay! But, it is=20
+broken on torvalds master, boo. On boot, depending on which exact commit=20
+I test, it either hangs immediately (with built-in driver, before=20
+starting initramfs), displays some errors then hangs, or spams the=20
+screen with many amdgpu errors.
 
-This is not the correct way to submit patches for inclusion in the
-stable kernel tree.  Please read:
-    https://www.kernel.org/doc/html/latest/process/stable-kernel-rules.html
-for how to do this properly.
+I bisected the black screen hang to:
 
-</formletter>
+commit dce8d6964ebdb333383bacf5e7ab8c27df151218
+Author: Joerg Roedel <jroedel@suse.de>
+Date:   Wed Apr 29 15:36:53 2020 +0200
+
+    iommu/amd: Convert to probe/release_device() call-backs
+
+    Convert the AMD IOMMU Driver to use the probe_device() and
+    release_device() call-backs of iommu_ops, so that the iommu core code
+    does the group and sysfs setup.
+
+    Signed-off-by: Joerg Roedel <jroedel@suse.de>
+    Link: https://lore.kernel.org/r/20200429133712.31431-16-joro@8bytes.org
+    Signed-off-by: Joerg Roedel <jroedel@suse.de>
+
+Testing torvalds master (623f6dc593) with the containing merge=20
+(98bdc74b36) plus the DMA mapping merge (4e94d08734) reverted allows=20
+amdgpu + IOMMU + SME to once again work.
+
+I think that nobody is really working on amdgpu + SME, but it would be a=20
+shame if it was supported and then incidentally broken by a small=20
+change.
+
+I am using an ASRock B450 Pro4 with Ryzen 1600 and ASUS RX 480. I don't=20
+understand this code at all, but let me know what I can do to=20
+troubleshoot.
+
+Thanks,
+Alex.
