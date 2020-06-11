@@ -1,612 +1,175 @@
-From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
-Subject: Re: [PATCH v6 2/8] mtd: rawnand: rockchip: NFC drivers for RK3308,
- RK2928 and others
-Date: Thu, 11 Jun 2020 09:53:58 +0200
-Message-ID: <20200611095358.7fceea83@xps13>
-References: <20200609074020.23860-1-yifeng.zhao@rock-chips.com>
-        <20200609074020.23860-3-yifeng.zhao@rock-chips.com>
+From: Rob Herring <robh@kernel.org>
+Subject: [PATCH] dt-bindings: Fix more incorrect 'reg' property sizes in examples
+Date: Thu, 11 Jun 2020 09:19:23 -0600
+Message-ID: <20200611151923.1102796-1-robh@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200609074020.23860-3-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, Ezequiel Garcia <ezequiel@collabora.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, "David S. Miller" <davem@davemloft.net>, Bjorn Andersson <bjorn.andersson@linaro.org>, Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org, linux-mtd@lists.infradead.org, netdev@vger.kernel.org, alsa-devel@alsa-project.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Yifeng,
+The examples template is a 'simple-bus' with a size of 1 cell for
+had between 2 and 4 cells which really only errors on I2C or SPI type
+devices with a single cell.
 
+The easiest fix in most cases is to change the 'reg' property to 1 cell
+for address and size.
 
-[...]
+Cc: "Heiko Stübner" <heiko@sntech.de>
+Cc: Ezequiel Garcia <ezequiel@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Miquel Raynal <miquel.raynal@bootlin.com>
+Cc: Richard Weinberger <richard@nod.at>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Bjorn Andersson <bjorn.andersson@linaro.org>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Vinod Koul <vkoul@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>
+Cc: Mark Brown <broonie@kernel.org>
+Cc: linux-rockchip@lists.infradead.org
+Cc: linux-media@vger.kernel.org
+Cc: linux-mtd@lists.infradead.org
+Cc: netdev@vger.kernel.org
+Cc: alsa-devel@alsa-project.org
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ Documentation/devicetree/bindings/bus/baikal,bt1-apb.yaml     | 4 ++--
+ Documentation/devicetree/bindings/bus/baikal,bt1-axi.yaml     | 4 ++--
+ .../devicetree/bindings/display/rockchip/rockchip-vop.yaml    | 4 ++--
+ Documentation/devicetree/bindings/media/rockchip,vdec.yaml    | 2 +-
+ Documentation/devicetree/bindings/media/rockchip-vpu.yaml     | 2 +-
+ .../devicetree/bindings/mtd/arasan,nand-controller.yaml       | 2 +-
+ Documentation/devicetree/bindings/net/ti,k3-am654-cpts.yaml   | 2 +-
+ .../devicetree/bindings/phy/qcom,usb-snps-femto-v2.yaml       | 2 +-
+ Documentation/devicetree/bindings/sound/fsl,easrc.yaml        | 2 +-
+ 9 files changed, 12 insertions(+), 12 deletions(-)
 
-> +static void rk_nfc_disable_clk(struct rk_nfc_clk *clk)
-> +{
-> +	if (!IS_ERR(clk->nfc_clk))
-> +		clk_disable_unprepare(clk->nfc_clk);
-> +	clk_disable_unprepare(clk->ahb_clk);
-> +}
-> +
-> +static int rk_nfc_ooblayout_free(struct mtd_info *mtd, int section,
-> +				 struct mtd_oob_region *oob_region)
-> +{
-> +	struct nand_chip *chip = mtd_to_nand(mtd);
-> +
-> +	if (section >= chip->ecc.steps)
-> +		return -ERANGE;
-> +
-> +	if (!section) {
-> +		/* The first byte is bad block mask flag. */
-> +		oob_region->length = NFC_SYS_DATA_SIZE - 1;
-> +		oob_region->offset = 1;
-> +	} else {
-> +		oob_region->length = NFC_SYS_DATA_SIZE;
-> +		oob_region->offset = section * NFC_SYS_DATA_SIZE;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int rk_nfc_ooblayout_ecc(struct mtd_info *mtd, int section,
-> +				struct mtd_oob_region *oob_region)
-> +{
-> +	struct nand_chip *chip = mtd_to_nand(mtd);
-> +
-> +	if (section)
-> +		return -ERANGE;
-> +
-> +	oob_region->offset = NFC_SYS_DATA_SIZE * chip->ecc.steps;
-> +	oob_region->length = mtd->oobsize - oob_region->offset;
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct mtd_ooblayout_ops rk_nfc_ooblayout_ops = {
-> +	.free = rk_nfc_ooblayout_free,
-> +	.ecc = rk_nfc_ooblayout_ecc,
-> +};
-
-This looks like a copy of the core's nand_lp_ooblayout, better use the
-generic one than creation your own.
-
-> +
-> +static int rk_nfc_ecc_init(struct device *dev, struct mtd_info *mtd)
-> +{
-> +	struct nand_chip *chip = mtd_to_nand(mtd);
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
-> +	const u8 *strengths = nfc->cfg->ecc_strengths;
-> +	u8 max_strength, nfc_max_strength;
-> +	int i;
-> +
-> +	nfc_max_strength = nfc->cfg->ecc_strengths[0];
-> +	/* If optional dt settings not present. */
-> +	if (!ecc->size || !ecc->strength ||
-> +	    ecc->strength > nfc_max_strength) {
-> +		/* Use datasheet requirements. */
-> +		ecc->strength = chip->base.eccreq.strength;
-> +		ecc->size = chip->base.eccreq.step_size;
-> +
-> +		/*
-> +		 * Align eccstrength and eccsize.
-> +		 * This controller only supports 512 and 1024 sizes.
-> +		 */
-> +		if (chip->ecc.size < 1024) {
-> +			if (mtd->writesize > 512) {
-> +				chip->ecc.size = 1024;
-> +				chip->ecc.strength <<= 1;
-> +			} else {
-> +				dev_err(dev, "ecc.size not supported\n");
-> +				return -EINVAL;
-> +			}
-> +		} else {
-> +			chip->ecc.size = 1024;
-> +		}
-> +
-> +		ecc->steps = mtd->writesize / ecc->size;
-> +
-> +		/*
-> +		 * HW ECC always request ECC bytes for 1024 bytes blocks.
-> +		 * 4 Bytes is oob for sys data.
-> +		 */
-> +		max_strength = ((mtd->oobsize / ecc->steps) - 4) * 8 /
-> +				 fls(8 * 1024);
-> +		if (max_strength > nfc_max_strength)
-> +			max_strength = nfc_max_strength;
-> +
-> +		for (i = 0; i < 4; i++) {
-> +			if (max_strength >= strengths[i])
-> +				break;
-> +		}
-> +
-> +		if (i >= 4) {
-> +			dev_err(nfc->dev, "unsupported strength\n");
-> +			return -ENOTSUPP;
-> +		}
-> +
-> +		ecc->strength = strengths[i];
-> +	}
-> +	ecc->steps = mtd->writesize / ecc->size;
-> +	ecc->bytes = DIV_ROUND_UP(ecc->strength * fls(8 * 1024), 8);
-> +	/* HW ECC always work with even numbers of ECC bytes. */
-> +	ecc->bytes = ALIGN(ecc->bytes, 2);
-> +
-> +	rk_nfc_hw_ecc_setup(chip, ecc, ecc->strength);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rk_nfc_attach_chip(struct nand_chip *chip)
-> +{
-> +	struct mtd_info *mtd = nand_to_mtd(chip);
-> +	struct device *dev = mtd->dev.parent;
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	struct rk_nfc_nand_chip *rk_nand = to_rk_nand(chip);
-> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
-> +	int len;
-> +	int ret;
-> +
-> +	if (chip->options & NAND_BUSWIDTH_16) {
-> +		dev_err(dev, "16 bits bus width not supported");
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (ecc->mode != NAND_ECC_HW)
-> +		return 0;
-> +
-> +	ret = rk_nfc_ecc_init(dev, mtd);
-> +	if (ret)
-> +		return ret;
-> +	rk_nand->spare_per_sector = ecc->bytes + NFC_SYS_DATA_SIZE;
-> +
-> +	/* Check buffer first, avoid duplicate alloc buffer. */
-> +	if (nfc->buffer)
-> +		return 0;
-> +
-> +	len = mtd->writesize + mtd->oobsize;
-> +	nfc->buffer = devm_kzalloc(dev, len, GFP_KERNEL | GFP_DMA);
-> +	if (!nfc->buffer)
-> +		return -ENOMEM;
-> +
-> +	nfc->page_buf = nfc->buffer;
-> +	len = ecc->steps * NFC_MAX_OOB_PER_STEP;
-> +	nfc->oob_buf = devm_kzalloc(dev, len, GFP_KERNEL | GFP_DMA);
-> +	if (!nfc->oob_buf) {
-> +		devm_kfree(dev, nfc->buffer);
-
-This is not needed I suppose and you should probably just return the
-error.
-
-> +		nfc->buffer = NULL;
-> +		nfc->oob_buf = NULL;
-> +		return -ENOMEM;
-> +	}
-> +
-> +	chip->ecc.write_page_raw = rk_nfc_write_page_raw;
-> +	chip->ecc.write_page = rk_nfc_write_page_hwecc;
-> +	chip->ecc.write_oob_raw = rk_nfc_write_oob_std;
-> +	chip->ecc.write_oob = rk_nfc_write_oob_std;
-> +
-> +	chip->ecc.read_page_raw = rk_nfc_read_page_raw;
-> +	chip->ecc.read_page = rk_nfc_read_page_hwecc;
-> +	chip->ecc.read_oob_raw = rk_nfc_read_oob_std;
-> +	chip->ecc.read_oob = rk_nfc_read_oob_std;
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct nand_controller_ops rk_nfc_controller_ops = {
-> +	.attach_chip = rk_nfc_attach_chip,
-> +	.exec_op = rk_nfc_exec_op,
-> +	.setup_data_interface = rk_nfc_setup_data_interface,
-> +};
-> +
-> +static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
-> +				 struct device_node *np)
-> +{
-> +	struct rk_nfc_nand_chip *nand;
-
-Could you call it rknand or something similar, just so that it is easy
-to get the difference with the nand_chip structure.
-
-> +	struct nand_chip *chip;
-> +	struct mtd_info *mtd;
-> +	int nsels;
-> +	u32 tmp;
-> +	int ret;
-> +	int i;
-> +
-> +	if (!of_get_property(np, "reg", &nsels))
-> +		return -ENODEV;
-> +	nsels /= sizeof(u32);
-> +	if (!nsels || nsels > NFC_MAX_NSELS) {
-> +		dev_err(dev, "invalid reg property size %d\n", nsels);
-> +		return -EINVAL;
-> +	}
-> +
-> +	nand = devm_kzalloc(dev, sizeof(*nand) + nsels * sizeof(u8),
-> +			    GFP_KERNEL);
-> +	if (!nand)
-> +		return -ENOMEM;
-> +
-> +	nand->nsels = nsels;
-> +	for (i = 0; i < nsels; i++) {
-> +		ret = of_property_read_u32_index(np, "reg", i, &tmp);
-> +		if (ret) {
-> +			dev_err(dev, "reg property failure : %d\n", ret);
-> +			return ret;
-> +		}
-> +
-> +		if (tmp >= NFC_MAX_NSELS) {
-> +			dev_err(dev, "invalid CS: %u\n", tmp);
-> +			return -EINVAL;
-> +		}
-> +
-> +		if (test_and_set_bit(tmp, &nfc->assigned_cs)) {
-> +			dev_err(dev, "CS %u already assigned\n", tmp);
-> +			return -EINVAL;
-> +		}
-> +
-> +		nand->sels[i] = tmp;
-> +	}
-> +
-> +	chip = &nand->chip;
-> +	chip->controller = &nfc->controller;
-> +
-> +	nand_set_flash_node(chip, np);
-> +
-> +	nand_set_controller_data(chip, nfc);
-> +
-> +	chip->options |= NAND_USE_BOUNCE_BUFFER | NAND_NO_SUBPAGE_WRITE;
-> +	chip->bbt_options = NAND_BBT_USE_FLASH | NAND_BBT_NO_OOB;
-> +
-> +	/* Set default mode in case dt entry is missing. */
-> +	chip->ecc.mode = NAND_ECC_HW;
-> +
-> +	mtd = nand_to_mtd(chip);
-> +	mtd->owner = THIS_MODULE;
-> +	mtd->dev.parent = dev;
-> +
-> +	if (!mtd->name) {
-> +		dev_err(nfc->dev, "NAND label property is mandatory\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	mtd_set_ooblayout(mtd, &rk_nfc_ooblayout_ops);
-> +	rk_nfc_hw_init(nfc);
-> +	ret = nand_scan(chip, nsels);
-> +	if (ret)
-> +		return ret;
-> +
-> +	if (chip->options & NAND_IS_BOOT_MEDIUM) {
-> +		ret = of_property_read_u32(np, "rockchip,boot-blks", &tmp);
-> +		nand->boot_blks = ret ? 0 : tmp;
-> +
-> +		ret = of_property_read_u32(np, "rockchip,boot-ecc-strength",
-> +					   &tmp);
-> +		nand->boot_ecc = ret ? chip->ecc.strength : tmp;
-> +	}
-> +
-> +	ret = mtd_device_register(mtd, NULL, 0);
-> +	if (ret) {
-> +		dev_err(dev, "mtd parse partition error\n");
-> +		nand_release(chip);
-
-nand_cleanup() here
-
-> +		return ret;
-> +	}
-> +
-> +	list_add_tail(&nand->node, &nfc->chips);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rk_nfc_nand_chips_init(struct device *dev, struct rk_nfc *nfc)
-> +{
-> +	struct device_node *np = dev->of_node;
-> +	struct device_node *nand_np;
-> +	int ret = -EINVAL;
-> +	int tmp;
-> +
-> +	for_each_child_of_node(np, nand_np) {
-> +		tmp = rk_nfc_nand_chip_init(dev, nfc, nand_np);
-> +		if (tmp) {
-> +			of_node_put(nand_np);
-> +			return ret;
-> +		}
-> +		/* At least one nand chip is initialized. */
-> +		ret = 0;
-
-I think it's more readable if you count up the number of devices
-initialized by browsing the list of chips handled by the controller
-(list_is_empty() would work just fine).
-
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static struct nfc_cfg nfc_v6_cfg = {
-> +		.type			= NFC_V6,
-> +		.ecc_strengths		= {60, 40, 24, 16},
-> +		.ecc_cfgs		= {
-> +			0x00040011, 0x00040001, 0x00000011, 0x00000001,
-> +		},
-> +		.flctl_off		= 0x08,
-> +		.bchctl_off		= 0x0C,
-> +		.dma_cfg_off		= 0x10,
-> +		.dma_data_buf_off	= 0x14,
-> +		.dma_oob_buf_off	= 0x18,
-> +		.dma_st_off		= 0x1C,
-> +		.bch_st_off		= 0x20,
-> +		.randmz_off		= 0x150,
-> +		.int_en_off		= 0x16C,
-> +		.int_clr_off		= 0x170,
-> +		.int_st_off		= 0x174,
-> +		.oob0_off		= 0x200,
-> +		.oob1_off		= 0x230,
-> +		.ecc0			= {
-> +			.err_flag_bit	= 2,
-> +			.low		= 3,
-> +			.low_mask	= 0x1F,
-> +			.low_bn		= 5,
-> +			.high		= 27,
-> +			.high_mask	= 0x1,
-> +		},
-> +		.ecc1			= {
-> +			.err_flag_bit	= 15,
-> +			.low		= 16,
-> +			.low_mask	= 0x1F,
-> +			.low_bn		= 5,
-> +			.high		= 29,
-> +			.high_mask	= 0x1,
-> +		},
-> +};
-> +
-> +static struct nfc_cfg nfc_v8_cfg = {
-> +		.type			= NFC_V8,
-> +		.ecc_strengths		= {16, 16, 16, 16},
-> +		.ecc_cfgs		= {
-> +			0x00000001, 0x00000001, 0x00000001, 0x00000001,
-> +		},
-> +		.flctl_off		= 0x08,
-> +		.bchctl_off		= 0x0C,
-> +		.dma_cfg_off		= 0x10,
-> +		.dma_data_buf_off	= 0x14,
-> +		.dma_oob_buf_off	= 0x18,
-> +		.dma_st_off		= 0x1C,
-> +		.bch_st_off		= 0x20,
-> +		.bch_st_off		= 0x20,
-> +		.randmz_off		= 0x150,
-> +		.int_en_off		= 0x16C,
-> +		.int_clr_off		= 0x170,
-> +		.int_st_off		= 0x174,
-> +		.oob0_off		= 0x200,
-> +		.oob1_off		= 0x230,
-> +		.ecc0			= {
-> +			.err_flag_bit	= 2,
-> +			.low		= 3,
-> +			.low_mask	= 0x1F,
-> +			.low_bn		= 5,
-> +			.high		= 27,
-> +			.high_mask	= 0x1,
-> +		},
-> +		.ecc1			= {
-> +			.err_flag_bit	= 15,
-> +			.low		= 16,
-> +			.low_mask	= 0x1F,
-> +			.low_bn		= 5,
-> +			.high		= 29,
-> +			.high_mask	= 0x1,
-> +		},
-> +};
-> +
-> +static struct nfc_cfg nfc_v9_cfg = {
-> +		.type			= NFC_V9,
-> +		.ecc_strengths		= {70, 60, 40, 16},
-> +		.ecc_cfgs		= {
-> +			0x00000001, 0x06000001, 0x04000001, 0x02000001,
-> +		},
-> +		.flctl_off		= 0x10,
-> +		.bchctl_off		= 0x20,
-> +		.dma_cfg_off		= 0x30,
-> +		.dma_data_buf_off	= 0x34,
-> +		.dma_oob_buf_off	= 0x38,
-> +		.dma_st_off		= 0x3C,
-> +		.bch_st_off		= 0x150,
-> +		.randmz_off		= 0x208,
-> +		.int_en_off		= 0x120,
-> +		.int_clr_off		= 0x124,
-> +		.int_st_off		= 0x128,
-> +		.oob0_off		= 0x200,
-> +		.oob1_off		= 0x204,
-> +		.ecc0			= {
-> +			.err_flag_bit	= 2,
-> +			.low		= 3,
-> +			.low_mask	= 0x7F,
-> +			.low_bn		= 7,
-> +			.high		= 0,
-> +			.high_mask	= 0x0,
-> +		},
-> +		.ecc1			= {
-> +			.err_flag_bit	= 18,
-> +			.low		= 19,
-> +			.low_mask	= 0x7F,
-> +			.low_bn		= 7,
-> +			.high		= 0,
-> +			.high_mask	= 0x0,
-> +		},
-> +};
-> +
-> +static const struct of_device_id rk_nfc_id_table[] = {
-> +	{.compatible = "rockchip,px30-nfc",
-> +		.data = &nfc_v9_cfg },
-> +	{.compatible = "rockchip,rk2928-nfc",
-> +		.data = &nfc_v6_cfg },
-> +	{.compatible = "rockchip,rv1108-nfc",
-> +		.data = &nfc_v8_cfg },
-> +	{ /* sentinel */ }
-> +};
-> +MODULE_DEVICE_TABLE(of, rk_nfc_id_table);
-> +
-> +static int rk_nfc_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct rk_nfc *nfc;
-> +	struct resource *res;
-> +	int ret, irq;
-> +
-> +	nfc = devm_kzalloc(dev, sizeof(*nfc), GFP_KERNEL);
-> +	if (!nfc)
-> +		return -ENOMEM;
-> +
-> +	nand_controller_init(&nfc->controller);
-> +	INIT_LIST_HEAD(&nfc->chips);
-> +	nfc->controller.ops = &rk_nfc_controller_ops;
-> +
-> +	nfc->cfg = of_device_get_match_data(dev);
-> +	nfc->dev = dev;
-> +
-> +	init_completion(&nfc->done);
-> +
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	nfc->regs = devm_ioremap_resource(dev, res);
-
-There is a devm_platform_ioremap_resource for that
-
-> +	if (IS_ERR(nfc->regs)) {
-> +		ret = PTR_ERR(nfc->regs);
-> +		goto release_nfc;
-> +	}
-> +
-> +	nfc->clk.nfc_clk = devm_clk_get(dev, "nfc");
-> +	if (IS_ERR(nfc->clk.nfc_clk)) {
-> +		dev_dbg(dev, "no nfc clk\n");
-> +		/* Some old device, sush as rk3066, has no nfc clk. */
-
-I would drop the dbg trace and reining nfc_clk to NULL.
-
-Also it might be worth checking the compatible here to ensure this is
-allowed.
-
-> +	}
-> +
-> +	nfc->clk.ahb_clk = devm_clk_get(dev, "ahb");
-> +	if (IS_ERR(nfc->clk.ahb_clk)) {
-> +		dev_err(dev, "no ahb clk\n");
-> +		ret = PTR_ERR(nfc->clk.ahb_clk);
-> +		goto release_nfc;
-> +	}
-> +
-> +	ret = rk_nfc_enable_clk(dev, &nfc->clk);
-> +	if (ret)
-> +		goto release_nfc;
-> +
-> +	irq = platform_get_irq(pdev, 0);
-> +	if (irq < 0) {
-> +		dev_err(dev, "no nfc irq resource\n");
-> +		ret = -EINVAL;
-> +		goto clk_disable;
-> +	}
-> +
-> +	writel(0, nfc->regs + nfc->cfg->int_en_off);
-> +	ret = devm_request_irq(dev, irq, rk_nfc_irq, 0x0, "rk-nand", nfc);
-> +	if (ret) {
-> +		dev_err(dev, "failed to request nfc irq\n");
-> +		goto clk_disable;
-> +	}
-> +
-> +	platform_set_drvdata(pdev, nfc);
-> +
-> +	ret = rk_nfc_nand_chips_init(dev, nfc);
-> +	if (ret) {
-> +		dev_err(dev, "failed to init nand chips\n");
-> +		goto clk_disable;
-> +	}
-> +	return 0;
-> +
-> +clk_disable:
-> +	rk_nfc_disable_clk(&nfc->clk);
-> +release_nfc:
-> +	return ret;
-> +}
-> +
-> +static int rk_nfc_remove(struct platform_device *pdev)
-> +{
-> +	struct rk_nfc *nfc = platform_get_drvdata(pdev);
-> +	struct rk_nfc_nand_chip *nand;
-> +
-> +	while (!list_empty(&nfc->chips)) {
-> +		nand = list_first_entry(&nfc->chips, struct rk_nfc_nand_chip,
-> +					node);
-> +		nand_release(&nand->chip);
-
-nand_release has been removed (in Linus' branch since this
-week).
-
-> +		list_del(&nand->node);
-> +	}
-> +
-> +	rk_nfc_disable_clk(&nfc->clk);
-> +
-> +	return 0;
-> +}
-> +
-> +static int __maybe_unused rk_nfc_suspend(struct device *dev)
-> +{
-> +	struct rk_nfc *nfc = dev_get_drvdata(dev);
-> +
-> +	rk_nfc_disable_clk(&nfc->clk);
-> +
-> +	return 0;
-> +}
-> +
-> +static int __maybe_unused rk_nfc_resume(struct device *dev)
-> +{
-> +	struct rk_nfc *nfc = dev_get_drvdata(dev);
-> +	struct rk_nfc_nand_chip *nand;
-> +	struct nand_chip *chip;
-> +	int ret;
-> +	u32 i;
-> +
-> +	ret = rk_nfc_enable_clk(dev, &nfc->clk);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Reset NAND chip if VCC was powered off. */
-> +	list_for_each_entry(nand, &nfc->chips, node) {
-> +		chip = &nand->chip;
-> +		for (i = 0; i < nand->nsels; i++)
-> +			nand_reset(chip, i);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct dev_pm_ops rk_nfc_pm_ops = {
-> +	SET_SYSTEM_SLEEP_PM_OPS(rk_nfc_suspend, rk_nfc_resume)
-> +};
-> +
-> +static struct platform_driver rk_nfc_driver = {
-> +	.probe = rk_nfc_probe,
-> +	.remove = rk_nfc_remove,
-> +	.driver = {
-> +		.name = "rockchip-nfc",
-> +		.of_match_table = rk_nfc_id_table,
-> +		.pm = &rk_nfc_pm_ops,
-> +	},
-> +};
-> +
-> +module_platform_driver(rk_nfc_driver);
-> +
-> +MODULE_LICENSE("Dual MIT/GPL");
-> +MODULE_AUTHOR("Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>");
-> +MODULE_DESCRIPTION("Rockchip Nand Flash Controller Driver");
-> +MODULE_ALIAS("platform:rockchip-nand-controller");
-
-
-
-
-Thanks,
-Miquèl
+diff --git a/Documentation/devicetree/bindings/bus/baikal,bt1-apb.yaml b/Documentation/devicetree/bindings/bus/baikal,bt1-apb.yaml
+index d6a3b71ea835..68b0131a31d0 100644
+--- a/Documentation/devicetree/bindings/bus/baikal,bt1-apb.yaml
++++ b/Documentation/devicetree/bindings/bus/baikal,bt1-apb.yaml
+@@ -71,8 +71,8 @@ examples:
+ 
+     bus@1f059000 {
+       compatible = "baikal,bt1-apb", "simple-bus";
+-      reg = <0 0x1f059000 0 0x1000>,
+-            <0 0x1d000000 0 0x2040000>;
++      reg = <0x1f059000 0x1000>,
++            <0x1d000000 0x2040000>;
+       reg-names = "ehb", "nodev";
+       #address-cells = <1>;
+       #size-cells = <1>;
+diff --git a/Documentation/devicetree/bindings/bus/baikal,bt1-axi.yaml b/Documentation/devicetree/bindings/bus/baikal,bt1-axi.yaml
+index 203bc0e5346b..29e1aaea132b 100644
+--- a/Documentation/devicetree/bindings/bus/baikal,bt1-axi.yaml
++++ b/Documentation/devicetree/bindings/bus/baikal,bt1-axi.yaml
+@@ -85,8 +85,8 @@ examples:
+ 
+     bus@1f05a000 {
+       compatible = "baikal,bt1-axi", "simple-bus";
+-      reg = <0 0x1f05a000 0 0x1000>,
+-            <0 0x1f04d110 0 0x8>;
++      reg = <0x1f05a000 0x1000>,
++            <0x1f04d110 0x8>;
+       reg-names = "qos", "ehb";
+       #address-cells = <1>;
+       #size-cells = <1>;
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
+index 1695e3e4bcec..ed8148e26e24 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
+@@ -106,8 +106,8 @@ examples:
+     #include <dt-bindings/power/rk3288-power.h>
+     vopb: vopb@ff930000 {
+       compatible = "rockchip,rk3288-vop";
+-      reg = <0x0 0xff930000 0x0 0x19c>,
+-            <0x0 0xff931000 0x0 0x1000>;
++      reg = <0xff930000 0x19c>,
++            <0xff931000 0x1000>;
+       interrupts = <GIC_SPI 15 IRQ_TYPE_LEVEL_HIGH>;
+       clocks = <&cru ACLK_VOP0>,
+                <&cru DCLK_VOP0>,
+diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+index 0c68cdad9a31..8d35c327018b 100644
+--- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+@@ -61,7 +61,7 @@ examples:
+ 
+     vdec: video-codec@ff660000 {
+         compatible = "rockchip,rk3399-vdec";
+-        reg = <0x0 0xff660000 0x0 0x400>;
++        reg = <0xff660000 0x400>;
+         interrupts = <GIC_SPI 116 IRQ_TYPE_LEVEL_HIGH 0>;
+         clocks = <&cru ACLK_VDU>, <&cru HCLK_VDU>,
+                  <&cru SCLK_VDU_CA>, <&cru SCLK_VDU_CORE>;
+diff --git a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+index 27df18ad6a81..2b629456d75f 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-vpu.yaml
+@@ -66,7 +66,7 @@ examples:
+ 
+         vpu: video-codec@ff9a0000 {
+                 compatible = "rockchip,rk3288-vpu";
+-                reg = <0x0 0xff9a0000 0x0 0x800>;
++                reg = <0xff9a0000 0x800>;
+                 interrupts = <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>,
+                              <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
+                 interrupt-names = "vepu", "vdpu";
+diff --git a/Documentation/devicetree/bindings/mtd/arasan,nand-controller.yaml b/Documentation/devicetree/bindings/mtd/arasan,nand-controller.yaml
+index db8f115a13ec..cb9794edff24 100644
+--- a/Documentation/devicetree/bindings/mtd/arasan,nand-controller.yaml
++++ b/Documentation/devicetree/bindings/mtd/arasan,nand-controller.yaml
+@@ -53,7 +53,7 @@ examples:
+   - |
+     nfc: nand-controller@ff100000 {
+         compatible = "xlnx,zynqmp-nand-controller", "arasan,nfc-v3p10";
+-        reg = <0x0 0xff100000 0x0 0x1000>;
++        reg = <0xff100000 0x1000>;
+         clock-names = "controller", "bus";
+         clocks = <&clk200>, <&clk100>;
+         interrupt-parent = <&gic>;
+diff --git a/Documentation/devicetree/bindings/net/ti,k3-am654-cpts.yaml b/Documentation/devicetree/bindings/net/ti,k3-am654-cpts.yaml
+index af608f2ecfdf..9b7117920d90 100644
+--- a/Documentation/devicetree/bindings/net/ti,k3-am654-cpts.yaml
++++ b/Documentation/devicetree/bindings/net/ti,k3-am654-cpts.yaml
+@@ -121,7 +121,7 @@ examples:
+ 
+     cpts@310d0000 {
+          compatible = "ti,am65-cpts";
+-         reg = <0x0 0x310d0000 0x0 0x400>;
++         reg = <0x310d0000 0x400>;
+          reg-names = "cpts";
+          clocks = <&main_cpts_mux>;
+          clock-names = "cpts";
+diff --git a/Documentation/devicetree/bindings/phy/qcom,usb-snps-femto-v2.yaml b/Documentation/devicetree/bindings/phy/qcom,usb-snps-femto-v2.yaml
+index 574f890fab1d..4949a2851532 100644
+--- a/Documentation/devicetree/bindings/phy/qcom,usb-snps-femto-v2.yaml
++++ b/Documentation/devicetree/bindings/phy/qcom,usb-snps-femto-v2.yaml
+@@ -65,7 +65,7 @@ examples:
+     #include <dt-bindings/clock/qcom,gcc-sm8150.h>
+     phy@88e2000 {
+         compatible = "qcom,sm8150-usb-hs-phy";
+-        reg = <0 0x088e2000 0 0x400>;
++        reg = <0x088e2000 0x400>;
+         #phy-cells = <0>;
+ 
+         clocks = <&rpmhcc RPMH_CXO_CLK>;
+diff --git a/Documentation/devicetree/bindings/sound/fsl,easrc.yaml b/Documentation/devicetree/bindings/sound/fsl,easrc.yaml
+index 9dd57a974b28..32d547af9ce7 100644
+--- a/Documentation/devicetree/bindings/sound/fsl,easrc.yaml
++++ b/Documentation/devicetree/bindings/sound/fsl,easrc.yaml
+@@ -80,7 +80,7 @@ examples:
+ 
+     easrc: easrc@300c0000 {
+            compatible = "fsl,imx8mn-easrc";
+-           reg = <0x0 0x300c0000 0x0 0x10000>;
++           reg = <0x300c0000 0x10000>;
+            interrupts = <0x0 122 0x4>;
+            clocks = <&clk IMX8MN_CLK_ASRC_ROOT>;
+            clock-names = "mem";
+-- 
+2.25.1
