@@ -1,52 +1,72 @@
-From: "Alex Xu (Hello71)" <alex_y_xu@yahoo.ca>
-Subject: AMD IOMMU + SME + amdgpu regression
-Date: Thu, 11 Jun 2020 19:05:21 -0400
-Message-ID: <1591915710.rakbpzst8h.none@localhost>
-References: <1591915710.rakbpzst8h.none.ref@localhost>
+From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 0/13] Patches to improve transfer efficiency for
+ Rockchip SoCs.
+Date: Thu, 11 Jun 2020 21:06:07 -0400
+Message-ID: <CAMdYzYr+NF7L3KKzcGano=j9V844Gy8gH03hD++CoPe8Ao1QxQ@mail.gmail.com>
+References: <1591665267-37713-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Joerg Roedel <joro@8bytes.org>, linux-kernel@vger.kernel.org, David Rientjes <rientjes@google.com>, Christoph Hellwig <hch@lst.de>
-Cc: Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Marek Szyprowski <m.szyprowski@samsung.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, David Woodhouse <dwmw2@infradead.org>, Lu Baolu <baolu.lu@linux.intel.com>, Andy Gross <agross@kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>, Rob Clark <robdclark@gmail.com>, Heiko Stuebner <heiko@sntech.de>, Gerald Schaefer <gerald.schaefer@de.ibm.com>, Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Jean-Philippe Brucker <jean-philippe@linaro.org>, Daniel Drake <drake@endlessm.com>, jonathan.derrick@intel.com, linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.orglinux
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1591665267-37713-1-git-send-email-sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Vinod Koul <vkoul-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Carlos de Paula <me-FwFLQrstKkX3oGB3hsPCZA@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Good Evening,
 
-amdgpu + IOMMU + SME is now working for me on 5.7, yay! But, it is=20
-broken on torvalds master, boo. On boot, depending on which exact commit=20
-I test, it either hangs immediately (with built-in driver, before=20
-starting initramfs), displays some errors then hangs, or spams the=20
-screen with many amdgpu errors.
+I am currently testing this on the rk3399-rockpro64, and it appears to
+fully fix the gmac problem without using txpbl.
+PCIe also seems to be more stable at high load.
+I need to conduct long term testing, but it seems to be doing very well.
 
-I bisected the black screen hang to:
+Unfortunately it doesn't fix the rk3328 gmac controller.
 
-commit dce8d6964ebdb333383bacf5e7ab8c27df151218
-Author: Joerg Roedel <jroedel@suse.de>
-Date:   Wed Apr 29 15:36:53 2020 +0200
+Tested-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-    iommu/amd: Convert to probe/release_device() call-backs
-
-    Convert the AMD IOMMU Driver to use the probe_device() and
-    release_device() call-backs of iommu_ops, so that the iommu core code
-    does the group and sysfs setup.
-
-    Signed-off-by: Joerg Roedel <jroedel@suse.de>
-    Link: https://lore.kernel.org/r/20200429133712.31431-16-joro@8bytes.org
-    Signed-off-by: Joerg Roedel <jroedel@suse.de>
-
-Testing torvalds master (623f6dc593) with the containing merge=20
-(98bdc74b36) plus the DMA mapping merge (4e94d08734) reverted allows=20
-amdgpu + IOMMU + SME to once again work.
-
-I think that nobody is really working on amdgpu + SME, but it would be a=20
-shame if it was supported and then incidentally broken by a small=20
-change.
-
-I am using an ASRock B450 Pro4 with Ryzen 1600 and ASUS RX 480. I don't=20
-understand this code at all, but let me know what I can do to=20
-troubleshoot.
-
-Thanks,
-Alex.
+On Mon, Jun 8, 2020 at 9:15 PM Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>
+>
+>
+> Changes in v2:
+> - fix FATAL ERROR: Unable to parse input tree
+>
+> Sugar Zhang (13):
+>   dmaengine: pl330: Remove the burst limit for quirk 'NO-FLUSHP'
+>   dmaengine: pl330: Add quirk 'arm,pl330-periph-burst'
+>   dt-bindings: dma: pl330: Document the quirk 'arm,pl330-periph-burst'
+>   ARM: dts: rk3036: Add 'arm,pl330-periph-burst' for dmac
+>   ARM: dts: rk322x: Add 'arm,pl330-periph-burst' for dmac
+>   ARM: dts: rk3288: Add 'arm,pl330-periph-burst' for dmac
+>   ARM: dts: rk3xxx: Add 'arm,pl330-periph-burst' for dmac
+>   ARM: dts: rv1108: Add 'arm,pl330-periph-burst' for dmac
+>   arm64: dts: px30: Add 'arm,pl330-periph-burst' for dmac
+>   arm64: dts: rk3308: Add 'arm,pl330-periph-burst' for dmac
+>   arm64: dts: rk3328: Add 'arm,pl330-periph-burst' for dmac
+>   arm64: dts: rk3368: Add 'arm,pl330-periph-burst' for dmac
+>   arm64: dts: rk3399: Add 'arm,pl330-periph-burst' for dmac
+>
+>  .../devicetree/bindings/dma/arm-pl330.txt          |  1 +
+>  arch/arm/boot/dts/rk3036.dtsi                      |  1 +
+>  arch/arm/boot/dts/rk322x.dtsi                      |  1 +
+>  arch/arm/boot/dts/rk3288.dtsi                      |  3 ++
+>  arch/arm/boot/dts/rk3xxx.dtsi                      |  3 ++
+>  arch/arm/boot/dts/rv1108.dtsi                      |  1 +
+>  arch/arm64/boot/dts/rockchip/px30.dtsi             |  1 +
+>  arch/arm64/boot/dts/rockchip/rk3308.dtsi           |  2 +
+>  arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  1 +
+>  arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  2 +
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  2 +
+>  drivers/dma/pl330.c                                | 44 +++++++++++++++-------
+>  12 files changed, 49 insertions(+), 13 deletions(-)
+>
+> --
+> 2.7.4
+>
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
