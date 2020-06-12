@@ -1,85 +1,73 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [PATCH v2 3/4] media: staging: rkisp1: rsz: set output format to
- YUV422 if cap format is YUV444
-Date: Fri, 12 Jun 2020 14:45:00 +0200
-Message-ID: <aa52f9f8-d9e9-06b2-22df-bbab2d26b516@collabora.com>
-References: <20200515142952.20163-1-dafna.hirschfeld@collabora.com>
- <20200515142952.20163-4-dafna.hirschfeld@collabora.com>
- <CAHD77HkjjWMOcX3oLnzdMuzZM-_NSydStnzLLcHEFRenL23d-A@mail.gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [RESEND PATCH v3 0/6] media: staging: rkisp1: bugs fixes and vars
+ renames
+Date: Fri, 12 Jun 2020 16:31:35 +0200
+Message-ID: <2f0f7297-6067-9af0-c544-fc7defad943d@xs4all.nl>
+References: <20200611154551.25022-1-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <CAHD77HkjjWMOcX3oLnzdMuzZM-_NSydStnzLLcHEFRenL23d-A@mail.gmail.com>
+In-Reply-To: <20200611154551.25022-1-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Helen Koike <helen.koike@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: helen.koike@collabora.com, ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
+(dropped the CC to stable)
 
+Dafna,
 
-On 27.05.20 01:09, Tomasz Figa wrote:
-> On Fri, May 15, 2020 at 4:30 PM Dafna Hirschfeld
-> <dafna.hirschfeld@collabora.com> wrote:
->>
->> If the capture format is YUV444M then the memory input format
->> should be YUV422, so the resizer should not change the default
->> hdiv, vdiv in that case.
->>
->> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
->> ---
->>   drivers/staging/media/rkisp1/rkisp1-resizer.c | 7 ++++---
->>   1 file changed, 4 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
->> index 04a29af8cc92..5f9740ddd558 100644
->> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
->> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
->> @@ -394,10 +394,11 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
->>           * (4:2:2 -> 4:2:0 for example). So the width/height of the CbCr
->>           * streams should be set according to the pixel format in the capture.
->>           * The resizer always gets the input as YUV422. If the capture format
->> -        * is RGB then the memory input (the resizer output) should be YUV422
->> -        * so we use the hdiv, vdiv of the YUV422 info in this case.
->> +        * is RGB or YUV444 then the memory input (the resizer output) should
->> +        * be YUV422 so we use the hdiv, vdiv of the YUV422 info in this case.
->>           */
->> -       if (v4l2_is_format_yuv(cap->pix.info)) {
->> +       if (v4l2_is_format_yuv(cap->pix.info) &&
->> +           cap->pix.info->format != V4L2_PIX_FMT_YUV444M) {
->>                  src_c.width = cap->pix.info->hdiv;
->>                  src_c.height = cap->pix.info->vdiv;
+Can you repost this an another RESEND, but without the CC to stable?
+
+That will make it easier to review otherwise any reply would go to stable
+as well and just annoy Greg :-)
+
+If you need patches to go to stable, then add a Cc: line to stable after your
+Signed-off-by tag. When the patch is merged into the mainline kernel it will
+be automatically Cc-ed to stable.
+
+Regards,
+
+	Hans
+
+On 11/06/2020 17:45, Dafna Hirschfeld wrote:
+> RESEND the patchset because I forgot to add the first two patches
+> to the set
 > 
-> As pointed out in another thread, this should have been the original
-> size divided by the divisor and not just the latter alone.
+> The first two patches in this patchset are two bug fixes related to the enumeration and
+> settings of the sink format of the resizer entity.
+> The next 3 patches are renaming/removing macros and variables.
+> patch 6 adds documentation to the struct rkisp1_isp_mbus_info
 > 
-> It seems a bit suspicious to me that we don't need to upscale the
-> chroma planes here, because it would mean that the MI itself would be
-> doing some horizontal pixel doubling. The hardware documentation
-> doesn't really explain this, though.
+> changes from v2:
+> - patch 3 is new - remove macro RKISP1_DIR_SINK_SRC since the code is more readable without it.
+> - patch 5 - rename 'direction' to 'isp_pads_mask' instead of 'isp_pads_flags'
+> - patch 6 is new - add documentation of the struct 'rkisp1_isp_mbus_info'
 > 
-> Have you been able to validate that the setting without upscaling
-> indeed produces correct output?
-
-Hi,
-I investigated it again, without this patch, the frames on mainpath for YUV444 look good: https://imgur.com/a/NtazWhY
-but there is a problem on selfpath: https://imgur.com/a/vQJPqAn
-
-This patch somehow solves the problem on selfpath but ruins the frames on mainpath.
-
-I think the bug is actually in another place in the code. The function 'rkisp1_sp_config'
-sets a constant value RKISP1_MI_CTRL_SP_INPUT_YUV422 as the input format on the RKISP1_CIF_MI_CTRL register.
-But the value should be set according to the configuration. For some reason the problem arises only
-when trying to capture yuv444. When I capture yuv420 on the selfpath the frame looks good although the
-value RKISP1_MI_CTRL_SP_INPUT_YUV422 is set.
-Setting the the SP_INPUT_* according to the configuration seems to solve the problem.
-
-Thanks,
-Dafna
-
-
+> changes from v1:
+> - added "Fixes: 56e3b29f9f6b "media: staging: rkisp1: add streaming paths"
+> to the commit log of the first two patches.
+> - added two patches. One patch rename the macros "RKISP1_DIR_*"
+> to "RKISP1_ISP_SD_*", another that rename the field 'direction'
+> in 'struct rkisp1_isp_mbus_info' to 'isp_pads_flags'
 > 
-> Best regards,
-> Tomasz
+> Dafna Hirschfeld (6):
+>   media: staging: rkisp1: rsz: supported formats are the isp's src
+>     formats, not sink formats
+>   media: staging: rkisp1: rsz: set default format if the given format is
+>     not RKISP1_DIR_SRC
+>   media: staging: rkisp1: remove macro RKISP1_DIR_SINK_SRC
+>   media: staging: rkisp1: rename macros 'RKISP1_DIR_*' to
+>     'RKISP1_ISP_SD_*'
+>   media: staging: rkisp1: rename the field 'direction' in
+>     'rkisp1_isp_mbus_info' to 'isp_pads_mask'
+>   media: staging: rkisp1: common: add documentation for struct
+>     rkisp1_isp_mbus_info
+> 
+>  drivers/staging/media/rkisp1/rkisp1-common.h  | 18 ++++++-
+>  drivers/staging/media/rkisp1/rkisp1-isp.c     | 50 +++++++++----------
+>  drivers/staging/media/rkisp1/rkisp1-resizer.c |  6 +--
+>  3 files changed, 43 insertions(+), 31 deletions(-)
 > 
