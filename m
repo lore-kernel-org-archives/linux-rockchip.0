@@ -1,82 +1,85 @@
-From: sugar zhang <sugar.zhang@rock-chips.com>
-Subject: Re: [PATCH v2 0/13] Patches to improve transfer efficiency for
- Rockchip SoCs.
-Date: Fri, 12 Jun 2020 16:58:47 +0800
-Message-ID: <2b12edc3-bd89-e103-f6cb-cdd47fcabb49@rock-chips.com>
-References: <1591665267-37713-1-git-send-email-sugar.zhang@rock-chips.com>
- <CAMdYzYr+NF7L3KKzcGano=j9V844Gy8gH03hD++CoPe8Ao1QxQ@mail.gmail.com>
- <CAMdYzYqRTbePLKZ6q39Ao3sgLU0xUvrLmwYTVU3feEb4ob6FuQ@mail.gmail.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH v2 3/4] media: staging: rkisp1: rsz: set output format to
+ YUV422 if cap format is YUV444
+Date: Fri, 12 Jun 2020 14:45:00 +0200
+Message-ID: <aa52f9f8-d9e9-06b2-22df-bbab2d26b516@collabora.com>
+References: <20200515142952.20163-1-dafna.hirschfeld@collabora.com>
+ <20200515142952.20163-4-dafna.hirschfeld@collabora.com>
+ <CAHD77HkjjWMOcX3oLnzdMuzZM-_NSydStnzLLcHEFRenL23d-A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <CAMdYzYqRTbePLKZ6q39Ao3sgLU0xUvrLmwYTVU3feEb4ob6FuQ@mail.gmail.com>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Peter Geis <pgwipeout@gmail.com>
-Cc: devicetree@vger.kernel.org, Carlos de Paula <me@carlosedp.com>, Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>, Daniel Lezcano <daniel.lezcano@linaro.org>, linux-kernel@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>, "Leonidas P. Papadakos" <papadakospan@gmail.com>, Miquel Raynal <miquel.raynal@bootlin.com>, dmaengine@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>, Chen-Yu Tsai <wens@csie.org>, Robin Murphy <robin.murphy@arm.com>, Dan Williams <dan.j.williams@intel.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <CAHD77HkjjWMOcX3oLnzdMuzZM-_NSydStnzLLcHEFRenL23d-A@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Helen Koike <helen.koike@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUGV0ZXIsCgpUaGFua3MgZm9yIHRlc3RpbmchIGJ1dCwgYXMgSSBrbm93LCBHTUFDIGRvZXMg
-bm90IHVzZSB0aGUgZ2VuZXJhbCAKZG1hKHBsMzMwKSBmb3IgZGF0YSB0cmFuc2ZlciwKCnNvLCB0
-aGVzZSBwYXRjaHMgc2hvdWxkIG5vdCBiZSBoZWxwZnVsIGZvciB5b3VyIGNhc2UuCgrlnKggMjAy
-MC82LzEyIDk6MTUsIFBldGVyIEdlaXMg5YaZ6YGTOgo+IE9uIFRodSwgSnVuIDExLCAyMDIwIGF0
-IDk6MDYgUE0gUGV0ZXIgR2VpcyA8cGd3aXBlb3V0QGdtYWlsLmNvbT4gd3JvdGU6Cj4+IEdvb2Qg
-RXZlbmluZywKPj4KPj4gSSBhbSBjdXJyZW50bHkgdGVzdGluZyB0aGlzIG9uIHRoZSByazMzOTkt
-cm9ja3BybzY0LCBhbmQgaXQgYXBwZWFycyB0bwo+PiBmdWxseSBmaXggdGhlIGdtYWMgcHJvYmxl
-bSB3aXRob3V0IHVzaW5nIHR4cGJsLgo+PiBQQ0llIGFsc28gc2VlbXMgdG8gYmUgbW9yZSBzdGFi
-bGUgYXQgaGlnaCBsb2FkLgo+PiBJIG5lZWQgdG8gY29uZHVjdCBsb25nIHRlcm0gdGVzdGluZywg
-YnV0IGl0IHNlZW1zIHRvIGJlIGRvaW5nIHZlcnkgd2VsbC4KPiBCZWxheSB0aGF0LCBpdCBkb2Vz
-IG1ha2UgaXQgaGFyZGVyIHRvIHRyaWdnZXIsIGJ1dCB0aGUgaXNzdWUgc3RpbGwKPiByZW1haW5z
-IG9uIHRoZSByazMzOTkuCj4KPj4gVW5mb3J0dW5hdGVseSBpdCBkb2Vzbid0IGZpeCB0aGUgcmsz
-MzI4IGdtYWMgY29udHJvbGxlci4KPj4KPj4gVGVzdGVkLWJ5OiBQZXRlciBHZWlzIDxwZ3dpcGVv
-dXRAZ21haWwuY29tPgo+Pgo+PiBPbiBNb24sIEp1biA4LCAyMDIwIGF0IDk6MTUgUE0gU3VnYXIg
-WmhhbmcgPHN1Z2FyLnpoYW5nQHJvY2stY2hpcHMuY29tPiB3cm90ZToKPj4+Cj4+Pgo+Pj4gQ2hh
-bmdlcyBpbiB2MjoKPj4+IC0gZml4IEZBVEFMIEVSUk9SOiBVbmFibGUgdG8gcGFyc2UgaW5wdXQg
-dHJlZQo+Pj4KPj4+IFN1Z2FyIFpoYW5nICgxMyk6Cj4+PiAgICBkbWFlbmdpbmU6IHBsMzMwOiBS
-ZW1vdmUgdGhlIGJ1cnN0IGxpbWl0IGZvciBxdWlyayAnTk8tRkxVU0hQJwo+Pj4gICAgZG1hZW5n
-aW5lOiBwbDMzMDogQWRkIHF1aXJrICdhcm0scGwzMzAtcGVyaXBoLWJ1cnN0Jwo+Pj4gICAgZHQt
-YmluZGluZ3M6IGRtYTogcGwzMzA6IERvY3VtZW50IHRoZSBxdWlyayAnYXJtLHBsMzMwLXBlcmlw
-aC1idXJzdCcKPj4+ICAgIEFSTTogZHRzOiByazMwMzY6IEFkZCAnYXJtLHBsMzMwLXBlcmlwaC1i
-dXJzdCcgZm9yIGRtYWMKPj4+ICAgIEFSTTogZHRzOiByazMyMng6IEFkZCAnYXJtLHBsMzMwLXBl
-cmlwaC1idXJzdCcgZm9yIGRtYWMKPj4+ICAgIEFSTTogZHRzOiByazMyODg6IEFkZCAnYXJtLHBs
-MzMwLXBlcmlwaC1idXJzdCcgZm9yIGRtYWMKPj4+ICAgIEFSTTogZHRzOiByazN4eHg6IEFkZCAn
-YXJtLHBsMzMwLXBlcmlwaC1idXJzdCcgZm9yIGRtYWMKPj4+ICAgIEFSTTogZHRzOiBydjExMDg6
-IEFkZCAnYXJtLHBsMzMwLXBlcmlwaC1idXJzdCcgZm9yIGRtYWMKPj4+ICAgIGFybTY0OiBkdHM6
-IHB4MzA6IEFkZCAnYXJtLHBsMzMwLXBlcmlwaC1idXJzdCcgZm9yIGRtYWMKPj4+ICAgIGFybTY0
-OiBkdHM6IHJrMzMwODogQWRkICdhcm0scGwzMzAtcGVyaXBoLWJ1cnN0JyBmb3IgZG1hYwo+Pj4g
-ICAgYXJtNjQ6IGR0czogcmszMzI4OiBBZGQgJ2FybSxwbDMzMC1wZXJpcGgtYnVyc3QnIGZvciBk
-bWFjCj4+PiAgICBhcm02NDogZHRzOiByazMzNjg6IEFkZCAnYXJtLHBsMzMwLXBlcmlwaC1idXJz
-dCcgZm9yIGRtYWMKPj4+ICAgIGFybTY0OiBkdHM6IHJrMzM5OTogQWRkICdhcm0scGwzMzAtcGVy
-aXBoLWJ1cnN0JyBmb3IgZG1hYwo+Pj4KPj4+ICAgLi4uL2RldmljZXRyZWUvYmluZGluZ3MvZG1h
-L2FybS1wbDMzMC50eHQgICAgICAgICAgfCAgMSArCj4+PiAgIGFyY2gvYXJtL2Jvb3QvZHRzL3Jr
-MzAzNi5kdHNpICAgICAgICAgICAgICAgICAgICAgIHwgIDEgKwo+Pj4gICBhcmNoL2FybS9ib290
-L2R0cy9yazMyMnguZHRzaSAgICAgICAgICAgICAgICAgICAgICB8ICAxICsKPj4+ICAgYXJjaC9h
-cm0vYm9vdC9kdHMvcmszMjg4LmR0c2kgICAgICAgICAgICAgICAgICAgICAgfCAgMyArKwo+Pj4g
-ICBhcmNoL2FybS9ib290L2R0cy9yazN4eHguZHRzaSAgICAgICAgICAgICAgICAgICAgICB8ICAz
-ICsrCj4+PiAgIGFyY2gvYXJtL2Jvb3QvZHRzL3J2MTEwOC5kdHNpICAgICAgICAgICAgICAgICAg
-ICAgIHwgIDEgKwo+Pj4gICBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3B4MzAuZHRzaSAg
-ICAgICAgICAgICB8ICAxICsKPj4+ICAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMz
-MDguZHRzaSAgICAgICAgICAgfCAgMiArCj4+PiAgIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
-aXAvcmszMzI4LmR0c2kgICAgICAgICAgIHwgIDEgKwo+Pj4gICBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzM2OC5kdHNpICAgICAgICAgICB8ICAyICsKPj4+ICAgYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazMzOTkuZHRzaSAgICAgICAgICAgfCAgMiArCj4+PiAgIGRyaXZl
-cnMvZG1hL3BsMzMwLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgNDQgKysrKysr
-KysrKysrKysrLS0tLS0tLQo+Pj4gICAxMiBmaWxlcyBjaGFuZ2VkLCA0OSBpbnNlcnRpb25zKCsp
-LCAxMyBkZWxldGlvbnMoLSkKPj4+Cj4+PiAtLQo+Pj4gMi43LjQKPj4+Cj4+Pgo+Pj4KPj4+Cj4+
-PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwo+Pj4gTGlu
-dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4+PiBMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
-YWQub3JnCj4+PiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCj4KLS0gCkJlc3QgUmVnYXJkcyEK5byg5a2m5bm/L1N1Z2FyCuemj+W3nueR
-nuiKr+W+rueUteWtkOiCoeS7veaciemZkOWFrOWPuApGdXpob3UgUm9ja2NoaXAgRWxlY3Ryb25p
-Y3MgQ28uTHRkCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlzdApsaW51eC1hcm0ta2VybmVsQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1hcm0ta2VybmVsCg==
+
+
+On 27.05.20 01:09, Tomasz Figa wrote:
+> On Fri, May 15, 2020 at 4:30 PM Dafna Hirschfeld
+> <dafna.hirschfeld@collabora.com> wrote:
+>>
+>> If the capture format is YUV444M then the memory input format
+>> should be YUV422, so the resizer should not change the default
+>> hdiv, vdiv in that case.
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>> ---
+>>   drivers/staging/media/rkisp1/rkisp1-resizer.c | 7 ++++---
+>>   1 file changed, 4 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> index 04a29af8cc92..5f9740ddd558 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> @@ -394,10 +394,11 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
+>>           * (4:2:2 -> 4:2:0 for example). So the width/height of the CbCr
+>>           * streams should be set according to the pixel format in the capture.
+>>           * The resizer always gets the input as YUV422. If the capture format
+>> -        * is RGB then the memory input (the resizer output) should be YUV422
+>> -        * so we use the hdiv, vdiv of the YUV422 info in this case.
+>> +        * is RGB or YUV444 then the memory input (the resizer output) should
+>> +        * be YUV422 so we use the hdiv, vdiv of the YUV422 info in this case.
+>>           */
+>> -       if (v4l2_is_format_yuv(cap->pix.info)) {
+>> +       if (v4l2_is_format_yuv(cap->pix.info) &&
+>> +           cap->pix.info->format != V4L2_PIX_FMT_YUV444M) {
+>>                  src_c.width = cap->pix.info->hdiv;
+>>                  src_c.height = cap->pix.info->vdiv;
+> 
+> As pointed out in another thread, this should have been the original
+> size divided by the divisor and not just the latter alone.
+> 
+> It seems a bit suspicious to me that we don't need to upscale the
+> chroma planes here, because it would mean that the MI itself would be
+> doing some horizontal pixel doubling. The hardware documentation
+> doesn't really explain this, though.
+> 
+> Have you been able to validate that the setting without upscaling
+> indeed produces correct output?
+
+Hi,
+I investigated it again, without this patch, the frames on mainpath for YUV444 look good: https://imgur.com/a/NtazWhY
+but there is a problem on selfpath: https://imgur.com/a/vQJPqAn
+
+This patch somehow solves the problem on selfpath but ruins the frames on mainpath.
+
+I think the bug is actually in another place in the code. The function 'rkisp1_sp_config'
+sets a constant value RKISP1_MI_CTRL_SP_INPUT_YUV422 as the input format on the RKISP1_CIF_MI_CTRL register.
+But the value should be set according to the configuration. For some reason the problem arises only
+when trying to capture yuv444. When I capture yuv420 on the selfpath the frame looks good although the
+value RKISP1_MI_CTRL_SP_INPUT_YUV422 is set.
+Setting the the SP_INPUT_* according to the configuration seems to solve the problem.
+
+Thanks,
+Dafna
+
+
+> 
+> Best regards,
+> Tomasz
+> 
