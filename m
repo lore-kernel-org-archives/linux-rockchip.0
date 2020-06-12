@@ -1,54 +1,64 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 1/2] rock-pi-4: Enable USB Gadget
-Date: Fri, 12 Jun 2020 12:11:06 +0530
-Message-ID: <20200612064108.459227-1-jagan@amarulasolutions.com>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH] roc-rk3399-pc: Update ENV offset, size
+Date: Fri, 12 Jun 2020 12:11:07 +0530
+Message-ID: <20200612064108.459227-2-jagan@amarulasolutions.com>
+References: <20200612064108.459227-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200612064108.459227-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable USB gadget for rock-pi-4 boards.
+Adjust the ENV offset, size to fit into all images
+on 16MB flash.
 
-This would help to use fastboot by default.
-
-Note: Connect the Host USB cable (Port A or C) to rock-pi-4
-Upper USB 3.0 port.
-
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- configs/rock-pi-4-rk3399_defconfig | 2 ++
- 1 file changed, 2 insertions(+)
+ configs/roc-pc-mezzanine-rk3399_defconfig | 4 ++--
+ configs/roc-pc-rk3399_defconfig           | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
-index f3eeef0293..a4b322074c 100644
---- a/configs/rock-pi-4-rk3399_defconfig
-+++ b/configs/rock-pi-4-rk3399_defconfig
-@@ -8,6 +8,7 @@ CONFIG_NR_DRAM_BANKS=1
- CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
- CONFIG_DEBUG_UART=y
-+# CONFIG_ANDROID_BOOT_IMAGE is not set
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4.dtb"
- CONFIG_MISC_INIT_R=y
- CONFIG_DISPLAY_BOARDINFO_LATE=y
-@@ -57,6 +58,7 @@ CONFIG_USB_EHCI_HCD=y
- CONFIG_USB_EHCI_GENERIC=y
- CONFIG_USB_DWC3=y
- CONFIG_USB_DWC3_GENERIC=y
-+CONFIG_USB_GADGET=y
- CONFIG_USB_HOST_ETHER=y
- CONFIG_USB_ETHER_ASIX=y
- CONFIG_USB_ETHER_ASIX88179=y
+diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
+index 7906948374..595f052cb7 100644
+--- a/configs/roc-pc-mezzanine-rk3399_defconfig
++++ b/configs/roc-pc-mezzanine-rk3399_defconfig
+@@ -1,8 +1,8 @@
+ CONFIG_ARM=y
+ CONFIG_ARCH_ROCKCHIP=y
+ CONFIG_SYS_TEXT_BASE=0x00200000
+-CONFIG_ENV_SIZE=0x6000
+-CONFIG_ENV_OFFSET=0x460000
++CONFIG_ENV_SIZE=0x8000
++CONFIG_ENV_OFFSET=0x3F8000
+ CONFIG_ENV_SECT_SIZE=0x1000
+ CONFIG_ROCKCHIP_RK3399=y
+ CONFIG_TARGET_ROC_PC_RK3399=y
+diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+index 046fb73858..1c4db3443f 100644
+--- a/configs/roc-pc-rk3399_defconfig
++++ b/configs/roc-pc-rk3399_defconfig
+@@ -1,8 +1,8 @@
+ CONFIG_ARM=y
+ CONFIG_ARCH_ROCKCHIP=y
+ CONFIG_SYS_TEXT_BASE=0x00200000
+-CONFIG_ENV_SIZE=0x6000
+-CONFIG_ENV_OFFSET=0x460000
++CONFIG_ENV_SIZE=0x8000
++CONFIG_ENV_OFFSET=0x3F8000
+ CONFIG_ENV_SECT_SIZE=0x1000
+ CONFIG_ROCKCHIP_RK3399=y
+ CONFIG_TARGET_ROC_PC_RK3399=y
 -- 
 2.25.1
