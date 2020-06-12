@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH] roc-rk3399-pc: Update ENV offset, size
-Date: Fri, 12 Jun 2020 12:11:07 +0530
-Message-ID: <20200612064108.459227-2-jagan@amarulasolutions.com>
+Subject: [PATCH 2/2] rock-pi-4: Enable HDMI output
+Date: Fri, 12 Jun 2020 12:11:08 +0530
+Message-ID: <20200612064108.459227-3-jagan@amarulasolutions.com>
 References: <20200612064108.459227-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -21,44 +21,34 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tom
 Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Adjust the ENV offset, size to fit into all images
-on 16MB flash.
+Enable config options to get HDMI output on RockPI-4 boards.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
- configs/roc-pc-mezzanine-rk3399_defconfig | 4 ++--
- configs/roc-pc-rk3399_defconfig           | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ configs/rock-pi-4-rk3399_defconfig | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
-index 7906948374..595f052cb7 100644
---- a/configs/roc-pc-mezzanine-rk3399_defconfig
-+++ b/configs/roc-pc-mezzanine-rk3399_defconfig
-@@ -1,8 +1,8 @@
- CONFIG_ARM=y
- CONFIG_ARCH_ROCKCHIP=y
- CONFIG_SYS_TEXT_BASE=0x00200000
--CONFIG_ENV_SIZE=0x6000
--CONFIG_ENV_OFFSET=0x460000
-+CONFIG_ENV_SIZE=0x8000
-+CONFIG_ENV_OFFSET=0x3F8000
- CONFIG_ENV_SECT_SIZE=0x1000
- CONFIG_ROCKCHIP_RK3399=y
- CONFIG_TARGET_ROC_PC_RK3399=y
-diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index 046fb73858..1c4db3443f 100644
---- a/configs/roc-pc-rk3399_defconfig
-+++ b/configs/roc-pc-rk3399_defconfig
-@@ -1,8 +1,8 @@
- CONFIG_ARM=y
- CONFIG_ARCH_ROCKCHIP=y
- CONFIG_SYS_TEXT_BASE=0x00200000
--CONFIG_ENV_SIZE=0x6000
--CONFIG_ENV_OFFSET=0x460000
-+CONFIG_ENV_SIZE=0x8000
-+CONFIG_ENV_OFFSET=0x3F8000
- CONFIG_ENV_SECT_SIZE=0x1000
- CONFIG_ROCKCHIP_RK3399=y
- CONFIG_TARGET_ROC_PC_RK3399=y
+diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
+index a4b322074c..98f71a50a5 100644
+--- a/configs/rock-pi-4-rk3399_defconfig
++++ b/configs/rock-pi-4-rk3399_defconfig
+@@ -58,6 +58,7 @@ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_GENERIC=y
+ CONFIG_USB_DWC3=y
+ CONFIG_USB_DWC3_GENERIC=y
++CONFIG_USB_KEYBOARD=y
+ CONFIG_USB_GADGET=y
+ CONFIG_USB_HOST_ETHER=y
+ CONFIG_USB_ETHER_ASIX=y
+@@ -65,5 +66,9 @@ CONFIG_USB_ETHER_ASIX88179=y
+ CONFIG_USB_ETHER_MCS7830=y
+ CONFIG_USB_ETHER_RTL8152=y
+ CONFIG_USB_ETHER_SMSC95XX=y
++CONFIG_DM_VIDEO=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_ERRNO_STR=y
 -- 
 2.25.1
