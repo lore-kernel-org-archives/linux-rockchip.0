@@ -1,78 +1,54 @@
-From: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [PATCH v2 0/13] Patches to improve transfer efficiency for
- Rockchip SoCs.
-Date: Thu, 11 Jun 2020 21:15:17 -0400
-Message-ID: <CAMdYzYqRTbePLKZ6q39Ao3sgLU0xUvrLmwYTVU3feEb4ob6FuQ@mail.gmail.com>
-References: <1591665267-37713-1-git-send-email-sugar.zhang@rock-chips.com> <CAMdYzYr+NF7L3KKzcGano=j9V844Gy8gH03hD++CoPe8Ao1QxQ@mail.gmail.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH 1/2] rock-pi-4: Enable USB Gadget
+Date: Fri, 12 Jun 2020 12:11:06 +0530
+Message-ID: <20200612064108.459227-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAMdYzYr+NF7L3KKzcGano=j9V844Gy8gH03hD++CoPe8Ao1QxQ-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Vinod Koul <vkoul-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Carlos de Paula <me-FwFLQrstKkX3oGB3hsPCZA@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, "Leonidas P. Papadakos" <papadakospan-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jun 11, 2020 at 9:06 PM Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote:
->
-> Good Evening,
->
-> I am currently testing this on the rk3399-rockpro64, and it appears to
-> fully fix the gmac problem without using txpbl.
-> PCIe also seems to be more stable at high load.
-> I need to conduct long term testing, but it seems to be doing very well.
+Enable USB gadget for rock-pi-4 boards.
 
-Belay that, it does make it harder to trigger, but the issue still
-remains on the rk3399.
+This would help to use fastboot by default.
 
->
-> Unfortunately it doesn't fix the rk3328 gmac controller.
->
-> Tested-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->
-> On Mon, Jun 8, 2020 at 9:15 PM Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
-> >
-> >
-> >
-> > Changes in v2:
-> > - fix FATAL ERROR: Unable to parse input tree
-> >
-> > Sugar Zhang (13):
-> >   dmaengine: pl330: Remove the burst limit for quirk 'NO-FLUSHP'
-> >   dmaengine: pl330: Add quirk 'arm,pl330-periph-burst'
-> >   dt-bindings: dma: pl330: Document the quirk 'arm,pl330-periph-burst'
-> >   ARM: dts: rk3036: Add 'arm,pl330-periph-burst' for dmac
-> >   ARM: dts: rk322x: Add 'arm,pl330-periph-burst' for dmac
-> >   ARM: dts: rk3288: Add 'arm,pl330-periph-burst' for dmac
-> >   ARM: dts: rk3xxx: Add 'arm,pl330-periph-burst' for dmac
-> >   ARM: dts: rv1108: Add 'arm,pl330-periph-burst' for dmac
-> >   arm64: dts: px30: Add 'arm,pl330-periph-burst' for dmac
-> >   arm64: dts: rk3308: Add 'arm,pl330-periph-burst' for dmac
-> >   arm64: dts: rk3328: Add 'arm,pl330-periph-burst' for dmac
-> >   arm64: dts: rk3368: Add 'arm,pl330-periph-burst' for dmac
-> >   arm64: dts: rk3399: Add 'arm,pl330-periph-burst' for dmac
-> >
-> >  .../devicetree/bindings/dma/arm-pl330.txt          |  1 +
-> >  arch/arm/boot/dts/rk3036.dtsi                      |  1 +
-> >  arch/arm/boot/dts/rk322x.dtsi                      |  1 +
-> >  arch/arm/boot/dts/rk3288.dtsi                      |  3 ++
-> >  arch/arm/boot/dts/rk3xxx.dtsi                      |  3 ++
-> >  arch/arm/boot/dts/rv1108.dtsi                      |  1 +
-> >  arch/arm64/boot/dts/rockchip/px30.dtsi             |  1 +
-> >  arch/arm64/boot/dts/rockchip/rk3308.dtsi           |  2 +
-> >  arch/arm64/boot/dts/rockchip/rk3328.dtsi           |  1 +
-> >  arch/arm64/boot/dts/rockchip/rk3368.dtsi           |  2 +
-> >  arch/arm64/boot/dts/rockchip/rk3399.dtsi           |  2 +
-> >  drivers/dma/pl330.c                                | 44 +++++++++++++++-------
-> >  12 files changed, 49 insertions(+), 13 deletions(-)
-> >
-> > --
-> > 2.7.4
-> >
-> >
-> >
-> >
-> > _______________________________________________
-> > Linux-rockchip mailing list
-> > Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> > http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Note: Connect the Host USB cable (Port A or C) to rock-pi-4
+Upper USB 3.0 port.
+
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+ configs/rock-pi-4-rk3399_defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
+index f3eeef0293..a4b322074c 100644
+--- a/configs/rock-pi-4-rk3399_defconfig
++++ b/configs/rock-pi-4-rk3399_defconfig
+@@ -8,6 +8,7 @@ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+ CONFIG_DEBUG_UART_CLOCK=24000000
+ CONFIG_DEBUG_UART=y
++# CONFIG_ANDROID_BOOT_IMAGE is not set
+ CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4.dtb"
+ CONFIG_MISC_INIT_R=y
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+@@ -57,6 +58,7 @@ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_GENERIC=y
+ CONFIG_USB_DWC3=y
+ CONFIG_USB_DWC3_GENERIC=y
++CONFIG_USB_GADGET=y
+ CONFIG_USB_HOST_ETHER=y
+ CONFIG_USB_ETHER_ASIX=y
+ CONFIG_USB_ETHER_ASIX88179=y
+-- 
+2.25.1
