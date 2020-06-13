@@ -1,124 +1,84 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v9 05/11] dt-bindings: display: add i.MX6 MIPI DSI host
- controller doc
-Date: Fri, 12 Jun 2020 15:11:01 -0600
-Message-ID: <20200612211101.GA3808755@bogus>
-References: <20200609174959.955926-1-adrian.ratiu@collabora.com>
- <20200609174959.955926-6-adrian.ratiu@collabora.com>
+From: Dafna Hirschfeld <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [RESEND PATCH v3 2/6] media: staging: rkisp1: rsz: set default format
+ if the given format is not RKISP1_DIR_SRC
+Date: Sat, 13 Jun 2020 11:13:49 +0200
+Message-ID: <20200613091353.12689-3-dafna.hirschfeld@collabora.com>
+References: <20200613091353.12689-1-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200609174959.955926-6-adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Martyn Welch <martyn.welch@coll>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200613091353.12689-1-dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org
+Cc: mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna3-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jun 09, 2020 at 08:49:53PM +0300, Adrian Ratiu wrote:
-> This provides an example DT binding for the MIPI DSI host controller
+When setting the sink format of the 'rkisp1_resizer'
+the format should be supported by 'rkisp1_isp' on
+the video source pad. This patch checks this condition
+and set the format to default if the condition is false.
 
-It's not an example. It defines the exact binding for this peripheral.
+Fixes: 56e3b29f9f6b "media: staging: rkisp1: add streaming paths"
 
-> present on the i.MX6 SoC based on Synopsis DesignWare v1.01 IP.
-> 
-> Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-> Cc: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-> Cc: Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Cc: Laurent Pinchart <laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-> Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> Tested-by: Adrian Pop <pop.adrian61-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> Tested-by: Arnaud Ferraris <arnaud.ferraris-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Signed-off-by: Sjoerd Simons <sjoerd.simons-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Signed-off-by: Martyn Welch <martyn.welch-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> Signed-off-by: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
-> Changes since v8:
->   - Fixed small compatible string typo caught by checkpatch
->   - Added custom select for 'fsl,imx6-mipi-dsi' (Rob)
->   - Replaced additionalProperties -> unevaluatedProperties (Rob)
->   - Dropped all nodes not adding any new constraints apart from
->   the recently upstreamed snps,dw-mipi-dsi.yaml (Rob)
-> 
-> Changes since v7:
->   - Clarified port@0,1 descriptions, marked them as required and
->   added missing port@0 in example (Laurent)
-> 
-> Changes since v6:
->   - Added ref to the newly created snps,dw-mipi-dsi.yaml (Laurent)
->   - Moved *-cells properties outside patternProperties (Laurent)
->   - Removed the panel port documentation (Laurent)
->   - Wrapped lines at 80 chars, typo fixes, sort includes (Laurent)
-> 
-> Changes since v5:
->   - Fixed missing reg warning (Fabio)
->   - Updated dt-schema and fixed warnings (Rob)
-> 
-> Changes since v4:
->   - Fixed yaml binding to pass `make dt_binding_check dtbs_check`
->   and addressed received binding feedback (Rob)
-> 
-> Changes since v3:
->   - Added commit message (Neil)
->   - Converted to yaml format (Neil)
->   - Minor dt node + driver fixes (Rob)
->   - Added small panel example to the host controller binding
-> 
-> Changes since v2:
->   - Fixed commit tags (Emil)
-> ---
->  .../display/imx/fsl,mipi-dsi-imx6.yaml        | 112 ++++++++++++++++++
->  1 file changed, 112 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml b/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
-> new file mode 100644
-> index 0000000000000..86093729fd5f9
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
-> @@ -0,0 +1,112 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/imx/fsl,mipi-dsi-imx6.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Freescale i.MX6 DW MIPI DSI Host Controller
-> +
-> +maintainers:
-> +  - Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> +
-> +description: |
-> +  The i.MX6 DSI host controller is a Synopsys DesignWare MIPI DSI v1.01
-> +  IP block with a companion PHY IP.
-> +
-> +  These DT bindings follow the Synopsys DW MIPI DSI bindings defined in
-> +  Documentation/devicetree/bindings/display/bridge/dw_mipi_dsi.txt with
-> +  the following device-specific properties.
-> +
-> +allOf:
-> +  - $ref: ../bridge/snps,dw-mipi-dsi.yaml#
-> +
-> +# Need a custom select here or 'snps,dw-mipi-dsi' will match lots of nodes
-> +select:
-> +  properties:
-> +    compatible:
-> +      contains:
-> +        enum:
-> +          - fsl,imx6-mipi-dsi
-> +  required:
-> +    - compatible
-> +
-> +properties:
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Reviewed-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+---
+ drivers/staging/media/rkisp1/rkisp1-common.h  | 4 ++++
+ drivers/staging/media/rkisp1/rkisp1-isp.c     | 4 ----
+ drivers/staging/media/rkisp1/rkisp1-resizer.c | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-> +  '#address-cells':
-> +    const: 1
-> +
-> +  '#size-cells':
-> +    const: 0
-
-These 2 are covered by dsi-controller.yaml, so you can drop them.
-
-Otherwise,
-
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+index 0c4fe503adc9..39d8e46d8d8a 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-common.h
++++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+@@ -22,6 +22,10 @@
+ #include "rkisp1-regs.h"
+ #include "uapi/rkisp1-config.h"
+ 
++#define RKISP1_DIR_SRC BIT(0)
++#define RKISP1_DIR_SINK BIT(1)
++#define RKISP1_DIR_SINK_SRC (RKISP1_DIR_SINK | RKISP1_DIR_SRC)
++
+ #define RKISP1_ISP_MAX_WIDTH		4032
+ #define RKISP1_ISP_MAX_HEIGHT		3024
+ #define RKISP1_ISP_MIN_WIDTH		32
+diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
+index dc2b59a0160a..e66e87d6ea8b 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-isp.c
++++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
+@@ -23,10 +23,6 @@
+ 
+ #define RKISP1_ISP_DEV_NAME	RKISP1_DRIVER_NAME "_isp"
+ 
+-#define RKISP1_DIR_SRC BIT(0)
+-#define RKISP1_DIR_SINK BIT(1)
+-#define RKISP1_DIR_SINK_SRC (RKISP1_DIR_SINK | RKISP1_DIR_SRC)
+-
+ /*
+  * NOTE: MIPI controller and input MUX are also configured in this file.
+  * This is because ISP Subdev describes not only ISP submodule (input size,
+diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+index d64c064bdb1d..fa28f4bd65c0 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
++++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+@@ -542,7 +542,7 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
+ 					    which);
+ 	sink_fmt->code = format->code;
+ 	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
+-	if (!mbus_info) {
++	if (!mbus_info || !(mbus_info->direction & RKISP1_DIR_SRC)) {
+ 		sink_fmt->code = RKISP1_DEF_FMT;
+ 		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
+ 	}
+-- 
+2.17.1
