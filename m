@@ -1,250 +1,464 @@
-From: Dafna Hirschfeld <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [RESEND PATCH v3 5/6] media: staging: rkisp1: rename the field
- 'direction' in 'rkisp1_isp_mbus_info' to 'isp_pads_mask'
-Date: Sat, 13 Jun 2020 11:13:52 +0200
-Message-ID: <20200613091353.12689-6-dafna.hirschfeld@collabora.com>
-References: <20200613091353.12689-1-dafna.hirschfeld@collabora.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v6 2/8] mtd: rawnand: rockchip: NFC drivers for RK3308,
+ RK2928 and others
+Date: Sat, 13 Jun 2020 15:31:52 +0200
+Message-ID: <7e4ce8b1-73c4-8b9a-5726-b121f53de8df@gmail.com>
+References: <20200609074020.23860-1-yifeng.zhao@rock-chips.com>
+ <20200609074020.23860-3-yifeng.zhao@rock-chips.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200613091353.12689-1-dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org
-Cc: mchehab-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna3-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, hverkuil-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, sakari.ailus-VuQAYsv1563Yd54FQh9/CA@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <20200609074020.23860-3-yifeng.zhao@rock-chips.com>
+Content-Language: en-US
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Yifeng Zhao <yifeng.zhao@rock-chips.com>, miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com, robh+dt@kernel.org
+Cc: devicetree@vger.kernel.org, heiko@sntech.de, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The field 'direction' in 'struct rkisp1_isp_mbus_info' is a mask
-of the supported pads of the mbus code. Therefore
-the name 'isp_pads_mask' is better.
-The patch also rename a local variable 'dir' that holds such mask
-to 'pad'.
+Hi Yifeng, Miquel,
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
- drivers/staging/media/rkisp1/rkisp1-common.h  |  2 +-
- drivers/staging/media/rkisp1/rkisp1-isp.c     | 46 +++++++++----------
- drivers/staging/media/rkisp1/rkisp1-resizer.c |  2 +-
- 3 files changed, 25 insertions(+), 25 deletions(-)
+Some more comments about swap();
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-index 12bd9d05050d..13c5eeff66f3 100644
---- a/drivers/staging/media/rkisp1/rkisp1-common.h
-+++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-@@ -282,7 +282,7 @@ struct rkisp1_isp_mbus_info {
- 	u32 yuv_seq;
- 	u8 bus_width;
- 	enum rkisp1_fmt_raw_pat_type bayer_pat;
--	unsigned int direction;
-+	unsigned int isp_pads_mask;
- };
- 
- static inline void
-diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-index b21a67aea433..2dd01edf8ff1 100644
---- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-@@ -58,119 +58,119 @@ static const struct rkisp1_isp_mbus_info rkisp1_isp_formats[] = {
- 	{
- 		.mbus_code	= MEDIA_BUS_FMT_YUYV8_2X8,
- 		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
--		.direction	= RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SRGGB10_1X10,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
- 		.bayer_pat	= RKISP1_RAW_RGGB,
- 		.bus_width	= 10,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
- 		.bayer_pat	= RKISP1_RAW_BGGR,
- 		.bus_width	= 10,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SGBRG10_1X10,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
- 		.bayer_pat	= RKISP1_RAW_GBRG,
- 		.bus_width	= 10,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
- 		.bayer_pat	= RKISP1_RAW_GRBG,
- 		.bus_width	= 10,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SRGGB12_1X12,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
- 		.bayer_pat	= RKISP1_RAW_RGGB,
- 		.bus_width	= 12,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SBGGR12_1X12,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
- 		.bayer_pat	= RKISP1_RAW_BGGR,
- 		.bus_width	= 12,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SGBRG12_1X12,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
- 		.bayer_pat	= RKISP1_RAW_GBRG,
- 		.bus_width	= 12,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SGRBG12_1X12,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
- 		.bayer_pat	= RKISP1_RAW_GRBG,
- 		.bus_width	= 12,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SRGGB8_1X8,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
- 		.bayer_pat	= RKISP1_RAW_RGGB,
- 		.bus_width	= 8,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SBGGR8_1X8,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
- 		.bayer_pat	= RKISP1_RAW_BGGR,
- 		.bus_width	= 8,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SGBRG8_1X8,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
- 		.bayer_pat	= RKISP1_RAW_GBRG,
- 		.bus_width	= 8,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_SGRBG8_1X8,
- 		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
- 		.bayer_pat	= RKISP1_RAW_GRBG,
- 		.bus_width	= 8,
--		.direction	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK | RKISP1_ISP_SD_SRC,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_YUYV8_1X16,
- 		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_YUV422_8b,
- 		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCBYCR,
- 		.bus_width	= 16,
--		.direction	= RKISP1_ISP_SD_SINK,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_YVYU8_1X16,
- 		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_YUV422_8b,
- 		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_YCRYCB,
- 		.bus_width	= 16,
--		.direction	= RKISP1_ISP_SD_SINK,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_UYVY8_1X16,
- 		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_YUV422_8b,
- 		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CBYCRY,
- 		.bus_width	= 16,
--		.direction	= RKISP1_ISP_SD_SINK,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK,
- 	}, {
- 		.mbus_code	= MEDIA_BUS_FMT_VYUY8_1X16,
- 		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
- 		.mipi_dt	= RKISP1_CIF_CSI2_DT_YUV422_8b,
- 		.yuv_seq	= RKISP1_CIF_ISP_ACQ_PROP_CRYCBY,
- 		.bus_width	= 16,
--		.direction	= RKISP1_ISP_SD_SINK,
-+		.isp_pads_mask	= RKISP1_ISP_SD_SINK,
- 	},
- };
- 
-@@ -566,13 +566,13 @@ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
- 				     struct v4l2_subdev_pad_config *cfg,
- 				     struct v4l2_subdev_mbus_code_enum *code)
- {
--	unsigned int i, dir;
-+	unsigned int i, pad;
- 	int pos = 0;
- 
- 	if (code->pad == RKISP1_ISP_PAD_SINK_VIDEO) {
--		dir = RKISP1_ISP_SD_SINK;
-+		pad = RKISP1_ISP_SD_SINK;
- 	} else if (code->pad == RKISP1_ISP_PAD_SOURCE_VIDEO) {
--		dir = RKISP1_ISP_SD_SRC;
-+		pad = RKISP1_ISP_SD_SRC;
- 	} else {
- 		if (code->index > 0)
- 			return -EINVAL;
-@@ -586,7 +586,7 @@ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
- 	for (i = 0; i < ARRAY_SIZE(rkisp1_isp_formats); i++) {
- 		const struct rkisp1_isp_mbus_info *fmt = &rkisp1_isp_formats[i];
- 
--		if (fmt->direction & dir)
-+		if (fmt->isp_pads_mask & pad)
- 			pos++;
- 
- 		if (code->index == pos - 1) {
-@@ -657,7 +657,7 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
- 
- 	src_fmt->code = format->code;
- 	mbus_info = rkisp1_isp_mbus_info_get(src_fmt->code);
--	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SRC)) {
-+	if (!mbus_info || !(mbus_info->isp_pads_mask & RKISP1_ISP_SD_SRC)) {
- 		src_fmt->code = RKISP1_DEF_SRC_PAD_FMT;
- 		mbus_info = rkisp1_isp_mbus_info_get(src_fmt->code);
- 	}
-@@ -741,7 +741,7 @@ static void rkisp1_isp_set_sink_fmt(struct rkisp1_isp *isp,
- 					  which);
- 	sink_fmt->code = format->code;
- 	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
--	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SINK)) {
-+	if (!mbus_info || !(mbus_info->isp_pads_mask & RKISP1_ISP_SD_SINK)) {
- 		sink_fmt->code = RKISP1_DEF_SINK_PAD_FMT;
- 		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
- 	}
-diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-index 137298b77341..5d7a42be3d7f 100644
---- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-@@ -542,7 +542,7 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
- 					    which);
- 	sink_fmt->code = format->code;
- 	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
--	if (!mbus_info || !(mbus_info->direction & RKISP1_ISP_SD_SRC)) {
-+	if (!mbus_info || !(mbus_info->isp_pads_mask & RKISP1_ISP_SD_SRC)) {
- 		sink_fmt->code = RKISP1_DEF_FMT;
- 		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
- 	}
--- 
-2.17.1
+On 6/9/20 9:40 AM, Yifeng Zhao wrote:
+
+[..]
+
+> +static int rk_nfc_ooblayout_free(struct mtd_info *mtd, int section,
+> +				 struct mtd_oob_region *oob_region)
+> +{
+> +	struct nand_chip *chip = mtd_to_nand(mtd);
+> +
+
+> +	if (section >= chip->ecc.steps)
+> +		return -ERANGE;
+
+Given:
+
+NFC_SYS_DATA_SIZE = 4
+chip->ecc.steps = 8
+section [0..7]
+
+Total free OOB size advertised to the MTD framework is:
+
+ecc.steps * NFC_SYS_DATA_SIZE - 1 BBM
+8 * 4 - 1 = 31 bytes
+
+With link address in OOB byte [0..3] this become:
+31 - 4 = 27 bytes
+
+Does that give data lost?
+Should we limit the number of free OOB bytes by 4 more to be save?
+Is my calculation correct?
+
+See further questions about this below.
+
+> +
+> +	if (!section) {
+> +		/* The first byte is bad block mask flag. */
+> +		oob_region->length = NFC_SYS_DATA_SIZE - 1;
+> +		oob_region->offset = 1;
+> +	} else {
+> +		oob_region->length = NFC_SYS_DATA_SIZE;
+> +		oob_region->offset = section * NFC_SYS_DATA_SIZE;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int rk_nfc_ooblayout_ecc(struct mtd_info *mtd, int section,
+> +				struct mtd_oob_region *oob_region)
+> +{
+> +	struct nand_chip *chip = mtd_to_nand(mtd);
+> +
+
+> +	if (section)
+> +		return -ERANGE;
+
+With the formule above a section > 0 does not alow ECC.
+
+Just a question about the MTD inner working for Miquel:
+
+With ooblayout_free using 8 steps and this just 1 does it still generate
+the correct ECC? Does it calculate ECC over 1024B or over 8*1024B ?
+
+Should we move the text that explains the layout closer to these
+functions and add a little more text to explain why we choose this
+particular layout?
+
+/*
+ * NFC Page Data Layout:
+ *	1024 Bytes Data + 4Bytes sys data + 28Bytes~124Bytes ecc +
+ *	1024 Bytes Data + 4Bytes sys data + 28Bytes~124Bytes ecc +
+ *	......
+ * NAND Page Data Layout:
+ *	1024 * n Data + m Bytes oob
+ * Original Bad Block Mask Location:
+ *	First byte of oob(spare).
+ * nand_chip->oob_poi data layout:
+ *	4Bytes sys data + .... + 4Bytes sys data + ecc data.
+ */
+
+We expect now ECC data after n steps * 4 OOB bytes,
+but are we still using it with HW ECC or only for raw?
+
+> +
+> +	oob_region->offset = NFC_SYS_DATA_SIZE * chip->ecc.steps;
+> +	oob_region->length = mtd->oobsize - oob_region->offset;
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct mtd_ooblayout_ops rk_nfc_ooblayout_ops = {
+> +	.free = rk_nfc_ooblayout_free,
+> +	.ecc = rk_nfc_ooblayout_ecc,
+> +};
+
+[..]
+
+> +static int rk_nfc_write_page(struct mtd_info *mtd, struct nand_chip *chip,
+> +			     const u8 *buf, int page, int raw)
+> +{
+> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
+> +	struct rk_nfc_nand_chip *rk_nand = to_rk_nand(chip);
+> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
+> +	int oob_step = (ecc->bytes > 60) ? NFC_MAX_OOB_PER_STEP :
+> +			NFC_MIN_OOB_PER_STEP;
+> +	int pages_per_blk = mtd->erasesize / mtd->writesize;
+> +	int ret = 0, i, boot_rom_mode = 0;
+> +	dma_addr_t dma_data, dma_oob;
+> +	u32 reg;
+> +	u8 *oob;
+> +
+> +	nand_prog_page_begin_op(chip, page, 0, NULL, 0);
+> +
+> +	if (!raw) {
+> +		memcpy(nfc->page_buf, buf, mtd->writesize);
+> +		memset(nfc->oob_buf, 0xff, oob_step * ecc->steps);
+> +
+> +		/*
+> +		 * The first 8(some devices are 4 or 16) blocks in use by
+> +		 * the boot ROM and the first 32 bits of oob need to link
+> +		 * to the next page address in the same block.
+> +		 * Config the ECC algorithm supported by the boot ROM.
+> +		 */
+> +		if (page < pages_per_blk * rk_nand->boot_blks &&
+> +		    chip->options & NAND_IS_BOOT_MEDIUM) {
+> +			boot_rom_mode = 1;
+> +			if (rk_nand->boot_ecc != ecc->strength)
+> +				rk_nfc_hw_ecc_setup(chip, ecc,
+> +						    rk_nand->boot_ecc);
+> +		}
+> +
+> +		/*
+> +		 * Swap the first oob with the seventh oob and bad block
+> +		 * mask is saved at the seventh oob.
+> +		 */
+> +		swap(chip->oob_poi[0], chip->oob_poi[7]);
+
+Add more info on why this is swapped.
+
+LA[0..3] is a link address that the BBM shouldn't over write.
+For Yifeng: Is there an other reason?
+
+Before swap:
+
+BBM  OOB1 OOB2 OOB3, OOB4 OOB5 OOB6 OOB7, OOB8 ....
+
+After swap:
+
+OOB7 OOB1 OOB2 OOB3, OOB4 OOB5 OOB6 BBM , OOB8 ....
+
+If (!i && boot_rom_mode):
+
+LA0  LA1  LA2  LA3 , OOB4 OOB5 OOB6 BBM , OOB8 ....
+
+Read back after swap again:
+
+BBM  LA1  LA2  LA3 , OOB4 OOB5 OOB6 LA0 , OOB8 ....
+
+Question:
+Are data OOB7 OOB1 OOB2 OOB3 lost now?
+Is this correct?
+
+#################################################
+Proposal:
+Should we reduce the free OOB size by 4
+and shift everything 4 bytes to recover all bytes?
+Replace the first 4 bytes with 0XFF or LA[0..3].
+
+Normal:
+0xFF 0XFF 0XFF 0xFF, BBM  OOB1 OOB2 OOB3, OOB4
+
+If (!i && boot_rom_mode):
+LA0  LA1  LA2  LA3 , BBM  OOB1 OOB2 OOB3, OOB4
+
+Question for Miquel and Yifeng:
+Does this work? Could you test?
+
+> +
+> +		for (i = 0; i < ecc->steps; i++) {
+
+Just a proposel:
+
+		if (!i && boot_rom_mode)
+			reg = (page & (pages_per_blk - 1)) * 4;
+		else if (!i)
+			reg = 0xFFFFFFFF;
+		else	
+			oob = chip->oob_poi + (i-1) * NFC_SYS_DATA_SIZE;
+			reg = oob[0] | oob[1] << 8 | oob[2] << 16 |
+			      oob[3] << 24;
+
+> +
+> +			if (nfc->cfg->type == NFC_V6 ||
+> +			    nfc->cfg->type == NFC_V8)
+> +				nfc->oob_buf[i * oob_step / 4] = reg;
+> +			else
+> +				nfc->oob_buf[i] = reg;
+> +		}
+> +
+> +		dma_data = dma_map_single(nfc->dev, (void *)nfc->page_buf,
+> +					  mtd->writesize, DMA_TO_DEVICE);
+> +		dma_oob = dma_map_single(nfc->dev, nfc->oob_buf,
+> +					 ecc->steps * oob_step,
+> +					 DMA_TO_DEVICE);
+> +
+> +		reinit_completion(&nfc->done);
+> +		writel(INT_DMA, nfc->regs + nfc->cfg->int_en_off);
+> +
+> +		rk_nfc_xfer_start(nfc, NFC_WRITE, ecc->steps, dma_data,
+> +				  dma_oob);
+> +		ret = wait_for_completion_timeout(&nfc->done,
+> +						  msecs_to_jiffies(100));
+> +		if (!ret)
+> +			dev_warn(nfc->dev, "write: wait dma done timeout.\n");
+> +		/*
+> +		 * Whether the DMA transfer is completed or not. The driver
+> +		 * needs to check the NFC`s status register to see if the data
+> +		 * transfer was completed.
+> +		 */
+> +		ret = rk_nfc_wait_for_xfer_done(nfc);
+> +
+> +		dma_unmap_single(nfc->dev, dma_data, mtd->writesize,
+> +				 DMA_TO_DEVICE);
+> +		dma_unmap_single(nfc->dev, dma_oob, ecc->steps * oob_step,
+> +				 DMA_TO_DEVICE);
+> +
+> +		if (boot_rom_mode && rk_nand->boot_ecc != ecc->strength)
+> +			rk_nfc_hw_ecc_setup(chip, ecc, ecc->strength);
+> +
+> +		if (ret) {
+> +			ret = -EIO;
+> +			dev_err(nfc->dev,
+> +				 "write: wait transfer done timeout.\n");
+> +		}
+> +	} else {
+> +		rk_nfc_write_buf(chip, buf, mtd->writesize + + mtd->oobsize);
+
+Remove a '+'
+
+> +	}
+> +
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = nand_prog_page_end_op(chip);
+> +
+> +	/* Deselect the currently selected target. */
+> +	rk_nfc_select_chip(chip, -1);
+> +
+> +	return ret;
+> +}
+> +
+> +static int rk_nfc_write_page_raw(struct nand_chip *chip, const u8 *buf,
+> +				 int oob_on, int page)
+> +{
+> +	struct mtd_info *mtd = nand_to_mtd(chip);
+> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
+> +	u32 i;
+> +
+> +	memset(nfc->buffer, 0xff, mtd->writesize + mtd->oobsize);
+> +	swap(chip->oob_poi[0], chip->oob_poi[7]);
+> +	for (i = 0; i < chip->ecc.steps; i++) {
+> +		if (buf)
+> +			memcpy(rk_data_ptr(chip, i), data_ptr(chip, buf, i),
+> +			       chip->ecc.size);
+> +
+> +		memcpy(rk_oob_ptr(chip, i), oob_ptr(chip, i),
+> +		       NFC_SYS_DATA_SIZE);
+> +	}
+> +
+> +	return rk_nfc_write_page(mtd, chip, nfc->buffer, page, 1);
+> +}
+> +
+> +static int rk_nfc_write_oob_std(struct nand_chip *chip, int page)
+> +{
+> +	return rk_nfc_write_page_raw(chip, NULL, 1, page);
+> +}
+> +
+> +static int rk_nfc_read_page(struct mtd_info *mtd, struct nand_chip *chip,
+> +			    u32 data_offs, u32 readlen,
+> +			    u8 *buf, int page, int raw)
+> +{
+> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
+> +	struct rk_nfc_nand_chip *rk_nand = to_rk_nand(chip);
+> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
+> +	int oob_step = (ecc->bytes > 60) ? NFC_MAX_OOB_PER_STEP :
+> +			NFC_MIN_OOB_PER_STEP;
+> +	int pages_per_blk = mtd->erasesize / mtd->writesize;
+> +	dma_addr_t dma_data, dma_oob;
+> +	int ret = 0, i, boot_rom_mode = 0;
+> +	int bitflips = 0, bch_st;
+> +	u8 *oob;
+> +	u32 tmp;
+> +
+> +	nand_read_page_op(chip, page, 0, NULL, 0);
+> +	if (!raw) {
+> +		dma_data = dma_map_single(nfc->dev, nfc->page_buf,
+> +					  mtd->writesize,
+> +					  DMA_FROM_DEVICE);
+> +		dma_oob = dma_map_single(nfc->dev, nfc->oob_buf,
+> +					 ecc->steps * oob_step,
+> +					 DMA_FROM_DEVICE);
+> +
+> +		/*
+> +		 * The first 8(some devices are 4 or 16) blocks in use by
+> +		 * the bootrom.
+> +		 * Config the ECC algorithm supported by the boot ROM.
+> +		 */
+> +		if (page < pages_per_blk * rk_nand->boot_blks &&
+> +		    chip->options & NAND_IS_BOOT_MEDIUM) {
+> +			boot_rom_mode = 1;
+> +			if (rk_nand->boot_ecc != ecc->strength)
+> +				rk_nfc_hw_ecc_setup(chip, ecc,
+> +						    rk_nand->boot_ecc);
+> +		}
+> +
+> +		reinit_completion(&nfc->done);
+> +		writel(INT_DMA, nfc->regs + nfc->cfg->int_en_off);
+> +		rk_nfc_xfer_start(nfc, NFC_READ, ecc->steps, dma_data,
+> +				  dma_oob);
+> +		ret = wait_for_completion_timeout(&nfc->done,
+> +						  msecs_to_jiffies(100));
+> +		if (!ret)
+> +			dev_warn(nfc->dev, "read: wait dma done timeout.\n");
+> +		/*
+> +		 * Whether the DMA transfer is completed or not. The driver
+> +		 * needs to check the NFC`s status register to see if the data
+> +		 * transfer was completed.
+> +		 */
+> +		ret = rk_nfc_wait_for_xfer_done(nfc);
+> +		dma_unmap_single(nfc->dev, dma_data, mtd->writesize,
+> +				 DMA_FROM_DEVICE);
+> +		dma_unmap_single(nfc->dev, dma_oob, ecc->steps * oob_step,
+> +				 DMA_FROM_DEVICE);
+> +
+> +		if (ret) {
+> +			bitflips = -EIO;
+> +			dev_err(nfc->dev,
+> +				 "read: wait transfer done timeout.\n");
+> +			goto out;
+> +		}
+> +
+> +		for (i = 0; i < ecc->steps; i++) {
+> +			oob = chip->oob_poi + i * NFC_SYS_DATA_SIZE;
+> +			if (nfc->cfg->type == NFC_V6 ||
+> +			    nfc->cfg->type == NFC_V8)
+> +				tmp = nfc->oob_buf[i * oob_step / 4];
+> +			else
+> +				tmp = nfc->oob_buf[i];
+> +			*oob++ = (u8)tmp;
+> +			*oob++ = (u8)(tmp >> 8);
+> +			*oob++ = (u8)(tmp >> 16);
+> +			*oob++ = (u8)(tmp >> 24);
+> +		}
+> +
+> +		/*
+> +		 * Swap the first oob with the seventh oob and bad block
+> +		 * mask is saved at the seventh oob.
+> +		 */
+> +		swap(chip->oob_poi[0], chip->oob_poi[7]);
+> +
+> +		for (i = 0; i < ecc->steps / 2; i++) {
+> +			bch_st = readl_relaxed(nfc->regs +
+> +					       nfc->cfg->bch_st_off + i * 4);
+> +			if (bch_st & BIT(nfc->cfg->ecc0.err_flag_bit) ||
+> +			    bch_st & BIT(nfc->cfg->ecc1.err_flag_bit)) {
+> +				mtd->ecc_stats.failed++;
+> +				bitflips = -1;
+> +			} else {
+> +				ret = ECC_ERR_CNT(bch_st, nfc->cfg->ecc0);
+> +				mtd->ecc_stats.corrected += ret;
+> +				bitflips = max_t(u32, bitflips, ret);
+> +
+> +				ret = ECC_ERR_CNT(bch_st, nfc->cfg->ecc1);
+> +				mtd->ecc_stats.corrected += ret;
+> +				bitflips = max_t(u32, bitflips, ret);
+> +			}
+> +		}
+> +out:
+> +		memcpy(buf, nfc->page_buf, mtd->writesize);
+> +
+> +		if (boot_rom_mode && rk_nand->boot_ecc != ecc->strength)
+> +			rk_nfc_hw_ecc_setup(chip, ecc, ecc->strength);
+> +
+> +		if (bitflips < 0)
+> +			dev_err(nfc->dev, "read page: %x ecc error!\n", page);
+> +	} else {
+> +		rk_nfc_read_buf(chip, buf, mtd->writesize + mtd->oobsize);
+> +	}
+> +	/* Deselect the currently selected target. */
+> +	rk_nfc_select_chip(chip, -1);
+> +
+> +	return bitflips;
+> +}
+> +
+> +static int rk_nfc_write_page_hwecc(struct nand_chip *chip, const u8 *buf,
+> +				   int oob_on, int page)
+> +{
+> +	return rk_nfc_write_page(nand_to_mtd(chip), chip, buf, page, 0);
+> +}
+> +
+> +static int rk_nfc_read_page_hwecc(struct nand_chip *chip, u8 *p, int oob_on,
+> +				  int pg)
+> +{
+> +	struct mtd_info *mtd = nand_to_mtd(chip);
+> +
+> +	return rk_nfc_read_page(mtd, chip, 0, mtd->writesize, p, pg, 0);
+> +}
+> +
+> +static int rk_nfc_read_page_raw(struct nand_chip *chip, u8 *buf, int oob_on,
+> +				int page)
+> +{
+> +	struct mtd_info *mtd = nand_to_mtd(chip);
+> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
+> +	int i, ret;
+> +
+> +	ret = rk_nfc_read_page(mtd, chip, 0, mtd->writesize, nfc->buffer,
+> +			       page, 1);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	for (i = 0; i < chip->ecc.steps; i++) {
+> +		memcpy(oob_ptr(chip, i), rk_oob_ptr(chip, i),
+> +		       NFC_SYS_DATA_SIZE);
+> +
+> +		if (buf)
+> +			memcpy(data_ptr(chip, buf, i), rk_data_ptr(chip, i),
+> +			       chip->ecc.size);
+> +	}
+> +	swap(chip->oob_poi[0], chip->oob_poi[7]);
+> +
+> +	return ret;
+> +}
+
+[..]
