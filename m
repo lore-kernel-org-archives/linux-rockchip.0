@@ -1,143 +1,488 @@
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Subject: [PATCH 13/29] dt: fix broken links due to txt->yaml renames
-Date: Mon, 15 Jun 2020 08:46:52 +0200
-Message-ID: <0e4a7f0b7efcc8109c8a41a2e13c8adde4d9c6b9.1592203542.git.mchehab+huawei@kernel.org>
-References: <cover.1592203542.git.mchehab+huawei@kernel.org>
+From: Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>
+Subject: Re: [PATCH v6 2/8] mtd: rawnand: rockchip: NFC drivers for RK3308,
+ RK2928 and others
+Date: Mon, 15 Jun 2020 09:47:00 +0200
+Message-ID: <20200615094700.69342be1@xps13>
+References: <20200609074020.23860-1-yifeng.zhao@rock-chips.com>
+        <20200609074020.23860-3-yifeng.zhao@rock-chips.com>
+        <7e4ce8b1-73c4-8b9a-5726-b121f53de8df@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <cover.1592203542.git.mchehab+huawei@kernel.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Linux Doc Mailing List <linux-doc@vger.kernel.org>
-Cc: alsa-devel@alsa-project.org, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linux-rockchip@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>, Jakub Kicinski <kuba@kernel.org>, linux-mips@vger.kernel.org, devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, netdev@vger.kernel.org, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-bluetooth@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Daniel Vetter <daniel@ffwll.ch>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <7e4ce8b1-73c4-8b9a-5726-b121f53de8df-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-There are some new broken doc links due to yaml renames
-at DT. Developers should really run:
+Hi Johan,
 
-	./scripts/documentation-file-ref-check
+Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org> wrote on Sat, 13 Jun 2020 15:31:52
++0200:
 
-in order to solve those issues while submitting patches.
-This tool can even fix most of the issues with:
+> Hi Yifeng, Miquel,
+> 
+> Some more comments about swap();
+> 
+> On 6/9/20 9:40 AM, Yifeng Zhao wrote:
+> 
+> [..]
+> 
+> > +static int rk_nfc_ooblayout_free(struct mtd_info *mtd, int section,
+> > +				 struct mtd_oob_region *oob_region)
+> > +{
+> > +	struct nand_chip *chip = mtd_to_nand(mtd);
+> > +  
+> 
+> > +	if (section >= chip->ecc.steps)
+> > +		return -ERANGE;  
+> 
+> Given:
+> 
+> NFC_SYS_DATA_SIZE = 4
+> chip->ecc.steps = 8
+> section [0..7]
+> 
+> Total free OOB size advertised to the MTD framework is:
+> 
+> ecc.steps * NFC_SYS_DATA_SIZE - 1 BBM
+> 8 * 4 - 1 = 31 bytes
+> 
+> With link address in OOB byte [0..3] this become:
+> 31 - 4 = 27 bytes
+> 
+> Does that give data lost?
+> Should we limit the number of free OOB bytes by 4 more to be save?
+> Is my calculation correct?
 
-	./scripts/documentation-file-ref-check --fix
+I don't know what link address is, but yes if it's an area used by the
+controller for whatever reason it should be left alone, neither "free"
+nor "ecc".
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- Documentation/devicetree/bindings/display/bridge/sii902x.txt  | 2 +-
- .../devicetree/bindings/display/rockchip/rockchip-drm.yaml    | 2 +-
- Documentation/devicetree/bindings/net/mediatek-bluetooth.txt  | 2 +-
- Documentation/devicetree/bindings/sound/audio-graph-card.txt  | 2 +-
- Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt  | 2 +-
- Documentation/mips/ingenic-tcu.rst                            | 2 +-
- MAINTAINERS                                                   | 4 ++--
- 7 files changed, 8 insertions(+), 8 deletions(-)
+> 
+> See further questions about this below.
+> 
+> > +
+> > +	if (!section) {
+> > +		/* The first byte is bad block mask flag. */
+> > +		oob_region->length = NFC_SYS_DATA_SIZE - 1;
+> > +		oob_region->offset = 1;
+> > +	} else {
+> > +		oob_region->length = NFC_SYS_DATA_SIZE;
+> > +		oob_region->offset = section * NFC_SYS_DATA_SIZE;
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int rk_nfc_ooblayout_ecc(struct mtd_info *mtd, int section,
+> > +				struct mtd_oob_region *oob_region)
+> > +{
+> > +	struct nand_chip *chip = mtd_to_nand(mtd);
+> > +  
+> 
+> > +	if (section)
+> > +		return -ERANGE;  
+> 
+> With the formule above a section > 0 does not alow ECC.
+> 
+> Just a question about the MTD inner working for Miquel:
+> 
+> With ooblayout_free using 8 steps and this just 1 does it still generate
+> the correct ECC? Does it calculate ECC over 1024B or over 8*1024B ?
 
-diff --git a/Documentation/devicetree/bindings/display/bridge/sii902x.txt b/Documentation/devicetree/bindings/display/bridge/sii902x.txt
-index 6e14e087c0d0..0d1db3f9da84 100644
---- a/Documentation/devicetree/bindings/display/bridge/sii902x.txt
-+++ b/Documentation/devicetree/bindings/display/bridge/sii902x.txt
-@@ -37,7 +37,7 @@ Optional properties:
- 	simple-card or audio-graph-card binding. See their binding
- 	documents on how to describe the way the sii902x device is
- 	connected to the rest of the audio system:
--	Documentation/devicetree/bindings/sound/simple-card.txt
-+	Documentation/devicetree/bindings/sound/simple-card.yaml
- 	Documentation/devicetree/bindings/sound/audio-graph-card.txt
- 	Note: In case of the audio-graph-card binding the used port
- 	index should be 3.
-diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-index ec8ae742d4da..7204da5eb4c5 100644
---- a/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-+++ b/Documentation/devicetree/bindings/display/rockchip/rockchip-drm.yaml
-@@ -24,7 +24,7 @@ properties:
-     description: |
-       Should contain a list of phandles pointing to display interface port
-       of vop devices. vop definitions as defined in
--      Documentation/devicetree/bindings/display/rockchip/rockchip-vop.txt
-+      Documentation/devicetree/bindings/display/rockchip/rockchip-vop.yaml
- 
- required:
-   - compatible
-diff --git a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
-index 219bcbd0d344..9ef5bacda8c1 100644
---- a/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
-+++ b/Documentation/devicetree/bindings/net/mediatek-bluetooth.txt
-@@ -3,7 +3,7 @@ MediaTek SoC built-in Bluetooth Devices
- 
- This device is a serial attached device to BTIF device and thus it must be a
- child node of the serial node with BTIF. The dt-bindings details for BTIF
--device can be known via Documentation/devicetree/bindings/serial/8250.txt.
-+device can be known via Documentation/devicetree/bindings/serial/8250.yaml.
- 
- Required properties:
- 
-diff --git a/Documentation/devicetree/bindings/sound/audio-graph-card.txt b/Documentation/devicetree/bindings/sound/audio-graph-card.txt
-index 269682619a70..d5f6919a2d69 100644
---- a/Documentation/devicetree/bindings/sound/audio-graph-card.txt
-+++ b/Documentation/devicetree/bindings/sound/audio-graph-card.txt
-@@ -5,7 +5,7 @@ It is based on common bindings for device graphs.
- see ${LINUX}/Documentation/devicetree/bindings/graph.txt
- 
- Basically, Audio Graph Card property is same as Simple Card.
--see ${LINUX}/Documentation/devicetree/bindings/sound/simple-card.txt
-+see ${LINUX}/Documentation/devicetree/bindings/sound/simple-card.yaml
- 
- Below are same as Simple-Card.
- 
-diff --git a/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt b/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
-index 4d51f3f5ea98..a6ffcdec6f6a 100644
---- a/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
-+++ b/Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt
-@@ -5,7 +5,7 @@ codec or external codecs.
- 
- sti sound drivers allows to expose sti SoC audio interface through the
- generic ASoC simple card. For details about sound card declaration please refer to
--Documentation/devicetree/bindings/sound/simple-card.txt.
-+Documentation/devicetree/bindings/sound/simple-card.yaml.
- 
- 1) sti-uniperiph-dai: audio dai device.
- ---------------------------------------
-diff --git a/Documentation/mips/ingenic-tcu.rst b/Documentation/mips/ingenic-tcu.rst
-index c5a646b14450..2b75760619b4 100644
---- a/Documentation/mips/ingenic-tcu.rst
-+++ b/Documentation/mips/ingenic-tcu.rst
-@@ -68,4 +68,4 @@ and frameworks can be controlled from the same registers, all of these
- drivers access their registers through the same regmap.
- 
- For more information regarding the devicetree bindings of the TCU drivers,
--have a look at Documentation/devicetree/bindings/timer/ingenic,tcu.txt.
-+have a look at Documentation/devicetree/bindings/timer/ingenic,tcu.yaml.
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 68f21d46614c..0617dd671c2d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3946,7 +3946,7 @@ L:	linux-crypto@vger.kernel.org
- S:	Supported
- F:	drivers/char/hw_random/cctrng.c
- F:	drivers/char/hw_random/cctrng.h
--F:	Documentation/devicetree/bindings/rng/arm-cctrng.txt
-+F:	Documentation/devicetree/bindings/rng/arm-cctrng.yaml
- W:	https://developer.arm.com/products/system-ip/trustzone-cryptocell/cryptocell-700-family
- 
- CEC FRAMEWORK
-@@ -5490,7 +5490,7 @@ F:	include/uapi/drm/r128_drm.h
- DRM DRIVER FOR RAYDIUM RM67191 PANELS
- M:	Robert Chiras <robert.chiras@nxp.com>
- S:	Maintained
--F:	Documentation/devicetree/bindings/display/panel/raydium,rm67191.txt
-+F:	Documentation/devicetree/bindings/display/panel/raydium,rm67191.yaml
- F:	drivers/gpu/drm/panel/panel-raydium-rm67191.c
- 
- DRM DRIVER FOR ROCKTECH JH057N00900 PANELS
--- 
-2.26.2
+These functions do not generate anything and it's just a helper to
+retrieve the ECC or free bytes, meaning that if you have 4 ECC bytes
+per step, all concatenated, you will end with with an unique  ECC
+section of 8 * 4 ECC bytes, this is perfectly fine.
+
+> 
+> Should we move the text that explains the layout closer to these
+> functions and add a little more text to explain why we choose this
+> particular layout?
+
+Yes please.
+
+> 
+> /*
+>  * NFC Page Data Layout:
+>  *	1024 Bytes Data + 4Bytes sys data + 28Bytes~124Bytes ecc +
+>  *	1024 Bytes Data + 4Bytes sys data + 28Bytes~124Bytes ecc +
+>  *	......
+>  * NAND Page Data Layout:
+>  *	1024 * n Data + m Bytes oob
+>  * Original Bad Block Mask Location:
+>  *	First byte of oob(spare).
+>  * nand_chip->oob_poi data layout:
+>  *	4Bytes sys data + .... + 4Bytes sys data + ecc data.
+>  */
+> 
+> We expect now ECC data after n steps * 4 OOB bytes,
+
+fine
+
+> but are we still using it with HW ECC or only for raw?
+
+both, you need to ensure reading a raw pages gives you a regular
+data+ecc organization instead of the NFC's layout.
+
+> 
+> > +
+> > +	oob_region->offset = NFC_SYS_DATA_SIZE * chip->ecc.steps;
+> > +	oob_region->length = mtd->oobsize - oob_region->offset;
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct mtd_ooblayout_ops rk_nfc_ooblayout_ops = {
+> > +	.free = rk_nfc_ooblayout_free,
+> > +	.ecc = rk_nfc_ooblayout_ecc,
+> > +};  
+> 
+> [..]
+> 
+> > +static int rk_nfc_write_page(struct mtd_info *mtd, struct nand_chip *chip,
+> > +			     const u8 *buf, int page, int raw)
+> > +{
+> > +	struct rk_nfc *nfc = nand_get_controller_data(chip);
+> > +	struct rk_nfc_nand_chip *rk_nand = to_rk_nand(chip);
+> > +	struct nand_ecc_ctrl *ecc = &chip->ecc;
+> > +	int oob_step = (ecc->bytes > 60) ? NFC_MAX_OOB_PER_STEP :
+> > +			NFC_MIN_OOB_PER_STEP;
+> > +	int pages_per_blk = mtd->erasesize / mtd->writesize;
+> > +	int ret = 0, i, boot_rom_mode = 0;
+> > +	dma_addr_t dma_data, dma_oob;
+> > +	u32 reg;
+> > +	u8 *oob;
+> > +
+> > +	nand_prog_page_begin_op(chip, page, 0, NULL, 0);
+> > +
+> > +	if (!raw) {
+> > +		memcpy(nfc->page_buf, buf, mtd->writesize);
+> > +		memset(nfc->oob_buf, 0xff, oob_step * ecc->steps);
+> > +
+> > +		/*
+> > +		 * The first 8(some devices are 4 or 16) blocks in use by
+> > +		 * the boot ROM and the first 32 bits of oob need to link
+> > +		 * to the next page address in the same block.
+> > +		 * Config the ECC algorithm supported by the boot ROM.
+> > +		 */
+> > +		if (page < pages_per_blk * rk_nand->boot_blks &&
+> > +		    chip->options & NAND_IS_BOOT_MEDIUM) {
+> > +			boot_rom_mode = 1;
+> > +			if (rk_nand->boot_ecc != ecc->strength)
+> > +				rk_nfc_hw_ecc_setup(chip, ecc,
+> > +						    rk_nand->boot_ecc);
+> > +		}
+> > +
+> > +		/*
+> > +		 * Swap the first oob with the seventh oob and bad block
+> > +		 * mask is saved at the seventh oob.
+> > +		 */
+> > +		swap(chip->oob_poi[0], chip->oob_poi[7]);  
+> 
+> Add more info on why this is swapped.
+> 
+> LA[0..3] is a link address that the BBM shouldn't over write.
+> For Yifeng: Is there an other reason?
+> 
+> Before swap:
+> 
+> BBM  OOB1 OOB2 OOB3, OOB4 OOB5 OOB6 OOB7, OOB8 ....
+> 
+> After swap:
+> 
+> OOB7 OOB1 OOB2 OOB3, OOB4 OOB5 OOB6 BBM , OOB8 ....
+> 
+> If (!i && boot_rom_mode):
+> 
+> LA0  LA1  LA2  LA3 , OOB4 OOB5 OOB6 BBM , OOB8 ....
+> 
+> Read back after swap again:
+> 
+> BBM  LA1  LA2  LA3 , OOB4 OOB5 OOB6 LA0 , OOB8 ....
+> 
+> Question:
+> Are data OOB7 OOB1 OOB2 OOB3 lost now?
+> Is this correct?
+> 
+> #################################################
+> Proposal:
+> Should we reduce the free OOB size by 4
+> and shift everything 4 bytes to recover all bytes?
+> Replace the first 4 bytes with 0XFF or LA[0..3].
+> 
+> Normal:
+> 0xFF 0XFF 0XFF 0xFF, BBM  OOB1 OOB2 OOB3, OOB4
+> 
+> If (!i && boot_rom_mode):
+> LA0  LA1  LA2  LA3 , BBM  OOB1 OOB2 OOB3, OOB4
+> 
+> Question for Miquel and Yifeng:
+> Does this work? Could you test?
+> 
+> > +
+> > +		for (i = 0; i < ecc->steps; i++) {  
+> 
+> Just a proposel:
+> 
+> 		if (!i && boot_rom_mode)
+> 			reg = (page & (pages_per_blk - 1)) * 4;
+> 		else if (!i)
+> 			reg = 0xFFFFFFFF;
+> 		else	
+> 			oob = chip->oob_poi + (i-1) * NFC_SYS_DATA_SIZE;
+> 			reg = oob[0] | oob[1] << 8 | oob[2] << 16 |
+> 			      oob[3] << 24;
+> 
+> > +
+> > +			if (nfc->cfg->type == NFC_V6 ||
+> > +			    nfc->cfg->type == NFC_V8)
+> > +				nfc->oob_buf[i * oob_step / 4] = reg;
+> > +			else
+> > +				nfc->oob_buf[i] = reg;
+> > +		}
+> > +
+> > +		dma_data = dma_map_single(nfc->dev, (void *)nfc->page_buf,
+> > +					  mtd->writesize, DMA_TO_DEVICE);
+> > +		dma_oob = dma_map_single(nfc->dev, nfc->oob_buf,
+> > +					 ecc->steps * oob_step,
+> > +					 DMA_TO_DEVICE);
+> > +
+> > +		reinit_completion(&nfc->done);
+> > +		writel(INT_DMA, nfc->regs + nfc->cfg->int_en_off);
+> > +
+> > +		rk_nfc_xfer_start(nfc, NFC_WRITE, ecc->steps, dma_data,
+> > +				  dma_oob);
+> > +		ret = wait_for_completion_timeout(&nfc->done,
+> > +						  msecs_to_jiffies(100));
+> > +		if (!ret)
+> > +			dev_warn(nfc->dev, "write: wait dma done timeout.\n");
+> > +		/*
+> > +		 * Whether the DMA transfer is completed or not. The driver
+> > +		 * needs to check the NFC`s status register to see if the data
+> > +		 * transfer was completed.
+> > +		 */
+> > +		ret = rk_nfc_wait_for_xfer_done(nfc);
+> > +
+> > +		dma_unmap_single(nfc->dev, dma_data, mtd->writesize,
+> > +				 DMA_TO_DEVICE);
+> > +		dma_unmap_single(nfc->dev, dma_oob, ecc->steps * oob_step,
+> > +				 DMA_TO_DEVICE);
+> > +
+> > +		if (boot_rom_mode && rk_nand->boot_ecc != ecc->strength)
+> > +			rk_nfc_hw_ecc_setup(chip, ecc, ecc->strength);
+> > +
+> > +		if (ret) {
+> > +			ret = -EIO;
+> > +			dev_err(nfc->dev,
+> > +				 "write: wait transfer done timeout.\n");
+> > +		}
+> > +	} else {
+> > +		rk_nfc_write_buf(chip, buf, mtd->writesize + + mtd->oobsize);  
+> 
+> Remove a '+'
+> 
+> > +	}
+> > +
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	ret = nand_prog_page_end_op(chip);
+> > +
+> > +	/* Deselect the currently selected target. */
+> > +	rk_nfc_select_chip(chip, -1);
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static int rk_nfc_write_page_raw(struct nand_chip *chip, const u8 *buf,
+> > +				 int oob_on, int page)
+> > +{
+> > +	struct mtd_info *mtd = nand_to_mtd(chip);
+> > +	struct rk_nfc *nfc = nand_get_controller_data(chip);
+> > +	u32 i;
+> > +
+> > +	memset(nfc->buffer, 0xff, mtd->writesize + mtd->oobsize);
+> > +	swap(chip->oob_poi[0], chip->oob_poi[7]);
+> > +	for (i = 0; i < chip->ecc.steps; i++) {
+> > +		if (buf)
+> > +			memcpy(rk_data_ptr(chip, i), data_ptr(chip, buf, i),
+> > +			       chip->ecc.size);
+> > +
+> > +		memcpy(rk_oob_ptr(chip, i), oob_ptr(chip, i),
+> > +		       NFC_SYS_DATA_SIZE);
+> > +	}
+> > +
+> > +	return rk_nfc_write_page(mtd, chip, nfc->buffer, page, 1);
+> > +}
+> > +
+> > +static int rk_nfc_write_oob_std(struct nand_chip *chip, int page)
+> > +{
+> > +	return rk_nfc_write_page_raw(chip, NULL, 1, page);
+> > +}
+> > +
+> > +static int rk_nfc_read_page(struct mtd_info *mtd, struct nand_chip *chip,
+> > +			    u32 data_offs, u32 readlen,
+> > +			    u8 *buf, int page, int raw)
+> > +{
+> > +	struct rk_nfc *nfc = nand_get_controller_data(chip);
+> > +	struct rk_nfc_nand_chip *rk_nand = to_rk_nand(chip);
+> > +	struct nand_ecc_ctrl *ecc = &chip->ecc;
+> > +	int oob_step = (ecc->bytes > 60) ? NFC_MAX_OOB_PER_STEP :
+> > +			NFC_MIN_OOB_PER_STEP;
+> > +	int pages_per_blk = mtd->erasesize / mtd->writesize;
+> > +	dma_addr_t dma_data, dma_oob;
+> > +	int ret = 0, i, boot_rom_mode = 0;
+> > +	int bitflips = 0, bch_st;
+> > +	u8 *oob;
+> > +	u32 tmp;
+> > +
+> > +	nand_read_page_op(chip, page, 0, NULL, 0);
+> > +	if (!raw) {
+> > +		dma_data = dma_map_single(nfc->dev, nfc->page_buf,
+> > +					  mtd->writesize,
+> > +					  DMA_FROM_DEVICE);
+> > +		dma_oob = dma_map_single(nfc->dev, nfc->oob_buf,
+> > +					 ecc->steps * oob_step,
+> > +					 DMA_FROM_DEVICE);
+> > +
+> > +		/*
+> > +		 * The first 8(some devices are 4 or 16) blocks in use by
+> > +		 * the bootrom.
+> > +		 * Config the ECC algorithm supported by the boot ROM.
+> > +		 */
+> > +		if (page < pages_per_blk * rk_nand->boot_blks &&
+> > +		    chip->options & NAND_IS_BOOT_MEDIUM) {
+> > +			boot_rom_mode = 1;
+> > +			if (rk_nand->boot_ecc != ecc->strength)
+> > +				rk_nfc_hw_ecc_setup(chip, ecc,
+> > +						    rk_nand->boot_ecc);
+> > +		}
+> > +
+> > +		reinit_completion(&nfc->done);
+> > +		writel(INT_DMA, nfc->regs + nfc->cfg->int_en_off);
+> > +		rk_nfc_xfer_start(nfc, NFC_READ, ecc->steps, dma_data,
+> > +				  dma_oob);
+> > +		ret = wait_for_completion_timeout(&nfc->done,
+> > +						  msecs_to_jiffies(100));
+> > +		if (!ret)
+> > +			dev_warn(nfc->dev, "read: wait dma done timeout.\n");
+> > +		/*
+> > +		 * Whether the DMA transfer is completed or not. The driver
+> > +		 * needs to check the NFC`s status register to see if the data
+> > +		 * transfer was completed.
+> > +		 */
+> > +		ret = rk_nfc_wait_for_xfer_done(nfc);
+> > +		dma_unmap_single(nfc->dev, dma_data, mtd->writesize,
+> > +				 DMA_FROM_DEVICE);
+> > +		dma_unmap_single(nfc->dev, dma_oob, ecc->steps * oob_step,
+> > +				 DMA_FROM_DEVICE);
+> > +
+> > +		if (ret) {
+> > +			bitflips = -EIO;
+> > +			dev_err(nfc->dev,
+> > +				 "read: wait transfer done timeout.\n");
+> > +			goto out;
+> > +		}
+> > +
+> > +		for (i = 0; i < ecc->steps; i++) {
+> > +			oob = chip->oob_poi + i * NFC_SYS_DATA_SIZE;
+> > +			if (nfc->cfg->type == NFC_V6 ||
+> > +			    nfc->cfg->type == NFC_V8)
+> > +				tmp = nfc->oob_buf[i * oob_step / 4];
+> > +			else
+> > +				tmp = nfc->oob_buf[i];
+> > +			*oob++ = (u8)tmp;
+> > +			*oob++ = (u8)(tmp >> 8);
+> > +			*oob++ = (u8)(tmp >> 16);
+> > +			*oob++ = (u8)(tmp >> 24);
+> > +		}
+> > +
+> > +		/*
+> > +		 * Swap the first oob with the seventh oob and bad block
+> > +		 * mask is saved at the seventh oob.
+> > +		 */
+> > +		swap(chip->oob_poi[0], chip->oob_poi[7]);
+> > +
+> > +		for (i = 0; i < ecc->steps / 2; i++) {
+> > +			bch_st = readl_relaxed(nfc->regs +
+> > +					       nfc->cfg->bch_st_off + i * 4);
+> > +			if (bch_st & BIT(nfc->cfg->ecc0.err_flag_bit) ||
+> > +			    bch_st & BIT(nfc->cfg->ecc1.err_flag_bit)) {
+> > +				mtd->ecc_stats.failed++;
+> > +				bitflips = -1;
+> > +			} else {
+> > +				ret = ECC_ERR_CNT(bch_st, nfc->cfg->ecc0);
+> > +				mtd->ecc_stats.corrected += ret;
+> > +				bitflips = max_t(u32, bitflips, ret);
+> > +
+> > +				ret = ECC_ERR_CNT(bch_st, nfc->cfg->ecc1);
+> > +				mtd->ecc_stats.corrected += ret;
+> > +				bitflips = max_t(u32, bitflips, ret);
+> > +			}
+> > +		}
+> > +out:
+> > +		memcpy(buf, nfc->page_buf, mtd->writesize);
+> > +
+> > +		if (boot_rom_mode && rk_nand->boot_ecc != ecc->strength)
+> > +			rk_nfc_hw_ecc_setup(chip, ecc, ecc->strength);
+> > +
+> > +		if (bitflips < 0)
+> > +			dev_err(nfc->dev, "read page: %x ecc error!\n", page);
+> > +	} else {
+> > +		rk_nfc_read_buf(chip, buf, mtd->writesize + mtd->oobsize);
+> > +	}
+> > +	/* Deselect the currently selected target. */
+> > +	rk_nfc_select_chip(chip, -1);
+> > +
+> > +	return bitflips;
+> > +}
+> > +
+> > +static int rk_nfc_write_page_hwecc(struct nand_chip *chip, const u8 *buf,
+> > +				   int oob_on, int page)
+> > +{
+> > +	return rk_nfc_write_page(nand_to_mtd(chip), chip, buf, page, 0);
+> > +}
+> > +
+> > +static int rk_nfc_read_page_hwecc(struct nand_chip *chip, u8 *p, int oob_on,
+> > +				  int pg)
+> > +{
+> > +	struct mtd_info *mtd = nand_to_mtd(chip);
+> > +
+> > +	return rk_nfc_read_page(mtd, chip, 0, mtd->writesize, p, pg, 0);
+> > +}
+> > +
+> > +static int rk_nfc_read_page_raw(struct nand_chip *chip, u8 *buf, int oob_on,
+> > +				int page)
+> > +{
+> > +	struct mtd_info *mtd = nand_to_mtd(chip);
+> > +	struct rk_nfc *nfc = nand_get_controller_data(chip);
+> > +	int i, ret;
+> > +
+> > +	ret = rk_nfc_read_page(mtd, chip, 0, mtd->writesize, nfc->buffer,
+> > +			       page, 1);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	for (i = 0; i < chip->ecc.steps; i++) {
+> > +		memcpy(oob_ptr(chip, i), rk_oob_ptr(chip, i),
+> > +		       NFC_SYS_DATA_SIZE);
+> > +
+> > +		if (buf)
+> > +			memcpy(data_ptr(chip, buf, i), rk_data_ptr(chip, i),
+> > +			       chip->ecc.size);
+> > +	}
+> > +	swap(chip->oob_poi[0], chip->oob_poi[7]);
+> > +
+> > +	return ret;
+> > +}  
+> 
+> [..]
+
+
+
+
+Thanks,
+Miquèl
