@@ -1,56 +1,87 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH 13/29] dt: fix broken links due to txt->yaml renames
-Date: Mon, 15 Jun 2020 13:01:25 +0100
-Message-ID: <20200615120125.GJ4447@sirena.org.uk>
-References: <cover.1592203542.git.mchehab+huawei@kernel.org>
- <0e4a7f0b7efcc8109c8a41a2e13c8adde4d9c6b9.1592203542.git.mchehab+huawei@kernel.org>
- <20200615111927.GC4447@sirena.org.uk>
- <20200615135739.798f4489@coco.lan>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [RESEND PATCH v3 2/6] media: staging: rkisp1: rsz: set default
+ format if the given format is not RKISP1_DIR_SRC
+Date: Tue, 16 Jun 2020 09:03:06 -0300
+Message-ID: <ded8a981-5e5e-f0a6-c72d-1a762d3fd153@collabora.com>
+References: <20200613091353.12689-1-dafna.hirschfeld@collabora.com>
+ <20200613091353.12689-3-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="va4/JQ6j8/8uipEp"
-Return-path: <linux-doc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200615135739.798f4489@coco.lan>
-Sender: linux-doc-owner@vger.kernel.org
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Linux Doc Mailing List <linux-doc@vger.kernel.org>, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Sean Wang <sean.wang@mediatek.com>, "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Arnaud Pouliquen <arnaud.pouliquen@st.com>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-bluetooth@vger.kernel.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200613091353.12689-3-dafna.hirschfeld@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Dafna,
 
---va4/JQ6j8/8uipEp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 6/13/20 6:13 AM, Dafna Hirschfeld wrote:
+> When setting the sink format of the 'rkisp1_resizer'
+> the format should be supported by 'rkisp1_isp' on
+> the video source pad. This patch checks this condition
+> and set the format to default if the condition is false.
+> 
+> Fixes: 56e3b29f9f6b "media: staging: rkisp1: add streaming paths"
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-common.h  | 4 ++++
+>  drivers/staging/media/rkisp1/rkisp1-isp.c     | 4 ----
+>  drivers/staging/media/rkisp1/rkisp1-resizer.c | 2 +-
+>  3 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+> index 0c4fe503adc9..39d8e46d8d8a 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
+> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+> @@ -22,6 +22,10 @@
+>  #include "rkisp1-regs.h"
+>  #include "uapi/rkisp1-config.h"
+>  
+> +#define RKISP1_DIR_SRC BIT(0)
+> +#define RKISP1_DIR_SINK BIT(1)
+> +#define RKISP1_DIR_SINK_SRC (RKISP1_DIR_SINK | RKISP1_DIR_SRC)
+> +
+>  #define RKISP1_ISP_MAX_WIDTH		4032
+>  #define RKISP1_ISP_MAX_HEIGHT		3024
+>  #define RKISP1_ISP_MIN_WIDTH		32
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
+> index dc2b59a0160a..e66e87d6ea8b 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-isp.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
+> @@ -23,10 +23,6 @@
+>  
+>  #define RKISP1_ISP_DEV_NAME	RKISP1_DRIVER_NAME "_isp"
+>  
+> -#define RKISP1_DIR_SRC BIT(0)
+> -#define RKISP1_DIR_SINK BIT(1)
+> -#define RKISP1_DIR_SINK_SRC (RKISP1_DIR_SINK | RKISP1_DIR_SRC)
 
-On Mon, Jun 15, 2020 at 01:57:39PM +0200, Mauro Carvalho Chehab wrote:
-> Mark Brown <broonie@kernel.org> escreveu:
-> > On Mon, Jun 15, 2020 at 08:46:52AM +0200, Mauro Carvalho Chehab wrote:
-> > > There are some new broken doc links due to yaml renames
-> > > at DT. Developers should really run: =20
+As mentioned previously, please, check my comment on first version of the patch https://patchwork.linuxtv.org/patch/64292/
+Or please let me know if you don't agree.
 
-> > I also previously acked this one in 20200504100822.GA5491@sirena.org.uk.
-> > Has anything changed here to cause the ack to be dropped?
+Thanks
+Helen
 
-> Both patches are the same. I forgot to add your acks on my tree.=20
-
-> My bad!
-
-Ah, no worries - no wonder I couldn't spot the changes!
-
---va4/JQ6j8/8uipEp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl7nYxUACgkQJNaLcl1U
-h9AlAAf8D93i17Pj7T800BmwJ3UUHzaiQeRYZFSyfjkXbmviTRnh3rTP+7Rx/Rqe
-83+UeFeMR/Rn18FzLvpCjXuZ1LTbEsOj7/3vkvecKW+LQy/oHwTsTr09Im4vI0h2
-9r3wxGGCXOU+EPu2c9ZT3j+Sp9yhWheTN0ym70YLHDtJuat1Bjw96kBQF8vpo1d9
-AGTB8NOjhstg/4Z+dZYlx5NhdbG4f5qV9zkkVGyZJ1xcdrgs60KfolFrCfTtUG2X
-qRm7RhGf/Rum0bhUG8lvkRaJGz9+Wh9eQA3JUHItfxFEvpM1scwlHJrBTxo7fP9y
-ytZ9j2PBRG+rP5iCMbibBf7cKbhhMg==
-=xi26
------END PGP SIGNATURE-----
-
---va4/JQ6j8/8uipEp--
+> -
+>  /*
+>   * NOTE: MIPI controller and input MUX are also configured in this file.
+>   * This is because ISP Subdev describes not only ISP submodule (input size,
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> index d64c064bdb1d..fa28f4bd65c0 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> @@ -542,7 +542,7 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
+>  					    which);
+>  	sink_fmt->code = format->code;
+>  	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
+> -	if (!mbus_info) {
+> +	if (!mbus_info || !(mbus_info->direction & RKISP1_DIR_SRC)) {
+>  		sink_fmt->code = RKISP1_DEF_FMT;
+>  		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
+>  	}
+> 
