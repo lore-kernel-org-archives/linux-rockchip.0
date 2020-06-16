@@ -1,15 +1,16 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [RESEND PATCH v3 3/6] media: staging: rkisp1: remove macro
- RKISP1_DIR_SINK_SRC
-Date: Tue, 16 Jun 2020 09:05:04 -0300
-Message-ID: <919fa1e3-ae48-873b-613f-8f4f46ec42aa@collabora.com>
+Subject: Re: [RESEND PATCH v3 2/6] media: staging: rkisp1: rsz: set default
+ format if the given format is not RKISP1_DIR_SRC
+Date: Tue, 16 Jun 2020 09:07:42 -0300
+Message-ID: <eca7b4c0-57a7-2c7d-9d1f-0fd107849541@collabora.com>
 References: <20200613091353.12689-1-dafna.hirschfeld@collabora.com>
- <20200613091353.12689-4-dafna.hirschfeld@collabora.com>
+ <20200613091353.12689-3-dafna.hirschfeld@collabora.com>
+ <ded8a981-5e5e-f0a6-c72d-1a762d3fd153@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200613091353.12689-4-dafna.hirschfeld@collabora.com>
+In-Reply-To: <ded8a981-5e5e-f0a6-c72d-1a762d3fd153@collabora.com>
 Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
@@ -18,131 +19,82 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 
-On 6/13/20 6:13 AM, Dafna Hirschfeld wrote:
-> The macro RKISP1_DIR_SINK_SRC is a mask of two flags.
-> The macro hides the fact that it's a mask and the code
-> is actually more clear if we replace it the with bitwise-or explicitly.
+On 6/16/20 9:03 AM, Helen Koike wrote:
+> Hi Dafna,
 > 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> On 6/13/20 6:13 AM, Dafna Hirschfeld wrote:
+>> When setting the sink format of the 'rkisp1_resizer'
+>> the format should be supported by 'rkisp1_isp' on
+>> the video source pad. This patch checks this condition
+>> and set the format to default if the condition is false.
+>>
+>> Fixes: 56e3b29f9f6b "media: staging: rkisp1: add streaming paths"
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+>> ---
+>>  drivers/staging/media/rkisp1/rkisp1-common.h  | 4 ++++
+>>  drivers/staging/media/rkisp1/rkisp1-isp.c     | 4 ----
+>>  drivers/staging/media/rkisp1/rkisp1-resizer.c | 2 +-
+>>  3 files changed, 5 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+>> index 0c4fe503adc9..39d8e46d8d8a 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+>> @@ -22,6 +22,10 @@
+>>  #include "rkisp1-regs.h"
+>>  #include "uapi/rkisp1-config.h"
+>>  
+>> +#define RKISP1_DIR_SRC BIT(0)
+>> +#define RKISP1_DIR_SINK BIT(1)
+>> +#define RKISP1_DIR_SINK_SRC (RKISP1_DIR_SINK | RKISP1_DIR_SRC)
+>> +
+>>  #define RKISP1_ISP_MAX_WIDTH		4032
+>>  #define RKISP1_ISP_MAX_HEIGHT		3024
+>>  #define RKISP1_ISP_MIN_WIDTH		32
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
+>> index dc2b59a0160a..e66e87d6ea8b 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-isp.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
+>> @@ -23,10 +23,6 @@
+>>  
+>>  #define RKISP1_ISP_DEV_NAME	RKISP1_DRIVER_NAME "_isp"
+>>  
+>> -#define RKISP1_DIR_SRC BIT(0)
+>> -#define RKISP1_DIR_SINK BIT(1)
+>> -#define RKISP1_DIR_SINK_SRC (RKISP1_DIR_SINK | RKISP1_DIR_SRC)
+> 
+> As mentioned previously, please, check my comment on first version of the patch https://patchwork.linuxtv.org/patch/64292/
+> Or please let me know if you don't agree.
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
+I just saw you submitted the change in a separated patch.
 
-> ---
->  drivers/staging/media/rkisp1/rkisp1-common.h |  1 -
->  drivers/staging/media/rkisp1/rkisp1-isp.c    | 24 ++++++++++----------
->  2 files changed, 12 insertions(+), 13 deletions(-)
+I would submit patch 4/6 before this one.
+
+Thanks
+Helen
+
+
 > 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-> index 39d8e46d8d8a..0ec8718037a4 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
-> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-> @@ -24,7 +24,6 @@
->  
->  #define RKISP1_DIR_SRC BIT(0)
->  #define RKISP1_DIR_SINK BIT(1)
-> -#define RKISP1_DIR_SINK_SRC (RKISP1_DIR_SINK | RKISP1_DIR_SRC)
->  
->  #define RKISP1_ISP_MAX_WIDTH		4032
->  #define RKISP1_ISP_MAX_HEIGHT		3024
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-> index e66e87d6ea8b..157ac58c2efc 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-> @@ -65,84 +65,84 @@ static const struct rkisp1_isp_mbus_info rkisp1_isp_formats[] = {
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
->  		.bayer_pat	= RKISP1_RAW_RGGB,
->  		.bus_width	= 10,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SBGGR10_1X10,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
->  		.bayer_pat	= RKISP1_RAW_BGGR,
->  		.bus_width	= 10,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGBRG10_1X10,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
->  		.bayer_pat	= RKISP1_RAW_GBRG,
->  		.bus_width	= 10,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGRBG10_1X10,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW10,
->  		.bayer_pat	= RKISP1_RAW_GRBG,
->  		.bus_width	= 10,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SRGGB12_1X12,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
->  		.bayer_pat	= RKISP1_RAW_RGGB,
->  		.bus_width	= 12,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SBGGR12_1X12,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
->  		.bayer_pat	= RKISP1_RAW_BGGR,
->  		.bus_width	= 12,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGBRG12_1X12,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
->  		.bayer_pat	= RKISP1_RAW_GBRG,
->  		.bus_width	= 12,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGRBG12_1X12,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW12,
->  		.bayer_pat	= RKISP1_RAW_GRBG,
->  		.bus_width	= 12,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SRGGB8_1X8,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
->  		.bayer_pat	= RKISP1_RAW_RGGB,
->  		.bus_width	= 8,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SBGGR8_1X8,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
->  		.bayer_pat	= RKISP1_RAW_BGGR,
->  		.bus_width	= 8,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGBRG8_1X8,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
->  		.bayer_pat	= RKISP1_RAW_GBRG,
->  		.bus_width	= 8,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_SGRBG8_1X8,
->  		.pixel_enc	= V4L2_PIXEL_ENC_BAYER,
->  		.mipi_dt	= RKISP1_CIF_CSI2_DT_RAW8,
->  		.bayer_pat	= RKISP1_RAW_GRBG,
->  		.bus_width	= 8,
-> -		.direction	= RKISP1_DIR_SINK_SRC,
-> +		.direction	= RKISP1_DIR_SINK | RKISP1_DIR_SRC,
->  	}, {
->  		.mbus_code	= MEDIA_BUS_FMT_YUYV8_1X16,
->  		.pixel_enc	= V4L2_PIXEL_ENC_YUV,
+> Thanks
+> Helen
 > 
+>> -
+>>  /*
+>>   * NOTE: MIPI controller and input MUX are also configured in this file.
+>>   * This is because ISP Subdev describes not only ISP submodule (input size,
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> index d64c064bdb1d..fa28f4bd65c0 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> @@ -542,7 +542,7 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
+>>  					    which);
+>>  	sink_fmt->code = format->code;
+>>  	mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
+>> -	if (!mbus_info) {
+>> +	if (!mbus_info || !(mbus_info->direction & RKISP1_DIR_SRC)) {
+>>  		sink_fmt->code = RKISP1_DEF_FMT;
+>>  		mbus_info = rkisp1_isp_mbus_info_get(sink_fmt->code);
+>>  	}
+>>
