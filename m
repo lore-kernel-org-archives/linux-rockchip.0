@@ -1,35 +1,41 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH 1/2] ARM: dts: rockchip: rename label and nodename pinctrl subnodes that end with gpio
-Date: Wed, 17 Jun 2020 10:37:08 +0200
-Message-ID: <159238301927.1406601.14874206586861717011.b4-ty@sntech.de>
-References: <20200524160636.16547-1-jbx6244@gmail.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: fix rk3399-puma gmac reset gpio
+Date: Wed, 17 Jun 2020 10:37:06 +0200
+Message-ID: <159238301927.1406601.11644609112177738210.b4-ty@sntech.de>
+References: <20200603132836.362519-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200524160636.16547-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Johan Jonker <jbx6244@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, robh+dt@kernel.org, devicetree@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200603132836.362519-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, 24 May 2020 18:06:35 +0200, Johan Jonker wrote:
-> A test with the command below gives for example this error:
+On Wed, 3 Jun 2020 15:28:36 +0200, Heiko Stuebner wrote:
+> The puma gmac node currently uses opposite active-values for the
+> gmac phy reset pin. The gpio-declaration uses active-high while the
+> separate snps,reset-active-low property marks the pin as active low.
 > 
-> arch/arm/boot/dts/rk3288-tinker.dt.yaml: tsadc: otp-gpio:
-> {'phandle': [[54]], 'rockchip,pins': [[0, 10, 0, 118]]}
-> is not of type 'array'
-> 
-> 'gpio' is a sort of reserved nodename and should not be used
-> for pinctrl in combination with 'rockchip,pins', so change
-> nodes that end with 'gpio' to end with 'pin' or 'pins'.
+> While on the kernel side this works ok, other DT users may get
+> confused - as seen with uboot right now.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: rename label and nodename pinctrl subnodes that end with gpio
-      commit: 2bc65fef4fe424f5f8295175f1b42f8b94c6df01
+[1/1] arm64: dts: rockchip: fix rk3399-puma gmac reset gpio
+      commit: 8a445086f8af0b7b9bd8d1901d6f306bb154f70d
 
 Best regards,
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
