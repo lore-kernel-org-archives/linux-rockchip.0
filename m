@@ -1,8 +1,8 @@
 From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 Subject: Re: [PATCH v6 1/8] dt-bindings: mtd: Describe Rockchip RK3xxx NAND
  flash controller
-Date: Wed, 17 Jun 2020 15:14:50 -0600
-Message-ID: <20200617211450.GA2811091@bogus>
+Date: Wed, 17 Jun 2020 15:15:41 -0600
+Message-ID: <20200617211541.GB2811091@bogus>
 References: <20200609074020.23860-1-yifeng.zhao@rock-chips.com>
  <20200609074020.23860-2-yifeng.zhao@rock-chips.com>
 Mime-Version: 1.0
@@ -109,22 +109,12 @@ On Tue, Jun 09, 2020 at 03:40:18PM +0800, Yifeng Zhao wrote:
 > +
 > +  pinctrl-names:
 > +    const: default
-
-You can drop pinctrl-*. They are automatically supported.
-
 > +
 > +  power-domains:
 > +     maxItems: 1
 > +
 > +patternProperties:
 > +  "^nand@[a-f0-9]$":
-
-'[0-7]' is correct here.
-
-Out of bounds nodes and other unknown properties should be prevented 
-with 'unevaluatedProperties: false' (though not yet until the tooling 
-supports it).
-
 > +    type: object
 > +    properties:
 > +      reg:
@@ -140,6 +130,9 @@ supports it).
 > +      nand-ecc-strength:
 > +        enum: [16, 24, 40, 60, 70]
 > +        description:
+
+This needs a '|' at the end if you want the below line breaks preserved.
+
 > +          The ECC configurations that can be supported are as follows.
 > +          - NFCv900(PX30 and RK3326) support ecc strength 16, 40, 60 and 70.
 > +          - NFCv600(RK3066 and RK2928) support ecc strength 16, 24, 40 and 60.
@@ -154,9 +147,6 @@ supports it).
 > +        default: 16
 > +        allOf:
 > +        - $ref: /schemas/types.yaml#/definitions/uint32
-
-You can drop 'allOf' now.
-
 > +        description:
 > +          The NFC driver need this information to select ECC
 > +          algorithms supported by the BOOTROM.
