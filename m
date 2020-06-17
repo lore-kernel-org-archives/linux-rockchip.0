@@ -1,40 +1,34 @@
 From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: fix rk3399-puma vcc5v0-host gpio
-Date: Wed, 17 Jun 2020 10:37:07 +0200
-Message-ID: <159238301927.1406601.18326434881774921532.b4-ty@sntech.de>
-References: <20200604091239.424318-1-heiko@sntech.de>
+Subject: Re: [PATCH 1/2] ARM: dts: rockchip: rename label and nodename pinctrl subnodes that end with gpio
+Date: Wed, 17 Jun 2020 10:45:58 +0200
+Message-ID: <159238352489.1408655.17289334888304699451.b4-ty@sntech.de>
+References: <20200524160636.16547-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200604091239.424318-1-heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, klaus.goger-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, christoph.muellner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200524160636.16547-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 4 Jun 2020 11:12:39 +0200, Heiko Stuebner wrote:
-> The puma vcc5v0_host regulator node currently uses opposite active-values
-> for the enable pin. The gpio-declaration uses active-high while the
-> separate enable-active-low property marks the pin as active low.
+On Sun, 24 May 2020 18:06:35 +0200, Johan Jonker wrote:
+> A test with the command below gives for example this error:
 > 
-> While on the kernel side this works ok, other DT users may get
-> confused - as seen with uboot right now.
+> arch/arm/boot/dts/rk3288-tinker.dt.yaml: tsadc: otp-gpio:
+> {'phandle': [[54]], 'rockchip,pins': [[0, 10, 0, 118]]}
+> is not of type 'array'
+> 
+> 'gpio' is a sort of reserved nodename and should not be used
+> for pinctrl in combination with 'rockchip,pins', so change
+> nodes that end with 'gpio' to end with 'pin' or 'pins'.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: fix rk3399-puma vcc5v0-host gpio
-      commit: 7a7184f6cfa9279f1a1c10a1845d247d7fad54ff
+[1/2] ARM: dts: rockchip: rename label and nodename pinctrl subnodes that end with gpio
+      commit: fff987e7328951f7d6fb2d0545de8635ceafa89f
 
 Best regards,
 -- 
