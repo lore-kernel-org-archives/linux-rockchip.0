@@ -1,17 +1,16 @@
-From: Huang Jiachai <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_1/2=5d_drm=3a_drm=5ffourcc=3a_add_NV20_YUV?=
- =?UTF-8?B?IGZvcm1hdOOAkOivt+azqOaEj++8jOmCruS7tueUsWxpbnV4LXJvY2tjaGlwLWJv?=
- =?UTF-8?Q?unces+sandy=2ehuang=3drock-chips=2ecom=40lists=2einfradead=2eorg?=
- =?UTF-8?B?5Luj5Y+R44CR?=
-Date: Wed, 17 Jun 2020 20:07:40 +0800
-Message-ID: <d503eed1-571f-3e37-858b-b5de04cb79f7@rock-chips.com>
-References: <20200607202521.18438-1-jonas@kwiboo.se>
- <20200607202521.18438-2-jonas@kwiboo.se>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v2 03/13] dt-bindings: dma: pl330: Document the quirk
+ 'arm,pl330-periph-burst'
+Date: Wed, 17 Jun 2020 14:58:41 -0600
+Message-ID: <20200617205841.GA2800620@bogus>
+References: <1591665267-37713-1-git-send-email-sugar.zhang@rock-chips.com>
+ <1591665267-37713-4-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-In-Reply-To: <20200607202521.18438-2-jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <1591665267-37713-4-git-send-email-sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
@@ -21,59 +20,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Maarten Lankhorst <maarten.lankhorst-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Maxime Ripard <mripard-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Thomas Zimmermann <tzimmermann-l3A5Bk7waGM@public.gmane.org>, =?UTF-8?B?6Zer5a2d5Yab?= <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Brian Starkey <brian.starkey-5wv7dgnIgG8@public.gmane.org>, Ben Davis <ben.davis-5wv7dgnIgG8@public.gmane.org>
+To: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Vinod Koul <vkoul-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSm9uYXMgS2FybG1hbiwKCiDCoMKgwqAgSXMgdGhlcmUgYW4gYW5vdGhlciB5dXYgMTBiaXQg
-Zm9ybWF0IHdpdGggNDo0OjQgc3ViLXNpbXBsaW5nIGJ1dCAKaGFzIG5vIHBhZGRpbmc/CgogwqBN
-YXliZSB3ZSBjYW4gY2FsbCBpdCBEUk1fRk9STUFUX05WMzA6Cgp7IC5mb3JtYXQgPSBEUk1fRk9S
-TUFUX05WMzAsCQkuZGVwdGggPSAwLAogICAubnVtX3BsYW5lcyA9IDIsIC5jaGFyX3Blcl9ibG9j
-ayA9IHsgNSwgNSwgMCB9LAogICAuYmxvY2tfdyA9IHsgNCwgMiwgMCB9LCAuYmxvY2tfaCA9IHsg
-MSwgMSwgMCB9LCAuaHN1YiA9IDEsCiAgIC52c3ViID0gMSwgLmlzX3l1diA9IHRydWUgfSwKCnRo
-aXMgZm9ybWF0IGNhbiBzdXBwb3J0ZWQgYnkgcm9ja2NoaXAgcmszMjg4L3JrMzM5OS4uLiBwbGF0
-Zm9ybSwgY2FuIHlvdSAKYWRkIHRoaXMgZm9ybWF0IGF0IHRoaXMgc2VyaWVzIHBhdGNoZXM/Cgrl
-nKggMjAyMC82LzggNDoyNSwgSm9uYXMgS2FybG1hbiDlhpnpgZM6Cj4gRFJNX0ZPUk1BVF9OVjIw
-IGlzIGEgMiBwbGFuZSBmb3JtYXQgc3VpdGFibGUgZm9yIGxpbmVhciBtZW1vcnkgbGF5b3V0Lgo+
-IFRoZSBmb3JtYXQgaXMgc2ltaWxhciB0byBQMjEwIHdpdGggNDoyOjIgc3ViLXNhbXBsaW5nIGJ1
-dCBoYXMgbm8gcGFkZGluZwo+IGJldHdlZW4gY29tcG9uZW50cy4gSW5zdGVhZCwgbHVtaW5hbmNl
-IGFuZCBjaHJvbWluYW5jZSBzYW1wbGVzIGFyZSBncm91cGVkCj4gaW50byA0cyBzbyB0aGF0IGVh
-Y2ggZ3JvdXAgaXMgcGFja2VkIGludG8gYW4gaW50ZWdlciBudW1iZXIgb2YgYnl0ZXM6Cj4KPiBZ
-WVlZID0gVVZVViA9IDQgKiAxMCBiaXRzID0gNDAgYml0cyA9IDUgYnl0ZXMKPgo+IFRoZSAnMjAn
-IHN1ZmZpeCByZWZlcnMgdG8gdGhlIG9wdGltdW0gZWZmZWN0aXZlIGJpdHMgcGVyIHBpeGVsIHdo
-aWNoIGlzCj4gYWNoaWV2ZWQgd2hlbiB0aGUgdG90YWwgbnVtYmVyIG9mIGx1bWluYW5jZSBzYW1w
-bGVzIGlzIGEgbXVsdGlwbGUgb2YgNC4KPgo+IFNpZ25lZC1vZmYtYnk6IEpvbmFzIEthcmxtYW4g
-PGpvbmFzQGt3aWJvby5zZT4KPiAtLS0KPiAgIGRyaXZlcnMvZ3B1L2RybS9kcm1fZm91cmNjLmMg
-IHwgNCArKysrCj4gICBpbmNsdWRlL3VhcGkvZHJtL2RybV9mb3VyY2MuaCB8IDEgKwo+ICAgMiBm
-aWxlcyBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKykKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dw
-dS9kcm0vZHJtX2ZvdXJjYy5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9mb3VyY2MuYwo+IGluZGV4
-IDcyMmM3ZWJlNGU4OC4uMmE5YzhhZTcxOWVkIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2Ry
-bS9kcm1fZm91cmNjLmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2ZvdXJjYy5jCj4gQEAg
-LTI3OCw2ICsyNzgsMTAgQEAgY29uc3Qgc3RydWN0IGRybV9mb3JtYXRfaW5mbyAqX19kcm1fZm9y
-bWF0X2luZm8odTMyIGZvcm1hdCkKPiAgIAkJICAubnVtX3BsYW5lcyA9IDIsIC5jaGFyX3Blcl9i
-bG9jayA9IHsgNSwgNSwgMCB9LAo+ICAgCQkgIC5ibG9ja193ID0geyA0LCAyLCAwIH0sIC5ibG9j
-a19oID0geyAxLCAxLCAwIH0sIC5oc3ViID0gMiwKPiAgIAkJICAudnN1YiA9IDIsIC5pc195dXYg
-PSB0cnVlIH0sCj4gKwkJeyAuZm9ybWF0ID0gRFJNX0ZPUk1BVF9OVjIwLAkJLmRlcHRoID0gMCwK
-PiArCQkgIC5udW1fcGxhbmVzID0gMiwgLmNoYXJfcGVyX2Jsb2NrID0geyA1LCA1LCAwIH0sCj4g
-KwkJICAuYmxvY2tfdyA9IHsgNCwgMiwgMCB9LCAuYmxvY2tfaCA9IHsgMSwgMSwgMCB9LCAuaHN1
-YiA9IDIsCj4gKwkJICAudnN1YiA9IDEsIC5pc195dXYgPSB0cnVlIH0sCj4gICAJCXsgLmZvcm1h
-dCA9IERSTV9GT1JNQVRfUTQxMCwJCS5kZXB0aCA9IDAsCj4gICAJCSAgLm51bV9wbGFuZXMgPSAz
-LCAuY2hhcl9wZXJfYmxvY2sgPSB7IDIsIDIsIDIgfSwKPiAgIAkJICAuYmxvY2tfdyA9IHsgMSwg
-MSwgMSB9LCAuYmxvY2tfaCA9IHsgMSwgMSwgMSB9LCAuaHN1YiA9IDAsCj4gZGlmZiAtLWdpdCBh
-L2luY2x1ZGUvdWFwaS9kcm0vZHJtX2ZvdXJjYy5oIGIvaW5jbHVkZS91YXBpL2RybS9kcm1fZm91
-cmNjLmgKPiBpbmRleCBiNWJmMWMwZTYzMGUuLjI0NGQzMjQzM2E2NyAxMDA2NDQKPiAtLS0gYS9p
-bmNsdWRlL3VhcGkvZHJtL2RybV9mb3VyY2MuaAo+ICsrKyBiL2luY2x1ZGUvdWFwaS9kcm0vZHJt
-X2ZvdXJjYy5oCj4gQEAgLTI0Miw2ICsyNDIsNyBAQCBleHRlcm4gIkMiIHsKPiAgICAqIGluZGV4
-IDEgPSBDcjpDYiBwbGFuZSwgWzM5OjBdIENyMTpDYjE6Q3IwOkNiMCBsaXR0bGUgZW5kaWFuCj4g
-ICAgKi8KPiAgICNkZWZpbmUgRFJNX0ZPUk1BVF9OVjE1CQlmb3VyY2NfY29kZSgnTicsICdWJywg
-JzEnLCAnNScpIC8qIDJ4MiBzdWJzYW1wbGVkIENyOkNiIHBsYW5lICovCj4gKyNkZWZpbmUgRFJN
-X0ZPUk1BVF9OVjIwCQlmb3VyY2NfY29kZSgnTicsICdWJywgJzInLCAnMCcpIC8qIDJ4MSBzdWJz
-YW1wbGVkIENyOkNiIHBsYW5lICovCj4gICAKPiAgIC8qCj4gICAgKiAyIHBsYW5lIFlDYkNyIE1T
-QiBhbGlnbmVkCgotLSAKQmVzdCBSZWdhcmQKCum7hOWutumSlwpTYW5keSBIdWFuZwpBZGRyOiDn
-po/lt57luILpvJPmpbzljLrpk5znm5jot6/ova/ku7blpKfpgZM4OeWPt+emj+W3nui9r+S7tuWb
-rUHljLoyMeWPt+alvCgzNTAwMDMpCiAgICAgICBOby4gMjEgQnVpbGRpbmcsIEEgRGlzdHJpY3Qs
-IE5vLjg5LHNvZnR3YXJlIEJvdWxldmFyZCBGdXpob3UsRnVqaWFuLFBSQwpUZWzvvJorODYgMDU5
-MS04Nzg4NDkxOSAgODY5MApFLW1haWzvvJpoamNAcm9jay1jaGlwcy5jb20KCgoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, 09 Jun 2020 09:14:17 +0800, Sugar Zhang wrote:
+> This patch Adds the quirk 'arm,pl330-periph-burst' for pl330.
+> 
+> Signed-off-by: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+> Changes in v2: None
+> 
+>  Documentation/devicetree/bindings/dma/arm-pl330.txt | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
