@@ -1,61 +1,37 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [RESEND PATCH v3 6/6] media: staging: rkisp1: common: add
- documentation for struct rkisp1_isp_mbus_info
-Date: Tue, 16 Jun 2020 09:20:43 -0300
-Message-ID: <739b92c2-1b4e-eeb9-5233-dc4add4316c6@collabora.com>
-References: <20200613091353.12689-1-dafna.hirschfeld@collabora.com>
- <20200613091353.12689-7-dafna.hirschfeld@collabora.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH] arm64: dts: rockchip: set rockpro64 usbc dr_mode as host
+Date: Wed, 17 Jun 2020 10:19:34 +0200
+Message-ID: <25281855.0x1kyemSPj@diego>
+References: <20200614142950.1120694-1-pgwipeout@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200613091353.12689-7-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
+Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+In-Reply-To: <20200614142950.1120694-1-pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
+List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
+ <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
+Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+To: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
-
-Thanks for the patch.
-
-On 6/13/20 6:13 AM, Dafna Hirschfeld wrote:
-> Add documentation for the struct rkisp1_isp_mbus_info with
-> one line doc of each field
+Am Sonntag, 14. Juni 2020, 16:29:51 CEST schrieb Peter Geis:
+> The usb-c port on the rockpro64 does not detect devices reliably when in otg mode.
+> Setting the mode to "host" allows the port to work reliably.
+> This aligns with the pinebook-pro configuration.
 > 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> ---
->  drivers/staging/media/rkisp1/rkisp1-common.h | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-> index 13c5eeff66f3..6104eddac0e5 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
-> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-> @@ -268,6 +268,19 @@ struct rkisp1_device {
->  	struct rkisp1_debug debug;
->  };
->  
-> +/*
-> + * struct rkisp1_isp_mbus_info
-> + *
-> + * holds information about the supported isp media bus
-> + * @mbus_code: the media bus code
-> + * @pixel_enc: the pixel encoding
-> + * @mipi_dt: the mipi data type
-> + * @yuv_seq: the order of the yuv values for yuv formats
-> + * @bus_width: the bus width
-> + * @bayer_pat: the bayer pattern for bayer formats
-> + * @isp_pads_mask: a bitmask of the pads that the format is supported on
-> + */
-> +
->  /*
->   * struct rkisp1_isp_mbus_info - ISP pad format info
->   *
-> 
+> Signed-off-by: Peter Geis <pgwipeout-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 
-Why doesn't it remove the current doc?
+applied for 5.9
+
+Could you also include linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org for future
+patches please?
 
 Thanks
-Helen
+Heiko
