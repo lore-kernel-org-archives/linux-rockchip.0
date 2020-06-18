@@ -1,11 +1,11 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v4 3/5] roc-rk3399-pc: Move leds setup in SPL
-Date: Thu, 18 Jun 2020 21:09:46 +0530
-Message-ID: <20200618153948.218506-4-jagan@amarulasolutions.com>
+Subject: [PATCH v4 4/5] rockchip: Separate the reset cause from display cpuinfo
+Date: Thu, 18 Jun 2020 21:09:47 +0530
+Message-ID: <20200618153948.218506-5-jagan@amarulasolutions.com>
 References: <20200618153948.218506-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 In-Reply-To: <20200618153948.218506-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
@@ -21,173 +21,66 @@ To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tom
 Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-roc-rk3399-pc has some specific requirements to support LEDS,
-environment. board detection and etc prior to U-Boot proper.
-
-So as of now SPL would be a better stage for these custom board
-requirements to support unlike TPL. Adding few of these custom
-requirements like LEDS in TPL would require extra code pulling
-and also the size of TPL can grow.
-
-So, this patch moves the leds code from TPL into SPL after relocation.
-
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Tested-by: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
-Changes for v4:
-- none
-
- arch/arm/mach-rockchip/tpl.c                |  7 -------
- board/firefly/roc-pc-rk3399/Makefile        |  4 ++++
- board/firefly/roc-pc-rk3399/roc-pc-rk3399.c | 21 -------------------
- board/firefly/roc-pc-rk3399/spl.c           | 23 +++++++++++++++++++++
- configs/roc-pc-mezzanine-rk3399_defconfig   |  2 +-
- configs/roc-pc-rk3399_defconfig             |  2 +-
- 6 files changed, 29 insertions(+), 30 deletions(-)
- create mode 100644 board/firefly/roc-pc-rk3399/spl.c
-
-diff --git a/arch/arm/mach-rockchip/tpl.c b/arch/arm/mach-rockchip/tpl.c
-index 88f80b05a9..cc908e1b0e 100644
---- a/arch/arm/mach-rockchip/tpl.c
-+++ b/arch/arm/mach-rockchip/tpl.c
-@@ -43,18 +43,11 @@ __weak void rockchip_stimer_init(void)
- 	       TIMER_CONTROL_REG);
- }
- 
--__weak int board_early_init_f(void)
--{
--	return 0;
--}
--
- void board_init_f(ulong dummy)
- {
- 	struct udevice *dev;
- 	int ret;
- 
--	board_early_init_f();
--
- #if defined(CONFIG_DEBUG_UART) && defined(CONFIG_TPL_SERIAL_SUPPORT)
- 	/*
- 	 * Debug UART can be used from here if required:
-diff --git a/board/firefly/roc-pc-rk3399/Makefile b/board/firefly/roc-pc-rk3399/Makefile
-index 29c79b25d7..3a9c4c744d 100644
---- a/board/firefly/roc-pc-rk3399/Makefile
-+++ b/board/firefly/roc-pc-rk3399/Makefile
-@@ -4,4 +4,8 @@
- # SPDX-License-Identifier:     GPL-2.0+
- #
- 
-+ifdef CONFIG_SPL_BUILD
-+obj-y	+= spl.o
-+else
- obj-y	+= roc-pc-rk3399.o
-+endif
-diff --git a/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c b/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
-index 7c3a803654..581cdcd3b0 100644
---- a/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
-+++ b/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
-@@ -6,13 +6,8 @@
- #include <common.h>
- #include <dm.h>
- #include <log.h>
--#include <asm/arch-rockchip/periph.h>
- #include <power/regulator.h>
--#include <spl_gpio.h>
--#include <asm/io.h>
--#include <asm/arch-rockchip/gpio.h>
- 
--#ifndef CONFIG_SPL_BUILD
- int board_early_init_f(void)
- {
- 	struct udevice *regulator;
-@@ -30,19 +25,3 @@ int board_early_init_f(void)
- out:
- 	return 0;
- }
--#endif
--
--#if defined(CONFIG_TPL_BUILD)
--
--#define GPIO0_BASE      0xff720000
--
--int board_early_init_f(void)
--{
--	struct rockchip_gpio_regs * const gpio0 = (void *)GPIO0_BASE;
--
--	/* Turn on red LED, indicating full power mode */
--	spl_gpio_output(gpio0, GPIO(BANK_B, 5), 1);
--
--	return 0;
--}
--#endif
-diff --git a/board/firefly/roc-pc-rk3399/spl.c b/board/firefly/roc-pc-rk3399/spl.c
-new file mode 100644
-index 0000000000..a7664c6b86
---- /dev/null
-+++ b/board/firefly/roc-pc-rk3399/spl.c
-@@ -0,0 +1,23 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (c) 2020 Amarula Solutions(India)
-+ */
-+
-+#include <common.h>
-+#include <spl_gpio.h>
-+#include <asm/arch-rockchip/gpio.h>
-+
-+#define GPIO0_BASE		0xff720000
-+
-+static void led_setup(void)
-+{
-+	struct rockchip_gpio_regs * const gpio0 = (void *)GPIO0_BASE;
-+
-+	/* Turn on red LED, indicating full power mode */
-+	spl_gpio_output(gpio0, GPIO(BANK_B, 5), 1);
-+}
-+
-+void rk_spl_board_init(void)
-+{
-+	led_setup();
-+}
-diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
-index 595f052cb7..060b4bfecf 100644
---- a/configs/roc-pc-mezzanine-rk3399_defconfig
-+++ b/configs/roc-pc-mezzanine-rk3399_defconfig
-@@ -1,6 +1,7 @@
- CONFIG_ARM=y
- CONFIG_ARCH_ROCKCHIP=y
- CONFIG_SYS_TEXT_BASE=0x00200000
-+CONFIG_SPL_GPIO_SUPPORT=y
- CONFIG_ENV_SIZE=0x8000
- CONFIG_ENV_OFFSET=0x3F8000
- CONFIG_ENV_SECT_SIZE=0x1000
-@@ -20,7 +21,6 @@ CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
- CONFIG_SPL_SPI_LOAD=y
- CONFIG_TPL=y
--CONFIG_TPL_GPIO_SUPPORT=y
- CONFIG_CMD_BOOTZ=y
- CONFIG_CMD_GPT=y
- CONFIG_CMD_MMC=y
-diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index 1c4db3443f..9897a52cd8 100644
---- a/configs/roc-pc-rk3399_defconfig
-+++ b/configs/roc-pc-rk3399_defconfig
-@@ -1,6 +1,7 @@
- CONFIG_ARM=y
- CONFIG_ARCH_ROCKCHIP=y
- CONFIG_SYS_TEXT_BASE=0x00200000
-+CONFIG_SPL_GPIO_SUPPORT=y
- CONFIG_ENV_SIZE=0x8000
- CONFIG_ENV_OFFSET=0x3F8000
- CONFIG_ENV_SECT_SIZE=0x1000
-@@ -20,7 +21,6 @@ CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
- CONFIG_SPL_SPI_LOAD=y
- CONFIG_TPL=y
--CONFIG_TPL_GPIO_SUPPORT=y
- CONFIG_CMD_BOOTZ=y
- CONFIG_CMD_GPT=y
- CONFIG_CMD_MMC=y
--- 
-2.25.1
+cmVzZXQgY2F1c2UgaXMgYSBnZW5lcmljIGZ1bmN0aW9uYWxpdHkgYmFzZWQgb24gdGhlIHNvYwpj
+cnUgcmVnaXN0ZXJzIGluIHJvY2tjaGlwLiBUaGlzIGNhbiBiZSB1c2VkIGZvciBwcmludGluZwp0
+aGUgY2F1c2Ugb2YgcmVzZXQgaW4gY3B1aW5mbyBvciBzb21lIG90aGVyIHBsYWNlIHdoZXJlCnJl
+c2V0IGNhdXNlIGlzIG5lZWRlZC7CoAoKT3RoZXIgdGhhbiBjcHVpbmZvLCByZXNldCBjYXVzZSBj
+YW4gYWxzbyBiZSB1c2luZyBkdXJpbmcKYm9vdGNvdW50IGZvciBjaGVja2luZyB0aGUgc3BlY2lm
+aWMgcmVzZXQgY2F1c2UgYW5kIGdsb3cKdGhlIGxlZCBiYXNlZCBvbiB0aGUgcmVzZXQgY2F1c2Uu
+CgpTbywgbGV0J3Mgc2VwYXJhdGUgdGhlIHJlc2V0IGNhdXNlIGNvZGUgZnJvbSBjcHVpbmZvLCBh
+bmQKYWRkIGEgY2hlY2sgdG8gYnVpbGQgaXQgZm9yIHJrMzM5OSwgcmszMjg4IHNpbmNlIHRoZXNl
+IHR3bwpzb2MgYXJlIHN1cHBvcnRpbmcgcmVzZXQgY2F1c2UgYXMgb2Ygbm93LgoKU2lnbmVkLW9m
+Zi1ieTogSmFnYW4gVGVraSA8amFnYW5AYW1hcnVsYXNvbHV0aW9ucy5jb20+ClRlc3RlZC1ieTog
+U3VuaWVsIE1haGVzaCA8c3VuaWxAYW1hcnVsYXNvbHV0aW9ucy5jb20+Ci0tLQpDaGFuZ2VzIGZv
+ciB2NDoKLSBub25lCgogYXJjaC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hpcC9jcnUuaCB8
+ICAyICsrCiBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL01ha2VmaWxlICAgICAgICAgIHwgIDUgKysr
+Ky0KIGFyY2gvYXJtL21hY2gtcm9ja2NoaXAvY3B1LWluZm8uYyAgICAgICAgfCAyMCArKysrKysr
+KysrKystLS0tLS0tLQogMyBmaWxlcyBjaGFuZ2VkLCAxOCBpbnNlcnRpb25zKCspLCA5IGRlbGV0
+aW9ucygtKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtL2luY2x1ZGUvYXNtL2FyY2gtcm9ja2NoaXAv
+Y3J1LmggYi9hcmNoL2FybS9pbmNsdWRlL2FzbS9hcmNoLXJvY2tjaGlwL2NydS5oCmluZGV4IDVl
+YjE3ZjlkNTUuLjMxN2ViNjEwNDkgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL2luY2x1ZGUvYXNtL2Fy
+Y2gtcm9ja2NoaXAvY3J1LmgKKysrIGIvYXJjaC9hcm0vaW5jbHVkZS9hc20vYXJjaC1yb2NrY2hp
+cC9jcnUuaApAQCAtMzEsNCArMzEsNiBAQCBlbnVtIHsKIAogI2RlZmluZSBNSHoJCTEwMDAwMDAK
+IAorY2hhciAqZ2V0X3Jlc2V0X2NhdXNlKHZvaWQpOworCiAjZW5kaWYgLyogX1JPQ0tDSElQX0NM
+T0NLX0ggKi8KZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvTWFrZWZpbGUgYi9h
+cmNoL2FybS9tYWNoLXJvY2tjaGlwL01ha2VmaWxlCmluZGV4IDViMzg1MjZmZTAuLmVmNDg5OGUw
+MGMgMTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvTWFrZWZpbGUKKysrIGIvYXJj
+aC9hcm0vbWFjaC1yb2NrY2hpcC9NYWtlZmlsZQpAQCAtMTUsNiArMTUsMTAgQEAgb2JqLXRwbC0k
+KENPTkZJR19ST0NLQ0hJUF9QWDMwKSArPSBweDMwLWJvYXJkLXRwbC5vCiAKIG9iai1zcGwtJChD
+T05GSUdfUk9DS0NISVBfUkszMDM2KSArPSByazMwMzYtYm9hcmQtc3BsLm8KIAoraWZlcSAoJChD
+T05GSUdfUk9DS0NISVBfUkszMjg4KSQoQ09ORklHX1JPQ0tDSElQX1JLMzM5OSksIHkpCitvYmot
+eSArPSBjcHUtaW5mby5vCitlbmRpZgorCiBpZmVxICgkKENPTkZJR19TUExfQlVJTEQpJChDT05G
+SUdfVFBMX0JVSUxEKSwpCiAKICMgQWx3YXlzIGluY2x1ZGUgYm9vdF9tb2RlLm8sIGFzIHdlIGJ5
+cGFzcyBpdCAoaS5lLiB0dXJuIGl0IG9mZikKQEAgLTIyLDcgKzI2LDYgQEAgaWZlcSAoJChDT05G
+SUdfU1BMX0JVSUxEKSQoQ09ORklHX1RQTF9CVUlMRCksKQogIyB3ZSBjYW4gaGF2ZSB0aGUgcHJl
+cHJvY2Vzc29yIGNvcnJlY3RseSByZWNvZ25pc2UgYm90aCAweDAgYW5kIDAKICMgbWVhbmluZyAi
+dHVybiBpdCBvZmYiLgogb2JqLXkgKz0gYm9vdF9tb2RlLm8KLW9iai0kKENPTkZJR19ESVNQTEFZ
+X0NQVUlORk8pICs9IGNwdS1pbmZvLm8KIG9iai0kKENPTkZJR19ST0NLQ0hJUF9DT01NT05fQk9B
+UkQpICs9IGJvYXJkLm8KIG9iai0kKENPTkZJR19NSVNDX0lOSVRfUikgKz0gbWlzYy5vCiBlbmRp
+ZgpkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9jcHUtaW5mby5jIGIvYXJjaC9h
+cm0vbWFjaC1yb2NrY2hpcC9jcHUtaW5mby5jCmluZGV4IDIxY2E5ZGVkY2UuLjc2YTg0MGUyYzMg
+MTAwNjQ0Ci0tLSBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvY3B1LWluZm8uYworKysgYi9hcmNo
+L2FybS9tYWNoLXJvY2tjaGlwL2NwdS1pbmZvLmMKQEAgLTEzLDcgKzEzLDcgQEAKICNpbmNsdWRl
+IDxhc20vYXJjaC1yb2NrY2hpcC9oYXJkd2FyZS5oPgogI2luY2x1ZGUgPGxpbnV4L2Vyci5oPgog
+Ci1zdGF0aWMgY2hhciAqZ2V0X3Jlc2V0X2NhdXNlKHZvaWQpCitjaGFyICpnZXRfcmVzZXRfY2F1
+c2Uodm9pZCkKIHsKIAlzdHJ1Y3Qgcm9ja2NoaXBfY3J1ICpjcnUgPSByb2NrY2hpcF9nZXRfY3J1
+KCk7CiAJY2hhciAqY2F1c2UgPSBOVUxMOwpAQCAtNDEsMTIgKzQxLDYgQEAgc3RhdGljIGNoYXIg
+KmdldF9yZXNldF9jYXVzZSh2b2lkKQogCQljYXVzZSA9ICJ1bmtub3duIHJlc2V0IjsKIAl9CiAK
+LQkvKioKLQkgKiByZXNldF9yZWFzb24gZW52IGlzIHVzZWQgYnkgcmszMjg4LCBkdWUgdG8gc3Bl
+Y2lhbCB1c2UgY2FzZQotCSAqIHRvIGZpZ3VyZSBpdCB0aGUgYm9vdCBiZWhhdmlvci4gc28ga2Vl
+cCB0aGlzIGFzIGl0IGlzLgotCSAqLwotCWVudl9zZXQoInJlc2V0X3JlYXNvbiIsIGNhdXNlKTsK
+LQogCS8qCiAJICogQ2xlYXIgZ2xiX3JzdF9zdCwgc28gd2UgY2FuIGRldGVybWluZSB0aGUgbGFz
+dCByZXNldCBjYXVzZQogCSAqIGZvciBmb2xsb3dpbmcgcmVzZXRzLgpAQCAtNTYsMTIgKzUwLDIy
+IEBAIHN0YXRpYyBjaGFyICpnZXRfcmVzZXRfY2F1c2Uodm9pZCkKIAlyZXR1cm4gY2F1c2U7CiB9
+CiAKKyNpZmRlZiBDT05GSUdfRElTUExBWV9DUFVJTkZPCiBpbnQgcHJpbnRfY3B1aW5mbyh2b2lk
+KQogeworCWNoYXIgKmNhdXNlID0gZ2V0X3Jlc2V0X2NhdXNlKCk7CisKIAlwcmludGYoIlNvQzog
+Um9ja2NoaXAgJXNcbiIsIENPTkZJR19TWVNfU09DKTsKLQlwcmludGYoIlJlc2V0IGNhdXNlOiAl
+c1xuIiwgZ2V0X3Jlc2V0X2NhdXNlKCkpOworCXByaW50ZigiUmVzZXQgY2F1c2U6ICVzXG4iLCBj
+YXVzZSk7CisKKwkvKioKKwkgKiByZXNldF9yZWFzb24gZW52IGlzIHVzZWQgYnkgcmszMjg4LCBk
+dWUgdG8gc3BlY2lhbCB1c2UgY2FzZQorCSAqIHRvIGZpZ3VyZSBpdCB0aGUgYm9vdCBiZWhhdmlv
+ci4gc28ga2VlcCB0aGlzIGFzIGl0IGlzLgorCSAqLworCWVudl9zZXQoInJlc2V0X3JlYXNvbiIs
+IGNhdXNlKTsKIAogCS8qIFRPRE8gcHJpbnQgb3BlcmF0aW5nIHRlbXBhcmF0dXJlIGFuZCBjbG9j
+ayAqLwogCiAJcmV0dXJuIDA7CiB9CisjZW5kaWYKLS0gCjIuMjUuMQoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
