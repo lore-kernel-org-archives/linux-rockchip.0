@@ -1,82 +1,40 @@
-From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.19 084/172] pinctrl: rockchip: fix memleak in
- rockchip_dt_node_to_map
-Date: Wed, 17 Jun 2020 21:20:50 -0400
-Message-ID: <20200618012218.607130-84-sashal@kernel.org>
-References: <20200618012218.607130-1-sashal@kernel.org>
+From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Subject: [PATCH 0/4] ARM: dts: rockchip: Radxa Rock Pi N8 initial support
+Date: Thu, 18 Jun 2020 15:38:28 +0530
+Message-ID: <20200618100832.94202-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200618012218.607130-1-sashal@kernel.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Cc: Sasha Levin <sashal@kernel.org>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Rock Pi N8 is a Rockchip RK3288 based SBC, which has
+- VMARC RK3288 SOM (as per SMARC standard) from Vamrs.
+- Compatible carrier board from Radxa.
 
-[ Upstream commit d7faa8ffb6be57bf8233a4b5a636d76b83c51ce7 ]
+VMARC RK3288 SOM need to mount on top of dalang carrier 
+board for making Rock PI N8 SBC.
 
-In function rockchip_dt_node_to_map, a new_map variable is
-allocated by:
+Any inputs?
+Jagan.
 
-new_map = devm_kcalloc(pctldev->dev, map_num, sizeof(*new_map),
-		       GFP_KERNEL);
+Jagan Teki (4):
+  ARM: dts: rockchip: radxa-dalang: Update sdmmc properties
+  dt-bindings: arm: rockchip: Add Rock Pi N8 binding
+  ARM: dts: rockchip: Add VMARC RK3288 SOM initial support
+  ARM: dts: rockchip: Add Radxa Rock Pi N8 initial support
 
-This uses devres and attaches new_map to the pinctrl driver.
-This cause a leak since new_map is not released when the probed
-driver is removed. Fix it by using kcalloc to allocate new_map
-and free it in `rockchip_dt_free_map`
+ .../devicetree/bindings/arm/rockchip.yaml     |   6 +
+ arch/arm/boot/dts/Makefile                    |   1 +
+ arch/arm/boot/dts/rk3288-rock-pi-n8.dts       |  17 +
+ arch/arm/boot/dts/rk3288-vmarc-som.dtsi       | 298 ++++++++++++++++++
+ .../dts/rockchip-radxa-dalang-carrier.dtsi    |   2 -
+ .../dts/rockchip/rk3399pro-vmarc-som.dtsi     |   5 +
+ 6 files changed, 327 insertions(+), 2 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3288-rock-pi-n8.dts
+ create mode 100644 arch/arm/boot/dts/rk3288-vmarc-som.dtsi
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Link: https://lore.kernel.org/r/20200506100903.15420-1-dafna.hirschfeld@collabora.com
-Signed-off-by: Linus Walleij <linus.walleij@linaro.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/pinctrl/pinctrl-rockchip.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 8d83817935da..005df24f5b3f 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -507,8 +507,8 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
- 	}
- 
- 	map_num += grp->npins;
--	new_map = devm_kcalloc(pctldev->dev, map_num, sizeof(*new_map),
--								GFP_KERNEL);
-+
-+	new_map = kcalloc(map_num, sizeof(*new_map), GFP_KERNEL);
- 	if (!new_map)
- 		return -ENOMEM;
- 
-@@ -518,7 +518,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
- 	/* create mux map */
- 	parent = of_get_parent(np);
- 	if (!parent) {
--		devm_kfree(pctldev->dev, new_map);
-+		kfree(new_map);
- 		return -EINVAL;
- 	}
- 	new_map[0].type = PIN_MAP_TYPE_MUX_GROUP;
-@@ -545,6 +545,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
- static void rockchip_dt_free_map(struct pinctrl_dev *pctldev,
- 				    struct pinctrl_map *map, unsigned num_maps)
- {
-+	kfree(map);
- }
- 
- static const struct pinctrl_ops rockchip_pctrl_ops = {
 -- 
 2.25.1
