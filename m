@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 2/6] rock-pi-4: Enable PCI/NVME
-Date: Thu, 18 Jun 2020 19:42:55 +0530
-Message-ID: <20200618141259.155581-2-jagan@amarulasolutions.com>
+Subject: [PATCH v2 3/6] rock-pi-4: Enable USB Gadget
+Date: Thu, 18 Jun 2020 19:42:56 +0530
+Message-ID: <20200618141259.155581-3-jagan@amarulasolutions.com>
 References: <20200618141259.155581-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
@@ -18,17 +18,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 To: Kever Yang <kever.yang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Philipp Tomsich <philipp.tomsich-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>, Simon Glass <sjg-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>, U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: U-Boot-Denx <u-boot-0aAXYlwwYIKGBzrmiIFOJg@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable PCI/NVME for M.2 Slot on RockPI-4 boards.
+Enable USB gadget for rock-pi-4 boards.
 
-=> nvme info
-Device 0: Vendor: 0x144d Rev: 2B2QEXM7 Prod: S4EUNG0MC10012Y
-            Type: Hard Disk
-            Capacity: 238475.1 MB = 232.8 GB (488397168 x 512)
+This would help to use fastboot by default.
 
-Cc: Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>
+Note: Connect the Host USB cable (Port A or C) to rock-pi-4
+Upper USB 3.0 port.
+
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
 Changes for v2:
@@ -54,29 +53,28 @@ index 0d86fdc895..2487872219 100644
  CONFIG_ETH_DESIGNWARE=y
  CONFIG_GMAC_ROCKCHIP=y
 +CONFIG_PHY_ROCKCHIP_INNO_USB2=y
- configs/rock-pi-4-rk3399_defconfig | 3 +++
- 1 file changed, 3 insertions(+)
+ configs/rock-pi-4-rk3399_defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
-index 2487872219..f3eeef0293 100644
+index f3eeef0293..a4b322074c 100644
 --- a/configs/rock-pi-4-rk3399_defconfig
 +++ b/configs/rock-pi-4-rk3399_defconfig
-@@ -18,6 +18,7 @@ CONFIG_TPL=y
- CONFIG_CMD_BOOTZ=y
- CONFIG_CMD_GPT=y
- CONFIG_CMD_MMC=y
-+CONFIG_CMD_PCI=y
- CONFIG_CMD_USB=y
- # CONFIG_CMD_SETEXPR is not set
- CONFIG_CMD_TIME=y
-@@ -36,6 +37,8 @@ CONFIG_MMC_SDHCI_ROCKCHIP=y
- CONFIG_DM_ETH=y
- CONFIG_ETH_DESIGNWARE=y
- CONFIG_GMAC_ROCKCHIP=y
-+CONFIG_NVME=y
-+CONFIG_PCI=y
- CONFIG_PHY_ROCKCHIP_INNO_USB2=y
- CONFIG_PHY_ROCKCHIP_TYPEC=y
- CONFIG_PMIC_RK8XX=y
+@@ -8,6 +8,7 @@ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+ CONFIG_DEBUG_UART_CLOCK=24000000
+ CONFIG_DEBUG_UART=y
++# CONFIG_ANDROID_BOOT_IMAGE is not set
+ CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4.dtb"
+ CONFIG_MISC_INIT_R=y
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+@@ -57,6 +58,7 @@ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_GENERIC=y
+ CONFIG_USB_DWC3=y
+ CONFIG_USB_DWC3_GENERIC=y
++CONFIG_USB_GADGET=y
+ CONFIG_USB_HOST_ETHER=y
+ CONFIG_USB_ETHER_ASIX=y
+ CONFIG_USB_ETHER_ASIX88179=y
 -- 
 2.25.1
