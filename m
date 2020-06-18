@@ -1,40 +1,44 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH 13/29] dt: fix broken links due to txt->yaml renames
-Date: Thu, 18 Jun 2020 10:44:31 -0600
-Message-ID: <20200618164431.GA504444@bogus>
-References: <cover.1592203542.git.mchehab+huawei@kernel.org>
- <0e4a7f0b7efcc8109c8a41a2e13c8adde4d9c6b9.1592203542.git.mchehab+huawei@kernel.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-doc-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <0e4a7f0b7efcc8109c8a41a2e13c8adde4d9c6b9.1592203542.git.mchehab+huawei@kernel.org>
-Sender: linux-doc-owner@vger.kernel.org
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, linux-mips@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, linux-bluetooth@vger.kernel.org, Linux Doc Mailing List <linux-doc@vger.kernel.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, "David S. Miller" <davem@davemloft.net>, netdev@vger.kernel.org, Mark Brown <broonie@kernel.org>, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Jonathan Corbet <corbet@lwn.net>, linux-arm-kernel@lists.infradead.org, Sandy Huang <hjc@rock-chips.com>, alsa-devel@alsa-project
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] ASoC: rockchip: Fix a reference count leak.
+Date: Thu, 18 Jun 2020 17:48:30 +0100
+Message-ID: <159249891020.8643.15196266849523031585.b4-ty@kernel.org>
+References: <20200613205158.27296-1-wu000273@umn.edu>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200613205158.27296-1-wu000273@umn.edu>
+Sender: linux-kernel-owner@vger.kernel.org
+To: kjlu@umn.edu, "wu000273@umn.edu" <wu000273@umn.edu>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Sugar Zhang <sugar.zhang@rock-chips.com>, alsa-devel@alsa-project.org, Takashi Iwai <tiwai@suse.com>, linux-arm-kernel@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 15 Jun 2020 08:46:52 +0200, Mauro Carvalho Chehab wrote:
-> There are some new broken doc links due to yaml renames
-> at DT. Developers should really run:
-> 
-> 	./scripts/documentation-file-ref-check
-> 
-> in order to solve those issues while submitting patches.
-> This tool can even fix most of the issues with:
-> 
-> 	./scripts/documentation-file-ref-check --fix
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> ---
->  Documentation/devicetree/bindings/display/bridge/sii902x.txt  | 2 +-
->  .../devicetree/bindings/display/rockchip/rockchip-drm.yaml    | 2 +-
->  Documentation/devicetree/bindings/net/mediatek-bluetooth.txt  | 2 +-
->  Documentation/devicetree/bindings/sound/audio-graph-card.txt  | 2 +-
->  Documentation/devicetree/bindings/sound/st,sti-asoc-card.txt  | 2 +-
->  Documentation/mips/ingenic-tcu.rst                            | 2 +-
->  MAINTAINERS                                                   | 4 ++--
->  7 files changed, 8 insertions(+), 8 deletions(-)
-> 
+On Sat, 13 Jun 2020 15:51:58 -0500, wu000273@umn.edu wrote:
+> Calling pm_runtime_get_sync increments the counter even in case of
+> failure, causing incorrect ref count if pm_runtime_put is not called in
+> error handling paths. Call pm_runtime_put if pm_runtime_get_sync fails.
 
-Applied, thanks!
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: rockchip: Fix a reference count leak.
+      commit: f141a422159a199f4c8dedb7e0df55b3b2cf16cd
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
