@@ -1,71 +1,75 @@
-From: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-Subject: [PATCH v6 18/36] drm: rockchip: use common helper for a scatterlist
- contiguity check
-Date: Thu, 18 Jun 2020 17:39:39 +0200
-Message-ID: <20200618153956.29558-19-m.szyprowski@samsung.com>
-References: <20200618153956.29558-1-m.szyprowski@samsung.com>
- <CGME20200618154026eucas1p27589d4e89563b89eb27459cf9743c7b4@eucas1p2.samsung.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v4 0/5] roc-rk3399-pc: Custom SPL init
+Date: Thu, 18 Jun 2020 21:09:43 +0530
+Message-ID: <20200618153948.218506-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-In-Reply-To: <20200618153956.29558-1-m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
-List-Unsubscribe: <https://lists.linuxfoundation.org/mailman/options/iommu>,
- <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.linuxfoundation.org/pipermail/iommu/>
-List-Post: <mailto:iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-List-Help: <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=help>
-List-Subscribe: <https://lists.linuxfoundation.org/mailman/listinfo/iommu>,
- <mailto:iommu-request-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org?subject=subscribe>
-Errors-To: iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org
-Sender: "iommu" <iommu-bounces-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org>
-To: dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, linaro-mm-sig-cunTk1MwBs8s++Sfvej+rw@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, David Airlie <airlied-cv59FeDIM0c@public.gmane.org>, Sandy Huang <hjc-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Daniel Vetter <daniel-/w4YWyX8dFk@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Christoph Hellwig <hch-jcswGhMUV9g@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Use common helper for checking the contiguity of the imported dma-buf.
+This series supports custom initialization code required for 
+roc-rk3399-pc board on SPL stage.
 
-Signed-off-by: Marek Szyprowski <m.szyprowski-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>
----
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 19 +------------------
- 1 file changed, 1 insertion(+), 18 deletions(-)
+Here is the previous v3 this series[1]. 
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index b9275ba7c5a5..2970e534e2bb 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -460,23 +460,6 @@ struct sg_table *rockchip_gem_prime_get_sg_table(struct drm_gem_object *obj)
- 	return sgt;
- }
- 
--static unsigned long rockchip_sg_get_contiguous_size(struct sg_table *sgt,
--						     int count)
--{
--	struct scatterlist *s;
--	dma_addr_t expected = sg_dma_address(sgt->sgl);
--	unsigned int i;
--	unsigned long size = 0;
--
--	for_each_sg(sgt->sgl, s, count, i) {
--		if (sg_dma_address(s) != expected)
--			break;
--		expected = sg_dma_address(s) + sg_dma_len(s);
--		size += sg_dma_len(s);
--	}
--	return size;
--}
--
- static int
- rockchip_gem_iommu_map_sg(struct drm_device *drm,
- 			  struct dma_buf_attachment *attach,
-@@ -498,7 +481,7 @@ rockchip_gem_dma_map_sg(struct drm_device *drm,
- 	if (!count)
- 		return -EINVAL;
- 
--	if (rockchip_sg_get_contiguous_size(sg, count) < attach->dmabuf->size) {
-+	if (drm_prime_get_contiguous_size(sg) < attach->dmabuf->size) {
- 		DRM_ERROR("failed to map sg_table to contiguous linear address.\n");
- 		dma_unmap_sg(drm->dev, sg->sgl, sg->nents,
- 			     DMA_BIDIRECTIONAL);
+Now this series is well mature code handling to add custom 
+spl_board_init code parts.
+
+roc-rk3399-pc would require custom leds initialization based 
+on user intervention of the power key. This code handles the 
+user intervention via SPI environment variable. If someone 
+or production systems wants this feature then 'pwr_key' has 
+to be set otherwise it is normal like other rk3399 boards 
+in Mainline.
+
+Changes for v4:
+- enable SPL_BOARD_INIT in all platforms
+Changes for v3:
+- support leds on SPL
+- support env 'pwr_key'
+
+[1] https://patchwork.ozlabs.org/project/uboot/cover/20200608183144.26809-1-jagan@amarulasolutions.com
+
+Any inputs?
+Jagan.
+
+Jagan Teki (5):
+  rockchip: spl: Add spl_board_init
+  rk3399: spl: Print SPL banner after relocation
+  roc-rk3399-pc: Move leds setup in SPL
+  rockchip: Separate the reset cause from display cpuinfo
+  roc-rk3399-pc: Set LED only during POR and pwr_key=y
+
+ arch/arm/Kconfig                              |  1 +
+ arch/arm/include/asm/arch-rockchip/cru.h      |  2 +
+ arch/arm/mach-rockchip/Kconfig                |  2 -
+ arch/arm/mach-rockchip/Makefile               |  5 +-
+ arch/arm/mach-rockchip/cpu-info.c             | 20 +++---
+ arch/arm/mach-rockchip/rk3188/rk3188.c        |  2 +-
+ arch/arm/mach-rockchip/rk3399/rk3399.c        | 57 -----------------
+ arch/arm/mach-rockchip/spl.c                  | 11 ++++
+ arch/arm/mach-rockchip/tpl.c                  |  7 ---
+ board/firefly/firefly-rk3288/firefly-rk3288.c |  2 +-
+ board/firefly/roc-pc-rk3399/Makefile          |  4 ++
+ board/firefly/roc-pc-rk3399/roc-pc-rk3399.c   | 21 -------
+ board/firefly/roc-pc-rk3399/spl.c             | 56 +++++++++++++++++
+ board/phytec/phycore_rk3288/phycore-rk3288.c  |  2 +-
+ .../puma_rk3399/puma-rk3399.c                 | 61 +++++++++++++++++++
+ configs/roc-pc-mezzanine-rk3399_defconfig     |  6 +-
+ configs/roc-pc-rk3399_defconfig               |  6 +-
+ 17 files changed, 162 insertions(+), 103 deletions(-)
+ create mode 100644 board/firefly/roc-pc-rk3399/spl.c
+
 -- 
-2.17.1
+2.25.1
