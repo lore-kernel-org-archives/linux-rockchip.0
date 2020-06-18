@@ -1,14 +1,14 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 5.4 137/266] pinctrl: rockchip: fix memleak in
+Subject: [PATCH AUTOSEL 4.19 084/172] pinctrl: rockchip: fix memleak in
  rockchip_dt_node_to_map
-Date: Wed, 17 Jun 2020 21:14:22 -0400
-Message-ID: <20200618011631.604574-137-sashal@kernel.org>
-References: <20200618011631.604574-1-sashal@kernel.org>
+Date: Wed, 17 Jun 2020 21:20:50 -0400
+Message-ID: <20200618012218.607130-84-sashal@kernel.org>
+References: <20200618012218.607130-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-In-Reply-To: <20200618011631.604574-1-sashal@kernel.org>
+In-Reply-To: <20200618012218.607130-1-sashal@kernel.org>
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -47,10 +47,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index dc0bbf198cbc..1bd8840e11a6 100644
+index 8d83817935da..005df24f5b3f 100644
 --- a/drivers/pinctrl/pinctrl-rockchip.c
 +++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -506,8 +506,8 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+@@ -507,8 +507,8 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
  	}
  
  	map_num += grp->npins;
@@ -61,7 +61,7 @@ index dc0bbf198cbc..1bd8840e11a6 100644
  	if (!new_map)
  		return -ENOMEM;
  
-@@ -517,7 +517,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+@@ -518,7 +518,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
  	/* create mux map */
  	parent = of_get_parent(np);
  	if (!parent) {
@@ -70,7 +70,7 @@ index dc0bbf198cbc..1bd8840e11a6 100644
  		return -EINVAL;
  	}
  	new_map[0].type = PIN_MAP_TYPE_MUX_GROUP;
-@@ -544,6 +544,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
+@@ -545,6 +545,7 @@ static int rockchip_dt_node_to_map(struct pinctrl_dev *pctldev,
  static void rockchip_dt_free_map(struct pinctrl_dev *pctldev,
  				    struct pinctrl_map *map, unsigned num_maps)
  {
