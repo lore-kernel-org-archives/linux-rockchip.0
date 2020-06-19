@@ -1,65 +1,86 @@
-From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH] thermal/drivers/cpufreq_cooling: Fix wrong frequency
- converted from power
-Date: Fri, 19 Jun 2020 17:08:25 +0800
-Message-ID: <20200619090825.32747-1-finley.xiao@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Subject: =?UTF-8?Q?Re=3a_=5bRESEND_PATCH=5d_Revert_=22clk=3a_rockchip=3a_fix?=
+ =?UTF-8?Q?_wrong_mmc_sample_phase_shift_for_rk3328=22=e3=80=90=e8=af=b7?=
+ =?UTF-8?B?5rOo5oSP77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcytzaGF3bi5s?=
+ =?UTF-8?B?aW49cm9jay1jaGlwcy5jb21AbGlzdHMuaW5mcmFkZWFkLm9yZ+S7o+WPkeOAkQ==?=
+Date: Fri, 19 Jun 2020 17:30:27 +0800
+Message-ID: <0dd5e173-a656-a1be-0a44-1ea8a03ca6fd@rock-chips.com>
+References: <c80eb52e34c03f817586b6b7912fbd4e31be9079.1589475794.git.robin.murphy@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-rockchip/>
-List-Post: <mailto:linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-List-Help: <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
- <mailto:linux-rockchip-request-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org?subject=subscribe>
-Sender: "Linux-rockchip" <linux-rockchip-bounces-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
-Errors-To: linux-rockchip-bounces+glpar-linux-rockchip=m.gmane-mx.org-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, amit.kachhap-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, javi.merino-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, amit.kucheria-LY4KaoCqKrnby3iVrkZq2A@public.gmane.org
-Cc: huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <c80eb52e34c03f817586b6b7912fbd4e31be9079.1589475794.git.robin.murphy@arm.com>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Robin Murphy <robin.murphy@arm.com>, heiko@sntech.de, mturquette@baylibre.com, sboyd@kernel.org
+Cc: linux-rockchip@lists.infradead.org, shawn.lin@rock-chips.com, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The function cpu_power_to_freq is used to find a frequency and set the
-cooling device to consume at most the power to be converted. For example,
-if the power to be converted is 80mW, and the em table is as follow.
-struct em_cap_state table[] = {
-	/* KHz     mW */
-	{ 1008000, 36, 0 },
-	{ 1200000, 49, 0 },
-	{ 1296000, 59, 0 },
-	{ 1416000, 72, 0 },
-	{ 1512000, 86, 0 },
-};
-The target frequency should be 1416000KHz, not 1512000KHz.
 
-Fixes: 349d39dc5739 ("thermal: cpu_cooling: merge frequency and power tables")
-Cc: <stable-u79uwXL29TY76Z2rM5mHXA@public.gmane.org> # v4.13+
-Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Acked-by: Viresh Kumar <viresh.kumar-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
----
- drivers/thermal/cpufreq_cooling.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+On 2020/6/19 1:56, Robin Murphy wrote:
+> This reverts commit 82f4b67f018c88a7cc9337f0067ed3d6ec352648.
+> 
+> According to a subsequent revert in the vendor kernel, the original
+> change was based on unclear documentation and was in fact incorrect.
+> 
 
-diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_cooling.c
-index 9e124020519f..6c0e1b053126 100644
---- a/drivers/thermal/cpufreq_cooling.c
-+++ b/drivers/thermal/cpufreq_cooling.c
-@@ -123,12 +123,12 @@ static u32 cpu_power_to_freq(struct cpufreq_cooling_device *cpufreq_cdev,
- {
- 	int i;
- 
--	for (i = cpufreq_cdev->max_level - 1; i >= 0; i--) {
--		if (power > cpufreq_cdev->em->table[i].power)
-+	for (i = cpufreq_cdev->max_level; i >= 0; i--) {
-+		if (power >= cpufreq_cdev->em->table[i].power)
- 			break;
- 	}
- 
--	return cpufreq_cdev->em->table[i + 1].frequency;
-+	return cpufreq_cdev->em->table[i].frequency;
- }
- 
- /**
--- 
-2.11.0
+Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
+
+> Emprically, my board's HS200 eMMC at 200MHZ apparently gets lucky with a
+> phase where this had no impact, but limiting max-frequency to 150MHz to
+> match the nominal capability of the I/O pins made it virtually unusable,
+> constantly throwing errors and retuning. With this revert, it starts
+> behaving perfectly at 150MHz too.
+> 
+> Fixes: 82f4b67f018c ("clk: rockchip: fix wrong mmc sample phase shift for rk3328")
+> Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+> ---
+> 
+> Resending with the edited commit log I actually meant, rather than the
+> earlier draft I managed to generate the previuous patch from, since that
+> one seems to have slipped through the cracks anyway.
+> 
+> ybetter commit message
+>   drivers/clk/rockchip/clk-rk3328.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3328.c b/drivers/clk/rockchip/clk-rk3328.c
+> index c186a1985bf4..2429b7c2a8b3 100644
+> --- a/drivers/clk/rockchip/clk-rk3328.c
+> +++ b/drivers/clk/rockchip/clk-rk3328.c
+> @@ -808,22 +808,22 @@ static struct rockchip_clk_branch rk3328_clk_branches[] __initdata = {
+>   	MMC(SCLK_SDMMC_DRV, "sdmmc_drv", "clk_sdmmc",
+>   	    RK3328_SDMMC_CON0, 1),
+>   	MMC(SCLK_SDMMC_SAMPLE, "sdmmc_sample", "clk_sdmmc",
+> -	    RK3328_SDMMC_CON1, 0),
+> +	    RK3328_SDMMC_CON1, 1),
+>   
+>   	MMC(SCLK_SDIO_DRV, "sdio_drv", "clk_sdio",
+>   	    RK3328_SDIO_CON0, 1),
+>   	MMC(SCLK_SDIO_SAMPLE, "sdio_sample", "clk_sdio",
+> -	    RK3328_SDIO_CON1, 0),
+> +	    RK3328_SDIO_CON1, 1),
+>   
+>   	MMC(SCLK_EMMC_DRV, "emmc_drv", "clk_emmc",
+>   	    RK3328_EMMC_CON0, 1),
+>   	MMC(SCLK_EMMC_SAMPLE, "emmc_sample", "clk_emmc",
+> -	    RK3328_EMMC_CON1, 0),
+> +	    RK3328_EMMC_CON1, 1),
+>   
+>   	MMC(SCLK_SDMMC_EXT_DRV, "sdmmc_ext_drv", "clk_sdmmc_ext",
+>   	    RK3328_SDMMC_EXT_CON0, 1),
+>   	MMC(SCLK_SDMMC_EXT_SAMPLE, "sdmmc_ext_sample", "clk_sdmmc_ext",
+> -	    RK3328_SDMMC_EXT_CON1, 0),
+> +	    RK3328_SDMMC_EXT_CON1, 1),
+>   };
+>   
+>   static const char *const rk3328_critical_clocks[] __initconst = {
+> 
