@@ -1,131 +1,74 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [PATCH v2 3/4] media: staging: rkisp1: rsz: set output format to
- YUV422 if cap format is YUV444
-Date: Fri, 19 Jun 2020 09:30:50 +0200
-Message-ID: <09b87404-b106-f58b-b773-cf4c344648df@collabora.com>
-References: <20200515142952.20163-1-dafna.hirschfeld@collabora.com>
- <20200515142952.20163-4-dafna.hirschfeld@collabora.com>
- <CAHD77HkjjWMOcX3oLnzdMuzZM-_NSydStnzLLcHEFRenL23d-A@mail.gmail.com>
- <aa52f9f8-d9e9-06b2-22df-bbab2d26b516@collabora.com>
- <20200618174752.GA10831@chromium.org>
- <9ee01443-985d-751c-fff9-fa90337de68d@collabora.com>
- <20200618181220.GC10831@chromium.org>
- <f1660285-f6cb-6157-1e56-2974bc549fef@collabora.com>
- <20200618191857.GC73379@chromium.org>
+From: Huang Jiachai <hjc@rock-chips.com>
+Subject: Re: [PATCH] drm/rockchip: vop: fix vop full rgb24 r/b color error
+Date: Fri, 19 Jun 2020 16:39:09 +0800
+Message-ID: <0fe318e7-2f35-d311-ff3a-b67cc527cc87@rock-chips.com>
+References: <20200619021251.22991-1-hjc@rock-chips.com>
+ <2786595.VspqIdsi2r@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200618191857.GC73379@chromium.org>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Helen Koike <helen.koike@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Transfer-Encoding: base64
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+In-Reply-To: <2786595.VspqIdsi2r@phil>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: huangtao@rock-chips.com, David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, andy.yan@rock-chips.com, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 18.06.20 21:18, Tomasz Figa wrote:
-> On Thu, Jun 18, 2020 at 08:50:23PM +0200, Dafna Hirschfeld wrote:
->>
->>
->> On 18.06.20 20:12, Tomasz Figa wrote:
->>> On Thu, Jun 18, 2020 at 08:00:37PM +0200, Dafna Hirschfeld wrote:
->>>>
->>>>
->>>> On 18.06.20 19:47, Tomasz Figa wrote:
->>>>> On Fri, Jun 12, 2020 at 02:45:00PM +0200, Dafna Hirschfeld wrote:
->>>>>>
->>>>>>
->>>>>> On 27.05.20 01:09, Tomasz Figa wrote:
->>>>>>> On Fri, May 15, 2020 at 4:30 PM Dafna Hirschfeld
->>>>>>> <dafna.hirschfeld@collabora.com> wrote:
->>>>>>>>
->>>>>>>> If the capture format is YUV444M then the memory input format
->>>>>>>> should be YUV422, so the resizer should not change the default
->>>>>>>> hdiv, vdiv in that case.
->>>>>>>>
->>>>>>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
->>>>>>>> ---
->>>>>>>>      drivers/staging/media/rkisp1/rkisp1-resizer.c | 7 ++++---
->>>>>>>>      1 file changed, 4 insertions(+), 3 deletions(-)
->>>>>>>>
->>>>>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
->>>>>>>> index 04a29af8cc92..5f9740ddd558 100644
->>>>>>>> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
->>>>>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
->>>>>>>> @@ -394,10 +394,11 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
->>>>>>>>              * (4:2:2 -> 4:2:0 for example). So the width/height of the CbCr
->>>>>>>>              * streams should be set according to the pixel format in the capture.
->>>>>>>>              * The resizer always gets the input as YUV422. If the capture format
->>>>>>>> -        * is RGB then the memory input (the resizer output) should be YUV422
->>>>>>>> -        * so we use the hdiv, vdiv of the YUV422 info in this case.
->>>>>>>> +        * is RGB or YUV444 then the memory input (the resizer output) should
->>>>>>>> +        * be YUV422 so we use the hdiv, vdiv of the YUV422 info in this case.
->>>>>>>>              */
->>>>>>>> -       if (v4l2_is_format_yuv(cap->pix.info)) {
->>>>>>>> +       if (v4l2_is_format_yuv(cap->pix.info) &&
->>>>>>>> +           cap->pix.info->format != V4L2_PIX_FMT_YUV444M) {
->>>>>>>>                     src_c.width = cap->pix.info->hdiv;
->>>>>>>>                     src_c.height = cap->pix.info->vdiv;
->>>>>>>
->>>>>>> As pointed out in another thread, this should have been the original
->>>>>>> size divided by the divisor and not just the latter alone.
->>>>>>>
->>>>>>> It seems a bit suspicious to me that we don't need to upscale the
->>>>>>> chroma planes here, because it would mean that the MI itself would be
->>>>>>> doing some horizontal pixel doubling. The hardware documentation
->>>>>>> doesn't really explain this, though.
->>>>>>>
->>>>>>> Have you been able to validate that the setting without upscaling
->>>>>>> indeed produces correct output?
->>>>>>
->>>>>> Hi,
->>>>>> I investigated it again, without this patch, the frames on mainpath for YUV444 look good: https://imgur.com/a/NtazWhY
->>>>>> but there is a problem on selfpath: https://imgur.com/a/vQJPqAn
->>>>>>
->>>>>> This patch somehow solves the problem on selfpath but ruins the frames on mainpath.
->>>>>>
->>>>>> I think the bug is actually in another place in the code. The function 'rkisp1_sp_config'
->>>>>> sets a constant value RKISP1_MI_CTRL_SP_INPUT_YUV422 as the input format on the RKISP1_CIF_MI_CTRL register.
->>>>>> But the value should be set according to the configuration. For some reason the problem arises only
->>>>>> when trying to capture yuv444. When I capture yuv420 on the selfpath the frame looks good although the
->>>>>> value RKISP1_MI_CTRL_SP_INPUT_YUV422 is set.
->>>>>> Setting the the SP_INPUT_* according to the configuration seems to solve the problem.
->>>>>
->>>>> Looking at the datasheet, SP seems to have some internal format
->>>>> conversion capability - one can set SP_OUTPUT_FORMAT and SP_INPUT_FORMAT
->>>>> to different YUV subsampling modes or even some RGB formats. MP doesn't
->>>>> have this capability - it can only write whatever it receives.
->>>>>
->>>>> I think this needs to be reflected in the driver, if it isn't yet.
->>>>> Depending on the resizer source format, the MP video node must allow
->>>>> only formats with matching subsampling mode.
->>>>
->>>> Hi,
->>>> I work on v3 now that does that, it supports several yuv mbus codes on the source pads of the resizers
->>>> and then in the link_validation callback of the capture it checks that the subsampling matches.
->>>
->>> Is it enough? I believe the principle is that within the same entity the
->>> state needs to stay consistent, i.e. if the sink pad changes, the source
->>> pad or video node must be updated to expose only correct formats,
->>> including resetting the current format.
->> Yes, but video devices have only a sink pad. Also, the sink pad of
->> a video device is not associated with an mbus code. The video format configuration
->> is not related to the media controller API.
-> 
-> The video device interface and the entity it is linked to belong to the
-> same driver. The V4L2 video device interface requires that the state is
-> always valid and the implementation of the video device needs to take
-> into account its links to external entities.
-
-But if the pad on the other side of the link is configured after the video device
-then the state might become invalid.
-
-Thanks,
-Dafna
-
-> 
-> Best regards,
-> Tomasz
-> 
+SGkgaGVpa28sCgrU2iAyMDIwLzYvMTkgMTU6MDIsIEhlaWtvIFN0dWVibmVyINC0tcA6Cj4gSGkg
+U2FuZHksCj4KPiBBbSBGcmVpdGFnLCAxOS4gSnVuaSAyMDIwLCAwNDoxMjo1MSBDRVNUIHNjaHJp
+ZWIgU2FuZHkgSHVhbmc6Cj4+IFJHQjg4OCBmb3JtYXQgbXNiIGlzIHJlZCBjb21wb25lbnQgYW5k
+IHRoZSBsc2IgaXMgYmx1ZSBjb21wb25lbnQsCj4+IGF0IHZvcCBmdWxsIHBsYXRmb3JtIHRoaXMg
+aXMgc3dhcHBlZCwgYW5kIHRoaXMgaXMgZGlmZmVyZW50IGZyb20gdm9wCj4+IGxpdGUgYW5kIHZv
+cCBuZXh0LCBzbyBhZGQgdGhpcyBwYXRjaCB0byBmaXggaXQuCj4ganVzdCBtZSBzdHJ1Z2dsaW5n
+IHdpdGggY29sb3IgZm9ybWF0cyAuLi4gYW5kIHdvbmRlcmluZyB3aHkgdGhpcyBuZXZlcgo+IGNh
+bWUgdXAgc28gZmFyIC0gd2l0aCBWZXJzaW9uIDMgYmVpbmcgYWxsIG1ham9yIFNvQ3Mgb2YgdGhl
+IGxhc3QgeWVhcnMuCj4KPiBTbyBJIGd1ZXNzIHRoZSByZWFzb24gdGhhdCBub2JvZHkgbm90aWNl
+ZCBzbyBmYXIgaXMsIHRoYXQgbW9zdCB0aGluZ3MKPiB3aWxsIHVzZSBBUkdCODg4IGluc3RlYWQg
+b2YgUkdCODg4Pwp5ZXMsIG1vc3QgZ3B1IG91dHB1dCBmb3JtYXQgaXMgQVJHQjg4OCwgc28gd2Ug
+ZGlkbid0IG5vdGljZWQgaXQgYmVmb3JlLgo+IE9uZSBpbXBsZW1lbnRhdGlvbiBuaXQgYmVsb3cg
+YXMgd2VsbC4KPgo+PiBTaWduZWQtb2ZmLWJ5OiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMu
+Y29tPgo+PiAtLS0KPj4gICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
+cC5jIHwgOCArKysrKysrKwo+PiAgIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKykKPj4K
+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
+LmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+IGluZGV4
+IGM4MGY3ZDlmZDEzZi4uMWMxNzA0OGFkNzM3IDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL2dwdS9k
+cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcC5jCj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wLmMKPj4gQEAgLTEzMiw2ICsxMzIsNyBAQCBzdHJ1Y3Qg
+dm9wX3dpbiB7Cj4+ICAgCj4+ICAgc3RydWN0IHJvY2tjaGlwX3JnYjsKPj4gICBzdHJ1Y3Qgdm9w
+IHsKPj4gKwl1aW50MzJfdCB2ZXJzaW9uOwo+PiAgIAlzdHJ1Y3QgZHJtX2NydGMgY3J0YzsKPj4g
+ICAJc3RydWN0IGRldmljZSAqZGV2Owo+PiAgIAlzdHJ1Y3QgZHJtX2RldmljZSAqZHJtX2RldjsK
+Pj4gQEAgLTk4OSw2ICs5OTAsMTIgQEAgc3RhdGljIHZvaWQgdm9wX3BsYW5lX2F0b21pY191cGRh
+dGUoc3RydWN0IGRybV9wbGFuZSAqcGxhbmUsCj4+ICAgCVZPUF9XSU5fU0VUKHZvcCwgd2luLCBk
+c3Bfc3QsIGRzcF9zdCk7Cj4+ICAgCj4+ICAgCXJiX3N3YXAgPSBoYXNfcmJfc3dhcHBlZChmYi0+
+Zm9ybWF0LT5mb3JtYXQpOwo+PiArCS8qCj4+ICsJICogVk9QIGZ1bGwgbmVlZCB0byBkbyByYiBz
+d2FwIHRvIHNob3cgcmdiODg4L2Jncjg4OCBmb3JtYXQgY29sb3IgY29ycmVjdGx5Cj4+ICsJICov
+Cj4gb25lLWxpbmUtY29tbWVudD8KPiAJLyogVk9QLWZ1bGwgbmVlZHMgcmJfc3dhcCBmb3IgY29y
+cmVjdGx5IHNob3dpbmcgcmdiODg4L2Jncjg4OCAqLwo+Cj4+ICsJaWYgKChmYi0+Zm9ybWF0LT5m
+b3JtYXQgPT0gRFJNX0ZPUk1BVF9SR0I4ODggfHwgZmItPmZvcm1hdC0+Zm9ybWF0ID09IERSTV9G
+T1JNQVRfQkdSODg4KSAmJgo+PiArCSAgICBWT1BfTUFKT1Iodm9wLT52ZXJzaW9uKSA9PSAzKQo+
+PiArCQlyYl9zd2FwID0gIXJiX3N3YXA7Cj4gY2FuIHdlIG1vdmUgdGhpcyBpbnRvIHRoZSBleGlz
+dGluZyBoYXNfcmJfc3dhcHBlZCgpIGZ1bmN0aW9uPwo+IExpa2UgZG9pbmcKPiAJcmJfc3dhcCA9
+IGhhc19yYl9zd2FwcGVkKHZvcCwgZmItPmZvcm1hdC0+Zm9ybWF0KQo+IGFuZCBhZGRpbmcgeW91
+ciBjb25kaXRpb25hbCB0byB0aGUgZW5kIHRoZXJlPwo+Ck9LLCB1cGRhdGUgYXQgdjIuCj4gVGhh
+bmtzCj4gSGVpa28KPgo+Cj4+ICAgCVZPUF9XSU5fU0VUKHZvcCwgd2luLCByYl9zd2FwLCByYl9z
+d2FwKTsKPj4gICAKPj4gICAJLyoKPj4gQEAgLTIwOTEsNiArMjA5OCw3IEBAIHN0YXRpYyBpbnQg
+dm9wX2JpbmQoc3RydWN0IGRldmljZSAqZGV2LCBzdHJ1Y3QgZGV2aWNlICptYXN0ZXIsIHZvaWQg
+KmRhdGEpCj4+ICAgCXZvcC0+ZGV2ID0gZGV2Owo+PiAgIAl2b3AtPmRhdGEgPSB2b3BfZGF0YTsK
+Pj4gICAJdm9wLT5kcm1fZGV2ID0gZHJtX2RldjsKPj4gKwl2b3AtPnZlcnNpb24gPSB2b3BfZGF0
+YS0+dmVyc2lvbjsKPj4gICAJZGV2X3NldF9kcnZkYXRhKGRldiwgdm9wKTsKPj4gICAKPj4gICAJ
+dm9wX3dpbl9pbml0KHZvcCk7Cj4+Cj4KPgo+Cj4KPgotLSAKQmVzdCBSZWdhcmQKCrvGvNLuzgpT
+YW5keSBIdWFuZwpBZGRyOiC4o9bdytC5xMKlx/jNrcXMwrfI7bz+tPO1wDg5usW4o9bdyO28/tSw
+Qcf4MjG6xcKlKDM1MDAwMykKICAgICAgIE5vLiAyMSBCdWlsZGluZywgQSBEaXN0cmljdCwgTm8u
+ODksc29mdHdhcmUgQm91bGV2YXJkIEZ1emhvdSxGdWppYW4sUFJDClRlbKO6Kzg2IDA1OTEtODc4
+ODQ5MTkgIDg2OTAKRS1tYWlso7poamNAcm9jay1jaGlwcy5jb20KCgoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCmxpbnV4LWFybS1rZXJuZWwgbWFpbGlu
+ZyBsaXN0CmxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LWFybS1rZXJuZWwK
