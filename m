@@ -1,65 +1,62 @@
-From: Sandy Huang <hjc@rock-chips.com>
-Subject: [PATCH] drm/rockchip: vop: fix vop full rgb24 r/b color error
-Date: Fri, 19 Jun 2020 10:12:51 +0800
-Message-ID: <20200619021251.22991-1-hjc@rock-chips.com>
+From: Viresh Kumar <viresh.kumar@linaro.org>
+Subject: Re: [PATCH] thermal/drivers/cpufreq_cooling: Fix wrong frequency
+ converted from power
+Date: Fri, 19 Jun 2020 11:27:17 +0530
+Message-ID: <20200619055717.egfs23qywj4kmjok@vireshk-i7>
+References: <20200619015126.15002-1-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
-Cc: huangtao@rock-chips.com, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, andy.yan@rock-chips.com, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20200619015126.15002-1-finley.xiao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Finley Xiao <finley.xiao@rock-chips.com>
+Cc: xf@rock-chips.com, heiko@sntech.de, amit.kachhap@gmail.com, daniel.lezcano@linaro.org, javi.merino@kernel.org, rui.zhang@intel.com, amit.kucheria@verdurent.com, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, cl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-RGB888 format msb is red component and the lsb is blue component,
-at vop full platform this is swapped, and this is different from vop
-lite and vop next, so add this patch to fix it.
+On 19-06-20, 09:51, Finley Xiao wrote:
+> The function cpu_power_to_freq is used to find a frequency and set the
+> cooling device to consume at most the power to be converted. For example,
+> if the power to be converted is 80mW, and the em table is as follow.
+> struct em_cap_state table[] = {
+> 	/* KHz     mW */
+> 	{ 1008000, 36, 0 },
+> 	{ 1200000, 49, 0 },
+> 	{ 1296000, 59, 0 },
+> 	{ 1416000, 72, 0 },
+> 	{ 1512000, 86, 0 },
+> };
+> The target frequency should be 1416000KHz, not 1512000KHz.
+> 
 
-Signed-off-by: Sandy Huang <hjc@rock-chips.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+Cc: v4.13+ <stable@vger.kernel.org> # v4.13+
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index c80f7d9fd13f..1c17048ad737 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -132,6 +132,7 @@ struct vop_win {
- 
- struct rockchip_rgb;
- struct vop {
-+	uint32_t version;
- 	struct drm_crtc crtc;
- 	struct device *dev;
- 	struct drm_device *drm_dev;
-@@ -989,6 +990,12 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 	VOP_WIN_SET(vop, win, dsp_st, dsp_st);
- 
- 	rb_swap = has_rb_swapped(fb->format->format);
-+	/*
-+	 * VOP full need to do rb swap to show rgb888/bgr888 format color correctly
-+	 */
-+	if ((fb->format->format == DRM_FORMAT_RGB888 || fb->format->format == DRM_FORMAT_BGR888) &&
-+	    VOP_MAJOR(vop->version) == 3)
-+		rb_swap = !rb_swap;
- 	VOP_WIN_SET(vop, win, rb_swap, rb_swap);
- 
- 	/*
-@@ -2091,6 +2098,7 @@ static int vop_bind(struct device *dev, struct device *master, void *data)
- 	vop->dev = dev;
- 	vop->data = vop_data;
- 	vop->drm_dev = drm_dev;
-+	vop->version = vop_data->version;
- 	dev_set_drvdata(dev, vop);
- 
- 	vop_win_init(vop);
+> Fixes: 349d39dc5739 ("thermal: cpu_cooling: merge frequency and power tables")
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> ---
+>  drivers/thermal/cpufreq_cooling.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_cooling.c
+> index 9e124020519f..6c0e1b053126 100644
+> --- a/drivers/thermal/cpufreq_cooling.c
+> +++ b/drivers/thermal/cpufreq_cooling.c
+> @@ -123,12 +123,12 @@ static u32 cpu_power_to_freq(struct cpufreq_cooling_device *cpufreq_cdev,
+>  {
+>  	int i;
+>  
+> -	for (i = cpufreq_cdev->max_level - 1; i >= 0; i--) {
+> -		if (power > cpufreq_cdev->em->table[i].power)
+> +	for (i = cpufreq_cdev->max_level; i >= 0; i--) {
+> +		if (power >= cpufreq_cdev->em->table[i].power)
+>  			break;
+>  	}
+>  
+> -	return cpufreq_cdev->em->table[i + 1].frequency;
+> +	return cpufreq_cdev->em->table[i].frequency;
+>  }
+
+Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+
 -- 
-2.17.1
+viresh
