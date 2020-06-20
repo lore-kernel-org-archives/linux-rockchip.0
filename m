@@ -1,169 +1,58 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 3/4] media: staging: rkisp1: rsz: set output format to
- YUV422 if cap format is YUV444
-Date: Fri, 19 Jun 2020 12:04:25 +0000
-Message-ID: <20200619120425.GA241696@chromium.org>
-References: <20200515142952.20163-1-dafna.hirschfeld@collabora.com>
- <20200515142952.20163-4-dafna.hirschfeld@collabora.com>
- <CAHD77HkjjWMOcX3oLnzdMuzZM-_NSydStnzLLcHEFRenL23d-A@mail.gmail.com>
- <aa52f9f8-d9e9-06b2-22df-bbab2d26b516@collabora.com>
- <20200618174752.GA10831@chromium.org>
- <9ee01443-985d-751c-fff9-fa90337de68d@collabora.com>
- <20200618181220.GC10831@chromium.org>
- <f1660285-f6cb-6157-1e56-2974bc549fef@collabora.com>
- <20200618191857.GC73379@chromium.org>
- <09b87404-b106-f58b-b773-cf4c344648df@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-media-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <09b87404-b106-f58b-b773-cf4c344648df@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Helen Koike <helen.koike@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: [RFC PATCH v1 0/2] rk3318 A95X Z2 board
+Date: Sat, 20 Jun 2020 15:46:57 +0200
+Message-ID: <20200620134659.4592-1-jbx6244@gmail.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 19, 2020 at 09:30:50AM +0200, Dafna Hirschfeld wrote:
-> 
-> 
-> On 18.06.20 21:18, Tomasz Figa wrote:
-> > On Thu, Jun 18, 2020 at 08:50:23PM +0200, Dafna Hirschfeld wrote:
-> > > 
-> > > 
-> > > On 18.06.20 20:12, Tomasz Figa wrote:
-> > > > On Thu, Jun 18, 2020 at 08:00:37PM +0200, Dafna Hirschfeld wrote:
-> > > > > 
-> > > > > 
-> > > > > On 18.06.20 19:47, Tomasz Figa wrote:
-> > > > > > On Fri, Jun 12, 2020 at 02:45:00PM +0200, Dafna Hirschfeld wrote:
-> > > > > > > 
-> > > > > > > 
-> > > > > > > On 27.05.20 01:09, Tomasz Figa wrote:
-> > > > > > > > On Fri, May 15, 2020 at 4:30 PM Dafna Hirschfeld
-> > > > > > > > <dafna.hirschfeld@collabora.com> wrote:
-> > > > > > > > > 
-> > > > > > > > > If the capture format is YUV444M then the memory input format
-> > > > > > > > > should be YUV422, so the resizer should not change the default
-> > > > > > > > > hdiv, vdiv in that case.
-> > > > > > > > > 
-> > > > > > > > > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> > > > > > > > > ---
-> > > > > > > > >      drivers/staging/media/rkisp1/rkisp1-resizer.c | 7 ++++---
-> > > > > > > > >      1 file changed, 4 insertions(+), 3 deletions(-)
-> > > > > > > > > 
-> > > > > > > > > diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> > > > > > > > > index 04a29af8cc92..5f9740ddd558 100644
-> > > > > > > > > --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> > > > > > > > > +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> > > > > > > > > @@ -394,10 +394,11 @@ static void rkisp1_rsz_config(struct rkisp1_resizer *rsz,
-> > > > > > > > >              * (4:2:2 -> 4:2:0 for example). So the width/height of the CbCr
-> > > > > > > > >              * streams should be set according to the pixel format in the capture.
-> > > > > > > > >              * The resizer always gets the input as YUV422. If the capture format
-> > > > > > > > > -        * is RGB then the memory input (the resizer output) should be YUV422
-> > > > > > > > > -        * so we use the hdiv, vdiv of the YUV422 info in this case.
-> > > > > > > > > +        * is RGB or YUV444 then the memory input (the resizer output) should
-> > > > > > > > > +        * be YUV422 so we use the hdiv, vdiv of the YUV422 info in this case.
-> > > > > > > > >              */
-> > > > > > > > > -       if (v4l2_is_format_yuv(cap->pix.info)) {
-> > > > > > > > > +       if (v4l2_is_format_yuv(cap->pix.info) &&
-> > > > > > > > > +           cap->pix.info->format != V4L2_PIX_FMT_YUV444M) {
-> > > > > > > > >                     src_c.width = cap->pix.info->hdiv;
-> > > > > > > > >                     src_c.height = cap->pix.info->vdiv;
-> > > > > > > > 
-> > > > > > > > As pointed out in another thread, this should have been the original
-> > > > > > > > size divided by the divisor and not just the latter alone.
-> > > > > > > > 
-> > > > > > > > It seems a bit suspicious to me that we don't need to upscale the
-> > > > > > > > chroma planes here, because it would mean that the MI itself would be
-> > > > > > > > doing some horizontal pixel doubling. The hardware documentation
-> > > > > > > > doesn't really explain this, though.
-> > > > > > > > 
-> > > > > > > > Have you been able to validate that the setting without upscaling
-> > > > > > > > indeed produces correct output?
-> > > > > > > 
-> > > > > > > Hi,
-> > > > > > > I investigated it again, without this patch, the frames on mainpath for YUV444 look good: https://imgur.com/a/NtazWhY
-> > > > > > > but there is a problem on selfpath: https://imgur.com/a/vQJPqAn
-> > > > > > > 
-> > > > > > > This patch somehow solves the problem on selfpath but ruins the frames on mainpath.
-> > > > > > > 
-> > > > > > > I think the bug is actually in another place in the code. The function 'rkisp1_sp_config'
-> > > > > > > sets a constant value RKISP1_MI_CTRL_SP_INPUT_YUV422 as the input format on the RKISP1_CIF_MI_CTRL register.
-> > > > > > > But the value should be set according to the configuration. For some reason the problem arises only
-> > > > > > > when trying to capture yuv444. When I capture yuv420 on the selfpath the frame looks good although the
-> > > > > > > value RKISP1_MI_CTRL_SP_INPUT_YUV422 is set.
-> > > > > > > Setting the the SP_INPUT_* according to the configuration seems to solve the problem.
-> > > > > > 
-> > > > > > Looking at the datasheet, SP seems to have some internal format
-> > > > > > conversion capability - one can set SP_OUTPUT_FORMAT and SP_INPUT_FORMAT
-> > > > > > to different YUV subsampling modes or even some RGB formats. MP doesn't
-> > > > > > have this capability - it can only write whatever it receives.
-> > > > > > 
-> > > > > > I think this needs to be reflected in the driver, if it isn't yet.
-> > > > > > Depending on the resizer source format, the MP video node must allow
-> > > > > > only formats with matching subsampling mode.
-> > > > > 
-> > > > > Hi,
-> > > > > I work on v3 now that does that, it supports several yuv mbus codes on the source pads of the resizers
-> > > > > and then in the link_validation callback of the capture it checks that the subsampling matches.
-> > > > 
-> > > > Is it enough? I believe the principle is that within the same entity the
-> > > > state needs to stay consistent, i.e. if the sink pad changes, the source
-> > > > pad or video node must be updated to expose only correct formats,
-> > > > including resetting the current format.
-> > > Yes, but video devices have only a sink pad. Also, the sink pad of
-> > > a video device is not associated with an mbus code. The video format configuration
-> > > is not related to the media controller API.
-> > 
-> > The video device interface and the entity it is linked to belong to the
-> > same driver. The V4L2 video device interface requires that the state is
-> > always valid and the implementation of the video device needs to take
-> > into account its links to external entities.
-> 
-> But if the pad on the other side of the link is configured after the video device
-> then the state might become invalid.
+status: EXPERIMENTAL
+Use on your own risk.
 
-The pad on the other side of the link is already outside of the scope.
-Basically, the entity that interfaces with the video node must have
-state consistent with the video node.
+What works:
+ uart2
+ mmc
+ emmc
+ sd card
+ usb2
 
-To make sure we're on the same page, let me give some examples below:
+What doesn't work:
+ vop
+ hdmi
+ ethernet
 
-Initial state:
-ISP source pad: YUV 4:2:2
-Resizer sink pad: YUV 4:2:2
-Resizer source pad: YUV 4:2:0
-Video CAPTURE format: NV12
+Not tested:
+ adc key
+ av
+ bt
+ ir
+ spdif
+ wifi
 
-Scenario 1:
-- Userspace changes ISP source pad to RAW.
-- Userspace starts streaming and link validation fails.
-- Still, the state is consistent between the resizer and the video node.
+No support in mainline:
+ usb3
+ front display
 
-Scenario 2:
-- Userspace changes ISP source pad to RAW.
-- Userspace changes Resizer sink pad to RAW.
-- Kernel updates Resizer source pad to RAW.
-- Kernel updates video CAPTURE format to a supported RAW pixelformat.
-- All the state is consistent and streaming can start.
-- If the userspace calls ENUM_FMT on video CAPTURE, it only gets RAW
-  pixelformats.
+Problems:
+ U-boot only starts on emmc, then loads kernel from sd card.
+ Need pd_ignore_unused and clk_ignore_unused in command line
+ to prevent a crash. Missing power domains?
+ Hdmi hotplug detects DVI modes, but marks them all BAD.
+ A fixed display mode in the command line also gives no penguins
+ on the screen.
+ Etc.
 
-Scenario 3:
-- Userspace changes Resizer source pad to YUV 4:2:2.
-- Kernel updates video CAPTURE to a supported YUV 4:2:2 pixelformat
-  (e.g. YUYV).
-- All the state is consistent and streaming can start.
-- If the userspace calls ENUM_FMT on video CAPTURE, it only gets YUV
-  4:2:2 pixelformats.
+Johan Jonker (2):
+  dt-bindings: arm: rockchip: add A95X Z2 description
+  arm64: dts: rockchip: add rk3318 A95X Z2 board
 
-Scenario 4:
-- Userspace calls ENUM_FMT on video CAPTURE and only gets YUV 4:2:0
-  pixelformats.
-- It's not possible to make the state inconsistent between the resizer
-  and the video node by using V4L2 video ioctls.
+ .../devicetree/bindings/arm/rockchip.yaml          |   5 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   1 +
+ arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts    | 417 +++++++++++++++++++++
+ 3 files changed, 423 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
 
-Am I missing something?
-
-Best regards,
-Tomasz
+--
+2.11.0
