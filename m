@@ -1,226 +1,64 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v4 2/5] media: v4l2-common: add helper functions to call
- s_stream() callbacks
-Date: Mon, 22 Jun 2020 11:00:48 +0200
-Message-ID: <d06d2f6e-5026-f62d-3d27-a0486083dae1@xs4all.nl>
-References: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
- <20200522075522.6190-3-dafna.hirschfeld@collabora.com>
+From: Amit Kucheria <amit.kucheria@linaro.org>
+Subject: Re: [PATCH] thermal/drivers/cpufreq_cooling: Fix wrong frequency
+ converted from power
+Date: Mon, 22 Jun 2020 14:45:57 +0530
+Message-ID: <CAHLCerNnJELC=ZhiG7XFbRLk8GgkSSLEPncGt-Yf9yAeDe=9NA@mail.gmail.com>
+References: <20200619015126.15002-1-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200522075522.6190-3-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: helen.koike@collabora.com, ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund@ragnatech.se>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200619015126.15002-1-finley.xiao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Finley Xiao <finley.xiao@rock-chips.com>
+Cc: xf@rock-chips.com, Heiko Stuebner <heiko@sntech.de>, Amit Daniel Kachhap <amit.kachhap@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>, Javi Merino <javi.merino@kernel.org>, Zhang Rui <rui.zhang@intel.com>, linux-rockchip@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, Linux PM list <linux-pm@vger.kernel.org>, huangtao@rock-chips.com, tony.xie@rock-chips.com, cl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-On 22/05/2020 09:55, Dafna Hirschfeld wrote:
-> From: Helen Koike <helen.koike@collabora.com>
-> 
-> Add v4l2_pipeline_stream_{enable,disable} helper functions to iterate
-> through the subdevices in a given stream (i.e following links from sink
-> to source) and call .s_stream() callback.
-> 
-> If .s_stream(true) fails, call .s_stream(false) in the reverse order.
-> 
-> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+On Fri, Jun 19, 2020 at 7:21 AM Finley Xiao <finley.xiao@rock-chips.com> wrote:
+>
+> The function cpu_power_to_freq is used to find a frequency and set the
+> cooling device to consume at most the power to be converted. For example,
+> if the power to be converted is 80mW, and the em table is as follow.
+> struct em_cap_state table[] = {
+>         /* KHz     mW */
+>         { 1008000, 36, 0 },
+>         { 1200000, 49, 0 },
+>         { 1296000, 59, 0 },
+>         { 1416000, 72, 0 },
+>         { 1512000, 86, 0 },
+> };
+> The target frequency should be 1416000KHz, not 1512000KHz.
+>
+> Fixes: 349d39dc5739 ("thermal: cpu_cooling: merge frequency and power tables")
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+
+Reviewed-by: Amit Kucheria <amit.kucheria@linaro.org>
+
 > ---
->  drivers/media/v4l2-core/v4l2-common.c | 99 +++++++++++++++++++++++++++
->  include/media/v4l2-common.h           | 39 +++++++++++
->  2 files changed, 138 insertions(+)
-> 
-> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
-> index 9e8eb45a5b03..734db2bf5ca9 100644
-> --- a/drivers/media/v4l2-core/v4l2-common.c
-> +++ b/drivers/media/v4l2-core/v4l2-common.c
-> @@ -442,3 +442,102 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
->  	return 0;
+>  drivers/thermal/cpufreq_cooling.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_cooling.c
+> index 9e124020519f..6c0e1b053126 100644
+> --- a/drivers/thermal/cpufreq_cooling.c
+> +++ b/drivers/thermal/cpufreq_cooling.c
+> @@ -123,12 +123,12 @@ static u32 cpu_power_to_freq(struct cpufreq_cooling_device *cpufreq_cdev,
+>  {
+>         int i;
+>
+> -       for (i = cpufreq_cdev->max_level - 1; i >= 0; i--) {
+> -               if (power > cpufreq_cdev->em->table[i].power)
+> +       for (i = cpufreq_cdev->max_level; i >= 0; i--) {
+> +               if (power >= cpufreq_cdev->em->table[i].power)
+>                         break;
+>         }
+>
+> -       return cpufreq_cdev->em->table[i + 1].frequency;
+> +       return cpufreq_cdev->em->table[i].frequency;
 >  }
->  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
-> +
-> +#if defined(CONFIG_MEDIA_CONTROLLER)
-> +
-> +/*
-> + * v4l2_pipeline_subdevs_get - Assemble a list of subdevices in a pipeline
-> + * @subdevs: the array to be filled.
-> + * @max_size: max number of elements that can fit in subdevs array.
-> + *
-> + * Walk from a video node, following links from sink to source and fill the
-> + * array with subdevices in the path.
-> + * The walker performs a depth-first traversal, which means that, in a topology
-> + * sd1->sd2->sd3->vdev, sd1 will be the first element placed in the array.
-> + *
-> + * Return the number of subdevices filled in the array.
-> + */
-> +static int v4l2_pipeline_subdevs_get(struct video_device *vdev,
-> +				     struct v4l2_subdev **subdevs,
-> +				     unsigned int max_size)
-> +{
-> +	struct media_entity *entity = &vdev->entity;
-> +	struct media_device *mdev = entity->graph_obj.mdev;
-> +	struct media_graph graph;
-> +	int idx = 0;
-> +	int ret;
-> +
-> +	ret = media_graph_walk_init(&graph, mdev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	media_graph_walk_start(&graph, entity);
-> +
-> +	while ((entity = media_graph_walk_next_stream(&graph))) {
-> +		if (!is_media_entity_v4l2_subdev(entity))
-> +			continue;
-> +		if (WARN_ON(idx >= max_size))
-> +			return -EINVAL;
-> +		subdevs[idx++] = media_entity_to_v4l2_subdev(entity);
-> +	}
-> +
-> +	media_graph_walk_cleanup(&graph);
-> +
-> +	return idx;
-> +}
-> +
-> +static void v4l2_subdevs_stream_disable(struct v4l2_subdev **subdevs, int size)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < size; i++) {
-> +		struct v4l2_subdev *sd = subdevs[i];
-> +
-> +		dev_dbg(sd->dev,
-> +			"disabling stream for '%s'\n", sd->entity.name);
-> +		v4l2_subdev_call(sd, video, s_stream, false);
-> +	}
-> +}
-> +
-> +__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev)
-> +{
-> +	struct media_device *mdev = vdev->entity.graph_obj.mdev;
-> +	struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
-> +	struct v4l2_subdev *sd;
-> +	int i, size, ret;
-> +
-> +	size = v4l2_pipeline_subdevs_get(vdev, subdevs, ARRAY_SIZE(subdevs));
-> +	if (size <= 0)
-> +		return size;
-> +
-> +	/* Call s_stream() in reverse order to enable sensors last */
-> +	for (i = size - 1; i >= 0; i--) {
-> +		sd = subdevs[i];
-> +		dev_dbg(mdev->dev,
-> +			"enabling stream for '%s'\n", sd->entity.name);
-> +		ret = v4l2_subdev_call(sd, video, s_stream, true);
-> +		if (ret && ret != -ENOIOCTLCMD) {
-> +			v4l2_subdevs_stream_disable(subdevs + i + 1,
-> +						    size - i - 1);
-> +			return ret;
-> +		}
-> +	}
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_enable);
-> +
-> +int v4l2_pipeline_stream_disable(struct video_device *vdev)
-> +{
-> +	struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
-> +	int size;
-> +
-> +	size = v4l2_pipeline_subdevs_get(vdev, subdevs, ARRAY_SIZE(subdevs));
-> +	if (size < 0)
-> +		return size;
-> +
-> +	v4l2_subdevs_stream_disable(subdevs, size);
-> +	return 0;
-> +}
-> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_disable);
-> +
-> +#endif /* CONFIG_MEDIA_CONTROLLER */
-> diff --git a/include/media/v4l2-common.h b/include/media/v4l2-common.h
-> index 150ee16ebd81..a278bcf3c5bc 100644
-> --- a/include/media/v4l2-common.h
-> +++ b/include/media/v4l2-common.h
-> @@ -539,4 +539,43 @@ static inline void v4l2_buffer_set_timestamp(struct v4l2_buffer *buf,
->  	buf->timestamp.tv_usec = ts.tv_nsec / NSEC_PER_USEC;
->  }
->  
-> +#if defined(CONFIG_MEDIA_CONTROLLER)
-> +
-> +/**
-> + * v4l2_pipeline_stream_enable - Call .s_stream(true) callbacks in the stream
-> + * @vdev: Starting video device.
-> + *
-> + * Call .s_stream(true) callback in all the subdevices participating in the
-> + * stream, i.e. following links from sink to source.
-> + *
-> + * .s_stream(true) is also called from sink to source, i.e. in a topology
-> + * sd1->sd2->sd3->vdev, .s_stream(true) of sd3 is called first.
-> + *
-> + * Calls to this function can be nested, in which case the same number of
-
-Since there is no refcounting (as opposed to v3) you cannot nest these calls,
-so the comments for both these functions should be updated.
-
-> + * v4l2_pipeline_stream_disable() calls will be required to disable streaming
-> + * through subdevices in the pipeline.
-> + * The  pipeline pointer must be identical for all nested calls to
-> + * v4l2_pipeline_stream_enable().
-> + */
-> +__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev);
-> +
-> +/**
-> + * v4l2_pipeline_stream_disable - Call .s_stream(false) callbacks in the stream
-> + * @vdev: Starting video device.
-> + *
-> + * Call .s_stream(false) callback in all the subdevices participating in the
-> + * stream, i.e. following links from sink to source.
-> + *
-> + * s_stream(false) is called in a reverse order from
-> + * v4l2_pipeline_stream_enable(), i.e. in a topology sd1->sd2->sd3->vdev,
-> + * .s_stream(false) of sd1 is called first.
-> + *
-> + * If multiple calls to v4l2_pipeline_stream_enable() have been made, the same
-> + * number of calls to this function are required to disable streaming through
-> + * subdevices in the pipeline.
-> + */
-> +int v4l2_pipeline_stream_disable(struct video_device *vdev);
-
-I'm inclined to make this a void function. Typically a 'disable' function should
-always succeed because there really is not much you can do if it fails.
-
-If v4l2_pipeline_subdevs_get() fails, then just WARN_ON. This really should not
-happen.
-
-Another problem (Tomasz described that in one of his replies) is with drivers like
-adv748x that manage the rest of the pipeline on their own.
-
-The problem is that (AFAIK) you can't see this when walking the graph. What you
-would like to know is if an entity controls the upstream entities by having that
-entity set a flag or something. Then these pipeline functions would stop at that
-entity and let that entity do the work for the upstream entities.
-
-If it is not too much work to support this, then it would be nice to have this.
-If it is a lot of work, then it should be documented that these functions are
-likely not suitable for such pipelines.
-
-I was also wondering how this function relates to media_pipeline_start(). Which
-function should be called first (I think media_pipeline_start() has to come before
-v4l2_pipeline_stream_enable(), although patch 4/5 appears to do the opposite).
-And I was also wondering if the stream_count (incremented by media_pipeline_start())
-is something that v4l2_pipeline_stream_enable/disable could use: i.e. s_stream only
-needs to be called if stream_count == 1.
-
-In fact, perhaps v4l2_pipeline_stream_enable/disable should call __media_pipeline_start/stop?
-
-Regards,
-
-	Hans
-
-> +
-> +#endif /* CONFIG_MEDIA_CONTROLLER */
-> +
->  #endif /* V4L2_COMMON_H_ */
-> 
+>
+>  /**
+> --
+> 2.11.0
+>
+>
+>
