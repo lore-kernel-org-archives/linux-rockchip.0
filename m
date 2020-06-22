@@ -1,124 +1,226 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [RFC PATCH v1 0/2] rk3318 A95X Z2 board
-Date: Mon, 22 Jun 2020 10:01:55 +0200
-Message-ID: <c421ed14-3b1d-7aca-d106-5e312a38840f@gmail.com>
-References: <20200620134659.4592-1-jbx6244@gmail.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH v4 2/5] media: v4l2-common: add helper functions to call
+ s_stream() callbacks
+Date: Mon, 22 Jun 2020 11:00:48 +0200
+Message-ID: <d06d2f6e-5026-f62d-3d27-a0486083dae1@xs4all.nl>
+References: <20200522075522.6190-1-dafna.hirschfeld@collabora.com>
+ <20200522075522.6190-3-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200620134659.4592-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200522075522.6190-3-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, frank.wang-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: helen.koike@collabora.com, ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, =?UTF-8?Q?Niklas_S=c3=b6derlund?= <niklas.soderlund@ragnatech.se>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+On 22/05/2020 09:55, Dafna Hirschfeld wrote:
+> From: Helen Koike <helen.koike@collabora.com>
+> 
+> Add v4l2_pipeline_stream_{enable,disable} helper functions to iterate
+> through the subdevices in a given stream (i.e following links from sink
+> to source) and call .s_stream() callback.
+> 
+> If .s_stream(true) fails, call .s_stream(false) in the reverse order.
+> 
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> ---
+>  drivers/media/v4l2-core/v4l2-common.c | 99 +++++++++++++++++++++++++++
+>  include/media/v4l2-common.h           | 39 +++++++++++
+>  2 files changed, 138 insertions(+)
+> 
+> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-core/v4l2-common.c
+> index 9e8eb45a5b03..734db2bf5ca9 100644
+> --- a/drivers/media/v4l2-core/v4l2-common.c
+> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> @@ -442,3 +442,102 @@ int v4l2_fill_pixfmt(struct v4l2_pix_format *pixfmt, u32 pixelformat,
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL_GPL(v4l2_fill_pixfmt);
+> +
+> +#if defined(CONFIG_MEDIA_CONTROLLER)
+> +
+> +/*
+> + * v4l2_pipeline_subdevs_get - Assemble a list of subdevices in a pipeline
+> + * @subdevs: the array to be filled.
+> + * @max_size: max number of elements that can fit in subdevs array.
+> + *
+> + * Walk from a video node, following links from sink to source and fill the
+> + * array with subdevices in the path.
+> + * The walker performs a depth-first traversal, which means that, in a topology
+> + * sd1->sd2->sd3->vdev, sd1 will be the first element placed in the array.
+> + *
+> + * Return the number of subdevices filled in the array.
+> + */
+> +static int v4l2_pipeline_subdevs_get(struct video_device *vdev,
+> +				     struct v4l2_subdev **subdevs,
+> +				     unsigned int max_size)
+> +{
+> +	struct media_entity *entity = &vdev->entity;
+> +	struct media_device *mdev = entity->graph_obj.mdev;
+> +	struct media_graph graph;
+> +	int idx = 0;
+> +	int ret;
+> +
+> +	ret = media_graph_walk_init(&graph, mdev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	media_graph_walk_start(&graph, entity);
+> +
+> +	while ((entity = media_graph_walk_next_stream(&graph))) {
+> +		if (!is_media_entity_v4l2_subdev(entity))
+> +			continue;
+> +		if (WARN_ON(idx >= max_size))
+> +			return -EINVAL;
+> +		subdevs[idx++] = media_entity_to_v4l2_subdev(entity);
+> +	}
+> +
+> +	media_graph_walk_cleanup(&graph);
+> +
+> +	return idx;
+> +}
+> +
+> +static void v4l2_subdevs_stream_disable(struct v4l2_subdev **subdevs, int size)
+> +{
+> +	int i;
+> +
+> +	for (i = 0; i < size; i++) {
+> +		struct v4l2_subdev *sd = subdevs[i];
+> +
+> +		dev_dbg(sd->dev,
+> +			"disabling stream for '%s'\n", sd->entity.name);
+> +		v4l2_subdev_call(sd, video, s_stream, false);
+> +	}
+> +}
+> +
+> +__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev)
+> +{
+> +	struct media_device *mdev = vdev->entity.graph_obj.mdev;
+> +	struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
+> +	struct v4l2_subdev *sd;
+> +	int i, size, ret;
+> +
+> +	size = v4l2_pipeline_subdevs_get(vdev, subdevs, ARRAY_SIZE(subdevs));
+> +	if (size <= 0)
+> +		return size;
+> +
+> +	/* Call s_stream() in reverse order to enable sensors last */
+> +	for (i = size - 1; i >= 0; i--) {
+> +		sd = subdevs[i];
+> +		dev_dbg(mdev->dev,
+> +			"enabling stream for '%s'\n", sd->entity.name);
+> +		ret = v4l2_subdev_call(sd, video, s_stream, true);
+> +		if (ret && ret != -ENOIOCTLCMD) {
+> +			v4l2_subdevs_stream_disable(subdevs + i + 1,
+> +						    size - i - 1);
+> +			return ret;
+> +		}
+> +	}
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_enable);
+> +
+> +int v4l2_pipeline_stream_disable(struct video_device *vdev)
+> +{
+> +	struct v4l2_subdev *subdevs[MEDIA_ENTITY_ENUM_MAX_DEPTH];
+> +	int size;
+> +
+> +	size = v4l2_pipeline_subdevs_get(vdev, subdevs, ARRAY_SIZE(subdevs));
+> +	if (size < 0)
+> +		return size;
+> +
+> +	v4l2_subdevs_stream_disable(subdevs, size);
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(v4l2_pipeline_stream_disable);
+> +
+> +#endif /* CONFIG_MEDIA_CONTROLLER */
+> diff --git a/include/media/v4l2-common.h b/include/media/v4l2-common.h
+> index 150ee16ebd81..a278bcf3c5bc 100644
+> --- a/include/media/v4l2-common.h
+> +++ b/include/media/v4l2-common.h
+> @@ -539,4 +539,43 @@ static inline void v4l2_buffer_set_timestamp(struct v4l2_buffer *buf,
+>  	buf->timestamp.tv_usec = ts.tv_nsec / NSEC_PER_USEC;
+>  }
+>  
+> +#if defined(CONFIG_MEDIA_CONTROLLER)
+> +
+> +/**
+> + * v4l2_pipeline_stream_enable - Call .s_stream(true) callbacks in the stream
+> + * @vdev: Starting video device.
+> + *
+> + * Call .s_stream(true) callback in all the subdevices participating in the
+> + * stream, i.e. following links from sink to source.
+> + *
+> + * .s_stream(true) is also called from sink to source, i.e. in a topology
+> + * sd1->sd2->sd3->vdev, .s_stream(true) of sd3 is called first.
+> + *
+> + * Calls to this function can be nested, in which case the same number of
 
-BUG report 1:
-About phy-rockchip-inno-usb2.c and rk3318.
+Since there is no refcounting (as opposed to v3) you cannot nest these calls,
+so the comments for both these functions should be updated.
 
-Goal is to use ttyUSB0 as console in combination with agetty as long as
-we don't have a working HDMI signal on a DVI monitor.
-Boot with rk3318 starts normal on emmc with U-boot OK. It then loads the
-kernel
-and initrd on SD card. Log view on ttyS2 works.
-At the end of the init process extcon0 sends 2 events sortly after each
-other.
-usb2 crashes if extcon0 event reports 'USB=0' and 'DCP=1'.
-It looks like there's no consistant init (delay?) in the driver or hardware.
+> + * v4l2_pipeline_stream_disable() calls will be required to disable streaming
+> + * through subdevices in the pipeline.
+> + * The  pipeline pointer must be identical for all nested calls to
+> + * v4l2_pipeline_stream_enable().
+> + */
+> +__must_check int v4l2_pipeline_stream_enable(struct video_device *vdev);
+> +
+> +/**
+> + * v4l2_pipeline_stream_disable - Call .s_stream(false) callbacks in the stream
+> + * @vdev: Starting video device.
+> + *
+> + * Call .s_stream(false) callback in all the subdevices participating in the
+> + * stream, i.e. following links from sink to source.
+> + *
+> + * s_stream(false) is called in a reverse order from
+> + * v4l2_pipeline_stream_enable(), i.e. in a topology sd1->sd2->sd3->vdev,
+> + * .s_stream(false) of sd1 is called first.
+> + *
+> + * If multiple calls to v4l2_pipeline_stream_enable() have been made, the same
+> + * number of calls to this function are required to disable streaming through
+> + * subdevices in the pipeline.
+> + */
+> +int v4l2_pipeline_stream_disable(struct video_device *vdev);
 
-Boot only possible with busybox + initrd with no scripts that delay
-event handling.
-(Un)plug events are unrelayable. Getty only becomes active
-if usb cable connected direct to the board(without usb hub).
-With systemd only a kernel log scroll, but never able to use ttyUSB0 as
-login.
+I'm inclined to make this a void function. Typically a 'disable' function should
+always succeed because there really is not much you can do if it fails.
 
-mdev.conf line to catch the events:
+If v4l2_pipeline_subdevs_get() fails, then just WARN_ON. This really should not
+happen.
 
-extcon[0-9]+    root:root 666 */bin/cat /sys/class/extcon/extcon0/state
-> /dev/kmsg
+Another problem (Tomasz described that in one of his replies) is with drivers like
+adv748x that manage the rest of the pipeline on their own.
 
-In extlinux.conf clk and pm must be ignored in the kernel command line
-to prevent a crash.
+The problem is that (AFAIK) you can't see this when walking the graph. What you
+would like to know is if an entity controls the upstream entities by having that
+entity set a flag or something. Then these pipeline functions would stop at that
+entity and let that entity do the work for the upstream entities.
 
-label kernel
-    kernel /Image
-    fdt /rk3318-a95x-z2.dtb
-    initrd /rootfs.cpio
-    append console=ttyUSB0,115200n8
-           console=ttyS2,1500000n8
-           pd_ignore_unused
-           clk_ignore_unused
-           initcall_debug=1
-           debug
-           drm.debug=0xe
-           video=HDMI-A-1:1280x720@60
-           earlycon=uart8250,mmio32,0xff130000,keep
-           swiotlb=1
-           kpti=0
-           no_console_suspend=1
-           consoleblank=0
-           rootwait
+If it is not too much work to support this, then it would be nice to have this.
+If it is a lot of work, then it should be documented that these functions are
+likely not suitable for such pipelines.
 
-Question:
-Does anyone have a solution for usb2 or
-was there previous discussion/info about this?
+I was also wondering how this function relates to media_pipeline_start(). Which
+function should be called first (I think media_pipeline_start() has to come before
+v4l2_pipeline_stream_enable(), although patch 4/5 appears to do the opposite).
+And I was also wondering if the stream_count (incremented by media_pipeline_start())
+is something that v4l2_pipeline_stream_enable/disable could use: i.e. s_stream only
+needs to be called if stream_count == 1.
 
-Why has rk3328.dtsi incomplete (see TRM) power-domains and qos? Does
-that work?
-Was rk3318 VOP+HDMI, gmac2phy tested in Linux mainline before?
+In fact, perhaps v4l2_pipeline_stream_enable/disable should call __media_pipeline_start/stop?
 
-Kind regards,
+Regards,
 
-Johan
+	Hans
 
-Kernel log with usb2 OK:
-
-[    0.959594] Run /init as init process
-[    0.959937]   with arguments:
-[    0.960210]     /init
-[    0.960416]   with environment:
-[    0.960703]     HOME=/
-[    0.960917]     TERM=linux
-[    0.961562] process '/bin/busybox' started with executable stack
-[    0.967474] usb 1-1: new full-speed USB device number 2 using dwc2
-
-[..]
-
-[    6.785160] USB=1
-[    6.785160] USB-HOST=0
-[    6.785160] SDP=1
-[    6.785160] CDP=0
-[    6.785160] DCP=0
-[    6.785160] SLOW-CHARGER=0
-[    6.785165] USB=1
-[    6.785165] USB-HOST=0
-[    6.785165] SDP=1
-[    6.785165] CDP=0
-[    6.785165] DCP=0
-[    6.785165] SLOW-CHARGER=0
-[   13.729625] random: crng init done
-[   31.715450] vcc_host_vbus: disabling
-
-Kernel log with usb2 crash:
-
-[    0.940666] Run /init as init process
-[    0.941005]   with arguments:
-[    0.941280]     /init
-[    0.941490]   with environment:
-[    0.941781]     HOME=/
-[    0.941999]     TERM=linux
-[    0.942536] process '/bin/busybox' started with executable stack
-[    0.967442] usb 1-1: new full-speed USB device number 2 using dwc2
-
-[..]
-
-[    7.300792] USB=0
-[    7.300792] USB-HOST=0
-[    7.300792] SDP=0
-[    7.300792] CDP=0
-[    7.300792] DCP=1
-[    7.300792] SLOW-CHARGER=0
+> +
+> +#endif /* CONFIG_MEDIA_CONTROLLER */
+> +
+>  #endif /* V4L2_COMMON_H_ */
+> 
