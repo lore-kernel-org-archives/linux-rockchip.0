@@ -1,100 +1,133 @@
-From: John Keeping <john@metanate.com>
-Subject: [PATCH] i2c: rk3x: support master_xfer_atomic
-Date: Tue, 23 Jun 2020 13:06:46 +0100
-Message-ID: <20200623120646.2175569-1-john@metanate.com>
+From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Subject: [PATCH 1/2] dt-bindings: sound: convert rk3328 codec binding to yaml
+Date: Tue, 23 Jun 2020 21:47:33 +0900
+Message-ID: <20200623124734.1736470-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Return-path: <alsa-devel-bounces@alsa-project.org>
+List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
+List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
+List-Post: <mailto:alsa-devel@alsa-project.org>
+List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
+List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
+ <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
+Errors-To: alsa-devel-bounces@alsa-project.org
+Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
+To: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
+Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable i2c transactions in irq disabled contexts like poweroff where the
-PMIC is connected via i2c.
+Just convert Rockchip rk3328 audio codec binding to DT schema.
 
-Signed-off-by: John Keeping <john@metanate.com>
+Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
 ---
- drivers/i2c/busses/i2c-rk3x.c | 39 +++++++++++++++++++++++++++++++----
- 1 file changed, 35 insertions(+), 4 deletions(-)
+ .../bindings/sound/rockchip,rk3328-codec.txt  | 28 ---------
+ .../bindings/sound/rockchip,rk3328-codec.yaml | 61 +++++++++++++++++++
+ 2 files changed, 61 insertions(+), 28 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml
 
-diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-index 15324bfbc6cb..8e3cc85d1921 100644
---- a/drivers/i2c/busses/i2c-rk3x.c
-+++ b/drivers/i2c/busses/i2c-rk3x.c
-@@ -10,6 +10,7 @@
- #include <linux/module.h>
- #include <linux/i2c.h>
- #include <linux/interrupt.h>
-+#include <linux/iopoll.h>
- #include <linux/errno.h>
- #include <linux/err.h>
- #include <linux/platform_device.h>
-@@ -1040,8 +1041,21 @@ static int rk3x_i2c_setup(struct rk3x_i2c *i2c, struct i2c_msg *msgs, int num)
- 	return ret;
- }
- 
--static int rk3x_i2c_xfer(struct i2c_adapter *adap,
--			 struct i2c_msg *msgs, int num)
-+static int rk3x_i2c_wait_xfer_poll(struct rk3x_i2c *i2c)
-+{
-+	ktime_t timeout = ktime_add_ms(ktime_get(), WAIT_TIMEOUT);
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt
+deleted file mode 100644
+index 1ecd75d2032a..000000000000
+--- a/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt
++++ /dev/null
+@@ -1,28 +0,0 @@
+-* Rockchip Rk3328 internal codec
+-
+-Required properties:
+-
+-- compatible: "rockchip,rk3328-codec"
+-- reg: physical base address of the controller and length of memory mapped
+-  region.
+-- rockchip,grf: the phandle of the syscon node for GRF register.
+-- clocks: a list of phandle + clock-specifer pairs, one for each entry in clock-names.
+-- clock-names: should be "pclk".
+-- spk-depop-time-ms: speak depop time msec.
+-
+-Optional properties:
+-
+-- mute-gpios: GPIO specifier for external line driver control (typically the
+-              dedicated GPIO_MUTE pin)
+-
+-Example for rk3328 internal codec:
+-
+-codec: codec@ff410000 {
+-	compatible = "rockchip,rk3328-codec";
+-	reg = <0x0 0xff410000 0x0 0x1000>;
+-	rockchip,grf = <&grf>;
+-	clocks = <&cru PCLK_ACODEC>;
+-	clock-names = "pclk";
+-	mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
+-	spk-depop-time-ms = 100;
+-};
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml
+new file mode 100644
+index 000000000000..08a74e28e483
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml
+@@ -0,0 +1,61 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/rockchip,rk3328-codec.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	while (READ_ONCE(i2c->busy) &&
-+	       ktime_compare(ktime_get(), timeout) < 0) {
-+		udelay(5);
-+		rk3x_i2c_irq(0, i2c);
-+	}
++title: Rockchip rk3328 internal codec
 +
-+	return !i2c->busy;
-+}
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
 +
-+static int rk3x_i2c_xfer_common(struct i2c_adapter *adap,
-+				struct i2c_msg *msgs, int num, bool polling)
- {
- 	struct rk3x_i2c *i2c = (struct rk3x_i2c *)adap->algo_data;
- 	unsigned long timeout, flags;
-@@ -1075,8 +1089,12 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
- 
- 		rk3x_i2c_start(i2c);
- 
--		timeout = wait_event_timeout(i2c->wait, !i2c->busy,
--					     msecs_to_jiffies(WAIT_TIMEOUT));
-+		if (!polling) {
-+			timeout = wait_event_timeout(i2c->wait, !i2c->busy,
-+						     msecs_to_jiffies(WAIT_TIMEOUT));
-+		} else {
-+			timeout = rk3x_i2c_wait_xfer_poll(i2c);
-+		}
- 
- 		spin_lock_irqsave(&i2c->lock, flags);
- 
-@@ -1110,6 +1128,18 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
- 	return ret < 0 ? ret : num;
- }
- 
-+static int rk3x_i2c_xfer(struct i2c_adapter *adap,
-+			 struct i2c_msg *msgs, int num)
-+{
-+	return rk3x_i2c_xfer_common(adap, msgs, num, false);
-+}
++properties:
++  compatible:
++    const: rockchip,rk3328-codec
 +
-+static int rk3x_i2c_xfer_polling(struct i2c_adapter *adap,
-+				 struct i2c_msg *msgs, int num)
-+{
-+	return rk3x_i2c_xfer_common(adap, msgs, num, true);
-+}
++  reg:
++    maxItems: 1
 +
- static __maybe_unused int rk3x_i2c_resume(struct device *dev)
- {
- 	struct rk3x_i2c *i2c = dev_get_drvdata(dev);
-@@ -1126,6 +1156,7 @@ static u32 rk3x_i2c_func(struct i2c_adapter *adap)
- 
- static const struct i2c_algorithm rk3x_i2c_algorithm = {
- 	.master_xfer		= rk3x_i2c_xfer,
-+	.master_xfer_atomic	= rk3x_i2c_xfer_polling,
- 	.functionality		= rk3x_i2c_func,
- };
- 
++  clocks:
++    items:
++      - description: clock for audio codec
++
++  clock-names:
++    items:
++      - const: pclk
++
++  rockchip,grf:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      The phandle of the syscon node for the GRF register.
++
++  spk-depop-time-ms:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    default: 200
++    description:
++      Speaker depop time in msec.
++
++  mute-gpios:
++    maxItems: 1
++    description:
++      GPIO specifier for external line driver control (typically the
++      dedicated GPIO_MUTE pin)
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - clock-names
++  - rockchip,grf
++
++examples:
++  - |
++    codec: codec@ff410000 {
++      compatible = "rockchip,rk3328-codec";
++      reg = <0xff410000 0x1000>;
++      clocks = <&cru PCLK_ACODEC>;
++      clock-names = "pclk";
++      rockchip,grf = <&grf>;
++      mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
++      spk-depop-time-ms = 100;
++    };
 -- 
 2.27.0
