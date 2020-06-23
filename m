@@ -1,34 +1,70 @@
-From: "Alex Xu (Hello71)" <alex_y_xu-FFYn/CNdgSA@public.gmane.org>
-Subject: Re: AMD IOMMU + SME + amdgpu regression
-Date: Mon, 22 Jun 2020 11:30:04 -0400
-Message-ID: <1592839701.mxvvths2x9.none@localhost>
-References: <1591915710.rakbpzst8h.none.ref@localhost>
-        <1591915710.rakbpzst8h.none@localhost> <20200622100257.GD31822@suse.de>
+From: Amit Kucheria <amit.kucheria@verdurent.com>
+Subject: Re: [PATCH] thermal/drivers/cpufreq_cooling: Fix wrong frequency
+ converted from power
+Date: Tue, 23 Jun 2020 12:30:57 +0530
+Message-ID: <CAHLCerPpen0ckEnZPvmECVQixN=rBfneP4mK6rPAAu3vjSg_QQ@mail.gmail.com>
+References: <20200619090825.32747-1-finley.xiao@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200622100257.GD31822-l3A5Bk7waGM@public.gmane.org>
-Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Joerg Roedel <jroedel-l3A5Bk7waGM@public.gmane.org>
-Cc: Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Lu Baolu <baolu.lu-VuQAYsv1563Yd54FQh9/CA@public.gmane.org>, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Drake <drake-6IF/jdPJHihWk0Htik3J/w@public.gmane.org>, David Woodhouse <dwmw2-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, Christoph Hellwig <hch-jcswGhMUV9g@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Jean-Philippe Brucker <jean-philippe-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, jonathan.derrick-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Matthias Brugger <matt>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <stable-owner@vger.kernel.org>
+In-Reply-To: <20200619090825.32747-1-finley.xiao@rock-chips.com>
+Sender: stable-owner@vger.kernel.org
+To: Finley Xiao <finley.xiao@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Amit Daniel Kachhap <amit.kachhap@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>, Javi Merino <javi.merino@kernel.org>, Zhang Rui <rui.zhang@intel.com>, linux-rockchip@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, Linux PM list <linux-pm@vger.kernel.org>, stable@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, cl@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Excerpts from Joerg Roedel's message of June 22, 2020 6:02 am:
-> Hi Alex,
->=20
-> On Thu, Jun 11, 2020 at 07:05:21PM -0400, Alex Xu (Hello71) wrote:
->> I am using an ASRock B450 Pro4 with Ryzen 1600 and ASUS RX 480. I don't=20
->> understand this code at all, but let me know what I can do to=20
->> troubleshoot.
->=20
-> Does it boot without SME enabled?
->=20
->=20
-> Regards,
->=20
-> 	Joerg
->=20
+Hi Finley,
 
-Yes, it works with SME off with dbed452a078 ("dma-pool: decouple=20
-DMA_REMAP from DMA_COHERENT_POOL") applied.
+Please use versioning (v2) when resending a patch.
+
+On Fri, Jun 19, 2020 at 2:39 PM Finley Xiao <finley.xiao@rock-chips.com> wrote:
+>
+> The function cpu_power_to_freq is used to find a frequency and set the
+> cooling device to consume at most the power to be converted. For example,
+> if the power to be converted is 80mW, and the em table is as follow.
+> struct em_cap_state table[] = {
+>         /* KHz     mW */
+>         { 1008000, 36, 0 },
+>         { 1200000, 49, 0 },
+>         { 1296000, 59, 0 },
+>         { 1416000, 72, 0 },
+>         { 1512000, 86, 0 },
+> };
+> The target frequency should be 1416000KHz, not 1512000KHz.
+>
+> Fixes: 349d39dc5739 ("thermal: cpu_cooling: merge frequency and power tables")
+> Cc: <stable@vger.kernel.org> # v4.13+
+> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
+
+Reviewed-by: Amit Kucheria <amit.kucheria@linaro.org>
+
+> ---
+>  drivers/thermal/cpufreq_cooling.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_cooling.c
+> index 9e124020519f..6c0e1b053126 100644
+> --- a/drivers/thermal/cpufreq_cooling.c
+> +++ b/drivers/thermal/cpufreq_cooling.c
+> @@ -123,12 +123,12 @@ static u32 cpu_power_to_freq(struct cpufreq_cooling_device *cpufreq_cdev,
+>  {
+>         int i;
+>
+> -       for (i = cpufreq_cdev->max_level - 1; i >= 0; i--) {
+> -               if (power > cpufreq_cdev->em->table[i].power)
+> +       for (i = cpufreq_cdev->max_level; i >= 0; i--) {
+> +               if (power >= cpufreq_cdev->em->table[i].power)
+>                         break;
+>         }
+>
+> -       return cpufreq_cdev->em->table[i + 1].frequency;
+> +       return cpufreq_cdev->em->table[i].frequency;
+>  }
+>
+>  /**
+> --
+> 2.11.0
+>
+>
+>
