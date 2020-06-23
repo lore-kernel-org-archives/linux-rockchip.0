@@ -1,82 +1,57 @@
-From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: [PATCH 2/2] dt-bindings: sound: add missing clock description of
- rk3328 DT schema
-Date: Tue, 23 Jun 2020 21:47:34 +0900
-Message-ID: <20200623124734.1736470-2-katsuhiro@katsuster.net>
-References: <20200623124734.1736470-1-katsuhiro@katsuster.net>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v4 00/11] Stop monitoring disabled devices
+Date: Tue, 23 Jun 2020 16:37:51 +0200
+Message-ID: <9cbffad6-69e4-0b33-4640-fde7c4f6a6e7@linaro.org>
+References: <Message-ID: <4493c0e4-51aa-3907-810c-74949ff27ca4@samsung.com>
+ <20200528192051.28034-1-andrzej.p@collabora.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20200623124734.1736470-1-katsuhiro@katsuster.net>
-List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
-To: Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
-Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org
+Return-path: <linux-acpi-owner@vger.kernel.org>
+In-Reply-To: <20200528192051.28034-1-andrzej.p@collabora.com>
+Content-Language: en-US
+Sender: linux-acpi-owner@vger.kernel.org
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch adds description about "mclk" clock and fixes some errors
-which are dt_binding_check reported.
 
-Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
----
- .../bindings/sound/rockchip,rk3328-codec.yaml     | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+Hi Andrzej,
 
-diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml
-index 08a74e28e483..525b48c2f5de 100644
---- a/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml
-+++ b/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml
-@@ -19,10 +19,12 @@ properties:
-   clocks:
-     items:
-       - description: clock for audio codec
-+      - description: clock for I2S master clock
- 
-   clock-names:
-     items:
-       - const: pclk
-+      - const: mclk
- 
-   rockchip,grf:
-     $ref: /schemas/types.yaml#/definitions/phandle
-@@ -41,21 +43,28 @@ properties:
-       GPIO specifier for external line driver control (typically the
-       dedicated GPIO_MUTE pin)
- 
-+  "#sound-dai-cells":
-+    const: 0
-+
- required:
-   - compatible
-   - reg
-   - clocks
-   - clock-names
-   - rockchip,grf
-+  - "#sound-dai-cells"
- 
- examples:
-   - |
-+    #include <dt-bindings/gpio/gpio.h>
-+    #include <dt-bindings/clock/rk3328-cru.h>
-     codec: codec@ff410000 {
-       compatible = "rockchip,rk3328-codec";
-       reg = <0xff410000 0x1000>;
--      clocks = <&cru PCLK_ACODEC>;
--      clock-names = "pclk";
-+      clocks = <&cru PCLK_ACODECPHY>, <&cru SCLK_I2S1>;
-+      clock-names = "pclk", "mclk";
-       rockchip,grf = <&grf>;
-       mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
--      spk-depop-time-ms = 100;
-+      spk-depop-time-ms = <100>;
-+      #sound-dai-cells = <0>;
-     };
+
+On 28/05/2020 21:20, Andrzej Pietrasiewicz wrote:
+> There is already a reviewed v3 (not to be confused with RFC v3), which can
+> be considered for merging:
+> 
+> https://lore.kernel.org/linux-pm/20200423165705.13585-2-andrzej.p@collabora.com/
+> 
+> Let me cite Bartlomiej Zolnierkiewicz:
+> 
+> "I couldn't find the problems with the patch itself (no new issues
+> being introduced, all changes seem to be improvements over the current
+> situation).
+> 
+> Also the patch is not small but it also not that big and it mostly
+> removes the code:
+> 
+> 17 files changed, 105 insertions(+), 244 deletions(-)"
+
+
+Thanks for this nice cleanup. Given the series was tested, reviewed and
+acked, I would like to merge it as soon as possible.
+
+Can you send the V5 with the EXPORT_SYMBOL_GPL fixed ? So the series can
+enter the integration loop.
+
+Thanks
+
+ -- Daniel
+
+
+
 -- 
-2.27.0
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
