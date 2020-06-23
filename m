@@ -1,70 +1,100 @@
-From: Amit Kucheria <amit.kucheria@verdurent.com>
-Subject: Re: [PATCH] thermal/drivers/cpufreq_cooling: Fix wrong frequency
- converted from power
-Date: Tue, 23 Jun 2020 12:30:57 +0530
-Message-ID: <CAHLCerPpen0ckEnZPvmECVQixN=rBfneP4mK6rPAAu3vjSg_QQ@mail.gmail.com>
-References: <20200619090825.32747-1-finley.xiao@rock-chips.com>
+From: John Keeping <john@metanate.com>
+Subject: [PATCH] i2c: rk3x: support master_xfer_atomic
+Date: Tue, 23 Jun 2020 13:06:46 +0100
+Message-ID: <20200623120646.2175569-1-john@metanate.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <stable-owner@vger.kernel.org>
-In-Reply-To: <20200619090825.32747-1-finley.xiao@rock-chips.com>
-Sender: stable-owner@vger.kernel.org
-To: Finley Xiao <finley.xiao@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Amit Daniel Kachhap <amit.kachhap@gmail.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Viresh Kumar <viresh.kumar@linaro.org>, Javi Merino <javi.merino@kernel.org>, Zhang Rui <rui.zhang@intel.com>, linux-rockchip@lists.infradead.org, LKML <linux-kernel@vger.kernel.org>, Linux PM list <linux-pm@vger.kernel.org>, stable@vger.kernel.org, huangtao@rock-chips.com, tony.xie@rock-chips.com, cl@rock-chips.com
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: John Keeping <john@metanate.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Finley,
+Enable i2c transactions in irq disabled contexts like poweroff where the
+PMIC is connected via i2c.
 
-Please use versioning (v2) when resending a patch.
+Signed-off-by: John Keeping <john@metanate.com>
+---
+ drivers/i2c/busses/i2c-rk3x.c | 39 +++++++++++++++++++++++++++++++----
+ 1 file changed, 35 insertions(+), 4 deletions(-)
 
-On Fri, Jun 19, 2020 at 2:39 PM Finley Xiao <finley.xiao@rock-chips.com> wrote:
->
-> The function cpu_power_to_freq is used to find a frequency and set the
-> cooling device to consume at most the power to be converted. For example,
-> if the power to be converted is 80mW, and the em table is as follow.
-> struct em_cap_state table[] = {
->         /* KHz     mW */
->         { 1008000, 36, 0 },
->         { 1200000, 49, 0 },
->         { 1296000, 59, 0 },
->         { 1416000, 72, 0 },
->         { 1512000, 86, 0 },
-> };
-> The target frequency should be 1416000KHz, not 1512000KHz.
->
-> Fixes: 349d39dc5739 ("thermal: cpu_cooling: merge frequency and power tables")
-> Cc: <stable@vger.kernel.org> # v4.13+
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> Acked-by: Viresh Kumar <viresh.kumar@linaro.org>
-
-Reviewed-by: Amit Kucheria <amit.kucheria@linaro.org>
-
-> ---
->  drivers/thermal/cpufreq_cooling.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_cooling.c
-> index 9e124020519f..6c0e1b053126 100644
-> --- a/drivers/thermal/cpufreq_cooling.c
-> +++ b/drivers/thermal/cpufreq_cooling.c
-> @@ -123,12 +123,12 @@ static u32 cpu_power_to_freq(struct cpufreq_cooling_device *cpufreq_cdev,
->  {
->         int i;
->
-> -       for (i = cpufreq_cdev->max_level - 1; i >= 0; i--) {
-> -               if (power > cpufreq_cdev->em->table[i].power)
-> +       for (i = cpufreq_cdev->max_level; i >= 0; i--) {
-> +               if (power >= cpufreq_cdev->em->table[i].power)
->                         break;
->         }
->
-> -       return cpufreq_cdev->em->table[i + 1].frequency;
-> +       return cpufreq_cdev->em->table[i].frequency;
->  }
->
->  /**
-> --
-> 2.11.0
->
->
->
+diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
+index 15324bfbc6cb..8e3cc85d1921 100644
+--- a/drivers/i2c/busses/i2c-rk3x.c
++++ b/drivers/i2c/busses/i2c-rk3x.c
+@@ -10,6 +10,7 @@
+ #include <linux/module.h>
+ #include <linux/i2c.h>
+ #include <linux/interrupt.h>
++#include <linux/iopoll.h>
+ #include <linux/errno.h>
+ #include <linux/err.h>
+ #include <linux/platform_device.h>
+@@ -1040,8 +1041,21 @@ static int rk3x_i2c_setup(struct rk3x_i2c *i2c, struct i2c_msg *msgs, int num)
+ 	return ret;
+ }
+ 
+-static int rk3x_i2c_xfer(struct i2c_adapter *adap,
+-			 struct i2c_msg *msgs, int num)
++static int rk3x_i2c_wait_xfer_poll(struct rk3x_i2c *i2c)
++{
++	ktime_t timeout = ktime_add_ms(ktime_get(), WAIT_TIMEOUT);
++
++	while (READ_ONCE(i2c->busy) &&
++	       ktime_compare(ktime_get(), timeout) < 0) {
++		udelay(5);
++		rk3x_i2c_irq(0, i2c);
++	}
++
++	return !i2c->busy;
++}
++
++static int rk3x_i2c_xfer_common(struct i2c_adapter *adap,
++				struct i2c_msg *msgs, int num, bool polling)
+ {
+ 	struct rk3x_i2c *i2c = (struct rk3x_i2c *)adap->algo_data;
+ 	unsigned long timeout, flags;
+@@ -1075,8 +1089,12 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
+ 
+ 		rk3x_i2c_start(i2c);
+ 
+-		timeout = wait_event_timeout(i2c->wait, !i2c->busy,
+-					     msecs_to_jiffies(WAIT_TIMEOUT));
++		if (!polling) {
++			timeout = wait_event_timeout(i2c->wait, !i2c->busy,
++						     msecs_to_jiffies(WAIT_TIMEOUT));
++		} else {
++			timeout = rk3x_i2c_wait_xfer_poll(i2c);
++		}
+ 
+ 		spin_lock_irqsave(&i2c->lock, flags);
+ 
+@@ -1110,6 +1128,18 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
+ 	return ret < 0 ? ret : num;
+ }
+ 
++static int rk3x_i2c_xfer(struct i2c_adapter *adap,
++			 struct i2c_msg *msgs, int num)
++{
++	return rk3x_i2c_xfer_common(adap, msgs, num, false);
++}
++
++static int rk3x_i2c_xfer_polling(struct i2c_adapter *adap,
++				 struct i2c_msg *msgs, int num)
++{
++	return rk3x_i2c_xfer_common(adap, msgs, num, true);
++}
++
+ static __maybe_unused int rk3x_i2c_resume(struct device *dev)
+ {
+ 	struct rk3x_i2c *i2c = dev_get_drvdata(dev);
+@@ -1126,6 +1156,7 @@ static u32 rk3x_i2c_func(struct i2c_adapter *adap)
+ 
+ static const struct i2c_algorithm rk3x_i2c_algorithm = {
+ 	.master_xfer		= rk3x_i2c_xfer,
++	.master_xfer_atomic	= rk3x_i2c_xfer_polling,
+ 	.functionality		= rk3x_i2c_func,
+ };
+ 
+-- 
+2.27.0
