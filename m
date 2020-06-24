@@ -1,56 +1,209 @@
-From: Vinod Koul <vkoul@kernel.org>
-Subject: Re: [PATCH v2 02/13] dmaengine: pl330: Add quirk
- 'arm,pl330-periph-burst'
-Date: Wed, 24 Jun 2020 13:49:29 +0530
-Message-ID: <20200624081929.GU2324254@vkoul-mobl>
-References: <1591665267-37713-1-git-send-email-sugar.zhang@rock-chips.com>
- <1591665267-37713-3-git-send-email-sugar.zhang@rock-chips.com>
+From: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
+Subject: Re: [PATCH v4 02/11] thermal: Store thermal mode in a dedicated
+ enum
+Date: Wed, 24 Jun 2020 11:38:25 +0200
+Message-ID: <076c3999-f6fa-cc12-7ede-433ccc3e82b6@samsung.com>
+References: <Message-ID: <4493c0e4-51aa-3907-810c-74949ff27ca4@samsung.com>
+        <20200528192051.28034-1-andrzej.p@collabora.com>
+        <CGME20200528192138eucas1p1f0e641f46080d52ae4d459745398ef03@eucas1p1.samsung.com>
+        <20200528192051.28034-3-andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <1591665267-37713-3-git-send-email-sugar.zhang@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-acpi-owner@vger.kernel.org>
+In-Reply-To: <20200528192051.28034-3-andrzej.p@collabora.com>
+Content-Language: en-US
+Sender: linux-acpi-owner@vger.kernel.org
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Cc: linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 09-06-20, 09:14, Sugar Zhang wrote:
-> This patch adds the qurik to use busrt transfers only
 
-s/busrt/burst
-
-> for pl330 controller, even for request with a length of 1.
+On 5/28/20 9:20 PM, Andrzej Pietrasiewicz wrote:
+> Prepare for storing mode in struct thermal_zone_device.
 > 
-> Although, the correct way should be: if the peripheral request
-> length is 1, the peripheral should use SINGLE request, and then
-> notify the dmac using SINGLE mode by src/dst_maxburst with 1.
+> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+
+Reviewed-by: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
+
+Best regards,
+--
+Bartlomiej Zolnierkiewicz
+Samsung R&D Institute Poland
+Samsung Electronics
+
+> ---
+>  drivers/acpi/thermal.c                        | 27 +++++++++----------
+>  drivers/platform/x86/acerhdf.c                |  8 ++++--
+>  .../intel/int340x_thermal/int3400_thermal.c   | 18 +++++--------
+>  3 files changed, 25 insertions(+), 28 deletions(-)
 > 
-> For example, on the Rockchip SoCs, all the peripherals can use
-> SINGLE or BURST request by setting GRF registers. it is possible
-> that if these peripheral drivers are used only for Rockchip SoCs.
-> Unfortunately, it's not, such as dw uart, which is used so widely,
-> and we can't set src/dst_maxburst according to the SoCs' specific
-> to compatible with all the other SoCs.
+> diff --git a/drivers/acpi/thermal.c b/drivers/acpi/thermal.c
+> index 6de8066ca1e7..fb46070c66d8 100644
+> --- a/drivers/acpi/thermal.c
+> +++ b/drivers/acpi/thermal.c
+> @@ -172,7 +172,7 @@ struct acpi_thermal {
+>  	struct acpi_thermal_trips trips;
+>  	struct acpi_handle_list devices;
+>  	struct thermal_zone_device *thermal_zone;
+> -	int tz_enabled;
+> +	enum thermal_device_mode mode;
+>  	int kelvin_offset;	/* in millidegrees */
+>  	struct work_struct thermal_check_work;
+>  };
+> @@ -500,7 +500,7 @@ static void acpi_thermal_check(void *data)
+>  {
+>  	struct acpi_thermal *tz = data;
+>  
+> -	if (!tz->tz_enabled)
+> +	if (tz->mode != THERMAL_DEVICE_ENABLED)
+>  		return;
+>  
+>  	thermal_zone_device_update(tz->thermal_zone,
+> @@ -534,8 +534,7 @@ static int thermal_get_mode(struct thermal_zone_device *thermal,
+>  	if (!tz)
+>  		return -EINVAL;
+>  
+> -	*mode = tz->tz_enabled ? THERMAL_DEVICE_ENABLED :
+> -		THERMAL_DEVICE_DISABLED;
+> +	*mode = tz->mode;
+>  
+>  	return 0;
+>  }
+> @@ -544,27 +543,25 @@ static int thermal_set_mode(struct thermal_zone_device *thermal,
+>  				enum thermal_device_mode mode)
+>  {
+>  	struct acpi_thermal *tz = thermal->devdata;
+> -	int enable;
+>  
+>  	if (!tz)
+>  		return -EINVAL;
+>  
+> +	if (mode != THERMAL_DEVICE_DISABLED &&
+> +	    mode != THERMAL_DEVICE_ENABLED)
+> +		return -EINVAL;
+>  	/*
+>  	 * enable/disable thermal management from ACPI thermal driver
+>  	 */
+> -	if (mode == THERMAL_DEVICE_ENABLED)
+> -		enable = 1;
+> -	else if (mode == THERMAL_DEVICE_DISABLED) {
+> -		enable = 0;
+> +	if (mode == THERMAL_DEVICE_DISABLED)
+>  		pr_warn("thermal zone will be disabled\n");
+> -	} else
+> -		return -EINVAL;
+>  
+> -	if (enable != tz->tz_enabled) {
+> -		tz->tz_enabled = enable;
+> +	if (mode != tz->mode) {
+> +		tz->mode = mode;
+>  		ACPI_DEBUG_PRINT((ACPI_DB_INFO,
+>  			"%s kernel ACPI thermal control\n",
+> -			tz->tz_enabled ? "Enable" : "Disable"));
+> +			tz->mode == THERMAL_DEVICE_ENABLED ?
+> +			"Enable" : "Disable"));
+>  		acpi_thermal_check(tz);
+>  	}
+>  	return 0;
+> @@ -915,7 +912,7 @@ static int acpi_thermal_register_thermal_zone(struct acpi_thermal *tz)
+>  		goto remove_dev_link;
+>  	}
+>  
+> -	tz->tz_enabled = 1;
+> +	tz->mode = THERMAL_DEVICE_ENABLED;
+>  
+>  	dev_info(&tz->device->dev, "registered as thermal_zone%d\n",
+>  		 tz->thermal_zone->id);
+> diff --git a/drivers/platform/x86/acerhdf.c b/drivers/platform/x86/acerhdf.c
+> index 8cc86f4e3ac1..830a8b060e74 100644
+> --- a/drivers/platform/x86/acerhdf.c
+> +++ b/drivers/platform/x86/acerhdf.c
+> @@ -68,6 +68,7 @@ static int kernelmode = 1;
+>  #else
+>  static int kernelmode;
+>  #endif
+> +static enum thermal_device_mode thermal_mode;
+>  
+>  static unsigned int interval = 10;
+>  static unsigned int fanon = 60000;
+> @@ -397,6 +398,7 @@ static inline void acerhdf_revert_to_bios_mode(void)
+>  {
+>  	acerhdf_change_fanstate(ACERHDF_FAN_AUTO);
+>  	kernelmode = 0;
+> +	thermal_mode = THERMAL_DEVICE_DISABLED;
+>  	if (thz_dev)
+>  		thz_dev->polling_delay = 0;
+>  	pr_notice("kernel mode fan control OFF\n");
+> @@ -404,6 +406,7 @@ static inline void acerhdf_revert_to_bios_mode(void)
+>  static inline void acerhdf_enable_kernelmode(void)
+>  {
+>  	kernelmode = 1;
+> +	thermal_mode = THERMAL_DEVICE_ENABLED;
+>  
+>  	thz_dev->polling_delay = interval*1000;
+>  	thermal_zone_device_update(thz_dev, THERMAL_EVENT_UNSPECIFIED);
+> @@ -416,8 +419,7 @@ static int acerhdf_get_mode(struct thermal_zone_device *thermal,
+>  	if (verbose)
+>  		pr_notice("kernel mode fan control %d\n", kernelmode);
+>  
+> -	*mode = (kernelmode) ? THERMAL_DEVICE_ENABLED
+> -			     : THERMAL_DEVICE_DISABLED;
+> +	*mode = thermal_mode;
+>  
+>  	return 0;
+>  }
+> @@ -739,6 +741,8 @@ static int __init acerhdf_register_thermal(void)
+>  	if (IS_ERR(cl_dev))
+>  		return -EINVAL;
+>  
+> +	thermal_mode = kernelmode ?
+> +		THERMAL_DEVICE_ENABLED : THERMAL_DEVICE_DISABLED;
+>  	thz_dev = thermal_zone_device_register("acerhdf", 2, 0, NULL,
+>  					      &acerhdf_dev_ops,
+>  					      &acerhdf_zone_params, 0,
+> diff --git a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+> index 0b3a62655843..e84faaadff87 100644
+> --- a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+> +++ b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+> @@ -48,7 +48,7 @@ struct int3400_thermal_priv {
+>  	struct acpi_device *adev;
+>  	struct platform_device *pdev;
+>  	struct thermal_zone_device *thermal;
+> -	int mode;
+> +	enum thermal_device_mode mode;
+>  	int art_count;
+>  	struct art *arts;
+>  	int trt_count;
+> @@ -395,24 +395,20 @@ static int int3400_thermal_set_mode(struct thermal_zone_device *thermal,
+>  				enum thermal_device_mode mode)
+>  {
+>  	struct int3400_thermal_priv *priv = thermal->devdata;
+> -	bool enable;
+>  	int result = 0;
+>  
+>  	if (!priv)
+>  		return -EINVAL;
+>  
+> -	if (mode == THERMAL_DEVICE_ENABLED)
+> -		enable = true;
+> -	else if (mode == THERMAL_DEVICE_DISABLED)
+> -		enable = false;
+> -	else
+> +	if (mode != THERMAL_DEVICE_ENABLED &&
+> +	    mode != THERMAL_DEVICE_DISABLED)
+>  		return -EINVAL;
+>  
+> -	if (enable != priv->mode) {
+> -		priv->mode = enable;
+> +	if (mode != priv->mode) {
+> +		priv->mode = mode;
+>  		result = int3400_thermal_run_osc(priv->adev->handle,
+> -						 priv->current_uuid_index,
+> -						 enable);
+> +						priv->current_uuid_index,
+> +						mode == THERMAL_DEVICE_ENABLED);
+>  	}
+>  
+>  	evaluate_odvp(priv);
 > 
-> So, for convenience, all the peripherals are set as BURST request
-> by default on the Rockchip SoCs. even for request with a length of 1.
-> the current pl330 driver will perform SINGLE transfer if the client's
-> maxburst is 1, which still should be working according to chapter 2.6.6
-> of datasheet which describe how DMAC performs SINGLE transfers for
-> a BURST request. unfortunately, it's broken on the Rockchip SoCs,
-
-s/unfortunately/Unfortunately
-
-> which support only matching transfers, such as BURST transfer for
-> BURST request, SINGLE transfer for SINGLE request.
-> 
-> Finaly, we add the quirk to specify pl330 to use burst transfers only.
-
-s/Finaly/Finally
-
-Below looks fine, pls reorder the series and have binding patch come
-first and then the use of binding. Below looks fine though
-
--- 
-~Vinod
