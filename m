@@ -1,49 +1,36 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH 6/6] hantro: Make sure we don't use post-processor on an encoder
-Date: Thu, 25 Jun 2020 13:35:25 -0300
-Message-ID: <20200625163525.5119-7-ezequiel@collabora.com>
-References: <20200625163525.5119-1-ezequiel@collabora.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: [PATCH 0/3] media: staging: rkisp1: various bug fixes in params
+Date: Thu, 25 Jun 2020 19:42:54 +0200
+Message-ID: <20200625174257.22216-1-dafna.hirschfeld@collabora.com>
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200625163525.5119-1-ezequiel@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: kernel@collabora.com, Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>, Ezequiel Garcia <ezequiel@collabora.com>
+To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Commit 986eee3a5234f fixed hantro_needs_postproc condition,
-but missed one case. Encoders don't have any post-processor
-hardware block, so also can't be disabled.
+3 bug fixes found in rkisp1-params.c related to managing the vb2 buffers.
 
-Fix it.
+Testing:
+--------
 
-Fixes: 986eee3a5234f ("media: hantro: Prevent encoders from using post-processing")
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
----
- drivers/staging/media/hantro/hantro_drv.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+A test that streams the selfpath and params entities simultaneously
+can be found in this branch of v4l-utils:
+https://gitlab.collabora.com/dafna/v4l-utils/-/tree/params-bug-fixes
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 0936f0c41af9..b622bbe181c1 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -122,10 +122,12 @@ void hantro_start_prepare_run(struct hantro_ctx *ctx)
- 	v4l2_ctrl_request_setup(src_buf->vb2_buf.req_obj.req,
- 				&ctx->ctrl_handler);
- 
--	if (hantro_needs_postproc(ctx, ctx->vpu_dst_fmt))
--		hantro_postproc_enable(ctx);
--	else
--		hantro_postproc_disable(ctx);
-+	if (!hantro_is_encoder_ctx(ctx)) {
-+		if (hantro_needs_postproc(ctx, ctx->vpu_dst_fmt))
-+			hantro_postproc_enable(ctx);
-+		else
-+			hantro_postproc_disable(ctx);
-+	}
- }
- 
- void hantro_end_prepare_run(struct hantro_ctx *ctx)
+In the repo:
+$ cd contrib/test
+$ python3 test-rkisp1.py -t RKISP1_TEST_simple_stream_with_params -o /root -S -v --params-buf params-buf.dat
+
+Dafna Hirschfeld (3):
+  media: staging: rkisp1: params: don't reference the vb2 buffer after
+    calling vb2_buffer_done
+  media: staging: rkisp1: params: don't release lock in isr before
+    buffer is done
+  media: staging: rkisp1: params: in 'stop_streaming' don't release the
+    lock while returning buffers
+
+ drivers/staging/media/rkisp1/rkisp1-params.c | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
+
 -- 
-2.26.0.rc2
+2.17.1
