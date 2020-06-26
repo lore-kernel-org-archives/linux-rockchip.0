@@ -1,91 +1,85 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH 2/2] hantro: h264: Refuse to decode unsupported bitstream
-Date: Fri, 26 Jun 2020 14:11:30 -0300
-Message-ID: <20200626171130.27346-3-ezequiel@collabora.com>
-References: <20200626171130.27346-1-ezequiel@collabora.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH 2/3] media: staging: rkisp1: params: don't release lock in
+ isr before buffer is done
+Date: Fri, 26 Jun 2020 14:20:16 -0300
+Message-ID: <fe4a4419-66fc-c974-06a9-9765e49003e8@collabora.com>
+References: <20200625174257.22216-1-dafna.hirschfeld@collabora.com>
+ <20200625174257.22216-3-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200626171130.27346-1-ezequiel@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, kernel@collabora.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200625174257.22216-3-dafna.hirschfeld@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The hardware only supports 4:2:0 or 4:0:0 (monochrome),
-8-bit depth content.
+Hi Dafna,
 
-Verify that the PPS refers to a supported bitstream, and refuse
-unsupported bitstreams by failing at TRY_EXT_CTRLS time.
+Thanks for the patch
 
-Given the JPEG compression level control is the only one
-that needs setting, a specific ops is provided.
+On 6/25/20 2:42 PM, Dafna Hirschfeld wrote:
+> In the irq handler 'rkisp1_params_isr', the lock 'config_lock'
+> should be held as long as the current buffer is used. Otherwise the
+> stop_streaming calback might remove it from the list and
+> pass it to userspace while it is referenced in the irq handler.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
-Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
----
- drivers/staging/media/hantro/hantro_drv.c | 29 ++++++++++++++++++++---
- 1 file changed, 26 insertions(+), 3 deletions(-)
+I think we need to clarify what 'config_lock' protects, it seems it protects
+the is_streaming variable and the buffer list.
+I see it being used by rkisp1_params_config_parameter(), which doesn't look right to me.
 
-diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-index 0db8ad455160..361ffaa821ef 100644
---- a/drivers/staging/media/hantro/hantro_drv.c
-+++ b/drivers/staging/media/hantro/hantro_drv.c
-@@ -261,7 +261,25 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
- 	return vb2_queue_init(dst_vq);
- }
- 
--static int hantro_s_ctrl(struct v4l2_ctrl *ctrl)
-+static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
-+{
-+	if (ctrl->id == V4L2_CID_MPEG_VIDEO_H264_SPS) {
-+		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_cur.p;
-+
-+		if (sps->chroma_format_idc > 1)
-+			/* Only 4:0:0 and 4:2:0 are supported */
-+			return -EINVAL;
-+		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
-+			/* Luma and chroma bit depth mismatch */
-+			return -EINVAL;
-+		if (sps->bit_depth_luma_minus8 != 0)
-+			/* Only 8-bit is supported */
-+			return -EINVAL;
-+	}
-+	return 0;
-+}
-+
-+static int hantro_jpeg_s_ctrl(struct v4l2_ctrl *ctrl)
- {
- 	struct hantro_ctx *ctx;
- 
-@@ -282,7 +300,11 @@ static int hantro_s_ctrl(struct v4l2_ctrl *ctrl)
- }
- 
- static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
--	.s_ctrl = hantro_s_ctrl,
-+	.try_ctrl = hantro_try_ctrl,
-+};
-+
-+static const struct v4l2_ctrl_ops hantro_jpeg_ctrl_ops = {
-+	.s_ctrl = hantro_jpeg_s_ctrl,
- };
- 
- static const struct hantro_ctrl controls[] = {
-@@ -294,7 +316,7 @@ static const struct hantro_ctrl controls[] = {
- 			.max = 100,
- 			.step = 1,
- 			.def = 50,
--			.ops = &hantro_ctrl_ops,
-+			.ops = &hantro_jpeg_ctrl_ops,
- 		},
- 	}, {
- 		.codec = HANTRO_MPEG2_DECODER,
-@@ -325,6 +347,7 @@ static const struct hantro_ctrl controls[] = {
- 		.codec = HANTRO_H264_DECODER,
- 		.cfg = {
- 			.id = V4L2_CID_MPEG_VIDEO_H264_SPS,
-+			.ops = &hantro_ctrl_ops,
- 		},
- 	}, {
- 		.codec = HANTRO_H264_DECODER,
--- 
-2.26.0.rc2
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-params.c | 9 ++++-----
+>  1 file changed, 4 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+> index 762c2259b807..bf006dbeee2d 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+> @@ -1210,10 +1210,11 @@ void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis)
+>  	if (!list_empty(&params->params))
+>  		cur_buf = list_first_entry(&params->params,
+>  					   struct rkisp1_buffer, queue);
+> -	spin_unlock(&params->config_lock);
+>  
+> -	if (!cur_buf)
+> +	if (!cur_buf) {
+> +		spin_unlock(&params->config_lock);
+>  		return;
+> +	}
+>  
+>  	new_params = (struct rkisp1_params_cfg *)(cur_buf->vaddr[0]);
+>  
+> @@ -1228,13 +1229,11 @@ void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis)
+>  		isp_ctrl |= RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD;
+>  		rkisp1_write(params->rkisp1, isp_ctrl, RKISP1_CIF_ISP_CTRL);
+>  
+> -		spin_lock(&params->config_lock);
+>  		list_del(&cur_buf->queue);
+> -		spin_unlock(&params->config_lock);
+> -
+>  		cur_buf->vb.sequence = frame_sequence;
+>  		vb2_buffer_done(&cur_buf->vb.vb2_buf, VB2_BUF_STATE_DONE);
+>  	}
+
+Maybe we could refactor this whole function, as mentioned by Robin in patch 3/3, we could remove
+this identation with:
+
+if (!(isp_mis & RKISP1_CIF_ISP_FRAME))
+    return;
+
+Keep in mind that params and stats were barely touched from the original driver, so don't be afraid to refactor things :)
+
+Thanks
+Helen
+
+
+> +	spin_unlock(&params->config_lock);
+>  }
+>  
+>  static const struct rkisp1_cif_isp_awb_meas_config rkisp1_awb_params_default_config = {
+> 
