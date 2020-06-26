@@ -1,85 +1,67 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 2/3] media: staging: rkisp1: params: don't release lock in
- isr before buffer is done
-Date: Fri, 26 Jun 2020 14:20:16 -0300
-Message-ID: <fe4a4419-66fc-c974-06a9-9765e49003e8@collabora.com>
-References: <20200625174257.22216-1-dafna.hirschfeld@collabora.com>
- <20200625174257.22216-3-dafna.hirschfeld@collabora.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200625174257.22216-3-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Subject: [PATCH v5 00/11] Stop monitoring disabled devices
+Date: Fri, 26 Jun 2020 19:37:44 +0200
+Message-ID: <20200626173755.26379-1-andrzej.p@collabora.com>
+References: <9cbffad6-69e4-0b33-4640-fde7c4f6a6e7@linaro.org>
+Return-path: <linux-acpi-owner@vger.kernel.org>
+In-Reply-To: <9cbffad6-69e4-0b33-4640-fde7c4f6a6e7@linaro.org>
+Sender: linux-acpi-owner@vger.kernel.org
+To: linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
+A respin of v4 with these changes:
 
-Thanks for the patch
+v4..v5:
 
-On 6/25/20 2:42 PM, Dafna Hirschfeld wrote:
-> In the irq handler 'rkisp1_params_isr', the lock 'config_lock'
-> should be held as long as the current buffer is used. Otherwise the
-> stop_streaming calback might remove it from the list and
-> pass it to userspace while it is referenced in the irq handler.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+- EXPORT_SYMBOL -> EXPORT_SYMBOL_GPL (Daniel)
+- dropped unnecessary thermal_zone_device_enable() in int3400_thermal.c
+and in thermal_of.c (Bartlomiej)
 
-I think we need to clarify what 'config_lock' protects, it seems it protects
-the is_streaming variable and the buffer list.
-I see it being used by rkisp1_params_config_parameter(), which doesn't look right to me.
+Andrzej Pietrasiewicz (11):
+  acpi: thermal: Fix error handling in the register function
+  thermal: Store thermal mode in a dedicated enum
+  thermal: Add current mode to thermal zone device
+  thermal: Store device mode in struct thermal_zone_device
+  thermal: remove get_mode() operation of drivers
+  thermal: Add mode helpers
+  thermal: Use mode helpers in drivers
+  thermal: Explicitly enable non-changing thermal zone devices
+  thermal: core: Stop polling DISABLED thermal devices
+  thermal: Simplify or eliminate unnecessary set_mode() methods
+  thermal: Rename set_mode() to change_mode()
 
-> ---
->  drivers/staging/media/rkisp1/rkisp1-params.c | 9 ++++-----
->  1 file changed, 4 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
-> index 762c2259b807..bf006dbeee2d 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
-> @@ -1210,10 +1210,11 @@ void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis)
->  	if (!list_empty(&params->params))
->  		cur_buf = list_first_entry(&params->params,
->  					   struct rkisp1_buffer, queue);
-> -	spin_unlock(&params->config_lock);
->  
-> -	if (!cur_buf)
-> +	if (!cur_buf) {
-> +		spin_unlock(&params->config_lock);
->  		return;
-> +	}
->  
->  	new_params = (struct rkisp1_params_cfg *)(cur_buf->vaddr[0]);
->  
-> @@ -1228,13 +1229,11 @@ void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis)
->  		isp_ctrl |= RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD;
->  		rkisp1_write(params->rkisp1, isp_ctrl, RKISP1_CIF_ISP_CTRL);
->  
-> -		spin_lock(&params->config_lock);
->  		list_del(&cur_buf->queue);
-> -		spin_unlock(&params->config_lock);
-> -
->  		cur_buf->vb.sequence = frame_sequence;
->  		vb2_buffer_done(&cur_buf->vb.vb2_buf, VB2_BUF_STATE_DONE);
->  	}
-
-Maybe we could refactor this whole function, as mentioned by Robin in patch 3/3, we could remove
-this identation with:
-
-if (!(isp_mis & RKISP1_CIF_ISP_FRAME))
-    return;
-
-Keep in mind that params and stats were barely touched from the original driver, so don't be afraid to refactor things :)
-
-Thanks
-Helen
+ drivers/acpi/thermal.c                        | 75 +++++----------
+ .../ethernet/chelsio/cxgb4/cxgb4_thermal.c    |  8 ++
+ .../ethernet/mellanox/mlxsw/core_thermal.c    | 91 ++++---------------
+ drivers/net/wireless/intel/iwlwifi/mvm/tt.c   |  9 +-
+ drivers/platform/x86/acerhdf.c                | 33 +++----
+ drivers/platform/x86/intel_mid_thermal.c      |  6 ++
+ drivers/power/supply/power_supply_core.c      |  9 +-
+ drivers/thermal/armada_thermal.c              |  6 ++
+ drivers/thermal/da9062-thermal.c              | 16 +---
+ drivers/thermal/dove_thermal.c                |  6 ++
+ drivers/thermal/hisi_thermal.c                |  6 +-
+ drivers/thermal/imx_thermal.c                 | 57 ++++--------
+ .../intel/int340x_thermal/int3400_thermal.c   | 38 ++------
+ .../int340x_thermal/int340x_thermal_zone.c    |  5 +
+ drivers/thermal/intel/intel_pch_thermal.c     |  5 +
+ .../thermal/intel/intel_quark_dts_thermal.c   | 34 ++-----
+ drivers/thermal/intel/intel_soc_dts_iosf.c    |  3 +
+ drivers/thermal/intel/x86_pkg_temp_thermal.c  |  6 ++
+ drivers/thermal/kirkwood_thermal.c            |  7 ++
+ drivers/thermal/rcar_thermal.c                |  9 +-
+ drivers/thermal/rockchip_thermal.c            |  6 +-
+ drivers/thermal/spear_thermal.c               |  7 ++
+ drivers/thermal/sprd_thermal.c                |  6 +-
+ drivers/thermal/st/st_thermal.c               |  5 +
+ drivers/thermal/thermal_core.c                | 76 ++++++++++++++--
+ drivers/thermal/thermal_of.c                  | 41 +--------
+ drivers/thermal/thermal_sysfs.c               | 37 +-------
+ include/linux/thermal.h                       | 19 +++-
+ 28 files changed, 275 insertions(+), 351 deletions(-)
 
 
-> +	spin_unlock(&params->config_lock);
->  }
->  
->  static const struct rkisp1_cif_isp_awb_meas_config rkisp1_awb_params_default_config = {
-> 
+base-commit: 48778464bb7d346b47157d21ffde2af6b2d39110
+-- 
+2.17.1
