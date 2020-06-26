@@ -1,92 +1,111 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH 1/2] drm: drm_fourcc: add NV20 YUV
- =?UTF-8?B?Zm9ybWF044CQ6K+35rOo5oSP77yM6YKu5Lu255SxbGludXgtcm9ja2NoaXAtYm91bmNlcytzYQ==?=
- =?us-ascii?Q?ndy=2Ehuang=3Drock-chips=2Ecom=40lists=2Einfradea?=
- =?UTF-8?B?ZC5vcmfku6Plj5HjgJE=?=
-Date: Fri, 26 Jun 2020 14:19:53 +0000 (UTC)
-Message-ID: <f5c46547-3278-2226-e194-929fbfa95864@kwiboo.se>
-References: <20200607202521.18438-1-jonas@kwiboo.se>
- <20200607202521.18438-2-jonas@kwiboo.se>
- <d503eed1-571f-3e37-858b-b5de04cb79f7@rock-chips.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH 3/3] media: staging: rkisp1: params: in 'stop_streaming'
+ don't release the lock while returning buffers
+Date: Fri, 26 Jun 2020 17:48:47 +0200
+Message-ID: <e680474a-1b47-7904-b7ab-5a026d0db05f@collabora.com>
+References: <20200625174257.22216-1-dafna.hirschfeld@collabora.com>
+ <20200625174257.22216-4-dafna.hirschfeld@collabora.com>
+ <e269f2f5-c24c-7009-e624-3545af206709@arm.com>
+ <CAAFQd5AsJG=YJC4eG6+qdt_dPyr-dwcXrmujxLaHfoe9==Es1g@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <d503eed1-571f-3e37-858b-b5de04cb79f7@rock-chips.com>
-Content-Language: sv
-Sender: linux-kernel-owner@vger.kernel.org
-To: Huang Jiachai <hjc@rock-chips.com>, Heiko =?iso-8859-1?q?St=FCbner?= <heiko@sntech.de>
-Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>, =?UTF-8?b?6Zer5a2d5Yab?= <andy.yan@rock-chips.com>, Brian Starkey <brian.starkey@arm.com>, Ben Davis <ben.davis@arm.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <CAAFQd5AsJG=YJC4eG6+qdt_dPyr-dwcXrmujxLaHfoe9==Es1g@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Tomasz Figa <tfiga@chromium.org>, Robin Murphy <robin.murphy@arm.com>
+Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Dafna Hirschfeld <dafna3@gmail.com>, Hans Verkuil <hverkuil@xs4all.nl>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Helen Koike <helen.koike@collabora.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-06-17 14:07, Huang Jiachai wrote:
-> Hi Jonas Karlman,
-> 
->      Is there an another yuv 10bit format with 4:4:4 sub-simpling but 
-> has no padding?
-> 
->   Maybe we can call it DRM_FORMAT_NV30:
-> 
-> { .format = DRM_FORMAT_NV30,		.depth = 0,
->    .num_planes = 2, .char_per_block = { 5, 5, 0 },
->    .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 1,
->    .vsub = 1, .is_yuv = true },
-> 
-> this format can supported by rockchip rk3288/rk3399... platform, can you 
-> add this format at this series patches?
 
-I will send a v2 including this 4:4:4 format later this weekend.
 
-Is there any hw block on rk3288/rk3399 that can produce a buffer in such format?
-If I am not mistaken rkvdec only support 10-bit h264 in 4:2:0/4:2:2 and
-hevc 4:2:0 10-bit, those are the formats I have been able to test so far.
+On 26.06.20 16:03, Tomasz Figa wrote:
+> On Fri, Jun 26, 2020 at 3:32 PM Robin Murphy <robin.murphy@arm.com> wrote:
+>>
+>> Hi Dafna,
+>>
+>> On 2020-06-25 18:42, Dafna Hirschfeld wrote:
+>>> In the stop_streaming callback 'rkisp1_params_vb2_stop_streaming'
+>>> there is no need to release the lock 'config_lock' and then acquire
+>>> it again at each iteration when returning all buffers.
+>>> This is because the stream is about to end and there is no need
+>>> to let the isr access a buffer.
+>>>
+>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>>> ---
+>>>    drivers/staging/media/rkisp1/rkisp1-params.c | 7 +------
+>>>    1 file changed, 1 insertion(+), 6 deletions(-)
+>>>
+>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+>>> index bf006dbeee2d..5169b02731f1 100644
+>>> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
+>>> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+>>> @@ -1488,19 +1488,13 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
+>>>        /* stop params input firstly */
+>>>        spin_lock_irqsave(&params->config_lock, flags);
+>>>        params->is_streaming = false;
+>>> -     spin_unlock_irqrestore(&params->config_lock, flags);
+>>>
+>>>        for (i = 0; i < RKISP1_ISP_PARAMS_REQ_BUFS_MAX; i++) {
+>>> -             spin_lock_irqsave(&params->config_lock, flags);
+>>>                if (!list_empty(&params->params)) {
+>>>                        buf = list_first_entry(&params->params,
+>>>                                               struct rkisp1_buffer, queue);
+>>>                        list_del(&buf->queue);
+>>> -                     spin_unlock_irqrestore(&params->config_lock,
+>>> -                                            flags);
+>>>                } else {
+>>> -                     spin_unlock_irqrestore(&params->config_lock,
+>>> -                                            flags);
+>>>                        break;
+>>>                }
+>>
+>> Just skimming through out of idle curiosity I was going to comment that
+>> if you end up with this pattern:
+>>
+>>          if (!x) {
+>>                  //do stuff
+>>          } else {
+>>                  break;
+>>          }
+>>
+>> it would be better as:
+>>
+>>          if (x)
+>>                  break;
+>>          //do stuff
+>>
+>> However I then went and looked at the whole function and frankly it's a
+>> bit of a WTF. As best I could decipher, this whole crazy loop appears to
+>> be a baroque reinvention of:
+>>
+>>          list_for_each_entry_safe(&params->params, ..., buf) {
+>>                  list_del(&buf->queue);
+>>                  vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
+>>          }
+Hi, indeed this is a much simpler implementation, greping 'return_all_buffers'
+I see that many drivers implement it this way.
+thanks!
 
-Regards,
-Jonas
-
+>>
+>> (assuming from context that the list should never contain more than
+>> RKISP1_ISP_PARAMS_REQ_BUFS_MAX entries in the first place)
 > 
-> 在 2020/6/8 4:25, Jonas Karlman 写道:
->> DRM_FORMAT_NV20 is a 2 plane format suitable for linear memory layout.
->> The format is similar to P210 with 4:2:2 sub-sampling but has no padding
->> between components. Instead, luminance and chrominance samples are grouped
->> into 4s so that each group is packed into an integer number of bytes:
->>
->> YYYY = UVUV = 4 * 10 bits = 40 bits = 5 bytes
->>
->> The '20' suffix refers to the optimum effective bits per pixel which is
->> achieved when the total number of luminance samples is a multiple of 4.
->>
->> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->> ---
->>   drivers/gpu/drm/drm_fourcc.c  | 4 ++++
->>   include/uapi/drm/drm_fourcc.h | 1 +
->>   2 files changed, 5 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/drm_fourcc.c b/drivers/gpu/drm/drm_fourcc.c
->> index 722c7ebe4e88..2a9c8ae719ed 100644
->> --- a/drivers/gpu/drm/drm_fourcc.c
->> +++ b/drivers/gpu/drm/drm_fourcc.c
->> @@ -278,6 +278,10 @@ const struct drm_format_info *__drm_format_info(u32 format)
->>   		  .num_planes = 2, .char_per_block = { 5, 5, 0 },
->>   		  .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 2,
->>   		  .vsub = 2, .is_yuv = true },
->> +		{ .format = DRM_FORMAT_NV20,		.depth = 0,
->> +		  .num_planes = 2, .char_per_block = { 5, 5, 0 },
->> +		  .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 2,
->> +		  .vsub = 1, .is_yuv = true },
->>   		{ .format = DRM_FORMAT_Q410,		.depth = 0,
->>   		  .num_planes = 3, .char_per_block = { 2, 2, 2 },
->>   		  .block_w = { 1, 1, 1 }, .block_h = { 1, 1, 1 }, .hsub = 0,
->> diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_fourcc.h
->> index b5bf1c0e630e..244d32433a67 100644
->> --- a/include/uapi/drm/drm_fourcc.h
->> +++ b/include/uapi/drm/drm_fourcc.h
->> @@ -242,6 +242,7 @@ extern "C" {
->>    * index 1 = Cr:Cb plane, [39:0] Cr1:Cb1:Cr0:Cb0 little endian
->>    */
->>   #define DRM_FORMAT_NV15		fourcc_code('N', 'V', '1', '5') /* 2x2 subsampled Cr:Cb plane */
->> +#define DRM_FORMAT_NV20		fourcc_code('N', 'V', '2', '0') /* 2x1 subsampled Cr:Cb plane */
->>   
->>   /*
->>    * 2 plane YCbCr MSB aligned
+> Or if we want to avoid disabling the interrupts for the whole
+> iteration, we could use list_splice() to move all the entries of
+
+But this code runs when userspace asks to stop the streaming so I don't
+think it is important at that stage to allow the interrupts.
+
+Thanks,
+Dafna
+
+> params->params to a local list_head under the spinlock, release it and
+> then loop over the local head. As a side effect, one could even drop
+> list_del() and switch to the non-safe variant of
+> list_for_each_entry().
+> 
+> Best regards,
+> Tomasz
 > 
