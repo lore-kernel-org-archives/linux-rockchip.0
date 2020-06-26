@@ -1,249 +1,128 @@
-From: Helen Koike <helen@koikeco.de>
-Subject: Re: [PATCH v2 4/4] media: staging: rkisp1: stats: read the stats in
- the isr
-Date: Fri, 26 Jun 2020 13:52:37 -0300
-Message-ID: <44a640ad-62a7-b8f1-dffa-5f7a432cc10f@koikeco.de>
-References: <20200626085141.7646-1-dafna.hirschfeld@collabora.com>
- <20200626085141.7646-5-dafna.hirschfeld@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH 3/3] media: staging: rkisp1: params: in 'stop_streaming'
+ don't release the lock while returning buffers
+Date: Fri, 26 Jun 2020 17:58:39 +0100
+Message-ID: <16ea1aba-0b0d-6bcf-8e72-5e253ead9218@arm.com>
+References: <20200625174257.22216-1-dafna.hirschfeld@collabora.com>
+ <20200625174257.22216-4-dafna.hirschfeld@collabora.com>
+ <e269f2f5-c24c-7009-e624-3545af206709@arm.com>
+ <CAAFQd5AsJG=YJC4eG6+qdt_dPyr-dwcXrmujxLaHfoe9==Es1g@mail.gmail.com>
+ <e680474a-1b47-7904-b7ab-5a026d0db05f@collabora.com>
+ <CAAFQd5CHK+c=zED-evW3sqgF+WpuAYW6M8kvPZCVCrf2_KHG8A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200626085141.7646-5-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
+In-Reply-To: <CAAFQd5CHK+c=zED-evW3sqgF+WpuAYW6M8kvPZCVCrf2_KHG8A@mail.gmail.com>
+Content-Language: en-GB
 Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
+To: Tomasz Figa <tfiga@chromium.org>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: Linux Media Mailing List <linux-media@vger.kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Dafna Hirschfeld <dafna3@gmail.com>, Hans Verkuil <hverkuil@xs4all.nl>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Helen Koike <helen.koike@collabora.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
-
-On 6/26/20 5:51 AM, Dafna Hirschfeld wrote:
-> Currently the stats are read in a work queue. Defering the
-> reading of the stats is not needed and it is fine to read them
-> inside the irq handler.
-> This patch fixes and remove the TODO item:
-> 'Use threaded interrupt for rkisp1_stats_isr(), remove work queue.'
+On 2020-06-26 16:59, Tomasz Figa wrote:
+> On Fri, Jun 26, 2020 at 5:48 PM Dafna Hirschfeld
+> <dafna.hirschfeld@collabora.com> wrote:
+>>
+>>
+>>
+>> On 26.06.20 16:03, Tomasz Figa wrote:
+>>> On Fri, Jun 26, 2020 at 3:32 PM Robin Murphy <robin.murphy@arm.com> wrote:
+>>>>
+>>>> Hi Dafna,
+>>>>
+>>>> On 2020-06-25 18:42, Dafna Hirschfeld wrote:
+>>>>> In the stop_streaming callback 'rkisp1_params_vb2_stop_streaming'
+>>>>> there is no need to release the lock 'config_lock' and then acquire
+>>>>> it again at each iteration when returning all buffers.
+>>>>> This is because the stream is about to end and there is no need
+>>>>> to let the isr access a buffer.
+>>>>>
+>>>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>>>>> ---
+>>>>>     drivers/staging/media/rkisp1/rkisp1-params.c | 7 +------
+>>>>>     1 file changed, 1 insertion(+), 6 deletions(-)
+>>>>>
+>>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+>>>>> index bf006dbeee2d..5169b02731f1 100644
+>>>>> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
+>>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+>>>>> @@ -1488,19 +1488,13 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
+>>>>>         /* stop params input firstly */
+>>>>>         spin_lock_irqsave(&params->config_lock, flags);
+>>>>>         params->is_streaming = false;
+>>>>> -     spin_unlock_irqrestore(&params->config_lock, flags);
+>>>>>
+>>>>>         for (i = 0; i < RKISP1_ISP_PARAMS_REQ_BUFS_MAX; i++) {
+>>>>> -             spin_lock_irqsave(&params->config_lock, flags);
+>>>>>                 if (!list_empty(&params->params)) {
+>>>>>                         buf = list_first_entry(&params->params,
+>>>>>                                                struct rkisp1_buffer, queue);
+>>>>>                         list_del(&buf->queue);
+>>>>> -                     spin_unlock_irqrestore(&params->config_lock,
+>>>>> -                                            flags);
+>>>>>                 } else {
+>>>>> -                     spin_unlock_irqrestore(&params->config_lock,
+>>>>> -                                            flags);
+>>>>>                         break;
+>>>>>                 }
+>>>>
+>>>> Just skimming through out of idle curiosity I was going to comment that
+>>>> if you end up with this pattern:
+>>>>
+>>>>           if (!x) {
+>>>>                   //do stuff
+>>>>           } else {
+>>>>                   break;
+>>>>           }
+>>>>
+>>>> it would be better as:
+>>>>
+>>>>           if (x)
+>>>>                   break;
+>>>>           //do stuff
+>>>>
+>>>> However I then went and looked at the whole function and frankly it's a
+>>>> bit of a WTF. As best I could decipher, this whole crazy loop appears to
+>>>> be a baroque reinvention of:
+>>>>
+>>>>           list_for_each_entry_safe(&params->params, ..., buf) {
+>>>>                   list_del(&buf->queue);
+>>>>                   vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
+>>>>           }
+>> Hi, indeed this is a much simpler implementation, greping 'return_all_buffers'
+>> I see that many drivers implement it this way.
+>> thanks!
+>>
+>>>>
+>>>> (assuming from context that the list should never contain more than
+>>>> RKISP1_ISP_PARAMS_REQ_BUFS_MAX entries in the first place)
+>>>
+>>> Or if we want to avoid disabling the interrupts for the whole
+>>> iteration, we could use list_splice() to move all the entries of
+>>
+>> But this code runs when userspace asks to stop the streaming so I don't
+>> think it is important at that stage to allow the interrupts.
 > 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> It's generally a good practice to reduce the time spent with
+> interrupts disabled. Disabling the interrupts prevents the system from
+> handling external events, including timer interrupts, and scheduling
+> higher priority tasks, including real time ones. How much the system
+> runs with interrupts disabled is one of the factors determining the
+> general system latency.
 
-lgtm
+Right, with the way we handle interrupt affinity on Arm an IRQ can't 
+target multiple CPUs in hardware, so any time spent with IRQs disabled 
+might be preventing other devices' interrupts from being taken even if 
+they're not explicitly affine to the current CPU.
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
+Now that I've looked, it appears that vb2_buffer_done() might end up 
+performing a DMA sync on the buffers, which, if it has to do 
+order-of-megabytes worth of cache maintenance for large frames, is the 
+kind of relatively slow operation that really doesn't want to be done 
+with IRQs disabled (or under a lock at all, ideally) unless it 
+absolutely *has* to be. If the lock is only needed here to protect 
+modifications to the params list itself, then moving the whole list at 
+once to do the cleanup "offline" sounds like a great idea to me.
 
-Thanks
-Helen
-
-> ---
->  drivers/staging/media/rkisp1/TODO            |  1 -
->  drivers/staging/media/rkisp1/rkisp1-common.h |  3 -
->  drivers/staging/media/rkisp1/rkisp1-stats.c  | 87 ++------------------
->  3 files changed, 7 insertions(+), 84 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
-> index c0cbec0a164d..bdb1b8f73556 100644
-> --- a/drivers/staging/media/rkisp1/TODO
-> +++ b/drivers/staging/media/rkisp1/TODO
-> @@ -1,5 +1,4 @@
->  * Fix pad format size for statistics and parameters entities.
-> -* Use threaded interrupt for rkisp1_stats_isr(), remove work queue.
->  * Fix checkpatch errors.
->  * Review and comment every lock
->  * Handle quantization
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-> index c92ae1b7093f..45e554169224 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
-> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-> @@ -180,7 +180,6 @@ struct rkisp1_capture {
->   *
->   * @lock: locks the buffer list 'stat' and 'is_streaming'
->   * @stat: stats buffer list
-> - * @readout_wq: workqueue for statistics information read
->   */
->  struct rkisp1_stats {
->  	struct rkisp1_vdev_node vnode;
-> @@ -190,8 +189,6 @@ struct rkisp1_stats {
->  	struct list_head stat;
->  	struct v4l2_format vdev_fmt;
->  	bool is_streaming;
-> -
-> -	struct workqueue_struct *readout_wq;
->  };
->  
->  /*
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> index 58329e6b0598..87e4104d20dd 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-stats.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> @@ -18,21 +18,6 @@
->  #define RKISP1_ISP_STATS_REQ_BUFS_MIN 2
->  #define RKISP1_ISP_STATS_REQ_BUFS_MAX 8
->  
-> -enum rkisp1_isp_readout_cmd {
-> -	RKISP1_ISP_READOUT_MEAS,
-> -	RKISP1_ISP_READOUT_META,
-> -};
-> -
-> -struct rkisp1_isp_readout_work {
-> -	struct work_struct work;
-> -	struct rkisp1_stats *stats;
-> -
-> -	unsigned int frame_id;
-> -	unsigned int isp_ris;
-> -	enum rkisp1_isp_readout_cmd readout;
-> -	struct vb2_buffer *vb;
-> -};
-> -
->  static int rkisp1_stats_enum_fmt_meta_cap(struct file *file, void *priv,
->  					  struct v4l2_fmtdesc *f)
->  {
-> @@ -154,14 +139,8 @@ static void rkisp1_stats_vb2_stop_streaming(struct vb2_queue *vq)
->  	struct rkisp1_buffer *buf;
->  	unsigned int i;
->  
-> -	/* Make sure no new work queued in isr before draining wq */
->  	spin_lock_irq(&stats->lock);
->  	stats->is_streaming = false;
-> -	spin_unlock_irq(&stats->lock);
-> -
-> -	drain_workqueue(stats->readout_wq);
-> -
-> -	spin_lock_irq(&stats->lock);
->  	for (i = 0; i < RKISP1_ISP_STATS_REQ_BUFS_MAX; i++) {
->  		if (list_empty(&stats->stat))
->  			break;
-> @@ -324,8 +303,7 @@ static void rkisp1_stats_get_bls_meas(struct rkisp1_stats *stats,
->  }
->  
->  static void
-> -rkisp1_stats_send_measurement(struct rkisp1_stats *stats,
-> -			      struct rkisp1_isp_readout_work *meas_work)
-> +rkisp1_stats_send_measurement(struct rkisp1_stats *stats, u32 isp_ris)
->  {
->  	struct rkisp1_stat_buffer *cur_stat_buf;
->  	struct rkisp1_buffer *cur_buf = NULL;
-> @@ -333,21 +311,12 @@ rkisp1_stats_send_measurement(struct rkisp1_stats *stats,
->  		atomic_read(&stats->rkisp1->isp.frame_sequence);
->  	u64 timestamp = ktime_get_ns();
->  
-> -	if (frame_sequence != meas_work->frame_id) {
-> -		dev_warn(stats->rkisp1->dev,
-> -			 "Measurement late(%d, %d)\n",
-> -			 frame_sequence, meas_work->frame_id);
-> -		frame_sequence = meas_work->frame_id;
-> -	}
-> -
-> -	spin_lock_irq(&stats->lock);
->  	/* get one empty buffer */
->  	if (!list_empty(&stats->stat)) {
->  		cur_buf = list_first_entry(&stats->stat,
->  					   struct rkisp1_buffer, queue);
->  		list_del(&cur_buf->queue);
->  	}
-> -	spin_unlock_irq(&stats->lock);
->  
->  	if (!cur_buf)
->  		return;
-> @@ -355,18 +324,18 @@ rkisp1_stats_send_measurement(struct rkisp1_stats *stats,
->  	cur_stat_buf =
->  		(struct rkisp1_stat_buffer *)(cur_buf->vaddr[0]);
->  
-> -	if (meas_work->isp_ris & RKISP1_CIF_ISP_AWB_DONE)
-> +	if (isp_ris & RKISP1_CIF_ISP_AWB_DONE)
->  		rkisp1_stats_get_awb_meas(stats, cur_stat_buf);
->  
-> -	if (meas_work->isp_ris & RKISP1_CIF_ISP_AFM_FIN)
-> +	if (isp_ris & RKISP1_CIF_ISP_AFM_FIN)
->  		rkisp1_stats_get_afc_meas(stats, cur_stat_buf);
->  
-> -	if (meas_work->isp_ris & RKISP1_CIF_ISP_EXP_END) {
-> +	if (isp_ris & RKISP1_CIF_ISP_EXP_END) {
->  		rkisp1_stats_get_aec_meas(stats, cur_stat_buf);
->  		rkisp1_stats_get_bls_meas(stats, cur_stat_buf);
->  	}
->  
-> -	if (meas_work->isp_ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY)
-> +	if (isp_ris & RKISP1_CIF_ISP_HIST_MEASURE_RDY)
->  		rkisp1_stats_get_hst_meas(stats, cur_stat_buf);
->  
->  	vb2_set_plane_payload(&cur_buf->vb.vb2_buf, 0,
-> @@ -376,24 +345,9 @@ rkisp1_stats_send_measurement(struct rkisp1_stats *stats,
->  	vb2_buffer_done(&cur_buf->vb.vb2_buf, VB2_BUF_STATE_DONE);
->  }
->  
-> -static void rkisp1_stats_readout_work(struct work_struct *work)
-> -{
-> -	struct rkisp1_isp_readout_work *readout_work =
-> -		container_of(work, struct rkisp1_isp_readout_work, work);
-> -	struct rkisp1_stats *stats = readout_work->stats;
-> -
-> -	if (readout_work->readout == RKISP1_ISP_READOUT_MEAS)
-> -		rkisp1_stats_send_measurement(stats, readout_work);
-> -
-> -	kfree(readout_work);
-> -}
-> -
->  void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
->  {
-> -	unsigned int frame_sequence =
-> -		atomic_read(&stats->rkisp1->isp.frame_sequence);
->  	struct rkisp1_device *rkisp1 = stats->rkisp1;
-> -	struct rkisp1_isp_readout_work *work;
->  	unsigned int isp_mis_tmp = 0;
->  
->  	spin_lock(&stats->lock);
-> @@ -406,23 +360,8 @@ void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
->  
->  	if (!stats->is_streaming)
->  		goto unlock;
-> -	if (isp_ris & RKISP1_STATS_MEAS_MASK) {
-> -		work = kzalloc(sizeof(*work), GFP_ATOMIC);
-> -		if (work) {
-> -			INIT_WORK(&work->work,
-> -				  rkisp1_stats_readout_work);
-> -			work->readout = RKISP1_ISP_READOUT_MEAS;
-> -			work->stats = stats;
-> -			work->frame_id = frame_sequence;
-> -			work->isp_ris = isp_ris;
-> -			if (!queue_work(stats->readout_wq,
-> -					&work->work))
-> -				kfree(work);
-> -		} else {
-> -			dev_err(stats->rkisp1->dev,
-> -				"Could not allocate work\n");
-> -		}
-> -	}
-> +	if (isp_ris & RKISP1_STATS_MEAS_MASK)
-> +		rkisp1_stats_send_measurement(stats, isp_ris);
->  
->  unlock:
->  	spin_unlock(&stats->lock);
-> @@ -476,19 +415,8 @@ int rkisp1_stats_register(struct rkisp1_stats *stats,
->  		goto err_cleanup_media_entity;
->  	}
->  
-> -	stats->readout_wq = alloc_workqueue("measurement_queue",
-> -					    WQ_UNBOUND | WQ_MEM_RECLAIM,
-> -					    1);
-> -
-> -	if (!stats->readout_wq) {
-> -		ret = -ENOMEM;
-> -		goto err_unreg_vdev;
-> -	}
-> -
->  	return 0;
->  
-> -err_unreg_vdev:
-> -	video_unregister_device(vdev);
->  err_cleanup_media_entity:
->  	media_entity_cleanup(&vdev->entity);
->  err_release_queue:
-> @@ -502,7 +430,6 @@ void rkisp1_stats_unregister(struct rkisp1_stats *stats)
->  	struct rkisp1_vdev_node *node = &stats->vnode;
->  	struct video_device *vdev = &node->vdev;
->  
-> -	destroy_workqueue(stats->readout_wq);
->  	video_unregister_device(vdev);
->  	media_entity_cleanup(&vdev->entity);
->  	vb2_queue_release(vdev->queue);
-> 
+Robin.
