@@ -1,76 +1,38 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH 3/6] hantro: Rework how encoder and decoder are
- identified
-Date: Fri, 26 Jun 2020 15:31:36 -0300
-Message-ID: <7c9c5240c00764bf55f3ab51602e91ad8cf539ec.camel@collabora.com>
-References: <20200625163525.5119-1-ezequiel@collabora.com>
-         <20200625163525.5119-4-ezequiel@collabora.com>
-         <119b9832-c1bc-9010-cca6-ea82d61c8e9b@arm.com>
+From: David Miller <davem@davemloft.net>
+Subject: Re: [PATCH 1/2] net: stmmac: change Kconfig menu entry to
+ STMMAC/DWMAC
+Date: Fri, 26 Jun 2020 13:21:01 -0700 (PDT)
+Message-ID: <20200626.132101.413123758768311075.davem@davemloft.net>
+References: <20200626120527.10562-1-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: Text/Plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <119b9832-c1bc-9010-cca6-ea82d61c8e9b@arm.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Robin Murphy <robin.murphy@arm.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Philipp Zabel <p.zabel@pengutronix.de>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200626120527.10562-1-jbx6244@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: jbx6244@gmail.com
+Cc: peppe.cavallaro@st.com, alexandre.torgue@st.com, joabreu@synopsys.com, kuba@kernel.org, mcoquelin.stm32@gmail.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 2020-06-26 at 10:52 +0100, Robin Murphy wrote:
-> Hi Ezequiel,
-> 
-> On 2020-06-25 17:35, Ezequiel Garcia wrote:
-> > So far we've been using the .buf_finish hook to distinguish
-> > decoder from encoder. This is unnecessarily obfuscated.
-> > 
-> > Moreover, we want to move the buf_finish, so use a cleaner
-> > scheme to distinguish the driver decoder/encoder type.
-> > 
-> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > ---
-> >   drivers/staging/media/hantro/hantro.h     | 2 ++
-> >   drivers/staging/media/hantro/hantro_drv.c | 4 +++-
-> >   2 files changed, 5 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-> > index 3005207fc6fb..028b788ad50f 100644
-> > --- a/drivers/staging/media/hantro/hantro.h
-> > +++ b/drivers/staging/media/hantro/hantro.h
-> > @@ -199,6 +199,7 @@ struct hantro_dev {
-> >    *
-> >    * @dev:		VPU driver data to which the context belongs.
-> >    * @fh:			V4L2 file handler.
-> > + * @is_encoder:		Decoder or encoder context?
-> >    *
-> >    * @sequence_cap:       Sequence counter for capture queue
-> >    * @sequence_out:       Sequence counter for output queue
-> > @@ -223,6 +224,7 @@ struct hantro_dev {
-> >   struct hantro_ctx {
-> >   	struct hantro_dev *dev;
-> >   	struct v4l2_fh fh;
-> > +	bool is_encoder;
-> >   
-> >   	u32 sequence_cap;
-> >   	u32 sequence_out;
-> > diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> > index 0db8ad455160..112ed556eb90 100644
-> > --- a/drivers/staging/media/hantro/hantro_drv.c
-> > +++ b/drivers/staging/media/hantro/hantro_drv.c
-> > @@ -197,7 +197,7 @@ static void device_run(void *priv)
-> >   
-> >   bool hantro_is_encoder_ctx(const struct hantro_ctx *ctx)
-> >   {
-> > -	return ctx->buf_finish == hantro_enc_buf_finish;
-> > +	return ctx->is_encoder;
-> 
-> FWIW I'd suggest removing the wrapper function entirely now - it makes 
-> sense when the check itself is implemented in a weird and non-obvious 
-> way, but a simple boolean flag named exactly what it means is already 
-> about as clear as it can get.
-> 
+From: Johan Jonker <jbx6244@gmail.com>
+Date: Fri, 26 Jun 2020 14:05:26 +0200
 
-Indeed, Philipp pointed out the same thing.
+> When a Rockchip user wants to enable support for
+> the ethernet controller one has to search for
+> something with STMicroelectronics.
+> Change the Kconfig menu entry to STMMAC/DWMAC,
+> so that it better reflects the options it enables.
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 
-Makes perfect sense, and thanks a lot for reviewing.
+I'm not OK with this.  It's called internally stmmac
+beause it's based upon an ST Microelectronics chipset.
 
-Ezequiel
+This is what happens when we have several sub drivers
+based upon a top-level common chipset "library".
+
+The problem you have is that just knowing the driver
+doesn't tell you the dependencies, but that's a larger
+scope generic problem that needs a high level solution
+rather then something we should be hacking around with
+name adjustments here and there.
