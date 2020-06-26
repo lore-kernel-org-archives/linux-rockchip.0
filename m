@@ -1,73 +1,36 @@
-From: Tom Rini <trini@konsulko.com>
-Subject: Re: [PATCH] rk3399: Add BOOTENV_SF command
-Date: Fri, 26 Jun 2020 16:21:20 -0400
-Message-ID: <20200626202120.GC8432@bill-the-cat>
-References: <20200608141708.31844-1-jagan@amarulasolutions.com>
- <CAMty3ZDrutZ3CzCt-ZNnjeRfPNeKVRu_ct6oUVSSk_b5tPncvQ@mail.gmail.com>
+From: kernel test robot <lkp@intel.com>
+Subject: [RFC PATCH] thermal: thermal_zone_device_set_mode() can be static
+Date: Sat, 27 Jun 2020 04:50:28 +0800
+Message-ID: <20200626205028.GA2296@014f859222aa>
+References: <20200626173755.26379-7-andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="j+Rb494BzBd9643b"
-Return-path: <u-boot-bounces@lists.denx.de>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-acpi-owner@vger.kernel.org>
 Content-Disposition: inline
-In-Reply-To: <CAMty3ZDrutZ3CzCt-ZNnjeRfPNeKVRu_ct6oUVSSk_b5tPncvQ@mail.gmail.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>, Simon Glass <sjg@chromium.org>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>
+In-Reply-To: <20200626173755.26379-7-andrzej.p@collabora.com>
+Sender: linux-acpi-owner@vger.kernel.org
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: kbuild-all@lists.01.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
 
---j+Rb494BzBd9643b
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: kernel test robot <lkp@intel.com>
+---
+ thermal_core.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On Thu, Jun 25, 2020 at 08:32:10PM +0530, Jagan Teki wrote:
-> On Mon, Jun 8, 2020 at 7:47 PM Jagan Teki <jagan@amarulasolutions.com> wr=
-ote:
-> >
-> > Add missing BOOTENV_SF command in rk3399 config.
-> >
-> > Fix it.
-> >
-> > Fixes: f263b860acf8 ("rk3399: Enable SF distro bootcmd")
-> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> > Reported-by: Suniel Mahesh <sunil@amarulasolutions.com>
-> > Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
-> > ---
->=20
-> Can someone push this fix patch to master?
-
-Kever, do you want me to pick this up?  Do you have some objection?
-FWIW, include/configs/rk3399_common.h should get listed under some
-MAINTAINER entry directly.  Thanks!
-
---=20
-Tom
-
---j+Rb494BzBd9643b
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQGzBAABCgAdFiEEGjx/cOCPqxcHgJu/FHw5/5Y0tywFAl72WMAACgkQFHw5/5Y0
-tyyVEQv/cHchlr3pGsMbLRwPK22HBj60BDfN8zbXFuoAXMcnrRBEbkDXc1UpCLLJ
-piYU7FM8wDlfbWxO2i7bDn7GrUMb5XTdgX6or+IPjdAV0hlR522LWmEsBLmzEz4+
-fyaynUK8VF/44GiuZ6wkZ66/OZbDf+BwNjrtSDM/N9dvbuLfDMkJ9S0ToT8SN3mu
-KICwBWAVVklxjqmU75OrSDdPm3Jo+EvHbzzkuwXt7J4fgva1T/zP4OnSlJSg0ZbL
-Z7BfxzCK5SHBMa1YMKSKUPuBQwrRLmwGe5NURQEHC1CfEPQE7S6aJHInAUiuKUkD
-vNeACN8ygHFubByd5ycQWUXFPq10nheoDDDNdy9RNlcdMO7wSQHsvLmNOrp1yS0Y
-7+k5wJf8nSfaheALygvpgpWXGEN/DqIKjK2LYKdoeagK7EhW4+l0Zo6Csm8BCiyE
-eAe9B/CC+xqQttdJsCPhDyCpm3hH0xkAPrgN9rfN6Yl7qJpav07ytOENJbC6KUOq
-sVl3kkHq
-=WfhL
------END PGP SIGNATURE-----
-
---j+Rb494BzBd9643b--
+diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
+index 3181295075b9a..f02c57c986f0e 100644
+--- a/drivers/thermal/thermal_core.c
++++ b/drivers/thermal/thermal_core.c
+@@ -459,8 +459,8 @@ static void thermal_zone_device_reset(struct thermal_zone_device *tz)
+ 	thermal_zone_device_init(tz);
+ }
+ 
+-int thermal_zone_device_set_mode(struct thermal_zone_device *tz,
+-				 enum thermal_device_mode mode)
++static int thermal_zone_device_set_mode(struct thermal_zone_device *tz,
++					enum thermal_device_mode mode)
+ {
+ 	int ret = 0;
+ 
