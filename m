@@ -1,7 +1,7 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH 1/2] rkvdec: h264: Refuse to decode unsupported bitstream
-Date: Fri, 26 Jun 2020 14:11:29 -0300
-Message-ID: <20200626171130.27346-2-ezequiel@collabora.com>
+Subject: [PATCH 2/2] hantro: h264: Refuse to decode unsupported bitstream
+Date: Fri, 26 Jun 2020 14:11:30 -0300
+Message-ID: <20200626171130.27346-3-ezequiel@collabora.com>
 References: <20200626171130.27346-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,37 +12,34 @@ To: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@li
 Cc: Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The hardware only supports 4:2:2, 4:2:0 or 4:0:0 (monochrome),
-8-bit or 10-bit depth content.
+The hardware only supports 4:2:0 or 4:0:0 (monochrome),
+8-bit depth content.
 
 Verify that the PPS refers to a supported bitstream, and refuse
 unsupported bitstreams by failing at TRY_EXT_CTRLS time.
 
-The driver is currently broken on 10-bit and 4:2:2
-so disallow those as well.
+Given the JPEG compression level control is the only one
+that needs setting, a specific ops is provided.
 
 Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
- drivers/staging/media/rkvdec/rkvdec.c | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+ drivers/staging/media/hantro/hantro_drv.c | 29 ++++++++++++++++++++---
+ 1 file changed, 26 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 225eeca73356..0f81b47792f6 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -27,6 +27,32 @@
- #include "rkvdec.h"
- #include "rkvdec-regs.h"
+diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+index 0db8ad455160..361ffaa821ef 100644
+--- a/drivers/staging/media/hantro/hantro_drv.c
++++ b/drivers/staging/media/hantro/hantro_drv.c
+@@ -261,7 +261,25 @@ queue_init(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+ 	return vb2_queue_init(dst_vq);
+ }
  
-+static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
+-static int hantro_s_ctrl(struct v4l2_ctrl *ctrl)
++static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
 +{
 +	if (ctrl->id == V4L2_CID_MPEG_VIDEO_H264_SPS) {
 +		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_cur.p;
-+		/*
-+		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
-+		 * but it's currently broken in the driver.
-+		 * Reject them for now, until it's fixed.
-+		 */
++
 +		if (sps->chroma_format_idc > 1)
 +			/* Only 4:0:0 and 4:2:0 are supported */
 +			return -EINVAL;
@@ -56,20 +53,39 @@ index 225eeca73356..0f81b47792f6 100644
 +	return 0;
 +}
 +
-+static const struct v4l2_ctrl_ops rkvdec_ctrl_ops = {
-+	.try_ctrl = rkvdec_try_ctrl,
++static int hantro_jpeg_s_ctrl(struct v4l2_ctrl *ctrl)
+ {
+ 	struct hantro_ctx *ctx;
+ 
+@@ -282,7 +300,11 @@ static int hantro_s_ctrl(struct v4l2_ctrl *ctrl)
+ }
+ 
+ static const struct v4l2_ctrl_ops hantro_ctrl_ops = {
+-	.s_ctrl = hantro_s_ctrl,
++	.try_ctrl = hantro_try_ctrl,
 +};
 +
- static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
- 	{
- 		.per_request = true,
-@@ -42,6 +68,7 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
- 		.per_request = true,
- 		.mandatory = true,
- 		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_SPS,
-+		.cfg.ops = &rkvdec_ctrl_ops,
- 	},
- 	{
- 		.per_request = true,
++static const struct v4l2_ctrl_ops hantro_jpeg_ctrl_ops = {
++	.s_ctrl = hantro_jpeg_s_ctrl,
+ };
+ 
+ static const struct hantro_ctrl controls[] = {
+@@ -294,7 +316,7 @@ static const struct hantro_ctrl controls[] = {
+ 			.max = 100,
+ 			.step = 1,
+ 			.def = 50,
+-			.ops = &hantro_ctrl_ops,
++			.ops = &hantro_jpeg_ctrl_ops,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_MPEG2_DECODER,
+@@ -325,6 +347,7 @@ static const struct hantro_ctrl controls[] = {
+ 		.codec = HANTRO_H264_DECODER,
+ 		.cfg = {
+ 			.id = V4L2_CID_MPEG_VIDEO_H264_SPS,
++			.ops = &hantro_ctrl_ops,
+ 		},
+ 	}, {
+ 		.codec = HANTRO_H264_DECODER,
 -- 
 2.26.0.rc2
