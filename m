@@ -1,74 +1,35 @@
 From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [RFC v4 4/8] v4l2: add support for colorspace conversion API
- (CSC) for video capture and subdevices
-Date: Fri, 26 Jun 2020 14:22:15 +0200
-Message-ID: <e55548ad47eacd9acf3aa94cc98a46b3f4924cd9.camel@pengutronix.de>
+Subject: Re: [RFC v4 8/8] media: v4l2: add support for the CSC API for
+ hsv_enc on mediabus
+Date: Fri, 26 Jun 2020 14:24:43 +0200
+Message-ID: <378546a90adba0aa74e4eb0288668a99afbb9b31.camel@pengutronix.de>
 References: <20200605172625.19777-1-dafna.hirschfeld@collabora.com>
-         <20200605172625.19777-5-dafna.hirschfeld@collabora.com>
-         <973edb0c-4c52-c29c-4b22-54a05eca6f7a@xs4all.nl>
+         <20200605172625.19777-9-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8BIT
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <973edb0c-4c52-c29c-4b22-54a05eca6f7a@xs4all.nl>
+In-Reply-To: <20200605172625.19777-9-dafna.hirschfeld@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
-To: Hans Verkuil <hverkuil@xs4all.nl>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: helen.koike@collabora.com, ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, Hans Verkuil <hans.verkuil@cisco.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org
 List-Id: linux-rockchip.vger.kernel.org
 
 Hi Dafna,
 
-On Mon, 2020-06-08 at 12:00 +0200, Hans Verkuil wrote:
+On Fri, 2020-06-05 at 19:26 +0200, Dafna Hirschfeld wrote:
 [...]
-> > diff --git a/include/uapi/linux/v4l2-mediabus.h b/include/uapi/linux/v4l2-mediabus.h
-> > index 123a231001a8..0f916278137a 100644
-> > --- a/include/uapi/linux/v4l2-mediabus.h
-> > +++ b/include/uapi/linux/v4l2-mediabus.h
-> > @@ -16,6 +16,8 @@
-> >  #include <linux/types.h>
-> >  #include <linux/videodev2.h>
-> >  
-> > +#define V4L2_MBUS_FRAMEFMT_SET_CSC	0x0001
-> > +
-> >  /**
-> >   * struct v4l2_mbus_framefmt - frame format on the media bus
-> >   * @width:	image width
-> > @@ -36,7 +38,8 @@ struct v4l2_mbus_framefmt {
-> >  	__u16			ycbcr_enc;
-> >  	__u16			quantization;
-> >  	__u16			xfer_func;
-> > -	__u16			reserved[11];
-> > +	__u16			flags;
-> > +	__u16			reserved[10];
-> >  };
+> --- a/include/uapi/linux/v4l2-subdev.h
+> +++ b/include/uapi/linux/v4l2-subdev.h
+> @@ -66,6 +66,7 @@ struct v4l2_subdev_crop {
+>  };
+>  
+>  #define V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC	0x00000001
+> +#define V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC	0x00000001
 
-The the flags field should also be added to the kerneldoc comment.
+Hans' comment on patch 4 applies here as well, it would probably be
+better to write:
 
-> >  
-> >  #ifndef __KERNEL__
-> > diff --git a/include/uapi/linux/v4l2-subdev.h b/include/uapi/linux/v4l2-subdev.h
-> > index 5d2a1dab7911..972e64d8b54e 100644
-> > --- a/include/uapi/linux/v4l2-subdev.h
-> > +++ b/include/uapi/linux/v4l2-subdev.h
-> > @@ -65,6 +65,8 @@ struct v4l2_subdev_crop {
-> >  	__u32 reserved[8];
-> >  };
-> >  
-> > +#define V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC	0x00000001
-> > +#define V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION	0x00000002
-> >  /**
-> >   * struct v4l2_subdev_mbus_code_enum - Media bus format enumeration
-> >   * @pad: pad number, as reported by the media API
-> > @@ -77,7 +79,8 @@ struct v4l2_subdev_mbus_code_enum {
-> >  	__u32 index;
-> >  	__u32 code;
-> >  	__u32 which;
-> > -	__u32 reserved[8];
-> > +	__u32 flags;
-> > +	__u32 reserved[7];
-> >  };
-
-Same as above.
-
+#define V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC	V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC
 regards
 Philipp
