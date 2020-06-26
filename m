@@ -1,57 +1,72 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [RFC v4 4/8] v4l2: add support for colorspace conversion API
- (CSC) for video capture and subdevices
-Date: Fri, 26 Jun 2020 09:13:53 +0200
-Message-ID: <85deadf2-d82e-8926-3304-7d5faf316d18@xs4all.nl>
-References: <20200605172625.19777-1-dafna.hirschfeld@collabora.com>
- <20200605172625.19777-5-dafna.hirschfeld@collabora.com>
- <510295b3-39f2-dd23-6aa0-be838c731cef@collabora.com>
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [PATCH 3/6] hantro: Rework how encoder and decoder are
+ identified
+Date: Fri, 26 Jun 2020 09:58:56 +0200
+Message-ID: <5d18057b7bc686eeb470810acd3ab63f9b4bf224.camel@pengutronix.de>
+References: <20200625163525.5119-1-ezequiel@collabora.com>
+         <20200625163525.5119-4-ezequiel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <510295b3-39f2-dd23-6aa0-be838c731cef@collabora.com>
-Content-Language: en-US
+In-Reply-To: <20200625163525.5119-4-ezequiel@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, p.zabel@pengutronix.de, Hans Verkuil <hans.verkuil@cisco.com>
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: kernel@collabora.com, Hans Verkuil <hverkuil@xs4all.nl>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 26/06/2020 01:29, Helen Koike wrote:
+Hi Ezequiel,
+
+On Thu, 2020-06-25 at 13:35 -0300, Ezequiel Garcia wrote:
+> So far we've been using the .buf_finish hook to distinguish
+> decoder from encoder. This is unnecessarily obfuscated.
 > 
+> Moreover, we want to move the buf_finish, so use a cleaner
+> scheme to distinguish the driver decoder/encoder type.
 > 
-> On 6/5/20 2:26 PM, Dafna Hirschfeld wrote:
-
-<snip>
-
->>  /*
->>   *	F O R M A T   E N U M E R A T I O N
->> @@ -792,6 +793,9 @@ struct v4l2_fmtdesc {
->>  #define V4L2_FMT_FLAG_EMULATED			0x0002
->>  #define V4L2_FMT_FLAG_CONTINUOUS_BYTESTREAM	0x0004
->>  #define V4L2_FMT_FLAG_DYN_RESOLUTION		0x0008
->> +#define V4L2_FMT_FLAG_CSC_YCBCR_ENC		0x0010
->> +#define V4L2_FMT_FLAG_CSC_HSV_ENC		0x0010
+> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> ---
+>  drivers/staging/media/hantro/hantro.h     | 2 ++
+>  drivers/staging/media/hantro/hantro_drv.c | 4 +++-
+>  2 files changed, 5 insertions(+), 1 deletion(-)
 > 
-> Shouldn't those have different values? Or is this intentional?
+> diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
+> index 3005207fc6fb..028b788ad50f 100644
+> --- a/drivers/staging/media/hantro/hantro.h
+> +++ b/drivers/staging/media/hantro/hantro.h
+> @@ -199,6 +199,7 @@ struct hantro_dev {
+>   *
+>   * @dev:		VPU driver data to which the context belongs.
+>   * @fh:			V4L2 file handler.
+> + * @is_encoder:		Decoder or encoder context?
+>   *
+>   * @sequence_cap:       Sequence counter for capture queue
+>   * @sequence_out:       Sequence counter for output queue
+> @@ -223,6 +224,7 @@ struct hantro_dev {
+>  struct hantro_ctx {
+>  	struct hantro_dev *dev;
+>  	struct v4l2_fh fh;
+> +	bool is_encoder;
+>  
+>  	u32 sequence_cap;
+>  	u32 sequence_out;
+> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+> index 0db8ad455160..112ed556eb90 100644
+> --- a/drivers/staging/media/hantro/hantro_drv.c
+> +++ b/drivers/staging/media/hantro/hantro_drv.c
+> @@ -197,7 +197,7 @@ static void device_run(void *priv)
+>  
+>  bool hantro_is_encoder_ctx(const struct hantro_ctx *ctx)
+>  {
+> -	return ctx->buf_finish == hantro_enc_buf_finish;
+> +	return ctx->is_encoder;
+>  }
 
-It's intentional, but it would probably be better to write this as:
+Now this function feels a little superfluous. Why not replace
+  hantro_is_encoder_ctx(ctx)
+with
+  ctx->is_encoder
+everywhere?
 
-#define V4L2_FMT_FLAG_CSC_YCBCR_ENC		0x0010
-#define V4L2_FMT_FLAG_CSC_HSV_ENC		V4L2_FMT_FLAG_CSC_YCBCR_ENC
-
-That makes it explicit that HSV_ENC is an alias for YCBCR_ENC.
-
-Regards,
-
-	Hans
-
-> 
-> Regards,
-> Helen
-> 
->> +#define V4L2_FMT_FLAG_CSC_QUANTIZATION		0x0020
->>  
->>  	/* Frame Size and frame rate enumeration */
->>  /*
->>
+regards
+Philipp
