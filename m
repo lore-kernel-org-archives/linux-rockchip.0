@@ -1,109 +1,132 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH 3/3] media: staging: rkisp1: params: in 'stop_streaming'
- don't release the lock while returning buffers
-Date: Fri, 26 Jun 2020 17:59:14 +0200
-Message-ID: <CAAFQd5CHK+c=zED-evW3sqgF+WpuAYW6M8kvPZCVCrf2_KHG8A@mail.gmail.com>
-References: <20200625174257.22216-1-dafna.hirschfeld@collabora.com>
- <20200625174257.22216-4-dafna.hirschfeld@collabora.com> <e269f2f5-c24c-7009-e624-3545af206709@arm.com>
- <CAAFQd5AsJG=YJC4eG6+qdt_dPyr-dwcXrmujxLaHfoe9==Es1g@mail.gmail.com> <e680474a-1b47-7904-b7ab-5a026d0db05f@collabora.com>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Subject: Re: [PATCH v4 07/11] thermal: Use mode helpers in drivers
+Date: Fri, 26 Jun 2020 18:08:54 +0200
+Message-ID: <fd77c8e7-25a2-49ca-676a-b8669d848adb@collabora.com>
+References: <Message-ID: <4493c0e4-51aa-3907-810c-74949ff27ca4@samsung.com>
+ <20200528192051.28034-1-andrzej.p@collabora.com>
+ <CGME20200528192211eucas1p1dc9b49e1288321503954ed16d9e3001b@eucas1p1.samsung.com>
+ <20200528192051.28034-8-andrzej.p@collabora.com>
+ <313ca24a-0cc4-a976-19bb-0f30aa845226@samsung.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <e680474a-1b47-7904-b7ab-5a026d0db05f@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: Robin Murphy <robin.murphy@arm.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Dafna Hirschfeld <dafna3@gmail.com>, Hans Verkuil <hverkuil@xs4all.nl>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Helen Koike <helen.koike@collabora.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <netdev-owner@vger.kernel.org>
+In-Reply-To: <313ca24a-0cc4-a976-19bb-0f30aa845226@samsung.com>
+Content-Language: en-US
+Sender: netdev-owner@vger.kernel.org
+To: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
+Cc: linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jun 26, 2020 at 5:48 PM Dafna Hirschfeld
-<dafna.hirschfeld@collabora.com> wrote:
->
->
->
-> On 26.06.20 16:03, Tomasz Figa wrote:
-> > On Fri, Jun 26, 2020 at 3:32 PM Robin Murphy <robin.murphy@arm.com> wrote:
-> >>
-> >> Hi Dafna,
-> >>
-> >> On 2020-06-25 18:42, Dafna Hirschfeld wrote:
-> >>> In the stop_streaming callback 'rkisp1_params_vb2_stop_streaming'
-> >>> there is no need to release the lock 'config_lock' and then acquire
-> >>> it again at each iteration when returning all buffers.
-> >>> This is because the stream is about to end and there is no need
-> >>> to let the isr access a buffer.
-> >>>
-> >>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> >>> ---
-> >>>    drivers/staging/media/rkisp1/rkisp1-params.c | 7 +------
-> >>>    1 file changed, 1 insertion(+), 6 deletions(-)
-> >>>
-> >>> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
-> >>> index bf006dbeee2d..5169b02731f1 100644
-> >>> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
-> >>> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
-> >>> @@ -1488,19 +1488,13 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
-> >>>        /* stop params input firstly */
-> >>>        spin_lock_irqsave(&params->config_lock, flags);
-> >>>        params->is_streaming = false;
-> >>> -     spin_unlock_irqrestore(&params->config_lock, flags);
-> >>>
-> >>>        for (i = 0; i < RKISP1_ISP_PARAMS_REQ_BUFS_MAX; i++) {
-> >>> -             spin_lock_irqsave(&params->config_lock, flags);
-> >>>                if (!list_empty(&params->params)) {
-> >>>                        buf = list_first_entry(&params->params,
-> >>>                                               struct rkisp1_buffer, queue);
-> >>>                        list_del(&buf->queue);
-> >>> -                     spin_unlock_irqrestore(&params->config_lock,
-> >>> -                                            flags);
-> >>>                } else {
-> >>> -                     spin_unlock_irqrestore(&params->config_lock,
-> >>> -                                            flags);
-> >>>                        break;
-> >>>                }
-> >>
-> >> Just skimming through out of idle curiosity I was going to comment that
-> >> if you end up with this pattern:
-> >>
-> >>          if (!x) {
-> >>                  //do stuff
-> >>          } else {
-> >>                  break;
-> >>          }
-> >>
-> >> it would be better as:
-> >>
-> >>          if (x)
-> >>                  break;
-> >>          //do stuff
-> >>
-> >> However I then went and looked at the whole function and frankly it's a
-> >> bit of a WTF. As best I could decipher, this whole crazy loop appears to
-> >> be a baroque reinvention of:
-> >>
-> >>          list_for_each_entry_safe(&params->params, ..., buf) {
-> >>                  list_del(&buf->queue);
-> >>                  vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
-> >>          }
-> Hi, indeed this is a much simpler implementation, greping 'return_all_buffers'
-> I see that many drivers implement it this way.
-> thanks!
->
-> >>
-> >> (assuming from context that the list should never contain more than
-> >> RKISP1_ISP_PARAMS_REQ_BUFS_MAX entries in the first place)
-> >
-> > Or if we want to avoid disabling the interrupts for the whole
-> > iteration, we could use list_splice() to move all the entries of
->
-> But this code runs when userspace asks to stop the streaming so I don't
-> think it is important at that stage to allow the interrupts.
+Hi Bartlomiej,
 
-It's generally a good practice to reduce the time spent with
-interrupts disabled. Disabling the interrupts prevents the system from
-handling external events, including timer interrupts, and scheduling
-higher priority tasks, including real time ones. How much the system
-runs with interrupts disabled is one of the factors determining the
-general system latency.
+W dniu 24.06.2020 o 11:51, Bartlomiej Zolnierkiewicz pisze:
+> 
+> On 5/28/20 9:20 PM, Andrzej Pietrasiewicz wrote:
+>> Use thermal_zone_device_{en|dis}able() and thermal_zone_device_is_enabled().
+>>
+>> Consequently, all set_mode() implementations in drivers:
+>>
+>> - can stop modifying tzd's "mode" member,
+>> - shall stop taking tzd's lock, as it is taken in the helpers
+>> - shall stop calling thermal_zone_device_update() as it is called in the
+>> helpers
+>> - can assume they are called when the mode truly changes, so checks to
+>> verify that can be dropped
+>>
+>> Not providing set_mode() by a driver no longer prevents the core from
+>> being able to set tzd's mode, so the relevant check in mode_store() is
+>> removed.
+>>
+>> Other comments:
+>>
+>> - acpi/thermal.c: tz->thermal_zone->mode will be updated only after we
+>> return from set_mode(), so use function parameter in thermal_set_mode()
+>> instead, no need to call acpi_thermal_check() in set_mode()
+>> - thermal/imx_thermal.c: regmap writes and mode assignment are done in
+>> thermal_zone_device_{en|dis}able() and set_mode() callback
+>> - thermal/intel/intel_quark_dts_thermal.c: soc_dts_{en|dis}able() are a
+>> part of set_mode() callback, so they don't need to modify tzd->mode, and
+>> don't need to fall back to the opposite mode if unsuccessful, as the return
+>> value will be propagated to thermal_zone_device_{en|dis}able() and
+>> ultimately tzd's member will not be changed in thermal_zone_device_set_mode().
+>> - thermal/of-thermal.c: no need to set zone->mode to DISABLED in
+>> of_parse_thermal_zones() as a tzd is kzalloc'ed so mode is DISABLED anyway
+>>
+>> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+>> ---
+>>   drivers/acpi/thermal.c                        | 21 ++++++-----
+>>   .../ethernet/mellanox/mlxsw/core_thermal.c    | 37 +++++++++----------
+>>   drivers/platform/x86/acerhdf.c                | 17 +++++----
+>>   drivers/thermal/da9062-thermal.c              |  6 ++-
+>>   drivers/thermal/hisi_thermal.c                |  6 ++-
+>>   drivers/thermal/imx_thermal.c                 | 33 +++++++----------
+>>   .../intel/int340x_thermal/int3400_thermal.c   |  5 +--
+>>   .../thermal/intel/intel_quark_dts_thermal.c   | 18 ++-------
+>>   drivers/thermal/rockchip_thermal.c            |  6 ++-
+>>   drivers/thermal/sprd_thermal.c                |  6 ++-
+>>   drivers/thermal/thermal_core.c                |  2 +-
+>>   drivers/thermal/thermal_of.c                  | 10 +----
+>>   drivers/thermal/thermal_sysfs.c               | 11 ++----
+>>   13 files changed, 80 insertions(+), 98 deletions(-)
+> 
+> [...]
+> 
+>> diff --git a/drivers/platform/x86/acerhdf.c b/drivers/platform/x86/acerhdf.c
+>> index 32c5fe16b7f7..3efe749dc5a0 100644
+>> --- a/drivers/platform/x86/acerhdf.c
+>> +++ b/drivers/platform/x86/acerhdf.c
+>> @@ -397,19 +397,16 @@ static inline void acerhdf_revert_to_bios_mode(void)
+>>   {
+>>   	acerhdf_change_fanstate(ACERHDF_FAN_AUTO);
+>>   	kernelmode = 0;
+>> -	if (thz_dev) {
+>> -		thz_dev->mode = THERMAL_DEVICE_DISABLED;
+>> +	if (thz_dev)
+>>   		thz_dev->polling_delay = 0;
+>> -	}
+>> +
+>>   	pr_notice("kernel mode fan control OFF\n");
+>>   }
+>>   static inline void acerhdf_enable_kernelmode(void)
+>>   {
+>>   	kernelmode = 1;
+>> -	thz_dev->mode = THERMAL_DEVICE_ENABLED;
+>>   
+>>   	thz_dev->polling_delay = interval*1000;
+>> -	thermal_zone_device_update(thz_dev, THERMAL_EVENT_UNSPECIFIED);
+>>   	pr_notice("kernel mode fan control ON\n");
+>>   }
+>>   
+>> @@ -723,6 +720,8 @@ static void acerhdf_unregister_platform(void)
+>>   
+>>   static int __init acerhdf_register_thermal(void)
+>>   {
+>> +	int ret;
+>> +
+>>   	cl_dev = thermal_cooling_device_register("acerhdf-fan", NULL,
+>>   						 &acerhdf_cooling_ops);
+>>   
+>> @@ -736,8 +735,12 @@ static int __init acerhdf_register_thermal(void)
+>>   	if (IS_ERR(thz_dev))
+>>   		return -EINVAL;
+>>   
+>> -	thz_dev->mode = kernelmode ?
+>> -		THERMAL_DEVICE_ENABLED : THERMAL_DEVICE_DISABLED;
+>> +	if (kernelmode)
+>> +		ret = thermal_zone_device_enable(thz_dev);
+>> +	else
+>> +		ret = thermal_zone_device_disable(thz_dev);
+>> +	if (ret)
+> 
+> Cleanup on error seems to be missing here.
 
-Best regards,
-Tomasz
+It does seem so, but it is not the case.
+
+acerhdf_register_thermal() is called from acerhdf_init().
+The latter checks the return value of the former and on error
+jumps to the err_unreg label, where thermal zone(s) is/are unregistered.
+
+Regards,
+
+Andrzej
