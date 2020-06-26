@@ -1,36 +1,74 @@
-From: Johan Jonker <jbx6244@gmail.com>
-Subject: [PATCH 2/2] net: stmmac: add Rockchip as supported platform in STMMAC_PLATFORM help text
-Date: Fri, 26 Jun 2020 14:05:27 +0200
-Message-ID: <20200626120527.10562-2-jbx6244@gmail.com>
-References: <20200626120527.10562-1-jbx6244@gmail.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200626120527.10562-1-jbx6244@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: peppe.cavallaro@st.com
-Cc: alexandre.torgue@st.com, joabreu@synopsys.com, davem@davemloft.net, kuba@kernel.org, mcoquelin.stm32@gmail.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Philipp Zabel <p.zabel@pengutronix.de>
+Subject: Re: [RFC v4 4/8] v4l2: add support for colorspace conversion API
+ (CSC) for video capture and subdevices
+Date: Fri, 26 Jun 2020 14:22:15 +0200
+Message-ID: <e55548ad47eacd9acf3aa94cc98a46b3f4924cd9.camel@pengutronix.de>
+References: <20200605172625.19777-1-dafna.hirschfeld@collabora.com>
+         <20200605172625.19777-5-dafna.hirschfeld@collabora.com>
+         <973edb0c-4c52-c29c-4b22-54a05eca6f7a@xs4all.nl>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <973edb0c-4c52-c29c-4b22-54a05eca6f7a@xs4all.nl>
+Sender: linux-media-owner@vger.kernel.org
+To: Hans Verkuil <hverkuil@xs4all.nl>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: helen.koike@collabora.com, ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, Hans Verkuil <hans.verkuil@cisco.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The Kconfig menu has an option for DWMAC_ROCKCHIP.
-Then add Rockchip also as supported platform in the help text
-of STMMAC_PLATFORM.
+Hi Dafna,
 
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- drivers/net/ethernet/stmicro/stmmac/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Mon, 2020-06-08 at 12:00 +0200, Hans Verkuil wrote:
+[...]
+> > diff --git a/include/uapi/linux/v4l2-mediabus.h b/include/uapi/linux/v4l2-mediabus.h
+> > index 123a231001a8..0f916278137a 100644
+> > --- a/include/uapi/linux/v4l2-mediabus.h
+> > +++ b/include/uapi/linux/v4l2-mediabus.h
+> > @@ -16,6 +16,8 @@
+> >  #include <linux/types.h>
+> >  #include <linux/videodev2.h>
+> >  
+> > +#define V4L2_MBUS_FRAMEFMT_SET_CSC	0x0001
+> > +
+> >  /**
+> >   * struct v4l2_mbus_framefmt - frame format on the media bus
+> >   * @width:	image width
+> > @@ -36,7 +38,8 @@ struct v4l2_mbus_framefmt {
+> >  	__u16			ycbcr_enc;
+> >  	__u16			quantization;
+> >  	__u16			xfer_func;
+> > -	__u16			reserved[11];
+> > +	__u16			flags;
+> > +	__u16			reserved[10];
+> >  };
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/Kconfig b/drivers/net/ethernet/stmicro/stmmac/Kconfig
-index 8f7625cc8..8309e05b4 100644
---- a/drivers/net/ethernet/stmicro/stmmac/Kconfig
-+++ b/drivers/net/ethernet/stmicro/stmmac/Kconfig
-@@ -33,7 +33,7 @@ config STMMAC_PLATFORM
- 	---help---
- 	  This selects the platform specific bus support for the stmmac driver.
- 	  This is the driver used on several SoCs:
--	  STi, Allwinner, Amlogic Meson, Altera SOCFPGA.
-+	  STi, Allwinner, Amlogic Meson, Altera SOCFPGA, Rockchip.
- 
- 	  If you have a controller with this interface, say Y or M here.
- 
--- 
-2.11.0
+The the flags field should also be added to the kerneldoc comment.
+
+> >  
+> >  #ifndef __KERNEL__
+> > diff --git a/include/uapi/linux/v4l2-subdev.h b/include/uapi/linux/v4l2-subdev.h
+> > index 5d2a1dab7911..972e64d8b54e 100644
+> > --- a/include/uapi/linux/v4l2-subdev.h
+> > +++ b/include/uapi/linux/v4l2-subdev.h
+> > @@ -65,6 +65,8 @@ struct v4l2_subdev_crop {
+> >  	__u32 reserved[8];
+> >  };
+> >  
+> > +#define V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC	0x00000001
+> > +#define V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION	0x00000002
+> >  /**
+> >   * struct v4l2_subdev_mbus_code_enum - Media bus format enumeration
+> >   * @pad: pad number, as reported by the media API
+> > @@ -77,7 +79,8 @@ struct v4l2_subdev_mbus_code_enum {
+> >  	__u32 index;
+> >  	__u32 code;
+> >  	__u32 which;
+> > -	__u32 reserved[8];
+> > +	__u32 flags;
+> > +	__u32 reserved[7];
+> >  };
+
+Same as above.
+
+regards
+Philipp
