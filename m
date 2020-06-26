@@ -1,47 +1,77 @@
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: [PATCH v5 03/11] thermal: Add current mode to thermal zone device
-Date: Fri, 26 Jun 2020 19:37:47 +0200
-Message-ID: <20200626173755.26379-4-andrzej.p@collabora.com>
-References: <9cbffad6-69e4-0b33-4640-fde7c4f6a6e7@linaro.org>
- <20200626173755.26379-1-andrzej.p@collabora.com>
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <20200626173755.26379-1-andrzej.p@collabora.com>
-Sender: netdev-owner@vger.kernel.org
-To: linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Daniel Lezcano <daniel.lezcano@linaro.org>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 3/6] hantro: Rework how encoder and decoder are
+ identified
+Date: Fri, 26 Jun 2020 15:30:48 -0300
+Message-ID: <74bf00b2df05d9ee373a41a8328f8ee43816a0b9.camel@collabora.com>
+References: <20200625163525.5119-1-ezequiel@collabora.com>
+         <20200625163525.5119-4-ezequiel@collabora.com>
+         <5d18057b7bc686eeb470810acd3ab63f9b4bf224.camel@pengutronix.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <5d18057b7bc686eeb470810acd3ab63f9b4bf224.camel@pengutronix.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Philipp Zabel <p.zabel@pengutronix.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: kernel@collabora.com, Hans Verkuil <hverkuil@xs4all.nl>
 List-Id: linux-rockchip.vger.kernel.org
 
-Prepare for changing the place where the mode is stored: now it is in
-drivers, which might or might not implement get_mode()/set_mode() methods.
-A lot of cleanup can be done thanks to storing it in struct tzd. The
-get_mode() methods will become redundant.
+On Fri, 2020-06-26 at 09:58 +0200, Philipp Zabel wrote:
+> Hi Ezequiel,
+> 
+> On Thu, 2020-06-25 at 13:35 -0300, Ezequiel Garcia wrote:
+> > So far we've been using the .buf_finish hook to distinguish
+> > decoder from encoder. This is unnecessarily obfuscated.
+> > 
+> > Moreover, we want to move the buf_finish, so use a cleaner
+> > scheme to distinguish the driver decoder/encoder type.
+> > 
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > ---
+> >  drivers/staging/media/hantro/hantro.h     | 2 ++
+> >  drivers/staging/media/hantro/hantro_drv.c | 4 +++-
+> >  2 files changed, 5 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
+> > index 3005207fc6fb..028b788ad50f 100644
+> > --- a/drivers/staging/media/hantro/hantro.h
+> > +++ b/drivers/staging/media/hantro/hantro.h
+> > @@ -199,6 +199,7 @@ struct hantro_dev {
+> >   *
+> >   * @dev:		VPU driver data to which the context belongs.
+> >   * @fh:			V4L2 file handler.
+> > + * @is_encoder:		Decoder or encoder context?
+> >   *
+> >   * @sequence_cap:       Sequence counter for capture queue
+> >   * @sequence_out:       Sequence counter for output queue
+> > @@ -223,6 +224,7 @@ struct hantro_dev {
+> >  struct hantro_ctx {
+> >  	struct hantro_dev *dev;
+> >  	struct v4l2_fh fh;
+> > +	bool is_encoder;
+> >  
+> >  	u32 sequence_cap;
+> >  	u32 sequence_out;
+> > diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
+> > index 0db8ad455160..112ed556eb90 100644
+> > --- a/drivers/staging/media/hantro/hantro_drv.c
+> > +++ b/drivers/staging/media/hantro/hantro_drv.c
+> > @@ -197,7 +197,7 @@ static void device_run(void *priv)
+> >  
+> >  bool hantro_is_encoder_ctx(const struct hantro_ctx *ctx)
+> >  {
+> > -	return ctx->buf_finish == hantro_enc_buf_finish;
+> > +	return ctx->is_encoder;
+> >  }
+> 
+> Now this function feels a little superfluous. Why not replace
+>   hantro_is_encoder_ctx(ctx)
+> with
+>   ctx->is_encoder
+> everywhere?
+> 
 
-Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-Reviewed-by: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
----
- include/linux/thermal.h | 2 ++
- 1 file changed, 2 insertions(+)
+Absolutely.
 
-diff --git a/include/linux/thermal.h b/include/linux/thermal.h
-index 216185bb3014..5f91d7f04512 100644
---- a/include/linux/thermal.h
-+++ b/include/linux/thermal.h
-@@ -128,6 +128,7 @@ struct thermal_cooling_device {
-  * @trip_temp_attrs:	attributes for trip points for sysfs: trip temperature
-  * @trip_type_attrs:	attributes for trip points for sysfs: trip type
-  * @trip_hyst_attrs:	attributes for trip points for sysfs: trip hysteresis
-+ * @mode:		current mode of this thermal zone
-  * @devdata:	private pointer for device private data
-  * @trips:	number of trip points the thermal zone supports
-  * @trips_disabled;	bitmap for disabled trips
-@@ -170,6 +171,7 @@ struct thermal_zone_device {
- 	struct thermal_attr *trip_temp_attrs;
- 	struct thermal_attr *trip_type_attrs;
- 	struct thermal_attr *trip_hyst_attrs;
-+	enum thermal_device_mode mode;
- 	void *devdata;
- 	int trips;
- 	unsigned long trips_disabled;	/* bitmap for disabled trips */
--- 
-2.17.1
+Thanks for reviewing,
+Ezequiel
