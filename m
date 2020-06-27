@@ -1,13 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH] rk3399: Add BOOTENV_SF command
-Date: Sat, 27 Jun 2020 22:06:52 +0800
-Message-ID: <892fe4fd-c7be-6b72-29ce-5715777b31de@rock-chips.com>
-References: <20200608141708.31844-1-jagan@amarulasolutions.com>
+Subject: Re: [PATCH 1/4] arm64: dts: rockchip: Sync v5.7-rc1 rk3399pro.dtsi
+Date: Sat, 27 Jun 2020 22:31:27 +0800
+Message-ID: <37a10f4a-f702-6b05-d0d9-2491c90f836c@rock-chips.com>
+References: <20200610103658.96678-1-jagan@amarulasolutions.com>
+ <20200610103658.96678-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200608141708.31844-1-jagan@amarulasolutions.com>
+In-Reply-To: <20200610103658.96678-2-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -19,33 +20,49 @@ List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
 To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
+Cc: Tom Cubie <tom@radxa.com>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
 
-On 2020/6/8 下午10:17, Jagan Teki wrote:
-> Add missing BOOTENV_SF command in rk3399 config.
+On 2020/6/10 下午6:36, Jagan Teki wrote:
+> Sync linux-next v5.7-rc1 rk3399pro.dtsi.
 >
-> Fix it.
->
-> Fixes: f263b860acf8 ("rk3399: Enable SF distro bootcmd")
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> Reported-by: Suniel Mahesh <sunil@amarulasolutions.com>
-> Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
-Applied to u-boot-rockchip master branch.
+
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+
+Thanks,
+- Kever
 > ---
->   include/configs/rk3399_common.h | 1 +
->   1 file changed, 1 insertion(+)
+>   arch/arm/dts/rk3399pro.dtsi | 22 ++++++++++++++++++++++
+>   1 file changed, 22 insertions(+)
+>   create mode 100644 arch/arm/dts/rk3399pro.dtsi
 >
-> diff --git a/include/configs/rk3399_common.h b/include/configs/rk3399_common.h
-> index f0ae6e67a7..e63ebb14f7 100644
-> --- a/include/configs/rk3399_common.h
-> +++ b/include/configs/rk3399_common.h
-> @@ -67,6 +67,7 @@
->   	"partitions=" PARTS_DEFAULT \
->   	ROCKCHIP_DEVICE_SETTINGS \
->   	BOOTENV \
-> +	BOOTENV_SF \
->   	"altbootcmd=" \
->   		"setenv boot_syslinux_conf extlinux/extlinux-rollback.conf;" \
->   		"run distro_bootcmd\0"
+> diff --git a/arch/arm/dts/rk3399pro.dtsi b/arch/arm/dts/rk3399pro.dtsi
+> new file mode 100644
+> index 0000000000..bb5ebf6608
+> --- /dev/null
+> +++ b/arch/arm/dts/rk3399pro.dtsi
+> @@ -0,0 +1,22 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +// Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd.
+> +
+> +#include "rk3399.dtsi"
+> +
+> +/ {
+> +	compatible = "rockchip,rk3399pro";
+> +};
+> +
+> +/* Default to enabled since AP talk to NPU part over pcie */
+> +&pcie_phy {
+> +	status = "okay";
+> +};
+> +
+> +/* Default to enabled since AP talk to NPU part over pcie */
+> +&pcie0 {
+> +	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
+> +	num-lanes = <4>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie_clkreqn_cpm>;
+> +	status = "okay";
+> +};
