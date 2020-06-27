@@ -1,7 +1,7 @@
 From: Kever Yang <kever.yang@rock-chips.com>
 Subject: Re: [PATCH] rk3399: Add BOOTENV_SF command
-Date: Sat, 27 Jun 2020 22:05:34 +0800
-Message-ID: <b4748bd1-969c-85ab-78c9-7c86efa7796e@rock-chips.com>
+Date: Sat, 27 Jun 2020 22:06:52 +0800
+Message-ID: <892fe4fd-c7be-6b72-29ce-5715777b31de@rock-chips.com>
 References: <20200608141708.31844-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
@@ -32,11 +32,7 @@ On 2020/6/8 下午10:17, Jagan Teki wrote:
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 > Reported-by: Suniel Mahesh <sunil@amarulasolutions.com>
 > Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
-
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
+Applied to u-boot-rockchip master branch.
 > ---
 >   include/configs/rk3399_common.h | 1 +
 >   1 file changed, 1 insertion(+)
