@@ -1,15 +1,15 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 2/4] arm64: dts: rockchip: Sync v5.7-rc1 VMARC RK3399Pro
- SOM
-Date: Sat, 27 Jun 2020 22:31:48 +0800
-Message-ID: <7eb6a620-567d-8c5c-9ea1-270ed37255cd@rock-chips.com>
+Subject: Re: [PATCH 4/4] arm64: dts: rockchip: Add Radxa Rock Pi N10 initial
+ support
+Date: Sat, 27 Jun 2020 22:32:32 +0800
+Message-ID: <a8f59aba-544f-fd7c-7604-49f2fcff69c1@rock-chips.com>
 References: <20200610103658.96678-1-jagan@amarulasolutions.com>
- <20200610103658.96678-3-jagan@amarulasolutions.com>
+ <20200610103658.96678-5-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200610103658.96678-3-jagan@amarulasolutions.com>
+In-Reply-To: <20200610103658.96678-5-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -26,22 +26,22 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 On 2020/6/10 下午6:36, Jagan Teki wrote:
-> VMARC RK3399Pro SOM is a standard SMARC SOM design with
-> Rockchip RK3399Pro SoC, which is designed by Vamrs.
+> Rock Pi N10 is a Rockchip RK3399Pro based SBC, which has
+> - VMARC RK3399Pro SOM (as per SMARC standard) from Vamrs.
+> - Compatible carrier board from Radxa.
 >
-> Specification:
-> - Rockchip RK3399Pro
-> - PMIC: RK809-3
-> - SD slot, 16GiB eMMC
-> - 2xUSB-2.0, 1xUSB3.0
-> - USB-C for power supply
-> - Ethernet, PCIe
-> - HDMI, MIPI-DSI/CSI, eDP
+> VAMRC RK3399Pro SOM need to mount on top of radxa dalang
+> carrier board for making Rock Pi N10 SBC.
 >
-> Add initial support for VMARC RK3399Pro SOM, this would use
-> with associated carrier board.
+> So, add initial support for Rock Pi N10 by including rk3399,
+> rk3399pro vamrc-som and raxda dalang carrier board dtsi files.
 >
-> Sync this dtsi from linux-next v5.7-rc1.
+> rk3399pro-rock-pi-n10.dts was synced from linux-next v5.7-rc1.
+>
+> Tested
+> - ROCK PI N10 Model B
+> - ROCK PI N10 Model C
+> - Boot from SD
 >
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 
@@ -50,346 +50,144 @@ Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 Thanks,
 - Kever
 > ---
->   arch/arm/dts/rk3399pro-vmarc-som.dtsi | 333 ++++++++++++++++++++++++++
->   1 file changed, 333 insertions(+)
->   create mode 100644 arch/arm/dts/rk3399pro-vmarc-som.dtsi
+>   arch/arm/dts/Makefile                         |  3 +-
+>   .../arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi |  7 +++
+>   arch/arm/dts/rk3399pro-rock-pi-n10.dts        | 18 ++++++++
+>   arch/arm/dts/rk3399pro-u-boot.dtsi            |  6 +++
+>   board/rockchip/evb_rk3399/MAINTAINERS         |  6 +++
+>   configs/rock-pi-n10-rk3399pro_defconfig       | 46 +++++++++++++++++++
+>   6 files changed, 85 insertions(+), 1 deletion(-)
+>   create mode 100644 arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
+>   create mode 100644 arch/arm/dts/rk3399pro-rock-pi-n10.dts
+>   create mode 100644 arch/arm/dts/rk3399pro-u-boot.dtsi
+>   create mode 100644 configs/rock-pi-n10-rk3399pro_defconfig
 >
-> diff --git a/arch/arm/dts/rk3399pro-vmarc-som.dtsi b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
+> diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+> index 9900b44274..07dfe06230 100644
+> --- a/arch/arm/dts/Makefile
+> +++ b/arch/arm/dts/Makefile
+> @@ -136,7 +136,8 @@ dtb-$(CONFIG_ROCKCHIP_RK3399) += \
+>   	rk3399-roc-pc-mezzanine.dtb \
+>   	rk3399-rock-pi-4.dtb \
+>   	rk3399-rock960.dtb \
+> -	rk3399-rockpro64.dtb
+> +	rk3399-rockpro64.dtb \
+> +	rk3399pro-rock-pi-n10.dtb
+>   
+>   dtb-$(CONFIG_ROCKCHIP_RV1108) += \
+>   	rv1108-elgin-r1.dtb \
+> diff --git a/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi b/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
 > new file mode 100644
-> index 0000000000..0a516334f1
+> index 0000000000..946a0230db
 > --- /dev/null
-> +++ b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
-> @@ -0,0 +1,333 @@
+> +++ b/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
+> @@ -0,0 +1,7 @@
+> +// SPDX-License-Identifier: GPL-2.0+
+> +/*
+> + * Copyright (C) 2019 Jagan Teki <jagan@amarulasolutions.com>
+> + */
+> +
+> +#include "rk3399pro-u-boot.dtsi"
+> +#include "rk3399-sdram-lpddr3-4GB-1600.dtsi"
+> diff --git a/arch/arm/dts/rk3399pro-rock-pi-n10.dts b/arch/arm/dts/rk3399pro-rock-pi-n10.dts
+> new file mode 100644
+> index 0000000000..6ac2d4d721
+> --- /dev/null
+> +++ b/arch/arm/dts/rk3399pro-rock-pi-n10.dts
+> @@ -0,0 +1,18 @@
 > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 > +/*
 > + * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
-> + * Copyright (c) 2019 Vamrs Limited
+> + * Copyright (c) 2019 Radxa Limited
 > + * Copyright (c) 2019 Amarula Solutions(India)
 > + */
 > +
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/pwm/pwm.h>
+> +/dts-v1/;
+> +#include "rk3399.dtsi"
+> +#include "rk3399-opp.dtsi"
+> +#include "rk3399pro-vmarc-som.dtsi"
+> +#include <rockchip-radxa-dalang-carrier.dtsi>
 > +
 > +/ {
-> +	compatible = "vamrs,rk3399pro-vmarc-som", "rockchip,rk3399pro";
-> +
-> +	clkin_gmac: external-gmac-clock {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <125000000>;
-> +		clock-output-names = "clkin_gmac";
-> +		#clock-cells = <0>;
-> +	};
-> +
-> +	vcc12v_dcin: vcc12v-dcin-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc12v_dcin";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <12000000>;
-> +		regulator-max-microvolt = <12000000>;
-> +	};
-> +
-> +	vcc5v0_sys: vcc5v0-sys-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc5v0_sys";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		vin-supply = <&vcc12v_dcin>;
-> +	};
+> +	model = "Radxa ROCK Pi N10";
+> +	compatible = "radxa,rockpi-n10", "vamrs,rk3399pro-vmarc-som",
+> +		     "rockchip,rk3399pro";
 > +};
+> diff --git a/arch/arm/dts/rk3399pro-u-boot.dtsi b/arch/arm/dts/rk3399pro-u-boot.dtsi
+> new file mode 100644
+> index 0000000000..7bddc3acdb
+> --- /dev/null
+> +++ b/arch/arm/dts/rk3399pro-u-boot.dtsi
+> @@ -0,0 +1,6 @@
+> +// SPDX-License-Identifier: GPL-2.0+
+> +/*
+> + * Copyright (C) 2019 Jagan Teki <jagan@amarulasolutions.com>
+> + */
 > +
-> +&cpu_l0 {
-> +	cpu-supply = <&vdd_cpu_l>;
-> +};
+> +#include "rk3399-u-boot.dtsi"
+> diff --git a/board/rockchip/evb_rk3399/MAINTAINERS b/board/rockchip/evb_rk3399/MAINTAINERS
+> index 792df1087f..578638a58b 100644
+> --- a/board/rockchip/evb_rk3399/MAINTAINERS
+> +++ b/board/rockchip/evb_rk3399/MAINTAINERS
+> @@ -68,3 +68,9 @@ M:	Jagan Teki <jagan@amarulasolutions.com>
+>   S:	Maintained
+>   F:	configs/rock-pi-4-rk3399_defconfig
+>   F:	arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
 > +
-> +&cpu_l1 {
-> +	cpu-supply = <&vdd_cpu_l>;
-> +};
-> +
-> +&cpu_l2 {
-> +	cpu-supply = <&vdd_cpu_l>;
-> +};
-> +
-> +&cpu_l3 {
-> +	cpu-supply = <&vdd_cpu_l>;
-> +};
-> +
-> +&emmc_phy {
-> +	status = "okay";
-> +};
-> +
-> +&gmac {
-> +	assigned-clocks = <&cru SCLK_RMII_SRC>;
-> +	assigned-clock-parents = <&clkin_gmac>;
-> +	clock_in_out = "input";
-> +	phy-supply = <&vcc_lan>;
-> +	phy-mode = "rgmii";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&rgmii_pins>;
-> +	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
-> +	snps,reset-active-low;
-> +	snps,reset-delays-us = <0 10000 50000>;
-> +	tx_delay = <0x28>;
-> +	rx_delay = <0x11>;
-> +};
-> +
-> +&i2c0 {
-> +	clock-frequency = <400000>;
-> +	i2c-scl-rising-time-ns = <180>;
-> +	i2c-scl-falling-time-ns = <30>;
-> +	status = "okay";
-> +
-> +	rk809: pmic@20 {
-> +		compatible = "rockchip,rk809";
-> +		reg = <0x20>;
-> +		interrupt-parent = <&gpio1>;
-> +		interrupts = <RK_PC2 IRQ_TYPE_LEVEL_LOW>;
-> +		#clock-cells = <1>;
-> +		clock-output-names = "rk808-clkout1", "rk808-clkout2";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pmic_int_l>;
-> +		rockchip,system-power-controller;
-> +		wakeup-source;
-> +
-> +		vcc1-supply = <&vcc5v0_sys>;
-> +		vcc2-supply = <&vcc5v0_sys>;
-> +		vcc3-supply = <&vcc5v0_sys>;
-> +		vcc4-supply = <&vcc5v0_sys>;
-> +		vcc5-supply = <&vcc_buck5>;
-> +		vcc6-supply = <&vcc_buck5>;
-> +		vcc7-supply = <&vcc5v0_sys>;
-> +		vcc8-supply = <&vcc3v3_sys>;
-> +		vcc9-supply = <&vcc5v0_sys>;
-> +
-> +		regulators {
-> +			vdd_log: DCDC_REG1 {
-> +				regulator-name = "vdd_log";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <750000>;
-> +				regulator-max-microvolt = <1350000>;
-> +				regulator-initial-mode = <0x2>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +					regulator-suspend-microvolt = <900000>;
-> +				};
-> +			};
-> +
-> +			vdd_cpu_l: DCDC_REG2 {
-> +				regulator-name = "vdd_cpu_l";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <750000>;
-> +				regulator-max-microvolt = <1350000>;
-> +				regulator-ramp-delay = <6001>;
-> +				regulator-initial-mode = <0x2>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_ddr: DCDC_REG3 {
-> +				regulator-name = "vcc_ddr";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-initial-mode = <0x2>;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc3v3_sys: DCDC_REG4 {
-> +				regulator-name = "vcc3v3_sys";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-initial-mode = <0x2>;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <3300000>;
-> +				};
-> +			};
-> +
-> +			vcc_buck5: DCDC_REG5 {
-> +				regulator-name = "vcc_buck5";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <2200000>;
-> +				regulator-max-microvolt = <2200000>;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <2200000>;
-> +				};
-> +			};
-> +
-> +			vcca_0v9: LDO_REG1 {
-> +				regulator-name = "vcca_0v9";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <900000>;
-> +				regulator-max-microvolt = <900000>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_1v8: LDO_REG2 {
-> +				regulator-name = "vcc_1v8";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1800000>;
-> +				};
-> +			};
-> +
-> +			vcc_0v9: LDO_REG3 {
-> +				regulator-name = "vcc_0v9";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <900000>;
-> +				regulator-max-microvolt = <900000>;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <900000>;
-> +				};
-> +			};
-> +
-> +			vcca_1v8: LDO_REG4 {
-> +				regulator-name = "vcca_1v8";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1850000>;
-> +				regulator-max-microvolt = <1850000>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			/*
-> +			 * As per BSP, but schematic not showing any regulator
-> +			 * pin for LD05.
-> +			 */
-> +			vdd1v5_dvp: LDO_REG5 {
-> +				regulator-name = "vdd1v5_dvp";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1500000>;
-> +				regulator-max-microvolt = <1500000>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_1v5: LDO_REG6 {
-> +				regulator-name = "vcc_1v5";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1500000>;
-> +				regulator-max-microvolt = <1500000>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vccio_3v0: LDO_REG7 {
-> +				regulator-name = "vccio_3v0";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3000000>;
-> +				regulator-max-microvolt = <3000000>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vccio_sd: LDO_REG8 {
-> +				regulator-name = "vccio_sd";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			/*
-> +			 * As per BSP, but schematic not showing any regulator
-> +			 * pin for LD09.
-> +			 */
-> +			vcc_sd: LDO_REG9 {
-> +				regulator-name = "vcc_sd";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc5v0_usb2: SWITCH_REG1 {
-> +				regulator-name = "vcc5v0_usb2";
-> +				regulator-min-microvolt = <5000000>;
-> +				regulator-max-microvolt = <5000000>;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <5000000>;
-> +				};
-> +			};
-> +
-> +			vccio_3v3: vcc_lan: SWITCH_REG2 {
-> +				regulator-name = "vccio_3v3";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&io_domains {
-> +	status = "okay";
-> +	bt656-supply = <&vcca_1v8>;
-> +	sdmmc-supply = <&vccio_sd>;
-> +	gpio1830-supply = <&vccio_3v0>;
-> +};
-> +
-> +&pmu_io_domains {
-> +	status = "okay";
-> +	pmu1830-supply = <&vcc_1v8>;
-> +};
-> +
-> +&sdhci {
-> +	bus-width = <8>;
-> +	mmc-hs400-1_8v;
-> +	mmc-hs400-enhanced-strobe;
-> +	non-removable;
-> +	status = "okay";
-> +};
-> +
-> +&tsadc {
-> +	status = "okay";
-> +	rockchip,hw-tshut-mode = <1>;
-> +	rockchip,hw-tshut-polarity = <1>;
-> +};
-> +
-> +&pinctrl {
-> +	pmic {
-> +		pmic_int_l: pmic-int-l {
-> +			rockchip,pins =
-> +				<1 RK_PC2 0 &pcfg_pull_up>;
-> +		};
-> +	};
-> +};
+> +ROCK-PI-N10
+> +M:	Jagan Teki <jagan@amarulasolutions.com>
+> +S:	Maintained
+> +F:	configs/rock-pi-n10-rk3399pro_defconfig
+> +F:	arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
+> diff --git a/configs/rock-pi-n10-rk3399pro_defconfig b/configs/rock-pi-n10-rk3399pro_defconfig
+> new file mode 100644
+> index 0000000000..c705ce01ce
+> --- /dev/null
+> +++ b/configs/rock-pi-n10-rk3399pro_defconfig
+> @@ -0,0 +1,46 @@
+> +CONFIG_ARM=y
+> +CONFIG_ARCH_ROCKCHIP=y
+> +CONFIG_SYS_TEXT_BASE=0x00200000
+> +CONFIG_SPL_GPIO_SUPPORT=y
+> +CONFIG_ENV_OFFSET=0x3F8000
+> +CONFIG_ROCKCHIP_RK3399=y
+> +CONFIG_TARGET_EVB_RK3399=y
+> +CONFIG_NR_DRAM_BANKS=1
+> +CONFIG_DEBUG_UART_BASE=0xFF1A0000
+> +CONFIG_DEBUG_UART_CLOCK=24000000
+> +CONFIG_DEBUG_UART=y
+> +CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399pro-rock-pi-n10.dtb"
+> +CONFIG_MISC_INIT_R=y
+> +CONFIG_DISPLAY_BOARDINFO_LATE=y
+> +# CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+> +CONFIG_SPL_STACK_R=y
+> +CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
+> +CONFIG_TPL=y
+> +CONFIG_CMD_BOOTZ=y
+> +CONFIG_CMD_GPT=y
+> +CONFIG_CMD_MMC=y
+> +# CONFIG_CMD_SETEXPR is not set
+> +CONFIG_CMD_TIME=y
+> +CONFIG_SPL_OF_CONTROL=y
+> +CONFIG_DEFAULT_DEVICE_TREE="rk3399pro-rock-pi-n10"
+> +CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
+> +CONFIG_ENV_IS_IN_MMC=y
+> +CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+> +CONFIG_ROCKCHIP_GPIO=y
+> +CONFIG_SYS_I2C_ROCKCHIP=y
+> +CONFIG_MISC=y
+> +CONFIG_MMC_DW=y
+> +CONFIG_MMC_DW_ROCKCHIP=y
+> +CONFIG_MMC_SDHCI=y
+> +CONFIG_MMC_SDHCI_ROCKCHIP=y
+> +CONFIG_DM_ETH=y
+> +CONFIG_ETH_DESIGNWARE=y
+> +CONFIG_GMAC_ROCKCHIP=y
+> +CONFIG_PMIC_RK8XX=y
+> +CONFIG_REGULATOR_PWM=y
+> +CONFIG_REGULATOR_RK8XX=y
+> +CONFIG_PWM_ROCKCHIP=y
+> +CONFIG_BAUDRATE=1500000
+> +CONFIG_DEBUG_UART_SHIFT=2
+> +CONFIG_SYSRESET=y
+> +CONFIG_ERRNO_STR=y
