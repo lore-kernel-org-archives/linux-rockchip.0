@@ -1,15 +1,15 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 2/3] ARM: dts: rockchip: Add VMARC RK3288 SOM initial
- support
-Date: Sat, 27 Jun 2020 23:11:05 +0800
-Message-ID: <47ff3252-6ab7-2f94-70a8-4265417fc068@rock-chips.com>
+Subject: Re: [PATCH 1/3] ARM: dts: rockchip: radxa-dalang: Update sdmmc
+ properties
+Date: Sat, 27 Jun 2020 23:10:40 +0800
+Message-ID: <b580dc7f-ad5c-12ce-07b3-92188823f93d@rock-chips.com>
 References: <20200618161220.219452-1-jagan@amarulasolutions.com>
- <20200618161220.219452-3-jagan@amarulasolutions.com>
+ <20200618161220.219452-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200618161220.219452-3-jagan@amarulasolutions.com>
+In-Reply-To: <20200618161220.219452-2-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -26,20 +26,15 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 On 2020/6/19 上午12:12, Jagan Teki wrote:
-> VMARC RK3288 SOM is a standard SMARC SOM design with
-> Rockchip RK3288 SoC, which is designed by Vamrs.
+> Radxa dalang carrier boards are used to mount vmarc SoM's
+> of rk3399pro and rk3288 to make complete SBC.
 >
-> Specification:
-> - Rockchip RK3288
-> - PMIC: RK808
-> - SD slot, 16GiB eMMC
-> - 2xUSB-2.0, 1xUSB3.0
-> - USB-C for power supply
-> - Ethernet, PCIe
-> - HDMI, MIPI-DSI/CSI, eDP
+> Among these combinations, card detection gpio, max-frequency
+> properties are used with rk3399pro SoM but not required for
+> rk3288 SoM based on the hardware schematics.
 >
-> Add initial support for VMARC RK3288 SOM, this would use
-> with associated carrier board.
+> So, let's move these sdmmc specific properties on associate
+> vmarc dtsi to make common use of dalang carrier device tree file.
 >
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 
@@ -48,311 +43,38 @@ Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 Thanks,
 - Kever
 > ---
->   arch/arm/dts/rk3288-vmarc-som.dtsi | 298 +++++++++++++++++++++++++++++
->   1 file changed, 298 insertions(+)
->   create mode 100644 arch/arm/dts/rk3288-vmarc-som.dtsi
+>   arch/arm/dts/rk3399pro-vmarc-som.dtsi           | 5 +++++
+>   arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi | 2 --
+>   2 files changed, 5 insertions(+), 2 deletions(-)
 >
-> diff --git a/arch/arm/dts/rk3288-vmarc-som.dtsi b/arch/arm/dts/rk3288-vmarc-som.dtsi
-> new file mode 100644
-> index 0000000000..1549ac4044
-> --- /dev/null
-> +++ b/arch/arm/dts/rk3288-vmarc-som.dtsi
-> @@ -0,0 +1,298 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
-> + * Copyright (c) 2019 Vamrs Limited
-> + * Copyright (c) 2019 Amarula Solutions(India)
-> + */
-> +
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/pinctrl/rockchip.h>
-> +#include <dt-bindings/pwm/pwm.h>
-> +
-> +/ {
-> +	compatible = "vamrs,rk3288-vmarc-som", "rockchip,rk3288";
-> +
-> +	ext_gmac: external-gmac-clock {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <125000000>;
-> +		clock-output-names = "ext_gmac";
-> +		#clock-cells = <0>;
-> +	};
-> +
-> +	vccio_flash: vccio-flash-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vccio_flash";
-> +		regulator-min-microvolt = <1800000>;
-> +		regulator-max-microvolt = <1800000>;
-> +		startup-delay-us = <150>;
-> +		vin-supply = <&vcc_io>;
-> +	};
-> +
-> +	vcc_sys: vsys-regulator {
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_sys";
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +	};
+> diff --git a/arch/arm/dts/rk3399pro-vmarc-som.dtsi b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
+> index 0a516334f1..6fd17e8a81 100644
+> --- a/arch/arm/dts/rk3399pro-vmarc-som.dtsi
+> +++ b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
+> @@ -317,6 +317,11 @@
+>   	status = "okay";
+>   };
+>   
+> +&sdmmc {
+> +	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
+> +	max-frequency = <150000000>;
 > +};
 > +
-> +&emmc {
-> +	bus-width = <8>;
-> +	cap-mmc-highspeed;
-> +	disable-wp;
-> +	non-removable;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_pwr &emmc_bus8>;
-> +	status = "okay";
-> +};
-> +
-> +&gmac {
-> +	assigned-clocks = <&cru SCLK_MAC>;
-> +	assigned-clock-parents = <&ext_gmac>;
-> +	clock_in_out = "input";
-> +	phy-mode = "rgmii";
-> +	phy-supply = <&vcc_io>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&rgmii_pins>;
-> +	snps,reset-gpio = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
-> +	snps,reset-active-low;
-> +	snps,reset-delays-us = <0 10000 50000>;
-> +	tx_delay = <0x30>;
-> +	rx_delay = <0x10>;
-> +	max-speed = <1000>;
-> +};
-> +
-> +&i2c0 {
-> +	clock-frequency = <400000>;
-> +	status = "okay";
-> +
-> +	rk808: pmic@1b {
-> +		compatible = "rockchip,rk808";
-> +		reg = <0x1b>;
-> +		interrupt-parent = <&gpio0>;
-> +		interrupts = <RK_PA4 IRQ_TYPE_LEVEL_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pmic_int &global_pwroff>;
-> +		rockchip,system-power-controller;
-> +		wakeup-source;
-> +		#clock-cells = <1>;
-> +		clock-output-names = "rk808-clkout1", "rk808-clkout2";
-> +
-> +		vcc1-supply = <&vcc_sys>;
-> +		vcc2-supply = <&vcc_sys>;
-> +		vcc3-supply = <&vcc_sys>;
-> +		vcc4-supply = <&vcc_sys>;
-> +		vcc6-supply = <&vcc_sys>;
-> +		vcc7-supply = <&vcc_sys>;
-> +		vcc8-supply = <&vcc_io>;
-> +		vcc9-supply = <&vcc_io>;
-> +		vcc10-supply = <&vcc_sys>;
-> +		vcc11-supply = <&vcc_sys>;
-> +		vcc12-supply = <&vcc_io>;
-> +		vddio-supply = <&vcc_io>;
-> +
-> +		regulators {
-> +			vdd_cpu: DCDC_REG1 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <750000>;
-> +				regulator-max-microvolt = <1400000>;
-> +				regulator-name = "vdd_arm";
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vdd_gpu: DCDC_REG2 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <850000>;
-> +				regulator-max-microvolt = <1250000>;
-> +				regulator-name = "vdd_gpu";
-> +				regulator-ramp-delay = <6000>;
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_ddr: DCDC_REG3 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-name = "vcc_ddr";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_io: DCDC_REG4 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "vcc_io";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <3300000>;
-> +				};
-> +			};
-> +
-> +			vcc_tp: LDO_REG1 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "vcc_tp";
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcca_codec: LDO_REG2 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "vcca_codec";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <3300000>;
-> +				};
-> +			};
-> +
-> +			vdd_10: LDO_REG3 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1000000>;
-> +				regulator-max-microvolt = <1000000>;
-> +				regulator-name = "vdd_10";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1000000>;
-> +				};
-> +			};
-> +
-> +			vcc_wl: LDO_REG4 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-name = "vcc_wl";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +				};
-> +			};
-> +
-> +			vccio_sd: LDO_REG5 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-name = "vccio_sd";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <3300000>;
-> +				};
-> +			};
-> +
-> +			vdd10_lcd: LDO_REG6 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1000000>;
-> +				regulator-max-microvolt = <1000000>;
-> +				regulator-name = "vdd10_lcd";
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_18: LDO_REG7 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-name = "vcc_18";
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1800000>;
-> +				};
-> +			};
-> +
-> +			vcc18_lcd: LDO_REG8 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-name = "vcc18_lcd";
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_sd: SWITCH_REG1 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-name = "vcc_sd";
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_lcd: SWITCH_REG2 {
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-name = "vcc_lcd";
-> +				regulator-state-mem {
-> +					regulator-off-in-suspend;
-> +				};
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&io_domains {
-> +	bb-supply = <&vcc_io>;
-> +	flash0-supply = <&vccio_flash>;
-> +	gpio1830-supply = <&vcc_18>;
-> +	gpio30-supply = <&vcc_io>;
-> +	sdcard-supply = <&vccio_sd>;
-> +	status = "okay";
-> +};
-> +
-> +&pinctrl {
-> +	pcfg_pull_none_drv_8ma: pcfg-pull-none-drv-8ma {
-> +		drive-strength = <8>;
-> +	};
-> +
-> +	pcfg_pull_up_drv_8ma: pcfg-pull-up-drv-8ma {
-> +		bias-pull-up;
-> +		drive-strength = <8>;
-> +	};
-> +
-> +	pmic {
-> +		pmic_int: pmic-int {
-> +			rockchip,pins = <0 RK_PA4 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
-> +
-> +	sdmmc {
-> +		sdmmc_bus4: sdmmc-bus4 {
-> +			rockchip,pins =
-> +				<6 RK_PC0 1 &pcfg_pull_up_drv_8ma>,
-> +				<6 RK_PC1 1 &pcfg_pull_up_drv_8ma>,
-> +				<6 RK_PC2 1 &pcfg_pull_up_drv_8ma>,
-> +				<6 RK_PC3 1 &pcfg_pull_up_drv_8ma>;
-> +		};
-> +
-> +		sdmmc_clk: sdmmc-clk {
-> +			rockchip,pins =
-> +				<6 RK_PC4 1 &pcfg_pull_none_drv_8ma>;
-> +		};
-> +
-> +		sdmmc_cmd: sdmmc-cmd {
-> +			rockchip,pins =
-> +				<6 RK_PC5 1 &pcfg_pull_up_drv_8ma>;
-> +		};
-> +	};
-> +};
+>   &tsadc {
+>   	status = "okay";
+>   	rockchip,hw-tshut-mode = <1>;
+> diff --git a/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi b/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi
+> index df3712aedf..3e54f38f0a 100644
+> --- a/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi
+> +++ b/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi
+> @@ -52,10 +52,8 @@
+>   	bus-width = <4>;
+>   	cap-mmc-highspeed;
+>   	cap-sd-highspeed;
+> -	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
+>   	disable-wp;
+>   	vqmmc-supply = <&vccio_sd>;
+> -	max-frequency = <150000000>;
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
+>   	status = "okay";
