@@ -1,14 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 5/6] roc-rk3399-pc: Enable USB Gadget
-Date: Sat, 27 Jun 2020 22:39:19 +0800
-Message-ID: <2f253073-47aa-3ba2-762f-0e0c7bc42f4b@rock-chips.com>
+Subject: Re: [PATCH v2 6/6] roc-rk3399-pc: Update ENV offset, size
+Date: Sat, 27 Jun 2020 22:40:10 +0800
+Message-ID: <8fa345f7-f42c-37a3-5427-98fc92f0fde1@rock-chips.com>
 References: <20200618141259.155581-1-jagan@amarulasolutions.com>
- <20200618141259.155581-5-jagan@amarulasolutions.com>
+ <20200618141259.155581-6-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200618141259.155581-5-jagan@amarulasolutions.com>
+In-Reply-To: <20200618141259.155581-6-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -25,16 +25,10 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 On 2020/6/18 下午10:12, Jagan Teki wrote:
-> Enable DWC3 core, gadget for roc-rk3399-pc board.
->
-> This would help to use fastboot by default.
+> Adjust the ENV offset, size to fit into all images
+> on 16MB flash.
 >
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
-
-Thanks,
-- Kever
 > ---
 > Changes for v2:
 > - rebase on master
@@ -59,51 +53,44 @@ Thanks,
 >   CONFIG_ETH_DESIGNWARE=y
 >   CONFIG_GMAC_ROCKCHIP=y
 > +CONFIG_PHY_ROCKCHIP_INNO_USB2=y
->   configs/roc-pc-mezzanine-rk3399_defconfig | 3 +++
->   configs/roc-pc-rk3399_defconfig           | 3 +++
->   2 files changed, 6 insertions(+)
+
+This is not for ENV.
+
+Thanks,
+
+- Kever
+
+>   configs/roc-pc-mezzanine-rk3399_defconfig | 4 ++--
+>   configs/roc-pc-rk3399_defconfig           | 4 ++--
+>   2 files changed, 4 insertions(+), 4 deletions(-)
 >
 > diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
-> index fd1b85c1e4..7906948374 100644
+> index 7906948374..595f052cb7 100644
 > --- a/configs/roc-pc-mezzanine-rk3399_defconfig
 > +++ b/configs/roc-pc-mezzanine-rk3399_defconfig
-> @@ -12,6 +12,7 @@ CONFIG_DEBUG_UART_CLOCK=24000000
->   CONFIG_SPL_SPI_FLASH_SUPPORT=y
->   CONFIG_SPL_SPI_SUPPORT=y
->   CONFIG_DEBUG_UART=y
-> +# CONFIG_ANDROID_BOOT_IMAGE is not set
->   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-roc-pc-mezzanine.dtb"
->   CONFIG_DISPLAY_BOARDINFO_LATE=y
->   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
-> @@ -64,7 +65,9 @@ CONFIG_USB_EHCI_HCD=y
->   CONFIG_USB_EHCI_GENERIC=y
->   CONFIG_USB_DWC3=y
->   CONFIG_USB_DWC3_GENERIC=y
-> +CONFIG_ROCKCHIP_USB2_PHY=y
->   CONFIG_USB_KEYBOARD=y
-> +CONFIG_USB_GADGET=y
->   CONFIG_USB_HOST_ETHER=y
->   CONFIG_USB_ETHER_ASIX=y
->   CONFIG_USB_ETHER_ASIX88179=y
+> @@ -1,8 +1,8 @@
+>   CONFIG_ARM=y
+>   CONFIG_ARCH_ROCKCHIP=y
+>   CONFIG_SYS_TEXT_BASE=0x00200000
+> -CONFIG_ENV_SIZE=0x6000
+> -CONFIG_ENV_OFFSET=0x460000
+> +CONFIG_ENV_SIZE=0x8000
+> +CONFIG_ENV_OFFSET=0x3F8000
+>   CONFIG_ENV_SECT_SIZE=0x1000
+>   CONFIG_ROCKCHIP_RK3399=y
+>   CONFIG_TARGET_ROC_PC_RK3399=y
 > diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-> index 80e7001481..046fb73858 100644
+> index 046fb73858..1c4db3443f 100644
 > --- a/configs/roc-pc-rk3399_defconfig
 > +++ b/configs/roc-pc-rk3399_defconfig
-> @@ -12,6 +12,7 @@ CONFIG_DEBUG_UART_CLOCK=24000000
->   CONFIG_SPL_SPI_FLASH_SUPPORT=y
->   CONFIG_SPL_SPI_SUPPORT=y
->   CONFIG_DEBUG_UART=y
-> +# CONFIG_ANDROID_BOOT_IMAGE is not set
->   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-roc-pc.dtb"
->   CONFIG_DISPLAY_BOARDINFO_LATE=y
->   # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
-> @@ -61,7 +62,9 @@ CONFIG_USB_EHCI_HCD=y
->   CONFIG_USB_EHCI_GENERIC=y
->   CONFIG_USB_DWC3=y
->   CONFIG_USB_DWC3_GENERIC=y
-> +CONFIG_ROCKCHIP_USB2_PHY=y
->   CONFIG_USB_KEYBOARD=y
-> +CONFIG_USB_GADGET=y
->   CONFIG_USB_HOST_ETHER=y
->   CONFIG_USB_ETHER_ASIX=y
->   CONFIG_USB_ETHER_ASIX88179=y
+> @@ -1,8 +1,8 @@
+>   CONFIG_ARM=y
+>   CONFIG_ARCH_ROCKCHIP=y
+>   CONFIG_SYS_TEXT_BASE=0x00200000
+> -CONFIG_ENV_SIZE=0x6000
+> -CONFIG_ENV_OFFSET=0x460000
+> +CONFIG_ENV_SIZE=0x8000
+> +CONFIG_ENV_OFFSET=0x3F8000
+>   CONFIG_ENV_SECT_SIZE=0x1000
+>   CONFIG_ROCKCHIP_RK3399=y
+>   CONFIG_TARGET_ROC_PC_RK3399=y
