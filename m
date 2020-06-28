@@ -1,112 +1,151 @@
-From: Huang Jiachai <hjc@rock-chips.com>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_1/2=5d_drm=3a_drm=5ffourcc=3a_add_NV20_YUV?=
- =?UTF-8?B?IGZvcm1hdOOAkOivt+azqOaEj++8jOmCruS7tueUsWxpbnV4LXJvY2tjaGlwLWJv?=
- =?UTF-8?Q?unces+sandy=2ehuang=3drock-chips=2ecom=40lists=2einfradead=2eorg?=
- =?UTF-8?B?5Luj5Y+R44CR?=
-Date: Sun, 28 Jun 2020 09:51:29 +0800
-Message-ID: <bee64956-8ab0-c358-9762-63c5a5b97b6a@rock-chips.com>
-References: <20200607202521.18438-1-jonas@kwiboo.se>
- <20200607202521.18438-2-jonas@kwiboo.se>
- <d503eed1-571f-3e37-858b-b5de04cb79f7@rock-chips.com>
- <f5c46547-3278-2226-e194-929fbfa95864@kwiboo.se>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v4 4/5] rockchip: Separate the reset cause from display
+ cpuinfo
+Date: Sun, 28 Jun 2020 10:46:39 +0800
+Message-ID: <3ecbc635-d430-3ee1-7656-3430b7b74f5b@rock-chips.com>
+References: <20200618153948.218506-1-jagan@amarulasolutions.com>
+ <20200618153948.218506-5-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f5c46547-3278-2226-e194-929fbfa95864@kwiboo.se>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>, =?UTF-8?B?6Zer5a2d5Yab?= <andy.yan@rock-chips.com>, Brian Starkey <brian.starkey@arm.com>, Ben Davis <ben.davis@arm.com>, =?UTF-8?B?5p2o5Yev?= <kever.yang@rock-chips.com>, Tao Huang <huangtao@rock-chips.com>
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200618153948.218506-5-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jonas Karlman,
+HI Jagan,
 
-在 2020/6/26 22:19, Jonas Karlman 写道:
-> On 2020-06-17 14:07, Huang Jiachai wrote:
->> Hi Jonas Karlman,
->>
->>       Is there an another yuv 10bit format with 4:4:4 sub-simpling but
->> has no padding?
->>
->>    Maybe we can call it DRM_FORMAT_NV30:
->>
->> { .format = DRM_FORMAT_NV30,		.depth = 0,
->>     .num_planes = 2, .char_per_block = { 5, 5, 0 },
->>     .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 1,
->>     .vsub = 1, .is_yuv = true },
->>
->> this format can supported by rockchip rk3288/rk3399... platform, can you
->> add this format at this series patches?
-> I will send a v2 including this 4:4:4 format later this weekend.
+On 2020/6/18 下午11:39, Jagan Teki wrote:
+> reset cause is a generic functionality based on the soc
+> cru registers in rockchip. This can be used for printing
+> the cause of reset in cpuinfo or some other place where
+> reset cause is needed.
 >
-> Is there any hw block on rk3288/rk3399 that can produce a buffer in such format?
-> If I am not mistaken rkvdec only support 10-bit h264 in 4:2:0/4:2:2 and
-> hevc 4:2:0 10-bit, those are the formats I have been able to test so far.
+> Other than cpuinfo, reset cause can also be using during
+> bootcount for checking the specific reset cause and glow
+> the led based on the reset cause.
 >
-> Regards,
-> Jonas
-
-yes,rockchip platform hw video decoder 10-bit yuv format only can 
-support 4:2:0/4:2:2 so far, but the software decoder path maybe output 
-4:4:4-10 format to VOP.
-
+> So, let's separate the reset cause code from cpuinfo, and
+> add a check to build it for rk3399, rk3288 since these two
+> soc are supporting reset cause as of now.
 >
->> 在 2020/6/8 4:25, Jonas Karlman 写道:
->>> DRM_FORMAT_NV20 is a 2 plane format suitable for linear memory layout.
->>> The format is similar to P210 with 4:2:2 sub-sampling but has no padding
->>> between components. Instead, luminance and chrominance samples are grouped
->>> into 4s so that each group is packed into an integer number of bytes:
->>>
->>> YYYY = UVUV = 4 * 10 bits = 40 bits = 5 bytes
->>>
->>> The '20' suffix refers to the optimum effective bits per pixel which is
->>> achieved when the total number of luminance samples is a multiple of 4.
->>>
->>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->>> ---
->>>    drivers/gpu/drm/drm_fourcc.c  | 4 ++++
->>>    include/uapi/drm/drm_fourcc.h | 1 +
->>>    2 files changed, 5 insertions(+)
->>>
->>> diff --git a/drivers/gpu/drm/drm_fourcc.c b/drivers/gpu/drm/drm_fourcc.c
->>> index 722c7ebe4e88..2a9c8ae719ed 100644
->>> --- a/drivers/gpu/drm/drm_fourcc.c
->>> +++ b/drivers/gpu/drm/drm_fourcc.c
->>> @@ -278,6 +278,10 @@ const struct drm_format_info *__drm_format_info(u32 format)
->>>    		  .num_planes = 2, .char_per_block = { 5, 5, 0 },
->>>    		  .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 2,
->>>    		  .vsub = 2, .is_yuv = true },
->>> +		{ .format = DRM_FORMAT_NV20,		.depth = 0,
->>> +		  .num_planes = 2, .char_per_block = { 5, 5, 0 },
->>> +		  .block_w = { 4, 2, 0 }, .block_h = { 1, 1, 0 }, .hsub = 2,
->>> +		  .vsub = 1, .is_yuv = true },
->>>    		{ .format = DRM_FORMAT_Q410,		.depth = 0,
->>>    		  .num_planes = 3, .char_per_block = { 2, 2, 2 },
->>>    		  .block_w = { 1, 1, 1 }, .block_h = { 1, 1, 1 }, .hsub = 0,
->>> diff --git a/include/uapi/drm/drm_fourcc.h b/include/uapi/drm/drm_fourcc.h
->>> index b5bf1c0e630e..244d32433a67 100644
->>> --- a/include/uapi/drm/drm_fourcc.h
->>> +++ b/include/uapi/drm/drm_fourcc.h
->>> @@ -242,6 +242,7 @@ extern "C" {
->>>     * index 1 = Cr:Cb plane, [39:0] Cr1:Cb1:Cr0:Cb0 little endian
->>>     */
->>>    #define DRM_FORMAT_NV15		fourcc_code('N', 'V', '1', '5') /* 2x2 subsampled Cr:Cb plane */
->>> +#define DRM_FORMAT_NV20		fourcc_code('N', 'V', '2', '0') /* 2x1 subsampled Cr:Cb plane */
->>>    
->>>    /*
->>>     * 2 plane YCbCr MSB aligned
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
+> ---
+> Changes for v4:
+> - none
+>
+>   arch/arm/include/asm/arch-rockchip/cru.h |  2 ++
+>   arch/arm/mach-rockchip/Makefile          |  5 ++++-
+>   arch/arm/mach-rockchip/cpu-info.c        | 20 ++++++++++++--------
+>   3 files changed, 18 insertions(+), 9 deletions(-)
+>
+> diff --git a/arch/arm/include/asm/arch-rockchip/cru.h b/arch/arm/include/asm/arch-rockchip/cru.h
+> index 5eb17f9d55..317eb61049 100644
+> --- a/arch/arm/include/asm/arch-rockchip/cru.h
+> +++ b/arch/arm/include/asm/arch-rockchip/cru.h
+> @@ -31,4 +31,6 @@ enum {
+>   
+>   #define MHz		1000000
+>   
+> +char *get_reset_cause(void);
 
--- 
-Best Regard
+Since you add a environment, you should use that instead of export 
+get_reset_cause().
 
-黄家钗
-Sandy Huang
-Addr: 福州市鼓楼区铜盘路软件大道89号福州软件园A区21号楼(350003)
-       No. 21 Building, A District, No.89,software Boulevard 
-Fuzhou,Fujian,PRC
-Tel：+86 0591-87884919  8690
-E-mail：hjc@rock-chips.com
+
+> +
+>   #endif /* _ROCKCHIP_CLOCK_H */
+> diff --git a/arch/arm/mach-rockchip/Makefile b/arch/arm/mach-rockchip/Makefile
+> index 5b38526fe0..ef4898e00c 100644
+> --- a/arch/arm/mach-rockchip/Makefile
+> +++ b/arch/arm/mach-rockchip/Makefile
+> @@ -15,6 +15,10 @@ obj-tpl-$(CONFIG_ROCKCHIP_PX30) += px30-board-tpl.o
+>   
+>   obj-spl-$(CONFIG_ROCKCHIP_RK3036) += rk3036-board-spl.o
+>   
+> +ifeq ($(CONFIG_ROCKCHIP_RK3288)$(CONFIG_ROCKCHIP_RK3399), y)
+> +obj-y += cpu-info.o
+> +endif
+
+This change is not need, if the soc does not support this feature, they 
+should not enable
+
+CONFIG_DISPLAY_CPUINFO.
+
+Thanks,
+- Kever
+
+> +
+>   ifeq ($(CONFIG_SPL_BUILD)$(CONFIG_TPL_BUILD),)
+>   
+>   # Always include boot_mode.o, as we bypass it (i.e. turn it off)
+> @@ -22,7 +26,6 @@ ifeq ($(CONFIG_SPL_BUILD)$(CONFIG_TPL_BUILD),)
+>   # we can have the preprocessor correctly recognise both 0x0 and 0
+>   # meaning "turn it off".
+>   obj-y += boot_mode.o
+> -obj-$(CONFIG_DISPLAY_CPUINFO) += cpu-info.o
+>   obj-$(CONFIG_ROCKCHIP_COMMON_BOARD) += board.o
+>   obj-$(CONFIG_MISC_INIT_R) += misc.o
+>   endif
+> diff --git a/arch/arm/mach-rockchip/cpu-info.c b/arch/arm/mach-rockchip/cpu-info.c
+> index 21ca9dedce..76a840e2c3 100644
+> --- a/arch/arm/mach-rockchip/cpu-info.c
+> +++ b/arch/arm/mach-rockchip/cpu-info.c
+> @@ -13,7 +13,7 @@
+>   #include <asm/arch-rockchip/hardware.h>
+>   #include <linux/err.h>
+>   
+> -static char *get_reset_cause(void)
+> +char *get_reset_cause(void)
+>   {
+>   	struct rockchip_cru *cru = rockchip_get_cru();
+>   	char *cause = NULL;
+> @@ -41,12 +41,6 @@ static char *get_reset_cause(void)
+>   		cause = "unknown reset";
+>   	}
+>   
+> -	/**
+> -	 * reset_reason env is used by rk3288, due to special use case
+> -	 * to figure it the boot behavior. so keep this as it is.
+> -	 */
+> -	env_set("reset_reason", cause);
+> -
+>   	/*
+>   	 * Clear glb_rst_st, so we can determine the last reset cause
+>   	 * for following resets.
+> @@ -56,12 +50,22 @@ static char *get_reset_cause(void)
+>   	return cause;
+>   }
+>   
+> +#ifdef CONFIG_DISPLAY_CPUINFO
+>   int print_cpuinfo(void)
+>   {
+> +	char *cause = get_reset_cause();
+> +
+>   	printf("SoC: Rockchip %s\n", CONFIG_SYS_SOC);
+> -	printf("Reset cause: %s\n", get_reset_cause());
+> +	printf("Reset cause: %s\n", cause);
+> +
+> +	/**
+> +	 * reset_reason env is used by rk3288, due to special use case
+> +	 * to figure it the boot behavior. so keep this as it is.
+> +	 */
+> +	env_set("reset_reason", cause);
+>   
+>   	/* TODO print operating temparature and clock */
+>   
+>   	return 0;
+>   }
+> +#endif
