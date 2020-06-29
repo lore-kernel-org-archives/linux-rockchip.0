@@ -1,101 +1,88 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v4 1/2] clk: rockchip: rk3288: Handle clock tree for rk3288w
-Date: Tue, 30 Jun 2020 00:41:03 +0530
-Message-ID: <CAMty3ZDx-_-VHEwjbV05GBb-hQbPpo21aZbCrQ+GTaoT_gxAMg@mail.gmail.com>
-References: <20200602080644.11333-1-mylene.josserand@collabora.com> <20200602080644.11333-2-mylene.josserand@collabora.com>
+From: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+Subject: Re: [PATCH v9 00/11] Genericize DW MIPI DSI bridge and add i.MX 6
+ driver
+Date: Mon, 29 Jun 2020 10:47:51 +0200
+Message-ID: <c6f10db1-7f56-a156-36a1-125e764c8c1a@baylibre.com>
+References: <20200609174959.955926-1-adrian.ratiu@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200602080644.11333-2-mylene.josserand@collabora.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Myl=C3=A8ne_Josserand?= <mylene.josserand@collabora.com>
-Cc: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, devicetree <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, kernel@collabora.com, linux-clk <linux-clk@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200609174959.955926-1-adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
+Cc: Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jun 2, 2020 at 1:37 PM Myl=C3=A8ne Josserand
-<mylene.josserand@collabora.com> wrote:
->
-> The revision rk3288w has a different clock tree about "hclk_vio"
-> clock, according to the BSP kernel code.
->
-> This patch handles this difference by detecting which device-tree
-> we are using. If it is a "rockchip,rk3288-cru", let's register
-> the clock tree as it was before. If the device-tree node is
-> "rockchip,rk3288w-cru", we will apply the difference with this
-> version of this SoC.
->
-> Noticed that this new device-tree compatible must be handled in
-> bootloader such as u-boot.
->
-> Signed-off-by: Myl=C3=A8ne Josserand <mylene.josserand@collabora.com>
-> ---
->  drivers/clk/rockchip/clk-rk3288.c | 20 ++++++++++++++++++--
->  1 file changed, 18 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk=
--rk3288.c
-> index cc2a177bbdbf..204976e2d0cb 100644
-> --- a/drivers/clk/rockchip/clk-rk3288.c
-> +++ b/drivers/clk/rockchip/clk-rk3288.c
-> @@ -425,8 +425,6 @@ static struct rockchip_clk_branch rk3288_clk_branches=
-[] __initdata =3D {
->         COMPOSITE(0, "aclk_vio0", mux_pll_src_cpll_gpll_usb480m_p, CLK_IG=
-NORE_UNUSED,
->                         RK3288_CLKSEL_CON(31), 6, 2, MFLAGS, 0, 5, DFLAGS=
-,
->                         RK3288_CLKGATE_CON(3), 0, GFLAGS),
-> -       DIV(0, "hclk_vio", "aclk_vio0", 0,
-> -                       RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
->         COMPOSITE(0, "aclk_vio1", mux_pll_src_cpll_gpll_usb480m_p, CLK_IG=
-NORE_UNUSED,
->                         RK3288_CLKSEL_CON(31), 14, 2, MFLAGS, 8, 5, DFLAG=
-S,
->                         RK3288_CLKGATE_CON(3), 2, GFLAGS),
-> @@ -819,6 +817,16 @@ static struct rockchip_clk_branch rk3288_clk_branche=
-s[] __initdata =3D {
->         INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, =
-IFLAGS),
->  };
->
-> +static struct rockchip_clk_branch rk3288w_hclkvio_branch[] __initdata =
-=3D {
-> +       DIV(0, "hclk_vio", "aclk_vio1", 0,
-> +                       RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-> +};
-> +
-> +static struct rockchip_clk_branch rk3288_hclkvio_branch[] __initdata =3D=
- {
-> +       DIV(0, "hclk_vio", "aclk_vio0", 0,
-> +                       RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-> +};
-> +
->  static const char *const rk3288_critical_clocks[] __initconst =3D {
->         "aclk_cpu",
->         "aclk_peri",
-> @@ -936,6 +944,14 @@ static void __init rk3288_clk_init(struct device_nod=
-e *np)
->                                    RK3288_GRF_SOC_STATUS1);
->         rockchip_clk_register_branches(ctx, rk3288_clk_branches,
->                                   ARRAY_SIZE(rk3288_clk_branches));
-> +
-> +       if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
-> +               rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branc=
-h,
-> +                                              ARRAY_SIZE(rk3288w_hclkvio=
-_branch));
-> +       else
-> +               rockchip_clk_register_branches(ctx, rk3288_hclkvio_branch=
-,
-> +                                              ARRAY_SIZE(rk3288_hclkvio_=
-branch));
-> +
+Hi Adrian,
 
-Sorry for the late query on this. I am a bit unclear about this
-compatible change, does Linux expect to replace rockchip,rk3288-cru
-with rockchip,rk3288w-cru in bootloader if the chip is RK3288w? or
-append the existing cru compatible node with rockchip,rk3288w-cru?
-because replace new cru node make clock never probe since the
-CLK_OF_DECLARE checking rockchip,rk3288-cru
+On 09/06/2020 19:49, Adrian Ratiu wrote:
+> [Re-submitting to cc dri-devel, sorry about the noise]
+> 
+> Hello all,
+> 
+> v9 cleanly applies on top of latest next-20200609 tree.
+> 
+> v9 does not depend on other patches as the last binding doc has been merged.
+> 
+> All feedback up to this point has been addressed. Specific details in
+> individual patch changelogs.
+> 
+> The biggest changes are the deprecation of the Synopsys DW bridge bind()
+> API in favor of of_drm_find_bridge() and .attach callbacks, the addition
+> of a TODO entry which outlines future planned bridge driver refactorings
+> and a reordering of some i.MX 6 patches to appease checkpatch.
+> 
+> The idea behind the TODO is to get this regmap and i.MX 6 driver merged
+> and then do the rest of refactorings in-tree because it's easier and the
+> refactorings themselves are out-of-scope of this series which is adding
+> i.MX 6 support and is quite big already, so please, if there are more
+> refactoring ideas, let's add them to the TODO doc. :) I intend to tackle
+> those after this series is merged to avoid two complex inter-dependent
+> simultaneous series.
 
-Jagan.
+This has been around here for a long time and you seem to have addressed all
+the reviews.
+
+> 
+> As always more testing is welcome especially on Rockchip and STM SoCs.
+
+It has been tested on STM, but I'd like a feedback on RK platform before applying
+the bridge parts.
+
+Can the imx & stm patches be applied separately ?
+
+Neil
+
+> 
+> Big thank you to everyone who has contributed to this up to now,
+> Adrian
+> 
+> Adrian Ratiu (11):
+>   drm: bridge: dw_mipi_dsi: add initial regmap infrastructure
+>   drm: bridge: dw_mipi_dsi: abstract register access using reg_fields
+>   drm: bridge: dw_mipi_dsi: add dsi v1.01 support
+>   drm: bridge: dw_mipi_dsi: remove bind/unbind API
+>   dt-bindings: display: add i.MX6 MIPI DSI host controller doc
+>   ARM: dts: imx6qdl: add missing mipi dsi properties
+>   drm: imx: Add i.MX 6 MIPI DSI host platform driver
+>   drm: stm: dw-mipi-dsi: let the bridge handle the HW version check
+>   drm: bridge: dw-mipi-dsi: split low power cfg register into fields
+>   drm: bridge: dw-mipi-dsi: fix bad register field offsets
+>   Documentation: gpu: todo: Add dw-mipi-dsi consolidation plan
+> 
+>  .../display/imx/fsl,mipi-dsi-imx6.yaml        | 112 +++
+>  Documentation/gpu/todo.rst                    |  25 +
+>  arch/arm/boot/dts/imx6qdl.dtsi                |   8 +
+>  drivers/gpu/drm/bridge/synopsys/Kconfig       |   1 +
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 713 ++++++++++++------
+>  drivers/gpu/drm/imx/Kconfig                   |   8 +
+>  drivers/gpu/drm/imx/Makefile                  |   1 +
+>  drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c        | 399 ++++++++++
+>  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |   7 +-
+>  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  16 +-
+>  10 files changed, 1059 insertions(+), 231 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
+>  create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c
+> 
