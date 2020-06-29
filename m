@@ -1,72 +1,48 @@
-From: Amit Kucheria <amit.kucheria@verdurent.com>
-Subject: Re: [PATCH v7 09/11] thermal: core: Stop polling DISABLED thermal devices
-Date: Mon, 29 Jun 2020 18:16:39 +0530
-Message-ID: <CAHLCerNsXrkJqU5_Tw_PA8YQLGsHzDg7POrBRtvisBtJixU+CA@mail.gmail.com>
-References: <20200629122925.21729-1-andrzej.p@collabora.com> <20200629122925.21729-10-andrzej.p@collabora.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/2] dt-bindings: sound: convert rk3328 codec binding to
+ yaml
+Date: Mon, 29 Jun 2020 16:00:40 -0600
+Message-ID: <20200629220040.GA3011219@bogus>
+References: <20200623124734.1736470-1-katsuhiro@katsuster.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-renesas-soc-owner@vger.kernel.org>
-In-Reply-To: <20200629122925.21729-10-andrzej.p@collabora.com>
-Sender: linux-renesas-soc-owner@vger.kernel.org
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Cc: Linux PM list <linux-pm@vger.kernel.org>, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, lakml <linux-arm-kernel@lists.infradead.org>, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darr
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20200623124734.1736470-1-katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jun 29, 2020 at 6:00 PM Andrzej Pietrasiewicz
-<andrzej.p@collabora.com> wrote:
->
-> Polling DISABLED devices is not desired, as all such "disabled" devices
-> are meant to be handled by userspace. This patch introduces and uses
-> should_stop_polling() to decide whether the device should be polled or not.
->
-> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-> Reviewed-by: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
-
-Reviewed-by: Amit Kucheria <amit.kucheria@linaro.org>
-
+On Tue, 23 Jun 2020 21:47:33 +0900, Katsuhiro Suzuki wrote:
+> Just convert Rockchip rk3328 audio codec binding to DT schema.
+> 
+> Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
 > ---
->  drivers/thermal/thermal_core.c | 16 ++++++++++++++--
->  1 file changed, 14 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
-> index 52d136780577..e613f5c07bad 100644
-> --- a/drivers/thermal/thermal_core.c
-> +++ b/drivers/thermal/thermal_core.c
-> @@ -301,13 +301,22 @@ static void thermal_zone_device_set_polling(struct thermal_zone_device *tz,
->                 cancel_delayed_work(&tz->poll_queue);
->  }
->
-> +static inline bool should_stop_polling(struct thermal_zone_device *tz)
-> +{
-> +       return !thermal_zone_device_is_enabled(tz);
-> +}
-> +
->  static void monitor_thermal_zone(struct thermal_zone_device *tz)
->  {
-> +       bool stop;
-> +
-> +       stop = should_stop_polling(tz);
-> +
->         mutex_lock(&tz->lock);
->
-> -       if (tz->passive)
-> +       if (!stop && tz->passive)
->                 thermal_zone_device_set_polling(tz, tz->passive_delay);
-> -       else if (tz->polling_delay)
-> +       else if (!stop && tz->polling_delay)
->                 thermal_zone_device_set_polling(tz, tz->polling_delay);
->         else
->                 thermal_zone_device_set_polling(tz, 0);
-> @@ -517,6 +526,9 @@ void thermal_zone_device_update(struct thermal_zone_device *tz,
->  {
->         int count;
->
-> +       if (should_stop_polling(tz))
-> +               return;
-> +
->         if (atomic_read(&in_suspend))
->                 return;
->
-> --
-> 2.17.1
->
+>  .../bindings/sound/rockchip,rk3328-codec.txt  | 28 ---------
+>  .../bindings/sound/rockchip,rk3328-codec.yaml | 61 +++++++++++++++++++
+>  2 files changed, 61 insertions(+), 28 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt
+>  create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml
+> 
+
+
+My bot found errors running 'make dt_binding_check' on your patch:
+
+Error: Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.example.dts:22.26-27 syntax error
+FATAL ERROR: Unable to parse input tree
+scripts/Makefile.lib:315: recipe for target 'Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.example.dt.yaml' failed
+make[1]: *** [Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.example.dt.yaml] Error 1
+make[1]: *** Waiting for unfinished jobs....
+Makefile:1347: recipe for target 'dt_binding_check' failed
+make: *** [dt_binding_check] Error 2
+
+
+See https://patchwork.ozlabs.org/patch/1315234
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure dt-schema is up to date:
+
+pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
+
+Please check and re-submit.
