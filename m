@@ -1,122 +1,177 @@
-From: sugar zhang <sugar.zhang@rock-chips.com>
-Subject: Re: [PATCH v2 01/13] dmaengine: pl330: Remove the burst limit for
- quirk 'NO-FLUSHP'
-Date: Mon, 29 Jun 2020 09:38:54 +0800
-Message-ID: <879c88ef-1d74-26d5-1641-efeb450362fa@rock-chips.com>
-References: <1591665267-37713-1-git-send-email-sugar.zhang@rock-chips.com>
- <1591665267-37713-2-git-send-email-sugar.zhang@rock-chips.com>
- <20200624075437.GT2324254@vkoul-mobl>
+From: Amit Kucheria <amit.kucheria@verdurent.com>
+Subject: Re: [PATCH v7 11/11] thermal: Rename set_mode() to change_mode()
+Date: Mon, 29 Jun 2020 18:18:50 +0530
+Message-ID: <CAHLCerONdxx=x_ykO=JjpM5AB08ZX3ukhKVWgPARcS5V7q80Gw@mail.gmail.com>
+References: <20200629122925.21729-1-andrzej.p@collabora.com> <20200629122925.21729-12-andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200624075437.GT2324254@vkoul-mobl>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Vinod Koul <vkoul@kernel.org>
-Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>, dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <20200629122925.21729-12-andrzej.p@collabora.com>
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Cc: Linux PM list <linux-pm@vger.kernel.org>, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, lakml <linux-arm-kernel@lists.infradead.org>, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darr
 List-Id: linux-rockchip.vger.kernel.org
 
+On Mon, Jun 29, 2020 at 6:00 PM Andrzej Pietrasiewicz
+<andrzej.p@collabora.com> wrote:
+>
+> set_mode() is only called when tzd's mode is about to change. Actual
+> setting is performed in thermal_core, in thermal_zone_device_set_mode().
+> The meaning of set_mode() callback is actually to notify the driver about
+> the mode being changed and giving the driver a chance to oppose such
+> change.
+>
+> To better reflect the purpose of the method rename it to change_mode()
+>
+> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+> [for acerhdf]
+> Acked-by: Peter Kaestle <peter@piie.net>
+> Reviewed-by: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
 
-On 2020/6/24 15:54, Vinod Koul wrote:
-> On 09-06-20, 09:14, Sugar Zhang wrote:
->> There is no reason to limit the performance on the 'NO-FLUSHP' SoCs,
->> cuz these platforms are just that the 'FLUSHP' instruction is broken.
-> Lets not use terms like cuz... 'because' is perfect term :)
+Reviewed-by: Amit Kucheria <amit.kucheria@linaro.org>
+
+> ---
+>  drivers/platform/x86/acerhdf.c                          | 6 +++---
+>  drivers/thermal/imx_thermal.c                           | 8 ++++----
+>  drivers/thermal/intel/int340x_thermal/int3400_thermal.c | 6 +++---
+>  drivers/thermal/intel/intel_quark_dts_thermal.c         | 6 +++---
+>  drivers/thermal/thermal_core.c                          | 4 ++--
+>  include/linux/thermal.h                                 | 2 +-
+>  6 files changed, 16 insertions(+), 16 deletions(-)
 >
-> It can rephrased to:
-> There is no reason to limit the performance on the 'NO-FLUSHP' SoCs
-> beacuse 'FLUSHP' instruction is broken on these platforms, so remove the
-> limit to improve the efficiency
-Thanks, I will send a v3 including these.
+> diff --git a/drivers/platform/x86/acerhdf.c b/drivers/platform/x86/acerhdf.c
+> index 76323855c80c..f816a8a13039 100644
+> --- a/drivers/platform/x86/acerhdf.c
+> +++ b/drivers/platform/x86/acerhdf.c
+> @@ -413,8 +413,8 @@ static inline void acerhdf_enable_kernelmode(void)
+>   *          the temperature and the fan.
+>   * disabled: the BIOS takes control of the fan.
+>   */
+> -static int acerhdf_set_mode(struct thermal_zone_device *thermal,
+> -                           enum thermal_device_mode mode)
+> +static int acerhdf_change_mode(struct thermal_zone_device *thermal,
+> +                              enum thermal_device_mode mode)
+>  {
+>         if (mode == THERMAL_DEVICE_DISABLED && kernelmode)
+>                 acerhdf_revert_to_bios_mode();
+> @@ -473,7 +473,7 @@ static struct thermal_zone_device_ops acerhdf_dev_ops = {
+>         .bind = acerhdf_bind,
+>         .unbind = acerhdf_unbind,
+>         .get_temp = acerhdf_get_ec_temp,
+> -       .set_mode = acerhdf_set_mode,
+> +       .change_mode = acerhdf_change_mode,
+>         .get_trip_type = acerhdf_get_trip_type,
+>         .get_trip_hyst = acerhdf_get_trip_hyst,
+>         .get_trip_temp = acerhdf_get_trip_temp,
+> diff --git a/drivers/thermal/imx_thermal.c b/drivers/thermal/imx_thermal.c
+> index a02398118d88..9700ae39feb7 100644
+> --- a/drivers/thermal/imx_thermal.c
+> +++ b/drivers/thermal/imx_thermal.c
+> @@ -330,8 +330,8 @@ static int imx_get_temp(struct thermal_zone_device *tz, int *temp)
+>         return 0;
+>  }
 >
->> so, remove the limit to improve the efficiency.
->>
->> Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
->> ---
->>
->> Changes in v2: None
->>
->>   drivers/dma/pl330.c | 34 ++++++++++++++++++++++------------
->>   1 file changed, 22 insertions(+), 12 deletions(-)
->>
->> diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
->> index 6a158ee..ff0a91f 100644
->> --- a/drivers/dma/pl330.c
->> +++ b/drivers/dma/pl330.c
->> @@ -1183,9 +1183,6 @@ static inline int _ldst_peripheral(struct pl330_dmac *pl330,
->>   {
->>   	int off = 0;
->>   
->> -	if (pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
->> -		cond = BURST;
->> -
->>   	/*
->>   	 * do FLUSHP at beginning to clear any stale dma requests before the
->>   	 * first WFP.
->> @@ -1231,8 +1228,9 @@ static int _bursts(struct pl330_dmac *pl330, unsigned dry_run, u8 buf[],
->>   }
->>   
->>   /*
->> - * transfer dregs with single transfers to peripheral, or a reduced size burst
->> - * for mem-to-mem.
->> + * only the unaligned bursts transfers have the dregs.
->> + * transfer dregs with a reduced size burst to peripheral,
->> + * or a reduced size burst for mem-to-mem.
-> This is not related to broken flush and should be a different patch
-> explaining why this changes were done
-ok, I will split this patch in v3.
->>    */
->>   static int _dregs(struct pl330_dmac *pl330, unsigned int dry_run, u8 buf[],
->>   		const struct _xfer_spec *pxs, int transfer_length)
->> @@ -1247,8 +1245,23 @@ static int _dregs(struct pl330_dmac *pl330, unsigned int dry_run, u8 buf[],
->>   	case DMA_MEM_TO_DEV:
->>   		/* fall through */
->>   	case DMA_DEV_TO_MEM:
->> -		off += _ldst_peripheral(pl330, dry_run, &buf[off], pxs,
->> -			transfer_length, SINGLE);
->> +		/*
->> +		 * dregs_len = (total bytes - BURST_TO_BYTE(bursts, ccr)) /
->> +		 *             BRST_SIZE(ccr)
->> +		 * the dregs len must be smaller than burst len,
->> +		 * so, for higher efficiency, we can modify CCR
->> +		 * to use a reduced size burst len for the dregs.
->> +		 */
->> +		dregs_ccr = pxs->ccr;
->> +		dregs_ccr &= ~((0xf << CC_SRCBRSTLEN_SHFT) |
->> +			(0xf << CC_DSTBRSTLEN_SHFT));
->> +		dregs_ccr |= (((transfer_length - 1) & 0xf) <<
->> +			CC_SRCBRSTLEN_SHFT);
->> +		dregs_ccr |= (((transfer_length - 1) & 0xf) <<
->> +			CC_DSTBRSTLEN_SHFT);
->> +		off += _emit_MOV(dry_run, &buf[off], CCR, dregs_ccr);
->> +		off += _ldst_peripheral(pl330, dry_run, &buf[off], pxs, 1,
->> +					BURST);
->>   		break;
->>   
->>   	case DMA_MEM_TO_MEM:
->> @@ -2221,9 +2234,7 @@ static bool pl330_prep_slave_fifo(struct dma_pl330_chan *pch,
->>   
->>   static int fixup_burst_len(int max_burst_len, int quirks)
->>   {
->> -	if (quirks & PL330_QUIRK_BROKEN_NO_FLUSHP)
->> -		return 1;
->> -	else if (max_burst_len > PL330_MAX_BURST)
->> +	if (max_burst_len > PL330_MAX_BURST)
->>   		return PL330_MAX_BURST;
->>   	else if (max_burst_len < 1)
->>   		return 1;
->> @@ -3128,8 +3139,7 @@ pl330_probe(struct amba_device *adev, const struct amba_id *id)
->>   	pd->dst_addr_widths = PL330_DMA_BUSWIDTHS;
->>   	pd->directions = BIT(DMA_DEV_TO_MEM) | BIT(DMA_MEM_TO_DEV);
->>   	pd->residue_granularity = DMA_RESIDUE_GRANULARITY_BURST;
->> -	pd->max_burst = ((pl330->quirks & PL330_QUIRK_BROKEN_NO_FLUSHP) ?
->> -			 1 : PL330_MAX_BURST);
->> +	pd->max_burst = PL330_MAX_BURST;
->>   
->>   	ret = dma_async_device_register(pd);
->>   	if (ret) {
->> -- 
->> 2.7.4
->>
->>
--- 
+> -static int imx_set_mode(struct thermal_zone_device *tz,
+> -                       enum thermal_device_mode mode)
+> +static int imx_change_mode(struct thermal_zone_device *tz,
+> +                          enum thermal_device_mode mode)
+>  {
+>         struct imx_thermal_data *data = tz->devdata;
+>         struct regmap *map = data->tempmon;
+> @@ -447,7 +447,7 @@ static struct thermal_zone_device_ops imx_tz_ops = {
+>         .bind = imx_bind,
+>         .unbind = imx_unbind,
+>         .get_temp = imx_get_temp,
+> -       .set_mode = imx_set_mode,
+> +       .change_mode = imx_change_mode,
+>         .get_trip_type = imx_get_trip_type,
+>         .get_trip_temp = imx_get_trip_temp,
+>         .get_crit_temp = imx_get_crit_temp,
+> @@ -860,7 +860,7 @@ static int __maybe_unused imx_thermal_suspend(struct device *dev)
+>          * Need to disable thermal sensor, otherwise, when thermal core
+>          * try to get temperature before thermal sensor resume, a wrong
+>          * temperature will be read as the thermal sensor is powered
+> -        * down. This is done in set_mode() operation called from
+> +        * down. This is done in change_mode() operation called from
+>          * thermal_zone_device_disable()
+>          */
+>         ret = thermal_zone_device_disable(data->tz);
+> diff --git a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+> index ce49d3b100d5..d3732f624913 100644
+> --- a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+> +++ b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
+> @@ -377,8 +377,8 @@ static int int3400_thermal_get_temp(struct thermal_zone_device *thermal,
+>         return 0;
+>  }
+>
+> -static int int3400_thermal_set_mode(struct thermal_zone_device *thermal,
+> -                               enum thermal_device_mode mode)
+> +static int int3400_thermal_change_mode(struct thermal_zone_device *thermal,
+> +                                      enum thermal_device_mode mode)
+>  {
+>         struct int3400_thermal_priv *priv = thermal->devdata;
+>         int result = 0;
+> @@ -399,7 +399,7 @@ static int int3400_thermal_set_mode(struct thermal_zone_device *thermal,
+>
+>  static struct thermal_zone_device_ops int3400_thermal_ops = {
+>         .get_temp = int3400_thermal_get_temp,
+> -       .set_mode = int3400_thermal_set_mode,
+> +       .change_mode = int3400_thermal_change_mode,
+>  };
+>
+>  static struct thermal_zone_params int3400_thermal_params = {
+> diff --git a/drivers/thermal/intel/intel_quark_dts_thermal.c b/drivers/thermal/intel/intel_quark_dts_thermal.c
+> index e29c3e330b17..3eafc6b0e6c3 100644
+> --- a/drivers/thermal/intel/intel_quark_dts_thermal.c
+> +++ b/drivers/thermal/intel/intel_quark_dts_thermal.c
+> @@ -298,8 +298,8 @@ static int sys_get_curr_temp(struct thermal_zone_device *tzd,
+>         return 0;
+>  }
+>
+> -static int sys_set_mode(struct thermal_zone_device *tzd,
+> -                               enum thermal_device_mode mode)
+> +static int sys_change_mode(struct thermal_zone_device *tzd,
+> +                          enum thermal_device_mode mode)
+>  {
+>         int ret;
+>
+> @@ -319,7 +319,7 @@ static struct thermal_zone_device_ops tzone_ops = {
+>         .get_trip_type = sys_get_trip_type,
+>         .set_trip_temp = sys_set_trip_temp,
+>         .get_crit_temp = sys_get_crit_temp,
+> -       .set_mode = sys_set_mode,
+> +       .change_mode = sys_change_mode,
+>  };
+>
+>  static void free_soc_dts(struct soc_sensor_entry *aux_entry)
+> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
+> index e613f5c07bad..a61e91513584 100644
+> --- a/drivers/thermal/thermal_core.c
+> +++ b/drivers/thermal/thermal_core.c
+> @@ -482,8 +482,8 @@ static int thermal_zone_device_set_mode(struct thermal_zone_device *tz,
+>                 return ret;
+>         }
+>
+> -       if (tz->ops->set_mode)
+> -               ret = tz->ops->set_mode(tz, mode);
+> +       if (tz->ops->change_mode)
+> +               ret = tz->ops->change_mode(tz, mode);
+>
+>         if (!ret)
+>                 tz->mode = mode;
+> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+> index df013c39ba9b..b9efaa780d88 100644
+> --- a/include/linux/thermal.h
+> +++ b/include/linux/thermal.h
+> @@ -76,7 +76,7 @@ struct thermal_zone_device_ops {
+>                        struct thermal_cooling_device *);
+>         int (*get_temp) (struct thermal_zone_device *, int *);
+>         int (*set_trips) (struct thermal_zone_device *, int, int);
+> -       int (*set_mode) (struct thermal_zone_device *,
+> +       int (*change_mode) (struct thermal_zone_device *,
+>                 enum thermal_device_mode);
+>         int (*get_trip_type) (struct thermal_zone_device *, int,
+>                 enum thermal_trip_type *);
+> --
+> 2.17.1
+>
