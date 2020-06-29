@@ -1,603 +1,389 @@
-From: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
-Subject: Re: [PATCH v7 07/11] thermal: Use mode helpers in drivers
-Date: Mon, 29 Jun 2020 16:14:02 +0200
-Message-ID: <c4977387-0f70-f9c5-f543-61ce7501fb12@samsung.com>
-References: <20200629122925.21729-1-andrzej.p@collabora.com>
-        <CGME20200629123002eucas1p2a1f3a734d320fff4d1a38f994201f8f3@eucas1p2.samsung.com>
-        <20200629122925.21729-8-andrzej.p@collabora.com>
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Subject: Re: [RFC v3 2/2] media: staging: rkisp1: allow quantization
+ conversion from userspace for isp source pad
+Date: Mon, 29 Jun 2020 15:21:18 +0300
+Message-ID: <20200629122118.GC10681@pendragon.ideasonboard.com>
+References: <a163dbb3-8278-684e-6324-4c36924ed335@collabora.com>
+ <20200618192535.GD73379@chromium.org>
+ <67cdd3be-ee2a-3b88-5d17-d9d1d17b2603@collabora.com>
+ <CAAFQd5Bkh1QphjQtMyWQeN7wtK93YN2PeU-bKkUFh46PQ=ujLw@mail.gmail.com>
+ <20200628131537.GT6954@pendragon.ideasonboard.com>
+ <CAAFQd5BDXJVZ1UNvbLwccFnTOoQ_U7MdZhQNNzQSZtn9ne40cA@mail.gmail.com>
+ <20200628202700.GV6954@pendragon.ideasonboard.com>
+ <CAAFQd5AE+QB-ntLr_q5sY=gHQcqBr2LcfjB5Kb_1AAjioLA1vw@mail.gmail.com>
+ <20200628213735.GA6954@pendragon.ideasonboard.com>
+ <11703a19-2372-95d5-c09f-ff7142c7e5bd@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-renesas-soc-owner@vger.kernel.org>
-In-Reply-To: <20200629122925.21729-8-andrzej.p@collabora.com>
-Content-Language: en-US
-Sender: linux-renesas-soc-owner@vger.kernel.org
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-media-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <11703a19-2372-95d5-c09f-ff7142c7e5bd@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: Tomasz Figa <tfiga@chromium.org>, Helen Koike <helen.koike@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Sakari Ailus <sakari.ailus@linux.intel.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Dafna,
 
-On 6/29/20 2:29 PM, Andrzej Pietrasiewicz wrote:
-> Use thermal_zone_device_{en|dis}able() and thermal_zone_device_is_enabled().
+On Mon, Jun 29, 2020 at 02:08:39PM +0200, Dafna Hirschfeld wrote:
+> On 28.06.20 23:37, Laurent Pinchart wrote:
+> > On Sun, Jun 28, 2020 at 11:33:30PM +0200, Tomasz Figa wrote:
+> >> On Sun, Jun 28, 2020 at 10:27 PM Laurent Pinchart wrote:
+> >>> On Sun, Jun 28, 2020 at 04:59:34PM +0200, Tomasz Figa wrote:
+> >>>> On Sun, Jun 28, 2020 at 3:15 PM Laurent Pinchart wrote:
+> >>>>> On Sun, Jun 28, 2020 at 03:10:41PM +0200, Tomasz Figa wrote:
+> >>>>>> On Fri, Jun 26, 2020 at 2:15 AM Helen Koike <helen.koike@collabora.com> wrote:
+> >>>>>>> On 6/18/20 4:25 PM, Tomasz Figa wrote:
+> >>>>>>>> On Thu, Jun 18, 2020 at 08:54:34PM +0200, Dafna Hirschfeld wrote:
+> >>>>>>>>> On 18.06.20 20:49, Tomasz Figa wrote:
+> >>>>>>>>>> On Thu, Jun 18, 2020 at 08:26:33PM +0200, Dafna Hirschfeld wrote:
+> >>>>>>>>>>> On 18.06.20 19:27, Tomasz Figa wrote:
+> >>>>>>>>>>>> On Wed, Jun 10, 2020 at 2:08 PM Tomasz Figa wrote:
+> >>>>>>>>>>>>> On Thu, Jun 4, 2020 at 9:11 PM Dafna Hirschfeld wrote:
+> >>>>>>>>>>>>>> On 04.06.20 19:54, Tomasz Figa wrote:
+> >>>>>>>>>>>>>>> On Thu, Apr 16, 2020 at 04:56:05PM +0200, Dafna Hirschfeld wrote:
+> >>>>>>>>>>>>>>>> The isp entity has a hardware support to force full range quantization
+> >>>>>>>>>>>>>>>> for YUV formats. Use the new API to indicate userspace that
+> >>>>>>>>>>>>>>>> quantization conversion is supported by adding the flag
+> >>>>>>>>>>>>>>>> V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION during media code enumeration.
+> >>>>>>>>>>>>>>>> Then uppon s_fmt on the video source pad, we assign the
+> >>>>>>>>>>>>>>>> quantization from userspace for YUV formats.
+> >>>>>>>>>>>>>>>> Also in the capture and resizer entities we retrieve the colorspace
+> >>>>>>>>>>>>>>>> from the isp entity.
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> >>>>>>>>>>>>>>>> ---
+> >>>>>>>>>>>>>>>>      drivers/staging/media/rkisp1/rkisp1-capture.c | 28 ++++++-------
+> >>>>>>>>>>>>>>>>      drivers/staging/media/rkisp1/rkisp1-common.h  |  2 +
+> >>>>>>>>>>>>>>>>      drivers/staging/media/rkisp1/rkisp1-isp.c     | 39 +++++++++++++++++--
+> >>>>>>>>>>>>>>>>      drivers/staging/media/rkisp1/rkisp1-resizer.c | 13 +++++++
+> >>>>>>>>>>>>>>>>      4 files changed, 65 insertions(+), 17 deletions(-)
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> >>>>>>>>>>>>>>>> index fbf62399fe3d..aca0f93bc772 100644
+> >>>>>>>>>>>>>>>> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+> >>>>>>>>>>>>>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> >>>>>>>>>>>>>>>> @@ -1066,14 +1066,13 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
+> >>>>>>>>>>>>>>>>                            const struct v4l2_format_info **fmt_info)
+> >>>>>>>>>>>>>>>>      {
+> >>>>>>>>>>>>>>>>         const struct rkisp1_capture_config *config = cap->config;
+> >>>>>>>>>>>>>>>> -    struct rkisp1_capture *other_cap =
+> >>>>>>>>>>>>>>>> -                    &cap->rkisp1->capture_devs[cap->id ^ 1];
+> >>>>>>>>>>>>>>>>         const struct rkisp1_capture_fmt_cfg *fmt;
+> >>>>>>>>>>>>>>>>         const struct v4l2_format_info *info;
+> >>>>>>>>>>>>>>>>         const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
+> >>>>>>>>>>>>>>>>                                             RKISP1_RSZ_SP_SRC_MAX_WIDTH };
+> >>>>>>>>>>>>>>>>         const unsigned int max_heights[] = { RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
+> >>>>>>>>>>>>>>>>                                              RKISP1_RSZ_SP_SRC_MAX_HEIGHT};
+> >>>>>>>>>>>>>>>> +    struct v4l2_subdev_format isp_sd_fmt;
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>>         fmt = rkisp1_find_fmt_cfg(cap, pixm->pixelformat);
+> >>>>>>>>>>>>>>>>         if (!fmt) {
+> >>>>>>>>>>>>>>>> @@ -1081,24 +1080,27 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
+> >>>>>>>>>>>>>>>>                 pixm->pixelformat = fmt->fourcc;
+> >>>>>>>>>>>>>>>>         }
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>> +    rkisp1_get_isp_src_fmt(cap->rkisp1, &isp_sd_fmt);
+> >>>>>>>>>>>>>>>> +    pixm->field = isp_sd_fmt.format.field;
+> >>>>>>>>>>>>>>>> +    pixm->colorspace = isp_sd_fmt.format.colorspace;
+> >>>>>>>>>>>>>>>> +    pixm->ycbcr_enc = isp_sd_fmt.format.ycbcr_enc;
+> >>>>>>>>>>>>>>>> +    pixm->xfer_func = isp_sd_fmt.format.xfer_func;
+> >>>>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>>>> +    /*
+> >>>>>>>>>>>>>>>> +     * isp has a feature to set full range quantization for yuv formats.
+> >>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>> How about "select between limited and full range for YUV formats"?
+> >>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>> +     * so we need to get the format from the isp.
+> >>>>>>>>>>>>>>>> +     */
+> >>>>>>>>>>>>>>>> +    pixm->quantization = isp_sd_fmt.format.quantization;
+> >>>>>>>>>>>>>>>> +    if (!v4l2_is_format_yuv(cap->pix.info))
+> >>>>>>>>>>>>>>>> +            pixm->quantization = V4L2_QUANTIZATION_FULL_RANGE;
+> >>>>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>>>>         pixm->width = clamp_t(u32, pixm->width,
+> >>>>>>>>>>>>>>>>                               RKISP1_RSZ_SRC_MIN_WIDTH, max_widths[cap->id]);
+> >>>>>>>>>>>>>>>>         pixm->height = clamp_t(u32, pixm->height,
+> >>>>>>>>>>>>>>>>                                RKISP1_RSZ_SRC_MIN_HEIGHT, max_heights[cap->id]);
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>> -    pixm->field = V4L2_FIELD_NONE;
+> >>>>>>>>>>>>>>>> -    pixm->colorspace = V4L2_COLORSPACE_DEFAULT;
+> >>>>>>>>>>>>>>>> -    pixm->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+> >>>>>>>>>>>>>>>> -
+> >>>>>>>>>>>>>>>>         info = rkisp1_fill_pixfmt(pixm, cap->id);
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>> -    /* can not change quantization when stream-on */
+> >>>>>>>>>>>>>>>> -    if (other_cap->is_streaming)
+> >>>>>>>>>>>>>>>> -            pixm->quantization = other_cap->pix.fmt.quantization;
+> >>>>>>>>>>>>>>>> -    /* output full range by default, take effect in params */
+> >>>>>>>>>>>>>>>> -    else if (!pixm->quantization ||
+> >>>>>>>>>>>>>>>> -             pixm->quantization > V4L2_QUANTIZATION_LIM_RANGE)
+> >>>>>>>>>>>>>>>> -            pixm->quantization = V4L2_QUANTIZATION_FULL_RANGE;
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>>         if (fmt_cfg)
+> >>>>>>>>>>>>>>>>                 *fmt_cfg = fmt;
+> >>>>>>>>>>>>>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+> >>>>>>>>>>>>>>>> index 2d7b7e078636..7a5576fa14c9 100644
+> >>>>>>>>>>>>>>>> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
+> >>>>>>>>>>>>>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+> >>>>>>>>>>>>>>>> @@ -300,6 +300,8 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1,
+> >>>>>>>>>>>>>>>>                         struct v4l2_device *v4l2_dev);
+> >>>>>>>>>>>>>>>>      void rkisp1_isp_unregister(struct rkisp1_device *rkisp1);
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>> +int rkisp1_get_isp_src_fmt(struct rkisp1_device *rkisp1,
+> >>>>>>>>>>>>>>>> +                       struct v4l2_subdev_format *sd_fmt);
+> >>>>>>>>>>>>>>>>      const struct rkisp1_isp_mbus_info *rkisp1_isp_mbus_info_get(u32 mbus_code);
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>>      irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1);
+> >>>>>>>>>>>>>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
+> >>>>>>>>>>>>>>>> index dee8e96f3900..6fdf5ed0b6b1 100644
+> >>>>>>>>>>>>>>>> --- a/drivers/staging/media/rkisp1/rkisp1-isp.c
+> >>>>>>>>>>>>>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
+> >>>>>>>>>>>>>>>> @@ -613,6 +613,10 @@ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>>                 if (code->index == pos - 1) {
+> >>>>>>>>>>>>>>>>                         code->code = fmt->mbus_code;
+> >>>>>>>>>>>>>>>> +                    if (fmt->pixel_enc == V4L2_PIXEL_ENC_YUV &&
+> >>>>>>>>>>>>>>>> +                        dir == RKISP1_DIR_SRC)
+> >>>>>>>>>>>>>>>> +                            code->flags =
+> >>>>>>>>>>>>>>>> +                                    V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION;
+> >>>>>>>>>>>>>>>>                         return 0;
+> >>>>>>>>>>>>>>>>                 }
+> >>>>>>>>>>>>>>>>         }
+> >>>>>>>>>>>>>>>> @@ -639,12 +643,21 @@ static int rkisp1_isp_init_config(struct v4l2_subdev *sd,
+> >>>>>>>>>>>>>>>>         sink_crop->height = RKISP1_DEFAULT_HEIGHT;
+> >>>>>>>>>>>>>>>>         sink_crop->left = 0;
+> >>>>>>>>>>>>>>>>         sink_crop->top = 0;
+> >>>>>>>>>>>>>>>> +    sink_fmt->colorspace = V4L2_COLORSPACE_SRGB;
+> >>>>>>>>>>>>>>>> +    sink_fmt->ycbcr_enc = V4L2_MAP_YCBCR_ENC_DEFAULT(sink_fmt->colorspace);
+> >>>>>>>>>>>>>>>> +    sink_fmt->xfer_func = V4L2_MAP_XFER_FUNC_DEFAULT(sink_fmt->colorspace);
+> >>>>>>>>>>>>>>>> +    sink_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
+> >>>>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>>         src_fmt = v4l2_subdev_get_try_format(sd, cfg,
+> >>>>>>>>>>>>>>>>                                              RKISP1_ISP_PAD_SOURCE_VIDEO);
+> >>>>>>>>>>>>>>>>         *src_fmt = *sink_fmt;
+> >>>>>>>>>>>>>>>>         src_fmt->code = RKISP1_DEF_SRC_PAD_FMT;
+> >>>>>>>>>>>>>>>> -    src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
+> >>>>>>>>>>>>>>>> +    src_fmt->colorspace = V4L2_COLORSPACE_SRGB;
+> >>>>>>>>>>>>>>>> +    src_fmt->ycbcr_enc = V4L2_MAP_YCBCR_ENC_DEFAULT(src_fmt->colorspace);
+> >>>>>>>>>>>>>>>> +    src_fmt->xfer_func = V4L2_MAP_XFER_FUNC_DEFAULT(src_fmt->colorspace);
+> >>>>>>>>>>>>>>>> +    src_fmt->quantization = V4L2_QUANTIZATION_LIM_RANGE;
+> >>>>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>>         src_crop = v4l2_subdev_get_try_crop(sd, cfg,
+> >>>>>>>>>>>>>>>>                                             RKISP1_ISP_PAD_SOURCE_VIDEO);
+> >>>>>>>>>>>>>>>> @@ -687,10 +700,17 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+> >>>>>>>>>>>>>>>>                 isp->src_fmt = mbus_info;
+> >>>>>>>>>>>>>>>>         src_fmt->width  = src_crop->width;
+> >>>>>>>>>>>>>>>>         src_fmt->height = src_crop->height;
+> >>>>>>>>>>>>>>>> -    src_fmt->quantization = format->quantization;
+> >>>>>>>>>>>>>>>> -    /* full range by default */
+> >>>>>>>>>>>>>>>> -    if (!src_fmt->quantization)
+> >>>>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>>>> +    src_fmt->colorspace = V4L2_COLORSPACE_SRGB;
+> >>>>>>>>>>>>>>>> +    src_fmt->ycbcr_enc = V4L2_MAP_YCBCR_ENC_DEFAULT(src_fmt->colorspace);
+> >>>>>>>>>>>>>>>> +    src_fmt->xfer_func = V4L2_MAP_XFER_FUNC_DEFAULT(src_fmt->colorspace);
+> >>>>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>>>> +    if (mbus_info->pixel_enc == V4L2_PIXEL_ENC_BAYER)
+> >>>>>>>>>>>>>>>>                 src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
+> >>>>>>>>>>>>>>>> +    else if (format->quantization == V4L2_QUANTIZATION_DEFAULT)
+> >>>>>>>>>>>>>>>> +            src_fmt->quantization = V4L2_QUANTIZATION_LIM_RANGE;
+> >>>>>>>>>>>>>>>> +    else
+> >>>>>>>>>>>>>>>> +            src_fmt->quantization = format->quantization;
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>>         *format = *src_fmt;
+> >>>>>>>>>>>>>>>>      }
+> >>>>>>>>>>>>>>>> @@ -1068,6 +1088,17 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1,
+> >>>>>>>>>>>>>>>>         return ret;
+> >>>>>>>>>>>>>>>>      }
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>> +int rkisp1_get_isp_src_fmt(struct rkisp1_device *rkisp1,
+> >>>>>>>>>>>>>>>> +                       struct v4l2_subdev_format *sd_fmt)
+> >>>>>>>>>>>>>>>> +{
+> >>>>>>>>>>>>>>>> +    struct rkisp1_isp *isp = &rkisp1->isp;
+> >>>>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>>>> +    sd_fmt->which = V4L2_SUBDEV_FORMAT_ACTIVE;
+> >>>>>>>>>>>>>>>> +    sd_fmt->pad = RKISP1_ISP_PAD_SOURCE_VIDEO;
+> >>>>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>>>> +    return v4l2_subdev_call(&isp->sd, pad, get_fmt, NULL, sd_fmt);
+> >>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>> Do we need to get through the external API to access data that is
+> >>>>>>>>>>>>>>> driver-internal anyway?
+> >>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>> +}
+> >>>>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>>>>      void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
+> >>>>>>>>>>>>>>>>      {
+> >>>>>>>>>>>>>>>>         struct v4l2_subdev *sd = &rkisp1->isp.sd;
+> >>>>>>>>>>>>>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> >>>>>>>>>>>>>>>> index 7b6b7ddd4169..8705b133de68 100644
+> >>>>>>>>>>>>>>>> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> >>>>>>>>>>>>>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+> >>>>>>>>>>>>>>>> @@ -525,6 +525,7 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
+> >>>>>>>>>>>>>>>>         const struct rkisp1_isp_mbus_info *mbus_info;
+> >>>>>>>>>>>>>>>>         struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
+> >>>>>>>>>>>>>>>>         struct v4l2_rect *sink_crop;
+> >>>>>>>>>>>>>>>> +    struct v4l2_subdev_format isp_sd_fmt;
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>>         sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, cfg, RKISP1_RSZ_PAD_SINK, which);
+> >>>>>>>>>>>>>>>>         src_fmt = rkisp1_rsz_get_pad_fmt(rsz, cfg, RKISP1_RSZ_PAD_SRC, which);
+> >>>>>>>>>>>>>>>> @@ -539,8 +540,20 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
+> >>>>>>>>>>>>>>>>         if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
+> >>>>>>>>>>>>>>>>                 rsz->pixel_enc = mbus_info->pixel_enc;
+> >>>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>>> +    rkisp1_get_isp_src_fmt(rsz->rkisp1, &isp_sd_fmt);
+> >>>>>>>>>>>>>>>> +
+> >>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>> Is this necessary? My understanding was that in the subdev model, it was
+> >>>>>>>>>>>>>>> the userspace responsibility to propagate any configuration changes through
+> >>>>>>>>>>>>>>> the graph.
+> >>>>>>>>>>>>>>>
+> >>>>>>>>>>>>>>> Also, doing this only here wouldn't fully maintain the
+> >>>>>>>>>>>>>>> consistency of the state. For example, if one sets the ISP subdev format
+> >>>>>>>>>>>>>>> first, then the resizer subdev and then the ISP subdev again, wouldn't the
+> >>>>>>>>>>>>>>> resizer subdev end up with a wrong format?
+> >>>>>>>>>>>>>>
+> >>>>>>>>>>>>>> yes, this is indeed a bug, I am preparing v4 now.
+> >>>>>>>>>>>>>> What I thought to do is adding quantization conversion
+> >>>>>>>>>>>>>> support also on ther resizer and capture entities.
+> >>>>>>>>>>>>>> Then in the 'link_validation' callbacks, there
+> >>>>>>>>>>>>>> is a validation that the quantization fields matches.
+> >>>>>>>>>>>>>
+> >>>>>>>>>>>>> My understanding is that, if we have the following topology
+> >>>>>>>>>>>>>
+> >>>>>>>>>>>>> [ ISP ] -> [ Resizer ] -> [ Video node ]
+> >>>>>>>>>>>>>
+> >>>>>>>>>>>>> then the ISP source pad would have the csc capability, while resizer
+> >>>>>>>>>>>>> and video node would just accept whatever is configured on their sink
+> >>>>>>>>>>>>> pads (no need for csc capability for that) and propagate that to their
+> >>>>>>>>>>>>> outputs, i.e. resizer source pad and video node CAPTURE format.
+> >>>>>>>>>>>>>
+> >>>>>>>>>>>>> Is this what you were going to implement?
+> >>>>>>>>>>> Hi, I sent a v4 where the CSC capability is set on the reiszer and capture as well.
+> >>>>>>>>>>> I can send a v5 implementing it the way you suggest. Currently the doc says that the colorspace fields
+> >>>>>>>>>>> must be set by the driver for capture streams. This implies that userspace can set it
+> >>>>>>>>>>> only if the CSC is supported.
+> >>>>>>>>>>
+> >>>>>>>>>> Why would the userspace have to set it for the capture stream on the
+> >>>>>>>>>> resizer and video nodes? Couldn't the userspace set it to DEFAULT and
+> >>>>>>>>>> then the driver override to whatever it received on the corresponding
+> >>>>>>>>>> sink?
+> >>>>>>>
+> >>>>>>> According to the documentation [1]:
+> >>>>>>>
+> >>>>>>> "the default quantization encoding as defined by the colorspace"
+> >>>>>>>
+> >>>>>>> Then, for instance, the default for V4L2_COLORSPACE_SRGB is limited range [2].
+> >>>>>>>
+> >>>>>>> Unless we change the definition of DEFAULT to let it accept whatever it receives on the corresponding sink.
+> >>>>>>>
+> >>>>>>> Then the way I understand is:
+> >>>>>>>
+> >>>>>>> [sensor]->[isp]->[resizer]->[capture]
+> >>>>>>>
+> >>>>>>> Userspace should set quantization on:
+> >>>>>>> * sensor source pad
+> >>>>>>> * isp sink pad
+> >>>>>>> * resizer sink pad
+> >>>>>>> * capture node
+> >>>>>>>
+> >>>>>>> The remaining source pads would get values propagated from their sink pads.
+> >>>>>>>
+> >>>>>>> [1] https://linuxtv.org/downloads/v4l-dvb-apis-new/userspace-api/v4l/colorspaces-defs.html#c.v4l2_quantization
+> >>>>>>> [2] https://linuxtv.org/downloads/v4l-dvb-apis-new/userspace-api/v4l/colorspaces-details.html#col-srgb
+> >>>>>>
+> >>>>>> After discussing this offline, we concluded that:
+> >>>>>> - only the source pad of the ISP entity should expose the CSC capability,
+> >>>>>> - the CAPTURE video node should expose only the formats/color spaces
+> >>>>>> compatible with the current setting of the resizer source,
+> >>>>>> - consistency between the resizer source format and CAPTURE format
+> >>>>>> should be implicitly maintained by the driver.
+> >>>>>
+> >>>>> Do you mean it should be validated at streamon time ?
+> >>>>
+> >>>> Nope. Any V4L2 state must be kept valid all the time, as mandated by
+> >>>> the general V4L2 principles. Wrong configuration of the video node
+> >>>> must not be a reason for STREAMON failing.
+> >>>
+> >>> That's a wrong interpretation of V4L2. On a video-node-centric device (a
+> >>> device that doesn't use the subdev userspace API for configuration) this
+> >>> is correct. In a MC-centric device, the video node and its connected
+> >>> subdev are configured separately.
+> >>
+> >> I don't see this documented anywhere in the specification, maybe
+> >> except a mention of EPIPE or ENOLINK being returned from STREAMON, but
+> >> they explicitly refer to pipeline configuration and not a conflict
+> >> between V4L2 and MC state.
+> > 
+> > We're suffering from a lack of documentation in this area :-( Niklas has
+> > authored
+> > 
+> > commit f645e6256bd1b12523b759fcc610861fb21c24c7
+> > Author: Niklas Söderlund <niklas.soderlund+renesas@ragnatech.se>
+> > Date:   Tue Apr 21 15:57:38 2020 +0200
+> > 
+> >      media: v4l2-dev/ioctl: Add V4L2_CAP_IO_MC
+> > 
+> > which is a first step, now we need to document the behaviour of all
+> > ioctls properly when the MC and !MC cases differ.
+> > 
+> >> The behavior as you're suggesting would be at least confusing for the
+> >> userspace, because it breaks one of the core principles of V4L2 and
+> >> also there is even no facility to allow the userspace handle this kind
+> >> of behavior, e.g. how to know which memory formats are supported for
+> >> given mbus formats of the related sink.
+> > 
+> > commit e5b6b07a1b45dd9d19bec1fa1d60750b0fcf2fb0
+> > Author: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > Date:   Fri Apr 24 15:43:31 2020 +0200
+> > 
+> >      media: v4l2: Extend VIDIOC_ENUM_FMT to support MC-centric devices
 > 
-> Consequently, all set_mode() implementations in drivers:
-> 
-> - can stop modifying tzd's "mode" member,
-> - shall stop taking tzd's lock, as it is taken in the helpers
-> - shall stop calling thermal_zone_device_update() as it is called in the
-> helpers
-> - can assume they are called when the mode truly changes, so checks to
-> verify that can be dropped
-> 
-> Not providing set_mode() by a driver no longer prevents the core from
-> being able to set tzd's mode, so the relevant check in mode_store() is
-> removed.
-> 
-> Other comments:
-> 
-> - acpi/thermal.c: tz->thermal_zone->mode will be updated only after we
-> return from set_mode(), so use function parameter in thermal_set_mode()
-> instead, no need to call acpi_thermal_check() in set_mode()
-> - thermal/imx_thermal.c: regmap writes and mode assignment are done in
-> thermal_zone_device_{en|dis}able() and set_mode() callback
-> - thermal/intel/intel_quark_dts_thermal.c: soc_dts_{en|dis}able() are a
-> part of set_mode() callback, so they don't need to modify tzd->mode, and
-> don't need to fall back to the opposite mode if unsuccessful, as the return
-> value will be propagated to thermal_zone_device_{en|dis}able() and
-> ultimately tzd's member will not be changed in thermal_zone_device_set_mode().
-> - thermal/of-thermal.c: no need to set zone->mode to DISABLED in
-> of_parse_thermal_zones() as a tzd is kzalloc'ed so mode is DISABLED anyway
-> 
-> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-> [for acerhdf]
-> Acked-by: Peter Kaestle <peter@piie.net>
+> Hi,
+> What if the video device entity wants to support V4L2_CAP_IO_MC and has two
+> pads registered to the media controller?
+> It seems to be undefined in the documentation.
 
-Reviewed-by: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
+What kind of video device would that be ?
 
-Best regards,
---
-Bartlomiej Zolnierkiewicz
-Samsung R&D Institute Poland
-Samsung Electronics
+> > Been missing for a long time... I realized that when I started using the
+> > API in a real userspace implementation instead of just writing test
+> > tools or very device-specific code that could hardcode all this
+> > knowledge.
+> > 
+> >>>>> In MC-based
+> >>>>> drivers, entities are isolated from each other from a configuration
+> >>>>> point of view, and the validity of the configuration across the whole
+> >>>>> pipeline is checked at streamon time. I don't think CSC parameters
+> >>>>> should be treated differently than formats in this regard.
+> >>>>
+> >>>> Indeed, the ISP entity and the resizer entity are isolated from each
+> >>>> other and they need to be validated separately. However, the resizer
+> >>>> entity is not isolated from the video node, as there is no
+> >>>> configuration exposed for the video node in the MC API. If MC exposed
+> >>>> an explicit format control for the video interface sink pad, then the
+> >>>> resizer would have to be validated separately indeed, but still that
+> >>>> video interface sink pad would be tied to the rest of the
+> >>>> configuration of the video node (e.g. the CAPTURE format).
+> >>>>
+> >>>>>> Below is the rationale for that:
+> >>>>>> - In the MC model, the video node represents the DMA alone (and thus
+> >>>>>> the reason to have the resizer entities at all) and since the
+> >>>>>> colorspace is not a property of the DMA, it doesn't belong there.
+> >>>>>> - Even if we put that aside, both MP and SP can only output the same
+> >>>>>> colorspace, which would create a dependency between the configuration
+> >>>>>> of the two video nodes, which is not something well defined by V4L2.
+> >>>>>> - A video interface in the MC API doesn't expose control over its
+> >>>>>> input format, which means that the relation between the other side of
+> >>>>>> the link (resizer source) and the video node is implicit and needs to
+> >>>>>> be handled internally in the driver.
+> >>>>>> - V4L2, as opposed to MC, requires that the current state is always
+> >>>>>> consistent and valid. In this case it means that an ioctl on the video
+> >>>>>> node must not be able to alter the state in a way that would make it
+> >>>>>> inconsistent with the state of the matching resizer source.
 
-> ---
->  drivers/acpi/thermal.c                        | 21 ++++++-----
->  .../ethernet/mellanox/mlxsw/core_thermal.c    | 37 +++++++++----------
->  drivers/platform/x86/acerhdf.c                | 17 +++++----
->  drivers/thermal/da9062-thermal.c              |  6 ++-
->  drivers/thermal/hisi_thermal.c                |  6 ++-
->  drivers/thermal/imx_thermal.c                 | 33 +++++++----------
->  .../intel/int340x_thermal/int3400_thermal.c   |  5 +--
->  .../thermal/intel/intel_quark_dts_thermal.c   | 18 ++-------
->  drivers/thermal/rockchip_thermal.c            |  6 ++-
->  drivers/thermal/sprd_thermal.c                |  6 ++-
->  drivers/thermal/thermal_core.c                |  2 +-
->  drivers/thermal/thermal_of.c                  | 10 +----
->  drivers/thermal/thermal_sysfs.c               | 11 ++----
->  13 files changed, 80 insertions(+), 98 deletions(-)
-> 
-> diff --git a/drivers/acpi/thermal.c b/drivers/acpi/thermal.c
-> index 592be97c4456..52b6cda1bcc3 100644
-> --- a/drivers/acpi/thermal.c
-> +++ b/drivers/acpi/thermal.c
-> @@ -499,7 +499,7 @@ static void acpi_thermal_check(void *data)
->  {
->  	struct acpi_thermal *tz = data;
->  
-> -	if (tz->thermal_zone->mode != THERMAL_DEVICE_ENABLED)
-> +	if (!thermal_zone_device_is_enabled(tz->thermal_zone))
->  		return;
->  
->  	thermal_zone_device_update(tz->thermal_zone,
-> @@ -542,14 +542,11 @@ static int thermal_set_mode(struct thermal_zone_device *thermal,
->  	if (mode == THERMAL_DEVICE_DISABLED)
->  		pr_warn("thermal zone will be disabled\n");
->  
-> -	if (mode != tz->thermal_zone->mode) {
-> -		tz->thermal_zone->mode = mode;
-> -		ACPI_DEBUG_PRINT((ACPI_DB_INFO,
-> -			"%s kernel ACPI thermal control\n",
-> -			tz->thermal_zone->mode == THERMAL_DEVICE_ENABLED ?
-> -			"Enable" : "Disable"));
-> -		acpi_thermal_check(tz);
-> -	}
-> +	ACPI_DEBUG_PRINT((ACPI_DB_INFO,
-> +		"%s kernel ACPI thermal control\n",
-> +		mode == THERMAL_DEVICE_ENABLED ?
-> +		"Enable" : "Disable"));
-> +
->  	return 0;
->  }
->  
-> @@ -897,13 +894,17 @@ static int acpi_thermal_register_thermal_zone(struct acpi_thermal *tz)
->  		goto remove_dev_link;
->  	}
->  
-> -	tz->thermal_zone->mode = THERMAL_DEVICE_ENABLED;
-> +	result = thermal_zone_device_enable(tz->thermal_zone);
-> +	if (result)
-> +		goto acpi_bus_detach;
->  
->  	dev_info(&tz->device->dev, "registered as thermal_zone%d\n",
->  		 tz->thermal_zone->id);
->  
->  	return 0;
->  
-> +acpi_bus_detach:
-> +	acpi_bus_detach_private_data(tz->device->handle);
->  remove_dev_link:
->  	sysfs_remove_link(&tz->thermal_zone->device.kobj, "device");
->  remove_tz_link:
-> diff --git a/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c b/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
-> index ad61b2db30b8..4fb73d0fd167 100644
-> --- a/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
-> +++ b/drivers/net/ethernet/mellanox/mlxsw/core_thermal.c
-> @@ -280,18 +280,11 @@ static int mlxsw_thermal_set_mode(struct thermal_zone_device *tzdev,
->  {
->  	struct mlxsw_thermal *thermal = tzdev->devdata;
->  
-> -	mutex_lock(&tzdev->lock);
-> -
->  	if (mode == THERMAL_DEVICE_ENABLED)
->  		tzdev->polling_delay = thermal->polling_delay;
->  	else
->  		tzdev->polling_delay = 0;
->  
-> -	tzdev->mode = mode;
-> -	mutex_unlock(&tzdev->lock);
-> -
-> -	thermal_zone_device_update(tzdev, THERMAL_EVENT_UNSPECIFIED);
-> -
->  	return 0;
->  }
->  
-> @@ -458,19 +451,11 @@ static int mlxsw_thermal_module_mode_set(struct thermal_zone_device *tzdev,
->  	struct mlxsw_thermal_module *tz = tzdev->devdata;
->  	struct mlxsw_thermal *thermal = tz->parent;
->  
-> -	mutex_lock(&tzdev->lock);
-> -
->  	if (mode == THERMAL_DEVICE_ENABLED)
->  		tzdev->polling_delay = thermal->polling_delay;
->  	else
->  		tzdev->polling_delay = 0;
->  
-> -	tzdev->mode = mode;
-> -
-> -	mutex_unlock(&tzdev->lock);
-> -
-> -	thermal_zone_device_update(tzdev, THERMAL_EVENT_UNSPECIFIED);
-> -
->  	return 0;
->  }
->  
-> @@ -756,8 +741,11 @@ mlxsw_thermal_module_tz_init(struct mlxsw_thermal_module *module_tz)
->  		return err;
->  	}
->  
-> -	module_tz->tzdev->mode = THERMAL_DEVICE_ENABLED;
-> -	return 0;
-> +	err = thermal_zone_device_enable(module_tz->tzdev);
-> +	if (err)
-> +		thermal_zone_device_unregister(module_tz->tzdev);
-> +
-> +	return err;
->  }
->  
->  static void mlxsw_thermal_module_tz_fini(struct thermal_zone_device *tzdev)
-> @@ -860,6 +848,7 @@ static int
->  mlxsw_thermal_gearbox_tz_init(struct mlxsw_thermal_module *gearbox_tz)
->  {
->  	char tz_name[MLXSW_THERMAL_ZONE_MAX_NAME];
-> +	int ret;
->  
->  	snprintf(tz_name, sizeof(tz_name), "mlxsw-gearbox%d",
->  		 gearbox_tz->module + 1);
-> @@ -872,8 +861,11 @@ mlxsw_thermal_gearbox_tz_init(struct mlxsw_thermal_module *gearbox_tz)
->  	if (IS_ERR(gearbox_tz->tzdev))
->  		return PTR_ERR(gearbox_tz->tzdev);
->  
-> -	gearbox_tz->tzdev->mode = THERMAL_DEVICE_ENABLED;
-> -	return 0;
-> +	ret = thermal_zone_device_enable(gearbox_tz->tzdev);
-> +	if (ret)
-> +		thermal_zone_device_unregister(gearbox_tz->tzdev);
-> +
-> +	return ret;
->  }
->  
->  static void
-> @@ -1041,10 +1033,15 @@ int mlxsw_thermal_init(struct mlxsw_core *core,
->  	if (err)
->  		goto err_unreg_modules_tzdev;
->  
-> -	thermal->tzdev->mode = THERMAL_DEVICE_ENABLED;
-> +	err = thermal_zone_device_enable(thermal->tzdev);
-> +	if (err)
-> +		goto err_unreg_gearboxes;
-> +
->  	*p_thermal = thermal;
->  	return 0;
->  
-> +err_unreg_gearboxes:
-> +	mlxsw_thermal_gearboxes_fini(thermal);
->  err_unreg_modules_tzdev:
->  	mlxsw_thermal_modules_fini(thermal);
->  err_unreg_tzdev:
-> diff --git a/drivers/platform/x86/acerhdf.c b/drivers/platform/x86/acerhdf.c
-> index 58c4e1caaa09..8fe0ecb6a626 100644
-> --- a/drivers/platform/x86/acerhdf.c
-> +++ b/drivers/platform/x86/acerhdf.c
-> @@ -397,19 +397,16 @@ static inline void acerhdf_revert_to_bios_mode(void)
->  {
->  	acerhdf_change_fanstate(ACERHDF_FAN_AUTO);
->  	kernelmode = 0;
-> -	if (thz_dev) {
-> -		thz_dev->mode = THERMAL_DEVICE_DISABLED;
-> +	if (thz_dev)
->  		thz_dev->polling_delay = 0;
-> -	}
-> +
->  	pr_notice("kernel mode fan control OFF\n");
->  }
->  static inline void acerhdf_enable_kernelmode(void)
->  {
->  	kernelmode = 1;
-> -	thz_dev->mode = THERMAL_DEVICE_ENABLED;
->  
->  	thz_dev->polling_delay = interval*1000;
-> -	thermal_zone_device_update(thz_dev, THERMAL_EVENT_UNSPECIFIED);
->  	pr_notice("kernel mode fan control ON\n");
->  }
->  
-> @@ -723,6 +720,8 @@ static void acerhdf_unregister_platform(void)
->  
->  static int __init acerhdf_register_thermal(void)
->  {
-> +	int ret;
-> +
->  	cl_dev = thermal_cooling_device_register("acerhdf-fan", NULL,
->  						 &acerhdf_cooling_ops);
->  
-> @@ -736,8 +735,12 @@ static int __init acerhdf_register_thermal(void)
->  	if (IS_ERR(thz_dev))
->  		return -EINVAL;
->  
-> -	thz_dev->mode = kernelmode ?
-> -		THERMAL_DEVICE_ENABLED : THERMAL_DEVICE_DISABLED;
-> +	if (kernelmode)
-> +		ret = thermal_zone_device_enable(thz_dev);
-> +	else
-> +		ret = thermal_zone_device_disable(thz_dev);
-> +	if (ret)
-> +		return ret;
->  
->  	if (strcmp(thz_dev->governor->name,
->  				acerhdf_zone_params.governor_name)) {
-> diff --git a/drivers/thermal/da9062-thermal.c b/drivers/thermal/da9062-thermal.c
-> index a7ac8afb063e..4d74994f160a 100644
-> --- a/drivers/thermal/da9062-thermal.c
-> +++ b/drivers/thermal/da9062-thermal.c
-> @@ -237,7 +237,11 @@ static int da9062_thermal_probe(struct platform_device *pdev)
->  		ret = PTR_ERR(thermal->zone);
->  		goto err;
->  	}
-> -	thermal->zone->mode = THERMAL_DEVICE_ENABLED;
-> +	ret = thermal_zone_device_enable(thermal->zone);
-> +	if (ret) {
-> +		dev_err(&pdev->dev, "Cannot enable thermal zone device\n");
-> +		goto err_zone;
-> +	}
->  
->  	dev_dbg(&pdev->dev,
->  		"TJUNC temperature polling period set at %d ms\n",
-> diff --git a/drivers/thermal/hisi_thermal.c b/drivers/thermal/hisi_thermal.c
-> index 2d26ae80e202..ee05950afd2f 100644
-> --- a/drivers/thermal/hisi_thermal.c
-> +++ b/drivers/thermal/hisi_thermal.c
-> @@ -549,8 +549,10 @@ static void hisi_thermal_toggle_sensor(struct hisi_thermal_sensor *sensor,
->  {
->  	struct thermal_zone_device *tzd = sensor->tzd;
->  
-> -	tzd->ops->set_mode(tzd,
-> -		on ? THERMAL_DEVICE_ENABLED : THERMAL_DEVICE_DISABLED);
-> +	if (on)
-> +		thermal_zone_device_enable(tzd);
-> +	else
-> +		thermal_zone_device_disable(tzd);
->  }
->  
->  static int hisi_thermal_probe(struct platform_device *pdev)
-> diff --git a/drivers/thermal/imx_thermal.c b/drivers/thermal/imx_thermal.c
-> index 2c7ee5da608a..53abb1be1cba 100644
-> --- a/drivers/thermal/imx_thermal.c
-> +++ b/drivers/thermal/imx_thermal.c
-> @@ -255,7 +255,7 @@ static int imx_get_temp(struct thermal_zone_device *tz, int *temp)
->  	bool wait;
->  	u32 val;
->  
-> -	if (tz->mode == THERMAL_DEVICE_ENABLED) {
-> +	if (thermal_zone_device_is_enabled(tz)) {
->  		/* Check if a measurement is currently in progress */
->  		regmap_read(map, soc_data->temp_data, &val);
->  		wait = !(val & soc_data->temp_valid_mask);
-> @@ -282,7 +282,7 @@ static int imx_get_temp(struct thermal_zone_device *tz, int *temp)
->  
->  	regmap_read(map, soc_data->temp_data, &val);
->  
-> -	if (tz->mode != THERMAL_DEVICE_ENABLED) {
-> +	if (!thermal_zone_device_is_enabled(tz)) {
->  		regmap_write(map, soc_data->sensor_ctrl + REG_CLR,
->  			     soc_data->measure_temp_mask);
->  		regmap_write(map, soc_data->sensor_ctrl + REG_SET,
-> @@ -365,9 +365,6 @@ static int imx_set_mode(struct thermal_zone_device *tz,
->  		}
->  	}
->  
-> -	tz->mode = mode;
-> -	thermal_zone_device_update(tz, THERMAL_EVENT_UNSPECIFIED);
-> -
->  	return 0;
->  }
->  
-> @@ -819,7 +816,9 @@ static int imx_thermal_probe(struct platform_device *pdev)
->  		     data->socdata->measure_temp_mask);
->  
->  	data->irq_enabled = true;
-> -	data->tz->mode = THERMAL_DEVICE_ENABLED;
-> +	ret = thermal_zone_device_enable(data->tz);
-> +	if (ret)
-> +		goto thermal_zone_unregister;
->  
->  	ret = devm_request_threaded_irq(&pdev->dev, data->irq,
->  			imx_thermal_alarm_irq, imx_thermal_alarm_irq_thread,
-> @@ -861,19 +860,18 @@ static int imx_thermal_remove(struct platform_device *pdev)
->  static int __maybe_unused imx_thermal_suspend(struct device *dev)
->  {
->  	struct imx_thermal_data *data = dev_get_drvdata(dev);
-> -	struct regmap *map = data->tempmon;
-> +	int ret;
->  
->  	/*
->  	 * Need to disable thermal sensor, otherwise, when thermal core
->  	 * try to get temperature before thermal sensor resume, a wrong
->  	 * temperature will be read as the thermal sensor is powered
-> -	 * down.
-> +	 * down. This is done in set_mode() operation called from
-> +	 * thermal_zone_device_disable()
->  	 */
-> -	regmap_write(map, data->socdata->sensor_ctrl + REG_CLR,
-> -		     data->socdata->measure_temp_mask);
-> -	regmap_write(map, data->socdata->sensor_ctrl + REG_SET,
-> -		     data->socdata->power_down_mask);
-> -	data->tz->mode = THERMAL_DEVICE_DISABLED;
-> +	ret = thermal_zone_device_disable(data->tz);
-> +	if (ret)
-> +		return ret;
->  	clk_disable_unprepare(data->thermal_clk);
->  
->  	return 0;
-> @@ -882,18 +880,15 @@ static int __maybe_unused imx_thermal_suspend(struct device *dev)
->  static int __maybe_unused imx_thermal_resume(struct device *dev)
->  {
->  	struct imx_thermal_data *data = dev_get_drvdata(dev);
-> -	struct regmap *map = data->tempmon;
->  	int ret;
->  
->  	ret = clk_prepare_enable(data->thermal_clk);
->  	if (ret)
->  		return ret;
->  	/* Enabled thermal sensor after resume */
-> -	regmap_write(map, data->socdata->sensor_ctrl + REG_CLR,
-> -		     data->socdata->power_down_mask);
-> -	regmap_write(map, data->socdata->sensor_ctrl + REG_SET,
-> -		     data->socdata->measure_temp_mask);
-> -	data->tz->mode = THERMAL_DEVICE_ENABLED;
-> +	ret = thermal_zone_device_enable(data->tz);
-> +	if (ret)
-> +		return ret;
->  
->  	return 0;
->  }
-> diff --git a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-> index 9a622aaf29dd..3c0397a29b8c 100644
-> --- a/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-> +++ b/drivers/thermal/intel/int340x_thermal/int3400_thermal.c
-> @@ -390,12 +390,11 @@ static int int3400_thermal_set_mode(struct thermal_zone_device *thermal,
->  	    mode != THERMAL_DEVICE_DISABLED)
->  		return -EINVAL;
->  
-> -	if (mode != thermal->mode) {
-> -		thermal->mode = mode;
-> +	if (mode != thermal->mode)
->  		result = int3400_thermal_run_osc(priv->adev->handle,
->  						priv->current_uuid_index,
->  						mode == THERMAL_DEVICE_ENABLED);
-> -	}
-> +
->  
->  	evaluate_odvp(priv);
->  
-> diff --git a/drivers/thermal/intel/intel_quark_dts_thermal.c b/drivers/thermal/intel/intel_quark_dts_thermal.c
-> index c4879b4bfbf1..e29c3e330b17 100644
-> --- a/drivers/thermal/intel/intel_quark_dts_thermal.c
-> +++ b/drivers/thermal/intel/intel_quark_dts_thermal.c
-> @@ -126,10 +126,8 @@ static int soc_dts_enable(struct thermal_zone_device *tzd)
->  	if (ret)
->  		return ret;
->  
-> -	if (out & QRK_DTS_ENABLE_BIT) {
-> -		tzd->mode = THERMAL_DEVICE_ENABLED;
-> +	if (out & QRK_DTS_ENABLE_BIT)
->  		return 0;
-> -	}
->  
->  	if (!aux_entry->locked) {
->  		out |= QRK_DTS_ENABLE_BIT;
-> @@ -137,10 +135,7 @@ static int soc_dts_enable(struct thermal_zone_device *tzd)
->  				     QRK_DTS_REG_OFFSET_ENABLE, out);
->  		if (ret)
->  			return ret;
-> -
-> -		tzd->mode = THERMAL_DEVICE_ENABLED;
->  	} else {
-> -		tzd->mode = THERMAL_DEVICE_DISABLED;
->  		pr_info("DTS is locked. Cannot enable DTS\n");
->  		ret = -EPERM;
->  	}
-> @@ -159,10 +154,8 @@ static int soc_dts_disable(struct thermal_zone_device *tzd)
->  	if (ret)
->  		return ret;
->  
-> -	if (!(out & QRK_DTS_ENABLE_BIT)) {
-> -		tzd->mode = THERMAL_DEVICE_DISABLED;
-> +	if (!(out & QRK_DTS_ENABLE_BIT))
->  		return 0;
-> -	}
->  
->  	if (!aux_entry->locked) {
->  		out &= ~QRK_DTS_ENABLE_BIT;
-> @@ -171,10 +164,7 @@ static int soc_dts_disable(struct thermal_zone_device *tzd)
->  
->  		if (ret)
->  			return ret;
-> -
-> -		tzd->mode = THERMAL_DEVICE_DISABLED;
->  	} else {
-> -		tzd->mode = THERMAL_DEVICE_ENABLED;
->  		pr_info("DTS is locked. Cannot disable DTS\n");
->  		ret = -EPERM;
->  	}
-> @@ -404,9 +394,7 @@ static struct soc_sensor_entry *alloc_soc_dts(void)
->  		goto err_ret;
->  	}
->  
-> -	mutex_lock(&dts_update_mutex);
-> -	err = soc_dts_enable(aux_entry->tzone);
-> -	mutex_unlock(&dts_update_mutex);
-> +	err = thermal_zone_device_enable(aux_entry->tzone);
->  	if (err)
->  		goto err_aux_status;
->  
-> diff --git a/drivers/thermal/rockchip_thermal.c b/drivers/thermal/rockchip_thermal.c
-> index 15a71ecc916c..aa9e0e31ef98 100644
-> --- a/drivers/thermal/rockchip_thermal.c
-> +++ b/drivers/thermal/rockchip_thermal.c
-> @@ -1068,8 +1068,10 @@ rockchip_thermal_toggle_sensor(struct rockchip_thermal_sensor *sensor, bool on)
->  {
->  	struct thermal_zone_device *tzd = sensor->tzd;
->  
-> -	tzd->ops->set_mode(tzd,
-> -		on ? THERMAL_DEVICE_ENABLED : THERMAL_DEVICE_DISABLED);
-> +	if (on)
-> +		thermal_zone_device_enable(tzd);
-> +	else
-> +		thermal_zone_device_disable(tzd);
->  }
->  
->  static irqreturn_t rockchip_thermal_alarm_irq_thread(int irq, void *dev)
-> diff --git a/drivers/thermal/sprd_thermal.c b/drivers/thermal/sprd_thermal.c
-> index a340374e8c51..58f995b0f804 100644
-> --- a/drivers/thermal/sprd_thermal.c
-> +++ b/drivers/thermal/sprd_thermal.c
-> @@ -322,8 +322,10 @@ static void sprd_thm_toggle_sensor(struct sprd_thermal_sensor *sen, bool on)
->  {
->  	struct thermal_zone_device *tzd = sen->tzd;
->  
-> -	tzd->ops->set_mode(tzd,
-> -		on ? THERMAL_DEVICE_ENABLED : THERMAL_DEVICE_DISABLED);
-> +	if (on)
-> +		thermal_zone_device_enable(tzd);
-> +	else
-> +		thermal_zone_device_disable(tzd);
->  }
->  
->  static int sprd_thm_probe(struct platform_device *pdev)
-> diff --git a/drivers/thermal/thermal_core.c b/drivers/thermal/thermal_core.c
-> index f02c57c986f0..52d136780577 100644
-> --- a/drivers/thermal/thermal_core.c
-> +++ b/drivers/thermal/thermal_core.c
-> @@ -1521,7 +1521,7 @@ static int thermal_pm_notify(struct notifier_block *nb,
->  	case PM_POST_SUSPEND:
->  		atomic_set(&in_suspend, 0);
->  		list_for_each_entry(tz, &thermal_tz_list, node) {
-> -			if (tz->mode == THERMAL_DEVICE_DISABLED)
-> +			if (!thermal_zone_device_is_enabled(tz))
->  				continue;
->  
->  			thermal_zone_device_init(tz);
-> diff --git a/drivers/thermal/thermal_of.c b/drivers/thermal/thermal_of.c
-> index ba65d48a48cb..43a516a35d64 100644
-> --- a/drivers/thermal/thermal_of.c
-> +++ b/drivers/thermal/thermal_of.c
-> @@ -272,8 +272,6 @@ static int of_thermal_set_mode(struct thermal_zone_device *tz,
->  {
->  	struct __thermal_zone *data = tz->devdata;
->  
-> -	mutex_lock(&tz->lock);
-> -
->  	if (mode == THERMAL_DEVICE_ENABLED) {
->  		tz->polling_delay = data->polling_delay;
->  		tz->passive_delay = data->passive_delay;
-> @@ -282,11 +280,6 @@ static int of_thermal_set_mode(struct thermal_zone_device *tz,
->  		tz->passive_delay = 0;
->  	}
->  
-> -	mutex_unlock(&tz->lock);
-> -
-> -	tz->mode = mode;
-> -	thermal_zone_device_update(tz, THERMAL_EVENT_UNSPECIFIED);
-> -
->  	return 0;
->  }
->  
-> @@ -541,7 +534,7 @@ thermal_zone_of_sensor_register(struct device *dev, int sensor_id, void *data,
->  			tzd = thermal_zone_of_add_sensor(child, sensor_np,
->  							 data, ops);
->  			if (!IS_ERR(tzd))
-> -				tzd->ops->set_mode(tzd, THERMAL_DEVICE_ENABLED);
-> +				thermal_zone_device_enable(tzd);
->  
->  			of_node_put(child);
->  			goto exit;
-> @@ -1120,7 +1113,6 @@ int __init of_parse_thermal_zones(void)
->  			of_thermal_free_zone(tz);
->  			/* attempting to build remaining zones still */
->  		}
-> -		zone->mode = THERMAL_DEVICE_DISABLED;
->  	}
->  	of_node_put(np);
->  
-> diff --git a/drivers/thermal/thermal_sysfs.c b/drivers/thermal/thermal_sysfs.c
-> index 096370977068..c23d67c4dc4e 100644
-> --- a/drivers/thermal/thermal_sysfs.c
-> +++ b/drivers/thermal/thermal_sysfs.c
-> @@ -49,9 +49,9 @@ static ssize_t
->  mode_show(struct device *dev, struct device_attribute *attr, char *buf)
->  {
->  	struct thermal_zone_device *tz = to_thermal_zone(dev);
-> +	int enabled = thermal_zone_device_is_enabled(tz);
->  
-> -	return sprintf(buf, "%s\n", tz->mode == THERMAL_DEVICE_ENABLED ?
-> -		       "enabled" : "disabled");
-> +	return sprintf(buf, "%s\n", enabled ? "enabled" : "disabled");
->  }
->  
->  static ssize_t
-> @@ -61,13 +61,10 @@ mode_store(struct device *dev, struct device_attribute *attr,
->  	struct thermal_zone_device *tz = to_thermal_zone(dev);
->  	int result;
->  
-> -	if (!tz->ops->set_mode)
-> -		return -EPERM;
-> -
->  	if (!strncmp(buf, "enabled", sizeof("enabled") - 1))
-> -		result = tz->ops->set_mode(tz, THERMAL_DEVICE_ENABLED);
-> +		result = thermal_zone_device_enable(tz);
->  	else if (!strncmp(buf, "disabled", sizeof("disabled") - 1))
-> -		result = tz->ops->set_mode(tz, THERMAL_DEVICE_DISABLED);
-> +		result = thermal_zone_device_disable(tz);
->  	else
->  		result = -EINVAL;
->  
-> 
+-- 
+Regards,
+
+Laurent Pinchart
