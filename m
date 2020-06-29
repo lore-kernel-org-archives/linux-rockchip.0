@@ -1,88 +1,57 @@
-From: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v9 00/11] Genericize DW MIPI DSI bridge and add i.MX 6
- driver
-Date: Mon, 29 Jun 2020 10:47:51 +0200
-Message-ID: <c6f10db1-7f56-a156-36a1-125e764c8c1a@baylibre.com>
-References: <20200609174959.955926-1-adrian.ratiu@collabora.com>
+From: Amit Kucheria <amit.kucheria@verdurent.com>
+Subject: Re: [PATCH v5 03/11] thermal: Add current mode to thermal zone device
+Date: Mon, 29 Jun 2020 12:49:51 +0530
+Message-ID: <CAHLCerNXcst72EDWf-xRTdUJ78jMDhhxpf31MO2WPgtJxzv6bA@mail.gmail.com>
+References: <9cbffad6-69e4-0b33-4640-fde7c4f6a6e7@linaro.org>
+ <20200626173755.26379-1-andrzej.p@collabora.com> <20200626173755.26379-4-andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200609174959.955926-1-adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-Cc: Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-acpi-owner@vger.kernel.org>
+In-Reply-To: <20200626173755.26379-4-andrzej.p@collabora.com>
+Sender: linux-acpi-owner@vger.kernel.org
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Cc: Linux PM list <linux-pm@vger.kernel.org>, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, lakml <linux-arm-kernel@lists.infradead.org>, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darr
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Adrian,
+On Fri, Jun 26, 2020 at 11:08 PM Andrzej Pietrasiewicz
+<andrzej.p@collabora.com> wrote:
+>
+> Prepare for changing the place where the mode is stored: now it is in
+> drivers, which might or might not implement get_mode()/set_mode() methods.
+> A lot of cleanup can be done thanks to storing it in struct tzd. The
+> get_mode() methods will become redundant.
+>
+> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+> Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+> Reviewed-by: Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>
 
-On 09/06/2020 19:49, Adrian Ratiu wrote:
-> [Re-submitting to cc dri-devel, sorry about the noise]
-> 
-> Hello all,
-> 
-> v9 cleanly applies on top of latest next-20200609 tree.
-> 
-> v9 does not depend on other patches as the last binding doc has been merged.
-> 
-> All feedback up to this point has been addressed. Specific details in
-> individual patch changelogs.
-> 
-> The biggest changes are the deprecation of the Synopsys DW bridge bind()
-> API in favor of of_drm_find_bridge() and .attach callbacks, the addition
-> of a TODO entry which outlines future planned bridge driver refactorings
-> and a reordering of some i.MX 6 patches to appease checkpatch.
-> 
-> The idea behind the TODO is to get this regmap and i.MX 6 driver merged
-> and then do the rest of refactorings in-tree because it's easier and the
-> refactorings themselves are out-of-scope of this series which is adding
-> i.MX 6 support and is quite big already, so please, if there are more
-> refactoring ideas, let's add them to the TODO doc. :) I intend to tackle
-> those after this series is merged to avoid two complex inter-dependent
-> simultaneous series.
+Reviewed-by: Amit Kucheria <amit.kucheria@linaro.org>
 
-This has been around here for a long time and you seem to have addressed all
-the reviews.
 
-> 
-> As always more testing is welcome especially on Rockchip and STM SoCs.
-
-It has been tested on STM, but I'd like a feedback on RK platform before applying
-the bridge parts.
-
-Can the imx & stm patches be applied separately ?
-
-Neil
-
-> 
-> Big thank you to everyone who has contributed to this up to now,
-> Adrian
-> 
-> Adrian Ratiu (11):
->   drm: bridge: dw_mipi_dsi: add initial regmap infrastructure
->   drm: bridge: dw_mipi_dsi: abstract register access using reg_fields
->   drm: bridge: dw_mipi_dsi: add dsi v1.01 support
->   drm: bridge: dw_mipi_dsi: remove bind/unbind API
->   dt-bindings: display: add i.MX6 MIPI DSI host controller doc
->   ARM: dts: imx6qdl: add missing mipi dsi properties
->   drm: imx: Add i.MX 6 MIPI DSI host platform driver
->   drm: stm: dw-mipi-dsi: let the bridge handle the HW version check
->   drm: bridge: dw-mipi-dsi: split low power cfg register into fields
->   drm: bridge: dw-mipi-dsi: fix bad register field offsets
->   Documentation: gpu: todo: Add dw-mipi-dsi consolidation plan
-> 
->  .../display/imx/fsl,mipi-dsi-imx6.yaml        | 112 +++
->  Documentation/gpu/todo.rst                    |  25 +
->  arch/arm/boot/dts/imx6qdl.dtsi                |   8 +
->  drivers/gpu/drm/bridge/synopsys/Kconfig       |   1 +
->  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 713 ++++++++++++------
->  drivers/gpu/drm/imx/Kconfig                   |   8 +
->  drivers/gpu/drm/imx/Makefile                  |   1 +
->  drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c        | 399 ++++++++++
->  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |   7 +-
->  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  16 +-
->  10 files changed, 1059 insertions(+), 231 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
->  create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c
-> 
+> ---
+>  include/linux/thermal.h | 2 ++
+>  1 file changed, 2 insertions(+)
+>
+> diff --git a/include/linux/thermal.h b/include/linux/thermal.h
+> index 216185bb3014..5f91d7f04512 100644
+> --- a/include/linux/thermal.h
+> +++ b/include/linux/thermal.h
+> @@ -128,6 +128,7 @@ struct thermal_cooling_device {
+>   * @trip_temp_attrs:   attributes for trip points for sysfs: trip temperature
+>   * @trip_type_attrs:   attributes for trip points for sysfs: trip type
+>   * @trip_hyst_attrs:   attributes for trip points for sysfs: trip hysteresis
+> + * @mode:              current mode of this thermal zone
+>   * @devdata:   private pointer for device private data
+>   * @trips:     number of trip points the thermal zone supports
+>   * @trips_disabled;    bitmap for disabled trips
+> @@ -170,6 +171,7 @@ struct thermal_zone_device {
+>         struct thermal_attr *trip_temp_attrs;
+>         struct thermal_attr *trip_type_attrs;
+>         struct thermal_attr *trip_hyst_attrs;
+> +       enum thermal_device_mode mode;
+>         void *devdata;
+>         int trips;
+>         unsigned long trips_disabled;   /* bitmap for disabled trips */
+> --
+> 2.17.1
+>
