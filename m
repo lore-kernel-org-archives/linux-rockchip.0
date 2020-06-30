@@ -1,34 +1,95 @@
-From: Yu-Hsuan Hsu <yuhsuan@chromium.org>
-Subject: Re: [PATCH] ASoC: rockchip: add format and rate constraints on rk3399
-Date: Tue, 30 Jun 2020 20:25:28 +0800
-Message-ID: <CAGvk5PqqMKikj46yfvNYdiQ=3cWoHVLBgQKGOPs5iuoFWUBs=Q@mail.gmail.com>
-References: <20200630091615.4020059-1-yuhsuan@chromium.org> <20200630104047.GD5272@sirena.org.uk>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [RFC v4 4/8] v4l2: add support for colorspace conversion API
+ (CSC) for video capture and subdevices
+Date: Tue, 30 Jun 2020 17:23:01 +0200
+Message-ID: <8fd5417b-970d-e9d5-824a-31658fe50c99@collabora.com>
+References: <20200605172625.19777-1-dafna.hirschfeld@collabora.com>
+ <20200605172625.19777-5-dafna.hirschfeld@collabora.com>
+ <973edb0c-4c52-c29c-4b22-54a05eca6f7a@xs4all.nl>
+ <e55548ad47eacd9acf3aa94cc98a46b3f4924cd9.camel@pengutronix.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200630104047.GD5272@sirena.org.uk>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Mark Brown <broonie@kernel.org>
-Cc: linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>, Tzung-Bi Shih <tzungbi@chromium.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <e55548ad47eacd9acf3aa94cc98a46b3f4924cd9.camel@pengutronix.de>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Philipp Zabel <p.zabel@pengutronix.de>, Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: helen.koike@collabora.com, ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, Hans Verkuil <hans.verkuil@cisco.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Mark Brown <broonie@kernel.org> =E6=96=BC 2020=E5=B9=B46=E6=9C=8830=E6=97=
-=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=886:40=E5=AF=AB=E9=81=93=EF=BC=9A
->
-> On Tue, Jun 30, 2020 at 05:16:15PM +0800, Yu-Hsuan Hsu wrote:
-> > S8 and S24 formats does not work on this machine driver so force to use
-> > S16_LE instead.
->
-> > In addition, add constraint to limit the max value of rate because the
-> > rate higher than 96000(172000, 192000) is not stable either.
->
-> What is the source of these restrictions - are they due to the component
-> devices?  If they are then the component devices ought to be setting
-> suitable constraints themselves.
 
-I'm not sure why it happened. But I guess it is not the issues on those
-components because they work normally on other machine drivers.
-Because this driver is old and lacks maintenance, I think we can just
-filter some unstable formats. Actually, those formats are very rarely
-used as well.
+
+On 26.06.20 14:22, Philipp Zabel wrote:
+> Hi Dafna,
+> 
+> On Mon, 2020-06-08 at 12:00 +0200, Hans Verkuil wrote:
+> [...]
+>>> diff --git a/include/uapi/linux/v4l2-mediabus.h b/include/uapi/linux/v4l2-mediabus.h
+>>> index 123a231001a8..0f916278137a 100644
+>>> --- a/include/uapi/linux/v4l2-mediabus.h
+>>> +++ b/include/uapi/linux/v4l2-mediabus.h
+>>> @@ -16,6 +16,8 @@
+>>>   #include <linux/types.h>
+>>>   #include <linux/videodev2.h>
+>>>   
+>>> +#define V4L2_MBUS_FRAMEFMT_SET_CSC	0x0001
+>>> +
+>>>   /**
+>>>    * struct v4l2_mbus_framefmt - frame format on the media bus
+>>>    * @width:	image width
+>>> @@ -36,7 +38,8 @@ struct v4l2_mbus_framefmt {
+>>>   	__u16			ycbcr_enc;
+>>>   	__u16			quantization;
+>>>   	__u16			xfer_func;
+>>> -	__u16			reserved[11];
+>>> +	__u16			flags;
+>>> +	__u16			reserved[10];
+>>>   };
+> 
+> The the flags field should also be added to the kerneldoc comment.
+
+Hi, Which kerneldoc comment do you mean?
+I added to the doc of the v4l2-mbus-framefmt:
+
+     * - __u16
+       - ``flags``
+       - flags See:  :ref:v4l2-mbus-framefmt-flags
+  
+
+> 
+>>>   
+>>>   #ifndef __KERNEL__
+>>> diff --git a/include/uapi/linux/v4l2-subdev.h b/include/uapi/linux/v4l2-subdev.h
+>>> index 5d2a1dab7911..972e64d8b54e 100644
+>>> --- a/include/uapi/linux/v4l2-subdev.h
+>>> +++ b/include/uapi/linux/v4l2-subdev.h
+>>> @@ -65,6 +65,8 @@ struct v4l2_subdev_crop {
+>>>   	__u32 reserved[8];
+>>>   };
+>>>   
+>>> +#define V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC	0x00000001
+>>> +#define V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION	0x00000002
+>>>   /**
+>>>    * struct v4l2_subdev_mbus_code_enum - Media bus format enumeration
+>>>    * @pad: pad number, as reported by the media API
+>>> @@ -77,7 +79,8 @@ struct v4l2_subdev_mbus_code_enum {
+>>>   	__u32 index;
+>>>   	__u32 code;
+>>>   	__u32 which;
+>>> -	__u32 reserved[8];
+>>> +	__u32 flags;
+>>> +	__u32 reserved[7];
+>>>   };
+> 
+> Same as above.
+
+Same questions as above.
+
+Thanks,
+Dafna
+
+> 
+> regards
+> Philipp
+> 
