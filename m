@@ -1,405 +1,334 @@
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Subject: Re: [RFC v3 2/2] media: staging: rkisp1: allow quantization
- conversion from userspace for isp source pad
-Date: Tue, 30 Jun 2020 02:08:06 +0300
-Message-ID: <20200629230806.GE21452@pendragon.ideasonboard.com>
-References: <62611ccd-e4cd-728a-355b-532661b36be0@collabora.com>
- <20200618184923.GB68039@chromium.org>
- <a163dbb3-8278-684e-6324-4c36924ed335@collabora.com>
- <20200618192535.GD73379@chromium.org>
- <67cdd3be-ee2a-3b88-5d17-d9d1d17b2603@collabora.com>
- <CAAFQd5Bkh1QphjQtMyWQeN7wtK93YN2PeU-bKkUFh46PQ=ujLw@mail.gmail.com>
- <20200628131537.GT6954@pendragon.ideasonboard.com>
- <CAAFQd5BDXJVZ1UNvbLwccFnTOoQ_U7MdZhQNNzQSZtn9ne40cA@mail.gmail.com>
- <848a7c75-7d63-7763-cbd2-84833f85cec8@collabora.com>
- <aed7c3a2-2a35-17f0-f06b-4ef2e5232415@collabora.com>
+From: Amit Kucheria <amit.kucheria@verdurent.com>
+Subject: Re: [PATCH v7 08/11] thermal: Explicitly enable non-changing thermal
+ zone devices
+Date: Tue, 30 Jun 2020 10:37:59 +0530
+Message-ID: <CAHLCerPdEX8QxmahJPSnPp6sSh3G07Ur-+82+5QuozO26W58RQ@mail.gmail.com>
+References: <20200629122925.21729-1-andrzej.p@collabora.com> <20200629122925.21729-9-andrzej.p@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-media-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <aed7c3a2-2a35-17f0-f06b-4ef2e5232415@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Linux Media Mailing List <linux-media@vger.kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Sakari Ailus <sakari.ailus@linux.intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-acpi-owner@vger.kernel.org>
+In-Reply-To: <20200629122925.21729-9-andrzej.p@collabora.com>
+Sender: linux-acpi-owner@vger.kernel.org
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Cc: Linux PM list <linux-pm@vger.kernel.org>, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, lakml <linux-arm-kernel@lists.infradead.org>, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darr
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Helen,
+On Mon, Jun 29, 2020 at 5:59 PM Andrzej Pietrasiewicz
+<andrzej.p@collabora.com> wrote:
+>
+> Some thermal zone devices never change their state, so they should be
+> always enabled.
+>
+> Signed-off-by: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
 
-On Mon, Jun 29, 2020 at 12:50:06PM -0300, Helen Koike wrote:
-> On 6/28/20 4:34 PM, Dafna Hirschfeld wrote:
-> > On 28.06.20 16:59, Tomasz Figa wrote:
-> >> On Sun, Jun 28, 2020 at 3:15 PM Laurent Pinchart wrote:
-> >>> On Sun, Jun 28, 2020 at 03:10:41PM +0200, Tomasz Figa wrote:
-> >>>> On Fri, Jun 26, 2020 at 2:15 AM Helen Koike <helen.koike@collabora.com> wrote:
-> >>>>> On 6/18/20 4:25 PM, Tomasz Figa wrote:
-> >>>>>> On Thu, Jun 18, 2020 at 08:54:34PM +0200, Dafna Hirschfeld wrote:
-> >>>>>>> On 18.06.20 20:49, Tomasz Figa wrote:
-> >>>>>>>> On Thu, Jun 18, 2020 at 08:26:33PM +0200, Dafna Hirschfeld wrote:
-> >>>>>>>>> On 18.06.20 19:27, Tomasz Figa wrote:
-> >>>>>>>>>> On Wed, Jun 10, 2020 at 2:08 PM Tomasz Figa wrote:
-> >>>>>>>>>>> On Thu, Jun 4, 2020 at 9:11 PM Dafna Hirschfeld wrote:
-> >>>>>>>>>>>> On 04.06.20 19:54, Tomasz Figa wrote:
-> >>>>>>>>>>>>> On Thu, Apr 16, 2020 at 04:56:05PM +0200, Dafna Hirschfeld wrote:
-> >>>>>>>>>>>>>> The isp entity has a hardware support to force full range quantization
-> >>>>>>>>>>>>>> for YUV formats. Use the new API to indicate userspace that
-> >>>>>>>>>>>>>> quantization conversion is supported by adding the flag
-> >>>>>>>>>>>>>> V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION during media code enumeration.
-> >>>>>>>>>>>>>> Then uppon s_fmt on the video source pad, we assign the
-> >>>>>>>>>>>>>> quantization from userspace for YUV formats.
-> >>>>>>>>>>>>>> Also in the capture and resizer entities we retrieve the colorspace
-> >>>>>>>>>>>>>> from the isp entity.
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> >>>>>>>>>>>>>> ---
-> >>>>>>>>>>>>>>      drivers/staging/media/rkisp1/rkisp1-capture.c | 28 ++++++-------
-> >>>>>>>>>>>>>>      drivers/staging/media/rkisp1/rkisp1-common.h  |  2 +
-> >>>>>>>>>>>>>>      drivers/staging/media/rkisp1/rkisp1-isp.c     | 39 +++++++++++++++++--
-> >>>>>>>>>>>>>>      drivers/staging/media/rkisp1/rkisp1-resizer.c | 13 +++++++
-> >>>>>>>>>>>>>>      4 files changed, 65 insertions(+), 17 deletions(-)
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> >>>>>>>>>>>>>> index fbf62399fe3d..aca0f93bc772 100644
-> >>>>>>>>>>>>>> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-> >>>>>>>>>>>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> >>>>>>>>>>>>>> @@ -1066,14 +1066,13 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
-> >>>>>>>>>>>>>>                            const struct v4l2_format_info **fmt_info)
-> >>>>>>>>>>>>>>      {
-> >>>>>>>>>>>>>>         const struct rkisp1_capture_config *config = cap->config;
-> >>>>>>>>>>>>>> -    struct rkisp1_capture *other_cap =
-> >>>>>>>>>>>>>> -                    &cap->rkisp1->capture_devs[cap->id ^ 1];
-> >>>>>>>>>>>>>>         const struct rkisp1_capture_fmt_cfg *fmt;
-> >>>>>>>>>>>>>>         const struct v4l2_format_info *info;
-> >>>>>>>>>>>>>>         const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
-> >>>>>>>>>>>>>>                                             RKISP1_RSZ_SP_SRC_MAX_WIDTH };
-> >>>>>>>>>>>>>>         const unsigned int max_heights[] = { RKISP1_RSZ_MP_SRC_MAX_HEIGHT,
-> >>>>>>>>>>>>>>                                              RKISP1_RSZ_SP_SRC_MAX_HEIGHT};
-> >>>>>>>>>>>>>> +    struct v4l2_subdev_format isp_sd_fmt;
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>>         fmt = rkisp1_find_fmt_cfg(cap, pixm->pixelformat);
-> >>>>>>>>>>>>>>         if (!fmt) {
-> >>>>>>>>>>>>>> @@ -1081,24 +1080,27 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
-> >>>>>>>>>>>>>>                 pixm->pixelformat = fmt->fourcc;
-> >>>>>>>>>>>>>>         }
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>> +    rkisp1_get_isp_src_fmt(cap->rkisp1, &isp_sd_fmt);
-> >>>>>>>>>>>>>> +    pixm->field = isp_sd_fmt.format.field;
-> >>>>>>>>>>>>>> +    pixm->colorspace = isp_sd_fmt.format.colorspace;
-> >>>>>>>>>>>>>> +    pixm->ycbcr_enc = isp_sd_fmt.format.ycbcr_enc;
-> >>>>>>>>>>>>>> +    pixm->xfer_func = isp_sd_fmt.format.xfer_func;
-> >>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>> +    /*
-> >>>>>>>>>>>>>> +     * isp has a feature to set full range quantization for yuv formats.
-> >>>>>>>>>>>>>
-> >>>>>>>>>>>>> How about "select between limited and full range for YUV formats"?
-> >>>>>>>>>>>>>
-> >>>>>>>>>>>>>> +     * so we need to get the format from the isp.
-> >>>>>>>>>>>>>> +     */
-> >>>>>>>>>>>>>> +    pixm->quantization = isp_sd_fmt.format.quantization;
-> >>>>>>>>>>>>>> +    if (!v4l2_is_format_yuv(cap->pix.info))
-> >>>>>>>>>>>>>> +            pixm->quantization = V4L2_QUANTIZATION_FULL_RANGE;
-> >>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>>         pixm->width = clamp_t(u32, pixm->width,
-> >>>>>>>>>>>>>>                               RKISP1_RSZ_SRC_MIN_WIDTH, max_widths[cap->id]);
-> >>>>>>>>>>>>>>         pixm->height = clamp_t(u32, pixm->height,
-> >>>>>>>>>>>>>>                                RKISP1_RSZ_SRC_MIN_HEIGHT, max_heights[cap->id]);
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>> -    pixm->field = V4L2_FIELD_NONE;
-> >>>>>>>>>>>>>> -    pixm->colorspace = V4L2_COLORSPACE_DEFAULT;
-> >>>>>>>>>>>>>> -    pixm->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
-> >>>>>>>>>>>>>> -
-> >>>>>>>>>>>>>>         info = rkisp1_fill_pixfmt(pixm, cap->id);
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>> -    /* can not change quantization when stream-on */
-> >>>>>>>>>>>>>> -    if (other_cap->is_streaming)
-> >>>>>>>>>>>>>> -            pixm->quantization = other_cap->pix.fmt.quantization;
-> >>>>>>>>>>>>>> -    /* output full range by default, take effect in params */
-> >>>>>>>>>>>>>> -    else if (!pixm->quantization ||
-> >>>>>>>>>>>>>> -             pixm->quantization > V4L2_QUANTIZATION_LIM_RANGE)
-> >>>>>>>>>>>>>> -            pixm->quantization = V4L2_QUANTIZATION_FULL_RANGE;
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>>         if (fmt_cfg)
-> >>>>>>>>>>>>>>                 *fmt_cfg = fmt;
-> >>>>>>>>>>>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-> >>>>>>>>>>>>>> index 2d7b7e078636..7a5576fa14c9 100644
-> >>>>>>>>>>>>>> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
-> >>>>>>>>>>>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-> >>>>>>>>>>>>>> @@ -300,6 +300,8 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1,
-> >>>>>>>>>>>>>>                         struct v4l2_device *v4l2_dev);
-> >>>>>>>>>>>>>>      void rkisp1_isp_unregister(struct rkisp1_device *rkisp1);
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>> +int rkisp1_get_isp_src_fmt(struct rkisp1_device *rkisp1,
-> >>>>>>>>>>>>>> +                       struct v4l2_subdev_format *sd_fmt);
-> >>>>>>>>>>>>>>      const struct rkisp1_isp_mbus_info *rkisp1_isp_mbus_info_get(u32 mbus_code);
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>>      irqreturn_t rkisp1_isp_isr(struct rkisp1_device *rkisp1);
-> >>>>>>>>>>>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-> >>>>>>>>>>>>>> index dee8e96f3900..6fdf5ed0b6b1 100644
-> >>>>>>>>>>>>>> --- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-> >>>>>>>>>>>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-> >>>>>>>>>>>>>> @@ -613,6 +613,10 @@ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>>                 if (code->index == pos - 1) {
-> >>>>>>>>>>>>>>                         code->code = fmt->mbus_code;
-> >>>>>>>>>>>>>> +                    if (fmt->pixel_enc == V4L2_PIXEL_ENC_YUV &&
-> >>>>>>>>>>>>>> +                        dir == RKISP1_DIR_SRC)
-> >>>>>>>>>>>>>> +                            code->flags =
-> >>>>>>>>>>>>>> +                                    V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION;
-> >>>>>>>>>>>>>>                         return 0;
-> >>>>>>>>>>>>>>                 }
-> >>>>>>>>>>>>>>         }
-> >>>>>>>>>>>>>> @@ -639,12 +643,21 @@ static int rkisp1_isp_init_config(struct v4l2_subdev *sd,
-> >>>>>>>>>>>>>>         sink_crop->height = RKISP1_DEFAULT_HEIGHT;
-> >>>>>>>>>>>>>>         sink_crop->left = 0;
-> >>>>>>>>>>>>>>         sink_crop->top = 0;
-> >>>>>>>>>>>>>> +    sink_fmt->colorspace = V4L2_COLORSPACE_SRGB;
-> >>>>>>>>>>>>>> +    sink_fmt->ycbcr_enc = V4L2_MAP_YCBCR_ENC_DEFAULT(sink_fmt->colorspace);
-> >>>>>>>>>>>>>> +    sink_fmt->xfer_func = V4L2_MAP_XFER_FUNC_DEFAULT(sink_fmt->colorspace);
-> >>>>>>>>>>>>>> +    sink_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
-> >>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>>         src_fmt = v4l2_subdev_get_try_format(sd, cfg,
-> >>>>>>>>>>>>>>                                              RKISP1_ISP_PAD_SOURCE_VIDEO);
-> >>>>>>>>>>>>>>         *src_fmt = *sink_fmt;
-> >>>>>>>>>>>>>>         src_fmt->code = RKISP1_DEF_SRC_PAD_FMT;
-> >>>>>>>>>>>>>> -    src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
-> >>>>>>>>>>>>>> +    src_fmt->colorspace = V4L2_COLORSPACE_SRGB;
-> >>>>>>>>>>>>>> +    src_fmt->ycbcr_enc = V4L2_MAP_YCBCR_ENC_DEFAULT(src_fmt->colorspace);
-> >>>>>>>>>>>>>> +    src_fmt->xfer_func = V4L2_MAP_XFER_FUNC_DEFAULT(src_fmt->colorspace);
-> >>>>>>>>>>>>>> +    src_fmt->quantization = V4L2_QUANTIZATION_LIM_RANGE;
-> >>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>>         src_crop = v4l2_subdev_get_try_crop(sd, cfg,
-> >>>>>>>>>>>>>>                                             RKISP1_ISP_PAD_SOURCE_VIDEO);
-> >>>>>>>>>>>>>> @@ -687,10 +700,17 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
-> >>>>>>>>>>>>>>                 isp->src_fmt = mbus_info;
-> >>>>>>>>>>>>>>         src_fmt->width  = src_crop->width;
-> >>>>>>>>>>>>>>         src_fmt->height = src_crop->height;
-> >>>>>>>>>>>>>> -    src_fmt->quantization = format->quantization;
-> >>>>>>>>>>>>>> -    /* full range by default */
-> >>>>>>>>>>>>>> -    if (!src_fmt->quantization)
-> >>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>> +    src_fmt->colorspace = V4L2_COLORSPACE_SRGB;
-> >>>>>>>>>>>>>> +    src_fmt->ycbcr_enc = V4L2_MAP_YCBCR_ENC_DEFAULT(src_fmt->colorspace);
-> >>>>>>>>>>>>>> +    src_fmt->xfer_func = V4L2_MAP_XFER_FUNC_DEFAULT(src_fmt->colorspace);
-> >>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>> +    if (mbus_info->pixel_enc == V4L2_PIXEL_ENC_BAYER)
-> >>>>>>>>>>>>>>                 src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
-> >>>>>>>>>>>>>> +    else if (format->quantization == V4L2_QUANTIZATION_DEFAULT)
-> >>>>>>>>>>>>>> +            src_fmt->quantization = V4L2_QUANTIZATION_LIM_RANGE;
-> >>>>>>>>>>>>>> +    else
-> >>>>>>>>>>>>>> +            src_fmt->quantization = format->quantization;
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>>         *format = *src_fmt;
-> >>>>>>>>>>>>>>      }
-> >>>>>>>>>>>>>> @@ -1068,6 +1088,17 @@ int rkisp1_isp_register(struct rkisp1_device *rkisp1,
-> >>>>>>>>>>>>>>         return ret;
-> >>>>>>>>>>>>>>      }
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>> +int rkisp1_get_isp_src_fmt(struct rkisp1_device *rkisp1,
-> >>>>>>>>>>>>>> +                       struct v4l2_subdev_format *sd_fmt)
-> >>>>>>>>>>>>>> +{
-> >>>>>>>>>>>>>> +    struct rkisp1_isp *isp = &rkisp1->isp;
-> >>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>> +    sd_fmt->which = V4L2_SUBDEV_FORMAT_ACTIVE;
-> >>>>>>>>>>>>>> +    sd_fmt->pad = RKISP1_ISP_PAD_SOURCE_VIDEO;
-> >>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>> +    return v4l2_subdev_call(&isp->sd, pad, get_fmt, NULL, sd_fmt);
-> >>>>>>>>>>>>>
-> >>>>>>>>>>>>> Do we need to get through the external API to access data that is
-> >>>>>>>>>>>>> driver-internal anyway?
-> >>>>>>>>>>>>>
-> >>>>>>>>>>>>>> +}
-> >>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>>      void rkisp1_isp_unregister(struct rkisp1_device *rkisp1)
-> >>>>>>>>>>>>>>      {
-> >>>>>>>>>>>>>>         struct v4l2_subdev *sd = &rkisp1->isp.sd;
-> >>>>>>>>>>>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> >>>>>>>>>>>>>> index 7b6b7ddd4169..8705b133de68 100644
-> >>>>>>>>>>>>>> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> >>>>>>>>>>>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-> >>>>>>>>>>>>>> @@ -525,6 +525,7 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
-> >>>>>>>>>>>>>>         const struct rkisp1_isp_mbus_info *mbus_info;
-> >>>>>>>>>>>>>>         struct v4l2_mbus_framefmt *sink_fmt, *src_fmt;
-> >>>>>>>>>>>>>>         struct v4l2_rect *sink_crop;
-> >>>>>>>>>>>>>> +    struct v4l2_subdev_format isp_sd_fmt;
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>>         sink_fmt = rkisp1_rsz_get_pad_fmt(rsz, cfg, RKISP1_RSZ_PAD_SINK, which);
-> >>>>>>>>>>>>>>         src_fmt = rkisp1_rsz_get_pad_fmt(rsz, cfg, RKISP1_RSZ_PAD_SRC, which);
-> >>>>>>>>>>>>>> @@ -539,8 +540,20 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
-> >>>>>>>>>>>>>>         if (which == V4L2_SUBDEV_FORMAT_ACTIVE)
-> >>>>>>>>>>>>>>                 rsz->pixel_enc = mbus_info->pixel_enc;
-> >>>>>>>>>>>>>>
-> >>>>>>>>>>>>>> +    rkisp1_get_isp_src_fmt(rsz->rkisp1, &isp_sd_fmt);
-> >>>>>>>>>>>>>> +
-> >>>>>>>>>>>>>
-> >>>>>>>>>>>>> Is this necessary? My understanding was that in the subdev model, it was
-> >>>>>>>>>>>>> the userspace responsibility to propagate any configuration changes through
-> >>>>>>>>>>>>> the graph.
-> >>>>>>>>>>>>>
-> >>>>>>>>>>>>> Also, doing this only here wouldn't fully maintain the
-> >>>>>>>>>>>>> consistency of the state. For example, if one sets the ISP subdev format
-> >>>>>>>>>>>>> first, then the resizer subdev and then the ISP subdev again, wouldn't the
-> >>>>>>>>>>>>> resizer subdev end up with a wrong format?
-> >>>>>>>>>>>>
-> >>>>>>>>>>>> yes, this is indeed a bug, I am preparing v4 now.
-> >>>>>>>>>>>> What I thought to do is adding quantization conversion
-> >>>>>>>>>>>> support also on ther resizer and capture entities.
-> >>>>>>>>>>>> Then in the 'link_validation' callbacks, there
-> >>>>>>>>>>>> is a validation that the quantization fields matches.
-> >>>>>>>>>>>
-> >>>>>>>>>>> My understanding is that, if we have the following topology
-> >>>>>>>>>>>
-> >>>>>>>>>>> [ ISP ] -> [ Resizer ] -> [ Video node ]
-> >>>>>>>>>>>
-> >>>>>>>>>>> then the ISP source pad would have the csc capability, while resizer
-> >>>>>>>>>>> and video node would just accept whatever is configured on their sink
-> >>>>>>>>>>> pads (no need for csc capability for that) and propagate that to their
-> >>>>>>>>>>> outputs, i.e. resizer source pad and video node CAPTURE format.
-> >>>>>>>>>>>
-> >>>>>>>>>>> Is this what you were going to implement?
-> >>>>>>>>> Hi, I sent a v4 where the CSC capability is set on the reiszer and capture as well.
-> >>>>>>>>> I can send a v5 implementing it the way you suggest. Currently the doc says that the colorspace fields
-> >>>>>>>>> must be set by the driver for capture streams. This implies that userspace can set it
-> >>>>>>>>> only if the CSC is supported.
-> >>>>>>>>
-> >>>>>>>> Why would the userspace have to set it for the capture stream on the
-> >>>>>>>> resizer and video nodes? Couldn't the userspace set it to DEFAULT and
-> >>>>>>>> then the driver override to whatever it received on the corresponding
-> >>>>>>>> sink?
-> >>>>>
-> >>>>> According to the documentation [1]:
-> >>>>>
-> >>>>> "the default quantization encoding as defined by the colorspace"
-> >>>>>
-> >>>>> Then, for instance, the default for V4L2_COLORSPACE_SRGB is limited range [2].
-> >>>>>
-> >>>>> Unless we change the definition of DEFAULT to let it accept whatever it receives on the corresponding sink.
-> >>>>>
-> >>>>> Then the way I understand is:
-> >>>>>
-> >>>>> [sensor]->[isp]->[resizer]->[capture]
-> >>>>>
-> >>>>> Userspace should set quantization on:
-> >>>>> * sensor source pad
-> >>>>> * isp sink pad
-> >>>>> * resizer sink pad
-> >>>>> * capture node
-> >>>>>
-> >>>>> The remaining source pads would get values propagated from their sink pads.
-> >>>>>
-> >>>>> [1] https://linuxtv.org/downloads/v4l-dvb-apis-new/userspace-api/v4l/colorspaces-defs.html#c.v4l2_quantization
-> >>>>> [2] https://linuxtv.org/downloads/v4l-dvb-apis-new/userspace-api/v4l/colorspaces-details.html#col-srgb
-> >>>>
-> >>>> After discussing this offline, we concluded that:
-> >>>> - only the source pad of the ISP entity should expose the CSC capability,
-> >>>> - the CAPTURE video node should expose only the formats/color spaces
-> >>>> compatible with the current setting of the resizer source,
-> >>>> - consistency between the resizer source format and CAPTURE format
-> >>>> should be implicitly maintained by the driver.
-> >>>
-> >>> Do you mean it should be validated at streamon time ?
-> >>
-> >> Nope. Any V4L2 state must be kept valid all the time, as mandated by
-> >> the general V4L2 principles. Wrong configuration of the video node
-> >> must not be a reason for STREAMON failing.
-> >>
-> >>> In MC-based
-> >>> drivers, entities are isolated from each other from a configuration
-> >>> point of view, and the validity of the configuration across the whole
-> >>> pipeline is checked at streamon time. I don't think CSC parameters
-> >>> should be treated differently than formats in this regard.
-> >>
-> >> Indeed, the ISP entity and the resizer entity are isolated from each
-> >> other and they need to be validated separately. However, the resizer
-> >> entity is not isolated from the video node, as there is no
-> >> configuration exposed for the video node in the MC API. If MC exposed
-> >> an explicit format control for the video interface sink pad, then the
-> >> resizer would have to be validated separately indeed, but still that
-> >> video interface sink pad would be tied to the rest of the
-> >> configuration of the video node (e.g. the CAPTURE format).
-> > 
-> > Two questions:
-> > 
-> > The validation callback between the resizer and the isp has to include check
-> > that the quantization values matches ?
-> 
-> To sumarize:
-> 
-> The current quantization fields from VIDIOC_SUBDEV_{S,G}_FMT and VIDEO_{SET,GET}_FORMAT
-> are filled by the driver (read-only by userspace).
-> 
-> This RFC exposes an API that allows the quantization to be a read-write configuration.
-> The question is where we expose the read-write capability.
-> 
-> We have two main design choices here.
-> 
-> 1) Expose read-write quantization in all pads and video nodes.
-> And userspace must set matching quantization in all of them.
-> Which makes userspace more complicated, but userspace already needs to configure
-> the whole topology anyway.
-> This wouldn't make much sense in video nodes for metadata (params and statistics)
-> 
-> In this options, the validation callback should check for matching quantizations
-> between all links, and it would failed on STREAMON if formats don't match.
-> 
-> 2-A) Expose read-write quantization only on the isp source pad.
-> The others pads and video nodes would be keept read-only.
-> Which means that changing quantization on a read-write node, will implicitly
-> change the values on the read-only nodes.
-> Which maybe not be a problem, since current API (read-only) already says this field
-> is filled by the driver.
-> 
-> In this options, the validation callback doesn't need to check for matching quantizations
-> between links.
-> 
-> 2-A) Expose read-write quantization only on the video node
-> This is basically the same as 2-A, but userspace could interpret that we
-> could have different quantizations in each video node.
-> 
-> 
-> I'd like to hear from others what would be better here, design choice 1 or 2.
+Reviewed-by: Amit Kucheria <amit.kucheria@linaro.org>
 
-To keep things simple, I'd go for 2-A, and I would ignore the colorspace
-fields completely on the video nodes.
-
-In an MC-centric driver there should be no automatic in-kernel
-propagation of userspace-visible configuration from a source pad to the
-connected sink pad (regardless of whether the sink is a subdev or a
-video node). It's userspace that is responsible for propagating the
-configuration, and the kernel is supposed to validate it at stream-on
-time.
-
-In this case, the colorspace information is only relevant to the ISP and
-nobody else cares (neither the resizer nor the DMA engines) - please
-correct me if I'm wrong. Given that userspace will be specific to this
-particular hardware, I would not enforce matching colorspace beyond the
-output of the ISP. Userspace will deal with colorspace at the output of
-the ISP and ignore it on the video node.
-
-> > Userspace have to configure the quantizaion on the resizer sink pad without that CSC
-> > API beeing expose on it?
-> 
-> In the current API, the quantization field is read-only, so to allow userspace to configure
-> quantization in any pad, the CSC API needs to be exposed on the pad to make it read-write.
-> 
-> >>>> Below is the rationale for that:
-> >>>> - In the MC model, the video node represents the DMA alone (and thus
-> >>>> the reason to have the resizer entities at all) and since the
-> >>>> colorspace is not a property of the DMA, it doesn't belong there.
-> >>>> - Even if we put that aside, both MP and SP can only output the same
-> >>>> colorspace, which would create a dependency between the configuration
-> >>>> of the two video nodes, which is not something well defined by V4L2.
-> >>>> - A video interface in the MC API doesn't expose control over its
-> >>>> input format, which means that the relation between the other side of
-> >>>> the link (resizer source) and the video node is implicit and needs to
-> >>>> be handled internally in the driver.
-> >>>> - V4L2, as opposed to MC, requires that the current state is always
-> >>>> consistent and valid. In this case it means that an ioctl on the video
-> >>>> node must not be able to alter the state in a way that would make it
-> >>>> inconsistent with the state of the matching resizer source.
-
--- 
-Regards,
-
-Laurent Pinchart
+> ---
+>  drivers/net/ethernet/chelsio/cxgb4/cxgb4_thermal.c       | 8 ++++++++
+>  drivers/net/wireless/intel/iwlwifi/mvm/tt.c              | 9 ++++++++-
+>  drivers/platform/x86/intel_mid_thermal.c                 | 6 ++++++
+>  drivers/power/supply/power_supply_core.c                 | 9 +++++++--
+>  drivers/thermal/armada_thermal.c                         | 6 ++++++
+>  drivers/thermal/dove_thermal.c                           | 6 ++++++
+>  .../thermal/intel/int340x_thermal/int340x_thermal_zone.c | 5 +++++
+>  drivers/thermal/intel/intel_pch_thermal.c                | 5 +++++
+>  drivers/thermal/intel/intel_soc_dts_iosf.c               | 3 +++
+>  drivers/thermal/intel/x86_pkg_temp_thermal.c             | 6 ++++++
+>  drivers/thermal/kirkwood_thermal.c                       | 7 +++++++
+>  drivers/thermal/rcar_thermal.c                           | 9 ++++++++-
+>  drivers/thermal/spear_thermal.c                          | 7 +++++++
+>  drivers/thermal/st/st_thermal.c                          | 5 +++++
+>  14 files changed, 87 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/chelsio/cxgb4/cxgb4_thermal.c b/drivers/net/ethernet/chelsio/cxgb4/cxgb4_thermal.c
+> index 3de8a5e83b6c..e3510e9b21f3 100644
+> --- a/drivers/net/ethernet/chelsio/cxgb4/cxgb4_thermal.c
+> +++ b/drivers/net/ethernet/chelsio/cxgb4/cxgb4_thermal.c
+> @@ -92,6 +92,14 @@ int cxgb4_thermal_init(struct adapter *adap)
+>                 ch_thermal->tzdev = NULL;
+>                 return ret;
+>         }
+> +
+> +       ret = thermal_zone_device_enable(ch_thermal->tzdev);
+> +       if (ret) {
+> +               dev_err(adap->pdev_dev, "Failed to enable thermal zone\n");
+> +               thermal_zone_device_unregister(adap->ch_thermal.tzdev);
+> +               return ret;
+> +       }
+> +
+>         return 0;
+>  }
+>
+> diff --git a/drivers/net/wireless/intel/iwlwifi/mvm/tt.c b/drivers/net/wireless/intel/iwlwifi/mvm/tt.c
+> index 418e59b7c671..0c95663bf9ed 100644
+> --- a/drivers/net/wireless/intel/iwlwifi/mvm/tt.c
+> +++ b/drivers/net/wireless/intel/iwlwifi/mvm/tt.c
+> @@ -733,7 +733,7 @@ static  struct thermal_zone_device_ops tzone_ops = {
+>
+>  static void iwl_mvm_thermal_zone_register(struct iwl_mvm *mvm)
+>  {
+> -       int i;
+> +       int i, ret;
+>         char name[16];
+>         static atomic_t counter = ATOMIC_INIT(0);
+>
+> @@ -759,6 +759,13 @@ static void iwl_mvm_thermal_zone_register(struct iwl_mvm *mvm)
+>                 return;
+>         }
+>
+> +       ret = thermal_zone_device_enable(mvm->tz_device.tzone);
+> +       if (ret) {
+> +               IWL_DEBUG_TEMP(mvm, "Failed to enable thermal zone\n");
+> +               thermal_zone_device_unregister(mvm->tz_device.tzone);
+> +               return;
+> +       }
+> +
+>         /* 0 is a valid temperature,
+>          * so initialize the array with S16_MIN which invalid temperature
+>          */
+> diff --git a/drivers/platform/x86/intel_mid_thermal.c b/drivers/platform/x86/intel_mid_thermal.c
+> index f402e2e74a38..f12f4e7bd971 100644
+> --- a/drivers/platform/x86/intel_mid_thermal.c
+> +++ b/drivers/platform/x86/intel_mid_thermal.c
+> @@ -493,6 +493,12 @@ static int mid_thermal_probe(struct platform_device *pdev)
+>                         ret = PTR_ERR(pinfo->tzd[i]);
+>                         goto err;
+>                 }
+> +               ret = thermal_zone_device_enable(pinfo->tzd[i]);
+> +               if (ret) {
+> +                       kfree(td_info);
+> +                       thermal_zone_device_unregister(pinfo->tzd[i]);
+> +                       goto err;
+> +               }
+>         }
+>
+>         pinfo->pdev = pdev;
+> diff --git a/drivers/power/supply/power_supply_core.c b/drivers/power/supply/power_supply_core.c
+> index 02b37fe6061c..90e56736d479 100644
+> --- a/drivers/power/supply/power_supply_core.c
+> +++ b/drivers/power/supply/power_supply_core.c
+> @@ -939,7 +939,7 @@ static struct thermal_zone_device_ops psy_tzd_ops = {
+>
+>  static int psy_register_thermal(struct power_supply *psy)
+>  {
+> -       int i;
+> +       int i, ret;
+>
+>         if (psy->desc->no_thermal)
+>                 return 0;
+> @@ -949,7 +949,12 @@ static int psy_register_thermal(struct power_supply *psy)
+>                 if (psy->desc->properties[i] == POWER_SUPPLY_PROP_TEMP) {
+>                         psy->tzd = thermal_zone_device_register(psy->desc->name,
+>                                         0, 0, psy, &psy_tzd_ops, NULL, 0, 0);
+> -                       return PTR_ERR_OR_ZERO(psy->tzd);
+> +                       if (IS_ERR(psy->tzd))
+> +                               return PTR_ERR(psy->tzd);
+> +                       ret = thermal_zone_device_enable(psy->tzd);
+> +                       if (ret)
+> +                               thermal_zone_device_unregister(psy->tzd);
+> +                       return ret;
+>                 }
+>         }
+>         return 0;
+> diff --git a/drivers/thermal/armada_thermal.c b/drivers/thermal/armada_thermal.c
+> index 7c447cd149e7..c2ebfb5be4b3 100644
+> --- a/drivers/thermal/armada_thermal.c
+> +++ b/drivers/thermal/armada_thermal.c
+> @@ -874,6 +874,12 @@ static int armada_thermal_probe(struct platform_device *pdev)
+>                         return PTR_ERR(tz);
+>                 }
+>
+> +               ret = thermal_zone_device_enable(tz);
+> +               if (ret) {
+> +                       thermal_zone_device_unregister(tz);
+> +                       return ret;
+> +               }
+> +
+>                 drvdata->type = LEGACY;
+>                 drvdata->data.tz = tz;
+>                 platform_set_drvdata(pdev, drvdata);
+> diff --git a/drivers/thermal/dove_thermal.c b/drivers/thermal/dove_thermal.c
+> index 75901ced4a62..73182eb94bc0 100644
+> --- a/drivers/thermal/dove_thermal.c
+> +++ b/drivers/thermal/dove_thermal.c
+> @@ -153,6 +153,12 @@ static int dove_thermal_probe(struct platform_device *pdev)
+>                 return PTR_ERR(thermal);
+>         }
+>
+> +       ret = thermal_zone_device_enable(thermal);
+> +       if (ret) {
+> +               thermal_zone_device_unregister(thermal);
+> +               return ret;
+> +       }
+> +
+>         platform_set_drvdata(pdev, thermal);
+>
+>         return 0;
+> diff --git a/drivers/thermal/intel/int340x_thermal/int340x_thermal_zone.c b/drivers/thermal/intel/int340x_thermal/int340x_thermal_zone.c
+> index 432213272f1e..6e479deff76b 100644
+> --- a/drivers/thermal/intel/int340x_thermal/int340x_thermal_zone.c
+> +++ b/drivers/thermal/intel/int340x_thermal/int340x_thermal_zone.c
+> @@ -259,9 +259,14 @@ struct int34x_thermal_zone *int340x_thermal_zone_add(struct acpi_device *adev,
+>                 ret = PTR_ERR(int34x_thermal_zone->zone);
+>                 goto err_thermal_zone;
+>         }
+> +       ret = thermal_zone_device_enable(int34x_thermal_zone->zone);
+> +       if (ret)
+> +               goto err_enable;
+>
+>         return int34x_thermal_zone;
+>
+> +err_enable:
+> +       thermal_zone_device_unregister(int34x_thermal_zone->zone);
+>  err_thermal_zone:
+>         acpi_lpat_free_conversion_table(int34x_thermal_zone->lpat_table);
+>         kfree(int34x_thermal_zone->aux_trips);
+> diff --git a/drivers/thermal/intel/intel_pch_thermal.c b/drivers/thermal/intel/intel_pch_thermal.c
+> index 56401fd4708d..65702094f3d3 100644
+> --- a/drivers/thermal/intel/intel_pch_thermal.c
+> +++ b/drivers/thermal/intel/intel_pch_thermal.c
+> @@ -352,9 +352,14 @@ static int intel_pch_thermal_probe(struct pci_dev *pdev,
+>                 err = PTR_ERR(ptd->tzd);
+>                 goto error_cleanup;
+>         }
+> +       err = thermal_zone_device_enable(ptd->tzd);
+> +       if (err)
+> +               goto err_unregister;
+>
+>         return 0;
+>
+> +err_unregister:
+> +       thermal_zone_device_unregister(ptd->tzd);
+>  error_cleanup:
+>         iounmap(ptd->hw_base);
+>  error_release:
+> diff --git a/drivers/thermal/intel/intel_soc_dts_iosf.c b/drivers/thermal/intel/intel_soc_dts_iosf.c
+> index f75271b669c6..4f1a2f7c016c 100644
+> --- a/drivers/thermal/intel/intel_soc_dts_iosf.c
+> +++ b/drivers/thermal/intel/intel_soc_dts_iosf.c
+> @@ -329,6 +329,9 @@ static int add_dts_thermal_zone(int id, struct intel_soc_dts_sensor_entry *dts,
+>                 ret = PTR_ERR(dts->tzone);
+>                 goto err_ret;
+>         }
+> +       ret = thermal_zone_device_enable(dts->tzone);
+> +       if (ret)
+> +               goto err_enable;
+>
+>         ret = soc_dts_enable(id);
+>         if (ret)
+> diff --git a/drivers/thermal/intel/x86_pkg_temp_thermal.c b/drivers/thermal/intel/x86_pkg_temp_thermal.c
+> index a006b9fd1d72..b81c33202f41 100644
+> --- a/drivers/thermal/intel/x86_pkg_temp_thermal.c
+> +++ b/drivers/thermal/intel/x86_pkg_temp_thermal.c
+> @@ -363,6 +363,12 @@ static int pkg_temp_thermal_device_add(unsigned int cpu)
+>                 kfree(zonedev);
+>                 return err;
+>         }
+> +       err = thermal_zone_device_enable(zonedev->tzone);
+> +       if (err) {
+> +               thermal_zone_device_unregister(zonedev->tzone);
+> +               kfree(zonedev);
+> +               return err;
+> +       }
+>         /* Store MSR value for package thermal interrupt, to restore at exit */
+>         rdmsr(MSR_IA32_PACKAGE_THERM_INTERRUPT, zonedev->msr_pkg_therm_low,
+>               zonedev->msr_pkg_therm_high);
+> diff --git a/drivers/thermal/kirkwood_thermal.c b/drivers/thermal/kirkwood_thermal.c
+> index 189b675cf14d..7fb6e476c82a 100644
+> --- a/drivers/thermal/kirkwood_thermal.c
+> +++ b/drivers/thermal/kirkwood_thermal.c
+> @@ -65,6 +65,7 @@ static int kirkwood_thermal_probe(struct platform_device *pdev)
+>         struct thermal_zone_device *thermal = NULL;
+>         struct kirkwood_thermal_priv *priv;
+>         struct resource *res;
+> +       int ret;
+>
+>         priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+>         if (!priv)
+> @@ -82,6 +83,12 @@ static int kirkwood_thermal_probe(struct platform_device *pdev)
+>                         "Failed to register thermal zone device\n");
+>                 return PTR_ERR(thermal);
+>         }
+> +       ret = thermal_zone_device_enable(thermal);
+> +       if (ret) {
+> +               thermal_zone_device_unregister(thermal);
+> +               dev_err(&pdev->dev, "Failed to enable thermal zone device\n");
+> +               return ret;
+> +       }
+>
+>         platform_set_drvdata(pdev, thermal);
+>
+> diff --git a/drivers/thermal/rcar_thermal.c b/drivers/thermal/rcar_thermal.c
+> index 46aeb28b4e90..787710bb88fe 100644
+> --- a/drivers/thermal/rcar_thermal.c
+> +++ b/drivers/thermal/rcar_thermal.c
+> @@ -550,12 +550,19 @@ static int rcar_thermal_probe(struct platform_device *pdev)
+>                         priv->zone = devm_thermal_zone_of_sensor_register(
+>                                                 dev, i, priv,
+>                                                 &rcar_thermal_zone_of_ops);
+> -               else
+> +               else {
+>                         priv->zone = thermal_zone_device_register(
+>                                                 "rcar_thermal",
+>                                                 1, 0, priv,
+>                                                 &rcar_thermal_zone_ops, NULL, 0,
+>                                                 idle);
+> +
+> +                       ret = thermal_zone_device_enable(priv->zone);
+> +                       if (ret) {
+> +                               thermal_zone_device_unregister(priv->zone);
+> +                               priv->zone = ERR_PTR(ret);
+> +                       }
+> +               }
+>                 if (IS_ERR(priv->zone)) {
+>                         dev_err(dev, "can't register thermal zone\n");
+>                         ret = PTR_ERR(priv->zone);
+> diff --git a/drivers/thermal/spear_thermal.c b/drivers/thermal/spear_thermal.c
+> index f68f581fd669..ee33ed692e4f 100644
+> --- a/drivers/thermal/spear_thermal.c
+> +++ b/drivers/thermal/spear_thermal.c
+> @@ -131,6 +131,11 @@ static int spear_thermal_probe(struct platform_device *pdev)
+>                 ret = PTR_ERR(spear_thermal);
+>                 goto disable_clk;
+>         }
+> +       ret = thermal_zone_device_enable(spear_thermal);
+> +       if (ret) {
+> +               dev_err(&pdev->dev, "Cannot enable thermal zone\n");
+> +               goto unregister_tzd;
+> +       }
+>
+>         platform_set_drvdata(pdev, spear_thermal);
+>
+> @@ -139,6 +144,8 @@ static int spear_thermal_probe(struct platform_device *pdev)
+>
+>         return 0;
+>
+> +unregister_tzd:
+> +       thermal_zone_device_unregister(spear_thermal);
+>  disable_clk:
+>         clk_disable(stdev->clk);
+>
+> diff --git a/drivers/thermal/st/st_thermal.c b/drivers/thermal/st/st_thermal.c
+> index b928ca6a289b..1276b95604fe 100644
+> --- a/drivers/thermal/st/st_thermal.c
+> +++ b/drivers/thermal/st/st_thermal.c
+> @@ -246,11 +246,16 @@ int st_thermal_register(struct platform_device *pdev,
+>                 ret = PTR_ERR(sensor->thermal_dev);
+>                 goto sensor_off;
+>         }
+> +       ret = thermal_zone_device_enable(sensor->thermal_dev);
+> +       if (ret)
+> +               goto tzd_unregister;
+>
+>         platform_set_drvdata(pdev, sensor);
+>
+>         return 0;
+>
+> +tzd_unregister:
+> +       thermal_zone_device_unregister(sensor->thermal_dev);
+>  sensor_off:
+>         st_thermal_sensor_off(sensor);
+>
+> --
+> 2.17.1
+>
