@@ -1,95 +1,50 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [RFC v4 4/8] v4l2: add support for colorspace conversion API
- (CSC) for video capture and subdevices
-Date: Tue, 30 Jun 2020 17:23:01 +0200
-Message-ID: <8fd5417b-970d-e9d5-824a-31658fe50c99@collabora.com>
-References: <20200605172625.19777-1-dafna.hirschfeld@collabora.com>
- <20200605172625.19777-5-dafna.hirschfeld@collabora.com>
- <973edb0c-4c52-c29c-4b22-54a05eca6f7a@xs4all.nl>
- <e55548ad47eacd9acf3aa94cc98a46b3f4924cd9.camel@pengutronix.de>
+From: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
+Date: Tue, 30 Jun 2020 16:53:29 +0200
+Message-ID: <47111821-d691-e71d-d740-e4325e290fa4@linaro.org>
+References: <20200629122925.21729-1-andrzej.p@collabora.com>
+ <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
+ <3d03d1a2-ac06-b69b-93cb-e0203be62c10@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <e55548ad47eacd9acf3aa94cc98a46b3f4924cd9.camel@pengutronix.de>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <3d03d1a2-ac06-b69b-93cb-e0203be62c10-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Philipp Zabel <p.zabel@pengutronix.de>, Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: helen.koike@collabora.com, ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, Hans Verkuil <hans.verkuil@cisco.com>
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-acpi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, platform-driver-x86-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: "Rafael J . Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Len Brown <lenb-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Vishal Kulkarni <vishal-ut6Up61K2wZBDgjK7y7TUQ@public.gmane.org>, "David S . Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Jiri Pirko <jiri-VPRAkNaXOzVWk0Htik3J/w@public.gmane.org>, Ido Schimmel <idosch-VPRAkNaXOzVWk0Htik3J/w@public.gmane.org>, Johannes Berg <johannes.berg-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Emmanuel Grumbach <emmanuel.grumbach-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Luca Coelho <luciano.coelho-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Intel Linux Wireless <linuxwifi-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Peter Kaestle <peter-p08lbbvQ7EI@public.gmane.org>, Darren Hart <dvhart-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Andy Shevchenko <andy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Sebastian Reichel <sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Amit Kucheria <amit.kucheria-LY4KaoCqKrnby3iVrkZq2A@public.gmane.org>, Support Opensource <support.opensource-WBD+wuPFNBhBDgjK7y7TUQ@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-
-
-On 26.06.20 14:22, Philipp Zabel wrote:
-> Hi Dafna,
+On 30/06/2020 15:43, Andrzej Pietrasiewicz wrote:
+> Hi Daniel,
 > 
-> On Mon, 2020-06-08 at 12:00 +0200, Hans Verkuil wrote:
-> [...]
->>> diff --git a/include/uapi/linux/v4l2-mediabus.h b/include/uapi/linux/v4l2-mediabus.h
->>> index 123a231001a8..0f916278137a 100644
->>> --- a/include/uapi/linux/v4l2-mediabus.h
->>> +++ b/include/uapi/linux/v4l2-mediabus.h
->>> @@ -16,6 +16,8 @@
->>>   #include <linux/types.h>
->>>   #include <linux/videodev2.h>
->>>   
->>> +#define V4L2_MBUS_FRAMEFMT_SET_CSC	0x0001
->>> +
->>>   /**
->>>    * struct v4l2_mbus_framefmt - frame format on the media bus
->>>    * @width:	image width
->>> @@ -36,7 +38,8 @@ struct v4l2_mbus_framefmt {
->>>   	__u16			ycbcr_enc;
->>>   	__u16			quantization;
->>>   	__u16			xfer_func;
->>> -	__u16			reserved[11];
->>> +	__u16			flags;
->>> +	__u16			reserved[10];
->>>   };
+> I am reading the logs and can't find anything specific to thermal.
 > 
-> The the flags field should also be added to the kerneldoc comment.
-
-Hi, Which kerneldoc comment do you mean?
-I added to the doc of the v4l2-mbus-framefmt:
-
-     * - __u16
-       - ``flags``
-       - flags See:  :ref:v4l2-mbus-framefmt-flags
-  
-
+> What I can see is
 > 
->>>   
->>>   #ifndef __KERNEL__
->>> diff --git a/include/uapi/linux/v4l2-subdev.h b/include/uapi/linux/v4l2-subdev.h
->>> index 5d2a1dab7911..972e64d8b54e 100644
->>> --- a/include/uapi/linux/v4l2-subdev.h
->>> +++ b/include/uapi/linux/v4l2-subdev.h
->>> @@ -65,6 +65,8 @@ struct v4l2_subdev_crop {
->>>   	__u32 reserved[8];
->>>   };
->>>   
->>> +#define V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC	0x00000001
->>> +#define V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION	0x00000002
->>>   /**
->>>    * struct v4l2_subdev_mbus_code_enum - Media bus format enumeration
->>>    * @pad: pad number, as reported by the media API
->>> @@ -77,7 +79,8 @@ struct v4l2_subdev_mbus_code_enum {
->>>   	__u32 index;
->>>   	__u32 code;
->>>   	__u32 which;
->>> -	__u32 reserved[8];
->>> +	__u32 flags;
->>> +	__u32 reserved[7];
->>>   };
+> "random: crng init done"
 > 
-> Same as above.
-
-Same questions as above.
-
-Thanks,
-Dafna
-
+> with large times (~200s) and then e.g.
 > 
-> regards
-> Philipp
+> 'auto-login-action timed out after 283 seconds'
 > 
+> I'm looking at e.g.
+> https://storage.kernelci.org/thermal/testing/v5.8-rc3-11-gf5e50bf4d3ef/arm/multi_v7_defconfig/gcc-8/lab-baylibre/baseline-imx6q-sabrelite.html
+> 
+> 
+> Is there anywhere else I can look at?
+
+No unfortunately :/
+
+I have a Meerkat96 which uses the same sensor as the imx6q.
+
+I'll give a try to see if I can reproduce and let you know.
+
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
