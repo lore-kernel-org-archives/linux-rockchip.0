@@ -1,94 +1,34 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
-Date: Tue, 30 Jun 2020 14:57:52 +0200
-Message-ID: <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
-References: <20200629122925.21729-1-andrzej.p@collabora.com>
+From: Yu-Hsuan Hsu <yuhsuan@chromium.org>
+Subject: Re: [PATCH] ASoC: rockchip: add format and rate constraints on rk3399
+Date: Tue, 30 Jun 2020 20:25:28 +0800
+Message-ID: <CAGvk5PqqMKikj46yfvNYdiQ=3cWoHVLBgQKGOPs5iuoFWUBs=Q@mail.gmail.com>
+References: <20200630091615.4020059-1-yuhsuan@chromium.org> <20200630104047.GD5272@sirena.org.uk>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-acpi-owner@vger.kernel.org>
-In-Reply-To: <20200629122925.21729-1-andrzej.p@collabora.com>
-Content-Language: en-US
-Sender: linux-acpi-owner@vger.kernel.org
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200630104047.GD5272@sirena.org.uk>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>, Tzung-Bi Shih <tzungbi@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Mark Brown <broonie@kernel.org> =E6=96=BC 2020=E5=B9=B46=E6=9C=8830=E6=97=
+=A5 =E9=80=B1=E4=BA=8C =E4=B8=8B=E5=8D=886:40=E5=AF=AB=E9=81=93=EF=BC=9A
+>
+> On Tue, Jun 30, 2020 at 05:16:15PM +0800, Yu-Hsuan Hsu wrote:
+> > S8 and S24 formats does not work on this machine driver so force to use
+> > S16_LE instead.
+>
+> > In addition, add constraint to limit the max value of rate because the
+> > rate higher than 96000(172000, 192000) is not stable either.
+>
+> What is the source of these restrictions - are they due to the component
+> devices?  If they are then the component devices ought to be setting
+> suitable constraints themselves.
 
-Hi Andrzej,
-
-I've tested your series with kernelci and there are 3 regressions for
-the imx6.
-
-https://kernelci.org/test/job/thermal/branch/testing/kernel/v5.8-rc3-11-gf5e50bf4d3ef/plan/baseline/
-
-
-On 29/06/2020 14:29, Andrzej Pietrasiewicz wrote:
-> A respin of v6 with these changes:
-> 
-> v6..v7:
-> - removed duplicate S-o-b line from patch 6/11
-> 
-> v5..v6:
-> - staticized thermal_zone_device_set_mode() (kbuild test robot)
-> 
-> v4..v5:
-> 
-> - EXPORT_SYMBOL -> EXPORT_SYMBOL_GPL (Daniel)
-> - dropped unnecessary thermal_zone_device_enable() in int3400_thermal.c
-> and in thermal_of.c (Bartlomiej)
-> 
-> Andrzej Pietrasiewicz (11):
->   acpi: thermal: Fix error handling in the register function
->   thermal: Store thermal mode in a dedicated enum
->   thermal: Add current mode to thermal zone device
->   thermal: Store device mode in struct thermal_zone_device
->   thermal: remove get_mode() operation of drivers
->   thermal: Add mode helpers
->   thermal: Use mode helpers in drivers
->   thermal: Explicitly enable non-changing thermal zone devices
->   thermal: core: Stop polling DISABLED thermal devices
->   thermal: Simplify or eliminate unnecessary set_mode() methods
->   thermal: Rename set_mode() to change_mode()
-> 
->  drivers/acpi/thermal.c                        | 75 +++++----------
->  .../ethernet/chelsio/cxgb4/cxgb4_thermal.c    |  8 ++
->  .../ethernet/mellanox/mlxsw/core_thermal.c    | 91 ++++---------------
->  drivers/net/wireless/intel/iwlwifi/mvm/tt.c   |  9 +-
->  drivers/platform/x86/acerhdf.c                | 33 +++----
->  drivers/platform/x86/intel_mid_thermal.c      |  6 ++
->  drivers/power/supply/power_supply_core.c      |  9 +-
->  drivers/thermal/armada_thermal.c              |  6 ++
->  drivers/thermal/da9062-thermal.c              | 16 +---
->  drivers/thermal/dove_thermal.c                |  6 ++
->  drivers/thermal/hisi_thermal.c                |  6 +-
->  drivers/thermal/imx_thermal.c                 | 57 ++++--------
->  .../intel/int340x_thermal/int3400_thermal.c   | 38 ++------
->  .../int340x_thermal/int340x_thermal_zone.c    |  5 +
->  drivers/thermal/intel/intel_pch_thermal.c     |  5 +
->  .../thermal/intel/intel_quark_dts_thermal.c   | 34 ++-----
->  drivers/thermal/intel/intel_soc_dts_iosf.c    |  3 +
->  drivers/thermal/intel/x86_pkg_temp_thermal.c  |  6 ++
->  drivers/thermal/kirkwood_thermal.c            |  7 ++
->  drivers/thermal/rcar_thermal.c                |  9 +-
->  drivers/thermal/rockchip_thermal.c            |  6 +-
->  drivers/thermal/spear_thermal.c               |  7 ++
->  drivers/thermal/sprd_thermal.c                |  6 +-
->  drivers/thermal/st/st_thermal.c               |  5 +
->  drivers/thermal/thermal_core.c                | 76 ++++++++++++++--
->  drivers/thermal/thermal_of.c                  | 41 +--------
->  drivers/thermal/thermal_sysfs.c               | 37 +-------
->  include/linux/thermal.h                       | 19 +++-
->  28 files changed, 275 insertions(+), 351 deletions(-)
-> 
-> 
-> base-commit: 9ebcfadb0610322ac537dd7aa5d9cbc2b2894c68
-> 
-
-
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+I'm not sure why it happened. But I guess it is not the issues on those
+components because they work normally on other machine drivers.
+Because this driver is old and lacks maintenance, I think we can just
+filter some unstable formats. Actually, those formats are very rarely
+used as well.
