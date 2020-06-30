@@ -1,48 +1,109 @@
-From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] ASoC: rockchip: add format and rate constraints on rk3399
-Date: Tue, 30 Jun 2020 11:40:47 +0100
-Message-ID: <20200630104047.GD5272@sirena.org.uk>
-References: <20200630091615.4020059-1-yuhsuan@chromium.org>
+From: Andrzej Pietrasiewicz <andrzej.p-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
+Date: Tue, 30 Jun 2020 15:43:20 +0200
+Message-ID: <3d03d1a2-ac06-b69b-93cb-e0203be62c10@collabora.com>
+References: <20200629122925.21729-1-andrzej.p@collabora.com>
+ <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
 Mime-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-        protocol="application/pgp-signature"; boundary="IMjqdzrDRly81ofr"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200630091615.4020059-1-yuhsuan@chromium.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Yu-Hsuan Hsu <yuhsuan@chromium.org>
-Cc: linux-kernel@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>, Tzung-Bi Shih <tzungbi@chromium.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <aab40d90-3f72-657c-5e14-e53a34c4b420-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>
+Content-Language: en-US
+Sender: linux-wireless-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Daniel Lezcano <daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-acpi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, netdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-wireless-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, platform-driver-x86-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: "Rafael J . Wysocki" <rjw-LthD3rsA81gm4RdzfppkhA@public.gmane.org>, Len Brown <lenb-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Vishal Kulkarni <vishal-ut6Up61K2wZBDgjK7y7TUQ@public.gmane.org>, "David S . Miller" <davem-fT/PcQaiUtIeIZ0/mPfg9Q@public.gmane.org>, Jiri Pirko <jiri-VPRAkNaXOzVWk0Htik3J/w@public.gmane.org>, Ido Schimmel <idosch-VPRAkNaXOzVWk0Htik3J/w@public.gmane.org>, Johannes Berg <johannes.berg-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Emmanuel Grumbach <emmanuel.grumbach-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Luca Coelho <luciano.coelho-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Intel Linux Wireless <linuxwifi-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, Kalle Valo <kvalo-sgV2jX0FEOL9JmXXK+q4OQ@public.gmane.org>, Peter Kaestle <peter-p08lbbvQ7EI@public.gmane.org>, Darren Hart <dvhart-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Andy Shevchenko <andy-wEGCiKHe2LqWVfeAwA7xHQ@public.gmane.org>, Sebastian Reichel <sre-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Amit Kucheria <amit.kucheria-LY4KaoCqKrnby3iVrkZq2A@public.gmane.org>, Support Opensource <support.opensource-WBD+wuPFNBhBDgjK7y7TUQ@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Daniel,
 
---IMjqdzrDRly81ofr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I am reading the logs and can't find anything specific to thermal.
 
-On Tue, Jun 30, 2020 at 05:16:15PM +0800, Yu-Hsuan Hsu wrote:
-> S8 and S24 formats does not work on this machine driver so force to use
-> S16_LE instead.
+What I can see is
 
-> In addition, add constraint to limit the max value of rate because the
-> rate higher than 96000(172000, 192000) is not stable either.
+"random: crng init done"
 
-What is the source of these restrictions - are they due to the component
-devices?  If they are then the component devices ought to be setting
-suitable constraints themselves.
+with large times (~200s) and then e.g.
 
---IMjqdzrDRly81ofr
-Content-Type: application/pgp-signature; name="signature.asc"
+'auto-login-action timed out after 283 seconds'
 
------BEGIN PGP SIGNATURE-----
+I'm looking at e.g. 
+https://storage.kernelci.org/thermal/testing/v5.8-rc3-11-gf5e50bf4d3ef/arm/multi_v7_defconfig/gcc-8/lab-baylibre/baseline-imx6q-sabrelite.html
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl77Fq4ACgkQJNaLcl1U
-h9BqcQf/bBQI6UlLdBzbns/XWHMzns0NgqJqIDhyUaAV2cK/NnbvoadF7Q/Ierez
-Kksy56oOcNJtiTpSuhy/Z2ubQNKNkcMYkwVSp3M3FllU/QxR59Ia7N8P4xkvbOsx
-a5niu9cUSP94dygzita0jqcVvYkXXAaC9IHK/v11WwKsoM8KTgP3CWgksBGWJqVm
-uTY3zisJtV1m7GIHObSu0Vr9c6XJrCi5G9qDZSxPyq+Fhcpz6nFtA3sN7Ctu5j8J
-G8HdFjK69Suj6ESd13Xkd2/ELgNGzpA/W0SVpVkJzmS4Mbj6iyUegxXIk5LjVx4C
-XfuoMxggN8y3ux+S5/MlmEw9AqU/TA==
-=1Ldw
------END PGP SIGNATURE-----
+Is there anywhere else I can look at?
 
---IMjqdzrDRly81ofr--
+Andrzej
+
+W dniu 30.06.2020 o 14:57, Daniel Lezcano pisze:
+> 
+> Hi Andrzej,
+> 
+> I've tested your series with kernelci and there are 3 regressions for
+> the imx6.
+> 
+> https://kernelci.org/test/job/thermal/branch/testing/kernel/v5.8-rc3-11-gf5e50bf4d3ef/plan/baseline/
+> 
+> 
+> On 29/06/2020 14:29, Andrzej Pietrasiewicz wrote:
+>> A respin of v6 with these changes:
+>>
+>> v6..v7:
+>> - removed duplicate S-o-b line from patch 6/11
+>>
+>> v5..v6:
+>> - staticized thermal_zone_device_set_mode() (kbuild test robot)
+>>
+>> v4..v5:
+>>
+>> - EXPORT_SYMBOL -> EXPORT_SYMBOL_GPL (Daniel)
+>> - dropped unnecessary thermal_zone_device_enable() in int3400_thermal.c
+>> and in thermal_of.c (Bartlomiej)
+>>
+>> Andrzej Pietrasiewicz (11):
+>>    acpi: thermal: Fix error handling in the register function
+>>    thermal: Store thermal mode in a dedicated enum
+>>    thermal: Add current mode to thermal zone device
+>>    thermal: Store device mode in struct thermal_zone_device
+>>    thermal: remove get_mode() operation of drivers
+>>    thermal: Add mode helpers
+>>    thermal: Use mode helpers in drivers
+>>    thermal: Explicitly enable non-changing thermal zone devices
+>>    thermal: core: Stop polling DISABLED thermal devices
+>>    thermal: Simplify or eliminate unnecessary set_mode() methods
+>>    thermal: Rename set_mode() to change_mode()
+>>
+>>   drivers/acpi/thermal.c                        | 75 +++++----------
+>>   .../ethernet/chelsio/cxgb4/cxgb4_thermal.c    |  8 ++
+>>   .../ethernet/mellanox/mlxsw/core_thermal.c    | 91 ++++---------------
+>>   drivers/net/wireless/intel/iwlwifi/mvm/tt.c   |  9 +-
+>>   drivers/platform/x86/acerhdf.c                | 33 +++----
+>>   drivers/platform/x86/intel_mid_thermal.c      |  6 ++
+>>   drivers/power/supply/power_supply_core.c      |  9 +-
+>>   drivers/thermal/armada_thermal.c              |  6 ++
+>>   drivers/thermal/da9062-thermal.c              | 16 +---
+>>   drivers/thermal/dove_thermal.c                |  6 ++
+>>   drivers/thermal/hisi_thermal.c                |  6 +-
+>>   drivers/thermal/imx_thermal.c                 | 57 ++++--------
+>>   .../intel/int340x_thermal/int3400_thermal.c   | 38 ++------
+>>   .../int340x_thermal/int340x_thermal_zone.c    |  5 +
+>>   drivers/thermal/intel/intel_pch_thermal.c     |  5 +
+>>   .../thermal/intel/intel_quark_dts_thermal.c   | 34 ++-----
+>>   drivers/thermal/intel/intel_soc_dts_iosf.c    |  3 +
+>>   drivers/thermal/intel/x86_pkg_temp_thermal.c  |  6 ++
+>>   drivers/thermal/kirkwood_thermal.c            |  7 ++
+>>   drivers/thermal/rcar_thermal.c                |  9 +-
+>>   drivers/thermal/rockchip_thermal.c            |  6 +-
+>>   drivers/thermal/spear_thermal.c               |  7 ++
+>>   drivers/thermal/sprd_thermal.c                |  6 +-
+>>   drivers/thermal/st/st_thermal.c               |  5 +
+>>   drivers/thermal/thermal_core.c                | 76 ++++++++++++++--
+>>   drivers/thermal/thermal_of.c                  | 41 +--------
+>>   drivers/thermal/thermal_sysfs.c               | 37 +-------
+>>   include/linux/thermal.h                       | 19 +++-
+>>   28 files changed, 275 insertions(+), 351 deletions(-)
+>>
+>>
+>> base-commit: 9ebcfadb0610322ac537dd7aa5d9cbc2b2894c68
+>>
+> 
+> 
