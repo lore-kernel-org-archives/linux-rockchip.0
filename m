@@ -1,62 +1,68 @@
-From: Philipp Zabel <p.zabel@pengutronix.de>
-Subject: Re: [RFC v4 4/8] v4l2: add support for colorspace conversion API
- (CSC) for video capture and subdevices
-Date: Wed, 01 Jul 2020 15:21:31 +0200
-Message-ID: <bf6f168cc34d1bd09b6f6af52fa4662c70b4c10e.camel@pengutronix.de>
-References: <20200605172625.19777-1-dafna.hirschfeld@collabora.com>
-         <20200605172625.19777-5-dafna.hirschfeld@collabora.com>
-         <973edb0c-4c52-c29c-4b22-54a05eca6f7a@xs4all.nl>
-         <e55548ad47eacd9acf3aa94cc98a46b3f4924cd9.camel@pengutronix.de>
-         <8fd5417b-970d-e9d5-824a-31658fe50c99@collabora.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
+Date: Wed, 1 Jul 2020 16:25:49 +0200
+Message-ID: <5dba166b-ecef-c9ee-a13a-0e9bbf74ce4c@linaro.org>
+References: <20200629122925.21729-1-andrzej.p@collabora.com>
+ <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
+ <3d03d1a2-ac06-b69b-93cb-e0203be62c10@collabora.com>
+ <47111821-d691-e71d-d740-e4325e290fa4@linaro.org>
+ <be9b7ee3-cad0-e462-126d-08de9b226285@collabora.com>
+ <4353a939-3f5e-8369-5bc0-ad8162b5ffc7@linaro.org>
+ <a531d80f-afd1-2dec-6c77-ed984e97595c@collabora.com>
+ <db1ff4e1-cbf8-89b3-5d64-b91a1fd88a41@linaro.org>
+ <73942aea-ae79-753c-fe90-d4a99423d548@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <8fd5417b-970d-e9d5-824a-31658fe50c99@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: helen.koike@collabora.com, ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, skhan@linuxfoundation.org, Hans Verkuil <hans.verkuil@cisco.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-acpi-owner@vger.kernel.org>
+In-Reply-To: <73942aea-ae79-753c-fe90-d4a99423d548@collabora.com>
+Content-Language: en-US
+Sender: linux-acpi-owner@vger.kernel.org
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 2020-06-30 at 17:23 +0200, Dafna Hirschfeld wrote:
+On 01/07/2020 12:23, Andrzej Pietrasiewicz wrote:
+> Hi,
 > 
-> On 26.06.20 14:22, Philipp Zabel wrote:
-> > Hi Dafna,
-> > 
-> > On Mon, 2020-06-08 at 12:00 +0200, Hans Verkuil wrote:
-> > [...]
-> > > > diff --git a/include/uapi/linux/v4l2-mediabus.h b/include/uapi/linux/v4l2-mediabus.h
-> > > > index 123a231001a8..0f916278137a 100644
-> > > > --- a/include/uapi/linux/v4l2-mediabus.h
-> > > > +++ b/include/uapi/linux/v4l2-mediabus.h
-> > > > @@ -16,6 +16,8 @@
-> > > >   #include <linux/types.h>
-> > > >   #include <linux/videodev2.h>
-> > > >   
-> > > > +#define V4L2_MBUS_FRAMEFMT_SET_CSC	0x0001
-> > > > +
-> > > >   /**
-> > > >    * struct v4l2_mbus_framefmt - frame format on the media bus
-> > > >    * @width:	image width
 
-             ^^^^^
-             this one
+[ ... ]
 
-> > > > @@ -36,7 +38,8 @@ struct v4l2_mbus_framefmt {
-> > > >   	__u16			ycbcr_enc;
-> > > >   	__u16			quantization;
-> > > >   	__u16			xfer_func;
-> > > > -	__u16			reserved[11];
-> > > > +	__u16			flags;
-> > > > +	__u16			reserved[10];
-> > > >   };
-> > 
-> > The the flags field should also be added to the kerneldoc comment.
+>>>>
+>>>> I did reproduce:
+>>>>
+>>>> v5.8-rc3 + series => imx6 hang at boot time
+>>>> v5.8-rc3 => imx6 boots correctly
+>>>>
 > 
-> Hi, Which kerneldoc comment do you mean?
-> I added to the doc of the v4l2-mbus-framefmt:
+> What did you reproduce? Timeout logging in to the test system or a
+> "real" failure of a test?
 
-See above, I meant the comment right above the structure definition.
+Timeout logging. Boot hangs.
 
-regards
-Philipp
+>>> I kindly ask for a bisect.
+>>
+>> I will give a try but it is a very long process as the board is running
+>> on kernelci.
+>>
+>> I was not able to reproduce it on imx7 despite it is the same sensor :/
+>>
+>>
+> 
+> Could it be that the thermal sensors somehow contribute to entropy and
+> after
+> the series is applied on some machines it takes more time to gather enough
+> entropy?
+
+I assume you are talking about the entropy for random?
+
+It would be really surprising if it is the case. The message appears
+asynchronously, I believe the boot flow is stuck in a mutex.
+
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
