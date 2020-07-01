@@ -1,72 +1,71 @@
-From: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: Re: [PATCH v9 00/11] Genericize DW MIPI DSI bridge and add i.MX 6
- driver
-Date: Wed, 01 Jul 2020 23:32:18 +0300
-Message-ID: <87imf7j7sd.fsf@collabora.com>
-References: <20200609174959.955926-1-adrian.ratiu@collabora.com>
- <6400388.H4HLtoO0Qf@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8BIT
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <6400388.H4HLtoO0Qf@diego>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH 0/9] media: rkvdec: Add H.264 High 10 and 4:2:2 profile
+ support
+Date: Wed, 01 Jul 2020 21:56:20 +0000 (UTC)
+Message-ID: <20200701215616.30874-1-jonas@kwiboo.se>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+This series contains minor fixes and adds H.264 High 10 and 4:2:2 profile
+support to the Rockchip Video Decoder driver.
 
-On Wed, 01 Jul 2020, Heiko Stübner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> Hi Adrian, 
-> 
-> Am Dienstag, 9. Juni 2020, 19:49:48 CEST schrieb Adrian Ratiu: 
->> [Re-submitting to cc dri-devel, sorry about the noise]  Hello 
->> all,  v9 cleanly applies on top of latest next-20200609 tree. 
-> 
-> at least it doesn't apply on top of current drm-misc-next for me 
-> which I really don't understand. 
-> 
-> Like patch 2/11 does 
-> 
-> @@ -31,6 +31,7 @@ 
->  #include <drm/drm_probe_helper.h> 
-> . 
->  #define HWVER_131<----><------><------>0x31333100<---->/* IP 
->  version 1.31 */ 
-> +#define HWVER_130<----><------><------>0x31333000<---->/* IP 
-> version 1.30 */ . 
->  #define DSI_VERSION<--><------><------>0x00 #define 
->  VERSION<------><------><------><------>GENMASK(31, 8) 
-> 
-> where the file currently looks like 
-> 
-> #include <drm/drm_atomic_helper.h> #include <drm/drm_bridge.h> 
-> #include <drm/drm_crtc.h> #include <drm/drm_mipi_dsi.h> #include 
-> <drm/drm_modes.h> #include <drm/drm_of.h> #include 
-> <drm/drm_print.h> 
-> 
-> #define HWVER_131			0x31333100	/* IP 
-> version 1.31 */ 
-> 
-> #define DSI_VERSION			0x00 #define VERSION 
-> GENMASK(31, 8) 
->  
-> even in Linux-next 
->  
-> So I guess ideally rebase on top of drm-misc-next
+Patch 1 adds profile and level controls.
 
-I will send a rebase on top of drm-misc-next soon (with the last 
-DTS nitpick fixed and the latest acks and reviewed-by tags added).
+Patch 2 and 3 fixes two issues when decoding field encoded content. Patch 3
+also prepare for changes to step_width in the final patch.
 
-In the meantime I also found someone within Collabora who has a RK 
-with a DSI panel and found a bug (likely clock is not enabled 
-early enough to access the cfg registers to get the version for 
-regmap).
+Patch 5 updates the v4l2_format helpers to consider block width and height
+when calculating plane bytesperline and sizeimage.
 
-I'm super happy this is getting tested on RK, thank you!
+Patch 6 adds two new pixelformats for 10-bit 4:2:0/4:2:2.
 
->
->
-> Thanks
-> Heiko
+Patch 7 change to use bytesperline and buffer height to configure strides.
+
+Patch 8 and 9 adds final bits to support H.264 High 10 and 4:2:2 profiles.
+
+This series depend on the "handle unsupported H.264 bitstreams" series at [1].
+
+To fully runtime test this series you may need drm patches from [2] and
+ffmpeg patches from [3], this series and drm patches is also available at [4].
+
+[1] https://patchwork.linuxtv.org/cover/64977/
+[2] https://patchwork.freedesktop.org/series/78099/
+[3] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-hwaccel-4.3-rkvdec-high-10
+[4] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-high-10
+
+Regards,
+Jonas
+
+Jonas Karlman (9):
+  media: rkvdec: h264: Support profile and level controls
+  media: rkvdec: h264: Fix reference frame_num wrap for second field
+  media: rkvdec: h264: Fix pic width and height in mbs
+  media: rkvdec: h264: Fix bit depth wrap in pps packet
+  media: v4l2-common: Add helpers to calculate bytesperline and
+    sizeimage
+  media: v4l2: Add NV15 and NV20 pixel formats
+  media: rkvdec: h264: Use bytesperline and buffer height to calculate
+    stride
+  media: rkvdec: Add validate_fmt ops for pixelformat validation
+  media: rkvdec: h264: Support High 10 and 4:2:2 profiles
+
+ .../userspace-api/media/v4l/pixfmt-nv15.rst   | 101 ++++++++++++++++
+ .../userspace-api/media/v4l/pixfmt-nv20.rst   |  99 ++++++++++++++++
+ .../userspace-api/media/v4l/yuv-formats.rst   |   2 +
+ drivers/media/v4l2-core/v4l2-common.c         |  80 ++++++-------
+ drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +
+ drivers/staging/media/rkvdec/rkvdec-h264.c    | 108 +++++++++++++++---
+ drivers/staging/media/rkvdec/rkvdec.c         |  43 +++++--
+ drivers/staging/media/rkvdec/rkvdec.h         |   1 +
+ include/uapi/linux/videodev2.h                |   3 +
+ 9 files changed, 369 insertions(+), 70 deletions(-)
+ create mode 100644 Documentation/userspace-api/media/v4l/pixfmt-nv15.rst
+ create mode 100644 Documentation/userspace-api/media/v4l/pixfmt-nv20.rst
+
+-- 
+2.17.1
