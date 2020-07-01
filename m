@@ -1,7 +1,8 @@
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 4/9] media: rkvdec: h264: Fix bit depth wrap in pps packet
-Date: Wed, 01 Jul 2020 21:56:22 +0000 (UTC)
-Message-ID: <20200701215616.30874-5-jonas@kwiboo.se>
+Subject: [PATCH 8/9] media: rkvdec: Add validate_fmt ops for pixelformat
+ validation
+Date: Wed, 01 Jul 2020 21:56:24 +0000 (UTC)
+Message-ID: <20200701215616.30874-9-jonas@kwiboo.se>
 References: <20200701215616.30874-1-jonas@kwiboo.se>
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
@@ -12,31 +13,48 @@ To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kerne
 Cc: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-The luma and chroma bit depth fields in the pps packet is 3 bits wide.
-8 is wrongly added to the bit depth value written to these 3-bit fields.
-Because only the 3 LSB is written the hardware is configured correctly.
+Add an optional validate_fmt operation that is used to validate the
+pixelformat of CAPTURE buffers.
 
-Correct this by not adding 8 to the luma and chroma bit depth value.
+This is used in next patch to ensure correct pixelformat is used for 10-bit
+and 4:2:2 content.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/staging/media/rkvdec/rkvdec-h264.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 8 ++++++++
+ drivers/staging/media/rkvdec/rkvdec.h | 1 +
+ 2 files changed, 9 insertions(+)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index c9aebeb8f9b3..9c8e49642cd9 100644
---- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -662,8 +662,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
- 	WRITE_PPS(0xff, PROFILE_IDC);
- 	WRITE_PPS(1, CONSTRAINT_SET3_FLAG);
- 	WRITE_PPS(sps->chroma_format_idc, CHROMA_FORMAT_IDC);
--	WRITE_PPS(sps->bit_depth_luma_minus8 + 8, BIT_DEPTH_LUMA);
--	WRITE_PPS(sps->bit_depth_chroma_minus8 + 8, BIT_DEPTH_CHROMA);
-+	WRITE_PPS(sps->bit_depth_luma_minus8, BIT_DEPTH_LUMA);
-+	WRITE_PPS(sps->bit_depth_chroma_minus8, BIT_DEPTH_CHROMA);
- 	WRITE_PPS(0, QPPRIME_Y_ZERO_TRANSFORM_BYPASS_FLAG);
- 	WRITE_PPS(sps->log2_max_frame_num_minus4, LOG2_MAX_FRAME_NUM_MINUS4);
- 	WRITE_PPS(sps->max_num_ref_frames, MAX_NUM_REF_FRAMES);
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index b1de55aa6535..465444c58f13 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -239,6 +239,14 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+ 	if (WARN_ON(!coded_desc))
+ 		return -EINVAL;
+ 
++	if (coded_desc->ops->validate_fmt) {
++		int ret;
++
++		ret = coded_desc->ops->validate_fmt(ctx, pix_mp->pixelformat);
++		if (ret)
++			return ret;
++	}
++
+ 	for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
+ 		if (coded_desc->decoded_fmts[i] == pix_mp->pixelformat)
+ 			break;
+diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
+index 2fc9f46b6910..be4fc3645cde 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.h
++++ b/drivers/staging/media/rkvdec/rkvdec.h
+@@ -64,6 +64,7 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
+ struct rkvdec_coded_fmt_ops {
+ 	int (*adjust_fmt)(struct rkvdec_ctx *ctx,
+ 			  struct v4l2_format *f);
++	int (*validate_fmt)(struct rkvdec_ctx *ctx, u32 pixelformat);
+ 	int (*start)(struct rkvdec_ctx *ctx);
+ 	void (*stop)(struct rkvdec_ctx *ctx);
+ 	int (*run)(struct rkvdec_ctx *ctx);
 -- 
 2.17.1
