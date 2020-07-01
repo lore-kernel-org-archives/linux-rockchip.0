@@ -1,89 +1,45 @@
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
-Date: Wed, 1 Jul 2020 12:23:29 +0200
-Message-ID: <73942aea-ae79-753c-fe90-d4a99423d548@collabora.com>
-References: <20200629122925.21729-1-andrzej.p@collabora.com>
- <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
- <3d03d1a2-ac06-b69b-93cb-e0203be62c10@collabora.com>
- <47111821-d691-e71d-d740-e4325e290fa4@linaro.org>
- <be9b7ee3-cad0-e462-126d-08de9b226285@collabora.com>
- <4353a939-3f5e-8369-5bc0-ad8162b5ffc7@linaro.org>
- <a531d80f-afd1-2dec-6c77-ed984e97595c@collabora.com>
- <db1ff4e1-cbf8-89b3-5d64-b91a1fd88a41@linaro.org>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v3 00/34] iommu: Move iommu_group setup to IOMMU core code
+Date: Wed, 1 Jul 2020 11:53:07 +0100
+Message-ID: <9b0ef27a-f249-a90b-9899-e53b946f83cc@arm.com>
+References: <20200429133712.31431-1-joro@8bytes.org>
+ <20200701004020.GA6221@lca.pw>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-acpi-owner@vger.kernel.org>
-In-Reply-To: <db1ff4e1-cbf8-89b3-5d64-b91a1fd88a41@linaro.org>
-Content-Language: en-US
-Sender: linux-acpi-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200701004020.GA6221-J5quhbR+WMc@public.gmane.org>
+Content-Language: en-GB
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Qian Cai <cai-J5quhbR+WMc@public.gmane.org>, Joerg Roedel <joro-zLv9SwRftAIdnm+yROfE0A@public.gmane.org>
+Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Bjorn Andersson <bjorn.andersson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-tegra-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Daniel Drake <drake-6IF/jdPJHihWk0Htik3J/w@public.gmane.org>, Will Deacon <will-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jean-Philippe Brucker <jean-philippe-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, linux-samsung-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, iommu-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Andy Gross <agross-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, jonathan.derrick-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, linux-s390-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-msm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mediatek-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Matthias Brugger <matthias.bgg-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, virtualization-cunTk1MwBs9QetFLy7KEm3xJsTq8ys+cHZ5vskTnxNA@public.gmane.org, Gerald Schaefer <gerald.schaefer-tA70FqPdS9bQT0dZR+AlfA@public.gmane.org>, David Woodhouse <dwmw>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
-
-W dniu 30.06.2020 o 20:33, Daniel Lezcano pisze:
-> On 30/06/2020 18:56, Andrzej Pietrasiewicz wrote:
->> Hi,
->>
->> W dniu 30.06.2020 o 17:53, Daniel Lezcano pisze:
->>> On 30/06/2020 17:29, Andrzej Pietrasiewicz wrote:
->>>> Hi Daniel,
->>>>
->>>> W dniu 30.06.2020 o 16:53, Daniel Lezcano pisze:
->>>>> On 30/06/2020 15:43, Andrzej Pietrasiewicz wrote:
->>>>>> Hi Daniel,
->>>>>>
->>>>>> I am reading the logs and can't find anything specific to thermal.
->>>>>>
->>>>>> What I can see is
->>>>>>
->>>>>> "random: crng init done"
->>>>>>
->>>>>> with large times (~200s) and then e.g.
->>>>>>
->>>>>> 'auto-login-action timed out after 283 seconds'
->>>>>>
->>>>>> I'm looking at e.g.
->>>>>> https://storage.kernelci.org/thermal/testing/v5.8-rc3-11-gf5e50bf4d3ef/arm/multi_v7_defconfig/gcc-8/lab-baylibre/baseline-imx6q-sabrelite.html
->>>>>>
->>>>>>
->>>>>>
->>>>
->>>> f5e50bf4d3ef is PATCH 11/11. Does the problem happen at PATCH 1-10/11?
->>>> PATCH 11/11 renames a method and the code compiles, so it seems
->>>> unlikely that this is causing problems. One should never say never,
->>>> though ;)
->>>
->>> The sha1 is just the HEAD for the kernel reference. The regression
->>> happens with your series, somewhere.
->>>
->>>> The reported failure is not due to some test failing but rather due
->>>> to timeout logging into the test system. Could it be that there is
->>>> some other problem?
->>>
->>> I did reproduce:
->>>
->>> v5.8-rc3 + series => imx6 hang at boot time
->>> v5.8-rc3 => imx6 boots correctly
->>>
-
-What did you reproduce? Timeout logging in to the test system or a "real" 
-failure of a test?
-
->>
->> I kindly ask for a bisect.
+On 2020-07-01 01:40, Qian Cai wrote:
+> Looks like this patchset introduced an use-after-free on arm-smmu-v3.
 > 
-> I will give a try but it is a very long process as the board is running
-> on kernelci.
+> Reproduced using mlx5,
 > 
-> I was not able to reproduce it on imx7 despite it is the same sensor :/
+> # echo 1 > /sys/class/net/enp11s0f1np1/device/sriov_numvfs
+> # echo 0 > /sys/class/net/enp11s0f1np1/device/sriov_numvfs
 > 
+> The .config,
+> https://github.com/cailca/linux-mm/blob/master/arm64.config
 > 
+> Looking at the free stack,
+> 
+> iommu_release_device->iommu_group_remove_device
+> 
+> was introduced in 07/34 ("iommu: Add probe_device() and release_device()
+> call-backs").
 
-Could it be that the thermal sensors somehow contribute to entropy and after
-the series is applied on some machines it takes more time to gather enough
-entropy?
+Right, iommu_group_remove_device can tear down the group and call 
+->domain_free before the driver has any knowledge of the last device 
+going away via the ->release_device call.
 
-Andrzej
+I guess the question is do we simply flip the call order in 
+iommu_release_device() so drivers can easily clean up their internal 
+per-device state first, or do we now want them to be robust against 
+freeing domains with devices still nominally attached?
+
+Robin.
