@@ -1,92 +1,89 @@
-From: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
-Subject: Re: [PATCH v9 00/11] Genericize DW MIPI DSI bridge and add i.MX 6
- driver
-Date: Wed, 1 Jul 2020 09:50:09 +0200
-Message-ID: <268c1219-87cb-e611-ea13-e55e0feacea0@baylibre.com>
-References: <20200609174959.955926-1-adrian.ratiu@collabora.com>
- <c6f10db1-7f56-a156-36a1-125e764c8c1a@baylibre.com>
- <87lfk3kaj4.fsf@iwork.i-did-not-set--mail-host-address--so-tickle-me>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
+Date: Wed, 1 Jul 2020 12:23:29 +0200
+Message-ID: <73942aea-ae79-753c-fe90-d4a99423d548@collabora.com>
+References: <20200629122925.21729-1-andrzej.p@collabora.com>
+ <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
+ <3d03d1a2-ac06-b69b-93cb-e0203be62c10@collabora.com>
+ <47111821-d691-e71d-d740-e4325e290fa4@linaro.org>
+ <be9b7ee3-cad0-e462-126d-08de9b226285@collabora.com>
+ <4353a939-3f5e-8369-5bc0-ad8162b5ffc7@linaro.org>
+ <a531d80f-afd1-2dec-6c77-ed984e97595c@collabora.com>
+ <db1ff4e1-cbf8-89b3-5d64-b91a1fd88a41@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: base64
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <87lfk3kaj4.fsf-Hx0R3YBcjnrrDJPETb4MAhUsoSCIEsfjNWc2n73sL8y+gHQt+EBHu/rpjleITZ0KWu6Lckefmi4@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-acpi-owner@vger.kernel.org>
+In-Reply-To: <db1ff4e1-cbf8-89b3-5d64-b91a1fd88a41@linaro.org>
 Content-Language: en-US
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org
+Sender: linux-acpi-owner@vger.kernel.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgSGVpa28sDQoNCkRvIHlvdSB0aGluayBzb21lb25lIGNhbiBoYXZlIGEgdHJ5IG9mIHRo
-aXMgcGF0Y2hzZXQgb24gYSBSSyBTb0MgPw0KDQpUaGFua3MsDQpOZWlsDQoNCk9uIDAxLzA3
-LzIwMjAgMDg6MzUsIEFkcmlhbiBSYXRpdSB3cm90ZToNCj4gSGkgTmVpbCwNCj4gDQo+IE9u
-IE1vbiwgMjkgSnVuIDIwMjAsIE5laWwgQXJtc3Ryb25nIDxuYXJtc3Ryb25nQGJheWxpYnJl
-LmNvbT4gd3JvdGU6DQo+PiBIaSBBZHJpYW4sDQo+PiBPbiAwOS8wNi8yMDIwIDE5OjQ5LCBB
-ZHJpYW4gUmF0aXUgd3JvdGU6DQo+Pj4gW1JlLXN1Ym1pdHRpbmcgdG8gY2MgZHJpLWRldmVs
-LCBzb3JyeSBhYm91dCB0aGUgbm9pc2VdwqAgSGVsbG8gYWxsLMKgIHY5IGNsZWFubHkgYXBw
-bGllcyBvbiB0b3Agb2YgbGF0ZXN0IG5leHQtMjAyMDA2MDkgdHJlZS4gdjkgZG9lcyBub3Qg
-ZGVwZW5kIG9uIG90aGVyIHBhdGNoZXMgYXMgdGhlIGxhc3QgYmluZGluZyBkb2MgaGFzIGJl
-ZW4gbWVyZ2VkLsKgwqAgQWxsIGZlZWRiYWNrIHVwIHRvIHRoaXMgcG9pbnQgaGFzIGJlZW4g
-YWRkcmVzc2VkLiBTcGVjaWZpYyBkZXRhaWxzIGluIGluZGl2aWR1YWwgcGF0Y2ggY2hhbmdl
-bG9ncy4gVGhlIGJpZ2dlc3QgY2hhbmdlcyBhcmUgdGhlIGRlcHJlY2F0aW9uIG9mIHRoZSBT
-eW5vcHN5cyBEVyBicmlkZ2UgYmluZCgpIEFQSSBpbiBmYXZvciBvZiBvZl9kcm1fZmluZF9i
-cmlkZ2UoKSBhbmQgLmF0dGFjaCBjYWxsYmFja3MsIHRoZSBhZGRpdGlvbiBvZiBhIFRPRE8g
-ZW50cnkgd2hpY2ggb3V0bGluZXMgZnV0dXJlIHBsYW5uZWQgYnJpZGdlIGRyaXZlciByZWZh
-Y3RvcmluZ3MgYW5kIGEgcmVvcmRlcmluZyBvZiBzb21lIGkuTVggNiBwYXRjaGVzIHRvIGFw
-cGVhc2UgY2hlY2twYXRjaC7CoMKgIFRoZSBpZGVhIGJlaGluZCB0aGUgVE9ETyBpcyB0byBn
-ZXQgdGhpcyByZWdtYXAgYW5kIGkuTVggNiBkcml2ZXIgbWVyZ2VkIGFuZCB0aGVuIGRvIHRo
-ZSByZXN0IG9mIHJlZmFjdG9yaW5ncyBpbi10cmVlIGJlY2F1c2UgaXQncyBlYXNpZXIgYW5k
-IHRoZSByZWZhY3RvcmluZ3MgdGhlbXNlbHZlcyBhcmUgb3V0LW9mLXNjb3BlIG9mIHRoaXMg
-c2VyaWVzIHdoaWNoIGlzIGFkZGluZyBpLk1YIDYgc3VwcG9ydCBhbmQgaXMgcXVpdGUgYmln
-IGFscmVhZHksIHNvIHBsZWFzZSwgaWYgdGhlcmUgYXJlIG1vcmUgcmVmYWN0b3JpbmcgaWRl
-YXMsIGxldCdzIGFkZCB0aGVtIHRvIHRoZSBUT0RPIGRvYy4gOikgSSBpbnRlbmQgdG8gdGFj
-a2xlIHRob3NlIGFmdGVyIHRoaXMgc2VyaWVzIGlzIG1lcmdlZCB0bw0KPj4+IGF2b2lkIHR3
-byBjb21wbGV4IGludGVyLWRlcGVuZGVudCBzaW11bHRhbmVvdXMgc2VyaWVzLiANCj4+DQo+
-PiBUaGlzIGhhcyBiZWVuIGFyb3VuZCBoZXJlIGZvciBhIGxvbmcgdGltZSBhbmQgeW91IHNl
-ZW0gdG8gaGF2ZSBhZGRyZXNzZWQgYWxsIHRoZSByZXZpZXdzLg0KPj4+IMKgQXMgYWx3YXlz
-IG1vcmUgdGVzdGluZyBpcyB3ZWxjb21lIGVzcGVjaWFsbHkgb24gUm9ja2NoaXAgYW5kIFNU
-TSBTb0NzLiANCj4+DQo+PiBJdCBoYXMgYmVlbiB0ZXN0ZWQgb24gU1RNLCBidXQgSSdkIGxp
-a2UgYSBmZWVkYmFjayBvbiBSSyBwbGF0Zm9ybSBiZWZvcmUgYXBwbHlpbmcgdGhlIGJyaWRn
-ZSBwYXJ0cy4NCj4+IENhbiB0aGUgaW14ICYgc3RtIHBhdGNoZXMgYmUgYXBwbGllZCBzZXBh
-cmF0ZWx5ID8NCj4gDQo+IFllcyB0aGUgSU1YIGFuZCBTVE0gcGF0Y2hlcyBjYW4gYmUgYXBw
-bGllZCBzZXBhcmF0ZWx5LCB0aGV5IGp1c3QgYm90aCBkZXBlbmQgb24gdGhlIGNvbW1vbiBy
-ZWdtYXAgcGF0Y2hlcy4NCj4gDQo+IFRoZSBiaW5kaW5nIEFQSSByZW1vdmFsIGNoYW5nZSB3
-aGljaCBkaXJlY3RseSB0b3VjaGVzIFJLIGNhbiBhbHNvIGJlIGFwcGxpZWQgc2VwYXJhdGVs
-eSwgYnV0IHVuZm9ydHVuYXRlbHkgSSBkbyBub3QgaGF2ZSBhY2Nlc3MgdG8gYSBSSyBib2Fy
-ZCB3aXRoIGEgRFNJIGRpc3BsYXkgdG8gdGVzdCBpdCAob3IgdGhlIGJyaWRnZSByZWdtYXAg
-bG9naWMgb24gUksgYnR3Li4uKSwgSSBqdXN0ICJleWUtYmFsbGVkIiB0aGUgUksgY29kZSBi
-YXNlZCBvbiB0aGUgcHVibGljIGRvY3MgYW5kIGl0IExHVE0uDQo+IA0KPj4gTmVpbA0KPj4N
-Cj4+Pg0KPj4+IEJpZyB0aGFuayB5b3UgdG8gZXZlcnlvbmUgd2hvIGhhcyBjb250cmlidXRl
-ZCB0byB0aGlzIHVwIHRvIG5vdywNCj4+PiBBZHJpYW4NCj4+Pg0KPj4+IEFkcmlhbiBSYXRp
-dSAoMTEpOg0KPj4+IMKgIGRybTogYnJpZGdlOiBkd19taXBpX2RzaTogYWRkIGluaXRpYWwg
-cmVnbWFwIGluZnJhc3RydWN0dXJlDQo+Pj4gwqAgZHJtOiBicmlkZ2U6IGR3X21pcGlfZHNp
-OiBhYnN0cmFjdCByZWdpc3RlciBhY2Nlc3MgdXNpbmcgcmVnX2ZpZWxkcw0KPj4+IMKgIGRy
-bTogYnJpZGdlOiBkd19taXBpX2RzaTogYWRkIGRzaSB2MS4wMSBzdXBwb3J0DQo+Pj4gwqAg
-ZHJtOiBicmlkZ2U6IGR3X21pcGlfZHNpOiByZW1vdmUgYmluZC91bmJpbmQgQVBJDQo+Pj4g
-wqAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IGFkZCBpLk1YNiBNSVBJIERTSSBob3N0IGNvbnRy
-b2xsZXIgZG9jDQo+Pj4gwqAgQVJNOiBkdHM6IGlteDZxZGw6IGFkZCBtaXNzaW5nIG1pcGkg
-ZHNpIHByb3BlcnRpZXMNCj4+PiDCoCBkcm06IGlteDogQWRkIGkuTVggNiBNSVBJIERTSSBo
-b3N0IHBsYXRmb3JtIGRyaXZlcg0KPj4+IMKgIGRybTogc3RtOiBkdy1taXBpLWRzaTogbGV0
-IHRoZSBicmlkZ2UgaGFuZGxlIHRoZSBIVyB2ZXJzaW9uIGNoZWNrDQo+Pj4gwqAgZHJtOiBi
-cmlkZ2U6IGR3LW1pcGktZHNpOiBzcGxpdCBsb3cgcG93ZXIgY2ZnIHJlZ2lzdGVyIGludG8g
-ZmllbGRzDQo+Pj4gwqAgZHJtOiBicmlkZ2U6IGR3LW1pcGktZHNpOiBmaXggYmFkIHJlZ2lz
-dGVyIGZpZWxkIG9mZnNldHMNCj4+PiDCoCBEb2N1bWVudGF0aW9uOiBncHU6IHRvZG86IEFk
-ZCBkdy1taXBpLWRzaSBjb25zb2xpZGF0aW9uIHBsYW4NCj4+Pg0KPj4+IMKgLi4uL2Rpc3Bs
-YXkvaW14L2ZzbCxtaXBpLWRzaS1pbXg2LnlhbWzCoMKgwqDCoMKgwqDCoCB8IDExMiArKysN
-Cj4+PiDCoERvY3VtZW50YXRpb24vZ3B1L3RvZG8ucnN0wqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgfMKgIDI1ICsNCj4+PiDCoGFyY2gvYXJtL2Jvb3QvZHRzL2lt
-eDZxZGwuZHRzacKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoCA4ICsNCj4+
-PiDCoGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvS2NvbmZpZ8KgwqDCoMKgwqDC
-oCB8wqDCoCAxICsNCj4+PiDCoGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHct
-bWlwaS1kc2kuYyB8IDcxMyArKysrKysrKysrKystLS0tLS0NCj4+PiDCoGRyaXZlcnMvZ3B1
-L2RybS9pbXgvS2NvbmZpZ8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
-wqDCoCA4ICsNCj4+PiDCoGRyaXZlcnMvZ3B1L2RybS9pbXgvTWFrZWZpbGXCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDEgKw0KPj4+IMKgZHJpdmVycy9ncHUv
-ZHJtL2lteC9kd19taXBpX2RzaS1pbXg2LmPCoMKgwqDCoMKgwqDCoCB8IDM5OSArKysrKysr
-KysrDQo+Pj4gwqAuLi4vZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5j
-wqDCoCB8wqDCoCA3ICstDQo+Pj4gwqBkcml2ZXJzL2dwdS9kcm0vc3RtL2R3X21pcGlfZHNp
-LXN0bS5jwqDCoMKgwqDCoMKgwqDCoCB8wqAgMTYgKy0NCj4+PiDCoDEwIGZpbGVzIGNoYW5n
-ZWQsIDEwNTkgaW5zZXJ0aW9ucygrKSwgMjMxIGRlbGV0aW9ucygtKQ0KPj4+IMKgY3JlYXRl
-IG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
-L2lteC9mc2wsbWlwaS1kc2ktaW14Ni55YW1sDQo+Pj4gwqBjcmVhdGUgbW9kZSAxMDA2NDQg
-ZHJpdmVycy9ncHUvZHJtL2lteC9kd19taXBpX2RzaS1pbXg2LmMNCj4+Pg0KDQo=
+Hi,
+
+W dniu 30.06.2020 o 20:33, Daniel Lezcano pisze:
+> On 30/06/2020 18:56, Andrzej Pietrasiewicz wrote:
+>> Hi,
+>>
+>> W dniu 30.06.2020 o 17:53, Daniel Lezcano pisze:
+>>> On 30/06/2020 17:29, Andrzej Pietrasiewicz wrote:
+>>>> Hi Daniel,
+>>>>
+>>>> W dniu 30.06.2020 o 16:53, Daniel Lezcano pisze:
+>>>>> On 30/06/2020 15:43, Andrzej Pietrasiewicz wrote:
+>>>>>> Hi Daniel,
+>>>>>>
+>>>>>> I am reading the logs and can't find anything specific to thermal.
+>>>>>>
+>>>>>> What I can see is
+>>>>>>
+>>>>>> "random: crng init done"
+>>>>>>
+>>>>>> with large times (~200s) and then e.g.
+>>>>>>
+>>>>>> 'auto-login-action timed out after 283 seconds'
+>>>>>>
+>>>>>> I'm looking at e.g.
+>>>>>> https://storage.kernelci.org/thermal/testing/v5.8-rc3-11-gf5e50bf4d3ef/arm/multi_v7_defconfig/gcc-8/lab-baylibre/baseline-imx6q-sabrelite.html
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>
+>>>> f5e50bf4d3ef is PATCH 11/11. Does the problem happen at PATCH 1-10/11?
+>>>> PATCH 11/11 renames a method and the code compiles, so it seems
+>>>> unlikely that this is causing problems. One should never say never,
+>>>> though ;)
+>>>
+>>> The sha1 is just the HEAD for the kernel reference. The regression
+>>> happens with your series, somewhere.
+>>>
+>>>> The reported failure is not due to some test failing but rather due
+>>>> to timeout logging into the test system. Could it be that there is
+>>>> some other problem?
+>>>
+>>> I did reproduce:
+>>>
+>>> v5.8-rc3 + series => imx6 hang at boot time
+>>> v5.8-rc3 => imx6 boots correctly
+>>>
+
+What did you reproduce? Timeout logging in to the test system or a "real" 
+failure of a test?
+
+>>
+>> I kindly ask for a bisect.
+> 
+> I will give a try but it is a very long process as the board is running
+> on kernelci.
+> 
+> I was not able to reproduce it on imx7 despite it is the same sensor :/
+> 
+> 
+
+Could it be that the thermal sensors somehow contribute to entropy and after
+the series is applied on some machines it takes more time to gather enough
+entropy?
+
+Andrzej
