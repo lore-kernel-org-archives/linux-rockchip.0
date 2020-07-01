@@ -1,95 +1,92 @@
-From: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+From: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
 Subject: Re: [PATCH v9 00/11] Genericize DW MIPI DSI bridge and add i.MX 6
  driver
-Date: Wed, 01 Jul 2020 09:35:27 +0300
-Message-ID: <87lfk3kaj4.fsf@iwork.i-did-not-set--mail-host-address--so-tickle-me>
+Date: Wed, 1 Jul 2020 09:50:09 +0200
+Message-ID: <268c1219-87cb-e611-ea13-e55e0feacea0@baylibre.com>
 References: <20200609174959.955926-1-adrian.ratiu@collabora.com>
  <c6f10db1-7f56-a156-36a1-125e764c8c1a@baylibre.com>
+ <87lfk3kaj4.fsf@iwork.i-did-not-set--mail-host-address--so-tickle-me>
 Mime-Version: 1.0
-Content-Type: text/plain; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <c6f10db1-7f56-a156-36a1-125e764c8c1a-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>
+In-Reply-To: <87lfk3kaj4.fsf-Hx0R3YBcjnrrDJPETb4MAhUsoSCIEsfjNWc2n73sL8y+gHQt+EBHu/rpjleITZ0KWu6Lckefmi4@public.gmane.org>
+Content-Language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>
-Cc: Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org
+To: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Cc: Adrian Ratiu <adrian.ratiu-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Laurent Pinchart <Laurent.pinchart-ryLnwIuWjnjg/C1BVhZhaw@public.gmane.org>, Jernej Skrabec <jernej.skrabec-gGgVlfcn5nU@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Philippe CORNU <philippe.cornu-qxv4g6HH51o@public.gmane.org>, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yannick FERTRE <yannick.fertre-qxv4g6HH51o@public.gmane.org>, Andrzej Hajda <a.hajda-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, linux-imx-3arQi8VN3Tc@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, linux-stm32-XDFAJ8BFU24N7RejjzZ/Li2xQDfSxrLKVpNB7YpNyf8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Neil,
-
-On Mon, 29 Jun 2020, Neil Armstrong <narmstrong-rdvid1DuHRBWk0Htik3J/w@public.gmane.org> 
-wrote:
-> Hi Adrian, 
-> 
-> On 09/06/2020 19:49, Adrian Ratiu wrote: 
->> [Re-submitting to cc dri-devel, sorry about the noise]  Hello 
->> all,  v9 cleanly applies on top of latest next-20200609 tree. 
->> v9 does not depend on other patches as the last binding doc has 
->> been merged.   All feedback up to this point has been 
->> addressed. Specific details in individual patch changelogs. 
->> The biggest changes are the deprecation of the Synopsys DW 
->> bridge bind() API in favor of of_drm_find_bridge() and .attach 
->> callbacks, the addition of a TODO entry which outlines future 
->> planned bridge driver refactorings and a reordering of some 
->> i.MX 6 patches to appease checkpatch.   The idea behind the 
->> TODO is to get this regmap and i.MX 6 driver merged and then do 
->> the rest of refactorings in-tree because it's easier and the 
->> refactorings themselves are out-of-scope of this series which 
->> is adding i.MX 6 support and is quite big already, so please, 
->> if there are more refactoring ideas, let's add them to the TODO 
->> doc. :) I intend to tackle those after this series is merged to 
->> avoid two complex inter-dependent simultaneous series. 
-> 
-> This has been around here for a long time and you seem to have 
-> addressed all the reviews. 
-> 
->>  As always more testing is welcome especially on Rockchip and 
->> STM SoCs. 
-> 
-> It has been tested on STM, but I'd like a feedback on RK 
-> platform before applying the bridge parts. 
-> 
-> Can the imx & stm patches be applied separately ? 
->
-
-Yes the IMX and STM patches can be applied separately, they just 
-both depend on the common regmap patches.
-
-The binding API removal change which directly touches RK can also 
-be applied separately, but unfortunately I do not have access to a 
-RK board with a DSI display to test it (or the bridge regmap logic 
-on RK btw...), I just "eye-balled" the RK code based on the public 
-docs and it LGTM.
-
-> Neil
->
->> 
->> Big thank you to everyone who has contributed to this up to now,
->> Adrian
->> 
->> Adrian Ratiu (11):
->>   drm: bridge: dw_mipi_dsi: add initial regmap infrastructure
->>   drm: bridge: dw_mipi_dsi: abstract register access using reg_fields
->>   drm: bridge: dw_mipi_dsi: add dsi v1.01 support
->>   drm: bridge: dw_mipi_dsi: remove bind/unbind API
->>   dt-bindings: display: add i.MX6 MIPI DSI host controller doc
->>   ARM: dts: imx6qdl: add missing mipi dsi properties
->>   drm: imx: Add i.MX 6 MIPI DSI host platform driver
->>   drm: stm: dw-mipi-dsi: let the bridge handle the HW version check
->>   drm: bridge: dw-mipi-dsi: split low power cfg register into fields
->>   drm: bridge: dw-mipi-dsi: fix bad register field offsets
->>   Documentation: gpu: todo: Add dw-mipi-dsi consolidation plan
->> 
->>  .../display/imx/fsl,mipi-dsi-imx6.yaml        | 112 +++
->>  Documentation/gpu/todo.rst                    |  25 +
->>  arch/arm/boot/dts/imx6qdl.dtsi                |   8 +
->>  drivers/gpu/drm/bridge/synopsys/Kconfig       |   1 +
->>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 713 ++++++++++++------
->>  drivers/gpu/drm/imx/Kconfig                   |   8 +
->>  drivers/gpu/drm/imx/Makefile                  |   1 +
->>  drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c        | 399 ++++++++++
->>  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |   7 +-
->>  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  16 +-
->>  10 files changed, 1059 insertions(+), 231 deletions(-)
->>  create mode 100644 Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
->>  create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c
->> 
+SGkgSGVpa28sDQoNCkRvIHlvdSB0aGluayBzb21lb25lIGNhbiBoYXZlIGEgdHJ5IG9mIHRo
+aXMgcGF0Y2hzZXQgb24gYSBSSyBTb0MgPw0KDQpUaGFua3MsDQpOZWlsDQoNCk9uIDAxLzA3
+LzIwMjAgMDg6MzUsIEFkcmlhbiBSYXRpdSB3cm90ZToNCj4gSGkgTmVpbCwNCj4gDQo+IE9u
+IE1vbiwgMjkgSnVuIDIwMjAsIE5laWwgQXJtc3Ryb25nIDxuYXJtc3Ryb25nQGJheWxpYnJl
+LmNvbT4gd3JvdGU6DQo+PiBIaSBBZHJpYW4sDQo+PiBPbiAwOS8wNi8yMDIwIDE5OjQ5LCBB
+ZHJpYW4gUmF0aXUgd3JvdGU6DQo+Pj4gW1JlLXN1Ym1pdHRpbmcgdG8gY2MgZHJpLWRldmVs
+LCBzb3JyeSBhYm91dCB0aGUgbm9pc2VdwqAgSGVsbG8gYWxsLMKgIHY5IGNsZWFubHkgYXBw
+bGllcyBvbiB0b3Agb2YgbGF0ZXN0IG5leHQtMjAyMDA2MDkgdHJlZS4gdjkgZG9lcyBub3Qg
+ZGVwZW5kIG9uIG90aGVyIHBhdGNoZXMgYXMgdGhlIGxhc3QgYmluZGluZyBkb2MgaGFzIGJl
+ZW4gbWVyZ2VkLsKgwqAgQWxsIGZlZWRiYWNrIHVwIHRvIHRoaXMgcG9pbnQgaGFzIGJlZW4g
+YWRkcmVzc2VkLiBTcGVjaWZpYyBkZXRhaWxzIGluIGluZGl2aWR1YWwgcGF0Y2ggY2hhbmdl
+bG9ncy4gVGhlIGJpZ2dlc3QgY2hhbmdlcyBhcmUgdGhlIGRlcHJlY2F0aW9uIG9mIHRoZSBT
+eW5vcHN5cyBEVyBicmlkZ2UgYmluZCgpIEFQSSBpbiBmYXZvciBvZiBvZl9kcm1fZmluZF9i
+cmlkZ2UoKSBhbmQgLmF0dGFjaCBjYWxsYmFja3MsIHRoZSBhZGRpdGlvbiBvZiBhIFRPRE8g
+ZW50cnkgd2hpY2ggb3V0bGluZXMgZnV0dXJlIHBsYW5uZWQgYnJpZGdlIGRyaXZlciByZWZh
+Y3RvcmluZ3MgYW5kIGEgcmVvcmRlcmluZyBvZiBzb21lIGkuTVggNiBwYXRjaGVzIHRvIGFw
+cGVhc2UgY2hlY2twYXRjaC7CoMKgIFRoZSBpZGVhIGJlaGluZCB0aGUgVE9ETyBpcyB0byBn
+ZXQgdGhpcyByZWdtYXAgYW5kIGkuTVggNiBkcml2ZXIgbWVyZ2VkIGFuZCB0aGVuIGRvIHRo
+ZSByZXN0IG9mIHJlZmFjdG9yaW5ncyBpbi10cmVlIGJlY2F1c2UgaXQncyBlYXNpZXIgYW5k
+IHRoZSByZWZhY3RvcmluZ3MgdGhlbXNlbHZlcyBhcmUgb3V0LW9mLXNjb3BlIG9mIHRoaXMg
+c2VyaWVzIHdoaWNoIGlzIGFkZGluZyBpLk1YIDYgc3VwcG9ydCBhbmQgaXMgcXVpdGUgYmln
+IGFscmVhZHksIHNvIHBsZWFzZSwgaWYgdGhlcmUgYXJlIG1vcmUgcmVmYWN0b3JpbmcgaWRl
+YXMsIGxldCdzIGFkZCB0aGVtIHRvIHRoZSBUT0RPIGRvYy4gOikgSSBpbnRlbmQgdG8gdGFj
+a2xlIHRob3NlIGFmdGVyIHRoaXMgc2VyaWVzIGlzIG1lcmdlZCB0bw0KPj4+IGF2b2lkIHR3
+byBjb21wbGV4IGludGVyLWRlcGVuZGVudCBzaW11bHRhbmVvdXMgc2VyaWVzLiANCj4+DQo+
+PiBUaGlzIGhhcyBiZWVuIGFyb3VuZCBoZXJlIGZvciBhIGxvbmcgdGltZSBhbmQgeW91IHNl
+ZW0gdG8gaGF2ZSBhZGRyZXNzZWQgYWxsIHRoZSByZXZpZXdzLg0KPj4+IMKgQXMgYWx3YXlz
+IG1vcmUgdGVzdGluZyBpcyB3ZWxjb21lIGVzcGVjaWFsbHkgb24gUm9ja2NoaXAgYW5kIFNU
+TSBTb0NzLiANCj4+DQo+PiBJdCBoYXMgYmVlbiB0ZXN0ZWQgb24gU1RNLCBidXQgSSdkIGxp
+a2UgYSBmZWVkYmFjayBvbiBSSyBwbGF0Zm9ybSBiZWZvcmUgYXBwbHlpbmcgdGhlIGJyaWRn
+ZSBwYXJ0cy4NCj4+IENhbiB0aGUgaW14ICYgc3RtIHBhdGNoZXMgYmUgYXBwbGllZCBzZXBh
+cmF0ZWx5ID8NCj4gDQo+IFllcyB0aGUgSU1YIGFuZCBTVE0gcGF0Y2hlcyBjYW4gYmUgYXBw
+bGllZCBzZXBhcmF0ZWx5LCB0aGV5IGp1c3QgYm90aCBkZXBlbmQgb24gdGhlIGNvbW1vbiBy
+ZWdtYXAgcGF0Y2hlcy4NCj4gDQo+IFRoZSBiaW5kaW5nIEFQSSByZW1vdmFsIGNoYW5nZSB3
+aGljaCBkaXJlY3RseSB0b3VjaGVzIFJLIGNhbiBhbHNvIGJlIGFwcGxpZWQgc2VwYXJhdGVs
+eSwgYnV0IHVuZm9ydHVuYXRlbHkgSSBkbyBub3QgaGF2ZSBhY2Nlc3MgdG8gYSBSSyBib2Fy
+ZCB3aXRoIGEgRFNJIGRpc3BsYXkgdG8gdGVzdCBpdCAob3IgdGhlIGJyaWRnZSByZWdtYXAg
+bG9naWMgb24gUksgYnR3Li4uKSwgSSBqdXN0ICJleWUtYmFsbGVkIiB0aGUgUksgY29kZSBi
+YXNlZCBvbiB0aGUgcHVibGljIGRvY3MgYW5kIGl0IExHVE0uDQo+IA0KPj4gTmVpbA0KPj4N
+Cj4+Pg0KPj4+IEJpZyB0aGFuayB5b3UgdG8gZXZlcnlvbmUgd2hvIGhhcyBjb250cmlidXRl
+ZCB0byB0aGlzIHVwIHRvIG5vdywNCj4+PiBBZHJpYW4NCj4+Pg0KPj4+IEFkcmlhbiBSYXRp
+dSAoMTEpOg0KPj4+IMKgIGRybTogYnJpZGdlOiBkd19taXBpX2RzaTogYWRkIGluaXRpYWwg
+cmVnbWFwIGluZnJhc3RydWN0dXJlDQo+Pj4gwqAgZHJtOiBicmlkZ2U6IGR3X21pcGlfZHNp
+OiBhYnN0cmFjdCByZWdpc3RlciBhY2Nlc3MgdXNpbmcgcmVnX2ZpZWxkcw0KPj4+IMKgIGRy
+bTogYnJpZGdlOiBkd19taXBpX2RzaTogYWRkIGRzaSB2MS4wMSBzdXBwb3J0DQo+Pj4gwqAg
+ZHJtOiBicmlkZ2U6IGR3X21pcGlfZHNpOiByZW1vdmUgYmluZC91bmJpbmQgQVBJDQo+Pj4g
+wqAgZHQtYmluZGluZ3M6IGRpc3BsYXk6IGFkZCBpLk1YNiBNSVBJIERTSSBob3N0IGNvbnRy
+b2xsZXIgZG9jDQo+Pj4gwqAgQVJNOiBkdHM6IGlteDZxZGw6IGFkZCBtaXNzaW5nIG1pcGkg
+ZHNpIHByb3BlcnRpZXMNCj4+PiDCoCBkcm06IGlteDogQWRkIGkuTVggNiBNSVBJIERTSSBo
+b3N0IHBsYXRmb3JtIGRyaXZlcg0KPj4+IMKgIGRybTogc3RtOiBkdy1taXBpLWRzaTogbGV0
+IHRoZSBicmlkZ2UgaGFuZGxlIHRoZSBIVyB2ZXJzaW9uIGNoZWNrDQo+Pj4gwqAgZHJtOiBi
+cmlkZ2U6IGR3LW1pcGktZHNpOiBzcGxpdCBsb3cgcG93ZXIgY2ZnIHJlZ2lzdGVyIGludG8g
+ZmllbGRzDQo+Pj4gwqAgZHJtOiBicmlkZ2U6IGR3LW1pcGktZHNpOiBmaXggYmFkIHJlZ2lz
+dGVyIGZpZWxkIG9mZnNldHMNCj4+PiDCoCBEb2N1bWVudGF0aW9uOiBncHU6IHRvZG86IEFk
+ZCBkdy1taXBpLWRzaSBjb25zb2xpZGF0aW9uIHBsYW4NCj4+Pg0KPj4+IMKgLi4uL2Rpc3Bs
+YXkvaW14L2ZzbCxtaXBpLWRzaS1pbXg2LnlhbWzCoMKgwqDCoMKgwqDCoCB8IDExMiArKysN
+Cj4+PiDCoERvY3VtZW50YXRpb24vZ3B1L3RvZG8ucnN0wqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgfMKgIDI1ICsNCj4+PiDCoGFyY2gvYXJtL2Jvb3QvZHRzL2lt
+eDZxZGwuZHRzacKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoCA4ICsNCj4+
+PiDCoGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvS2NvbmZpZ8KgwqDCoMKgwqDC
+oCB8wqDCoCAxICsNCj4+PiDCoGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHct
+bWlwaS1kc2kuYyB8IDcxMyArKysrKysrKysrKystLS0tLS0NCj4+PiDCoGRyaXZlcnMvZ3B1
+L2RybS9pbXgvS2NvbmZpZ8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
+wqDCoCA4ICsNCj4+PiDCoGRyaXZlcnMvZ3B1L2RybS9pbXgvTWFrZWZpbGXCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDEgKw0KPj4+IMKgZHJpdmVycy9ncHUv
+ZHJtL2lteC9kd19taXBpX2RzaS1pbXg2LmPCoMKgwqDCoMKgwqDCoCB8IDM5OSArKysrKysr
+KysrDQo+Pj4gwqAuLi4vZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5j
+wqDCoCB8wqDCoCA3ICstDQo+Pj4gwqBkcml2ZXJzL2dwdS9kcm0vc3RtL2R3X21pcGlfZHNp
+LXN0bS5jwqDCoMKgwqDCoMKgwqDCoCB8wqAgMTYgKy0NCj4+PiDCoDEwIGZpbGVzIGNoYW5n
+ZWQsIDEwNTkgaW5zZXJ0aW9ucygrKSwgMjMxIGRlbGV0aW9ucygtKQ0KPj4+IMKgY3JlYXRl
+IG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
+L2lteC9mc2wsbWlwaS1kc2ktaW14Ni55YW1sDQo+Pj4gwqBjcmVhdGUgbW9kZSAxMDA2NDQg
+ZHJpdmVycy9ncHUvZHJtL2lteC9kd19taXBpX2RzaS1pbXg2LmMNCj4+Pg0KDQo=
