@@ -1,53 +1,86 @@
-From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v3 7/9] media: MAINTAINERS: rkisp1: add path to dt-bindings
-Date: Thu,  2 Jul 2020 13:54:08 -0300
-Message-ID: <20200702165410.2583375-8-helen.koike@collabora.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: [PATCH v3 8/9] arm64: dts: rockchip: add isp0 node for rk3399
+Date: Thu,  2 Jul 2020 13:54:09 -0300
+Message-ID: <20200702165410.2583375-9-helen.koike@collabora.com>
 References: <20200702165410.2583375-1-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200702165410.2583375-1-helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, kishon-l0cyMroinI0@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200702165410.2583375-1-helen.koike@collabora.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: devicetree@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, robh+dt@kernel.org, heiko@sntech.de, hverkuil-cisco@xs4all.nl, kernel@collabora.com, dafna.hirschfeld@collabora.com, ezequiel@collabora.com, mark.rutland@arm.com, karthik.poduval@gmail.com, jbx6244@gmail.com, kishon@ti.com, tfiga@chromium.org, eddie.cai.linux@gmail.com, zhengsq@rock-chips.com
 List-Id: linux-rockchip.vger.kernel.org
 
-The Rockchip ISP bindings was moved out of staging.
-Update MAINTAINERS file with the new path.
+From: Shunqian Zheng <zhengsq@rock-chips.com>
 
-Fields sorted according to output of
-./scripts/parse-maintainers.pl --input=MAINTAINERS --output=MAINTAINERS
---order
+RK3399 has two ISPs, but only isp0 was tested.
+Add isp0 node in rk3399 dtsi
 
-Signed-off-by: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Verified with:
+make ARCH=arm64 dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+
+Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
 
 ---
 
 V3:
-- Add line:
-L:     linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-- Re-order:
-F:     drivers/staging/media/rkisp1/
+- clean up clocks
 
 V2:
-- This is a new patch in the series
----
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
+- re-order power-domains property
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 634d2c3d621aa..d7141cf17072f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -14679,7 +14679,9 @@ F:	include/linux/hid-roccat*
- ROCKCHIP ISP V1 DRIVER
- M:	Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
- L:	linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-+L:	linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
- S:	Maintained
-+F:	Documentation/devicetree/bindings/media/rockchip-isp1.yaml
- F:	drivers/staging/media/rkisp1/
+V1:
+This patch was originally part of this patchset:
+
+    https://patchwork.kernel.org/patch/10267431/
+
+The only difference is:
+- add phy properties
+- add ports
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 27 ++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index 2581e9cc7a1de..a27c3ccf4bd08 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1710,6 +1710,33 @@ vopb_mmu: iommu@ff903f00 {
+ 		status = "disabled";
+ 	};
  
- ROCKCHIP RASTER 2D GRAPHIC ACCELERATION UNIT DRIVER
++	isp0: isp0@ff910000 {
++		compatible = "rockchip,rk3399-cif-isp";
++		reg = <0x0 0xff910000 0x0 0x4000>;
++		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru SCLK_ISP0>,
++			 <&cru ACLK_ISP0_WRAPPER>,
++			 <&cru HCLK_ISP0_WRAPPER>;
++		clock-names = "clk_isp",
++			      "aclk_isp_wrap",
++			      "hclk_isp_wrap";
++		iommus = <&isp0_mmu>;
++		phys = <&mipi_dphy_rx0>;
++		phy-names = "dphy";
++		power-domains = <&power RK3399_PD_ISP0>;
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@0 {
++				reg = <0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++		};
++	};
++
+ 	isp0_mmu: iommu@ff914000 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
 -- 
 2.26.0
