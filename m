@@ -1,136 +1,151 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: [PATCH v3 9/9] arm64: dts: rockchip: add isp and sensors for Scarlet
-Date: Thu,  2 Jul 2020 13:54:10 -0300
-Message-ID: <20200702165410.2583375-10-helen.koike@collabora.com>
-References: <20200702165410.2583375-1-helen.koike@collabora.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
+Date: Thu, 2 Jul 2020 19:01:12 +0200
+Message-ID: <8aeb4f51-1813-63c1-165b-06640af5968f@linaro.org>
+References: <20200629122925.21729-1-andrzej.p@collabora.com>
+ <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
+ <3d03d1a2-ac06-b69b-93cb-e0203be62c10@collabora.com>
+ <47111821-d691-e71d-d740-e4325e290fa4@linaro.org>
+ <be9b7ee3-cad0-e462-126d-08de9b226285@collabora.com>
+ <4353a939-3f5e-8369-5bc0-ad8162b5ffc7@linaro.org>
+ <a531d80f-afd1-2dec-6c77-ed984e97595c@collabora.com>
+ <db1ff4e1-cbf8-89b3-5d64-b91a1fd88a41@linaro.org>
+ <73942aea-ae79-753c-fe90-d4a99423d548@collabora.com>
+ <374dddd9-b600-3a30-d6c3-8cfcefc944d9@linaro.org>
+ <5a28deb7-f307-8b03-faad-ab05cb8095d1@collabora.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200702165410.2583375-1-helen.koike@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: devicetree@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, robh+dt@kernel.org, heiko@sntech.de, hverkuil-cisco@xs4all.nl, kernel@collabora.com, dafna.hirschfeld@collabora.com, ezequiel@collabora.com, mark.rutland@arm.com, karthik.poduval@gmail.com, jbx6244@gmail.com, kishon@ti.com, tfiga@chromium.org, eddie.cai.linux@gmail.com, zhengsq@rock-chips.com
+Return-path: <linux-acpi-owner@vger.kernel.org>
+In-Reply-To: <5a28deb7-f307-8b03-faad-ab05cb8095d1@collabora.com>
+Content-Language: en-US
+Sender: linux-acpi-owner@vger.kernel.org
+To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Eddie Cai <eddie.cai.linux@gmail.com>
+On 02/07/2020 15:53, Andrzej Pietrasiewicz wrote:
+> Hi Daniel,
+> 
+> <snip>
+> 
+>>>>>>
+>>>>>> I did reproduce:
+>>>>>>
+>>>>>> v5.8-rc3 + series => imx6 hang at boot time
+>>>>>> v5.8-rc3 => imx6 boots correctly
+>>
+>> So finally I succeeded to reproduce it on my imx7 locally. The sensor
+>> was failing to initialize for another reason related to the legacy
+>> cooling device, this is why it is not appearing on the imx7.
+>>
+>> I can now git-bisect :)
+>>
+> 
+> That would be very kind of you, thank you!
 
-Enable ISP and camera sensor ov2685 and ov5695 for Scarlet Chromebook
+With the lock correctness option enabled:
 
-Verified with:
-    make ARCH=arm64 dtbs_check
+[    4.179223] imx_thermal tempmon: Extended Commercial CPU temperature
+grade - max:105C critical:100C passive:95C
+[    4.189557]
+[    4.191060] ============================================
+[    4.196378] WARNING: possible recursive locking detected
+[    4.201699] 5.8.0-rc3-00011-gf5e50bf4d3ef #42 Not tainted
+[    4.207102] --------------------------------------------
+[    4.212421] kworker/0:3/54 is trying to acquire lock:
+[    4.217480] ca09a3e4 (&tz->lock){+.+.}-{3:3}, at:
+thermal_zone_device_is_enabled+0x18/0x34
+[    4.225777]
+[    4.225777] but task is already holding lock:
+[    4.231615] ca09a3e4 (&tz->lock){+.+.}-{3:3}, at:
+thermal_zone_get_temp+0x38/0x6c
+[    4.239121]
+[    4.239121] other info that might help us debug this:
+[    4.245655]  Possible unsafe locking scenario:
+[    4.245655]
+[    4.251579]        CPU0
+[    4.254031]        ----
+[    4.256481]   lock(&tz->lock);
+[    4.259544]   lock(&tz->lock);
+[    4.262608]
+[    4.262608]  *** DEADLOCK ***
+[    4.262608]
+[    4.268533]  May be due to missing lock nesting notation
+[    4.268533]
+[    4.275329] 4 locks held by kworker/0:3/54:
+[    4.279517]  #0: cb0066a8 ((wq_completion)events){+.+.}-{0:0}, at:
+process_one_work+0x224/0x808
+[    4.288241]  #1: ca075f10 (deferred_probe_work){+.+.}-{0:0}, at:
+process_one_work+0x224/0x808
+[    4.296787]  #2: cb1a48d8 (&dev->mutex){....}-{3:3}, at:
+__device_attach+0x30/0x140
+[    4.304468]  #3: ca09a3e4 (&tz->lock){+.+.}-{3:3}, at:
+thermal_zone_get_temp+0x38/0x6c
+[    4.312408]
+[    4.312408] stack backtrace:
+[    4.316778] CPU: 0 PID: 54 Comm: kworker/0:3 Not tainted
+5.8.0-rc3-00011-gf5e50bf4d3ef #42
+[    4.325048] Hardware name: Freescale i.MX7 Dual (Device Tree)
+[    4.330809] Workqueue: events deferred_probe_work_func
+[    4.335973] [<c0312384>] (unwind_backtrace) from [<c030c580>]
+(show_stack+0x10/0x14)
+[    4.343734] [<c030c580>] (show_stack) from [<c079d7d8>]
+(dump_stack+0xe8/0x114)
+[    4.351062] [<c079d7d8>] (dump_stack) from [<c03abf78>]
+(__lock_acquire+0xbfc/0x2cb4)
+[    4.358909] [<c03abf78>] (__lock_acquire) from [<c03ae9c4>]
+(lock_acquire+0xf4/0x4e4)
+[    4.366758] [<c03ae9c4>] (lock_acquire) from [<c10630fc>]
+(__mutex_lock+0xb0/0xaa8)
+[    4.374431] [<c10630fc>] (__mutex_lock) from [<c1063b10>]
+(mutex_lock_nested+0x1c/0x24)
+[    4.382452] [<c1063b10>] (mutex_lock_nested) from [<c0d932c0>]
+(thermal_zone_device_is_enabled+0x18/0x34)
+[    4.392036] [<c0d932c0>] (thermal_zone_device_is_enabled) from
+[<c0d9da90>] (imx_get_temp+0x30/0x208)
+[    4.401271] [<c0d9da90>] (imx_get_temp) from [<c0d97484>]
+(thermal_zone_get_temp+0x4c/0x6c)
+[    4.409640] [<c0d97484>] (thermal_zone_get_temp) from [<c0d93df0>]
+(thermal_zone_device_update+0x8c/0x258)
+[    4.419310] [<c0d93df0>] (thermal_zone_device_update) from
+[<c0d9401c>] (thermal_zone_device_set_mode+0x60/0x88)
+[    4.429500] [<c0d9401c>] (thermal_zone_device_set_mode) from
+[<c0d9e1d4>] (imx_thermal_probe+0x3e4/0x578)
+[    4.439082] [<c0d9e1d4>] (imx_thermal_probe) from [<c0a78388>]
+(platform_drv_probe+0x48/0x98)
+[    4.447622] [<c0a78388>] (platform_drv_probe) from [<c0a7603c>]
+(really_probe+0x218/0x348)
+[    4.455903] [<c0a7603c>] (really_probe) from [<c0a76278>]
+(driver_probe_device+0x5c/0xb4)
+[    4.464098] [<c0a76278>] (driver_probe_device) from [<c0a743bc>]
+(bus_for_each_drv+0x58/0xb8)
+[    4.472638] [<c0a743bc>] (bus_for_each_drv) from [<c0a75db0>]
+(__device_attach+0xd4/0x140)
+[    4.480919] [<c0a75db0>] (__device_attach) from [<c0a750b0>]
+(bus_probe_device+0x88/0x90)
+[    4.489112] [<c0a750b0>] (bus_probe_device) from [<c0a75564>]
+(deferred_probe_work_func+0x68/0x98)
+[    4.498088] [<c0a75564>] (deferred_probe_work_func) from [<c0369988>]
+(process_one_work+0x2e0/0x808)
+[    4.507237] [<c0369988>] (process_one_work) from [<c036a150>]
+(worker_thread+0x2a0/0x59c)
+[    4.515432] [<c036a150>] (worker_thread) from [<c0372208>]
+(kthread+0x16c/0x178)
+[    4.522843] [<c0372208>] (kthread) from [<c0300174>]
+(ret_from_fork+0x14/0x20)
+[    4.530074] Exception stack(0xca075fb0 to 0xca075ff8)
+[    4.535138] 5fa0:                                     00000000
+00000000 00000000 00000000
+[    4.543328] 5fc0: 00000000 00000000 00000000 00000000 00000000
+00000000 00000000 00000000
+[    4.551516] 5fe0: 00000000 00000000 00000000 00000000 00000013 00000000
 
-Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
-Signed-off-by: Eddie Cai <eddie.cai.linux@gmail.com>
-Signed-off-by: Tomasz Figa <tfiga@chromium.org>
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
----
 
-This patch is based on:
-https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/527854
 
-Changes in V3:
-- This patch was first submitted stand alone at
-https://lore.kernel.org/patchwork/patch/1223736/
-I'm including in this patch series without changes
----
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 74 +++++++++++++++++++
- 1 file changed, 74 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-index 4373ed732af76..ae08205aa8e24 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-@@ -296,6 +296,52 @@ camera: &i2c7 {
- 
- 	/* 24M mclk is shared between world and user cameras */
- 	pinctrl-0 = <&i2c7_xfer &test_clkout1>;
-+
-+	/* Rear-facing camera */
-+	wcam: camera@36 {
-+		compatible = "ovti,ov5695";
-+		reg = <0x36>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wcam_rst>;
-+
-+		clocks = <&cru SCLK_TESTCLKOUT1>;
-+		clock-names = "xvclk";
-+
-+		avdd-supply = <&pp2800_cam>;
-+		dvdd-supply = <&pp1250_cam>;
-+		dovdd-supply = <&pp1800_s0>;
-+		reset-gpios = <&gpio2 5 GPIO_ACTIVE_LOW>;
-+
-+		port {
-+			wcam_out: endpoint {
-+				remote-endpoint = <&mipi_in_wcam>;
-+				data-lanes = <1 2>;
-+			};
-+		};
-+	};
-+
-+	/* Front-facing camera */
-+	ucam: camera@3c {
-+		compatible = "ovti,ov2685";
-+		reg = <0x3c>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&ucam_rst>;
-+
-+		clocks = <&cru SCLK_TESTCLKOUT1>;
-+		clock-names = "xvclk";
-+
-+		avdd-supply = <&pp2800_cam>;
-+		dovdd-supply = <&pp1800_s0>;
-+		dvdd-supply = <&pp1800_s0>;
-+		reset-gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
-+
-+		port {
-+			ucam_out: endpoint {
-+				remote-endpoint = <&mipi_in_ucam>;
-+				data-lanes = <1>;
-+			};
-+		};
-+	};
- };
- 
- &cdn_dp {
-@@ -353,10 +399,38 @@ &io_domains {
- 	gpio1830-supply = <&pp1800_s0>;		/* APIO4_VDD;  4c 4d */
- };
- 
-+&isp0 {
-+	status = "okay";
-+
-+	ports {
-+		port@0 {
-+			mipi_in_wcam: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&wcam_out>;
-+				data-lanes = <1 2>;
-+			};
-+
-+			mipi_in_ucam: endpoint@1 {
-+				reg = <1>;
-+				remote-endpoint = <&ucam_out>;
-+				data-lanes = <1>;
-+			};
-+		};
-+	};
-+};
-+
-+&isp0_mmu {
-+	status = "okay";
-+};
-+
- &max98357a {
- 	sdmode-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
- };
- 
-+&mipi_dphy_rx0 {
-+	status = "okay";
-+};
-+
- &mipi_dsi {
- 	status = "okay";
- 	clock-master;
 -- 
-2.26.0
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
