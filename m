@@ -1,105 +1,77 @@
 From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] rockchip: rk3288: Add OF board setup
-Date: Thu, 2 Jul 2020 14:56:29 +0100
-Message-ID: <8e4ff8ec-d782-32da-05ac-ae24c1bc6164@arm.com>
-References: <20200702084820.35942-1-jagan@amarulasolutions.com>
+Subject: Re: [PATCH] usb: host: ohci-platform: Disable ohci for rk3288
+Date: Thu, 2 Jul 2020 15:38:31 +0100
+Message-ID: <f0ae5915-9cb8-9550-f05c-6cebad191a14@arm.com>
+References: <20200702090504.36670-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200702084820.35942-1-jagan@amarulasolutions.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200702090504.36670-1-jagan@amarulasolutions.com>
 Content-Language: en-GB
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, heiko@sntech.de, mylene.josserand@collabora.com
-Cc: linux-rockchip@lists.infradead.org, U-Boot-Denx <u-boot@lists.denx.de>, Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-amarula <linux-amarula@amarulasolutions.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jagan Teki <jagan@amarulasolutions.com>, Alan Stern <stern@rowland.harvard.edu>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, mylene.josserand@collabora.com
+Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Suniel Mahesh <sunil@amarulasolutions.com>, William Wu <william.wu@rock-chips.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-07-02 09:48, Jagan Teki wrote:
-> The new rk3288 revision rk3288w has some changes with respect
-> to legacy rk3288 like hclk_vio and usb host0 ohci.
+On 2020-07-02 10:05, Jagan Teki wrote:
+> rk3288 has usb host0 ohci controller but doesn't actually work
+> on real hardware but it works with new revision chip rk3288w.
 > 
-> In order to work these on the same in Linux kernel update the
-> compatible the root compatible with rockchip,rk3288w before
-> booting.
+> So, disable ohci for rk3288.
 > 
-> So, this support during of board setup code of rk3288.
+> For rk3288w chips the compatible update code is handled by bootloader.
 > 
+> Cc: William Wu <william.wu@rock-chips.com>
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 > ---
->   arch/arm/mach-rockchip/Kconfig         |  1 +
->   arch/arm/mach-rockchip/rk3288/rk3288.c | 26 ++++++++++++++++++++++++++
->   2 files changed, 27 insertions(+)
+> Note:
+> - U-Boot patch for compatible update
+> https://patchwork.ozlabs.org/project/uboot/patch/20200702084820.35942-1-jagan@amarulasolutions.com/
 > 
-> diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
-> index b1008a5058..822d8d4e9c 100644
-> --- a/arch/arm/mach-rockchip/Kconfig
-> +++ b/arch/arm/mach-rockchip/Kconfig
-> @@ -98,6 +98,7 @@ config ROCKCHIP_RK322X
->   config ROCKCHIP_RK3288
->   	bool "Support Rockchip RK3288"
->   	select CPU_V7A
-> +	select OF_BOARD_SETUP
->   	select SUPPORT_SPL
->   	select SPL
->   	select SUPPORT_TPL
-> diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
-> index 804abe8a1b..8a682675e6 100644
-> --- a/arch/arm/mach-rockchip/rk3288/rk3288.c
-> +++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
-> @@ -115,6 +115,32 @@ int rk_board_late_init(void)
->   	return rk3288_board_late_init();
->   }
+>   drivers/usb/host/ohci-platform.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/usb/host/ohci-platform.c b/drivers/usb/host/ohci-platform.c
+> index 7addfc2cbadc..24655ed6a7e0 100644
+> --- a/drivers/usb/host/ohci-platform.c
+> +++ b/drivers/usb/host/ohci-platform.c
+> @@ -96,7 +96,7 @@ static int ohci_platform_probe(struct platform_device *dev)
+>   	struct ohci_hcd *ohci;
+>   	int err, irq, clk = 0;
 >   
-> +#ifdef CONFIG_OF_BOARD_SETUP
-> +
-> +#define RK3288_HDMI_PHYS	0xff980000
-> +#define RK3288W_HDMI_REV	0x1A
-> +#define HDMI_CONFIG0_ID		0x04
-> +
-> +int ft_board_setup(void *blob, bd_t *bd)
-> +{
-> +	u8 config0;
-> +	int ret;
-> +
-> +	config0 = readb(RK3288_HDMI_PHYS + HDMI_CONFIG0_ID);
-> +	if (config0 == RK3288W_HDMI_REV) {
-> +		ret = fdt_setprop_string(blob, 0,
-> +					 "compatible", "rockchip,rk3288w");
+> -	if (usb_disabled())
+> +	if (usb_disabled() || of_machine_is_compatible("rockchip,rk3288"))
 
-Does this end up replacing the entire top-level compatible property? 
-i.e. from:
+This seems unnecessary to me - if we've even started probing a driver 
+for a broken piece of hardware to the point that we need magic checks to 
+bail out again, then something is already fundamentally wrong.
 
-	compatible = "vendor,board\0rockchip,rk3288";
+Old boards only sold with the original SoC variant have no reason to 
+enable the OHCI (since it never worked originally), thus will never 
+execute this check.
 
-to just:
+New boards designed around the W variant to make use of the OHCI can 
+freely enable it either way.
 
-	compatible = "rockchip,rk3288w";
+The only relative-edge-case where it might matter is older board designs 
+still in production which have shipped with both SoC variants. Enabling 
+OHCI can't be *necessary* given that it's still broken on a lot of 
+deployed boards, so at best it must be an opportunistic nice-to-have. 
+Since we're already having to rely on the bootloader to patch up the 
+devicetree for other low-level differences in this case, it should be 
+part of that responsibility for it to only enable the OHCI on the 
+appropriate SoC variant too. Statically enabling it in the DTS for a 
+board where it may well not work is just bad.
 
-If so, that's a bit of a problem for various drivers that care about the 
-actual board compatible rather than the SoC.
+As soon as a DTB with a broken piece of hardware enabled gets passed to 
+an OS, then the damage is already done. A driver patch in a future 
+version of Linux that magically knows better and ignores it isn't going 
+to help a user booting an older kernel image, or some other OS entirely.
 
 Robin.
 
-> +		if (ret < 0) {
-> +			printf("failed to set rk3288w compatible (ret=%d)\n",
-> +			       ret);
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	return 0;
-> +}
-> +#endif
-> +
->   static int do_clock(struct cmd_tbl *cmdtp, int flag, int argc,
->   		    char *const argv[])
->   {
+>   		return -ENODEV;
+>   
+>   	/*
 > 
