@@ -1,45 +1,105 @@
-From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
-Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
-Date: Thu, 2 Jul 2020 15:53:39 +0200
-Message-ID: <5a28deb7-f307-8b03-faad-ab05cb8095d1@collabora.com>
-References: <20200629122925.21729-1-andrzej.p@collabora.com>
- <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
- <3d03d1a2-ac06-b69b-93cb-e0203be62c10@collabora.com>
- <47111821-d691-e71d-d740-e4325e290fa4@linaro.org>
- <be9b7ee3-cad0-e462-126d-08de9b226285@collabora.com>
- <4353a939-3f5e-8369-5bc0-ad8162b5ffc7@linaro.org>
- <a531d80f-afd1-2dec-6c77-ed984e97595c@collabora.com>
- <db1ff4e1-cbf8-89b3-5d64-b91a1fd88a41@linaro.org>
- <73942aea-ae79-753c-fe90-d4a99423d548@collabora.com>
- <374dddd9-b600-3a30-d6c3-8cfcefc944d9@linaro.org>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH] rockchip: rk3288: Add OF board setup
+Date: Thu, 2 Jul 2020 14:56:29 +0100
+Message-ID: <8e4ff8ec-d782-32da-05ac-ae24c1bc6164@arm.com>
+References: <20200702084820.35942-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-acpi-owner@vger.kernel.org>
-In-Reply-To: <374dddd9-b600-3a30-d6c3-8cfcefc944d9@linaro.org>
-Content-Language: en-US
-Sender: linux-acpi-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200702084820.35942-1-jagan@amarulasolutions.com>
+Content-Language: en-GB
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, heiko@sntech.de, mylene.josserand@collabora.com
+Cc: linux-rockchip@lists.infradead.org, U-Boot-Denx <u-boot@lists.denx.de>, Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Daniel,
-
-<snip>
-
->>>>>
->>>>> I did reproduce:
->>>>>
->>>>> v5.8-rc3 + series => imx6 hang at boot time
->>>>> v5.8-rc3 => imx6 boots correctly
+On 2020-07-02 09:48, Jagan Teki wrote:
+> The new rk3288 revision rk3288w has some changes with respect
+> to legacy rk3288 like hclk_vio and usb host0 ohci.
 > 
-> So finally I succeeded to reproduce it on my imx7 locally. The sensor
-> was failing to initialize for another reason related to the legacy
-> cooling device, this is why it is not appearing on the imx7.
+> In order to work these on the same in Linux kernel update the
+> compatible the root compatible with rockchip,rk3288w before
+> booting.
 > 
-> I can now git-bisect :)
+> So, this support during of board setup code of rk3288.
 > 
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> ---
+>   arch/arm/mach-rockchip/Kconfig         |  1 +
+>   arch/arm/mach-rockchip/rk3288/rk3288.c | 26 ++++++++++++++++++++++++++
+>   2 files changed, 27 insertions(+)
+> 
+> diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+> index b1008a5058..822d8d4e9c 100644
+> --- a/arch/arm/mach-rockchip/Kconfig
+> +++ b/arch/arm/mach-rockchip/Kconfig
+> @@ -98,6 +98,7 @@ config ROCKCHIP_RK322X
+>   config ROCKCHIP_RK3288
+>   	bool "Support Rockchip RK3288"
+>   	select CPU_V7A
+> +	select OF_BOARD_SETUP
+>   	select SUPPORT_SPL
+>   	select SPL
+>   	select SUPPORT_TPL
+> diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
+> index 804abe8a1b..8a682675e6 100644
+> --- a/arch/arm/mach-rockchip/rk3288/rk3288.c
+> +++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
+> @@ -115,6 +115,32 @@ int rk_board_late_init(void)
+>   	return rk3288_board_late_init();
+>   }
+>   
+> +#ifdef CONFIG_OF_BOARD_SETUP
+> +
+> +#define RK3288_HDMI_PHYS	0xff980000
+> +#define RK3288W_HDMI_REV	0x1A
+> +#define HDMI_CONFIG0_ID		0x04
+> +
+> +int ft_board_setup(void *blob, bd_t *bd)
+> +{
+> +	u8 config0;
+> +	int ret;
+> +
+> +	config0 = readb(RK3288_HDMI_PHYS + HDMI_CONFIG0_ID);
+> +	if (config0 == RK3288W_HDMI_REV) {
+> +		ret = fdt_setprop_string(blob, 0,
+> +					 "compatible", "rockchip,rk3288w");
 
-That would be very kind of you, thank you!
+Does this end up replacing the entire top-level compatible property? 
+i.e. from:
 
-Andrzej
+	compatible = "vendor,board\0rockchip,rk3288";
+
+to just:
+
+	compatible = "rockchip,rk3288w";
+
+If so, that's a bit of a problem for various drivers that care about the 
+actual board compatible rather than the SoC.
+
+Robin.
+
+> +		if (ret < 0) {
+> +			printf("failed to set rk3288w compatible (ret=%d)\n",
+> +			       ret);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +#endif
+> +
+>   static int do_clock(struct cmd_tbl *cmdtp, int flag, int argc,
+>   		    char *const argv[])
+>   {
+> 
