@@ -1,136 +1,96 @@
-From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 9/9] arm64: dts: rockchip: add isp and sensors for Scarlet
-Date: Thu,  2 Jul 2020 16:13:22 -0300
-Message-ID: <20200702191322.2639681-10-helen.koike@collabora.com>
-References: <20200702191322.2639681-1-helen.koike@collabora.com>
+From: Helen Koike <helen-kSfyqgtlsKOELgA04lAiVw@public.gmane.org>
+Subject: Re: [PATCH v2 3/3] ARM: dts: rockchip: add rk3288 ISP and DPHY
+Date: Thu, 2 Jul 2020 16:16:55 -0300
+Message-ID: <1598ce27-2456-aaa6-0984-080fed778312@koikeco.de>
+References: <karthik.poduval@gmail.com>
+ <20200406073017.19462-1-karthik.poduval@gmail.com>
+ <20200406073017.19462-4-karthik.poduval@gmail.com>
+ <2fc95890-f938-30a5-a163-bf3fa2e223df@gmail.com>
+ <CAFP0Ok-NxDDF8TMP4pN=xn6w3H=TYqN3DMfGW-vuiC5qB-Oj5g@mail.gmail.com>
+ <CAFP0Ok9XGzVbghbnOOyfXiOOc5-a94uFRu7sD5wXz9sr-+AYEA@mail.gmail.com>
+ <9407b6c3-b932-5904-18ff-7c6cbf6bcc8b@gmail.com>
+ <ec0e43f0-95af-c0b0-c51b-ea2db4194931@collabora.com>
+ <34801fe8-cc4f-ed52-674d-ee291f508e05@arm.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200702191322.2639681-1-helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+In-Reply-To: <34801fe8-cc4f-ed52-674d-ee291f508e05-5wv7dgnIgG8@public.gmane.org>
+Content-Language: en-US
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, karthik poduval <karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Cc: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Hi Robin,
 
-Enable ISP and camera sensor ov2685 and ov5695 for Scarlet Chromebook
+On 7/2/20 2:32 PM, Robin Murphy wrote:
+> On 2020-07-02 17:27, Helen Koike wrote:
+> [...]
+>> I suggest this:
+>>
+>>    clocks:
+>>      maxItems: 5
+>>      minItems: 3
+>>      description:
+>>        rk3288 clocks
+>>          ISP clock
+>>          ISP AXI clock
+>>          ISP AHB clock
+>>          ISP Pixel clock
+>>          ISP JPEG source clock
+>>        rk3399 isp0 clocks
+>>          ISP clock
+>>          ISP AXI wrapper clock
+>>          ISP AHB wrapper clock
+>>        rk3399 isp1 clocks
+>>          ISP clock
+>>          ISP AXI wrapper clock
+>>          ISP AHB wrapper clock
+>>          ISP Pixel wrapper clock
+>>
+>>    clock-names:
+>>      oneOf:
+>>        # rk3288 clocks
+>>        - items:
+>>          - const: clk_isp
+>>          - const: aclk_isp
+>>          - const: hclk_isp
+>>          - const: pclk_isp_in
+>>          - const: sclk_isp_jpe
+>>        # rk3399 isp0 clocks
+>>        - items:
+>>          - const: clk_isp
+>>          - const: aclk_isp_wrap
+>>          - const: hclk_isp_wrap
+>>        # rk3399 isp1 clocks
+>>        - items:
+>>          - const: clk_isp
+>>          - const: aclk_isp_wrap
+>>          - const: hclk_isp_wrap
+>>          - const: pclk_isp_wrap
+> 
+> FWIW this looks a little more involved than it might need to be. Ideally we're describing things from the point of view of what inputs the device itself wants, so the details of exactly *how* a particular SoC's clock tree delivers them shouldn't matter to the binding, only to the actual clock specifier values ultimately given in the DT.
+> 
+> From the ISP's PoV, it seems like we've got the fairly standard core clock, ACLK and HCLK trio, plus a pixel clock for RK3288 and RK3399 ISP1, plus a JPEG source clock for RK3288. I'd be inclined to model that as simply something like:
+> 
+>     clock-names:
+>       minItems: 3
+>       maxItems: 5
+>       items:
+>       - const: isp
+>       - const: aclk
+>       - const: hclk
+>       - const: pclk
+>       - const: sclk_jpe
+> 
+> Plus then not only do we have a nice clean binding, but we avoid all the unnecessary faff of having to deal with the "same" clocks by different names in drivers, and sidestep the conundrum of what to do when the next SoC comes along providing the basic ISP clocks from yet again slightly-differently-named branches of its clock tree.
 
-Verified with:
-    make ARCH=arm64 dtbs_check
+I agree this is cleaner, thanks for this suggestions, I just submitted a new version
+following this https://patchwork.linuxtv.org/project/linux-media/list/?series=2844
 
-Signed-off-by: Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Signed-off-by: Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Signed-off-by: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
----
+Thanks
+Helen
 
-This patch is based on:
-https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/527854
-
-Changes in V3:
-- This patch was first submitted stand alone at
-https://lore.kernel.org/patchwork/patch/1223736/
-I'm including in this patch series without changes
----
- .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 74 +++++++++++++++++++
- 1 file changed, 74 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-index 4373ed732af76..ae08205aa8e24 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-gru-scarlet.dtsi
-@@ -296,6 +296,52 @@ camera: &i2c7 {
- 
- 	/* 24M mclk is shared between world and user cameras */
- 	pinctrl-0 = <&i2c7_xfer &test_clkout1>;
-+
-+	/* Rear-facing camera */
-+	wcam: camera@36 {
-+		compatible = "ovti,ov5695";
-+		reg = <0x36>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wcam_rst>;
-+
-+		clocks = <&cru SCLK_TESTCLKOUT1>;
-+		clock-names = "xvclk";
-+
-+		avdd-supply = <&pp2800_cam>;
-+		dvdd-supply = <&pp1250_cam>;
-+		dovdd-supply = <&pp1800_s0>;
-+		reset-gpios = <&gpio2 5 GPIO_ACTIVE_LOW>;
-+
-+		port {
-+			wcam_out: endpoint {
-+				remote-endpoint = <&mipi_in_wcam>;
-+				data-lanes = <1 2>;
-+			};
-+		};
-+	};
-+
-+	/* Front-facing camera */
-+	ucam: camera@3c {
-+		compatible = "ovti,ov2685";
-+		reg = <0x3c>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&ucam_rst>;
-+
-+		clocks = <&cru SCLK_TESTCLKOUT1>;
-+		clock-names = "xvclk";
-+
-+		avdd-supply = <&pp2800_cam>;
-+		dovdd-supply = <&pp1800_s0>;
-+		dvdd-supply = <&pp1800_s0>;
-+		reset-gpios = <&gpio2 3 GPIO_ACTIVE_LOW>;
-+
-+		port {
-+			ucam_out: endpoint {
-+				remote-endpoint = <&mipi_in_ucam>;
-+				data-lanes = <1>;
-+			};
-+		};
-+	};
- };
- 
- &cdn_dp {
-@@ -353,10 +399,38 @@ &io_domains {
- 	gpio1830-supply = <&pp1800_s0>;		/* APIO4_VDD;  4c 4d */
- };
- 
-+&isp0 {
-+	status = "okay";
-+
-+	ports {
-+		port@0 {
-+			mipi_in_wcam: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&wcam_out>;
-+				data-lanes = <1 2>;
-+			};
-+
-+			mipi_in_ucam: endpoint@1 {
-+				reg = <1>;
-+				remote-endpoint = <&ucam_out>;
-+				data-lanes = <1>;
-+			};
-+		};
-+	};
-+};
-+
-+&isp0_mmu {
-+	status = "okay";
-+};
-+
- &max98357a {
- 	sdmode-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
- };
- 
-+&mipi_dphy_rx0 {
-+	status = "okay";
-+};
-+
- &mipi_dsi {
- 	status = "okay";
- 	clock-master;
--- 
-2.26.0
+> 
+> Robin.
