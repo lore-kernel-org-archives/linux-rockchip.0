@@ -1,7 +1,7 @@
 From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v4 1/9] media: staging: dt-bindings: rkisp1: add missing required nodes
-Date: Thu,  2 Jul 2020 16:13:14 -0300
-Message-ID: <20200702191322.2639681-2-helen.koike@collabora.com>
+Subject: [PATCH v4 2/9] media: staging: dt-bindings: rkisp1: add required items in i2c example
+Date: Thu,  2 Jul 2020 16:13:15 -0300
+Message-ID: <20200702191322.2639681-3-helen.koike@collabora.com>
 References: <20200702191322.2639681-1-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,41 +12,33 @@ To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY7
 Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Add missing required nodes in json-schema yaml file for
-Rockchip ISP1 dt-bindings.
+Add missing required items in Rockchip ISP1 dt-bindings example for
+a complete i2c node.
 
 Signed-off-by: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
 ---
 
 Changes in v2:
-- New patch in the series
+- new patch in the series
 ---
- .../devicetree/bindings/media/rockchip-isp1.yaml          | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ .../devicetree/bindings/media/rockchip-isp1.yaml             | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index af246b71eac6b..a77b6ec500c95 100644
+index a77b6ec500c95..8c7904845788d 100644
 --- a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 +++ b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -94,11 +94,19 @@ properties:
+@@ -169,6 +169,11 @@ examples:
+         };
  
-               remote-endpoint: true
- 
-+        required:
-+          - reg
-+          - "#address-cells"
-+          - "#size-cells"
-+
-     required:
-+      - "#address-cells"
-+      - "#size-cells"
-       - port@0
- 
- required:
-   - compatible
-+  - reg
-   - interrupts
-   - clocks
-   - clock-names
+         i2c7: i2c@ff160000 {
++            compatible = "rockchip,rk3399-i2c";
++            reg = <0x0 0xff160000 0x0 0x1000>;
++            interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH 0>;
++            clocks = <&cru SCLK_I2C7>, <&cru PCLK_I2C7>;
++            clock-names = "i2c", "pclk";
+             clock-frequency = <400000>;
+             #address-cells = <1>;
+             #size-cells = <0>;
 -- 
 2.26.0
