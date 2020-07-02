@@ -1,77 +1,73 @@
-From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] usb: host: ohci-platform: Disable ohci for rk3288
-Date: Thu, 2 Jul 2020 15:38:31 +0100
-Message-ID: <f0ae5915-9cb8-9550-f05c-6cebad191a14@arm.com>
-References: <20200702090504.36670-1-jagan@amarulasolutions.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH] ARM: dts: rockchip: Add usb host0 ohci node for rk3288
+Date: Thu, 2 Jul 2020 15:45:34 +0100
+Message-ID: <5a32f7f5-8c70-d261-569b-c807210d17cc@arm.com>
+References: <20200702090259.36595-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200702090504.36670-1-jagan@amarulasolutions.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200702090259.36595-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 Content-Language: en-GB
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jagan Teki <jagan@amarulasolutions.com>, Alan Stern <stern@rowland.harvard.edu>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, mylene.josserand@collabora.com
-Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Suniel Mahesh <sunil@amarulasolutions.com>, William Wu <william.wu@rock-chips.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-amarula <linux-amarula@amarulasolutions.com>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, mylene.josserand-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-07-02 10:05, Jagan Teki wrote:
-> rk3288 has usb host0 ohci controller but doesn't actually work
-> on real hardware but it works with new revision chip rk3288w.
+On 2020-07-02 10:02, Jagan Teki wrote:
+> rk3288 and rk3288w have a usb host0 ohci controller.
 > 
-> So, disable ohci for rk3288.
+> Although rk3288 ohci doesn't actually work on hardware, but
+> rk3288w ohci can work well.
 > 
-> For rk3288w chips the compatible update code is handled by bootloader.
+> So add usb host0 ohci node in rk3288 dtsi and the quirk in
+> ohci platform driver will disable ohci on rk3288.
 > 
-> Cc: William Wu <william.wu@rock-chips.com>
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> The bootloader must update the compatible in order to bypass
+> host0_ohci in legacy rk3288 platform.
+> 
+> Cc: William Wu <william.wu-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 > ---
 > Note:
 > - U-Boot patch for compatible update
-> https://patchwork.ozlabs.org/project/uboot/patch/20200702084820.35942-1-jagan@amarulasolutions.com/
+> https://patchwork.ozlabs.org/project/uboot/patch/20200702084820.35942-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org/
 > 
->   drivers/usb/host/ohci-platform.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   arch/arm/boot/dts/rk3288.dtsi | 14 +++++++++++++-
+>   1 file changed, 13 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/usb/host/ohci-platform.c b/drivers/usb/host/ohci-platform.c
-> index 7addfc2cbadc..24655ed6a7e0 100644
-> --- a/drivers/usb/host/ohci-platform.c
-> +++ b/drivers/usb/host/ohci-platform.c
-> @@ -96,7 +96,7 @@ static int ohci_platform_probe(struct platform_device *dev)
->   	struct ohci_hcd *ohci;
->   	int err, irq, clk = 0;
+> diff --git a/arch/arm/boot/dts/rk3288.dtsi b/arch/arm/boot/dts/rk3288.dtsi
+> index 0cd88774db95..fd0066d07dfc 100644
+> --- a/arch/arm/boot/dts/rk3288.dtsi
+> +++ b/arch/arm/boot/dts/rk3288.dtsi
+> @@ -614,7 +614,19 @@ usb_host0_ehci: usb@ff500000 {
+>   		status = "disabled";
+>   	};
 >   
-> -	if (usb_disabled())
-> +	if (usb_disabled() || of_machine_is_compatible("rockchip,rk3288"))
+> -	/* NOTE: ohci@ff520000 doesn't actually work on hardware */
+> +	/**
+> +	 * NOTE: ohci@ff520000 doesn't actually work on hardware
+> +	 * hardware, but can work on rk3288w hardware.
+> +	 */
 
-This seems unnecessary to me - if we've even started probing a driver 
-for a broken piece of hardware to the point that we need magic checks to 
-bail out again, then something is already fundamentally wrong.
+Hardware hardware, hardware - seems like things got a bit mangled there ;)
 
-Old boards only sold with the original SoC variant have no reason to 
-enable the OHCI (since it never worked originally), thus will never 
-execute this check.
+How about simply something like this?:
 
-New boards designed around the W variant to make use of the OHCI can 
-freely enable it either way.
-
-The only relative-edge-case where it might matter is older board designs 
-still in production which have shipped with both SoC variants. Enabling 
-OHCI can't be *necessary* given that it's still broken on a lot of 
-deployed boards, so at best it must be an opportunistic nice-to-have. 
-Since we're already having to rely on the bootloader to patch up the 
-devicetree for other low-level differences in this case, it should be 
-part of that responsibility for it to only enable the OHCI on the 
-appropriate SoC variant too. Statically enabling it in the DTS for a 
-board where it may well not work is just bad.
-
-As soon as a DTB with a broken piece of hardware enabled gets passed to 
-an OS, then the damage is already done. A driver patch in a future 
-version of Linux that magically knows better and ignores it isn't going 
-to help a user booting an older kernel image, or some other OS entirely.
+	/* NOTE: doesn't work on RK3288, but fixed on RK3288W */
 
 Robin.
 
->   		return -ENODEV;
+> +	usb_host0_ohci: usb@ff520000 {
+> +		compatible = "generic-ohci";
+> +		reg = <0x0 0xff520000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru HCLK_USBHOST0>;
+> +		phys = <&usbphy1>;
+> +		phy-names = "usb";
+> +		status = "disabled";
+> +	};
 >   
->   	/*
+>   	usb_host1: usb@ff540000 {
+>   		compatible = "rockchip,rk3288-usb", "rockchip,rk3066-usb",
 > 
