@@ -1,81 +1,112 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH 0/3] Fixes for stop monitoring disabled devices series
-Date: Fri, 3 Jul 2020 14:05:00 +0200
-Message-ID: <79ae59af-d3b9-852c-d5f3-5b80d9c6ea8c@linaro.org>
-References: <20200703104354.19657-1-andrzej.p@collabora.com>
- <fc1bb7f5-2096-a604-8c30-81d34bf5b737@linaro.org>
- <91db4c89-0615-4a69-9695-ed5d3c42e1b7@collabora.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH] rockchip: rk3288: Add OF board setup
+Date: Fri, 3 Jul 2020 13:39:19 +0100
+Message-ID: <69d5f8b3-e151-4f1e-c1a9-4e8c740f77aa@arm.com>
+References: <20200702084820.35942-1-jagan@amarulasolutions.com>
+ <8e4ff8ec-d782-32da-05ac-ae24c1bc6164@arm.com>
+ <CAMty3ZDuk=svN+aHdodx5d1hL8QzZC5MS6LJoSUgtcstnSZXoA@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <netdev-owner@vger.kernel.org>
-In-Reply-To: <91db4c89-0615-4a69-9695-ed5d3c42e1b7@collabora.com>
-Content-Language: en-US
-Sender: netdev-owner@vger.kernel.org
-To: Andrzej Pietrasiewicz <andrzej.p@collabora.com>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <CAMty3ZDuk=svN+aHdodx5d1hL8QzZC5MS6LJoSUgtcstnSZXoA@mail.gmail.com>
+Content-Language: en-GB
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, =?UTF-8?Q?Myl=c3=a8ne_Josserand?= <mylene.josserand@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, U-Boot-Denx <u-boot@lists.denx.de>, Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 03/07/2020 13:57, Andrzej Pietrasiewicz wrote:
-> Hi,
-> 
-> W dniu 03.07.2020 o 13:06, Daniel Lezcano pisze:
->> On 03/07/2020 12:43, Andrzej Pietrasiewicz wrote:
->>> This short series contains fixes for "Stop monitoring disabled devices"
->>> series https://www.spinics.net/lists/arm-kernel/msg817861.html
->>>
->>> Invocation of thermal_zone_device_is_enabled() in acpi/thermal is now
->>> redundant, because thermal_zone_device_update() now is capable of
->>> handling disabled devices.
->>>
->>> In imx's ->get_temp() the lock must not be taken, otherwise a deadlock
->>> happens. The decision whether explicitly running a measurement cycle
->>> is needed is taken based on driver's local irq_enabled variable.
->>>
->>> Finally, thermal_zone_device_is_enabled() is made available to the
->>> core only, as there are no driver users of it.
->>>
->>> Andrzej Pietrasiewicz (3):
->>>    acpi: thermal: Don't call thermal_zone_device_is_enabled()
->>>    thermal: imx: Use driver's local data to decide whether to run a
->>>      measurement
->>>    thermal: Make thermal_zone_device_is_enabled() available to core only
->>>
->>>   drivers/acpi/thermal.c         | 3 ---
->>>   drivers/thermal/imx_thermal.c  | 7 ++++---
->>>   drivers/thermal/thermal_core.c | 1 -
->>>   drivers/thermal/thermal_core.h | 2 ++
->>>   include/linux/thermal.h        | 5 -----
->>>   5 files changed, 6 insertions(+), 12 deletions(-)
+On 2020-07-03 11:10, Jagan Teki wrote:
+> On Thu, Jul 2, 2020 at 7:26 PM Robin Murphy <robin.murphy@arm.com> wrote:
 >>
->> Is this series easily merge-able with the other series?
+>> On 2020-07-02 09:48, Jagan Teki wrote:
+>>> The new rk3288 revision rk3288w has some changes with respect
+>>> to legacy rk3288 like hclk_vio and usb host0 ohci.
+>>>
+>>> In order to work these on the same in Linux kernel update the
+>>> compatible the root compatible with rockchip,rk3288w before
+>>> booting.
+>>>
+>>> So, this support during of board setup code of rk3288.
+>>>
+>>> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+>>> ---
+>>>    arch/arm/mach-rockchip/Kconfig         |  1 +
+>>>    arch/arm/mach-rockchip/rk3288/rk3288.c | 26 ++++++++++++++++++++++++++
+>>>    2 files changed, 27 insertions(+)
+>>>
+>>> diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+>>> index b1008a5058..822d8d4e9c 100644
+>>> --- a/arch/arm/mach-rockchip/Kconfig
+>>> +++ b/arch/arm/mach-rockchip/Kconfig
+>>> @@ -98,6 +98,7 @@ config ROCKCHIP_RK322X
+>>>    config ROCKCHIP_RK3288
+>>>        bool "Support Rockchip RK3288"
+>>>        select CPU_V7A
+>>> +     select OF_BOARD_SETUP
+>>>        select SUPPORT_SPL
+>>>        select SPL
+>>>        select SUPPORT_TPL
+>>> diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
+>>> index 804abe8a1b..8a682675e6 100644
+>>> --- a/arch/arm/mach-rockchip/rk3288/rk3288.c
+>>> +++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
+>>> @@ -115,6 +115,32 @@ int rk_board_late_init(void)
+>>>        return rk3288_board_late_init();
+>>>    }
+>>>
+>>> +#ifdef CONFIG_OF_BOARD_SETUP
+>>> +
+>>> +#define RK3288_HDMI_PHYS     0xff980000
+>>> +#define RK3288W_HDMI_REV     0x1A
+>>> +#define HDMI_CONFIG0_ID              0x04
+>>> +
+>>> +int ft_board_setup(void *blob, bd_t *bd)
+>>> +{
+>>> +     u8 config0;
+>>> +     int ret;
+>>> +
+>>> +     config0 = readb(RK3288_HDMI_PHYS + HDMI_CONFIG0_ID);
+>>> +     if (config0 == RK3288W_HDMI_REV) {
+>>> +             ret = fdt_setprop_string(blob, 0,
+>>> +                                      "compatible", "rockchip,rk3288w");
 >>
+>> Does this end up replacing the entire top-level compatible property?
+>> i.e. from:
+>>
+>>          compatible = "vendor,board\0rockchip,rk3288";
+>>
+>> to just:
+>>
+>>          compatible = "rockchip,rk3288w";
+>>
+>> If so, that's a bit of a problem for various drivers that care about the
+>> actual board compatible rather than the SoC.
 > 
-> So-so.
+> Yes, It looks replacing the entire compatible. I think the root
+> compatible is mostly untouchable because of this reason.
 > 
-> Some simple conflicts needed to be resolved.
-> 
-> I have created a branch for you to look at and decide
-> how far off it is from the original and whether the
-> original Acked-by/Reviewed-by can be retained.
-> 
-> Note that I might have lost some portions of code
-> during conflict resolution. It seems to me I haven't
-> but you know.
-> 
-> The branch:
-> 
-> https://gitlab.collabora.com/andrzej.p/kernel-tests/-/tree/thermal-dont-poll-disabled-for-daniel
+> But, if we skip the root compatible and trying to replace individual
+> nodes for W revision then it requires extra registration code on in
+> the Linux drivers like Linux clock driver is registering the clock
+> with rockchip,rk3288-cru but updating this compatible with
+> rockchip,rk3288w-cru will require another registration code. Having
+> common rockchip,rk3288w can be possible to check any code in the tree.
 
-Ok, I propose to keep the these three patches on top of V7.
+Right, it's definitely reasonable to update the top-level SoC 
+compatible, we just need to be prepared to deal with a whole string list 
+here. It looks like libfdt doesn't offer any nice helpers for 
+inserting/removing/updating in string lists, but given that the SoC 
+should be the last entry here we might be able to cheat a bit - just get 
+the whole raw property, check that the final characters are exactly 
+"rockchip,rk3288", and if so append a "w" to the end and write it back.
 
-Rui are you fine with that ?
-
-
-
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
-
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+Robin.
