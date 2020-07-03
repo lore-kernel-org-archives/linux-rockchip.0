@@ -1,110 +1,95 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v4l-utils v5 4/4] v4l2-ctl: subdev: Add the flags to the list of supported mbus formats
-Date: Fri,  3 Jul 2020 20:02:39 +0200
-Message-ID: <20200703180239.25841-5-dafna.hirschfeld@collabora.com>
-References: <20200703180239.25841-1-dafna.hirschfeld@collabora.com>
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200703180239.25841-1-dafna.hirschfeld@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH v2] clk: rockchip: use separate compatibles for
+ rk3288w-cru
+Date: Fri, 03 Jul 2020 15:33:52 -0300
+Message-ID: <c76893775a8c2ecee5093f9a7dfa872ec2afcefe.camel@collabora.com>
+References: <20200703154948.260369-1-heiko@sntech.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <20200703154948.260369-1-heiko@sntech.de>
+Sender: linux-clk-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
+Cc: mylene.josserand@collabora.com, mturquette@baylibre.com, sboyd@kernel.org, jagan@amarulasolutions.com, linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add a new function mbus2s to that prints a descriptive
-string of the supported flags of the the v4l2_subdev_mbus_code_enum
-Use this function in the print_mbus_code function.
-Also add a macro MBUS_DEF(enc_type) to create the two
-arries 'mbus_hsv_def' and mbus_ycbcr_def' that maps flags to
-string according to the enc_type (ycbcr/hsv)
+On Fri, 2020-07-03 at 17:49 +0200, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> 
+> Commit 1627f683636d ("clk: rockchip: Handle clock tree for rk3288w variant")
+> added the check for rk3288w-specific clock-tree changes but in turn would
+> require a double-compatible due to re-using the main rockchip,rk3288-cru
+> compatible as entry point.
+> 
+> The binding change actually describes the compatibles as one or the other
+> so adapt the code accordingly and add a real second entry-point for the
+> clock controller.
+> 
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- utils/common/v4l2-info.cpp         | 19 +++++++++++++++++++
- utils/common/v4l2-info.h           |  4 ++++
- utils/v4l2-ctl/v4l2-ctl-subdev.cpp | 10 ++++++++--
- 3 files changed, 31 insertions(+), 2 deletions(-)
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 
-diff --git a/utils/common/v4l2-info.cpp b/utils/common/v4l2-info.cpp
-index a8fa6236..67690f61 100644
---- a/utils/common/v4l2-info.cpp
-+++ b/utils/common/v4l2-info.cpp
-@@ -390,6 +390,25 @@ std::string fmtdesc2s(unsigned flags, bool is_hsv)
- 	return flags2s(flags, fmtdesc_ycbcr_def);
- }
- 
-+#define MBUS_DEF(enc_type)						\
-+static const flag_def mbus_ ## enc_type ## _def[] = { 			\
-+	{ V4L2_SUBDEV_MBUS_CODE_CSC_COLORSPACE, "csc-colorspace" }, 	\
-+	{ V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC, "csc-"#enc_type },	\
-+	{ V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION, "csc-quantization" }, \
-+	{ V4L2_SUBDEV_MBUS_CODE_CSC_XFER_FUNC, "csc-xfer-func" }, 	\
-+	{ 0, NULL }							\
-+};
-+
-+MBUS_DEF(ycbcr)
-+MBUS_DEF(hsv)
-+
-+std::string mbus2s(unsigned flags, bool is_hsv)
-+{
-+	if (is_hsv)
-+		return flags2s(flags, mbus_hsv_def);
-+	return flags2s(flags, mbus_ycbcr_def);
-+}
-+
- static const flag_def selection_targets_def[] = {
- 	{ V4L2_SEL_TGT_CROP_ACTIVE, "crop" },
- 	{ V4L2_SEL_TGT_CROP_DEFAULT, "crop_default" },
-diff --git a/utils/common/v4l2-info.h b/utils/common/v4l2-info.h
-index 5b34409c..97c1e64a 100644
---- a/utils/common/v4l2-info.h
-+++ b/utils/common/v4l2-info.h
-@@ -8,6 +8,7 @@
- 
- #include <string>
- #include <linux/videodev2.h>
-+#include <linux/v4l2-subdev.h>
- 
- /* Print capability information */
- void v4l2_info_capability(const v4l2_capability &cap);
-@@ -50,6 +51,9 @@ std::string pixflags2s(unsigned flags);
- /* Return sliced vbi services description */
- std::string service2s(unsigned service);
- 
-+/* Return v4l2_subdev_mbus_code_enum flags description */
-+std::string mbus2s(unsigned flags, bool is_hsv);
-+
- /* Return v4l2_fmtdesc flags description */
- std::string fmtdesc2s(unsigned flags, bool is_hsv);
- 
-diff --git a/utils/v4l2-ctl/v4l2-ctl-subdev.cpp b/utils/v4l2-ctl/v4l2-ctl-subdev.cpp
-index c6ec21a9..6f712af2 100644
---- a/utils/v4l2-ctl/v4l2-ctl-subdev.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-subdev.cpp
-@@ -577,10 +577,10 @@ static void print_mbus_code(__u32 code)
- 		if (mbus_names[i].code == code)
- 			break;
- 	if (mbus_names[i].name)
--		printf("\t0x%04x: MEDIA_BUS_FMT_%s\n",
-+		printf("\t0x%04x: MEDIA_BUS_FMT_%s",
- 		       mbus_names[i].code, mbus_names[i].name);
- 	else
--		printf("\t0x%04x\n", code);
-+		printf("\t0x%04x", code);
- }
- 
- static void print_mbus_codes(int fd, __u32 pad)
-@@ -597,6 +597,12 @@ static void print_mbus_codes(int fd, __u32 pad)
- 		if (ret)
- 			break;
- 		print_mbus_code(mbus_code.code);
-+		if (mbus_code.flags) {
-+			bool is_hsv = mbus_code.code == MEDIA_BUS_FMT_AHSV8888_1X32;
-+
-+			printf(", %s", mbus2s(mbus_code.flags, is_hsv).c_str());
-+		}
-+		printf("\n");
- 		mbus_code.index++;
- 	}
- }
--- 
-2.17.1
+Now all we need is someone to wire the U-Boot bits :)
+
+Thanks a lot Heiko,
+Ezequiel
+
+> ---
+> changes in v2:
+> - type enum instead of boolean (Ezequiel)
+> 
+>  drivers/clk/rockchip/clk-rk3288.c | 21 +++++++++++++++++++--
+>  1 file changed, 19 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+> index 204976e2d0cb..93c794695c46 100644
+> --- a/drivers/clk/rockchip/clk-rk3288.c
+> +++ b/drivers/clk/rockchip/clk-rk3288.c
+> @@ -15,6 +15,11 @@
+>  #define RK3288_GRF_SOC_CON(x)	(0x244 + x * 4)
+>  #define RK3288_GRF_SOC_STATUS1	0x284
+>  
+> +enum rk3288_variant {
+> +	RK3288_CRU,
+> +	RK3288W_CRU,
+> +};
+> +
+>  enum rk3288_plls {
+>  	apll, dpll, cpll, gpll, npll,
+>  };
+> @@ -922,7 +927,8 @@ static struct syscore_ops rk3288_clk_syscore_ops = {
+>  	.resume = rk3288_clk_resume,
+>  };
+>  
+> -static void __init rk3288_clk_init(struct device_node *np)
+> +static void __init rk3288_common_init(struct device_node *np,
+> +				      enum rk3288_variant soc)
+>  {
+>  	struct rockchip_clk_provider *ctx;
+>  
+> @@ -945,7 +951,7 @@ static void __init rk3288_clk_init(struct device_node *np)
+>  	rockchip_clk_register_branches(ctx, rk3288_clk_branches,
+>  				  ARRAY_SIZE(rk3288_clk_branches));
+>  
+> -	if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
+> +	if (soc == RK3288W_CRU)
+>  		rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
+>  					       ARRAY_SIZE(rk3288w_hclkvio_branch));
+>  	else
+> @@ -970,4 +976,15 @@ static void __init rk3288_clk_init(struct device_node *np)
+>  
+>  	rockchip_clk_of_add_provider(np, ctx);
+>  }
+> +
+> +static void __init rk3288_clk_init(struct device_node *np)
+> +{
+> +	rk3288_common_init(np, RK3288_CRU);
+> +}
+>  CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
+> +
+> +static void __init rk3288w_clk_init(struct device_node *np)
+> +{
+> +	rk3288_common_init(np, RK3288W_CRU);
+> +}
+> +CLK_OF_DECLARE(rk3288w_cru, "rockchip,rk3288w-cru", rk3288w_clk_init);
