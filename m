@@ -1,110 +1,68 @@
 From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 1/2] clk: rockchip: rk3288: Handle clock tree for rk3288w
-Date: Fri, 03 Jul 2020 17:05:12 +0200
-Message-ID: <2058941.hOsm0qqLio@phil>
-References: <20200602080644.11333-1-mylene.josserand@collabora.com> <1793210.9Kb5SQUFvz@phil> <8d667ae2554ebf3d9867f6f449973825c969b062.camel@collabora.com>
+Subject: [PATCH] clk: rockchip: use separate compatibles for rk3288w-cru
+Date: Fri,  3 Jul 2020 17:28:25 +0200
+Message-ID: <20200703152825.245920-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <8d667ae2554ebf3d9867f6f449973825c969b062.camel@collabora.com>
 Sender: linux-clk-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Jagan Teki <jagan@amarulasolutions.com>, =?ISO-8859-1?Q?Myl=E8ne?= Josserand <mylene.josserand@collabora.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>, devicetree <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, kernel@collabora.com, linux-clk <linux-clk@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+To: linux-rockchip@lists.infradead.org
+Cc: mylene.josserand@collabora.com, mturquette@baylibre.com, sboyd@kernel.org, jagan@amarulasolutions.com, linux-kernel@vger.kernel.org, heiko@sntech.de, ezequiel@collabora.com, linux-clk@vger.kernel.org, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 3. Juli 2020, 17:02:52 CEST schrieb Ezequiel Garcia:
-> On Fri, 2020-07-03 at 16:11 +0200, Heiko Stuebner wrote:
-> > Hi Jagan,
-> > 
-> > Am Montag, 29. Juni 2020, 21:11:03 CEST schrieb Jagan Teki:
-> > > On Tue, Jun 2, 2020 at 1:37 PM Mylène Josserand
-> > > <mylene.josserand@collabora.com> wrote:
-> > > > The revision rk3288w has a different clock tree about "hclk_vio"
-> > > > clock, according to the BSP kernel code.
-> > > > 
-> > > > This patch handles this difference by detecting which device-tree
-> > > > we are using. If it is a "rockchip,rk3288-cru", let's register
-> > > > the clock tree as it was before. If the device-tree node is
-> > > > "rockchip,rk3288w-cru", we will apply the difference with this
-> > > > version of this SoC.
-> > > > 
-> > > > Noticed that this new device-tree compatible must be handled in
-> > > > bootloader such as u-boot.
-> > > > 
-> > > > Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
-> > > > ---
-> > > >  drivers/clk/rockchip/clk-rk3288.c | 20 ++++++++++++++++++--
-> > > >  1 file changed, 18 insertions(+), 2 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> > > > index cc2a177bbdbf..204976e2d0cb 100644
-> > > > --- a/drivers/clk/rockchip/clk-rk3288.c
-> > > > +++ b/drivers/clk/rockchip/clk-rk3288.c
-> > > > @@ -425,8 +425,6 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
-> > > >         COMPOSITE(0, "aclk_vio0", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
-> > > >                         RK3288_CLKSEL_CON(31), 6, 2, MFLAGS, 0, 5, DFLAGS,
-> > > >                         RK3288_CLKGATE_CON(3), 0, GFLAGS),
-> > > > -       DIV(0, "hclk_vio", "aclk_vio0", 0,
-> > > > -                       RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-> > > >         COMPOSITE(0, "aclk_vio1", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
-> > > >                         RK3288_CLKSEL_CON(31), 14, 2, MFLAGS, 8, 5, DFLAGS,
-> > > >                         RK3288_CLKGATE_CON(3), 2, GFLAGS),
-> > > > @@ -819,6 +817,16 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
-> > > >         INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
-> > > >  };
-> > > > 
-> > > > +static struct rockchip_clk_branch rk3288w_hclkvio_branch[] __initdata = {
-> > > > +       DIV(0, "hclk_vio", "aclk_vio1", 0,
-> > > > +                       RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-> > > > +};
-> > > > +
-> > > > +static struct rockchip_clk_branch rk3288_hclkvio_branch[] __initdata = {
-> > > > +       DIV(0, "hclk_vio", "aclk_vio0", 0,
-> > > > +                       RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-> > > > +};
-> > > > +
-> > > >  static const char *const rk3288_critical_clocks[] __initconst = {
-> > > >         "aclk_cpu",
-> > > >         "aclk_peri",
-> > > > @@ -936,6 +944,14 @@ static void __init rk3288_clk_init(struct device_node *np)
-> > > >                                    RK3288_GRF_SOC_STATUS1);
-> > > >         rockchip_clk_register_branches(ctx, rk3288_clk_branches,
-> > > >                                   ARRAY_SIZE(rk3288_clk_branches));
-> > > > +
-> > > > +       if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
-> > > > +               rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
-> > > > +                                              ARRAY_SIZE(rk3288w_hclkvio_branch));
-> > > > +       else
-> > > > +               rockchip_clk_register_branches(ctx, rk3288_hclkvio_branch,
-> > > > +                                              ARRAY_SIZE(rk3288_hclkvio_branch));
-> > > > +
-> > > 
-> > > Sorry for the late query on this. I am a bit unclear about this
-> > > compatible change, does Linux expect to replace rockchip,rk3288-cru
-> > > with rockchip,rk3288w-cru in bootloader if the chip is RK3288w? or
-> > > append the existing cru compatible node with rockchip,rk3288w-cru?
-> > > because replace new cru node make clock never probe since the
-> > > CLK_OF_DECLARE checking rockchip,rk3288-cru
-> > 
-> > I guess right now we'd expect "rockchip,rk3288w-cru", "rockchip,rk3288-cru",
-> > 
-> > Thinking again about this, I'm wondering if we should switch to having
-> > only one per variant ... like on the two rk3188 variants,
-> > so declaring separate rk3288-cru and rk3288w-cru of-clks with shared
-> > common code.
-> > 
-> 
-> If we want to take this route (which I think makes sense), we should
-> do that sooner than later, so we don't release two different implementations
-> with two different requirements.
-> 
-> This change should be quite simple, no?
+From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-the underlying change is queued for 5.9, but yeah I am currently testing
-exactly such a patch ;-)
-Especially as when reading the binding addition it states
-rk3288w-cru _or_ rk3288-cru for the compatible.
+Commit 1627f683636d ("clk: rockchip: Handle clock tree for rk3288w variant")
+added the check for rk3288w-specific clock-tree changes but in turn would
+require a double-compatible due to re-using the main rockchip,rk3288-cru
+compatible as entry point.
 
+The binding change actually describes the compatibles as one or the other
+so adapt the code accordingly and add a real second entry-point for the
+clock controller.
 
-Heiko
+Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+---
+ drivers/clk/rockchip/clk-rk3288.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
+index 204976e2d0cb..a39ca9809cc3 100644
+--- a/drivers/clk/rockchip/clk-rk3288.c
++++ b/drivers/clk/rockchip/clk-rk3288.c
+@@ -922,7 +922,7 @@ static struct syscore_ops rk3288_clk_syscore_ops = {
+ 	.resume = rk3288_clk_resume,
+ };
+ 
+-static void __init rk3288_clk_init(struct device_node *np)
++static void __init rk3288_common_init(struct device_node *np, bool is_w)
+ {
+ 	struct rockchip_clk_provider *ctx;
+ 
+@@ -945,7 +945,7 @@ static void __init rk3288_clk_init(struct device_node *np)
+ 	rockchip_clk_register_branches(ctx, rk3288_clk_branches,
+ 				  ARRAY_SIZE(rk3288_clk_branches));
+ 
+-	if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
++	if (is_w)
+ 		rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
+ 					       ARRAY_SIZE(rk3288w_hclkvio_branch));
+ 	else
+@@ -970,4 +970,15 @@ static void __init rk3288_clk_init(struct device_node *np)
+ 
+ 	rockchip_clk_of_add_provider(np, ctx);
+ }
++
++static void __init rk3288_clk_init(struct device_node *np)
++{
++	rk3288_common_init(np, false);
++}
+ CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
++
++static void __init rk3288w_clk_init(struct device_node *np)
++{
++	rk3288_common_init(np, true);
++}
++CLK_OF_DECLARE(rk3288w_cru, "rockchip,rk3288w-cru", rk3288w_clk_init);
+-- 
+2.26.2
