@@ -1,215 +1,126 @@
-From: Zhang Rui <rui.zhang@intel.com>
-Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
-Date: Fri, 03 Jul 2020 09:49:15 +0800
-Message-ID: <44c622dd7de8c7bf143c4435c0edd1b98d09a3d6.camel@intel.com>
-References: <20200629122925.21729-1-andrzej.p@collabora.com>
-         <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
-         <3d03d1a2-ac06-b69b-93cb-e0203be62c10@collabora.com>
-         <47111821-d691-e71d-d740-e4325e290fa4@linaro.org>
-         <be9b7ee3-cad0-e462-126d-08de9b226285@collabora.com>
-         <4353a939-3f5e-8369-5bc0-ad8162b5ffc7@linaro.org>
-         <a531d80f-afd1-2dec-6c77-ed984e97595c@collabora.com>
-         <db1ff4e1-cbf8-89b3-5d64-b91a1fd88a41@linaro.org>
-         <73942aea-ae79-753c-fe90-d4a99423d548@collabora.com>
-         <374dddd9-b600-3a30-d6c3-8cfcefc944d9@linaro.org>
-         <5a28deb7-f307-8b03-faad-ab05cb8095d1@collabora.com>
-         <8aeb4f51-1813-63c1-165b-06640af5968f@linaro.org>
-         <685ef627-e377-bbf1-da11-7f7556ca2dd7@collabora.com>
-         <d41bf28f-ee91-6946-2334-f11ec81f96fe@linaro.org>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 3/9] media: rkvdec: h264: Fix pic width and height in mbs
+Date: Thu, 02 Jul 2020 23:48:34 -0300
+Message-ID: <abfa036dc0c997bb68280195b2cc422e88c6f4b5.camel@collabora.com>
+References: <20200701215616.30874-1-jonas@kwiboo.se>
+         <20200701215616.30874-4-jonas@kwiboo.se>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-acpi-owner@vger.kernel.org>
-In-Reply-To: <d41bf28f-ee91-6946-2334-f11ec81f96fe@linaro.org>
-Sender: linux-acpi-owner@vger.kernel.org
-To: Daniel Lezcano <daniel.lezcano@linaro.org>, Andrzej Pietrasiewicz <andrzej.p@collabora.com>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200701215616.30874-4-jonas@kwiboo.se>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jonas Karlman <jonas@kwiboo.se>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, 2020-07-02 at 19:49 +0200, Daniel Lezcano wrote:
-> On 02/07/2020 19:19, Andrzej Pietrasiewicz wrote:
-> > Hi,
-> > 
-> > W dniu 02.07.2020 o 19:01, Daniel Lezcano pisze:
-> > > On 02/07/2020 15:53, Andrzej Pietrasiewicz wrote:
-> > > > Hi Daniel,
-> > > > 
-> > > > <snip>
-> > > > 
-> > > > > > > > > 
-> > > > > > > > > I did reproduce:
-> > > > > > > > > 
-> > > > > > > > > v5.8-rc3 + series => imx6 hang at boot time
-> > > > > > > > > v5.8-rc3 => imx6 boots correctly
-> > > > > 
-> > > > > So finally I succeeded to reproduce it on my imx7 locally.
-> > > > > The sensor
-> > > > > was failing to initialize for another reason related to the
-> > > > > legacy
-> > > > > cooling device, this is why it is not appearing on the imx7.
-> > > > > 
-> > > > > I can now git-bisect :)
-> > > > > 
-> > > > 
-> > > > That would be very kind of you, thank you!
-> > > 
-> > > With the lock correctness option enabled:
-> > > 
-> > > [    4.179223] imx_thermal tempmon: Extended Commercial CPU
-> > > temperature
-> > > grade - max:105C critical:100C passive:95C
-> > > [    4.189557]
-> > > [    4.191060] ============================================
-> > > [    4.196378] WARNING: possible recursive locking detected
-> > > [    4.201699] 5.8.0-rc3-00011-gf5e50bf4d3ef #42 Not tainted
-> > > [    4.207102] --------------------------------------------
-> > > [    4.212421] kworker/0:3/54 is trying to acquire lock:
-> > > [    4.217480] ca09a3e4 (&tz->lock){+.+.}-{3:3}, at:
-> > > thermal_zone_device_is_enabled+0x18/0x34
-> > > [    4.225777]
-> > > [    4.225777] but task is already holding lock:
-> > > [    4.231615] ca09a3e4 (&tz->lock){+.+.}-{3:3}, at:
-> > > thermal_zone_get_temp+0x38/0x6c
-> > > [    4.239121]
-> > > [    4.239121] other info that might help us debug this:
-> > > [    4.245655]  Possible unsafe locking scenario:
-> > > [    4.245655]
-> > > [    4.251579]        CPU0
-> > > [    4.254031]        ----
-> > > [    4.256481]   lock(&tz->lock);
-> > > [    4.259544]   lock(&tz->lock);
-> > > [    4.262608]
-> > > [    4.262608]  *** DEADLOCK ***
-> > > [    4.262608]
-> > > [    4.268533]  May be due to missing lock nesting notation
-> > > [    4.268533]
-> > > [    4.275329] 4 locks held by kworker/0:3/54:
-> > > [    4.279517]  #0: cb0066a8 ((wq_completion)events){+.+.}-{0:0}, 
-> > > at:
-> > > process_one_work+0x224/0x808
-> > > [    4.288241]  #1: ca075f10 (deferred_probe_work){+.+.}-{0:0},
-> > > at:
-> > > process_one_work+0x224/0x808
-> > > [    4.296787]  #2: cb1a48d8 (&dev->mutex){....}-{3:3}, at:
-> > > __device_attach+0x30/0x140
-> > > [    4.304468]  #3: ca09a3e4 (&tz->lock){+.+.}-{3:3}, at:
-> > > thermal_zone_get_temp+0x38/0x6c
-> > > [    4.312408]
-> > > [    4.312408] stack backtrace:
-> > > [    4.316778] CPU: 0 PID: 54 Comm: kworker/0:3 Not tainted
-> > > 5.8.0-rc3-00011-gf5e50bf4d3ef #42
-> > > [    4.325048] Hardware name: Freescale i.MX7 Dual (Device Tree)
-> > > [    4.330809] Workqueue: events deferred_probe_work_func
-> > > [    4.335973] [<c0312384>] (unwind_backtrace) from [<c030c580>]
-> > > (show_stack+0x10/0x14)
-> > > [    4.343734] [<c030c580>] (show_stack) from [<c079d7d8>]
-> > > (dump_stack+0xe8/0x114)
-> > > [    4.351062] [<c079d7d8>] (dump_stack) from [<c03abf78>]
-> > > (__lock_acquire+0xbfc/0x2cb4)
-> > > [    4.358909] [<c03abf78>] (__lock_acquire) from [<c03ae9c4>]
-> > > (lock_acquire+0xf4/0x4e4)
-> > > [    4.366758] [<c03ae9c4>] (lock_acquire) from [<c10630fc>]
-> > > (__mutex_lock+0xb0/0xaa8)
-> > > [    4.374431] [<c10630fc>] (__mutex_lock) from [<c1063b10>]
-> > > (mutex_lock_nested+0x1c/0x24)
-> > > [    4.382452] [<c1063b10>] (mutex_lock_nested) from [<c0d932c0>]
-> > > (thermal_zone_device_is_enabled+0x18/0x34)
-> > > [    4.392036] [<c0d932c0>] (thermal_zone_device_is_enabled) from
-> > > [<c0d9da90>] (imx_get_temp+0x30/0x208)
-> > > [    4.401271] [<c0d9da90>] (imx_get_temp) from [<c0d97484>]
-> > > (thermal_zone_get_temp+0x4c/0x6c)
-> > > [    4.409640] [<c0d97484>] (thermal_zone_get_temp) from
-> > > [<c0d93df0>]
-> > > (thermal_zone_device_update+0x8c/0x258)
-> > > [    4.419310] [<c0d93df0>] (thermal_zone_device_update) from
-> > > [<c0d9401c>] (thermal_zone_device_set_mode+0x60/0x88)
-> > > [    4.429500] [<c0d9401c>] (thermal_zone_device_set_mode) from
-> > > [<c0d9e1d4>] (imx_thermal_probe+0x3e4/0x578)
-> > > [    4.439082] [<c0d9e1d4>] (imx_thermal_probe) from [<c0a78388>]
-> > > (platform_drv_probe+0x48/0x98)
-> > > [    4.447622] [<c0a78388>] (platform_drv_probe) from
-> > > [<c0a7603c>]
-> > > (really_probe+0x218/0x348)
-> > > [    4.455903] [<c0a7603c>] (really_probe) from [<c0a76278>]
-> > > (driver_probe_device+0x5c/0xb4)
-> > > [    4.464098] [<c0a76278>] (driver_probe_device) from
-> > > [<c0a743bc>]
-> > > (bus_for_each_drv+0x58/0xb8)
-> > > [    4.472638] [<c0a743bc>] (bus_for_each_drv) from [<c0a75db0>]
-> > > (__device_attach+0xd4/0x140)
-> > > [    4.480919] [<c0a75db0>] (__device_attach) from [<c0a750b0>]
-> > > (bus_probe_device+0x88/0x90)
-> > > [    4.489112] [<c0a750b0>] (bus_probe_device) from [<c0a75564>]
-> > > (deferred_probe_work_func+0x68/0x98)
-> > > [    4.498088] [<c0a75564>] (deferred_probe_work_func) from
-> > > [<c0369988>]
-> > > (process_one_work+0x2e0/0x808)
-> > > [    4.507237] [<c0369988>] (process_one_work) from [<c036a150>]
-> > > (worker_thread+0x2a0/0x59c)
-> > > [    4.515432] [<c036a150>] (worker_thread) from [<c0372208>]
-> > > (kthread+0x16c/0x178)
-> > > [    4.522843] [<c0372208>] (kthread) from [<c0300174>]
-> > > (ret_from_fork+0x14/0x20)
-> > > [    4.530074] Exception stack(0xca075fb0 to 0xca075ff8)
-> > > [    4.535138] 5fa0:                                     00000000
-> > > 00000000 00000000 00000000
-> > > [    4.543328] 5fc0: 00000000 00000000 00000000 00000000 00000000
-> > > 00000000 00000000 00000000
-> > > [    4.551516] 5fe0: 00000000 00000000 00000000 00000000 00000013
-> > > 00000000
-> > > 
-> > > 
-> > > 
-> > 
-> > Thanks!
-> > 
-> > That confirms your suspicions.
-> > 
-> > So the reason is that ->get_temp() is called while the mutex is
-> > held and
-> > thermal_zone_device_is_enabled() wants to take the same mutex.
+On Wed, 2020-07-01 at 21:56 +0000, Jonas Karlman wrote:
+> The width and height in mbs is currently configured based on OUTPUT buffer
+> resolution, this works for frame pictures but can cause issues for field
+> pictures or when frmsize step_width is changed to support 10-bit decoding.
 > 
-> Yes, that's correct.
+> When frame_mbs_only_flag is 0 the height in mbs should be height of
+> the field instead of height of frame.
 > 
-> > Is adding a comment to thermal_zone_device_is_enabled() to never
-> > call
-> > it while the mutex is held and adding another version of it which
-> > does
-> > not take the mutex ok?
+> Validate pic_width_in_mbs_minus1 and pic_height_in_map_units_minus1
+> against CAPTURE buffer resolution and use these values to configure HW.
 > 
-> The thermal_zone_device_is_enabled() is only used in two places, acpi
-> and this imx driver, and given:
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+>  drivers/staging/media/rkvdec/rkvdec-h264.c | 44 +++++++++++++++++++---
+>  1 file changed, 39 insertions(+), 5 deletions(-)
 > 
-> 1. as soon as the mutex is released, there is no guarantee the
-> thermal
-> zone won't be changed right after, the lock is pointless, thus the
-> information also.
-> 
-> 2. from a design point of view, I don't see why a driver should know
-> if
-> a thermal zone is disabled or not
-> 
-> It would make sense to end with this function and do not give the
-> different drivers an opportunity to access this information.
+> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+> index f0cfed84d60d..c9aebeb8f9b3 100644
+> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+> @@ -672,8 +672,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+>  		  LOG2_MAX_PIC_ORDER_CNT_LSB_MINUS4);
+>  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_DELTA_PIC_ORDER_ALWAYS_ZERO),
+>  		  DELTA_PIC_ORDER_ALWAYS_ZERO_FLAG);
+> -	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.width, 16), PIC_WIDTH_IN_MBS);
+> -	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.height, 16), PIC_HEIGHT_IN_MBS);
+> +	WRITE_PPS(sps->pic_width_in_mbs_minus1 + 1, PIC_WIDTH_IN_MBS);
+> +	WRITE_PPS(sps->pic_height_in_map_units_minus1 + 1, PIC_HEIGHT_IN_MBS);
+>  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY),
+>  		  FRAME_MBS_ONLY_FLAG);
+>  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD),
+> @@ -1058,10 +1058,33 @@ static void rkvdec_h264_stop(struct rkvdec_ctx *ctx)
+>  	kfree(h264_ctx);
+>  }
+>  
+> -static void rkvdec_h264_run_preamble(struct rkvdec_ctx *ctx,
+> -				     struct rkvdec_h264_run *run)
+> +static int validate_sps(struct rkvdec_ctx *ctx,
+> +			const struct v4l2_ctrl_h264_sps *sps)
+> +{
+> +	unsigned int width, height;
+> +
+> +	if (WARN_ON(!sps))
+> +		return -EINVAL;
+> +
+> +	width = (sps->pic_width_in_mbs_minus1 + 1) * 16;
+> +	height = (sps->pic_height_in_map_units_minus1 + 1) * 16;
+> +
+> +	if (width > ctx->decoded_fmt.fmt.pix_mp.width ||
+> +	    height > ctx->decoded_fmt.fmt.pix_mp.height) {
 
-I agree.
-> 
-> Why not add change_mode for the acpi in order to enable or disable
-> the
-> events
+Why using decoded_fmt instead of coded_fmt?
 
-thermal_zone_device_is_enabled() is invoked in acpi thermal driver
-because we only want to do thermal_zone_device_update() when the acpi
-thermal zone is enabled.
+Also, by the time the SPS control is passed, the OUTPUT
+and CAPTURE formats should be already set, so it should be
+possible to validate the SPS at TRY_EXT_CTRLS, using
+v4l2_ctrl_ops.try_ctrl.
 
-As thermal_zone_device_update() can handle a disabled thermal zone now,
-we can just remove the check.
+That would be much better, since once the application
+calls STREAMON on both queues, I think things are
+expected to be validated as much as possible.
 
-thanks,
-rui
+Thanks,
+Ezequiel
 
->  and for imx_thermal use irq_enabled flag instead of the thermal
-> zone mode? Moreover it is very unclear why this function is needed in
-> imx_get_temp(), and I suspect we should be able to get rid of it.
-> 
-> 
+> +		dev_err(ctx->dev->dev,
+> +			"unexpected bitstream resolution %ux%u\n",
+> +			width, height);
+> +		return -EINVAL;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int rkvdec_h264_run_preamble(struct rkvdec_ctx *ctx,
+> +				    struct rkvdec_h264_run *run)
+>  {
+>  	struct v4l2_ctrl *ctrl;
+> +	int ret;
+>  
+>  	ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl,
+>  			      V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS);
+> @@ -1080,6 +1103,12 @@ static void rkvdec_h264_run_preamble(struct rkvdec_ctx *ctx,
+>  	run->scaling_matrix = ctrl ? ctrl->p_cur.p : NULL;
+>  
+>  	rkvdec_run_preamble(ctx, &run->base);
+> +
+> +	ret = validate_sps(ctx, run->sps);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return 0;
+>  }
+>  
+>  static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
+> @@ -1088,8 +1117,13 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
+>  	struct rkvdec_dev *rkvdec = ctx->dev;
+>  	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
+>  	struct rkvdec_h264_run run;
+> +	int ret;
+>  
+> -	rkvdec_h264_run_preamble(ctx, &run);
+> +	ret = rkvdec_h264_run_preamble(ctx, &run);
+> +	if (ret) {
+> +		rkvdec_run_postamble(ctx, &run.base);
+> +		return ret;
+> +	}
+>  
+>  	/* Build the P/B{0,1} ref lists. */
+>  	v4l2_h264_init_reflist_builder(&reflist_builder, run.decode_params,
