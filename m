@@ -1,146 +1,70 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH 3/9] media: rkvdec: h264: Fix pic width and height in mbs
-Date: Fri, 03 Jul 2020 11:28:14 +0000 (UTC)
-Message-ID: <3534f9a4-2151-447f-069c-4a277a810535@kwiboo.se>
-References: <20200701215616.30874-1-jonas@kwiboo.se>
- <20200701215616.30874-4-jonas@kwiboo.se>
- <abfa036dc0c997bb68280195b2cc422e88c6f4b5.camel@collabora.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH] usb: host: ohci-platform: Disable ohci for rk3288
+Date: Fri, 3 Jul 2020 17:09:15 +0530
+Message-ID: <CAMty3ZBBdYdNOf-nQTdKZfi-VagaML6k+4PkAh6Uz936h9auow@mail.gmail.com>
+References: <20200702090504.36670-1-jagan@amarulasolutions.com> <f0ae5915-9cb8-9550-f05c-6cebad191a14@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="UTF-8"
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <abfa036dc0c997bb68280195b2cc422e88c6f4b5.camel@collabora.com>
-Content-Language: sv
+In-Reply-To: <f0ae5915-9cb8-9550-f05c-6cebad191a14@arm.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Alan Stern <stern@rowland.harvard.edu>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, =?UTF-8?Q?Myl=C3=A8ne_Josserand?= <mylene.josserand@collabora.com>, linux-usb@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Suniel Mahesh <sunil@amarulasolutions.com>, William Wu <william.wu@rock-chips.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-amarula <linux-amarula@amarulasolutions.com>, Kever Yang <kever.yang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-07-03 04:48, Ezequiel Garcia wrote:
-> On Wed, 2020-07-01 at 21:56 +0000, Jonas Karlman wrote:
->> The width and height in mbs is currently configured based on OUTPUT buffer
->> resolution, this works for frame pictures but can cause issues for field
->> pictures or when frmsize step_width is changed to support 10-bit decoding.
->>
->> When frame_mbs_only_flag is 0 the height in mbs should be height of
->> the field instead of height of frame.
->>
->> Validate pic_width_in_mbs_minus1 and pic_height_in_map_units_minus1
->> against CAPTURE buffer resolution and use these values to configure HW.
->>
->> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->> ---
->>  drivers/staging/media/rkvdec/rkvdec-h264.c | 44 +++++++++++++++++++---
->>  1 file changed, 39 insertions(+), 5 deletions(-)
->>
->> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
->> index f0cfed84d60d..c9aebeb8f9b3 100644
->> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
->> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
->> @@ -672,8 +672,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
->>  		  LOG2_MAX_PIC_ORDER_CNT_LSB_MINUS4);
->>  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_DELTA_PIC_ORDER_ALWAYS_ZERO),
->>  		  DELTA_PIC_ORDER_ALWAYS_ZERO_FLAG);
->> -	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.width, 16), PIC_WIDTH_IN_MBS);
->> -	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.height, 16), PIC_HEIGHT_IN_MBS);
->> +	WRITE_PPS(sps->pic_width_in_mbs_minus1 + 1, PIC_WIDTH_IN_MBS);
->> +	WRITE_PPS(sps->pic_height_in_map_units_minus1 + 1, PIC_HEIGHT_IN_MBS);
->>  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY),
->>  		  FRAME_MBS_ONLY_FLAG);
->>  	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD),
->> @@ -1058,10 +1058,33 @@ static void rkvdec_h264_stop(struct rkvdec_ctx *ctx)
->>  	kfree(h264_ctx);
->>  }
->>  
->> -static void rkvdec_h264_run_preamble(struct rkvdec_ctx *ctx,
->> -				     struct rkvdec_h264_run *run)
->> +static int validate_sps(struct rkvdec_ctx *ctx,
->> +			const struct v4l2_ctrl_h264_sps *sps)
->> +{
->> +	unsigned int width, height;
->> +
->> +	if (WARN_ON(!sps))
->> +		return -EINVAL;
->> +
->> +	width = (sps->pic_width_in_mbs_minus1 + 1) * 16;
->> +	height = (sps->pic_height_in_map_units_minus1 + 1) * 16;
->> +
->> +	if (width > ctx->decoded_fmt.fmt.pix_mp.width ||
->> +	    height > ctx->decoded_fmt.fmt.pix_mp.height) {
-> 
-> Why using decoded_fmt instead of coded_fmt?
+On Thu, Jul 2, 2020 at 8:08 PM Robin Murphy <robin.murphy@arm.com> wrote:
+>
+> On 2020-07-02 10:05, Jagan Teki wrote:
+> > rk3288 has usb host0 ohci controller but doesn't actually work
+> > on real hardware but it works with new revision chip rk3288w.
+> >
+> > So, disable ohci for rk3288.
+> >
+> > For rk3288w chips the compatible update code is handled by bootloader.
+> >
+> > Cc: William Wu <william.wu@rock-chips.com>
+> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> > ---
+> > Note:
+> > - U-Boot patch for compatible update
+> > https://patchwork.ozlabs.org/project/uboot/patch/20200702084820.35942-1-jagan@amarulasolutions.com/
+> >
+> >   drivers/usb/host/ohci-platform.c | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/usb/host/ohci-platform.c b/drivers/usb/host/ohci-platform.c
+> > index 7addfc2cbadc..24655ed6a7e0 100644
+> > --- a/drivers/usb/host/ohci-platform.c
+> > +++ b/drivers/usb/host/ohci-platform.c
+> > @@ -96,7 +96,7 @@ static int ohci_platform_probe(struct platform_device *dev)
+> >       struct ohci_hcd *ohci;
+> >       int err, irq, clk = 0;
+> >
+> > -     if (usb_disabled())
+> > +     if (usb_disabled() || of_machine_is_compatible("rockchip,rk3288"))
+>
+> This seems unnecessary to me - if we've even started probing a driver
+> for a broken piece of hardware to the point that we need magic checks to
+> bail out again, then something is already fundamentally wrong.
+>
+> Old boards only sold with the original SoC variant have no reason to
+> enable the OHCI (since it never worked originally), thus will never
+> execute this check.
+>
+> New boards designed around the W variant to make use of the OHCI can
+> freely enable it either way.
+>
+> The only relative-edge-case where it might matter is older board designs
+> still in production which have shipped with both SoC variants. Enabling
+> OHCI can't be *necessary* given that it's still broken on a lot of
+> deployed boards, so at best it must be an opportunistic nice-to-have.
+> Since we're already having to rely on the bootloader to patch up the
+> devicetree for other low-level differences in this case, it should be
+> part of that responsibility for it to only enable the OHCI on the
+> appropriate SoC variant too. Statically enabling it in the DTS for a
+> board where it may well not work is just bad.
 
-I used decoded_fmt because that would be the outer limits of what can be
-decoded into in the CAPTURE buffer. Not sure if or how coded_fmt is validated
-that it does not exceed the decoded_fmt resolution.
+You mean enable OHCI by identifying revision W with dts status "okay"?
+doesn't it complex for the bootloader to update all effecting changes?
 
-> 
-> Also, by the time the SPS control is passed, the OUTPUT
-> and CAPTURE formats should be already set, so it should be
-> possible to validate the SPS at TRY_EXT_CTRLS, using
-> v4l2_ctrl_ops.try_ctrl.
-
-I was not sure how to access the rkvdec_ctx from v4l2_ctrl_ops.try_ctrl
-so I went with similar approach as was done in the VP9 series, looks like
-we can use container_of and ctrl->handler to find rkvdec_ctx.
-
-Will try to move the validation into rkvdec_try_ctrl for v2.
-
-Regards,
-Jonas
-
-> 
-> That would be much better, since once the application
-> calls STREAMON on both queues, I think things are
-> expected to be validated as much as possible.
-> 
-> Thanks,
-> Ezequiel
-> 
->> +		dev_err(ctx->dev->dev,
->> +			"unexpected bitstream resolution %ux%u\n",
->> +			width, height);
->> +		return -EINVAL;
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->> +static int rkvdec_h264_run_preamble(struct rkvdec_ctx *ctx,
->> +				    struct rkvdec_h264_run *run)
->>  {
->>  	struct v4l2_ctrl *ctrl;
->> +	int ret;
->>  
->>  	ctrl = v4l2_ctrl_find(&ctx->ctrl_hdl,
->>  			      V4L2_CID_MPEG_VIDEO_H264_DECODE_PARAMS);
->> @@ -1080,6 +1103,12 @@ static void rkvdec_h264_run_preamble(struct rkvdec_ctx *ctx,
->>  	run->scaling_matrix = ctrl ? ctrl->p_cur.p : NULL;
->>  
->>  	rkvdec_run_preamble(ctx, &run->base);
->> +
->> +	ret = validate_sps(ctx, run->sps);
->> +	if (ret)
->> +		return ret;
->> +
->> +	return 0;
->>  }
->>  
->>  static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
->> @@ -1088,8 +1117,13 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
->>  	struct rkvdec_dev *rkvdec = ctx->dev;
->>  	struct rkvdec_h264_ctx *h264_ctx = ctx->priv;
->>  	struct rkvdec_h264_run run;
->> +	int ret;
->>  
->> -	rkvdec_h264_run_preamble(ctx, &run);
->> +	ret = rkvdec_h264_run_preamble(ctx, &run);
->> +	if (ret) {
->> +		rkvdec_run_postamble(ctx, &run.base);
->> +		return ret;
->> +	}
->>  
->>  	/* Build the P/B{0,1} ref lists. */
->>  	v4l2_h264_init_reflist_builder(&reflist_builder, run.decode_params,
-> 
-> 
+Jagan.
