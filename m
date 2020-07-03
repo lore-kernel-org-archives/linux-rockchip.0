@@ -1,79 +1,85 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH 1/9] media: rkvdec: h264: Support profile and level
- controls
-Date: Fri, 03 Jul 2020 05:30:27 +0000 (UTC)
-Message-ID: <75d272ab-2d48-6dc6-3b60-22d5922ffd1e@kwiboo.se>
-References: <20200701215616.30874-1-jonas@kwiboo.se>
- <20200701215616.30874-2-jonas@kwiboo.se>
- <8daa49704a14764bfe0797cbf802bad3d64ede17.camel@collabora.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
+Date: Fri, 3 Jul 2020 08:38:48 +0200
+Message-ID: <58265668-fc6d-729a-c126-0c73c2ea853b@linaro.org>
+References: <20200629122925.21729-1-andrzej.p@collabora.com>
+ <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
+ <3d03d1a2-ac06-b69b-93cb-e0203be62c10@collabora.com>
+ <47111821-d691-e71d-d740-e4325e290fa4@linaro.org>
+ <be9b7ee3-cad0-e462-126d-08de9b226285@collabora.com>
+ <4353a939-3f5e-8369-5bc0-ad8162b5ffc7@linaro.org>
+ <a531d80f-afd1-2dec-6c77-ed984e97595c@collabora.com>
+ <db1ff4e1-cbf8-89b3-5d64-b91a1fd88a41@linaro.org>
+ <73942aea-ae79-753c-fe90-d4a99423d548@collabora.com>
+ <374dddd9-b600-3a30-d6c3-8cfcefc944d9@linaro.org>
+ <5a28deb7-f307-8b03-faad-ab05cb8095d1@collabora.com>
+ <8aeb4f51-1813-63c1-165b-06640af5968f@linaro.org>
+ <685ef627-e377-bbf1-da11-7f7556ca2dd7@collabora.com>
+ <d41bf28f-ee91-6946-2334-f11ec81f96fe@linaro.org>
+ <44c622dd7de8c7bf143c4435c0edd1b98d09a3d6.camel@intel.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <8daa49704a14764bfe0797cbf802bad3d64ede17.camel@collabora.com>
-Content-Language: sv
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-renesas-soc-owner@vger.kernel.org>
+In-Reply-To: <44c622dd7de8c7bf143c4435c0edd1b98d09a3d6.camel@intel.com>
+Content-Language: en-US
+Sender: linux-renesas-soc-owner@vger.kernel.org
+To: Zhang Rui <rui.zhang@intel.com>, Andrzej Pietrasiewicz <andrzej.p@collabora.com>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-07-03 04:54, Ezequiel Garcia wrote:
-> On Wed, 2020-07-01 at 21:56 +0000, Jonas Karlman wrote:
->> The Rockchip Video Decoder used in RK3399 supports H.264 profiles from
->> Baseline to High 4:2:2 up to Level 5.1, except for the Extended profile.
->>
->> Expose the V4L2_CID_MPEG_VIDEO_H264_PROFILE and the
->> V4L2_CID_MPEG_VIDEO_H264_LEVEL control, so that userspace can query the
->> driver for the list of supported profiles and level.
->>
->> In current state only Baseline to High profile is supported by the driver.
->>
->> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> 
-> I think the patch is good so:
-> 
-> Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
-> 
-> However, feel free to just drop this patch and support the profiles
-> and levels at the end of the patchset, once High 10 and High 422
-> support is there.
+On 03/07/2020 03:49, Zhang Rui wrote:
+> On Thu, 2020-07-02 at 19:49 +0200, Daniel Lezcano wrote:
 
-Sure, that makes more sense, will move to end in v2.
+[ ... ]
 
-Regards,
-Jonas
-
-> 
-> Thanks,
-> Ezequiel
-> 
->> ---
->>  drivers/staging/media/rkvdec/rkvdec.c | 13 +++++++++++++
->>  1 file changed, 13 insertions(+)
+>>> So the reason is that ->get_temp() is called while the mutex is
+>>> held and
+>>> thermal_zone_device_is_enabled() wants to take the same mutex.
 >>
->> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
->> index 0f81b47792f6..b1de55aa6535 100644
->> --- a/drivers/staging/media/rkvdec/rkvdec.c
->> +++ b/drivers/staging/media/rkvdec/rkvdec.c
->> @@ -94,6 +94,19 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
->>  		.cfg.def = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
->>  		.cfg.max = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
->>  	},
->> +	{
->> +		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
->> +		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
->> +		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
->> +		.cfg.menu_skip_mask =
->> +			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
->> +		.cfg.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_LEVEL,
->> +		.cfg.min = V4L2_MPEG_VIDEO_H264_LEVEL_1_0,
->> +		.cfg.max = V4L2_MPEG_VIDEO_H264_LEVEL_5_1,
->> +	},
->>  };
->>  
->>  static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
+>> Yes, that's correct.
+>>
+>>> Is adding a comment to thermal_zone_device_is_enabled() to never
+>>> call
+>>> it while the mutex is held and adding another version of it which
+>>> does
+>>> not take the mutex ok?
+>>
+>> The thermal_zone_device_is_enabled() is only used in two places, acpi
+>> and this imx driver, and given:
+>>
+>> 1. as soon as the mutex is released, there is no guarantee the
+>> thermal
+>> zone won't be changed right after, the lock is pointless, thus the
+>> information also.
+>>
+>> 2. from a design point of view, I don't see why a driver should know
+>> if
+>> a thermal zone is disabled or not
+>>
+>> It would make sense to end with this function and do not give the
+>> different drivers an opportunity to access this information.
 > 
+> I agree.
+>>
+>> Why not add change_mode for the acpi in order to enable or disable
+>> the
+>> events
 > 
+> thermal_zone_device_is_enabled() is invoked in acpi thermal driver
+> because we only want to do thermal_zone_device_update() when the acpi
+> thermal zone is enabled.
+> 
+> As thermal_zone_device_update() can handle a disabled thermal zone now,
+> we can just remove the check.
+
+Ah yes, good point!
+
+
+
+-- 
+<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+
+Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
+<http://twitter.com/#!/linaroorg> Twitter |
+<http://www.linaro.org/linaro-blog/> Blog
