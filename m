@@ -1,112 +1,70 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH 7/9] media: rkvdec: h264: Use bytesperline and buffer
- height to calculate stride
-Date: Fri, 03 Jul 2020 11:40:04 +0000 (UTC)
-Message-ID: <957479f7-6427-1cc6-700c-b3efe0cb6ff1@kwiboo.se>
-References: <20200701215616.30874-1-jonas@kwiboo.se>
- <20200701215616.30874-8-jonas@kwiboo.se>
- <d34520b6799ddf84d9bd6de1cc6352f28c665c9a.camel@collabora.com>
+From: Andrzej Pietrasiewicz <andrzej.p@collabora.com>
+Subject: Re: [PATCH 0/3] Fixes for stop monitoring disabled devices series
+Date: Fri, 3 Jul 2020 13:57:12 +0200
+Message-ID: <91db4c89-0615-4a69-9695-ed5d3c42e1b7@collabora.com>
+References: <20200703104354.19657-1-andrzej.p@collabora.com>
+ <fc1bb7f5-2096-a604-8c30-81d34bf5b737@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <d34520b6799ddf84d9bd6de1cc6352f28c665c9a.camel@collabora.com>
-Content-Language: sv
-Sender: linux-media-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-acpi-owner@vger.kernel.org>
+In-Reply-To: <fc1bb7f5-2096-a604-8c30-81d34bf5b737@linaro.org>
+Content-Language: en-US
+Sender: linux-acpi-owner@vger.kernel.org
+To: Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-07-03 05:21, Ezequiel Garcia wrote:
-> Hi Jonas,
-> 
-> On Wed, 2020-07-01 at 21:56 +0000, Jonas Karlman wrote:
->> Use bytesperline and buffer height to calculate the strides configured.
+Hi,
+
+W dniu 03.07.2020 o 13:06, Daniel Lezcano pisze:
+> On 03/07/2020 12:43, Andrzej Pietrasiewicz wrote:
+>> This short series contains fixes for "Stop monitoring disabled devices"
+>> series https://www.spinics.net/lists/arm-kernel/msg817861.html
 >>
->> This does not really change anything other than ensuring the bytesperline
->> that is signaled to userspace matches was is configured in HW.
+>> Invocation of thermal_zone_device_is_enabled() in acpi/thermal is now
+>> redundant, because thermal_zone_device_update() now is capable of
+>> handling disabled devices.
 >>
-> 
-> Are you seeing any issue due to this?
-
-Not seeing any issue, I just feelt more confident when both the driver and
-application use the same value to configure the stride and when used for
-drm framebuffer pitch.
-
-> 
->> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->> ---
->>  drivers/staging/media/rkvdec/rkvdec-h264.c | 27 +++++++++++++---------
->>  1 file changed, 16 insertions(+), 11 deletions(-)
+>> In imx's ->get_temp() the lock must not be taken, otherwise a deadlock
+>> happens. The decision whether explicitly running a measurement cycle
+>> is needed is taken based on driver's local irq_enabled variable.
 >>
->> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
->> index 9c8e49642cd9..1cb6af590138 100644
->> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
->> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
->> @@ -891,10 +891,11 @@ static void config_registers(struct rkvdec_ctx *ctx,
->>  	dma_addr_t rlc_addr;
->>  	dma_addr_t refer_addr;
->>  	u32 rlc_len;
->> -	u32 hor_virstride = 0;
->> -	u32 ver_virstride = 0;
->> -	u32 y_virstride = 0;
->> -	u32 yuv_virstride = 0;
->> +	u32 hor_virstride;
->> +	u32 ver_virstride;
->> +	u32 y_virstride;
->> +	u32 uv_virstride;
->> +	u32 yuv_virstride;
->>  	u32 offset;
->>  	dma_addr_t dst_addr;
->>  	u32 reg, i;
->> @@ -904,16 +905,20 @@ static void config_registers(struct rkvdec_ctx *ctx,
->>  
->>  	f = &ctx->decoded_fmt;
->>  	dst_fmt = &f->fmt.pix_mp;
->> -	hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
->> -	ver_virstride = round_up(dst_fmt->height, 16);
->> +	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
->> +	ver_virstride = dst_fmt->height;
->>  	y_virstride = hor_virstride * ver_virstride;
->>  
+>> Finally, thermal_zone_device_is_enabled() is made available to the
+>> core only, as there are no driver users of it.
+>>
+>> Andrzej Pietrasiewicz (3):
+>>    acpi: thermal: Don't call thermal_zone_device_is_enabled()
+>>    thermal: imx: Use driver's local data to decide whether to run a
+>>      measurement
+>>    thermal: Make thermal_zone_device_is_enabled() available to core only
+>>
+>>   drivers/acpi/thermal.c         | 3 ---
+>>   drivers/thermal/imx_thermal.c  | 7 ++++---
+>>   drivers/thermal/thermal_core.c | 1 -
+>>   drivers/thermal/thermal_core.h | 2 ++
+>>   include/linux/thermal.h        | 5 -----
+>>   5 files changed, 6 insertions(+), 12 deletions(-)
 > 
-> So far so good.
+> Is this series easily merge-able with the other series?
 > 
->> -	if (sps->chroma_format_idc == 0)
->> -		yuv_virstride = y_virstride;
->> -	else if (sps->chroma_format_idc == 1)
->> -		yuv_virstride += y_virstride + y_virstride / 2;
->> +	if (sps->chroma_format_idc == 1)
->> +		uv_virstride = y_virstride / 2;
->>  	else if (sps->chroma_format_idc == 2)
->> -		yuv_virstride += 2 * y_virstride;
->> +		uv_virstride = y_virstride;
->> +	else if (sps->chroma_format_idc == 3)
->> +		uv_virstride = 2 * y_virstride;
->> +	else
->> +		uv_virstride = 0;
->> +
->> +	yuv_virstride = y_virstride + uv_virstride;
->>  
-> 
-> Is the chunk above related to the patch, or mostly
-> cleaning/improving the code?
 
-You are correct it is mostly cleaning/improving the code,
-this should probably be moved to a separate patch or skipped altogether.
+So-so.
 
-Initial 10-bit implementation was made for HEVC so I just backported the code
-I ended up with for HEVC back to H.264. Will skip this cleaning/improving in
-this series and possible include it as part of a future HEVC series.
+Some simple conflicts needed to be resolved.
 
-Regards,
-Jonas
+I have created a branch for you to look at and decide
+how far off it is from the original and whether the
+original Acked-by/Reviewed-by can be retained.
 
-> 
-> Thanks,
-> Ezequiel
-> 
->>  	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
->>  	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
-> 
-> 
+Note that I might have lost some portions of code
+during conflict resolution. It seems to me I haven't
+but you know.
+
+The branch:
+
+https://gitlab.collabora.com/andrzej.p/kernel-tests/-/tree/thermal-dont-poll-disabled-for-daniel
+
+The code compiles at each stage on x86_64 + COMPILE_TEST.
+
+Andrzej
