@@ -1,120 +1,131 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v4 1/2] clk: rockchip: rk3288: Handle clock tree for rk3288w
-Date: Fri, 03 Jul 2020 16:48:40 +0200
-Message-ID: <1847101.XIPLBOrDxk@phil>
-References: <20200602080644.11333-1-mylene.josserand@collabora.com> <1793210.9Kb5SQUFvz@phil> <CAMty3ZB1n5uXmH=U4iXfgpyU-JZff74Rm2Mj+SS2LLtkM2fARQ@mail.gmail.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 8/9] media: rkvdec: Add validate_fmt ops for pixelformat
+ validation
+Date: Fri, 03 Jul 2020 11:58:35 -0300
+Message-ID: <7abec9992460dcd84a2c951fce55bc8e46f2a0ed.camel@collabora.com>
+References: <20200701215616.30874-1-jonas@kwiboo.se>
+         <20200701215616.30874-9-jonas@kwiboo.se>
+         <67a130a8fd8874c5dc639c924de959f88357b480.camel@collabora.com>
+         <f817d682-ec76-1879-4324-39cf7993493e@kwiboo.se>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <CAMty3ZB1n5uXmH=U4iXfgpyU-JZff74Rm2Mj+SS2LLtkM2fARQ@mail.gmail.com>
-Sender: linux-clk-owner@vger.kernel.org
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: =?ISO-8859-1?Q?Myl=E8ne?= Josserand <mylene.josserand@collabora.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>, devicetree <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, kernel@collabora.com, linux-clk <linux-clk@vger.kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, robin.murphy@arm.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <f817d682-ec76-1879-4324-39cf7993493e@kwiboo.se>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jonas Karlman <jonas@kwiboo.se>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Freitag, 3. Juli 2020, 16:23:27 CEST schrieb Jagan Teki:
-> On Fri, Jul 3, 2020 at 7:41 PM Heiko Stuebner <heiko@sntech.de> wrote:
-> >
-> > Hi Jagan,
-> >
-> > Am Montag, 29. Juni 2020, 21:11:03 CEST schrieb Jagan Teki:
-> > > On Tue, Jun 2, 2020 at 1:37 PM Mylène Josserand
-> > > <mylene.josserand@collabora.com> wrote:
-> > > >
-> > > > The revision rk3288w has a different clock tree about "hclk_vio"
-> > > > clock, according to the BSP kernel code.
-> > > >
-> > > > This patch handles this difference by detecting which device-tree
-> > > > we are using. If it is a "rockchip,rk3288-cru", let's register
-> > > > the clock tree as it was before. If the device-tree node is
-> > > > "rockchip,rk3288w-cru", we will apply the difference with this
-> > > > version of this SoC.
-> > > >
-> > > > Noticed that this new device-tree compatible must be handled in
-> > > > bootloader such as u-boot.
-> > > >
-> > > > Signed-off-by: Mylène Josserand <mylene.josserand@collabora.com>
-> > > > ---
-> > > >  drivers/clk/rockchip/clk-rk3288.c | 20 ++++++++++++++++++--
-> > > >  1 file changed, 18 insertions(+), 2 deletions(-)
-> > > >
-> > > > diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
-> > > > index cc2a177bbdbf..204976e2d0cb 100644
-> > > > --- a/drivers/clk/rockchip/clk-rk3288.c
-> > > > +++ b/drivers/clk/rockchip/clk-rk3288.c
-> > > > @@ -425,8 +425,6 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
-> > > >         COMPOSITE(0, "aclk_vio0", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
-> > > >                         RK3288_CLKSEL_CON(31), 6, 2, MFLAGS, 0, 5, DFLAGS,
-> > > >                         RK3288_CLKGATE_CON(3), 0, GFLAGS),
-> > > > -       DIV(0, "hclk_vio", "aclk_vio0", 0,
-> > > > -                       RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-> > > >         COMPOSITE(0, "aclk_vio1", mux_pll_src_cpll_gpll_usb480m_p, CLK_IGNORE_UNUSED,
-> > > >                         RK3288_CLKSEL_CON(31), 14, 2, MFLAGS, 8, 5, DFLAGS,
-> > > >                         RK3288_CLKGATE_CON(3), 2, GFLAGS),
-> > > > @@ -819,6 +817,16 @@ static struct rockchip_clk_branch rk3288_clk_branches[] __initdata = {
-> > > >         INVERTER(0, "pclk_isp", "pclk_isp_in", RK3288_CLKSEL_CON(29), 3, IFLAGS),
-> > > >  };
-> > > >
-> > > > +static struct rockchip_clk_branch rk3288w_hclkvio_branch[] __initdata = {
-> > > > +       DIV(0, "hclk_vio", "aclk_vio1", 0,
-> > > > +                       RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-> > > > +};
-> > > > +
-> > > > +static struct rockchip_clk_branch rk3288_hclkvio_branch[] __initdata = {
-> > > > +       DIV(0, "hclk_vio", "aclk_vio0", 0,
-> > > > +                       RK3288_CLKSEL_CON(28), 8, 5, DFLAGS),
-> > > > +};
-> > > > +
-> > > >  static const char *const rk3288_critical_clocks[] __initconst = {
-> > > >         "aclk_cpu",
-> > > >         "aclk_peri",
-> > > > @@ -936,6 +944,14 @@ static void __init rk3288_clk_init(struct device_node *np)
-> > > >                                    RK3288_GRF_SOC_STATUS1);
-> > > >         rockchip_clk_register_branches(ctx, rk3288_clk_branches,
-> > > >                                   ARRAY_SIZE(rk3288_clk_branches));
-> > > > +
-> > > > +       if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
-> > > > +               rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
-> > > > +                                              ARRAY_SIZE(rk3288w_hclkvio_branch));
-> > > > +       else
-> > > > +               rockchip_clk_register_branches(ctx, rk3288_hclkvio_branch,
-> > > > +                                              ARRAY_SIZE(rk3288_hclkvio_branch));
-> > > > +
-> > >
-> > > Sorry for the late query on this. I am a bit unclear about this
-> > > compatible change, does Linux expect to replace rockchip,rk3288-cru
-> > > with rockchip,rk3288w-cru in bootloader if the chip is RK3288w? or
-> > > append the existing cru compatible node with rockchip,rk3288w-cru?
-> > > because replace new cru node make clock never probe since the
-> > > CLK_OF_DECLARE checking rockchip,rk3288-cru
-> >
-> > I guess right now we'd expect "rockchip,rk3288w-cru", "rockchip,rk3288-cru",
-> >
-> > Thinking again about this, I'm wondering if we should switch to having
-> > only one per variant ... like on the two rk3188 variants,
-> > so declaring separate rk3288-cru and rk3288w-cru of-clks with shared
-> > common code.
+On Fri, 2020-07-03 at 06:55 +0000, Jonas Karlman wrote:
+> On 2020-07-03 05:14, Ezequiel Garcia wrote:
+> > Hi Jonas,
+> > 
+> > Thanks for working on this.
+> > 
+> > On Wed, 2020-07-01 at 21:56 +0000, Jonas Karlman wrote:
+> > > Add an optional validate_fmt operation that is used to validate the
+> > > pixelformat of CAPTURE buffers.
+> > > 
+> > > This is used in next patch to ensure correct pixelformat is used for 10-bit
+> > > and 4:2:2 content.
+> > > 
+> > > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> > > ---
+> > >  drivers/staging/media/rkvdec/rkvdec.c | 8 ++++++++
+> > >  drivers/staging/media/rkvdec/rkvdec.h | 1 +
+> > >  2 files changed, 9 insertions(+)
+> > > 
+> > > diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+> > > index b1de55aa6535..465444c58f13 100644
+> > > --- a/drivers/staging/media/rkvdec/rkvdec.c
+> > > +++ b/drivers/staging/media/rkvdec/rkvdec.c
+> > > @@ -239,6 +239,14 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+> > >  	if (WARN_ON(!coded_desc))
+> > >  		return -EINVAL;
+> > >  
+> > > +	if (coded_desc->ops->validate_fmt) {
+> > > +		int ret;
+> > > +
+> > > +		ret = coded_desc->ops->validate_fmt(ctx, pix_mp->pixelformat);
+> > > +		if (ret)
+> > > +			return ret;
+> > > +	}
+> > > + 
+> > 
+> > I don't think this approach will be enough. Unless I'm mistaken,
+> > it's perfectly legal as per the stateless spec to first
+> > call S_FMT on the OUTPUT queue (which is propagated to the CAPTURE side),
+> > and then set the SPS and other controls.
 > 
-> What if can check the root compatible instead cru compatible for revision W like
+> I agree that this will not be enough to cover all use cases stated in the spec.
 > 
-> -  if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
-> + if (of_device_is_compatible(np, "rockchip,rk3288w"))
-
-you'd need to check against the root compatible.
-
+> > The application is not required to do a TRY_FMT after S_EXT_CTRLS.
 > 
-> This way we can have a single compatible update at bootloader that
-> makes Linux adjust revision W chips code.
+> If I remember correctly we were required to implement a TRY_FMT loop in
+> ffmpeg due to cedrus defaulting to SUNXI_TILED_NV12 instead of linear NV12
+> on platforms where display controller did not support the tiled modifier.
 > 
-> Doesn't it make sense?
+> So having TRY_FMT as part of the init sequence has been my only test-case.
+> 
+> > What I believe is needed is for the S_EXT_CTRLS to modify
+> > and restrict the CAPTURE format accordingly, so the application
+> > gets the correct format on G_FMT (and restrict future TRY_FMT).
+> 
+> This sounds like a proper solution, I do belive we may have a chicken or
+> the egg problem depending on if application call S_EXT_CTRLS or S_FMT first.
+> 
 
-The compatible describes the block and the rk3288w's cru isn't the same as
-the rk3288's ... as the clock routing is different, so it should have a
-different compatible value, I think.
+IIUC, the order is specified in the stateless spec [1].
 
-As the DT sis supposed to be a _generic_ description of the hardware,
-we don't want to cement hacks to other implementations would need to copy.
+1) S_FMT on OUTPUT (to set the coded pixelformat). CAPTURE format
+format is propagated here and a default format is set.
 
+2) S_EXT_CTRLS, parameters are set. We don't do anything here,
+but here we'd validate the SPS and restrict the CAPTURE pixelformat
+(and perhaps reset the default CAPTURE pixelformat).
 
-Heiko
+3) G_FMT on CAPTURE.
+
+4) (optional) ENUM_FMT / S_FMT on CAPTURE, to negotiate
+something different from default.
+
+Regards,
+Ezequiel 
+
+[1] Documentation/userspace-api/media/v4l/dev-stateless-decoder.rst
+
+> I guess we may need to lock down on a format at whatever comes first,
+> S_FMT on CAPTURE or S_EXT_CTRLS with SPS ctrl.
+> 
+> I have an idea on how this could be addressed, will explore and see
+> if I can come up with something new.
+> 
+> Regards,
+> Jonas
+> 
+> > Also, V4L2 spec asks drivers not to fail on S_FMT
+> > format mismatch, but instead to adjust and return a legal format
+> > back to the application [1].
+> > 
+> > Let me know what you think and thanks again.
+> > 
+> > Ezequiel
+> > 
+> > [1] Documentation/userspace-api/media/v4l/vidioc-g-fmt.rst
+> > 
+> > >  	for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
+> > >  		if (coded_desc->decoded_fmts[i] == pix_mp->pixelformat)
+> > >  			break;
+> > > diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
+> > > index 2fc9f46b6910..be4fc3645cde 100644
+> > > --- a/drivers/staging/media/rkvdec/rkvdec.h
+> > > +++ b/drivers/staging/media/rkvdec/rkvdec.h
+> > > @@ -64,6 +64,7 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
+> > >  struct rkvdec_coded_fmt_ops {
+> > >  	int (*adjust_fmt)(struct rkvdec_ctx *ctx,
+> > >  			  struct v4l2_format *f);
+> > > +	int (*validate_fmt)(struct rkvdec_ctx *ctx, u32 pixelformat);
+> > >  	int (*start)(struct rkvdec_ctx *ctx);
+> > >  	void (*stop)(struct rkvdec_ctx *ctx);
+> > >  	int (*run)(struct rkvdec_ctx *ctx);
