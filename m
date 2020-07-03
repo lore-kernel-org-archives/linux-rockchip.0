@@ -1,7 +1,7 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v4l-utils v5 2/4] v4l2: common: add the flags V4L2_FMT_FLAG_CSC* to the list that maps flags to str
-Date: Fri,  3 Jul 2020 20:02:37 +0200
-Message-ID: <20200703180239.25841-3-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v4l-utils v5 4/4] v4l2-ctl: subdev: Add the flags to the list of supported mbus formats
+Date: Fri,  3 Jul 2020 20:02:39 +0200
+Message-ID: <20200703180239.25841-5-dafna.hirschfeld@collabora.com>
 References: <20200703180239.25841-1-dafna.hirschfeld@collabora.com>
 Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <20200703180239.25841-1-dafna.hirschfeld@collabora.com>
@@ -10,108 +10,101 @@ To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
 Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Replace the array fmtdesc_def with a macro 'FMTDESC_DEF'
-The macro is used to to create two arrays 'fmtdesc_def_ycbcr',
-'fmtdesc_def_hsv' that map the format flags to strings.
-The function 'fmtdesc2s' is changed to get a parameter 'is_hsv'
-that decides which array to use.
-The new CSC flags V4L2_FMT_FLAG_CSC* are added to the arries.
+Add a new function mbus2s to that prints a descriptive
+string of the supported flags of the the v4l2_subdev_mbus_code_enum
+Use this function in the print_mbus_code function.
+Also add a macro MBUS_DEF(enc_type) to create the two
+arries 'mbus_hsv_def' and mbus_ycbcr_def' that maps flags to
+string according to the enc_type (ycbcr/hsv)
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- utils/common/v4l2-info.cpp  | 28 +++++++++++++++++++---------
- utils/common/v4l2-info.h    |  2 +-
- utils/v4l2-ctl/v4l2-ctl.cpp | 16 ++++++++++++----
- 3 files changed, 32 insertions(+), 14 deletions(-)
+ utils/common/v4l2-info.cpp         | 19 +++++++++++++++++++
+ utils/common/v4l2-info.h           |  4 ++++
+ utils/v4l2-ctl/v4l2-ctl-subdev.cpp | 10 ++++++++--
+ 3 files changed, 31 insertions(+), 2 deletions(-)
 
 diff --git a/utils/common/v4l2-info.cpp b/utils/common/v4l2-info.cpp
-index 16be409a..a8fa6236 100644
+index a8fa6236..67690f61 100644
 --- a/utils/common/v4l2-info.cpp
 +++ b/utils/common/v4l2-info.cpp
-@@ -366,18 +366,28 @@ std::string service2s(unsigned service)
- 	return flags2s(service, service_def);
+@@ -390,6 +390,25 @@ std::string fmtdesc2s(unsigned flags, bool is_hsv)
+ 	return flags2s(flags, fmtdesc_ycbcr_def);
  }
  
--static const flag_def fmtdesc_def[] = {
--	{ V4L2_FMT_FLAG_COMPRESSED, "compressed" },
--	{ V4L2_FMT_FLAG_EMULATED, "emulated" },
--	{ V4L2_FMT_FLAG_CONTINUOUS_BYTESTREAM, "continuous-bytestream" },
--	{ V4L2_FMT_FLAG_DYN_RESOLUTION, "dyn-resolution" },
--	{ V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL, "enc-cap-frame-interval" },
--	{ 0, NULL }
-+#define FMTDESC_DEF(enc_type)							\
-+static const flag_def fmtdesc_ ## enc_type ## _def[] = { 			\
-+	{ V4L2_FMT_FLAG_COMPRESSED, "compressed" }, 				\
-+	{ V4L2_FMT_FLAG_EMULATED, "emulated" }, 				\
-+	{ V4L2_FMT_FLAG_CONTINUOUS_BYTESTREAM, "continuous-bytestream" }, 	\
-+	{ V4L2_FMT_FLAG_DYN_RESOLUTION, "dyn-resolution" }, 			\
-+	{ V4L2_FMT_FLAG_ENC_CAP_FRAME_INTERVAL, "enc-cap-frame-interval" },	\
-+	{ V4L2_FMT_FLAG_CSC_COLORSPACE, "csc-colorspace" }, 			\
-+	{ V4L2_FMT_FLAG_CSC_YCBCR_ENC, "csc-"#enc_type }, 			\
-+	{ V4L2_FMT_FLAG_CSC_QUANTIZATION, "csc-quantization" }, 		\
-+	{ V4L2_FMT_FLAG_CSC_XFER_FUNC, "csc-xfer-func" }, 			\
-+	{ 0, NULL } 								\
- };
- 
--std::string fmtdesc2s(unsigned flags)
-+FMTDESC_DEF(ycbcr)
-+FMTDESC_DEF(hsv)
++#define MBUS_DEF(enc_type)						\
++static const flag_def mbus_ ## enc_type ## _def[] = { 			\
++	{ V4L2_SUBDEV_MBUS_CODE_CSC_COLORSPACE, "csc-colorspace" }, 	\
++	{ V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC, "csc-"#enc_type },	\
++	{ V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION, "csc-quantization" }, \
++	{ V4L2_SUBDEV_MBUS_CODE_CSC_XFER_FUNC, "csc-xfer-func" }, 	\
++	{ 0, NULL }							\
++};
 +
-+std::string fmtdesc2s(unsigned flags, bool is_hsv)
- {
--	return flags2s(flags, fmtdesc_def);
++MBUS_DEF(ycbcr)
++MBUS_DEF(hsv)
++
++std::string mbus2s(unsigned flags, bool is_hsv)
++{
 +	if (is_hsv)
-+		return flags2s(flags, fmtdesc_hsv_def);
-+	return flags2s(flags, fmtdesc_ycbcr_def);
- }
- 
++		return flags2s(flags, mbus_hsv_def);
++	return flags2s(flags, mbus_ycbcr_def);
++}
++
  static const flag_def selection_targets_def[] = {
+ 	{ V4L2_SEL_TGT_CROP_ACTIVE, "crop" },
+ 	{ V4L2_SEL_TGT_CROP_DEFAULT, "crop_default" },
 diff --git a/utils/common/v4l2-info.h b/utils/common/v4l2-info.h
-index ce2600f0..5b34409c 100644
+index 5b34409c..97c1e64a 100644
 --- a/utils/common/v4l2-info.h
 +++ b/utils/common/v4l2-info.h
-@@ -51,7 +51,7 @@ std::string pixflags2s(unsigned flags);
+@@ -8,6 +8,7 @@
+ 
+ #include <string>
+ #include <linux/videodev2.h>
++#include <linux/v4l2-subdev.h>
+ 
+ /* Print capability information */
+ void v4l2_info_capability(const v4l2_capability &cap);
+@@ -50,6 +51,9 @@ std::string pixflags2s(unsigned flags);
+ /* Return sliced vbi services description */
  std::string service2s(unsigned service);
  
++/* Return v4l2_subdev_mbus_code_enum flags description */
++std::string mbus2s(unsigned flags, bool is_hsv);
++
  /* Return v4l2_fmtdesc flags description */
--std::string fmtdesc2s(unsigned flags);
-+std::string fmtdesc2s(unsigned flags, bool is_hsv);
+ std::string fmtdesc2s(unsigned flags, bool is_hsv);
  
- /* Return selection flags description */
- std::string selflags2s(__u32 flags);
-diff --git a/utils/v4l2-ctl/v4l2-ctl.cpp b/utils/v4l2-ctl/v4l2-ctl.cpp
-index 4972591e..edac19f1 100644
---- a/utils/v4l2-ctl/v4l2-ctl.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl.cpp
-@@ -615,8 +615,12 @@ void print_video_formats(cv4l_fd &fd, __u32 type)
- 	do {
- 		printf("\t[%d]: '%s' (%s", fmt.index, fcc2s(fmt.pixelformat).c_str(),
- 		       fmt.description);
--		if (fmt.flags)
--			printf(", %s", fmtdesc2s(fmt.flags).c_str());
-+		if (fmt.flags) {
-+			bool is_hsv = fmt.pixelformat == V4L2_PIX_FMT_HSV24 ||
-+				      fmt.pixelformat == V4L2_PIX_FMT_HSV32;
-+
-+			printf(", %s", fmtdesc2s(fmt.flags, is_hsv).c_str());
-+		}
- 		printf(")\n");
- 	} while (!fd.enum_fmt(fmt));
+diff --git a/utils/v4l2-ctl/v4l2-ctl-subdev.cpp b/utils/v4l2-ctl/v4l2-ctl-subdev.cpp
+index c6ec21a9..6f712af2 100644
+--- a/utils/v4l2-ctl/v4l2-ctl-subdev.cpp
++++ b/utils/v4l2-ctl/v4l2-ctl-subdev.cpp
+@@ -577,10 +577,10 @@ static void print_mbus_code(__u32 code)
+ 		if (mbus_names[i].code == code)
+ 			break;
+ 	if (mbus_names[i].name)
+-		printf("\t0x%04x: MEDIA_BUS_FMT_%s\n",
++		printf("\t0x%04x: MEDIA_BUS_FMT_%s",
+ 		       mbus_names[i].code, mbus_names[i].name);
+ 	else
+-		printf("\t0x%04x\n", code);
++		printf("\t0x%04x", code);
  }
-@@ -634,8 +638,12 @@ void print_video_formats_ext(cv4l_fd &fd, __u32 type)
- 	do {
- 		printf("\t[%d]: '%s' (%s", fmt.index, fcc2s(fmt.pixelformat).c_str(),
- 		       fmt.description);
--		if (fmt.flags)
--			printf(", %s", fmtdesc2s(fmt.flags).c_str());
-+		if (fmt.flags) {
-+			bool is_hsv = fmt.pixelformat == V4L2_PIX_FMT_HSV24 ||
-+				      fmt.pixelformat == V4L2_PIX_FMT_HSV32;
+ 
+ static void print_mbus_codes(int fd, __u32 pad)
+@@ -597,6 +597,12 @@ static void print_mbus_codes(int fd, __u32 pad)
+ 		if (ret)
+ 			break;
+ 		print_mbus_code(mbus_code.code);
++		if (mbus_code.flags) {
++			bool is_hsv = mbus_code.code == MEDIA_BUS_FMT_AHSV8888_1X32;
 +
-+			printf(", %s", fmtdesc2s(fmt.flags, is_hsv).c_str());
++			printf(", %s", mbus2s(mbus_code.flags, is_hsv).c_str());
 +		}
- 		printf(")\n");
- 		if (fd.enum_framesizes(frmsize, fmt.pixelformat))
- 			continue;
++		printf("\n");
+ 		mbus_code.index++;
+ 	}
+ }
 -- 
 2.17.1
