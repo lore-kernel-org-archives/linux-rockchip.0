@@ -1,108 +1,100 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH] i2c: rk3x: support master_xfer_atomic
-Date: Fri, 03 Jul 2020 12:08:53 +0200
-Message-ID: <2391901.EFyQHPvyDf@phil>
-References: <20200623120646.2175569-1-john@metanate.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH] rockchip: rk3288: Add OF board setup
+Date: Fri, 3 Jul 2020 15:40:25 +0530
+Message-ID: <CAMty3ZDuk=svN+aHdodx5d1hL8QzZC5MS6LJoSUgtcstnSZXoA@mail.gmail.com>
+References: <20200702084820.35942-1-jagan@amarulasolutions.com>
+ <8e4ff8ec-d782-32da-05ac-ae24c1bc6164@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200623120646.2175569-1-john@metanate.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: John Keeping <john@metanate.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <8e4ff8ec-d782-32da-05ac-ae24c1bc6164@arm.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, =?UTF-8?Q?Myl=C3=A8ne_Josserand?= <mylene.josserand@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, U-Boot-Denx <u-boot@lists.denx.de>, Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Am Dienstag, 23. Juni 2020, 14:06:46 CEST schrieb John Keeping:
-> Enable i2c transactions in irq disabled contexts like poweroff where the
-> PMIC is connected via i2c.
-> 
-> Signed-off-by: John Keeping <john@metanate.com>
+On Thu, Jul 2, 2020 at 7:26 PM Robin Murphy <robin.murphy@arm.com> wrote:
+>
+> On 2020-07-02 09:48, Jagan Teki wrote:
+> > The new rk3288 revision rk3288w has some changes with respect
+> > to legacy rk3288 like hclk_vio and usb host0 ohci.
+> >
+> > In order to work these on the same in Linux kernel update the
+> > compatible the root compatible with rockchip,rk3288w before
+> > booting.
+> >
+> > So, this support during of board setup code of rk3288.
+> >
+> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> > ---
+> >   arch/arm/mach-rockchip/Kconfig         |  1 +
+> >   arch/arm/mach-rockchip/rk3288/rk3288.c | 26 ++++++++++++++++++++++++++
+> >   2 files changed, 27 insertions(+)
+> >
+> > diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+> > index b1008a5058..822d8d4e9c 100644
+> > --- a/arch/arm/mach-rockchip/Kconfig
+> > +++ b/arch/arm/mach-rockchip/Kconfig
+> > @@ -98,6 +98,7 @@ config ROCKCHIP_RK322X
+> >   config ROCKCHIP_RK3288
+> >       bool "Support Rockchip RK3288"
+> >       select CPU_V7A
+> > +     select OF_BOARD_SETUP
+> >       select SUPPORT_SPL
+> >       select SPL
+> >       select SUPPORT_TPL
+> > diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
+> > index 804abe8a1b..8a682675e6 100644
+> > --- a/arch/arm/mach-rockchip/rk3288/rk3288.c
+> > +++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
+> > @@ -115,6 +115,32 @@ int rk_board_late_init(void)
+> >       return rk3288_board_late_init();
+> >   }
+> >
+> > +#ifdef CONFIG_OF_BOARD_SETUP
+> > +
+> > +#define RK3288_HDMI_PHYS     0xff980000
+> > +#define RK3288W_HDMI_REV     0x1A
+> > +#define HDMI_CONFIG0_ID              0x04
+> > +
+> > +int ft_board_setup(void *blob, bd_t *bd)
+> > +{
+> > +     u8 config0;
+> > +     int ret;
+> > +
+> > +     config0 = readb(RK3288_HDMI_PHYS + HDMI_CONFIG0_ID);
+> > +     if (config0 == RK3288W_HDMI_REV) {
+> > +             ret = fdt_setprop_string(blob, 0,
+> > +                                      "compatible", "rockchip,rk3288w");
+>
+> Does this end up replacing the entire top-level compatible property?
+> i.e. from:
+>
+>         compatible = "vendor,board\0rockchip,rk3288";
+>
+> to just:
+>
+>         compatible = "rockchip,rk3288w";
+>
+> If so, that's a bit of a problem for various drivers that care about the
+> actual board compatible rather than the SoC.
 
-on a rk3288:
-Tested-by: Heiko Stuebner <heiko@sntech.de>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Yes, It looks replacing the entire compatible. I think the root
+compatible is mostly untouchable because of this reason.
 
-> ---
->  drivers/i2c/busses/i2c-rk3x.c | 39 +++++++++++++++++++++++++++++++----
->  1 file changed, 35 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/i2c/busses/i2c-rk3x.c b/drivers/i2c/busses/i2c-rk3x.c
-> index 15324bfbc6cb..8e3cc85d1921 100644
-> --- a/drivers/i2c/busses/i2c-rk3x.c
-> +++ b/drivers/i2c/busses/i2c-rk3x.c
-> @@ -10,6 +10,7 @@
->  #include <linux/module.h>
->  #include <linux/i2c.h>
->  #include <linux/interrupt.h>
-> +#include <linux/iopoll.h>
->  #include <linux/errno.h>
->  #include <linux/err.h>
->  #include <linux/platform_device.h>
-> @@ -1040,8 +1041,21 @@ static int rk3x_i2c_setup(struct rk3x_i2c *i2c, struct i2c_msg *msgs, int num)
->  	return ret;
->  }
->  
-> -static int rk3x_i2c_xfer(struct i2c_adapter *adap,
-> -			 struct i2c_msg *msgs, int num)
-> +static int rk3x_i2c_wait_xfer_poll(struct rk3x_i2c *i2c)
-> +{
-> +	ktime_t timeout = ktime_add_ms(ktime_get(), WAIT_TIMEOUT);
-> +
-> +	while (READ_ONCE(i2c->busy) &&
-> +	       ktime_compare(ktime_get(), timeout) < 0) {
-> +		udelay(5);
-> +		rk3x_i2c_irq(0, i2c);
-> +	}
-> +
-> +	return !i2c->busy;
-> +}
-> +
-> +static int rk3x_i2c_xfer_common(struct i2c_adapter *adap,
-> +				struct i2c_msg *msgs, int num, bool polling)
->  {
->  	struct rk3x_i2c *i2c = (struct rk3x_i2c *)adap->algo_data;
->  	unsigned long timeout, flags;
-> @@ -1075,8 +1089,12 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
->  
->  		rk3x_i2c_start(i2c);
->  
-> -		timeout = wait_event_timeout(i2c->wait, !i2c->busy,
-> -					     msecs_to_jiffies(WAIT_TIMEOUT));
-> +		if (!polling) {
-> +			timeout = wait_event_timeout(i2c->wait, !i2c->busy,
-> +						     msecs_to_jiffies(WAIT_TIMEOUT));
-> +		} else {
-> +			timeout = rk3x_i2c_wait_xfer_poll(i2c);
-> +		}
->  
->  		spin_lock_irqsave(&i2c->lock, flags);
->  
-> @@ -1110,6 +1128,18 @@ static int rk3x_i2c_xfer(struct i2c_adapter *adap,
->  	return ret < 0 ? ret : num;
->  }
->  
-> +static int rk3x_i2c_xfer(struct i2c_adapter *adap,
-> +			 struct i2c_msg *msgs, int num)
-> +{
-> +	return rk3x_i2c_xfer_common(adap, msgs, num, false);
-> +}
-> +
-> +static int rk3x_i2c_xfer_polling(struct i2c_adapter *adap,
-> +				 struct i2c_msg *msgs, int num)
-> +{
-> +	return rk3x_i2c_xfer_common(adap, msgs, num, true);
-> +}
-> +
->  static __maybe_unused int rk3x_i2c_resume(struct device *dev)
->  {
->  	struct rk3x_i2c *i2c = dev_get_drvdata(dev);
-> @@ -1126,6 +1156,7 @@ static u32 rk3x_i2c_func(struct i2c_adapter *adap)
->  
->  static const struct i2c_algorithm rk3x_i2c_algorithm = {
->  	.master_xfer		= rk3x_i2c_xfer,
-> +	.master_xfer_atomic	= rk3x_i2c_xfer_polling,
->  	.functionality		= rk3x_i2c_func,
->  };
->  
-> 
+But, if we skip the root compatible and trying to replace individual
+nodes for W revision then it requires extra registration code on in
+the Linux drivers like Linux clock driver is registering the clock
+with rockchip,rk3288-cru but updating this compatible with
+rockchip,rk3288w-cru will require another registration code. Having
+common rockchip,rk3288w can be possible to check any code in the tree.
+
+Jagan.
