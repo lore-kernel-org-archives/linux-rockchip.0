@@ -1,7 +1,7 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v5 3/7] media: vivid: Add support to the CSC API
-Date: Fri,  3 Jul 2020 19:10:15 +0200
-Message-ID: <20200703171019.19270-4-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v5 6/7] media: staging: rkisp1: allow quantization setting by userspace on the isp source pad
+Date: Fri,  3 Jul 2020 19:10:18 +0200
+Message-ID: <20200703171019.19270-7-dafna.hirschfeld@collabora.com>
 References: <20200703171019.19270-1-dafna.hirschfeld@collabora.com>
 Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <20200703171019.19270-1-dafna.hirschfeld@collabora.com>
@@ -10,165 +10,109 @@ To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
 Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The CSC API (Colorspace conversion) allows userspace to try
-to configure the ycbcr/hsv_enc function and the quantization
-for capture devices. This patch adds support to the CSC API
-in vivid.
-Using the CSC API, userspace is allowed to do the following:
+The isp entity has a hardware support to force full range quantization
+for YUV formats. Use the subdev CSC API to allow userspace to set the
+quantization for YUV formats on the isp entity.
 
-- Set the ycbcr_enc function for YUV formats.
-- Set the hsv_enc function for HSV formats
-- Set the quantization for YUV and RGB formats.
-- Set the xfer_func.
-- Set the colorspace.
+- The flag V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION is set on
+YUV formats during enumeration of the isp formats on the source pad.
+- The full quantization is set on YUV formats if userspace ask it
+on the isp entity using the flag V4L2_MBUS_FRAMEFMT_SET_CSC.
+
+On the capture and the resizer, the quantization is read-only
+and always set to the default quantization.
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- .../media/test-drivers/vivid/vivid-vid-cap.c  | 74 +++++++++++++++++--
- .../test-drivers/vivid/vivid-vid-common.c     | 24 ++++++
- 2 files changed, 92 insertions(+), 6 deletions(-)
+ drivers/staging/media/rkisp1/TODO             |  2 +-
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 10 ----------
+ drivers/staging/media/rkisp1/rkisp1-isp.c     | 18 ++++++++++++++----
+ 3 files changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/media/test-drivers/vivid/vivid-vid-cap.c b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
-index e94beef008c8..8916def70ffe 100644
---- a/drivers/media/test-drivers/vivid/vivid-vid-cap.c
-+++ b/drivers/media/test-drivers/vivid/vivid-vid-cap.c
-@@ -549,6 +549,45 @@ int vivid_g_fmt_vid_cap(struct file *file, void *priv,
- 	return 0;
- }
- 
-+static bool vivid_is_colorspace_valid(__u32 colorspace)
-+{
-+	if (colorspace > V4L2_COLORSPACE_DEFAULT &&
-+	    colorspace <= V4L2_COLORSPACE_DCI_P3)
-+		return true;
-+	return false;
-+}
-+
-+static bool vivid_is_hsv_enc_valid(__u8 hsv_enc)
-+{
-+	if (hsv_enc == V4L2_HSV_ENC_180 || hsv_enc == V4L2_HSV_ENC_256)
-+		return true;
-+	return false;
-+}
-+
-+static bool vivid_is_ycbcr_enc_valid(__u8 ycbcr_enc)
-+{
-+	/* V4L2_YCBCR_ENC_SMPTE240M is the last ycbcr_enc enum */
-+	if (ycbcr_enc && ycbcr_enc <= V4L2_YCBCR_ENC_SMPTE240M)
-+		return true;
-+	return false;
-+}
-+
-+static bool vivid_is_quant_valid(__u8 quantization)
-+{
-+	if (quantization == V4L2_QUANTIZATION_FULL_RANGE ||
-+	    quantization == V4L2_QUANTIZATION_LIM_RANGE)
-+		return true;
-+	return false;
-+}
-+
-+static bool vivid_is_xfer_func_valid(__u32 xfer_func)
-+{
-+	if (xfer_func > V4L2_XFER_FUNC_DEFAULT &&
-+	    xfer_func <= V4L2_XFER_FUNC_SMPTE2084)
-+		return true;
-+	return false;
-+}
-+
- int vivid_try_fmt_vid_cap(struct file *file, void *priv,
- 			struct v4l2_format *f)
+diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
+index c0cbec0a164d..db05288949bd 100644
+--- a/drivers/staging/media/rkisp1/TODO
++++ b/drivers/staging/media/rkisp1/TODO
+@@ -2,7 +2,7 @@
+ * Use threaded interrupt for rkisp1_stats_isr(), remove work queue.
+ * Fix checkpatch errors.
+ * Review and comment every lock
+-* Handle quantization
++* Add uapi docs. Remeber to add documentation of how quantization is handled.
+ * Document rkisp1-common.h
+ * streaming paths (mainpath and selfpath) check if the other path is streaming
+ in several places of the code, review this, specially that it doesn't seem it
+diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+index f69235f82c45..93d6846886f2 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-capture.c
++++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+@@ -1085,8 +1085,6 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
+ 			   const struct v4l2_format_info **fmt_info)
  {
-@@ -560,6 +599,7 @@ int vivid_try_fmt_vid_cap(struct file *file, void *priv,
- 	unsigned factor = 1;
- 	unsigned w, h;
- 	unsigned p;
-+	bool user_set_csc = !!(mp->flags & V4L2_PIX_FMT_FLAG_SET_CSC);
+ 	const struct rkisp1_capture_config *config = cap->config;
+-	struct rkisp1_capture *other_cap =
+-			&cap->rkisp1->capture_devs[cap->id ^ 1];
+ 	const struct rkisp1_capture_fmt_cfg *fmt;
+ 	const struct v4l2_format_info *info;
+ 	const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
+@@ -1111,14 +1109,6 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
  
- 	fmt = vivid_get_format(dev, mp->pixelformat);
- 	if (!fmt) {
-@@ -633,13 +673,26 @@ int vivid_try_fmt_vid_cap(struct file *file, void *priv,
- 			(fmt->bit_depth[p] / fmt->vdownsampling[p])) /
- 			(fmt->bit_depth[0] / fmt->vdownsampling[0]);
+ 	info = rkisp1_fill_pixfmt(pixm, cap->id);
  
--	mp->colorspace = vivid_colorspace_cap(dev);
--	if (fmt->color_enc == TGP_COLOR_ENC_HSV)
--		mp->hsv_enc = vivid_hsv_enc_cap(dev);
--	else
-+	if (!user_set_csc || !vivid_is_colorspace_valid(mp->colorspace))
-+		mp->colorspace = vivid_colorspace_cap(dev);
-+	if (fmt->color_enc == TGP_COLOR_ENC_HSV) {
-+		if (!user_set_csc || !vivid_is_hsv_enc_valid(mp->hsv_enc))
-+			mp->hsv_enc = vivid_hsv_enc_cap(dev);
-+	} else if (fmt->color_enc == TGP_COLOR_ENC_YCBCR) {
-+		if (!user_set_csc || !vivid_is_ycbcr_enc_valid(mp->ycbcr_enc))
-+			mp->ycbcr_enc = vivid_ycbcr_enc_cap(dev);
-+	} else {
- 		mp->ycbcr_enc = vivid_ycbcr_enc_cap(dev);
--	mp->xfer_func = vivid_xfer_func_cap(dev);
--	mp->quantization = vivid_quantization_cap(dev);
-+	}
-+	if (!user_set_csc || !vivid_is_xfer_func_valid(mp->xfer_func))
-+		mp->xfer_func = vivid_xfer_func_cap(dev);
-+	if (fmt->color_enc == TGP_COLOR_ENC_YCBCR ||
-+	    fmt->color_enc == TGP_COLOR_ENC_RGB) {
-+		if (!user_set_csc || !vivid_is_quant_valid(mp->quantization))
-+			mp->quantization = vivid_quantization_cap(dev);
-+	} else {
-+		mp->quantization = vivid_quantization_cap(dev);
-+	}
- 	memset(mp->reserved, 0, sizeof(mp->reserved));
- 	return 0;
- }
-@@ -769,6 +822,15 @@ int vivid_s_fmt_vid_cap(struct file *file, void *priv,
- 	if (vivid_is_sdtv_cap(dev))
- 		dev->tv_field_cap = mp->field;
- 	tpg_update_mv_step(&dev->tpg);
-+	dev->tpg.colorspace = mp->colorspace;
-+	dev->tpg.quantization = mp->quantization;
-+	if (dev->fmt_cap->color_enc == TGP_COLOR_ENC_YCBCR)
-+		dev->tpg.ycbcr_enc = mp->ycbcr_enc;
-+	else
-+		dev->tpg.hsv_enc = mp->hsv_enc;
-+	dev->tpg.quantization = mp->quantization;
-+	dev->tpg.xfer_func = mp->xfer_func;
+-	/* can not change quantization when stream-on */
+-	if (other_cap->is_streaming)
+-		pixm->quantization = other_cap->pix.fmt.quantization;
+-	/* output full range by default, take effect in params */
+-	else if (!pixm->quantization ||
+-		 pixm->quantization > V4L2_QUANTIZATION_LIM_RANGE)
+-		pixm->quantization = V4L2_QUANTIZATION_FULL_RANGE;
+-
+ 	if (fmt_cfg)
+ 		*fmt_cfg = fmt;
+ 	if (fmt_info)
+diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
+index 58c90c67594d..d575c1e4dc4b 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-isp.c
++++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
+@@ -589,6 +589,10 @@ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
+ 
+ 		if (code->index == pos - 1) {
+ 			code->code = fmt->mbus_code;
++			if (fmt->pixel_enc == V4L2_PIXEL_ENC_YUV &&
++			    dir == RKISP1_ISP_SD_SRC)
++				code->flags =
++					V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION;
+ 			return 0;
+ 		}
+ 	}
+@@ -620,7 +624,6 @@ static int rkisp1_isp_init_config(struct v4l2_subdev *sd,
+ 					     RKISP1_ISP_PAD_SOURCE_VIDEO);
+ 	*src_fmt = *sink_fmt;
+ 	src_fmt->code = RKISP1_DEF_SRC_PAD_FMT;
+-	src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
+ 
+ 	src_crop = v4l2_subdev_get_try_crop(sd, cfg,
+ 					    RKISP1_ISP_PAD_SOURCE_VIDEO);
+@@ -663,10 +666,17 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+ 		isp->src_fmt = mbus_info;
+ 	src_fmt->width  = src_crop->width;
+ 	src_fmt->height = src_crop->height;
+-	src_fmt->quantization = format->quantization;
+-	/* full range by default */
+-	if (!src_fmt->quantization)
 +
- 	return 0;
- }
- 
-diff --git a/drivers/media/test-drivers/vivid/vivid-vid-common.c b/drivers/media/test-drivers/vivid/vivid-vid-common.c
-index 76b0be670ebb..5cab9b2a74bd 100644
---- a/drivers/media/test-drivers/vivid/vivid-vid-common.c
-+++ b/drivers/media/test-drivers/vivid/vivid-vid-common.c
-@@ -920,6 +920,30 @@ int vivid_enum_fmt_vid(struct file *file, void  *priv,
- 	fmt = &vivid_formats[f->index];
- 
- 	f->pixelformat = fmt->fourcc;
-+
-+	if (f->type != V4L2_BUF_TYPE_VIDEO_CAPTURE &&
-+	    f->type != V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE)
-+		return 0;
 +	/*
-+	 * For capture devices, we support the CSC API.
-+	 * We allow userspace to:
-+	 * 1. set the ycbcr_enc on yuv format
-+	 * 2. set the hsv_enc on hsv format
-+	 * 3. set the quantization on yuv and rgb formats
-+	 * 4. set the colorspace
-+	 * 5. set the xfer_func
++	 * The CSC API is used to allow userspace to force full
++	 * quantization on YUV formats.
 +	 */
-+	if (fmt->color_enc == TGP_COLOR_ENC_YCBCR) {
-+		f->flags |= V4L2_FMT_FLAG_CSC_YCBCR_ENC;
-+		f->flags |= V4L2_FMT_FLAG_CSC_QUANTIZATION;
-+	} else if (fmt->color_enc == TGP_COLOR_ENC_HSV) {
-+		f->flags |= V4L2_FMT_FLAG_CSC_HSV_ENC;
-+	} else if (fmt->color_enc == TGP_COLOR_ENC_RGB) {
-+		f->flags |= V4L2_FMT_FLAG_CSC_QUANTIZATION;
-+	}
-+	f->flags |= V4L2_FMT_FLAG_CSC_COLORSPACE;
-+	f->flags |= V4L2_FMT_FLAG_CSC_XFER_FUNC;
-+
- 	return 0;
- }
++	if (format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC &&
++	    format->quantization == V4L2_QUANTIZATION_FULL_RANGE &&
++	    mbus_info->pixel_enc == V4L2_PIXEL_ENC_YUV)
+ 		src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
++	else
++		src_fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
  
+ 	*format = *src_fmt;
+ }
 -- 
 2.17.1
