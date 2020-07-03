@@ -1,85 +1,115 @@
-From: Daniel Lezcano <daniel.lezcano@linaro.org>
-Subject: Re: [PATCH v7 00/11] Stop monitoring disabled devices
-Date: Fri, 3 Jul 2020 08:38:48 +0200
-Message-ID: <58265668-fc6d-729a-c126-0c73c2ea853b@linaro.org>
-References: <20200629122925.21729-1-andrzej.p@collabora.com>
- <aab40d90-3f72-657c-5e14-e53a34c4b420@linaro.org>
- <3d03d1a2-ac06-b69b-93cb-e0203be62c10@collabora.com>
- <47111821-d691-e71d-d740-e4325e290fa4@linaro.org>
- <be9b7ee3-cad0-e462-126d-08de9b226285@collabora.com>
- <4353a939-3f5e-8369-5bc0-ad8162b5ffc7@linaro.org>
- <a531d80f-afd1-2dec-6c77-ed984e97595c@collabora.com>
- <db1ff4e1-cbf8-89b3-5d64-b91a1fd88a41@linaro.org>
- <73942aea-ae79-753c-fe90-d4a99423d548@collabora.com>
- <374dddd9-b600-3a30-d6c3-8cfcefc944d9@linaro.org>
- <5a28deb7-f307-8b03-faad-ab05cb8095d1@collabora.com>
- <8aeb4f51-1813-63c1-165b-06640af5968f@linaro.org>
- <685ef627-e377-bbf1-da11-7f7556ca2dd7@collabora.com>
- <d41bf28f-ee91-6946-2334-f11ec81f96fe@linaro.org>
- <44c622dd7de8c7bf143c4435c0edd1b98d09a3d6.camel@intel.com>
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH 8/9] media: rkvdec: Add validate_fmt ops for pixelformat
+ validation
+Date: Fri, 03 Jul 2020 06:55:43 +0000 (UTC)
+Message-ID: <f817d682-ec76-1879-4324-39cf7993493e@kwiboo.se>
+References: <20200701215616.30874-1-jonas@kwiboo.se>
+ <20200701215616.30874-9-jonas@kwiboo.se>
+ <67a130a8fd8874c5dc639c924de959f88357b480.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-renesas-soc-owner@vger.kernel.org>
-In-Reply-To: <44c622dd7de8c7bf143c4435c0edd1b98d09a3d6.camel@intel.com>
-Content-Language: en-US
-Sender: linux-renesas-soc-owner@vger.kernel.org
-To: Zhang Rui <rui.zhang@intel.com>, Andrzej Pietrasiewicz <andrzej.p@collabora.com>, linux-pm@vger.kernel.org, linux-acpi@vger.kernel.org, netdev@vger.kernel.org, linux-wireless@vger.kernel.org, platform-driver-x86@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, Vishal Kulkarni <vishal@chelsio.com>, "David S . Miller" <davem@davemloft.net>, Jiri Pirko <jiri@mellanox.com>, Ido Schimmel <idosch@mellanox.com>, Johannes Berg <johannes.berg@intel.com>, Emmanuel Grumbach <emmanuel.grumbach@intel.com>, Luca Coelho <luciano.coelho@intel.com>, Intel Linux Wireless <linuxwifi@intel.com>, Kalle Valo <kvalo@codeaurora.org>, Peter Kaestle <peter@piie.net>, Darren Hart <dvhart@infradead.org>, Andy Shevchenko <andy@infradead.org>, Sebastian Reichel <sre@kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>, Amit Kucheria <amit.kucheria@verdurent.com>, Support Opensource <support.opensource@diasemi.com>, Shawn Guo <shawnguo@kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <67a130a8fd8874c5dc639c924de959f88357b480.camel@collabora.com>
+Content-Language: sv
+Sender: linux-media-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 03/07/2020 03:49, Zhang Rui wrote:
-> On Thu, 2020-07-02 at 19:49 +0200, Daniel Lezcano wrote:
-
-[ ... ]
-
->>> So the reason is that ->get_temp() is called while the mutex is
->>> held and
->>> thermal_zone_device_is_enabled() wants to take the same mutex.
->>
->> Yes, that's correct.
->>
->>> Is adding a comment to thermal_zone_device_is_enabled() to never
->>> call
->>> it while the mutex is held and adding another version of it which
->>> does
->>> not take the mutex ok?
->>
->> The thermal_zone_device_is_enabled() is only used in two places, acpi
->> and this imx driver, and given:
->>
->> 1. as soon as the mutex is released, there is no guarantee the
->> thermal
->> zone won't be changed right after, the lock is pointless, thus the
->> information also.
->>
->> 2. from a design point of view, I don't see why a driver should know
->> if
->> a thermal zone is disabled or not
->>
->> It would make sense to end with this function and do not give the
->> different drivers an opportunity to access this information.
+On 2020-07-03 05:14, Ezequiel Garcia wrote:
+> Hi Jonas,
 > 
-> I agree.
+> Thanks for working on this.
+> 
+> On Wed, 2020-07-01 at 21:56 +0000, Jonas Karlman wrote:
+>> Add an optional validate_fmt operation that is used to validate the
+>> pixelformat of CAPTURE buffers.
 >>
->> Why not add change_mode for the acpi in order to enable or disable
->> the
->> events
+>> This is used in next patch to ensure correct pixelformat is used for 10-bit
+>> and 4:2:2 content.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>>  drivers/staging/media/rkvdec/rkvdec.c | 8 ++++++++
+>>  drivers/staging/media/rkvdec/rkvdec.h | 1 +
+>>  2 files changed, 9 insertions(+)
+>>
+>> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+>> index b1de55aa6535..465444c58f13 100644
+>> --- a/drivers/staging/media/rkvdec/rkvdec.c
+>> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+>> @@ -239,6 +239,14 @@ static int rkvdec_try_capture_fmt(struct file *file, void *priv,
+>>  	if (WARN_ON(!coded_desc))
+>>  		return -EINVAL;
+>>  
+>> +	if (coded_desc->ops->validate_fmt) {
+>> +		int ret;
+>> +
+>> +		ret = coded_desc->ops->validate_fmt(ctx, pix_mp->pixelformat);
+>> +		if (ret)
+>> +			return ret;
+>> +	}
+>> + 
 > 
-> thermal_zone_device_is_enabled() is invoked in acpi thermal driver
-> because we only want to do thermal_zone_device_update() when the acpi
-> thermal zone is enabled.
+> I don't think this approach will be enough. Unless I'm mistaken,
+> it's perfectly legal as per the stateless spec to first
+> call S_FMT on the OUTPUT queue (which is propagated to the CAPTURE side),
+> and then set the SPS and other controls.
+
+I agree that this will not be enough to cover all use cases stated in the spec.
+
 > 
-> As thermal_zone_device_update() can handle a disabled thermal zone now,
-> we can just remove the check.
+> The application is not required to do a TRY_FMT after S_EXT_CTRLS.
 
-Ah yes, good point!
+If I remember correctly we were required to implement a TRY_FMT loop in
+ffmpeg due to cedrus defaulting to SUNXI_TILED_NV12 instead of linear NV12
+on platforms where display controller did not support the tiled modifier.
 
+So having TRY_FMT as part of the init sequence has been my only test-case.
 
+> 
+> What I believe is needed is for the S_EXT_CTRLS to modify
+> and restrict the CAPTURE format accordingly, so the application
+> gets the correct format on G_FMT (and restrict future TRY_FMT).
 
--- 
-<http://www.linaro.org/> Linaro.org │ Open source software for ARM SoCs
+This sounds like a proper solution, I do belive we may have a chicken or
+the egg problem depending on if application call S_EXT_CTRLS or S_FMT first.
 
-Follow Linaro:  <http://www.facebook.com/pages/Linaro> Facebook |
-<http://twitter.com/#!/linaroorg> Twitter |
-<http://www.linaro.org/linaro-blog/> Blog
+I guess we may need to lock down on a format at whatever comes first,
+S_FMT on CAPTURE or S_EXT_CTRLS with SPS ctrl.
+
+I have an idea on how this could be addressed, will explore and see
+if I can come up with something new.
+
+Regards,
+Jonas
+
+> 
+> Also, V4L2 spec asks drivers not to fail on S_FMT
+> format mismatch, but instead to adjust and return a legal format
+> back to the application [1].
+> 
+> Let me know what you think and thanks again.
+> 
+> Ezequiel
+> 
+> [1] Documentation/userspace-api/media/v4l/vidioc-g-fmt.rst
+> 
+>>  	for (i = 0; i < coded_desc->num_decoded_fmts; i++) {
+>>  		if (coded_desc->decoded_fmts[i] == pix_mp->pixelformat)
+>>  			break;
+>> diff --git a/drivers/staging/media/rkvdec/rkvdec.h b/drivers/staging/media/rkvdec/rkvdec.h
+>> index 2fc9f46b6910..be4fc3645cde 100644
+>> --- a/drivers/staging/media/rkvdec/rkvdec.h
+>> +++ b/drivers/staging/media/rkvdec/rkvdec.h
+>> @@ -64,6 +64,7 @@ vb2_to_rkvdec_decoded_buf(struct vb2_buffer *buf)
+>>  struct rkvdec_coded_fmt_ops {
+>>  	int (*adjust_fmt)(struct rkvdec_ctx *ctx,
+>>  			  struct v4l2_format *f);
+>> +	int (*validate_fmt)(struct rkvdec_ctx *ctx, u32 pixelformat);
+>>  	int (*start)(struct rkvdec_ctx *ctx);
+>>  	void (*stop)(struct rkvdec_ctx *ctx);
+>>  	int (*run)(struct rkvdec_ctx *ctx);
+> 
+> 
