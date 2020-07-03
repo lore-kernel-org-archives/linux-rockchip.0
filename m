@@ -1,98 +1,86 @@
 From: Robin Murphy <robin.murphy@arm.com>
-Subject: Re: [PATCH] clk: rockchip: use separate compatibles for rk3288w-cru
-Date: Fri, 3 Jul 2020 17:19:30 +0100
-Message-ID: <2e331af7-6565-5f88-4f12-94468a4214ce@arm.com>
-References: <20200703152825.245920-1-heiko@sntech.de>
- <00aaa4c4087b56cb4c2580e90f18c84055e105c9.camel@collabora.com>
+Subject: Re: [PATCH] usb: host: ohci-platform: Disable ohci for rk3288
+Date: Fri, 3 Jul 2020 18:08:52 +0100
+Message-ID: <a3d2bc2a-9c19-25fa-f2d7-1a26fcc0c047@arm.com>
+References: <20200702090504.36670-1-jagan@amarulasolutions.com>
+ <f0ae5915-9cb8-9550-f05c-6cebad191a14@arm.com>
+ <CAMty3ZBBdYdNOf-nQTdKZfi-VagaML6k+4PkAh6Uz936h9auow@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <00aaa4c4087b56cb4c2580e90f18c84055e105c9.camel@collabora.com>
+In-Reply-To: <CAMty3ZBBdYdNOf-nQTdKZfi-VagaML6k+4PkAh6Uz936h9auow@mail.gmail.com>
 Content-Language: en-GB
 Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-Cc: mylene.josserand@collabora.com, sboyd@kernel.org, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, mturquette@baylibre.com, linux-kernel@vger.kernel.org, jagan@amarulasolutions.com, linux-clk@vger.kernel.org
+To: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Alan Stern <stern@rowland.harvard.edu>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>, =?UTF-8?Q?Myl=c3=a8ne_Josserand?= <mylene.josserand@collabora.com>, linux-usb@vger.kernel.org, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Suniel Mahesh <sunil@amarulasolutions.com>, William Wu <william.wu@rock-chips.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-amarula <linux-amarula@amarulasolutions.com>, Kever Yang <kever.yang@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-07-03 16:38, Ezequiel Garcia wrote:
-> On Fri, 2020-07-03 at 17:28 +0200, Heiko Stuebner wrote:
->> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+On 2020-07-03 12:39, Jagan Teki wrote:
+> On Thu, Jul 2, 2020 at 8:08 PM Robin Murphy <robin.murphy@arm.com> wrote:
 >>
->> Commit 1627f683636d ("clk: rockchip: Handle clock tree for rk3288w variant")
->> added the check for rk3288w-specific clock-tree changes but in turn would
->> require a double-compatible due to re-using the main rockchip,rk3288-cru
->> compatible as entry point.
+>> On 2020-07-02 10:05, Jagan Teki wrote:
+>>> rk3288 has usb host0 ohci controller but doesn't actually work
+>>> on real hardware but it works with new revision chip rk3288w.
+>>>
+>>> So, disable ohci for rk3288.
+>>>
+>>> For rk3288w chips the compatible update code is handled by bootloader.
+>>>
+>>> Cc: William Wu <william.wu@rock-chips.com>
+>>> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+>>> ---
+>>> Note:
+>>> - U-Boot patch for compatible update
+>>> https://patchwork.ozlabs.org/project/uboot/patch/20200702084820.35942-1-jagan@amarulasolutions.com/
+>>>
+>>>    drivers/usb/host/ohci-platform.c | 2 +-
+>>>    1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/usb/host/ohci-platform.c b/drivers/usb/host/ohci-platform.c
+>>> index 7addfc2cbadc..24655ed6a7e0 100644
+>>> --- a/drivers/usb/host/ohci-platform.c
+>>> +++ b/drivers/usb/host/ohci-platform.c
+>>> @@ -96,7 +96,7 @@ static int ohci_platform_probe(struct platform_device *dev)
+>>>        struct ohci_hcd *ohci;
+>>>        int err, irq, clk = 0;
+>>>
+>>> -     if (usb_disabled())
+>>> +     if (usb_disabled() || of_machine_is_compatible("rockchip,rk3288"))
 >>
->> The binding change actually describes the compatibles as one or the other
->> so adapt the code accordingly and add a real second entry-point for the
->> clock controller.
+>> This seems unnecessary to me - if we've even started probing a driver
+>> for a broken piece of hardware to the point that we need magic checks to
+>> bail out again, then something is already fundamentally wrong.
 >>
->> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
->> ---
->>   drivers/clk/rockchip/clk-rk3288.c | 15 +++++++++++++--
->>   1 file changed, 13 insertions(+), 2 deletions(-)
+>> Old boards only sold with the original SoC variant have no reason to
+>> enable the OHCI (since it never worked originally), thus will never
+>> execute this check.
 >>
->> diff --git a/drivers/clk/rockchip/clk-rk3288.c b/drivers/clk/rockchip/clk-rk3288.c
->> index 204976e2d0cb..a39ca9809cc3 100644
->> --- a/drivers/clk/rockchip/clk-rk3288.c
->> +++ b/drivers/clk/rockchip/clk-rk3288.c
->> @@ -922,7 +922,7 @@ static struct syscore_ops rk3288_clk_syscore_ops = {
->>   	.resume = rk3288_clk_resume,
->>   };
->>   
->> -static void __init rk3288_clk_init(struct device_node *np)
->> +static void __init rk3288_common_init(struct device_node *np, bool is_w)
+>> New boards designed around the W variant to make use of the OHCI can
+>> freely enable it either way.
+>>
+>> The only relative-edge-case where it might matter is older board designs
+>> still in production which have shipped with both SoC variants. Enabling
+>> OHCI can't be *necessary* given that it's still broken on a lot of
+>> deployed boards, so at best it must be an opportunistic nice-to-have.
+>> Since we're already having to rely on the bootloader to patch up the
+>> devicetree for other low-level differences in this case, it should be
+>> part of that responsibility for it to only enable the OHCI on the
+>> appropriate SoC variant too. Statically enabling it in the DTS for a
+>> board where it may well not work is just bad.
 > 
->  From an API standpoint, avoid boolean arguments
-> in favor of a simple enum.
+> You mean enable OHCI by identifying revision W with dts status "okay"?
+> doesn't it complex for the bootloader to update all effecting changes?
 
-And if the enum's just a selector between different data, consider 
-simply passing the data directly ;)
+Well, on boards which may have either SoC it's already got to detect the 
+difference and make at least a couple of other DT adjustments; a handful 
+more lines to check for a specific node and flip its status wouldn't be 
+too horrendous (although I suppose you'd also want to check whether the 
+EHCI is enabled first, to guess at whether the port's even wired up at all).
+
+Or alternatively, as I said, simply don't bother doing anything - boards 
+that only use RK3288W can enable OHCI in their DTS, and other boards 
+that have been not using it for however many years can continue not 
+using it even if it might technically be available on newer production runs.
 
 Robin.
-
-> 
-> This case is trivial, but I think it's useful to avoid
-> the anti pattern.
-> 
-> Thanks for quickly working on this :)
-> 
-> Ezequiel
-> 
->>   {
->>   	struct rockchip_clk_provider *ctx;
->>   
->> @@ -945,7 +945,7 @@ static void __init rk3288_clk_init(struct device_node *np)
->>   	rockchip_clk_register_branches(ctx, rk3288_clk_branches,
->>   				  ARRAY_SIZE(rk3288_clk_branches));
->>   
->> -	if (of_device_is_compatible(np, "rockchip,rk3288w-cru"))
->> +	if (is_w)
->>   		rockchip_clk_register_branches(ctx, rk3288w_hclkvio_branch,
->>   					       ARRAY_SIZE(rk3288w_hclkvio_branch));
->>   	else
->> @@ -970,4 +970,15 @@ static void __init rk3288_clk_init(struct device_node *np)
->>   
->>   	rockchip_clk_of_add_provider(np, ctx);
->>   }
->> +
->> +static void __init rk3288_clk_init(struct device_node *np)
->> +{
->> +	rk3288_common_init(np, false);
->> +}
->>   CLK_OF_DECLARE(rk3288_cru, "rockchip,rk3288-cru", rk3288_clk_init);
->> +
->> +static void __init rk3288w_clk_init(struct device_node *np)
->> +{
->> +	rk3288_common_init(np, true);
->> +}
->> +CLK_OF_DECLARE(rk3288w_cru, "rockchip,rk3288w-cru", rk3288w_clk_init);
-> 
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
