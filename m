@@ -1,91 +1,79 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH 7/9] media: rkvdec: h264: Use bytesperline and buffer
- height to calculate stride
-Date: Fri, 03 Jul 2020 00:21:17 -0300
-Message-ID: <d34520b6799ddf84d9bd6de1cc6352f28c665c9a.camel@collabora.com>
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH 1/9] media: rkvdec: h264: Support profile and level
+ controls
+Date: Fri, 03 Jul 2020 05:30:27 +0000 (UTC)
+Message-ID: <75d272ab-2d48-6dc6-3b60-22d5922ffd1e@kwiboo.se>
 References: <20200701215616.30874-1-jonas@kwiboo.se>
-         <20200701215616.30874-8-jonas@kwiboo.se>
+ <20200701215616.30874-2-jonas@kwiboo.se>
+ <8daa49704a14764bfe0797cbf802bad3d64ede17.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200701215616.30874-8-jonas@kwiboo.se>
+In-Reply-To: <8daa49704a14764bfe0797cbf802bad3d64ede17.camel@collabora.com>
+Content-Language: sv
 Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 Cc: Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jonas,
-
-On Wed, 2020-07-01 at 21:56 +0000, Jonas Karlman wrote:
-> Use bytesperline and buffer height to calculate the strides configured.
+On 2020-07-03 04:54, Ezequiel Garcia wrote:
+> On Wed, 2020-07-01 at 21:56 +0000, Jonas Karlman wrote:
+>> The Rockchip Video Decoder used in RK3399 supports H.264 profiles from
+>> Baseline to High 4:2:2 up to Level 5.1, except for the Extended profile.
+>>
+>> Expose the V4L2_CID_MPEG_VIDEO_H264_PROFILE and the
+>> V4L2_CID_MPEG_VIDEO_H264_LEVEL control, so that userspace can query the
+>> driver for the list of supported profiles and level.
+>>
+>> In current state only Baseline to High profile is supported by the driver.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > 
-> This does not really change anything other than ensuring the bytesperline
-> that is signaled to userspace matches was is configured in HW.
+> I think the patch is good so:
 > 
-
-Are you seeing any issue due to this?
-
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
->  drivers/staging/media/rkvdec/rkvdec-h264.c | 27 +++++++++++++---------
->  1 file changed, 16 insertions(+), 11 deletions(-)
+> Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 > 
-> diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-> index 9c8e49642cd9..1cb6af590138 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-> @@ -891,10 +891,11 @@ static void config_registers(struct rkvdec_ctx *ctx,
->  	dma_addr_t rlc_addr;
->  	dma_addr_t refer_addr;
->  	u32 rlc_len;
-> -	u32 hor_virstride = 0;
-> -	u32 ver_virstride = 0;
-> -	u32 y_virstride = 0;
-> -	u32 yuv_virstride = 0;
-> +	u32 hor_virstride;
-> +	u32 ver_virstride;
-> +	u32 y_virstride;
-> +	u32 uv_virstride;
-> +	u32 yuv_virstride;
->  	u32 offset;
->  	dma_addr_t dst_addr;
->  	u32 reg, i;
-> @@ -904,16 +905,20 @@ static void config_registers(struct rkvdec_ctx *ctx,
->  
->  	f = &ctx->decoded_fmt;
->  	dst_fmt = &f->fmt.pix_mp;
-> -	hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
-> -	ver_virstride = round_up(dst_fmt->height, 16);
-> +	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
-> +	ver_virstride = dst_fmt->height;
->  	y_virstride = hor_virstride * ver_virstride;
->  
+> However, feel free to just drop this patch and support the profiles
+> and levels at the end of the patchset, once High 10 and High 422
+> support is there.
 
-So far so good.
+Sure, that makes more sense, will move to end in v2.
 
-> -	if (sps->chroma_format_idc == 0)
-> -		yuv_virstride = y_virstride;
-> -	else if (sps->chroma_format_idc == 1)
-> -		yuv_virstride += y_virstride + y_virstride / 2;
-> +	if (sps->chroma_format_idc == 1)
-> +		uv_virstride = y_virstride / 2;
->  	else if (sps->chroma_format_idc == 2)
-> -		yuv_virstride += 2 * y_virstride;
-> +		uv_virstride = y_virstride;
-> +	else if (sps->chroma_format_idc == 3)
-> +		uv_virstride = 2 * y_virstride;
-> +	else
-> +		uv_virstride = 0;
-> +
-> +	yuv_virstride = y_virstride + uv_virstride;
->  
+Regards,
+Jonas
 
-Is the chunk above related to the patch, or mostly
-cleaning/improving the code?
-
-Thanks,
-Ezequiel
-
->  	reg = RKVDEC_Y_HOR_VIRSTRIDE(hor_virstride / 16) |
->  	      RKVDEC_UV_HOR_VIRSTRIDE(hor_virstride / 16) |
+> 
+> Thanks,
+> Ezequiel
+> 
+>> ---
+>>  drivers/staging/media/rkvdec/rkvdec.c | 13 +++++++++++++
+>>  1 file changed, 13 insertions(+)
+>>
+>> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+>> index 0f81b47792f6..b1de55aa6535 100644
+>> --- a/drivers/staging/media/rkvdec/rkvdec.c
+>> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+>> @@ -94,6 +94,19 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+>>  		.cfg.def = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
+>>  		.cfg.max = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
+>>  	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
+>> +		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
+>> +		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH,
+>> +		.cfg.menu_skip_mask =
+>> +			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
+>> +		.cfg.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_LEVEL,
+>> +		.cfg.min = V4L2_MPEG_VIDEO_H264_LEVEL_1_0,
+>> +		.cfg.max = V4L2_MPEG_VIDEO_H264_LEVEL_5_1,
+>> +	},
+>>  };
+>>  
+>>  static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
+> 
+> 
