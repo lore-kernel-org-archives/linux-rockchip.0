@@ -1,16 +1,10 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH] rockchip: rk3288: Add OF board setup
-Date: Sat, 4 Jul 2020 14:25:14 +0530
-Message-ID: <CAMty3ZDuvbFhMNVsHhy=qXtQ1ZOzR7j4mzJtSXt7Gz=AyhBgMQ@mail.gmail.com>
-References: <20200702084820.35942-1-jagan@amarulasolutions.com>
- <8e4ff8ec-d782-32da-05ac-ae24c1bc6164@arm.com>
- <CAMty3ZDuk=svN+aHdodx5d1hL8QzZC5MS6LJoSUgtcstnSZXoA@mail.gmail.com>
- <69d5f8b3-e151-4f1e-c1a9-4e8c740f77aa@arm.com>
- <CAMty3ZAOHsjW3BrtuJTwKqQweA+2Vz5h0HUerDqjvPZ_7fc78g@mail.gmail.com>
+Subject: [PATCH v2 1/2] rockchip: Add SoC detection helper
+Date: Sat,  4 Jul 2020 14:45:02 +0530
+Message-ID: <20200704091503.71121-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <CAMty3ZAOHsjW3BrtuJTwKqQweA+2Vz5h0HUerDqjvPZ_7fc78g@mail.gmail.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <https://lists.denx.de/pipermail/u-boot/>
@@ -20,106 +14,82 @@ List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=subscribe>
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, =?UTF-8?Q?Myl=C3=A8ne_Josserand?= <mylene.josserand@collabora.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, U-Boot-Denx <u-boot@lists.denx.de>, Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-amarula <linux-amarula@amarulasolutions.com>
+To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, heiko@sntech.de, mylene.josserand@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>, Robin Murphy <robin.murphy@arm.com>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, Jul 3, 2020 at 7:34 PM Jagan Teki <jagan@amarulasolutions.com> wrote:
->
-> On Fri, Jul 3, 2020 at 6:09 PM Robin Murphy <robin.murphy@arm.com> wrote:
-> >
-> > On 2020-07-03 11:10, Jagan Teki wrote:
-> > > On Thu, Jul 2, 2020 at 7:26 PM Robin Murphy <robin.murphy@arm.com> wrote:
-> > >>
-> > >> On 2020-07-02 09:48, Jagan Teki wrote:
-> > >>> The new rk3288 revision rk3288w has some changes with respect
-> > >>> to legacy rk3288 like hclk_vio and usb host0 ohci.
-> > >>>
-> > >>> In order to work these on the same in Linux kernel update the
-> > >>> compatible the root compatible with rockchip,rk3288w before
-> > >>> booting.
-> > >>>
-> > >>> So, this support during of board setup code of rk3288.
-> > >>>
-> > >>> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> > >>> ---
-> > >>>    arch/arm/mach-rockchip/Kconfig         |  1 +
-> > >>>    arch/arm/mach-rockchip/rk3288/rk3288.c | 26 ++++++++++++++++++++++++++
-> > >>>    2 files changed, 27 insertions(+)
-> > >>>
-> > >>> diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
-> > >>> index b1008a5058..822d8d4e9c 100644
-> > >>> --- a/arch/arm/mach-rockchip/Kconfig
-> > >>> +++ b/arch/arm/mach-rockchip/Kconfig
-> > >>> @@ -98,6 +98,7 @@ config ROCKCHIP_RK322X
-> > >>>    config ROCKCHIP_RK3288
-> > >>>        bool "Support Rockchip RK3288"
-> > >>>        select CPU_V7A
-> > >>> +     select OF_BOARD_SETUP
-> > >>>        select SUPPORT_SPL
-> > >>>        select SPL
-> > >>>        select SUPPORT_TPL
-> > >>> diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
-> > >>> index 804abe8a1b..8a682675e6 100644
-> > >>> --- a/arch/arm/mach-rockchip/rk3288/rk3288.c
-> > >>> +++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
-> > >>> @@ -115,6 +115,32 @@ int rk_board_late_init(void)
-> > >>>        return rk3288_board_late_init();
-> > >>>    }
-> > >>>
-> > >>> +#ifdef CONFIG_OF_BOARD_SETUP
-> > >>> +
-> > >>> +#define RK3288_HDMI_PHYS     0xff980000
-> > >>> +#define RK3288W_HDMI_REV     0x1A
-> > >>> +#define HDMI_CONFIG0_ID              0x04
-> > >>> +
-> > >>> +int ft_board_setup(void *blob, bd_t *bd)
-> > >>> +{
-> > >>> +     u8 config0;
-> > >>> +     int ret;
-> > >>> +
-> > >>> +     config0 = readb(RK3288_HDMI_PHYS + HDMI_CONFIG0_ID);
-> > >>> +     if (config0 == RK3288W_HDMI_REV) {
-> > >>> +             ret = fdt_setprop_string(blob, 0,
-> > >>> +                                      "compatible", "rockchip,rk3288w");
-> > >>
-> > >> Does this end up replacing the entire top-level compatible property?
-> > >> i.e. from:
-> > >>
-> > >>          compatible = "vendor,board\0rockchip,rk3288";
-> > >>
-> > >> to just:
-> > >>
-> > >>          compatible = "rockchip,rk3288w";
-> > >>
-> > >> If so, that's a bit of a problem for various drivers that care about the
-> > >> actual board compatible rather than the SoC.
-> > >
-> > > Yes, It looks replacing the entire compatible. I think the root
-> > > compatible is mostly untouchable because of this reason.
-> > >
-> > > But, if we skip the root compatible and trying to replace individual
-> > > nodes for W revision then it requires extra registration code on in
-> > > the Linux drivers like Linux clock driver is registering the clock
-> > > with rockchip,rk3288-cru but updating this compatible with
-> > > rockchip,rk3288w-cru will require another registration code. Having
-> > > common rockchip,rk3288w can be possible to check any code in the tree.
-> >
-> > Right, it's definitely reasonable to update the top-level SoC
-> > compatible, we just need to be prepared to deal with a whole string list
-> > here. It looks like libfdt doesn't offer any nice helpers for
-> > inserting/removing/updating in string lists, but given that the SoC
-> > should be the last entry here we might be able to cheat a bit - just get
-> > the whole raw property, check that the final characters are exactly
-> > "rockchip,rk3288", and if so append a "w" to the end and write it back.
->
-> Look like exiting fdt helper does print the compatible up to \0
-> instead of whole root compatible, at least I have checked with
-> fdt_getpro and fdt_get_property.
+Rockchip SoC's has a new revision chip for rk3288, rk3308
+based SoCs.
 
-Look like we didn't have any requirement to change the root compatible
-at this point since disabling ohci driver for legacy rk3288 revision
-chips of no use.
+RK3288 has a new revision chip called RK3288W which is relevantly
+similar but different hclk_vio clock and working ohci host.
 
+Add common rockchip SoC detection helper to support this rk3288w
+detection.
 
-Jagan.
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+Changes for v2:
+- new patch
+
+ arch/arm/include/asm/arch-rockchip/cpu.h | 49 ++++++++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+ create mode 100644 arch/arm/include/asm/arch-rockchip/cpu.h
+
+diff --git a/arch/arm/include/asm/arch-rockchip/cpu.h b/arch/arm/include/asm/arch-rockchip/cpu.h
+new file mode 100644
+index 0000000000..d0d22e4967
+--- /dev/null
++++ b/arch/arm/include/asm/arch-rockchip/cpu.h
+@@ -0,0 +1,49 @@
++/* SPDX-License-Identifier: GPL-2.0+  */
++/*
++ * Rockchip Electronics Co., Ltd.
++ */
++
++#ifndef __ASM_ARCH_CPU_H
++#define __ASM_ARCH_CPU_H
++
++#include <asm/io.h>
++
++#define ROCKCHIP_CPU_MASK       0xffff0000
++#define ROCKCHIP_CPU_RK3288     0x32880000
++
++#define ROCKCHIP_SOC_MASK	(ROCKCHIP_CPU_MASK | 0xff)
++#define ROCKCHIP_SOC_RK3288     (ROCKCHIP_CPU_RK3288 | 0x00)
++#define ROCKCHIP_SOC_RK3288W    (ROCKCHIP_CPU_RK3288 | 0x01)
++
++#define RK3288_HDMI_PHYS	0xff980000
++#define HDMI_CONFIG0_ID		0x4
++#define RK3288W_HDMI_REVID	0x1a
++
++static inline int rockchip_soc_id(void)
++{
++	u8 reg;
++
++#if defined(CONFIG_ROCKCHIP_RK3288)
++	reg = readb(RK3288_HDMI_PHYS + HDMI_CONFIG0_ID);
++	if (reg == RK3288W_HDMI_REVID)
++		return ROCKCHIP_SOC_RK3288W;
++	else
++		return ROCKCHIP_SOC_RK3288;
++#else
++	return 0;
++#endif
++}
++
++#define ROCKCHIP_SOC(id, ID) \
++static inline bool soc_is_##id(void) \
++{ \
++	int soc_id = rockchip_soc_id(); \
++	if (soc_id) \
++		return ((soc_id & ROCKCHIP_SOC_MASK) == ROCKCHIP_SOC_ ##ID); \
++	return false; \
++}
++
++ROCKCHIP_SOC(rk3288, RK3288)
++ROCKCHIP_SOC(rk3288w, RK3288W)
++
++#endif
+-- 
+2.25.1
