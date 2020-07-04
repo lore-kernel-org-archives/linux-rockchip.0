@@ -1,108 +1,37 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v2 2/2] rockchip: rk3288: Add OF board setup
-Date: Sat,  4 Jul 2020 14:45:03 +0530
-Message-ID: <20200704091503.71121-2-jagan@amarulasolutions.com>
-References: <20200704091503.71121-1-jagan@amarulasolutions.com>
+Subject: Re: [PATCH v2] clk: rockchip: use separate compatibles for rk3288w-cru
+Date: Sat, 4 Jul 2020 14:47:11 +0530
+Message-ID: <CAMty3ZD7jBSCEWLRK9qNXKGQC2_0eJyo5NkbV4MfaTNbC4Br2A@mail.gmail.com>
+References: <20200703154948.260369-1-heiko@sntech.de>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200704091503.71121-1-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, heiko@sntech.de, mylene.josserand@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>, Robin Murphy <robin.murphy@arm.com>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200703154948.260369-1-heiko@sntech.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, =?UTF-8?Q?Myl=C3=A8ne_Josserand?= <mylene.josserand@collabora.com>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, linux-clk <linux-clk@vger.kernel.org>, Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The new rk3288 revision rk3288w has some changes with respect
-to legacy rk3288 like hclk_vio in cru and usb host0 ohci.
+On Fri, Jul 3, 2020 at 9:19 PM Heiko Stuebner <heiko@sntech.de> wrote:
+>
+> From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+>
+> Commit 1627f683636d ("clk: rockchip: Handle clock tree for rk3288w variant")
+> added the check for rk3288w-specific clock-tree changes but in turn would
+> require a double-compatible due to re-using the main rockchip,rk3288-cru
+> compatible as entry point.
+>
+> The binding change actually describes the compatibles as one or the other
+> so adapt the code accordingly and add a real second entry-point for the
+> clock controller.
+>
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
+> ---
 
-Linux clock driver already handle this via rockchip,rk3288w-cru
-compatible.
+Reviewed-by: Jagan Teki <jagan@amarulasolutions.com>
+Tested-by: Jagan Teki <jagan@amarulasolutions.com> # rock-pi-n8
 
-USB ohci host can enable via dts for rk3288w based boards.
+Note: These are U-Boot changes,
+https://patchwork.ozlabs.org/project/uboot/list/?series=187546
 
-So, add fdt board setup code to update cru compatible with
-rk3288w-cru compatible if the SOC revision is RK3288W.
-
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
-Changes for v2:
-- use soc detection helper
-- add cru compatible change for rk3288w
-
- arch/arm/mach-rockchip/Kconfig         |  1 +
- arch/arm/mach-rockchip/rk3288/rk3288.c | 33 ++++++++++++++++++++++++++
- 2 files changed, 34 insertions(+)
-
-diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
-index b1008a5058..822d8d4e9c 100644
---- a/arch/arm/mach-rockchip/Kconfig
-+++ b/arch/arm/mach-rockchip/Kconfig
-@@ -98,6 +98,7 @@ config ROCKCHIP_RK322X
- config ROCKCHIP_RK3288
- 	bool "Support Rockchip RK3288"
- 	select CPU_V7A
-+	select OF_BOARD_SETUP
- 	select SUPPORT_SPL
- 	select SPL
- 	select SUPPORT_TPL
-diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
-index 804abe8a1b..9c873d2b6a 100644
---- a/arch/arm/mach-rockchip/rk3288/rk3288.c
-+++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
-@@ -13,6 +13,7 @@
- #include <asm/io.h>
- #include <asm/arch-rockchip/bootrom.h>
- #include <asm/arch-rockchip/clock.h>
-+#include <asm/arch-rockchip/cpu.h>
- #include <asm/arch-rockchip/cru.h>
- #include <asm/arch-rockchip/hardware.h>
- #include <asm/arch-rockchip/grf_rk3288.h>
-@@ -115,6 +116,38 @@ int rk_board_late_init(void)
- 	return rk3288_board_late_init();
- }
- 
-+#if defined(CONFIG_OF_BOARD_SETUP)
-+
-+static int ft_rk3288w_setup(void *blob)
-+{
-+	const char *path;
-+	int offs, ret;
-+
-+	path = "/clock-controller@ff760000";
-+	offs = fdt_path_offset(blob, path);
-+	if (offs < 0) {
-+		debug("failed to found fdt path %s\n", path);
-+		return offs;
-+	}
-+
-+	ret = fdt_setprop_string(blob, offs, "compatible", "rockchip,rk3288w-cru");
-+	if (ret) {
-+		printf("failed to set rk3288w-cru compatible (ret=%d)\n", ret);
-+		return ret;
-+	}
-+
-+	return ret;
-+}
-+
-+int ft_board_setup(void *blob, bd_t *bd)
-+{
-+	if (soc_is_rk3288w())
-+		return ft_rk3288w_setup(blob);
-+
-+	return 0;
-+}
-+#endif
-+
- static int do_clock(struct cmd_tbl *cmdtp, int flag, int argc,
- 		    char *const argv[])
- {
--- 
-2.25.1
+Jagan.
