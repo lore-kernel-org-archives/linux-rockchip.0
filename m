@@ -1,216 +1,47 @@
-From: Jonathan Cameron <jic23-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v6 1/3] iio: adc: rockchip_saradc: move all of probe to
- devm-functions
-Date: Sat, 4 Jul 2020 16:38:17 +0100
-Message-ID: <20200704163817.646ee01a@archlinux>
-References: <20200623233011.2319035-1-heiko@sntech.de>
-        <20200627130329.66d7102f@archlinux>
-        <3183602.Ou33jPcMzM@phil>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v3 0/4] ARM: dts: rockchip: Radxa Rock Pi N8 initial support
+Date: Sun,  5 Jul 2020 01:46:00 +0530
+Message-ID: <20200704201604.85343-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <3183602.Ou33jPcMzM@phil>
-Sender: linux-iio-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Cc: knaack.h-Mmb7MZpHnFY@public.gmane.org, lars-Qo5EllUWu/uELgA04lAiVw@public.gmane.org, pmeerw-jW+XmwGofnusTnJN9+BGXg@public.gmane.org, linux-iio-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, xxm-TNX95d0MmH7DzftRWevZcw@public.gmane.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
+Cc: Tom Cubie <tom@radxa.com>, Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 03 Jul 2020 09:48:42 +0200
-Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+Rock Pi N8 is a Rockchip RK3288 based SBC, which has
+- VMARC RK3288 SOM (as per SMARC standard) from Vamrs.
+- Compatible carrier board from Radxa.
 
-> Am Samstag, 27. Juni 2020, 14:03:29 CEST schrieb Jonathan Cameron:
-> > On Wed, 24 Jun 2020 01:30:09 +0200
-> > Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
-> >   
-> > > From: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>
-> > > 
-> > > Parts of the saradc probe rely on devm functions and later parts do not.
-> > > This makes it more difficult to for example enable triggers via their
-> > > devm-functions and would need more undo-work in remove.
-> > > 
-> > > So to make life easier for the driver, move the rest of probe calls
-> > > also to their devm-equivalents.
-> > > 
-> > > This includes moving the clk- and regulator-disabling to a devm_action
-> > > so that they gets disabled both during remove and in the error case
-> > > in probe, after the action is registered.
-> > > 
-> > > Signed-off-by: Heiko Stuebner <heiko.stuebner-SN7IsUiht6C/RdPyistoZJqQE7yCjDx5@public.gmane.org>  
-> > Looks good to me. Applied to the togreg branch of iio.git with one small
-> > tweak. See inline.
-> > 
-> > One other thing whilst we are here. Why do we need the build dependence
-> > on ARM?  
-> 
-> I guess originally it was there simply, because Rockchip only makes
-> ARM-SoCs so as not to pollute the config with too many unusable
-> options and it had the COMPILE_TEST for the test-builds.
+VMARC RK3288 SOM need to mount on top of dalang carrier
+board for making Rock PI N8 SBC.
 
-I'd have no problem with
-depends on ARCH_ROCKCHIP || COMPILE_TEST
-which would mean the unusable option only applied to those of us
-deliberately doing test builds rather than anyone configuring a
-real platform (where COMPILE_TEST makes no sense).
+This series moved hym8563_int pin into rk3399pro dtsi and
+rest are similar to v2.
 
-> 
-> But if one driver more doesn't really matter, it can of course also just
-> go away.
-> 
-> > I just scrapped it and the driver builds fine on x86 so would
-> > be good to get the additional build coverage if we can.  
-> 
-> So I guess you'd like a patch removing that part, right?
-> Because I guess the "I just scrapped it" meant locally, as I can't find
-> a commit of that sort in the testing branch ;-)
+Changes for v3:
+- move hym8563_int pin to rk3399pro dtsi 
+Changes for v2:
+- add more trivial cleanups
+- update commit message
 
-Indeed I did this locally.
+Jagan Teki (4):
+  arm64: dts: rockchip: Trivial cleanups for RockPI N10
+  dt-bindings: arm: rockchip: Add Rock Pi N8 binding
+  ARM: dts: rockchip: Add VMARC RK3288 SOM initial support
+  ARM: dts: rockchip: Add Radxa Rock Pi N8 initial support
 
-Patch would be idea, or I can do it if you prefer.
+ .../devicetree/bindings/arm/rockchip.yaml     |   6 +
+ arch/arm/boot/dts/Makefile                    |   1 +
+ arch/arm/boot/dts/rk3288-rock-pi-n8.dts       |  17 ++
+ arch/arm/boot/dts/rk3288-vmarc-som.dtsi       | 270 ++++++++++++++++++
+ .../dts/rockchip-radxa-dalang-carrier.dtsi    |  60 ++--
+ .../dts/rockchip/rk3399pro-rock-pi-n10.dts    |   2 +-
+ .../dts/rockchip/rk3399pro-vmarc-som.dtsi     |  75 ++---
+ 7 files changed, 367 insertions(+), 64 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3288-rock-pi-n8.dts
+ create mode 100644 arch/arm/boot/dts/rk3288-vmarc-som.dtsi
 
-Thanks,
-
-Jonathan
-
-
-> 
-> 
-> Heiko
-> 
-> 
-> > > ---
-> > > changes in v6:
-> > > - move devm actions into separate functions as suggested by Jonathan
-> > > changes in v5:
-> > > - none
-> > > changes in v4:
-> > > - new patch as suggested by Jonathan
-> > > 
-> > >  drivers/iio/adc/rockchip_saradc.c | 72 ++++++++++++++++++++-----------
-> > >  1 file changed, 46 insertions(+), 26 deletions(-)
-> > > 
-> > > diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-> > > index 582ba047c4a6..1a7990d60f9f 100644
-> > > --- a/drivers/iio/adc/rockchip_saradc.c
-> > > +++ b/drivers/iio/adc/rockchip_saradc.c
-> > > @@ -193,6 +193,27 @@ static void rockchip_saradc_reset_controller(struct reset_control *reset)
-> > >  	reset_control_deassert(reset);
-> > >  }
-> > >  
-> > > +static void rockchip_saradc_clk_disable(void *data)
-> > > +{
-> > > +	struct rockchip_saradc *info = data;
-> > > +
-> > > +	clk_disable_unprepare(info->clk);
-> > > +}
-> > > +
-> > > +static void rockchip_saradc_pclk_disable(void *data)
-> > > +{
-> > > +	struct rockchip_saradc *info = data;
-> > > +
-> > > +	clk_disable_unprepare(info->pclk);
-> > > +}
-> > > +
-> > > +static void rockchip_saradc_regulator_disable(void *data)
-> > > +{
-> > > +	struct rockchip_saradc *info = data;
-> > > +
-> > > +	regulator_disable(info->vref);
-> > > +}
-> > > +
-> > >  static int rockchip_saradc_probe(struct platform_device *pdev)
-> > >  {
-> > >  	struct rockchip_saradc *info = NULL;
-> > > @@ -291,17 +312,38 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
-> > >  		dev_err(&pdev->dev, "failed to enable vref regulator\n");
-> > >  		return ret;
-> > >  	}
-> > > +	ret = devm_add_action_or_reset(&pdev->dev,
-> > > +				       rockchip_saradc_regulator_disable, info);
-> > > +	if (ret) {
-> > > +		dev_err(&pdev->dev, "failed to register devm action, %d\n",
-> > > +			ret);
-> > > +		return ret;
-> > > +	}
-> > >  
-> > >  	ret = clk_prepare_enable(info->pclk);
-> > >  	if (ret < 0) {
-> > >  		dev_err(&pdev->dev, "failed to enable pclk\n");
-> > > -		goto err_reg_voltage;
-> > > +		return ret;
-> > > +	}
-> > > +	ret = devm_add_action_or_reset(&pdev->dev,
-> > > +				       rockchip_saradc_pclk_disable, info);
-> > > +	if (ret) {
-> > > +		dev_err(&pdev->dev, "failed to register devm action, %d\n",
-> > > +			ret);
-> > > +		return ret;
-> > >  	}
-> > >  
-> > >  	ret = clk_prepare_enable(info->clk);
-> > >  	if (ret < 0) {
-> > >  		dev_err(&pdev->dev, "failed to enable converter clock\n");
-> > > -		goto err_pclk;
-> > > +		return ret;
-> > > +	}
-> > > +	ret = devm_add_action_or_reset(&pdev->dev,
-> > > +				       rockchip_saradc_clk_disable, info);
-> > > +	if (ret) {
-> > > +		dev_err(&pdev->dev, "failed to register devm action, %d\n",
-> > > +			ret);
-> > > +		return ret;
-> > >  	}
-> > >  
-> > >  	platform_set_drvdata(pdev, indio_dev);
-> > > @@ -315,30 +357,9 @@ static int rockchip_saradc_probe(struct platform_device *pdev)
-> > >  	indio_dev->channels = info->data->channels;
-> > >  	indio_dev->num_channels = info->data->num_channels;
-> > >  
-> > > -	ret = iio_device_register(indio_dev);
-> > > +	ret = devm_iio_device_register(&pdev->dev, indio_dev);
-> > >  	if (ret)
-> > > -		goto err_clk;
-> > > -
-> > > -	return 0;
-> > > -
-> > > -err_clk:
-> > > -	clk_disable_unprepare(info->clk);
-> > > -err_pclk:
-> > > -	clk_disable_unprepare(info->pclk);
-> > > -err_reg_voltage:
-> > > -	regulator_disable(info->vref);
-> > > -	return ret;
-> > > -}
-> > > -
-> > > -static int rockchip_saradc_remove(struct platform_device *pdev)
-> > > -{
-> > > -	struct iio_dev *indio_dev = platform_get_drvdata(pdev);
-> > > -	struct rockchip_saradc *info = iio_priv(indio_dev);
-> > > -
-> > > -	iio_device_unregister(indio_dev);
-> > > -	clk_disable_unprepare(info->clk);
-> > > -	clk_disable_unprepare(info->pclk);
-> > > -	regulator_disable(info->vref);
-> > > +		return ret;  
-> > Small tweak rather hidden by how diff presents this but
-> > might as well just
-> > 
-> > return devm_iio_device_register
-> >   
-> > >  
-> > >  	return 0;
-> > >  }
-> > > @@ -383,7 +404,6 @@ static SIMPLE_DEV_PM_OPS(rockchip_saradc_pm_ops,
-> > >  
-> > >  static struct platform_driver rockchip_saradc_driver = {
-> > >  	.probe		= rockchip_saradc_probe,
-> > > -	.remove		= rockchip_saradc_remove,
-> > >  	.driver		= {
-> > >  		.name	= "rockchip-saradc",
-> > >  		.of_match_table = rockchip_saradc_match,  
-> > 
-> >   
-> 
-> 
-> 
-> 
+-- 
+2.25.1
