@@ -1,8 +1,8 @@
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 08/12] media: rkvdec: h264: Use bytesperline and buffer
- height to calculate stride
-Date: Mon, 06 Jul 2020 21:54:36 +0000 (UTC)
-Message-ID: <20200706215430.22859-9-jonas@kwiboo.se>
+Subject: [PATCH v2 12/12] media: rkvdec: h264: Support profile and level
+ controls
+Date: Mon, 06 Jul 2020 21:54:38 +0000 (UTC)
+Message-ID: <20200706215430.22859-13-jonas@kwiboo.se>
 References: <20200701215616.30874-1-jonas@kwiboo.se>
  <20200706215430.22859-1-jonas@kwiboo.se>
 Content-Type: text/plain; charset=us-ascii
@@ -14,46 +14,46 @@ To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kerne
 Cc: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Use bytesperline and buffer height to calculate the strides configured.
+The Rockchip Video Decoder used in RK3399 supports H.264 profiles from
+Baseline to High 4:2:2 up to Level 5.1, except for the Extended profile.
 
-This does not really change anything other than ensuring the bytesperline
-that is signaled to userspace matches what is configured in HW.
+Expose the V4L2_CID_MPEG_VIDEO_H264_PROFILE and the
+V4L2_CID_MPEG_VIDEO_H264_LEVEL control, so that userspace can query the
+driver for the list of supported profiles and level.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
 ---
 Changes in v2:
-- Drop code refactoring
+- Moved to end
+- Collect r-b tag
 ---
- drivers/staging/media/rkvdec/rkvdec-h264.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index 3a85545bcb38..10756b9d6118 100644
---- a/drivers/staging/media/rkvdec/rkvdec-h264.c
-+++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -891,9 +891,9 @@ static void config_registers(struct rkvdec_ctx *ctx,
- 	dma_addr_t rlc_addr;
- 	dma_addr_t refer_addr;
- 	u32 rlc_len;
--	u32 hor_virstride = 0;
--	u32 ver_virstride = 0;
--	u32 y_virstride = 0;
-+	u32 hor_virstride;
-+	u32 ver_virstride;
-+	u32 y_virstride;
- 	u32 yuv_virstride = 0;
- 	u32 offset;
- 	dma_addr_t dst_addr;
-@@ -904,8 +904,8 @@ static void config_registers(struct rkvdec_ctx *ctx,
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index 4faee9262392..b21031535330 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -144,6 +144,19 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+ 		.cfg.def = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
+ 		.cfg.max = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
+ 	},
++	{
++		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
++		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
++		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_422,
++		.cfg.menu_skip_mask =
++			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
++		.cfg.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
++	},
++	{
++		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_LEVEL,
++		.cfg.min = V4L2_MPEG_VIDEO_H264_LEVEL_1_0,
++		.cfg.max = V4L2_MPEG_VIDEO_H264_LEVEL_5_1,
++	},
+ };
  
- 	f = &ctx->decoded_fmt;
- 	dst_fmt = &f->fmt.pix_mp;
--	hor_virstride = (sps->bit_depth_luma_minus8 + 8) * dst_fmt->width / 8;
--	ver_virstride = round_up(dst_fmt->height, 16);
-+	hor_virstride = dst_fmt->plane_fmt[0].bytesperline;
-+	ver_virstride = dst_fmt->height;
- 	y_virstride = hor_virstride * ver_virstride;
- 
- 	if (sps->chroma_format_idc == 0)
+ static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
 -- 
 2.17.1
