@@ -1,101 +1,49 @@
-From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH 1/2] rkvdec: h264: Refuse to decode unsupported bitstream
-Date: Mon, 06 Jul 2020 16:19:33 -0300
-Message-ID: <bcbd94c1fb4eea06e9e6014c10d6993faa3e3d4f.camel@collabora.com>
-References: <20200626171130.27346-1-ezequiel@collabora.com>
-         <20200626171130.27346-2-ezequiel@collabora.com>
-         <551304f5-88bd-a673-a0ef-47af65700fe7@kwiboo.se>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v2 01/12] media: rkvdec: h264: Fix reference frame_num wrap
+ for second field
+Date: Mon, 06 Jul 2020 21:54:33 +0000 (UTC)
+Message-ID: <20200706215430.22859-2-jonas@kwiboo.se>
+References: <20200701215616.30874-1-jonas@kwiboo.se>
+ <20200706215430.22859-1-jonas@kwiboo.se>
+Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <551304f5-88bd-a673-a0ef-47af65700fe7@kwiboo.se>
-Sender: linux-media-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, kernel@collabora.com
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200706215430.22859-1-jonas@kwiboo.se>
+Sender: linux-kernel-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, 2020-07-06 at 09:45 +0000, Jonas Karlman wrote:
-> On 2020-06-26 19:11, Ezequiel Garcia wrote:
-> > The hardware only supports 4:2:2, 4:2:0 or 4:0:0 (monochrome),
-> > 8-bit or 10-bit depth content.
-> > 
-> > Verify that the PPS refers to a supported bitstream, and refuse
-> 
-> This should be SPS not PPS, same for hantro patch.
-> 
+When decoding the second field in a complementary field pair the second
+field is sharing the same frame_num with the first field.
 
-Yup.
+Currently the frame_num for the first field is wrapped when it matches the
+field being decoded, this cause issues to decode the second field in a
+complementary field pair.
 
-> > unsupported bitstreams by failing at TRY_EXT_CTRLS time.
-> > 
-> > The driver is currently broken on 10-bit and 4:2:2
-> > so disallow those as well.
-> > 
-> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> > ---
-> >  drivers/staging/media/rkvdec/rkvdec.c | 27 +++++++++++++++++++++++++++
-> >  1 file changed, 27 insertions(+)
-> > 
-> > diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-> > index 225eeca73356..0f81b47792f6 100644
-> > --- a/drivers/staging/media/rkvdec/rkvdec.c
-> > +++ b/drivers/staging/media/rkvdec/rkvdec.c
-> > @@ -27,6 +27,32 @@
-> >  #include "rkvdec.h"
-> >  #include "rkvdec-regs.h"
-> >  
-> > +static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
-> > +{
-> > +	if (ctrl->id == V4L2_CID_MPEG_VIDEO_H264_SPS) {
-> > +		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_cur.p;
-> 
-> This should be p_new and not p_cur to validate the new ctrl value, same for hantro patch.
-> 
-> With both fixed this and the hantro patch is,
-> 
-> Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
-> 
+Fix this by using inclusive comparison, less than or equal.
 
-Ah, nice catch. Will fix.
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+---
+Changes in v2:
+- Collect r-b tag
+---
+ drivers/staging/media/rkvdec/rkvdec-h264.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-Ezequiel
-
-> Regards,
-> Jonas
-> 
-> > +		/*
-> > +		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
-> > +		 * but it's currently broken in the driver.
-> > +		 * Reject them for now, until it's fixed.
-> > +		 */
-> > +		if (sps->chroma_format_idc > 1)
-> > +			/* Only 4:0:0 and 4:2:0 are supported */
-> > +			return -EINVAL;
-> > +		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
-> > +			/* Luma and chroma bit depth mismatch */
-> > +			return -EINVAL;
-> > +		if (sps->bit_depth_luma_minus8 != 0)
-> > +			/* Only 8-bit is supported */
-> > +			return -EINVAL;
-> > +	}
-> > +	return 0;
-> > +}
-> > +
-> > +static const struct v4l2_ctrl_ops rkvdec_ctrl_ops = {
-> > +	.try_ctrl = rkvdec_try_ctrl,
-> > +};
-> > +
-> >  static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
-> >  	{
-> >  		.per_request = true,
-> > @@ -42,6 +68,7 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
-> >  		.per_request = true,
-> >  		.mandatory = true,
-> >  		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_SPS,
-> > +		.cfg.ops = &rkvdec_ctrl_ops,
-> >  	},
-> >  	{
-> >  		.per_request = true,
-> > 
+diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
+index 7b66e2743a4f..f0cfed84d60d 100644
+--- a/drivers/staging/media/rkvdec/rkvdec-h264.c
++++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
+@@ -754,7 +754,7 @@ static void assemble_hw_rps(struct rkvdec_ctx *ctx,
+ 			continue;
+ 
+ 		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM ||
+-		    dpb[i].frame_num < sl_params->frame_num) {
++		    dpb[i].frame_num <= sl_params->frame_num) {
+ 			p[i] = dpb[i].frame_num;
+ 			continue;
+ 		}
+-- 
+2.17.1
