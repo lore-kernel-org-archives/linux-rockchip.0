@@ -1,44 +1,101 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH] arm64: defconfig: Enable REGULATOR_MP8859
-Date: Mon, 6 Jul 2020 19:50:09 +0530
-Message-ID: <CAMty3ZDDCeh29myiX7VC2QVZ-dMVDzW4uNNnTumD699is96pcg@mail.gmail.com>
-References: <1582205259-15274-1-git-send-email-sunil@amarulasolutions.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [PATCH 1/2] rkvdec: h264: Refuse to decode unsupported bitstream
+Date: Mon, 06 Jul 2020 16:19:33 -0300
+Message-ID: <bcbd94c1fb4eea06e9e6014c10d6993faa3e3d4f.camel@collabora.com>
+References: <20200626171130.27346-1-ezequiel@collabora.com>
+         <20200626171130.27346-2-ezequiel@collabora.com>
+         <551304f5-88bd-a673-a0ef-47af65700fe7@kwiboo.se>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <1582205259-15274-1-git-send-email-sunil@amarulasolutions.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Markus Reichl <m.reichl@fivetechno.de>, Suniel Mahesh <sunil@amarulasolutions.com>
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <551304f5-88bd-a673-a0ef-47af65700fe7@kwiboo.se>
+Sender: linux-media-owner@vger.kernel.org
+To: Jonas Karlman <jonas@kwiboo.se>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+On Mon, 2020-07-06 at 09:45 +0000, Jonas Karlman wrote:
+> On 2020-06-26 19:11, Ezequiel Garcia wrote:
+> > The hardware only supports 4:2:2, 4:2:0 or 4:0:0 (monochrome),
+> > 8-bit or 10-bit depth content.
+> > 
+> > Verify that the PPS refers to a supported bitstream, and refuse
+> 
+> This should be SPS not PPS, same for hantro patch.
+> 
 
-On Thu, Feb 20, 2020 at 6:57 PM <sunil@amarulasolutions.com> wrote:
->
-> From: Jagan Teki <jagan@amarulasolutions.com>
->
-> RK3399 boards like ROC-RK3399-PC is using MP8859 DC/DC converter
-> for 12V supply.
->
-> roc-rk3399-pc initially used 12V fixed regulator for this supply,
-> but the below commit has switched to use MP8859.
->
-> commit <1fc61ed04d309b0b8b3562acf701ab988eee12de> "arm64: dts: rockchip:
-> Enable mp8859 regulator on rk3399-roc-pc"
->
-> So, enable bydefault on the defconfig.
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> Cc: Markus Reichl <m.reichl@fivetechno.de>
-> Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
-> ---
-> Note:
-> This change set is applied on top of linux-rockchip, branch v5.7-armsoc/dts64.
-> (git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git -b v5.7-armsoc/dts64)
-> This change set was tested on ROC-RK3399-PC, an rk3399 based target.
-> ---
+Yup.
 
-Any update on this?
+> > unsupported bitstreams by failing at TRY_EXT_CTRLS time.
+> > 
+> > The driver is currently broken on 10-bit and 4:2:2
+> > so disallow those as well.
+> > 
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > ---
+> >  drivers/staging/media/rkvdec/rkvdec.c | 27 +++++++++++++++++++++++++++
+> >  1 file changed, 27 insertions(+)
+> > 
+> > diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+> > index 225eeca73356..0f81b47792f6 100644
+> > --- a/drivers/staging/media/rkvdec/rkvdec.c
+> > +++ b/drivers/staging/media/rkvdec/rkvdec.c
+> > @@ -27,6 +27,32 @@
+> >  #include "rkvdec.h"
+> >  #include "rkvdec-regs.h"
+> >  
+> > +static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
+> > +{
+> > +	if (ctrl->id == V4L2_CID_MPEG_VIDEO_H264_SPS) {
+> > +		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_cur.p;
+> 
+> This should be p_new and not p_cur to validate the new ctrl value, same for hantro patch.
+> 
+> With both fixed this and the hantro patch is,
+> 
+> Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
+> 
 
-Jagan.
+Ah, nice catch. Will fix.
+
+Thanks,
+Ezequiel
+
+> Regards,
+> Jonas
+> 
+> > +		/*
+> > +		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
+> > +		 * but it's currently broken in the driver.
+> > +		 * Reject them for now, until it's fixed.
+> > +		 */
+> > +		if (sps->chroma_format_idc > 1)
+> > +			/* Only 4:0:0 and 4:2:0 are supported */
+> > +			return -EINVAL;
+> > +		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
+> > +			/* Luma and chroma bit depth mismatch */
+> > +			return -EINVAL;
+> > +		if (sps->bit_depth_luma_minus8 != 0)
+> > +			/* Only 8-bit is supported */
+> > +			return -EINVAL;
+> > +	}
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct v4l2_ctrl_ops rkvdec_ctrl_ops = {
+> > +	.try_ctrl = rkvdec_try_ctrl,
+> > +};
+> > +
+> >  static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+> >  	{
+> >  		.per_request = true,
+> > @@ -42,6 +68,7 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+> >  		.per_request = true,
+> >  		.mandatory = true,
+> >  		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_SPS,
+> > +		.cfg.ops = &rkvdec_ctrl_ops,
+> >  	},
+> >  	{
+> >  		.per_request = true,
+> > 
