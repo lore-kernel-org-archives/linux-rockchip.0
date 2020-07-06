@@ -1,8 +1,8 @@
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 11/12] media: rkvdec: h264: Support High 10 and 4:2:2
- profiles
-Date: Mon, 06 Jul 2020 21:54:37 +0000 (UTC)
-Message-ID: <20200706215430.22859-12-jonas@kwiboo.se>
+Subject: [PATCH v2 03/12] media: rkvdec: h264: Validate and use pic width and
+ height in mbs
+Date: Mon, 06 Jul 2020 21:54:34 +0000 (UTC)
+Message-ID: <20200706215430.22859-4-jonas@kwiboo.se>
 References: <20200701215616.30874-1-jonas@kwiboo.se>
  <20200706215430.22859-1-jonas@kwiboo.se>
 Content-Type: text/plain; charset=us-ascii
@@ -14,108 +14,70 @@ To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kerne
 Cc: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add support and enable decoding of H264 High 10 and 4:2:2 profiles.
+The width and height in mbs is currently configured based on OUTPUT buffer
+resolution, this works for frame pictures but can cause issues for field
+pictures.
 
-Decoded CAPTURE buffer width is aligned to 64 pixels to accommodate HW
-requirement on 10-bit format buffers.
+When frame_mbs_only_flag is 0 the height in mbs should be height of
+the field instead of height of frame.
 
-The new valid_fmt operation is implemented and return a valid pixelformat
-for the provided SPS control.
+Validate pic_width_in_mbs_minus1 and pic_height_in_map_units_minus1
+against OUTPUT buffer resolution and use these values to configure HW.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 Changes in v2:
-- Only align decoded buffer instead of using frmsize step_width
+- Validate against coded_fmt instead of decoded_fmt
+- Validation moved to rkvdec_try_ctrl
 ---
- drivers/staging/media/rkvdec/rkvdec-h264.c | 20 ++++++++++++++++++++
- drivers/staging/media/rkvdec/rkvdec.c      | 19 +++++++++----------
- 2 files changed, 29 insertions(+), 10 deletions(-)
+ drivers/staging/media/rkvdec/rkvdec-h264.c |  4 ++--
+ drivers/staging/media/rkvdec/rkvdec.c      | 10 ++++++++++
+ 2 files changed, 12 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/staging/media/rkvdec/rkvdec-h264.c b/drivers/staging/media/rkvdec/rkvdec-h264.c
-index 10756b9d6118..0757fc97d1ff 100644
+index f0cfed84d60d..3498e9eec3d8 100644
 --- a/drivers/staging/media/rkvdec/rkvdec-h264.c
 +++ b/drivers/staging/media/rkvdec/rkvdec-h264.c
-@@ -1018,6 +1018,25 @@ static int rkvdec_h264_adjust_fmt(struct rkvdec_ctx *ctx,
- 	return 0;
- }
- 
-+static u32 rkvdec_h264_valid_fmt(struct rkvdec_ctx *ctx, struct v4l2_ctrl *ctrl)
-+{
-+	const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p;
-+
-+	if (sps->bit_depth_luma_minus8 == 0) {
-+		if (sps->chroma_format_idc == 2)
-+			return V4L2_PIX_FMT_NV16;
-+		else
-+			return V4L2_PIX_FMT_NV12;
-+	} else if (sps->bit_depth_luma_minus8 == 2) {
-+		if (sps->chroma_format_idc == 2)
-+			return V4L2_PIX_FMT_NV20;
-+		else
-+			return V4L2_PIX_FMT_NV15;
-+	}
-+
-+	return 0;
-+}
-+
- static int rkvdec_h264_start(struct rkvdec_ctx *ctx)
- {
- 	struct rkvdec_dev *rkvdec = ctx->dev;
-@@ -1125,6 +1144,7 @@ static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
- 
- const struct rkvdec_coded_fmt_ops rkvdec_h264_fmt_ops = {
- 	.adjust_fmt = rkvdec_h264_adjust_fmt,
-+	.valid_fmt = rkvdec_h264_valid_fmt,
- 	.start = rkvdec_h264_start,
- 	.stop = rkvdec_h264_stop,
- 	.run = rkvdec_h264_run,
+@@ -672,8 +672,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+ 		  LOG2_MAX_PIC_ORDER_CNT_LSB_MINUS4);
+ 	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_DELTA_PIC_ORDER_ALWAYS_ZERO),
+ 		  DELTA_PIC_ORDER_ALWAYS_ZERO_FLAG);
+-	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.width, 16), PIC_WIDTH_IN_MBS);
+-	WRITE_PPS(DIV_ROUND_UP(ctx->coded_fmt.fmt.pix_mp.height, 16), PIC_HEIGHT_IN_MBS);
++	WRITE_PPS(sps->pic_width_in_mbs_minus1 + 1, PIC_WIDTH_IN_MBS);
++	WRITE_PPS(sps->pic_height_in_map_units_minus1 + 1, PIC_HEIGHT_IN_MBS);
+ 	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_FRAME_MBS_ONLY),
+ 		  FRAME_MBS_ONLY_FLAG);
+ 	WRITE_PPS(!!(sps->flags & V4L2_H264_SPS_FLAG_MB_ADAPTIVE_FRAME_FIELD),
 diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index 11a88cb6407d..4faee9262392 100644
+index 4ab8f7e0566b..7a9f78bc0a55 100644
 --- a/drivers/staging/media/rkvdec/rkvdec.c
 +++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -31,7 +31,7 @@ static void rkvdec_fill_decoded_pixfmt(struct rkvdec_ctx *ctx,
- 				       struct v4l2_pix_format_mplane *pix_mp)
+@@ -29,8 +29,11 @@
+ 
+ static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
  {
- 	v4l2_fill_pixfmt_mp(pix_mp, pix_mp->pixelformat,
--			    pix_mp->width, pix_mp->height);
-+			    ALIGN(pix_mp->width, 64), pix_mp->height);
- 	pix_mp->plane_fmt[0].sizeimage += 128 *
- 		DIV_ROUND_UP(pix_mp->width, 16) *
- 		DIV_ROUND_UP(pix_mp->height, 16);
-@@ -55,19 +55,15 @@ static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
++	struct rkvdec_ctx *ctx = container_of(ctrl->handler, struct rkvdec_ctx, ctrl_hdl);
++
  	if (ctrl->id == V4L2_CID_MPEG_VIDEO_H264_SPS) {
  		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p;
- 		unsigned int width, height;
--		/*
--		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
--		 * but it's currently broken in the driver.
--		 * Reject them for now, until it's fixed.
--		 */
--		if (sps->chroma_format_idc > 1)
--			/* Only 4:0:0 and 4:2:0 are supported */
++		unsigned int width, height;
+ 		/*
+ 		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
+ 		 * but it's currently broken in the driver.
+@@ -45,6 +48,13 @@ static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
+ 		if (sps->bit_depth_luma_minus8 != 0)
+ 			/* Only 8-bit is supported */
+ 			return -EINVAL;
 +
-+		if (sps->chroma_format_idc > 2)
-+			/* Only 4:0:0, 4:2:0 and 4:2:2 are supported */
- 			return -EINVAL;
- 		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
- 			/* Luma and chroma bit depth mismatch */
- 			return -EINVAL;
--		if (sps->bit_depth_luma_minus8 != 0)
--			/* Only 8-bit is supported */
-+		if (sps->bit_depth_luma_minus8 != 0 && sps->bit_depth_luma_minus8 != 2)
-+			/* Only 8-bit and 10-bit is supported */
- 			return -EINVAL;
- 
- 		if (ctx->valid_fmt && ctx->valid_fmt != rkvdec_valid_fmt(ctx, ctrl))
-@@ -157,6 +153,9 @@ static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
- 
- static const u32 rkvdec_h264_decoded_fmts[] = {
- 	V4L2_PIX_FMT_NV12,
-+	V4L2_PIX_FMT_NV15,
-+	V4L2_PIX_FMT_NV16,
-+	V4L2_PIX_FMT_NV20,
- };
- 
- static const struct rkvdec_coded_fmt_desc rkvdec_coded_fmts[] = {
++		width = (sps->pic_width_in_mbs_minus1 + 1) * 16;
++		height = (sps->pic_height_in_map_units_minus1 + 1) * 16;
++
++		if (width > ctx->coded_fmt.fmt.pix_mp.width ||
++		    height > ctx->coded_fmt.fmt.pix_mp.height)
++			return -EINVAL;
+ 	}
+ 	return 0;
+ }
 -- 
 2.17.1
