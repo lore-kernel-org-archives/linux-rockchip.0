@@ -1,91 +1,85 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH 1/2] rkvdec: h264: Refuse to decode unsupported bitstream
-Date: Mon, 06 Jul 2020 09:45:46 +0000 (UTC)
-Message-ID: <551304f5-88bd-a673-a0ef-47af65700fe7@kwiboo.se>
-References: <20200626171130.27346-1-ezequiel@collabora.com>
- <20200626171130.27346-2-ezequiel@collabora.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH 1/4] media: staging: rkisp1: remove two unused fields in
+ uapi struct
+Date: Mon, 6 Jul 2020 16:16:50 +0200
+Message-ID: <96f0b266-fa9d-d78b-ae34-6b660fea2c98@collabora.com>
+References: <20200625185017.16493-1-dafna.hirschfeld@collabora.com>
+ <20200625185017.16493-2-dafna.hirschfeld@collabora.com>
+ <164269d27b1d5bd1a70adb0b53acbda0baa903aa.camel@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200626171130.27346-2-ezequiel@collabora.com>
-Content-Language: sv
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, kernel@collabora.com
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <164269d27b1d5bd1a70adb0b53acbda0baa903aa.camel@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: helen.koike@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-06-26 19:11, Ezequiel Garcia wrote:
-> The hardware only supports 4:2:2, 4:2:0 or 4:0:0 (monochrome),
-> 8-bit or 10-bit depth content.
+Hi,
+
+On 26.06.20 14:47, Ezequiel Garcia wrote:
+> Hi Dafna,
 > 
-> Verify that the PPS refers to a supported bitstream, and refuse
+> Thanks for all the rkisp1 patches, I hope we can get
+> the driver out of staging soon.
 
-This should be SPS not PPS, same for hantro patch.
+me too.
 
-> unsupported bitstreams by failing at TRY_EXT_CTRLS time.
 > 
-> The driver is currently broken on 10-bit and 4:2:2
-> so disallow those as well.
+> On Thu, 2020-06-25 at 20:50 +0200, Dafna Hirschfeld wrote:
+>> The fields 'config_width', 'config_height' in struct
+>> 'rkisp1_cif_isp_lsc_config' are not used by the driver and
+>> therefore are not needed. This patch removes them.
+>> In later patch, documentation of the fields in struct
+>> 'rkisp1_cif_isp_lsc_config' will be added.
+>>
 > 
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> ---
->  drivers/staging/media/rkvdec/rkvdec.c | 27 +++++++++++++++++++++++++++
->  1 file changed, 27 insertions(+)
+> If I understand correctly, you are affecting the uAPI here.
 > 
-> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-> index 225eeca73356..0f81b47792f6 100644
-> --- a/drivers/staging/media/rkvdec/rkvdec.c
-> +++ b/drivers/staging/media/rkvdec/rkvdec.c
-> @@ -27,6 +27,32 @@
->  #include "rkvdec.h"
->  #include "rkvdec-regs.h"
->  
-> +static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
-> +{
-> +	if (ctrl->id == V4L2_CID_MPEG_VIDEO_H264_SPS) {
-> +		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_cur.p;
+> The fact that the driver doesn't use it now, doesn't mean
+> it won't need it at some later point.
+> 
+> I'm not saying the change is wrong, but that the "not currently
+> in use" reason might be insufficient for a uAPI. If you
+> want to remove this field, I suggest you make sure
+> the field is inappropriate for this interface.
+> 
+I looked at the documentation and didn't find
+any width/height values related to the LSC interface.
+So I it seems to be ok to remove those fields.
 
-This should be p_new and not p_cur to validate the new ctrl value, same for hantro patch.
+> Also, it would be better if you could add a cover letter
+> on all the series, there are a bunch of rkisp1 patches now
+> and having a cover letter helps by adding some context.
+> 
 
-With both fixed this and the hantro patch is,
+I did add a cover-letter: https://patchwork.kernel.org/cover/11625921/
 
-Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
+Thanks,
+Dafna
 
-Regards,
-Jonas
-
-> +		/*
-> +		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
-> +		 * but it's currently broken in the driver.
-> +		 * Reject them for now, until it's fixed.
-> +		 */
-> +		if (sps->chroma_format_idc > 1)
-> +			/* Only 4:0:0 and 4:2:0 are supported */
-> +			return -EINVAL;
-> +		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
-> +			/* Luma and chroma bit depth mismatch */
-> +			return -EINVAL;
-> +		if (sps->bit_depth_luma_minus8 != 0)
-> +			/* Only 8-bit is supported */
-> +			return -EINVAL;
-> +	}
-> +	return 0;
-> +}
-> +
-> +static const struct v4l2_ctrl_ops rkvdec_ctrl_ops = {
-> +	.try_ctrl = rkvdec_try_ctrl,
-> +};
-> +
->  static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
->  	{
->  		.per_request = true,
-> @@ -42,6 +68,7 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
->  		.per_request = true,
->  		.mandatory = true,
->  		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_SPS,
-> +		.cfg.ops = &rkvdec_ctrl_ops,
->  	},
->  	{
->  		.per_request = true,
+> Thanks,
+> Ezequiel
+> 
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>> ---
+>>   drivers/staging/media/rkisp1/uapi/rkisp1-config.h | 2 --
+>>   1 file changed, 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
+>> index ca0d031b14ac..7331bacf7dfd 100644
+>> --- a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
+>> +++ b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
+>> @@ -285,8 +285,6 @@ struct rkisp1_cif_isp_lsc_config {
+>>   
+>>   	__u32 x_size_tbl[RKISP1_CIF_ISP_LSC_SIZE_TBL_SIZE];
+>>   	__u32 y_size_tbl[RKISP1_CIF_ISP_LSC_SIZE_TBL_SIZE];
+>> -	__u16 config_width;
+>> -	__u16 config_height;
+>>   } __packed;
+>>   
+>>   /**
+> 
 > 
