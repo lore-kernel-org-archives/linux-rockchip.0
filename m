@@ -1,89 +1,51 @@
 From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 00/12] media: rkvdec: Add H.264 High 10 and 4:2:2 profile
- support
-Date: Mon, 06 Jul 2020 21:54:33 +0000 (UTC)
-Message-ID: <20200706215430.22859-1-jonas@kwiboo.se>
-References: <20200701215616.30874-1-jonas@kwiboo.se>
+Subject: [PATCH v2 0/2] drm: rockchip: add NV15, NV20 and NV30 support
+Date: Mon, 06 Jul 2020 22:30:12 +0000 (UTC)
+Message-ID: <20200706223009.1200-1-jonas@kwiboo.se>
+References: <20200607202521.18438-1-jonas@kwiboo.se>
 Content-Type: text/plain; charset=us-ascii
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200701215616.30874-1-jonas@kwiboo.se>
-Sender: linux-media-owner@vger.kernel.org
-To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Jonas Karlman <jonas@kwiboo.se>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200607202521.18438-1-jonas@kwiboo.se>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Sandy Huang <hjc@rock-chips.com>, Heiko =?iso-8859-1?q?St=FCbner?= <heiko@sntech.de>
+Cc: Jonas Karlman <jonas@kwiboo.se>, Ben Davis <ben.davis@arm.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This series contains minor fixes and adds H.264 High 10 and 4:2:2 profile
-support to the Rockchip Video Decoder driver.
+Hi,
 
-Patch 1 and 3 fixes two issues when decoding field encoded content. Patch 2
-ensures CAPTURE buffer is same resolution or larger than OUTPUT buffer.
+This series adds support for displaying 10-bit 4:2:0 and 4:2:2 formats produced
+by the Rockchip Video Decoder on RK322X, RK3288, RK3328, RK3368 and RK3399.
+Also include 10-bit 4:4:4 support since VOP can support that also.
 
-Patch 5 allows userspace to set OUTPUT sizeimage.
-
-Patch 6 updates the v4l2_format helpers to consider block width and height
-when calculating plane bytesperline and sizeimage.
-
-Patch 7 adds two new pixelformats for 10-bit 4:2:0/4:2:2.
-
-Patch 8 change to use bytesperline and buffer height to configure strides.
-
-Patch 9 and 10 add support for limit/lock down a pixelformat based on SPS.
-
-Patch 11 adds final bits to support H.264 High 10 and 4:2:2 profiles.
-
-Patch 12 adds profile and level controls.
+First patch adds new fourcc 10-bit YUV formats with 4:2:2/4:4:4 sub-sampling.
+Second patch adds support for displaying the the new fourcc formats.
 
 Changes in v2:
-- Collect r-b tags
-- SPS pic width and height in mbs validation moved to rkvdec_try_ctrl
-- New patch to not override output buffer sizeimage
-- Reworked pixel format validation
-- Only align decoded buffer instead of changing frmsize step_width
-See indivitual patch for changes.
+- Add NV30 format
+- R-B tags was not collected due to NV30 changes
 
-This series depend on the "handle unsupported H.264 bitstreams" series at [1]
-with a small fixup, s/p_cur/p_new/.
+This series has been tested on RK3399 using a Rockchip Video Decoder series
+at [1] together with ffmpeg at [2] and kodi-gbm or mpv. [3] contains all
+patches needed on top of linux-media master for easy testing.
 
-To fully runtime test this series you may need drm patches from [2] and
-ffmpeg patches from [3], this series and drm patches is also available at [4].
-
-[1] https://patchwork.linuxtv.org/cover/64977/
-[2] https://patchwork.freedesktop.org/series/78099/
-[3] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-hwaccel-4.3-rkvdec-high-10
-[4] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-high-10-v2
+[1] https://patchwork.linuxtv.org/project/linux-media/list/?series=2859
+[2] https://github.com/Kwiboo/FFmpeg/commits/v4l2-request-hwaccel-4.3-rkvdec-high-10
+[3] https://github.com/Kwiboo/linux-rockchip/commits/linuxtv-rkvdec-high-10-v2
 
 Regards,
 Jonas
 
-Jonas Karlman (12):
-  media: rkvdec: h264: Fix reference frame_num wrap for second field
-  media: rkvdec: Ensure decoded resolution fit coded resolution
-  media: rkvdec: h264: Validate and use pic width and height in mbs
-  media: rkvdec: h264: Fix bit depth wrap in pps packet
-  media: rkvdec: h264: Do not override output buffer sizeimage
-  media: v4l2-common: Add helpers to calculate bytesperline and
-    sizeimage
-  media: v4l2: Add NV15 and NV20 pixel formats
-  media: rkvdec: h264: Use bytesperline and buffer height to calculate
-    stride
-  media: rkvdec: Extract rkvdec_fill_decoded_pixfmt helper method
-  media: rkvdec: Lock capture pixel format in s_ctrl and s_fmt
-  media: rkvdec: h264: Support High 10 and 4:2:2 profiles
-  media: rkvdec: h264: Support profile and level controls
+Jonas Karlman (2):
+  drm: drm_fourcc: add NV20 and NV30 YUV formats
+  drm: rockchip: add NV15, NV20 and NV30 support
 
- .../userspace-api/media/v4l/pixfmt-nv15.rst   | 101 ++++++++++++++
- .../userspace-api/media/v4l/pixfmt-nv20.rst   |  99 +++++++++++++
- .../userspace-api/media/v4l/yuv-formats.rst   |   2 +
- drivers/media/v4l2-core/v4l2-common.c         |  80 +++++------
- drivers/media/v4l2-core/v4l2-ioctl.c          |   2 +
- drivers/staging/media/rkvdec/rkvdec-h264.c    |  45 ++++--
- drivers/staging/media/rkvdec/rkvdec.c         | 130 ++++++++++++++----
- drivers/staging/media/rkvdec/rkvdec.h         |   2 +
- include/uapi/linux/videodev2.h                |   3 +
- 9 files changed, 384 insertions(+), 80 deletions(-)
- create mode 100644 Documentation/userspace-api/media/v4l/pixfmt-nv15.rst
- create mode 100644 Documentation/userspace-api/media/v4l/pixfmt-nv20.rst
+ drivers/gpu/drm/drm_fourcc.c                |  8 ++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 29 +++++++++++++++++--
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  1 +
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 32 +++++++++++++++++----
+ include/uapi/drm/drm_fourcc.h               |  2 ++
+ 5 files changed, 64 insertions(+), 8 deletions(-)
 
 -- 
 2.17.1
