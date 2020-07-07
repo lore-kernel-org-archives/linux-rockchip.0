@@ -1,204 +1,109 @@
-From: Huang Jiachai <hjc@rock-chips.com>
-Subject: =?UTF-8?Q?Re=3a_=5bPATCH_v2_2/2=5d_drm=3a_rockchip=3a_add_NV15=2c_N?=
- =?UTF-8?B?VjIwIGFuZCBOVjMwIHN1cHBvcnTjgJDor7fms6jmhI/vvIzpgq7ku7bnlLFsaW51?=
- =?UTF-8?Q?x-rockchip-bounces+sandy=2ehuang=3drock-chips=2ecom=40lists=2einf?=
- =?UTF-8?B?cmFkZWFkLm9yZ+S7o+WPkeOAkQ==?=
-Date: Tue, 7 Jul 2020 19:45:54 +0800
-Message-ID: <d639a703-f382-1760-b339-afec70e0e9b9@rock-chips.com>
-References: <20200607202521.18438-1-jonas@kwiboo.se>
- <20200706223009.1200-1-jonas@kwiboo.se>
- <20200706223009.1200-3-jonas@kwiboo.se>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v3 1/6] rock-pi-4: Enable USB3 Host
+Date: Tue,  7 Jul 2020 19:20:44 +0530
+Message-ID: <20200707135049.9521-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=gbk; format=flowed
 Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200706223009.1200-3-jonas@kwiboo.se>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jonas Karlman <jonas@kwiboo.se>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>, Ben Davis <ben.davis@arm.com>
+Return-path: <u-boot-bounces@lists.denx.de>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>, Tom Cubie <tom@radxa.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Enable USB3.0 Host support for RockPI-4 boards.
 
-在 2020/7/7 6:30, Jonas Karlman 写道:
-> Add support for displaying 10-bit 4:2:0 and 4:2:2 formats produced by the
-> Rockchip Video Decoder on RK322X, RK3288, RK3328, RK3368 and RK3399.
-> Also add support for 10-bit 4:4:4 format while at it.
->
-> V2: Added NV30 support
->
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
->   drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 29 +++++++++++++++++--
->   drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  1 +
->   drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 32 +++++++++++++++++----
->   3 files changed, 54 insertions(+), 8 deletions(-)
->
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> index c80f7d9fd13f..eb663e25ad9e 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-> @@ -261,6 +261,18 @@ static bool has_rb_swapped(uint32_t format)
->   	}
->   }
->   
-> +static bool is_fmt_10(uint32_t format)
-> +{
-> +	switch (format) {
-> +	case DRM_FORMAT_NV15:
-> +	case DRM_FORMAT_NV20:
-> +	case DRM_FORMAT_NV30:
-> +		return true;
-> +	default:
-> +		return false;
-> +	}
-> +}
-> +
->   static enum vop_data_format vop_convert_format(uint32_t format)
->   {
->   	switch (format) {
-> @@ -276,10 +288,13 @@ static enum vop_data_format vop_convert_format(uint32_t format)
->   	case DRM_FORMAT_BGR565:
->   		return VOP_FMT_RGB565;
->   	case DRM_FORMAT_NV12:
-> +	case DRM_FORMAT_NV15:
->   		return VOP_FMT_YUV420SP;
->   	case DRM_FORMAT_NV16:
-> +	case DRM_FORMAT_NV20:
->   		return VOP_FMT_YUV422SP;
->   	case DRM_FORMAT_NV24:
-> +	case DRM_FORMAT_NV30:
->   		return VOP_FMT_YUV444SP;
->   	default:
->   		DRM_ERROR("unsupported format[%08x]\n", format);
-> @@ -922,7 +937,12 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
->   	dsp_sty = dest->y1 + crtc->mode.vtotal - crtc->mode.vsync_start;
->   	dsp_st = dsp_sty << 16 | (dsp_stx & 0xffff);
->   
-> -	offset = (src->x1 >> 16) * fb->format->cpp[0];
-> +	if (fb->format->block_w[0])
-> +		offset = (src->x1 >> 16) * fb->format->char_per_block[0] /
-> +			 fb->format->block_w[0];
-> +	else
-> +		offset = (src->x1 >> 16) * fb->format->cpp[0];
-> +
->   	offset += (src->y1 >> 16) * fb->pitches[0];
->   	dma_addr = rk_obj->dma_addr + offset + fb->offsets[0];
->   
-> @@ -948,6 +968,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
->   	}
->   
->   	VOP_WIN_SET(vop, win, format, format);
-> +	VOP_WIN_SET(vop, win, fmt_10, is_fmt_10(fb->format->format));
->   	VOP_WIN_SET(vop, win, yrgb_vir, DIV_ROUND_UP(fb->pitches[0], 4));
->   	VOP_WIN_SET(vop, win, yrgb_mst, dma_addr);
->   	VOP_WIN_YUV2YUV_SET(vop, win_yuv2yuv, y2r_en, is_yuv);
-> @@ -964,7 +985,11 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
->   		uv_obj = fb->obj[1];
->   		rk_uv_obj = to_rockchip_obj(uv_obj);
->   
-> -		offset = (src->x1 >> 16) * bpp / hsub;
-> +		if (fb->format->block_w[1])
-> +			offset = (src->x1 >> 16) * bpp /
-> +				 fb->format->block_w[1] / hsub;
-> +		else
-> +			offset = (src->x1 >> 16) * bpp / hsub;
->   		offset += (src->y1 >> 16) * fb->pitches[1] / vsub;
->   
->   		dma_addr = rk_uv_obj->dma_addr + offset + fb->offsets[1];
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-> index 4a2099cb582e..eab055d9b56d 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
-> @@ -154,6 +154,7 @@ struct vop_win_phy {
->   	struct vop_reg enable;
->   	struct vop_reg gate;
->   	struct vop_reg format;
-> +	struct vop_reg fmt_10;
->   	struct vop_reg rb_swap;
->   	struct vop_reg act_info;
->   	struct vop_reg dsp_info;
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> index 80053d91a301..2c55e1852c3d 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
-> @@ -50,6 +50,23 @@ static const uint32_t formats_win_full[] = {
->   	DRM_FORMAT_NV24,
->   };
->   
-> +static const uint32_t formats_win_full_10[] = {
-> +	DRM_FORMAT_XRGB8888,
-> +	DRM_FORMAT_ARGB8888,
-> +	DRM_FORMAT_XBGR8888,
-> +	DRM_FORMAT_ABGR8888,
-> +	DRM_FORMAT_RGB888,
-> +	DRM_FORMAT_BGR888,
-> +	DRM_FORMAT_RGB565,
-> +	DRM_FORMAT_BGR565,
-> +	DRM_FORMAT_NV12,
-> +	DRM_FORMAT_NV16,
-> +	DRM_FORMAT_NV24,
-> +	DRM_FORMAT_NV15,
-> +	DRM_FORMAT_NV20,
-> +	DRM_FORMAT_NV30,
-> +};
-> +
->   static const uint64_t format_modifiers_win_full[] = {
->   	DRM_FORMAT_MOD_LINEAR,
->   	DRM_FORMAT_MOD_INVALID,
-> @@ -579,11 +596,12 @@ static const struct vop_scl_regs rk3288_win_full_scl = {
->   
->   static const struct vop_win_phy rk3288_win01_data = {
->   	.scl = &rk3288_win_full_scl,
-> -	.data_formats = formats_win_full,
-> -	.nformats = ARRAY_SIZE(formats_win_full),
-> +	.data_formats = formats_win_full_10,
-> +	.nformats = ARRAY_SIZE(formats_win_full_10),
->   	.format_modifiers = format_modifiers_win_full,
->   	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
->   	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
-> +	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
->   	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
->   	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
->   	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
-> @@ -713,11 +731,12 @@ static const struct vop_intr rk3368_vop_intr = {
->   
->   static const struct vop_win_phy rk3368_win01_data = {
->   	.scl = &rk3288_win_full_scl,
-> -	.data_formats = formats_win_full,
-> -	.nformats = ARRAY_SIZE(formats_win_full),
-> +	.data_formats = formats_win_full_10,
-> +	.nformats = ARRAY_SIZE(formats_win_full_10),
->   	.format_modifiers = format_modifiers_win_full,
->   	.enable = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 0),
->   	.format = VOP_REG(RK3368_WIN0_CTRL0, 0x7, 1),
-> +	.fmt_10 = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 4),
->   	.rb_swap = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 12),
->   	.x_mir_en = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 21),
->   	.y_mir_en = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 22),
-> @@ -862,11 +881,12 @@ static const struct vop_win_yuv2yuv_data rk3399_vop_big_win_yuv2yuv_data[] = {
->   
->   static const struct vop_win_phy rk3399_win01_data = {
->   	.scl = &rk3288_win_full_scl,
-> -	.data_formats = formats_win_full,
-> -	.nformats = ARRAY_SIZE(formats_win_full),
-> +	.data_formats = formats_win_full_10,
-> +	.nformats = ARRAY_SIZE(formats_win_full_10),
->   	.format_modifiers = format_modifiers_win_full_afbc,
->   	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
->   	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
-> +	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
->   	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
->   	.y_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 22),
->   	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
+Note that the Upper USB3.0 port is marked as otg and
+lower USB3.0 port marked as host, so this below log
+capture when USB3.0 mass storage plug in at lower
+USB 3.0 port.
 
-Reviewed-by: Sandy Huang <hjc@rock-chips.com>
+Log:
+Bus usb@fe380000: USB EHCI 1.00
+Bus usb@fe3c0000: USB EHCI 1.00
+Bus dwc3: usb maximum-speed not found
+Register 2000140 NbrPorts 2
+Starting the controller
+USB XHCI 1.10
+Bus dwc3: usb maximum-speed not found
+Register 2000140 NbrPorts 2
+Starting the controller
+USB XHCI 1.10
+scanning bus usb@fe380000 for devices... 1 USB Device(s) found
+scanning bus usb@fe3c0000 for devices... 1 USB Device(s) found
+scanning bus dwc3 for devices... 1 USB Device(s) found
+scanning bus dwc3 for devices... cannot reset port 1!?
+2 USB Device(s) found
+       scanning usb for storage devices... 1 Storage Device(s) found
+=> usb tree
+USB device tree:
+  1  Hub (480 Mb/s, 0mA)
+     u-boot EHCI Host Controller
 
+  1  Hub (480 Mb/s, 0mA)
+     u-boot EHCI Host Controller
+
+  1  Hub (5 Gb/s, 0mA)
+     U-Boot XHCI Host Controller
+
+  1  Hub (5 Gb/s, 0mA)
+  |  U-Boot XHCI Host Controller
+  |
+  +-2  Mass Storage (5 Gb/s, 224mA)
+       SanDisk Dual Drive 040130e3ee554b7078843f4eb331646
+
+Cc: Tom Cubie <tom@radxa.com>
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+---
+Changes for v3:
+- collect kever review tag
+
+ configs/rock-pi-4-rk3399_defconfig | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
+index 0d86fdc895..2487872219 100644
+--- a/configs/rock-pi-4-rk3399_defconfig
++++ b/configs/rock-pi-4-rk3399_defconfig
+@@ -28,6 +28,7 @@ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
+ CONFIG_ROCKCHIP_GPIO=y
+ CONFIG_SYS_I2C_ROCKCHIP=y
++CONFIG_MISC=y
+ CONFIG_MMC_DW=y
+ CONFIG_MMC_DW_ROCKCHIP=y
+ CONFIG_MMC_SDHCI=y
+@@ -35,11 +36,14 @@ CONFIG_MMC_SDHCI_ROCKCHIP=y
+ CONFIG_DM_ETH=y
+ CONFIG_ETH_DESIGNWARE=y
+ CONFIG_GMAC_ROCKCHIP=y
++CONFIG_PHY_ROCKCHIP_INNO_USB2=y
++CONFIG_PHY_ROCKCHIP_TYPEC=y
+ CONFIG_PMIC_RK8XX=y
+ CONFIG_REGULATOR_PWM=y
+ CONFIG_REGULATOR_RK8XX=y
+ CONFIG_PWM_ROCKCHIP=y
+ CONFIG_RAM_RK3399_LPDDR4=y
++CONFIG_DM_RESET=y
+ CONFIG_BAUDRATE=1500000
+ CONFIG_DEBUG_UART_SHIFT=2
+ CONFIG_SYSRESET=y
+@@ -48,6 +52,8 @@ CONFIG_USB_XHCI_HCD=y
+ CONFIG_USB_XHCI_DWC3=y
+ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_GENERIC=y
++CONFIG_USB_DWC3=y
++CONFIG_USB_DWC3_GENERIC=y
+ CONFIG_USB_HOST_ETHER=y
+ CONFIG_USB_ETHER_ASIX=y
+ CONFIG_USB_ETHER_ASIX88179=y
 -- 
-Best Regard
-
-黄家钗
-Sandy Huang
-Addr: 福州市鼓楼区铜盘路软件大道89号福州软件园A区21号楼(350003)
-       No. 21 Building, A District, No.89,software Boulevard Fuzhou,Fujian,PRC
-Tel：+86 0591-87884919  8690
-E-mail：hjc@rock-chips.com
+2.25.1
