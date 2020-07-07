@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v3 3/6] rock-pi-4: Enable USB Gadget
-Date: Tue,  7 Jul 2020 19:20:46 +0530
-Message-ID: <20200707135049.9521-3-jagan@amarulasolutions.com>
+Subject: [PATCH v3 5/6] roc-rk3399-pc: Enable USB Gadget
+Date: Tue,  7 Jul 2020 19:20:48 +0530
+Message-ID: <20200707135049.9521-5-jagan@amarulasolutions.com>
 References: <20200707135049.9521-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -20,12 +20,9 @@ To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@the
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable USB gadget for rock-pi-4 boards.
+Enable DWC3 core, gadget for roc-rk3399-pc board.
 
 This would help to use fastboot by default.
-
-Note: Connect the Host USB cable (Port A or C) to rock-pi-4
-Upper USB 3.0 port.
 
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
@@ -33,25 +30,50 @@ Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 Changes for v3:
 - collect kever review tag
 
- configs/rock-pi-4-rk3399_defconfig | 2 ++
- 1 file changed, 2 insertions(+)
+ configs/roc-pc-mezzanine-rk3399_defconfig | 3 +++
+ configs/roc-pc-rk3399_defconfig           | 3 +++
+ 2 files changed, 6 insertions(+)
 
-diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
-index f3eeef0293..a4b322074c 100644
---- a/configs/rock-pi-4-rk3399_defconfig
-+++ b/configs/rock-pi-4-rk3399_defconfig
-@@ -8,6 +8,7 @@ CONFIG_NR_DRAM_BANKS=1
- CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
+diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
+index b3c8f19e43..b2c370cc59 100644
+--- a/configs/roc-pc-mezzanine-rk3399_defconfig
++++ b/configs/roc-pc-mezzanine-rk3399_defconfig
+@@ -13,6 +13,7 @@ CONFIG_DEBUG_UART_CLOCK=24000000
+ CONFIG_SPL_SPI_FLASH_SUPPORT=y
+ CONFIG_SPL_SPI_SUPPORT=y
  CONFIG_DEBUG_UART=y
 +# CONFIG_ANDROID_BOOT_IMAGE is not set
- CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4.dtb"
- CONFIG_MISC_INIT_R=y
+ CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-roc-pc-mezzanine.dtb"
  CONFIG_DISPLAY_BOARDINFO_LATE=y
-@@ -57,6 +58,7 @@ CONFIG_USB_EHCI_HCD=y
+ # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+@@ -65,7 +66,9 @@ CONFIG_USB_EHCI_HCD=y
  CONFIG_USB_EHCI_GENERIC=y
  CONFIG_USB_DWC3=y
  CONFIG_USB_DWC3_GENERIC=y
++CONFIG_ROCKCHIP_USB2_PHY=y
+ CONFIG_USB_KEYBOARD=y
++CONFIG_USB_GADGET=y
+ CONFIG_USB_HOST_ETHER=y
+ CONFIG_USB_ETHER_ASIX=y
+ CONFIG_USB_ETHER_ASIX88179=y
+diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+index edb327b46b..588d03952a 100644
+--- a/configs/roc-pc-rk3399_defconfig
++++ b/configs/roc-pc-rk3399_defconfig
+@@ -13,6 +13,7 @@ CONFIG_DEBUG_UART_CLOCK=24000000
+ CONFIG_SPL_SPI_FLASH_SUPPORT=y
+ CONFIG_SPL_SPI_SUPPORT=y
+ CONFIG_DEBUG_UART=y
++# CONFIG_ANDROID_BOOT_IMAGE is not set
+ CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-roc-pc.dtb"
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+ # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+@@ -62,7 +63,9 @@ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_EHCI_GENERIC=y
+ CONFIG_USB_DWC3=y
+ CONFIG_USB_DWC3_GENERIC=y
++CONFIG_ROCKCHIP_USB2_PHY=y
+ CONFIG_USB_KEYBOARD=y
 +CONFIG_USB_GADGET=y
  CONFIG_USB_HOST_ETHER=y
  CONFIG_USB_ETHER_ASIX=y
