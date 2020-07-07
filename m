@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v3 4/6] rock-pi-4: Enable HDMI output
-Date: Tue,  7 Jul 2020 19:20:47 +0530
-Message-ID: <20200707135049.9521-4-jagan@amarulasolutions.com>
+Subject: [PATCH v3 3/6] rock-pi-4: Enable USB Gadget
+Date: Tue,  7 Jul 2020 19:20:46 +0530
+Message-ID: <20200707135049.9521-3-jagan@amarulasolutions.com>
 References: <20200707135049.9521-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -20,37 +20,41 @@ To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@the
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Enable config options to get HDMI output on RockPI-4 boards.
+Enable USB gadget for rock-pi-4 boards.
+
+This would help to use fastboot by default.
+
+Note: Connect the Host USB cable (Port A or C) to rock-pi-4
+Upper USB 3.0 port.
 
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 Changes for v3:
-- fix configs
+- collect kever review tag
 
- configs/rock-pi-4-rk3399_defconfig | 5 +++++
- 1 file changed, 5 insertions(+)
+ configs/rock-pi-4-rk3399_defconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
-index a4b322074c..98f71a50a5 100644
+index f3eeef0293..a4b322074c 100644
 --- a/configs/rock-pi-4-rk3399_defconfig
 +++ b/configs/rock-pi-4-rk3399_defconfig
-@@ -58,6 +58,7 @@ CONFIG_USB_EHCI_HCD=y
+@@ -8,6 +8,7 @@ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+ CONFIG_DEBUG_UART_CLOCK=24000000
+ CONFIG_DEBUG_UART=y
++# CONFIG_ANDROID_BOOT_IMAGE is not set
+ CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4.dtb"
+ CONFIG_MISC_INIT_R=y
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+@@ -57,6 +58,7 @@ CONFIG_USB_EHCI_HCD=y
  CONFIG_USB_EHCI_GENERIC=y
  CONFIG_USB_DWC3=y
  CONFIG_USB_DWC3_GENERIC=y
-+CONFIG_USB_KEYBOARD=y
- CONFIG_USB_GADGET=y
++CONFIG_USB_GADGET=y
  CONFIG_USB_HOST_ETHER=y
  CONFIG_USB_ETHER_ASIX=y
-@@ -65,5 +66,9 @@ CONFIG_USB_ETHER_ASIX88179=y
- CONFIG_USB_ETHER_MCS7830=y
- CONFIG_USB_ETHER_RTL8152=y
- CONFIG_USB_ETHER_SMSC95XX=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_DISPLAY=y
-+CONFIG_VIDEO_ROCKCHIP=y
-+CONFIG_DISPLAY_ROCKCHIP_HDMI=y
- CONFIG_SPL_TINY_MEMSET=y
- CONFIG_ERRNO_STR=y
+ CONFIG_USB_ETHER_ASIX88179=y
 -- 
 2.25.1
