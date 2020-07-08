@@ -1,74 +1,81 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v4 4/4] ARM: dts: rockchip: Add Radxa Rock Pi N8 initial support
-Date: Wed,  8 Jul 2020 12:06:27 +0530
-Message-ID: <20200708063627.8365-5-jagan@amarulasolutions.com>
-References: <20200708063627.8365-1-jagan@amarulasolutions.com>
+From: Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH v2 12/12] media: rkvdec: h264: Support profile and level
+ controls
+Date: Wed, 08 Jul 2020 09:34:10 +0000 (UTC)
+Message-ID: <dc1fcf7a-cc5e-0bee-ae74-d8d1464a1815@kwiboo.se>
+References: <20200701215616.30874-1-jonas@kwiboo.se>
+ <20200706215430.22859-1-jonas@kwiboo.se>
+ <20200706215430.22859-13-jonas@kwiboo.se>
+ <97a4c51aa5cfcdef7f4c96fcf84f85bd7c8b3729.camel@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200708063627.8365-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Tom Cubie <tom-jhlD/3HTYFgAvxtiuMwx3w@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <97a4c51aa5cfcdef7f4c96fcf84f85bd7c8b3729.camel@collabora.com>
+Content-Language: sv
+Sender: linux-kernel-owner@vger.kernel.org
+To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rock Pi N8 is a Rockchip RK3288 based SBC, which has
-- VMARC RK3288 SOM (as per SMARC standard) from Vamrs.
-- Compatible carrier board from Radxa.
+On 2020-07-08 05:19, Ezequiel Garcia wrote:
+> On Mon, 2020-07-06 at 21:54 +0000, Jonas Karlman wrote:
+>> The Rockchip Video Decoder used in RK3399 supports H.264 profiles from
+>> Baseline to High 4:2:2 up to Level 5.1, except for the Extended profile.
+>>
+>> Expose the V4L2_CID_MPEG_VIDEO_H264_PROFILE and the
+>> V4L2_CID_MPEG_VIDEO_H264_LEVEL control, so that userspace can query the
+>> driver for the list of supported profiles and level.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
+>> ---
+>> Changes in v2:
+>> - Moved to end
+>> - Collect r-b tag
+>> ---
+>>  drivers/staging/media/rkvdec/rkvdec.c | 13 +++++++++++++
+>>  1 file changed, 13 insertions(+)
+>>
+>> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+>> index 4faee9262392..b21031535330 100644
+>> --- a/drivers/staging/media/rkvdec/rkvdec.c
+>> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+>> @@ -144,6 +144,19 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+>>  		.cfg.def = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
+>>  		.cfg.max = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
+>>  	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
+>> +		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
+> 
+> Nicolas recently pointed out to me that our drivers
+> can't support ASO/FMO baseline features, and so
+> seems we need to leave baseline out.
 
-VAMRC RK3288 SOM need to mount on top of radxa dalang
-carrier board for making Rock Pi N8 SBC.
+I will change min to V4L2_MPEG_VIDEO_H264_PROFILE_CONSTRAINED_BASELINE in v3.
 
-So, add initial support for Rock Pi N8 by including rk3288,
-rk3288 vamrc-som and raxda dalang carrier board dtsi files.
+Regards,
+Jonas
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
-Changes for v4, v3:
-- none
-Changes for v2:
-- reorder dtsi include so-that common properties will
-  visible to main dts.
-
- arch/arm/boot/dts/Makefile              |  1 +
- arch/arm/boot/dts/rk3288-rock-pi-n8.dts | 17 +++++++++++++++++
- 2 files changed, 18 insertions(+)
- create mode 100644 arch/arm/boot/dts/rk3288-rock-pi-n8.dts
-
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index e8dd99201397..1d1b6ac26394 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -964,6 +964,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3288-popmetal.dtb \
- 	rk3288-r89.dtb \
- 	rk3288-rock2-square.dtb \
-+	rk3288-rock-pi-n8.dtb \
- 	rk3288-tinker.dtb \
- 	rk3288-tinker-s.dtb \
- 	rk3288-veyron-brain.dtb \
-diff --git a/arch/arm/boot/dts/rk3288-rock-pi-n8.dts b/arch/arm/boot/dts/rk3288-rock-pi-n8.dts
-new file mode 100644
-index 000000000000..b19593021713
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-rock-pi-n8.dts
-@@ -0,0 +1,17 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
-+ * Copyright (c) 2019 Vamrs Limited
-+ * Copyright (c) 2019 Amarula Solutions(India)
-+ */
-+
-+/dts-v1/;
-+#include "rk3288.dtsi"
-+#include <arm/rockchip-radxa-dalang-carrier.dtsi>
-+#include "rk3288-vmarc-som.dtsi"
-+
-+/ {
-+	model = "Radxa ROCK Pi N8";
-+	compatible = "radxa,rockpi-n8", "vamrs,rk3288-vmarc-som",
-+		     "rockchip,rk3288";
-+};
--- 
-2.25.1
+> 
+> (Applies to Hantro as well).
+> 
+> Thanks,
+> Ezequiel
+> 
+>> +		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_422,
+>> +		.cfg.menu_skip_mask =
+>> +			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
+>> +		.cfg.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
+>> +	},
+>> +	{
+>> +		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_LEVEL,
+>> +		.cfg.min = V4L2_MPEG_VIDEO_H264_LEVEL_1_0,
+>> +		.cfg.max = V4L2_MPEG_VIDEO_H264_LEVEL_5_1,
+>> +	},
+>>  };
+>>  
+>>  static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
+> 
+> 
