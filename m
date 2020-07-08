@@ -1,81 +1,96 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v2 12/12] media: rkvdec: h264: Support profile and level
- controls
-Date: Wed, 08 Jul 2020 09:34:10 +0000 (UTC)
-Message-ID: <dc1fcf7a-cc5e-0bee-ae74-d8d1464a1815@kwiboo.se>
-References: <20200701215616.30874-1-jonas@kwiboo.se>
- <20200706215430.22859-1-jonas@kwiboo.se>
- <20200706215430.22859-13-jonas@kwiboo.se>
- <97a4c51aa5cfcdef7f4c96fcf84f85bd7c8b3729.camel@collabora.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH] rockchip: rk3288: Add OF board setup
+Date: Wed, 8 Jul 2020 18:04:34 +0800
+Message-ID: <d4688094-22bd-eae9-e121-4d8d63397e78@rock-chips.com>
+References: <20200702084820.35942-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <97a4c51aa5cfcdef7f4c96fcf84f85bd7c8b3729.camel@collabora.com>
-Content-Language: sv
-Sender: linux-kernel-owner@vger.kernel.org
-To: Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: Hans Verkuil <hans.verkuil@cisco.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Tomasz Figa <tfiga@chromium.org>, Alexandre Courbot <acourbot@chromium.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200702084820.35942-1-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, heiko@sntech.de, mylene.josserand@collabora.com
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-07-08 05:19, Ezequiel Garcia wrote:
-> On Mon, 2020-07-06 at 21:54 +0000, Jonas Karlman wrote:
->> The Rockchip Video Decoder used in RK3399 supports H.264 profiles from
->> Baseline to High 4:2:2 up to Level 5.1, except for the Extended profile.
->>
->> Expose the V4L2_CID_MPEG_VIDEO_H264_PROFILE and the
->> V4L2_CID_MPEG_VIDEO_H264_LEVEL control, so that userspace can query the
->> driver for the list of supported profiles and level.
->>
->> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->> Reviewed-by: Ezequiel Garcia <ezequiel@collabora.com>
->> ---
->> Changes in v2:
->> - Moved to end
->> - Collect r-b tag
->> ---
->>  drivers/staging/media/rkvdec/rkvdec.c | 13 +++++++++++++
->>  1 file changed, 13 insertions(+)
->>
->> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
->> index 4faee9262392..b21031535330 100644
->> --- a/drivers/staging/media/rkvdec/rkvdec.c
->> +++ b/drivers/staging/media/rkvdec/rkvdec.c
->> @@ -144,6 +144,19 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
->>  		.cfg.def = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
->>  		.cfg.max = V4L2_MPEG_VIDEO_H264_START_CODE_ANNEX_B,
->>  	},
->> +	{
->> +		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_PROFILE,
->> +		.cfg.min = V4L2_MPEG_VIDEO_H264_PROFILE_BASELINE,
-> 
-> Nicolas recently pointed out to me that our drivers
-> can't support ASO/FMO baseline features, and so
-> seems we need to leave baseline out.
 
-I will change min to V4L2_MPEG_VIDEO_H264_PROFILE_CONSTRAINED_BASELINE in v3.
+On 2020/7/2 下午4:48, Jagan Teki wrote:
+> The new rk3288 revision rk3288w has some changes with respect
+> to legacy rk3288 like hclk_vio and usb host0 ohci.
+>
+> In order to work these on the same in Linux kernel update the
+> compatible the root compatible with rockchip,rk3288w before
+> booting.
+>
+> So, this support during of board setup code of rk3288.
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 
-Regards,
-Jonas
+Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
 
-> 
-> (Applies to Hantro as well).
-> 
-> Thanks,
-> Ezequiel
-> 
->> +		.cfg.max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_422,
->> +		.cfg.menu_skip_mask =
->> +			BIT(V4L2_MPEG_VIDEO_H264_PROFILE_EXTENDED),
->> +		.cfg.def = V4L2_MPEG_VIDEO_H264_PROFILE_MAIN,
->> +	},
->> +	{
->> +		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_LEVEL,
->> +		.cfg.min = V4L2_MPEG_VIDEO_H264_LEVEL_1_0,
->> +		.cfg.max = V4L2_MPEG_VIDEO_H264_LEVEL_5_1,
->> +	},
->>  };
->>  
->>  static const struct rkvdec_ctrls rkvdec_h264_ctrls = {
-> 
-> 
+Thanks,
+- Kever
+
+> ---
+>   arch/arm/mach-rockchip/Kconfig         |  1 +
+>   arch/arm/mach-rockchip/rk3288/rk3288.c | 26 ++++++++++++++++++++++++++
+>   2 files changed, 27 insertions(+)
+>
+> diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+> index b1008a5058..822d8d4e9c 100644
+> --- a/arch/arm/mach-rockchip/Kconfig
+> +++ b/arch/arm/mach-rockchip/Kconfig
+> @@ -98,6 +98,7 @@ config ROCKCHIP_RK322X
+>   config ROCKCHIP_RK3288
+>   	bool "Support Rockchip RK3288"
+>   	select CPU_V7A
+> +	select OF_BOARD_SETUP
+>   	select SUPPORT_SPL
+>   	select SPL
+>   	select SUPPORT_TPL
+> diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
+> index 804abe8a1b..8a682675e6 100644
+> --- a/arch/arm/mach-rockchip/rk3288/rk3288.c
+> +++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
+> @@ -115,6 +115,32 @@ int rk_board_late_init(void)
+>   	return rk3288_board_late_init();
+>   }
+>   
+> +#ifdef CONFIG_OF_BOARD_SETUP
+> +
+> +#define RK3288_HDMI_PHYS	0xff980000
+> +#define RK3288W_HDMI_REV	0x1A
+> +#define HDMI_CONFIG0_ID		0x04
+> +
+> +int ft_board_setup(void *blob, bd_t *bd)
+> +{
+> +	u8 config0;
+> +	int ret;
+> +
+> +	config0 = readb(RK3288_HDMI_PHYS + HDMI_CONFIG0_ID);
+> +	if (config0 == RK3288W_HDMI_REV) {
+> +		ret = fdt_setprop_string(blob, 0,
+> +					 "compatible", "rockchip,rk3288w");
+> +		if (ret < 0) {
+> +			printf("failed to set rk3288w compatible (ret=%d)\n",
+> +			       ret);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +#endif
+> +
+>   static int do_clock(struct cmd_tbl *cmdtp, int flag, int argc,
+>   		    char *const argv[])
+>   {
