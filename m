@@ -1,44 +1,76 @@
 From: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: [PATCH v2 0/2] media: hantro/rkvdec handle unsupported H.264 bitstreams
-Date: Thu,  9 Jul 2020 13:36:33 -0300
-Message-ID: <20200709163635.42996-1-ezequiel@collabora.com>
+Subject: [PATCH v2 1/2] rkvdec: h264: Refuse to decode unsupported bitstream
+Date: Thu,  9 Jul 2020 13:36:34 -0300
+Message-ID: <20200709163635.42996-2-ezequiel@collabora.com>
+References: <20200709163635.42996-1-ezequiel@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200709163635.42996-1-ezequiel@collabora.com>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 Cc: Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>, Jonas Karlman <jonas@kwiboo.se>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, kernel@collabora.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi all,
+The hardware only supports 4:2:2, 4:2:0 or 4:0:0 (monochrome),
+8-bit or 10-bit depth content.
 
-Small patchset to add a check at TRY_EXT_CTRLS time,
-via the H264 SPS control and reject unsupported bitstreams.
+Verify that the SPS refers to a supported bitstream, and refuse
+unsupported bitstreams by failing at TRY_EXT_CTRLS time.
 
-Properly refusing to decode unsupported bitstreams
-allows applications to cleanly fallback to software
-decoding.
+The driver is currently broken on 10-bit and 4:2:2
+so disallow those as well.
 
-Note that Rockchip VDEC hardware is capable of decoding High-10
-and High-422 bitstreams. This needs more work, so for now
-they are refused.
+Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+Reviewed-by: Jonas Karlman <jonas@kwiboo.se>
+---
+ drivers/staging/media/rkvdec/rkvdec.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
-The same approach can be use on Cedrus, but since I'm not
-very familiar there, I'll leave that to others.
-
-Applies on top of media master.
-
-v2:
-* Use p_new instead of p_cur.
-* s/PPS/SPS in commit log.
-
-Ezequiel Garcia (2):
-  rkvdec: h264: Refuse to decode unsupported bitstream
-  hantro: h264: Refuse to decode unsupported bitstream
-
- drivers/staging/media/hantro/hantro_drv.c | 29 ++++++++++++++++++++---
- drivers/staging/media/rkvdec/rkvdec.c     | 27 +++++++++++++++++++++
- 2 files changed, 53 insertions(+), 3 deletions(-)
-
+diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+index 225eeca73356..accb4a902fdd 100644
+--- a/drivers/staging/media/rkvdec/rkvdec.c
++++ b/drivers/staging/media/rkvdec/rkvdec.c
+@@ -27,6 +27,32 @@
+ #include "rkvdec.h"
+ #include "rkvdec-regs.h"
+ 
++static int rkvdec_try_ctrl(struct v4l2_ctrl *ctrl)
++{
++	if (ctrl->id == V4L2_CID_MPEG_VIDEO_H264_SPS) {
++		const struct v4l2_ctrl_h264_sps *sps = ctrl->p_new.p_h264_sps;
++		/*
++		 * TODO: The hardware supports 10-bit and 4:2:2 profiles,
++		 * but it's currently broken in the driver.
++		 * Reject them for now, until it's fixed.
++		 */
++		if (sps->chroma_format_idc > 1)
++			/* Only 4:0:0 and 4:2:0 are supported */
++			return -EINVAL;
++		if (sps->bit_depth_luma_minus8 != sps->bit_depth_chroma_minus8)
++			/* Luma and chroma bit depth mismatch */
++			return -EINVAL;
++		if (sps->bit_depth_luma_minus8 != 0)
++			/* Only 8-bit is supported */
++			return -EINVAL;
++	}
++	return 0;
++}
++
++static const struct v4l2_ctrl_ops rkvdec_ctrl_ops = {
++	.try_ctrl = rkvdec_try_ctrl,
++};
++
+ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+ 	{
+ 		.per_request = true,
+@@ -42,6 +68,7 @@ static const struct rkvdec_ctrl_desc rkvdec_h264_ctrl_descs[] = {
+ 		.per_request = true,
+ 		.mandatory = true,
+ 		.cfg.id = V4L2_CID_MPEG_VIDEO_H264_SPS,
++		.cfg.ops = &rkvdec_ctrl_ops,
+ 	},
+ 	{
+ 		.per_request = true,
 -- 
 2.27.0
