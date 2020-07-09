@@ -1,74 +1,147 @@
-From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v5 4/4] ARM: dts: rockchip: Add Radxa Rock Pi N8 initial support
-Date: Thu,  9 Jul 2020 15:37:56 +0530
-Message-ID: <20200709100756.42384-5-jagan@amarulasolutions.com>
-References: <20200709100756.42384-1-jagan@amarulasolutions.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH] clk: rockchip: mark pclk_uart2 as critical on rk3328
+Date: Thu, 9 Jul 2020 14:04:52 +0200
+Message-ID: <68073138-1f94-9d5b-ad48-e82bc538c915@gmail.com>
+References: <20200708144528.20465-1-jbx6244@gmail.com>
+ <2f58b9df-9bcd-5639-65cc-306a6d36b310@rock-chips.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200709100756.42384-1-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Return-path: <linux-clk-owner@vger.kernel.org>
+In-Reply-To: <2f58b9df-9bcd-5639-65cc-306a6d36b310@rock-chips.com>
+Content-Language: en-US
+Sender: linux-clk-owner@vger.kernel.org
+To: "elaine.zhang" <zhangqing@rock-chips.com>, heiko@sntech.de
+Cc: mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rock Pi N8 is a Rockchip RK3288 based SBC, which has
-- VMARC RK3288 SOM (as per SMARC standard) from Vamrs.
-- Compatible carrier board from Radxa.
+Hi Elaine, Robin,
 
-VAMRC RK3288 SOM need to mount on top of radxa dalang
-carrier board for making Rock Pi N8 SBC.
+Thank you for your help!
+This patch can go in the garbage bin.
+It turns out that with SERIAL_8250 also SERIAL_8250_DW must be
+selected... ;)
 
-So, add initial support for Rock Pi N8 by including rk3288,
-rk3288 vamrc-som and raxda dalang carrier board dtsi files.
+It's not in the Kconfig help description.
+Shouldn't that be automatically be included for Rockchip?
+Example:
 
-Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
----
-Changes for v5, v4, v3:
-- none
-Changes for v2:
-- reorder dtsi include so-that common properties will
-  visible to main dts.
+config SERIAL_8250
+	tristate "8250/16550 and compatible serial support"
+	depends on !S390
+	select SERIAL_CORE
+	select SERIAL_MCTRL_GPIO if GPIOLIB
+	select SERIAL_8250_DW if ARCH_ROCKCHIP
 
- arch/arm/boot/dts/Makefile              |  1 +
- arch/arm/boot/dts/rk3288-rock-pi-n8.dts | 17 +++++++++++++++++
- 2 files changed, 18 insertions(+)
- create mode 100644 arch/arm/boot/dts/rk3288-rock-pi-n8.dts
+Thank Robin for the introduction to FTRACE!
 
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index e8dd99201397..1d1b6ac26394 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -964,6 +964,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3288-popmetal.dtb \
- 	rk3288-r89.dtb \
- 	rk3288-rock2-square.dtb \
-+	rk3288-rock-pi-n8.dtb \
- 	rk3288-tinker.dtb \
- 	rk3288-tinker-s.dtb \
- 	rk3288-veyron-brain.dtb \
-diff --git a/arch/arm/boot/dts/rk3288-rock-pi-n8.dts b/arch/arm/boot/dts/rk3288-rock-pi-n8.dts
-new file mode 100644
-index 000000000000..b19593021713
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-rock-pi-n8.dts
-@@ -0,0 +1,17 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
-+ * Copyright (c) 2019 Vamrs Limited
-+ * Copyright (c) 2019 Amarula Solutions(India)
-+ */
-+
-+/dts-v1/;
-+#include "rk3288.dtsi"
-+#include <arm/rockchip-radxa-dalang-carrier.dtsi>
-+#include "rk3288-vmarc-som.dtsi"
-+
-+/ {
-+	model = "Radxa ROCK Pi N8";
-+	compatible = "radxa,rockpi-n8", "vamrs,rk3288-vmarc-som",
-+		     "rockchip,rk3288";
-+};
--- 
-2.25.1
+mount -t tracefs tracefs /sys/kernel/tracing
+
+cd /sys/kernel/tracing
+
+# Without SERIAL_8250_DW
+
+/sys/kernel/tracing # cat trace | grep uart2
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_div
+       swapper/0-1     [002] d..1     1.916746: clk_disable: pclk_uart2
+
+
+/sys/kernel/tracing # cat trace | grep uart
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart1_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart1_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart1_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart1_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart0_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart0_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart0_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart0_div
+       swapper/0-1     [002] d..1     1.916746: clk_disable: pclk_uart2
+       swapper/0-1     [002] d..1     1.923959: clk_disable: pclk_uart1
+       swapper/0-1     [002] d..1     1.930741: clk_disable: pclk_uart0
+
+# With SERIAL_8250_DW
+
+/sys/kernel/tracing # cat trace | grep uart2
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_div
+       swapper/0-1     [002] d..1     0.923180: clk_enable: sclk_uart2
+       swapper/0-1     [002] d..1     0.923224: clk_enable: pclk_uart2
+       swapper/0-1     [002] d..1     0.925259: clk_disable: sclk_uart2
+       swapper/0-1     [002] d..1     0.925295: clk_enable: sclk_uart2
+       swapper/0-1     [003] d..1     2.208605: clk_disable: sclk_uart2
+       swapper/0-1     [003] d..1     2.208646: clk_enable: sclk_uart2
+
+/sys/kernel/tracing # cat trace | grep uart
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart1_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart1_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart1_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart1_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart0_div
+          <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart0_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart0_frac
+          <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart0_div
+       swapper/0-1     [002] d..1     0.920034: clk_enable: sclk_uart0
+       swapper/0-1     [002] d..1     0.920085: clk_enable: pclk_uart0
+     kworker/2:1-32    [002] d..1     0.922596: clk_disable: sclk_uart0
+     kworker/2:1-32    [002] d..1     0.922613: clk_disable: pclk_uart0
+       swapper/0-1     [002] d..1     0.923180: clk_enable: sclk_uart2
+       swapper/0-1     [002] d..1     0.923224: clk_enable: pclk_uart2
+       swapper/0-1     [002] d..1     0.925259: clk_disable: sclk_uart2
+       swapper/0-1     [002] d..1     0.925295: clk_enable: sclk_uart2
+       swapper/0-1     [003] d..1     1.914158: clk_disable: pclk_uart1
+       swapper/0-1     [003] d..1     2.208605: clk_disable: sclk_uart2
+       swapper/0-1     [003] d..1     2.208646: clk_enable: sclk_uart2
+
+
+
+On 7/9/20 3:32 AM, elaine.zhang wrote:
+> 在 2020/7/8 下午10:45, Johan Jonker 写道:
+>> The rk3328 uart2 port is used as boot console and to debug.
+>> During the boot pclk_uart2 is disabled by a clk_disable_unused
+>> initcall. Fix the uart2 function by marking pclk_uart2
+>> as critical on rk3328. Also add sclk_uart2 as that is needed
+>> for the same DT node.
+>>
+>> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+>> ---
+>>   drivers/clk/rockchip/clk-rk3328.c | 2 ++
+>>   1 file changed, 2 insertions(+)
+>>
+>> diff --git a/drivers/clk/rockchip/clk-rk3328.c
+>> b/drivers/clk/rockchip/clk-rk3328.c
+>> index c186a1985..cb7749cb7 100644
+>> --- a/drivers/clk/rockchip/clk-rk3328.c
+>> +++ b/drivers/clk/rockchip/clk-rk3328.c
+>> @@ -875,6 +875,8 @@ static const char *const rk3328_critical_clocks[]
+>> __initconst = {
+>>       "aclk_gmac_niu",
+>>       "pclk_gmac_niu",
+>>       "pclk_phy_niu",
+>> +    "pclk_uart2",
+>> +    "sclk_uart2",
+>>   };
+>>   
+> 
+> Not need to mark the uart2 as critical clocks, the uart clk will enabled
+> by uart driver probe(dw8250_probe()).
+> 
+> For your question,  Please check the uart2 dts node "status = okay".
+> 
+> Or You can send me the complete log, I check the status of uart2.
+> 
+>>   static void __init rk3328_clk_init(struct device_node *np)
+> 
+> 
