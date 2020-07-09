@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v5 1/4] arm64: dts: rockchip: Trivial cleanups for RockPI N10
-Date: Thu,  9 Jul 2020 15:37:53 +0530
-Message-ID: <20200709100756.42384-2-jagan@amarulasolutions.com>
+Subject: [PATCH v5 2/4] dt-bindings: arm: rockchip: Add Rock Pi N8 binding
+Date: Thu,  9 Jul 2020 15:37:54 +0530
+Message-ID: <20200709100756.42384-3-jagan@amarulasolutions.com>
 References: <20200709100756.42384-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,285 +12,39 @@ To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring 
 Cc: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Radxa dalang carrier boards are used to mount vmarc SoM's
-of rk3399pro and rk3288 to make complete SBC.
+Rock Pi N8 is a Rockchip RK3288 based SBC, which has
+- VMARC RK3288 SOM (as per SMARC standard) from Vamrs.
+- Compatible carrier board from Radxa.
 
-So, this patch adds trivial changes to properties.
-- move common properties into radxa dalang carrier dtsi.
-- maintain ascending order for nodes, properties.
-- change the order of dtsi include so-that common properties
-  will reflect in main dts.
-- drop unnecessary header includes.
+VMARC RK3288 SOM need to mount on top of dalang carrier
+board for making Rock PI N8 SBC.
 
-No functionally changes.
+Add dt-bindings for it.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
-Changes for v5:
-- drop redundent hym8563_int pin
-Changes for v4:
-- move i2c2 into rk3399pro dtsi
-Changes for v3:
-- move hym8563_int into rk3399pro dtsi
-Changes for v2:
-- updated commit message
-- add more trivial changes
+Changes for v5, v4, v3, v2:
+- none
 
- .../dts/rockchip-radxa-dalang-carrier.dtsi    | 67 +++++++------
- .../dts/rockchip/rk3399pro-rock-pi-n10.dts    |  2 +-
- .../dts/rockchip/rk3399pro-vmarc-som.dtsi     | 93 ++++++++++---------
- 3 files changed, 80 insertions(+), 82 deletions(-)
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi b/arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi
-index df3712aedf8a..450e5bb5af0b 100644
---- a/arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi
-+++ b/arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi
-@@ -8,36 +8,44 @@
- #include <dt-bindings/pwm/pwm.h>
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index d4a4045092df..db2e35796795 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -435,6 +435,12 @@ properties:
+           - const: radxa,rockpi4
+           - const: rockchip,rk3399
  
- / {
--	chosen {
--		stdout-path = "serial2:1500000n8";
-+	clkin_gmac: external-gmac-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "clkin_gmac";
-+		#clock-cells = <0>;
- 	};
--};
- 
--&gmac {
--	status = "okay";
--};
-+	vcc12v_dcin: vcc12v-dcin-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc12v_dcin";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
- 
--&i2c1 {
--	status = "okay";
--	i2c-scl-rising-time-ns = <140>;
--	i2c-scl-falling-time-ns = <30>;
-+	vcc5v0_sys: vcc5v0-sys-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc12v_dcin>;
-+	};
- };
- 
--&i2c2 {
-+&gmac {
-+	assigned-clock-parents = <&clkin_gmac>;
-+	clock_in_out = "input";
-+	phy-mode = "rgmii";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&rgmii_pins>;
-+	snps,reset-active-low;
-+	snps,reset-delays-us = <0 10000 50000>;
-+	tx_delay = <0x28>;
-+	rx_delay = <0x11>;
- 	status = "okay";
--	clock-frequency = <400000>;
--
--	hym8563: hym8563@51 {
--		compatible = "haoyu,hym8563";
--		reg = <0x51>;
--		#clock-cells = <0>;
--		clock-frequency = <32768>;
--		clock-output-names = "hym8563";
--		pinctrl-names = "default";
--		pinctrl-0 = <&hym8563_int>;
--		interrupt-parent = <&gpio4>;
--		interrupts = <30 IRQ_TYPE_LEVEL_LOW>;
--	};
- };
- 
- &pwm0 {
-@@ -52,10 +60,8 @@ &sdmmc {
- 	bus-width = <4>;
- 	cap-mmc-highspeed;
- 	cap-sd-highspeed;
--	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
- 	disable-wp;
- 	vqmmc-supply = <&vccio_sd>;
--	max-frequency = <150000000>;
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdmmc_clk &sdmmc_cmd &sdmmc_cd &sdmmc_bus4>;
- 	status = "okay";
-@@ -70,12 +76,3 @@ &uart0 {
- &uart2 {
- 	status = "okay";
- };
--
--&pinctrl {
--	hym8563 {
--		hym8563_int: hym8563-int {
--			rockchip,pins =
--				<4 RK_PD6 0 &pcfg_pull_up>;
--		};
--	};
--};
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts b/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
-index a1783e7f769a..539f4005386d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
-@@ -8,8 +8,8 @@
- /dts-v1/;
- #include "rk3399.dtsi"
- #include "rk3399-opp.dtsi"
--#include "rk3399pro-vmarc-som.dtsi"
- #include <arm/rockchip-radxa-dalang-carrier.dtsi>
-+#include "rk3399pro-vmarc-som.dtsi"
- 
- / {
- 	model = "Radxa ROCK Pi N10";
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-index 0a516334f15f..9ed5b27d715c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-@@ -7,35 +7,12 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/pinctrl/rockchip.h>
--#include <dt-bindings/pwm/pwm.h>
- 
- / {
- 	compatible = "vamrs,rk3399pro-vmarc-som", "rockchip,rk3399pro";
- 
--	clkin_gmac: external-gmac-clock {
--		compatible = "fixed-clock";
--		clock-frequency = <125000000>;
--		clock-output-names = "clkin_gmac";
--		#clock-cells = <0>;
--	};
--
--	vcc12v_dcin: vcc12v-dcin-regulator {
--		compatible = "regulator-fixed";
--		regulator-name = "vcc12v_dcin";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <12000000>;
--		regulator-max-microvolt = <12000000>;
--	};
--
--	vcc5v0_sys: vcc5v0-sys-regulator {
--		compatible = "regulator-fixed";
--		regulator-name = "vcc5v0_sys";
--		regulator-always-on;
--		regulator-boot-on;
--		regulator-min-microvolt = <5000000>;
--		regulator-max-microvolt = <5000000>;
--		vin-supply = <&vcc12v_dcin>;
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
- 	};
- };
- 
-@@ -61,17 +38,8 @@ &emmc_phy {
- 
- &gmac {
- 	assigned-clocks = <&cru SCLK_RMII_SRC>;
--	assigned-clock-parents = <&clkin_gmac>;
--	clock_in_out = "input";
- 	phy-supply = <&vcc_lan>;
--	phy-mode = "rgmii";
--	pinctrl-names = "default";
--	pinctrl-0 = <&rgmii_pins>;
- 	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
--	snps,reset-active-low;
--	snps,reset-delays-us = <0 10000 50000>;
--	tx_delay = <0x28>;
--	rx_delay = <0x11>;
- };
- 
- &i2c0 {
-@@ -297,16 +265,53 @@ regulator-state-mem {
- 	};
- };
- 
--&io_domains {
-+&i2c1 {
-+	i2c-scl-rising-time-ns = <140>;
-+	i2c-scl-falling-time-ns = <30>;
-+	status = "okay";
-+};
++      - description: Radxa ROCK Pi N8
++        items:
++          - const: radxa,rockpi-n8
++          - const: vamrs,rk3288-vmarc-som
++          - const: rockchip,rk3288
 +
-+&i2c2 {
-+	clock-frequency = <400000>;
- 	status = "okay";
-+
-+	hym8563: hym8563@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		#clock-cells = <0>;
-+		clock-frequency = <32768>;
-+		clock-output-names = "hym8563";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hym8563_int>;
-+		interrupt-parent = <&gpio4>;
-+		interrupts = <RK_PD6 IRQ_TYPE_LEVEL_LOW>;
-+	};
-+};
-+
-+&io_domains {
- 	bt656-supply = <&vcca_1v8>;
- 	sdmmc-supply = <&vccio_sd>;
- 	gpio1830-supply = <&vccio_3v0>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	hym8563 {
-+		hym8563_int: hym8563-int {
-+			rockchip,pins = <4 RK_PD6 0 &pcfg_pull_up>;
-+		};
-+	};
-+
-+	pmic {
-+		pmic_int_l: pmic-int-l {
-+			rockchip,pins = <1 RK_PC2 0 &pcfg_pull_up>;
-+		};
-+	};
- };
- 
- &pmu_io_domains {
--	status = "okay";
- 	pmu1830-supply = <&vcc_1v8>;
-+	status = "okay";
- };
- 
- &sdhci {
-@@ -317,17 +322,13 @@ &sdhci {
- 	status = "okay";
- };
- 
-+&sdmmc {
-+	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
-+	max-frequency = <150000000>;
-+};
-+
- &tsadc {
--	status = "okay";
- 	rockchip,hw-tshut-mode = <1>;
- 	rockchip,hw-tshut-polarity = <1>;
--};
--
--&pinctrl {
--	pmic {
--		pmic_int_l: pmic-int-l {
--			rockchip,pins =
--				<1 RK_PC2 0 &pcfg_pull_up>;
--		};
--	};
-+	status = "okay";
- };
+       - description: Radxa ROCK Pi N10
+         items:
+           - const: radxa,rockpi-n10
 -- 
 2.25.1
