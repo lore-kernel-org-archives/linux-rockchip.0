@@ -1,115 +1,69 @@
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [RFC 07/12] media: uapi: h264: Add DPB entry field reference
- flags
-Date: Fri, 10 Jul 2020 08:48:12 +0000 (UTC)
-Message-ID: <4e91d580-98a8-0ba8-dbb9-6af3a2634d8e@kwiboo.se>
-References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <20190901124531.23645-1-jonas@kwiboo.se>
- <HE1PR06MB4011559BF2447047C66285D2ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
- <233509924f72d69824920d9312373eced68674c0.camel@collabora.com>
- <20200710101333.05077f18@collabora.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH v4 2/5] rk3399: spl: Print SPL banner after relocation
+Date: Fri, 10 Jul 2020 15:49:27 +0530
+Message-ID: <CAMty3ZDi4DRQX+RWmJqaRxpiBQvF2OUUoqLEphOz165g=9RX2Q@mail.gmail.com>
+References: <20200618153948.218506-1-jagan@amarulasolutions.com>
+ <20200618153948.218506-3-jagan@amarulasolutions.com>
+ <0a2a47aa-e2e2-ea0e-bcf4-7a1137cc6129@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200710101333.05077f18@collabora.com>
-Content-Language: sv
-Sender: linux-kernel-owner@vger.kernel.org
-To: Boris Brezillon <boris.brezillon@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Philipp Zabel <p.zabel@pengutronix.de>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <0a2a47aa-e2e2-ea0e-bcf4-7a1137cc6129@rock-chips.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-07-10 10:13, Boris Brezillon wrote:
-> On Fri, 10 Jul 2020 01:21:07 -0300
-> Ezequiel Garcia <ezequiel@collabora.com> wrote:
-> 
->> Hello Jonas,
->>
->> In the context of the uAPI cleanup,
->> I'm revisiting this patch.
->>
->> On Sun, 2019-09-01 at 12:45 +0000, Jonas Karlman wrote:
->>> Add DPB entry flags to help indicate when a reference frame is a field picture
->>> and how the DPB entry is referenced, top or bottom field or full frame.
->>>
->>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->>> ---
->>>  Documentation/media/uapi/v4l/ext-ctrls-codec.rst | 12 ++++++++++++
->>>  include/media/h264-ctrls.h                       |  4 ++++
->>>  2 files changed, 16 insertions(+)
->>>
->>> diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
->>> index bc5dd8e76567..eb6c32668ad7 100644
->>> --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
->>> +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
->>> @@ -2022,6 +2022,18 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
->>>      * - ``V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM``
->>>        - 0x00000004
->>>        - The DPB entry is a long term reference frame
->>> +    * - ``V4L2_H264_DPB_ENTRY_FLAG_FIELD_PICTURE``
->>> +      - 0x00000008
->>> +      - The DPB entry is a field picture
->>> +    * - ``V4L2_H264_DPB_ENTRY_FLAG_REF_TOP``
->>> +      - 0x00000010
->>> +      - The DPB entry is a top field reference
->>> +    * - ``V4L2_H264_DPB_ENTRY_FLAG_REF_BOTTOM``
->>> +      - 0x00000020
->>> +      - The DPB entry is a bottom field reference
->>> +    * - ``V4L2_H264_DPB_ENTRY_FLAG_REF_FRAME``
->>> +      - 0x00000030
->>> +      - The DPB entry is a reference frame
->>>  
->>>  ``V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE (enum)``
->>>      Specifies the decoding mode to use. Currently exposes slice-based and
->>> diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
->>> index e877bf1d537c..76020ebd1e6c 100644
->>> --- a/include/media/h264-ctrls.h
->>> +++ b/include/media/h264-ctrls.h
->>> @@ -185,6 +185,10 @@ struct v4l2_ctrl_h264_slice_params {
->>>  #define V4L2_H264_DPB_ENTRY_FLAG_VALID		0x01
->>>  #define V4L2_H264_DPB_ENTRY_FLAG_ACTIVE		0x02
->>>  #define V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM	0x04
->>> +#define V4L2_H264_DPB_ENTRY_FLAG_FIELD_PICTURE	0x08
->>> +#define V4L2_H264_DPB_ENTRY_FLAG_REF_TOP	0x10
->>> +#define V4L2_H264_DPB_ENTRY_FLAG_REF_BOTTOM	0x20
->>> +#define V4L2_H264_DPB_ENTRY_FLAG_REF_FRAME	0x30
->>>    
->>
->> I've been going thru the H264 spec and I'm unsure,
->> are all these flags semantically needed?
->>
->> For instance, if one of REF_BOTTOM or REF_TOP (or both)
->> are set, doesn't that indicate it's a field picture?
+Hi Kever,
 
-These flags would only indicate how the frame / field pair / field is
-referenced and not if the DPB entry was decoded as a frame or field pair.
+On Sun, Jun 28, 2020 at 8:26 AM Kever Yang <kever.yang@rock-chips.com> wrot=
+e:
+>
+> Hi Jagan,
+>
+> On 2020/6/18 =E4=B8=8B=E5=8D=8811:39, Jagan Teki wrote:
+> > Usually printing the SPL banner varies between architecture
+> > or board codes.
+> > - Some would print before relocation at the end board_init_f
+> >    for making sure all initialization prior to this would happen
+> >    properly. if at all there is a requirement for serial init,
+> >    that happens properly since it prints all after that.
+> > - Some would print after relocation at the spl_board_init for
+> >    making sure all initialization prior to relocation would
+> >    happen properly. Also debug uart on these cases would be
+> >    available before relocation. So debug support is available
+> >    in before and after relocation.
+> >
+> > Rockchip SPL is following formar step to print the banner at
+> > the end of board_init_f.
+> >
+> > To support various custom use cases in SPL like leds, environment,
+> > board detections later options like printing the banner after
+> > relocation would be a better option.
+>
+> I don't agree, the banner is tell people we are in SPL now, we should
+> print it as soon as
+>
+> possible,  if any of step like led, env, relocate and etc fails, then
+> user can not see anything,
+>
+> they don't event know if we have get into SPL. The update of leds and
+> env does not depends
+>
+> on banner print.
 
-Both hantro and rkvdec needs to know how the referenced frame / field pair
-was decoded (not how it is referenced), my best guess is that MV is stored
-differently for a frame (linear) and field pair (buffer split in two).
+It is unsafe or sometimes won't work if we do leds, env at _f due to
+memory availability. Since we have debug uart at _f and moving spl
+banner to relocation will make the debug available possible in
+relocation code.
 
-I think we should be able to track how the buffer was decoded similar to
-how VP9 keep track of buffer width/height.
-
-When I played with interlaced decoding of rkvdec a few weeks ago I
-reverted flags to something similar as my initial rfc patch, see [1].
-I guess it should be possible to keep current flags and track field_pic
-in driver, some macro to simplify check for top/bottom ref could be
-useful if flags is kept as-is.
-
-I am hoping to find some time next week to revisit hantro interlaced
-and refine rkvdec interlaced support.
-
-[1] https://github.com/Kwiboo/linux-rockchip/compare/da52ca6f8d2284aebea2d0b99d254b64922faa2d...c9f04cd9bc65eda0da713f4ce1c77eeb1960bd70
-
-Regards,
-Jonas
-
->>
->> Or conversely, if neither REF_BOTTOM or REF_TOP are set,
->> then it's a frame picture?
-> 
-> I think that's what I was trying to do here [1]
-> 
-> [1]https://patchwork.kernel.org/patch/11392095/
-> 
+Jagan.
