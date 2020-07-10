@@ -1,10 +1,13 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v4 0/4] rtc: Add RK808 PMIC RTC
-Date: Fri, 10 Jul 2020 21:20:53 +0530
-Message-ID: <20200710155057.310168-1-jagan@amarulasolutions.com>
+Subject: [PATCH v4 1/4] arm: dts: rockchip: rk3399-roc-pc: Add RTC child node
+ for RK808 PMIC
+Date: Fri, 10 Jul 2020 21:20:54 +0530
+Message-ID: <20200710155057.310168-2-jagan@amarulasolutions.com>
+References: <20200710155057.310168-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200710155057.310168-1-jagan@amarulasolutions.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <https://lists.denx.de/pipermail/u-boot/>
@@ -15,33 +18,42 @@ List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
 To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This series support RK808 PMIC RTC on rk3399. 
+From: Suniel Mahesh <sunil@amarulasolutions.com>
 
-Changes for v4:
-- rebase on master
-- cleanup of style changes
+Rockchip RK808 PMIC is a multi function device which hosts a Real Time
+Clock along with other devices. Add a child RTC node so that it can be
+bound and probed once the master pmic node completes probe.
 
-Any inputs?
-Jagan.
+Signed-off-by: Suniel Mahesh <sunil@amarulasolutions.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+---
+Change for v4:
+- none
 
-Suniel Mahesh (4):
-  arm: dts: rockchip: rk3399-roc-pc: Add RTC child node for RK808 PMIC
-  power: pmic: rk8xx: bind rk808 RTC
-  rtc: rk8xx: Add base support for the RK808 PMIC RTC
-  roc-rk3399-pc: Enable DM RTC
+ arch/arm/dts/rk3399-roc-pc-u-boot.dtsi | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
- arch/arm/dts/rk3399-roc-pc-u-boot.dtsi    |   8 +
- configs/roc-pc-mezzanine-rk3399_defconfig |   1 +
- configs/roc-pc-rk3399_defconfig           |   1 +
- drivers/power/pmic/rk8xx.c                |  19 ++-
- drivers/rtc/Kconfig                       |   8 +
- drivers/rtc/Makefile                      |   1 +
- drivers/rtc/rk808-rtc.c                   | 173 ++++++++++++++++++++++
- 7 files changed, 210 insertions(+), 1 deletion(-)
- create mode 100644 drivers/rtc/rk808-rtc.c
-
+diff --git a/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi b/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
+index fc155e6903..16d6417160 100644
+--- a/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
++++ b/arch/arm/dts/rk3399-roc-pc-u-boot.dtsi
+@@ -44,6 +44,14 @@
+ 	vin-supply = <&vcc_vbus_typec0>;
+ };
+ 
++&rk808 {
++	rtc {
++		rkrtc: rk808-rtc {
++			status="okay";
++		};
++	};
++};
++
+ &spi1 {
+ 	spi_flash: flash@0 {
+ 		u-boot,dm-pre-reloc;
 -- 
 2.25.1
