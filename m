@@ -1,167 +1,81 @@
-From: "elaine.zhang" <zhangqing@rock-chips.com>
-Subject: Re: [PATCH] clk: rockchip: mark pclk_uart2 as critical on rk3328
-Date: Fri, 10 Jul 2020 09:28:49 +0800
-Message-ID: <02cf9650-eef2-f3d1-4630-38e2d8381847@rock-chips.com>
-References: <20200708144528.20465-1-jbx6244@gmail.com>
- <2f58b9df-9bcd-5639-65cc-306a6d36b310@rock-chips.com>
- <68073138-1f94-9d5b-ad48-e82bc538c915@gmail.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+Subject: Re: [RFC 07/12] media: uapi: h264: Add DPB entry field reference
+ flags
+Date: Fri, 10 Jul 2020 01:21:07 -0300
+Message-ID: <233509924f72d69824920d9312373eced68674c0.camel@collabora.com>
+References: <HE1PR06MB40117D0EE96E6FA638A04B78ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+         <20190901124531.23645-1-jonas@kwiboo.se>
+         <HE1PR06MB4011559BF2447047C66285D2ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <68073138-1f94-9d5b-ad48-e82bc538c915@gmail.com>
-Content-Language: en-US
-Sender: linux-clk-owner@vger.kernel.org
-To: Johan Jonker <jbx6244@gmail.com>, heiko@sntech.de
-Cc: mturquette@baylibre.com, sboyd@kernel.org, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Robin Murphy <robin.murphy@arm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <HE1PR06MB4011559BF2447047C66285D2ACBF0@HE1PR06MB4011.eurprd06.prod.outlook.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Hans Verkuil <hverkuil@xs4all.nl>, Boris Brezillon <boris.brezillon@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>, Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hello Jonas,
 
-在 2020/7/9 下午8:04, Johan Jonker 写道:
-> Hi Elaine, Robin,
->
-> Thank you for your help!
-> This patch can go in the garbage bin.
-> It turns out that with SERIAL_8250 also SERIAL_8250_DW must be
-> selected... ;)
->
-> It's not in the Kconfig help description.
-> Shouldn't that be automatically be included for Rockchip?
-> Example:
->
-> config SERIAL_8250
-> 	tristate "8250/16550 and compatible serial support"
-> 	depends on !S390
-> 	select SERIAL_CORE
-> 	select SERIAL_MCTRL_GPIO if GPIOLIB
-> 	select SERIAL_8250_DW if ARCH_ROCKCHIP
+In the context of the uAPI cleanup,
+I'm revisiting this patch.
 
-Our  Konfig:
+On Sun, 2019-09-01 at 12:45 +0000, Jonas Karlman wrote:
+> Add DPB entry flags to help indicate when a reference frame is a field picture
+> and how the DPB entry is referenced, top or bottom field or full frame.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+>  Documentation/media/uapi/v4l/ext-ctrls-codec.rst | 12 ++++++++++++
+>  include/media/h264-ctrls.h                       |  4 ++++
+>  2 files changed, 16 insertions(+)
+> 
+> diff --git a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> index bc5dd8e76567..eb6c32668ad7 100644
+> --- a/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> +++ b/Documentation/media/uapi/v4l/ext-ctrls-codec.rst
+> @@ -2022,6 +2022,18 @@ enum v4l2_mpeg_video_h264_hierarchical_coding_type -
+>      * - ``V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM``
+>        - 0x00000004
+>        - The DPB entry is a long term reference frame
+> +    * - ``V4L2_H264_DPB_ENTRY_FLAG_FIELD_PICTURE``
+> +      - 0x00000008
+> +      - The DPB entry is a field picture
+> +    * - ``V4L2_H264_DPB_ENTRY_FLAG_REF_TOP``
+> +      - 0x00000010
+> +      - The DPB entry is a top field reference
+> +    * - ``V4L2_H264_DPB_ENTRY_FLAG_REF_BOTTOM``
+> +      - 0x00000020
+> +      - The DPB entry is a bottom field reference
+> +    * - ``V4L2_H264_DPB_ENTRY_FLAG_REF_FRAME``
+> +      - 0x00000030
+> +      - The DPB entry is a reference frame
+>  
+>  ``V4L2_CID_MPEG_VIDEO_H264_DECODE_MODE (enum)``
+>      Specifies the decoding mode to use. Currently exposes slice-based and
+> diff --git a/include/media/h264-ctrls.h b/include/media/h264-ctrls.h
+> index e877bf1d537c..76020ebd1e6c 100644
+> --- a/include/media/h264-ctrls.h
+> +++ b/include/media/h264-ctrls.h
+> @@ -185,6 +185,10 @@ struct v4l2_ctrl_h264_slice_params {
+>  #define V4L2_H264_DPB_ENTRY_FLAG_VALID		0x01
+>  #define V4L2_H264_DPB_ENTRY_FLAG_ACTIVE		0x02
+>  #define V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM	0x04
+> +#define V4L2_H264_DPB_ENTRY_FLAG_FIELD_PICTURE	0x08
+> +#define V4L2_H264_DPB_ENTRY_FLAG_REF_TOP	0x10
+> +#define V4L2_H264_DPB_ENTRY_FLAG_REF_BOTTOM	0x20
+> +#define V4L2_H264_DPB_ENTRY_FLAG_REF_FRAME	0x30
+>  
 
-config SERIAL_8250
-	tristate "8250/16550 and compatible serial support"
-	depends on !S390
-	select SERIAL_CORE
+I've been going thru the H264 spec and I'm unsure,
+are all these flags semantically needed?
 
-config SERIAL_8250_DW
-         tristate "Support for Synopsys DesignWare 8250 quirks"
-         depends on SERIAL_8250
+For instance, if one of REF_BOTTOM or REF_TOP (or both)
+are set, doesn't that indicate it's a field picture?
 
-So SERIAL_8250 and SERIAL_8250_DW must be selected.
+Or conversely, if neither REF_BOTTOM or REF_TOP are set,
+then it's a frame picture?
 
-If you use select SERIAL_8250_DW if ARCH_ROCKCHIP, check the CONIF_ARCH_ROCKCHIP=y.
-In our rockchip_defconfig the CONIF_ARCH_ROCKCHIP=y by default.
-
-> Thank Robin for the introduction to FTRACE!
->
-> mount -t tracefs tracefs /sys/kernel/tracing
->
-> cd /sys/kernel/tracing
->
-> # Without SERIAL_8250_DW
->
-> /sys/kernel/tracing # cat trace | grep uart2
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_div
->         swapper/0-1     [002] d..1     1.916746: clk_disable: pclk_uart2
->
->
-> /sys/kernel/tracing # cat trace | grep uart
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart1_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart1_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart1_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart1_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart0_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart0_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart0_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart0_div
->         swapper/0-1     [002] d..1     1.916746: clk_disable: pclk_uart2
->         swapper/0-1     [002] d..1     1.923959: clk_disable: pclk_uart1
->         swapper/0-1     [002] d..1     1.930741: clk_disable: pclk_uart0
->
-> # With SERIAL_8250_DW
->
-> /sys/kernel/tracing # cat trace | grep uart2
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_div
->         swapper/0-1     [002] d..1     0.923180: clk_enable: sclk_uart2
->         swapper/0-1     [002] d..1     0.923224: clk_enable: pclk_uart2
->         swapper/0-1     [002] d..1     0.925259: clk_disable: sclk_uart2
->         swapper/0-1     [002] d..1     0.925295: clk_enable: sclk_uart2
->         swapper/0-1     [003] d..1     2.208605: clk_disable: sclk_uart2
->         swapper/0-1     [003] d..1     2.208646: clk_enable: sclk_uart2
->
-> /sys/kernel/tracing # cat trace | grep uart
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart2_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart2_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart1_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart1_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart1_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart1_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart0_div
->            <idle>-0     [000] d..2     0.000000: clk_enable: clk_uart0_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart0_frac
->            <idle>-0     [000] d..2     0.000000: clk_disable: clk_uart0_div
->         swapper/0-1     [002] d..1     0.920034: clk_enable: sclk_uart0
->         swapper/0-1     [002] d..1     0.920085: clk_enable: pclk_uart0
->       kworker/2:1-32    [002] d..1     0.922596: clk_disable: sclk_uart0
->       kworker/2:1-32    [002] d..1     0.922613: clk_disable: pclk_uart0
->         swapper/0-1     [002] d..1     0.923180: clk_enable: sclk_uart2
->         swapper/0-1     [002] d..1     0.923224: clk_enable: pclk_uart2
->         swapper/0-1     [002] d..1     0.925259: clk_disable: sclk_uart2
->         swapper/0-1     [002] d..1     0.925295: clk_enable: sclk_uart2
->         swapper/0-1     [003] d..1     1.914158: clk_disable: pclk_uart1
->         swapper/0-1     [003] d..1     2.208605: clk_disable: sclk_uart2
->         swapper/0-1     [003] d..1     2.208646: clk_enable: sclk_uart2
->
->
->
-> On 7/9/20 3:32 AM, elaine.zhang wrote:
->> 在 2020/7/8 下午10:45, Johan Jonker 写道:
->>> The rk3328 uart2 port is used as boot console and to debug.
->>> During the boot pclk_uart2 is disabled by a clk_disable_unused
->>> initcall. Fix the uart2 function by marking pclk_uart2
->>> as critical on rk3328. Also add sclk_uart2 as that is needed
->>> for the same DT node.
->>>
->>> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
->>> ---
->>>    drivers/clk/rockchip/clk-rk3328.c | 2 ++
->>>    1 file changed, 2 insertions(+)
->>>
->>> diff --git a/drivers/clk/rockchip/clk-rk3328.c
->>> b/drivers/clk/rockchip/clk-rk3328.c
->>> index c186a1985..cb7749cb7 100644
->>> --- a/drivers/clk/rockchip/clk-rk3328.c
->>> +++ b/drivers/clk/rockchip/clk-rk3328.c
->>> @@ -875,6 +875,8 @@ static const char *const rk3328_critical_clocks[]
->>> __initconst = {
->>>        "aclk_gmac_niu",
->>>        "pclk_gmac_niu",
->>>        "pclk_phy_niu",
->>> +    "pclk_uart2",
->>> +    "sclk_uart2",
->>>    };
->>>    
->> Not need to mark the uart2 as critical clocks, the uart clk will enabled
->> by uart driver probe(dw8250_probe()).
->>
->> For your question,  Please check the uart2 dts node "status = okay".
->>
->> Or You can send me the complete log, I check the status of uart2.
->>
->>>    static void __init rk3328_clk_init(struct device_node *np)
->>
->
->
->
+Thanks,
+Ezequiel
