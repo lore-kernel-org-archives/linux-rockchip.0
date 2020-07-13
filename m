@@ -1,68 +1,78 @@
-From: "Alexander A. Klimov" <grandmaster@al2klimov.de>
-Subject: [PATCH] pinctrl: rockchip: Replace HTTP links with HTTPS ones
-Date: Mon, 13 Jul 2020 20:35:41 +0200
-Message-ID: <20200713183541.36963-1-grandmaster@al2klimov.de>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH v4 4/5] rockchip: Separate the reset cause from display
+ cpuinfo
+Date: Tue, 14 Jul 2020 01:27:22 +0530
+Message-ID: <CAMty3ZDUZXamO5-H3t8TgXq23feiOh+wKK2s+npxEC9FzU6Z+Q@mail.gmail.com>
+References: <20200618153948.218506-1-jagan@amarulasolutions.com>
+ <20200618153948.218506-5-jagan@amarulasolutions.com>
+ <3ecbc635-d430-3ee1-7656-3430b7b74f5b@rock-chips.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-gpio-owner@vger.kernel.org>
-Sender: linux-gpio-owner@vger.kernel.org
-To: linus.walleij@linaro.org, heiko@sntech.de, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Cc: "Alexander A. Klimov" <grandmaster@al2klimov.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <3ecbc635-d430-3ee1-7656-3430b7b74f5b@rock-chips.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rationale:
-Reduces attack surface on kernel devs opening the links for MITM
-as HTTPS traffic is much harder to manipulate.
+Hi Kever,
 
-Deterministic algorithm:
-For each file:
-  If not .svg:
-    For each line:
-      If doesn't contain `\bxmlns\b`:
-        For each link, `\bhttp://[^# \t\r\n]*(?:\w|/)`:
-	  If neither `\bgnu\.org/license`, nor `\bmozilla\.org/MPL\b`:
-            If both the HTTP and HTTPS versions
-            return 200 OK and serve the same content:
-              Replace HTTP with HTTPS.
+On Sun, Jun 28, 2020 at 8:17 AM Kever Yang <kever.yang@rock-chips.com> wrot=
+e:
+>
+> HI Jagan,
+>
+> On 2020/6/18 =E4=B8=8B=E5=8D=8811:39, Jagan Teki wrote:
+> > reset cause is a generic functionality based on the soc
+> > cru registers in rockchip. This can be used for printing
+> > the cause of reset in cpuinfo or some other place where
+> > reset cause is needed.
+> >
+> > Other than cpuinfo, reset cause can also be using during
+> > bootcount for checking the specific reset cause and glow
+> > the led based on the reset cause.
+> >
+> > So, let's separate the reset cause code from cpuinfo, and
+> > add a check to build it for rk3399, rk3288 since these two
+> > soc are supporting reset cause as of now.
+> >
+> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> > Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
+> > ---
+> > Changes for v4:
+> > - none
+> >
+> >   arch/arm/include/asm/arch-rockchip/cru.h |  2 ++
+> >   arch/arm/mach-rockchip/Makefile          |  5 ++++-
+> >   arch/arm/mach-rockchip/cpu-info.c        | 20 ++++++++++++--------
+> >   3 files changed, 18 insertions(+), 9 deletions(-)
+> >
+> > diff --git a/arch/arm/include/asm/arch-rockchip/cru.h b/arch/arm/includ=
+e/asm/arch-rockchip/cru.h
+> > index 5eb17f9d55..317eb61049 100644
+> > --- a/arch/arm/include/asm/arch-rockchip/cru.h
+> > +++ b/arch/arm/include/asm/arch-rockchip/cru.h
+> > @@ -31,4 +31,6 @@ enum {
+> >
+> >   #define MHz         1000000
+> >
+> > +char *get_reset_cause(void);
+>
+> Since you add a environment, you should use that instead of export
+> get_reset_cause().
 
-Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
----
- Continuing my work started at 93431e0607e5.
- See also: git log --oneline '--author=Alexander A. Klimov <grandmaster@al2klimov.de>' v5.7..master
- (Actually letting a shell for loop submit all this stuff for me.)
+Yes we can read reset_reason env in SPL but there is a fundamental
+issue with this, say the previous reset cause is RST so the env set to
+RST. For next power-on reset the reset_reason still shows RST since it
+was updated previously but the actual cause of the reset is POR.
 
- If there are any URLs to be removed completely or at least not just HTTPSified:
- Just clearly say so and I'll *undo my change*.
- See also: https://lkml.org/lkml/2020/6/27/64
-
- If there are any valid, but yet not changed URLs:
- See: https://lkml.org/lkml/2020/6/26/837
-
- If you apply the patch, please let me know.
-
- Sorry again to all maintainers who complained about subject lines.
- Now I realized that you want an actually perfect prefixes,
- not just subsystem ones.
- I tried my best...
- And yes, *I could* (at least half-)automate it.
- Impossible is nothing! :)
-
-
- drivers/pinctrl/pinctrl-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index c07324d1f265..a94b54636da9 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -9,7 +9,7 @@
-  * Copyright (c) 2012 Samsung Electronics Co., Ltd.
-  *		http://www.samsung.com
-  * Copyright (c) 2012 Linaro Ltd
-- *		http://www.linaro.org
-+ *		https://www.linaro.org
-  *
-  * and pinctrl-at91:
-  * Copyright (C) 2011-2012 Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>
--- 
-2.27.0
+Jagan.
