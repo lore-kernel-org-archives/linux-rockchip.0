@@ -1,135 +1,47 @@
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
-Subject: [PATCH] ASoC: rockchip: spdif: Handle clk by pm runtime
-Date: Mon, 13 Jul 2020 18:26:00 +0800
-Message-ID: <1594635960-67855-1-git-send-email-sugar.zhang@rock-chips.com>
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org, Sugar Zhang <sugar.zhang@rock-chips.com>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH 1/4] media: staging: rkisp1: remove unused field
+ ctrl_handler from struct rkisp1_device
+Date: Mon, 13 Jul 2020 08:07:07 -0300
+Message-ID: <b2651b90-a514-1b9c-7d07-944e3b24dbdb@collabora.com>
+References: <20200629065754.26621-1-dafna.hirschfeld@collabora.com>
+ <20200629065754.26621-2-dafna.hirschfeld@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200629065754.26621-2-dafna.hirschfeld@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch handle the clk by pm runtime mechanism to simplify
-the clk management.
 
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
----
 
- sound/soc/rockchip/rockchip_spdif.c | 59 +++++++++++--------------------------
- 1 file changed, 17 insertions(+), 42 deletions(-)
+On 6/29/20 3:57 AM, Dafna Hirschfeld wrote:
+> The field ctrl_handler in struct rkisp1_device is not used.
+> This patch removes it.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
-diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
-index 6635145..6748108 100644
---- a/sound/soc/rockchip/rockchip_spdif.c
-+++ b/sound/soc/rockchip/rockchip_spdif.c
-@@ -306,44 +306,22 @@ static int rk_spdif_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	spdif->hclk = devm_clk_get(&pdev->dev, "hclk");
--	if (IS_ERR(spdif->hclk)) {
--		dev_err(&pdev->dev, "Can't retrieve rk_spdif bus clock\n");
-+	if (IS_ERR(spdif->hclk))
- 		return PTR_ERR(spdif->hclk);
--	}
--	ret = clk_prepare_enable(spdif->hclk);
--	if (ret) {
--		dev_err(spdif->dev, "hclock enable failed %d\n", ret);
--		return ret;
--	}
- 
- 	spdif->mclk = devm_clk_get(&pdev->dev, "mclk");
--	if (IS_ERR(spdif->mclk)) {
--		dev_err(&pdev->dev, "Can't retrieve rk_spdif master clock\n");
--		ret = PTR_ERR(spdif->mclk);
--		goto err_disable_hclk;
--	}
--
--	ret = clk_prepare_enable(spdif->mclk);
--	if (ret) {
--		dev_err(spdif->dev, "clock enable failed %d\n", ret);
--		goto err_disable_clocks;
--	}
-+	if (IS_ERR(spdif->mclk))
-+		return PTR_ERR(spdif->mclk);
- 
- 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 	regs = devm_ioremap_resource(&pdev->dev, res);
--	if (IS_ERR(regs)) {
--		ret = PTR_ERR(regs);
--		goto err_disable_clocks;
--	}
-+	if (IS_ERR(regs))
-+		return PTR_ERR(regs);
- 
- 	spdif->regmap = devm_regmap_init_mmio_clk(&pdev->dev, "hclk", regs,
- 						  &rk_spdif_regmap_config);
--	if (IS_ERR(spdif->regmap)) {
--		dev_err(&pdev->dev,
--			"Failed to initialise managed register map\n");
--		ret = PTR_ERR(spdif->regmap);
--		goto err_disable_clocks;
--	}
-+	if (IS_ERR(spdif->regmap))
-+		return PTR_ERR(spdif->regmap);
- 
- 	spdif->playback_dma_data.addr = res->start + SPDIF_SMPDR;
- 	spdif->playback_dma_data.addr_width = DMA_SLAVE_BUSWIDTH_4_BYTES;
-@@ -352,47 +330,44 @@ static int rk_spdif_probe(struct platform_device *pdev)
- 	spdif->dev = &pdev->dev;
- 	dev_set_drvdata(&pdev->dev, spdif);
- 
--	pm_runtime_set_active(&pdev->dev);
- 	pm_runtime_enable(&pdev->dev);
--	pm_request_idle(&pdev->dev);
-+	if (!pm_runtime_enabled(&pdev->dev)) {
-+		ret = rk_spdif_runtime_resume(&pdev->dev);
-+		if (ret)
-+			goto err_pm_runtime;
-+	}
- 
- 	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &rk_spdif_component,
- 					      &rk_spdif_dai, 1);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Could not register DAI\n");
--		goto err_pm_runtime;
-+		goto err_pm_suspend;
- 	}
- 
- 	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Could not register PCM\n");
--		goto err_pm_runtime;
-+		goto err_pm_suspend;
- 	}
- 
- 	return 0;
- 
-+err_pm_suspend:
-+	if (!pm_runtime_status_suspended(&pdev->dev))
-+		rk_spdif_runtime_suspend(&pdev->dev);
- err_pm_runtime:
- 	pm_runtime_disable(&pdev->dev);
--err_disable_clocks:
--	clk_disable_unprepare(spdif->mclk);
--err_disable_hclk:
--	clk_disable_unprepare(spdif->hclk);
- 
- 	return ret;
- }
- 
- static int rk_spdif_remove(struct platform_device *pdev)
- {
--	struct rk_spdif_dev *spdif = dev_get_drvdata(&pdev->dev);
--
- 	pm_runtime_disable(&pdev->dev);
- 	if (!pm_runtime_status_suspended(&pdev->dev))
- 		rk_spdif_runtime_suspend(&pdev->dev);
- 
--	clk_disable_unprepare(spdif->mclk);
--	clk_disable_unprepare(spdif->hclk);
--
- 	return 0;
- }
- 
--- 
-2.7.4
+Acked-by: Helen Koike <helen.koike@collabora.com>
+
+Thanks
+
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-common.h | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+> index 45e554169224..eb0dbc42d09c 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
+> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+> @@ -250,7 +250,6 @@ struct rkisp1_device {
+>  	unsigned int clk_size;
+>  	struct clk_bulk_data clks[RKISP1_MAX_BUS_CLK];
+>  	struct v4l2_device v4l2_dev;
+> -	struct v4l2_ctrl_handler ctrl_handler;
+>  	struct media_device media_dev;
+>  	struct v4l2_async_notifier notifier;
+>  	struct rkisp1_sensor_async *active_sensor;
+> 
