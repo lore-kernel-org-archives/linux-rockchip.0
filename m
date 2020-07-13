@@ -1,16 +1,10 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v4 4/5] rockchip: Separate the reset cause from display
- cpuinfo
-Date: Tue, 14 Jul 2020 01:27:22 +0530
-Message-ID: <CAMty3ZDUZXamO5-H3t8TgXq23feiOh+wKK2s+npxEC9FzU6Z+Q@mail.gmail.com>
-References: <20200618153948.218506-1-jagan@amarulasolutions.com>
- <20200618153948.218506-5-jagan@amarulasolutions.com>
- <3ecbc635-d430-3ee1-7656-3430b7b74f5b@rock-chips.com>
+Subject: [PATCH 1/3] ram: rk3399: Drop debug stride in driver
+Date: Tue, 14 Jul 2020 01:36:33 +0530
+Message-ID: <20200713200635.651032-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <3ecbc635-d430-3ee1-7656-3430b7b74f5b@rock-chips.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <https://lists.denx.de/pipermail/u-boot/>
@@ -20,59 +14,55 @@ List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=subscribe>
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>
-Cc: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
+To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Kever,
+stride debug is already present in sdram_common.c via
+RAM_ROCKCHIP_DEBUG.
 
-On Sun, Jun 28, 2020 at 8:17 AM Kever Yang <kever.yang@rock-chips.com> wrot=
-e:
->
-> HI Jagan,
->
-> On 2020/6/18 =E4=B8=8B=E5=8D=8811:39, Jagan Teki wrote:
-> > reset cause is a generic functionality based on the soc
-> > cru registers in rockchip. This can be used for printing
-> > the cause of reset in cpuinfo or some other place where
-> > reset cause is needed.
-> >
-> > Other than cpuinfo, reset cause can also be using during
-> > bootcount for checking the specific reset cause and glow
-> > the led based on the reset cause.
-> >
-> > So, let's separate the reset cause code from cpuinfo, and
-> > add a check to build it for rk3399, rk3288 since these two
-> > soc are supporting reset cause as of now.
-> >
-> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> > Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
-> > ---
-> > Changes for v4:
-> > - none
-> >
-> >   arch/arm/include/asm/arch-rockchip/cru.h |  2 ++
-> >   arch/arm/mach-rockchip/Makefile          |  5 ++++-
-> >   arch/arm/mach-rockchip/cpu-info.c        | 20 ++++++++++++--------
-> >   3 files changed, 18 insertions(+), 9 deletions(-)
-> >
-> > diff --git a/arch/arm/include/asm/arch-rockchip/cru.h b/arch/arm/includ=
-e/asm/arch-rockchip/cru.h
-> > index 5eb17f9d55..317eb61049 100644
-> > --- a/arch/arm/include/asm/arch-rockchip/cru.h
-> > +++ b/arch/arm/include/asm/arch-rockchip/cru.h
-> > @@ -31,4 +31,6 @@ enum {
-> >
-> >   #define MHz         1000000
-> >
-> > +char *get_reset_cause(void);
->
-> Since you add a environment, you should use that instead of export
-> get_reset_cause().
+So, drop the redundant debug stride code in rk3399 driver.
 
-Yes we can read reset_reason env in SPL but there is a fundamental
-issue with this, say the previous reset cause is RST so the env set to
-RST. For next power-on reset the reset_reason still shows RST since it
-was updated previously but the actual cause of the reset is POR.
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+ drivers/ram/rockchip/sdram_rk3399.c | 25 -------------------------
+ 1 file changed, 25 deletions(-)
 
-Jagan.
+diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
+index 60a1ab8b51..d2f3fde236 100644
+--- a/drivers/ram/rockchip/sdram_rk3399.c
++++ b/drivers/ram/rockchip/sdram_rk3399.c
+@@ -2875,31 +2875,6 @@ static unsigned char calculate_stride(struct rk3399_sdram_params *params)
+ 		if (stride == (-1))
+ 			goto error;
+ 	}
+-	switch (stride) {
+-	case 0xc:
+-		printf("128B stride\n");
+-		break;
+-	case 5:
+-	case 9:
+-	case 0xd:
+-	case 0x11:
+-	case 0x19:
+-		printf("256B stride\n");
+-		break;
+-	case 0xa:
+-	case 0xe:
+-	case 0x12:
+-		printf("512B stride\n");
+-		break;
+-	case 0xf:
+-		printf("4K stride\n");
+-		break;
+-	case 0x1f:
+-		printf("32MB + 256B stride\n");
+-		break;
+-	default:
+-		printf("no stride\n");
+-	}
+ 
+ 	sdram_print_stride(stride);
+ 
+-- 
+2.25.1
