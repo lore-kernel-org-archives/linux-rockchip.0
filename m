@@ -1,81 +1,56 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH 3/4] media: staging: rkisp1: cap: move code that manages the buffers to rkisp1_set_next_buf
-Date: Tue, 14 Jul 2020 14:38:31 +0200
-Message-ID: <20200714123832.28011-4-dafna.hirschfeld@collabora.com>
-References: <20200714123832.28011-1-dafna.hirschfeld@collabora.com>
+Subject: [PATCH 0/4] media: staging: rkisp1: fix possible race conditions in capture
+Date: Tue, 14 Jul 2020 14:38:28 +0200
+Message-ID: <20200714123832.28011-1-dafna.hirschfeld@collabora.com>
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200714123832.28011-1-dafna.hirschfeld@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
 To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
 Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The function 'rkisp1_set_next_buf' configures the registers
-according to 'cap->buf.next'. It is called after updating
-'cap->buf.next' and 'cap->buf.curr'. This patch moves the
-code that updates those fields to rkisp1_set_next_buf.
-This is a preparation for later patch that change a call to
-'rkisp1_handle_buffer' with a call to 'rkisp1_set_next_buf'.
+This patchset fixes several issues found in capture related
+to buffer managings.
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- drivers/staging/media/rkisp1/rkisp1-capture.c | 30 +++++++++----------
- 1 file changed, 14 insertions(+), 16 deletions(-)
+Patch 1 - The first patch removes an optimization that seems not useful.
+The optimization configures the next buffer in case the capture
+already streams and the first buffer is queued just before
+the first irq. This is an unlikely scenario. Also
+the code reads the field 'frame_sequence' which is updated
+on v-start interrupt by 'rkisp1-isp'. Laurent Pinchart mentioned
+in a comment that reading the frame_sequence outside of irq
+handlers should be avoided due to possible race conditions.
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index fa3eaeac2a00..7f400aefe550 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -575,12 +575,16 @@ static void rkisp1_dummy_buf_destroy(struct rkisp1_capture *cap)
- 
- static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- {
--	/*
--	 * Use the dummy space allocated by dma_alloc_coherent to
--	 * throw data if there is no available buffer.
--	 */
--	if (cap->buf.next) {
--		u32 *buff_addr = cap->buf.next->buff_addr;
-+	cap->buf.curr = cap->buf.next;
-+	cap->buf.next = NULL;
-+
-+	if (!list_empty(&cap->buf.queue)) {
-+		u32 *buff_addr;
-+
-+		cap->buf.next = list_first_entry(&cap->buf.queue, struct rkisp1_buffer, queue);
-+		list_del(&cap->buf.next->queue);
-+
-+		buff_addr = cap->buf.next->buff_addr;
- 
- 		rkisp1_write(cap->rkisp1,
- 			     buff_addr[RKISP1_PLANE_Y],
-@@ -592,6 +596,10 @@ static void rkisp1_set_next_buf(struct rkisp1_capture *cap)
- 			     buff_addr[RKISP1_PLANE_CR],
- 			     cap->config->mi.cr_base_ad_init);
- 	} else {
-+		/*
-+		 * Use the dummy space allocated by dma_alloc_coherent to
-+		 * throw data if there is no available buffer.
-+		 */
- 		rkisp1_write(cap->rkisp1,
- 			     cap->buf.dummy.dma_addr,
- 			     cap->config->mi.y_base_ad_init);
-@@ -632,16 +640,6 @@ static void rkisp1_handle_buffer(struct rkisp1_capture *cap)
- 		cap->rkisp1->debug.frame_drop[cap->id]++;
- 	}
- 
--	cap->buf.curr = cap->buf.next;
--	cap->buf.next = NULL;
--
--	if (!list_empty(&cap->buf.queue)) {
--		cap->buf.next = list_first_entry(&cap->buf.queue,
--						 struct rkisp1_buffer,
--						 queue);
--		list_del(&cap->buf.next->queue);
--	}
--
- 	rkisp1_set_next_buf(cap);
- 	spin_unlock_irqrestore(&cap->buf.lock, flags);
- }
+https://patchwork.kernel.org/patch/11066513/#22823561
+
+The entity 'rkisp1-params' also reads 'frame_sequence' outside of the irq handler
+a patch(set) will be sent to fix that too.
+
+Patch 2 - The second patch uses buf.lock to protect buf.curr and buf.next
+in places where they are not protected.
+
+Patch 3 - moves the code that manages the buffers to be together
+with the code that configure the next buffer address to the registers.
+This is a preparation for patch 4.
+
+patch 4 - The function 'rkisp1_stream_start' uses the function
+'rkisp1_handle_buffer' in order to manage the buffers and configure
+the address registers before stream starts. But the function
+'rkisp1_handle_buffer' also contains other code that is not needed for
+stream start
+The patch replace it with calls to rkisp1_set_next_buf.
+
+Dafna Hirschfeld (4):
+  media: staging: rkisp1: cap: don't set next buffer from
+    rkisp1_vb2_buf_queue
+  media: staging: rkisp1: cap: protect buf.curr and buf.next with
+    buf.lock
+  media: staging: rkisp1: cap: move code that manages the buffers to
+    rkisp1_set_next_buf
+  media: staging: rkisp1: cap: in stream start, replace calls to
+    rkisp1_handle_buffer with rkisp1_set_next_buf
+
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 52 +++++++------------
+ 1 file changed, 20 insertions(+), 32 deletions(-)
+
 -- 
 2.17.1
