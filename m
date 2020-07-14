@@ -1,168 +1,56 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v5 5/5] roc-rk3399-pc: Set LED only during POR and pwr_key=y
-Date: Tue, 14 Jul 2020 15:02:29 +0530
-Message-ID: <20200714093229.28763-6-jagan@amarulasolutions.com>
-References: <20200714093229.28763-1-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200714093229.28763-1-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: [PATCH 1/4] media: staging: rkisp1: cap: don't set next buffer from rkisp1_vb2_buf_queue
+Date: Tue, 14 Jul 2020 14:38:29 +0200
+Message-ID: <20200714123832.28011-2-dafna.hirschfeld@collabora.com>
+References: <20200714123832.28011-1-dafna.hirschfeld@collabora.com>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200714123832.28011-1-dafna.hirschfeld@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-ROC-RK3399-PC has specific set of configurations for
-on-board led setup.
+The function 'rkisp1_vb2_buf_queue' sets the next buffer directly
+in case the capture is already streaming but no frame yet arrived
+from the sensor. This is an optimization that tries to avoid
+dropping a frame.
+The call atomic_read(&cap->rkisp1->isp.frame_sequence) is used
+to check if a frame arrived. Reading the 'frame_sequence' should
+be avoided outside irq handlers to avoid race conditions.
 
-Due to easiness for user to know the state of the board
-roc-rk339-pc board code will setup the low power led
-on/off, and waiting for user to press power key and then
-glow full power led.
+This patch removes this optimization. Dropping of the first
+frames can be avoided if userspace queues the buffers before
+start streaming. If userspace starts queueing buffers
+only after calling 'streamon' he risks frame drops anyway.
 
-All this needs to happen only during power-on-reset not
-for soft reset or WDT.
-
-Also, it is not a proper usage to ask the user to press
-the Power key if the board connected remotely, so add
-the environment variable 'pwr_key' to check as well.
-
-So, user need to press Power key only
-- during POR
-- pwr_key=y
-
-Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
-Changes for v5:
-- add changes on board file
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 13 +------------
+ 1 file changed, 1 insertion(+), 12 deletions(-)
 
- board/firefly/roc-pc-rk3399/roc-pc-rk3399.c | 35 ++++++++++++++++++++-
- configs/roc-pc-mezzanine-rk3399_defconfig   |  3 ++
- configs/roc-pc-rk3399_defconfig             |  3 ++
- 3 files changed, 40 insertions(+), 1 deletion(-)
-
-diff --git a/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c b/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
-index 4db3dd739c..ff2dc028a1 100644
---- a/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
-+++ b/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
-@@ -5,19 +5,52 @@
+diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+index 793ec884c894..572b0949c81f 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-capture.c
++++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+@@ -743,18 +743,7 @@ static void rkisp1_vb2_buf_queue(struct vb2_buffer *vb)
+ 		     ispbuf->buff_addr[RKISP1_PLANE_CB]);
  
- #include <common.h>
- #include <dm.h>
-+#include <env.h>
- #include <log.h>
- #include <spl_gpio.h>
-+#include <asm/io.h>
- #include <power/regulator.h>
+ 	spin_lock_irqsave(&cap->buf.lock, flags);
+-
+-	/*
+-	 * If there's no next buffer assigned, queue this buffer directly
+-	 * as the next buffer, and update the memory interface.
+-	 */
+-	if (cap->is_streaming && !cap->buf.next &&
+-	    atomic_read(&cap->rkisp1->isp.frame_sequence) == -1) {
+-		cap->buf.next = ispbuf;
+-		rkisp1_set_next_buf(cap);
+-	} else {
+-		list_add_tail(&ispbuf->queue, &cap->buf.queue);
+-	}
++	list_add_tail(&ispbuf->queue, &cap->buf.queue);
+ 	spin_unlock_irqrestore(&cap->buf.lock, flags);
+ }
  
-+#include <asm/arch-rockchip/cru.h>
- #include <asm/arch-rockchip/gpio.h>
-+#include <asm/arch-rockchip/grf_rk3399.h>
- 
-+#define PMUGRF_BASE		0xff320000
- #define GPIO0_BASE		0xff720000
- 
-+/**
-+ * LED setup for roc-rk3399-pc
-+ *
-+ * 1. Set the low power leds (only during POR, pwr_key env is 'y')
-+ *    glow yellow LED, termed as low power
-+ *    poll for on board power key press
-+ *    once powe key pressed, turn off yellow
-+ * 2. Turn on red LED, indicating full power mode
-+ */
- static int led_setup(void)
- {
- 	struct rockchip_gpio_regs * const gpio0 = (void *)GPIO0_BASE;
-+	struct rk3399_pmugrf_regs * const pmugrf = (void *)PMUGRF_BASE;
-+	bool press_pwr_key = false;
-+
-+	if (IS_ENABLED(CONFIG_SPL_ENV_SUPPORT)) {
-+		env_init();
-+		env_load();
-+		if (env_get_yesno("pwr_key") == 1)
-+			press_pwr_key = true;
-+	}
-+
-+	if (press_pwr_key && !strcmp(get_reset_cause(), "POR")) {
-+		spl_gpio_output(gpio0, GPIO(BANK_A, 2), 1);
-+
-+		spl_gpio_set_pull(&pmugrf->gpio0_p, GPIO(BANK_A, 5),
-+				  GPIO_PULL_NORMAL);
-+		while (readl(&gpio0->ext_port) & 0x20)
-+			;
-+
-+		spl_gpio_output(gpio0, GPIO(BANK_A, 2), 0);
-+	}
- 
--	/* Turn on red LED, indicating full power mode */
- 	spl_gpio_output(gpio0, GPIO(BANK_B, 5), 1);
- 
- 	return 0;
-diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
-index 15d511741f..14cda5850e 100644
---- a/configs/roc-pc-mezzanine-rk3399_defconfig
-+++ b/configs/roc-pc-mezzanine-rk3399_defconfig
-@@ -8,6 +8,7 @@ CONFIG_ENV_SECT_SIZE=0x1000
- CONFIG_SPL_DM_SPI=y
- CONFIG_ROCKCHIP_RK3399=y
- CONFIG_TARGET_ROC_PC_RK3399=y
-+CONFIG_SPL_SYS_MALLOC_F_LEN=0x20000
- CONFIG_NR_DRAM_BANKS=1
- CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
-@@ -20,6 +21,7 @@ CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
-+CONFIG_SPL_ENV_SUPPORT=y
- CONFIG_SPL_SPI_LOAD=y
- CONFIG_TPL=y
- CONFIG_CMD_BOOTZ=y
-@@ -34,6 +36,7 @@ CONFIG_DEFAULT_DEVICE_TREE="rk3399-roc-pc-mezzanine"
- CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
- CONFIG_ENV_IS_IN_SPI_FLASH=y
- CONFIG_SYS_RELOC_GD_ENV_ADDR=y
-+CONFIG_SPL_DM_SEQ_ALIAS=y
- CONFIG_ROCKCHIP_GPIO=y
- CONFIG_SYS_I2C_ROCKCHIP=y
- CONFIG_MISC=y
-diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index 2a6d0d22c8..85f5c8f86b 100644
---- a/configs/roc-pc-rk3399_defconfig
-+++ b/configs/roc-pc-rk3399_defconfig
-@@ -8,6 +8,7 @@ CONFIG_ENV_SECT_SIZE=0x1000
- CONFIG_SPL_DM_SPI=y
- CONFIG_ROCKCHIP_RK3399=y
- CONFIG_TARGET_ROC_PC_RK3399=y
-+CONFIG_SPL_SYS_MALLOC_F_LEN=0x20000
- CONFIG_NR_DRAM_BANKS=1
- CONFIG_DEBUG_UART_BASE=0xFF1A0000
- CONFIG_DEBUG_UART_CLOCK=24000000
-@@ -20,6 +21,7 @@ CONFIG_DISPLAY_BOARDINFO_LATE=y
- # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
- CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
-+CONFIG_SPL_ENV_SUPPORT=y
- CONFIG_SPL_SPI_LOAD=y
- CONFIG_TPL=y
- CONFIG_CMD_BOOTZ=y
-@@ -33,6 +35,7 @@ CONFIG_DEFAULT_DEVICE_TREE="rk3399-roc-pc"
- CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
- CONFIG_ENV_IS_IN_SPI_FLASH=y
- CONFIG_SYS_RELOC_GD_ENV_ADDR=y
-+CONFIG_SPL_DM_SEQ_ALIAS=y
- CONFIG_ROCKCHIP_GPIO=y
- CONFIG_SYS_I2C_ROCKCHIP=y
- CONFIG_MISC=y
 -- 
-2.25.1
+2.17.1
