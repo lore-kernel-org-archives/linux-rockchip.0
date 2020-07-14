@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v5 1/5] roc-rk3399-pc: Move leds setup in SPL
-Date: Tue, 14 Jul 2020 15:02:25 +0530
-Message-ID: <20200714093229.28763-2-jagan@amarulasolutions.com>
+Subject: [PATCH v5 2/5] rockchip: Don't clear the reset status reg
+Date: Tue, 14 Jul 2020 15:02:26 +0530
+Message-ID: <20200714093229.28763-3-jagan@amarulasolutions.com>
 References: <20200714093229.28763-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -20,148 +20,55 @@ To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@the
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-roc-rk3399-pc has some specific requirements to support LEDS,
-environment. board detection and etc prior to U-Boot proper.
+reset reason can be used several stages of U-Boot bootloader
+like SPL, U-Boot proper based on the requirements.
 
-So as of now SPL would be a better stage for these custom board
-requirements to support unlike TPL. Adding few of these custom
-requirements like LEDS in TPL would require extra code pulling
-and also the size of TPL can grow.
+Clearing the status register end of get_reset_cause will end
+up showing the wrong reset cause when it read the second time.
+For example, if board resets, SPL reads the reset status as
+RST whereas U-Boot proper reads the status as POR.
 
-So, this patch moves the leds code from TPL into SPL after relocation.
+However, based on the latest testing clearing reset status
+won't be required for determine the last reset cause or
+following resets.
 
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
-Changes for v5
-- drop tpl.c file
-- update the code in board file
+Changes for v5:
+- new patch
 
- arch/arm/mach-rockchip/tpl.c                |  7 ----
- board/firefly/roc-pc-rk3399/roc-pc-rk3399.c | 36 +++++++++++----------
- configs/roc-pc-mezzanine-rk3399_defconfig   |  2 +-
- configs/roc-pc-rk3399_defconfig             |  2 +-
- 4 files changed, 21 insertions(+), 26 deletions(-)
+ arch/arm/include/asm/arch-rockchip/cru.h | 1 -
+ arch/arm/mach-rockchip/cpu-info.c        | 6 ------
+ 2 files changed, 7 deletions(-)
 
-diff --git a/arch/arm/mach-rockchip/tpl.c b/arch/arm/mach-rockchip/tpl.c
-index 88f80b05a9..cc908e1b0e 100644
---- a/arch/arm/mach-rockchip/tpl.c
-+++ b/arch/arm/mach-rockchip/tpl.c
-@@ -43,18 +43,11 @@ __weak void rockchip_stimer_init(void)
- 	       TIMER_CONTROL_REG);
+diff --git a/arch/arm/include/asm/arch-rockchip/cru.h b/arch/arm/include/asm/arch-rockchip/cru.h
+index 5eb17f9d55..d2057cb738 100644
+--- a/arch/arm/include/asm/arch-rockchip/cru.h
++++ b/arch/arm/include/asm/arch-rockchip/cru.h
+@@ -26,7 +26,6 @@ enum {
+ 	SND_GLB_TSADC_RST_ST	= BIT(3),
+ 	FST_GLB_WDT_RST_ST	= BIT(4),
+ 	SND_GLB_WDT_RST_ST	= BIT(5),
+-	GLB_RST_ST_MASK		= GENMASK(5, 0),
+ };
+ 
+ #define MHz		1000000
+diff --git a/arch/arm/mach-rockchip/cpu-info.c b/arch/arm/mach-rockchip/cpu-info.c
+index 21ca9dedce..bb5a198039 100644
+--- a/arch/arm/mach-rockchip/cpu-info.c
++++ b/arch/arm/mach-rockchip/cpu-info.c
+@@ -47,12 +47,6 @@ static char *get_reset_cause(void)
+ 	 */
+ 	env_set("reset_reason", cause);
+ 
+-	/*
+-	 * Clear glb_rst_st, so we can determine the last reset cause
+-	 * for following resets.
+-	 */
+-	rk_clrreg(&cru->glb_rst_st, GLB_RST_ST_MASK);
+-
+ 	return cause;
  }
  
--__weak int board_early_init_f(void)
--{
--	return 0;
--}
--
- void board_init_f(ulong dummy)
- {
- 	struct udevice *dev;
- 	int ret;
- 
--	board_early_init_f();
--
- #if defined(CONFIG_DEBUG_UART) && defined(CONFIG_TPL_SERIAL_SUPPORT)
- 	/*
- 	 * Debug UART can be used from here if required:
-diff --git a/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c b/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
-index 7c3a803654..4db3dd739c 100644
---- a/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
-+++ b/board/firefly/roc-pc-rk3399/roc-pc-rk3399.c
-@@ -6,14 +6,24 @@
- #include <common.h>
- #include <dm.h>
- #include <log.h>
--#include <asm/arch-rockchip/periph.h>
--#include <power/regulator.h>
- #include <spl_gpio.h>
--#include <asm/io.h>
-+#include <power/regulator.h>
-+
- #include <asm/arch-rockchip/gpio.h>
- 
--#ifndef CONFIG_SPL_BUILD
--int board_early_init_f(void)
-+#define GPIO0_BASE		0xff720000
-+
-+static int led_setup(void)
-+{
-+	struct rockchip_gpio_regs * const gpio0 = (void *)GPIO0_BASE;
-+
-+	/* Turn on red LED, indicating full power mode */
-+	spl_gpio_output(gpio0, GPIO(BANK_B, 5), 1);
-+
-+	return 0;
-+}
-+
-+static int roc_pc_early_init_f(void)
- {
- 	struct udevice *regulator;
- 	int ret;
-@@ -30,19 +40,11 @@ int board_early_init_f(void)
- out:
- 	return 0;
- }
--#endif
--
--#if defined(CONFIG_TPL_BUILD)
--
--#define GPIO0_BASE      0xff720000
- 
- int board_early_init_f(void)
- {
--	struct rockchip_gpio_regs * const gpio0 = (void *)GPIO0_BASE;
--
--	/* Turn on red LED, indicating full power mode */
--	spl_gpio_output(gpio0, GPIO(BANK_B, 5), 1);
--
--	return 0;
-+	if (IS_ENABLED(CONFIG_SPL_BUILD))
-+		return led_setup();
-+	else
-+		return roc_pc_early_init_f();
- }
--#endif
-diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
-index c87a8568fc..15d511741f 100644
---- a/configs/roc-pc-mezzanine-rk3399_defconfig
-+++ b/configs/roc-pc-mezzanine-rk3399_defconfig
-@@ -1,6 +1,7 @@
- CONFIG_ARM=y
- CONFIG_ARCH_ROCKCHIP=y
- CONFIG_SYS_TEXT_BASE=0x00200000
-+CONFIG_SPL_GPIO_SUPPORT=y
- CONFIG_ENV_SIZE=0x8000
- CONFIG_ENV_OFFSET=0x3F8000
- CONFIG_ENV_SECT_SIZE=0x1000
-@@ -21,7 +22,6 @@ CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
- CONFIG_SPL_SPI_LOAD=y
- CONFIG_TPL=y
--CONFIG_TPL_GPIO_SUPPORT=y
- CONFIG_CMD_BOOTZ=y
- CONFIG_CMD_GPT=y
- CONFIG_CMD_MMC=y
-diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
-index 601f5c6ae1..2a6d0d22c8 100644
---- a/configs/roc-pc-rk3399_defconfig
-+++ b/configs/roc-pc-rk3399_defconfig
-@@ -1,6 +1,7 @@
- CONFIG_ARM=y
- CONFIG_ARCH_ROCKCHIP=y
- CONFIG_SYS_TEXT_BASE=0x00200000
-+CONFIG_SPL_GPIO_SUPPORT=y
- CONFIG_ENV_SIZE=0x8000
- CONFIG_ENV_OFFSET=0x3F8000
- CONFIG_ENV_SECT_SIZE=0x1000
-@@ -21,7 +22,6 @@ CONFIG_SPL_STACK_R=y
- CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
- CONFIG_SPL_SPI_LOAD=y
- CONFIG_TPL=y
--CONFIG_TPL_GPIO_SUPPORT=y
- CONFIG_CMD_BOOTZ=y
- CONFIG_CMD_GPT=y
- CONFIG_CMD_MMC=y
 -- 
 2.25.1
