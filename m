@@ -1,10 +1,9 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v5 3/5] rockchip: Separate the reset cause from display cpuinfo
-Date: Tue, 14 Jul 2020 15:02:27 +0530
-Message-ID: <20200714093229.28763-4-jagan@amarulasolutions.com>
+Subject: [PATCH v5 4/5] rockchip: spl: Move board_early_init_f after cpu timer
+Date: Tue, 14 Jul 2020 15:02:28 +0530
+Message-ID: <20200714093229.28763-5-jagan@amarulasolutions.com>
 References: <20200714093229.28763-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
 In-Reply-To: <20200714093229.28763-1-jagan@amarulasolutions.com>
@@ -21,106 +20,48 @@ To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@the
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-reset cause is a generic functionality based on the soc
-cru registers in rockchip. This can be used for printing
-the cause of reset in cpuinfo or some other place where
-reset cause is needed. 
+Custom board_early_init_f not only deal with simple gpio
+configuration but also have a possibility to access clocks
+to process any clock related operations like checking reset
+cause state and etc.
 
-Other than cpuinfo, reset cause can also be using during
-bootcount for checking the specific reset cause and glow
-the led based on the reset cause.
+So, call it once the rockchip timer initialization done instead
+of calling first place of board_init_f which doesn't have any
+rockchip init code before.
 
-So, let's separate the reset cause code from cpuinfo, and
-add a check to build it for rk3399, rk3288 since these two
-soc are supporting reset cause as of now.
+This specific concern was tested with checking reset reason
+via board_early_init_f, which indeed require a clk probe.
 
-Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
 Changes for v5:
-- update Makefile
+- new patch
 
- arch/arm/include/asm/arch-rockchip/cru.h |  2 ++
- arch/arm/mach-rockchip/Makefile          |  5 ++++-
- arch/arm/mach-rockchip/cpu-info.c        | 20 ++++++++++++--------
- 3 files changed, 18 insertions(+), 9 deletions(-)
+ arch/arm/mach-rockchip/spl.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm/include/asm/arch-rockchip/cru.h b/arch/arm/include/asm/arch-rockchip/cru.h
-index d2057cb738..13ea4aba8e 100644
---- a/arch/arm/include/asm/arch-rockchip/cru.h
-+++ b/arch/arm/include/asm/arch-rockchip/cru.h
-@@ -30,4 +30,6 @@ enum {
+diff --git a/arch/arm/mach-rockchip/spl.c b/arch/arm/mach-rockchip/spl.c
+index cddf4fd3d5..082828de66 100644
+--- a/arch/arm/mach-rockchip/spl.c
++++ b/arch/arm/mach-rockchip/spl.c
+@@ -122,8 +122,6 @@ void board_init_f(ulong dummy)
+ 	debug("\nspl:debug uart enabled in %s\n", __func__);
+ #endif
  
- #define MHz		1000000
- 
-+char *get_reset_cause(void);
-+
- #endif /* _ROCKCHIP_CLOCK_H */
-diff --git a/arch/arm/mach-rockchip/Makefile b/arch/arm/mach-rockchip/Makefile
-index 5b38526fe0..121f23a563 100644
---- a/arch/arm/mach-rockchip/Makefile
-+++ b/arch/arm/mach-rockchip/Makefile
-@@ -22,11 +22,14 @@ ifeq ($(CONFIG_SPL_BUILD)$(CONFIG_TPL_BUILD),)
- # we can have the preprocessor correctly recognise both 0x0 and 0
- # meaning "turn it off".
- obj-y += boot_mode.o
--obj-$(CONFIG_DISPLAY_CPUINFO) += cpu-info.o
- obj-$(CONFIG_ROCKCHIP_COMMON_BOARD) += board.o
- obj-$(CONFIG_MISC_INIT_R) += misc.o
- endif
- 
-+ifeq ($(CONFIG_TPL_BUILD),)
-+obj-$(CONFIG_DISPLAY_CPUINFO) += cpu-info.o
-+endif
-+
- obj-$(CONFIG_$(SPL_TPL_)RAM) += sdram.o
- 
- obj-$(CONFIG_ROCKCHIP_PX30) += px30/
-diff --git a/arch/arm/mach-rockchip/cpu-info.c b/arch/arm/mach-rockchip/cpu-info.c
-index bb5a198039..d0f030109f 100644
---- a/arch/arm/mach-rockchip/cpu-info.c
-+++ b/arch/arm/mach-rockchip/cpu-info.c
-@@ -13,7 +13,7 @@
- #include <asm/arch-rockchip/hardware.h>
- #include <linux/err.h>
- 
--static char *get_reset_cause(void)
-+char *get_reset_cause(void)
- {
- 	struct rockchip_cru *cru = rockchip_get_cru();
- 	char *cause = NULL;
-@@ -41,21 +41,25 @@ static char *get_reset_cause(void)
- 		cause = "unknown reset";
- 	}
- 
--	/**
--	 * reset_reason env is used by rk3288, due to special use case
--	 * to figure it the boot behavior. so keep this as it is.
--	 */
--	env_set("reset_reason", cause);
+-	board_early_init_f();
 -
- 	return cause;
- }
- 
-+#if CONFIG_IS_ENABLED(DISPLAY_CPUINFO)
- int print_cpuinfo(void)
- {
-+	char *cause = get_reset_cause();
+ 	ret = spl_early_init();
+ 	if (ret) {
+ 		printf("spl_early_init() failed: %d\n", ret);
+@@ -137,6 +135,9 @@ void board_init_f(ulong dummy)
+ 	/* Init ARM arch timer in arch/arm/cpu/armv7/arch_timer.c */
+ 	timer_init();
+ #endif
 +
- 	printf("SoC: Rockchip %s\n", CONFIG_SYS_SOC);
--	printf("Reset cause: %s\n", get_reset_cause());
-+	printf("Reset cause: %s\n", cause);
++	board_early_init_f();
 +
-+	/**
-+	 * reset_reason env is used by rk3288, due to special use case
-+	 * to figure it the boot behavior. so keep this as it is.
-+	 */
-+	env_set("reset_reason", cause);
- 
- 	/* TODO print operating temparature and clock */
- 
- 	return 0;
- }
-+#endif
+ #if !defined(CONFIG_TPL) || defined(CONFIG_SPL_RAM)
+ 	debug("\nspl:init dram\n");
+ 	ret = dram_init();
 -- 
 2.25.1
