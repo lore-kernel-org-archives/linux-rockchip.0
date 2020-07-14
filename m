@@ -1,44 +1,81 @@
-From: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v3] dt-bindings: sound: convert rk3328 codec binding to yaml
-Date: Tue, 14 Jul 2020 17:39:37 +0100
-Message-ID: <159474477218.998.15280718297734736345.b4-ty@kernel.org>
-References: <20200714073247.172859-1-katsuhiro@katsuster.net>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200714073247.172859-1-katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH] pinctrl: rockchip: Replace HTTP links with HTTPS ones
+Date: Tue, 14 Jul 2020 20:27:10 +0200
+Message-ID: <3739981.ORC64qsr6C@phil>
+References: <20200713183541.36963-1-grandmaster@al2klimov.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <20200713183541.36963-1-grandmaster@al2klimov.de>
+Sender: linux-gpio-owner@vger.kernel.org
+To: "Alexander A. Klimov" <grandmaster@al2klimov.de>
+Cc: linus.walleij@linaro.org, linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 14 Jul 2020 16:32:47 +0900, Katsuhiro Suzuki wrote:
-> This patch converts Rockchip rk3328 audio codec binding to DT schema.
-> And adds description about "mclk" clock and fixes some errors in
-> original example.
+Am Montag, 13. Juli 2020, 20:35:41 CEST schrieb Alexander A. Klimov:
+> Rationale:
+> Reduces attack surface on kernel devs opening the links for MITM
+> as HTTPS traffic is much harder to manipulate.
+> 
+> Deterministic algorithm:
+> For each file:
+>   If not .svg:
+>     For each line:
+>       If doesn't contain `\bxmlns\b`:
+>         For each link, `\bhttp://[^# \t\r\n]*(?:\w|/)`:
+> 	  If neither `\bgnu\.org/license`, nor `\bmozilla\.org/MPL\b`:
+>             If both the HTTP and HTTPS versions
+>             return 200 OK and serve the same content:
+>               Replace HTTP with HTTPS.
+> 
+> Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
 
-Applied to
+At least from my cursory glance the www.samsung.com below
+also behaves the same with both http and https .
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+In general ... I don't really believe anybody would use the rockchip
+pinctrl-driver to access either Linaro nor Samsung, but I don't care that
+much so ;-)
 
-Thanks!
+Acked-by: Heiko Stuebner <heiko@sntech.de>
 
-[1/1] ASoC: convert rk3328 codec binding to yaml
-      commit: 3f6597ad2f9ed8ed89dbd2a9ec0b0c892774f9d2
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+> ---
+>  Continuing my work started at 93431e0607e5.
+>  See also: git log --oneline '--author=Alexander A. Klimov <grandmaster@al2klimov.de>' v5.7..master
+>  (Actually letting a shell for loop submit all this stuff for me.)
+> 
+>  If there are any URLs to be removed completely or at least not just HTTPSified:
+>  Just clearly say so and I'll *undo my change*.
+>  See also: https://lkml.org/lkml/2020/6/27/64
+> 
+>  If there are any valid, but yet not changed URLs:
+>  See: https://lkml.org/lkml/2020/6/26/837
+> 
+>  If you apply the patch, please let me know.
+> 
+>  Sorry again to all maintainers who complained about subject lines.
+>  Now I realized that you want an actually perfect prefixes,
+>  not just subsystem ones.
+>  I tried my best...
+>  And yes, *I could* (at least half-)automate it.
+>  Impossible is nothing! :)
+> 
+> 
+>  drivers/pinctrl/pinctrl-rockchip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+> index c07324d1f265..a94b54636da9 100644
+> --- a/drivers/pinctrl/pinctrl-rockchip.c
+> +++ b/drivers/pinctrl/pinctrl-rockchip.c
+> @@ -9,7 +9,7 @@
+>   * Copyright (c) 2012 Samsung Electronics Co., Ltd.
+>   *		http://www.samsung.com
+>   * Copyright (c) 2012 Linaro Ltd
+> - *		http://www.linaro.org
+> + *		https://www.linaro.org
+>   *
+>   * and pinctrl-at91:
+>   * Copyright (C) 2011-2012 Jean-Christophe PLAGNIOL-VILLARD <plagnioj@jcrosoft.com>
+> 
