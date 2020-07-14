@@ -1,136 +1,201 @@
-From: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Subject: [PATCH v3] dt-bindings: sound: convert rk3328 codec binding to yaml
-Date: Tue, 14 Jul 2020 16:32:47 +0900
-Message-ID: <20200714073247.172859-1-katsuhiro@katsuster.net>
+From: Alex Bee <knaerzche@gmail.com>
+Subject: Re: [PATCH v2 2/2] drm: rockchip: add NV15, NV20 and NV30 support
+Date: Tue, 14 Jul 2020 09:34:26 +0200
+Message-ID: <45143339-1efc-4709-1782-466e7923d7ea@gmail.com>
+References: <20200607202521.18438-1-jonas@kwiboo.se>
+ <20200706223009.1200-1-jonas@kwiboo.se>
+ <20200706223009.1200-3-jonas@kwiboo.se>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, alsa-devel-K7yf7f+aM1XWsZ/bQMPhNw@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200706223009.1200-3-jonas@kwiboo.se>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Jonas Karlman <jonas@kwiboo.se>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, linux-kernel@vger.kernel.org, Maxime Ripard <mripard@kernel.org>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>, Ben Davis <ben.davis@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch converts Rockchip rk3328 audio codec binding to DT schema.
-And adds description about "mclk" clock and fixes some errors in
-original example.
+Hi Jonas,
 
-Signed-off-by: Katsuhiro Suzuki <katsuhiro-WKCMddiH/C4xsqv6Oivclw@public.gmane.org>
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
----
- .../bindings/sound/rockchip,rk3328-codec.txt  | 28 --------
- .../bindings/sound/rockchip,rk3328-codec.yaml | 69 +++++++++++++++++++
- 2 files changed, 69 insertions(+), 28 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt
- create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml
+Am 07.07.20 um 00:30 schrieb Jonas Karlman:
+> Add support for displaying 10-bit 4:2:0 and 4:2:2 formats produced by the
+> Rockchip Video Decoder on RK322X, RK3288, RK3328, RK3368 and RK3399.
+> Also add support for 10-bit 4:4:4 format while at it.
+>
+> V2: Added NV30 support
+>
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Reviewed-by: Sandy Huang <hjc@rock-chips.com>
+> ---
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 29 +++++++++++++++++--
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop.h |  1 +
+>   drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 32 +++++++++++++++++----
+>   3 files changed, 54 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> index c80f7d9fd13f..eb663e25ad9e 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+> @@ -261,6 +261,18 @@ static bool has_rb_swapped(uint32_t format)
+>   	}
+>   }
+>   
+> +static bool is_fmt_10(uint32_t format)
+> +{
+> +	switch (format) {
+> +	case DRM_FORMAT_NV15:
+> +	case DRM_FORMAT_NV20:
+> +	case DRM_FORMAT_NV30:
+> +		return true;
+> +	default:
+> +		return false;
+> +	}
+> +}
+> +
+>   static enum vop_data_format vop_convert_format(uint32_t format)
+>   {
+>   	switch (format) {
+> @@ -276,10 +288,13 @@ static enum vop_data_format vop_convert_format(uint32_t format)
+>   	case DRM_FORMAT_BGR565:
+>   		return VOP_FMT_RGB565;
+>   	case DRM_FORMAT_NV12:
+> +	case DRM_FORMAT_NV15:
+>   		return VOP_FMT_YUV420SP;
+>   	case DRM_FORMAT_NV16:
+> +	case DRM_FORMAT_NV20:
+>   		return VOP_FMT_YUV422SP;
+>   	case DRM_FORMAT_NV24:
+> +	case DRM_FORMAT_NV30:
+>   		return VOP_FMT_YUV444SP;
+>   	default:
+>   		DRM_ERROR("unsupported format[%08x]\n", format);
+> @@ -922,7 +937,12 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+>   	dsp_sty = dest->y1 + crtc->mode.vtotal - crtc->mode.vsync_start;
+>   	dsp_st = dsp_sty << 16 | (dsp_stx & 0xffff);
+>   
+> -	offset = (src->x1 >> 16) * fb->format->cpp[0];
+> +	if (fb->format->block_w[0])
+> +		offset = (src->x1 >> 16) * fb->format->char_per_block[0] /
+> +			 fb->format->block_w[0];
+> +	else
+> +		offset = (src->x1 >> 16) * fb->format->cpp[0];
+> +
+>   	offset += (src->y1 >> 16) * fb->pitches[0];
+>   	dma_addr = rk_obj->dma_addr + offset + fb->offsets[0];
+>   
+> @@ -948,6 +968,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+>   	}
+>   
+>   	VOP_WIN_SET(vop, win, format, format);
+> +	VOP_WIN_SET(vop, win, fmt_10, is_fmt_10(fb->format->format));
+>   	VOP_WIN_SET(vop, win, yrgb_vir, DIV_ROUND_UP(fb->pitches[0], 4));
+>   	VOP_WIN_SET(vop, win, yrgb_mst, dma_addr);
+>   	VOP_WIN_YUV2YUV_SET(vop, win_yuv2yuv, y2r_en, is_yuv);
+> @@ -964,7 +985,11 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+>   		uv_obj = fb->obj[1];
+>   		rk_uv_obj = to_rockchip_obj(uv_obj);
+>   
+> -		offset = (src->x1 >> 16) * bpp / hsub;
+> +		if (fb->format->block_w[1])
+> +			offset = (src->x1 >> 16) * bpp /
+> +				 fb->format->block_w[1] / hsub;
+> +		else
+> +			offset = (src->x1 >> 16) * bpp / hsub;
+>   		offset += (src->y1 >> 16) * fb->pitches[1] / vsub;
+>   
+>   		dma_addr = rk_uv_obj->dma_addr + offset + fb->offsets[1];
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> index 4a2099cb582e..eab055d9b56d 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+> @@ -154,6 +154,7 @@ struct vop_win_phy {
+>   	struct vop_reg enable;
+>   	struct vop_reg gate;
+>   	struct vop_reg format;
+> +	struct vop_reg fmt_10;
+>   	struct vop_reg rb_swap;
+>   	struct vop_reg act_info;
+>   	struct vop_reg dsp_info;
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+> index 80053d91a301..2c55e1852c3d 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+> @@ -50,6 +50,23 @@ static const uint32_t formats_win_full[] = {
+>   	DRM_FORMAT_NV24,
+>   };
+>   
+> +static const uint32_t formats_win_full_10[] = {
+> +	DRM_FORMAT_XRGB8888,
+> +	DRM_FORMAT_ARGB8888,
+> +	DRM_FORMAT_XBGR8888,
+> +	DRM_FORMAT_ABGR8888,
+> +	DRM_FORMAT_RGB888,
+> +	DRM_FORMAT_BGR888,
+> +	DRM_FORMAT_RGB565,
+> +	DRM_FORMAT_BGR565,
+> +	DRM_FORMAT_NV12,
+> +	DRM_FORMAT_NV16,
+> +	DRM_FORMAT_NV24,
+> +	DRM_FORMAT_NV15,
+> +	DRM_FORMAT_NV20,
+> +	DRM_FORMAT_NV30,
+> +};
+> +
+>   static const uint64_t format_modifiers_win_full[] = {
+>   	DRM_FORMAT_MOD_LINEAR,
+>   	DRM_FORMAT_MOD_INVALID,
+> @@ -579,11 +596,12 @@ static const struct vop_scl_regs rk3288_win_full_scl = {
+>   
+>   static const struct vop_win_phy rk3288_win01_data = {
+>   	.scl = &rk3288_win_full_scl,
+> -	.data_formats = formats_win_full,
+> -	.nformats = ARRAY_SIZE(formats_win_full),
+> +	.data_formats = formats_win_full_10,
+> +	.nformats = ARRAY_SIZE(formats_win_full_10),
+>   	.format_modifiers = format_modifiers_win_full,
+>   	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
+>   	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
+> +	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
+>   	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
+>   	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
+>   	.dsp_info = VOP_REG(RK3288_WIN0_DSP_INFO, 0x0fff0fff, 0),
+> @@ -713,11 +731,12 @@ static const struct vop_intr rk3368_vop_intr = {
+>   
+>   static const struct vop_win_phy rk3368_win01_data = {
+>   	.scl = &rk3288_win_full_scl,
+> -	.data_formats = formats_win_full,
+> -	.nformats = ARRAY_SIZE(formats_win_full),
+> +	.data_formats = formats_win_full_10,
+> +	.nformats = ARRAY_SIZE(formats_win_full_10),
+>   	.format_modifiers = format_modifiers_win_full,
+>   	.enable = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 0),
+>   	.format = VOP_REG(RK3368_WIN0_CTRL0, 0x7, 1),
+> +	.fmt_10 = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 4),
+>   	.rb_swap = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 12),
+>   	.x_mir_en = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 21),
+>   	.y_mir_en = VOP_REG(RK3368_WIN0_CTRL0, 0x1, 22),
 
-diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt
-deleted file mode 100644
-index 1ecd75d2032a..000000000000
---- a/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.txt
-+++ /dev/null
-@@ -1,28 +0,0 @@
--* Rockchip Rk3328 internal codec
--
--Required properties:
--
--- compatible: "rockchip,rk3328-codec"
--- reg: physical base address of the controller and length of memory mapped
--  region.
--- rockchip,grf: the phandle of the syscon node for GRF register.
--- clocks: a list of phandle + clock-specifer pairs, one for each entry in clock-names.
--- clock-names: should be "pclk".
--- spk-depop-time-ms: speak depop time msec.
--
--Optional properties:
--
--- mute-gpios: GPIO specifier for external line driver control (typically the
--              dedicated GPIO_MUTE pin)
--
--Example for rk3328 internal codec:
--
--codec: codec@ff410000 {
--	compatible = "rockchip,rk3328-codec";
--	reg = <0x0 0xff410000 0x0 0x1000>;
--	rockchip,grf = <&grf>;
--	clocks = <&cru PCLK_ACODEC>;
--	clock-names = "pclk";
--	mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
--	spk-depop-time-ms = 100;
--};
-diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml
-new file mode 100644
-index 000000000000..5b85ad5e4834
---- /dev/null
-+++ b/Documentation/devicetree/bindings/sound/rockchip,rk3328-codec.yaml
-@@ -0,0 +1,69 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/sound/rockchip,rk3328-codec.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Rockchip rk3328 internal codec
-+
-+maintainers:
-+  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-+
-+properties:
-+  compatible:
-+    const: rockchip,rk3328-codec
-+
-+  reg:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: clock for audio codec
-+      - description: clock for I2S master clock
-+
-+  clock-names:
-+    items:
-+      - const: pclk
-+      - const: mclk
-+
-+  rockchip,grf:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      The phandle of the syscon node for the GRF register.
-+
-+  spk-depop-time-ms:
-+    default: 200
-+    description:
-+      Speaker depop time in msec.
-+
-+  mute-gpios:
-+    maxItems: 1
-+    description:
-+      GPIO specifier for external line driver control (typically the
-+      dedicated GPIO_MUTE pin)
-+
-+  "#sound-dai-cells":
-+    const: 0
-+
-+required:
-+  - compatible
-+  - reg
-+  - clocks
-+  - clock-names
-+  - rockchip,grf
-+  - "#sound-dai-cells"
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+    #include <dt-bindings/clock/rk3328-cru.h>
-+    codec: codec@ff410000 {
-+      compatible = "rockchip,rk3328-codec";
-+      reg = <0xff410000 0x1000>;
-+      clocks = <&cru PCLK_ACODECPHY>, <&cru SCLK_I2S1>;
-+      clock-names = "pclk", "mclk";
-+      rockchip,grf = <&grf>;
-+      mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
-+      spk-depop-time-ms = <100>;
-+      #sound-dai-cells = <0>;
-+    };
--- 
-2.27.0
+As per TRM/datasheet RK3368's VOP does not support 10-bit color formats.
+
+Therefore data_formats should be kept at formats_win_full here.
+
+> @@ -862,11 +881,12 @@ static const struct vop_win_yuv2yuv_data rk3399_vop_big_win_yuv2yuv_data[] = {
+>   
+>   static const struct vop_win_phy rk3399_win01_data = {
+>   	.scl = &rk3288_win_full_scl,
+> -	.data_formats = formats_win_full,
+> -	.nformats = ARRAY_SIZE(formats_win_full),
+> +	.data_formats = formats_win_full_10,
+> +	.nformats = ARRAY_SIZE(formats_win_full_10),
+>   	.format_modifiers = format_modifiers_win_full_afbc,
+>   	.enable = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 0),
+>   	.format = VOP_REG(RK3288_WIN0_CTRL0, 0x7, 1),
+> +	.fmt_10 = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 4),
+>   	.rb_swap = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 12),
+>   	.y_mir_en = VOP_REG(RK3288_WIN0_CTRL0, 0x1, 22),
+>   	.act_info = VOP_REG(RK3288_WIN0_ACT_INFO, 0x1fff1fff, 0),
+
+Regards,
+
+Alex
