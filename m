@@ -1,77 +1,54 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [PATCH 4/4] media: staging: rkisp1: cap: in stream start, replace
- calls to rkisp1_handle_buffer with rkisp1_set_next_buf
-Date: Wed, 15 Jul 2020 09:36:13 +0200
-Message-ID: <4fe827dc-f240-dc20-59a2-4855e6edbfeb@collabora.com>
-References: <20200714123832.28011-1-dafna.hirschfeld@collabora.com>
- <20200714123832.28011-5-dafna.hirschfeld@collabora.com>
- <01c025b1-6d8d-0c24-1303-848ce0438c75@collabora.com>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: [PATCH v6 0/7] ARM: dts: rockchip: Radxa Rock Pi N8 initial support
+Date: Wed, 15 Jul 2020 14:04:11 +0530
+Message-ID: <20200715083418.112003-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <01c025b1-6d8d-0c24-1303-848ce0438c75@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Rock Pi N8 is a Rockchip RK3288 based SBC, which has
+- VMARC RK3288 SOM (as per SMARC standard) from Vamrs.
+- Compatible carrier board from Radxa.
 
-On 14.07.20 17:11, Helen Koike wrote:
-> Hi Dafna,
-> 
-> Thanks for the patch, just a small thing below.
-> 
-> On 7/14/20 9:38 AM, Dafna Hirschfeld wrote:
->> The function 'rkisp1_stream_start' calls 'rkisp1_handle_buffer'
->> in order to update the 'buf.curr' and 'buf.next' fields and
->> configure the device before streaming starts. This cause a wrong
->> increment of the debugs field 'frame_drop'. This patch replaces
->> the call to 'rkisp1_handle_buffer' with a call to
->> 'rkisp1_set_next_buf'.
->>
->> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
->> ---
->>   drivers/staging/media/rkisp1/rkisp1-capture.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
->> index 7f400aefe550..c05280950ea0 100644
->> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
->> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
->> @@ -916,7 +916,7 @@ static void rkisp1_stream_start(struct rkisp1_capture *cap)
->>   	cap->ops->config(cap);
->>   
->>   	/* Setup a buffer for the next frame */
->> -	rkisp1_handle_buffer(cap);
->> +	rkisp1_set_next_buf(cap);
-> 
-> You should also protect with the cap->buf.lock, or move the lock protection to rkisp1_set_next_buf() and update patch 2/4.
+VMARC RK3288 SOM need to mount on top of dalang carrier
+board for making Rock PI N8 SBC.
 
-I am not sure if protection here is needed. The streaming is not enabled yet, so
-it is promised that we don't run the isr in parallel and ioctls are already synchronized by the framework
-so I think it is safe not to use locking here , but I'm not sure actually.
+Changes for v6:
+- spilt the trivial patch into multiple patches
+- collect Rob review tag
+Changes for v5:
+- drop redundent hym8563_int pin in rk3399pro dtsi
+Changes for v4:
+- move i2c2 from carrier board to rk3399pro dtsi
+Changes for v3:
+- move hym8563_int pin to rk3399pro dtsi
+Changes for v2:
+- add more trivial cleanups
+- update commit message
 
-Thanks,
-Dafna
+Jagan Teki (7):
+  ARM: dts: rockchip: dalang-carrier: Move i2c nodes into SOM
+  arm64: dts: rk3399pro: vmarc-som: Fix sorting nodes, properties
+  arm64: dts: rk3399pro: vmarc-som: Move supply regulators into Carrier
+  arm64: dts: rk3399pro: vmarc-som: Move common properties into Carrier
+  dt-bindings: arm: rockchip: Add Rock Pi N8 binding
+  ARM: dts: rockchip: Add VMARC RK3288 SOM initial support
+  ARM: dts: rockchip: Add Radxa Rock Pi N8 initial support
 
+ .../devicetree/bindings/arm/rockchip.yaml     |   6 +
+ arch/arm/boot/dts/Makefile                    |   1 +
+ arch/arm/boot/dts/rk3288-rock-pi-n8.dts       |  17 ++
+ arch/arm/boot/dts/rk3288-vmarc-som.dtsi       | 270 ++++++++++++++++++
+ .../dts/rockchip-radxa-dalang-carrier.dtsi    |  67 +++--
+ .../dts/rockchip/rk3399pro-rock-pi-n10.dts    |   6 +-
+ .../dts/rockchip/rk3399pro-vmarc-som.dtsi     |  92 +++---
+ 7 files changed, 376 insertions(+), 83 deletions(-)
+ create mode 100644 arch/arm/boot/dts/rk3288-rock-pi-n8.dts
+ create mode 100644 arch/arm/boot/dts/rk3288-vmarc-som.dtsi
 
-> 
-> Regards,
-> Helen
-> 
->>   	cap->ops->enable(cap);
->>   	/* It's safe to config ACTIVE and SHADOW regs for the
->>   	 * first stream. While when the second is starting, do NOT
->> @@ -931,7 +931,7 @@ static void rkisp1_stream_start(struct rkisp1_capture *cap)
->>   		/* force cfg update */
->>   		rkisp1_write(rkisp1,
->>   			     RKISP1_CIF_MI_INIT_SOFT_UPD, RKISP1_CIF_MI_INIT);
->> -		rkisp1_handle_buffer(cap);
->> +		rkisp1_set_next_buf(cap);
->>   	}
->>   	cap->is_streaming = true;
->>   }
->>
+-- 
+2.25.1
