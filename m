@@ -1,61 +1,77 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH] arm64: dts: rockchip: remove bus-width from mmc nodes in px30 dts files
-Date: Wed, 15 Jul 2020 09:09:54 +0200
-Message-ID: <20200715070954.1992-1-jbx6244@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH 4/4] media: staging: rkisp1: cap: in stream start, replace
+ calls to rkisp1_handle_buffer with rkisp1_set_next_buf
+Date: Wed, 15 Jul 2020 09:36:13 +0200
+Message-ID: <4fe827dc-f240-dc20-59a2-4855e6edbfeb@collabora.com>
+References: <20200714123832.28011-1-dafna.hirschfeld@collabora.com>
+ <20200714123832.28011-5-dafna.hirschfeld@collabora.com>
+ <01c025b1-6d8d-0c24-1303-848ce0438c75@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <01c025b1-6d8d-0c24-1303-848ce0438c75@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-'bus-width' has been added to px30.dtsi mmc nodes, so now it can be
-removed from the dts files that include it.
+Hi,
 
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/px30-evb.dts          | 3 ---
- arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts | 1 -
- 2 files changed, 4 deletions(-)
+On 14.07.20 17:11, Helen Koike wrote:
+> Hi Dafna,
+> 
+> Thanks for the patch, just a small thing below.
+> 
+> On 7/14/20 9:38 AM, Dafna Hirschfeld wrote:
+>> The function 'rkisp1_stream_start' calls 'rkisp1_handle_buffer'
+>> in order to update the 'buf.curr' and 'buf.next' fields and
+>> configure the device before streaming starts. This cause a wrong
+>> increment of the debugs field 'frame_drop'. This patch replaces
+>> the call to 'rkisp1_handle_buffer' with a call to
+>> 'rkisp1_set_next_buf'.
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>> ---
+>>   drivers/staging/media/rkisp1/rkisp1-capture.c | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> index 7f400aefe550..c05280950ea0 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>> @@ -916,7 +916,7 @@ static void rkisp1_stream_start(struct rkisp1_capture *cap)
+>>   	cap->ops->config(cap);
+>>   
+>>   	/* Setup a buffer for the next frame */
+>> -	rkisp1_handle_buffer(cap);
+>> +	rkisp1_set_next_buf(cap);
+> 
+> You should also protect with the cap->buf.lock, or move the lock protection to rkisp1_set_next_buf() and update patch 2/4.
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-index 0a680257d..5fe905fae 100644
---- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-@@ -145,7 +145,6 @@
- };
- 
- &emmc {
--	bus-width = <8>;
- 	cap-mmc-highspeed;
- 	mmc-hs200-1_8v;
- 	non-removable;
-@@ -499,7 +498,6 @@
- };
- 
- &sdmmc {
--	bus-width = <4>;
- 	cap-mmc-highspeed;
- 	cap-sd-highspeed;
- 	card-detect-delay = <800>;
-@@ -513,7 +511,6 @@
- };
- 
- &sdio {
--	bus-width = <4>;
- 	cap-sd-highspeed;
- 	keep-power-in-suspend;
- 	non-removable;
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index b3a8f9365..35bd6b904 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -445,7 +445,6 @@
- };
- 
- &sdmmc {
--	bus-width = <4>;
- 	cap-sd-highspeed;
- 	card-detect-delay = <200>;
- 	cd-gpios = <&gpio0 RK_PA3 GPIO_ACTIVE_LOW>; /*[> CD GPIO <]*/
--- 
-2.11.0
+I am not sure if protection here is needed. The streaming is not enabled yet, so
+it is promised that we don't run the isr in parallel and ioctls are already synchronized by the framework
+so I think it is safe not to use locking here , but I'm not sure actually.
+
+Thanks,
+Dafna
+
+
+> 
+> Regards,
+> Helen
+> 
+>>   	cap->ops->enable(cap);
+>>   	/* It's safe to config ACTIVE and SHADOW regs for the
+>>   	 * first stream. While when the second is starting, do NOT
+>> @@ -931,7 +931,7 @@ static void rkisp1_stream_start(struct rkisp1_capture *cap)
+>>   		/* force cfg update */
+>>   		rkisp1_write(rkisp1,
+>>   			     RKISP1_CIF_MI_INIT_SOFT_UPD, RKISP1_CIF_MI_INIT);
+>> -		rkisp1_handle_buffer(cap);
+>> +		rkisp1_set_next_buf(cap);
+>>   	}
+>>   	cap->is_streaming = true;
+>>   }
+>>
