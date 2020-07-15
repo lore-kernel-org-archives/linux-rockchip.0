@@ -1,21 +1,18 @@
-From: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v7 4/8] arm64: dts: rockchip: Add NFC node for RK3308 SoC
-Date: Wed, 15 Jul 2020 17:03:42 +0800
-Message-ID: <20200715090342.28339-5-yifeng.zhao@rock-chips.com>
+From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Subject: [PATCH v7 3/8] MAINTAINERS: add maintainers to ROCKCHIP NFC
+Date: Wed, 15 Jul 2020 17:03:41 +0800
+Message-ID: <20200715090342.28339-4-yifeng.zhao@rock-chips.com>
 References: <20200715090342.28339-1-yifeng.zhao@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200715090342.28339-1-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yifeng Zhao <zyf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200715090342.28339-1-yifeng.zhao@rock-chips.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com, robh+dt@kernel.org
+Cc: devicetree@vger.kernel.org, linux-mtd@lists.infradead.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Yifeng Zhao <yifeng.zhao@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-From: Yifeng Zhao <zyf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Add maintainers to ROCKCHIP NFC.
 
-Add NAND FLASH Controller(NFC) node for RK3308 SoC.
-
-Signed-off-by: Yifeng Zhao <zyf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Signed-off-by: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
 ---
 
 Changes in v7: None
@@ -25,34 +22,27 @@ Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ MAINTAINERS | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index 507c6353f842..dea63a649111 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -627,6 +627,21 @@
- 		status = "disabled";
- 	};
- 
-+	nfc: nand-controller@ff4b0000 {
-+		compatible = "rockchip,rk3308-nfc",
-+			     "rockchip,rv1108-nfc";
-+		reg = <0x0 0xff4b0000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_NANDC>, <&cru SCLK_NANDC>;
-+		clock-names = "ahb", "nfc";
-+		assigned-clocks = <&cru SCLK_NANDC>;
-+		assigned-clock-rates = <150000000>;
-+		pinctrl-0 = <&flash_ale &flash_bus8 &flash_cle &flash_csn0
-+			     &flash_rdn &flash_rdy &flash_wrn>;
-+		pinctrl-names = "default";
-+		status = "disabled";
-+	};
-+
- 	cru: clock-controller@ff500000 {
- 		compatible = "rockchip,rk3308-cru";
- 		reg = <0x0 0xff500000 0x0 0x1000>;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1d4aa7f942de..187634a085a7 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2344,12 +2344,12 @@ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+ L:	linux-rockchip@lists.infradead.org
+ S:	Maintained
+ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
++F:	Documentation/devicetree/bindings/*/*rockchip*.yaml
+ F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+-F:	Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+-F:	Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+ F:	arch/arm/boot/dts/rk3*
+ F:	arch/arm/boot/dts/rv1108*
+ F:	arch/arm/mach-rockchip/
++F:	drivers/*/*/*/*rockchip*
+ F:	drivers/*/*/*rockchip*
+ F:	drivers/*/*rockchip*
+ F:	drivers/clk/rockchip/
 -- 
 2.17.1
