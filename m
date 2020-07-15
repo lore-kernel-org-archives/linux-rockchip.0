@@ -1,71 +1,58 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v6 7/7] ARM: dts: rockchip: Add Radxa Rock Pi N8 initial support
-Date: Wed, 15 Jul 2020 14:04:18 +0530
-Message-ID: <20200715083418.112003-8-jagan@amarulasolutions.com>
-References: <20200715083418.112003-1-jagan@amarulasolutions.com>
-Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200715083418.112003-1-jagan@amarulasolutions.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
+From: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: [PATCH v7 4/8] arm64: dts: rockchip: Add NFC node for RK3308 SoC
+Date: Wed, 15 Jul 2020 17:03:42 +0800
+Message-ID: <20200715090342.28339-5-yifeng.zhao@rock-chips.com>
+References: <20200715090342.28339-1-yifeng.zhao@rock-chips.com>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200715090342.28339-1-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yifeng Zhao <zyf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Rock Pi N8 is a Rockchip RK3288 based SBC, which has
-- VMARC RK3288 SOM (as per SMARC standard) from Vamrs.
-- Compatible carrier board from Radxa.
+From: Yifeng Zhao <zyf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-VAMRC RK3288 SOM need to mount on top of radxa dalang
-carrier board for making Rock Pi N8 SBC.
+Add NAND FLASH Controller(NFC) node for RK3308 SoC.
 
-So, add initial support for Rock Pi N8 by including rk3288,
-rk3288 vamrc-som and raxda dalang carrier board dtsi files.
-
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Signed-off-by: Yifeng Zhao <zyf-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 ---
-Changes for v6:
-- none
 
- arch/arm/boot/dts/Makefile              |  1 +
- arch/arm/boot/dts/rk3288-rock-pi-n8.dts | 17 +++++++++++++++++
- 2 files changed, 18 insertions(+)
- create mode 100644 arch/arm/boot/dts/rk3288-rock-pi-n8.dts
+Changes in v7: None
+Changes in v6: None
+Changes in v5: None
+Changes in v4: None
+Changes in v3: None
+Changes in v2: None
 
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index e8dd99201397..1d1b6ac26394 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -964,6 +964,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
- 	rk3288-popmetal.dtb \
- 	rk3288-r89.dtb \
- 	rk3288-rock2-square.dtb \
-+	rk3288-rock-pi-n8.dtb \
- 	rk3288-tinker.dtb \
- 	rk3288-tinker-s.dtb \
- 	rk3288-veyron-brain.dtb \
-diff --git a/arch/arm/boot/dts/rk3288-rock-pi-n8.dts b/arch/arm/boot/dts/rk3288-rock-pi-n8.dts
-new file mode 100644
-index 000000000000..b19593021713
---- /dev/null
-+++ b/arch/arm/boot/dts/rk3288-rock-pi-n8.dts
-@@ -0,0 +1,17 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
-+ * Copyright (c) 2019 Vamrs Limited
-+ * Copyright (c) 2019 Amarula Solutions(India)
-+ */
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index 507c6353f842..dea63a649111 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -627,6 +627,21 @@
+ 		status = "disabled";
+ 	};
+ 
++	nfc: nand-controller@ff4b0000 {
++		compatible = "rockchip,rk3308-nfc",
++			     "rockchip,rv1108-nfc";
++		reg = <0x0 0xff4b0000 0x0 0x4000>;
++		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
++		clocks = <&cru HCLK_NANDC>, <&cru SCLK_NANDC>;
++		clock-names = "ahb", "nfc";
++		assigned-clocks = <&cru SCLK_NANDC>;
++		assigned-clock-rates = <150000000>;
++		pinctrl-0 = <&flash_ale &flash_bus8 &flash_cle &flash_csn0
++			     &flash_rdn &flash_rdy &flash_wrn>;
++		pinctrl-names = "default";
++		status = "disabled";
++	};
 +
-+/dts-v1/;
-+#include "rk3288.dtsi"
-+#include <arm/rockchip-radxa-dalang-carrier.dtsi>
-+#include "rk3288-vmarc-som.dtsi"
-+
-+/ {
-+	model = "Radxa ROCK Pi N8";
-+	compatible = "radxa,rockpi-n8", "vamrs,rk3288-vmarc-som",
-+		     "rockchip,rk3288";
-+};
+ 	cru: clock-controller@ff500000 {
+ 		compatible = "rockchip,rk3308-cru";
+ 		reg = <0x0 0xff500000 0x0 0x1000>;
 -- 
-2.25.1
+2.17.1
