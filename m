@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v6 1/7] ARM: dts: rockchip: dalang-carrier: Move i2c nodes into SOM
-Date: Wed, 15 Jul 2020 14:04:12 +0530
-Message-ID: <20200715083418.112003-2-jagan@amarulasolutions.com>
+Subject: [PATCH v6 2/7] arm64: dts: rk3399pro: vmarc-som: Fix sorting nodes, properties
+Date: Wed, 15 Jul 2020 14:04:13 +0530
+Message-ID: <20200715083418.112003-3-jagan@amarulasolutions.com>
 References: <20200715083418.112003-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,113 +12,92 @@ To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring 
 Cc: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-I2C nodes and associated slave devices defined in Carrier board
-are specific to rk3399pro vmrac SOM.
-
-So, move them into SOM dtsi.
+Fix node, properties sorting on RockPI N10 board dts(i) files.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
 Changes for v6:
 - spilt of previous version Trivial patch
 
- .../dts/rockchip-radxa-dalang-carrier.dtsi    | 32 -------------------
- .../dts/rockchip/rk3399pro-vmarc-som.dtsi     | 29 +++++++++++++++++
- 2 files changed, 29 insertions(+), 32 deletions(-)
+ .../dts/rockchip/rk3399pro-rock-pi-n10.dts    |  2 +-
+ .../dts/rockchip/rk3399pro-vmarc-som.dtsi     | 35 +++++++++----------
+ 2 files changed, 18 insertions(+), 19 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi b/arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi
-index df3712aedf8a..176b53b8e41a 100644
---- a/arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi
-+++ b/arch/arm/boot/dts/rockchip-radxa-dalang-carrier.dtsi
-@@ -17,29 +17,6 @@ &gmac {
- 	status = "okay";
- };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts b/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
+index a1783e7f769a..539f4005386d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399pro-rock-pi-n10.dts
+@@ -8,8 +8,8 @@
+ /dts-v1/;
+ #include "rk3399.dtsi"
+ #include "rk3399-opp.dtsi"
+-#include "rk3399pro-vmarc-som.dtsi"
+ #include <arm/rockchip-radxa-dalang-carrier.dtsi>
++#include "rk3399pro-vmarc-som.dtsi"
  
--&i2c1 {
--	status = "okay";
--	i2c-scl-rising-time-ns = <140>;
--	i2c-scl-falling-time-ns = <30>;
--};
--
--&i2c2 {
--	status = "okay";
--	clock-frequency = <400000>;
--
--	hym8563: hym8563@51 {
--		compatible = "haoyu,hym8563";
--		reg = <0x51>;
--		#clock-cells = <0>;
--		clock-frequency = <32768>;
--		clock-output-names = "hym8563";
--		pinctrl-names = "default";
--		pinctrl-0 = <&hym8563_int>;
--		interrupt-parent = <&gpio4>;
--		interrupts = <30 IRQ_TYPE_LEVEL_LOW>;
--	};
--};
--
- &pwm0 {
- 	status = "okay";
- };
-@@ -70,12 +47,3 @@ &uart0 {
- &uart2 {
- 	status = "okay";
- };
--
--&pinctrl {
--	hym8563 {
--		hym8563_int: hym8563-int {
--			rockchip,pins =
--				<4 RK_PD6 0 &pcfg_pull_up>;
--		};
--	};
--};
+ / {
+ 	model = "Radxa ROCK Pi N10";
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-index 0a516334f15f..e11538171e67 100644
+index e11538171e67..121a430d6a70 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-@@ -297,6 +297,29 @@ regulator-state-mem {
- 	};
- };
+@@ -76,8 +76,8 @@ &gmac {
  
-+&i2c1 {
-+	i2c-scl-falling-time-ns = <30>;
-+	i2c-scl-rising-time-ns = <140>;
-+	status = "okay";
-+};
-+
-+&i2c2 {
-+	clock-frequency = <400000>;
-+	status = "okay";
-+
-+	hym8563: hym8563@51 {
-+		compatible = "haoyu,hym8563";
-+		reg = <0x51>;
-+		#clock-cells = <0>;
-+		clock-frequency = <32768>;
-+		clock-output-names = "hym8563";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&hym8563_int>;
-+		interrupt-parent = <&gpio4>;
-+		interrupts = <RK_PD6 IRQ_TYPE_LEVEL_LOW>;
-+	};
-+};
-+
+ &i2c0 {
+ 	clock-frequency = <400000>;
+-	i2c-scl-rising-time-ns = <180>;
+ 	i2c-scl-falling-time-ns = <30>;
++	i2c-scl-rising-time-ns = <180>;
+ 	status = "okay";
+ 
+ 	rk809: pmic@20 {
+@@ -323,8 +323,22 @@ hym8563: hym8563@51 {
  &io_domains {
  	status = "okay";
  	bt656-supply = <&vcca_1v8>;
-@@ -324,6 +347,12 @@ &tsadc {
- };
- 
- &pinctrl {
+-	sdmmc-supply = <&vccio_sd>;
+ 	gpio1830-supply = <&vccio_3v0>;
++	sdmmc-supply = <&vccio_sd>;
++};
++
++&pinctrl {
 +	hym8563 {
 +		hym8563_int: hym8563-int {
 +			rockchip,pins = <4 RK_PD6 0 &pcfg_pull_up>;
 +		};
 +	};
 +
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins =
++	pmic {
++		pmic_int_l: pmic-int-l {
++			rockchip,pins = <1 RK_PC2 0 &pcfg_pull_up>;
++		};
++	};
+ };
+ 
+ &pmu_io_domains {
+@@ -341,22 +355,7 @@ &sdhci {
+ };
+ 
+ &tsadc {
+-	status = "okay";
+ 	rockchip,hw-tshut-mode = <1>;
+ 	rockchip,hw-tshut-polarity = <1>;
+-};
+-
+-&pinctrl {
+-	hym8563 {
+-		hym8563_int: hym8563-int {
+-			rockchip,pins = <4 RK_PD6 0 &pcfg_pull_up>;
+-		};
+-	};
+-
+-	pmic {
+-		pmic_int_l: pmic-int-l {
+-			rockchip,pins =
+-				<1 RK_PC2 0 &pcfg_pull_up>;
+-		};
+-	};
++	status = "okay";
+ };
 -- 
 2.25.1
