@@ -1,99 +1,94 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 1/4] media: staging: rkisp1: cap: don't set next buffer
- from rkisp1_vb2_buf_queue
-Date: Wed, 15 Jul 2020 07:07:42 -0300
-Message-ID: <4a715814-2971-e9fd-3cb2-3646e6c14b19@collabora.com>
-References: <20200714123832.28011-1-dafna.hirschfeld@collabora.com>
- <20200714123832.28011-2-dafna.hirschfeld@collabora.com>
- <c4dd300d-4dab-8c5a-e2c3-2d0ba042dc8d@collabora.com>
- <5b31b7cb-0eb4-5623-9527-b55952a939a2@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Re: [PATCH 3/4] media: staging: rkisp1: set pads array of the resizer
+ to size 2
+Date: Wed, 15 Jul 2020 16:14:11 +0200
+Message-ID: <68dd74fa-f8d9-0f3b-38fe-10a590ffde4b@xs4all.nl>
+References: <20200629065754.26621-1-dafna.hirschfeld@collabora.com>
+ <20200629065754.26621-4-dafna.hirschfeld@collabora.com>
+ <09105e4b-7c02-28fd-58cc-ca947d6c5185@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <5b31b7cb-0eb4-5623-9527-b55952a939a2@collabora.com>
+In-Reply-To: <09105e4b-7c02-28fd-58cc-ca947d6c5185@collabora.com>
 Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
+To: Helen Koike <helen.koike@collabora.com>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
+On 13/07/2020 13:12, Helen Koike wrote:
+> 
+> 
+> On 6/29/20 3:57 AM, Dafna Hirschfeld wrote:
+>> Currently the 'pads' and 'pad_cfg' arries of the rkisp1_resizer
+>> are of size 'RKISP1_ISP_PAD_MAX' which is 4. But the resizer
+>> has only two pads. This patch change the size of the arries to 2
+>> by adding and using 'RKISP1_RSZ_PAD_MAX' similar to the way it is
+>> done in the isp entity.
+> 
+> s/arries/arrays
+> 
+> s/This patch change/Change
+> 
+> Hans, could you correct these when picking it up?
 
+I can.
 
-On 7/14/20 12:11 PM, Helen Koike wrote:
-> 
-> 
-> On 7/14/20 9:48 AM, Helen Koike wrote:
->> Hi Dafna,
->>
->> On 7/14/20 9:38 AM, Dafna Hirschfeld wrote:
->>> The function 'rkisp1_vb2_buf_queue' sets the next buffer directly
->>> in case the capture is already streaming but no frame yet arrived
->>> from the sensor. This is an optimization that tries to avoid
->>> dropping a frame.
->>> The call atomic_read(&cap->rkisp1->isp.frame_sequence) is used
->>> to check if a frame arrived. Reading the 'frame_sequence' should
->>> be avoided outside irq handlers to avoid race conditions.
->>>
->>> This patch removes this optimization. Dropping of the first
->>> frames can be avoided if userspace queues the buffers before
->>> start streaming. If userspace starts queueing buffers
->>> only after calling 'streamon' he risks frame drops anyway.
->>>
->>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
->>> ---
->>>  drivers/staging/media/rkisp1/rkisp1-capture.c | 13 +------------
->>>  1 file changed, 1 insertion(+), 12 deletions(-)
->>>
->>> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
->>> index 793ec884c894..572b0949c81f 100644
->>> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
->>> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
->>> @@ -743,18 +743,7 @@ static void rkisp1_vb2_buf_queue(struct vb2_buffer *vb)
->>>  		     ispbuf->buff_addr[RKISP1_PLANE_CB]);
->>>  
->>>  	spin_lock_irqsave(&cap->buf.lock, flags);
->>> -
->>> -	/*
->>> -	 * If there's no next buffer assigned, queue this buffer directly
->>> -	 * as the next buffer, and update the memory interface.
->>> -	 */
->>> -	if (cap->is_streaming && !cap->buf.next &&
->>> -	    atomic_read(&cap->rkisp1->isp.frame_sequence) == -1) {
->>> -		cap->buf.next = ispbuf;
->>> -		rkisp1_set_next_buf(cap);
->>
->> Doesn't this mean we'll always drop the first frame? Since the first user buffer will only be configured to
->> the hardware after receiving the first frame? So the first frame will always go to the dummy buffer, no?
-> 
-> I see this is actually solved in the last patch of this series.
-> 
-> Maybe this can be re-order, so this patch is after 4/4.
-> 
-> With or without this re-ordering:
-
-As discussed throught chat, this is not an issue, since we have a minimum amount of buffers that need
-to be queued before starting the stream, so we'll never have frame_sequence == -1 (which represents the first frame)
-with an empty queue, so no patch re-ordering is needed.
+I'll take patches 1-3 and will take a v2 of patch 4/4 once it is posted.
 
 Regards,
-Helen
 
+	Hans
+
+> 
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 > 
 > Acked-by: Helen Koike <helen.koike@collabora.com>
 > 
 > Thanks
 > Helen
 > 
+>> ---
+>>  drivers/staging/media/rkisp1/rkisp1-common.h  | 5 +++--
+>>  drivers/staging/media/rkisp1/rkisp1-resizer.c | 2 +-
+>>  2 files changed, 4 insertions(+), 3 deletions(-)
 >>
->> Thanks
->> Helen
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+>> index b7dc523dd8f0..4185487c520c 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+>> @@ -49,6 +49,7 @@
+>>  enum rkisp1_rsz_pad {
+>>  	RKISP1_RSZ_PAD_SINK,
+>>  	RKISP1_RSZ_PAD_SRC,
+>> +	RKISP1_RSZ_PAD_MAX
+>>  };
+>>  
+>>  enum rkisp1_stream_id {
+>> @@ -216,8 +217,8 @@ struct rkisp1_resizer {
+>>  	struct v4l2_subdev sd;
+>>  	enum rkisp1_stream_id id;
+>>  	struct rkisp1_device *rkisp1;
+>> -	struct media_pad pads[RKISP1_ISP_PAD_MAX];
+>> -	struct v4l2_subdev_pad_config pad_cfg[RKISP1_ISP_PAD_MAX];
+>> +	struct media_pad pads[RKISP1_RSZ_PAD_MAX];
+>> +	struct v4l2_subdev_pad_config pad_cfg[RKISP1_RSZ_PAD_MAX];
+>>  	const struct rkisp1_rsz_config *config;
+>>  	enum v4l2_pixel_encoding pixel_enc;
+>>  	struct mutex ops_lock;
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> index 26fb41053f56..d8ebe4422e77 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+>> @@ -735,7 +735,7 @@ static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
+>>  	rsz->pixel_enc = RKISP1_DEF_PIXEL_ENC;
+>>  
+>>  	mutex_init(&rsz->ops_lock);
+>> -	ret = media_entity_pads_init(&sd->entity, 2, pads);
+>> +	ret = media_entity_pads_init(&sd->entity, RKISP1_RSZ_PAD_MAX, pads);
+>>  	if (ret)
+>>  		return ret;
+>>  
 >>
->>> -	} else {
->>> -		list_add_tail(&ispbuf->queue, &cap->buf.queue);
->>> -	}
->>> +	list_add_tail(&ispbuf->queue, &cap->buf.queue);
->>>  	spin_unlock_irqrestore(&cap->buf.lock, flags);
->>>  }
->>>  
->>>
