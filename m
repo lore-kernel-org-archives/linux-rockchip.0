@@ -1,94 +1,328 @@
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH 3/4] media: staging: rkisp1: set pads array of the resizer
- to size 2
-Date: Wed, 15 Jul 2020 16:14:11 +0200
-Message-ID: <68dd74fa-f8d9-0f3b-38fe-10a590ffde4b@xs4all.nl>
-References: <20200629065754.26621-1-dafna.hirschfeld@collabora.com>
- <20200629065754.26621-4-dafna.hirschfeld@collabora.com>
- <09105e4b-7c02-28fd-58cc-ca947d6c5185@collabora.com>
+From: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Subject: [PATCH] dt-bindings: power: rockchip: Convert to json-schema
+Date: Wed, 15 Jul 2020 19:02:16 +0200
+Message-ID: <20200715170216.2875868-1-enric.balletbo@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <09105e4b-7c02-28fd-58cc-ca947d6c5185@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: ezequiel@collabora.com, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Cc: Collabora Kernel ML <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 13/07/2020 13:12, Helen Koike wrote:
-> 
-> 
-> On 6/29/20 3:57 AM, Dafna Hirschfeld wrote:
->> Currently the 'pads' and 'pad_cfg' arries of the rkisp1_resizer
->> are of size 'RKISP1_ISP_PAD_MAX' which is 4. But the resizer
->> has only two pads. This patch change the size of the arries to 2
->> by adding and using 'RKISP1_RSZ_PAD_MAX' similar to the way it is
->> done in the isp entity.
-> 
-> s/arries/arrays
-> 
-> s/This patch change/Change
-> 
-> Hans, could you correct these when picking it up?
+Convert the soc/rockchip/power_domain.txt binding document to json-schema
+and move to the power bindings directory.
 
-I can.
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+---
 
-I'll take patches 1-3 and will take a v2 of patch 4/4 once it is posted.
+ .../power/rockchip,power-controller.yaml      | 154 ++++++++++++++++++
+ .../bindings/soc/rockchip/power_domain.txt    | 136 ----------------
+ 2 files changed, 154 insertions(+), 136 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+ delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
 
-Regards,
-
-	Hans
-
-> 
->>
->> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> 
-> Acked-by: Helen Koike <helen.koike@collabora.com>
-> 
-> Thanks
-> Helen
-> 
->> ---
->>  drivers/staging/media/rkisp1/rkisp1-common.h  | 5 +++--
->>  drivers/staging/media/rkisp1/rkisp1-resizer.c | 2 +-
->>  2 files changed, 4 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
->> index b7dc523dd8f0..4185487c520c 100644
->> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
->> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
->> @@ -49,6 +49,7 @@
->>  enum rkisp1_rsz_pad {
->>  	RKISP1_RSZ_PAD_SINK,
->>  	RKISP1_RSZ_PAD_SRC,
->> +	RKISP1_RSZ_PAD_MAX
->>  };
->>  
->>  enum rkisp1_stream_id {
->> @@ -216,8 +217,8 @@ struct rkisp1_resizer {
->>  	struct v4l2_subdev sd;
->>  	enum rkisp1_stream_id id;
->>  	struct rkisp1_device *rkisp1;
->> -	struct media_pad pads[RKISP1_ISP_PAD_MAX];
->> -	struct v4l2_subdev_pad_config pad_cfg[RKISP1_ISP_PAD_MAX];
->> +	struct media_pad pads[RKISP1_RSZ_PAD_MAX];
->> +	struct v4l2_subdev_pad_config pad_cfg[RKISP1_RSZ_PAD_MAX];
->>  	const struct rkisp1_rsz_config *config;
->>  	enum v4l2_pixel_encoding pixel_enc;
->>  	struct mutex ops_lock;
->> diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
->> index 26fb41053f56..d8ebe4422e77 100644
->> --- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
->> +++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
->> @@ -735,7 +735,7 @@ static int rkisp1_rsz_register(struct rkisp1_resizer *rsz)
->>  	rsz->pixel_enc = RKISP1_DEF_PIXEL_ENC;
->>  
->>  	mutex_init(&rsz->ops_lock);
->> -	ret = media_entity_pads_init(&sd->entity, 2, pads);
->> +	ret = media_entity_pads_init(&sd->entity, RKISP1_RSZ_PAD_MAX, pads);
->>  	if (ret)
->>  		return ret;
->>  
->>
+diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+new file mode 100644
+index 000000000000..af50cf2b3e63
+--- /dev/null
++++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+@@ -0,0 +1,154 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/power/rockchip,power-controller.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip Power Domains
++
++maintainers:
++  - Caesar Wang <wxt-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
++  - Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
++
++description: |
++  Rockchip processors include support for multiple power domains which can be
++  powered up/down by software based on different application scenes to save power.
++
++  Power domains contained within power-controller node are generic power domain
++  providers documented in Documentation/devicetree/bindings/power/power-domain.yaml.
++
++  IP cores belonging to a power domain should contain a 'power-domains'
++  property that is a phandle for the power domain node representing the domain.
++
++properties:
++  power-controller:
++    type: object
++    description: List of power domains provided by this controller.
++
++    properties:
++      compatible:
++        enum:
++          - rockchip,px30-power-controller
++          - rockchip,rk3036-power-controller
++          - rockchip,rk3066-power-controller
++          - rockchip,rk3128-power-controller
++          - rockchip,rk3188-power-controller
++          - rockchip,rk3228-power-controller
++          - rockchip,rk3288-power-controller
++          - rockchip,rk3328-power-controller
++          - rockchip,rk3366-power-controller
++          - rockchip,rk3368-power-controller
++          - rockchip,rk3399-power-controller
++
++      reg:
++        description: |
++          Power domain index. Valid values are defined in:
++          "include/dt-bindings/power/px30-power.h" - for PX30 type power domain.
++          "include/dt-bindings/power/rk3036-power.h" - for RK3036 type power domain.
++          "include/dt-bindings/power/rk3066-power.h" - for RK3066 type power domain.
++          "include/dt-bindings/power/rk3128-power.h" - for RK3128 type power domain.
++          "include/dt-bindings/power/rk3188-power.h" - for RK3188 type power domain.
++          "include/dt-bindings/power/rk3228-power.h" - for RK3228 type power domain.
++          "include/dt-bindings/power/rk3288-power.h" - for RK3288 type power domain.
++          "include/dt-bindings/power/rk3328-power.h" - for RK3328 type power domain.
++          "include/dt-bindings/power/rk3366-power.h" - for RK3366 type power domain.
++          "include/dt-bindings/power/rk3368-power.h" - for RK3368 type power domain.
++          "include/dt-bindings/power/rk3399-power.h" - for RK3399 type power domain.
++        maxItems: 1
++
++      clocks:
++        description: |
++          A number of phandles to clocks that need to be enabled while power domain
++          switches state.
++      pm_qos:
++        description: |
++          A number of phandles to qos blocks which need to be saved and restored
++          while power domain switches state.
++
++      power-supply: true
++
++    required:
++      - compatible
++      - reg
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3399-cru.h>
++    #include <dt-bindings/power/rk3399-power.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        qos_iep: qos@ffa98000 {
++            compatible = "syscon";
++            reg = <0x0 0xffa98000 0x0 0x20>;
++        };
++
++        qos_rga_r: qos@ffab0000 {
++            compatible = "syscon";
++            reg = <0x0 0xffab0000 0x0 0x20>;
++        };
++
++        qos_rga_w: qos@ffab0080 {
++            compatible = "syscon";
++            reg = <0x0 0xffab0080 0x0 0x20>;
++        };
++
++        qos_video_m0: qos@ffab8000 {
++            compatible = "syscon";
++            reg = <0x0 0xffab8000 0x0 0x20>;
++        };
++
++        qos_video_m1_r: qos@ffac0000 {
++            compatible = "syscon";
++            reg = <0x0 0xffac0000 0x0 0x20>;
++        };
++
++        qos_video_m1_w: qos@ffac0080 {
++            compatible = "syscon";
++            reg = <0x0 0xffac0080 0x0 0x20>;
++        };
++
++        power-management@ff310000 {
++            compatible = "rockchip,rk3399-pmu", "syscon", "simple-mfd";
++            reg = <0x0 0xff310000 0x0 0x1000>;
++
++            power-controller {
++                compatible = "rockchip,rk3399-power-controller";
++                #power-domain-cells = <1>;
++                #address-cells = <1>;
++                #size-cells = <0>;
++
++                /* These power domains are grouped by VD_CENTER */
++                pd_iep@RK3399_PD_IEP {
++                    reg = <RK3399_PD_IEP>;
++                    clocks = <&cru ACLK_IEP>,
++                             <&cru HCLK_IEP>;
++                    pm_qos = <&qos_iep>;
++                };
++                pd_rga@RK3399_PD_RGA {
++                    reg = <RK3399_PD_RGA>;
++                    clocks = <&cru ACLK_RGA>,
++                             <&cru HCLK_RGA>;
++                    pm_qos = <&qos_rga_r>,
++                             <&qos_rga_w>;
++                };
++                pd_vcodec@RK3399_PD_VCODEC {
++                    reg = <RK3399_PD_VCODEC>;
++                    clocks = <&cru ACLK_VCODEC>,
++                             <&cru HCLK_VCODEC>;
++                    pm_qos = <&qos_video_m0>;
++                };
++                pd_vdu@RK3399_PD_VDU {
++                    reg = <RK3399_PD_VDU>;
++                    clocks = <&cru ACLK_VDU>,
++                             <&cru HCLK_VDU>;
++                    pm_qos = <&qos_video_m1_r>,
++                             <&qos_video_m1_w>;
++                };
++            };
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+deleted file mode 100644
+index 8304eceb62e4..000000000000
+--- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
++++ /dev/null
+@@ -1,136 +0,0 @@
+-* Rockchip Power Domains
+-
+-Rockchip processors include support for multiple power domains which can be
+-powered up/down by software based on different application scenes to save power.
+-
+-Required properties for power domain controller:
+-- compatible: Should be one of the following.
+-	"rockchip,px30-power-controller" - for PX30 SoCs.
+-	"rockchip,rk3036-power-controller" - for RK3036 SoCs.
+-	"rockchip,rk3066-power-controller" - for RK3066 SoCs.
+-	"rockchip,rk3128-power-controller" - for RK3128 SoCs.
+-	"rockchip,rk3188-power-controller" - for RK3188 SoCs.
+-	"rockchip,rk3228-power-controller" - for RK3228 SoCs.
+-	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
+-	"rockchip,rk3328-power-controller" - for RK3328 SoCs.
+-	"rockchip,rk3366-power-controller" - for RK3366 SoCs.
+-	"rockchip,rk3368-power-controller" - for RK3368 SoCs.
+-	"rockchip,rk3399-power-controller" - for RK3399 SoCs.
+-- #power-domain-cells: Number of cells in a power-domain specifier.
+-	Should be 1 for multiple PM domains.
+-- #address-cells: Should be 1.
+-- #size-cells: Should be 0.
+-
+-Required properties for power domain sub nodes:
+-- reg: index of the power domain, should use macros in:
+-	"include/dt-bindings/power/px30-power.h" - for PX30 type power domain.
+-	"include/dt-bindings/power/rk3036-power.h" - for RK3036 type power domain.
+-	"include/dt-bindings/power/rk3066-power.h" - for RK3066 type power domain.
+-	"include/dt-bindings/power/rk3128-power.h" - for RK3128 type power domain.
+-	"include/dt-bindings/power/rk3188-power.h" - for RK3188 type power domain.
+-	"include/dt-bindings/power/rk3228-power.h" - for RK3228 type power domain.
+-	"include/dt-bindings/power/rk3288-power.h" - for RK3288 type power domain.
+-	"include/dt-bindings/power/rk3328-power.h" - for RK3328 type power domain.
+-	"include/dt-bindings/power/rk3366-power.h" - for RK3366 type power domain.
+-	"include/dt-bindings/power/rk3368-power.h" - for RK3368 type power domain.
+-	"include/dt-bindings/power/rk3399-power.h" - for RK3399 type power domain.
+-- clocks (optional): phandles to clocks which need to be enabled while power domain
+-	switches state.
+-- pm_qos (optional): phandles to qos blocks which need to be saved and restored
+-	while power domain switches state.
+-
+-Qos Example:
+-
+-	qos_gpu: qos_gpu@ffaf0000 {
+-		compatible ="syscon";
+-		reg = <0x0 0xffaf0000 0x0 0x20>;
+-	};
+-
+-Example:
+-
+-	power: power-controller {
+-		compatible = "rockchip,rk3288-power-controller";
+-		#power-domain-cells = <1>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-
+-		pd_gpu {
+-			reg = <RK3288_PD_GPU>;
+-			clocks = <&cru ACLK_GPU>;
+-			pm_qos = <&qos_gpu>;
+-		};
+-	};
+-
+-	 power: power-controller {
+-                compatible = "rockchip,rk3368-power-controller";
+-                #power-domain-cells = <1>;
+-                #address-cells = <1>;
+-                #size-cells = <0>;
+-
+-                pd_gpu_1 {
+-                        reg = <RK3368_PD_GPU_1>;
+-                        clocks = <&cru ACLK_GPU_CFG>;
+-                };
+-        };
+-
+-Example 2:
+-		power: power-controller {
+-			compatible = "rockchip,rk3399-power-controller";
+-			#power-domain-cells = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-
+-			pd_vio {
+-				#address-cells = <1>;
+-				#size-cells = <0>;
+-				reg = <RK3399_PD_VIO>;
+-
+-				pd_vo {
+-					#address-cells = <1>;
+-					#size-cells = <0>;
+-					reg = <RK3399_PD_VO>;
+-
+-					pd_vopb {
+-						reg = <RK3399_PD_VOPB>;
+-					};
+-
+-					pd_vopl {
+-						reg = <RK3399_PD_VOPL>;
+-					};
+-				};
+-			};
+-		};
+-
+-Node of a device using power domains must have a power-domains property,
+-containing a phandle to the power device node and an index specifying which
+-power domain to use.
+-The index should use macros in:
+-	"include/dt-bindings/power/px30-power.h" - for px30 type power domain.
+-	"include/dt-bindings/power/rk3036-power.h" - for rk3036 type power domain.
+-	"include/dt-bindings/power/rk3128-power.h" - for rk3128 type power domain.
+-	"include/dt-bindings/power/rk3128-power.h" - for rk3228 type power domain.
+-	"include/dt-bindings/power/rk3288-power.h" - for rk3288 type power domain.
+-	"include/dt-bindings/power/rk3328-power.h" - for rk3328 type power domain.
+-	"include/dt-bindings/power/rk3366-power.h" - for rk3366 type power domain.
+-	"include/dt-bindings/power/rk3368-power.h" - for rk3368 type power domain.
+-	"include/dt-bindings/power/rk3399-power.h" - for rk3399 type power domain.
+-
+-Example of the node using power domain:
+-
+-	node {
+-		/* ... */
+-		power-domains = <&power RK3288_PD_GPU>;
+-		/* ... */
+-	};
+-
+-	node {
+-                /* ... */
+-                power-domains = <&power RK3368_PD_GPU_1>;
+-                /* ... */
+-        };
+-
+-	node {
+-		/* ... */
+-		power-domains = <&power RK3399_PD_VOPB>;
+-		/* ... */
+-	};
+-- 
+2.27.0
