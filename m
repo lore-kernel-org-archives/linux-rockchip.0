@@ -1,68 +1,68 @@
-From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-Subject: Speaker pops with max98357a on rk3399-gru-kevin since v5.7
-Date: Thu, 16 Jul 2020 14:49:29 +0300
-Message-ID: <f2ca985f-7dbd-847a-1875-dd0e1044ef02@gmail.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [RFC PATCH v1 1/2] dt-bindings: arm: rockchip: add A95X Z2
+ description
+Date: Thu, 16 Jul 2020 14:05:17 +0200
+Message-ID: <14b39efe-f38b-b471-560d-1ecaeafc5dd5@gmail.com>
+References: <20200620134659.4592-1-jbx6244@gmail.com>
+ <20200620134659.4592-2-jbx6244@gmail.com> <20200715192935.GA684031@bogus>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200715192935.GA684031@bogus>
 Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Tzung-Bi Shih <tzungbi@google.com>, Mark Brown <broonie@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, Alper Nebi Yasak <alpernebiyasak@gmail.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Hi Rob,
 
-I have been getting "pop" sounds from the speaker on my rk3399-gru-kevin
-for a while, and bisected it to 128f825aeab7 ("ASoC: max98357a: move
-control of SD_MODE to DAPM"), but looks like the pops were somewhat
-expected:
+The A95X Z2 boxes are sold by various vendors/manufacturers/web shops.
+The box it self only shows a label with a model name.
+Determining the true vendor is a kind of tricky for a outsider of the
+business.
+Could you advise what would be a save choice to the rather rigid vendor
+requirements.
+Is for example this a option:
 
-On 12 Feb 2020 13:55:15 +0800, Tzung-Bi Shih wrote [1]:
-> Possible drawback: may generate pop noise when BCLK=on but LRCLK=off.
-> As the datasheet[2] mentioned:
-> > Do not remove LRCLK while BCLK is present.
-> > Removing LRCLK while BCLK is present can cause unexpected output behavior
-> > including a large DC output voltage.
+  "^a95x,.*":
+    description: A95X
 
-[1] https://lore.kernel.org/alsa-devel/20200212055517.122728-1-tzungbi@google.com/
+Is there someone who can give more info on this subject?
 
-As of v5.8-rc5 I'm still getting the speaker pops. More info below, but
-not all pops coincide with "set sdmode" messages, and vice versa.
-Reverting that commit stops the pops, but then the "Speakers Switch" can
-no longer mute the speakers.
+Kind regards,
 
-I don't really know much about these things, could anyone have a look at
-it? I'll try to read relevant documentation and code to make sense of it,
-but wanted to send an email in case there is an immediately obvious
-solution (besides reverting) and maybe just nobody had the time to
-implement it yet.
+Johan Jonker
 
-Thanks in advance.
-
----
-
-I've experimented a bit on a Debian userspace (with #define DEBUG 1
-to get sdmode messages), here's what happens without PulseAudio:
-- When playback starts, speaker pops with "set sdmode to 1".
-- During playback, toggling "Speakers Switch" sets sdmode to 0/1 and
-  mutes/unmutes speakers without any pops.
-- Pausing/resuming playback (like seeking on a media player) make pops
-  without changing sdmode. Also pops when playback ends (e.g. when
-  "speaker-test -l 1" quits).
-- A few seconds after playback ends, speaker pops for the last time with
-  "set sdmode to 0".
-- Within that few seconds, toggling "Speakers Switch" sets sdmode to 0/1
-  and makes a pop each time.
-
-It's mostly the same with PulseAudio but:
-- Pause/resume during playback doesn't make any pops.
-- The penultimate pop happens a few seconds after playback stops, when
-  PA says it's suspending the max98357a device (no sdmode changes).
-- The final pop comes a few seconds after that (still with "set sdmode
-  to 0").
-
-Even without any playback it makes several pops during boot when e.g.
-PulseAudio starts/stops running in the display manager or in the user
-session.
+On 7/15/20 9:29 PM, Rob Herring wrote:
+> On Sat, Jun 20, 2020 at 03:46:58PM +0200, Johan Jonker wrote:
+>> Add A95X Z2 description for a board with rk3318 processor.
+>>
+>> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>> ---
+>>  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+>>  1 file changed, 5 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+>> index d4a404509..3d44b3cf0 100644
+>> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+>> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+>> @@ -25,6 +25,11 @@ properties:
+>>            - const: vamrs,rock960
+>>            - const: rockchip,rk3399
+>>  
+>> +      - description: A95X Z2
+>> +        items:
+>> +          - const: a95x,z2
+> 
+> Need to document vendor prefix.
+> 
+>> +          - const: rockchip,rk3318
+>> +
+>>        - description: Amarula Vyasa RK3288
+>>          items:
+>>            - const: amarula,vyasa-rk3288
+>> -- 
+>> 2.11.0
+>>
