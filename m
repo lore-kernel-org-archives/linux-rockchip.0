@@ -1,364 +1,91 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [PATCH 4/4] media: staging: rkisp1: improve documentation of
- rkisp1-common.h
-Date: Wed, 15 Jul 2020 21:57:02 +0200
-Message-ID: <0bc9d184-1f0f-593e-5f37-055aa0f80b71@collabora.com>
-References: <20200629065754.26621-1-dafna.hirschfeld@collabora.com>
- <20200629065754.26621-5-dafna.hirschfeld@collabora.com>
- <ec28e78b-3c80-8cc7-4d2c-a46629850e78@collabora.com>
+From: =?UTF-8?B?6LW15Luq5bOw?= <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Subject: =?UTF-8?B?UmU6IFJlOiBbUEFUQ0ggdjcgMS84XSBkdC1iaW5kaW5nczogbXRkOiBEZXNjcmliZSBSb2NrY2hpcCBSSzN4eHggTkFORA0KIGZsYXNoIGNvbnRyb2xsZXLjgJDor7fms6jmhI/vvIzpgq7ku7bnlLFyb2JoZXJyaW5nMkBnbWFpbC5jb23ku6Plj5HjgJE=?=
+Date: Thu, 16 Jul 2020 10:04:45 +0800
+Message-ID: <2020071610022540759717@rock-chips.com>
+References: <20200715090342.28339-1-yifeng.zhao@rock-chips.com>,
+        <20200715090342.28339-2-yifeng.zhao@rock-chips.com>,
+        <20200715175356.GA502928@bogus>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <ec28e78b-3c80-8cc7-4d2c-a46629850e78@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
+Content-Type: text/plain;
+        charset="UTF-8"
+Content-Transfer-Encoding: base64
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, vigneshr <vigneshr-l0cyMroinI0@public.gmane.org>, =?UTF-8?B?SGVpa29TdMO8Ym5lcg==?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh+dt <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, richard <richard-/L3Ra7n9ekc@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mtd <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi
-
-On 13.07.20 13:52, Helen Koike wrote:
-> Hi Dafna,
-> 
-> Thanks for the patch.
-> 
-> On 6/29/20 3:57 AM, Dafna Hirschfeld wrote:
->> Add more detailed documentation of the structs in rkisp1-common.h
->>
->> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
->> ---
->>   drivers/staging/media/rkisp1/TODO            |   1 -
->>   drivers/staging/media/rkisp1/rkisp1-common.h | 133 +++++++++++++++----
->>   2 files changed, 106 insertions(+), 28 deletions(-)
->>
->> diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
->> index bdb1b8f73556..f0c90d1c86a8 100644
->> --- a/drivers/staging/media/rkisp1/TODO
->> +++ b/drivers/staging/media/rkisp1/TODO
->> @@ -2,7 +2,6 @@
->>   * Fix checkpatch errors.
->>   * Review and comment every lock
->>   * Handle quantization
->> -* Document rkisp1-common.h
->>   * streaming paths (mainpath and selfpath) check if the other path is streaming
->>   in several places of the code, review this, specially that it doesn't seem it
->>   supports streaming from both paths at the same time.
->> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
->> index 4185487c520c..47b03a1dfe1b 100644
->> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
->> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
->> @@ -73,8 +73,16 @@ enum rkisp1_isp_pad {
->>   };
->>   
->>   /*
->> - * struct rkisp1_sensor_async - Sensor information
->> - * @mbus: media bus configuration
->> + * struct rkisp1_sensor_async - A container for the v4l2_async_subdev to add to the notifier
->> + * of the v4l2-async API.
->> + *
->> + * @asd: the async_subdev var for the sensor
-> 
-> I think you can remove "the" here, same for other fields in the rest of this patch.
-> 
->> + * @lanes: number of lanes
->> + * @mbus_type: type of bus (currently only CSI2 is supported)
->> + * @mbus_flags: media bus (V4L2_MBUS_*) flags
->> + * @sd: a pointer to the v4l2_subdev struct of the sensor
->> + * @pixel_rate_ctrl: the pixel rate of the sensor, used to initialize the phy
->> + * @dphy: a pointer to the phy
->>    */
-> 
-> Just a nit, could you align the comments? I think it is easier to read.
-> 
->>   struct rkisp1_sensor_async {
->>   	struct v4l2_async_subdev asd;
->> @@ -87,19 +95,16 @@ struct rkisp1_sensor_async {
->>   };
->>   
->>   /*
->> - * struct rkisp1_isp - ISP sub-device
->> + * struct rkisp1_isp - ISP subdev entity
->>    *
->> - * See Cropping regions of ISP in rkisp1.c for details
->> - * @sink_frm: input size, don't have to be equal to sensor size
->> + * @sd: the v4l2_subdev var
->> + * @pads: the media pads
->> + * @pad_cfg: the pads configurations
->>    * @sink_fmt: input format
->> - * @sink_crop: crop for sink pad
->>    * @src_fmt: output format
->> - * @src_crop: output size
->>    * @ops_lock: ops serialization
->> - *
->>    * @is_dphy_errctrl_disabled : if dphy errctrl is disabled (avoid endless interrupt)
->>    * @frame_sequence: used to synchronize frame_id between video devices.
->> - * @quantization: output quantization
->>    */
->>   struct rkisp1_isp {
->>   	struct v4l2_subdev sd;
->> @@ -107,11 +112,20 @@ struct rkisp1_isp {
->>   	struct v4l2_subdev_pad_config pad_cfg[RKISP1_ISP_PAD_MAX];
->>   	const struct rkisp1_isp_mbus_info *sink_fmt;
->>   	const struct rkisp1_isp_mbus_info *src_fmt;
->> -	struct mutex ops_lock;
->> +	struct mutex ops_lock; /* serialize the subdevice ops */
->>   	bool is_dphy_errctrl_disabled;
->>   	atomic_t frame_sequence;
->>   };
->>   
->> +/*
->> + * struct rkisp1_vdev_node - A Container for the video nodes of the video devices:
->> + *			     params, stats, mainpath, selfpath
-> 
-> Or maybe just:
-> Container for the video devices nodes: params, stats, mainpath, selfpath
-> 
->> + *
->> + * @buf_queue: the queue of buffers.
->> + * @vlock: the lock of the video node
->> + * @vdev: the video node
->> + * @pad: the media pad
->> + */
->>   struct rkisp1_vdev_node {
->>   	struct vb2_queue buf_queue;
->>   	struct mutex vlock; /* ioctl serialization mutex */
->> @@ -119,6 +133,15 @@ struct rkisp1_vdev_node {
->>   	struct media_pad pad;
->>   };
->>   
->> +/*
->> + * struct rkisp1_buffer - A container for the vb2 buffers used by the video devices:
->> + *			  params, stats, mainpath, selfpath
->> + *
->> + * @vb: the vb2 buffer
->> + * @queue: the entry of the buffer in the queue
->> + * @buff_addr: the dma addresses of each plain, used only by the capture devices: selfpath, mainpath
-> 
-> s/plain/plane
-> 
->> + * @vaddr: the virtual addresses, used only by the params and stats devices
-> 
-> maybe:
-> 
-> virtual addresses for buffers used by params and stats devices
-> 
-> I also noticed that params and stats only use vaddr[0], maybe we can remove the array and
-> replaced by a simple variable.
-> 
->> + */
->>   struct rkisp1_buffer {
->>   	struct vb2_v4l2_buffer vb;
->>   	struct list_head queue;
->> @@ -128,6 +151,9 @@ struct rkisp1_buffer {
->>   	};
->>   };
->>   
->> +/*
->> + * A dummy buffer to write the next frame to in case there are no vb2 buffers available.
->> + */
-> 
-> Could you please follow the same standard used in the rest of this patch?
-> 
->>   struct rkisp1_dummy_buffer {
->>   	void *vaddr;
->>   	dma_addr_t dma_addr;
->> @@ -139,17 +165,28 @@ struct rkisp1_device;
->>   /*
->>    * struct rkisp1_capture - ISP capture video device
->>    *
->> - * @pix.fmt: buffer format
->> - * @pix.info: pixel information
->> - * @pix.cfg: pixel configuration
->> - *
->> - * @buf.lock: lock to protect buf_queue
->> + * @vnode: the video node
->> + * @rkisp1: pointer to the rkisp1 device
->> + * @id: the id of the capture, one of RKISP1_SELFPATH, RKISP1_MAINPATH
->> + * @ops: list of callbacks to configure the capture device.
->> + * @config: a pointer to the list of registers to configure the capture format.
->> + * @is_streaming: device is streaming
->> + * @is_stopping: stop_streaming callback was called and the device is in the process of stopping
->> + *		 the streaming.
->> + * @done: when stop_streaming callback is called, the device waits for the next irq handler to stop
->> + *	  the streaming from there by waiting on the 'done' wait queue.
-> 
-> s/to stop the streaming from there by waiting/to stop the streaming by waiting/
-> 
->> + *	  If the irq handler is not called, the stream is stopped from the callback after timeout.
-> 
-> s/from/by
-> 
->> + * @sp_y_stride: the selfpath allows to configure a y stride that is longer than the image width.
->> + * @buf.lock: lock to protect buf.queue
->>    * @buf.queue: queued buffer list
->>    * @buf.dummy: dummy space to store dropped data
->>    *
->> - * rkisp1 use shadowsock registers, so it need two buffer at a time
->> + * rkisp1 uses shadow registers, so it needs two buffers at a time
->>    * @buf.curr: the buffer used for current frame
->>    * @buf.next: the buffer used for next frame
->> + * @pix.cfg: pixel configuration
->> + * @pix.info: a pointer to the v4l2_format_info of the pixel format
->> + * @pix.fmt: buffer format
->>    */
->>   struct rkisp1_capture {
->>   	struct rkisp1_vdev_node vnode;
->> @@ -179,14 +216,18 @@ struct rkisp1_capture {
->>   /*
->>    * struct rkisp1_stats - ISP Statistics device
->>    *
->> + * @vnode: the video node
->> + * @rkisp1: pointer to the rkisp1 device
->>    * @lock: locks the buffer list 'stat' and 'is_streaming'
->> - * @stat: stats buffer list
->> + * @stat: the queue of rkisp1_buffer
->> + * @vdev_fmt: the v4l2_format
->> + * @is_streaming: device is streaming
->>    */
->>   struct rkisp1_stats {
->>   	struct rkisp1_vdev_node vnode;
->>   	struct rkisp1_device *rkisp1;
->>   
->> -	spinlock_t lock; /* locks 'is_streaming', and 'stats' */
->> +	spinlock_t lock; /* locks the buffers list 'stats' and 'is_streaming' */
->>   	struct list_head stat;
->>   	struct v4l2_format vdev_fmt;
->>   	bool is_streaming;
->> @@ -195,14 +236,22 @@ struct rkisp1_stats {
->>   /*
->>    * struct rkisp1_params - ISP input parameters device
->>    *
->> - * @cur_params: Current ISP parameters
->> + * @vnode: the video node
->> + * @rkisp1: pointer to the rkisp1 device
->> + * @config_lock: locks the buffer list 'params' and 'is_streaming'
->> + * @params: the queue of rkisp1_buffer
->> + * @cur_params: the first params values from userspace
->> + * @vdev_fmt: the v4l2_format
->> + * @is_streaming: device is streaming
->>    * @is_first_params: the first params should take effect immediately
->> + * @quantization: the quantization configured on the isp's src pad
-> 
-> Just a note unrelated to this patch:
-> Maybe quantization could be moved to struct rkisp1_device, so it is accessible by all the entities
-> without the need to maintain copies around.
-
-But quantization is only copied to the params entity so I don't think it should
-be moved to rkisp1_device.
-
-Thanks,
-Dafna
-  
-> 
->> + * @raw_type: the bayer pattern on the isp video sink pad
->>    */
->>   struct rkisp1_params {
->>   	struct rkisp1_vdev_node vnode;
->>   	struct rkisp1_device *rkisp1;
->>   
->> -	spinlock_t config_lock;
->> +	spinlock_t config_lock; /* locks the buffers list 'params' and 'is_streaming' */
->>   	struct list_head params;
->>   	struct rkisp1_params_cfg cur_params;
->>   	struct v4l2_format vdev_fmt;
->> @@ -213,6 +262,18 @@ struct rkisp1_params {
->>   	enum rkisp1_fmt_raw_pat_type raw_type;
->>   };
->>   
->> +/*
->> + * struct rkisp1_resizer - Resizer subdev
->> + *
->> + * @sd: the v4l2_subdev var
->> + * @id: the id of the resizer, one of RKISP1_SELFPATH, RKISP1_MAINPATH
->> + * @rkisp1: pointer to the rkisp1 device
->> + * @pads: the media pads
->> + * @pad_cfg: the configurations for the pads
->> + * @config: the set of registers to configure the resizer
->> + * @pixel_enc: the pixel encoding of the resizer
->> + * @ops_lock: a lock for the subdev ops
->> + */
->>   struct rkisp1_resizer {
->>   	struct v4l2_subdev sd;
->>   	enum rkisp1_stream_id id;
->> @@ -221,9 +282,12 @@ struct rkisp1_resizer {
->>   	struct v4l2_subdev_pad_config pad_cfg[RKISP1_RSZ_PAD_MAX];
->>   	const struct rkisp1_rsz_config *config;
->>   	enum v4l2_pixel_encoding pixel_enc;
->> -	struct mutex ops_lock;
->> +	struct mutex ops_lock; /* serialize the subdevice ops */
->>   };
->>   
->> +/*
->> + * struct rkisp1_debug - values to be exposed on debugfs
->> + */
->>   struct rkisp1_debug {
->>   	struct dentry *debugfs_dir;
->>   	unsigned long data_loss;
->> @@ -237,12 +301,22 @@ struct rkisp1_debug {
->>   /*
->>    * struct rkisp1_device - ISP platform device
-> 
-> Missing new line here
-> 
->>    * @base_addr: base register address
->> + * @irq: the irq number
->> + * @dev: a pointer to the struct device
->> + * @clk_size: the number of clocks
->> + * @clks: the array of clocks
->> + * @v4l2_dev: the v4l2_device
->> + * @media_dev: the media_device
->> + * @notifier: a notifier to register on the v4l2-async API to be notified on the sensor
->>    * @active_sensor: sensor in-use, set when streaming on
->>    * @isp: ISP sub-device
->> - * @rkisp1_capture: capture video device
->> + * @resizer_devs: the two resizer sub-devices
->> + * @capture_devs: the two capture devices
->>    * @stats: ISP statistics output device
->>    * @params: ISP input parameters device
->> - * @stream_lock: lock to serialize start/stop streaming in capture devices.
->> + * @pipe: the media pipeline
->> + * @stream_lock: serializes {start/stop}_streaming callbacks between the capture devices.
->> + * @debug: the debug params to be exposed on debugfs
->>    */
->>   struct rkisp1_device {
->>   	void __iomem *base_addr;
->> @@ -260,16 +334,21 @@ struct rkisp1_device {
->>   	struct rkisp1_stats stats;
->>   	struct rkisp1_params params;
->>   	struct media_pipeline pipe;
->> -	struct mutex stream_lock;
->> +	struct mutex stream_lock; /* serialize {start/stop}_streaming cb between capture devices */
->>   	struct rkisp1_debug debug;
->>   };
->>   
->>   /*
->> - * struct rkisp1_isp_mbus_info - ISP pad format info
->> + * struct rkisp1_isp_mbus_info - ISP media bus info
->>    *
->> - * Translate mbus_code to hardware format values
->> + * Translates mbus_code to hardware format values
->>    *
->> - * @bus_width: used for parallel
->> + * @mbus_code: the media bus code
->> + * @pixel_enc: the pixel encoding
->> + * @mipi_dt: the mipi data type
->> + * @bus_width: the bus width
->> + * @bayer_pat: the bayer pattern
->> + * @direction: a bitmask of the flags indicating on which pad the format is supported on
->>    */
->>   struct rkisp1_isp_mbus_info {
->>   	u32 mbus_code;
->>
-> 
-> It would also be nice to add docs to the enums, macros and functions, but since this is an internal
-> header, it's fine, we can add them later.
-> 
-> With these changes:
-> 
-> Acked-by: Helen Koike <helen.koike@collabora.com>
-> 
-> Thanks
-> Helen
-> 
+SGkgUm9iLAoKPk9uIFdlZCwgMTUgSnVsIDIwMjAgMTc6MDM6MzkgKzA4MDAsIFlpZmVuZyBaaGFv
+IHdyb3RlOgo+PiBEb2N1bWVudGF0aW9uIHN1cHBvcnQgZm9yIFJvY2tjaGlwIFJLM3h4eCBOQU5E
+IGZsYXNoIGNvbnRyb2xsZXJzCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFlpZmVuZyBaaGFvIDx5aWZl
+bmcuemhhb0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+Cj4+IENoYW5nZXMgaW4gdjc6Cj4+IC0g
+Rml4IHNvbWUgd3JvbmcgZGVmaW5lCj4+Cj4+IENoYW5nZXMgaW4gdjY6Cj4+IC0gRml4IHNvbWUg
+d3JvbmcgZGVmaW5lCj4+IC0gTW9kaWZpZWQgdGhlIGRlZmluaXRpb24gb2YgY29tcGF0aWJsZQo+
+Pgo+PiBDaGFuZ2VzIGluIHY1Ogo+PiAtIEZpeCBzb21lIHdyb25nIGRlZmluZS4KPj4gLSBBZGQg
+Ym9vdC1tZWRpdW0gZGVmaW5lLgo+PiAtIFJlbW92ZSBzb21lIGNvbXBhdGlibGUgZGVmaW5lLgo+
+Pgo+PiBDaGFuZ2VzIGluIHY0Ogo+PiAtIFRoZSBjb21wYXRpYmxlIGRlZmluZSB3aXRoIHJreHhf
+bmZjLgo+PiAtIEFkZCBhc3NpZ25lZC1jbG9ja3MuCj4+IC0gRml4IHNvbWUgd3JvbmcgZGVmaW5l
+Q2hhbmdlcyBpbi4KPj4KPj4gQ2hhbmdlcyBpbiB2MzoKPj4gLSBDaGFuZ2UgdGhlIHRpdGxlIGZv
+ciB0aGUgZHQtYmluZGluZ3MuCj4+Cj4+IENoYW5nZXMgaW4gdjI6IE5vbmUKPj4KPj7CoCAuLi4v
+bXRkL3JvY2tjaGlwLG5hbmQtY29udHJvbGxlci55YW1swqDCoMKgwqDCoMKgwqDCoCB8IDE2MiAr
+KysrKysrKysrKysrKysrKysKPj7CoCAxIGZpbGUgY2hhbmdlZCwgMTYyIGluc2VydGlvbnMoKykK
+Pj7CoCBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
+L210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xsZXIueWFtbAo+Pgo+Cj4KPk15IGJvdCBmb3VuZCBl
+cnJvcnMgcnVubmluZyAnbWFrZSBkdF9iaW5kaW5nX2NoZWNrJyBvbiB5b3VyIHBhdGNoOgo+Cj4v
+YnVpbGRzL3JvYmhlcnJpbmcvbGludXgtZHQtcmV2aWV3L0RvY3VtZW50YXRpb24vZGV2aWNldHJl
+ZS9iaW5kaW5ncy9tdGQvcm9ja2NoaXAsbmFuZC1jb250cm9sbGVyLmV4YW1wbGUuZHQueWFtbDog
+ZXhhbXBsZS0wOiBuYW5kLWNvbnRyb2xsZXJAZmY0YjAwMDA6cmVnOjA6IFswLCA0MjgzMTA1Mjgw
+LCAwLCAxNjM4NF0gaXMgdG9vIGxvbmcKPgo+Cj5TZWUgaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJz
+Lm9yZy9wYXRjaC8xMzI5MzI1Cj4KPklmIHlvdSBhbHJlYWR5IHJhbiAnbWFrZSBkdF9iaW5kaW5n
+X2NoZWNrJyBhbmQgZGlkbid0IHNlZSB0aGUgYWJvdmUKPmVycm9yKHMpLCB0aGVuIG1ha2Ugc3Vy
+ZSBkdC1zY2hlbWEgaXMgdXAgdG8gZGF0ZToKPgo+cGlwMyBpbnN0YWxsIGdpdCtodHRwczovL2dp
+dGh1Yi5jb20vZGV2aWNldHJlZS1vcmcvZHQtc2NoZW1hLmdpdEBtYXN0ZXIgLS11cGdyYWRlCj4K
+PlBsZWFzZSBjaGVjayBhbmQgcmUtc3VibWl0LgoKbWFrZSBBUkNIPWFybTY0IGR0X2JpbmRpbmdf
+Y2hlY2sgRFRfU0NIRU1BX0ZJTEVTPURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9t
+dGQvcm9ja2NoaXAsbmFuZC1jb250cm9sbGVyLnlhbWzCoArCoCBIT1NUQ0MgwqBzY3JpcHRzL2Jh
+c2ljL2ZpeGRlcArCoCBIT1NUQ0MgwqBzY3JpcHRzL2R0Yy9kdGMubwrCoCBIT1NUQ0MgwqBzY3Jp
+cHRzL2R0Yy9mbGF0dHJlZS5vCsKgIEhPU1RDQyDCoHNjcmlwdHMvZHRjL2ZzdHJlZS5vCsKgIEhP
+U1RDQyDCoHNjcmlwdHMvZHRjL2RhdGEubwrCoCBIT1NUQ0MgwqBzY3JpcHRzL2R0Yy9saXZldHJl
+ZS5vCsKgIEhPU1RDQyDCoHNjcmlwdHMvZHRjL3RyZWVzb3VyY2UubwrCoCBIT1NUQ0MgwqBzY3Jp
+cHRzL2R0Yy9zcmNwb3MubwrCoCBIT1NUQ0MgwqBzY3JpcHRzL2R0Yy9jaGVja3MubwrCoCBIT1NU
+Q0MgwqBzY3JpcHRzL2R0Yy91dGlsLm8KwqAgTEVYIMKgIMKgIHNjcmlwdHMvZHRjL2R0Yy1sZXhl
+ci5sZXguYwrCoCBZQUNDIMKgIMKgc2NyaXB0cy9kdGMvZHRjLXBhcnNlci50YWIuW2NoXQrCoCBI
+T1NUQ0MgwqBzY3JpcHRzL2R0Yy9kdGMtbGV4ZXIubGV4Lm8KwqAgSE9TVENDIMKgc2NyaXB0cy9k
+dGMvZHRjLXBhcnNlci50YWIubwrCoCBIT1NUQ0MgwqBzY3JpcHRzL2R0Yy95YW1sdHJlZS5vCsKg
+IEhPU1RMRCDCoHNjcmlwdHMvZHRjL2R0YwrCoCBDSEtEVCDCoCBEb2N1bWVudGF0aW9uL2Rldmlj
+ZXRyZWUvYmluZGluZ3MvbXRkL3JvY2tjaGlwLG5hbmQtY29udHJvbGxlci55YW1sCsKgIFNDSEVN
+QSDCoERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wcm9jZXNzZWQtc2NoZW1hLWV4
+YW1wbGVzLnlhbWwKwqAgRFRDIMKgIMKgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
+cy9tdGQvcm9ja2NoaXAsbmFuZC1jb250cm9sbGVyLmV4YW1wbGUuZHQueWFtbArCoCBDSEVDSyDC
+oCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbXRkL3JvY2tjaGlwLG5hbmQtY29u
+dHJvbGxlci5leGFtcGxlLmR0LnlhbWwKL2hvbWUveWlmZW5nL3dvcmsvbGludXgvRG9jdW1lbnRh
+dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xsZXIuZXhh
+bXBsZS5kdC55YW1sOiBleGFtcGxlLTA6IG5hbmQtY29udHJvbGxlckBmZjRiMDAwMDpyZWc6MDog
+WzAsIDQyODMxMDUyODAsIDAsIDE2Mzg0XSBpcyB0b28gbG9uZwoKSSBhbHJlYWR5IHJhbiB0aGUg
+Im1ha2UgZHRfYmluZGluZ19jaGVjayIgYmVmb3JlIHN1Ym1pdCB0aGlzIHBhdGNoIGFuZCBmb3Vu
+ZCB0aGlzIGlzc3VlLgpUaGUgZHRzIGV4YW1wbGVzIGlzIGZvciBSSzMzMDgsIEFSQ0g9YXJtNjQs
+IGFuZCB0aGUgcmVnIGRlZmluZSBpcyBjb3JyZWN0LgpJIHRob3VnaHQgdGhlcmUgd2FzIHNvbWV0
+aGluZyB3cm9uZyB3aXRoIHRoZSBjaGVja++8jCBvciBzb21ldGhpbmcgY29uZmlndXJhdGlvbiBJ
+IG1pc3NlZC4KUGxlYXNlIGdpdmUgbWUgc29tZSBzdWdnZXN0aW9ucy4KCgpkaWZmIC0tZ2l0IGEv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRy
+b2xsZXIueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tdGQvcm9ja2No
+aXAsbmFuZC1jb250cm9sbGVyLnlhbWwKaW5kZXggNDkzNzA1YTU1NjM4Li5iOWQ3YThjNzk0MDIg
+MTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tdGQvcm9ja2No
+aXAsbmFuZC1jb250cm9sbGVyLnlhbWwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xsZXIueWFtbApAQCAtMTMyLDcgKzEzMiw3
+IEBAIGV4YW1wbGVzOgrCoCDCoCDCoG5mYzogbmFuZC1jb250cm9sbGVyQGZmNGIwMDAwIHsKwqAg
+wqAgwqAgwqBjb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzMwOC1uZmMiLArCoCDCoCDCoCDCoCDC
+oCDCoCDCoCDCoCDCoCDCoCAicm9ja2NoaXAscnYxMTA4LW5mYyI7Ci0gwqAgwqAgwqByZWcgPSA8
+MHgwIDB4ZmY0YjAwMDAgMHgwIDB4NDAwMD47CisgwqAgwqAgwqByZWcgPSA8MHhmZjRiMDAwMCAw
+eDQwMDA+OwrCoCDCoCDCoCDCoGludGVycnVwdHMgPSA8R0lDX1NQSSA4MSBJUlFfVFlQRV9MRVZF
+TF9ISUdIPjsKwqAgwqAgwqAgwqBjbG9ja3MgPSA8JmNydSBIQ0xLX05BTkRDPiwgPCZjcnUgU0NM
+S19OQU5EQz47CsKgIMKgIMKgIMKgY2xvY2stbmFtZXMgPSAiYWhiIiwgIm5mYyI7CgptYWtlIEFS
+Q0g9YXJtNjQgZHRfYmluZGluZ19jaGVjayBEVF9TQ0hFTUFfRklMRVM9RG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xsZXIueWFtbMKgCsKg
+IFNDSEVNQSDCoERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wcm9jZXNzZWQtc2No
+ZW1hLWV4YW1wbGVzLnlhbWwKwqAgQ0hLRFQgwqAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
+bmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xsZXIueWFtbArCoCBEVEMgwqAgwqAgRG9j
+dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xs
+ZXIuZXhhbXBsZS5kdC55YW1sCsKgIENIRUNLIMKgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
+aW5kaW5ncy9tdGQvcm9ja2NoaXAsbmFuZC1jb250cm9sbGVyLmV4YW1wbGUuZHQueWFtbAoKeWlm
+ZW5nLnpoYW8KCg==
