@@ -1,91 +1,68 @@
-From: =?UTF-8?B?6LW15Luq5bOw?= <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: =?UTF-8?B?UmU6IFJlOiBbUEFUQ0ggdjcgMS84XSBkdC1iaW5kaW5nczogbXRkOiBEZXNjcmliZSBSb2NrY2hpcCBSSzN4eHggTkFORA0KIGZsYXNoIGNvbnRyb2xsZXLjgJDor7fms6jmhI/vvIzpgq7ku7bnlLFyb2JoZXJyaW5nMkBnbWFpbC5jb23ku6Plj5HjgJE=?=
-Date: Thu, 16 Jul 2020 10:04:45 +0800
-Message-ID: <2020071610022540759717@rock-chips.com>
-References: <20200715090342.28339-1-yifeng.zhao@rock-chips.com>,
-        <20200715090342.28339-2-yifeng.zhao@rock-chips.com>,
-        <20200715175356.GA502928@bogus>
+From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Subject: Speaker pops with max98357a on rk3399-gru-kevin since v5.7
+Date: Thu, 16 Jul 2020 14:49:29 +0300
+Message-ID: <f2ca985f-7dbd-847a-1875-dd0e1044ef02@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain;
-        charset="UTF-8"
-Content-Transfer-Encoding: base64
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, vigneshr <vigneshr-l0cyMroinI0@public.gmane.org>, =?UTF-8?B?SGVpa29TdMO8Ym5lcg==?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, robh+dt <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, richard <richard-/L3Ra7n9ekc@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mtd <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Content-Language: en-US
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tzung-Bi Shih <tzungbi@google.com>, Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, Alper Nebi Yasak <alpernebiyasak@gmail.com>, alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-SGkgUm9iLAoKPk9uIFdlZCwgMTUgSnVsIDIwMjAgMTc6MDM6MzkgKzA4MDAsIFlpZmVuZyBaaGFv
-IHdyb3RlOgo+PiBEb2N1bWVudGF0aW9uIHN1cHBvcnQgZm9yIFJvY2tjaGlwIFJLM3h4eCBOQU5E
-IGZsYXNoIGNvbnRyb2xsZXJzCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IFlpZmVuZyBaaGFvIDx5aWZl
-bmcuemhhb0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+Cj4+IENoYW5nZXMgaW4gdjc6Cj4+IC0g
-Rml4IHNvbWUgd3JvbmcgZGVmaW5lCj4+Cj4+IENoYW5nZXMgaW4gdjY6Cj4+IC0gRml4IHNvbWUg
-d3JvbmcgZGVmaW5lCj4+IC0gTW9kaWZpZWQgdGhlIGRlZmluaXRpb24gb2YgY29tcGF0aWJsZQo+
-Pgo+PiBDaGFuZ2VzIGluIHY1Ogo+PiAtIEZpeCBzb21lIHdyb25nIGRlZmluZS4KPj4gLSBBZGQg
-Ym9vdC1tZWRpdW0gZGVmaW5lLgo+PiAtIFJlbW92ZSBzb21lIGNvbXBhdGlibGUgZGVmaW5lLgo+
-Pgo+PiBDaGFuZ2VzIGluIHY0Ogo+PiAtIFRoZSBjb21wYXRpYmxlIGRlZmluZSB3aXRoIHJreHhf
-bmZjLgo+PiAtIEFkZCBhc3NpZ25lZC1jbG9ja3MuCj4+IC0gRml4IHNvbWUgd3JvbmcgZGVmaW5l
-Q2hhbmdlcyBpbi4KPj4KPj4gQ2hhbmdlcyBpbiB2MzoKPj4gLSBDaGFuZ2UgdGhlIHRpdGxlIGZv
-ciB0aGUgZHQtYmluZGluZ3MuCj4+Cj4+IENoYW5nZXMgaW4gdjI6IE5vbmUKPj4KPj7CoCAuLi4v
-bXRkL3JvY2tjaGlwLG5hbmQtY29udHJvbGxlci55YW1swqDCoMKgwqDCoMKgwqDCoCB8IDE2MiAr
-KysrKysrKysrKysrKysrKysKPj7CoCAxIGZpbGUgY2hhbmdlZCwgMTYyIGluc2VydGlvbnMoKykK
-Pj7CoCBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xsZXIueWFtbAo+Pgo+Cj4KPk15IGJvdCBmb3VuZCBl
-cnJvcnMgcnVubmluZyAnbWFrZSBkdF9iaW5kaW5nX2NoZWNrJyBvbiB5b3VyIHBhdGNoOgo+Cj4v
-YnVpbGRzL3JvYmhlcnJpbmcvbGludXgtZHQtcmV2aWV3L0RvY3VtZW50YXRpb24vZGV2aWNldHJl
-ZS9iaW5kaW5ncy9tdGQvcm9ja2NoaXAsbmFuZC1jb250cm9sbGVyLmV4YW1wbGUuZHQueWFtbDog
-ZXhhbXBsZS0wOiBuYW5kLWNvbnRyb2xsZXJAZmY0YjAwMDA6cmVnOjA6IFswLCA0MjgzMTA1Mjgw
-LCAwLCAxNjM4NF0gaXMgdG9vIGxvbmcKPgo+Cj5TZWUgaHR0cHM6Ly9wYXRjaHdvcmsub3psYWJz
-Lm9yZy9wYXRjaC8xMzI5MzI1Cj4KPklmIHlvdSBhbHJlYWR5IHJhbiAnbWFrZSBkdF9iaW5kaW5n
-X2NoZWNrJyBhbmQgZGlkbid0IHNlZSB0aGUgYWJvdmUKPmVycm9yKHMpLCB0aGVuIG1ha2Ugc3Vy
-ZSBkdC1zY2hlbWEgaXMgdXAgdG8gZGF0ZToKPgo+cGlwMyBpbnN0YWxsIGdpdCtodHRwczovL2dp
-dGh1Yi5jb20vZGV2aWNldHJlZS1vcmcvZHQtc2NoZW1hLmdpdEBtYXN0ZXIgLS11cGdyYWRlCj4K
-PlBsZWFzZSBjaGVjayBhbmQgcmUtc3VibWl0LgoKbWFrZSBBUkNIPWFybTY0IGR0X2JpbmRpbmdf
-Y2hlY2sgRFRfU0NIRU1BX0ZJTEVTPURvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9t
-dGQvcm9ja2NoaXAsbmFuZC1jb250cm9sbGVyLnlhbWzCoArCoCBIT1NUQ0MgwqBzY3JpcHRzL2Jh
-c2ljL2ZpeGRlcArCoCBIT1NUQ0MgwqBzY3JpcHRzL2R0Yy9kdGMubwrCoCBIT1NUQ0MgwqBzY3Jp
-cHRzL2R0Yy9mbGF0dHJlZS5vCsKgIEhPU1RDQyDCoHNjcmlwdHMvZHRjL2ZzdHJlZS5vCsKgIEhP
-U1RDQyDCoHNjcmlwdHMvZHRjL2RhdGEubwrCoCBIT1NUQ0MgwqBzY3JpcHRzL2R0Yy9saXZldHJl
-ZS5vCsKgIEhPU1RDQyDCoHNjcmlwdHMvZHRjL3RyZWVzb3VyY2UubwrCoCBIT1NUQ0MgwqBzY3Jp
-cHRzL2R0Yy9zcmNwb3MubwrCoCBIT1NUQ0MgwqBzY3JpcHRzL2R0Yy9jaGVja3MubwrCoCBIT1NU
-Q0MgwqBzY3JpcHRzL2R0Yy91dGlsLm8KwqAgTEVYIMKgIMKgIHNjcmlwdHMvZHRjL2R0Yy1sZXhl
-ci5sZXguYwrCoCBZQUNDIMKgIMKgc2NyaXB0cy9kdGMvZHRjLXBhcnNlci50YWIuW2NoXQrCoCBI
-T1NUQ0MgwqBzY3JpcHRzL2R0Yy9kdGMtbGV4ZXIubGV4Lm8KwqAgSE9TVENDIMKgc2NyaXB0cy9k
-dGMvZHRjLXBhcnNlci50YWIubwrCoCBIT1NUQ0MgwqBzY3JpcHRzL2R0Yy95YW1sdHJlZS5vCsKg
-IEhPU1RMRCDCoHNjcmlwdHMvZHRjL2R0YwrCoCBDSEtEVCDCoCBEb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvbXRkL3JvY2tjaGlwLG5hbmQtY29udHJvbGxlci55YW1sCsKgIFNDSEVN
-QSDCoERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wcm9jZXNzZWQtc2NoZW1hLWV4
-YW1wbGVzLnlhbWwKwqAgRFRDIMKgIMKgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9tdGQvcm9ja2NoaXAsbmFuZC1jb250cm9sbGVyLmV4YW1wbGUuZHQueWFtbArCoCBDSEVDSyDC
-oCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbXRkL3JvY2tjaGlwLG5hbmQtY29u
-dHJvbGxlci5leGFtcGxlLmR0LnlhbWwKL2hvbWUveWlmZW5nL3dvcmsvbGludXgvRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xsZXIuZXhh
-bXBsZS5kdC55YW1sOiBleGFtcGxlLTA6IG5hbmQtY29udHJvbGxlckBmZjRiMDAwMDpyZWc6MDog
-WzAsIDQyODMxMDUyODAsIDAsIDE2Mzg0XSBpcyB0b28gbG9uZwoKSSBhbHJlYWR5IHJhbiB0aGUg
-Im1ha2UgZHRfYmluZGluZ19jaGVjayIgYmVmb3JlIHN1Ym1pdCB0aGlzIHBhdGNoIGFuZCBmb3Vu
-ZCB0aGlzIGlzc3VlLgpUaGUgZHRzIGV4YW1wbGVzIGlzIGZvciBSSzMzMDgsIEFSQ0g9YXJtNjQs
-IGFuZCB0aGUgcmVnIGRlZmluZSBpcyBjb3JyZWN0LgpJIHRob3VnaHQgdGhlcmUgd2FzIHNvbWV0
-aGluZyB3cm9uZyB3aXRoIHRoZSBjaGVja++8jCBvciBzb21ldGhpbmcgY29uZmlndXJhdGlvbiBJ
-IG1pc3NlZC4KUGxlYXNlIGdpdmUgbWUgc29tZSBzdWdnZXN0aW9ucy4KCgpkaWZmIC0tZ2l0IGEv
-RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRy
-b2xsZXIueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tdGQvcm9ja2No
-aXAsbmFuZC1jb250cm9sbGVyLnlhbWwKaW5kZXggNDkzNzA1YTU1NjM4Li5iOWQ3YThjNzk0MDIg
-MTAwNjQ0Ci0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tdGQvcm9ja2No
-aXAsbmFuZC1jb250cm9sbGVyLnlhbWwKKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xsZXIueWFtbApAQCAtMTMyLDcgKzEzMiw3
-IEBAIGV4YW1wbGVzOgrCoCDCoCDCoG5mYzogbmFuZC1jb250cm9sbGVyQGZmNGIwMDAwIHsKwqAg
-wqAgwqAgwqBjb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzMwOC1uZmMiLArCoCDCoCDCoCDCoCDC
-oCDCoCDCoCDCoCDCoCDCoCAicm9ja2NoaXAscnYxMTA4LW5mYyI7Ci0gwqAgwqAgwqByZWcgPSA8
-MHgwIDB4ZmY0YjAwMDAgMHgwIDB4NDAwMD47CisgwqAgwqAgwqByZWcgPSA8MHhmZjRiMDAwMCAw
-eDQwMDA+OwrCoCDCoCDCoCDCoGludGVycnVwdHMgPSA8R0lDX1NQSSA4MSBJUlFfVFlQRV9MRVZF
-TF9ISUdIPjsKwqAgwqAgwqAgwqBjbG9ja3MgPSA8JmNydSBIQ0xLX05BTkRDPiwgPCZjcnUgU0NM
-S19OQU5EQz47CsKgIMKgIMKgIMKgY2xvY2stbmFtZXMgPSAiYWhiIiwgIm5mYyI7CgptYWtlIEFS
-Q0g9YXJtNjQgZHRfYmluZGluZ19jaGVjayBEVF9TQ0hFTUFfRklMRVM9RG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xsZXIueWFtbMKgCsKg
-IFNDSEVNQSDCoERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wcm9jZXNzZWQtc2No
-ZW1hLWV4YW1wbGVzLnlhbWwKwqAgQ0hLRFQgwqAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2Jp
-bmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xsZXIueWFtbArCoCBEVEMgwqAgwqAgRG9j
-dW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL210ZC9yb2NrY2hpcCxuYW5kLWNvbnRyb2xs
-ZXIuZXhhbXBsZS5kdC55YW1sCsKgIENIRUNLIMKgIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9i
-aW5kaW5ncy9tdGQvcm9ja2NoaXAsbmFuZC1jb250cm9sbGVyLmV4YW1wbGUuZHQueWFtbAoKeWlm
-ZW5nLnpoYW8KCg==
+Hi,
+
+I have been getting "pop" sounds from the speaker on my rk3399-gru-kevin
+for a while, and bisected it to 128f825aeab7 ("ASoC: max98357a: move
+control of SD_MODE to DAPM"), but looks like the pops were somewhat
+expected:
+
+On 12 Feb 2020 13:55:15 +0800, Tzung-Bi Shih wrote [1]:
+> Possible drawback: may generate pop noise when BCLK=on but LRCLK=off.
+> As the datasheet[2] mentioned:
+> > Do not remove LRCLK while BCLK is present.
+> > Removing LRCLK while BCLK is present can cause unexpected output behavior
+> > including a large DC output voltage.
+
+[1] https://lore.kernel.org/alsa-devel/20200212055517.122728-1-tzungbi@google.com/
+
+As of v5.8-rc5 I'm still getting the speaker pops. More info below, but
+not all pops coincide with "set sdmode" messages, and vice versa.
+Reverting that commit stops the pops, but then the "Speakers Switch" can
+no longer mute the speakers.
+
+I don't really know much about these things, could anyone have a look at
+it? I'll try to read relevant documentation and code to make sense of it,
+but wanted to send an email in case there is an immediately obvious
+solution (besides reverting) and maybe just nobody had the time to
+implement it yet.
+
+Thanks in advance.
+
+---
+
+I've experimented a bit on a Debian userspace (with #define DEBUG 1
+to get sdmode messages), here's what happens without PulseAudio:
+- When playback starts, speaker pops with "set sdmode to 1".
+- During playback, toggling "Speakers Switch" sets sdmode to 0/1 and
+  mutes/unmutes speakers without any pops.
+- Pausing/resuming playback (like seeking on a media player) make pops
+  without changing sdmode. Also pops when playback ends (e.g. when
+  "speaker-test -l 1" quits).
+- A few seconds after playback ends, speaker pops for the last time with
+  "set sdmode to 0".
+- Within that few seconds, toggling "Speakers Switch" sets sdmode to 0/1
+  and makes a pop each time.
+
+It's mostly the same with PulseAudio but:
+- Pause/resume during playback doesn't make any pops.
+- The penultimate pop happens a few seconds after playback stops, when
+  PA says it's suspending the max98357a device (no sdmode changes).
+- The final pop comes a few seconds after that (still with "set sdmode
+  to 0").
+
+Even without any playback it makes several pops during boot when e.g.
+PulseAudio starts/stops running in the display manager or in the user
+session.
