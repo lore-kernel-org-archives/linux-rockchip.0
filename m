@@ -1,132 +1,138 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: Re: [RFC PATCH v1 1/2] dt-bindings: arm: rockchip: add A95X Z2
- description
-Date: Thu, 16 Jul 2020 18:11:16 +0200
-Message-ID: <544f9182-034b-6309-a945-72b5a34ee2e8@gmail.com>
-References: <20200620134659.4592-1-jbx6244@gmail.com>
- <20200620134659.4592-2-jbx6244@gmail.com> <20200715192935.GA684031@bogus>
- <14b39efe-f38b-b471-560d-1ecaeafc5dd5@gmail.com>
- <56b1447d-6c62-9e73-a7ce-08fb70096a97@arm.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: =?UTF-8?B?UmU6IFJlOiBbUEFUQ0ggdjcgMS84XSBkdC1iaW5kaW5nczogbXRkOiBEZXNjcmliZSBSbw==?=
+        =?UTF-8?B?Y2tjaGlwIFJLM3h4eCBOQU5EIGZsYXNoIGNvbnRyb2xsZXLjgJDor7fms6jmhI/vvIzpgq7ku7bnlLFy?=
+        =?UTF-8?B?b2JoZXJyaW5nMkBnbWFpbC5jb23ku6Plj5HjgJE=?=
+Date: Thu, 16 Jul 2020 10:33:22 -0600
+Message-ID: <CAL_Jsq+5pgsLNS5t=d2yzYukjXurr2B3pUdb_gejqwA7Tv-7mQ@mail.gmail.com>
+References: <20200715090342.28339-1-yifeng.zhao@rock-chips.com>
+ <20200715090342.28339-2-yifeng.zhao@rock-chips.com> <20200715175356.GA502928@bogus>
+ <2020071610022540759717@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <56b1447d-6c62-9e73-a7ce-08fb70096a97-5wv7dgnIgG8@public.gmane.org>
-Content-Language: en-US
+In-Reply-To: <2020071610022540759717-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: =?UTF-8?B?6LW15Luq5bOw?= <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, vigneshr <vigneshr-l0cyMroinI0@public.gmane.org>, =?UTF-8?Q?HeikoSt=C3=BCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, richard <richard-/L3Ra7n9ekc@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-mtd <linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-rockchip <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 7/16/20 3:34 PM, Robin Murphy wrote:
-> On 2020-07-16 13:05, Johan Jonker wrote:
->> Hi Rob,
->>
->> The A95X Z2 boxes are sold by various vendors/manufacturers/web shops.
->> The box it self only shows a label with a model name.
->> Determining the true vendor is a kind of tricky for a outsider of the
->> business.
->> Could you advise what would be a save choice to the rather rigid vendor
->> requirements.
->> Is for example this a option:
->>
->>    "^a95x,.*":
->>      description: A95X
->>
->> Is there someone who can give more info on this subject?
-> 
-> FWIW we already have some "A95X" branded things attributed to Nexbox in
-> upstream DTs, however, the evidence from scraping around the internet
-> suggests that the closest thing to an original vendor for the "A95X Z2"
-> model is probably these folks:
-> 
-> https://zkmagic.en.alibaba.com/
+On Wed, Jul 15, 2020 at 8:04 PM =E8=B5=B5=E4=BB=AA=E5=B3=B0 <yifeng.zhao@ro=
+ck-chips.com> wrote:
+>
+> Hi Rob,
+>
+> >On Wed, 15 Jul 2020 17:03:39 +0800, Yifeng Zhao wrote:
+> >> Documentation support for Rockchip RK3xxx NAND flash controllers
+> >>
+> >> Signed-off-by: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> >> ---
+> >>
+> >> Changes in v7:
+> >> - Fix some wrong define
+> >>
+> >> Changes in v6:
+> >> - Fix some wrong define
+> >> - Modified the definition of compatible
+> >>
+> >> Changes in v5:
+> >> - Fix some wrong define.
+> >> - Add boot-medium define.
+> >> - Remove some compatible define.
+> >>
+> >> Changes in v4:
+> >> - The compatible define with rkxx_nfc.
+> >> - Add assigned-clocks.
+> >> - Fix some wrong defineChanges in.
+> >>
+> >> Changes in v3:
+> >> - Change the title for the dt-bindings.
+> >>
+> >> Changes in v2: None
+> >>
+> >>  .../mtd/rockchip,nand-controller.yaml         | 162 +++++++++++++++++=
++
+> >>  1 file changed, 162 insertions(+)
+> >>  create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nan=
+d-controller.yaml
+> >>
+> >
+> >
+> >My bot found errors running 'make dt_binding_check' on your patch:
+> >
+> >/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/mtd=
+/rockchip,nand-controller.example.dt.yaml: example-0: nand-controller@ff4b0=
+000:reg:0: [0, 4283105280, 0, 16384] is too long
+> >
+> >
+> >See https://patchwork.ozlabs.org/patch/1329325
+> >
+> >If you already ran 'make dt_binding_check' and didn't see the above
+> >error(s), then make sure dt-schema is up to date:
+> >
+> >pip3 install git+https://github.com/devicetree-org/dt-schema.git@master =
+--upgrade
+> >
+> >Please check and re-submit.
+>
+> make ARCH=3Darm64 dt_binding_check DT_SCHEMA_FILES=3DDocumentation/device=
+tree/bindings/mtd/rockchip,nand-controller.yaml
+>   HOSTCC  scripts/basic/fixdep
+>   HOSTCC  scripts/dtc/dtc.o
+>   HOSTCC  scripts/dtc/flattree.o
+>   HOSTCC  scripts/dtc/fstree.o
+>   HOSTCC  scripts/dtc/data.o
+>   HOSTCC  scripts/dtc/livetree.o
+>   HOSTCC  scripts/dtc/treesource.o
+>   HOSTCC  scripts/dtc/srcpos.o
+>   HOSTCC  scripts/dtc/checks.o
+>   HOSTCC  scripts/dtc/util.o
+>   LEX     scripts/dtc/dtc-lexer.lex.c
+>   YACC    scripts/dtc/dtc-parser.tab.[ch]
+>   HOSTCC  scripts/dtc/dtc-lexer.lex.o
+>   HOSTCC  scripts/dtc/dtc-parser.tab.o
+>   HOSTCC  scripts/dtc/yamltree.o
+>   HOSTLD  scripts/dtc/dtc
+>   CHKDT   Documentation/devicetree/bindings/mtd/rockchip,nand-controller.=
+yaml
+>   SCHEMA  Documentation/devicetree/bindings/processed-schema-examples.yam=
+l
+>   DTC     Documentation/devicetree/bindings/mtd/rockchip,nand-controller.=
+example.dt.yaml
+>   CHECK   Documentation/devicetree/bindings/mtd/rockchip,nand-controller.=
+example.dt.yaml
+> /home/yifeng/work/linux/Documentation/devicetree/bindings/mtd/rockchip,na=
+nd-controller.example.dt.yaml: example-0: nand-controller@ff4b0000:reg:0: [=
+0, 4283105280, 0, 16384] is too long
+>
+> I already ran the "make dt_binding_check" before submit this patch and fo=
+und this issue.
+> The dts examples is for RK3308, ARCH=3Darm64, and the reg define is corre=
+ct.
+> I thought there was something wrong with the check=EF=BC=8C or something =
+configuration I missed.
+> Please give me some suggestions.
+>
+>
+> diff --git a/Documentation/devicetree/bindings/mtd/rockchip,nand-controll=
+er.yaml b/Documentation/devicetree/bindings/mtd/rockchip,nand-controller.ya=
+ml
+> index 493705a55638..b9d7a8c79402 100644
+> --- a/Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
+> +++ b/Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
+> @@ -132,7 +132,7 @@ examples:
+>      nfc: nand-controller@ff4b0000 {
+>        compatible =3D "rockchip,rk3308-nfc",
+>                     "rockchip,rv1108-nfc";
+> -      reg =3D <0x0 0xff4b0000 0x0 0x4000>;
+> +      reg =3D <0xff4b0000 0x4000>;
 
-That's where I got my update/backup img from.
-A mail was sent, but what if they all claim to be a 'official' or
-'direct' store?
+This is the right fix. Or you can define a parent node with cell sizes of 2=
+.
 
-option 1:
+The example is just an example and doesn't have to match exactly what
+you do in the dts files.
 
-      - description: A95X Z2
-        items:
-          - const: a95x,z2
-
-  "^a95x,.*":
-    description: A95X
-
-or option 2:
-
-      - description: Zkmagic A95X Z2
-        items:
-          - const: zkmagic,a95x-z2
-
-  "^zkmagic,.*":
-    description: Shenzhen Zkmagic Technology Co., Ltd.
-
-I'ld rather prefer a short neutral name like option 1 just to be save. ;)
-For the completeness there seems to be:
-a95x a2
-a95x a3
-a95x f1
-a95x f2
-a95x f3
-a95x max
-a95x max plus
-a95x r1
-a95x r2
-a95x r3
-a95x r5
-a95x z2
-a95x z2 +
-
-Any advice welcome..
-
-Johan
-
-> 
-> Robin.
-> 
->>
->> Kind regards,
->>
->> Johan Jonker
->>
->> On 7/15/20 9:29 PM, Rob Herring wrote:
->>> On Sat, Jun 20, 2020 at 03:46:58PM +0200, Johan Jonker wrote:
->>>> Add A95X Z2 description for a board with rk3318 processor.
->>>>
->>>> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->>>> ---
->>>>   Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->>>>   1 file changed, 5 insertions(+)
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml
->>>> b/Documentation/devicetree/bindings/arm/rockchip.yaml
->>>> index d4a404509..3d44b3cf0 100644
->>>> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
->>>> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
->>>> @@ -25,6 +25,11 @@ properties:
->>>>             - const: vamrs,rock960
->>>>             - const: rockchip,rk3399
->>>>   +      - description: A95X Z2
->>>> +        items:
->>>> +          - const: a95x,z2
->>>
->>> Need to document vendor prefix.
->>>
->>>> +          - const: rockchip,rk3318
->>>> +
->>>>         - description: Amarula Vyasa RK3288
->>>>           items:
->>>>             - const: amarula,vyasa-rk3288
->>>> -- 
->>>> 2.11.0
->>>>
->>
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->>
+>        interrupts =3D <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
+>        clocks =3D <&cru HCLK_NANDC>, <&cru SCLK_NANDC>;
+>        clock-names =3D "ahb", "nfc";
