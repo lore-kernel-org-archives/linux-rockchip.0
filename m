@@ -1,38 +1,44 @@
-From: Linus Walleij <linus.walleij@linaro.org>
-Subject: Re: [PATCH] pinctrl: rockchip: Replace HTTP links with HTTPS ones
-Date: Fri, 17 Jul 2020 13:31:13 +0200
-Message-ID: <CACRpkdY3woSgK5bAHxY6aEXe1Hx5Tpxa+0hyA4T_DiFOd5HjXw@mail.gmail.com>
-References: <20200713183541.36963-1-grandmaster@al2klimov.de>
+From: Lee Jones <lee.jones@linaro.org>
+Subject: [PATCH 30/30] iio: adc: rockchip_saradc: Demote Demote seemingly unintentional kerneldoc header
+Date: Fri, 17 Jul 2020 17:55:38 +0100
+Message-ID: <20200717165538.3275050-31-lee.jones@linaro.org>
+References: <20200717165538.3275050-1-lee.jones@linaro.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200713183541.36963-1-grandmaster@al2klimov.de>
+In-Reply-To: <20200717165538.3275050-1-lee.jones@linaro.org>
 Sender: linux-kernel-owner@vger.kernel.org
-To: "Alexander A. Klimov" <grandmaster@al2klimov.de>
-Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+To: jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org, Lee Jones <lee.jones@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Mon, Jul 13, 2020 at 8:35 PM Alexander A. Klimov
-<grandmaster@al2klimov.de> wrote:
+This is the only use of kerneldoc in the source file and no
+descriptions are provided.
 
-> Rationale:
-> Reduces attack surface on kernel devs opening the links for MITM
-> as HTTPS traffic is much harder to manipulate.
->
-> Deterministic algorithm:
-> For each file:
->   If not .svg:
->     For each line:
->       If doesn't contain `\bxmlns\b`:
->         For each link, `\bhttp://[^# \t\r\n]*(?:\w|/)`:
->           If neither `\bgnu\.org/license`, nor `\bmozilla\.org/MPL\b`:
->             If both the HTTP and HTTPS versions
->             return 200 OK and serve the same content:
->               Replace HTTP with HTTPS.
->
-> Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
+Fixes the following W=1 kernel build warning(s):
 
-Patch applied.
+ drivers/iio/adc/rockchip_saradc.c:190: warning: Function parameter or member 'reset' not described in 'rockchip_saradc_reset_controller'
 
-Yours,
-Linus Walleij
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-rockchip@lists.infradead.org
+Signed-off-by: Lee Jones <lee.jones@linaro.org>
+---
+ drivers/iio/adc/rockchip_saradc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+index 582ba047c4a67..cf4ec59c1dab0 100644
+--- a/drivers/iio/adc/rockchip_saradc.c
++++ b/drivers/iio/adc/rockchip_saradc.c
+@@ -183,7 +183,7 @@ static const struct of_device_id rockchip_saradc_match[] = {
+ };
+ MODULE_DEVICE_TABLE(of, rockchip_saradc_match);
+ 
+-/**
++/*
+  * Reset SARADC Controller.
+  */
+ static void rockchip_saradc_reset_controller(struct reset_control *reset)
+-- 
+2.25.1
