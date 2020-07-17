@@ -1,44 +1,54 @@
-From: Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH 30/30] iio: adc: rockchip_saradc: Demote Demote seemingly unintentional kerneldoc header
-Date: Fri, 17 Jul 2020 17:55:38 +0100
-Message-ID: <20200717165538.3275050-31-lee.jones@linaro.org>
-References: <20200717165538.3275050-1-lee.jones@linaro.org>
+From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v4 2/9] media: staging: dt-bindings: rkisp1: add required
+ items in i2c example
+Date: Fri, 17 Jul 2020 11:41:40 -0600
+Message-ID: <CAL_Jsq+5vW2cCz1oxVE-R3MW7gQfSHKrR_YrGm5ZHnjCCd9_Vw@mail.gmail.com>
+References: <20200702191322.2639681-1-helen.koike@collabora.com> <20200702191322.2639681-3-helen.koike@collabora.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200717165538.3275050-1-lee.jones@linaro.org>
-Sender: linux-kernel-owner@vger.kernel.org
-To: jic23@kernel.org, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org, Lee Jones <lee.jones@linaro.org>, Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200702191322.2639681-3-helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:STAGING SUBSYSTEM" <devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Collabora Kernel ML <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Dafna Hirschfeld <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-This is the only use of kerneldoc in the source file and no
-descriptions are provided.
+On Thu, Jul 2, 2020 at 1:13 PM Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+>
+> Add missing required items in Rockchip ISP1 dt-bindings example for
+> a complete i2c node.
+>
+> Signed-off-by: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
+> ---
+>
+> Changes in v2:
+> - new patch in the series
+> ---
+>  .../devicetree/bindings/media/rockchip-isp1.yaml             | 5 +++++
+>  1 file changed, 5 insertions(+)
+>
+> diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> index a77b6ec500c95..8c7904845788d 100644
+> --- a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> +++ b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> @@ -169,6 +169,11 @@ examples:
+>          };
+>
+>          i2c7: i2c@ff160000 {
+> +            compatible = "rockchip,rk3399-i2c";
+> +            reg = <0x0 0xff160000 0x0 0x1000>;
 
-Fixes the following W=1 kernel build warning(s):
+This will give a warning now as the default cell sizes are 1.
 
- drivers/iio/adc/rockchip_saradc.c:190: warning: Function parameter or member 'reset' not described in 'rockchip_saradc_reset_controller'
+> +            interrupts = <GIC_SPI 36 IRQ_TYPE_LEVEL_HIGH 0>;
+> +            clocks = <&cru SCLK_I2C7>, <&cru PCLK_I2C7>;
+> +            clock-names = "i2c", "pclk";
 
-Cc: Heiko Stuebner <heiko@sntech.de>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-rockchip@lists.infradead.org
-Signed-off-by: Lee Jones <lee.jones@linaro.org>
----
- drivers/iio/adc/rockchip_saradc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Just drop the unit address rather than adding all this.
 
-diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
-index 582ba047c4a67..cf4ec59c1dab0 100644
---- a/drivers/iio/adc/rockchip_saradc.c
-+++ b/drivers/iio/adc/rockchip_saradc.c
-@@ -183,7 +183,7 @@ static const struct of_device_id rockchip_saradc_match[] = {
- };
- MODULE_DEVICE_TABLE(of, rockchip_saradc_match);
- 
--/**
-+/*
-  * Reset SARADC Controller.
-  */
- static void rockchip_saradc_reset_controller(struct reset_control *reset)
--- 
-2.25.1
+>              clock-frequency = <400000>;
+>              #address-cells = <1>;
+>              #size-cells = <0>;
+> --
+> 2.26.0
+>
