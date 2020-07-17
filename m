@@ -1,7 +1,7 @@
 From: Jianqun Xu <jay.xu@rock-chips.com>
 Subject: [PATCH 06/13] pinctrl: rockchip: do codingstyle
-Date: Fri, 17 Jul 2020 09:52:32 +0800
-Message-ID: <20200717015232.14099-1-jay.xu@rock-chips.com>
+Date: Fri, 17 Jul 2020 09:52:43 +0800
+Message-ID: <20200717015243.14149-1-jay.xu@rock-chips.com>
 References: <20200717014908.13914-1-jay.xu@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20200717014908.13914-1-jay.xu@rock-chips.com>
