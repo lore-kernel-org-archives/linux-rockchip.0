@@ -1,147 +1,69 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [RFC PATCH v1 1/2] dt-bindings: arm: rockchip: add A95X Z2
- description
-Date: Thu, 16 Jul 2020 20:18:16 +0100
-Message-ID: <7811d168-6f41-adda-bd64-e7475b239863@arm.com>
-References: <20200620134659.4592-1-jbx6244@gmail.com>
- <20200620134659.4592-2-jbx6244@gmail.com> <20200715192935.GA684031@bogus>
- <14b39efe-f38b-b471-560d-1ecaeafc5dd5@gmail.com>
- <56b1447d-6c62-9e73-a7ce-08fb70096a97@arm.com>
- <544f9182-034b-6309-a945-72b5a34ee2e8@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <544f9182-034b-6309-a945-72b5a34ee2e8-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Content-Language: en-GB
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Jianqun Xu <jay.xu@rock-chips.com>
+Subject: [PATCH 03/13] pinctrl: rockchip: make driver be tristate module
+Date: Fri, 17 Jul 2020 09:48:58 +0800
+Message-ID: <20200717014908.13914-4-jay.xu@rock-chips.com>
+References: <20200717014908.13914-1-jay.xu@rock-chips.com>
+Return-path: <linux-gpio-owner@vger.kernel.org>
+In-Reply-To: <20200717014908.13914-1-jay.xu@rock-chips.com>
+Sender: linux-gpio-owner@vger.kernel.org
+To: heiko@sntech.de, linus.walleij@linaro.org
+Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, david.wu@rock-chips.com, Jianqun Xu <jay.xu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-07-16 17:11, Johan Jonker wrote:
-> On 7/16/20 3:34 PM, Robin Murphy wrote:
->> On 2020-07-16 13:05, Johan Jonker wrote:
->>> Hi Rob,
->>>
->>> The A95X Z2 boxes are sold by various vendors/manufacturers/web shops.
->>> The box it self only shows a label with a model name.
->>> Determining the true vendor is a kind of tricky for a outsider of the
->>> business.
->>> Could you advise what would be a save choice to the rather rigid vendor
->>> requirements.
->>> Is for example this a option:
->>>
->>>     "^a95x,.*":
->>>       description: A95X
->>>
->>> Is there someone who can give more info on this subject?
->>
->> FWIW we already have some "A95X" branded things attributed to Nexbox in
->> upstream DTs, however, the evidence from scraping around the internet
->> suggests that the closest thing to an original vendor for the "A95X Z2"
->> model is probably these folks:
->>
->> https://zkmagic.en.alibaba.com/
-> 
-> That's where I got my update/backup img from.
-> A mail was sent, but what if they all claim to be a 'official' or
-> 'direct' store?
+Make pinctrl-rockchip driver to be tristate module, support to build as
+a module, this is useful for GKI.
 
-Well, at some point we have to make a judgement call if the facts aren't 
-easy to come by, but it's already clear that "A95X" is not a vendor but 
-some kind of generic model name apparently used by multiple vendors. We 
-already have "nexbox,a95x" as a binding for another model, and a 
-plausible idea of who's responsible for this one, so I think 
-"zkmagic,a95x-z2" would be the appropriate binding here. It's hardly the 
-end of the world if it's not 100% accurate, but that's no excuse not to 
-at least try.
+Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+---
+ drivers/pinctrl/Kconfig            | 2 +-
+ drivers/pinctrl/pinctrl-rockchip.c | 7 +++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
 
-Robin.
-
-> 
-> option 1:
-> 
->        - description: A95X Z2
->          items:
->            - const: a95x,z2
-> 
->    "^a95x,.*":
->      description: A95X
-> 
-> or option 2:
-> 
->        - description: Zkmagic A95X Z2
->          items:
->            - const: zkmagic,a95x-z2
-> 
->    "^zkmagic,.*":
->      description: Shenzhen Zkmagic Technology Co., Ltd.
-> 
-> I'ld rather prefer a short neutral name like option 1 just to be save. ;)
-> For the completeness there seems to be:
-> a95x a2
-> a95x a3
-> a95x f1
-> a95x f2
-> a95x f3
-> a95x max
-> a95x max plus
-> a95x r1
-> a95x r2
-> a95x r3
-> a95x r5
-> a95x z2
-> a95x z2 +
-> 
-> Any advice welcome..
-> 
-> Johan
-> 
->>
->> Robin.
->>
->>>
->>> Kind regards,
->>>
->>> Johan Jonker
->>>
->>> On 7/15/20 9:29 PM, Rob Herring wrote:
->>>> On Sat, Jun 20, 2020 at 03:46:58PM +0200, Johan Jonker wrote:
->>>>> Add A95X Z2 description for a board with rk3318 processor.
->>>>>
->>>>> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
->>>>> ---
->>>>>    Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->>>>>    1 file changed, 5 insertions(+)
->>>>>
->>>>> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml
->>>>> b/Documentation/devicetree/bindings/arm/rockchip.yaml
->>>>> index d4a404509..3d44b3cf0 100644
->>>>> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
->>>>> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
->>>>> @@ -25,6 +25,11 @@ properties:
->>>>>              - const: vamrs,rock960
->>>>>              - const: rockchip,rk3399
->>>>>    +      - description: A95X Z2
->>>>> +        items:
->>>>> +          - const: a95x,z2
->>>>
->>>> Need to document vendor prefix.
->>>>
->>>>> +          - const: rockchip,rk3318
->>>>> +
->>>>>          - description: Amarula Vyasa RK3288
->>>>>            items:
->>>>>              - const: amarula,vyasa-rk3288
->>>>> -- 
->>>>> 2.11.0
->>>>>
->>>
->>>
->>> _______________________________________________
->>> Linux-rockchip mailing list
->>> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
->>> http://lists.infradead.org/mailman/listinfo/linux-rockchip
->>>
-> 
+diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
+index 8828613c4e0e..dd4874e2ac67 100644
+--- a/drivers/pinctrl/Kconfig
++++ b/drivers/pinctrl/Kconfig
+@@ -207,7 +207,7 @@ config PINCTRL_OXNAS
+ 	select MFD_SYSCON
+ 
+ config PINCTRL_ROCKCHIP
+-	bool
++	tristate "Rockchip gpio and pinctrl driver"
+ 	select PINMUX
+ 	select GENERIC_PINCONF
+ 	select GENERIC_IRQ_CHIP
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 77c1e6744f6c..ec509ef8bd8d 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -16,10 +16,12 @@
+  */
+ 
+ #include <linux/init.h>
++#include <linux/module.h>
+ #include <linux/platform_device.h>
+ #include <linux/io.h>
+ #include <linux/bitops.h>
+ #include <linux/gpio/driver.h>
++#include <linux/of_device.h>
+ #include <linux/of_address.h>
+ #include <linux/of_irq.h>
+ #include <linux/pinctrl/machine.h>
+@@ -4259,6 +4261,7 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
+ 		.data = &rk3399_pin_ctrl },
+ 	{},
+ };
++MODULE_DEVICE_TABLE(of, rockchip_pinctrl_dt_match);
+ 
+ static struct platform_driver rockchip_pinctrl_driver = {
+ 	.probe		= rockchip_pinctrl_probe,
+@@ -4274,3 +4277,7 @@ static int __init rockchip_pinctrl_drv_register(void)
+ 	return platform_driver_register(&rockchip_pinctrl_driver);
+ }
+ postcore_initcall(rockchip_pinctrl_drv_register);
++
++MODULE_DESCRIPTION("ROCKCHIP Pin Controller Driver");
++MODULE_LICENSE("GPL");
++MODULE_ALIAS("platform:pinctrl-rockchip");
+-- 
+2.17.1
