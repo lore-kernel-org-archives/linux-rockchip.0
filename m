@@ -1,37 +1,36 @@
-From: Tzung-Bi Shih <tzungbi@google.com>
-Subject: Re: Speaker pops with max98357a on rk3399-gru-kevin since v5.7
-Date: Fri, 17 Jul 2020 10:27:51 +0800
-Message-ID: <CA+Px+wU1S1EqtW-yZH9z9aCF3ggSriBqy73SRYy8q61x0GkdQQ@mail.gmail.com>
-References: <f2ca985f-7dbd-847a-1875-dd0e1044ef02@gmail.com>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+From: Jianqun Xu <jay.xu@rock-chips.com>
+Subject: [PATCH RESEND 00/13] pinctrl: rockchip: prepare work for split driver
+Date: Fri, 17 Jul 2020 11:23:58 +0800
+Message-ID: <20200717032411.17654-1-jay.xu@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <f2ca985f-7dbd-847a-1875-dd0e1044ef02@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, ALSA development <alsa-devel@alsa-project.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org
+To: heiko@sntech.de, linus.walleij@linaro.org
+Cc: linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kever.yang@rock-chips.com, david.wu@rock-chips.com, Jianqun Xu <jay.xu@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jul 16, 2020 at 7:49 PM Alper Nebi Yasak
-<alpernebiyasak@gmail.com> wrote:
-> I have been getting "pop" sounds from the speaker on my rk3399-gru-kevin
-> for a while, and bisected it to 128f825aeab7 ("ASoC: max98357a: move
-> control of SD_MODE to DAPM"), but looks like the pops were somewhat
-> expected:
+This serial patchs include 12 codingstyle patches and 1 bug fix (enable
+gpio pclk for rockchip_gpio_to_irq).
 
-I am not convinced the pop comes from 128f825aeab7.
+Also it's prepare for split driver work.
 
-> As of v5.8-rc5 I'm still getting the speaker pops. More info below, but
-> not all pops coincide with "set sdmode" messages, and vice versa.
-> Reverting that commit stops the pops, but then the "Speakers Switch" can
-> no longer mute the speakers.
+Jianqun Xu (13):
+  pinctrl: rockchip: add nr_pins to rockchip_pin_ctrl
+  pinctrl: rockchip: modify rockchip_pin_ctrl to const struct
+  pinctrl: rockchip: make driver be tristate module
+  pinctrl: rockchip: enable gpio pclk for rockchip_gpio_to_irq
+  pinctrl: rockchip: create irq mapping in gpio_to_irq
+  pinctrl: rockchip: Add RK3399 definitions to separate from other SoCs
+  pinctrl: rockchip: Add RK3368 definitions to separate from other SoCs
+  pinctrl: rockchip: Add RK3308 definitions to separate from other SoCs
+  pinctrl: rockchip: Add RK3228 definitions to separate from other SoCs
+  pinctrl: rockchip: Add RK3288 definitions to separate from other SoCs
+  pinctrl: rockchip: Add RK3128 definitions to separate from other SoCs
+  pinctrl: rockchip: define common codes without special chip name
+  pinctrl: rockchip: do codingstyle by adding mux route definitions
 
-(I don't have a rk3399-gru-kevin so I got another test machine with MAX98357A.)
-(I was testing with and without an audio server.)
-Observations:
-- I can hear the pop either with or without 128f825aeab7 (with and
-without sdmode-delay).
-- The pop noise is not always.  Higher probability after stopping
-playback than before starting.
-- As you also mentioned, the pop noise is not directly related to
-SD_MODE transition.
+ drivers/pinctrl/Kconfig            |   2 +-
+ drivers/pinctrl/pinctrl-rockchip.c | 933 ++++++++---------------------
+ 2 files changed, 261 insertions(+), 674 deletions(-)
+
+-- 
+2.17.1
