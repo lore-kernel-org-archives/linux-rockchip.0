@@ -1,56 +1,38 @@
-From: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v8 5/8] arm64: dts: rockchip: Add NFC node for PX30 SoC
-Date: Fri, 17 Jul 2020 17:25:29 +0800
-Message-ID: <20200717092532.19853-1-yifeng.zhao@rock-chips.com>
-References: <20200717092420.19798-1-yifeng.zhao@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200717092420.19798-1-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Linus Walleij <linus.walleij@linaro.org>
+Subject: Re: [PATCH] pinctrl: rockchip: Replace HTTP links with HTTPS ones
+Date: Fri, 17 Jul 2020 13:31:13 +0200
+Message-ID: <CACRpkdY3woSgK5bAHxY6aEXe1Hx5Tpxa+0hyA4T_DiFOd5HjXw@mail.gmail.com>
+References: <20200713183541.36963-1-grandmaster@al2klimov.de>
+Mime-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200713183541.36963-1-grandmaster@al2klimov.de>
+Sender: linux-kernel-owner@vger.kernel.org
+To: "Alexander A. Klimov" <grandmaster@al2klimov.de>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add NAND FLASH Controller(NFC) node for PX30 SoC.
+On Mon, Jul 13, 2020 at 8:35 PM Alexander A. Klimov
+<grandmaster@al2klimov.de> wrote:
 
-Signed-off-by: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
----
+> Rationale:
+> Reduces attack surface on kernel devs opening the links for MITM
+> as HTTPS traffic is much harder to manipulate.
+>
+> Deterministic algorithm:
+> For each file:
+>   If not .svg:
+>     For each line:
+>       If doesn't contain `\bxmlns\b`:
+>         For each link, `\bhttp://[^# \t\r\n]*(?:\w|/)`:
+>           If neither `\bgnu\.org/license`, nor `\bmozilla\.org/MPL\b`:
+>             If both the HTTP and HTTPS versions
+>             return 200 OK and serve the same content:
+>               Replace HTTP with HTTPS.
+>
+> Signed-off-by: Alexander A. Klimov <grandmaster@al2klimov.de>
 
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
+Patch applied.
 
- arch/arm64/boot/dts/rockchip/px30.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index a6b8427156d5..e57b763f60ed 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -972,6 +972,21 @@
- 		status = "disabled";
- 	};
- 
-+	nfc: nand-controller@ff3b0000 {
-+		compatible = "rockchip,px30-nfc";
-+		reg = <0x0 0xff3b0000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 57 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_NANDC>, <&cru SCLK_NANDC>;
-+		clock-names = "ahb", "nfc";
-+		assigned-clocks = <&cru SCLK_NANDC>;
-+		assigned-clock-rates = <150000000>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&flash_ale &flash_bus8 &flash_cle &flash_cs0
-+			     &flash_rdn &flash_rdy &flash_wrn &flash_dqs>;
-+		power-domains = <&power PX30_PD_MMC_NAND>;
-+		status = "disabled";
-+	};
-+
- 	gpu: gpu@ff400000 {
- 		compatible = "rockchip,px30-mali", "arm,mali-bifrost";
- 		reg = <0x0 0xff400000 0x0 0x4000>;
--- 
-2.17.1
+Yours,
+Linus Walleij
