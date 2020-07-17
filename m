@@ -1,30 +1,35 @@
-From: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v4 1/9] media: staging: dt-bindings: rkisp1: add missing
- required nodes
-Date: Fri, 17 Jul 2020 11:42:30 -0600
-Message-ID: <CAL_JsqKLFanS_Vhsbxt5mibxCimDGoa=ShyjR0Qt9YPeazOmTg@mail.gmail.com>
-References: <20200702191322.2639681-1-helen.koike@collabora.com> <20200702191322.2639681-2-helen.koike@collabora.com>
+From: Rob Herring <robh+dt@kernel.org>
+Subject: Re: [PATCH v4 3/9] media: staging: dt-bindings: rkisp1: re-order properties
+Date: Fri, 17 Jul 2020 11:43:23 -0600
+Message-ID: <CAL_JsqLduaH=F0G8+15PM+1GGmKBjgn7ddP+__ACezLd+ivp5w@mail.gmail.com>
+References: <20200702191322.2639681-1-helen.koike@collabora.com> <20200702191322.2639681-4-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200702191322.2639681-2-helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Linux Media Mailing List <linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org" <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, "open list:STAGING SUBSYSTEM" <devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org>, "heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org" <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hans Verkuil <hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org>, Collabora Kernel ML <kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Dafna Hirschfeld <dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Ezequiel Garcia <ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Mark Rutland <mark.rutland-5wv7dgnIgG8@public.gmane.org>, karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Tomasz Figa <tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Eddie Cai <eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Shunqian Zheng <zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200702191322.2639681-4-helen.koike@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Helen Koike <helen.koike@collabora.com>
+Cc: devicetree@vger.kernel.org, Linux Media Mailing List <linux-media@vger.kernel.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>, "heiko@sntech.de" <heiko@sntech.de>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Collabora Kernel ML <kernel@collabora.com>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Ezequiel Garcia <ezequiel@collabora.com>, Mark Rutland <mark.rutland@arm.com>, karthik.poduval@gmail.com, Johan Jonker <jbx6244@gmail.com>, Tomasz Figa <tfiga@chromium.org>, Eddie Cai <eddie.cai.linux@gmail.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Robin Murphy <robin.murphy@arm.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jul 2, 2020 at 1:13 PM Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org> wrote:
+On Thu, Jul 2, 2020 at 1:13 PM Helen Koike <helen.koike@collabora.com> wrote:
 >
-> Add missing required nodes in json-schema yaml file for
-> Rockchip ISP1 dt-bindings.
->
-> Signed-off-by: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-> ---
->
-> Changes in v2:
-> - New patch in the series
-> ---
->  .../devicetree/bindings/media/rockchip-isp1.yaml          | 8 ++++++++
->  1 file changed, 8 insertions(+)
+> Organize properties order in dt-binbings to move it out of staging.
 
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+typo
+
+>
+> On top: compatible, reg and interrupts.
+> Then alphabetical order, then properties starting with '#'.
+>
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+>
+> ---
+>
+> V2:
+> - this is a new patch in the series
+> ---
+>  .../bindings/media/rockchip-isp1.yaml         | 32 +++++++++----------
+>  1 file changed, 16 insertions(+), 16 deletions(-)
+
+Acked-by: Rob Herring <robh@kernel.org>
