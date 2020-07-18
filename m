@@ -1,86 +1,47 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v3 6/6] roc-rk3399-pc: Update ENV offset, size
-Date: Sat, 18 Jul 2020 21:28:34 +0800
-Message-ID: <0fd2c40a-5611-65d8-204d-2003561cdfe4@rock-chips.com>
-References: <20200707135049.9521-1-jagan@amarulasolutions.com>
- <20200707135049.9521-6-jagan@amarulasolutions.com>
- <97597bfd-37cd-9cb5-c427-6999fddc2bbb@rock-chips.com>
+From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v3 0/14] Patches to improve transfer efficiency for Rockchip SoCs.
+Date: Sat, 18 Jul 2020 16:40:29 +0200
+Message-ID: <1883465.KieDo6KLrp@phil>
+References: <1593439555-68130-1-git-send-email-sugar.zhang@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <97597bfd-37cd-9cb5-c427-6999fddc2bbb@rock-chips.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <1593439555-68130-1-git-send-email-sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Sugar Zhang <sugar.zhang-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Vinod Koul <vkoul-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Andy Yan <andy.yan-TNX95d0MmH7DzftRWevZcw@public.gmane.org>, Miquel Raynal <miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Jonas Karlman <jonas-uIzNG4q0ceqzQB+pC5nmwQ@public.gmane.org>, Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Dan Williams <dan.j.williams-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org>, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Carlos de Paula <me-FwFLQrstKkX3oGB3hsPCZA@public.gmane.org>, dmaengine-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, Chen-Yu Tsai <wens-jdAy2FN1RRM@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
+Am Montag, 29. Juni 2020, 16:05:41 CEST schrieb Sugar Zhang:
+> Changes in v3:
+> - rephrase commit message
+> - fix typos in commit message
+> - split the patch for [PATCH V2 1/14]
+> - reorder the patch series
+> 
+> Changes in v2:
+> - fix FATAL ERROR: Unable to parse input tree
+> 
+> Sugar Zhang (14):
+>   dmaengine: pl330: Remove the burst limit for quirk 'NO-FLUSHP'
+>   dmaengine: pl330: Improve transfer efficiency for the dregs
+>   dt-bindings: dma: pl330: Document the quirk 'arm,pl330-periph-burst'
+>   dmaengine: pl330: Add quirk 'arm,pl330-periph-burst'
+>   ARM: dts: rk3036: Add 'arm,pl330-periph-burst' for dmac
+>   ARM: dts: rk322x: Add 'arm,pl330-periph-burst' for dmac
+>   ARM: dts: rk3288: Add 'arm,pl330-periph-burst' for dmac
+>   ARM: dts: rk3xxx: Add 'arm,pl330-periph-burst' for dmac
+>   ARM: dts: rv1108: Add 'arm,pl330-periph-burst' for dmac
+>   arm64: dts: px30: Add 'arm,pl330-periph-burst' for dmac
+>   arm64: dts: rk3308: Add 'arm,pl330-periph-burst' for dmac
+>   arm64: dts: rk3328: Add 'arm,pl330-periph-burst' for dmac
+>   arm64: dts: rk3368: Add 'arm,pl330-periph-burst' for dmac
+>   arm64: dts: rk3399: Add 'arm,pl330-periph-burst' for dmac
 
-On 2020/7/18 上午11:20, Kever Yang wrote:
->
-> On 2020/7/7 下午9:50, Jagan Teki wrote:
->> Adjust the ENV offset, size to fit into all images
->> on 16MB flash.
->>
->> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
+applied the patches 5-14 but merged them into one for arm32
+and one for arm64 and did some slight reordering when the new
+property was added at the bottom of the node.
 
-
-Applied to u-boot-rockchip master for this patch set, thanks.
-
->
-> Thanks,
-> - Kever
->> ---
->> Changes for v3:
->> - fix configs
->>
->>   configs/roc-pc-mezzanine-rk3399_defconfig | 4 ++--
->>   configs/roc-pc-rk3399_defconfig           | 4 ++--
->>   2 files changed, 4 insertions(+), 4 deletions(-)
->>
->> diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig 
->> b/configs/roc-pc-mezzanine-rk3399_defconfig
->> index b2c370cc59..f15dddc684 100644
->> --- a/configs/roc-pc-mezzanine-rk3399_defconfig
->> +++ b/configs/roc-pc-mezzanine-rk3399_defconfig
->> @@ -1,8 +1,8 @@
->>   CONFIG_ARM=y
->>   CONFIG_ARCH_ROCKCHIP=y
->>   CONFIG_SYS_TEXT_BASE=0x00200000
->> -CONFIG_ENV_SIZE=0x6000
->> -CONFIG_ENV_OFFSET=0x460000
->> +CONFIG_ENV_SIZE=0x8000
->> +CONFIG_ENV_OFFSET=0x3F8000
->>   CONFIG_ENV_SECT_SIZE=0x1000
->>   CONFIG_SPL_DM_SPI=y
->>   CONFIG_ROCKCHIP_RK3399=y
->> diff --git a/configs/roc-pc-rk3399_defconfig 
->> b/configs/roc-pc-rk3399_defconfig
->> index 588d03952a..9ffde7f960 100644
->> --- a/configs/roc-pc-rk3399_defconfig
->> +++ b/configs/roc-pc-rk3399_defconfig
->> @@ -1,8 +1,8 @@
->>   CONFIG_ARM=y
->>   CONFIG_ARCH_ROCKCHIP=y
->>   CONFIG_SYS_TEXT_BASE=0x00200000
->> -CONFIG_ENV_SIZE=0x6000
->> -CONFIG_ENV_OFFSET=0x460000
->> +CONFIG_ENV_SIZE=0x8000
->> +CONFIG_ENV_OFFSET=0x3F8000
->>   CONFIG_ENV_SECT_SIZE=0x1000
->>   CONFIG_SPL_DM_SPI=y
->>   CONFIG_ROCKCHIP_RK3399=y
->
->
->
->
+Thanks
+Heiko
