@@ -1,72 +1,36 @@
-From: Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH 30/30] iio: adc: rockchip_saradc: Demote Demote
- seemingly unintentional kerneldoc header
-Date: Sat, 18 Jul 2020 17:15:36 +0100
-Message-ID: <20200718171536.5b5ac001@archlinux>
-References: <20200717165538.3275050-1-lee.jones@linaro.org>
-        <20200717165538.3275050-31-lee.jones@linaro.org>
-        <4422628.h3HLAr0T0d@diego>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+From: Alex Bee <knaerzche@gmail.com>
+Subject: [PATCH 4/5] drm: rockchip: set alpha_en to 0 if it is not used
+Date: Sat, 18 Jul 2020 22:03:22 +0200
+Message-ID: <20200718200323.3559-5-knaerzche@gmail.com>
+References: <20200718200323.3559-1-knaerzche@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <4422628.h3HLAr0T0d@diego>
+In-Reply-To: <20200718200323.3559-1-knaerzche@gmail.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-Cc: Lee Jones <lee.jones@linaro.org>, knaack.h@gmx.de, lars@metafoo.de, pmeerw@pmeerw.net, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>, linux-rockchip@lists.infradead.org
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner=20?= <heiko@sntech.de>
+Cc: Alex Bee <knaerzche@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 17 Jul 2020 21:10:27 +0200
-Heiko St=C3=BCbner <heiko@sntech.de> wrote:
+alpha_en should be set to 0 if it is not used, i.e. to disable alpha
+blending if it was enabled before and should be disabled now.
 
-> Am Freitag, 17. Juli 2020, 18:55:38 CEST schrieb Lee Jones:
-> > This is the only use of kerneldoc in the source file and no
-> > descriptions are provided.
-> >=20
-> > Fixes the following W=3D1 kernel build warning(s):
-> >=20
-> >  drivers/iio/adc/rockchip_saradc.c:190: warning: Function parameter or =
-member 'reset' not described in 'rockchip_saradc_reset_controller'
-> >=20
-> > Cc: Heiko Stuebner <heiko@sntech.de>
-> > Cc: Philipp Zabel <p.zabel@pengutronix.de>
-> > Cc: linux-rockchip@lists.infradead.org
-> > Signed-off-by: Lee Jones <lee.jones@linaro.org> =20
->=20
-> Subject-line says "Demote Demote..."
->=20
-> Otherwise
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Fixed up and applied.
+fixes: 2aae8ed1f390 ("drm/rockchip: Add per-pixel alpha support for the PX30 VOP")
 
-Thanks for whole set Lee.
+Signed-off-by: Alex Bee <knaerzche@gmail.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Jonathan
-
->=20
->=20
-> > ---
-> >  drivers/iio/adc/rockchip_saradc.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >=20
-> > diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockch=
-ip_saradc.c
-> > index 582ba047c4a67..cf4ec59c1dab0 100644
-> > --- a/drivers/iio/adc/rockchip_saradc.c
-> > +++ b/drivers/iio/adc/rockchip_saradc.c
-> > @@ -183,7 +183,7 @@ static const struct of_device_id rockchip_saradc_ma=
-tch[] =3D {
-> >  };
-> >  MODULE_DEVICE_TABLE(of, rockchip_saradc_match);
-> > =20
-> > -/**
-> > +/*
-> >   * Reset SARADC Controller.
-> >   */
-> >  static void rockchip_saradc_reset_controller(struct reset_control *res=
-et)
-> >  =20
->=20
->=20
->=20
->=20
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index c80f7d9fd13f..0f23144491e4 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -1013,6 +1013,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
+ 		VOP_WIN_SET(vop, win, alpha_en, 1);
+ 	} else {
+ 		VOP_WIN_SET(vop, win, src_alpha_ctl, SRC_ALPHA_EN(0));
++		VOP_WIN_SET(vop, win, alpha_en, 0);
+ 	}
+ 
+ 	VOP_WIN_SET(vop, win, enable, 1);
+-- 
+2.17.1
