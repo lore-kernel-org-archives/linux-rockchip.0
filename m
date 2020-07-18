@@ -1,455 +1,347 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v2 3/3] arm64: dts: rockchip: add rk3318 A95X Z2 board
-Date: Sat, 18 Jul 2020 12:53:43 +0200
-Message-ID: <20200718105343.5152-4-jbx6244@gmail.com>
-References: <20200718105343.5152-1-jbx6244@gmail.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200718105343.5152-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH 1/3] phy: Add Rockchip PCIe PHY driver
+Date: Sat, 18 Jul 2020 19:56:59 +0800
+Message-ID: <894b97b9-f30d-ad3f-71cd-d2b2e691e762@rock-chips.com>
+References: <20200709181103.89870-1-jagan@amarulasolutions.com>
+ <20200709181103.89870-2-jagan@amarulasolutions.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200709181103.89870-2-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3318 A95X Z2 boards are sold as TV box.
-No further documentation is given, but from the dts files
-extracted it seems that the rk3318 processor is simulair
-to the rk3328. This dts file contains only the basic nodes
-that have support in the mainline kernel.
 
-Features:
+On 2020/7/10 上午2:11, Jagan Teki wrote:
+> Add the Rockchip PCIe PHY driver as part of
+> Generic PHY framework.
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
 
-CPU: RK3318 Quad-Core Cortex-A53
-GPU: Mali-450
-RAM: 2/4GB DDR3
-ROM: EMMC 16/32/64GB
-HDMI: HDMI 2.0a for 4k@60Hz
-Ethernet: 10/100M standard RJ-45
-WiFi: 2.4G+5G WIFI, 802.11 b/g/n
-Bluetooth: 4.0
-1 x USB 3.0
-1 x USB 2.0
-1 x Micro SD card slot
-1 x SPDIF
-1 x AV
-1 x DC IN
-
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/Makefile           |   1 +
- arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts | 393 ++++++++++++++++++++++++
- 2 files changed, 394 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index b87b1f773..aa508bc4a 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -2,6 +2,7 @@
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-new file mode 100644
-index 000000000..413418ea1
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-@@ -0,0 +1,393 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+#include <dt-bindings/input/input.h>
-+#include "rk3328.dtsi"
-+
-+/ {
-+	model = "A95X Z2";
-+	compatible = "zkmagic,a95x-z2", "rockchip,rk3318";
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	adc-keys {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 0>;
-+		io-channel-names = "buttons";
-+		keyup-threshold-microvolt = <1800000>;
-+		poll-interval = <100>;
-+
-+		vol-up-key {
-+			label = "volume up";
-+			linux,code = <KEY_VOLUMEUP>;
-+			press-threshold-microvolt = <17000>;
-+		};
-+	};
-+
-+	ir-receiver {
-+		compatible = "gpio-ir-receiver";
-+		gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
-+		pinctrl-0 = <&ir_int>;
-+		pinctrl-names = "default";
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+		pinctrl-0 = <&cyx_led_pin>;
-+		pinctrl-names = "default";
-+
-+		cyx_led: led-0 {
-+			default-state = "on";
-+			gpios = <&gpio2 RK_PC7 GPIO_ACTIVE_LOW>;
-+			label = "CYX_LED";
-+		};
-+	};
-+
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		pinctrl-0 = <&wifi_enable_h>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
-+	};
-+
-+	spdif-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,name = "spdif";
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&spdif>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&spdif_out>;
-+		};
-+	};
-+
-+	spdif_out: spdif-out {
-+		compatible = "linux,spdif-dit";
-+		#sound-dai-cells = <0>;
-+	};
-+
-+	/* Power tree */
-+	regulators {
-+		compatible = "simple-mfd";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+
-+		vccio_1v8_reg: regulator@0 {
-+			compatible = "regulator-fixed";
-+			reg = <0>;
-+			regulator-name = "vccio_1v8";
-+			regulator-min-microvolt = <1800000>;
-+			regulator-max-microvolt = <1800000>;
-+			regulator-always-on;
-+		};
-+
-+		vccio_3v3_reg: regulator@1 {
-+			compatible = "regulator-fixed";
-+			reg = <1>;
-+			regulator-name = "vccio_3v3";
-+			regulator-min-microvolt = <3300000>;
-+			regulator-max-microvolt = <3300000>;
-+			regulator-always-on;
-+		};
-+	};
-+
-+	vcc_otg_vbus: otg-vbus-regulator {
-+		compatible = "regulator-fixed";
-+		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&otg_vbus_drv>;
-+		pinctrl-names = "default";
-+		regulator-name = "vcc_otg_vbus";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		enable-active-high;
-+	};
-+
-+	vcc_phy: vcc-phy-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_phy";
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+
-+	vcc_sd: sdmmc-regulator {
-+		compatible = "regulator-fixed";
-+		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
-+		pinctrl-0 = <&sdmmc0m1_gpio>;
-+		pinctrl-names = "default";
-+		regulator-name = "vcc_sd";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vccio_3v3_reg>;
-+	};
-+
-+	vdd_arm: vdd-arm {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm0 0 5000 1>;
-+		regulator-name = "vdd_arm";
-+		regulator-min-microvolt = <950000>;
-+		regulator-max-microvolt = <1400000>;
-+		regulator-settling-time-up-us = <250>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+
-+	vdd_log: vdd-log {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm1 0 5000 1>;
-+		regulator-name = "vdd_log";
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <1300000>;
-+		regulator-settling-time-up-us = <250>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+};
-+
-+&analog_sound {
-+	status = "okay";
-+};
-+
-+&codec {
-+	status = "okay";
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu0_opp_table {
-+	opp-1200000000 {
-+		status = "disabled";
-+	};
-+
-+	opp-1296000000 {
-+		status = "disabled";
-+	};
-+};
-+
-+&emmc {
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	non-removable;
-+	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
-+&gmac2phy {
-+	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
-+	assigned-clock-rate = <50000000>;
-+	assigned-clocks = <&cru SCLK_MAC2PHY>;
-+	clock_in_out = "output";
-+	phy-supply = <&vcc_phy>;
-+	status = "okay";
-+};
-+
-+&gpu {
-+	mali-supply = <&vdd_log>;
-+};
-+
-+&hdmi {
-+	ddc-i2c-scl-high-time-ns = <9625>;
-+	ddc-i2c-scl-low-time-ns = <10000>;
-+	status = "okay";
-+};
-+
-+&hdmiphy {
-+	status = "okay";
-+};
-+
-+&hdmi_sound {
-+	status = "okay";
-+};
-+
-+&i2s0 {
-+	status = "okay";
-+};
-+
-+&i2s1 {
-+	status = "okay";
-+};
-+
-+&io_domains {
-+	pmuio-supply = <&vccio_3v3_reg>;
-+	vccio1-supply = <&vccio_3v3_reg>;
-+	vccio2-supply = <&vccio_1v8_reg>;
-+	vccio3-supply = <&vccio_3v3_reg>;
-+	vccio4-supply = <&vccio_1v8_reg>;
-+	vccio5-supply = <&vccio_3v3_reg>;
-+	vccio6-supply = <&vccio_3v3_reg>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	ir {
-+		ir_int: ir-int {
-+			rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	leds {
-+		cyx_led_pin: cyx-led-pin {
-+			rockchip,pins = <2 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pwm0 {
-+		pwm0_pin_pull_up: pwm0-pin-pull-up {
-+			rockchip,pins = <2 RK_PA4 1 &pcfg_pull_up>;
-+		};
-+	};
-+
-+	pwm1 {
-+		pwm1_pin_pull_up: pwm1-pin-pull-up {
-+			rockchip,pins = <2 RK_PA5 1 &pcfg_pull_up>;
-+		};
-+	};
-+
-+	sdio-pwrseq {
-+		wifi_enable_h: wifi-enable-h {
-+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	sdmmc1 {
-+		clk_32k_out: clk-32k-out {
-+			rockchip,pins = <1 RK_PD4 1 &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb {
-+		host_vbus_drv: host-vbus-drv {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		otg_vbus_drv: otg-vbus-drv {
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pwm0 {
-+	pinctrl-0 = <&pwm0_pin_pull_up>;
-+	pinctrl-names = "active";
-+	status = "okay";
-+};
-+
-+&pwm1 {
-+	pinctrl-0 = <&pwm1_pin_pull_up>;
-+	pinctrl-names = "active";
-+	status = "okay";
-+};
-+
-+&saradc {
-+	vref-supply = <&vccio_1v8_reg>;
-+	status = "okay";
-+};
-+
-+&sdio {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	keep-power-in-suspend;
-+	max-frequency = <125000000>;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk &clk_32k_out>;
-+	pinctrl-names = "default";
-+	sd-uhs-sdr104;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	disable-wp;
-+	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
-+	pinctrl-names = "default";
-+	vmmc-supply = <&vcc_sd>;
-+	status = "okay";
-+};
-+
-+&spdif {
-+	pinctrl-0 = <&spdifm0_tx>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
-+&soc_crit {
-+	temperature = <115000>; /* millicelsius */
-+};
-+
-+&target {
-+	temperature = <105000>; /* millicelsius */
-+};
-+
-+&threshold {
-+	temperature = <90000>; /* millicelsius */
-+};
-+
-+&tsadc {
-+	rockchip,hw-tshut-temp = <120000>;
-+	status = "okay";
-+};
-+
-+&u2phy {
-+	status = "okay";
-+
-+	u2phy_host: host-port {
-+		status = "okay";
-+	};
-+
-+	u2phy_otg: otg-port {
-+		phy-supply = <&vcc_otg_vbus>;
-+		status = "okay";
-+	};
-+};
-+
-+&uart0 {
-+	pinctrl-0 = <&uart0_xfer &uart0_cts>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&usb20_otg {
-+	dr_mode = "host";
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
--- 
-2.11.0
+Thanks,
+- Kever
+> ---
+>   drivers/phy/rockchip/Kconfig             |   7 +
+>   drivers/phy/rockchip/Makefile            |   1 +
+>   drivers/phy/rockchip/phy-rockchip-pcie.c | 271 +++++++++++++++++++++++
+>   3 files changed, 279 insertions(+)
+>   create mode 100644 drivers/phy/rockchip/phy-rockchip-pcie.c
+>
+> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
+> index 84cc7c876d..2318e71f35 100644
+> --- a/drivers/phy/rockchip/Kconfig
+> +++ b/drivers/phy/rockchip/Kconfig
+> @@ -11,6 +11,13 @@ config PHY_ROCKCHIP_INNO_USB2
+>   	help
+>   	  Support for Rockchip USB2.0 PHY with Innosilicon IP block.
+>   
+> +config PHY_ROCKCHIP_PCIE
+> +	bool "Rockchip PCIe PHY Driver"
+> +	depends on ARCH_ROCKCHIP
+> +	select PHY
+> +	help
+> +	  Enable this to support the Rockchip PCIe PHY.
+> +
+>   config PHY_ROCKCHIP_TYPEC
+>   	bool "Rockchip TYPEC PHY Driver"
+>   	depends on ARCH_ROCKCHIP
+> diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
+> index 95b2f8a3c0..44049154f9 100644
+> --- a/drivers/phy/rockchip/Makefile
+> +++ b/drivers/phy/rockchip/Makefile
+> @@ -4,4 +4,5 @@
+>   #
+>   
+>   obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
+> +obj-$(CONFIG_PHY_ROCKCHIP_PCIE)		+= phy-rockchip-pcie.o
+>   obj-$(CONFIG_PHY_ROCKCHIP_TYPEC)	+= phy-rockchip-typec.o
+> diff --git a/drivers/phy/rockchip/phy-rockchip-pcie.c b/drivers/phy/rockchip/phy-rockchip-pcie.c
+> new file mode 100644
+> index 0000000000..83928cffe0
+> --- /dev/null
+> +++ b/drivers/phy/rockchip/phy-rockchip-pcie.c
+> @@ -0,0 +1,271 @@
+> +// SPDX-License-Identifier: (GPL-2.0-only)
+> +/*
+> + * Rockchip PCIe PHY driver
+> + *
+> + * Copyright (C) 2020 Amarula Solutions(India)
+> + * Copyright (C) 2016 Shawn Lin <shawn.lin@rock-chips.com>
+> + * Copyright (C) 2016 ROCKCHIP, Inc.
+> + */
+> +
+> +#include <common.h>
+> +#include <clk.h>
+> +#include <dm.h>
+> +#include <dm/device_compat.h>
+> +#include <generic-phy.h>
+> +#include <reset.h>
+> +#include <syscon.h>
+> +#include <asm/gpio.h>
+> +#include <asm/io.h>
+> +#include <linux/iopoll.h>
+> +#include <asm/arch-rockchip/clock.h>
+> +
+> +DECLARE_GLOBAL_DATA_PTR;
+> +
+> +/*
+> + * The higher 16-bit of this register is used for write protection
+> + * only if BIT(x + 16) set to 1 the BIT(x) can be written.
+> + */
+> +#define HIWORD_UPDATE(val, mask, shift) \
+> +		((val) << (shift) | (mask) << ((shift) + 16))
+> +
+> +#define PHY_MAX_LANE_NUM      4
+> +#define PHY_CFG_DATA_SHIFT    7
+> +#define PHY_CFG_ADDR_SHIFT    1
+> +#define PHY_CFG_DATA_MASK     0xf
+> +#define PHY_CFG_ADDR_MASK     0x3f
+> +#define PHY_CFG_RD_MASK       0x3ff
+> +#define PHY_CFG_WR_ENABLE     1
+> +#define PHY_CFG_WR_DISABLE    1
+> +#define PHY_CFG_WR_SHIFT      0
+> +#define PHY_CFG_WR_MASK       1
+> +#define PHY_CFG_PLL_LOCK      0x10
+> +#define PHY_CFG_CLK_TEST      0x10
+> +#define PHY_CFG_CLK_SCC       0x12
+> +#define PHY_CFG_SEPE_RATE     BIT(3)
+> +#define PHY_CFG_PLL_100M      BIT(3)
+> +#define PHY_PLL_LOCKED        BIT(9)
+> +#define PHY_PLL_OUTPUT        BIT(10)
+> +#define PHY_LANE_RX_DET_SHIFT 11
+> +#define PHY_LANE_RX_DET_TH    0x1
+> +#define PHY_LANE_IDLE_OFF     0x1
+> +#define PHY_LANE_IDLE_MASK    0x1
+> +#define PHY_LANE_IDLE_A_SHIFT 3
+> +#define PHY_LANE_IDLE_B_SHIFT 4
+> +#define PHY_LANE_IDLE_C_SHIFT 5
+> +#define PHY_LANE_IDLE_D_SHIFT 6
+> +
+> +struct rockchip_pcie_phy_data {
+> +	unsigned int pcie_conf;
+> +	unsigned int pcie_status;
+> +	unsigned int pcie_laneoff;
+> +};
+> +
+> +struct rockchip_pcie_phy {
+> +	void *reg_base;
+> +	struct clk refclk;
+> +	struct reset_ctl phy_rst;
+> +	const struct rockchip_pcie_phy_data *data;
+> +};
+> +
+> +static void phy_wr_cfg(struct rockchip_pcie_phy *priv, u32 addr, u32 data)
+> +{
+> +	u32 reg;
+> +
+> +	reg = HIWORD_UPDATE(data, PHY_CFG_DATA_MASK, PHY_CFG_DATA_SHIFT);
+> +	reg |= HIWORD_UPDATE(addr, PHY_CFG_ADDR_MASK, PHY_CFG_ADDR_SHIFT);
+> +	writel(reg, priv->reg_base + priv->data->pcie_conf);
+> +
+> +	udelay(1);
+> +
+> +	reg = HIWORD_UPDATE(PHY_CFG_WR_ENABLE,
+> +			    PHY_CFG_WR_MASK,
+> +			    PHY_CFG_WR_SHIFT);
+> +	writel(reg, priv->reg_base + priv->data->pcie_conf);
+> +
+> +	udelay(1);
+> +
+> +	reg = HIWORD_UPDATE(PHY_CFG_WR_DISABLE,
+> +			    PHY_CFG_WR_MASK,
+> +			    PHY_CFG_WR_SHIFT);
+> +	writel(reg, priv->reg_base + priv->data->pcie_conf);
+> +}
+> +
+> +static int rockchip_pcie_phy_power_on(struct phy *phy)
+> +{
+> +	struct rockchip_pcie_phy *priv = dev_get_priv(phy->dev);
+> +	int ret = 0;
+> +	u32 reg, status;
+> +
+> +	ret = reset_deassert(&priv->phy_rst);
+> +	if (ret) {
+> +		dev_err(dev, "failed to assert phy reset\n");
+> +		return ret;
+> +	}
+> +
+> +	reg = HIWORD_UPDATE(PHY_CFG_PLL_LOCK,
+> +			    PHY_CFG_ADDR_MASK,
+> +			    PHY_CFG_ADDR_SHIFT);
+> +	writel(reg, priv->reg_base + priv->data->pcie_conf);
+> +
+> +	reg = HIWORD_UPDATE(!PHY_LANE_IDLE_OFF,
+> +			    PHY_LANE_IDLE_MASK,
+> +			    PHY_LANE_IDLE_A_SHIFT);
+> +	writel(reg, priv->reg_base + priv->data->pcie_laneoff);
+> +
+> +	ret = -EINVAL;
+> +	ret = readl_poll_sleep_timeout(priv->reg_base + priv->data->pcie_status,
+> +				       status,
+> +				       status & PHY_PLL_LOCKED,
+> +				       20 * 1000,
+> +				       50);
+> +	if (ret) {
+> +		dev_err(&priv->dev, "pll lock timeout!\n");
+> +		goto err_pll_lock;
+> +	}
+> +
+> +	phy_wr_cfg(priv, PHY_CFG_CLK_TEST, PHY_CFG_SEPE_RATE);
+> +	phy_wr_cfg(priv, PHY_CFG_CLK_SCC, PHY_CFG_PLL_100M);
+> +
+> +	ret = -ETIMEDOUT;
+> +	ret = readl_poll_sleep_timeout(priv->reg_base + priv->data->pcie_status,
+> +				       status,
+> +				       !(status & PHY_PLL_OUTPUT),
+> +				       20 * 1000,
+> +				       50);
+> +	if (ret) {
+> +		dev_err(&priv->dev, "pll output enable timeout!\n");
+> +		goto err_pll_lock;
+> +	}
+> +
+> +	reg = HIWORD_UPDATE(PHY_CFG_PLL_LOCK,
+> +			    PHY_CFG_ADDR_MASK,
+> +			    PHY_CFG_ADDR_SHIFT);
+> +	writel(reg, priv->reg_base + priv->data->pcie_conf);
+> +
+> +	ret = -EINVAL;
+> +	ret = readl_poll_sleep_timeout(priv->reg_base + priv->data->pcie_status,
+> +				       status,
+> +				       status & PHY_PLL_LOCKED,
+> +				       20 * 1000,
+> +				       50);
+> +	if (ret) {
+> +		dev_err(&priv->dev, "pll relock timeout!\n");
+> +		goto err_pll_lock;
+> +	}
+> +
+> +	return 0;
+> +
+> +err_pll_lock:
+> +	reset_assert(&priv->phy_rst);
+> +	return ret;
+> +}
+> +
+> +static int rockchip_pcie_phy_power_off(struct phy *phy)
+> +{
+> +	struct rockchip_pcie_phy *priv = dev_get_priv(phy->dev);
+> +	int ret;
+> +	u32 reg;
+> +
+> +	reg = HIWORD_UPDATE(PHY_LANE_IDLE_OFF,
+> +			    PHY_LANE_IDLE_MASK,
+> +			    PHY_LANE_IDLE_A_SHIFT);
+> +	writel(reg, priv->reg_base + priv->data->pcie_laneoff);
+> +
+> +	ret = reset_assert(&priv->phy_rst);
+> +	if (ret) {
+> +		dev_err(dev, "failed to assert phy reset\n");
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int rockchip_pcie_phy_init(struct phy *phy)
+> +{
+> +	struct rockchip_pcie_phy *priv = dev_get_priv(phy->dev);
+> +	int ret;
+> +
+> +	ret = clk_enable(&priv->refclk);
+> +	if (ret) {
+> +		dev_err(dev, "failed to enable refclk clock\n");
+> +		return ret;
+> +	}
+> +
+> +	ret = reset_assert(&priv->phy_rst);
+> +	if (ret) {
+> +		dev_err(dev, "failed to assert phy reset\n");
+> +		goto err_reset;
+> +	}
+> +
+> +	return 0;
+> +
+> +err_reset:
+> +	clk_disable(&priv->refclk);
+> +	return ret;
+> +}
+> +
+> +static int rockchip_pcie_phy_exit(struct phy *phy)
+> +{
+> +	struct rockchip_pcie_phy *priv = dev_get_priv(phy->dev);
+> +
+> +	clk_disable(&priv->refclk);
+> +
+> +	return 0;
+> +}
+> +
+> +static struct phy_ops rockchip_pcie_phy_ops = {
+> +	.init = rockchip_pcie_phy_init,
+> +	.power_on = rockchip_pcie_phy_power_on,
+> +	.power_off = rockchip_pcie_phy_power_off,
+> +	.exit = rockchip_pcie_phy_exit,
+> +};
+> +
+> +static int rockchip_pcie_phy_probe(struct udevice *dev)
+> +{
+> +	struct rockchip_pcie_phy *priv = dev_get_priv(dev);
+> +	int ret;
+> +
+> +	priv->data = (const struct rockchip_pcie_phy_data *)
+> +						dev_get_driver_data(dev);
+> +	if (!priv->data)
+> +		return -EINVAL;
+> +
+> +	priv->reg_base = syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
+> +
+> +	ret = clk_get_by_name(dev, "refclk", &priv->refclk);
+> +	if (ret) {
+> +		dev_err(dev, "failed to get refclk clock phandle\n");
+> +		return ret;
+> +	}
+> +
+> +	ret = reset_get_by_name(dev, "phy", &priv->phy_rst);
+> +	if (ret) {
+> +		dev_err(dev, "failed to get phy reset phandle\n");
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct rockchip_pcie_phy_data rk3399_pcie_data = {
+> +	.pcie_conf = 0xe220,
+> +	.pcie_status = 0xe2a4,
+> +	.pcie_laneoff = 0xe214,
+> +};
+> +
+> +static const struct udevice_id rockchip_pcie_phy_ids[] = {
+> +	{
+> +		.compatible = "rockchip,rk3399-pcie-phy",
+> +		.data = (ulong)&rk3399_pcie_data,
+> +	},
+> +	{ /* sentile */ }
+> +};
+> +
+> +U_BOOT_DRIVER(rockchip_pcie_phy) = {
+> +	.name	= "rockchip_pcie_phy",
+> +	.id	= UCLASS_PHY,
+> +	.of_match = rockchip_pcie_phy_ids,
+> +	.ops = &rockchip_pcie_phy_ops,
+> +	.probe = rockchip_pcie_phy_probe,
+> +	.priv_auto_alloc_size = sizeof(struct rockchip_pcie_phy),
+> +};
