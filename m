@@ -1,15 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 2/3] ram: rk3399: Mark existing prints via
- RAM_ROCKCHIP_DEBUG
-Date: Sat, 18 Jul 2020 20:15:30 +0800
-Message-ID: <4db4fbf6-85ae-0805-53b5-75569a05ae0d@rock-chips.com>
+Subject: Re: [PATCH 3/3] roc-rk3399-pc: Disable RAM_ROCKCHIP_DEBUG
+Date: Sat, 18 Jul 2020 20:15:53 +0800
+Message-ID: <ebb4ddef-d06d-2aa6-b894-79fbe257bd48@rock-chips.com>
 References: <20200713200635.651032-1-jagan@amarulasolutions.com>
- <20200713200635.651032-2-jagan@amarulasolutions.com>
+ <20200713200635.651032-3-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200713200635.651032-2-jagan@amarulasolutions.com>
+In-Reply-To: <20200713200635.651032-3-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -26,14 +25,9 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 On 2020/7/14 上午4:06, Jagan Teki wrote:
-> Right now all these debug statements are printing on the
-> console to make sure proper dram initialization happens.
->
-> Mark them into RAM_ROCKCHIP_DEBUG would be more meaningful
-> and work like before since the RAM_ROCKCHIP_DEBUG is by
-> default yet.
->
-> No functionality changes.
+> Disable ram rockchip debug driver for roc-rk3399-pc
+> boards since we have verified ram in many instances
+> with respective U-Boot versions.
 >
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
@@ -41,36 +35,31 @@ Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
 Thanks,
 - Kever
 > ---
->   drivers/ram/rockchip/sdram_rk3399.c | 12 ++++++++----
->   1 file changed, 8 insertions(+), 4 deletions(-)
+>   configs/roc-pc-mezzanine-rk3399_defconfig | 1 +
+>   configs/roc-pc-rk3399_defconfig           | 1 +
+>   2 files changed, 2 insertions(+)
 >
-> diff --git a/drivers/ram/rockchip/sdram_rk3399.c b/drivers/ram/rockchip/sdram_rk3399.c
-> index d2f3fde236..670925420d 100644
-> --- a/drivers/ram/rockchip/sdram_rk3399.c
-> +++ b/drivers/ram/rockchip/sdram_rk3399.c
-> @@ -2551,8 +2551,10 @@ static int lpddr4_set_rate(struct dram_info *dram,
->   		lpddr4_set_ctl(dram, params, ctl_fn,
->   			       dfs_cfgs_lpddr4[ctl_fn].base.ddr_freq);
->   
-> -		printf("%s: change freq to %d mhz %d, %d\n", __func__,
-> -		       dfs_cfgs_lpddr4[ctl_fn].base.ddr_freq, ctl_fn, phy_fn);
-> +		if (IS_ENABLED(CONFIG_RAM_ROCKCHIP_DEBUG))
-> +			printf("%s: change freq to %d mhz %d, %d\n", __func__,
-> +			       dfs_cfgs_lpddr4[ctl_fn].base.ddr_freq,
-> +			       ctl_fn, phy_fn);
->   	}
->   
->   	return 0;
-> @@ -2966,8 +2968,10 @@ static int sdram_init(struct dram_info *dram,
->   			params->base.num_channels++;
->   		}
->   
-> -		printf("Channel ");
-> -		printf(channel ? "1: " : "0: ");
-> +		if (IS_ENABLED(CONFIG_RAM_ROCKCHIP_DEBUG)) {
-> +			printf("Channel ");
-> +			printf(channel ? "1: " : "0: ");
-> +		}
->   
->   		if (channel == 0)
->   			set_ddr_stride(dram->pmusgrf, 0x17);
+> diff --git a/configs/roc-pc-mezzanine-rk3399_defconfig b/configs/roc-pc-mezzanine-rk3399_defconfig
+> index f15dddc684..c87a8568fc 100644
+> --- a/configs/roc-pc-mezzanine-rk3399_defconfig
+> +++ b/configs/roc-pc-mezzanine-rk3399_defconfig
+> @@ -53,6 +53,7 @@ CONFIG_PMIC_RK8XX=y
+>   CONFIG_REGULATOR_PWM=y
+>   CONFIG_REGULATOR_RK8XX=y
+>   CONFIG_PWM_ROCKCHIP=y
+> +# CONFIG_RAM_ROCKCHIP_DEBUG is not set
+>   CONFIG_RAM_RK3399_LPDDR4=y
+>   CONFIG_DM_RESET=y
+>   CONFIG_BAUDRATE=1500000
+> diff --git a/configs/roc-pc-rk3399_defconfig b/configs/roc-pc-rk3399_defconfig
+> index 9ffde7f960..601f5c6ae1 100644
+> --- a/configs/roc-pc-rk3399_defconfig
+> +++ b/configs/roc-pc-rk3399_defconfig
+> @@ -50,6 +50,7 @@ CONFIG_PMIC_RK8XX=y
+>   CONFIG_REGULATOR_PWM=y
+>   CONFIG_REGULATOR_RK8XX=y
+>   CONFIG_PWM_ROCKCHIP=y
+> +# CONFIG_RAM_ROCKCHIP_DEBUG is not set
+>   CONFIG_RAM_RK3399_LPDDR4=y
+>   CONFIG_DM_RESET=y
+>   CONFIG_BAUDRATE=1500000
