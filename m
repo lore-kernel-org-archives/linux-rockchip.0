@@ -1,14 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 3/3] pci: rockchip: Drop legacy PHY driver
-Date: Sat, 18 Jul 2020 20:00:33 +0800
-Message-ID: <9d4ca7ef-fe34-600c-2daa-15e2e7f3a964@rock-chips.com>
-References: <20200709181103.89870-1-jagan@amarulasolutions.com>
- <20200709181103.89870-4-jagan@amarulasolutions.com>
+Subject: Re: [PATCH v4 3/4] rtc: rk8xx: Add base support for the RK808 PMIC RTC
+Date: Sat, 18 Jul 2020 20:11:37 +0800
+Message-ID: <10af1b1e-489a-67a4-859c-3d02decd990b@rock-chips.com>
+References: <20200710155057.310168-1-jagan@amarulasolutions.com>
+ <20200710155057.310168-4-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200709181103.89870-4-jagan@amarulasolutions.com>
+In-Reply-To: <20200710155057.310168-4-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -19,495 +19,249 @@ List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=subscribe>
 Errors-To: u-boot-bounces@lists.denx.de
 Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, Shawn Lin <shawn.lin@rock-chips.com>
+To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+Hi Jagan,
 
-On 2020/7/10 上午2:11, Jagan Teki wrote:
-> Drop the legacy PHY driver and it's associated code since
-> the PHY handling driver now part of Generic PHY framework.
+On 2020/7/10 下午11:50, Jagan Teki wrote:
+> From: Suniel Mahesh <sunil@amarulasolutions.com>
+>
+> Rockchip RK808 PMIC provides an integrated RTC module. It is
+> commonly used with Rockchip SoCs. Add basic support to access
+> date and time.
 >
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
+> ---
+> Change for v4:
+> - rebase
+> - style fixes
+> - warning fixes
+
+
+Seems like the change request by Elaine in previous version does not 
+update ?
+
 
 Thanks,
+
 - Kever
 
-> ---
->   drivers/pci/Makefile            |   2 +-
->   drivers/pci/pcie_rockchip.c     |  75 +++++++++++-
->   drivers/pci/pcie_rockchip.h     | 146 -----------------------
->   drivers/pci/pcie_rockchip_phy.c | 205 --------------------------------
->   4 files changed, 74 insertions(+), 354 deletions(-)
->   delete mode 100644 drivers/pci/pcie_rockchip.h
->   delete mode 100644 drivers/pci/pcie_rockchip_phy.c
 >
-> diff --git a/drivers/pci/Makefile b/drivers/pci/Makefile
-> index 955351c5c2..493e9354dd 100644
-> --- a/drivers/pci/Makefile
-> +++ b/drivers/pci/Makefile
-> @@ -43,4 +43,4 @@ obj-$(CONFIG_PCI_PHYTIUM) += pcie_phytium.o
->   obj-$(CONFIG_PCIE_INTEL_FPGA) += pcie_intel_fpga.o
->   obj-$(CONFIG_PCI_KEYSTONE) += pcie_dw_ti.o
->   obj-$(CONFIG_PCIE_MEDIATEK) += pcie_mediatek.o
-> -obj-$(CONFIG_PCIE_ROCKCHIP) += pcie_rockchip.o pcie_rockchip_phy.o
-> +obj-$(CONFIG_PCIE_ROCKCHIP) += pcie_rockchip.o
-> diff --git a/drivers/pci/pcie_rockchip.c b/drivers/pci/pcie_rockchip.c
-> index ce573aa4b4..04609f1296 100644
-> --- a/drivers/pci/pcie_rockchip.c
-> +++ b/drivers/pci/pcie_rockchip.c
-> @@ -15,6 +15,7 @@
->   #include <clk.h>
->   #include <dm.h>
->   #include <dm/device_compat.h>
-> +#include <generic-phy.h>
->   #include <pci.h>
->   #include <power-domain.h>
->   #include <power/regulator.h>
-> @@ -25,10 +26,80 @@
->   #include <asm/arch-rockchip/clock.h>
->   #include <linux/iopoll.h>
+>   drivers/rtc/Kconfig     |   8 ++
+>   drivers/rtc/Makefile    |   1 +
+>   drivers/rtc/rk808-rtc.c | 173 ++++++++++++++++++++++++++++++++++++++++
+>   3 files changed, 182 insertions(+)
+>   create mode 100644 drivers/rtc/rk808-rtc.c
+>
+> diff --git a/drivers/rtc/Kconfig b/drivers/rtc/Kconfig
+> index 59e2fc44ba..a754d1b4f1 100644
+> --- a/drivers/rtc/Kconfig
+> +++ b/drivers/rtc/Kconfig
+> @@ -75,6 +75,14 @@ config RTC_ISL1208
+>   	  This driver supports reading and writing the RTC/calendar and detects
+>   	  total power failures.
 >   
-> -#include "pcie_rockchip.h"
-> -
->   DECLARE_GLOBAL_DATA_PTR;
->   
-> +#define HIWORD_UPDATE(mask, val)        (((mask) << 16) | (val))
-> +#define HIWORD_UPDATE_BIT(val)          HIWORD_UPDATE(val, val)
+> +config RTC_RK808
+> +	bool "Enable Rockchip RK8XX RTC driver"
+> +        depends on DM_RTC && PMIC_RK8XX
+> +	default y
+> +	help
+> +	  Basic support for Rockchip RK808 PMIC Real Time Clock devices for
+> +	  time and date.
 > +
-> +#define ENCODE_LANES(x)                 ((((x) >> 1) & 3) << 4)
-> +#define PCIE_CLIENT_BASE                0x0
-> +#define PCIE_CLIENT_CONFIG              (PCIE_CLIENT_BASE + 0x00)
-> +#define PCIE_CLIENT_CONF_ENABLE         HIWORD_UPDATE_BIT(0x0001)
-> +#define PCIE_CLIENT_LINK_TRAIN_ENABLE   HIWORD_UPDATE_BIT(0x0002)
-> +#define PCIE_CLIENT_MODE_RC             HIWORD_UPDATE_BIT(0x0040)
-> +#define PCIE_CLIENT_GEN_SEL_1           HIWORD_UPDATE(0x0080, 0)
-> +#define PCIE_CLIENT_BASIC_STATUS1	0x0048
-> +#define PCIE_CLIENT_LINK_STATUS_UP	GENMASK(21, 20)
-> +#define PCIE_CLIENT_LINK_STATUS_MASK	GENMASK(21, 20)
-> +#define PCIE_LINK_UP(x) \
-> +	(((x) & PCIE_CLIENT_LINK_STATUS_MASK) == PCIE_CLIENT_LINK_STATUS_UP)
-> +#define PCIE_RC_NORMAL_BASE		0x800000
-> +#define PCIE_LM_BASE			0x900000
-> +#define PCIE_LM_VENDOR_ID              (PCIE_LM_BASE + 0x44)
-> +#define PCIE_LM_VENDOR_ROCKCHIP		0x1d87
-> +#define PCIE_LM_RCBAR			(PCIE_LM_BASE + 0x300)
-> +#define PCIE_LM_RCBARPIE		BIT(19)
-> +#define PCIE_LM_RCBARPIS		BIT(20)
-> +#define PCIE_RC_BASE			0xa00000
-> +#define PCIE_RC_CONFIG_DCR		(PCIE_RC_BASE + 0x0c4)
-> +#define PCIE_RC_CONFIG_DCR_CSPL_SHIFT	18
-> +#define PCIE_RC_CONFIG_DCR_CPLS_SHIFT	26
-> +#define PCIE_RC_PCIE_LCAP		(PCIE_RC_BASE + 0x0cc)
-> +#define PCIE_RC_PCIE_LCAP_APMS_L0S	BIT(10)
-> +#define PCIE_ATR_BASE			0xc00000
-> +#define PCIE_ATR_OB_ADDR0(i)		(PCIE_ATR_BASE + 0x000 + (i) * 0x20)
-> +#define PCIE_ATR_OB_ADDR1(i)		(PCIE_ATR_BASE + 0x004 + (i) * 0x20)
-> +#define PCIE_ATR_OB_DESC0(i)		(PCIE_ATR_BASE + 0x008 + (i) * 0x20)
-> +#define PCIE_ATR_OB_DESC1(i)		(PCIE_ATR_BASE + 0x00c + (i) * 0x20)
-> +#define PCIE_ATR_IB_ADDR0(i)		(PCIE_ATR_BASE + 0x800 + (i) * 0x8)
-> +#define PCIE_ATR_IB_ADDR1(i)		(PCIE_ATR_BASE + 0x804 + (i) * 0x8)
-> +#define PCIE_ATR_HDR_MEM		0x2
-> +#define PCIE_ATR_HDR_IO			0x6
-> +#define PCIE_ATR_HDR_CFG_TYPE0		0xa
-> +#define PCIE_ATR_HDR_CFG_TYPE1		0xb
-> +#define PCIE_ATR_HDR_RID		BIT(23)
+>   config RTC_RV3029
+>   	bool "Enable RV3029 driver"
+>   	depends on DM_RTC
+> diff --git a/drivers/rtc/Makefile b/drivers/rtc/Makefile
+> index 12eb449583..63e2c3413d 100644
+> --- a/drivers/rtc/Makefile
+> +++ b/drivers/rtc/Makefile
+> @@ -44,6 +44,7 @@ obj-$(CONFIG_RTC_PCF8563) += pcf8563.o
+>   obj-$(CONFIG_RTC_PCF2127) += pcf2127.o
+>   obj-$(CONFIG_RTC_PL031) += pl031.o
+>   obj-$(CONFIG_RTC_PT7C4338) += pt7c4338.o
+> +obj-$(CONFIG_RTC_RK808) += rk808-rtc.o
+>   obj-$(CONFIG_RTC_RS5C372A) += rs5c372.o
+>   obj-$(CONFIG_RTC_RV3029) += rv3029.o
+>   obj-$(CONFIG_RTC_RV8803) += rv8803.o
+> diff --git a/drivers/rtc/rk808-rtc.c b/drivers/rtc/rk808-rtc.c
+> new file mode 100644
+> index 0000000000..50cca4dd4b
+> --- /dev/null
+> +++ b/drivers/rtc/rk808-rtc.c
+> @@ -0,0 +1,173 @@
+> +// SPDX-License-Identifier: GPL-2.0+
+> +/*
+> + * RTC driver for Rockchip RK808 PMIC.
+> + *
+> + * Copyright (C) 2020 Amarula Solutions(India).
+> + * Suniel Mahesh <sunil@amarulasolutions.com>
+> + *
+> + * Based on code from Linux kernel:
+> + * Copyright (c) 2014, Fuzhou Rockchip Electronics Co., Ltd
+> + * Author: Chris Zhong <zyw@rock-chips.com>
+> + * Author: Zhang Qing <zhangqing@rock-chips.com>
+> + *
+> + * Date & Time support (no alarms and interrupts)
+> + */
 > +
-> +#define PCIE_ATR_OB_REGION0_SIZE	(32 * 1024 * 1024)
-> +#define PCIE_ATR_OB_REGION_SIZE		(1 * 1024 * 1024)
+> +#include <command.h>
+> +#include <common.h>
+> +#include <dm.h>
+> +#include <i2c.h>
+> +#include <rtc.h>
+> +#include <power/rk8xx_pmic.h>
+> +#include <power/pmic.h>
+> +#include <linux/bitops.h>
+> +#include <linux/compat.h>
 > +
-> +struct rockchip_pcie {
-> +	fdt_addr_t axi_base;
-> +	fdt_addr_t apb_base;
-> +	int first_busno;
-> +	struct udevice *dev;
+> +/* RTC_CTRL_REG bitfields */
+> +#define BIT_RTC_CTRL_REG_STOP_RTC_M		BIT(0)
 > +
-> +	/* resets */
-> +	struct reset_ctl core_rst;
-> +	struct reset_ctl mgmt_rst;
-> +	struct reset_ctl mgmt_sticky_rst;
-> +	struct reset_ctl pipe_rst;
-> +	struct reset_ctl pm_rst;
-> +	struct reset_ctl pclk_rst;
-> +	struct reset_ctl aclk_rst;
+> +/* RK808 has a shadowed register for saving a "frozen" RTC time.
+> + * When user setting "GET_TIME" to 1, the time will save in this shadowed
+> + * register. If set "READSEL" to 1, user read rtc time register, actually
+> + * get the time of that moment. If we need the real time, clr this bit.
+> + */
 > +
-> +	/* gpio */
-> +	struct gpio_desc ep_gpio;
+> +#define BIT_RTC_CTRL_REG_RTC_GET_TIME		BIT(6)
+> +#define BIT_RTC_CTRL_REG_RTC_READSEL_M		BIT(7)
+> +#define RTC_STATUS_MASK				0xFE
 > +
-> +	/* vpcie regulators */
-> +	struct udevice *vpcie12v;
-> +	struct udevice *vpcie3v3;
-> +	struct udevice *vpcie1v8;
-> +	struct udevice *vpcie0v9;
+> +#define SECONDS_REG_MSK				0x7F
+> +#define MINUTES_REG_MAK				0x7F
+> +#define HOURS_REG_MSK				0x3F
+> +#define DAYS_REG_MSK				0x3F
+> +#define MONTHS_REG_MSK				0x1F
+> +#define YEARS_REG_MSK				0xFF
+> +#define WEEKS_REG_MSK				0x7
 > +
-> +	/* phy */
-> +	struct phy pcie_phy;
+> +/* REG_SECONDS_REG through REG_YEARS_REG is how many registers? */
+> +
+> +#define NUM_TIME_REGS	(REG_WEEKS - REG_SECONDS + 1)
+> +
+> +static int rk808_rtc_set(struct udevice *dev, const struct rtc_time *tm)
+> +{
+> +	u8 rtc_data[NUM_TIME_REGS];
+> +
+> +	debug("RTC date/time %4d-%02d-%02d(%d) %02d:%02d:%02d\n",
+> +	      tm->tm_year, tm->tm_mon, tm->tm_mday,
+> +	      tm->tm_wday, tm->tm_hour, tm->tm_min, tm->tm_sec);
+> +
+> +	rtc_data[0] = bin2bcd(tm->tm_sec);
+> +	rtc_data[1] = bin2bcd(tm->tm_min);
+> +	rtc_data[2] = bin2bcd(tm->tm_hour);
+> +	rtc_data[3] = bin2bcd(tm->tm_mday);
+> +	rtc_data[4] = bin2bcd(tm->tm_mon);
+> +	rtc_data[5] = bin2bcd(tm->tm_year - 2000);
+> +	rtc_data[6] = bin2bcd(tm->tm_wday);
+> +
+> +	/* Stop RTC while updating the RTC registers */
+> +	pmic_clrsetbits(dev->parent, REG_RTC_CTRL, 0,
+> +			BIT_RTC_CTRL_REG_STOP_RTC_M);
+> +	pmic_write(dev->parent, REG_SECONDS, rtc_data, NUM_TIME_REGS);
+> +
+> +	/* Start RTC again */
+> +	pmic_clrsetbits(dev->parent, REG_RTC_CTRL,
+> +			BIT_RTC_CTRL_REG_STOP_RTC_M, 0);
+> +
+> +	return 0;
+> +}
+> +
+> +static int rk808_rtc_get(struct udevice *dev, struct rtc_time *tm)
+> +{
+> +	u8 rtc_data[NUM_TIME_REGS];
+> +
+> +	/* Force an update of the shadowed registers right now */
+> +	pmic_clrsetbits(dev->parent, REG_RTC_CTRL, 0,
+> +			BIT_RTC_CTRL_REG_RTC_GET_TIME);
+> +
+> +	/*
+> +	 * After we set the GET_TIME bit, the rtc time can't be read
+> +	 * immediately. So we should wait up to 31.25 us, about one cycle of
+> +	 * 32khz. If we clear the GET_TIME bit here, the time of i2c transfer
+> +	 * certainly more than 31.25us: 16 * 2.5us at 400kHz bus frequency.
+> +	 */
+> +	pmic_clrsetbits(dev->parent, REG_RTC_CTRL,
+> +			BIT_RTC_CTRL_REG_RTC_GET_TIME, 0);
+> +	pmic_read(dev->parent, REG_SECONDS, rtc_data, NUM_TIME_REGS);
+> +
+> +	tm->tm_sec = bcd2bin(rtc_data[0] & SECONDS_REG_MSK);
+> +	tm->tm_min = bcd2bin(rtc_data[1] & MINUTES_REG_MAK);
+> +	tm->tm_hour = bcd2bin(rtc_data[2] & HOURS_REG_MSK);
+> +	tm->tm_mday = bcd2bin(rtc_data[3] & DAYS_REG_MSK);
+> +	tm->tm_mon = (bcd2bin(rtc_data[4] & MONTHS_REG_MSK));
+> +	tm->tm_year = (bcd2bin(rtc_data[5] & YEARS_REG_MSK)) + 2000;
+> +	tm->tm_wday = bcd2bin(rtc_data[6] & WEEKS_REG_MSK);
+> +
+> +	/*
+> +	 * RK808 PMIC RTC h/w counts/has 31 days in november. This is corrected
+> +	 * when date cmd is invoked on prompt. checks for the current day and
+> +	 * if it is 31 November, then adjusts it to 1 December.
+> +	 *
+> +	 * h/w also has weeks register which counts from 0 to 7(0(sun)-6(sat)).
+> +	 * 7 is an unknown state, reset it back to 0(sun).
+> +	 */
+> +	if (tm->tm_mon == 11 && tm->tm_mday == 31) {
+> +		debug("correcting Nov 31st to Dec 1st (HW bug)\n");
+> +		tm->tm_mon += 1;
+> +		tm->tm_mday = 1;
+> +		if (tm->tm_wday == 7)
+> +			tm->tm_wday = 0;
+> +		rk808_rtc_set(dev, tm);
+> +	}
+> +
+> +	if (tm->tm_wday == 7) {
+> +		tm->tm_wday = 0;
+> +		rk808_rtc_set(dev, tm);
+> +	}
+> +
+> +	debug("RTC date/time %4d-%02d-%02d(%d) %02d:%02d:%02d\n",
+> +	      tm->tm_year, tm->tm_mon, tm->tm_mday,
+> +	      tm->tm_wday, tm->tm_hour, tm->tm_min, tm->tm_sec);
+> +
+> +	return 0;
+> +}
+> +
+> +static int rk808_rtc_reset(struct udevice *dev)
+> +{
+> +/* Not needed */
+> +	return 0;
+> +}
+> +
+> +static int rk808_rtc_init(struct udevice *dev)
+> +{
+> +	struct rtc_time tm;
+> +
+> +	/* start rtc running by default, and use shadowed timer. */
+> +	pmic_clrsetbits(dev->parent, REG_RTC_CTRL, 0,
+> +			BIT_RTC_CTRL_REG_RTC_READSEL_M);
+> +	pmic_reg_write(dev->parent, REG_RTC_STATUS, RTC_STATUS_MASK);
+> +
+> +	/* set init time */
+> +	rk808_rtc_get(dev, &tm);
+> +
+> +	return 0;
+> +}
+> +
+> +static int rk808_rtc_probe(struct udevice *dev)
+> +{
+> +	rk808_rtc_init(dev);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct rtc_ops rk808_rtc_ops = {
+> +	.get = rk808_rtc_get,
+> +	.set = rk808_rtc_set,
+> +	.reset = rk808_rtc_reset,
 > +};
 > +
->   static int rockchip_pcie_off_conf(pci_dev_t bdf, uint offset)
->   {
->   	unsigned int bus = PCI_BUS(bdf);
-> diff --git a/drivers/pci/pcie_rockchip.h b/drivers/pci/pcie_rockchip.h
-> deleted file mode 100644
-> index 6d20d5232d..0000000000
-> --- a/drivers/pci/pcie_rockchip.h
-> +++ /dev/null
-> @@ -1,146 +0,0 @@
-> -/* SPDX-License-Identifier: GPL-2.0+ */
-> -/*
-> - * Rockchip PCIe Headers
-> - *
-> - * Copyright (c) 2016 Rockchip, Inc.
-> - * Copyright (c) 2020 Amarula Solutions(India)
-> - * Copyright (c) 2020 Jagan Teki <jagan@amarulasolutions.com>
-> - * Copyright (c) 2019 Patrick Wildt <patrick@blueri.se>
-> - *
-> - */
-> -
-> -#include <generic-phy.h>
-> -
-> -#define HIWORD_UPDATE(mask, val)        (((mask) << 16) | (val))
-> -#define HIWORD_UPDATE_BIT(val)          HIWORD_UPDATE(val, val)
-> -
-> -#define ENCODE_LANES(x)                 ((((x) >> 1) & 3) << 4)
-> -#define PCIE_CLIENT_BASE                0x0
-> -#define PCIE_CLIENT_CONFIG              (PCIE_CLIENT_BASE + 0x00)
-> -#define PCIE_CLIENT_CONF_ENABLE         HIWORD_UPDATE_BIT(0x0001)
-> -#define PCIE_CLIENT_LINK_TRAIN_ENABLE   HIWORD_UPDATE_BIT(0x0002)
-> -#define PCIE_CLIENT_MODE_RC             HIWORD_UPDATE_BIT(0x0040)
-> -#define PCIE_CLIENT_GEN_SEL_1           HIWORD_UPDATE(0x0080, 0)
-> -#define PCIE_CLIENT_BASIC_STATUS1	0x0048
-> -#define PCIE_CLIENT_LINK_STATUS_UP	GENMASK(21, 20)
-> -#define PCIE_CLIENT_LINK_STATUS_MASK	GENMASK(21, 20)
-> -#define PCIE_LINK_UP(x) \
-> -	(((x) & PCIE_CLIENT_LINK_STATUS_MASK) == PCIE_CLIENT_LINK_STATUS_UP)
-> -#define PCIE_RC_NORMAL_BASE		0x800000
-> -#define PCIE_LM_BASE			0x900000
-> -#define PCIE_LM_VENDOR_ID              (PCIE_LM_BASE + 0x44)
-> -#define PCIE_LM_VENDOR_ROCKCHIP		0x1d87
-> -#define PCIE_LM_RCBAR			(PCIE_LM_BASE + 0x300)
-> -#define PCIE_LM_RCBARPIE		BIT(19)
-> -#define PCIE_LM_RCBARPIS		BIT(20)
-> -#define PCIE_RC_BASE			0xa00000
-> -#define PCIE_RC_CONFIG_DCR		(PCIE_RC_BASE + 0x0c4)
-> -#define PCIE_RC_CONFIG_DCR_CSPL_SHIFT	18
-> -#define PCIE_RC_CONFIG_DCR_CPLS_SHIFT	26
-> -#define PCIE_RC_PCIE_LCAP		(PCIE_RC_BASE + 0x0cc)
-> -#define PCIE_RC_PCIE_LCAP_APMS_L0S	BIT(10)
-> -#define PCIE_ATR_BASE			0xc00000
-> -#define PCIE_ATR_OB_ADDR0(i)		(PCIE_ATR_BASE + 0x000 + (i) * 0x20)
-> -#define PCIE_ATR_OB_ADDR1(i)		(PCIE_ATR_BASE + 0x004 + (i) * 0x20)
-> -#define PCIE_ATR_OB_DESC0(i)		(PCIE_ATR_BASE + 0x008 + (i) * 0x20)
-> -#define PCIE_ATR_OB_DESC1(i)		(PCIE_ATR_BASE + 0x00c + (i) * 0x20)
-> -#define PCIE_ATR_IB_ADDR0(i)		(PCIE_ATR_BASE + 0x800 + (i) * 0x8)
-> -#define PCIE_ATR_IB_ADDR1(i)		(PCIE_ATR_BASE + 0x804 + (i) * 0x8)
-> -#define PCIE_ATR_HDR_MEM		0x2
-> -#define PCIE_ATR_HDR_IO			0x6
-> -#define PCIE_ATR_HDR_CFG_TYPE0		0xa
-> -#define PCIE_ATR_HDR_CFG_TYPE1		0xb
-> -#define PCIE_ATR_HDR_RID		BIT(23)
-> -
-> -#define PCIE_ATR_OB_REGION0_SIZE	(32 * 1024 * 1024)
-> -#define PCIE_ATR_OB_REGION_SIZE		(1 * 1024 * 1024)
-> -
-> -/*
-> - * The higher 16-bit of this register is used for write protection
-> - * only if BIT(x + 16) set to 1 the BIT(x) can be written.
-> - */
-> -#define HIWORD_UPDATE_MASK(val, mask, shift) \
-> -		((val) << (shift) | (mask) << ((shift) + 16))
-> -
-> -#define PHY_CFG_DATA_SHIFT    7
-> -#define PHY_CFG_ADDR_SHIFT    1
-> -#define PHY_CFG_DATA_MASK     0xf
-> -#define PHY_CFG_ADDR_MASK     0x3f
-> -#define PHY_CFG_RD_MASK       0x3ff
-> -#define PHY_CFG_WR_ENABLE     1
-> -#define PHY_CFG_WR_DISABLE    1
-> -#define PHY_CFG_WR_SHIFT      0
-> -#define PHY_CFG_WR_MASK       1
-> -#define PHY_CFG_PLL_LOCK      0x10
-> -#define PHY_CFG_CLK_TEST      0x10
-> -#define PHY_CFG_CLK_SCC       0x12
-> -#define PHY_CFG_SEPE_RATE     BIT(3)
-> -#define PHY_CFG_PLL_100M      BIT(3)
-> -#define PHY_PLL_LOCKED        BIT(9)
-> -#define PHY_PLL_OUTPUT        BIT(10)
-> -#define PHY_LANE_IDLE_OFF     0x1
-> -#define PHY_LANE_IDLE_MASK    0x1
-> -#define PHY_LANE_IDLE_A_SHIFT 3
-> -#define PHY_LANE_IDLE_B_SHIFT 4
-> -#define PHY_LANE_IDLE_C_SHIFT 5
-> -#define PHY_LANE_IDLE_D_SHIFT 6
-> -
-> -#define PCIE_PHY_CONF		0xe220
-> -#define PCIE_PHY_STATUS		0xe2a4
-> -#define PCIE_PHY_LANEOFF	0xe214
-> -
-> -struct rockchip_pcie_phy {
-> -	void *reg_base;
-> -	struct clk refclk;
-> -	struct reset_ctl phy_rst;
-> -	struct rockchip_pcie_phy_ops *ops;
-> -};
-> -
-> -struct rockchip_pcie_phy_ops {
-> -	int (*init)(struct rockchip_pcie_phy *phy);
-> -	int (*exit)(struct rockchip_pcie_phy *phy);
-> -	int (*power_on)(struct rockchip_pcie_phy *phy);
-> -	int (*power_off)(struct rockchip_pcie_phy *phy);
-> -};
-> -
-> -struct rockchip_pcie {
-> -	fdt_addr_t axi_base;
-> -	fdt_addr_t apb_base;
-> -	int first_busno;
-> -	struct udevice *dev;
-> -	struct rockchip_pcie_phy rk_phy;
-> -	struct rockchip_pcie_phy *phy;
-> -
-> -	/* resets */
-> -	struct reset_ctl core_rst;
-> -	struct reset_ctl mgmt_rst;
-> -	struct reset_ctl mgmt_sticky_rst;
-> -	struct reset_ctl pipe_rst;
-> -	struct reset_ctl pm_rst;
-> -	struct reset_ctl pclk_rst;
-> -	struct reset_ctl aclk_rst;
-> -
-> -	/* gpio */
-> -	struct gpio_desc ep_gpio;
-> -
-> -	/* vpcie regulators */
-> -	struct udevice *vpcie12v;
-> -	struct udevice *vpcie3v3;
-> -	struct udevice *vpcie1v8;
-> -	struct udevice *vpcie0v9;
-> -
-> -	/* phy */
-> -	struct phy pcie_phy;
-> -};
-> -
-> -int rockchip_pcie_phy_get(struct udevice *dev);
-> -
-> -static inline struct rockchip_pcie_phy *pcie_get_phy(struct rockchip_pcie *pcie)
-> -{
-> -	return pcie->phy;
-> -}
-> -
-> -static inline struct rockchip_pcie_phy_ops *phy_get_ops(struct rockchip_pcie_phy *phy)
-> -{
-> -	return (struct rockchip_pcie_phy_ops *)phy->ops;
-> -}
-> diff --git a/drivers/pci/pcie_rockchip_phy.c b/drivers/pci/pcie_rockchip_phy.c
-> deleted file mode 100644
-> index 47f5d6c7e3..0000000000
-> --- a/drivers/pci/pcie_rockchip_phy.c
-> +++ /dev/null
-> @@ -1,205 +0,0 @@
-> -// SPDX-License-Identifier: GPL-2.0+
-> -/*
-> - * Rockchip PCIe PHY driver
-> - *
-> - * Copyright (c) 2016 Rockchip, Inc.
-> - * Copyright (c) 2020 Amarula Solutions(India)
-> - */
-> -
-> -#include <common.h>
-> -#include <clk.h>
-> -#include <dm.h>
-> -#include <dm/device_compat.h>
-> -#include <reset.h>
-> -#include <syscon.h>
-> -#include <asm/gpio.h>
-> -#include <asm/io.h>
-> -#include <linux/iopoll.h>
-> -#include <asm/arch-rockchip/clock.h>
-> -
-> -#include "pcie_rockchip.h"
-> -
-> -DECLARE_GLOBAL_DATA_PTR;
-> -
-> -static void phy_wr_cfg(struct rockchip_pcie_phy *phy, u32 addr, u32 data)
-> -{
-> -	u32 reg;
-> -
-> -	reg = HIWORD_UPDATE_MASK(data, PHY_CFG_DATA_MASK, PHY_CFG_DATA_SHIFT);
-> -	reg |= HIWORD_UPDATE_MASK(addr, PHY_CFG_ADDR_MASK, PHY_CFG_ADDR_SHIFT);
-> -	writel(reg, phy->reg_base + PCIE_PHY_CONF);
-> -
-> -	udelay(1);
-> -
-> -	reg = HIWORD_UPDATE_MASK(PHY_CFG_WR_ENABLE,
-> -				 PHY_CFG_WR_MASK,
-> -				 PHY_CFG_WR_SHIFT);
-> -	writel(reg, phy->reg_base + PCIE_PHY_CONF);
-> -
-> -	udelay(1);
-> -
-> -	reg = HIWORD_UPDATE_MASK(PHY_CFG_WR_DISABLE,
-> -				 PHY_CFG_WR_MASK,
-> -				 PHY_CFG_WR_SHIFT);
-> -	writel(reg, phy->reg_base + PCIE_PHY_CONF);
-> -}
-> -
-> -static int rockchip_pcie_phy_power_on(struct rockchip_pcie_phy *phy)
-> -{
-> -	int ret = 0;
-> -	u32 reg, status;
-> -
-> -	ret = reset_deassert(&phy->phy_rst);
-> -	if (ret) {
-> -		dev_err(dev, "failed to assert phy reset\n");
-> -		return ret;
-> -	}
-> -
-> -	reg = HIWORD_UPDATE_MASK(PHY_CFG_PLL_LOCK,
-> -				 PHY_CFG_ADDR_MASK,
-> -				 PHY_CFG_ADDR_SHIFT);
-> -	writel(reg, phy->reg_base + PCIE_PHY_CONF);
-> -
-> -	reg = HIWORD_UPDATE_MASK(!PHY_LANE_IDLE_OFF,
-> -				 PHY_LANE_IDLE_MASK,
-> -				 PHY_LANE_IDLE_A_SHIFT);
-> -	writel(reg, phy->reg_base + PCIE_PHY_LANEOFF);
-> -
-> -	ret = -EINVAL;
-> -	ret = readl_poll_sleep_timeout(phy->reg_base + PCIE_PHY_STATUS,
-> -				       status,
-> -				       status & PHY_PLL_LOCKED,
-> -				       20 * 1000,
-> -				       50);
-> -	if (ret) {
-> -		dev_err(&phy->dev, "pll lock timeout!\n");
-> -		goto err_pll_lock;
-> -	}
-> -
-> -	phy_wr_cfg(phy, PHY_CFG_CLK_TEST, PHY_CFG_SEPE_RATE);
-> -	phy_wr_cfg(phy, PHY_CFG_CLK_SCC, PHY_CFG_PLL_100M);
-> -
-> -	ret = -ETIMEDOUT;
-> -	ret = readl_poll_sleep_timeout(phy->reg_base + PCIE_PHY_STATUS,
-> -				       status,
-> -				       !(status & PHY_PLL_OUTPUT),
-> -				       20 * 1000,
-> -				       50);
-> -	if (ret) {
-> -		dev_err(&phy->dev, "pll output enable timeout!\n");
-> -		goto err_pll_lock;
-> -	}
-> -
-> -	reg = HIWORD_UPDATE_MASK(PHY_CFG_PLL_LOCK,
-> -				 PHY_CFG_ADDR_MASK,
-> -				 PHY_CFG_ADDR_SHIFT);
-> -	writel(reg, phy->reg_base + PCIE_PHY_CONF);
-> -
-> -	ret = -EINVAL;
-> -	ret = readl_poll_sleep_timeout(phy->reg_base + PCIE_PHY_STATUS,
-> -				       status,
-> -				       status & PHY_PLL_LOCKED,
-> -				       20 * 1000,
-> -				       50);
-> -	if (ret) {
-> -		dev_err(&phy->dev, "pll relock timeout!\n");
-> -		goto err_pll_lock;
-> -	}
-> -
-> -	return 0;
-> -
-> -err_pll_lock:
-> -	reset_assert(&phy->phy_rst);
-> -	return ret;
-> -}
-> -
-> -static int rockchip_pcie_phy_power_off(struct rockchip_pcie_phy *phy)
-> -{
-> -	int ret;
-> -	u32 reg;
-> -
-> -	reg = HIWORD_UPDATE_MASK(PHY_LANE_IDLE_OFF,
-> -				 PHY_LANE_IDLE_MASK,
-> -				 PHY_LANE_IDLE_A_SHIFT);
-> -	writel(reg, phy->reg_base + PCIE_PHY_LANEOFF);
-> -
-> -	ret = reset_assert(&phy->phy_rst);
-> -	if (ret) {
-> -		dev_err(dev, "failed to assert phy reset\n");
-> -		return ret;
-> -	}
-> -
-> -	return 0;
-> -}
-> -
-> -static int rockchip_pcie_phy_init(struct rockchip_pcie_phy *phy)
-> -{
-> -	int ret;
-> -
-> -	ret = clk_enable(&phy->refclk);
-> -	if (ret) {
-> -		dev_err(dev, "failed to enable refclk clock\n");
-> -		return ret;
-> -	}
-> -
-> -	ret = reset_assert(&phy->phy_rst);
-> -	if (ret) {
-> -		dev_err(dev, "failed to assert phy reset\n");
-> -		goto err_reset;
-> -	}
-> -
-> -	return 0;
-> -
-> -err_reset:
-> -	clk_disable(&phy->refclk);
-> -	return ret;
-> -}
-> -
-> -static int rockchip_pcie_phy_exit(struct rockchip_pcie_phy *phy)
-> -{
-> -	clk_disable(&phy->refclk);
-> -
-> -	return 0;
-> -}
-> -
-> -static struct rockchip_pcie_phy_ops pcie_phy_ops = {
-> -	.init = rockchip_pcie_phy_init,
-> -	.power_on = rockchip_pcie_phy_power_on,
-> -	.power_off = rockchip_pcie_phy_power_off,
-> -	.exit = rockchip_pcie_phy_exit,
-> -};
-> -
-> -int rockchip_pcie_phy_get(struct udevice *dev)
-> -{
-> -	struct rockchip_pcie *priv = dev_get_priv(dev);
-> -	struct rockchip_pcie_phy *phy_priv = &priv->rk_phy;
-> -	ofnode phy_node;
-> -	u32 phandle;
-> -	int ret;
-> -
-> -	phandle = dev_read_u32_default(dev, "phys", 0);
-> -	phy_node = ofnode_get_by_phandle(phandle);
-> -	if (!ofnode_valid(phy_node)) {
-> -		dev_err(dev, "failed to found pcie-phy\n");
-> -		return -ENODEV;
-> -	}
-> -
-> -	phy_priv->reg_base = syscon_get_first_range(ROCKCHIP_SYSCON_GRF);
-> -
-> -	ret = clk_get_by_index_nodev(phy_node, 0, &phy_priv->refclk);
-> -	if (ret) {
-> -		dev_err(dev, "failed to get refclk clock phandle\n");
-> -		return ret;
-> -	}
-> -
-> -	ret = reset_get_by_index_nodev(phy_node, 0, &phy_priv->phy_rst);
-> -	if (ret) {
-> -		dev_err(dev, "failed to get phy reset phandle\n");
-> -		return ret;
-> -	}
-> -
-> -	phy_priv->ops = &pcie_phy_ops;
-> -	priv->phy = phy_priv;
-> -
-> -	return 0;
-> -}
+> +U_BOOT_DRIVER(rk808_rtc) = {
+> +	.name     = "rk808_rtc",
+> +	.id       = UCLASS_RTC,
+> +	.ops      = &rk808_rtc_ops,
+> +	.probe    = rk808_rtc_probe,
+> +};
