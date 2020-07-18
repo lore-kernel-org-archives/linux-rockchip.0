@@ -1,36 +1,82 @@
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: [PATCH v2 2/9] media: staging: rkisp1: remove unused field alloc_ctx from struct rkisp1_device
-Date: Sat, 18 Jul 2020 16:59:11 +0200
-Message-ID: <20200718145918.17752-3-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v2 4/9] media: staging: rkisp1: don't define vaddr field in rkisp1_buffer as an array
+Date: Sat, 18 Jul 2020 16:59:13 +0200
+Message-ID: <20200718145918.17752-5-dafna.hirschfeld@collabora.com>
 References: <20200718145918.17752-1-dafna.hirschfeld@collabora.com>
 Return-path: <linux-media-owner@vger.kernel.org>
 In-Reply-To: <20200718145918.17752-1-dafna.hirschfeld@collabora.com>
 Sender: linux-media-owner@vger.kernel.org
 To: linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org, Hans Verkuil <hverkuil-cisco@xs4all.nl>
+Cc: dafna.hirschfeld@collabora.com, helen.koike@collabora.com, ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The field alloc_ctx in struct rkisp1_device is not used.
-This patch removes it.
+The field vaddr in rkisp1_buffer struct is used only by the
+rkisp1-stats and rkisp1-params entities and they both use only
+vaddr[0] so there is no need to define this field as an array.
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Acked-by: Helen Koike <helen.koike@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 ---
- drivers/staging/media/rkisp1/rkisp1-common.h | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/media/rkisp1/rkisp1-common.h | 2 +-
+ drivers/staging/media/rkisp1/rkisp1-params.c | 4 ++--
+ drivers/staging/media/rkisp1/rkisp1-stats.c  | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-index 3f0621814696..2af8ffa0de52 100644
+index 3dc51d703f73..e54793d13c3d 100644
 --- a/drivers/staging/media/rkisp1/rkisp1-common.h
 +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-@@ -264,7 +264,6 @@ struct rkisp1_device {
- 	struct rkisp1_stats stats;
- 	struct rkisp1_params params;
- 	struct media_pipeline pipe;
--	struct vb2_alloc_ctx *alloc_ctx;
- 	struct mutex stream_lock;
- 	struct rkisp1_debug debug;
+@@ -127,7 +127,7 @@ struct rkisp1_buffer {
+ 	struct list_head queue;
+ 	union {
+ 		u32 buff_addr[VIDEO_MAX_PLANES];
+-		void *vaddr[VIDEO_MAX_PLANES];
++		void *vaddr;
+ 	};
  };
+ 
+diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+index 797e79de659c..2ab25062cde6 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-params.c
++++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+@@ -1215,7 +1215,7 @@ void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis)
+ 	if (!cur_buf)
+ 		return;
+ 
+-	new_params = (struct rkisp1_params_cfg *)(cur_buf->vaddr[0]);
++	new_params = (struct rkisp1_params_cfg *)(cur_buf->vaddr);
+ 
+ 	if (isp_mis & RKISP1_CIF_ISP_FRAME) {
+ 		u32 isp_ctrl;
+@@ -1463,7 +1463,7 @@ static void rkisp1_params_vb2_buf_queue(struct vb2_buffer *vb)
+ 		return;
+ 	}
+ 
+-	params_buf->vaddr[0] = vb2_plane_vaddr(vb, 0);
++	params_buf->vaddr = vb2_plane_vaddr(vb, 0);
+ 	spin_lock_irqsave(&params->config_lock, flags);
+ 	list_add_tail(&params_buf->queue, &params->params);
+ 	spin_unlock_irqrestore(&params->config_lock, flags);
+diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
+index 87e4104d20dd..a67c233b8641 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-stats.c
++++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
+@@ -116,7 +116,7 @@ static void rkisp1_stats_vb2_buf_queue(struct vb2_buffer *vb)
+ 	struct vb2_queue *vq = vb->vb2_queue;
+ 	struct rkisp1_stats *stats_dev = vq->drv_priv;
+ 
+-	stats_buf->vaddr[0] = vb2_plane_vaddr(vb, 0);
++	stats_buf->vaddr = vb2_plane_vaddr(vb, 0);
+ 
+ 	spin_lock_irq(&stats_dev->lock);
+ 	list_add_tail(&stats_buf->queue, &stats_dev->stat);
+@@ -322,7 +322,7 @@ rkisp1_stats_send_measurement(struct rkisp1_stats *stats, u32 isp_ris)
+ 		return;
+ 
+ 	cur_stat_buf =
+-		(struct rkisp1_stat_buffer *)(cur_buf->vaddr[0]);
++		(struct rkisp1_stat_buffer *)(cur_buf->vaddr);
+ 
+ 	if (isp_ris & RKISP1_CIF_ISP_AWB_DONE)
+ 		rkisp1_stats_get_awb_meas(stats, cur_stat_buf);
 -- 
 2.17.1
