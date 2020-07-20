@@ -1,54 +1,93 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v8 1/8] dt-bindings: mtd: Describe Rockchip RK3xxx NAND
- flash controller
-Date: Mon, 20 Jul 2020 13:20:34 -0600
-Message-ID: <20200720192034.GA2851152@bogus>
-References: <20200717092420.19798-1-yifeng.zhao@rock-chips.com>
- <20200717092420.19798-2-yifeng.zhao@rock-chips.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH v2 4/9] media: staging: rkisp1: don't define vaddr field
+ in rkisp1_buffer as an array
+Date: Mon, 20 Jul 2020 16:22:53 -0300
+Message-ID: <d8c882d7-2b9a-2972-1994-ec8d7b9ac1c6@collabora.com>
+References: <20200718145918.17752-1-dafna.hirschfeld@collabora.com>
+ <20200718145918.17752-5-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200717092420.19798-2-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200718145918.17752-5-dafna.hirschfeld@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 17 Jul 2020 17:24:17 +0800, Yifeng Zhao wrote:
-> Documentation support for Rockchip RK3xxx NAND flash controllers
-> 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> ---
-> 
-> Changes in v8:
-> - Fix make dt_binding_check error
-> 
-> Changes in v7:
-> - Fix some wrong define
-> 
-> Changes in v6:
-> - Fix some wrong define
-> - Modified the definition of compatible
-> 
-> Changes in v5:
-> - Fix some wrong define.
-> - Add boot-medium define.
-> - Remove some compatible define.
-> 
-> Changes in v4:
-> - The compatible define with rkxx_nfc.
-> - Add assigned-clocks.
-> - Fix some wrong defineChanges in.
-> 
-> Changes in v3:
-> - Change the title for the dt-bindings.
-> 
-> Changes in v2: None
-> 
->  .../mtd/rockchip,nand-controller.yaml         | 162 ++++++++++++++++++
->  1 file changed, 162 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
-> 
 
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+On 7/18/20 11:59 AM, Dafna Hirschfeld wrote:
+> The field vaddr in rkisp1_buffer struct is used only by the
+> rkisp1-stats and rkisp1-params entities and they both use only
+> vaddr[0] so there is no need to define this field as an array.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+
+Acked-by: Helen Koike <helen.koike@collabora.com>
+
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-common.h | 2 +-
+>  drivers/staging/media/rkisp1/rkisp1-params.c | 4 ++--
+>  drivers/staging/media/rkisp1/rkisp1-stats.c  | 4 ++--
+>  3 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+> index 3dc51d703f73..e54793d13c3d 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
+> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+> @@ -127,7 +127,7 @@ struct rkisp1_buffer {
+>  	struct list_head queue;
+>  	union {
+>  		u32 buff_addr[VIDEO_MAX_PLANES];
+> -		void *vaddr[VIDEO_MAX_PLANES];
+> +		void *vaddr;
+>  	};
+>  };
+>  
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+> index 797e79de659c..2ab25062cde6 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+> @@ -1215,7 +1215,7 @@ void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis)
+>  	if (!cur_buf)
+>  		return;
+>  
+> -	new_params = (struct rkisp1_params_cfg *)(cur_buf->vaddr[0]);
+> +	new_params = (struct rkisp1_params_cfg *)(cur_buf->vaddr);
+>  
+>  	if (isp_mis & RKISP1_CIF_ISP_FRAME) {
+>  		u32 isp_ctrl;
+> @@ -1463,7 +1463,7 @@ static void rkisp1_params_vb2_buf_queue(struct vb2_buffer *vb)
+>  		return;
+>  	}
+>  
+> -	params_buf->vaddr[0] = vb2_plane_vaddr(vb, 0);
+> +	params_buf->vaddr = vb2_plane_vaddr(vb, 0);
+>  	spin_lock_irqsave(&params->config_lock, flags);
+>  	list_add_tail(&params_buf->queue, &params->params);
+>  	spin_unlock_irqrestore(&params->config_lock, flags);
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
+> index 87e4104d20dd..a67c233b8641 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-stats.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
+> @@ -116,7 +116,7 @@ static void rkisp1_stats_vb2_buf_queue(struct vb2_buffer *vb)
+>  	struct vb2_queue *vq = vb->vb2_queue;
+>  	struct rkisp1_stats *stats_dev = vq->drv_priv;
+>  
+> -	stats_buf->vaddr[0] = vb2_plane_vaddr(vb, 0);
+> +	stats_buf->vaddr = vb2_plane_vaddr(vb, 0);
+>  
+>  	spin_lock_irq(&stats_dev->lock);
+>  	list_add_tail(&stats_buf->queue, &stats_dev->stat);
+> @@ -322,7 +322,7 @@ rkisp1_stats_send_measurement(struct rkisp1_stats *stats, u32 isp_ris)
+>  		return;
+>  
+>  	cur_stat_buf =
+> -		(struct rkisp1_stat_buffer *)(cur_buf->vaddr[0]);
+> +		(struct rkisp1_stat_buffer *)(cur_buf->vaddr);
+>  
+>  	if (isp_ris & RKISP1_CIF_ISP_AWB_DONE)
+>  		rkisp1_stats_get_awb_meas(stats, cur_stat_buf);
+> 
