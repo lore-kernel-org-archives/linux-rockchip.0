@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 07/16] configs: Enable USB host on Rock-PI-N10
-Date: Tue, 21 Jul 2020 00:21:11 +0530
-Message-ID: <20200720185120.671064-8-jagan@amarulasolutions.com>
+Subject: [PATCH 08/16] configs: Enable HDMI output
+Date: Tue, 21 Jul 2020 00:21:12 +0530
+Message-ID: <20200720185120.671064-9-jagan@amarulasolutions.com>
 References: <20200720185120.671064-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -22,86 +22,35 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Suniel Mahesh <sunil@amarulasolutions.com>
 
-Enable USB 3.0 and 2.0 and related configs for the Rock-PI-N10
-target, which hosts RK3399Pro-VMARC-SOM.
-
-Log:
-Bus usb@fe380000: USB EHCI 1.00
-Bus usb@fe3c0000: USB EHCI 1.00
-Bus dwc3: usb maximum-speed not found
-Register 2000140 NbrPorts 2
-Starting the controller
-USB XHCI 1.10
-scanning bus usb@fe380000 for devices... 1 USB Device(s) found
-scanning bus usb@fe3c0000 for devices... 1 USB Device(s) found
-scanning bus dwc3 for devices... cannot reset port 1!?
-2 USB Device(s) found
-        scanning usb for storage devices... 1 Storage Device(s) found
-=> usb tree
-USB device tree:
-        1  Hub (480 Mb/s, 0mA)
-                u-boot EHCI Host Controller
-
-        1  Hub (480 Mb/s, 0mA)
-                u-boot EHCI Host Controller
-
-        1  Hub (5 Gb/s, 0mA)
-        |  U-Boot XHCI Host Controller
-        |
-        +-2  Mass Storage (5 Gb/s, 224mA)
-                SanDisk Dual Drive 04019c9b2e1a58f24ee318c3c123aa5
-=> usb tree
-USB device tree:
-1  Hub (480 Mb/s, 0mA)
-|  u-boot EHCI Host Controller
-|
-+-2  Mass Storage (480 Mb/s, 224mA)
-        SanDisk Dual Drive 04019c9b2e1a58f24ee318c3c123aa5
-
-1  Hub (480 Mb/s, 0mA)
-   u-boot EHCI Host Controller
+Enable config options to get HDMI output on RockPI-N10 target which
+hosts a RK3399Pro-VMARC-SOM.
 
 Signed-off-by: Suniel Mahesh <sunil@amarulasolutions.com>
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
- configs/rock-pi-n10-rk3399pro_defconfig | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ configs/rock-pi-n10-rk3399pro_defconfig | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/configs/rock-pi-n10-rk3399pro_defconfig b/configs/rock-pi-n10-rk3399pro_defconfig
-index c705ce01ce..e09e656fbc 100644
+index e09e656fbc..ba2babe20f 100644
 --- a/configs/rock-pi-n10-rk3399pro_defconfig
 +++ b/configs/rock-pi-n10-rk3399pro_defconfig
-@@ -19,6 +19,7 @@ CONFIG_TPL=y
- CONFIG_CMD_BOOTZ=y
- CONFIG_CMD_GPT=y
- CONFIG_CMD_MMC=y
-+CONFIG_CMD_USB=y
- # CONFIG_CMD_SETEXPR is not set
- CONFIG_CMD_TIME=y
- CONFIG_SPL_OF_CONTROL=y
-@@ -36,11 +37,23 @@ CONFIG_MMC_SDHCI_ROCKCHIP=y
- CONFIG_DM_ETH=y
- CONFIG_ETH_DESIGNWARE=y
- CONFIG_GMAC_ROCKCHIP=y
-+CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-+CONFIG_PHY_ROCKCHIP_TYPEC=y
- CONFIG_PMIC_RK8XX=y
- CONFIG_REGULATOR_PWM=y
- CONFIG_REGULATOR_RK8XX=y
- CONFIG_PWM_ROCKCHIP=y
-+CONFIG_DM_RESET=y
- CONFIG_BAUDRATE=1500000
- CONFIG_DEBUG_UART_SHIFT=2
- CONFIG_SYSRESET=y
-+CONFIG_USB=y
-+CONFIG_USB_XHCI_HCD=y
-+CONFIG_USB_XHCI_DWC3=y
-+CONFIG_USB_EHCI_HCD=y
-+CONFIG_USB_EHCI_GENERIC=y
-+CONFIG_USB_DWC3=y
-+CONFIG_USB_DWC3_GENERIC=y
-+CONFIG_USB_KEYBOARD=y
-+# CONFIG_USB_KEYBOARD_FN_KEYS is not set
+@@ -9,6 +9,7 @@ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+ CONFIG_DEBUG_UART_CLOCK=24000000
+ CONFIG_DEBUG_UART=y
++# CONFIG_CONSOLE_MUX is not set
+ CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399pro-rock-pi-n10.dtb"
+ CONFIG_MISC_INIT_R=y
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+@@ -56,4 +57,8 @@ CONFIG_USB_DWC3=y
+ CONFIG_USB_DWC3_GENERIC=y
+ CONFIG_USB_KEYBOARD=y
+ # CONFIG_USB_KEYBOARD_FN_KEYS is not set
++CONFIG_DM_VIDEO=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
  CONFIG_ERRNO_STR=y
 -- 
 2.25.1
