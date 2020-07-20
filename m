@@ -1,219 +1,54 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK Pi 4C support
-Date: Tue, 21 Jul 2020 00:25:49 +0530
-Message-ID: <20200720185549.671360-2-jagan@amarulasolutions.com>
-References: <20200720185549.671360-1-jagan@amarulasolutions.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH v8 1/8] dt-bindings: mtd: Describe Rockchip RK3xxx NAND
+ flash controller
+Date: Mon, 20 Jul 2020 13:20:34 -0600
+Message-ID: <20200720192034.GA2851152@bogus>
+References: <20200717092420.19798-1-yifeng.zhao@rock-chips.com>
+ <20200717092420.19798-2-yifeng.zhao@rock-chips.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200720185549.671360-1-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20200717092420.19798-2-yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: miquel.raynal-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, richard-/L3Ra7n9ekc@public.gmane.org, linux-mtd-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, vigneshr-l0cyMroinI0@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Rock PI 4C has AP6256 Wifi/BT, PoE, miniDP, USB Host enabled
-GPIO pin change compared to 4B, 4C.
+On Fri, 17 Jul 2020 17:24:17 +0800, Yifeng Zhao wrote:
+> Documentation support for Rockchip RK3xxx NAND flash controllers
+> 
+> Signed-off-by: Yifeng Zhao <yifeng.zhao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+> ---
+> 
+> Changes in v8:
+> - Fix make dt_binding_check error
+> 
+> Changes in v7:
+> - Fix some wrong define
+> 
+> Changes in v6:
+> - Fix some wrong define
+> - Modified the definition of compatible
+> 
+> Changes in v5:
+> - Fix some wrong define.
+> - Add boot-medium define.
+> - Remove some compatible define.
+> 
+> Changes in v4:
+> - The compatible define with rkxx_nfc.
+> - Add assigned-clocks.
+> - Fix some wrong defineChanges in.
+> 
+> Changes in v3:
+> - Change the title for the dt-bindings.
+> 
+> Changes in v2: None
+> 
+>  .../mtd/rockchip,nand-controller.yaml         | 162 ++++++++++++++++++
+>  1 file changed, 162 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
+> 
 
-So, add or enable difference nodes/properties in 4C dts
-by including common dtsi.
-
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
-Changes for v2:
-- s/4b/4c
-
- arch/arm/dts/Makefile                      |  1 +
- arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi |  6 ++
- arch/arm/dts/rk3399-rock-pi-4c.dts         | 51 +++++++++++++++
- board/rockchip/evb_rk3399/MAINTAINERS      |  2 +
- configs/rock-pi-4c-rk3399_defconfig        | 74 ++++++++++++++++++++++
- 5 files changed, 134 insertions(+)
- create mode 100644 arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
- create mode 100644 arch/arm/dts/rk3399-rock-pi-4c.dts
- create mode 100644 configs/rock-pi-4c-rk3399_defconfig
-
-diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index bcd89af6a5..5726156a2d 100644
---- a/arch/arm/dts/Makefile
-+++ b/arch/arm/dts/Makefile
-@@ -138,6 +138,7 @@ dtb-$(CONFIG_ROCKCHIP_RK3399) += \
- 	rk3399-roc-pc-mezzanine.dtb \
- 	rk3399-rock-pi-4a.dtb \
- 	rk3399-rock-pi-4b.dtb \
-+	rk3399-rock-pi-4c.dtb \
- 	rk3399-rock960.dtb \
- 	rk3399-rockpro64.dtb \
- 	rk3399pro-rock-pi-n10.dtb
-diff --git a/arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi b/arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
-new file mode 100644
-index 0000000000..85ee5770ad
---- /dev/null
-+++ b/arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
-@@ -0,0 +1,6 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (C) 2019 Jagan Teki <jagan@amarulasolutions.com>
-+ */
-+
-+#include "rk3399-rock-pi-4-u-boot.dtsi"
-diff --git a/arch/arm/dts/rk3399-rock-pi-4c.dts b/arch/arm/dts/rk3399-rock-pi-4c.dts
-new file mode 100644
-index 0000000000..9d07ebd1ec
---- /dev/null
-+++ b/arch/arm/dts/rk3399-rock-pi-4c.dts
-@@ -0,0 +1,51 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
-+ * Copyright (c) 2019 Radxa Limited
-+ * Copyright (c) 2019 Amarula Solutions(India)
-+ */
-+
-+/dts-v1/;
-+#include "rk3399-rock-pi-4.dtsi"
-+
-+/ {
-+	model = "Radxa ROCK Pi 4C";
-+	compatible = "radxa,rockpi4", "rockchip,rk3399";
-+};
-+
-+&sdio0 {
-+	status = "okay";
-+
-+	brcmf: wifi@1 {
-+		compatible = "brcm,bcm4329-fmac";
-+		reg = <1>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
-+		interrupt-names = "host-wake";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_host_wake_l>;
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+
-+	bluetooth {
-+		compatible = "brcm,bcm43438-bt";
-+		clocks = <&rk808 1>;
-+		clock-names = "ext_clock";
-+		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
-+		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
-+		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
-+	};
-+};
-+
-+&vcc5v0_host {
-+	gpio = <&gpio3 RK_PD6 GPIO_ACTIVE_HIGH>;
-+};
-+
-+&vcc5v0_host_en {
-+	rockchip,pins = <3 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
-+};
-diff --git a/board/rockchip/evb_rk3399/MAINTAINERS b/board/rockchip/evb_rk3399/MAINTAINERS
-index 578638a58b..4c889e06a6 100644
---- a/board/rockchip/evb_rk3399/MAINTAINERS
-+++ b/board/rockchip/evb_rk3399/MAINTAINERS
-@@ -68,6 +68,8 @@ M:	Jagan Teki <jagan@amarulasolutions.com>
- S:	Maintained
- F:	configs/rock-pi-4-rk3399_defconfig
- F:	arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
-+F:	configs/rock-pi-4c-rk3399_defconfig
-+F:	arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
- 
- ROCK-PI-N10
- M:	Jagan Teki <jagan@amarulasolutions.com>
-diff --git a/configs/rock-pi-4c-rk3399_defconfig b/configs/rock-pi-4c-rk3399_defconfig
-new file mode 100644
-index 0000000000..5e4eb6a368
---- /dev/null
-+++ b/configs/rock-pi-4c-rk3399_defconfig
-@@ -0,0 +1,74 @@
-+CONFIG_ARM=y
-+CONFIG_ARCH_ROCKCHIP=y
-+CONFIG_SYS_TEXT_BASE=0x00200000
-+CONFIG_ENV_OFFSET=0x3F8000
-+CONFIG_ROCKCHIP_RK3399=y
-+CONFIG_TARGET_EVB_RK3399=y
-+CONFIG_NR_DRAM_BANKS=1
-+CONFIG_DEBUG_UART_BASE=0xFF1A0000
-+CONFIG_DEBUG_UART_CLOCK=24000000
-+CONFIG_DEBUG_UART=y
-+# CONFIG_ANDROID_BOOT_IMAGE is not set
-+CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4c.dtb"
-+CONFIG_MISC_INIT_R=y
-+CONFIG_DISPLAY_BOARDINFO_LATE=y
-+# CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
-+CONFIG_SPL_STACK_R=y
-+CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
-+CONFIG_TPL=y
-+CONFIG_CMD_BOOTZ=y
-+CONFIG_CMD_GPT=y
-+CONFIG_CMD_MMC=y
-+CONFIG_CMD_PCI=y
-+CONFIG_CMD_USB=y
-+# CONFIG_CMD_SETEXPR is not set
-+CONFIG_CMD_TIME=y
-+CONFIG_SPL_OF_CONTROL=y
-+CONFIG_DEFAULT_DEVICE_TREE="rk3399-rock-pi-4c"
-+CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
-+CONFIG_ENV_IS_IN_MMC=y
-+CONFIG_SYS_RELOC_GD_ENV_ADDR=y
-+CONFIG_ROCKCHIP_GPIO=y
-+CONFIG_SYS_I2C_ROCKCHIP=y
-+CONFIG_MISC=y
-+CONFIG_MMC_DW=y
-+CONFIG_MMC_DW_ROCKCHIP=y
-+CONFIG_MMC_SDHCI=y
-+CONFIG_MMC_SDHCI_ROCKCHIP=y
-+CONFIG_DM_ETH=y
-+CONFIG_ETH_DESIGNWARE=y
-+CONFIG_GMAC_ROCKCHIP=y
-+CONFIG_NVME=y
-+CONFIG_PCI=y
-+CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-+CONFIG_PHY_ROCKCHIP_TYPEC=y
-+CONFIG_PMIC_RK8XX=y
-+CONFIG_REGULATOR_PWM=y
-+CONFIG_REGULATOR_RK8XX=y
-+CONFIG_PWM_ROCKCHIP=y
-+CONFIG_RAM_RK3399_LPDDR4=y
-+CONFIG_DM_RESET=y
-+CONFIG_BAUDRATE=1500000
-+CONFIG_DEBUG_UART_SHIFT=2
-+CONFIG_SYSRESET=y
-+CONFIG_USB=y
-+CONFIG_USB_XHCI_HCD=y
-+CONFIG_USB_XHCI_DWC3=y
-+CONFIG_USB_EHCI_HCD=y
-+CONFIG_USB_EHCI_GENERIC=y
-+CONFIG_USB_DWC3=y
-+CONFIG_USB_DWC3_GENERIC=y
-+CONFIG_USB_KEYBOARD=y
-+CONFIG_USB_GADGET=y
-+CONFIG_USB_HOST_ETHER=y
-+CONFIG_USB_ETHER_ASIX=y
-+CONFIG_USB_ETHER_ASIX88179=y
-+CONFIG_USB_ETHER_MCS7830=y
-+CONFIG_USB_ETHER_RTL8152=y
-+CONFIG_USB_ETHER_SMSC95XX=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_DISPLAY=y
-+CONFIG_VIDEO_ROCKCHIP=y
-+CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-+CONFIG_SPL_TINY_MEMSET=y
-+CONFIG_ERRNO_STR=y
--- 
-2.25.1
+Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
