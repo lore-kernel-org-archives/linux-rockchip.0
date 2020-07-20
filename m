@@ -1,12 +1,10 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 16/16] rock-p-n8/n10: Disable RAM_ROCKCHIP_DEBUG
-Date: Tue, 21 Jul 2020 00:21:20 +0530
-Message-ID: <20200720185120.671064-17-jagan@amarulasolutions.com>
-References: <20200720185120.671064-1-jagan@amarulasolutions.com>
+Subject: [PATCH v2 1/2] arm64: dts: rockchip: Add ROCKPi 4A/4B support
+Date: Tue, 21 Jul 2020 00:25:48 +0530
+Message-ID: <20200720185549.671360-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200720185120.671064-1-jagan@amarulasolutions.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <https://lists.denx.de/pipermail/u-boot/>
@@ -20,39 +18,205 @@ To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@the
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Disable ram rockchip debug driver for ROCKPi N8/N10 boards
-since we have verified ram in many instances with respective
-U-Boot versions.
+Rock PI 4 has 3 variants of hardware platforms called
+RockPI 4A, 4B, and 4C.
+
+- Rock PI 4A has no Wif/BT.
+- Rock PI 4B has AP6256 Wifi/BT, PoE.
+- Rock PI 4C has AP6256 Wifi/BT, PoE, miniDP, USB Host enable
+  GPIO pin change compared to 4B, 4C
+
+So move common nodes, properties into dtsi file and include
+on respective variant dts files.
+
+Use 4B dts into default rock-pi-4 defconfig until we find any
+solution for dynamic detection of these variants.
 
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
- configs/rock-pi-n10-rk3399pro_defconfig | 1 +
- configs/rock-pi-n8-rk3288_defconfig     | 1 +
- 2 files changed, 2 insertions(+)
+Changes for v2:
+- none
 
-diff --git a/configs/rock-pi-n10-rk3399pro_defconfig b/configs/rock-pi-n10-rk3399pro_defconfig
-index 2aa2fafaa4..4a5bff44ef 100644
---- a/configs/rock-pi-n10-rk3399pro_defconfig
-+++ b/configs/rock-pi-n10-rk3399pro_defconfig
-@@ -48,6 +48,7 @@ CONFIG_PMIC_RK8XX=y
- CONFIG_REGULATOR_PWM=y
- CONFIG_REGULATOR_RK8XX=y
- CONFIG_PWM_ROCKCHIP=y
-+# CONFIG_RAM_ROCKCHIP_DEBUG is not set
- CONFIG_DM_RESET=y
- CONFIG_BAUDRATE=1500000
- CONFIG_DEBUG_UART_SHIFT=2
-diff --git a/configs/rock-pi-n8-rk3288_defconfig b/configs/rock-pi-n8-rk3288_defconfig
-index d218852d79..630ec6e491 100644
---- a/configs/rock-pi-n8-rk3288_defconfig
-+++ b/configs/rock-pi-n8-rk3288_defconfig
-@@ -64,6 +64,7 @@ CONFIG_REGULATOR_RK8XX=y
- CONFIG_PWM_ROCKCHIP=y
- CONFIG_RAM=y
- CONFIG_SPL_RAM=y
-+# CONFIG_RAM_ROCKCHIP_DEBUG is not set
- CONFIG_DEBUG_UART_SHIFT=2
- CONFIG_SYSRESET=y
- CONFIG_USB=y
+ arch/arm/dts/Makefile                         |  3 +-
+ ...99-rock-pi-4.dts => rk3399-rock-pi-4.dtsi} | 26 ------------
+ arch/arm/dts/rk3399-rock-pi-4a.dts            | 13 ++++++
+ arch/arm/dts/rk3399-rock-pi-4b-u-boot.dtsi    |  6 +++
+ arch/arm/dts/rk3399-rock-pi-4b.dts            | 42 +++++++++++++++++++
+ configs/rock-pi-4-rk3399_defconfig            |  4 +-
+ 6 files changed, 65 insertions(+), 29 deletions(-)
+ rename arch/arm/dts/{rk3399-rock-pi-4.dts => rk3399-rock-pi-4.dtsi} (95%)
+ create mode 100644 arch/arm/dts/rk3399-rock-pi-4a.dts
+ create mode 100644 arch/arm/dts/rk3399-rock-pi-4b-u-boot.dtsi
+ create mode 100644 arch/arm/dts/rk3399-rock-pi-4b.dts
+
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index 82e9b18cb8..bcd89af6a5 100644
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -136,7 +136,8 @@ dtb-$(CONFIG_ROCKCHIP_RK3399) += \
+ 	rk3399-puma-haikou.dtb \
+ 	rk3399-roc-pc.dtb \
+ 	rk3399-roc-pc-mezzanine.dtb \
+-	rk3399-rock-pi-4.dtb \
++	rk3399-rock-pi-4a.dtb \
++	rk3399-rock-pi-4b.dtb \
+ 	rk3399-rock960.dtb \
+ 	rk3399-rockpro64.dtb \
+ 	rk3399pro-rock-pi-n10.dtb
+diff --git a/arch/arm/dts/rk3399-rock-pi-4.dts b/arch/arm/dts/rk3399-rock-pi-4.dtsi
+similarity index 95%
+rename from arch/arm/dts/rk3399-rock-pi-4.dts
+rename to arch/arm/dts/rk3399-rock-pi-4.dtsi
+index 3923ec01ef..1c55a4645b 100644
+--- a/arch/arm/dts/rk3399-rock-pi-4.dts
++++ b/arch/arm/dts/rk3399-rock-pi-4.dtsi
+@@ -11,9 +11,6 @@
+ #include "rk3399-opp.dtsi"
+ 
+ / {
+-	model = "Radxa ROCK Pi 4";
+-	compatible = "radxa,rockpi4", "rockchip,rk3399";
+-
+ 	chosen {
+ 		stdout-path = "serial2:1500000n8";
+ 	};
+@@ -587,17 +584,6 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+ 	sd-uhs-sdr104;
+-	status = "okay";
+-
+-	brcmf: wifi@1 {
+-		compatible = "brcm,bcm4329-fmac";
+-		reg = <1>;
+-		interrupt-parent = <&gpio0>;
+-		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
+-		interrupt-names = "host-wake";
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&wifi_host_wake_l>;
+-	};
+ };
+ 
+ &sdmmc {
+@@ -666,18 +652,6 @@
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
+-	status = "okay";
+-
+-	bluetooth {
+-		compatible = "brcm,bcm43438-bt";
+-		clocks = <&rk808 1>;
+-		clock-names = "ext_clock";
+-		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
+-		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
+-		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
+-	};
+ };
+ 
+ &uart2 {
+diff --git a/arch/arm/dts/rk3399-rock-pi-4a.dts b/arch/arm/dts/rk3399-rock-pi-4a.dts
+new file mode 100644
+index 0000000000..d96dd3ebd3
+--- /dev/null
++++ b/arch/arm/dts/rk3399-rock-pi-4a.dts
+@@ -0,0 +1,13 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2019 Akash Gajjar <Akash_Gajjar@mentor.com>
++ * Copyright (c) 2019 Pragnesh Patel <Pragnesh_Patel@mentor.com>
++ */
++
++/dts-v1/;
++#include "rk3399-rock-pi-4.dtsi"
++
++/ {
++	model = "Radxa ROCK Pi 4A";
++	compatible = "radxa,rockpi4", "rockchip,rk3399";
++};
+diff --git a/arch/arm/dts/rk3399-rock-pi-4b-u-boot.dtsi b/arch/arm/dts/rk3399-rock-pi-4b-u-boot.dtsi
+new file mode 100644
+index 0000000000..85ee5770ad
+--- /dev/null
++++ b/arch/arm/dts/rk3399-rock-pi-4b-u-boot.dtsi
+@@ -0,0 +1,6 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) 2019 Jagan Teki <jagan@amarulasolutions.com>
++ */
++
++#include "rk3399-rock-pi-4-u-boot.dtsi"
+diff --git a/arch/arm/dts/rk3399-rock-pi-4b.dts b/arch/arm/dts/rk3399-rock-pi-4b.dts
+new file mode 100644
+index 0000000000..4ca970acac
+--- /dev/null
++++ b/arch/arm/dts/rk3399-rock-pi-4b.dts
+@@ -0,0 +1,42 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2019 Akash Gajjar <Akash_Gajjar@mentor.com>
++ * Copyright (c) 2019 Pragnesh Patel <Pragnesh_Patel@mentor.com>
++ */
++
++/dts-v1/;
++#include "rk3399-rock-pi-4.dtsi"
++
++/ {
++	model = "Radxa ROCK Pi 4B";
++	compatible = "radxa,rockpi4", "rockchip,rk3399";
++};
++
++&sdio0 {
++	status = "okay";
++
++	brcmf: wifi@1 {
++		compatible = "brcm,bcm4329-fmac";
++		reg = <1>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
++		interrupt-names = "host-wake";
++		pinctrl-names = "default";
++		pinctrl-0 = <&wifi_host_wake_l>;
++	};
++};
++
++&uart0 {
++	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm43438-bt";
++		clocks = <&rk808 1>;
++		clock-names = "ext_clock";
++		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
++		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
++		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
++	};
++};
+diff --git a/configs/rock-pi-4-rk3399_defconfig b/configs/rock-pi-4-rk3399_defconfig
+index 98f71a50a5..1d34476825 100644
+--- a/configs/rock-pi-4-rk3399_defconfig
++++ b/configs/rock-pi-4-rk3399_defconfig
+@@ -9,7 +9,7 @@ CONFIG_DEBUG_UART_BASE=0xFF1A0000
+ CONFIG_DEBUG_UART_CLOCK=24000000
+ CONFIG_DEBUG_UART=y
+ # CONFIG_ANDROID_BOOT_IMAGE is not set
+-CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4.dtb"
++CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4b.dtb"
+ CONFIG_MISC_INIT_R=y
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+ # CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
+@@ -24,7 +24,7 @@ CONFIG_CMD_USB=y
+ # CONFIG_CMD_SETEXPR is not set
+ CONFIG_CMD_TIME=y
+ CONFIG_SPL_OF_CONTROL=y
+-CONFIG_DEFAULT_DEVICE_TREE="rk3399-rock-pi-4"
++CONFIG_DEFAULT_DEVICE_TREE="rk3399-rock-pi-4b"
+ CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
+ CONFIG_ENV_IS_IN_MMC=y
+ CONFIG_SYS_RELOC_GD_ENV_ADDR=y
 -- 
 2.25.1
