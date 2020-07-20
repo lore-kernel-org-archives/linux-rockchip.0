@@ -1,8 +1,7 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 15/16] arm64: dts: rockchip: Add u-boot,
- spl-boot-order for ROCKPi N10
-Date: Tue, 21 Jul 2020 00:21:19 +0530
-Message-ID: <20200720185120.671064-16-jagan@amarulasolutions.com>
+Subject: [PATCH 16/16] rock-p-n8/n10: Disable RAM_ROCKCHIP_DEBUG
+Date: Tue, 21 Jul 2020 00:21:20 +0530
+Message-ID: <20200720185120.671064-17-jagan@amarulasolutions.com>
 References: <20200720185120.671064-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -21,27 +20,39 @@ To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@the
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Add u-boot,spl-boot-order for ROCKPi N10, so-that it can able
-to boot from eMMC and SDMMC in order.
+Disable ram rockchip debug driver for ROCKPi N8/N10 boards
+since we have verified ram in many instances with respective
+U-Boot versions.
 
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
- arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi | 6 ++++++
- 1 file changed, 6 insertions(+)
+ configs/rock-pi-n10-rk3399pro_defconfig | 1 +
+ configs/rock-pi-n8-rk3288_defconfig     | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi b/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
-index 946a0230db..7c66e1145a 100644
---- a/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
-+++ b/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
-@@ -5,3 +5,9 @@
- 
- #include "rk3399pro-u-boot.dtsi"
- #include "rk3399-sdram-lpddr3-4GB-1600.dtsi"
-+
-+/ {
-+	chosen {
-+		u-boot,spl-boot-order = "same-as-spl", &sdhci, &sdmmc;
-+	};
-+};
+diff --git a/configs/rock-pi-n10-rk3399pro_defconfig b/configs/rock-pi-n10-rk3399pro_defconfig
+index 2aa2fafaa4..4a5bff44ef 100644
+--- a/configs/rock-pi-n10-rk3399pro_defconfig
++++ b/configs/rock-pi-n10-rk3399pro_defconfig
+@@ -48,6 +48,7 @@ CONFIG_PMIC_RK8XX=y
+ CONFIG_REGULATOR_PWM=y
+ CONFIG_REGULATOR_RK8XX=y
+ CONFIG_PWM_ROCKCHIP=y
++# CONFIG_RAM_ROCKCHIP_DEBUG is not set
+ CONFIG_DM_RESET=y
+ CONFIG_BAUDRATE=1500000
+ CONFIG_DEBUG_UART_SHIFT=2
+diff --git a/configs/rock-pi-n8-rk3288_defconfig b/configs/rock-pi-n8-rk3288_defconfig
+index d218852d79..630ec6e491 100644
+--- a/configs/rock-pi-n8-rk3288_defconfig
++++ b/configs/rock-pi-n8-rk3288_defconfig
+@@ -64,6 +64,7 @@ CONFIG_REGULATOR_RK8XX=y
+ CONFIG_PWM_ROCKCHIP=y
+ CONFIG_RAM=y
+ CONFIG_SPL_RAM=y
++# CONFIG_RAM_ROCKCHIP_DEBUG is not set
+ CONFIG_DEBUG_UART_SHIFT=2
+ CONFIG_SYSRESET=y
+ CONFIG_USB=y
 -- 
 2.25.1
