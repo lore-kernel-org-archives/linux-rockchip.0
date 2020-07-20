@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH 12/16] rk3288: rock-pi-n8: Add console settings
-Date: Tue, 21 Jul 2020 00:21:16 +0530
-Message-ID: <20200720185120.671064-13-jagan@amarulasolutions.com>
+Subject: [PATCH 13/16] configs: Enable HDMI output for rock-pi-n8
+Date: Tue, 21 Jul 2020 00:21:17 +0530
+Message-ID: <20200720185120.671064-14-jagan@amarulasolutions.com>
 References: <20200720185120.671064-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -22,33 +22,34 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Suniel Mahesh <sunil@amarulasolutions.com>
 
-Add console settings like stdin, stdout and stderr as
-usbkbd and vidconsole respectively for rock-pi-n8 target.
-
-This would certainly help to detect the attached video
-devices (like HDMI) and print the console messages on display.
+Enable config options to get HDMI output on RockPI-N8 target which
+hosts a RK3288-VMARC-SOM.
 
 Signed-off-by: Suniel Mahesh <sunil@amarulasolutions.com>
 ---
- include/configs/evb_rk3288.h | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ configs/rock-pi-n8-rk3288_defconfig | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/include/configs/evb_rk3288.h b/include/configs/evb_rk3288.h
-index ddd7012c8f..e19fa90212 100644
---- a/include/configs/evb_rk3288.h
-+++ b/include/configs/evb_rk3288.h
-@@ -6,7 +6,11 @@
- #ifndef __CONFIG_H
- #define __CONFIG_H
- 
--#define ROCKCHIP_DEVICE_SETTINGS
-+#define ROCKCHIP_DEVICE_SETTINGS \
-+		"stdin=serial,usbkbd\0" \
-+		"stdout=serial,vidconsole\0" \
-+		"stderr=serial,vidconsole\0"
-+
- #include <configs/rk3288_common.h>
- 
- #define CONFIG_SYS_MMC_ENV_DEV 0
+diff --git a/configs/rock-pi-n8-rk3288_defconfig b/configs/rock-pi-n8-rk3288_defconfig
+index aafa2cac2a..d218852d79 100644
+--- a/configs/rock-pi-n8-rk3288_defconfig
++++ b/configs/rock-pi-n8-rk3288_defconfig
+@@ -14,6 +14,7 @@ CONFIG_DEBUG_UART=y
+ # CONFIG_ANDROID_BOOT_IMAGE is not set
+ CONFIG_USE_PREBOOT=y
+ CONFIG_SILENT_CONSOLE=y
++# CONFIG_CONSOLE_MUX is not set
+ CONFIG_DEFAULT_FDT_FILE="rk3288-rock-pi-n8.dtb"
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+ CONFIG_SPL_STACK_R=y
+@@ -74,4 +75,8 @@ CONFIG_USB_KEYBOARD=y
+ # CONFIG_USB_KEYBOARD_FN_KEYS is not set
+ CONFIG_USB_GADGET=y
+ CONFIG_USB_GADGET_DWC2_OTG=y
++CONFIG_DM_VIDEO=y
++CONFIG_DISPLAY=y
++CONFIG_VIDEO_ROCKCHIP=y
++CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+ CONFIG_ERRNO_STR=y
 -- 
 2.25.1
