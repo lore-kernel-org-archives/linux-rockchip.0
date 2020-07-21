@@ -1,61 +1,56 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v2 12/12] rockchip: rock-p-n8/n10: Disable RAM_ROCKCHIP_DEBUG
-Date: Tue, 21 Jul 2020 20:58:09 +0530
-Message-ID: <20200721152809.37927-3-jagan@amarulasolutions.com>
-References: <20200721152809.37927-1-jagan@amarulasolutions.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH v2 5/9] media: staging: rkisp1: add a pointer to
+ rkisp1_device from struct rkisp1_isp
+Date: Tue, 21 Jul 2020 17:30:07 +0200
+Message-ID: <fa457a47-4005-8c64-d135-96b321ddd6a6@collabora.com>
+References: <20200718145918.17752-1-dafna.hirschfeld@collabora.com>
+ <20200718145918.17752-6-dafna.hirschfeld@collabora.com>
+ <d8475ade-94a3-48ad-02d7-f03810ddf6dc@collabora.com>
+ <114a3242-88e9-46a1-c8c8-f5bfd424d05a@collabora.com>
+ <CAAFQd5BLuwfnQfYbaWmtre5YCx-_YG4E10cZxeL+6pESap_U0A@mail.gmail.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200721152809.37927-1-jagan@amarulasolutions.com>
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <CAAFQd5BLuwfnQfYbaWmtre5YCx-_YG4E10cZxeL+6pESap_U0A@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Helen Koike <helen.koike@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Disable ram rockchip debug driver for ROCKPi N8/N10 boards
-since we have verified ram in many instances with respective
-U-Boot versions.
+Hi,
 
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
-Changes for v2:
-- none
+On 21.07.20 14:36, Tomasz Figa wrote:
+> On Tue, Jul 21, 2020 at 2:26 PM Dafna Hirschfeld
+> <dafna.hirschfeld@collabora.com> wrote:
+>>
+>> Hi,
+>>
+>> On 20.07.20 21:25, Helen Koike wrote:
+>>>
+>>>
+>>> On 7/18/20 11:59 AM, Dafna Hirschfeld wrote:
+>>>> The code in rkisp1-isp.c requires access to struct 'rkisp1_device'
+>>>> in several places. It access it using the 'container_of' macro.
+>>>> This patch adds a pointer to 'rkisp1_device' in struct 'rkisp1_isp'
+>>>> to simplify the access.
+>>>
+>>> What is wrong with container_of?
+>>
+>> I remember Laurent suggested it a while ago.
+>> I also feel container_of is a bit cumbersome and other entities already have a pointer to rkisp1_device.
+>>
+> 
+> Do we even need the rkisp1_isp struct? Could we just pass rkisp1_device instead?
 
- configs/rock-pi-n10-rk3399pro_defconfig | 1 +
- configs/rock-pi-n8-rk3288_defconfig     | 1 +
- 2 files changed, 2 insertions(+)
+pass to where ?  You mean to the function rkisp1_mipi_csi2_start ?
 
-diff --git a/configs/rock-pi-n10-rk3399pro_defconfig b/configs/rock-pi-n10-rk3399pro_defconfig
-index 2aa2fafaa4..4a5bff44ef 100644
---- a/configs/rock-pi-n10-rk3399pro_defconfig
-+++ b/configs/rock-pi-n10-rk3399pro_defconfig
-@@ -48,6 +48,7 @@ CONFIG_PMIC_RK8XX=y
- CONFIG_REGULATOR_PWM=y
- CONFIG_REGULATOR_RK8XX=y
- CONFIG_PWM_ROCKCHIP=y
-+# CONFIG_RAM_ROCKCHIP_DEBUG is not set
- CONFIG_DM_RESET=y
- CONFIG_BAUDRATE=1500000
- CONFIG_DEBUG_UART_SHIFT=2
-diff --git a/configs/rock-pi-n8-rk3288_defconfig b/configs/rock-pi-n8-rk3288_defconfig
-index d218852d79..630ec6e491 100644
---- a/configs/rock-pi-n8-rk3288_defconfig
-+++ b/configs/rock-pi-n8-rk3288_defconfig
-@@ -64,6 +64,7 @@ CONFIG_REGULATOR_RK8XX=y
- CONFIG_PWM_ROCKCHIP=y
- CONFIG_RAM=y
- CONFIG_SPL_RAM=y
-+# CONFIG_RAM_ROCKCHIP_DEBUG is not set
- CONFIG_DEBUG_UART_SHIFT=2
- CONFIG_SYSRESET=y
- CONFIG_USB=y
--- 
-2.25.1
+Thanks,
+Dafna
+
+
+> 
+> Best regards,
+> Tomasz
+> 
