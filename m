@@ -1,14 +1,15 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Radxa ROCK Pi 4C support
-Date: Tue, 21 Jul 2020 11:10:34 +0800
-Message-ID: <a786a9ff-7ba4-c105-af18-e2a28b772f47@rock-chips.com>
-References: <20200720153056.530739-1-jagan@amarulasolutions.com>
- <20200720153056.530739-2-jagan@amarulasolutions.com>
+Subject: Re: [PATCH 01/16] ARM: dts: rockchip: Sync ROCKPi N8/N10 dts(i) from
+ Linux
+Date: Tue, 21 Jul 2020 11:14:30 +0800
+Message-ID: <4ac74911-8d03-72cb-f033-fe276bd361f2@rock-chips.com>
+References: <20200720185120.671064-1-jagan@amarulasolutions.com>
+ <20200720185120.671064-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200720153056.530739-2-jagan@amarulasolutions.com>
+In-Reply-To: <20200720185120.671064-2-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -24,203 +25,548 @@ Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.d
 List-Id: linux-rockchip.vger.kernel.org
 
 
-On 2020/7/20 下午11:30, Jagan Teki wrote:
-> Rock PI 4C has AP6256 Wifi/BT, PoE, miniDP, USB Host enabled
-> GPIO pin change compared to 4B, 4C.
+On 2020/7/21 上午2:51, Jagan Teki wrote:
+> Sync ROCKPi N8/N10 dts(i) changes from Linux.
 >
-> So, add or enable difference nodes/properties in 4C dts
-> by including common dtsi.
+> commit <afd9eb880414> ("ARM: dts: rockchip: Add Radxa Rock Pi N8 initial
+> support")
 >
+> Signed-off-by: Suniel Mahesh <sunil@amarulasolutions.com>
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
 
 Thanks,
 - Kever
 > ---
-> Note: Linux dts changes on mailing-list
-> https://lkml.org/lkml/2020/7/20/445
+>   arch/arm/dts/rk3288-rock-pi-n8.dts            |  2 +-
+>   arch/arm/dts/rk3288-vmarc-som.dtsi            | 80 ++++++-----------
+>   arch/arm/dts/rk3399pro-rock-pi-n10.dts        |  6 +-
+>   arch/arm/dts/rk3399pro-vmarc-som.dtsi         | 87 +++++++++----------
+>   .../dts/rockchip-radxa-dalang-carrier.dtsi    | 65 +++++++-------
+>   5 files changed, 104 insertions(+), 136 deletions(-)
 >
->   arch/arm/dts/Makefile                      |  1 +
->   arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi |  6 ++
->   arch/arm/dts/rk3399-rock-pi-4c.dts         | 51 +++++++++++++++
->   board/rockchip/evb_rk3399/MAINTAINERS      |  2 +
->   configs/rock-pi-4c-rk3399_defconfig        | 74 ++++++++++++++++++++++
->   5 files changed, 134 insertions(+)
->   create mode 100644 arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
->   create mode 100644 arch/arm/dts/rk3399-rock-pi-4c.dts
->   create mode 100644 configs/rock-pi-4c-rk3399_defconfig
->
-> diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-> index bcd89af6a5..5726156a2d 100644
-> --- a/arch/arm/dts/Makefile
-> +++ b/arch/arm/dts/Makefile
-> @@ -138,6 +138,7 @@ dtb-$(CONFIG_ROCKCHIP_RK3399) += \
->   	rk3399-roc-pc-mezzanine.dtb \
->   	rk3399-rock-pi-4a.dtb \
->   	rk3399-rock-pi-4b.dtb \
-> +	rk3399-rock-pi-4c.dtb \
->   	rk3399-rock960.dtb \
->   	rk3399-rockpro64.dtb \
->   	rk3399pro-rock-pi-n10.dtb
-> diff --git a/arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi b/arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
-> new file mode 100644
-> index 0000000000..85ee5770ad
-> --- /dev/null
-> +++ b/arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
-> @@ -0,0 +1,6 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +/*
-> + * Copyright (C) 2019 Jagan Teki <jagan@amarulasolutions.com>
-> + */
-> +
-> +#include "rk3399-rock-pi-4-u-boot.dtsi"
-> diff --git a/arch/arm/dts/rk3399-rock-pi-4c.dts b/arch/arm/dts/rk3399-rock-pi-4c.dts
-> new file mode 100644
-> index 0000000000..9d07ebd1ec
-> --- /dev/null
-> +++ b/arch/arm/dts/rk3399-rock-pi-4c.dts
-> @@ -0,0 +1,51 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
-> + * Copyright (c) 2019 Radxa Limited
-> + * Copyright (c) 2019 Amarula Solutions(India)
-> + */
-> +
-> +/dts-v1/;
-> +#include "rk3399-rock-pi-4.dtsi"
-> +
-> +/ {
-> +	model = "Radxa ROCK Pi 4C";
-> +	compatible = "radxa,rockpi4", "rockchip,rk3399";
-> +};
-> +
-> +&sdio0 {
-> +	status = "okay";
-> +
-> +	brcmf: wifi@1 {
-> +		compatible = "brcm,bcm4329-fmac";
-> +		reg = <1>;
-> +		interrupt-parent = <&gpio0>;
-> +		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
-> +		interrupt-names = "host-wake";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_host_wake_l>;
-> +	};
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +
-> +	bluetooth {
-> +		compatible = "brcm,bcm43438-bt";
-> +		clocks = <&rk808 1>;
-> +		clock-names = "ext_clock";
-> +		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
-> +		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
-> +		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
-> +	};
-> +};
-> +
-> +&vcc5v0_host {
-> +	gpio = <&gpio3 RK_PD6 GPIO_ACTIVE_HIGH>;
-> +};
-> +
-> +&vcc5v0_host_en {
-> +	rockchip,pins = <3 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
-> +};
-> diff --git a/board/rockchip/evb_rk3399/MAINTAINERS b/board/rockchip/evb_rk3399/MAINTAINERS
-> index 578638a58b..4c889e06a6 100644
-> --- a/board/rockchip/evb_rk3399/MAINTAINERS
-> +++ b/board/rockchip/evb_rk3399/MAINTAINERS
-> @@ -68,6 +68,8 @@ M:	Jagan Teki <jagan@amarulasolutions.com>
->   S:	Maintained
->   F:	configs/rock-pi-4-rk3399_defconfig
->   F:	arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
-> +F:	configs/rock-pi-4c-rk3399_defconfig
-> +F:	arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
+> diff --git a/arch/arm/dts/rk3288-rock-pi-n8.dts b/arch/arm/dts/rk3288-rock-pi-n8.dts
+> index c8637a50c1..c9894a60e7 100644
+> --- a/arch/arm/dts/rk3288-rock-pi-n8.dts
+> +++ b/arch/arm/dts/rk3288-rock-pi-n8.dts
+> @@ -7,8 +7,8 @@
 >   
->   ROCK-PI-N10
->   M:	Jagan Teki <jagan@amarulasolutions.com>
-> diff --git a/configs/rock-pi-4c-rk3399_defconfig b/configs/rock-pi-4c-rk3399_defconfig
-> new file mode 100644
-> index 0000000000..1d34476825
-> --- /dev/null
-> +++ b/configs/rock-pi-4c-rk3399_defconfig
-> @@ -0,0 +1,74 @@
-> +CONFIG_ARM=y
-> +CONFIG_ARCH_ROCKCHIP=y
-> +CONFIG_SYS_TEXT_BASE=0x00200000
-> +CONFIG_ENV_OFFSET=0x3F8000
-> +CONFIG_ROCKCHIP_RK3399=y
-> +CONFIG_TARGET_EVB_RK3399=y
-> +CONFIG_NR_DRAM_BANKS=1
-> +CONFIG_DEBUG_UART_BASE=0xFF1A0000
-> +CONFIG_DEBUG_UART_CLOCK=24000000
-> +CONFIG_DEBUG_UART=y
-> +# CONFIG_ANDROID_BOOT_IMAGE is not set
-> +CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4b.dtb"
-> +CONFIG_MISC_INIT_R=y
-> +CONFIG_DISPLAY_BOARDINFO_LATE=y
-> +# CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
-> +CONFIG_SPL_STACK_R=y
-> +CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
-> +CONFIG_TPL=y
-> +CONFIG_CMD_BOOTZ=y
-> +CONFIG_CMD_GPT=y
-> +CONFIG_CMD_MMC=y
-> +CONFIG_CMD_PCI=y
-> +CONFIG_CMD_USB=y
-> +# CONFIG_CMD_SETEXPR is not set
-> +CONFIG_CMD_TIME=y
-> +CONFIG_SPL_OF_CONTROL=y
-> +CONFIG_DEFAULT_DEVICE_TREE="rk3399-rock-pi-4b"
-> +CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
-> +CONFIG_ENV_IS_IN_MMC=y
-> +CONFIG_SYS_RELOC_GD_ENV_ADDR=y
-> +CONFIG_ROCKCHIP_GPIO=y
-> +CONFIG_SYS_I2C_ROCKCHIP=y
-> +CONFIG_MISC=y
-> +CONFIG_MMC_DW=y
-> +CONFIG_MMC_DW_ROCKCHIP=y
-> +CONFIG_MMC_SDHCI=y
-> +CONFIG_MMC_SDHCI_ROCKCHIP=y
-> +CONFIG_DM_ETH=y
-> +CONFIG_ETH_DESIGNWARE=y
-> +CONFIG_GMAC_ROCKCHIP=y
-> +CONFIG_NVME=y
-> +CONFIG_PCI=y
-> +CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-> +CONFIG_PHY_ROCKCHIP_TYPEC=y
-> +CONFIG_PMIC_RK8XX=y
-> +CONFIG_REGULATOR_PWM=y
-> +CONFIG_REGULATOR_RK8XX=y
-> +CONFIG_PWM_ROCKCHIP=y
-> +CONFIG_RAM_RK3399_LPDDR4=y
-> +CONFIG_DM_RESET=y
-> +CONFIG_BAUDRATE=1500000
-> +CONFIG_DEBUG_UART_SHIFT=2
-> +CONFIG_SYSRESET=y
-> +CONFIG_USB=y
-> +CONFIG_USB_XHCI_HCD=y
-> +CONFIG_USB_XHCI_DWC3=y
-> +CONFIG_USB_EHCI_HCD=y
-> +CONFIG_USB_EHCI_GENERIC=y
-> +CONFIG_USB_DWC3=y
-> +CONFIG_USB_DWC3_GENERIC=y
-> +CONFIG_USB_KEYBOARD=y
-> +CONFIG_USB_GADGET=y
-> +CONFIG_USB_HOST_ETHER=y
-> +CONFIG_USB_ETHER_ASIX=y
-> +CONFIG_USB_ETHER_ASIX88179=y
-> +CONFIG_USB_ETHER_MCS7830=y
-> +CONFIG_USB_ETHER_RTL8152=y
-> +CONFIG_USB_ETHER_SMSC95XX=y
-> +CONFIG_DM_VIDEO=y
-> +CONFIG_DISPLAY=y
-> +CONFIG_VIDEO_ROCKCHIP=y
-> +CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-> +CONFIG_SPL_TINY_MEMSET=y
-> +CONFIG_ERRNO_STR=y
+>   /dts-v1/;
+>   #include "rk3288.dtsi"
+> -#include "rk3288-vmarc-som.dtsi"
+>   #include <rockchip-radxa-dalang-carrier.dtsi>
+> +#include "rk3288-vmarc-som.dtsi"
+>   
+>   / {
+>   	model = "Radxa ROCK Pi N8";
+> diff --git a/arch/arm/dts/rk3288-vmarc-som.dtsi b/arch/arm/dts/rk3288-vmarc-som.dtsi
+> index 3cffe61cdf..7a9fd40e5b 100644
+> --- a/arch/arm/dts/rk3288-vmarc-som.dtsi
+> +++ b/arch/arm/dts/rk3288-vmarc-som.dtsi
+> @@ -7,35 +7,17 @@
+>   
+>   #include <dt-bindings/gpio/gpio.h>
+>   #include <dt-bindings/pinctrl/rockchip.h>
+> -#include <dt-bindings/pwm/pwm.h>
+>   
+>   / {
+>   	compatible = "vamrs,rk3288-vmarc-som", "rockchip,rk3288";
+>   
+> -	ext_gmac: external-gmac-clock {
+> -		compatible = "fixed-clock";
+> -		clock-frequency = <125000000>;
+> -		clock-output-names = "ext_gmac";
+> -		#clock-cells = <0>;
+> -	};
+> -
+>   	vccio_flash: vccio-flash-regulator {
+>   		compatible = "regulator-fixed";
+>   		regulator-name = "vccio_flash";
+>   		regulator-min-microvolt = <1800000>;
+>   		regulator-max-microvolt = <1800000>;
+> -		startup-delay-us = <150>;
+>   		vin-supply = <&vcc_io>;
+>   	};
+> -
+> -	vcc_sys: vsys-regulator {
+> -		compatible = "regulator-fixed";
+> -		regulator-name = "vcc_sys";
+> -		regulator-min-microvolt = <5000000>;
+> -		regulator-max-microvolt = <5000000>;
+> -		regulator-always-on;
+> -		regulator-boot-on;
+> -	};
+>   };
+>   
+>   &emmc {
+> @@ -45,23 +27,15 @@
+>   	non-removable;
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_pwr &emmc_bus8>;
+> +	vmmc-supply = <&vcc_io>;
+> +	vqmmc-supply = <&vccio_flash>;
+>   	status = "okay";
+>   };
+>   
+>   &gmac {
+>   	assigned-clocks = <&cru SCLK_MAC>;
+> -	assigned-clock-parents = <&ext_gmac>;
+> -	clock_in_out = "input";
+> -	phy-mode = "rgmii";
+>   	phy-supply = <&vcc_io>;
+> -	pinctrl-names = "default";
+> -	pinctrl-0 = <&rgmii_pins>;
+>   	snps,reset-gpio = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
+> -	snps,reset-active-low;
+> -	snps,reset-delays-us = <0 10000 50000>;
+> -	tx_delay = <0x30>;
+> -	rx_delay = <0x10>;
+> -	max-speed = <1000>;
+>   };
+>   
+>   &i2c0 {
+> @@ -80,37 +54,37 @@
+>   		#clock-cells = <1>;
+>   		clock-output-names = "rk808-clkout1", "rk808-clkout2";
+>   
+> -		vcc1-supply = <&vcc_sys>;
+> -		vcc2-supply = <&vcc_sys>;
+> -		vcc3-supply = <&vcc_sys>;
+> -		vcc4-supply = <&vcc_sys>;
+> -		vcc6-supply = <&vcc_sys>;
+> -		vcc7-supply = <&vcc_sys>;
+> +		vcc1-supply = <&vcc5v0_sys>;
+> +		vcc2-supply = <&vcc5v0_sys>;
+> +		vcc3-supply = <&vcc5v0_sys>;
+> +		vcc4-supply = <&vcc5v0_sys>;
+> +		vcc6-supply = <&vcc5v0_sys>;
+> +		vcc7-supply = <&vcc5v0_sys>;
+>   		vcc8-supply = <&vcc_io>;
+>   		vcc9-supply = <&vcc_io>;
+> -		vcc10-supply = <&vcc_sys>;
+> -		vcc11-supply = <&vcc_sys>;
+> +		vcc10-supply = <&vcc5v0_sys>;
+> +		vcc11-supply = <&vcc5v0_sys>;
+>   		vcc12-supply = <&vcc_io>;
+>   		vddio-supply = <&vcc_io>;
+>   
+>   		regulators {
+>   			vdd_cpu: DCDC_REG1 {
+> +				regulator-name = "vdd_arm";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <750000>;
+>   				regulator-max-microvolt = <1400000>;
+> -				regulator-name = "vdd_arm";
+>   				regulator-state-mem {
+>   					regulator-off-in-suspend;
+>   				};
+>   			};
+>   
+>   			vdd_gpu: DCDC_REG2 {
+> +				regulator-name = "vdd_gpu";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <850000>;
+>   				regulator-max-microvolt = <1250000>;
+> -				regulator-name = "vdd_gpu";
+>   				regulator-ramp-delay = <6000>;
+>   				regulator-state-mem {
+>   					regulator-off-in-suspend;
+> @@ -118,20 +92,20 @@
+>   			};
+>   
+>   			vcc_ddr: DCDC_REG3 {
+> +				regulator-name = "vcc_ddr";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+> -				regulator-name = "vcc_ddr";
+>   				regulator-state-mem {
+>   					regulator-on-in-suspend;
+>   				};
+>   			};
+>   
+>   			vcc_io: DCDC_REG4 {
+> +				regulator-name = "vcc_io";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <3300000>;
+>   				regulator-max-microvolt = <3300000>;
+> -				regulator-name = "vcc_io";
+>   				regulator-state-mem {
+>   					regulator-on-in-suspend;
+>   					regulator-suspend-microvolt = <3300000>;
+> @@ -139,22 +113,22 @@
+>   			};
+>   
+>   			vcc_tp: LDO_REG1 {
+> +				regulator-name = "vcc_tp";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <3300000>;
+>   				regulator-max-microvolt = <3300000>;
+> -				regulator-name = "vcc_tp";
+>   				regulator-state-mem {
+>   					regulator-off-in-suspend;
+>   				};
+>   			};
+>   
+>   			vcca_codec: LDO_REG2 {
+> +				regulator-name = "vcca_codec";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <3300000>;
+>   				regulator-max-microvolt = <3300000>;
+> -				regulator-name = "vcca_codec";
+>   				regulator-state-mem {
+>   					regulator-on-in-suspend;
+>   					regulator-suspend-microvolt = <3300000>;
+> @@ -162,11 +136,11 @@
+>   			};
+>   
+>   			vdd_10: LDO_REG3 {
+> +				regulator-name = "vdd_10";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <1000000>;
+>   				regulator-max-microvolt = <1000000>;
+> -				regulator-name = "vdd_10";
+>   				regulator-state-mem {
+>   					regulator-on-in-suspend;
+>   					regulator-suspend-microvolt = <1000000>;
+> @@ -174,22 +148,22 @@
+>   			};
+>   
+>   			vcc_wl: LDO_REG4 {
+> +				regulator-name = "vcc_wl";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <1800000>;
+>   				regulator-max-microvolt = <1800000>;
+> -				regulator-name = "vcc_wl";
+>   				regulator-state-mem {
+>   					regulator-on-in-suspend;
+>   				};
+>   			};
+>   
+>   			vccio_sd: LDO_REG5 {
+> +				regulator-name = "vccio_sd";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <1800000>;
+>   				regulator-max-microvolt = <3300000>;
+> -				regulator-name = "vccio_sd";
+>   				regulator-state-mem {
+>   					regulator-on-in-suspend;
+>   					regulator-suspend-microvolt = <3300000>;
+> @@ -197,22 +171,22 @@
+>   			};
+>   
+>   			vdd10_lcd: LDO_REG6 {
+> +				regulator-name = "vdd10_lcd";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <1000000>;
+>   				regulator-max-microvolt = <1000000>;
+> -				regulator-name = "vdd10_lcd";
+>   				regulator-state-mem {
+>   					regulator-off-in-suspend;
+>   				};
+>   			};
+>   
+>   			vcc_18: LDO_REG7 {
+> +				regulator-name = "vcc_18";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <1800000>;
+>   				regulator-max-microvolt = <1800000>;
+> -				regulator-name = "vcc_18";
+>   				regulator-state-mem {
+>   					regulator-on-in-suspend;
+>   					regulator-suspend-microvolt = <1800000>;
+> @@ -220,29 +194,29 @@
+>   			};
+>   
+>   			vcc18_lcd: LDO_REG8 {
+> +				regulator-name = "vcc18_lcd";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+>   				regulator-min-microvolt = <1800000>;
+>   				regulator-max-microvolt = <1800000>;
+> -				regulator-name = "vcc18_lcd";
+>   				regulator-state-mem {
+>   					regulator-off-in-suspend;
+>   				};
+>   			};
+>   
+>   			vcc_sd: SWITCH_REG1 {
+> +				regulator-name = "vcc_sd";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+> -				regulator-name = "vcc_sd";
+>   				regulator-state-mem {
+>   					regulator-off-in-suspend;
+>   				};
+>   			};
+>   
+>   			vcc_lcd: SWITCH_REG2 {
+> +				regulator-name = "vcc_lcd";
+>   				regulator-always-on;
+>   				regulator-boot-on;
+> -				regulator-name = "vcc_lcd";
+>   				regulator-state-mem {
+>   					regulator-off-in-suspend;
+>   				};
+> @@ -277,13 +251,11 @@
+>   		};
+>   
+>   		sdmmc_clk: sdmmc-clk {
+> -			rockchip,pins =
+> -				<6 RK_PC4 1 &pcfg_pull_none_drv_8ma>;
+> +			rockchip,pins = <6 RK_PC4 1 &pcfg_pull_none_drv_8ma>;
+>   		};
+>   
+>   		sdmmc_cmd: sdmmc-cmd {
+> -			rockchip,pins =
+> -				<6 RK_PC5 1 &pcfg_pull_up_drv_8ma>;
+> +			rockchip,pins = <6 RK_PC5 1 &pcfg_pull_up_drv_8ma>;
+>   		};
+>   	};
+>   };
+> diff --git a/arch/arm/dts/rk3399pro-rock-pi-n10.dts b/arch/arm/dts/rk3399pro-rock-pi-n10.dts
+> index 6ac2d4d721..bf026786fa 100644
+> --- a/arch/arm/dts/rk3399pro-rock-pi-n10.dts
+> +++ b/arch/arm/dts/rk3399pro-rock-pi-n10.dts
+> @@ -8,11 +8,15 @@
+>   /dts-v1/;
+>   #include "rk3399.dtsi"
+>   #include "rk3399-opp.dtsi"
+> -#include "rk3399pro-vmarc-som.dtsi"
+>   #include <rockchip-radxa-dalang-carrier.dtsi>
+> +#include "rk3399pro-vmarc-som.dtsi"
+>   
+>   / {
+>   	model = "Radxa ROCK Pi N10";
+>   	compatible = "radxa,rockpi-n10", "vamrs,rk3399pro-vmarc-som",
+>   		     "rockchip,rk3399pro";
+> +
+> +	chosen {
+> +		stdout-path = "serial2:1500000n8";
+> +	};
+>   };
+> diff --git a/arch/arm/dts/rk3399pro-vmarc-som.dtsi b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
+> index 6fd17e8a81..37ed95d5f7 100644
+> --- a/arch/arm/dts/rk3399pro-vmarc-som.dtsi
+> +++ b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
+> @@ -11,32 +11,6 @@
+>   
+>   / {
+>   	compatible = "vamrs,rk3399pro-vmarc-som", "rockchip,rk3399pro";
+> -
+> -	clkin_gmac: external-gmac-clock {
+> -		compatible = "fixed-clock";
+> -		clock-frequency = <125000000>;
+> -		clock-output-names = "clkin_gmac";
+> -		#clock-cells = <0>;
+> -	};
+> -
+> -	vcc12v_dcin: vcc12v-dcin-regulator {
+> -		compatible = "regulator-fixed";
+> -		regulator-name = "vcc12v_dcin";
+> -		regulator-always-on;
+> -		regulator-boot-on;
+> -		regulator-min-microvolt = <12000000>;
+> -		regulator-max-microvolt = <12000000>;
+> -	};
+> -
+> -	vcc5v0_sys: vcc5v0-sys-regulator {
+> -		compatible = "regulator-fixed";
+> -		regulator-name = "vcc5v0_sys";
+> -		regulator-always-on;
+> -		regulator-boot-on;
+> -		regulator-min-microvolt = <5000000>;
+> -		regulator-max-microvolt = <5000000>;
+> -		vin-supply = <&vcc12v_dcin>;
+> -	};
+>   };
+>   
+>   &cpu_l0 {
+> @@ -61,23 +35,14 @@
+>   
+>   &gmac {
+>   	assigned-clocks = <&cru SCLK_RMII_SRC>;
+> -	assigned-clock-parents = <&clkin_gmac>;
+> -	clock_in_out = "input";
+>   	phy-supply = <&vcc_lan>;
+> -	phy-mode = "rgmii";
+> -	pinctrl-names = "default";
+> -	pinctrl-0 = <&rgmii_pins>;
+>   	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
+> -	snps,reset-active-low;
+> -	snps,reset-delays-us = <0 10000 50000>;
+> -	tx_delay = <0x28>;
+> -	rx_delay = <0x11>;
+>   };
+>   
+>   &i2c0 {
+>   	clock-frequency = <400000>;
+> -	i2c-scl-rising-time-ns = <180>;
+>   	i2c-scl-falling-time-ns = <30>;
+> +	i2c-scl-rising-time-ns = <180>;
+>   	status = "okay";
+>   
+>   	rk809: pmic@20 {
+> @@ -297,11 +262,48 @@
+>   	};
+>   };
+>   
+> +&i2c1 {
+> +	i2c-scl-falling-time-ns = <30>;
+> +	i2c-scl-rising-time-ns = <140>;
+> +	status = "okay";
+> +};
+> +
+> +&i2c2 {
+> +	clock-frequency = <400000>;
+> +	status = "okay";
+> +
+> +	hym8563: hym8563@51 {
+> +		compatible = "haoyu,hym8563";
+> +		reg = <0x51>;
+> +		#clock-cells = <0>;
+> +		clock-frequency = <32768>;
+> +		clock-output-names = "hym8563";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&hym8563_int>;
+> +		interrupt-parent = <&gpio4>;
+> +		interrupts = <RK_PD6 IRQ_TYPE_LEVEL_LOW>;
+> +	};
+> +};
+> +
+>   &io_domains {
+>   	status = "okay";
+>   	bt656-supply = <&vcca_1v8>;
+> -	sdmmc-supply = <&vccio_sd>;
+>   	gpio1830-supply = <&vccio_3v0>;
+> +	sdmmc-supply = <&vccio_sd>;
+> +};
+> +
+> +&pinctrl {
+> +	hym8563 {
+> +		hym8563_int: hym8563-int {
+> +			rockchip,pins = <4 RK_PD6 0 &pcfg_pull_up>;
+> +		};
+> +	};
+> +
+> +	pmic {
+> +		pmic_int_l: pmic-int-l {
+> +			rockchip,pins = <1 RK_PC2 0 &pcfg_pull_up>;
+> +		};
+> +	};
+>   };
+>   
+>   &pmu_io_domains {
+> @@ -323,16 +325,7 @@
+>   };
+>   
+>   &tsadc {
+> -	status = "okay";
+>   	rockchip,hw-tshut-mode = <1>;
+>   	rockchip,hw-tshut-polarity = <1>;
+> -};
+> -
+> -&pinctrl {
+> -	pmic {
+> -		pmic_int_l: pmic-int-l {
+> -			rockchip,pins =
+> -				<1 RK_PC2 0 &pcfg_pull_up>;
+> -		};
+> -	};
+> +	status = "okay";
+>   };
+> diff --git a/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi b/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi
+> index 3e54f38f0a..450e5bb5af 100644
+> --- a/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi
+> +++ b/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi
+> @@ -8,36 +8,44 @@
+>   #include <dt-bindings/pwm/pwm.h>
+>   
+>   / {
+> -	chosen {
+> -		stdout-path = "serial2:1500000n8";
+> +	clkin_gmac: external-gmac-clock {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <125000000>;
+> +		clock-output-names = "clkin_gmac";
+> +		#clock-cells = <0>;
+>   	};
+> -};
+>   
+> -&gmac {
+> -	status = "okay";
+> -};
+> +	vcc12v_dcin: vcc12v-dcin-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc12v_dcin";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <12000000>;
+> +		regulator-max-microvolt = <12000000>;
+> +	};
+>   
+> -&i2c1 {
+> -	status = "okay";
+> -	i2c-scl-rising-time-ns = <140>;
+> -	i2c-scl-falling-time-ns = <30>;
+> +	vcc5v0_sys: vcc5v0-sys-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc5v0_sys";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		vin-supply = <&vcc12v_dcin>;
+> +	};
+>   };
+>   
+> -&i2c2 {
+> +&gmac {
+> +	assigned-clock-parents = <&clkin_gmac>;
+> +	clock_in_out = "input";
+> +	phy-mode = "rgmii";
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&rgmii_pins>;
+> +	snps,reset-active-low;
+> +	snps,reset-delays-us = <0 10000 50000>;
+> +	tx_delay = <0x28>;
+> +	rx_delay = <0x11>;
+>   	status = "okay";
+> -	clock-frequency = <400000>;
+> -
+> -	hym8563: hym8563@51 {
+> -		compatible = "haoyu,hym8563";
+> -		reg = <0x51>;
+> -		#clock-cells = <0>;
+> -		clock-frequency = <32768>;
+> -		clock-output-names = "hym8563";
+> -		pinctrl-names = "default";
+> -		pinctrl-0 = <&hym8563_int>;
+> -		interrupt-parent = <&gpio4>;
+> -		interrupts = <30 IRQ_TYPE_LEVEL_LOW>;
+> -	};
+>   };
+>   
+>   &pwm0 {
+> @@ -68,12 +76,3 @@
+>   &uart2 {
+>   	status = "okay";
+>   };
+> -
+> -&pinctrl {
+> -	hym8563 {
+> -		hym8563_int: hym8563-int {
+> -			rockchip,pins =
+> -				<4 RK_PD6 0 &pcfg_pull_up>;
+> -		};
+> -	};
+> -};
