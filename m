@@ -1,47 +1,89 @@
-From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-Subject: Re: Speaker pops with max98357a on rk3399-gru-kevin since v5.7
-Date: Tue, 21 Jul 2020 01:40:14 +0300
-Message-ID: <846feea6-e2b6-3a0e-b05f-d70e898f9ea5@gmail.com>
-References: <f2ca985f-7dbd-847a-1875-dd0e1044ef02@gmail.com>
- <CA+Px+wU1S1EqtW-yZH9z9aCF3ggSriBqy73SRYy8q61x0GkdQQ@mail.gmail.com>
+From: Andy Yan <andy.yan@rock-chips.com>
+Subject: =?UTF-8?Q?Re=3a_=5bPATCH_2/5=5d_drm=3a_rockchip=3a_add_missing_regi?=
+ =?UTF-8?B?c3RlcnMgZm9yIFJLMzE4OOOAkOivt+azqOaEj++8jOmCruS7tueUsWxpbnV4LXJv?=
+ =?UTF-8?Q?ckchip-bounces+andy=2eyan=3drock-chips=2ecom=40lists=2einfradead?=
+ =?UTF-8?B?Lm9yZ+S7o+WPkeOAkQ==?=
+Date: Tue, 21 Jul 2020 09:17:31 +0800
+Message-ID: <c53a4909-03ff-7477-fb71-1418cf97634b@rock-chips.com>
+References: <20200718200323.3559-1-knaerzche@gmail.com>
+ <20200718200323.3559-3-knaerzche@gmail.com>
+ <871ce1ac-2d5b-c0a2-60a6-6aba0f296c18@rock-chips.com>
+ <12296860-d6ed-5135-7c4e-545362829051@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CA+Px+wU1S1EqtW-yZH9z9aCF3ggSriBqy73SRYy8q61x0GkdQQ@mail.gmail.com>
+In-Reply-To: <12296860-d6ed-5135-7c4e-545362829051@gmail.com>
 Content-Language: en-US
 Sender: linux-kernel-owner@vger.kernel.org
-To: Tzung-Bi Shih <tzungbi@google.com>
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, ALSA development <alsa-devel@alsa-project.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org
+To: Alex Bee <knaerzche@gmail.com>, Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+Cc: David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>, linux-arm-kernel@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 17/07/2020 05:27, Tzung-Bi Shih wrote:
-> I am not convinced the pop comes from 128f825aeab7.
+Hi Alex:
 
-Maybe some pre-existing defect in rk3399_gru_sound got exposed by
-128f825aeab7 or the machine driver needs some changes to complement
-that commit?
+On 7/20/20 10:46 PM, Alex Bee wrote:
+> Hi Andy,
+>
+> Am 20.07.20 um 10:22 schrieb Andy Yan:
+>> Hi Alex:
+>>
+>> On 7/19/20 4:03 AM, Alex Bee wrote:
+>>> This patch adds dither_up, dsp_lut_en, data_blank and dsp_data_swap
+>>> registers to enable their respective functionality for RK3188's VOP.
+>>>
+>>> Signed-off-by: Alex Bee <knaerzche@gmail.com>
+>>> ---
+>>>   drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 4 ++++
+>>>   1 file changed, 4 insertions(+)
+>>>
+>>> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c 
+>>> b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+>>> index b046910129fb..971a6bda7458 100644
+>>> --- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+>>> +++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+>>> @@ -512,6 +512,10 @@ static const struct vop_common rk3188_common = {
+>>>       .dither_down_en = VOP_REG(RK3188_DSP_CTRL0, 0x1, 11),
+>>>       .dither_down_mode = VOP_REG(RK3188_DSP_CTRL0, 0x1, 10),
+>>>       .dsp_blank = VOP_REG(RK3188_DSP_CTRL1, 0x3, 24),
+>>> +    .dither_up = VOP_REG(RK3188_DSP_CTRL0, 0x1, 9),
+>>> +    .dsp_lut_en = VOP_REG(RK3188_SYS_CTRL, 0x1, 28),
+>>> +    .data_blank = VOP_REG(RK3188_DSP_CTRL1, 0x1, 25),
+>>> +    .dsp_data_swap = VOP_REG(RK3188_DSP_CTRL1, 0x1f, 26),
+>>
+>>
+>>
+>> I can't find the definition of dsp_data_swap, or I missed something?
+>>
+> Note that .dsp_data_swap is not defined with that name in TRM (as it 
+> is not in RK3288/RK3328), since potentially more the one bit would 
+> have to be set for this (currently only RB_SWAP (0x2) is implemented 
+> in the VOP driver).
+>
 
-> (I don't have a rk3399-gru-kevin so I got another test machine with MAX98357A.)
-> (I was testing with and without an audio server.)
+I mean I didn't find the definition of dsp_data_swap  in struct 
+vop_comm, I even search drm-misc-next tree.
 
-Your observations are also a bit different from mine, which IMO also
-suggests the machine driver is the true culprit -- I'd guess the pops
-you hear would be from a different problem in your test machine's
-machine driver?
 
-(Let me restate my observations to contrast with yours, as I feel my
-previous explanation was too wordy:)
-
-> Observations:
-> - I can hear the pop either with or without 128f825aeab7 (with and
-> without sdmode-delay).
-
-I never hear pops without 128f825aeab7, but always hear pops with it.
-(no change when I remove "sdmode-delay" from the device-tree)
-
-> - The pop noise is not always.  Higher probability after stopping
-> playback than before starting.
-
-I always hear one pop when starting playback, and two pops (with a few
-seconds between them) when stopping playback.
+> To be some kind of future proof (if BG_SWAP, RG_SWAP, DELTA_SWAP or 
+> DUMMY_SWAP ever get implemented) it should be aligned with what is 
+> defined for RK3288/RK3328 now to automatically benefit from that 
+> additions. And it would, since RK3288_DSP_CTRL0 BIT12, BIT13, BIT14, 
+> BIT15, BIT16 exactly matches with RK3188_DSP_CTRL1 BIT26, BIT27, 
+> BIT28, BIT29, BIT30.
+>
+> Current implementation sets BIT13 for RK3288 and with this patch BIT27 
+> for RK3188 to enable RB_SWAP.
+>
+>>
+>>
+>>>   };
+>>>     static const struct vop_win_data rk3188_vop_win_data[] = {
+>>
+>>
+> Regards,
+>
+> Alex
+>
+>
+>
