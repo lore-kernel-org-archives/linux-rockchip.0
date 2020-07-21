@@ -1,9 +1,10 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v6 3/5] rockchip: Don't clear the reset status reg
-Date: Tue, 21 Jul 2020 20:36:02 +0530
-Message-ID: <20200721150604.35410-4-jagan@amarulasolutions.com>
+Subject: [PATCH v6 4/5] rockchip: Separate the reset cause from display cpuinfo
+Date: Tue, 21 Jul 2020 20:36:03 +0530
+Message-ID: <20200721150604.35410-5-jagan@amarulasolutions.com>
 References: <20200721150604.35410-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
 In-Reply-To: <20200721150604.35410-1-jagan@amarulasolutions.com>
@@ -20,56 +21,107 @@ To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@the
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-reset reason can be used several stages of U-Boot bootloader
-like SPL, U-Boot proper based on the requirements.
+reset cause is a generic functionality based on the soc
+cru registers in rockchip. This can be used for printing
+the cause of reset in cpuinfo or some other place where
+reset cause is needed. 
 
-Clearing the status register end of get_reset_cause will end
-up showing the wrong reset cause when it read the second time.
-For example, if board resets, SPL reads the reset status as
-RST whereas U-Boot proper reads the status as POR.
+Other than cpuinfo, reset cause can also be using during
+bootcount for checking the specific reset cause and glow
+the led based on the reset cause.
 
-However, based on the latest testing clearing reset status
-won't be required for determine the last reset cause or
-following resets.
+So, let's separate the reset cause code from cpuinfo, and
+add a check to build it for rk3399, rk3288 since these two
+soc are supporting reset cause as of now.
 
+Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
 ---
 Changes for v6:
 - collect Kever r-b
 
- arch/arm/include/asm/arch-rockchip/cru.h | 1 -
- arch/arm/mach-rockchip/cpu-info.c        | 6 ------
- 2 files changed, 7 deletions(-)
+ arch/arm/include/asm/arch-rockchip/cru.h |  2 ++
+ arch/arm/mach-rockchip/Makefile          |  5 ++++-
+ arch/arm/mach-rockchip/cpu-info.c        | 20 ++++++++++++--------
+ 3 files changed, 18 insertions(+), 9 deletions(-)
 
 diff --git a/arch/arm/include/asm/arch-rockchip/cru.h b/arch/arm/include/asm/arch-rockchip/cru.h
-index 5eb17f9d55..d2057cb738 100644
+index d2057cb738..13ea4aba8e 100644
 --- a/arch/arm/include/asm/arch-rockchip/cru.h
 +++ b/arch/arm/include/asm/arch-rockchip/cru.h
-@@ -26,7 +26,6 @@ enum {
- 	SND_GLB_TSADC_RST_ST	= BIT(3),
- 	FST_GLB_WDT_RST_ST	= BIT(4),
- 	SND_GLB_WDT_RST_ST	= BIT(5),
--	GLB_RST_ST_MASK		= GENMASK(5, 0),
- };
+@@ -30,4 +30,6 @@ enum {
  
  #define MHz		1000000
+ 
++char *get_reset_cause(void);
++
+ #endif /* _ROCKCHIP_CLOCK_H */
+diff --git a/arch/arm/mach-rockchip/Makefile b/arch/arm/mach-rockchip/Makefile
+index 5b38526fe0..121f23a563 100644
+--- a/arch/arm/mach-rockchip/Makefile
++++ b/arch/arm/mach-rockchip/Makefile
+@@ -22,11 +22,14 @@ ifeq ($(CONFIG_SPL_BUILD)$(CONFIG_TPL_BUILD),)
+ # we can have the preprocessor correctly recognise both 0x0 and 0
+ # meaning "turn it off".
+ obj-y += boot_mode.o
+-obj-$(CONFIG_DISPLAY_CPUINFO) += cpu-info.o
+ obj-$(CONFIG_ROCKCHIP_COMMON_BOARD) += board.o
+ obj-$(CONFIG_MISC_INIT_R) += misc.o
+ endif
+ 
++ifeq ($(CONFIG_TPL_BUILD),)
++obj-$(CONFIG_DISPLAY_CPUINFO) += cpu-info.o
++endif
++
+ obj-$(CONFIG_$(SPL_TPL_)RAM) += sdram.o
+ 
+ obj-$(CONFIG_ROCKCHIP_PX30) += px30/
 diff --git a/arch/arm/mach-rockchip/cpu-info.c b/arch/arm/mach-rockchip/cpu-info.c
-index 21ca9dedce..bb5a198039 100644
+index bb5a198039..d0f030109f 100644
 --- a/arch/arm/mach-rockchip/cpu-info.c
 +++ b/arch/arm/mach-rockchip/cpu-info.c
-@@ -47,12 +47,6 @@ static char *get_reset_cause(void)
- 	 */
- 	env_set("reset_reason", cause);
+@@ -13,7 +13,7 @@
+ #include <asm/arch-rockchip/hardware.h>
+ #include <linux/err.h>
  
--	/*
--	 * Clear glb_rst_st, so we can determine the last reset cause
--	 * for following resets.
+-static char *get_reset_cause(void)
++char *get_reset_cause(void)
+ {
+ 	struct rockchip_cru *cru = rockchip_get_cru();
+ 	char *cause = NULL;
+@@ -41,21 +41,25 @@ static char *get_reset_cause(void)
+ 		cause = "unknown reset";
+ 	}
+ 
+-	/**
+-	 * reset_reason env is used by rk3288, due to special use case
+-	 * to figure it the boot behavior. so keep this as it is.
 -	 */
--	rk_clrreg(&cru->glb_rst_st, GLB_RST_ST_MASK);
+-	env_set("reset_reason", cause);
 -
  	return cause;
  }
  
++#if CONFIG_IS_ENABLED(DISPLAY_CPUINFO)
+ int print_cpuinfo(void)
+ {
++	char *cause = get_reset_cause();
++
+ 	printf("SoC: Rockchip %s\n", CONFIG_SYS_SOC);
+-	printf("Reset cause: %s\n", get_reset_cause());
++	printf("Reset cause: %s\n", cause);
++
++	/**
++	 * reset_reason env is used by rk3288, due to special use case
++	 * to figure it the boot behavior. so keep this as it is.
++	 */
++	env_set("reset_reason", cause);
+ 
+ 	/* TODO print operating temparature and clock */
+ 
+ 	return 0;
+ }
++#endif
 -- 
 2.25.1
