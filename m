@@ -1,74 +1,92 @@
-From: Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Subject: [PATCH 3/3] ARM: dts: rockchip: Remove 0 point in backlight
-Date: Mon, 20 Jul 2020 21:25:22 -0700
-Message-ID: <20200720212502.3.I96b8d872ec51171f19274e43e96cadc092881271@changeid>
-References: <20200721042522.2403410-1-amstan@chromium.org>
+From: Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH 03/16] ARM: dts: rockchip: Add usb host0 ohci node for
+ rk3288
+Date: Tue, 21 Jul 2020 11:56:03 +0530
+Message-ID: <CAMty3ZAPvmVECdRYNwxxhsfXB2guHqMDCBSqkFpUW_FgjgxTSQ@mail.gmail.com>
+References: <20200720185120.671064-1-jagan@amarulasolutions.com>
+ <20200720185120.671064-4-jagan@amarulasolutions.com>
+ <0b2fbd84-2ee3-5a8b-7a33-d9fab2160e16@rock-chips.com>
 Mime-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200721042522.2403410-1-amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Cc: Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <0b2fbd84-2ee3-5a8b-7a33-d9fab2160e16@rock-chips.com>
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Kever Yang <kever.yang@rock-chips.com>
+Cc: Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>, Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-After the "PWM backlight interpolation adjustments" patches, the
-backlight interpolation works a little differently. The way these
-dts files were working before was relying on a bug (IMHO).
+Hi Kever,
 
-Remove the 0-3 range since otherwise we would have a 252 long
-interpolation that would slowly go between 0 and 3, looking really bad
-in userspace.
+On Tue, Jul 21, 2020 at 8:48 AM Kever Yang <kever.yang@rock-chips.com> wrot=
+e:
+>
+> HI Jagan,
+>
+>      Does patch 3~6 also from mainline kernel?
 
-We'll still have the 0% point available to userspace, "backlight:
-pwm_bl: Artificially add 0% during interpolation" takes care of that.
+Yes, in mailing lists.
 
-Signed-off-by: Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
----
 
- arch/arm/boot/dts/rk3288-veyron-jaq.dts    | 2 +-
- arch/arm/boot/dts/rk3288-veyron-minnie.dts | 2 +-
- arch/arm/boot/dts/rk3288-veyron-tiger.dts  | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+>
+> Thanks,
+>
+> - Kever
+>
+> On 2020/7/21 =E4=B8=8A=E5=8D=882:51, Jagan Teki wrote:
+> > rk3288 and rk3288w have a usb host0 ohci controller.
+> >
+> > Although rk3288 ohci doesn't actually work on hardware, but
+> > rk3288w ohci can work well.
+> >
+> > So add usb host0 ohci node in rk3288 dtsi and the quirk in
+> > ohci platform driver will disable ohci on rk3288.
+> >
+> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> > ---
+> >   arch/arm/dts/rk3288.dtsi | 11 ++++++++++-
+> >   1 file changed, 10 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/arch/arm/dts/rk3288.dtsi b/arch/arm/dts/rk3288.dtsi
+> > index 18b372db3a..22bb06cec5 100644
+> > --- a/arch/arm/dts/rk3288.dtsi
+> > +++ b/arch/arm/dts/rk3288.dtsi
+> > @@ -431,7 +431,16 @@
+> >               status =3D "disabled";
+> >       };
+> >
+> > -     /* NOTE: ohci@ff520000 doesn't actually work on hardware */
+> > +     /* NOTE: doesn't work on RK3288, but fixed on RK3288W */
+> > +     usb_host0_ohci: usb@ff520000 {
+> > +             compatible =3D "generic-ohci";
+> > +             reg =3D <0x0 0xff520000 0x0 0x100>;
+> > +             interrupts =3D <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
+> > +             clocks =3D <&cru HCLK_USBHOST0>;
+> > +             phys =3D <&usbphy1>;
+> > +             phy-names =3D "usb";
+> > +             status =3D "disabled";
+> > +     };
+> >
+> >       usb_host1: usb@ff540000 {
+> >               compatible =3D "rockchip,rk3288-usb", "rockchip,rk3066-us=
+b",
+>
+>
 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-jaq.dts b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-index 171ba6185b6d..af4b21636c08 100644
---- a/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-@@ -20,7 +20,7 @@ / {
- 
- &backlight {
- 	/* Jaq panel PWM must be >= 3%, so start non-zero brightness at 8 */
--	brightness-levels = <0 8 255>;
-+	brightness-levels = <8 255>;
- 	num-interpolated-steps = <247>;
- };
- 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-index 383fad1a88a1..b25aa2f3cbee 100644
---- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-@@ -39,7 +39,7 @@ volum_up {
- 
- &backlight {
- 	/* Minnie panel PWM must be >= 1%, so start non-zero brightness at 3 */
--	brightness-levels = <0 3 255>;
-+	brightness-levels = <3 255>;
- 	num-interpolated-steps = <252>;
- };
- 
-diff --git a/arch/arm/boot/dts/rk3288-veyron-tiger.dts b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-index 069f0c2c1fdf..52a84cbe7a90 100644
---- a/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-+++ b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-@@ -23,7 +23,7 @@ / {
- 
- &backlight {
- 	/* Tiger panel PWM must be >= 1%, so start non-zero brightness at 3 */
--	brightness-levels = <0 3 255>;
-+	brightness-levels = <3 255>;
- 	num-interpolated-steps = <252>;
- };
- 
--- 
-2.27.0
+
+--
+Jagan Teki,
+Amarula Solutions India Pvt. Ltd.
+Co-Founder & Embedded Linux Architect
+405/E-Block, Sri Lakshmi Shubham Arcade, Chandanagar, Hyderabad - 500050, I=
+ndia
+M. (+91) 910 009 0959
+[`as] http://www.amarulasolutions.com
