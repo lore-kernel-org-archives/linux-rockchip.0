@@ -1,146 +1,29 @@
 From: Tzung-Bi Shih <tzungbi@google.com>
-Subject: [PATCH] ASoC: max98357a: move control of SD_MODE back to DAI ops
-Date: Tue, 21 Jul 2020 19:42:32 +0800
-Message-ID: <20200721114232.2812254-1-tzungbi@google.com>
+Subject: Re: Speaker pops with max98357a on rk3399-gru-kevin since v5.7
+Date: Tue, 21 Jul 2020 19:46:56 +0800
+Message-ID: <CA+Px+wUhAHAx-qmAEWy_8Jy40NDTAHH-TNYtPtMfwocMHQ=AbA@mail.gmail.com>
+References: <f2ca985f-7dbd-847a-1875-dd0e1044ef02@gmail.com>
+ <CA+Px+wU1S1EqtW-yZH9z9aCF3ggSriBqy73SRYy8q61x0GkdQQ@mail.gmail.com> <846feea6-e2b6-3a0e-b05f-d70e898f9ea5@gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Return-path: <alsa-devel-bounces@alsa-project.org>
-List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
-To: broonie@kernel.org
-Cc: tzungbi@google.com, alsa-devel@alsa-project.org, alpernebiyasak@gmail.com, cychiang@google.com, linux-rockchip@lists.infradead.org
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <846feea6-e2b6-3a0e-b05f-d70e898f9ea5@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, ALSA development <alsa-devel@alsa-project.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Partially reverts commit 128f825aeab7 ("ASoC: max98357a: move control
-of SD_MODE to DAPM").
+On Tue, Jul 21, 2020 at 6:40 AM Alper Nebi Yasak
+<alpernebiyasak@gmail.com> wrote:
+>
+> On 17/07/2020 05:27, Tzung-Bi Shih wrote:
+> > I am not convinced the pop comes from 128f825aeab7.
+>
+> Maybe some pre-existing defect in rk3399_gru_sound got exposed by
+> 128f825aeab7 or the machine driver needs some changes to complement
+> that commit?
 
-In order to have mute control of max98357 from machine drivers, commit
-128f825aeab7 ("ASoC: max98357a: move control of SD_MODE to DAPM")
-moves the control of SD_MODE from DAI ops to DAPM events.  However, pop
-noise has been observed on rk3399-gru-kevin boards due to this commit.
+Hi, I got a rk3399-gru-kevin and can reproduce the issue.
 
-The commit 128f825aeab7 caused sequence of DAI clocks and SD_MODE
-changed on rk3399-gru-kevin boards.
-
-With the commit 128f825aeab7:
-- SD_MODE will be set to 1 before DAI clocks start.
-- SD_MODE will be set to 0 after DAI clocks stop.
-As a result, pop noise.
-
-Moves the control of SD_MODE back to DAI ops.  In the meantime, uses an
-additional flag in DAPM event to provide chance of mute control for
-machine drivers.
-
-Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
----
-
-This patch addresses the reported issue in the thread
-https://lkml.org/lkml/2020/7/16/427
-
- sound/soc/codecs/max98357a.c | 50 ++++++++++++++++++++++++++++--------
- 1 file changed, 40 insertions(+), 10 deletions(-)
-
-diff --git a/sound/soc/codecs/max98357a.c b/sound/soc/codecs/max98357a.c
-index 4f431133d0bb..918812763884 100644
---- a/sound/soc/codecs/max98357a.c
-+++ b/sound/soc/codecs/max98357a.c
-@@ -23,36 +23,61 @@
- struct max98357a_priv {
- 	struct gpio_desc *sdmode;
- 	unsigned int sdmode_delay;
-+	int sdmode_switch;
- };
- 
--static int max98357a_sdmode_event(struct snd_soc_dapm_widget *w,
--		struct snd_kcontrol *kcontrol, int event)
-+static int max98357a_daiops_trigger(struct snd_pcm_substream *substream,
-+		int cmd, struct snd_soc_dai *dai)
- {
--	struct snd_soc_component *component =
--		snd_soc_dapm_to_component(w->dapm);
-+	struct snd_soc_component *component = dai->component;
- 	struct max98357a_priv *max98357a =
- 		snd_soc_component_get_drvdata(component);
- 
- 	if (!max98357a->sdmode)
- 		return 0;
- 
--	if (event & SND_SOC_DAPM_POST_PMU) {
--		msleep(max98357a->sdmode_delay);
--		gpiod_set_value(max98357a->sdmode, 1);
--		dev_dbg(component->dev, "set sdmode to 1");
--	} else if (event & SND_SOC_DAPM_PRE_PMD) {
-+	switch (cmd) {
-+	case SNDRV_PCM_TRIGGER_START:
-+	case SNDRV_PCM_TRIGGER_RESUME:
-+	case SNDRV_PCM_TRIGGER_PAUSE_RELEASE:
-+		mdelay(max98357a->sdmode_delay);
-+		if (max98357a->sdmode_switch) {
-+			gpiod_set_value(max98357a->sdmode, 1);
-+			dev_dbg(component->dev, "set sdmode to 1");
-+		}
-+		break;
-+	case SNDRV_PCM_TRIGGER_STOP:
-+	case SNDRV_PCM_TRIGGER_SUSPEND:
-+	case SNDRV_PCM_TRIGGER_PAUSE_PUSH:
- 		gpiod_set_value(max98357a->sdmode, 0);
- 		dev_dbg(component->dev, "set sdmode to 0");
-+		break;
- 	}
- 
- 	return 0;
- }
- 
-+static int max98357a_sdmode_event(struct snd_soc_dapm_widget *w,
-+		struct snd_kcontrol *kcontrol, int event)
-+{
-+	struct snd_soc_component *component =
-+		snd_soc_dapm_to_component(w->dapm);
-+	struct max98357a_priv *max98357a =
-+		snd_soc_component_get_drvdata(component);
-+
-+	if (event & SND_SOC_DAPM_POST_PMU)
-+		max98357a->sdmode_switch = 1;
-+	else if (event & SND_SOC_DAPM_POST_PMD)
-+		max98357a->sdmode_switch = 0;
-+
-+	return 0;
-+}
-+
- static const struct snd_soc_dapm_widget max98357a_dapm_widgets[] = {
- 	SND_SOC_DAPM_OUTPUT("Speaker"),
- 	SND_SOC_DAPM_OUT_DRV_E("SD_MODE", SND_SOC_NOPM, 0, 0, NULL, 0,
- 			max98357a_sdmode_event,
--			SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_PRE_PMD),
-+			SND_SOC_DAPM_POST_PMU | SND_SOC_DAPM_POST_PMD),
- };
- 
- static const struct snd_soc_dapm_route max98357a_dapm_routes[] = {
-@@ -71,6 +96,10 @@ static const struct snd_soc_component_driver max98357a_component_driver = {
- 	.non_legacy_dai_naming	= 1,
- };
- 
-+static const struct snd_soc_dai_ops max98357a_dai_ops = {
-+	.trigger        = max98357a_daiops_trigger,
-+};
-+
- static struct snd_soc_dai_driver max98357a_dai_driver = {
- 	.name = "HiFi",
- 	.playback = {
-@@ -90,6 +119,7 @@ static struct snd_soc_dai_driver max98357a_dai_driver = {
- 		.channels_min	= 1,
- 		.channels_max	= 2,
- 	},
-+	.ops    = &max98357a_dai_ops,
- };
- 
- static int max98357a_platform_probe(struct platform_device *pdev)
--- 
-2.28.0.rc0.105.gf9edc3c819-goog
+Could you take a try on the proposed patch here
+https://patchwork.kernel.org/patch/11675533/ to see if it fixes?
