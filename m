@@ -1,49 +1,67 @@
-From: Tomasz Figa <tfiga@chromium.org>
-Subject: Re: [PATCH v2 5/9] media: staging: rkisp1: add a pointer to
- rkisp1_device from struct rkisp1_isp
-Date: Tue, 21 Jul 2020 17:32:26 +0200
-Message-ID: <CAAFQd5ATRvBapupZaBf6TkWcVwOy7C9+A95+vLHJiwuUca4LQg@mail.gmail.com>
-References: <20200718145918.17752-1-dafna.hirschfeld@collabora.com>
- <20200718145918.17752-6-dafna.hirschfeld@collabora.com> <d8475ade-94a3-48ad-02d7-f03810ddf6dc@collabora.com>
- <114a3242-88e9-46a1-c8c8-f5bfd424d05a@collabora.com> <CAAFQd5BLuwfnQfYbaWmtre5YCx-_YG4E10cZxeL+6pESap_U0A@mail.gmail.com>
- <fa457a47-4005-8c64-d135-96b321ddd6a6@collabora.com>
+From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Subject: [PATCH] ASoC: rk3399_gru_sound: Add DAPM pins, kcontrols for jack detection
+Date: Tue, 21 Jul 2020 21:27:10 +0300
+Message-ID: <20200721182709.6895-1-alpernebiyasak@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <fa457a47-4005-8c64-d135-96b321ddd6a6@collabora.com>
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: Helen Koike <helen.koike@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Mark Brown <broonie@kernel.org>
+Cc: alsa-devel@alsa-project.org, Liam Girdwood <lgirdwood@gmail.com>, Alper Nebi Yasak <alpernebiyasak@gmail.com>, Jaroslav Kysela <perex@perex.cz>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Jul 21, 2020 at 5:30 PM Dafna Hirschfeld
-<dafna.hirschfeld@collabora.com> wrote:
->
-> Hi,
->
-> On 21.07.20 14:36, Tomasz Figa wrote:
-> > On Tue, Jul 21, 2020 at 2:26 PM Dafna Hirschfeld
-> > <dafna.hirschfeld@collabora.com> wrote:
-> >>
-> >> Hi,
-> >>
-> >> On 20.07.20 21:25, Helen Koike wrote:
-> >>>
-> >>>
-> >>> On 7/18/20 11:59 AM, Dafna Hirschfeld wrote:
-> >>>> The code in rkisp1-isp.c requires access to struct 'rkisp1_device'
-> >>>> in several places. It access it using the 'container_of' macro.
-> >>>> This patch adds a pointer to 'rkisp1_device' in struct 'rkisp1_isp'
-> >>>> to simplify the access.
-> >>>
-> >>> What is wrong with container_of?
-> >>
-> >> I remember Laurent suggested it a while ago.
-> >> I also feel container_of is a bit cumbersome and other entities already have a pointer to rkisp1_device.
-> >>
-> >
-> > Do we even need the rkisp1_isp struct? Could we just pass rkisp1_device instead?
->
-> pass to where ?  You mean to the function rkisp1_mipi_csi2_start ?
+PulseAudio (and perhaps other userspace utilities) can not detect any
+jack for rk3399_gru_sound as the driver doesn't expose related Jack
+kcontrols.
 
-Yes, all around the driver, where rkisp1_isp is passed.
+This patch adds two DAPM pins to the headset jack, where the
+snd_soc_card_jack_new() call automatically creates "Headphones Jack" and
+"Headset Mic Jack" kcontrols from them.
+
+With an appropriate ALSA UCM config specifying JackControl fields for
+the "Headphones" and "Headset" (mic) devices, PulseAudio can detect
+plug/unplug events for both of them after this patch.
+
+Signed-off-by: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+---
+
+ sound/soc/rockchip/rk3399_gru_sound.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/sound/soc/rockchip/rk3399_gru_sound.c b/sound/soc/rockchip/rk3399_gru_sound.c
+index f45e5aaa4b30..c17d146717a8 100644
+--- a/sound/soc/rockchip/rk3399_gru_sound.c
++++ b/sound/soc/rockchip/rk3399_gru_sound.c
+@@ -32,6 +32,19 @@ static unsigned int dmic_wakeup_delay;
+ 
+ static struct snd_soc_jack rockchip_sound_jack;
+ 
++/* Headset jack detection DAPM pins */
++static struct snd_soc_jack_pin rockchip_sound_jack_pins[] = {
++	{
++		.pin = "Headphones",
++		.mask = SND_JACK_HEADPHONE,
++	},
++	{
++		.pin = "Headset Mic",
++		.mask = SND_JACK_MICROPHONE,
++	},
++
++};
++
+ static const struct snd_soc_dapm_widget rockchip_dapm_widgets[] = {
+ 	SND_SOC_DAPM_HP("Headphones", NULL),
+ 	SND_SOC_DAPM_SPK("Speakers", NULL),
+@@ -176,7 +189,9 @@ static int rockchip_sound_da7219_init(struct snd_soc_pcm_runtime *rtd)
+ 				    SND_JACK_HEADSET | SND_JACK_LINEOUT |
+ 				    SND_JACK_BTN_0 | SND_JACK_BTN_1 |
+ 				    SND_JACK_BTN_2 | SND_JACK_BTN_3,
+-				    &rockchip_sound_jack, NULL, 0);
++				    &rockchip_sound_jack,
++				    rockchip_sound_jack_pins,
++				    ARRAY_SIZE(rockchip_sound_jack_pins));
+ 
+ 	if (ret) {
+ 		dev_err(rtd->card->dev, "New Headset Jack failed! (%d)\n", ret);
+-- 
+2.28.0.rc1
