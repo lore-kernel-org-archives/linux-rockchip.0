@@ -1,10 +1,12 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v6 0/5] rockchip: roc-rk3399-pc: Custom SPL
-Date: Tue, 21 Jul 2020 20:35:59 +0530
-Message-ID: <20200721150604.35410-1-jagan@amarulasolutions.com>
+Subject: [PATCH v6 1/5] rockchip: rk3399: Add weak led_setup()
+Date: Tue, 21 Jul 2020 20:36:00 +0530
+Message-ID: <20200721150604.35410-2-jagan@amarulasolutions.com>
+References: <20200721150604.35410-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200721150604.35410-1-jagan@amarulasolutions.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <https://lists.denx.de/pipermail/u-boot/>
@@ -18,46 +20,35 @@ To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@the
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-This series supports custom initialization code required for 
-roc-rk3399-pc board on SPL stage.
+Add weak led_setup() so that board which has an uncommon
+led setup code that can make use of custom implementation.
 
-Now this series is well mature code handling to add custom 
-spl_board_init code parts.
-
-roc-rk3399-pc would require custom leds initialization based 
-on user intervention of the power key. This code handles the 
-user intervention via SPI environment variable. If someone 
-or production systems wants this feature then 'pwr_key' has 
-to be set otherwise it is normal like other rk3399 boards 
-in Mainline.
-
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
 Changes for v6:
-- use spl board init code for led_setup 
-Changes for v5:
-- drop banner changes
-- add code changes in roc-pc-rk3399.c
-Changes for v4:
-- enable SPL_BOARD_INIT in all platforms
-Changes for v3:
-- support leds on SPL
-- support env 'pwr_key'
+- new patch
 
-Jagan Teki (5):
-  rockchip: rk3399: Add weak led_setup()
-  rockchip: roc-rk3399-pc: Add custom led_setup()
-  rockchip: Don't clear the reset status reg
-  rockchip: Separate the reset cause from display cpuinfo
-  rockchip: roc-rk3399-pc: Set LED only during POR and pwr_key=y
+ arch/arm/mach-rockchip/rk3399/rk3399.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
- arch/arm/include/asm/arch-rockchip/cru.h    |  3 +-
- arch/arm/mach-rockchip/Makefile             |  5 ++-
- arch/arm/mach-rockchip/cpu-info.c           | 26 ++++++-----
- arch/arm/mach-rockchip/rk3399/rk3399.c      |  6 +++
- arch/arm/mach-rockchip/tpl.c                |  7 ---
- board/firefly/roc-pc-rk3399/roc-pc-rk3399.c | 48 +++++++++++++++++----
- configs/roc-pc-mezzanine-rk3399_defconfig   |  6 ++-
- configs/roc-pc-rk3399_defconfig             |  6 ++-
- 8 files changed, 71 insertions(+), 36 deletions(-)
-
+diff --git a/arch/arm/mach-rockchip/rk3399/rk3399.c b/arch/arm/mach-rockchip/rk3399/rk3399.c
+index 4fda93b152..c643483971 100644
+--- a/arch/arm/mach-rockchip/rk3399/rk3399.c
++++ b/arch/arm/mach-rockchip/rk3399/rk3399.c
+@@ -241,8 +241,14 @@ static void rk3399_force_power_on_reset(void)
+ }
+ #endif
+ 
++void __weak led_setup(void)
++{
++}
++
+ void spl_board_init(void)
+ {
++	led_setup();
++
+ #if defined(SPL_GPIO_SUPPORT)
+ 	struct rockchip_cru *cru = rockchip_get_cru();
+ 
 -- 
 2.25.1
