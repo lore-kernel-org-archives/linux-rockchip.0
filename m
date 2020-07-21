@@ -1,12 +1,10 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v3 2/2] rockchip: rk3288: Add OF board setup
-Date: Tue, 21 Jul 2020 12:16:38 +0530
-Message-ID: <20200721064638.16236-2-jagan@amarulasolutions.com>
-References: <20200721064638.16236-1-jagan@amarulasolutions.com>
+Subject: [PATCH v3 1/2] rockchip: Add rk3288 SoC detection helper
+Date: Tue, 21 Jul 2020 12:16:37 +0530
+Message-ID: <20200721064638.16236-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200721064638.16236-1-jagan@amarulasolutions.com>
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
 List-Archive: <https://lists.denx.de/pipermail/u-boot/>
@@ -20,86 +18,77 @@ To: Kever Yang <kever.yang@rock-chips.com>, Philipp Tomsich <philipp.tomsich@the
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The new rk3288 revision rk3288w has some changes with respect
-to legacy rk3288 like hclk_vio in cru and usb host0 ohci.
+Rockchip SoC's has a new revision chip for rk3288 SoCs.
 
-Linux clock driver already handle this via rockchip,rk3288w-cru
-compatible.
+RK3288 has a new revision chip called RK3288W which is similar
+but different hclk_vio clock and fixed OHCI host.
 
-USB ohci host can enable via dts for rk3288w based boards.
-
-So, add fdt board setup code to update cru compatible with
-rk3288w-cru compatible if the SOC revision is RK3288W.
+Add common Rockchip SoC detection helper to support this rk3288w
+detection.
 
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
 Changes for v3:
-- use struct bd_info
-- drop ifdef OF_BOARD_SETUP since it select by default
+- add rk3288 cpu spec header
 
- arch/arm/mach-rockchip/Kconfig         |  1 +
- arch/arm/mach-rockchip/rk3288/rk3288.c | 30 ++++++++++++++++++++++++++
- 2 files changed, 31 insertions(+)
+ .../include/asm/arch-rockchip/cpu_rk3288.h    | 49 +++++++++++++++++++
+ 1 file changed, 49 insertions(+)
+ create mode 100644 arch/arm/include/asm/arch-rockchip/cpu_rk3288.h
 
-diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
-index e2b6326584..fcab1d5cee 100644
---- a/arch/arm/mach-rockchip/Kconfig
-+++ b/arch/arm/mach-rockchip/Kconfig
-@@ -99,6 +99,7 @@ config ROCKCHIP_RK322X
- config ROCKCHIP_RK3288
- 	bool "Support Rockchip RK3288"
- 	select CPU_V7A
-+	select OF_BOARD_SETUP
- 	select SUPPORT_SPL
- 	select SPL
- 	select SUPPORT_TPL
-diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
-index 804abe8a1b..1a4ecdf625 100644
---- a/arch/arm/mach-rockchip/rk3288/rk3288.c
-+++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
-@@ -13,6 +13,7 @@
- #include <asm/io.h>
- #include <asm/arch-rockchip/bootrom.h>
- #include <asm/arch-rockchip/clock.h>
-+#include <asm/arch-rockchip/cpu_rk3288.h>
- #include <asm/arch-rockchip/cru.h>
- #include <asm/arch-rockchip/hardware.h>
- #include <asm/arch-rockchip/grf_rk3288.h>
-@@ -115,6 +116,35 @@ int rk_board_late_init(void)
- 	return rk3288_board_late_init();
- }
- 
-+static int ft_rk3288w_setup(void *blob)
+diff --git a/arch/arm/include/asm/arch-rockchip/cpu_rk3288.h b/arch/arm/include/asm/arch-rockchip/cpu_rk3288.h
+new file mode 100644
+index 0000000000..7445e64b8c
+--- /dev/null
++++ b/arch/arm/include/asm/arch-rockchip/cpu_rk3288.h
+@@ -0,0 +1,49 @@
++/* SPDX-License-Identifier: GPL-2.0+  */
++/*
++ * Rockchip Electronics Co., Ltd.
++ */
++
++#ifndef __ASM_ARCH_CPU_RK3288_H
++#define __ASM_ARCH_CPU_RK3288_H
++
++#include <asm/io.h>
++
++#define ROCKCHIP_CPU_MASK       0xffff0000
++#define ROCKCHIP_CPU_RK3288     0x32880000
++
++#define ROCKCHIP_SOC_MASK	(ROCKCHIP_CPU_MASK | 0xff)
++#define ROCKCHIP_SOC_RK3288     (ROCKCHIP_CPU_RK3288 | 0x00)
++#define ROCKCHIP_SOC_RK3288W    (ROCKCHIP_CPU_RK3288 | 0x01)
++
++#define RK3288_HDMI_PHYS	0xff980000
++#define HDMI_CONFIG0_ID		0x4
++#define RK3288W_HDMI_REVID	0x1a
++
++static inline int rockchip_soc_id(void)
 +{
-+	const char *path;
-+	int offs, ret;
++	u8 reg;
 +
-+	path = "/clock-controller@ff760000";
-+	offs = fdt_path_offset(blob, path);
-+	if (offs < 0) {
-+		debug("failed to found fdt path %s\n", path);
-+		return offs;
-+	}
-+
-+	ret = fdt_setprop_string(blob, offs, "compatible", "rockchip,rk3288w-cru");
-+	if (ret) {
-+		printf("failed to set rk3288w-cru compatible (ret=%d)\n", ret);
-+		return ret;
-+	}
-+
-+	return ret;
-+}
-+
-+int ft_board_setup(void *blob, struct bd_info *bd)
-+{
-+	if (soc_is_rk3288w())
-+		return ft_rk3288w_setup(blob);
-+
++#if defined(CONFIG_ROCKCHIP_RK3288)
++	reg = readb(RK3288_HDMI_PHYS + HDMI_CONFIG0_ID);
++	if (reg == RK3288W_HDMI_REVID)
++		return ROCKCHIP_SOC_RK3288W;
++	else
++		return ROCKCHIP_SOC_RK3288;
++#else
 +	return 0;
++#endif
 +}
 +
- static int do_clock(struct cmd_tbl *cmdtp, int flag, int argc,
- 		    char *const argv[])
- {
++#define ROCKCHIP_SOC(id, ID) \
++static inline bool soc_is_##id(void) \
++{ \
++	int soc_id = rockchip_soc_id(); \
++	if (soc_id) \
++		return ((soc_id & ROCKCHIP_SOC_MASK) == ROCKCHIP_SOC_ ##ID); \
++	return false; \
++}
++
++ROCKCHIP_SOC(rk3288, RK3288)
++ROCKCHIP_SOC(rk3288w, RK3288W)
++
++#endif /* __ASM_ARCH_CPU_RK3288_H */
 -- 
 2.25.1
