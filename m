@@ -1,38 +1,29 @@
 From: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-Subject: Re: [PATCH] ASoC: max98357a: move control of SD_MODE back to DAI ops
-Date: Tue, 21 Jul 2020 16:25:11 +0300
-Message-ID: <035e41c8-15f9-c4ee-3707-17f3c2819d5c@gmail.com>
-References: <20200721114232.2812254-1-tzungbi@google.com>
+Subject: Re: Speaker pops with max98357a on rk3399-gru-kevin since v5.7
+Date: Tue, 21 Jul 2020 16:31:31 +0300
+Message-ID: <ba020dd4-167c-f67e-5cf7-5e4e60a71919@gmail.com>
+References: <f2ca985f-7dbd-847a-1875-dd0e1044ef02@gmail.com>
+ <CA+Px+wU1S1EqtW-yZH9z9aCF3ggSriBqy73SRYy8q61x0GkdQQ@mail.gmail.com>
+ <846feea6-e2b6-3a0e-b05f-d70e898f9ea5@gmail.com>
+ <CA+Px+wUhAHAx-qmAEWy_8Jy40NDTAHH-TNYtPtMfwocMHQ=AbA@mail.gmail.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Return-path: <alsa-devel-bounces@alsa-project.org>
-In-Reply-To: <20200721114232.2812254-1-tzungbi@google.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <CA+Px+wUhAHAx-qmAEWy_8Jy40NDTAHH-TNYtPtMfwocMHQ=AbA@mail.gmail.com>
 Content-Language: en-US
-List-Unsubscribe: <https://mailman.alsa-project.org/mailman/options/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=unsubscribe>
-List-Archive: <http://mailman.alsa-project.org/pipermail/alsa-devel/>
-List-Post: <mailto:alsa-devel@alsa-project.org>
-List-Help: <mailto:alsa-devel-request@alsa-project.org?subject=help>
-List-Subscribe: <https://mailman.alsa-project.org/mailman/listinfo/alsa-devel>,
- <mailto:alsa-devel-request@alsa-project.org?subject=subscribe>
-Errors-To: alsa-devel-bounces@alsa-project.org
-Sender: "Alsa-devel" <alsa-devel-bounces@alsa-project.org>
-To: Tzung-Bi Shih <tzungbi@google.com>, broonie@kernel.org
-Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org, cychiang@google.com
+Sender: linux-kernel-owner@vger.kernel.org
+To: Tzung-Bi Shih <tzungbi@google.com>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, ALSA development <alsa-devel@alsa-project.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On 21/07/2020 14:42, Tzung-Bi Shih wrote:
-> This patch addresses the reported issue in the thread
-> https://lkml.org/lkml/2020/7/16/427
+On 21/07/2020 14:46, Tzung-Bi Shih wrote:
+> Hi, I got a rk3399-gru-kevin and can reproduce the issue.
+> 
+> Could you take a try on the proposed patch here
+> https://patchwork.kernel.org/patch/11675533/ to see if it fixes?
 
-I can confirm this patch eliminates the pop sounds I mentioned in that
-thread. Thanks for working on it.
+It does eliminate the pops, thanks.
 
-It looks like toggling "Speaker Switch" during playback doesn't take
-effect until playback finishes, but I found that PulseAudio (a version
-from a merge request with a custom UCM config) can switch between
-Speakers and Headphones immediately, so I don't really think it'll be a
-problem.
-
-Tested-By: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+(I've replied to the patch, I am sending this for completeness as the Cc
+list isn't exactly the same.)
