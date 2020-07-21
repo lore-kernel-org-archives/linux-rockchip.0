@@ -1,14 +1,15 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 02/16] arm: dts: rockchip: Sync rk3288 dtsi from linux
-Date: Tue, 21 Jul 2020 11:14:37 +0800
-Message-ID: <ac4685ad-1ec5-05e0-d268-db4035b05a38@rock-chips.com>
+Subject: Re: [PATCH 03/16] ARM: dts: rockchip: Add usb host0 ohci node for
+ rk3288
+Date: Tue, 21 Jul 2020 11:17:53 +0800
+Message-ID: <0b2fbd84-2ee3-5a8b-7a33-d9fab2160e16@rock-chips.com>
 References: <20200720185120.671064-1-jagan@amarulasolutions.com>
- <20200720185120.671064-3-jagan@amarulasolutions.com>
+ <20200720185120.671064-4-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200720185120.671064-3-jagan@amarulasolutions.com>
+In-Reply-To: <20200720185120.671064-4-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -23,40 +24,47 @@ To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@th
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
+HI Jagan,
 
-On 2020/7/21 上午2:51, Jagan Teki wrote:
-> From: Suniel Mahesh <sunil@amarulasolutions.com>
->
-> This sync has changes required to use HDMI CEC pin in U-Boot.
->
-> Sync dts from linux v5.8-rc5 commit:
-> 	"ARM: dts: rockchip: define the two possible rk3288 CEC pins"
-> 	(sha1: 838980dd04e994bf81cf104fa01ae60802146b39)
->
-> Signed-off-by: Suniel Mahesh <sunil@amarulasolutions.com>
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
+     Does patch 3~6 also from mainline kernel?
 
 Thanks,
+
 - Kever
+
+On 2020/7/21 上午2:51, Jagan Teki wrote:
+> rk3288 and rk3288w have a usb host0 ohci controller.
+>
+> Although rk3288 ohci doesn't actually work on hardware, but
+> rk3288w ohci can work well.
+>
+> So add usb host0 ohci node in rk3288 dtsi and the quirk in
+> ohci platform driver will disable ohci on rk3288.
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 > ---
->   arch/arm/dts/rk3288.dtsi | 6 ++++++
->   1 file changed, 6 insertions(+)
+>   arch/arm/dts/rk3288.dtsi | 11 ++++++++++-
+>   1 file changed, 10 insertions(+), 1 deletion(-)
 >
 > diff --git a/arch/arm/dts/rk3288.dtsi b/arch/arm/dts/rk3288.dtsi
-> index 866fc08215..18b372db3a 100644
+> index 18b372db3a..22bb06cec5 100644
 > --- a/arch/arm/dts/rk3288.dtsi
 > +++ b/arch/arm/dts/rk3288.dtsi
-> @@ -1085,6 +1085,12 @@
->   			#interrupt-cells = <2>;
->   		};
+> @@ -431,7 +431,16 @@
+>   		status = "disabled";
+>   	};
 >   
-> +		hdmi {
-> +			hdmi_cec_c0: hdmi-cec-c0 {
-> +				rockchip,pins = <7 RK_PC0 2 &pcfg_pull_none>;
-> +			};
-> +		};
-> +
->   		pcfg_pull_up: pcfg-pull-up {
->   			bias-pull-up;
->   		};
+> -	/* NOTE: ohci@ff520000 doesn't actually work on hardware */
+> +	/* NOTE: doesn't work on RK3288, but fixed on RK3288W */
+> +	usb_host0_ohci: usb@ff520000 {
+> +		compatible = "generic-ohci";
+> +		reg = <0x0 0xff520000 0x0 0x100>;
+> +		interrupts = <GIC_SPI 41 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru HCLK_USBHOST0>;
+> +		phys = <&usbphy1>;
+> +		phy-names = "usb";
+> +		status = "disabled";
+> +	};
+>   
+>   	usb_host1: usb@ff540000 {
+>   		compatible = "rockchip,rk3288-usb", "rockchip,rk3066-usb",
