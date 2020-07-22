@@ -1,14 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 07/12] rockchip: rock-pi-n10: Enable on board devices
-Date: Wed, 22 Jul 2020 20:29:50 +0800
-Message-ID: <786e9557-4842-5d29-08cc-fb6e82c65dfb@rock-chips.com>
+Subject: Re: [PATCH v2 08/12] rockchip: evb_rk3288: Add console settings
+Date: Wed, 22 Jul 2020 20:30:28 +0800
+Message-ID: <56948666-f468-b323-7014-dcf524c96a38@rock-chips.com>
 References: <20200721152443.37602-1-jagan@amarulasolutions.com>
- <20200721152443.37602-8-jagan@amarulasolutions.com>
+ <20200721152443.37602-9-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200721152443.37602-8-jagan@amarulasolutions.com>
+In-Reply-To: <20200721152443.37602-9-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -27,12 +27,11 @@ List-Id: linux-rockchip.vger.kernel.org
 On 2020/7/21 下午11:24, Jagan Teki wrote:
 > From: Suniel Mahesh <sunil@amarulasolutions.com>
 >
-> Enable common on board devices for ROCKPi N10.
+> Add console settings like stdin, stdout and stderr as
+> usbkbd and vidconsole respectively for evb-rk3288 targets.
 >
-> - USB 2.0 Host
-> - USB 3.0 Host
-> - USB 3.0 Gadget
-> - HDMI Out
+> This would certainly help to detect the attached video
+> devices (like HDMI) and print the console messages on display.
 >
 > Signed-off-by: Suniel Mahesh <sunil@amarulasolutions.com>
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
@@ -42,59 +41,25 @@ Thanks,
 - Kever
 > ---
 > Changes for v2:
-> - squash common device enablement
+> - update commit messaage
 >
->   configs/rock-pi-n10-rk3399pro_defconfig | 21 +++++++++++++++++++++
->   1 file changed, 21 insertions(+)
+>   include/configs/evb_rk3288.h | 6 +++++-
+>   1 file changed, 5 insertions(+), 1 deletion(-)
 >
-> diff --git a/configs/rock-pi-n10-rk3399pro_defconfig b/configs/rock-pi-n10-rk3399pro_defconfig
-> index c705ce01ce..895820fbe6 100644
-> --- a/configs/rock-pi-n10-rk3399pro_defconfig
-> +++ b/configs/rock-pi-n10-rk3399pro_defconfig
-> @@ -9,6 +9,8 @@ CONFIG_NR_DRAM_BANKS=1
->   CONFIG_DEBUG_UART_BASE=0xFF1A0000
->   CONFIG_DEBUG_UART_CLOCK=24000000
->   CONFIG_DEBUG_UART=y
-> +# CONFIG_ANDROID_BOOT_IMAGE is not set
-> +# CONFIG_CONSOLE_MUX is not set
->   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399pro-rock-pi-n10.dtb"
->   CONFIG_MISC_INIT_R=y
->   CONFIG_DISPLAY_BOARDINFO_LATE=y
-> @@ -19,6 +21,7 @@ CONFIG_TPL=y
->   CONFIG_CMD_BOOTZ=y
->   CONFIG_CMD_GPT=y
->   CONFIG_CMD_MMC=y
-> +CONFIG_CMD_USB=y
->   # CONFIG_CMD_SETEXPR is not set
->   CONFIG_CMD_TIME=y
->   CONFIG_SPL_OF_CONTROL=y
-> @@ -36,11 +39,29 @@ CONFIG_MMC_SDHCI_ROCKCHIP=y
->   CONFIG_DM_ETH=y
->   CONFIG_ETH_DESIGNWARE=y
->   CONFIG_GMAC_ROCKCHIP=y
-> +CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-> +CONFIG_PHY_ROCKCHIP_TYPEC=y
->   CONFIG_PMIC_RK8XX=y
->   CONFIG_REGULATOR_PWM=y
->   CONFIG_REGULATOR_RK8XX=y
->   CONFIG_PWM_ROCKCHIP=y
-> +CONFIG_DM_RESET=y
->   CONFIG_BAUDRATE=1500000
->   CONFIG_DEBUG_UART_SHIFT=2
->   CONFIG_SYSRESET=y
-> +CONFIG_USB=y
-> +CONFIG_USB_XHCI_HCD=y
-> +CONFIG_USB_XHCI_DWC3=y
-> +CONFIG_USB_EHCI_HCD=y
-> +CONFIG_USB_EHCI_GENERIC=y
-> +CONFIG_USB_DWC3=y
-> +CONFIG_USB_DWC3_GENERIC=y
-> +CONFIG_ROCKCHIP_USB2_PHY=y
-> +CONFIG_USB_KEYBOARD=y
-> +# CONFIG_USB_KEYBOARD_FN_KEYS is not set
-> +CONFIG_USB_GADGET=y
-> +CONFIG_DM_VIDEO=y
-> +CONFIG_DISPLAY=y
-> +CONFIG_VIDEO_ROCKCHIP=y
-> +CONFIG_DISPLAY_ROCKCHIP_HDMI=y
->   CONFIG_ERRNO_STR=y
+> diff --git a/include/configs/evb_rk3288.h b/include/configs/evb_rk3288.h
+> index ddd7012c8f..e19fa90212 100644
+> --- a/include/configs/evb_rk3288.h
+> +++ b/include/configs/evb_rk3288.h
+> @@ -6,7 +6,11 @@
+>   #ifndef __CONFIG_H
+>   #define __CONFIG_H
+>   
+> -#define ROCKCHIP_DEVICE_SETTINGS
+> +#define ROCKCHIP_DEVICE_SETTINGS \
+> +		"stdin=serial,usbkbd\0" \
+> +		"stdout=serial,vidconsole\0" \
+> +		"stderr=serial,vidconsole\0"
+> +
+>   #include <configs/rk3288_common.h>
+>   
+>   #define CONFIG_SYS_MMC_ENV_DEV 0
