@@ -1,13 +1,15 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 10/12] rockchip: rock-pi-n10: Enable PCI/NVME
-Date: Wed, 22 Jul 2020 20:31:38 +0800
-Message-ID: <702a4d1f-49f3-f0a3-aa0f-4456e12771ba@rock-chips.com>
+Subject: Re: [PATCH v2 11/12] arm64: dts: rockchip: Add u-boot, spl-boot-order
+ for ROCKPi N10
+Date: Wed, 22 Jul 2020 20:31:49 +0800
+Message-ID: <301d6adc-a630-d8ac-2ecb-ac3300845b29@rock-chips.com>
 References: <20200721152809.37927-1-jagan@amarulasolutions.com>
+ <20200721152809.37927-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200721152809.37927-1-jagan@amarulasolutions.com>
+In-Reply-To: <20200721152809.37927-2-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -24,12 +26,8 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 On 2020/7/21 下午11:28, Jagan Teki wrote:
-> Enable PCI/NVME for M.2 Slot on RockPI-4 boards.
->
-> => nvme info
-> Device 0: Vendor: 0x144d Rev: 4L1QCXB7 Prod: S35FNX0J623292
->              Type: Hard Disk
->              Capacity: 122104.3 MB = 119.2 GB (250069680 x 512)
+> Add u-boot,spl-boot-order for ROCKPi N10, so-that it can able
+> to boot from eMMC and SDMMC in order.
 >
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
@@ -40,27 +38,20 @@ Thanks,
 > Changes for v2:
 > - none
 >
->   configs/rock-pi-n10-rk3399pro_defconfig | 3 +++
->   1 file changed, 3 insertions(+)
+>   arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi | 6 ++++++
+>   1 file changed, 6 insertions(+)
 >
-> diff --git a/configs/rock-pi-n10-rk3399pro_defconfig b/configs/rock-pi-n10-rk3399pro_defconfig
-> index 895820fbe6..2aa2fafaa4 100644
-> --- a/configs/rock-pi-n10-rk3399pro_defconfig
-> +++ b/configs/rock-pi-n10-rk3399pro_defconfig
-> @@ -21,6 +21,7 @@ CONFIG_TPL=y
->   CONFIG_CMD_BOOTZ=y
->   CONFIG_CMD_GPT=y
->   CONFIG_CMD_MMC=y
-> +CONFIG_CMD_PCI=y
->   CONFIG_CMD_USB=y
->   # CONFIG_CMD_SETEXPR is not set
->   CONFIG_CMD_TIME=y
-> @@ -39,6 +40,8 @@ CONFIG_MMC_SDHCI_ROCKCHIP=y
->   CONFIG_DM_ETH=y
->   CONFIG_ETH_DESIGNWARE=y
->   CONFIG_GMAC_ROCKCHIP=y
-> +CONFIG_NVME=y
-> +CONFIG_PCI=y
->   CONFIG_PHY_ROCKCHIP_INNO_USB2=y
->   CONFIG_PHY_ROCKCHIP_TYPEC=y
->   CONFIG_PMIC_RK8XX=y
+> diff --git a/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi b/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
+> index 946a0230db..7c66e1145a 100644
+> --- a/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
+> +++ b/arch/arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi
+> @@ -5,3 +5,9 @@
+>   
+>   #include "rk3399pro-u-boot.dtsi"
+>   #include "rk3399-sdram-lpddr3-4GB-1600.dtsi"
+> +
+> +/ {
+> +	chosen {
+> +		u-boot,spl-boot-order = "same-as-spl", &sdhci, &sdmmc;
+> +	};
+> +};
