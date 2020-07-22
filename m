@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Subject: [PATCH v2 4/6] arm64: dts: rockchip: Add Radxa ROCK Pi 4B support
-Date: Thu, 23 Jul 2020 00:39:47 +0530
-Message-ID: <20200722190949.215656-4-jagan@amarulasolutions.com>
+Subject: [PATCH v2 5/6] dt-bindings: arm: rockchip: Add ROCKPi 4C binding
+Date: Thu, 23 Jul 2020 00:39:48 +0530
+Message-ID: <20200722190949.215656-5-jagan@amarulasolutions.com>
 References: <20200722190949.215656-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,120 +12,33 @@ To: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring 
 Cc: Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-RockPI 4B has AP6256 Wifi/BT, so enable them in 4B dts
-instead of enable in common dtsi.
+Add dt-bindings for ROCKPi 4C which is similar to 4B with
+additional mDP and HDMI port replaced with Micro HDMI port.
 
 Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 ---
 Changes for v2:
-- add radxa,rockpi4b
+- new patch
 
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 23 ----------
- .../boot/dts/rockchip/rk3399-rock-pi-4b.dts   | 42 +++++++++++++++++++
- 3 files changed, 43 insertions(+), 23 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 1250c62205a4..e7b11e8fd9b6 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -36,6 +36,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc-mezzanine.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4a.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock960.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64-v2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index e163f438f836..678a336010bf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -584,17 +584,6 @@ &sdio0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
- 	sd-uhs-sdr104;
--	status = "okay";
--
--	brcmf: wifi@1 {
--		compatible = "brcm,bcm4329-fmac";
--		reg = <1>;
--		interrupt-parent = <&gpio0>;
--		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
--		interrupt-names = "host-wake";
--		pinctrl-names = "default";
--		pinctrl-0 = <&wifi_host_wake_l>;
--	};
- };
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 7250adb43d24..1faf1ce92dba 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -454,6 +454,12 @@ properties:
+           - const: radxa,rockpi4b
+           - const: rockchip,rk3399
  
- &sdmmc {
-@@ -663,18 +652,6 @@ u2phy1_host: host-port {
- &uart0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
--	status = "okay";
--
--	bluetooth {
--		compatible = "brcm,bcm43438-bt";
--		clocks = <&rk808 1>;
--		clock-names = "ext_clock";
--		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
--		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
--		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
--	};
- };
- 
- &uart2 {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-new file mode 100644
-index 000000000000..f0055ce2fda0
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-@@ -0,0 +1,42 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2019 Akash Gajjar <Akash_Gajjar-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
-+ * Copyright (c) 2019 Pragnesh Patel <Pragnesh_Patel-nmGgyN9QBj3QT0dZR+AlfA@public.gmane.org>
-+ */
++      - description: Radxa ROCK Pi 4C
++        items:
++          - const: radxa,rockpi4
++          - const: radxa,rockpi4c
++          - const: rockchip,rk3399
 +
-+/dts-v1/;
-+#include "rk3399-rock-pi-4.dtsi"
-+
-+/ {
-+	model = "Radxa ROCK Pi 4B";
-+	compatible = "radxa,rockpi4b", "radxa,rockpi4", "rockchip,rk3399";
-+};
-+
-+&sdio0 {
-+	status = "okay";
-+
-+	brcmf: wifi@1 {
-+		compatible = "brcm,bcm4329-fmac";
-+		reg = <1>;
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
-+		interrupt-names = "host-wake";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&wifi_host_wake_l>;
-+	};
-+};
-+
-+&uart0 {
-+	status = "okay";
-+
-+	bluetooth {
-+		compatible = "brcm,bcm43438-bt";
-+		clocks = <&rk808 1>;
-+		clock-names = "ext_clock";
-+		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
-+		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
-+		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
-+	};
-+};
+       - description: Radxa ROCK Pi N8
+         items:
+           - const: radxa,rockpi-n8
 -- 
 2.25.1
