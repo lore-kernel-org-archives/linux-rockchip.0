@@ -1,53 +1,50 @@
-From: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Subject: [PATCH v5 1/9] media: staging: dt-bindings: rkisp1: add missing required nodes
-Date: Wed, 22 Jul 2020 12:55:25 -0300
-Message-ID: <20200722155533.252844-2-helen.koike@collabora.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: [PATCH v5 2/9] media: staging: dt-bindings: rkisp1: drop i2c unit address
+Date: Wed, 22 Jul 2020 12:55:26 -0300
+Message-ID: <20200722155533.252844-3-helen.koike@collabora.com>
 References: <20200722155533.252844-1-helen.koike@collabora.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200722155533.252844-1-helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-media-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devel-gWbeCf7V1WCQmaza687I9mD2FQJk+8+b@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, hverkuil-cisco-qWit8jRvyhVmR6Xm/wNWPw@public.gmane.org, kernel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, dafna.hirschfeld-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, ezequiel-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org, mark.rutland-5wv7dgnIgG8@public.gmane.org, karthik.poduval-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, tfiga-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org, eddie.cai.linux-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org, zhengsq-TNX95d0MmH7DzftRWevZcw@public.gmane.org, robin.murphy-5wv7dgnIgG8@public.gmane.org
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200722155533.252844-1-helen.koike@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: devicetree@vger.kernel.org, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, devel@driverdev.osuosl.org, robh+dt@kernel.org, heiko@sntech.de, hverkuil-cisco@xs4all.nl, kernel@collabora.com, dafna.hirschfeld@collabora.com, ezequiel@collabora.com, mark.rutland@arm.com, karthik.poduval@gmail.com, jbx6244@gmail.com, tfiga@chromium.org, eddie.cai.linux@gmail.com, zhengsq@rock-chips.com, robin.murphy@arm.com
 List-Id: linux-rockchip.vger.kernel.org
 
-Add missing required nodes in json-schema yaml file for
-Rockchip ISP1 dt-bindings.
+Add missing required items in Rockchip ISP1 dt-bindings example for
+a complete i2c node.
+Drop unit address to Fix error:
+/example-0/parent/i2c@ff160000: node has a unit name, but no reg or ranges property
+Remove unecessary fields for the example.
 
-Signed-off-by: Helen Koike <helen.koike-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>
-Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
 ---
+
+Changes in v5:
+- Patch re-written to drop unity address instead of completing i2c node
 
 Changes in v2:
-- New patch in the series
+- new patch in the series
+
+tmp: i2c drop fields
 ---
- .../devicetree/bindings/media/rockchip-isp1.yaml          | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ .../Documentation/devicetree/bindings/media/rockchip-isp1.yaml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index af246b71eac6b..a77b6ec500c95 100644
+index a77b6ec500c95..4c31cfaee2709 100644
 --- a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 +++ b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -94,11 +94,19 @@ properties:
+@@ -168,8 +168,7 @@ examples:
+             };
+         };
  
-               remote-endpoint: true
+-        i2c7: i2c@ff160000 {
+-            clock-frequency = <400000>;
++        i2c7: i2c {
+             #address-cells = <1>;
+             #size-cells = <0>;
  
-+        required:
-+          - reg
-+          - "#address-cells"
-+          - "#size-cells"
-+
-     required:
-+      - "#address-cells"
-+      - "#size-cells"
-       - port@0
- 
- required:
-   - compatible
-+  - reg
-   - interrupts
-   - clocks
-   - clock-names
 -- 
 2.28.0.rc1
