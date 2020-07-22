@@ -1,14 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 06/12] arm64: dts: rockchip: Add PCIe for RockPI N10
-Date: Wed, 22 Jul 2020 20:29:36 +0800
-Message-ID: <90e4c2d3-e6ec-109f-558f-c2d07e5ecfcb@rock-chips.com>
+Subject: Re: [PATCH v2 07/12] rockchip: rock-pi-n10: Enable on board devices
+Date: Wed, 22 Jul 2020 20:29:50 +0800
+Message-ID: <786e9557-4842-5d29-08cc-fb6e82c65dfb@rock-chips.com>
 References: <20200721152443.37602-1-jagan@amarulasolutions.com>
- <20200721152443.37602-7-jagan@amarulasolutions.com>
+ <20200721152443.37602-8-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200721152443.37602-7-jagan@amarulasolutions.com>
+In-Reply-To: <20200721152443.37602-8-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -25,8 +25,16 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 On 2020/7/21 下午11:24, Jagan Teki wrote:
-> This patch adds support to enable PCIe for RockPI N10.
+> From: Suniel Mahesh <sunil@amarulasolutions.com>
 >
+> Enable common on board devices for ROCKPi N10.
+>
+> - USB 2.0 Host
+> - USB 3.0 Host
+> - USB 3.0 Gadget
+> - HDMI Out
+>
+> Signed-off-by: Suniel Mahesh <sunil@amarulasolutions.com>
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 
@@ -34,87 +42,59 @@ Thanks,
 - Kever
 > ---
 > Changes for v2:
-> - none
+> - squash common device enablement
 >
->   arch/arm/dts/rk3399pro-vmarc-som.dtsi | 40 +++++++++++++++++++++++++--
->   1 file changed, 38 insertions(+), 2 deletions(-)
+>   configs/rock-pi-n10-rk3399pro_defconfig | 21 +++++++++++++++++++++
+>   1 file changed, 21 insertions(+)
 >
-> diff --git a/arch/arm/dts/rk3399pro-vmarc-som.dtsi b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
-> index ebccc4a153..5d087be04a 100644
-> --- a/arch/arm/dts/rk3399pro-vmarc-som.dtsi
-> +++ b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
-> @@ -11,6 +11,18 @@
->   
->   / {
->   	compatible = "vamrs,rk3399pro-vmarc-som", "rockchip,rk3399pro";
-> +
-> +	vcc3v3_pcie: vcc-pcie-regulator {
-> +		compatible = "regulator-fixed";
-> +		enable-active-high;
-> +		gpio = <&gpio4 RK_PD4 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pcie_pwr>;
-> +		regulator-name = "vcc3v3_pcie";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		vin-supply = <&vcc5v0_sys>;
-> +	};
->   };
->   
->   &cpu_l0 {
-> @@ -142,7 +154,8 @@
->   				regulator-min-microvolt = <900000>;
->   				regulator-max-microvolt = <900000>;
->   				regulator-state-mem {
-> -					regulator-off-in-suspend;
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <900000>;
->   				};
->   			};
->   
-> @@ -177,7 +190,8 @@
->   				regulator-min-microvolt = <1850000>;
->   				regulator-max-microvolt = <1850000>;
->   				regulator-state-mem {
-> -					regulator-off-in-suspend;
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1850000>;
->   				};
->   			};
->   
-> @@ -304,6 +318,22 @@
->   	sdmmc-supply = <&vccio_sd>;
->   };
->   
-> +&pcie_phy {
-> +	status = "okay";
-> +};
-> +
-> +&pcie0 {
-> +	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
-> +	max-link-speed = <2>;
-> +	num-lanes = <4>;
-> +	pinctrl-0 = <&pcie_clkreqnb_cpm>;
-> +	pinctrl-names = "default";
-> +	vpcie0v9-supply = <&vcca_0v9>;	/* VCC_0V9_S0 */
-> +	vpcie1v8-supply = <&vcca_1v8>;	/* VCC_1V8_S0 */
-> +	vpcie3v3-supply = <&vcc3v3_pcie>;
-> +	status = "okay";
-> +};
-> +
->   &pinctrl {
->   	hym8563 {
->   		hym8563_int: hym8563-int {
-> @@ -311,6 +341,12 @@
->   		};
->   	};
->   
-> +	pcie {
-> +		pcie_pwr: pcie-pwr {
-> +			rockchip,pins =	<4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
-> +
->   	pmic {
->   		pmic_int_l: pmic-int-l {
->   			rockchip,pins = <1 RK_PC2 0 &pcfg_pull_up>;
+> diff --git a/configs/rock-pi-n10-rk3399pro_defconfig b/configs/rock-pi-n10-rk3399pro_defconfig
+> index c705ce01ce..895820fbe6 100644
+> --- a/configs/rock-pi-n10-rk3399pro_defconfig
+> +++ b/configs/rock-pi-n10-rk3399pro_defconfig
+> @@ -9,6 +9,8 @@ CONFIG_NR_DRAM_BANKS=1
+>   CONFIG_DEBUG_UART_BASE=0xFF1A0000
+>   CONFIG_DEBUG_UART_CLOCK=24000000
+>   CONFIG_DEBUG_UART=y
+> +# CONFIG_ANDROID_BOOT_IMAGE is not set
+> +# CONFIG_CONSOLE_MUX is not set
+>   CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399pro-rock-pi-n10.dtb"
+>   CONFIG_MISC_INIT_R=y
+>   CONFIG_DISPLAY_BOARDINFO_LATE=y
+> @@ -19,6 +21,7 @@ CONFIG_TPL=y
+>   CONFIG_CMD_BOOTZ=y
+>   CONFIG_CMD_GPT=y
+>   CONFIG_CMD_MMC=y
+> +CONFIG_CMD_USB=y
+>   # CONFIG_CMD_SETEXPR is not set
+>   CONFIG_CMD_TIME=y
+>   CONFIG_SPL_OF_CONTROL=y
+> @@ -36,11 +39,29 @@ CONFIG_MMC_SDHCI_ROCKCHIP=y
+>   CONFIG_DM_ETH=y
+>   CONFIG_ETH_DESIGNWARE=y
+>   CONFIG_GMAC_ROCKCHIP=y
+> +CONFIG_PHY_ROCKCHIP_INNO_USB2=y
+> +CONFIG_PHY_ROCKCHIP_TYPEC=y
+>   CONFIG_PMIC_RK8XX=y
+>   CONFIG_REGULATOR_PWM=y
+>   CONFIG_REGULATOR_RK8XX=y
+>   CONFIG_PWM_ROCKCHIP=y
+> +CONFIG_DM_RESET=y
+>   CONFIG_BAUDRATE=1500000
+>   CONFIG_DEBUG_UART_SHIFT=2
+>   CONFIG_SYSRESET=y
+> +CONFIG_USB=y
+> +CONFIG_USB_XHCI_HCD=y
+> +CONFIG_USB_XHCI_DWC3=y
+> +CONFIG_USB_EHCI_HCD=y
+> +CONFIG_USB_EHCI_GENERIC=y
+> +CONFIG_USB_DWC3=y
+> +CONFIG_USB_DWC3_GENERIC=y
+> +CONFIG_ROCKCHIP_USB2_PHY=y
+> +CONFIG_USB_KEYBOARD=y
+> +# CONFIG_USB_KEYBOARD_FN_KEYS is not set
+> +CONFIG_USB_GADGET=y
+> +CONFIG_DM_VIDEO=y
+> +CONFIG_DISPLAY=y
+> +CONFIG_VIDEO_ROCKCHIP=y
+> +CONFIG_DISPLAY_ROCKCHIP_HDMI=y
+>   CONFIG_ERRNO_STR=y
