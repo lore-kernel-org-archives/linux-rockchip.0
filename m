@@ -1,14 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: Add Radxa ROCK Pi 4C support
-Date: Wed, 22 Jul 2020 20:05:16 +0800
-Message-ID: <5b88117f-2d4e-dcf9-7358-54b43ea37754@rock-chips.com>
-References: <20200720185549.671360-1-jagan@amarulasolutions.com>
- <20200720185549.671360-2-jagan@amarulasolutions.com>
+Subject: Re: [PATCH v3 2/2] rockchip: rk3288: Add OF board setup
+Date: Wed, 22 Jul 2020 20:06:38 +0800
+Message-ID: <22e251cc-30e1-884f-0369-e90712aa8bed@rock-chips.com>
+References: <20200721064638.16236-1-jagan@amarulasolutions.com>
+ <20200721064638.16236-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200720185549.671360-2-jagan@amarulasolutions.com>
+In-Reply-To: <20200721064638.16236-2-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -24,12 +24,17 @@ Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.d
 List-Id: linux-rockchip.vger.kernel.org
 
 
-On 2020/7/21 上午2:55, Jagan Teki wrote:
-> Rock PI 4C has AP6256 Wifi/BT, PoE, miniDP, USB Host enabled
-> GPIO pin change compared to 4B, 4C.
+On 2020/7/21 下午2:46, Jagan Teki wrote:
+> The new rk3288 revision rk3288w has some changes with respect
+> to legacy rk3288 like hclk_vio in cru and usb host0 ohci.
 >
-> So, add or enable difference nodes/properties in 4C dts
-> by including common dtsi.
+> Linux clock driver already handle this via rockchip,rk3288w-cru
+> compatible.
+>
+> USB ohci host can enable via dts for rk3288w based boards.
+>
+> So, add fdt board setup code to update cru compatible with
+> rk3288w-cru compatible if the SOC revision is RK3288W.
 >
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
@@ -37,190 +42,71 @@ Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
 Thanks,
 - Kever
 > ---
-> Changes for v2:
-> - s/4b/4c
+> Changes for v3:
+> - use struct bd_info
+> - drop ifdef OF_BOARD_SETUP since it select by default
 >
->   arch/arm/dts/Makefile                      |  1 +
->   arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi |  6 ++
->   arch/arm/dts/rk3399-rock-pi-4c.dts         | 51 +++++++++++++++
->   board/rockchip/evb_rk3399/MAINTAINERS      |  2 +
->   configs/rock-pi-4c-rk3399_defconfig        | 74 ++++++++++++++++++++++
->   5 files changed, 134 insertions(+)
->   create mode 100644 arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
->   create mode 100644 arch/arm/dts/rk3399-rock-pi-4c.dts
->   create mode 100644 configs/rock-pi-4c-rk3399_defconfig
+>   arch/arm/mach-rockchip/Kconfig         |  1 +
+>   arch/arm/mach-rockchip/rk3288/rk3288.c | 30 ++++++++++++++++++++++++++
+>   2 files changed, 31 insertions(+)
 >
-> diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-> index bcd89af6a5..5726156a2d 100644
-> --- a/arch/arm/dts/Makefile
-> +++ b/arch/arm/dts/Makefile
-> @@ -138,6 +138,7 @@ dtb-$(CONFIG_ROCKCHIP_RK3399) += \
->   	rk3399-roc-pc-mezzanine.dtb \
->   	rk3399-rock-pi-4a.dtb \
->   	rk3399-rock-pi-4b.dtb \
-> +	rk3399-rock-pi-4c.dtb \
->   	rk3399-rock960.dtb \
->   	rk3399-rockpro64.dtb \
->   	rk3399pro-rock-pi-n10.dtb
-> diff --git a/arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi b/arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
-> new file mode 100644
-> index 0000000000..85ee5770ad
-> --- /dev/null
-> +++ b/arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
-> @@ -0,0 +1,6 @@
-> +// SPDX-License-Identifier: GPL-2.0+
-> +/*
-> + * Copyright (C) 2019 Jagan Teki <jagan@amarulasolutions.com>
-> + */
-> +
-> +#include "rk3399-rock-pi-4-u-boot.dtsi"
-> diff --git a/arch/arm/dts/rk3399-rock-pi-4c.dts b/arch/arm/dts/rk3399-rock-pi-4c.dts
-> new file mode 100644
-> index 0000000000..9d07ebd1ec
-> --- /dev/null
-> +++ b/arch/arm/dts/rk3399-rock-pi-4c.dts
-> @@ -0,0 +1,51 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
-> + * Copyright (c) 2019 Radxa Limited
-> + * Copyright (c) 2019 Amarula Solutions(India)
-> + */
-> +
-> +/dts-v1/;
-> +#include "rk3399-rock-pi-4.dtsi"
-> +
-> +/ {
-> +	model = "Radxa ROCK Pi 4C";
-> +	compatible = "radxa,rockpi4", "rockchip,rk3399";
-> +};
-> +
-> +&sdio0 {
-> +	status = "okay";
-> +
-> +	brcmf: wifi@1 {
-> +		compatible = "brcm,bcm4329-fmac";
-> +		reg = <1>;
-> +		interrupt-parent = <&gpio0>;
-> +		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
-> +		interrupt-names = "host-wake";
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&wifi_host_wake_l>;
-> +	};
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +
-> +	bluetooth {
-> +		compatible = "brcm,bcm43438-bt";
-> +		clocks = <&rk808 1>;
-> +		clock-names = "ext_clock";
-> +		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
-> +		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
-> +		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
-> +	};
-> +};
-> +
-> +&vcc5v0_host {
-> +	gpio = <&gpio3 RK_PD6 GPIO_ACTIVE_HIGH>;
-> +};
-> +
-> +&vcc5v0_host_en {
-> +	rockchip,pins = <3 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
-> +};
-> diff --git a/board/rockchip/evb_rk3399/MAINTAINERS b/board/rockchip/evb_rk3399/MAINTAINERS
-> index 578638a58b..4c889e06a6 100644
-> --- a/board/rockchip/evb_rk3399/MAINTAINERS
-> +++ b/board/rockchip/evb_rk3399/MAINTAINERS
-> @@ -68,6 +68,8 @@ M:	Jagan Teki <jagan@amarulasolutions.com>
->   S:	Maintained
->   F:	configs/rock-pi-4-rk3399_defconfig
->   F:	arch/arm/dts/rk3399-rock-pi-4-u-boot.dtsi
-> +F:	configs/rock-pi-4c-rk3399_defconfig
-> +F:	arch/arm/dts/rk3399-rock-pi-4c-u-boot.dtsi
+> diff --git a/arch/arm/mach-rockchip/Kconfig b/arch/arm/mach-rockchip/Kconfig
+> index e2b6326584..fcab1d5cee 100644
+> --- a/arch/arm/mach-rockchip/Kconfig
+> +++ b/arch/arm/mach-rockchip/Kconfig
+> @@ -99,6 +99,7 @@ config ROCKCHIP_RK322X
+>   config ROCKCHIP_RK3288
+>   	bool "Support Rockchip RK3288"
+>   	select CPU_V7A
+> +	select OF_BOARD_SETUP
+>   	select SUPPORT_SPL
+>   	select SPL
+>   	select SUPPORT_TPL
+> diff --git a/arch/arm/mach-rockchip/rk3288/rk3288.c b/arch/arm/mach-rockchip/rk3288/rk3288.c
+> index 804abe8a1b..1a4ecdf625 100644
+> --- a/arch/arm/mach-rockchip/rk3288/rk3288.c
+> +++ b/arch/arm/mach-rockchip/rk3288/rk3288.c
+> @@ -13,6 +13,7 @@
+>   #include <asm/io.h>
+>   #include <asm/arch-rockchip/bootrom.h>
+>   #include <asm/arch-rockchip/clock.h>
+> +#include <asm/arch-rockchip/cpu_rk3288.h>
+>   #include <asm/arch-rockchip/cru.h>
+>   #include <asm/arch-rockchip/hardware.h>
+>   #include <asm/arch-rockchip/grf_rk3288.h>
+> @@ -115,6 +116,35 @@ int rk_board_late_init(void)
+>   	return rk3288_board_late_init();
+>   }
 >   
->   ROCK-PI-N10
->   M:	Jagan Teki <jagan@amarulasolutions.com>
-> diff --git a/configs/rock-pi-4c-rk3399_defconfig b/configs/rock-pi-4c-rk3399_defconfig
-> new file mode 100644
-> index 0000000000..5e4eb6a368
-> --- /dev/null
-> +++ b/configs/rock-pi-4c-rk3399_defconfig
-> @@ -0,0 +1,74 @@
-> +CONFIG_ARM=y
-> +CONFIG_ARCH_ROCKCHIP=y
-> +CONFIG_SYS_TEXT_BASE=0x00200000
-> +CONFIG_ENV_OFFSET=0x3F8000
-> +CONFIG_ROCKCHIP_RK3399=y
-> +CONFIG_TARGET_EVB_RK3399=y
-> +CONFIG_NR_DRAM_BANKS=1
-> +CONFIG_DEBUG_UART_BASE=0xFF1A0000
-> +CONFIG_DEBUG_UART_CLOCK=24000000
-> +CONFIG_DEBUG_UART=y
-> +# CONFIG_ANDROID_BOOT_IMAGE is not set
-> +CONFIG_DEFAULT_FDT_FILE="rockchip/rk3399-rock-pi-4c.dtb"
-> +CONFIG_MISC_INIT_R=y
-> +CONFIG_DISPLAY_BOARDINFO_LATE=y
-> +# CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
-> +CONFIG_SPL_STACK_R=y
-> +CONFIG_SPL_STACK_R_MALLOC_SIMPLE_LEN=0x10000
-> +CONFIG_TPL=y
-> +CONFIG_CMD_BOOTZ=y
-> +CONFIG_CMD_GPT=y
-> +CONFIG_CMD_MMC=y
-> +CONFIG_CMD_PCI=y
-> +CONFIG_CMD_USB=y
-> +# CONFIG_CMD_SETEXPR is not set
-> +CONFIG_CMD_TIME=y
-> +CONFIG_SPL_OF_CONTROL=y
-> +CONFIG_DEFAULT_DEVICE_TREE="rk3399-rock-pi-4c"
-> +CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names clock-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
-> +CONFIG_ENV_IS_IN_MMC=y
-> +CONFIG_SYS_RELOC_GD_ENV_ADDR=y
-> +CONFIG_ROCKCHIP_GPIO=y
-> +CONFIG_SYS_I2C_ROCKCHIP=y
-> +CONFIG_MISC=y
-> +CONFIG_MMC_DW=y
-> +CONFIG_MMC_DW_ROCKCHIP=y
-> +CONFIG_MMC_SDHCI=y
-> +CONFIG_MMC_SDHCI_ROCKCHIP=y
-> +CONFIG_DM_ETH=y
-> +CONFIG_ETH_DESIGNWARE=y
-> +CONFIG_GMAC_ROCKCHIP=y
-> +CONFIG_NVME=y
-> +CONFIG_PCI=y
-> +CONFIG_PHY_ROCKCHIP_INNO_USB2=y
-> +CONFIG_PHY_ROCKCHIP_TYPEC=y
-> +CONFIG_PMIC_RK8XX=y
-> +CONFIG_REGULATOR_PWM=y
-> +CONFIG_REGULATOR_RK8XX=y
-> +CONFIG_PWM_ROCKCHIP=y
-> +CONFIG_RAM_RK3399_LPDDR4=y
-> +CONFIG_DM_RESET=y
-> +CONFIG_BAUDRATE=1500000
-> +CONFIG_DEBUG_UART_SHIFT=2
-> +CONFIG_SYSRESET=y
-> +CONFIG_USB=y
-> +CONFIG_USB_XHCI_HCD=y
-> +CONFIG_USB_XHCI_DWC3=y
-> +CONFIG_USB_EHCI_HCD=y
-> +CONFIG_USB_EHCI_GENERIC=y
-> +CONFIG_USB_DWC3=y
-> +CONFIG_USB_DWC3_GENERIC=y
-> +CONFIG_USB_KEYBOARD=y
-> +CONFIG_USB_GADGET=y
-> +CONFIG_USB_HOST_ETHER=y
-> +CONFIG_USB_ETHER_ASIX=y
-> +CONFIG_USB_ETHER_ASIX88179=y
-> +CONFIG_USB_ETHER_MCS7830=y
-> +CONFIG_USB_ETHER_RTL8152=y
-> +CONFIG_USB_ETHER_SMSC95XX=y
-> +CONFIG_DM_VIDEO=y
-> +CONFIG_DISPLAY=y
-> +CONFIG_VIDEO_ROCKCHIP=y
-> +CONFIG_DISPLAY_ROCKCHIP_HDMI=y
-> +CONFIG_SPL_TINY_MEMSET=y
-> +CONFIG_ERRNO_STR=y
+> +static int ft_rk3288w_setup(void *blob)
+> +{
+> +	const char *path;
+> +	int offs, ret;
+> +
+> +	path = "/clock-controller@ff760000";
+> +	offs = fdt_path_offset(blob, path);
+> +	if (offs < 0) {
+> +		debug("failed to found fdt path %s\n", path);
+> +		return offs;
+> +	}
+> +
+> +	ret = fdt_setprop_string(blob, offs, "compatible", "rockchip,rk3288w-cru");
+> +	if (ret) {
+> +		printf("failed to set rk3288w-cru compatible (ret=%d)\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +int ft_board_setup(void *blob, struct bd_info *bd)
+> +{
+> +	if (soc_is_rk3288w())
+> +		return ft_rk3288w_setup(blob);
+> +
+> +	return 0;
+> +}
+> +
+>   static int do_clock(struct cmd_tbl *cmdtp, int flag, int argc,
+>   		    char *const argv[])
+>   {
