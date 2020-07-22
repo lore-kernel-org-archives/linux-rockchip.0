@@ -1,102 +1,84 @@
-From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v3 1/2] rockchip: Add rk3288 SoC detection helper
-Date: Wed, 22 Jul 2020 20:06:45 +0800
-Message-ID: <9e8efd23-6cfa-5817-f75e-7edff6423532@rock-chips.com>
-References: <20200721064638.16236-1-jagan@amarulasolutions.com>
+From: Emil Renner Berthing <emil.renner.berthing-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 1/3] spi: rockchip: Config spi rx dma burst size depend
+ on xfer length
+Date: Wed, 22 Jul 2020 14:08:43 +0200
+Message-ID: <CANBLGcxZ+ps5TNzrHNHyjUZvSTrVQOHaqvB5H3tZVOow5z0aLQ@mail.gmail.com>
+References: <20200722083737.8820-1-jon.lin@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200721064638.16236-1-jagan@amarulasolutions.com>
-Content-Language: en-US
-List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
-List-Archive: <https://lists.denx.de/pipermail/u-boot/>
-List-Post: <mailto:u-boot@lists.denx.de>
-List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
-List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
- <mailto:u-boot-request@lists.denx.de?subject=subscribe>
-Errors-To: u-boot-bounces@lists.denx.de
-Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
-To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200722083737.8820-1-jon.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jon Lin <jon.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
+On Wed, 22 Jul 2020 at 10:41, Jon Lin <jon.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
+>
+> The burst length can be adjusted according to the transmission
+> length to improve the transmission rate
+>
+> Signed-off-by: Jon Lin <jon.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
 
-On 2020/7/21 下午2:46, Jagan Teki wrote:
-> Rockchip SoC's has a new revision chip for rk3288 SoCs.
->
-> RK3288 has a new revision chip called RK3288W which is similar
-> but different hclk_vio clock and fixed OHCI host.
->
-> Add common Rockchip SoC detection helper to support this rk3288w
-> detection.
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
+For the whole series you can add
+Reviewed-by: Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>
+Tested-by: Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>
 
-Thanks,
-- Kever
 > ---
-> Changes for v3:
-> - add rk3288 cpu spec header
+>  drivers/spi/spi-rockchip.c | 19 +++++++++++++++++--
+>  1 file changed, 17 insertions(+), 2 deletions(-)
 >
->   .../include/asm/arch-rockchip/cpu_rk3288.h    | 49 +++++++++++++++++++
->   1 file changed, 49 insertions(+)
->   create mode 100644 arch/arm/include/asm/arch-rockchip/cpu_rk3288.h
+> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+> index 9b8a5e1233c0..63593a5b87fa 100644
+> --- a/drivers/spi/spi-rockchip.c
+> +++ b/drivers/spi/spi-rockchip.c
+> @@ -384,6 +384,19 @@ static void rockchip_spi_dma_txcb(void *data)
+>         spi_finalize_current_transfer(ctlr);
+>  }
 >
-> diff --git a/arch/arm/include/asm/arch-rockchip/cpu_rk3288.h b/arch/arm/include/asm/arch-rockchip/cpu_rk3288.h
-> new file mode 100644
-> index 0000000000..7445e64b8c
-> --- /dev/null
-> +++ b/arch/arm/include/asm/arch-rockchip/cpu_rk3288.h
-> @@ -0,0 +1,49 @@
-> +/* SPDX-License-Identifier: GPL-2.0+  */
-> +/*
-> + * Rockchip Electronics Co., Ltd.
-> + */
-> +
-> +#ifndef __ASM_ARCH_CPU_RK3288_H
-> +#define __ASM_ARCH_CPU_RK3288_H
-> +
-> +#include <asm/io.h>
-> +
-> +#define ROCKCHIP_CPU_MASK       0xffff0000
-> +#define ROCKCHIP_CPU_RK3288     0x32880000
-> +
-> +#define ROCKCHIP_SOC_MASK	(ROCKCHIP_CPU_MASK | 0xff)
-> +#define ROCKCHIP_SOC_RK3288     (ROCKCHIP_CPU_RK3288 | 0x00)
-> +#define ROCKCHIP_SOC_RK3288W    (ROCKCHIP_CPU_RK3288 | 0x01)
-> +
-> +#define RK3288_HDMI_PHYS	0xff980000
-> +#define HDMI_CONFIG0_ID		0x4
-> +#define RK3288W_HDMI_REVID	0x1a
-> +
-> +static inline int rockchip_soc_id(void)
+> +static u32 rockchip_spi_calc_burst_size(u32 data_len)
 > +{
-> +	u8 reg;
+> +       u32 i;
 > +
-> +#if defined(CONFIG_ROCKCHIP_RK3288)
-> +	reg = readb(RK3288_HDMI_PHYS + HDMI_CONFIG0_ID);
-> +	if (reg == RK3288W_HDMI_REVID)
-> +		return ROCKCHIP_SOC_RK3288W;
-> +	else
-> +		return ROCKCHIP_SOC_RK3288;
-> +#else
-> +	return 0;
-> +#endif
+> +       /* burst size: 1, 2, 4, 8 */
+> +       for (i = 1; i < 8; i <<= 1) {
+> +               if (data_len & i)
+> +                       break;
+> +       }
+> +
+> +       return i;
 > +}
 > +
-> +#define ROCKCHIP_SOC(id, ID) \
-> +static inline bool soc_is_##id(void) \
-> +{ \
-> +	int soc_id = rockchip_soc_id(); \
-> +	if (soc_id) \
-> +		return ((soc_id & ROCKCHIP_SOC_MASK) == ROCKCHIP_SOC_ ##ID); \
-> +	return false; \
-> +}
-> +
-> +ROCKCHIP_SOC(rk3288, RK3288)
-> +ROCKCHIP_SOC(rk3288w, RK3288W)
-> +
-> +#endif /* __ASM_ARCH_CPU_RK3288_H */
+>  static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
+>                 struct spi_controller *ctlr, struct spi_transfer *xfer)
+>  {
+> @@ -397,7 +410,8 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
+>                         .direction = DMA_DEV_TO_MEM,
+>                         .src_addr = rs->dma_addr_rx,
+>                         .src_addr_width = rs->n_bytes,
+> -                       .src_maxburst = 1,
+> +                       .src_maxburst = rockchip_spi_calc_burst_size(xfer->len /
+> +                                                                    rs->n_bytes),
+>                 };
+>
+>                 dmaengine_slave_config(ctlr->dma_rx, &rxconf);
+> @@ -525,7 +539,8 @@ static void rockchip_spi_config(struct rockchip_spi *rs,
+>                 writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
+>
+>         writel_relaxed(rs->fifo_len / 2, rs->regs + ROCKCHIP_SPI_DMATDLR);
+> -       writel_relaxed(0, rs->regs + ROCKCHIP_SPI_DMARDLR);
+> +       writel_relaxed(rockchip_spi_calc_burst_size(xfer->len / rs->n_bytes) - 1,
+> +                      rs->regs + ROCKCHIP_SPI_DMARDLR);
+>         writel_relaxed(dmacr, rs->regs + ROCKCHIP_SPI_DMACR);
+>
+>         /* the hardware only supports an even clock divisor, so
+> --
+> 2.17.1
+>
+>
+>
+>
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
