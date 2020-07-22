@@ -1,15 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v2 05/12] arm: dts: rockchip: Add HDMI out for RockPI
- N8/N10
-Date: Wed, 22 Jul 2020 20:29:15 +0800
-Message-ID: <0d3d9e75-49da-f7c4-edaa-5a9699fd7a10@rock-chips.com>
+Subject: Re: [PATCH v2 06/12] arm64: dts: rockchip: Add PCIe for RockPI N10
+Date: Wed, 22 Jul 2020 20:29:36 +0800
+Message-ID: <90e4c2d3-e6ec-109f-558f-c2d07e5ecfcb@rock-chips.com>
 References: <20200721152443.37602-1-jagan@amarulasolutions.com>
- <20200721152443.37602-6-jagan@amarulasolutions.com>
+ <20200721152443.37602-7-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200721152443.37602-6-jagan@amarulasolutions.com>
+In-Reply-To: <20200721152443.37602-7-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -26,8 +25,7 @@ List-Id: linux-rockchip.vger.kernel.org
 
 
 On 2020/7/21 下午11:24, Jagan Teki wrote:
-> This patch adds support to enable HDMI out for
-> N10 and N8 combinations SBCs.
+> This patch adds support to enable PCIe for RockPI N10.
 >
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
@@ -38,101 +36,85 @@ Thanks,
 > Changes for v2:
 > - none
 >
->   arch/arm/dts/rk3288-vmarc-som.dtsi            | 10 ++++++++++
->   arch/arm/dts/rk3399pro-vmarc-som.dtsi         | 12 +++++++++++
->   .../dts/rockchip-radxa-dalang-carrier.dtsi    | 20 +++++++++++++++++++
->   3 files changed, 42 insertions(+)
+>   arch/arm/dts/rk3399pro-vmarc-som.dtsi | 40 +++++++++++++++++++++++++--
+>   1 file changed, 38 insertions(+), 2 deletions(-)
 >
-> diff --git a/arch/arm/dts/rk3288-vmarc-som.dtsi b/arch/arm/dts/rk3288-vmarc-som.dtsi
-> index 72a503e50d..717cb3dc81 100644
-> --- a/arch/arm/dts/rk3288-vmarc-som.dtsi
-> +++ b/arch/arm/dts/rk3288-vmarc-som.dtsi
-> @@ -38,6 +38,12 @@
->   	snps,reset-gpio = <&gpio4 RK_PA7 GPIO_ACTIVE_HIGH>;
+> diff --git a/arch/arm/dts/rk3399pro-vmarc-som.dtsi b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
+> index ebccc4a153..5d087be04a 100644
+> --- a/arch/arm/dts/rk3399pro-vmarc-som.dtsi
+> +++ b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
+> @@ -11,6 +11,18 @@
+>   
+>   / {
+>   	compatible = "vamrs,rk3399pro-vmarc-som", "rockchip,rk3399pro";
+> +
+> +	vcc3v3_pcie: vcc-pcie-regulator {
+> +		compatible = "regulator-fixed";
+> +		enable-active-high;
+> +		gpio = <&gpio4 RK_PD4 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&pcie_pwr>;
+> +		regulator-name = "vcc3v3_pcie";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +		vin-supply = <&vcc5v0_sys>;
+> +	};
 >   };
 >   
-> +&hdmi {
-> +	ddc-i2c-bus = <&i2c5>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&hdmi_cec_c0>;
+>   &cpu_l0 {
+> @@ -142,7 +154,8 @@
+>   				regulator-min-microvolt = <900000>;
+>   				regulator-max-microvolt = <900000>;
+>   				regulator-state-mem {
+> -					regulator-off-in-suspend;
+> +					regulator-on-in-suspend;
+> +					regulator-suspend-microvolt = <900000>;
+>   				};
+>   			};
+>   
+> @@ -177,7 +190,8 @@
+>   				regulator-min-microvolt = <1850000>;
+>   				regulator-max-microvolt = <1850000>;
+>   				regulator-state-mem {
+> -					regulator-off-in-suspend;
+> +					regulator-on-in-suspend;
+> +					regulator-suspend-microvolt = <1850000>;
+>   				};
+>   			};
+>   
+> @@ -304,6 +318,22 @@
+>   	sdmmc-supply = <&vccio_sd>;
+>   };
+>   
+> +&pcie_phy {
+> +	status = "okay";
 > +};
 > +
->   &i2c0 {
->   	clock-frequency = <400000>;
->   	status = "okay";
-> @@ -225,6 +231,10 @@
->   	};
->   };
->   
-> +&i2c5 {
+> +&pcie0 {
+> +	ep-gpios = <&gpio0 RK_PB4 GPIO_ACTIVE_HIGH>;
+> +	max-link-speed = <2>;
+> +	num-lanes = <4>;
+> +	pinctrl-0 = <&pcie_clkreqnb_cpm>;
+> +	pinctrl-names = "default";
+> +	vpcie0v9-supply = <&vcca_0v9>;	/* VCC_0V9_S0 */
+> +	vpcie1v8-supply = <&vcca_1v8>;	/* VCC_1V8_S0 */
+> +	vpcie3v3-supply = <&vcc3v3_pcie>;
 > +	status = "okay";
 > +};
 > +
 >   &pinctrl {
->   	pcfg_pull_none_drv_8ma: pcfg-pull-none-drv-8ma {
->   		drive-strength = <8>;
-> diff --git a/arch/arm/dts/rk3399pro-vmarc-som.dtsi b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
-> index 111d6cf9a4..ebccc4a153 100644
-> --- a/arch/arm/dts/rk3399pro-vmarc-som.dtsi
-> +++ b/arch/arm/dts/rk3399pro-vmarc-som.dtsi
-> @@ -39,6 +39,12 @@
->   	snps,reset-gpio = <&gpio3 RK_PB7 GPIO_ACTIVE_LOW>;
->   };
->   
-> +&hdmi {
-> +	ddc-i2c-bus = <&i2c3>;
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&hdmi_cec>;
-> +};
-> +
->   &i2c0 {
->   	clock-frequency = <400000>;
->   	i2c-scl-falling-time-ns = <30>;
-> @@ -285,6 +291,12 @@
+>   	hym8563 {
+>   		hym8563_int: hym8563-int {
+> @@ -311,6 +341,12 @@
+>   		};
 >   	};
->   };
 >   
-> +&i2c3 {
-> +	i2c-scl-rising-time-ns = <450>;
-> +	i2c-scl-falling-time-ns = <15>;
-> +	status = "okay";
-> +};
+> +	pcie {
+> +		pcie_pwr: pcie-pwr {
+> +			rockchip,pins =	<4 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
+> +		};
+> +	};
 > +
->   &io_domains {
->   	status = "okay";
->   	bt656-supply = <&vcca_1v8>;
-> diff --git a/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi b/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi
-> index d2b6ead148..26b53eac47 100644
-> --- a/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi
-> +++ b/arch/arm/dts/rockchip-radxa-dalang-carrier.dtsi
-> @@ -66,6 +66,10 @@
->   	status = "okay";
->   };
->   
-> +&hdmi {
-> +	status = "okay";
-> +};
-> +
->   &pwm0 {
->   	status = "okay";
->   };
-> @@ -94,3 +98,19 @@
->   &uart2 {
->   	status = "okay";
->   };
-> +
-> +&vopb {
-> +	status = "okay";
-> +};
-> +
-> +&vopb_mmu {
-> +	status = "okay";
-> +};
-> +
-> +&vopl {
-> +	status = "okay";
-> +};
-> +
-> +&vopl_mmu {
-> +	status = "okay";
-> +};
+>   	pmic {
+>   		pmic_int_l: pmic-int-l {
+>   			rockchip,pins = <1 RK_PC2 0 &pcfg_pull_up>;
