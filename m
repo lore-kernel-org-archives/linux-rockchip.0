@@ -1,13 +1,13 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH v6 0/5] rockchip: roc-rk3399-pc: Custom SPL
-Date: Wed, 22 Jul 2020 21:09:50 +0800
-Message-ID: <25dacfb9-6064-0c38-1b41-7f9ba9dac211@rock-chips.com>
-References: <20200721150604.35410-1-jagan@amarulasolutions.com>
+Subject: Re: [PATCH v2 00/12] rockchip: ROCKPi N8/N10 hardware enablement
+Date: Wed, 22 Jul 2020 21:10:02 +0800
+Message-ID: <2808ab37-51cc-b4d5-5fba-a01bc0dcba62@rock-chips.com>
+References: <20200721152443.37602-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200721150604.35410-1-jagan@amarulasolutions.com>
+In-Reply-To: <20200721152443.37602-1-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -23,45 +23,45 @@ Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.d
 List-Id: linux-rockchip.vger.kernel.org
 
 
-On 2020/7/21 下午11:05, Jagan Teki wrote:
-> This series supports custom initialization code required for
-> roc-rk3399-pc board on SPL stage.
+On 2020/7/21 下午11:24, Jagan Teki wrote:
+> Series enable hardware enablement on ROCKPi N8/N10
+> boards.
 >
-> Now this series is well mature code handling to add custom
-> spl_board_init code parts.
+> - USB 3.0 Host
+> - USB 2.0 Host
+> - USB 3.0 Gadget
+> - USB 2.0 Gadget
+> - HDMI Out
+> - PCIe
 >
-> roc-rk3399-pc would require custom leds initialization based
-> on user intervention of the power key. This code handles the
-> user intervention via SPI environment variable. If someone
-> or production systems wants this feature then 'pwr_key' has
-> to be set otherwise it is normal like other rk3399 boards
-> in Mainline.
+> Note: dts patches are Synced from linux-next and few from mailing list.
 >
-> Changes for v6:
-> - use spl board init code for led_setup
-> Changes for v5:
-> - drop banner changes
-> - add code changes in roc-pc-rk3399.c
-> Changes for v4:
-> - enable SPL_BOARD_INIT in all platforms
-> Changes for v3:
-> - support leds on SPL
-> - support env 'pwr_key'
+> Jagan Teki (8):
+>    ARM: dts: rockchip: Sync ROCKPi N8/N10 dts(i) from Linux
+>    ARM: dts: rockchip: Add usb host0 ohci node for rk3288
+>    ARM: dts: rockchip: Add USB for RockPI N8/N10
+>    arm: dts: rockchip: Add HDMI out for RockPI N8/N10
+>    arm64: dts: rockchip: Add PCIe for RockPI N10
+>    rockchip: rock-pi-n10: Enable PCI/NVME
+>    arm64: dts: rockchip: Add u-boot,spl-boot-order for ROCKPi N10
+>    rockchip: rock-p-n8/n10: Disable RAM_ROCKCHIP_DEBUG
 >
-> Jagan Teki (5):
->    rockchip: rk3399: Add weak led_setup()
->    rockchip: roc-rk3399-pc: Add custom led_setup()
->    rockchip: Don't clear the reset status reg
->    rockchip: Separate the reset cause from display cpuinfo
->    rockchip: roc-rk3399-pc: Set LED only during POR and pwr_key=y
+> Suniel Mahesh (4):
+>    arm: dts: rockchip: Sync rk3288 dtsi from linux
+>    rockchip: rock-pi-n10: Enable on board devices
+>    rockchip: evb_rk3288: Add console settings
+>    rockchip: rock-pi-n8: Enable on board devices
 >
->   arch/arm/include/asm/arch-rockchip/cru.h    |  3 +-
->   arch/arm/mach-rockchip/Makefile             |  5 ++-
->   arch/arm/mach-rockchip/cpu-info.c           | 26 ++++++-----
->   arch/arm/mach-rockchip/rk3399/rk3399.c      |  6 +++
->   arch/arm/mach-rockchip/tpl.c                |  7 ---
->   board/firefly/roc-pc-rk3399/roc-pc-rk3399.c | 48 +++++++++++++++++----
->   configs/roc-pc-mezzanine-rk3399_defconfig   |  6 ++-
->   configs/roc-pc-rk3399_defconfig             |  6 ++-
->   8 files changed, 71 insertions(+), 36 deletions(-)
+>   arch/arm/dts/rk3288-rock-pi-n8.dts            |   2 +-
+>   arch/arm/dts/rk3288-vmarc-som.dtsi            | 132 +++++++-----
+>   arch/arm/dts/rk3288.dtsi                      |  17 +-
+>   .../arm/dts/rk3399pro-rock-pi-n10-u-boot.dtsi |   6 +
+>   arch/arm/dts/rk3399pro-rock-pi-n10.dts        |   6 +-
+>   arch/arm/dts/rk3399pro-vmarc-som.dtsi         | 201 ++++++++++++++----
+>   .../dts/rockchip-radxa-dalang-carrier.dtsi    |  95 ++++++---
+>   configs/rock-pi-n10-rk3399pro_defconfig       |  25 +++
+>   configs/rock-pi-n8-rk3288_defconfig           |  17 ++
+>   include/configs/evb_rk3288.h                  |   6 +-
+>   10 files changed, 379 insertions(+), 128 deletions(-)
+>
 Applied to u-boot-rockchip master for this patch set, thanks.
