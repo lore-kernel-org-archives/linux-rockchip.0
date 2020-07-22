@@ -1,39 +1,52 @@
-From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add PCIe for RockPI N10
-Date: Thu, 23 Jul 2020 00:21:07 +0530
-Message-ID: <CAMty3ZDkvRGn6a54ryVFNJOwm+X6YXW-TxSjO+kC9o2kshRxtg@mail.gmail.com>
-References: <20200720110230.367985-1-jagan@amarulasolutions.com> <20200720110230.367985-3-jagan@amarulasolutions.com>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Subject: Re: [PATCH v2] drm/of: Consider the state in which the ep is disabled
+Date: Wed, 22 Jul 2020 21:01:56 +0200
+Message-ID: <3361390.LkKjKlf5PX@phil>
+References: <20200707112526.18438-1-hjc@rock-chips.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200720110230.367985-3-jagan@amarulasolutions.com>
+In-Reply-To: <20200707112526.18438-1-hjc@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
-Cc: Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, devicetree <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, linux-amarula <linux-amarula@amarulasolutions.com>
+To: Sandy Huang <hjc@rock-chips.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, huangtao@rock-chips.com, andy.yan@rock-chips.com, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, kever.yang@rock-chips.com, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Heiko,
+Am Dienstag, 7. Juli 2020, 13:25:26 CEST schrieb Sandy Huang:
+> don't mask possible_crtcs if remote-point is disabled.
+> 
+> Signed-off-by: Sandy Huang <hjc@rock-chips.com>
 
-On Mon, Jul 20, 2020 at 4:33 PM Jagan Teki <jagan@amarulasolutions.com> wrote:
->
-> This patch adds support to enable PCIe for RockPI N10.
->
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+
+changes in v2:
+- drop additional of_node_put, as ep will be put with the next
+  iteration of for_each_endpoint_of_node()
+
+
+As this touches a pretty central function is there something
+to keep in mind in regards to other DRM drivers?
+[question for the broader audience ;-) ]
+
+Heiko
+
 > ---
->  .../dts/rockchip/rk3399pro-vmarc-som.dtsi     | 41 ++++++++++++++++++-
->  1 file changed, 39 insertions(+), 2 deletions(-)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-> index ebccc4a153a2..b415b8a16c78 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399pro-vmarc-som.dtsi
-> @@ -11,6 +11,19 @@
->
->  / {
->         compatible = "vamrs,rk3399pro-vmarc-som", "rockchip,rk3399pro";
+>  drivers/gpu/drm/drm_of.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/drm_of.c b/drivers/gpu/drm/drm_of.c
+> index fdb05fbf72a0..565f05f5f11b 100644
+> --- a/drivers/gpu/drm/drm_of.c
+> +++ b/drivers/gpu/drm/drm_of.c
+> @@ -66,6 +66,9 @@ uint32_t drm_of_find_possible_crtcs(struct drm_device *dev,
+>  	uint32_t possible_crtcs = 0;
+>  
+>  	for_each_endpoint_of_node(port, ep) {
+> +		if (!of_device_is_available(ep))
+> +			continue;
 > +
-> +
-
-Sorry for this extra space, let me know so that I can resend next version.
-
-Jagan.
+>  		remote_port = of_graph_get_remote_port(ep);
+>  		if (!remote_port) {
+>  			of_node_put(ep);
+> 
