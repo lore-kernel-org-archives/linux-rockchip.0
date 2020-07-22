@@ -1,7 +1,7 @@
 From: Alex Bee <knaerzche@gmail.com>
-Subject: [PATCH v2 4/5] drm: rockchip: set alpha_en to 0 if it is not used
-Date: Wed, 22 Jul 2020 20:13:31 +0200
-Message-ID: <20200722181332.26995-5-knaerzche@gmail.com>
+Subject: [PATCH v2 5/5] drm: rockchip: use overlay windows as such
+Date: Wed, 22 Jul 2020 20:13:32 +0200
+Message-ID: <20200722181332.26995-6-knaerzche@gmail.com>
 References: <20200722181332.26995-1-knaerzche@gmail.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
 In-Reply-To: <20200722181332.26995-1-knaerzche@gmail.com>
@@ -10,31 +10,65 @@ To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner=20?= <heiko
 Cc: Alex Bee <knaerzche@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-alpha_en should be set to 0 if it is not used, i.e. to disable alpha
-blending if it was enabled before and should be disabled now.
+As stated in the comment for rk3288_vop_win_data windows that are
+supposed to be an overlay window are missused as HWC windows due to the
+missing implementation of that window type in the VOP driver.
 
-Fixes: 2aae8ed1f390 ("drm/rockchip: Add per-pixel alpha support for the PX30 VOP")
+This also applies to VOPs RK3036, RK3126, RK3188 and RK3228, which all
+have at least one (1) dedicated HWC window (which are not currently
+defined in the driver).
+Since all the VOPs mentioned have only one (1) overlay window and all
+now support alpha blending , it should also be used as such, as this
+offers a much broader usage perspective for them.
 
 Signed-off-by: Alex Bee <knaerzche@gmail.com>
 ---
 
 Changes in v2:
-- capitalize "F" of "Fixes" in the commit message
+- rephrase commit message
 
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index c80f7d9fd13f..0f23144491e4 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1013,6 +1013,7 @@ static void vop_plane_atomic_update(struct drm_plane *plane,
- 		VOP_WIN_SET(vop, win, alpha_en, 1);
- 	} else {
- 		VOP_WIN_SET(vop, win, src_alpha_ctl, SRC_ALPHA_EN(0));
-+		VOP_WIN_SET(vop, win, alpha_en, 0);
- 	}
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+index 5a13b4ab77e1..b4a00f13b559 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop_reg.c
+@@ -131,7 +131,7 @@ static const struct vop_win_data rk3036_vop_win_data[] = {
+ 	{ .base = 0x00, .phy = &rk3036_win0_data,
+ 	  .type = DRM_PLANE_TYPE_PRIMARY },
+ 	{ .base = 0x00, .phy = &rk3036_win1_data,
+-	  .type = DRM_PLANE_TYPE_CURSOR },
++	  .type = DRM_PLANE_TYPE_OVERLAY },
+ };
  
- 	VOP_WIN_SET(vop, win, enable, 1);
+ static const int rk3036_vop_intrs[] = {
+@@ -200,7 +200,7 @@ static const struct vop_win_data rk3126_vop_win_data[] = {
+ 	{ .base = 0x00, .phy = &rk3036_win0_data,
+ 	  .type = DRM_PLANE_TYPE_PRIMARY },
+ 	{ .base = 0x00, .phy = &rk3126_win1_data,
+-	  .type = DRM_PLANE_TYPE_CURSOR },
++	  .type = DRM_PLANE_TYPE_OVERLAY },
+ };
+ 
+ static const struct vop_data rk3126_vop = {
+@@ -542,7 +542,7 @@ static const struct vop_win_data rk3188_vop_win_data[] = {
+ 	{ .base = 0x00, .phy = &rk3188_win0_data,
+ 	  .type = DRM_PLANE_TYPE_PRIMARY },
+ 	{ .base = 0x00, .phy = &rk3188_win1_data,
+-	  .type = DRM_PLANE_TYPE_CURSOR },
++	  .type = DRM_PLANE_TYPE_OVERLAY },
+ };
+ 
+ static const int rk3188_vop_intrs[] = {
+@@ -979,7 +979,7 @@ static const struct vop_win_data rk3228_vop_win_data[] = {
+ 	{ .base = 0x00, .phy = &rk3288_win01_data,
+ 	  .type = DRM_PLANE_TYPE_PRIMARY },
+ 	{ .base = 0x40, .phy = &rk3288_win01_data,
+-	  .type = DRM_PLANE_TYPE_CURSOR },
++	  .type = DRM_PLANE_TYPE_OVERLAY },
+ };
+ 
+ static const struct vop_data rk3228_vop = {
 -- 
 2.17.1
