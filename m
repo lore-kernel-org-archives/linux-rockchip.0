@@ -1,65 +1,62 @@
-From: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
-Subject: Re: [PATCH v2 3/6] dt-bindings: arm: rockchip: Add ROCKPi 4B binding
-Date: Thu, 23 Jul 2020 01:13:39 +0200
-Message-ID: <3893924.cuH9TW0V3R@phil>
-References: <20200722190949.215656-1-jagan@amarulasolutions.com> <20200722190949.215656-3-jagan@amarulasolutions.com>
+From: Heiko Stuebner <heiko@sntech.de>
+Subject: [GIT PULL] Rockchip clock changes for 5.9
+Date: Thu, 23 Jul 2020 01:42:33 +0200
+Message-ID: <3212743.Cm9O4y8ZXk@phil>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7Bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200722190949.215656-3-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: 8BIT
+Return-path: <linux-clk-owner@vger.kernel.org>
+Sender: linux-clk-owner@vger.kernel.org
+To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jagan,
+Hi Mike, Stephen,
 
-Am Mittwoch, 22. Juli 2020, 21:09:46 CEST schrieb Jagan Teki:
-> Add dt-bindings for ROCKPi 4B which is similar to 4A with
-> additional AP6256 Wifi/BT, PoE.
-> 
-> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
-> ---
-> Changes for v2:
-> - new patch
-> 
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 36057c9e4b83..7250adb43d24 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -448,6 +448,12 @@ properties:
->            - const: radxa,rockpi4a
->            - const: rockchip,rk3399
->  
-> +      - description: Radxa ROCK Pi 4B
-> +        items:
-> +          - const: radxa,rockpi4
-> +          - const: radxa,rockpi4b
-> +          - const: rockchip,rk3399
-> +
+please find below Rockchip clock changes for 5.9
 
-Please do all RockPi4 variants into one entry, so we want something like:
-
-      - description: Radxa ROCK Pi 4
-        items:
-          - enum:
-              - radxa,rockpi4a
-              - radxa,rockpi4b
-              - radxa,rockpi4c
-          - const: radxa,rockpi4
-          - const: rockchip,rk3399
-
-And as the {a,b,c} variant is the most specific it also should be the
-first entry, not the second.
-
-
+Please pull, thanks
 Heiko
 
->        - description: Radxa ROCK Pi N8
->          items:
->            - const: radxa,rockpi-n8
-> 
+The following changes since commit b3a9e3b9622ae10064826dccb4f7a52bd88c7407:
+
+  Linux 5.8-rc1 (2020-06-14 12:45:04 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.9-rockchip-clk1
+
+for you to fetch changes up to ef990bcad58cf1d13c5a49191a2c2342eb8d6709:
+
+  clk: rockchip: add sclk_mac_lbtest to rk3188_critical_clocks (2020-07-22 20:05:19 +0200)
+
+----------------------------------------------------------------
+Use poll_timeout functions for pll lock-waiting and move the rk3036 to use
+the available lock-status in pll-registers instead of reading it from the
+General Register Files. Handle the clock variants on the rk3288w, revert
+the mmc sample shift change on rk3328 and make the mac_lbtest clock
+critical on rk3188.
+
+----------------------------------------------------------------
+Alex Bee (1):
+      clk: rockchip: add sclk_mac_lbtest to rk3188_critical_clocks
+
+Heiko Stuebner (4):
+      clk: rockchip: convert rk3399 pll type to use readl_relaxed_poll_timeout
+      clk: rockchip: convert basic pll lock_wait to use regmap_read_poll_timeout
+      clk: rockchip: convert rk3036 pll type to use internal lock status
+      clk: rockchip: use separate compatibles for rk3288w-cru
+
+Mylène Josserand (2):
+      clk: rockchip: Handle clock tree for rk3288w variant
+      dt-bindings: clocks: add rk3288w variant compatible
+
+Robin Murphy (1):
+      clk: rockchip: Revert "fix wrong mmc sample phase shift for rk3328"
+
+ .../bindings/clock/rockchip,rk3288-cru.txt         |  8 ++-
+ drivers/clk/rockchip/clk-pll.c                     | 70 +++++++++++++---------
+ drivers/clk/rockchip/clk-rk3188.c                  |  1 +
+ drivers/clk/rockchip/clk-rk3288.c                  | 39 +++++++++++-
+ drivers/clk/rockchip/clk-rk3328.c                  |  8 +--
+ 5 files changed, 89 insertions(+), 37 deletions(-)
