@@ -1,54 +1,62 @@
-From: Emil Renner Berthing <kernel-sKpHZLTYfq0@public.gmane.org>
-Subject: Re: [PATCH v2 3/3] spi: rockchip: Fix error in SPI slave pio read
-Date: Wed, 22 Jul 2020 14:11:03 +0200
-Message-ID: <CANBLGczKsvrOb-AnB3MGi2RJOuFDoSY=S8enLtJZVAV2baGUgg@mail.gmail.com>
-References: <20200722083737.8820-1-jon.lin@rock-chips.com> <20200722083737.8820-3-jon.lin@rock-chips.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Subject: Re: [PATCH v6 1/5] rockchip: rk3399: Add weak led_setup()
+Date: Wed, 22 Jul 2020 20:12:07 +0800
+Message-ID: <b0c2d1c5-f879-641d-4c53-b2480bb0c9de@rock-chips.com>
+References: <20200721150604.35410-1-jagan@amarulasolutions.com>
+ <20200721150604.35410-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200722083737.8820-3-jon.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Sender: linux-spi-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Jon Lin <jon.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Cc: Mark Brown <broonie-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Linux Kernel Mailing List <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-spi-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Return-path: <u-boot-bounces@lists.denx.de>
+In-Reply-To: <20200721150604.35410-2-jagan@amarulasolutions.com>
+Content-Language: en-US
+List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
+List-Archive: <https://lists.denx.de/pipermail/u-boot/>
+List-Post: <mailto:u-boot@lists.denx.de>
+List-Help: <mailto:u-boot-request@lists.denx.de?subject=help>
+List-Subscribe: <https://lists.denx.de/listinfo/u-boot>,
+ <mailto:u-boot-request@lists.denx.de?subject=subscribe>
+Errors-To: u-boot-bounces@lists.denx.de
+Sender: "U-Boot" <u-boot-bounces@lists.denx.de>
+To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@theobroma-systems.com>, Simon Glass <sjg@chromium.org>
+Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, 22 Jul 2020 at 10:38, Jon Lin <jon.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org> wrote:
->
-> The RXFLR is possible larger than rx_left in Rockchip SPI, fix it.
->
-> Signed-off-by: Jon Lin <jon.lin-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-> Reviewed-by: Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
 
-In addition to my review and test you should probably also add
-Fixes: 01b59ce5dac8 ("spi: rockchip: use irq rather than polling")
-..so this will be picked up in the stable trees
+On 2020/7/21 下午11:06, Jagan Teki wrote:
+> Add weak led_setup() so that board which has an uncommon
+> led setup code that can make use of custom implementation.
+>
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Reviewed-by: Kever Yang<kever.yang@rock-chips.com>
 
-/Emil
+Thanks,
+- Kever
 
 > ---
->  drivers/spi/spi-rockchip.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Changes for v6:
+> - new patch
 >
-> diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
-> index a451dacab5cf..75a8a9428ff8 100644
-> --- a/drivers/spi/spi-rockchip.c
-> +++ b/drivers/spi/spi-rockchip.c
-> @@ -291,7 +291,7 @@ static void rockchip_spi_pio_writer(struct rockchip_spi *rs)
->  static void rockchip_spi_pio_reader(struct rockchip_spi *rs)
->  {
->         u32 words = readl_relaxed(rs->regs + ROCKCHIP_SPI_RXFLR);
-> -       u32 rx_left = rs->rx_left - words;
-> +       u32 rx_left = (rs->rx_left > words) ? rs->rx_left - words : 0;
+>   arch/arm/mach-rockchip/rk3399/rk3399.c | 6 ++++++
+>   1 file changed, 6 insertions(+)
 >
->         /* the hardware doesn't allow us to change fifo threshold
->          * level while spi is enabled, so instead make sure to leave
-> --
-> 2.17.1
->
->
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> diff --git a/arch/arm/mach-rockchip/rk3399/rk3399.c b/arch/arm/mach-rockchip/rk3399/rk3399.c
+> index 4fda93b152..c643483971 100644
+> --- a/arch/arm/mach-rockchip/rk3399/rk3399.c
+> +++ b/arch/arm/mach-rockchip/rk3399/rk3399.c
+> @@ -241,8 +241,14 @@ static void rk3399_force_power_on_reset(void)
+>   }
+>   #endif
+>   
+> +void __weak led_setup(void)
+> +{
+> +}
+> +
+>   void spl_board_init(void)
+>   {
+> +	led_setup();
+> +
+>   #if defined(SPL_GPIO_SUPPORT)
+>   	struct rockchip_cru *cru = rockchip_get_cru();
+>   
