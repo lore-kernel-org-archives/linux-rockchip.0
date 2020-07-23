@@ -1,62 +1,66 @@
-From: Heiko Stuebner <heiko@sntech.de>
-Subject: [GIT PULL] Rockchip clock changes for 5.9
-Date: Thu, 23 Jul 2020 01:42:33 +0200
-Message-ID: <3212743.Cm9O4y8ZXk@phil>
-Mime-Version: 1.0
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: 8BIT
-Return-path: <linux-clk-owner@vger.kernel.org>
-Sender: linux-clk-owner@vger.kernel.org
-To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+From: Jon Lin <jon.lin@rock-chips.com>
+Subject: [PATCH v3 1/3] spi: rockchip: Config spi rx dma burst size depend on xfer length
+Date: Thu, 23 Jul 2020 08:43:54 +0800
+Message-ID: <20200723004356.6390-1-jon.lin@rock-chips.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+Sender: linux-kernel-owner@vger.kernel.org
+To: broonie@kernel.org
+Cc: heiko@sntech.de, linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@esmil.dk, Jon Lin <jon.lin@rock-chips.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Mike, Stephen,
+The burst length can be adjusted according to the transmission
+length to improve the transmission rate
 
-please find below Rockchip clock changes for 5.9
+Signed-off-by: Jon Lin <jon.lin@rock-chips.com>
+Reviewed-by: Emil Renner Berthing <kernel@esmil.dk>
+Tested-by: Emil Renner Berthing <kernel@esmil.dk>
+---
+ drivers/spi/spi-rockchip.c | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
 
-Please pull, thanks
-Heiko
-
-The following changes since commit b3a9e3b9622ae10064826dccb4f7a52bd88c7407:
-
-  Linux 5.8-rc1 (2020-06-14 12:45:04 -0700)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.9-rockchip-clk1
-
-for you to fetch changes up to ef990bcad58cf1d13c5a49191a2c2342eb8d6709:
-
-  clk: rockchip: add sclk_mac_lbtest to rk3188_critical_clocks (2020-07-22 20:05:19 +0200)
-
-----------------------------------------------------------------
-Use poll_timeout functions for pll lock-waiting and move the rk3036 to use
-the available lock-status in pll-registers instead of reading it from the
-General Register Files. Handle the clock variants on the rk3288w, revert
-the mmc sample shift change on rk3328 and make the mac_lbtest clock
-critical on rk3188.
-
-----------------------------------------------------------------
-Alex Bee (1):
-      clk: rockchip: add sclk_mac_lbtest to rk3188_critical_clocks
-
-Heiko Stuebner (4):
-      clk: rockchip: convert rk3399 pll type to use readl_relaxed_poll_timeout
-      clk: rockchip: convert basic pll lock_wait to use regmap_read_poll_timeout
-      clk: rockchip: convert rk3036 pll type to use internal lock status
-      clk: rockchip: use separate compatibles for rk3288w-cru
-
-Mylène Josserand (2):
-      clk: rockchip: Handle clock tree for rk3288w variant
-      dt-bindings: clocks: add rk3288w variant compatible
-
-Robin Murphy (1):
-      clk: rockchip: Revert "fix wrong mmc sample phase shift for rk3328"
-
- .../bindings/clock/rockchip,rk3288-cru.txt         |  8 ++-
- drivers/clk/rockchip/clk-pll.c                     | 70 +++++++++++++---------
- drivers/clk/rockchip/clk-rk3188.c                  |  1 +
- drivers/clk/rockchip/clk-rk3288.c                  | 39 +++++++++++-
- drivers/clk/rockchip/clk-rk3328.c                  |  8 +--
- 5 files changed, 89 insertions(+), 37 deletions(-)
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 9b8a5e1233c0..63593a5b87fa 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -384,6 +384,19 @@ static void rockchip_spi_dma_txcb(void *data)
+ 	spi_finalize_current_transfer(ctlr);
+ }
+ 
++static u32 rockchip_spi_calc_burst_size(u32 data_len)
++{
++	u32 i;
++
++	/* burst size: 1, 2, 4, 8 */
++	for (i = 1; i < 8; i <<= 1) {
++		if (data_len & i)
++			break;
++	}
++
++	return i;
++}
++
+ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
+ 		struct spi_controller *ctlr, struct spi_transfer *xfer)
+ {
+@@ -397,7 +410,8 @@ static int rockchip_spi_prepare_dma(struct rockchip_spi *rs,
+ 			.direction = DMA_DEV_TO_MEM,
+ 			.src_addr = rs->dma_addr_rx,
+ 			.src_addr_width = rs->n_bytes,
+-			.src_maxburst = 1,
++			.src_maxburst = rockchip_spi_calc_burst_size(xfer->len /
++								     rs->n_bytes),
+ 		};
+ 
+ 		dmaengine_slave_config(ctlr->dma_rx, &rxconf);
+@@ -525,7 +539,8 @@ static void rockchip_spi_config(struct rockchip_spi *rs,
+ 		writel_relaxed(rs->fifo_len / 2 - 1, rs->regs + ROCKCHIP_SPI_RXFTLR);
+ 
+ 	writel_relaxed(rs->fifo_len / 2, rs->regs + ROCKCHIP_SPI_DMATDLR);
+-	writel_relaxed(0, rs->regs + ROCKCHIP_SPI_DMARDLR);
++	writel_relaxed(rockchip_spi_calc_burst_size(xfer->len / rs->n_bytes) - 1,
++		       rs->regs + ROCKCHIP_SPI_DMARDLR);
+ 	writel_relaxed(dmacr, rs->regs + ROCKCHIP_SPI_DMACR);
+ 
+ 	/* the hardware only supports an even clock divisor, so
+-- 
+2.17.1
