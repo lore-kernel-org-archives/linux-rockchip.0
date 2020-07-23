@@ -1,41 +1,58 @@
-From: Stephen Boyd <sboyd@kernel.org>
-Subject: Re: [GIT PULL] Rockchip clock changes for 5.9
-Date: Thu, 23 Jul 2020 01:00:28 -0700
-Message-ID: <159549122852.3847286.1522918168884370729@swboyd.mtv.corp.google.com>
-References: <3212743.Cm9O4y8ZXk@phil>
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>
+Subject: Re: [PATCH v2 3/6] dt-bindings: arm: rockchip: Add ROCKPi 4B binding
+Date: Thu, 23 Jul 2020 10:27:14 +0200
+Message-ID: <6968987.cG2su2sgyb@diego>
+References: <20200722190949.215656-1-jagan@amarulasolutions.com> <3893924.cuH9TW0V3R@phil> <CAMty3ZDk28-wg_=wdf_Ps-5RaHK1T-+h0Jn43aK5ReWAz+GTGw@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-clk-owner@vger.kernel.org>
-In-Reply-To: <3212743.Cm9O4y8ZXk@phil>
-Sender: linux-clk-owner@vger.kernel.org
-To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7Bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <CAMty3ZDk28-wg_=wdf_Ps-5RaHK1T-+h0Jn43aK5ReWAz+GTGw-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel <linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>, devicetree <devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Quoting Heiko Stuebner (2020-07-22 16:42:33)
-> Hi Mike, Stephen,
->=20
-> please find below Rockchip clock changes for 5.9
->=20
-> Please pull, thanks
-> Heiko
->=20
-> The following changes since commit b3a9e3b9622ae10064826dccb4f7a52bd88c74=
-07:
->=20
->   Linux 5.8-rc1 (2020-06-14 12:45:04 -0700)
->=20
-> are available in the Git repository at:
->=20
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git =
-tags/v5.9-rockchip-clk1
->=20
-> for you to fetch changes up to ef990bcad58cf1d13c5a49191a2c2342eb8d6709:
->=20
->   clk: rockchip: add sclk_mac_lbtest to rk3188_critical_clocks (2020-07-2=
-2 20:05:19 +0200)
->=20
-> ----------------------------------------------------------------
+Am Donnerstag, 23. Juli 2020, 08:34:12 CEST schrieb Jagan Teki:
+> Hi Heiko,
+> 
+> On Thu, Jul 23, 2020 at 4:43 AM Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org> wrote:
+> >
+> > Hi Jagan,
+> >
+> > Am Mittwoch, 22. Juli 2020, 21:09:46 CEST schrieb Jagan Teki:
+> > > Add dt-bindings for ROCKPi 4B which is similar to 4A with
+> > > additional AP6256 Wifi/BT, PoE.
+> > >
+> > > Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+> > > ---
+> > > Changes for v2:
+> > > - new patch
+> > >
+> > >  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+> > >  1 file changed, 6 insertions(+)
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> > > index 36057c9e4b83..7250adb43d24 100644
+> > > --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
+> > > +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+> > > @@ -448,6 +448,12 @@ properties:
+> > >            - const: radxa,rockpi4a
+> > >            - const: rockchip,rk3399
+> > >
+> > > +      - description: Radxa ROCK Pi 4B
+> > > +        items:
+> > > +          - const: radxa,rockpi4
+> > > +          - const: radxa,rockpi4b
+> > > +          - const: rockchip,rk3399
+> > > +
+> >
+> > Please do all RockPi4 variants into one entry, so we want something like:
+> >
+> >       - description: Radxa ROCK Pi 4
+> 
+> What if the description has something like below.
+> 
+>           - description: Radxa ROCK Pi 4A/B/C
 
-Thanks. Pulled into clk-next
+That's also ok :-)
