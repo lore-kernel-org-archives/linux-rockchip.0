@@ -1,67 +1,35 @@
-From: Rob Herring <robh@kernel.org>
-Subject: Re: [PATCH v2 1/6] dt-bindings: arm: rockchip: Update ROCKPi 4 with
- 4A binding
-Date: Thu, 23 Jul 2020 14:22:07 -0600
-Message-ID: <20200723202207.GA794123@bogus>
-References: <20200722190949.215656-1-jagan@amarulasolutions.com>
+From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 1/7] dt-bindings: arm: rockchip: Add Engicam PX30.Core
+ EDIMM2.2 Starter Kit
+Date: Thu, 23 Jul 2020 15:30:27 -0600
+Message-ID: <20200723213027.GA892680@bogus>
+References: <20200723123951.149497-1-jagan@amarulasolutions.com>
+ <20200723123951.149497-2-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-kernel-owner@vger.kernel.org>
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
 Content-Disposition: inline
-In-Reply-To: <20200722190949.215656-1-jagan@amarulasolutions.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Jagan Teki <jagan@amarulasolutions.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-amarula <linux-amarula@amarulasolutions.com>
+In-Reply-To: <20200723123951.149497-2-jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, Michael Trimarchi <michael-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-amarula <linux-amarula-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Suniel Mahesh <sunil-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Thu, Jul 23, 2020 at 12:39:44AM +0530, Jagan Teki wrote:
-> ROCKPi 4 has 3 variants of hardware platforms called
-> ROCKPi 4A, 4B, and 4C.
+On Thu, 23 Jul 2020 18:09:45 +0530, Jagan Teki wrote:
+> PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
 > 
-> - ROCKPi 4A has no Wif/BT.
-> - ROCKPi 4B has AP6256 Wifi/BT, PoE.
-> - ROCKPi 4C has AP6256 Wifi/BT, PoE, miniDP, USB Host enabled
->   GPIO pin change compared to 4B, 4C
+> EDIMM2.2 Starter Kit is an EDIMM 2.2 Form Factor Capacitive
+> Evaluation Board from Engicam.
 > 
-> So, update the existing ROCKPi 4 with ROCKPi 4A binding.
+> PX30.Core needs to mount on top of this Evaluation board for
+> creating complete PX30.Core EDIMM2.2 Starter Kit.
 > 
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> Add bindings for it.
+> 
+> Signed-off-by: Jagan Teki <jagan-dyjBcgdgk7Pe9wHmmfpqLFaTQe2KTcn/@public.gmane.org>
 > ---
-> Changes for v2:
-> - new patch
+>  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
+>  1 file changed, 6 insertions(+)
 > 
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> index 41f919de1ad4..36057c9e4b83 100644
-> --- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-> +++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-> @@ -442,9 +442,10 @@ properties:
->            - const: radxa,rock
->            - const: rockchip,rk3188
->  
-> -      - description: Radxa ROCK Pi 4
-> +      - description: Radxa ROCK Pi 4A
->          items:
->            - const: radxa,rockpi4
-> +          - const: radxa,rockpi4a
->            - const: rockchip,rk3399
 
-That's not what I suggested. And this is just wrong as the order is most 
-specific to least specific.
-
-This is what I suggest:
-
-items:
-  - enum:
-      - radxa,rockpi4    # ROCK Pi 4A
-      - radxa,rockpi4b
-      - radxa,rockpi4c
-  - const: rockchip,rk3399
-
->  
->        - description: Radxa ROCK Pi N8
-> -- 
-> 2.25.1
-> 
+Acked-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
