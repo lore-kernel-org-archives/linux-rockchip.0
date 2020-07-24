@@ -1,15 +1,15 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 1/4] media: staging: rkisp1: remove two unused fields in
- uapi struct
-Date: Fri, 24 Jul 2020 12:21:16 -0300
-Message-ID: <183bc35a-e3ad-1558-c132-245192d94d35@collabora.com>
+Subject: Re: [PATCH 2/4] media: staging: rkisp1: set "*_data_tbl" fields in
+ rkisp1_cif_isp_lsc_config as 2D arries
+Date: Fri, 24 Jul 2020 12:46:19 -0300
+Message-ID: <ec285cd8-f960-8bdd-220f-0251f06717d7@collabora.com>
 References: <20200625185017.16493-1-dafna.hirschfeld@collabora.com>
- <20200625185017.16493-2-dafna.hirschfeld@collabora.com>
+ <20200625185017.16493-3-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200625185017.16493-2-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20200625185017.16493-3-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
@@ -18,42 +18,135 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Hi Dafna,
 
-
 On 6/25/20 3:50 PM, Dafna Hirschfeld wrote:
-> The fields 'config_width', 'config_height' in struct
-> 'rkisp1_cif_isp_lsc_config' are not used by the driver and
-> therefore are not needed. This patch removes them.
-> In later patch, documentation of the fields in struct
-> 'rkisp1_cif_isp_lsc_config' will be added.
+> Currently the fields '*_data_tbl' in the struct
+> 'rkisp1_cif_isp_lsc_config' are one dimensional arries
+> of size 290. The entries are accessed in a nested
+> loop by summing two indexes for the rows and columns.
+> Therefore it fits better to define the arries as two
+> dimensional arries of size 17x17.
 > 
 > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+
+Tested on Scarlet Chromebook with ChromeOS stack.
+
+Acked-by: Helen Koike <helen.koike@collabora.com>
+
+Thanks
+Helen
+
 > ---
->  drivers/staging/media/rkisp1/uapi/rkisp1-config.h | 2 --
->  1 file changed, 2 deletions(-)
+>  drivers/staging/media/rkisp1/rkisp1-params.c  | 30 +++++++++----------
+>  drivers/staging/media/rkisp1/rkisp1-regs.h    |  1 -
+>  .../staging/media/rkisp1/uapi/rkisp1-config.h | 11 ++++---
+>  3 files changed, 19 insertions(+), 23 deletions(-)
 > 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+> index 5169b02731f1..5be57426d940 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+> @@ -206,47 +206,45 @@ rkisp1_lsc_correct_matrix_config(struct rkisp1_params *params,
+>  		     RKISP1_CIF_ISP_LSC_B_TABLE_ADDR);
+>  
+>  	/* program data tables (table size is 9 * 17 = 153) */
+> -	for (i = 0;
+> -	     i < RKISP1_CIF_ISP_LSC_SECTORS_MAX * RKISP1_CIF_ISP_LSC_SECTORS_MAX;
+> -	     i += RKISP1_CIF_ISP_LSC_SECTORS_MAX) {
+> +	for (i = 0; i < RKISP1_CIF_ISP_LSC_SAMPLES_MAX; i++) {
+>  		/*
+>  		 * 17 sectors with 2 values in one DWORD = 9
+>  		 * DWORDs (2nd value of last DWORD unused)
+>  		 */
+> -		for (j = 0; j < RKISP1_CIF_ISP_LSC_SECTORS_MAX - 1; j += 2) {
+> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->r_data_tbl[i + j],
+> -							     pconfig->r_data_tbl[i + j + 1]);
+> +		for (j = 0; j < RKISP1_CIF_ISP_LSC_SAMPLES_MAX - 1; j += 2) {
+> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->r_data_tbl[i][j],
+> +							     pconfig->r_data_tbl[i][j + 1]);
+>  			rkisp1_write(params->rkisp1, data,
+>  				     RKISP1_CIF_ISP_LSC_R_TABLE_DATA);
+>  
+> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gr_data_tbl[i + j],
+> -							     pconfig->gr_data_tbl[i + j + 1]);
+> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gr_data_tbl[i][j],
+> +							     pconfig->gr_data_tbl[i][j + 1]);
+>  			rkisp1_write(params->rkisp1, data,
+>  				     RKISP1_CIF_ISP_LSC_GR_TABLE_DATA);
+>  
+> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gb_data_tbl[i + j],
+> -							     pconfig->gb_data_tbl[i + j + 1]);
+> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gb_data_tbl[i][j],
+> +							     pconfig->gb_data_tbl[i][j + 1]);
+>  			rkisp1_write(params->rkisp1, data,
+>  				     RKISP1_CIF_ISP_LSC_GB_TABLE_DATA);
+>  
+> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->b_data_tbl[i + j],
+> -							     pconfig->b_data_tbl[i + j + 1]);
+> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->b_data_tbl[i][j],
+> +							     pconfig->b_data_tbl[i][j + 1]);
+>  			rkisp1_write(params->rkisp1, data,
+>  				     RKISP1_CIF_ISP_LSC_B_TABLE_DATA);
+>  		}
+> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->r_data_tbl[i + j], 0);
+> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->r_data_tbl[i][j], 0);
+>  		rkisp1_write(params->rkisp1, data,
+>  			     RKISP1_CIF_ISP_LSC_R_TABLE_DATA);
+>  
+> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gr_data_tbl[i + j], 0);
+> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gr_data_tbl[i][j], 0);
+>  		rkisp1_write(params->rkisp1, data,
+>  			     RKISP1_CIF_ISP_LSC_GR_TABLE_DATA);
+>  
+> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gb_data_tbl[i + j], 0);
+> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gb_data_tbl[i][j], 0);
+>  		rkisp1_write(params->rkisp1, data,
+>  			     RKISP1_CIF_ISP_LSC_GB_TABLE_DATA);
+>  
+> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->b_data_tbl[i + j], 0);
+> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->b_data_tbl[i][j], 0);
+>  		rkisp1_write(params->rkisp1, data,
+>  			     RKISP1_CIF_ISP_LSC_B_TABLE_DATA);
+>  	}
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-regs.h b/drivers/staging/media/rkisp1/rkisp1-regs.h
+> index 46018f435b6f..6667147149be 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-regs.h
+> +++ b/drivers/staging/media/rkisp1/rkisp1-regs.h
+> @@ -476,7 +476,6 @@
+>  #define RKISP1_CIF_ISP_LSC_SECT_SIZE_RESERVED		0xFC00FC00
+>  #define RKISP1_CIF_ISP_LSC_GRAD_RESERVED		0xF000F000
+>  #define RKISP1_CIF_ISP_LSC_SAMPLE_RESERVED		0xF000F000
+> -#define RKISP1_CIF_ISP_LSC_SECTORS_MAX			17
+>  #define RKISP1_CIF_ISP_LSC_TABLE_DATA(v0, v1)     \
+>  	(((v0) & 0xFFF) | (((v1) & 0xFFF) << 12))
+>  #define RKISP1_CIF_ISP_LSC_SECT_SIZE(v0, v1)      \
 > diff --git a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-> index ca0d031b14ac..7331bacf7dfd 100644
+> index 7331bacf7dfd..d8a8e4457aa4 100644
 > --- a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
 > +++ b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-> @@ -285,8 +285,6 @@ struct rkisp1_cif_isp_lsc_config {
+> @@ -87,9 +87,8 @@
+>  /*
+>   * The following matches the tuning process,
+>   * not the max capabilities of the chip.
+> - * Last value unused.
+>   */
+> -#define	RKISP1_CIF_ISP_LSC_DATA_TBL_SIZE           290
+> +#define RKISP1_CIF_ISP_LSC_SAMPLES_MAX             17
 >  
->  	__u32 x_size_tbl[RKISP1_CIF_ISP_LSC_SIZE_TBL_SIZE];
->  	__u32 y_size_tbl[RKISP1_CIF_ISP_LSC_SIZE_TBL_SIZE];
-> -	__u16 config_width;
-> -	__u16 config_height;
->  } __packed;
+>  /*
+>   * Histogram calculation
+> @@ -275,10 +274,10 @@ struct rkisp1_cif_isp_sdg_config {
+>   * refer to REF_01 for details
+>   */
+>  struct rkisp1_cif_isp_lsc_config {
+> -	__u32 r_data_tbl[RKISP1_CIF_ISP_LSC_DATA_TBL_SIZE];
+> -	__u32 gr_data_tbl[RKISP1_CIF_ISP_LSC_DATA_TBL_SIZE];
+> -	__u32 gb_data_tbl[RKISP1_CIF_ISP_LSC_DATA_TBL_SIZE];
+> -	__u32 b_data_tbl[RKISP1_CIF_ISP_LSC_DATA_TBL_SIZE];
+> +	__u32 r_data_tbl[RKISP1_CIF_ISP_LSC_SAMPLES_MAX][RKISP1_CIF_ISP_LSC_SAMPLES_MAX];
+> +	__u32 gr_data_tbl[RKISP1_CIF_ISP_LSC_SAMPLES_MAX][RKISP1_CIF_ISP_LSC_SAMPLES_MAX];
+> +	__u32 gb_data_tbl[RKISP1_CIF_ISP_LSC_SAMPLES_MAX][RKISP1_CIF_ISP_LSC_SAMPLES_MAX];
+> +	__u32 b_data_tbl[RKISP1_CIF_ISP_LSC_SAMPLES_MAX][RKISP1_CIF_ISP_LSC_SAMPLES_MAX];
 >  
->  /**
+>  	__u32 x_grad_tbl[RKISP1_CIF_ISP_LSC_GRAD_TBL_SIZE];
+>  	__u32 y_grad_tbl[RKISP1_CIF_ISP_LSC_GRAD_TBL_SIZE];
 > 
-
-
-I was checking the Rockchip 3A library API, and they use these fields on:
-
-https://github.com/rockchip-linux/camera_engine_rkisp/blob/master/rkisp/ia-engine/include/ia/rk_aiq_types.h#L409
-
-Which I'm not sure what it means tbh, so I would rather leave these fields (with a comment to say it is not used
-by the driver) just in case it is useful in the future.
-Ideally we should try to understand what this field does to make a decision.
-
-Regards,
-Helen
