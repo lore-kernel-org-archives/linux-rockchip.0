@@ -1,34 +1,32 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH 2/4] media: staging: rkisp1: set "*_data_tbl" fields in
- rkisp1_cif_isp_lsc_config as 2D arries
-Date: Fri, 24 Jul 2020 12:46:19 -0300
-Message-ID: <ec285cd8-f960-8bdd-220f-0251f06717d7@collabora.com>
+Subject: Re: [PATCH 3/4] media: staging: rkisp1: replace two identical macros
+ with one
+Date: Fri, 24 Jul 2020 12:47:05 -0300
+Message-ID: <4fd3261d-2d3a-21ec-7943-85c399ad1eee@collabora.com>
 References: <20200625185017.16493-1-dafna.hirschfeld@collabora.com>
- <20200625185017.16493-3-dafna.hirschfeld@collabora.com>
+ <20200625185017.16493-4-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200625185017.16493-3-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20200625185017.16493-4-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
 Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
+
 
 On 6/25/20 3:50 PM, Dafna Hirschfeld wrote:
-> Currently the fields '*_data_tbl' in the struct
-> 'rkisp1_cif_isp_lsc_config' are one dimensional arries
-> of size 290. The entries are accessed in a nested
-> loop by summing two indexes for the rows and columns.
-> Therefore it fits better to define the arries as two
-> dimensional arries of size 17x17.
+> The two macros RKISP1_CIF_ISP_LSC_{GRAD/SIZE}_TBL_SIZE have
+> the same value which is the number of sectors in the grads
+> and size parameters. Therefore there is no need for two
+> different macros. Replace them with one macro
+> RKISP1_CIF_ISP_LSC_SECTORS_TBL_SIZE. Also use the macro
+> when iterating the arries instead of hardcoded '4'.
 > 
 > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-
-Tested on Scarlet Chromebook with ChromeOS stack.
 
 Acked-by: Helen Koike <helen.koike@collabora.com>
 
@@ -36,117 +34,52 @@ Thanks
 Helen
 
 > ---
->  drivers/staging/media/rkisp1/rkisp1-params.c  | 30 +++++++++----------
->  drivers/staging/media/rkisp1/rkisp1-regs.h    |  1 -
->  .../staging/media/rkisp1/uapi/rkisp1-config.h | 11 ++++---
->  3 files changed, 19 insertions(+), 23 deletions(-)
+>  drivers/staging/media/rkisp1/rkisp1-params.c      |  2 +-
+>  drivers/staging/media/rkisp1/uapi/rkisp1-config.h | 12 ++++++------
+>  2 files changed, 7 insertions(+), 7 deletions(-)
 > 
 > diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
-> index 5169b02731f1..5be57426d940 100644
+> index 5be57426d940..ea55532ab797 100644
 > --- a/drivers/staging/media/rkisp1/rkisp1-params.c
 > +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
-> @@ -206,47 +206,45 @@ rkisp1_lsc_correct_matrix_config(struct rkisp1_params *params,
->  		     RKISP1_CIF_ISP_LSC_B_TABLE_ADDR);
+> @@ -267,7 +267,7 @@ static void rkisp1_lsc_config(struct rkisp1_params *params,
+>  				RKISP1_CIF_ISP_LSC_CTRL_ENA);
+>  	rkisp1_lsc_correct_matrix_config(params, arg);
 >  
->  	/* program data tables (table size is 9 * 17 = 153) */
-> -	for (i = 0;
-> -	     i < RKISP1_CIF_ISP_LSC_SECTORS_MAX * RKISP1_CIF_ISP_LSC_SECTORS_MAX;
-> -	     i += RKISP1_CIF_ISP_LSC_SECTORS_MAX) {
-> +	for (i = 0; i < RKISP1_CIF_ISP_LSC_SAMPLES_MAX; i++) {
->  		/*
->  		 * 17 sectors with 2 values in one DWORD = 9
->  		 * DWORDs (2nd value of last DWORD unused)
->  		 */
-> -		for (j = 0; j < RKISP1_CIF_ISP_LSC_SECTORS_MAX - 1; j += 2) {
-> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->r_data_tbl[i + j],
-> -							     pconfig->r_data_tbl[i + j + 1]);
-> +		for (j = 0; j < RKISP1_CIF_ISP_LSC_SAMPLES_MAX - 1; j += 2) {
-> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->r_data_tbl[i][j],
-> +							     pconfig->r_data_tbl[i][j + 1]);
->  			rkisp1_write(params->rkisp1, data,
->  				     RKISP1_CIF_ISP_LSC_R_TABLE_DATA);
->  
-> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gr_data_tbl[i + j],
-> -							     pconfig->gr_data_tbl[i + j + 1]);
-> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gr_data_tbl[i][j],
-> +							     pconfig->gr_data_tbl[i][j + 1]);
->  			rkisp1_write(params->rkisp1, data,
->  				     RKISP1_CIF_ISP_LSC_GR_TABLE_DATA);
->  
-> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gb_data_tbl[i + j],
-> -							     pconfig->gb_data_tbl[i + j + 1]);
-> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gb_data_tbl[i][j],
-> +							     pconfig->gb_data_tbl[i][j + 1]);
->  			rkisp1_write(params->rkisp1, data,
->  				     RKISP1_CIF_ISP_LSC_GB_TABLE_DATA);
->  
-> -			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->b_data_tbl[i + j],
-> -							     pconfig->b_data_tbl[i + j + 1]);
-> +			data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->b_data_tbl[i][j],
-> +							     pconfig->b_data_tbl[i][j + 1]);
->  			rkisp1_write(params->rkisp1, data,
->  				     RKISP1_CIF_ISP_LSC_B_TABLE_DATA);
->  		}
-> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->r_data_tbl[i + j], 0);
-> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->r_data_tbl[i][j], 0);
->  		rkisp1_write(params->rkisp1, data,
->  			     RKISP1_CIF_ISP_LSC_R_TABLE_DATA);
->  
-> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gr_data_tbl[i + j], 0);
-> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gr_data_tbl[i][j], 0);
->  		rkisp1_write(params->rkisp1, data,
->  			     RKISP1_CIF_ISP_LSC_GR_TABLE_DATA);
->  
-> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gb_data_tbl[i + j], 0);
-> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->gb_data_tbl[i][j], 0);
->  		rkisp1_write(params->rkisp1, data,
->  			     RKISP1_CIF_ISP_LSC_GB_TABLE_DATA);
->  
-> -		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->b_data_tbl[i + j], 0);
-> +		data = RKISP1_CIF_ISP_LSC_TABLE_DATA(pconfig->b_data_tbl[i][j], 0);
->  		rkisp1_write(params->rkisp1, data,
->  			     RKISP1_CIF_ISP_LSC_B_TABLE_DATA);
->  	}
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-regs.h b/drivers/staging/media/rkisp1/rkisp1-regs.h
-> index 46018f435b6f..6667147149be 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-regs.h
-> +++ b/drivers/staging/media/rkisp1/rkisp1-regs.h
-> @@ -476,7 +476,6 @@
->  #define RKISP1_CIF_ISP_LSC_SECT_SIZE_RESERVED		0xFC00FC00
->  #define RKISP1_CIF_ISP_LSC_GRAD_RESERVED		0xF000F000
->  #define RKISP1_CIF_ISP_LSC_SAMPLE_RESERVED		0xF000F000
-> -#define RKISP1_CIF_ISP_LSC_SECTORS_MAX			17
->  #define RKISP1_CIF_ISP_LSC_TABLE_DATA(v0, v1)     \
->  	(((v0) & 0xFFF) | (((v1) & 0xFFF) << 12))
->  #define RKISP1_CIF_ISP_LSC_SECT_SIZE(v0, v1)      \
+> -	for (i = 0; i < 4; i++) {
+> +	for (i = 0; i < RKISP1_CIF_ISP_LSC_SECTORS_TBL_SIZE / 2; i++) {
+>  		/* program x size tables */
+>  		data = RKISP1_CIF_ISP_LSC_SECT_SIZE(arg->x_size_tbl[i * 2],
+>  						    arg->x_size_tbl[i * 2 + 1]);
 > diff --git a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-> index 7331bacf7dfd..d8a8e4457aa4 100644
+> index d8a8e4457aa4..bca2e805c0f5 100644
 > --- a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
 > +++ b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-> @@ -87,9 +87,8 @@
+> @@ -82,8 +82,8 @@
+>  /*
+>   * Lens shade correction
+>   */
+> -#define RKISP1_CIF_ISP_LSC_GRAD_TBL_SIZE           8
+> -#define RKISP1_CIF_ISP_LSC_SIZE_TBL_SIZE           8
+> +#define RKISP1_CIF_ISP_LSC_SECTORS_TBL_SIZE        8
+> +
 >  /*
 >   * The following matches the tuning process,
 >   * not the max capabilities of the chip.
-> - * Last value unused.
->   */
-> -#define	RKISP1_CIF_ISP_LSC_DATA_TBL_SIZE           290
-> +#define RKISP1_CIF_ISP_LSC_SAMPLES_MAX             17
+> @@ -279,11 +279,11 @@ struct rkisp1_cif_isp_lsc_config {
+>  	__u32 gb_data_tbl[RKISP1_CIF_ISP_LSC_SAMPLES_MAX][RKISP1_CIF_ISP_LSC_SAMPLES_MAX];
+>  	__u32 b_data_tbl[RKISP1_CIF_ISP_LSC_SAMPLES_MAX][RKISP1_CIF_ISP_LSC_SAMPLES_MAX];
 >  
->  /*
->   * Histogram calculation
-> @@ -275,10 +274,10 @@ struct rkisp1_cif_isp_sdg_config {
->   * refer to REF_01 for details
->   */
->  struct rkisp1_cif_isp_lsc_config {
-> -	__u32 r_data_tbl[RKISP1_CIF_ISP_LSC_DATA_TBL_SIZE];
-> -	__u32 gr_data_tbl[RKISP1_CIF_ISP_LSC_DATA_TBL_SIZE];
-> -	__u32 gb_data_tbl[RKISP1_CIF_ISP_LSC_DATA_TBL_SIZE];
-> -	__u32 b_data_tbl[RKISP1_CIF_ISP_LSC_DATA_TBL_SIZE];
-> +	__u32 r_data_tbl[RKISP1_CIF_ISP_LSC_SAMPLES_MAX][RKISP1_CIF_ISP_LSC_SAMPLES_MAX];
-> +	__u32 gr_data_tbl[RKISP1_CIF_ISP_LSC_SAMPLES_MAX][RKISP1_CIF_ISP_LSC_SAMPLES_MAX];
-> +	__u32 gb_data_tbl[RKISP1_CIF_ISP_LSC_SAMPLES_MAX][RKISP1_CIF_ISP_LSC_SAMPLES_MAX];
-> +	__u32 b_data_tbl[RKISP1_CIF_ISP_LSC_SAMPLES_MAX][RKISP1_CIF_ISP_LSC_SAMPLES_MAX];
+> -	__u32 x_grad_tbl[RKISP1_CIF_ISP_LSC_GRAD_TBL_SIZE];
+> -	__u32 y_grad_tbl[RKISP1_CIF_ISP_LSC_GRAD_TBL_SIZE];
+> +	__u32 x_grad_tbl[RKISP1_CIF_ISP_LSC_SECTORS_TBL_SIZE];
+> +	__u32 y_grad_tbl[RKISP1_CIF_ISP_LSC_SECTORS_TBL_SIZE];
 >  
->  	__u32 x_grad_tbl[RKISP1_CIF_ISP_LSC_GRAD_TBL_SIZE];
->  	__u32 y_grad_tbl[RKISP1_CIF_ISP_LSC_GRAD_TBL_SIZE];
+> -	__u32 x_size_tbl[RKISP1_CIF_ISP_LSC_SIZE_TBL_SIZE];
+> -	__u32 y_size_tbl[RKISP1_CIF_ISP_LSC_SIZE_TBL_SIZE];
+> +	__u32 x_size_tbl[RKISP1_CIF_ISP_LSC_SECTORS_TBL_SIZE];
+> +	__u32 y_size_tbl[RKISP1_CIF_ISP_LSC_SECTORS_TBL_SIZE];
+>  } __packed;
+>  
+>  /**
 > 
