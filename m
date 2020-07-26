@@ -1,101 +1,370 @@
-From: Alex Bee <knaerzche@gmail.com>
-Subject: Re: [PATCH v2 0/5] drm: rockchip: various ports for older VOPs
-Date: Sat, 25 Jul 2020 20:48:03 +0200
-Message-ID: <0e5f6e41-5fa4-2989-f4b8-89a9471db931@gmail.com>
-References: <20200722181332.26995-1-knaerzche@gmail.com>
- <CAKMK7uGKyYea_9MamAQw2=ebjW=raYCDeFCf_5jyyJPHL9AZWA@mail.gmail.com>
- <47599ce1-2a3b-87eb-c46e-8f7f79ca945e@gmail.com>
- <CAKMK7uEn0552JuTuwpL-XdYSVk7OA=fEsphpivS8ouE-10--Zg@mail.gmail.com>
+From: David Bauer <mail@david-bauer.net>
+Subject: [PATCH] rockchip: rk3328: Add support for FriendlyARM NanoPi R2S
+Date: Sun, 26 Jul 2020 02:00:41 +0200
+Message-ID: <20200726000041.142583-1-mail@david-bauer.net>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAKMK7uEn0552JuTuwpL-XdYSVk7OA=fEsphpivS8ouE-10--Zg@mail.gmail.com>
-Content-Language: en-US
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
+To: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
 List-Id: linux-rockchip.vger.kernel.org
 
+This adds support for the NanoPi R2S from FriendlyARM.
 
-Am 25.07.20 um 17:54 schrieb Daniel Vetter:
-> On Sat, Jul 25, 2020 at 3:52 PM Alex Bee <knaerzche@gmail.com> wrote:
->>
->> Am 22.07.20 um 23:43 schrieb Daniel Vetter:
->>> On Wed, Jul 22, 2020 at 8:13 PM Alex Bee <knaerzche@gmail.com> wrote:
->>>> Hi,
->>>>
->>>> this series mainly ports existining functionality to older SoCs - most
->>>> importantly enables alpha blending for RK3036, RK3066, RK3126 and
->>>> RK3188.
->>>> Besides that, it also changes the window type from DRM_PLANE_TYPE_CURSOR
->>>> to DRM_PLANE_TYPE_OVERLAY for VOPs that have only one (1) overlay window.
->>> This doesn't make much sense, the cursor overlay is really just a hint
->>> for legacy ioctls that this is the overlay that should be used for
->>> cursors. Compositors should try to use such planes as full overlays
->>> (if they don't want to use them as a cursor). So sounds like a case of
->>> "fix your compositor".
->> I agree here - but: If HWC windows would have been implemented in this
->> particular driver, their max size would be 128x128 on some SoCs - so
->> they woudn't be really suitable to create an OSD overlay at 4K, for
->> example. I don't know, but I guess other vendors implement their HWC
->> windows on this reduced HW resources as well. I guess that is one of the
->> reasons, why userspace, which aims to be cross-plattfrom, avoids
->> DRM_PLANE_TYPE_CURSOR when its looking for an usable overlay plane. (a
->> heuristic, indeed)
-> Which userspace does that?
-kodi-gbm: 
-https://github.com/xbmc/xbmc/blob/master/xbmc/windowing/gbm/DRMUtils.cpp#L406 
+Rockchip RK3328 SoC
+1GB DDR4 RAM
+Gigabit Ethernet (WAN)
+Gigabit Ethernet (USB3) (LAN)
+USB 2.0 Host Port
+MicroSD slot
+Reset button
+WAN - LAN - SYS LED
 
-> We should fix that, not try to work around
-> that in all the drivers in upstream, that wont work.
-You're right I'll drop this part.
-> -Daniel
->
->>> For atomic there's 0 difference between a overlay or a cursor (primary
->>> plane is still treated somewhat special in the RMFB ioctl, but again
->>> that's for backwards compat reasons with existing uapi, not because
->>> the primary plane is different).
->>>
->>> What does happen though is that this breaks cursor for legacy
->>> userspace, which is probably not really what you want.
->> Indeed not.
->>
->> Beforhand I was submiiting this, I looked arround and couldn't find
->> anything which relies or even depends of a cursor window to be
->> available. Even if: as per spec only one DRM_PLANE_TYPE_PRIMARY is
->> mandatory, everything else is optional.
->>
->>> -Daniel
->>>
->>>
->>>> Regards,
->>>> Alex
->>>>
->>>> Changes in v2:
->>>> - drop not yet upstreamed dsp_data_swap from RK3188 regs
->>>> - rephrase most commit messages
->>>>
->>>> Alex Bee (5):
->>>>     drm: rockchip: add scaling for RK3036 win1
->>>>     drm: rockchip: add missing registers for RK3188
->>>>     drm: rockchip: add alpha support for RK3036, RK3066, RK3126 and RK3188
->>>>     drm: rockchip: set alpha_en to 0 if it is not used
->>>>     drm: rockchip: use overlay windows as such
->>>>
->>>>    drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  1 +
->>>>    drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 42 ++++++++++++++++++---
->>>>    drivers/gpu/drm/rockchip/rockchip_vop_reg.h |  1 +
->>>>    3 files changed, 38 insertions(+), 6 deletions(-)
->>>>
->>>> --
->>>> 2.17.1
->>>>
->>> --
->>> Daniel Vetter
->>> Software Engineer, Intel Corporation
->>> http://blog.ffwll.ch
->> Best Regards
->>
->
-Best regards
+Signed-off-by: David Bauer <mail@david-bauer.net>
+---
+ arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+ .../boot/dts/rockchip/rk3328-nanopi-r2s.dts   | 311 ++++++++++++++++++
+ 2 files changed, 312 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index b87b1f773083..20055c51e150 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -5,6 +5,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+new file mode 100644
+index 000000000000..caaacfb98848
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+@@ -0,0 +1,311 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2020 David Bauer <mail@david-bauer.net>
++ */
++
++/dts-v1/;
++
++#include <dt-bindings/input/input.h>
++#include <dt-bindings/gpio/gpio.h>
++#include "rk3328.dtsi"
++
++/ {
++	model = "FriendlyARM NanoPi R2S";
++	compatible = "friendlyarm,nanopi-r2s", "rockchip,rk3328";
++
++	chosen {
++		stdout-path = "serial2:1500000n8";
++	};
++
++	gmac_clkin: external-gmac-clock {
++		compatible = "fixed-clock";
++		clock-frequency = <125000000>;
++		clock-output-names = "gmac_clkin";
++		#clock-cells = <0>;
++	};
++
++	vcc_sd: sdmmc-regulator {
++		compatible = "regulator-gpio";
++		gpios = <&gpio1 RK_PD4 GPIO_ACTIVE_HIGH>;
++		enable-active-high;
++		states = <1800000 0x1
++			  3300000 0x0>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&sd_vcc_pin>;
++		regulator-always-on;
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <3300000>;
++		regulator-name = "vcc_sd";
++		regulator-settling-time-us = <5000>;
++		regulator-type = "voltage";
++		vin-supply = <&vcc_io>;
++	};
++
++	vcc_sys: vcc-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc_sys";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++
++	leds {
++		compatible = "gpio-leds";
++
++		pinctrl-names = "default";
++		pinctrl-0 = <&led_pins>;
++
++		sys {
++			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
++			label = "nanopi-r2s:red:sys";
++		};
++
++		lan {
++			gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
++			label = "nanopi-r2s:green:lan";
++		};
++
++		wan {
++			gpios = <&gpio2 RK_PC2 GPIO_ACTIVE_HIGH>;
++			label = "nanopi-r2s:green:wan";
++		};
++	};
++
++	gpio_keys {
++		compatible = "gpio-keys-polled";
++		poll-interval = <100>;
++
++		pinctrl-names = "default";
++		pinctrl-0 = <&button_pins>;
++
++		reset {
++			label = "Reset Button";
++			gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_LOW>;
++			linux,code = <KEY_RESTART>;
++			debounce-interval = <50>;
++		};
++	};
++};
++
++&cpu0 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu1 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&gmac2io {
++	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
++	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
++	clock_in_out = "input";
++	phy-supply = <&vcc_io>;
++	phy-mode = "rgmii";
++	pinctrl-names = "default";
++	pinctrl-0 = <&rgmiim1_pins>;
++	snps,force_thresh_dma_mode;
++	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 10000 50000>;
++	tx_delay = <0x24>;
++	rx_delay = <0x18>;
++	status = "okay";
++};
++
++&i2c1 {
++	status = "okay";
++
++	rk805: rk805@18 {
++		compatible = "rockchip,rk805";
++		reg = <0x18>;
++		interrupt-parent = <&gpio2>;
++		interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
++		#clock-cells = <1>;
++		clock-output-names = "xin32k", "rk805-clkout2";
++		gpio-controller;
++		#gpio-cells = <2>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pmic_int_l>;
++		rockchip,system-power-controller;
++		wakeup-source;
++
++		vcc1-supply = <&vcc_sys>;
++		vcc2-supply = <&vcc_sys>;
++		vcc3-supply = <&vcc_sys>;
++		vcc4-supply = <&vcc_sys>;
++		vcc5-supply = <&vcc_io>;
++		vcc6-supply = <&vcc_sys>;
++
++		regulators {
++			vdd_logic: DCDC_REG1 {
++				regulator-name = "vdd_logic";
++				regulator-min-microvolt = <712500>;
++				regulator-max-microvolt = <1450000>;
++				regulator-ramp-delay = <12500>;
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1000000>;
++				};
++			};
++
++			vdd_arm: DCDC_REG2 {
++				regulator-name = "vdd_arm";
++				regulator-min-microvolt = <712500>;
++				regulator-max-microvolt = <1450000>;
++				regulator-ramp-delay = <12500>;
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <950000>;
++				};
++			};
++
++			vcc_ddr: DCDC_REG3 {
++				regulator-name = "vcc_ddr";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++				};
++			};
++
++			vcc_io: DCDC_REG4 {
++				regulator-name = "vcc_io";
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc_18: LDO_REG1 {
++				regulator-name = "vcc_18";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vcc18_emmc: LDO_REG2 {
++				regulator-name = "vcc18_emmc";
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vdd_10: LDO_REG3 {
++				regulator-name = "vdd_10";
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1000000>;
++				};
++			};
++		};
++	};
++};
++
++&io_domains {
++	status = "okay";
++
++	vccio1-supply = <&vcc_io>;
++	vccio2-supply = <&vcc18_emmc>;
++	vccio3-supply = <&vcc_sd>;
++	vccio4-supply = <&vcc_18>;
++	vccio5-supply = <&vcc_io>;
++	vccio6-supply = <&vcc_io>;
++	pmuio-supply = <&vcc_io>;
++};
++
++&pinctrl {
++	leds {
++		led_pins: led-pins {
++			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>,
++							<2 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>,
++							<2 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	button {
++		button_pins: button-pins {
++			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	pmic {
++		pmic_int_l: pmic-int-l {
++			rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++
++	sd {
++		sd_vcc_pin: sd-vcc-pin {
++			rockchip,pins = <1 RK_PD4 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++};
++
++&sdmmc {
++	bus-width = <4>;
++	cap-mmc-highspeed;
++	cap-sd-highspeed;
++	disable-wp;
++	max-frequency = <150000000>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
++	vmmc-supply = <&vcc_sd>;
++	status = "okay";
++};
++
++&tsadc {
++	rockchip,hw-tshut-mode = <0>;
++	rockchip,hw-tshut-polarity = <0>;
++	status = "okay";
++};
++
++&uart2 {
++	status = "okay";
++};
++
++&u2phy {
++	status = "okay";
++
++	u2phy_host: host-port {
++		status = "okay";
++	};
++};
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_ohci {
++	status = "okay";
++};
+-- 
+2.27.0
