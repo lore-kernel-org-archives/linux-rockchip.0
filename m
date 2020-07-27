@@ -1,136 +1,96 @@
-From: Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH v2 0/5] drm: rockchip: various ports for older VOPs
-Date: Sun, 26 Jul 2020 12:55:42 +0200
-Message-ID: <CAKMK7uFjFVr4rDBpBWei-SAtBkKtQPQ0PmuJ9Bd6q4n3JAWv=Q@mail.gmail.com>
-References: <20200722181332.26995-1-knaerzche@gmail.com> <CAKMK7uGKyYea_9MamAQw2=ebjW=raYCDeFCf_5jyyJPHL9AZWA@mail.gmail.com>
- <47599ce1-2a3b-87eb-c46e-8f7f79ca945e@gmail.com> <CAKMK7uEn0552JuTuwpL-XdYSVk7OA=fEsphpivS8ouE-10--Zg@mail.gmail.com>
- <0e5f6e41-5fa4-2989-f4b8-89a9471db931@gmail.com>
+From: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH 1/2] media: staging: rkisp1: replace 9 coeff* fields with
+ a 3x3 array
+Date: Mon, 27 Jul 2020 14:50:17 -0300
+Message-ID: <c945f4dd-3c5b-20de-3943-e9f79c9bfaec@collabora.com>
+References: <20200707170845.28845-1-dafna.hirschfeld@collabora.com>
+ <20200707170845.28845-2-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <0e5f6e41-5fa4-2989-f4b8-89a9471db931@gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Alex Bee <knaerzche@gmail.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, dri-devel <dri-devel@lists.freedesktop.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <20200707170845.28845-2-dafna.hirschfeld@collabora.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
+Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sat, Jul 25, 2020 at 8:48 PM Alex Bee <knaerzche@gmail.com> wrote:
->
->
-> Am 25.07.20 um 17:54 schrieb Daniel Vetter:
-> > On Sat, Jul 25, 2020 at 3:52 PM Alex Bee <knaerzche@gmail.com> wrote:
-> >>
-> >> Am 22.07.20 um 23:43 schrieb Daniel Vetter:
-> >>> On Wed, Jul 22, 2020 at 8:13 PM Alex Bee <knaerzche@gmail.com> wrote:
-> >>>> Hi,
-> >>>>
-> >>>> this series mainly ports existining functionality to older SoCs - mo=
-st
-> >>>> importantly enables alpha blending for RK3036, RK3066, RK3126 and
-> >>>> RK3188.
-> >>>> Besides that, it also changes the window type from DRM_PLANE_TYPE_CU=
-RSOR
-> >>>> to DRM_PLANE_TYPE_OVERLAY for VOPs that have only one (1) overlay wi=
-ndow.
-> >>> This doesn't make much sense, the cursor overlay is really just a hin=
-t
-> >>> for legacy ioctls that this is the overlay that should be used for
-> >>> cursors. Compositors should try to use such planes as full overlays
-> >>> (if they don't want to use them as a cursor). So sounds like a case o=
-f
-> >>> "fix your compositor".
-> >> I agree here - but: If HWC windows would have been implemented in this
-> >> particular driver, their max size would be 128x128 on some SoCs - so
-> >> they woudn't be really suitable to create an OSD overlay at 4K, for
-> >> example. I don't know, but I guess other vendors implement their HWC
-> >> windows on this reduced HW resources as well. I guess that is one of t=
-he
-> >> reasons, why userspace, which aims to be cross-plattfrom, avoids
-> >> DRM_PLANE_TYPE_CURSOR when its looking for an usable overlay plane. (a
-> >> heuristic, indeed)
-> > Which userspace does that?
-> kodi-gbm:
-> https://github.com/xbmc/xbmc/blob/master/xbmc/windowing/gbm/DRMUtils.cpp#=
-L406
+Hi Dafna,
 
-Can you pls file a bug report, linking to this thread here?
+On 7/7/20 2:08 PM, Dafna Hirschfeld wrote:
+> The struct rkisp1_cif_isp_ctk_config has 9 fields 'coeff*' for the
+> 3x3 color correction matrix. Replace these fields with one 3x3
+> array coeff[3][3] and document the field.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-params.c      | 15 ++++++---------
+>  drivers/staging/media/rkisp1/uapi/rkisp1-config.h | 14 ++++----------
+>  2 files changed, 10 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+> index 797e79de659c..00b102eb67b6 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+> @@ -402,15 +402,12 @@ static void rkisp1_goc_config(struct rkisp1_params *params,
+>  static void rkisp1_ctk_config(struct rkisp1_params *params,
+>  			      const struct rkisp1_cif_isp_ctk_config *arg)
+>  {
+> -	rkisp1_write(params->rkisp1, arg->coeff0, RKISP1_CIF_ISP_CT_COEFF_0);
+> -	rkisp1_write(params->rkisp1, arg->coeff1, RKISP1_CIF_ISP_CT_COEFF_1);
+> -	rkisp1_write(params->rkisp1, arg->coeff2, RKISP1_CIF_ISP_CT_COEFF_2);
+> -	rkisp1_write(params->rkisp1, arg->coeff3, RKISP1_CIF_ISP_CT_COEFF_3);
+> -	rkisp1_write(params->rkisp1, arg->coeff4, RKISP1_CIF_ISP_CT_COEFF_4);
+> -	rkisp1_write(params->rkisp1, arg->coeff5, RKISP1_CIF_ISP_CT_COEFF_5);
+> -	rkisp1_write(params->rkisp1, arg->coeff6, RKISP1_CIF_ISP_CT_COEFF_6);
+> -	rkisp1_write(params->rkisp1, arg->coeff7, RKISP1_CIF_ISP_CT_COEFF_7);
+> -	rkisp1_write(params->rkisp1, arg->coeff8, RKISP1_CIF_ISP_CT_COEFF_8);
+> +	unsigned int i, j, k = 0;
+> +
+> +	for (i = 0; i < 3; i++)
+> +		for (j = 0; j < 3; j++)
+> +			rkisp1_write(params->rkisp1, arg->coeff[i][j],
+> +				     RKISP1_CIF_ISP_CT_COEFF_0 + 4 * k++);
+>  	rkisp1_write(params->rkisp1, arg->ct_offset_r,
+>  		     RKISP1_CIF_ISP_CT_OFFSET_R);
+>  	rkisp1_write(params->rkisp1, arg->ct_offset_g,
+> diff --git a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
+> index ca0d031b14ac..a01711a668da 100644
+> --- a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
+> +++ b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
+> @@ -417,19 +417,13 @@ struct rkisp1_cif_isp_bdm_config {
+>  /**
+>   * struct rkisp1_cif_isp_ctk_config - Configuration used by Cross Talk correction
+>   *
+> - * @coeff: color correction matrix
+> + * @coeff: color correction matrix. Values are 11-bit signed fixed-point numbers with 4 bit integer
+> + *		and 7 bit fractional part, ranging from -8 (0x400) to +7.992 (0x3FF). 0 is
+> + *		represented by 0x000 and a coefficient value of 1 as 0x080.
+>   * @ct_offset_b: offset for the crosstalk correction matrix
+>   */
+>  struct rkisp1_cif_isp_ctk_config {
+> -	__u16 coeff0;
+> -	__u16 coeff1;
+> -	__u16 coeff2;
+> -	__u16 coeff3;
+> -	__u16 coeff4;
+> -	__u16 coeff5;
+> -	__u16 coeff6;
+> -	__u16 coeff7;
+> -	__u16 coeff8;
+> +	__u16 coeff[3][3];
 
-Maybe also link to the docs:
+Why not:
 
-https://dri.freedesktop.org/docs/drm/gpu/drm-kms.html?highlight=3Ddrm_plane=
-#c.drm_plane_type
+	__u16 coeff[9];
 
-"For userspace which is universal plane aware and which is using that
-atomic IOCTL there=E2=80=99s no difference between these planes (beyong wha=
-t
-the driver and hardware can support of course)."
+?
 
-Also feel free to cc me on the github issue (I'm @danvet over there)
-in case there's more questions.
+Thanks,
+Helen
 
-Cheers, Daniel
-
->
-> > We should fix that, not try to work around
-> > that in all the drivers in upstream, that wont work.
-> You're right I'll drop this part.
-> > -Daniel
-> >
-> >>> For atomic there's 0 difference between a overlay or a cursor (primar=
-y
-> >>> plane is still treated somewhat special in the RMFB ioctl, but again
-> >>> that's for backwards compat reasons with existing uapi, not because
-> >>> the primary plane is different).
-> >>>
-> >>> What does happen though is that this breaks cursor for legacy
-> >>> userspace, which is probably not really what you want.
-> >> Indeed not.
-> >>
-> >> Beforhand I was submiiting this, I looked arround and couldn't find
-> >> anything which relies or even depends of a cursor window to be
-> >> available. Even if: as per spec only one DRM_PLANE_TYPE_PRIMARY is
-> >> mandatory, everything else is optional.
-> >>
-> >>> -Daniel
-> >>>
-> >>>
-> >>>> Regards,
-> >>>> Alex
-> >>>>
-> >>>> Changes in v2:
-> >>>> - drop not yet upstreamed dsp_data_swap from RK3188 regs
-> >>>> - rephrase most commit messages
-> >>>>
-> >>>> Alex Bee (5):
-> >>>>     drm: rockchip: add scaling for RK3036 win1
-> >>>>     drm: rockchip: add missing registers for RK3188
-> >>>>     drm: rockchip: add alpha support for RK3036, RK3066, RK3126 and =
-RK3188
-> >>>>     drm: rockchip: set alpha_en to 0 if it is not used
-> >>>>     drm: rockchip: use overlay windows as such
-> >>>>
-> >>>>    drivers/gpu/drm/rockchip/rockchip_drm_vop.c |  1 +
-> >>>>    drivers/gpu/drm/rockchip/rockchip_vop_reg.c | 42 ++++++++++++++++=
-++---
-> >>>>    drivers/gpu/drm/rockchip/rockchip_vop_reg.h |  1 +
-> >>>>    3 files changed, 38 insertions(+), 6 deletions(-)
-> >>>>
-> >>>> --
-> >>>> 2.17.1
-> >>>>
-> >>> --
-> >>> Daniel Vetter
-> >>> Software Engineer, Intel Corporation
-> >>> http://blog.ffwll.ch
-> >> Best Regards
-> >>
-> >
-> Best regards
-
-
-
---=20
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+>  	__u16 ct_offset_r;
+>  	__u16 ct_offset_g;
+>  	__u16 ct_offset_b;
+> 
