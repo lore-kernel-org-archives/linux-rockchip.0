@@ -1,50 +1,96 @@
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH v3 0/6] PCI: Minor kerneldoc warning fixes
-Date: Wed, 29 Jul 2020 22:12:18 +0200
-Message-ID: <20200729201224.26799-1-krzk@kernel.org>
+Subject: [PATCH v3 1/6] PCI: Fix kerneldoc
+Date: Wed, 29 Jul 2020 22:12:19 +0200
+Message-ID: <20200729201224.26799-2-krzk@kernel.org>
+References: <20200729201224.26799-1-krzk@kernel.org>
 Return-path: <linux-acpi-owner@vger.kernel.org>
+In-Reply-To: <20200729201224.26799-1-krzk@kernel.org>
 Sender: linux-acpi-owner@vger.kernel.org
 To: Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Michal Simek <michal.simek@xilinx.com>, Kishon Vijay Abraham I <kishon@ti.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-acpi@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzk@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi,
+Fix W=1 compile warnings (invalid kerneldoc):
 
-Changes since v2:
-1. Fix almost all warnings, except:
-   drivers/pci/controller/pci-hyperv.c:2534: warning: Function parameter or member 'version' not described in 'hv_pci_protocol_negotiation'
-   drivers/pci/controller/pci-hyperv.c:2534: warning: Function parameter or member 'num_version' not described in 'hv_pci_protocol_negotiation'
-   Not sure what are these.
+    drivers/pci/ats.c:196: warning: Function parameter or member 'pdev' not described in 'pci_enable_pri'
+    drivers/pci/ats.c:196: warning: Function parameter or member 'reqs' not described in 'pci_enable_pri'
+    drivers/pci/of.c:262: warning: Function parameter or member 'ib_resources' not described in 'devm_of_pci_get_host_bridge_resources'
+    drivers/pci/pci-pf-stub.c:20: warning: cannot understand function prototype: 'const struct pci_device_id pci_pf_stub_whitelist[] = '
+    drivers/pci/setup-bus.c:62: warning: Function parameter or member 'min_align' not described in 'add_to_list'
+    drivers/pci/vc.c:188: warning: Excess function parameter 'name' description in 'pci_vc_do_save_buffer'
 
-2. New patches, split per driver or subdirectory
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+---
+ drivers/pci/ats.c         | 3 ++-
+ drivers/pci/of.c          | 2 ++
+ drivers/pci/pci-pf-stub.c | 2 +-
+ drivers/pci/setup-bus.c   | 1 +
+ drivers/pci/vc.c          | 1 -
+ 5 files changed, 6 insertions(+), 3 deletions(-)
 
-Best regards,
-Krzysztof
-
-Krzysztof Kozlowski (6):
-  PCI: Fix kerneldoc
-  PCI: endpoint: Fix kerneldoc
-  PCI: hotplug: Fix kerneldoc
-  PCI: dwc: Fix kerneldoc
-  PCI: rockchip: Fix kerneldoc
-  PCI: xilinx: Fix kerneldoc
-
- drivers/pci/ats.c                               | 3 ++-
- drivers/pci/controller/dwc/pcie-designware-ep.c | 2 +-
- drivers/pci/controller/pcie-rockchip-ep.c       | 1 +
- drivers/pci/controller/pcie-xilinx-cpm.c        | 1 +
- drivers/pci/endpoint/functions/pci-epf-test.c   | 2 +-
- drivers/pci/endpoint/pci-ep-cfs.c               | 2 +-
- drivers/pci/endpoint/pci-epc-core.c             | 2 +-
- drivers/pci/endpoint/pci-epc-mem.c              | 2 +-
- drivers/pci/endpoint/pci-epf-core.c             | 4 +++-
- drivers/pci/hotplug/acpi_pcihp.c                | 4 ++--
- drivers/pci/hotplug/pciehp_core.c               | 1 +
- drivers/pci/of.c                                | 2 ++
- drivers/pci/pci-pf-stub.c                       | 2 +-
- drivers/pci/setup-bus.c                         | 1 +
- drivers/pci/vc.c                                | 1 -
- 15 files changed, 19 insertions(+), 11 deletions(-)
-
+diff --git a/drivers/pci/ats.c b/drivers/pci/ats.c
+index b761c1f72f67..2e1073052509 100644
+--- a/drivers/pci/ats.c
++++ b/drivers/pci/ats.c
+@@ -188,7 +188,8 @@ void pci_pri_init(struct pci_dev *pdev)
+ 
+ /**
+  * pci_enable_pri - Enable PRI capability
+- * @ pdev: PCI device structure
++ * @pdev: PCI device structure
++ * @reqs: outstanding requests
+  *
+  * Returns 0 on success, negative value on error
+  */
+diff --git a/drivers/pci/of.c b/drivers/pci/of.c
+index 22727fc9558d..d9621a603702 100644
+--- a/drivers/pci/of.c
++++ b/drivers/pci/of.c
+@@ -243,6 +243,8 @@ EXPORT_SYMBOL_GPL(of_pci_check_probe_only);
+  * @busno: bus number associated with the bridge root bus
+  * @bus_max: maximum number of buses for this bridge
+  * @resources: list where the range of resources will be added after DT parsing
++ * @ib_resources: list where the range of inbound resources (with addresses
++ *                from 'dma-ranges' will be added after DT parsing
+  * @io_base: pointer to a variable that will contain on return the physical
+  * address for the start of the I/O range. Can be NULL if the caller doesn't
+  * expect I/O ranges to be present in the device tree.
+diff --git a/drivers/pci/pci-pf-stub.c b/drivers/pci/pci-pf-stub.c
+index ef293e735c55..a0b2bd6c918a 100644
+--- a/drivers/pci/pci-pf-stub.c
++++ b/drivers/pci/pci-pf-stub.c
+@@ -9,7 +9,7 @@
+ #include <linux/module.h>
+ #include <linux/pci.h>
+ 
+-/**
++/*
+  * pci_pf_stub_whitelist - White list of devices to bind pci-pf-stub onto
+  *
+  * This table provides the list of IDs this driver is supposed to bind
+diff --git a/drivers/pci/setup-bus.c b/drivers/pci/setup-bus.c
+index 4d870ed89385..3951e02b7ded 100644
+--- a/drivers/pci/setup-bus.c
++++ b/drivers/pci/setup-bus.c
+@@ -55,6 +55,7 @@ static void free_list(struct list_head *head)
+  * @dev:	Device to which the resource belongs
+  * @res:	Resource to be tracked
+  * @add_size:	Additional size to be optionally added to the resource
++ * @min_align:	Minimum memory window alignment
+  */
+ static int add_to_list(struct list_head *head, struct pci_dev *dev,
+ 		       struct resource *res, resource_size_t add_size,
+diff --git a/drivers/pci/vc.c b/drivers/pci/vc.c
+index 5486f8768c86..5fc59ac31145 100644
+--- a/drivers/pci/vc.c
++++ b/drivers/pci/vc.c
+@@ -172,7 +172,6 @@ static void pci_vc_enable(struct pci_dev *dev, int pos, int res)
+  * @dev: device
+  * @pos: starting position of VC capability (VC/VC9/MFVC)
+  * @save_state: buffer for save/restore
+- * @name: for error message
+  * @save: if provided a buffer, this indicates what to do with it
+  *
+  * Walking Virtual Channel config space to size, save, or restore it
 -- 
 2.17.1
