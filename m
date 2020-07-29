@@ -1,7 +1,7 @@
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH v3 5/6] PCI: rockchip: Fix kerneldoc
-Date: Wed, 29 Jul 2020 22:12:23 +0200
-Message-ID: <20200729201224.26799-6-krzk@kernel.org>
+Subject: [PATCH v3 6/6] PCI: xilinx: Fix kerneldoc
+Date: Wed, 29 Jul 2020 22:12:24 +0200
+Message-ID: <20200729201224.26799-7-krzk@kernel.org>
 References: <20200729201224.26799-1-krzk@kernel.org>
 Return-path: <linux-acpi-owner@vger.kernel.org>
 In-Reply-To: <20200729201224.26799-1-krzk@kernel.org>
@@ -12,24 +12,24 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Fix W=1 compile warnings (invalid kerneldoc):
 
-    drivers/pci/controller/pcie-rockchip-ep.c:50: warning: Function parameter or member 'epc' not described in 'rockchip_pcie_ep'
+    drivers/pci/controller/pcie-xilinx-cpm.c:122: warning: Function parameter or member 'cpm_domain' not described in 'xilinx_cpm_pcie_port'
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- drivers/pci/controller/pcie-rockchip-ep.c | 1 +
+ drivers/pci/controller/pcie-xilinx-cpm.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index 5eaf36629a75..7631dc3961c1 100644
---- a/drivers/pci/controller/pcie-rockchip-ep.c
-+++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -22,6 +22,7 @@
- /**
-  * struct rockchip_pcie_ep - private data for PCIe endpoint controller driver
-  * @rockchip: Rockchip PCIe controller
-+ * @epc: PCI EPC device
-  * @max_regions: maximum number of regions supported by hardware
-  * @ob_region_map: bitmask of mapped outbound regions
-  * @ob_addr: base addresses in the AXI bus where the outbound regions start
+diff --git a/drivers/pci/controller/pcie-xilinx-cpm.c b/drivers/pci/controller/pcie-xilinx-cpm.c
+index 66f554694e03..cd8c77457b5f 100644
+--- a/drivers/pci/controller/pcie-xilinx-cpm.c
++++ b/drivers/pci/controller/pcie-xilinx-cpm.c
+@@ -104,6 +104,7 @@
+  * @cpm_base: CPM System Level Control and Status Register(SLCR) Base
+  * @dev: Device pointer
+  * @intx_domain: Legacy IRQ domain pointer
++ * @cpm_domain: CPM IRQ domain pointer
+  * @cfg: Holds mappings of config space window
+  * @intx_irq: legacy interrupt number
+  * @irq: Error interrupt number
 -- 
 2.17.1
