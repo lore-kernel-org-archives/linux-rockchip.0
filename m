@@ -1,60 +1,50 @@
-From: Bjorn Helgaas <helgaas@kernel.org>
-Subject: Re: [PATCH v3 0/6] PCI: Minor kerneldoc warning fixes
-Date: Wed, 29 Jul 2020 18:55:28 -0500
-Message-ID: <20200729235528.GA1981103@bjorn-Precision-5520>
-References: <20200729201224.26799-1-krzk@kernel.org>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <linux-acpi-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20200729201224.26799-1-krzk@kernel.org>
-Sender: linux-acpi-owner@vger.kernel.org
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Jingoo Han <jingoohan1@gmail.com>, Gustavo Pimentel <gustavo.pimentel@synopsys.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, Michal Simek <michal.simek@xilinx.com>, Kishon Vijay Abraham I <kishon@ti.com>, "Rafael J. Wysocki" <rjw@rjwysocki.net>, Len Brown <lenb@kernel.org>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-acpi@vger.kernel.org
+From: Mark Brown <broonie@kernel.org>
+Subject: Re: [PATCH] ASoC: rk3399_gru_sound: Add DAPM pins, kcontrols for jack detection
+Date: Thu, 30 Jul 2020 23:27:25 +0100
+Message-ID: <159614804536.1473.678464665429263160.b4-ty@kernel.org>
+References: <20200721182709.6895-1-alpernebiyasak@gmail.com>
+Return-path: <linux-kernel-owner@vger.kernel.org>
+In-Reply-To: <20200721182709.6895-1-alpernebiyasak@gmail.com>
+Sender: linux-kernel-owner@vger.kernel.org
+To: Alper Nebi Yasak <alpernebiyasak@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Jul 29, 2020 at 10:12:18PM +0200, Krzysztof Kozlowski wrote:
-> Hi,
+On Tue, 21 Jul 2020 21:27:10 +0300, Alper Nebi Yasak wrote:
+> PulseAudio (and perhaps other userspace utilities) can not detect any
+> jack for rk3399_gru_sound as the driver doesn't expose related Jack
+> kcontrols.
 > 
-> Changes since v2:
-> 1. Fix almost all warnings, except:
->    drivers/pci/controller/pci-hyperv.c:2534: warning: Function parameter or member 'version' not described in 'hv_pci_protocol_negotiation'
->    drivers/pci/controller/pci-hyperv.c:2534: warning: Function parameter or member 'num_version' not described in 'hv_pci_protocol_negotiation'
->    Not sure what are these.
+> This patch adds two DAPM pins to the headset jack, where the
+> snd_soc_card_jack_new() call automatically creates "Headphones Jack" and
+> "Headset Mic Jack" kcontrols from them.
 > 
-> 2. New patches, split per driver or subdirectory
-> 
-> Best regards,
-> Krzysztof
-> 
-> Krzysztof Kozlowski (6):
->   PCI: Fix kerneldoc
->   PCI: endpoint: Fix kerneldoc
->   PCI: hotplug: Fix kerneldoc
->   PCI: dwc: Fix kerneldoc
->   PCI: rockchip: Fix kerneldoc
->   PCI: xilinx: Fix kerneldoc
-> 
->  drivers/pci/ats.c                               | 3 ++-
->  drivers/pci/controller/dwc/pcie-designware-ep.c | 2 +-
->  drivers/pci/controller/pcie-rockchip-ep.c       | 1 +
->  drivers/pci/controller/pcie-xilinx-cpm.c        | 1 +
->  drivers/pci/endpoint/functions/pci-epf-test.c   | 2 +-
->  drivers/pci/endpoint/pci-ep-cfs.c               | 2 +-
->  drivers/pci/endpoint/pci-epc-core.c             | 2 +-
->  drivers/pci/endpoint/pci-epc-mem.c              | 2 +-
->  drivers/pci/endpoint/pci-epf-core.c             | 4 +++-
->  drivers/pci/hotplug/acpi_pcihp.c                | 4 ++--
->  drivers/pci/hotplug/pciehp_core.c               | 1 +
->  drivers/pci/of.c                                | 2 ++
->  drivers/pci/pci-pf-stub.c                       | 2 +-
->  drivers/pci/setup-bus.c                         | 1 +
->  drivers/pci/vc.c                                | 1 -
->  15 files changed, 19 insertions(+), 11 deletions(-)
+> [...]
 
-Thanks, I squashed these all together and applied them on pci/doc for
-v5.9.
+Applied to
 
-This was a tiny bit messy because pcie-xilinx-cpm.c is new this cycle
-and ideally we would have squashed that fix into the original commit,
-but we don't need to bother with that.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+
+Thanks!
+
+[1/1] ASoC: rk3399_gru_sound: Add DAPM pins, kcontrols for jack detection
+      commit: d0508b4f16049a658d68a7c276ba08296c5a76bc
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
