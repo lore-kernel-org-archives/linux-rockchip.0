@@ -1,34 +1,31 @@
 From: Mark Brown <broonie@kernel.org>
-Subject: Re: [PATCH] ASoC: rk3399_gru_sound: Add DAPM pins, kcontrols for jack detection
-Date: Thu, 30 Jul 2020 23:27:25 +0100
-Message-ID: <159614804536.1473.678464665429263160.b4-ty@kernel.org>
-References: <20200721182709.6895-1-alpernebiyasak@gmail.com>
+Subject: Re: [PATCH v2 1/3] spi: rockchip: Config spi rx dma burst size depend on xfer length
+Date: Thu, 30 Jul 2020 23:28:51 +0100
+Message-ID: <159614813119.1710.15143804942434946004.b4-ty@kernel.org>
+References: <20200722083737.8820-1-jon.lin@rock-chips.com>
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200721182709.6895-1-alpernebiyasak@gmail.com>
+In-Reply-To: <20200722083737.8820-1-jon.lin@rock-chips.com>
 Sender: linux-kernel-owner@vger.kernel.org
-To: Alper Nebi Yasak <alpernebiyasak@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>, alsa-devel@alsa-project.org, linux-rockchip@lists.infradead.org, Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>
+To: Jon Lin <jon.lin@rock-chips.com>
+Cc: linux-arm-kernel@lists.infradead.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, 21 Jul 2020 21:27:10 +0300, Alper Nebi Yasak wrote:
-> PulseAudio (and perhaps other userspace utilities) can not detect any
-> jack for rk3399_gru_sound as the driver doesn't expose related Jack
-> kcontrols.
-> 
-> This patch adds two DAPM pins to the headset jack, where the
-> snd_soc_card_jack_new() call automatically creates "Headphones Jack" and
-> "Headset Mic Jack" kcontrols from them.
-> 
-> [...]
+On Wed, 22 Jul 2020 16:37:35 +0800, Jon Lin wrote:
+> The burst length can be adjusted according to the transmission
+> length to improve the transmission rate
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
 
 Thanks!
 
-[1/1] ASoC: rk3399_gru_sound: Add DAPM pins, kcontrols for jack detection
-      commit: d0508b4f16049a658d68a7c276ba08296c5a76bc
+[1/3] spi: rockchip: Config spi rx dma burst size depend on xfer length
+      commit: 4d9ca632c847ab88f2f7e7e2747aea966f1390ce
+[2/3] spi: rockchip: Support 64-location deep FIFOs
+      commit: 13a96935e6f66bafb6da92791120546a4bf20889
+[3/3] spi: rockchip: Fix error in SPI slave pio read
+      commit: 4294e4accf8d695ea5605f6b189008b692e3e82c
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
