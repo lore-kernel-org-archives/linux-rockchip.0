@@ -1,25 +1,65 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH v2 1/2] dt-bindings: Add doc for FriendlyARM NanoPi R2S
-Date: Fri, 31 Jul 2020 16:43:53 -0600
-Message-ID: <20200731224353.GA944440@bogus>
-References: <20200730232054.286381-1-mail@david-bauer.net>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH v2 5/9] media: staging: rkisp1: add a pointer to
+ rkisp1_device from struct rkisp1_isp
+Date: Sat, 1 Aug 2020 18:08:06 +0200
+Message-ID: <74c2563c-25ca-833b-2f72-b6e10e6e3847@collabora.com>
+References: <20200718145918.17752-1-dafna.hirschfeld@collabora.com>
+ <20200718145918.17752-6-dafna.hirschfeld@collabora.com>
+ <d8475ade-94a3-48ad-02d7-f03810ddf6dc@collabora.com>
+ <114a3242-88e9-46a1-c8c8-f5bfd424d05a@collabora.com>
+ <CAAFQd5BLuwfnQfYbaWmtre5YCx-_YG4E10cZxeL+6pESap_U0A@mail.gmail.com>
+ <fa457a47-4005-8c64-d135-96b321ddd6a6@collabora.com>
+ <CAAFQd5ATRvBapupZaBf6TkWcVwOy7C9+A95+vLHJiwuUca4LQg@mail.gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200730232054.286381-1-mail-YgwEh8z+B+JYon68uE86FQ@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: David Bauer <mail-YgwEh8z+B+JYon68uE86FQ@public.gmane.org>
-Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Return-path: <linux-media-owner@vger.kernel.org>
+In-Reply-To: <CAAFQd5ATRvBapupZaBf6TkWcVwOy7C9+A95+vLHJiwuUca4LQg@mail.gmail.com>
+Content-Language: en-US
+Sender: linux-media-owner@vger.kernel.org
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Helen Koike <helen.koike@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Fri, 31 Jul 2020 01:20:53 +0200, David Bauer wrote:
-> Add devicetree binding documentation for the FriendlyARM NanoPi R2S.
-> 
-> Signed-off-by: David Bauer <mail-YgwEh8z+B+JYon68uE86FQ@public.gmane.org>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
 
-Reviewed-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+
+On 21.07.20 17:32, Tomasz Figa wrote:
+> On Tue, Jul 21, 2020 at 5:30 PM Dafna Hirschfeld
+> <dafna.hirschfeld@collabora.com> wrote:
+>>
+>> Hi,
+>>
+>> On 21.07.20 14:36, Tomasz Figa wrote:
+>>> On Tue, Jul 21, 2020 at 2:26 PM Dafna Hirschfeld
+>>> <dafna.hirschfeld@collabora.com> wrote:
+>>>>
+>>>> Hi,
+>>>>
+>>>> On 20.07.20 21:25, Helen Koike wrote:
+>>>>>
+>>>>>
+>>>>> On 7/18/20 11:59 AM, Dafna Hirschfeld wrote:
+>>>>>> The code in rkisp1-isp.c requires access to struct 'rkisp1_device'
+>>>>>> in several places. It access it using the 'container_of' macro.
+>>>>>> This patch adds a pointer to 'rkisp1_device' in struct 'rkisp1_isp'
+>>>>>> to simplify the access.
+>>>>>
+>>>>> What is wrong with container_of?
+>>>>
+>>>> I remember Laurent suggested it a while ago.
+>>>> I also feel container_of is a bit cumbersome and other entities already have a pointer to rkisp1_device.
+>>>>
+>>>
+>>> Do we even need the rkisp1_isp struct? Could we just pass rkisp1_device instead?
+>>
+>> pass to where ?  You mean to the function rkisp1_mipi_csi2_start ?
+> 
+> Yes, all around the driver, where rkisp1_isp is passed.
+
+Most of the functions are part of subdevice callback implementation
+where the rkisp1_device is not needed, so I don't the see the point.
+
+Thanks,
+Dafna
+
+> 
