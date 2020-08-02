@@ -1,175 +1,78 @@
-From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-Subject: [PATCH] arm64: dts: rockchip: enable HDMI sound nodes for
- rk3328-rock64
-Date: Sun,  2 Aug 2020 05:04:33 +0900
-Message-ID: <20200801200433.2617429-1-katsuhiro@katsuster.net>
+From: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>
+Subject: [PATCH 00/10] Remove surplus dev_err() when handing an error from platform_get_irq()
+Date: Sun,  2 Aug 2020 14:25:52 +0000
+Message-ID: <20200802142601.1635926-1-kw@linux.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
-List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
-List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
-List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
-List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
- <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
-Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
-Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Katsuhiro Suzuki <katsuhiro@katsuster.net>, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-samsung-soc-owner@vger.kernel.org>
+Sender: linux-samsung-soc-owner@vger.kernel.org
+To: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Richard Zhu <hongxing.zhu@nxp.com>, Lucas Stach <l.stach@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Murali Karicheri <m-karicheri2@ti.com>, Yue Wang <yue.wang@Amlogic.com>, Kevin Hilman <khilman@baylibre.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Jesper Nilsson <jesper.nilsson@axis.com>, Xiaowei Song <songxiaowei@hisilicon.com>, Binghui Wang <wangbinghui@hisilicon.com>, Pratyush Anand <pratyush.anand@gmail.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Linus Walleij <linus.walleij@linaro.org>, Toan Le <toan@os.amperecomputing.com>, Ley Foon Tan <ley.foon.tan@intel.com>Shawn Lin <shawn>
 List-Id: linux-rockchip.vger.kernel.org
 
-This patch enables HDMI sound (I2S0) and Analog sound (I2S1) which
-are defined in rk3328.dtsi, and replace SPDIF nodes.
+At the moment a lot of error handling code would print a duplicated
+error message should either the platform_get_irq() or
+platform_get_irq_byname() function fails to obtain an IRQ for a device.
 
-We can use SPDIF passthrough with suitable ALSA settings and on
-mpv or other media players.
-  - Settings: https://github.com/LibreELEC/LibreELEC.tv/blob/master/projects/Rockchip/filesystem/usr/share/alsa/cards/SPDIF.conf
-  - Ex.: mpv foo.ac3 --audio-spdif=ac3 --audio-device='alsa/SPDIF.pcm.iec958.0:SPDIF'
+There is no need to call the dev_err() function directly to print
+a custom message when handling an error from either of these functions
+as both are going to display an appropriate error message in case of
+a failure.
 
-[Why use simple-audio-card for SPDIF?]
+This series aims to remove surplus call to dev_err() when handing an
+error originating from either platform_get_irq() or
+platform_get_irq_byname() function as per suggestion from Coccinelle.
 
-For newly adding nodes, ASoC guys recommend to use audio-graph-card.
-But all other sound nodes for rk3328 have already been defined by
-simple-audio-card. In this time, I chose consistency of sound nodes.
+Related commits are commit 7723f4c5ecdb ("driver core: platform: Add an
+error message to platform_get_irq*()") and commit 98051ba2b28b
+("coccinelle: Add script to check for platform_get_irq() excessive
+prints").
 
-[DMA allocation problem]
+Krzysztof Wilczyński (10):
+  PCI: dwc: Remove dev_err() when handing an error from
+    platform_get_irq()
+  PCI: mobiveil: Remove dev_err() when handing an error from
+    platform_get_irq()
+  PCI: tegra: Remove dev_err() when handing an error from
+    platform_get_irq()
+  PCI: altera: Remove dev_err() when handing an error from
+    platform_get_irq()
+  PCI: host-generic: Remove dev_err() when handing an error from
+    platform_get_irq()
+  PCI: v3-semi: Remove dev_err() when handing an error from
+    platform_get_irq()
+  PCI: altera-msi: Remove dev_err() when handing an error from
+    platform_get_irq()
+  PCI: xgene-msi: Remove dev_err() when handing an error from
+    platform_get_irq()
+  PCI: rockchip: Remove dev_err() when handing an error from
+    platform_get_irq()
+  PCI: xilinx-nwl: Remove dev_err() when handing an error from
+    platform_get_irq()
 
-After apply this patch, UART2 will fail to allocate DMA resources
-but UART driver can work fine without DMA.
+ drivers/pci/controller/dwc/pci-dra7xx.c              |  8 ++------
+ drivers/pci/controller/dwc/pci-exynos.c              |  9 +++------
+ drivers/pci/controller/dwc/pci-imx6.c                |  4 +---
+ drivers/pci/controller/dwc/pci-keystone.c            |  4 +---
+ drivers/pci/controller/dwc/pci-meson.c               |  4 +---
+ drivers/pci/controller/dwc/pcie-armada8k.c           |  4 +---
+ drivers/pci/controller/dwc/pcie-artpec6.c            |  4 +---
+ drivers/pci/controller/dwc/pcie-histb.c              |  4 +---
+ drivers/pci/controller/dwc/pcie-kirin.c              |  5 +----
+ drivers/pci/controller/dwc/pcie-spear13xx.c          |  5 ++---
+ drivers/pci/controller/dwc/pcie-tegra194.c           |  4 +---
+ .../pci/controller/mobiveil/pcie-layerscape-gen4.c   |  5 ++---
+ drivers/pci/controller/mobiveil/pcie-mobiveil-host.c |  4 +---
+ drivers/pci/controller/pci-tegra.c                   |  8 ++------
+ drivers/pci/controller/pci-v3-semi.c                 |  5 ++---
+ drivers/pci/controller/pci-xgene-msi.c               |  2 --
+ drivers/pci/controller/pcie-altera-msi.c             |  1 -
+ drivers/pci/controller/pcie-altera.c                 |  4 +---
+ drivers/pci/controller/pcie-rockchip-host.c          | 12 +++---------
+ drivers/pci/controller/pcie-tango.c                  |  4 +---
+ drivers/pci/controller/pcie-xilinx-nwl.c             | 11 ++---------
+ 21 files changed, 29 insertions(+), 82 deletions(-)
 
-This error is related to the DMAC of rk3328 (pl330 or compatible).
-DMAC connected to 16 DMA sources. Each sources have ID number that is
-called 'Req number' in rk3328 TRM. After apply this patch total 7
-sources will be activated as follows:
-
-| Req number | Source | Required  |
-|            |        | channels  |
-|------------+--------+-----------|
-|  8,  9     | SPI0   | 2ch       |
-| 11, 12     | I2S0   | 2ch       |
-| 14, 15     | I2S1   | 2ch       |
-|     10     | SPDIF  | 1ch       |
-|------------+--------+-----------|
-|            | Total  | 7ch       |
-|------------+--------+-----------|
-|  6,  7     | UART2  | 2ch       | -> cannot get DMA channels
-
-Due to rk3328 DMAC specification we can use max 8 channels at same
-time. If SPI0/I2S0/I2S1/SPDIF will be activated by this patch,
-required DMAC channels reach to 7. So last two channels (for UART2)
-cannot get DMA resources.
-
-Virt-dma mechanism for pl0330 DMAC driver is needed to fix this
-problem.
-
-Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
----
- .../arm64/boot/dts/rockchip/rk3328-rock64.dts | 58 +++++++++----------
- 1 file changed, 26 insertions(+), 32 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 86cfb5c50a94..4608f8fc6ff3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -84,34 +84,34 @@ standby_led: led-1 {
- 		};
- 	};
- 
--	sound {
--		compatible = "audio-graph-card";
--		label = "rockchip,rk3328";
--		dais = <&i2s1_p0
--			&spdif_p0>;
-+	spdif_sound: spdif-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,name = "SPDIF";
-+		status = "okay";
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&spdif>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&spdif_dit>;
-+		};
- 	};
- 
--	spdif-dit {
-+	spdif_dit: spdif-dit {
- 		compatible = "linux,spdif-dit";
- 		#sound-dai-cells = <0>;
--
--		port {
--			dit_p0_0: endpoint {
--				remote-endpoint = <&spdif_p0_0>;
--			};
--		};
-+		status = "okay";
- 	};
- };
- 
-+&analog_sound {
-+	status = "okay";
-+};
-+
- &codec {
- 	mute-gpios = <&grf_gpio 0 GPIO_ACTIVE_LOW>;
- 	status = "okay";
--
--	port@0 {
--		codec_p0_0: endpoint {
--			remote-endpoint = <&i2s1_p0_0>;
--		};
--	};
- };
- 
- &cpu0 {
-@@ -163,6 +163,10 @@ &hdmi {
- 	status = "okay";
- };
- 
-+&hdmi_sound {
-+	status = "okay";
-+};
-+
- &hdmiphy {
- 	status = "okay";
- };
-@@ -278,16 +282,12 @@ regulator-state-mem {
- 	};
- };
- 
--&i2s1 {
-+&i2s0 {
- 	status = "okay";
-+};
- 
--	i2s1_p0: port {
--		i2s1_p0_0: endpoint {
--			dai-format = "i2s";
--			mclk-fs = <256>;
--			remote-endpoint = <&codec_p0_0>;
--		};
--	};
-+&i2s1 {
-+	status = "okay";
- };
- 
- &io_domains {
-@@ -337,12 +337,6 @@ &sdmmc {
- &spdif {
- 	pinctrl-0 = <&spdifm0_tx>;
- 	status = "okay";
--
--	spdif_p0: port {
--		spdif_p0_0: endpoint {
--			remote-endpoint = <&dit_p0_0>;
--		};
--	};
- };
- 
- &spi0 {
 -- 
 2.27.0
