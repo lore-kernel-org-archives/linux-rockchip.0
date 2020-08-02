@@ -1,7 +1,7 @@
 From: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw-vYTEC60ixJUAvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH 09/10] PCI: rockchip: Remove dev_err() when handing an error from platform_get_irq()
-Date: Sun,  2 Aug 2020 14:26:01 +0000
-Message-ID: <20200802142601.1635926-10-kw@linux.com>
+Subject: [PATCH 08/10] PCI: xgene-msi: Remove dev_err() when handing an error from platform_get_irq()
+Date: Sun,  2 Aug 2020 14:26:00 +0000
+Message-ID: <20200802142601.1635926-9-kw@linux.com>
 References: <20200802142601.1635926-1-kw@linux.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -20,59 +20,27 @@ appropriate error message in case of a failure.
 
 This change is as per suggestion from Coccinelle:
 
-  drivers/pci/controller/pcie-rockchip-host.c:553:2-9: line 553 is
-  redundant because platform_get_irq() already prints an error
-
-  drivers/pci/controller/pcie-rockchip-host.c:566:2-9: line 566 is
-  redundant because platform_get_irq() already prints an error
-
-  drivers/pci/controller/pcie-rockchip-host.c:576:2-9: line 576 is
-  redundant because platform_get_irq() already prints an error
+  drivers/pci/controller/pci-xgene-msi.c:481:3-10: line 481 is redundant
+  because platform_get_irq() already prints an error
 
 Suggested-by: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
 Signed-off-by: Krzysztof Wilczyński <kw-vYTEC60ixJUAvxtiuMwx3w@public.gmane.org>
 ---
- drivers/pci/controller/pcie-rockchip-host.c | 12 +++---------
- 1 file changed, 3 insertions(+), 9 deletions(-)
+ drivers/pci/controller/pci-xgene-msi.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
-index 94af6f5828a3..eebe05ab354f 100644
---- a/drivers/pci/controller/pcie-rockchip-host.c
-+++ b/drivers/pci/controller/pcie-rockchip-host.c
-@@ -549,10 +549,8 @@ static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
- 	struct platform_device *pdev = to_platform_device(dev);
- 
- 	irq = platform_get_irq_byname(pdev, "sys");
--	if (irq < 0) {
--		dev_err(dev, "missing sys IRQ resource\n");
-+	if (irq < 0)
- 		return irq;
--	}
- 
- 	err = devm_request_irq(dev, irq, rockchip_pcie_subsys_irq_handler,
- 			       IRQF_SHARED, "pcie-sys", rockchip);
-@@ -562,20 +560,16 @@ static int rockchip_pcie_setup_irq(struct rockchip_pcie *rockchip)
- 	}
- 
- 	irq = platform_get_irq_byname(pdev, "legacy");
--	if (irq < 0) {
--		dev_err(dev, "missing legacy IRQ resource\n");
-+	if (irq < 0)
- 		return irq;
--	}
- 
- 	irq_set_chained_handler_and_data(irq,
- 					 rockchip_pcie_legacy_int_handler,
- 					 rockchip);
- 
- 	irq = platform_get_irq_byname(pdev, "client");
--	if (irq < 0) {
--		dev_err(dev, "missing client IRQ resource\n");
-+	if (irq < 0)
- 		return irq;
--	}
- 
- 	err = devm_request_irq(dev, irq, rockchip_pcie_client_irq_handler,
- 			       IRQF_SHARED, "pcie-client", rockchip);
+diff --git a/drivers/pci/controller/pci-xgene-msi.c b/drivers/pci/controller/pci-xgene-msi.c
+index f4c02da84e59..02271c6d17a1 100644
+--- a/drivers/pci/controller/pci-xgene-msi.c
++++ b/drivers/pci/controller/pci-xgene-msi.c
+@@ -478,8 +478,6 @@ static int xgene_msi_probe(struct platform_device *pdev)
+ 	for (irq_index = 0; irq_index < NR_HW_IRQS; irq_index++) {
+ 		virt_msir = platform_get_irq(pdev, irq_index);
+ 		if (virt_msir < 0) {
+-			dev_err(&pdev->dev, "Cannot translate IRQ index %d\n",
+-				irq_index);
+ 			rc = virt_msir;
+ 			goto error;
+ 		}
 -- 
 2.27.0
