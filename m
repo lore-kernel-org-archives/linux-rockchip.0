@@ -1,14 +1,14 @@
 From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH] media: staging: rkisp1: rename
- RKISP1_CIF_ISP_STAT_AFM_FIN to RKISP1_CIF_ISP_STAT_AFM
-Date: Mon, 3 Aug 2020 16:49:27 -0300
-Message-ID: <4d485ed1-4e8a-d635-5385-0f51a1297b13@collabora.com>
-References: <20200707171549.29601-1-dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH] media: staging: rkisp1: comment each define
+ (RKISP1_CIF_ISP_MODULE_*), explaining what the abbreviation means
+Date: Mon, 3 Aug 2020 16:51:44 -0300
+Message-ID: <80bd60fd-6490-fd6c-2562-30b22d1f1884@collabora.com>
+References: <20200707173413.13977-1-dafna.hirschfeld@collabora.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
 Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200707171549.29601-1-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20200707173413.13977-1-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 Sender: linux-media-owner@vger.kernel.org
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
@@ -17,54 +17,68 @@ List-Id: linux-rockchip.vger.kernel.org
 
 Hi Dafna,
 
-On 7/7/20 2:15 PM, Dafna Hirschfeld wrote:
-> The flag RKISP1_CIF_ISP_STAT_AFM_FIN indicates userspace
-> that auto-focus measurements were collected. Therefore
-> the suffix _FIN in the flag's name does not fit.
 
-I would just clarify that _FIN is used in RKISP1_CIF_ISP_AFM_FIN,
-which is an interruption indicating that that the hardware finished
-collecting auto-focus measurement, and RKISP1_CIF_ISP_STAT_AFM is
-a flag sent to userspace to indicate data contained in the buffer.
+Thank you for this patch and sorry for the delay.
 
-With this:
+On 7/7/20 2:34 PM, Dafna Hirschfeld wrote:
+> Add one line comment before each module
+> define 'RKISP1_CIF_ISP_MODULE_*' explaining what the
+> abbreviation means.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
 Acked-by: Helen Koike <helen.koike@collabora.com>
 
-Thanks
-Helen
+Regards,
 
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 > ---
->  drivers/staging/media/rkisp1/rkisp1-stats.c       | 2 +-
->  drivers/staging/media/rkisp1/uapi/rkisp1-config.h | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  .../staging/media/rkisp1/uapi/rkisp1-config.h  | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
 > 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> index 0616793ae395..b2a77ec21989 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-stats.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> @@ -253,7 +253,7 @@ static void rkisp1_stats_get_afc_meas(struct rkisp1_stats *stats,
->  	struct rkisp1_device *rkisp1 = stats->rkisp1;
->  	struct rkisp1_cif_isp_af_stat *af;
->  
-> -	pbuf->meas_type |= RKISP1_CIF_ISP_STAT_AFM_FIN;
-> +	pbuf->meas_type |= RKISP1_CIF_ISP_STAT_AFM;
->  
->  	af = &pbuf->params.af;
->  	af->window[0].sum = rkisp1_read(rkisp1, RKISP1_CIF_ISP_AFM_SUM_A);
 > diff --git a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-> index ec624f2579cd..57f5035d62a4 100644
+> index 57f5035d62a4..b2923b2833d3 100644
 > --- a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
 > +++ b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-> @@ -113,7 +113,7 @@
->   */
->  #define RKISP1_CIF_ISP_STAT_AWB           BIT(0)
->  #define RKISP1_CIF_ISP_STAT_AUTOEXP       BIT(1)
-> -#define RKISP1_CIF_ISP_STAT_AFM_FIN       BIT(2)
-> +#define RKISP1_CIF_ISP_STAT_AFM           BIT(2)
->  #define RKISP1_CIF_ISP_STAT_HIST          BIT(3)
+> @@ -18,23 +18,41 @@
+>  #define V4L2_META_FMT_RK_ISP1_PARAMS   v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 params */
+>  #define V4L2_META_FMT_RK_ISP1_STAT_3A  v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A statistics */
 >  
->  enum rkisp1_cif_isp_histogram_mode {
+> +/* Defect Pixel Cluster Detection */
+>  #define RKISP1_CIF_ISP_MODULE_DPCC		BIT(0)
+> +/* Black Level Subtraction */
+>  #define RKISP1_CIF_ISP_MODULE_BLS		BIT(1)
+> +/* Sensor De-gamma */
+>  #define RKISP1_CIF_ISP_MODULE_SDG		BIT(2)
+> +/* Histogram */
+>  #define RKISP1_CIF_ISP_MODULE_HST		BIT(3)
+> +/* Lens Shade Control */
+>  #define RKISP1_CIF_ISP_MODULE_LSC		BIT(4)
+> +/* Auto White Balance Gain */
+>  #define RKISP1_CIF_ISP_MODULE_AWB_GAIN		BIT(5)
+> +/* Filter */
+>  #define RKISP1_CIF_ISP_MODULE_FLT		BIT(6)
+> +/* Bayer Demosaic */
+>  #define RKISP1_CIF_ISP_MODULE_BDM		BIT(7)
+> +/* Cross Talk */
+>  #define RKISP1_CIF_ISP_MODULE_CTK		BIT(8)
+> +/* Gamma Out Curve */
+>  #define RKISP1_CIF_ISP_MODULE_GOC		BIT(9)
+> +/* Color Processing */
+>  #define RKISP1_CIF_ISP_MODULE_CPROC		BIT(10)
+> +/* Auto Focus Control */
+>  #define RKISP1_CIF_ISP_MODULE_AFC		BIT(11)
+> +/* Auto White Balancing */
+>  #define RKISP1_CIF_ISP_MODULE_AWB		BIT(12)
+> +/* Image Effect */
+>  #define RKISP1_CIF_ISP_MODULE_IE		BIT(13)
+> +/* Auto Exposure Control */
+>  #define RKISP1_CIF_ISP_MODULE_AEC		BIT(14)
+> +/* Wide Dynamic Range */
+>  #define RKISP1_CIF_ISP_MODULE_WDR		BIT(15)
+> +/* Denoise Pre-Filter */
+>  #define RKISP1_CIF_ISP_MODULE_DPF		BIT(16)
+> +/* Denoise Pre-Filter Strength */
+>  #define RKISP1_CIF_ISP_MODULE_DPF_STRENGTH	BIT(17)
+>  
+>  #define RKISP1_CIF_ISP_CTK_COEFF_MAX            0x100
 > 
