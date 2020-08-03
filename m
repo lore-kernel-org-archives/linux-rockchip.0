@@ -1,86 +1,55 @@
-From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 00/10] Remove surplus dev_err() when handing an error
+From: "Tan, Ley Foon" <ley.foon.tan@intel.com>
+Subject: RE: [PATCH 04/10] PCI: altera: Remove dev_err() when handing an error
  from platform_get_irq()
-Date: Sun, 2 Aug 2020 21:01:51 -0500
-Message-ID: <20200803020151.GA291575@bjorn-Precision-5520>
+Date: Mon, 3 Aug 2020 06:19:02 +0000
+Message-ID: <BY5PR11MB38934F2DF0BA55EBF2965B34CC4D0@BY5PR11MB3893.namprd11.prod.outlook.com>
 References: <20200802142601.1635926-1-kw@linux.com>
+ <20200802142601.1635926-5-kw@linux.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Content-Disposition: inline
-In-Reply-To: <20200802142601.1635926-1-kw-vYTEC60ixJUAvxtiuMwx3w@public.gmane.org>
-Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw-vYTEC60ixJUAvxtiuMwx3w@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Richard Zhu <hongxing.zhu-3arQi8VN3Tc@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Murali Karicheri <m-karicheri2-l0cyMroinI0@public.gmane.org>, Yue Wang <yue.wang-jh/zon5tOX5BDgjK7y7TUQ@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Jesper Nilsson <jesper.nilsson-VrBV9hrLPhE@public.gmane.org>, Xiaowei Song <songxiaowei-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Binghui Wang <wangbinghui-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Pratyush Anand <pratyush.anand-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hou Zhiqiang <Zhiqiang.Hou-3arQi8VN3Tc@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Toan Le <toan-shex6MNQR2J/SfDzf78azzKzEDxYleXD@public.gmane.org>, Ley
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Return-path: <linux-pci-owner@vger.kernel.org>
+In-Reply-To: <20200802142601.1635926-5-kw@linux.com>
+Content-Language: en-US
+Sender: linux-pci-owner@vger.kernel.org
+To: =?utf-8?B?S3J6eXN6dG9mIFdpbGN6ecWEc2tp?= <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>
+Cc: Jingoo Han <jingoohan1@gmail.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Richard Zhu <hongxing.zhu@nxp.com>, Lucas Stach <l.stach@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Murali Karicheri <m-karicheri2@ti.com>, Yue Wang <yue.wang@Amlogic.com>, Kevin Hilman <khilman@baylibre.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Jesper Nilsson <jesper.nilsson@axis.com>, Xiaowei Song <songxiaowei@hisilicon.com>, Binghui Wang <wangbinghui@hisilicon.com>, Pratyush Anand <pratyush.anand@gmail.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Linus Walleij <linus.walleij@linaro.org>, Toan Le <toan@os.amperecomputing.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko
 List-Id: linux-rockchip.vger.kernel.org
 
-On Sun, Aug 02, 2020 at 02:25:52PM +0000, Krzysztof Wilczyński wrote:
-> At the moment a lot of error handling code would print a duplicated
-> error message should either the platform_get_irq() or
-> platform_get_irq_byname() function fails to obtain an IRQ for a device.
-> 
-> There is no need to call the dev_err() function directly to print
-> a custom message when handling an error from either of these functions
-> as both are going to display an appropriate error message in case of
-> a failure.
-> 
-> This series aims to remove surplus call to dev_err() when handing an
-> error originating from either platform_get_irq() or
-> platform_get_irq_byname() function as per suggestion from Coccinelle.
-> 
-> Related commits are commit 7723f4c5ecdb ("driver core: platform: Add an
-> error message to platform_get_irq*()") and commit 98051ba2b28b
-> ("coccinelle: Add script to check for platform_get_irq() excessive
-> prints").
-> 
-> Krzysztof Wilczyński (10):
->   PCI: dwc: Remove dev_err() when handing an error from
->     platform_get_irq()
->   PCI: mobiveil: Remove dev_err() when handing an error from
->     platform_get_irq()
->   PCI: tegra: Remove dev_err() when handing an error from
->     platform_get_irq()
->   PCI: altera: Remove dev_err() when handing an error from
->     platform_get_irq()
->   PCI: host-generic: Remove dev_err() when handing an error from
->     platform_get_irq()
->   PCI: v3-semi: Remove dev_err() when handing an error from
->     platform_get_irq()
->   PCI: altera-msi: Remove dev_err() when handing an error from
->     platform_get_irq()
->   PCI: xgene-msi: Remove dev_err() when handing an error from
->     platform_get_irq()
->   PCI: rockchip: Remove dev_err() when handing an error from
->     platform_get_irq()
->   PCI: xilinx-nwl: Remove dev_err() when handing an error from
->     platform_get_irq()
-> 
->  drivers/pci/controller/dwc/pci-dra7xx.c              |  8 ++------
->  drivers/pci/controller/dwc/pci-exynos.c              |  9 +++------
->  drivers/pci/controller/dwc/pci-imx6.c                |  4 +---
->  drivers/pci/controller/dwc/pci-keystone.c            |  4 +---
->  drivers/pci/controller/dwc/pci-meson.c               |  4 +---
->  drivers/pci/controller/dwc/pcie-armada8k.c           |  4 +---
->  drivers/pci/controller/dwc/pcie-artpec6.c            |  4 +---
->  drivers/pci/controller/dwc/pcie-histb.c              |  4 +---
->  drivers/pci/controller/dwc/pcie-kirin.c              |  5 +----
->  drivers/pci/controller/dwc/pcie-spear13xx.c          |  5 ++---
->  drivers/pci/controller/dwc/pcie-tegra194.c           |  4 +---
->  .../pci/controller/mobiveil/pcie-layerscape-gen4.c   |  5 ++---
->  drivers/pci/controller/mobiveil/pcie-mobiveil-host.c |  4 +---
->  drivers/pci/controller/pci-tegra.c                   |  8 ++------
->  drivers/pci/controller/pci-v3-semi.c                 |  5 ++---
->  drivers/pci/controller/pci-xgene-msi.c               |  2 --
->  drivers/pci/controller/pcie-altera-msi.c             |  1 -
->  drivers/pci/controller/pcie-altera.c                 |  4 +---
->  drivers/pci/controller/pcie-rockchip-host.c          | 12 +++---------
->  drivers/pci/controller/pcie-tango.c                  |  4 +---
->  drivers/pci/controller/pcie-xilinx-nwl.c             | 11 ++---------
->  21 files changed, 29 insertions(+), 82 deletions(-)
-
-I squashed these together and applied them to pci/irq-error for v5.9,
-thanks!
-
-The cover letter claims there should be 10 patches, but I only got 9.
-Just FYI.
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogS3J6eXN6dG9mIFdpbGN6
+ecWEc2tpIDxrd0BsaW51eC5jb20+DQo+IFNlbnQ6IFN1bmRheSwgQXVndXN0IDIsIDIwMjAgMTA6
+MjYgUE0NCj4gVG86IEJqb3JuIEhlbGdhYXMgPGJoZWxnYWFzQGdvb2dsZS5jb20+DQo+IENjOiBK
+aW5nb28gSGFuIDxqaW5nb29oYW4xQGdtYWlsLmNvbT47IEt1a2ppbiBLaW0gPGtnZW5lQGtlcm5l
+bC5vcmc+Ow0KPiBLcnp5c3p0b2YgS296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+OyBSaWNoYXJk
+IFpodQ0KPiA8aG9uZ3hpbmcuemh1QG54cC5jb20+OyBMdWNhcyBTdGFjaCA8bC5zdGFjaEBwZW5n
+dXRyb25peC5kZT47IFNoYXduDQo+IEd1byA8c2hhd25ndW9Aa2VybmVsLm9yZz47IFNhc2NoYSBI
+YXVlciA8cy5oYXVlckBwZW5ndXRyb25peC5kZT47DQo+IE11cmFsaSBLYXJpY2hlcmkgPG0ta2Fy
+aWNoZXJpMkB0aS5jb20+OyBZdWUgV2FuZw0KPiA8eXVlLndhbmdAQW1sb2dpYy5jb20+OyBLZXZp
+biBIaWxtYW4gPGtoaWxtYW5AYmF5bGlicmUuY29tPjsgVGhvbWFzDQo+IFBldGF6em9uaSA8dGhv
+bWFzLnBldGF6em9uaUBib290bGluLmNvbT47IEplc3BlciBOaWxzc29uDQo+IDxqZXNwZXIubmls
+c3NvbkBheGlzLmNvbT47IFhpYW93ZWkgU29uZyA8c29uZ3hpYW93ZWlAaGlzaWxpY29uLmNvbT47
+DQo+IEJpbmdodWkgV2FuZyA8d2FuZ2JpbmdodWlAaGlzaWxpY29uLmNvbT47IFByYXR5dXNoIEFu
+YW5kDQo+IDxwcmF0eXVzaC5hbmFuZEBnbWFpbC5jb20+OyBIb3UgWmhpcWlhbmcgPFpoaXFpYW5n
+LkhvdUBueHAuY29tPjsNCj4gTGludXMgV2FsbGVpaiA8bGludXMud2FsbGVpakBsaW5hcm8ub3Jn
+PjsgVG9hbiBMZQ0KPiA8dG9hbkBvcy5hbXBlcmVjb21wdXRpbmcuY29tPjsgVGFuLCBMZXkgRm9v
+bg0KPiA8bGV5LmZvb24udGFuQGludGVsLmNvbT47IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2st
+Y2hpcHMuY29tPjsgSGVpa28NCj4gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT47IGxpbnV4LWFt
+bG9naWNAbGlzdHMuaW5mcmFkZWFkLm9yZzsgbGludXgtYXJtLQ0KPiBrZXJuZWxAYXhpcy5jb207
+IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZzsgbGludXgtDQo+IG9tYXBAdmdl
+ci5rZXJuZWwub3JnOyBsaW51eC1wY2lAdmdlci5rZXJuZWwub3JnOyBsaW51eC0NCj4gcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZzsgbGludXgtc2Ftc3VuZy1zb2NAdmdlci5rZXJuZWwub3Jn
+OyBsaW51eC0NCj4gdGVncmFAdmdlci5rZXJuZWwub3JnOyByZmlAbGlzdHMucm9ja2V0Ym9hcmRz
+Lm9yZw0KPiBTdWJqZWN0OiBbUEFUQ0ggMDQvMTBdIFBDSTogYWx0ZXJhOiBSZW1vdmUgZGV2X2Vy
+cigpIHdoZW4gaGFuZGluZyBhbiBlcnJvcg0KPiBmcm9tIHBsYXRmb3JtX2dldF9pcnEoKQ0KPiAN
+Cj4gVGhlcmUgaXMgbm8gbmVlZCB0byBjYWxsIHRoZSBkZXZfZXJyKCkgZnVuY3Rpb24gZGlyZWN0
+bHkgdG8gcHJpbnQgYSBjdXN0b20NCj4gbWVzc2FnZSB3aGVuIGhhbmRsaW5nIGFuIGVycm9yIGZy
+b20gZWl0aGVyIHRoZSBwbGF0Zm9ybV9nZXRfaXJxKCkgb3INCj4gcGxhdGZvcm1fZ2V0X2lycV9i
+eW5hbWUoKSBmdW5jdGlvbnMgYXMgYm90aCBhcmUgZ29pbmcgdG8gZGlzcGxheSBhbg0KPiBhcHBy
+b3ByaWF0ZSBlcnJvciBtZXNzYWdlIGluIGNhc2Ugb2YgYSBmYWlsdXJlLg0KPiANCj4gVGhpcyBj
+aGFuZ2UgaXMgYXMgcGVyIHN1Z2dlc3Rpb24gZnJvbSBDb2NjaW5lbGxlOg0KPiANCj4gICBkcml2
+ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtYWx0ZXJhLmM6NzE3OjItOTogbGluZSA3MTcgaXMgcmVk
+dW5kYW50DQo+ICAgYmVjYXVzZSBwbGF0Zm9ybV9nZXRfaXJxKCkgYWxyZWFkeSBwcmludHMgYW4g
+ZXJyb3INCj4gDQo+IFN1Z2dlc3RlZC1ieTogQmpvcm4gSGVsZ2FhcyA8YmhlbGdhYXNAZ29vZ2xl
+LmNvbT4NCj4gU2lnbmVkLW9mZi1ieTogS3J6eXN6dG9mIFdpbGN6ecWEc2tpIDxrd0BsaW51eC5j
+b20+DQo+IC0tLQ0KDQpSZXZpZXdlZC1ieTogTGV5IEZvb24gVGFuIDxsZXkuZm9vbi50YW5AaW50
+ZWwuY29tPg0K
