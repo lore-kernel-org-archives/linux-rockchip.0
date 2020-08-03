@@ -1,473 +1,86 @@
-From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
-Subject: Re: [PATCH v2 2/2] rockchip: rk3328: Add support for FriendlyARM
- NanoPi R2S
-Date: Sun, 2 Aug 2020 23:01:55 +0100
-Message-ID: <d0053630-1ff3-9771-eb7d-7aaf0a27dca2@arm.com>
-References: <20200730232054.286381-1-mail@david-bauer.net>
- <20200730232054.286381-2-mail@david-bauer.net>
+From: Bjorn Helgaas <helgaas-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Subject: Re: [PATCH 00/10] Remove surplus dev_err() when handing an error
+ from platform_get_irq()
+Date: Sun, 2 Aug 2020 21:01:51 -0500
+Message-ID: <20200803020151.GA291575@bjorn-Precision-5520>
+References: <20200802142601.1635926-1-kw@linux.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200730232054.286381-2-mail-YgwEh8z+B+JYon68uE86FQ@public.gmane.org>
-Content-Language: en-GB
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: David Bauer <mail-YgwEh8z+B+JYon68uE86FQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+Content-Disposition: inline
+In-Reply-To: <20200802142601.1635926-1-kw-vYTEC60ixJUAvxtiuMwx3w@public.gmane.org>
+Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw-vYTEC60ixJUAvxtiuMwx3w@public.gmane.org>
+Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Kukjin Kim <kgene-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Krzysztof Kozlowski <krzk-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Richard Zhu <hongxing.zhu-3arQi8VN3Tc@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Shawn Guo <shawnguo-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>, Sascha Hauer <s.hauer-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Murali Karicheri <m-karicheri2-l0cyMroinI0@public.gmane.org>, Yue Wang <yue.wang-jh/zon5tOX5BDgjK7y7TUQ@public.gmane.org>, Kevin Hilman <khilman-rdvid1DuHRBWk0Htik3J/w@public.gmane.org>, Thomas Petazzoni <thomas.petazzoni-LDxbnhwyfcJBDgjK7y7TUQ@public.gmane.org>, Jesper Nilsson <jesper.nilsson-VrBV9hrLPhE@public.gmane.org>, Xiaowei Song <songxiaowei-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Binghui Wang <wangbinghui-C8/M+/jPZTeaMJb+Lgu22Q@public.gmane.org>, Pratyush Anand <pratyush.anand-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Hou Zhiqiang <Zhiqiang.Hou-3arQi8VN3Tc@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Toan Le <toan-shex6MNQR2J/SfDzf78azzKzEDxYleXD@public.gmane.org>, Ley
 List-Id: linux-rockchip.vger.kernel.org
 
-On 2020-07-31 00:20, David Bauer wrote:
-> This adds support for the NanoPi R2S from FriendlyARM.
+On Sun, Aug 02, 2020 at 02:25:52PM +0000, Krzysztof Wilczyński wrote:
+> At the moment a lot of error handling code would print a duplicated
+> error message should either the platform_get_irq() or
+> platform_get_irq_byname() function fails to obtain an IRQ for a device.
 > 
-> Rockchip RK3328 SoC
-> 1GB DDR4 RAM
-> Gigabit Ethernet (WAN)
-> Gigabit Ethernet (USB3) (LAN)
-> USB 2.0 Host Port
-> MicroSD slot
-> Reset button
-> WAN - LAN - SYS LED
-
-Neat! Mine turned up last week (far earlier than expected, yay!), and I 
-was going to do some DT hacking, but here it is already :)
-
-> Signed-off-by: David Bauer <mail-YgwEh8z+B+JYon68uE86FQ@public.gmane.org>
-> ---
+> There is no need to call the dev_err() function directly to print
+> a custom message when handling an error from either of these functions
+> as both are going to display an appropriate error message in case of
+> a failure.
 > 
-> Changes in v2:
->   - Use aligned memory for ethernet
->   - Fix GPO for sdio regulator
+> This series aims to remove surplus call to dev_err() when handing an
+> error originating from either platform_get_irq() or
+> platform_get_irq_byname() function as per suggestion from Coccinelle.
 > 
->   arch/arm64/boot/dts/rockchip/Makefile         |   1 +
->   .../boot/dts/rockchip/rk3328-nanopi-r2s.dts   | 334 ++++++++++++++++++
->   2 files changed, 335 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+> Related commits are commit 7723f4c5ecdb ("driver core: platform: Add an
+> error message to platform_get_irq*()") and commit 98051ba2b28b
+> ("coccinelle: Add script to check for platform_get_irq() excessive
+> prints").
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> index b87b1f773083..20055c51e150 100644
-> --- a/arch/arm64/boot/dts/rockchip/Makefile
-> +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> @@ -5,6 +5,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
-> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-nanopi-r2s.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-rock64.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-roc-cc.dtb
->   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
-> new file mode 100644
-> index 000000000000..9fd148423b9d
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
-> @@ -0,0 +1,334 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2020 David Bauer <mail-YgwEh8z+B+JYon68uE86FQ@public.gmane.org>
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include <dt-bindings/input/input.h>
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include "rk3328.dtsi"
-> +
-> +/ {
-> +	model = "FriendlyARM NanoPi R2S";
-
-Same comment as for the binding.
-
-> +	compatible = "friendlyarm,nanopi-r2s", "rockchip,rk3328";
-> +
-> +	chosen {
-> +		stdout-path = "serial2:1500000n8";
-> +	};
-> +
-> +	gmac_clkin: external-gmac-clock {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <125000000>;
-> +		clock-output-names = "gmac_clkin";
-> +		#clock-cells = <0>;
-> +	};
-> +
-> +	vcc_sd: sdmmc-regulator {
-> +		compatible = "regulator-fixed";
-> +		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&sdmmc0m1_gpio>;
-> +		regulator-name = "vcc_sd";
-> +		regulator-min-microvolt = <3300000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		vin-supply = <&vcc_io>;
-> +	};
-> +
-> +	vcc_sdio: sdmmcio-regulator {
-
-This is "vcc_io_sd" per the schematic.
-
-> +		compatible = "regulator-gpio";
-> +		gpios = <&gpio1 RK_PD4 GPIO_ACTIVE_HIGH>;
-> +		enable-active-high;
-> +		states = <1800000 0x1
-> +			  3300000 0x0>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&sdio_vcc_pin>;
-> +		regulator-always-on;
-> +		regulator-min-microvolt = <1800000>;
-> +		regulator-max-microvolt = <3300000>;
-> +		regulator-name = "vcc_sdio";
-> +		regulator-settling-time-us = <5000>;
-> +		regulator-type = "voltage";
-> +		vin-supply = <&vcc_io>;
-
-Strictly the supply here is vdd_5v - vcc_io is only driving the bias 
-circuitry for the regulator adjustment.
-
-> +	};
-> +
-> +	vcc_sys: vcc-sys {
-
-This is "vdd_5v".
-
-> +		compatible = "regulator-fixed";
-> +		regulator-name = "vcc_sys";
-> +		regulator-always-on;
-> +		regulator-boot-on;
-> +		regulator-min-microvolt = <5000000>;
-> +		regulator-max-microvolt = <5000000>;
-> +	};
-> +
-> +	leds {
-> +		compatible = "gpio-leds";
-> +
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&led_pins>;
-> +
-> +		sys {
-> +			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-> +			label = "nanopi-r2s:red:sys";
-> +		};
-> +
-> +		lan {
-> +			gpios = <&gpio2 RK_PB7 GPIO_ACTIVE_HIGH>;
-
-This seems to match the schematic, however in practice the GPIO seems to 
-have a mind of its own and not respond to the LED settings - are we 
-missing something with the pinctrl perhaps?
-
-> +			label = "nanopi-r2s:green:lan";
-> +		};
-> +
-> +		wan {
-> +			gpios = <&gpio2 RK_PC2 GPIO_ACTIVE_HIGH>;
-> +			label = "nanopi-r2s:green:wan";
-> +		};
-> +	};
-> +
-> +	gpio_keys {
-> +		compatible = "gpio-keys-polled";
-
-Does this need to be polled? I would have thought regular 
-interrupt-based gpio-keys should work, to avoid the overhead of polling 
-for something (relatively) incredibly rare, but perhaps I'm wrong :/
-
-> +		poll-interval = <100>;
-> +
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&button_pins>;
-> +
-> +		reset {
-> +			label = "Reset Button";
-> +			gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_LOW>;
-> +			linux,code = <KEY_RESTART>;
-> +			debounce-interval = <50>;
-> +		};
-> +	};
-> +};
-> +
-> +&cpu0 {
-> +	cpu-supply = <&vdd_arm>;
-> +};
-> +
-> +&cpu1 {
-> +	cpu-supply = <&vdd_arm>;
-> +};
-> +
-> +&cpu2 {
-> +	cpu-supply = <&vdd_arm>;
-> +};
-> +
-> +&cpu3 {
-> +	cpu-supply = <&vdd_arm>;
-> +};
-> +
-> +&gmac2io {
-> +	assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
-> +	assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
-> +	clock_in_out = "input";
-> +	phy-supply = <&vcc_io>;
-> +	phy-handle = <&rtl8211e>;
-> +	phy-mode = "rgmii";
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&rgmiim1_pins>;
-> +	snps,aal;
-
-Is this needed over and above the txpbl fix present in the main DTSI? I 
-forget exactly where all those discussions ended up, but if it matters 
-here then it probably matters for all RK3328 boards.
-
-> +	snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
-> +	snps,reset-active-low;
-> +	snps,reset-delays-us = <0 10000 50000>;
-
-Since you're describing the phy already, you can convert these to 
-generic reset specifiers on the phy node itself (shame we don't have an 
-interrupt wired up, oh well...)
-
-> +	tx_delay = <0x24>;
-> +	rx_delay = <0x18>;
-> +	status = "okay";
-> +
-> +	mdio {
-> +		compatible = "snps,dwmac-mdio";
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +
-> +		rtl8211e: ethernet-phy@0 {
-> +			reg = <0>;
-
-Is that right? The schematic says the phy is strapped for address 1 
-(although 0 probably does manage to work since it should be interpreted 
-as a broadcast address).
-
-> +		};
-> +	};
-> +};
-> +
-> +&i2c1 {
-> +	status = "okay";
-> +
-> +	rk805: rk805@18 {
-> +		compatible = "rockchip,rk805";
-> +		reg = <0x18>;
-> +		interrupt-parent = <&gpio2>;
-> +		interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
-
-The schematic says GPIO1_D0 for this.
-
-> +		#clock-cells = <1>;
-> +		clock-output-names = "xin32k", "rk805-clkout2";
-> +		gpio-controller;
-> +		#gpio-cells = <2>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&pmic_int_l>;
-> +		rockchip,system-power-controller;
-> +		wakeup-source;
-> +
-> +		vcc1-supply = <&vcc_sys>;
-> +		vcc2-supply = <&vcc_sys>;
-> +		vcc3-supply = <&vcc_sys>;
-> +		vcc4-supply = <&vcc_sys>;
-> +		vcc5-supply = <&vcc_io>;
-> +		vcc6-supply = <&vcc_sys>;
-> +
-> +		regulators {
-> +			vdd_logic: DCDC_REG1 {
-
-This is "vdd_log".
-
-> +				regulator-name = "vdd_logic";
-> +				regulator-min-microvolt = <712500>;
-> +				regulator-max-microvolt = <1450000>;
-> +				regulator-ramp-delay = <12500>;
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1000000>;
-> +				};
-> +			};
-> +
-> +			vdd_arm: DCDC_REG2 {
-> +				regulator-name = "vdd_arm";
-> +				regulator-min-microvolt = <712500>;
-> +				regulator-max-microvolt = <1450000>;
-> +				regulator-ramp-delay = <12500>;
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <950000>;
-> +				};
-> +			};
-> +
-> +			vcc_ddr: DCDC_REG3 {
-> +				regulator-name = "vcc_ddr";
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +				};
-> +			};
-> +
-> +			vcc_io: DCDC_REG4 {
-
-This is "vcc_io_33".
-
-> +				regulator-name = "vcc_io";
-> +				regulator-min-microvolt = <3300000>;
-> +				regulator-max-microvolt = <3300000>;
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <3300000>;
-> +				};
-> +			};
-> +
-> +			vcc_18: LDO_REG1 {
-> +				regulator-name = "vcc_18";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1800000>;
-> +				};
-> +			};
-> +
-> +			vcc18_emmc: LDO_REG2 {
-> +				regulator-name = "vcc18_emmc";
-> +				regulator-min-microvolt = <1800000>;
-> +				regulator-max-microvolt = <1800000>;
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1800000>;
-> +				};
-> +			};
-> +
-> +			vdd_10: LDO_REG3 {
-> +				regulator-name = "vdd_10";
-> +				regulator-min-microvolt = <1000000>;
-> +				regulator-max-microvolt = <1000000>;
-> +				regulator-always-on;
-> +				regulator-boot-on;
-> +				regulator-state-mem {
-> +					regulator-on-in-suspend;
-> +					regulator-suspend-microvolt = <1000000>;
-> +				};
-> +			};
-> +		};
-> +	};
-> +};
-> +
-> +&io_domains {
-> +	status = "okay";
-> +
-> +	vccio1-supply = <&vcc_io>;
-> +	vccio2-supply = <&vcc18_emmc>;
-> +	vccio3-supply = <&vcc_sdio>;
-> +	vccio4-supply = <&vcc_18>;
-> +	vccio5-supply = <&vcc_io>;
-> +	vccio6-supply = <&vcc_io>;
-> +	pmuio-supply = <&vcc_io>;
-> +};
-> +
-> +&pinctrl {
-> +	leds {
-> +		led_pins: led-pins {
-> +			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>,
-> +							<2 RK_PB7 RK_FUNC_GPIO &pcfg_pull_none>,
-> +							<2 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	button {
-> +		button_pins: button-pins {
-> +			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +
-> +	pmic {
-> +		pmic_int_l: pmic-int-l {
-> +			rockchip,pins = <2 RK_PA6 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
-> +
-> +	sd {
-> +		sdio_vcc_pin: sdio-vcc-pin {
-> +			rockchip,pins = <1 RK_PD4 RK_FUNC_GPIO &pcfg_pull_up>;
-> +		};
-> +	};
-> +};
-> +
-
-It shouldn't hurt to enable PWM2 from the outset to make mucking about 
-with the fan easier.
-
-> +&sdmmc {
-> +	bus-width = <4>;
-> +	cap-mmc-highspeed;
-> +	cap-sd-highspeed;
-
-How about UHS modes, since we have the requisite I/O voltage support?
-
-> +	disable-wp;
-
-I believe this property is only meant for full-size MMC/SD sockets where 
-write-protect functionality is expected but somehow broken. For micro-SD 
-sockets the SoC pin should be hard-wired to write-enable anyway and thus 
-it shouldn't need to be stated.
-
-> +	max-frequency = <150000000>;
-
-This is in the DTSI already.
-
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
-> +	vmmc-supply = <&vcc_sd>;
-> +	vqmmc-supply = <&vcc_sdio>;
-> +	status = "okay";
-> +};
-> +
-> +&tsadc {
-> +	rockchip,hw-tshut-mode = <0>;
-> +	rockchip,hw-tshut-polarity = <0>;
-> +	status = "okay";
-> +};
-> +
-> +&uart2 {
-> +	status = "okay";
-> +};
-> +
-> +&u2phy {
-> +	status = "okay";
-> +
-> +	u2phy_host: host-port {
-
-Just reference this by label directly, rather than as a child node here 
-(especially since redefining the existing label is a bit confusing).
-
-> +		status = "okay";
-> +	};
-> +};
-
-No reason not to enable the OTG port either - I've hacked that in with 
-g_serial for a cheeky console while powering the board from my laptop 
-and it works fine.
-
-Cheers,
-Robin.
-
-> +
-> +&usb_host0_ehci {
-> +	status = "okay";
-> +};
-> +
-> +&usb_host0_ohci {
-> +	status = "okay";
-> +};
+> Krzysztof Wilczyński (10):
+>   PCI: dwc: Remove dev_err() when handing an error from
+>     platform_get_irq()
+>   PCI: mobiveil: Remove dev_err() when handing an error from
+>     platform_get_irq()
+>   PCI: tegra: Remove dev_err() when handing an error from
+>     platform_get_irq()
+>   PCI: altera: Remove dev_err() when handing an error from
+>     platform_get_irq()
+>   PCI: host-generic: Remove dev_err() when handing an error from
+>     platform_get_irq()
+>   PCI: v3-semi: Remove dev_err() when handing an error from
+>     platform_get_irq()
+>   PCI: altera-msi: Remove dev_err() when handing an error from
+>     platform_get_irq()
+>   PCI: xgene-msi: Remove dev_err() when handing an error from
+>     platform_get_irq()
+>   PCI: rockchip: Remove dev_err() when handing an error from
+>     platform_get_irq()
+>   PCI: xilinx-nwl: Remove dev_err() when handing an error from
+>     platform_get_irq()
 > 
+>  drivers/pci/controller/dwc/pci-dra7xx.c              |  8 ++------
+>  drivers/pci/controller/dwc/pci-exynos.c              |  9 +++------
+>  drivers/pci/controller/dwc/pci-imx6.c                |  4 +---
+>  drivers/pci/controller/dwc/pci-keystone.c            |  4 +---
+>  drivers/pci/controller/dwc/pci-meson.c               |  4 +---
+>  drivers/pci/controller/dwc/pcie-armada8k.c           |  4 +---
+>  drivers/pci/controller/dwc/pcie-artpec6.c            |  4 +---
+>  drivers/pci/controller/dwc/pcie-histb.c              |  4 +---
+>  drivers/pci/controller/dwc/pcie-kirin.c              |  5 +----
+>  drivers/pci/controller/dwc/pcie-spear13xx.c          |  5 ++---
+>  drivers/pci/controller/dwc/pcie-tegra194.c           |  4 +---
+>  .../pci/controller/mobiveil/pcie-layerscape-gen4.c   |  5 ++---
+>  drivers/pci/controller/mobiveil/pcie-mobiveil-host.c |  4 +---
+>  drivers/pci/controller/pci-tegra.c                   |  8 ++------
+>  drivers/pci/controller/pci-v3-semi.c                 |  5 ++---
+>  drivers/pci/controller/pci-xgene-msi.c               |  2 --
+>  drivers/pci/controller/pcie-altera-msi.c             |  1 -
+>  drivers/pci/controller/pcie-altera.c                 |  4 +---
+>  drivers/pci/controller/pcie-rockchip-host.c          | 12 +++---------
+>  drivers/pci/controller/pcie-tango.c                  |  4 +---
+>  drivers/pci/controller/pcie-xilinx-nwl.c             | 11 ++---------
+>  21 files changed, 29 insertions(+), 82 deletions(-)
+
+I squashed these together and applied them to pci/irq-error for v5.9,
+thanks!
+
+The cover letter claims there should be 10 patches, but I only got 9.
+Just FYI.
