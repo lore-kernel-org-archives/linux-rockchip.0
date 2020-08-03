@@ -1,223 +1,488 @@
-From: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH] media: staging: rkisp1: improve documentation in file
- rkisp1-config.h
-Date: Mon, 3 Aug 2020 17:11:14 -0300
-Message-ID: <6ee6bb65-b265-5532-7e1c-12c6aa27365c@collabora.com>
-References: <20200707180741.23816-1-dafna.hirschfeld@collabora.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: add rk3318 A95X Z2 board
+Date: Mon, 3 Aug 2020 22:41:40 +0100
+Message-ID: <6d028007-4360-e552-3707-3dd2712f2501@arm.com>
+References: <20200718105343.5152-1-jbx6244@gmail.com>
+ <20200718105343.5152-4-jbx6244@gmail.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Return-path: <linux-media-owner@vger.kernel.org>
-In-Reply-To: <20200707180741.23816-1-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-Sender: linux-media-owner@vger.kernel.org
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, linux-media@vger.kernel.org, laurent.pinchart@ideasonboard.com
-Cc: ezequiel@collabora.com, hverkuil@xs4all.nl, kernel@collabora.com, dafna3@gmail.com, sakari.ailus@linux.intel.com, linux-rockchip@lists.infradead.org, mchehab@kernel.org, tfiga@chromium.org
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200718105343.5152-4-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Content-Language: en-GB
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Dafna,
-
-Thanks for this patch, maybe this patch and:
-"media: staging: rkisp1: comment each define (RKISP1_CIF_ISP_MODULE_*), explaining what the abbreviation means"
-https://patchwork.linuxtv.org/project/linux-media/patch/20200707173413.13977-1-dafna.hirschfeld@collabora.com/
-
-Could be squashed.
-
-On 7/7/20 3:07 PM, Dafna Hirschfeld wrote:
-> There is some missing documentation of structs and
-> fields in rkisp1-config.h. This patch improves the
-> documentation.
+On 2020-07-18 11:53, Johan Jonker wrote:
+> The rk3318 A95X Z2 boards are sold as TV box.
+> No further documentation is given, but from the dts files
+> extracted it seems that the rk3318 processor is simulair
+> to the rk3328. This dts file contains only the basic nodes
+> that have support in the mainline kernel.
 > 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> Features:
+> 
+> CPU: RK3318 Quad-Core Cortex-A53
+> GPU: Mali-450
+> RAM: 2/4GB DDR3
+> ROM: EMMC 16/32/64GB
+> HDMI: HDMI 2.0a for 4k@60Hz
+> Ethernet: 10/100M standard RJ-45
+> WiFi: 2.4G+5G WIFI, 802.11 b/g/n
+> Bluetooth: 4.0
+> 1 x USB 3.0
+> 1 x USB 2.0
+> 1 x Micro SD card slot
+> 1 x SPDIF
+> 1 x AV
+> 1 x DC IN
+> 
+> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
 > ---
->  .../staging/media/rkisp1/uapi/rkisp1-config.h | 87 ++++++++++++++++---
->  1 file changed, 73 insertions(+), 14 deletions(-)
+>   arch/arm64/boot/dts/rockchip/Makefile           |   1 +
+>   arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts | 393 ++++++++++++++++++++++++
+>   2 files changed, 394 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
 > 
-> diff --git a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-> index b2923b2833d3..7983498bda24 100644
-> --- a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-> +++ b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-> @@ -102,6 +102,7 @@
->   */
->  #define RKISP1_CIF_ISP_LSC_GRAD_TBL_SIZE           8
->  #define RKISP1_CIF_ISP_LSC_SIZE_TBL_SIZE           8
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index b87b1f773..aa508bc4a 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -2,6 +2,7 @@
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
+>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+> new file mode 100644
+> index 000000000..413418ea1
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+> @@ -0,0 +1,393 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 > +
->  /*
->   * The following matches the tuning process,
->   * not the max capabilities of the chip.
-> @@ -176,6 +177,17 @@ enum rkisp1_cif_isp_exp_meas_mode {
->  
->  /*---------- PART1: Input Parameters ------------*/
->  
-> +/**
-> + * struct rkisp1_cif_isp_window -  measurement window.
-> + *
-> + * Measurements are calculated per window inside the frame.
-> + * This struct represents a window for a measurement.
-> + *
-> + * @h_offs: the horizontal offset of the window from the left of the frame in pixels.
-> + * @v_offs: the vertical offset of the window from the top of the frame in pixels.
-> + * @h_size: the horizontal size of the window in pixels
-> + * @v_size: the vertical size of the window in pixels.
-> + */
->  struct rkisp1_cif_isp_window {
->  	__u16 h_offs;
->  	__u16 v_offs;
-> @@ -265,10 +277,29 @@ struct rkisp1_cif_isp_dpcc_config {
->  	__u32 rnd_offs;
->  } __packed;
->  
-> +/**
-> + * struct rkisp1_cif_isp_gamma_corr_curve - gamma curve point definition y-axis (output).
-> + *
-> + * The reset values define a linear curve which has the same effect as bypass. Reset values are:
-> + * gamma_y[0] = 0x0000, gamma_y[1] = 0x0100, ... gamma_y[15] = 0x0f00, gamma_y[16] = 0xfff
-> + *
-> + * @gamma_y: the values for the y-axis of gamma curve points. Each value is 12 bit.
-> + */
->  struct rkisp1_cif_isp_gamma_corr_curve {
->  	__u16 gamma_y[RKISP1_CIF_ISP_DEGAMMA_CURVE_SIZE];
->  } __packed;
->  
-> +/**
-> + * struct rkisp1_cif_isp_gamma_curve_x_axis_pnts - De-Gamma Curve definition x increments
-> + *		(sampling points). gamma_dx0 is for the lower samples (1-8), gamma_dx1 is for the
-> + *		higher samples (9-16). The reset values for both fields is 0x44444444. This means
-> + *		that each sample is 4 units away from the previous one on the x-axis.
-> + *
-> + * @gamma_dx0: gamma curve sample points definitions. Bits 0:2 for sample 1. Bit 3 unused.
-> + *		Bits 4:6 for sample 2. bit 7 unused ... Bits 28:30 for sample 8. Bit 31 unused
-> + * @gamma_dx1: gamma curve sample points definitions. Bits 0:2 for sample 9. Bit 3 unused.
-> + *		Bits 4:6 for sample 10. bit 7 unused ... Bits 28:30 for sample 16. Bit 31 unused
-> + */
->  struct rkisp1_cif_isp_gamma_curve_x_axis_pnts {
->  	__u32 gamma_dx0;
->  	__u32 gamma_dx1;
-> @@ -277,8 +308,10 @@ struct rkisp1_cif_isp_gamma_curve_x_axis_pnts {
->  /**
->   * struct rkisp1_cif_isp_sdg_config - Configuration used by sensor degamma
->   *
-> - * @curve_x: gamma curve point definition axis for x
-> - * @xa_pnts: x increments
-> + * @curve_r: gamma curve point definition axis for red
-> + * @curve_g: gamma curve point definition axis for green
-> + * @curve_b: gamma curve point definition axis for blue
-> + * @xa_pnts: x axis increments
->   */
->  struct rkisp1_cif_isp_sdg_config {
->  	struct rkisp1_cif_isp_gamma_corr_curve curve_r;
-> @@ -310,6 +343,11 @@ struct rkisp1_cif_isp_lsc_config {
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +#include "rk3328.dtsi"
+> +
+> +/ {
+> +	model = "A95X Z2";
+> +	compatible = "zkmagic,a95x-z2", "rockchip,rk3318";
+> +
+> +	chosen {
+> +		stdout-path = "serial2:1500000n8";
+> +	};
+> +
+> +	adc-keys {
+> +		compatible = "adc-keys";
+> +		io-channels = <&saradc 0>;
+> +		io-channel-names = "buttons";
+> +		keyup-threshold-microvolt = <1800000>;
+> +		poll-interval = <100>;
+> +
+> +		vol-up-key {
+> +			label = "volume up";
+> +			linux,code = <KEY_VOLUMEUP>;
 
-Could you also document this rkisp1_cif_isp_lsc_config?
+Really? If as usual this is actually the recovery button hidden inside 
+the box, it's somewhat questionable whether it's worth describing in DT 
+at all. At the very least it should probably be presented as something 
+more realistic than half a volume control.
 
-And we should also remove all the "REF_01" mentions in this code.
+> +			press-threshold-microvolt = <17000>;
+> +		};
+> +	};
+> +
+> +	ir-receiver {
+> +		compatible = "gpio-ir-receiver";
+> +		gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
+> +		pinctrl-0 = <&ir_int>;
+> +		pinctrl-names = "default";
+> +	};
+> +
+> +	leds {
+> +		compatible = "gpio-leds";
+> +		pinctrl-0 = <&cyx_led_pin>;
+> +		pinctrl-names = "default";
+> +
+> +		cyx_led: led-0 {
 
->  /**
->   * struct rkisp1_cif_isp_ie_config - Configuration used by image effects
->   *
-> + * @effect: values from 'enum v4l2_colorfx'. Possible values are: V4L2_COLORFX_SEPIA,
-> + *		V4L2_COLORFX_SET_CBCR, V4L2_COLORFX_AQUA, V4L2_COLORFX_EMBOSS,
-> + *		V4L2_COLORFX_SKETCH,   V4L2_COLORFX_BW,   V4L2_COLORFX_NEGATIVE
-> + * @color_sel: bits 0:2 - colors bitmask (001 - blue, 010 - green, 100 - red).
-> + *		bits 8:15 - Threshold value of the RGB colors for the color selection effect.
->   * @eff_mat_1: 3x3 Matrix Coefficients for Emboss Effect 1
->   * @eff_mat_2: 3x3 Matrix Coefficients for Emboss Effect 2
->   * @eff_mat_3: 3x3 Matrix Coefficients for Emboss 3/Sketch 1
-> @@ -353,8 +391,8 @@ struct rkisp1_cif_isp_cproc_config {
->  /**
->   * struct rkisp1_cif_isp_awb_meas_config - Configuration used by auto white balance
->   *
-> + * @awb_mode: the awb meas mode. From enum rkisp1_cif_isp_awb_mode_type.
->   * @awb_wnd: white balance measurement window (in pixels)
-> - *	     (from enum rkisp1_cif_isp_awb_mode_type)
->   * @max_y: only pixels values < max_y contribute to awb measurement, set to 0
->   *	   to disable this feature
->   * @min_y: only pixels values > min_y contribute to awb measurement
-> @@ -366,6 +404,7 @@ struct rkisp1_cif_isp_cproc_config {
->   *	    (ucFrames=0 means 1 Frame)
->   * @awb_ref_cr: reference Cr value for AWB regulation, target for AWB
->   * @awb_ref_cb: reference Cb value for AWB regulation, target for AWB
-> + * @enable_ymax_cmp: enable Y_MAX compare (Not valid in RGB measurement mode.)
->   */
->  struct rkisp1_cif_isp_awb_meas_config {
->  	/*
-> @@ -386,7 +425,15 @@ struct rkisp1_cif_isp_awb_meas_config {
->  /**
->   * struct rkisp1_cif_isp_awb_gain_config - Configuration used by auto white balance gain
->   *
-> - * out_data_x = ( AWB_GEAIN_X * in_data + 128) >> 8
-> + * All fields in this struct are 10 bit, where:
-> + * 0x100h = 1, unsigned integer value, range 0 to 4 with 8 bit fractional part.
-> + *
-> + * out_data_x = ( AWB_GAIN_X * in_data + 128) >> 8
-> + *
-> + * @gain_red: gain value for red component.
-> + * @gain_green_r: gain value for green component in red line.
-> + * @gain_blue: gain value for blue component.
-> + * @gain_green_b: gain value for green component in blue line.
->   */
->  struct rkisp1_cif_isp_awb_gain_config {
->  	__u16 gain_red;
-> @@ -398,12 +445,24 @@ struct rkisp1_cif_isp_awb_gain_config {
->  /**
->   * struct rkisp1_cif_isp_flt_config - Configuration used by ISP filtering
->   *
-> + * All 4 threshold fields (thresh_*) are 10 bits.
-> + * All 6 factor fields (fac_*) are 6 bits.
-> + *
->   * @mode: ISP_FILT_MODE register fields (from enum rkisp1_cif_isp_flt_mode)
-> - * @grn_stage1: ISP_FILT_MODE register fields
-> - * @chr_h_mode: ISP_FILT_MODE register fields
-> - * @chr_v_mode: ISP_FILT_MODE register fields
-> + * @grn_stage1: Green filter stage 1 select (range 0x0...0x8)
-> + * @chr_h_mode: Chroma filter horizontal mode
-> + * @chr_v_mode: Chroma filter vertical mode
-> + * @thresh_bl0: If thresh_bl1 < sum_grad < thresh_bl0 then fac_bl0 is selected (blurring th)
-> + * @thresh_bl1: If sum_grad < thresh_bl1 then fac_bl1 is selected (blurring th)
-> + * @thresh_sh0: If thresh_sh0 < sum_grad < thresh_sh1 then thresh_sh0 is selected (sharpening th)
-> + * @thresh_sh1: If thresh_sh1 < sum_grad then thresh_sh1 is selected (sharpening th)
-> + * @lum_weight: Parameters for luminance weight function.
-> + * @fac_sh1: filter factor for sharp1 level
-> + * @fac_sh0: filter factor for sharp0 level
-> + * @fac_mid: filter factor for mid level and for static filter mode
-> + * @fac_bl0: filter factor for blur 0 level
-> + * @fac_bl1: filter factor for blur 1 level (max blur)
->   *
-> - * refer to REF_01 for details.
->   */
->  
+What needs a phandle to this node to warrant a label?
 
-No need for this new line
+> +			default-state = "on";
+> +			gpios = <&gpio2 RK_PC7 GPIO_ACTIVE_LOW>;
+> +			label = "CYX_LED";
+> +		};
+> +	};
+> +
+> +	sdio_pwrseq: sdio-pwrseq {
+> +		compatible = "mmc-pwrseq-simple";
+> +		pinctrl-0 = <&wifi_enable_h>;
+> +		pinctrl-names = "default";
+> +		reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+> +	};
+> +
+> +	spdif-sound {
+> +		compatible = "simple-audio-card";
+> +		simple-audio-card,name = "spdif";
+> +
+> +		simple-audio-card,cpu {
+> +			sound-dai = <&spdif>;
+> +		};
+> +
+> +		simple-audio-card,codec {
+> +			sound-dai = <&spdif_out>;
+> +		};
+> +	};
+> +
+> +	spdif_out: spdif-out {
+> +		compatible = "linux,spdif-dit";
+> +		#sound-dai-cells = <0>;
+> +	};
+> +
+> +	/* Power tree */
+> +	regulators {
 
-Regards,
-Helen
+Don't create fake "buses" for regulators, especially if they don't even 
+contain most of the regulators anyway.
 
->  struct rkisp1_cif_isp_flt_config {
-> @@ -799,12 +858,12 @@ struct rkisp1_cif_isp_hist_stat {
->  } __packed;
->  
->  /**
-> - * struct rkisp1_stat_buffer - Rockchip ISP1 Statistics Data
-> + * struct rkisp1_cif_isp_stat - Rockchip ISP1 Statistics Data
->   *
-> - * @rkisp1_cif_isp_awb_stat: statistics data for automatic white balance
-> - * @rkisp1_cif_isp_ae_stat: statistics data for auto exposure
-> - * @rkisp1_cif_isp_af_stat: statistics data for auto focus
-> - * @rkisp1_cif_isp_hist_stat: statistics histogram data
-> + * @awb: statistics data for automatic white balance
-> + * @ae: statistics data for auto exposure
-> + * @af: statistics data for auto focus
-> + * @hist: statistics histogram data
->   */
->  struct rkisp1_cif_isp_stat {
->  	struct rkisp1_cif_isp_awb_stat awb;
-> @@ -816,7 +875,7 @@ struct rkisp1_cif_isp_stat {
->  /**
->   * struct rkisp1_stat_buffer - Rockchip ISP1 Statistics Meta Data
->   *
-> - * @meas_type: measurement types (RKISP1_CIF_ISP_STAT_ definitions)
-> + * @meas_type: measurement types (RKISP1_CIF_ISP_STAT_* definitions)
->   * @frame_id: frame ID for sync
->   * @params: statistics data
->   */
+> +		compatible = "simple-mfd";
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		vccio_1v8_reg: regulator@0 {
+> +			compatible = "regulator-fixed";
+> +			reg = <0>;
+> +			regulator-name = "vccio_1v8";
+> +			regulator-min-microvolt = <1800000>;
+> +			regulator-max-microvolt = <1800000>;
+> +			regulator-always-on;
+> +		};
+> +
+> +		vccio_3v3_reg: regulator@1 {
+> +			compatible = "regulator-fixed";
+> +			reg = <1>;
+> +			regulator-name = "vccio_3v3";
+> +			regulator-min-microvolt = <3300000>;
+> +			regulator-max-microvolt = <3300000>;
+> +			regulator-always-on;
+> +		};
+> +	};
+> +
+> +	vcc_otg_vbus: otg-vbus-regulator {
+> +		compatible = "regulator-fixed";
+> +		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
+> +		pinctrl-0 = <&otg_vbus_drv>;
+> +		pinctrl-names = "default";
+> +		regulator-name = "vcc_otg_vbus";
+> +		regulator-min-microvolt = <5000000>;
+> +		regulator-max-microvolt = <5000000>;
+> +		enable-active-high;
+> +	};
+> +
+> +	vcc_phy: vcc-phy-regulator {
+> +		compatible = "regulator-fixed";
+> +		regulator-name = "vcc_phy";
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +	};
+
+Is this actually a distinct regulator? The reference design has the 
+internal FEPHY block powered pretty much directly from the general 1V8 
+and 1V0 supplies that also power USB/HDMI/etc., so I'd rather expect 
+low-end boxes to follow suit. Either way there doesn't seem to be a 
+great deal of value in describing something with no controls, no voltage 
+information, and no connection to the power tree.
+
+> +
+> +	vcc_sd: sdmmc-regulator {
+> +		compatible = "regulator-fixed";
+> +		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
+> +		pinctrl-0 = <&sdmmc0m1_gpio>;
+> +		pinctrl-names = "default";
+> +		regulator-name = "vcc_sd";
+> +		regulator-min-microvolt = <3300000>;
+> +		regulator-max-microvolt = <3300000>;
+> +		vin-supply = <&vccio_3v3_reg>;
+> +	};
+> +
+> +	vdd_arm: vdd-arm {
+> +		compatible = "pwm-regulator";
+> +		pwms = <&pwm0 0 5000 1>;
+> +		regulator-name = "vdd_arm";
+> +		regulator-min-microvolt = <950000>;
+> +		regulator-max-microvolt = <1400000>;
+> +		regulator-settling-time-up-us = <250>;
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +	};
+> +
+> +	vdd_log: vdd-log {
+> +		compatible = "pwm-regulator";
+> +		pwms = <&pwm1 0 5000 1>;
+> +		regulator-name = "vdd_log";
+> +		regulator-min-microvolt = <900000>;
+> +		regulator-max-microvolt = <1300000>;
+> +		regulator-settling-time-up-us = <250>;
+> +		regulator-always-on;
+> +		regulator-boot-on;
+> +	};
+> +};
+> +
+> +&analog_sound {
+> +	status = "okay";
+> +};
+> +
+> +&codec {
+> +	status = "okay";
+> +};
+> +
+> +&cpu0 {
+> +	cpu-supply = <&vdd_arm>;
+> +};
+> +
+> +&cpu1 {
+> +	cpu-supply = <&vdd_arm>;
+> +};
+> +
+> +&cpu2 {
+> +	cpu-supply = <&vdd_arm>;
+> +};
+> +
+> +&cpu3 {
+> +	cpu-supply = <&vdd_arm>;
+> +};
+> +
+> +&cpu0_opp_table {
+> +	opp-1200000000 {
+> +		status = "disabled";
+> +	};
+> +
+> +	opp-1296000000 {
+> +		status = "disabled";
+> +	};
+> +};
+> +
+> +&emmc {
+> +	bus-width = <8>;
+> +	cap-mmc-highspeed;
+> +	non-removable;
+> +	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
+> +	pinctrl-names = "default";
+> +	status = "okay";
+> +};
+> +
+> +&gmac2phy {
+> +	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
+> +	assigned-clock-rate = <50000000>;
+> +	assigned-clocks = <&cru SCLK_MAC2PHY>;
+> +	clock_in_out = "output";
+> +	phy-supply = <&vcc_phy>;
+> +	status = "okay";
+> +};
+> +
+> +&gpu {
+> +	mali-supply = <&vdd_log>;
+> +};
+> +
+> +&hdmi {
+> +	ddc-i2c-scl-high-time-ns = <9625>;
+> +	ddc-i2c-scl-low-time-ns = <10000>;
+> +	status = "okay";
+> +};
+> +
+> +&hdmiphy {
+> +	status = "okay";
+> +};
+> +
+> +&hdmi_sound {
+> +	status = "okay";
+> +};
+> +
+> +&i2s0 {
+> +	status = "okay";
+> +};
+> +
+> +&i2s1 {
+> +	status = "okay";
+> +};
+> +
+> +&io_domains {
+> +	pmuio-supply = <&vccio_3v3_reg>;
+> +	vccio1-supply = <&vccio_3v3_reg>;
+> +	vccio2-supply = <&vccio_1v8_reg>;
+> +	vccio3-supply = <&vccio_3v3_reg>;
+> +	vccio4-supply = <&vccio_1v8_reg>;
+> +	vccio5-supply = <&vccio_3v3_reg>;
+> +	vccio6-supply = <&vccio_3v3_reg>;
+> +	status = "okay";
+> +};
+> +
+> +&pinctrl {
+> +	ir {
+> +		ir_int: ir-int {
+> +			rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+> +	leds {
+> +		cyx_led_pin: cyx-led-pin {
+> +			rockchip,pins = <2 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+> +	pwm0 {
+> +		pwm0_pin_pull_up: pwm0-pin-pull-up {
+> +			rockchip,pins = <2 RK_PA4 1 &pcfg_pull_up>;
+> +		};
+> +	};
+> +
+> +	pwm1 {
+> +		pwm1_pin_pull_up: pwm1-pin-pull-up {
+> +			rockchip,pins = <2 RK_PA5 1 &pcfg_pull_up>;
+> +		};
+> +	};
+> +
+> +	sdio-pwrseq {
+> +		wifi_enable_h: wifi-enable-h {
+> +			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+> +	sdmmc1 {
+> +		clk_32k_out: clk-32k-out {
+> +			rockchip,pins = <1 RK_PD4 1 &pcfg_pull_none>;
+> +		};
+> +	};
+> +
+> +	usb {
+> +		host_vbus_drv: host-vbus-drv {
+> +			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +
+> +		otg_vbus_drv: otg-vbus-drv {
+> +			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+> +		};
+> +	};
+> +};
+> +
+> +&pwm0 {
+> +	pinctrl-0 = <&pwm0_pin_pull_up>;
+> +	pinctrl-names = "active";
+> +	status = "okay";
+> +};
+> +
+> +&pwm1 {
+> +	pinctrl-0 = <&pwm1_pin_pull_up>;
+> +	pinctrl-names = "active";
+> +	status = "okay";
+> +};
+> +
+> +&saradc {
+> +	vref-supply = <&vccio_1v8_reg>;
+> +	status = "okay";
+> +};
+> +
+> +&sdio {
+> +	bus-width = <4>;
+> +	cap-sd-highspeed;
+> +	cap-sdio-irq;
+> +	keep-power-in-suspend;
+> +	max-frequency = <125000000>;
+> +	mmc-pwrseq = <&sdio_pwrseq>;
+> +	non-removable;
+> +	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk &clk_32k_out>;
+> +	pinctrl-names = "default";
+> +	sd-uhs-sdr104;
+> +	status = "okay";
+> +};
+> +
+> +&sdmmc {
+> +	bus-width = <4>;
+> +	cap-sd-highspeed;
+> +	disable-wp;
+> +	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
+> +	pinctrl-names = "default";
+> +	vmmc-supply = <&vcc_sd>;
+> +	status = "okay";
+> +};
+> +
+> +&spdif {
+> +	pinctrl-0 = <&spdifm0_tx>;
+> +	pinctrl-names = "default";
+> +	status = "okay";
+> +};
+> +
+> +&soc_crit {
+> +	temperature = <115000>; /* millicelsius */
+> +};
+> +
+> +&target {
+> +	temperature = <105000>; /* millicelsius */
+> +};
+> +
+> +&threshold {
+> +	temperature = <90000>; /* millicelsius */
+> +};
+> +
+> +&tsadc {
+> +	rockchip,hw-tshut-temp = <120000>;
+> +	status = "okay";
+> +};
+> +
+> +&u2phy {
+> +	status = "okay";
+> +
+> +	u2phy_host: host-port {
+
+Just refer to the ports normally by label rather than duplicate a random 
+snippet of DTSI hierarchy - I'm not sure why this particular pattern 
+seems to get copied around so much.
+
+Robin.
+
+> +		status = "okay";
+> +	};
+> +
+> +	u2phy_otg: otg-port {
+> +		phy-supply = <&vcc_otg_vbus>;
+> +		status = "okay";
+> +	};
+> +};
+> +
+> +&uart0 {
+> +	pinctrl-0 = <&uart0_xfer &uart0_cts>;
+> +	pinctrl-names = "default";
+> +	status = "okay";
+> +};
+> +
+> +&uart2 {
+> +	status = "okay";
+> +};
+> +
+> +&usb20_otg {
+> +	dr_mode = "host";
+> +	status = "okay";
+> +};
+> +
+> +&usb_host0_ehci {
+> +	status = "okay";
+> +};
+> +
+> +&usb_host0_ohci {
+> +	status = "okay";
+> +};
+> +
+> +&vop {
+> +	status = "okay";
+> +};
+> +
+> +&vop_mmu {
+> +	status = "okay";
+> +};
 > 
