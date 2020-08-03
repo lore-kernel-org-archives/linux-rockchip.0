@@ -1,55 +1,61 @@
-From: "Tan, Ley Foon" <ley.foon.tan@intel.com>
-Subject: RE: [PATCH 04/10] PCI: altera: Remove dev_err() when handing an error
- from platform_get_irq()
-Date: Mon, 3 Aug 2020 06:19:02 +0000
-Message-ID: <BY5PR11MB38934F2DF0BA55EBF2965B34CC4D0@BY5PR11MB3893.namprd11.prod.outlook.com>
-References: <20200802142601.1635926-1-kw@linux.com>
- <20200802142601.1635926-5-kw@linux.com>
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+Subject: Re: [PATCH][next] drm/rockchip: lvds: ensure ret is assigned before
+ checking for an error
+Date: Mon, 3 Aug 2020 08:46:45 +0200
+Message-ID: <20200803084645.442b5178@xps13>
+References: <20200714190003.744069-1-colin.king@canonical.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Return-path: <linux-pci-owner@vger.kernel.org>
-In-Reply-To: <20200802142601.1635926-5-kw@linux.com>
-Content-Language: en-US
-Sender: linux-pci-owner@vger.kernel.org
-To: =?utf-8?B?S3J6eXN6dG9mIFdpbGN6ecWEc2tp?= <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>
-Cc: Jingoo Han <jingoohan1@gmail.com>, Kukjin Kim <kgene@kernel.org>, Krzysztof Kozlowski <krzk@kernel.org>, Richard Zhu <hongxing.zhu@nxp.com>, Lucas Stach <l.stach@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, Murali Karicheri <m-karicheri2@ti.com>, Yue Wang <yue.wang@Amlogic.com>, Kevin Hilman <khilman@baylibre.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, Jesper Nilsson <jesper.nilsson@axis.com>, Xiaowei Song <songxiaowei@hisilicon.com>, Binghui Wang <wangbinghui@hisilicon.com>, Pratyush Anand <pratyush.anand@gmail.com>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Linus Walleij <linus.walleij@linaro.org>, Toan Le <toan@os.amperecomputing.com>, Shawn Lin <shawn.lin@rock-chips.com>, Heiko
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+Return-path: <kernel-janitors-owner@vger.kernel.org>
+In-Reply-To: <20200714190003.744069-1-colin.king@canonical.com>
+Sender: kernel-janitors-owner@vger.kernel.org
+To: Colin King <colin.king@canonical.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org
 List-Id: linux-rockchip.vger.kernel.org
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogS3J6eXN6dG9mIFdpbGN6
-ecWEc2tpIDxrd0BsaW51eC5jb20+DQo+IFNlbnQ6IFN1bmRheSwgQXVndXN0IDIsIDIwMjAgMTA6
-MjYgUE0NCj4gVG86IEJqb3JuIEhlbGdhYXMgPGJoZWxnYWFzQGdvb2dsZS5jb20+DQo+IENjOiBK
-aW5nb28gSGFuIDxqaW5nb29oYW4xQGdtYWlsLmNvbT47IEt1a2ppbiBLaW0gPGtnZW5lQGtlcm5l
-bC5vcmc+Ow0KPiBLcnp5c3p0b2YgS296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+OyBSaWNoYXJk
-IFpodQ0KPiA8aG9uZ3hpbmcuemh1QG54cC5jb20+OyBMdWNhcyBTdGFjaCA8bC5zdGFjaEBwZW5n
-dXRyb25peC5kZT47IFNoYXduDQo+IEd1byA8c2hhd25ndW9Aa2VybmVsLm9yZz47IFNhc2NoYSBI
-YXVlciA8cy5oYXVlckBwZW5ndXRyb25peC5kZT47DQo+IE11cmFsaSBLYXJpY2hlcmkgPG0ta2Fy
-aWNoZXJpMkB0aS5jb20+OyBZdWUgV2FuZw0KPiA8eXVlLndhbmdAQW1sb2dpYy5jb20+OyBLZXZp
-biBIaWxtYW4gPGtoaWxtYW5AYmF5bGlicmUuY29tPjsgVGhvbWFzDQo+IFBldGF6em9uaSA8dGhv
-bWFzLnBldGF6em9uaUBib290bGluLmNvbT47IEplc3BlciBOaWxzc29uDQo+IDxqZXNwZXIubmls
-c3NvbkBheGlzLmNvbT47IFhpYW93ZWkgU29uZyA8c29uZ3hpYW93ZWlAaGlzaWxpY29uLmNvbT47
-DQo+IEJpbmdodWkgV2FuZyA8d2FuZ2JpbmdodWlAaGlzaWxpY29uLmNvbT47IFByYXR5dXNoIEFu
-YW5kDQo+IDxwcmF0eXVzaC5hbmFuZEBnbWFpbC5jb20+OyBIb3UgWmhpcWlhbmcgPFpoaXFpYW5n
-LkhvdUBueHAuY29tPjsNCj4gTGludXMgV2FsbGVpaiA8bGludXMud2FsbGVpakBsaW5hcm8ub3Jn
-PjsgVG9hbiBMZQ0KPiA8dG9hbkBvcy5hbXBlcmVjb21wdXRpbmcuY29tPjsgVGFuLCBMZXkgRm9v
-bg0KPiA8bGV5LmZvb24udGFuQGludGVsLmNvbT47IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2st
-Y2hpcHMuY29tPjsgSGVpa28NCj4gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT47IGxpbnV4LWFt
-bG9naWNAbGlzdHMuaW5mcmFkZWFkLm9yZzsgbGludXgtYXJtLQ0KPiBrZXJuZWxAYXhpcy5jb207
-IGxpbnV4LWFybS1rZXJuZWxAbGlzdHMuaW5mcmFkZWFkLm9yZzsgbGludXgtDQo+IG9tYXBAdmdl
-ci5rZXJuZWwub3JnOyBsaW51eC1wY2lAdmdlci5rZXJuZWwub3JnOyBsaW51eC0NCj4gcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZzsgbGludXgtc2Ftc3VuZy1zb2NAdmdlci5rZXJuZWwub3Jn
-OyBsaW51eC0NCj4gdGVncmFAdmdlci5rZXJuZWwub3JnOyByZmlAbGlzdHMucm9ja2V0Ym9hcmRz
-Lm9yZw0KPiBTdWJqZWN0OiBbUEFUQ0ggMDQvMTBdIFBDSTogYWx0ZXJhOiBSZW1vdmUgZGV2X2Vy
-cigpIHdoZW4gaGFuZGluZyBhbiBlcnJvcg0KPiBmcm9tIHBsYXRmb3JtX2dldF9pcnEoKQ0KPiAN
-Cj4gVGhlcmUgaXMgbm8gbmVlZCB0byBjYWxsIHRoZSBkZXZfZXJyKCkgZnVuY3Rpb24gZGlyZWN0
-bHkgdG8gcHJpbnQgYSBjdXN0b20NCj4gbWVzc2FnZSB3aGVuIGhhbmRsaW5nIGFuIGVycm9yIGZy
-b20gZWl0aGVyIHRoZSBwbGF0Zm9ybV9nZXRfaXJxKCkgb3INCj4gcGxhdGZvcm1fZ2V0X2lycV9i
-eW5hbWUoKSBmdW5jdGlvbnMgYXMgYm90aCBhcmUgZ29pbmcgdG8gZGlzcGxheSBhbg0KPiBhcHBy
-b3ByaWF0ZSBlcnJvciBtZXNzYWdlIGluIGNhc2Ugb2YgYSBmYWlsdXJlLg0KPiANCj4gVGhpcyBj
-aGFuZ2UgaXMgYXMgcGVyIHN1Z2dlc3Rpb24gZnJvbSBDb2NjaW5lbGxlOg0KPiANCj4gICBkcml2
-ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtYWx0ZXJhLmM6NzE3OjItOTogbGluZSA3MTcgaXMgcmVk
-dW5kYW50DQo+ICAgYmVjYXVzZSBwbGF0Zm9ybV9nZXRfaXJxKCkgYWxyZWFkeSBwcmludHMgYW4g
-ZXJyb3INCj4gDQo+IFN1Z2dlc3RlZC1ieTogQmpvcm4gSGVsZ2FhcyA8YmhlbGdhYXNAZ29vZ2xl
-LmNvbT4NCj4gU2lnbmVkLW9mZi1ieTogS3J6eXN6dG9mIFdpbGN6ecWEc2tpIDxrd0BsaW51eC5j
-b20+DQo+IC0tLQ0KDQpSZXZpZXdlZC1ieTogTGV5IEZvb24gVGFuIDxsZXkuZm9vbi50YW5AaW50
-ZWwuY29tPg0K
+Hello,
+
+Colin King <colin.king@canonical.com> wrote on Tue, 14 Jul 2020
+20:00:03 +0100:
+
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> Currently there are two places where the return status in ret is being
+> checked for an error however the assignment of ret has been omitted
+> making the checks redundant.  Fix this by adding in the missing assignments
+> of ret.
+> 
+> Addresses-Coverity: ("Logically dead code")
+> Fixes: cca1705c3d89 ("drm/rockchip: lvds: Add PX30 support")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>  drivers/gpu/drm/rockchip/rockchip_lvds.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> index 63f967902c2d..b45c618b9793 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
+> @@ -499,11 +499,11 @@ static int px30_lvds_probe(struct platform_device *pdev,
+>  	if (IS_ERR(lvds->dphy))
+>  		return PTR_ERR(lvds->dphy);
+>  
+> -	phy_init(lvds->dphy);
+> +	ret = phy_init(lvds->dphy);
+>  	if (ret)
+>  		return ret;
+>  
+> -	phy_set_mode(lvds->dphy, PHY_MODE_LVDS);
+> +	ret = phy_set_mode(lvds->dphy, PHY_MODE_LVDS);
+>  	if (ret)
+>  		return ret;
+>  
+
+I thought I (or Heiko) already sent a patch for that but apparently
+not...
+
+Reviewed-by: Miquel Raynal <miquel.raynal@bootlin.com>
+
+Thanks,
+Miquèl
