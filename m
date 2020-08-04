@@ -1,154 +1,606 @@
-From: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
-Subject: Re: [PATCH 17/19] PCI: rcar-gen2: Convert to use modern host bridge
- probe functions
-Date: Tue, 4 Aug 2020 09:13:10 -0600
-Message-ID: <CAL_Jsq+6Xcf5KT1Db5mGFWr9E04Jd8Rx4aVJpUmfUT8hPmtqBg@mail.gmail.com>
-References: <20200722022514.1283916-1-robh@kernel.org> <20200722022514.1283916-18-robh@kernel.org>
- <CAMuHMdWVWoQDc3MMv9LjA+hA1EoXQjVM-JfO_hVqnDf0tC8LJg@mail.gmail.com>
+From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: add rk3318 A95X Z2 board
+Date: Tue, 4 Aug 2020 17:54:09 +0200
+Message-ID: <818eacc7-d783-772e-4cce-fbcf40b1df7c@gmail.com>
+References: <20200718105343.5152-1-jbx6244@gmail.com>
+ <20200718105343.5152-4-jbx6244@gmail.com>
+ <6d028007-4360-e552-3707-3dd2712f2501@arm.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Return-path: <linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <CAMuHMdWVWoQDc3MMv9LjA+hA1EoXQjVM-JfO_hVqnDf0tC8LJg-JsoAwUIsXosN+BqQ9rBEUg@public.gmane.org>
-Sender: linux-tegra-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org>
-Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>, Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>, Fabio Estevam <festevam-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Gustavo Pimentel <gustavo.pimentel-HKixBCOQz3hWk0Htik3J/w@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Hou Zhiqiang <Zhiqiang.Hou-3arQi8VN3Tc@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Jonathan Hunter <jonathanh-DDmLM1+adcrQT0dZR+AlfA@public.gmane.org>, Karthikeyan Mitran <m.karthikeyan-DTHOJn6Rh8lhmhkoCovsdw@public.gmane.org>, Linus Walleij <linus.walleij-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Lucas Stach <l.stach-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Marek Vasut <marek.vasut+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Michal Simek <michal.simek-gjFFaj9aHVfQT0dZR+AlfA@public.gmane.org>, Murali Karicheri <m-karicheri2-l0cyMroinI0@public.gmane.org>, NXP Linux Team <linux-imx-3arQi8VN3Tc@public.gmane.org>, Pengutronix Kernel Team <kernel-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Richard Zhu <hongxing.zhu-3arQi8VN3Tc@public.gmane.org>, Ryder Lee <ryder.lee-NuS5LvNUpcJWk0Htik3J/w@public.gmane.org>, Sascha Hauer <s.hauer@p>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <6d028007-4360-e552-3707-3dd2712f2501-5wv7dgnIgG8@public.gmane.org>
+Content-Language: en-US
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>, heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
+Cc: devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-On Tue, Aug 4, 2020 at 6:12 AM Geert Uytterhoeven <geert-Td1EMuHUCqxL1ZNQvxDV9g@public.gmane.org> wrote:
->
-> Hi Rob,
->
-> On Wed, Jul 22, 2020 at 4:26 AM Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org> wrote:
-> > The rcar-gen2 host driver still uses the old Arm PCI setup function
-> > pci_common_init_dev(). Let's update it to use the modern
-> > devm_pci_alloc_host_bridge(), pci_parse_request_of_pci_ranges() and
-> > pci_host_probe() functions.
-> >
-> > Cc: Marek Vasut <marek.vasut+renesas-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-> > Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh-zM6kxYcvzFBBDgjK7y7TUQ@public.gmane.org>
-> > Cc: Lorenzo Pieralisi <lorenzo.pieralisi-5wv7dgnIgG8@public.gmane.org>
-> > Cc: Bjorn Helgaas <bhelgaas-hpIqsD4AKlfQT0dZR+AlfA@public.gmane.org>
-> > Cc: linux-renesas-soc-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-> > Signed-off-by: Rob Herring <robh-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
->
-> This is now commit 92d69cc6275845a7 ("PCI: rcar-gen2: Convert to use
-> modern host bridge probe functions"), and causes a crash on r8a7791/koelsch:
+Hi Robin,
 
-Can't say I'm surprised, this was a big change. Thanks for testing.
+Thank you for your review.
+Added some questions in return.
 
+This dts file seems to be some sort of variation of
+rk3328-box-liantong.dtsi in the manufacturer tree. Depending on the
+design the vendor then changes the wifi chip or removes the spdif
+connector to save some cost.
 
->     Unable to handle kernel NULL pointer dereference at virtual address 00000008
->     pgd = (ptrval)
->     [00000008] *pgd=00000000
->     Internal error: Oops: 5 [#1] SMP ARM
->     CPU: 0 PID: 1 Comm: swapper/0 Not tainted
-> 5.8.0-rc1-shmobile-00035-g92d69cc6275845a7 #645
->     Hardware name: Generic R-Car Gen2 (Flattened Device Tree)
->     PC is at rcar_pci_probe+0x154/0x340
->     LR is at _raw_spin_unlock_irqrestore+0x18/0x20
->
-> > --- a/drivers/pci/controller/pci-rcar-gen2.c
-> > +++ b/drivers/pci/controller/pci-rcar-gen2.c
-> > @@ -189,19 +170,33 @@ static inline void rcar_pci_setup_errirq(struct rcar_pci_priv *priv) { }
-> >  #endif
-> >
-> >  /* PCI host controller setup */
-> > -static int rcar_pci_setup(int nr, struct pci_sys_data *sys)
-> > +static void rcar_pci_setup(struct rcar_pci_priv *priv)
-> >  {
-> > -       struct rcar_pci_priv *priv = sys->private_data;
-> > +       struct pci_host_bridge *bridge = pci_host_bridge_from_priv(priv);
-> >         struct device *dev = priv->dev;
-> >         void __iomem *reg = priv->reg;
-> > +       struct resource_entry *entry;
-> > +       unsigned long window_size;
-> > +       unsigned long window_addr;
-> > +       unsigned long window_pci;
-> >         u32 val;
-> > -       int ret;
-> > +
-> > +       entry = resource_list_first_type(&bridge->dma_ranges, IORESOURCE_MEM);
->
-> bridge->dma_ranges is not initialized => BOOM.
->
-> >  static int rcar_pci_probe(struct platform_device *pdev)
-> >  {
-> >         struct device *dev = &pdev->dev;
-> >         struct resource *cfg_res, *mem_res;
-> >         struct rcar_pci_priv *priv;
-> > +       struct pci_host_bridge *bridge;
-> >         void __iomem *reg;
-> > -       struct hw_pci hw;
-> > -       void *hw_private[1];
-> > +       int ret;
-> > +
-> > +       bridge = devm_pci_alloc_host_bridge(dev, sizeof(*priv));
-> > +       if (!bridge)
-> > +               return -ENOMEM;
-> > +
-> > +       priv = pci_host_bridge_priv(bridge);
->
-> This is the "new" priv instance.
->
-> > +       bridge->sysdata = priv;
-> >
-> >         cfg_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> >         reg = devm_ioremap_resource(dev, cfg_res);
->
-> However, the "old" instance is still allocated below, and should be removed.
->
-> I've send a patch to fix that, which should appear soon at
-> https://lore.kernel.org/r/20200804120430.9253-1-geert+renesas-gXvu3+zWzMSzQB+pC5nmwQ@public.gmane.org
->
-> BTW, the conversion has the following impact on r8a7791/koelsch:
->
->     -pci-rcar-gen2 ee090000.pci: PCI: bus0 revision 11
->     +pci-rcar-gen2 ee090000.pci: host bridge /soc/pci@ee090000 ranges:
->     +pci-rcar-gen2 ee090000.pci:      MEM 0x00ee080000..0x00ee08ffff
-> -> 0x00ee080000
->     +pci-rcar-gen2 ee090000.pci: PCI: revision 11
->      pci-rcar-gen2 ee090000.pci: PCI host bridge to bus 0000:00
->     -pci_bus 0000:00: root bus resource [mem 0xee080000-0xee0810ff]
->                                              ^^^^^^^^^^^^^^^^^^^^^
->     -pci_bus 0000:00: No busn resource found for root bus, will use [bus 00-ff]
->     +pci_bus 0000:00: root bus resource [bus 00]
->     +pci_bus 0000:00: root bus resource [mem 0xee080000-0xee08ffff]
->                                              ^^^^^^^^^^^^^^^^^^^^^
->
->     pci0: pci@ee090000 {
->             ...
->             reg = <0 0xee090000 0 0xc00>,
->                   <0 0xee080000 0 0x1100>;
->             ...
->             ranges = <0x02000000 0 0xee080000 0 0xee080000 0 0x00010000>;
->             ...
->             usb@1,0 {
->                     reg = <0x800 0 0 0 0>;
->                     ...
->             };
->
->             usb@2,0 {
->                     reg = <0x1000 0 0 0 0>;
->                     ...
->             };
->
->     }
->
-> The old root bus resource size was based on the "reg" property.
-> The new root bus resource size is based on the "ranges" property.
+On 8/3/20 11:41 PM, Robin Murphy wrote:
+> On 2020-07-18 11:53, Johan Jonker wrote:
+>> The rk3318 A95X Z2 boards are sold as TV box.
+>> No further documentation is given, but from the dts files
+>> extracted it seems that the rk3318 processor is simulair
+>> to the rk3328. This dts file contains only the basic nodes
+>> that have support in the mainline kernel.
+>>
+>> Features:
+>>
+>> CPU: RK3318 Quad-Core Cortex-A53
+>> GPU: Mali-450
+>> RAM: 2/4GB DDR3
+>> ROM: EMMC 16/32/64GB
+>> HDMI: HDMI 2.0a for 4k@60Hz
+>> Ethernet: 10/100M standard RJ-45
+>> WiFi: 2.4G+5G WIFI, 802.11 b/g/n
+>> Bluetooth: 4.0
+>> 1 x USB 3.0
+>> 1 x USB 2.0
+>> 1 x Micro SD card slot
+>> 1 x SPDIF
+>> 1 x AV
+>> 1 x DC IN
+>>
+>> Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+>> ---
+>>   arch/arm64/boot/dts/rockchip/Makefile           |   1 +
+>>   arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts | 393
+>> ++++++++++++++++++++++++
+>>   2 files changed, 394 insertions(+)
+>>   create mode 100644 arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/Makefile
+>> b/arch/arm64/boot/dts/rockchip/Makefile
+>> index b87b1f773..aa508bc4a 100644
+>> --- a/arch/arm64/boot/dts/rockchip/Makefile
+>> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+>> @@ -2,6 +2,7 @@
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
+>> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
+>>   dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+>> b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+>> new file mode 100644
+>> index 000000000..413418ea1
+>> --- /dev/null
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+>> @@ -0,0 +1,393 @@
+>> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+>> +
+>> +/dts-v1/;
+>> +#include <dt-bindings/input/input.h>
+>> +#include "rk3328.dtsi"
+>> +
+>> +/ {
+>> +    model = "A95X Z2";
+>> +    compatible = "zkmagic,a95x-z2", "rockchip,rk3318";
+>> +
+>> +    chosen {
+>> +        stdout-path = "serial2:1500000n8";
+>> +    };
+>> +
+>> +    adc-keys {
+>> +        compatible = "adc-keys";
+>> +        io-channels = <&saradc 0>;
+>> +        io-channel-names = "buttons";
+>> +        keyup-threshold-microvolt = <1800000>;
+>> +        poll-interval = <100>;
+>> +
+>> +        vol-up-key {
+>> +            label = "volume up";
+>> +            linux,code = <KEY_VOLUMEUP>;
+> 
+> Really? If as usual this is actually the recovery button hidden inside
+> the box, it's somewhat questionable whether it's worth describing in DT
+> at all. At the very least it should probably be presented as something
+> more realistic than half a volume control.
 
-That was wrong to have PCI memory space in 'reg', but the driver could
-always adjust the size to 0x1100 if needed.
+Dts use is not limited to a mainline kernel setting. In Android that
+<KEY_VOLUMEUP> seem to be a standard way needed to enter a menu. Then
+make it as complete as possible to make it work.
 
-BTW, the binding description seems to have the 'reg' description reversed.
+What would be your realistic key proposal?
 
-> Given the only children are hardcoded, I guess that is OK?
+> 
+>> +            press-threshold-microvolt = <17000>;
+>> +        };
+>> +    };
+>> +
+>> +    ir-receiver {
+>> +        compatible = "gpio-ir-receiver";
+>> +        gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
+>> +        pinctrl-0 = <&ir_int>;
+>> +        pinctrl-names = "default";
+>> +    };
+>> +
+>> +    leds {
+>> +        compatible = "gpio-leds";
+>> +        pinctrl-0 = <&cyx_led_pin>;
+>> +        pinctrl-names = "default";
+>> +
+>> +        cyx_led: led-0 {
+> 
+> What needs a phandle to this node to warrant a label?
 
-In the sense that those are the only 2 devices and you know their
-memory fits, yes. However, the memory space itself isn't hardcoded. If
-you wanted to do that, then the children really need
-'assigned-addresses' properties. I guess it happens to work because
-memory space is allocated from the start and goes in order of device
-addresses. But if that changed to top down allocation?
+Without repeating previous discussions, I made a proposal that was
+approved. So we just stick to that set of rules consequently.
 
-Rob
+A little explanation:
+With the conversion to yaml a preferred nodename was introduced.
+Legacy Rockchip node names were sort of free style and causing the
+dts-checker to produce a flood of warnings.
+The led properties are described in 2 places, under leds and under pinctrl.
+To improve the readability given the legacy and to prevent the
+disconnect between schematics, leds and pinctrl we add a label with a
+consistent name.
+
+Fix with help of the following rules:
+
+1: Add nodename in the preferred form.
+
+2: Always add a label that ends with '_led' to prevent conflicts
+   with other labels such as 'power' and 'mmc'
+
+3: If leds need pinctrl add a label that ends with '_led_pin'
+   also to prevent conflicts with other labels.
+
+> 
+>> +            default-state = "on";
+>> +            gpios = <&gpio2 RK_PC7 GPIO_ACTIVE_LOW>;
+
+>> +            label = "CYX_LED";
+
+This label with capital letters is used by an Android app, so keep it.
+
+>> +        };
+>> +    };
+>> +
+>> +    sdio_pwrseq: sdio-pwrseq {
+>> +        compatible = "mmc-pwrseq-simple";
+>> +        pinctrl-0 = <&wifi_enable_h>;
+>> +        pinctrl-names = "default";
+>> +        reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+>> +    };
+>> +
+>> +    spdif-sound {
+>> +        compatible = "simple-audio-card";
+
+>> +        simple-audio-card,name = "spdif";
+
+Some programs don't like long names here.
+Recently I see others also use "SPDIF".
+Should I change?
+Currently for rk3328 we have: "Analog" and "HDMI"
+Is there a standard?
+Please advise.
+
+>> +
+>> +        simple-audio-card,cpu {
+>> +            sound-dai = <&spdif>;
+>> +        };
+>> +
+>> +        simple-audio-card,codec {
+>> +            sound-dai = <&spdif_out>;
+>> +        };
+>> +    };
+>> +
+>> +    spdif_out: spdif-out {
+>> +        compatible = "linux,spdif-dit";
+>> +        #sound-dai-cells = <0>;
+>> +    };
+>> +
+>> +    /* Power tree */
+>> +    regulators {
+> 
+> Don't create fake "buses" for regulators, especially if they don't even
+> contain most of the regulators anyway.
+
+Agree.
+The original reason was not given.
+vccio_1v8_reg and vccio_3v3_reg are used mostly in &io_domains.
+
+Is there a dependency requirement that both must be probed/enabled
+before being used?
+
+Without these regulators in a bus should we then add a vcc-sys-regulator
+for a complete supply chain?
+
+	vcc_sys: vcc-sys-regulator {
+		compatible = "regulator-fixed";
+		regulator-name = "vcc_sys";
+		regulator-min-microvolt = <5000000>;
+		regulator-max-microvolt = <5000000>;
+		regulator-always-on;
+		regulator-boot-on;
+	};
+
+> 
+>> +        compatible = "simple-mfd";
+>> +        #address-cells = <1>;
+>> +        #size-cells = <0>;
+>> +
+>> +        vccio_1v8_reg: regulator@0 {
+>> +            compatible = "regulator-fixed";
+>> +            reg = <0>;
+>> +            regulator-name = "vccio_1v8";
+>> +            regulator-min-microvolt = <1800000>;
+>> +            regulator-max-microvolt = <1800000>;
+>> +            regulator-always-on;
+Just an example:
+		vin-supply = <&vcc_sys>;
+
+>> +        };
+>> +
+>> +        vccio_3v3_reg: regulator@1 {
+>> +            compatible = "regulator-fixed";
+>> +            reg = <1>;
+>> +            regulator-name = "vccio_3v3";
+>> +            regulator-min-microvolt = <3300000>;
+>> +            regulator-max-microvolt = <3300000>;
+>> +            regulator-always-on;
+
+Just an example:
+		vin-supply = <&vcc_sys>;
+
+>> +        };
+>> +    };
+>> +
+>> +    vcc_otg_vbus: otg-vbus-regulator {
+>> +        compatible = "regulator-fixed";
+>> +        gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
+>> +        pinctrl-0 = <&otg_vbus_drv>;
+>> +        pinctrl-names = "default";
+>> +        regulator-name = "vcc_otg_vbus";
+>> +        regulator-min-microvolt = <5000000>;
+>> +        regulator-max-microvolt = <5000000>;
+>> +        enable-active-high;
+>> +    };
+>> +
+>> +    vcc_phy: vcc-phy-regulator {
+>> +        compatible = "regulator-fixed";
+>> +        regulator-name = "vcc_phy";
+>> +        regulator-always-on;
+>> +        regulator-boot-on;
+>> +    };
+> 
+
+> Is this actually a distinct regulator? The reference design has the
+> internal FEPHY block powered pretty much directly from the general 1V8
+> and 1V0 supplies that also power USB/HDMI/etc., so I'd rather expect
+> low-end boxes to follow suit. Either way there doesn't seem to be a
+> great deal of value in describing something with no controls, no voltage
+> information, and no connection to the power tree.
+
+Agree.
+phy-supply appears to be an optional property, so removing it is
+possible. It shows up in rk3328-roc-cc.dts and rk3328-evb.dts.
+
+What does the maintainer prefer? Remove or not?
+
+> 
+>> +
+>> +    vcc_sd: sdmmc-regulator {
+>> +        compatible = "regulator-fixed";
+>> +        gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
+>> +        pinctrl-0 = <&sdmmc0m1_gpio>;
+>> +        pinctrl-names = "default";
+>> +        regulator-name = "vcc_sd";
+>> +        regulator-min-microvolt = <3300000>;
+>> +        regulator-max-microvolt = <3300000>;
+>> +        vin-supply = <&vccio_3v3_reg>;
+>> +    };
+>> +
+>> +    vdd_arm: vdd-arm {
+>> +        compatible = "pwm-regulator";
+>> +        pwms = <&pwm0 0 5000 1>;
+>> +        regulator-name = "vdd_arm";
+>> +        regulator-min-microvolt = <950000>;
+>> +        regulator-max-microvolt = <1400000>;
+>> +        regulator-settling-time-up-us = <250>;
+>> +        regulator-always-on;
+>> +        regulator-boot-on;
+>> +    };
+>> +
+>> +    vdd_log: vdd-log {
+>> +        compatible = "pwm-regulator";
+>> +        pwms = <&pwm1 0 5000 1>;
+>> +        regulator-name = "vdd_log";
+>> +        regulator-min-microvolt = <900000>;
+>> +        regulator-max-microvolt = <1300000>;
+>> +        regulator-settling-time-up-us = <250>;
+>> +        regulator-always-on;
+>> +        regulator-boot-on;
+>> +    };
+>> +};
+>> +
+>> +&analog_sound {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&codec {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&cpu0 {
+>> +    cpu-supply = <&vdd_arm>;
+>> +};
+>> +
+>> +&cpu1 {
+>> +    cpu-supply = <&vdd_arm>;
+>> +};
+>> +
+>> +&cpu2 {
+>> +    cpu-supply = <&vdd_arm>;
+>> +};
+>> +
+>> +&cpu3 {
+>> +    cpu-supply = <&vdd_arm>;
+>> +};
+>> +
+>> +&cpu0_opp_table {
+>> +    opp-1200000000 {
+>> +        status = "disabled";
+>> +    };
+>> +
+>> +    opp-1296000000 {
+>> +        status = "disabled";
+>> +    };
+>> +};
+>> +
+>> +&emmc {
+>> +    bus-width = <8>;
+>> +    cap-mmc-highspeed;
+>> +    non-removable;
+>> +    pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
+>> +    pinctrl-names = "default";
+>> +    status = "okay";
+>> +};
+>> +
+>> +&gmac2phy {
+>> +    assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
+>> +    assigned-clock-rate = <50000000>;
+>> +    assigned-clocks = <&cru SCLK_MAC2PHY>;
+>> +    clock_in_out = "output";
+
+>> +    phy-supply = <&vcc_phy>;
+
+Remove or not?
+
+>> +    status = "okay";
+>> +};
+>> +
+>> +&gpu {
+>> +    mali-supply = <&vdd_log>;
+>> +};
+>> +
+>> +&hdmi {
+>> +    ddc-i2c-scl-high-time-ns = <9625>;
+>> +    ddc-i2c-scl-low-time-ns = <10000>;
+>> +    status = "okay";
+>> +};
+>> +
+>> +&hdmiphy {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&hdmi_sound {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&i2s0 {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&i2s1 {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&io_domains {
+>> +    pmuio-supply = <&vccio_3v3_reg>;
+>> +    vccio1-supply = <&vccio_3v3_reg>;
+>> +    vccio2-supply = <&vccio_1v8_reg>;
+>> +    vccio3-supply = <&vccio_3v3_reg>;
+>> +    vccio4-supply = <&vccio_1v8_reg>;
+>> +    vccio5-supply = <&vccio_3v3_reg>;
+>> +    vccio6-supply = <&vccio_3v3_reg>;
+>> +    status = "okay";
+>> +};
+>> +
+>> +&pinctrl {
+>> +    ir {
+>> +        ir_int: ir-int {
+>> +            rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+>> +        };
+>> +    };
+>> +
+>> +    leds {
+>> +        cyx_led_pin: cyx-led-pin {
+>> +            rockchip,pins = <2 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
+>> +        };
+>> +    };
+>> +
+>> +    pwm0 {
+>> +        pwm0_pin_pull_up: pwm0-pin-pull-up {
+>> +            rockchip,pins = <2 RK_PA4 1 &pcfg_pull_up>;
+>> +        };
+>> +    };
+>> +
+>> +    pwm1 {
+>> +        pwm1_pin_pull_up: pwm1-pin-pull-up {
+>> +            rockchip,pins = <2 RK_PA5 1 &pcfg_pull_up>;
+>> +        };
+>> +    };
+>> +
+>> +    sdio-pwrseq {
+>> +        wifi_enable_h: wifi-enable-h {
+>> +            rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
+>> +        };
+>> +    };
+>> +
+>> +    sdmmc1 {
+>> +        clk_32k_out: clk-32k-out {
+>> +            rockchip,pins = <1 RK_PD4 1 &pcfg_pull_none>;
+>> +        };
+>> +    };
+>> +
+>> +    usb {
+>> +        host_vbus_drv: host-vbus-drv {
+>> +            rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
+>> +        };
+>> +
+>> +        otg_vbus_drv: otg-vbus-drv {
+>> +            rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
+>> +        };
+>> +    };
+>> +};
+>> +
+>> +&pwm0 {
+>> +    pinctrl-0 = <&pwm0_pin_pull_up>;
+>> +    pinctrl-names = "active";
+>> +    status = "okay";
+>> +};
+>> +
+>> +&pwm1 {
+>> +    pinctrl-0 = <&pwm1_pin_pull_up>;
+>> +    pinctrl-names = "active";
+>> +    status = "okay";
+>> +};
+>> +
+>> +&saradc {
+>> +    vref-supply = <&vccio_1v8_reg>;
+>> +    status = "okay";
+>> +};
+>> +
+>> +&sdio {
+>> +    bus-width = <4>;
+>> +    cap-sd-highspeed;
+>> +    cap-sdio-irq;
+>> +    keep-power-in-suspend;
+>> +    max-frequency = <125000000>;
+>> +    mmc-pwrseq = <&sdio_pwrseq>;
+>> +    non-removable;
+>> +    pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk &clk_32k_out>;
+>> +    pinctrl-names = "default";
+>> +    sd-uhs-sdr104;
+>> +    status = "okay";
+>> +};
+>> +
+>> +&sdmmc {
+>> +    bus-width = <4>;
+>> +    cap-sd-highspeed;
+
+>> +    disable-wp;
+
+This is from the manufacturer tree for a micro SD card. Remove or not?
+Please advise.
+
+>> +    pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
+>> +    pinctrl-names = "default";
+>> +    vmmc-supply = <&vcc_sd>;
+>> +    status = "okay";
+>> +};
+>> +
+>> +&spdif {
+>> +    pinctrl-0 = <&spdifm0_tx>;
+
+>> +    pinctrl-names = "default";
+
+Remove.
+Already in dtsi.
+
+>> +    status = "okay";
+>> +};
+>> +
+>> +&soc_crit {
+>> +    temperature = <115000>; /* millicelsius */
+>> +};
+>> +
+>> +&target {
+>> +    temperature = <105000>; /* millicelsius */
+>> +};
+>> +
+>> +&threshold {
+>> +    temperature = <90000>; /* millicelsius */
+>> +};
+>> +
+>> +&tsadc {
+>> +    rockchip,hw-tshut-temp = <120000>;
+>> +    status = "okay";
+>> +};
+>> +
+>> +&u2phy {
+>> +    status = "okay";
+>> +
+>> +    u2phy_host: host-port {
+> 
+> Just refer to the ports normally by label rather than duplicate a random
+> snippet of DTSI hierarchy - I'm not sure why this particular pattern
+> seems to get copied around so much.
+
+Here the node labels start with the same letters and the result will
+stay together. In other cases it will scatter all over the dts file and
+affects the readability. I just followed the manufacturer's example. If
+the maintainer agrees then I'll change.
+
+> 
+> Robin.
+> 
+>> +        status = "okay";
+>> +    };
+>> +
+>> +    u2phy_otg: otg-port {
+>> +        phy-supply = <&vcc_otg_vbus>;
+>> +        status = "okay";
+>> +    };
+>> +};
+>> +
+>> +&uart0 {
+>> +    pinctrl-0 = <&uart0_xfer &uart0_cts>;
+
+>> +    pinctrl-names = "default";
+
+Remove.
+Already in dtsi.
+
+>> +    status = "okay";
+>> +};
+>> +
+>> +&uart2 {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&usb20_otg {
+>> +    dr_mode = "host";
+>> +    status = "okay";
+>> +};
+>> +
+>> +&usb_host0_ehci {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&usb_host0_ohci {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&vop {
+>> +    status = "okay";
+>> +};
+>> +
+>> +&vop_mmu {
+>> +    status = "okay";
+>> +};
+>>
