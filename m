@@ -1,131 +1,62 @@
-From: daniel@ffwll.ch
-Subject: Re: [PATCH] drm: sysfs: Add to get current mode
-Date: Wed, 5 Aug 2020 13:26:55 +0200
-Message-ID: <20200805112655.GF6419@phenom.ffwll.local>
-References: <20200805083646.4123-1-hjc@rock-chips.com>
- <CAKMK7uGmKJqZJ0ONQjjquZn6mksKbkScmcUSEA43eg1jFskmTg@mail.gmail.com>
- <693f6555-d9d2-f255-1198-e3798c8f4fe8@rock-chips.com>
+From: Alexandru M Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Subject: Re: [PATCH 0/3] PWM backlight interpolation adjustments
+Date: Wed, 5 Aug 2020 14:04:09 -0700
+Message-ID: <CAHNYxRzwQ2jx99M0oyNv8CDE4h051jcdAdYFjRd8mhNjB19FgA@mail.gmail.com>
+References: <20200721042522.2403410-1-amstan@chromium.org>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-Content-Disposition: inline
-In-Reply-To: <693f6555-d9d2-f255-1198-e3798c8f4fe8@rock-chips.com>
-Sender: linux-kernel-owner@vger.kernel.org
-Cc: Daniel Vetter <daniel@ffwll.ch>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>, Tao Huang <huangtao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Kever Yang <kever.yang@rock-chips.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
+In-Reply-To: <20200721042522.2403410-1-amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>
+Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: Thierry Reding <thierry.reding-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig-bIcnvbaLZ9MEGnE8C9+IrQ@public.gmane.org>, Lee Jones <lee.jones-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Daniel Thompson <daniel.thompson-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org>, Jingoo Han <jingoohan1-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>, Bartlomiej Zolnierkiewicz <b.zolnierkie-Sze3O3UU22JBDgjK7y7TUQ@public.gmane.org>, Heiko Stuebner <heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org>, Rob Herring <robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org>
+Cc: Matthias Kaehlcke <mka-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Douglas Anderson <dianders-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org>, Enric Balletbo i Serra <enric.balletbo-ZGY8ohtN/8qB+jHODAdFcQ@public.gmane.org>, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, dri-devel-PD4FTy7X32lNgt0PjOBp9y5qC8QIuHrW@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-fbdev-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-kernel <linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>, linux-pwm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, "open list:ARM/Rockchip SoC..." <linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-On Wed, Aug 05, 2020 at 06:03:15PM +0800, Huang Jiachai wrote:
-> Hi Daniel
-> 
-> 在 2020/8/5 17:36, Daniel Vetter 写道:
-> > On Wed, Aug 5, 2020 at 10:37 AM Sandy Huang <hjc@rock-chips.com> wrote:
-> > > add this node to get the current true mode.
-> > > 
-> > > Signed-off-by: Sandy Huang <hjc@rock-chips.com>
-> > Uh what's this for? Since it's sysfs, I guess there's something
-> > parsing this, which means we'd kinda need to have that piece too.
-> > 
-> > If it's just for debugging purposes, then we already have this
-> > information in debugfs, together with everything else that's in the
-> > atomic modeset state.
-> > -Daniel
-> 
-> yes, this is just for debug;
-> 
-> and i get the information what i need from cat
-> /sys/kernel/debug/dri/0/state, thanks.
+On Mon, Jul 20, 2020 at 9:27 PM Alexandru Stan <amstan-F7+t8E8rja9g9hUCZPvPmw@public.gmane.org> wrote:
+>
+> I was trying to adjust the brightness for a new chromebook:
+> https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2291209
+> Like a lot of panels, the low end needs to be cropped,
+> and now that we have the interpolation stuff I wanted to make use of it
+> and bake in even the curve.
+>
+> I found the behavior a little unintuitive and non-linear. See patch 1
+> for a suggested fix for this.
+>
+> Unfortunatelly a few veyron dts files were relying on this
+> (perhaps weird) behavior. Those devices also want a minimum brightness.
+> The issue is that they also want the 0% point for turning off the
+> display.
+> https://github.com/torvalds/linux/commit/6233269bce47bd450196a671ab28eb1ec5eb88d9#diff-e401ae20091bbfb311a062c464f4f47fL23
+>
+> So the idea here is to change those dts files to only say <3 255> (patch
+> 3), and add in a virtual 0% point at the bottom of the scale (patch 2).
+>
+> We have to do this conditionally because it seems some devices like to
+> have the scale inverted:
+>   % git grep "brightness-levels\s*=\s*<\s*[1-9]"|cat
+>   arch/arm/boot/dts/tegra124-apalis-eval.dts:             brightness-levels = <255 231 223 207 191 159 127 0>;
+>
+>
+> Alexandru Stan (3):
+>   backlight: pwm_bl: Fix interpolation
+>   backlight: pwm_bl: Artificially add 0% during interpolation
+>   ARM: dts: rockchip: Remove 0 point in backlight
+>
+>  arch/arm/boot/dts/rk3288-veyron-jaq.dts    |  2 +-
+>  arch/arm/boot/dts/rk3288-veyron-minnie.dts |  2 +-
+>  arch/arm/boot/dts/rk3288-veyron-tiger.dts  |  2 +-
+>  drivers/video/backlight/pwm_bl.c           | 78 +++++++++++-----------
+>  4 files changed, 42 insertions(+), 42 deletions(-)
+>
+> --
+> 2.27.0
+>
 
-Cool, sounds like this is resolved. And if you need any additional debug
-information about display state, then best to extend that file. It comes
-with driver hooks, so that you can include any additional driver stuff, or
-outright read out registers and everything.
+Hello,
 
-Cheers, Daniel
+Friendly ping.
+Let me know if you would like me to make any changes to my patches.
 
-> 
-> > > ---
-> > >   drivers/gpu/drm/drm_sysfs.c | 30 ++++++++++++++++++++++++++++++
-> > >   1 file changed, 30 insertions(+)
-> > > 
-> > > diff --git a/drivers/gpu/drm/drm_sysfs.c b/drivers/gpu/drm/drm_sysfs.c
-> > > index 939f0032aab1..f39bcd34853b 100644
-> > > --- a/drivers/gpu/drm/drm_sysfs.c
-> > > +++ b/drivers/gpu/drm/drm_sysfs.c
-> > > @@ -19,6 +19,7 @@
-> > >   #include <linux/slab.h>
-> > > 
-> > >   #include <drm/drm_connector.h>
-> > > +#include <drm/drm_crtc.h>
-> > >   #include <drm/drm_device.h>
-> > >   #include <drm/drm_file.h>
-> > >   #include <drm/drm_modes.h>
-> > > @@ -236,16 +237,45 @@ static ssize_t modes_show(struct device *device,
-> > >          return written;
-> > >   }
-> > > 
-> > > +static ssize_t current_mode_show(struct device *device,
-> > > +                     struct device_attribute *attr,
-> > > +                     char *buf)
-> > > +{
-> > > +       struct drm_connector *connector = to_drm_connector(device);
-> > > +       struct drm_display_mode *mode;
-> > > +       struct drm_crtc_state *crtc_state;
-> > > +       bool interlaced;
-> > > +       int written = 0;
-> > > +
-> > > +       if (!connector->state || !connector->state->crtc)
-> > > +               return written;
-> > > +
-> > > +       crtc_state = connector->state->crtc->state;
-> > > +       if (!crtc_state)
-> > > +               return written;
-> > > +
-> > > +       mode = &crtc_state->mode;
-> > > +
-> > > +       interlaced = !!(mode->flags & DRM_MODE_FLAG_INTERLACE);
-> > > +       written += snprintf(buf + written, PAGE_SIZE - written, "%dx%d%s%d\n",
-> > > +                           mode->hdisplay, mode->vdisplay,
-> > > +                           interlaced ? "i" : "p", drm_mode_vrefresh(mode));
-> > > +
-> > > +       return written;
-> > > +}
-> > > +
-> > >   static DEVICE_ATTR_RW(status);
-> > >   static DEVICE_ATTR_RO(enabled);
-> > >   static DEVICE_ATTR_RO(dpms);
-> > >   static DEVICE_ATTR_RO(modes);
-> > > +static DEVICE_ATTR_RO(current_mode);
-> > > 
-> > >   static struct attribute *connector_dev_attrs[] = {
-> > >          &dev_attr_status.attr,
-> > >          &dev_attr_enabled.attr,
-> > >          &dev_attr_dpms.attr,
-> > >          &dev_attr_modes.attr,
-> > > +       &dev_attr_current_mode.attr,
-> > >          NULL
-> > >   };
-> > > 
-> > > --
-> > > 2.17.1
-> > > 
-> > > 
-> > > 
-> > 
-> -- 
-> Best Regard
-> 
-> 黄家钗
-> Sandy Huang
-> Addr: 福州市鼓楼区铜盘路软件大道89号福州软件园A区21号楼(350003)
->       No. 21 Building, A District, No.89,software Boulevard Fuzhou,Fujian,PRC
-> Tel：+86 0591-87884919  8690
-> E-mail：hjc@rock-chips.com
-> 
-> 
-> 
-
--- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+Thanks,
+Alexandru M Stan
