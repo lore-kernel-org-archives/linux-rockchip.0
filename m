@@ -1,113 +1,68 @@
-From: Huang Jiachai <hjc@rock-chips.com>
-Subject: Re: [PATCH] drm: sysfs: Add to get current mode
-Date: Wed, 5 Aug 2020 18:03:15 +0800
-Message-ID: <693f6555-d9d2-f255-1198-e3798c8f4fe8@rock-chips.com>
-References: <20200805083646.4123-1-hjc@rock-chips.com>
- <CAKMK7uGmKJqZJ0ONQjjquZn6mksKbkScmcUSEA43eg1jFskmTg@mail.gmail.com>
+From: Tomasz Figa <tfiga@chromium.org>
+Subject: Re: [PATCH v2 5/9] media: staging: rkisp1: add a pointer to
+ rkisp1_device from struct rkisp1_isp
+Date: Wed, 5 Aug 2020 13:59:46 +0000
+Message-ID: <20200805135946.GA1015630@chromium.org>
+References: <20200718145918.17752-1-dafna.hirschfeld@collabora.com>
+ <20200718145918.17752-6-dafna.hirschfeld@collabora.com>
+ <d8475ade-94a3-48ad-02d7-f03810ddf6dc@collabora.com>
+ <114a3242-88e9-46a1-c8c8-f5bfd424d05a@collabora.com>
+ <CAAFQd5BLuwfnQfYbaWmtre5YCx-_YG4E10cZxeL+6pESap_U0A@mail.gmail.com>
+ <fa457a47-4005-8c64-d135-96b321ddd6a6@collabora.com>
+ <CAAFQd5ATRvBapupZaBf6TkWcVwOy7C9+A95+vLHJiwuUca4LQg@mail.gmail.com>
+ <74c2563c-25ca-833b-2f72-b6e10e6e3847@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <CAKMK7uGmKJqZJ0ONQjjquZn6mksKbkScmcUSEA43eg1jFskmTg@mail.gmail.com>
-Sender: linux-kernel-owner@vger.kernel.org
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>, Tao Huang <huangtao@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, dri-devel <dri-devel@lists.freedesktop.org>, Kever Yang <kever.yang@rock-chips.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Content-Type: text/plain; charset=us-ascii
+Return-path: <linux-media-owner@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <74c2563c-25ca-833b-2f72-b6e10e6e3847@collabora.com>
+Sender: linux-media-owner@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: Helen Koike <helen.koike@collabora.com>, Linux Media Mailing List <linux-media@vger.kernel.org>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Ezequiel Garcia <ezequiel@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Mauro Carvalho Chehab <mchehab@kernel.org>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Daniel
+On Sat, Aug 01, 2020 at 06:08:06PM +0200, Dafna Hirschfeld wrote:
+> 
+> 
+> On 21.07.20 17:32, Tomasz Figa wrote:
+> > On Tue, Jul 21, 2020 at 5:30 PM Dafna Hirschfeld
+> > <dafna.hirschfeld@collabora.com> wrote:
+> > > 
+> > > Hi,
+> > > 
+> > > On 21.07.20 14:36, Tomasz Figa wrote:
+> > > > On Tue, Jul 21, 2020 at 2:26 PM Dafna Hirschfeld
+> > > > <dafna.hirschfeld@collabora.com> wrote:
+> > > > > 
+> > > > > Hi,
+> > > > > 
+> > > > > On 20.07.20 21:25, Helen Koike wrote:
+> > > > > > 
+> > > > > > 
+> > > > > > On 7/18/20 11:59 AM, Dafna Hirschfeld wrote:
+> > > > > > > The code in rkisp1-isp.c requires access to struct 'rkisp1_device'
+> > > > > > > in several places. It access it using the 'container_of' macro.
+> > > > > > > This patch adds a pointer to 'rkisp1_device' in struct 'rkisp1_isp'
+> > > > > > > to simplify the access.
+> > > > > > 
+> > > > > > What is wrong with container_of?
+> > > > > 
+> > > > > I remember Laurent suggested it a while ago.
+> > > > > I also feel container_of is a bit cumbersome and other entities already have a pointer to rkisp1_device.
+> > > > > 
+> > > > 
+> > > > Do we even need the rkisp1_isp struct? Could we just pass rkisp1_device instead?
+> > > 
+> > > pass to where ?  You mean to the function rkisp1_mipi_csi2_start ?
+> > 
+> > Yes, all around the driver, where rkisp1_isp is passed.
+> 
+> Most of the functions are part of subdevice callback implementation
+> where the rkisp1_device is not needed, so I don't the see the point.
 
-在 2020/8/5 17:36, Daniel Vetter 写道:
-> On Wed, Aug 5, 2020 at 10:37 AM Sandy Huang <hjc@rock-chips.com> wrote:
->> add this node to get the current true mode.
->>
->> Signed-off-by: Sandy Huang <hjc@rock-chips.com>
-> Uh what's this for? Since it's sysfs, I guess there's something
-> parsing this, which means we'd kinda need to have that piece too.
->
-> If it's just for debugging purposes, then we already have this
-> information in debugfs, together with everything else that's in the
-> atomic modeset state.
-> -Daniel
+Okay, so then I'd just lean towards keeping it as is. container_of is
+generally considered more efficient than a pointer, because it doesn't
+require a load operation to obtain a reference to the parent struct.
 
-yes, this is just for debug;
-
-and i get the information what i need from cat 
-/sys/kernel/debug/dri/0/state, thanks.
-
->> ---
->>   drivers/gpu/drm/drm_sysfs.c | 30 ++++++++++++++++++++++++++++++
->>   1 file changed, 30 insertions(+)
->>
->> diff --git a/drivers/gpu/drm/drm_sysfs.c b/drivers/gpu/drm/drm_sysfs.c
->> index 939f0032aab1..f39bcd34853b 100644
->> --- a/drivers/gpu/drm/drm_sysfs.c
->> +++ b/drivers/gpu/drm/drm_sysfs.c
->> @@ -19,6 +19,7 @@
->>   #include <linux/slab.h>
->>
->>   #include <drm/drm_connector.h>
->> +#include <drm/drm_crtc.h>
->>   #include <drm/drm_device.h>
->>   #include <drm/drm_file.h>
->>   #include <drm/drm_modes.h>
->> @@ -236,16 +237,45 @@ static ssize_t modes_show(struct device *device,
->>          return written;
->>   }
->>
->> +static ssize_t current_mode_show(struct device *device,
->> +                     struct device_attribute *attr,
->> +                     char *buf)
->> +{
->> +       struct drm_connector *connector = to_drm_connector(device);
->> +       struct drm_display_mode *mode;
->> +       struct drm_crtc_state *crtc_state;
->> +       bool interlaced;
->> +       int written = 0;
->> +
->> +       if (!connector->state || !connector->state->crtc)
->> +               return written;
->> +
->> +       crtc_state = connector->state->crtc->state;
->> +       if (!crtc_state)
->> +               return written;
->> +
->> +       mode = &crtc_state->mode;
->> +
->> +       interlaced = !!(mode->flags & DRM_MODE_FLAG_INTERLACE);
->> +       written += snprintf(buf + written, PAGE_SIZE - written, "%dx%d%s%d\n",
->> +                           mode->hdisplay, mode->vdisplay,
->> +                           interlaced ? "i" : "p", drm_mode_vrefresh(mode));
->> +
->> +       return written;
->> +}
->> +
->>   static DEVICE_ATTR_RW(status);
->>   static DEVICE_ATTR_RO(enabled);
->>   static DEVICE_ATTR_RO(dpms);
->>   static DEVICE_ATTR_RO(modes);
->> +static DEVICE_ATTR_RO(current_mode);
->>
->>   static struct attribute *connector_dev_attrs[] = {
->>          &dev_attr_status.attr,
->>          &dev_attr_enabled.attr,
->>          &dev_attr_dpms.attr,
->>          &dev_attr_modes.attr,
->> +       &dev_attr_current_mode.attr,
->>          NULL
->>   };
->>
->> --
->> 2.17.1
->>
->>
->>
->
--- 
-Best Regard
-
-黄家钗
-Sandy Huang
-Addr: 福州市鼓楼区铜盘路软件大道89号福州软件园A区21号楼(350003)
-       No. 21 Building, A District, No.89,software Boulevard Fuzhou,Fujian,PRC
-Tel：+86 0591-87884919  8690
-E-mail：hjc@rock-chips.com
+Best regards,
+Tomasz
