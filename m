@@ -1,7 +1,7 @@
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+From: Tomasz Figa <tfiga@chromium.org>
 Subject: Re: [PATCH v8 05/14] media: rkisp1: add Rockchip ISP1 subdev driver
-Date: Thu, 6 Aug 2020 11:21:52 +0200
-Message-ID: <05fb7b03-22b5-c981-2602-bbe877943d58@collabora.com>
+Date: Thu, 6 Aug 2020 14:08:43 +0200
+Message-ID: <CAAFQd5CeH9GrsN8Z+DfqLGbmHMPbjHca8-sVhcXY17JuL-r6Hg@mail.gmail.com>
 References: <20190730184256.30338-1-helen.koike@collabora.com>
  <20190730184256.30338-6-helen.koike@collabora.com>
  <20190816001323.GF5011@pendragon.ideasonboard.com>
@@ -9,11 +9,10 @@ References: <20190730184256.30338-1-helen.koike@collabora.com>
  <20200722152459.GC1828171@chromium.org>
  <32a95f66-0328-dfe7-c05c-657aba0d1b25@collabora.com>
 Mime-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Return-path: <linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org>
 In-Reply-To: <32a95f66-0328-dfe7-c05c-657aba0d1b25@collabora.com>
-Content-Language: en-US
 List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
@@ -23,239 +22,343 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>,
  <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
 Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
 Errors-To: linux-arm-kernel-bounces+linux-arm-kernel=m.gmane-mx.org@lists.infradead.org
-To: Tomasz Figa <tfiga@chromium.org>
-Cc: devicetree@vger.kernel.org, eddie.cai.linux@gmail.com, kernel@collabora.com, heiko@sntech.de, jacob2.chen@rock-chips.com, jeffy.chen@rock-chips.com, zyc@rock-chips.com, linux-kernel@vger.kernel.org, Allon Huang <allon.huang@rock-chips.com>, linux-rockchip@lists.infradead.org, Helen Koike <helen.koike@collabora.com>, Jacob Chen <cc@rock-chips.com>, hans.verkuil@cisco.com, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, sakari.ailus@linux.intel.com, zhengsq@rock-chips.com, mchehab@kernel.org, ezequiel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Cc: linux-devicetree <devicetree@vger.kernel.org>, Eddie Cai <eddie.cai.linux@gmail.com>, kernel@collabora.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, Chen Jacob <jacob2.chen@rock-chips.com>, Jeffy <jeffy.chen@rock-chips.com>, =?UTF-8?B?6ZKf5Lul5bSH?= <zyc@rock-chips.com>, Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Allon Huang <allon.huang@rock-chips.com>, "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, Helen Koike <helen.koike@collabora.com>, Jacob Chen <cc@rock-chips.com>, Hans Verkuil <hans.verkuil@cisco.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, Shunqian Zheng <zhengsq@rock-chips.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia <ezequiel@collabora.com>, list@263.net:IOMMU DRIVERS <iommu@lists.linux-foundation.org>,
+ Joerg Roedel <joro@8bytes.o
 List-Id: linux-rockchip.vger.kernel.org
 
-CgpBbSAwNS4wOC4yMCB1bSAyMzoxMCBzY2hyaWViIERhZm5hIEhpcnNjaGZlbGQ6Cj4gSGkKPiAK
-PiBPbiAyMi4wNy4yMCAxNzoyNCwgVG9tYXN6IEZpZ2Egd3JvdGU6Cj4+IEhpIERhZm5hLAo+Pgo+
-PiBPbiBTYXQsIEp1bCAxMSwgMjAyMCBhdCAwMTowNDozMVBNICswMjAwLCBEYWZuYSBIaXJzY2hm
-ZWxkIHdyb3RlOgo+Pj4gSGkgTGF1cmVudCwKPj4+Cj4+PiBPbiAxNi4wOC4xOSAwMjoxMywgTGF1
-cmVudCBQaW5jaGFydCB3cm90ZToKPj4+PiBIZWxsbyBIZWxlbiwKPj4+Pgo+Pj4+IFRoYW5rIHlv
-dSBmb3IgdGhlIHBhdGNoLgo+Pj4+Cj4+Pj4gT24gVHVlLCBKdWwgMzAsIDIwMTkgYXQgMDM6NDI6
-NDdQTSAtMDMwMCwgSGVsZW4gS29pa2Ugd3JvdGU6Cj4+IFtzbmlwXQo+Pj4+PiArc3RhdGljIHZv
-aWQgcmtpc3AxX2lzcF9xdWV1ZV9ldmVudF9zb2Yoc3RydWN0IHJraXNwMV9pc3Bfc3ViZGV2ICpp
-c3ApCj4+Pj4+ICt7Cj4+Pj4+ICvCoMKgwqAgc3RydWN0IHY0bDJfZXZlbnQgZXZlbnQgPSB7Cj4+
-Pj4+ICvCoMKgwqDCoMKgwqDCoCAudHlwZSA9IFY0TDJfRVZFTlRfRlJBTUVfU1lOQywKPj4+Pj4g
-K8KgwqDCoMKgwqDCoMKgIC51LmZyYW1lX3N5bmMuZnJhbWVfc2VxdWVuY2UgPQo+Pj4+PiArwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBhdG9taWNfaW5jX3JldHVybigmaXNwLT5mcm1fc3luY19zZXEp
-IC0gMSwKPj4+Pgo+Pj4+IEkgd291bGQgbW92ZSB0aGUgaW5jcmVtZW50IHRvIHRoZSBjYWxsZXIs
-IGhpZGluZyBpdCBpbiB0aGlzIGZ1bmN0aW9uIGlzCj4+Pj4gZXJyb3ItcHJvbmUgKGFuZCBpZiB5
-b3UgbG9vayBhdCB0aGUgY2FsbGVyIEknbSBwb2ludGluZyBvdXQgb25lIHBvc3NpYmxlCj4+Pj4g
-ZXJyb3IgOi0pKS4KPj4+Pgo+Pj4+IEluIGdlbmVyYWwgdXNhZ2Ugb2YgZnJtX3N5bmNfc2VxIHRo
-cm91Z2ggdGhlIGRyaXZlciBzZWVtcyB0byBiZSB2ZXJ5Cj4+Pj4gcmFjZS1wcm9uZS4gSXQncyBy
-ZWFkIGluIHZhcmlvdXMgSVJRIGhhbmRsaW5nIGZ1bmN0aW9ucywgYWxsIGNvbWluZyBmcm9tCj4+
-Pj4gdGhlIHNhbWUgSVJRLCBzbyB0aGF0IHBhcnQgaXMgZmluZSAoYW5kIHdvdWxkbid0IHJlcXVp
-cmUgYW4gYXRvbWljCj4+Pj4gdmFyaWFibGUpLCBidXQgd2hlbiByZWFkIGZyb20gdGhlIGJ1ZmZl
-ciBxdWV1ZSBoYW5kbGVycyBJIHJlYWxseSBnZXQgYQo+Pj4+IHJlZCBsaWdodCBmbGFzaGluZyBp
-biBteSBoZWFkLiBJJ2xsIHRyeSB0byBpbnZlc3RpZ2F0ZSBtb3JlIHdoZW4KPj4+PiByZXZpZXdp
-bmcgdGhlIG5leHQgcGF0Y2hlcy4KPj4+Cj4+PiBJIHNlZSB0aGF0IHRoZSBvbmx5IHBsYWNlIHdl
-cmUgJ2ZyYW1lX3NlcXVlbmNlJyBpcyByZWFkIG91dHNpZGUgb2YgdGhlIGlycQo+Pj4gaGFuZGxl
-cnMgaXMgaW4gdGhlIGNhcHR1cmUgaW4gJ3JraXNwMV92YjJfYnVmX3F1ZXVlJzoKPj4+Cj4+PiDC
-oMKgwqDCoC8qCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgKiBJZiB0aGVyZSdzIG5vIG5leHQgYnVm
-ZmVyIGFzc2lnbmVkLCBxdWV1ZSB0aGlzIGJ1ZmZlciBkaXJlY3RseQo+Pj4gwqDCoMKgwqDCoMKg
-wqDCoMKgICogYXMgdGhlIG5leHQgYnVmZmVyLCBhbmQgdXBkYXRlIHRoZSBtZW1vcnkgaW50ZXJm
-YWNlLgo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgICovCj4+PiDCoMKgwqDCoMKgwqDCoMKgIGlmIChj
-YXAtPmlzX3N0cmVhbWluZyAmJiAhY2FwLT5idWYubmV4dCAmJgo+Pj4gwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIGF0b21pY19yZWFkKCZjYXAtPnJraXNwMS0+aXNwLmZyYW1lX3NlcXVlbmNlKSA9
-PSAtMSkgewo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY2FwLT5idWYubmV4
-dCA9IGlzcGJ1ZjsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJraXNwMV9z
-ZXRfbmV4dF9idWYoY2FwKTsKPj4+IMKgwqDCoMKgwqDCoMKgwqAgfSBlbHNlIHsKPj4+IMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGxpc3RfYWRkX3RhaWwoJmlzcGJ1Zi0+cXVldWUs
-ICZjYXAtPmJ1Zi5xdWV1ZSk7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgIH0KPj4+IFRoaXMgImlmIiBj
-b25kaXRpb24gc2VlbXMgdmVyeSBzcGVjaWZpYywgYSBjYXNlIHdoZXJlIHdlIGFscmVhZHkgc3Ry
-ZWFtIGJ1dCB2LXN0YXJ0IHdhcyBub3QgeWV0IHJlY2VpdmVkLgo+Pj4gSSB0aGluayBpdCBpcyBw
-b3NzaWJsZSB0byByZW1vdmUgdGhlIHRlc3QgJ2F0b21pY19yZWFkKCZjYXAtPnJraXNwMS0+aXNw
-LmZyYW1lX3NlcXVlbmNlKSA9PSAtMScKPj4+IGZyb20gdGhlIGFib3ZlIGNvbmRpdGlvbiBzbyB0
-aGF0IHRoZSBuZXh0IGJ1ZmZlciBpcyB1cGRhdGVkIGluIGNhc2UgaXQgaXMgbnVsbCBub3QganVz
-dCBiZWZvcmUgdGhlIGZpcnN0Cj4+PiB2LXN0YXJ0IHNpZ25hbC4KPj4+Cj4+Cj4+IFdlIGRvbid0
-IGhhdmUgdGhpcyBzcGVjaWFsIGNhc2UgaW4gdGhlIENocm9tZSBPUyBjb2RlLgo+Pgo+PiBJIHN1
-cHBvc2UgaXQgd291bGQgbWFrZSBpdCBwb3NzaWJsZSB0byByZXN1bWUgdGhlIGNhcHR1cmUgMSBm
-cmFtZQo+PiBlYXJsaWVyIGFmdGVyIGEgcXVldWUgdW5kZXJydW4sIGFzIG90aGVyd2lzZSB0aGUg
-bmV3IGJ1ZmZlciB3b3VsZCBiZQo+PiBvbmx5IHByb2dyYW1tZWQgYWZ0ZXIgdGhlIG5leHQgZnJh
-bWUgc3RhcnQgaW50ZXJydXB0IGFuZCB1c2VkIGZvciB0aGUKPj4gbmV4dC1uZXh0IGZyYW1lLsKg
-IEhvd2V2ZXIsIGl0J3MgcmFjeSwgYmVjYXVzZSBwcm9ncmFtbWluZyBvZiB0aGUgYnVmZmVyCj4+
-IGFkZHJlc3NlcyBpcyBub3QgYXRvbWljIGFuZCBjb3VsZCBlbmQgdXAgd2l0aCB0aGUgaGFyZHdh
-cmUgdXNpbmcgZmV3Cj4+IHBsYW5lIGFkZHJlc3NlcyBmcm9tIHRoZSBuZXcgYnVmZmVyIGFuZCBm
-ZXcgZnJvbSB0aGUgZHVtbXkgYnVmZmVyLgo+Pgo+PiBHaXZlbiB0aGF0IGFuZCBhbHNvIHRoZSBm
-YWN0IHRoYXQgYSBxdWV1ZSB1bmRlcnJ1biBpcyBhIHZlcnkgc3BlY2lhbAo+PiBjYXNlLCB3aGVy
-ZSB0aGUgc3lzdGVtIHdhcyBhbHJlYWR5IGhhdmluZyBwcm9ibGVtcyBjYXRjaGluZyB1cCwgSSdk
-IGp1c3QKPj4gcmVtb3ZlIHRoaXMgc3BlY2lhbCBjYXNlLgo+Pgo+PiBbc25pcF0KPj4+Pj4gK3Zv
-aWQgcmtpc3AxX2lzcF9pc3IodW5zaWduZWQgaW50IGlzcF9taXMsIHN0cnVjdCBya2lzcDFfZGV2
-aWNlICpkZXYpCj4+Pj4+ICt7Cj4+Pj4+ICvCoMKgwqAgdm9pZCBfX2lvbWVtICpiYXNlID0gZGV2
-LT5iYXNlX2FkZHI7Cj4+Pj4+ICvCoMKgwqAgdW5zaWduZWQgaW50IGlzcF9taXNfdG1wID0gMDsK
-Pj4+Pgo+Pj4+IF90bXAgYXJlIG5ldmVyIGdvb2QgbmFtZXMgOi1TCj4+Pj4KPj4+Pj4gK8KgwqDC
-oCB1bnNpZ25lZCBpbnQgaXNwX2VyciA9IDA7Cj4+Pj4KPj4+PiBOZWl0aGVyIG9mIHRoZXNlIHZh
-cmlhYmxlIG5lZWQgdG8gYmUgaW5pdGlhbGlzZWQgdG8gMC4KPj4+Pgo+Pj4+PiArCj4+Pj4+ICvC
-oMKgwqAgLyogc3RhcnQgZWRnZSBvZiB2X3N5bmMgKi8KPj4+Pj4gK8KgwqDCoCBpZiAoaXNwX21p
-cyAmIENJRl9JU1BfVl9TVEFSVCkgewo+Pj4+PiArwqDCoMKgwqDCoMKgwqAgcmtpc3AxX2lzcF9x
-dWV1ZV9ldmVudF9zb2YoJmRldi0+aXNwX3NkZXYpOwo+Pj4+Cj4+Pj4gVGhpcyB3aWxsIGluY3Jl
-bWVudCB0aGUgZnJhbWUgc2VxdWVuY2UgbnVtYmVyLiBXaGF0IGlmIHRoZSBpbnRlcnJ1cHQgaXMK
-Pj4+PiBzbGlnaHRseSBkZWxheWVkIGFuZCB0aGUgbmV4dCBmcmFtZSBzdGFydHMgYmVmb3JlIHdl
-IGdldCBhIGNoYW5nZSB0bwo+Pj4+IGNvcHkgdGhlIHNlcXVlbmNlIG51bWJlciB0byB0aGUgYnVm
-ZmVycyAoYmVmb3JlIHRoZXkgd2lsbCBjb21wbGV0ZQo+Pj4+IGJlbG93KSA/Cj4+Pgo+Pj4gRG8g
-eW91IG1lYW4gdGhhdCB3ZSBnZXQgdHdvIHNlcXVlbnRhbCB2LXN0YXJ0IHNpZ25hbHMgYW5kIHRo
-ZW4gdGhlIG5leHQKPj4+IGZyYW1lLWVuZCBzaWduYWwgaW4gTUlfTUlTIGJlbG9uZ3MgdG8gdGhl
-IGZpcnN0IHYtc3RhcnQgc2lnbmFsIG9mIHRoZSB0d28/Cj4+PiBIb3cgY2FuIHRoaXMgYmUgc29s
-dmVkPyBJIHdvbmRlciBpZiBhbnkgdi1zdGFydCBzaWduYWwgaGFzIGEgbGF0ZXIgc2lnbmFsCj4+
-PiB0aGF0IGNvcnJlc3BvbmQgdG8gdGhlIHNhbWUgZnJhbWUgc28gdGhhdCB3ZSBjYW4gZm9sbG93
-IGl0Pwo+Pj4KPj4+IE1heWJlIHdlIHNob3VsZCBoYXZlIG9uZSBjb3VudGVyIHRoYXQgaXMgaW5j
-cmVtZW50ZWQgb24gdi1zdGFydCBzaWduYWwsCj4+PiBhbmQgYW5vdGhlciBjb3VudGVyIHRoYXQg
-aXMgaW5jcmVtZW50ZWQgdXBwb24gc29tZSBvdGhlciBzaWduYWw/Cj4+Pgo+Pgo+PiBXZSdyZSB0
-YWxraW5nIGFib3V0IGEgaGFyZCBJUlEuIEkgY2FuJ3QgaW1hZ2luZSB0aGUgaW50ZXJydXB0IGhh
-bmRsZXIKPj4gYmVpbmcgZGVsYXllZCBmb3IgYSB0aW1lIGNsb3NlIHRvIGEgZnVsbCBmcmFtZSBp
-bnRlcnZhbCAofjE2bXMgZm9yIDYwCj4+IGZwcykgdG8gdHJpZ2dlciBzdWNoIHNjZW5hcmlvLgo+
-Pgo+Pj4+Cj4+Pj4+ICsKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHdyaXRlbChDSUZfSVNQX1ZfU1RB
-UlQsIGJhc2UgKyBDSUZfSVNQX0lDUik7Cj4+Pj4KPj4+PiBEbyB5b3UgbmVlZCB0byBjbGVhciBh
-bGwgaW50ZXJydXB0IGJpdHMgaW5kaXZpZHVhbGx5LCBjYW4ndCB5b3Ugd3JpdGUKPj4+PiBpc3Bf
-bWlzIHRvIENJRl9JU1BfSUNSIGF0IHRoZSBiZWdpbm5pbmcgb2YgdGhlIGZ1bmN0aW9uIHRvIGNs
-ZWFyIHRoZW0KPj4+PiBhbGwgaW4gb25lIGdvID8KPj4+Pgo+Pj4+PiArwqDCoMKgwqDCoMKgwqAg
-aXNwX21pc190bXAgPSByZWFkbChiYXNlICsgQ0lGX0lTUF9NSVMpOwo+Pj4+PiArwqDCoMKgwqDC
-oMKgwqAgaWYgKGlzcF9taXNfdG1wICYgQ0lGX0lTUF9WX1NUQVJUKQo+Pj4+PiArwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCB2NGwyX2VycigmZGV2LT52NGwyX2RldiwgImlzcCBpY3Igdl9zdGF0ciBl
-cnI6IDB4JXhcbiIsCj4+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpc3Bf
-bWlzX3RtcCk7Cj4+Pj4KPj4+PiBUaGlzIHJlcXVpcmUgc29tZSBleHBsYW5hdGlvbi4gSXQgbG9v
-a3MgbGlrZSBhIG5haXZlIHdheSB0byBwcm90ZWN0Cj4+Pj4gYWdhaW5zdCBzb21ldGhpbmcsIGJ1
-dCBJIHRoaW5rIGl0IGNvdWxkIHRyaWdnZXIgdW5kZXIgbm9ybWFsCj4+Pj4gY2lyY3Vtc3RhbmNl
-cyBpZiBJUlEgaGFuZGxpbmcgaXMgZGVsYXllZCwgYW5kIHdvdWxkbid0IGRvIG11Y2ggYW55d2F5
-Lgo+Pj4+IFNhbWUgZm9yIHRoZSBzaW1pbGFyIGNvbnN0cnVjdHMgYmVsb3cuCj4+Pj4KPj4+Pj4g
-K8KgwqDCoCB9Cj4+Pj4+ICsKPj4+Pj4gK8KgwqDCoCBpZiAoKGlzcF9taXMgJiBDSUZfSVNQX1BJ
-Q19TSVpFX0VSUk9SKSkgewo+Pj4+PiArwqDCoMKgwqDCoMKgwqAgLyogQ2xlYXIgcGljX3NpemVf
-ZXJyb3IgKi8KPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHdyaXRlbChDSUZfSVNQX1BJQ19TSVpFX0VS
-Uk9SLCBiYXNlICsgQ0lGX0lTUF9JQ1IpOwo+Pj4+PiArwqDCoMKgwqDCoMKgwqAgaXNwX2VyciA9
-IHJlYWRsKGJhc2UgKyBDSUZfSVNQX0VSUik7Cj4+Pj4+ICvCoMKgwqDCoMKgwqDCoCB2NGwyX2Vy
-cigmZGV2LT52NGwyX2RldiwKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAiQ0lGX0lT
-UF9QSUNfU0laRV9FUlJPUiAoMHglMDh4KSIsIGlzcF9lcnIpOwo+Pj4+Cj4+Pj4gV2hhdCBkb2Vz
-IHRoaXMgbWVhbiA/Cj4+Pj4KPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHdyaXRlbChpc3BfZXJyLCBi
-YXNlICsgQ0lGX0lTUF9FUlJfQ0xSKTsKPj4+Pj4gK8KgwqDCoCB9IGVsc2UgaWYgKChpc3BfbWlz
-ICYgQ0lGX0lTUF9EQVRBX0xPU1MpKSB7Cj4+Pj4KPj4+PiBBcmUgQ0lGX0lTUF9QSUNfU0laRV9F
-UlJPUiBhbmQgQ0lGX0lTUF9EQVRBX0xPU1MgbXV0dWFsbHkgZXhjbHVzaXZlID8KPj4+Pgo+Pj4+
-PiArwqDCoMKgwqDCoMKgwqAgLyogQ2xlYXIgZGF0YV9sb3NzICovCj4+Pj4+ICvCoMKgwqDCoMKg
-wqDCoCB3cml0ZWwoQ0lGX0lTUF9EQVRBX0xPU1MsIGJhc2UgKyBDSUZfSVNQX0lDUik7Cj4+Pj4+
-ICvCoMKgwqDCoMKgwqDCoCB2NGwyX2VycigmZGV2LT52NGwyX2RldiwgIkNJRl9JU1BfREFUQV9M
-T1NTXG4iKTsKPj4+Pj4gK8KgwqDCoMKgwqDCoMKgIHdyaXRlbChDSUZfSVNQX0RBVEFfTE9TUywg
-YmFzZSArIENJRl9JU1BfSUNSKTsKPj4+Pj4gK8KgwqDCoCB9Cj4+Pj4+ICsKPj4+Pj4gK8KgwqDC
-oCAvKiBzYW1wbGVkIGlucHV0IGZyYW1lIGlzIGNvbXBsZXRlICovCj4+Pj4+ICvCoMKgwqAgaWYg
-KGlzcF9taXMgJiBDSUZfSVNQX0ZSQU1FX0lOKSB7Cj4+Pj4+ICvCoMKgwqDCoMKgwqDCoCB3cml0
-ZWwoQ0lGX0lTUF9GUkFNRV9JTiwgYmFzZSArIENJRl9JU1BfSUNSKTsKPj4+Pj4gK8KgwqDCoMKg
-wqDCoMKgIGlzcF9taXNfdG1wID0gcmVhZGwoYmFzZSArIENJRl9JU1BfTUlTKTsKPj4+Pj4gK8Kg
-wqDCoMKgwqDCoMKgIGlmIChpc3BfbWlzX3RtcCAmIENJRl9JU1BfRlJBTUVfSU4pCj4+Pj4+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHY0bDJfZXJyKCZkZXYtPnY0bDJfZGV2LCAiaXNwIGljciBm
-cmFtZV9pbiBlcnI6IDB4JXhcbiIsCj4+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCBpc3BfbWlzX3RtcCk7Cj4+Pj4+ICvCoMKgwqAgfQo+Pj4+PiArCj4+Pj4+ICvCoMKgwqAg
-LyogZnJhbWUgd2FzIGNvbXBsZXRlbHkgcHV0IG91dCAqLwo+Pj4+Cj4+Pj4gInB1dCBvdXQiID8g
-Oi0pIFdoYXQncyB0aGUgZGlmZmVyZW5jZSBiZXR3ZWVuIElTUF9GUkFNRV9JTiBhbmQgSVNQX0ZS
-QU1FCj4+Pj4gPyBUaGUgdHdvIGNvbW1lbnRzIGNvdWxkIGRvIHdpdGggYSBiaXQgb2YgYnJ1c2gg
-dXAsIGFuZCBJIHRoaW5rIHRoZQo+Pj4+IElTUF9GUkFNRV9JTiBpbnRlcnJ1cHQgY291bGQgYmUg
-ZGlzYWJsZWQgYXMgaXQgZG9lc24ndCBwZXJmb3JtIGFueQo+Pj4+IGFjdGlvbi4KPj4+Cj4+PiBU
-aG9zZSB0d28gb25lbGluZSBjb21tZW50cyBhcmUganVzdCBjb3B5LXBhc3RlIGZyb20gdGhlIGRh
-dGFzaGVldC4KPj4+Cj4+PiAiIgo+Pj4gNSBNSVNfRlJBTUVfSU4gc2FtcGxlZCBpbnB1dCBmcmFt
-ZSBpcyBjb21wbGV0ZQo+Pj4gMSBNSVNfRlJBTUUgZnJhbWUgd2FzIGNvbXBsZXRlbHkgcHV0IG91
-dAo+Pj4gIiIKPj4+Cj4+PiBVbmZyb3R1bmF0ZWx5LCB0aGUgZGF0YXNoZWV0IGRvZXMgbm90IGFk
-ZCBhbnkgZnVydGhlciBleHBsYW5hdGlvbiBhYm91dCB0aG9zZSBzaWduYWxzLgo+Pj4KPj4+Cj4+
-Cj4+IE15IGxvb3NlIHJlY29sbGVjdGlvbiBpcyB0aGF0IHRoZSBmb3JtZXIgaXMgc2lnbmFsZWQg
-d2hlbiB0aGVuIGZyYW1lCj4+IGlzIGZ1bGx5IGlucHV0IHRvIHRoZSBJU1AgYW5kIHRoZSBsYXR0
-ZXIgd2hlbiB0aGUgSVNQIGNvbXBsZXRlcwo+PiBvdXRwdXR0aW5nIHRoZSBmcmFtZSB0byB0aGUg
-bmV4dCBibG9jayBpbiB0aGUgcGlwZWxpbmUsIGJ1dCBzb21lb25lCj4+IHdvdWxkIG5lZWQgdG8g
-dmVyaWZ5IHRoaXMsIGZvciBleGFtcGxlIGJ5IHByaW50aW5nIHRpbWVzdGFtcHMgZm9yIGFsbAo+
-PiB0aGUgdmFyaW91cyBpbnRlcnJ1cHRzLgo+Pgo+Pj4+Cj4+Pj4+ICvCoMKgwqAgaWYgKGlzcF9t
-aXMgJiBDSUZfSVNQX0ZSQU1FKSB7Cj4+Pj4+ICvCoMKgwqDCoMKgwqDCoCB1MzIgaXNwX3JpcyA9
-IDA7Cj4+Pj4KPj4+PiBObyBuZWVkIHRvIGluaXRpYWxpc2UgdGhpcyB0byAwLgo+Pj4+Cj4+Pj4+
-ICvCoMKgwqDCoMKgwqDCoCAvKiBDbGVhciBGcmFtZSBJbiAoSVNQKSAqLwo+Pj4+PiArwqDCoMKg
-wqDCoMKgwqAgd3JpdGVsKENJRl9JU1BfRlJBTUUsIGJhc2UgKyBDSUZfSVNQX0lDUik7Cj4+Pj4+
-ICvCoMKgwqDCoMKgwqDCoCBpc3BfbWlzX3RtcCA9IHJlYWRsKGJhc2UgKyBDSUZfSVNQX01JUyk7
-Cj4+Pj4+ICvCoMKgwqDCoMKgwqDCoCBpZiAoaXNwX21pc190bXAgJiBDSUZfSVNQX0ZSQU1FKQo+
-Pj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB2NGwyX2VycigmZGV2LT52NGwyX2RldiwKPj4+
-Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICJpc3AgaWNyIGZyYW1lIGVuZCBl
-cnI6IDB4JXhcbiIsIGlzcF9taXNfdG1wKTsKPj4+Pj4gKwo+Pj4+PiArwqDCoMKgwqDCoMKgwqAg
-aXNwX3JpcyA9IHJlYWRsKGJhc2UgKyBDSUZfSVNQX1JJUyk7Cj4+Pj4+ICvCoMKgwqDCoMKgwqDC
-oCBpZiAoaXNwX3JpcyAmIChDSUZfSVNQX0FXQl9ET05FIHwgQ0lGX0lTUF9BRk1fRklOIHwKPj4+
-Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBDSUZfSVNQX0VYUF9FTkQg
-fCBDSUZfSVNQX0hJU1RfTUVBU1VSRV9SRFkpKQo+Pj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCBya2lzcDFfc3RhdHNfaXNyKCZkZXYtPnN0YXRzX3ZkZXYsIGlzcF9yaXMpOwo+Pj4+Cj4+Pj4g
-SXMgdGhlcmUgYSBndWFyYW50ZWUgdGhhdCB0aGUgc3RhdGlzdGljcyB3aWxsIGJlIGZ1bGx5IHdy
-aXR0ZW4gb3V0Cj4+Pj4gYmVmb3JlIHRoZSB2aWRlbyBmcmFtZSBpdHNlbGYgPyBBbmQgZG9lc24n
-dCB0aGlzIHRlc3QgaWYgYW55IG9mIHRoZQo+Pj4+IHN0YXRpc3RpY3MgaXMgY29tcGxldGUsIG5v
-dCBhbGwgb2YgdGhlbSA/IEkgdGhpbmsgdGhlIGxvZ2ljIGlzIHdyb25nLCBpdAo+Pj4KPj4+IFRo
-ZSBkYXRhc2hlZXQgZG9lcyBub3QgYWRkIGFueSBleHBsYW5hdGlvbiBvZiB3aGF0IGlzIGV4cGVj
-dGVkIHRvIGNvbWUgZmlyc3QuCj4+PiBTaG91bGQgd2Ugd2FpdCB1bnRpbCBhbGwgc3RhdGlzdGlj
-cyBtZWFzdXJlbWVudHMgYXJlIGRvbmU/IEluIHRoZSBzdHJ1Y3QKPj4+IHNlbnQgdG8gdXNlcnNw
-YWNlIHRoZXJlIGlzIGEgYml0bWFrcyBmb3Igd2hpY2ggb2YgdGhlIHN0YXRpc3RpY3MgYXJlIHJl
-YWQuCj4+PiBJIHRoaW5rIHRoYXQgaWYgb25seSBwYXJ0IG9mIHRoZSBzdGF0aXN0aWNzIGFyZSBy
-ZWFkeSwgd2UgY2FuIGFscmVhZHkgc2VuZCB0aGUgb25jZQo+Pj4gdGhhdCBhcmUgcmVhZHkgdG8g
-dXNlcnNwYWNlLgo+Pj4KPj4KPj4gSWYgd2UgbG9vayBmdXJ0aGVyIGludG8gdGhlIGNvZGUsIHJr
-aXNwMV9zdGF0c19pc3IoKSBjaGVja3MgdGhlCj4+IGludGVycnVwdCBzdGF0dXMgbWFzayBwYXNz
-ZWQgdG8gaXQgYW5kIHJlYWRzIG91dCBvbmx5IHRoZSBwYXJhbWV0ZXJzCj4+IHdpdGggaW5kaWNh
-dGVkIGNvbXBsZXRpb24uIFRoZSBzdGF0aXN0aWNzIG1ldGFkYXRhIGJ1ZmZlciBmb3JtYXQKPj4g
-aW5jbHVkZXMgYSBiaXQgbWFzayB3aGljaCB0ZWxscyB0aGUgdXNlcnNwYWNlIHdoaWNoIG1lYXN1
-cmVtZW50cyBhcmUKPj4gYXZhaWxhYmxlLgo+Pgo+PiBIb3dldmVyLCBJIHRoaW5rIEkndmUgc3Bv
-dHRlZCBhIGJ1ZyB0aGVyZS4gQXQgdGhlIGJlZ2lubmluZyBvZgo+PiBya2lzcDFfc3RhdHNfaXNy
-KCksIGFsbCB0aGUgNCBpbnRlcnJ1cHQgc3RhdHVzIGJpdHMgYXJlIGNsZWFyZWQsCj4+IHJlZ2Fy
-ZGxlc3Mgb2YgdGhlIG1hc2sgdXNlZCBsYXRlciB0byBkZWNpZGUgd2hpY2ggcmVhZG91dHMgbmVl
-ZCB0byBiZQo+PiBkb25lLiBUaGlzIGNvdWxkIG1lYW4gdGhhdCB3aXRoIGFuIHVuZm9ydHVuYXRl
-IHRpbWluZywgc29tZSBtZWFzdXJlbWVudHMKPj4gd291bGQgYmUgbG9zdC4gU28gYXQgbGVhc3Qg
-dGhlIGNvZGUgc2hvdWxkIGJlIGZpeGVkIHRvIG9ubHkgY2xlYXIgdGhlCj4+IGludGVycnVwdHMg
-Yml0cyByZWFsbHkgaGFuZGxlZC4KPiAKPiBJJ2xsIGZpeCB0aGF0CgpJIGFjdHVhbGx5IGRvbid0
-IHRoaW5rIHRoaXMgaXMgYSBidWcuIFRoZSBzdGF0aXN0aWNzIGludGVycnVwdHMgYXJlIG5vdApl
-bmFibGVkIGFuZCBhcmUgcmVhZCBmcm9tIHRoZSByYXcgaW50ZXJydXB0cyByZWdpc3Rlci4gVGhp
-cyBtZWFucwp0aGF0IGlmIHdlIG1pc3NlZCBhIHN0YXRpc3RpY3MgZm9yIHRoZSBjdXJyZW50IGZy
-YW1lIGFuZCB3ZSBkb24ndCByZXNldCBpdAp0aGVuIHdlIHdpbGwgcmVhZCBpdCBvbmx5IHdoZW4g
-dGhlIG5leHQgZnJhbWUgY29tZXMgb3V0LCBzbyBpdCB3aWxsIGJlCndyb25nbHkgc2V0IGFzIHN0
-YXRpc3RpY3MgZm9yIHRoZSBuZXh0IGZyYW1lIGFsdGhvdWdoIGl0IGlzIGFjdHVhbGx5IGZvciB0
-aGUKY3VycmVudCBmcmFtZS4KClRoYW5rcywKRGFmbmEKCj4gCj4+Cj4+IEFzIGZvciB3aGV0aGVy
-IHRvIHNlbmQgc2VwYXJhdGUgYnVmZmVycyBmb3IgZWFjaCBtZWFzdXJlbWVudCwgSSBndWVzcwo+
-PiBpdCdzIG5vdCBhIGJhZCB0aGluZyB0byBsZXQgdGhlIHVzZXJzcGFjZSBhY2Nlc3MgdGhlIG9u
-ZXMgYXZhaWxhYmxlCj4+IGVhcmxpZXIuIE5vdyBJIG9ubHkgZG9uJ3QgcmVjYWxsIHdoeSB3ZSBk
-ZWNpZGVkIHRvIHB1dCBhbGwgdGhlCj4+IG1lYXN1cmVtZW50cyBpbnRvIG9uZSBtZXRhZGF0YSBz
-dHJ1Y3R1cmUsIHJhdGhlciB0aGFuIHNwbGl0dGluZyB0aGUgNAo+PiBpbnRvIHRoZWlyIG93biBz
-dHJ1Y3R1cmVzIGFuZCBidWZmZXIgcXVldWVzLi4uCj4gCj4gSXMgaXQgcG9zc2libGUgdG8gaGF2
-ZSBzZXZlcmFsIHF1ZXVlcyB0byB0aGUgc2FtZSB2aWRlbyBub2RlPwo+IAo+Pgo+Pj4+IHNlZW1z
-IGl0IHNob3VsZCBiZSBtb3ZlZCBvdXQgb2YgdGhlIENJRl9JU1BfRlJBTUUgdGVzdCwgdG8gYSB0
-ZXN0IG9mIGl0cwo+Pj4+IG93bi4gSXQncyBoYXJkIHRvIHRlbGwgZm9yIHN1cmUgd2l0aG91dCBl
-eHRyYSBpbmZvcm1hdGlvbiB0aG91Z2ggKGZvcgo+Pj4+IGluc3RhbmNlIHdoeSBhcmUgdGhlIHN0
-YXRzLXJlbGF0ZWQgYml0cyByZWFkIGZyb20gQ0lGX0lTUF9SSVMsIHdoZW4KPj4+PiB0aGV5IHNl
-ZW0gdG8gYmUgZG9jdW1lbnRlZCBhcyB2YWxpZCBpbiBDSUZfSVNQX0lTUiksIGJ1dCB0aGlzIHNo
-b3VsZCBiZQo+Pj4+IHZhbGlkYXRlZCwgYW5kIG1vc3QgcHJvYmFibHkgZml4ZWQuIENhcmUgc2hv
-dWxkIGJlIHRha2VuIHRvIGtlZXAKPj4+PiBzeW5jaHJvbmlzYXRpb24gb2Ygc2VxdWVuY2UgbnVt
-YmVyIGJldHdlZW4gdGhlIGRpZmZlcmVudCBxdWV1ZXMuCj4+Pgo+Pj4gSSBzZWUgdGhhdCB0aGUg
-Y2FwdHVyZSBidWZmZXJzIGFyZSBkb25lIGJlZm9yZSBpbmNyZW1lbnRpbmcgdGhlIGZyYW1lX3Nl
-cXVlbmNlIHdpdGgKPj4+IHRoZSBmb2xsb3dpbmcgZXhwbGFuYXRpb246Cj4+Pgo+Pj4gwqDCoMKg
-wqAvKgo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgICogQ2FsbCBya2lzcDFfY2FwdHVyZV9pc3IoKSBm
-aXJzdCB0byBoYW5kbGUgdGhlIGZyYW1lIHRoYXQKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoCAqIHBv
-dGVudGlhbGx5IGNvbXBsZXRlZCB1c2luZyB0aGUgY3VycmVudCBmcmFtZV9zZXF1ZW5jZSBudW1i
-ZXIgYmVmb3JlCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgKiBpdCBpcyBwb3RlbnRpYWxseSBpbmNy
-ZW1lbnRlZCBieSBya2lzcDFfaXNwX2lzcigpIGluIHRoZSB2ZXJ0aWNhbAo+Pj4gwqDCoMKgwqDC
-oMKgwqDCoMKgICogc3luYy4KPj4+IMKgwqDCoMKgwqDCoMKgwqDCoCAqLwo+Pj4KPj4+IEkgdGhp
-bmsgcmVhZGluZyB0aGUgc3RhdHMvcGFyYW1zIHNob3VsZCBhbHNvIGJlIGRvbmUgYmVmb3JlIGNh
-bGxpbmcgcmtpc3AxX2NhcHR1cmVfaXNyCj4+PiBmb3IgdGhlIHNhbWUgcmVhc29uLiAoc28gdG8g
-bWF0Y2ggdGhlIGNvcnJlY3QgZnJhbWVfc2VxdWVuY2UpCj4+Cj4+IE15IHJlY29sbGVjdGlvbiBv
-ZiB0aGUgc2VxdWVuY2Ugb2YgaW50ZXJydXB0cyBpbiB0aGlzIGhhcmR3YXJlIGlzIGxpa2UKPj4g
-dGhpczoKPj4KPj4gQ0lGX0lTUF9WX1NUQVJUIChmcmFtZSAwKQo+PiDCoMKgIENJRl9JU1BfRlJB
-TUVfSU4gKGZyYW1lIDApCj4+IMKgwqDCoMKgIENJRl9JU1BfRlJBTUUgKGZyYW1lIDApCj4+IMKg
-wqDCoMKgwqDCoCBDSUZfSVNQX0FXQl9ET05FCj4+IMKgwqDCoMKgwqDCoCBDSUZfSVNQX0FGTV9G
-SU4KPj4gwqDCoMKgwqDCoMKgIENJRl9JU1BfRVhQX0VORAo+PiDCoMKgwqDCoMKgwqAgQ0lGX0lT
-UF9ISVNUX01FQVNVUkVfUkRZCj4+IMKgwqDCoMKgwqDCoCBDSUZfTUlfRlJBTUUqCj4+IMKgwqDC
-oMKgwqDCoCBDSUZfSVNQX1ZfU1RBUlQgKGZyYW1lIDEpCj4+IMKgwqDCoMKgwqDCoMKgwqAgQ0lG
-X0lTUF9GUkFNRV9JTiAoZnJhbWUgMSkKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqAgQ0lGX0lTUF9G
-UkFNRSAoZnJhbWUgMSkKPj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIC4uLgo+Pgo+PiB3aGVy
-ZSB0aGUgaW50ZXJydXB0cyBhdCB0aGUgc2FtZSBpbmRlbnRhdGlvbiBsZXZlbCBjYW4gaGFwcGVu
-Cj4+IGluZGVwZW5kZW50bHkgb2YgZWFjaCBvdGhlci4gQWdhaW4sIHNvbWVvbmUgd291bGQgaGF2
-ZSB0byB2ZXJpZnkgdGhpcy4KPiAKPiBJIHdyb3RlIHRoaXMgcGF0Y2ggdG8gcHJpbnQgdGhlIGlu
-dGVycnVwdHMgYW5kIHRoZSB0aW1lIGRpZmZlcmVuY2UgYmV0d2VlbiBpbnRlcnJ1cHRzOgo+IGh0
-dHBzOi8vZ2l0bGFiLmNvbGxhYm9yYS5jb20vZGFmbmEvbGludXgvLS9jb21taXQvOWI5YzVkZGMy
-ZjA2YTZiODdkMmMxYjIxMDIxOWY2OWRlODMyOTZjNQo+IAo+IEkgZ290IHRoaXMgb3V0cHV0OiBo
-dHRwOi8vaXguaW8vMnRsOCwKPiB0aGVyZSBpcyBhIHJlcGVhdGluZyBwYXR0ZXJuIHdoZXJlIG9u
-bHkgdi1zdGFydCBpbnRlcnJ1cHQgaXMgc2VudCwgaW5kaWNhdGVkIGJ5IHRoZSBwcmludHMgImlz
-cCBtaXMgMHgwMDAwMDA0MCIgdGhlbiBhYm91dCAyMyBtaWxpc2VjIGxhdGVyIGFyZSB0aGUgb3Ro
-ZXIgaW50ZXJydXB0cwo+IChGUkFNRV9JTiwgRlJBTUUsIE1JX0ZSQU1FKiApIGFuZCBhYm91dCAx
-MCBtaWxpc2VjIHRoZSB2LXN0YXJ0IGludGVycnVwdCBhZ2Fpbi4KPiAKPiBJIGFtIHN0aWxsIG5v
-dCBzdXJlIHdoeSB0aGUgbWlfZnJhbWUgaW50ZXJydXB0IHNob3VsZCBiZSBoYW5kbGVkIGZpcnN0
-LiBJZiBpdCBoYXBwZW4gZm9yIGV4YW1wbGUgdGhhdCBhbGwgdGhlIGludGVycnVwdHMgYXJyaXZl
-IGF0IG9uY2UsIGhvdyBjYW4KPiB3ZSBrbm93IHRoYXQgdGhlIE1JX0ZSQU1FIGludGVycnVwdCBy
-ZWxhdGVzIHRvIHRoZSBwcmV2aW91cyB2LXN0YXJ0IGludGVycnVwdCBhbmQgbm90IHRoZSBjdXJy
-ZW50IG9uZT8KPiBJIHRoaW5rIHRoYXQgZm9yIHRoYXQgd2UgbmVlZCBhIGNvZGUgdGhhdCBrZWVw
-IHRyYWNrIG9mIHRoZSBwcmV2aW91cyBpbnRlcnJ1cHQuCj4gCj4gVGhhbmtzLAo+IERhZm5hCj4g
-Cj4gCj4+Cj4+IEJlc3QgcmVnYXJkcywKPj4gVG9tYXN6Cj4+CgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpsaW51eC1hcm0ta2VybmVsIG1haWxpbmcgbGlz
-dApsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
-ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1hcm0ta2VybmVsCg==
+On Wed, Aug 5, 2020 at 11:10 PM Dafna Hirschfeld
+<dafna.hirschfeld@collabora.com> wrote:
+>
+> Hi
+>
+> On 22.07.20 17:24, Tomasz Figa wrote:
+> > Hi Dafna,
+> >
+> > On Sat, Jul 11, 2020 at 01:04:31PM +0200, Dafna Hirschfeld wrote:
+> >> Hi Laurent,
+> >>
+> >> On 16.08.19 02:13, Laurent Pinchart wrote:
+> >>> Hello Helen,
+> >>>
+> >>> Thank you for the patch.
+> >>>
+> >>> On Tue, Jul 30, 2019 at 03:42:47PM -0300, Helen Koike wrote:
+> > [snip]
+> >>>> +static void rkisp1_isp_queue_event_sof(struct rkisp1_isp_subdev *isp)
+> >>>> +{
+> >>>> +  struct v4l2_event event = {
+> >>>> +          .type = V4L2_EVENT_FRAME_SYNC,
+> >>>> +          .u.frame_sync.frame_sequence =
+> >>>> +                  atomic_inc_return(&isp->frm_sync_seq) - 1,
+> >>>
+> >>> I would move the increment to the caller, hiding it in this function is
+> >>> error-prone (and if you look at the caller I'm pointing out one possible
+> >>> error :-)).
+> >>>
+> >>> In general usage of frm_sync_seq through the driver seems to be very
+> >>> race-prone. It's read in various IRQ handling functions, all coming from
+> >>> the same IRQ, so that part is fine (and wouldn't require an atomic
+> >>> variable), but when read from the buffer queue handlers I really get a
+> >>> red light flashing in my head. I'll try to investigate more when
+> >>> reviewing the next patches.
+> >>
+> >> I see that the only place were 'frame_sequence' is read outside of the irq
+> >> handlers is in the capture in 'rkisp1_vb2_buf_queue':
+> >>
+> >>      /*
+> >>           * If there's no next buffer assigned, queue this buffer directly
+> >>           * as the next buffer, and update the memory interface.
+> >>           */
+> >>          if (cap->is_streaming && !cap->buf.next &&
+> >>              atomic_read(&cap->rkisp1->isp.frame_sequence) == -1) {
+> >>                  cap->buf.next = ispbuf;
+> >>                  rkisp1_set_next_buf(cap);
+> >>          } else {
+> >>                  list_add_tail(&ispbuf->queue, &cap->buf.queue);
+> >>          }
+> >> This "if" condition seems very specific, a case where we already stream but v-start was not yet received.
+> >> I think it is possible to remove the test 'atomic_read(&cap->rkisp1->isp.frame_sequence) == -1'
+> >> from the above condition so that the next buffer is updated in case it is null not just before the first
+> >> v-start signal.
+> >>
+> >
+> > We don't have this special case in the Chrome OS code.
+> >
+> > I suppose it would make it possible to resume the capture 1 frame
+> > earlier after a queue underrun, as otherwise the new buffer would be
+> > only programmed after the next frame start interrupt and used for the
+> > next-next frame.  However, it's racy, because programming of the buffer
+> > addresses is not atomic and could end up with the hardware using few
+> > plane addresses from the new buffer and few from the dummy buffer.
+> >
+> > Given that and also the fact that a queue underrun is a very special
+> > case, where the system was already having problems catching up, I'd just
+> > remove this special case.
+> >
+> > [snip]
+> >>>> +void rkisp1_isp_isr(unsigned int isp_mis, struct rkisp1_device *dev)
+> >>>> +{
+> >>>> +  void __iomem *base = dev->base_addr;
+> >>>> +  unsigned int isp_mis_tmp = 0;
+> >>>
+> >>> _tmp are never good names :-S
+> >>>
+> >>>> +  unsigned int isp_err = 0;
+> >>>
+> >>> Neither of these variable need to be initialised to 0.
+> >>>
+> >>>> +
+> >>>> +  /* start edge of v_sync */
+> >>>> +  if (isp_mis & CIF_ISP_V_START) {
+> >>>> +          rkisp1_isp_queue_event_sof(&dev->isp_sdev);
+> >>>
+> >>> This will increment the frame sequence number. What if the interrupt is
+> >>> slightly delayed and the next frame starts before we get a change to
+> >>> copy the sequence number to the buffers (before they will complete
+> >>> below) ?
+> >>
+> >> Do you mean that we get two sequental v-start signals and then the next
+> >> frame-end signal in MI_MIS belongs to the first v-start signal of the two?
+> >> How can this be solved? I wonder if any v-start signal has a later signal
+> >> that correspond to the same frame so that we can follow it?
+> >>
+> >> Maybe we should have one counter that is incremented on v-start signal,
+> >> and another counter that is incremented uppon some other signal?
+> >>
+> >
+> > We're talking about a hard IRQ. I can't imagine the interrupt handler
+> > being delayed for a time close to a full frame interval (~16ms for 60
+> > fps) to trigger such scenario.
+> >
+> >>>
+> >>>> +
+> >>>> +          writel(CIF_ISP_V_START, base + CIF_ISP_ICR);
+> >>>
+> >>> Do you need to clear all interrupt bits individually, can't you write
+> >>> isp_mis to CIF_ISP_ICR at the beginning of the function to clear them
+> >>> all in one go ?
+> >>>
+> >>>> +          isp_mis_tmp = readl(base + CIF_ISP_MIS);
+> >>>> +          if (isp_mis_tmp & CIF_ISP_V_START)
+> >>>> +                  v4l2_err(&dev->v4l2_dev, "isp icr v_statr err: 0x%x\n",
+> >>>> +                           isp_mis_tmp);
+> >>>
+> >>> This require some explanation. It looks like a naive way to protect
+> >>> against something, but I think it could trigger under normal
+> >>> circumstances if IRQ handling is delayed, and wouldn't do much anyway.
+> >>> Same for the similar constructs below.
+> >>>
+> >>>> +  }
+> >>>> +
+> >>>> +  if ((isp_mis & CIF_ISP_PIC_SIZE_ERROR)) {
+> >>>> +          /* Clear pic_size_error */
+> >>>> +          writel(CIF_ISP_PIC_SIZE_ERROR, base + CIF_ISP_ICR);
+> >>>> +          isp_err = readl(base + CIF_ISP_ERR);
+> >>>> +          v4l2_err(&dev->v4l2_dev,
+> >>>> +                   "CIF_ISP_PIC_SIZE_ERROR (0x%08x)", isp_err);
+> >>>
+> >>> What does this mean ?
+> >>>
+> >>>> +          writel(isp_err, base + CIF_ISP_ERR_CLR);
+> >>>> +  } else if ((isp_mis & CIF_ISP_DATA_LOSS)) {
+> >>>
+> >>> Are CIF_ISP_PIC_SIZE_ERROR and CIF_ISP_DATA_LOSS mutually exclusive ?
+> >>>
+> >>>> +          /* Clear data_loss */
+> >>>> +          writel(CIF_ISP_DATA_LOSS, base + CIF_ISP_ICR);
+> >>>> +          v4l2_err(&dev->v4l2_dev, "CIF_ISP_DATA_LOSS\n");
+> >>>> +          writel(CIF_ISP_DATA_LOSS, base + CIF_ISP_ICR);
+> >>>> +  }
+> >>>> +
+> >>>> +  /* sampled input frame is complete */
+> >>>> +  if (isp_mis & CIF_ISP_FRAME_IN) {
+> >>>> +          writel(CIF_ISP_FRAME_IN, base + CIF_ISP_ICR);
+> >>>> +          isp_mis_tmp = readl(base + CIF_ISP_MIS);
+> >>>> +          if (isp_mis_tmp & CIF_ISP_FRAME_IN)
+> >>>> +                  v4l2_err(&dev->v4l2_dev, "isp icr frame_in err: 0x%x\n",
+> >>>> +                           isp_mis_tmp);
+> >>>> +  }
+> >>>> +
+> >>>> +  /* frame was completely put out */
+> >>>
+> >>> "put out" ? :-) What's the difference between ISP_FRAME_IN and ISP_FRAME
+> >>> ? The two comments could do with a bit of brush up, and I think the
+> >>> ISP_FRAME_IN interrupt could be disabled as it doesn't perform any
+> >>> action.
+> >>
+> >> Those two oneline comments are just copy-paste from the datasheet.
+> >>
+> >> ""
+> >> 5 MIS_FRAME_IN sampled input frame is complete
+> >> 1 MIS_FRAME frame was completely put out
+> >> ""
+> >>
+> >> Unfrotunately, the datasheet does not add any further explanation about those signals.
+> >>
+> >>
+> >
+> > My loose recollection is that the former is signaled when then frame
+> > is fully input to the ISP and the latter when the ISP completes
+> > outputting the frame to the next block in the pipeline, but someone
+> > would need to verify this, for example by printing timestamps for all
+> > the various interrupts.
+> >
+> >>>
+> >>>> +  if (isp_mis & CIF_ISP_FRAME) {
+> >>>> +          u32 isp_ris = 0;
+> >>>
+> >>> No need to initialise this to 0.
+> >>>
+> >>>> +          /* Clear Frame In (ISP) */
+> >>>> +          writel(CIF_ISP_FRAME, base + CIF_ISP_ICR);
+> >>>> +          isp_mis_tmp = readl(base + CIF_ISP_MIS);
+> >>>> +          if (isp_mis_tmp & CIF_ISP_FRAME)
+> >>>> +                  v4l2_err(&dev->v4l2_dev,
+> >>>> +                           "isp icr frame end err: 0x%x\n", isp_mis_tmp);
+> >>>> +
+> >>>> +          isp_ris = readl(base + CIF_ISP_RIS);
+> >>>> +          if (isp_ris & (CIF_ISP_AWB_DONE | CIF_ISP_AFM_FIN |
+> >>>> +                         CIF_ISP_EXP_END | CIF_ISP_HIST_MEASURE_RDY))
+> >>>> +                  rkisp1_stats_isr(&dev->stats_vdev, isp_ris);
+> >>>
+> >>> Is there a guarantee that the statistics will be fully written out
+> >>> before the video frame itself ? And doesn't this test if any of the
+> >>> statistics is complete, not all of them ? I think the logic is wrong, it
+> >>
+> >> The datasheet does not add any explanation of what is expected to come first.
+> >> Should we wait until all statistics measurements are done? In the struct
+> >> sent to userspace there is a bitmaks for which of the statistics are read.
+> >> I think that if only part of the statistics are ready, we can already send the once
+> >> that are ready to userspace.
+> >>
+> >
+> > If we look further into the code, rkisp1_stats_isr() checks the
+> > interrupt status mask passed to it and reads out only the parameters
+> > with indicated completion. The statistics metadata buffer format
+> > includes a bit mask which tells the userspace which measurements are
+> > available.
+> >
+> > However, I think I've spotted a bug there. At the beginning of
+> > rkisp1_stats_isr(), all the 4 interrupt status bits are cleared,
+> > regardless of the mask used later to decide which readouts need to be
+> > done. This could mean that with an unfortunate timing, some measurements
+> > would be lost. So at least the code should be fixed to only clear the
+> > interrupts bits really handled.
+>
+> I'll fix that
+>
+> >
+> > As for whether to send separate buffers for each measurement, I guess
+> > it's not a bad thing to let the userspace access the ones available
+> > earlier. Now I only don't recall why we decided to put all the
+> > measurements into one metadata structure, rather than splitting the 4
+> > into their own structures and buffer queues...
+>
+> Is it possible to have several queues to the same video node?
+>
+> >
+> >>> seems it should be moved out of the CIF_ISP_FRAME test, to a test of its
+> >>> own. It's hard to tell for sure without extra information though (for
+> >>> instance why are the stats-related bits read from CIF_ISP_RIS, when
+> >>> they seem to be documented as valid in CIF_ISP_ISR), but this should be
+> >>> validated, and most probably fixed. Care should be taken to keep
+> >>> synchronisation of sequence number between the different queues.
+> >>
+> >> I see that the capture buffers are done before incrementing the frame_sequence with
+> >> the following explanation:
+> >>
+> >>      /*
+> >>           * Call rkisp1_capture_isr() first to handle the frame that
+> >>           * potentially completed using the current frame_sequence number before
+> >>           * it is potentially incremented by rkisp1_isp_isr() in the vertical
+> >>           * sync.
+> >>           */
+> >>
+> >> I think reading the stats/params should also be done before calling rkisp1_capture_isr
+> >> for the same reason. (so to match the correct frame_sequence)
+> >
+> > My recollection of the sequence of interrupts in this hardware is like
+> > this:
+> >
+> > CIF_ISP_V_START (frame 0)
+> >    CIF_ISP_FRAME_IN (frame 0)
+> >      CIF_ISP_FRAME (frame 0)
+> >        CIF_ISP_AWB_DONE
+> >        CIF_ISP_AFM_FIN
+> >        CIF_ISP_EXP_END
+> >        CIF_ISP_HIST_MEASURE_RDY
+> >        CIF_MI_FRAME*
+> >        CIF_ISP_V_START (frame 1)
+> >          CIF_ISP_FRAME_IN (frame 1)
+> >            CIF_ISP_FRAME (frame 1)
+> >              ...
+> >
+> > where the interrupts at the same indentation level can happen
+> > independently of each other. Again, someone would have to verify this.
+>
+> I wrote this patch to print the interrupts and the time difference between interrupts:
+> https://gitlab.collabora.com/dafna/linux/-/commit/9b9c5ddc2f06a6b87d2c1b210219f69de83296c5
+>
+> I got this output: http://ix.io/2tl8,
+> there is a repeating pattern where only v-start interrupt is sent, indicated by the prints "isp mis 0x00000040" then about 23 milisec later are the other interrupts
+> (FRAME_IN, FRAME, MI_FRAME* ) and about 10 milisec the v-start interrupt again.
+>
+> I am still not sure why the mi_frame interrupt should be handled first. If it happen for example that all the interrupts arrive at once, how can
+> we know that the MI_FRAME interrupt relates to the previous v-start interrupt and not the current one?
+> I think that for that we need a code that keep track of the previous interrupt.
+>
+
+Okay, thanks for double checking this. We are still missing the
+CIF_ISP_FRAME_IN interrupt and the interrupts from the CIF_ISP_RIS
+register in the picture, though.
+
+Regardless of that, looking at how this hardware seems to work, I'd
+imagine that what we need to do is:
+
+1) On an MI interrupt:
+  a) Program MI shadow registers for frame N+2
+  b) Signal completion of frame N to the user
+
+2) On an RKISP1_CIF_ISP_FRAME interrupt:
+  a) Program ISP parameter shadow registers for frame N+2
+
+3) On one of the 4 interrupts from the CIF_ISP_RIS register:
+  a) Read out the corresponding ISP statistics
+  b.1) Return the partial statistics buffer to the userspace, OR
+  b.2) If all the 4 statistics have been read, return the full
+statistics buffer to the userspace.
+
+All the 3 cases don't care about each other. Every time each interrupt
+is received, the driver does the work for the sequential frame. We
+basically assume that no interrupts are ever lost.
+
+If we were to detect interrupt lost cases, we would have to either
+look at some hardware frame counter (if one exists) or use some
+heuristics based on the system timer and configured frame interval. I
+don't think the extra complexity is worth it, because if the system
+suffers from interrupt latency high enough to cause lost interrupts
+(i.e. close to the shortest frame intervals supported by this ISP),
+then it is going to have other problems as well and the underlying
+cause of the latency should be fixed instead.
+
+One more note about the current implementation is that it seems to
+assume that CIF_ISP_RIS interrupts are already done when the
+RKISP1_CIF_ISP_FRAME interrupt arrives. If that's how the hardware
+works indeed, then it's a good thing to do, because it decreases the
+number of signalled interrupts and thus the total interrupt handling
+overhead.
+
+Another thing to note is that when both MP and SP are enabled, I
+recall seeing their interrupts sometimes arriving separately.
+
+Now one thing that needs to be done to handle the 3 cases correctly is
+to make sure they match the input parameters, output capture buffers
+and statistics to the right frame. Since the MIs are asynchronous from
+the ISP and each other, I suppose we could make the code less fragile
+by making the MIs have their own frame counters, so they don't have to
+rely on the order of interrupt handling. Perhaps that would be enough
+to address your concern?
+
+Best regards,
+Tomasz
