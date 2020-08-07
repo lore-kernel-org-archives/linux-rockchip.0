@@ -1,7 +1,7 @@
 From: Jagan Teki <jagan@amarulasolutions.com>
-Subject: [PATCH v4 3/4] arm64: dts: rockchip: Add Radxa ROCK Pi 4B support
-Date: Fri,  7 Aug 2020 15:18:25 +0530
-Message-ID: <20200807094826.12019-3-jagan@amarulasolutions.com>
+Subject: [PATCH v4 4/4] arm64: dts: rockchip: Add Radxa ROCK Pi 4C support
+Date: Fri,  7 Aug 2020 15:18:26 +0530
+Message-ID: <20200807094826.12019-4-jagan@amarulasolutions.com>
 References: <20200807094826.12019-1-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -12,8 +12,11 @@ To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, Michael Trimarchi <michael@amarulasolutions.com>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-amarula <linux-amarula@amarulasolutions.com>, Jagan Teki <jagan@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-RockPI 4B has AP6256 Wifi/BT, so enable them in 4B dts
-instead of enable in common dtsi.
+Rock PI 4C has AP6256 Wifi/BT, PoE, miniDP, USB Host enabled
+GPIO pin change compared to 4B, 4C.
+
+So, add or enable difference nodes/properties in 4C dts
+by including common dtsi.
 
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 ---
@@ -21,85 +24,44 @@ Changes for v4, v3:
 - none
 Changes for v2:
 - update commit message
-- add radxa,rockpi4b
+- add radxa,rockpi4c
 
  arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../boot/dts/rockchip/rk3399-rock-pi-4.dtsi   | 23 ----------
- .../boot/dts/rockchip/rk3399-rock-pi-4b.dts   | 42 +++++++++++++++++++
- 3 files changed, 43 insertions(+), 23 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
+ .../boot/dts/rockchip/rk3399-rock-pi-4c.dts   | 51 +++++++++++++++++++
+ 2 files changed, 52 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
 
 diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 42f9e1861461..8832d05c2571 100644
+index 8832d05c2571..02cdb3c4a6c1 100644
 --- a/arch/arm64/boot/dts/rockchip/Makefile
 +++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -34,6 +34,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc.dtb
+@@ -35,6 +35,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-roc-pc-mezzanine.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4a.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4b.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock-pi-4c.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rock960.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64-v2.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-index e163f438f836..678a336010bf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4.dtsi
-@@ -584,17 +584,6 @@ &sdio0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
- 	sd-uhs-sdr104;
--	status = "okay";
--
--	brcmf: wifi@1 {
--		compatible = "brcm,bcm4329-fmac";
--		reg = <1>;
--		interrupt-parent = <&gpio0>;
--		interrupts = <RK_PA3 GPIO_ACTIVE_HIGH>;
--		interrupt-names = "host-wake";
--		pinctrl-names = "default";
--		pinctrl-0 = <&wifi_host_wake_l>;
--	};
- };
- 
- &sdmmc {
-@@ -663,18 +652,6 @@ u2phy1_host: host-port {
- &uart0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&uart0_xfer &uart0_cts &uart0_rts>;
--	status = "okay";
--
--	bluetooth {
--		compatible = "brcm,bcm43438-bt";
--		clocks = <&rk808 1>;
--		clock-names = "ext_clock";
--		device-wakeup-gpios = <&gpio2 RK_PD3 GPIO_ACTIVE_HIGH>;
--		host-wakeup-gpios = <&gpio0 RK_PA4 GPIO_ACTIVE_HIGH>;
--		shutdown-gpios = <&gpio0 RK_PB1 GPIO_ACTIVE_HIGH>;
--		pinctrl-names = "default";
--		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
--	};
- };
- 
- &uart2 {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
 new file mode 100644
-index 000000000000..f0055ce2fda0
+index 000000000000..4c7ebb1c5d2d
 --- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
-@@ -0,0 +1,42 @@
++++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
+@@ -0,0 +1,51 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
-+ * Copyright (c) 2019 Akash Gajjar <Akash_Gajjar@mentor.com>
-+ * Copyright (c) 2019 Pragnesh Patel <Pragnesh_Patel@mentor.com>
++ * Copyright (c) 2019 Fuzhou Rockchip Electronics Co., Ltd
++ * Copyright (c) 2019 Radxa Limited
++ * Copyright (c) 2019 Amarula Solutions(India)
 + */
 +
 +/dts-v1/;
 +#include "rk3399-rock-pi-4.dtsi"
 +
 +/ {
-+	model = "Radxa ROCK Pi 4B";
-+	compatible = "radxa,rockpi4b", "radxa,rockpi4", "rockchip,rk3399";
++	model = "Radxa ROCK Pi 4C";
++	compatible = "radxa,rockpi4c", "radxa,rockpi4", "rockchip,rk3399";
 +};
 +
 +&sdio0 {
@@ -129,6 +91,14 @@ index 000000000000..f0055ce2fda0
 +		pinctrl-names = "default";
 +		pinctrl-0 = <&bt_host_wake_l &bt_wake_l &bt_enable_h>;
 +	};
++};
++
++&vcc5v0_host {
++	gpio = <&gpio3 RK_PD6 GPIO_ACTIVE_HIGH>;
++};
++
++&vcc5v0_host_en {
++	rockchip,pins = <3 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
 +};
 -- 
 2.25.1
