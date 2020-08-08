@@ -1,14 +1,14 @@
 From: Kever Yang <kever.yang@rock-chips.com>
-Subject: Re: [PATCH 4/7] rockchip: Add Engicam PX30.Core EDIMM2.2 Starter Kit
-Date: Sat, 8 Aug 2020 17:57:04 +0800
-Message-ID: <a7f62ccc-15b5-f4ef-bfda-d6fe8faf70c8@rock-chips.com>
+Subject: Re: [PATCH 6/7] rockchip: Add Engicam PX30.Core C.TOUCH 2.0 10.1" OF
+Date: Sat, 8 Aug 2020 17:58:25 +0800
+Message-ID: <f57f958f-2cb3-a4e7-0eac-b01aef492682@rock-chips.com>
 References: <20200724105119.13123-1-jagan@amarulasolutions.com>
- <20200724105119.13123-5-jagan@amarulasolutions.com>
+ <20200724105119.13123-7-jagan@amarulasolutions.com>
 Mime-Version: 1.0
 Content-Type: text/plain; charset=gbk; format=flowed
 Content-Transfer-Encoding: 8bit
 Return-path: <u-boot-bounces@lists.denx.de>
-In-Reply-To: <20200724105119.13123-5-jagan@amarulasolutions.com>
+In-Reply-To: <20200724105119.13123-7-jagan@amarulasolutions.com>
 Content-Language: en-US
 List-Unsubscribe: <https://lists.denx.de/options/u-boot>,
  <mailto:u-boot-request@lists.denx.de?subject=unsubscribe>
@@ -23,63 +23,54 @@ To: Jagan Teki <jagan@amarulasolutions.com>, Philipp Tomsich <philipp.tomsich@th
 Cc: Suniel Mahesh <sunil@amarulasolutions.com>, U-Boot-Denx <u-boot@lists.denx.de>, linux-rockchip@lists.infradead.org, linux-amarula <linux-amarula@amarulasolutions.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-Hi Jagan,
 
 ÔÚ 2020/7/24 ÏÂÎç6:51, Jagan Teki Ð´µÀ:
 > PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
 >
-> EDIMM2.2 Starter Kit is an EDIMM 2.2 Form Factor Capacitive
-> Evaluation Board from Engicam.
+> C.TOUCH 2.0 10.1" Open Frame is a Carrier board with Capacitive
+> touch 10.1" open frame from Engicam.
 >
-> PX30.Core needs to mount on top of this Evaluation board for
-> creating complete PX30.Core EDIMM2.2 Starter Kit.
+> PX30.Core needs to mount on top of this Carrier board for creating
+> complete PX30.Core C.TOUCH 2.0 10.1" Open Frame.
 >
 > Add support for it.
 >
 > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-
-Is there any config need goes to -u-boot.dtsi?
-
-For this patch:
-
 Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 
 Thanks,
 - Kever
-
 > ---
 > Note:
 > - Linux ML link:
->    https://lkml.org/lkml/2020/7/23/520
+>    https://lkml.org/lkml/2020/7/23/523
 >
->   arch/arm/dts/Makefile                     |   3 +-
->   arch/arm/dts/px30-px30-core-edimm2.2.dts  |  21 +++++
->   arch/arm/mach-rockchip/px30/Kconfig       |   6 ++
->   board/rockchip/evb_px30/MAINTAINERS       |   6 ++
->   configs/px30-core-edimm2.2-px30_defconfig | 108 ++++++++++++++++++++++
->   5 files changed, 143 insertions(+), 1 deletion(-)
->   create mode 100644 arch/arm/dts/px30-px30-core-edimm2.2.dts
->   create mode 100644 configs/px30-core-edimm2.2-px30_defconfig
+>   arch/arm/dts/Makefile                         |   1 +
+>   arch/arm/dts/px30-px30-core-ctouch2-of10.dts  |  21 ++++
+>   arch/arm/mach-rockchip/px30/Kconfig           |   7 ++
+>   board/rockchip/evb_px30/MAINTAINERS           |   6 +
+>   configs/px30-core-ctouch2-of10-px30_defconfig | 108 ++++++++++++++++++
+>   5 files changed, 143 insertions(+)
+>   create mode 100644 arch/arm/dts/px30-px30-core-ctouch2-of10.dts
+>   create mode 100644 configs/px30-core-ctouch2-of10-px30_defconfig
 >
 > diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-> index cee10f533f..8198808ba5 100644
+> index 8198808ba5..270de39823 100644
 > --- a/arch/arm/dts/Makefile
 > +++ b/arch/arm/dts/Makefile
-> @@ -71,7 +71,8 @@ dtb-$(CONFIG_MACH_S700) += \
->   
+> @@ -72,6 +72,7 @@ dtb-$(CONFIG_MACH_S700) += \
 >   dtb-$(CONFIG_ROCKCHIP_PX30) += \
 >   	px30-evb.dtb \
-> -	px30-firefly.dtb
-> +	px30-firefly.dtb \
-> +	px30-px30-core-edimm2.2.dtb
+>   	px30-firefly.dtb \
+> +	px30-px30-core-ctouch2-of10.dtb \
+>   	px30-px30-core-edimm2.2.dtb
 >   
 >   dtb-$(CONFIG_ROCKCHIP_RK3036) += \
->   	rk3036-sdk.dtb
-> diff --git a/arch/arm/dts/px30-px30-core-edimm2.2.dts b/arch/arm/dts/px30-px30-core-edimm2.2.dts
+> diff --git a/arch/arm/dts/px30-px30-core-ctouch2-of10.dts b/arch/arm/dts/px30-px30-core-ctouch2-of10.dts
 > new file mode 100644
-> index 0000000000..c36280ce7f
+> index 0000000000..9c957a21e3
 > --- /dev/null
-> +++ b/arch/arm/dts/px30-px30-core-edimm2.2.dts
+> +++ b/arch/arm/dts/px30-px30-core-ctouch2-of10.dts
 > @@ -0,0 +1,21 @@
 > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 > +/*
@@ -90,12 +81,12 @@ Thanks,
 > +
 > +/dts-v1/;
 > +#include "px30.dtsi"
-> +#include "px30-engicam-edimm2.2.dtsi"
+> +#include "px30-engicam-ctouch2-of10.dtsi"
 > +#include "px30-px30-core.dtsi"
 > +
 > +/ {
-> +	model = "Engicam PX30.Core EDIMM2.2 Starter Kit";
-> +	compatible = "engicam,px30-core-edimm2.2", "engicam,px30-px30-core",
+> +	model = "Engicam PX30.Core C.TOUCH 2.0 10.1\" Open Frame";
+> +	compatible = "engicam,px30-core-ctouch2-of10", "engicam,px30-px30-core",
 > +		     "rockchip,px30";
 > +
 > +	chosen {
@@ -103,41 +94,42 @@ Thanks,
 > +	};
 > +};
 > diff --git a/arch/arm/mach-rockchip/px30/Kconfig b/arch/arm/mach-rockchip/px30/Kconfig
-> index 82bbc1c86f..f1fa225251 100644
+> index f1fa225251..21e7bbcd7f 100644
 > --- a/arch/arm/mach-rockchip/px30/Kconfig
 > +++ b/arch/arm/mach-rockchip/px30/Kconfig
-> @@ -8,6 +8,12 @@ config TARGET_EVB_PX30
->   	  EVB_PX30:
->   	  * EVB_PX30 is an evaluation board for Rockchip PX30.
+> @@ -14,6 +14,13 @@ config TARGET_EVB_PX30
+>   	  * PX30.Core needs to mount on top of EDIMM2.2 for creating complete
+>   	    PX30.Core EDIMM2.2 Starter Kit.
 >   
-> +	  PX30.Core EDIMM2.2:
+> +	  PX30.Core CTOUCH2 OF10:
 > +	  * PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
-> +	  * EDIMM2.2 is a Form Factor Capacitive Evaluation Board from Engicam.
-> +	  * PX30.Core needs to mount on top of EDIMM2.2 for creating complete
-> +	    PX30.Core EDIMM2.2 Starter Kit.
+> +	  * CTOUCH2 OF 10 is a Carrier board with Capacitive touch 10.1"
+> +	    Open frame from Engicam.
+> +	  * PX30.Core needs to mount on top of CTOUCH2 OF10 for creating complete
+> +	    PX30.Core C.TOUCH 2.0 10.1\" Open Frame.
 > +
 >   config ROCKCHIP_BOOT_MODE_REG
 >   	default 0xff010200
 >   
 > diff --git a/board/rockchip/evb_px30/MAINTAINERS b/board/rockchip/evb_px30/MAINTAINERS
-> index 4dc060c501..48fba4e046 100644
+> index 48fba4e046..459626e679 100644
 > --- a/board/rockchip/evb_px30/MAINTAINERS
 > +++ b/board/rockchip/evb_px30/MAINTAINERS
-> @@ -5,3 +5,9 @@ F:      board/rockchip/evb_px30
->   F:      include/configs/evb_px30.h
->   F:      configs/evb-px30_defconfig
->   F:      configs/firefly-px30_defconfig
+> @@ -11,3 +11,9 @@ M:	Jagan Teki <jagan@amarulasolutions.com>
+>   M:	Suniel Mahesh <sunil@amarulasolutions.com>
+>   S:	Maintained
+>   F:	configs/px30-core-edimm2.2-px30_defconfig
 > +
-> +PX30-Core-EDIMM2.2
+> +PX30-Core-CTOUCH2-OF10
 > +M:	Jagan Teki <jagan@amarulasolutions.com>
 > +M:	Suniel Mahesh <sunil@amarulasolutions.com>
 > +S:	Maintained
-> +F:	configs/px30-core-edimm2.2-px30_defconfig
-> diff --git a/configs/px30-core-edimm2.2-px30_defconfig b/configs/px30-core-edimm2.2-px30_defconfig
+> +F:	configs/px30-core-ctouch2-of10-px30_defconfig
+> diff --git a/configs/px30-core-ctouch2-of10-px30_defconfig b/configs/px30-core-ctouch2-of10-px30_defconfig
 > new file mode 100644
-> index 0000000000..07205f0243
+> index 0000000000..b87b61f740
 > --- /dev/null
-> +++ b/configs/px30-core-edimm2.2-px30_defconfig
+> +++ b/configs/px30-core-ctouch2-of10-px30_defconfig
 > @@ -0,0 +1,108 @@
 > +CONFIG_ARM=y
 > +CONFIG_ARCH_ROCKCHIP=y
@@ -161,7 +153,7 @@ Thanks,
 > +CONFIG_FIT_VERBOSE=y
 > +CONFIG_SPL_LOAD_FIT=y
 > +# CONFIG_CONSOLE_MUX is not set
-> +CONFIG_DEFAULT_FDT_FILE="rockchip/px30-px30-core-edimm2.2.dtb"
+> +CONFIG_DEFAULT_FDT_FILE="rockchip/px30-px30-core-ctouch2-of10.dtb"
 > +CONFIG_MISC_INIT_R=y
 > +# CONFIG_DISPLAY_CPUINFO is not set
 > +CONFIG_DISPLAY_BOARDINFO_LATE=y
@@ -192,7 +184,7 @@ Thanks,
 > +CONFIG_EFI_PARTITION_ENTRIES_NUMBERS=64
 > +CONFIG_SPL_OF_CONTROL=y
 > +CONFIG_OF_LIVE=y
-> +CONFIG_DEFAULT_DEVICE_TREE="px30-px30-core-edimm2.2"
+> +CONFIG_DEFAULT_DEVICE_TREE="px30-px30-core-ctouch2-of10"
 > +CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
 > +CONFIG_ENV_IS_IN_MMC=y
 > +CONFIG_SYS_RELOC_GD_ENV_ADDR=y
