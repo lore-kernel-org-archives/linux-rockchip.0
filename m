@@ -1,436 +1,245 @@
-From: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
-Subject: [PATCH v3 3/3] arm64: dts: rockchip: add rk3318 A95X Z2 board
-Date: Sat,  8 Aug 2020 18:06:18 +0200
-Message-ID: <20200808160618.15445-4-jbx6244@gmail.com>
-References: <20200808160618.15445-1-jbx6244@gmail.com>
+From: Robin Murphy <robin.murphy-5wv7dgnIgG8@public.gmane.org>
+Subject: Re: [PATCH v2 2/2] rockchip: rk3328: Add support for FriendlyARM
+ NanoPi R2S
+Date: Sat, 8 Aug 2020 23:00:35 +0100
+Message-ID: <efd14c05-0f0f-559e-dfb5-51cc6b0988f2@arm.com>
+References: <20200730232054.286381-1-mail@david-bauer.net>
+ <20200730232054.286381-2-mail@david-bauer.net>
+ <d0053630-1ff3-9771-eb7d-7aaf0a27dca2@arm.com>
+ <685c3ab2-5f51-1fc2-622d-4d9785d7074b@david-bauer.net>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-In-Reply-To: <20200808160618.15445-1-jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
+In-Reply-To: <685c3ab2-5f51-1fc2-622d-4d9785d7074b-YgwEh8z+B+JYon68uE86FQ@public.gmane.org>
+Content-Language: en-GB
 Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org
-Cc: robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
+To: David Bauer <mail-YgwEh8z+B+JYon68uE86FQ@public.gmane.org>, linux-arm-kernel-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org
+Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
 List-Id: linux-rockchip.vger.kernel.org
 
-The rk3318 A95X Z2 boards are sold as TV box.
-No further documentation is given, but from the dts files
-extracted it seems that the rk3318 processor is simulair
-to the rk3328. This dts file contains only the basic nodes
-that have support in the mainline kernel.
+On 2020-08-06 07:57, David Bauer wrote:
+> Hi Robin,
+> 
+> thanks for your review. Only adressing some non-formal comments below.
+> 
+> On 8/3/20 12:01 AM, Robin Murphy wrote:
+>>
+>> This seems to match the schematic, however in practice the GPIO seems to have a mind of its own and not respond to the LED settings - are we missing something with the pinctrl perhaps?
+> 
+> Hmm, this is strange. It works fine on my unit (with the current OpenWrt release). Can you test this and report back?
 
-Features:
+It seems like somehow that particular GPIO doesn't get configured 
+properly and is still in its default out-of-reset state as an input. 
+Poking the GPIO from sysfs works as expected, and in fact just unbinding 
+and rebinding the leds-gpio driver also manages to kick things into 
+shape. Clearly there's some subtle driver-level issue, but at least it's 
+not a DT problem :)
 
-CPU: RK3318 Quad-Core Cortex-A53
-GPU: Mali-450
-RAM: 2/4GB DDR3
-ROM: EMMC 16/32/64GB
-HDMI: HDMI 2.0a for 4k@60Hz
-Ethernet: 10/100M standard RJ-45
-WiFi: 2.4G+5G WIFI, 802.11 b/g/n
-Bluetooth: 4.0
-1 x USB 3.0
-1 x USB 2.0
-1 x Micro SD card slot
-1 x SPDIF
-1 x AV
-1 x DC IN
+>>> +            label = "nanopi-r2s:green:lan";
+>>> +        };
+>>> +
+>>> +        wan {
+>>> +            gpios = <&gpio2 RK_PC2 GPIO_ACTIVE_HIGH>;
+>>> +            label = "nanopi-r2s:green:wan";
+>>> +        };
+>>> +    };
+>>> +
+>>> +    gpio_keys {
+>>> +        compatible = "gpio-keys-polled";
+>>
+>> Does this need to be polled? I would have thought regular interrupt-based gpio-keys should work, to avoid the overhead of polling for something (relatively) incredibly rare, but perhaps I'm wrong :/
+> 
+> To be honest, I've missed that this is still polled. I've had this set to polled mode, as I've
+> had some issues (were to dumb) to get the pinmux going. I'll switch this to interrupt triggered and report back.
+> 
+>>
+>>> +        poll-interval = <100>;
+>>> +
+>>> +        pinctrl-names = "default";
+>>> +        pinctrl-0 = <&button_pins>;
+>>> +
+>>> +        reset {
+>>> +            label = "Reset Button";
+>>> +            gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_LOW>;
+>>> +            linux,code = <KEY_RESTART>;
+>>> +            debounce-interval = <50>;
+>>> +        };
+>>> +    };
+>>> +};
+>>> +
+>>> +&cpu0 {
+>>> +    cpu-supply = <&vdd_arm>;
+>>> +};
+>>> +
+>>> +&cpu1 {
+>>> +    cpu-supply = <&vdd_arm>;
+>>> +};
+>>> +
+>>> +&cpu2 {
+>>> +    cpu-supply = <&vdd_arm>;
+>>> +};
+>>> +
+>>> +&cpu3 {
+>>> +    cpu-supply = <&vdd_arm>;
+>>> +};
+>>> +
+>>> +&gmac2io {
+>>> +    assigned-clocks = <&cru SCLK_MAC2IO>, <&cru SCLK_MAC2IO_EXT>;
+>>> +    assigned-clock-parents = <&gmac_clkin>, <&gmac_clkin>;
+>>> +    clock_in_out = "input";
+>>> +    phy-supply = <&vcc_io>;
+>>> +    phy-handle = <&rtl8211e>;
+>>> +    phy-mode = "rgmii";
+>>> +    pinctrl-names = "default";
+>>> +    pinctrl-0 = <&rgmiim1_pins>;
+>>> +    snps,aal;
+>>
+>> Is this needed over and above the txpbl fix present in the main DTSI? I forget exactly where all those discussions ended up, but if it matters here then it probably matters for all RK3328 boards.
+> 
+> It seems to matter, as otherwise forwards from LAN to WAN will result in tx_fifo errors.
 
-Signed-off-by: Johan Jonker <jbx6244-Re5JQEeQqe8AvxtiuMwx3w@public.gmane.org>
----
- arch/arm64/boot/dts/rockchip/Makefile           |   1 +
- arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts | 374 ++++++++++++++++++++++++
- 2 files changed, 375 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
+On second look it's already present in half the existing RK3328 DTs 
+(including the one I wrote, ahem...), so probably does deserve promoting 
+into the DTSI.
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index b87b1f773..aa508bc4a 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -2,6 +2,7 @@
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3318-a95x-z2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3326-odroid-go2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-a1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3328-evb.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-new file mode 100644
-index 000000000..30c73ef25
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
-@@ -0,0 +1,374 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+#include <dt-bindings/input/input.h>
-+#include "rk3328.dtsi"
-+
-+/ {
-+	model = "A95X Z2";
-+	compatible = "zkmagic,a95x-z2", "rockchip,rk3318";
-+
-+	chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	adc-keys {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 0>;
-+		io-channel-names = "buttons";
-+		keyup-threshold-microvolt = <1800000>;
-+		poll-interval = <100>;
-+
-+		recovery {
-+			label = "recovery";
-+			linux,code = <KEY_VENDOR>;
-+			press-threshold-microvolt = <17000>;
-+		};
-+	};
-+
-+	ir-receiver {
-+		compatible = "gpio-ir-receiver";
-+		gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
-+		pinctrl-0 = <&ir_int>;
-+		pinctrl-names = "default";
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+		pinctrl-0 = <&cyx_led_pin>;
-+		pinctrl-names = "default";
-+
-+		cyx_led: led-0 {
-+			default-state = "on";
-+			gpios = <&gpio2 RK_PC7 GPIO_ACTIVE_LOW>;
-+			label = "CYX_LED";
-+		};
-+	};
-+
-+	sdio_pwrseq: sdio-pwrseq {
-+		compatible = "mmc-pwrseq-simple";
-+		pinctrl-0 = <&wifi_enable_h>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
-+	};
-+
-+	spdif-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,name = "SPDIF";
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&spdif>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&spdif_out>;
-+		};
-+	};
-+
-+	spdif_out: spdif-out {
-+		compatible = "linux,spdif-dit";
-+		#sound-dai-cells = <0>;
-+	};
-+
-+	/* Power tree */
-+	vccio_1v8: vccio-1v8-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vccio_1v8";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		regulator-always-on;
-+	};
-+
-+	vccio_3v3: vccio-3v3-regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vccio_3v3";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		regulator-always-on;
-+	};
-+
-+	vcc_otg_vbus: otg-vbus-regulator {
-+		compatible = "regulator-fixed";
-+		gpio = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&otg_vbus_drv>;
-+		pinctrl-names = "default";
-+		regulator-name = "vcc_otg_vbus";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		enable-active-high;
-+	};
-+
-+	vcc_sd: sdmmc-regulator {
-+		compatible = "regulator-fixed";
-+		gpio = <&gpio0 RK_PD6 GPIO_ACTIVE_LOW>;
-+		pinctrl-0 = <&sdmmc0m1_pin>;
-+		pinctrl-names = "default";
-+		regulator-name = "vcc_sd";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vccio_3v3>;
-+	};
-+
-+	vdd_arm: vdd-arm {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm0 0 5000 1>;
-+		regulator-name = "vdd_arm";
-+		regulator-min-microvolt = <950000>;
-+		regulator-max-microvolt = <1400000>;
-+		regulator-settling-time-up-us = <250>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+
-+	vdd_log: vdd-log {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm1 0 5000 1>;
-+		regulator-name = "vdd_log";
-+		regulator-min-microvolt = <900000>;
-+		regulator-max-microvolt = <1300000>;
-+		regulator-settling-time-up-us = <250>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+	};
-+};
-+
-+&analog_sound {
-+	status = "okay";
-+};
-+
-+&codec {
-+	status = "okay";
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_arm>;
-+};
-+
-+&cpu0_opp_table {
-+	opp-1200000000 {
-+		status = "disabled";
-+	};
-+
-+	opp-1296000000 {
-+		status = "disabled";
-+	};
-+};
-+
-+&emmc {
-+	bus-width = <8>;
-+	cap-mmc-highspeed;
-+	non-removable;
-+	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
-+	pinctrl-names = "default";
-+	status = "okay";
-+};
-+
-+&gmac2phy {
-+	assigned-clock-parents = <&cru SCLK_MAC2PHY_SRC>;
-+	assigned-clock-rate = <50000000>;
-+	assigned-clocks = <&cru SCLK_MAC2PHY>;
-+	clock_in_out = "output";
-+	status = "okay";
-+};
-+
-+&gpu {
-+	mali-supply = <&vdd_log>;
-+};
-+
-+&hdmi {
-+	ddc-i2c-scl-high-time-ns = <9625>;
-+	ddc-i2c-scl-low-time-ns = <10000>;
-+	status = "okay";
-+};
-+
-+&hdmiphy {
-+	status = "okay";
-+};
-+
-+&hdmi_sound {
-+	status = "okay";
-+};
-+
-+&i2s0 {
-+	status = "okay";
-+};
-+
-+&i2s1 {
-+	status = "okay";
-+};
-+
-+&io_domains {
-+	pmuio-supply = <&vccio_3v3>;
-+	vccio1-supply = <&vccio_3v3>;
-+	vccio2-supply = <&vccio_1v8>;
-+	vccio3-supply = <&vccio_3v3>;
-+	vccio4-supply = <&vccio_1v8>;
-+	vccio5-supply = <&vccio_3v3>;
-+	vccio6-supply = <&vccio_3v3>;
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	ir {
-+		ir_int: ir-int {
-+			rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	leds {
-+		cyx_led_pin: cyx-led-pin {
-+			rockchip,pins = <2 RK_PC7 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	pwm0 {
-+		pwm0_pin_pull_up: pwm0-pin-pull-up {
-+			rockchip,pins = <2 RK_PA4 1 &pcfg_pull_up>;
-+		};
-+	};
-+
-+	pwm1 {
-+		pwm1_pin_pull_up: pwm1-pin-pull-up {
-+			rockchip,pins = <2 RK_PA5 1 &pcfg_pull_up>;
-+		};
-+	};
-+
-+	sdio-pwrseq {
-+		wifi_enable_h: wifi-enable-h {
-+			rockchip,pins = <1 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	sdmmc1 {
-+		clk_32k_out: clk-32k-out {
-+			rockchip,pins = <1 RK_PD4 1 &pcfg_pull_none>;
-+		};
-+	};
-+
-+	usb {
-+		host_vbus_drv: host-vbus-drv {
-+			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		otg_vbus_drv: otg-vbus-drv {
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pwm0 {
-+	pinctrl-0 = <&pwm0_pin_pull_up>;
-+	pinctrl-names = "active";
-+	status = "okay";
-+};
-+
-+&pwm1 {
-+	pinctrl-0 = <&pwm1_pin_pull_up>;
-+	pinctrl-names = "active";
-+	status = "okay";
-+};
-+
-+&saradc {
-+	vref-supply = <&vccio_1v8>;
-+	status = "okay";
-+};
-+
-+&sdio {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	cap-sdio-irq;
-+	keep-power-in-suspend;
-+	max-frequency = <125000000>;
-+	mmc-pwrseq = <&sdio_pwrseq>;
-+	non-removable;
-+	pinctrl-0 = <&sdmmc1_bus4 &sdmmc1_cmd &sdmmc1_clk &clk_32k_out>;
-+	pinctrl-names = "default";
-+	sd-uhs-sdr104;
-+	status = "okay";
-+};
-+
-+&sdmmc {
-+	bus-width = <4>;
-+	cap-sd-highspeed;
-+	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
-+	pinctrl-names = "default";
-+	vmmc-supply = <&vcc_sd>;
-+	status = "okay";
-+};
-+
-+&spdif {
-+	pinctrl-0 = <&spdifm0_tx>;
-+	status = "okay";
-+};
-+
-+&soc_crit {
-+	temperature = <115000>; /* millicelsius */
-+};
-+
-+&target {
-+	temperature = <105000>; /* millicelsius */
-+};
-+
-+&threshold {
-+	temperature = <90000>; /* millicelsius */
-+};
-+
-+&tsadc {
-+	rockchip,hw-tshut-temp = <120000>;
-+	status = "okay";
-+};
-+
-+&u2phy {
-+	status = "okay";
-+};
-+
-+&u2phy_host {
-+	status = "okay";
-+};
-+
-+&u2phy_otg {
-+	phy-supply = <&vcc_otg_vbus>;
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	pinctrl-0 = <&uart0_xfer &uart0_cts>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&usb20_otg {
-+	dr_mode = "host";
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&vop {
-+	status = "okay";
-+};
-+
-+&vop_mmu {
-+	status = "okay";
-+};
--- 
-2.11.0
+>>> +    snps,reset-gpio = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+>>> +    snps,reset-active-low;
+>>> +    snps,reset-delays-us = <0 10000 50000>;
+>>
+>> Since you're describing the phy already, you can convert these to generic reset specifiers on the phy node itself (shame we don't have an interrupt wired up, oh well...)
+> 
+> Yup, I've forgotten that there's reset-gpio bindings for the PHY itself.
+> 
+>>
+>>> +    tx_delay = <0x24>;
+>>> +    rx_delay = <0x18>;
+>>> +    status = "okay";
+>>> +
+>>> +    mdio {
+>>> +        compatible = "snps,dwmac-mdio";
+>>> +        #address-cells = <1>;
+>>> +        #size-cells = <0>;
+>>> +
+>>> +        rtl8211e: ethernet-phy@0 {
+>>> +            reg = <0>;
+>>
+>> Is that right? The schematic says the phy is strapped for address 1 (although 0 probably does manage to work since it should be interpreted as a broadcast address).
+> 
+> I'll test this.
+> 
+>>
+>>> +        };
+>>> +    };
+>>> +};
+>>> +
+>>> +&i2c1 {
+>>> +    status = "okay";
+>>> +
+>>> +    rk805: rk805@18 {
+>>> +        compatible = "rockchip,rk805";
+>>> +        reg = <0x18>;
+>>> +        interrupt-parent = <&gpio2>;
+>>> +        interrupts = <6 IRQ_TYPE_LEVEL_LOW>;
+>>
+>> The schematic says GPIO1_D0 for this.
+> 
+> You are right, I'll fix this.
+> 
+>>> +
+>>
+>> It shouldn't hurt to enable PWM2 from the outset to make mucking about with the fan easier.
+> 
+> I've seen reports of people having Fans on their NanoPi R2S, my unit does not have such
+
+Yeah, mine came with the version 2 heatsink/fan fitted, although upon 
+investigation it turns out the PWM is next to useless (something's off 
+with rise times in the external MOSFET switching setup) and the fan 
+connector may as well just be treated as GPIO-controlled anyway.
+
+>>> +&sdmmc {
+>>> +    bus-width = <4>;
+>>> +    cap-mmc-highspeed;
+>>> +    cap-sd-highspeed;
+>>
+>> How about UHS modes, since we have the requisite I/O voltage support?
+> 
+> I'll look into this.
+
+FWIW SDR104 seems to be working fine for me, with the PMIC interrupt 
+corrected so as not to break the regulator.
+
+>>
+>>> +    disable-wp;
+>>
+>> I believe this property is only meant for full-size MMC/SD sockets where write-protect functionality is expected but somehow broken. For micro-SD sockets the SoC pin should be hard-wired to write-enable anyway and thus it shouldn't need to be stated.
+> 
+> Thanks for this explanation, I'll remove and re-test.
+
+Actually I think I was mistaken there - having double-checked the 
+binding definition and datasheet it looks like RK3328 doesn't expose the 
+WP function on any pin at all, so by the letter of the binding this 
+*should* be specified for correctness (since we don't necessarily know 
+for sure that the controller's internal WP line isn't left floating). 
+Sorry for the confusion.
+
+Cheers,
+Robin.
+
+>>
+>>> +    max-frequency = <150000000>;
+>>
+>> This is in the DTSI already.
+>>
+>>> +    pinctrl-names = "default";
+>>> +    pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_dectn &sdmmc0_bus4>;
+>>> +    vmmc-supply = <&vcc_sd>;
+>>> +    vqmmc-supply = <&vcc_sdio>;
+>>> +    status = "okay";
+>>> +};
+>>> +
+>>> +&tsadc {
+>>> +    rockchip,hw-tshut-mode = <0>;
+>>> +    rockchip,hw-tshut-polarity = <0>;
+>>> +    status = "okay";
+>>> +};
+>>> +
+>>> +&uart2 {
+>>> +    status = "okay";
+>>> +};
+>>> +
+>>> +&u2phy {
+>>> +    status = "okay";
+>>> +
+>>> +    u2phy_host: host-port {
+>>
+>> Just reference this by label directly, rather than as a child node here (especially since redefining the existing label is a bit confusing).
+>>
+>>> +        status = "okay";
+>>> +    };
+>>> +};
+>>
+>> No reason not to enable the OTG port either - I've hacked that in with g_serial for a cheeky console while powering the board from my laptop and it works fine.
+> 
+> Ouch, I've completely missed the micro-USB port is wired up to the OTG port.
+> 
+> I'll follow up with a v3 in the coming days. Thanks for your feedback!
+> 
+> Best wishes
+> David
+> 
+>>
+>> Cheers,
+>> Robin.
+>>
+>>> +
+>>> +&usb_host0_ehci {
+>>> +    status = "okay";
+>>> +};
+>>> +
+>>> +&usb_host0_ohci {
+>>> +    status = "okay";
+>>> +};
+>>>
+> 
+> 
