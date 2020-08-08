@@ -1,12 +1,12 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.14 04/14] arm64: dts: rockchip: fix rk3399-puma gmac reset gpio
-Date: Sat,  8 Aug 2020 19:40:03 -0400
-Message-ID: <20200808234013.3619541-4-sashal@kernel.org>
-References: <20200808234013.3619541-1-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 06/21] arm64: dts: rockchip: fix rk3399-puma gmac reset gpio
+Date: Sat,  8 Aug 2020 19:39:26 -0400
+Message-ID: <20200808233941.3619277-6-sashal@kernel.org>
+References: <20200808233941.3619277-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Return-path: <linux-kernel-owner@vger.kernel.org>
-In-Reply-To: <20200808234013.3619541-1-sashal@kernel.org>
+In-Reply-To: <20200808233941.3619277-1-sashal@kernel.org>
 Sender: linux-kernel-owner@vger.kernel.org
 To: linux-kernel@vger.kernel.org, stable@vger.kernel.org
 Cc: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>, Sasha Levin <sashal@kernel.org>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
@@ -35,10 +35,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index b08a998ca1024..0d5679380b2a6 100644
+index baacb6e227b95..b155f657292bd 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -193,7 +193,7 @@ &gmac {
+@@ -156,7 +156,7 @@ &gmac {
  	phy-mode = "rgmii";
  	pinctrl-names = "default";
  	pinctrl-0 = <&rgmii_pins>;
