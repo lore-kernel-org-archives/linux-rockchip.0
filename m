@@ -1,7 +1,7 @@
 From: Sasha Levin <sashal@kernel.org>
-Subject: [PATCH AUTOSEL 4.14 03/14] arm64: dts: rockchip: fix rk3399-puma vcc5v0-host gpio
-Date: Sat,  8 Aug 2020 19:40:02 -0400
-Message-ID: <20200808234013.3619541-3-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.14 04/14] arm64: dts: rockchip: fix rk3399-puma gmac reset gpio
+Date: Sat,  8 Aug 2020 19:40:03 -0400
+Message-ID: <20200808234013.3619541-4-sashal@kernel.org>
 References: <20200808234013.3619541-1-sashal@kernel.org>
 Mime-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -14,38 +14,38 @@ List-Id: linux-rockchip.vger.kernel.org
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
-[ Upstream commit 7a7184f6cfa9279f1a1c10a1845d247d7fad54ff ]
+[ Upstream commit 8a445086f8af0b7b9bd8d1901d6f306bb154f70d ]
 
-The puma vcc5v0_host regulator node currently uses opposite active-values
-for the enable pin. The gpio-declaration uses active-high while the
-separate enable-active-low property marks the pin as active low.
+The puma gmac node currently uses opposite active-values for the
+gmac phy reset pin. The gpio-declaration uses active-high while the
+separate snps,reset-active-low property marks the pin as active low.
 
 While on the kernel side this works ok, other DT users may get
 confused - as seen with uboot right now.
 
 So bring this in line and make both properties match, similar to the
-gmac fix.
+other Rockchip board.
 
 Fixes: 2c66fc34e945 ("arm64: dts: rockchip: add RK3399-Q7 (Puma) SoM")
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
-Link: https://lore.kernel.org/r/20200604091239.424318-1-heiko@sntech.de
+Link: https://lore.kernel.org/r/20200603132836.362519-1-heiko@sntech.de
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
  arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-index 1fc5060d7027e..b08a998ca1024 100644
+index b08a998ca1024..0d5679380b2a6 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399-puma.dtsi
-@@ -138,7 +138,7 @@ vcc3v3_sys: vcc3v3-sys {
- 
- 	vcc5v0_host: vcc5v0-host-regulator {
- 		compatible = "regulator-fixed";
--		gpio = <&gpio4 RK_PA3 GPIO_ACTIVE_HIGH>;
-+		gpio = <&gpio4 RK_PA3 GPIO_ACTIVE_LOW>;
- 		enable-active-low;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&vcc5v0_host_en>;
+@@ -193,7 +193,7 @@ &gmac {
+ 	phy-mode = "rgmii";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&rgmii_pins>;
+-	snps,reset-gpio = <&gpio3 RK_PC0 GPIO_ACTIVE_HIGH>;
++	snps,reset-gpio = <&gpio3 RK_PC0 GPIO_ACTIVE_LOW>;
+ 	snps,reset-active-low;
+ 	snps,reset-delays-us = <0 10000 50000>;
+ 	tx_delay = <0x10>;
 -- 
 2.25.1
