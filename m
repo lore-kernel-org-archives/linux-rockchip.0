@@ -1,85 +1,62 @@
-From: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
-Subject: [PATCH v1] thermal/of: Introduce k-po, k-pu and k-i for a thermal zone
-Date: Tue, 11 Aug 2020 20:31:15 +0800
-Message-ID: <20200811123115.8144-1-finley.xiao@rock-chips.com>
-Return-path: <devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org>
-Sender: devicetree-owner-u79uwXL29TY76Z2rM5mHXA@public.gmane.org
-To: heiko-4mtYJXux2i+zQB+pC5nmwQ@public.gmane.org, rui.zhang-ral2JQCrhuEAvxtiuMwx3w@public.gmane.org, daniel.lezcano-QSEj5FYQhm4dnm+yROfE0A@public.gmane.org, robh+dt-DgEjT+Ai2ygdnm+yROfE0A@public.gmane.org
-Cc: linux-rockchip-IAPFreCvJWM7uuMidbF8XUB+6BGkLq7r@public.gmane.org, linux-kernel-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, linux-pm-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, devicetree-u79uwXL29TY76Z2rM5mHXA@public.gmane.org, huangtao-TNX95d0MmH7DzftRWevZcw@public.gmane.org, tony.xie-TNX95d0MmH7DzftRWevZcw@public.gmane.org, cl-TNX95d0MmH7DzftRWevZcw@public.gmane.org, Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+From: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
+Subject: [PATCH] drm/rockchip: Require the YTR modifier for AFBC
+Date: Tue, 11 Aug 2020 16:26:31 -0400
+Message-ID: <20200811202631.3603-1-alyssa.rosenzweig@collabora.com>
+Mime-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Return-path: <stable-owner@vger.kernel.org>
+Sender: stable-owner@vger.kernel.org
+To: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, stable@vger.kernel.org, hjc@rock-chips.com, heiko@sntech.de, airlied@linux.ie, daniel@ffwll.ch, andrzej.p@collabora.com, daniels@collabora.com
+Cc: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
 List-Id: linux-rockchip.vger.kernel.org
 
-The default value for k_pu is:
-    2 * sustainable_power / (desired_temperature - switch_on_temp)
-The default value for k_po is:
-    sustainable_power / (desired_temperature - switch_on_temp)
-The default value for k_i is 10.
+The AFBC decoder used in the Rockchip VOP assumes the use of the
+YUV-like colourspace transform (YTR). YTR is lossless for RGB(A)
+buffers, which covers the RGBA8 and RGB565 formats supported in
+vop_convert_afbc_format. Use of YTR is signaled with the
+AFBC_FORMAT_MOD_YTR modifier, which prior to this commit was missing. As
+such, a producer would have to generate buffers that do not use YTR,
+which the VOP would erroneously decode as YTR, leading to severe visual
+corruption.
 
-Even though these parameters of the PID controller can be changed
-by the following sysfs files:
-    /sys/class/thermal/thermal_zoneX/k_pu
-    /sys/class/thermal/thermal_zoneX/k_po
-    /sys/class/thermal/thermal_zoneX/k_i
+The upstream AFBC support was developed against a captured frame, which
+failed to exercise modifier support. Prior to bring-up of AFBC in Mesa
+(in the Panfrost driver), no open userspace respected modifier
+reporting. As such, this change is not expected to affect broken
+userspaces.
 
-But it's still more convenient to change the default values by devicetree,
-so introduce these three optional properties. If provided these properties,
-they will be parsed and associated with the thermal zone via the thermal
-zone parameters.
+Tested on RK3399 with Panfrost and Weston.
 
-Signed-off-by: Finley Xiao <finley.xiao-TNX95d0MmH7DzftRWevZcw@public.gmane.org>
+Signed-off-by: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>
 ---
- Documentation/devicetree/bindings/thermal/thermal.txt | 14 ++++++++++++++
- drivers/thermal/thermal_of.c                          |  7 +++++++
- 2 files changed, 21 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.h | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/thermal/thermal.txt b/Documentation/devicetree/bindings/thermal/thermal.txt
-index f78bec19ca35..ebe936b57ded 100644
---- a/Documentation/devicetree/bindings/thermal/thermal.txt
-+++ b/Documentation/devicetree/bindings/thermal/thermal.txt
-@@ -165,6 +165,20 @@ Optional property:
- 			2000mW, while on a 10'' tablet is around
- 			4500mW.
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+index 4a2099cb5..857d97cdc 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.h
+@@ -17,9 +17,20 @@
  
-+- k-po:			Proportional parameter of the PID controller when
-+			current temperature is above the target.
-+  Type: signed
-+  Size: one cell
-+
-+- k-pu:			Proportional parameter of the PID controller when
-+			current temperature is below the target.
-+  Type: signed
-+  Size: one cell
-+
-+- k-i:			Integral parameter of the PID controller.
-+  Type: signed
-+  Size: one cell
-+
- Note: The delay properties are bound to the maximum dT/dt (temperature
- derivative over time) in two situations for a thermal zone:
- (i)  - when passive cooling is activated (polling-delay-passive); and
-diff --git a/drivers/thermal/thermal_of.c b/drivers/thermal/thermal_of.c
-index ddf88dbe7ba2..b2a9f92cd8d2 100644
---- a/drivers/thermal/thermal_of.c
-+++ b/drivers/thermal/thermal_of.c
-@@ -1089,6 +1089,7 @@ int __init of_parse_thermal_zones(void)
- 		struct thermal_zone_params *tzp;
- 		int i, mask = 0;
- 		u32 prop;
-+		s32 sval;
+ #define NUM_YUV2YUV_COEFFICIENTS 12
  
- 		tz = thermal_of_build_thermal_zone(child);
- 		if (IS_ERR(tz)) {
-@@ -1113,6 +1114,12 @@ int __init of_parse_thermal_zones(void)
++/* AFBC supports a number of configurable modes. Relevant to us is block size
++ * (16x16 or 32x8), storage modifiers (SPARSE, SPLIT), and the YUV-like
++ * colourspace transform (YTR). 16x16 SPARSE mode is always used. SPLIT mode
++ * could be enabled via the hreg_block_split register, but is not currently
++ * handled. The colourspace transform is implicitly always assumed by the
++ * decoder, so consumers must use this transform as well.
++ *
++ * Failure to match modifiers will cause errors displaying AFBC buffers
++ * produced by conformant AFBC producers, including Mesa.
++ */
+ #define ROCKCHIP_AFBC_MOD \
+ 	DRM_FORMAT_MOD_ARM_AFBC( \
+ 		AFBC_FORMAT_MOD_BLOCK_SIZE_16x16 | AFBC_FORMAT_MOD_SPARSE \
++			| AFBC_FORMAT_MOD_YTR \
+ 	)
  
- 		if (!of_property_read_u32(child, "sustainable-power", &prop))
- 			tzp->sustainable_power = prop;
-+		if (!of_property_read_s32(child, "k-po", &sval))
-+			tzp->k_po = sval;
-+		if (!of_property_read_s32(child, "k-pu", &sval))
-+			tzp->k_pu = sval;
-+		if (!of_property_read_s32(child, "k-i", &sval))
-+			tzp->k_i = sval;
- 
- 		for (i = 0; i < tz->ntrips; i++)
- 			mask |= 1 << i;
+ enum vop_data_format {
 -- 
-2.11.0
+2.28.0
