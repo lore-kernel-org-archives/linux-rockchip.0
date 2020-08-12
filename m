@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97748C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2020 08:36:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3394BC433E0
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2020 08:37:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 57DF720781
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2020 08:36:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EB14420786
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2020 08:37:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ULFJI/67"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 57DF720781
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0L4LfVsY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EB14420786
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,21 +25,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:
 	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=anUurPEpgyG1oaioP569B/I4t5mb6Y9Jk0ywCfmN1mY=; b=ULFJI/67vcMCjnRUQEgmwcqEf1
-	Qm/EQOzdsO+n/aJbXQVD+0EZA2WU2qGQYBVLUd6g+gOjqrNI/9P354ndNfQq2w+alq3aIsziYAIT7
-	NDlOrFr39cEU8rVePyJM2o6igYKKF5FGHhfHPnQ1+bAmBz9sKNdeqqvdCLlJcTwYGRWakDCxuwJXh
-	JswIdgcy63Ydp95JquwnYyZsphRMMe8kd+nAwph8AnC6geHOGqGJZh99+jxaUpk1pPh2AuG8nBWTy
-	DpJUfLOjXsRGvEkBYpxIXL1RH3KhCKALRzhu2GSPSbx30+KCFLqtQdQa43H+g5ioilrRFG7Sau0LZ
-	aPCoECIg==;
+	bh=o6qAi3VMKlOo/rngtRc5zZJ5uT4fokI9xT7kl99/hJo=; b=0L4LfVsYzLNswq69tTzjJu6k6P
+	5P9cspjvI1ZUaWmruwHuVhK8PHuHbGOjx+/imd9Vzu0/zewudBSqNaA0wPaDJ7qWeHpHONEJPNVmd
+	IeR3sX+n8GMG0K0gCFvJGbEtsuP60f4x/XnGnWrzeucFEMAbwQtTjCuUcb6okNWw9h7fIauusGS4e
+	vfc1X/Vvnp4gA788yoWFYgu6Id43ypJH9W8cmJlvGpeVXD2gLK3Okva7VawtEnD9zOMQIIKzjhll8
+	e7/ryVnPmhA8NsEwRAbyWt9GygAauvjf14uPJ4rk16PjGlKSnt+vWbtCpXwZj22oMONjFPwe11DiH
+	JMUrJImQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5mFD-0004AM-3e; Wed, 12 Aug 2020 08:36:23 +0000
-Received: from lucky1.263xmail.com ([211.157.147.133])
+	id 1k5mFl-0004UF-EV; Wed, 12 Aug 2020 08:36:57 +0000
+Received: from lucky1.263xmail.com ([211.157.147.134])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5mF4-00040V-25; Wed, 12 Aug 2020 08:36:15 +0000
-Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 61B75C5C84;
- Wed, 12 Aug 2020 16:36:11 +0800 (CST)
+ id 1k5mFb-0004Jq-0l; Wed, 12 Aug 2020 08:36:50 +0000
+Received: from localhost (unknown [192.168.167.16])
+ by lucky1.263xmail.com (Postfix) with ESMTP id EEF85C0E68;
+ Wed, 12 Aug 2020 16:36:37 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED: 0
@@ -47,10 +47,10 @@ X-ANTISPAM-LEVEL: 2
 X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [103.29.142.67])
  by smtp.263.net (postfix) whith ESMTP id
- P12148T140383488132864S1597221366062844_; 
- Wed, 12 Aug 2020 16:36:10 +0800 (CST)
+ P18983T140547182274304S1597221393900250_; 
+ Wed, 12 Aug 2020 16:36:38 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <4d9e7216a08741cb642cd53bd73f90d4>
+X-UNIQUE-TAG: <4de425ab9edd523934713eb06a4f3632>
 X-RL-SENDER: algea.cao@rock-chips.com
 X-SENDER: algea.cao@rock-chips.com
 X-LOGIN-NAME: algea.cao@rock-chips.com
@@ -69,16 +69,17 @@ To: a.hajda@samsung.com, kuankuan.y@gmail.com, hjc@rock-chips.com,
  linux-arm-kernel@lists.infradead.org, cychiang@chromium.org,
  linux-kernel@vger.kernel.org, narmstrong@baylibre.com,
  jbrunet@baylibre.com, maarten.lankhorst@linux.intel.com, daniel@ffwll.ch
-Subject: [PATCH 5/6] drm/rockchip: dw_hdmi: Add get_output_bus_format
-Date: Wed, 12 Aug 2020 16:36:03 +0800
-Message-Id: <20200812083603.4320-1-algea.cao@rock-chips.com>
+Subject: [PATCH 6/6] drm: bridge: dw-hdmi: Get output bus format when dw-hdmi
+ is the only bridge
+Date: Wed, 12 Aug 2020 16:36:31 +0800
+Message-Id: <20200812083631.4411-1-algea.cao@rock-chips.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200812083120.743-1-algea.cao@rock-chips.com>
 References: <20200812083120.743-1-algea.cao@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200812_043614_623048_65856BC6 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20200812_043647_896042_EE5B9A16 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,102 +97,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add get_output_bus_format in dw_hdmi_plat_data to get
-hdmi output bus format. The output bus format is determined
-by color format and depth, which can be set by rockchip
-hdmi properties.
+If plat_data->get_output_bus_format() is exist, we can
+use it to get hdmi output bus format when dw-hdmi is the
+only bridge. The hdmi output bus format can be set by vendor
+properties.
 
 Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
 ---
 
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 47 +++++++++++++++++++++
- include/drm/bridge/dw_hdmi.h                |  1 +
- 2 files changed, 48 insertions(+)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 8f22d9a566db..a602d25639a7 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -100,6 +100,7 @@ struct rockchip_hdmi {
- 
- 	unsigned int colordepth;
- 	enum drm_hdmi_output_type hdmi_output;
-+	unsigned long output_bus_format;
- };
- 
- #define to_rockchip_hdmi(x)	container_of(x, struct rockchip_hdmi, x)
-@@ -498,6 +499,50 @@ static const struct dw_hdmi_property_ops dw_hdmi_rockchip_property_ops = {
- 	.get_property		= dw_hdmi_rockchip_get_property,
- };
- 
-+static void
-+dw_hdmi_rockchip_output_bus_format_select(struct rockchip_hdmi *hdmi)
-+{
-+	unsigned long bus_format;
-+
-+	if (hdmi->hdmi_output == DRM_HDMI_OUTPUT_YCBCR420) {
-+		if (hdmi->colordepth > 8)
-+			bus_format = MEDIA_BUS_FMT_UYYVYY10_0_5X30;
-+		else
-+			bus_format = MEDIA_BUS_FMT_UYYVYY8_0_5X24;
-+	} else if (hdmi->hdmi_output == DRM_HDMI_OUTPUT_YCBCR422) {
-+		if (hdmi->colordepth == 12)
-+			bus_format = MEDIA_BUS_FMT_UYVY12_1X24;
-+		else if (hdmi->colordepth == 10)
-+			bus_format = MEDIA_BUS_FMT_UYVY10_1X20;
-+		else
-+			bus_format = MEDIA_BUS_FMT_UYVY8_1X16;
-+	} else {
-+		if (hdmi->colordepth > 8) {
-+			if (hdmi->hdmi_output != DRM_HDMI_OUTPUT_DEFAULT_RGB)
-+				bus_format = MEDIA_BUS_FMT_YUV10_1X30;
-+			else
-+				bus_format = MEDIA_BUS_FMT_RGB101010_1X30;
-+		} else {
-+			if (hdmi->hdmi_output != DRM_HDMI_OUTPUT_DEFAULT_RGB)
-+				bus_format = MEDIA_BUS_FMT_YUV8_1X24;
-+			else
-+				bus_format = MEDIA_BUS_FMT_RGB888_1X24;
-+		}
-+	}
-+
-+	hdmi->output_bus_format = bus_format;
-+}
-+
-+static unsigned long
-+dw_hdmi_rockchip_get_output_bus_format(void *data)
-+{
-+	struct rockchip_hdmi *hdmi = (struct rockchip_hdmi *)data;
-+
-+	dw_hdmi_rockchip_output_bus_format_select(hdmi);
-+
-+	return hdmi->output_bus_format;
-+}
-+
- static void dw_hdmi_rk3228_setup_hpd(struct dw_hdmi *dw_hdmi, void *data)
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index 1eb4736b9b59..878e9e506963 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -2644,6 +2644,8 @@ static u32 *dw_hdmi_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
+ 					unsigned int *num_output_fmts)
  {
- 	struct rockchip_hdmi *hdmi = (struct rockchip_hdmi *)data;
-@@ -685,6 +730,8 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	struct drm_connector *conn = conn_state->connector;
++	struct dw_hdmi *hdmi = bridge->driver_private;
++	void *data = hdmi->plat_data->phy_data;
+ 	struct drm_display_info *info = &conn->display_info;
+ 	struct drm_display_mode *mode = &crtc_state->mode;
+ 	u8 max_bpc = conn_state->max_requested_bpc;
+@@ -2662,7 +2664,11 @@ static u32 *dw_hdmi_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
+ 	/* If dw-hdmi is the only bridge, avoid negociating with ourselves */
+ 	if (list_is_singular(&bridge->encoder->bridge_chain)) {
+ 		*num_output_fmts = 1;
+-		output_fmts[0] = MEDIA_BUS_FMT_FIXED;
++		if (hdmi->plat_data->get_output_bus_format)
++			output_fmts[0] =
++				hdmi->plat_data->get_output_bus_format(data);
++		else
++			output_fmts[0] = MEDIA_BUS_FMT_FIXED;
  
- 	plat_data->property_ops = &dw_hdmi_rockchip_property_ops;
- 
-+	plat_data->get_output_bus_format =
-+		dw_hdmi_rockchip_get_output_bus_format;
- 	encoder = &hdmi->encoder;
- 
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm, dev->of_node);
-diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
-index dc561ebe7a9b..13495f810328 100644
---- a/include/drm/bridge/dw_hdmi.h
-+++ b/include/drm/bridge/dw_hdmi.h
-@@ -175,6 +175,7 @@ struct dw_hdmi_plat_data {
- 	const struct dw_hdmi_phy_config *phy_config;
- 	int (*configure_phy)(struct dw_hdmi *hdmi, void *data,
- 			     unsigned long mpixelclock);
-+	unsigned long (*get_output_bus_format)(void *data);
- };
- 
- struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
+ 		return output_fmts;
+ 	}
 -- 
 2.25.1
 
