@@ -2,66 +2,82 @@ Return-Path: <SRS0=6SwX=BW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62BF4C433DF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2020 07:52:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC11BC433DF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2020 08:32:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2D683206B5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2020 07:52:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 91486206C3
+	for <linux-rockchip@archiver.kernel.org>; Wed, 12 Aug 2020 08:32:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="v4IfVE0/";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="1p4LHA72"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2D683206B5
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0xKKeleu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 91486206C3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:References:
-	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HhZeSN29Kfh2OeomHAwCQuWNrtWL/hQBJguUkM4Dj2I=; b=v4IfVE0/2KXJn4Ww/M/Nl+nOQ
-	UlnfEyxVNNBMMqeBQ+W+2GEEOJRaav3CxGibJv6s4x0ycbQWUbaoCkFGhQJpRIZSW/GUTexgEGuHG
-	LutVmgInSF2FBZcfnhYU2rehVFdKGpvcfRdYOj0UmvU15j5/lErT/4LhflJcxfds0ODecdolbGz/u
-	dIJsIwPNyg2cJEHpQ9l31RM06+n6Bn5YCE1OAwGF9xJIii0CgWDJ7gGwYk+xNfcowt6kkYxySU/xp
-	WxDTgtL0YUmTW4jCralQscuZSoSwW0pe/ZmZ0cbhDPsjhOtGaN/PJz1CmOdvNM3DmxCotOucRJPEY
-	vn3d2sL0A==;
+	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=NdxVkXWUn6e/zg3R6MQVFo56/ixehHnCsedM9Bju/7E=; b=0xKKeleu1QMKITFNu7QqlgFmMe
+	x5F6w4lmMeGXo9+KxAT/T2RkPqD0kjoCbPhIMbTFnU/zL8PCJS8puHQC3fQZYf9r+KZdEZhjmhva3
+	KEmmf98YC4Umv/P4sdtGAuv0Er1rCWvbG5XCw+cQrh9CScUVXYavtcXEC0t3Q6Vp2IVijWtLCehTn
+	ih4OqD7VAr3mcnszrbD5fww5fJPzcBjmKbnGCjhzgDSBz+kDmZnwtP3c4dDpm0Y0eB+cbzzaGo0rw
+	/A7zi/YpZwuwtJc3Fo7pSD5D19y11mQ+YXtkmj3Xi24PN+OMTLi5/M8JWJ0DD3VRuPndkWIqSF8hG
+	mgvUKB0Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k5lYw-0002Uw-9k; Wed, 12 Aug 2020 07:52:42 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k5mAy-00033s-8w; Wed, 12 Aug 2020 08:32:00 +0000
+Received: from lucky1.263xmail.com ([211.157.147.135])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k5lYp-0002QL-81; Wed, 12 Aug 2020 07:52:36 +0000
-Received: from kernel.org (unknown [104.132.0.74])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 65F02206B5;
- Wed, 12 Aug 2020 07:52:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597218753;
- bh=lYGnGkLHu1hG+xc/o4ReH2xXsUyzFmXjEImOntyD4ws=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=1p4LHA72BP10qSH06MuALxEGL+GU2nbkV9CWNkn7+vzYlWNNa2iKUE7l2t2sNjo87
- 097ws6IFpDJ2P3anL6PUXIcGnhWnHUm+WEEkiKkVvGdz9NhD2BwpbfB2/UyB/xievf
- kX/NCz4f7O+i1NWsIh4cgBHOC7WzfgCLvMNrQO6c=
+ id 1k5mAs-00031W-3y; Wed, 12 Aug 2020 08:31:56 +0000
+Received: from localhost (unknown [192.168.167.32])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 684A1A1B42;
+ Wed, 12 Aug 2020 16:31:35 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED: 0
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [103.29.142.67])
+ by smtp.263.net (postfix) whith ESMTP id
+ P37123T139693005121280S1597221089119037_; 
+ Wed, 12 Aug 2020 16:31:34 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <ad9528e0bf7ae9b013df868bd4c7e1c9>
+X-RL-SENDER: algea.cao@rock-chips.com
+X-SENDER: algea.cao@rock-chips.com
+X-LOGIN-NAME: algea.cao@rock-chips.com
+X-FST-TO: a.hajda@samsung.com
+X-SENDER-IP: 103.29.142.67
+X-ATTACHMENT-NUM: 0
+X-DNS-TYPE: 0
+X-System-Flag: 0
+From: Algea Cao <algea.cao@rock-chips.com>
+To: a.hajda@samsung.com, kuankuan.y@gmail.com, hjc@rock-chips.com,
+ tzimmermann@suse.de, dri-devel@lists.freedesktop.org, sam@ravnborg.org,
+ airlied@linux.ie, heiko@sntech.de, jernej.skrabec@siol.net,
+ algea.cao@rock-chips.com, Laurent.pinchart@ideasonboard.com,
+ laurent.pinchart+renesas@ideasonboard.com, jonas@kwiboo.se,
+ mripard@kernel.org, darekm@google.com, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, cychiang@chromium.org,
+ linux-kernel@vger.kernel.org, narmstrong@baylibre.com,
+ jbrunet@baylibre.com, maarten.lankhorst@linux.intel.com, daniel@ffwll.ch
+Subject: [PATCH 0/6] Support change dw-hdmi output color
+Date: Wed, 12 Aug 2020 16:31:20 +0800
+Message-Id: <20200812083120.743-1-algea.cao@rock-chips.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20200810044020.2063350-1-natechancellor@gmail.com>
-References: <20200810044020.2063350-1-natechancellor@gmail.com>
-Subject: Re: [PATCH] clk: rockchip: Fix initialization of mux_pll_src_4plls_p
-From: Stephen Boyd <sboyd@kernel.org>
-To: Michael Turquette <mturquette@baylibre.com>,
- Nathan Chancellor <natechancellor@gmail.com>
-Date: Wed, 12 Aug 2020 00:52:32 -0700
-Message-ID: <159721875227.33733.9237826555988566719@swboyd.mtv.corp.google.com>
-User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200812_035235_383417_AD4DA07B 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20200812_043154_971516_F3011C11 
+X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,41 +90,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, clang-built-linux@googlegroups.com,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Nathan Chancellor <natechancellor@gmail.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Nathan Chancellor (2020-08-09 21:40:20)
-> A new warning in Clang points out that the initialization of
-> mux_pll_src_4plls_p appears incorrect:
-> 
-> ../drivers/clk/rockchip/clk-rk3228.c:140:58: warning: suspicious
-> concatenation of string literals in an array initialization; did you
-> mean to separate the elements with a comma? [-Wstring-concatenation]
-> PNAME(mux_pll_src_4plls_p)      = { "cpll", "gpll", "hdmiphy" "usb480m" };
->                                                               ^
->                                                              ,
-> ../drivers/clk/rockchip/clk-rk3228.c:140:48: note: place parentheses
-> around the string literal to silence warning
-> PNAME(mux_pll_src_4plls_p)      = { "cpll", "gpll", "hdmiphy" "usb480m" };
->                                                     ^
-> 1 warning generated.
-> 
-> Given the name of the variable and the same variable name in rv1108, it
-> seems that this should have been four distinct elements. Fix it up by
-> adding the comma as suggested.
-> 
-> Fixes: 307a2e9ac524 ("clk: rockchip: add clock controller for rk3228")
-> Link: https://github.com/ClangBuiltLinux/linux/issues/1123
-> Signed-off-by: Nathan Chancellor <natechancellor@gmail.com>
-> ---
+Support userspace to set hdmi output color via hdmi properties.
+Add hdmi atomic_begin/atomic_flush to make sure screen don't flash
+when updating color.
 
-Looks good to me. I can pick it up for clk-fixes if Heiko agrees.
+
+Algea Cao (6):
+  drm: Add connector atomic_begin/atomic_flush
+  drm: bridge: dw-hdmi: Implement connector atomic_begin/atomic_flush
+  drm: bridge: dw-hdmi: Introduce previous_pixelclock/previous_tmdsclock
+  drm/rockchip: dw_hdmi: Add vendor hdmi properties
+  drm/rockchip: dw_hdmi: Add get_output_bus_format
+  drm: bridge: dw-hdmi: Get output bus format when dw-hdmi is the only
+    bridge
+
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c   | 123 ++++++++++-
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.h   |   4 +
+ drivers/gpu/drm/drm_atomic_helper.c         |  46 ++++
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 221 ++++++++++++++++++++
+ include/drm/bridge/dw_hdmi.h                |  23 ++
+ include/drm/drm_modeset_helper_vtables.h    |  19 ++
+ 6 files changed, 428 insertions(+), 8 deletions(-)
+
+-- 
+2.25.1
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
