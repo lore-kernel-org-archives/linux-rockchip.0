@@ -4,72 +4,171 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1367C433E1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 10:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01F4AC433E1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 11:20:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6DD1C20771
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 10:53:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B614820791
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 11:20:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CSq3fTSG";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="rvbUPfLG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DD1C20771
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z/F2gLxj";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=epam.com header.i=@epam.com header.b="w0RBY+eA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B614820791
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=epam.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Content-ID:In-Reply-To:References:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yHH0wyGcKyfb6aFSROQp1uQSNgjmkePtjGOE3BqM1dA=; b=CSq3fTSGYAZZ+z7VqDA1L7oqj
-	iBei1af4eodTKie04Xq/kcABAXYOeMD+9XLX0izmpwCXNa1iiwMR8TB30S/LMhbTo3M97c64l2FGX
-	7ZevFvYgg7LrUT3tpsXVuT9Y+4xWuA/YFWIkrxEvkRDyQJErdAdRdhKu40km6BW2z0IZHk591Kuis
-	XBrCKByIBgk1AkT2hx/p7w2XQ/lD9/iYtLG03i5OFNFNnw/04/9zYEVBLy3yPnS273wwYZ5GJpi+a
-	9okf5s6zBw49sGAzeGTscGNsQGJfYD9h52d9dQhmuSzGHPk+u4Na0ldNulAe8e+yqK/IaFSP+XJeU
-	qGKs/2oRw==;
+	 bh=e73DPyNls28MjEWx0gJHiOqruUVXP7v9yu3ulLsUfG4=; b=Z/F2gLxjPA+Hu04OJNck6qRGE
+	RAbzTbi0katPVb/DGG1Sc+7Yy1IR9N/HcwFlxoDbSVn8WIe6RFCcpfN3Bs7RuuIOulRaAH770VaZ8
+	Vv1S1KJ2RBTebjPKCp1Tk/3kMT+at/nOJGJgoEHIXdxuILxZFxyg3+4GLXHeBAlRtlUOzj+B4dzRC
+	wC8STTGco4JIOpUNP0wZgvgjfAlp2WLkdXvafqcjoA/mVBIM9/Sg0+En617kavjRZ50F/JvvI2Fl5
+	Z1ZkfA6D4xCSnQRP+ZBIcM41ni6VK7t0vVshNoTuPUzChLiZJ5j86v+CN8bK/GHF8kPuWfDZr2L/E
+	upyXdXT9Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6ArW-00072n-6C; Thu, 13 Aug 2020 10:53:34 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1k6BHW-0001LE-CR; Thu, 13 Aug 2020 11:20:26 +0000
+Received: from mx0a-0039f301.pphosted.com ([148.163.133.242])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6ArS-00071x-P7
- for linux-rockchip@lists.infradead.org; Thu, 13 Aug 2020 10:53:31 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
- [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 21FE3551;
- Thu, 13 Aug 2020 12:53:29 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1597316009;
- bh=0h0xRWiirvzccj+w77A9EqiAIwgMnUAgTTYO4/jWh2Y=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=rvbUPfLGsqUkw0SK0tLPRIX4S8fIBZaRn2fBtODdGf7olurCOBzM/AXaBkNRW6fOT
- jyd1TXpVJsW4OIHeMQzMI/tkZ+w6EQb6ScDy4peqU7LwwHuZPB/gKameKOqYpDBtLF
- i/k4E7/qFDMauJywO0+re1c4rmfuIswPpfZvx2Wk=
-Date: Thu, 13 Aug 2020 13:53:14 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [PATCH 3/3] media: staging: rkisp1: params: in 'stop_streaming'
- don't release the lock while returning buffers
-Message-ID: <20200813105314.GA6258@pendragon.ideasonboard.com>
-References: <20200625174257.22216-1-dafna.hirschfeld@collabora.com>
- <20200625174257.22216-4-dafna.hirschfeld@collabora.com>
- <e269f2f5-c24c-7009-e624-3545af206709@arm.com>
- <CAAFQd5AsJG=YJC4eG6+qdt_dPyr-dwcXrmujxLaHfoe9==Es1g@mail.gmail.com>
- <e680474a-1b47-7904-b7ab-5a026d0db05f@collabora.com>
- <CAAFQd5CHK+c=zED-evW3sqgF+WpuAYW6M8kvPZCVCrf2_KHG8A@mail.gmail.com>
- <16ea1aba-0b0d-6bcf-8e72-5e253ead9218@arm.com>
- <4d90a5d1-25a7-ab49-f3e5-2d54b6b8ecba@collabora.com>
+ id 1k6BHS-0001KH-Qi; Thu, 13 Aug 2020 11:20:24 +0000
+Received: from pps.filterd (m0174676.ppops.net [127.0.0.1])
+ by mx0a-0039f301.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 07DBAhIo032308; Thu, 13 Aug 2020 11:19:48 GMT
+Received: from eur01-ve1-obe.outbound.protection.outlook.com
+ (mail-ve1eur01lp2050.outbound.protection.outlook.com [104.47.1.50])
+ by mx0a-0039f301.pphosted.com with ESMTP id 32vyhf16ah-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 13 Aug 2020 11:19:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Ytoj84cGx07WDOAYCzIkNgAt5bJioV7W5YtrVQQAS/+DhksIreP6wUY2d7IxNw3e1dabLKO/joyhyWebgFQqE7U8FYMt8ZYhPnCqjE5ZIzWeJKfvh6OOtWmbCaoocBhxVDJghXveZhwrRLWUgpYJoUeJivPrrUx1cDSfoZ1X4Jed6KVCVnEtCywv0EJXptrjjIlxNbLZDgnkBtcViT9MIz5xfnuKWrBu18bowc9xWX03oicTJdWZ/BnK5NGg1irxdBljvs2qWsyrCW6lxrzabvSp8t9NDmP8axaAZebkUB8HE2VdtkyqacdQWdZWmR0DlAoyL5JuHkuQCowNN55twA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fc8o5Gg9pCw3D3wzThNao2OARb2LAoDAO0TM8iReMrs=;
+ b=FA7ZbC6kciQiDieES6zzXHbSBfxZUGb12XnTnuuuSTbWoHlcbY/pT+hwappdevHvqexWw/Bz8Q3o54YGu+tjl6vRVDeK78eNIKpH5yzt/n7WIoLrFXY4aV0JyWHJkdIoz2BQUJsh3tZzWwZ6bc5eQ+LCtWLgiIAm3lqIfD+rBIgFimrNgU9NILIddLJaOJBvfokjHR1rH9cCNDsdKqUQUYGUg4ozdb6KGT2+pO9RFz+mujUN/Rw1GEbte2Iy5nbG5oAd2Rp4R307KczLAP1co92UuESu2fqk5bXsxRQesZhQvPXAEpxgYTIwo/PJxqc4eIXw8dhpotVco9zVWZbrpg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=epam.com; dmarc=pass action=none header.from=epam.com;
+ dkim=pass header.d=epam.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=epam.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fc8o5Gg9pCw3D3wzThNao2OARb2LAoDAO0TM8iReMrs=;
+ b=w0RBY+eABwbLn3WzOKHTQ+/6O47gVx9rhalSLNXWETvTcqRI0v/DAlgzUBuGpVyIziCE00oFTPjIM/iudEjyjQVk+XvLxQ8tI2UJ5bJ0CSCE5TLL7VWkb4nKcKqCVaUImcwC5/+COKOhReKDCguIyo1dXrlnKyPnLBzbzwEGVBF74jfS8ALEQu9QqmcwTjtmInyu8pDWb/LtEDVmpxcJlsOJI60844+BquPe/P2FPh9BUJGiy1dA6ylKrn30TvBeZ+1hIcjNPxuHT4KWjo5Nk4+ACUgIdU5r3kpetdSHTZvtESHa48wY8dYQLaaop8HgjQTTD4jLAVU3rXpLMWUvLg==
+Received: from AM7PR03MB6325.eurprd03.prod.outlook.com (2603:10a6:20b:13c::18)
+ by AM6PR03MB4294.eurprd03.prod.outlook.com (2603:10a6:20b:4::29) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3283.18; Thu, 13 Aug
+ 2020 11:19:44 +0000
+Received: from AM7PR03MB6325.eurprd03.prod.outlook.com
+ ([fe80::1c2:462c:58b8:7ee9]) by AM7PR03MB6325.eurprd03.prod.outlook.com
+ ([fe80::1c2:462c:58b8:7ee9%7]) with mapi id 15.20.3283.018; Thu, 13 Aug 2020
+ 11:19:44 +0000
+From: Oleksandr Andrushchenko <Oleksandr_Andrushchenko@epam.com>
+To: Thomas Zimmermann <tzimmermann@suse.de>, "alexander.deucher@amd.com"
+ <alexander.deucher@amd.com>, "christian.koenig@amd.com"
+ <christian.koenig@amd.com>, "airlied@linux.ie" <airlied@linux.ie>,
+ "daniel@ffwll.ch" <daniel@ffwll.ch>, "linux@armlinux.org.uk"
+ <linux@armlinux.org.uk>, "maarten.lankhorst@linux.intel.com"
+ <maarten.lankhorst@linux.intel.com>, "mripard@kernel.org"
+ <mripard@kernel.org>, "l.stach@pengutronix.de" <l.stach@pengutronix.de>,
+ "christian.gmeiner@gmail.com" <christian.gmeiner@gmail.com>,
+ "inki.dae@samsung.com" <inki.dae@samsung.com>, "jy0922.shim@samsung.com"
+ <jy0922.shim@samsung.com>,
+ "sw0312.kim@samsung.com" <sw0312.kim@samsung.com>,
+ "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>, "kgene@kernel.org"
+ <kgene@kernel.org>, "krzk@kernel.org" <krzk@kernel.org>,
+ "patrik.r.jakobsson@gmail.com" <patrik.r.jakobsson@gmail.com>,
+ "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
+ "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
+ "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, "robdclark@gmail.com"
+ <robdclark@gmail.com>, "sean@poorly.run" <sean@poorly.run>,
+ "bskeggs@redhat.com" <bskeggs@redhat.com>, "tomi.valkeinen@ti.com"
+ <tomi.valkeinen@ti.com>, "eric@anholt.net" <eric@anholt.net>,
+ "hjc@rock-chips.com" <hjc@rock-chips.com>, "heiko@sntech.de"
+ <heiko@sntech.de>, "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
+ "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
+ "rodrigosiqueiramelo@gmail.com" <rodrigosiqueiramelo@gmail.com>,
+ "hamohammed.sa@gmail.com" <hamohammed.sa@gmail.com>, "hyun.kwon@xilinx.com"
+ <hyun.kwon@xilinx.com>, "laurent.pinchart@ideasonboard.com"
+ <laurent.pinchart@ideasonboard.com>, "michal.simek@xilinx.com"
+ <michal.simek@xilinx.com>, "sumit.semwal@linaro.org"
+ <sumit.semwal@linaro.org>, "evan.quan@amd.com" <evan.quan@amd.com>,
+ "Hawking.Zhang@amd.com" <Hawking.Zhang@amd.com>, "tianci.yin@amd.com"
+ <tianci.yin@amd.com>, "marek.olsak@amd.com" <marek.olsak@amd.com>,
+ "hdegoede@redhat.com" <hdegoede@redhat.com>, "andrey.grodzovsky@amd.com"
+ <andrey.grodzovsky@amd.com>, "Felix.Kuehling@amd.com"
+ <Felix.Kuehling@amd.com>, "xinhui.pan@amd.com" <xinhui.pan@amd.com>,
+ "aaron.liu@amd.com" <aaron.liu@amd.com>, "nirmoy.das@amd.com"
+ <nirmoy.das@amd.com>,
+ "chris@chris-wilson.co.uk" <chris@chris-wilson.co.uk>,
+ "matthew.auld@intel.com" <matthew.auld@intel.com>,
+ "abdiel.janulgue@linux.intel.com" <abdiel.janulgue@linux.intel.com>,
+ "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
+ "andi.shyti@intel.com" <andi.shyti@intel.com>, "sam@ravnborg.org"
+ <sam@ravnborg.org>, "miaoqinglang@huawei.com" <miaoqinglang@huawei.com>,
+ "emil.velikov@collabora.com" <emil.velikov@collabora.com>
+Subject: Re: [PATCH 18/20] drm/xen: Introduce GEM object functions
+Thread-Topic: [PATCH 18/20] drm/xen: Introduce GEM object functions
+Thread-Index: AQHWcUzwRlAvqlodBUmjrM9igZrPiqk15K+A
+Date: Thu, 13 Aug 2020 11:19:44 +0000
+Message-ID: <1fe5f918-2445-d2e6-a501-881e70929404@epam.com>
+References: <20200813083644.31711-1-tzimmermann@suse.de>
+ <20200813083644.31711-19-tzimmermann@suse.de>
+In-Reply-To: <20200813083644.31711-19-tzimmermann@suse.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: suse.de; dkim=none (message not signed)
+ header.d=none;suse.de; dmarc=none action=none header.from=epam.com;
+x-originating-ip: [185.199.97.5]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 98c2df7f-79af-4148-ee6b-08d83f7ac817
+x-ms-traffictypediagnostic: AM6PR03MB4294:
+x-microsoft-antispam-prvs: <AM6PR03MB42948483A47DA7E7FF20A061E7430@AM6PR03MB4294.eurprd03.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2201;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: 9OuhwFxQyiR1r6WZCNoxvlXl+F4BeIHs0Lj7XIYCOMfjlBUvc5wx2AH3cjVee20NCw2z2cPzZ66ecnTR62GJzmNWY8h8LSmhhC/EsaiBe0DBD2OfrRcKJAT4hamZv2xqu3XMDY6/N716vxoQ8fp7BqbbQbIDCLa6KvKOARS0o2KWYxXwggf2rh3Z4TMmiBtUgvIk8eryhP305FHCtCAkHlKgq8qasIbIPBMwIY3hW23rQo+9HVzXRQQYsnqfTqyMMVE2X6wNsxG5m6ioY6ZblXGROvXJZlZX1Zm5fQD2yiFyx/T9McHKZt6C1RvPJcolYPLatWRukLV4k9PA/9VbSZwEpt3OcTTDIS93rscyCcpYbHBB+xFV1WyOX/f4hJur
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM7PR03MB6325.eurprd03.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(39860400002)(136003)(366004)(346002)(376002)(396003)(4326008)(76116006)(7406005)(316002)(7416002)(6512007)(54906003)(7366002)(66946007)(110136005)(478600001)(6506007)(53546011)(64756008)(86362001)(66476007)(2906002)(8676002)(66446008)(66556008)(71200400001)(8936002)(6486002)(31696002)(26005)(5660300002)(1191002)(186003)(31686004)(83380400001)(36756003)(2616005)(921003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: RE/ytRISihDqVWLNAbZa6AMa6DykADf3L3prJiKeO9tLqyEL6pS7z6d7YS/5xwHDeDnKCuUMAUmNfHTLmpHstKw4/sCkLIAw55CLJasWUweCRGjRetUQX23J26TgBD/3q2hA+QG2a44++Ls8adHHKalvWZWDn281MI14G54ooFjzYTb1CoYbryKGXOxahysDtcfCSiaMSrC6WABHJkkf6gYfccHAzJMIiaMW9sYyJRML3v9o4BkX9/DtM5QFLa2ZCOQeqKWhPY9jcLPYo8K/HC7vabBlWXoXJmrw4avg7Gdr9wagIg3ESoB/dKSGWQOT3cM+HB5sLxxHaiuv16rgMNbqMTNhYQvuGVWu6Yg+sJOvNxDbEStBRe/tuvuBnI7ozGt+r2+JNK5UywIbuXtD12UAOe+aM5uJxsOoXGefBlaXFbgRH9WdPmrjtIS2HphZvjKFIPRlY9RScte8D1bScGUcLYqflfIw+LQ0S8AGQ9LoOQM8dKyWpHwc7GO+AbyLxT1ZmLLBeJ+I5PMqJc0k95MxFi4ueOcymKFCKNtfckT5jweqr2mtlrsTaEmc5dzsPQVDY42C+4nZspiabPTq7k3I0wzwW9xn6wWhbuLhoh+xI97P9riZFZygqwzUUj254yzRx2ZF3X1qCi5s/u/zlA==
+x-ms-exchange-transport-forked: True
+Content-ID: <73B83228210C8B4092A3A2E420A1C72C@eurprd03.prod.outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4d90a5d1-25a7-ab49-f3e5-2d54b6b8ecba@collabora.com>
+X-OriginatorOrg: epam.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: AM7PR03MB6325.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 98c2df7f-79af-4148-ee6b-08d83f7ac817
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Aug 2020 11:19:44.5649 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b41b72d0-4e9f-4c26-8a69-f949f367c91d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Uf3Ju+H72OtC//NmTqgcZeFyfKALyi2YcwCTi756Jif6gg6QmkKzaeMSl8qoWK868gGdtmA2N9qB0vAvmyjlq1MS3Eh0vEaiNq869roKrHvQDdr2jkXV8UZTYjjxWvux
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM6PR03MB4294
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
+ definitions=2020-08-13_10:2020-08-13,
+ 2020-08-13 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0
+ malwarescore=0 phishscore=0 clxscore=1011 bulkscore=0 impostorscore=0
+ suspectscore=0 spamscore=0 mlxscore=0 mlxlogscore=999 priorityscore=1501
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2008130085
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_065330_954139_99DDE97D 
-X-CRM114-Status: GOOD (  34.77  )
+X-CRM114-CacheID: sfid-20200813_072023_361023_B7BFB7ED 
+X-CRM114-Status: GOOD (  21.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,124 +181,135 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>,
- Dafna Hirschfeld <dafna3@gmail.com>, Tomasz Figa <tfiga@chromium.org>,
- Hans Verkuil <hverkuil@xs4all.nl>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Helen Koike <helen.koike@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
+ "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
+ "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+ "etnaviv@lists.freedesktop.org" <etnaviv@lists.freedesktop.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
+ "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+ "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
+ "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
+ "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8sCgpPbiBUaHUsIEF1ZyAxMywgMjAyMCBhdCAxMjo0NDozNVBNICswMjAwLCBEYWZuYSBI
-aXJzY2hmZWxkIHdyb3RlOgo+IEFtIDI2LjA2LjIwIHVtIDE4OjU4IHNjaHJpZWIgUm9iaW4gTXVy
-cGh5Ogo+ID4gT24gMjAyMC0wNi0yNiAxNjo1OSwgVG9tYXN6IEZpZ2Egd3JvdGU6Cj4gPj4gT24g
-RnJpLCBKdW4gMjYsIDIwMjAgYXQgNTo0OCBQTSBEYWZuYSBIaXJzY2hmZWxkIHdyb3RlOgo+ID4+
-PiBPbiAyNi4wNi4yMCAxNjowMywgVG9tYXN6IEZpZ2Egd3JvdGU6Cj4gPj4+PiBPbiBGcmksIEp1
-biAyNiwgMjAyMCBhdCAzOjMyIFBNIFJvYmluIE11cnBoeSB3cm90ZToKPiA+Pj4+PiBPbiAyMDIw
-LTA2LTI1IDE4OjQyLCBEYWZuYSBIaXJzY2hmZWxkIHdyb3RlOgo+ID4+Pj4+PiBJbiB0aGUgc3Rv
-cF9zdHJlYW1pbmcgY2FsbGJhY2sgJ3JraXNwMV9wYXJhbXNfdmIyX3N0b3Bfc3RyZWFtaW5nJwo+
-ID4+Pj4+PiB0aGVyZSBpcyBubyBuZWVkIHRvIHJlbGVhc2UgdGhlIGxvY2sgJ2NvbmZpZ19sb2Nr
-JyBhbmQgdGhlbiBhY3F1aXJlCj4gPj4+Pj4+IGl0IGFnYWluIGF0IGVhY2ggaXRlcmF0aW9uIHdo
-ZW4gcmV0dXJuaW5nIGFsbCBidWZmZXJzLgo+ID4+Pj4+PiBUaGlzIGlzIGJlY2F1c2UgdGhlIHN0
-cmVhbSBpcyBhYm91dCB0byBlbmQgYW5kIHRoZXJlIGlzIG5vIG5lZWQKPiA+Pj4+Pj4gdG8gbGV0
-IHRoZSBpc3IgYWNjZXNzIGEgYnVmZmVyLgo+ID4+Pj4+Pgo+ID4+Pj4+PiBTaWduZWQtb2ZmLWJ5
-OiBEYWZuYSBIaXJzY2hmZWxkIDxkYWZuYS5oaXJzY2hmZWxkQGNvbGxhYm9yYS5jb20+Cj4gPj4+
-Pj4+IC0tLQo+ID4+Pj4+PiDCoMKgwqAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JraXNwMS9ya2lz
-cDEtcGFyYW1zLmMgfCA3ICstLS0tLS0KPiA+Pj4+Pj4gwqDCoMKgIDEgZmlsZSBjaGFuZ2VkLCAx
-IGluc2VydGlvbigrKSwgNiBkZWxldGlvbnMoLSkKPiA+Pj4+Pj4KPiA+Pj4+Pj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya2lzcDEvcmtpc3AxLXBhcmFtcy5jIGIvZHJpdmVy
-cy9zdGFnaW5nL21lZGlhL3JraXNwMS9ya2lzcDEtcGFyYW1zLmMKPiA+Pj4+Pj4gaW5kZXggYmYw
-MDZkYmVlZTJkLi41MTY5YjAyNzMxZjEgMTAwNjQ0Cj4gPj4+Pj4+IC0tLSBhL2RyaXZlcnMvc3Rh
-Z2luZy9tZWRpYS9ya2lzcDEvcmtpc3AxLXBhcmFtcy5jCj4gPj4+Pj4+ICsrKyBiL2RyaXZlcnMv
-c3RhZ2luZy9tZWRpYS9ya2lzcDEvcmtpc3AxLXBhcmFtcy5jCj4gPj4+Pj4+IEBAIC0xNDg4LDE5
-ICsxNDg4LDEzIEBAIHN0YXRpYyB2b2lkIHJraXNwMV9wYXJhbXNfdmIyX3N0b3Bfc3RyZWFtaW5n
-KHN0cnVjdCB2YjJfcXVldWUgKnZxKQo+ID4+Pj4+PiDCoMKgwqDCoMKgwqDCoCAvKiBzdG9wIHBh
-cmFtcyBpbnB1dCBmaXJzdGx5ICovCj4gPj4+Pj4+IMKgwqDCoMKgwqDCoMKgIHNwaW5fbG9ja19p
-cnFzYXZlKCZwYXJhbXMtPmNvbmZpZ19sb2NrLCBmbGFncyk7Cj4gPj4+Pj4+IMKgwqDCoMKgwqDC
-oMKgIHBhcmFtcy0+aXNfc3RyZWFtaW5nID0gZmFsc2U7Cj4gPj4+Pj4+IC3CoMKgwqDCoCBzcGlu
-X3VubG9ja19pcnFyZXN0b3JlKCZwYXJhbXMtPmNvbmZpZ19sb2NrLCBmbGFncyk7Cj4gPj4+Pj4+
-Cj4gPj4+Pj4+IMKgwqDCoMKgwqDCoMKgIGZvciAoaSA9IDA7IGkgPCBSS0lTUDFfSVNQX1BBUkFN
-U19SRVFfQlVGU19NQVg7IGkrKykgewo+ID4+Pj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IHNwaW5fbG9ja19pcnFzYXZlKCZwYXJhbXMtPmNvbmZpZ19sb2NrLCBmbGFncyk7Cj4gPj4+Pj4+
-IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAoIWxpc3RfZW1wdHkoJnBhcmFtcy0+
-cGFyYW1zKSkgewo+ID4+Pj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIGJ1ZiA9IGxpc3RfZmlyc3RfZW50cnkoJnBhcmFtcy0+cGFyYW1zLAo+ID4+Pj4+
-PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3Qgcmtpc3AxX2J1ZmZl
-ciwgcXVldWUpOwo+ID4+Pj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIGxpc3RfZGVsKCZidWYtPnF1ZXVlKTsKPiA+Pj4+Pj4gLcKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmcGFyYW1z
-LT5jb25maWdfbG9jaywKPiA+Pj4+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGZs
-YWdzKTsKPiA+Pj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIH0gZWxzZSB7Cj4g
-Pj4+Pj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHNwaW5fdW5s
-b2NrX2lycXJlc3RvcmUoJnBhcmFtcy0+Y29uZmlnX2xvY2ssCj4gPj4+Pj4+IC3CoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBmbGFncyk7Cj4gPj4+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4gPj4+Pj4+IMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoCB9Cj4gPj4+Pj4KPiA+Pj4+PiBKdXN0IHNraW1taW5nIHRocm91Z2gg
-b3V0IG9mIGlkbGUgY3VyaW9zaXR5IEkgd2FzIGdvaW5nIHRvIGNvbW1lbnQgdGhhdAo+ID4+Pj4+
-IGlmIHlvdSBlbmQgdXAgd2l0aCB0aGlzIHBhdHRlcm46Cj4gPj4+Pj4KPiA+Pj4+PiDCoMKgwqDC
-oMKgwqDCoMKgwqAgaWYgKCF4KSB7Cj4gPj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCAvL2RvIHN0dWZmCj4gPj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIH0gZWxzZSB7Cj4g
-Pj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBicmVhazsKPiA+Pj4+PiDC
-oMKgwqDCoMKgwqDCoMKgwqAgfQo+ID4+Pj4+Cj4gPj4+Pj4gaXQgd291bGQgYmUgYmV0dGVyIGFz
-Ogo+ID4+Pj4+Cj4gPj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIGlmICh4KQo+ID4+Pj4+IMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4gPj4+Pj4gwqDCoMKgwqDCoMKg
-wqDCoMKgIC8vZG8gc3R1ZmYKPiA+Pj4+Pgo+ID4+Pj4+IEhvd2V2ZXIgSSB0aGVuIHdlbnQgYW5k
-IGxvb2tlZCBhdCB0aGUgd2hvbGUgZnVuY3Rpb24gYW5kIGZyYW5rbHkgaXQncyBhCj4gPj4+Pj4g
-Yml0IG9mIGEgV1RGLiBBcyBiZXN0IEkgY291bGQgZGVjaXBoZXIsIHRoaXMgd2hvbGUgY3Jhenkg
-bG9vcCBhcHBlYXJzIHRvCj4gPj4+Pj4gYmUgYSBiYXJvcXVlIHJlaW52ZW50aW9uIG9mOgo+ID4+
-Pj4+Cj4gPj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIGxpc3RfZm9yX2VhY2hfZW50cnlfc2FmZSgm
-cGFyYW1zLT5wYXJhbXMsIC4uLiwgYnVmKSB7Cj4gPj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCBsaXN0X2RlbCgmYnVmLT5xdWV1ZSk7Cj4gPj4+Pj4gwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB2YjJfYnVmZmVyX2RvbmUoJmJ1Zi0+dmIudmIyX2J1Ziwg
-VkIyX0JVRl9TVEFURV9FUlJPUik7Cj4gPj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIH0KPiA+Pj4g
-SGksIGluZGVlZCB0aGlzIGlzIGEgbXVjaCBzaW1wbGVyIGltcGxlbWVudGF0aW9uLCBncmVwaW5n
-ICdyZXR1cm5fYWxsX2J1ZmZlcnMnCj4gPj4+IEkgc2VlIHRoYXQgbWFueSBkcml2ZXJzIGltcGxl
-bWVudCBpdCB0aGlzIHdheS4KPiA+Pj4gdGhhbmtzIQo+ID4+Pgo+ID4+Pj4+Cj4gPj4+Pj4gKGFz
-c3VtaW5nIGZyb20gY29udGV4dCB0aGF0IHRoZSBsaXN0IHNob3VsZCBuZXZlciBjb250YWluIG1v
-cmUgdGhhbgo+ID4+Pj4+IFJLSVNQMV9JU1BfUEFSQU1TX1JFUV9CVUZTX01BWCBlbnRyaWVzIGlu
-IHRoZSBmaXJzdCBwbGFjZSkKPiA+Pj4+Cj4gPj4+PiBPciBpZiB3ZSB3YW50IHRvIGF2b2lkIGRp
-c2FibGluZyB0aGUgaW50ZXJydXB0cyBmb3IgdGhlIHdob2xlCj4gPj4+PiBpdGVyYXRpb24sIHdl
-IGNvdWxkIHVzZSBsaXN0X3NwbGljZSgpIHRvIG1vdmUgYWxsIHRoZSBlbnRyaWVzIG9mCj4gPj4+
-Cj4gPj4+IEJ1dCB0aGlzIGNvZGUgcnVucyB3aGVuIHVzZXJzcGFjZSBhc2tzIHRvIHN0b3AgdGhl
-IHN0cmVhbWluZyBzbyBJIGRvbid0Cj4gPj4+IHRoaW5rIGl0IGlzIGltcG9ydGFudCBhdCB0aGF0
-IHN0YWdlIHRvIGFsbG93IHRoZSBpbnRlcnJ1cHRzLgo+ID4+Cj4gPj4gSXQncyBnZW5lcmFsbHkg
-YSBnb29kIHByYWN0aWNlIHRvIHJlZHVjZSB0aGUgdGltZSBzcGVudCB3aXRoCj4gPj4gaW50ZXJy
-dXB0cyBkaXNhYmxlZC4gRGlzYWJsaW5nIHRoZSBpbnRlcnJ1cHRzIHByZXZlbnRzIHRoZSBzeXN0
-ZW0gZnJvbQo+ID4+IGhhbmRsaW5nIGV4dGVybmFsIGV2ZW50cywgaW5jbHVkaW5nIHRpbWVyIGlu
-dGVycnVwdHMsIGFuZCBzY2hlZHVsaW5nCj4gPj4gaGlnaGVyIHByaW9yaXR5IHRhc2tzLCBpbmNs
-dWRpbmcgcmVhbCB0aW1lIG9uZXMuIEhvdyBtdWNoIHRoZSBzeXN0ZW0KPiA+PiBydW5zIHdpdGgg
-aW50ZXJydXB0cyBkaXNhYmxlZCBpcyBvbmUgb2YgdGhlIGZhY3RvcnMgZGV0ZXJtaW5pbmcgdGhl
-Cj4gPj4gZ2VuZXJhbCBzeXN0ZW0gbGF0ZW5jeS4KPiA+IAo+ID4gUmlnaHQsIHdpdGggdGhlIHdh
-eSB3ZSBoYW5kbGUgaW50ZXJydXB0IGFmZmluaXR5IG9uIEFybSBhbiBJUlEgY2FuJ3QKPiA+IHRh
-cmdldCBtdWx0aXBsZSBDUFVzIGluIGhhcmR3YXJlLCBzbyBhbnkgdGltZSBzcGVudCB3aXRoIElS
-UXMKPiA+IGRpc2FibGVkIG1pZ2h0IGJlIHByZXZlbnRpbmcgb3RoZXIgZGV2aWNlcycgaW50ZXJy
-dXB0cyBmcm9tIGJlaW5nCj4gPiB0YWtlbiBldmVuIGlmIHRoZXkncmUgbm90IGV4cGxpY2l0bHkg
-YWZmaW5lIHRvIHRoZSBjdXJyZW50IENQVS4KPiA+IAo+ID4gTm93IHRoYXQgSSd2ZSBsb29rZWQs
-IGl0IGFwcGVhcnMgdGhhdCB2YjJfYnVmZmVyX2RvbmUoKSBtaWdodCBlbmQgdXAKPiA+IHBlcmZv
-cm1pbmcgYSBETUEgc3luYyBvbiB0aGUgYnVmZmVycywgd2hpY2gsIGlmIGl0IGhhcyB0byBkbwo+
-ID4gb3JkZXItb2YtbWVnYWJ5dGVzIHdvcnRoIG9mIGNhY2hlIG1haW50ZW5hbmNlIGZvciBsYXJn
-ZSBmcmFtZXMsIGlzCj4gPiB0aGUga2luZCBvZiByZWxhdGl2ZWx5IHNsb3cgb3BlcmF0aW9uIHRo
-YXQgcmVhbGx5IGRvZXNuJ3Qgd2FudCB0byBiZQo+ID4gZG9uZSB3aXRoIElSUXMgZGlzYWJsZWQg
-KG9yIHVuZGVyIGEgbG9jayBhdCBhbGwsIGlkZWFsbHkpIHVubGVzcyBpdAo+ID4gYWJzb2x1dGVs
-eSAqaGFzKiB0byBiZS4gSWYgdGhlIGxvY2sgaXMgb25seSBuZWVkZWQgaGVyZSB0byBwcm90ZWN0
-Cj4gPiBtb2RpZmljYXRpb25zIHRvIHRoZSBwYXJhbXMgbGlzdCBpdHNlbGYsIHRoZW4gbW92aW5n
-IHRoZSB3aG9sZSBsaXN0Cj4gPiBhdCBvbmNlIHRvIGRvIHRoZSBjbGVhbnVwICJvZmZsaW5lIiBz
-b3VuZHMgbGlrZSBhIGdyZWF0IGlkZWEgdG8gbWUuCgpPdWNoLgoKPiBvaywgdGhhdCBtaWdodCBi
-ZSBhIHByb2JsZW0gaW4gdjRsMiBpbiBnZW5lcmFsIHNpbmNlIHZiMl9idWZmZXJfZG9uZQo+IGlz
-IGFjdHVhbGx5IG9mdGVuIHVzZWQgaW5zaWRlIGFuIGlycSBoYW5kbGVyCgpDb3JyZWN0LiBUaGUg
-RE1BIHN5bmMgc2hvdWxkIGJlIG1vdmVkIHRvIERRQlVGIHRpbWUsIHRoZXJlIHNob3VsZG4ndCBi
-ZQphbnkgcmVhc29uIHRvIGRvIGl0IGluIHRoZSBJUlEgaGFuZGxlci4gSSB0aG91Z2h0IHRoaXMg
-aGFkIGFscmVhZHkgYmVlbgpmaXhlZCA6LSgKCi0tIApSZWdhcmRzLAoKTGF1cmVudCBQaW5jaGFy
-dAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+Hi,
+
+On 8/13/20 11:36 AM, Thomas Zimmermann wrote:
+> GEM object functions deprecate several similar callback interfaces in
+> struct drm_driver. This patch replaces the per-driver callbacks with
+> per-instance callbacks in xen. The only exception is gem_prime_mmap,
+> which is non-trivial to convert.
+>
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> ---
+>   drivers/gpu/drm/xen/xen_drm_front.c     | 12 +-----------
+>   drivers/gpu/drm/xen/xen_drm_front.h     |  2 ++
+>   drivers/gpu/drm/xen/xen_drm_front_gem.c | 15 +++++++++++++++
+>   3 files changed, 18 insertions(+), 11 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/xen/xen_drm_front.c b/drivers/gpu/drm/xen/xen_drm_front.c
+> index 3e660fb111b3..bd9af1875af1 100644
+> --- a/drivers/gpu/drm/xen/xen_drm_front.c
+> +++ b/drivers/gpu/drm/xen/xen_drm_front.c
+> @@ -433,7 +433,7 @@ static int xen_drm_drv_dumb_create(struct drm_file *filp,
+>   	return ret;
+>   }
+>   
+> -static void xen_drm_drv_free_object_unlocked(struct drm_gem_object *obj)
+> +void xen_drm_drv_free_object_unlocked(struct drm_gem_object *obj)
+
+Can we please have naming consistent and name it as
+
+xen_drm_front_drv_free_object_unlocked or any other name if this seems to be too long,
+
+but starting with xen_drm_front_ as the rest of exported functions?
+
+With this,
+
+Acked-by: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
+
+Thank you,
+
+Oleksandr
+
+>   {
+>   	struct xen_drm_front_drm_info *drm_info = obj->dev->dev_private;
+>   	int idx;
+> @@ -481,22 +481,12 @@ static const struct file_operations xen_drm_dev_fops = {
+>   	.mmap           = xen_drm_front_gem_mmap,
+>   };
+>   
+> -static const struct vm_operations_struct xen_drm_drv_vm_ops = {
+> -	.open           = drm_gem_vm_open,
+> -	.close          = drm_gem_vm_close,
+> -};
+> -
+>   static struct drm_driver xen_drm_driver = {
+>   	.driver_features           = DRIVER_GEM | DRIVER_MODESET | DRIVER_ATOMIC,
+>   	.release                   = xen_drm_drv_release,
+> -	.gem_vm_ops                = &xen_drm_drv_vm_ops,
+> -	.gem_free_object_unlocked  = xen_drm_drv_free_object_unlocked,
+>   	.prime_handle_to_fd        = drm_gem_prime_handle_to_fd,
+>   	.prime_fd_to_handle        = drm_gem_prime_fd_to_handle,
+>   	.gem_prime_import_sg_table = xen_drm_front_gem_import_sg_table,
+> -	.gem_prime_get_sg_table    = xen_drm_front_gem_get_sg_table,
+> -	.gem_prime_vmap            = xen_drm_front_gem_prime_vmap,
+> -	.gem_prime_vunmap          = xen_drm_front_gem_prime_vunmap,
+>   	.gem_prime_mmap            = xen_drm_front_gem_prime_mmap,
+>   	.dumb_create               = xen_drm_drv_dumb_create,
+>   	.fops                      = &xen_drm_dev_fops,
+> diff --git a/drivers/gpu/drm/xen/xen_drm_front.h b/drivers/gpu/drm/xen/xen_drm_front.h
+> index f92c258350ca..93e60c1db550 100644
+> --- a/drivers/gpu/drm/xen/xen_drm_front.h
+> +++ b/drivers/gpu/drm/xen/xen_drm_front.h
+> @@ -160,4 +160,6 @@ int xen_drm_front_page_flip(struct xen_drm_front_info *front_info,
+>   void xen_drm_front_on_frame_done(struct xen_drm_front_info *front_info,
+>   				 int conn_idx, u64 fb_cookie);
+>   
+> +void xen_drm_drv_free_object_unlocked(struct drm_gem_object *obj);
+> +
+>   #endif /* __XEN_DRM_FRONT_H_ */
+> diff --git a/drivers/gpu/drm/xen/xen_drm_front_gem.c b/drivers/gpu/drm/xen/xen_drm_front_gem.c
+> index f0b85e094111..7b315c08bcfc 100644
+> --- a/drivers/gpu/drm/xen/xen_drm_front_gem.c
+> +++ b/drivers/gpu/drm/xen/xen_drm_front_gem.c
+> @@ -56,6 +56,19 @@ static void gem_free_pages_array(struct xen_gem_object *xen_obj)
+>   	xen_obj->pages = NULL;
+>   }
+>   
+> +static const struct vm_operations_struct xen_drm_drv_vm_ops = {
+> +	.open           = drm_gem_vm_open,
+> +	.close          = drm_gem_vm_close,
+> +};
+> +
+> +static const struct drm_gem_object_funcs xen_drm_front_gem_object_funcs = {
+> +	.free = xen_drm_drv_free_object_unlocked,
+> +	.get_sg_table = xen_drm_front_gem_get_sg_table,
+> +	.vmap = xen_drm_front_gem_prime_vmap,
+> +	.vunmap = xen_drm_front_gem_prime_vunmap,
+> +	.vm_ops = &xen_drm_drv_vm_ops,
+> +};
+> +
+>   static struct xen_gem_object *gem_create_obj(struct drm_device *dev,
+>   					     size_t size)
+>   {
+> @@ -66,6 +79,8 @@ static struct xen_gem_object *gem_create_obj(struct drm_device *dev,
+>   	if (!xen_obj)
+>   		return ERR_PTR(-ENOMEM);
+>   
+> +	xen_obj->base.funcs = &xen_drm_front_gem_object_funcs;
+> +
+>   	ret = drm_gem_object_init(dev, &xen_obj->base, size);
+>   	if (ret < 0) {
+>   		kfree(xen_obj);
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
