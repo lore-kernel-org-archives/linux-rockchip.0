@@ -5,78 +5,63 @@ X-Spam-Level:
 X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2E734C433E3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 10:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9EED7C433DF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 10:44:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DB39B20771
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 10:42:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7000520791
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 10:44:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FDVbcON0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB39B20771
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="prNAFYS5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7000520791
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1X1uCk49uqZ0Bc1S0FEoWQ783jHFT5ve8w6uuFZgFeI=; b=FDVbcON0FOxFmACuJL5a19y9H
-	YDP4+5W3SN1467l3XC+8YG5VURAg8gjOL2G4CXSOXOlPymE5Thd/9s5jsWH7mNkc7ONJaBBs12bjd
-	QRAEPLU0kdjFW6/H/EILSGGA4nXyxBEu7BNhk8AWWxqUD+cCR+FVxKvnaUxDnT5N3PrqWQEv5ZMsV
-	e9DDKjlD3ZSSKp9269xiNbsypaHO1jpplTcEucfUikuTHQCVDTPsZgVhec6/sfrmRlaOM7LKEvK9s
-	wujEFjxteAlWyK0n8I8iIpVHjq6uMOavirj6aKkRWsdV/f96iKNiRMAaV3651qofTDTMCmFdBBX8L
-	Fh3PWY38g==;
+	 bh=ToYvHtWQJ9qT0F1NYIHSwuiXzS1EcX/nIbbPVF9v+so=; b=prNAFYS5wTOzzI3s/XZQXZWCE
+	7VSg0ormdGgZuVmB6yD0EcBTjcSJ9xdOame6dGGHFFJtoH4T18hQqRAmNcNp+aMKal0dEgE9kCl86
+	935Lt9Qf6YQVl2AsF/rpvYXTcMyBa8izD4NuMJ/qb+E8apcggiIwBdqRiM3YpaAEMdvyunFvpAUnQ
+	oqyY442adl2DYBI+yPWi0h4xjmUv9jub05JVmADG9/8/hMzohu3MgY+sjmjYgj5Z1mO0IoHkkRb6d
+	T0NPhnzrrGSWeWdAl4mJ3QLhc37v4npimAOkyCZPG/J9oREGSGos+hs/7dXcg3yF9dlVr80asB2x1
+	pa1R6+FiA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6AgJ-0005cF-4m; Thu, 13 Aug 2020 10:41:59 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1k6Aiw-0005r1-Ir; Thu, 13 Aug 2020 10:44:42 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6AgF-0005bB-6a; Thu, 13 Aug 2020 10:41:56 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id CFEBFB66A;
- Thu, 13 Aug 2020 10:42:15 +0000 (UTC)
-Subject: Re: [PATCH 12/20] drm/radeon: Introduce GEM object functions
-To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- alexander.deucher@amd.com, airlied@linux.ie, daniel@ffwll.ch,
- linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
- patrik.r.jakobsson@gmail.com, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
- chunkuang.hu@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
- robdclark@gmail.com, sean@poorly.run, bskeggs@redhat.com,
- tomi.valkeinen@ti.com, eric@anholt.net, hjc@rock-chips.com, heiko@sntech.de,
- thierry.reding@gmail.com, jonathanh@nvidia.com,
- rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
- oleksandr_andrushchenko@epam.com, hyun.kwon@xilinx.com,
- laurent.pinchart@ideasonboard.com, michal.simek@xilinx.com,
- sumit.semwal@linaro.org, evan.quan@amd.com, Hawking.Zhang@amd.com,
- tianci.yin@amd.com, marek.olsak@amd.com, hdegoede@redhat.com,
- andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com, xinhui.pan@amd.com,
- aaron.liu@amd.com, nirmoy.das@amd.com, chris@chris-wilson.co.uk,
- matthew.auld@intel.com, abdiel.janulgue@linux.intel.com,
- tvrtko.ursulin@linux.intel.com, andi.shyti@intel.com, sam@ravnborg.org,
- miaoqinglang@huawei.com, emil.velikov@collabora.com
-References: <20200813083644.31711-1-tzimmermann@suse.de>
- <20200813083644.31711-13-tzimmermann@suse.de>
- <fb070238-b6ca-8e31-e559-51eda489915e@amd.com>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <5372b2ef-b7cf-f4e9-9199-6dee5bf6696f@suse.de>
-Date: Thu, 13 Aug 2020 12:41:51 +0200
+ id 1k6Ait-0005qE-ST
+ for linux-rockchip@lists.infradead.org; Thu, 13 Aug 2020 10:44:41 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id 21CE8299F07
+Subject: Re: [PATCH 3/3] media: staging: rkisp1: params: in 'stop_streaming'
+ don't release the lock while returning buffers
+To: Robin Murphy <robin.murphy@arm.com>, Tomasz Figa <tfiga@chromium.org>
+References: <20200625174257.22216-1-dafna.hirschfeld@collabora.com>
+ <20200625174257.22216-4-dafna.hirschfeld@collabora.com>
+ <e269f2f5-c24c-7009-e624-3545af206709@arm.com>
+ <CAAFQd5AsJG=YJC4eG6+qdt_dPyr-dwcXrmujxLaHfoe9==Es1g@mail.gmail.com>
+ <e680474a-1b47-7904-b7ab-5a026d0db05f@collabora.com>
+ <CAAFQd5CHK+c=zED-evW3sqgF+WpuAYW6M8kvPZCVCrf2_KHG8A@mail.gmail.com>
+ <16ea1aba-0b0d-6bcf-8e72-5e253ead9218@arm.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <4d90a5d1-25a7-ab49-f3e5-2d54b6b8ecba@collabora.com>
+Date: Thu, 13 Aug 2020 12:44:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <fb070238-b6ca-8e31-e559-51eda489915e@amd.com>
+In-Reply-To: <16ea1aba-0b0d-6bcf-8e72-5e253ead9218@arm.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_064155_479354_E3DF6831 
-X-CRM114-Status: GOOD (  19.58  )
+X-CRM114-CacheID: sfid-20200813_064440_128693_D58C3D0A 
+X-CRM114-Status: GOOD (  25.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,293 +74,117 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
- xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============0940591043608876652=="
+Cc: kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>,
+ Hans Verkuil <hverkuil@xs4all.nl>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Helen Koike <helen.koike@collabora.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============0940591043608876652==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="dvpyWKt9GfZXVkJReqmxwaKg1xVlNTKmH"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---dvpyWKt9GfZXVkJReqmxwaKg1xVlNTKmH
-Content-Type: multipart/mixed; boundary="oRxCNe57YCRejXLT0jiYdnWGOkpGgvM5x";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- alexander.deucher@amd.com, airlied@linux.ie, daniel@ffwll.ch,
- linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
- patrik.r.jakobsson@gmail.com, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
- chunkuang.hu@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
- robdclark@gmail.com, sean@poorly.run, bskeggs@redhat.com,
- tomi.valkeinen@ti.com, eric@anholt.net, hjc@rock-chips.com, heiko@sntech.de,
- thierry.reding@gmail.com, jonathanh@nvidia.com,
- rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
- oleksandr_andrushchenko@epam.com, hyun.kwon@xilinx.com,
- laurent.pinchart@ideasonboard.com, michal.simek@xilinx.com,
- sumit.semwal@linaro.org, evan.quan@amd.com, Hawking.Zhang@amd.com,
- tianci.yin@amd.com, marek.olsak@amd.com, hdegoede@redhat.com,
- andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com, xinhui.pan@amd.com,
- aaron.liu@amd.com, nirmoy.das@amd.com, chris@chris-wilson.co.uk,
- matthew.auld@intel.com, abdiel.janulgue@linux.intel.com,
- tvrtko.ursulin@linux.intel.com, andi.shyti@intel.com, sam@ravnborg.org,
- miaoqinglang@huawei.com, emil.velikov@collabora.com
-Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
- etnaviv@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
- xen-devel@lists.xenproject.org
-Message-ID: <5372b2ef-b7cf-f4e9-9199-6dee5bf6696f@suse.de>
-Subject: Re: [PATCH 12/20] drm/radeon: Introduce GEM object functions
-References: <20200813083644.31711-1-tzimmermann@suse.de>
- <20200813083644.31711-13-tzimmermann@suse.de>
- <fb070238-b6ca-8e31-e559-51eda489915e@amd.com>
-In-Reply-To: <fb070238-b6ca-8e31-e559-51eda489915e@amd.com>
-
---oRxCNe57YCRejXLT0jiYdnWGOkpGgvM5x
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Hi
-
-Am 13.08.20 um 12:24 schrieb Christian K=C3=B6nig:
-> Am 13.08.20 um 10:36 schrieb Thomas Zimmermann:
->> GEM object functions deprecate several similar callback interfaces in
->> struct drm_driver. This patch replaces the per-driver callbacks with
->> per-instance callbacks in radeon.
->>
->> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->> ---
->> =C2=A0 drivers/gpu/drm/radeon/radeon_drv.c=C2=A0=C2=A0=C2=A0 | 23 +---=
--------------------
->> =C2=A0 drivers/gpu/drm/radeon/radeon_object.c | 26 +++++++++++++++++++=
-+++++++
->> =C2=A0 2 files changed, 27 insertions(+), 22 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/radeon/radeon_drv.c
->> b/drivers/gpu/drm/radeon/radeon_drv.c
->> index 4cd30613fa1d..65061c949aee 100644
->> --- a/drivers/gpu/drm/radeon/radeon_drv.c
->> +++ b/drivers/gpu/drm/radeon/radeon_drv.c
->> @@ -124,13 +124,6 @@ void radeon_driver_irq_preinstall_kms(struct
->> drm_device *dev);
->> =C2=A0 int radeon_driver_irq_postinstall_kms(struct drm_device *dev);
->> =C2=A0 void radeon_driver_irq_uninstall_kms(struct drm_device *dev);
->> =C2=A0 irqreturn_t radeon_driver_irq_handler_kms(int irq, void *arg);
->> -void radeon_gem_object_free(struct drm_gem_object *obj);
->> -int radeon_gem_object_open(struct drm_gem_object *obj,
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 struct drm_file *file_priv);
->> -void radeon_gem_object_close(struct drm_gem_object *obj,
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 struct drm_file *file_priv);
->> -struct dma_buf *radeon_gem_prime_export(struct drm_gem_object *gobj,
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int flags);
->> =C2=A0 extern int radeon_get_crtc_scanoutpos(struct drm_device *dev,
->> unsigned int crtc,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 unsign=
-ed int flags, int *vpos, int *hpos,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ktime_=
-t *stime, ktime_t *etime,
->> @@ -145,14 +138,9 @@ int radeon_mode_dumb_mmap(struct drm_file *filp,
->> =C2=A0 int radeon_mode_dumb_create(struct drm_file *file_priv,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct drm_device *dev,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct drm_mode_create_dumb *args);
->> -struct sg_table *radeon_gem_prime_get_sg_table(struct drm_gem_object
->> *obj);
->> =C2=A0 struct drm_gem_object *radeon_gem_prime_import_sg_table(struct
->> drm_device *dev,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct dma_buf_attachment *,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct sg_table *sg);
->> -int radeon_gem_prime_pin(struct drm_gem_object *obj);
->> -void radeon_gem_prime_unpin(struct drm_gem_object *obj);
->> -void *radeon_gem_prime_vmap(struct drm_gem_object *obj);
->> -void radeon_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr)=
-;
->> =C2=A0 =C2=A0 /* atpx handler */
->> =C2=A0 #if defined(CONFIG_VGA_SWITCHEROO)
->> @@ -550,7 +538,7 @@ long radeon_drm_ioctl(struct file *filp,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret =3D drm_ioctl(filp, cmd, arg=
-);
->> -=C2=A0=C2=A0=C2=A0
->> +
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pm_runtime_mark_last_busy(dev->dev);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 pm_runtime_put_autosuspend(dev->dev);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return ret;
->> @@ -609,22 +597,13 @@ static struct drm_driver kms_driver =3D {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .irq_uninstall =3D radeon_driver_irq_un=
-install_kms,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .irq_handler =3D radeon_driver_irq_hand=
-ler_kms,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .ioctls =3D radeon_ioctls_kms,
->> -=C2=A0=C2=A0=C2=A0 .gem_free_object_unlocked =3D radeon_gem_object_fr=
-ee,
->> -=C2=A0=C2=A0=C2=A0 .gem_open_object =3D radeon_gem_object_open,
->> -=C2=A0=C2=A0=C2=A0 .gem_close_object =3D radeon_gem_object_close,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .dumb_create =3D radeon_mode_dumb_creat=
-e,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .dumb_map_offset =3D radeon_mode_dumb_m=
-map,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .fops =3D &radeon_driver_kms_fops,
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .prime_handle_to_fd =3D drm_gem_=
-prime_handle_to_fd,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .prime_fd_to_handle =3D drm_gem_prime_f=
-d_to_handle,
->> -=C2=A0=C2=A0=C2=A0 .gem_prime_export =3D radeon_gem_prime_export,
->> -=C2=A0=C2=A0=C2=A0 .gem_prime_pin =3D radeon_gem_prime_pin,
->> -=C2=A0=C2=A0=C2=A0 .gem_prime_unpin =3D radeon_gem_prime_unpin,
->> -=C2=A0=C2=A0=C2=A0 .gem_prime_get_sg_table =3D radeon_gem_prime_get_s=
-g_table,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .gem_prime_import_sg_table =3D radeon_g=
-em_prime_import_sg_table,
->> -=C2=A0=C2=A0=C2=A0 .gem_prime_vmap =3D radeon_gem_prime_vmap,
->> -=C2=A0=C2=A0=C2=A0 .gem_prime_vunmap =3D radeon_gem_prime_vunmap,
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .name =3D DRIVER_NAME,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .desc =3D DRIVER_DESC,
->> diff --git a/drivers/gpu/drm/radeon/radeon_object.c
->> b/drivers/gpu/drm/radeon/radeon_object.c
->> index bb7582afd803..882390e15dfe 100644
->> --- a/drivers/gpu/drm/radeon/radeon_object.c
->> +++ b/drivers/gpu/drm/radeon/radeon_object.c
->> @@ -45,6 +45,19 @@ int radeon_ttm_init(struct radeon_device *rdev);
->> =C2=A0 void radeon_ttm_fini(struct radeon_device *rdev);
->> =C2=A0 static void radeon_bo_clear_surface_reg(struct radeon_bo *bo);
->> =C2=A0 +void radeon_gem_object_free(struct drm_gem_object *obj);
->> +int radeon_gem_object_open(struct drm_gem_object *obj,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 struct drm_file *file_priv);
->> +void radeon_gem_object_close(struct drm_gem_object *obj,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 struct drm_file *file_priv);
->> +struct dma_buf *radeon_gem_prime_export(struct drm_gem_object *gobj,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 int flags);
->> +struct sg_table *radeon_gem_prime_get_sg_table(struct drm_gem_object
->> *obj);
->> +int radeon_gem_prime_pin(struct drm_gem_object *obj);
->> +void radeon_gem_prime_unpin(struct drm_gem_object *obj);
->> +void *radeon_gem_prime_vmap(struct drm_gem_object *obj);
->> +void radeon_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr)=
-;
->> +
->> =C2=A0 /*
->> =C2=A0=C2=A0 * To exclude mutual BO access we rely on bo_reserve exclu=
-sion, as all
->> =C2=A0=C2=A0 * function are calling it.
->> @@ -180,6 +193,18 @@ void radeon_ttm_placement_from_domain(struct
->> radeon_bo *rbo, u32 domain)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->> =C2=A0 }
->> =C2=A0 +static const struct drm_gem_object_funcs radeon_gem_object_fun=
-cs =3D {
->> +=C2=A0=C2=A0=C2=A0 .free =3D radeon_gem_object_free,
->> +=C2=A0=C2=A0=C2=A0 .open =3D radeon_gem_object_open,
->> +=C2=A0=C2=A0=C2=A0 .close =3D radeon_gem_object_close,
->> +=C2=A0=C2=A0=C2=A0 .export =3D radeon_gem_prime_export,
->> +=C2=A0=C2=A0=C2=A0 .pin =3D radeon_gem_prime_pin,
->> +=C2=A0=C2=A0=C2=A0 .unpin =3D radeon_gem_prime_unpin,
->> +=C2=A0=C2=A0=C2=A0 .get_sg_table =3D radeon_gem_prime_get_sg_table,
->> +=C2=A0=C2=A0=C2=A0 .vmap =3D radeon_gem_prime_vmap,
->> +=C2=A0=C2=A0=C2=A0 .vunmap =3D radeon_gem_prime_vunmap,
->> +};
->> +
->=20
-> Same comment as for amdgpu, please put that into radeon_gem.c instead.
-
-There's no good header file to put the declarations, right? I'm asking
-because checkpatch warns about declarations in the source files.
-
-Best regards
-Thomas
-
->=20
-> Christian.
->=20
->> =C2=A0 int radeon_bo_create(struct radeon_device *rdev,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 unsigned long size, int byte_align, bool kernel,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 u32 domain, u32 flags, struct sg_table *sg,
->> @@ -209,6 +234,7 @@ int radeon_bo_create(struct radeon_device *rdev,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bo =3D kzalloc(sizeof(struct radeon_bo)=
-, GFP_KERNEL);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (bo =3D=3D NULL)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -ENOMEM;=
-
->> +=C2=A0=C2=A0=C2=A0 bo->tbo.base.funcs =3D &radeon_gem_object_funcs;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 drm_gem_private_object_init(rdev->ddev,=
- &bo->tbo.base, size);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bo->rdev =3D rdev;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bo->surface_reg =3D -1;
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---oRxCNe57YCRejXLT0jiYdnWGOkpGgvM5x--
-
---dvpyWKt9GfZXVkJReqmxwaKg1xVlNTKmH
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQFIBAEBCAAyFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl81GO8UHHR6aW1tZXJt
-YW5uQHN1c2UuZGUACgkQaA3BHVMLeiOA6ggAuUVnmM68uUP4+aYhVogVE45exMl2
-eaX7AfXNkklfKJwgOpnqu8g00U134y52xRGfOU1teV/kar0YzgqlKL2Af+YLw5Yp
-7QFKDQpwjXX+MQzei9GtyC9OMfz6nwQgt28MqaMrkaSPyIvqibwF4fzR/nXSTDCQ
-1PpwCVQ1TWGST7SZFdUfHo+v3vdJuOyw0ucRceiJoEX4RQorEqFWXOHx/kR4Z1em
-POPUqdQAxWu8nlX+VUsN9ga3/QtTQ82ZEKfinfr0+ZNobJDIMznNeNTA1uDOwi8O
-RaXxxoYxdOEfvAZatFluUpOPE5T5zrt45Y1jpksTKhfmKPbSZ8ItAAqDhA==
-=qHmz
------END PGP SIGNATURE-----
-
---dvpyWKt9GfZXVkJReqmxwaKg1xVlNTKmH--
-
-
---===============0940591043608876652==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0940591043608876652==--
-
+CgpBbSAyNi4wNi4yMCB1bSAxODo1OCBzY2hyaWViIFJvYmluIE11cnBoeToKPiBPbiAyMDIwLTA2
+LTI2IDE2OjU5LCBUb21hc3ogRmlnYSB3cm90ZToKPj4gT24gRnJpLCBKdW4gMjYsIDIwMjAgYXQg
+NTo0OCBQTSBEYWZuYSBIaXJzY2hmZWxkCj4+IDxkYWZuYS5oaXJzY2hmZWxkQGNvbGxhYm9yYS5j
+b20+IHdyb3RlOgo+Pj4KPj4+Cj4+Pgo+Pj4gT24gMjYuMDYuMjAgMTY6MDMsIFRvbWFzeiBGaWdh
+IHdyb3RlOgo+Pj4+IE9uIEZyaSwgSnVuIDI2LCAyMDIwIGF0IDM6MzIgUE0gUm9iaW4gTXVycGh5
+IDxyb2Jpbi5tdXJwaHlAYXJtLmNvbT4gd3JvdGU6Cj4+Pj4+Cj4+Pj4+IEhpIERhZm5hLAo+Pj4+
+Pgo+Pj4+PiBPbiAyMDIwLTA2LTI1IDE4OjQyLCBEYWZuYSBIaXJzY2hmZWxkIHdyb3RlOgo+Pj4+
+Pj4gSW4gdGhlIHN0b3Bfc3RyZWFtaW5nIGNhbGxiYWNrICdya2lzcDFfcGFyYW1zX3ZiMl9zdG9w
+X3N0cmVhbWluZycKPj4+Pj4+IHRoZXJlIGlzIG5vIG5lZWQgdG8gcmVsZWFzZSB0aGUgbG9jayAn
+Y29uZmlnX2xvY2snIGFuZCB0aGVuIGFjcXVpcmUKPj4+Pj4+IGl0IGFnYWluIGF0IGVhY2ggaXRl
+cmF0aW9uIHdoZW4gcmV0dXJuaW5nIGFsbCBidWZmZXJzLgo+Pj4+Pj4gVGhpcyBpcyBiZWNhdXNl
+IHRoZSBzdHJlYW0gaXMgYWJvdXQgdG8gZW5kIGFuZCB0aGVyZSBpcyBubyBuZWVkCj4+Pj4+PiB0
+byBsZXQgdGhlIGlzciBhY2Nlc3MgYSBidWZmZXIuCj4+Pj4+Pgo+Pj4+Pj4gU2lnbmVkLW9mZi1i
+eTogRGFmbmEgSGlyc2NoZmVsZCA8ZGFmbmEuaGlyc2NoZmVsZEBjb2xsYWJvcmEuY29tPgo+Pj4+
+Pj4gLS0tCj4+Pj4+PiDCoMKgwqAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JraXNwMS9ya2lzcDEt
+cGFyYW1zLmMgfCA3ICstLS0tLS0KPj4+Pj4+IMKgwqDCoCAxIGZpbGUgY2hhbmdlZCwgMSBpbnNl
+cnRpb24oKyksIDYgZGVsZXRpb25zKC0pCj4+Pj4+Pgo+Pj4+Pj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvc3RhZ2luZy9tZWRpYS9ya2lzcDEvcmtpc3AxLXBhcmFtcy5jIGIvZHJpdmVycy9zdGFnaW5n
+L21lZGlhL3JraXNwMS9ya2lzcDEtcGFyYW1zLmMKPj4+Pj4+IGluZGV4IGJmMDA2ZGJlZWUyZC4u
+NTE2OWIwMjczMWYxIDEwMDY0NAo+Pj4+Pj4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3Jr
+aXNwMS9ya2lzcDEtcGFyYW1zLmMKPj4+Pj4+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9y
+a2lzcDEvcmtpc3AxLXBhcmFtcy5jCj4+Pj4+PiBAQCAtMTQ4OCwxOSArMTQ4OCwxMyBAQCBzdGF0
+aWMgdm9pZCBya2lzcDFfcGFyYW1zX3ZiMl9zdG9wX3N0cmVhbWluZyhzdHJ1Y3QgdmIyX3F1ZXVl
+ICp2cSkKPj4+Pj4+IMKgwqDCoMKgwqDCoMKgIC8qIHN0b3AgcGFyYW1zIGlucHV0IGZpcnN0bHkg
+Ki8KPj4+Pj4+IMKgwqDCoMKgwqDCoMKgIHNwaW5fbG9ja19pcnFzYXZlKCZwYXJhbXMtPmNvbmZp
+Z19sb2NrLCBmbGFncyk7Cj4+Pj4+PiDCoMKgwqDCoMKgwqDCoCBwYXJhbXMtPmlzX3N0cmVhbWlu
+ZyA9IGZhbHNlOwo+Pj4+Pj4gLcKgwqDCoMKgIHNwaW5fdW5sb2NrX2lycXJlc3RvcmUoJnBhcmFt
+cy0+Y29uZmlnX2xvY2ssIGZsYWdzKTsKPj4+Pj4+Cj4+Pj4+PiDCoMKgwqDCoMKgwqDCoCBmb3Ig
+KGkgPSAwOyBpIDwgUktJU1AxX0lTUF9QQVJBTVNfUkVRX0JVRlNfTUFYOyBpKyspIHsKPj4+Pj4+
+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgc3Bpbl9sb2NrX2lycXNhdmUoJnBhcmFtcy0+Y29u
+ZmlnX2xvY2ssIGZsYWdzKTsKPj4+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBp
+ZiAoIWxpc3RfZW1wdHkoJnBhcmFtcy0+cGFyYW1zKSkgewo+Pj4+Pj4gwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBidWYgPSBsaXN0X2ZpcnN0X2VudHJ5KCZw
+YXJhbXMtPnBhcmFtcywKPj4+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IHN0cnVjdCBya2lzcDFfYnVmZmVyLCBxdWV1ZSk7Cj4+Pj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGxpc3RfZGVsKCZidWYtPnF1ZXVlKTsKPj4+Pj4+
+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHNwaW5fdW5sb2NrX2ly
+cXJlc3RvcmUoJnBhcmFtcy0+Y29uZmlnX2xvY2ssCj4+Pj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqAgZmxhZ3MpOwo+Pj4+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IH0gZWxzZSB7Cj4+Pj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCBzcGluX3VubG9ja19pcnFyZXN0b3JlKCZwYXJhbXMtPmNvbmZpZ19sb2NrLAo+Pj4+Pj4gLcKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGZsYWdzKTsKPj4+Pj4+IMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4+Pj4+PiDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqAgfQo+Pj4+Pgo+Pj4+PiBKdXN0IHNraW1taW5nIHRocm91Z2gg
+b3V0IG9mIGlkbGUgY3VyaW9zaXR5IEkgd2FzIGdvaW5nIHRvIGNvbW1lbnQgdGhhdAo+Pj4+PiBp
+ZiB5b3UgZW5kIHVwIHdpdGggdGhpcyBwYXR0ZXJuOgo+Pj4+Pgo+Pj4+PiDCoMKgwqDCoMKgwqDC
+oMKgwqAgaWYgKCF4KSB7Cj4+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
+Ly9kbyBzdHVmZgo+Pj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgfSBlbHNlIHsKPj4+Pj4gwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBicmVhazsKPj4+Pj4gwqDCoMKgwqDCoMKgwqDC
+oMKgIH0KPj4+Pj4KPj4+Pj4gaXQgd291bGQgYmUgYmV0dGVyIGFzOgo+Pj4+Pgo+Pj4+PiDCoMKg
+wqDCoMKgwqDCoMKgwqAgaWYgKHgpCj4+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgYnJlYWs7Cj4+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoCAvL2RvIHN0dWZmCj4+Pj4+Cj4+
+Pj4+IEhvd2V2ZXIgSSB0aGVuIHdlbnQgYW5kIGxvb2tlZCBhdCB0aGUgd2hvbGUgZnVuY3Rpb24g
+YW5kIGZyYW5rbHkgaXQncyBhCj4+Pj4+IGJpdCBvZiBhIFdURi4gQXMgYmVzdCBJIGNvdWxkIGRl
+Y2lwaGVyLCB0aGlzIHdob2xlIGNyYXp5IGxvb3AgYXBwZWFycyB0bwo+Pj4+PiBiZSBhIGJhcm9x
+dWUgcmVpbnZlbnRpb24gb2Y6Cj4+Pj4+Cj4+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBsaXN0X2Zv
+cl9lYWNoX2VudHJ5X3NhZmUoJnBhcmFtcy0+cGFyYW1zLCAuLi4sIGJ1Zikgewo+Pj4+PiDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGxpc3RfZGVsKCZidWYtPnF1ZXVlKTsKPj4+
+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB2YjJfYnVmZmVyX2RvbmUoJmJ1
+Zi0+dmIudmIyX2J1ZiwgVkIyX0JVRl9TVEFURV9FUlJPUik7Cj4+Pj4+IMKgwqDCoMKgwqDCoMKg
+wqDCoCB9Cj4+PiBIaSwgaW5kZWVkIHRoaXMgaXMgYSBtdWNoIHNpbXBsZXIgaW1wbGVtZW50YXRp
+b24sIGdyZXBpbmcgJ3JldHVybl9hbGxfYnVmZmVycycKPj4+IEkgc2VlIHRoYXQgbWFueSBkcml2
+ZXJzIGltcGxlbWVudCBpdCB0aGlzIHdheS4KPj4+IHRoYW5rcyEKPj4+Cj4+Pj4+Cj4+Pj4+IChh
+c3N1bWluZyBmcm9tIGNvbnRleHQgdGhhdCB0aGUgbGlzdCBzaG91bGQgbmV2ZXIgY29udGFpbiBt
+b3JlIHRoYW4KPj4+Pj4gUktJU1AxX0lTUF9QQVJBTVNfUkVRX0JVRlNfTUFYIGVudHJpZXMgaW4g
+dGhlIGZpcnN0IHBsYWNlKQo+Pj4+Cj4+Pj4gT3IgaWYgd2Ugd2FudCB0byBhdm9pZCBkaXNhYmxp
+bmcgdGhlIGludGVycnVwdHMgZm9yIHRoZSB3aG9sZQo+Pj4+IGl0ZXJhdGlvbiwgd2UgY291bGQg
+dXNlIGxpc3Rfc3BsaWNlKCkgdG8gbW92ZSBhbGwgdGhlIGVudHJpZXMgb2YKPj4+Cj4+PiBCdXQg
+dGhpcyBjb2RlIHJ1bnMgd2hlbiB1c2Vyc3BhY2UgYXNrcyB0byBzdG9wIHRoZSBzdHJlYW1pbmcg
+c28gSSBkb24ndAo+Pj4gdGhpbmsgaXQgaXMgaW1wb3J0YW50IGF0IHRoYXQgc3RhZ2UgdG8gYWxs
+b3cgdGhlIGludGVycnVwdHMuCj4+Cj4+IEl0J3MgZ2VuZXJhbGx5IGEgZ29vZCBwcmFjdGljZSB0
+byByZWR1Y2UgdGhlIHRpbWUgc3BlbnQgd2l0aAo+PiBpbnRlcnJ1cHRzIGRpc2FibGVkLiBEaXNh
+YmxpbmcgdGhlIGludGVycnVwdHMgcHJldmVudHMgdGhlIHN5c3RlbSBmcm9tCj4+IGhhbmRsaW5n
+IGV4dGVybmFsIGV2ZW50cywgaW5jbHVkaW5nIHRpbWVyIGludGVycnVwdHMsIGFuZCBzY2hlZHVs
+aW5nCj4+IGhpZ2hlciBwcmlvcml0eSB0YXNrcywgaW5jbHVkaW5nIHJlYWwgdGltZSBvbmVzLiBI
+b3cgbXVjaCB0aGUgc3lzdGVtCj4+IHJ1bnMgd2l0aCBpbnRlcnJ1cHRzIGRpc2FibGVkIGlzIG9u
+ZSBvZiB0aGUgZmFjdG9ycyBkZXRlcm1pbmluZyB0aGUKPj4gZ2VuZXJhbCBzeXN0ZW0gbGF0ZW5j
+eS4KPiAKPiBSaWdodCwgd2l0aCB0aGUgd2F5IHdlIGhhbmRsZSBpbnRlcnJ1cHQgYWZmaW5pdHkg
+b24gQXJtIGFuIElSUSBjYW4ndCB0YXJnZXQgbXVsdGlwbGUgQ1BVcyBpbiBoYXJkd2FyZSwgc28g
+YW55IHRpbWUgc3BlbnQgd2l0aCBJUlFzIGRpc2FibGVkIG1pZ2h0IGJlIHByZXZlbnRpbmcgb3Ro
+ZXIgZGV2aWNlcycgaW50ZXJydXB0cyBmcm9tIGJlaW5nIHRha2VuIGV2ZW4gaWYgdGhleSdyZSBu
+b3QgZXhwbGljaXRseSBhZmZpbmUgdG8gdGhlIGN1cnJlbnQgQ1BVLgo+IAo+IE5vdyB0aGF0IEkn
+dmUgbG9va2VkLCBpdCBhcHBlYXJzIHRoYXQgdmIyX2J1ZmZlcl9kb25lKCkgbWlnaHQgZW5kIHVw
+IHBlcmZvcm1pbmcgYSBETUEgc3luYyBvbiB0aGUgYnVmZmVycywgd2hpY2gsIGlmIGl0IGhhcyB0
+byBkbyBvcmRlci1vZi1tZWdhYnl0ZXMgd29ydGggb2YgY2FjaGUgbWFpbnRlbmFuY2UgZm9yIGxh
+cmdlIGZyYW1lcywgaXMgdGhlIGtpbmQgb2YgcmVsYXRpdmVseSBzbG93IG9wZXJhdGlvbiB0aGF0
+IHJlYWxseSBkb2Vzbid0IHdhbnQgdG8gYmUgZG9uZSB3aXRoIElSUXMgZGlzYWJsZWQgKG9yIHVu
+ZGVyIGEgbG9jayBhdCBhbGwsIGlkZWFsbHkpIHVubGVzcyBpdCBhYnNvbHV0ZWx5ICpoYXMqIHRv
+IGJlLiBJZiB0aGUgbG9jayBpcyBvbmx5IG5lZWRlZCBoZXJlIHRvIHByb3RlY3QgbW9kaWZpY2F0
+aW9ucyB0byB0aGUgcGFyYW1zIGxpc3QgaXRzZWxmLCB0aGVuIG1vdmluZyB0aGUgd2hvbGUgbGlz
+dCBhdCBvbmNlIHRvIGRvIHRoZSBjbGVhbnVwICJvZmZsaW5lIiBzb3VuZHMgbGlrZSBhIGdyZWF0
+IGlkZWEgdG8gbWUuCgpvaywgdGhhdCBtaWdodCBiZSBhIHByb2JsZW0gaW4gdjRsMiBpbiBnZW5l
+cmFsIHNpbmNlIHZiMl9idWZmZXJfZG9uZSBpcyBhY3R1YWxseSBvZnRlbiB1c2VkIGluc2lkZSBh
+biBpcnEgaGFuZGxlcgoKPiAKPiBSb2Jpbi4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
