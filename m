@@ -5,83 +5,80 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 38FF8C433E3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 17:25:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BD87AC433DF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 18:02:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DAF8E20716
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 17:25:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8BA0F20774
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 18:02:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pJfzYGq4";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="K94gyUdQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DAF8E20716
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TpBWpKB7";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="scDYOzoz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8BA0F20774
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OdBfXI9JJBMGE3Nd/jTeWr1zG35KqC91ItrDwp3anfo=; b=pJfzYGq45heMKa7Pp2DztNaHlU
-	ZD6FqCpYv8eor/FAh0PoX6GA32nviX6d3UpHwUZTKgMQiZj62bYL3qIJ2Kn/KdMFNaeAvibh/5b3a
-	m6FlNk9csSL3jCMSrOygQC/7QXIZDkfkl2Q+nIOVatA4/YtTmK+xnh1kz70ulgr4cWC1wTD0s4G8r
-	NnhvsoEX2VLiGj0GLJAKCUYt7+ydndtvVsjdl6/DUqwH9OfKMZfmPhW0OBQUBnjDQlB/haaeiuWr4
-	oCNkdms7uThEw4y59J87Q+EyHIqWyUzRMiJEEevhNa7nrNdMuGAstoOgF1Ulu797KDEsUAc0kvXjK
-	cO1k4SJg==;
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=OfARjVcZ0xli1yjpOowPR8Glqlo+kDLDxRxQ/cUu8y4=; b=TpBWpKB78/8h2PGYHAchd/rUwt
+	58I96xS9/o/0u2LlFM+27MiEq8mKOVzvQVnF5o8n84XmMbqUupyEjVnMLE/B8TlJhvunwt35mR5rK
+	I30heRIHwD0TKqp5xRWsIT/Wldv86H3Q5Dh/Gbt02YGSaTqMYUEnj3km7HX0EJsvMh4op1INYqHUC
+	2iKHqFOeN6WA1w0Bw4L5L8pg+IqcEcG+U+kTOIGWEAItOi40Ms/4CLNtDjqGY8fnl1ao1n80ZZjT6
+	rCaR6hjPjf/4NQAAUKNu9sAN46KY+Lh00naJ3cN/aHNE2K5xp0uTFGU29Rp376slX/L2kJAs2xAae
+	J++YpfwA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6GyS-0004PT-OA; Thu, 13 Aug 2020 17:25:08 +0000
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
+	id 1k6HZ0-0008KY-0C; Thu, 13 Aug 2020 18:02:54 +0000
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6GyM-0004N5-RC; Thu, 13 Aug 2020 17:25:03 +0000
-Received: by mail-ej1-x642.google.com with SMTP id m22so7005071eje.10;
- Thu, 13 Aug 2020 10:25:01 -0700 (PDT)
+ id 1k6HYw-0008JZ-0W; Thu, 13 Aug 2020 18:02:50 +0000
+Received: by mail-ej1-x641.google.com with SMTP id a26so7170471ejc.2;
+ Thu, 13 Aug 2020 11:02:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=JSziVWRJLj99fs/o9jvqTmAPB4w60TkQsdXXf0rek18=;
- b=K94gyUdQRZPmB05+3k9Z1PSC0eQHaDF9c/bZGoTac1j0890sqK8Vt9xySvufBvy52n
- E5eAM8x2Uz2LCkFpQ8MWR7lluDTuYrjrMZUSqN9qpOLvifamb1PsR/5acusPJQBN+XXB
- 7hwbeLXdiuy4aK7Scou98e6zLc/VBDJw+dQmaPageVPlRd62c8bzwL4OXqgXCfgjs1VJ
- BL5k8c7Yjpm+CvVUbtd9rDA59CUdU0VgLkT++gs9YnYBCq40VEox65WzfkeLhQwHm8rk
- 2/nbfH8NHV1DSvw1NeIQM4iC83kbyEHjvWJGo59qqBF+g4WZ0Was9WhRLZ3PvevYyTp8
- 2vVA==
+ h=from:to:cc:subject:date:message-id;
+ bh=k+X7I3Dm91g0VsSZVIvYnQK6r71BRXtlbeCFbFsrk64=;
+ b=scDYOzozLAVzFpo2tbfIot2rR9/9IltAD0tuAFuZ7Q71nxeQbbQNCj22+aLiCqCYPQ
+ InGoDHYkp1iGqDUMlAuLtnqGrF2877ip1R9rbaQtVY7ZEHNotMQOeppIeqM/PtfskRMU
+ KvVpOm/lImRYi24xXHTpTqfuFjxCnrXVmFy36Hxa5+6bg5DIFQn4EIKo2SFkDYS3cFR0
+ IlgXGiudJyvnzZqs9lkCGMFd2GHvaVbMNAzKHXl7FxW5q1b5y5IH+w2iRy3ZVWO+xnx4
+ nm6tNRw9wlSmmNKr1mgK7BhWW7ucPcSE5m2hYkdNbbQ+i6zy5zNkZ6zEhSyYA2YD0fhe
+ BoHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=JSziVWRJLj99fs/o9jvqTmAPB4w60TkQsdXXf0rek18=;
- b=kYPbl9ceX53A7LvOtBVt0XLiN9PZXpgSkq+GUdNKb7/iB25mJ13oZfcaWdcZz4Fk5y
- SCi+iJUjzbYXwx74By3vdHrDn9pYGVzr9AzqPw2leM8cjRVMDnKiUbJHs+OHM+GskO7u
- VHn7k+3X/jOIFF1/7Z5d9o9iucUdOtJIZ57+8nTNfWkQETw4/JuTBz7/6ad7NYLUHAfA
- j4JKMjNLgXz+P3/V5jLvQFVM4/Hs4Av81FgNaBadWPzKUYjGDe15VfjKPN1vEFH3s5R/
- u8WMLN09VzlLj2jDQq58IrP/YMCWrO44OFvsaFBLaF5G5EahPPLtgj2Xc6KFCq80gbcx
- mYnw==
-X-Gm-Message-State: AOAM532FThlvEyc0jh/OlLC62ZjRWdQh+yYl+86yHvRDVzi+0Bv842Jb
- PhwrD3SI4xx9E13RymjTv5I=
-X-Google-Smtp-Source: ABdhPJz8ON0Jv1CjEw96HVcM4iHk0E1Oa/AAFcWQGJr05GyftdwWS0GRU2210nrlt3Aw7v7LJMTgsQ==
-X-Received: by 2002:a17:906:60d5:: with SMTP id
- f21mr5777833ejk.94.1597339500199; 
- Thu, 13 Aug 2020 10:25:00 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=k+X7I3Dm91g0VsSZVIvYnQK6r71BRXtlbeCFbFsrk64=;
+ b=V3YmsgB157SZglNXwBTkUecmPHpVZLx+rqof/QqcQsHQShjd8Rf+ocoVArh8rP6J7B
+ m0iywBWYBGOJpu4IqK0JyebfwIi2uO1FpLsPHU9WcUFjUjKAMK5Dmv+Uo1mEtyheAHU4
+ gm/0AAR+yfrJq/1gZD0Dv+MZpQDaYywRHDXXpqnFiXt/n5P0lMyIBzrNR+1ejpcnENWT
+ hDsrs8wQEuxtnGa7xsboIDC3IgpEdILEwhEUAiSDC9PgcvRODpHHwrv9uFg3UQzuYdvP
+ sI9MHAfgqI4w9HyOaCtQ0JEe0AgfS0210VtQFM7SOuQq5Q88ajIGBpbjkO4bXbBWtaIi
+ Fl+w==
+X-Gm-Message-State: AOAM532gLtbNuuk6ha3QCtq592E/uTkxJpBTu6JABJjeuOixfgMczh9v
+ hLJr0TsdkYTpPpBq1JzrtDNw42QAqGU=
+X-Google-Smtp-Source: ABdhPJxM58xedodB7DOsuuj57AwE9aKU+sUl+gC9XA4qMAErBNxt/zB0UcR4VAT9G/tRXl9btm+U4Q==
+X-Received: by 2002:a17:906:7f0e:: with SMTP id
+ d14mr5917864ejr.400.1597341768898; 
+ Thu, 13 Aug 2020 11:02:48 -0700 (PDT)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id u4sm4369408edy.18.2020.08.13.10.24.59
+ by smtp.gmail.com with ESMTPSA id ci27sm5131051ejc.23.2020.08.13.11.02.47
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 13 Aug 2020 10:24:59 -0700 (PDT)
+ Thu, 13 Aug 2020 11:02:48 -0700 (PDT)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
-Subject: [PATCH 2/2] ARM: dts: rockchip: update cpu supplies on rk3066a
-Date: Thu, 13 Aug 2020 19:24:51 +0200
-Message-Id: <20200813172451.13754-2-jbx6244@gmail.com>
+Subject: [PATCH] ARM: dts: rockchip: update cpu supplies on rk3288
+Date: Thu, 13 Aug 2020 20:02:41 +0200
+Message-Id: <20200813180241.14660-1-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20200813172451.13754-1-jbx6244@gmail.com>
-References: <20200813172451.13754-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_132502_911551_D159AE9A 
-X-CRM114-Status: GOOD (  13.18  )
+X-CRM114-CacheID: sfid-20200813_140250_059639_B2C3F2B0 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,66 +102,116 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 The use of cpu0-supply for cpu0 alone is deprecated,
 so add cpu-supply to each cpu separately and
-update all existing rk3066a boards.
+update all existing rk3288 boards that use this property.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm/boot/dts/rk3066a-bqcurie2.dts  | 6 +++++-
- arch/arm/boot/dts/rk3066a-marsboard.dts | 6 +++++-
- arch/arm/boot/dts/rk3066a-rayeager.dts  | 6 +++++-
- 3 files changed, 15 insertions(+), 3 deletions(-)
+ arch/arm/boot/dts/rk3288-miqi.dts     | 14 +++++++++++++-
+ arch/arm/boot/dts/rk3288-popmetal.dts | 14 +++++++++++++-
+ arch/arm/boot/dts/rk3288-r89.dts      | 14 +++++++++++++-
+ arch/arm/boot/dts/rk3288-vyasa.dts    | 14 +++++++++++++-
+ 4 files changed, 52 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm/boot/dts/rk3066a-bqcurie2.dts b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-index 0a56a2f1b..eba7a1344 100644
---- a/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-+++ b/arch/arm/boot/dts/rk3066a-bqcurie2.dts
-@@ -63,7 +63,11 @@
+diff --git a/arch/arm/boot/dts/rk3288-miqi.dts b/arch/arm/boot/dts/rk3288-miqi.dts
+index 213c9eb84..8a3992105 100644
+--- a/arch/arm/boot/dts/rk3288-miqi.dts
++++ b/arch/arm/boot/dts/rk3288-miqi.dts
+@@ -81,7 +81,19 @@
  };
  
  &cpu0 {
--	cpu0-supply = <&vdd_arm>;
-+	cpu-supply = <&vdd_arm>;
+-	cpu0-supply = <&vdd_cpu>;
++	cpu-supply = <&vdd_cpu>;
 +};
 +
 +&cpu1 {
-+	cpu-supply = <&vdd_arm>;
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_cpu>;
  };
  
- &i2c1 {
-diff --git a/arch/arm/boot/dts/rk3066a-marsboard.dts b/arch/arm/boot/dts/rk3066a-marsboard.dts
-index 7e01f6406..6b121658d 100644
---- a/arch/arm/boot/dts/rk3066a-marsboard.dts
-+++ b/arch/arm/boot/dts/rk3066a-marsboard.dts
-@@ -47,7 +47,11 @@
+ &emmc {
+diff --git a/arch/arm/boot/dts/rk3288-popmetal.dts b/arch/arm/boot/dts/rk3288-popmetal.dts
+index 6a5194039..160ed8b93 100644
+--- a/arch/arm/boot/dts/rk3288-popmetal.dts
++++ b/arch/arm/boot/dts/rk3288-popmetal.dts
+@@ -103,7 +103,19 @@
  };
  
  &cpu0 {
--	cpu0-supply = <&vdd_arm>;
-+	cpu-supply = <&vdd_arm>;
+-	cpu0-supply = <&vdd_cpu>;
++	cpu-supply = <&vdd_cpu>;
 +};
 +
 +&cpu1 {
-+	cpu-supply = <&vdd_arm>;
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_cpu>;
  };
  
- &i2c1 {
-diff --git a/arch/arm/boot/dts/rk3066a-rayeager.dts b/arch/arm/boot/dts/rk3066a-rayeager.dts
-index f9db6bb9f..309518403 100644
---- a/arch/arm/boot/dts/rk3066a-rayeager.dts
-+++ b/arch/arm/boot/dts/rk3066a-rayeager.dts
-@@ -128,7 +128,11 @@
+ &emmc {
+diff --git a/arch/arm/boot/dts/rk3288-r89.dts b/arch/arm/boot/dts/rk3288-r89.dts
+index a258c7ae5..e5ba901c7 100644
+--- a/arch/arm/boot/dts/rk3288-r89.dts
++++ b/arch/arm/boot/dts/rk3288-r89.dts
+@@ -91,7 +91,19 @@
  };
  
  &cpu0 {
--	cpu0-supply = <&vdd_arm>;
-+	cpu-supply = <&vdd_arm>;
+-	cpu0-supply = <&vdd_cpu>;
++	cpu-supply = <&vdd_cpu>;
 +};
 +
 +&cpu1 {
-+	cpu-supply = <&vdd_arm>;
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_cpu>;
  };
  
- &emac {
+ &gmac {
+diff --git a/arch/arm/boot/dts/rk3288-vyasa.dts b/arch/arm/boot/dts/rk3288-vyasa.dts
+index 1a20854a1..aa50f8ed4 100644
+--- a/arch/arm/boot/dts/rk3288-vyasa.dts
++++ b/arch/arm/boot/dts/rk3288-vyasa.dts
+@@ -125,7 +125,19 @@
+ };
+ 
+ &cpu0 {
+-	cpu0-supply = <&vdd_cpu>;
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu1 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_cpu>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_cpu>;
+ };
+ 
+ &emmc {
 -- 
 2.11.0
 
