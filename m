@@ -2,91 +2,80 @@ Return-Path: <SRS0=31gD=BX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 073ADC433E1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 07:42:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9297C433E1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 09:13:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BB9EA20771
-	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 07:42:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9B9662074D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 13 Aug 2020 09:13:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fudSY7n+";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="oJLPTTsG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB9EA20771
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A0wxdDoA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9B9662074D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Subject:To:From:Date:Reply-To:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NKvWCt5mDc2DpdXjg0VyzyPx4e2yveDhw8cMzNZWCaU=; b=fudSY7n+7/23dAyOxCsr1PjPM
-	MZQMsEPglwuTKSo2zoxsQkPmCxqcMdC7+b2dGzzD5lkeFb5nxGoiuvV3Uo7jVYAs4l7m3GKqUUvP8
-	QhGmzAwO4OhvnaASQ/TtYVx+DlWcMZmnXt5IFOJ/3qIcMNsiSYB9HEGQFwWP+6z3Mt+bv7rrH5B76
-	ZBKgX4FrG2/s5ChcBlPPG2V7sxzULewjjJ0WcEK2BEVy2ZYuC0A5LYA4dVDbxJiv4buVrMuv82nQV
-	mx/raEzWbN4yY7okpHcgVUPIKtLeJRcHMmYJiYII2yiBDVqWA1iONmHBHBSANF6NEU15bPvubnans
-	37T5nvQIg==;
+	 bh=pIHHfQ6xMd7+2Ux6V6nnOBFM/jGKpSP0mdNrfcsqlLk=; b=A0wxdDoA8anaeOtRQoTQrvMSX
+	IpcPItyZ5E10ZnBEC6YzuT6pv4YMXiBJrEu3ywrfR50dINvqdPX5aZ72tmb/5nx75AnBoHZG1eV4h
+	/5aPn7cY+IWNddYLRBAB4hBNeFsiOVGmBfEGVmQV6kBlB2cUQJE6TjPU0VTf+KGXy9LmtgwIcNYZB
+	gt0i6KQbdzlq73XyfCQ45wN46k+RXp6YhGXN+KQYrD8OuwUTPzEk4xoib+5+kzWBl+cd0k3y4Dtnz
+	7KJw8I6kQfUA3OmlB7dedpJEbf86vJOz8h8z3Av4Br9vvUGba/cHchaFfOHkezpI9kZvkGm6CBtoJ
+	QPbf3jBiA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k67ss-000373-0Q; Thu, 13 Aug 2020 07:42:46 +0000
-Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143])
+	id 1k69IQ-0008TY-De; Thu, 13 Aug 2020 09:13:14 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k67sp-00035s-9R; Thu, 13 Aug 2020 07:42:44 +0000
-Received: by mail-lf1-x143.google.com with SMTP id m15so2540132lfp.7;
- Thu, 13 Aug 2020 00:42:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :mime-version; bh=P04R74Xbuv3cjdfHATnoRpjk3qHslmzAs9Kz3QNkQfc=;
- b=oJLPTTsGxz6PnYmSrTJva2uVysQlnxV9bp3OQUJKGqPQ1gMXfxSew4bgkYa1Drn+2x
- SfvkM9bonbTUWPkibOQVvSlbcpC2WlV8XlUeZ3vcqPGcIPPtIn1nueL2T6P18F9tKsMn
- g0gGu4+ykbU4iUs3u6LXFo95K3g3erlC77e8KGyze7XXEoIwDKWagbsXVHjvWB0CpVhz
- HLlzU+n8PW7cbV1cSU4hTUNUNfvaymmYLy0E9Y8Mmekqg2cUkOKzg4vYOpS/BtRCyTtT
- 5Ynen2DYuRpFVieJN3FIT8jNy7xHNYcv5n7gFIghbDkHpwc+V9N8jQmqoU4zDy93eyjD
- u0Hg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version;
- bh=P04R74Xbuv3cjdfHATnoRpjk3qHslmzAs9Kz3QNkQfc=;
- b=D5kXsKLOYVKkgqMLmv4FMiM9+6N2ogfvJ9cZCLv+84yHa/A4W9WqndJ8oPuNyEUkPo
- kx5YEpEhI5iFqvfNfl/OifNiS+wlaNa5GdscVODynpWB3UCyeHVIjRz4fsb6TWJI237w
- E9I3vnZr/7W5Q8WgAnSyMbOJlgINGdxW1YykxPjwKyLOkcZgdgihge5MFcHznCazsEvA
- 27wPm2vjjT7O6gM8ZBwiuAnWPy/JTKAnkdPge6Jst/VIFgjT5Xe2aad04lzUAjIEPzFs
- f8uUtxy0rPC7qvmfp7WegKGPwAoqL7mSkTWs8Vum/Gx5hZ2YssRQw+q8bWgnhcKaZmqo
- iW5g==
-X-Gm-Message-State: AOAM533W6eaOKsUa/SmhxibhRrSHrGYMuolGjX0HpYHMR8fT4UpQZg2G
- tXkNx1cMORjgXo61/tA0SIA=
-X-Google-Smtp-Source: ABdhPJzkuy63Zsi7uwX6mtGwERx8H1BUWVdZaS3r4t8+xoqlBet6sAex+uApJPa7nzeYe/6nmRK5+Q==
-X-Received: by 2002:a05:6512:3317:: with SMTP id
- k23mr1577737lfe.111.1597304559520; 
- Thu, 13 Aug 2020 00:42:39 -0700 (PDT)
-Received: from eldfell ([194.136.85.206])
- by smtp.gmail.com with ESMTPSA id h13sm801102lji.134.2020.08.13.00.42.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Aug 2020 00:42:38 -0700 (PDT)
-Date: Thu, 13 Aug 2020 10:42:28 +0300
-From: Pekka Paalanen <ppaalanen@gmail.com>
-To: crj <algea.cao@rock-chips.com>
-Subject: Re: [PATCH 4/6] drm/rockchip: dw_hdmi: Add vendor hdmi properties
-Message-ID: <20200813104228.096179e7@eldfell>
-In-Reply-To: <20200812133017.GJ6057@pendragon.ideasonboard.com>
-References: <20200812083120.743-1-algea.cao@rock-chips.com>
- <20200812083543.4231-1-algea.cao@rock-chips.com>
- <20200812093315.GE6057@pendragon.ideasonboard.com>
- <52cca26d-b2b3-22b2-f371-a8086f2e6336@rock-chips.com>
- <20200812133017.GJ6057@pendragon.ideasonboard.com>
-X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ id 1k69IN-0008Nc-HM; Thu, 13 Aug 2020 09:13:12 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 328C2B601;
+ Thu, 13 Aug 2020 09:13:32 +0000 (UTC)
+Subject: Re: [PATCH 06/20] drm/i915: Introduce GEM object functions
+To: Jani Nikula <jani.nikula@linux.intel.com>, alexander.deucher@amd.com,
+ christian.koenig@amd.com, airlied@linux.ie, daniel@ffwll.ch,
+ linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
+ inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
+ patrik.r.jakobsson@gmail.com, joonas.lahtinen@linux.intel.com,
+ rodrigo.vivi@intel.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ matthias.bgg@gmail.com, robdclark@gmail.com, sean@poorly.run,
+ bskeggs@redhat.com, tomi.valkeinen@ti.com, eric@anholt.net,
+ hjc@rock-chips.com, heiko@sntech.de, thierry.reding@gmail.com,
+ jonathanh@nvidia.com, rodrigosiqueiramelo@gmail.com,
+ hamohammed.sa@gmail.com, oleksandr_andrushchenko@epam.com,
+ hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, sumit.semwal@linaro.org, evan.quan@amd.com,
+ Hawking.Zhang@amd.com, tianci.yin@amd.com, marek.olsak@amd.com,
+ hdegoede@redhat.com, andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com,
+ xinhui.pan@amd.com, aaron.liu@amd.com, nirmoy.das@amd.com,
+ chris@chris-wilson.co.uk, matthew.auld@intel.com,
+ abdiel.janulgue@linux.intel.com, tvrtko.ursulin@linux.intel.com,
+ andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
+ emil.velikov@collabora.com
+References: <20200813083644.31711-1-tzimmermann@suse.de>
+ <20200813083644.31711-7-tzimmermann@suse.de> <877du2j4lf.fsf@intel.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <ce599990-7b0e-d0b1-8df2-ae3499560510@suse.de>
+Date: Thu, 13 Aug 2020 11:13:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <877du2j4lf.fsf@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200813_034243_341445_A8E834D6 
-X-CRM114-Status: GOOD (  30.45  )
+X-CRM114-CacheID: sfid-20200813_051311_864870_C25895F4 
+X-CRM114-Status: GOOD (  22.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,143 +88,217 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: jernej.skrabec@siol.net, laurent.pinchart+renesas@ideasonboard.com,
- jonas@kwiboo.se, airlied@linux.ie, sam@ravnborg.org, narmstrong@baylibre.com,
- hjc@rock-chips.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, a.hajda@samsung.com,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, tzimmermann@suse.de,
- cychiang@chromium.org, linux-rockchip@lists.infradead.org, darekm@google.com,
- kuankuan.y@gmail.com, linux-arm-kernel@lists.infradead.org,
- jbrunet@baylibre.com
-Content-Type: multipart/mixed; boundary="===============6702682735464684719=="
+Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+ xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============3821462576841305887=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============6702682735464684719==
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============3821462576841305887==
 Content-Type: multipart/signed; micalg=pgp-sha256;
- boundary="Sig_/=OONQgpVWkCqhFkncTg66Ye"; protocol="application/pgp-signature"
+ protocol="application/pgp-signature";
+ boundary="2y1rj4S6iEPyEIbObjrxB2iAqUSpEnhqy"
 
---Sig_/=OONQgpVWkCqhFkncTg66Ye
-Content-Type: text/plain; charset=UTF-8
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--2y1rj4S6iEPyEIbObjrxB2iAqUSpEnhqy
+Content-Type: multipart/mixed; boundary="yYJlHp22f67rhAArb1qx5xbB6QTfa6gjL";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Jani Nikula <jani.nikula@linux.intel.com>, alexander.deucher@amd.com,
+ christian.koenig@amd.com, airlied@linux.ie, daniel@ffwll.ch,
+ linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
+ inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
+ patrik.r.jakobsson@gmail.com, joonas.lahtinen@linux.intel.com,
+ rodrigo.vivi@intel.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ matthias.bgg@gmail.com, robdclark@gmail.com, sean@poorly.run,
+ bskeggs@redhat.com, tomi.valkeinen@ti.com, eric@anholt.net,
+ hjc@rock-chips.com, heiko@sntech.de, thierry.reding@gmail.com,
+ jonathanh@nvidia.com, rodrigosiqueiramelo@gmail.com,
+ hamohammed.sa@gmail.com, oleksandr_andrushchenko@epam.com,
+ hyun.kwon@xilinx.com, laurent.pinchart@ideasonboard.com,
+ michal.simek@xilinx.com, sumit.semwal@linaro.org, evan.quan@amd.com,
+ Hawking.Zhang@amd.com, tianci.yin@amd.com, marek.olsak@amd.com,
+ hdegoede@redhat.com, andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com,
+ xinhui.pan@amd.com, aaron.liu@amd.com, nirmoy.das@amd.com,
+ chris@chris-wilson.co.uk, matthew.auld@intel.com,
+ abdiel.janulgue@linux.intel.com, tvrtko.ursulin@linux.intel.com,
+ andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
+ emil.velikov@collabora.com
+Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ etnaviv@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+ xen-devel@lists.xenproject.org
+Message-ID: <ce599990-7b0e-d0b1-8df2-ae3499560510@suse.de>
+Subject: Re: [PATCH 06/20] drm/i915: Introduce GEM object functions
+References: <20200813083644.31711-1-tzimmermann@suse.de>
+ <20200813083644.31711-7-tzimmermann@suse.de> <877du2j4lf.fsf@intel.com>
+In-Reply-To: <877du2j4lf.fsf@intel.com>
+
+--yYJlHp22f67rhAArb1qx5xbB6QTfa6gjL
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, 12 Aug 2020 16:30:17 +0300
-Laurent Pinchart <laurent.pinchart@ideasonboard.com> wrote:
+Hi
 
-> Hi Algea,
+Am 13.08.20 um 11:08 schrieb Jani Nikula:
+> On Thu, 13 Aug 2020, Thomas Zimmermann <tzimmermann@suse.de> wrote:
+>> GEM object functions deprecate several similar callback interfaces in
+>> struct drm_driver. This patch replaces the per-driver callbacks with
+>> per-instance callbacks in i915.
+>>
+>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>> ---
+>>  drivers/gpu/drm/i915/gem/i915_gem_object.c       |  9 ++++++++-
+>>  drivers/gpu/drm/i915/i915_drv.c                  | 10 ++++++----
+>>  drivers/gpu/drm/i915/i915_drv.h                  |  1 +
+>>  drivers/gpu/drm/i915/selftests/mock_gem_device.c |  3 ---
+>>  4 files changed, 15 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/i915/gem/i915_gem_object.c b/drivers/gpu/=
+drm/i915/gem/i915_gem_object.c
+>> index c8421fd9d2dc..bc15ee4f2bd5 100644
+>> --- a/drivers/gpu/drm/i915/gem/i915_gem_object.c
+>> +++ b/drivers/gpu/drm/i915/gem/i915_gem_object.c
+>> @@ -41,7 +41,14 @@ static struct i915_global_object {
+>> =20
+>>  struct drm_i915_gem_object *i915_gem_object_alloc(void)
+>>  {
+>> -	return kmem_cache_zalloc(global.slab_objects, GFP_KERNEL);
+>> +	struct drm_i915_gem_object *obj;
+>> +
+>> +	obj =3D kmem_cache_zalloc(global.slab_objects, GFP_KERNEL);
+>> +	if (!obj)
+>> +		return NULL;
+>> +	obj->base.funcs =3D &i915_gem_object_funcs;
+>> +
+>> +	return obj;
+>>  }
+>> =20
+>>  void i915_gem_object_free(struct drm_i915_gem_object *obj)
+>> diff --git a/drivers/gpu/drm/i915/i915_drv.c b/drivers/gpu/drm/i915/i9=
+15_drv.c
+>> index 068447f565a9..b09eee11c540 100644
+>> --- a/drivers/gpu/drm/i915/i915_drv.c
+>> +++ b/drivers/gpu/drm/i915/i915_drv.c
+>> @@ -1840,6 +1840,12 @@ static const struct drm_ioctl_desc i915_ioctls[=
+] =3D {
+>>  	DRM_IOCTL_DEF_DRV(I915_GEM_VM_DESTROY, i915_gem_vm_destroy_ioctl, DR=
+M_RENDER_ALLOW),
+>>  };
+>> =20
+>> +const struct drm_gem_object_funcs i915_gem_object_funcs =3D {
+>> +	.free =3D i915_gem_free_object,
+>> +	.close =3D i915_gem_close_object,
+>> +	.export =3D i915_gem_prime_export,
+>> +};
+>> +
 >=20
-> On Wed, Aug 12, 2020 at 07:08:10PM +0800, crj wrote:
-> > =E5=9C=A8 2020/8/12 17:33, Laurent Pinchart =E5=86=99=E9=81=93: =20
-> > > On Wed, Aug 12, 2020 at 04:35:43PM +0800, Algea Cao wrote: =20
-> > >> Introduce struct dw_hdmi_property_ops in plat_data to support
-> > >> vendor hdmi property.
-> > >>
-> > >> Implement hdmi vendor properties color_depth_property and
-> > >> hdmi_output_property to config hdmi output color depth and
-> > >> color format.
-> > >>
-> > >> The property "hdmi_output_format", the possible value
-> > >> could be:
-> > >>           - RGB
-> > >>           - YCBCR 444
-> > >>           - YCBCR 422
-> > >>           - YCBCR 420
-> > >>
-> > >> Default value of the property is set to 0 =3D RGB, so no changes if =
-you
-> > >> don't set the property.
-> > >>
-> > >> The property "hdmi_output_depth" possible value could be
-> > >>           - Automatic
-> > >>             This indicates prefer highest color depth, it is
-> > >>             30bit on rockcip platform.
-> > >>           - 24bit
-> > >>           - 30bit
-> > >> The default value of property is 24bit.
-> > >>
-> > >> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
-> > >> ---
-> > >>
-> > >>   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 174 ++++++++++++++++=
-++++
-> > >>   include/drm/bridge/dw_hdmi.h                |  22 +++
-> > >>   2 files changed, 196 insertions(+)
-> > >>
-> > >> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/g=
-pu/drm/rockchip/dw_hdmi-rockchip.c
-> > >> index 23de359a1dec..8f22d9a566db 100644
-> > >> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> > >> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> > >> @@ -52,6 +52,27 @@
-> > >>  =20
-> > >>   #define HIWORD_UPDATE(val, mask)	(val | (mask) << 16)
-> > >>  =20
-> > >> +/* HDMI output pixel format */
-> > >> +enum drm_hdmi_output_type {
-> > >> +	DRM_HDMI_OUTPUT_DEFAULT_RGB, /* default RGB */
-> > >> +	DRM_HDMI_OUTPUT_YCBCR444, /* YCBCR 444 */
-> > >> +	DRM_HDMI_OUTPUT_YCBCR422, /* YCBCR 422 */
-> > >> +	DRM_HDMI_OUTPUT_YCBCR420, /* YCBCR 420 */
-> > >> +	DRM_HDMI_OUTPUT_YCBCR_HQ, /* Highest subsampled YUV */
-> > >> +	DRM_HDMI_OUTPUT_YCBCR_LQ, /* Lowest subsampled YUV */
-> > >> +	DRM_HDMI_OUTPUT_INVALID, /* Guess what ? */
-> > >> +}; =20
-> > >
-> > > Vendor-specific properties shouldn't use names starting with drm_ or
-> > > DRM_, that's for the DRM core. But this doesn't seem specific to
-> > > Rockchip at all, it should be a standard property. Additionally, new
-> > > properties need to come with a userspace implementation showing their
-> > > usage, in X.org, Weston, the Android DRM/KMS HW composer, or another
-> > > relevant upstream project (a test tool is usually not enough). =20
-> >=20
-> > We use these properties only in Android HW composer, But we can't upstr=
-eam
-> >=20
-> > our HW composer code right now.=C2=A0 Can we use this properties as pri=
-vate=20
-> > property
-> >=20
-> > and do not upstream HW composer for the time being? =20
+> Any reason not to make this static in i915_gem_object.c next to its onl=
+y
+> user?
+
+That is just an oversight. Will be fixed in the next iteration. Thanks.
+
+Best regards
+Thomas
+
 >=20
-> It's not my decision, it's a policy of the DRM subsystem to require an
-> open implementation in userspace to validate all API additions.
+> BR,
+> Jani.
+>=20
+>=20
+>>  static struct drm_driver driver =3D {
+>>  	/* Don't use MTRRs here; the Xserver or userspace app should
+>>  	 * deal with them for Intel hardware.
+>> @@ -1853,12 +1859,8 @@ static struct drm_driver driver =3D {
+>>  	.lastclose =3D i915_driver_lastclose,
+>>  	.postclose =3D i915_driver_postclose,
+>> =20
+>> -	.gem_close_object =3D i915_gem_close_object,
+>> -	.gem_free_object_unlocked =3D i915_gem_free_object,
+>> -
+>>  	.prime_handle_to_fd =3D drm_gem_prime_handle_to_fd,
+>>  	.prime_fd_to_handle =3D drm_gem_prime_fd_to_handle,
+>> -	.gem_prime_export =3D i915_gem_prime_export,
+>>  	.gem_prime_import =3D i915_gem_prime_import,
+>> =20
+>>  	.dumb_create =3D i915_gem_dumb_create,
+>> diff --git a/drivers/gpu/drm/i915/i915_drv.h b/drivers/gpu/drm/i915/i9=
+15_drv.h
+>> index bacb4c762f5b..666db65fe69e 100644
+>> --- a/drivers/gpu/drm/i915/i915_drv.h
+>> +++ b/drivers/gpu/drm/i915/i915_drv.h
+>> @@ -1736,6 +1736,7 @@ intel_ggtt_update_needs_vtd_wa(struct drm_i915_p=
+rivate *dev_priv)
+>> =20
+>>  /* i915_drv.c */
+>>  extern const struct dev_pm_ops i915_pm_ops;
+>> +extern const struct drm_gem_object_funcs i915_gem_object_funcs;
+>> =20
+>>  int i915_driver_probe(struct pci_dev *pdev, const struct pci_device_i=
+d *ent);
+>>  void i915_driver_remove(struct drm_i915_private *i915);
+>> diff --git a/drivers/gpu/drm/i915/selftests/mock_gem_device.c b/driver=
+s/gpu/drm/i915/selftests/mock_gem_device.c
+>> index ce4d4303229c..4725dad63e0a 100644
+>> --- a/drivers/gpu/drm/i915/selftests/mock_gem_device.c
+>> +++ b/drivers/gpu/drm/i915/selftests/mock_gem_device.c
+>> @@ -86,9 +86,6 @@ static struct drm_driver mock_driver =3D {
+>>  	.name =3D "mock",
+>>  	.driver_features =3D DRIVER_GEM,
+>>  	.release =3D mock_device_release,
+>> -
+>> -	.gem_close_object =3D i915_gem_close_object,
+>> -	.gem_free_object_unlocked =3D i915_gem_free_object,
+>>  };
+>> =20
+>>  static void release_dev(struct device *dev)
+>=20
 
-Also read
-https://www.kernel.org/doc/html/latest/gpu/drm-uapi.html#open-source-usersp=
-ace-requirements
-very carefully: it calls for a FOSS userspace project's proper upstream
-to have reviewed and accepted the patches to use the new UAPI, but
-those patches must NOT be MERGED at that time yet.
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
 
 
-Thanks,
-pq
+--yYJlHp22f67rhAArb1qx5xbB6QTfa6gjL--
 
---Sig_/=OONQgpVWkCqhFkncTg66Ye
-Content-Type: application/pgp-signature
+--2y1rj4S6iEPyEIbObjrxB2iAqUSpEnhqy
+Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAl807uQACgkQI1/ltBGq
-qqd/Qg/5AYqVDsoWf/fmcGp7z7OgfKXZM7+iILaEYS5vRXwgTYMG5BWpKlR+fOAn
-Umgvjqhnc6GGFaB5S3vZALd7cCMYBoLdaNJ4oR566IjDpXbFl8bagZW3fD8Aaqix
-9PzC80muZLPEEKy9zTqLSq2zfiZX41J7lMGTNMSQBpnGfB3YWxKqnKKlVMYtG8sL
-mpMq4KfdNLh443IMiu+s4ZkVAPQxj++Bu1BeJnz5Puy1iKY4Wup76tipgNXNHNiG
-eHj2hkHrzcXMjPF4JCrPra9OBHhiiv6IxP3fyF0dvfaou+mGzIOeJF5fV3Msna9J
-4mYVcEE516sDuUZ8xmUOzwMMPPxqhOqZ/0DQSpU0NP3uevMVJQmcmitNFZMzDFtO
-6jXTz7k554GJxrJo9XfSx/QKZPNtCIbQsxW6TKU2ShOCJFs55fO+seOCojaHnr5R
-Z0zUzapzyYbmiG1UHjjnyzOVIrQb2Bj2+6NxkQdAdXltKQym1GhdWHE3D/LzhS4R
-PZnFJxSU+MMrienr6daNiMfdfSl2vHgfd83qOCeQRXfYlJdzkKktsZfD2YUH0SY3
-rq1pHw+5srdW0rKjct15/euFyiH3SUHF88rHYa4MzEC/3z+VASRUwWZ/ThWrRhjb
-fajX3c1qqlldIcxv+TknqkFrVuOUV8O9mxP18N4EL4uYCmTlDIc=
-=7IHY
+iQFIBAEBCAAyFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl81BCAUHHR6aW1tZXJt
+YW5uQHN1c2UuZGUACgkQaA3BHVMLeiN1ywf/TqGV8rsRsYb3ww1QippHM0DMEqo+
+g5vm+Ctnvb+7yYo55pBoy8VEA970jCg0p6DPFL/qs1Tgtbcz3OD7CTs31iLaYKHU
+ERKsFVmG/Hu80m0rBZDTZkRoTxqe3YdsVWT0f5Xit6uCvLLVC3A7bkuVP7CmMC6p
+F4csWP6RkD3FCCqZQTSgCJqnhy2Y3BuD3oeVumqDUfeLWSf8fh3cd45Oy3vn990a
+L8lS7mR1NTADuYO/AmVtxTgU42KttCnazOpd79Zluy8poPpVtfKdGp1sKdLuUKWf
+yNcvr8w6ucWFKZ6eqBOVGvTgmNIsF1v1JXcFuizVX8HnDY0pSs27p4kt3w==
+=BuPp
 -----END PGP SIGNATURE-----
 
---Sig_/=OONQgpVWkCqhFkncTg66Ye--
+--2y1rj4S6iEPyEIbObjrxB2iAqUSpEnhqy--
 
 
---===============6702682735464684719==
+--===============3821462576841305887==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -246,5 +309,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6702682735464684719==--
+--===============3821462576841305887==--
 
