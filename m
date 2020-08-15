@@ -3,55 +3,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B224DC433DF
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Aug 2020 11:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A091C433DF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Aug 2020 12:51:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 709532311C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Aug 2020 11:51:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4EB4823122
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Aug 2020 12:51:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="w+OKT29C"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 709532311C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="o/vcJRPH";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="AxR0uKVy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4EB4823122
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EAFIoaivVGtP1LwPbjmQb8tEZFSs5j3cBKiFT/Dls6s=; b=w+OKT29CmU1r5rUfJ2My3YjHSg
-	CMbwTeLOa2dnjIS7xZXlYDF117U6OfzDpz/lotmLK2xvdjMdo+KUhfNkhILuonmAFzMMsWhz/ai4I
-	dURzCRwyizGMJ2eJmw5ikdp6cmDRMSyVM0Es4ifrZmg+YL1r/a54jIfUTsP4SRjfTN86hmyu9hH4V
-	fb12Z91/NJ8ORey2ydSAXp40LsZjY8VAcBVIUGfmF5keb0eD2nJTCWldzBaHCHU9tE8TALJGbEDo+
-	K3uQvMHeny9ix5ZaiOM2Zti1bSvo9t9JenHCp4DipwndseXsC9PrQBPE6QFdqR0DleK41C6VhtgUz
-	QYOv115g==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=C7KfvefdaVCoDe0BYBagcWoeVWxW/y2C4dBx+eFbZgk=; b=o/vcJRPHAofCUAcPqj19ANjxq
+	sWuZwg4M00kFml2dbQffXveWOsuHL6Y0Igq1qcwqieW6zwcwLS3J+HUD1Y+nDfmCtKjH3M5kmyXr9
+	KxawB+WaRvob0Xu63wAhgn+/7yn05C9UvxJ4HO0WPtAMkKEOlXyzUfIvxTMZPbDG1ZRd4I1Gr02if
+	Nw6gLO2rNbN502/TU0GUibNbXtyq0Lm0pFf4zQXOL9eAnfLrcV3OmwGiHXxSoS1hpozAy1dOdVNp3
+	5FxK8LxYeDu25OATzwj5ZyAa3gkgKkVuM/JWGvulfLf0hTpv1aiRVYFd4HyjjHfTX7s2xzWf/h2IP
+	hLDgyQhMg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6uia-0006Gd-V6; Sat, 15 Aug 2020 11:51:25 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1k6vem-00019g-Un; Sat, 15 Aug 2020 12:51:32 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6tZT-0001AW-SC
- for linux-rockchip@lists.infradead.org; Sat, 15 Aug 2020 10:37:58 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id B756B29A7CE
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v2 01/14] media: staging: rkisp1: call params isr only upon
- frame out
-Date: Sat, 15 Aug 2020 12:37:21 +0200
-Message-Id: <20200815103734.31153-2-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200815103734.31153-1-dafna.hirschfeld@collabora.com>
-References: <20200815103734.31153-1-dafna.hirschfeld@collabora.com>
+ id 1k6veg-000183-Dl; Sat, 15 Aug 2020 12:51:27 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0B2512311F;
+ Sat, 15 Aug 2020 12:51:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1597495885;
+ bh=4asH1gc0Nnf0u9x4UFrqqedNqkxj9rZePIhJClf7JhY=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=AxR0uKVy0ZNoswEX9B3zlFjp2tS7XMcR9EgR7LaVuACg0qMzDC8jjdE66fFTtlFIZ
+ gmkp1pCfoRVUfuNGo36pVe7F5ikBjkO32VbjSzF8Cdbv71OLOIgtPNblMY5FJrLWcT
+ EUYr7Ave7UMiBP6L0xXXpBYVqk2OTKbO20bVkqQ8=
+Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
+ helo=why.lan) by disco-boy.misterjones.org with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <maz@kernel.org>)
+ id 1k6ved-002Kds-Ik; Sat, 15 Aug 2020 13:51:23 +0100
+From: Marc Zyngier <maz@kernel.org>
+To: linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] PCI: rockchip: Work around missing device_type property
+ in DT
+Date: Sat, 15 Aug 2020 13:51:11 +0100
+Message-Id: <20200815125112.462652-2-maz@kernel.org>
+X-Mailer: git-send-email 2.27.0
+In-Reply-To: <20200815125112.462652-1-maz@kernel.org>
+References: <20200815125112.462652-1-maz@kernel.org>
+MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 62.31.163.78
+X-SA-Exim-Rcpt-To: linux-pci@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com,
+ lorenzo.pieralisi@arm.com, robh@kernel.org, bhelgaas@google.com,
+ heiko@sntech.de, kernel-team@android.com, robh+dt@kernel.org
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200815_063756_095202_2395F2B9 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20200815_085126_695988_FFF74B92 
+X-CRM114-Status: GOOD (  20.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,121 +91,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
- tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
-MIME-Version: 1.0
+Cc: Rob Herring <robh@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Roh Herring <robh+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ kernel-team@android.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently the params isr is called and then returned when
-isp-frame interrupt is not set. This condition is already
-tested in the isp's isr so move the call under the condition
-in the isp's isr.
+Recent changes to the DT PCI bus parsing made it mandatory for
+device tree nodes describing a PCI controller to have the
+'device_type = "pci"' property for the node to be matched.
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Although this follows the letter of the specification, it
+breaks existing device-trees that have been working fine
+for years.  Rockchip rk3399-based systems are a prime example
+of such collateral damage, and have stopped discovering their
+PCI bus.
+
+In order to paper over the blunder, let's add a workaround
+to the pcie-rockchip driver, adding the missing property when
+none is found at boot time. A warning will hopefully nudge the
+user into updating their DT to a fixed version if they can, but
+the insentive is obviously pretty small.
+
+Fixes: 2f96593ecc37 ("of_address: Add bus type match for pci ranges parser")
+Suggested-by: Roh Herring <robh+dt@kernel.org>
+Signed-off-by: Marc Zyngier <maz@kernel.org>
 ---
- drivers/staging/media/rkisp1/rkisp1-common.h |  2 +-
- drivers/staging/media/rkisp1/rkisp1-isp.c    | 12 ++++----
- drivers/staging/media/rkisp1/rkisp1-params.c | 29 +++++++++-----------
- 3 files changed, 20 insertions(+), 23 deletions(-)
+ drivers/pci/controller/pcie-rockchip-host.c | 29 +++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-index 3dc51d703f73..29eaadc58489 100644
---- a/drivers/staging/media/rkisp1/rkisp1-common.h
-+++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-@@ -313,7 +313,7 @@ void rkisp1_isp_isr(struct rkisp1_device *rkisp1);
- void rkisp1_mipi_isr(struct rkisp1_device *rkisp1);
- void rkisp1_capture_isr(struct rkisp1_device *rkisp1);
- void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris);
--void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis);
-+void rkisp1_params_isr(struct rkisp1_device *rkisp1);
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/pcie-rockchip-host.c
+index 0bb2fb3e8a0b..d7dd04430a99 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/pcie-rockchip-host.c
+@@ -949,6 +949,35 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	if (!dev->of_node)
+ 		return -ENODEV;
  
- int rkisp1_capture_devs_register(struct rkisp1_device *rkisp1);
- void rkisp1_capture_devs_unregister(struct rkisp1_device *rkisp1);
-diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-index 6ec1e9816e9f..ad2ece78abbf 100644
---- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-@@ -1141,12 +1141,12 @@ void rkisp1_isp_isr(struct rkisp1_device *rkisp1)
- 		isp_ris = rkisp1_read(rkisp1, RKISP1_CIF_ISP_RIS);
- 		if (isp_ris & RKISP1_STATS_MEAS_MASK)
- 			rkisp1_stats_isr(&rkisp1->stats, isp_ris);
-+		/*
-+		 * Then update changed configs. Some of them involve
-+		 * lot of register writes. Do those only one per frame.
-+		 * Do the updates in the order of the processing flow.
-+		 */
-+		rkisp1_params_isr(rkisp1);
- 	}
- 
--	/*
--	 * Then update changed configs. Some of them involve
--	 * lot of register writes. Do those only one per frame.
--	 * Do the updates in the order of the processing flow.
--	 */
--	rkisp1_params_isr(rkisp1, status);
- }
-diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
-index 797e79de659c..6d69df36c495 100644
---- a/drivers/staging/media/rkisp1/rkisp1-params.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-params.c
-@@ -1193,12 +1193,13 @@ static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
- 	}
- }
- 
--void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis)
-+void rkisp1_params_isr(struct rkisp1_device *rkisp1)
- {
- 	unsigned int frame_sequence = atomic_read(&rkisp1->isp.frame_sequence);
- 	struct rkisp1_params *params = &rkisp1->params;
- 	struct rkisp1_params_cfg *new_params;
- 	struct rkisp1_buffer *cur_buf = NULL;
-+	u32 isp_ctrl;
- 
- 	spin_lock(&params->config_lock);
- 	if (!params->is_streaming) {
-@@ -1217,24 +1218,20 @@ void rkisp1_params_isr(struct rkisp1_device *rkisp1, u32 isp_mis)
- 
- 	new_params = (struct rkisp1_params_cfg *)(cur_buf->vaddr[0]);
- 
--	if (isp_mis & RKISP1_CIF_ISP_FRAME) {
--		u32 isp_ctrl;
-+	rkisp1_isp_isr_other_config(params, new_params);
-+	rkisp1_isp_isr_meas_config(params, new_params);
- 
--		rkisp1_isp_isr_other_config(params, new_params);
--		rkisp1_isp_isr_meas_config(params, new_params);
-+	/* update shadow register immediately */
-+	isp_ctrl = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_CTRL);
-+	isp_ctrl |= RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD;
-+	rkisp1_write(params->rkisp1, isp_ctrl, RKISP1_CIF_ISP_CTRL);
- 
--		/* update shadow register immediately */
--		isp_ctrl = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_CTRL);
--		isp_ctrl |= RKISP1_CIF_ISP_CTRL_ISP_CFG_UPD;
--		rkisp1_write(params->rkisp1, isp_ctrl, RKISP1_CIF_ISP_CTRL);
--
--		spin_lock(&params->config_lock);
--		list_del(&cur_buf->queue);
--		spin_unlock(&params->config_lock);
-+	spin_lock(&params->config_lock);
-+	list_del(&cur_buf->queue);
-+	spin_unlock(&params->config_lock);
- 
--		cur_buf->vb.sequence = frame_sequence;
--		vb2_buffer_done(&cur_buf->vb.vb2_buf, VB2_BUF_STATE_DONE);
--	}
-+	cur_buf->vb.sequence = frame_sequence;
-+	vb2_buffer_done(&cur_buf->vb.vb2_buf, VB2_BUF_STATE_DONE);
- }
- 
- static const struct rkisp1_cif_isp_awb_meas_config rkisp1_awb_params_default_config = {
++	/*
++	 * Most rk3399 DTs are missing the 'device_type = "pci"' property,
++	 * potentially leading to PCIe probing failure. Be kind to the
++	 * users and fix it up for them. Upgrading is recommended.
++	 */
++	if (!of_find_property(dev->of_node, "device_type", NULL)) {
++		const char dtype[] = "pci";
++		struct property *prop;
++
++		dev_warn(dev, "Working around missing device_type property\n");
++
++		prop = kzalloc(sizeof(*prop), GFP_KERNEL);
++		if (!prop)
++			return -ENOMEM;
++
++		prop->name	= kstrdup("device_type", GFP_KERNEL);
++		prop->value	= kstrdup(dtype, GFP_KERNEL);
++		prop->length	= ARRAY_SIZE(dtype);
++		if (!prop->name || !prop->value) {
++			kfree(prop->name);
++			kfree(prop->value);
++			kfree(prop);
++			return -ENOMEM;
++		}
++
++		if (of_add_property(dev->of_node, prop))
++			dev_warn(dev, "Failed to add property, probing may fail");
++	}
++
+ 	bridge = devm_pci_alloc_host_bridge(dev, sizeof(*rockchip));
+ 	if (!bridge)
+ 		return -ENOMEM;
 -- 
-2.17.1
+2.27.0
 
 
 _______________________________________________
