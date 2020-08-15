@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 350D7C433E1
-	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Aug 2020 10:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 00839C433E3
+	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Aug 2020 10:38:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0394822EBF
+	by mail.kernel.org (Postfix) with ESMTPS id C66A122EBF
 	for <linux-rockchip@archiver.kernel.org>; Sat, 15 Aug 2020 10:38:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1dH+MsyN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0394822EBF
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tguOUiMK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C66A122EBF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,33 +25,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PXVOBI22L6Yzbtfu7pc5afy1iExH7rJ2nVP5NnSWXHY=; b=1dH+MsyNKue+N+D6FfUDALeTpF
-	Ozu3PbwL8Ta8JMYYRX1p12DajvoZMjFw/tt1NR9NiXvO2mFrI2uKx0eGoCwMiIWCMxQLwt34XbZVP
-	W9RVAQ+ubXS797zVjb+zUAFSuiG770qtV4of3tiIhVIyAHg5poIjY6cwl+/lJmEhV+WE55cJnnPPv
-	8ugF7MMGryNIJ02C7tle2aRJMuX8cNKd/VP7U2h8TafAx76yu+KIq0rkpHcLXfk/7aQ2OXl9svfNi
-	sBQPi6x3AGsIios3c9wDd4r6bfrUBpgORtvphYSOC/wNqUQ2fRkfr7tLd5+grnZUU5SwaKUUziTW3
-	EqId/naA==;
+	bh=ybhX1qvcbTpcunUuQoEIi2v/UAK1+dsrrcZW6EHi/Ks=; b=tguOUiMKg8XiWiXp3iNMFsK7J/
+	zISaB7RaBYOdo9EqvmbVgPyRoxvvNJTsrJjuCpWTNr60+PJKPnRM3SHreelwcL5le8vHrnBShkI/o
+	GjW1m1dm5mJTkeMsfXltcpXtK+NOwOnt8WYzyPkfHk/w+5gZPP0sVWFW7g0qHKnmPcnNoxpBKXHgx
+	NO9p0LdESfVwVcTM43NIyrq7ADzNILsSuJriS+FGfvZvF33TrC/An34Iw4DeepmLIGcg1HTBJpwg0
+	tomDN3k+opAKQfXRWqioq4ddb13V6DuVWe793Ah7eSgd/kxE2HgdREWqCVUWjAyzYdzZEPW5AvWpS
+	eZjueVHQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k6tZe-0001Kx-H1; Sat, 15 Aug 2020 10:38:06 +0000
+	id 1k6tZh-0001Mc-7R; Sat, 15 Aug 2020 10:38:09 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k6tZV-0001Ca-2Y
- for linux-rockchip@lists.infradead.org; Sat, 15 Aug 2020 10:37:58 +0000
+ id 1k6tZW-0001Dz-4h
+ for linux-rockchip@lists.infradead.org; Sat, 15 Aug 2020 10:38:01 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id AC8D929A958
+ (Authenticated sender: dafna) with ESMTPSA id 0BD3729A962
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH v2 06/14] media: staging: rkisp1: params: in the isr,
- return if buffer list is empty
-Date: Sat, 15 Aug 2020 12:37:26 +0200
-Message-Id: <20200815103734.31153-7-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v2 08/14] media: staging: rkisp1: params: set vb.sequence to
+ be the isp's frame_sequence + 1
+Date: Sat, 15 Aug 2020 12:37:28 +0200
+Message-Id: <20200815103734.31153-9-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200815103734.31153-1-dafna.hirschfeld@collabora.com>
 References: <20200815103734.31153-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200815_063757_245070_0A6D6022 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20200815_063758_285809_C189F855 
+X-CRM114-Status: GOOD (  11.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,42 +74,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently the code in the isr checks if the buffer list is not
-empty before referencing a buffer and then check again if the
-buffer is not NULL. Instead we can save one 'if' statement by
-returning if the buffers list is empty.
-Also remove non-helpful inline doc 'get one empty buffer'
+The params isr is called when a frame is out of the isp. The parameters
+are applied immediately since the isr updates the shadow registers.
+Therefore the params are first applied on the next frame.
+We want the vb.sequence to be the frame that the params are applied to.
+So we set vb.sequence to be the isp's frame_sequence + 1
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- drivers/staging/media/rkisp1/rkisp1-params.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ drivers/staging/media/rkisp1/rkisp1-params.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
-index 6a76c586e916..86bbd01e18c7 100644
+index 134b5c9a94c1..4b4391c0a2a0 100644
 --- a/drivers/staging/media/rkisp1/rkisp1-params.c
 +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
-@@ -1206,16 +1206,14 @@ void rkisp1_params_isr(struct rkisp1_device *rkisp1)
- 		return;
- 	}
+@@ -1220,7 +1220,14 @@ void rkisp1_params_apply_params_cfg(struct rkisp1_params *params, unsigned int f
  
--	/* get one empty buffer */
--	if (!list_empty(&params->params))
--		cur_buf = list_first_entry(&params->params,
--					   struct rkisp1_buffer, queue);
--
--	if (!cur_buf) {
-+	if (list_empty(&params->params)) {
- 		spin_unlock(&params->config_lock);
- 		return;
- 	}
+ void rkisp1_params_isr(struct rkisp1_device *rkisp1)
+ {
+-	unsigned int frame_sequence = atomic_read(&rkisp1->isp.frame_sequence);
++	/*
++	 * The params isr is called when a frame is out of the isp. The parameters
++	 * are applied immediately since the isr updates the shadow registers.
++	 * Therefore the params are first applied on the next frame.
++	 * We want the vb.sequence to be the frame that the params are applied to.
++	 * So we set vb.sequence to be the isp's frame_sequence + 1
++	 */
++	unsigned int frame_sequence = atomic_read(&rkisp1->isp.frame_sequence) + 1;
+ 	struct rkisp1_params *params = &rkisp1->params;
  
-+	cur_buf = list_first_entry(&params->params,
-+				   struct rkisp1_buffer, queue);
-+
- 	new_params = (struct rkisp1_params_cfg *)(cur_buf->vaddr[0]);
- 
- 	rkisp1_isp_isr_other_config(params, new_params);
+ 	spin_lock(&params->config_lock);
 -- 
 2.17.1
 
