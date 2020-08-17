@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23883C433E3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 21:48:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A23D0C433E4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 21:49:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E37712072E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 21:48:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6E6F02072E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 21:49:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SBF/t9YP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E37712072E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Qd0LoJCH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E6F02072E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,38 +26,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DN6s1ECWvEiUbemaPDGEfKDAEDo1NsSLVzUt0YvycDs=; b=SBF/t9YPcozCKtWsDPbKKV0yK
-	DEatz2qOTnMU/ZcDWCrXAHLMOKEpzxQDaXogEVz4P58yfIXkdNe7UFJ32gHN2Q+Q54rXhGUmUH9Cm
-	+3vKM/1R1VELZXz4DpepqOgMqGNAoYbQoxjmKP3XcgcaOzXKQxVgyTTV59BObPLlrixrq45CGFgbd
-	KRmAX3WFksU/UpRaGDMLRjiasB1kKoUSZZAdNv4VYzQafBvr3//qMuzKC6uH57kjQOzCLBMxylimV
-	hAQRvVuD+i1Yf5HS2rwM8y4QHb8g/XQYOJTozjI8S7CTJiwtQxsgpb8a1SmZ7ugSs1TNjprcTlvFO
-	zqBDiU3mw==;
+	 bh=XDw5E9hrlGLGBKB1XEJagIPpXYfquLbUk/hy0GsOxAM=; b=Qd0LoJCHfk/ot1bmCbP1vDOzb
+	5upc5v+57dSknJldaYsoFvOulZzO/+kG6PMBs7dq/pf62V2Sr2IBz9xqjguDsbQ3QQrXofdbSAXmA
+	pKHwH4gdS5/IGANBDEY/hgZzqinAjVzd2A7gb+4jFrRbwJxiUco9BZI3tMUuurSxFLBy8aflUY1M0
+	06Xsnf6mnmSCP9uL6hLYWMCNOLAdogRqndxvg/oAbfxJGktrmjx0h2W4+Jddf6Joi4u1+Yx9k85BW
+	5BwsvQ3DAGDVpL6wncEDQ3GEEau4cz1RHti4usBiKrd413gUWXzGovMkEiRcy9rxOCOXKVBxCR+Q7
+	GlDsrlQMA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7mzs-0001yT-43; Mon, 17 Aug 2020 21:48:52 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1k7mzy-000219-Sb; Mon, 17 Aug 2020 21:48:58 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7mzq-0001vx-1j
- for linux-rockchip@lists.infradead.org; Mon, 17 Aug 2020 21:48:50 +0000
+ id 1k7mzw-0001zw-In
+ for linux-rockchip@lists.infradead.org; Mon, 17 Aug 2020 21:48:57 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id 8189429861F
-Subject: Re: [PATCH v2 12/14] media: staging: rkisp1: stats: protect write to
- 'is_streaming' in start_streaming cb
+ (Authenticated sender: koike) with ESMTPSA id 1B31D29861F
+Subject: Re: [PATCH v2 13/14] media: staging: rkisp1: call
+ media_pipeline_start/stop from stats and params
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
  linux-media@vger.kernel.org
 References: <20200815103734.31153-1-dafna.hirschfeld@collabora.com>
- <20200815103734.31153-13-dafna.hirschfeld@collabora.com>
+ <20200815103734.31153-14-dafna.hirschfeld@collabora.com>
 From: Helen Koike <helen.koike@collabora.com>
-Message-ID: <39795bb2-2f71-fbb2-909a-a818409de9d6@collabora.com>
-Date: Mon, 17 Aug 2020 18:48:38 -0300
+Message-ID: <6609ec76-6c12-bd8b-517e-bc6ae96690b2@collabora.com>
+Date: Mon, 17 Aug 2020 18:48:48 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200815103734.31153-13-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20200815103734.31153-14-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200817_174850_248567_7EB1EFE6 
-X-CRM114-Status: GOOD (  16.22  )
+X-CRM114-CacheID: sfid-20200817_174856_767527_77CFAB95 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,39 +79,82 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
+Hi Dafna,
 
 On 8/15/20 7:37 AM, Dafna Hirschfeld wrote:
-> The field stats->is_streaming is written in 'start_streaming' callback
-> without the stats->lock protection.
-> The isr might run together with the callback so 'spin_lock_irq'
-> should be used.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> The stats and params video nodes register a media entity
+> and therefore they need to call media_pipeline_start/stop.
 
-Acked-by: Helen Koike <helen.koike@collabora.com>
+I'm not sure this is really required, iirc, these functions
+basically locks the topology, which would cause EBUSY errors
+when trying to modify the topology.
+I can be wrong, but I don't think params
+and stats requires locking the topology configuration.
 
-Thanks
+Regards,
 Helen
 
-> ---
->  drivers/staging/media/rkisp1/rkisp1-stats.c | 2 ++
->  1 file changed, 2 insertions(+)
 > 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-params.c | 9 +++++++++
+>  drivers/staging/media/rkisp1/rkisp1-stats.c  | 9 +++++++++
+>  2 files changed, 18 insertions(+)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+> index cc242ad5106e..7d5c21fa630e 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+> @@ -1488,14 +1488,23 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
+>  
+>  	list_for_each_entry(buf, &tmp_list, queue)
+>  		vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
+> +
+> +	media_pipeline_stop(&params->vnode.vdev.entity);
+>  }
+>  
+>  static int
+>  rkisp1_params_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
+>  {
+>  	struct rkisp1_params *params = queue->drv_priv;
+> +	struct media_entity *entity = &params->vnode.vdev.entity;
+>  	unsigned long flags;
+> +	int ret;
+>  
+> +	ret = media_pipeline_start(entity, &params->rkisp1->pipe);
+> +	if (ret) {
+> +		dev_err(params->rkisp1->dev, "params: start pipeline failed %d\n", ret);
+> +		return ret;
+> +	}
+>  	spin_lock_irqsave(&params->config_lock, flags);
+>  	params->is_streaming = true;
+>  	spin_unlock_irqrestore(&params->config_lock, flags);
 > diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> index 52417b388854..c86beba709db 100644
+> index c86beba709db..b314fb6a4562 100644
 > --- a/drivers/staging/media/rkisp1/rkisp1-stats.c
 > +++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> @@ -157,7 +157,9 @@ rkisp1_stats_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
+> @@ -150,12 +150,21 @@ static void rkisp1_stats_vb2_stop_streaming(struct vb2_queue *vq)
+>  		vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
+>  	}
+>  	spin_unlock_irq(&stats->lock);
+> +	media_pipeline_stop(&stats->vnode.vdev.entity);
+>  }
+>  
+>  static int
+>  rkisp1_stats_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
 >  {
 >  	struct rkisp1_stats *stats = queue->drv_priv;
+> +	struct media_entity *entity = &stats->vnode.vdev.entity;
+> +	int ret;
+> +
+> +	ret = media_pipeline_start(entity, &stats->rkisp1->pipe);
+> +	if (ret) {
+> +		dev_err(stats->rkisp1->dev, "stats: start pipeline failed %d\n", ret);
+> +		return ret;
+> +	}
 >  
-> +	spin_lock_irq(&stats->lock);
+>  	spin_lock_irq(&stats->lock);
 >  	stats->is_streaming = true;
-> +	spin_unlock_irq(&stats->lock);
->  
->  	return 0;
->  }
 > 
 
 _______________________________________________
