@@ -7,59 +7,61 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C21ACC433DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 03:12:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A2AFC433E1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 03:12:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8FF822063A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 03:12:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CE56F2063A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 03:12:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fxTKiznU";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=airmail.cc header.i=@airmail.cc header.b="FITC302A"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8FF822063A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JYmM0Wub";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=airmail.cc header.i=@airmail.cc header.b="DpMDMhi+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE56F2063A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=airmail.cc
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=NFTb1RYo3WGA9iU7+BxiwSlZ/BUcxGQiVjn7vms2PhQ=; b=fxTKiznUrd2NFF+23bKjsMz2SA
-	eQytlSCVQ8xNjjWC83iJmP/Mu4K99d8sufNw50YmBGHNza70u3BKlb1hfsdx2bpdDfWFm3p1fzAqa
-	Bh1dY/nQHDDaDw69A3Oifw1AFMNv8eH/F1SkEPMV1v9bjn8QtOqOQj9qPLXC+iDdnWXy3l2HFS2Md
-	XQv7u69QzYiUiLQFEw/6SPuNj2nJcFo2KRNRm5jrnzEx9M/yqvjO9UW6OcgdR5lhChySCpQX9+KJw
-	KTmSCibFTkaNXO7eECFs0bRDchOOIWPuaSKpeSKIoRmt/SZMmqCx4Fn012oLbAhMO77TXL/KetE0I
-	mJ1l52DA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=1S6JydhPtHk4yllTRBd8MskJUVEx5zp15Z+0uZ7RZmY=; b=JYmM0Wub14VDRxpSgAqrUIya+
+	uNnzrBSlbborma64E4CNEegCjzB8I0SGK7dF3CIHoLZPmHJyZTQDM+dwSGdB5v+2U27jL5g5jyQxg
+	qY+UjjAbhGen/sYiPQ+NV0Xp6Qu5S6+uR0BJCxuQdRTzT8rYK63YWXnMCq3mgfFx9hO00okeTboO3
+	upJJoYr0rBW/uJ4CL5SFZ4aQAeky6rP4+6ms+Fihl55N6C5dOCAn6nUdD8Pk/pm1ugJtPt8Qt2ZB6
+	W11EWs57xq37+BcklLHHwqhATpkZNnVguZtcZeWB3LG1BylZBrRcr+dhTlTiYVzEb/BIkTGSPyomF
+	T0fDu/kIw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7VZ3-0008HQ-CB; Mon, 17 Aug 2020 03:12:01 +0000
+	id 1k7VZ7-0008Ih-BG; Mon, 17 Aug 2020 03:12:05 +0000
 Received: from mail.cock.li ([37.120.193.124])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7VYy-0008Fx-Fy; Mon, 17 Aug 2020 03:11:57 +0000
+ id 1k7VZ1-0008Gq-Ty; Mon, 17 Aug 2020 03:12:01 +0000
 From: travelvia@airmail.cc
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=airmail.cc; s=mail;
- t=1597633912; bh=UgOM+roZXfnn3lqaoJqMtjxXynnikZ73M0zwtTekzb8=;
- h=From:To:Cc:Subject:Date:From;
- b=FITC302A6XEn3KLsnE0als8YvtmvTH9gaWq8D+yoTYpqL0sL8qod1uMHBOS68oUyn
- YNENuucirO/kIMdmU3YzKhKxaA03N1OKJDUcAzbJvEjR9dp3/QYhyX///eWrqBiqJZ
- iPS0Z2QurYYQD59uXsVSA28pMzvKPYwJvg+bkkLE6V/2/q+d5MeTK9MZrFhSx607Yv
- 71jHOZobI3lvvqnyyW00MbNMQkPzn3jO90t98SITd9/SrnEkBh/giL2ERLfy9/w3P6
- HNLCrxWM3wBAzAoD4JsA+Ky98eeUzTuRaTRlrDc+srCRDhk086vnTQeqZJLVzASzhM
- 25RG61LJ2N46A==
+ t=1597633918; bh=B2/pG96q5fjDlAD3MWBfACLsVnRmGQD6Zy1Yw/gvRv0=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=DpMDMhi+CKpv3Aj3+eu4JHxq2yuf2gyHNC5wrG8+6R+EkGEHla9WiX8lrx6qzeQS3
+ pQqXO4FlTUOEwYVB8mz/LLuJJRX5OliG9YLPcd4FZA888/qnbCsGClm8KSFN9NaYL9
+ sAwisY87vwcY0vHQ+oqipDAu//Snh39Q6ljyz5Qc3rxZRKf8utAw1LVVA8NzfCwKtz
+ Su4h3guxmp8UNz4gWRTndzYwpsusWlEr2Q21sAQoEKvNOKMCrd/8B6FyZLNv4y3vMG
+ wRZU/024shTbBCXnFJi3oN+a7luGl+UmumRzqcIxj0ysGJVZVBfsX8cTSTV/JcY+Gw
+ KIU3n6hC3tpGg==
 To: robh+dt@kernel.org, heiko@sntech.de, balbi@kernel.org,
  gregkh@linuxfoundation.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org
-Subject: [PATCH v2 1/4] Documentation: bindings: usb: add rk3328 dwc3 docs
-Date: Sun, 16 Aug 2020 20:11:11 -0700
-Message-Id: <20200817031114.6107-1-travelvia@airmail.cc>
+Subject: [PATCH v2 2/4] usb: dwc3: of-simple: Add compatible for rk3328
+Date: Sun, 16 Aug 2020 20:11:12 -0700
+Message-Id: <20200817031114.6107-2-travelvia@airmail.cc>
 X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20200817031114.6107-1-travelvia@airmail.cc>
+References: <20200817031114.6107-1-travelvia@airmail.cc>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200816_231156_857833_68D91FF3 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20200816_231200_184018_9F3D797C 
+X-CRM114-Status: GOOD (  14.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,40 +82,39 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Cameron Nemo <cnemo@tutanota.com>
 
-Document compatible for dwc3 on the Rockchip rk3328 platform.
+Add a compatible to be hooked into by the Rockchip rk3328 device tree.
+
+The rk3399 compatible cannot be reused because the rk3328 SoCs may
+require a specialized driver in the future, and old device trees must
+remain compatible with newer kernels.
 
 Signed-off-by: Cameron Nemo <cnemo@tutanota.com>
 ---
- Documentation/devicetree/bindings/usb/dwc3.txt          | 1 +
- Documentation/devicetree/bindings/usb/rockchip,dwc3.txt | 3 ++-
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ drivers/usb/dwc3/dwc3-of-simple.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/usb/dwc3.txt b/Documentation/devicetree/bindings/usb/dwc3.txt
-index d03edf9d3935..d625cd5966e9 100644
---- a/Documentation/devicetree/bindings/usb/dwc3.txt
-+++ b/Documentation/devicetree/bindings/usb/dwc3.txt
-@@ -25,6 +25,7 @@ Exception for clocks:
-     "ti,am437x-dwc3"
-     "ti,dwc3"
-     "ti,keystone-dwc3"
-+    "rockchip,rk3328-dwc3"
-     "rockchip,rk3399-dwc3"
-     "xlnx,zynqmp-dwc3"
+diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
+index 7df115012935..68d6e4fa0c6a 100644
+--- a/drivers/usb/dwc3/dwc3-of-simple.c
++++ b/drivers/usb/dwc3/dwc3-of-simple.c
+@@ -49,7 +49,8 @@ static int dwc3_of_simple_probe(struct platform_device *pdev)
+ 	 * Some controllers need to toggle the usb3-otg reset before trying to
+ 	 * initialize the PHY, otherwise the PHY times out.
+ 	 */
+-	if (of_device_is_compatible(np, "rockchip,rk3399-dwc3"))
++	if (of_device_is_compatible(np, "rockchip,rk3328-dwc3") ||
++	    of_device_is_compatible(np, "rockchip,rk3399-dwc3"))
+ 		simple->need_reset = true;
  
-diff --git a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-index 94520493233b..b41f30a61be6 100644
---- a/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-+++ b/Documentation/devicetree/bindings/usb/rockchip,dwc3.txt
-@@ -1,7 +1,8 @@
- Rockchip SuperSpeed DWC3 USB SoC controller
+ 	simple->resets = of_reset_control_array_get(np, false, true,
+@@ -171,6 +172,7 @@ static const struct dev_pm_ops dwc3_of_simple_dev_pm_ops = {
+ };
  
- Required properties:
--- compatible:	should contain "rockchip,rk3399-dwc3" for rk3399 SoC
-+- compatible:	should contain "rockchip,rk3328-dwc3" for rk3328 SoC
-+		or "rockchip,rk3399-dwc3" for rk3399 SoC
- - clocks:	A list of phandle + clock-specifier pairs for the
- 		clocks listed in clock-names
- - clock-names:	Should contain the following:
+ static const struct of_device_id of_dwc3_simple_match[] = {
++	{ .compatible = "rockchip,rk3328-dwc3" },
+ 	{ .compatible = "rockchip,rk3399-dwc3" },
+ 	{ .compatible = "xlnx,zynqmp-dwc3" },
+ 	{ .compatible = "cavium,octeon-7130-usb-uctl" },
 -- 
 2.28.0
 
