@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1707BC433DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 08:10:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0215BC433E1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 08:10:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D3DC52078D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 08:10:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C3DF02078D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 17 Aug 2020 08:10:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xqhtIqKo";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TZ17WiWG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D3DC52078D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uj1J/2CD";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="i1+ADZbM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3DF02078D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,62 +27,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZazttE7gFWZJnmXUaiGt4PcB06YnpPSt+BhvdXONMHQ=; b=xqhtIqKog8UnRmB/xtshLA4/PT
-	UQAcdzH+YqKMJtUEHcWtciIn9NzwjG+O4NV331vKPMpDUNShfrvvNl79KlQBulKlrSI54jBhuAcam
-	eI0Y/tDWKtrn2Ubr1AYFn9AmJtMVkvw7kO5EScPCCX+gHA/Klj6r/MVFGpNY0hAThzSMuswrYniQc
-	sfvs3b0b8Wevls/+JBYasEYYsXOBpDbE/3AmBj0KpzE+uzNgrQT7thIVlWuAD8euX8P1uuljJytKu
-	Yx41o4O1ZqKB6syKTkVAjZsv+A/YTd84jDN+vhBmeTjV7UKd99qGw5J4mrWW+USj1AFVyhKbJrM9Z
-	Wal61Rhw==;
+	bh=in8Edpk+JwCUGLPwHPdF7dWN55WNAFLvP6Jaeiw3lDE=; b=uj1J/2CDoZUJoTZJwyyZZlYoXO
+	XHc8YGTyPxMDE1TJm33hI96T7GDnxAYVoaIQ0X4MUTNStYS3LaPMpxtHHyh2+SwLBYrU7SsCXHxR2
+	jlYHShD/puNoMIdCnMUR1gSvJYpEjV1sFeEJAM3lS08hKhOBAcpzTfpubGkbC3PX6DuHiChbCuOID
+	BvUWcmZvPYBb/3AH3+E62fcLoEj7dPiEDr7vQVx/iyfSQymawk3tJ48VsulraMYpDOgsfeRkgh6OH
+	0+jteDphdOcsUN3bAVM9GFZqHad5n1BZ0zpLbVC4/cl8xrE5Ch7pVe7I1l+NkvvsKdHceohhadEIC
+	dhxaSFsg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7aE0-0002rv-F7; Mon, 17 Aug 2020 08:10:36 +0000
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544])
+	id 1k7aEA-0002xQ-Lt; Mon, 17 Aug 2020 08:10:46 +0000
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7aDh-0002i0-LO; Mon, 17 Aug 2020 08:10:18 +0000
-Received: by mail-pg1-x544.google.com with SMTP id 128so7748006pgd.5;
- Mon, 17 Aug 2020 01:10:15 -0700 (PDT)
+ id 1k7aDn-0002lG-0K; Mon, 17 Aug 2020 08:10:27 +0000
+Received: by mail-pl1-x641.google.com with SMTP id f10so7112708plj.8;
+ Mon, 17 Aug 2020 01:10:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=EjM/bc9oMW+0sBykqCFUkPw3qkHdhalyi/ZZCcuM7jI=;
- b=TZ17WiWGgSUx7KDRMcYgdPiVlPvhIeKyT7JacWITYd5bfAzGX0K/drdRZgf/IgMZnQ
- haeKHiKqj+EWZOMjz9vK4jyjQiqD2EsYL5wZtUY/7MKM8EcwZCyMRJ9m0MJHmJysxrGT
- rEe7Yhg9fiXCpeiIOwHg87Nc2oW9XxSEsocphkY+WifyY5+Lr48OB0OlGW1u2ACfuUp2
- 1lrjWZf+TyJF5sRol6kMfbmX6DqRnNgYIZ7szwvBsl3Dc96FJPHdC/QrIh8YsFfghKkv
- Lds0hCRbLyYqsmh1KhEpxq6A5urNKeBOU3y2s7X0wX6op6r5rAs4OcFXJX8gg7m83fNC
- srrA==
+ bh=AQ09dDtr3c2l1Roq0ne6URApsMSGN10hnLKyehD45Gs=;
+ b=i1+ADZbM04yKV29bxvf14C4AfjR1DxtKP0yjjVyTUAFFhoVNvTltQu7x90fBPPNBC8
+ uC7Eap5SUopZYFMtjxSgAXpcwXoKDoI6iOXQxnHSbuUd7T00NrbK6z43UYIYYUzrQBd8
+ RQXP2LTtLIsM8avul4X6clc9gCOU80SMJ1ZzBtf3ctBER5/3dvW/KyYkSmTvsLkf0eIM
+ qK2sp8D8YO9mUlrPy0KyWjPeLcj6POj4CfDy4F+2s8tk99v66wi63aJJjypppa026j4w
+ mK/MTitnJ+ElSoei45gm/OH9DsTX03onLMmjXq0Zo0GO1cqCHRlKCVyudm7kXvDdcXCI
+ HkOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=EjM/bc9oMW+0sBykqCFUkPw3qkHdhalyi/ZZCcuM7jI=;
- b=IKDVgb3EnmDhoMKsgea3zfLOTGmw1mV28mr2CGXmrECPByjVfko8BkdigqVD6B7g2f
- hfg2QsX8ExAHs0Dx3zXTQ2/fw+o/jt583OEh31BnWNP1oGCUoVFXwGo+u/Oaa3TVAs+P
- knaVMmJ8M1K7DuqY9rBlsdoMyOFSJhTrKT9LtEtwcbHbfnp8q2Cnvr2YQX/jRR6OPgs1
- TYmlrmYvse7K0Q73iifYont8k9ETJrBZdd98+nQXO6+hlnZRlqnuz1owrYeV9Qq1zFwN
- l8tYElQKqPuTRXez5jcm1BNbmPVJ/+IEzKkLnChFIsLGxzttD0LuxWlJV4pp9KjRAfGa
- NEwA==
-X-Gm-Message-State: AOAM530UR9PW/8L3slBngAXXgtIrUJ0N9Nf052Wz+YjX2VTFhmfwXgsI
- 9zsL4fG1hSkJA1eMS3Ucpzw=
-X-Google-Smtp-Source: ABdhPJyC+tc9WoKzXMgb8ccCrUbWRcq5oU1rFYGbt/72fsZUVj49tUcq4g9/xNjX1u4iKnS7QZEhOA==
-X-Received: by 2002:a63:31c6:: with SMTP id x189mr6189388pgx.182.1597651812808; 
- Mon, 17 Aug 2020 01:10:12 -0700 (PDT)
+ bh=AQ09dDtr3c2l1Roq0ne6URApsMSGN10hnLKyehD45Gs=;
+ b=BQbJaFBb7wBUtkFN8XOcIuluO4Yx6cpnKsWaS6hHUB9DUfMTKpj/dGNekjAskBaBuv
+ 3boB1mmAql51ddW6SjkPAVuym28C+4Uujg6Zo6hMb+RdkQMSOX+Lh1pS1atPJet34FwI
+ v4X4f25lEeZFxK0SPc/vWENkqicVjHwR1oFQWMxTa/x7/iiCixHKKGp+V5Rg/Ps3yCOf
+ YaLeR3OSFulJm+NAX+adlstYioTeQMZAiorbjyraS2TUUerwq5F7lWoRKoF7ariglZKC
+ KHpn/bGXvzzxsfDMd5rVD44HCscm/oRUYGAeLhF6pYj5g6LmTC+dNPIW2NG/oxhwR1+0
+ idew==
+X-Gm-Message-State: AOAM532Lh/MC8nGFx+LBrzuYLbjATPOwFGVF++P2M8oVWQq31BbKMVNb
+ JMuK8wJVz5blX9WsR6dD2p0=
+X-Google-Smtp-Source: ABdhPJyaWmoUPigt5EzkuJiRyagPX4x/btPrL124BPaPGgcH3dgesfRQ26eVBtXL4hKJJ/AzDOuPrQ==
+X-Received: by 2002:a17:902:c286:: with SMTP id
+ i6mr9940453pld.219.1597651820779; 
+ Mon, 17 Aug 2020 01:10:20 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.202.98])
- by smtp.gmail.com with ESMTPSA id 77sm18499751pfx.85.2020.08.17.01.10.08
+ by smtp.gmail.com with ESMTPSA id 77sm18499751pfx.85.2020.08.17.01.10.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2020 01:10:12 -0700 (PDT)
+ Mon, 17 Aug 2020 01:10:20 -0700 (PDT)
 From: Allen Pais <allen.lkml@gmail.com>
 To: nicolas.ferre@microchip.com, alexandre.belloni@bootlin.com,
  ludovic.desroches@microchip.com, heiko@sntech.de, matthias.bgg@gmail.com
-Subject: [PATCH 03/19] crypto: axis: convert tasklets to use new
+Subject: [PATCH 04/19] crypto: caam: convert tasklets to use new
  tasklet_setup() API
-Date: Mon, 17 Aug 2020 13:39:25 +0530
-Message-Id: <20200817080941.19227-4-allen.lkml@gmail.com>
+Date: Mon, 17 Aug 2020 13:39:26 +0530
+Message-Id: <20200817080941.19227-5-allen.lkml@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200817080941.19227-1-allen.lkml@gmail.com>
 References: <20200817080941.19227-1-allen.lkml@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200817_041017_807070_F6E6E09A 
-X-CRM114-Status: GOOD (  13.13  )
+X-CRM114-CacheID: sfid-20200817_041023_183139_AF425748 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,35 +114,36 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <allen.lkml@gmail.com>
 ---
- drivers/crypto/axis/artpec6_crypto.c | 7 +++----
+ drivers/crypto/caam/jr.c | 7 +++----
  1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/crypto/axis/artpec6_crypto.c b/drivers/crypto/axis/artpec6_crypto.c
-index 1a46eeddf082..83e4c164dedb 100644
---- a/drivers/crypto/axis/artpec6_crypto.c
-+++ b/drivers/crypto/axis/artpec6_crypto.c
-@@ -2074,9 +2074,9 @@ static void artpec6_crypto_timeout(struct timer_list *t)
- 	tasklet_schedule(&ac->task);
+diff --git a/drivers/crypto/caam/jr.c b/drivers/crypto/caam/jr.c
+index bf6b03b17251..4dc923736ba8 100644
+--- a/drivers/crypto/caam/jr.c
++++ b/drivers/crypto/caam/jr.c
+@@ -201,11 +201,10 @@ static irqreturn_t caam_jr_interrupt(int irq, void *st_dev)
  }
  
--static void artpec6_crypto_task(unsigned long data)
-+static void artpec6_crypto_task(struct tasklet_struct *t)
+ /* Deferred service handler, run as interrupt-fired tasklet */
+-static void caam_jr_dequeue(unsigned long devarg)
++static void caam_jr_dequeue(struct tasklet_struct *t)
  {
--	struct artpec6_crypto *ac = (struct artpec6_crypto *)data;
-+	struct artpec6_crypto *ac = from_tasklet(ac, t, task);
- 	struct artpec6_crypto_req_common *req;
- 	struct artpec6_crypto_req_common *n;
- 	struct list_head complete_done;
-@@ -2899,8 +2899,7 @@ static int artpec6_crypto_probe(struct platform_device *pdev)
- 	artpec6_crypto_init_debugfs();
- #endif
+ 	int hw_idx, sw_idx, i, head, tail;
+-	struct device *dev = (struct device *)devarg;
+-	struct caam_drv_private_jr *jrp = dev_get_drvdata(dev);
++	struct caam_drv_private_jr *jrp = from_tasklet(jrp, t, irqtask);
+ 	void (*usercall)(struct device *dev, u32 *desc, u32 status, void *arg);
+ 	u32 *userdesc, userstatus;
+ 	void *userarg;
+@@ -483,7 +482,7 @@ static int caam_jr_init(struct device *dev)
+ 		      (JOBR_INTC_COUNT_THLD << JRCFG_ICDCT_SHIFT) |
+ 		      (JOBR_INTC_TIME_THLD << JRCFG_ICTT_SHIFT));
  
--	tasklet_init(&ac->task, artpec6_crypto_task,
--		     (unsigned long)ac);
-+	tasklet_setup(&ac->task, artpec6_crypto_task);
+-	tasklet_init(&jrp->irqtask, caam_jr_dequeue, (unsigned long)dev);
++	tasklet_setup(&jrp->irqtask, caam_jr_dequeue);
  
- 	ac->pad_buffer = devm_kzalloc(&pdev->dev, 2 * ARTPEC_CACHE_LINE_MAX,
- 				      GFP_KERNEL);
+ 	/* Connect job ring interrupt handler. */
+ 	error = devm_request_irq(dev, jrp->irq, caam_jr_interrupt, IRQF_SHARED,
 -- 
 2.17.1
 
