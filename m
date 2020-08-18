@@ -2,89 +2,84 @@ Return-Path: <SRS0=2LhI=B4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6447FC433E1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 17:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 84169C433DF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 18:45:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C3C52080C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 17:49:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4012920772
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 18:45:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="p7We/MTY";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="sAK+0rf9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C3C52080C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F46Il4jC";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="KkF5v2Bu"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4012920772
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=UKUqAzFiFm54jyjGQ3oQYuqER6OCDphB+YAYW9CGfsE=; b=p7We/MTY0S94rxSl1ea4ucK80
-	YQcQqhDlFccDX4HEqOA4VhHK8bEDPuqGKYeDu0nydFBpK02go6GyMhv2DDL07EhP81ZP0U/dhH44M
-	8Z/RuR/a6VQa2XwkO9jj07+MBepX3y56eEgxjLZ9zf/Ut6deUsGhHbrhqNHBV57KQr0etB44E4N0Y
-	YwKRcCIvMKB35UwT88mUI6tyhMfnIe8+BKVNbcv5jt9+f7IFENmNpK9hTwGvvGlHnXfnx47FAgCWR
-	5mNYdAwbJAzjkl7oKsyA/b6HeERUNAkMRssdJxH2+2npvJGpBnU3TTTpBg4mfT8hBx+yqqQjGXgeL
-	kBulzuXBA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gnK25EMc1S6XmVn9GzjsaQLG8/18SvgtH28aVln5lmA=; b=F46Il4jC+/CuxJw2ogcdUt+1Ef
+	ADcgIExkaUdgESyuUjub2jfdM2oDSryXqP8Zyx26ts7K9CnE9fc1A0XvG+MRc7KYmzXo4S4DWz3ga
+	I0chgEVs4u3jiq2xRgnqwD28JNQ8pKF3xkH5VC035TsvaFTVTLw/O5Gf/m714ckr3O2jgVUoYAG6S
+	cCcNGJqdEun9ct24LUHknjt2W28ngCEswi3WCQBKXEe/pzUgAJZtMLlOo/pswK332zdzVljtGwMug
+	e92ddzHams2yPoMkU2rdTB3Q8fjVAeYJgnMPwiLT13/U+vogfZYiJ//2kUK61gotEQIQxbGAZ7A2J
+	/mOShZEA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k85js-0004vy-Th; Tue, 18 Aug 2020 17:49:36 +0000
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
+	id 1k86c0-0004aN-MU; Tue, 18 Aug 2020 18:45:32 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k85jq-0004uL-Lw
- for linux-rockchip@lists.infradead.org; Tue, 18 Aug 2020 17:49:36 +0000
-Received: by mail-pj1-x1041.google.com with SMTP id 2so9731199pjx.5
- for <linux-rockchip@lists.infradead.org>; Tue, 18 Aug 2020 10:49:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=OMrT9C5AFoMvfd0icRmwdmikCEIc/NXJSQt8b1yXCkw=;
- b=sAK+0rf9juJXiwHzeHjlRJRWIPHclN8Phlv51l+2QJIKpBcC34ipELa2VfI7E17BvK
- m68XbGNzwGepUZZ1Pr0P9h9Jc/7bg6spmjHt5NSFaLNagz7dalWVtN1tKYuM5bOPi6Op
- If24cwckYg9jm6rdn6n4Um6N2mlzxhZT+GRBTkAydj+iXoS0a+0v7+kWnPZcETMabcbp
- iSUiSqH6yqjsQkeFOrUegOfeNTUVWwfScVhxUMh8qRsKYl1J7qDnzRi771PmHHAXZ0aU
- TmfaTSiINFimh+dbuxpQwh+YY6+u3LnHrKoqOfAQe1o3Y7mTernmzlxHt7P9FeyD1YmS
- ZbWA==
+ id 1k86bu-0004YW-Cp
+ for linux-rockchip@lists.infradead.org; Tue, 18 Aug 2020 18:45:29 +0000
+Received: by mail-pf1-x442.google.com with SMTP id y206so10381381pfb.10
+ for <linux-rockchip@lists.infradead.org>; Tue, 18 Aug 2020 11:45:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amarulasolutions.com; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Zsbv5mvCbZha5zbAj1OK4YZ+BCUk3LROR/vz9Y6QKVA=;
+ b=KkF5v2BuZGd2iCldjPP3synY06xB4ELU6I9s9TsaRG7KnLcwop4DMFGlpFTWv5Xy+X
+ ofRk7La8JMG3SwdgZUGh8eAUBFeB4o/6lLw2usFOzGVPB3BlayOuITC9g6xNcMC5Eno/
+ 9UsIwRhcRBKGe4P2ubvHSxj/lyBPEBQFSM3Sg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=OMrT9C5AFoMvfd0icRmwdmikCEIc/NXJSQt8b1yXCkw=;
- b=jaaeVwxGFY4P0J1tx1pqkDfUg1gwXgSLhqPrPPrrlnAZzl9qofQO+ezEdi/rW8fr9W
- cEPCGTBEjf9elmxKfsx8fE46AVSPOZEZgpnFc0tZU0nXX6smwy02AACc1aBghYHpnwmg
- L4SqyTZ8gNkbbDPn9iD/N+RxVDQThKloVNaGHCNhw1EjmETm5PDxRfdqNLO0co6vqLhz
- rDIs8KHdQFkmFoavqX2gpc3OhUZz0pZ3qE9Wd6zI2Ih8f6scsRlqaARuUt92igadbxLg
- KOz2Tm+IYLt1VinfjYK+k/zSOwvzrzhOb0MSgwZVvr0cY3NELVh3uOMjDOkv5wWEgc9Y
- xv9g==
-X-Gm-Message-State: AOAM5334Hj4SKkEC7O2YYhVq1n1FTzR57hxucYAmRNhgaGzx3y7wSqPm
- Qkl1tbDySmAnar1qnrnpTLH/PxTySa+2U1WEsTGYsw==
-X-Google-Smtp-Source: ABdhPJzVVyPcZ+7Gs0AXJVZxiCetyUr6nk23IoYNH1FZlus2gp2HDkcMI/FTOQ/mx9fK0t2ODFmqRjeqa113FBmxApY=
-X-Received: by 2002:a17:90a:f98e:: with SMTP id
- cq14mr871303pjb.51.1597772970220; 
- Tue, 18 Aug 2020 10:49:30 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Zsbv5mvCbZha5zbAj1OK4YZ+BCUk3LROR/vz9Y6QKVA=;
+ b=lEXScMi7pcP8vtzMdSx6FbugM/8dh3cIHazWLIlXwSdLbWBbXBYJX5lD6UqK8fzNnP
+ BO02lrOj+BIvLMi/7yKXgh9Ma1FSJ+L43/eMlTJcX6hmtVdPXmVN/BrMWLiHnWbaSi1b
+ OYJEoLmkclz0vHkPWlmIA5i31iAf0ikPVMPEzrNrPMuMBZrBryZafezgBz+uyDsmMPhQ
+ f98riDKGlTuJEUQe1LSTJLx10wG9b3181sdYTUJ7n0vOuQKmiweZIxTzoFLqqkHF/dad
+ syADFaXwzV0a7x1iR/1CTit/Smydf7sfG9jvDHtxV06ctQeUQO4Wlby5aXkxJt8sY1sn
+ 8cHA==
+X-Gm-Message-State: AOAM530MWTwkajoxeLSKOvurEh7o11gd5uVdhgYAvG74vV01gIffL9D2
+ LqM8WvWFXfkw+ajCvlXgN0VeDA==
+X-Google-Smtp-Source: ABdhPJzlZUhxovAfWJU6AM4joByBcaCE6DP0XKdwA0weM+mLByskkNrau/g+/nJe8iuBfpPiTSD4tw==
+X-Received: by 2002:a63:d048:: with SMTP id s8mr13866840pgi.171.1597776319942; 
+ Tue, 18 Aug 2020 11:45:19 -0700 (PDT)
+Received: from ub-XPS-13-9350.pdxnet.pdxeng.ch ([49.37.132.72])
+ by smtp.gmail.com with ESMTPSA id i14sm14459022pfu.50.2020.08.18.11.45.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Aug 2020 11:45:19 -0700 (PDT)
+From: Jagan Teki <jagan@amarulasolutions.com>
+To: Rob Herring <robh+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] arm64: dts: rockchip: Fix power routing to support POE
+Date: Wed, 19 Aug 2020 00:15:05 +0530
+Message-Id: <20200818184505.30064-1-jagan@amarulasolutions.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20200815125112.462652-2-maz@kernel.org>
- <20200815232228.GA1325245@bjorn-Precision-5520>
- <87pn7qnabq.wl-maz@kernel.org>
- <CAL_Jsq+fDNa60+6+s9MwVjUFUPAuc43+uMx4Fm2nZhUgrV7LEg@mail.gmail.com>
- <e2cde177e82fbdf158732ad73ccdc6c5@kernel.org>
- <CAL_JsqL1_d2grS3Pz6NNeVAOMPbx_hAe+MrseQeQp=bHRQ7rfQ@mail.gmail.com>
- <72c10e43023289b9a4c36226fe3fd5d9@kernel.org>
-In-Reply-To: <72c10e43023289b9a4c36226fe3fd5d9@kernel.org>
-From: Saravana Kannan <saravanak@google.com>
-Date: Tue, 18 Aug 2020 10:48:54 -0700
-Message-ID: <CAGETcx-hkz8fyAHuhRi=JhBFu4YUmL2UpHfgs7doLHK-RdKA0A@mail.gmail.com>
-Subject: Re: [PATCH 1/2] PCI: rockchip: Work around missing device_type
- property in DT
-To: Marc Zyngier <maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200818_134934_844560_469B6856 
-X-CRM114-Status: GOOD (  42.96  )
+X-CRM114-CacheID: sfid-20200818_144526_492370_E593FB08 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,145 +92,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Heiko Stuebner <heiko@sntech.de>, PCI <linux-pci@vger.kernel.org>,
- Shawn Lin <shawn.lin@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Bjorn Helgaas <helgaas@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Android Kernel Team <kernel-team@android.com>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Jagan Teki <jagan@amarulasolutions.com>,
+ Suniel Mahesh <sunil@amarulasolutions.com>,
+ Michael Trimarchi <michael@amarulasolutions.com>,
+ linux-amarula <linux-amarula@amarulasolutions.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 18, 2020 at 10:34 AM Marc Zyngier <maz@kernel.org> wrote:
->
-> On 2020-08-18 15:23, Rob Herring wrote:
-> > On Tue, Aug 18, 2020 at 1:35 AM Marc Zyngier <maz@kernel.org> wrote:
-> >>
-> >> On 2020-08-17 17:12, Rob Herring wrote:
-> >> > On Sun, Aug 16, 2020 at 4:40 AM Marc Zyngier <maz@kernel.org> wrote:
-> >> >>
-> >> >> On Sun, 16 Aug 2020 00:22:28 +0100,
-> >> >> Bjorn Helgaas <helgaas@kernel.org> wrote:
-> >> >> >
-> >> >> > On Sat, Aug 15, 2020 at 01:51:11PM +0100, Marc Zyngier wrote:
-> >> >> > > Recent changes to the DT PCI bus parsing made it mandatory for
-> >> >> > > device tree nodes describing a PCI controller to have the
-> >> >> > > 'device_type = "pci"' property for the node to be matched.
-> >> >> > >
-> >> >> > > Although this follows the letter of the specification, it
-> >> >> > > breaks existing device-trees that have been working fine
-> >> >> > > for years.  Rockchip rk3399-based systems are a prime example
-> >> >> > > of such collateral damage, and have stopped discovering their
-> >> >> > > PCI bus.
-> >> >> > >
-> >> >> > > In order to paper over the blunder, let's add a workaround
-> >> >> > > to the pcie-rockchip driver, adding the missing property when
-> >> >> > > none is found at boot time. A warning will hopefully nudge the
-> >> >> > > user into updating their DT to a fixed version if they can, but
-> >> >> > > the insentive is obviously pretty small.
-> >> >> >
-> >> >> > s/insentive/incentive/ (Lorenzo or I can fix this up)
-> >> >> >
-> >> >> > > Fixes: 2f96593ecc37 ("of_address: Add bus type match for pci ranges parser")
-> >> >> > > Suggested-by: Roh Herring <robh+dt@kernel.org>
-> >> >> >
-> >> >> > s/Roh/Rob/ (similarly)
-> >> >>
-> >> >> Clearly not my day when it comes to proofreading commit messages.
-> >> >> Thanks for pointing this out, and in advance for fixing it up.
-> >> >>
-> >> >> >
-> >> >> > > Signed-off-by: Marc Zyngier <maz@kernel.org>
-> >> >> >
-> >> >> > This looks like a candidate for v5.9, since 2f96593ecc37 was merged
-> >> >> > during the v5.9 merge window, right?
-> >> >>
-> >> >> Absolutely.
-> >> >>
-> >> >> > I wonder how many other DTs are similarly broken?  Maybe Rob's DT
-> >> >> > checker has already looked?
-> >> >>
-> >> >> I've just managed to run the checker, which comes up with all kinds of
-> >> >> goodies. Apart from the above, it also spots the following:
-> >> >>
-> >> >> - arch/arm64/boot/dts/mediatek/mt7622.dtsi: Has a device_type property
-> >> >>   in its main PCIe node, but not in the child nodes. It isn't obvious
-> >> >>   to me whether that's a violation or not (the spec doesn't say
-> >> >>   whether the property should be set on a per-port basis). Rob?
-> >> >
-> >> > The rule is bridge nodes should have 'device_type = "pci"'. But what's
-> >> > needed to fix these cases is setting device_type where we are parsing
-> >> > ranges or dma-ranges which we're not doing on the child ndes.
-> >> > Otherwise, I don't think it matters in this case unless you have child
-> >> > (grandchild here) nodes for PCI devices. If you did have child nodes,
-> >> > the address translation was already broken before this change.
-> >>
-> >> Fair enough.
-> >>
-> >> >> - arch/arm64/boot/dts/qcom/msm8996.dtsi: Only one out of the three
-> >> >>   PCIe nodes has the device_type property, probably broken similarly
-> >> >>   to rk3399.
-> >> >
-> >> > The only upstream board is DB820c, so probably not as wide an impact...
-> >> >
-> >> > There are also 92 (lots of duplicates due to multiple boards) more
-> >> > cases in arch/arm/. A log is here[1].
-> >>
-> >> Mostly Broadcom stuff, apparently. I'll see if I can have a stab
-> >> at it (although someone will have to test it).
-> >>
-> >> >
-> >> >> I could move the workaround to drivers/pci/of.c, and have it called
-> >> >> from the individual drivers. I don't have the HW to test those though.
-> >> >>
-> >> >> Thoughts?
-> >> >
-> >> > I think we should go with my other suggestion of looking at the node
-> >> > name. Looks like just checking 'pcie' is enough. We can skip 'pci' as
-> >> > I don't see any cases.
-> >>
-> >> I really dislike it.
-> >>
-> >> Once we put this node name matching in, there is no incentive for
-> >> people to write their DT correctly at all. It also sound pretty
-> >> fragile (what if the PCIe node is named something else?).
-> >
-> > That would require 2 wrongs. Both missing device_type and wrong node
-> > name. You could still warn if we matched on node name.
->
-> OK. So how about something like this?
->
-> diff --git a/drivers/of/address.c b/drivers/of/address.c
-> index 590493e04b01..a7a6ee599b14 100644
-> --- a/drivers/of/address.c
-> +++ b/drivers/of/address.c
-> @@ -134,9 +134,13 @@ static int of_bus_pci_match(struct device_node *np)
->          * "pciex" is PCI Express
->          * "vci" is for the /chaos bridge on 1st-gen PCI powermacs
->          * "ht" is hypertransport
-> +        *
-> +        * If none of the device_type match, and that the node name is
-> +        * "pcie", accept the device as PCI (with a warning).
->          */
->         return of_node_is_type(np, "pci") || of_node_is_type(np, "pciex") ||
-> -               of_node_is_type(np, "vci") || of_node_is_type(np, "ht");
-> +               of_node_is_type(np, "vci") || of_node_is_type(np, "ht") ||
-> +               WARN_ON_ONCE(of_node_name_eq(np, "pcie"));
+When POE used, the current power routing is failing to power-up
+the PMIC regulators which cause Linux boot hangs.
 
-I don't think we need the _ONCE. Otherwise, it'd warn only for the
-first device that has this problem.
+This patch is trying to update the power routing in order to
+support Type C0 and POE powering methods.
 
-How about?
-WARN(of_node_name_eq(np, "pcie"), "Missing device type in %pOF", np)
+As per the schematics, sys_12v is a common output power regulator
+when type c and POE power being used. sys_12v is supplied by dc_12v
+which is supplied from MP8859 in type c0 power routing and sys_12v
+is supplied by MP8009 PoE PD in POE power supply routing.
 
-That'll even tell them which node is bad.
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+Tested-by: Suniel Mahesh <sunil@amarulasolutions.com>
+---
+ .../dts/rockchip/rk3399-roc-pc-mezzanine.dts   | 18 ++++++++++++++++--
+ .../arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi | 12 ++++++++++--
+ 2 files changed, 26 insertions(+), 4 deletions(-)
 
--Saravana
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
+index 2acb3d500fb9..754627d97144 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts
+@@ -11,6 +11,16 @@ / {
+ 	model = "Firefly ROC-RK3399-PC Mezzanine Board";
+ 	compatible = "firefly,roc-rk3399-pc-mezzanine", "rockchip,rk3399";
+ 
++	/* MP8009 PoE PD */
++	poe_12v: poe-12v {
++		compatible = "regulator-fixed";
++		regulator-name = "poe_12v";
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <12000000>;
++		regulator-max-microvolt = <12000000>;
++	};
++
+ 	vcc3v3_ngff: vcc3v3-ngff {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc3v3_ngff";
+@@ -22,7 +32,7 @@ vcc3v3_ngff: vcc3v3-ngff {
+ 		regulator-boot-on;
+ 		regulator-min-microvolt = <3300000>;
+ 		regulator-max-microvolt = <3300000>;
+-		vin-supply = <&dc_12v>;
++		vin-supply = <&sys_12v>;
+ 	};
+ 
+ 	vcc3v3_pcie: vcc3v3-pcie {
+@@ -34,10 +44,14 @@ vcc3v3_pcie: vcc3v3-pcie {
+ 		pinctrl-0 = <&vcc3v3_pcie_en>;
+ 		regulator-min-microvolt = <3300000>;
+ 		regulator-max-microvolt = <3300000>;
+-		vin-supply = <&dc_12v>;
++		vin-supply = <&sys_12v>;
+ 	};
+ };
+ 
++&sys_12v {
++	vin-supply = <&poe_12v>;
++};
++
+ &pcie_phy {
+ 	status = "okay";
+ };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+index b85ec31cd283..e7a459fa4322 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+@@ -110,6 +110,14 @@ vcc_vbus_typec0: vcc-vbus-typec0 {
+ 		regulator-max-microvolt = <5000000>;
+ 	};
+ 
++	sys_12v: sys-12v {
++		compatible = "regulator-fixed";
++		regulator-name = "sys_12v";
++		regulator-always-on;
++		regulator-boot-on;
++		vin-supply = <&dc_12v>;
++	};
++
+ 	/* switched by pmic_sleep */
+ 	vcc1v8_s3: vcca1v8_s3: vcc1v8-s3 {
+ 		compatible = "regulator-fixed";
+@@ -141,7 +149,7 @@ vcc3v3_sys: vcc3v3-sys {
+ 		regulator-boot-on;
+ 		regulator-min-microvolt = <3300000>;
+ 		regulator-max-microvolt = <3300000>;
+-		vin-supply = <&dc_12v>;
++		vin-supply = <&sys_12v>;
+ 	};
+ 
+ 	vcca_0v9: vcca-0v9 {
+@@ -186,7 +194,7 @@ vcc_sys: vcc-sys {
+ 		regulator-boot-on;
+ 		regulator-min-microvolt = <5000000>;
+ 		regulator-max-microvolt = <5000000>;
+-		vin-supply = <&dc_12v>;
++		vin-supply = <&sys_12v>;
+ 	};
+ 
+ 	vdd_log: vdd-log {
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
