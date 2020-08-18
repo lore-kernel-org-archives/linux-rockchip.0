@@ -2,87 +2,65 @@ Return-Path: <SRS0=2LhI=B4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 28A79C433E1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 14:37:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D4EE3C433DF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 14:53:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EAD15207DA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 14:37:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9A99F2080C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 14:53:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OphNe9t1";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="uCU2VExU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EAD15207DA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mIpQmqE/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9A99F2080C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AoBwuWuKdDE2sWTnyu3ARJsRGR/8/ZKC4rDIaGCR4d0=; b=OphNe9t1u+S06gSgTMvOyMQTww
-	uBKJpjIRDSkJb4BjrmH2wLKVupPLJ2C3n9uMndgWwJGOyblObOyZ661bs26uuZTEy2yG7ZTTlYCiW
-	nQOB7qka+TF0U4ckm45jAF976jygQo8Sz7ymYni/kuZ5wpxc2iHkFbOS2mWxIZiSdYV0sY37odouD
-	yAV1ba3+Mp6kNRFuV2UNpxjWEJrSN5dgE8Rbdmh4OwWPpLJB7IHcZKlm6rZ+0YF69rqzswy/+8XN2
-	32bDwCBG0eIBPfgca5arPGUsKEE4KNEcQvP44jkawJ9gxxCwzlMIGP8oZZU7Xw+2bDb0d610dFIEJ
-	dwe3SLoQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=1m+YwIoBajV6ZqTCoBRP+2QQBmtdeE+wv90+Ul4wNfU=; b=mIpQmqE/esG/iN62U0oMXUlkw
+	76/T9n3Bc7NYt7mQPF5WYPEFQX30XAKTHrBtqcBjalAVSbpJBKNq4hAk/0QpwO3/n1RBJAcEEwz6b
+	XR3308d/Cp1YjYPUOdo1TDRTDwWcsp56tUT/ADzXfZNlZ/KGOPIE1/Rhv6Bl8mlh7Ij0F37+Ca/ko
+	xboOiH3KJgDP1wBMORAWlqtcoJrUUJen1FNh3K4HUOeGCJ0hhnA2GUgon4UmNENzMtdXvQg3knN1z
+	a/XHjoX6O+d9XMg474nr90FIlCniY8dqMp4SPUcgVS0GSCYKD4XErwJJS/gKEuOQjR5p/pvO/ZmMy
+	nm25KukVg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k82kF-0008SJ-Hf; Tue, 18 Aug 2020 14:37:47 +0000
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k82k6-0008NY-Vf; Tue, 18 Aug 2020 14:37:39 +0000
-Received: by mail-ej1-x644.google.com with SMTP id qc22so22369361ejb.4;
- Tue, 18 Aug 2020 07:37:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=qW/vPODydHKoIxWkakc/8MljLCi8kAbWI/+HlLycii8=;
- b=uCU2VExUgkOdf0CSnU7p7Lwj0HwQv0QnvrEuM3Q4DtTmfgcqJv7lIMg6wtWsqdRNtr
- g5qApET1RisUjddrmMDVQXhqZkK6RUrIg+S1ft2ZwrIEdCpyOHTTzGA/R5EGMsKRwzj4
- SsCX3rMM8bGiFd+wOqh1oFq4CbRFWaVCVBrrUQDeKee+Pz58Bzul52OIZy27Wlrou1/g
- ECjwdYXY1HW5YzJlKL4uu7XevB8c/LCNUHqQtYNviTU3EXem5NfnQcAJiDbq94SJ3owE
- fDqvczWzkV4IwcqGoE3pAqhNbOppeAUqbJV6zwa33ANkAs+92H9Szw3wOmS0e3n3/6YG
- 3HNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=qW/vPODydHKoIxWkakc/8MljLCi8kAbWI/+HlLycii8=;
- b=fnplK6dqyz7YpROuACAu028jDgsW0LWrzJkWKC4zJ5rYohGSE74ViqOMyClNeVpEQF
- yXxIm9BHWiP9hUuADj2vOBYv8DIDJPuvjjWQzy/DsJ12H68iIP73lscAiKpL1F/+RzRE
- wOzOvDXpeePe9z2an6ZFI/LH+zRXGvtsV6GgJhyhR6iXbG1s/oX8e33SjGnOgdyJDgP8
- 2lyhTRUcj3MDJqh1Bcec3VEsNQHH7RR1otitg94miaFX5Ti1CuPfXGTs7z8vosjoXG/E
- TYzzdPgOYX1ZFX9AO3yLhO+MNMhvmjg5XsegV2dQ8c64pYhh9sxShhAPEBeHhy/Acelt
- ZVWA==
-X-Gm-Message-State: AOAM5335qkvozLWFBcErvFSK+f+30l/HkglYToVyVWVc6+l2Z8+CAEOK
- P76dkSnEwmdDmm6vCUBswJQ=
-X-Google-Smtp-Source: ABdhPJwoKdEOnV0Xt2tgEw82my/fzFI9XtM+fHHICmtVeMhwZPUpUjoZ/RyxXNw3xpoCDJrZ+yHTpw==
-X-Received: by 2002:a17:906:a18e:: with SMTP id
- s14mr20008133ejy.168.1597761456090; 
- Tue, 18 Aug 2020 07:37:36 -0700 (PDT)
-Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id r25sm16222575edy.93.2020.08.18.07.37.35
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 18 Aug 2020 07:37:35 -0700 (PDT)
-From: Johan Jonker <jbx6244@gmail.com>
-To: heiko@sntech.de
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: change fallback string rockchip,
- rk3308-spdif
-Date: Tue, 18 Aug 2020 16:37:27 +0200
-Message-Id: <20200818143727.5882-2-jbx6244@gmail.com>
-X-Mailer: git-send-email 2.11.0
-In-Reply-To: <20200818143727.5882-1-jbx6244@gmail.com>
-References: <20200818143727.5882-1-jbx6244@gmail.com>
+	id 1k82zc-0003iJ-Nn; Tue, 18 Aug 2020 14:53:40 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1k82zZ-0003hV-Ky; Tue, 18 Aug 2020 14:53:38 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 908A631B;
+ Tue, 18 Aug 2020 07:53:33 -0700 (PDT)
+Received: from [10.57.40.122] (unknown [10.57.40.122])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C4F253F66B;
+ Tue, 18 Aug 2020 07:53:31 -0700 (PDT)
+Subject: Re: [PATCH v2 2/4] usb: dwc3: of-simple: Add compatible for rk3328
+To: travelvia@airmail.cc, robh+dt@kernel.org, heiko@sntech.de,
+ balbi@kernel.org, gregkh@linuxfoundation.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org
+References: <20200817031114.6107-1-travelvia@airmail.cc>
+ <20200817031114.6107-2-travelvia@airmail.cc>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <8dd853c0-c908-9d2f-fabf-c8f4c97b37e1@arm.com>
+Date: Tue, 18 Aug 2020 15:53:31 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
+MIME-Version: 1.0
+In-Reply-To: <20200817031114.6107-2-travelvia@airmail.cc>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200818_103739_047152_1EE6B7DD 
-X-CRM114-Status: GOOD (  16.55  )
+X-CRM114-CacheID: sfid-20200818_105337_757914_083288D4 
+X-CRM114-Status: GOOD (  22.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,54 +73,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
- lgirdwood@gmail.com, robh+dt@kernel.org, linux-kernel@vger.kernel.org,
- sugar.zhang@rock-chips.com, linux-rockchip@lists.infradead.org,
- broonie@kernel.org, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: Cameron Nemo <cnemo@tutanota.com>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-A test with the command below shows that the compatible string
+On 2020-08-17 04:11, travelvia@airmail.cc wrote:
+> From: Cameron Nemo <cnemo@tutanota.com>
+> 
+> Add a compatible to be hooked into by the Rockchip rk3328 device tree.
+> 
+> The rk3399 compatible cannot be reused because the rk3328 SoCs may
+> require a specialized driver in the future, and old device trees must
+> remain compatible with newer kernels.
+> 
+> Signed-off-by: Cameron Nemo <cnemo@tutanota.com>
+> ---
+>   drivers/usb/dwc3/dwc3-of-simple.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/usb/dwc3/dwc3-of-simple.c b/drivers/usb/dwc3/dwc3-of-simple.c
+> index 7df115012935..68d6e4fa0c6a 100644
+> --- a/drivers/usb/dwc3/dwc3-of-simple.c
+> +++ b/drivers/usb/dwc3/dwc3-of-simple.c
+> @@ -49,7 +49,8 @@ static int dwc3_of_simple_probe(struct platform_device *pdev)
+>   	 * Some controllers need to toggle the usb3-otg reset before trying to
+>   	 * initialize the PHY, otherwise the PHY times out.
+>   	 */
+> -	if (of_device_is_compatible(np, "rockchip,rk3399-dwc3"))
+> +	if (of_device_is_compatible(np, "rockchip,rk3328-dwc3") ||
 
-"rockchip,rk3308-spdif", "rockchip,rk3328-spdif"
+Is this necessary? Even downstream there's no reset control in the DT, 
+so I can't see that it achieves anything.
 
-is already in use, but is not added to a document.
-The current fallback string "rockchip,rk3328-spdif" points to a data
-set enum RK_SPDIF_RK3366 in rockchip_spdif.c that is not used both
-in the mainline as in the manufacturer kernel.
-(Of the enum only RK_SPDIF_RK3288 is used.)
-So if the properties don't change we might as well use the first SoC
-in line as fallback string and add the description for rk3308 as:
+Robin.
 
-"rockchip,rk3308-spdif", "rockchip,rk3066-spdif"
-
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
-
-Signed-off-by: Johan Jonker <jbx6244@gmail.com>
----
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index e8b754d41..2560b9877 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -574,7 +574,7 @@
- 	};
- 
- 	spdif_tx: spdif-tx@ff3a0000 {
--		compatible = "rockchip,rk3308-spdif", "rockchip,rk3328-spdif";
-+		compatible = "rockchip,rk3308-spdif", "rockchip,rk3066-spdif";
- 		reg = <0x0 0xff3a0000 0x0 0x1000>;
- 		interrupts = <GIC_SPI 55 IRQ_TYPE_LEVEL_HIGH>;
- 		clocks = <&cru SCLK_SPDIF_TX>, <&cru HCLK_SPDIFTX>;
--- 
-2.11.0
-
+> +	    of_device_is_compatible(np, "rockchip,rk3399-dwc3"))
+>   		simple->need_reset = true;
+>   
+>   	simple->resets = of_reset_control_array_get(np, false, true,
+> @@ -171,6 +172,7 @@ static const struct dev_pm_ops dwc3_of_simple_dev_pm_ops = {
+>   };
+>   
+>   static const struct of_device_id of_dwc3_simple_match[] = {
+> +	{ .compatible = "rockchip,rk3328-dwc3" },
+>   	{ .compatible = "rockchip,rk3399-dwc3" },
+>   	{ .compatible = "xlnx,zynqmp-dwc3" },
+>   	{ .compatible = "cavium,octeon-7130-usb-uctl" },
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
