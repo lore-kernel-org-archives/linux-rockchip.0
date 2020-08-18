@@ -2,121 +2,56 @@ Return-Path: <SRS0=2LhI=B4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,NICE_REPLY_A,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D2664C433E3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 07:58:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4181C433DF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 08:18:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 93B80206B5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 07:58:20 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7FAA9206B5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 08:18:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tJo2+y/3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amdcloud.onmicrosoft.com header.i=@amdcloud.onmicrosoft.com header.b="zbCYQdEV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93B80206B5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amd.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TWgzeTKW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7FAA9206B5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dJkuYR14G8MmDf/U8D6IDU18JGnRrRYBcE9z7I7Cc1Q=; b=tJo2+y/3uLmCTFcWb9DCThvcm
-	9oJvA0mxhO0RDvyMwAEpw4mxNJtcr2nghubmXPJzvL42R6kI4fX7wlbshi0R2CLrCoOkg3bFHebzm
-	yyyrVpHuLe0Jz/iTkc2ORJ1A1nGrxazso0rM0qaOaG51zbUv5tnZrWthIJpBRKWpIK6n3qLziujgI
-	Lh8//riWxo4i1RxXwnL5gopTCUu1xvGHNa/VAkEkDz8TTW1oXB1JtMmJjuLUBXl+YmhVmrkf1EU2/
-	2yGjgZxzfqsFFkP2CwoGkTKLivy6aq6qQLSWv4Lk9lXgIwzECKOw3R9LO/B5dVcZQVZ8DAiCFqxlt
-	f4ew+bcWw==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=drhZHH+IAbWb8d+X4qrZgh1xgwkRirAJWEdA83T/6mg=; b=TWgzeTKWqa9iAI3DE2PCL7ejz1
+	ZN8npu2ACzryqsNkLKjwvTW5IltyAP1FKMH/8IM0Iw3mhuaiD2Le6PC6+J9odXHyQlCf+wFptj+Ie
+	Wmlw5GpPdrYoBDZOAhYJ8xDYssKe4uQlK1dviExkuaRioUkt19oG+sx9qYWCdwAeqDGlEz0iVBrY0
+	A2yFRYrdQp950ovlR57b8p3PhZUMlLAsDHFJ9g24ZSsxSOVyS0NQz6UcrKE2CgrcbBtYAQcOtLuMK
+	e0Gs7mxUmUnz3phQgh1U59cMhgzok1tmKGpyV0zDHXz/xpqLFicNWZG3GR9M9tkCV26hqSFt5+/lx
+	C1q4nh7Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7wVc-0001yH-9U; Tue, 18 Aug 2020 07:58:16 +0000
-Received: from mail-bn7nam10on2088.outbound.protection.outlook.com
- ([40.107.92.88] helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+	id 1k7wp3-0004BC-OH; Tue, 18 Aug 2020 08:18:21 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7wVX-0001wz-C4; Tue, 18 Aug 2020 07:58:12 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eZs8fIUbZD7GbH+Wq+6a5fpD6XsRqDl8h3dY4m1woQBlu19iIha4EiWF9Kdm+1hg0im+r5Di/6K6hcEZJ7ZSVRRKtAma+/2zRpOyoUhHvT5aFDCmYfL6y2go7sWo6p7mjU7rmepCzBYwMUt4TEdXJft6cBhvgUG4XGXS+uLuJmC9wHzPFY2iWzPOjrSvcKz9Py7WWNuR85YWw5F2iKmnvhfmEJzx09a931xBisP/7M3qbjUq6kWy8O7fAEKx+jQai7jcYaesFMjUqvdoxVE06cyZKFMAjvfWN9m7Es2z2SwkIQQChJlIs5fBvFilIAVwgSjQAFThXqbWHi++ILINjw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7EK3lX3GavvNjO3+ZjPDvyQVZn6K0CH5jRYSdwxdRs8=;
- b=fE3zIDS4LX2Ku9CxkxQjK1CKVhYq3m0Zjoo4ZLh8V4MDhYiHKCzR2KTCtQLNX9AmaDmHWEwi8iyE5nfCtx9WX52QHH76kvFbn68wIYd1jYID8yVLWV8z2x9spyjpRSNQ172ZxRT8kM68dWuDH8sXAE4ICxrXrPAnGTu8i/QAh8uAfj66kpnaUc9Gd89rGimUNgZ+g/gNLv8RVURsDZb4X05YzVY0RfuX70Xits8o/KSS6AHxSN4WH4zHt+pAx1bAdfQLAOMGmrpZkz4YS4DKztNA2lVXf1gfYfyYkiAltc9lWxdab63bNkqtbN8iAJY9hQygMbNazReCWpyDHZNFUA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amdcloud.onmicrosoft.com; s=selector2-amdcloud-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7EK3lX3GavvNjO3+ZjPDvyQVZn6K0CH5jRYSdwxdRs8=;
- b=zbCYQdEVC3hKC33YhhQECD43R9+w4pQ4Nq8irQ4eXhiYboCF7Ps372F/ysmOC8EagGhR/QDnUrPE9Qs9YNsQ6GWagmwpK0TDLMudkeF6Ftt6p3RHpRjHp1l5OrNxBmdx74ZKayKgsyjuXNckBLTsbTT5SumN1Zvm8Gzpf8AzRyI=
-Authentication-Results: lists.xenproject.org; dkim=none (message not signed)
- header.d=none;lists.xenproject.org; dmarc=none action=none
- header.from=amd.com;
-Received: from MN2PR12MB3775.namprd12.prod.outlook.com (2603:10b6:208:159::19)
- by MN2PR12MB3696.namprd12.prod.outlook.com (2603:10b6:208:169::27)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3283.16; Tue, 18 Aug
- 2020 07:58:06 +0000
-Received: from MN2PR12MB3775.namprd12.prod.outlook.com
- ([fe80::a16e:8812:b4c0:918d]) by MN2PR12MB3775.namprd12.prod.outlook.com
- ([fe80::a16e:8812:b4c0:918d%6]) with mapi id 15.20.3283.028; Tue, 18 Aug 2020
- 07:58:06 +0000
-Subject: Re: [PATCH 1/2] drm: allow limiting the scatter list size.
-To: Gerd Hoffmann <kraxel@redhat.com>, dri-devel@lists.freedesktop.org
-References: <20200818074828.9509-1-kraxel@redhat.com>
- <20200818074828.9509-2-kraxel@redhat.com>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <9c355d64-1a61-eb59-be80-d9fc863ddf22@amd.com>
-Date: Tue, 18 Aug 2020 09:57:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-In-Reply-To: <20200818074828.9509-2-kraxel@redhat.com>
-Content-Language: en-US
-X-ClientProxiedBy: AM0PR04CA0061.eurprd04.prod.outlook.com
- (2603:10a6:208:1::38) To MN2PR12MB3775.namprd12.prod.outlook.com
- (2603:10b6:208:159::19)
-MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from [IPv6:2a02:908:1252:fb60:be8a:bd56:1f94:86e7]
- (2a02:908:1252:fb60:be8a:bd56:1f94:86e7) by
- AM0PR04CA0061.eurprd04.prod.outlook.com (2603:10a6:208:1::38) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.3283.15 via Frontend Transport; Tue, 18 Aug 2020 07:58:02 +0000
-X-Originating-IP: [2a02:908:1252:fb60:be8a:bd56:1f94:86e7]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: 36acc88a-ea0c-4a23-69c9-08d8434c7067
-X-MS-TrafficTypeDiagnostic: MN2PR12MB3696:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MN2PR12MB36969E49B6CBE62456F3C3FF835C0@MN2PR12MB3696.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:5797;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: jJICQZ3vvUC4qYRzVNIOVqMXwL/+LNv5lZtjFzTQjNwObH0kgjsE7yvI2pxg4XO5NBuwnR7kd3VESzYYGrad9apkwXaN69Hg75mKzwJbp4nOqNpOZGtve4KZEfzl8GtCiwL2tyJqPuyo5iXRIVJSxx/HMRSobk+JfFm2SLbNIwMFYUwo6eJeD/WckmWYC86bgM6Iu559vakJ4aAZMixOM3IY+sTfcWjtO1/fn7EvgwtAlJPpVzSZO0H1U2gF1lytAGJPedJKLftV+d26QTVaNYJwYISy2IMpyhxwcOZKhEq9kNwlNB590qR2H4sBoRAApHJoMxIFPJTp/hgfe8CY0OKUFDaAQBEXPrz6j8rRs8Z1M6Ai2U/5snLsd2ENMfCF
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB3775.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(396003)(376002)(136003)(346002)(366004)(39860400002)(31696002)(186003)(8676002)(478600001)(2616005)(86362001)(52116002)(66476007)(83380400001)(66556008)(66946007)(54906003)(8936002)(31686004)(5660300002)(316002)(36756003)(16526019)(4326008)(7416002)(2906002)(6666004)(30864003)(6486002)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData: 09Pu6O3+2dUkDSYKZtIndy6NYcL9CdYi/HAycGaO4ooDsRNLJg0RJxl6jmYSi1bX0o4mDR0IMW7IAz+6pbjkSGVzK6g26HcOLzr1RT/fs5J/F4HbZz8y5SKDv2gcI7Jg3GPV8N146v7po4R4DrZITRZqrQe/QAUdmNQtLUfTs3gt3xDElNe8T09Rv7j2SGDoYOH/UvnIxNv8VNqG6TQzVhUGDqxpjoRo8h8HpEQCZ607DbpyhW23gK6tmnxSBTng/sC6f+T6IMEc4Y+zdDSqv1UJxG5NeHyrNHBPFyaI9GE30uI350ZEuP+xUiMbWOUOHNlC4R5ME60+iq6sbpHExL/zQQvIq9sSBFiIFoPS1nGI4GQ1ztAgvUPpIdTi+u8YPebhrYUMbu6XrDGpbU1DyWByO9i38lEJNhX5JiP8gX9QF1oO7HSebvPcIho3qvj0sNhtLFCkaXG1yL0ijQY9RmozJmQbd2XRiSlsQOb2V3cuZWsIW+czaZ7Oyci9XiE/HWAU15iCBkcPsOTZEYNb6c73N2I5qesFpIYWpnxlYKDyxhEMnwAGxnK6k5L8TZP4q5ItU4HutfU+uPHIRChEKMIJ/to7Tgb71yxf4u7SMshFRfbmm533e0ZWWDmzHnldBl5n0rrTpXEK8pGYa15EcSf6LHUkZYLaQGe3itrAbIAQSEzVdsv5gRcRgiaEkVRPsJurA7FUHwJA1hUgxX6fIQ==
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 36acc88a-ea0c-4a23-69c9-08d8434c7067
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3775.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Aug 2020 07:58:05.8774 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Z4VJmiF3KGPP5fNKMfyzPdSkIDfSPdlh7Bt+1JDU+qYuLI5f6uclcHajsFQnLHmO
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB3696
+ id 1k7woz-00044W-Cj
+ for linux-rockchip@lists.infradead.org; Tue, 18 Aug 2020 08:18:18 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id 13EAB29900B
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+To: linux-media@vger.kernel.org
+Subject: [PATCH v6 1/6] media: Documentation: v4l: move table of
+ v4l2_pix_format(_mplane) flags to pixfmt-v4l2.rst
+Date: Tue, 18 Aug 2020 10:18:01 +0200
+Message-Id: <20200818081807.23134-2-dafna.hirschfeld@collabora.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200818081807.23134-1-dafna.hirschfeld@collabora.com>
+References: <20200818081807.23134-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200818_035811_570166_85E7E442 
-X-CRM114-Status: GOOD (  29.30  )
+X-CRM114-CacheID: sfid-20200818_041817_542201_694C5F23 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -129,310 +64,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>,
- "open list:DRM DRIVER FOR NVIDIA GEFORCE/QUADRO GPUS"
- <nouveau@lists.freedesktop.org>, Sandy Huang <hjc@rock-chips.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>,
- "open list:RADEON and AMDGPU DRM DRIVERS" <amd-gfx@lists.freedesktop.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- Ben Skeggs <bskeggs@redhat.com>, Russell King <linux+etnaviv@armlinux.org.uk>,
- "moderated list:DRM DRIVERS FOR XEN" <xen-devel@lists.xenproject.org>,
- Daniel Vetter <daniel@ffwll.ch>,
- "open list:DRM DRIVER FOR MSM ADRENO GPU" <linux-arm-msm@vger.kernel.org>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- "moderated list:DRM DRIVERS FOR VIVANTE GPU IP"
- <etnaviv@lists.freedesktop.org>, Maxime Ripard <mripard@kernel.org>,
- Christian Gmeiner <christian.gmeiner@gmail.com>,
- "open list:DRM DRIVERS FOR NVIDIA TEGRA" <linux-tegra@vger.kernel.org>,
- Sean Paul <sean@poorly.run>, "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>, Rob Clark <robdclark@gmail.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Alex Deucher <alexander.deucher@amd.com>,
- "open list:DRM DRIVER FOR MSM ADRENO GPU" <freedreno@lists.freedesktop.org>,
- Lucas Stach <l.stach@pengutronix.de>
+Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
+ tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
+ helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
+ sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am 18.08.20 um 09:48 schrieb Gerd Hoffmann:
-> Add max_segment argument to drm_prime_pages_to_sg().  When set pass it
-> through to the __sg_alloc_table_from_pages() call, otherwise use
-> SCATTERLIST_MAX_SEGMENT.
->
-> Also add max_segment field to gem objects and pass it to
-> drm_prime_pages_to_sg() calls in drivers and helpers.
->
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+The table of the flags of the structs
+v4l2_pix_format(_mplane) is currently in pixfmt-reserved.rst
+which is wrong, it should be in pixfmt-v4l2.rst
 
-I'm missing an explanation why this should be useful (it certainly is).
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+ .../userspace-api/media/v4l/pixfmt-reserved.rst | 17 -----------------
+ .../userspace-api/media/v4l/pixfmt-v4l2.rst     | 17 +++++++++++++++++
+ .../media/videodev2.h.rst.exceptions            |  2 +-
+ 3 files changed, 18 insertions(+), 18 deletions(-)
 
-And the maximum segment size seems misplaced in the GEM object. This is 
-usually a property of the device or even completely constant.
-
-Christian.
-
-> ---
->   include/drm/drm_gem.h                       |  8 ++++++++
->   include/drm/drm_prime.h                     |  3 ++-
->   drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c |  3 ++-
->   drivers/gpu/drm/drm_gem_shmem_helper.c      |  3 ++-
->   drivers/gpu/drm/drm_prime.c                 | 10 +++++++---
->   drivers/gpu/drm/etnaviv/etnaviv_gem.c       |  3 ++-
->   drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c |  3 ++-
->   drivers/gpu/drm/msm/msm_gem.c               |  3 ++-
->   drivers/gpu/drm/msm/msm_gem_prime.c         |  3 ++-
->   drivers/gpu/drm/nouveau/nouveau_prime.c     |  3 ++-
->   drivers/gpu/drm/radeon/radeon_prime.c       |  3 ++-
->   drivers/gpu/drm/rockchip/rockchip_drm_gem.c |  6 ++++--
->   drivers/gpu/drm/tegra/gem.c                 |  3 ++-
->   drivers/gpu/drm/vgem/vgem_drv.c             |  3 ++-
->   drivers/gpu/drm/xen/xen_drm_front_gem.c     |  3 ++-
->   15 files changed, 43 insertions(+), 17 deletions(-)
->
-> diff --git a/include/drm/drm_gem.h b/include/drm/drm_gem.h
-> index 337a48321705..dea5e92e745b 100644
-> --- a/include/drm/drm_gem.h
-> +++ b/include/drm/drm_gem.h
-> @@ -241,6 +241,14 @@ struct drm_gem_object {
->   	 */
->   	size_t size;
->   
-> +	/**
-> +	 * @max_segment:
-> +	 *
-> +	 * Max size for scatter list segments.  When unset the default
-> +	 * (SCATTERLIST_MAX_SEGMENT) is used.
-> +	 */
-> +	size_t max_segment;
-> +
->   	/**
->   	 * @name:
->   	 *
-> diff --git a/include/drm/drm_prime.h b/include/drm/drm_prime.h
-> index 9af7422b44cf..2c3689435cb4 100644
-> --- a/include/drm/drm_prime.h
-> +++ b/include/drm/drm_prime.h
-> @@ -88,7 +88,8 @@ void drm_gem_dmabuf_vunmap(struct dma_buf *dma_buf, void *vaddr);
->   int drm_gem_prime_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
->   int drm_gem_dmabuf_mmap(struct dma_buf *dma_buf, struct vm_area_struct *vma);
->   
-> -struct sg_table *drm_prime_pages_to_sg(struct page **pages, unsigned int nr_pages);
-> +struct sg_table *drm_prime_pages_to_sg(struct page **pages, unsigned int nr_pages,
-> +				       size_t max_segment);
->   struct dma_buf *drm_gem_prime_export(struct drm_gem_object *obj,
->   				     int flags);
->   
-> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c
-> index 519ce4427fce..5e8a9760b33f 100644
-> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c
-> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c
-> @@ -303,7 +303,8 @@ static struct sg_table *amdgpu_dma_buf_map(struct dma_buf_attachment *attach,
->   	switch (bo->tbo.mem.mem_type) {
->   	case TTM_PL_TT:
->   		sgt = drm_prime_pages_to_sg(bo->tbo.ttm->pages,
-> -					    bo->tbo.num_pages);
-> +					    bo->tbo.num_pages,
-> +					    obj->max_segment);
->   		if (IS_ERR(sgt))
->   			return sgt;
->   
-> diff --git a/drivers/gpu/drm/drm_gem_shmem_helper.c b/drivers/gpu/drm/drm_gem_shmem_helper.c
-> index 4b7cfbac4daa..cfb979d808fd 100644
-> --- a/drivers/gpu/drm/drm_gem_shmem_helper.c
-> +++ b/drivers/gpu/drm/drm_gem_shmem_helper.c
-> @@ -656,7 +656,8 @@ struct sg_table *drm_gem_shmem_get_sg_table(struct drm_gem_object *obj)
->   
->   	WARN_ON(shmem->base.import_attach);
->   
-> -	return drm_prime_pages_to_sg(shmem->pages, obj->size >> PAGE_SHIFT);
-> +	return drm_prime_pages_to_sg(shmem->pages, obj->size >> PAGE_SHIFT,
-> +				     obj->max_segment);
->   }
->   EXPORT_SYMBOL_GPL(drm_gem_shmem_get_sg_table);
->   
-> diff --git a/drivers/gpu/drm/drm_prime.c b/drivers/gpu/drm/drm_prime.c
-> index 1693aa7c14b5..27c783fd6633 100644
-> --- a/drivers/gpu/drm/drm_prime.c
-> +++ b/drivers/gpu/drm/drm_prime.c
-> @@ -802,7 +802,8 @@ static const struct dma_buf_ops drm_gem_prime_dmabuf_ops =  {
->    *
->    * This is useful for implementing &drm_gem_object_funcs.get_sg_table.
->    */
-> -struct sg_table *drm_prime_pages_to_sg(struct page **pages, unsigned int nr_pages)
-> +struct sg_table *drm_prime_pages_to_sg(struct page **pages, unsigned int nr_pages,
-> +				       size_t max_segment)
->   {
->   	struct sg_table *sg = NULL;
->   	int ret;
-> @@ -813,8 +814,11 @@ struct sg_table *drm_prime_pages_to_sg(struct page **pages, unsigned int nr_page
->   		goto out;
->   	}
->   
-> -	ret = sg_alloc_table_from_pages(sg, pages, nr_pages, 0,
-> -				nr_pages << PAGE_SHIFT, GFP_KERNEL);
-> +	if (max_segment == 0 || max_segment > SCATTERLIST_MAX_SEGMENT)
-> +		max_segment = SCATTERLIST_MAX_SEGMENT;
-> +	ret = __sg_alloc_table_from_pages(sg, pages, nr_pages, 0,
-> +					  nr_pages << PAGE_SHIFT,
-> +					  max_segment, GFP_KERNEL);
->   	if (ret)
->   		goto out;
->   
-> diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gem.c b/drivers/gpu/drm/etnaviv/etnaviv_gem.c
-> index f06e19e7be04..e5b6e7996f80 100644
-> --- a/drivers/gpu/drm/etnaviv/etnaviv_gem.c
-> +++ b/drivers/gpu/drm/etnaviv/etnaviv_gem.c
-> @@ -103,7 +103,8 @@ struct page **etnaviv_gem_get_pages(struct etnaviv_gem_object *etnaviv_obj)
->   		int npages = etnaviv_obj->base.size >> PAGE_SHIFT;
->   		struct sg_table *sgt;
->   
-> -		sgt = drm_prime_pages_to_sg(etnaviv_obj->pages, npages);
-> +		sgt = drm_prime_pages_to_sg(etnaviv_obj->pages, npages,
-> +					    etnaviv_obj->base.max_segment);
->   		if (IS_ERR(sgt)) {
->   			dev_err(dev->dev, "failed to allocate sgt: %ld\n",
->   				PTR_ERR(sgt));
-> diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c b/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
-> index 6d9e5c3c4dd5..f327676450bd 100644
-> --- a/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
-> +++ b/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
-> @@ -19,7 +19,8 @@ struct sg_table *etnaviv_gem_prime_get_sg_table(struct drm_gem_object *obj)
->   	if (WARN_ON(!etnaviv_obj->pages))  /* should have already pinned! */
->   		return ERR_PTR(-EINVAL);
->   
-> -	return drm_prime_pages_to_sg(etnaviv_obj->pages, npages);
-> +	return drm_prime_pages_to_sg(etnaviv_obj->pages, npages,
-> +				     obj->max_segment);
->   }
->   
->   void *etnaviv_gem_prime_vmap(struct drm_gem_object *obj)
-> diff --git a/drivers/gpu/drm/msm/msm_gem.c b/drivers/gpu/drm/msm/msm_gem.c
-> index b2f49152b4d4..f805419bb84a 100644
-> --- a/drivers/gpu/drm/msm/msm_gem.c
-> +++ b/drivers/gpu/drm/msm/msm_gem.c
-> @@ -126,7 +126,8 @@ static struct page **get_pages(struct drm_gem_object *obj)
->   
->   		msm_obj->pages = p;
->   
-> -		msm_obj->sgt = drm_prime_pages_to_sg(p, npages);
-> +		msm_obj->sgt = drm_prime_pages_to_sg(p, npages,
-> +						     obj->max_segment);
->   		if (IS_ERR(msm_obj->sgt)) {
->   			void *ptr = ERR_CAST(msm_obj->sgt);
->   
-> diff --git a/drivers/gpu/drm/msm/msm_gem_prime.c b/drivers/gpu/drm/msm/msm_gem_prime.c
-> index d7c8948427fe..a5a412564c7f 100644
-> --- a/drivers/gpu/drm/msm/msm_gem_prime.c
-> +++ b/drivers/gpu/drm/msm/msm_gem_prime.c
-> @@ -19,7 +19,8 @@ struct sg_table *msm_gem_prime_get_sg_table(struct drm_gem_object *obj)
->   	if (WARN_ON(!msm_obj->pages))  /* should have already pinned! */
->   		return NULL;
->   
-> -	return drm_prime_pages_to_sg(msm_obj->pages, npages);
-> +	return drm_prime_pages_to_sg(msm_obj->pages, npages,
-> +				     obj->max_segment);
->   }
->   
->   void *msm_gem_prime_vmap(struct drm_gem_object *obj)
-> diff --git a/drivers/gpu/drm/nouveau/nouveau_prime.c b/drivers/gpu/drm/nouveau/nouveau_prime.c
-> index bae6a3eccee0..56a2e916d51a 100644
-> --- a/drivers/gpu/drm/nouveau/nouveau_prime.c
-> +++ b/drivers/gpu/drm/nouveau/nouveau_prime.c
-> @@ -32,7 +32,8 @@ struct sg_table *nouveau_gem_prime_get_sg_table(struct drm_gem_object *obj)
->   	struct nouveau_bo *nvbo = nouveau_gem_object(obj);
->   	int npages = nvbo->bo.num_pages;
->   
-> -	return drm_prime_pages_to_sg(nvbo->bo.ttm->pages, npages);
-> +	return drm_prime_pages_to_sg(nvbo->bo.ttm->pages, npages,
-> +				     obj->max_segment);
->   }
->   
->   void *nouveau_gem_prime_vmap(struct drm_gem_object *obj)
-> diff --git a/drivers/gpu/drm/radeon/radeon_prime.c b/drivers/gpu/drm/radeon/radeon_prime.c
-> index b906e8fbd5f3..503e35625045 100644
-> --- a/drivers/gpu/drm/radeon/radeon_prime.c
-> +++ b/drivers/gpu/drm/radeon/radeon_prime.c
-> @@ -36,7 +36,8 @@ struct sg_table *radeon_gem_prime_get_sg_table(struct drm_gem_object *obj)
->   	struct radeon_bo *bo = gem_to_radeon_bo(obj);
->   	int npages = bo->tbo.num_pages;
->   
-> -	return drm_prime_pages_to_sg(bo->tbo.ttm->pages, npages);
-> +	return drm_prime_pages_to_sg(bo->tbo.ttm->pages, npages,
-> +				     obj->max_segment);
->   }
->   
->   void *radeon_gem_prime_vmap(struct drm_gem_object *obj)
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> index b9275ba7c5a5..444657e03c16 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> @@ -85,7 +85,8 @@ static int rockchip_gem_get_pages(struct rockchip_gem_object *rk_obj)
->   
->   	rk_obj->num_pages = rk_obj->base.size >> PAGE_SHIFT;
->   
-> -	rk_obj->sgt = drm_prime_pages_to_sg(rk_obj->pages, rk_obj->num_pages);
-> +	rk_obj->sgt = drm_prime_pages_to_sg(rk_obj->pages, rk_obj->num_pages,
-> +					    rk_obj->base.max_segment);
->   	if (IS_ERR(rk_obj->sgt)) {
->   		ret = PTR_ERR(rk_obj->sgt);
->   		goto err_put_pages;
-> @@ -442,7 +443,8 @@ struct sg_table *rockchip_gem_prime_get_sg_table(struct drm_gem_object *obj)
->   	int ret;
->   
->   	if (rk_obj->pages)
-> -		return drm_prime_pages_to_sg(rk_obj->pages, rk_obj->num_pages);
-> +		return drm_prime_pages_to_sg(rk_obj->pages, rk_obj->num_pages,
-> +					     obj->max_segment);
->   
->   	sgt = kzalloc(sizeof(*sgt), GFP_KERNEL);
->   	if (!sgt)
-> diff --git a/drivers/gpu/drm/tegra/gem.c b/drivers/gpu/drm/tegra/gem.c
-> index 723df142a981..8d98b02a8d21 100644
-> --- a/drivers/gpu/drm/tegra/gem.c
-> +++ b/drivers/gpu/drm/tegra/gem.c
-> @@ -284,7 +284,8 @@ static int tegra_bo_get_pages(struct drm_device *drm, struct tegra_bo *bo)
->   
->   	bo->num_pages = bo->gem.size >> PAGE_SHIFT;
->   
-> -	bo->sgt = drm_prime_pages_to_sg(bo->pages, bo->num_pages);
-> +	bo->sgt = drm_prime_pages_to_sg(bo->pages, bo->num_pages,
-> +					bo->gem.max_segment);
->   	if (IS_ERR(bo->sgt)) {
->   		err = PTR_ERR(bo->sgt);
->   		goto put_pages;
-> diff --git a/drivers/gpu/drm/vgem/vgem_drv.c b/drivers/gpu/drm/vgem/vgem_drv.c
-> index 313339bbff90..d25c93b5a2c1 100644
-> --- a/drivers/gpu/drm/vgem/vgem_drv.c
-> +++ b/drivers/gpu/drm/vgem/vgem_drv.c
-> @@ -321,7 +321,8 @@ static struct sg_table *vgem_prime_get_sg_table(struct drm_gem_object *obj)
->   {
->   	struct drm_vgem_gem_object *bo = to_vgem_bo(obj);
->   
-> -	return drm_prime_pages_to_sg(bo->pages, bo->base.size >> PAGE_SHIFT);
-> +	return drm_prime_pages_to_sg(bo->pages, bo->base.size >> PAGE_SHIFT,
-> +				     obj->max_segment);
->   }
->   
->   static struct drm_gem_object* vgem_prime_import(struct drm_device *dev,
-> diff --git a/drivers/gpu/drm/xen/xen_drm_front_gem.c b/drivers/gpu/drm/xen/xen_drm_front_gem.c
-> index f0b85e094111..362fe5311b1b 100644
-> --- a/drivers/gpu/drm/xen/xen_drm_front_gem.c
-> +++ b/drivers/gpu/drm/xen/xen_drm_front_gem.c
-> @@ -179,7 +179,8 @@ struct sg_table *xen_drm_front_gem_get_sg_table(struct drm_gem_object *gem_obj)
->   	if (!xen_obj->pages)
->   		return ERR_PTR(-ENOMEM);
->   
-> -	return drm_prime_pages_to_sg(xen_obj->pages, xen_obj->num_pages);
-> +	return drm_prime_pages_to_sg(xen_obj->pages, xen_obj->num_pages,
-> +				     gem_obj->max_segment);
->   }
->   
->   struct drm_gem_object *
+diff --git a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
+index 59b9e7238f90..74ab6b5ce294 100644
+--- a/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
++++ b/Documentation/userspace-api/media/v4l/pixfmt-reserved.rst
+@@ -263,20 +263,3 @@ please make a proposal on the linux-media mailing list.
+ 	of tiles, resulting in 32-aligned resolutions for the luminance plane
+ 	and 16-aligned resolutions for the chrominance plane (with 2x2
+ 	subsampling).
+-
+-.. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
+-
+-.. _format-flags:
+-
+-.. flat-table:: Format Flags
+-    :header-rows:  0
+-    :stub-columns: 0
+-    :widths:       3 1 4
+-
+-    * - ``V4L2_PIX_FMT_FLAG_PREMUL_ALPHA``
+-      - 0x00000001
+-      - The color values are premultiplied by the alpha channel value. For
+-	example, if a light blue pixel with 50% transparency was described
+-	by RGBA values (128, 192, 255, 128), the same pixel described with
+-	premultiplied colors would be described by RGBA values (64, 96,
+-	128, 128)
+diff --git a/Documentation/userspace-api/media/v4l/pixfmt-v4l2.rst b/Documentation/userspace-api/media/v4l/pixfmt-v4l2.rst
+index e0ee2823ab1f..56a2952de873 100644
+--- a/Documentation/userspace-api/media/v4l/pixfmt-v4l2.rst
++++ b/Documentation/userspace-api/media/v4l/pixfmt-v4l2.rst
+@@ -174,3 +174,20 @@ Single-planar format structure
+         This information supplements the ``colorspace`` and must be set by
+ 	the driver for capture streams and by the application for output
+ 	streams, see :ref:`colorspaces`.
++
++.. tabularcolumns:: |p{6.6cm}|p{2.2cm}|p{8.7cm}|
++
++.. _format-flags:
++
++.. flat-table:: Format Flags
++    :header-rows:  0
++    :stub-columns: 0
++    :widths:       3 1 4
++
++    * - ``V4L2_PIX_FMT_FLAG_PREMUL_ALPHA``
++      - 0x00000001
++      - The color values are premultiplied by the alpha channel value. For
++        example, if a light blue pixel with 50% transparency was described
++	by RGBA values (128, 192, 255, 128), the same pixel described with
++	premultiplied colors would be described by RGBA values (64, 96,
++	128, 128)
+diff --git a/Documentation/userspace-api/media/videodev2.h.rst.exceptions b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+index ca05e4e126b2..659799cc1eca 100644
+--- a/Documentation/userspace-api/media/videodev2.h.rst.exceptions
++++ b/Documentation/userspace-api/media/videodev2.h.rst.exceptions
+@@ -180,7 +180,7 @@ replace define V4L2_CAP_IO_MC device-capabilities
+ 
+ # V4L2 pix flags
+ replace define V4L2_PIX_FMT_PRIV_MAGIC :c:type:`v4l2_pix_format`
+-replace define V4L2_PIX_FMT_FLAG_PREMUL_ALPHA reserved-formats
++replace define V4L2_PIX_FMT_FLAG_PREMUL_ALPHA format-flags
+ 
+ # V4L2 format flags
+ replace define V4L2_FMT_FLAG_COMPRESSED fmtdesc-flags
+-- 
+2.17.1
 
 
 _______________________________________________
