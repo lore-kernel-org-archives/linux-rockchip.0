@@ -2,64 +2,89 @@ Return-Path: <SRS0=2LhI=B4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 98B0EC433E1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 17:40:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6447FC433E1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 17:49:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 66BF620674
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 17:40:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2C3C52080C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 17:49:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2KNFF7QY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="W0/tCenk"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66BF620674
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="p7We/MTY";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.b="sAK+0rf9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C3C52080C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Subject:References:In-Reply-To:To:From:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jjQBRqnUKG/mlXad+E/x0x4p91rnEctbQZgBUkthnlM=; b=2KNFF7QYgQTsINn5tmKJwoGqkl
-	YdYF8L/WuN3tYEyYgI9S438RUwBJjepmUg+tAzHikCwqxVf38uwnRf97s3DZ1EWevSVTTVO3h21dQ
-	IATTDz6XCBRwA/POyv57v7vn8OLqnIPR2T63WKHqYpNRuGc19C+LE3aP2UOhsKoctDsE/n6dAMZnP
-	IieidKGzVC0c1AjE8HD+J2kTLeuykgB5TdhhZsSF2yvaYozzSxaWtNd5cImpmZ1RUF9x9WyKiU87/
-	FgNHZY6BhFvR7efvQuIi9aY+uet1FmajkqmveLsNiwhEa0s6bLIE1SBVbIXYYR41aky6SOvT59cUM
-	0FNkHngw==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=UKUqAzFiFm54jyjGQ3oQYuqER6OCDphB+YAYW9CGfsE=; b=p7We/MTY0S94rxSl1ea4ucK80
+	YQcQqhDlFccDX4HEqOA4VhHK8bEDPuqGKYeDu0nydFBpK02go6GyMhv2DDL07EhP81ZP0U/dhH44M
+	8Z/RuR/a6VQa2XwkO9jj07+MBepX3y56eEgxjLZ9zf/Ut6deUsGhHbrhqNHBV57KQr0etB44E4N0Y
+	YwKRcCIvMKB35UwT88mUI6tyhMfnIe8+BKVNbcv5jt9+f7IFENmNpK9hTwGvvGlHnXfnx47FAgCWR
+	5mNYdAwbJAzjkl7oKsyA/b6HeERUNAkMRssdJxH2+2npvJGpBnU3TTTpBg4mfT8hBx+yqqQjGXgeL
+	kBulzuXBA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k85at-0001wy-LF; Tue, 18 Aug 2020 17:40:19 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k85js-0004vy-Th; Tue, 18 Aug 2020 17:49:36 +0000
+Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k85ad-0001n1-SA; Tue, 18 Aug 2020 17:40:05 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5B01B20674;
- Tue, 18 Aug 2020 17:40:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597772402;
- bh=vhi5iImj5rpc1HCF6tflR5/gmVfFRnZe0Q1H8J1CIQU=;
- h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
- b=W0/tCenkdLxWuq9DuP4pl5WQcneKduqX5eyQEDgaOCxoz2k6PoOjjku4t9ap0FZ1Z
- wnmqFwEuJ2KJKV3b1BLNA+ZrNPMZEawNR3TQo392nmQ0iDEhCot7Ltbfon5AAV5B8t
- oIL4zXmPmcaoqD1XW3bn9zNoc3qxPNGBMnLPTBHg=
-Date: Tue, 18 Aug 2020 18:39:32 +0100
-From: Mark Brown <broonie@kernel.org>
-To: heiko@sntech.de, Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <20200815112437.6662-1-jbx6244@gmail.com>
-References: <20200815112437.6662-1-jbx6244@gmail.com>
-Subject: Re: [RFC PATCH v1 1/2] ASoC: rockchip-spdif: add description for
- rk3308
-Message-Id: <159777235702.24785.6071406092979338870.b4-ty@kernel.org>
+ id 1k85jq-0004uL-Lw
+ for linux-rockchip@lists.infradead.org; Tue, 18 Aug 2020 17:49:36 +0000
+Received: by mail-pj1-x1041.google.com with SMTP id 2so9731199pjx.5
+ for <linux-rockchip@lists.infradead.org>; Tue, 18 Aug 2020 10:49:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=OMrT9C5AFoMvfd0icRmwdmikCEIc/NXJSQt8b1yXCkw=;
+ b=sAK+0rf9juJXiwHzeHjlRJRWIPHclN8Phlv51l+2QJIKpBcC34ipELa2VfI7E17BvK
+ m68XbGNzwGepUZZ1Pr0P9h9Jc/7bg6spmjHt5NSFaLNagz7dalWVtN1tKYuM5bOPi6Op
+ If24cwckYg9jm6rdn6n4Um6N2mlzxhZT+GRBTkAydj+iXoS0a+0v7+kWnPZcETMabcbp
+ iSUiSqH6yqjsQkeFOrUegOfeNTUVWwfScVhxUMh8qRsKYl1J7qDnzRi771PmHHAXZ0aU
+ TmfaTSiINFimh+dbuxpQwh+YY6+u3LnHrKoqOfAQe1o3Y7mTernmzlxHt7P9FeyD1YmS
+ ZbWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=OMrT9C5AFoMvfd0icRmwdmikCEIc/NXJSQt8b1yXCkw=;
+ b=jaaeVwxGFY4P0J1tx1pqkDfUg1gwXgSLhqPrPPrrlnAZzl9qofQO+ezEdi/rW8fr9W
+ cEPCGTBEjf9elmxKfsx8fE46AVSPOZEZgpnFc0tZU0nXX6smwy02AACc1aBghYHpnwmg
+ L4SqyTZ8gNkbbDPn9iD/N+RxVDQThKloVNaGHCNhw1EjmETm5PDxRfdqNLO0co6vqLhz
+ rDIs8KHdQFkmFoavqX2gpc3OhUZz0pZ3qE9Wd6zI2Ih8f6scsRlqaARuUt92igadbxLg
+ KOz2Tm+IYLt1VinfjYK+k/zSOwvzrzhOb0MSgwZVvr0cY3NELVh3uOMjDOkv5wWEgc9Y
+ xv9g==
+X-Gm-Message-State: AOAM5334Hj4SKkEC7O2YYhVq1n1FTzR57hxucYAmRNhgaGzx3y7wSqPm
+ Qkl1tbDySmAnar1qnrnpTLH/PxTySa+2U1WEsTGYsw==
+X-Google-Smtp-Source: ABdhPJzVVyPcZ+7Gs0AXJVZxiCetyUr6nk23IoYNH1FZlus2gp2HDkcMI/FTOQ/mx9fK0t2ODFmqRjeqa113FBmxApY=
+X-Received: by 2002:a17:90a:f98e:: with SMTP id
+ cq14mr871303pjb.51.1597772970220; 
+ Tue, 18 Aug 2020 10:49:30 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200815125112.462652-2-maz@kernel.org>
+ <20200815232228.GA1325245@bjorn-Precision-5520>
+ <87pn7qnabq.wl-maz@kernel.org>
+ <CAL_Jsq+fDNa60+6+s9MwVjUFUPAuc43+uMx4Fm2nZhUgrV7LEg@mail.gmail.com>
+ <e2cde177e82fbdf158732ad73ccdc6c5@kernel.org>
+ <CAL_JsqL1_d2grS3Pz6NNeVAOMPbx_hAe+MrseQeQp=bHRQ7rfQ@mail.gmail.com>
+ <72c10e43023289b9a4c36226fe3fd5d9@kernel.org>
+In-Reply-To: <72c10e43023289b9a4c36226fe3fd5d9@kernel.org>
+From: Saravana Kannan <saravanak@google.com>
+Date: Tue, 18 Aug 2020 10:48:54 -0700
+Message-ID: <CAGETcx-hkz8fyAHuhRi=JhBFu4YUmL2UpHfgs7doLHK-RdKA0A@mail.gmail.com>
+Subject: Re: [PATCH 1/2] PCI: rockchip: Work around missing device_type
+ property in DT
+To: Marc Zyngier <maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200818_134004_062930_0410AC27 
-X-CRM114-Status: GOOD (  15.87  )
+X-CRM114-CacheID: sfid-20200818_134934_844560_469B6856 
+X-CRM114-Status: GOOD (  42.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,58 +97,145 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org, lgirdwood@gmail.com, sugar.zhang@rock-chips.com,
- linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
- linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
+Cc: Rob Herring <robh@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, PCI <linux-pci@vger.kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>, LKML <linux-kernel@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Bjorn Helgaas <helgaas@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Android Kernel Team <kernel-team@android.com>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 15 Aug 2020 13:24:36 +0200, Johan Jonker wrote:
-> A test with the command below shows that the compatible string
-> 
-> "rockchip,rk3308-spdif", "rockchip,rk3328-spdif"
-> 
-> is already in use, but is not added to a document.
-> The current fallback string "rockchip,rk3328-spdif" points to a data
-> set enum RK_SPDIF_RK3366 in rockchip_spdif.c that is not used both
-> in the mainline as in the manufacturer kernel.
-> (Of the enum only RK_SPDIF_RK3288 is used.)
-> So if the properties don't change we might as well use the first SoC
-> in line as fallback string and add the description for rk3308 as:
-> 
-> [...]
+On Tue, Aug 18, 2020 at 10:34 AM Marc Zyngier <maz@kernel.org> wrote:
+>
+> On 2020-08-18 15:23, Rob Herring wrote:
+> > On Tue, Aug 18, 2020 at 1:35 AM Marc Zyngier <maz@kernel.org> wrote:
+> >>
+> >> On 2020-08-17 17:12, Rob Herring wrote:
+> >> > On Sun, Aug 16, 2020 at 4:40 AM Marc Zyngier <maz@kernel.org> wrote:
+> >> >>
+> >> >> On Sun, 16 Aug 2020 00:22:28 +0100,
+> >> >> Bjorn Helgaas <helgaas@kernel.org> wrote:
+> >> >> >
+> >> >> > On Sat, Aug 15, 2020 at 01:51:11PM +0100, Marc Zyngier wrote:
+> >> >> > > Recent changes to the DT PCI bus parsing made it mandatory for
+> >> >> > > device tree nodes describing a PCI controller to have the
+> >> >> > > 'device_type = "pci"' property for the node to be matched.
+> >> >> > >
+> >> >> > > Although this follows the letter of the specification, it
+> >> >> > > breaks existing device-trees that have been working fine
+> >> >> > > for years.  Rockchip rk3399-based systems are a prime example
+> >> >> > > of such collateral damage, and have stopped discovering their
+> >> >> > > PCI bus.
+> >> >> > >
+> >> >> > > In order to paper over the blunder, let's add a workaround
+> >> >> > > to the pcie-rockchip driver, adding the missing property when
+> >> >> > > none is found at boot time. A warning will hopefully nudge the
+> >> >> > > user into updating their DT to a fixed version if they can, but
+> >> >> > > the insentive is obviously pretty small.
+> >> >> >
+> >> >> > s/insentive/incentive/ (Lorenzo or I can fix this up)
+> >> >> >
+> >> >> > > Fixes: 2f96593ecc37 ("of_address: Add bus type match for pci ranges parser")
+> >> >> > > Suggested-by: Roh Herring <robh+dt@kernel.org>
+> >> >> >
+> >> >> > s/Roh/Rob/ (similarly)
+> >> >>
+> >> >> Clearly not my day when it comes to proofreading commit messages.
+> >> >> Thanks for pointing this out, and in advance for fixing it up.
+> >> >>
+> >> >> >
+> >> >> > > Signed-off-by: Marc Zyngier <maz@kernel.org>
+> >> >> >
+> >> >> > This looks like a candidate for v5.9, since 2f96593ecc37 was merged
+> >> >> > during the v5.9 merge window, right?
+> >> >>
+> >> >> Absolutely.
+> >> >>
+> >> >> > I wonder how many other DTs are similarly broken?  Maybe Rob's DT
+> >> >> > checker has already looked?
+> >> >>
+> >> >> I've just managed to run the checker, which comes up with all kinds of
+> >> >> goodies. Apart from the above, it also spots the following:
+> >> >>
+> >> >> - arch/arm64/boot/dts/mediatek/mt7622.dtsi: Has a device_type property
+> >> >>   in its main PCIe node, but not in the child nodes. It isn't obvious
+> >> >>   to me whether that's a violation or not (the spec doesn't say
+> >> >>   whether the property should be set on a per-port basis). Rob?
+> >> >
+> >> > The rule is bridge nodes should have 'device_type = "pci"'. But what's
+> >> > needed to fix these cases is setting device_type where we are parsing
+> >> > ranges or dma-ranges which we're not doing on the child ndes.
+> >> > Otherwise, I don't think it matters in this case unless you have child
+> >> > (grandchild here) nodes for PCI devices. If you did have child nodes,
+> >> > the address translation was already broken before this change.
+> >>
+> >> Fair enough.
+> >>
+> >> >> - arch/arm64/boot/dts/qcom/msm8996.dtsi: Only one out of the three
+> >> >>   PCIe nodes has the device_type property, probably broken similarly
+> >> >>   to rk3399.
+> >> >
+> >> > The only upstream board is DB820c, so probably not as wide an impact...
+> >> >
+> >> > There are also 92 (lots of duplicates due to multiple boards) more
+> >> > cases in arch/arm/. A log is here[1].
+> >>
+> >> Mostly Broadcom stuff, apparently. I'll see if I can have a stab
+> >> at it (although someone will have to test it).
+> >>
+> >> >
+> >> >> I could move the workaround to drivers/pci/of.c, and have it called
+> >> >> from the individual drivers. I don't have the HW to test those though.
+> >> >>
+> >> >> Thoughts?
+> >> >
+> >> > I think we should go with my other suggestion of looking at the node
+> >> > name. Looks like just checking 'pcie' is enough. We can skip 'pci' as
+> >> > I don't see any cases.
+> >>
+> >> I really dislike it.
+> >>
+> >> Once we put this node name matching in, there is no incentive for
+> >> people to write their DT correctly at all. It also sound pretty
+> >> fragile (what if the PCIe node is named something else?).
+> >
+> > That would require 2 wrongs. Both missing device_type and wrong node
+> > name. You could still warn if we matched on node name.
+>
+> OK. So how about something like this?
+>
+> diff --git a/drivers/of/address.c b/drivers/of/address.c
+> index 590493e04b01..a7a6ee599b14 100644
+> --- a/drivers/of/address.c
+> +++ b/drivers/of/address.c
+> @@ -134,9 +134,13 @@ static int of_bus_pci_match(struct device_node *np)
+>          * "pciex" is PCI Express
+>          * "vci" is for the /chaos bridge on 1st-gen PCI powermacs
+>          * "ht" is hypertransport
+> +        *
+> +        * If none of the device_type match, and that the node name is
+> +        * "pcie", accept the device as PCI (with a warning).
+>          */
+>         return of_node_is_type(np, "pci") || of_node_is_type(np, "pciex") ||
+> -               of_node_is_type(np, "vci") || of_node_is_type(np, "ht");
+> +               of_node_is_type(np, "vci") || of_node_is_type(np, "ht") ||
+> +               WARN_ON_ONCE(of_node_name_eq(np, "pcie"));
 
-Applied to
+I don't think we need the _ONCE. Otherwise, it'd warn only for the
+first device that has this problem.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+How about?
+WARN(of_node_name_eq(np, "pcie"), "Missing device type in %pOF", np)
 
-Thanks!
+That'll even tell them which node is bad.
 
-[1/1] ASoC: rockchip-spdif: add description for rk3308
-      commit: a8535ae7034e3547f4f7a8c7ca03a6ee72097fb0
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+-Saravana
 
 _______________________________________________
 Linux-rockchip mailing list
