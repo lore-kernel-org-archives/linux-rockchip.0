@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91DDFC433E1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 17:40:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 98B0EC433E1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 17:40:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 49244207D3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 17:40:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 66BF620674
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 17:40:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="netihYR4";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="JITDFbdX"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 49244207D3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2KNFF7QY";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="W0/tCenk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 66BF620674
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,40 +25,41 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-Id:Subject:References:In-Reply-To:To:From:
 	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gNUvP7jA8+tpMdv45anD81d9RnCGEUvgUiBGGV3gvJA=; b=netihYR4kgr9qkAdqocYgH0c/Z
-	2LOJbILxLvOD+pO1At5v1arlD+Lb+nvLyOdoUYYK4GEQaLWytM1zzoqgVymQX1kGY6M0w50SaTE8j
-	i7d8tWB9BuTWuqGiMs0ev16c0Axaj5W4BGz9Z8excjQZaFsY3yO9rNnLnEO+ENqNGt98OHxbP4chc
-	tfHaCQAKyN2wrk9XGMALvnpAum2xchn8f/gBPheIeAujOjFh9pWGNYTkjaJjcdo+k/7Yw9DaTYkMW
-	hcwRMOGp+6Cl9uzA4mW4ffNezy9tQ09veWXTuGDo+AIQ6vaB5YnxIdqu+QXdrBiqv+2MaOhsQGCGl
-	5ODz8dGQ==;
+	bh=jjQBRqnUKG/mlXad+E/x0x4p91rnEctbQZgBUkthnlM=; b=2KNFF7QYgQTsINn5tmKJwoGqkl
+	YdYF8L/WuN3tYEyYgI9S438RUwBJjepmUg+tAzHikCwqxVf38uwnRf97s3DZ1EWevSVTTVO3h21dQ
+	IATTDz6XCBRwA/POyv57v7vn8OLqnIPR2T63WKHqYpNRuGc19C+LE3aP2UOhsKoctDsE/n6dAMZnP
+	IieidKGzVC0c1AjE8HD+J2kTLeuykgB5TdhhZsSF2yvaYozzSxaWtNd5cImpmZ1RUF9x9WyKiU87/
+	FgNHZY6BhFvR7efvQuIi9aY+uet1FmajkqmveLsNiwhEa0s6bLIE1SBVbIXYYR41aky6SOvT59cUM
+	0FNkHngw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k85aj-0001q3-25; Tue, 18 Aug 2020 17:40:09 +0000
+	id 1k85at-0001wy-LF; Tue, 18 Aug 2020 17:40:19 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k85aY-0001kT-Fl; Tue, 18 Aug 2020 17:39:59 +0000
+ id 1k85ad-0001n1-SA; Tue, 18 Aug 2020 17:40:05 +0000
 Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5ED2D20738;
- Tue, 18 Aug 2020 17:39:57 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5B01B20674;
+ Tue, 18 Aug 2020 17:40:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597772397;
- bh=jw0rqgoKOxJjeFzL3PLrNSOLSmVzOndyFsCJBt1RmBE=;
+ s=default; t=1597772402;
+ bh=vhi5iImj5rpc1HCF6tflR5/gmVfFRnZe0Q1H8J1CIQU=;
  h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
- b=JITDFbdXUSdL3CAO6S6oBsDueJ6T92UpvF2cvgIOiROsih1Att03rFWG8fDHlw8Kr
- 5gt3MWB6+E0LwEoKV+J6QXsnwHozg+mfEoWWSvEb1Q5SEj1klVTkoZKaAbgD8OMGnD
- 3qc8wxSPdiMVAh95d49Qx9j8IJ2vMKLzaQUYDKLo=
-Date: Tue, 18 Aug 2020 18:39:27 +0100
+ b=W0/tCenkdLxWuq9DuP4pl5WQcneKduqX5eyQEDgaOCxoz2k6PoOjjku4t9ap0FZ1Z
+ wnmqFwEuJ2KJKV3b1BLNA+ZrNPMZEawNR3TQo392nmQ0iDEhCot7Ltbfon5AAV5B8t
+ oIL4zXmPmcaoqD1XW3bn9zNoc3qxPNGBMnLPTBHg=
+Date: Tue, 18 Aug 2020 18:39:32 +0100
 From: Mark Brown <broonie@kernel.org>
 To: heiko@sntech.de, Johan Jonker <jbx6244@gmail.com>
-In-Reply-To: <20200818143727.5882-1-jbx6244@gmail.com>
-References: <20200818143727.5882-1-jbx6244@gmail.com>
-Subject: Re: [PATCH v2 1/2] ASoC: rockchip-spdif: add description for rk3308
-Message-Id: <159777235702.24785.2371871958311959848.b4-ty@kernel.org>
+In-Reply-To: <20200815112437.6662-1-jbx6244@gmail.com>
+References: <20200815112437.6662-1-jbx6244@gmail.com>
+Subject: Re: [RFC PATCH v1 1/2] ASoC: rockchip-spdif: add description for
+ rk3308
+Message-Id: <159777235702.24785.6071406092979338870.b4-ty@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200818_133958_656105_A0FA3085 
-X-CRM114-Status: GOOD (  16.31  )
+X-CRM114-CacheID: sfid-20200818_134004_062930_0410AC27 
+X-CRM114-Status: GOOD (  15.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,7 +82,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 18 Aug 2020 16:37:26 +0200, Johan Jonker wrote:
+On Sat, 15 Aug 2020 13:24:36 +0200, Johan Jonker wrote:
 > A test with the command below shows that the compatible string
 > 
 > "rockchip,rk3308-spdif", "rockchip,rk3328-spdif"
