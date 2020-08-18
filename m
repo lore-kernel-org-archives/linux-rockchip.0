@@ -2,57 +2,67 @@ Return-Path: <SRS0=2LhI=B4=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA1FAC433E3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 10:27:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DCCF8C433E1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 12:30:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9999820674
-	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 10:27:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A474F2065D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 18 Aug 2020 12:30:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GeNQcuNJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9999820674
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xnf2kObi";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="SKcxKtnJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A474F2065D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+nbkG8CB1umlat3xQdH7MzWMXkW89L5eUG1nNhu9pmA=; b=GeNQcuNJen059F/PZYbxOQqUk7
-	Ca1ORS8h0xK1I6F1oZ9P8/lSYfRxr/eUkieqC48WWkDaosfq8UkfukLjVmkrSp1bes7j4+b4g5Qka
-	sfaGo5MkV/Xy5H+QzPAqkJs8QWOFygT2/pZp6thzjZmLUwwCf56cSmtUfgLLSiHygpaMb+KT1RDc2
-	kHoFPpNR8jOS+7NGwFCB7jXgpVP23mFa8IM6zoXmebIgTSCdWoFAqi9Ee3kFQiVsSQQ5CYq3QriKC
-	P+2qM58OksKBZoCCIpgJAzz/ydPtTyw6vIa2fFcOvf1pDfxLiRm1ZVlWzv3tVvizVMneYvRuzl5rv
-	3cgVUXng==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=U5BVPVNXArQzeTgN55wjqhPYPX4Y5WtysKEXrkPKoOk=; b=Xnf2kObi1b/ClMY878PXcNNGW
+	tE3WKF7V/zGz1VLW8CgCPw8NslWxQ/La5NkLh3voSVtLRiRNXurFsKafufVaJ5mpVjTSp5yIDS1Ua
+	4ZkatgW+v30CjGZFe9JfL8KgYBaXxVgP4m42WK1ih2hwRzBi1+VPXwC4T7i50AK1DMatO+kJlDRP2
+	6kkK0WeA8mMVVfm3Oj+OBYz1j2Kdmv+SyH4Y/8MI4famvmWXnbbLBWvj2qkRjZG+saTOSVDPv6+1W
+	gCguuwiLhh+93fmqX3ohyJnhDHa33yqs0uGBBvVGqQbgUER6n22swaBHqqVIbBIY3XRdk8RHpxBSl
+	nnz2vUQHA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k7ypq-0004Ql-NU; Tue, 18 Aug 2020 10:27:18 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1k80lQ-0008Ir-7n; Tue, 18 Aug 2020 12:30:52 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k7ypm-0004O6-Vj
- for linux-rockchip@lists.infradead.org; Tue, 18 Aug 2020 10:27:16 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id 7D6D32991AD
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v2 1/2] media: pixfmt-meta-rkisp1.rst: add description of
- rkisp1 metadata formats in pixfmt-meta-rkisp1.rst
-Date: Tue, 18 Aug 2020 12:27:02 +0200
-Message-Id: <20200818102703.30471-2-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200818102703.30471-1-dafna.hirschfeld@collabora.com>
-References: <20200818102703.30471-1-dafna.hirschfeld@collabora.com>
+ id 1k80lM-0008Hv-GW; Tue, 18 Aug 2020 12:30:49 +0000
+Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 5BDD72065D;
+ Tue, 18 Aug 2020 12:30:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1597753846;
+ bh=eHNv9FdwsK7uVxIPYmdOittfWJ5rJzEkrVPozM1SQu4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=SKcxKtnJrC7cXoPgNbvfatsTcUqQhXRNKGPXtOc0RgH4w9KY00FBZqzp1j8kQ2QZw
+ ZzBaqCkEH4QbKmE2zV4HIk0defjdZ64vYVLhewYYIeqY7p994IAwXa/3ppqOTMNNGd
+ nMguyU5y+4CN7DYElJUpDnrUftjA7P8DWV1/7Uv4=
+Date: Tue, 18 Aug 2020 13:30:15 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [RFC PATCH v1 1/2] ASoC: rockchip-spdif: add description for
+ rk3308
+Message-ID: <20200818123015.GA5344@sirena.org.uk>
+References: <20200815112437.6662-1-jbx6244@gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <20200815112437.6662-1-jbx6244@gmail.com>
+X-Cookie: Ma Bell is a mean mother!
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200818_062715_250550_3323BEF4 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20200818_083048_712079_09A7B011 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,166 +75,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
- tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org, heiko@sntech.de,
+ linux-kernel@vger.kernel.org, lgirdwood@gmail.com, sugar.zhang@rock-chips.com,
+ linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: multipart/mixed; boundary="===============2718323879247723628=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The metadata formats V4L2_META_FMT_RK_ISP1_PARAMS,
-V4L2_META_FMT_RK_ISP1_STAT_3A are currently described in
-two files under
-drivers/staging/media/rkisp1/Documentation/media/uapi/v4l
 
-This patch moves the description to one file:
-Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst
-The patch also extends the description and adds the rst file to
-toctree.
+--===============2718323879247723628==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="45Z9DzgjV8m4Oswq"
+Content-Disposition: inline
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- .../userspace-api/media/v4l/meta-formats.rst  |  1 +
- .../media/v4l/pixfmt-meta-rkisp1.rst          | 49 +++++++++++++++++++
- .../uapi/v4l/pixfmt-meta-rkisp1-params.rst    | 23 ---------
- .../uapi/v4l/pixfmt-meta-rkisp1-stat.rst      | 22 ---------
- 4 files changed, 50 insertions(+), 45 deletions(-)
- create mode 100644 Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst
- delete mode 100644 drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
- delete mode 100644 drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
 
-diff --git a/Documentation/userspace-api/media/v4l/meta-formats.rst b/Documentation/userspace-api/media/v4l/meta-formats.rst
-index 7dcc4bacbb0c..55a635534bc9 100644
---- a/Documentation/userspace-api/media/v4l/meta-formats.rst
-+++ b/Documentation/userspace-api/media/v4l/meta-formats.rst
-@@ -21,6 +21,7 @@ These formats are used for the :ref:`metadata` interface only.
- 
-     pixfmt-meta-d4xx
-     pixfmt-meta-intel-ipu3
-+    pixfmt-meta-rkisp1
-     pixfmt-meta-uvc
-     pixfmt-meta-vsp1-hgo
-     pixfmt-meta-vsp1-hgt
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst b/Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst
-new file mode 100644
-index 000000000000..7e43837ed260
---- /dev/null
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst
-@@ -0,0 +1,49 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+.. _v4l2-meta-fmt-params-rkisp1:
-+.. _v4l2-meta-fmt-stat-rkisp1:
-+
-+*****************************************************************************
-+V4L2_META_FMT_RK_ISP1_PARAMS ('rk1p'), V4L2_META_FMT_RK_ISP1_STAT_3A ('rk1s')
-+*****************************************************************************
-+
-+Configuration parameters
-+========================
-+
-+The configuration parameters are passed to the
-+:ref:`rkisp1_params <rkisp1_params>` metadata output video node, using
-+the :c:type:`v4l2_meta_format` interface. The buffer contains
-+a single instance of the C structure :c:type:`rkisp1_params_cfg` defined in
-+``rkisp1-config.h``. So the structure can be obtained from the buffer by:
-+
-+.. code-block:: c
-+
-+	struct rkisp1_params_cfg *params = (struct rkisp1_params_cfg*) buffer;
-+
-+.. rkisp1_stat_buffer
-+
-+3A and histogram statistics
-+===========================
-+
-+The ISP1 device collects different statistics over an input Bayer frame.
-+Those statistics are obtained from the :ref:`rkisp1_stats <rkisp1_stats>`
-+metadata capture video node,
-+using the :c:type:`v4l2_meta_format` interface. The buffer contains a single
-+instance of the C structure :c:type:`rkisp1_stat_buffer` defined in
-+``rkisp1-config.h``. So the structure can be obtained from the buffer by:
-+
-+.. code-block:: c
-+
-+	struct rkisp1_stat_buffer *stats = (struct rkisp1_stat_buffer*) buffer;
-+
-+The statistics collected are Exposure, AWB (Auto-white balance), Histogram and
-+AF (Auto-focus). See :c:type:`rkisp1_stat_buffer` for details of the statistics.
-+
-+The 3A statistics and configuration parameters described here are usually
-+consumed and produced by dedicated user space libraries that comprise the
-+important tuning tools using software control loop.
-+
-+rkisp1 uAPI data types
-+======================
-+
-+.. kernel-doc:: drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-diff --git a/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
-deleted file mode 100644
-index 32034e481357..000000000000
---- a/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-params.rst
-+++ /dev/null
-@@ -1,23 +0,0 @@
--.. SPDX-License-Identifier: (GPL-2.0+ OR MIT)
--
--.. _v4l2-meta-fmt-rkisp1-params:
--
--============================
--V4L2_META_FMT_RK_ISP1_PARAMS
--============================
--
--Rockchip ISP1 Parameters Data
--
--Description
--===========
--
--This format describes input parameters for the Rockchip ISP1.
--
--It uses c-struct :c:type:`rkisp1_params_cfg`, which is defined in
--the ``linux/rkisp1-config.h`` header file.
--
--The parameters consist of multiple modules.
--The module won't be updated if the corresponding bit was not set in module_*_update.
--
--.. kernel-doc:: include/uapi/linux/rkisp1-config.h
--   :functions: rkisp1_params_cfg
-diff --git a/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst b/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
-deleted file mode 100644
-index 4ad303f96421..000000000000
---- a/drivers/staging/media/rkisp1/Documentation/media/uapi/v4l/pixfmt-meta-rkisp1-stat.rst
-+++ /dev/null
-@@ -1,22 +0,0 @@
--.. SPDX-License-Identifier: (GPL-2.0+ OR MIT)
--
--.. _v4l2-meta-fmt-rkisp1-stat:
--
--=============================
--V4L2_META_FMT_RK_ISP1_STAT_3A
--=============================
--
--
--Rockchip ISP1 Statistics Data
--
--Description
--===========
--
--This format describes image color statistics information generated by the Rockchip
--ISP1.
--
--It uses c-struct :c:type:`rkisp1_stat_buffer`, which is defined in
--the ``linux/rkisp1-config.h`` header file.
--
--.. kernel-doc:: include/uapi/linux/rkisp1-config.h
--   :functions: rkisp1_stat_buffer
--- 
-2.17.1
+--45Z9DzgjV8m4Oswq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+On Sat, Aug 15, 2020 at 01:24:36PM +0200, Johan Jonker wrote:
+> A test with the command below shows that the compatible string
+>=20
+> "rockchip,rk3308-spdif", "rockchip,rk3328-spdif"
+
+This doesn't apply against current code, please check and resend.
+
+--45Z9DzgjV8m4Oswq
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl87ydcACgkQJNaLcl1U
+h9ATqAf+Kw1JpgjNUlPGU5ePMTxIX88Ulj71aDatZmH8W/yzzfj7Lq5d1Rd2SDTC
+e7WeRvDuKmtoPbccucFH0aNFO3ev07yvSzgyQEzjlnvEIWiYO7RTxSQaqWfwGYJJ
+NgJ22Gfro6WhWVyOE4Wj6SQ9lGk5AkdmBEIiExWBgudwa+m7rwnzY5zM3oaLWCnO
+5zvlTV1yglKX5xuYjO38wOmmq2c1ZyWs8qriuXShJGQr9R96wZEvstrJlExGn/V/
+gR5Y0HvcEnAkCGWj8vqoeeq+Ot8vwbIkF4LZoAJpKVSDW5NELwr6IX7aww6k9p7+
+jsmCl584BsniWd/wfF6j7sQSETp0DA==
+=ZzoW
+-----END PGP SIGNATURE-----
+
+--45Z9DzgjV8m4Oswq--
+
+
+--===============2718323879247723628==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2718323879247723628==--
+
