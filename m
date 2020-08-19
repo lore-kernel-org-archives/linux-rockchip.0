@@ -2,83 +2,107 @@ Return-Path: <SRS0=yKcj=B5=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29AE8C433DF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2020 09:43:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72B47C433E1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2020 10:44:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EFDBF206FA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2020 09:43:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2F640206DA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 19 Aug 2020 10:44:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s7ZK8YlQ";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="oTtCwPnC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFDBF206FA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JT/WwQcl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="hq3DNU8G"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2F640206DA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=687eSVOCFRbnxVTAjQCVfBwLoERsyX7B/T3GwBtrmnQ=; b=s7ZK8YlQRF9BUPqy5FSDek0icB
-	u1Ix0spy9mPBRzNjC7jtTSBTNomp+SwNUO5oV0Vs6sqeqYSwi5yzAKdoZs7z74U4rBOooDckKwGsw
-	97CKglYcSj3TdFDaqLvWMhzkOSbD6Eir5kAWG+I1+1DwOAAQPp6u57nHaSlsHft4kAU2dvudUpGN9
-	z43j4C29N3lzqm7I3H5F0zmBoJ+xu9V5nepm3OQOGymNYLEHaIloOTMKruHkF6YLQ8byHcLoNyRIA
-	j+p7zFJAc5M+rlassSTQD3xUDaRL9XUW3GBmYkhlRvn0xi5zLJ+IHvLZ9yUFHU0OCMDyaP+F8h5F3
-	tYCRYo4Q==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=5BW8jidmS1dH1tSpqppI0j8UWnA2OF5eCuKJhjwRPC8=; b=JT/WwQclpMkZwrhFMFelvE8Qe
+	Hv8AUz4T+T8iLzh4lvvDl3L7T9RkpLCTJLp5XPE6656zAhpOGnSDX9E1Z3VMbVHfg2NrZSAuxiAZo
+	DO9W9ZvqK0I6iWXpbO53RApbKXQQOF9r2ot+eMsHxabI6eODsavYy1WEgWwt8twDd5dBRgGEB6drr
+	nWBvP0nEPSpkPfRO2ky6bA7m3+IIDggDj4IeOQx51ttLkRlabN2dEyxhVPLVb8/C+4d4PaJAsXXx0
+	P6SCsoPYUGP+mkPYRF2pW+aexMZetv7CVgb6Na2lJAm0ntLx7dnpFG8GDJactO9oX3ato4WFCZZu9
+	T24Li2+lg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8Kcg-0007gT-FL; Wed, 19 Aug 2020 09:43:10 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k8LaC-0002EJ-5D; Wed, 19 Aug 2020 10:44:40 +0000
+Received: from lelv0142.ext.ti.com ([198.47.23.249])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8Kcb-0007fF-GX; Wed, 19 Aug 2020 09:43:06 +0000
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 85206206FA;
- Wed, 19 Aug 2020 09:43:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1597830184;
- bh=eQfdoB63wdKPPwQKDY/l7Z1OnRZwiyuLG2TBV1XF/ug=;
- h=From:To:Cc:Subject:Date:From;
- b=oTtCwPnCyX7AXZ5deKcl0ylPWh4hsAbWdc6VVFHGPIFzKZggRNOlfKISY6gZfzMKA
- 2z3aqXCQIPT8QgiUY+OXkN/3jkj0GleL54IVej5nyCAYJ/ct6priOa6uiq58oEwzQW
- //AguAVc6yros8+HkbnrXSFPHY8EDxAxbAc9toSE=
-Received: from 78.163-31-62.static.virginmediabusiness.co.uk ([62.31.163.78]
- helo=why.lan) by disco-boy.misterjones.org with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1k8KcZ-0049nd-22; Wed, 19 Aug 2020 10:43:03 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: devicetree@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2] of: address: Work around missing device_type property in
- pcie nodes
-Date: Wed, 19 Aug 2020 10:42:55 +0100
-Message-Id: <20200819094255.474565-1-maz@kernel.org>
-X-Mailer: git-send-email 2.27.0
+ id 1k8La9-0002Bk-BH; Wed, 19 Aug 2020 10:44:39 +0000
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+ by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 07JAhS5P011860;
+ Wed, 19 Aug 2020 05:43:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1597833808;
+ bh=FQ/P96RlmX4WL6iS15Y4+TdcnOXuRLw5jD5fcCLIPRM=;
+ h=Subject:To:CC:References:From:Date:In-Reply-To;
+ b=hq3DNU8GyRjS+6Rnn7skcN1ku0AwIVNiB8bZ3hVmcFFpSNzKBAUK00toMRz1KnLCE
+ NxcnurQiObMWPuedh5shwC1BCu6hnnUua5zjmH8lZNKmxDlxcyNuA14gMqszA0YtC2
+ JjErGKTXzkqOL97zfTZs8nV570QUwaiW3pOgGLAw=
+Received: from DLEE114.ent.ti.com (dlee114.ent.ti.com [157.170.170.25])
+ by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 07JAhSRj019744
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Wed, 19 Aug 2020 05:43:28 -0500
+Received: from DLEE111.ent.ti.com (157.170.170.22) by DLEE114.ent.ti.com
+ (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Wed, 19
+ Aug 2020 05:43:28 -0500
+Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE111.ent.ti.com
+ (157.170.170.22) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Wed, 19 Aug 2020 05:43:27 -0500
+Received: from [192.168.2.6] (ileax41-snat.itg.ti.com [10.172.224.153])
+ by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 07JAhFih039071;
+ Wed, 19 Aug 2020 05:43:15 -0500
+Subject: Re: [PATCH 10/20] drm/omapdrm: Introduce GEM object functions
+To: Thomas Zimmermann <tzimmermann@suse.de>, <alexander.deucher@amd.com>,
+ <christian.koenig@amd.com>, <airlied@linux.ie>, <daniel@ffwll.ch>,
+ <linux@armlinux.org.uk>, <maarten.lankhorst@linux.intel.com>,
+ <mripard@kernel.org>, <l.stach@pengutronix.de>,
+ <christian.gmeiner@gmail.com>, <inki.dae@samsung.com>,
+ <jy0922.shim@samsung.com>, <sw0312.kim@samsung.com>,
+ <kyungmin.park@samsung.com>, <kgene@kernel.org>, <krzk@kernel.org>,
+ <patrik.r.jakobsson@gmail.com>, <jani.nikula@linux.intel.com>,
+ <joonas.lahtinen@linux.intel.com>, <rodrigo.vivi@intel.com>,
+ <chunkuang.hu@kernel.org>, <p.zabel@pengutronix.de>,
+ <matthias.bgg@gmail.com>, <robdclark@gmail.com>, <sean@poorly.run>,
+ <bskeggs@redhat.com>, <eric@anholt.net>, <hjc@rock-chips.com>,
+ <heiko@sntech.de>, <thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
+ <rodrigosiqueiramelo@gmail.com>, <hamohammed.sa@gmail.com>,
+ <oleksandr_andrushchenko@epam.com>, <hyun.kwon@xilinx.com>,
+ <laurent.pinchart@ideasonboard.com>, <michal.simek@xilinx.com>,
+ <sumit.semwal@linaro.org>, <evan.quan@amd.com>,
+ <Hawking.Zhang@amd.com>, <tianci.yin@amd.com>, <marek.olsak@amd.com>,
+ <hdegoede@redhat.com>, <andrey.grodzovsky@amd.com>,
+ <Felix.Kuehling@amd.com>, <xinhui.pan@amd.com>, <aaron.liu@amd.com>,
+ <nirmoy.das@amd.com>, <chris@chris-wilson.co.uk>,
+ <matthew.auld@intel.com>, <abdiel.janulgue@linux.intel.com>,
+ <tvrtko.ursulin@linux.intel.com>, <andi.shyti@intel.com>,
+ <sam@ravnborg.org>, <miaoqinglang@huawei.com>, <emil.velikov@collabora.com>
+References: <20200813083644.31711-1-tzimmermann@suse.de>
+ <20200813083644.31711-11-tzimmermann@suse.de>
+From: Tomi Valkeinen <tomi.valkeinen@ti.com>
+Message-ID: <8739b085-0342-4c43-60e3-a21d6b257319@ti.com>
+Date: Wed, 19 Aug 2020 13:43:14 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 62.31.163.78
-X-SA-Exim-Rcpt-To: devicetree@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, shawn.lin@rock-chips.com,
- lorenzo.pieralisi@arm.com, robh@kernel.org, bhelgaas@google.com,
- heiko@sntech.de, kernel-team@android.com, frowand.list@gmail.com,
- jiaxun.yang@flygoat.com, robh+dt@kernel.org
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
+In-Reply-To: <20200813083644.31711-11-tzimmermann@suse.de>
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200819_054305_766598_169BC615 
-X-CRM114-Status: GOOD (  20.49  )
+X-CRM114-CacheID: sfid-20200819_064437_545994_EFB036FE 
+X-CRM114-Status: GOOD (  22.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,80 +115,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Heiko Stuebner <heiko@sntech.de>, Frank Rowand <frowand.list@gmail.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Rob Herring <robh+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- kernel-team@android.com
+Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+ xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Recent changes to the DT PCI bus parsing made it mandatory for
-device tree nodes describing a PCI controller to have the
-'device_type = "pci"' property for the node to be matched.
+Hi,
 
-Although this follows the letter of the specification, it
-breaks existing device-trees that have been working fine
-for years.  Rockchip rk3399-based systems are a prime example
-of such collateral damage, and have stopped discovering their
-PCI bus.
+On 13/08/2020 11:36, Thomas Zimmermann wrote:
+> GEM object functions deprecate several similar callback interfaces in
+> struct drm_driver. This patch replaces the per-driver callbacks with
+> per-instance callbacks in omapdrm.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+> ---
+>  drivers/gpu/drm/omapdrm/omap_drv.c |  9 ---------
+>  drivers/gpu/drm/omapdrm/omap_gem.c | 16 +++++++++++++++-
+>  drivers/gpu/drm/omapdrm/omap_gem.h |  1 -
+>  3 files changed, 15 insertions(+), 11 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/omapdrm/omap_drv.c b/drivers/gpu/drm/omapdrm/omap_drv.c
+> index 53d5e184ee77..2e598b8b72af 100644
+> --- a/drivers/gpu/drm/omapdrm/omap_drv.c
+> +++ b/drivers/gpu/drm/omapdrm/omap_drv.c
+> @@ -521,12 +521,6 @@ static int dev_open(struct drm_device *dev, struct drm_file *file)
+>  	return 0;
+>  }
+>  
+> -static const struct vm_operations_struct omap_gem_vm_ops = {
+> -	.fault = omap_gem_fault,
+> -	.open = drm_gem_vm_open,
+> -	.close = drm_gem_vm_close,
+> -};
+> -
+>  static const struct file_operations omapdriver_fops = {
+>  	.owner = THIS_MODULE,
+>  	.open = drm_open,
+> @@ -549,10 +543,7 @@ static struct drm_driver omap_drm_driver = {
+>  #endif
+>  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+>  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+> -	.gem_prime_export = omap_gem_prime_export,
+>  	.gem_prime_import = omap_gem_prime_import,
+> -	.gem_free_object_unlocked = omap_gem_free_object,
+> -	.gem_vm_ops = &omap_gem_vm_ops,
+>  	.dumb_create = omap_gem_dumb_create,
+>  	.dumb_map_offset = omap_gem_dumb_map_offset,
+>  	.ioctls = ioctls,
+> diff --git a/drivers/gpu/drm/omapdrm/omap_gem.c b/drivers/gpu/drm/omapdrm/omap_gem.c
+> index d0d12d5dd76c..d68dc63dea0a 100644
+> --- a/drivers/gpu/drm/omapdrm/omap_gem.c
+> +++ b/drivers/gpu/drm/omapdrm/omap_gem.c
+> @@ -487,7 +487,7 @@ static vm_fault_t omap_gem_fault_2d(struct drm_gem_object *obj,
+>   * vma->vm_private_data points to the GEM object that is backing this
+>   * mapping.
+>   */
+> -vm_fault_t omap_gem_fault(struct vm_fault *vmf)
+> +static vm_fault_t omap_gem_fault(struct vm_fault *vmf)
+>  {
+>  	struct vm_area_struct *vma = vmf->vma;
+>  	struct drm_gem_object *obj = vma->vm_private_data;
+> @@ -1169,6 +1169,18 @@ static bool omap_gem_validate_flags(struct drm_device *dev, u32 flags)
+>  	return true;
+>  }
+>  
+> +static const struct vm_operations_struct omap_gem_vm_ops = {
+> +	.fault = omap_gem_fault,
+> +	.open = drm_gem_vm_open,
+> +	.close = drm_gem_vm_close,
+> +};
+> +
+> +static const struct drm_gem_object_funcs omap_gem_object_funcs = {
+> +	.free = omap_gem_free_object,
+> +	.export = omap_gem_prime_export,
+> +	.vm_ops = &omap_gem_vm_ops,
+> +};
+> +
+>  /* GEM buffer object constructor */
+>  struct drm_gem_object *omap_gem_new(struct drm_device *dev,
+>  		union omap_gem_size gsize, u32 flags)
+> @@ -1236,6 +1248,8 @@ struct drm_gem_object *omap_gem_new(struct drm_device *dev,
+>  		size = PAGE_ALIGN(gsize.bytes);
+>  	}
+>  
+> +	obj->funcs = &omap_gem_object_funcs;
+> +
+>  	/* Initialize the GEM object. */
+>  	if (!(flags & OMAP_BO_MEM_SHMEM)) {
+>  		drm_gem_private_object_init(dev, obj, size);
+> diff --git a/drivers/gpu/drm/omapdrm/omap_gem.h b/drivers/gpu/drm/omapdrm/omap_gem.h
+> index 729b7812a815..9e6b5c8195d9 100644
+> --- a/drivers/gpu/drm/omapdrm/omap_gem.h
+> +++ b/drivers/gpu/drm/omapdrm/omap_gem.h
+> @@ -69,7 +69,6 @@ struct dma_buf *omap_gem_prime_export(struct drm_gem_object *obj, int flags);
+>  struct drm_gem_object *omap_gem_prime_import(struct drm_device *dev,
+>  		struct dma_buf *buffer);
+>  
+> -vm_fault_t omap_gem_fault(struct vm_fault *vmf);
+>  int omap_gem_roll(struct drm_gem_object *obj, u32 roll);
+>  void omap_gem_cpu_sync_page(struct drm_gem_object *obj, int pgoff);
+>  void omap_gem_dma_sync_buffer(struct drm_gem_object *obj,
 
-In order to paper over it, let's add a workaround to the code
-matching the device type, and accept as PCI any node that is
-named "pcie",
+omap_gem_free_object() can also be made static, and removed from omap_gem.h.
 
-A warning will hopefully nudge the user into updating their
-DT to a fixed version if they can, but the incentive is
-obviously pretty small.
+Tested on AM5 EVM.
 
-Fixes: 2f96593ecc37 ("of_address: Add bus type match for pci ranges parser")
-Suggested-by: Rob Herring <robh+dt@kernel.org>
-Signed-off-by: Marc Zyngier <maz@kernel.org>
----
- drivers/of/address.c | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
+Reviewed-by: Tomi Valkeinen <tomi.valkeinen@ti.com>
 
-diff --git a/drivers/of/address.c b/drivers/of/address.c
-index 590493e04b01..b37bd9cc2810 100644
---- a/drivers/of/address.c
-+++ b/drivers/of/address.c
-@@ -128,15 +128,29 @@ static unsigned int of_bus_pci_get_flags(const __be32 *addr)
-  * PCI bus specific translator
-  */
- 
-+static bool of_node_is_pcie(struct device_node *np)
-+{
-+	bool is_pcie = of_node_name_eq(np, "pcie");
-+
-+	if (is_pcie)
-+		pr_warn_once("%pOF: Missing device_type\n", np);
-+
-+	return is_pcie;
-+}
-+
- static int of_bus_pci_match(struct device_node *np)
- {
- 	/*
-  	 * "pciex" is PCI Express
- 	 * "vci" is for the /chaos bridge on 1st-gen PCI powermacs
- 	 * "ht" is hypertransport
-+	 *
-+	 * If none of the device_type match, and that the node name is
-+	 * "pcie", accept the device as PCI (with a warning).
- 	 */
- 	return of_node_is_type(np, "pci") || of_node_is_type(np, "pciex") ||
--		of_node_is_type(np, "vci") || of_node_is_type(np, "ht");
-+		of_node_is_type(np, "vci") || of_node_is_type(np, "ht") ||
-+		of_node_is_pcie(np);
- }
- 
- static void of_bus_pci_count_cells(struct device_node *np,
+ Tomi
+
 -- 
-2.27.0
-
+Texas Instruments Finland Oy, Porkkalankatu 22, 00180 Helsinki.
+Y-tunnus/Business ID: 0615521-4. Kotipaikka/Domicile: Helsinki
 
 _______________________________________________
 Linux-rockchip mailing list
