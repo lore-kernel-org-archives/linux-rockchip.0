@@ -2,78 +2,80 @@ Return-Path: <SRS0=17ih=B6=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.0 required=3.0 tests=BAYES_00,DKIM_INVALID,
+	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6A53C433DF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2020 10:52:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 967D8C433DF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2020 11:44:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84D7C206FA
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2020 10:52:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 61B2D2054F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2020 11:44:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pMw+vK97";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="ewCFczcx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84D7C206FA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1okatFFd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ti.com header.i=@ti.com header.b="wumWcYu2"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61B2D2054F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=ti.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nYK3lcNBFGjNykdF5OQktxWVlvz0rB+V79BSYnBsfOs=; b=pMw+vK97SKz5A0kKZ6nVitjV9
-	nbKvG2TUoC1q9yguRS520CE1VJ5gfY4echUcVpI+2jx7adrvxYkj6pvSKq1WcKCcpoK+SgjTIA2lP
-	5KfJ6VlPQ0PTdyaFbgKt8KHcchdkZAxv8Yja0D029ixaNkcCN04x1jIRQIwoH21ziz5DBNz66vyy7
-	mufMlARZ2MrlJ5/r7i+NTafJA5vv6QhAOh/c/zjtI+PjESxCe+nJauxFo9NMK1rs4HVPlvlegnMQe
-	QpQ4O2ScD5qRXY8kqp9NTgNfbaiJti5je04VUapz7CSRpz7AmSa9AR3Iq1pqCuWzK2Ss3pzq0qcck
-	/JwYHGOQQ==;
+	 bh=Wa1dVxvA3nbD2IvD0vfcoujdU7U86I6azayZWbiypBI=; b=1okatFFdDsIsYj04Qev0D6sbt
+	Kfnk+im1UOwoGXHDKCpOtxYSZXwPIEGc4g7hJvy31RbKJ+/WDx5TpcAWXe3h7MxefBWFOScafT9Z1
+	umir+rze/0iGt6v6E6Qw1YjTMMsmn3YZPPjcaKYGMyFBYRhxPdlqqXKqg++DYQQg+a+liAjNs06ET
+	BFQG+V6ybutdXO6sT/06raPkWXsp81JyXl9VdbhFFglRcDN4Yk6fYspz9rr0gOsQontQuOFUKaolD
+	QYsmuQQpy1Crs2NoVQDs26IN/5nwr/6pWkCVqPs/3quNe4RMhuR6gvvSllmiVIBs2bbDgv2zpvaiU
+	fg8L9AUvA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8iBS-0008GZ-SX; Thu, 20 Aug 2020 10:52:39 +0000
-Received: from lb1-smtp-cloud7.xs4all.net ([194.109.24.24])
+	id 1k8izu-0007uV-QO; Thu, 20 Aug 2020 11:44:47 +0000
+Received: from lelv0143.ext.ti.com ([198.47.23.248])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8iBQ-0008FJ-51
- for linux-rockchip@lists.infradead.org; Thu, 20 Aug 2020 10:52:37 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud7.xs4all.net with ESMTPA
- id 8iBNkGQXoywL58iBOkZMwu; Thu, 20 Aug 2020 12:52:34 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
- t=1597920754; bh=Np0c45tfz4b2wCTVMFNX3magSDwvbRp0758VD0auqBU=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=ewCFczcxqepExmBK+RGjwVRwAPkpaYTDziTxiqnpwxw7Z4iwDezQj7+cYV2zf0GRo
- CtVYeEP7nJIYavOmZEDAOfTI7JV/RmiEzj0GBx3CgZ2dlmQ/OHUKtiHtwdczJt8Kgt
- ukqN/aNwFomu5VdNrVbZ2G2w2Ldk4bbuK01gOALN6wJTM7h+tc9DNBmLARfZssWiRo
- uz9JNyQNa7ikN0/37VZy1z6vReeWEnsoNZPGjS30BRMhbS0hy3sYRK6F1KlDpi4wWA
- FrgBN0Aw706OOkIvOroq6znHQAnqoAWLtR9NifiGaIwxceigA3VbVN9oP3lzrq+Nr9
- rXkrM0ioCq18A==
-Subject: Re: [PATCH v6 4/6] v4l2: extend the CSC API to subdevice.
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-media@vger.kernel.org
-References: <20200818081807.23134-1-dafna.hirschfeld@collabora.com>
- <20200818081807.23134-5-dafna.hirschfeld@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <34565997-3757-0031-d283-8be7b915743a@xs4all.nl>
-Date: Thu, 20 Aug 2020 12:52:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1k8izr-0007t9-V9; Thu, 20 Aug 2020 11:44:44 +0000
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+ by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 07KBiLjh034621;
+ Thu, 20 Aug 2020 06:44:21 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ti.com;
+ s=ti-com-17Q1; t=1597923861;
+ bh=KekPuX5bW5OV7WGA42Ji5+dWGwrpNIKAh0IFJGWPkgw=;
+ h=Date:From:To:CC:Subject:References:In-Reply-To;
+ b=wumWcYu2C1Uab0K7/BhHt6am8WARnusXkgQxTV42cLperHvWAMr73TNd+wDsAw3wy
+ hNKVGdTP4DXYch+0pLpm6EayzBWxfb8hWJXgwCbJaBPkYV500cFpib37witpJiU5fe
+ I4uAGHEHelb5GRoGXgpVe6o/YlhZ9+BiuU3VMDj8=
+Received: from DLEE104.ent.ti.com (dlee104.ent.ti.com [157.170.170.34])
+ by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 07KBiLbD128554
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Thu, 20 Aug 2020 06:44:21 -0500
+Received: from DLEE105.ent.ti.com (157.170.170.35) by DLEE104.ent.ti.com
+ (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 20
+ Aug 2020 06:44:20 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE105.ent.ti.com
+ (157.170.170.35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Thu, 20 Aug 2020 06:44:20 -0500
+Received: from localhost (ileax41-snat.itg.ti.com [10.172.224.153])
+ by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 07KBiK7d068400;
+ Thu, 20 Aug 2020 06:44:20 -0500
+Date: Thu, 20 Aug 2020 06:44:20 -0500
+From: Nishanth Menon <nm@ti.com>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH] arm64: dts: Reformat PCI ranges/dma-ranges entries
+Message-ID: <20200820114420.sjlqvn2tbpa7vcbb@akan>
+References: <20200819221750.2055932-1-robh@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20200818081807.23134-5-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfPe1+tIyE/tMiAkmsPm7zg2+/vU2TuxyKwf4II7ld5WtOSaRCtFon3bAdCwjmR6dioW4A2rHqW2WDp+I6+RhB1B4HKVaC2RfPbB1v25ijdjFwtuRVwBj
- L63ltcisB5vTylCrFSHGQ0r4qjMCKs2386JwRvA3U4Gl3rd62ZycG9MY07vz7VY/IY/NQlrVs9IqWZeVPLBEI+BdkrlFkCtqw8U7WnQOH4AErN+QZJnzC1KX
- Z3u2DcP7XMjB467nvsJnyz0D2/dodlBjTYwpRnjr4eqJTcM2N/wXF5KG1LvAr69W8ISWPdLQbeX7Pi60SaxeuBaS/j0ooTnOg6Jg5KwnIHdejz8/pC+6fC5L
- U+qoT3eX8B/W6gy+Y2s74UiaCFaNPkt0HOjIuEz3DRR4+RMgP2A0wwjguviwJjf+NKgtNHDMQRbOpoE/y+hysptGkHR0Ue7nLGFiPWNFMYLnkb8HL63Cgpu0
- 44wjpRGUcDFhepz6h2tJoRe7yKRncV/8l7nmq91M4DVfBQr1o2IYwZj9cHMpxZWpNKKJAcBAZi4PoyR9hGAjo4hrjUGChP+rZvf/N+6g6HMpFzl/Orq1cxl8
- FmjWfoBx3qCur4EsNcpj89gPBTIC5aLC10/LJJqL2BHUTHww3zBZSvc0Rx3Z0uO+1t4=
+In-Reply-To: <20200819221750.2055932-1-robh@kernel.org>
+User-Agent: NeoMutt/20171215
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200820_065236_415811_DA7B0B92 
-X-CRM114-Status: GOOD (  36.17  )
+X-CRM114-CacheID: sfid-20200820_074444_120185_F9A6A0BD 
+X-CRM114-Status: GOOD (  13.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,323 +88,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
- linux-rockchip@lists.infradead.org, helen.koike@collabora.com,
- laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com,
- kernel@collabora.com, ezequiel@collabora.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+List-Id: <soc.lore.kernel.org>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiko Stuebner <heiko@sntech.de>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Fabio Estevam <festevam@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Kevin Hilman <khilman@baylibre.com>,
+ Gregory Clement <gregory.clement@bootlin.com>,
+ Michal Simek <michal.simek@xilinx.com>, Wei Xu <xuwei5@hisilicon.com>,
+ linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ NXP Linux Team <linux-imx@nxp.com>,
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
+ devicetree@vger.kernel.org, Jason Cooper <jason@lakedaemon.net>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+ linux-arm-msm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>,
+ soc@kernel.org, linux-amlogic@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, Li Yang <leoyang.li@nxp.com>,
+ Tero Kristo <t-kristo@ti.com>, Robert Richter <rrichter@marvell.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>
+Content-Type: multipart/mixed; boundary="===============6644202820939358028=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 18/08/2020 10:18, Dafna Hirschfeld wrote:
-> This patch extends the CSC API in video devices to be supported
-> also on sub-devices. The flag V4L2_MBUS_FRAMEFMT_SET_CSC set by
-> the application when calling VIDIOC_SUBDEV_S_FMT ioctl.
-> The flags:
-> 
-> V4L2_SUBDEV_MBUS_CODE_CSC_COLORSPACE,
-> V4L2_SUBDEV_MBUS_CODE_CSC_XFER_FUNC,
-> V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC/V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC
-> V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION
-> 
-> are set by the driver in the VIDIOC_SUBDEV_ENUM_MBUS_CODE ioctl.
-> 
-> New 'flags' fields were added to the structs
-> v4l2_subdev_mbus_code_enum, v4l2_mbus_framefmt which are borrowed
-> from the 'reserved' field
-> 
-> The patch also replaces the 'ycbcr_enc' field in
-> 'struct v4l2_mbus_framefmt' with a union that includes 'hsv_enc'
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+--===============6644202820939358028==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="jgbt6anitnjafjun"
+Content-Disposition: inline
+
+--jgbt6anitnjafjun
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On 16:17-20200819, Rob Herring wrote:
+> While bracketing doesn't matter for a DTB, the DT schema checks rely on
+[..]
 > ---
->  .../media/v4l/subdev-formats.rst              | 98 +++++++++++++++++--
->  .../v4l/vidioc-subdev-enum-mbus-code.rst      | 51 +++++++++-
->  include/uapi/linux/v4l2-mediabus.h            | 17 +++-
->  include/uapi/linux/v4l2-subdev.h              |  9 +-
->  4 files changed, 161 insertions(+), 14 deletions(-)
-> 
-> diff --git a/Documentation/userspace-api/media/v4l/subdev-formats.rst b/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> index 9a4d61b0d76f..6495bf183896 100644
-> --- a/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> +++ b/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> @@ -41,32 +41,110 @@ Media Bus Formats
->  	:ref:`field-order` for details.
->      * - __u32
->        - ``colorspace``
-> -      - Image colorspace, from enum
-> -	:c:type:`v4l2_colorspace`. See
-> -	:ref:`colorspaces` for details.
-> +      - Image colorspace, from enum :c:type:`v4l2_colorspace`.
-> +        Must be set by the driver for subdevices. If the application sets the
-> +	flag ``V4L2_MBUS_FRAMEFMT_SET_CSC`` then the application can set this
-> +	field on the source pad to request a specific colorspace for the media
-> +	bus data. If the driver cannot handle the requested conversion, it will
-> +	return another supported colorspace. The driver indicates that colorspace
-> +	conversion is supported by setting the flag
-> +	V4L2_SUBDEV_MBUS_CODE_CSC_COLORSPACE in the corresponding struct
-> +	:c:type:`v4l2_subdev_mbus_code_enum` during enumeration.
-> +	See :ref:`v4l2-subdev-mbus-code-flags`.
-> +    * - union {
-> +      - (anonymous)
->      * - __u16
->        - ``ycbcr_enc``
->        - Y'CbCr encoding, from enum :c:type:`v4l2_ycbcr_encoding`.
->          This information supplements the ``colorspace`` and must be set by
-> -	the driver for capture streams and by the application for output
-> -	streams, see :ref:`colorspaces`.
-> +	the driver for subdevices, see :ref:`colorspaces`. If the application
-> +	sets the flag ``V4L2_MBUS_FRAMEFMT_SET_CSC`` then the application can set
-> +	this field on a source pad to request a specific Y'CbCr encoding
-> +	for the media bus data. If the driver cannot handle the requested
-> +	conversion, it will return another supported encoding.
-> +	This field is ignored for HSV media bus formats. The driver indicates
-> +	that ycbcr_enc conversion is supported by setting the flag
-> +	V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC in the corresponding struct
-> +	:c:type:`v4l2_subdev_mbus_code_enum` during enumeration.
-> +	See :ref:`v4l2-subdev-mbus-code-flags`.
-> +    * - __u16
-> +      - ``hsv_enc``
-> +      - HSV encoding, from enum :c:type:`v4l2_hsv_encoding`.
-> +        This information supplements the ``colorspace`` and must be set by
-> +	the driver for subdevices, see :ref:`colorspaces`. If the application
-> +	sets the flag ``V4L2_MBUS_FRAMEFMT_SET_CSC`` then the application can set
-> +	this field on a source pad to request a specific HSV encoding
-> +	for the media bus data. If the driver cannot handle the requested
-> +	conversion, it will return another supported encoding.
-> +	This field is ignored for Y'CbCr media bus formats. The driver indicates
-> +	that hsv_enc conversion is supported by setting the flag
-> +	V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC in the corresponding struct
-> +	:c:type:`v4l2_subdev_mbus_code_enum` during enumeration.
-> +	See :ref:`v4l2-subdev-mbus-code-flags`
-> +    * - }
-> +      -
->      * - __u16
->        - ``quantization``
->        - Quantization range, from enum :c:type:`v4l2_quantization`.
->          This information supplements the ``colorspace`` and must be set by
-> -	the driver for capture streams and by the application for output
-> -	streams, see :ref:`colorspaces`.
-> +	the driver for subdevices, see :ref:`colorspaces`. If the application
-> +	sets the flag ``V4L2_MBUS_FRAMEFMT_SET_CSC`` then the application can set
-> +	this field on a source pad to request a specific quantization
-> +	for the media bus data. If the driver cannot handle the requested
-> +	conversion, it will return another supported quantization.
-> +	The driver indicates that quantization conversion is supported by
-> +	setting the flag V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION in the
-> +	corresponding struct :c:type:`v4l2_subdev_mbus_code_enum`
-> +	during enumeration. See :ref:`v4l2-subdev-mbus-code-flags`.
-> +
->      * - __u16
->        - ``xfer_func``
->        - Transfer function, from enum :c:type:`v4l2_xfer_func`.
->          This information supplements the ``colorspace`` and must be set by
-> -	the driver for capture streams and by the application for output
-> -	streams, see :ref:`colorspaces`.
-> +	the driver for subdevices, see :ref:`colorspaces`. If the application
-> +	sets the flag ``V4L2_MBUS_FRAMEFMT_SET_CSC`` then the application can set
-> +	this field on a source pad to request a specific transfer
-> +	function for the media bus data. If the driver cannot handle the requested
-> +	conversion, it will return another supported transfer function.
-> +	The driver indicates that the transfer function conversion is supported by
-> +	setting the flag V4L2_SUBDEV_MBUS_CODE_CSC_XFER_FUNC in the
-> +	corresponding struct :c:type:`v4l2_subdev_mbus_code_enum`
-> +	during enumeration. See :ref:`v4l2-subdev-mbus-code-flags`.
->      * - __u16
-> -      - ``reserved``\ [11]
-> +      - ``reserved2``
-> +      - Reserved for future extensions.
-> +    * - __u32
-> +      - ``flags``
-> +      - flags See:  :ref:v4l2-mbus-framefmt-flags
-> +    * - __u16
-> +      - ``reserved``\ [8]
->        - Reserved for future extensions. Applications and drivers must set
->  	the array to zero.
->  
-> +.. _v4l2-mbus-framefmt-flags:
-> +
-> +.. flat-table:: v4l2_mbus_framefmt Flags
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       3 1 4
-> +
-> +    * .. _`mbus-framefmt-set-csc`:
-> +
-> +      - ``V4L2_MBUS_FRAMEFMT_SET_CSC``
-> +      - 0x00000001
-> +      - Set by the application. It is only used for source pads and is
-> +	ignored for sink pads. If set, then request the subdevice to do
-> +	colorspace conversion from the received colorspace to the requested
-> +	colorspace values. If the colorimetry field (``colorspace``, ``xfer_func``,
-> +	``ycbcr_enc``, ``hsv_enc`` or ``quantization``) is set to ``*_DEFAULT``,
-> +	then that colorimetry setting will remain unchanged from what was received.
-> +	So in order to change the quantization, only the ``quantization`` field shall
-> +	be set to non default value (``V4L2_QUANTIZATION_FULL_RANGE`` or
-> +	``V4L2_QUANTIZATION_LIM_RANGE``) and all other colorimetry fields shall
-> +	be set to ``*_DEFAULT``.
-> +
-> +	To check which conversions are supported by the hardware for the current
-> +	media bus frame format, see :ref:`v4l2-subdev-mbus-code-flags`.
->  
->  
->  .. _v4l2-mbus-pixelcode:
-> diff --git a/Documentation/userspace-api/media/v4l/vidioc-subdev-enum-mbus-code.rst b/Documentation/userspace-api/media/v4l/vidioc-subdev-enum-mbus-code.rst
-> index 35b8607203a4..d9bb12ac2145 100644
-> --- a/Documentation/userspace-api/media/v4l/vidioc-subdev-enum-mbus-code.rst
-> +++ b/Documentation/userspace-api/media/v4l/vidioc-subdev-enum-mbus-code.rst
-> @@ -79,11 +79,60 @@ information about the try formats.
->        - Media bus format codes to be enumerated, from enum
->  	:ref:`v4l2_subdev_format_whence <v4l2-subdev-format-whence>`.
->      * - __u32
-> -      - ``reserved``\ [8]
-> +      - ``flags``
-> +      - See :ref:`v4l2-subdev-mbus-code-flags`
-> +    * - __u32
-> +      - ``reserved``\ [7]
->        - Reserved for future extensions. Applications and drivers must set
->  	the array to zero.
->  
->  
-> +
-> +.. tabularcolumns:: |p{4.4cm}|p{4.4cm}|p{7.7cm}|
-> +
-> +.. _v4l2-subdev-mbus-code-flags:
-> +
-> +.. flat-table:: Subdev Media Bus Code Enumerate Flags
-> +    :header-rows:  0
-> +    :stub-columns: 0
-> +    :widths:       1 1 2
-> +
-> +    * - V4L2_SUBDEV_MBUS_CODE_CSC_COLORSPACE
-> +      - 0x00000001
-> +      - The driver allows the application to try to change the default colorspace
-> +	encoding. The application can ask to configure the colorspace of the
-> +	subdevice when calling the :ref:`VIDIOC_SUBDEV_S_FMT <VIDIOC_SUBDEV_G_FMT>`
-> +	ioctl with :ref:`V4L2_MBUS_FRAMEFMT_SET_CSC <mbus-framefmt-set-csc>` set.
-> +	See :ref:`v4l2-mbus-format` on how to do this.
-> +    * - V4L2_SUBDEV_MBUS_CODE_CSC_XFER_FUNC
-> +      - 0x00000002
-> +      - The driver allows the application to try to change the default transform function.
-> +	The application can ask to configure the transform function of
-> +	the subdevice when calling the :ref:`VIDIOC_SUBDEV_S_FMT <VIDIOC_SUBDEV_G_FMT>`
-> +	ioctl with :ref:`V4L2_MBUS_FRAMEFMT_SET_CSC <mbus-framefmt-set-csc>` set.
-> +	See :ref:`v4l2-mbus-format` on how to do this.
-> +    * - V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC
-> +      - 0x00000004
-> +      - The driver allows the application to try to change the default Y'CbCr
-> +	encoding. The application can ask to configure the Y'CbCr encoding of the
-> +	subdevice when calling the :ref:`VIDIOC_SUBDEV_S_FMT <VIDIOC_SUBDEV_G_FMT>`
-> +	ioctl with :ref:`V4L2_MBUS_FRAMEFMT_SET_CSC <mbus-framefmt-set-csc>` set.
-> +	See :ref:`v4l2-mbus-format` on how to do this.
-> +    * - V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC
-> +      - 0x00000004
-> +      - The driver allows the application to try to change the default HSV
-> +	encoding. The application can ask to configure the HSV encoding of the
-> +	subdevice when calling the :ref:`VIDIOC_SUBDEV_S_FMT <VIDIOC_SUBDEV_G_FMT>`
-> +	ioctl with :ref:`V4L2_MBUS_FRAMEFMT_SET_CSC <mbus-framefmt-set-csc>` set.
-> +	See :ref:`v4l2-mbus-format` on how to do this.
-> +    * - V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION
-> +      - 0x00000008
-> +      - The driver allows the application to try to change the default
-> +	quantization. The application can ask to configure the quantization of
-> +	the subdevice when calling the :ref:`VIDIOC_SUBDEV_S_FMT <VIDIOC_SUBDEV_G_FMT>`
-> +	ioctl with :ref:`V4L2_MBUS_FRAMEFMT_SET_CSC <mbus-framefmt-set-csc>` set.
-> +	See :ref:`v4l2-mbus-format` on how to do this.
-> +
->  Return Value
->  ============
->  
-> diff --git a/include/uapi/linux/v4l2-mediabus.h b/include/uapi/linux/v4l2-mediabus.h
-> index 123a231001a8..d0bc8df18ad5 100644
-> --- a/include/uapi/linux/v4l2-mediabus.h
-> +++ b/include/uapi/linux/v4l2-mediabus.h
-> @@ -16,6 +16,8 @@
->  #include <linux/types.h>
->  #include <linux/videodev2.h>
->  
-> +#define V4L2_MBUS_FRAMEFMT_SET_CSC	0x00000001
-> +
->  /**
->   * struct v4l2_mbus_framefmt - frame format on the media bus
->   * @width:	image width
-> @@ -24,8 +26,12 @@
->   * @field:	used interlacing type (from enum v4l2_field)
->   * @colorspace:	colorspace of the data (from enum v4l2_colorspace)
->   * @ycbcr_enc:	YCbCr encoding of the data (from enum v4l2_ycbcr_encoding)
-> + * @hsv_enc:	HSV encoding of the data (from enum v4l2_hsv_encoding)
->   * @quantization: quantization of the data (from enum v4l2_quantization)
->   * @xfer_func:  transfer function of the data (from enum v4l2_xfer_func)
-> + * @reserved2:  two reserved bytes that can be later used
-> + * @flags:	flags (V4L2_MBUS_FRAMEFMT_*)
-> + * @reserved:  reserved bytes that can be later used
->   */
->  struct v4l2_mbus_framefmt {
->  	__u32			width;
-> @@ -33,10 +39,17 @@ struct v4l2_mbus_framefmt {
->  	__u32			code;
->  	__u32			field;
->  	__u32			colorspace;
-> -	__u16			ycbcr_enc;
-> +	union {
-> +		/* enum v4l2_ycbcr_encoding */
-> +		__u16			ycbcr_enc;
-> +		/* enum v4l2_hsv_encoding */
-> +		__u16			hsv_enc;
-> +	};
->  	__u16			quantization;
->  	__u16			xfer_func;
-> -	__u16			reserved[11];
-> +	__u16			reserved2;
-> +	__u32			flags;
-> +	__u16			reserved[8];
+> SoC maintainers, please apply this directly.
+	  [...]
+> diff --git a/arch/arm64/boot/dts/ti/k3-am65-main.dtsi b/arch/arm64/boot/d=
+ts/ti/k3-am65-main.dtsi
+> index 9edfae5944f7..2c762e725d89 100644
+> --- a/arch/arm64/boot/dts/ti/k3-am65-main.dtsi
+> +++ b/arch/arm64/boot/dts/ti/k3-am65-main.dtsi
+> @@ -678,8 +678,8 @@ pcie0_rc: pcie@5500000 {
+>  		power-domains =3D <&k3_pds 120 TI_SCI_PD_EXCLUSIVE>;
+>  		#address-cells =3D <3>;
+>  		#size-cells =3D <2>;
+> -		ranges =3D <0x81000000 0 0          0x0 0x10020000 0 0x00010000
+> -			  0x82000000 0 0x10030000 0x0 0x10030000 0 0x07FD0000>;
+> +		ranges =3D <0x81000000 0 0          0x0 0x10020000 0 0x00010000>,
+> +			 <0x82000000 0 0x10030000 0x0 0x10030000 0 0x07FD0000>;
+>  		ti,syscon-pcie-id =3D <&pcie_devid>;
+>  		ti,syscon-pcie-mode =3D <&pcie0_mode>;
+>  		bus-range =3D <0x0 0xff>;
+> @@ -710,8 +710,8 @@ pcie1_rc: pcie@5600000 {
+>  		power-domains =3D <&k3_pds 121 TI_SCI_PD_EXCLUSIVE>;
+>  		#address-cells =3D <3>;
+>  		#size-cells =3D <2>;
+> -		ranges =3D <0x81000000 0 0          0x0   0x18020000 0 0x00010000
+> -			  0x82000000 0 0x18030000 0x0   0x18030000 0 0x07FD0000>;
+> +		ranges =3D <0x81000000 0 0          0x0   0x18020000 0 0x00010000>,
+> +			 <0x82000000 0 0x18030000 0x0   0x18030000 0 0x07FD0000>;
+>  		ti,syscon-pcie-id =3D <&pcie_devid>;
+>  		ti,syscon-pcie-mode =3D <&pcie1_mode>;
+>  		bus-range =3D <0x0 0xff>;
 
-Having to introduce a reserved2 field is pretty bad.
+For the TI chunk:
+Acked-by: Nishanth Menon <nm@ti.com>
+--=20
+Regards,
+Nishanth Menon
+Key (0xDDB5849D1736249D) / Fingerprint: F8A2 8693 54EB 8232 17A3  1A34 DDB5=
+ 849D 1736 249D
 
-I would just make flags a __u16. If we ever need more than 16 bits, then it is easy
-to add a flags2 field, but for now just stick to a __u16 flags field to avoid a
-reserved2.
+--jgbt6anitnjafjun
+Content-Type: application/pgp-signature; name="signature.asc"
 
->  };
->  
->  #ifndef __KERNEL__
-> diff --git a/include/uapi/linux/v4l2-subdev.h b/include/uapi/linux/v4l2-subdev.h
-> index 5d2a1dab7911..e93970a2a38f 100644
-> --- a/include/uapi/linux/v4l2-subdev.h
-> +++ b/include/uapi/linux/v4l2-subdev.h
-> @@ -65,19 +65,26 @@ struct v4l2_subdev_crop {
->  	__u32 reserved[8];
->  };
->  
-> +#define V4L2_SUBDEV_MBUS_CODE_CSC_COLORSPACE	0x00000001
-> +#define V4L2_SUBDEV_MBUS_CODE_CSC_XFER_FUNC	0x00000002
-> +#define V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC	0x00000004
-> +#define V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC	V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC
-> +#define V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION	0x00000008
->  /**
->   * struct v4l2_subdev_mbus_code_enum - Media bus format enumeration
->   * @pad: pad number, as reported by the media API
->   * @index: format index during enumeration
->   * @code: format code (MEDIA_BUS_FMT_ definitions)
->   * @which: format type (from enum v4l2_subdev_format_whence)
-> + * @flags: flags set by the driver, (V4L2_SUBDEV_MBUS_CODE_*)
->   */
->  struct v4l2_subdev_mbus_code_enum {
->  	__u32 pad;
->  	__u32 index;
->  	__u32 code;
->  	__u32 which;
-> -	__u32 reserved[8];
-> +	__u32 flags;
-> +	__u32 reserved[7];
->  };
->  
->  /**
-> 
+-----BEGIN PGP SIGNATURE-----
 
+iQIzBAABCgAdFiEE+KKGk1TrgjIXoxo03bWEnRc2JJ0FAl8+YgwACgkQ3bWEnRc2
+JJ0WIg//YBZVg8WDT/O8r7i2UkktHsq0s0v55hHAOfcl47v8FQtw84RgUhFCn+9i
+U/VpPbU7ZvIUlpbADflEHrnXkYfhikLBFJ90DEde63M1DkFyvjnMXJVImmuiK7E7
+WbWZpo21fRKfbFje9l6upMgfiM4ZB7GS/NkKssavEX22oaG5+GTjNjEI1EJijNG/
+K0hD2jvRdQ59eyfdvKL8ezXthEaJdCyWuREOKCsE/VUDHC/KgXcpZjLA7BICegYn
+J/UeEhSJGtV2UaUkU621yg3gRF2f7on236lG4cs4QnYIzACww4MA2r3UdM+zsOI0
+RJR8/LbNzBtfzPUmyQldvvBKQ80HtgMe0jhuFGflT4rjzbMQXYbOdIFR0A2Jhw2/
+tt2YH0rmxV3rhRLsPtcmltMQW/2iccVbvHZaz8xQ9HirP2XaAvhTUfG5ayFTD3jb
+uxU9HV/SMapoo56gvFRkg09K4vNAtTwc8TZLOo29FbKSv0+PUXFDBODeygVgNYxL
+RI8OFjIgAiWTgAow/5CNkPwKLjR7F/dMj5T2hX1WVjwD5ds1bdl6dJP6WejEs3OU
+iEYUy5PR23cZoVrH6V4FMcyWv/6D+7C8UzHIqzkUulviPpSofpb8muTAlsyAe9gx
+YZPxS3DHyObqDoJbspVmD2acwVGz6KQBvvyEqvsC42qkJ0T5ByA=
+=TsAH
+-----END PGP SIGNATURE-----
+
+--jgbt6anitnjafjun--
+
+
+--===============6644202820939358028==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6644202820939358028==--
+
