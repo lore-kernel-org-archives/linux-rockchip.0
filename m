@@ -2,23 +2,23 @@ Return-Path: <SRS0=17ih=B6=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 32FA7C433DF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2020 07:26:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 13F1EC433E1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2020 09:28:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E07482080C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2020 07:26:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D560622D3E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 20 Aug 2020 09:28:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uJkJPrXe";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=xilinx.onmicrosoft.com header.i=@xilinx.onmicrosoft.com header.b="rupk/IAz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E07482080C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xilinx.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="w7I4eUBS";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="Oy74UdDg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D560622D3E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,175 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=AU+/nuyxdzpxv0cN+6ILSRyTUEI50hX0rmh5MZKMSFY=; b=uJkJPrXezTboGnwt+fz56BL2g
-	rTPe6PIIV5LL0OdOPExCecSyHRFFSJGFgSmg6j5qExOwhFRW5awjxHdZFa32KUy9/kPkiITPrt43a
-	sEP6BqswKSPxfMbNzJ9hHqEqYghiP7huwgyF+KEjR7SimVIB4ilu/V5zUWwcLGsKL4G2ejLlSQCID
-	Qj3PdDNY/4M0SQolbCYU1XzYb5hyJvudOoaR5OvdW0QEnaAoa4TtPtoTxw65pMzWGZKyp766P1bmx
-	Idj1+8gzY488vJdMXY4KbcPQNaGvVrsz+/jcVC7lzJ1bGXQeKdWNOTssRYxv0rCVDut5hTKr/NnRp
-	T0alMKcrA==;
+	 bh=OsCH+Hmuv3YHjcXI3wIBOIdoFoztrpte6S71qi7GV3Q=; b=w7I4eUBSWVdwkPl2ve7JNytgC
+	KaxWMOUYzc34chQfWy5AQ/UcYrdhWKmHcXGsO8wqMuUfUx5cu5/4JFRdl+CoGdEr4p6Hr61jc+DSD
+	GzgqXIShLxSuQwdFSKO5+pir++5JxYSIjSOdlKn+8YRhJ7KhxqR4Cr6e/Ku6+w9YORR20oIWxxbPs
+	klYSRVhyG3i2EIraALl8bb9lUMZ2h6i085yFUxGL9RAQLWz8/k86lo+m+6MGHSCJollo6o62jW/pb
+	EnbltpHNihgoSL/CIggZORjXcQlA5XPXLAH9dtDOVrJe86p6dZ36O5wbkzs2KX7NSv4+1GK+nRmtq
+	zDYNdaihA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k8exZ-0003rD-E7; Thu, 20 Aug 2020 07:26:05 +0000
-Received: from mail-mw2nam10on2078.outbound.protection.outlook.com
- ([40.107.94.78] helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+	id 1k8grZ-0000Pz-58; Thu, 20 Aug 2020 09:28:01 +0000
+Received: from lb3-smtp-cloud7.xs4all.net ([194.109.24.31])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k8exT-0003pa-96; Thu, 20 Aug 2020 07:26:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RcAVLu2rbPYQPmVBEgehVBFPwVvJMVLRC8OLuyO4CsXd861S6dFiEfY012F96CMfpqk7tuPpS4iYJhwqVgnJ9cxR5OSZrekSd9eexi6nJz4CsBOlLi3QvVQTxc3s8ddTobFNsE7ASdnwddaSCiezcPjDNPMpINxG/2rYvrBctult6Ds9GSNK4IZcTKZyXZoFBESfe9sekmBesDuZ5TF9mF+OTFpiyYxYFWK2r1PaOZhjIk0aoreovGI9N2DrNa9frl0C6+ftmfcuZhryB+xHreWMi9tLgiQr496wHBQe5rkEoUv0JOJu9WKz+IR9RCN3lxJyPdKoFEUiLQ25gLsCEQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=22EmSTOYadEHlTAC6Khlb5SyYQHlr+bfl2tz1FvoMvU=;
- b=oRn/RAtkC8imRqm0dAlLtro8sKd8yq6VCNYl06anFkeq24KBZm1EK09aPzdq0Ez/lZVMlobczR07Ig3TTC0Flgsj9WVHeIaKhDPx9/6rl3buu3YyaR/iLak3ypxmLkf9/J9M5VmP0iBEgqjRUxFl5WB3CEAV9hLzIqQxrFyV4aKQ0MzM5Ys0NYT8J5NNVLHgcC6/YZ2W1NZpnR3gt7VfpS1FtszP6aFGhuqCusZCci/B2X0SlSgYtdE7tW6RP2aAxdm0WWjwaEZu6nqj7yljr+oTXR7unWVs3rZ9Owg6c+PJAcs2DzHh//wGIu/dztVjjPZHopXmDm2nudwjLdAWiQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.60.83) smtp.rcpttodomain=kernel.org smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=22EmSTOYadEHlTAC6Khlb5SyYQHlr+bfl2tz1FvoMvU=;
- b=rupk/IAzouZiIiUEZG97tLDAqHMXfp628Yv6QXNtnpph1HRXXqMa7EqeXAptJpOLbb5ik5IsBJ86aqJugszdYGQwUw+KBbf4Q1gavp7VdH4sw2g4U1ZR16NsU5lp9eQlwsp8O8zojGerMsWKa9Ro0qKfo/HDE0q8iVLqvYXTsiQ=
-Received: from CY4PR03CA0023.namprd03.prod.outlook.com (2603:10b6:903:33::33)
- by BY5PR02MB6900.namprd02.prod.outlook.com (2603:10b6:a03:21d::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3283.16; Thu, 20 Aug
- 2020 07:25:55 +0000
-Received: from CY1NAM02FT059.eop-nam02.prod.protection.outlook.com
- (2603:10b6:903:33:cafe::36) by CY4PR03CA0023.outlook.office365.com
- (2603:10b6:903:33::33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3305.24 via Frontend
- Transport; Thu, 20 Aug 2020 07:25:55 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
- smtp.mailfrom=xilinx.com; kernel.org; dkim=none (message not signed)
- header.d=none;kernel.org; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
- CY1NAM02FT059.mail.protection.outlook.com (10.152.74.211) with Microsoft SMTP
- Server id 15.20.3305.24 via Frontend Transport; Thu, 20 Aug 2020 07:25:55
- +0000
-Received: from [149.199.38.66] (port=40864 helo=smtp.xilinx.com)
- by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
- (envelope-from <michal.simek@xilinx.com>)
- id 1k8ex4-00006e-G3; Thu, 20 Aug 2020 00:25:34 -0700
-Received: from [127.0.0.1] (helo=localhost)
- by smtp.xilinx.com with smtp (Exim 4.63)
- (envelope-from <michal.simek@xilinx.com>)
- id 1k8exP-0002G4-3C; Thu, 20 Aug 2020 00:25:55 -0700
-Received: from xsj-pvapsmtp01 (smtp.xilinx.com [149.199.38.66])
- by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 07K7PjSP020851; 
- Thu, 20 Aug 2020 00:25:45 -0700
-Received: from [172.30.17.109] by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <michals@xilinx.com>)
- id 1k8exF-00028u-94; Thu, 20 Aug 2020 00:25:45 -0700
-Subject: Re: [PATCH] arm64: dts: Reformat PCI ranges/dma-ranges entries
-List-Id: <soc.lore.kernel.org>
-To: Rob Herring <robh@kernel.org>, soc@kernel.org
-References: <20200819221750.2055932-1-robh@kernel.org>
-From: Michal Simek <michal.simek@xilinx.com>
-Autocrypt: addr=michals@xilinx.com; keydata=
- xsFNBFFuvDEBEAC9Amu3nk79+J+4xBOuM5XmDmljuukOc6mKB5bBYOa4SrWJZTjeGRf52VMc
- howHe8Y9nSbG92obZMqsdt+d/hmRu3fgwRYiiU97YJjUkCN5paHXyBb+3IdrLNGt8I7C9RMy
- svSoH4WcApYNqvB3rcMtJIna+HUhx8xOk+XCfyKJDnrSuKgx0Svj446qgM5fe7RyFOlGX/wF
- Ae63Hs0RkFo3I/+hLLJP6kwPnOEo3lkvzm3FMMy0D9VxT9e6Y3afe1UTQuhkg8PbABxhowzj
- SEnl0ICoqpBqqROV/w1fOlPrm4WSNlZJunYV4gTEustZf8j9FWncn3QzRhnQOSuzTPFbsbH5
- WVxwDvgHLRTmBuMw1sqvCc7CofjsD1XM9bP3HOBwCxKaTyOxbPJh3D4AdD1u+cF/lj9Fj255
- Es9aATHPvoDQmOzyyRNTQzupN8UtZ+/tB4mhgxWzorpbdItaSXWgdDPDtssJIC+d5+hskys8
- B3jbv86lyM+4jh2URpnL1gqOPwnaf1zm/7sqoN3r64cml94q68jfY4lNTwjA/SnaS1DE9XXa
- XQlkhHgjSLyRjjsMsz+2A4otRLrBbumEUtSMlPfhTi8xUsj9ZfPIUz3fji8vmxZG/Da6jx/c
- a0UQdFFCL4Ay/EMSoGbQouzhC69OQLWNH3rMQbBvrRbiMJbEZwARAQABzR9NaWNoYWwgU2lt
- ZWsgPG1vbnN0ckBtb25zdHIuZXU+wsGBBBMBAgArAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIe
- AQIXgAIZAQUCWq+GEgUJDuRkWQAKCRA3fH8h/j0fkW9/D/9IBoykgOWah2BakL43PoHAyEKb
- Wt3QxWZSgQjeV3pBys08uQDxByChT1ZW3wsb30GIQSTlzQ7juacoUosje1ygaLHR4xoFMAT9
- L6F4YzZaPwW6aLI8pUJad63r50sWiGDN/UlhvPrHa3tinhReTEgSCoPCFg3TjjT4nI/NSxUS
- 5DAbL9qpJyr+dZNDUNX/WnPSqMc4q5R1JqVUxw2xuKPtH0KI2YMoMZ4BC+qfIM+hz+FTQAzk
- nAfA0/fbNi0gi4050wjouDJIN+EEtgqEewqXPxkJcFd3XHZAXcR7f5Q1oEm1fH3ecyiMJ3ye
- Paim7npOoIB5+wL24BQ7IrMn3NLeFLdFMYZQDSBIUMe4NNyTfvrHPiwZzg2+9Z+OHvR9hv+r
- +u/iQ5t5IJrnZQIHm4zEsW5TD7HaWLDx6Uq/DPUf2NjzKk8lPb1jgWbCUZ0ccecESwpgMg35
- jRxodat/+RkFYBqj7dpxQ91T37RyYgSqKV9EhkIL6F7Whrt9o1cFxhlmTL86hlflPuSs+/Em
- XwYVS+bO454yo7ksc54S+mKhyDQaBpLZBSh/soJTxB/nCOeJUji6HQBGXdWTPbnci1fnUhF0
- iRNmR5lfyrLYKp3CWUrpKmjbfePnUfQS+njvNjQG+gds5qnIk2glCvDsuAM1YXlM5mm5Yh+v
- z47oYKzXe87A4gRRb3+lEQQAsBOQdv8t1nkdEdIXWuD6NPpFewqhTpoFrxUtLnyTb6B+gQ1+
- /nXPT570UwNw58cXr3/HrDml3e3Iov9+SI771jZj9+wYoZiO2qop9xp0QyDNHMucNXiy265e
- OAPA0r2eEAfxZCi8i5D9v9EdKsoQ9jbII8HVnis1Qu4rpuZVjW8AoJ6xN76kn8yT225eRVly
- PnX9vTqjBACUlfoU6cvse3YMCsJuBnBenGYdxczU4WmNkiZ6R0MVYIeh9X0LqqbSPi0gF5/x
- D4azPL01d7tbxmJpwft3FO9gpvDqq6n5l+XHtSfzP7Wgooo2rkuRJBntMCwZdymPwMChiZgh
- kN/sEvsNnZcWyhw2dCcUekV/eu1CGq8+71bSFgP/WPaXAwXfYi541g8rLwBrgohJTE0AYbQD
- q5GNF6sDG/rNQeDMFmr05H+XEbV24zeHABrFpzWKSfVy3+J/hE5eWt9Nf4dyto/S55cS9qGB
- caiED4NXQouDXaSwcZ8hrT34xrf5PqEAW+3bn00RYPFNKzXRwZGQKRDte8aCds+GHufCwa0E
- GAECAA8CGwIFAlqvhnkFCQ7joU8AUgkQN3x/If49H5FHIAQZEQIABgUCUW9/pQAKCRDKSWXL
- KUoMITzqAJ9dDs41goPopjZu2Au7zcWRevKP9gCgjNkNe7MxC9OeNnup6zNeTF0up/nEYw/9
- Httigv2cYu0Q6jlftJ1zUAHadoqwChliMgsbJIQYvRpUYchv+11ZAjcWMlmW/QsS0arrkpA3
- RnXpWg3/Y0kbm9dgqX3edGlBvPsw3gY4HohkwptSTE/h3UHS0hQivelmf4+qUTJZzGuE8TUN
- obSIZOvB4meYv8z1CLy0EVsLIKrzC9N05gr+NP/6u2x0dw0WeLmVEZyTStExbYNiWSpp+SGh
- MTyqDR/lExaRHDCVaveuKRFHBnVf9M5m2O0oFlZefzG5okU3lAvEioNCd2MJQaFNrNn0b0zl
- SjbdfFQoc3m6e6bLtBPfgiA7jLuf5MdngdWaWGti9rfhVL/8FOjyG19agBKcnACYj3a3WCJS
- oi6fQuNboKdTATDMfk9P4lgL94FD/Y769RtIvMHDi6FInfAYJVS7L+BgwTHu6wlkGtO9ZWJj
- ktVy3CyxR0dycPwFPEwiRauKItv/AaYxf6hb5UKAPSE9kHGI4H1bK2R2k77gR2hR1jkooZxZ
- UjICk2bNosqJ4Hidew1mjR0rwTq05m7Z8e8Q0FEQNwuw/GrvSKfKmJ+xpv0rQHLj32/OAvfH
- L+sE5yV0kx0ZMMbEOl8LICs/PyNpx6SXnigRPNIUJH7Xd7LXQfRbSCb3BNRYpbey+zWqY2Wu
- LHR1TS1UI9Qzj0+nOrVqrbV48K4Y78sajt7OwU0EUW68MQEQAJeqJfmHggDTd8k7CH7zZpBZ
- 4dUAQOmMPMrmFJIlkMTnko/xuvUVmuCuO9D0xru2FK7WZuv7J14iqg7X+Ix9kD4MM+m+jqSx
- yN6nXVs2FVrQmkeHCcx8c1NIcMyr05cv1lmmS7/45e1qkhLMgfffqnhlRQHlqxp3xTHvSDiC
- Yj3Z4tYHMUV2XJHiDVWKznXU2fjzWWwM70tmErJZ6VuJ/sUoq/incVE9JsG8SCHvVXc0MI+U
- kmiIeJhpLwg3e5qxX9LX5zFVvDPZZxQRkKl4dxjaqxAASqngYzs8XYbqC3Mg4FQyTt+OS7Wb
- OXHjM/u6PzssYlM4DFBQnUceXHcuL7G7agX1W/XTX9+wKam0ABQyjsqImA8u7xOw/WaKCg6h
- JsZQxHSNClRwoXYvaNo1VLq6l282NtGYWiMrbLoD8FzpYAqG12/z97T9lvKJUDv8Q3mmFnUa
- 6AwnE4scnV6rDsNDkIdxJDls7HRiOaGDg9PqltbeYHXD4KUCfGEBvIyx8GdfG+9yNYg+cFWU
- HZnRgf+CLMwN0zRJr8cjP6rslHteQYvgxh4AzXmbo7uGQIlygVXsszOQ0qQ6IJncTQlgOwxe
- +aHdLgRVYAb5u4D71t4SUKZcNxc8jg+Kcw+qnCYs1wSE9UxB+8BhGpCnZ+DW9MTIrnwyz7Rr
- 0vWTky+9sWD1ABEBAAHCwWUEGAECAA8CGwwFAlqvhmUFCQ7kZLEACgkQN3x/If49H5H4OhAA
- o5VEKY7zv6zgEknm6cXcaARHGH33m0z1hwtjjLfVyLlazarD1VJ79RkKgqtALUd0n/T1Cwm+
- NMp929IsBPpC5Ql3FlgQQsvPL6Ss2BnghoDr4wHVq+0lsaPIRKcQUOOBKqKaagfG2L5zSr3w
- rl9lAZ5YZTQmI4hCyVaRp+x9/l3dma9G68zY5fw1aYuqpqSpV6+56QGpb+4WDMUb0A/o+Xnt
- R//PfnDsh1KH48AGfbdKSMI83IJd3V+N7FVR2BWU1rZ8CFDFAuWj374to8KinC7BsJnQlx7c
- 1CzxB6Ht93NvfLaMyRtqgc7Yvg2fKyO/+XzYPOHAwTPM4xrlOmCKZNI4zkPleVeXnrPuyaa8
- LMGqjA52gNsQ5g3rUkhp61Gw7g83rjDDZs5vgZ7Q2x3CdH0mLrQPw2u9QJ8K8OVnXFtiKt8Q
- L3FaukbCKIcP3ogCcTHJ3t75m4+pwH50MM1yQdFgqtLxPgrgn3U7fUVS9x4MPyO57JDFPOG4
- oa0OZXydlVP7wrnJdi3m8DnljxyInPxbxdKGN5XnMq/r9Y70uRVyeqwp97sKLXd9GsxuaSg7
- QJKUaltvN/i7ng1UOT/xsKeVdfXuqDIIElZ+dyEVTweDM011Zv0NN3OWFz6oD+GzyBetuBwD
- 0Z1MQlmNcq2bhOMzTxuXX2NDzUZs4aqEyZQ=
-Message-ID: <df3992e8-cf97-3b1b-06af-3b57cbce13dc@xilinx.com>
-Date: Thu, 20 Aug 2020 09:25:38 +0200
+ id 1k8grW-0000PL-Ue
+ for linux-rockchip@lists.infradead.org; Thu, 20 Aug 2020 09:27:59 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id 8grPkFbsBywL58grRkZ8bJ; Thu, 20 Aug 2020 11:27:55 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1597915675; bh=cNLUtp3j+bxZUs5oMm61luJ8XShEeI/t0jPuqCJFGx8=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=Oy74UdDgA4wbHGzZmQVtRP4mSlN2EhMn97pEipm7FeIIO2NTZPowsnhBah4se6SgV
+ WdglVV2S62zFk0+5GPKcDA5uPfmNAAnEFoqzoa3X6Xj5aY3tzSF9HwD6ovyMjvK8YE
+ fgxjzIWM3mbZ3P8xrx0vuRm6kt2hPEoouirH3i+RHRwFRvofIGgHQpIE1HNq5cnKZ9
+ Zn8UNb2SDm2KSaFrSDOtYV24Pjlk6QNAGMK0bRrPrvum8oKK4bf/XU/Drh4tzUlPRM
+ rA1UAKgXGfCOsO2VWS1WKtMl1E6ht9RYpq6gr+V+0Wm72I/jD4vZsAlVRUzSvru6fJ
+ 1p5lAq2EcygEw==
+Subject: Re: [PATCH v2 05/14] media: staging: rkisp1: params: upon stream
+ stop, iterate a local list to return the buffers
+To: Helen Koike <helen.koike@collabora.com>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ linux-media@vger.kernel.org
+References: <20200815103734.31153-1-dafna.hirschfeld@collabora.com>
+ <20200815103734.31153-6-dafna.hirschfeld@collabora.com>
+ <695451da-c7af-a12c-f308-c45675b8f3aa@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <33ed026c-f014-0fff-2f19-afc1548e80f2@xs4all.nl>
+Date: Thu, 20 Aug 2020 11:27:51 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200819221750.2055932-1-robh@kernel.org>
+In-Reply-To: <695451da-c7af-a12c-f308-c45675b8f3aa@collabora.com>
 Content-Language: en-US
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 692bd15b-7d3a-4c24-48ae-08d844da46cc
-X-MS-TrafficTypeDiagnostic: BY5PR02MB6900:
-X-Microsoft-Antispam-PRVS: <BY5PR02MB69003909E5595AA5D41B5E1FC65A0@BY5PR02MB6900.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: /77zhXcNEEAys1O5LCqYUkvy6RUFf37rXcGTGvMawgvzXdBYYJocZ71hILnP0BAsLX9iSNPQVHmHQw5J9XD3QeYGKtYy8b8p0wuxzpgGmLn+9RwbF6P/8+9VIc8y8qbJs18/wr3mMEsxpBOH9BT4CSFC7711uulI1I/HfWCAOxhhwZbq0aNA49SFNt0zRTML4fDJ42uEGjLUYXYEiMWsPI2BgroiCUHMZ59kOkVMryDaLmNtJdLQV3OqrH1vhvglr2pQd6NwzVfTNE2xD9k6/iYvXX5xE5ZridSc2foEvGtJzAgyJpnQGtwMtabVMEOD4h9S9vlRbyeE3F8XjKXJrM+6Oa1NzAgT6zArA+vgUxBr2FTcyb1+eFivmZ61r4GdCNXnh9hztUSQV710h9LNxFjfy5Zrte4ddE1GO7gqyUYH4P9Lyt/RWrfls+tR2//s
-X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
- SFS:(39860400002)(396003)(346002)(376002)(136003)(46966005)(6666004)(186003)(8936002)(54906003)(26005)(81166007)(8676002)(44832011)(336012)(2906002)(356005)(31686004)(82740400003)(7416002)(47076004)(31696002)(9786002)(70206006)(70586007)(82310400002)(36756003)(4326008)(2616005)(83380400001)(426003)(316002)(478600001)(5660300002)(43740500002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Aug 2020 07:25:55.3977 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 692bd15b-7d3a-4c24-48ae-08d844da46cc
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
- Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-AuthSource: CY1NAM02FT059.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY5PR02MB6900
+X-CMAE-Envelope: MS4wfFRKzvCCkyJS9Q5rdxze4gulqoKt38zEPt9G9XCo9uvSvJmQH6GZa9qlg4aSjmCj5cGVZVd7L6SKZU94SNwCZOegkbnPo+NvvWFXnm4eT9u9L0EkAJx8
+ /VIWg5YbHC2p1pTSUX8P0vtvVD5M+nj8ayALIq8Xa4w80T0xEKSNJm+RkOG+HyeRBvp9zmjq+ZKPm0ZX9eM1vUS703EordaXp7j29IaE75o/SBUzwBGnKkE3
+ 9sBCm+UfmVY+ItN6MiUsrkzWFKDqPulfmOfDG8El8EvhxJPPCD90PZ+zU02++C8FWUkQIG+mYm3X4VIjkFZLvTW1TaKNl93fBQLy+VlK0v4sAjUrH/rU7xAc
+ Z4165x6fUSdaJm8YaiFIV3wLKMjWhdsJ+UQjTW9858V/ZGkfrD5P1ENKxORG/1yThkOf6cpBLRmrV1LyCpdwZJjUvoJHGDX+bZQdGFNrn4lFiTVa5Slf0moL
+ CKp/UD79D67ZGEvhRa5AwyD01AZsYGPZFKRlN2+zJihIv9rNBdwDS53V7Q/1I4IV4nBRm8UND6VcxbuwEZqanJntLFdvLfFGzeSoZ4ZzIrAMvEst2L76f4tX
+ tekMnfyWaiQse8XbiMuf1fBFUkSS13GiIU4NnSosYTRW3bbGScPqvpsXEPwCTgtfqU8=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200820_032559_398275_7CC3CE9C 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20200820_052759_124733_B73F3F21 
+X-CRM114-Status: GOOD (  19.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -207,107 +89,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Nishanth Menon <nm@ti.com>, Andrew Lunn <andrew@lunn.ch>,
- Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Fabio Estevam <festevam@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Kevin Hilman <khilman@baylibre.com>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Michal Simek <michal.simek@xilinx.com>, Wei Xu <xuwei5@hisilicon.com>,
- linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
- NXP Linux Team <linux-imx@nxp.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- devicetree@vger.kernel.org, Jason Cooper <jason@lakedaemon.net>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm@vger.kernel.org, Sascha Hauer <s.hauer@pengutronix.de>,
- linux-amlogic@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- Li Yang <leoyang.li@nxp.com>, Tero Kristo <t-kristo@ti.com>,
- Robert Richter <rrichter@marvell.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Shawn Guo <shawnguo@kernel.org>
+Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
+ linux-rockchip@lists.infradead.org, laurent.pinchart@ideasonboard.com,
+ sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 20. 08. 20 0:17, Rob Herring wrote:
-> While bracketing doesn't matter for a DTB, the DT schema checks rely on
-> bracketing around each distinct entry. Reformat ranges and dma-ranges
-> entries to fix warnings such as:
+On 17/08/2020 23:47, Helen Koike wrote:
+> Hi Dafna,
 > 
-> arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dt.yaml: pcie@f8000000: ranges: [[2197815296, 0, 4194304000, 0, 4194304000, 0, 31457280, 2164260864, 0, 4225761280, 0, 4225761280, 0, 1048576]] is not valid under any of the given schemas (Possible causes of the failure):
->         arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dt.yaml: pcie@f8000000: ranges: True was expected
->         arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dt.yaml: pcie@f8000000: ranges:0: [2197815296, 0, 4194304000, 0, 4194304000, 0, 31457280, 2164260864, 0, 4225761280, 0, 4225761280, 0, 1048576] is too long
->         arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dt.yaml: pcie@f8000000: ranges:0:0: 2197815296 is not one of [16777216, 33554432, 50331648, 1107296256, 1124073472]
+> On 8/15/20 7:37 AM, Dafna Hirschfeld wrote:
+>> The code in '.stop_streaming' callback releases and acquire the lock
+>> at each iteration when returning the buffers.
+>> Holding the lock disables interrupts so it should be minimized.
+>> To make the code cleaner and still minimize holding the lock,
+>> the buffer list is first moved to a local list and
+>> then can be iterated without the lock.
+>>
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 > 
-> Cc: Kevin Hilman <khilman@baylibre.com>
-> Cc: Neil Armstrong <narmstrong@baylibre.com>
-> Cc: Jerome Brunet <jbrunet@baylibre.com>
-> Cc: Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-> Cc: Khuong Dinh <khuong@os.amperecomputing.com>
-> Cc: Robert Richter <rrichter@marvell.com>
-> Cc: Shawn Guo <shawnguo@kernel.org>
-> Cc: Li Yang <leoyang.li@nxp.com>
-> Cc: Sascha Hauer <s.hauer@pengutronix.de>
-> Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
-> Cc: Fabio Estevam <festevam@gmail.com>
-> Cc: NXP Linux Team <linux-imx@nxp.com>
-> Cc: Wei Xu <xuwei5@hisilicon.com>
-> Cc: Jason Cooper <jason@lakedaemon.net>
-> Cc: Andrew Lunn <andrew@lunn.ch>
-> Cc: Gregory Clement <gregory.clement@bootlin.com>
-> Cc: Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>
-> Cc: Andy Gross <agross@kernel.org>
-> Cc: Bjorn Andersson <bjorn.andersson@linaro.org>
-> Cc: Heiko Stuebner <heiko@sntech.de>
-> Cc: Tero Kristo <t-kristo@ti.com>
-> Cc: Nishanth Menon <nm@ti.com>
-> Cc: Michal Simek <michal.simek@xilinx.com>
-> Cc: linux-amlogic@lists.infradead.org
-> Cc: linux-arm-msm@vger.kernel.org
-> Cc: linux-rockchip@lists.infradead.org
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
-> SoC maintainers, please apply this directly.
+> lgtm
 > 
->  .../boot/dts/amlogic/meson-g12-common.dtsi    |  4 +-
->  arch/arm64/boot/dts/apm/apm-shadowcat.dtsi    | 20 ++++----
->  arch/arm64/boot/dts/apm/apm-storm.dtsi        | 50 +++++++++----------
->  arch/arm64/boot/dts/cavium/thunder2-99xx.dtsi |  4 +-
->  .../arm64/boot/dts/freescale/fsl-ls1012a.dtsi |  4 +-
->  .../arm64/boot/dts/freescale/fsl-ls1028a.dtsi | 22 ++++----
->  .../boot/dts/freescale/fsl-ls1043a-qds.dts    |  6 +--
->  .../boot/dts/freescale/fsl-ls1043a-rdb.dts    |  6 +--
->  .../arm64/boot/dts/freescale/fsl-ls1043a.dtsi | 12 ++---
->  .../boot/dts/freescale/fsl-ls1046a-qds.dts    |  6 +--
->  .../boot/dts/freescale/fsl-ls1046a-rdb.dts    |  4 +-
->  .../arm64/boot/dts/freescale/fsl-ls1046a.dtsi | 12 ++---
->  .../boot/dts/freescale/fsl-ls1088a-qds.dts    |  6 +--
->  .../boot/dts/freescale/fsl-ls1088a-rdb.dts    |  4 +-
->  .../arm64/boot/dts/freescale/fsl-ls1088a.dtsi | 16 +++---
->  .../arm64/boot/dts/freescale/fsl-ls2080a.dtsi | 16 +++---
->  .../arm64/boot/dts/freescale/fsl-ls2088a.dtsi | 16 +++---
->  .../boot/dts/freescale/fsl-ls208xa-qds.dtsi   |  6 +--
->  .../boot/dts/freescale/fsl-ls208xa-rdb.dtsi   |  6 +--
->  .../arm64/boot/dts/freescale/fsl-ls208xa.dtsi | 10 ++--
->  .../arm64/boot/dts/freescale/fsl-lx2160a.dtsi |  4 +-
->  arch/arm64/boot/dts/freescale/imx8mq.dtsi     |  8 +--
->  .../arm64/boot/dts/hisilicon/hi3798cv200.dtsi |  4 +-
->  arch/arm64/boot/dts/hisilicon/hip06.dtsi      |  5 +-
->  arch/arm64/boot/dts/hisilicon/hip07.dtsi      |  4 +-
->  arch/arm64/boot/dts/marvell/armada-37xx.dtsi  |  4 +-
->  arch/arm64/boot/dts/qcom/ipq8074.dtsi         | 12 ++---
->  arch/arm64/boot/dts/rockchip/rk3399.dtsi      |  4 +-
->  arch/arm64/boot/dts/ti/k3-am65-main.dtsi      |  8 +--
->  arch/arm64/boot/dts/xilinx/zynqmp.dtsi        |  4 +-
+> Helen Koike <helen.koike@collabora.com>
 
-Reviewed-by: Michal Simek <michal.simek@xilinx.com> (zynqmp)
+Missing 'Acked-by:' tag?
 
-Thanks,
-Michal
+Hans
+
+> 
+> Thanks
+> Helen
+> 
+>> ---
+>>  drivers/staging/media/rkisp1/rkisp1-params.c | 31 +++++++-------------
+>>  1 file changed, 11 insertions(+), 20 deletions(-)
+>>
+>> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+>> index 0c2bb2eefb22..6a76c586e916 100644
+>> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
+>> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+>> @@ -1477,32 +1477,23 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
+>>  {
+>>  	struct rkisp1_params *params = vq->drv_priv;
+>>  	struct rkisp1_buffer *buf;
+>> +	struct list_head tmp_list;
+>>  	unsigned long flags;
+>> -	unsigned int i;
+>>  
+>> -	/* stop params input firstly */
+>> +	INIT_LIST_HEAD(&tmp_list);
+>> +
+>> +	/*
+>> +	 * we first move the buffers into a local list 'tmp_list'
+>> +	 * and then we can iterate it and call vb2_buffer_done
+>> +	 * without holding the lock
+>> +	 */
+>>  	spin_lock_irqsave(&params->config_lock, flags);
+>>  	params->is_streaming = false;
+>> +	list_cut_position(&tmp_list, &params->params, params->params.prev);
+>>  	spin_unlock_irqrestore(&params->config_lock, flags);
+>>  
+>> -	for (i = 0; i < RKISP1_ISP_PARAMS_REQ_BUFS_MAX; i++) {
+>> -		spin_lock_irqsave(&params->config_lock, flags);
+>> -		if (!list_empty(&params->params)) {
+>> -			buf = list_first_entry(&params->params,
+>> -					       struct rkisp1_buffer, queue);
+>> -			list_del(&buf->queue);
+>> -			spin_unlock_irqrestore(&params->config_lock,
+>> -					       flags);
+>> -		} else {
+>> -			spin_unlock_irqrestore(&params->config_lock,
+>> -					       flags);
+>> -			break;
+>> -		}
+>> -
+>> -		if (buf)
+>> -			vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
+>> -		buf = NULL;
+>> -	}
+>> +	list_for_each_entry(buf, &tmp_list, queue)
+>> +		vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
+>>  }
+>>  
+>>  static int
+>>
+
 
 _______________________________________________
 Linux-rockchip mailing list
