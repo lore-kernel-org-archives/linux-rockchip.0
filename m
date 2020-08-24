@@ -2,90 +2,93 @@ Return-Path: <SRS0=JNKT=CC=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 303B6C433DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 09:47:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AAA8C433DF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 09:50:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 00B9D207D3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 09:47:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DB96B2071E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 09:50:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Qv+S5z0v";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="eFuH4kVF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 00B9D207D3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EWYfaHk7";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="jnEdpSxg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB96B2071E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=R1/IZk0AJCOZI/2sPZ7Cm7kize3G2lVVMM/98F07cqc=; b=Qv+S5z0vAIF+Qi/sWI6vxiSpO
-	41yO8LFUQQvLfse8pieMmpjct19sxGKNG2zxeJwY9bYdK85E1G+wLruCX/Rxn+y7T4XeOHZ+oo6Hs
-	FvnaWL6wFbGib3CtUzOePFYo/i19CW7FmsxjXWVoLLaJ4VrXGuIUl3Xkqd418S+PXZkGVI2spWzr/
-	WJLfDmWd4YKX8UN9Ka60LQbicDALqjEdfWRiJkVKmrJ0zUFC4gwWiOBiO8yw81QMZe0KHTV/GfiFq
-	jglunA9+ROKWBTht6uX4WuyNmtqiRX6wGoWn68+Ev78rQynOmVUqlD7aVcGo9gZjFSDDmzUst2Ut3
-	HHNQ2t1pg==;
+	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SHXjZcV8z6QdKfzmVmULpty+n5DKpmbLC/3Mwg9QZvw=; b=EWYfaHk7u0inxM4ATIPlj5w4u1
+	iu708//B8aqJSnY0o7aYpEY70c8g22376t5LlyTW8rBO2GGDqMMAncHko6p0CKK/ka/v4mnZ0uwYx
+	SvsqNf77OgNO38JCKGQwi+Ul0IJMTqS6hOsO5GsgEozi0io623hlb3P85gZPK19P4RVWqz0EZKLh3
+	c+Tbt20fBbRNDe2oIXAI+2KkrnZV6i7xb5d1zptNDbsjOVM7WYe/XnHm4zfi0slAWlLr5HWT3Xajk
+	+L8RHWbochRyGqQz1fsKpUpluXmqU1Yx+yG5A0qgTo/sygaeqRihFK+lZMgsLjAPARMSbf+O12Vqg
+	PUXoK00A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kA94h-0004nq-8H; Mon, 24 Aug 2020 09:47:35 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1kA97i-0005Oj-3L; Mon, 24 Aug 2020 09:50:43 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kA94Y-0004l0-Fu
- for linux-rockchip@lists.infradead.org; Mon, 24 Aug 2020 09:47:28 +0000
-Received: by mail-wm1-x341.google.com with SMTP id o21so7548405wmc.0
- for <linux-rockchip@lists.infradead.org>; Mon, 24 Aug 2020 02:47:26 -0700 (PDT)
+ id 1kA97e-0005Np-Cu
+ for linux-rockchip@lists.infradead.org; Mon, 24 Aug 2020 09:50:39 +0000
+Received: by mail-wm1-x343.google.com with SMTP id a65so4092037wme.5
+ for <linux-rockchip@lists.infradead.org>; Mon, 24 Aug 2020 02:50:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=subject:to:cc:references:from:autocrypt:organization:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=subject:to:references:from:autocrypt:organization:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=pp3z6h1D9WsMBTnOwfGB/PDJkTy44cyztqfZIjKmAm8=;
- b=eFuH4kVF1JYQjBjvnqyBBOo1phVc6xcnL6ZHpWjThPe78z8OjJP5I5zI7tQYg8iAid
- RHjPsjvD/ipKjZF0owLfUsrDJxqLqHVoEL3pi4Qvx48T1JqRFiByrdKftUFWGIXr42ht
- uPqm6JccmlIFJRI4opfhh9Oa/3x0Bcmu8PXvSKKh036wXwMcKWqKWA9I/grEAA7QamAx
- HpyUtXPnyFHkV+u+Rs4jqKjN2NyN5LsLL4cas4cmBegZkKsS8c+Q95Rij9DqNKnzKhVB
- Nj5Xuj1zzJSN/HCAY451BTx+YwPdTuykaarYMxpUNal5Q8uDbkrjfxYVyAeJjKsRy1iO
- S5wQ==
+ bh=GN0bzIf92cLXxdNm0copsKALAFMVqgJeFRySzwdh4c8=;
+ b=jnEdpSxgilYeo+nXQZMsXl/6xVjkVCPzaHgymM3NtwujgMb9nEHmftycU+C07g2drD
+ FJE4n2krbcNLMcsyB50ENW1P+uZUBeqiOQMyzIQg6SmM9PGFsDeACpRsCbEYJR5dKzwH
+ khNveRrdINmQbLd1b+aYdxI6azLk/YnOCvodAAnI8Wdq8/wV4eEpviME3c+absrLUAbt
+ tpWKPmG0IMRu8k5sMh+0/IburKqM44f5FajorxOD5phdS/w7HHVDaV8UDlEivoEqNLAk
+ j7bBO+N4m2Nom5/uH5Km3DcBczle49cNSav0u8McffL/CEKfeScPXGibm1tHZQ2/WVFg
+ G7UQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ h=x-gm-message-state:subject:to:references:from:autocrypt
  :organization:message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=pp3z6h1D9WsMBTnOwfGB/PDJkTy44cyztqfZIjKmAm8=;
- b=tpUBZjmyvOrT8KrEHvklNhD21gzfbgMExI11YRwtRcRUHrLlSc4kkFJSUkwQ1LmOtj
- xT0qLNN4UqvVrJj/z8hB791DSXmKvkDoKUnYA1qHcrI1d73eaFb/th28VsM9h0UT9SYE
- Nnmd+YVU0Q7OrMNr6DoIw8FEqdywoL8UGgd6oy8So1SKfZfDpWDt7O++4HqIlMJZ3O6T
- JqgJ831numEiOaQZcY925EkwBJmZ4k9ZaKu+9QXnf9OHv4ABMTRyMhl6S+LAflt/Wng9
- NbsYfjzAfMBgaS6pdLGhzbzxHxfK81Vd5yLvNaS5cyWBsu5lDNMJki68v1n+Dj8e7f/d
- 9hkA==
-X-Gm-Message-State: AOAM530R31L/iZYlKOW9mDRsRDiWFx7GIRtx4bpl0O0LE40cFgwSOL5y
- RPoid5MKUOXnpStTVpFftwx6gQ==
-X-Google-Smtp-Source: ABdhPJxKznRV+opTvxcxJMeHGespujGb3mbCxvNcdL2xOo/SM1Gh50l6YfcMQoiYXRnWIhftQjKG2Q==
-X-Received: by 2002:a1c:988d:: with SMTP id a135mr4843469wme.8.1598262445236; 
- Mon, 24 Aug 2020 02:47:25 -0700 (PDT)
+ bh=GN0bzIf92cLXxdNm0copsKALAFMVqgJeFRySzwdh4c8=;
+ b=TDftGUB00RYNfenHXjJXcVykzYe36iv6QDnh55bnl5P8Z9RD6Vgfgd8NZRm1ieqto0
+ k05ws1hy+Wu3bGDCduc8BEa3I3E/2iA4Hmkhwe7q9OPVj2YpXfvAAbphEc3ts0fGK+w1
+ EwZbZKW1YJ1hVn2Mngnwsc0BJlm3bX/oh6h2eTOkzUn5k1vXmQEief2IUpOHtM8f0/tU
+ +F7MekqPDsjD48B2QS+2jIMDeLW1UqWmZBWwtGMAh0RPrfWMgnatjjy/j25VcZ+C49F5
+ UoIzSg9IE8Rg1AF4m4wCx3AYD440WBGSgE0ZCs5gTYtgPaKxI3hxRmuJh4U2jbOQ4Qy4
+ +Ysg==
+X-Gm-Message-State: AOAM5321YMP78JiyIk4S+i3CGC90edvyz0hAm7/Q+nTzsG0XTP3EHIyH
+ BNnq1tTS0mHnN1LCu+7O6egwtw==
+X-Google-Smtp-Source: ABdhPJwUuWot06jk0vQROx/nE2H4dDyaxUfVX8TWUJFmH1DEgMFHDwooH3IZCO8Ogthwgm7ZnfTiUg==
+X-Received: by 2002:a05:600c:28c1:: with SMTP id
+ h1mr5037278wmd.174.1598262637102; 
+ Mon, 24 Aug 2020 02:50:37 -0700 (PDT)
 Received: from [10.1.2.12] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr.
  [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id p8sm23304491wrq.9.2020.08.24.02.47.22
+ by smtp.gmail.com with ESMTPSA id d10sm10360947wrg.3.2020.08.24.02.50.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Aug 2020 02:47:24 -0700 (PDT)
-Subject: Re: [PATCH v9 00/11] Genericize DW MIPI DSI bridge and add i.MX 6
- driver
-To: Ezequiel Garcia <ezequiel@collabora.com>,
- Adrian Ratiu <adrian.ratiu@collabora.com>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>
-References: <20200609174959.955926-1-adrian.ratiu@collabora.com>
- <c6f10db1-7f56-a156-36a1-125e764c8c1a@baylibre.com>
- <87lfk3kaj4.fsf@iwork.i-did-not-set--mail-host-address--so-tickle-me>
- <b318069fe873e456f18d07d11f5d165667c9b04a.camel@collabora.com>
+ Mon, 24 Aug 2020 02:50:36 -0700 (PDT)
+Subject: Re: [PATCH 6/6] drm: bridge: dw-hdmi: Get output bus format when
+ dw-hdmi is the only bridge
+To: Algea Cao <algea.cao@rock-chips.com>, a.hajda@samsung.com,
+ kuankuan.y@gmail.com, hjc@rock-chips.com, tzimmermann@suse.de,
+ dri-devel@lists.freedesktop.org, sam@ravnborg.org, airlied@linux.ie,
+ heiko@sntech.de, jernej.skrabec@siol.net, Laurent.pinchart@ideasonboard.com,
+ laurent.pinchart+renesas@ideasonboard.com, jonas@kwiboo.se,
+ mripard@kernel.org, darekm@google.com, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, cychiang@chromium.org,
+ linux-kernel@vger.kernel.org, jbrunet@baylibre.com,
+ maarten.lankhorst@linux.intel.com, daniel@ffwll.ch
+References: <20200812083120.743-1-algea.cao@rock-chips.com>
+ <20200812083631.4411-1-algea.cao@rock-chips.com>
 From: Neil Armstrong <narmstrong@baylibre.com>
 Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
@@ -137,16 +140,16 @@ Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
  zR8QplXA5kogS4kLe/7/JmlDMO8Zgm9vKLHSUeesLOrjdZ59EcjldNNBszRZQgEhwaarfz46
  BSwxi7g3Mu7u5kUByanqHyA=
 Organization: Baylibre
-Message-ID: <e0d0efec-09e0-6bf8-bab7-44accd14fa52@baylibre.com>
-Date: Mon, 24 Aug 2020 11:47:22 +0200
+Message-ID: <61c3860a-6e35-b90a-2c4f-6caca96c5db9@baylibre.com>
+Date: Mon, 24 Aug 2020 11:50:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <b318069fe873e456f18d07d11f5d165667c9b04a.camel@collabora.com>
+In-Reply-To: <20200812083631.4411-1-algea.cao@rock-chips.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_054726_711145_69F23344 
-X-CRM114-Status: GOOD (  24.30  )
+X-CRM114-CacheID: sfid-20200824_055039_030625_60B9AEA6 
+X-CRM114-Status: GOOD (  21.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -159,11 +162,6 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Jernej Skrabec <jernej.skrabec@siol.net>, Jonas Karlman <jonas@kwiboo.se>,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Philippe CORNU <philippe.cornu@st.com>, Yannick FERTRE <yannick.fertre@st.com>,
- Andrzej Hajda <a.hajda@samsung.com>, linux-imx@nxp.com, kernel@collabora.com,
- linux-stm32@st-md-mailman.stormreply.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -171,76 +169,51 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
+On 12/08/2020 10:36, Algea Cao wrote:
+> If plat_data->get_output_bus_format() is exist, we can
+> use it to get hdmi output bus format when dw-hdmi is the
+> only bridge. The hdmi output bus format can be set by vendor
+> properties.
+> 
+> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
+> ---
+> 
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> index 1eb4736b9b59..878e9e506963 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> @@ -2644,6 +2644,8 @@ static u32 *dw_hdmi_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
+>  					unsigned int *num_output_fmts)
+>  {
+>  	struct drm_connector *conn = conn_state->connector;
+> +	struct dw_hdmi *hdmi = bridge->driver_private;
+> +	void *data = hdmi->plat_data->phy_data;
+>  	struct drm_display_info *info = &conn->display_info;
+>  	struct drm_display_mode *mode = &crtc_state->mode;
+>  	u8 max_bpc = conn_state->max_requested_bpc;
+> @@ -2662,7 +2664,11 @@ static u32 *dw_hdmi_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
+>  	/* If dw-hdmi is the only bridge, avoid negociating with ourselves */
+>  	if (list_is_singular(&bridge->encoder->bridge_chain)) {
+>  		*num_output_fmts = 1;
+> -		output_fmts[0] = MEDIA_BUS_FMT_FIXED;
+> +		if (hdmi->plat_data->get_output_bus_format)
+> +			output_fmts[0] =
+> +				hdmi->plat_data->get_output_bus_format(data);
 
-On 15/08/2020 15:05, Ezequiel Garcia wrote:
-> Hi Neil,
-> 
-> On Wed, 2020-07-01 at 09:35 +0300, Adrian Ratiu wrote:
->> Hi Neil,
->>
->> On Mon, 29 Jun 2020, Neil Armstrong <narmstrong@baylibre.com> 
->> wrote:
->>> Hi Adrian, 
->>>
->>> On 09/06/2020 19:49, Adrian Ratiu wrote: 
-[...]
->>
-> 
-> It's been a month so I think it's a good idea to go forward
-> applying IMX and STM patches (probably with the usual
-> rebase dance).
-> 
-> As for Rockchip...
-> 
->> The binding API removal change which directly touches RK can also 
->> be applied separately, but unfortunately I do not have access to a 
->> RK board with a DSI display to test it (or the bridge regmap logic 
->> on RK btw...), I just "eye-balled" the RK code based on the public 
->> docs and it LGTM.
->>
-> 
-> ... I'll be getting some DSI hardware to help with the pending
-> Rockchip issues, so we can tackle Rockchip as well. I'm quite sure
-> we'll loop Heiko as well if needed :-)
 
-Sure, Adrian, can you rebase on drm-misc-next so I can apply the IMX and STM patches ?
+The whole bus format negociation was introduced to actually avoid using such get_output_bus_format()
+callback, please implement proper bus format negociation.
 
-> 
-> Cheers,
-> Ezequiel
-> 
->>> Neil
->>>
->>>> Big thank you to everyone who has contributed to this up to now,
->>>> Adrian
->>>>
->>>> Adrian Ratiu (11):
->>>>   drm: bridge: dw_mipi_dsi: add initial regmap infrastructure
->>>>   drm: bridge: dw_mipi_dsi: abstract register access using reg_fields
->>>>   drm: bridge: dw_mipi_dsi: add dsi v1.01 support
->>>>   drm: bridge: dw_mipi_dsi: remove bind/unbind API
->>>>   dt-bindings: display: add i.MX6 MIPI DSI host controller doc
->>>>   ARM: dts: imx6qdl: add missing mipi dsi properties
->>>>   drm: imx: Add i.MX 6 MIPI DSI host platform driver
->>>>   drm: stm: dw-mipi-dsi: let the bridge handle the HW version check
->>>>   drm: bridge: dw-mipi-dsi: split low power cfg register into fields
->>>>   drm: bridge: dw-mipi-dsi: fix bad register field offsets
->>>>   Documentation: gpu: todo: Add dw-mipi-dsi consolidation plan
->>>>
->>>>  .../display/imx/fsl,mipi-dsi-imx6.yaml        | 112 +++
->>>>  Documentation/gpu/todo.rst                    |  25 +
->>>>  arch/arm/boot/dts/imx6qdl.dtsi                |   8 +
->>>>  drivers/gpu/drm/bridge/synopsys/Kconfig       |   1 +
->>>>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c | 713 ++++++++++++------
->>>>  drivers/gpu/drm/imx/Kconfig                   |   8 +
->>>>  drivers/gpu/drm/imx/Makefile                  |   1 +
->>>>  drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c        | 399 ++++++++++
->>>>  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |   7 +-
->>>>  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |  16 +-
->>>>  10 files changed, 1059 insertions(+), 231 deletions(-)
->>>>  create mode 100644 Documentation/devicetree/bindings/display/imx/fsl,mipi-dsi-imx6.yaml
->>>>  create mode 100644 drivers/gpu/drm/imx/dw_mipi_dsi-imx6.c
->>>>
+Neil
+
+> +		else
+> +			output_fmts[0] = MEDIA_BUS_FMT_FIXED;
+>  
+>  		return output_fmts;
+>  	}
 > 
 
 
