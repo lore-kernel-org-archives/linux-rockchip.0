@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AAA8C433DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 09:50:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 674FAC433E3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 09:53:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DB96B2071E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 09:50:47 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 386F52075B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 09:53:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EWYfaHk7";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="jnEdpSxg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB96B2071E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="o+zNz52/";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=baylibre-com.20150623.gappssmtp.com header.i=@baylibre-com.20150623.gappssmtp.com header.b="Vp6UDytz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 386F52075B
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,58 +26,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:
 	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SHXjZcV8z6QdKfzmVmULpty+n5DKpmbLC/3Mwg9QZvw=; b=EWYfaHk7u0inxM4ATIPlj5w4u1
-	iu708//B8aqJSnY0o7aYpEY70c8g22376t5LlyTW8rBO2GGDqMMAncHko6p0CKK/ka/v4mnZ0uwYx
-	SvsqNf77OgNO38JCKGQwi+Ul0IJMTqS6hOsO5GsgEozi0io623hlb3P85gZPK19P4RVWqz0EZKLh3
-	c+Tbt20fBbRNDe2oIXAI+2KkrnZV6i7xb5d1zptNDbsjOVM7WYe/XnHm4zfi0slAWlLr5HWT3Xajk
-	+L8RHWbochRyGqQz1fsKpUpluXmqU1Yx+yG5A0qgTo/sygaeqRihFK+lZMgsLjAPARMSbf+O12Vqg
-	PUXoK00A==;
+	bh=bhSDaLD7JeWNEtWqNR9QGLlIB05y156A88k5nArJm4A=; b=o+zNz52/KL4Bn8WYxRTkFnOeLE
+	wKMmutbePx/kwpWtkrtZKsEbQdD9iEvnVaI/IlKq1nSxzGd0IDzFX+NS5KMKnCjbWVUp97CUw0i7E
+	5yuJGGXEOQI6WAe5wnUI8YqGMUHr7lLkDEjFCP5RG12Nu8nXeRjIwwTFZK/PqH7g4zAvSD+Oil8Ig
+	aKpys/BegwQRcDJM663szwaCkwUtgPTbKtuxDnL0mbF6ewLHEi7mxj4vaLVRWIVzT+oO5ZryT/YDF
+	TzGrhRuF48lwXXthEr5b5V+LlxKY7EpQaE/KCHh1ehULISfir+Q0BI3fvvaRj09IKfY76BQpq2qaA
+	gDWZs+LQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kA97i-0005Oj-3L; Mon, 24 Aug 2020 09:50:43 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1kA9Ag-0006Md-8i; Mon, 24 Aug 2020 09:53:46 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kA97e-0005Np-Cu
- for linux-rockchip@lists.infradead.org; Mon, 24 Aug 2020 09:50:39 +0000
-Received: by mail-wm1-x343.google.com with SMTP id a65so4092037wme.5
- for <linux-rockchip@lists.infradead.org>; Mon, 24 Aug 2020 02:50:38 -0700 (PDT)
+ id 1kA9AW-0006Im-Iw
+ for linux-rockchip@lists.infradead.org; Mon, 24 Aug 2020 09:53:39 +0000
+Received: by mail-wr1-x444.google.com with SMTP id d16so8001136wrq.9
+ for <linux-rockchip@lists.infradead.org>; Mon, 24 Aug 2020 02:53:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20150623.gappssmtp.com; s=20150623;
  h=subject:to:references:from:autocrypt:organization:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=GN0bzIf92cLXxdNm0copsKALAFMVqgJeFRySzwdh4c8=;
- b=jnEdpSxgilYeo+nXQZMsXl/6xVjkVCPzaHgymM3NtwujgMb9nEHmftycU+C07g2drD
- FJE4n2krbcNLMcsyB50ENW1P+uZUBeqiOQMyzIQg6SmM9PGFsDeACpRsCbEYJR5dKzwH
- khNveRrdINmQbLd1b+aYdxI6azLk/YnOCvodAAnI8Wdq8/wV4eEpviME3c+absrLUAbt
- tpWKPmG0IMRu8k5sMh+0/IburKqM44f5FajorxOD5phdS/w7HHVDaV8UDlEivoEqNLAk
- j7bBO+N4m2Nom5/uH5Km3DcBczle49cNSav0u8McffL/CEKfeScPXGibm1tHZQ2/WVFg
- G7UQ==
+ bh=e5XKNJgSnPPuqTFxU2qq9xdRZvRb9N1c3AxvSMq4xzI=;
+ b=Vp6UDytzYtsyr7GZJoLYyabnbY3b9NR6EXX6cpEGEFcnibXyIzOqd/1jLNQl6kWlvv
+ KneMyhoarCyH5lIZHorvTyB6lztAobfPANUTlM464bckXpiYR8P3hk3JNITQmffCtI2g
+ RAxvST2c1GcpEoBukkfFNQ5J91HLHZ0xkbS+ggLcJvx4BunIbGRXOWQ9jFPgsQcC4Ik2
+ BJTEMh8uRW/dtRcXZvHdzjCPNWPDgWEv0oBZw1NigWjBvCOs9ksQ0vqpxktvk87RwrVl
+ wI06MnjMBGi+j2xcxeUkDSsY6P/Zt6n6GHflAET9qWCw21vQUF1zT4ZZzfv1aTaUoY5t
+ coDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:autocrypt
  :organization:message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=GN0bzIf92cLXxdNm0copsKALAFMVqgJeFRySzwdh4c8=;
- b=TDftGUB00RYNfenHXjJXcVykzYe36iv6QDnh55bnl5P8Z9RD6Vgfgd8NZRm1ieqto0
- k05ws1hy+Wu3bGDCduc8BEa3I3E/2iA4Hmkhwe7q9OPVj2YpXfvAAbphEc3ts0fGK+w1
- EwZbZKW1YJ1hVn2Mngnwsc0BJlm3bX/oh6h2eTOkzUn5k1vXmQEief2IUpOHtM8f0/tU
- +F7MekqPDsjD48B2QS+2jIMDeLW1UqWmZBWwtGMAh0RPrfWMgnatjjy/j25VcZ+C49F5
- UoIzSg9IE8Rg1AF4m4wCx3AYD440WBGSgE0ZCs5gTYtgPaKxI3hxRmuJh4U2jbOQ4Qy4
- +Ysg==
-X-Gm-Message-State: AOAM5321YMP78JiyIk4S+i3CGC90edvyz0hAm7/Q+nTzsG0XTP3EHIyH
- BNnq1tTS0mHnN1LCu+7O6egwtw==
-X-Google-Smtp-Source: ABdhPJwUuWot06jk0vQROx/nE2H4dDyaxUfVX8TWUJFmH1DEgMFHDwooH3IZCO8Ogthwgm7ZnfTiUg==
-X-Received: by 2002:a05:600c:28c1:: with SMTP id
- h1mr5037278wmd.174.1598262637102; 
- Mon, 24 Aug 2020 02:50:37 -0700 (PDT)
+ bh=e5XKNJgSnPPuqTFxU2qq9xdRZvRb9N1c3AxvSMq4xzI=;
+ b=o+HmLrLnN/0WuKJ856H2U3i9iFKAYoXvls3RtnlqS/CN3uHlpUpwoHfCPcAG3ds3+e
+ IF1L0zRoxhKNyOnOmWsRpKBElFk72ueChMdhY9tAqrJQD/vyLsKdWACwUgnhsKKdiEHD
+ uHsuLAvwSr6/XO2AX9gPeifDHN3Aam8WQzRBBK0grKXXjwK6LjxITDYuXfWrQNok3iC4
+ WTKO0inaczcIJwIHSHZpccHnvypJcfzX9G8FIxf8tcFxYsYtXjkFkm7qfQicgXfK2YcV
+ 24Jakxlv6wGATC5eRpWnCKg13Ww9wwnhq36/w+Taqnvr5doBFx2Kpnd5Tsw44DFTAuUX
+ 4yHg==
+X-Gm-Message-State: AOAM531zP10eEj3KDEDpzX29G2QqB+VYwa2zlHzU4nGHZ47giZJNhGJo
+ 1BOMi355xMMKwrzthCNVLxL9SQ==
+X-Google-Smtp-Source: ABdhPJyEVB6G8coYF0MZc2X/fqrlEfSPckB2U18sLiFLQxpVx0dg1wcEMubAwIK0bX1FydoWw0NleQ==
+X-Received: by 2002:a5d:43ca:: with SMTP id v10mr4983620wrr.299.1598262815147; 
+ Mon, 24 Aug 2020 02:53:35 -0700 (PDT)
 Received: from [10.1.2.12] (laubervilliers-658-1-213-31.w90-63.abo.wanadoo.fr.
  [90.63.244.31])
- by smtp.gmail.com with ESMTPSA id d10sm10360947wrg.3.2020.08.24.02.50.34
+ by smtp.gmail.com with ESMTPSA id u3sm22073632wml.44.2020.08.24.02.53.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Aug 2020 02:50:36 -0700 (PDT)
-Subject: Re: [PATCH 6/6] drm: bridge: dw-hdmi: Get output bus format when
- dw-hdmi is the only bridge
+ Mon, 24 Aug 2020 02:53:34 -0700 (PDT)
+Subject: Re: [PATCH 3/6] drm: bridge: dw-hdmi: Introduce
+ previous_pixelclock/previous_tmdsclock
 To: Algea Cao <algea.cao@rock-chips.com>, a.hajda@samsung.com,
  kuankuan.y@gmail.com, hjc@rock-chips.com, tzimmermann@suse.de,
  dri-devel@lists.freedesktop.org, sam@ravnborg.org, airlied@linux.ie,
@@ -88,7 +87,7 @@ To: Algea Cao <algea.cao@rock-chips.com>, a.hajda@samsung.com,
  linux-kernel@vger.kernel.org, jbrunet@baylibre.com,
  maarten.lankhorst@linux.intel.com, daniel@ffwll.ch
 References: <20200812083120.743-1-algea.cao@rock-chips.com>
- <20200812083631.4411-1-algea.cao@rock-chips.com>
+ <20200812083459.989-1-algea.cao@rock-chips.com>
 From: Neil Armstrong <narmstrong@baylibre.com>
 Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
@@ -140,16 +139,16 @@ Autocrypt: addr=narmstrong@baylibre.com; prefer-encrypt=mutual; keydata=
  zR8QplXA5kogS4kLe/7/JmlDMO8Zgm9vKLHSUeesLOrjdZ59EcjldNNBszRZQgEhwaarfz46
  BSwxi7g3Mu7u5kUByanqHyA=
 Organization: Baylibre
-Message-ID: <61c3860a-6e35-b90a-2c4f-6caca96c5db9@baylibre.com>
-Date: Mon, 24 Aug 2020 11:50:33 +0200
+Message-ID: <fd42150f-45fc-1664-eeab-7b8e9e99ed60@baylibre.com>
+Date: Mon, 24 Aug 2020 11:53:30 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200812083631.4411-1-algea.cao@rock-chips.com>
+In-Reply-To: <20200812083459.989-1-algea.cao@rock-chips.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_055039_030625_60B9AEA6 
-X-CRM114-Status: GOOD (  21.23  )
+X-CRM114-CacheID: sfid-20200824_055338_334782_1D94A840 
+X-CRM114-Status: GOOD (  24.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -167,53 +166,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On 12/08/2020 10:36, Algea Cao wrote:
-> If plat_data->get_output_bus_format() is exist, we can
-> use it to get hdmi output bus format when dw-hdmi is the
-> only bridge. The hdmi output bus format can be set by vendor
-> properties.
+On 12/08/2020 10:34, Algea Cao wrote:
+> Introduce previous_pixelclock/previous_tmdsclock to
+> determine whether PHY needs initialization. If phy is power off,
+> or mpixelclock/mtmdsclock is different to previous value, phy is
+> neet to be reinitialized.
 > 
 > Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
 > ---
 > 
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 8 +++++++-
->  1 file changed, 7 insertions(+), 1 deletion(-)
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 50 +++++++++++++++++++----
+>  1 file changed, 43 insertions(+), 7 deletions(-)
 > 
 > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index 1eb4736b9b59..878e9e506963 100644
+> index a1a81fc768c2..1eb4736b9b59 100644
 > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -2644,6 +2644,8 @@ static u32 *dw_hdmi_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
->  					unsigned int *num_output_fmts)
->  {
->  	struct drm_connector *conn = conn_state->connector;
-> +	struct dw_hdmi *hdmi = bridge->driver_private;
-> +	void *data = hdmi->plat_data->phy_data;
->  	struct drm_display_info *info = &conn->display_info;
->  	struct drm_display_mode *mode = &crtc_state->mode;
->  	u8 max_bpc = conn_state->max_requested_bpc;
-> @@ -2662,7 +2664,11 @@ static u32 *dw_hdmi_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
->  	/* If dw-hdmi is the only bridge, avoid negociating with ourselves */
->  	if (list_is_singular(&bridge->encoder->bridge_chain)) {
->  		*num_output_fmts = 1;
-> -		output_fmts[0] = MEDIA_BUS_FMT_FIXED;
-> +		if (hdmi->plat_data->get_output_bus_format)
-> +			output_fmts[0] =
-> +				hdmi->plat_data->get_output_bus_format(data);
+> @@ -101,6 +101,8 @@ static const u16 csc_coeff_rgb_full_to_rgb_limited[3][4] = {
+>  struct hdmi_vmode {
+>  	bool mdataenablepolarity;
+>  
+> +	unsigned int previous_pixelclock;
+> +	unsigned int previous_tmdsclock;
+>  	unsigned int mpixelclock;
+>  	unsigned int mpixelrepetitioninput;
+>  	unsigned int mpixelrepetitionoutput;
+> @@ -890,6 +892,32 @@ static int hdmi_bus_fmt_color_depth(unsigned int bus_format)
+>  	}
+>  }
+>  
+> +static unsigned int
+> +hdmi_get_tmdsclock(struct dw_hdmi *hdmi, unsigned long mpixelclock)
+> +{
+> +	unsigned int tmdsclock = mpixelclock;
+> +	unsigned int depth =
+> +		hdmi_bus_fmt_color_depth(hdmi->hdmi_data.enc_out_bus_format);
+> +
+> +	if (!hdmi_bus_fmt_is_yuv422(hdmi->hdmi_data.enc_out_bus_format)) {
+> +		switch (depth) {
+> +		case 16:
+> +			tmdsclock = mpixelclock * 2;
+> +			break;
+> +		case 12:
+> +			tmdsclock = mpixelclock * 3 / 2;
+> +			break;
+> +		case 10:
+> +			tmdsclock = mpixelclock * 5 / 4;
+> +			break;
+> +		default:
+> +			break;
+> +		}
+> +	}
 
 
-The whole bus format negociation was introduced to actually avoid using such get_output_bus_format()
-callback, please implement proper bus format negociation.
+Where does this come from ? Please introduce this on another patch.
 
 Neil
 
-> +		else
-> +			output_fmts[0] = MEDIA_BUS_FMT_FIXED;
+> +
+> +	return tmdsclock;
+> +}
+> +
+>  /*
+>   * this submodule is responsible for the video data synchronization.
+>   * for example, for RGB 4:4:4 input, the data map is defined as
+> @@ -1861,11 +1889,13 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
+>  	int hblank, vblank, h_de_hs, v_de_vs, hsync_len, vsync_len;
+>  	unsigned int vdisplay, hdisplay;
 >  
->  		return output_fmts;
->  	}
+> +	vmode->previous_pixelclock = vmode->mpixelclock;
+>  	vmode->mpixelclock = mode->clock * 1000;
+>  
+>  	dev_dbg(hdmi->dev, "final pixclk = %d\n", vmode->mpixelclock);
+>  
+> -	vmode->mtmdsclock = vmode->mpixelclock;
+> +	vmode->previous_tmdsclock = vmode->mtmdsclock;
+> +	vmode->mtmdsclock = hdmi_get_tmdsclock(hdmi, vmode->mpixelclock);
+>  
+>  	if (!hdmi_bus_fmt_is_yuv422(hdmi->hdmi_data.enc_out_bus_format)) {
+>  		switch (hdmi_bus_fmt_color_depth(
+> @@ -2172,12 +2202,18 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi,
+>  	hdmi_av_composer(hdmi, &connector->display_info, mode);
+>  
+>  	/* HDMI Initializateion Step B.2 */
+> -	ret = hdmi->phy.ops->init(hdmi, hdmi->phy.data,
+> -				  &connector->display_info,
+> -				  &hdmi->previous_mode);
+> -	if (ret)
+> -		return ret;
+> -	hdmi->phy.enabled = true;
+> +	if (!hdmi->phy.enabled ||
+> +	    hdmi->hdmi_data.video_mode.previous_pixelclock !=
+> +	    hdmi->hdmi_data.video_mode.mpixelclock ||
+> +	    hdmi->hdmi_data.video_mode.previous_tmdsclock !=
+> +	    hdmi->hdmi_data.video_mode.mtmdsclock) {
+> +		ret = hdmi->phy.ops->init(hdmi, hdmi->phy.data,
+> +					  &connector->display_info,
+> +					  &hdmi->previous_mode);
+> +		if (ret)
+> +			return ret;
+> +		hdmi->phy.enabled = true;
+> +	}
+>  
+>  	/* HDMI Initialization Step B.3 */
+>  	dw_hdmi_enable_video_path(hdmi);
 > 
 
 
