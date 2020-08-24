@@ -1,23 +1,24 @@
-Return-Path: <SRS0=HIU6=B7=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=JNKT=CC=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIM_INVALID,
-	DKIM_SIGNED,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F1E64C433DF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2020 21:41:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B074C433E1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 00:05:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BA9B120724
-	for <linux-rockchip@archiver.kernel.org>; Fri, 21 Aug 2020 21:41:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2C6E020720
+	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 00:05:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="o5F2JKws";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="NvL29v6r"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BA9B120724
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1oUo8GVa";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tcd-ie.20150623.gappssmtp.com header.i=@tcd-ie.20150623.gappssmtp.com header.b="ph3cmZei"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C6E020720
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=tcd.ie
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,53 +26,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6sfGHF+1MvdWOFn7qMR30YecZiTN9iVvWPrrsNqaO6k=; b=o5F2JKwsUh0wFWWQ1K20tQuBX
-	CFpWQi+mIuWyKSFbnEOsB58nxUcs0nkl6Pq01bijF+sov80v8I7QzFhezq0vsk2ARfsViG8uyHaNr
-	Fpbq46wIUnL6xXCn5Tp+ZiNVXn4Ekc5AbG/b/qhYog2UqHdGMLtsDUvdTJOFtGYLRU90/Wlb4Kqol
-	tadt+f/07BcS21Krqudgd++NE7YKgBJwFrzIkxycy/693UioSvjUNCoPAWoyGsS7lIuRsJZnndRb7
-	kcJcEyiL/RPuSCgWtp/CruFrtulHhZPN2M7scsne8QPLgB29yqP4WK591d8L3pe9EcxE2KqD5Z7Tz
-	usJy3O4Fg==;
+	 bh=puhFL+w+4MhK9wJHyomeKOgbiMmMVz6gH6La4av3F7o=; b=1oUo8GVazmMXeUndkIS5A2LBs
+	ce0a2fU+YbZ4hs+2HcyOk2qRx1hxhGoy8aBOegLNByNnGiZuKFGd3FAYT6MFhafMJ7T1qhtn1kUL9
+	KZoQ+Jcq2HQIWN8vD/oLf9xDYX3T9L8kklOsadDAuaOcU7f4uq03mvotrgOGRNeeG+mSEvJ8cJVtU
+	tB8j9nd/beZY3/xhrdwwYTyNBn2pXapMOedlAOxH1oO1AfwSN2qgPXeh64qChoGNGMzClRocrYbA2
+	9ub0CAMMZq4/6BnctYO1e5Js9lpeVV+9CwQmgVZJUV2158MdAualsm9ZNJAO3rcUfrKKsVt7Cxtfp
+	3GMKpR88g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1k9EmQ-0001Bx-Fd; Fri, 21 Aug 2020 21:40:58 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1k9zyy-00069V-FH; Mon, 24 Aug 2020 00:05:04 +0000
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1k9EmL-0001At-4k; Fri, 21 Aug 2020 21:40:54 +0000
-Received: from mail-oi1-f175.google.com (mail-oi1-f175.google.com
- [209.85.167.175])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 0EB3A20838;
- Fri, 21 Aug 2020 21:40:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598046052;
- bh=Ck/LzTzWFmETFjzxh3JBpDpwx2LxGR6IhvTTBDIh81c=;
- h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
- b=NvL29v6rlpKyyHKgEV0TDFS+IjI9k/WnhJHtBopEuq/5cJ6/kpcJ6Js/qbM6eTDOB
- DsFqlFDz/gXA32wGrQfVwCGTw+kOU3Gffvb653688vwUaACRZA7pqMQPz6k5tPpqhv
- auK+27rYLCt30cegfI4FrB3tV1Agc9Ovf+/C1xz4=
-Received: by mail-oi1-f175.google.com with SMTP id u63so2766108oie.5;
- Fri, 21 Aug 2020 14:40:52 -0700 (PDT)
-X-Gm-Message-State: AOAM532IQStFsMDEfiNfums6poSfQlxDS4y7/4Ayh5RCzZzRi9+9ecmC
- yf8kS1yq0hTsrP0ns0BTdtgBxksuW+rsF703yA==
-X-Google-Smtp-Source: ABdhPJy0z9MynzW5jLiK2VG0mTSqos60+j46TRjFWO6E3SZdigIfDZsNRnQVmB4+wYaSSDJExNnjLXLhibPBsq15gxQ=
-X-Received: by 2002:aca:190c:: with SMTP id l12mr3146352oii.147.1598046051274; 
- Fri, 21 Aug 2020 14:40:51 -0700 (PDT)
+ id 1k9zyk-00065r-OR
+ for linux-rockchip@lists.infradead.org; Mon, 24 Aug 2020 00:04:53 +0000
+Received: by mail-il1-x144.google.com with SMTP id k4so5786944ilr.12
+ for <linux-rockchip@lists.infradead.org>; Sun, 23 Aug 2020 17:04:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=tcd-ie.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2qvzvkep7ZlQHNyjrGsuXQAp+x7s+RjdNiOv81NxtoQ=;
+ b=ph3cmZeijsQTsHnHnrr9eCGgxMPexaLwCGnu3F9Od9T7oE9SJ1xriseSecoaLR+A31
+ cxdttU99z8vHmtpSvs9wLGOOgPOY6GzwuKuovZh4UMjplaxKJu/wyAtKKGV99cTnuUCc
+ b9jW667DJd78gpOSqL093TQrnCvZ9zpW4sDgc9e3s4gqdpHbIh0cqwIbSVLaQrTLqDAX
+ thER0vKrZAtqkOJvYQeGZuITMeh4kPZ6AWC1kOvIEmnWvuxZr35lD2OOnlXMpkqB5GBo
+ XlqFU7D/ggoXmysuTUVEiDWk1jvnBEMzHRuwpliqu/K2HYrSEPvB6WXxqYArt4mYifKa
+ QdMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2qvzvkep7ZlQHNyjrGsuXQAp+x7s+RjdNiOv81NxtoQ=;
+ b=O/QTSDEdR5Tub8mj8BAh0oOHvZnxwSGQWbUgibIggqzpH7MPduYZ5jfYfIGU4HxYeI
+ 8at5GMccQROdhgfXmWg90MZxvxIGJmmMr2rkNIDOovjCgfSYOZzRVVHpGCoGkWv77Ef7
+ bNjU8pKfck5Y1aJTqA669c+AMDfEbRlH3YCEgghxgKRS8sEdgmkT3vfqd+1zBSaTVcao
+ 6QGOCp6rcrZqzstF8U/Ej+/z4cZXLL4DwYSqPmAMoC5qfpUkB3UMAHNuU5X5yDOeWhJ+
+ DW9n3wkH3hpk/d8EJPHgPCrdVuI6Yrg//wzsw9NNR9LIBxHoaWaYQyZyb5qm1P4EsM5x
+ abSw==
+X-Gm-Message-State: AOAM530NCsGd1kVLl6ueyboXNGX74PmCmDdI9H1k/yjE162yFbS+/yic
+ O1XDxyNuYQWfG7iqfSxCwjpt9u5cZ0bjxHdKLQanFg==
+X-Google-Smtp-Source: ABdhPJx+Rb9Dh5afCkPV93ubbfa83YINwHuyBNL6aGGIC9gNFt/GVdQQ5DqMV2LQPpqLPd5cGrS+QMzugsAJ9rHE3h4=
+X-Received: by 2002:a92:4f:: with SMTP id 76mr2640989ila.11.1598227486317;
+ Sun, 23 Aug 2020 17:04:46 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200819221750.2055932-1-robh@kernel.org>
- <20200821011237.GA4527@lx2k>
- <CAL_JsqLfzDMJXDdqtVBYWrvuB8kBDHECWmNkS5EJStiwSFtp-g@mail.gmail.com>
- <CAOesGMhFGTZddCdusgfcUjfTP847am+F8jTAWrqYXjq1PLXxag@mail.gmail.com>
-In-Reply-To: <CAOesGMhFGTZddCdusgfcUjfTP847am+F8jTAWrqYXjq1PLXxag@mail.gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Fri, 21 Aug 2020 15:40:40 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqLqVdyKkVKJP0EG7s7m4A=r-+DjY+X4kVs9boFfPoHsfw@mail.gmail.com>
-Message-ID: <CAL_JsqLqVdyKkVKJP0EG7s7m4A=r-+DjY+X4kVs9boFfPoHsfw@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: Reformat PCI ranges/dma-ranges entries
-To: Olof Johansson <olof@lixom.net>
+References: <20191221150402.13868-1-murphyt7@tcd.ie>
+ <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
+ <20200529124523.GA11817@infradead.org>
+ <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
+ <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
+ <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
+ <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
+In-Reply-To: <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
+From: Tom Murphy <murphyt7@tcd.ie>
+Date: Mon, 24 Aug 2020 01:04:35 +0100
+Message-ID: <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
+Subject: Re: [PATCH 0/8] Convert the intel iommu driver to the dma-iommu api
+To: Logan Gunthorpe <logang@deltatee.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200821_174053_457811_627D466F 
-X-CRM114-Status: GOOD (  37.71  )
+X-CRM114-CacheID: sfid-20200823_200450_932859_D2F7A3B7 
+X-CRM114-Status: GOOD (  27.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,149 +96,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-List-Id: <soc.lore.kernel.org>
-Cc: Nishanth Menon <nm@ti.com>, Andrew Lunn <andrew@lunn.ch>,
- Heiko Stuebner <heiko@sntech.de>, Neil Armstrong <narmstrong@baylibre.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Fabio Estevam <festevam@gmail.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Kevin Hilman <khilman@baylibre.com>,
- Gregory Clement <gregory.clement@bootlin.com>,
- Michal Simek <michal.simek@xilinx.com>, Wei Xu <xuwei5@hisilicon.com>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Andy Gross <agross@kernel.org>, NXP Linux Team <linux-imx@nxp.com>,
- Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>,
- DTML <devicetree@vger.kernel.org>, Jason Cooper <jason@lakedaemon.net>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, SoC Team <soc@kernel.org>,
- "open list:ARM/Amlogic Meson..." <linux-amlogic@lists.infradead.org>,
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, Li Yang <leoyang.li@nxp.com>,
- Tero Kristo <t-kristo@ti.com>, Robert Richter <rrichter@marvell.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Shawn Guo <shawnguo@kernel.org>
+Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-tegra@vger.kernel.org, Julien Grall <julien.grall@arm.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
+ Andy Gross <agross@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ virtualization@lists.linux-foundation.org,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ David Woodhouse <dwmw2@infradead.org>, Cornelia Huck <cohuck@redhat.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Aug 21, 2020 at 11:14 AM Olof Johansson <olof@lixom.net> wrote:
+Hi Logan/All,
+
+I have added a check for the sg_dma_len == 0 :
+"""
+ } __sgt_iter(struct scatterlist *sgl, bool dma) {
+        struct sgt_iter s = { .sgp = sgl };
+
++       if (sgl && sg_dma_len(sgl) == 0)
++           s.sgp = NULL;
+
+        if (s.sgp) {
+            .....
+"""
+at location [1].
+but it doens't fix the problem.
+
+You're right though, this change does need to be made, this code
+doesn't handle pages of sg_dma_len(sg) == 0 correctly
+So my guess is that we have more bugs in other parts of the i915
+driver (or there is a problem with my "sg_dma_len == 0" fix above).
+I have been trying to spot where else the code might be buggy but I
+haven't had any luck so far.
+
+I'm doing a microconfernce (at LPC 2020) this wednesdays [1] on this
+if you're interested in attending.
+I'm hoping I can chat about it with a few people and find how can
+reproduce and fix this issues. I don't have any more time I can give
+to this unfortunately and it would be a shame for the work to go to
+waste.
+
+[0] https://github.com/torvalds/linux/blob/d012a7190fc1fd72ed48911e77ca97ba4521bccd/drivers/gpu/drm/i915/i915_scatterlist.h#L28
+[1] https://linuxplumbersconf.org/event/7/contributions/846/
+
+On Fri, 29 May 2020 at 22:21, Logan Gunthorpe <logang@deltatee.com> wrote:
 >
-> On Fri, Aug 21, 2020 at 9:14 AM Rob Herring <robh@kernel.org> wrote:
-> >
-> > On Thu, Aug 20, 2020 at 8:53 PM Olof Johansson <olof@lixom.net> wrote:
-> > >
-> > > On Wed, Aug 19, 2020 at 04:17:50PM -0600, Rob Herring wrote:
-> > > > While bracketing doesn't matter for a DTB, the DT schema checks rely on
-> > > > bracketing around each distinct entry. Reformat ranges and dma-ranges
-> > > > entries to fix warnings such as:
-> > > >
-> > > > arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dt.yaml: pcie@f8000000: ranges: [[2197815296, 0, 4194304000, 0, 4194304000, 0, 31457280, 2164260864, 0, 4225761280, 0, 4225761280, 0, 1048576]] is not valid under any of the given schemas (Possible causes of the failure):
-> > > >         arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dt.yaml: pcie@f8000000: ranges: True was expected
-> > > >         arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dt.yaml: pcie@f8000000: ranges:0: [2197815296, 0, 4194304000, 0, 4194304000, 0, 31457280, 2164260864, 0, 4225761280, 0, 4225761280, 0, 1048576] is too long
-> > > >         arch/arm64/boot/dts/rockchip/rk3399-sapphire-excavator.dt.yaml: pcie@f8000000: ranges:0:0: 2197815296 is not one of [16777216, 33554432, 50331648, 1107296256, 1124073472]
-> > >
-> > > Seems like a bug in your tool? Why would we bother with this churn?
-> >
-> > It's a feature. :)
 >
-> The feature is better linting of ranges, the new lack of being able to
-> do that for the way we've always been allowed to write ranges is a
-> bug.
-
-You are free to write your dts files however you like. You can still
-include all the errors, too. :)
-
-> > In this case, with the entries bracketed, we can check the PCI top
-> > address cell contents in the common PCI schema and check how many
-> > ranges entries in the specific bridge schemas if they have some
-> > constraints. The use of bracketing is useful to defining the number of
-> > entries not just for ranges, but everywhere. A device binding defines
-> > how many register regions or interrupts for example. It makes sense to
-> > delineate entries in some way. While yes, we have #.*-cells, there's
-> > not really any way to handle that in json-schema. And let's face it,
-> > #.*-cells is an odd construct.
-> >
-> > Currently, the dtc dts->yaml output maintains all this formatting. I
-> > suppose we could change that such that we parse #.*-cells and define
-> > the boundaries based on them. But then dtc has to know about every
-> > case of #.*-cells. That's not impossible to do, but doesn't keep the
-> > tool and binding data separate.
 >
-> That's already the case, isn't it? Run that part of the check if you
-> have a new enough dtc, otherwise warn that it's too old but do all the
-> other checks.
-
-Not really, I think. Not sure I follow though.
-
-> It's also just a change in one place: the tool, instead of evolving
-> the language by adding ad-hoc restrictions that the compiler doesn't
-> even know about, and requiring old code to change.
-
-Uh, it's 2 tools. There's no way to know if the dtc has the right
-support in order to enable a schema or not. We'd need that on a per
-property basis. For example, where we have:
-
-properties:
-  ranges:
-    minItems: 2
-    maxItems: 3
-
-We'd have to process the schema to remove ranges if dtc version didn't
-support formatting ranges.
-
-I would like to have more granular warnings with either levels or
-named checks, but there's not really any defined way to do that in
-json-schema. The easiest would be something at the file level. We have
-that somewhat in that we can run checks using a single schema file.
-
-> This way DTC could even warn/recommend bracketing per cell, when you
-> give it the ability to parse/handle it.
+> On 2020-05-29 3:11 p.m., Marek Szyprowski wrote:
+> > Patches are pending:
+> > https://lore.kernel.org/linux-iommu/20200513132114.6046-1-m.szyprowski@samsung.com/T/
 >
-> > Looking at it another way, do we really want to just allow anything? A
-> > device with 3 interrupts could be written as:
-> >
-> > interrupts = <1>, <2>, <3>;
-> > interrupts = <1 2 3>;
-> > interrupts = <1>, <2 3>;
-> > interrupts = [ 00 00 00 01 00 00 00 02 00 00 00 03 ];
-> >
-> > Or can we have some coding standards that are no more onerous or
-> > pedantic than what we have everywhere else?
+> Cool, nice! Though, I still don't think that fixes the issue in
+> i915_scatterlist.h given it still ignores sg_dma_len() and strictly
+> relies on sg_next()/sg_is_last() to stop iterating -- and I suspect this
+> is the bug that got in Tom's way.
 >
-> We're generally quite careful about applying new restrictions and
-> expectations on coding standards all across the tree, and when we add
-> new ones we usually don't require legacy code to change overnight,
-> only when there are other relevant changes to those files.
-
-But eventually we tend to make the changes. Can we at least agree the
-first form of bracketing is preferred over the 2nd and is what new dts
-files should use? If so, then most of the above is mute and it's a
-question of how to enable checks per dts file with new ones enabled.
-That was kind of what prompted this patch in the first place. I'm not
-really trying to be in the business of fixing dts files. I was looking
-at how to enable schema checks by default per platform (for 'make
-dtbs') with Marc's complaint about not having checks enabled by
-default[1]. There's a few platforms with a manageable number of
-warnings to fix, and I started looking at some of the PCI related
-warnings, fixed some false-positives in the schemas and did this patch
-along the way.
-
-In any case, we can enable schema checks with something like this:
-
-extra-y += $(patsubst %.dtb,%.dt.yaml,$(dtb-y))
-
-Or maybe "extra-$(CONFIG_HAS_DT_SCHEMA)" based on some check for the
-tools, so I don't get yelled at for breaking everyone's make
-allmodconfig. On the flip side, if I don't break allmodconfig for
-missing schema tools, the warnings will just continue to be ignored.
-And who will check and enforce all new platforms get enabled for
-checks?
-
-Rob
-
-[1] https://lore.kernel.org/lkml/34ac2d7c0770f9aa450aaa3905c82f52@kernel.org/
+> >> However, as Robin pointed out, there are other ugly tricks like stopping
+> >> iterating through the SGL when sg_dma_len() is zero. For example, the
+> >> AMD driver appears to use drm_prime_sg_to_page_addr_arrays() which does
+> >> this trick and thus likely isn't buggy (otherwise, I'd expect someone to
+> >> have complained by now seeing AMD has already switched to IOMMU-DMA.
+> >
+> > I'm not sure that this is a trick. Stopping at zero sg_dma_len() was
+> > somewhere documented.
+>
+> Well whatever you want to call it, it is ugly to have some drivers doing
+> one thing with the returned value and others assuming there's an extra
+> zero at the end. It just causes confusion for people reading/copying the
+> code. It would be better if they are all consistent. However, I concede
+> stopping at zero should not be broken, presently.
+>
+> Logan
 
 _______________________________________________
 Linux-rockchip mailing list
