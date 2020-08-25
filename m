@@ -2,62 +2,57 @@ Return-Path: <SRS0=C56+=CD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D2872C433E3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 13:04:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6AEC6C433DF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 13:22:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 968D920738
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 13:04:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 356D620639
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 13:22:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dqAqmuGw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 968D920738
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rQ1tnK2d"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 356D620639
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7LtDcQsz7C8Iqauo1Vt/XMlXlVaOyMXVUxOLeIMyDdY=; b=dqAqmuGw90t3b20ho3QqEeN5a
-	/0M0rRsI2vNsklZ/Whb6jwrPmQywtoXx/OGlKSJ7SmItG4ucXABWJK9uEBHsFm4YuyCRhCcemRM/o
-	qKFxFjSJK/6TvxomNbbbsVaVHlH7Xn0lzPaKblYDVOJGInlDwzrQJ3MWzAPaayWvzJ9GQDYXfq6l5
-	lXIOFhOEMw8nrULflDJdV/dnr+WtcOspzQNc2g/irL/GZIetmvDq9hFYNgaF2wKas8auvPtzejPhc
-	zjOnQ70Ddk9HrOCoxMdtejBD0gQ78l80QVg/SgjXwjMUFsugpWGl5rkiw29W16VW1YsKi8WCSLJuW
-	lGmbd0KrQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=twX0oEe5PkRDyUJdxmnZxO1WH9bVdrNUypRP4bISLek=; b=rQ1tnK2d3Y1w4AWwTufSjZyx7k
+	JLwS5YsNndijFnSmeTpzE2FhPll8KkUm30YXEPtOJ9gZPf5h6e5NWu1gi/vcdhLI6Zb9tUzMa7iN9
+	cxu9g4ovhZLp+jr5vxhqzldJOHAmLw4egx9kSc3Os8DYLrVlTEr6lj0RfazfgbatIICRZLJ0OYNt0
+	j28v+mmlxsVsi8NKnDYwaJANq6jcTxfmTGYXbwbtxUfrv+IAgzI6dOw6mZsnA+vHpj2FmYeFJrPpv
+	kcH/RvvVNOxtjo/WdtqsbtTTDPIXT61mdV4bwL/1Wpa/ZuqxqG4USTeP5PY3Tkl2qmM9GyAslUT9W
+	jkX29ixw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAYd7-0006oV-HZ; Tue, 25 Aug 2020 13:04:49 +0000
+	id 1kAYu6-0008V5-Mk; Tue, 25 Aug 2020 13:22:22 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAYd3-0006lu-Fo
- for linux-rockchip@lists.infradead.org; Tue, 25 Aug 2020 13:04:47 +0000
+ id 1kAYu4-0008UU-HN
+ for linux-rockchip@lists.infradead.org; Tue, 25 Aug 2020 13:22:21 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id DB93A2993BD
-Subject: Re: [PATCH v2 2/2] media: admin-guide: add documentation file
- rkisp1.rst
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-media@vger.kernel.org
-References: <20200818102703.30471-1-dafna.hirschfeld@collabora.com>
- <20200818102703.30471-3-dafna.hirschfeld@collabora.com>
+ (Authenticated sender: koike) with ESMTPSA id 6A71F2996D4
 From: Helen Koike <helen.koike@collabora.com>
-Message-ID: <ff20a4a9-8396-cfff-02ae-9bb38055c894@collabora.com>
-Date: Tue, 25 Aug 2020 10:04:36 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+To: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH] MAINTAINERS: add Dafna Hirschfeld for rkisp1
+Date: Tue, 25 Aug 2020 10:22:09 -0300
+Message-Id: <20200825132209.193435-1-helen.koike@collabora.com>
+X-Mailer: git-send-email 2.28.0.rc2
 MIME-Version: 1.0
-In-Reply-To: <20200818102703.30471-3-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200825_090445_783724_06EAF05C 
-X-CRM114-Status: GOOD (  36.19  )
+X-CRM114-CacheID: sfid-20200825_092220_670678_12658FC8 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,262 +65,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
- hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com,
- kernel@collabora.com, ezequiel@collabora.com
+Cc: hverkuil-cisco@xs4all.nl, kernel@collabora.com,
+ dafna.hirschfeld@collabora.com, linux-kernel@vger.kernel.org,
+ tfiga@chromium.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Add Dafna Hirschfeld to rkisp1 maintainers list
 
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-On 8/18/20 7:27 AM, Dafna Hirschfeld wrote:
-> Add the file 'rkisp1.rst' that documents the rkisp1 driver.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+diff --git a/MAINTAINERS b/MAINTAINERS
+index deaafb617361c..3deb954b2bb5d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -14858,6 +14858,7 @@ F:	include/linux/hid-roccat*
+ 
+ ROCKCHIP ISP V1 DRIVER
+ M:	Helen Koike <helen.koike@collabora.com>
++M:	Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+ L:	linux-media@vger.kernel.org
+ S:	Maintained
+ F:	drivers/staging/media/rkisp1/
+-- 
+2.28.0.rc2
 
-lgtm
-
-Acked-by: Helen Koike <helen.koike@collabora.com>
-
-Thanks!
-Helen
-
-
-> ---
->  Documentation/admin-guide/media/rkisp1.dot    |  18 ++
->  Documentation/admin-guide/media/rkisp1.rst    | 181 ++++++++++++++++++
->  .../admin-guide/media/v4l-drivers.rst         |   1 +
->  3 files changed, 200 insertions(+)
->  create mode 100644 Documentation/admin-guide/media/rkisp1.dot
->  create mode 100644 Documentation/admin-guide/media/rkisp1.rst
-> 
-> diff --git a/Documentation/admin-guide/media/rkisp1.dot b/Documentation/admin-guide/media/rkisp1.dot
-> new file mode 100644
-> index 000000000000..54c1953a6130
-> --- /dev/null
-> +++ b/Documentation/admin-guide/media/rkisp1.dot
-> @@ -0,0 +1,18 @@
-> +digraph board {
-> +	rankdir=TB
-> +	n00000001 [label="{{<port0> 0 | <port1> 1} | rkisp1_isp\n/dev/v4l-subdev0 | {<port2> 2 | <port3> 3}}", shape=Mrecord, style=filled, fillcolor=green]
-> +	n00000001:port2 -> n00000006:port0
-> +	n00000001:port2 -> n00000009:port0
-> +	n00000001:port3 -> n00000014 [style=bold]
-> +	n00000006 [label="{{<port0> 0} | rkisp1_resizer_mainpath\n/dev/v4l-subdev1 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
-> +	n00000006:port1 -> n0000000c [style=bold]
-> +	n00000009 [label="{{<port0> 0} | rkisp1_resizer_selfpath\n/dev/v4l-subdev2 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
-> +	n00000009:port1 -> n00000010 [style=bold]
-> +	n0000000c [label="rkisp1_mainpath\n/dev/video0", shape=box, style=filled, fillcolor=yellow]
-> +	n00000010 [label="rkisp1_selfpath\n/dev/video1", shape=box, style=filled, fillcolor=yellow]
-> +	n00000014 [label="rkisp1_stats\n/dev/video2", shape=box, style=filled, fillcolor=yellow]
-> +	n00000018 [label="rkisp1_params\n/dev/video3", shape=box, style=filled, fillcolor=yellow]
-> +	n00000018 -> n00000001:port1 [style=bold]
-> +	n0000001c [label="{{} | imx219 4-0010\n/dev/v4l-subdev3 | {<port0> 0}}", shape=Mrecord, style=filled, fillcolor=green]
-> +	n0000001c:port0 -> n00000001:port0
-> +}
-> diff --git a/Documentation/admin-guide/media/rkisp1.rst b/Documentation/admin-guide/media/rkisp1.rst
-> new file mode 100644
-> index 000000000000..42e37ed255f6
-> --- /dev/null
-> +++ b/Documentation/admin-guide/media/rkisp1.rst
-> @@ -0,0 +1,181 @@
-> +.. SPDX-License-Identifier: GPL-2.0
-> +
-> +.. include:: <isonum.txt>
-> +
-> +=========================================
-> +Rockchip Image Signal Processor (rkisp1)
-> +=========================================
-> +
-> +Introduction
-> +============
-> +
-> +This file documents the driver for the Rockchip ISP1 that is part of RK3288
-> +and RK3399 SoCs. The driver is located under drivers/staging/media/rkisp1
-> +and uses the Media-Controller API.
-> +
-> +Topology
-> +========
-> +.. _rkisp1_topology_graph:
-> +
-> +.. kernel-figure:: rkisp1.dot
-> +    :alt:   Diagram of the default media pipeline topology
-> +    :align: center
-> +
-> +
-> +The driver has 4 video devices:
-> +
-> +- rkisp1_mainpath: capture device for retrieving images, usually in higher
-> +  resolution.
-> +- rkisp1_selfpath: capture device for retrieving images.
-> +- rkisp1_stats: a metadata capture device that sends statistics.
-> +- rkisp1_params: a metadata output device that receives parameters
-> +  configurations from userspace.
-> +
-> +The driver has 3 subdevices:
-> +
-> +- rkisp1_resizer_mainpath: used to resize and downsample frames for the
-> +  mainpath capture device.
-> +- rkisp1_resizer_selfpath: used to resize and downsample frames for the
-> +  selfpath capture device.
-> +- rkisp1_isp: is connected to the sensor and is responsible for all the isp
-> +  operations.
-> +
-> +
-> +rkisp1_mainpath, rkisp1_selfpath - Frames Capture Video Nodes
-> +-------------------------------------------------------------
-> +Those are the `mainpath` and `selfpath` capture devices to capture frames.
-> +Those entities are the DMA engines that write the frames to memory.
-> +The selfpath video device can capture YUV/RGB formats. Its input is YUV encoded
-> +stream and it is able to convert it to RGB. The selfpath is not able to
-> +capture bayer formats.
-> +The mainpath can capture both bayer and YUV formats but it is not able to
-> +capture RGB formats.
-> +Both capture videos support
-> +the ``V4L2_CAP_IO_MC`` :ref:`capability <device-capabilities>`.
-> +
-> +
-> +rkisp1_resizer_mainpath, rkisp1_resizer_selfpath - Resizers Subdevices Nodes
-> +----------------------------------------------------------------------------
-> +Those are resizer entities for the mainpath and the selfpath. Those entities
-> +can scale the frames up and down and also change the YUV sampling (for example
-> +YUV4:2:2 -> YUV4:2:0). They also have cropping capability on the sink pad.
-> +The resizers entities can only operate on YUV:4:2:2 format
-> +(MEDIA_BUS_FMT_YUYV8_2X8).
-> +The mainpath capture device supports capturing video in bayer formats. In that
-> +case the resizer of the mainpath is set to 'bypass' mode - it just forward the
-> +frame without operating on it.
-> +
-> +rkisp1_isp - Image Signal Processing Subdevice Node
-> +---------------------------------------------------
-> +This is the isp entity. It is connected to the sensor on sink pad 0 and
-> +receives the frames using the CSI-2 protocol. It is responsible of configuring
-> +the CSI-2 protocol. It has a cropping capability on sink pad 0 that is
-> +connected to the sensor and on source pad 2 connected to the resizer entities.
-> +Cropping on sink pad 0 defines the image region from the sensor.
-> +Cropping on source pad 2 defines the region for the Image Stabilizer (IS).
-> +
-> +.. _rkisp1_stats:
-> +
-> +rkisp1_stats - Statistics Video Node
-> +------------------------------------
-> +The statistics video node outputs the 3A (auto focus, auto exposure and auto
-> +white balance) statistics, and also histogram statistics for the frames that
-> +are being processed by the rkisp1 to userspace applications.
-> +Using these data, applications can implement algorithms and re-parameterize
-> +the driver through the rkisp_params node to improve image quality during a
-> +video stream.
-> +The buffer format is defined by struct :c:type:`rkisp1_stat_buffer`, and
-> +userspace should set
-> +:ref:`V4L2_META_FMT_RK_ISP1_STAT_3A <v4l2-meta-fmt-stat-rkisp1>` as the
-> +dataformat.
-> +
-> +.. _rkisp1_params:
-> +
-> +rkisp1_params - Parameters Video Node
-> +-------------------------------------
-> +The rkisp1_params video node receives a set of parameters from userspace
-> +to be applied to the hardware during a video stream, allowing userspace
-> +to dynamically modify values such as black level, cross talk corrections
-> +and others.
-> +
-> +The buffer format is defined by struct :c:type:`rkisp1_params_cfg`, and
-> +userspace should set
-> +:ref:`V4L2_META_FMT_RK_ISP1_PARAMS <v4l2-meta-fmt-params-rkisp1>` as the
-> +dataformat.
-> +
-> +
-> +Capturing Video Frames Example
-> +==============================
-> +
-> +In the following example, the sensor connected to pad 0 of 'rkisp1_isp' is
-> +imx219.
-> +
-> +The following commands can be used to capture video from the selfpath video
-> +node with dimension 900x800 planar format YUV 4:2:2. It uses all cropping
-> +capabilities possible, (see explanation right below)
-> +
-> +.. code-block:: bash
-> +
-> +	# set the links
-> +	"media-ctl" "-d" "platform:rkisp1" "-r"
-> +	"media-ctl" "-d" "platform:rkisp1" "-l" "'imx219 4-0010':0 -> 'rkisp1_isp':0 [1]"
-> +	"media-ctl" "-d" "platform:rkisp1" "-l" "'rkisp1_isp':2 -> 'rkisp1_resizer_selfpath':0 [1]"
-> +	"media-ctl" "-d" "platform:rkisp1" "-l" "'rkisp1_isp':2 -> 'rkisp1_resizer_mainpath':0 [0]"
-> +
-> +	# set format for imx219 4-0010:0
-> +	"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"imx219 4-0010":0 [fmt:SRGGB10_1X10/1640x1232]'
-> +
-> +	# set format for rkisp1_isp pads:
-> +	"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_isp":0 [fmt:SRGGB10_1X10/1640x1232 crop: (0,0)/1600x1200]'
-> +	"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_isp":2 [fmt:YUYV8_2X8/1600x1200 crop: (0,0)/1500x1100]'
-> +
-> +	# set format for rkisp1_resizer_selfpath pads:
-> +	"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_selfpath":0 [fmt:YUYV8_2X8/1500x1100 crop: (300,400)/1400x1000]'
-> +	"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_selfpath":1 [fmt:YUYV8_2X8/900x800]'
-> +
-> +	# set format for rkisp1_selfpath:
-> +	"v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "-v" "width=900,height=800,"
-> +	"v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "-v" "pixelformat=422P"
-> +
-> +	# start streaming:
-> +	v4l2-ctl "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "--stream-mmap" "--stream-count" "10"
-> +
-> +
-> +In the above example the sensor is configured to bayer format:
-> +`SRGGB10_1X10/1640x1232`. The rkisp1_isp:0 pad should be configured to the
-> +same mbus format and dimensions as the sensor, otherwise streaming will fail
-> +with 'EPIPE' error. So it is also configured to `SRGGB10_1X10/1640x1232`.
-> +In addition, the rkisp1_isp:0 pad is configured to cropping `(0,0)/1600x1200`.
-> +
-> +The cropping dimensions are automatically propagated to be the format of the
-> +isp source pad `rkisp1_isp:2`. Another cropping operation is configured on
-> +the isp source pad: `(0,0)/1500x1100`.
-> +
-> +The resizer's sink pad `rkisp1_resizer_selfpath` should be configured to format
-> +`YUYV8_2X8/1500x1100` in order to match the format on the other side of the
-> +link. In addition a cropping `(300,400)/1400x1000` is configured on it.
-> +
-> +The source pad of the resizer, `rkisp1_resizer_selfpath:1` is configured to
-> +format `YUYV8_2X8/900x800`. That means that the resizer first crop a window
-> +of `(300,400)/1400x100` from the received frame and then scales this window
-> +to dimension `900x800`.
-> +
-> +Note that the above example does not uses the stats-params control loop.
-> +Therefore the capture frames will not go through the 3A algorithms and
-> +probably won't have a good quality, and can even look dark and greenish.
-> +
-> +Configuring Quantization
-> +========================
-> +
-> +The driver supports limited and full range quantization on YUV formats,
-> +where limited is the default.
-> +To switch between one or the other, userspace should use the Colorspace
-> +Conversion API (CSC) for subdevices on source pad 2 of the
-> +isp (`rkisp1_isp:2`). The quantization configured on this pad is the
-> +quantization of the captured video frames on the mainpath and selfpath
-> +video nodes.
-> +Note that the resizer and capture entities will always report
-> +``V4L2_QUANTIZATION_DEFAULT`` even if the quantization is configured to full
-> +range on `rkisp1_isp:2`. So in order to get the configured quantization,
-> +application should get it from pad `rkisp1_isp:2`.
-> +
-> diff --git a/Documentation/admin-guide/media/v4l-drivers.rst b/Documentation/admin-guide/media/v4l-drivers.rst
-> index 251cc4ede0b6..9c7ebe2ca3bd 100644
-> --- a/Documentation/admin-guide/media/v4l-drivers.rst
-> +++ b/Documentation/admin-guide/media/v4l-drivers.rst
-> @@ -25,6 +25,7 @@ Video4Linux (V4L) driver-specific documentation
->  	philips
->  	qcom_camss
->  	rcar-fdp1
-> +	rkisp1
->  	saa7134
->  	si470x
->  	si4713
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
