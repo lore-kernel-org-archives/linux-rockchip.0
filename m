@@ -1,80 +1,66 @@
-Return-Path: <SRS0=JNKT=CC=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=C56+=CD=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ECC14C433E1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 23:10:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F9DDC433DF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 08:25:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B966020702
-	for <linux-rockchip@archiver.kernel.org>; Mon, 24 Aug 2020 23:10:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 35F4F2071E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 08:25:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2BCG0F2K"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B966020702
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xnvvmHGa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 35F4F2071E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lCIRs3oVCMbc8n94xm7PlXcJUmhBP7wqJUdHAXjywZI=; b=2BCG0F2KX7i3RLKQqXDofOZ92
-	WITk+EuP1mvnY+qcVf0bv1lUxgDESQ9zvjDLEF3uExHx8ukCdzGz5WURszVp3rkpr/CtWjUGK/zAE
-	m4f3Q7fF1mIyasipYJpGiVgIGXKzy/I67AIjj/w5RO0YdUbuaarLbfU+zslBfVOLytiqOXSEO7Gd+
-	chpKf2nWdz5g44QXzy5t4UxKW2H/x41EO06TQyIfVMXnA9CkGFkN+L2OMadmnGUV8YeovQTiXEdNj
-	p/AhqbBIYkNr9eHVPwbB5fmRcRXFiW0ZTRu/Ph70GRLOxVkP1PUXJl41Im+iYyA1+WcVVg3/5+192
-	tDC7n63Ew==;
+	 bh=IRkGtYzPZQRzLfZCadW4WPcDjXkxFF41rQgRXCVR4m0=; b=xnvvmHGaLGVQR3IP9vmUG0Dgr
+	n2iXfyqKdze2gqriPNeVO/X4yvq8RxPKJq4D+A3DFvP9fxGftnRNp33x62CQ+gnfdBgQem9nEUg1a
+	fHnDZ8CcU9+kbxkt2gSA4LDHONhj5vWilIerNLXn24Z9/DQrQLJ5Hvunym9e2tN1IKECUV9W+siU3
+	KFSr2xZta1Q72Mb5GU3LcFhEQProDiT0a1n72U5ccXq5AnP0c0EBoA2Q4/ntZbEXy4JwmE/3/zPGk
+	LncDQkodHRud15pMCOna44s+WprhLeynRH2aYJbm7FL9+dzha836xmpyp/wA+G/wk7sj8NQm+bLsu
+	gCo62bhxQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kALbH-0001xL-66; Mon, 24 Aug 2020 23:10:03 +0000
-Received: from mail-il1-f194.google.com ([209.85.166.194])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kALbE-0001wV-Gr
- for linux-rockchip@lists.infradead.org; Mon, 24 Aug 2020 23:10:01 +0000
-Received: by mail-il1-f194.google.com with SMTP id f75so8522509ilh.3
- for <linux-rockchip@lists.infradead.org>; Mon, 24 Aug 2020 16:10:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=pNW+FpExzUZzKAgdzLbbC3mRjgc/ErkF14qzkePzpao=;
- b=nKE11rbK4CtucpZ8jJUS7dGR+BEd3W9OvdeLRA/QSAhPgm6oTjyxE1xMvlYj6UiMxe
- ItEKNLBXPEr6JWluxB8ZWZhVV64FGsdnGvhC4zSBlZmXwlVtTcrYt0ftKw2iNQ7qv9Cp
- ADo3fCdSN6CdMM0yUO3o9mVZpi55Rm6+sWAVYLzp+tq97bI0T944GvEH/1yNgeKdvN25
- Evqeqx3yY/E7tLdJBgSgNUD65TlfVy+aKuk9ItFqFnF75tHKX3rEfo/uFa3NpXLfuUF0
- 0mqQ347a66T5oSMZWvIFYW9Km2/4yzxho/itMAVSq1rZyU4mjZz8wbukdHgjBGvWzv5u
- yiZQ==
-X-Gm-Message-State: AOAM532CaooPfvjUh/c5yT0c1lxBgLADDzplN852KgUfuA7mlgbwmy1A
- oPoORZSgLaTSZGzAlM8jlQ==
-X-Google-Smtp-Source: ABdhPJye+VWIVLJXB8wHyD0hNc5m+JPXvkFWV50q8MkRfj/wsTQkYrcYnZUWZ+rtqsOfgrGDN5f5SA==
-X-Received: by 2002:a05:6e02:13ee:: with SMTP id
- w14mr7059209ilj.4.1598310599896; 
- Mon, 24 Aug 2020 16:09:59 -0700 (PDT)
-Received: from xps15 ([64.188.179.249])
- by smtp.gmail.com with ESMTPSA id n7sm7456664iop.45.2020.08.24.16.09.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Aug 2020 16:09:58 -0700 (PDT)
-Received: (nullmailer pid 3506628 invoked by uid 1000);
- Mon, 24 Aug 2020 23:09:56 -0000
-Date: Mon, 24 Aug 2020 17:09:56 -0600
-From: Rob Herring <robh@kernel.org>
-To: Finley Xiao <finley.xiao@rock-chips.com>
-Subject: Re: [PATCH v1] thermal/of: Introduce k-po, k-pu and k-i for a
- thermal zone
-Message-ID: <20200824230956.GA3500214@bogus>
+	id 1kAUGf-00059c-Ug; Tue, 25 Aug 2020 08:25:21 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kAUGd-00058Q-9i
+ for linux-rockchip@lists.infradead.org; Tue, 25 Aug 2020 08:25:20 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0939A30E;
+ Tue, 25 Aug 2020 01:25:18 -0700 (PDT)
+Received: from [10.37.12.65] (unknown [10.37.12.65])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5EF863F68F;
+ Tue, 25 Aug 2020 01:25:14 -0700 (PDT)
+Subject: Re: [PATCH v1] thermal/of: Introduce k-po, k-pu and k-i for a thermal
+ zone
+To: Rob Herring <robh@kernel.org>
 References: <20200811123115.8144-1-finley.xiao@rock-chips.com>
+ <20200824230956.GA3500214@bogus>
+From: Lukasz Luba <lukasz.luba@arm.com>
+Message-ID: <c3f54e18-8683-8bd9-90fa-e3465cddf8e8@arm.com>
+Date: Tue, 25 Aug 2020 09:25:11 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200811123115.8144-1-finley.xiao@rock-chips.com>
+In-Reply-To: <20200824230956.GA3500214@bogus>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200824_191000_632307_D8FB9792 
-X-CRM114-Status: GOOD (  18.75  )
+X-CRM114-CacheID: sfid-20200825_042519_491041_8DF881CF 
+X-CRM114-Status: GOOD (  22.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,67 +76,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Cc: huangtao@rock-chips.com, devicetree@vger.kernel.org, heiko@sntech.de,
  linux-pm@vger.kernel.org, daniel.lezcano@linaro.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- tony.xie@rock-chips.com, rui.zhang@intel.com, cl@rock-chips.com
-Content-Type: text/plain; charset="us-ascii"
+ tony.xie@rock-chips.com, Finley Xiao <finley.xiao@rock-chips.com>,
+ rui.zhang@intel.com, cl@rock-chips.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 11, 2020 at 08:31:15PM +0800, Finley Xiao wrote:
-> The default value for k_pu is:
->     2 * sustainable_power / (desired_temperature - switch_on_temp)
-> The default value for k_po is:
->     sustainable_power / (desired_temperature - switch_on_temp)
-> The default value for k_i is 10.
+Hi Rob,
+
+On 8/25/20 12:09 AM, Rob Herring wrote:
+> On Tue, Aug 11, 2020 at 08:31:15PM +0800, Finley Xiao wrote:
+>> The default value for k_pu is:
+>>      2 * sustainable_power / (desired_temperature - switch_on_temp)
+>> The default value for k_po is:
+>>      sustainable_power / (desired_temperature - switch_on_temp)
+>> The default value for k_i is 10.
+>>
+>> Even though these parameters of the PID controller can be changed
+>> by the following sysfs files:
+>>      /sys/class/thermal/thermal_zoneX/k_pu
+>>      /sys/class/thermal/thermal_zoneX/k_po
+>>      /sys/class/thermal/thermal_zoneX/k_i
+>>
+>> But it's still more convenient to change the default values by devicetree,
+>> so introduce these three optional properties. If provided these properties,
+>> they will be parsed and associated with the thermal zone via the thermal
+>> zone parameters.
+>>
+>> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+>> ---
+>>   Documentation/devicetree/bindings/thermal/thermal.txt | 14 ++++++++++++++
 > 
-> Even though these parameters of the PID controller can be changed
-> by the following sysfs files:
->     /sys/class/thermal/thermal_zoneX/k_pu
->     /sys/class/thermal/thermal_zoneX/k_po
->     /sys/class/thermal/thermal_zoneX/k_i
+> Bindings should be a separate file and this one is a DT schema now.
 > 
-> But it's still more convenient to change the default values by devicetree,
-> so introduce these three optional properties. If provided these properties,
-> they will be parsed and associated with the thermal zone via the thermal
-> zone parameters.
+>>   drivers/thermal/thermal_of.c                          |  7 +++++++
+>>   2 files changed, 21 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/thermal/thermal.txt b/Documentation/devicetree/bindings/thermal/thermal.txt
+>> index f78bec19ca35..ebe936b57ded 100644
+>> --- a/Documentation/devicetree/bindings/thermal/thermal.txt
+>> +++ b/Documentation/devicetree/bindings/thermal/thermal.txt
+>> @@ -165,6 +165,20 @@ Optional property:
+>>   			2000mW, while on a 10'' tablet is around
+>>   			4500mW.
+>>   
+>> +- k-po:			Proportional parameter of the PID controller when
+>> +			current temperature is above the target.
+>> +  Type: signed
+>> +  Size: one cell
+>> +
+>> +- k-pu:			Proportional parameter of the PID controller when
+>> +			current temperature is below the target.
+>> +  Type: signed
+>> +  Size: one cell
+>> +
+>> +- k-i:			Integral parameter of the PID controller.
+>> +  Type: signed
+>> +  Size: one cell
 > 
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> ---
->  Documentation/devicetree/bindings/thermal/thermal.txt | 14 ++++++++++++++
-
-Bindings should be a separate file and this one is a DT schema now.
-
->  drivers/thermal/thermal_of.c                          |  7 +++++++
->  2 files changed, 21 insertions(+)
+> What's PID?
 > 
-> diff --git a/Documentation/devicetree/bindings/thermal/thermal.txt b/Documentation/devicetree/bindings/thermal/thermal.txt
-> index f78bec19ca35..ebe936b57ded 100644
-> --- a/Documentation/devicetree/bindings/thermal/thermal.txt
-> +++ b/Documentation/devicetree/bindings/thermal/thermal.txt
-> @@ -165,6 +165,20 @@ Optional property:
->  			2000mW, while on a 10'' tablet is around
->  			4500mW.
->  
-> +- k-po:			Proportional parameter of the PID controller when
-> +			current temperature is above the target.
-> +  Type: signed
-> +  Size: one cell
-> +
-> +- k-pu:			Proportional parameter of the PID controller when
-> +			current temperature is below the target.
-> +  Type: signed
-> +  Size: one cell
-> +
-> +- k-i:			Integral parameter of the PID controller.
-> +  Type: signed
-> +  Size: one cell
+> I know nothing about the sysfs params, but the binding needs to stand on
+> it's own and needs enough detail to educate me.
+> 
 
-What's PID?
+Sorry for the delay, I missed that patch.
+These parameters are the coefficients for the
+Proportional-Integral-Derivative (PID) controller [1], which is the
+core of the Intelligent Power Allocation (IPA) thermal governor.
 
-I know nothing about the sysfs params, but the binding needs to stand on 
-it's own and needs enough detail to educate me.
+Only IPA uses them, thus I don't think the governors parameters:
+k-po, k-pu, k-i
+should be part of the DeviceTree. I haven't seen such governors
+tunnables in the DT, please point me if they exist somewhere.
 
-Rob
+Do you think Rob they might be specified in the DT?
+
+Regards,
+Lukasz
+
+[1] https://en.wikipedia.org/wiki/PID_controller
 
 _______________________________________________
 Linux-rockchip mailing list
