@@ -2,55 +2,78 @@ Return-Path: <SRS0=C56+=CD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1354BC433DF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 14:08:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 75098C433E3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 15:50:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C5A0020665
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 14:08:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 449A92072D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 15:50:33 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UL4eOs3j"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C5A0020665
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="csvuG9+S";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="iepPZMUx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 449A92072D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Afu1G5tS1A8MPXVP9ooO2VYtR45LVGEqY7bSrjp3aI8=; b=UL4eOs3jyn0ik/U/FIwZ3MUweV
-	Yqmwhq/QWHEuG/rZDa8eDc6CClRq79IfI/APjNLoI4cj8tNjvpIMLlNz02JB+iPSvKLwmadRCPwiz
-	4Bz9yYMjJ8aNz/QLg9icZqMN8Mkp7naInPuORAFoZC3z1oMQhnPbG3sZe4zx0Q5wcUyzJSLbaJcod
-	MwzpJw/RPzt5hexVCHDYRgEaW5qn1oGbCulN5Qa7bUJ9+rwbdVNLMoJBTJCyh8uWhEubBRwF9Gc+a
-	50irdTfyLF1N2GhBpw3qaJVVlMsNrmjt+6qR55/LohZ7Kgg3b8kSIrRAoCemBGZRRZPSwP0jRrgml
-	C2WQmfXw==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=n4N2XnteHkrTHkjogX1E347lpUCwvdfkAz5KlOZf4LY=; b=csvuG9+Sul1W+CobGNkx1ERXT
+	F+rx5/ivQF2S0qCfiUYbPBL1COlRbQ5ZdwDQVuELDOGiqNfzx8H9vaOfX9u+gb9dKiwj+bTzkGctE
+	7HjQSNKXdlSzgCW0EQLu+0S4+7SLFMO/kI70KUhSowdeHwbK9kCBIXFIoQh1/iWGNSINu8jeOVSlp
+	lpJpgGO0G9a2WKFQWuJteBMjmSAf7iWxpWnmq9m6wcH0fh+19a8Z/J9qRJ4zssKBE9S9+NK1rkEaH
+	ZxhzgvyRjBe6JDMfisHyJ7PEDYDBwIEOYeXzLfFNKJZypvgtd+cUR0xJbaR3z3EnRbgNntFxk+CVt
+	7jHzawdFA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAZcb-0002yj-EC; Tue, 25 Aug 2020 14:08:21 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kAbDQ-0002Zv-5C; Tue, 25 Aug 2020 15:50:28 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAZcY-0002y0-Dd
- for linux-rockchip@lists.infradead.org; Tue, 25 Aug 2020 14:08:19 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id C74212948D8
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v2] utils: v4l2-ctl: support V4L2_CAP_IO_MC in v4l2-ctl
- '--list-formats-*' commands
-Date: Tue, 25 Aug 2020 16:08:06 +0200
-Message-Id: <20200825140806.13978-1-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
+ id 1kAbDN-0002ZJ-Mw
+ for linux-rockchip@lists.infradead.org; Tue, 25 Aug 2020 15:50:26 +0000
+Received: from mail-ot1-f49.google.com (mail-ot1-f49.google.com
+ [209.85.210.49])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id E8E9E2076C
+ for <linux-rockchip@lists.infradead.org>; Tue, 25 Aug 2020 15:50:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1598370625;
+ bh=kkJkXhmioIJQwsukGCwJD/oWEwK9HwwT7ICNctF3euE=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=iepPZMUxPPfNV4NgNQvKYw0bKlAp+7ff2+icC5HJDfMTos6esrkPTtqMOCHQw+xKh
+ J+a0izz+d2S5jk2Ch/ERGJZd8ZXaRCpkI5mT16bZHcFof/vxMgzKyvSp2C0LN6ToU5
+ Ze9SAt6kOgakUjZJJOcd2OI8hQRX8747inBg5RoA=
+Received: by mail-ot1-f49.google.com with SMTP id a65so10734029otc.8
+ for <linux-rockchip@lists.infradead.org>; Tue, 25 Aug 2020 08:50:24 -0700 (PDT)
+X-Gm-Message-State: AOAM531cWpDsNjdsAJZA6nj7SQ5Fixz8tOdkMK9C14EJVlIEnVh/Fdk2
+ D5ZtnezMINlsbmRju8KOvWmbbI9XchhcBPFHpQ==
+X-Google-Smtp-Source: ABdhPJzwQ9ZH34bliWvfQGeu3USdo0K8TRmckV2s4StillhPTdBNCd1F3rQthdZKBSrONLJMcgBLlGMcftceTr+YEvg=
+X-Received: by 2002:a9d:32e5:: with SMTP id u92mr6653653otb.107.1598370624203; 
+ Tue, 25 Aug 2020 08:50:24 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200811123115.8144-1-finley.xiao@rock-chips.com>
+ <20200824230956.GA3500214@bogus>
+ <c3f54e18-8683-8bd9-90fa-e3465cddf8e8@arm.com>
+ <13b84e7e-adfe-5939-e78d-0a20fce0a92e@linaro.org>
+In-Reply-To: <13b84e7e-adfe-5939-e78d-0a20fce0a92e@linaro.org>
+From: Rob Herring <robh@kernel.org>
+Date: Tue, 25 Aug 2020 09:50:12 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqJO7PFYMpO-eDaCOzz5MxyjkfOScw9Q_ZzF=bEswCweGA@mail.gmail.com>
+Message-ID: <CAL_JsqJO7PFYMpO-eDaCOzz5MxyjkfOScw9Q_ZzF=bEswCweGA@mail.gmail.com>
+Subject: Re: [PATCH v1] thermal/of: Introduce k-po,
+ k-pu and k-i for a thermal zone
+To: Daniel Lezcano <daniel.lezcano@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200825_100818_681541_4C1F052A 
-X-CRM114-Status: GOOD (  16.30  )
+X-CRM114-CacheID: sfid-20200825_115025_873953_420640D1 
+X-CRM114-Status: GOOD (  30.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,345 +86,113 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
- tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
-MIME-Version: 1.0
+Cc: Tao Huang <huangtao@rock-chips.com>, devicetree@vger.kernel.org,
+ "heiko@sntech.de" <heiko@sntech.de>,
+ "open list:THERMAL" <linux-pm@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Tony Xie <tony.xie@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>,
+ Liang Chen <cl@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add optional <mbus_code> arg to 'v4l2-ctl --list-formats-*'
-commands for capture, metadata and output devices.
-If <mbus_code> is given and the device has capability
-V4L2_CAP_IO_MC then list only the formats that matches the
-mbus code.
-The mbus_code is ignored for devices that don't use it
-or don't have the V4L2_CAP_IO_MC capability.
+On Tue, Aug 25, 2020 at 3:44 AM Daniel Lezcano
+<daniel.lezcano@linaro.org> wrote:
+>
+> On 25/08/2020 10:25, Lukasz Luba wrote:
+> > Hi Rob,
+> >
+> > On 8/25/20 12:09 AM, Rob Herring wrote:
+> >> On Tue, Aug 11, 2020 at 08:31:15PM +0800, Finley Xiao wrote:
+> >>> The default value for k_pu is:
+> >>>      2 * sustainable_power / (desired_temperature - switch_on_temp)
+> >>> The default value for k_po is:
+> >>>      sustainable_power / (desired_temperature - switch_on_temp)
+> >>> The default value for k_i is 10.
+> >>>
+> >>> Even though these parameters of the PID controller can be changed
+> >>> by the following sysfs files:
+> >>>      /sys/class/thermal/thermal_zoneX/k_pu
+> >>>      /sys/class/thermal/thermal_zoneX/k_po
+> >>>      /sys/class/thermal/thermal_zoneX/k_i
+> >>>
+> >>> But it's still more convenient to change the default values by
+> >>> devicetree,
+> >>> so introduce these three optional properties. If provided these
+> >>> properties,
+> >>> they will be parsed and associated with the thermal zone via the thermal
+> >>> zone parameters.
+> >>>
+> >>> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
+> >>> ---
+> >>>   Documentation/devicetree/bindings/thermal/thermal.txt | 14
+> >>> ++++++++++++++
+> >>
+> >> Bindings should be a separate file and this one is a DT schema now.
+> >>
+> >>>   drivers/thermal/thermal_of.c                          |  7 +++++++
+> >>>   2 files changed, 21 insertions(+)
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/thermal/thermal.txt
+> >>> b/Documentation/devicetree/bindings/thermal/thermal.txt
+> >>> index f78bec19ca35..ebe936b57ded 100644
+> >>> --- a/Documentation/devicetree/bindings/thermal/thermal.txt
+> >>> +++ b/Documentation/devicetree/bindings/thermal/thermal.txt
+> >>> @@ -165,6 +165,20 @@ Optional property:
+> >>>               2000mW, while on a 10'' tablet is around
+> >>>               4500mW.
+> >>>   +- k-po:            Proportional parameter of the PID controller when
+> >>> +            current temperature is above the target.
+> >>> +  Type: signed
+> >>> +  Size: one cell
+> >>> +
+> >>> +- k-pu:            Proportional parameter of the PID controller when
+> >>> +            current temperature is below the target.
+> >>> +  Type: signed
+> >>> +  Size: one cell
+> >>> +
+> >>> +- k-i:            Integral parameter of the PID controller.
+> >>> +  Type: signed
+> >>> +  Size: one cell
+> >>
+> >> What's PID?
+> >>
+> >> I know nothing about the sysfs params, but the binding needs to stand on
+> >> it's own and needs enough detail to educate me.
+> > Sorry for the delay, I missed that patch.
+> > These parameters are the coefficients for the
+> > Proportional-Integral-Derivative (PID) controller [1], which is the
+> > core of the Intelligent Power Allocation (IPA) thermal governor.
+>
+> Just a few words to elaborate a bit for Rob who may not have time to
+> digest the whole concept from Wikipedia :)
+>
+> The PID is an regulation loop where the input is compared to the output.
+>
+> For example when driving a car and you aim a speed cruise of 90km/h. You
+> press the accelerator and watch the current speed. The smaller the
+> current speed is, the stronger you will push the accelerator. And the
+> closer to the cruise speed the car is, the lesser you push the
+> accelerator until the car stabilize to the cruise to speed.
+>
+> The k-* describes how strong you push the accelerator and release it.
+>
+> In the thermal framework, that has an impact on how brutal the
+> mitigation acts and depending on them it results in a flat temperature
+> curve or a sawtooth aspect.
+>
+> These coefficient depends on the ambient temperature (casing, room
+> temperature), the heat sink and the load. Depending on the use cases,
+> you may want to change their values at runtime.
+>
+> From my POV, setting these values in the DT does not really make sense.
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
-changes since v1: fixes according to comments from Hans
+I pretty much always agree with not putting things in DT. :)
 
- utils/common/cv4l-helpers.h         |  3 ++-
- utils/v4l2-ctl/v4l2-ctl-meta.cpp    | 20 ++++++++++++++++----
- utils/v4l2-ctl/v4l2-ctl-overlay.cpp |  2 +-
- utils/v4l2-ctl/v4l2-ctl-sdr.cpp     |  4 ++--
- utils/v4l2-ctl/v4l2-ctl-vidcap.cpp  | 23 ++++++++++++++++++-----
- utils/v4l2-ctl/v4l2-ctl-vidout.cpp  | 22 ++++++++++++++++------
- utils/v4l2-ctl/v4l2-ctl.cpp         | 26 ++++++++++++++++----------
- utils/v4l2-ctl/v4l2-ctl.h           |  4 ++--
- 8 files changed, 73 insertions(+), 31 deletions(-)
-
-diff --git a/utils/common/cv4l-helpers.h b/utils/common/cv4l-helpers.h
-index 6295054a..3cee372b 100644
---- a/utils/common/cv4l-helpers.h
-+++ b/utils/common/cv4l-helpers.h
-@@ -483,12 +483,13 @@ public:
- 		return cv4l_ioctl(VIDIOC_ENUM_DV_TIMINGS, &timings);
- 	}
- 
--	int enum_fmt(v4l2_fmtdesc &fmt, bool init = false, int index = 0, unsigned type = 0)
-+	int enum_fmt(v4l2_fmtdesc &fmt, bool init = false, int index = 0, unsigned type = 0, __u32 mbus_code = 0)
- 	{
- 		if (init) {
- 			memset(&fmt, 0, sizeof(fmt));
- 			fmt.type = type ? type : g_type();
- 			fmt.index = index;
-+			fmt.mbus_code = mbus_code;
- 		} else {
- 			fmt.index++;
- 		}
-diff --git a/utils/v4l2-ctl/v4l2-ctl-meta.cpp b/utils/v4l2-ctl/v4l2-ctl-meta.cpp
-index b4c7bb89..3382c631 100644
---- a/utils/v4l2-ctl/v4l2-ctl-meta.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-meta.cpp
-@@ -18,11 +18,15 @@
- #include "v4l2-ctl.h"
- 
- static struct v4l2_format vfmt;	/* set_format/get_format */
-+static unsigned mbus_code;
- 
- void meta_usage()
- {
- 	printf("\nMetadata Formats options:\n"
--	       "  --list-formats-meta display supported metadata capture formats [VIDIOC_ENUM_FMT]\n"
-+	       "  --list-formats-meta [<mbus_code>] display supported metadata capture formats.\n"
-+	       "		      <mbus_code> is an optional media bus code, if the driver has\n"
-+	       "		      capability V4L2_CAP_IO_MC then only formats that support this\n"
-+	       "		      media bus code are listed [VIDIOC_ENUM_FMT]\n"
- 	       "  --get-fmt-meta      query the metadata capture format [VIDIOC_G_FMT]\n"
- 	       "  --set-fmt-meta <f>  set the metadata capture format [VIDIOC_S_FMT]\n"
- 	       "                     parameter is either the format index as reported by\n"
-@@ -30,7 +34,10 @@ void meta_usage()
- 	       "  --try-fmt-meta <f>  try the metadata capture format [VIDIOC_TRY_FMT]\n"
- 	       "                     parameter is either the format index as reported by\n"
- 	       "                     --list-formats-meta, or the fourcc value as a string\n"
--	       "  --list-formats-meta-out display supported metadata output formats [VIDIOC_ENUM_FMT]\n"
-+	       "  --list-formats-meta-out [<mbus_code>] display supported metadata output formats.\n"
-+	       "		      <mbus_code> is an optional media bus code, if the driver has\n"
-+	       "		      capability V4L2_CAP_IO_MC then only formats that support this\n"
-+	       "		      media bus code are listed [VIDIOC_ENUM_FMT]\n"
- 	       "  --get-fmt-meta-out      query the metadata output format [VIDIOC_G_FMT]\n"
- 	       "  --set-fmt-meta-out <f>  set the metadata output format [VIDIOC_S_FMT]\n"
- 	       "                          parameter is either the format index as reported by\n"
-@@ -58,6 +65,11 @@ void meta_cmd(int ch, char *optarg)
- 			vfmt.fmt.meta.dataformat = strtol(optarg, 0L, 0);
- 		}
- 		break;
-+	case OptListMetaFormats:
-+	case OptListMetaOutFormats:
-+		if(optarg)
-+			mbus_code = strtoul(optarg, 0L, 0);
-+		break;
- 	}
- }
- 
-@@ -120,12 +132,12 @@ void meta_list(cv4l_fd &fd)
- {
- 	if (options[OptListMetaFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, V4L2_BUF_TYPE_META_CAPTURE);
-+		print_video_formats(fd, V4L2_BUF_TYPE_META_CAPTURE, mbus_code);
- 	}
- 
- 	if (options[OptListMetaOutFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, V4L2_BUF_TYPE_META_OUTPUT);
-+		print_video_formats(fd, V4L2_BUF_TYPE_META_OUTPUT, mbus_code);
- 	}
- }
- 
-diff --git a/utils/v4l2-ctl/v4l2-ctl-overlay.cpp b/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
-index 7809a6db..75681332 100644
---- a/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
-@@ -539,7 +539,7 @@ void overlay_list(cv4l_fd &fd)
- {
- 	if (options[OptListOverlayFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, V4L2_BUF_TYPE_VIDEO_OVERLAY);
-+		print_video_formats(fd, V4L2_BUF_TYPE_VIDEO_OVERLAY, 0);
- 	}
- 	if (options[OptFindFb])
- 		find_fb(fd.g_fd());
-diff --git a/utils/v4l2-ctl/v4l2-ctl-sdr.cpp b/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
-index 7a36341a..5b724696 100644
---- a/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
-@@ -139,10 +139,10 @@ void sdr_list(cv4l_fd &fd)
- {
- 	if (options[OptListSdrFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, V4L2_BUF_TYPE_SDR_CAPTURE);
-+		print_video_formats(fd, V4L2_BUF_TYPE_SDR_CAPTURE, 0);
- 	}
- 	if (options[OptListSdrOutFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, V4L2_BUF_TYPE_SDR_OUTPUT);
-+		print_video_formats(fd, V4L2_BUF_TYPE_SDR_OUTPUT, 0);
- 	}
- }
-diff --git a/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp b/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
-index 5abab5e7..d0a0d120 100644
---- a/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
-@@ -23,13 +23,21 @@ static unsigned set_fmts;
- static __u32 width, height, pixfmt, field, flags;
- static __u32 bytesperline[VIDEO_MAX_PLANES];
- static __u32 sizeimage[VIDEO_MAX_PLANES];
-+static unsigned mbus_code;
- 
- void vidcap_usage()
- {
- 	printf("\nVideo Capture Formats options:\n"
--	       "  --list-formats     display supported video formats [VIDIOC_ENUM_FMT]\n"
--	       "  --list-formats-ext display supported video formats including frame sizes\n"
--	       "                     and intervals\n"
-+	       "  --list-formats [<mbus_code>]\n"
-+	       "		     display supported video formats. <mbus_code> is an optional\n"
-+	       "		     media bus code, if the driver has capability V4L2_CAP_IO_MC\n"
-+	       "		     then only formats that support this media bus code are listed\n"
-+	       "		     [VIDIOC_ENUM_FMT]\n"
-+	       "  --list-formats-ext [<mbus_code>]\n"
-+	       "		     display supported video formats including frame sizes and intervals\n"
-+	       "		     <mbus_code> is an optional media bus code, if the driver has\n"
-+	       "		     capability V4L2_CAP_IO_MC then only formats that support this\n"
-+	       "		     media bus code are listed [VIDIOC_ENUM_FMT]\n"
- 	       "  --list-framesizes <f>\n"
- 	       "                     list supported framesizes for pixelformat <f>\n"
- 	       "                     [VIDIOC_ENUM_FRAMESIZES]\n"
-@@ -117,6 +125,11 @@ void vidcap_cmd(int ch, char *optarg)
- 			std::exit(EXIT_FAILURE);
- 		}
- 		break;
-+	case OptListFormats:
-+	case OptListFormatsExt:
-+		if(optarg)
-+			mbus_code = strtoul(optarg, 0L, 0);
-+		break;
- 	case OptListFrameSizes:
- 		be_pixfmt = strlen(optarg) == 7 && !memcmp(optarg + 4, "-BE", 3);
- 		if (be_pixfmt || strlen(optarg) == 4) {
-@@ -298,12 +311,12 @@ void vidcap_list(cv4l_fd &fd)
- {
- 	if (options[OptListFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, vidcap_buftype);
-+		print_video_formats(fd, vidcap_buftype, mbus_code);
- 	}
- 
- 	if (options[OptListFormatsExt]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats_ext(fd, vidcap_buftype);
-+		print_video_formats_ext(fd, vidcap_buftype, mbus_code);
- 	}
- 
- 	if (options[OptListFields]) {
-diff --git a/utils/v4l2-ctl/v4l2-ctl-vidout.cpp b/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
-index 5f433a17..563aae45 100644
---- a/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
-@@ -21,14 +21,19 @@ static unsigned set_fmts_out;
- static __u32 width, height, pixfmt, field, colorspace, xfer_func, ycbcr, quantization, flags;
- static __u32 bytesperline[VIDEO_MAX_PLANES];
- static __u32 sizeimage[VIDEO_MAX_PLANES];
-+static unsigned mbus_code;
- 
- void vidout_usage()
- {
- 	printf("\nVideo Output Formats options:\n"
--	       "  --list-formats-out display supported video output formats [VIDIOC_ENUM_FMT]\n"
--	       "  --list-formats-out-ext\n"
--	       "                     display supported video output formats including frame sizes\n"
--	       "                     and intervals\n"
-+	       "  --list-formats-out [<mbus_code>] display supported video output formats.\n"
-+	       "		     <mbus_code> is an optional media bus code, if the driver has\n"
-+	       "		     capability V4L2_CAP_IO_MC then only formats that support this\n"
-+	       "		     media bus code are listed [VIDIOC_ENUM_FMT]\n"
-+	       "  --list-formats-out-ext [<mbus_code>] display supported video output formats including\n"
-+	       "		     frame sizes and intervals. <mbus_code> is an optional media bus code,\n"
-+	       "		     if the driver has capability V4L2_CAP_IO_MC then only formats that\n"
-+	       "		     support this media bus code are listed [VIDIOC_ENUM_FMT]\n"
- 	       "  --list-fields-out  list supported fields for the current output format\n"
- 	       "  -X, --get-fmt-video-out\n"
- 	       "     		     query the video output format [VIDIOC_G_FMT]\n"
-@@ -103,6 +108,11 @@ void vidout_cmd(int ch, char *optarg)
- 			std::exit(EXIT_FAILURE);
- 		}
- 		break;
-+	case OptListOutFormats:
-+	case OptListOutFormatsExt:
-+		if(optarg)
-+			mbus_code = strtoul(optarg, 0L, 0);
-+		break;
- 	}
- }
- 
-@@ -233,12 +243,12 @@ void vidout_list(cv4l_fd &fd)
- {
- 	if (options[OptListOutFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, vidout_buftype);
-+		print_video_formats(fd, vidout_buftype, mbus_code);
- 	}
- 
- 	if (options[OptListOutFormatsExt]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats_ext(fd, vidout_buftype);
-+		print_video_formats_ext(fd, vidout_buftype, mbus_code);
- 	}
- 
- 	if (options[OptListOutFields]) {
-diff --git a/utils/v4l2-ctl/v4l2-ctl.cpp b/utils/v4l2-ctl/v4l2-ctl.cpp
-index a31b29f8..c01ee883 100644
---- a/utils/v4l2-ctl/v4l2-ctl.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl.cpp
-@@ -114,18 +114,18 @@ static struct option long_options[] = {
- 	{"get-freq", no_argument, 0, OptGetFreq},
- 	{"set-freq", required_argument, 0, OptSetFreq},
- 	{"list-standards", no_argument, 0, OptListStandards},
--	{"list-formats", no_argument, 0, OptListFormats},
--	{"list-formats-ext", no_argument, 0, OptListFormatsExt},
-+	{"list-formats", optional_argument, 0, OptListFormats},
-+	{"list-formats-ext", optional_argument, 0, OptListFormatsExt},
- 	{"list-fields", no_argument, 0, OptListFields},
- 	{"list-framesizes", required_argument, 0, OptListFrameSizes},
- 	{"list-frameintervals", required_argument, 0, OptListFrameIntervals},
- 	{"list-formats-overlay", no_argument, 0, OptListOverlayFormats},
- 	{"list-formats-sdr", no_argument, 0, OptListSdrFormats},
- 	{"list-formats-sdr-out", no_argument, 0, OptListSdrOutFormats},
--	{"list-formats-out", no_argument, 0, OptListOutFormats},
--	{"list-formats-out-ext", no_argument, 0, OptListOutFormatsExt},
--	{"list-formats-meta", no_argument, 0, OptListMetaFormats},
--	{"list-formats-meta-out", no_argument, 0, OptListMetaOutFormats},
-+	{"list-formats-out", optional_argument, 0, OptListOutFormats},
-+	{"list-formats-out-ext", optional_argument, 0, OptListOutFormatsExt},
-+	{"list-formats-meta", optional_argument, 0, OptListMetaFormats},
-+	{"list-formats-meta-out", optional_argument, 0, OptListMetaOutFormats},
- 	{"list-subdev-mbus-codes", optional_argument, 0, OptListSubDevMBusCodes},
- 	{"list-subdev-framesizes", required_argument, 0, OptListSubDevFrameSizes},
- 	{"list-subdev-frameintervals", required_argument, 0, OptListSubDevFrameIntervals},
-@@ -612,13 +612,16 @@ void print_frmival(const struct v4l2_frmivalenum &frmival, const char *prefix)
- 	}
- }
- 
--void print_video_formats(cv4l_fd &fd, __u32 type)
-+void print_video_formats(cv4l_fd &fd, __u32 type, unsigned int mbus_code)
- {
- 	cv4l_disable_trace dt(fd);
- 	struct v4l2_fmtdesc fmt = {};
- 
-+	if (mbus_code && !(capabilities & V4L2_CAP_IO_MC))
-+		mbus_code = 0;
-+
- 	printf("\tType: %s\n\n", buftype2s(type).c_str());
--	if (fd.enum_fmt(fmt, true, 0, type))
-+	if (fd.enum_fmt(fmt, true, 0, type, mbus_code))
- 		return;
- 	do {
- 		printf("\t[%d]: '%s' (%s", fmt.index, fcc2s(fmt.pixelformat).c_str(),
-@@ -629,15 +632,18 @@ void print_video_formats(cv4l_fd &fd, __u32 type)
- 	} while (!fd.enum_fmt(fmt));
- }
- 
--void print_video_formats_ext(cv4l_fd &fd, __u32 type)
-+void print_video_formats_ext(cv4l_fd &fd, __u32 type, unsigned int mbus_code)
- {
- 	cv4l_disable_trace dt(fd);
- 	struct v4l2_fmtdesc fmt = {};
- 	struct v4l2_frmsizeenum frmsize;
- 	struct v4l2_frmivalenum frmival;
- 
-+	if (mbus_code && !(capabilities & V4L2_CAP_IO_MC))
-+		mbus_code = 0;
-+
- 	printf("\tType: %s\n\n", buftype2s(type).c_str());
--	if (fd.enum_fmt(fmt, true, 0, type))
-+	if (fd.enum_fmt(fmt, true, 0, type, mbus_code))
- 		return;
- 	do {
- 		printf("\t[%d]: '%s' (%s", fmt.index, fcc2s(fmt.pixelformat).c_str(),
-diff --git a/utils/v4l2-ctl/v4l2-ctl.h b/utils/v4l2-ctl/v4l2-ctl.h
-index 4acb4d51..e906dc73 100644
---- a/utils/v4l2-ctl/v4l2-ctl.h
-+++ b/utils/v4l2-ctl/v4l2-ctl.h
-@@ -321,8 +321,8 @@ bool valid_pixel_format(int fd, __u32 pixelformat, bool output, bool mplane);
- void print_frmsize(const struct v4l2_frmsizeenum &frmsize, const char *prefix);
- void print_frmival(const struct v4l2_frmivalenum &frmival, const char *prefix);
- void printfmt(int fd, const struct v4l2_format &vfmt);
--void print_video_formats(cv4l_fd &fd, __u32 type);
--void print_video_formats_ext(cv4l_fd &fd, __u32 type);
-+void print_video_formats(cv4l_fd &fd, __u32 type, unsigned int mbus_code);
-+void print_video_formats_ext(cv4l_fd &fd, __u32 type, unsigned int mbus_code);
- 
- static inline bool subscribe_event(cv4l_fd &fd, __u32 type)
- {
--- 
-2.17.1
-
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
