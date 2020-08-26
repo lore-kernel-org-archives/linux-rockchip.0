@@ -1,79 +1,128 @@
-Return-Path: <SRS0=C56+=CD=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=0IO0=CE=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75098C433E3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 15:50:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11A4CC433DF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 06:39:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 449A92072D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 25 Aug 2020 15:50:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D18362071E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 06:39:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="csvuG9+S";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="iepPZMUx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 449A92072D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZeqB12tc";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="Kxfw5LQq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D18362071E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=n4N2XnteHkrTHkjogX1E347lpUCwvdfkAz5KlOZf4LY=; b=csvuG9+Sul1W+CobGNkx1ERXT
-	F+rx5/ivQF2S0qCfiUYbPBL1COlRbQ5ZdwDQVuELDOGiqNfzx8H9vaOfX9u+gb9dKiwj+bTzkGctE
-	7HjQSNKXdlSzgCW0EQLu+0S4+7SLFMO/kI70KUhSowdeHwbK9kCBIXFIoQh1/iWGNSINu8jeOVSlp
-	lpJpgGO0G9a2WKFQWuJteBMjmSAf7iWxpWnmq9m6wcH0fh+19a8Z/J9qRJ4zssKBE9S9+NK1rkEaH
-	ZxhzgvyRjBe6JDMfisHyJ7PEDYDBwIEOYeXzLfFNKJZypvgtd+cUR0xJbaR3z3EnRbgNntFxk+CVt
-	7jHzawdFA==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7uGYwxBXzFcLfo69noio+hOwUtSzy4XIiW7+qYO4JNY=; b=ZeqB12tckz5xjLIIPSF/qDuUyj
+	0TrXomnXEXFZfnVg2dOnTEudBK2JJlME0Y9IIT8hTnM2umpQvxNVx6omX7Rpcrlsmy4g2F338lsd/
+	1zheCyms+qCuQo25PlXW0CcmwJN8TQOHuB03p+DbXN4DuDQ8DhGVOgA24DizMST64hrjNSGXDhil/
+	bN4BkX9Of1ZiptoH33i+kXbJXc3IbhY5KsoMOvX/eBvghdRMo2sHipy7xq5r62wGVrKU+OG69Gc/7
+	Y3xdFk/MDJe0z8VHFPiuYzR1icdwz/5opvihMKIuRgohUlfTVSyWzwtXe1fiyZnGUoeSaISWe8tdZ
+	uJqSuvMw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAbDQ-0002Zv-5C; Tue, 25 Aug 2020 15:50:28 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kAp5b-0004g2-Pe; Wed, 26 Aug 2020 06:39:19 +0000
+Received: from mailout2.w1.samsung.com ([210.118.77.12])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAbDN-0002ZJ-Mw
- for linux-rockchip@lists.infradead.org; Tue, 25 Aug 2020 15:50:26 +0000
-Received: from mail-ot1-f49.google.com (mail-ot1-f49.google.com
- [209.85.210.49])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id E8E9E2076C
- for <linux-rockchip@lists.infradead.org>; Tue, 25 Aug 2020 15:50:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598370625;
- bh=kkJkXhmioIJQwsukGCwJD/oWEwK9HwwT7ICNctF3euE=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=iepPZMUxPPfNV4NgNQvKYw0bKlAp+7ff2+icC5HJDfMTos6esrkPTtqMOCHQw+xKh
- J+a0izz+d2S5jk2Ch/ERGJZd8ZXaRCpkI5mT16bZHcFof/vxMgzKyvSp2C0LN6ToU5
- Ze9SAt6kOgakUjZJJOcd2OI8hQRX8747inBg5RoA=
-Received: by mail-ot1-f49.google.com with SMTP id a65so10734029otc.8
- for <linux-rockchip@lists.infradead.org>; Tue, 25 Aug 2020 08:50:24 -0700 (PDT)
-X-Gm-Message-State: AOAM531cWpDsNjdsAJZA6nj7SQ5Fixz8tOdkMK9C14EJVlIEnVh/Fdk2
- D5ZtnezMINlsbmRju8KOvWmbbI9XchhcBPFHpQ==
-X-Google-Smtp-Source: ABdhPJzwQ9ZH34bliWvfQGeu3USdo0K8TRmckV2s4StillhPTdBNCd1F3rQthdZKBSrONLJMcgBLlGMcftceTr+YEvg=
-X-Received: by 2002:a9d:32e5:: with SMTP id u92mr6653653otb.107.1598370624203; 
- Tue, 25 Aug 2020 08:50:24 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200811123115.8144-1-finley.xiao@rock-chips.com>
- <20200824230956.GA3500214@bogus>
- <c3f54e18-8683-8bd9-90fa-e3465cddf8e8@arm.com>
- <13b84e7e-adfe-5939-e78d-0a20fce0a92e@linaro.org>
-In-Reply-To: <13b84e7e-adfe-5939-e78d-0a20fce0a92e@linaro.org>
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 25 Aug 2020 09:50:12 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqJO7PFYMpO-eDaCOzz5MxyjkfOScw9Q_ZzF=bEswCweGA@mail.gmail.com>
-Message-ID: <CAL_JsqJO7PFYMpO-eDaCOzz5MxyjkfOScw9Q_ZzF=bEswCweGA@mail.gmail.com>
-Subject: Re: [PATCH v1] thermal/of: Introduce k-po,
- k-pu and k-i for a thermal zone
-To: Daniel Lezcano <daniel.lezcano@linaro.org>
+ id 1kAp23-0002tj-06
+ for linux-rockchip@lists.infradead.org; Wed, 26 Aug 2020 06:35:47 +0000
+Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
+ by mailout2.w1.samsung.com (KnoxPortal) with ESMTP id
+ 20200826063538euoutp028d39b050b3969e6c248050216ca9dca3~uvevEbUP21443214432euoutp026
+ for <linux-rockchip@lists.infradead.org>; Wed, 26 Aug 2020 06:35:38 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.w1.samsung.com
+ 20200826063538euoutp028d39b050b3969e6c248050216ca9dca3~uvevEbUP21443214432euoutp026
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1598423738;
+ bh=Xz5Z61X+A6u/FrMD8ciD40ug8xujs/WBHWVc8ZYxDIk=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Kxfw5LQqbscH9OS4T8DqP+mQ2eczTgxb/qcn46n/wvZsQNbgcBXNi21WR52Y+nQTX
+ yFix7yFVsvWXRvjIJTSRCOeitt4a+46gZ9co/sJl5UjdL8Mf9vZc3hN7C54iNXds//
+ FtWfIV0c71QaDoXx+GfAKSVgoBAPMcuUxcd5f298=
+Received: from eusmges2new.samsung.com (unknown [203.254.199.244]) by
+ eucas1p1.samsung.com (KnoxPortal) with ESMTP id
+ 20200826063537eucas1p136ab8e9b3264dbfa54eb4f93d3546818~uveuo2RVu1478314783eucas1p1c;
+ Wed, 26 Aug 2020 06:35:37 +0000 (GMT)
+Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
+ eusmges2new.samsung.com (EUCPMTA) with SMTP id 9F.AD.05997.9B2064F5; Wed, 26
+ Aug 2020 07:35:37 +0100 (BST)
+Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
+ eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200826063537eucas1p1462d4761c8eb6d762fe5ea0fbd3b6e3b~uveuV-lbG1942019420eucas1p1t;
+ Wed, 26 Aug 2020 06:35:37 +0000 (GMT)
+Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
+ eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20200826063537eusmtrp152c96356b8271c4f15f3f216299ac3ec~uveuVWek81167511675eusmtrp1B;
+ Wed, 26 Aug 2020 06:35:37 +0000 (GMT)
+X-AuditID: cbfec7f4-65dff7000000176d-cf-5f4602b9c337
+Received: from eusmtip2.samsung.com ( [203.254.199.222]) by
+ eusmgms1.samsung.com (EUCPMTA) with SMTP id E5.D0.06314.9B2064F5; Wed, 26
+ Aug 2020 07:35:37 +0100 (BST)
+Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
+ eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
+ 20200826063536eusmtip225a50614f20e5520d7b433fd13c9606c~uvetwvLfs0091500915eusmtip2I;
+ Wed, 26 Aug 2020 06:35:36 +0000 (GMT)
+From: Marek Szyprowski <m.szyprowski@samsung.com>
+To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
+ linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v9 16/32] drm: rockchip: use common helper for a scatterlist
+ contiguity check
+Date: Wed, 26 Aug 2020 08:33:00 +0200
+Message-Id: <20200826063316.23486-17-m.szyprowski@samsung.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200826063316.23486-1-m.szyprowski@samsung.com>
+X-Brightmail-Tracker: H4sIAAAAAAAAA0WSa0zTUBzFc9u16+aG3SThRkHNDIomikM/VIfGF1ojGv1qIqNqBeI2cQUU
+ E5CgEkUebhAloGSiBoUhOpDHVF5Rp0GngTnxQWTgjIITAxuKUZCmqN9+59z/ueefm0ugylZs
+ NpFkSGGNBkanwqWihkfjz5c2I5u1y+s8C6h85xOEul1Si1GTDSaUcgWGcepG9UOEmuwfwqhL
+ 5gzK0qqh/C4PQtkG3BjVbb+IUyN9kyhV86BXTLV/+4CtC6Kt5VZA3x+ziOjGsT6Mfn/WgdB1
+ V4/TbycGULqopxLQd19n4fTv0lYRXVBfBehGdzlKj9rm7pTtlkbvZ3VJaawxcm28NPHzpQqQ
+ XC07OnjVjGWB69JcICEguRK6PU1ILpASSvI6gCN3bgFB+AHMv3cTFcQogL43V7C/kYIzJ6cj
+ lQC+cnvRfxHT/QDCT+GkGub6cnGeg8lTAD7Ol/GMkudRWBXYzPMsUgs/ec9M3UoQIjIcBorn
+ 87acXAsLB9sQoWwerL7VhvIsmfIdZwtxvguSbjH0uby4MLQJdn8fBgLPgoOOerHAobCzKE8k
+ BE4A6HHWiAWRB2B3dsl0QgPfOX/i/BYouRjW2iMFez2sdNvEvA3JINjjUwj7B0FzwwVUsOXw
+ dI5SmF4ISx03/9W2v+hCBaZhaVPZ9JOaADyZMwHOgXml/8ssAFSBEDaV0yewXJSBPbKMY/Rc
+ qiFh2b5DehuY+ladEw5/E7D/2tsBSAKoZHILHqNVYkwal67vAJBAVcHyDc8645Ty/Uz6MdZ4
+ SGtM1bFcB5hDiFQh8hUVn/coyQQmhT3Issms8e8pQkhmZ4EDX1qcQ+M3Fl3cgEaEniteo7Jy
+ 8YcjwoZG8uxx5XmKbQfqTMUbPeoZS4d7Ymb6mZh01bjOuqol7Ojz9rLsLtlqg17e5e7+aP3x
+ SfN1a1xX7A7XtdpVFzKLEsNDt9uS/WZvx9NdEiKjmGlRJBxLVis0L3tjbYHm/mh4OTMqdcsu
+ lYhLZNRLUCPH/AEA06MOUgMAAA==
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrIIsWRmVeSWpSXmKPExsVy+t/xe7o7mdziDWad4bfoPXeSyWLjjPWs
+ Fv+3TWS2uPL1PZvFytVHmSz+P3rNajF3Uq3Fgv3WFl+uPGSy2PT4GqvF5V1z2Cw+PfjPbLH2
+ yF12i4MfnrA68HmsmbeG0WPvtwUsHtu/PWD1uN99nMlj85J6j9v/HjN7TL6xnNFj980GNo+/
+ s/azePRtWcXosf3aPGaPz5vkAnii9GyK8ktLUhUy8otLbJWiDS2M9AwtLfSMTCz1DI3NY62M
+ TJX07WxSUnMyy1KL9O0S9DJezl3EWLCap+LVkkmsDYwruLoYOTkkBEwk+jpbmLoYuTiEBJYy
+ SrTvu8MIkZCRODmtgRXCFpb4c62LDaLoE6PExO5+dpAEm4ChRNdbiISIQCejxLTuj+wgDrPA
+ PGaJ5asOM4FUCQvESsw+OI+li5GDg0VAVeLrFAWQMK+AnUT/qwNMEBvkJVZvOMAMYnMCxY93
+ 97OB2EICthKn185gnsDIt4CRYRWjSGppcW56brGhXnFibnFpXrpecn7uJkZg9Gw79nPzDsZL
+ G4MPMQpwMCrx8C5gc40XYk0sK67MPcQowcGsJMLrdPZ0nBBvSmJlVWpRfnxRaU5q8SFGU6Cb
+ JjJLiSbnAyM7ryTe0NTQ3MLS0NzY3NjMQkmct0PgYIyQQHpiSWp2ampBahFMHxMHp1QDY6pJ
+ 4PbHJq+KZ+m+SnnrtnebdIjp30qNqRuU1l04sT7r+aZ55zI0U6MczpYda2zO+LrqCb+r2bQJ
+ 3HOdt5yu/rmg5DbHdObl3PZ8+vrFOWq3Ay0WfXuXszTlVd7d7nMuU/o9DbQmiPhkxuv6KyRm
+ zZj7KEF+6gTvZye3f4h/cEjw57aYRL43/5VYijMSDbWYi4oTAc8Z7z+0AgAA
+X-CMS-MailID: 20200826063537eucas1p1462d4761c8eb6d762fe5ea0fbd3b6e3b
+X-Msg-Generator: CA
+X-RootMTR: 20200826063537eucas1p1462d4761c8eb6d762fe5ea0fbd3b6e3b
+X-EPHeader: CA
+CMS-TYPE: 201P
+X-CMS-RootMailID: 20200826063537eucas1p1462d4761c8eb6d762fe5ea0fbd3b6e3b
+References: <20200826063316.23486-1-m.szyprowski@samsung.com>
+ <CGME20200826063537eucas1p1462d4761c8eb6d762fe5ea0fbd3b6e3b@eucas1p1.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200825_115025_873953_420640D1 
-X-CRM114-Status: GOOD (  30.37  )
+X-CRM114-CacheID: sfid-20200826_023539_292119_19DDE2F1 
+X-CRM114-Status: GOOD (  15.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,113 +135,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Tao Huang <huangtao@rock-chips.com>, devicetree@vger.kernel.org,
- "heiko@sntech.de" <heiko@sntech.de>,
- "open list:THERMAL" <linux-pm@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Tony Xie <tony.xie@rock-chips.com>, Finley Xiao <finley.xiao@rock-chips.com>,
- Liang Chen <cl@rock-chips.com>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>
+Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>,
+ linux-rockchip@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
+ linux-arm-kernel@lists.infradead.org,
+ Marek Szyprowski <m.szyprowski@samsung.com>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 25, 2020 at 3:44 AM Daniel Lezcano
-<daniel.lezcano@linaro.org> wrote:
->
-> On 25/08/2020 10:25, Lukasz Luba wrote:
-> > Hi Rob,
-> >
-> > On 8/25/20 12:09 AM, Rob Herring wrote:
-> >> On Tue, Aug 11, 2020 at 08:31:15PM +0800, Finley Xiao wrote:
-> >>> The default value for k_pu is:
-> >>>      2 * sustainable_power / (desired_temperature - switch_on_temp)
-> >>> The default value for k_po is:
-> >>>      sustainable_power / (desired_temperature - switch_on_temp)
-> >>> The default value for k_i is 10.
-> >>>
-> >>> Even though these parameters of the PID controller can be changed
-> >>> by the following sysfs files:
-> >>>      /sys/class/thermal/thermal_zoneX/k_pu
-> >>>      /sys/class/thermal/thermal_zoneX/k_po
-> >>>      /sys/class/thermal/thermal_zoneX/k_i
-> >>>
-> >>> But it's still more convenient to change the default values by
-> >>> devicetree,
-> >>> so introduce these three optional properties. If provided these
-> >>> properties,
-> >>> they will be parsed and associated with the thermal zone via the thermal
-> >>> zone parameters.
-> >>>
-> >>> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> >>> ---
-> >>>   Documentation/devicetree/bindings/thermal/thermal.txt | 14
-> >>> ++++++++++++++
-> >>
-> >> Bindings should be a separate file and this one is a DT schema now.
-> >>
-> >>>   drivers/thermal/thermal_of.c                          |  7 +++++++
-> >>>   2 files changed, 21 insertions(+)
-> >>>
-> >>> diff --git a/Documentation/devicetree/bindings/thermal/thermal.txt
-> >>> b/Documentation/devicetree/bindings/thermal/thermal.txt
-> >>> index f78bec19ca35..ebe936b57ded 100644
-> >>> --- a/Documentation/devicetree/bindings/thermal/thermal.txt
-> >>> +++ b/Documentation/devicetree/bindings/thermal/thermal.txt
-> >>> @@ -165,6 +165,20 @@ Optional property:
-> >>>               2000mW, while on a 10'' tablet is around
-> >>>               4500mW.
-> >>>   +- k-po:            Proportional parameter of the PID controller when
-> >>> +            current temperature is above the target.
-> >>> +  Type: signed
-> >>> +  Size: one cell
-> >>> +
-> >>> +- k-pu:            Proportional parameter of the PID controller when
-> >>> +            current temperature is below the target.
-> >>> +  Type: signed
-> >>> +  Size: one cell
-> >>> +
-> >>> +- k-i:            Integral parameter of the PID controller.
-> >>> +  Type: signed
-> >>> +  Size: one cell
-> >>
-> >> What's PID?
-> >>
-> >> I know nothing about the sysfs params, but the binding needs to stand on
-> >> it's own and needs enough detail to educate me.
-> > Sorry for the delay, I missed that patch.
-> > These parameters are the coefficients for the
-> > Proportional-Integral-Derivative (PID) controller [1], which is the
-> > core of the Intelligent Power Allocation (IPA) thermal governor.
->
-> Just a few words to elaborate a bit for Rob who may not have time to
-> digest the whole concept from Wikipedia :)
->
-> The PID is an regulation loop where the input is compared to the output.
->
-> For example when driving a car and you aim a speed cruise of 90km/h. You
-> press the accelerator and watch the current speed. The smaller the
-> current speed is, the stronger you will push the accelerator. And the
-> closer to the cruise speed the car is, the lesser you push the
-> accelerator until the car stabilize to the cruise to speed.
->
-> The k-* describes how strong you push the accelerator and release it.
->
-> In the thermal framework, that has an impact on how brutal the
-> mitigation acts and depending on them it results in a flat temperature
-> curve or a sawtooth aspect.
->
-> These coefficient depends on the ambient temperature (casing, room
-> temperature), the heat sink and the load. Depending on the use cases,
-> you may want to change their values at runtime.
->
-> From my POV, setting these values in the DT does not really make sense.
+Use common helper for checking the contiguity of the imported dma-buf.
 
-I pretty much always agree with not putting things in DT. :)
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 19 +------------------
+ 1 file changed, 1 insertion(+), 18 deletions(-)
 
-Rob
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+index b9275ba7c5a5..2970e534e2bb 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+@@ -460,23 +460,6 @@ struct sg_table *rockchip_gem_prime_get_sg_table(struct drm_gem_object *obj)
+ 	return sgt;
+ }
+ 
+-static unsigned long rockchip_sg_get_contiguous_size(struct sg_table *sgt,
+-						     int count)
+-{
+-	struct scatterlist *s;
+-	dma_addr_t expected = sg_dma_address(sgt->sgl);
+-	unsigned int i;
+-	unsigned long size = 0;
+-
+-	for_each_sg(sgt->sgl, s, count, i) {
+-		if (sg_dma_address(s) != expected)
+-			break;
+-		expected = sg_dma_address(s) + sg_dma_len(s);
+-		size += sg_dma_len(s);
+-	}
+-	return size;
+-}
+-
+ static int
+ rockchip_gem_iommu_map_sg(struct drm_device *drm,
+ 			  struct dma_buf_attachment *attach,
+@@ -498,7 +481,7 @@ rockchip_gem_dma_map_sg(struct drm_device *drm,
+ 	if (!count)
+ 		return -EINVAL;
+ 
+-	if (rockchip_sg_get_contiguous_size(sg, count) < attach->dmabuf->size) {
++	if (drm_prime_get_contiguous_size(sg) < attach->dmabuf->size) {
+ 		DRM_ERROR("failed to map sg_table to contiguous linear address.\n");
+ 		dma_unmap_sg(drm->dev, sg->sgl, sg->nents,
+ 			     DMA_BIDIRECTIONAL);
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
