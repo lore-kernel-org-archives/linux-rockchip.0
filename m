@@ -2,142 +2,78 @@ Return-Path: <SRS0=0IO0=CE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16136C433DF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 07:02:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AAE59C433DF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 14:21:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C2AB02067C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 07:02:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 60576221E2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 14:21:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JOhdKfB0";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="UMJpfo3F";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="qjBX2sKE"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C2AB02067C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jQvCC4uC";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="CDu2j8Pp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60576221E2
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0NLu1StBnL8sCC2La1vTGpR0ECGg/1EZsoBTF3xnJWs=; b=JOhdKfB0fCG6cJHEazaqzWrS++
-	O6PLVXCSqnlHrlEM8GxZpcp2tWyyYbDhmpVtxzsHuwY51/IsSF5ePY6e6SgVFdq2QWpFZdBPiV+On
-	5nGk6JCpmdrbK4v2/exQvSf++CqSTE0wa53wPKtSp993Jdhgalb4ebm/k8V8r1BeQQL+HTZZwI+QR
-	MPmC+SZ3YSHAsLrXwdUnyZmz5LWX9xvnEC3OgL9wiIRHWS+PAAxl1Q3hQLnENVHNe/TeuxCFXCyQS
-	0nleSCoW8qONnuLPRv3VLB1SqptCOXDtR9rd3xhnStg8Fjo/TTHz95FK+VzaVXdTCfU9OixbO6mHA
-	oOthJM/w==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=42Np+MyIg2nS0ewQRPVr+gx2XokXT2tpu7oa/928k/E=; b=jQvCC4uCYVZQbX5WsBcU4AYC8
+	kKZnLdjSkLfVs1HpcFLkI/CMyHJGK8RJtpqD3Gt8ipeWekaD/xGvP0eqUOdWB963QLrQ1EdcOBiVQ
+	bounzU0SAhPl5lnc75XWuXd9eqUo3qubKy6DzDJeeX4kUczlWvOpQOpZ8Fu2jl5pGEt51/PpIFJZU
+	yCm9nnFd20oVSP/skzB/76m7l3ski5swFS/A9GnCmgXj8OkYOeKuYzvwNiGoo0JlI6A0VKXtK4LkS
+	AMQNFs19Y7ADY9K268CPT/VEdVKvFGmu8ttJ+sOhENwXzeZ25Schn7VtC6GP873x5PwL4PRiGaenD
+	0IgEibquA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kApRy-0004M9-FW; Wed, 26 Aug 2020 07:02:26 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1kAwIX-0004nN-Qz; Wed, 26 Aug 2020 14:21:09 +0000
+Received: from lb1-smtp-cloud7.xs4all.net ([194.109.24.24])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kApQv-0003g9-H6
- for linux-rockchip@merlin.infradead.org; Wed, 26 Aug 2020 07:01:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=References:Content-Type:In-Reply-To:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:MIME-Version:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=uRyWiAszaWTmT9aEcwSkw+b3g8jzvTahdvI0hzE+vrU=; b=UMJpfo3FtYbJlORacxbL/OgQi3
- HcgmHvaSEUrKuguG/CB50oOYJZWa83BeqjHKt9dy+tz/RAIyQAsqSP0A6AceKmKYVDXKLgaZzVVSz
- BLNzd8VPJOLW00Bz8cu7QifOA4TrG3tQHT8yqeJfXwr/9c+ohVxGZwyqH2/u+UrhszdIa1vx8Qq4t
- 5z9yj1CnB9ARqMNmxiflqz4ak3QrsrMrUqamNV7yWiB+beKENzQjN6pzy2/yP8+v1mUUHn71SRdiZ
- +g3pdC9LdZHQnWdG2A9X9p2sUGHde53o/qwyfKSrEdvpDN7Af4xnxKnXvhbKM5ODhyo2TQN6656bK
- /zihYLMg==;
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAp28-0001NB-WB
- for linux-rockchip@lists.infradead.org; Wed, 26 Aug 2020 06:35:55 +0000
-Received: from eucas1p2.samsung.com (unknown [182.198.249.207])
- by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id
- 20200826063538euoutp01b2c4c5f2d9233f46c857497841c46c45~uveveqAsc2036420364euoutp01C
- for <linux-rockchip@lists.infradead.org>; Wed, 26 Aug 2020 06:35:38 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com
- 20200826063538euoutp01b2c4c5f2d9233f46c857497841c46c45~uveveqAsc2036420364euoutp01C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1598423738;
- bh=uRyWiAszaWTmT9aEcwSkw+b3g8jzvTahdvI0hzE+vrU=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=qjBX2sKEANbpTjEELL+iw+WxvWe2nMTwKLP8c7kHJjy+Udhw8rrzUnnHnpUVWE+LK
- b0CE6aINQRrzZhIMOP9gqPEWh83uaxZs75zeQXw2ae9UPlgTqciN0hzstJgFSij2Mk
- /nPVjUg1AbZhjq/fPnZFQN/HazLdnHxDS5PmlyVI=
-Received: from eusmges2new.samsung.com (unknown [203.254.199.244]) by
- eucas1p1.samsung.com (KnoxPortal) with ESMTP id
- 20200826063538eucas1p130c03342b3f968e5ba15935b3d3b2846~uvevH9AAK1474114741eucas1p1j;
- Wed, 26 Aug 2020 06:35:38 +0000 (GMT)
-Received: from eucas1p2.samsung.com ( [182.198.249.207]) by
- eusmges2new.samsung.com (EUCPMTA) with SMTP id C0.BD.05997.AB2064F5; Wed, 26
- Aug 2020 07:35:38 +0100 (BST)
-Received: from eusmtrp1.samsung.com (unknown [182.198.249.138]) by
- eucas1p2.samsung.com (KnoxPortal) with ESMTPA id
- 20200826063537eucas1p2d9a362f619920ad84c46f36cd13ec362~uveu5z7t10402704027eucas1p2o;
- Wed, 26 Aug 2020 06:35:37 +0000 (GMT)
-Received: from eusmgms1.samsung.com (unknown [182.198.249.179]) by
- eusmtrp1.samsung.com (KnoxPortal) with ESMTP id
- 20200826063537eusmtrp18354272b9bd79ea9e0ab3346ae6d40a0~uveu5Khce1091110911eusmtrp1d;
- Wed, 26 Aug 2020 06:35:37 +0000 (GMT)
-X-AuditID: cbfec7f4-677ff7000000176d-d2-5f4602ba9b84
-Received: from eusmtip2.samsung.com ( [203.254.199.222]) by
- eusmgms1.samsung.com (EUCPMTA) with SMTP id 27.D0.06314.9B2064F5; Wed, 26
- Aug 2020 07:35:37 +0100 (BST)
-Received: from AMDC2765.digital.local (unknown [106.120.51.73]) by
- eusmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20200826063537eusmtip2377aced114f05b610537df16fe2b3f76~uveuVRx0Y0302303023eusmtip2z;
- Wed, 26 Aug 2020 06:35:37 +0000 (GMT)
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-To: dri-devel@lists.freedesktop.org, iommu@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v9 17/32] drm: rockchip: fix common struct sg_table related
- issues
-Date: Wed, 26 Aug 2020 08:33:01 +0200
-Message-Id: <20200826063316.23486-18-m.szyprowski@samsung.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200826063316.23486-1-m.szyprowski@samsung.com>
-X-Brightmail-Tracker: H4sIAAAAAAAAA0WSWUwTURSGuTOd6UAoGQrKDaKYJpCALKI8jNQQNUrmhciDT0bFIpNChEI6
- gEKCIASXsklLhKASggjIIlsFUiTsFoOgyNYqSNmURYTIohAEKQP49p3//P89595cAhU2YbZE
- sCyCkcskISLcjFf7du2Dqwbx8T8+04ZTqT3vEKoquwKjtmozUKp/ZQGnXpZ2INTW+BxGPVPG
- UnlNYmq5fwyhqicGMapP8xSnfhm2UKq8fYRPtSxOYmcs6LLcMkA3rubx6LpVA0aPJmsRuqYg
- jv6yOYHSKl0RoBv08Tj9N6eJR6epSwBdN5iL0kvVR/zML5udDmRCgqMYubv3dbOgjiYlFp5+
- +Hbi+DoWD1RQAUwJSHrC15lfcQUwI4RkMYDDdZUYVywDWKXpRYwuIbkE4FSW9V7ic0chwpmK
- AJxb+M3bT0xPPOcbXTjpARXzCtzI1mQSgJ2p5kZGyccoLFnxMbIVeQl+u2/Y8fNIB6jXVwAj
- C0hvOKAuwLlp9rC0shk1sum2rk1O39kVkoN8WL+WuWs6Dxt6NwDHVnBWq+ZzbAe7VCk8LpAI
- 4FhPOZ8rUgDsS8jeTYjhcM/69knE9npOsELjzslnYdrkBN8oQ9IC6uYtuQtYQGVtFsrJAvjg
- npBzO8Ic7av9sS0fP6Ec01CZqN19rQwAmyeHkEfAPuf/sDwASoANE8mGShn2hIy55cZKQtlI
- mdTtRlhoNdj+Vl2b2uV6oNkIaAUkAUTmgjz8gr8Qk0Sx0aGtABKoyFpwrrvrmlAQKImOYeRh
- /vLIEIZtBYcInshGcDJ/5qqQlEoimJsME87I97oIYWobD1IDlzvHqLhCIC2fVTocVVk3Tsmm
- D4hm786bBLjEyLxsTcJjY+vfDOTr3xe7Jn1v06U+8XooVXd5HbPTs+WW9qM1fkIH30VxwsFT
- P3VlYkWmxNHds0E1tHjxhVrc0KdoGRkIijfcaSvy1KW1G5y6XYdMDS7OvldwXXfkj8E/qyIe
- GyTxcEblrOQfAWXL91IDAAA=
-X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFlrIIsWRmVeSWpSXmKPExsVy+t/xe7o7mdziDTY/NrHoPXeSyWLjjPWs
- Fv+3TWS2uPL1PZvFytVHmSz+P3rNajF3Uq3Fgv3WFl+uPGSy2PT4GqvF5V1z2Cw+PfjPbLH2
- yF12i4MfnrA68HmsmbeG0WPvtwUsHtu/PWD1uN99nMlj85J6j9v/HjN7TL6xnNFj980GNo+/
- s/azePRtWcXosf3aPGaPz5vkAnii9GyK8ktLUhUy8otLbJWiDS2M9AwtLfSMTCz1DI3NY62M
- TJX07WxSUnMyy1KL9O0S9DKO7p/EWtAvW9H86BdrA+NkiS5GTg4JAROJW0eXMXUxcnEICSxl
- lJhzYT8LREJG4uS0BlYIW1jiz7UuNhBbSOATo0T7ZE8Qm03AUKLrLUici0NEoJNRYlr3R3YQ
- h1lgHrPE8lWHmUCqhAWCJA5cmMUOYrMIqErcvLmeEcTmFbCTuLplCRvEBnmJ1RsOMIPYnEDx
- 4939UNtsJU6vncE8gZFvASPDKkaR1NLi3PTcYkO94sTc4tK8dL3k/NxNjMDo2Xbs5+YdjJc2
- Bh9iFOBgVOLhXcDmGi/EmlhWXJl7iFGCg1lJhNfp7Ok4Id6UxMqq1KL8+KLSnNTiQ4ymQEdN
- ZJYSTc4HRnZeSbyhqaG5haWhubG5sZmFkjhvh8DBGCGB9MSS1OzU1ILUIpg+Jg5OqQbGeAf5
- RSmJ8R42xy48bnt30+fCmlU2x5v+XdlpnXNDtmg+86qKHqGtD1e/NZtx1J7bvG32hG7PlWsa
- d3o8z51ZuaS+0nhZ0FH/w6lvj+rHfJld/OJwrugKP8GV7++WT2uvnO3wJ2ZvksO/SNn5DmI8
- P59ezjkrd0pjMVfWQ4+d85fd6O94UJywRImlOCPRUIu5qDgRALOlfSi0AgAA
-X-CMS-MailID: 20200826063537eucas1p2d9a362f619920ad84c46f36cd13ec362
-X-Msg-Generator: CA
-X-RootMTR: 20200826063537eucas1p2d9a362f619920ad84c46f36cd13ec362
-X-EPHeader: CA
-CMS-TYPE: 201P
-X-CMS-RootMailID: 20200826063537eucas1p2d9a362f619920ad84c46f36cd13ec362
-References: <20200826063316.23486-1-m.szyprowski@samsung.com>
- <CGME20200826063537eucas1p2d9a362f619920ad84c46f36cd13ec362@eucas1p2.samsung.com>
+ id 1kAwIS-0004lq-Or
+ for linux-rockchip@lists.infradead.org; Wed, 26 Aug 2020 14:21:08 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud7.xs4all.net with ESMTPA
+ id AwIJkzJxLywL5AwIKkqMWe; Wed, 26 Aug 2020 16:20:59 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1598451659; bh=8RP6U40NlNtNxXhOJ6FxD6K10+CxJT2U1pfZ20p8BNc=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=CDu2j8PpdBiY8uBJ0u+B1T1V5quwm36+t8wyjlbKMyzNzuau7IuDAo82ooJv2LHwP
+ g9FBcJ17h7qfW4e11eeh/aMNkHmi8WBUzNxxcNx7qHCCmCZjmJEfDNqLGq3DPuNT9h
+ rde5fmSN6HEqwkBBYL8aLL79DBOLM09OAZDAFOTHWyFc2ZsyHxDJUy3hGtFaKR0R+3
+ kfb5i5/Cq/6fm9ZMLSeXRIRhEgMRmNHFY49QkWA5IpuS08f8SnrMqspEE9zACUTjG7
+ trEwYpPUDp4knMd6eWbEOaNYdOYGYbEvxxnYsdWSKj0Muu+iCmClt8dY53lapsK7E/
+ qzmJbwY4A0lWw==
+Subject: Re: [PATCH v2] utils: v4l2-ctl: support V4L2_CAP_IO_MC in v4l2-ctl
+ '--list-formats-*' commands
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ linux-media@vger.kernel.org
+References: <20200825140806.13978-1-dafna.hirschfeld@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <3a4aa849-4b46-9086-2ff3-e34c1b524ff9@xs4all.nl>
+Date: Wed, 26 Aug 2020 16:20:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <20200825140806.13978-1-dafna.hirschfeld@collabora.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfFeFdoC51afmFTD3MQzEja77Gf7l2Bt4Dr/fkUS95s19X7OCgh0SQSxd/bJxCvMs2zlAmqBiW7M10j6ToGxoh7J1muOcp9Yc+sFl9EzCcx+J44itzCls
+ rs1E9XRoRHSRMd7GlLcjO/90FVtcj9983qrvd6QOejRSrLgoAVKLLUnVsjQFVadTum7YiY1ctWM71mh3/j5PkHla/fwzL5PAmZ3Nk3P+WCX5wIje4sxUbgnt
+ f5CIcGh9IxtTpnTS6g03TWzO4yTrTeNojhM4UhERYn3gozqP3Zju2FUDMSEAUgAocTMZtDMfx2ttcCY+HMysLo7OjndgwOjStXLUluqt/imLfXs4RgVLTsvW
+ Q9K/N/P3xTfyAKQnLFsuo2E1aG97AP8FiVF13t8s43cMBfU6OF2om/HDCwRx809IM02MFMorPTEUkssp8U16+xiPnW0ma4qP8brW4ridjRJ9O6EM6YqGASVg
+ JKMbUwH7FtcZ41UAxqngEr3QqJG/FpLzv6riC7ZxJBnCLJw+1aB0jD5v1mYt4GgKZR3gSrQIAFHAYJxbZu1761/YF1ytYiSHii9QYdmhGQ8P42BJ3p+E2hRg
+ ySaCH1xua5pcj/j9/0GBwaGbjtlFT6SkJOcVVFpwjC0+bjBamVwEBDxm7fMHmLDoe4g=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200826_073545_365291_B8292389 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20200826_102105_476731_0A683439 
+X-CRM114-Status: GOOD (  26.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -150,110 +86,362 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>,
- linux-rockchip@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- Robin Murphy <robin.murphy@arm.com>, Christoph Hellwig <hch@lst.de>,
- linux-arm-kernel@lists.infradead.org,
- Marek Szyprowski <m.szyprowski@samsung.com>
-MIME-Version: 1.0
+Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
+ linux-rockchip@lists.infradead.org, helen.koike@collabora.com,
+ laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com,
+ kernel@collabora.com, ezequiel@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Documentation/DMA-API-HOWTO.txt states that the dma_map_sg() function
-returns the number of the created entries in the DMA address space.
-However the subsequent calls to the dma_sync_sg_for_{device,cpu}() and
-dma_unmap_sg must be called with the original number of the entries
-passed to the dma_map_sg().
+On 25/08/2020 16:08, Dafna Hirschfeld wrote:
+> Add optional <mbus_code> arg to 'v4l2-ctl --list-formats-*'
+> commands for capture, metadata and output devices.
+> If <mbus_code> is given and the device has capability
+> V4L2_CAP_IO_MC then list only the formats that matches the
+> mbus code.
+> The mbus_code is ignored for devices that don't use it
+> or don't have the V4L2_CAP_IO_MC capability.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> ---
+> changes since v1: fixes according to comments from Hans
+> 
+>  utils/common/cv4l-helpers.h         |  3 ++-
+>  utils/v4l2-ctl/v4l2-ctl-meta.cpp    | 20 ++++++++++++++++----
+>  utils/v4l2-ctl/v4l2-ctl-overlay.cpp |  2 +-
+>  utils/v4l2-ctl/v4l2-ctl-sdr.cpp     |  4 ++--
+>  utils/v4l2-ctl/v4l2-ctl-vidcap.cpp  | 23 ++++++++++++++++++-----
+>  utils/v4l2-ctl/v4l2-ctl-vidout.cpp  | 22 ++++++++++++++++------
+>  utils/v4l2-ctl/v4l2-ctl.cpp         | 26 ++++++++++++++++----------
+>  utils/v4l2-ctl/v4l2-ctl.h           |  4 ++--
+>  8 files changed, 73 insertions(+), 31 deletions(-)
+> 
+> diff --git a/utils/common/cv4l-helpers.h b/utils/common/cv4l-helpers.h
+> index 6295054a..3cee372b 100644
+> --- a/utils/common/cv4l-helpers.h
+> +++ b/utils/common/cv4l-helpers.h
+> @@ -483,12 +483,13 @@ public:
+>  		return cv4l_ioctl(VIDIOC_ENUM_DV_TIMINGS, &timings);
+>  	}
+>  
+> -	int enum_fmt(v4l2_fmtdesc &fmt, bool init = false, int index = 0, unsigned type = 0)
+> +	int enum_fmt(v4l2_fmtdesc &fmt, bool init = false, int index = 0, unsigned type = 0, __u32 mbus_code = 0)
+>  	{
+>  		if (init) {
+>  			memset(&fmt, 0, sizeof(fmt));
+>  			fmt.type = type ? type : g_type();
+>  			fmt.index = index;
+> +			fmt.mbus_code = mbus_code;
+>  		} else {
+>  			fmt.index++;
+>  		}
+> diff --git a/utils/v4l2-ctl/v4l2-ctl-meta.cpp b/utils/v4l2-ctl/v4l2-ctl-meta.cpp
+> index b4c7bb89..3382c631 100644
+> --- a/utils/v4l2-ctl/v4l2-ctl-meta.cpp
+> +++ b/utils/v4l2-ctl/v4l2-ctl-meta.cpp
+> @@ -18,11 +18,15 @@
+>  #include "v4l2-ctl.h"
+>  
+>  static struct v4l2_format vfmt;	/* set_format/get_format */
+> +static unsigned mbus_code;
+>  
+>  void meta_usage()
+>  {
+>  	printf("\nMetadata Formats options:\n"
+> -	       "  --list-formats-meta display supported metadata capture formats [VIDIOC_ENUM_FMT]\n"
+> +	       "  --list-formats-meta [<mbus_code>] display supported metadata capture formats.\n"
+> +	       "		      <mbus_code> is an optional media bus code, if the driver has\n"
+> +	       "		      capability V4L2_CAP_IO_MC then only formats that support this\n"
+> +	       "		      media bus code are listed [VIDIOC_ENUM_FMT]\n"
+>  	       "  --get-fmt-meta      query the metadata capture format [VIDIOC_G_FMT]\n"
+>  	       "  --set-fmt-meta <f>  set the metadata capture format [VIDIOC_S_FMT]\n"
+>  	       "                     parameter is either the format index as reported by\n"
+> @@ -30,7 +34,10 @@ void meta_usage()
+>  	       "  --try-fmt-meta <f>  try the metadata capture format [VIDIOC_TRY_FMT]\n"
+>  	       "                     parameter is either the format index as reported by\n"
+>  	       "                     --list-formats-meta, or the fourcc value as a string\n"
+> -	       "  --list-formats-meta-out display supported metadata output formats [VIDIOC_ENUM_FMT]\n"
+> +	       "  --list-formats-meta-out [<mbus_code>] display supported metadata output formats.\n"
+> +	       "		      <mbus_code> is an optional media bus code, if the driver has\n"
+> +	       "		      capability V4L2_CAP_IO_MC then only formats that support this\n"
+> +	       "		      media bus code are listed [VIDIOC_ENUM_FMT]\n"
+>  	       "  --get-fmt-meta-out      query the metadata output format [VIDIOC_G_FMT]\n"
+>  	       "  --set-fmt-meta-out <f>  set the metadata output format [VIDIOC_S_FMT]\n"
+>  	       "                          parameter is either the format index as reported by\n"
+> @@ -58,6 +65,11 @@ void meta_cmd(int ch, char *optarg)
+>  			vfmt.fmt.meta.dataformat = strtol(optarg, 0L, 0);
+>  		}
+>  		break;
+> +	case OptListMetaFormats:
+> +	case OptListMetaOutFormats:
+> +		if(optarg)
 
-struct sg_table is a common structure used for describing a non-contiguous
-memory buffer, used commonly in the DRM and graphics subsystems. It
-consists of a scatterlist with memory pages and DMA addresses (sgl entry),
-as well as the number of scatterlist entries: CPU pages (orig_nents entry)
-and DMA mapped pages (nents entry).
+Space after 'if'!
 
-It turned out that it was a common mistake to misuse nents and orig_nents
-entries, calling DMA-mapping functions with a wrong number of entries or
-ignoring the number of mapped entries returned by the dma_map_sg()
-function.
+> +			mbus_code = strtoul(optarg, 0L, 0);
 
-To avoid such issues, lets use a common dma-mapping wrappers operating
-directly on the struct sg_table objects and use scatterlist page
-iterators where possible. This, almost always, hides references to the
-nents and orig_nents entries, making the code robust, easier to follow
-and copy/paste safe.
+Make two statics: mbus_code and mbus_code_out, one for each buffer type.
 
-Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 23 +++++++++------------
- 1 file changed, 10 insertions(+), 13 deletions(-)
+> +		break;
+>  	}
+>  }
+>  
+> @@ -120,12 +132,12 @@ void meta_list(cv4l_fd &fd)
+>  {
+>  	if (options[OptListMetaFormats]) {
+>  		printf("ioctl: VIDIOC_ENUM_FMT\n");
+> -		print_video_formats(fd, V4L2_BUF_TYPE_META_CAPTURE);
+> +		print_video_formats(fd, V4L2_BUF_TYPE_META_CAPTURE, mbus_code);
+>  	}
+>  
+>  	if (options[OptListMetaOutFormats]) {
+>  		printf("ioctl: VIDIOC_ENUM_FMT\n");
+> -		print_video_formats(fd, V4L2_BUF_TYPE_META_OUTPUT);
+> +		print_video_formats(fd, V4L2_BUF_TYPE_META_OUTPUT, mbus_code);
+>  	}
+>  }
+>  
+> diff --git a/utils/v4l2-ctl/v4l2-ctl-overlay.cpp b/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
+> index 7809a6db..75681332 100644
+> --- a/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
+> +++ b/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
+> @@ -539,7 +539,7 @@ void overlay_list(cv4l_fd &fd)
+>  {
+>  	if (options[OptListOverlayFormats]) {
+>  		printf("ioctl: VIDIOC_ENUM_FMT\n");
+> -		print_video_formats(fd, V4L2_BUF_TYPE_VIDEO_OVERLAY);
+> +		print_video_formats(fd, V4L2_BUF_TYPE_VIDEO_OVERLAY, 0);
+>  	}
+>  	if (options[OptFindFb])
+>  		find_fb(fd.g_fd());
+> diff --git a/utils/v4l2-ctl/v4l2-ctl-sdr.cpp b/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
+> index 7a36341a..5b724696 100644
+> --- a/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
+> +++ b/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
+> @@ -139,10 +139,10 @@ void sdr_list(cv4l_fd &fd)
+>  {
+>  	if (options[OptListSdrFormats]) {
+>  		printf("ioctl: VIDIOC_ENUM_FMT\n");
+> -		print_video_formats(fd, V4L2_BUF_TYPE_SDR_CAPTURE);
+> +		print_video_formats(fd, V4L2_BUF_TYPE_SDR_CAPTURE, 0);
+>  	}
+>  	if (options[OptListSdrOutFormats]) {
+>  		printf("ioctl: VIDIOC_ENUM_FMT\n");
+> -		print_video_formats(fd, V4L2_BUF_TYPE_SDR_OUTPUT);
+> +		print_video_formats(fd, V4L2_BUF_TYPE_SDR_OUTPUT, 0);
+>  	}
+>  }
+> diff --git a/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp b/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
+> index 5abab5e7..d0a0d120 100644
+> --- a/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
+> +++ b/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
+> @@ -23,13 +23,21 @@ static unsigned set_fmts;
+>  static __u32 width, height, pixfmt, field, flags;
+>  static __u32 bytesperline[VIDEO_MAX_PLANES];
+>  static __u32 sizeimage[VIDEO_MAX_PLANES];
+> +static unsigned mbus_code;
+>  
+>  void vidcap_usage()
+>  {
+>  	printf("\nVideo Capture Formats options:\n"
+> -	       "  --list-formats     display supported video formats [VIDIOC_ENUM_FMT]\n"
+> -	       "  --list-formats-ext display supported video formats including frame sizes\n"
+> -	       "                     and intervals\n"
+> +	       "  --list-formats [<mbus_code>]\n"
+> +	       "		     display supported video formats. <mbus_code> is an optional\n"
+> +	       "		     media bus code, if the driver has capability V4L2_CAP_IO_MC\n"
+> +	       "		     then only formats that support this media bus code are listed\n"
+> +	       "		     [VIDIOC_ENUM_FMT]\n"
+> +	       "  --list-formats-ext [<mbus_code>]\n"
+> +	       "		     display supported video formats including frame sizes and intervals\n"
+> +	       "		     <mbus_code> is an optional media bus code, if the driver has\n"
+> +	       "		     capability V4L2_CAP_IO_MC then only formats that support this\n"
+> +	       "		     media bus code are listed [VIDIOC_ENUM_FMT]\n"
+>  	       "  --list-framesizes <f>\n"
+>  	       "                     list supported framesizes for pixelformat <f>\n"
+>  	       "                     [VIDIOC_ENUM_FRAMESIZES]\n"
+> @@ -117,6 +125,11 @@ void vidcap_cmd(int ch, char *optarg)
+>  			std::exit(EXIT_FAILURE);
+>  		}
+>  		break;
+> +	case OptListFormats:
+> +	case OptListFormatsExt:
+> +		if(optarg)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index 2970e534e2bb..cb50f2ba2e46 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -36,8 +36,8 @@ static int rockchip_gem_iommu_map(struct rockchip_gem_object *rk_obj)
- 
- 	rk_obj->dma_addr = rk_obj->mm.start;
- 
--	ret = iommu_map_sg(private->domain, rk_obj->dma_addr, rk_obj->sgt->sgl,
--			   rk_obj->sgt->nents, prot);
-+	ret = iommu_map_sgtable(private->domain, rk_obj->dma_addr, rk_obj->sgt,
-+				prot);
- 	if (ret < rk_obj->base.size) {
- 		DRM_ERROR("failed to map buffer: size=%zd request_size=%zd\n",
- 			  ret, rk_obj->base.size);
-@@ -98,11 +98,10 @@ static int rockchip_gem_get_pages(struct rockchip_gem_object *rk_obj)
- 	 * TODO: Replace this by drm_clflush_sg() once it can be implemented
- 	 * without relying on symbols that are not exported.
- 	 */
--	for_each_sg(rk_obj->sgt->sgl, s, rk_obj->sgt->nents, i)
-+	for_each_sgtable_sg(rk_obj->sgt, s, i)
- 		sg_dma_address(s) = sg_phys(s);
- 
--	dma_sync_sg_for_device(drm->dev, rk_obj->sgt->sgl, rk_obj->sgt->nents,
--			       DMA_TO_DEVICE);
-+	dma_sync_sgtable_for_device(drm->dev, rk_obj->sgt, DMA_TO_DEVICE);
- 
- 	return 0;
- 
-@@ -350,8 +349,8 @@ void rockchip_gem_free_object(struct drm_gem_object *obj)
- 		if (private->domain) {
- 			rockchip_gem_iommu_unmap(rk_obj);
- 		} else {
--			dma_unmap_sg(drm->dev, rk_obj->sgt->sgl,
--				     rk_obj->sgt->nents, DMA_BIDIRECTIONAL);
-+			dma_unmap_sgtable(drm->dev, rk_obj->sgt,
-+					  DMA_BIDIRECTIONAL, 0);
- 		}
- 		drm_prime_gem_destroy(obj, rk_obj->sgt);
- 	} else {
-@@ -476,15 +475,13 @@ rockchip_gem_dma_map_sg(struct drm_device *drm,
- 			struct sg_table *sg,
- 			struct rockchip_gem_object *rk_obj)
- {
--	int count = dma_map_sg(drm->dev, sg->sgl, sg->nents,
--			       DMA_BIDIRECTIONAL);
--	if (!count)
--		return -EINVAL;
-+	int err = dma_map_sgtable(drm->dev, sg, DMA_BIDIRECTIONAL, 0);
-+	if (err)
-+		return err;
- 
- 	if (drm_prime_get_contiguous_size(sg) < attach->dmabuf->size) {
- 		DRM_ERROR("failed to map sg_table to contiguous linear address.\n");
--		dma_unmap_sg(drm->dev, sg->sgl, sg->nents,
--			     DMA_BIDIRECTIONAL);
-+		dma_unmap_sgtable(drm->dev, sg, DMA_BIDIRECTIONAL, 0);
- 		return -EINVAL;
- 	}
- 
--- 
-2.17.1
+Add space
 
+> +			mbus_code = strtoul(optarg, 0L, 0);
+
+Add mbus_code_out, just as with metadata.
+
+> +		break;
+>  	case OptListFrameSizes:
+>  		be_pixfmt = strlen(optarg) == 7 && !memcmp(optarg + 4, "-BE", 3);
+>  		if (be_pixfmt || strlen(optarg) == 4) {
+> @@ -298,12 +311,12 @@ void vidcap_list(cv4l_fd &fd)
+>  {
+>  	if (options[OptListFormats]) {
+>  		printf("ioctl: VIDIOC_ENUM_FMT\n");
+> -		print_video_formats(fd, vidcap_buftype);
+> +		print_video_formats(fd, vidcap_buftype, mbus_code);
+>  	}
+>  
+>  	if (options[OptListFormatsExt]) {
+>  		printf("ioctl: VIDIOC_ENUM_FMT\n");
+> -		print_video_formats_ext(fd, vidcap_buftype);
+> +		print_video_formats_ext(fd, vidcap_buftype, mbus_code);
+>  	}
+>  
+>  	if (options[OptListFields]) {
+> diff --git a/utils/v4l2-ctl/v4l2-ctl-vidout.cpp b/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
+> index 5f433a17..563aae45 100644
+> --- a/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
+> +++ b/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
+> @@ -21,14 +21,19 @@ static unsigned set_fmts_out;
+>  static __u32 width, height, pixfmt, field, colorspace, xfer_func, ycbcr, quantization, flags;
+>  static __u32 bytesperline[VIDEO_MAX_PLANES];
+>  static __u32 sizeimage[VIDEO_MAX_PLANES];
+> +static unsigned mbus_code;
+>  
+>  void vidout_usage()
+>  {
+>  	printf("\nVideo Output Formats options:\n"
+> -	       "  --list-formats-out display supported video output formats [VIDIOC_ENUM_FMT]\n"
+> -	       "  --list-formats-out-ext\n"
+> -	       "                     display supported video output formats including frame sizes\n"
+> -	       "                     and intervals\n"
+> +	       "  --list-formats-out [<mbus_code>] display supported video output formats.\n"
+> +	       "		     <mbus_code> is an optional media bus code, if the driver has\n"
+> +	       "		     capability V4L2_CAP_IO_MC then only formats that support this\n"
+> +	       "		     media bus code are listed [VIDIOC_ENUM_FMT]\n"
+> +	       "  --list-formats-out-ext [<mbus_code>] display supported video output formats including\n"
+> +	       "		     frame sizes and intervals. <mbus_code> is an optional media bus code,\n"
+> +	       "		     if the driver has capability V4L2_CAP_IO_MC then only formats that\n"
+> +	       "		     support this media bus code are listed [VIDIOC_ENUM_FMT]\n"
+>  	       "  --list-fields-out  list supported fields for the current output format\n"
+>  	       "  -X, --get-fmt-video-out\n"
+>  	       "     		     query the video output format [VIDIOC_G_FMT]\n"
+> @@ -103,6 +108,11 @@ void vidout_cmd(int ch, char *optarg)
+>  			std::exit(EXIT_FAILURE);
+>  		}
+>  		break;
+> +	case OptListOutFormats:
+> +	case OptListOutFormatsExt:
+> +		if(optarg)
+> +			mbus_code = strtoul(optarg, 0L, 0);
+
+Ditto.
+
+> +		break;
+>  	}
+>  }
+>  
+> @@ -233,12 +243,12 @@ void vidout_list(cv4l_fd &fd)
+>  {
+>  	if (options[OptListOutFormats]) {
+>  		printf("ioctl: VIDIOC_ENUM_FMT\n");
+> -		print_video_formats(fd, vidout_buftype);
+> +		print_video_formats(fd, vidout_buftype, mbus_code);
+>  	}
+>  
+>  	if (options[OptListOutFormatsExt]) {
+>  		printf("ioctl: VIDIOC_ENUM_FMT\n");
+> -		print_video_formats_ext(fd, vidout_buftype);
+> +		print_video_formats_ext(fd, vidout_buftype, mbus_code);
+>  	}
+>  
+>  	if (options[OptListOutFields]) {
+> diff --git a/utils/v4l2-ctl/v4l2-ctl.cpp b/utils/v4l2-ctl/v4l2-ctl.cpp
+> index a31b29f8..c01ee883 100644
+> --- a/utils/v4l2-ctl/v4l2-ctl.cpp
+> +++ b/utils/v4l2-ctl/v4l2-ctl.cpp
+> @@ -114,18 +114,18 @@ static struct option long_options[] = {
+>  	{"get-freq", no_argument, 0, OptGetFreq},
+>  	{"set-freq", required_argument, 0, OptSetFreq},
+>  	{"list-standards", no_argument, 0, OptListStandards},
+> -	{"list-formats", no_argument, 0, OptListFormats},
+> -	{"list-formats-ext", no_argument, 0, OptListFormatsExt},
+> +	{"list-formats", optional_argument, 0, OptListFormats},
+> +	{"list-formats-ext", optional_argument, 0, OptListFormatsExt},
+>  	{"list-fields", no_argument, 0, OptListFields},
+>  	{"list-framesizes", required_argument, 0, OptListFrameSizes},
+>  	{"list-frameintervals", required_argument, 0, OptListFrameIntervals},
+>  	{"list-formats-overlay", no_argument, 0, OptListOverlayFormats},
+>  	{"list-formats-sdr", no_argument, 0, OptListSdrFormats},
+>  	{"list-formats-sdr-out", no_argument, 0, OptListSdrOutFormats},
+> -	{"list-formats-out", no_argument, 0, OptListOutFormats},
+> -	{"list-formats-out-ext", no_argument, 0, OptListOutFormatsExt},
+> -	{"list-formats-meta", no_argument, 0, OptListMetaFormats},
+> -	{"list-formats-meta-out", no_argument, 0, OptListMetaOutFormats},
+> +	{"list-formats-out", optional_argument, 0, OptListOutFormats},
+> +	{"list-formats-out-ext", optional_argument, 0, OptListOutFormatsExt},
+> +	{"list-formats-meta", optional_argument, 0, OptListMetaFormats},
+> +	{"list-formats-meta-out", optional_argument, 0, OptListMetaOutFormats},
+>  	{"list-subdev-mbus-codes", optional_argument, 0, OptListSubDevMBusCodes},
+>  	{"list-subdev-framesizes", required_argument, 0, OptListSubDevFrameSizes},
+>  	{"list-subdev-frameintervals", required_argument, 0, OptListSubDevFrameIntervals},
+> @@ -612,13 +612,16 @@ void print_frmival(const struct v4l2_frmivalenum &frmival, const char *prefix)
+>  	}
+>  }
+>  
+> -void print_video_formats(cv4l_fd &fd, __u32 type)
+> +void print_video_formats(cv4l_fd &fd, __u32 type, unsigned int mbus_code)
+>  {
+>  	cv4l_disable_trace dt(fd);
+>  	struct v4l2_fmtdesc fmt = {};
+>  
+> +	if (mbus_code && !(capabilities & V4L2_CAP_IO_MC))
+> +		mbus_code = 0;
+> +
+>  	printf("\tType: %s\n\n", buftype2s(type).c_str());
+> -	if (fd.enum_fmt(fmt, true, 0, type))
+> +	if (fd.enum_fmt(fmt, true, 0, type, mbus_code))
+>  		return;
+>  	do {
+>  		printf("\t[%d]: '%s' (%s", fmt.index, fcc2s(fmt.pixelformat).c_str(),
+> @@ -629,15 +632,18 @@ void print_video_formats(cv4l_fd &fd, __u32 type)
+>  	} while (!fd.enum_fmt(fmt));
+>  }
+>  
+> -void print_video_formats_ext(cv4l_fd &fd, __u32 type)
+> +void print_video_formats_ext(cv4l_fd &fd, __u32 type, unsigned int mbus_code)
+>  {
+>  	cv4l_disable_trace dt(fd);
+>  	struct v4l2_fmtdesc fmt = {};
+>  	struct v4l2_frmsizeenum frmsize;
+>  	struct v4l2_frmivalenum frmival;
+>  
+> +	if (mbus_code && !(capabilities & V4L2_CAP_IO_MC))
+> +		mbus_code = 0;
+> +
+>  	printf("\tType: %s\n\n", buftype2s(type).c_str());
+> -	if (fd.enum_fmt(fmt, true, 0, type))
+> +	if (fd.enum_fmt(fmt, true, 0, type, mbus_code))
+>  		return;
+>  	do {
+>  		printf("\t[%d]: '%s' (%s", fmt.index, fcc2s(fmt.pixelformat).c_str(),
+> diff --git a/utils/v4l2-ctl/v4l2-ctl.h b/utils/v4l2-ctl/v4l2-ctl.h
+> index 4acb4d51..e906dc73 100644
+> --- a/utils/v4l2-ctl/v4l2-ctl.h
+> +++ b/utils/v4l2-ctl/v4l2-ctl.h
+> @@ -321,8 +321,8 @@ bool valid_pixel_format(int fd, __u32 pixelformat, bool output, bool mplane);
+>  void print_frmsize(const struct v4l2_frmsizeenum &frmsize, const char *prefix);
+>  void print_frmival(const struct v4l2_frmivalenum &frmival, const char *prefix);
+>  void printfmt(int fd, const struct v4l2_format &vfmt);
+> -void print_video_formats(cv4l_fd &fd, __u32 type);
+> -void print_video_formats_ext(cv4l_fd &fd, __u32 type);
+> +void print_video_formats(cv4l_fd &fd, __u32 type, unsigned int mbus_code);
+> +void print_video_formats_ext(cv4l_fd &fd, __u32 type, unsigned int mbus_code);
+>  
+>  static inline bool subscribe_event(cv4l_fd &fd, __u32 type)
+>  {
+> 
+
+Regards,
+
+	Hans
 
 _______________________________________________
 Linux-rockchip mailing list
