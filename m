@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D5749C433E1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 14:49:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7ECF6C433DF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 14:49:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A2D2122B49
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 14:49:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4DF2A22B4B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 14:49:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nuU5NkY3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="B2Di67to"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2D2122B49
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xxT8jIYa";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="QL57HJOf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4DF2A22B4B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kvUAf0qjBEcXnMSX/bQBdAQSim2Tqj/Amyh/B/uduR4=; b=nuU5NkY3BYaoxFEtqxSaa5ODl5
-	NnYAJhiBj/VSM+tx+zMaK4Av0ANMAYEur9AdLC0fxJTcZX10fZ9+M9tNUC4wDJSUdb8W+4MvgEeWC
-	QO80gniiTcnMjaJVo0suLd9EXAVcQkQh6xBmVSMWSKuhvTC0E5DDspIs9mIJtAumSQfGZgpkJXLJk
-	ShTgNeoc5AmbC0Yi0qn611jG10bVkyAx0rJFyaOhUW67D178IKAIAqygqKwsXAaO9ZUZnQ3JXTGFa
-	zME2n3DdcoIYKXEORoqJ0ZrXI14z/CalOuAUMfsKOEuAoXoh65+qdhFYndGbBpRsCQ9jAxvvid3bd
-	FsEAbPuw==;
+	bh=sjoOUAQ2KpFkSQkJmxpf76Oqp/FlOKTHCzC1QL2Uayk=; b=xxT8jIYadriucSKwc2MiRpxWBL
+	lmCyw8s2Q0uuw6/0Z2mmtjK7kIa9cel0YxFob/mCDGROdH/UqHyLV2EgVnrzGHi4NRclyiEJgi5Cs
+	w0vbQX680ezhwR+kIaWnZeMGk4UmyOsisvvMu/TJIh7SvAJQr8vgqu2bVmz6l/ixj0RHvhRDsAaNQ
+	F4NmIf02dr5ZtPbRhPypBdABdkjXIeQFB1R12Bz7dBE7P5W4nfDXDDVMHP64hO0iVP8ntu7Ttddoi
+	ARDiGtgbi8OxuKmjnDTefdx3rcajHV+QLm5yVZWcv0g4AoUHPFohGQNIx/EKds8fb827ucL46ehCE
+	+pJyMYhw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAwjY-0008Vv-Is; Wed, 26 Aug 2020 14:49:04 +0000
+	id 1kAwjX-0008Uy-DK; Wed, 26 Aug 2020 14:49:03 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAwj0-0008F7-SD; Wed, 26 Aug 2020 14:48:32 +0000
+ id 1kAwiv-0008D3-Hm; Wed, 26 Aug 2020 14:48:27 +0000
 Received: from localhost.localdomain (unknown [194.230.155.216])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 397782078D;
- Wed, 26 Aug 2020 14:48:25 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 1A2E2214F1;
+ Wed, 26 Aug 2020 14:48:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598453309;
- bh=r3PPVBNd/192HHhzA+kMklycTSRNcnFogFFpGxYkYNA=;
+ s=default; t=1598453304;
+ bh=vQ5Zu72e2TzwYVaZX1BdryKwmtf97ebh0hkJi39RFDY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=B2Di67tovHkZYgOUD+e0BVllM0NCV2gCyD2vVmrhWMVcZiBLgcXQCDmpf6uYQuHRm
- PKjL3pSeK8q1bBTzUm5Y6PhxJC19jwSKtwpt3xkKijBOqSOqg8sWT6BIa0DrYRJw/L
- tO0+uOc/BNuq/Pu53ipM/wVeMkpiTclFFOOFYCF4=
+ b=QL57HJOfx0q3AoZ3G+ZrkuUZvrgY68YohwpgADn3uo8gpl56X0nhjVLon65/xsSLa
+ 4SBFMzwwKOlRsKt4IzdizknK4jU9wKTVItzUHrTTUkmDzNJz780+GVEM7S1Z4ZBx0S
+ tR4WgYBwqR6u6fzWBIUrz974zl8wvUYaH67myEos=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Thierry Reding <thierry.reding@gmail.com>,
  =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
@@ -66,15 +66,15 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  linux-pwm@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org
-Subject: [PATCH 5/6] pwm: sprd: Simplify with dev_err_probe()
-Date: Wed, 26 Aug 2020 16:47:46 +0200
-Message-Id: <20200826144747.9436-5-krzk@kernel.org>
+Subject: [PATCH 4/6] pwm: sifive: Simplify with dev_err_probe()
+Date: Wed, 26 Aug 2020 16:47:45 +0200
+Message-Id: <20200826144747.9436-4-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200826144747.9436-1-krzk@kernel.org>
 References: <20200826144747.9436-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200826_104831_041192_07D478B5 
-X-CRM114-Status: GOOD (  14.31  )
+X-CRM114-CacheID: sfid-20200826_104825_747720_6F6E612C 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,27 +99,28 @@ dev_err_probe().  Less code and also it prints the error value.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- drivers/pwm/pwm-sprd.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ drivers/pwm/pwm-sifive.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/pwm/pwm-sprd.c b/drivers/pwm/pwm-sprd.c
-index be2394227423..5123d948efd6 100644
---- a/drivers/pwm/pwm-sprd.c
-+++ b/drivers/pwm/pwm-sprd.c
-@@ -228,11 +228,8 @@ static int sprd_pwm_clk_init(struct sprd_pwm_chip *spc)
- 			if (ret == -ENOENT)
- 				break;
+diff --git a/drivers/pwm/pwm-sifive.c b/drivers/pwm/pwm-sifive.c
+index 62de0bb85921..2485fbaaead2 100644
+--- a/drivers/pwm/pwm-sifive.c
++++ b/drivers/pwm/pwm-sifive.c
+@@ -254,11 +254,9 @@ static int pwm_sifive_probe(struct platform_device *pdev)
+ 		return PTR_ERR(ddata->regs);
  
--			if (ret != -EPROBE_DEFER)
--				dev_err(spc->dev,
--					"failed to get channel clocks\n");
--
--			return ret;
-+			return dev_err_probe(spc->dev, ret,
-+					     "failed to get channel clocks\n");
- 		}
+ 	ddata->clk = devm_clk_get(dev, NULL);
+-	if (IS_ERR(ddata->clk)) {
+-		if (PTR_ERR(ddata->clk) != -EPROBE_DEFER)
+-			dev_err(dev, "Unable to find controller clock\n");
+-		return PTR_ERR(ddata->clk);
+-	}
++	if (IS_ERR(ddata->clk))
++		return dev_err_probe(dev, PTR_ERR(ddata->clk),
++				     "Unable to find controller clock\n");
  
- 		clk_pwm = chn->clks[SPRD_PWM_CHN_OUTPUT_CLK].clk;
+ 	ret = clk_prepare_enable(ddata->clk);
+ 	if (ret) {
 -- 
 2.17.1
 
