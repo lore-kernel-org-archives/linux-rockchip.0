@@ -7,49 +7,49 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70DACC433E1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 14:48:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C8B02C433DF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 14:48:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 39BC922CA0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 14:48:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 99F8922B4E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 26 Aug 2020 14:48:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nnfXraAB";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="byy3D3tn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39BC922CA0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oxeQvphz";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="gK150X70"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 99F8922B4E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cV+SjcTfLK5DtpSSjV8I+pVitibVhLHuT3DyiUmUUX0=; b=nnfXraABjlkir/bkIx/mpGv2r1
-	UOAwMRFxeki5NLE6NivZWHh8ILz3WXqpWPmMPdQltydCZTr5F2Lls6iES8uL/xU1ZPHCWhWlMvWFZ
-	jpQqop6aTpU5omviGJ4bzTXGWRAgdgD/ztVHD9ANEpsNh4XaQy8H1dhV8qI9CUu+HrDwJ9sGnZHn6
-	dC+CyIErAd004pv/gRiXa5YsVJ0Sj4CMA28BPNGlEQAlpg3YsoRSJ08gUMO89ncpZ8q22etTLlClD
-	3uVwSXio6nMtTAnOAXdUE3+BsGxLRJ+Q/Q4S0uUz4rnZQH+BxpE/LHOxdXAgt8XBzhaqu6Z0lz2BM
-	Bo0YolXA==;
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K406MKilkPE0t1pTpZo3lVTkkWCsSH8DORsOrNjc1wU=; b=oxeQvphzXk+ASkYxZ+/2EbrvOU
+	N5CHeSnblkrNyOxcaAdZy381BTV9x57GoK3J9qys9dC7bxkU/53agYhlRY3+aGUFictnRCFvv4qVJ
+	pxb7+5ujdja+rNmjoP4trsZS5R/UI3xGuFK6O6EAYNItfDT7ZtPVOvZUuez9wNVuiNUlVOb1SQxyy
+	PPSXoI/59Xk9t/iJFyvL4iWDM19E73Vx8ony6tMCtoWgIkLXJyRSgwVOsqzIs3aLNo5zU/9/2Or9L
+	9MkZ4R8AbJ0OmqKEGyVAyQojfGFR6iiGBwmm+K00r1WHhwjs5aqzjyjygnzuci5RKbiqjYLQMxJj9
+	xI0iJJwQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kAwil-00089I-ET; Wed, 26 Aug 2020 14:48:15 +0000
+	id 1kAwiz-0008Eg-PW; Wed, 26 Aug 2020 14:48:29 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kAwif-00087m-IZ; Wed, 26 Aug 2020 14:48:10 +0000
+ id 1kAwik-00088w-VE; Wed, 26 Aug 2020 14:48:15 +0000
 Received: from localhost.localdomain (unknown [194.230.155.216])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 7C1FD2078D;
- Wed, 26 Aug 2020 14:48:03 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 30951221E2;
+ Wed, 26 Aug 2020 14:48:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1598453288;
- bh=xX8No7Dlt35uVRtG106IwB/R7I/5/jIBaMyqJ0vQmGI=;
- h=From:To:Cc:Subject:Date:From;
- b=byy3D3tns5AIyEhsP6N685UlNNM4Np1NcLWi4Kz3mfpU6GO11lchcfMMXlnWKaiEs
- 9caKQ8wIDDAcf43Mj3+RXx/5EJ6cBZLWsieGF3Al7nYik1drYyc5TpkijjP8D8HLN7
- nVoWPi3D5m0rCkAw+iNI6rwMXuzClgI+P/AaTTVc=
+ s=default; t=1598453294;
+ bh=zQ4wGhgAOWWJNtES+xKHpDaEtICXKkmp2wHN7FL1pdQ=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=gK150X70JBKf+I+P726abOJK3s7iZdBicWHGHWAiFXHp79cZa95M1ZNO87VXY7w2G
+ EF3MQEaAUAItPSSvLpsYnmpVBrNGWmD9awuFTjVM1hn3c1NkrJ3PFp97aZIDMLyuz5
+ ff/rhwwbnEFGMrQriWpK4oac3hlrbbCbgyG9m0YE=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Thierry Reding <thierry.reding@gmail.com>,
  =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
@@ -66,13 +66,15 @@ To: Thierry Reding <thierry.reding@gmail.com>,
  linux-pwm@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org
-Subject: [PATCH 1/6] pwm: bcm2835: Simplify with dev_err_probe()
-Date: Wed, 26 Aug 2020 16:47:42 +0200
-Message-Id: <20200826144747.9436-1-krzk@kernel.org>
+Subject: [PATCH 2/6] pwm: jz4740: Simplify with dev_err_probe()
+Date: Wed, 26 Aug 2020 16:47:43 +0200
+Message-Id: <20200826144747.9436-2-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200826144747.9436-1-krzk@kernel.org>
+References: <20200826144747.9436-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200826_104809_696118_5611DEFB 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20200826_104815_156468_C204FFBC 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,30 +99,29 @@ dev_err_probe().  Less code and also it prints the error value.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- drivers/pwm/pwm-bcm2835.c | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+ drivers/pwm/pwm-jz4740.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/pwm/pwm-bcm2835.c b/drivers/pwm/pwm-bcm2835.c
-index d78f86f8e462..6841dcfe27fc 100644
---- a/drivers/pwm/pwm-bcm2835.c
-+++ b/drivers/pwm/pwm-bcm2835.c
-@@ -152,13 +152,9 @@ static int bcm2835_pwm_probe(struct platform_device *pdev)
- 		return PTR_ERR(pc->base);
+diff --git a/drivers/pwm/pwm-jz4740.c b/drivers/pwm/pwm-jz4740.c
+index 5830ac2bdf6a..00c642fa2eed 100644
+--- a/drivers/pwm/pwm-jz4740.c
++++ b/drivers/pwm/pwm-jz4740.c
+@@ -60,12 +60,9 @@ static int jz4740_pwm_request(struct pwm_chip *chip, struct pwm_device *pwm)
+ 	snprintf(name, sizeof(name), "timer%u", pwm->hwpwm);
  
- 	pc->clk = devm_clk_get(&pdev->dev, NULL);
--	if (IS_ERR(pc->clk)) {
--		ret = PTR_ERR(pc->clk);
--		if (ret != -EPROBE_DEFER)
--			dev_err(&pdev->dev, "clock not found: %d\n", ret);
+ 	clk = clk_get(chip->dev, name);
+-	if (IS_ERR(clk)) {
+-		if (PTR_ERR(clk) != -EPROBE_DEFER)
+-			dev_err(chip->dev, "Failed to get clock: %pe", clk);
 -
--		return ret;
+-		return PTR_ERR(clk);
 -	}
-+	if (IS_ERR(pc->clk))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk),
-+				     "clock not found\n");
++	if (IS_ERR(clk))
++		return dev_err_probe(chip->dev, PTR_ERR(clk),
++				     "Failed to get clock\n");
  
- 	ret = clk_prepare_enable(pc->clk);
- 	if (ret)
+ 	err = clk_prepare_enable(clk);
+ 	if (err < 0) {
 -- 
 2.17.1
 
