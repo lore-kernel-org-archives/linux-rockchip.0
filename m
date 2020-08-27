@@ -2,73 +2,54 @@ Return-Path: <SRS0=CWnh=CF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CDE1C433DF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 10:57:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E93EC433E1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 19:46:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ED15122CB1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 10:57:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D1F3422B4D
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 19:46:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YCdFFfJm"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED15122CB1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ApUuQCwj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D1F3422B4D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=M44O7jj476876GBY2SLd9+8LvQvlhWlHLzWkGjdglIY=; b=YCdFFfJmgJaAgLV6iyEtv9T6h
-	0vtDasEJ3jmFi3eXCSyl/Xg2/irjrj2QZNH2HmXKo/PDPJCZhrmnvKUYN/yNXn/BLKMDr+lkPtfhD
-	GUOM+jZo5k/dKWHz5JJQibTV+NCU0xl1+DoqtdRYC8B6bKX8dJBE+SR37BgqoIYz2Y7W0RUSlQGLp
-	kBZgXCNGQdYhmcJj3+81pZ1ONwkGJ4RLo3uso1L92WiDgoc5SqutWC+O9fxOgJa5KPv5mE6aljsln
-	ar9MDGugMIiT9jqxIIz+Nb2CavxvzWJqLFiQSMMjUCwmHXgyxEeCV9xh/82OkaetU4YSDRETzW+5v
-	ibyPa2tMg==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wH9h1jGDeHqdB6p6CCK5g5RoyGuO6geeGH4UxBJqKx8=; b=ApUuQCwjyD/61npTb4klVufI88
+	36tZPGh5wzHnJIfwmHLwGYXKMeAWf8Dff0VP5d8nRHvLqQgxmj9o4HD+6r6RvLT16LFOsHbRDGc1q
+	JjiT6jbYbXh02w2lfsX5Jg2DuaW4ObIRakTy1hJBg0rHBjLBvcz0No4N1bEfWTvOtJqVCqTxPJYgI
+	Lo7kP1wZfrbbuRGCdbZAToSqVDAGhDSaOm47APXw5SoRJ5u1F1dwk1aWeyvN0mPNUtIn4FYQK5Fcu
+	zK3AciXqQSvvBGrF7X0WAre2au2fcX8m+fLlhY3VuxJk0apB8sm5djmJUKfZumZ+MHyAFrycxQLbl
+	tg9ceUtg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBFak-0002Po-UJ; Thu, 27 Aug 2020 10:57:15 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1kBNqv-0004js-9M; Thu, 27 Aug 2020 19:46:29 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBFag-0002MD-DC
- for linux-rockchip@lists.infradead.org; Thu, 27 Aug 2020 10:57:12 +0000
-IronPort-SDR: rJLVHLLLI+ezaxA8pNl2l95A4xbRb33q6Bs+1KFgZ224lxNVbkY7guyciCZ0UPDmOBTUYHGxLy
- 8+TJDS3GzR2A==
-X-IronPort-AV: E=McAfee;i="6000,8403,9725"; a="144216023"
-X-IronPort-AV: E=Sophos;i="5.76,359,1592895600"; d="scan'208";a="144216023"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2020 03:57:05 -0700
-IronPort-SDR: 5VR6ccig7DZlLiO+sMhEo+Emle4xy6LXWOE2nLy+9HD06TFwaDF3kjkmYll9QnidBP84HuExZ0
- bWSumeroZ0Jw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.76,359,1592895600"; d="scan'208";a="299810019"
-Received: from stinkbox.fi.intel.com (HELO stinkbox) ([10.237.72.174])
- by orsmga006.jf.intel.com with SMTP; 27 Aug 2020 03:57:01 -0700
-Received: by stinkbox (sSMTP sendmail emulation);
- Thu, 27 Aug 2020 13:57:01 +0300
-Date: Thu, 27 Aug 2020 13:57:01 +0300
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Algea Cao <algea.cao@rock-chips.com>
-Subject: Re: [PATCH] drm: Parse Colorimetry data block from EDID
-Message-ID: <20200827105701.GS6112@intel.com>
-References: <20200826142328.131144-1-algea.cao@rock-chips.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200826142328.131144-1-algea.cao@rock-chips.com>
-X-Patchwork-Hint: comment
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ id 1kBNqr-0004gF-2N
+ for linux-rockchip@lists.infradead.org; Thu, 27 Aug 2020 19:46:26 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id AA84B2987DA
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+To: linux-media@vger.kernel.org
+Subject: [PATCH v7 0/6] v4l2: add support for colorspace conversion API (CSC)
+ for video capture and subdevices
+Date: Thu, 27 Aug 2020 21:46:06 +0200
+Message-Id: <20200827194612.13502-1-dafna.hirschfeld@collabora.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200827_065710_597415_4E264F7E 
-X-CRM114-Status: GOOD (  24.75  )
+X-CRM114-CacheID: sfid-20200827_154625_325164_E1A0AA46 
+X-CRM114-Status: GOOD (  28.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,170 +62,202 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: daniel@ffwll.ch, airlied@linux.ie, maarten.lankhorst@linux.intel.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, mripard@kernel.org, tzimmermann@suse.de
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
+ tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
+ helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
+ sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 26, 2020 at 10:23:28PM +0800, Algea Cao wrote:
-> CEA 861.3 spec adds colorimetry data block for HDMI.
-> Parsing the block to get the colorimetry data from
-> panel.
+For video capture it is the driver that reports the colorspace, transfer function,
+Y'CbCr/HSV encoding and quantization range used by the video, and there is no way
+to request something different, even though many HDTV receivers have some sort of
+colorspace conversion capabilities.
 
-And what exactly do you want to do with that data?
+For output video this feature already exists since the application
+specifies this information for the video format it will send out, and
+the transmitter will enable any available CSC if a format conversion has
+to be performed in order to match the capabilities of the sink.
 
-> =
+For video capture we propose adding new v4l2_pix_format flag:
+V4L2_PIX_FMT_FLAG_SET_CSC. The flag is set by the application,
+the driver will interpret the fields 'colorspace', 'xfer_func',
+'ycbcr_enc/hsv_enc' and 'quantization' as the requested colorspace information
+and will attempt to do the conversion it supports.
 
-> Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
-> ---
-> =
+Drivers set the flags
+V4L2_FMT_FLAG_CSC_COLORSPACE,
+V4L2_FMT_FLAG_CSC_XFER_FUNC,
+V4L2_FMT_FLAG_CSC_YCBCR_ENC/V4L2_FMT_FLAG_CSC_HSV_ENC,
+V4L2_FMT_FLAG_CSC_QUANTIZATION,
 
->  drivers/gpu/drm/drm_edid.c  | 45 +++++++++++++++++++++++++++++++++++++
->  include/drm/drm_connector.h |  3 +++
->  include/drm/drm_edid.h      | 14 ++++++++++++
->  3 files changed, 62 insertions(+)
-> =
+in the flags field of the struct v4l2_fmtdesc during enumeration to
+indicate that they support colorspace conversion for the respective field.
 
-> diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-> index 31496b6cfc56..67e607c04492 100644
-> --- a/drivers/gpu/drm/drm_edid.c
-> +++ b/drivers/gpu/drm/drm_edid.c
-> @@ -3223,6 +3223,7 @@ add_detailed_modes(struct drm_connector *connector,=
- struct edid *edid,
->  #define VIDEO_BLOCK     0x02
->  #define VENDOR_BLOCK    0x03
->  #define SPEAKER_BLOCK	0x04
-> +#define COLORIMETRY_DATA_BLOCK		0x5
->  #define HDR_STATIC_METADATA_BLOCK	0x6
->  #define USE_EXTENDED_TAG 0x07
->  #define EXT_VIDEO_CAPABILITY_BLOCK 0x00
-> @@ -4309,6 +4310,48 @@ static void fixup_detailed_cea_mode_clock(struct d=
-rm_display_mode *mode)
->  	mode->clock =3D clock;
->  }
->  =
+The same API is added for the subdevices. With the flag
+V4L2_MBUS_FRAMEFMT_SET_CSC set by the application in VIDIOC_SUBDEV_S_FMT
+ioctl and the flags
+V4L2_SUBDEV_MBUS_CODE_CSC_COLORSPACE,
+V4L2_SUBDEV_MBUS_CODE_CSC_XFER_FUNC,
+V4L2_SUBDEV_MBUS_CODE_CSC_YCBCR_ENC/V4L2_SUBDEV_MBUS_CODE_CSC_HSV_ENC
+V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION,
 
-> +static bool cea_db_is_hdmi_colorimetry_data_block(const u8 *db)
-> +{
-> +	if (cea_db_tag(db) !=3D USE_EXTENDED_TAG)
-> +		return false;
-> +
-> +	if (db[1] !=3D COLORIMETRY_DATA_BLOCK)
-> +		return false;
-> +
-> +	if (cea_db_payload_len(db) < 2)
-> +		return false;
-> +
-> +	return true;
-> +}
-> +
-> +static void
-> +drm_parse_colorimetry_data_block(struct drm_connector *connector, const =
-u8 *db)
-> +{
-> +	struct drm_hdmi_info *info =3D &connector->display_info.hdmi;
-> +
-> +	if (db[2] & DRM_EDID_CLRMETRY_xvYCC_601)
-> +		info->colorimetry |=3D DRM_EDID_CLRMETRY_xvYCC_601;
-> +	if (db[2] & DRM_EDID_CLRMETRY_xvYCC_709)
-> +		info->colorimetry |=3D DRM_EDID_CLRMETRY_xvYCC_709;
-> +	if (db[2] & DRM_EDID_CLRMETRY_sYCC_601)
-> +		info->colorimetry |=3D DRM_EDID_CLRMETRY_sYCC_601;
-> +	if (db[2] & DRM_EDID_CLRMETRY_ADBYCC_601)
-> +		info->colorimetry |=3D DRM_EDID_CLRMETRY_ADBYCC_601;
-> +	if (db[2] & DRM_EDID_CLRMETRY_ADB_RGB)
-> +		info->colorimetry |=3D DRM_EDID_CLRMETRY_ADB_RGB;
-> +	if (db[2] & DRM_EDID_CLRMETRY_BT2020_CYCC)
-> +		info->colorimetry |=3D DRM_EDID_CLRMETRY_BT2020_CYCC;
-> +	if (db[2] & DRM_EDID_CLRMETRY_BT2020_YCC)
-> +		info->colorimetry |=3D DRM_EDID_CLRMETRY_BT2020_YCC;
-> +	if (db[2] & DRM_EDID_CLRMETRY_BT2020_RGB)
-> +		info->colorimetry |=3D DRM_EDID_CLRMETRY_BT2020_RGB;
-> +	/* Byte 4 Bit 7: DCI-P3 */
-> +	if (db[3] & BIT(7))
-> +		info->colorimetry |=3D DRM_EDID_CLRMETRY_DCI_P3;
-> +
-> +	DRM_DEBUG_KMS("Supported Colorimetry 0x%x\n", info->colorimetry);
-> +}
-> +
->  static bool cea_db_is_hdmi_hdr_metadata_block(const u8 *db)
->  {
->  	if (cea_db_tag(db) !=3D USE_EXTENDED_TAG)
-> @@ -4994,6 +5037,8 @@ static void drm_parse_cea_ext(struct drm_connector =
-*connector,
->  			drm_parse_vcdb(connector, db);
->  		if (cea_db_is_hdmi_hdr_metadata_block(db))
->  			drm_parse_hdr_metadata_block(connector, db);
-> +		if (cea_db_is_hdmi_colorimetry_data_block(db))
-> +			drm_parse_colorimetry_data_block(connector, db);
->  	}
->  }
->  =
+set by the driver in the VIDIOC_SUBDEV_ENUM_MBUS_CODE ioctl.
 
-> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> index af145608b5ed..d599c3b9e881 100644
-> --- a/include/drm/drm_connector.h
-> +++ b/include/drm/drm_connector.h
-> @@ -207,6 +207,9 @@ struct drm_hdmi_info {
->  =
+For subdevices, new 'flags' fields were added to the structs
+v4l2_subdev_mbus_code_enum, v4l2_mbus_framefmt which are borrowed from the
+'reserved' field. In the struct 'v4l2_mbus_framefmt' and reserved2 field
+is added before the flags due to padding.
 
->  	/** @y420_dc_modes: bitmap of deep color support index */
->  	u8 y420_dc_modes;
-> +
-> +	/* @colorimetry: bitmap of supported colorimetry modes */
-> +	u16 colorimetry;
->  };
->  =
+Drivers do not have to actually look at the flags. If the flags are not
+set, then the colorspace, xfer_func, ycbcr_enc/hsv_enc and quantization
+fields are set to the default values by the core, i.e. just pass on the
+received format without conversion.
 
->  /**
-> diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
-> index cfa4f5af49af..98fa78c2f82d 100644
-> --- a/include/drm/drm_edid.h
-> +++ b/include/drm/drm_edid.h
-> @@ -229,6 +229,20 @@ struct detailed_timing {
->  				    DRM_EDID_YCBCR420_DC_36 | \
->  				    DRM_EDID_YCBCR420_DC_30)
->  =
+The patchset includes a patch in vivid that implements the API for video
+capture devices and a patch in rkisp1 driver that implement the API for
+subdevices.
 
-> +/*
-> + * Supported Colorimetry from colorimetry data block
-> + * as per CEA 861-G spec
-> + */
-> +#define DRM_EDID_CLRMETRY_xvYCC_601   (1 << 0)
-> +#define DRM_EDID_CLRMETRY_xvYCC_709   (1 << 1)
-> +#define DRM_EDID_CLRMETRY_sYCC_601    (1 << 2)
-> +#define DRM_EDID_CLRMETRY_ADBYCC_601  (1 << 3)
-> +#define DRM_EDID_CLRMETRY_ADB_RGB     (1 << 4)
-> +#define DRM_EDID_CLRMETRY_BT2020_CYCC (1 << 5)
-> +#define DRM_EDID_CLRMETRY_BT2020_YCC  (1 << 6)
-> +#define DRM_EDID_CLRMETRY_BT2020_RGB  (1 << 7)
-> +#define DRM_EDID_CLRMETRY_DCI_P3      (1 << 15)
-> +
->  /* ELD Header Block */
->  #define DRM_ELD_HEADER_BLOCK_SIZE	4
->  =
+In rkisp1, the API is used to allow userspace to set the quantization for
+YUV formats on the source pad of the isp entity. The quantization is read-only
+on the other entities and pads and does not have to be propagated.
 
-> -- =
+I also removed the TODO item 'Handle quantization'
+and added the TODO item 'Add uapi docs. Remember to add documentation of how quantization is handled.'
 
-> 2.25.1
-> =
+A patchset for v4l-utils to support the API: https://patchwork.kernel.org/cover/11642587/
 
-> =
+To test the patchset, follow the instructions from here: https://patchwork.kernel.org/cover/11642587/
+with the exception that the branch changed, so the clone command should be:
 
-> =
+git clone --single-branch --branch rkisp1-quant-v7-aug-27-2  https://gitlab.collabora.com/dafna/v4l-utils.git
 
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
--- =
+Patches Summary:
+----------------
+patch 1 - moves the description of the v4l2_pix_format flags in the Documentation to the right
+place where it should be. This is just a fix.
 
-Ville Syrj=E4l=E4
-Intel
+patch 2 - Adds the API for video devices - Adds the new macros and fields and their documentation.
+This is only for video devices.
+
+patch 3 - uses the API in the capture device of vivid. Using the API, userspace is allowed to:
+1. Set the colorspace
+2. set the xfer_func
+3. Set the ycbcr_enc function for YUV formats.
+4. Set the hsv_enc function for HSV formats
+5. Set the quantization for YUV and RGB formats.
+
+patch 4 - Adds the API for subdevices - Adds the new macros and fields and their documentation.
+It also replaces the ycbcr_enc field of 'struct v4l2_mbus_framefmt' with a union that includes
+also hsv_enc and adds support for CSC on hsv_enc for subdevices.
+
+patch 5 - use the API to allow userspace to set the quantization on the isp source pad.
+
+patch 6 - sets the flags to 0 in the mbus enumeration of the resizer.
+
+Changes from v6:
+----------------
+- in patch 3, simplified the help functions  v4l2_is_*_valid in v4l2-common.h
+- in patch 4, set the flag back to be of size 16 to avoid having reserved2 field in v4l2_mbus_framefmt
+
+Changes from v5:
+----------------
+- reordering the colorspace fields in the documentation and their flags in the header files
+to the order 'colorspace', 'transfer function' 'Y'CbCr/ HSV encoding' , 'quantization'
+
+- in patch 3, move the helpers 'vivid_is_*_valid' as static inline 'v4l2_is_*_valid' in v4l2-common.h , reorder the
+handling of the colorspace fields, and drop a redundant assignment 'dev->tpg.quantization = mp->quantization'
+
+- squashing patches 4,5 into one
+
+- in patch 4, changing the documentation in file subdev-formats.rst to not mention 'capture stream'
+since this term is only relevant to video devices, so I changed the existing documentations:
+
+"must be set by the driver for capture streams and by the application for output streams"
+
+with "must be set by the driver for subdevices"
+and documenting that the CSC is only for source pads.
+
+
+- In patches 2,4,  in the doc of V4L2_MBUS_FRAMEFMT_SET_CSC/V4L2_PIX_FMT_FLAG_SET_CSC, replacing '0' with ``*_DEFAULT``
+
+- in patch 5 (patch 6 in v2) : replace return of V4L2_QUANTIZATION_DEFAULT was the right value.
+
+Changes from v4:
+----------------
+- This time I didn't to this patchset the patches from 'media: staging: rkisp1: bugs fixes and vars renames'
+but note that this patchset is rebased on that patchset.
+
+- I added the fields 'colorspace' 'xfer_func' to the list of fields that the CSC API supports due to
+comment from Hans Verkuil. Also the vivid implementation is extended to support those fields.
+
+- I split the patch that adds the API into two patches. One for video devices and one patch for subdevices.
+This is because the two APIs are actually independent and it is easier to maintain and review two small patches
+than one big patch.
+Also, it can be decided that only one of those patches be accepted.
+
+- I changed the flags fields in 'struct v4l2_mbus_framefmt'  to __u32 and added a reserved2 field before it due to
+padding.
+
+- I changed the patch for rkisp1 so that the quantization can be set by userspace only on the source pad of
+the isp entity and is read-only and set always to default for all other entities and pads.
+The driver also does not validate matching of the quantization between entities.
+
+- Added a patch to the rkisp1-resizer that sets the flags to 0 when enumerating the mbus codes.
+This is because the resizer reports the same formats as the source pad of the isp entity but does
+not support the quantization conversion.
+
+- various small fixes due to feedback.
+
+Changes from v3:
+----------------
+- patches 1,2,3,7,8 are new (rkisp1 bug fixes, move v4l2-pixfmt flags docs, vivid patch, support for HSV media bus)
+
+- patch 4 (The API):
+1) reformulate the Documentation according to comments from Verkuil and Tomasz Figa
+2) remove the code in drivers/media/v4l2-core/v4l2-subdev.c and drivers/media/v4l2-core/v4l2-ioctl.c
+so that except of the new macros and fields no new code is added to the core
+
+- patches 5,6 - refactor the rkisp1 implementation so that the userspace should set the quantization separately
+to each entity. In patch 6 the validation callbacks make sure the quantizations matches.
+
+Dafna Hirschfeld (6):
+  media: Documentation: v4l: move table of v4l2_pix_format(_mplane)
+    flags to pixfmt-v4l2.rst
+  v4l2: add support for colorspace conversion API (CSC) for video
+    capture
+  media: vivid: Add support to the CSC API
+  v4l2: extend the CSC API to subdevice.
+  media: staging: rkisp1: allow quantization setting by userspace on the
+    isp source pad
+  media: staging: rkisp1: rsz: set flags to 0 in enum_mbus_code cb
+
+ .../media/v4l/pixfmt-reserved.rst             | 17 ----
+ .../media/v4l/pixfmt-v4l2-mplane.rst          | 16 +---
+ .../userspace-api/media/v4l/pixfmt-v4l2.rst   | 81 +++++++++++++++-
+ .../media/v4l/subdev-formats.rst              | 95 +++++++++++++++++--
+ .../media/v4l/vidioc-enum-fmt.rst             | 35 +++++++
+ .../v4l/vidioc-subdev-enum-mbus-code.rst      | 51 +++++++++-
+ .../media/videodev2.h.rst.exceptions          |  7 +-
+ .../media/test-drivers/vivid/vivid-vid-cap.c  | 38 ++++++--
+ .../test-drivers/vivid/vivid-vid-common.c     | 25 +++++
+ drivers/staging/media/rkisp1/TODO             |  2 +-
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 10 --
+ drivers/staging/media/rkisp1/rkisp1-isp.c     | 20 +++-
+ drivers/staging/media/rkisp1/rkisp1-resizer.c |  1 +
+ include/media/v4l2-common.h                   | 29 ++++++
+ include/uapi/linux/v4l2-mediabus.h            | 15 ++-
+ include/uapi/linux/v4l2-subdev.h              | 10 +-
+ include/uapi/linux/videodev2.h                |  6 ++
+ 17 files changed, 388 insertions(+), 70 deletions(-)
+
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
