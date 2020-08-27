@@ -2,56 +2,99 @@ Return-Path: <SRS0=CWnh=CF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5BE14C433DF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 19:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A2CAC433E2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 21:36:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2845E207DF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 19:46:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 642B42075B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 21:36:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="SXHQUcF1"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2845E207DF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DUql7OVi";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=deltatee.com header.i=@deltatee.com header.b="ppSg/+iq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 642B42075B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=deltatee.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=H66gyI58ITDv7xbL6FO3T5ox+DZFRAn+eGmM3CfdUyI=; b=SXHQUcF1ACfmsEqB8LKNlU4YlC
-	5JkqqNbtQnqgkdyJwPcuqUgwHiL0nr5Z9q+T0WcWSf9Kx6yak5cqXhCj1lgb2WFA2E8MQd2qkq5yG
-	c67MtpNT1iLe3RlQglBMEeKt+BLBNtZN9JIonPmwhPr0TazmOwIcl3dOpZRz9aXUlQMN2vAX5F8Hg
-	l5oH97mON1GsNqwnbZTmWAjm+D25HiC+TKJLkHsn21XhX2hfH7mvO7KaaG+vD+7Q7wCfTxIelz1Mt
-	12Jwond/hnU7CbzKV3aBTqbZvBZtvP1jtkRxuYlfBe6TWPEt61g4VH/vTL3sIRh/rRFmUTZhpE6WZ
-	N9nk9CmQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Subject:In-Reply-To:MIME-Version:Date:Message-ID:
+	From:References:To:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=4mOxKWn7XhugHThE9bKNk/+NgWvXdGzSotRtLzPA0qU=; b=DUql7OVi8/Od2VJima436nzrx
+	gXCe4itBQN3DIEVl0EmlYI1TNKyYhXRlEwEC5uWNwFHlwP+HxIbwuCRFworoRnOWdfJWWoQtqNDZH
+	gbc+2S1bAXEdkUbI6n1PhghY4KMY2kQ10Ua5ZhHNnQCsEh2rvstw6zy0J3k9eCD0QgDRSp3WuMPxL
+	RqXt6hTIaHpCKc1f4zTZ3VuFR3JRzzRbNVP85Trg6QoqYeDqVXfWo5qNKLhpPyiuKkrUVX1jxbV+I
+	RjFQsbYsE7wq3pUXW18/7djqrPY0FeaNgUGRkLNHOBWl5mDq+waoUZYCROONsWXvOj7wsAJCDMa1J
+	1+hSAULqA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBNr6-0004qR-KM; Thu, 27 Aug 2020 19:46:40 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kBPZZ-0005YH-2z; Thu, 27 Aug 2020 21:36:41 +0000
+Received: from ale.deltatee.com ([204.191.154.188])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBNqv-0004iI-4o
- for linux-rockchip@lists.infradead.org; Thu, 27 Aug 2020 19:46:34 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id EF93D29A984
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v7 5/6] media: staging: rkisp1: allow quantization setting by
- userspace on the isp source pad
-Date: Thu, 27 Aug 2020 21:46:11 +0200
-Message-Id: <20200827194612.13502-6-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200827194612.13502-1-dafna.hirschfeld@collabora.com>
-References: <20200827194612.13502-1-dafna.hirschfeld@collabora.com>
+ id 1kBPZU-0005Wx-JM; Thu, 27 Aug 2020 21:36:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=deltatee.com; s=20200525; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:MIME-Version:Date:Message-ID:From:References:Cc:To:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=zdm0S2PWnmi/4XqIOhf530rvRuJxiVED1nzE9jKGFv8=; b=ppSg/+iqJxad7jlIdh8Y9MCuj8
+ eSljdwyCXvCK6jPPd1tDLxSyQS3OfNvWLb9rtPcYH0tWwPfWbqN/SiMzEXvytS1UAroOMpWq4CKsr
+ xfvgurd/B+ph0RQQQ1EzYI+0ZpzdPV5/Uswr2aB44f4wnSsg3hKjVRT5VB+fo6TYDz8WScdTIrB1a
+ lqtdPM5OflsEyE9zX8HxA1hW1slt1BtGeyEXEyB6sDZqrjj08vGYlUHqbHHMmg7U/d8+fLz2ulJyX
+ sTKVbt8qvuIIoPlaapegTlcU5pwKMVdug8+j4AwArHv8UF09Cs7kGZZdcUEzA8cBdrj5P5NOXyHnm
+ VcG2ZJyQ==;
+Received: from s01060023bee90a7d.cg.shawcable.net ([24.64.145.4]
+ helo=[192.168.0.10])
+ by ale.deltatee.com with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <logang@deltatee.com>)
+ id 1kBPZG-0002Dd-OC; Thu, 27 Aug 2020 15:36:23 -0600
+To: Tom Murphy <murphyt7@tcd.ie>
+References: <20191221150402.13868-1-murphyt7@tcd.ie>
+ <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
+ <20200529124523.GA11817@infradead.org>
+ <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
+ <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
+ <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
+ <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
+ <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <766525c3-4da9-6db7-cd90-fb4b82cd8083@deltatee.com>
+Date: Thu, 27 Aug 2020 15:36:16 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
+MIME-Version: 1.0
+In-Reply-To: <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
+Content-Language: en-US
+X-SA-Exim-Connect-IP: 24.64.145.4
+X-SA-Exim-Rcpt-To: joonas.lahtinen@linux.intel.com, jani.nikula@linux.intel.com,
+ dwmw2@infradead.org, kgene@kernel.org, linux-kernel@vger.kernel.org,
+ cohuck@redhat.com, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org,
+ virtualization@lists.linux-foundation.org, tglx@linutronix.de,
+ linux-tegra@vger.kernel.org, rodrigo.vivi@intel.com,
+ linux-mediatek@lists.infradead.org, alex.williamson@redhat.com,
+ intel-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ linux-s390@vger.kernel.org, gerald.schaefer@de.ibm.com, agross@kernel.org,
+ linux-rockchip@lists.infradead.org, jonathanh@nvidia.com, krzk@kernel.org,
+ maz@kernel.org, linux-samsung-soc@vger.kernel.org, jean-philippe@linaro.org,
+ will@kernel.org, thierry.reding@gmail.com, julien.grall@arm.com,
+ matthias.bgg@gmail.com, bjorn.andersson@linaro.org,
+ dri-devel@lists.freedesktop.org, airlied@linux.ie, kvm@vger.kernel.org,
+ iommu@lists.linux-foundation.org, hch@infradead.org, m.szyprowski@samsung.com,
+ murphyt7@tcd.ie
+X-SA-Exim-Mail-From: logang@deltatee.com
+Subject: Re: [PATCH 0/8] Convert the intel iommu driver to the dma-iommu api
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200827_154629_427389_1C0E742B 
-X-CRM114-Status: GOOD (  19.69  )
+X-CRM114-CacheID: sfid-20200827_173636_690788_C7794FE6 
+X-CRM114-Status: GOOD (  22.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,127 +107,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
- tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
-MIME-Version: 1.0
+Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-tegra@vger.kernel.org, Julien Grall <julien.grall@arm.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
+ Andy Gross <agross@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ virtualization@lists.linux-foundation.org,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ David Woodhouse <dwmw2@infradead.org>, Cornelia Huck <cohuck@redhat.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The isp entity has hardware support to force full range quantization
-for YUV formats. Use the subdev CSC API to allow userspace to set the
-quantization for YUV formats on the isp entity.
 
-- The flag V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION is set for
-YUV formats during enumeration of the isp formats on the source pad.
-- The full quantization is set on YUV formats if userspace asks it
-on the isp entity using the flag V4L2_MBUS_FRAMEFMT_SET_CSC.
 
-On the capture and the resizer, the quantization is read-only
-and always set to the default quantization.
+On 2020-08-23 6:04 p.m., Tom Murphy wrote:
+> I have added a check for the sg_dma_len == 0 :
+> """
+>  } __sgt_iter(struct scatterlist *sgl, bool dma) {
+>         struct sgt_iter s = { .sgp = sgl };
+> 
+> +       if (sgl && sg_dma_len(sgl) == 0)
+> +           s.sgp = NULL;
+> 
+>         if (s.sgp) {
+>             .....
+> """
+> at location [1].
+> but it doens't fix the problem.
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Acked-by: Helen Koike <helen.koike@collabora.com>
-Reviewed-by: Tomasz Figa <tfiga@chromium.org>
----
- drivers/staging/media/rkisp1/TODO             |  2 +-
- drivers/staging/media/rkisp1/rkisp1-capture.c | 10 ----------
- drivers/staging/media/rkisp1/rkisp1-isp.c     | 20 +++++++++++++++----
- 3 files changed, 17 insertions(+), 15 deletions(-)
+Based on my read of the code, it looks like we also need to change usage
+of sgl->length... Something like the rough patch below, maybe?
 
-diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
-index bdb1b8f73556..bdd1da43cb5e 100644
---- a/drivers/staging/media/rkisp1/TODO
-+++ b/drivers/staging/media/rkisp1/TODO
-@@ -1,7 +1,7 @@
- * Fix pad format size for statistics and parameters entities.
- * Fix checkpatch errors.
- * Review and comment every lock
--* Handle quantization
-+* Add uapi docs. Remember to add documentation of how quantization is handled.
- * Document rkisp1-common.h
- * streaming paths (mainpath and selfpath) check if the other path is streaming
- in several places of the code, review this, specially that it doesn't seem it
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index c05280950ea0..f355b2977009 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -1069,8 +1069,6 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
- 			   const struct v4l2_format_info **fmt_info)
- {
- 	const struct rkisp1_capture_config *config = cap->config;
--	struct rkisp1_capture *other_cap =
--			&cap->rkisp1->capture_devs[cap->id ^ 1];
- 	const struct rkisp1_capture_fmt_cfg *fmt;
- 	const struct v4l2_format_info *info;
- 	const unsigned int max_widths[] = { RKISP1_RSZ_MP_SRC_MAX_WIDTH,
-@@ -1095,14 +1093,6 @@ static void rkisp1_try_fmt(const struct rkisp1_capture *cap,
- 
- 	info = rkisp1_fill_pixfmt(pixm, cap->id);
- 
--	/* can not change quantization when stream-on */
--	if (other_cap->is_streaming)
--		pixm->quantization = other_cap->pix.fmt.quantization;
--	/* output full range by default, take effect in params */
--	else if (!pixm->quantization ||
--		 pixm->quantization > V4L2_QUANTIZATION_LIM_RANGE)
--		pixm->quantization = V4L2_QUANTIZATION_FULL_RANGE;
--
- 	if (fmt_cfg)
- 		*fmt_cfg = fmt;
- 	if (fmt_info)
-diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-index 6ec1e9816e9f..1063f4505aaf 100644
---- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-@@ -589,6 +589,10 @@ static int rkisp1_isp_enum_mbus_code(struct v4l2_subdev *sd,
- 
- 		if (code->index == pos - 1) {
- 			code->code = fmt->mbus_code;
-+			if (fmt->pixel_enc == V4L2_PIXEL_ENC_YUV &&
-+			    dir == RKISP1_ISP_SD_SRC)
-+				code->flags =
-+					V4L2_SUBDEV_MBUS_CODE_CSC_QUANTIZATION;
- 			return 0;
- 		}
- 	}
-@@ -620,7 +624,6 @@ static int rkisp1_isp_init_config(struct v4l2_subdev *sd,
- 					     RKISP1_ISP_PAD_SOURCE_VIDEO);
- 	*src_fmt = *sink_fmt;
- 	src_fmt->code = RKISP1_DEF_SRC_PAD_FMT;
--	src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
- 
- 	src_crop = v4l2_subdev_get_try_crop(sd, cfg,
- 					    RKISP1_ISP_PAD_SOURCE_VIDEO);
-@@ -663,9 +666,18 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
- 		isp->src_fmt = mbus_info;
- 	src_fmt->width  = src_crop->width;
- 	src_fmt->height = src_crop->height;
--	src_fmt->quantization = format->quantization;
--	/* full range by default */
--	if (!src_fmt->quantization)
+Also, Tom, do you have an updated version of the patchset to convert the
+Intel IOMMU to dma-iommu available? The last one I've found doesn't
+apply cleanly (I'm assuming parts of it have been merged in slightly
+modified forms).
+
+Thanks,
+
+Logan
+
+--
+
+diff --git a/drivers/gpu/drm/i915/i915_scatterlist.h
+b/drivers/gpu/drm/i915/i915
+index b7b59328cb76..9367ac801f0c 100644
+--- a/drivers/gpu/drm/i915/i915_scatterlist.h
++++ b/drivers/gpu/drm/i915/i915_scatterlist.h
+@@ -27,13 +27,19 @@ static __always_inline struct sgt_iter {
+ } __sgt_iter(struct scatterlist *sgl, bool dma) {
+        struct sgt_iter s = { .sgp = sgl };
+
++       if (sgl && !sg_dma_len(s.sgp))
++               s.sgp = NULL;
 +
-+	/*
-+	 * The CSC API is used to allow userspace to force full
-+	 * quantization on YUV formats.
-+	 */
-+	if (format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC &&
-+	    format->quantization == V4L2_QUANTIZATION_FULL_RANGE &&
-+	    mbus_info->pixel_enc == V4L2_PIXEL_ENC_YUV)
-+		src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
-+	else if (mbus_info->pixel_enc == V4L2_PIXEL_ENC_YUV)
-+		src_fmt->quantization = V4L2_QUANTIZATION_LIM_RANGE;
-+	else
- 		src_fmt->quantization = V4L2_QUANTIZATION_FULL_RANGE;
- 
- 	*format = *src_fmt;
--- 
-2.17.1
+        if (s.sgp) {
+                s.max = s.curr = s.sgp->offset;
+-               s.max += s.sgp->length;
+-               if (dma)
++
++               if (dma) {
++                       s.max += sg_dma_len(s.sgp);
+                        s.dma = sg_dma_address(s.sgp);
+-               else
++               } else {
++                       s.max += s.sgp->length;
+                        s.pfn = page_to_pfn(sg_page(s.sgp));
++               }
+        }
 
+        return s;
 
 _______________________________________________
 Linux-rockchip mailing list
