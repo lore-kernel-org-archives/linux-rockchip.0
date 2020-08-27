@@ -2,88 +2,73 @@ Return-Path: <SRS0=CWnh=CF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2 autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B6B01C433E1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 07:35:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CDE1C433DF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 10:57:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7EBE020825
-	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 07:35:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ED15122CB1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 27 Aug 2020 10:57:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dqsUz8Uc";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="B3bi80kj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7EBE020825
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YCdFFfJm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED15122CB1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NX2G6GhFZQu2c15R07mmpmnZhLNM0Aa7jRpin6BaciI=; b=dqsUz8Uc2CpIAkSSo40OOpWva
-	F+c2HBO6xqGYEfKmJxgkNs8VezVHfM1+p1BWQAA9DNyq72MM176qmWx5Iozc3GYhcZo9cb0JIBgH+
-	ZNKHZbfOyDuBJ5I+hmE4ifWvOX5SUQMoRsNQcWubnYdjEWunjERk6yHqIt83uOWzb8DWonw4Q05mJ
-	01GlP/KaXsdRlXK6EbtWPty9O8JUR+l4xjwO9/8Rnfw/oGpEc6aWb8cKsTz11dLOChzysDqNzJeIR
-	3Sx/6qHWEe2THTHWLVWN9qi0Ua4HhprcfgAvlCVHwpt1DWlelVBONAleUzuz1Q4IFSy4kShfDX6e3
-	kHAUaHSnw==;
+	 bh=M44O7jj476876GBY2SLd9+8LvQvlhWlHLzWkGjdglIY=; b=YCdFFfJmgJaAgLV6iyEtv9T6h
+	0vtDasEJ3jmFi3eXCSyl/Xg2/irjrj2QZNH2HmXKo/PDPJCZhrmnvKUYN/yNXn/BLKMDr+lkPtfhD
+	GUOM+jZo5k/dKWHz5JJQibTV+NCU0xl1+DoqtdRYC8B6bKX8dJBE+SR37BgqoIYz2Y7W0RUSlQGLp
+	kBZgXCNGQdYhmcJj3+81pZ1ONwkGJ4RLo3uso1L92WiDgoc5SqutWC+O9fxOgJa5KPv5mE6aljsln
+	ar9MDGugMIiT9jqxIIz+Nb2CavxvzWJqLFiQSMMjUCwmHXgyxEeCV9xh/82OkaetU4YSDRETzW+5v
+	ibyPa2tMg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBCRF-0000To-S9; Thu, 27 Aug 2020 07:35:13 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1kBFak-0002Po-UJ; Thu, 27 Aug 2020 10:57:15 +0000
+Received: from mga02.intel.com ([134.134.136.20])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBCRD-0000Sa-6g
- for linux-rockchip@lists.infradead.org; Thu, 27 Aug 2020 07:35:11 +0000
-Received: by mail-lj1-x243.google.com with SMTP id t23so5310762ljc.3
- for <linux-rockchip@lists.infradead.org>; Thu, 27 Aug 2020 00:35:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:in-reply-to:references
- :mime-version; bh=7APyHOujPL1VeK8Eil0L8aFHD4Q0gYtExWSlFGcjgmg=;
- b=B3bi80kjtgfp+lEYjnG2F+19d/sX90y5UROZig2euZ+1ZBZkpgt3aH1dzEyv63kUjk
- +IcdxUFm+Yly2y8SWe6/UHVwmpqeWu9m1J9hXbinVmBwBC/x8pdPVWw4kC7BVx5QTF4K
- /6ACxh/dX3WOUJO1MvvwYycomLb7V41/1I5mDWzKjvDGdNX1qcmaa4m1xpoqcthKpKeW
- gBjmLEE0n8K65BEydcs+y5HqxvKRJ2TRitAGB/J7vG+2B6k99toYX9IxWTtlIRkucux6
- MeJDWdCbiW/z6pSA+GVQG56wOnEN3aAWCkSTryd/A0nxdlKXO1M0eNq15yFU/x4MObn9
- hxrw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:in-reply-to
- :references:mime-version;
- bh=7APyHOujPL1VeK8Eil0L8aFHD4Q0gYtExWSlFGcjgmg=;
- b=mbcpHxWpkVJ0AfjdpRwFXxPKUauGvXsMDP0rO2pOvkJlwJ+pxGpRkbaXzx0Pp56qUo
- tCDTKAovauj3/oStQqY/U5tqUpEMscQoQjxAarpfas+tjsOe0wdiy/ipSFAPeJGnWb+p
- H8f2OfzEcS5l5CEEeGB+MFrkSZgKWBa89HeNf1bZ2yGlmW6c/+EjXZ3ZLJHc8b4D5EF9
- fAHx5aZ0Us9fwRZlUcOVGw3BXFdyPC8ek5RLpfvYs3CpSs4Z+hWHuw2TK0xGrtAKdQ7x
- pggFB1CeAbpzjIGmdWAU5D6J2gWVV+BxJxXqsDm0bK6fcKUhI7+lUZVD9QDyh+ueM+Y8
- BHOw==
-X-Gm-Message-State: AOAM533QZJ/oxscm+1HZT+RavQeA/CEF97MflLRXQhHmVB159aDpMVaA
- 5ayDtKBexcUzpycmtwPj9ZM=
-X-Google-Smtp-Source: ABdhPJzVuZLGlIVYCxQHJ6jt0P6Csdk4Q8l7EO2A2x3ucFfSbPYImf6ufnSiupv9tFerYJ7vq1kseQ==
-X-Received: by 2002:a2e:3a10:: with SMTP id h16mr2320532lja.221.1598513708321; 
- Thu, 27 Aug 2020 00:35:08 -0700 (PDT)
-Received: from eldfell ([194.136.85.206])
- by smtp.gmail.com with ESMTPSA id e25sm282458ljp.47.2020.08.27.00.35.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Aug 2020 00:35:08 -0700 (PDT)
-Date: Thu, 27 Aug 2020 10:34:56 +0300
-From: Pekka Paalanen <ppaalanen@gmail.com>
+ id 1kBFag-0002MD-DC
+ for linux-rockchip@lists.infradead.org; Thu, 27 Aug 2020 10:57:12 +0000
+IronPort-SDR: rJLVHLLLI+ezaxA8pNl2l95A4xbRb33q6Bs+1KFgZ224lxNVbkY7guyciCZ0UPDmOBTUYHGxLy
+ 8+TJDS3GzR2A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9725"; a="144216023"
+X-IronPort-AV: E=Sophos;i="5.76,359,1592895600"; d="scan'208";a="144216023"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Aug 2020 03:57:05 -0700
+IronPort-SDR: 5VR6ccig7DZlLiO+sMhEo+Emle4xy6LXWOE2nLy+9HD06TFwaDF3kjkmYll9QnidBP84HuExZ0
+ bWSumeroZ0Jw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,359,1592895600"; d="scan'208";a="299810019"
+Received: from stinkbox.fi.intel.com (HELO stinkbox) ([10.237.72.174])
+ by orsmga006.jf.intel.com with SMTP; 27 Aug 2020 03:57:01 -0700
+Received: by stinkbox (sSMTP sendmail emulation);
+ Thu, 27 Aug 2020 13:57:01 +0300
+Date: Thu, 27 Aug 2020 13:57:01 +0300
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
 To: Algea Cao <algea.cao@rock-chips.com>
-Subject: Printing bitfields in the kernel (Re: [PATCH] drm: Parse
- Colorimetry data block from EDID)
-Message-ID: <20200827103456.57edaf59@eldfell>
-In-Reply-To: <20200826142328.131144-1-algea.cao@rock-chips.com>
+Subject: Re: [PATCH] drm: Parse Colorimetry data block from EDID
+Message-ID: <20200827105701.GS6112@intel.com>
 References: <20200826142328.131144-1-algea.cao@rock-chips.com>
-X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200826142328.131144-1-algea.cao@rock-chips.com>
+X-Patchwork-Hint: comment
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200827_033511_264006_C45560DC 
-X-CRM114-Status: GOOD (  22.08  )
+X-CRM114-CacheID: sfid-20200827_065710_597415_4E264F7E 
+X-CRM114-Status: GOOD (  24.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,33 +84,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Cc: daniel@ffwll.ch, airlied@linux.ie, maarten.lankhorst@linux.intel.com,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, mripard@kernel.org, tzimmermann@suse.de
-Content-Type: multipart/mixed; boundary="===============5323923206262718300=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
---===============5323923206262718300==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- boundary="Sig_/PKLpTK3oOKREpLRBpjtEfJP"; protocol="application/pgp-signature"
-
---Sig_/PKLpTK3oOKREpLRBpjtEfJP
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, 26 Aug 2020 22:23:28 +0800
-Algea Cao <algea.cao@rock-chips.com> wrote:
-
+On Wed, Aug 26, 2020 at 10:23:28PM +0800, Algea Cao wrote:
 > CEA 861.3 spec adds colorimetry data block for HDMI.
 > Parsing the block to get the colorimetry data from
 > panel.
->=20
+
+And what exactly do you want to do with that data?
+
+> =
+
 > Signed-off-by: Algea Cao <algea.cao@rock-chips.com>
 > ---
->=20
+> =
+
 >  drivers/gpu/drm/drm_edid.c  | 45 +++++++++++++++++++++++++++++++++++++
 >  include/drm/drm_connector.h |  3 +++
 >  include/drm/drm_edid.h      | 14 ++++++++++++
 >  3 files changed, 62 insertions(+)
->=20
+> =
+
 > diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
 > index 31496b6cfc56..67e607c04492 100644
 > --- a/drivers/gpu/drm/drm_edid.c
@@ -143,7 +125,8 @@ Algea Cao <algea.cao@rock-chips.com> wrote:
 rm_display_mode *mode)
 >  	mode->clock =3D clock;
 >  }
-> =20
+>  =
+
 > +static bool cea_db_is_hdmi_colorimetry_data_block(const u8 *db)
 > +{
 > +	if (cea_db_tag(db) !=3D USE_EXTENDED_TAG)
@@ -185,21 +168,6 @@ u8 *db)
 > +		info->colorimetry |=3D DRM_EDID_CLRMETRY_DCI_P3;
 > +
 > +	DRM_DEBUG_KMS("Supported Colorimetry 0x%x\n", info->colorimetry);
-
-Hi,
-
-taking a tangent here, printing bitfields as hex is hard to read. How
-about using something like nvkm_snprintbf()? Of course not literally
-that function since it's Nouveau internal, but as an end user I would be
-happy to see DRM core or the kernel generics have similar functionality
-that actually decodes the bits and prints their proper names.
-
-Does such facility not exist yet?
-
-
-Thanks,
-pq
-
 > +}
 > +
 >  static bool cea_db_is_hdmi_hdr_metadata_block(const u8 *db)
@@ -214,20 +182,23 @@ pq
 > +			drm_parse_colorimetry_data_block(connector, db);
 >  	}
 >  }
-> =20
+>  =
+
 > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
 > index af145608b5ed..d599c3b9e881 100644
 > --- a/include/drm/drm_connector.h
 > +++ b/include/drm/drm_connector.h
 > @@ -207,6 +207,9 @@ struct drm_hdmi_info {
-> =20
+>  =
+
 >  	/** @y420_dc_modes: bitmap of deep color support index */
 >  	u8 y420_dc_modes;
 > +
 > +	/* @colorimetry: bitmap of supported colorimetry modes */
 > +	u16 colorimetry;
 >  };
-> =20
+>  =
+
 >  /**
 > diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
 > index cfa4f5af49af..98fa78c2f82d 100644
@@ -236,7 +207,8 @@ pq
 > @@ -229,6 +229,20 @@ struct detailed_timing {
 >  				    DRM_EDID_YCBCR420_DC_36 | \
 >  				    DRM_EDID_YCBCR420_DC_30)
-> =20
+>  =
+
 > +/*
 > + * Supported Colorimetry from colorimetry data block
 > + * as per CEA 861-G spec
@@ -253,43 +225,28 @@ pq
 > +
 >  /* ELD Header Block */
 >  #define DRM_ELD_HEADER_BLOCK_SIZE	4
-> =20
+>  =
 
+> -- =
 
---Sig_/PKLpTK3oOKREpLRBpjtEfJP
-Content-Type: application/pgp-signature
-Content-Description: OpenPGP digital signature
+> 2.25.1
+> =
 
------BEGIN PGP SIGNATURE-----
+> =
 
-iQIzBAEBCAAdFiEEJQjwWQChkWOYOIONI1/ltBGqqqcFAl9HYiAACgkQI1/ltBGq
-qqc9jg//YlHW3L6UDL4d1hg+YWdsy3l/QUbxRtSsw0j8vQhULjaTs1YUNDb+S/WE
-KYBuHY5enEJ2kUH4USsBaI1uhhdFHrq3SM41DnUQKIqWB3lLJmNbJj2YgXNh+vg0
-l20I1uQQuhGH64xDVKLuPdCS4BnxxlFHSueGaZ4txhmQ2ruPfKF45Hm+IhBSyrJN
-VyCiazoNsVhQbGlhwhtB2P7sQSM1YY+Ul0nXb1R6a80ziBjV4Kx9OTTewqLLqT6J
-Xg74c2ELcVnfqDLXPNUF/NLSv+BsA8xxSPe4lyHddL4kgWOzofMrjng4JN7C6tVC
-fZdG+AVLeYgic2TCNkgW8dX9I6/47YjgHEfjDmXKE2InbjhbaudG+6jstISUBepi
-F5MKoTtItDxVnDkl9TZv7c0UxJp9lcNQ44vcb/qyvYagvZCrmnYNFC+SuPvGQ+ia
-xg5+uo+m8qAAka6dbGOByGRbaDgMCGWZIGKGDOGkQT10IUpqcNkZ56pvTdC2yaUr
-8Qnd5cITOgLZVlWp/P+ZuDc09s5lbbWStpBqW5fLJrumH2natvK5NksATucN/vvm
-ylS/eIvSJLZDCSq8veMdy2gOzWgaI9AaJHI0q4sgwfPOedBEsJEHE9DNvU8gONnu
-oXz7CjEuq1qzSvqNCzIYWT9+aa5bBfLyFWbOtO9wakgt1hspAGQ=
-=xWEr
------END PGP SIGNATURE-----
+> =
 
---Sig_/PKLpTK3oOKREpLRBpjtEfJP--
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
+-- =
 
---===============5323923206262718300==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5323923206262718300==--
-
