@@ -2,80 +2,54 @@ Return-Path: <SRS0=+8WL=CG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C61EC433E6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2020 11:18:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C590CC433E6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2020 15:17:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B8A77207DF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2020 11:18:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 83B8820757
+	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2020 15:17:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ozBpLV3c";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="PCgY6qKN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B8A77207DF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3F9kEMe6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83B8820757
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BQyX3NiWtqfrynoJ1zZzpZghjR8QxQBksLuZuocMS2g=; b=ozBpLV3cZp2kCobcPw3oZhbFY
-	rLtJ6qA0C7lWghmNqMG73pd3bPkt/HBdswUwOBswEKsahj4Et3AqlwBbkS+meYywBpxznnCjAcTRc
-	zZb4N5x5y9zXfLZVeqYFTFW0qs+tuLm8sSeRfiZsSQ6WtNM7aPK24tejZyD/QiwcO6JfpN5hWOhpL
-	JBa7QXrHleWWpv8okHIf5/ZYuXWe30JVb9xc0EE3WgRx7foKLbpalfKeOe5CPeD2NFjwgvJSgxlwh
-	Z3xM07s52qc7qyf8qRixBpX0lJCk/RkhIYzyldP0tmLeORGW3svMynm+Rei7ZHlh+K4nl3Rj/g5hK
-	uYxfEERBA==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=JRbhlXcVQIVcw+Sm3OHfPclAZbzwNkSfYtuhEOcjMqQ=; b=3F9kEMe6fURYxjY4KsEy0VrInD
+	p5yUrNDyTrWV2ZGaOQf73GjDCeDlfAZ9+gL8wPckRriGWvoi3JfX3uMtyi83ePRZ4LQL4ezraS0ls
+	4K+8zoyV9ojKz/LxX50mQAOVo6VfDIDH58nymSV8m/dM6doT2jpGOZL/z8/SrMED1onMKgPkIh+Ar
+	b13uY/JSFJ3QKd1TFfbjH384nA1Kg3vyGANMlgDNiOxsVmf+FH4qv8+PtUAGNiVsPMcrsblIOmlU1
+	/Rg4orVCwU/zi1nucwM107e+zfw9kShw8Uho87mIXRMXykxhO93F/g3Tv64O++gpf0rGMJEq/nDTH
+	9iOsB0aA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBcOb-0003tk-LV; Fri, 28 Aug 2020 11:18:13 +0000
-Received: from lb2-smtp-cloud9.xs4all.net ([194.109.24.26])
+	id 1kBg8A-0001G1-Fd; Fri, 28 Aug 2020 15:17:30 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBcOY-0003sb-If
- for linux-rockchip@lists.infradead.org; Fri, 28 Aug 2020 11:18:12 +0000
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
- by smtp-cloud9.xs4all.net with ESMTPA
- id BcOKkdXPlecrdBcOMkzzLC; Fri, 28 Aug 2020 13:18:04 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
- t=1598613484; bh=XkHdTqH/hc2z2xtzmzKsxxaJY8teREdVecs0iP3vfBg=;
- h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
- Subject;
- b=PCgY6qKNp3IKSF7A3TJ3fxLB3r1yRBmcD0BsiR91fwAGYTxSSZvW+MVLIQNfYwrwJ
- i49rWIQvoHcIfh1+nPppuHp+J3PLRl3G0vpzX6D6KBvp2b309TkctUPWERezCtdYnZ
- acjVJuvIq/OJ3vh5VLa5N90+HdJWyL73L9bIl+iPLNAQJaXfvg9QH/k6VHLmUxWWoP
- vdF2yYS0wN2c/mbucvTZcomw+coZlSRUkDUiCXrQ2aKhPKcB1NGWrgVOQDqi172hjp
- 8VNTC6R0iR6DMNvgiaONSpSXGvDGRlxweimWfo6aMRaZ+GbFrlu+ri/KmAw/uiYeMw
- VggQ/b8BzWRfg==
-Subject: Re: [PATCH v2] utils: v4l2-ctl: support V4L2_CAP_IO_MC in v4l2-ctl
+ id 1kBg87-0001FL-Ge
+ for linux-rockchip@lists.infradead.org; Fri, 28 Aug 2020 15:17:28 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: dafna) with ESMTPSA id 5CBC429A124
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+To: linux-media@vger.kernel.org
+Subject: [PATCH v3] utils: v4l2-ctl: support V4L2_CAP_IO_MC in v4l2-ctl
  '--list-formats-*' commands
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-media@vger.kernel.org
-References: <20200825140806.13978-1-dafna.hirschfeld@collabora.com>
- <3a4aa849-4b46-9086-2ff3-e34c1b524ff9@xs4all.nl>
- <403c85b7-d2b9-fb76-731d-ed1eafb4595a@collabora.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <e8052bef-72a6-e7c4-1dc8-2d22af9141d6@xs4all.nl>
-Date: Fri, 28 Aug 2020 13:17:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <403c85b7-d2b9-fb76-731d-ed1eafb4595a@collabora.com>
-Content-Language: en-US
-X-CMAE-Envelope: MS4wfDvEpgY/Em2NsrMLXShZJaQILvqGoo34d3uSUa4aidFrOlpeMU7NY5AmJMZf6/DBLvfzmWUWjhMD5mCvVj3dK8vXpzyyCecqn23XLS+2pgezq+PbPcrF
- PxcgkKN4gIpUyyRX7eNk5SDkIVVkzOCO+vh8iNuLukqfAtaFHFXpyc6j6m+cm29XJixbCpFuAtBQUBf+7MMYhy/clycQwwv6nSXdbZA4LOU5hKowbS82JOuS
- kcWivz0CemDea54i4eepX3GDC24SzfavTTplNGl0SDGP/ASLAnIBTujyykfMemDYHZkvO5lKaDJOS/tW/Nuvcc71wBcY75xGoNVAA1bk6KEmPkaoUS49WRzB
- Tws7dMpo73EJifdlu5b8hhd6MhOgHBXwyFIc+dqdfnsGzHJksIU89ca3GySL2TppuWmf+PxoObfCGtSZGUykjXtDJCdYdG1MMBi+B7N6XwZd1Yj1kE0vfuWR
- lN0ada8iBb9Tl/Pk/TKoyK9QcjuDrKOZGkruDcOFyNU+hlV64o0jfglQupj+jUWhJc9Z8pwHxBnHEPbFdv1ApY6Cu2Y8iGTiwRXAT/LTkBSxbYGm/oH5W1h3
- FoqvX/MMoPDA6+E+WedPODf3ioywWegcxYyg6btbEmWV2D3lARtmT3b5fXcp+sQ7tFw=
+Date: Fri, 28 Aug 2020 17:17:18 +0200
+Message-Id: <20200828151718.17996-1-dafna.hirschfeld@collabora.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200828_071810_808500_1EC881E1 
-X-CRM114-Status: GOOD (  19.44  )
+X-CRM114-CacheID: sfid-20200828_111727_787255_CC64F2FE 
+X-CRM114-Status: GOOD (  16.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,353 +62,356 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
- linux-rockchip@lists.infradead.org, helen.koike@collabora.com,
- laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com,
- kernel@collabora.com, ezequiel@collabora.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
+ tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
+ helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
+ sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjgvMDgvMjAyMCAxMzowNCwgRGFmbmEgSGlyc2NoZmVsZCB3cm90ZToKPiAKPiAKPiBBbSAy
-Ni4wOC4yMCB1bSAxNjoyMCBzY2hyaWViIEhhbnMgVmVya3VpbDoKPj4gT24gMjUvMDgvMjAyMCAx
-NjowOCwgRGFmbmEgSGlyc2NoZmVsZCB3cm90ZToKPj4+IEFkZCBvcHRpb25hbCA8bWJ1c19jb2Rl
-PiBhcmcgdG8gJ3Y0bDItY3RsIC0tbGlzdC1mb3JtYXRzLSonCj4+PiBjb21tYW5kcyBmb3IgY2Fw
-dHVyZSwgbWV0YWRhdGEgYW5kIG91dHB1dCBkZXZpY2VzLgo+Pj4gSWYgPG1idXNfY29kZT4gaXMg
-Z2l2ZW4gYW5kIHRoZSBkZXZpY2UgaGFzIGNhcGFiaWxpdHkKPj4+IFY0TDJfQ0FQX0lPX01DIHRo
-ZW4gbGlzdCBvbmx5IHRoZSBmb3JtYXRzIHRoYXQgbWF0Y2hlcyB0aGUKPj4+IG1idXMgY29kZS4K
-Pj4+IFRoZSBtYnVzX2NvZGUgaXMgaWdub3JlZCBmb3IgZGV2aWNlcyB0aGF0IGRvbid0IHVzZSBp
-dAo+Pj4gb3IgZG9uJ3QgaGF2ZSB0aGUgVjRMMl9DQVBfSU9fTUMgY2FwYWJpbGl0eS4KPj4+Cj4+
-PiBTaWduZWQtb2ZmLWJ5OiBEYWZuYSBIaXJzY2hmZWxkIDxkYWZuYS5oaXJzY2hmZWxkQGNvbGxh
-Ym9yYS5jb20+Cj4+PiAtLS0KPj4+IGNoYW5nZXMgc2luY2UgdjE6IGZpeGVzIGFjY29yZGluZyB0
-byBjb21tZW50cyBmcm9tIEhhbnMKPj4+Cj4+PiDCoCB1dGlscy9jb21tb24vY3Y0bC1oZWxwZXJz
-LmjCoMKgwqDCoMKgwqDCoMKgIHzCoCAzICsrLQo+Pj4gwqAgdXRpbHMvdjRsMi1jdGwvdjRsMi1j
-dGwtbWV0YS5jcHDCoMKgwqAgfCAyMCArKysrKysrKysrKysrKysrLS0tLQo+Pj4gwqAgdXRpbHMv
-djRsMi1jdGwvdjRsMi1jdGwtb3ZlcmxheS5jcHAgfMKgIDIgKy0KPj4+IMKgIHV0aWxzL3Y0bDIt
-Y3RsL3Y0bDItY3RsLXNkci5jcHDCoMKgwqDCoCB8wqAgNCArKy0tCj4+PiDCoCB1dGlscy92NGwy
-LWN0bC92NGwyLWN0bC12aWRjYXAuY3BwwqAgfCAyMyArKysrKysrKysrKysrKysrKystLS0tLQo+
-Pj4gwqAgdXRpbHMvdjRsMi1jdGwvdjRsMi1jdGwtdmlkb3V0LmNwcMKgIHwgMjIgKysrKysrKysr
-KysrKysrKy0tLS0tLQo+Pj4gwqAgdXRpbHMvdjRsMi1jdGwvdjRsMi1jdGwuY3BwwqDCoMKgwqDC
-oMKgwqDCoCB8IDI2ICsrKysrKysrKysrKysrKystLS0tLS0tLS0tCj4+PiDCoCB1dGlscy92NGwy
-LWN0bC92NGwyLWN0bC5owqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDQgKystLQo+Pj4gwqAgOCBm
-aWxlcyBjaGFuZ2VkLCA3MyBpbnNlcnRpb25zKCspLCAzMSBkZWxldGlvbnMoLSkKPj4+Cj4+PiBk
-aWZmIC0tZ2l0IGEvdXRpbHMvY29tbW9uL2N2NGwtaGVscGVycy5oIGIvdXRpbHMvY29tbW9uL2N2
-NGwtaGVscGVycy5oCj4+PiBpbmRleCA2Mjk1MDU0YS4uM2NlZTM3MmIgMTAwNjQ0Cj4+PiAtLS0g
-YS91dGlscy9jb21tb24vY3Y0bC1oZWxwZXJzLmgKPj4+ICsrKyBiL3V0aWxzL2NvbW1vbi9jdjRs
-LWhlbHBlcnMuaAo+Pj4gQEAgLTQ4MywxMiArNDgzLDEzIEBAIHB1YmxpYzoKPj4+IMKgwqDCoMKg
-wqDCoMKgwqDCoCByZXR1cm4gY3Y0bF9pb2N0bChWSURJT0NfRU5VTV9EVl9USU1JTkdTLCAmdGlt
-aW5ncyk7Cj4+PiDCoMKgwqDCoMKgIH0KPj4+IMKgIC3CoMKgwqAgaW50IGVudW1fZm10KHY0bDJf
-Zm10ZGVzYyAmZm10LCBib29sIGluaXQgPSBmYWxzZSwgaW50IGluZGV4ID0gMCwgdW5zaWduZWQg
-dHlwZSA9IDApCj4+PiArwqDCoMKgIGludCBlbnVtX2ZtdCh2NGwyX2ZtdGRlc2MgJmZtdCwgYm9v
-bCBpbml0ID0gZmFsc2UsIGludCBpbmRleCA9IDAsIHVuc2lnbmVkIHR5cGUgPSAwLCBfX3UzMiBt
-YnVzX2NvZGUgPSAwKQo+Pj4gwqDCoMKgwqDCoCB7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgaWYg
-KGluaXQpIHsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIG1lbXNldCgmZm10LCAwLCBz
-aXplb2YoZm10KSk7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBmbXQudHlwZSA9IHR5
-cGUgPyB0eXBlIDogZ190eXBlKCk7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBmbXQu
-aW5kZXggPSBpbmRleDsKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGZtdC5tYnVzX2NvZGUg
-PSBtYnVzX2NvZGU7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgfSBlbHNlIHsKPj4+IMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIGZtdC5pbmRleCsrOwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIH0K
-Pj4+IGRpZmYgLS1naXQgYS91dGlscy92NGwyLWN0bC92NGwyLWN0bC1tZXRhLmNwcCBiL3V0aWxz
-L3Y0bDItY3RsL3Y0bDItY3RsLW1ldGEuY3BwCj4+PiBpbmRleCBiNGM3YmI4OS4uMzM4MmM2MzEg
-MTAwNjQ0Cj4+PiAtLS0gYS91dGlscy92NGwyLWN0bC92NGwyLWN0bC1tZXRhLmNwcAo+Pj4gKysr
-IGIvdXRpbHMvdjRsMi1jdGwvdjRsMi1jdGwtbWV0YS5jcHAKPj4+IEBAIC0xOCwxMSArMTgsMTUg
-QEAKPj4+IMKgICNpbmNsdWRlICJ2NGwyLWN0bC5oIgo+Pj4gwqAgwqAgc3RhdGljIHN0cnVjdCB2
-NGwyX2Zvcm1hdCB2Zm10O8KgwqDCoCAvKiBzZXRfZm9ybWF0L2dldF9mb3JtYXQgKi8KPj4+ICtz
-dGF0aWMgdW5zaWduZWQgbWJ1c19jb2RlOwo+Pj4gwqAgwqAgdm9pZCBtZXRhX3VzYWdlKCkKPj4+
-IMKgIHsKPj4+IMKgwqDCoMKgwqAgcHJpbnRmKCJcbk1ldGFkYXRhIEZvcm1hdHMgb3B0aW9uczpc
-biIKPj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqAgLS1saXN0LWZvcm1hdHMtbWV0YSBkaXNw
-bGF5IHN1cHBvcnRlZCBtZXRhZGF0YSBjYXB0dXJlIGZvcm1hdHMgW1ZJRElPQ19FTlVNX0ZNVF1c
-biIKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqAgLS1saXN0LWZvcm1hdHMtbWV0YSBbPG1i
-dXNfY29kZT5dIGRpc3BsYXkgc3VwcG9ydGVkIG1ldGFkYXRhIGNhcHR1cmUgZm9ybWF0cy5cbiIK
-Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgPG1i
-dXNfY29kZT4gaXMgYW4gb3B0aW9uYWwgbWVkaWEgYnVzIGNvZGUsIGlmIHRoZSBkcml2ZXIgaGFz
-XG4iCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IGNhcGFiaWxpdHkgVjRMMl9DQVBfSU9fTUMgdGhlbiBvbmx5IGZvcm1hdHMgdGhhdCBzdXBwb3J0
-IHRoaXNcbiIKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgbWVkaWEgYnVzIGNvZGUgYXJlIGxpc3RlZCBbVklESU9DX0VOVU1fRk1UXVxuIgo+Pj4g
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICLCoCAtLWdldC1mbXQtbWV0YcKgwqDCoMKgwqAgcXVl
-cnkgdGhlIG1ldGFkYXRhIGNhcHR1cmUgZm9ybWF0IFtWSURJT0NfR19GTVRdXG4iCj4+PiDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgIC0tc2V0LWZtdC1tZXRhIDxmPsKgIHNldCB0aGUgbWV0
-YWRhdGEgY2FwdHVyZSBmb3JtYXQgW1ZJRElPQ19TX0ZNVF1cbiIKPj4+IMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwYXJh
-bWV0ZXIgaXMgZWl0aGVyIHRoZSBmb3JtYXQgaW5kZXggYXMgcmVwb3J0ZWQgYnlcbiIKPj4+IEBA
-IC0zMCw3ICszNCwxMCBAQCB2b2lkIG1ldGFfdXNhZ2UoKQo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgICLCoCAtLXRyeS1mbXQtbWV0YSA8Zj7CoCB0cnkgdGhlIG1ldGFkYXRhIGNhcHR1cmUg
-Zm9ybWF0IFtWSURJT0NfVFJZX0ZNVF1cbiIKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAi
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBwYXJhbWV0ZXIgaXMgZWl0
-aGVyIHRoZSBmb3JtYXQgaW5kZXggYXMgcmVwb3J0ZWQgYnlcbiIKPj4+IMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAtLWxp
-c3QtZm9ybWF0cy1tZXRhLCBvciB0aGUgZm91cmNjIHZhbHVlIGFzIGEgc3RyaW5nXG4iCj4+PiAt
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgIC0tbGlzdC1mb3JtYXRzLW1ldGEtb3V0IGRpc3BsYXkg
-c3VwcG9ydGVkIG1ldGFkYXRhIG91dHB1dCBmb3JtYXRzIFtWSURJT0NfRU5VTV9GTVRdXG4iCj4+
-PiArwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgIC0tbGlzdC1mb3JtYXRzLW1ldGEtb3V0IFs8bWJ1
-c19jb2RlPl0gZGlzcGxheSBzdXBwb3J0ZWQgbWV0YWRhdGEgb3V0cHV0IGZvcm1hdHMuXG4iCj4+
-PiArwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIDxtYnVz
-X2NvZGU+IGlzIGFuIG9wdGlvbmFsIG1lZGlhIGJ1cyBjb2RlLCBpZiB0aGUgZHJpdmVyIGhhc1xu
-Igo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgICLCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBj
-YXBhYmlsaXR5IFY0TDJfQ0FQX0lPX01DIHRoZW4gb25seSBmb3JtYXRzIHRoYXQgc3VwcG9ydCB0
-aGlzXG4iCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIG1lZGlhIGJ1cyBjb2RlIGFyZSBsaXN0ZWQgW1ZJRElPQ19FTlVNX0ZNVF1cbiIKPj4+IMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqAgLS1nZXQtZm10LW1ldGEtb3V0wqDCoMKgwqDCoCBx
-dWVyeSB0aGUgbWV0YWRhdGEgb3V0cHV0IGZvcm1hdCBbVklESU9DX0dfRk1UXVxuIgo+Pj4gwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgICLCoCAtLXNldC1mbXQtbWV0YS1vdXQgPGY+wqAgc2V0IHRo
-ZSBtZXRhZGF0YSBvdXRwdXQgZm9ybWF0IFtWSURJT0NfU19GTVRdXG4iCj4+PiDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgIsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIHBhcmFtZXRlciBpcyBlaXRoZXIgdGhlIGZvcm1hdCBpbmRleCBhcyByZXBvcnRl
-ZCBieVxuIgo+Pj4gQEAgLTU4LDYgKzY1LDExIEBAIHZvaWQgbWV0YV9jbWQoaW50IGNoLCBjaGFy
-ICpvcHRhcmcpCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB2Zm10LmZtdC5tZXRhLmRh
-dGFmb3JtYXQgPSBzdHJ0b2wob3B0YXJnLCAwTCwgMCk7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAg
-fQo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+Pj4gK8KgwqDCoCBjYXNlIE9wdExpc3RN
-ZXRhRm9ybWF0czoKPj4+ICvCoMKgwqAgY2FzZSBPcHRMaXN0TWV0YU91dEZvcm1hdHM6Cj4+PiAr
-wqDCoMKgwqDCoMKgwqAgaWYob3B0YXJnKQo+Pgo+PiBTcGFjZSBhZnRlciAnaWYnIQo+Pgo+Pj4g
-K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbWJ1c19jb2RlID0gc3RydG91bChvcHRhcmcsIDBMLCAw
-KTsKPj4KPj4gTWFrZSB0d28gc3RhdGljczogbWJ1c19jb2RlIGFuZCBtYnVzX2NvZGVfb3V0LCBv
-bmUgZm9yIGVhY2ggYnVmZmVyIHR5cGUuCj4+Cj4+PiArwqDCoMKgwqDCoMKgwqAgYnJlYWs7Cj4+
-PiDCoMKgwqDCoMKgIH0KPj4+IMKgIH0KPj4+IMKgIEBAIC0xMjAsMTIgKzEzMiwxMiBAQCB2b2lk
-IG1ldGFfbGlzdChjdjRsX2ZkICZmZCkKPj4+IMKgIHsKPj4+IMKgwqDCoMKgwqAgaWYgKG9wdGlv
-bnNbT3B0TGlzdE1ldGFGb3JtYXRzXSkgewo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHByaW50Zigi
-aW9jdGw6IFZJRElPQ19FTlVNX0ZNVFxuIik7Cj4+PiAtwqDCoMKgwqDCoMKgwqAgcHJpbnRfdmlk
-ZW9fZm9ybWF0cyhmZCwgVjRMMl9CVUZfVFlQRV9NRVRBX0NBUFRVUkUpOwo+Pj4gK8KgwqDCoMKg
-wqDCoMKgIHByaW50X3ZpZGVvX2Zvcm1hdHMoZmQsIFY0TDJfQlVGX1RZUEVfTUVUQV9DQVBUVVJF
-LCBtYnVzX2NvZGUpOwo+Pj4gwqDCoMKgwqDCoCB9Cj4+PiDCoCDCoMKgwqDCoMKgIGlmIChvcHRp
-b25zW09wdExpc3RNZXRhT3V0Rm9ybWF0c10pIHsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBwcmlu
-dGYoImlvY3RsOiBWSURJT0NfRU5VTV9GTVRcbiIpOwo+Pj4gLcKgwqDCoMKgwqDCoMKgIHByaW50
-X3ZpZGVvX2Zvcm1hdHMoZmQsIFY0TDJfQlVGX1RZUEVfTUVUQV9PVVRQVVQpOwo+Pj4gK8KgwqDC
-oMKgwqDCoMKgIHByaW50X3ZpZGVvX2Zvcm1hdHMoZmQsIFY0TDJfQlVGX1RZUEVfTUVUQV9PVVRQ
-VVQsIG1idXNfY29kZSk7Cj4+PiDCoMKgwqDCoMKgIH0KPj4+IMKgIH0KPj4+IMKgIGRpZmYgLS1n
-aXQgYS91dGlscy92NGwyLWN0bC92NGwyLWN0bC1vdmVybGF5LmNwcCBiL3V0aWxzL3Y0bDItY3Rs
-L3Y0bDItY3RsLW92ZXJsYXkuY3BwCj4+PiBpbmRleCA3ODA5YTZkYi4uNzU2ODEzMzIgMTAwNjQ0
-Cj4+PiAtLS0gYS91dGlscy92NGwyLWN0bC92NGwyLWN0bC1vdmVybGF5LmNwcAo+Pj4gKysrIGIv
-dXRpbHMvdjRsMi1jdGwvdjRsMi1jdGwtb3ZlcmxheS5jcHAKPj4+IEBAIC01MzksNyArNTM5LDcg
-QEAgdm9pZCBvdmVybGF5X2xpc3QoY3Y0bF9mZCAmZmQpCj4+PiDCoCB7Cj4+PiDCoMKgwqDCoMKg
-IGlmIChvcHRpb25zW09wdExpc3RPdmVybGF5Rm9ybWF0c10pIHsKPj4+IMKgwqDCoMKgwqDCoMKg
-wqDCoCBwcmludGYoImlvY3RsOiBWSURJT0NfRU5VTV9GTVRcbiIpOwo+Pj4gLcKgwqDCoMKgwqDC
-oMKgIHByaW50X3ZpZGVvX2Zvcm1hdHMoZmQsIFY0TDJfQlVGX1RZUEVfVklERU9fT1ZFUkxBWSk7
-Cj4+PiArwqDCoMKgwqDCoMKgwqAgcHJpbnRfdmlkZW9fZm9ybWF0cyhmZCwgVjRMMl9CVUZfVFlQ
-RV9WSURFT19PVkVSTEFZLCAwKTsKPj4+IMKgwqDCoMKgwqAgfQo+Pj4gwqDCoMKgwqDCoCBpZiAo
-b3B0aW9uc1tPcHRGaW5kRmJdKQo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIGZpbmRfZmIoZmQuZ19m
-ZCgpKTsKPj4+IGRpZmYgLS1naXQgYS91dGlscy92NGwyLWN0bC92NGwyLWN0bC1zZHIuY3BwIGIv
-dXRpbHMvdjRsMi1jdGwvdjRsMi1jdGwtc2RyLmNwcAo+Pj4gaW5kZXggN2EzNjM0MWEuLjViNzI0
-Njk2IDEwMDY0NAo+Pj4gLS0tIGEvdXRpbHMvdjRsMi1jdGwvdjRsMi1jdGwtc2RyLmNwcAo+Pj4g
-KysrIGIvdXRpbHMvdjRsMi1jdGwvdjRsMi1jdGwtc2RyLmNwcAo+Pj4gQEAgLTEzOSwxMCArMTM5
-LDEwIEBAIHZvaWQgc2RyX2xpc3QoY3Y0bF9mZCAmZmQpCj4+PiDCoCB7Cj4+PiDCoMKgwqDCoMKg
-IGlmIChvcHRpb25zW09wdExpc3RTZHJGb3JtYXRzXSkgewo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKg
-IHByaW50ZigiaW9jdGw6IFZJRElPQ19FTlVNX0ZNVFxuIik7Cj4+PiAtwqDCoMKgwqDCoMKgwqAg
-cHJpbnRfdmlkZW9fZm9ybWF0cyhmZCwgVjRMMl9CVUZfVFlQRV9TRFJfQ0FQVFVSRSk7Cj4+PiAr
-wqDCoMKgwqDCoMKgwqAgcHJpbnRfdmlkZW9fZm9ybWF0cyhmZCwgVjRMMl9CVUZfVFlQRV9TRFJf
-Q0FQVFVSRSwgMCk7Cj4+PiDCoMKgwqDCoMKgIH0KPj4+IMKgwqDCoMKgwqAgaWYgKG9wdGlvbnNb
-T3B0TGlzdFNkck91dEZvcm1hdHNdKSB7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcHJpbnRmKCJp
-b2N0bDogVklESU9DX0VOVU1fRk1UXG4iKTsKPj4+IC3CoMKgwqDCoMKgwqDCoCBwcmludF92aWRl
-b19mb3JtYXRzKGZkLCBWNEwyX0JVRl9UWVBFX1NEUl9PVVRQVVQpOwo+Pj4gK8KgwqDCoMKgwqDC
-oMKgIHByaW50X3ZpZGVvX2Zvcm1hdHMoZmQsIFY0TDJfQlVGX1RZUEVfU0RSX09VVFBVVCwgMCk7
-Cj4+PiDCoMKgwqDCoMKgIH0KPj4+IMKgIH0KPj4+IGRpZmYgLS1naXQgYS91dGlscy92NGwyLWN0
-bC92NGwyLWN0bC12aWRjYXAuY3BwIGIvdXRpbHMvdjRsMi1jdGwvdjRsMi1jdGwtdmlkY2FwLmNw
-cAo+Pj4gaW5kZXggNWFiYWI1ZTcuLmQwYTBkMTIwIDEwMDY0NAo+Pj4gLS0tIGEvdXRpbHMvdjRs
-Mi1jdGwvdjRsMi1jdGwtdmlkY2FwLmNwcAo+Pj4gKysrIGIvdXRpbHMvdjRsMi1jdGwvdjRsMi1j
-dGwtdmlkY2FwLmNwcAo+Pj4gQEAgLTIzLDEzICsyMywyMSBAQCBzdGF0aWMgdW5zaWduZWQgc2V0
-X2ZtdHM7Cj4+PiDCoCBzdGF0aWMgX191MzIgd2lkdGgsIGhlaWdodCwgcGl4Zm10LCBmaWVsZCwg
-ZmxhZ3M7Cj4+PiDCoCBzdGF0aWMgX191MzIgYnl0ZXNwZXJsaW5lW1ZJREVPX01BWF9QTEFORVNd
-Owo+Pj4gwqAgc3RhdGljIF9fdTMyIHNpemVpbWFnZVtWSURFT19NQVhfUExBTkVTXTsKPj4+ICtz
-dGF0aWMgdW5zaWduZWQgbWJ1c19jb2RlOwo+Pj4gwqAgwqAgdm9pZCB2aWRjYXBfdXNhZ2UoKQo+
-Pj4gwqAgewo+Pj4gwqDCoMKgwqDCoCBwcmludGYoIlxuVmlkZW8gQ2FwdHVyZSBGb3JtYXRzIG9w
-dGlvbnM6XG4iCj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgIC0tbGlzdC1mb3JtYXRzwqDC
-oMKgwqAgZGlzcGxheSBzdXBwb3J0ZWQgdmlkZW8gZm9ybWF0cyBbVklESU9DX0VOVU1fRk1UXVxu
-Igo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgICLCoCAtLWxpc3QtZm9ybWF0cy1leHQgZGlzcGxh
-eSBzdXBwb3J0ZWQgdmlkZW8gZm9ybWF0cyBpbmNsdWRpbmcgZnJhbWUgc2l6ZXNcbiIKPj4+IC3C
-oMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoCBhbmQgaW50ZXJ2YWxzXG4iCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgIC0tbGlz
-dC1mb3JtYXRzIFs8bWJ1c19jb2RlPl1cbiIKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIGRpc3BsYXkgc3VwcG9ydGVkIHZpZGVvIGZvcm1hdHMuIDxt
-YnVzX2NvZGU+IGlzIGFuIG9wdGlvbmFsXG4iCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtZWRpYSBidXMgY29kZSwgaWYgdGhlIGRyaXZlciBoYXMg
-Y2FwYWJpbGl0eSBWNEwyX0NBUF9JT19NQ1xuIgo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgICLC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgdGhlbiBvbmx5IGZvcm1hdHMgdGhhdCBzdXBwb3J0IHRo
-aXMgbWVkaWEgYnVzIGNvZGUgYXJlIGxpc3RlZFxuIgo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
-ICLCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgW1ZJRElPQ19FTlVNX0ZNVF1cbiIKPj4+ICvCoMKg
-wqDCoMKgwqDCoMKgwqDCoCAiwqAgLS1saXN0LWZvcm1hdHMtZXh0IFs8bWJ1c19jb2RlPl1cbiIK
-Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGRpc3Bs
-YXkgc3VwcG9ydGVkIHZpZGVvIGZvcm1hdHMgaW5jbHVkaW5nIGZyYW1lIHNpemVzIGFuZCBpbnRl
-cnZhbHNcbiIKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIDxtYnVzX2NvZGU+IGlzIGFuIG9wdGlvbmFsIG1lZGlhIGJ1cyBjb2RlLCBpZiB0aGUgZHJp
-dmVyIGhhc1xuIgo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgICLCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgY2FwYWJpbGl0eSBWNEwyX0NBUF9JT19NQyB0aGVuIG9ubHkgZm9ybWF0cyB0aGF0IHN1
-cHBvcnQgdGhpc1xuIgo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgICLCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgbWVkaWEgYnVzIGNvZGUgYXJlIGxpc3RlZCBbVklESU9DX0VOVU1fRk1UXVxuIgo+
-Pj4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICLCoCAtLWxpc3QtZnJhbWVzaXplcyA8Zj5cbiIK
-Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCBsaXN0IHN1cHBvcnRlZCBmcmFtZXNpemVzIGZvciBwaXhlbGZvcm1hdCA8
-Zj5cbiIKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCBbVklESU9DX0VOVU1fRlJBTUVTSVpFU11cbiIKPj4+IEBAIC0x
-MTcsNiArMTI1LDExIEBAIHZvaWQgdmlkY2FwX2NtZChpbnQgY2gsIGNoYXIgKm9wdGFyZykKPj4+
-IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0ZDo6ZXhpdChFWElUX0ZBSUxVUkUpOwo+Pj4g
-wqDCoMKgwqDCoMKgwqDCoMKgIH0KPj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBicmVhazsKPj4+ICvC
-oMKgwqAgY2FzZSBPcHRMaXN0Rm9ybWF0czoKPj4+ICvCoMKgwqAgY2FzZSBPcHRMaXN0Rm9ybWF0
-c0V4dDoKPj4+ICvCoMKgwqDCoMKgwqDCoCBpZihvcHRhcmcpCj4+Cj4+IEFkZCBzcGFjZQo+Pgo+
-Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgbWJ1c19jb2RlID0gc3RydG91bChvcHRhcmcsIDBM
-LCAwKTsKPj4KPj4gQWRkIG1idXNfY29kZV9vdXQsIGp1c3QgYXMgd2l0aCBtZXRhZGF0YS4KPiAK
-PiBIaSwgbm90IHN1cmUgd2hhdCBkbyB5b3UgbWVhbiwgdGhpcyBmaWxlIGhhbmRsZXMgb25seSBj
-YXB0dXJlIGJ1ZmZlcnMsCj4gZG8geW91IG1lYW4gYWRkaW5nIGEgc2VwYXJhdGUgdmFyICdtYnVz
-X2NvZGVfZXh0JyBmb3IgdGhlIE9wdExpc3RGb3JtYXRzRXh0ID8KCkknbSBzb3JyeSwgeW91IGFy
-ZSByaWdodC4gVGhpcyBpcyBqdXN0IGNhcHR1cmUgaW5kZWVkLgoKPiAKPj4KPj4+ICvCoMKgwqDC
-oMKgwqDCoCBicmVhazsKPj4+IMKgwqDCoMKgwqAgY2FzZSBPcHRMaXN0RnJhbWVTaXplczoKPj4+
-IMKgwqDCoMKgwqDCoMKgwqDCoCBiZV9waXhmbXQgPSBzdHJsZW4ob3B0YXJnKSA9PSA3ICYmICFt
-ZW1jbXAob3B0YXJnICsgNCwgIi1CRSIsIDMpOwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIGlmIChi
-ZV9waXhmbXQgfHwgc3RybGVuKG9wdGFyZykgPT0gNCkgewo+Pj4gQEAgLTI5OCwxMiArMzExLDEy
-IEBAIHZvaWQgdmlkY2FwX2xpc3QoY3Y0bF9mZCAmZmQpCj4+PiDCoCB7Cj4+PiDCoMKgwqDCoMKg
-IGlmIChvcHRpb25zW09wdExpc3RGb3JtYXRzXSkgewo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHBy
-aW50ZigiaW9jdGw6IFZJRElPQ19FTlVNX0ZNVFxuIik7Cj4+PiAtwqDCoMKgwqDCoMKgwqAgcHJp
-bnRfdmlkZW9fZm9ybWF0cyhmZCwgdmlkY2FwX2J1ZnR5cGUpOwo+Pj4gK8KgwqDCoMKgwqDCoMKg
-IHByaW50X3ZpZGVvX2Zvcm1hdHMoZmQsIHZpZGNhcF9idWZ0eXBlLCBtYnVzX2NvZGUpOwo+Pj4g
-wqDCoMKgwqDCoCB9Cj4+PiDCoCDCoMKgwqDCoMKgIGlmIChvcHRpb25zW09wdExpc3RGb3JtYXRz
-RXh0XSkgewo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHByaW50ZigiaW9jdGw6IFZJRElPQ19FTlVN
-X0ZNVFxuIik7Cj4+PiAtwqDCoMKgwqDCoMKgwqAgcHJpbnRfdmlkZW9fZm9ybWF0c19leHQoZmQs
-IHZpZGNhcF9idWZ0eXBlKTsKPj4+ICvCoMKgwqDCoMKgwqDCoCBwcmludF92aWRlb19mb3JtYXRz
-X2V4dChmZCwgdmlkY2FwX2J1ZnR5cGUsIG1idXNfY29kZSk7Cj4+PiDCoMKgwqDCoMKgIH0KPj4+
-IMKgIMKgwqDCoMKgwqAgaWYgKG9wdGlvbnNbT3B0TGlzdEZpZWxkc10pIHsKPj4+IGRpZmYgLS1n
-aXQgYS91dGlscy92NGwyLWN0bC92NGwyLWN0bC12aWRvdXQuY3BwIGIvdXRpbHMvdjRsMi1jdGwv
-djRsMi1jdGwtdmlkb3V0LmNwcAo+Pj4gaW5kZXggNWY0MzNhMTcuLjU2M2FhZTQ1IDEwMDY0NAo+
-Pj4gLS0tIGEvdXRpbHMvdjRsMi1jdGwvdjRsMi1jdGwtdmlkb3V0LmNwcAo+Pj4gKysrIGIvdXRp
-bHMvdjRsMi1jdGwvdjRsMi1jdGwtdmlkb3V0LmNwcAo+Pj4gQEAgLTIxLDE0ICsyMSwxOSBAQCBz
-dGF0aWMgdW5zaWduZWQgc2V0X2ZtdHNfb3V0Owo+Pj4gwqAgc3RhdGljIF9fdTMyIHdpZHRoLCBo
-ZWlnaHQsIHBpeGZtdCwgZmllbGQsIGNvbG9yc3BhY2UsIHhmZXJfZnVuYywgeWNiY3IsIHF1YW50
-aXphdGlvbiwgZmxhZ3M7Cj4+PiDCoCBzdGF0aWMgX191MzIgYnl0ZXNwZXJsaW5lW1ZJREVPX01B
-WF9QTEFORVNdOwo+Pj4gwqAgc3RhdGljIF9fdTMyIHNpemVpbWFnZVtWSURFT19NQVhfUExBTkVT
-XTsKPj4+ICtzdGF0aWMgdW5zaWduZWQgbWJ1c19jb2RlOwoKU2luY2UgdGhpcyBpcyBmb3Igdmlk
-ZW8gb3V0LCBJJ2QgcmVuYW1lIHRoaXMgdG8gbWJ1c19jb2RlX291dC4KCj4+PiDCoCDCoCB2b2lk
-IHZpZG91dF91c2FnZSgpCj4+PiDCoCB7Cj4+PiDCoMKgwqDCoMKgIHByaW50ZigiXG5WaWRlbyBP
-dXRwdXQgRm9ybWF0cyBvcHRpb25zOlxuIgo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgICLCoCAt
-LWxpc3QtZm9ybWF0cy1vdXQgZGlzcGxheSBzdXBwb3J0ZWQgdmlkZW8gb3V0cHV0IGZvcm1hdHMg
-W1ZJRElPQ19FTlVNX0ZNVF1cbiIKPj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqAgLS1saXN0
-LWZvcm1hdHMtb3V0LWV4dFxuIgo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgICLCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGRpc3BsYXkgc3VwcG9ydGVkIHZpZGVvIG91
-dHB1dCBmb3JtYXRzIGluY2x1ZGluZyBmcmFtZSBzaXplc1xuIgo+Pj4gLcKgwqDCoMKgwqDCoMKg
-wqDCoMKgICLCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGFuZCBpbnRl
-cnZhbHNcbiIKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqAgLS1saXN0LWZvcm1hdHMtb3V0
-IFs8bWJ1c19jb2RlPl0gZGlzcGxheSBzdXBwb3J0ZWQgdmlkZW8gb3V0cHV0IGZvcm1hdHMuXG4i
-Cj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCA8bWJ1
-c19jb2RlPiBpcyBhbiBvcHRpb25hbCBtZWRpYSBidXMgY29kZSwgaWYgdGhlIGRyaXZlciBoYXNc
-biIKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNh
-cGFiaWxpdHkgVjRMMl9DQVBfSU9fTUMgdGhlbiBvbmx5IGZvcm1hdHMgdGhhdCBzdXBwb3J0IHRo
-aXNcbiIKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IG1lZGlhIGJ1cyBjb2RlIGFyZSBsaXN0ZWQgW1ZJRElPQ19FTlVNX0ZNVF1cbiIKPj4+ICvCoMKg
-wqDCoMKgwqDCoMKgwqDCoCAiwqAgLS1saXN0LWZvcm1hdHMtb3V0LWV4dCBbPG1idXNfY29kZT5d
-IGRpc3BsYXkgc3VwcG9ydGVkIHZpZGVvIG91dHB1dCBmb3JtYXRzIGluY2x1ZGluZ1xuIgo+Pj4g
-K8KgwqDCoMKgwqDCoMKgwqDCoMKgICLCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZnJhbWUgc2l6
-ZXMgYW5kIGludGVydmFscy4gPG1idXNfY29kZT4gaXMgYW4gb3B0aW9uYWwgbWVkaWEgYnVzIGNv
-ZGUsXG4iCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCBpZiB0aGUgZHJpdmVyIGhhcyBjYXBhYmlsaXR5IFY0TDJfQ0FQX0lPX01DIHRoZW4gb25seSBm
-b3JtYXRzIHRoYXRcbiIKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoCAiwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIHN1cHBvcnQgdGhpcyBtZWRpYSBidXMgY29kZSBhcmUgbGlzdGVkIFtWSURJT0Nf
-RU5VTV9GTVRdXG4iCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgIC0tbGlzdC1maWVs
-ZHMtb3V0wqAgbGlzdCBzdXBwb3J0ZWQgZmllbGRzIGZvciB0aGUgY3VycmVudCBvdXRwdXQgZm9y
-bWF0XG4iCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgIC1YLCAtLWdldC1mbXQtdmlk
-ZW8tb3V0XG4iCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgIsKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgcXVlcnkgdGhlIHZpZGVvIG91dHB1dCBmb3JtYXQgW1ZJRElPQ19H
-X0ZNVF1cbiIKPj4+IEBAIC0xMDMsNiArMTA4LDExIEBAIHZvaWQgdmlkb3V0X2NtZChpbnQgY2gs
-IGNoYXIgKm9wdGFyZykKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0ZDo6ZXhpdChF
-WElUX0ZBSUxVUkUpOwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIH0KPj4+IMKgwqDCoMKgwqDCoMKg
-wqDCoCBicmVhazsKPj4+ICvCoMKgwqAgY2FzZSBPcHRMaXN0T3V0Rm9ybWF0czoKPj4+ICvCoMKg
-wqAgY2FzZSBPcHRMaXN0T3V0Rm9ybWF0c0V4dDoKPj4+ICvCoMKgwqDCoMKgwqDCoCBpZihvcHRh
-cmcpCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBtYnVzX2NvZGUgPSBzdHJ0b3VsKG9wdGFy
-ZywgMEwsIDApOwo+Pgo+PiBEaXR0by4KPiAKPiBTYW1lIHF1ZXN0aW9uIGhlcmUsCgpTYW1lIGFu
-c3dlciA6LSkKCkp1c3QgcmVuYW1lIG1idXNfY29kZSB0byBtYnVzX2NvZGVfb3V0IGFuZCBpdCBp
-cyBhbGwgZ29vZC4KClJlZ2FyZHMsCgoJSGFucwoKPiAKPiBUaGFua3MsCj4gRGFmbmEKPj4KPj4+
-ICvCoMKgwqDCoMKgwqDCoCBicmVhazsKPj4+IMKgwqDCoMKgwqAgfQo+Pj4gwqAgfQo+Pj4gwqAg
-QEAgLTIzMywxMiArMjQzLDEyIEBAIHZvaWQgdmlkb3V0X2xpc3QoY3Y0bF9mZCAmZmQpCj4+PiDC
-oCB7Cj4+PiDCoMKgwqDCoMKgIGlmIChvcHRpb25zW09wdExpc3RPdXRGb3JtYXRzXSkgewo+Pj4g
-wqDCoMKgwqDCoMKgwqDCoMKgIHByaW50ZigiaW9jdGw6IFZJRElPQ19FTlVNX0ZNVFxuIik7Cj4+
-PiAtwqDCoMKgwqDCoMKgwqAgcHJpbnRfdmlkZW9fZm9ybWF0cyhmZCwgdmlkb3V0X2J1ZnR5cGUp
-Owo+Pj4gK8KgwqDCoMKgwqDCoMKgIHByaW50X3ZpZGVvX2Zvcm1hdHMoZmQsIHZpZG91dF9idWZ0
-eXBlLCBtYnVzX2NvZGUpOwo+Pj4gwqDCoMKgwqDCoCB9Cj4+PiDCoCDCoMKgwqDCoMKgIGlmIChv
-cHRpb25zW09wdExpc3RPdXRGb3JtYXRzRXh0XSkgewo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHBy
-aW50ZigiaW9jdGw6IFZJRElPQ19FTlVNX0ZNVFxuIik7Cj4+PiAtwqDCoMKgwqDCoMKgwqAgcHJp
-bnRfdmlkZW9fZm9ybWF0c19leHQoZmQsIHZpZG91dF9idWZ0eXBlKTsKPj4+ICvCoMKgwqDCoMKg
-wqDCoCBwcmludF92aWRlb19mb3JtYXRzX2V4dChmZCwgdmlkb3V0X2J1ZnR5cGUsIG1idXNfY29k
-ZSk7Cj4+PiDCoMKgwqDCoMKgIH0KPj4+IMKgIMKgwqDCoMKgwqAgaWYgKG9wdGlvbnNbT3B0TGlz
-dE91dEZpZWxkc10pIHsKPj4+IGRpZmYgLS1naXQgYS91dGlscy92NGwyLWN0bC92NGwyLWN0bC5j
-cHAgYi91dGlscy92NGwyLWN0bC92NGwyLWN0bC5jcHAKPj4+IGluZGV4IGEzMWIyOWY4Li5jMDFl
-ZTg4MyAxMDA2NDQKPj4+IC0tLSBhL3V0aWxzL3Y0bDItY3RsL3Y0bDItY3RsLmNwcAo+Pj4gKysr
-IGIvdXRpbHMvdjRsMi1jdGwvdjRsMi1jdGwuY3BwCj4+PiBAQCAtMTE0LDE4ICsxMTQsMTggQEAg
-c3RhdGljIHN0cnVjdCBvcHRpb24gbG9uZ19vcHRpb25zW10gPSB7Cj4+PiDCoMKgwqDCoMKgIHsi
-Z2V0LWZyZXEiLCBub19hcmd1bWVudCwgMCwgT3B0R2V0RnJlcX0sCj4+PiDCoMKgwqDCoMKgIHsi
-c2V0LWZyZXEiLCByZXF1aXJlZF9hcmd1bWVudCwgMCwgT3B0U2V0RnJlcX0sCj4+PiDCoMKgwqDC
-oMKgIHsibGlzdC1zdGFuZGFyZHMiLCBub19hcmd1bWVudCwgMCwgT3B0TGlzdFN0YW5kYXJkc30s
-Cj4+PiAtwqDCoMKgIHsibGlzdC1mb3JtYXRzIiwgbm9fYXJndW1lbnQsIDAsIE9wdExpc3RGb3Jt
-YXRzfSwKPj4+IC3CoMKgwqAgeyJsaXN0LWZvcm1hdHMtZXh0Iiwgbm9fYXJndW1lbnQsIDAsIE9w
-dExpc3RGb3JtYXRzRXh0fSwKPj4+ICvCoMKgwqAgeyJsaXN0LWZvcm1hdHMiLCBvcHRpb25hbF9h
-cmd1bWVudCwgMCwgT3B0TGlzdEZvcm1hdHN9LAo+Pj4gK8KgwqDCoCB7Imxpc3QtZm9ybWF0cy1l
-eHQiLCBvcHRpb25hbF9hcmd1bWVudCwgMCwgT3B0TGlzdEZvcm1hdHNFeHR9LAo+Pj4gwqDCoMKg
-wqDCoCB7Imxpc3QtZmllbGRzIiwgbm9fYXJndW1lbnQsIDAsIE9wdExpc3RGaWVsZHN9LAo+Pj4g
-wqDCoMKgwqDCoCB7Imxpc3QtZnJhbWVzaXplcyIsIHJlcXVpcmVkX2FyZ3VtZW50LCAwLCBPcHRM
-aXN0RnJhbWVTaXplc30sCj4+PiDCoMKgwqDCoMKgIHsibGlzdC1mcmFtZWludGVydmFscyIsIHJl
-cXVpcmVkX2FyZ3VtZW50LCAwLCBPcHRMaXN0RnJhbWVJbnRlcnZhbHN9LAo+Pj4gwqDCoMKgwqDC
-oCB7Imxpc3QtZm9ybWF0cy1vdmVybGF5Iiwgbm9fYXJndW1lbnQsIDAsIE9wdExpc3RPdmVybGF5
-Rm9ybWF0c30sCj4+PiDCoMKgwqDCoMKgIHsibGlzdC1mb3JtYXRzLXNkciIsIG5vX2FyZ3VtZW50
-LCAwLCBPcHRMaXN0U2RyRm9ybWF0c30sCj4+PiDCoMKgwqDCoMKgIHsibGlzdC1mb3JtYXRzLXNk
-ci1vdXQiLCBub19hcmd1bWVudCwgMCwgT3B0TGlzdFNkck91dEZvcm1hdHN9LAo+Pj4gLcKgwqDC
-oCB7Imxpc3QtZm9ybWF0cy1vdXQiLCBub19hcmd1bWVudCwgMCwgT3B0TGlzdE91dEZvcm1hdHN9
-LAo+Pj4gLcKgwqDCoCB7Imxpc3QtZm9ybWF0cy1vdXQtZXh0Iiwgbm9fYXJndW1lbnQsIDAsIE9w
-dExpc3RPdXRGb3JtYXRzRXh0fSwKPj4+IC3CoMKgwqAgeyJsaXN0LWZvcm1hdHMtbWV0YSIsIG5v
-X2FyZ3VtZW50LCAwLCBPcHRMaXN0TWV0YUZvcm1hdHN9LAo+Pj4gLcKgwqDCoCB7Imxpc3QtZm9y
-bWF0cy1tZXRhLW91dCIsIG5vX2FyZ3VtZW50LCAwLCBPcHRMaXN0TWV0YU91dEZvcm1hdHN9LAo+
-Pj4gK8KgwqDCoCB7Imxpc3QtZm9ybWF0cy1vdXQiLCBvcHRpb25hbF9hcmd1bWVudCwgMCwgT3B0
-TGlzdE91dEZvcm1hdHN9LAo+Pj4gK8KgwqDCoCB7Imxpc3QtZm9ybWF0cy1vdXQtZXh0Iiwgb3B0
-aW9uYWxfYXJndW1lbnQsIDAsIE9wdExpc3RPdXRGb3JtYXRzRXh0fSwKPj4+ICvCoMKgwqAgeyJs
-aXN0LWZvcm1hdHMtbWV0YSIsIG9wdGlvbmFsX2FyZ3VtZW50LCAwLCBPcHRMaXN0TWV0YUZvcm1h
-dHN9LAo+Pj4gK8KgwqDCoCB7Imxpc3QtZm9ybWF0cy1tZXRhLW91dCIsIG9wdGlvbmFsX2FyZ3Vt
-ZW50LCAwLCBPcHRMaXN0TWV0YU91dEZvcm1hdHN9LAo+Pj4gwqDCoMKgwqDCoCB7Imxpc3Qtc3Vi
-ZGV2LW1idXMtY29kZXMiLCBvcHRpb25hbF9hcmd1bWVudCwgMCwgT3B0TGlzdFN1YkRldk1CdXND
-b2Rlc30sCj4+PiDCoMKgwqDCoMKgIHsibGlzdC1zdWJkZXYtZnJhbWVzaXplcyIsIHJlcXVpcmVk
-X2FyZ3VtZW50LCAwLCBPcHRMaXN0U3ViRGV2RnJhbWVTaXplc30sCj4+PiDCoMKgwqDCoMKgIHsi
-bGlzdC1zdWJkZXYtZnJhbWVpbnRlcnZhbHMiLCByZXF1aXJlZF9hcmd1bWVudCwgMCwgT3B0TGlz
-dFN1YkRldkZyYW1lSW50ZXJ2YWxzfSwKPj4+IEBAIC02MTIsMTMgKzYxMiwxNiBAQCB2b2lkIHBy
-aW50X2ZybWl2YWwoY29uc3Qgc3RydWN0IHY0bDJfZnJtaXZhbGVudW0gJmZybWl2YWwsIGNvbnN0
-IGNoYXIgKnByZWZpeCkKPj4+IMKgwqDCoMKgwqAgfQo+Pj4gwqAgfQo+Pj4gwqAgLXZvaWQgcHJp
-bnRfdmlkZW9fZm9ybWF0cyhjdjRsX2ZkICZmZCwgX191MzIgdHlwZSkKPj4+ICt2b2lkIHByaW50
-X3ZpZGVvX2Zvcm1hdHMoY3Y0bF9mZCAmZmQsIF9fdTMyIHR5cGUsIHVuc2lnbmVkIGludCBtYnVz
-X2NvZGUpCj4+PiDCoCB7Cj4+PiDCoMKgwqDCoMKgIGN2NGxfZGlzYWJsZV90cmFjZSBkdChmZCk7
-Cj4+PiDCoMKgwqDCoMKgIHN0cnVjdCB2NGwyX2ZtdGRlc2MgZm10ID0ge307Cj4+PiDCoCArwqDC
-oMKgIGlmIChtYnVzX2NvZGUgJiYgIShjYXBhYmlsaXRpZXMgJiBWNEwyX0NBUF9JT19NQykpCj4+
-PiArwqDCoMKgwqDCoMKgwqAgbWJ1c19jb2RlID0gMDsKPj4+ICsKPj4+IMKgwqDCoMKgwqAgcHJp
-bnRmKCJcdFR5cGU6ICVzXG5cbiIsIGJ1ZnR5cGUycyh0eXBlKS5jX3N0cigpKTsKPj4+IC3CoMKg
-wqAgaWYgKGZkLmVudW1fZm10KGZtdCwgdHJ1ZSwgMCwgdHlwZSkpCj4+PiArwqDCoMKgIGlmIChm
-ZC5lbnVtX2ZtdChmbXQsIHRydWUsIDAsIHR5cGUsIG1idXNfY29kZSkpCj4+PiDCoMKgwqDCoMKg
-wqDCoMKgwqAgcmV0dXJuOwo+Pj4gwqDCoMKgwqDCoCBkbyB7Cj4+PiDCoMKgwqDCoMKgwqDCoMKg
-wqAgcHJpbnRmKCJcdFslZF06ICclcycgKCVzIiwgZm10LmluZGV4LCBmY2MycyhmbXQucGl4ZWxm
-b3JtYXQpLmNfc3RyKCksCj4+PiBAQCAtNjI5LDE1ICs2MzIsMTggQEAgdm9pZCBwcmludF92aWRl
-b19mb3JtYXRzKGN2NGxfZmQgJmZkLCBfX3UzMiB0eXBlKQo+Pj4gwqDCoMKgwqDCoCB9IHdoaWxl
-ICghZmQuZW51bV9mbXQoZm10KSk7Cj4+PiDCoCB9Cj4+PiDCoCAtdm9pZCBwcmludF92aWRlb19m
-b3JtYXRzX2V4dChjdjRsX2ZkICZmZCwgX191MzIgdHlwZSkKPj4+ICt2b2lkIHByaW50X3ZpZGVv
-X2Zvcm1hdHNfZXh0KGN2NGxfZmQgJmZkLCBfX3UzMiB0eXBlLCB1bnNpZ25lZCBpbnQgbWJ1c19j
-b2RlKQo+Pj4gwqAgewo+Pj4gwqDCoMKgwqDCoCBjdjRsX2Rpc2FibGVfdHJhY2UgZHQoZmQpOwo+
-Pj4gwqDCoMKgwqDCoCBzdHJ1Y3QgdjRsMl9mbXRkZXNjIGZtdCA9IHt9Owo+Pj4gwqDCoMKgwqDC
-oCBzdHJ1Y3QgdjRsMl9mcm1zaXplZW51bSBmcm1zaXplOwo+Pj4gwqDCoMKgwqDCoCBzdHJ1Y3Qg
-djRsMl9mcm1pdmFsZW51bSBmcm1pdmFsOwo+Pj4gwqAgK8KgwqDCoCBpZiAobWJ1c19jb2RlICYm
-ICEoY2FwYWJpbGl0aWVzICYgVjRMMl9DQVBfSU9fTUMpKQo+Pj4gK8KgwqDCoMKgwqDCoMKgIG1i
-dXNfY29kZSA9IDA7Cj4+PiArCj4+PiDCoMKgwqDCoMKgIHByaW50ZigiXHRUeXBlOiAlc1xuXG4i
-LCBidWZ0eXBlMnModHlwZSkuY19zdHIoKSk7Cj4+PiAtwqDCoMKgIGlmIChmZC5lbnVtX2ZtdChm
-bXQsIHRydWUsIDAsIHR5cGUpKQo+Pj4gK8KgwqDCoCBpZiAoZmQuZW51bV9mbXQoZm10LCB0cnVl
-LCAwLCB0eXBlLCBtYnVzX2NvZGUpKQo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybjsKPj4+
-IMKgwqDCoMKgwqAgZG8gewo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHByaW50ZigiXHRbJWRdOiAn
-JXMnICglcyIsIGZtdC5pbmRleCwgZmNjMnMoZm10LnBpeGVsZm9ybWF0KS5jX3N0cigpLAo+Pj4g
-ZGlmZiAtLWdpdCBhL3V0aWxzL3Y0bDItY3RsL3Y0bDItY3RsLmggYi91dGlscy92NGwyLWN0bC92
-NGwyLWN0bC5oCj4+PiBpbmRleCA0YWNiNGQ1MS4uZTkwNmRjNzMgMTAwNjQ0Cj4+PiAtLS0gYS91
-dGlscy92NGwyLWN0bC92NGwyLWN0bC5oCj4+PiArKysgYi91dGlscy92NGwyLWN0bC92NGwyLWN0
-bC5oCj4+PiBAQCAtMzIxLDggKzMyMSw4IEBAIGJvb2wgdmFsaWRfcGl4ZWxfZm9ybWF0KGludCBm
-ZCwgX191MzIgcGl4ZWxmb3JtYXQsIGJvb2wgb3V0cHV0LCBib29sIG1wbGFuZSk7Cj4+PiDCoCB2
-b2lkIHByaW50X2ZybXNpemUoY29uc3Qgc3RydWN0IHY0bDJfZnJtc2l6ZWVudW0gJmZybXNpemUs
-IGNvbnN0IGNoYXIgKnByZWZpeCk7Cj4+PiDCoCB2b2lkIHByaW50X2ZybWl2YWwoY29uc3Qgc3Ry
-dWN0IHY0bDJfZnJtaXZhbGVudW0gJmZybWl2YWwsIGNvbnN0IGNoYXIgKnByZWZpeCk7Cj4+PiDC
-oCB2b2lkIHByaW50Zm10KGludCBmZCwgY29uc3Qgc3RydWN0IHY0bDJfZm9ybWF0ICZ2Zm10KTsK
-Pj4+IC12b2lkIHByaW50X3ZpZGVvX2Zvcm1hdHMoY3Y0bF9mZCAmZmQsIF9fdTMyIHR5cGUpOwo+
-Pj4gLXZvaWQgcHJpbnRfdmlkZW9fZm9ybWF0c19leHQoY3Y0bF9mZCAmZmQsIF9fdTMyIHR5cGUp
-Owo+Pj4gK3ZvaWQgcHJpbnRfdmlkZW9fZm9ybWF0cyhjdjRsX2ZkICZmZCwgX191MzIgdHlwZSwg
-dW5zaWduZWQgaW50IG1idXNfY29kZSk7Cj4+PiArdm9pZCBwcmludF92aWRlb19mb3JtYXRzX2V4
-dChjdjRsX2ZkICZmZCwgX191MzIgdHlwZSwgdW5zaWduZWQgaW50IG1idXNfY29kZSk7Cj4+PiDC
-oCDCoCBzdGF0aWMgaW5saW5lIGJvb2wgc3Vic2NyaWJlX2V2ZW50KGN2NGxfZmQgJmZkLCBfX3Uz
-MiB0eXBlKQo+Pj4gwqAgewo+Pj4KPj4KPj4gUmVnYXJkcywKPj4KPj4gwqDCoMKgwqBIYW5zCj4+
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+Add optional <mbus_code> arg to 'v4l2-ctl --list-formats-*'
+commands for capture, metadata and output devices.
+If <mbus_code> is given and the device has capability
+V4L2_CAP_IO_MC then list only the formats that matches the
+mbus code.
+The mbus_code is ignored for devices that don't use it
+or don't have the V4L2_CAP_IO_MC capability.
+
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+changes since v2:
+- using different global vars for different metadata buffer types and changing var name to media_code_out for output dev
+- space after 'if'
+- replace 's/if the driver has capability/if the device has capability/'
+
+changes since v1: code refactor due to comments from Hans
+
+ utils/common/cv4l-helpers.h         |  3 ++-
+ utils/v4l2-ctl/v4l2-ctl-meta.cpp    | 24 ++++++++++++++++++++----
+ utils/v4l2-ctl/v4l2-ctl-overlay.cpp |  2 +-
+ utils/v4l2-ctl/v4l2-ctl-sdr.cpp     |  4 ++--
+ utils/v4l2-ctl/v4l2-ctl-vidcap.cpp  | 23 ++++++++++++++++++-----
+ utils/v4l2-ctl/v4l2-ctl-vidout.cpp  | 22 ++++++++++++++++------
+ utils/v4l2-ctl/v4l2-ctl.cpp         | 26 ++++++++++++++++----------
+ utils/v4l2-ctl/v4l2-ctl.h           |  4 ++--
+ 8 files changed, 77 insertions(+), 31 deletions(-)
+
+diff --git a/utils/common/cv4l-helpers.h b/utils/common/cv4l-helpers.h
+index 6295054a..3cee372b 100644
+--- a/utils/common/cv4l-helpers.h
++++ b/utils/common/cv4l-helpers.h
+@@ -483,12 +483,13 @@ public:
+ 		return cv4l_ioctl(VIDIOC_ENUM_DV_TIMINGS, &timings);
+ 	}
+ 
+-	int enum_fmt(v4l2_fmtdesc &fmt, bool init = false, int index = 0, unsigned type = 0)
++	int enum_fmt(v4l2_fmtdesc &fmt, bool init = false, int index = 0, unsigned type = 0, __u32 mbus_code = 0)
+ 	{
+ 		if (init) {
+ 			memset(&fmt, 0, sizeof(fmt));
+ 			fmt.type = type ? type : g_type();
+ 			fmt.index = index;
++			fmt.mbus_code = mbus_code;
+ 		} else {
+ 			fmt.index++;
+ 		}
+diff --git a/utils/v4l2-ctl/v4l2-ctl-meta.cpp b/utils/v4l2-ctl/v4l2-ctl-meta.cpp
+index b4c7bb89..a4f1d534 100644
+--- a/utils/v4l2-ctl/v4l2-ctl-meta.cpp
++++ b/utils/v4l2-ctl/v4l2-ctl-meta.cpp
+@@ -18,11 +18,16 @@
+ #include "v4l2-ctl.h"
+ 
+ static struct v4l2_format vfmt;	/* set_format/get_format */
++static unsigned mbus_code;
++static unsigned mbus_code_out;
+ 
+ void meta_usage()
+ {
+ 	printf("\nMetadata Formats options:\n"
+-	       "  --list-formats-meta display supported metadata capture formats [VIDIOC_ENUM_FMT]\n"
++	       "  --list-formats-meta [<mbus_code>] display supported metadata capture formats.\n"
++	       "		      <mbus_code> is an optional media bus code, if the device has\n"
++	       "		      capability V4L2_CAP_IO_MC then only formats that support this\n"
++	       "		      media bus code are listed [VIDIOC_ENUM_FMT]\n"
+ 	       "  --get-fmt-meta      query the metadata capture format [VIDIOC_G_FMT]\n"
+ 	       "  --set-fmt-meta <f>  set the metadata capture format [VIDIOC_S_FMT]\n"
+ 	       "                     parameter is either the format index as reported by\n"
+@@ -30,7 +35,10 @@ void meta_usage()
+ 	       "  --try-fmt-meta <f>  try the metadata capture format [VIDIOC_TRY_FMT]\n"
+ 	       "                     parameter is either the format index as reported by\n"
+ 	       "                     --list-formats-meta, or the fourcc value as a string\n"
+-	       "  --list-formats-meta-out display supported metadata output formats [VIDIOC_ENUM_FMT]\n"
++	       "  --list-formats-meta-out [<mbus_code>] display supported metadata output formats.\n"
++	       "		      <mbus_code> is an optional media bus code, if the device has\n"
++	       "		      capability V4L2_CAP_IO_MC then only formats that support this\n"
++	       "		      media bus code are listed [VIDIOC_ENUM_FMT]\n"
+ 	       "  --get-fmt-meta-out      query the metadata output format [VIDIOC_G_FMT]\n"
+ 	       "  --set-fmt-meta-out <f>  set the metadata output format [VIDIOC_S_FMT]\n"
+ 	       "                          parameter is either the format index as reported by\n"
+@@ -58,6 +66,14 @@ void meta_cmd(int ch, char *optarg)
+ 			vfmt.fmt.meta.dataformat = strtol(optarg, 0L, 0);
+ 		}
+ 		break;
++	case OptListMetaFormats:
++		if (optarg)
++			mbus_code = strtoul(optarg, 0L, 0);
++		break;
++	case OptListMetaOutFormats:
++		if (optarg)
++			mbus_code_out = strtoul(optarg, 0L, 0);
++		break;
+ 	}
+ }
+ 
+@@ -120,12 +136,12 @@ void meta_list(cv4l_fd &fd)
+ {
+ 	if (options[OptListMetaFormats]) {
+ 		printf("ioctl: VIDIOC_ENUM_FMT\n");
+-		print_video_formats(fd, V4L2_BUF_TYPE_META_CAPTURE);
++		print_video_formats(fd, V4L2_BUF_TYPE_META_CAPTURE, mbus_code);
+ 	}
+ 
+ 	if (options[OptListMetaOutFormats]) {
+ 		printf("ioctl: VIDIOC_ENUM_FMT\n");
+-		print_video_formats(fd, V4L2_BUF_TYPE_META_OUTPUT);
++		print_video_formats(fd, V4L2_BUF_TYPE_META_OUTPUT, mbus_code_out);
+ 	}
+ }
+ 
+diff --git a/utils/v4l2-ctl/v4l2-ctl-overlay.cpp b/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
+index 7809a6db..75681332 100644
+--- a/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
++++ b/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
+@@ -539,7 +539,7 @@ void overlay_list(cv4l_fd &fd)
+ {
+ 	if (options[OptListOverlayFormats]) {
+ 		printf("ioctl: VIDIOC_ENUM_FMT\n");
+-		print_video_formats(fd, V4L2_BUF_TYPE_VIDEO_OVERLAY);
++		print_video_formats(fd, V4L2_BUF_TYPE_VIDEO_OVERLAY, 0);
+ 	}
+ 	if (options[OptFindFb])
+ 		find_fb(fd.g_fd());
+diff --git a/utils/v4l2-ctl/v4l2-ctl-sdr.cpp b/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
+index 7a36341a..5b724696 100644
+--- a/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
++++ b/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
+@@ -139,10 +139,10 @@ void sdr_list(cv4l_fd &fd)
+ {
+ 	if (options[OptListSdrFormats]) {
+ 		printf("ioctl: VIDIOC_ENUM_FMT\n");
+-		print_video_formats(fd, V4L2_BUF_TYPE_SDR_CAPTURE);
++		print_video_formats(fd, V4L2_BUF_TYPE_SDR_CAPTURE, 0);
+ 	}
+ 	if (options[OptListSdrOutFormats]) {
+ 		printf("ioctl: VIDIOC_ENUM_FMT\n");
+-		print_video_formats(fd, V4L2_BUF_TYPE_SDR_OUTPUT);
++		print_video_formats(fd, V4L2_BUF_TYPE_SDR_OUTPUT, 0);
+ 	}
+ }
+diff --git a/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp b/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
+index 5abab5e7..3d0f27db 100644
+--- a/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
++++ b/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
+@@ -23,13 +23,21 @@ static unsigned set_fmts;
+ static __u32 width, height, pixfmt, field, flags;
+ static __u32 bytesperline[VIDEO_MAX_PLANES];
+ static __u32 sizeimage[VIDEO_MAX_PLANES];
++static unsigned mbus_code;
+ 
+ void vidcap_usage()
+ {
+ 	printf("\nVideo Capture Formats options:\n"
+-	       "  --list-formats     display supported video formats [VIDIOC_ENUM_FMT]\n"
+-	       "  --list-formats-ext display supported video formats including frame sizes\n"
+-	       "                     and intervals\n"
++	       "  --list-formats [<mbus_code>]\n"
++	       "		     display supported video formats. <mbus_code> is an optional\n"
++	       "		     media bus code, if the device has capability V4L2_CAP_IO_MC\n"
++	       "		     then only formats that support this media bus code are listed\n"
++	       "		     [VIDIOC_ENUM_FMT]\n"
++	       "  --list-formats-ext [<mbus_code>]\n"
++	       "		     display supported video formats including frame sizes and intervals\n"
++	       "		     <mbus_code> is an optional media bus code, if the device has\n"
++	       "		     capability V4L2_CAP_IO_MC then only formats that support this\n"
++	       "		     media bus code are listed [VIDIOC_ENUM_FMT]\n"
+ 	       "  --list-framesizes <f>\n"
+ 	       "                     list supported framesizes for pixelformat <f>\n"
+ 	       "                     [VIDIOC_ENUM_FRAMESIZES]\n"
+@@ -117,6 +125,11 @@ void vidcap_cmd(int ch, char *optarg)
+ 			std::exit(EXIT_FAILURE);
+ 		}
+ 		break;
++	case OptListFormats:
++	case OptListFormatsExt:
++		if (optarg)
++			mbus_code = strtoul(optarg, 0L, 0);
++		break;
+ 	case OptListFrameSizes:
+ 		be_pixfmt = strlen(optarg) == 7 && !memcmp(optarg + 4, "-BE", 3);
+ 		if (be_pixfmt || strlen(optarg) == 4) {
+@@ -298,12 +311,12 @@ void vidcap_list(cv4l_fd &fd)
+ {
+ 	if (options[OptListFormats]) {
+ 		printf("ioctl: VIDIOC_ENUM_FMT\n");
+-		print_video_formats(fd, vidcap_buftype);
++		print_video_formats(fd, vidcap_buftype, mbus_code);
+ 	}
+ 
+ 	if (options[OptListFormatsExt]) {
+ 		printf("ioctl: VIDIOC_ENUM_FMT\n");
+-		print_video_formats_ext(fd, vidcap_buftype);
++		print_video_formats_ext(fd, vidcap_buftype, mbus_code);
+ 	}
+ 
+ 	if (options[OptListFields]) {
+diff --git a/utils/v4l2-ctl/v4l2-ctl-vidout.cpp b/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
+index 5f433a17..5362e155 100644
+--- a/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
++++ b/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
+@@ -21,14 +21,19 @@ static unsigned set_fmts_out;
+ static __u32 width, height, pixfmt, field, colorspace, xfer_func, ycbcr, quantization, flags;
+ static __u32 bytesperline[VIDEO_MAX_PLANES];
+ static __u32 sizeimage[VIDEO_MAX_PLANES];
++static unsigned mbus_code_out;
+ 
+ void vidout_usage()
+ {
+ 	printf("\nVideo Output Formats options:\n"
+-	       "  --list-formats-out display supported video output formats [VIDIOC_ENUM_FMT]\n"
+-	       "  --list-formats-out-ext\n"
+-	       "                     display supported video output formats including frame sizes\n"
+-	       "                     and intervals\n"
++	       "  --list-formats-out [<mbus_code>] display supported video output formats.\n"
++	       "		     <mbus_code> is an optional media bus code, if the device has\n"
++	       "		     capability V4L2_CAP_IO_MC then only formats that support this\n"
++	       "		     media bus code are listed [VIDIOC_ENUM_FMT]\n"
++	       "  --list-formats-out-ext [<mbus_code>] display supported video output formats including\n"
++	       "		     frame sizes and intervals. <mbus_code> is an optional media bus code,\n"
++	       "		     if the device has capability V4L2_CAP_IO_MC then only formats that\n"
++	       "		     support this media bus code are listed [VIDIOC_ENUM_FMT]\n"
+ 	       "  --list-fields-out  list supported fields for the current output format\n"
+ 	       "  -X, --get-fmt-video-out\n"
+ 	       "     		     query the video output format [VIDIOC_G_FMT]\n"
+@@ -103,6 +108,11 @@ void vidout_cmd(int ch, char *optarg)
+ 			std::exit(EXIT_FAILURE);
+ 		}
+ 		break;
++	case OptListOutFormats:
++	case OptListOutFormatsExt:
++		if (optarg)
++			mbus_code_out = strtoul(optarg, 0L, 0);
++		break;
+ 	}
+ }
+ 
+@@ -233,12 +243,12 @@ void vidout_list(cv4l_fd &fd)
+ {
+ 	if (options[OptListOutFormats]) {
+ 		printf("ioctl: VIDIOC_ENUM_FMT\n");
+-		print_video_formats(fd, vidout_buftype);
++		print_video_formats(fd, vidout_buftype, mbus_code_out);
+ 	}
+ 
+ 	if (options[OptListOutFormatsExt]) {
+ 		printf("ioctl: VIDIOC_ENUM_FMT\n");
+-		print_video_formats_ext(fd, vidout_buftype);
++		print_video_formats_ext(fd, vidout_buftype, mbus_code_out);
+ 	}
+ 
+ 	if (options[OptListOutFields]) {
+diff --git a/utils/v4l2-ctl/v4l2-ctl.cpp b/utils/v4l2-ctl/v4l2-ctl.cpp
+index a31b29f8..c01ee883 100644
+--- a/utils/v4l2-ctl/v4l2-ctl.cpp
++++ b/utils/v4l2-ctl/v4l2-ctl.cpp
+@@ -114,18 +114,18 @@ static struct option long_options[] = {
+ 	{"get-freq", no_argument, 0, OptGetFreq},
+ 	{"set-freq", required_argument, 0, OptSetFreq},
+ 	{"list-standards", no_argument, 0, OptListStandards},
+-	{"list-formats", no_argument, 0, OptListFormats},
+-	{"list-formats-ext", no_argument, 0, OptListFormatsExt},
++	{"list-formats", optional_argument, 0, OptListFormats},
++	{"list-formats-ext", optional_argument, 0, OptListFormatsExt},
+ 	{"list-fields", no_argument, 0, OptListFields},
+ 	{"list-framesizes", required_argument, 0, OptListFrameSizes},
+ 	{"list-frameintervals", required_argument, 0, OptListFrameIntervals},
+ 	{"list-formats-overlay", no_argument, 0, OptListOverlayFormats},
+ 	{"list-formats-sdr", no_argument, 0, OptListSdrFormats},
+ 	{"list-formats-sdr-out", no_argument, 0, OptListSdrOutFormats},
+-	{"list-formats-out", no_argument, 0, OptListOutFormats},
+-	{"list-formats-out-ext", no_argument, 0, OptListOutFormatsExt},
+-	{"list-formats-meta", no_argument, 0, OptListMetaFormats},
+-	{"list-formats-meta-out", no_argument, 0, OptListMetaOutFormats},
++	{"list-formats-out", optional_argument, 0, OptListOutFormats},
++	{"list-formats-out-ext", optional_argument, 0, OptListOutFormatsExt},
++	{"list-formats-meta", optional_argument, 0, OptListMetaFormats},
++	{"list-formats-meta-out", optional_argument, 0, OptListMetaOutFormats},
+ 	{"list-subdev-mbus-codes", optional_argument, 0, OptListSubDevMBusCodes},
+ 	{"list-subdev-framesizes", required_argument, 0, OptListSubDevFrameSizes},
+ 	{"list-subdev-frameintervals", required_argument, 0, OptListSubDevFrameIntervals},
+@@ -612,13 +612,16 @@ void print_frmival(const struct v4l2_frmivalenum &frmival, const char *prefix)
+ 	}
+ }
+ 
+-void print_video_formats(cv4l_fd &fd, __u32 type)
++void print_video_formats(cv4l_fd &fd, __u32 type, unsigned int mbus_code)
+ {
+ 	cv4l_disable_trace dt(fd);
+ 	struct v4l2_fmtdesc fmt = {};
+ 
++	if (mbus_code && !(capabilities & V4L2_CAP_IO_MC))
++		mbus_code = 0;
++
+ 	printf("\tType: %s\n\n", buftype2s(type).c_str());
+-	if (fd.enum_fmt(fmt, true, 0, type))
++	if (fd.enum_fmt(fmt, true, 0, type, mbus_code))
+ 		return;
+ 	do {
+ 		printf("\t[%d]: '%s' (%s", fmt.index, fcc2s(fmt.pixelformat).c_str(),
+@@ -629,15 +632,18 @@ void print_video_formats(cv4l_fd &fd, __u32 type)
+ 	} while (!fd.enum_fmt(fmt));
+ }
+ 
+-void print_video_formats_ext(cv4l_fd &fd, __u32 type)
++void print_video_formats_ext(cv4l_fd &fd, __u32 type, unsigned int mbus_code)
+ {
+ 	cv4l_disable_trace dt(fd);
+ 	struct v4l2_fmtdesc fmt = {};
+ 	struct v4l2_frmsizeenum frmsize;
+ 	struct v4l2_frmivalenum frmival;
+ 
++	if (mbus_code && !(capabilities & V4L2_CAP_IO_MC))
++		mbus_code = 0;
++
+ 	printf("\tType: %s\n\n", buftype2s(type).c_str());
+-	if (fd.enum_fmt(fmt, true, 0, type))
++	if (fd.enum_fmt(fmt, true, 0, type, mbus_code))
+ 		return;
+ 	do {
+ 		printf("\t[%d]: '%s' (%s", fmt.index, fcc2s(fmt.pixelformat).c_str(),
+diff --git a/utils/v4l2-ctl/v4l2-ctl.h b/utils/v4l2-ctl/v4l2-ctl.h
+index 4acb4d51..e906dc73 100644
+--- a/utils/v4l2-ctl/v4l2-ctl.h
++++ b/utils/v4l2-ctl/v4l2-ctl.h
+@@ -321,8 +321,8 @@ bool valid_pixel_format(int fd, __u32 pixelformat, bool output, bool mplane);
+ void print_frmsize(const struct v4l2_frmsizeenum &frmsize, const char *prefix);
+ void print_frmival(const struct v4l2_frmivalenum &frmival, const char *prefix);
+ void printfmt(int fd, const struct v4l2_format &vfmt);
+-void print_video_formats(cv4l_fd &fd, __u32 type);
+-void print_video_formats_ext(cv4l_fd &fd, __u32 type);
++void print_video_formats(cv4l_fd &fd, __u32 type, unsigned int mbus_code);
++void print_video_formats_ext(cv4l_fd &fd, __u32 type, unsigned int mbus_code);
+ 
+ static inline bool subscribe_event(cv4l_fd &fd, __u32 type)
+ {
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
