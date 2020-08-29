@@ -2,81 +2,85 @@ Return-Path: <SRS0=/3g+=CH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60FBDC433E6
-	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Aug 2020 07:03:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4702EC433E2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Aug 2020 15:58:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2EC6D20738
-	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Aug 2020 07:03:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1434B20707
+	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Aug 2020 15:58:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U2q6Vb4O";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Mj+20kIY"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2EC6D20738
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XJkZiSbr";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="ljhum2dL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1434B20707
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hjFw+CasSA31n+R07hswtcmeE9PwQ0pq/ZN0P3cuUZQ=; b=U2q6Vb4O02qMDHPq2qBQ0gf6u
-	aXOMVn/ua+78QHGSL/5J6v+6kVpx7PNcSlU6g0oP39QYuUOGvS0PlCOSw/gv+hJTfm6lBP6mbNnrQ
-	oCto7iYe933ASW6AkzR/7lvbJn8qFZ3BVya1d3TbtUwUIHIaQ8Rha+kD9otfGgSIjmagBOC3RPFAk
-	qGwBZ0iTWRqshYLaTyU1VR1zD35pn+hz6obKUAtHrJTFnGP7qX9KNyrPuCVUffLJDMbNMKRNCEXRB
-	utiNbXpSzJhFYSi1On2FcT3IKfGCX+IpUdqISAmaUXfpZ2DUsUmgkBEy6pctJSQNI70oRmVDE7ZYO
-	efk42o09w==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2NJMfStvqF0pRlx8j5+DdOBIw7E6EmqHqoI5/TeHhTY=; b=XJkZiSbrdrhS4wfsmtumOv7o/w
+	qq9eLtwr2VP7hY9/qkTCiH0DsEDvdzVHFc2MqpUWLvk0hYJJu0mv5LF6Ngu5pEhAjsndBZrNm8r60
+	80m8gIuFKX2uXWTQu9PbuFZitpJLlpJaQpxqzSWJVBHRCP42zYCybJIEvGJESr/nYSKJBKAWE4aH/
+	rA+vrtZvN5EfIGRBI5V59y7bDvgDsO2I4UYX8BLKJOTIYvmOPQAREOOpVjx9RJvjIbqr5TNLbqfid
+	pn6lI5qFk5WgNE/gGVJkaNzxl30vzuVW6LqaJbpwIRJqoSidMHQChFDfjvB9twzDb5/0C/z+PPARj
+	IQ9/hwLg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kButV-0000tW-KH; Sat, 29 Aug 2020 07:03:21 +0000
-Received: from mail-yb1-xb41.google.com ([2607:f8b0:4864:20::b41])
+	id 1kC3Fb-000457-Kb; Sat, 29 Aug 2020 15:58:43 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kButS-0000sj-Kk
- for linux-rockchip@lists.infradead.org; Sat, 29 Aug 2020 07:03:19 +0000
-Received: by mail-yb1-xb41.google.com with SMTP id v78so99717ybv.5
- for <linux-rockchip@lists.infradead.org>; Sat, 29 Aug 2020 00:03:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WFzYdEkav7F8z5We7Cz2tIGs/pSlOJAXOTBMDWvSVZQ=;
- b=Mj+20kIYFPZrNIDPOBc65xJgtEj7ajvukEWkUTFvnet0MiSjZUGNMtTJBRaJYbRxMc
- l8w7Ehlo5eMkhRwP9Fg3q9nE4mDlvSFQ4K6soMZQ4/3GW6TSwpmVz9mAU0vg/7FM9mb0
- ov/8L+MiuGcapL+mZ04WjeqBzN/8UkI/WnALu1DsdeSQzIsAyYn0syfmMm7QVps/XFiR
- tVmEHaVWpM+/hkg59B1YhZMEm4/SeCpj+ffS6R4G6z6byBKwqH3RtFImUfzGHR0bGv01
- k911BIL3nBAgw8NXZ9Jexp2Lh0sTKRt1geN7JcicxG2xvVepPVeLCCss2V7vRNvM0C+3
- DGsw==
+ id 1kC3FW-00043c-Bx
+ for linux-rockchip@lists.infradead.org; Sat, 29 Aug 2020 15:58:39 +0000
+Received: by mail-pf1-x441.google.com with SMTP id u20so2226078pfn.0
+ for <linux-rockchip@lists.infradead.org>; Sat, 29 Aug 2020 08:58:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amarulasolutions.com; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MZ+O4LsEt26/bO1S7FmN8cAqvXJ4Tlfs0jPsv8jKi+U=;
+ b=ljhum2dLbF4VvYtN4qJIDmyalFKBqIXbGRX8hWQjDkXZtk5Yys+EqKTUH6kOrdvXvN
+ 3q58FRB62zhVR1EOdb/TIVC1sNymiWuw8i7EAq6KnMf5Cm85KhjvWGRDlbnlkPUtIhMh
+ PbB5aJkSvsXvstNGV3jGzNEqCMz79Oy8IuKXI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=WFzYdEkav7F8z5We7Cz2tIGs/pSlOJAXOTBMDWvSVZQ=;
- b=MDl9jwXZGyKxEiX75Fqh7d140nYVvaFph8Mu0ENt6FkF4KwywTfB2Da/tlEjC6eMLz
- ojnA18jeTBuPA1teig1zgOtaAlD3gkOIqp+P/ZopFaOZkW3xmxriNJJUzCOtuX/TbquW
- wiyPai3sEJGukl+mGNhjtA1Rpc7QIP80EerUZM1bd2a/uuwb/E+YCK1Y0kTYdOISUiPj
- CnMGoS+3Ky+Y4uT7ZlBUczt8QJ1MZj7NE5gD5AT3hXStFmbe5/2kP0YBIv16PKjLkgu+
- LFhkej5S9wkAm/bPMvaSLwCraioz1JnQi2JPicYY/bMyTaR1A/fhkHTimgEd9enZaIOG
- KbgQ==
-X-Gm-Message-State: AOAM533wR18DlUL9G+VwbExl+M6mFuhZhAfCBYW3lhVuRa6HyMZBsODF
- /hmChguDDRLNjoYSCDTCxdvagGP0yfRvn7cSVHM=
-X-Google-Smtp-Source: ABdhPJxqLQ/5X6PQ7FSBwCsjlLyU/P7BMV67oC9qrFUsILZV/KkC1HXLjL79B21bTpPHxxQcxp0nf++gmGN7BJOUDpg=
-X-Received: by 2002:a25:810a:: with SMTP id o10mr7379989ybk.239.1598684593658; 
- Sat, 29 Aug 2020 00:03:13 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MZ+O4LsEt26/bO1S7FmN8cAqvXJ4Tlfs0jPsv8jKi+U=;
+ b=pVyr2/47h1NKLn9ECpB784qT4sKpcgmOYugN+txv0YZMP95K2vo6cllTlEZtnc+A5n
+ 6nWcqaCPaIsHFeJOwtzr4Kjmhk+XugHfD6CKdNF4fHjtmW0gPqvIAH8FYEP/4u48Xygk
+ 0eVkhVEcjf1sNzp6mbUjsY9SKwhjC60RaVSE4mgedejnECxG9wKxtX9wVCBv0o4EWa7g
+ wnjNnf1djO9wFoHurKCbElL/AH1916PHU/y2rfajtHTYx8joolyGoZ4j8hzPzF5aL8vI
+ BtafJol59EC6QcXRbS2y2pA5OpaI9N/GpkPpqh8/LqughdMLughmrY1YSJT73M2Sbafm
+ GSNA==
+X-Gm-Message-State: AOAM5312v3jt3ckgFFVZakJyQAYmj6qBfbo25/HiGAc2ut+/z1FuI1Qj
+ BeoCDOIVVFzumcyQOTkG5zaJ7g==
+X-Google-Smtp-Source: ABdhPJzEcB+o7wItuxgbQQLsj33yMDZo2V1Gtq8/mqoiG4pegOIOA2BEG59zkXuSYUTV8HwcvYNIEw==
+X-Received: by 2002:a62:2bcc:: with SMTP id r195mr3481135pfr.123.1598716715401; 
+ Sat, 29 Aug 2020 08:58:35 -0700 (PDT)
+Received: from localhost.localdomain ([2405:201:c809:c7d5:9460:cfb8:90a:fedd])
+ by smtp.gmail.com with ESMTPSA id
+ j20sm3131714pfi.122.2020.08.29.08.58.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 29 Aug 2020 08:58:34 -0700 (PDT)
+From: Jagan Teki <jagan@amarulasolutions.com>
+To: Heiko Stuebner <heiko@sntech.de>,
+	Rob Herring <robh+dt@kernel.org>
+Subject: [PATCH v2 0/7] arm64: dts: rockchip: Add Engicam PX30.Core
+Date: Sat, 29 Aug 2020 21:28:16 +0530
+Message-Id: <20200829155823.247360-1-jagan@amarulasolutions.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <87a6yepa3j.fsf@tinker>
-In-Reply-To: <87a6yepa3j.fsf@tinker>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Sat, 29 Aug 2020 15:03:02 +0800
-Message-ID: <CAEUhbmV3fAa-j6-QR1Y3NvmfGRX38PmvjtVpUUtxZehuABN_yg@mail.gmail.com>
-Subject: Re: NVMe boot issues on RockPro64
-To: Punit Agrawal <punitagrawal@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200829_030318_715834_A95F1741 
-X-CRM114-Status: GOOD (  20.98  )
+X-CRM114-CacheID: sfid-20200829_115838_994863_013FE6FC 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,65 +93,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Patrick Wildt <patrick@blueri.se>, linux-rockchip@lists.infradead.org,
- Kever Yang <kever.yang@rock-chips.com>, Aaron Williams <awilliams@marvell.com>,
- U-Boot Mailing List <u-boot@lists.denx.de>,
- Jagan Teki <jagan@amarulasolutions.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Jagan Teki <jagan@amarulasolutions.com>,
+ Suniel Mahesh <sunil@amarulasolutions.com>,
+ Michael Trimarchi <michael@amarulasolutions.com>,
+ linux-amarula <linux-amarula@amarulasolutions.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Punit,
+PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
 
-On Sat, Aug 29, 2020 at 8:30 AM Punit Agrawal <punitagrawal@gmail.com> wrote:
->
-> Hi,
->
-> I get the following errors when booting Linux from an ADATA XPG SX8200
-> NVMe on a RockPro64.
->
-> [    3.705205] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
-> [    3.705226] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
-> [    3.705247] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
-> [    3.705331] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
-> [    3.705352] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
-> [    3.705373] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
->
-> At which point boot hangs. Has anybody come across these errors when
-> using NVMe?
->
-> Using an alternate device (sd card) to load the kernel / initrd doesn't
-> cause the issue and the drive works fine when used as a root device in
-> Linux subsequently.
->
-> On digging further, I found that uboot exits with the NVME interrupt
-> line (PCI legacy interrupt) active when making any access to the
-> device. Even just running "nvme scan" leads to the active interrupt
-> line.
->
-> After sprinkling some prints in the uboot NVMe driver, it seems that the
-> interrupt goes active right at the beginning of setting up the IO queues
-> (nvme_setup_io_queues). This is also the first time the admin queue is
-> used; when issuing the command to setup the number of queues
-> (NVME_FEAT_NUM_QUEUES). For some reason, updating the CQ head doorbell
-> doesn't clear the interrupt.
->
-> The active interrupt doesn't bother uboot as it ignores the device
-> interrupt but causes an issue latter when linux boots.
->
-> Has anybody faced similar issues with NVMe and uboot? Any idea on how to
-> stop the interrupt line from triggering? Or de-activating it on exit?
->
-> Let me know if there's anything I can provide to help debug the
-> problem. Also, happy to try any patches or suggestions.
->
+PX30.Core needs to mount on top of Engicam baseboards for creating
+complete platform boards.
 
-Is this a specific behavior of the NVMe card you are using? Could you
-please switch to another card for testing?
+Possible baseboards are,
+- EDIMM2.2 Starter Kit
+- C.TOUCH 2.0 Carrier Board
 
-Regards,
-Bin
+Changes for v2:
+- collect Rob A-b
+- include C.TOUCH 2.0 carrier board
+- skip 10" OF LCD as it requires separate dts with panel support.
+
+Note: These baseboards can be used for i.MX8 SOM's as well. So having
+baseboard on respective SoC seems to be easy rather than making it
+common across all.
+
+Any inputs?
+Jagan.
+
+Jagan Teki (7):
+  dt-bindings: arm: rockchip: Add Engicam PX30.Core EDIMM2.2 Starter Kit
+  arm64: dts: rockchip: px30: Add Engicam EDIMM2.2 Starter Kit
+  arm64: dts: rockchip: Add Engicam PX30.Core SOM
+  arm64: dts: rockchip: Add Engicam PX30.Core EDIMM2.2 Starter Kit
+  dt-bindings: arm: rockchip: Add Engicam PX30.Core C.TOUCH 2.0
+  arm64: dts: rockchip: px30: Add Engicam C.TOUCH 2.0
+  arm64: dts: rockchip: Add Engicam PX30.Core C.TOUCH 2.0
+
+ .../devicetree/bindings/arm/rockchip.yaml     |  12 +
+ arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+ .../dts/rockchip/px30-engicam-common.dtsi     |  39 +++
+ .../dts/rockchip/px30-engicam-ctouch2.dtsi    |   7 +
+ .../dts/rockchip/px30-engicam-edimm2.2.dtsi   |   7 +
+ .../dts/rockchip/px30-px30-core-ctouch2.dts   |  21 ++
+ .../dts/rockchip/px30-px30-core-edimm2.2.dts  |  21 ++
+ .../boot/dts/rockchip/px30-px30-core.dtsi     | 231 ++++++++++++++++++
+ 8 files changed, 340 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/px30-engicam-ctouch2.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/px30-engicam-edimm2.2.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/px30-px30-core-ctouch2.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/px30-px30-core-edimm2.2.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/px30-px30-core.dtsi
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
