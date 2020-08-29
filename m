@@ -1,55 +1,85 @@
-Return-Path: <SRS0=+8WL=CG=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=/3g+=CH=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C590CC433E6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2020 15:17:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01FDCC433E2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Aug 2020 00:30:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 83B8820757
-	for <linux-rockchip@archiver.kernel.org>; Fri, 28 Aug 2020 15:17:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B18A820838
+	for <linux-rockchip@archiver.kernel.org>; Sat, 29 Aug 2020 00:30:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3F9kEMe6"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 83B8820757
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ghPI9LM+";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="RU9IhDks"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B18A820838
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=JRbhlXcVQIVcw+Sm3OHfPclAZbzwNkSfYtuhEOcjMqQ=; b=3F9kEMe6fURYxjY4KsEy0VrInD
-	p5yUrNDyTrWV2ZGaOQf73GjDCeDlfAZ9+gL8wPckRriGWvoi3JfX3uMtyi83ePRZ4LQL4ezraS0ls
-	4K+8zoyV9ojKz/LxX50mQAOVo6VfDIDH58nymSV8m/dM6doT2jpGOZL/z8/SrMED1onMKgPkIh+Ar
-	b13uY/JSFJ3QKd1TFfbjH384nA1Kg3vyGANMlgDNiOxsVmf+FH4qv8+PtUAGNiVsPMcrsblIOmlU1
-	/Rg4orVCwU/zi1nucwM107e+zfw9kShw8Uho87mIXRMXykxhO93F/g3Tv64O++gpf0rGMJEq/nDTH
-	9iOsB0aA==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3Tt0x6aR1FFDBTyF6qvV2CCSI2CYk4UO6lfGXOqn/tw=; b=ghPI9LM+s1alZ1zgE+aPxrRoZr
+	9+wk6Ni5wLIC66DXJsrXWAYHJZle9sbUBKQinwFi++cCilSOGjZmlt34plJFIMAPhBBxg6Chz4apE
+	Bzk0U6pZ2ODuMs0E2TsnsspX0uVnYo0hVY0c46UW7CrHkE2CPZGKKgxmjBVKL4MMSekG6lnoOf2/j
+	kTRmSumH9KtJbRY7/av110T7itFbEiqdcXXJvpZwZQJ5SI2Rhul4swpLNzXfx5nYchIWoVeabJbSY
+	Q0V9pfXmhr7NOrQ4DKDZUKwvKZzDBHs0rkECzoIF7EwEUA7CdUqyje+UPWuUpGY+dF5G0OuHFP/pn
+	Xh8dTqCg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kBg8A-0001G1-Fd; Fri, 28 Aug 2020 15:17:30 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kBolL-0001GM-FD; Sat, 29 Aug 2020 00:30:31 +0000
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kBg87-0001FL-Ge
- for linux-rockchip@lists.infradead.org; Fri, 28 Aug 2020 15:17:28 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id 5CBC429A124
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v3] utils: v4l2-ctl: support V4L2_CAP_IO_MC in v4l2-ctl
- '--list-formats-*' commands
-Date: Fri, 28 Aug 2020 17:17:18 +0200
-Message-Id: <20200828151718.17996-1-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
+ id 1kBolJ-0001EA-HR
+ for linux-rockchip@lists.infradead.org; Sat, 29 Aug 2020 00:30:30 +0000
+Received: by mail-pg1-x535.google.com with SMTP id w186so1192045pgb.8
+ for <linux-rockchip@lists.infradead.org>; Fri, 28 Aug 2020 17:30:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:user-agent:mime-version;
+ bh=Jxyw5Vp5RpkPFFkUgTb5vWvY/xptdC4UT3IC/fL51Bs=;
+ b=RU9IhDks++h6enpsQe8zLBPinYS+zBo+NgEed+Z3aXRFRmVE7kGkp+Mn7pQd8infkt
+ MAzWgl03ieukDVeT3/QZkYnx+rqRXLrhAotUSX/w9xUriZ0OMUhxF2DbJtdOzyCxsz6n
+ pckGos6rgUcD67DCUFLOOn2pPkxI0yhYF1qBftGZoZiXtAU4msT1hneZgjF1cyNxqInw
+ KG+wW02mSJ117K5GjRDafmAdp2BD+so13UkN6/s45tkx0eixB7rt2+ymLZ8BD0BLqDGV
+ jVh8zmguFRw0/3HgMsesIVhqJyqvY2+Xu7Lchh7Iyime+sMviEAoriLgF9dYPg9g5NLr
+ Lbrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:user-agent
+ :mime-version;
+ bh=Jxyw5Vp5RpkPFFkUgTb5vWvY/xptdC4UT3IC/fL51Bs=;
+ b=HqiwzvCXUay7yAlWScsels0O4Cjq0252sRsB2XojhBnV7CtHxnaKmX0AHFKEhbVd1F
+ OVHtLyhg3nLP9zGXHICmA/r8rJe17foo+/17FhvEcdG2VoT8qaKzmm6uE+Ewhi+n2s0L
+ 2eD2N62D5J+QtN4MPanv8P2oXAQfheaMfD7HfutV4/BrBIvw8BZPEZP5a0Dlu2zGXtyU
+ QExtuJ6WB+dOoikK+02oiB+FHdO0BzMao3pIxgXyps4n34dgmImSagzzh78OaNGRR6aj
+ fPEzr0FxEQF5AfFz6KrwOkWsfwBVu2qE2jY0D80cRZOw9qL2xE/zX/izcswA7/Yi1YiF
+ fCQg==
+X-Gm-Message-State: AOAM530J9q33kSTj6mG6anKSKYGS/9gJ5Yj2AQjOeFITCFQLueBzWqkh
+ 7sL9tEunISGmekVSZe2yAiY=
+X-Google-Smtp-Source: ABdhPJxeS6RGwZ005jJ3PhqQ01dVgp9RqleyNUrlZ2U98W2Xfkc44zMbRWXFUMFAG7gzjbMDvhaMsw==
+X-Received: by 2002:a63:af1d:: with SMTP id w29mr925043pge.176.1598661026036; 
+ Fri, 28 Aug 2020 17:30:26 -0700 (PDT)
+Received: from localhost ([2405:6580:31a1:500:a00:27ff:fe82:e36e])
+ by smtp.gmail.com with ESMTPSA id e1sm603913pfn.78.2020.08.28.17.30.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 28 Aug 2020 17:30:25 -0700 (PDT)
+From: Punit Agrawal <punitagrawal@gmail.com>
+To: u-boot@lists.denx.de
+Subject: NVMe boot issues on RockPro64
+Date: Sat, 29 Aug 2020 09:30:24 +0900
+Message-ID: <87a6yepa3j.fsf@tinker>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200828_111727_787255_CC64F2FE 
-X-CRM114-Status: GOOD (  16.93  )
+X-CRM114-CacheID: sfid-20200828_203029_620467_72F2D8A5 
+X-CRM114-Status: GOOD (  13.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,354 +92,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
- tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
-MIME-Version: 1.0
+Cc: patrick@blueri.se, kever.yang@rock-chips.com, awilliams@marvell.com,
+ linux-rockchip@lists.infradead.org, jagan@amarulasolutions.com,
+ bmeng.cn@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add optional <mbus_code> arg to 'v4l2-ctl --list-formats-*'
-commands for capture, metadata and output devices.
-If <mbus_code> is given and the device has capability
-V4L2_CAP_IO_MC then list only the formats that matches the
-mbus code.
-The mbus_code is ignored for devices that don't use it
-or don't have the V4L2_CAP_IO_MC capability.
+Hi,
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
-changes since v2:
-- using different global vars for different metadata buffer types and changing var name to media_code_out for output dev
-- space after 'if'
-- replace 's/if the driver has capability/if the device has capability/'
+I get the following errors when booting Linux from an ADATA XPG SX8200
+NVMe on a RockPro64.
 
-changes since v1: code refactor due to comments from Hans
+[    3.705205] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
+[    3.705226] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
+[    3.705247] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
+[    3.705331] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
+[    3.705352] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
+[    3.705373] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
 
- utils/common/cv4l-helpers.h         |  3 ++-
- utils/v4l2-ctl/v4l2-ctl-meta.cpp    | 24 ++++++++++++++++++++----
- utils/v4l2-ctl/v4l2-ctl-overlay.cpp |  2 +-
- utils/v4l2-ctl/v4l2-ctl-sdr.cpp     |  4 ++--
- utils/v4l2-ctl/v4l2-ctl-vidcap.cpp  | 23 ++++++++++++++++++-----
- utils/v4l2-ctl/v4l2-ctl-vidout.cpp  | 22 ++++++++++++++++------
- utils/v4l2-ctl/v4l2-ctl.cpp         | 26 ++++++++++++++++----------
- utils/v4l2-ctl/v4l2-ctl.h           |  4 ++--
- 8 files changed, 77 insertions(+), 31 deletions(-)
+At which point boot hangs. Has anybody come across these errors when
+using NVMe?
 
-diff --git a/utils/common/cv4l-helpers.h b/utils/common/cv4l-helpers.h
-index 6295054a..3cee372b 100644
---- a/utils/common/cv4l-helpers.h
-+++ b/utils/common/cv4l-helpers.h
-@@ -483,12 +483,13 @@ public:
- 		return cv4l_ioctl(VIDIOC_ENUM_DV_TIMINGS, &timings);
- 	}
- 
--	int enum_fmt(v4l2_fmtdesc &fmt, bool init = false, int index = 0, unsigned type = 0)
-+	int enum_fmt(v4l2_fmtdesc &fmt, bool init = false, int index = 0, unsigned type = 0, __u32 mbus_code = 0)
- 	{
- 		if (init) {
- 			memset(&fmt, 0, sizeof(fmt));
- 			fmt.type = type ? type : g_type();
- 			fmt.index = index;
-+			fmt.mbus_code = mbus_code;
- 		} else {
- 			fmt.index++;
- 		}
-diff --git a/utils/v4l2-ctl/v4l2-ctl-meta.cpp b/utils/v4l2-ctl/v4l2-ctl-meta.cpp
-index b4c7bb89..a4f1d534 100644
---- a/utils/v4l2-ctl/v4l2-ctl-meta.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-meta.cpp
-@@ -18,11 +18,16 @@
- #include "v4l2-ctl.h"
- 
- static struct v4l2_format vfmt;	/* set_format/get_format */
-+static unsigned mbus_code;
-+static unsigned mbus_code_out;
- 
- void meta_usage()
- {
- 	printf("\nMetadata Formats options:\n"
--	       "  --list-formats-meta display supported metadata capture formats [VIDIOC_ENUM_FMT]\n"
-+	       "  --list-formats-meta [<mbus_code>] display supported metadata capture formats.\n"
-+	       "		      <mbus_code> is an optional media bus code, if the device has\n"
-+	       "		      capability V4L2_CAP_IO_MC then only formats that support this\n"
-+	       "		      media bus code are listed [VIDIOC_ENUM_FMT]\n"
- 	       "  --get-fmt-meta      query the metadata capture format [VIDIOC_G_FMT]\n"
- 	       "  --set-fmt-meta <f>  set the metadata capture format [VIDIOC_S_FMT]\n"
- 	       "                     parameter is either the format index as reported by\n"
-@@ -30,7 +35,10 @@ void meta_usage()
- 	       "  --try-fmt-meta <f>  try the metadata capture format [VIDIOC_TRY_FMT]\n"
- 	       "                     parameter is either the format index as reported by\n"
- 	       "                     --list-formats-meta, or the fourcc value as a string\n"
--	       "  --list-formats-meta-out display supported metadata output formats [VIDIOC_ENUM_FMT]\n"
-+	       "  --list-formats-meta-out [<mbus_code>] display supported metadata output formats.\n"
-+	       "		      <mbus_code> is an optional media bus code, if the device has\n"
-+	       "		      capability V4L2_CAP_IO_MC then only formats that support this\n"
-+	       "		      media bus code are listed [VIDIOC_ENUM_FMT]\n"
- 	       "  --get-fmt-meta-out      query the metadata output format [VIDIOC_G_FMT]\n"
- 	       "  --set-fmt-meta-out <f>  set the metadata output format [VIDIOC_S_FMT]\n"
- 	       "                          parameter is either the format index as reported by\n"
-@@ -58,6 +66,14 @@ void meta_cmd(int ch, char *optarg)
- 			vfmt.fmt.meta.dataformat = strtol(optarg, 0L, 0);
- 		}
- 		break;
-+	case OptListMetaFormats:
-+		if (optarg)
-+			mbus_code = strtoul(optarg, 0L, 0);
-+		break;
-+	case OptListMetaOutFormats:
-+		if (optarg)
-+			mbus_code_out = strtoul(optarg, 0L, 0);
-+		break;
- 	}
- }
- 
-@@ -120,12 +136,12 @@ void meta_list(cv4l_fd &fd)
- {
- 	if (options[OptListMetaFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, V4L2_BUF_TYPE_META_CAPTURE);
-+		print_video_formats(fd, V4L2_BUF_TYPE_META_CAPTURE, mbus_code);
- 	}
- 
- 	if (options[OptListMetaOutFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, V4L2_BUF_TYPE_META_OUTPUT);
-+		print_video_formats(fd, V4L2_BUF_TYPE_META_OUTPUT, mbus_code_out);
- 	}
- }
- 
-diff --git a/utils/v4l2-ctl/v4l2-ctl-overlay.cpp b/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
-index 7809a6db..75681332 100644
---- a/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-overlay.cpp
-@@ -539,7 +539,7 @@ void overlay_list(cv4l_fd &fd)
- {
- 	if (options[OptListOverlayFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, V4L2_BUF_TYPE_VIDEO_OVERLAY);
-+		print_video_formats(fd, V4L2_BUF_TYPE_VIDEO_OVERLAY, 0);
- 	}
- 	if (options[OptFindFb])
- 		find_fb(fd.g_fd());
-diff --git a/utils/v4l2-ctl/v4l2-ctl-sdr.cpp b/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
-index 7a36341a..5b724696 100644
---- a/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-sdr.cpp
-@@ -139,10 +139,10 @@ void sdr_list(cv4l_fd &fd)
- {
- 	if (options[OptListSdrFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, V4L2_BUF_TYPE_SDR_CAPTURE);
-+		print_video_formats(fd, V4L2_BUF_TYPE_SDR_CAPTURE, 0);
- 	}
- 	if (options[OptListSdrOutFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, V4L2_BUF_TYPE_SDR_OUTPUT);
-+		print_video_formats(fd, V4L2_BUF_TYPE_SDR_OUTPUT, 0);
- 	}
- }
-diff --git a/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp b/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
-index 5abab5e7..3d0f27db 100644
---- a/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-vidcap.cpp
-@@ -23,13 +23,21 @@ static unsigned set_fmts;
- static __u32 width, height, pixfmt, field, flags;
- static __u32 bytesperline[VIDEO_MAX_PLANES];
- static __u32 sizeimage[VIDEO_MAX_PLANES];
-+static unsigned mbus_code;
- 
- void vidcap_usage()
- {
- 	printf("\nVideo Capture Formats options:\n"
--	       "  --list-formats     display supported video formats [VIDIOC_ENUM_FMT]\n"
--	       "  --list-formats-ext display supported video formats including frame sizes\n"
--	       "                     and intervals\n"
-+	       "  --list-formats [<mbus_code>]\n"
-+	       "		     display supported video formats. <mbus_code> is an optional\n"
-+	       "		     media bus code, if the device has capability V4L2_CAP_IO_MC\n"
-+	       "		     then only formats that support this media bus code are listed\n"
-+	       "		     [VIDIOC_ENUM_FMT]\n"
-+	       "  --list-formats-ext [<mbus_code>]\n"
-+	       "		     display supported video formats including frame sizes and intervals\n"
-+	       "		     <mbus_code> is an optional media bus code, if the device has\n"
-+	       "		     capability V4L2_CAP_IO_MC then only formats that support this\n"
-+	       "		     media bus code are listed [VIDIOC_ENUM_FMT]\n"
- 	       "  --list-framesizes <f>\n"
- 	       "                     list supported framesizes for pixelformat <f>\n"
- 	       "                     [VIDIOC_ENUM_FRAMESIZES]\n"
-@@ -117,6 +125,11 @@ void vidcap_cmd(int ch, char *optarg)
- 			std::exit(EXIT_FAILURE);
- 		}
- 		break;
-+	case OptListFormats:
-+	case OptListFormatsExt:
-+		if (optarg)
-+			mbus_code = strtoul(optarg, 0L, 0);
-+		break;
- 	case OptListFrameSizes:
- 		be_pixfmt = strlen(optarg) == 7 && !memcmp(optarg + 4, "-BE", 3);
- 		if (be_pixfmt || strlen(optarg) == 4) {
-@@ -298,12 +311,12 @@ void vidcap_list(cv4l_fd &fd)
- {
- 	if (options[OptListFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, vidcap_buftype);
-+		print_video_formats(fd, vidcap_buftype, mbus_code);
- 	}
- 
- 	if (options[OptListFormatsExt]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats_ext(fd, vidcap_buftype);
-+		print_video_formats_ext(fd, vidcap_buftype, mbus_code);
- 	}
- 
- 	if (options[OptListFields]) {
-diff --git a/utils/v4l2-ctl/v4l2-ctl-vidout.cpp b/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
-index 5f433a17..5362e155 100644
---- a/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl-vidout.cpp
-@@ -21,14 +21,19 @@ static unsigned set_fmts_out;
- static __u32 width, height, pixfmt, field, colorspace, xfer_func, ycbcr, quantization, flags;
- static __u32 bytesperline[VIDEO_MAX_PLANES];
- static __u32 sizeimage[VIDEO_MAX_PLANES];
-+static unsigned mbus_code_out;
- 
- void vidout_usage()
- {
- 	printf("\nVideo Output Formats options:\n"
--	       "  --list-formats-out display supported video output formats [VIDIOC_ENUM_FMT]\n"
--	       "  --list-formats-out-ext\n"
--	       "                     display supported video output formats including frame sizes\n"
--	       "                     and intervals\n"
-+	       "  --list-formats-out [<mbus_code>] display supported video output formats.\n"
-+	       "		     <mbus_code> is an optional media bus code, if the device has\n"
-+	       "		     capability V4L2_CAP_IO_MC then only formats that support this\n"
-+	       "		     media bus code are listed [VIDIOC_ENUM_FMT]\n"
-+	       "  --list-formats-out-ext [<mbus_code>] display supported video output formats including\n"
-+	       "		     frame sizes and intervals. <mbus_code> is an optional media bus code,\n"
-+	       "		     if the device has capability V4L2_CAP_IO_MC then only formats that\n"
-+	       "		     support this media bus code are listed [VIDIOC_ENUM_FMT]\n"
- 	       "  --list-fields-out  list supported fields for the current output format\n"
- 	       "  -X, --get-fmt-video-out\n"
- 	       "     		     query the video output format [VIDIOC_G_FMT]\n"
-@@ -103,6 +108,11 @@ void vidout_cmd(int ch, char *optarg)
- 			std::exit(EXIT_FAILURE);
- 		}
- 		break;
-+	case OptListOutFormats:
-+	case OptListOutFormatsExt:
-+		if (optarg)
-+			mbus_code_out = strtoul(optarg, 0L, 0);
-+		break;
- 	}
- }
- 
-@@ -233,12 +243,12 @@ void vidout_list(cv4l_fd &fd)
- {
- 	if (options[OptListOutFormats]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats(fd, vidout_buftype);
-+		print_video_formats(fd, vidout_buftype, mbus_code_out);
- 	}
- 
- 	if (options[OptListOutFormatsExt]) {
- 		printf("ioctl: VIDIOC_ENUM_FMT\n");
--		print_video_formats_ext(fd, vidout_buftype);
-+		print_video_formats_ext(fd, vidout_buftype, mbus_code_out);
- 	}
- 
- 	if (options[OptListOutFields]) {
-diff --git a/utils/v4l2-ctl/v4l2-ctl.cpp b/utils/v4l2-ctl/v4l2-ctl.cpp
-index a31b29f8..c01ee883 100644
---- a/utils/v4l2-ctl/v4l2-ctl.cpp
-+++ b/utils/v4l2-ctl/v4l2-ctl.cpp
-@@ -114,18 +114,18 @@ static struct option long_options[] = {
- 	{"get-freq", no_argument, 0, OptGetFreq},
- 	{"set-freq", required_argument, 0, OptSetFreq},
- 	{"list-standards", no_argument, 0, OptListStandards},
--	{"list-formats", no_argument, 0, OptListFormats},
--	{"list-formats-ext", no_argument, 0, OptListFormatsExt},
-+	{"list-formats", optional_argument, 0, OptListFormats},
-+	{"list-formats-ext", optional_argument, 0, OptListFormatsExt},
- 	{"list-fields", no_argument, 0, OptListFields},
- 	{"list-framesizes", required_argument, 0, OptListFrameSizes},
- 	{"list-frameintervals", required_argument, 0, OptListFrameIntervals},
- 	{"list-formats-overlay", no_argument, 0, OptListOverlayFormats},
- 	{"list-formats-sdr", no_argument, 0, OptListSdrFormats},
- 	{"list-formats-sdr-out", no_argument, 0, OptListSdrOutFormats},
--	{"list-formats-out", no_argument, 0, OptListOutFormats},
--	{"list-formats-out-ext", no_argument, 0, OptListOutFormatsExt},
--	{"list-formats-meta", no_argument, 0, OptListMetaFormats},
--	{"list-formats-meta-out", no_argument, 0, OptListMetaOutFormats},
-+	{"list-formats-out", optional_argument, 0, OptListOutFormats},
-+	{"list-formats-out-ext", optional_argument, 0, OptListOutFormatsExt},
-+	{"list-formats-meta", optional_argument, 0, OptListMetaFormats},
-+	{"list-formats-meta-out", optional_argument, 0, OptListMetaOutFormats},
- 	{"list-subdev-mbus-codes", optional_argument, 0, OptListSubDevMBusCodes},
- 	{"list-subdev-framesizes", required_argument, 0, OptListSubDevFrameSizes},
- 	{"list-subdev-frameintervals", required_argument, 0, OptListSubDevFrameIntervals},
-@@ -612,13 +612,16 @@ void print_frmival(const struct v4l2_frmivalenum &frmival, const char *prefix)
- 	}
- }
- 
--void print_video_formats(cv4l_fd &fd, __u32 type)
-+void print_video_formats(cv4l_fd &fd, __u32 type, unsigned int mbus_code)
- {
- 	cv4l_disable_trace dt(fd);
- 	struct v4l2_fmtdesc fmt = {};
- 
-+	if (mbus_code && !(capabilities & V4L2_CAP_IO_MC))
-+		mbus_code = 0;
-+
- 	printf("\tType: %s\n\n", buftype2s(type).c_str());
--	if (fd.enum_fmt(fmt, true, 0, type))
-+	if (fd.enum_fmt(fmt, true, 0, type, mbus_code))
- 		return;
- 	do {
- 		printf("\t[%d]: '%s' (%s", fmt.index, fcc2s(fmt.pixelformat).c_str(),
-@@ -629,15 +632,18 @@ void print_video_formats(cv4l_fd &fd, __u32 type)
- 	} while (!fd.enum_fmt(fmt));
- }
- 
--void print_video_formats_ext(cv4l_fd &fd, __u32 type)
-+void print_video_formats_ext(cv4l_fd &fd, __u32 type, unsigned int mbus_code)
- {
- 	cv4l_disable_trace dt(fd);
- 	struct v4l2_fmtdesc fmt = {};
- 	struct v4l2_frmsizeenum frmsize;
- 	struct v4l2_frmivalenum frmival;
- 
-+	if (mbus_code && !(capabilities & V4L2_CAP_IO_MC))
-+		mbus_code = 0;
-+
- 	printf("\tType: %s\n\n", buftype2s(type).c_str());
--	if (fd.enum_fmt(fmt, true, 0, type))
-+	if (fd.enum_fmt(fmt, true, 0, type, mbus_code))
- 		return;
- 	do {
- 		printf("\t[%d]: '%s' (%s", fmt.index, fcc2s(fmt.pixelformat).c_str(),
-diff --git a/utils/v4l2-ctl/v4l2-ctl.h b/utils/v4l2-ctl/v4l2-ctl.h
-index 4acb4d51..e906dc73 100644
---- a/utils/v4l2-ctl/v4l2-ctl.h
-+++ b/utils/v4l2-ctl/v4l2-ctl.h
-@@ -321,8 +321,8 @@ bool valid_pixel_format(int fd, __u32 pixelformat, bool output, bool mplane);
- void print_frmsize(const struct v4l2_frmsizeenum &frmsize, const char *prefix);
- void print_frmival(const struct v4l2_frmivalenum &frmival, const char *prefix);
- void printfmt(int fd, const struct v4l2_format &vfmt);
--void print_video_formats(cv4l_fd &fd, __u32 type);
--void print_video_formats_ext(cv4l_fd &fd, __u32 type);
-+void print_video_formats(cv4l_fd &fd, __u32 type, unsigned int mbus_code);
-+void print_video_formats_ext(cv4l_fd &fd, __u32 type, unsigned int mbus_code);
- 
- static inline bool subscribe_event(cv4l_fd &fd, __u32 type)
- {
--- 
-2.17.1
+Using an alternate device (sd card) to load the kernel / initrd doesn't
+cause the issue and the drive works fine when used as a root device in
+Linux subsequently.
 
+On digging further, I found that uboot exits with the NVME interrupt
+line (PCI legacy interrupt) active when making any access to the
+device. Even just running "nvme scan" leads to the active interrupt
+line.
+
+After sprinkling some prints in the uboot NVMe driver, it seems that the
+interrupt goes active right at the beginning of setting up the IO queues
+(nvme_setup_io_queues). This is also the first time the admin queue is
+used; when issuing the command to setup the number of queues
+(NVME_FEAT_NUM_QUEUES). For some reason, updating the CQ head doorbell
+doesn't clear the interrupt.
+
+The active interrupt doesn't bother uboot as it ignores the device
+interrupt but causes an issue latter when linux boots.
+
+Has anybody faced similar issues with NVMe and uboot? Any idea on how to
+stop the interrupt line from triggering? Or de-activating it on exit?
+
+Let me know if there's anything I can provide to help debug the
+problem. Also, happy to try any patches or suggestions.
+
+Thanks,
+Punit
 
 _______________________________________________
 Linux-rockchip mailing list
