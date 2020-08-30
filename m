@@ -2,60 +2,58 @@ Return-Path: <SRS0=N1pG=CI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A8231C433E6
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Aug 2020 20:17:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 50BB1C433E2
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Aug 2020 20:44:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 74EF0204EA
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Aug 2020 20:17:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1E50820757
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Aug 2020 20:44:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PrZmHFFv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74EF0204EA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jzX8G0Yk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E50820757
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=xhkkj7+7gN7sLE2JVBFHzG0Ht+xZbnuppGLhTrS1hVs=; b=PrZmHFFvJbHqM6Rku5y3NWHEz
-	4ME6Sa3OHAkp3JPQB0PeBUED2trJWQaC3ixZ5I9jJ1FpXT76XCm2UltH77Egv/qlifmgeJMkpdfrq
-	kWaMxfUyJ2KK9YJjK+U1zd0ZteG4UE9BoLOT7uQ5/0n9hEPyFYE5BYbBzLUuV8VkYgmM8PZr5AYDY
-	EqC7LLZiqZVNxHUtLxYfOqD7C8HD5+O871OXNDFaf5lb1H07ycpOQXp/02hxqG1m5IzQEwiGK3AG1
-	8qwMmVjp3EFVfUfDdwCFqhI/LgXPc0Bb/X+RLsO6ifOwOCPD7cvy5+OnCdOSoSwCdAOfaqFS5j0Br
-	J+ib02LzA==;
+	 bh=aiRF/835Ghrw23mS1eGHQ4gttCaBfFr+iXbilnyBW4A=; b=jzX8G0Yk+TNHXeHJzPkGkE3xO
+	GWcqwDJ2MajA6uAIX8U2Z/9o8/VmwUiG9agnVKn/HUTgsKGF9C0+kfbaY4cokAy2GsO1FDddk+ura
+	kOrQCDalxMNK6iSqX10izJaugklPFQGKWd/5GKSENUjBL704P54YbzyKseBfqd1KbvXYNN8fZ3vEN
+	SYVMOSb9PhMAsyO5ki/oJoy2pEAPTW9vHWX+6qEmfjiSKQQaA24g2GDS52ydshtCV0CpQZhO9Qi7s
+	WUp+4x0ny2XSVjdlhU7mUM/4ZyhEAQQHAwpt5SqKeDrtONgXWMWfrrs7hgZS2OJV5DovkSdRiO3Op
+	wt5/1U0YA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kCTl4-0002qe-6i; Sun, 30 Aug 2020 20:16:58 +0000
+	id 1kCUBA-0004w8-M4; Sun, 30 Aug 2020 20:43:56 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kCTkr-0002n6-E3; Sun, 30 Aug 2020 20:16:46 +0000
+ id 1kCUB7-0004vU-0z; Sun, 30 Aug 2020 20:43:53 +0000
 Received: from p508fca7b.dip0.t-ipconnect.de ([80.143.202.123]
- helo=phil.fritz.box)
+ helo=phil.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kCTkn-0002d8-3f; Sun, 30 Aug 2020 22:16:41 +0200
+ id 1kCUB5-0002r0-FD; Sun, 30 Aug 2020 22:43:51 +0200
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- Adrian Schmutzler <freifunk@adrianschmutzler.de>,
- Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] ARM: dts: rockchip: replace status value "ok" by "okay"
-Date: Sun, 30 Aug 2020 22:16:32 +0200
-Message-Id: <159881858451.25534.279324596705885008.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200830190820.20583-1-freifunk@adrianschmutzler.de>
-References: <20200830190820.20583-1-freifunk@adrianschmutzler.de>
+To: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH v1 1/2] ARM: dts: rockchip: rename and label gpio-led
+ subnodes part 3
+Date: Sun, 30 Aug 2020 22:43:50 +0200
+Message-ID: <3705366.uVpFMHbKpm@phil>
+In-Reply-To: <20200813193455.19772-1-jbx6244@gmail.com>
+References: <20200813193455.19772-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200830_161645_498141_1A304B53 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20200830_164353_093216_73259C81 
+X-CRM114-Status: GOOD (  22.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,26 +66,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, robh+dt@kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 30 Aug 2020 21:08:20 +0200, Adrian Schmutzler wrote:
-> While the DT parser recognizes "ok" as a valid value for the
-> "status" property, it is actually mentioned nowhere. Use the
-> proper value "okay" instead, as done in the majority of files
-> already.
+Hi Johan,
 
-Applied, thanks!
+Am Donnerstag, 13. August 2020, 21:34:54 CEST schrieb Johan Jonker:
+> Current dts files with 'gpio-led' nodes were manually verified.
+> In order to automate this process leds-gpio.txt
+> has been converted to yaml. With this conversion a check
+> for pattern properties was added. In part 3 rename and label
+> gpio-led subnodes with pinctrl. To make things equal to other
+> dts files move pinctrl below the compatible property.
+> 
+> Fix with help of the following rules:
+> 
+> 1: Add nodename in the preferred form.
+> 
+> 2: Always add a label that ends with '_led' to prevent conflicts
+>    with other labels such as 'power' and 'mmc'
+> 
+> 3: If leds need pinctrl add a label that ends with '_led_pin'
+>    also to prevent conflicts with other labels.
 
-[1/1] ARM: dts: rockchip: replace status value "ok" by "okay"
-      commit: 0cf10e6f94335495f90fc62fb75d9569f6a603fb
+I'm undecided about this ... and while thinking about this,
+realized that we already have some changes doing that in the tree.
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+To explain, in general the pinctrl names should come from the names used
+in the actual device schematics, as this makes it easier to find and compare
+them between devicetree and schematics files.
+
+So creating an arbitrary foo_led_pin pinctrl instead breaks this searchability
+which I'd really like to keep.
+
+
+Heiko
+
+
+> 
+> patternProperties:
+>   # The first form is preferred, but fall back to just 'led'
+>   # anywhere in the node name to at least catch some child nodes.
+>   "(^led-[0-9a-f]$|led)":
+> 
+> make ARCH=arm dtbs_check
+> DT_SCHEMA_FILES=Documentation/devicetree/bindings/leds/
+> leds-gpio.yaml
+> 
+> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> ---
+>  arch/arm/boot/dts/rk3036-kylin.dts | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/arch/arm/boot/dts/rk3036-kylin.dts b/arch/arm/boot/dts/rk3036-kylin.dts
+> index 7154b827e..bf808cda6 100644
+> --- a/arch/arm/boot/dts/rk3036-kylin.dts
+> +++ b/arch/arm/boot/dts/rk3036-kylin.dts
+> @@ -15,12 +15,12 @@
+>  
+>  	leds: gpio-leds {
+>  		compatible = "gpio-leds";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&work_led_pin>;
+>  
+>  		work_led: led-0 {
+>  			gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
+>  			label = "kylin:red:led";
+> -			pinctrl-names = "default";
+> -			pinctrl-0 = <&led_ctl>;
+>  		};
+>  	};
+>  
+> @@ -367,7 +367,7 @@
+>  
+>  &pinctrl {
+>  	leds {
+> -		led_ctl: led-ctl {
+> +		work_led_pin: work-led-pin {
+>  			rockchip,pins = <2 RK_PD6 RK_FUNC_GPIO &pcfg_pull_none>;
+>  		};
+>  	};
+> 
+
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
