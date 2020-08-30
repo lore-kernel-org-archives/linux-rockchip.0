@@ -2,89 +2,73 @@ Return-Path: <SRS0=N1pG=CI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 59D1FC433E6
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Aug 2020 00:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 800F5C433E2
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Aug 2020 09:52:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 03E8220776
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Aug 2020 00:16:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0E8BB207BB
+	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Aug 2020 09:52:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JpjfpGdp";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ToMNYYut"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 03E8220776
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="w5I1uYes"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0E8BB207BB
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=mails.tsinghua.edu.cn
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:Date:References:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=idUUAdz5neNQkSPB2+0rjGskxowmlOhyNk3RDFS8cC4=; b=JpjfpGdpTl7dQHucMA7tvRs++
-	fF/YLd2ttAeppXpFclIjpSBKPGVMMP9Nzcx4A8uqzTJljjkLq5k1OmlHDGgkeealM1c6UZBrsad6T
-	9TlzXs+xrxdWScEb8ZrlUotCM837S15IsMOJv6a39gpcz0BJ0rBlxifrLTrzcvg1/7bsHGkDj713s
-	DlA2LmjYqQ0mdontdlmy2yQJjwnB0qr/WcHOwd3BUSWaTL6HlLM8pFIQzh2YsjagemE6JZtlXiAln
-	AxdpsyEBf5smLicXnT6RlwWa373M+E6+muCNuiD3X4kHLZd12iXSRPJe/Bv/RYO/SIDKyJcUkjf78
-	FMxfeN3+Q==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yonhujcBPIk6YxplkG7FBB3EnvczPIcnGj2YI4ffvE4=; b=w5I1uYesjFqgr5SBtdRAGgeaLI
+	lHzrticYp2rQl+qfueGwF0WgXKBMgAukJ4w5C4ZgKLP2qNuWqJ8iEaUmblkZwGapLwz6tXCeNRNVt
+	z7qczUG4cLxpJg+K1r4kNKSD5asjjlzRcCGdzTk+NV9gpOCorqe/VTMh4IW+6yo3LRCoGNRWD/6uq
+	0U4yo3RHW1O1r/5DvSmP+QirNNnW80DSSJhcBfuiP7E2ZCzWMMwrvQtE6e8iky70UqM8sA0G4CqnY
+	nuigOo2rxQ2LEdfjUY5yXb0JRuDX/xHgLt460rsSMp/QOka0MPY4fhAAptSFxJJImF7929yYS0Mgp
+	p/QDf5fw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kCB1R-0006XO-1x; Sun, 30 Aug 2020 00:16:37 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kCB1P-0006X2-4b
- for linux-rockchip@lists.infradead.org; Sun, 30 Aug 2020 00:16:35 +0000
-Received: by mail-pg1-x542.google.com with SMTP id l191so2289777pgd.5
- for <linux-rockchip@lists.infradead.org>; Sat, 29 Aug 2020 17:16:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:references:date:in-reply-to:message-id
- :user-agent:mime-version;
- bh=SO/05F8lh68P/kcpTsHPaM2LASHQt0Fg0sPIaMvKcqY=;
- b=ToMNYYutw3uoELJ4kafIn683bLAP15XaUDkYu7rBfbEohbdALvS0IMUfcziCyjIa3H
- j3Pe18JFZXci48ZdBOCNd9ZevcKSEzOr3FhriCqLXo+L4Lv4eQjl1T0HdCiaTK7ib7HW
- U/uVZDMNPsZkA2XX8CBp87gx3e3nGGFFit1l91F+lB+K0VIGq+y6WMw7tsG01eu0o0q4
- kb/g8jHw7w/vyFokxlkosD4uCZIlswXMfgd9xdvEVMeDFbbMudBsOJyEZ77BWjDWJGhZ
- zJfaME72fZFehq6eArZvZ1xzYx+OwGCKcZJnVG/Zr8zeRaS9OAoJcx1QyYZzqfUBDBaE
- D+qA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:references:date:in-reply-to
- :message-id:user-agent:mime-version;
- bh=SO/05F8lh68P/kcpTsHPaM2LASHQt0Fg0sPIaMvKcqY=;
- b=YIvBQvu1aFutctsKFZovMgjZXRwcBaN6bpu2Hw8O+/pFTmCaMdjyhD/t9mkkplA4X/
- HX3mwitX5xvYmBttWWNGe55TSXe/KN2VPafx+CwmX2jS2g8VjgY8jJZvGUcTCJ3QOEA0
- HlM77xlpAsz28YNw96KZJ00V/kbt7mjQvR++Avmiy76f73noyXDeygLAv+012hiojTAz
- n42dN7MMWy8GMxWgQgOIvm7tfkKBdYN3VhrT2briS8lAWpHvbTdjbH5ynJ1ktkZ6mw6/
- PaxwROS+ThFx4GL2BWUtdpjqBJsSM9mDwJhRE3VvKl/EzryXKaOaAOctbo6EnYcggyxs
- U51g==
-X-Gm-Message-State: AOAM5329DQSWO9DDFT/SHCujcJLvlwZvve2zHG2edSn1myNpDgz8TZSl
- 2r+L65q+yOeS7VaoWeCoi+Y=
-X-Google-Smtp-Source: ABdhPJyWPj+I2k9tzNqJtT9KfhIsWHUdcOkYZDRB7C9OTpYIKahYqBJWbHGPAHluEcfj84ktet22Mw==
-X-Received: by 2002:a63:4451:: with SMTP id t17mr3670625pgk.92.1598746592957; 
- Sat, 29 Aug 2020 17:16:32 -0700 (PDT)
-Received: from localhost ([2405:6580:31a1:500:a00:27ff:fe82:e36e])
- by smtp.gmail.com with ESMTPSA id s8sm3812841pfc.167.2020.08.29.17.16.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 29 Aug 2020 17:16:32 -0700 (PDT)
-From: Punit Agrawal <punitagrawal@gmail.com>
-To: Bin Meng <bmeng.cn@gmail.com>
-Subject: Re: NVMe boot issues on RockPro64
-References: <87a6yepa3j.fsf@tinker>
- <CAEUhbmV3fAa-j6-QR1Y3NvmfGRX38PmvjtVpUUtxZehuABN_yg@mail.gmail.com>
-Date: Sun, 30 Aug 2020 09:16:30 +0900
-In-Reply-To: <CAEUhbmV3fAa-j6-QR1Y3NvmfGRX38PmvjtVpUUtxZehuABN_yg@mail.gmail.com>
- (Bin Meng's message of "Sat, 29 Aug 2020 15:03:02 +0800")
-Message-ID: <87o8mtyom9.fsf@tinker>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
-MIME-Version: 1.0
+	id 1kCK0C-0002oC-6m; Sun, 30 Aug 2020 09:51:56 +0000
+Received: from zg8tmja5ljk3lje4mi4ymjia.icoremail.net ([209.97.182.222])
+ by merlin.infradead.org with smtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kCK04-0002nO-U8; Sun, 30 Aug 2020 09:51:50 +0000
+Received: from oslab.tsinghua.edu.cn (unknown [166.111.139.154])
+ by app-3 (Coremail) with SMTP id EQQGZQAHFSyLdktfA2XQAA--.26948S2;
+ Sun, 30 Aug 2020 17:51:27 +0800 (CST)
+From: Tuo Li <t-li20@mails.tsinghua.edu.cn>
+To: lgirdwood@gmail.com, broonie@kernel.org, perex@perex.cz, tiwai@suse.com,
+ heiko@sntech.de, baijiaju1990@gmail.com
+Subject: [PATCH] ALSA: rockchip: fix a possible divide-by-zero bug in
+ rockchip_i2s_hw_params()
+Date: Sun, 30 Aug 2020 17:51:06 +0800
+Message-Id: <20200830095106.4412-1-t-li20@mails.tsinghua.edu.cn>
+X-Mailer: git-send-email 2.17.1
+X-CM-TRANSID: EQQGZQAHFSyLdktfA2XQAA--.26948S2
+X-Coremail-Antispam: 1UD129KBjvdXoWruFy5ur1kKFWkJr13Gw4fuFg_yoWDurbEqw
+ 47Xr95Xr18Xr13t3WDA3ykAr4qywnxuF1kCFWj9r1UJa4UJr4rKF1kJ34aka43WF9akr10
+ gr1DXr1DAFyxAjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUbf8FF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+ 6r1S6rWUM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+ A2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_
+ Gr1UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
+ 0DM2vYz4IE04k24VAvwVAKI4IrM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI
+ 64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVWUJVW8Jw
+ Am72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAG
+ YxC7M4IIrI8v6xkF7I0E8cxan2IY04v7MxkIecxEwVAFwVW8uwCF04k20xvY0x0EwIxGrw
+ CFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE
+ 14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vIr41lIxAIcVC0I7IYx2
+ IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxK
+ x2IYs7xG6rW3Jr0E3s1lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267
+ AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUjAsqPUUUUU==
+X-CM-SenderInfo: nwnoxj2q6ptxtovo32xlqjx3vdohv3gofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200829_201635_242219_4C00FD69 
-X-CRM114-Status: GOOD (  23.67  )
+X-CRM114-CacheID: sfid-20200830_055149_160989_8A4706D3 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,80 +81,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Patrick Wildt <patrick@blueri.se>, linux-rockchip@lists.infradead.org,
- Kever Yang <kever.yang@rock-chips.com>, Aaron Williams <awilliams@marvell.com>,
- U-Boot Mailing List <u-boot@lists.denx.de>,
- Jagan Teki <jagan@amarulasolutions.com>
+Cc: linux-rockchip@lists.infradead.org, alsa-devel@alsa-project.org,
+ Tuo Li <t-li20@mails.tsinghua.edu.cn>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Bin,
+The variable bclk_rate is checked in:
+  if (bclk_rate && mclk_rate % bclk_rate)
 
-Bin Meng <bmeng.cn@gmail.com> writes:
+This indicates that bclk_rate can be zero.
+If so, a divide-by-zero bug will occur:
+  div_bclk = mclk_rate / bclk_rate;
 
-> Hi Punit,
->
-> On Sat, Aug 29, 2020 at 8:30 AM Punit Agrawal <punitagrawal@gmail.com> wrote:
->>
->> Hi,
->>
->> I get the following errors when booting Linux from an ADATA XPG SX8200
->> NVMe on a RockPro64.
->>
->> [    3.705205] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
->> [    3.705226] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
->> [    3.705247] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
->> [    3.705331] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
->> [    3.705352] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
->> [    3.705373] rockchip-pcie f8000000.pcie: unexpected IRQ, INT0
->>
->> At which point boot hangs. Has anybody come across these errors when
->> using NVMe?
->>
->> Using an alternate device (sd card) to load the kernel / initrd doesn't
->> cause the issue and the drive works fine when used as a root device in
->> Linux subsequently.
->>
->> On digging further, I found that uboot exits with the NVME interrupt
->> line (PCI legacy interrupt) active when making any access to the
->> device. Even just running "nvme scan" leads to the active interrupt
->> line.
->>
->> After sprinkling some prints in the uboot NVMe driver, it seems that the
->> interrupt goes active right at the beginning of setting up the IO queues
->> (nvme_setup_io_queues). This is also the first time the admin queue is
->> used; when issuing the command to setup the number of queues
->> (NVME_FEAT_NUM_QUEUES). For some reason, updating the CQ head doorbell
->> doesn't clear the interrupt.
->>
->> The active interrupt doesn't bother uboot as it ignores the device
->> interrupt but causes an issue latter when linux boots.
->>
->> Has anybody faced similar issues with NVMe and uboot? Any idea on how to
->> stop the interrupt line from triggering? Or de-activating it on exit?
->>
->> Let me know if there's anything I can provide to help debug the
->> problem. Also, happy to try any patches or suggestions.
->>
->
-> Is this a specific behavior of the NVMe card you are using? Could you
-> please switch to another card for testing?
+To fix this possible bug, the function returns -EINVAL when bclk_rate is
+zero.
 
-I suspect this behaviour is down to the ADATA NVMe card but I don't have
-any others at hand to test. Bought this as a reasonably priced addition
-to personal computing environment - I was hoping to avoid having to buy
-another one.
+Signed-off-by: Tuo Li <t-li20@mails.tsinghua.edu.cn>
+---
+ sound/soc/rockchip/rockchip_i2s.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Thinking about it, I can try hacking the Linux driver to use legacy
-interrupts. Maybe it can help identify hardware vs software issue. I
-will give this a shot.
+diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
+index d1438753edb4..dd0836c32639 100644
+--- a/sound/soc/rockchip/rockchip_i2s.c
++++ b/sound/soc/rockchip/rockchip_i2s.c
+@@ -279,7 +279,9 @@ static int rockchip_i2s_hw_params(struct snd_pcm_substream *substream,
+ 	if (i2s->is_master_mode) {
+ 		mclk_rate = clk_get_rate(i2s->mclk);
+ 		bclk_rate = 2 * 32 * params_rate(params);
+-		if (bclk_rate && mclk_rate % bclk_rate)
++		if (bclk_rate == 0)
++			return -EINVAL;
++		if (mclk_rate % bclk_rate)
+ 			return -EINVAL;
+ 
+ 		div_bclk = mclk_rate / bclk_rate;
+-- 
+2.17.1
 
-Let me know if you think of anything else I should try.
-
-Thanks,
-Punit
 
 _______________________________________________
 Linux-rockchip mailing list
