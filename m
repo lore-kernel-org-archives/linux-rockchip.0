@@ -2,87 +2,75 @@ Return-Path: <SRS0=Dydn=CJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 32966C433E2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 16:15:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7173FC433E2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 19:53:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E80C92073A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 16:15:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 394D42087D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 19:53:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="i2kofcgN";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="Pu3DizNR"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E80C92073A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="3MYsZ+v0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 394D42087D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rnlAE+xagojisgh8bvvagQt9IG3WfMydlQjhgzS3T8U=; b=i2kofcgNPSOylXv3KQlhnESRJ4
-	W721BWvxC55P/wPJFK3jj/ecshrs/h9LM5H/kPgEBDsuIb7VlFc1WcBH7THm6SXzV09qYmq2UawR6
-	E0Gx6NVqezkSRD55SnHte7m/Pw8Caqq51k7lwl4fMMidefHN8rCVAyrE9iISraMZqyV9xjXEo/pVe
-	Ls8RBI0Xt7B9O4FxM8dpo7xmw6cXpu7D5B53SBIsYQuzioqN/I/RC/ZdneFqX7za0OLVLAg4oc/Ux
-	u6cU7tkBwNapOmpOCdIOjtnuHaUxkJzf2b6VvkdQeV/WDedbpjfxHOkmJOZ1wkyz4OSImaU/AskuJ
-	w2GoY3pg==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=aHZKKsZA0cZkxSaGfmAm2Zq0Dz6RoC9uFbg2fhqKVPU=; b=3MYsZ+v0uJC8Wdw+0qT+bfyK5
+	MIMpdIq6V/ewocryLtThOMSfXM+0BionF2ro2QE1iZsms7TwwiuIu8Yex5vjr0KB/1tVGvnguhQU4
+	CfoxoUOggHM42hgjHOLJuTUCBy9hCwboIhr+vpgwRTdVZESU9kLDBJS6jj9SJSO0SlmztT7ttBaCp
+	QGXTtNpfQmCKMWVF0L8WA/crluaftYPD4hC+u25ofi2/l7zGSxwRpgleqEk4Q/8EP7oGZWNykzRox
+	3aJHWZ+MJ35dtjuGYZGWfl9wpVqcR+1sg2gwpy4cDEU3XHCO5ro7QArYdkdUEQ9C4/ScbV7tmwlUv
+	t004y5Iww==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kCmSm-00067Q-2I; Mon, 31 Aug 2020 16:15:20 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1kCprp-0002Bt-SZ; Mon, 31 Aug 2020 19:53:26 +0000
+Received: from mga17.intel.com ([192.55.52.151])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kCmSh-00066j-HC
- for linux-rockchip@lists.infradead.org; Mon, 31 Aug 2020 16:15:18 +0000
-Received: by mail-pl1-x643.google.com with SMTP id z15so3255339plo.7
- for <linux-rockchip@lists.infradead.org>; Mon, 31 Aug 2020 09:15:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amarulasolutions.com; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0RjF/F1q7e5EJMpYIifOzE0mACKZJWuEXmCqPj+pnkY=;
- b=Pu3DizNREnzFzQA+0BeBKp4TxMLw6OsC6c7FmO7Mv9mYnjkrk8hNs/ZTDSl6y7Uu+r
- tRdSRv/04MSfPk9qcrw5gCW540tCZuYBKJaGCjOL5I7yyc1dCGhYfza+Ddf3iU81vCwx
- rjaw9dh0mA+Q0iABGgjCb3Te2pRG+GiAU2RXk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0RjF/F1q7e5EJMpYIifOzE0mACKZJWuEXmCqPj+pnkY=;
- b=ZtxQsJMRzX39NWYVUKQEy7KhI3aHjOH/x5VidaT2FfN45cFD3hECRWFZJlGg3Siwi8
- mbrQRsPlLpQMJFQ0m77RtB/ymkt7nmg1UNbLppWdauDg7D/eVtVg/A5i9QXcGm9SLHGg
- yOruL4vs91Vxp2U5fg+W9Rw2R0GXL+3x5Ac4M5+zQff1L6C6M48qeiW94ljpLUUrWELK
- TwrwDmg3nl7Gv5cyMuMvd6HiSEm0xfEznj/0W6Zq/03DSePcYiSVxyjdgSS+89taSK4N
- kYWRnVL/aEVB2iCb26z6LAPBsXtn2MwhQMy5abixCc9i8XwSDUxrPYj3cmJIQCYnJHkA
- 5fDw==
-X-Gm-Message-State: AOAM533kprAwLDkuynFb+RviNs9k/5kTLSoSzhoSnXUt04+uU6bKpdzB
- y3ZPkUYI5TvujBoHNi1T7eeaHA==
-X-Google-Smtp-Source: ABdhPJyjsTme/K/fl4Z4HUw8LpaYJCYVI+lFJeiPhXsGGUvnn0ykI4lDfE9gBtWauCMvpAa+rJOIDQ==
-X-Received: by 2002:a17:902:7582:: with SMTP id
- j2mr1632953pll.322.1598890512496; 
- Mon, 31 Aug 2020 09:15:12 -0700 (PDT)
-Received: from localhost.localdomain ([2405:201:c809:c7d5:d50:45fe:aaf3:66ee])
- by smtp.gmail.com with ESMTPSA id
- e23sm7804215pgm.1.2020.08.31.09.15.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 Aug 2020 09:15:11 -0700 (PDT)
-From: Jagan Teki <jagan@amarulasolutions.com>
-To: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] clk: rockchip: Fix overflow rate during fractional
- approximation
-Date: Mon, 31 Aug 2020 21:44:36 +0530
-Message-Id: <20200831161436.134186-1-jagan@amarulasolutions.com>
-X-Mailer: git-send-email 2.25.1
+ id 1kCprn-0002BG-Du
+ for linux-rockchip@lists.infradead.org; Mon, 31 Aug 2020 19:53:24 +0000
+IronPort-SDR: O4Fiek2S0lAKcphrvgxDJimXbFIO1rY/kRiilfMdliuU7M1k4WoDf68/qlYypY5prxQ8WNUheX
+ UWBDucJjnIDA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9730"; a="137096379"
+X-IronPort-AV: E=Sophos;i="5.76,376,1592895600"; d="scan'208";a="137096379"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Aug 2020 12:53:20 -0700
+IronPort-SDR: sfefiNLyiGq5iVg1AwuLny5G5TU/O5qwtlHtgIYCUy4LdeO0dLcBoN1AVzGkDQHFSH3+wA+XN8
+ N3efer9xVYiw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.76,376,1592895600"; d="scan'208";a="340770469"
+Received: from stinkbox.fi.intel.com (HELO stinkbox) ([10.237.72.174])
+ by orsmga007.jf.intel.com with SMTP; 31 Aug 2020 12:53:16 -0700
+Received: by stinkbox (sSMTP sendmail emulation);
+ Mon, 31 Aug 2020 22:53:16 +0300
+Date: Mon, 31 Aug 2020 22:53:16 +0300
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: crj <algea.cao@rock-chips.com>
+Subject: Re: [PATCH] drm: Parse Colorimetry data block from EDID
+Message-ID: <20200831195316.GC6112@intel.com>
+References: <20200826142328.131144-1-algea.cao@rock-chips.com>
+ <20200827105701.GS6112@intel.com>
+ <4cadf318-cfc3-92d6-6219-170166db94ce@rock-chips.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <4cadf318-cfc3-92d6-6219-170166db94ce@rock-chips.com>
+X-Patchwork-Hint: comment
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200831_121516_840802_DF5F4AD2 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20200831_155323_669180_2DFDE7E2 
+X-CRM114-Status: GOOD (  23.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,207 +83,108 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Finley Xiao <finley.xiao@rock-chips.com>,
- Jagan Teki <jagan@amarulasolutions.com>,
- linux-amarula <linux-amarula@amarulasolutions.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: daniel@ffwll.ch, airlied@linux.ie, maarten.lankhorst@linux.intel.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, mripard@kernel.org, tzimmermann@suse.de
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The current rockchip fractional approximation overflow the desired
-rate if parent rate is lower than the (rate * 20) for few clocks like
-dclk_vopb_frac.
-
-The overflow condition has observed in px30 for dclk_vopb_frac
-clock with an input rate of 71.1MHz and parent rate of 24MHz is,
-
-[    2.543280] rockchip-drm display-subsystem: bound ff460000.vop (ops vop_component_ops)
-[    2.557313] rockchip-drm display-subsystem: bound ff470000.vop (ops vop_component_ops)
-[    2.566356] rockchip-drm display-subsystem: bound ff140000.syscon:lvds (ops rockchip_lvds_component_ops)
-[    2.576999] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
-[    2.592177] Unexpected kernel BRK exception at EL1
-[    2.597551] Internal error: ptrace BRK handler: f20003e8 [#1] PREEMPT SMP
-[    2.605143] Modules linked in:
-[    2.608566] CPU: 1 PID: 31 Comm: kworker/1:1 Tainted: G     U            5.8.0-rc1-15632-g97edd822b844 #30
-[    2.619363] Hardware name: Engicam PX30.Core C.TOUCH 2.0 10.1" Open Frame (DT)
-[    2.627460] Workqueue: events deferred_probe_work_func
-[    2.633209] pstate: 20000005 (nzCv daif -PAN -UAO BTYPE=--)
-[    2.639445] pc : rational_best_approximation+0xc4/0xd0
-[    2.645194] lr : rockchip_fractional_approximation+0xa8/0xe0
-[    2.651520] sp : ffff800011ea31c0
-[    2.655222] x29: ffff800011ea31c0 x28: ffff00007a4ecd50
-[    2.661162] x27: ffff00007d042600 x26: 000000000439fca3
-[    2.667102] x25: 0000000000000000 x24: ffff800011ac9948
-[    2.673033] x23: ffff800011ea3308 x22: ffff00007d042418
-[    2.678973] x21: ffff800011ea3240 x20: ffff800011ea3238
-[    2.684904] x19: ea47000000000000 x18: 0000000000000000
-[    2.690836] x17: 0000000000000500 x16: 0000000000000001
-[    2.696775] x15: ffffffffffffffff x14: 0000000000000000
-[    2.702707] x13: 0000000000000000 x12: 0000003c00000000
-[    2.708647] x11: 0000000000000030 x10: 0101010101010101
-[    2.714586] x9 : 0000032000000320 x8 : 7f7f7f7f7f7f7f7f
-[    2.720517] x7 : 000000a3c59050d3 x6 : 0000000000000030
-[    2.726457] x5 : ffff800011ea3240 x4 : ffff800011ea3238
-[    2.732397] x3 : 000000000000ffff x2 : 000000000000ffff
-[    2.738329] x1 : 00000000016e3600 x0 : 0000000001497e00
-[    2.744269] Call trace:
-[    2.747005]  rational_best_approximation+0xc4/0xd0
-[    2.752365]  clk_fd_round_rate+0x8c/0x110
-[    2.756846]  clk_composite_round_rate+0x30/0x40
-[    2.761917]  clk_core_determine_round_nolock.part.30+0x44/0x80
-[    2.768442]  clk_core_round_rate_nolock+0x78/0x80
-[    2.773701]  clk_mux_determine_rate_flags+0xd8/0x200
-[    2.779253]  clk_mux_determine_rate+0x10/0x20
-[    2.784124]  clk_core_determine_round_nolock.part.30+0x1c/0x80
-[    2.790639]  clk_core_round_rate_nolock+0x78/0x80
-[    2.795900]  clk_core_round_rate_nolock+0x5c/0x80
-[    2.801159]  clk_round_rate+0x64/0xf0
-[    2.805254]  vop_crtc_mode_fixup+0x2c/0x60
-[    2.809828]  drm_atomic_helper_check_modeset+0x95c/0xae0
-[    2.815767]  drm_atomic_helper_check+0x1c/0xa0
-[    2.820738]  drm_atomic_check_only+0x43c/0x760
-[    2.825705]  drm_atomic_commit+0x18/0x60
-[    2.830095]  drm_client_modeset_commit_atomic.isra.16+0x17c/0x250
-[    2.836911]  drm_client_modeset_commit_locked+0x58/0x1a0
-[    2.842851]  drm_client_modeset_commit+0x2c/0x50
-[    2.848014]  drm_fb_helper_restore_fbdev_mode_unlocked+0x70/0xd0
-[    2.854730]  drm_fb_helper_set_par+0x2c/0x60
-[    2.859497]  fbcon_init+0x3c0/0x540
-[    2.863400]  visual_init+0xac/0x100
-[    2.867298]  do_bind_con_driver+0x1e4/0x3a0
-[    2.871973]  do_take_over_console+0x140/0x200
-[    2.876843]  do_fbcon_takeover+0x6c/0xe0
-[    2.881228]  fbcon_fb_registered+0x10c/0x120
-[    2.886005]  register_framebuffer+0x1f0/0x340
-[    2.890878]  __drm_fb_helper_initial_config_and_unlock+0x318/0x4a0
-[    2.897790]  drm_fb_helper_initial_config+0x3c/0x50
-[    2.903244]  rockchip_drm_fbdev_init+0x5c/0xf0
-[    2.908202]  rockchip_drm_bind+0x194/0x1e0
-[    2.912785]  try_to_bring_up_master+0x164/0x1d0
-[    2.917851]  component_master_add_with_match+0xac/0xf0
-[    2.923597]  rockchip_drm_platform_probe+0x238/0x2e0
-[    2.929150]  platform_drv_probe+0x50/0xa0
-[    2.933631]  really_probe+0xd4/0x330
-[    2.937628]  driver_probe_device+0x54/0xb0
-[    2.942207]  __device_attach_driver+0x80/0xc0
-[    2.947078]  bus_for_each_drv+0x78/0xd0
-[    2.951365]  __device_attach+0xd4/0x130
-[    2.955652]  device_initial_probe+0x10/0x20
-[    2.960328]  bus_probe_device+0x90/0xa0
-[    2.964616]  deferred_probe_work_func+0x6c/0xa0
-[    2.969685]  process_one_work+0x1e4/0x360
-[    2.974166]  worker_thread+0x208/0x480
-[    2.978358]  kthread+0x150/0x160
-[    2.981968]  ret_from_fork+0x10/0x18
-[    2.985970] Code: d65f03c0 d2800008 d2800027 17ffffe8 (d4207d00)
-
-This happened because the fractional divider does not apply if parent_rate
-is lower than (rate * 20).
-
-So, this patch is trying to fix that overflow clock and switch to half-div
-instead computing fractioanl approximation.
-
-Some part of the patch is referenced from below BSP commit:
-
-commit <88a5404a2277> ("clk: rockchip: fix up the
-rockchip_fractional_approximation")
-
-commit <4186a0e4239b> ("clk: rockchip: Add supprot to limit input rate
-for fractional divider")
-
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
----
- drivers/clk/rockchip/clk-px30.c | 12 ++++++------
- drivers/clk/rockchip/clk.c      |  9 +++++++++
- 2 files changed, 15 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/clk/rockchip/clk-px30.c b/drivers/clk/rockchip/clk-px30.c
-index 6fb9c98b7d24..06d3ff39d12f 100644
---- a/drivers/clk/rockchip/clk-px30.c
-+++ b/drivers/clk/rockchip/clk-px30.c
-@@ -660,7 +660,7 @@ static struct rockchip_clk_branch px30_clk_branches[] __initdata = {
- 	COMPOSITE(SCLK_UART1_SRC, "clk_uart1_src", mux_uart_src_p, CLK_SET_RATE_NO_REPARENT,
- 			PX30_CLKSEL_CON(34), 14, 2, MFLAGS, 0, 5, DFLAGS,
- 			PX30_CLKGATE_CON(10), 12, GFLAGS),
--	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart1_np5", "clk_uart1_src", 0,
-+	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart1_np5", "clk_uart1_src", CLK_SET_RATE_PARENT,
- 			PX30_CLKSEL_CON(35), 0, 5, DFLAGS,
- 			PX30_CLKGATE_CON(10), 13, GFLAGS),
- 	COMPOSITE_FRACMUX(0, "clk_uart1_frac", "clk_uart1_src", CLK_SET_RATE_PARENT,
-@@ -673,7 +673,7 @@ static struct rockchip_clk_branch px30_clk_branches[] __initdata = {
- 	COMPOSITE(SCLK_UART2_SRC, "clk_uart2_src", mux_uart_src_p, 0,
- 			PX30_CLKSEL_CON(37), 14, 2, MFLAGS, 0, 5, DFLAGS,
- 			PX30_CLKGATE_CON(11), 0, GFLAGS),
--	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart2_np5", "clk_uart2_src", 0,
-+	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart2_np5", "clk_uart2_src", CLK_SET_RATE_PARENT,
- 			PX30_CLKSEL_CON(38), 0, 5, DFLAGS,
- 			PX30_CLKGATE_CON(11), 1, GFLAGS),
- 	COMPOSITE_FRACMUX(0, "clk_uart2_frac", "clk_uart2_src", CLK_SET_RATE_PARENT,
-@@ -686,7 +686,7 @@ static struct rockchip_clk_branch px30_clk_branches[] __initdata = {
- 	COMPOSITE(0, "clk_uart3_src", mux_uart_src_p, 0,
- 			PX30_CLKSEL_CON(40), 14, 2, MFLAGS, 0, 5, DFLAGS,
- 			PX30_CLKGATE_CON(11), 4, GFLAGS),
--	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart3_np5", "clk_uart3_src", 0,
-+	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart3_np5", "clk_uart3_src", CLK_SET_RATE_PARENT,
- 			PX30_CLKSEL_CON(41), 0, 5, DFLAGS,
- 			PX30_CLKGATE_CON(11), 5, GFLAGS),
- 	COMPOSITE_FRACMUX(0, "clk_uart3_frac", "clk_uart3_src", CLK_SET_RATE_PARENT,
-@@ -699,7 +699,7 @@ static struct rockchip_clk_branch px30_clk_branches[] __initdata = {
- 	COMPOSITE(0, "clk_uart4_src", mux_uart_src_p, 0,
- 			PX30_CLKSEL_CON(43), 14, 2, MFLAGS, 0, 5, DFLAGS,
- 			PX30_CLKGATE_CON(11), 8, GFLAGS),
--	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart4_np5", "clk_uart4_src", 0,
-+	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart4_np5", "clk_uart4_src", CLK_SET_RATE_PARENT,
- 			PX30_CLKSEL_CON(44), 0, 5, DFLAGS,
- 			PX30_CLKGATE_CON(11), 9, GFLAGS),
- 	COMPOSITE_FRACMUX(0, "clk_uart4_frac", "clk_uart4_src", CLK_SET_RATE_PARENT,
-@@ -712,7 +712,7 @@ static struct rockchip_clk_branch px30_clk_branches[] __initdata = {
- 	COMPOSITE(0, "clk_uart5_src", mux_uart_src_p, 0,
- 			PX30_CLKSEL_CON(46), 14, 2, MFLAGS, 0, 5, DFLAGS,
- 			PX30_CLKGATE_CON(11), 12, GFLAGS),
--	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart5_np5", "clk_uart5_src", 0,
-+	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart5_np5", "clk_uart5_src", CLK_SET_RATE_PARENT,
- 			PX30_CLKSEL_CON(47), 0, 5, DFLAGS,
- 			PX30_CLKGATE_CON(11), 13, GFLAGS),
- 	COMPOSITE_FRACMUX(0, "clk_uart5_frac", "clk_uart5_src", CLK_SET_RATE_PARENT,
-@@ -934,7 +934,7 @@ static struct rockchip_clk_branch px30_clk_pmu_branches[] __initdata = {
- 	COMPOSITE(0, "clk_uart0_pmu_src", mux_uart_src_p, 0,
- 			PX30_PMU_CLKSEL_CON(3), 14, 2, MFLAGS, 0, 5, DFLAGS,
- 			PX30_PMU_CLKGATE_CON(1), 0, GFLAGS),
--	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart0_np5", "clk_uart0_pmu_src", 0,
-+	COMPOSITE_NOMUX_HALFDIV(0, "clk_uart0_np5", "clk_uart0_pmu_src", CLK_SET_RATE_PARENT,
- 			PX30_PMU_CLKSEL_CON(4), 0, 5, DFLAGS,
- 			PX30_PMU_CLKGATE_CON(1), 1, GFLAGS),
- 	COMPOSITE_FRACMUX(0, "clk_uart0_frac", "clk_uart0_pmu_src", CLK_SET_RATE_PARENT,
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index 546e810c3560..38d032faa05e 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -190,6 +190,15 @@ static void rockchip_fractional_approximation(struct clk_hw *hw,
- 		p_parent = clk_hw_get_parent(clk_hw_get_parent(hw));
- 		p_parent_rate = clk_hw_get_rate(p_parent);
- 		*parent_rate = p_parent_rate;
-+
-+		/* fractional divider not apply if parent_rate is lower than (rate * 20) */
-+		if (*parent_rate < rate * 20) {
-+			pr_warn("%s: %s fractional div is not allowed, so use half-div\n",
-+				__func__, clk_hw_get_name(hw));
-+			*m = 0;
-+			*n = 1;
-+			return;
-+		}
- 	}
- 
- 	/*
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBBdWcgMjgsIDIwMjAgYXQgMDk6MDc6MTNBTSArMDgwMCwgY3JqIHdyb3RlOgo+IEhp
+IFZpbGxlIFN5cmrDpGzDpCwKPiAKPiDlnKggMjAyMC84LzI3IDE4OjU3LCBWaWxsZSBTeXJqw6Rs
+w6Qg5YaZ6YGTOgo+ID4gT24gV2VkLCBBdWcgMjYsIDIwMjAgYXQgMTA6MjM6MjhQTSArMDgwMCwg
+QWxnZWEgQ2FvIHdyb3RlOgo+ID4+IENFQSA4NjEuMyBzcGVjIGFkZHMgY29sb3JpbWV0cnkgZGF0
+YSBibG9jayBmb3IgSERNSS4KPiA+PiBQYXJzaW5nIHRoZSBibG9jayB0byBnZXQgdGhlIGNvbG9y
+aW1ldHJ5IGRhdGEgZnJvbQo+ID4+IHBhbmVsLgo+ID4gQW5kIHdoYXQgZXhhY3RseSBkbyB5b3Ug
+d2FudCB0byBkbyB3aXRoIHRoYXQgZGF0YT8KPiAKPiAKPiBXZSBjYW4gZ2V0IGNvbG9yaW1ldHJ5
+IGRhdGEgYmxvY2sgZnJvbSBlZGlkIHRoZW4gc3VwcG9ydAo+IAo+IEhETUkgY29sb3JpbWV0cnkg
+c3VjaCBhcyBCVDIwMjAuCgpCdXQgd2hhdCBkbyB5b3Ugd2FudCB0byBkbyB3aXRoIGl0PyBUaGUg
+cGF0Y2ggZG9lcyBub3RoaW5nCmZ1bmN0aW9uYWwuCgo+IAo+ID4+IFNpZ25lZC1vZmYtYnk6IEFs
+Z2VhIENhbyA8YWxnZWEuY2FvQHJvY2stY2hpcHMuY29tPgo+ID4+IC0tLQo+ID4+Cj4gPj4gICBk
+cml2ZXJzL2dwdS9kcm0vZHJtX2VkaWQuYyAgfCA0NSArKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrCj4gPj4gICBpbmNsdWRlL2RybS9kcm1fY29ubmVjdG9yLmggfCAgMyArKysK
+PiA+PiAgIGluY2x1ZGUvZHJtL2RybV9lZGlkLmggICAgICB8IDE0ICsrKysrKysrKysrKwo+ID4+
+ICAgMyBmaWxlcyBjaGFuZ2VkLCA2MiBpbnNlcnRpb25zKCspCj4gPj4KPiA+PiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9ncHUvZHJtL2RybV9lZGlkLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2VkaWQu
+Ywo+ID4+IGluZGV4IDMxNDk2YjZjZmM1Ni4uNjdlNjA3YzA0NDkyIDEwMDY0NAo+ID4+IC0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9kcm1fZWRpZC5jCj4gPj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL2Ry
+bV9lZGlkLmMKPiA+PiBAQCAtMzIyMyw2ICszMjIzLDcgQEAgYWRkX2RldGFpbGVkX21vZGVzKHN0
+cnVjdCBkcm1fY29ubmVjdG9yICpjb25uZWN0b3IsIHN0cnVjdCBlZGlkICplZGlkLAo+ID4+ICAg
+I2RlZmluZSBWSURFT19CTE9DSyAgICAgMHgwMgo+ID4+ICAgI2RlZmluZSBWRU5ET1JfQkxPQ0sg
+ICAgMHgwMwo+ID4+ICAgI2RlZmluZSBTUEVBS0VSX0JMT0NLCTB4MDQKPiA+PiArI2RlZmluZSBD
+T0xPUklNRVRSWV9EQVRBX0JMT0NLCQkweDUKPiA+PiAgICNkZWZpbmUgSERSX1NUQVRJQ19NRVRB
+REFUQV9CTE9DSwkweDYKPiA+PiAgICNkZWZpbmUgVVNFX0VYVEVOREVEX1RBRyAweDA3Cj4gPj4g
+ICAjZGVmaW5lIEVYVF9WSURFT19DQVBBQklMSVRZX0JMT0NLIDB4MDAKPiA+PiBAQCAtNDMwOSw2
+ICs0MzEwLDQ4IEBAIHN0YXRpYyB2b2lkIGZpeHVwX2RldGFpbGVkX2NlYV9tb2RlX2Nsb2NrKHN0
+cnVjdCBkcm1fZGlzcGxheV9tb2RlICptb2RlKQo+ID4+ICAgCW1vZGUtPmNsb2NrID0gY2xvY2s7
+Cj4gPj4gICB9Cj4gPj4gICAKPiA+PiArc3RhdGljIGJvb2wgY2VhX2RiX2lzX2hkbWlfY29sb3Jp
+bWV0cnlfZGF0YV9ibG9jayhjb25zdCB1OCAqZGIpCj4gPj4gK3sKPiA+PiArCWlmIChjZWFfZGJf
+dGFnKGRiKSAhPSBVU0VfRVhURU5ERURfVEFHKQo+ID4+ICsJCXJldHVybiBmYWxzZTsKPiA+PiAr
+Cj4gPj4gKwlpZiAoZGJbMV0gIT0gQ09MT1JJTUVUUllfREFUQV9CTE9DSykKPiA+PiArCQlyZXR1
+cm4gZmFsc2U7Cj4gPj4gKwo+ID4+ICsJaWYgKGNlYV9kYl9wYXlsb2FkX2xlbihkYikgPCAyKQo+
+ID4+ICsJCXJldHVybiBmYWxzZTsKPiA+PiArCj4gPj4gKwlyZXR1cm4gdHJ1ZTsKPiA+PiArfQo+
+ID4+ICsKPiA+PiArc3RhdGljIHZvaWQKPiA+PiArZHJtX3BhcnNlX2NvbG9yaW1ldHJ5X2RhdGFf
+YmxvY2soc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3RvciwgY29uc3QgdTggKmRiKQo+ID4+
+ICt7Cj4gPj4gKwlzdHJ1Y3QgZHJtX2hkbWlfaW5mbyAqaW5mbyA9ICZjb25uZWN0b3ItPmRpc3Bs
+YXlfaW5mby5oZG1pOwo+ID4+ICsKPiA+PiArCWlmIChkYlsyXSAmIERSTV9FRElEX0NMUk1FVFJZ
+X3h2WUNDXzYwMSkKPiA+PiArCQlpbmZvLT5jb2xvcmltZXRyeSB8PSBEUk1fRURJRF9DTFJNRVRS
+WV94dllDQ182MDE7Cj4gPj4gKwlpZiAoZGJbMl0gJiBEUk1fRURJRF9DTFJNRVRSWV94dllDQ183
+MDkpCj4gPj4gKwkJaW5mby0+Y29sb3JpbWV0cnkgfD0gRFJNX0VESURfQ0xSTUVUUllfeHZZQ0Nf
+NzA5Owo+ID4+ICsJaWYgKGRiWzJdICYgRFJNX0VESURfQ0xSTUVUUllfc1lDQ182MDEpCj4gPj4g
+KwkJaW5mby0+Y29sb3JpbWV0cnkgfD0gRFJNX0VESURfQ0xSTUVUUllfc1lDQ182MDE7Cj4gPj4g
+KwlpZiAoZGJbMl0gJiBEUk1fRURJRF9DTFJNRVRSWV9BREJZQ0NfNjAxKQo+ID4+ICsJCWluZm8t
+PmNvbG9yaW1ldHJ5IHw9IERSTV9FRElEX0NMUk1FVFJZX0FEQllDQ182MDE7Cj4gPj4gKwlpZiAo
+ZGJbMl0gJiBEUk1fRURJRF9DTFJNRVRSWV9BREJfUkdCKQo+ID4+ICsJCWluZm8tPmNvbG9yaW1l
+dHJ5IHw9IERSTV9FRElEX0NMUk1FVFJZX0FEQl9SR0I7Cj4gPj4gKwlpZiAoZGJbMl0gJiBEUk1f
+RURJRF9DTFJNRVRSWV9CVDIwMjBfQ1lDQykKPiA+PiArCQlpbmZvLT5jb2xvcmltZXRyeSB8PSBE
+Uk1fRURJRF9DTFJNRVRSWV9CVDIwMjBfQ1lDQzsKPiA+PiArCWlmIChkYlsyXSAmIERSTV9FRElE
+X0NMUk1FVFJZX0JUMjAyMF9ZQ0MpCj4gPj4gKwkJaW5mby0+Y29sb3JpbWV0cnkgfD0gRFJNX0VE
+SURfQ0xSTUVUUllfQlQyMDIwX1lDQzsKPiA+PiArCWlmIChkYlsyXSAmIERSTV9FRElEX0NMUk1F
+VFJZX0JUMjAyMF9SR0IpCj4gPj4gKwkJaW5mby0+Y29sb3JpbWV0cnkgfD0gRFJNX0VESURfQ0xS
+TUVUUllfQlQyMDIwX1JHQjsKPiA+PiArCS8qIEJ5dGUgNCBCaXQgNzogRENJLVAzICovCj4gPj4g
+KwlpZiAoZGJbM10gJiBCSVQoNykpCj4gPj4gKwkJaW5mby0+Y29sb3JpbWV0cnkgfD0gRFJNX0VE
+SURfQ0xSTUVUUllfRENJX1AzOwo+ID4+ICsKPiA+PiArCURSTV9ERUJVR19LTVMoIlN1cHBvcnRl
+ZCBDb2xvcmltZXRyeSAweCV4XG4iLCBpbmZvLT5jb2xvcmltZXRyeSk7Cj4gPj4gK30KPiA+PiAr
+Cj4gPj4gICBzdGF0aWMgYm9vbCBjZWFfZGJfaXNfaGRtaV9oZHJfbWV0YWRhdGFfYmxvY2soY29u
+c3QgdTggKmRiKQo+ID4+ICAgewo+ID4+ICAgCWlmIChjZWFfZGJfdGFnKGRiKSAhPSBVU0VfRVhU
+RU5ERURfVEFHKQo+ID4+IEBAIC00OTk0LDYgKzUwMzcsOCBAQCBzdGF0aWMgdm9pZCBkcm1fcGFy
+c2VfY2VhX2V4dChzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAqY29ubmVjdG9yLAo+ID4+ICAgCQkJZHJt
+X3BhcnNlX3ZjZGIoY29ubmVjdG9yLCBkYik7Cj4gPj4gICAJCWlmIChjZWFfZGJfaXNfaGRtaV9o
+ZHJfbWV0YWRhdGFfYmxvY2soZGIpKQo+ID4+ICAgCQkJZHJtX3BhcnNlX2hkcl9tZXRhZGF0YV9i
+bG9jayhjb25uZWN0b3IsIGRiKTsKPiA+PiArCQlpZiAoY2VhX2RiX2lzX2hkbWlfY29sb3JpbWV0
+cnlfZGF0YV9ibG9jayhkYikpCj4gPj4gKwkJCWRybV9wYXJzZV9jb2xvcmltZXRyeV9kYXRhX2Js
+b2NrKGNvbm5lY3RvciwgZGIpOwo+ID4+ICAgCX0KPiA+PiAgIH0KPiA+PiAgIAo+ID4+IGRpZmYg
+LS1naXQgYS9pbmNsdWRlL2RybS9kcm1fY29ubmVjdG9yLmggYi9pbmNsdWRlL2RybS9kcm1fY29u
+bmVjdG9yLmgKPiA+PiBpbmRleCBhZjE0NTYwOGI1ZWQuLmQ1OTljM2I5ZTg4MSAxMDA2NDQKPiA+
+PiAtLS0gYS9pbmNsdWRlL2RybS9kcm1fY29ubmVjdG9yLmgKPiA+PiArKysgYi9pbmNsdWRlL2Ry
+bS9kcm1fY29ubmVjdG9yLmgKPiA+PiBAQCAtMjA3LDYgKzIwNyw5IEBAIHN0cnVjdCBkcm1faGRt
+aV9pbmZvIHsKPiA+PiAgIAo+ID4+ICAgCS8qKiBAeTQyMF9kY19tb2RlczogYml0bWFwIG9mIGRl
+ZXAgY29sb3Igc3VwcG9ydCBpbmRleCAqLwo+ID4+ICAgCXU4IHk0MjBfZGNfbW9kZXM7Cj4gPj4g
+Kwo+ID4+ICsJLyogQGNvbG9yaW1ldHJ5OiBiaXRtYXAgb2Ygc3VwcG9ydGVkIGNvbG9yaW1ldHJ5
+IG1vZGVzICovCj4gPj4gKwl1MTYgY29sb3JpbWV0cnk7Cj4gPj4gICB9Owo+ID4+ICAgCj4gPj4g
+ICAvKioKPiA+PiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX2VkaWQuaCBiL2luY2x1ZGUv
+ZHJtL2RybV9lZGlkLmgKPiA+PiBpbmRleCBjZmE0ZjVhZjQ5YWYuLjk4ZmE3OGMyZjgyZCAxMDA2
+NDQKPiA+PiAtLS0gYS9pbmNsdWRlL2RybS9kcm1fZWRpZC5oCj4gPj4gKysrIGIvaW5jbHVkZS9k
+cm0vZHJtX2VkaWQuaAo+ID4+IEBAIC0yMjksNiArMjI5LDIwIEBAIHN0cnVjdCBkZXRhaWxlZF90
+aW1pbmcgewo+ID4+ICAgCQkJCSAgICBEUk1fRURJRF9ZQ0JDUjQyMF9EQ18zNiB8IFwKPiA+PiAg
+IAkJCQkgICAgRFJNX0VESURfWUNCQ1I0MjBfRENfMzApCj4gPj4gICAKPiA+PiArLyoKPiA+PiAr
+ICogU3VwcG9ydGVkIENvbG9yaW1ldHJ5IGZyb20gY29sb3JpbWV0cnkgZGF0YSBibG9jawo+ID4+
+ICsgKiBhcyBwZXIgQ0VBIDg2MS1HIHNwZWMKPiA+PiArICovCj4gPj4gKyNkZWZpbmUgRFJNX0VE
+SURfQ0xSTUVUUllfeHZZQ0NfNjAxICAgKDEgPDwgMCkKPiA+PiArI2RlZmluZSBEUk1fRURJRF9D
+TFJNRVRSWV94dllDQ183MDkgICAoMSA8PCAxKQo+ID4+ICsjZGVmaW5lIERSTV9FRElEX0NMUk1F
+VFJZX3NZQ0NfNjAxICAgICgxIDw8IDIpCj4gPj4gKyNkZWZpbmUgRFJNX0VESURfQ0xSTUVUUllf
+QURCWUNDXzYwMSAgKDEgPDwgMykKPiA+PiArI2RlZmluZSBEUk1fRURJRF9DTFJNRVRSWV9BREJf
+UkdCICAgICAoMSA8PCA0KQo+ID4+ICsjZGVmaW5lIERSTV9FRElEX0NMUk1FVFJZX0JUMjAyMF9D
+WUNDICgxIDw8IDUpCj4gPj4gKyNkZWZpbmUgRFJNX0VESURfQ0xSTUVUUllfQlQyMDIwX1lDQyAg
+KDEgPDwgNikKPiA+PiArI2RlZmluZSBEUk1fRURJRF9DTFJNRVRSWV9CVDIwMjBfUkdCICAoMSA8
+PCA3KQo+ID4+ICsjZGVmaW5lIERSTV9FRElEX0NMUk1FVFJZX0RDSV9QMyAgICAgICgxIDw8IDE1
+KQo+ID4+ICsKPiA+PiAgIC8qIEVMRCBIZWFkZXIgQmxvY2sgKi8KPiA+PiAgICNkZWZpbmUgRFJN
+X0VMRF9IRUFERVJfQkxPQ0tfU0laRQk0Cj4gPj4gICAKPiA+PiAtLSAKPiA+PiAyLjI1LjEKPiA+
+Pgo+ID4+Cj4gPj4KPiA+PiBfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwo+ID4+IGRyaS1kZXZlbCBtYWlsaW5nIGxpc3QKPiA+PiBkcmktZGV2ZWxAbGlzdHMu
+ZnJlZWRlc2t0b3Aub3JnCj4gPj4gaHR0cHM6Ly9saXN0cy5mcmVlZGVza3RvcC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9kcmktZGV2ZWwKPiAKCi0tIApWaWxsZSBTeXJqw6Rsw6QKSW50ZWwKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
