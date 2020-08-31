@@ -1,61 +1,88 @@
-Return-Path: <SRS0=N1pG=CI=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Dydn=CJ=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6569EC433E2
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Aug 2020 21:29:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 57D6BC433E6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 00:48:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 309B92083E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 30 Aug 2020 21:29:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2528C206CD
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 00:48:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="sUpyXYdB"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 309B92083E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g/dSwxBu";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=dionne-riel-com.20150623.gappssmtp.com header.i=@dionne-riel-com.20150623.gappssmtp.com header.b="1xmu95Op"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2528C206CD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=dionne-riel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rjQlZ7VHENkFVXSkLkW0i7N997KhuREDBI13mSybXSo=; b=sUpyXYdBoSGG3GlC3SBz/zhZM
-	nQ4ADNSY1cHalPQ13wyZI4ERLfPEuNbJdelbGBoYmqXTsp7+iIFV0RNvF7k8AMx9Slt37LzCb0feK
-	FJHxmrcdjTUm8l34Z3uHP7hpt4SGhiDRzTQ8KrTHLE2lhviGt53BKV15ryYTKk916zP72lR7MLSBq
-	4Ew+01FP9AWUumUqnQVcmF0wkKajleRZ3iS+tqXqsYPI+22wNtFWE8iGmiq9yuDkuUmi5OHgxfYZ1
-	Yqnst1huJcLtnre3O8jTyvWMc1yIy7rYBcc4iuMD4KbTakusMgeUslmLedQwpxIlHdwWDkV8tQiVm
-	w4gL6VZWg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From:Date:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=UhtRNB0xYcd0beXPw7XO1p/R11VyrHKS4hYxf9zDPeI=; b=g/dSwxBuUqxL+YYi7Uvjq2Usdw
+	dT/efm47GoYkBv6Bs0xYI2jiYkyIOEvWlDv94ijVKTWnJ3Fl9Pzy6zrtBJ9zTPvjkoCu6WjWzGa9+
+	DQEcQKsixTVfml6T6ytDzQE7Ij/+bcKZsggWoh63rkUj0qtOT3l+SgRL7gCZ28e8I0oYKXkBjs94z
+	3a9IXcTYDDSiYpv30zr163yHUuq9z1gXq9KvxvKTfiiG2yUv7N1H1/9Rlty/9rWBPSDFLIT6C5TQN
+	6NEdX0voD644Z6BF86eDiety3PRYJSonpT5Md4mvvWqL9Q4ZXHtyxUUriGe5tZWC419ARz9wKB1e9
+	ulfXUz0A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kCUtL-0007lb-H5; Sun, 30 Aug 2020 21:29:35 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1kCXzT-0008Jz-JG; Mon, 31 Aug 2020 00:48:07 +0000
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kCUtE-0007kq-32; Sun, 30 Aug 2020 21:29:29 +0000
-Received: from p508fca7b.dip0.t-ipconnect.de ([80.143.202.123]
- helo=phil.fritz.box)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kCUtB-0003Bx-V8; Sun, 30 Aug 2020 23:29:26 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: Adrian Schmutzler <freifunk@adrianschmutzler.de>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: replace status value "ok" by "okay"
-Date: Sun, 30 Aug 2020 23:29:24 +0200
-Message-Id: <159882296016.30005.15088296328562827915.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200830201112.1934-1-freifunk@adrianschmutzler.de>
-References: <20200830201112.1934-1-freifunk@adrianschmutzler.de>
+ id 1kCXzP-0008IG-D3
+ for linux-rockchip@lists.infradead.org; Mon, 31 Aug 2020 00:48:04 +0000
+Received: by mail-qk1-x742.google.com with SMTP id u3so4754518qkd.9
+ for <linux-rockchip@lists.infradead.org>; Sun, 30 Aug 2020 17:48:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=dionne-riel-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ooy/Ds01zwtdWxtvqST7QaBXnPjhUyEPG89CnF8y7sk=;
+ b=1xmu95Opr4FkH3j1bt5qQmg/xRMGvKvX/6+n06ZSpVZiGpi08Id462k/IBTiNGBW+W
+ vc0GOjVJ7mjtM+pcgrBAgPU9g3MUkr3IDK1RE+zazEIRCdODPRBilcTFkcSkdnn+nQLu
+ IJonNitrw4Ktn2EFbjeEoS1jp7VfRZFlvmJaEe2HjMHqNx4fuif1MiVd/yK76NDssYQZ
+ W16wEe4n+cVFipOH4TWD598xkDxGuMlcExX5/QAJhJcoXr+K16O2b4WetzHEDV+SumGo
+ nDnmHQIsECug7izJtt8u9GsYNOJKxbEwba7Unx/2v7NnneJTQowFIh8//EbYWyUR5ajv
+ JvDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ooy/Ds01zwtdWxtvqST7QaBXnPjhUyEPG89CnF8y7sk=;
+ b=Gs/d3cVqy7v73JugC42S/z0vKhxBRjPUhuz1NIG3DwBwQIBSqOTtJOl43srmGekMxs
+ w9A6WgYiPl2xv4ekN/OrDjCdi3+mS7qUEvby3kaP0fEjn9KB7mWP0yHrz8LYs0431x0E
+ 5It9GGey4jK1PJ39i2zygfnPDGXW0CLW0alGaRZPWQ0E/qou/0HJPYwq52j05lVtfrcY
+ 7CCIVe8AcC8JohnbnjaD3tU/TdU1FXhaKcgMXmYm+gAmTvV8yJauyzsY4DBIGI+fVksW
+ FemK9tY8tkdteMVBEagq1Ru2pZW6uToEZhhTTCJSD3l/ad8qnW1gGjyBj4VOSDjlp+fk
+ DWkQ==
+X-Gm-Message-State: AOAM531VLgXvuVRzDuyihjCKDjwpp3lLspmK1Yl0/YrxAScs6aNezxH/
+ uMamQeu5D33yqUL1NVaU58R+Dw==
+X-Google-Smtp-Source: ABdhPJzTmMUpbFhAM7CfMqDcEsaBir+F5cMQqZ4Ghh9KJgAcb5T7yo+9dYddAsrQyQWeBhmA3r9V6A==
+X-Received: by 2002:a05:620a:ed3:: with SMTP id
+ x19mr8136108qkm.89.1598834879435; 
+ Sun, 30 Aug 2020 17:47:59 -0700 (PDT)
+Received: from DUFFMAN (135-23-195-85.cpe.pppoe.ca. [135.23.195.85])
+ by smtp.gmail.com with ESMTPSA id g45sm8727004qtb.60.2020.08.30.17.47.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 30 Aug 2020 17:47:59 -0700 (PDT)
+Date: Sun, 30 Aug 2020 20:47:56 -0400
+From: Samuel Dionne-Riel <samuel@dionne-riel.com>
+To: linux-kernel@vger.kernel.org
+Subject: innolux p097pfg dpms off/on fails (on gru-scarlet)
+Message-ID: <20200830204756.1f9dba11@DUFFMAN>
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200830_172928_204494_2100D247 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20200830_204803_658637_250666F2 
+X-CRM114-Status: GOOD (  20.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,26 +95,188 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org, Lin Huang <hl@rock-chips.com>,
+ dri-devel@lists.freedesktop.org, Heiko Stuebner <heiko@sntech.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, 30 Aug 2020 22:11:12 +0200, Adrian Schmutzler wrote:
-> While the DT parser recognizes "ok" as a valid value for the
-> "status" property, it is actually mentioned nowhere. Use the
-> proper value "okay" instead, as done in the majority of files
-> already.
+Hi,
 
-Applied, thanks!
+I have an Asus Chromebook Tablet CT100PA, which I will refer to as
+"dumo" from this point on, which is a specific variant of gru-scarlet.
+As far as I am aware, all gru-scarlet are the same, except for the
+display, and in turn the different scarlets with the innolux panel
+are the same.
 
-[1/1] arm64: dts: rockchip: replace status value "ok" by "okay"
-      commit: 9caff35d7eba8e15c996c694a282fd38b2ea345e
+I do not have the hardware to verify the kingdisplay variant's
+behaviour, though I don't really expect it to fail the same way, but it
+is still a possibility that there is a root cause that could cause a
+similar failure.
 
-Best regards,
+The display will apparently suspend (right wording?) fine with DPMS,
+but will not resume (wording?) fine. This has been an issue since the
+introduction of the driver and the introduction of the device (scarlet)
+to the kernel, and is still on 5.9-rc2.
+
+Doing the following:
+
+  $ xset dpms force off # standby, or suspend
+  $ xset dpms force on
+
+Pretty much instantly the following messages are logged:
+
+[   53.731851] dw-mipi-dsi-rockchip ff960000.mipi: failed to write command FIFO
+[   53.739815] panel-innolux-p079zca ff960000.mipi.0: failed to write command 0
+
+Then 120 seconds later, this pair of WARN:
+
+[  173.754168] ------------[ cut here ]------------
+[  173.759343] pclk_mipi_dsi1 already disabled
+[  173.764076] WARNING: CPU: 2 PID: 5182 at drivers/clk/clk.c:952 clk_core_disable+0x2c/0x94
+[  173.773216] Modules linked in:
+[  173.776639] CPU: 2 PID: 5182 Comm: X Not tainted 5.9.0-rc2 #1-mobile-nixos
+[  173.784323] Hardware name: Google Scarlet (DT)
+[  173.789292] pstate: 40000085 (nZcv daIf -PAN -UAO BTYPE=--)
+[  173.795522] pc : clk_core_disable+0x2c/0x94
+[  173.800199] lr : clk_core_disable+0x2c/0x94
+[  173.804871] sp : ffff800011d3ba20
+[  173.808573] x29: ffff800011d3ba20 x28: 0000000000000028
+[  173.814514] x27: ffff0000c32bdf00 x26: 0000000000000038
+[  173.820455] x25: ffff800010d2e2eb x24: ffff0000edece000
+[  173.826395] x23: ffff0000f0bea680 x22: 0000000000000001
+[  173.832326] x21: ffff0000ef82e0e0 x20: ffff0000f0986500
+[  173.838266] x19: ffff0000f0986500 x18: 0000000000000000
+[  173.844198] x17: 0000000000000000 x16: 0000000000000000
+[  173.850137] x15: 000000000000000a x14: 00000000000b962f
+[  173.856077] x13: ffff800091d3b76f x12: 0000000000000006
+[  173.862008] x11: ffffffffffffffff x10: 0000000000000030
+[  173.867939] x9 : ffff800011d3b77d x8 : 0000000000000000
+[  173.873869] x7 : 0000000000000008 x6 : ffff80001118811e
+[  173.879809] x5 : ffff0000f5589e48 x4 : 0000000000000000
+[  173.885741] x3 : 0000000000000027 x2 : 0000000000000027
+[  173.891680] x1 : ffff0000e5c3ee40 x0 : 000000000000001f
+[  173.897612] Call trace:
+[  173.900349]  clk_core_disable+0x2c/0x94
+[  173.904637]  clk_core_disable_lock+0x20/0x34
+[  173.909413]  clk_disable+0x1c/0x28
+[  173.913220]  dw_mipi_dsi_bridge_post_disable+0x80/0x120
+[  173.919065]  drm_atomic_bridge_chain_post_disable+0x74/0x98
+[  173.925297]  drm_atomic_helper_commit_modeset_disables+0x3d8/0x3dc
+[  173.932208]  drm_atomic_helper_commit_tail_rpm+0x20/0xa0
+[  173.938138]  commit_tail+0x74/0xf8
+[  173.941941]  drm_atomic_helper_commit+0x104/0x108
+[  173.947203]  drm_atomic_commit+0x48/0x54
+[  173.951590]  drm_atomic_connector_commit_dpms+0xa0/0x100
+[  173.957531]  drm_mode_obj_set_property_ioctl+0xd4/0x2c8
+[  173.963378]  drm_connector_property_set_ioctl+0x20/0x28
+[  173.969220]  drm_ioctl_kernel+0xa0/0xdc
+[  173.973507]  drm_ioctl+0x2c4/0x2ec
+[  173.977312]  vfs_ioctl+0x24/0x40
+[  173.980921]  __arm64_sys_ioctl+0x74/0xa4
+[  173.985299]  el0_svc_common.constprop.0+0xe0/0x160
+[  173.990655]  do_el0_svc+0x44/0x70
+[  173.994362]  el0_sync_handler+0xc8/0x184
+[  173.998747]  el0_sync+0x140/0x180
+[  174.002450] ---[ end trace 6c6d0de3ca79ec7d ]---
+[  174.007763] ------------[ cut here ]------------
+[  174.012925] pclk_mipi_dsi0 already disabled
+[  174.017633] WARNING: CPU: 5 PID: 5182 at drivers/clk/clk.c:952 clk_core_disable+0x2c/0x94
+[  174.026770] Modules linked in:
+[  174.030184] CPU: 5 PID: 5182 Comm: X Tainted: G        W         5.9.0-rc2 #1-mobile-nixos
+[  174.039419] Hardware name: Google Scarlet (DT)
+[  174.044382] pstate: 40000085 (nZcv daIf -PAN -UAO BTYPE=--)
+[  174.050608] pc : clk_core_disable+0x2c/0x94
+[  174.055278] lr : clk_core_disable+0x2c/0x94
+[  174.059948] sp : ffff800011d3ba20
+[  174.063646] x29: ffff800011d3ba20 x28: 0000000000000028
+[  174.069582] x27: ffff0000c32bdf00 x26: 0000000000000038
+[  174.075517] x25: ffff800010d2e2eb x24: ffff0000edece000
+[  174.081451] x23: ffff0000f0bea680 x22: 0000000000000001
+[  174.087385] x21: ffff0000ef82e0e0 x20: ffff0000f0986400
+[  174.093319] x19: ffff0000f0986400 x18: 0000000000000000
+[  174.099254] x17: 0000000000000000 x16: 0000000000000000
+[  174.105187] x15: 000000000000000a x14: 000000000000327d
+[  174.111121] x13: ffff800091d3b76f x12: 0000000000000006
+[  174.117055] x11: ffffffffffffffff x10: 0000000000000030
+[  174.122989] x9 : ffff800011d3b77d x8 : 0000000000000000
+[  174.128923] x7 : 0000000000000008 x6 : ffff80001118811e
+[  174.134856] x5 : ffff0000f55cbe48 x4 : 0000000000000000
+[  174.140789] x3 : 0000000000000027 x2 : 0000000000000027
+[  174.146723] x1 : ffff0000e5c3ee40 x0 : 000000000000001f
+[  174.152657] Call trace:
+[  174.155388]  clk_core_disable+0x2c/0x94
+[  174.159670]  clk_core_disable_lock+0x20/0x34
+[  174.164439]  clk_disable+0x1c/0x28
+[  174.168239]  dw_mipi_dsi_bridge_post_disable+0xc4/0x120
+[  174.174077]  drm_atomic_bridge_chain_post_disable+0x74/0x98
+[  174.180303]  drm_atomic_helper_commit_modeset_disables+0x3d8/0x3dc
+[  174.187208]  drm_atomic_helper_commit_tail_rpm+0x20/0xa0
+[  174.193140]  commit_tail+0x74/0xf8
+[  174.196938]  drm_atomic_helper_commit+0x104/0x108
+[  174.202191]  drm_atomic_commit+0x48/0x54
+[  174.206571]  drm_atomic_connector_commit_dpms+0xa0/0x100
+[  174.212505]  drm_mode_obj_set_property_ioctl+0xd4/0x2c8
+[  174.218343]  drm_connector_property_set_ioctl+0x20/0x28
+[  174.224179]  drm_ioctl_kernel+0xa0/0xdc
+[  174.228461]  drm_ioctl+0x2c4/0x2ec
+[  174.232258]  vfs_ioctl+0x24/0x40
+[  174.235860]  __arm64_sys_ioctl+0x74/0xa4
+[  174.240240]  el0_svc_common.constprop.0+0xe0/0x160
+[  174.245592]  do_el0_svc+0x44/0x70
+[  174.249294]  el0_sync_handler+0xc8/0x184
+[  174.253672]  el0_sync+0x140/0x180
+[  174.257372] ---[ end trace 6c6d0de3ca79ec7e ]---
+
+
+Any further interaction with trying to "resume" or "suspend" the
+display ends up with similar messages that I'd characterize as
+the clock states being "confused".
+
+ * Enabling unprepared pclk_mipi_dsi[01]
+ * pclk_mipi_dsi[01] already disabled
+
+Note that before being stuck in a confused state, using the /sys/ nodes
+as follow seem to not cause issues:
+
+  $ echo 1 | sudo tee /sys/class/graphics/fb0/blank
+  $ echo 0 | sudo tee /sys/class/graphics/fb0/blank
+
+Though once set in a confused state, it fails to recover with anything
+I throw at it.
+
+Not sure that it matters, but during all the operations the backlight
+operates as expected, it seems only the MIPI subsystem is not working
+as expected.
+
+For context, here's some bits of knowledge from an IRC conversation on
+the #chromium-os channel on Freenode.
+
+> <mmind00> samueldr amstan: the issue is probably with how
+> the dsi bridge handles powerons ... which in turn is a hack around
+> how DRM handles display bringup
+>
+> <mmind00> samueldr amstan: bigger explanation from an
+> internal commit I carry around: http://paste.debian.net/1161814/
+>
+> <mmind00> at least that is the dsi issue I ran into with
+> our product using the dw-dsi ... even if dw-dsi is still pre-bridge,
+> the issue might be similar - see non-atomic access not always calling
+> mode_set
+
+If there's any more information that can be helpful for figuring out
+the issue, I'm open to trying them.
+
+Additionally, I'm okay with being given tips or resources about how to
+fix the problem. This is out of my realm of expertise, and I'm
+definitely confused by the new terminology and lack of background
+knowledge.
+
+Thanks,
+
 -- 
-Heiko Stuebner <heiko@sntech.de>
+Samuel Dionne-Riel
 
 _______________________________________________
 Linux-rockchip mailing list
