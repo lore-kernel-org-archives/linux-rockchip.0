@@ -2,87 +2,72 @@ Return-Path: <SRS0=Dydn=CJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 57D6BC433E6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 00:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 69AA0C433E7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 01:10:54 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2528C206CD
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 00:48:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3A30A20757
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 01:10:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="g/dSwxBu";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=dionne-riel-com.20150623.gappssmtp.com header.i=@dionne-riel-com.20150623.gappssmtp.com header.b="1xmu95Op"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2528C206CD
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=dionne-riel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OtJ6K7aD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A30A20757
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=katsuster.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:To:From:Date:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=UhtRNB0xYcd0beXPw7XO1p/R11VyrHKS4hYxf9zDPeI=; b=g/dSwxBuUqxL+YYi7Uvjq2Usdw
-	dT/efm47GoYkBv6Bs0xYI2jiYkyIOEvWlDv94ijVKTWnJ3Fl9Pzy6zrtBJ9zTPvjkoCu6WjWzGa9+
-	DQEcQKsixTVfml6T6ytDzQE7Ij/+bcKZsggWoh63rkUj0qtOT3l+SgRL7gCZ28e8I0oYKXkBjs94z
-	3a9IXcTYDDSiYpv30zr163yHUuq9z1gXq9KvxvKTfiiG2yUv7N1H1/9Rlty/9rWBPSDFLIT6C5TQN
-	6NEdX0voD644Z6BF86eDiety3PRYJSonpT5Md4mvvWqL9Q4ZXHtyxUUriGe5tZWC419ARz9wKB1e9
-	ulfXUz0A==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=0vKIvc0VBoT3vYpygbT+f7fmhVEVGodyp7rVJKB0pr8=; b=OtJ6K7aDBwgyGRTis3lN7quMa
+	tzM+PW0AhwCD4Fo2S0cwYg7e8NrRPRAFDK0sWG76OycPPsUPPUiFarky7TANPYJ6maXcU0aooPEtq
+	IUnhrF/qw4WYtUEyppVKSjfQRCIn2ONcEdExmORkLjRWeusXk2kYWR+NP6j/7AT9JKrZ3g2Feuytg
+	Ny4PM72O11lfUrnrTakEa2yqpv2t7o26CY2AuBIHDqUB/X4yC58VvrbqDhfDmYYImWlLNfPPz5i4k
+	cjP30WP6cvsmJXxjaLwHt0uC6Kybo9exa+fBZ0Fzd8X6PglpgHJH/2v1i+X4BKznrhwDz5ZST4yQH
+	omzdnYAng==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kCXzT-0008Jz-JG; Mon, 31 Aug 2020 00:48:07 +0000
-Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742])
+	id 1kCYLO-0000sx-LG; Mon, 31 Aug 2020 01:10:46 +0000
+Received: from www1102.sakura.ne.jp ([219.94.129.142])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kCXzP-0008IG-D3
- for linux-rockchip@lists.infradead.org; Mon, 31 Aug 2020 00:48:04 +0000
-Received: by mail-qk1-x742.google.com with SMTP id u3so4754518qkd.9
- for <linux-rockchip@lists.infradead.org>; Sun, 30 Aug 2020 17:48:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=dionne-riel-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:mime-version
- :content-transfer-encoding;
- bh=Ooy/Ds01zwtdWxtvqST7QaBXnPjhUyEPG89CnF8y7sk=;
- b=1xmu95Opr4FkH3j1bt5qQmg/xRMGvKvX/6+n06ZSpVZiGpi08Id462k/IBTiNGBW+W
- vc0GOjVJ7mjtM+pcgrBAgPU9g3MUkr3IDK1RE+zazEIRCdODPRBilcTFkcSkdnn+nQLu
- IJonNitrw4Ktn2EFbjeEoS1jp7VfRZFlvmJaEe2HjMHqNx4fuif1MiVd/yK76NDssYQZ
- W16wEe4n+cVFipOH4TWD598xkDxGuMlcExX5/QAJhJcoXr+K16O2b4WetzHEDV+SumGo
- nDnmHQIsECug7izJtt8u9GsYNOJKxbEwba7Unx/2v7NnneJTQowFIh8//EbYWyUR5ajv
- JvDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-transfer-encoding;
- bh=Ooy/Ds01zwtdWxtvqST7QaBXnPjhUyEPG89CnF8y7sk=;
- b=Gs/d3cVqy7v73JugC42S/z0vKhxBRjPUhuz1NIG3DwBwQIBSqOTtJOl43srmGekMxs
- w9A6WgYiPl2xv4ekN/OrDjCdi3+mS7qUEvby3kaP0fEjn9KB7mWP0yHrz8LYs0431x0E
- 5It9GGey4jK1PJ39i2zygfnPDGXW0CLW0alGaRZPWQ0E/qou/0HJPYwq52j05lVtfrcY
- 7CCIVe8AcC8JohnbnjaD3tU/TdU1FXhaKcgMXmYm+gAmTvV8yJauyzsY4DBIGI+fVksW
- FemK9tY8tkdteMVBEagq1Ru2pZW6uToEZhhTTCJSD3l/ad8qnW1gGjyBj4VOSDjlp+fk
- DWkQ==
-X-Gm-Message-State: AOAM531VLgXvuVRzDuyihjCKDjwpp3lLspmK1Yl0/YrxAScs6aNezxH/
- uMamQeu5D33yqUL1NVaU58R+Dw==
-X-Google-Smtp-Source: ABdhPJzTmMUpbFhAM7CfMqDcEsaBir+F5cMQqZ4Ghh9KJgAcb5T7yo+9dYddAsrQyQWeBhmA3r9V6A==
-X-Received: by 2002:a05:620a:ed3:: with SMTP id
- x19mr8136108qkm.89.1598834879435; 
- Sun, 30 Aug 2020 17:47:59 -0700 (PDT)
-Received: from DUFFMAN (135-23-195-85.cpe.pppoe.ca. [135.23.195.85])
- by smtp.gmail.com with ESMTPSA id g45sm8727004qtb.60.2020.08.30.17.47.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 30 Aug 2020 17:47:59 -0700 (PDT)
-Date: Sun, 30 Aug 2020 20:47:56 -0400
-From: Samuel Dionne-Riel <samuel@dionne-riel.com>
-To: linux-kernel@vger.kernel.org
-Subject: innolux p097pfg dpms off/on fails (on gru-scarlet)
-Message-ID: <20200830204756.1f9dba11@DUFFMAN>
-X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ id 1kCYLK-0000rp-QK; Mon, 31 Aug 2020 01:10:44 +0000
+Received: from fsav107.sakura.ne.jp (fsav107.sakura.ne.jp [27.133.134.234])
+ by www1102.sakura.ne.jp (8.15.2/8.15.2) with ESMTP id 07V1AU7J008966;
+ Mon, 31 Aug 2020 10:10:30 +0900 (JST)
+ (envelope-from katsuhiro@katsuster.net)
+Received: from www1102.sakura.ne.jp (219.94.129.142)
+ by fsav107.sakura.ne.jp (F-Secure/fsigk_smtp/550/fsav107.sakura.ne.jp);
+ Mon, 31 Aug 2020 10:10:30 +0900 (JST)
+X-Virus-Status: clean(F-Secure/fsigk_smtp/550/fsav107.sakura.ne.jp)
+Received: from [192.168.1.2] (80.57.232.153.ap.dti.ne.jp [153.232.57.80])
+ (authenticated bits=0)
+ by www1102.sakura.ne.jp (8.15.2/8.15.2) with ESMTPSA id 07V1ATDa008961
+ (version=TLSv1.2 cipher=DHE-RSA-AES256-SHA bits=256 verify=NO);
+ Mon, 31 Aug 2020 10:10:30 +0900 (JST)
+ (envelope-from katsuhiro@katsuster.net)
+Subject: Re: [PATCH v2] arm64: dts: rockchip: add SPDIF node for
+ rk3399-rockpro64
+To: Heiko Stuebner <heiko@sntech.de>
+References: <20200810091619.3170534-1-katsuhiro@katsuster.net>
+ <9694178.H46bfk3Hth@phil>
+From: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+Message-ID: <6aea0d8d-00a7-6697-4085-bd2cdcd98f26@katsuster.net>
+Date: Mon, 31 Aug 2020 10:10:29 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <9694178.H46bfk3Hth@phil>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200830_204803_658637_250666F2 
-X-CRM114-Status: GOOD (  20.29  )
+X-CRM114-CacheID: sfid-20200830_211043_465869_F60E989D 
+X-CRM114-Status: GOOD (  21.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,188 +80,120 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, Lin Huang <hl@rock-chips.com>,
- dri-devel@lists.freedesktop.org, Heiko Stuebner <heiko@sntech.de>
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hello Heiko,
 
-I have an Asus Chromebook Tablet CT100PA, which I will refer to as
-"dumo" from this point on, which is a specific variant of gru-scarlet.
-As far as I am aware, all gru-scarlet are the same, except for the
-display, and in turn the different scarlets with the innolux panel
-are the same.
+On 2020/08/31 4:08, Heiko Stuebner wrote:
+> Hi,
+> 
+> Am Montag, 10. August 2020, 11:16:19 CEST schrieb Katsuhiro Suzuki:
+>> This patch adds 'disabled' SPDIF sound node and related settings
+>> for rk3399-rockpro64.
+>>
+>> There are 2 reasons:
+>>    - All RK3399 dma-bus channels have been already used by I2S0/1/2
+>>    - RockPro64 does not have SPDIF optical nor coaxial connector,
+>>      just have 3pins
+> 
+> I don't really understand what you mean here.
+> 
+> Like is there spdif on the board or not? Because you call it "disabled"
+> and also indicate that no i2s is available anymore, yet you mention 3 pins.
+> What do they do then?
+> 
 
-I do not have the hardware to verify the kingdisplay variant's
-behaviour, though I don't really expect it to fail the same way, but it
-is still a possibility that there is a root cause that could cause a
-similar failure.
+RockPro64 has output pins for SPDIF Tx. But RK3399 does not have enough DMA
+channel for enabling SPDIF tx. Current settings are:
 
-The display will apparently suspend (right wording?) fine with DPMS,
-but will not resume (wording?) fine. This has been an issue since the
-introduction of the driver and the introduction of the device (scarlet)
-to the kernel, and is still on 5.9-rc2.
+   - I2S0     (Req number 0, 1): Enabled  : Output to 40pin headers (CON40)
+   - I2S1     (Req number 2, 3): Enabled  : Output to ES8316 on board
+   - I2S2     (Req number 4, 5): Enabled  : Output to internal HDMI core
+   - SPDIF Tx (Req number 7)   : Disabled : Output to other connector (J10)
 
-Doing the following:
+If we want to enable ALL sound I/Os, we need 7 DMA channels for it.
+But... Unfortunately, RK3399 has only 6 DMA channels for sounds, PWM and SPIs.
 
-  $ xset dpms force off # standby, or suspend
-  $ xset dpms force on
+So users of RockPro64 have to choose from the following:
 
-Pretty much instantly the following messages are logged:
+   - Disable one of I2S (Ex. I2S0) and enable SPDIF tx
+   - Keep enable I2S0/1/2 and disable SPDIF tx
 
-[   53.731851] dw-mipi-dsi-rockchip ff960000.mipi: failed to write command FIFO
-[   53.739815] panel-innolux-p079zca ff960000.mipi.0: failed to write command 0
+> Thanks
+> Heiko
+> 
+> 
 
-Then 120 seconds later, this pair of WARN:
-
-[  173.754168] ------------[ cut here ]------------
-[  173.759343] pclk_mipi_dsi1 already disabled
-[  173.764076] WARNING: CPU: 2 PID: 5182 at drivers/clk/clk.c:952 clk_core_disable+0x2c/0x94
-[  173.773216] Modules linked in:
-[  173.776639] CPU: 2 PID: 5182 Comm: X Not tainted 5.9.0-rc2 #1-mobile-nixos
-[  173.784323] Hardware name: Google Scarlet (DT)
-[  173.789292] pstate: 40000085 (nZcv daIf -PAN -UAO BTYPE=--)
-[  173.795522] pc : clk_core_disable+0x2c/0x94
-[  173.800199] lr : clk_core_disable+0x2c/0x94
-[  173.804871] sp : ffff800011d3ba20
-[  173.808573] x29: ffff800011d3ba20 x28: 0000000000000028
-[  173.814514] x27: ffff0000c32bdf00 x26: 0000000000000038
-[  173.820455] x25: ffff800010d2e2eb x24: ffff0000edece000
-[  173.826395] x23: ffff0000f0bea680 x22: 0000000000000001
-[  173.832326] x21: ffff0000ef82e0e0 x20: ffff0000f0986500
-[  173.838266] x19: ffff0000f0986500 x18: 0000000000000000
-[  173.844198] x17: 0000000000000000 x16: 0000000000000000
-[  173.850137] x15: 000000000000000a x14: 00000000000b962f
-[  173.856077] x13: ffff800091d3b76f x12: 0000000000000006
-[  173.862008] x11: ffffffffffffffff x10: 0000000000000030
-[  173.867939] x9 : ffff800011d3b77d x8 : 0000000000000000
-[  173.873869] x7 : 0000000000000008 x6 : ffff80001118811e
-[  173.879809] x5 : ffff0000f5589e48 x4 : 0000000000000000
-[  173.885741] x3 : 0000000000000027 x2 : 0000000000000027
-[  173.891680] x1 : ffff0000e5c3ee40 x0 : 000000000000001f
-[  173.897612] Call trace:
-[  173.900349]  clk_core_disable+0x2c/0x94
-[  173.904637]  clk_core_disable_lock+0x20/0x34
-[  173.909413]  clk_disable+0x1c/0x28
-[  173.913220]  dw_mipi_dsi_bridge_post_disable+0x80/0x120
-[  173.919065]  drm_atomic_bridge_chain_post_disable+0x74/0x98
-[  173.925297]  drm_atomic_helper_commit_modeset_disables+0x3d8/0x3dc
-[  173.932208]  drm_atomic_helper_commit_tail_rpm+0x20/0xa0
-[  173.938138]  commit_tail+0x74/0xf8
-[  173.941941]  drm_atomic_helper_commit+0x104/0x108
-[  173.947203]  drm_atomic_commit+0x48/0x54
-[  173.951590]  drm_atomic_connector_commit_dpms+0xa0/0x100
-[  173.957531]  drm_mode_obj_set_property_ioctl+0xd4/0x2c8
-[  173.963378]  drm_connector_property_set_ioctl+0x20/0x28
-[  173.969220]  drm_ioctl_kernel+0xa0/0xdc
-[  173.973507]  drm_ioctl+0x2c4/0x2ec
-[  173.977312]  vfs_ioctl+0x24/0x40
-[  173.980921]  __arm64_sys_ioctl+0x74/0xa4
-[  173.985299]  el0_svc_common.constprop.0+0xe0/0x160
-[  173.990655]  do_el0_svc+0x44/0x70
-[  173.994362]  el0_sync_handler+0xc8/0x184
-[  173.998747]  el0_sync+0x140/0x180
-[  174.002450] ---[ end trace 6c6d0de3ca79ec7d ]---
-[  174.007763] ------------[ cut here ]------------
-[  174.012925] pclk_mipi_dsi0 already disabled
-[  174.017633] WARNING: CPU: 5 PID: 5182 at drivers/clk/clk.c:952 clk_core_disable+0x2c/0x94
-[  174.026770] Modules linked in:
-[  174.030184] CPU: 5 PID: 5182 Comm: X Tainted: G        W         5.9.0-rc2 #1-mobile-nixos
-[  174.039419] Hardware name: Google Scarlet (DT)
-[  174.044382] pstate: 40000085 (nZcv daIf -PAN -UAO BTYPE=--)
-[  174.050608] pc : clk_core_disable+0x2c/0x94
-[  174.055278] lr : clk_core_disable+0x2c/0x94
-[  174.059948] sp : ffff800011d3ba20
-[  174.063646] x29: ffff800011d3ba20 x28: 0000000000000028
-[  174.069582] x27: ffff0000c32bdf00 x26: 0000000000000038
-[  174.075517] x25: ffff800010d2e2eb x24: ffff0000edece000
-[  174.081451] x23: ffff0000f0bea680 x22: 0000000000000001
-[  174.087385] x21: ffff0000ef82e0e0 x20: ffff0000f0986400
-[  174.093319] x19: ffff0000f0986400 x18: 0000000000000000
-[  174.099254] x17: 0000000000000000 x16: 0000000000000000
-[  174.105187] x15: 000000000000000a x14: 000000000000327d
-[  174.111121] x13: ffff800091d3b76f x12: 0000000000000006
-[  174.117055] x11: ffffffffffffffff x10: 0000000000000030
-[  174.122989] x9 : ffff800011d3b77d x8 : 0000000000000000
-[  174.128923] x7 : 0000000000000008 x6 : ffff80001118811e
-[  174.134856] x5 : ffff0000f55cbe48 x4 : 0000000000000000
-[  174.140789] x3 : 0000000000000027 x2 : 0000000000000027
-[  174.146723] x1 : ffff0000e5c3ee40 x0 : 000000000000001f
-[  174.152657] Call trace:
-[  174.155388]  clk_core_disable+0x2c/0x94
-[  174.159670]  clk_core_disable_lock+0x20/0x34
-[  174.164439]  clk_disable+0x1c/0x28
-[  174.168239]  dw_mipi_dsi_bridge_post_disable+0xc4/0x120
-[  174.174077]  drm_atomic_bridge_chain_post_disable+0x74/0x98
-[  174.180303]  drm_atomic_helper_commit_modeset_disables+0x3d8/0x3dc
-[  174.187208]  drm_atomic_helper_commit_tail_rpm+0x20/0xa0
-[  174.193140]  commit_tail+0x74/0xf8
-[  174.196938]  drm_atomic_helper_commit+0x104/0x108
-[  174.202191]  drm_atomic_commit+0x48/0x54
-[  174.206571]  drm_atomic_connector_commit_dpms+0xa0/0x100
-[  174.212505]  drm_mode_obj_set_property_ioctl+0xd4/0x2c8
-[  174.218343]  drm_connector_property_set_ioctl+0x20/0x28
-[  174.224179]  drm_ioctl_kernel+0xa0/0xdc
-[  174.228461]  drm_ioctl+0x2c4/0x2ec
-[  174.232258]  vfs_ioctl+0x24/0x40
-[  174.235860]  __arm64_sys_ioctl+0x74/0xa4
-[  174.240240]  el0_svc_common.constprop.0+0xe0/0x160
-[  174.245592]  do_el0_svc+0x44/0x70
-[  174.249294]  el0_sync_handler+0xc8/0x184
-[  174.253672]  el0_sync+0x140/0x180
-[  174.257372] ---[ end trace 6c6d0de3ca79ec7e ]---
+Best Regards,
+Katsuhiro Suzuki
 
 
-Any further interaction with trying to "resume" or "suspend" the
-display ends up with similar messages that I'd characterize as
-the clock states being "confused".
+>> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
+>>
+>> ---
+>>
+>> Changes in v2:
+>>    - Remove redundant status property
+>> ---
+>>   .../boot/dts/rockchip/rk3399-rockpro64.dtsi   | 27 +++++++++++++++++++
+>>   1 file changed, 27 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+>> index 6e553ff47534..58097245994a 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
+>> @@ -76,6 +76,23 @@ sound {
+>>   		dais = <&i2s1_p0>;
+>>   	};
+>>   
+>> +	sound-dit {
+>> +		compatible = "audio-graph-card";
+>> +		label = "rockchip,rk3399";
+>> +		dais = <&spdif_p0>;
+>> +	};
+>> +
+>> +	spdif-dit {
+>> +		compatible = "linux,spdif-dit";
+>> +		#sound-dai-cells = <0>;
+>> +
+>> +		port {
+>> +			dit_p0_0: endpoint {
+>> +				remote-endpoint = <&spdif_p0_0>;
+>> +			};
+>> +		};
+>> +	};
+>> +
+>>   	vcc12v_dcin: vcc12v-dcin {
+>>   		compatible = "regulator-fixed";
+>>   		regulator-name = "vcc12v_dcin";
+>> @@ -698,6 +715,16 @@ &sdhci {
+>>   	status = "okay";
+>>   };
+>>   
+>> +&spdif {
+>> +	pinctrl-0 = <&spdif_bus_1>;
+>> +
+>> +	spdif_p0: port {
+>> +		spdif_p0_0: endpoint {
+>> +			remote-endpoint = <&dit_p0_0>;
+>> +		};
+>> +	};
+>> +};
+>> +
+>>   &spi1 {
+>>   	status = "okay";
+>>   
+>>
+> 
+> 
+> 
+> 
 
- * Enabling unprepared pclk_mipi_dsi[01]
- * pclk_mipi_dsi[01] already disabled
-
-Note that before being stuck in a confused state, using the /sys/ nodes
-as follow seem to not cause issues:
-
-  $ echo 1 | sudo tee /sys/class/graphics/fb0/blank
-  $ echo 0 | sudo tee /sys/class/graphics/fb0/blank
-
-Though once set in a confused state, it fails to recover with anything
-I throw at it.
-
-Not sure that it matters, but during all the operations the backlight
-operates as expected, it seems only the MIPI subsystem is not working
-as expected.
-
-For context, here's some bits of knowledge from an IRC conversation on
-the #chromium-os channel on Freenode.
-
-> <mmind00> samueldr amstan: the issue is probably with how
-> the dsi bridge handles powerons ... which in turn is a hack around
-> how DRM handles display bringup
->
-> <mmind00> samueldr amstan: bigger explanation from an
-> internal commit I carry around: http://paste.debian.net/1161814/
->
-> <mmind00> at least that is the dsi issue I ran into with
-> our product using the dw-dsi ... even if dw-dsi is still pre-bridge,
-> the issue might be similar - see non-atomic access not always calling
-> mode_set
-
-If there's any more information that can be helpful for figuring out
-the issue, I'm open to trying them.
-
-Additionally, I'm okay with being given tips or resources about how to
-fix the problem. This is out of my realm of expertise, and I'm
-definitely confused by the new terminology and lack of background
-knowledge.
-
-Thanks,
-
--- 
-Samuel Dionne-Riel
 
 _______________________________________________
 Linux-rockchip mailing list
