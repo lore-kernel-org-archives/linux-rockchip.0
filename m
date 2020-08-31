@@ -2,77 +2,93 @@ Return-Path: <SRS0=Dydn=CJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.4 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48868C433E6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 08:50:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 952A4C433E2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 10:08:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EE22F206F0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 08:50:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5E18A20693
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 10:08:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ORjZBgfW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE22F206F0
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D7aKGHaE";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WEwUCWrg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E18A20693
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1nOiEUrnQEpw2qOs0O9S452QNWy7um4oySQk6F/arQM=; b=ORjZBgfWF8LO8Exh4hOF1+OQR3
-	SyC6OAekSXnoomozchODHT34C8AmlF4sf/g2WnBfGFx9xiHIZc1Hg6fn4voBhDbIKb+LobV0t+VAX
-	NBMaSNOPSWPTyxrpuzA/JVI3fNs3cGfR8UdZAaA7hsMDwz4zWDeXPWeRd8aE8IrltMnNUyBImgKx4
-	1HneCRBvQNx+3YEmb0YxOqutAWByXKqMqnskHvn3zlMzi6kc6lvXjnTfMopL+2QhpsYNuXVE0An8C
-	SOt5DUGYwTnT6svYDruJso1qW9TaRQPf6De35nF3EBBdalZ/SEAyL0BRNVC9UH5SmBOCrxXoCltAk
-	4sOIFPaA==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=h7fn1I7AXQcwR1OwhmZu3KhuSStgFECSvls+VppTwLs=; b=D7aKGHaEvdridBPAS+4t0wu/W
+	CPKxhSalaW7gVfqmLuGakGjSMHCTbfORMvkniPjeDtbi0wrWVDG7kSfYcneGVr4TrUDNRaF/LLRkd
+	Zo2gbOSlyMbOpMAUEajUy0FImDqf12We8rTT/cESC1Yo/qN2f3gsaDr7fuMtFQWFHwAWgwYGvcGs2
+	lJeoongjNHx0soyT+xmboipp+alMbHDpxlelkxBeycBrE+KkflUXFqY538iMjCXhm5jLl8Y6QGnLC
+	cf3z8uxh2SW6g+HUNQ5SF4tkx3TTqxDFbNo+o4sPgBknfw9CZ9w7o7w4yN9mMg0LAthnhKuTTzt91
+	3lK2BNAyQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kCfWJ-0000SK-Dr; Mon, 31 Aug 2020 08:50:31 +0000
-Received: from lucky1.263xmail.com ([211.157.147.133])
+	id 1kCgjy-00051g-Sq; Mon, 31 Aug 2020 10:08:43 +0000
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kCfWG-0000Qy-PL
- for linux-rockchip@lists.infradead.org; Mon, 31 Aug 2020 08:50:30 +0000
-Received: from localhost (unknown [192.168.167.172])
- by lucky1.263xmail.com (Postfix) with ESMTP id 0E61AC6506;
- Mon, 31 Aug 2020 16:50:23 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P4753T140065176340224S1598863821295169_; 
- Mon, 31 Aug 2020 16:50:22 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <b455516213d7f9045c591227e836797e>
-X-RL-SENDER: jay.xu@rock-chips.com
-X-SENDER: xjq@rock-chips.com
-X-LOGIN-NAME: jay.xu@rock-chips.com
-X-FST-TO: linus.walleij@linaro.org
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-DNS-TYPE: 0
-X-System-Flag: 0
-From: Jianqun Xu <jay.xu@rock-chips.com>
-To: linus.walleij@linaro.org,
-	heiko@sntech.de
-Subject: [PATCH 6/6] pinctrl: rockchip: populate platform device for rockchip
- gpio
-Date: Mon, 31 Aug 2020 16:50:21 +0800
-Message-Id: <20200831085021.7288-1-jay.xu@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200831084753.7115-1-jay.xu@rock-chips.com>
-References: <20200831084753.7115-1-jay.xu@rock-chips.com>
+ id 1kCgjv-00050O-1Q; Mon, 31 Aug 2020 10:08:40 +0000
+Received: by mail-ed1-x541.google.com with SMTP id l21so4855649eds.7;
+ Mon, 31 Aug 2020 03:08:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=i8mDMEkMlEKb7YAMGET4QjohLG3lZw/hOxyAJzH3u8k=;
+ b=WEwUCWrglXyoan/T/4uUfI0wUuwhac//uqp5zLQmnbUYajGE2FMcVhgReaIf0QR9e5
+ ur2y3QvrYINxyl5xnMmQBOfmXInLcf0ha3OUCihv23tK2ceO7NEN+XDftvp8ZW4PxMN3
+ wR8wDpLMqhgovV4eGum10KsLmRq8j7FzimCXkwPqaXCtwTr3g3D7buNlmaXkjNiwMXE5
+ EU2L6azgMfmj1XpsfpIKxUvYoHsZVcnQ9asJ7LzWEIW0E6qWo+94amkrXDcNuCgZsRDs
+ cpA/npXjf8hhU96gx6CJbpElmtxFA54eFfd37fc8sVDSSj01VFLDrzkZDAjNzMhduVRj
+ x/nQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=i8mDMEkMlEKb7YAMGET4QjohLG3lZw/hOxyAJzH3u8k=;
+ b=YuPQdXhbgXIiZp2yv/f5U2eERBH72e4CdYGqSaBQaFYR+vjpQAIo3gaJxy4bSRjF6i
+ V3hxwVWw2cKbFZrj2WbS0B9aBSUminsEwHhlL/floo1IiR9CJTlQeJQpmxzd7heQK8n9
+ TlMLLyLbWj4VBldCa5AaKFBnfkbaeTSC5oAUxO1kc2BYvrploTUpGAJztgse7XxuTPb0
+ u4kwjjJitqyqw5+5RarWb6mtbfk1AnyJ80RZ2MdcMdq2EoT9uKldludw06HK54tQoMe7
+ llNdgVH2Yw5Ackc6C8Cc7e6Cg3LFdGJ+NNcs/kuGvpDvg5zjt3tUn8u5sHuacLVO23Yv
+ aGhg==
+X-Gm-Message-State: AOAM530R4kYYyHVeu2z/HglKYGTZLgv1+jquLeCDPhR04f2b71JgEdzU
+ blpVxjzLTVpW5dsR+kwDj0HCVhozyJs=
+X-Google-Smtp-Source: ABdhPJzoo5VnXqrCIaiiNgpxdD7Ek9UGl4eBBccGJaHD/tjO8nJ8Ivcxxni7HOtuM9GyjXuMDwajqw==
+X-Received: by 2002:aa7:dd94:: with SMTP id g20mr481362edv.238.1598868514539; 
+ Mon, 31 Aug 2020 03:08:34 -0700 (PDT)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id
+ r3sm7643620ejy.95.2020.08.31.03.08.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 31 Aug 2020 03:08:34 -0700 (PDT)
+Subject: Re: [PATCH v3 6/7] arm64: dts: rockchip: px30: Add Engicam C.TOUCH 2.0
+To: Jagan Teki <jagan@amarulasolutions.com>, Heiko Stuebner
+ <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>
+References: <20200831082917.17117-1-jagan@amarulasolutions.com>
+ <20200831082917.17117-7-jagan@amarulasolutions.com>
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <0e286dbd-36e7-54cf-b901-4718d5f7ee6d@gmail.com>
+Date: Mon, 31 Aug 2020 12:08:32 +0200
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
+MIME-Version: 1.0
+In-Reply-To: <20200831082917.17117-7-jagan@amarulasolutions.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200831_045029_570726_7C73B4E0 
-X-CRM114-Status: GOOD (  20.18  )
+X-CRM114-CacheID: sfid-20200831_060839_112394_D842E38C 
+X-CRM114-Status: GOOD (  21.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,357 +101,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-gpio@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-MIME-Version: 1.0
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Suniel Mahesh <sunil@amarulasolutions.com>,
+ Michael Trimarchi <michael@amarulasolutions.com>,
+ linux-amarula <linux-amarula@amarulasolutions.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Register both gpio driver and device as part of driver model, so that
-the '-gpio'/'-gpios' dependency in dts can be correctly handled by
-of_devlink/of_fwlink.
+Hi Jagan,
 
-Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
----
- drivers/pinctrl/pinctrl-rockchip.c | 256 ++++++++++++++++-------------
- 1 file changed, 145 insertions(+), 111 deletions(-)
+A dtsi file with only an include and no changes isn't useful.
+Are you planning to add something to it?
+Else combine in single dts file for now.
+Same for px30-engicam-edimm2.2.dtsi
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 5b16b69e311f..9dc8daf38e63 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -3380,139 +3380,121 @@ static void rockchip_irq_disable(struct irq_data *d)
- }
- 
- static int rockchip_interrupts_register(struct platform_device *pdev,
--						struct rockchip_pinctrl *info)
-+						struct rockchip_pin_bank *bank)
- {
--	struct rockchip_pin_ctrl *ctrl = info->ctrl;
--	struct rockchip_pin_bank *bank = ctrl->pin_banks;
- 	unsigned int clr = IRQ_NOREQUEST | IRQ_NOPROBE | IRQ_NOAUTOEN;
- 	struct irq_chip_generic *gc;
- 	int ret;
--	int i;
- 
--	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
--		if (!bank->valid) {
--			dev_warn(&pdev->dev, "bank %s is not valid\n",
--				 bank->name);
--			continue;
--		}
-+	if (!bank->valid) {
-+		dev_warn(&pdev->dev, "bank %s is not valid\n",
-+			 bank->name);
-+		return -EINVAL;
-+	}
- 
--		ret = clk_enable(bank->clk);
--		if (ret) {
--			dev_err(&pdev->dev, "failed to enable clock for bank %s\n",
--				bank->name);
--			continue;
--		}
-+	ret = clk_enable(bank->clk);
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to enable clock for bank %s\n",
-+			bank->name);
-+		return ret;
-+	}
- 
--		bank->domain = irq_domain_add_linear(bank->of_node, 32,
--						&irq_generic_chip_ops, NULL);
--		if (!bank->domain) {
--			dev_warn(&pdev->dev, "could not initialize irq domain for bank %s\n",
--				 bank->name);
--			clk_disable(bank->clk);
--			continue;
--		}
-+	bank->domain = irq_domain_add_linear(bank->of_node, 32,
-+					&irq_generic_chip_ops, NULL);
-+	if (!bank->domain) {
-+		dev_warn(&pdev->dev, "could not initialize irq domain for bank %s\n",
-+			 bank->name);
-+		clk_disable(bank->clk);
-+		return -EINVAL;
-+	}
- 
--		ret = irq_alloc_domain_generic_chips(bank->domain, 32, 1,
--					 "rockchip_gpio_irq", handle_level_irq,
--					 clr, 0, 0);
--		if (ret) {
--			dev_err(&pdev->dev, "could not alloc generic chips for bank %s\n",
--				bank->name);
--			irq_domain_remove(bank->domain);
--			clk_disable(bank->clk);
--			continue;
--		}
-+	ret = irq_alloc_domain_generic_chips(bank->domain, 32, 1,
-+				 "rockchip_gpio_irq", handle_level_irq,
-+				 clr, 0, 0);
-+	if (ret) {
-+		dev_err(&pdev->dev, "could not alloc generic chips for bank %s\n",
-+			bank->name);
-+		irq_domain_remove(bank->domain);
-+		clk_disable(bank->clk);
-+		return ret;
-+	}
- 
--		gc = irq_get_domain_generic_chip(bank->domain, 0);
--		gc->reg_base = bank->reg_base;
--		gc->private = bank;
--		gc->chip_types[0].regs.mask = GPIO_INTMASK;
--		gc->chip_types[0].regs.ack = GPIO_PORTS_EOI;
--		gc->chip_types[0].chip.irq_ack = irq_gc_ack_set_bit;
--		gc->chip_types[0].chip.irq_mask = irq_gc_mask_set_bit;
--		gc->chip_types[0].chip.irq_unmask = irq_gc_mask_clr_bit;
--		gc->chip_types[0].chip.irq_enable = rockchip_irq_enable;
--		gc->chip_types[0].chip.irq_disable = rockchip_irq_disable;
--		gc->chip_types[0].chip.irq_set_wake = irq_gc_set_wake;
--		gc->chip_types[0].chip.irq_suspend = rockchip_irq_suspend;
--		gc->chip_types[0].chip.irq_resume = rockchip_irq_resume;
--		gc->chip_types[0].chip.irq_set_type = rockchip_irq_set_type;
--		gc->wake_enabled = IRQ_MSK(bank->nr_pins);
-+	gc = irq_get_domain_generic_chip(bank->domain, 0);
-+	gc->reg_base = bank->reg_base;
-+	gc->private = bank;
-+	gc->chip_types[0].regs.mask = GPIO_INTMASK;
-+	gc->chip_types[0].regs.ack = GPIO_PORTS_EOI;
-+	gc->chip_types[0].chip.irq_ack = irq_gc_ack_set_bit;
-+	gc->chip_types[0].chip.irq_mask = irq_gc_mask_set_bit;
-+	gc->chip_types[0].chip.irq_unmask = irq_gc_mask_clr_bit;
-+	gc->chip_types[0].chip.irq_enable = rockchip_irq_enable;
-+	gc->chip_types[0].chip.irq_disable = rockchip_irq_disable;
-+	gc->chip_types[0].chip.irq_set_wake = irq_gc_set_wake;
-+	gc->chip_types[0].chip.irq_suspend = rockchip_irq_suspend;
-+	gc->chip_types[0].chip.irq_resume = rockchip_irq_resume;
-+	gc->chip_types[0].chip.irq_set_type = rockchip_irq_set_type;
-+	gc->wake_enabled = IRQ_MSK(bank->nr_pins);
- 
--		/*
--		 * Linux assumes that all interrupts start out disabled/masked.
--		 * Our driver only uses the concept of masked and always keeps
--		 * things enabled, so for us that's all masked and all enabled.
--		 */
--		writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTMASK);
--		writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTEN);
--		gc->mask_cache = 0xffffffff;
-+	/*
-+	 * Linux assumes that all interrupts start out disabled/masked.
-+	 * Our driver only uses the concept of masked and always keeps
-+	 * things enabled, so for us that's all masked and all enabled.
-+	 */
-+	writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTMASK);
-+	writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTEN);
-+	gc->mask_cache = 0xffffffff;
- 
--		irq_set_chained_handler_and_data(bank->irq,
--						 rockchip_irq_demux, bank);
--		clk_disable(bank->clk);
--	}
-+	irq_set_chained_handler_and_data(bank->irq,
-+					 rockchip_irq_demux, bank);
-+	clk_disable(bank->clk);
- 
- 	return 0;
- }
- 
- static int rockchip_gpiolib_register(struct platform_device *pdev,
--						struct rockchip_pinctrl *info)
-+						struct rockchip_pin_bank *bank)
- {
--	struct rockchip_pin_ctrl *ctrl = info->ctrl;
--	struct rockchip_pin_bank *bank = ctrl->pin_banks;
- 	struct gpio_chip *gc;
- 	int ret;
--	int i;
- 
--	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
--		if (!bank->valid) {
--			dev_warn(&pdev->dev, "bank %s is not valid\n",
--				 bank->name);
--			continue;
--		}
-+	if (!bank->valid) {
-+		dev_err(&pdev->dev, "bank %s is not valid\n", bank->name);
-+		return -EINVAL;
-+	}
- 
--		bank->gpio_chip = rockchip_gpiolib_chip;
-+	bank->gpio_chip = rockchip_gpiolib_chip;
- 
--		gc = &bank->gpio_chip;
--		gc->base = bank->pin_base;
--		gc->ngpio = bank->nr_pins;
--		gc->parent = &pdev->dev;
--		gc->of_node = bank->of_node;
--		gc->label = bank->name;
-+	gc = &bank->gpio_chip;
-+	gc->base = bank->pin_base;
-+	gc->ngpio = bank->nr_pins;
-+	gc->parent = &pdev->dev;
-+	gc->of_node = bank->of_node;
-+	gc->label = bank->name;
- 
--		ret = gpiochip_add_data(gc, bank);
--		if (ret) {
--			dev_err(&pdev->dev, "failed to register gpio_chip %s, error code: %d\n",
--							gc->label, ret);
--			goto fail;
--		}
-+	ret = gpiochip_add_data(gc, bank);
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to register %s (%d)\n", gc->label, ret);
-+		return ret;
- 	}
- 
--	rockchip_interrupts_register(pdev, info);
-+	if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
-+		struct device *parent = pdev->dev.parent;
-+		struct rockchip_pinctrl *info = dev_get_drvdata(parent);
-+		struct pinctrl_dev *pctldev;
- 
--	return 0;
-+		if (!info)
-+			return -ENODATA;
- 
--fail:
--	for (--i, --bank; i >= 0; --i, --bank) {
--		if (!bank->valid)
--			continue;
--		gpiochip_remove(&bank->gpio_chip);
--	}
--	return ret;
--}
--
--static int rockchip_gpiolib_unregister(struct platform_device *pdev,
--						struct rockchip_pinctrl *info)
--{
--	struct rockchip_pin_ctrl *ctrl = info->ctrl;
--	struct rockchip_pin_bank *bank = ctrl->pin_banks;
--	int i;
-+		pctldev = info->pctl_dev;
-+		if (!pctldev)
-+			return -ENODEV;
- 
--	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
--		if (!bank->valid)
--			continue;
--		gpiochip_remove(&bank->gpio_chip);
-+		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0, gc->base, gc->ngpio);
-+		if (ret) {
-+			dev_err(&pdev->dev, "Failed to add pin range\n");
-+			gpiochip_remove(&bank->gpio_chip);
-+			return ret;
-+		}
- 	}
- 
- 	return 0;
-@@ -3752,6 +3734,46 @@ static int __maybe_unused rockchip_pinctrl_resume(struct device *dev)
- static SIMPLE_DEV_PM_OPS(rockchip_pinctrl_dev_pm_ops, rockchip_pinctrl_suspend,
- 			 rockchip_pinctrl_resume);
- 
-+static int rockchip_gpio_probe(struct platform_device *pdev)
-+{
-+	struct device_node *np = pdev->dev.of_node;
-+	struct device *parent = pdev->dev.parent;
-+	struct rockchip_pinctrl *info = dev_get_drvdata(parent);
-+	struct rockchip_pin_ctrl *ctrl = info ? (info->ctrl) : NULL;
-+	struct rockchip_pin_bank *bank;
-+	int ret, i;
-+
-+	if (!info || !ctrl)
-+		return -EINVAL;
-+
-+	if (!of_find_property(np, "gpio-controller", NULL))
-+		return -ENODEV;
-+
-+	bank = ctrl->pin_banks;
-+	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
-+		if (!strcmp(bank->name, np->name)) {
-+			bank->of_node = np;
-+
-+			if (!rockchip_get_bank_data(bank, info))
-+				bank->valid = true;
-+
-+			break;
-+		}
-+	}
-+
-+	bank->of_node = pdev->dev.of_node;
-+
-+	ret = rockchip_gpiolib_register(pdev, bank);
-+	if (ret)
-+		return ret;
-+
-+	ret = rockchip_interrupts_register(pdev, bank);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+
- static int rockchip_pinctrl_probe(struct platform_device *pdev)
- {
- 	struct rockchip_pinctrl *info;
-@@ -3823,18 +3845,20 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
- 			return PTR_ERR(info->regmap_pmu);
- 	}
- 
--	ret = rockchip_gpiolib_register(pdev, info);
--	if (ret)
--		return ret;
--
- 	ret = rockchip_pinctrl_register(pdev, info);
- 	if (ret) {
--		rockchip_gpiolib_unregister(pdev, info);
-+		dev_err(&pdev->dev, "failed to register pinctrl device\n");
- 		return ret;
- 	}
- 
- 	platform_set_drvdata(pdev, info);
- 
-+	ret = of_platform_populate(np, rockchip_bank_match, NULL, dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "failed to register gpio device\n");
-+		return ret;
-+	}
-+
- 	return 0;
- }
- 
-@@ -4254,6 +4278,14 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
- 	{},
- };
- 
-+static struct platform_driver rockchip_gpio_driver = {
-+	.probe		= rockchip_gpio_probe,
-+	.driver = {
-+		.name	= "rockchip-gpio",
-+		.of_match_table = rockchip_bank_match,
-+	},
-+};
-+
- static struct platform_driver rockchip_pinctrl_driver = {
- 	.probe		= rockchip_pinctrl_probe,
- 	.driver = {
-@@ -4265,7 +4297,9 @@ static struct platform_driver rockchip_pinctrl_driver = {
- 
- static int __init rockchip_pinctrl_drv_register(void)
- {
--	return platform_driver_register(&rockchip_pinctrl_driver);
-+	platform_driver_register(&rockchip_pinctrl_driver);
-+
-+	return platform_driver_register(&rockchip_gpio_driver);
- }
- postcore_initcall(rockchip_pinctrl_drv_register);
- 
--- 
-2.17.1
-
-
+On 8/31/20 10:29 AM, Jagan Teki wrote:
+> Engicam C.TOUCH 2.0 is an EDIMM compliant general purpose
+> carrier board with capacitive touch interface.
+> 
+> Genaral features:
+> - TFT 10.1" industrial, 1280x800 LVDS display
+> - Ethernet 10/100
+> - Wifi/BT
+> - USB Type A/OTG
+> - Audio Out
+> - CAN
+> - LVDS panel connector
+> 
+> SOM's like PX30.Core needs to mount on top of this Carrier board
+> for creating complete PX30.Core C.TOUCH 2.0 board.
+> 
+> Add support for it.
+> 
+> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+> Signed-off-by: Michael Trimarchi <michael@amarulasolutions.com>
+> ---
+> Changes for v3:
+> - add Amarula Solutions copyright
+> Changes for v2:
+> - none
+> 
+>  arch/arm64/boot/dts/rockchip/px30-engicam-ctouch2.dtsi | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/px30-engicam-ctouch2.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/px30-engicam-ctouch2.dtsi b/arch/arm64/boot/dts/rockchip/px30-engicam-ctouch2.dtsi
+> new file mode 100644
+> index 000000000000..58425b1e559f
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/px30-engicam-ctouch2.dtsi
+> @@ -0,0 +1,8 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2020 Engicam srl
+> + * Copyright (c) 2020 Amarula Solutions
+> + * Copyright (c) 2020 Amarula Solutions(India)
+> + */
+> +
+> +#include "px30-engicam-common.dtsi"
+> 
 
 
 _______________________________________________
