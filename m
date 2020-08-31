@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBD03C433E2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 08:29:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B87DCC433E2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 08:29:57 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 970AF20767
-	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 08:29:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7414820767
+	for <linux-rockchip@archiver.kernel.org>; Mon, 31 Aug 2020 08:29:57 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B5GNAxoY";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="GUHaAwd/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 970AF20767
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z1wUlBUx";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="TwL3aLwk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7414820767
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,65 +26,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bMSIUEr/8wqcPWPT+yAGlEsPgPOSuhPKsmgnugPOPCo=; b=B5GNAxoYpopQ1NY58TKxztxa0
-	XfzbV8jZcutAJVw9Jx9TJIggq3FQLbUeWwXonzldJmDsM8OiAgcaRIxMe7PGFfnKKNnaN//e4qFLE
-	xoEA9JQASUlX+NXL/JVmrfTyUnVrQ1W/Z6ROqyDDMn7gOAJhramuUWWIq/CtoKPPZFci2rDOEdPJj
-	DhtQ8GUFk9RvDoTkmkTRfLx1vdMxFM6RUXuFl9BLqxxfbJffTmytC07eOAIgQwqwv9Y19HPsoXDWn
-	t0VKiRmoVnb7CG6EFPSAX145hyQ4DXYTVesoOZtQ0nuE5UCI+tOuNyF0cQyu83/HdUhDMXKwnA5VY
-	whodAZqwg==;
+	 bh=AoQr0/nUKqL11O73Gzx2TRkF7lY1Qp83LgjksbjR5U4=; b=Z1wUlBUxU3r1wm2QUTp4nSBsF
+	MTEGRFJfJRMnSRiFZn8TFjTdlmWbH9o88yZvU1Kn+bJHQosgRfTuq0oG3M42Nmc9aQgeVsjyTp4mn
+	vSz2hNDS2X58YZaofJwm7kJHvosZUD4GG+L+vVqCyL1I5pZvdACmFLgfDIjigo8aembGIWtCUVTFw
+	8AOW3LHbdlfrOTTRYl1PZ9gH2vCQSx+sCnW1a9DqSrNfP+1ALWrEYghE5MU6hciMYfFlQ4HXHiJBt
+	wK3V+EabTHij9SeoWoOCjvMg69dzUXuYJzVMVnwyqaIRu2ScAfJpittsKuD8m1UR4OplKCH1eMZm2
+	0hlXnt8zA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kCfCH-0003Tn-LH; Mon, 31 Aug 2020 08:29:49 +0000
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
+	id 1kCfCJ-0003UN-CG; Mon, 31 Aug 2020 08:29:51 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kCfC4-0003Ny-HL
- for linux-rockchip@lists.infradead.org; Mon, 31 Aug 2020 08:29:37 +0000
-Received: by mail-pj1-x1043.google.com with SMTP id ds1so2760537pjb.1
- for <linux-rockchip@lists.infradead.org>; Mon, 31 Aug 2020 01:29:36 -0700 (PDT)
+ id 1kCfC8-0003PV-Gb
+ for linux-rockchip@lists.infradead.org; Mon, 31 Aug 2020 08:29:42 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id 7so211690pgm.11
+ for <linux-rockchip@lists.infradead.org>; Mon, 31 Aug 2020 01:29:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amarulasolutions.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=fbXuvXbOyNsrkch0SC6guvyYDJEednZEC4rbU/OSYZE=;
- b=GUHaAwd/OVq+Nq6zo3XRQW5MC7/o7yldoxDX5WzYxROH5nYz/yPBbVfJfKrPS2Z66B
- SaOuGyr1b3zqm//7K+7iZiKcaD0+OE7W/r54u8pmBcckpLX3vK0p0V/mjCZEpSedCWnB
- rh8ppbxSpzUB9eLR0rTw2eSGetJBCapNgEklo=
+ bh=XuanP6HW9kvPEQuI6DTNe4sSDhIR8cAsGo+XK6KWMec=;
+ b=TwL3aLwk9UyIY3oVxI5Frm2N0sssZOnvZC5t+4MfsSi9w/+jHe5IdUO3KVjzwM6IRA
+ 2ZdmfRZaIaZ79h7DxjXgd1P+5qbjgt47EWf+MTjuxDI84KzbrFLrB0pnQFpLNW9sVzYo
+ KrcYLJoJoJhaQhdgqZ3UcOFkbowqERT9NPq4U=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=fbXuvXbOyNsrkch0SC6guvyYDJEednZEC4rbU/OSYZE=;
- b=Jk4lPy6C5Gkvbk0YWF6gxf2L5rCglx/gDYdrnxj/6evzRUiNQfd2IkghNmx6J8RZS2
- 67gGIc8fFUfkwDKelGxdlnHDAwFAZtkGqrst+LauXBTDgBve4Q6G/rqa0PK8Iz0Ix4cj
- xz/DUX8qWaSIZyo8FcgL9sQBGwkOI3JG0rUXlqMwNVm+DSYBT7bf0QQ9iwxsDWkSUfu5
- pAC32GbBK1jBZPOpLjW+yk5su+XmXienMKuyCcu2fxY+niqPouy1OCd1wrZix2Hea4us
- m+MGzPpVFQar85rLNOaYYNcp11wJFv4qMKiCDkP2LFMnSwnP7zw3FP/iDVci4Cb3r97o
- DzmA==
-X-Gm-Message-State: AOAM530HgwX+mO3dam3zOmYjvX/LcawKwLFG26i1YnQvKOLNKdoQ2mLO
- N0u+MGa14FxYqNA4uvbDNQZy/Q==
-X-Google-Smtp-Source: ABdhPJyJXaeoxtiNl66ML5eCK52+c/iNYMUnqKMB0TmVaIsjhr6uuZSp1si7bK8QzlRt0Anh0eLRlA==
-X-Received: by 2002:a17:902:8a93:: with SMTP id
- p19mr281191plo.101.1598862574362; 
- Mon, 31 Aug 2020 01:29:34 -0700 (PDT)
+ bh=XuanP6HW9kvPEQuI6DTNe4sSDhIR8cAsGo+XK6KWMec=;
+ b=fki0Qyyr3+FrtiOLLIz1ksrE0crljC78vIbXCQWC9+EZTHbey/Y4xtjf3r/HDGQeH5
+ Mmlwqrs4uX4nNCmRKIiyoHEesAWSCakxL7euwvrJ5epZQjPwBwBkimzYYYJauEHNEZzC
+ 97sXs9WPMXNjRi9PXa9yPNiGhd6rkE8cGIsBMI/376uTA3hJD5DNpvpAL2Xr9EtBeC0N
+ /jCa3U9N5Rs7t7hVAYeHpbKKqZU+BfmZZR/+FmrUIWTktko5OYZh16sLSjqRQvZznNHY
+ IQuPVbC7UIGpmbQUl01Nxg1TK4JLELJ/0qExNST7h2AjxW8r8aq9N1ra2sJgZN3wWvow
+ avsA==
+X-Gm-Message-State: AOAM531QED6DvyXYJXfCRyGRDoiWej/W3HaOVRwT8yFp89AMdXfHkM1V
+ MM/5DtLkqqZUShIpYqFAQdTjpP+rOeKamA==
+X-Google-Smtp-Source: ABdhPJxHp9KzFC/inaCHGtGKRVkZ0zDxgxUVa6URm880rJytbeIXXLL8OQrDFq5OGfUSVdfQR+xK8w==
+X-Received: by 2002:a65:614a:: with SMTP id o10mr412010pgv.411.1598862578373; 
+ Mon, 31 Aug 2020 01:29:38 -0700 (PDT)
 Received: from localhost.localdomain ([2405:201:c809:c7d5:d50:45fe:aaf3:66ee])
  by smtp.gmail.com with ESMTPSA id
- b5sm6411335pgi.83.2020.08.31.01.29.30
+ b5sm6411335pgi.83.2020.08.31.01.29.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 31 Aug 2020 01:29:33 -0700 (PDT)
+ Mon, 31 Aug 2020 01:29:37 -0700 (PDT)
 From: Jagan Teki <jagan@amarulasolutions.com>
 To: Heiko Stuebner <heiko@sntech.de>,
 	Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v3 1/7] dt-bindings: arm: rockchip: Add Engicam PX30.Core
- EDIMM2.2 Starter Kit
-Date: Mon, 31 Aug 2020 13:59:11 +0530
-Message-Id: <20200831082917.17117-2-jagan@amarulasolutions.com>
+Subject: [PATCH v3 2/7] arm64: dts: rockchip: px30: Add Engicam EDIMM2.2
+ Starter Kit
+Date: Mon, 31 Aug 2020 13:59:12 +0530
+Message-Id: <20200831082917.17117-3-jagan@amarulasolutions.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200831082917.17117-1-jagan@amarulasolutions.com>
 References: <20200831082917.17117-1-jagan@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200831_042936_638901_E4FF2078 
-X-CRM114-Status: GOOD (  10.90  )
+X-CRM114-CacheID: sfid-20200831_042940_604303_EC30AD13 
+X-CRM114-Status: GOOD (  16.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,9 +96,8 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Rob Herring <robh@kernel.org>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Jagan Teki <jagan@amarulasolutions.com>,
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Jagan Teki <jagan@amarulasolutions.com>,
  Suniel Mahesh <sunil@amarulasolutions.com>,
  Michael Trimarchi <michael@amarulasolutions.com>,
  linux-amarula <linux-amarula@amarulasolutions.com>,
@@ -109,44 +107,102 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
+Engicam EDIMM2.2 Starter Kit is an EDIMM 2.2 Form Factor Capacitive
+Evaluation Board.
 
-EDIMM2.2 Starter Kit is an EDIMM 2.2 Form Factor Capacitive
-Evaluation Board from Engicam.
+Genaral features:
+- LCD 7" C.Touch
+- microSD slot
+- Ethernet 1Gb
+- Wifi/BT
+- 2x LVDS Full HD interfaces
+- 3x USB 2.0
+- 1x USB 3.0
+- HDMI Out
+- Mini PCIe
+- MIPI CSI
+- 2x CAN
+- Audio Out
 
-PX30.Core needs to mount on top of this Evaluation board for
-creating complete PX30.Core EDIMM2.2 Starter Kit.
+SOM's like PX30.Core needs to mount on top of this Evaluation board
+for creating complete PX30.Core EDIMM2.2 Starter Kit.
 
-Add bindings for it.
+Add support for it.
 
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: Michael Trimarchi <michael@amarulasolutions.com>
 ---
 Changes for v3:
-- none
+- sort regulator nodes properties
+- drop cap-mmc-highspeed property
+- add Amarula Solutions copyright
 Changes for v2:
-- collect Rob A-b
+- move carrier enablement nodes in carrier dtsi
 
- Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
- 1 file changed, 6 insertions(+)
+ .../dts/rockchip/px30-engicam-common.dtsi     | 39 +++++++++++++++++++
+ .../dts/rockchip/px30-engicam-edimm2.2.dtsi   |  7 ++++
+ 2 files changed, 46 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi
+ create mode 100644 arch/arm64/boot/dts/rockchip/px30-engicam-edimm2.2.dtsi
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 7025d00c06cc..bda0f2781890 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -70,6 +70,12 @@ properties:
-           - const: elgin,rv1108-r1
-           - const: rockchip,rv1108
- 
-+      - description: Engicam PX30.Core EDIMM2.2 Starter Kit
-+        items:
-+          - const: engicam,px30-core-edimm2.2
-+          - const: engicam,px30-px30-core
-+          - const: rockchip,px30
+diff --git a/arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi b/arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi
+new file mode 100644
+index 000000000000..bd5bde989e8d
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi
+@@ -0,0 +1,39 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2020 Engicam srl
++ * Copyright (c) 2020 Amarula Solutions
++ * Copyright (c) 2020 Amarula Solutions(India)
++ */
 +
-       - description: Firefly Firefly-RK3288
-         items:
-           - enum:
++/ {
++	vcc5v0_sys: vcc5v0-sys {
++		compatible = "regulator-fixed";
++		regulator-name = "vcc5v0_sys";	/* +5V */
++		regulator-always-on;
++		regulator-boot-on;
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++	};
++};
++
++&gmac {
++	clock_in_out = "output";
++	phy-supply = <&vcc_3v3>;	/* +3V3_SOM */
++	snps,reset-active-low;
++	snps,reset-delays-us = <0 50000 50000>;
++	snps,reset-gpio = <&gpio2 RK_PB5 GPIO_ACTIVE_HIGH>;
++	status = "okay";
++};
++
++&sdmmc {
++	cap-sd-highspeed;
++	card-detect-delay = <800>;
++	vmmc-supply = <&vcc_3v3>;	/* +3V3_SOM */
++	vqmmc-supply = <&vcc_3v3>;
++	status = "okay";
++};
++
++&uart2 {
++	pinctrl-0 = <&uart2m1_xfer>;
++	status = "okay";
++};
+diff --git a/arch/arm64/boot/dts/rockchip/px30-engicam-edimm2.2.dtsi b/arch/arm64/boot/dts/rockchip/px30-engicam-edimm2.2.dtsi
+new file mode 100644
+index 000000000000..cb00988953e9
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/px30-engicam-edimm2.2.dtsi
+@@ -0,0 +1,7 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2020 Engicam srl
++ * Copyright (c) 2020 Amarula Solutions(India)
++ */
++
++#include "px30-engicam-common.dtsi"
 -- 
 2.25.1
 
