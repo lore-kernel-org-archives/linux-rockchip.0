@@ -2,56 +2,65 @@ Return-Path: <SRS0=U2ba=CK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 49378C433E6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 12:23:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F0D6C433E2
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 12:25:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1856A20767
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 12:23:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 32B72204EC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 12:25:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UdfNJUXq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1856A20767
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ITTsip9I"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 32B72204EC
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ySkBJz8oqzqg7M7mqC62VMWXezs5jpgPpYNsxtMbYRU=; b=UdfNJUXqL+Xt3Kg1xSu6Kn5YC7
-	mlUvKbgd47PvKDTZE7gsdQpJoZQ0+dEAWeQ8qH6mLpC/RbbPwne2ShSzQOooGxdWOF96IKPaDPj/K
-	1vmH6bGLOH6MrDBkYzEh5haOtymwUZBQ2gRRIrXlPxdUJTI/XPPcqMh3L9tqTEfXJ/mpv/D4J5j0U
-	GPITnMCxqJQetEZq8jSYV17sGLU/20HJU1FahGTwDc49lUyEfyBrk7B24XeiQfgSRFPaTIZdZMgEG
-	vY+ZEOdrDhqGA/so154Z9gWmj1e04xr+q/QBA4pqO+htvLJfYZIk/EnyJmQl00p4Gq/qrcwVDuzjX
-	5foH6azA==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=gMbHd6eDJ8efbAVW15myHQHC5ShF67J2wIadWRI5aEY=; b=ITTsip9IdMvRpsU1Z+VWZ4u1E
+	guP0tqnCjPYBfu/OkgCiXC+HD7SBHF0hrvvg7EC3Xy1AeMVpiMlMoB/OvjmlwemZKSFE/+flbTcXL
+	T/i6vxLKQ53DQcp73TQX5wWTMvETykFxWysdCsEXL8ZvbzNkda52y959QGHvPm4QSMYIOSEh2KZyi
+	y1obRuXVicLkbiGSgUvF3nsTAEQBTpjQJYdbB1E3gVdcTo8WRHzD0ttbBvmlz85xI4BGWbDXvHhmE
+	kJRneZksrBNBxniuOgfvJX3Cccg39EfTUEpo30RbV/AuigCv8phsFmnhfzwFjbDECf9ZD3Zl06EDX
+	iF3A6MJmg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kD4HE-0004jt-VO; Tue, 01 Sep 2020 11:16:37 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kD4H5-0004cc-2t
- for linux-rockchip@lists.infradead.org; Tue, 01 Sep 2020 11:16:31 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id DE07E296CCD
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v4 07/10] media: staging: rkisp1: rsz: enumerate the formats
- on the src pad according to the capture
-Date: Tue,  1 Sep 2020 13:16:09 +0200
-Message-Id: <20200901111612.10552-8-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
-References: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
+	id 1kD5Lg-0003n0-8s; Tue, 01 Sep 2020 12:25:16 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kD5Lc-0003mJ-FS; Tue, 01 Sep 2020 12:25:13 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 671891FB;
+ Tue,  1 Sep 2020 05:25:07 -0700 (PDT)
+Received: from [10.57.40.122] (unknown [10.57.40.122])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5D0D03F68F;
+ Tue,  1 Sep 2020 05:25:06 -0700 (PDT)
+Subject: Re: [PATCH v2] arm64: dts: rockchip: enable HDMI sound nodes for
+ rk3328-rock64
+To: Katsuhiro Suzuki <katsuhiro@katsuster.net>,
+ Heiko Stuebner <heiko@sntech.de>
+References: <20200802154231.2639186-1-katsuhiro@katsuster.net>
+ <7880329.2VsnZ9RgxX@phil>
+ <0e1c3467-0ba0-6b82-4227-40959f0c4b0e@katsuster.net>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <cca43999-fd73-2a71-a4f8-894a44f03032@arm.com>
+Date: Tue, 1 Sep 2020 13:25:04 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
+MIME-Version: 1.0
+In-Reply-To: <0e1c3467-0ba0-6b82-4227-40959f0c4b0e@katsuster.net>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200901_071627_240781_DBA7144F 
-X-CRM114-Status: GOOD (  14.31  )
+X-CRM114-CacheID: sfid-20200901_082512_581396_C4054647 
+X-CRM114-Status: GOOD (  18.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,64 +73,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
- tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently the resizer outputs the same media bus format
-as the input. This is wrong since the resizer is also used
-to downscale YUV formats. This patch changes the enumeration
-of the supported formats. The supported formats on the sink pad
-should be taken from the isp entity and the supported formats on
-the source pad should be taken from the capture entity.
-
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- drivers/staging/media/rkisp1/rkisp1-resizer.c | 13 ++++++++++++-
- 1 file changed, 12 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-index 066d22096a7d..0e4a2c931ab0 100644
---- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-@@ -437,6 +437,17 @@ static int rkisp1_rsz_enum_mbus_code(struct v4l2_subdev *sd,
- 	u32 pad = code->pad;
- 	int ret;
- 
-+	if (code->pad == RKISP1_RSZ_PAD_SRC) {
-+		/* supported mbus codes on the src are the same as in the capture */
-+		struct rkisp1_capture *cap = &rsz->rkisp1->capture_devs[rsz->id];
-+
-+		return rkisp1_cap_enum_mbus_codes(cap, code);
-+	}
-+
-+	/*
-+	 * The selfpath capture doesn't support bayer formats. Therefore the selfpath resizer
-+	 * should support only YUV422 on the sink pad
-+	 */
- 	if (rsz->id == RKISP1_SELFPATH) {
- 		if (code->index > 0)
- 			return -EINVAL;
-@@ -444,7 +455,7 @@ static int rkisp1_rsz_enum_mbus_code(struct v4l2_subdev *sd,
- 		return 0;
- 	}
- 
--	/* supported mbus codes are the same in isp video src pad */
-+	/* supported mbus codes on the sink pad are the same as isp src pad */
- 	code->pad = RKISP1_ISP_PAD_SOURCE_VIDEO;
- 	ret = v4l2_subdev_call(&rsz->rkisp1->isp.sd, pad, enum_mbus_code,
- 			       &dummy_cfg, code);
--- 
-2.17.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gMjAyMC0wOC0zMSAwMjoyNiwgS2F0c3VoaXJvIFN1enVraSB3cm90ZToKPiBPbiAyMDIwLzA4
+LzMxIDQ6MTYsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+PiBIaSwKPj4KPj4gQW0gU29ubnRhZywg
+Mi4gQXVndXN0IDIwMjAsIDE3OjQyOjMxIENFU1Qgc2NocmllYiBLYXRzdWhpcm8gU3V6dWtpOgo+
+Pj4gVGhpcyBwYXRjaCBlbmFibGVzIEhETUkgc291bmQgKEkyUzApIGFuZCBBbmFsb2cgc291bmQg
+KEkyUzEpIHdoaWNoCj4+PiBhcmUgZGVmaW5lZCBpbiByazMzMjguZHRzaSwgYW5kIHJlcGxhY2Ug
+U1BESUYgbm9kZXMuCj4+Pgo+Pj4gV2UgY2FuIHVzZSBTUERJRiBwYXNzLXRocm91Z2ggd2l0aCBz
+dWl0YWJsZSBBTFNBIHNldHRpbmdzIGFuZCBvbgo+Pj4gbXB2IG9yIG90aGVyIG1lZGlhIHBsYXll
+cnMuCj4+PiDCoMKgIC0gU2V0dGluZ3M6IAo+Pj4gaHR0cHM6Ly9naXRodWIuY29tL0xpYnJlRUxF
+Qy9MaWJyZUVMRUMudHYvYmxvYi9tYXN0ZXIvcHJvamVjdHMvUm9ja2NoaXAvZmlsZXN5c3RlbS91
+c3Ivc2hhcmUvYWxzYS9jYXJkcy9TUERJRi5jb25mIAo+Pj4KPj4+IMKgwqAgLSBFeC46IG1wdiBm
+b28uYWMzIC0tYXVkaW8tc3BkaWY9YWMzIAo+Pj4gLS1hdWRpby1kZXZpY2U9J2Fsc2EvU1BESUYu
+cGNtLmllYzk1OC4wOlNQRElGJwo+Pj4KPj4+IFtXaHkgdXNlIHNpbXBsZS1hdWRpby1jYXJkIGZv
+ciBTUERJRj9dCj4+Pgo+Pj4gRm9yIG5ld2x5IGFkZGluZyBub2RlcywgQVNvQyBndXlzIHJlY29t
+bWVuZCB0byB1c2UgYXVkaW8tZ3JhcGgtY2FyZC4KPj4+IEJ1dCBhbGwgb3RoZXIgc291bmQgbm9k
+ZXMgZm9yIHJrMzMyOCBoYXZlIGFscmVhZHkgYmVlbiBkZWZpbmVkIGJ5Cj4+PiBzaW1wbGUtYXVk
+aW8tY2FyZC4gSW4gdGhpcyB0aW1lLCBJIGNob3NlIGZvciBjb25zaXN0ZW50IHNvdW5kIG5vZGVz
+Lgo+Pj4KPj4+IFtETUEgYWxsb2NhdGlvbiBwcm9ibGVtXQo+Pj4KPj4+IEFmdGVyIHRoaXMgcGF0
+Y2ggaXMgYXBwbGllZCwgVUFSVDIgd2lsbCBmYWlsIHRvIGFsbG9jYXRlIERNQSByZXNvdXJjZXMK
+Pj4+IGJ1dCBVQVJUIGRyaXZlciBjYW4gd29yayBmaW5lIHdpdGhvdXQgRE1BLgo+Pj4KPj4+IFRo
+aXMgZXJyb3IgaXMgcmVsYXRlZCB0byB0aGUgRE1BQyBvZiByazMzMjggKHBsMzMwIG9yIGNvbXBh
+dGlibGUpLgo+Pj4gRE1BQyBjb25uZWN0ZWQgdG8gMTYgRE1BIHNvdXJjZXMuIEVhY2ggc291cmNl
+cyBoYXZlIElEIG51bWJlciB0aGF0IGlzCj4+PiBjYWxsZWQgJ1JlcSBudW1iZXInIGluIHJrMzMy
+OCBUUk0uIEFmdGVyIHRoaXMgcGF0Y2ggaXMgYXBwbGllZCB0b3RhbCA3Cj4+PiBvZiBETUEgc291
+cmNlcyB3aWxsIGJlIGFjdGl2YXRlZCBhcyBmb2xsb3dzOgo+Pj4KPj4+IHwgUmVxIG51bWJlciB8
+IFNvdXJjZSB8IFJlcXVpcmVkwqAgfAo+Pj4gfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDC
+oMKgwqDCoMKgIHwgY2hhbm5lbHPCoCB8Cj4+PiB8LS0tLS0tLS0tLS0tKy0tLS0tLS0tKy0tLS0t
+LS0tLS0tfAo+Pj4gfMKgIDgswqAgOcKgwqDCoMKgIHwgU1BJMMKgwqAgfCAyY2jCoMKgwqDCoMKg
+wqAgfAo+Pj4gfCAxMSwgMTLCoMKgwqDCoCB8IEkyUzDCoMKgIHwgMmNowqDCoMKgwqDCoMKgIHwK
+Pj4+IHwgMTQsIDE1wqDCoMKgwqAgfCBJMlMxwqDCoCB8IDJjaMKgwqDCoMKgwqDCoCB8Cj4+PiB8
+wqDCoMKgwqAgMTDCoMKgwqDCoCB8IFNQRElGwqAgfCAxY2jCoMKgwqDCoMKgwqAgfAo+Pj4gfC0t
+LS0tLS0tLS0tLSstLS0tLS0tLSstLS0tLS0tLS0tLXwKPj4+IHzCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgIHwgVG90YWzCoCB8IDdjaMKgwqDCoMKgwqDCoCB8Cj4+PiB8LS0tLS0tLS0tLS0tKy0tLS0t
+LS0tKy0tLS0tLS0tLS0tfAo+Pj4gfMKgIDYswqAgN8KgwqDCoMKgIHwgVUFSVDLCoCB8IDJjaMKg
+wqDCoMKgwqDCoCB8IC0+IGNhbm5vdCBnZXQgRE1BIGNoYW5uZWxzCj4+Pgo+Pj4gRHVlIHRvIHJr
+MzMyOCBETUFDIHNwZWNpZmljYXRpb24gd2UgY2FuIHVzZSBtYXggOCBjaGFubmVscyBhdCBzYW1l
+Cj4+PiB0aW1lLiBJZiBTUEkwL0kyUzAvSTJTMS9TUERJRiB3aWxsIGJlIGFjdGl2YXRlZCBieSB0
+aGlzIHBhdGNoLAo+Pj4gcmVxdWlyZWQgRE1BQyBjaGFubmVscyByZWFjaCB0byA3LiBTbyB0aGUg
+bGFzdCB0d28gY2hhbm5lbHMgKGZvcgo+Pj4gVUFSVDIpIGNhbm5vdCBnZXQgRE1BIHJlc291cmNl
+cy4KPj4KPj4gV291bGRuJ3QgdGhlIGRtYSBhbGxvY2F0aW9uIGRlcGVuZCBvbiB0aGUgcHJvYmUg
+b3JkZXJpbmc/Cj4+IE9yIGlzIHRoaXMgcHJlZGV0ZXJtaW5lZCwgc28gdGhhdCBhbHdheXMgdWFy
+dDIgbG9vc2VzIGl0cyBkbWFzPwo+Pgo+IAo+IEFoLCBpdCdzIGRlcGVuZHMgb24gcHJvYmUgb3Jk
+ZXJpbmcgd2hlbiB1c2VycyB1c2Uga2VybmVsIG1vZHVsZXMuLi4KPiAKPiBJdCdzIGJldHRlciB0
+byBkaXNhYmxlIERNQSBjaGFubmVscyBmb3IgVUFSVDIgZm9yIGF2b2lkaW5nIHByb2JsZW0uCj4g
+SSdsbCBmaXggYW5kIHJlc2VuZCBwYXRjaC4KCkZXSVcgaXQgc2VlbXMgdGhhdCBzaW5jZSAwODli
+NmQzNjU0OTEsIERNQSBpcyBlZmZlY3RpdmVseSBkaXNhYmxlZCBmb3IgClVBUlQyIGFueXdheSAo
+dW5sZXNzIHRoZSB1c2VyIGdvZXMgb3V0IG9mIHRoZWlyIHdheSB0byByZXB1cnBvc2UgaXQpLCBz
+byAKbWF5YmUgdGhpcyBpcyBubyBsb25nZXIgc3VjaCBhbiBpbW1lZGlhdGUgY29uY2Vybj8KClJv
+YmluLgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
