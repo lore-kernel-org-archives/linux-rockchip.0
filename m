@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68729C433E6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 11:48:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F0126C433E2
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 11:52:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 29677206FA
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 11:48:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C3E15206FA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 11:52:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HFfmR8X/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29677206FA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yVbiXF4T"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3E15206FA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,33 +25,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wn+rCsQi8uc1WNo6Bv3vbLnFOEreL/2qj96I8Z8S0Qw=; b=HFfmR8X/UMLpvQLCnRG3a7OGT9
-	KJsZoYeJNVm5H32F5BzDcuphqKcbe9T7elOSrJzu3r3UAwyglT8Gj0jRcOvbn5J+TPg4lqdvRPV4H
-	t82kXnOYAkFeecLmiayL/iWOMIzOCcJ1WyImRHfS9Dh8Oa7tlaqQXfmF6bXOly08GSvN/3QWmG9Rl
-	bAoEwasiQ52FQpjS4mg2mt8Tj++yIKCCA3jKnxvehZEhkjk1mOwk3+oZnG7j9Yd/Y6QrnmIb12Sqo
-	cHkhYai9/+xM3i+s+1/tjbiboanK42hiChjD7chpFQcWe5JAQhPxtTPu9Ac1UKtJ/sQD1STXpaXU3
-	od3PEazg==;
+	bh=oo6AyZ8rCKtz68mCIb4/NJQRR9zgMtH3ssxzdo1ZwmY=; b=yVbiXF4T7IDO9NWEotvyQhxLYx
+	/bT55YXW9FVd0nGcHIZ1h/kRTEto8Z9SsNjsJhi9+UpF8AyxNYM8dSN1H8n6j/B+TUiIHGPr6HfOG
+	+LXszMpw4aiGDQlmFHe7PcnCCe2TDptQKkCMk97+GH8gPbwZ64EO8Y1lnMjkTQKaSBosgA6djwf/E
+	h2sukoJvcsQO4w49la0HcaTswUqzniKYaGR0owqLb1n8/XOmZ2I337gfjJp3VEx2Ey+m/Chq3IcoM
+	aqSBXKJIRM16dgDs8qdt0+HSqsT/+zB3PVJ0YUJltywCCYnGvAQ0WYlv3g4lEx8wSU2dNALXYqBq0
+	dl1tcayw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kD4H3-0004c5-M7; Tue, 01 Sep 2020 11:16:25 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kD4H6-0004eP-Bw; Tue, 01 Sep 2020 11:16:28 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kD4H1-0004Yd-5l
- for linux-rockchip@lists.infradead.org; Tue, 01 Sep 2020 11:16:24 +0000
+ id 1kD4H1-0004Yv-BI
+ for linux-rockchip@lists.infradead.org; Tue, 01 Sep 2020 11:16:26 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id 98AD9298950
+ (Authenticated sender: dafna) with ESMTPSA id A4DA829913A
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH v4 01/10] media: staging: rkisp1: cap: change RGB24 format to
- XBGR32
-Date: Tue,  1 Sep 2020 13:16:03 +0200
-Message-Id: <20200901111612.10552-2-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v4 03/10] media: staging: rkisp1: cap: remove unsupported
+ format YUV444
+Date: Tue,  1 Sep 2020 13:16:05 +0200
+Message-Id: <20200901111612.10552-4-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
 References: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200901_071623_310209_4BAFFB21 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20200901_071623_601388_8DE58FF1 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,40 +75,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to the TRM [1], the YUV->RGB conversion outputs
-RGB 888 format with 4 bytes, where the last byte is ignored,
-using big endian representation:
-
-|___X___|___R___|___G___|___B___|
-31      24      16      8       0
-
-Which matches format V4L2_PIX_FMT_XBGR32 in little endian
-representation, so replace it accordingly.
-
-"24 bit word". What it means is that 4 bytes are used with
-24bit for the RGB and the last byte is ignored.
-This matches format V4L2_PIX_FMT_XBGR32.
+It is not clear if the device is able to support format
+V4L2_PIX_FMT_YUV444M so remove it.
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Acked-by: Helen Koike <helen.koike@collabora.com>
-Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 ---
- drivers/staging/media/rkisp1/rkisp1-capture.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+see the cover letter for details
+
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 13 -------------
+ 1 file changed, 13 deletions(-)
 
 diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index 0632582a95b4..f4d5cc3e2f12 100644
+index 79195e74d995..022b8eeed426 100644
 --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
 +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -276,7 +276,7 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+@@ -131,12 +131,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
+ 		.uv_swap = 1,
+ 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
  	},
- 	/* rgb */
+-	/* yuv444 */
+-	{
+-		.fourcc = V4L2_PIX_FMT_YUV444M,
+-		.uv_swap = 0,
+-		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+-	},
+ 	/* yuv400 */
  	{
--		.fourcc = V4L2_PIX_FMT_RGB24,
-+		.fourcc = V4L2_PIX_FMT_XBGR32,
+ 		.fourcc = V4L2_PIX_FMT_GREY,
+@@ -243,13 +237,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
- 	}, {
+ 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
+ 	},
+-	/* yuv444 */
+-	{
+-		.fourcc = V4L2_PIX_FMT_YUV444M,
+-		.uv_swap = 0,
+-		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+-		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV444,
+-	},
+ 	/* yuv400 */
+ 	{
+ 		.fourcc = V4L2_PIX_FMT_GREY,
 -- 
 2.17.1
 
