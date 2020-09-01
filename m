@@ -2,56 +2,53 @@ Return-Path: <SRS0=U2ba=CK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 184D2C433E6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 11:58:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1BCF5C433E6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 12:05:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C76C720767
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 11:58:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CFCFA206EF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 12:05:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dkjsBjRN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C76C720767
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mRk5xS7h"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CFCFA206EF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ReCyvls92LoBQ+yPB2sYUja1ZJBIOn6wZd0piyB4NxE=; b=dkjsBjRNYQI9cuA5fQEf7WBJ0h
-	7BU7qb7c4Aa/w6vyYmMCPaJEK0V8wX+zQx9FJy55xXlDp5Kr7YtR9hQ6oGEGqkJ4PoOdyM1HG0/K4
-	xNEIaBECovnMbcEW4I3nLjsLNTEK8vlICtpNsVB0Nf+UqKL+9Wjt5Ritl9wVPAm3/y6yCfPHvc763
-	fQDiMcuKITYnfhnI/b1sWOZy2iusFi/Kw/zdAiJYr2143PykzN0V5Aint6dDGlqYBlVALJg4S/liP
-	DpePBSWpTBIa37Nxsj8UC1HAC7t8V2yWfkMZ22YWbHlrkMd8sLDR1tYpD5Ozn2Z+Sh5HFOFgS26+x
-	D4BvTAMw==;
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qTptY02j4nW0iwKRCvSkZDbWT/tMOx4qUrwzVS+377I=; b=mRk5xS7h8oT1aQFl2g+DmulXnx
+	IETVsPF8ClSycDbWdN3r8WmVt41aUvjteqejI1sFSYz6IGDzgsU2zArwT9EwyFy6jOt8rsZ3jfYEC
+	PRizg5FruMHkCkiQxL1hPVgvP46fHQnQs1R8rBZP2Adfz6ga+Wd2ujHbRTAnomRD9/pmAF95/+NLt
+	Rr+XBmk+y8t9ziuBIoWlPXXtRFECKsnhQ2L9eRZxayx/+0BESlt7W3eRzU/IJl2qXtkFG/qGSlNjU
+	7aTCKMt2HaiadZfGHBgoxbJ+zcFPh5jsA5pPhLva7I7+MrjM1fU4yI3ifqujrnenJ93Vw9vzMypW8
+	PnRLwN7A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kD4HB-0004hK-7M; Tue, 01 Sep 2020 11:16:33 +0000
+	id 1kD4H9-0004gS-Go; Tue, 01 Sep 2020 11:16:31 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kD4H3-0004aY-3L
- for linux-rockchip@lists.infradead.org; Tue, 01 Sep 2020 11:16:29 +0000
+ id 1kD4H1-0004Yc-AQ
+ for linux-rockchip@lists.infradead.org; Tue, 01 Sep 2020 11:16:26 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id 5B9F426017C
+ (Authenticated sender: dafna) with ESMTPSA id 1B5B9298907
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH v4 06/10] media: staging: rkisp1: add a helper function to
- enumerate supported mbus formats on capture
-Date: Tue,  1 Sep 2020 13:16:08 +0200
-Message-Id: <20200901111612.10552-7-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v4 00/10] media: staging: rkisp1: add support to V4L2_CAP_IO_MC
+Date: Tue,  1 Sep 2020 13:16:02 +0200
+Message-Id: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
-References: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200901_071625_373029_08CE478C 
-X-CRM114-Status: GOOD (  21.38  )
+X-CRM114-CacheID: sfid-20200901_071623_469137_96857C98 
+X-CRM114-Status: GOOD (  17.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,182 +71,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a function 'rkisp1_cap_enum_mbus_codes' that receive
-a pointer to 'v4l2_subdev_mbus_code_enum' and returns the
-next supported mbus format of the capture. The function
-assumes that pixel formats with identical 'mbus' are grouped
-together in the hardcoded arrays, therefore the order of the
-entries in the array 'rkisp1_sp_fmts' are adjusted.
-This function is a helper for the media bus enumeration of
-the source pad of the resizer entity.
+The patchset solves several problems in the rkisp1 driver.
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- drivers/staging/media/rkisp1/rkisp1-capture.c | 86 +++++++++++++------
- drivers/staging/media/rkisp1/rkisp1-common.h  | 11 +++
- 2 files changed, 70 insertions(+), 27 deletions(-)
+1. Currently the resizers output media code MEDIA_BUS_FMT_YUYV8_2X8 when the input is
+MEDIA_BUS_FMT_YUYV8_2X8.
+The patchset adds support to other media codes on the resizer according to
+the chroma subsampling.
+Setting the correct media code on the source pad that matches the
+chroma subsampling reflects userspace  that the resizer has downsampling
+capability and also the resizer entity does not have to check the capture entity's
+configuration to get the scaling ratio, the information of how to scale can be
+obtained from the source media code of the resizer.
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index d23c9adc8201..531381e1801a 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -84,6 +84,10 @@ struct rkisp1_capture_config {
- 	} mi;
- };
- 
-+/*
-+ * The supported pixel formats for mainpath. NOTE, pixel formats with identical 'mbus'
-+ * are grouped together. This is assumed and used by the function rkisp1_cap_enum_mbus_codes
-+ */
- static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 	/* yuv422 */
- 	{
-@@ -112,6 +116,13 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	},
-+	/* yuv400 */
-+	{
-+		.fourcc = V4L2_PIX_FMT_GREY,
-+		.uv_swap = 0,
-+		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	},
- 	/* yuv420 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV21,
-@@ -144,13 +155,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	},
--	/* yuv400 */
--	{
--		.fourcc = V4L2_PIX_FMT_GREY,
--		.uv_swap = 0,
--		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
--		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
--	},
- 	/* raw */
- 	{
- 		.fourcc = V4L2_PIX_FMT_SRGGB8,
-@@ -203,6 +207,10 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 	},
- };
- 
-+/*
-+ * The supported pixel formats for selfpath. NOTE, pixel formats with identical 'mbus'
-+ * are grouped together. This is assumed and used by the function rkisp1_cap_enum_mbus_codes
-+ */
- static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 	/* yuv422 */
- 	{
-@@ -236,6 +244,26 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	},
-+	/* yuv400 */
-+	{
-+		.fourcc = V4L2_PIX_FMT_GREY,
-+		.uv_swap = 0,
-+		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-+		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	},
-+	/* rgb */
-+	{
-+		.fourcc = V4L2_PIX_FMT_XBGR32,
-+		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
-+		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	}, {
-+		.fourcc = V4L2_PIX_FMT_RGB565,
-+		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
-+		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB565,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
-+	},
- 	/* yuv420 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV21,
-@@ -274,26 +302,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
- 		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	},
--	/* yuv400 */
--	{
--		.fourcc = V4L2_PIX_FMT_GREY,
--		.uv_swap = 0,
--		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
--		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
--		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
--	},
--	/* rgb */
--	{
--		.fourcc = V4L2_PIX_FMT_XBGR32,
--		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
--		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
--		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
--	}, {
--		.fourcc = V4L2_PIX_FMT_RGB565,
--		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
--		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB565,
--		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
--	},
- };
- 
- static const struct rkisp1_capture_config rkisp1_capture_config_mp = {
-@@ -334,6 +342,30 @@ rkisp1_vdev_to_node(struct video_device *vdev)
- 	return container_of(vdev, struct rkisp1_vdev_node, vdev);
- }
- 
-+int rkisp1_cap_enum_mbus_codes(struct rkisp1_capture *cap,
-+			       struct v4l2_subdev_mbus_code_enum *code)
-+{
-+	const struct rkisp1_capture_fmt_cfg *fmts = cap->config->fmts;
-+	/*
-+	 * initialize curr_mbus to non existing mbus code 0 to ensure it is
-+	 * different from fmts[0].mbus
-+	 */
-+	u32 curr_mbus = 0;
-+	int i, n = 0;
-+
-+	for (i = 0; i < cap->config->fmt_size; i++) {
-+		if (fmts[i].mbus == curr_mbus)
-+			continue;
-+
-+		curr_mbus = fmts[i].mbus;
-+		if (n++ == code->index) {
-+			code->code = curr_mbus;
-+			return 0;
-+		}
-+	}
-+	return -EINVAL;
-+}
-+
- /* ----------------------------------------------------------------------------
-  * Stream operations for self-picture path (sp) and main-picture path (mp)
-  */
-diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
-index 992d8ec4c448..8cdfcaab268e 100644
---- a/drivers/staging/media/rkisp1/rkisp1-common.h
-+++ b/drivers/staging/media/rkisp1/rkisp1-common.h
-@@ -410,6 +410,17 @@ static inline u32 rkisp1_read(struct rkisp1_device *rkisp1, unsigned int addr)
- 	return readl(rkisp1->base_addr + addr);
- }
- 
-+/*
-+ * rkisp1_cap_enum_mbus_codes - A helper function that return the i'th supported mbus code
-+ *				of the capture entity. This is used to enumerate the supported
-+ *				mbus codes on the source pad of the resizer.
-+ *
-+ * @cap:  the capture entity
-+ * @code: the mbus code, the function reads the code->index and fills the code->code
-+ */
-+int rkisp1_cap_enum_mbus_codes(struct rkisp1_capture *cap,
-+			       struct v4l2_subdev_mbus_code_enum *code);
-+
- /*
-  * rkisp1_sd_adjust_crop_rect - adjust a rectangle to fit into another rectangle.
-  *
+2. Add support for the V4L2_CAP_IO_MC capability on
+the mainpath and selfpath captures. This helps userspace to know the
+right configuration for streaming. This is especially helpful for the
+RGB and Grey formats that expect media bus MEDIA_BUS_FMT_YUYV8_2X8
+which is not something userspace can 'guess'. Adding a mapping of the
+required mbus code for each pixelformat also makes the link_validation
+code much simpler, it just has to check if the configuration matches the mapping.
+
+3. Removes unsupported packed yuv formats - this patch was already part of a pull request
+and was dropped due to merge conflicts.
+
+4. Remove bayer formats on the selfpath resizer since they are not
+supported on the selfpath capture.
+
+5. Remove support to YUV444 pixel format, I was not able to find a configuration
+that supports this format. I kept getting bad looking frames.
+I tried to add capture yuv444 formats by adding an entry:
+
++       {
++               .mbus_code      = MEDIA_BUS_FMT_YUV8_1X24,
++               .hdiv           = 1,
++               .vdiv           = 1,
++       }
+
+to the list of supported formats: rkisp1_rsz_yuv_src_formats[]
+
+full patch: http://ix.io/2vNJ
+
+On the mainpath I get good images, but on the selfpath I get bad looking images:
+
+https://pasteboard.co/JoWp3U4.png
+
+https://pasteboard.co/Jp1YWLR.png
+
+Interestingly, when changing the sp_input from default RKISP1_MI_CTRL_SP_INPUT_YUV422
+to RKISP1_MI_CTRL_SP_INPUT_YUV444, then the images that are not upscaled look good:
+
+https://pasteboard.co/Jp22u6E.png
+
+but with upscaling (1604x1232 -> 1920x1500) it still looks bad:
+
+https://pasteboard.co/Jp22MBU.png
+
+
+6. Fix the configuration to support Grey format - the 'write_format' field should
+be 'planar'
+
+changes since v3:
+patch 1 - remove '----' line from commit log
+patch 5-7 - refactor code, add documentation
+patch 8 - change function name rkisp1_rsz_yuv_mbus_info and code in function rkisp1_rsz_set_src_fmt
+
+
+Dafna Hirschfeld (10):
+  media: staging: rkisp1: cap: change RGB24 format to XBGR32
+  media: staging: rkisp1: cap: remove unsupported formats
+  media: staging: rkisp1: cap: remove unsupported format YUV444
+  media: staging: rkisp1: don't support bayer format on selfpath resizer
+  media: staging: rkisp1: add capability V4L2_CAP_IO_MC to capture
+    devices
+  media: staging: rkisp1: add a helper function to enumerate supported
+    mbus formats on capture
+  media: staging: rkisp1: rsz: enumerate the formats on the src pad
+    according to the capture
+  media: staging: rkisp1: rsz: Add support to more YUV encoded mbus
+    codes on src pad
+  media: staging: rkisp1: cap: simplify the link validation by compering
+    the media bus code
+  media: staging: rkisp1: fix configuration for GREY pixelformat
+
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 199 +++++++++++-------
+ drivers/staging/media/rkisp1/rkisp1-common.h  |  11 +
+ drivers/staging/media/rkisp1/rkisp1-resizer.c |  93 ++++++--
+ 3 files changed, 203 insertions(+), 100 deletions(-)
+
 -- 
 2.17.1
 
