@@ -2,81 +2,116 @@ Return-Path: <SRS0=U2ba=CK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 98A18C433E6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 07:32:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BBCA0C433E6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 07:41:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6682E206CD
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 07:32:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6BD5E204EC
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 07:41:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MWqmgNlG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6682E206CD
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vYn+V3pn";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="E5dZ6Nzn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6BD5E204EC
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mUw+j6lzO8qetfmdrPNbm1Os3NILAPX9QojSsZuB+/I=; b=MWqmgNlGHO0/6nNUxm8myAsem
-	BaAHPGX/ZsqUwrxrXwUq+ArwTF2e44NLYMHu+nExlchTZoXPpvgHBya1VFip7uw7CaoH32kg9sHIW
-	LR3GjFlOPOYdwrYO+ffSKFCOBODjD2MtYLGYwluCNSWoUIynQhefB7lMXaLT+oZOmx2JTUoMmYanZ
-	0/iPUawJsH8C8ALmV087kq36wQa1/hX1Ylut2tm7JdlU+xrMWK1L2kxzb3PAivK0heQ5gzlas3vUs
-	Jp7pJCGxHduuDa8+Ee0rrMkwepuhTV2wbQj2l4i4lOGoG8Vp4osj4nJeKnvWyMpZr6pSANE/7i4cW
-	pA6bAl/0Q==;
+	 bh=pihFVgVtEe4EbviBUvlGP1HPMyx+JCYw7EfaRqZyeow=; b=vYn+V3pnF1wTmQvFAmQ9ffN65
+	hphrdNd7uLwrVie7YuedwhtMeVLUto5xGs1bKteWSCSzhh9/TU6QpuAokAwG0jgwndjPwE9UPWI6d
+	p1OnkyhZLuDSXyBHoWXu9mdx9Cc0ScrFPG6EDyKs5egO/d7k3167jB6WcKqgXhq3NVbFz+sK5+kEQ
+	qvYEKzRMjBcgAW6sV+Y3W8vA1aD1vmm4FOX7qb2vyxGzaL28KK5uwW4b5FPzN7ndd9s2TqdO7+vbF
+	Raa3d1hZBEa0s1oRzLPaI55IBJGu43SbYYgNbxV7hjsBCXnGHZ6rw7/P85AjSk921kH1vUHJ+dM7M
+	mvoS5DqIw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kD0ln-0002h8-3C; Tue, 01 Sep 2020 07:31:55 +0000
-Received: from regular1.263xmail.com ([211.150.70.197])
+	id 1kD0uV-0004ED-Fe; Tue, 01 Sep 2020 07:40:55 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kD0lk-0002fa-5t
- for linux-rockchip@lists.infradead.org; Tue, 01 Sep 2020 07:31:53 +0000
-Received: from localhost (unknown [192.168.167.32])
- by regular1.263xmail.com (Postfix) with ESMTP id 64982D82;
- Tue,  1 Sep 2020 15:30:19 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED: 0
-X-ANTISPAM-LEVEL: 2
-X-SKE-CHECKED: 1
-X-ABS-CHECKED: 1
-Received: from [172.16.12.39] (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P11836T140500728280832S1598945415326857_; 
- Tue, 01 Sep 2020 15:30:16 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <5980efa4ed0b2cbc37153d642df00589>
-X-RL-SENDER: algea.cao@rock-chips.com
-X-SENDER: algea.cao@rock-chips.com
-X-LOGIN-NAME: algea.cao@rock-chips.com
-X-FST-TO: linux-rockchip@lists.infradead.org
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-DNS-TYPE: 0
-X-System-Flag: 0
-Subject: Re: [PATCH] drm: Parse Colorimetry data block from EDID
-To: =?UTF-8?B?VmlsbGUgU3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
-References: <20200826142328.131144-1-algea.cao@rock-chips.com>
- <20200827105701.GS6112@intel.com>
- <4cadf318-cfc3-92d6-6219-170166db94ce@rock-chips.com>
- <20200831195316.GC6112@intel.com>
-From: crj <algea.cao@rock-chips.com>
-Message-ID: <7a800d9f-2679-73a6-f3d3-dd6cfa829790@rock-chips.com>
-Date: Tue, 1 Sep 2020 15:30:17 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.1.1
+ id 1kD0uP-0004AQ-5N
+ for linux-rockchip@lists.infradead.org; Tue, 01 Sep 2020 07:40:50 +0000
+Received: by mail-wr1-x441.google.com with SMTP id x14so316753wrl.12
+ for <linux-rockchip@lists.infradead.org>; Tue, 01 Sep 2020 00:40:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=date:from:to:cc:subject:message-id:mail-followup-to:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=0dMDoLW4/V0CBT2qh5v4hL6ui4LKLRgE58vB9ic/W/M=;
+ b=E5dZ6NznDCWIxvwwKA7tc1MIEb7ur7yXJKyAzLIRFQ0XwrMQSSFwSNiVkFhqz26CQL
+ T3WZ3hmK4oUAUajJ3GKCXnJIEuemkYeQ/d6OJzuyMBHa36DsUR/ymwy6eCPbJSSJMOLv
+ L100dPpY/BW79sCQrexf9ceA6WIxeIcEm402E=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id
+ :mail-followup-to:references:mime-version:content-disposition
+ :in-reply-to;
+ bh=0dMDoLW4/V0CBT2qh5v4hL6ui4LKLRgE58vB9ic/W/M=;
+ b=A6usEQzsXil/O8U/Gwvs8OcTWUuVsCE1GfrFoel4E/8HvwzTrhew7roUPLxQUbNmHs
+ VwJ8/rg+3QLVxNRkxcurdSP9Ytu11DW1F+4W3+/ZKko3OOqQmPB7NO94b7RhuD2C5tmK
+ V7JFjR0+v3tTrNn0stQBxSdMsISNoPiYltVEPl583XEEYcaKmB34nkB+M11uzirAZyQv
+ b327sf0g25Fr0gFgvJY77BniiI5IJgICCGTrgq+DpmWskdVaFMLG/t9w1tMfifhEbJ+c
+ wBzhmu6kL3u5rlSoFBep6/bDRb9pteKLwGGN3pJ7vCWNUOphry8tgE8ZNeUc2b9s+CCq
+ tQbA==
+X-Gm-Message-State: AOAM533bQTYOgrvq51TWgLs2LzWsOZmKEcQETAGLbgEZGTLDU3q7fy7z
+ hIzZEWW7GhbZm04cMdA17Os3rg==
+X-Google-Smtp-Source: ABdhPJzCV7lPfbJCoArzY1LN2/bWPamRPE0OsWfPisRFktCHPs3u7sq0+hzW7bOAp2HrZVmyNnX6ww==
+X-Received: by 2002:adf:dfc3:: with SMTP id q3mr408886wrn.238.1598946046446;
+ Tue, 01 Sep 2020 00:40:46 -0700 (PDT)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+ by smtp.gmail.com with ESMTPSA id h13sm737218wrx.17.2020.09.01.00.40.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 01 Sep 2020 00:40:45 -0700 (PDT)
+Date: Tue, 1 Sep 2020 09:40:43 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [PATCH v2 1/2] drm: allow limiting the scatter list size.
+Message-ID: <20200901074043.GT2352366@phenom.ffwll.local>
+Mail-Followup-To: Gerd Hoffmann <kraxel@redhat.com>,
+ dri-devel@lists.freedesktop.org, christian.koenig@amd.com,
+ Alex Deucher <alexander.deucher@amd.com>,
+ David Airlie <airlied@linux.ie>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Lucas Stach <l.stach@pengutronix.de>,
+ Russell King <linux+etnaviv@armlinux.org.uk>,
+ Christian Gmeiner <christian.gmeiner@gmail.com>,
+ Rob Clark <robdclark@gmail.com>, Sean Paul <sean@poorly.run>,
+ Ben Skeggs <bskeggs@redhat.com>, Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>,
+ "open list:RADEON and AMDGPU DRM DRIVERS" <amd-gfx@lists.freedesktop.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:DRM DRIVERS FOR VIVANTE GPU IP"
+ <etnaviv@lists.freedesktop.org>, 
+ "open list:DRM DRIVER FOR MSM ADRENO GPU" <linux-arm-msm@vger.kernel.org>,
+ "open list:DRM DRIVER FOR MSM ADRENO GPU" <freedreno@lists.freedesktop.org>,
+ "open list:DRM DRIVER FOR NVIDIA GEFORCE/QUADRO GPUS"
+ <nouveau@lists.freedesktop.org>, 
+ "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ "open list:DRM DRIVERS FOR NVIDIA TEGRA" <linux-tegra@vger.kernel.org>,
+ "moderated list:DRM DRIVERS FOR XEN" <xen-devel@lists.xenproject.org>
+References: <20200818092017.26290-1-kraxel@redhat.com>
+ <20200818092017.26290-2-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200831195316.GC6112@intel.com>
+Content-Disposition: inline
+In-Reply-To: <20200818092017.26290-2-kraxel@redhat.com>
+X-Operating-System: Linux phenom 5.7.0-1-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200901_033152_729033_F520211F 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20200901_034049_247485_7849E877 
+X-CRM114-Status: GOOD (  28.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,113 +124,322 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: daniel@ffwll.ch, airlied@linux.ie, maarten.lankhorst@linux.intel.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, mripard@kernel.org, tzimmermann@suse.de
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>,
+ "open list:DRM DRIVER FOR NVIDIA GEFORCE/QUADRO GPUS"
+ <nouveau@lists.freedesktop.org>, dri-devel@lists.freedesktop.org,
+ Sandy Huang <hjc@rock-chips.com>, Thierry Reding <thierry.reding@gmail.com>,
+ Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>,
+ "open list:RADEON and AMDGPU DRM DRIVERS" <amd-gfx@lists.freedesktop.org>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ Ben Skeggs <bskeggs@redhat.com>, Russell King <linux+etnaviv@armlinux.org.uk>,
+ "moderated list:DRM DRIVERS FOR XEN" <xen-devel@lists.xenproject.org>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ "open list:DRM DRIVER FOR MSM ADRENO GPU" <linux-arm-msm@vger.kernel.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ "moderated list:DRM DRIVERS FOR VIVANTE GPU IP"
+ <etnaviv@lists.freedesktop.org>, Maxime Ripard <mripard@kernel.org>,
+ Christian Gmeiner <christian.gmeiner@gmail.com>,
+ "open list:DRM DRIVERS FOR NVIDIA TEGRA" <linux-tegra@vger.kernel.org>,
+ Sean Paul <sean@poorly.run>, "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>, Rob Clark <robdclark@gmail.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ "open list:DRM DRIVER FOR MSM ADRENO GPU" <freedreno@lists.freedesktop.org>,
+ christian.koenig@amd.com, Lucas Stach <l.stach@pengutronix.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgrlnKggMjAyMC85LzEgMzo1MywgVmlsbGUgU3lyasOkbMOkIOWGmemBkzoKPiBPbiBGcmks
-IEF1ZyAyOCwgMjAyMCBhdCAwOTowNzoxM0FNICswODAwLCBjcmogd3JvdGU6Cj4+IEhpIFZpbGxl
-IFN5cmrDpGzDpCwKPj4KPj4g5ZyoIDIwMjAvOC8yNyAxODo1NywgVmlsbGUgU3lyasOkbMOkIOWG
-memBkzoKPj4+IE9uIFdlZCwgQXVnIDI2LCAyMDIwIGF0IDEwOjIzOjI4UE0gKzA4MDAsIEFsZ2Vh
-IENhbyB3cm90ZToKPj4+PiBDRUEgODYxLjMgc3BlYyBhZGRzIGNvbG9yaW1ldHJ5IGRhdGEgYmxv
-Y2sgZm9yIEhETUkuCj4+Pj4gUGFyc2luZyB0aGUgYmxvY2sgdG8gZ2V0IHRoZSBjb2xvcmltZXRy
-eSBkYXRhIGZyb20KPj4+PiBwYW5lbC4KPj4+IEFuZCB3aGF0IGV4YWN0bHkgZG8geW91IHdhbnQg
-dG8gZG8gd2l0aCB0aGF0IGRhdGE/Cj4+Cj4+IFdlIGNhbiBnZXQgY29sb3JpbWV0cnkgZGF0YSBi
-bG9jayBmcm9tIGVkaWQgdGhlbiBzdXBwb3J0Cj4+Cj4+IEhETUkgY29sb3JpbWV0cnkgc3VjaCBh
-cyBCVDIwMjAuCj4gQnV0IHdoYXQgZG8geW91IHdhbnQgdG8gZG8gd2l0aCBpdD8gVGhlIHBhdGNo
-IGRvZXMgbm90aGluZwo+IGZ1bmN0aW9uYWwuCgpJZiB3ZSB3YW50IHRvIG91dHB1dCBCVDIwMjAg
-aW4gSERNSSBkcml2ZXIsIHdlIGNhbiBrbm93IHdoZXRoZXIgVFYgCnN1cHBvcnQgQlQyMDIwCgp2
-aWEgY29ubmVjdG9yLT5kaXNwbGF5X2luZm8uaGRtaS5jb2xvcmltZXRyeS4gSWYgVFYgZG9uJ3Qg
-c3VwcG9ydCAKQlQyMDIwLCBIRE1JIHNob3VsZG4ndAoKb3VwdXQgaW4gQlQyMDIwLgoKPj4+PiBT
-aWduZWQtb2ZmLWJ5OiBBbGdlYSBDYW8gPGFsZ2VhLmNhb0Byb2NrLWNoaXBzLmNvbT4KPj4+PiAt
-LS0KPj4+Pgo+Pj4+ICAgIGRyaXZlcnMvZ3B1L2RybS9kcm1fZWRpZC5jICB8IDQ1ICsrKysrKysr
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPj4+PiAgICBpbmNsdWRlL2RybS9kcm1fY29u
-bmVjdG9yLmggfCAgMyArKysKPj4+PiAgICBpbmNsdWRlL2RybS9kcm1fZWRpZC5oICAgICAgfCAx
-NCArKysrKysrKysrKysKPj4+PiAgICAzIGZpbGVzIGNoYW5nZWQsIDYyIGluc2VydGlvbnMoKykK
-Pj4+Pgo+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2VkaWQuYyBiL2RyaXZl
-cnMvZ3B1L2RybS9kcm1fZWRpZC5jCj4+Pj4gaW5kZXggMzE0OTZiNmNmYzU2Li42N2U2MDdjMDQ0
-OTIgMTAwNjQ0Cj4+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9lZGlkLmMKPj4+PiArKysg
-Yi9kcml2ZXJzL2dwdS9kcm0vZHJtX2VkaWQuYwo+Pj4+IEBAIC0zMjIzLDYgKzMyMjMsNyBAQCBh
-ZGRfZGV0YWlsZWRfbW9kZXMoc3RydWN0IGRybV9jb25uZWN0b3IgKmNvbm5lY3Rvciwgc3RydWN0
-IGVkaWQgKmVkaWQsCj4+Pj4gICAgI2RlZmluZSBWSURFT19CTE9DSyAgICAgMHgwMgo+Pj4+ICAg
-ICNkZWZpbmUgVkVORE9SX0JMT0NLICAgIDB4MDMKPj4+PiAgICAjZGVmaW5lIFNQRUFLRVJfQkxP
-Q0sJMHgwNAo+Pj4+ICsjZGVmaW5lIENPTE9SSU1FVFJZX0RBVEFfQkxPQ0sJCTB4NQo+Pj4+ICAg
-ICNkZWZpbmUgSERSX1NUQVRJQ19NRVRBREFUQV9CTE9DSwkweDYKPj4+PiAgICAjZGVmaW5lIFVT
-RV9FWFRFTkRFRF9UQUcgMHgwNwo+Pj4+ICAgICNkZWZpbmUgRVhUX1ZJREVPX0NBUEFCSUxJVFlf
-QkxPQ0sgMHgwMAo+Pj4+IEBAIC00MzA5LDYgKzQzMTAsNDggQEAgc3RhdGljIHZvaWQgZml4dXBf
-ZGV0YWlsZWRfY2VhX21vZGVfY2xvY2soc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKm1vZGUpCj4+
-Pj4gICAgCW1vZGUtPmNsb2NrID0gY2xvY2s7Cj4+Pj4gICAgfQo+Pj4+ICAgIAo+Pj4+ICtzdGF0
-aWMgYm9vbCBjZWFfZGJfaXNfaGRtaV9jb2xvcmltZXRyeV9kYXRhX2Jsb2NrKGNvbnN0IHU4ICpk
-YikKPj4+PiArewo+Pj4+ICsJaWYgKGNlYV9kYl90YWcoZGIpICE9IFVTRV9FWFRFTkRFRF9UQUcp
-Cj4+Pj4gKwkJcmV0dXJuIGZhbHNlOwo+Pj4+ICsKPj4+PiArCWlmIChkYlsxXSAhPSBDT0xPUklN
-RVRSWV9EQVRBX0JMT0NLKQo+Pj4+ICsJCXJldHVybiBmYWxzZTsKPj4+PiArCj4+Pj4gKwlpZiAo
-Y2VhX2RiX3BheWxvYWRfbGVuKGRiKSA8IDIpCj4+Pj4gKwkJcmV0dXJuIGZhbHNlOwo+Pj4+ICsK
-Pj4+PiArCXJldHVybiB0cnVlOwo+Pj4+ICt9Cj4+Pj4gKwo+Pj4+ICtzdGF0aWMgdm9pZAo+Pj4+
-ICtkcm1fcGFyc2VfY29sb3JpbWV0cnlfZGF0YV9ibG9jayhzdHJ1Y3QgZHJtX2Nvbm5lY3RvciAq
-Y29ubmVjdG9yLCBjb25zdCB1OCAqZGIpCj4+Pj4gK3sKPj4+PiArCXN0cnVjdCBkcm1faGRtaV9p
-bmZvICppbmZvID0gJmNvbm5lY3Rvci0+ZGlzcGxheV9pbmZvLmhkbWk7Cj4+Pj4gKwo+Pj4+ICsJ
-aWYgKGRiWzJdICYgRFJNX0VESURfQ0xSTUVUUllfeHZZQ0NfNjAxKQo+Pj4+ICsJCWluZm8tPmNv
-bG9yaW1ldHJ5IHw9IERSTV9FRElEX0NMUk1FVFJZX3h2WUNDXzYwMTsKPj4+PiArCWlmIChkYlsy
-XSAmIERSTV9FRElEX0NMUk1FVFJZX3h2WUNDXzcwOSkKPj4+PiArCQlpbmZvLT5jb2xvcmltZXRy
-eSB8PSBEUk1fRURJRF9DTFJNRVRSWV94dllDQ183MDk7Cj4+Pj4gKwlpZiAoZGJbMl0gJiBEUk1f
-RURJRF9DTFJNRVRSWV9zWUNDXzYwMSkKPj4+PiArCQlpbmZvLT5jb2xvcmltZXRyeSB8PSBEUk1f
-RURJRF9DTFJNRVRSWV9zWUNDXzYwMTsKPj4+PiArCWlmIChkYlsyXSAmIERSTV9FRElEX0NMUk1F
-VFJZX0FEQllDQ182MDEpCj4+Pj4gKwkJaW5mby0+Y29sb3JpbWV0cnkgfD0gRFJNX0VESURfQ0xS
-TUVUUllfQURCWUNDXzYwMTsKPj4+PiArCWlmIChkYlsyXSAmIERSTV9FRElEX0NMUk1FVFJZX0FE
-Ql9SR0IpCj4+Pj4gKwkJaW5mby0+Y29sb3JpbWV0cnkgfD0gRFJNX0VESURfQ0xSTUVUUllfQURC
-X1JHQjsKPj4+PiArCWlmIChkYlsyXSAmIERSTV9FRElEX0NMUk1FVFJZX0JUMjAyMF9DWUNDKQo+
-Pj4+ICsJCWluZm8tPmNvbG9yaW1ldHJ5IHw9IERSTV9FRElEX0NMUk1FVFJZX0JUMjAyMF9DWUND
-Owo+Pj4+ICsJaWYgKGRiWzJdICYgRFJNX0VESURfQ0xSTUVUUllfQlQyMDIwX1lDQykKPj4+PiAr
-CQlpbmZvLT5jb2xvcmltZXRyeSB8PSBEUk1fRURJRF9DTFJNRVRSWV9CVDIwMjBfWUNDOwo+Pj4+
-ICsJaWYgKGRiWzJdICYgRFJNX0VESURfQ0xSTUVUUllfQlQyMDIwX1JHQikKPj4+PiArCQlpbmZv
-LT5jb2xvcmltZXRyeSB8PSBEUk1fRURJRF9DTFJNRVRSWV9CVDIwMjBfUkdCOwo+Pj4+ICsJLyog
-Qnl0ZSA0IEJpdCA3OiBEQ0ktUDMgKi8KPj4+PiArCWlmIChkYlszXSAmIEJJVCg3KSkKPj4+PiAr
-CQlpbmZvLT5jb2xvcmltZXRyeSB8PSBEUk1fRURJRF9DTFJNRVRSWV9EQ0lfUDM7Cj4+Pj4gKwo+
-Pj4+ICsJRFJNX0RFQlVHX0tNUygiU3VwcG9ydGVkIENvbG9yaW1ldHJ5IDB4JXhcbiIsIGluZm8t
-PmNvbG9yaW1ldHJ5KTsKPj4+PiArfQo+Pj4+ICsKPj4+PiAgICBzdGF0aWMgYm9vbCBjZWFfZGJf
-aXNfaGRtaV9oZHJfbWV0YWRhdGFfYmxvY2soY29uc3QgdTggKmRiKQo+Pj4+ICAgIHsKPj4+PiAg
-ICAJaWYgKGNlYV9kYl90YWcoZGIpICE9IFVTRV9FWFRFTkRFRF9UQUcpCj4+Pj4gQEAgLTQ5OTQs
-NiArNTAzNyw4IEBAIHN0YXRpYyB2b2lkIGRybV9wYXJzZV9jZWFfZXh0KHN0cnVjdCBkcm1fY29u
-bmVjdG9yICpjb25uZWN0b3IsCj4+Pj4gICAgCQkJZHJtX3BhcnNlX3ZjZGIoY29ubmVjdG9yLCBk
-Yik7Cj4+Pj4gICAgCQlpZiAoY2VhX2RiX2lzX2hkbWlfaGRyX21ldGFkYXRhX2Jsb2NrKGRiKSkK
-Pj4+PiAgICAJCQlkcm1fcGFyc2VfaGRyX21ldGFkYXRhX2Jsb2NrKGNvbm5lY3RvciwgZGIpOwo+
-Pj4+ICsJCWlmIChjZWFfZGJfaXNfaGRtaV9jb2xvcmltZXRyeV9kYXRhX2Jsb2NrKGRiKSkKPj4+
-PiArCQkJZHJtX3BhcnNlX2NvbG9yaW1ldHJ5X2RhdGFfYmxvY2soY29ubmVjdG9yLCBkYik7Cj4+
-Pj4gICAgCX0KPj4+PiAgICB9Cj4+Pj4gICAgCj4+Pj4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvZHJt
-L2RybV9jb25uZWN0b3IuaCBiL2luY2x1ZGUvZHJtL2RybV9jb25uZWN0b3IuaAo+Pj4+IGluZGV4
-IGFmMTQ1NjA4YjVlZC4uZDU5OWMzYjllODgxIDEwMDY0NAo+Pj4+IC0tLSBhL2luY2x1ZGUvZHJt
-L2RybV9jb25uZWN0b3IuaAo+Pj4+ICsrKyBiL2luY2x1ZGUvZHJtL2RybV9jb25uZWN0b3IuaAo+
-Pj4+IEBAIC0yMDcsNiArMjA3LDkgQEAgc3RydWN0IGRybV9oZG1pX2luZm8gewo+Pj4+ICAgIAo+
-Pj4+ICAgIAkvKiogQHk0MjBfZGNfbW9kZXM6IGJpdG1hcCBvZiBkZWVwIGNvbG9yIHN1cHBvcnQg
-aW5kZXggKi8KPj4+PiAgICAJdTggeTQyMF9kY19tb2RlczsKPj4+PiArCj4+Pj4gKwkvKiBAY29s
-b3JpbWV0cnk6IGJpdG1hcCBvZiBzdXBwb3J0ZWQgY29sb3JpbWV0cnkgbW9kZXMgKi8KPj4+PiAr
-CXUxNiBjb2xvcmltZXRyeTsKPj4+PiAgICB9Owo+Pj4+ICAgIAo+Pj4+ICAgIC8qKgo+Pj4+IGRp
-ZmYgLS1naXQgYS9pbmNsdWRlL2RybS9kcm1fZWRpZC5oIGIvaW5jbHVkZS9kcm0vZHJtX2VkaWQu
-aAo+Pj4+IGluZGV4IGNmYTRmNWFmNDlhZi4uOThmYTc4YzJmODJkIDEwMDY0NAo+Pj4+IC0tLSBh
-L2luY2x1ZGUvZHJtL2RybV9lZGlkLmgKPj4+PiArKysgYi9pbmNsdWRlL2RybS9kcm1fZWRpZC5o
-Cj4+Pj4gQEAgLTIyOSw2ICsyMjksMjAgQEAgc3RydWN0IGRldGFpbGVkX3RpbWluZyB7Cj4+Pj4g
-ICAgCQkJCSAgICBEUk1fRURJRF9ZQ0JDUjQyMF9EQ18zNiB8IFwKPj4+PiAgICAJCQkJICAgIERS
-TV9FRElEX1lDQkNSNDIwX0RDXzMwKQo+Pj4+ICAgIAo+Pj4+ICsvKgo+Pj4+ICsgKiBTdXBwb3J0
-ZWQgQ29sb3JpbWV0cnkgZnJvbSBjb2xvcmltZXRyeSBkYXRhIGJsb2NrCj4+Pj4gKyAqIGFzIHBl
-ciBDRUEgODYxLUcgc3BlYwo+Pj4+ICsgKi8KPj4+PiArI2RlZmluZSBEUk1fRURJRF9DTFJNRVRS
-WV94dllDQ182MDEgICAoMSA8PCAwKQo+Pj4+ICsjZGVmaW5lIERSTV9FRElEX0NMUk1FVFJZX3h2
-WUNDXzcwOSAgICgxIDw8IDEpCj4+Pj4gKyNkZWZpbmUgRFJNX0VESURfQ0xSTUVUUllfc1lDQ182
-MDEgICAgKDEgPDwgMikKPj4+PiArI2RlZmluZSBEUk1fRURJRF9DTFJNRVRSWV9BREJZQ0NfNjAx
-ICAoMSA8PCAzKQo+Pj4+ICsjZGVmaW5lIERSTV9FRElEX0NMUk1FVFJZX0FEQl9SR0IgICAgICgx
-IDw8IDQpCj4+Pj4gKyNkZWZpbmUgRFJNX0VESURfQ0xSTUVUUllfQlQyMDIwX0NZQ0MgKDEgPDwg
-NSkKPj4+PiArI2RlZmluZSBEUk1fRURJRF9DTFJNRVRSWV9CVDIwMjBfWUNDICAoMSA8PCA2KQo+
-Pj4+ICsjZGVmaW5lIERSTV9FRElEX0NMUk1FVFJZX0JUMjAyMF9SR0IgICgxIDw8IDcpCj4+Pj4g
-KyNkZWZpbmUgRFJNX0VESURfQ0xSTUVUUllfRENJX1AzICAgICAgKDEgPDwgMTUpCj4+Pj4gKwo+
-Pj4+ICAgIC8qIEVMRCBIZWFkZXIgQmxvY2sgKi8KPj4+PiAgICAjZGVmaW5lIERSTV9FTERfSEVB
-REVSX0JMT0NLX1NJWkUJNAo+Pj4+ICAgIAo+Pj4+IC0tIAo+Pj4+IDIuMjUuMQo+Pj4+Cj4+Pj4K
-Pj4+Pgo+Pj4+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-Cj4+Pj4gZHJpLWRldmVsIG1haWxpbmcgbGlzdAo+Pj4+IGRyaS1kZXZlbEBsaXN0cy5mcmVlZGVz
-a3RvcC5vcmcKPj4+PiBodHRwczovL2xpc3RzLmZyZWVkZXNrdG9wLm9yZy9tYWlsbWFuL2xpc3Rp
-bmZvL2RyaS1kZXZlbAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+On Tue, Aug 18, 2020 at 11:20:16AM +0200, Gerd Hoffmann wrote:
+> Add max_segment argument to drm_prime_pages_to_sg().  When set pass it
+> through to the __sg_alloc_table_from_pages() call, otherwise use
+> SCATTERLIST_MAX_SEGMENT.
+> 
+> Also add max_segment field to drm driver and pass it to
+> drm_prime_pages_to_sg() calls in drivers and helpers.
+> 
+> v2: place max_segment in drm driver not gem object.
+> 
+> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> ---
+>  include/drm/drm_device.h                    |  8 ++++++++
+>  include/drm/drm_prime.h                     |  3 ++-
+>  drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c |  3 ++-
+>  drivers/gpu/drm/drm_gem_shmem_helper.c      |  3 ++-
+>  drivers/gpu/drm/drm_prime.c                 | 10 +++++++---
+>  drivers/gpu/drm/etnaviv/etnaviv_gem.c       |  3 ++-
+>  drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c |  3 ++-
+>  drivers/gpu/drm/msm/msm_gem.c               |  3 ++-
+>  drivers/gpu/drm/msm/msm_gem_prime.c         |  3 ++-
+>  drivers/gpu/drm/nouveau/nouveau_prime.c     |  3 ++-
+>  drivers/gpu/drm/radeon/radeon_prime.c       |  3 ++-
+>  drivers/gpu/drm/rockchip/rockchip_drm_gem.c |  6 ++++--
+>  drivers/gpu/drm/tegra/gem.c                 |  3 ++-
+>  drivers/gpu/drm/vgem/vgem_drv.c             |  3 ++-
+>  drivers/gpu/drm/xen/xen_drm_front_gem.c     |  3 ++-
+>  15 files changed, 43 insertions(+), 17 deletions(-)
+> 
+> diff --git a/include/drm/drm_device.h b/include/drm/drm_device.h
+> index 0988351d743c..47cb547a8115 100644
+> --- a/include/drm/drm_device.h
+> +++ b/include/drm/drm_device.h
+> @@ -329,6 +329,14 @@ struct drm_device {
+>  	 */
+>  	struct drm_fb_helper *fb_helper;
+>  
+> +	/**
+> +	 * @max_segment:
+> +	 *
+> +	 * Max size for scatter list segments.  When unset the default
+> +	 * (SCATTERLIST_MAX_SEGMENT) is used.
+> +	 */
+> +	size_t max_segment;
+
+Is there no better place for this then "at the bottom"? drm_device is a
+huge structure, piling stuff up randomly doesn't make it better :-)
+
+I think ideally we'd have a gem substruct like we have on the modeset side
+at least.
+-Daniel
+
+> +
+>  	/* Everything below here is for legacy driver, never use! */
+>  	/* private: */
+>  #if IS_ENABLED(CONFIG_DRM_LEGACY)
+> diff --git a/include/drm/drm_prime.h b/include/drm/drm_prime.h
+> index 9af7422b44cf..2c3689435cb4 100644
+> --- a/include/drm/drm_prime.h
+> +++ b/include/drm/drm_prime.h
+> @@ -88,7 +88,8 @@ void drm_gem_dmabuf_vunmap(struct dma_buf *dma_buf, void *vaddr);
+>  int drm_gem_prime_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
+>  int drm_gem_dmabuf_mmap(struct dma_buf *dma_buf, struct vm_area_struct *vma);
+>  
+> -struct sg_table *drm_prime_pages_to_sg(struct page **pages, unsigned int nr_pages);
+> +struct sg_table *drm_prime_pages_to_sg(struct page **pages, unsigned int nr_pages,
+> +				       size_t max_segment);
+>  struct dma_buf *drm_gem_prime_export(struct drm_gem_object *obj,
+>  				     int flags);
+>  
+> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c
+> index 519ce4427fce..8f6a647757e7 100644
+> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c
+> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c
+> @@ -303,7 +303,8 @@ static struct sg_table *amdgpu_dma_buf_map(struct dma_buf_attachment *attach,
+>  	switch (bo->tbo.mem.mem_type) {
+>  	case TTM_PL_TT:
+>  		sgt = drm_prime_pages_to_sg(bo->tbo.ttm->pages,
+> -					    bo->tbo.num_pages);
+> +					    bo->tbo.num_pages,
+> +					    obj->dev->max_segment);
+>  		if (IS_ERR(sgt))
+>  			return sgt;
+>  
+> diff --git a/drivers/gpu/drm/drm_gem_shmem_helper.c b/drivers/gpu/drm/drm_gem_shmem_helper.c
+> index 4b7cfbac4daa..8f47b41b0b2f 100644
+> --- a/drivers/gpu/drm/drm_gem_shmem_helper.c
+> +++ b/drivers/gpu/drm/drm_gem_shmem_helper.c
+> @@ -656,7 +656,8 @@ struct sg_table *drm_gem_shmem_get_sg_table(struct drm_gem_object *obj)
+>  
+>  	WARN_ON(shmem->base.import_attach);
+>  
+> -	return drm_prime_pages_to_sg(shmem->pages, obj->size >> PAGE_SHIFT);
+> +	return drm_prime_pages_to_sg(shmem->pages, obj->size >> PAGE_SHIFT,
+> +				     obj->dev->max_segment);
+>  }
+>  EXPORT_SYMBOL_GPL(drm_gem_shmem_get_sg_table);
+>  
+> diff --git a/drivers/gpu/drm/drm_prime.c b/drivers/gpu/drm/drm_prime.c
+> index 1693aa7c14b5..27c783fd6633 100644
+> --- a/drivers/gpu/drm/drm_prime.c
+> +++ b/drivers/gpu/drm/drm_prime.c
+> @@ -802,7 +802,8 @@ static const struct dma_buf_ops drm_gem_prime_dmabuf_ops =  {
+>   *
+>   * This is useful for implementing &drm_gem_object_funcs.get_sg_table.
+>   */
+> -struct sg_table *drm_prime_pages_to_sg(struct page **pages, unsigned int nr_pages)
+> +struct sg_table *drm_prime_pages_to_sg(struct page **pages, unsigned int nr_pages,
+> +				       size_t max_segment)
+>  {
+>  	struct sg_table *sg = NULL;
+>  	int ret;
+> @@ -813,8 +814,11 @@ struct sg_table *drm_prime_pages_to_sg(struct page **pages, unsigned int nr_page
+>  		goto out;
+>  	}
+>  
+> -	ret = sg_alloc_table_from_pages(sg, pages, nr_pages, 0,
+> -				nr_pages << PAGE_SHIFT, GFP_KERNEL);
+> +	if (max_segment == 0 || max_segment > SCATTERLIST_MAX_SEGMENT)
+> +		max_segment = SCATTERLIST_MAX_SEGMENT;
+> +	ret = __sg_alloc_table_from_pages(sg, pages, nr_pages, 0,
+> +					  nr_pages << PAGE_SHIFT,
+> +					  max_segment, GFP_KERNEL);
+>  	if (ret)
+>  		goto out;
+>  
+> diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gem.c b/drivers/gpu/drm/etnaviv/etnaviv_gem.c
+> index f06e19e7be04..90654246b335 100644
+> --- a/drivers/gpu/drm/etnaviv/etnaviv_gem.c
+> +++ b/drivers/gpu/drm/etnaviv/etnaviv_gem.c
+> @@ -103,7 +103,8 @@ struct page **etnaviv_gem_get_pages(struct etnaviv_gem_object *etnaviv_obj)
+>  		int npages = etnaviv_obj->base.size >> PAGE_SHIFT;
+>  		struct sg_table *sgt;
+>  
+> -		sgt = drm_prime_pages_to_sg(etnaviv_obj->pages, npages);
+> +		sgt = drm_prime_pages_to_sg(etnaviv_obj->pages, npages,
+> +					    etnaviv_obj->base.dev->max_segment);
+>  		if (IS_ERR(sgt)) {
+>  			dev_err(dev->dev, "failed to allocate sgt: %ld\n",
+>  				PTR_ERR(sgt));
+> diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c b/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
+> index 6d9e5c3c4dd5..f65be0fffb3d 100644
+> --- a/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
+> +++ b/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
+> @@ -19,7 +19,8 @@ struct sg_table *etnaviv_gem_prime_get_sg_table(struct drm_gem_object *obj)
+>  	if (WARN_ON(!etnaviv_obj->pages))  /* should have already pinned! */
+>  		return ERR_PTR(-EINVAL);
+>  
+> -	return drm_prime_pages_to_sg(etnaviv_obj->pages, npages);
+> +	return drm_prime_pages_to_sg(etnaviv_obj->pages, npages,
+> +				     obj->dev->max_segment);
+>  }
+>  
+>  void *etnaviv_gem_prime_vmap(struct drm_gem_object *obj)
+> diff --git a/drivers/gpu/drm/msm/msm_gem.c b/drivers/gpu/drm/msm/msm_gem.c
+> index b2f49152b4d4..dbf1437c3dac 100644
+> --- a/drivers/gpu/drm/msm/msm_gem.c
+> +++ b/drivers/gpu/drm/msm/msm_gem.c
+> @@ -126,7 +126,8 @@ static struct page **get_pages(struct drm_gem_object *obj)
+>  
+>  		msm_obj->pages = p;
+>  
+> -		msm_obj->sgt = drm_prime_pages_to_sg(p, npages);
+> +		msm_obj->sgt = drm_prime_pages_to_sg(p, npages,
+> +						     obj->dev->max_segment);
+>  		if (IS_ERR(msm_obj->sgt)) {
+>  			void *ptr = ERR_CAST(msm_obj->sgt);
+>  
+> diff --git a/drivers/gpu/drm/msm/msm_gem_prime.c b/drivers/gpu/drm/msm/msm_gem_prime.c
+> index d7c8948427fe..6337cd1f9428 100644
+> --- a/drivers/gpu/drm/msm/msm_gem_prime.c
+> +++ b/drivers/gpu/drm/msm/msm_gem_prime.c
+> @@ -19,7 +19,8 @@ struct sg_table *msm_gem_prime_get_sg_table(struct drm_gem_object *obj)
+>  	if (WARN_ON(!msm_obj->pages))  /* should have already pinned! */
+>  		return NULL;
+>  
+> -	return drm_prime_pages_to_sg(msm_obj->pages, npages);
+> +	return drm_prime_pages_to_sg(msm_obj->pages, npages,
+> +				     obj->dev->max_segment);
+>  }
+>  
+>  void *msm_gem_prime_vmap(struct drm_gem_object *obj)
+> diff --git a/drivers/gpu/drm/nouveau/nouveau_prime.c b/drivers/gpu/drm/nouveau/nouveau_prime.c
+> index bae6a3eccee0..dd0ff032ae16 100644
+> --- a/drivers/gpu/drm/nouveau/nouveau_prime.c
+> +++ b/drivers/gpu/drm/nouveau/nouveau_prime.c
+> @@ -32,7 +32,8 @@ struct sg_table *nouveau_gem_prime_get_sg_table(struct drm_gem_object *obj)
+>  	struct nouveau_bo *nvbo = nouveau_gem_object(obj);
+>  	int npages = nvbo->bo.num_pages;
+>  
+> -	return drm_prime_pages_to_sg(nvbo->bo.ttm->pages, npages);
+> +	return drm_prime_pages_to_sg(nvbo->bo.ttm->pages, npages,
+> +				     obj->dev->max_segment);
+>  }
+>  
+>  void *nouveau_gem_prime_vmap(struct drm_gem_object *obj)
+> diff --git a/drivers/gpu/drm/radeon/radeon_prime.c b/drivers/gpu/drm/radeon/radeon_prime.c
+> index b906e8fbd5f3..61a3fe147489 100644
+> --- a/drivers/gpu/drm/radeon/radeon_prime.c
+> +++ b/drivers/gpu/drm/radeon/radeon_prime.c
+> @@ -36,7 +36,8 @@ struct sg_table *radeon_gem_prime_get_sg_table(struct drm_gem_object *obj)
+>  	struct radeon_bo *bo = gem_to_radeon_bo(obj);
+>  	int npages = bo->tbo.num_pages;
+>  
+> -	return drm_prime_pages_to_sg(bo->tbo.ttm->pages, npages);
+> +	return drm_prime_pages_to_sg(bo->tbo.ttm->pages, npages,
+> +				     obj->dev->max_segment);
+>  }
+>  
+>  void *radeon_gem_prime_vmap(struct drm_gem_object *obj)
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> index b9275ba7c5a5..5ddb2d31a607 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
+> @@ -85,7 +85,8 @@ static int rockchip_gem_get_pages(struct rockchip_gem_object *rk_obj)
+>  
+>  	rk_obj->num_pages = rk_obj->base.size >> PAGE_SHIFT;
+>  
+> -	rk_obj->sgt = drm_prime_pages_to_sg(rk_obj->pages, rk_obj->num_pages);
+> +	rk_obj->sgt = drm_prime_pages_to_sg(rk_obj->pages, rk_obj->num_pages,
+> +					    rk_obj->base.dev->max_segment);
+>  	if (IS_ERR(rk_obj->sgt)) {
+>  		ret = PTR_ERR(rk_obj->sgt);
+>  		goto err_put_pages;
+> @@ -442,7 +443,8 @@ struct sg_table *rockchip_gem_prime_get_sg_table(struct drm_gem_object *obj)
+>  	int ret;
+>  
+>  	if (rk_obj->pages)
+> -		return drm_prime_pages_to_sg(rk_obj->pages, rk_obj->num_pages);
+> +		return drm_prime_pages_to_sg(rk_obj->pages, rk_obj->num_pages,
+> +					     obj->dev->max_segment);
+>  
+>  	sgt = kzalloc(sizeof(*sgt), GFP_KERNEL);
+>  	if (!sgt)
+> diff --git a/drivers/gpu/drm/tegra/gem.c b/drivers/gpu/drm/tegra/gem.c
+> index 723df142a981..a0abde747e95 100644
+> --- a/drivers/gpu/drm/tegra/gem.c
+> +++ b/drivers/gpu/drm/tegra/gem.c
+> @@ -284,7 +284,8 @@ static int tegra_bo_get_pages(struct drm_device *drm, struct tegra_bo *bo)
+>  
+>  	bo->num_pages = bo->gem.size >> PAGE_SHIFT;
+>  
+> -	bo->sgt = drm_prime_pages_to_sg(bo->pages, bo->num_pages);
+> +	bo->sgt = drm_prime_pages_to_sg(bo->pages, bo->num_pages,
+> +					bo->gem.dev->max_segment);
+>  	if (IS_ERR(bo->sgt)) {
+>  		err = PTR_ERR(bo->sgt);
+>  		goto put_pages;
+> diff --git a/drivers/gpu/drm/vgem/vgem_drv.c b/drivers/gpu/drm/vgem/vgem_drv.c
+> index 313339bbff90..045461dc6319 100644
+> --- a/drivers/gpu/drm/vgem/vgem_drv.c
+> +++ b/drivers/gpu/drm/vgem/vgem_drv.c
+> @@ -321,7 +321,8 @@ static struct sg_table *vgem_prime_get_sg_table(struct drm_gem_object *obj)
+>  {
+>  	struct drm_vgem_gem_object *bo = to_vgem_bo(obj);
+>  
+> -	return drm_prime_pages_to_sg(bo->pages, bo->base.size >> PAGE_SHIFT);
+> +	return drm_prime_pages_to_sg(bo->pages, bo->base.size >> PAGE_SHIFT,
+> +				     obj->dev->max_segment);
+>  }
+>  
+>  static struct drm_gem_object* vgem_prime_import(struct drm_device *dev,
+> diff --git a/drivers/gpu/drm/xen/xen_drm_front_gem.c b/drivers/gpu/drm/xen/xen_drm_front_gem.c
+> index f0b85e094111..61a8c1a9fb04 100644
+> --- a/drivers/gpu/drm/xen/xen_drm_front_gem.c
+> +++ b/drivers/gpu/drm/xen/xen_drm_front_gem.c
+> @@ -179,7 +179,8 @@ struct sg_table *xen_drm_front_gem_get_sg_table(struct drm_gem_object *gem_obj)
+>  	if (!xen_obj->pages)
+>  		return ERR_PTR(-ENOMEM);
+>  
+> -	return drm_prime_pages_to_sg(xen_obj->pages, xen_obj->num_pages);
+> +	return drm_prime_pages_to_sg(xen_obj->pages, xen_obj->num_pages,
+> +				     gem_obj->dev->max_segment);
+>  }
+>  
+>  struct drm_gem_object *
+> -- 
+> 2.18.4
+> 
+
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
