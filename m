@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E922C433E2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 12:23:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 49378C433E6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 12:23:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4B3FC207BC
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 12:23:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1856A20767
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 12:23:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vjUdrDW2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4B3FC207BC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UdfNJUXq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1856A20767
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,33 +25,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QEQ4JSB7oxR2SNEhPMhgojLbESrMjKH+Jhnfe/bdyAw=; b=vjUdrDW2BFEOAqnjGecQOFS7pr
-	DgBRnNc+wJJ/P21KHR0ZSJEPkH4pg83HZcZSa8iNEFs2v7mb0wfnwXrkNSbVPdwD9Y6KauhVvEdEo
-	dq+3RxxAxs8u9LsrTyB2XVX+7q0r+HyufgOTW43xMc+tbnBXlwSnYOc8ZIUR37VfZSJhUfbpGH2Y2
-	1gFHTBgxph/BBnbg07g4cV8sCVN0DpR/b1mmwfQXbbsMZyeiHzBh/CP166jA1UL90OvnFhxtBFzys
-	kynUfHD75ntSUp2WfF6zf7jIgu8ZWcQa7iyiNvLerthnNlwUH8tOkfUHdommbekX1H7KueDGHWPof
-	qLqptBEw==;
+	bh=ySkBJz8oqzqg7M7mqC62VMWXezs5jpgPpYNsxtMbYRU=; b=UdfNJUXqL+Xt3Kg1xSu6Kn5YC7
+	mlUvKbgd47PvKDTZE7gsdQpJoZQ0+dEAWeQ8qH6mLpC/RbbPwne2ShSzQOooGxdWOF96IKPaDPj/K
+	1vmH6bGLOH6MrDBkYzEh5haOtymwUZBQ2gRRIrXlPxdUJTI/XPPcqMh3L9tqTEfXJ/mpv/D4J5j0U
+	GPITnMCxqJQetEZq8jSYV17sGLU/20HJU1FahGTwDc49lUyEfyBrk7B24XeiQfgSRFPaTIZdZMgEG
+	vY+ZEOdrDhqGA/so154Z9gWmj1e04xr+q/QBA4pqO+htvLJfYZIk/EnyJmQl00p4Gq/qrcwVDuzjX
+	5foH6azA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kD4HE-0004jW-Dv; Tue, 01 Sep 2020 11:16:36 +0000
+	id 1kD4HE-0004jt-VO; Tue, 01 Sep 2020 11:16:37 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kD4H3-0004aZ-30
- for linux-rockchip@lists.infradead.org; Tue, 01 Sep 2020 11:16:30 +0000
+ id 1kD4H5-0004cc-2t
+ for linux-rockchip@lists.infradead.org; Tue, 01 Sep 2020 11:16:31 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id BD7E02991FD
+ (Authenticated sender: dafna) with ESMTPSA id DE07E296CCD
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH v4 05/10] media: staging: rkisp1: add capability
- V4L2_CAP_IO_MC to capture devices
-Date: Tue,  1 Sep 2020 13:16:07 +0200
-Message-Id: <20200901111612.10552-6-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v4 07/10] media: staging: rkisp1: rsz: enumerate the formats
+ on the src pad according to the capture
+Date: Tue,  1 Sep 2020 13:16:09 +0200
+Message-Id: <20200901111612.10552-8-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
 References: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200901_071625_372187_18F423AA 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20200901_071627_240781_DBA7144F 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,288 +74,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The capture devices supports YUV, RGB, and Bayer formats.
-Adding V4L2_CAP_IO_MC capability will reflect userspace
-what format should be set on the resizer in order to stream
-each of the video formats.
-
-The patch adds a 'mbus' field to the struct
-'rkisp1_capture_fmt_cfg' which maps the video format
-to the needed mbus format.
+Currently the resizer outputs the same media bus format
+as the input. This is wrong since the resizer is also used
+to downscale YUV formats. This patch changes the enumeration
+of the supported formats. The supported formats on the sink pad
+should be taken from the isp entity and the supported formats on
+the source pad should be taken from the capture entity.
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- drivers/staging/media/rkisp1/rkisp1-capture.c | 65 +++++++++++++++++--
- 1 file changed, 59 insertions(+), 6 deletions(-)
+ drivers/staging/media/rkisp1/rkisp1-resizer.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index 22da94a9baf1..d23c9adc8201 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -49,12 +49,14 @@ enum rkisp1_plane {
-  * @uv_swap: if cb cr swaped, for yuv
-  * @write_format: defines how YCbCr self picture data is written to memory
-  * @output_format: defines sp output format
-+ * @mbus: the mbus code on the src resizer pad that matches the pixel format
-  */
- struct rkisp1_capture_fmt_cfg {
- 	u32 fourcc;
- 	u8 uv_swap;
- 	u32 write_format;
- 	u32 output_format;
-+	u32 mbus;
- };
+diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+index 066d22096a7d..0e4a2c931ab0 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
++++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
+@@ -437,6 +437,17 @@ static int rkisp1_rsz_enum_mbus_code(struct v4l2_subdev *sd,
+ 	u32 pad = code->pad;
+ 	int ret;
  
- struct rkisp1_capture_ops {
-@@ -88,92 +90,116 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
- 		.fourcc = V4L2_PIX_FMT_YUYV,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV16,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV61,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU422M,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	},
- 	/* yuv420 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV21,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV21M,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12M,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV420,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU420,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	},
- 	/* yuv400 */
- 	{
- 		.fourcc = V4L2_PIX_FMT_GREY,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	},
- 	/* raw */
- 	{
- 		.fourcc = V4L2_PIX_FMT_SRGGB8,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-+		.mbus = MEDIA_BUS_FMT_SRGGB8_1X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGRBG8,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-+		.mbus = MEDIA_BUS_FMT_SGRBG8_1X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGBRG8,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-+		.mbus = MEDIA_BUS_FMT_SGBRG8_1X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SBGGR8,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-+		.mbus = MEDIA_BUS_FMT_SBGGR8_1X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SRGGB10,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-+		.mbus = MEDIA_BUS_FMT_SRGGB10_1X10,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGRBG10,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-+		.mbus = MEDIA_BUS_FMT_SGRBG10_1X10,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGBRG10,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-+		.mbus = MEDIA_BUS_FMT_SGBRG10_1X10,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SBGGR10,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-+		.mbus = MEDIA_BUS_FMT_SBGGR10_1X10,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SRGGB12,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-+		.mbus = MEDIA_BUS_FMT_SRGGB12_1X12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGRBG12,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-+		.mbus = MEDIA_BUS_FMT_SGRBG12_1X12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SGBRG12,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-+		.mbus = MEDIA_BUS_FMT_SGBRG12_1X12,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_SBGGR12,
- 		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-+		.mbus = MEDIA_BUS_FMT_SBGGR12_1X12,
- 	},
- };
- 
-@@ -184,26 +210,31 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV422P,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV16,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV61,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU422M,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	},
- 	/* yuv420 */
- 	{
-@@ -211,31 +242,37 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV21M,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_NV12M,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YUV420,
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_YVU420,
- 		.uv_swap = 1,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
- 	},
- 	/* yuv400 */
- 	{
-@@ -243,16 +280,19 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
- 		.uv_swap = 0,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	},
- 	/* rgb */
- 	{
- 		.fourcc = V4L2_PIX_FMT_XBGR32,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	}, {
- 		.fourcc = V4L2_PIX_FMT_RGB565,
- 		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
- 		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB565,
-+		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
- 	},
- };
- 
-@@ -1106,14 +1146,27 @@ static int rkisp1_enum_fmt_vid_cap_mplane(struct file *file, void *priv,
- {
- 	struct rkisp1_capture *cap = video_drvdata(file);
- 	const struct rkisp1_capture_fmt_cfg *fmt = NULL;
-+	unsigned int i, n = 0;
- 
--	if (f->index >= cap->config->fmt_size)
--		return -EINVAL;
-+	if (!f->mbus_code) {
-+		if (f->index >= cap->config->fmt_size)
-+			return -EINVAL;
- 
--	fmt = &cap->config->fmts[f->index];
--	f->pixelformat = fmt->fourcc;
-+		fmt = &cap->config->fmts[f->index];
-+		f->pixelformat = fmt->fourcc;
-+		return 0;
-+	}
- 
--	return 0;
-+	for (i = 0; i < cap->config->fmt_size; i++) {
-+		if (cap->config->fmts[i].mbus != f->mbus_code)
-+			continue;
++	if (code->pad == RKISP1_RSZ_PAD_SRC) {
++		/* supported mbus codes on the src are the same as in the capture */
++		struct rkisp1_capture *cap = &rsz->rkisp1->capture_devs[rsz->id];
 +
-+		if (n++ == f->index) {
-+			f->pixelformat = cap->config->fmts[i].fourcc;
-+			return 0;
-+		}
++		return rkisp1_cap_enum_mbus_codes(cap, code);
 +	}
-+	return -EINVAL;
- }
++
++	/*
++	 * The selfpath capture doesn't support bayer formats. Therefore the selfpath resizer
++	 * should support only YUV422 on the sink pad
++	 */
+ 	if (rsz->id == RKISP1_SELFPATH) {
+ 		if (code->index > 0)
+ 			return -EINVAL;
+@@ -444,7 +455,7 @@ static int rkisp1_rsz_enum_mbus_code(struct v4l2_subdev *sd,
+ 		return 0;
+ 	}
  
- static int rkisp1_s_fmt_vid_cap_mplane(struct file *file,
-@@ -1261,7 +1314,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
- 	vdev->v4l2_dev = v4l2_dev;
- 	vdev->lock = &node->vlock;
- 	vdev->device_caps = V4L2_CAP_VIDEO_CAPTURE_MPLANE |
--			    V4L2_CAP_STREAMING;
-+			    V4L2_CAP_STREAMING | V4L2_CAP_IO_MC;
- 	vdev->entity.ops = &rkisp1_media_ops;
- 	video_set_drvdata(vdev, cap);
- 	vdev->vfl_dir = VFL_DIR_RX;
+-	/* supported mbus codes are the same in isp video src pad */
++	/* supported mbus codes on the sink pad are the same as isp src pad */
+ 	code->pad = RKISP1_ISP_PAD_SOURCE_VIDEO;
+ 	ret = v4l2_subdev_call(&rsz->rkisp1->isp.sd, pad, enum_mbus_code,
+ 			       &dummy_cfg, code);
 -- 
 2.17.1
 
