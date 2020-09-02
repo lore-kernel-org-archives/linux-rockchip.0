@@ -2,90 +2,137 @@ Return-Path: <SRS0=3L0h=CL=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MSGID_FROM_MTA_HEADER,NICE_REPLY_A,RCVD_ILLEGAL_IP,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 696C4C433E7
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 18:13:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E62DC433E2
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 18:33:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 29968206EB
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 18:13:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DA03E20758
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 18:33:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KNeU+520";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="aFaTkRn3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29968206EB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gd3CtuFx";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=axentia.se header.i=@axentia.se header.b="dnZ+SpPg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA03E20758
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=axentia.se
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=I8ATJmx4Jab1BnkjXvQLM1ezzBHLGeS7kTGxTlfCUmk=; b=KNeU+520lbJhly/fvMsotdDnB
-	PGEIrorGgOmnn4zbXz3+ti2ecJtkFrfjgTNAvkW+vZ4YEATFJLaqvpcgpQitnVjOwXiV1aMeKHEcm
-	o0Nesg+tnH7sHl5k5nJbX6lZwgyZD6RJz9iB6TB/eL1Fwc0+a6LXRJA8ePrXdwFf2NdStsqu+cjY4
-	k9lCXON5CWi5Pn/ZiYBWeCCf2E7U5NG3aZAxX/T3feQ8TFkG+PDO8liZ6EdImYGYAQf4hnLRoENJG
-	iR0IR05Xxudh5fpEhNv1de7sF69omYR4X9Eao1CMCtUjMO1hprxqksxUuyugiDiKht2OiyaSI9loJ
-	9/oXq9yaw==;
+	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:References:To:Subject:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AhK13hWt1F8t+P9UNEOU3qjEEvVOM/TWVAXWGTQzB6k=; b=gd3CtuFx+jBbY+YBOpYg9Pu2pa
+	KE22Q/HaJ9PpGMrNCAQSmUaxqyTksuuLzYG9Gjf9uStDZL3Cqx0PKnpbsurRZm+ZJmp7CJziDsJtS
+	U81dfwLINvOYwo7bu7JfN/UImBGVSwTPv1JpNplIViHRLQMlN8tyvsUA/keMqVemsb9lY8ckgDNmH
+	IkppLF9MTRAq4EnyHQUrvDUOZdQdyTZUbKmrhJoG4x1afmejlmRpWcFSqNEuW6tsg8J476kea8SPq
+	06rJwIu9dllPtGNhvIJcFSLJAc8uB8dR9IDTX4WUCGFpPHgFCuzCtAODH30g9s0/iFhkFYduIxA1M
+	5uAZRjTQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDXFp-0006t4-U0; Wed, 02 Sep 2020 18:13:06 +0000
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+	id 1kDXZj-00020Q-GN; Wed, 02 Sep 2020 18:33:39 +0000
+Received: from mail-am6eur05on2134.outbound.protection.outlook.com
+ ([40.107.22.134] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDXFY-0006lh-J4; Wed, 02 Sep 2020 18:12:49 +0000
-Received: by mail-pf1-x444.google.com with SMTP id f18so74613pfa.10;
- Wed, 02 Sep 2020 11:12:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=fbE2EUKf0dDLSVGA9OtlMJM3jKWz2OtHZG+cbWW1EL4=;
- b=aFaTkRn3zQxjMusTi+ps6zxErseC+lODmABkMhmreSjKkO+Q0RTfSjbysZ76viWYw9
- 1ifooaitbz0ScX9rJZ8O7BHLglA+i4SF95xhL0HcBnCJV67Wnxmv2IBQQYNcyhVzEK2j
- ldwRgLblDjwmQafROVxYajTOSA7B7OAIHHtvQBIENAxOVC7NU/olpFo+qWKXd0zNL/w1
- ZITuUNbLYODeREV0JG+T93B5p/f+WdXVueyFslItxdwareKCmwwPraCgAdkiOyzRSgA/
- q7ZMsRpltne8yvmRjcA3Aj4WH7x/uj8qz5bWtvT+FAxHTTB/nUFA6LJ3vbuTw//dyDO+
- tRqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=fbE2EUKf0dDLSVGA9OtlMJM3jKWz2OtHZG+cbWW1EL4=;
- b=HQhrgfoE6MVuI7BEkQ7Zuw/6gWAayD0xAjNczZWNT6cPyq98YSABkN52XjujY0fTon
- abrTHOnXDxagjVeVwHjNCzyq1cyS7+bXxPrL0epN6Miu80TK39aEJkLqwyr6Zc8i2rTL
- pHzGWA3OZXUnI18YJODs9Fpn6I7f5XcMjlS93THUTwucw0Fh4rbcDBf/SPv8yTguvMRZ
- DdN4zno8MJYP6wqgkJCmTcAinRotjmfIaPsQdx2Qov46uDoSkpv1jDbtdEtmDFg3Y89d
- vN5iELa8EegEz8HgP5uLfhnPb3vHZ7D6/ZAjz3bCEh87NdOE95sjWzdo85OAswwUzQ/Z
- N1fg==
-X-Gm-Message-State: AOAM532xFqNWVeZOXT6wLlVKi6+zKqsgTDeCwWJh9vVJTY/tw/XmDtFm
- tf6YnN7yHki0zUei9Wk/A90=
-X-Google-Smtp-Source: ABdhPJwmA4fxLfM8pxgx4LqnAQ1g0nJtb0xAFYxTvFhDlnWTdFtJqRHDCGzaD4UVPJyph4XlEMIYIw==
-X-Received: by 2002:a62:7551:: with SMTP id q78mr4415121pfc.140.1599070366505; 
- Wed, 02 Sep 2020 11:12:46 -0700 (PDT)
-Received: from localhost.localdomain (cpe-172-112-234-200.socal.res.rr.com.
- [172.112.234.200])
- by smtp.gmail.com with ESMTPSA id u123sm148993pfb.209.2020.09.02.11.12.45
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 02 Sep 2020 11:12:46 -0700 (PDT)
-From: lindsey.stanpoor@gmail.com
-To: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-Subject: [PATCH v4 4/4] arm64: dts: rockchip: enable rk3328-rock64 usb3 nodes
-Date: Wed,  2 Sep 2020 11:12:34 -0700
-Message-Id: <20200902181234.13955-4-lindsey.stanpoor@gmail.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200902181234.13955-1-lindsey.stanpoor@gmail.com>
-References: <20200902181234.13955-1-lindsey.stanpoor@gmail.com>
+ id 1kDXZf-0001zB-44; Wed, 02 Sep 2020 18:33:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Aj+THUp2+8t0pervOFdIViarz7JfVG82ieXMCpzaApPg3Sg9KGpSTtvQT4g9gvncgguAcnl0a9OzZlefI7kuW0xtAbE4WG1FWKYcLK8ncFZVg7J82XONu1VSppZmXi4UNpLPFfR4umyZnQRjygx+b4wPyyneft+3w9OS30T60pnOKW85BI0Vd9iElQfm/gvwS1v2y6DzeZvuzz4IJmK9c/RUxwjTIkAEZIFpKyTW9Md5zpNFngzfMoHfH2xcwyn336hIDeC5oBQ4xtbV9K1FsAjRG1u4NtLkF/KX9Bplbt6G76/p0u8zrtxVGFURBOLbzNKj2xIISkFZSLw4DZh/QA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ndJgwq1UfJLyAY4jaB+qX/6O8okRGV3rrp7sxCYzwkM=;
+ b=dR11sjK8vOilYz/exx1KE1Ig5wA+g2bO9fTrWNBq9Ccd+ccTqbqg4Xnp+UJ+3csppvZOcKvkGVj0XoOLU4B85zhms5OQvPv4Hkl5iZYY2/K6Os88R60kCQDgwIhwKWhx4zx9ZImIXOALlnunV+pvfsrleLjJaD7l9k+PJ0sczaHErx0gBLwVRlLpc2mqUOSSDsexvCjFT1P5p9l6+mmbR76IKCCxmzBPc8io2hzm84ZjXab+5BzCaOBPPGdTfUIGC+cLRg5NuGb048B5ITNYP4HUKgtefL9lfJqbeaL8bt6nCc/FXJKNVo1dpAgTT/2hn4d7519vbzktkjlQ/unTuw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=axentia.se; dmarc=pass action=none header.from=axentia.se;
+ dkim=pass header.d=axentia.se; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axentia.se;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ndJgwq1UfJLyAY4jaB+qX/6O8okRGV3rrp7sxCYzwkM=;
+ b=dnZ+SpPgghctc+R6r8MN0XaPtJTK9dCoF5tkehf53V166b6NaY2aLhIiCFpt79Utom55VzKwKzxzPmNTQUgS2mTvzXr9TykNI4cNXrQcEcWGo88XIcWYC/cVeB5pRKySTJwOZR1OHgDA1wZqsRiB//8u8uMCoeAzany2CJLgEqs=
+Authentication-Results: st-md-mailman.stormreply.com; dkim=none (message not
+ signed) header.d=none;st-md-mailman.stormreply.com; dmarc=none action=none
+ header.from=axentia.se;
+Received: from DB8PR02MB5482.eurprd02.prod.outlook.com (2603:10a6:10:eb::29)
+ by DB6PR0201MB2296.eurprd02.prod.outlook.com (2603:10a6:4:32::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3326.23; Wed, 2 Sep
+ 2020 18:33:26 +0000
+Received: from DB8PR02MB5482.eurprd02.prod.outlook.com
+ ([fe80::3890:7b1:97a6:1e47]) by DB8PR02MB5482.eurprd02.prod.outlook.com
+ ([fe80::3890:7b1:97a6:1e47%7]) with mapi id 15.20.3348.015; Wed, 2 Sep 2020
+ 18:33:26 +0000
+Subject: Re: [PATCH 8/9] i2c: mux: gpmux: Simplify with dev_err_probe()
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ bcm-kernel-feedback-list@broadcom.com, Michal Simek
+ <michal.simek@xilinx.com>, Sekhar Nori <nsekhar@ti.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Oleksij Rempel <linux@rempel-privat.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Pierre-Yves MORDRET <pierre-yves.mordret@st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>, Wolfram Sang <wsa@kernel.org>,
+ linux-i2c@vger.kernel.org, linux-rpi-kernel@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+References: <20200902150643.14839-1-krzk@kernel.org>
+ <20200902150643.14839-8-krzk@kernel.org>
+From: Peter Rosin <peda@axentia.se>
+Organization: Axentia Technologies AB
+Message-ID: <5e444922-1094-81b4-49f9-9595725d9c7f@axentia.se>
+Date: Wed, 2 Sep 2020 20:33:19 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
+In-Reply-To: <20200902150643.14839-8-krzk@kernel.org>
+Content-Language: sv-SE
+X-ClientProxiedBy: HE1PR0202CA0040.eurprd02.prod.outlook.com
+ (2603:10a6:3:e4::26) To DB8PR02MB5482.eurprd02.prod.outlook.com
+ (2603:10a6:10:eb::29)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from 255.255.255.255 (255.255.255.255) by
+ HE1PR0202CA0040.eurprd02.prod.outlook.com (2603:10a6:3:e4::26) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3348.15 via Frontend Transport; Wed, 2 Sep 2020 18:33:22 +0000
+X-Originating-IP: [85.226.217.78]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 4a7dbb3a-b26c-4a2e-ceff-08d84f6eaddc
+X-MS-TrafficTypeDiagnostic: DB6PR0201MB2296:
+X-Microsoft-Antispam-PRVS: <DB6PR0201MB2296F2032EF3176ED587769ABC2F0@DB6PR0201MB2296.eurprd02.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1122;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: dqnHW0zlj+2RDJtvXHantJzlC8AdQyutZrs0p6rQ69tJNsVxHOn0EW2DQ7Nr5dDJApZl40v3ePp3mgwPlLd+nGxQ9GZzzhMPX4SwHFMO05xZPR76EASSlFbxrGzdjWdCIqFryDSat1+PR3338zvPgV8uU03/4ITjV1puX1zdszBtzTKRBR0Sso4bGPzPNFVDe6jipVscnXWvA7RYG6KezZuQLK8kYC5jEW9isMycx7sFOZ9zeh7iXX5MzevXAQcFt43WcyfKq8QJsc+9P2QNzZJE0hC1EZgqRCOCyRUHUgBbCXj2VxgLsjK90f71+n7VS71UPxJU3fvXyzL7hxZDQhC2045VHHAlr7pbCd+aS+nhawMxofqrtgq2vK3jnl+kQLcS6EppIB2IMaQauEZTeA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DB8PR02MB5482.eurprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(376002)(136003)(366004)(39830400003)(396003)(346002)(956004)(7416002)(83380400001)(36756003)(31696002)(16576012)(66556008)(478600001)(66946007)(8676002)(316002)(36916002)(52116002)(86362001)(558084003)(66476007)(31686004)(110136005)(186003)(8936002)(53546011)(2906002)(2616005)(26005)(6486002)(5660300002)(6666004)(921003)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: rwJX4IWGu4MLU/Gfz325wUBKjY5xI7KEKqVY/V0HInwV5QZuZ20AZjR9wlHFvQsmPzXBJ/4XDL04XI/N+rBHMI8t3M9tIMX+Gt/kt37mfCp6GbBjfCizj2fzVvx/6Tc7530AKg43h8OxBDN8ZXENc1w3uX4mc9Bvq+9MF/Zav5NyzLK9BcsmffUl2BMidvLsziudBDB68ycuut0XP4R5HE1OqNo6qqzEyRSI0E6J4ErCnJ9Slbt7mGrlbQjSIca0oflnR9PHaNruU35tZc9+jN/ZNqWUYQWaeyXicZOzZK4q8qE64O3AY0usAI+G3CTAoudORLZ7sgUu9EhDbyJwZP6yzHmm1gS9tPQuWtpCBVMFiEgYnkAkDY/vXQEe5+3EdWjPO8/pFkIxAiZl5yM1Rrv+82UHnPSsoRUGBt4OnjN1YBWsq/uLyxTz6SagE71Z0JtMU+tIjAkAGufHwr+bccrBZkJULXAp86v03Fz9b7NPZWXxXYDmEBuJXYvSPFh/DLkxyG7XDYshykASmiAYiAr0QWOQhJp7pYKktkXIqXHUigj/hKJY+xo9CS0fTfmQW7vPiUYAUUrbojTLUd3Dt/7U1sIcoYLUieUqVZdwDxTc3U/bNKrYM8EDRIm9RcS/s6RNjpzAv6vnr2MhhBDZGA==
+X-OriginatorOrg: axentia.se
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4a7dbb3a-b26c-4a2e-ceff-08d84f6eaddc
+X-MS-Exchange-CrossTenant-AuthSource: DB8PR02MB5482.eurprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Sep 2020 18:33:25.7189 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4ee68585-03e1-4785-942a-df9c1871a234
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: tpmFFW6UZ+eA/aHcg/ZlOLe4on0/0ikaTCKsPdN3P8JCqs4PbXBf2BPY4+DgTYVo
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB6PR0201MB2296
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_141248_691679_0D1FB649 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20200902_143335_374140_EFE292FF 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,46 +145,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: gregkh@linuxfoundation.org, cnemo@tutanota.com, robh+dt@kernel.org,
- heiko@sntech.de, balbi@kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Cameron Nemo <cnemo@tutanota.com>
+On 2020-09-02 17:06, Krzysztof Kozlowski wrote:
+> Common pattern of handling deferred probe can be simplified with
+> dev_err_probe().  Less code and the error value gets printed.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-Enable USB3 nodes for the rk3328-based PINE Rock64 board.
+Acked-by: Peter Rosin <peda@axentia.se>
 
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Cameron Nemo <cnemo@tutanota.com>
----
- arch/arm64/boot/dts/rockchip/rk3328-rock64.dts | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-index 86cfb5c50a94..0cbf59efcef0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
-@@ -384,6 +384,15 @@ &usb20_otg {
- 	status = "okay";
- };
- 
-+&usbdrd3 {
-+	status = "okay";
-+};
-+
-+&usbdrd_dwc3 {
-+	dr_mode = "host";
-+	status = "okay";
-+};
-+
- &usb_host0_ehci {
- 	status = "okay";
- };
--- 
-2.28.0
-
+Cheers,
+Peter
 
 _______________________________________________
 Linux-rockchip mailing list
