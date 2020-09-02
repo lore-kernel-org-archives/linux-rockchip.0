@@ -1,89 +1,74 @@
-Return-Path: <SRS0=U2ba=CK=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=3L0h=CL=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EE959C433E2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 22:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 053B2C433E2
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 06:49:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BB3772071B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Sep 2020 22:58:49 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BC7482084C
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 06:49:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aZRZ1nPT";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="J6cVX8w3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB3772071B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="EyejPyLJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC7482084C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:MIME-Version:Date:Subject:To:From:
-	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fyMNJuwEsQFdB1VUiaUl/B4BElY3bvFDrxQWbSwU+YU=; b=aZRZ1nPTTnZNtO
-	oOoiE32veKbjV43SgEGHBVkIwtnrOU/LHMRm0GhP/QaYQHIHD6cLHXTh/s8Ai5nErqm4wVY3oAx6A
-	lyq7yLuTlaz+AG0eMZUx5IvmhaBD8XH89UYlvBN1QgZNHcv5cRE9GZ81jdwe1Xe8UwtnkBlnUnZEO
-	45d6/5I0ihrAk0eXUWHLRwB2LNWul4DHwyCJJePe/g5VhZAwQihBhLsJ1rHHNSnmYw3WWcOdMcCl+
-	berBPd1Lf457FN5a90I86ebn+fsodbkchI0HWVFhgP2zy0qiJfvh+28PaXMtgGmHVBs1CPhp6TBer
-	imxoR9vUj9udiIBQdvRA==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Xus2r183LHZC28jmgwIXAMAiVWEb5OjYHDSFOH32h7w=; b=EyejPyLJdv6VjPQhhBnRBQcpH3
+	DR3VDWiflaVspCO0DWo6JnCRIhuApajl7GVmx87DKFQ6ZFa3zfQMP8DnYy2R08mQfrnxZc86nGrKQ
+	ZIMPerrafl9ACuWr0zls7p7m8sKR7fvV5Nag93MrON0U+SmZZhsJkyeH/ANGfnkDkCo17/lI2KrLK
+	2Gh66bq/TT3sqBE1MLuQ4PTG6QBGJz9LqnnwjpS1o3gZB4p9L2gwIr0oq7VXjqBsnDKtC9hD91gGa
+	EzFRgyE0hNMT2tDHGLGcfatk1rhbWy3YFhMHCx0YrLaLqsnHvaIekigod3IcX1didWpSww/nw1Btn
+	oG5ezPEw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDFEg-0004LT-S2; Tue, 01 Sep 2020 22:58:42 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1kDMa0-0003Lm-En; Wed, 02 Sep 2020 06:49:12 +0000
+Received: from lucky1.263xmail.com ([211.157.147.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDFEe-0004L1-6x
- for linux-rockchip@lists.infradead.org; Tue, 01 Sep 2020 22:58:41 +0000
-Received: by mail-wm1-x330.google.com with SMTP id e11so1907275wme.0
- for <linux-rockchip@lists.infradead.org>; Tue, 01 Sep 2020 15:58:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:subject:date:mime-version:message-id:user-agent
- :content-transfer-encoding;
- bh=ey+C60wtHHAHbZ6zoVTh1ZhtqHRumXFaCsSHGOI2Dy4=;
- b=J6cVX8w3sdIOP2QqiQvdbEZ5BwzqLnACJdVURTXXd/0tae5/EjZ3DyK1SJt7u/D067
- gOVq5Zz7em2kzvHLpnLCZ9bhMEojKp11+RWswhEogZmaZIXslDU1/ri1GvGzZHdak9f+
- rJPoHMDe4KwP9g2ioBBCO741o4jtle2dGWJ3KsEjDd+rvKxCfWAHj85e4txlD2FAVgz4
- rttfyerSfvsJz5IRWqhfQ96/Edmvs/2p7eJFgu5ZZuLiK6ANOQLBA6hg0Y2yul/Q17Q0
- 3ASNs+dkPQUouCrJPxgR9tRoPjUTtNonYiUdaOwSz0w5U//O08ZDkZ0Iz+wDYoxkCVCk
- rcjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:mime-version:message-id
- :user-agent:content-transfer-encoding;
- bh=ey+C60wtHHAHbZ6zoVTh1ZhtqHRumXFaCsSHGOI2Dy4=;
- b=Gb8daOBj7QDTGzlaYQl/4uq6IHpEHCNyxjoE3Y59E5p1ZbdNOoD2EN09qDgTQZ/OLE
- ePvxC+pv/pMwixKmpJlVozZqioACs/MvNwtWkaBTe9aCBYzzSttCde29WZgFJxzgsAuy
- WuJR+grzs9hky5LOWeQrSRcq4dxDtuQL4U+Sql+n9dOuIvpOAICdH/YG2rboae+OiMMI
- 9Y34rTLvDM1lMAWDYR1DBfli1h2BIALozbuj/5mshuU2+VedRPbo9bh/yRk66wbDRSCV
- o5eRW+6nF1QLFklICtb4kWP4gHbgPtUt0aDDEZ7l4ECeANQGyBlWTkhuZOs0MDsE4ZXp
- bp8A==
-X-Gm-Message-State: AOAM532q4C6gZRX4CMPnrhEFP5il1BeNBSg+YpuuSpUFl3D6jbb16m0X
- Kg/SltiD1HK4z/zrxhmzkPNqN/o8RLyLww==
-X-Google-Smtp-Source: ABdhPJzz9yp3PGP4TZDMzcf1MTg0RDUIeUOHG8LLtnUXHSoYnf7+ODrvwBdxscJQ8iDQ0CvsttNQmg==
-X-Received: by 2002:a7b:c0c8:: with SMTP id s8mr3720074wmh.72.1599001117791;
- Tue, 01 Sep 2020 15:58:37 -0700 (PDT)
-Received: from localhost ([170.253.38.159])
- by smtp.gmail.com with ESMTPSA id c205sm3656253wmd.33.2020.09.01.15.58.36
- for <linux-rockchip@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Sep 2020 15:58:37 -0700 (PDT)
-From: Vicente Bergas <vicencb@gmail.com>
-To: <linux-rockchip@lists.infradead.org>
-Subject: [BUG] drm: rockchip:
- =?iso-8859-1?Q?vop=5Fcrtc=5Fmode=5Ffixup_is_breaking_clock_configuration?=
-Date: Wed, 02 Sep 2020 00:58:36 +0200
-MIME-Version: 1.0
-Message-ID: <5a8fac40-123e-4104-8868-1931426ab598@gmail.com>
-User-Agent: Trojita
+ id 1kDMZw-0003Is-Am
+ for linux-rockchip@lists.infradead.org; Wed, 02 Sep 2020 06:49:09 +0000
+Received: from localhost (unknown [192.168.167.32])
+ by lucky1.263xmail.com (Postfix) with ESMTP id AED9BCB943;
+ Wed,  2 Sep 2020 14:48:56 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P11834T140500898137856S1599029334223657_; 
+ Wed, 02 Sep 2020 14:48:55 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <6dae17ab0ed8dc6b22749616600e834d>
+X-RL-SENDER: zhangqing@rock-chips.com
+X-SENDER: zhangqing@rock-chips.com
+X-LOGIN-NAME: zhangqing@rock-chips.com
+X-FST-TO: heiko@sntech.de
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-DNS-TYPE: 0
+X-System-Flag: 0
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: heiko@sntech.de
+Subject: [PATCH v1 0/6] clk: rockchip: Support module build
+Date: Wed,  2 Sep 2020 14:48:41 +0800
+Message-Id: <20200902064847.18881-1-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200901_185840_301370_EDF25EBD 
-X-CRM114-Status: UNSURE (   6.79  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200902_024908_705108_D5C7BDEF 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,37 +81,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: huangtao@rock-chips.com, xf@rock-chips.com, sboyd@kernel.org,
+ mturquette@baylibre.com, Elaine Zhang <zhangqing@rock-chips.com>,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org,
+ xxx@rock-chips.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-I've recently installed U-boot to boot a Sapphire board with the HDMI 
-display, before i was using Linux + kexec as bootloader.
-Since then, linux fails to re-initialize the HDMI display giving the 
-following error message:
-dwhdmi-rockchip ff940000.hdmi: PHY configuration failed (clock 148501000)
-which comes from drivers/gpu/drm/bridge/synopsys/dw-hdmi.c:1522
+Export some APIs for module drivers.
+Fix the clock config to support module build.
+Fix the clk driver init, add module author, description
+and license to support building RK3399 SoC clock driver as module.
 
-The clock frequency 148500000 is 'rounded up' to 148501000 in 
-vop_crtc_mode_fixup from which comes from 
-drivers/gpu/drm/rockchip/rockchip_drm_vop.c:1184
+Elaine Zhang (6):
+  clk: rockchip: Use clk_hw_register_composite instead of
+    clk_register_composite calls
+  clk: rockchip: Export rockchip_clk_register_ddrclk()
+  clk: rockchip: Export rockchip_register_softrst()
+  clk: rockchip: Export some clock common APIs for module drivers
+  clk: rockchip: fix the clk config to support module build
+  clk: rockchip: rk3399: Support module build
 
-So far i've found two workarounds: remove the vop_crtc_mode_fixup function 
-or unplug and reconnect the HDMI cable.
-From my point of view, not having a display is a regression, although not 
-in Linux itself, is in its environment.
+ drivers/clk/Kconfig                     |  1 +
+ drivers/clk/rockchip/Kconfig            | 78 ++++++++++++++++++++++
+ drivers/clk/rockchip/Makefile           | 42 ++++++------
+ drivers/clk/rockchip/clk-ddr.c          |  1 +
+ drivers/clk/rockchip/clk-half-divider.c | 12 ++--
+ drivers/clk/rockchip/clk-rk3399.c       | 40 ++++++++++++
+ drivers/clk/rockchip/clk.c              | 87 ++++++++++++++-----------
+ drivers/clk/rockchip/softrst.c          |  7 +-
+ 8 files changed, 203 insertions(+), 65 deletions(-)
+ create mode 100644 drivers/clk/rockchip/Kconfig
 
-U-boot is configuring the display at 2560x1440, which proves the HW is 
-capable of running at such resolution.
-Linux instead is configuring it at 1920x1080, resolutions above that are 
-not even supported.
-Please, can this situation be improved?
+-- 
+2.17.1
 
-Any feedback is welcome and i am willing to help!
 
-Regards,
-  Vicente.
 
 
 _______________________________________________
