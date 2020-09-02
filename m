@@ -2,81 +2,80 @@ Return-Path: <SRS0=3L0h=CL=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 399FEC433E2
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 11:56:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6577BC433E2
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 15:09:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CAB16206E7
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 11:56:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 227FD207D3
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 15:09:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cDGr1vqQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CAB16206E7
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ko7jU03j";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="z3DPtyJp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 227FD207D3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/TFW8bur71QvQzUbQ8Fd0SwJdPrSwhuqzYyy9UpmNO4=; b=cDGr1vqQzqKwGtSCgLg4vCuXM
-	rf1Z3gJN409css2X5wyE0C9bhyIJw9RjRz+5/I99/3TQ+0MwpcMOKx1MKGz8uQcyEbiOBBbBoUU3r
-	J6b6U+IuLCS3Xq2+v9Y1fgwuuihYU7XkHHMzqun79B66EpSsMZKuqbCTYrmw3KXiF1M8ii4KS69nq
-	rmcQ/PW9A3UUH7Oif+pmmwvLIypGPIXmBnZ9Rbi0j1AG4kL3HImbrwCTOe7JokoFGcTdtSM0bSZ6V
-	tdRnJkpwFLTcX4gZjfThOD4Iy/bCGSnvzENWDhqFebEo7/xhi/RCeF1lPRZBWC3Wmmh6OUmxdxgOn
-	VvlSUSBag==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XBqZLGxKqcMHV1YtHlry3y8v4OSt3y84vB2Fqm1I6wA=; b=ko7jU03j7yEPNl/MkonHAzcYi5
+	Qagm3KiXzoMLjw7UwAF0d4peoKctf5LEm0uX+MiPFNWQ1AiCaCCg50FF72CbxyViHYVpLy+HYwT0y
+	FwUfCLrD1XlbCvNiGEQTPcf9Nfq62rGdovtALktw1+uq6wvKrbh23Bl/nmdpHDDdBr/OQ6/741TS6
+	ww1qNcTb3aNN1cGrAeed7EjaUcAPHe08S6bD0HyHR0qTq4gK+hmMFQq4DedMbnEgogOrhaDOkd5ha
+	7gQx70uxr/szlTqXrdjOrWn5hlCDCgASKU83TEjUrGV71lSo+jeIsZ8QBCEIRTHARKWHiopAoBf7u
+	N027/yNA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDRN7-0006j3-Ip; Wed, 02 Sep 2020 11:56:13 +0000
-Received: from regular1.263xmail.com ([211.150.70.199])
+	id 1kDUNq-0006Ti-IV; Wed, 02 Sep 2020 15:09:10 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDRN4-0006iC-SB
- for linux-rockchip@lists.infradead.org; Wed, 02 Sep 2020 11:56:12 +0000
-Received: from localhost (unknown [192.168.167.235])
- by regular1.263xmail.com (Postfix) with ESMTP id 85710F1D;
- Wed,  2 Sep 2020 19:56:03 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-SKE-CHECKED: 1
-X-ABS-CHECKED: 1
-Received: from [172.16.12.76] (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P22908T140609325295360S1599047762080218_; 
- Wed, 02 Sep 2020 19:56:03 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <a9124768c8cbdf58211f153dc645d451>
-X-RL-SENDER: hjc@rock-chips.com
-X-SENDER: hjc@rock-chips.com
-X-LOGIN-NAME: hjc@rock-chips.com
-X-FST-TO: hjc@rock-chips.com
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-DNS-TYPE: 0
-X-System-Flag: 0
-Subject: Re: [PATCH v2] drm/of: Consider the state in which the ep is disabled
-From: Huang Jiachai <hjc@rock-chips.com>
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>
-References: <20200707112526.18438-1-hjc@rock-chips.com>
- <3361390.LkKjKlf5PX@phil>
- <12d1b648-81d1-df48-4435-b7b88dd72b30@rock-chips.com>
-Message-ID: <fc4aab7b-c1e5-4469-8ccd-4529055e05a1@rock-chips.com>
-Date: Wed, 2 Sep 2020 19:56:01 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
-MIME-Version: 1.0
-In-Reply-To: <12d1b648-81d1-df48-4435-b7b88dd72b30@rock-chips.com>
+ id 1kDULg-0005J8-5G; Wed, 02 Sep 2020 15:06:57 +0000
+Received: from kozik-lap.mshome.net (unknown [194.230.155.106])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8D58920773;
+ Wed,  2 Sep 2020 15:06:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1599059214;
+ bh=5IrQM4zaWaI46iMLqvoLFQL1xUrFrBFsc04JUwsbfdc=;
+ h=From:To:Cc:Subject:Date:From;
+ b=z3DPtyJpm5wBhKasevREMy5GD7UXAoh+kvi2/+R3Qwd1ZBJwh0NWDq1IE7SZdzxep
+ aZJ3ZX3DySSwZ5ws8RPm5NzbxX3NYTbNBB2ugRhEPM5BdaCC66EGXXR7NGiflRpfl7
+ /lh8zD3aes02nzAVbZNXUlIGB3nybWAhdvuT0IfA=
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ bcm-kernel-feedback-list@broadcom.com,
+ Michal Simek <michal.simek@xilinx.com>, Sekhar Nori <nsekhar@ti.com>,
+ Bartosz Golaszewski <bgolaszewski@baylibre.com>,
+ Oleksij Rempel <linux@rempel-privat.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Pierre-Yves MORDRET <pierre-yves.mordret@st.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@st.com>, Peter Rosin <peda@axentia.se>,
+ Wolfram Sang <wsa@kernel.org>, linux-i2c@vger.kernel.org,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com
+Subject: [PATCH 1/9] i2c: stm32: Simplify with dev_err_probe()
+Date: Wed,  2 Sep 2020 17:06:35 +0200
+Message-Id: <20200902150643.14839-1-krzk@kernel.org>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_075611_153161_FA5FBD21 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20200902_110656_402633_C3D00FA4 
+X-CRM114-Status: GOOD (  17.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,48 +88,124 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: huangtao@rock-chips.com, Thomas Zimmermann <tzimmermann@suse.de>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- kever.yang@rock-chips.com, Maxime Ripard <mripard@kernel.org>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
- andy.yan@rock-chips.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgRGF2aWQgQWlybGll77yMCgogwqDCoMKgIFBsZWFzZSBoZWxwIHRvIGNvbmZpcm0gd2hldGhl
-ciB0aGlzIG1vZGlmaWNhdGlvbiBpcyByZWFzb25hYmxlIHdoZW4gCnlvdSBhcmUgZnJlZSwgdGhh
-bmtzLgoKCuWcqCAyMDIwLzgvMTMgMTQ6MzEsIEh1YW5nIEppYWNoYWkg5YaZ6YGTOgo+IHBpbmcu
-Li4KPgo+IOWcqCAyMDIwLzcvMjMgMzowMSwgSGVpa28gU3TDvGJuZXIg5YaZ6YGTOgo+PiBBbSBE
-aWVuc3RhZywgNy4gSnVsaSAyMDIwLCAxMzoyNToyNiBDRVNUIHNjaHJpZWIgU2FuZHkgSHVhbmc6
-Cj4+PiBkb24ndCBtYXNrIHBvc3NpYmxlX2NydGNzIGlmIHJlbW90ZS1wb2ludCBpcyBkaXNhYmxl
-ZC4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29t
-Pgo+PiBSZXZpZXdlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPj4KPj4g
-Y2hhbmdlcyBpbiB2MjoKPj4gLSBkcm9wIGFkZGl0aW9uYWwgb2Zfbm9kZV9wdXQsIGFzIGVwIHdp
-bGwgYmUgcHV0IHdpdGggdGhlIG5leHQKPj4gwqDCoCBpdGVyYXRpb24gb2YgZm9yX2VhY2hfZW5k
-cG9pbnRfb2Zfbm9kZSgpCj4+Cj4+Cj4+IEFzIHRoaXMgdG91Y2hlcyBhIHByZXR0eSBjZW50cmFs
-IGZ1bmN0aW9uIGlzIHRoZXJlIHNvbWV0aGluZwo+PiB0byBrZWVwIGluIG1pbmQgaW4gcmVnYXJk
-cyB0byBvdGhlciBEUk0gZHJpdmVycz8KPj4gW3F1ZXN0aW9uIGZvciB0aGUgYnJvYWRlciBhdWRp
-ZW5jZSA7LSkgXQo+Pgo+PiBIZWlrbwo+Pgo+Pj4gLS0tCj4+PiDCoCBkcml2ZXJzL2dwdS9kcm0v
-ZHJtX29mLmMgfCAzICsrKwo+Pj4gwqAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKQo+
-Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX29mLmMgYi9kcml2ZXJzL2dw
-dS9kcm0vZHJtX29mLmMKPj4+IGluZGV4IGZkYjA1ZmJmNzJhMC4uNTY1ZjA1ZjVmMTFiIDEwMDY0
-NAo+Pj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL2RybV9vZi5jCj4+PiArKysgYi9kcml2ZXJzL2dw
-dS9kcm0vZHJtX29mLmMKPj4+IEBAIC02Niw2ICs2Niw5IEBAIHVpbnQzMl90IGRybV9vZl9maW5k
-X3Bvc3NpYmxlX2NydGNzKHN0cnVjdCAKPj4+IGRybV9kZXZpY2UgKmRldiwKPj4+IMKgwqDCoMKg
-wqAgdWludDMyX3QgcG9zc2libGVfY3J0Y3MgPSAwOwo+Pj4gwqAgwqDCoMKgwqDCoCBmb3JfZWFj
-aF9lbmRwb2ludF9vZl9ub2RlKHBvcnQsIGVwKSB7Cj4+PiArwqDCoMKgwqDCoMKgwqAgaWYgKCFv
-Zl9kZXZpY2VfaXNfYXZhaWxhYmxlKGVwKSkKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNv
-bnRpbnVlOwo+Pj4gKwo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHJlbW90ZV9wb3J0ID0gb2ZfZ3Jh
-cGhfZ2V0X3JlbW90ZV9wb3J0KGVwKTsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAoIXJlbW90
-ZV9wb3J0KSB7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBvZl9ub2RlX3B1dChlcCk7
-Cj4+Pgo+Pgo+Pgo+Pgo+Pgo+PgotLSAKQmVzdCBSZWdhcmQKCum7hOWutumSlwpTYW5keSBIdWFu
-ZwpBZGRyOiDnpo/lt57luILpvJPmpbzljLrpk5znm5jot6/ova/ku7blpKfpgZM4OeWPt+emj+W3
-nui9r+S7tuWbrUHljLoyMeWPt+alvCgzNTAwMDMpCiAgICAgICBOby4gMjEgQnVpbGRpbmcsIEEg
-RGlzdHJpY3QsIE5vLjg5LHNvZnR3YXJlIEJvdWxldmFyZCBGdXpob3UsRnVqaWFuLFBSQwpUZWzv
-vJorODYgMDU5MS04Nzg4NDkxOSAgODY5MApFLW1haWzvvJpoamNAcm9jay1jaGlwcy5jb20KCgoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Common pattern of handling deferred probe can be simplified with
+dev_err_probe().  Less code and the error value gets printed.
+
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+---
+ drivers/i2c/busses/i2c-stm32.c   | 11 ++++-------
+ drivers/i2c/busses/i2c-stm32f4.c |  6 ++----
+ drivers/i2c/busses/i2c-stm32f7.c | 24 +++++++++---------------
+ 3 files changed, 15 insertions(+), 26 deletions(-)
+
+diff --git a/drivers/i2c/busses/i2c-stm32.c b/drivers/i2c/busses/i2c-stm32.c
+index 3f69a3bb6119..198f848b7be9 100644
+--- a/drivers/i2c/busses/i2c-stm32.c
++++ b/drivers/i2c/busses/i2c-stm32.c
+@@ -25,9 +25,8 @@ struct stm32_i2c_dma *stm32_i2c_dma_request(struct device *dev,
+ 	/* Request and configure I2C TX dma channel */
+ 	dma->chan_tx = dma_request_chan(dev, "tx");
+ 	if (IS_ERR(dma->chan_tx)) {
+-		ret = PTR_ERR(dma->chan_tx);
+-		if (ret != -EPROBE_DEFER)
+-			dev_err(dev, "can't request DMA tx channel\n");
++		ret = dev_err_probe(dev, PTR_ERR(dma->chan_tx),
++				    "can't request DMA tx channel\n");
+ 		goto fail_al;
+ 	}
+ 
+@@ -45,10 +44,8 @@ struct stm32_i2c_dma *stm32_i2c_dma_request(struct device *dev,
+ 	/* Request and configure I2C RX dma channel */
+ 	dma->chan_rx = dma_request_chan(dev, "rx");
+ 	if (IS_ERR(dma->chan_rx)) {
+-		ret = PTR_ERR(dma->chan_rx);
+-		if (ret != -EPROBE_DEFER)
+-			dev_err(dev, "can't request DMA rx channel\n");
+-
++		ret = dev_err_probe(dev, PTR_ERR(dma->chan_rx),
++				    "can't request DMA rx channel\n");
+ 		goto fail_tx;
+ 	}
+ 
+diff --git a/drivers/i2c/busses/i2c-stm32f4.c b/drivers/i2c/busses/i2c-stm32f4.c
+index 48e269284369..937c2c8fd349 100644
+--- a/drivers/i2c/busses/i2c-stm32f4.c
++++ b/drivers/i2c/busses/i2c-stm32f4.c
+@@ -797,10 +797,8 @@ static int stm32f4_i2c_probe(struct platform_device *pdev)
+ 
+ 	rst = devm_reset_control_get_exclusive(&pdev->dev, NULL);
+ 	if (IS_ERR(rst)) {
+-		ret = PTR_ERR(rst);
+-		if (ret != -EPROBE_DEFER)
+-			dev_err(&pdev->dev, "Error: Missing reset ctrl\n");
+-
++		ret = dev_err_probe(&pdev->dev, PTR_ERR(rst),
++				    "Error: Missing reset ctrl\n");
+ 		goto clk_free;
+ 	}
+ 	reset_control_assert(rst);
+diff --git a/drivers/i2c/busses/i2c-stm32f7.c b/drivers/i2c/busses/i2c-stm32f7.c
+index bff3479fe122..a8f1758e4c5b 100644
+--- a/drivers/i2c/busses/i2c-stm32f7.c
++++ b/drivers/i2c/busses/i2c-stm32f7.c
+@@ -1968,11 +1968,9 @@ static int stm32f7_i2c_probe(struct platform_device *pdev)
+ 						    "wakeup-source");
+ 
+ 	i2c_dev->clk = devm_clk_get(&pdev->dev, NULL);
+-	if (IS_ERR(i2c_dev->clk)) {
+-		if (PTR_ERR(i2c_dev->clk) != -EPROBE_DEFER)
+-			dev_err(&pdev->dev, "Failed to get controller clock\n");
+-		return PTR_ERR(i2c_dev->clk);
+-	}
++	if (IS_ERR(i2c_dev->clk))
++		return dev_err_probe(&pdev->dev, PTR_ERR(i2c_dev->clk),
++				     "Failed to get controller clock\n");
+ 
+ 	ret = clk_prepare_enable(i2c_dev->clk);
+ 	if (ret) {
+@@ -1982,10 +1980,8 @@ static int stm32f7_i2c_probe(struct platform_device *pdev)
+ 
+ 	rst = devm_reset_control_get(&pdev->dev, NULL);
+ 	if (IS_ERR(rst)) {
+-		ret = PTR_ERR(rst);
+-		if (ret != -EPROBE_DEFER)
+-			dev_err(&pdev->dev, "Error: Missing reset ctrl\n");
+-
++		ret = dev_err_probe(&pdev->dev, PTR_ERR(rst),
++				    "Error: Missing reset ctrl\n");
+ 		goto clk_free;
+ 	}
+ 	reset_control_assert(rst);
+@@ -2052,13 +2048,11 @@ static int stm32f7_i2c_probe(struct platform_device *pdev)
+ 	i2c_dev->dma = stm32_i2c_dma_request(i2c_dev->dev, phy_addr,
+ 					     STM32F7_I2C_TXDR,
+ 					     STM32F7_I2C_RXDR);
+-	if (PTR_ERR(i2c_dev->dma) == -ENODEV)
++	if (PTR_ERR(i2c_dev->dma) == -ENODEV) {
+ 		i2c_dev->dma = NULL;
+-	else if (IS_ERR(i2c_dev->dma)) {
+-		ret = PTR_ERR(i2c_dev->dma);
+-		if (ret != -EPROBE_DEFER)
+-			dev_err(&pdev->dev,
+-				"Failed to request dma error %i\n", ret);
++	} else if (IS_ERR(i2c_dev->dma)) {
++		ret = dev_err_probe(&pdev->dev, PTR_ERR(i2c_dev->dma),
++				    "Failed to request dma error\n");
+ 		goto fmp_clear;
+ 	}
+ 
+-- 
+2.17.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
