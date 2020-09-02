@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9231FC2BBDB
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 912EFC433E6
 	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 06:49:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5DEB920665
+	by mail.kernel.org (Postfix) with ESMTPS id 5E92420826
 	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 06:49:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="o62C9ErU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5DEB920665
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DRYjEqrs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E92420826
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1s8tP84rQyZr5XrL6mHArnTDfmUsfwUt93Hztn700O0=; b=o62C9ErUn7IIRBXitomDvHKwmU
-	O9l9Y6W8haUtZ+bMPAAfTZnpszjda4XzQks3KKQgFav2csFIqphYvspFS3Z0mOXB2h5yCrNZK6pnC
-	qbqChpIjwnY1L6/LEPIozVeShaKr1scKGapz7x+IASiurrVBOBeD2Il73mromBTL8Ne/3DV2bxTJy
-	P+z8LH7oGEezgKFneDC6TKMNYQDSKMeMXvzGLyaTyD4i6PnR3RA/ST2cuGdXRpRJp51XoneOnDimx
-	dP34i3VfszwrXVOxul4E+xSt90MDf3BejwMRoWdVENXK0ISUeOy2xtunrr2B7ghLtohc17EbYZp29
-	hAhGJBHA==;
+	bh=OtkYuJqoSwsvXQY4QDK2nuOMdhnbYQ2ZPaGZcbkBLps=; b=DRYjEqrs1BkdvKFEj4Ss+YUnsN
+	7W0iC119rLDBAk7xkne7WHps1lZYfic/6/YKhP1HgoTm+M4I828OBwgaOeCnjme0BpYnFRP+9B8NK
+	YkNoC0hYJBNMIyIU82ZOb0zsnrOnQ2ltzu4ewDrjTLdOK903oMo6nDL37lBQftpR1pl7gLWkLKrD1
+	gK3GYCAwNw2LQ6/Q1U0WDNKtBy8YE1MqTjmj5Jbas5+zJ6FTgCg4PIvTS8v07656Y8pqqM1Nc8N1b
+	8a10OZkRMGoqRo1mmXiU/HdEZNmBkefxyN1T/6t1eQNx6a9c1Aj/V0NmKOvta6DAsQo0C3JvQU8io
+	dzvGP/+Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDMZz-0003LX-M0; Wed, 02 Sep 2020 06:49:11 +0000
-Received: from lucky1.263xmail.com ([211.157.147.135])
+	id 1kDMa1-0003M9-HM; Wed, 02 Sep 2020 06:49:13 +0000
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDMZw-0003It-AF
- for linux-rockchip@lists.infradead.org; Wed, 02 Sep 2020 06:49:09 +0000
+ id 1kDMZx-0003J9-8G
+ for linux-rockchip@lists.infradead.org; Wed, 02 Sep 2020 06:49:11 +0000
 Received: from localhost (unknown [192.168.167.32])
- by lucky1.263xmail.com (Postfix) with ESMTP id 88BA8A28D5;
- Wed,  2 Sep 2020 14:48:57 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 3D3E9B0C7D;
+ Wed,  2 Sep 2020 14:48:59 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -49,9 +49,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P11834T140500898137856S1599029334223657_; 
- Wed, 02 Sep 2020 14:48:57 +0800 (CST)
+ Wed, 02 Sep 2020 14:48:58 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <f8bcca3e7003a59da83cb215eb108864>
+X-UNIQUE-TAG: <6e24e846ed1d0e9b52d38a5c6f70ca22>
 X-RL-SENDER: zhangqing@rock-chips.com
 X-SENDER: zhangqing@rock-chips.com
 X-LOGIN-NAME: zhangqing@rock-chips.com
@@ -62,15 +62,15 @@ X-DNS-TYPE: 0
 X-System-Flag: 0
 From: Elaine Zhang <zhangqing@rock-chips.com>
 To: heiko@sntech.de
-Subject: [PATCH v1 2/6] clk: rockchip: Export rockchip_clk_register_ddrclk()
-Date: Wed,  2 Sep 2020 14:48:43 +0800
-Message-Id: <20200902064847.18881-3-zhangqing@rock-chips.com>
+Subject: [PATCH v1 3/6] clk: rockchip: Export rockchip_register_softrst()
+Date: Wed,  2 Sep 2020 14:48:44 +0800
+Message-Id: <20200902064847.18881-4-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200902064847.18881-1-zhangqing@rock-chips.com>
 References: <20200902064847.18881-1-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_024908_641117_A4E1F03A 
-X-CRM114-Status: GOOD (  10.86  )
+X-CRM114-CacheID: sfid-20200902_024910_049541_EBF7F74F 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,18 +99,31 @@ driver to be compiled as a module..
 
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
- drivers/clk/rockchip/clk-ddr.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/clk/rockchip/softrst.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-ddr.c b/drivers/clk/rockchip/clk-ddr.c
-index 9273bce4d7b6..282b6f22eb22 100644
---- a/drivers/clk/rockchip/clk-ddr.c
-+++ b/drivers/clk/rockchip/clk-ddr.c
-@@ -136,3 +136,4 @@ struct clk *rockchip_clk_register_ddrclk(const char *name, int flags,
+diff --git a/drivers/clk/rockchip/softrst.c b/drivers/clk/rockchip/softrst.c
+index 5f1ff5e47c4f..caba9055090b 100644
+--- a/drivers/clk/rockchip/softrst.c
++++ b/drivers/clk/rockchip/softrst.c
+@@ -77,9 +77,9 @@ static const struct reset_control_ops rockchip_softrst_ops = {
+ 	.deassert	= rockchip_softrst_deassert,
+ };
  
- 	return clk;
- }
-+EXPORT_SYMBOL(rockchip_clk_register_ddrclk);
+-void __init rockchip_register_softrst(struct device_node *np,
+-				      unsigned int num_regs,
+-				      void __iomem *base, u8 flags)
++void rockchip_register_softrst(struct device_node *np,
++			       unsigned int num_regs,
++			       void __iomem *base, u8 flags)
+ {
+ 	struct rockchip_softrst *softrst;
+ 	int ret;
+@@ -107,3 +107,4 @@ void __init rockchip_register_softrst(struct device_node *np,
+ 		kfree(softrst);
+ 	}
+ };
++EXPORT_SYMBOL(rockchip_register_softrst);
 -- 
 2.17.1
 
