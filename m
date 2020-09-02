@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 36ADBC433E2
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 15:09:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA65DC433E7
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 15:10:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F088C207D3
-	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 15:09:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A00DD20773
+	for <linux-rockchip@archiver.kernel.org>; Wed,  2 Sep 2020 15:10:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A6LpYXBB";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="K/zUDBdI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F088C207D3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KVF60QfN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="HbkL8XGj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A00DD20773
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,30 +26,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hOHwtvz6mRRE4htoA64LhaT8Ki4i7io7uxQo+RQSXnk=; b=A6LpYXBBXwuHB0I0pDFfy9i0FC
-	BOwNTEv1GazZxXqKI10kUJXimy13isNQrwV2Od8OOZ3U9RiBX7HtkmG2qKWNyrCn9/4qO4gaseEkx
-	AJonQ/SNKYHUc6b6xovkIfUMbqE8mB8qpr5y+LpnZ3lhqQXcS/zwLED+4i4SQh3G8J6hMmjZ2bQm8
-	l2nyR+0OtjyefxnSyyKCMjQxLP09RAHwUc71qlz2jYo1HC/Eyb/OJ2yPbuqGxYBR10PQt/Dos5+bG
-	406R1g8+Xh2tm3Af9ZCO0sNRPz1g6HcrosmWbpwFmjrJPbcCWJhB5J48p0cfa/1qj4qXpdeABt4fH
-	oQWAlvfw==;
+	bh=+RfVwJGdSaO8cgm/B15jpg7vgHBBWRWSTPxH3AAjWwk=; b=KVF60QfNlBDjqA7hj806Yxh1Gb
+	HgSt/N5xt/4ZrYK5RlhbEFRAZb4ljQjvc4+trBPxreOXTXhndjXeMUioA2Cqf5sH/ZoYjyh6cgjLC
+	6e9i8tb2rxnsfv7JgjzfyvRwzvKDK+GKFlY4MjusD6Y2G0OHlvadyWIAWTW7hOjmY0H27HdlLPnF/
+	8kWv3wcOhQ8Eq+i0N09KVuRcYGLU9eGnNL1ACgN2BgEJiZe6/AMamL6ClTQ+05tJBpNYIleUKfBKX
+	0a4kYNdTAYkJxuEfnG3/j8dKG9FDmd0YXLBuroGvqjzARq+ZUP7A8qk1HbHZ/ZTf4IWdxoUJr45Pj
+	sEFSQKvw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDUO8-0006et-Fz; Wed, 02 Sep 2020 15:09:28 +0000
+	id 1kDUOs-000742-AO; Wed, 02 Sep 2020 15:10:14 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDULs-0005R4-0M; Wed, 02 Sep 2020 15:07:08 +0000
+ id 1kDULy-0005Vl-2s; Wed, 02 Sep 2020 15:07:15 +0000
 Received: from kozik-lap.mshome.net (unknown [194.230.155.106])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5904D207D3;
- Wed,  2 Sep 2020 15:07:01 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 63A872098B;
+ Wed,  2 Sep 2020 15:07:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599059226;
- bh=d/sTQ5yzFwXEJEHgq/56l3IhxWk0SqmDdAYgZ97oGLc=;
+ s=default; t=1599059232;
+ bh=cSQFmywcXooFcP8VNV2UCrqNvF5ouq7dUikOFo9zEuE=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=K/zUDBdIP3PPMqY7dOzPHDAvrIyHmr5a94+wMAA+GArrXXeEutxsJgbYxbLyqq5/C
- E2uOTwHJpDZFD5orZyyIdP/7KY/VvPScasiEZgLWJhPj6XZph3ID7VW5AQpWQN1KXo
- nVLBNNpMdVGH9BOe6mD+vAdrJJcxgsrNTQ+15lZ8=
+ b=HbkL8XGjlZRIsnFjTWTb8qGh7g6TA7XNjmlnpLsW6jen2ejlREFL339vj7TAxnvIE
+ Wm0UUO3He96/92GV1im9eWcxkprkOuAb+PHY8CHUpgOq1DEhLH0ya0vRS/Q632PTR+
+ 3K+ywjp4pqrqiWIsSqKLLtjF27yD5l/9OL2ccxik=
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
  Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
@@ -69,15 +69,15 @@ To: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
  linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-stm32@st-md-mailman.stormreply.com
-Subject: [PATCH 3/9] i2c: bcm2835: Simplify with dev_err_probe()
-Date: Wed,  2 Sep 2020 17:06:37 +0200
-Message-Id: <20200902150643.14839-3-krzk@kernel.org>
+Subject: [PATCH 4/9] i2c: cadence: Simplify with dev_err_probe()
+Date: Wed,  2 Sep 2020 17:06:38 +0200
+Message-Id: <20200902150643.14839-4-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200902150643.14839-1-krzk@kernel.org>
 References: <20200902150643.14839-1-krzk@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200902_110708_154314_28B852E5 
-X-CRM114-Status: GOOD (  14.98  )
+X-CRM114-CacheID: sfid-20200902_110714_387885_19BC8C28 
+X-CRM114-Status: GOOD (  14.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,28 +102,29 @@ dev_err_probe().  Less code and the error value gets printed.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- drivers/i2c/busses/i2c-bcm2835.c | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ drivers/i2c/busses/i2c-cadence.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-bcm2835.c b/drivers/i2c/busses/i2c-bcm2835.c
-index 5dc519516292..37443edbf754 100644
---- a/drivers/i2c/busses/i2c-bcm2835.c
-+++ b/drivers/i2c/busses/i2c-bcm2835.c
-@@ -421,11 +421,9 @@ static int bcm2835_i2c_probe(struct platform_device *pdev)
- 		return PTR_ERR(i2c_dev->regs);
+diff --git a/drivers/i2c/busses/i2c-cadence.c b/drivers/i2c/busses/i2c-cadence.c
+index e4b7f2a951ad..eefde554c50c 100644
+--- a/drivers/i2c/busses/i2c-cadence.c
++++ b/drivers/i2c/busses/i2c-cadence.c
+@@ -1214,11 +1214,10 @@ static int cdns_i2c_probe(struct platform_device *pdev)
+ 		 "Cadence I2C at %08lx", (unsigned long)r_mem->start);
  
- 	mclk = devm_clk_get(&pdev->dev, NULL);
--	if (IS_ERR(mclk)) {
--		if (PTR_ERR(mclk) != -EPROBE_DEFER)
--			dev_err(&pdev->dev, "Could not get clock\n");
--		return PTR_ERR(mclk);
+ 	id->clk = devm_clk_get(&pdev->dev, NULL);
+-	if (IS_ERR(id->clk)) {
+-		if (PTR_ERR(id->clk) != -EPROBE_DEFER)
+-			dev_err(&pdev->dev, "input clock not found.\n");
+-		return PTR_ERR(id->clk);
 -	}
-+	if (IS_ERR(mclk))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(mclk),
-+				     "Could not get clock\n");
- 
- 	i2c_dev->bus_clk = bcm2835_i2c_register_div(&pdev->dev, mclk, i2c_dev);
- 
++	if (IS_ERR(id->clk))
++		return dev_err_probe(&pdev->dev, PTR_ERR(id->clk),
++				     "input clock not found.\n");
++
+ 	ret = clk_prepare_enable(id->clk);
+ 	if (ret)
+ 		dev_err(&pdev->dev, "Unable to enable clock.\n");
 -- 
 2.17.1
 
