@@ -2,23 +2,23 @@ Return-Path: <SRS0=C2RB=CM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIM_INVALID,
+	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E7E5C433E9
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2020 16:47:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71EA8C2D0A5
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2020 20:27:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2017220716
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2020 16:47:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3F729206C0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Sep 2020 20:27:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MRlsYHIa";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="DrefXjNN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2017220716
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mMw8iRLM";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tcd-ie.20150623.gappssmtp.com header.i=@tcd-ie.20150623.gappssmtp.com header.b="RCNqeDrb"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3F729206C0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=tcd.ie
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,58 +26,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NdzkATjHrwUS/RxW5pnBT/gdfNEHftR3c4tmonpxaNo=; b=MRlsYHIa2s7v94aH+InihIxRZ
-	I3DGCM1GLqN2RFT9Eg/RDGFVF/aRc4yEF9D/s0q3vh1EldNL5rodtD1w7408SdzjWzUgUeof8eMEx
-	+znFtGotcr7vwZE1qFrVC5zTCviL/DzuQw90PSr0YYgToskTCIAaZPL4IvK3M7iLtCXv5QknD8Vdq
-	RwOPZTaFC8Wr7N9XhzZQA+OE0VALGs6gOKhA0+7gr/B/RfFDwsiZmJbQ/74aLgykRXNR4WuS1HBvj
-	um3XwG5CXwsQNOQ9dHc/nJfRpU40eOoi2MAeiaWEuLPrdhCod6RwT0c+Ud6fmD6aTKJ10Ml9Ql3Ig
-	XJsN8i0Eg==;
+	 bh=Fa8sUCaRJQ2ZUUWl/fEDYldgOeoRaHSs7jxpx0brmSc=; b=mMw8iRLM99ZbSmNqxBwTSSMEK
+	ePAQwgY1WoFWtP6rJDYCKeVAvPg3ZoNma+kNPLP3QNTaL7prKrWB+8veFrMPKVf/TqbFBtcO330lV
+	+2HctLREp9y3IAErxJ4LXSp9PrKWasbj1N/vHBRR8OHvhkDKb28h1o19HAeni3ezHnbCTTHnhXKnX
+	o1PP/7X5+10U9/F0m0pnDTEWQ89GRVT3cwFESb1PvyBzPqDqHFsdCinF0UFXbouKlKw5WdxW9ZAD/
+	ps/6F4szAi1Pg+QUWnLKyoTuBNGmN5/ub9dFflRtiZw0hay/9rDQQSualMz3tsuqW0g4sB8GGVWwU
+	3GbYJhziw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kDsOV-0003Nl-1s; Thu, 03 Sep 2020 16:47:27 +0000
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
+	id 1kDvpE-0002n2-1V; Thu, 03 Sep 2020 20:27:16 +0000
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kDsOO-0003KP-7w
- for linux-rockchip@lists.infradead.org; Thu, 03 Sep 2020 16:47:21 +0000
-Received: by mail-ed1-x544.google.com with SMTP id ay8so3335033edb.8
- for <linux-rockchip@lists.infradead.org>; Thu, 03 Sep 2020 09:47:18 -0700 (PDT)
+ id 1kDvp8-0002jC-O2
+ for linux-rockchip@lists.infradead.org; Thu, 03 Sep 2020 20:27:11 +0000
+Received: by mail-io1-xd42.google.com with SMTP id m17so4829072ioo.1
+ for <linux-rockchip@lists.infradead.org>; Thu, 03 Sep 2020 13:27:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amarulasolutions.com; s=google;
+ d=tcd-ie.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BoOsmQ2rBW+EbnUHAzVo+1cABtO0sjJmNcwrCxNVF/A=;
- b=DrefXjNN8klAxwkDEtDXlFK8vggfcZ/C/CRF+LX12Ix1TZ08f0o81Izumvko0Z2jVF
- LycY29rD0Pxs+7jbEPJZloKwDB2Uc4g/PH8c5khbTdNmIPWrx8dHYNHOeJMvQMQQB1qJ
- HwAKRNQ2jz9daw1E8VUsyq24UC6Mcxb74XxIs=
+ :cc; bh=XHoryAxbdooXqCdzEiDfBNHDRDqVJTRBeWqND7AhQWw=;
+ b=RCNqeDrberJQa8iEXoKdFFmsXmVgm0OJW7eIchkOEab4PeUqCYPXFDpEN7VrPE2Q2r
+ GUQQuiaAGbKydhEJAnnDCPiK90LXur6kCJr5L5sQ2r/ne46TMpiIdcTaCv2fHYoM6yNb
+ n/CznyFIPF9GJUXXveE7AfWdl33o/8t6SBeJ8YB3I8NVC2PqmD4/iWDqPdEI5wN78LVf
+ ncTI5ftXwXoF9V4Ax5mdMwpMg3xer78eQreGPZO8czXhtl772MKmX11X+ribr9UqcF1C
+ urDp6n8FeZvPlJlmjz8S3oOgFUFG1EujxtEbZKlxpUccJF2SFlBjkXHX8U39zQ/QDpq6
+ IUOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=BoOsmQ2rBW+EbnUHAzVo+1cABtO0sjJmNcwrCxNVF/A=;
- b=WeSQB8aKn9OvHMhP7o5xhnspoD8omnmIRjVJoXrMnT3/8U7yihOEHMRg2s9Iihb2j4
- /3TfahHVxB1TL2AqtEioINPC/Sc+7rBes3ZM/j73N/o3tLkw5W+iIFPbeHFherERQRdA
- qeKALWWir/Qolromke/xFn9wPb9ynrflEaYdLbhmNjlpQ5vp0VTEBPysQyaJf69+5ZJa
- zt4is0F5xNKNEd8u/amOcdoh2ks7dKqlYiBS0zn5LCTQ+M+vNJFIuA1jBWkvDXsqA84M
- 8AeGph67+VILFizZSza/8ZTB/ypwN6/k3UTx+hNOd9cj3wkBw0L09EGEjy+TdNWmPTNN
- zTpQ==
-X-Gm-Message-State: AOAM532epJVeI81Y/DCtBdKAPhvu4SmDzhom2JXeYqQQ02PP9857YUdF
- T1hFy2kvVQ3256t0qbbdL36hCezoNtevIIl6uDwd7g==
-X-Google-Smtp-Source: ABdhPJxMeFogkFas77zemMlntf263DD9ilLv7Qd6K+YljkScZccbQgYQDbdCP80JMCHM2uxPrdDdTxdUYKasre4/cYA=
-X-Received: by 2002:aa7:d750:: with SMTP id a16mr4221514eds.362.1599151637185; 
- Thu, 03 Sep 2020 09:47:17 -0700 (PDT)
+ bh=XHoryAxbdooXqCdzEiDfBNHDRDqVJTRBeWqND7AhQWw=;
+ b=YGAv773ENwshBooF/TcC4Vr8SOa1YYDiZVeKviaps6OZQm5d/iuPOz0Ds2G3uhRq9m
+ Nms8Ayd2zEkJSCVw8LNf3k6U4/xrCHCPGiDcK7RBmCm36LzAwxzF9C+zXdAN0OG7DGL4
+ bomTg2s7HZc86ga4hxsxm4rKVxQeXXvqC8+7dC7oVhKvrLXyUlv2wY0+R/AMmOXyqo7K
+ F7pcAaoQi5mQOzLOlV0IscJDiq/nMAVQ3XSWcQ1u/5QwPz++7rMLpUFhnxgO2Y+glnzT
+ g33f4AYkOvAg+Rr3muxqHidMkvDFnRMdiyx1GHfwr7oOdOxsHSC6iGcunw6lHXgLY+F8
+ ib9w==
+X-Gm-Message-State: AOAM531mBotaUKK16keGDhbffZshR4SOwF2RKMgtLCfpgd634eWL3dzO
+ x+6/FqzDElcUwf5S+LWgK46A926niEpn1GbkX8KNfg==
+X-Google-Smtp-Source: ABdhPJwmTrpk85LWcnftpfNTJtQ24c/2yXv/TkIoKUAohLkMn+MLB1sF1W3BqKfqx9SeVWLrNTgZBBPqyFF6pQr5QKA=
+X-Received: by 2002:a02:834a:: with SMTP id w10mr5122585jag.63.1599164828964; 
+ Thu, 03 Sep 2020 13:27:08 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200831082917.17117-1-jagan@amarulasolutions.com>
- <20200831082917.17117-6-jagan@amarulasolutions.com>
- <20200903162550.GA2896127@bogus>
-In-Reply-To: <20200903162550.GA2896127@bogus>
-From: Jagan Teki <jagan@amarulasolutions.com>
-Date: Thu, 3 Sep 2020 22:17:05 +0530
-Message-ID: <CAMty3ZCXV9=VzVKiKJ740RcR+uYA7CHUzjrDL0vwQ1NOw9n4FQ@mail.gmail.com>
-Subject: Re: [PATCH v3 5/7] dt-bindings: arm: rockchip: Add Engicam PX30.Core
- C.TOUCH 2.0
-To: Rob Herring <robh@kernel.org>
+References: <20191221150402.13868-1-murphyt7@tcd.ie>
+ <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
+ <20200529124523.GA11817@infradead.org>
+ <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
+ <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
+ <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
+ <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
+ <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
+ <766525c3-4da9-6db7-cd90-fb4b82cd8083@deltatee.com>
+ <CALQxJuuS8KKUX_eWWSE81gsq5ePAETB-FoqRUSWFfqgr+B13gg@mail.gmail.com>
+In-Reply-To: <CALQxJuuS8KKUX_eWWSE81gsq5ePAETB-FoqRUSWFfqgr+B13gg@mail.gmail.com>
+From: Tom Murphy <murphyt7@tcd.ie>
+Date: Thu, 3 Sep 2020 21:26:57 +0100
+Message-ID: <CALQxJuuk0YR9dZWkqSmLU-kUKoOuuNj-kSikvQGq0wekijycLA@mail.gmail.com>
+Subject: Re: [PATCH 0/8] Convert the intel iommu driver to the dma-iommu api
+To: Logan Gunthorpe <logang@deltatee.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200903_124720_561296_6597CD3E 
-X-CRM114-Status: GOOD (  19.37  )
+X-CRM114-CacheID: sfid-20200903_162710_844686_A170352C 
+X-CRM114-Status: GOOD (  28.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,57 +99,105 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Rob Herring <robh+dt@kernel.org>, Suniel Mahesh <sunil@amarulasolutions.com>,
- Michael Trimarchi <michael@amarulasolutions.com>,
- linux-amarula <linux-amarula@amarulasolutions.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-tegra@vger.kernel.org, Julien Grall <julien.grall@arm.com>,
+ Thierry Reding <thierry.reding@gmail.com>, Will Deacon <will@kernel.org>,
+ Marek Szyprowski <m.szyprowski@samsung.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
+ Andy Gross <agross@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, Jani Nikula <jani.nikula@linux.intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ linux-mediatek@lists.infradead.org, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ virtualization@lists.linux-foundation.org,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ David Woodhouse <dwmw2@infradead.org>, Cornelia Huck <cohuck@redhat.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 3, 2020 at 9:55 PM Rob Herring <robh@kernel.org> wrote:
+On Fri, 28 Aug 2020 at 00:34, Tom Murphy <murphyt7@tcd.ie> wrote:
 >
-> On Mon, 31 Aug 2020 13:59:15 +0530, Jagan Teki wrote:
-> > PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
+> On Thu, 27 Aug 2020 at 22:36, Logan Gunthorpe <logang@deltatee.com> wrote:
 > >
-> > C.TOUCH 2.0 is a general purpose carrier board with capacitive
-> > touch interface support.
 > >
-> > PX30.Core needs to mount on top of this Carrier board for creating
-> > complete PX30.Core C.TOUCH 2.0 board.
 > >
-> > Add bindings for it.
+> > On 2020-08-23 6:04 p.m., Tom Murphy wrote:
+> > > I have added a check for the sg_dma_len == 0 :
+> > > """
+> > >  } __sgt_iter(struct scatterlist *sgl, bool dma) {
+> > >         struct sgt_iter s = { .sgp = sgl };
+> > >
+> > > +       if (sgl && sg_dma_len(sgl) == 0)
+> > > +           s.sgp = NULL;
+> > >
+> > >         if (s.sgp) {
+> > >             .....
+> > > """
+> > > at location [1].
+> > > but it doens't fix the problem.
 > >
-> > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> > ---
-> > Changes for v3:
-> > - none
-> > Changes for v2:
-> > - new patch
+> > Based on my read of the code, it looks like we also need to change usage
+> > of sgl->length... Something like the rough patch below, maybe?
 > >
-> >  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
-> >  1 file changed, 6 insertions(+)
+> > Also, Tom, do you have an updated version of the patchset to convert the
+> > Intel IOMMU to dma-iommu available? The last one I've found doesn't
+> > apply cleanly (I'm assuming parts of it have been merged in slightly
+> > modified forms).
 > >
 >
->
-> Please add Acked-by/Reviewed-by tags when posting new versions. However,
-> there's no need to repost patches *only* to add the tags. The upstream
-> maintainer will do that for acks received on the version they apply.
->
-> If a tag was not added on purpose, please state why and what changed.
+> I'll try and post one in the next 24hours
 
-Yes, it's on purpose. The previous binding was about C.TOUCH with LVDS
-board and this one is C.TOUCH carrier only. ie the main reason I have
-not included. I did mention in the cover-letter saying previous one
-dropped and the C.TOUCH carrier added.
+I have just posted this now:
+The subject of the cover letter is:
+"[PATCH V2 0/5] Convert the intel iommu driver to the dma-iommu api"
 
-Hope this answers your query.
-
-Jagan.
+>
+> > Thanks,
+> >
+> > Logan
+> >
+> > --
+> >
+> > diff --git a/drivers/gpu/drm/i915/i915_scatterlist.h
+> > b/drivers/gpu/drm/i915/i915
+> > index b7b59328cb76..9367ac801f0c 100644
+> > --- a/drivers/gpu/drm/i915/i915_scatterlist.h
+> > +++ b/drivers/gpu/drm/i915/i915_scatterlist.h
+> > @@ -27,13 +27,19 @@ static __always_inline struct sgt_iter {
+> >  } __sgt_iter(struct scatterlist *sgl, bool dma) {
+> >         struct sgt_iter s = { .sgp = sgl };
+> >
+> > +       if (sgl && !sg_dma_len(s.sgp))
+> > +               s.sgp = NULL;
+> > +
+> >         if (s.sgp) {
+> >                 s.max = s.curr = s.sgp->offset;
+> > -               s.max += s.sgp->length;
+> > -               if (dma)
+> > +
+> > +               if (dma) {
+> > +                       s.max += sg_dma_len(s.sgp);
+> >                         s.dma = sg_dma_address(s.sgp);
+> > -               else
+> > +               } else {
+> > +                       s.max += s.sgp->length;
+> >                         s.pfn = page_to_pfn(sg_page(s.sgp));
+> > +               }
+> >         }
+> >
+> >         return s;
 
 _______________________________________________
 Linux-rockchip mailing list
