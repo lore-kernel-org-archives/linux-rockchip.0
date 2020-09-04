@@ -2,88 +2,59 @@ Return-Path: <SRS0=xWqI=CN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 639E2C433E2
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 19:19:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E270C433E2
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 21:23:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1070E2073B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 19:19:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6D7EC2087C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 21:23:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MLE+U0ke";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="eEwr7rjO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1070E2073B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l/geF8e9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D7EC2087C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=RHUMTrkJpeF0+WCmSOdVAiGyNflx2IZ2rTV5cizsUCk=; b=MLE+U0keGI2dQrp3zi01N3err
-	30k1iMD3ycMPxREfjA/+iumga31jMIDKmNtEhvtyMUR92MAkMD9ff7xrbnhMh+OQzmtcOfypj85Hi
-	pFeoGiQkxvKokHAXpjd+CtxdIoR3rRlK5VoKtJf/E+K4E3FsNERCnYO6+XPwJ0lkleGD4l6is+X+b
-	wA2LDwSqvrbCYXLmcbEYVWuAqTI1mYqlV7wmannDxDVd8XuGWr2HkexPW1nexC2yOGJ15xHGWXNtY
-	ZRyQT6TTXrdDdh0/PJlwHyoBZNH/Zfj1TcmO1z7Cv4irD/oK8m8sVYzREh1iS7Szz0F5LvIlB3qDM
-	vxYBHEPlQ==;
+	 bh=lJZAASx7w8kZucA6lN6Uq+Lk+j2z4PA4Tt37iduoJ9Y=; b=l/geF8e9VsL+v0o8xHLjdlnUL
+	18CgPFzDUwPKIOLxmZPR4HZBY+G8D5CwpRe8TdtfWzOlpTmOUpu9C73dMmKH8tvO70wKRgY/YYGbh
+	TPQxiypFHrHCa4xeH7xuQAxubxW5TR9v7rLsNzwWoxR5yFN0yecwnhN6EMuOMAD3BsVISzacEhBNl
+	6ZN5sOhPLEbIl6l1C7oslhKac6WG5AT+w7o2hsiK4C2OC+lugNKV4aFf5XolEiGF2vDQEtEP3D+rx
+	1ak12H/8gIj4ue8BlhjB0Lb/p9TX7HUZnAWjjphk1rBV7/Yx5ddmXRhaD53zMNdDEp4lxAlAaMVi4
+	Ijg6EZoLQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kEHF7-0005Dg-Vg; Fri, 04 Sep 2020 19:19:26 +0000
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641])
+	id 1kEJBK-0008Gl-JU; Fri, 04 Sep 2020 21:23:38 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kEHEl-00054I-5H
- for linux-rockchip@lists.infradead.org; Fri, 04 Sep 2020 19:19:10 +0000
-Received: by mail-pl1-x641.google.com with SMTP id s10so1616613plp.1
- for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2020 12:19:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amarulasolutions.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=qRMPP9LxKZUNiuhnbNUkYFs55rCgA//jb+vd/Rx6Ht0=;
- b=eEwr7rjOHjYc90SI75Z6Ut+MR+UIR8SjsReg4Nh+bkkNtf3q6mhsZe/DOfXcHbnOjz
- drKjfYKMQUPR1vGqcPN3Bl+y6ed/X+LsPKZVQsSpKrtVddmpMBN0zhjmooYpjO8cxUyh
- k3zKOVzfP8YdEHI1VaORIAtYLL2AQ6r2WUqAs=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=qRMPP9LxKZUNiuhnbNUkYFs55rCgA//jb+vd/Rx6Ht0=;
- b=cgyVfpiNArdHCJlnRTtEfeS1Ao+2EWLaXgb94VAbD2TKPwFUJn47N0rqciP4niuVaq
- BMT+hVGF2NPm2GC4ezV7ufVdAewaXrMOP4m8zE6nnrs7D7RjY4wAlSmqmVtY+EL87Sed
- dB3QZ/VtE6PGkZm80RuK70Dv0rC9OA32oLf/3EreOX8zftFLdEwDe0eq1gEePqxEK75l
- APwOE+jkMElge7vEGmMmlFov6s7SmHXpYI5mdBeorTqBbhdna94MIkcKSnkdh6IvS3AE
- UApcfaBR0y1rpp+NLLu95cCB4US7wQqRnFlGSsAIAK/Tgu2e10bmgSnz1iNzAWizlOCk
- sg4w==
-X-Gm-Message-State: AOAM531gD3Rj6nynNGuNnlGbVWPjLOC4XKKwhVngMo0ah21UKBQoQdaf
- IJcouqm9YGRHdvBy5kl+CTEF5Q==
-X-Google-Smtp-Source: ABdhPJzUuILtE+Lwd5POY+0Lfp6RXonJmBryQBkbG0RS+y2jdm+w1JLUsyQMiNXyvqjHmoi1pWFsZg==
-X-Received: by 2002:a17:902:be08:b029:d0:5c75:38da with SMTP id
- r8-20020a170902be08b02900d05c7538damr9927728pls.1.1599247140913; 
- Fri, 04 Sep 2020 12:19:00 -0700 (PDT)
-Received: from localhost.localdomain ([2405:201:c809:c7d5:b9ea:24bf:6b2b:1eee])
- by smtp.gmail.com with ESMTPSA id t4sm5986001pje.56.2020.09.04.12.18.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Sep 2020 12:19:00 -0700 (PDT)
-From: Jagan Teki <jagan@amarulasolutions.com>
+ id 1kEJBH-0008Ft-41; Fri, 04 Sep 2020 21:23:36 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1kEJB4-00015W-HH; Fri, 04 Sep 2020 23:23:22 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: MyungJoo Ham <myungjoo.ham@samsung.com>,
  Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 3/3] arm64: dts: rk3399-rock-pi-4c: Enable Display Port
-Date: Sat,  5 Sep 2020 00:48:30 +0530
-Message-Id: <20200904191830.387296-4-jagan@amarulasolutions.com>
-X-Mailer: git-send-email 2.25.1
+ Jagan Teki <jagan@amarulasolutions.com>
+Subject: Re: [PATCH 0/3] extcon: Add Type-C Virtual PD
+Date: Fri, 04 Sep 2020 23:23:21 +0200
+Message-ID: <6955091.ERBjKZ0CLf@diego>
 In-Reply-To: <20200904191830.387296-1-jagan@amarulasolutions.com>
 References: <20200904191830.387296-1-jagan@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_151903_304733_3B23027C 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20200904_172335_207458_30A6F35F 
+X-CRM114-Status: GOOD (  17.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,49 +76,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable Display Port on ROCK Pi 4C board.
+Hi Jagan,
 
-Unlike, other RK3399 platforms with accessing DP Altmode
-via Type-C connector, the display Port on ROCK Pi 4C is
-accessible via physical display port connector by means
-of Type-C Virtual PD extcon configuration.
+Am Freitag, 4. September 2020, 21:18:27 CEST schrieb Jagan Teki:
+> USB Type-C protocol supports various modes of operations
+> includes PD, USB3, and Altmode. If the platform design
+> supports a Type-C connector then configuring these modes
+> can be done via enumeration.
+> 
+> However, there are some platforms that design these modes
+> of operations as separate protocol connectors like design
+> Display Port from on-chip USB3 controller. So accessing
+> Type-C Altmode Display Port via onboard Display Port 
+> connector instead of a Type-C connector.
+>  
+> These kinds of platforms require an explicit extcon driver
+> in order to handle Power Delivery and Port Detection.
+> 
+> This series support this Type-C Virtual PD and enable the
+> same in ROCK Pi 4C SBC.
+> 
+> Any inputs?
 
-Enable support for it.
+I tend to disagree on the design via an extcon.
 
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
- .../boot/dts/rockchip/rk3399-rock-pi-4c.dts      | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+That the Rockchip rk3399 currently carries that extcon thingy is unfortunate
+and only works for ChromeOS devices based on the rk3399.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-index 4c7ebb1c5d2d..19a648add355 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-@@ -11,6 +11,22 @@
- / {
- 	model = "Radxa ROCK Pi 4C";
- 	compatible = "radxa,rockpi4c", "radxa,rockpi4", "rockchip,rk3399";
-+
-+	virtual_pd: virtual-pd {
-+		compatible = "linux,extcon-usbc-virtual-pd";
-+		det-gpios = <&gpio4 RK_PD1 GPIO_ACTIVE_LOW>;	/* DP_HPD */
-+		vpd-data-role = "display-port";
-+		vpd-super-speed;
-+	};
-+};
-+
-+&cdn_dp {
-+	extcon = <&virtual_pd>;
-+	status = "okay";
-+};
-+
-+&tcphy0 {
-+	extcon = <&virtual_pd>;
- };
- 
- &sdio0 {
--- 
-2.25.1
+The kernel now has a real type-c framework so we should not extend this
+extcon hack any further, because that will make it even harder to roll back
+later. Also simply because other Rockchip boards currently can't really make
+use of type-c due to this, as they use the fsusb302 phys directly connected.
+
+ChromeOS actually spend some time to make the cros-ec pd part of the type-c
+framework if I remember correctly, so a viable battle plan would be to:
+
+(1) move the Rockchip type-c phy driver to actually be part of the type-c
+    framework, with the extcon being a deprecated fallback for old DTs.
+(2) implement your gpio-altmode as part of the type-c framework
+    (which may even already exist)
+
+
+In short, please don't extend the rk3399 type-c extcon hack.
+
+Thanks
+Heiko
+
+
+
 
 
 _______________________________________________
