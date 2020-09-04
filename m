@@ -2,77 +2,57 @@ Return-Path: <SRS0=xWqI=CN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2106BC43461
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 14:51:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FC6EC43461
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 18:36:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D4D7920722
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 14:51:01 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6B50820665
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 18:36:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YI9QK5em";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="y95wpCM5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D4D7920722
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O30U/WuZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6B50820665
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5YGCQni3Y2+/cfl5F61eZ0LCyQRFSmzRvkE12pctc40=; b=YI9QK5emVbs01NyzLMv38tima
-	pF75Wj0vw7dLP07Zq/tsA1iWUXMTW92K+FUBC+26bBAIPmyzGU41JwF9iI3RP40oDOSSzIclDAuj5
-	2a6ZXIvUsYl92mVkR4ujsFONo9PAoxbZhz8BAzV9eMQbHnIuuvC0poZr0ueV9Nutily+8KBzLj8t5
-	J4X48TvJk/nLZFgR4e5de+7tPtb2rJwtdgORpsTHekVLs8Qt40qrrVxjoR0ibdqEcfb1CzSk9IdC+
-	lMlx4lqNbvdIkwTmtAezBnR37WPNlpmPeZqrgKt/buRgQ8gc+PvBtpt9X+LM9fCLChhJpwoN+yLrf
-	i/9M+Eexw==;
+	 bh=7NMVZTB+5dlObIOO/4IHg7H2uMQySz2m8CCCEyvHsMQ=; b=O30U/WuZr8y4Z60EHG29O04KX
+	BTcMvaUq7q/tKk6COAMY/jrXFPfiwMZs/bNhxe4ez1OJUQbhZPHhwoKgE0b2MgeZC315CKhOMXux6
+	14eMKnaxt+1PDMTU9lokNigdeSErN+5slurl0sIhkAArRP6+D5eDE5ifGHHYSuqlr1T5LdhgfGGej
+	ifMQ2XeAKZ9nVuC7MQ3Z1wp2qkctgVY50FHZqgHpmtZJxxmUPkz6K2sQeRaC9zwmJfOOmmCmVu1Hk
+	RY5VQ9PiFUMhb4QQouS74/W+CVAkToFLHzwxlYCFBQ12iN3PkDDZNBZcIKkc7BvknLD4AzxxM5uO7
+	2XqhB2v2A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kED3G-0007VO-VT; Fri, 04 Sep 2020 14:50:55 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kEFZv-0006xI-Ta; Fri, 04 Sep 2020 17:32:47 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kED3C-0007UI-UO; Fri, 04 Sep 2020 14:50:51 +0000
-Received: from mail-oi1-f169.google.com (mail-oi1-f169.google.com
- [209.85.167.169])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 4B4662074D;
- Fri,  4 Sep 2020 14:50:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599231049;
- bh=V8Yz+V8W8NYZRo8VeY1JNSeQmYJkrgRoqjg3jR2PUvI=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=y95wpCM5PSO2ORRxz7Fe2lB1/nleDYKLCXyVJKIPxrzD+Cm2FcpGKTQr4ABNk7WpN
- bs6iwoF36owHKD+TV2gjIM5KxNDth/QiqjlfBQU4nh6VtSPWEcuPgTEmzMxbSHhu4w
- /VXGhZdFqNdK0ZtYbaasyscn4/ZK6pIUXUcs3x9s=
-Received: by mail-oi1-f169.google.com with SMTP id x14so6733751oic.9;
- Fri, 04 Sep 2020 07:50:49 -0700 (PDT)
-X-Gm-Message-State: AOAM530DcBfA7AHnsO97FSkdVIFbC7srQavXtQiCub/BjUUMa34o3v4S
- EnF42scDYAWvka/xhSVaPz4pqnkdG30HqyRTaA==
-X-Google-Smtp-Source: ABdhPJwwwgfM98sa3ThHsK9hFVILmKXcNAGTT6BvEX3rCBp0yuXzXiuMVee8h3wm41S3eOKWbUIm60zQEIEq/uvqGGE=
-X-Received: by 2002:aca:4cc7:: with SMTP id z190mr5643642oia.147.1599231048667; 
- Fri, 04 Sep 2020 07:50:48 -0700 (PDT)
+ id 1kEFZs-0006wX-OQ; Fri, 04 Sep 2020 17:32:45 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1kEFZa-0007FR-A3; Fri, 04 Sep 2020 19:32:26 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Alex Dewar <alex.dewar90@gmail.com>
+Subject: Re: [PATCH] iio: adc: rockchip_saradc: Allow compile-testing with !ARM
+Date: Fri, 04 Sep 2020 19:32:22 +0200
+Message-ID: <1602652.ZmzXO7uU3z@diego>
+In-Reply-To: <20200904170416.16061-1-alex.dewar90@gmail.com>
+References: <20200904170416.16061-1-alex.dewar90@gmail.com>
 MIME-Version: 1.0
-References: <20200831082917.17117-1-jagan@amarulasolutions.com>
- <20200831082917.17117-6-jagan@amarulasolutions.com>
- <20200903162550.GA2896127@bogus>
- <CAMty3ZCXV9=VzVKiKJ740RcR+uYA7CHUzjrDL0vwQ1NOw9n4FQ@mail.gmail.com>
-In-Reply-To: <CAMty3ZCXV9=VzVKiKJ740RcR+uYA7CHUzjrDL0vwQ1NOw9n4FQ@mail.gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Fri, 4 Sep 2020 08:50:36 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqJUOO5Ou+BAS6AC4dfZ4kv5sncq_PGG+1+sHhpWByCWhA@mail.gmail.com>
-Message-ID: <CAL_JsqJUOO5Ou+BAS6AC4dfZ4kv5sncq_PGG+1+sHhpWByCWhA@mail.gmail.com>
-Subject: Re: [PATCH v3 5/7] dt-bindings: arm: rockchip: Add Engicam PX30.Core
- C.TOUCH 2.0
-To: Jagan Teki <jagan@amarulasolutions.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_105051_171915_82D5DA79 
-X-CRM114-Status: GOOD (  24.56  )
+X-CRM114-CacheID: sfid-20200904_133244_798122_51B760F3 
+X-CRM114-Status: GOOD (  17.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,61 +65,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Suniel Mahesh <sunil@amarulasolutions.com>,
- Michael Trimarchi <michael@amarulasolutions.com>,
- linux-amarula <linux-amarula@amarulasolutions.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: Alexandru Tachici <alexandru.tachici@analog.com>,
+ Lars-Peter Clausen <lars@metafoo.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Michael Hennerich <michael.hennerich@analog.com>,
+ Saravanan Sekar <sravanhome@gmail.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Vincent Pelletier <plr.vincent@gmail.com>, linux-kernel@vger.kernel.org,
+ Beniamin Bia <beniamin.bia@analog.com>, linux-iio@vger.kernel.org,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ Hartmut Knaack <knaack.h@gmx.de>, linux-rockchip@lists.infradead.org,
+ Alexandru Ardelean <alexandru.ardelean@analog.com>,
+ Alex Dewar <alex.dewar90@gmail.com>, Jonathan Cameron <jic23@kernel.org>,
+ Artur Rojek <contact@artur-rojek.eu>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 3, 2020 at 10:47 AM Jagan Teki <jagan@amarulasolutions.com> wrote:
->
-> On Thu, Sep 3, 2020 at 9:55 PM Rob Herring <robh@kernel.org> wrote:
-> >
-> > On Mon, 31 Aug 2020 13:59:15 +0530, Jagan Teki wrote:
-> > > PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
-> > >
-> > > C.TOUCH 2.0 is a general purpose carrier board with capacitive
-> > > touch interface support.
-> > >
-> > > PX30.Core needs to mount on top of this Carrier board for creating
-> > > complete PX30.Core C.TOUCH 2.0 board.
-> > >
-> > > Add bindings for it.
-> > >
-> > > Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> > > ---
-> > > Changes for v3:
-> > > - none
-> > > Changes for v2:
-> > > - new patch
-> > >
-> > >  Documentation/devicetree/bindings/arm/rockchip.yaml | 6 ++++++
-> > >  1 file changed, 6 insertions(+)
-> > >
-> >
-> >
-> > Please add Acked-by/Reviewed-by tags when posting new versions. However,
-> > there's no need to repost patches *only* to add the tags. The upstream
-> > maintainer will do that for acks received on the version they apply.
-> >
-> > If a tag was not added on purpose, please state why and what changed.
->
-> Yes, it's on purpose. The previous binding was about C.TOUCH with LVDS
-> board and this one is C.TOUCH carrier only. ie the main reason I have
-> not included. I did mention in the cover-letter saying previous one
-> dropped and the C.TOUCH carrier added.
+Am Freitag, 4. September 2020, 19:04:16 CEST schrieb Alex Dewar:
+> There seems no reason to allow for compile-testing on ARM only, so
+> remove this restriction.
+> 
+> Build-tested with allyesconfig on x86.
+> 
+> Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
 
-The changelog here says no changes...
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
-Anyways,
+> ---
+>  drivers/iio/adc/Kconfig | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+> index d94dc800b842..03929606bb01 100644
+> --- a/drivers/iio/adc/Kconfig
+> +++ b/drivers/iio/adc/Kconfig
+> @@ -863,7 +863,7 @@ config RN5T618_ADC
+>  
+>  config ROCKCHIP_SARADC
+>  	tristate "Rockchip SARADC driver"
+> -	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
+> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
+>  	depends on RESET_CONTROLLER
+>  	select IIO_BUFFER
+>  	select IIO_TRIGGERED_BUFFER
+> 
 
-Acked-by: Rob Herring <robh@kernel.org>
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
