@@ -2,89 +2,90 @@ Return-Path: <SRS0=xWqI=CN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 67163C43461
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 11:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3947FC43461
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 13:28:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C6C620709
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 11:44:06 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F05982073B
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 13:28:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1BonHHDt";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="ERPML5Tf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C6C620709
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rgLODNeq";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="MgklvCvS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F05982073B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WHDRf8cyNgKmnweARd1ASACmUGpJ72pWqAEZEad1ilU=; b=1BonHHDtQefyrDjrvL1/lxtl+
-	WzHuayxDxTLt25/2xLu3AHOKgMIP/Z9Kx4kzTYvlyAD1PYcA12MkW66JJ8/qjlq8RYhTXmWcW/li5
-	9ni53HeUfWNBsXaGeIbpvlmOPQaj+3Op19RgA+m5jHqjkpzX+FTOXR1LnSuXeyjsVtxmJsnZQc24V
-	2zRtMSNVqQmucfPxtwdmCY2Xrt7/JCI9Cvg/bHQzoePCLGp0livvvdmuleY4eFL1oh0JOvXF7q9Je
-	ml6c8OvbqDgLNiCJZ0lra8Aorbt2YgV2Rzx8893rhdOcsXbzLEu3rv3oStW/gqyga1ETZWcfxH39Z
-	btOEQI6DQ==;
+	 bh=TDFfr4+QHVn3yrNTSzzOD6BtXdKzx0VR4GiDBE476XI=; b=rgLODNeqK63Ie86lp0rfyMtYw
+	4iNHG9DNsx9+Kqwe5UzoSBsdZbcCMyGX1piTGpvzd+xu+IQC5PYqWhMVge0Ctt/g6J7kfDXV3bpAk
+	+MIFHSaU5MHvKmeFTQR9o/pJdqEAdz11bbdxLIbymCz99yOZwF9RRXwJJaC3mBC3wSEEf1MBEL/eM
+	1TKCmnGNtzp0/FcBQMU/KJkszlCHwhOoAaFD2BIu7Y56Pphkih+82a0a/8MVJKOqbR/ALYobvq389
+	yieOJCoKP8tQLTbQR8QPHiJwdhFpnVWFz5yoLxIyflQ18zZ6PCrI083pLi3iiNN+uUC0ITgxjRPZt
+	b3HyCJYPA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kEA8M-0000wz-M1; Fri, 04 Sep 2020 11:43:58 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1kEBlk-0003AJ-6B; Fri, 04 Sep 2020 13:28:44 +0000
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kEA8I-0000wA-VN
- for linux-rockchip@lists.infradead.org; Fri, 04 Sep 2020 11:43:56 +0000
-Received: by mail-wr1-x442.google.com with SMTP id k15so6399654wrn.10
- for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2020 04:43:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ id 1kEBlg-00038a-Sc; Fri, 04 Sep 2020 13:28:41 +0000
+Received: by mail-ej1-x643.google.com with SMTP id i22so8595327eja.5;
+ Fri, 04 Sep 2020 06:28:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ysBV8EHmB5bF7bmhKaHH5XXdeOwwXfi3lB8yzT/cQJI=;
- b=ERPML5TfkAu4IeCukhG/Nhlef0bp6OEGWyqpI+H9cqWpmexGM/dwCjHvlLMpvGvX82
- s++1gsWLmCFIQqjtJ6gPxGZg64liHxtYHMNfzEwXjYUhG1pqLBkD6MzKYUkK5ioJ0e28
- 1gE7JrRjKkvKi2dnQs5itiw0RcAflKbRtSmVy4BEyrD+youQszYtp+ZAq2TK2TQHQ3/Z
- NvPbd39Cf8+edAPlFgRmtHkYGb40/7T/A+vmU9uqJ1gqGH5frO/n3rDNoiuxeb6RzMiM
- DHqMTkB1Z03edqTnGiWf+N3I4VCcU3DMoQM+drbafMbvrHXFaQ6EpO+AEYAVV0xS+Nlh
- V0Cg==
+ :content-disposition:in-reply-to:user-agent;
+ bh=DqFPTDw+S2uxEofkCLsrBR7htF29OmtIF47V5Geewoc=;
+ b=MgklvCvSosrcR7c0oMC5gYl71REsyqHzEjoLgbnXo/qI2Q/8wB12ws1kZbedONx/SR
+ uZ4bTRNUhU1yhXfZmWyDfIiDe78TBc1znbncATlOC/7e3Xo25WaLLts3g2kUQYO4r3V2
+ RoMOKbVcTzXTfnrKF4CqNK5Ug0Q2QhPHQ/eYV/YLewEQPYeJmcCTJre80yBb5UbOYAHa
+ 7ymfeGtVXtGzARqS7K1Z/M7yYwircTZ0qInQKINS9dlx5IBSOFRFjwiz62YG7nEfdjk2
+ RTPH/HZ5ynwhgQlkjoNX07ppOXiDcHV6tE+C6122G2aHv7WMqd3AV6P6xKrM2crsXiN3
+ ArmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ysBV8EHmB5bF7bmhKaHH5XXdeOwwXfi3lB8yzT/cQJI=;
- b=C8lGhEbJWQyXZTcag4vRwnFdUXlZ2o/pX7PudLyK+d07GvBM2XUAYESUEImrYX/yhn
- zVI4PQP1b24+7MYPdMAY/P6Ls4ufHoKHcbFjW7J5HftZDyCsYJHakDR0eJVvjoJV9cj1
- aMkEjmSpdaq2n6honuXuekruwgzmpCrmch6RuYIZIajLEoO25Ma50aDmS3i4qRXHZUig
- CR9ZpjLvoQEvGG6geeEdpL/N8u3UuH6QP94PRUryYla9lBdKnWI/pZI0WDe1L63KoUOe
- wnaKk+HuE1d6Q6MQYUq8zvotrxIHL5O/S0TRK4LwXCPjXcQXl40I4rIaGivnUmIdiAv9
- r5NA==
-X-Gm-Message-State: AOAM532kbsu8AjRl1yRLZ7ZXTN6jZm5q+BJesbOPPQpHjNnXwXZTxQVQ
- A0z7onVC536wtRc6EMwBaaEW1w==
-X-Google-Smtp-Source: ABdhPJy9JCvlhC4pfdcbOeNMvmI99h2ggyh5dFXaXSknmVKya2fRCYzaf1Gn4wvLYshTpHoPPGgO8g==
-X-Received: by 2002:a5d:518b:: with SMTP id k11mr6996379wrv.369.1599219832344; 
- Fri, 04 Sep 2020 04:43:52 -0700 (PDT)
-Received: from holly.lan (cpc141214-aztw34-2-0-cust773.18-1.cable.virginm.net.
- [86.9.19.6])
- by smtp.gmail.com with ESMTPSA id o4sm6783818wru.55.2020.09.04.04.43.51
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=DqFPTDw+S2uxEofkCLsrBR7htF29OmtIF47V5Geewoc=;
+ b=sE7fjIvFhqrOENji9pRJELXlIRVwijT8yLMVDsJ01c/ZpsU4F9cckBi9r7+UMg6Cdq
+ 5vBZpHPlF0kRXEaTVg6qIjWuTw2cbF6nTKkNqz/gm7Zy+BTZR+c0wqfkuv98vhogM+AO
+ ilHNO20MbDz5JyBoSSHAKf/yeI2xo+hCmiQBINk6w1kiXpL4QevGuwXMktjrk170Ud4A
+ HL4BWwgQb60XopOB29uRTg8Y8zWXODo4qYWF2BX7oGQx8hLVOaFpc2SP64XJqomdnyyI
+ o1xGAW/PePZxpdb5cKarL14rc1e4QQSLdiqKekFB0W9NcoBQeQNqCstf7Kql5bvyNBkA
+ O8MA==
+X-Gm-Message-State: AOAM531w3po4PHYqOQ4IwNLxAaYRhirM7TAd5c6AKw8aX3vcqk/cE5qN
+ oSFUNa7l1UFfopHClVYk/Wk=
+X-Google-Smtp-Source: ABdhPJzT9GealPujDoQ4MgJJbbBEoaZu16JSr/JZk+SvnJZGyrkjE1v52qemerS9mzEkq8Y9/QVaRg==
+X-Received: by 2002:a17:906:8695:: with SMTP id
+ g21mr7101500ejx.504.1599226115233; 
+ Fri, 04 Sep 2020 06:28:35 -0700 (PDT)
+Received: from localhost ([62.96.65.119])
+ by smtp.gmail.com with ESMTPSA id l10sm6100072edr.12.2020.09.04.06.28.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Sep 2020 04:43:51 -0700 (PDT)
-Date: Fri, 4 Sep 2020 12:43:49 +0100
-From: Daniel Thompson <daniel.thompson@linaro.org>
-To: Alexandru Stan <amstan@chromium.org>
-Subject: Re: [PATCH 3/3] ARM: dts: rockchip: Remove 0 point in backlight
-Message-ID: <20200904114349.fq26qqozd4tz6sjs@holly.lan>
-References: <20200721042522.2403410-1-amstan@chromium.org>
- <20200720212502.3.I96b8d872ec51171f19274e43e96cadc092881271@changeid>
+ Fri, 04 Sep 2020 06:28:33 -0700 (PDT)
+Date: Fri, 4 Sep 2020 15:28:32 +0200
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Douglas Anderson <dianders@chromium.org>
+Subject: Re: [PATCH 1/6] mmc: Set PROBE_PREFER_ASYNCHRONOUS for drivers that
+ existed in v4.4
+Message-ID: <20200904132832.GA810925@ulmo>
+References: <20200903232441.2694866-1-dianders@chromium.org>
+ <20200903162412.1.Id501e96fa63224f77bb86b2135a5e8324ffb9c43@changeid>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200720212502.3.I96b8d872ec51171f19274e43e96cadc092881271@changeid>
+In-Reply-To: <20200903162412.1.Id501e96fa63224f77bb86b2135a5e8324ffb9c43@changeid>
+User-Agent: Mutt/1.14.6 (2020-07-11)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_074355_317611_961F4A57 
-X-CRM114-Status: GOOD (  20.74  )
+X-CRM114-CacheID: sfid-20200904_092840_931587_CA785EF8 
+X-CRM114-Status: GOOD (  20.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,98 +98,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Jingoo Han <jingoohan1@gmail.com>, Douglas Anderson <dianders@chromium.org>,
- Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Thierry Reding <thierry.reding@gmail.com>,
- Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Lee Jones <lee.jones@linaro.org>, Matthias Kaehlcke <mka@chromium.org>,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Yangtao Li <tiny.windzz@gmail.com>, "H. Nikolaus Schaller" <hns@goldelico.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Michal Simek <michal.simek@xilinx.com>, Paul Cercueil <paul@crapouillou.net>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, linux-arm-kernel@axis.com,
+ Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>,
+ Marek Vasut <marex@denx.de>, Jesper Nilsson <jesper.nilsson@axis.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Anson Huang <Anson.Huang@nxp.com>,
+ Aaro Koskinen <aaro.koskinen@iki.fi>, Lee Jones <lee.jones@linaro.org>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Jaehoon Chung <jh80.chung@samsung.com>, linux-rockchip@lists.infradead.org,
+ Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>,
+ bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
+ Pierre Ossman <pierre@ossman.eu>, linux-tegra@vger.kernel.org,
+ linux-omap@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Maxime Ripard <mripard@kernel.org>, swboyd@chromium.org,
+ Rui Miguel Silva <rmfrfs@gmail.com>, linux-samsung-soc@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Lars Persson <lars.persson@axis.com>,
+ Ben Dooks <ben-linux@fluff.org>, Manuel Lauss <manuel.lauss@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ =?utf-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, Peter Ujfalusi <peter.ujfalusi@ti.com>,
+ Barry Song <baohua@kernel.org>, Scott Branden <sbranden@broadcom.com>,
+ Nicolas Pitre <nico@fluxnic.net>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ linux-mmc@vger.kernel.org, Adrian Hunter <adrian.hunter@intel.com>,
+ linux-kernel@vger.kernel.org, Tony Prisk <linux@prisktech.co.nz>,
+ Vinod Koul <vkoul@kernel.org>, Patrice Chotard <patrice.chotard@st.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Viresh Kumar <vireshk@kernel.org>, Eugen Hristev <eugen.hristev@microchip.com>,
+ Ricky Wu <ricky_wu@realtek.com>
+Content-Type: multipart/mixed; boundary="===============3859945147154346693=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jul 20, 2020 at 09:25:22PM -0700, Alexandru Stan wrote:
-> After the "PWM backlight interpolation adjustments" patches, the
-> backlight interpolation works a little differently. The way these
-> dts files were working before was relying on a bug (IMHO).
-> 
-> Remove the 0-3 range since otherwise we would have a 252 long
-> interpolation that would slowly go between 0 and 3, looking really bad
-> in userspace.
-> 
-> We'll still have the 0% point available to userspace, "backlight:
-> pwm_bl: Artificially add 0% during interpolation" takes care of that.
-> 
-> Signed-off-by: Alexandru Stan <amstan@chromium.org>
 
-Hmnn... almost wish I hadn't seen this ;-)
-
-This basically says that your first patch will produce some odd
-behaviour for existing device trees! On the other hand I strongly
-suspect this trick is only currently seen on Chromebooks (since IIRC
-that's where backlight animation is popular).
-
-To be clear I'm entirely in favour of the changes in this patch... I
-just dubious about combining it with artifically adding that 0%
+--===============3859945147154346693==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="bg08WKrSYDhXBjb5"
+Content-Disposition: inline
 
 
-Daniel.
+--bg08WKrSYDhXBjb5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-
+On Thu, Sep 03, 2020 at 04:24:36PM -0700, Douglas Anderson wrote:
+> This is like commit 3d3451124f3d ("mmc: sdhci-msm: Prefer asynchronous
+> probe") but applied to a whole pile of drivers.  This batch converts
+> the drivers that appeared to be around in the v4.4 timeframe.
+>=20
+> Signed-off-by: Douglas Anderson <dianders@chromium.org>
 > ---
-> 
->  arch/arm/boot/dts/rk3288-veyron-jaq.dts    | 2 +-
->  arch/arm/boot/dts/rk3288-veyron-minnie.dts | 2 +-
->  arch/arm/boot/dts/rk3288-veyron-tiger.dts  | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/arch/arm/boot/dts/rk3288-veyron-jaq.dts b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-> index 171ba6185b6d..af4b21636c08 100644
-> --- a/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-> +++ b/arch/arm/boot/dts/rk3288-veyron-jaq.dts
-> @@ -20,7 +20,7 @@ / {
->  
->  &backlight {
->  	/* Jaq panel PWM must be >= 3%, so start non-zero brightness at 8 */
-> -	brightness-levels = <0 8 255>;
-> +	brightness-levels = <8 255>;
->  	num-interpolated-steps = <247>;
->  };
->  
-> diff --git a/arch/arm/boot/dts/rk3288-veyron-minnie.dts b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-> index 383fad1a88a1..b25aa2f3cbee 100644
-> --- a/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-> +++ b/arch/arm/boot/dts/rk3288-veyron-minnie.dts
-> @@ -39,7 +39,7 @@ volum_up {
->  
->  &backlight {
->  	/* Minnie panel PWM must be >= 1%, so start non-zero brightness at 3 */
-> -	brightness-levels = <0 3 255>;
-> +	brightness-levels = <3 255>;
->  	num-interpolated-steps = <252>;
->  };
->  
-> diff --git a/arch/arm/boot/dts/rk3288-veyron-tiger.dts b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-> index 069f0c2c1fdf..52a84cbe7a90 100644
-> --- a/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-> +++ b/arch/arm/boot/dts/rk3288-veyron-tiger.dts
-> @@ -23,7 +23,7 @@ / {
->  
->  &backlight {
->  	/* Tiger panel PWM must be >= 1%, so start non-zero brightness at 3 */
-> -	brightness-levels = <0 3 255>;
-> +	brightness-levels = <3 255>;
->  	num-interpolated-steps = <252>;
->  };
->  
-> -- 
-> 2.27.0
+>=20
+>  drivers/mmc/host/android-goldfish.c | 1 +
+>  drivers/mmc/host/atmel-mci.c        | 1 +
+>  drivers/mmc/host/au1xmmc.c          | 1 +
+>  drivers/mmc/host/davinci_mmc.c      | 1 +
+>  drivers/mmc/host/dw_mmc-exynos.c    | 1 +
+>  drivers/mmc/host/dw_mmc-k3.c        | 1 +
+>  drivers/mmc/host/dw_mmc-pltfm.c     | 1 +
+>  drivers/mmc/host/dw_mmc-rockchip.c  | 1 +
+>  drivers/mmc/host/jz4740_mmc.c       | 1 +
+>  drivers/mmc/host/moxart-mmc.c       | 1 +
+>  drivers/mmc/host/mtk-sd.c           | 1 +
+>  drivers/mmc/host/mvsdio.c           | 1 +
+>  drivers/mmc/host/mxcmmc.c           | 1 +
+>  drivers/mmc/host/mxs-mmc.c          | 1 +
+>  drivers/mmc/host/omap.c             | 1 +
+>  drivers/mmc/host/omap_hsmmc.c       | 1 +
+>  drivers/mmc/host/pxamci.c           | 1 +
+>  drivers/mmc/host/rtsx_pci_sdmmc.c   | 1 +
+>  drivers/mmc/host/rtsx_usb_sdmmc.c   | 1 +
+>  drivers/mmc/host/s3cmci.c           | 1 +
+>  drivers/mmc/host/sdhci-acpi.c       | 1 +
+>  drivers/mmc/host/sdhci-bcm-kona.c   | 1 +
+>  drivers/mmc/host/sdhci-cns3xxx.c    | 1 +
+>  drivers/mmc/host/sdhci-dove.c       | 1 +
+>  drivers/mmc/host/sdhci-esdhc-imx.c  | 1 +
+>  drivers/mmc/host/sdhci-iproc.c      | 1 +
+>  drivers/mmc/host/sdhci-of-arasan.c  | 1 +
+>  drivers/mmc/host/sdhci-of-at91.c    | 1 +
+>  drivers/mmc/host/sdhci-of-esdhc.c   | 1 +
+>  drivers/mmc/host/sdhci-of-hlwd.c    | 1 +
+>  drivers/mmc/host/sdhci-pxav2.c      | 1 +
+>  drivers/mmc/host/sdhci-pxav3.c      | 1 +
+>  drivers/mmc/host/sdhci-s3c.c        | 1 +
+>  drivers/mmc/host/sdhci-sirf.c       | 1 +
+>  drivers/mmc/host/sdhci-spear.c      | 1 +
+>  drivers/mmc/host/sdhci-st.c         | 1 +
+>  drivers/mmc/host/sdhci-tegra.c      | 1 +
+
+I do see a failure on Tegra124, but comparing to recent test results
+=66rom linux-next that seems to be a preexisting problem, so:
+
+Tested-by: Thierry Reding <treding@nvidia.com>
+
+--bg08WKrSYDhXBjb5
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl9SQP4ACgkQ3SOs138+
+s6GDzw//WH+drKQhIpGYRbCmaO0DaRpFAv8bprKz82rnQZNwrjt5/ZaPPjGfE4th
+WUo1B/yRN73Stgptx13qG+htODQ/uOh98JsVyXtNFio5QUVNrGcVJzVvmVLvcjPw
+YDI0+JnBSqhTsNMH1efS/jq/0/e6d9DSQdvaI7Hf4pIUs3bYjABvvrhCtVY619dm
+yKwSQlUzP42bDmmVsFdypHnDYMV92QyftTJljz21Io0OrTXbg5hQ4By9pPMwTX22
++FrMVzdePX40a+fiAlk2ndut/m27d9NBjzbyyJbQJ0322n+zEt/w43wb6YzobAUl
+2vxbetTgx93IcB75DS24u0AlfKH1uNHhMKXu/2cFwnJWgwwxPmLC9v4IaWYTn3fy
+T7MHVCucHaOpY2ngi8c8fdIHoV9lkIVMlXDnmHWieleAA+6lHa/p4g5hd0fpzg29
+vFtfT1+ZY5mLPSfJSwG/pdjQnmCDU/ZacM8ReJ9+KjKAnQkKzbYEWFktD7D8pH7V
+toiYMb/7uYHmQuFcMqUCW3OC9jCh/NoMliBdrE9vD0Z9SZ0SuY1bFS4/5LcHK7fX
+bQCD3ihzfHMNG2W7KbQ+W6YRZ25AUFmiuM9tK8hjkD5aYPpzh3dfTZcO7KSoa9n5
+pis6xz8dSoykpZZceImxKTgR33tmuxUp/F2glxP4xm/h9WafEso=
+=PAIZ
+-----END PGP SIGNATURE-----
+
+--bg08WKrSYDhXBjb5--
+
+
+--===============3859945147154346693==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3859945147154346693==--
+
