@@ -2,24 +2,23 @@ Return-Path: <SRS0=xWqI=CN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D8F7C2BB84
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 18:36:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED198C43461
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 19:19:08 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0EE6120665
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 18:36:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5EA1A20684
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 19:19:08 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2i7X/eGW";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="iZQkkf6i"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EE6120665
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Mr1s1p/l";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="CJ4sNtaV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5EA1A20684
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -27,62 +26,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RYpvgEQtBj/HaI5U3L0OIRKzI6uMJRKqahOrjtZUf38=; b=2i7X/eGWtCOmQuVb7gILJyEvKt
-	qJF9Tw9h2t4UJRfsjC76FGsJd0SGSN63/BYzRtdp+6ZBOE5M4HIoR4PDtfY0BlrLvCdwi3M7XZrkw
-	lI6YZPjumsT5jtdT3GICcW/5hNfI9mjg2iAka8fQS/8jAGwEP4LIlN40I77ARbazf6vw7a6papo9Y
-	SgTIKroyz1hUixpsBi2zOGAzw3EWlZICtKEYEX4nD+/rFPqjE3Js/Hng+TA8DeL43VoiaKIeTVlnj
-	y6xnXxeb7czUMak4g2vCBErqNkZ7/ikiLlqtL+azJ8Ru5QYGqK/+zR7KCENOh5z9bKSMNcu+wT5y5
-	+jKddkhg==;
+	bh=I/ScJ6ByHC2soVP5RDfnQFRH2GfFCThbmAKjtTyIxiY=; b=Mr1s1p/lzwQvpm4jbDDse7/M72
+	bNG0Iuv6bb+IEjlZRYuvbnzDbtB3ym4eHx+64MwUxLlhUhirJX5a2kWZamga68+h13IHf07Gdn+Lg
+	nQuCpOUNyvSG0ozEizkEBuNfI7f5bHEYb54wMKlZAFG1HoRh/SPzo2A3/XyXG8DfSXWUF3+EHd6a6
+	+xBTTOHOJqGDRRUd+NXk7kZb8Guk4kTm9OdPRjbaiiuOU8XcB5e+Bjqn4Xw8RRzI2mhzJfMosGSAG
+	e3otmUGtkXVEJSYOOg2mCQ/o/H7hwLskOUDh88GHNk2bB6TLyAeC94D26cb4v2tMSyWec5ZW5/Ofk
+	J5I+H95Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kEF8m-00059M-1T; Fri, 04 Sep 2020 17:04:44 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1kEHEk-00054j-OZ; Fri, 04 Sep 2020 19:19:02 +0000
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kEF8h-00058D-Lb; Fri, 04 Sep 2020 17:04:40 +0000
-Received: by mail-wm1-x342.google.com with SMTP id a9so6733333wmm.2;
- Fri, 04 Sep 2020 10:04:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ id 1kEHEa-00050V-Sf
+ for linux-rockchip@lists.infradead.org; Fri, 04 Sep 2020 19:18:54 +0000
+Received: by mail-pg1-x542.google.com with SMTP id m5so4808712pgj.9
+ for <linux-rockchip@lists.infradead.org>; Fri, 04 Sep 2020 12:18:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amarulasolutions.com; s=google;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=qnhyxI2YW5mCxRpk6hspno3Ftt+MAEF29reZU4Qqw2U=;
- b=iZQkkf6izy+fvsbb5gd2CCpJANc2aFO2akcl5DrXKfp/Zd29xDWNH8JHNG7iH2QCPI
- 3Lw/zdWQLASMouw+2tht0b9dJM7YwAClfzpE9Uyg+RdNJuYdSC24ClQcbs8TTsbgsH6E
- KVe8LIvhfpsfY8KOgERJYvJY7c8rsddfLmxCJ0LL3QdrKyH1hTb1aPx4uowyjB23RHZu
- /evXgP1vA4rx+EjTtO1WPLxTFQRG33rmDph6zGXhgux/YX4wZ0oin6GT3tKBvUsHlMCV
- cLEdbvhqoKhb6xbxti0lmjZ2QVqL4z+uPTeXZYunWzT8YjDmkI+OY/u+TAucokSqcZ1J
- SA9A==
+ bh=BQ3Za1ulBYpN6P3MWzPM8LHHd18bcHtpU18gBebPUd8=;
+ b=CJ4sNtaVT/wZNtZnBVnxz7DODlBAmOVNmIGMPjv6QcCUBziyn96kTlpdgR76NVKTQD
+ kikQUpeq5K2YSKosNrj/D/vyT/Nv14u8Xrci14GTIppj2owJuAZ8i+6xoyQgGX79vDIP
+ a+h4rbgnL/5/aKwRBzcPda/hRo9OSnIkF89Nw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=qnhyxI2YW5mCxRpk6hspno3Ftt+MAEF29reZU4Qqw2U=;
- b=HERYnt0sDMhU271pgf9l84t5mJeGR4J7XPrHxJCld2SHPYCQCweVWR40umz096lvMO
- qhowjsykakdOHRkSZYyMofOwFWI7CRjBLIgkX8dWLUCp7sPydqE4zl1z/JFp711FnLDV
- NNgf7rIYrUJeNocjiXoHcNN/a0lO6jYdm0K1wskIcR7x6lolCozkXvJM3ZCwQqOFYgLB
- jeUdgfx0+TvDZ5hDwKgyn+UFtWBXjRtc75l6Jwi3Ot5YKbpX2n8Bqibsg4kM6+AZZin/
- gJb7riOICWBAv8L2ZUPLnu17et9wQhtYeX8IDmuj4poqzkbXRWg1Ti/cwjFAxdZu7GHv
- cumQ==
-X-Gm-Message-State: AOAM5334EKKWfIolZs0SmoKhKBH1fk8+eYJcsJFwsOQ47NwP8q10HgJC
- k4Mvg6My0ip9kGHDtOyWz80=
-X-Google-Smtp-Source: ABdhPJwTay7wrMhUJ7lacbMquseeNhy37Fil53XNxaCXx7jKQTbxBga2aWvaK3SVGUi5cXCZB8GUng==
-X-Received: by 2002:a05:600c:2109:: with SMTP id
- u9mr8060516wml.147.1599239072429; 
- Fri, 04 Sep 2020 10:04:32 -0700 (PDT)
-Received: from localhost.localdomain
- (cpc83661-brig20-2-0-cust443.3-3.cable.virginm.net. [82.28.105.188])
- by smtp.gmail.com with ESMTPSA id 5sm12144759wmz.22.2020.09.04.10.04.30
+ bh=BQ3Za1ulBYpN6P3MWzPM8LHHd18bcHtpU18gBebPUd8=;
+ b=lj6HSAsvNv5rQAF9l5ljP1EeAiOHY152Q2HkkLngFPkeu6tSQx8qkeszeuQP5/Zlkv
+ 7g+WgD3EfZ0NsztvGOjFerOe44La7wxS59e+ufEwSP96IjhpSaBEhakED49NmNt6ye1j
+ g94HrVNB9Is658t/qf/GyG07BeJ5qmB8l5smxiVKuFVW86bskDfj/+QAFVldjihSXLxn
+ DrIPROvuMCofZ6wFjdI/DXe0BKdPVT7DXOb5wCtk0Wc/vi305rj9NlTj1/WrXWbZ9Mtb
+ YR+TCiuDRnLWpSKU+FnBjG/2tMRININUL5017ndPJ4pRCRqkhzSbokESqR4RViNuj95b
+ bRGw==
+X-Gm-Message-State: AOAM531Zm9z6ZlLxcuHlKFqfvFU0UNw9KC9d4v07mRyQooI7Ar2lG9XL
+ XSebv50p2BQy9O3aSQJE3FX2asAFPhWLLg==
+X-Google-Smtp-Source: ABdhPJxL1HrEmjVqHII42Qjc4LuSWAD0dWbQkB6r3vNPeYT1NHHcj1jRE7Uwi0GsLh3NqWV7jmmcNw==
+X-Received: by 2002:a62:5e45:: with SMTP id s66mr9893108pfb.230.1599247129115; 
+ Fri, 04 Sep 2020 12:18:49 -0700 (PDT)
+Received: from localhost.localdomain ([2405:201:c809:c7d5:b9ea:24bf:6b2b:1eee])
+ by smtp.gmail.com with ESMTPSA id t4sm5986001pje.56.2020.09.04.12.18.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Sep 2020 10:04:31 -0700 (PDT)
-From: Alex Dewar <alex.dewar90@gmail.com>
-To: 
-Subject: [PATCH] iio: adc: rockchip_saradc: Allow compile-testing with !ARM
-Date: Fri,  4 Sep 2020 18:04:16 +0100
-Message-Id: <20200904170416.16061-1-alex.dewar90@gmail.com>
-X-Mailer: git-send-email 2.28.0
+ Fri, 04 Sep 2020 12:18:48 -0700 (PDT)
+From: Jagan Teki <jagan@amarulasolutions.com>
+To: MyungJoo Ham <myungjoo.ham@samsung.com>,
+ Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH 0/3] extcon: Add Type-C Virtual PD
+Date: Sat,  5 Sep 2020 00:48:27 +0530
+Message-Id: <20200904191830.387296-1-jagan@amarulasolutions.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_130439_713394_2DCA3DFC 
-X-CRM114-Status: GOOD (  14.04  )
+X-CRM114-CacheID: sfid-20200904_151853_757917_81B55B30 
+X-CRM114-Status: GOOD (  11.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,51 +93,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandru Tachici <alexandru.tachici@analog.com>,
- Lars-Peter Clausen <lars@metafoo.de>, Heiko Stuebner <heiko@sntech.de>,
- Michael Hennerich <michael.hennerich@analog.com>,
- Saravanan Sekar <sravanhome@gmail.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>, linux-rockchip@lists.infradead.org,
- Linus Walleij <linus.walleij@linaro.org>,
- Vincent Pelletier <plr.vincent@gmail.com>, linux-kernel@vger.kernel.org,
- Beniamin Bia <beniamin.bia@analog.com>, linux-iio@vger.kernel.org,
- Andy Shevchenko <andy.shevchenko@gmail.com>,
- linux-arm-kernel@lists.infradead.org,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Hartmut Knaack <knaack.h@gmx.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Alexandru Ardelean <alexandru.ardelean@analog.com>,
- Alex Dewar <alex.dewar90@gmail.com>, Jonathan Cameron <jic23@kernel.org>,
- Artur Rojek <contact@artur-rojek.eu>
+Cc: devicetree@vger.kernel.org, Tom Cubie <tom@radxa.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Jagan Teki <jagan@amarulasolutions.com>, linux-amarula@amarulasolutions.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There seems no reason to allow for compile-testing on ARM only, so
-remove this restriction.
+USB Type-C protocol supports various modes of operations
+includes PD, USB3, and Altmode. If the platform design
+supports a Type-C connector then configuring these modes
+can be done via enumeration.
 
-Build-tested with allyesconfig on x86.
-
-Signed-off-by: Alex Dewar <alex.dewar90@gmail.com>
----
- drivers/iio/adc/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-index d94dc800b842..03929606bb01 100644
---- a/drivers/iio/adc/Kconfig
-+++ b/drivers/iio/adc/Kconfig
-@@ -863,7 +863,7 @@ config RN5T618_ADC
+However, there are some platforms that design these modes
+of operations as separate protocol connectors like design
+Display Port from on-chip USB3 controller. So accessing
+Type-C Altmode Display Port via onboard Display Port 
+connector instead of a Type-C connector.
  
- config ROCKCHIP_SARADC
- 	tristate "Rockchip SARADC driver"
--	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
-+	depends on ARCH_ROCKCHIP || COMPILE_TEST
- 	depends on RESET_CONTROLLER
- 	select IIO_BUFFER
- 	select IIO_TRIGGERED_BUFFER
+These kinds of platforms require an explicit extcon driver
+in order to handle Power Delivery and Port Detection.
+
+This series support this Type-C Virtual PD and enable the
+same in ROCK Pi 4C SBC.
+
+Any inputs?
+Jagan.
+
+Jagan Teki (3):
+  dt-bindings: extcon: Document Type-C Virtual PD driver
+  extcon: Add Type-C Virtual PD driver
+  arm64: dts: rk3399-rock-pi-4c: Enable Display Port
+
+ .../extcon/extcon-usbc-virtual-pd.yaml        |  66 ++++
+ MAINTAINERS                                   |   6 +
+ .../boot/dts/rockchip/rk3399-rock-pi-4c.dts   |  16 +
+ drivers/extcon/Kconfig                        |  10 +
+ drivers/extcon/Makefile                       |   1 +
+ drivers/extcon/extcon-usbc-virtual-pd.c       | 285 ++++++++++++++++++
+ 6 files changed, 384 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/extcon/extcon-usbc-virtual-pd.yaml
+ create mode 100644 drivers/extcon/extcon-usbc-virtual-pd.c
+
 -- 
-2.28.0
+2.25.1
 
 
 _______________________________________________
