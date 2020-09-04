@@ -2,45 +2,45 @@ Return-Path: <SRS0=xWqI=CN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AA29AC2D0E1
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 55163C2D0E0
 	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 07:44:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 687ED20791
+	by mail.kernel.org (Postfix) with ESMTPS id 1320A206A5
 	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 07:44:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="heF16WsA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 687ED20791
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j8m+14vn"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1320A206A5
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=68IA1KKHWo2sjt5BcrinKWOJ2xH94NnCnIASL/xzDuk=; b=heF16WsABqB6Ud0nJ+UDJmkYxe
-	TZUh5/2HQBmJ8qUB+QPNEnrPZ4NGu0H7tiBQtkwkZ3IAeh5zOkl4VLLN/V+QVG/e6uuTu1bsMGoCQ
-	rScLFgJwIXzw4rmlMCaZOsQSzOOQmefCTRZrwepX0B2uMtChqUg6QGPycrrqAAj4dFQ+ciLmGuX4c
-	SOp0icXXU5fX5h8MtzzrSbsrJG1jZlhUk0FD4SAQCAUduT3eS+OhVJNyPOoGNfPuoiiqLV16sBEtB
-	znFL/ehB5x+pmu8XgMTGflbaOE53XQc4pw/abZaiyP0nfaWyKyPxUEIhAZEb/sNI9NlmrhbyFzslq
-	WEAGkpBw==;
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=gZMD1AA9EWvE8MbeghYJH8o/lMZzpVLEGo+QpIRlGoY=; b=j8m+14vnsxFBggASiIzsIsBYhL
+	qzdKxPlHvDYIxS7mLXS2SXzUweAk2Qpte4nLwk/FCLsJ1kM6SzE5gJd0ul7w9/g6ITIuP0nQXoDFT
+	tqaRCzEmabzvzM7JjPgJFvJDvC7RJEFHTjkGr37Poqix6u3aHRrbDGy20ijaCNnW88ILvU8ST/2Ec
+	u8+T7m8Nyc1bRK27WcGPZHVkKdaLk/ucRIGFWE3KZ/v26gEwuslmcrMjBRbyNcdXr4BW3QWNvkjdx
+	K4iGXkJJf3SB/lPlQYesGSFang7yL4TXvTabr0kHVTnNz9kTADaYyeruLmWg/PQAeem9xyQaQb+W1
+	rl/NJlgQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kE6Oa-000335-Fj; Fri, 04 Sep 2020 07:44:28 +0000
-Received: from lucky1.263xmail.com ([211.157.147.134])
+	id 1kE6OZ-00032q-Aj; Fri, 04 Sep 2020 07:44:27 +0000
+Received: from lucky1.263xmail.com ([211.157.147.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kE6OV-00030g-R5
- for linux-rockchip@lists.infradead.org; Fri, 04 Sep 2020 07:44:26 +0000
+ id 1kE6OV-00030d-RM
+ for linux-rockchip@lists.infradead.org; Fri, 04 Sep 2020 07:44:25 +0000
 Received: from localhost (unknown [192.168.167.223])
- by lucky1.263xmail.com (Postfix) with ESMTP id BAC9EC1739;
- Fri,  4 Sep 2020 15:44:11 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id CCA0FCC317;
+ Fri,  4 Sep 2020 15:44:09 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -49,9 +49,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P15471T140656136742656S1599205448140075_; 
- Fri, 04 Sep 2020 15:44:12 +0800 (CST)
+ Fri, 04 Sep 2020 15:44:09 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <b20b3d81154ebbbd4963f3b58ba43cee>
+X-UNIQUE-TAG: <476be6e72284b797704417aaac901372>
 X-RL-SENDER: zhangqing@rock-chips.com
 X-SENDER: zhangqing@rock-chips.com
 X-LOGIN-NAME: zhangqing@rock-chips.com
@@ -62,16 +62,13 @@ X-DNS-TYPE: 0
 X-System-Flag: 0
 From: Elaine Zhang <zhangqing@rock-chips.com>
 To: heiko@sntech.de
-Subject: [PATCH v3 4/6] clk: rockchip: Export some clock common APIs for
- module drivers
-Date: Fri,  4 Sep 2020 15:44:03 +0800
-Message-Id: <20200904074405.24439-5-zhangqing@rock-chips.com>
+Subject: [PATCH v3 0/6] clk: rockchip: Support module build
+Date: Fri,  4 Sep 2020 15:43:59 +0800
+Message-Id: <20200904074405.24439-1-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200904074405.24439-1-zhangqing@rock-chips.com>
-References: <20200904074405.24439-1-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_034424_941947_3A3DD8B5 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20200904_034424_118801_81FB8853 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,141 +92,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is used by the Rockchip clk driver, export it to allow that
-driver to be compiled as a module.
+Export some APIs for module drivers.
+Fix the clock config to support module build.
+Fix the clk driver init, add module author, description
+and license to support building RK3399 SoC clock driver as module.
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
----
- drivers/clk/rockchip/clk.c | 52 ++++++++++++++++++++++----------------
- 1 file changed, 30 insertions(+), 22 deletions(-)
+Change in V2:
+[PATCH v2 1/6]: remove "clk",and check "hw" isn't an error value.
+[PATCH v2 6/6]: store a function pointer in the match data.
 
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index 46409972983e..fd3aff2a599d 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -360,8 +360,9 @@ static struct clk *rockchip_clk_register_factor_branch(const char *name,
- 	return hw->clk;
- }
- 
--struct rockchip_clk_provider * __init rockchip_clk_init(struct device_node *np,
--			void __iomem *base, unsigned long nr_clks)
-+struct rockchip_clk_provider *rockchip_clk_init(struct device_node *np,
-+						void __iomem *base,
-+						unsigned long nr_clks)
- {
- 	struct rockchip_clk_provider *ctx;
- 	struct clk **clk_table;
-@@ -393,14 +394,16 @@ struct rockchip_clk_provider * __init rockchip_clk_init(struct device_node *np,
- 	kfree(ctx);
- 	return ERR_PTR(-ENOMEM);
- }
-+EXPORT_SYMBOL(rockchip_clk_init);
- 
--void __init rockchip_clk_of_add_provider(struct device_node *np,
--				struct rockchip_clk_provider *ctx)
-+void rockchip_clk_of_add_provider(struct device_node *np,
-+				  struct rockchip_clk_provider *ctx)
- {
- 	if (of_clk_add_provider(np, of_clk_src_onecell_get,
- 				&ctx->clk_data))
- 		pr_err("%s: could not register clk provider\n", __func__);
- }
-+EXPORT_SYMBOL(rockchip_clk_of_add_provider);
- 
- void rockchip_clk_add_lookup(struct rockchip_clk_provider *ctx,
- 			     struct clk *clk, unsigned int id)
-@@ -408,8 +411,9 @@ void rockchip_clk_add_lookup(struct rockchip_clk_provider *ctx,
- 	if (ctx->clk_data.clks && id)
- 		ctx->clk_data.clks[id] = clk;
- }
-+EXPORT_SYMBOL(rockchip_clk_add_lookup);
- 
--void __init rockchip_clk_register_plls(struct rockchip_clk_provider *ctx,
-+void rockchip_clk_register_plls(struct rockchip_clk_provider *ctx,
- 				struct rockchip_pll_clock *list,
- 				unsigned int nr_pll, int grf_lock_offset)
- {
-@@ -432,11 +436,11 @@ void __init rockchip_clk_register_plls(struct rockchip_clk_provider *ctx,
- 		rockchip_clk_add_lookup(ctx, clk, list->id);
- 	}
- }
-+EXPORT_SYMBOL(rockchip_clk_register_plls);
- 
--void __init rockchip_clk_register_branches(
--				      struct rockchip_clk_provider *ctx,
--				      struct rockchip_clk_branch *list,
--				      unsigned int nr_clk)
-+void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
-+				    struct rockchip_clk_branch *list,
-+				    unsigned int nr_clk)
- {
- 	struct clk *clk = NULL;
- 	unsigned int idx;
-@@ -565,14 +569,15 @@ void __init rockchip_clk_register_branches(
- 		rockchip_clk_add_lookup(ctx, clk, list->id);
- 	}
- }
--
--void __init rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
--			unsigned int lookup_id,
--			const char *name, const char *const *parent_names,
--			u8 num_parents,
--			const struct rockchip_cpuclk_reg_data *reg_data,
--			const struct rockchip_cpuclk_rate_table *rates,
--			int nrates)
-+EXPORT_SYMBOL(rockchip_clk_register_branches);
-+
-+void rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
-+				  unsigned int lookup_id,
-+				  const char *name, const char *const *parent_names,
-+				  u8 num_parents,
-+				  const struct rockchip_cpuclk_reg_data *reg_data,
-+				  const struct rockchip_cpuclk_rate_table *rates,
-+				  int nrates)
- {
- 	struct clk *clk;
- 
-@@ -587,9 +592,10 @@ void __init rockchip_clk_register_armclk(struct rockchip_clk_provider *ctx,
- 
- 	rockchip_clk_add_lookup(ctx, clk, lookup_id);
- }
-+EXPORT_SYMBOL(rockchip_clk_register_armclk);
- 
--void __init rockchip_clk_protect_critical(const char *const clocks[],
--					  int nclocks)
-+void rockchip_clk_protect_critical(const char *const clocks[],
-+				   int nclocks)
- {
- 	int i;
- 
-@@ -601,6 +607,7 @@ void __init rockchip_clk_protect_critical(const char *const clocks[],
- 			clk_prepare_enable(clk);
- 	}
- }
-+EXPORT_SYMBOL(rockchip_clk_protect_critical);
- 
- static void __iomem *rst_base;
- static unsigned int reg_restart;
-@@ -620,10 +627,10 @@ static struct notifier_block rockchip_restart_handler = {
- 	.priority = 128,
- };
- 
--void __init
-+void
- rockchip_register_restart_notifier(struct rockchip_clk_provider *ctx,
--					       unsigned int reg,
--					       void (*cb)(void))
-+				   unsigned int reg,
-+				   void (*cb)(void))
- {
- 	int ret;
- 
-@@ -635,3 +642,4 @@ rockchip_register_restart_notifier(struct rockchip_clk_provider *ctx,
- 		pr_err("%s: cannot register restart handler, %d\n",
- 		       __func__, ret);
- }
-+EXPORT_SYMBOL(rockchip_register_restart_notifier);
+Change in V3:
+[PATCH v3 1/6]: fix up the compiler warning.
+drivers/clk/rockchip/clk.c: In function 'rockchip_clk_register_branch':
+>> drivers/clk/rockchip/clk.c:52:6: warning: variable 'ret' set but not
+>> used [-Wunused-but-set-variable]
+      52 |  int ret;
+         |      ^~~
+
+Elaine Zhang (6):
+  clk: rockchip: Use clk_hw_register_composite instead of
+    clk_register_composite calls
+  clk: rockchip: Export rockchip_clk_register_ddrclk()
+  clk: rockchip: Export rockchip_register_softrst()
+  clk: rockchip: Export some clock common APIs for module drivers
+  clk: rockchip: fix the clk config to support module build
+  clk: rockchip: rk3399: Support module build
+
+ drivers/clk/Kconfig                     |   1 +
+ drivers/clk/rockchip/Kconfig            |  78 ++++++++++++++++
+ drivers/clk/rockchip/Makefile           |  42 ++++-----
+ drivers/clk/rockchip/clk-ddr.c          |   1 +
+ drivers/clk/rockchip/clk-half-divider.c |  18 ++--
+ drivers/clk/rockchip/clk-rk3399.c       |  55 ++++++++++++
+ drivers/clk/rockchip/clk.c              | 113 +++++++++++++-----------
+ drivers/clk/rockchip/softrst.c          |   7 +-
+ 8 files changed, 231 insertions(+), 84 deletions(-)
+ create mode 100644 drivers/clk/rockchip/Kconfig
+
+
+base-commit: b36c969764ab12faebb74711c942fa3e6eaf1e96
 -- 
 2.17.1
 
