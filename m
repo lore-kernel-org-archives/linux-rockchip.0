@@ -2,67 +2,75 @@ Return-Path: <SRS0=xWqI=CN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6089AC433E2
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 06:36:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D2326C43461
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 07:44:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0BE0520791
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 06:36:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 895A6206A5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 07:44:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dTbxQSR6";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=sang-engineering.com header.i=@sang-engineering.com header.b="P+SmPm8T"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0BE0520791
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sang-engineering.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="u8Lo5TP+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 895A6206A5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kVscuja53w3wys4tjLTTPS7VSbEMVdoHSa8h/HsfUKQ=; b=dTbxQSR6FuQhH7CnhE5OF5vA1
-	Hp0OnlzP3YM3m3Cx+pLSNLX+EvJAFChd4tFyUzv3sJKsxSMnFf7b0+CpzflDJvgmyLAjvGn4K6ogL
-	2H0eY6HZvflTChzJPF8UCd2+TTJtV80SxgGIKEq8njyHq1eV1oBPoa4W4T7Vt+S5Lc9ew7wyRDy7s
-	LHhZAZbNZH8Nn2JJEBvpvEH6+GvVNRYzriDNEFEVk+FFvbBfb91U1ISBzRm6IVKx2utXy4bKq/NWA
-	Aa0AXJbBjeEqy0o59q5z9Oj2S2PJVkRfbXzM+SR2nCY4w+V2ankaNu7A1bHuDj8pwwS+GZ7+iO8iM
-	piSygmKwQ==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aHuHuncJHNZBoR4EVfRxn82mRjyQpD1sq4yHc2U/j4w=; b=u8Lo5TP+hat6lYcbJjI+/QzqHs
+	LvoWRXF1YYhCVINyr6w6POjbzQs63nnUxOPwWecqCtMCBwFvLI6Vht2XG1vBXTiC/Oz06IasZ3QSk
+	eAlxRjWy9GMUGcKNHMk3dtzCIwiFtyMxORRSBnhmfOlKmKBAF7+KdwfM4UwOXKPTLF6i4Cov8MmSQ
+	nDK+JvsmDg+PMFdjDgI2N05SMUd+Gg3vTxzKbhZn25R4eUyjXZBwF74mukPX52W3EJ0pzeoJigYtc
+	uEi1qv86sH9AzSMMJE3bN0DAVh8M6yMgV0uB4eiG3Ed3JOGJpvZDWNzMH3Yad/N0jsy1fhAp04zts
+	Wau02/FA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kE5L9-0002Gn-WF; Fri, 04 Sep 2020 06:36:52 +0000
-Received: from www.zeus03.de ([194.117.254.33] helo=mail.zeus03.de)
+	id 1kE6OY-00032V-Gv; Fri, 04 Sep 2020 07:44:26 +0000
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kE5L6-0002FO-RV
- for linux-rockchip@lists.infradead.org; Fri, 04 Sep 2020 06:36:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple; d=sang-engineering.com; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=k1; bh=lZU2PzJpWUHkpItFjVkZMpQcJ5AR
- YO8YhAJURqsh8sU=; b=P+SmPm8TPrtqh2I/Qa4bY96ZF1Uqweo4H3LTzL7XivC1
- iC7J/W8Hb7B7tGHRjJAe/KiwKrijQpaOBwD0OVzvPig125SW3w3UulKYc74LfzXK
- m1xiY0Bgj2MGZRuzQQxS4KVbF9poYLQK53Y4VjDPSTaJ9XrGc99znjqdliSL6e8=
-Received: (qmail 3473752 invoked from network); 4 Sep 2020 08:36:40 +0200
-Received: by mail.zeus03.de with ESMTPSA (TLS_AES_256_GCM_SHA384 encrypted,
- authenticated); 4 Sep 2020 08:36:40 +0200
-X-UD-Smtp-Session: l3s3148p1@AU1lF3euJKEgAwDPXwlxANIWpbLKE1Uh
-Date: Fri, 4 Sep 2020 08:36:40 +0200
-From: Wolfram Sang <wsa+renesas@sang-engineering.com>
-To: Douglas Anderson <dianders@chromium.org>
-Subject: Re: [PATCH 1/6] mmc: Set PROBE_PREFER_ASYNCHRONOUS for drivers that
- existed in v4.4
-Message-ID: <20200904063639.GC1506@ninjato>
-References: <20200903232441.2694866-1-dianders@chromium.org>
- <20200903162412.1.Id501e96fa63224f77bb86b2135a5e8324ffb9c43@changeid>
-MIME-Version: 1.0
-In-Reply-To: <20200903162412.1.Id501e96fa63224f77bb86b2135a5e8324ffb9c43@changeid>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+ id 1kE6OV-00030f-Qe
+ for linux-rockchip@lists.infradead.org; Fri, 04 Sep 2020 07:44:25 +0000
+Received: from localhost (unknown [192.168.167.223])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 4E516B21EC;
+ Fri,  4 Sep 2020 15:44:11 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P15471T140656136742656S1599205448140075_; 
+ Fri, 04 Sep 2020 15:44:10 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <4dac87a665b377536b15cc5cfbba7e94>
+X-RL-SENDER: zhangqing@rock-chips.com
+X-SENDER: zhangqing@rock-chips.com
+X-LOGIN-NAME: zhangqing@rock-chips.com
+X-FST-TO: heiko@sntech.de
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-DNS-TYPE: 0
+X-System-Flag: 0
+From: Elaine Zhang <zhangqing@rock-chips.com>
+To: heiko@sntech.de
+Subject: [PATCH v3 2/6] clk: rockchip: Export rockchip_clk_register_ddrclk()
+Date: Fri,  4 Sep 2020 15:44:01 +0800
+Message-Id: <20200904074405.24439-3-zhangqing@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200904074405.24439-1-zhangqing@rock-chips.com>
+References: <20200904074405.24439-1-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_023649_132834_3186D91F 
-X-CRM114-Status: GOOD (  16.74  )
+X-CRM114-CacheID: sfid-20200904_034424_628671_1A0F6892 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,109 +83,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Yangtao Li <tiny.windzz@gmail.com>, "H. Nikolaus Schaller" <hns@goldelico.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Michal Simek <michal.simek@xilinx.com>, Paul Cercueil <paul@crapouillou.net>,
- linux-tegra@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>,
- linux-arm-kernel@axis.com, Shawn Guo <shawnguo@kernel.org>,
- Fabio Estevam <festevam@gmail.com>, Marek Vasut <marex@denx.de>,
- Jesper Nilsson <jesper.nilsson@axis.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Anson Huang <Anson.Huang@nxp.com>,
- Aaro Koskinen <aaro.koskinen@iki.fi>, Lee Jones <lee.jones@linaro.org>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- Jaehoon Chung <jh80.chung@samsung.com>, linux-rockchip@lists.infradead.org,
- Chen-Yu Tsai <wens@csie.org>, Kukjin Kim <kgene@kernel.org>,
- bcm-kernel-feedback-list@broadcom.com, NXP Linux Team <linux-imx@nxp.com>,
- Pierre Ossman <pierre@ossman.eu>, linux-omap@vger.kernel.org,
- Ray Jui <rjui@broadcom.com>, Sascha Hauer <s.hauer@pengutronix.de>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Maxime Ripard <mripard@kernel.org>, swboyd@chromium.org,
- Rui Miguel Silva <rmfrfs@gmail.com>, linux-samsung-soc@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Lars Persson <lars.persson@axis.com>,
- Ben Dooks <ben-linux@fluff.org>, Manuel Lauss <manuel.lauss@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- =?utf-8?B?TWljaGHFgiBNaXJvc8WCYXc=?= <mirq-linux@rere.qmqm.pl>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, Peter Ujfalusi <peter.ujfalusi@ti.com>,
- Barry Song <baohua@kernel.org>, Scott Branden <sbranden@broadcom.com>,
- Nicolas Pitre <nico@fluxnic.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- linux-mmc@vger.kernel.org, Adrian Hunter <adrian.hunter@intel.com>,
- linux-kernel@vger.kernel.org, Tony Prisk <linux@prisktech.co.nz>,
- Vinod Koul <vkoul@kernel.org>, Patrice Chotard <patrice.chotard@st.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Viresh Kumar <vireshk@kernel.org>, Eugen Hristev <eugen.hristev@microchip.com>,
- Ricky Wu <ricky_wu@realtek.com>
-Content-Type: multipart/mixed; boundary="===============5585098954196393438=="
+Cc: huangtao@rock-chips.com, xf@rock-chips.com, sboyd@kernel.org,
+ mturquette@baylibre.com, Elaine Zhang <zhangqing@rock-chips.com>,
+ linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
+ kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org,
+ xxx@rock-chips.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This is used by the Rockchip clk driver, export it to allow that
+driver to be compiled as a module..
 
---===============5585098954196393438==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="da4uJneut+ArUgXk"
-Content-Disposition: inline
+Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
+Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+---
+ drivers/clk/rockchip/clk-ddr.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-
---da4uJneut+ArUgXk
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Sep 03, 2020 at 04:24:36PM -0700, Douglas Anderson wrote:
-> This is like commit 3d3451124f3d ("mmc: sdhci-msm: Prefer asynchronous
-> probe") but applied to a whole pile of drivers.  This batch converts
-> the drivers that appeared to be around in the v4.4 timeframe.
->=20
-> Signed-off-by: Douglas Anderson <dianders@chromium.org>
-
-Positive comments from patch 3 apply here, too.
-
-Reviewed-by: Wolfram Sang <wsa+renesas@sang-engineering.com>
-
->  drivers/mmc/host/sh_mmcif.c         | 1 +
-
-Tested-by: Wolfram Sang <wsa+renesas@sang-engineering.com> # SH_MMCIF
+diff --git a/drivers/clk/rockchip/clk-ddr.c b/drivers/clk/rockchip/clk-ddr.c
+index 9273bce4d7b6..282b6f22eb22 100644
+--- a/drivers/clk/rockchip/clk-ddr.c
++++ b/drivers/clk/rockchip/clk-ddr.c
+@@ -136,3 +136,4 @@ struct clk *rockchip_clk_register_ddrclk(const char *name, int flags,
+ 
+ 	return clk;
+ }
++EXPORT_SYMBOL(rockchip_clk_register_ddrclk);
+-- 
+2.17.1
 
 
---da4uJneut+ArUgXk
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl9R4HcACgkQFA3kzBSg
-KbZrlw//TWVTp9k5RlC0Mns4aGwDg0MbUjUlcWLnzTtRkbYAIF7bAc7d/zLvRBf1
-t9F1uklj8pgV8PsnrRhBQafPxthXZguaZKMs0S6FtPzpYsQt//8mYSwZ7BxwqGlz
-AsxBs8Ea+c310xsV7LE2KxGwV62YYaUahDEiNshusaiJfmdOzYqZnt2UpNn0aFYE
-NMmZRPBCII4WuY8hkJXo3Qp1BZFr/EsSLueuJnL+jTpxvsTe6e9Oc9H7Cpn6/W7p
-lgK9wXvR+nIRh+ckJuBBictz1CS8+pR2GFJ1cmT1I/apt4thcjJQ8eZ1c2NCyM9h
-geSknoJQFEmsDeEVt9VBxjKFb6JFkjEh22zWuScDPm0rpaOSKgQZegCh02taAPV0
-vc24YXifKISeOmplBe8YfaIFIL91F90Lo6MForJuTcKV4zC22eVTVtHtB/abL2QE
-jjmq+pcWcADWCKgzsKM9l6nkQ11wwVYEc8SnQENZPfl5Iq0V0BtQSD5lLMtHI3ET
-vTciYUaopdLSWLAlWOHZNAw/AAB5s8QYlpn8la0JNAEv6t/cLVSbSiwG+2OBOjN2
-UNvtPsRuHvMC49aNnA//RZRoUdds9xjo1vnEPJxB4oOoVAV4wSpw29C/X3JPLtLY
-IoH/gyyB1DCSJCcoMKVN0SFJ8a+p4MeEwOoExWDgLGOTeaSLXHI=
-=H4ww
------END PGP SIGNATURE-----
-
---da4uJneut+ArUgXk--
-
-
---===============5585098954196393438==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5585098954196393438==--
-
