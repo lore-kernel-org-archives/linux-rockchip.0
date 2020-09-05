@@ -1,4 +1,4 @@
-Return-Path: <SRS0=xWqI=CN=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=ahIP=CO=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
@@ -7,54 +7,71 @@ X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E270C433E2
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 21:23:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3BA83C43461
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2020 20:44:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6D7EC2087C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Sep 2020 21:23:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9446A20796
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2020 20:44:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l/geF8e9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D7EC2087C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mrE+iAWM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9446A20796
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lJZAASx7w8kZucA6lN6Uq+Lk+j2z4PA4Tt37iduoJ9Y=; b=l/geF8e9VsL+v0o8xHLjdlnUL
-	18CgPFzDUwPKIOLxmZPR4HZBY+G8D5CwpRe8TdtfWzOlpTmOUpu9C73dMmKH8tvO70wKRgY/YYGbh
-	TPQxiypFHrHCa4xeH7xuQAxubxW5TR9v7rLsNzwWoxR5yFN0yecwnhN6EMuOMAD3BsVISzacEhBNl
-	6ZN5sOhPLEbIl6l1C7oslhKac6WG5AT+w7o2hsiK4C2OC+lugNKV4aFf5XolEiGF2vDQEtEP3D+rx
-	1ak12H/8gIj4ue8BlhjB0Lb/p9TX7HUZnAWjjphk1rBV7/Yx5ddmXRhaD53zMNdDEp4lxAlAaMVi4
-	Ijg6EZoLQ==;
+	 bh=pXgTMDRZRflKw6ARH2/Sel+NAyhdrggFXVL3/QxgjbY=; b=mrE+iAWMFfOofUWkkkBTr+nP2
+	X/i6ZtaMXp2hLximY1RsH+1OeCtRdGgl/1/WoNMUsdSMCgTQ0xcdDDgIiBIS0ZYl5j8y67OAl8eIu
+	N+0j0SKH/k6Pm54iRb83g1YE0gL1GY2LOaae++qLiauvpaXqhenViR8+fTiJyoqnwEpR/16mQqWMs
+	d1Gx4c4E1NF3nPmnrC22mb7ljippgLFkfVeJFXDO519LqerGxKA/j6+KIEtgc3wP0ryJV3vzLxPKF
+	IvDvcX8z5XfAm2w6jaCZm8n9t6anlgh4nHBV7tx6LVoNjJFZy3mbvfwyHfxvUGDy05K60XiVpS6ek
+	yEQEU7UhQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kEJBK-0008Gl-JU; Fri, 04 Sep 2020 21:23:38 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1kEf2u-000252-Sj; Sat, 05 Sep 2020 20:44:24 +0000
+Received: from mail-lj1-f196.google.com ([209.85.208.196])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kEJBH-0008Ft-41; Fri, 04 Sep 2020 21:23:36 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kEJB4-00015W-HH; Fri, 04 Sep 2020 23:23:22 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: MyungJoo Ham <myungjoo.ham@samsung.com>,
- Chanwoo Choi <cw00.choi@samsung.com>, Rob Herring <robh+dt@kernel.org>,
- Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH 0/3] extcon: Add Type-C Virtual PD
-Date: Fri, 04 Sep 2020 23:23:21 +0200
-Message-ID: <6955091.ERBjKZ0CLf@diego>
-In-Reply-To: <20200904191830.387296-1-jagan@amarulasolutions.com>
-References: <20200904191830.387296-1-jagan@amarulasolutions.com>
+ id 1kEf2s-00024P-AS; Sat, 05 Sep 2020 20:44:23 +0000
+Received: by mail-lj1-f196.google.com with SMTP id a15so11867750ljk.2;
+ Sat, 05 Sep 2020 13:44:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=671tuV+5QYoJp/HkFJ0gD7Y6tBP+J04Z5kQy3jbSXss=;
+ b=USIgAJyBEGDC4d5/DkxihZGyvSEOtpd0uT9MDkaMqMaJlMhfKFHr2XIDc6hJ2FVGx/
+ 8IWzSPtINuL7YHfUc3WXSp8QCrVKyUS3mgZRWp/Vup7widMR5eIgAlYfoPZfZIBIKCTI
+ hx84iwfXOX714CBvTjsafNahZOVCXrs8W72bBqXQ6u2W/JeZ7k1n0Nfpc5yjITBZJR3u
+ LsE0JbybsVifANWGHdwEVM8WrWryZyVhf3T6aQvT0XLN/iK+YzCaJSN2s1RveziKR63K
+ qCQXzhIricY6kQnwrf5ai25jUaDXZqsm/3XGXp808X4u3lUJVEzvixpJHG/ZbSpbGtga
+ rk3A==
+X-Gm-Message-State: AOAM531oYPuPEBA5VxULVbQaMQ/fau2UZTCO6J3P6APPhDYlnpqRxbMp
+ XDycDn51TvyBVwymeGEb7NA=
+X-Google-Smtp-Source: ABdhPJyXeuw1d2QUIlbDtbaneQ5+q+irrrq0cJRGJd9l8xSoUw78Y1nTihKLCprWlSBu4qdcF15ScA==
+X-Received: by 2002:a2e:889a:: with SMTP id k26mr6578454lji.214.1599338658314; 
+ Sat, 05 Sep 2020 13:44:18 -0700 (PDT)
+Received: from rocinante ([95.155.85.46])
+ by smtp.gmail.com with ESMTPSA id x11sm2709379ljh.106.2020.09.05.13.44.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 05 Sep 2020 13:44:17 -0700 (PDT)
+Date: Sat, 5 Sep 2020 22:44:16 +0200
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+Subject: Re: [PATCH] PCI: Unify ECAM constants in native PCI Express drivers
+Message-ID: <20200905204416.GA83847@rocinante>
+References: <20200827224938.977757-1-kw@linux.com>
+ <20200828100843.0000474e@Huawei.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200828100843.0000474e@Huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200904_172335_207458_30A6F35F 
-X-CRM114-Status: GOOD (  17.31  )
+X-CRM114-CacheID: sfid-20200905_164422_384911_2C171B20 
+X-CRM114-Status: GOOD (  10.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,64 +84,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Tom Cubie <tom@radxa.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Jagan Teki <jagan@amarulasolutions.com>, linux-amarula@amarulasolutions.com,
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+ Shawn Lin <shawn.lin@rock-chips.com>, Michal Simek <michal.simek@xilinx.com>,
+ linux-rockchip@lists.infradead.org, Zhou Wang <wangzhou1@hisilicon.com>,
+ Robert Richter <rrichter@marvell.com>, Jonathan Chocron <jonnyc@amazon.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Will Deacon <will@kernel.org>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jagan,
+Hello Jonathan,
 
-Am Freitag, 4. September 2020, 21:18:27 CEST schrieb Jagan Teki:
-> USB Type-C protocol supports various modes of operations
-> includes PD, USB3, and Altmode. If the platform design
-> supports a Type-C connector then configuring these modes
-> can be done via enumeration.
+Thank you for the review!  Also, apologies for late reply.
+
+On 20-08-28 10:08:43, Jonathan Cameron wrote:
+[...]
 > 
-> However, there are some platforms that design these modes
-> of operations as separate protocol connectors like design
-> Display Port from on-chip USB3 controller. So accessing
-> Type-C Altmode Display Port via onboard Display Port 
-> connector instead of a Type-C connector.
->  
-> These kinds of platforms require an explicit extcon driver
-> in order to handle Power Delivery and Port Detection.
-> 
-> This series support this Type-C Virtual PD and enable the
-> same in ROCK Pi 4C SBC.
-> 
-> Any inputs?
+> Might potentially be worth tidying up the masks as well?
+> Or potentially drop them given I suspect that there are no cases
+> in which the mask is actually doing anything...
 
-I tend to disagree on the design via an extcon.
+Just to confirm - you have the following constants in mind?
 
-That the Rockchip rk3399 currently carries that extcon thingy is unfortunate
-and only works for ChromeOS devices based on the rk3399.
+drivers/pci/controller/pcie-rockchip.h:
 
-The kernel now has a real type-c framework so we should not extend this
-extcon hack any further, because that will make it even harder to roll back
-later. Also simply because other Rockchip boards currently can't really make
-use of type-c due to this, as they use the fsusb302 phys directly connected.
+#define PCIE_ECAM_BUS(x)	(((x) & 0xff) << 20)
+#define PCIE_ECAM_DEV(x)	(((x) & 0x1f) << 15)
+#define PCIE_ECAM_FUNC(x)	(((x) & 0x7) << 12)
 
-ChromeOS actually spend some time to make the cros-ec pd part of the type-c
-framework if I remember correctly, so a viable battle plan would be to:
+drivers/pci/controller/dwc/pcie-al.c:
 
-(1) move the Rockchip type-c phy driver to actually be part of the type-c
-    framework, with the extcon being a deprecated fallback for old DTs.
-(2) implement your gpio-altmode as part of the type-c framework
-    (which may even already exist)
+#define PCIE_ECAM_DEVFN(x)	(((x) & 0xff) << 12)
 
+I can move PCIE_ECAM_BUS, PCIE_ECAM_DEV and PCIE_ECAM_FUNC (as
+PCIE_ECAM_FUN) to the linux/pci-ecam.h file, as these seem useful, but
+without the masks, and then update other files to use these.  We could
+then leverage these, for example:
 
-In short, please don't extend the rk3399 type-c extcon hack.
+ 	pci_base_addr = (void __iomem *)((uintptr_t)pp->va_cfg0_base +
+-					 (busnr_ecam << 20) +
+-					 PCIE_ECAM_DEVFN(devfn));
++					 PCIE_ECAM_BUS(busnr_ecam) +
++					 PCIE_ECAM_FUN(devfn));
 
-Thanks
-Heiko
+What do you think?  Bjorn, would that be acceptable?
 
-
-
-
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
