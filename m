@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63E76C43461
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2020 22:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 233D9C433E2
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2020 22:03:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8670B20760
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2020 22:02:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 678A920760
+	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2020 22:03:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="d9U1AePb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8670B20760
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ps8AHjcJ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 678A920760
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,36 +25,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=leTw5XOHn7zPYZ4Gc8hactuWsDgO2BE1on+wqt1+wfs=; b=d9U1AePbaLu6gpJTaDny6TKr2
-	EcP8NCSoFLTQacnN0K9TFrQ4bBIwGcst8ZBmrJRlHP/Rb9LtLIV4MzbBIqUumrAtI0qaCaExUr71t
-	gnIDTrPBXvbT0bJu+EyPGS0mtMcFrRfhJ2ckpQbFobuIbmLevoGp5ziwCJCkUrZZJAnR0Ei2EoHgc
-	6A/RpkIJT8KoZi6+4eDXnaFanna9ZXF3N0vxcLvN711CICxXvzDXtVEZO9uH6hKV+9X1Qv5DGzNvW
-	lW3SXFnGzWVEprCUkgfGWPlAyyznVy9+UqwZf0zRbq4CWVOD2bATSKfL1QKfZs+lhzO3PBycVoOlU
-	RRyUcWzlg==;
+	 bh=UqGnvHO8+ijpBrx29+UtF23YG+qufp0a4ks/vEeMP/8=; b=ps8AHjcJo+SPjB/9onNMpyvLk
+	tudK9yeQ3PTzJJxIOVaeHnqJGW5mE5Dz/x4Rx3vfE/QBfGLGv2uMIkbSdQ+9euS1ORXVNGRl5doIl
+	XumlI0vO/OTrjTWd9Sl6jnci/PM4gSi86wA/lGFABkG6vR2Q2/9DEQUzYIY06L38Q0Wzz9x1bjCys
+	diMIIdEJyKopST0Ylhcd1B5HlmJEYtq0htYxw/Jg35k2kiXRku4vqU2IrNWH9aXuh7sHbjHjnnKPK
+	xiBhlH5K4uBz6+p2YEHuJTfPVb/DTf1MJMHi3L9F7l2gnAKl+z1GlHxpRjlXI4kSzzlwI6gBPARPt
+	etfVhQRDw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kEgFz-0006J6-1B; Sat, 05 Sep 2020 22:01:59 +0000
+	id 1kEgHq-0006Pb-ID; Sat, 05 Sep 2020 22:03:54 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kEgFx-0006Il-32
- for linux-rockchip@lists.infradead.org; Sat, 05 Sep 2020 22:01:57 +0000
+ id 1kEgHo-0006PH-08
+ for linux-rockchip@lists.infradead.org; Sat, 05 Sep 2020 22:03:52 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kEgFv-0005hM-LW; Sun, 06 Sep 2020 00:01:55 +0200
+ id 1kEgHm-0005ic-Pe; Sun, 06 Sep 2020 00:03:50 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: linus.walleij@linaro.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: Re: [PATCH 1/6] pinctrl: rockchip: make driver be tristate module
-Date: Sun, 06 Sep 2020 00:01:55 +0200
-Message-ID: <2671833.MsR7uBhjTv@diego>
-In-Reply-To: <20200831084753.7115-2-jay.xu@rock-chips.com>
+Subject: Re: [PATCH 3/6] pinctrl: rockchip: create irq mapping in gpio_to_irq
+Date: Sun, 06 Sep 2020 00:03:50 +0200
+Message-ID: <3620235.rk29NJRsjD@diego>
+In-Reply-To: <20200831084753.7115-4-jay.xu@rock-chips.com>
 References: <20200831084753.7115-1-jay.xu@rock-chips.com>
- <20200831084753.7115-2-jay.xu@rock-chips.com>
+ <20200831084753.7115-4-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200905_180157_152006_A30EAB25 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20200905_180352_054228_5C8366CC 
+X-CRM114-Status: GOOD (  19.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,58 +74,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Montag, 31. August 2020, 10:47:48 CEST schrieb Jianqun Xu:
-> Make pinctrl-rockchip driver to be tristate module, support to build as
-> a module, this is useful for GKI.
+Am Montag, 31. August 2020, 10:47:50 CEST schrieb Jianqun Xu:
+> Remove totally irq mappings create in probe, the gpio irq mapping will
+> be created when do
+>     gpio_to_irq ->
+>         rockchip_gpio_to_irq ->
+>             irq_create_mapping
+> 
+> This patch can speed up system boot on, also abandon many unused irq
+> mappings' create.
 > 
 > Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 
 Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 
 > ---
->  drivers/pinctrl/Kconfig            | 2 +-
->  drivers/pinctrl/pinctrl-rockchip.c | 7 +++++++
->  2 files changed, 8 insertions(+), 1 deletion(-)
+>  drivers/pinctrl/pinctrl-rockchip.c | 28 ++++++++++++----------------
+>  1 file changed, 12 insertions(+), 16 deletions(-)
 > 
-> diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
-> index 8828613c4e0e..dd4874e2ac67 100644
-> --- a/drivers/pinctrl/Kconfig
-> +++ b/drivers/pinctrl/Kconfig
-> @@ -207,7 +207,7 @@ config PINCTRL_OXNAS
->  	select MFD_SYSCON
->  
->  config PINCTRL_ROCKCHIP
-> -	bool
-> +	tristate "Rockchip gpio and pinctrl driver"
->  	select PINMUX
->  	select GENERIC_PINCONF
->  	select GENERIC_IRQ_CHIP
 > diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-> index c07324d1f265..24dfc814dee1 100644
+> index 54abda7b7be8..265d64b8c4f5 100644
 > --- a/drivers/pinctrl/pinctrl-rockchip.c
 > +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -16,10 +16,12 @@
->   */
+> @@ -3196,7 +3196,7 @@ static void rockchip_irq_demux(struct irq_desc *desc)
 >  
->  #include <linux/init.h>
-> +#include <linux/module.h>
->  #include <linux/platform_device.h>
->  #include <linux/io.h>
->  #include <linux/bitops.h>
->  #include <linux/gpio/driver.h>
-> +#include <linux/of_device.h>
->  #include <linux/of_address.h>
->  #include <linux/of_irq.h>
->  #include <linux/pinctrl/machine.h>
-> @@ -4256,3 +4258,8 @@ static int __init rockchip_pinctrl_drv_register(void)
->  	return platform_driver_register(&rockchip_pinctrl_driver);
->  }
->  postcore_initcall(rockchip_pinctrl_drv_register);
+>  		irq = __ffs(pend);
+>  		pend &= ~BIT(irq);
+> -		virq = irq_linear_revmap(bank->domain, irq);
+> +		virq = irq_find_mapping(bank->domain, irq);
+>  
+>  		if (!virq) {
+>  			dev_err(bank->drvdata->dev, "unmapped irq %d\n", irq);
+> @@ -3375,7 +3375,7 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
+>  	unsigned int clr = IRQ_NOREQUEST | IRQ_NOPROBE | IRQ_NOAUTOEN;
+>  	struct irq_chip_generic *gc;
+>  	int ret;
+> -	int i, j;
+> +	int i;
+>  
+>  	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
+>  		if (!bank->valid) {
+> @@ -3402,7 +3402,7 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
+>  
+>  		ret = irq_alloc_domain_generic_chips(bank->domain, 32, 1,
+>  					 "rockchip_gpio_irq", handle_level_irq,
+> -					 clr, 0, IRQ_GC_INIT_MASK_CACHE);
+> +					 clr, 0, 0);
+>  		if (ret) {
+>  			dev_err(&pdev->dev, "could not alloc generic chips for bank %s\n",
+>  				bank->name);
+> @@ -3411,14 +3411,6 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
+>  			continue;
+>  		}
+>  
+> -		/*
+> -		 * Linux assumes that all interrupts start out disabled/masked.
+> -		 * Our driver only uses the concept of masked and always keeps
+> -		 * things enabled, so for us that's all masked and all enabled.
+> -		 */
+> -		writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTMASK);
+> -		writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTEN);
+> -
+>  		gc = irq_get_domain_generic_chip(bank->domain, 0);
+>  		gc->reg_base = bank->reg_base;
+>  		gc->private = bank;
+> @@ -3435,13 +3427,17 @@ static int rockchip_interrupts_register(struct platform_device *pdev,
+>  		gc->chip_types[0].chip.irq_set_type = rockchip_irq_set_type;
+>  		gc->wake_enabled = IRQ_MSK(bank->nr_pins);
+>  
+> +		/*
+> +		 * Linux assumes that all interrupts start out disabled/masked.
+> +		 * Our driver only uses the concept of masked and always keeps
+> +		 * things enabled, so for us that's all masked and all enabled.
+> +		 */
+> +		writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTMASK);
+> +		writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTEN);
+> +		gc->mask_cache = 0xffffffff;
 > +
-> +MODULE_DESCRIPTION("ROCKCHIP Pin Controller Driver");
-> +MODULE_LICENSE("GPL");
-> +MODULE_ALIAS("platform:pinctrl-rockchip");
-> +MODULE_DEVICE_TABLE(of, rockchip_pinctrl_dt_match);
+>  		irq_set_chained_handler_and_data(bank->irq,
+>  						 rockchip_irq_demux, bank);
+> -
+> -		/* map the gpio irqs here, when the clock is still running */
+> -		for (j = 0 ; j < 32 ; j++)
+> -			irq_create_mapping(bank->domain, j);
+> -
+>  		clk_disable(bank->clk);
+>  	}
+>  
 > 
 
 
