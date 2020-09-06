@@ -2,21 +2,21 @@ Return-Path: <SRS0=igfw=CP=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70FBAC43461
-	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2020 22:45:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 168CAC43461
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2020 22:45:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BDCEC20C09
-	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2020 22:45:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3B709215A4
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2020 22:45:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fj7lhABf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BDCEC20C09
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Vfita+dO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3B709215A4
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,38 +25,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=QFm5ub5izaidmbpF5uzgiXLtDRkRMLJcVBYyTpOvRhk=; b=fj7lhABfRiq8T/w44rPJO6/jE
-	Jpe37jjgHJ9hsApXpjSSwklc08P5vwPAqENTmyzae910EY9SCOsiijANiPV0Udv78eP5ecLmeb8z6
-	JOqq1MYFzWNEQnnMPjnC3tOq9eQZCz121935IKHjtpGY+FcWyK7nHf1FwiSMogWky4Ls6S2BUa9FY
-	St9yubDUNxFgIbvMRc/hORcjtDrnT/Fhu7XL10CycqQz2TKKpLpDffbyaiG2adcpNTHYP0fE3YU6k
-	QZ14rxPVGtRtFdTie+I8MFW9r5dt8rwUrVGt3ySyDOXFpeLv5XYA6h/fAMUxTcD9ePrv4B1+FeWlE
-	83XLQIm9A==;
+	 bh=cha97w/HkVf9ftZhk8sRy4evTu/UnSqVpQgZFeNN5Rw=; b=Vfita+dO43uBW5YD1J573bHF6
+	xyikXXv25lyjLd9v7aijKaaIsNkK+wXrQSHZ9/eLVsRUzfhI8xypiEk0QZXU3LmSGqHlpEmtU082q
+	EdctOZgMdrq7p1ag1jOsUvW03mH4Uo1/BFnSMH12Wh1Lh57y5jDENOhXnmWzF2ot1BEic0qhe+ajJ
+	Dc0SaRh8/8r+CwqeK7/cTsEMpq0KUe0MM4P4QEUWMmGa2hp6T+feBB2YbBTfSIadKWkmt//FgogOU
+	V7MODRpZrdCYv5wXTOLYTw2xo6xWONunarpaxSKTvsfXiLfoGG+d1jnwteZaPDIfAhxE7xOGOcdOQ
+	e4X3hMgkQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kF3PQ-0002Dd-33; Sun, 06 Sep 2020 22:45:16 +0000
+	id 1kF3Px-0002Fe-GO; Sun, 06 Sep 2020 22:45:49 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kF3PN-0002DG-R5
- for linux-rockchip@lists.infradead.org; Sun, 06 Sep 2020 22:45:14 +0000
+ id 1kF3Pv-0002FH-8P
+ for linux-rockchip@lists.infradead.org; Sun, 06 Sep 2020 22:45:47 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kF3PM-0002dZ-EJ; Mon, 07 Sep 2020 00:45:12 +0200
+ id 1kF3Pu-0002dv-0j; Mon, 07 Sep 2020 00:45:46 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Elaine Zhang <zhangqing@rock-chips.com>
-Subject: Re: [PATCH v3 1/6] clk: rockchip: Use clk_hw_register_composite
- instead of clk_register_composite calls
-Date: Mon, 07 Sep 2020 00:45:11 +0200
-Message-ID: <5177967.q6s5TDtO4a@diego>
-In-Reply-To: <20200904074405.24439-2-zhangqing@rock-chips.com>
+Subject: Re: [PATCH v3 4/6] clk: rockchip: Export some clock common APIs for
+ module drivers
+Date: Mon, 07 Sep 2020 00:45:45 +0200
+Message-ID: <2117462.I4v89iqCCR@diego>
+In-Reply-To: <20200904074405.24439-5-zhangqing@rock-chips.com>
 References: <20200904074405.24439-1-zhangqing@rock-chips.com>
- <20200904074405.24439-2-zhangqing@rock-chips.com>
+ <20200904074405.24439-5-zhangqing@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200906_184513_904561_2B81D0A2 
-X-CRM114-Status: UNSURE (   8.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200906_184547_312058_16F194E7 
+X-CRM114-Status: GOOD (  17.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,15 +78,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 4. September 2020, 09:44:00 CEST schrieb Elaine Zhang:
-> clk_hw_register_composite it's already exported.
-> Preparation for compilation of rK common clock drivers into modules.
+Am Freitag, 4. September 2020, 09:44:03 CEST schrieb Elaine Zhang:
+> This is used by the Rockchip clk driver, export it to allow that
+> driver to be compiled as a module.
 > 
 > Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-> Reported-by: kernel test robot <lkp@intel.com>
 > Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
+> ---
+>  drivers/clk/rockchip/clk.c | 52 ++++++++++++++++++++++----------------
+>  1 file changed, 30 insertions(+), 22 deletions(-)
+> 
+> diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+> index 46409972983e..fd3aff2a599d 100644
+> --- a/drivers/clk/rockchip/clk.c
+> +++ b/drivers/clk/rockchip/clk.c
+> @@ -360,8 +360,9 @@ static struct clk *rockchip_clk_register_factor_branch(const char *name,
+>  	return hw->clk;
+>  }
+>  
+> -struct rockchip_clk_provider * __init rockchip_clk_init(struct device_node *np,
+> -			void __iomem *base, unsigned long nr_clks)
+> +struct rockchip_clk_provider *rockchip_clk_init(struct device_node *np,
+> +						void __iomem *base,
+> +						unsigned long nr_clks)
+>  {
+>  	struct rockchip_clk_provider *ctx;
+>  	struct clk **clk_table;
+> @@ -393,14 +394,16 @@ struct rockchip_clk_provider * __init rockchip_clk_init(struct device_node *np,
+>  	kfree(ctx);
+>  	return ERR_PTR(-ENOMEM);
+>  }
+> +EXPORT_SYMBOL(rockchip_clk_init);
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+again, same comment about EXPORT_SYMBOL_GPL
 
 
 
