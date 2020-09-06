@@ -1,22 +1,22 @@
-Return-Path: <SRS0=ahIP=CO=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=igfw=CP=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2ACC0C43461
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2020 22:23:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A6DDC43461
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2020 10:20:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 91AB720797
-	for <linux-rockchip@archiver.kernel.org>; Sat,  5 Sep 2020 22:23:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DC75620738
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2020 10:20:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RocefAgH"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 91AB720797
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="j+W9G6oq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DC75620738
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,36 +25,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WVwAnubmT6hZRLAN0kKbG2uf2i/u6/Jdtw9SH8n5ik0=; b=RocefAgHwD0YyzwV6mf+lb/f4
-	Gjw3eP3hlmNZReabMrmiWWCRZD1B3Hk51Tf/cjAeqb1nduz7XMScqUdSHrxee1qP4m6NsBTHlIryh
-	dZ5sUqpvyB7/RQ/+GEwlFyqHleNipnOR5d1FU8WuwlNj0l/MUkxCRghTjL6aAfgyz8TsbyqjQn3Az
-	OC+cRw/3GxZnylsQ3OP2xGzn2v9FVtHU1bLTi64ga7dXfPdeues4PTurJc7nn0mZlTOlU+pP4V1ln
-	M/TZCoX8dYqxtSuCZ8yJ844WENSdhWln90i2HAJtLyEdvaDgslogqrueQcmBW0fUd3H5QKqQv3XUc
-	G+1M+qYRg==;
+	 bh=OyhSsjIc87tdoGaVezlBI9kLkkowe8W6Phhi8fmNPmo=; b=j+W9G6oqiisOF5CDfnI/8REzc
+	8LtqFRzoe+oVuy7xXEdxRaLkvC4nxfnwTMdRM3PXnndeWue3Q4/DpSb4aVIjfdLTaox/CkL+lDGUb
+	XW90amnVPkBPaBp3Wca9WVq/h9KZ9y506jYsjSNddK7Ai2yQtPqNMsiahCIR+gFQED4Ioc5vBj1tH
+	gYSWW0yiTAnKXO0XXDlDfE+W5oVX053i7ElAXszaYD9bdcpsTQgsoPBhE8j02MTFGZmrzPk5s7iBf
+	oHwIFRG3b1o6uSuOtAmzW2korqpFiXvfi0XK/zvpLUeotq0p5NJ/SAOa4eMWguMz7FnDO7ci/svp7
+	gQiA2Skvg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kEgaY-0007VO-43; Sat, 05 Sep 2020 22:23:14 +0000
+	id 1kErmp-0000GL-TO; Sun, 06 Sep 2020 10:20:39 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kEgaU-0007Uw-VJ
- for linux-rockchip@lists.infradead.org; Sat, 05 Sep 2020 22:23:12 +0000
+ id 1kErmo-0000Fw-Ae
+ for linux-rockchip@lists.infradead.org; Sun, 06 Sep 2020 10:20:39 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kEgaT-0005tc-Kq; Sun, 06 Sep 2020 00:23:09 +0200
+ id 1kErmi-0004EO-0Z; Sun, 06 Sep 2020 12:20:32 +0200
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: linus.walleij@linaro.org, Jianqun Xu <jay.xu@rock-chips.com>
-Subject: Re: [PATCH 1/6] pinctrl: rockchip: make driver be tristate module
-Date: Sun, 06 Sep 2020 00:23:09 +0200
-Message-ID: <2623687.OKfBHSCOjT@diego>
-In-Reply-To: <2671833.MsR7uBhjTv@diego>
+Subject: Re: [PATCH 6/6] pinctrl: rockchip: populate platform device for
+ rockchip gpio
+Date: Sun, 06 Sep 2020 12:20:31 +0200
+Message-ID: <76163126.riIkUvEO9g@diego>
+In-Reply-To: <20200831085021.7288-1-jay.xu@rock-chips.com>
 References: <20200831084753.7115-1-jay.xu@rock-chips.com>
- <20200831084753.7115-2-jay.xu@rock-chips.com> <2671833.MsR7uBhjTv@diego>
+ <20200831085021.7288-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200905_182311_628413_F6E8CE90 
-X-CRM114-Status: GOOD (  18.19  )
+X-CRM114-CacheID: sfid-20200906_062038_475422_B4230724 
+X-CRM114-Status: GOOD (  19.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,92 +70,150 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: linux-gpio@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Sonntag, 6. September 2020, 00:01:55 CEST schrieb Heiko St=FCbner:
-> Am Montag, 31. August 2020, 10:47:48 CEST schrieb Jianqun Xu:
-> > Make pinctrl-rockchip driver to be tristate module, support to build as
-> > a module, this is useful for GKI.
-> > =
+Hi Jianqun,
 
-> > Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
-> =
+Am Montag, 31. August 2020, 10:50:21 CEST schrieb Jianqun Xu:
+> Register both gpio driver and device as part of driver model, so that
+> the '-gpio'/'-gpios' dependency in dts can be correctly handled by
+> of_devlink/of_fwlink.
+> 
+> Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+[...]
 
-I take this back.
+> -static int rockchip_gpiolib_unregister(struct platform_device *pdev,
+> -						struct rockchip_pinctrl *info)
+> -{
+> -	struct rockchip_pin_ctrl *ctrl = info->ctrl;
+> -	struct rockchip_pin_bank *bank = ctrl->pin_banks;
+> -	int i;
+> +		pctldev = info->pctl_dev;
+> +		if (!pctldev)
+> +			return -ENODEV;
+>  
+> -	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
+> -		if (!bank->valid)
+> -			continue;
+> -		gpiochip_remove(&bank->gpio_chip);
+> +		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0, gc->base, gc->ngpio);
+> +		if (ret) {
+> +			dev_err(&pdev->dev, "Failed to add pin range\n");
+> +			gpiochip_remove(&bank->gpio_chip);
+> +			return ret;
+> +		}
+>  	}
+>  
+>  	return 0;
+> @@ -3752,6 +3734,46 @@ static int __maybe_unused rockchip_pinctrl_resume(struct device *dev)
+>  static SIMPLE_DEV_PM_OPS(rockchip_pinctrl_dev_pm_ops, rockchip_pinctrl_suspend,
+>  			 rockchip_pinctrl_resume);
+>  
+> +static int rockchip_gpio_probe(struct platform_device *pdev)
+> +{
+> +	struct device_node *np = pdev->dev.of_node;
+> +	struct device *parent = pdev->dev.parent;
+> +	struct rockchip_pinctrl *info = dev_get_drvdata(parent);
+> +	struct rockchip_pin_ctrl *ctrl = info ? (info->ctrl) : NULL;
+> +	struct rockchip_pin_bank *bank;
+> +	int ret, i;
+> +
+> +	if (!info || !ctrl)
+> +		return -EINVAL;
+> +
+> +	if (!of_find_property(np, "gpio-controller", NULL))
+> +		return -ENODEV;
+> +
+> +	bank = ctrl->pin_banks;
+> +	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
+> +		if (!strcmp(bank->name, np->name)) {
+> +			bank->of_node = np;
+> +
+> +			if (!rockchip_get_bank_data(bank, info))
+> +				bank->valid = true;
+> +
+> +			break;
+> +		}
+> +	}
+> +
+> +	bank->of_node = pdev->dev.of_node;
+> +
+> +	ret = rockchip_gpiolib_register(pdev, bank);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = rockchip_interrupts_register(pdev, bank);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return 0;
+> +}
+> +
+>  static int rockchip_pinctrl_probe(struct platform_device *pdev)
+>  {
+>  	struct rockchip_pinctrl *info;
+> @@ -3823,18 +3845,20 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+>  			return PTR_ERR(info->regmap_pmu);
+>  	}
+>  
+> -	ret = rockchip_gpiolib_register(pdev, info);
+> -	if (ret)
+> -		return ret;
+> -
+>  	ret = rockchip_pinctrl_register(pdev, info);
+>  	if (ret) {
+> -		rockchip_gpiolib_unregister(pdev, info);
+> +		dev_err(&pdev->dev, "failed to register pinctrl device\n");
+>  		return ret;
+>  	}
+>  
+>  	platform_set_drvdata(pdev, info);
+>  
+> +	ret = of_platform_populate(np, rockchip_bank_match, NULL, dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "failed to register gpio device\n");
+> +		return ret;
+> +	}
+> +
+>  	return 0;
+>  }
+>  
+> @@ -4254,6 +4278,14 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
+>  	{},
+>  };
+>  
+> +static struct platform_driver rockchip_gpio_driver = {
+> +	.probe		= rockchip_gpio_probe,
+> +	.driver = {
+> +		.name	= "rockchip-gpio",
+> +		.of_match_table = rockchip_bank_match,
+> +	},
+> +};
+> +
+>  static struct platform_driver rockchip_pinctrl_driver = {
+>  	.probe		= rockchip_pinctrl_probe,
+>  	.driver = {
+> @@ -4265,7 +4297,9 @@ static struct platform_driver rockchip_pinctrl_driver = {
+>  
+>  static int __init rockchip_pinctrl_drv_register(void)
+>  {
+> -	return platform_driver_register(&rockchip_pinctrl_driver);
+> +	platform_driver_register(&rockchip_pinctrl_driver);
+> +
+> +	return platform_driver_register(&rockchip_gpio_driver);
+>  }
+>  postcore_initcall(rockchip_pinctrl_drv_register);
 
-
-What happens when you actually unload the module now?
-I checked and all the pinctrl stuff itself is using devm-functions
-so should be safe, but you're missing the =
-
-
-platform_driver_unregister part that should happen as well.
+This also seems to miss the whole unloading of module paths?
+I'd expect a gpiochip_remove etc in some _remove function and
+of course a platform_driver_unregister.
 
 
 Heiko
-
-> > ---
-> >  drivers/pinctrl/Kconfig            | 2 +-
-> >  drivers/pinctrl/pinctrl-rockchip.c | 7 +++++++
-> >  2 files changed, 8 insertions(+), 1 deletion(-)
-> > =
-
-> > diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
-> > index 8828613c4e0e..dd4874e2ac67 100644
-> > --- a/drivers/pinctrl/Kconfig
-> > +++ b/drivers/pinctrl/Kconfig
-> > @@ -207,7 +207,7 @@ config PINCTRL_OXNAS
-> >  	select MFD_SYSCON
-> >  =
-
-> >  config PINCTRL_ROCKCHIP
-> > -	bool
-> > +	tristate "Rockchip gpio and pinctrl driver"
-> >  	select PINMUX
-> >  	select GENERIC_PINCONF
-> >  	select GENERIC_IRQ_CHIP
-> > diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinct=
-rl-rockchip.c
-> > index c07324d1f265..24dfc814dee1 100644
-> > --- a/drivers/pinctrl/pinctrl-rockchip.c
-> > +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> > @@ -16,10 +16,12 @@
-> >   */
-> >  =
-
-> >  #include <linux/init.h>
-> > +#include <linux/module.h>
-> >  #include <linux/platform_device.h>
-> >  #include <linux/io.h>
-> >  #include <linux/bitops.h>
-> >  #include <linux/gpio/driver.h>
-> > +#include <linux/of_device.h>
-> >  #include <linux/of_address.h>
-> >  #include <linux/of_irq.h>
-> >  #include <linux/pinctrl/machine.h>
-> > @@ -4256,3 +4258,8 @@ static int __init rockchip_pinctrl_drv_register(v=
-oid)
-> >  	return platform_driver_register(&rockchip_pinctrl_driver);
-> >  }
-> >  postcore_initcall(rockchip_pinctrl_drv_register);
-> > +
-> > +MODULE_DESCRIPTION("ROCKCHIP Pin Controller Driver");
-> > +MODULE_LICENSE("GPL");
-> > +MODULE_ALIAS("platform:pinctrl-rockchip");
-> > +MODULE_DEVICE_TABLE(of, rockchip_pinctrl_dt_match);
-> > =
-
-> =
-
-> =
-
-
-
 
 
 
