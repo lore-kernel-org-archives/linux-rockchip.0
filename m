@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-11.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C253C43461
-	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2020 13:27:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 32FEFC43461
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2020 15:20:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8D6C020796
-	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2020 13:27:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CE1E52075A
+	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Sep 2020 15:20:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FCYTOo0n";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="a8M9yC8D"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8D6C020796
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="O4i8UK8H";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="hSEZ2PLO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CE1E52075A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,44 +26,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=l+dZOyn2JMz4sjaGvL7pw5FInV/vPDCdiQ9jN4sMv5M=; b=FCYTOo0nzd6YxJ0aSZSKsHChm
-	aBQSol6o5b+UVGUCNr4lRoreqIrkOi9DTw2yVB7CPQBJO9CXUgJL5r+K+Uc5H2BDph8ObbYTk/XN7
-	55NoUW1jEk4iwq8QkoN2N9t22durXpvq3l3aZngU6iT3K9RRUS2EDOaLYWc9n8P3HWvE02W/B3uLj
-	JQdQrS2jXcFS7VhhXp2fRQ2695BOHtmAn/mtZuZbH3CSfsLbhvdKQSsFsgk198UXX4JbXp9TBnVKJ
-	X5UjJQKlZuly5F9HN+maZsVnjUnzo1bgB1RlkV80wEqBL/pG/DtB948qmysHHZtqTXilVSJTLdBaG
-	AAOTYSz5g==;
+	 bh=VPZkNwgw1BKdK/qHAshiR/9HlB7noMmyHUZobBqLGCU=; b=O4i8UK8Ht+7D/sXZGBO2dymWz
+	bG9+MZhLLUa0BJ6PlpXS1S0CWp1lio+qJy1c0GONDQYtj3iogXPTbGaODhL/xAjgyvsjHnSKto7nS
+	C2LthCeUvOe2tJfW8salObH6V9dhmscRw3V0yno3l7qSzssrtq+3+F4XucvggYe7Qz+ChGr+fqFD7
+	RQzoEi1AUabIYRyyYMX1jeVlWEklCgXLs5fznyg3kwVhT226uWan+roUpCQo8lREdWXazgm7YRdvq
+	04m6J/Yp8InZsqDILh8Z7XJytUlxp2snTPFv846xnjDNNypandkPTl5EXx8qZyAoRqo3Fkjk85rfP
+	JDuksQ47Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kEuhj-0007VK-PH; Sun, 06 Sep 2020 13:27:35 +0000
+	id 1kEwSo-0004Xj-0D; Sun, 06 Sep 2020 15:20:18 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kEuhf-0007UK-9P; Sun, 06 Sep 2020 13:27:32 +0000
+ id 1kEwSl-0004Wp-Ih
+ for linux-rockchip@lists.infradead.org; Sun, 06 Sep 2020 15:20:16 +0000
 Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net
  [82.4.196.95])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id DE6D320708;
- Sun,  6 Sep 2020 13:27:24 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 35E7920714;
+ Sun,  6 Sep 2020 15:20:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599398848;
- bh=Jg/ONzkyfeFBjpvfr7GYskrOf0uT3DsXsl8BYu/mmDg=;
+ s=default; t=1599405614;
+ bh=lENSTT8zhvx+mn9kptc0V4UJ7LSxhvNqQW6A/G5G6xc=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=a8M9yC8Dd5apF5MDYMZgecvVUe/oS6CVtEiYH5Jf2RKAnxqqIjbiU10vUElvQkWH6
- miOlGk9Tf92/BS+a3Pg+pQlJL5l4nsR1k6ToXS/LVscdh2PmUPvxIFKo6OC2XSXB9w
- v8urqfH3XfAUsVDjtbAMs0Fx24BjJQu6lRXLAH/Q=
-Date: Sun, 6 Sep 2020 14:27:21 +0100
+ b=hSEZ2PLOZEp+XnmHEDtxrqCjCPbvYSLy0e4dKzEHogM1ihso0Bl2oJy8fcSukd9Fx
+ LiAmbxD3VMuPgHAC8lQBCQDmZg5NEh2mQrA2OH/ybddgbNq09zNEJE/f2V0+FT8Tpo
+ yZmd7AFL8e7KIHxAbkh2p4VIDMgwlWn/ndmfQpx4=
+Date: Sun, 6 Sep 2020 16:20:10 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-Subject: Re: [PATCH] iio: adc: rockchip_saradc: Allow compile-testing with !ARM
-Message-ID: <20200906142721.73a533dd@archlinux>
-In-Reply-To: <1602652.ZmzXO7uU3z@diego>
-References: <20200904170416.16061-1-alex.dewar90@gmail.com>
- <1602652.ZmzXO7uU3z@diego>
+To: Vicente Bergas <vicencb@gmail.com>
+Subject: Re: [PATCH] IIO: rockchip: add missing dependencies for saradc
+Message-ID: <20200906162010.30094d61@archlinux>
+In-Reply-To: <20200901204054.5334-1-vicencb@gmail.com>
+References: <20200901204054.5334-1-vicencb@gmail.com>
 X-Mailer: Claws Mail 3.17.6 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200906_092731_471953_9A75B1E4 
-X-CRM114-Status: GOOD (  19.31  )
+X-CRM114-CacheID: sfid-20200906_112015_691815_DA93346B 
+X-CRM114-Status: GOOD (  19.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,47 +76,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Alexandru Tachici <alexandru.tachici@analog.com>,
- Lars-Peter Clausen <lars@metafoo.de>,
- Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
- Michael Hennerich <michael.hennerich@analog.com>,
- Saravanan Sekar <sravanhome@gmail.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Vincent Pelletier <plr.vincent@gmail.com>, linux-kernel@vger.kernel.org,
- Beniamin Bia <beniamin.bia@analog.com>, linux-iio@vger.kernel.org,
- Andy Shevchenko <andy.shevchenko@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Hartmut Knaack <knaack.h@gmx.de>,
- linux-rockchip@lists.infradead.org,
- Alexandru Ardelean <alexandru.ardelean@analog.com>,
- Alex Dewar <alex.dewar90@gmail.com>, linux-arm-kernel@lists.infradead.org,
- Artur Rojek <contact@artur-rojek.eu>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Lars-Peter Clausen <lars@metafoo.de>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>, linux-iio@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Peter Meerwald-Stadler <pmeerw@pmeerw.net>,
+ Hartmut Knaack <knaack.h@gmx.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAwNCBTZXAgMjAyMCAxOTozMjoyMiArMDIwMApIZWlrbyBTdMO8Ym5lciA8aGVpa29A
-c250ZWNoLmRlPiB3cm90ZToKCj4gQW0gRnJlaXRhZywgNC4gU2VwdGVtYmVyIDIwMjAsIDE5OjA0
-OjE2IENFU1Qgc2NocmllYiBBbGV4IERld2FyOgo+ID4gVGhlcmUgc2VlbXMgbm8gcmVhc29uIHRv
-IGFsbG93IGZvciBjb21waWxlLXRlc3Rpbmcgb24gQVJNIG9ubHksIHNvCj4gPiByZW1vdmUgdGhp
-cyByZXN0cmljdGlvbi4KPiA+IAo+ID4gQnVpbGQtdGVzdGVkIHdpdGggYWxseWVzY29uZmlnIG9u
-IHg4Ni4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogQWxleCBEZXdhciA8YWxleC5kZXdhcjkwQGdt
-YWlsLmNvbT4gIAo+IAo+IFJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNo
-LmRlPgpBcHBsaWVkIHRvIHRoZSB0b2dyZWcgYnJhbmNoIG9mIGlpby5naXQgYW5kIHB1c2hlZCBv
-dXQgYXMgdGVzdGluZyBmb3IKdGhlIGF1dG9idWlsZGVycyB0byBwb2tlIGF0IGl0IGFuZCBzZWUg
-aWYgd2UgbWlzc2VkIGFueXRoaW5nLgoKVGhhbmtzLAoKSm9uYXRoYW4KCj4gCj4gPiAtLS0KPiA+
-ICBkcml2ZXJzL2lpby9hZGMvS2NvbmZpZyB8IDIgKy0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMSBp
-bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-aWlvL2FkYy9LY29uZmlnIGIvZHJpdmVycy9paW8vYWRjL0tjb25maWcKPiA+IGluZGV4IGQ5NGRj
-ODAwYjg0Mi4uMDM5Mjk2MDZiYjAxIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9paW8vYWRjL0tj
-b25maWcKPiA+ICsrKyBiL2RyaXZlcnMvaWlvL2FkYy9LY29uZmlnCj4gPiBAQCAtODYzLDcgKzg2
-Myw3IEBAIGNvbmZpZyBSTjVUNjE4X0FEQwo+ID4gIAo+ID4gIGNvbmZpZyBST0NLQ0hJUF9TQVJB
-REMKPiA+ICAJdHJpc3RhdGUgIlJvY2tjaGlwIFNBUkFEQyBkcml2ZXIiCj4gPiAtCWRlcGVuZHMg
-b24gQVJDSF9ST0NLQ0hJUCB8fCAoQVJNICYmIENPTVBJTEVfVEVTVCkKPiA+ICsJZGVwZW5kcyBv
-biBBUkNIX1JPQ0tDSElQIHx8IENPTVBJTEVfVEVTVAo+ID4gIAlkZXBlbmRzIG9uIFJFU0VUX0NP
-TlRST0xMRVIKPiA+ICAJc2VsZWN0IElJT19CVUZGRVIKPiA+ICAJc2VsZWN0IElJT19UUklHR0VS
-RURfQlVGRkVSCj4gPiAgIAo+IAo+IAo+IAo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue,  1 Sep 2020 22:40:54 +0200
+Vicente Bergas <vicencb@gmail.com> wrote:
+
+> This driver uses the triggered buffer functionality
+> but was not requiring it.
+> 
+> Signed-off-by: Vicente Bergas <vicencb@gmail.com>
+
+Fix should now be in tree. I don't think the IIO_TRIGGER select
+is necessary (and isn't in current fixed version) but if I'm wrong
+on that please shout!  Logically it shouldn't be required as the
+driver doesn't provide a trigger, but we may have something missing
+a stub somewhere.
+
+Jonathan
+
+> ---
+>  drivers/iio/adc/Kconfig | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+> index 66d9cc073157..cd90f60cdfd9 100644
+> --- a/drivers/iio/adc/Kconfig
+> +++ b/drivers/iio/adc/Kconfig
+> @@ -865,6 +865,9 @@ config ROCKCHIP_SARADC
+>  	tristate "Rockchip SARADC driver"
+>  	depends on ARCH_ROCKCHIP || (ARM && COMPILE_TEST)
+>  	depends on RESET_CONTROLLER
+> +	select IIO_BUFFER
+> +	select IIO_TRIGGER
+> +	select IIO_TRIGGERED_BUFFER
+>  	help
+>  	  Say yes here to build support for the SARADC found in SoCs from
+>  	  Rockchip.
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
