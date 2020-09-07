@@ -8,16 +8,16 @@ X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CDDE6C2BB84
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2020 14:19:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 13CE9C433E2
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2020 14:19:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A618215A4
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2020 14:19:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B5C6721481
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2020 14:19:37 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y9O2zIBw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3A618215A4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1yINMBln"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B5C6721481
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,38 +26,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4U3lAy7PYywi4VNb/v8br8DNCof1m/SUW/+bgHpRUGI=; b=Y9O2zIBwdwV2BYBflhfB0A/xw
-	PGyk5PZQJ1ag76HkEmSCX1iUfL+inj9K4pWE8nX9rG3Zq1YRhsAR8JUF2N6bt6J39Aem+oX/aHS1x
-	O53Wnej7ouFw5bIRsoedznb//dnvJFskelOVYhSQWS9+MAKelKtDpec2luSlZdbllTXW+sWwBpfC8
-	AGnx+NTZlHeqqI2dn2INPXxkkxShr7B6DDaK6h75wyGUWIl5oduFMayKmNDaLk7WoIHUoZIRXTMlH
-	gYeUqiqvyynXi9uyrTbe77CeWOgcQ1RCu8yhgiNSk2FdrQmFY5h6KhwJb78SRxj1jPq27wxG6djYV
-	XeNZT3Kbw==;
+	 bh=80ZmsYPIbRyPqJlFHaQ5CvPDS85Sno4rXFW6MNqivUQ=; b=1yINMBlnD3XpUWugGGo7v4XxD
+	2w3h0W6xDe3V28XjFuFXxjPF++fVA4mzIIDQ30T+p4duP1LG82XESMVBli1HSTxRdH0CjuZIXL1Hs
+	RtiPl9+zOnPK2jBs9hPjW7GEShZs3vLkPDUpSS2W+KQwHaw12qr8yYoP5gTF6I1Fb8fHCfSn3nlXL
+	/Fw7EIgY0PCkrc2QUXyCJymqDFuOpwObfwb+8WjvhS0uWD1CmD4YiAssTelZZ33F/1bnNF5HgpVA3
+	cEYv8m/vtv+yYSNLRq70RgaiZGOYBFgFz0eeW3nit9GIeM69yL2Q+kgaayQ47MWynmRDsWqheDkNF
+	XqX6lVZdQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFHzU-0005bQ-9T; Mon, 07 Sep 2020 14:19:28 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kFHzZ-0005d2-SV; Mon, 07 Sep 2020 14:19:33 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFHzQ-0005ZC-3I
- for linux-rockchip@lists.infradead.org; Mon, 07 Sep 2020 14:19:25 +0000
+ id 1kFHzX-0005bM-8V
+ for linux-rockchip@lists.infradead.org; Mon, 07 Sep 2020 14:19:32 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id B3AD62988AF
-Subject: Re: [PATCH v4 05/10] media: staging: rkisp1: add capability
- V4L2_CAP_IO_MC to capture devices
+ (Authenticated sender: koike) with ESMTPSA id 16CEB2988B2
+Subject: Re: [PATCH v4 06/10] media: staging: rkisp1: add a helper function to
+ enumerate supported mbus formats on capture
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
  linux-media@vger.kernel.org
 References: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
- <20200901111612.10552-6-dafna.hirschfeld@collabora.com>
+ <20200901111612.10552-7-dafna.hirschfeld@collabora.com>
 From: Helen Koike <helen.koike@collabora.com>
-Message-ID: <641fae10-269c-c597-a8bf-9969a23580ec@collabora.com>
-Date: Mon, 7 Sep 2020 11:19:11 -0300
+Message-ID: <a275c902-4dda-a06b-fc11-1acb40115ca2@collabora.com>
+Date: Mon, 7 Sep 2020 11:19:19 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200901111612.10552-6-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20200901111612.10552-7-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200907_101924_316651_6CEB5AEE 
-X-CRM114-Status: GOOD (  24.65  )
+X-CRM114-CacheID: sfid-20200907_101931_477624_E0325711 
+X-CRM114-Status: GOOD (  27.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,294 +82,190 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 
 On 9/1/20 8:16 AM, Dafna Hirschfeld wrote:
-> The capture devices supports YUV, RGB, and Bayer formats.
-> Adding V4L2_CAP_IO_MC capability will reflect userspace
-> what format should be set on the resizer in order to stream
-> each of the video formats.
-> 
-> The patch adds a 'mbus' field to the struct
-> 'rkisp1_capture_fmt_cfg' which maps the video format
-> to the needed mbus format.
+> Add a function 'rkisp1_cap_enum_mbus_codes' that receive
+> a pointer to 'v4l2_subdev_mbus_code_enum' and returns the
+> next supported mbus format of the capture. The function
+> assumes that pixel formats with identical 'mbus' are grouped
+> together in the hardcoded arrays, therefore the order of the
+> entries in the array 'rkisp1_sp_fmts' are adjusted.
+> This function is a helper for the media bus enumeration of
+> the source pad of the resizer entity.
 > 
 > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 86 +++++++++++++------
+>  drivers/staging/media/rkisp1/rkisp1-common.h  | 11 +++
+>  2 files changed, 70 insertions(+), 27 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> index d23c9adc8201..531381e1801a 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> @@ -84,6 +84,10 @@ struct rkisp1_capture_config {
+>  	} mi;
+>  };
+>  
+> +/*
+> + * The supported pixel formats for mainpath. NOTE, pixel formats with identical 'mbus'
+> + * are grouped together. This is assumed and used by the function rkisp1_cap_enum_mbus_codes
+> + */
+>  static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
+>  	/* yuv422 */
+>  	{
+> @@ -112,6 +116,13 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
+>  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+>  	},
+> +	/* yuv400 */
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_GREY,
+> +		.uv_swap = 0,
+> +		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+> +	},
+>  	/* yuv420 */
+>  	{
+>  		.fourcc = V4L2_PIX_FMT_NV21,
+> @@ -144,13 +155,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
+>  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
+>  		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
+>  	},
+> -	/* yuv400 */
+> -	{
+> -		.fourcc = V4L2_PIX_FMT_GREY,
+> -		.uv_swap = 0,
+> -		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+> -		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+> -	},
+>  	/* raw */
+>  	{
+>  		.fourcc = V4L2_PIX_FMT_SRGGB8,
+> @@ -203,6 +207,10 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
+>  	},
+>  };
+>  
+> +/*
+> + * The supported pixel formats for selfpath. NOTE, pixel formats with identical 'mbus'
+> + * are grouped together. This is assumed and used by the function rkisp1_cap_enum_mbus_codes
+> + */
+>  static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>  	/* yuv422 */
+>  	{
+> @@ -236,6 +244,26 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+>  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+>  	},
+> +	/* yuv400 */
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_GREY,
+> +		.uv_swap = 0,
+> +		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+> +		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
+> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+> +	},
+> +	/* rgb */
+> +	{
+> +		.fourcc = V4L2_PIX_FMT_XBGR32,
+> +		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+> +		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
+> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+> +	}, {
+> +		.fourcc = V4L2_PIX_FMT_RGB565,
+> +		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+> +		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB565,
+> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+> +	},
+>  	/* yuv420 */
+>  	{
+>  		.fourcc = V4L2_PIX_FMT_NV21,
+> @@ -274,26 +302,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
+>  		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
+>  	},
+> -	/* yuv400 */
+> -	{
+> -		.fourcc = V4L2_PIX_FMT_GREY,
+> -		.uv_swap = 0,
+> -		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+> -		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
+> -		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+> -	},
+> -	/* rgb */
+> -	{
+> -		.fourcc = V4L2_PIX_FMT_XBGR32,
+> -		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+> -		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
+> -		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+> -	}, {
+> -		.fourcc = V4L2_PIX_FMT_RGB565,
+> -		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
+> -		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB565,
+> -		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
+> -	},
+>  };
+>  
+>  static const struct rkisp1_capture_config rkisp1_capture_config_mp = {
+> @@ -334,6 +342,30 @@ rkisp1_vdev_to_node(struct video_device *vdev)
+>  	return container_of(vdev, struct rkisp1_vdev_node, vdev);
+>  }
+>  
+> +int rkisp1_cap_enum_mbus_codes(struct rkisp1_capture *cap,
+> +			       struct v4l2_subdev_mbus_code_enum *code)
+> +{
+> +	const struct rkisp1_capture_fmt_cfg *fmts = cap->config->fmts;
+> +	/*
+> +	 * initialize curr_mbus to non existing mbus code 0 to ensure it is
+> +	 * different from fmts[0].mbus
+> +	 */
+> +	u32 curr_mbus = 0;
+> +	int i, n = 0;
+
+unsigned
 
 Acked-by: Helen Koike <helen.koike@collabora.com>
 
 Thanks
 Helen
 
-> ---
->  drivers/staging/media/rkisp1/rkisp1-capture.c | 65 +++++++++++++++++--
->  1 file changed, 59 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> index 22da94a9baf1..d23c9adc8201 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> @@ -49,12 +49,14 @@ enum rkisp1_plane {
->   * @uv_swap: if cb cr swaped, for yuv
->   * @write_format: defines how YCbCr self picture data is written to memory
->   * @output_format: defines sp output format
-> + * @mbus: the mbus code on the src resizer pad that matches the pixel format
->   */
->  struct rkisp1_capture_fmt_cfg {
->  	u32 fourcc;
->  	u8 uv_swap;
->  	u32 write_format;
->  	u32 output_format;
-> +	u32 mbus;
->  };
->  
->  struct rkisp1_capture_ops {
-> @@ -88,92 +90,116 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
->  		.fourcc = V4L2_PIX_FMT_YUYV,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV422P,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV16,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV61,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YVU422M,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	},
->  	/* yuv420 */
->  	{
->  		.fourcc = V4L2_PIX_FMT_NV21,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV12,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV21M,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV12M,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_SPLA,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV420,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YVU420,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	},
->  	/* yuv400 */
->  	{
->  		.fourcc = V4L2_PIX_FMT_GREY,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	},
->  	/* raw */
->  	{
->  		.fourcc = V4L2_PIX_FMT_SRGGB8,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> +		.mbus = MEDIA_BUS_FMT_SRGGB8_1X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGRBG8,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> +		.mbus = MEDIA_BUS_FMT_SGRBG8_1X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGBRG8,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> +		.mbus = MEDIA_BUS_FMT_SGBRG8_1X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SBGGR8,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
-> +		.mbus = MEDIA_BUS_FMT_SBGGR8_1X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SRGGB10,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> +		.mbus = MEDIA_BUS_FMT_SRGGB10_1X10,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGRBG10,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> +		.mbus = MEDIA_BUS_FMT_SGRBG10_1X10,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGBRG10,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> +		.mbus = MEDIA_BUS_FMT_SGBRG10_1X10,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SBGGR10,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> +		.mbus = MEDIA_BUS_FMT_SBGGR10_1X10,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SRGGB12,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> +		.mbus = MEDIA_BUS_FMT_SRGGB12_1X12,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGRBG12,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> +		.mbus = MEDIA_BUS_FMT_SGRBG12_1X12,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SGBRG12,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> +		.mbus = MEDIA_BUS_FMT_SGBRG12_1X12,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_SBGGR12,
->  		.write_format = RKISP1_MI_CTRL_MP_WRITE_RAW12,
-> +		.mbus = MEDIA_BUS_FMT_SBGGR12_1X12,
->  	},
->  };
->  
-> @@ -184,26 +210,31 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV422P,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV16,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV61,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YVU422M,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	},
->  	/* yuv420 */
->  	{
-> @@ -211,31 +242,37 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV12,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV21M,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_NV12M,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_SPLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YUV420,
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_YVU420,
->  		.uv_swap = 1,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV420,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_1_5X8,
->  	},
->  	/* yuv400 */
->  	{
-> @@ -243,16 +280,19 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  		.uv_swap = 0,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	},
->  	/* rgb */
->  	{
->  		.fourcc = V4L2_PIX_FMT_XBGR32,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB888,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	}, {
->  		.fourcc = V4L2_PIX_FMT_RGB565,
->  		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_RGB565,
-> +		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	},
->  };
->  
-> @@ -1106,14 +1146,27 @@ static int rkisp1_enum_fmt_vid_cap_mplane(struct file *file, void *priv,
->  {
->  	struct rkisp1_capture *cap = video_drvdata(file);
->  	const struct rkisp1_capture_fmt_cfg *fmt = NULL;
-> +	unsigned int i, n = 0;
->  
-> -	if (f->index >= cap->config->fmt_size)
-> -		return -EINVAL;
-> +	if (!f->mbus_code) {
-> +		if (f->index >= cap->config->fmt_size)
-> +			return -EINVAL;
->  
-> -	fmt = &cap->config->fmts[f->index];
-> -	f->pixelformat = fmt->fourcc;
-> +		fmt = &cap->config->fmts[f->index];
-> +		f->pixelformat = fmt->fourcc;
-> +		return 0;
-> +	}
->  
-> -	return 0;
+> +
 > +	for (i = 0; i < cap->config->fmt_size; i++) {
-> +		if (cap->config->fmts[i].mbus != f->mbus_code)
+> +		if (fmts[i].mbus == curr_mbus)
 > +			continue;
 > +
-> +		if (n++ == f->index) {
-> +			f->pixelformat = cap->config->fmts[i].fourcc;
+> +		curr_mbus = fmts[i].mbus;
+> +		if (n++ == code->index) {
+> +			code->code = curr_mbus;
 > +			return 0;
 > +		}
 > +	}
 > +	return -EINVAL;
+> +}
+> +
+>  /* ----------------------------------------------------------------------------
+>   * Stream operations for self-picture path (sp) and main-picture path (mp)
+>   */
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+> index 992d8ec4c448..8cdfcaab268e 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
+> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+> @@ -410,6 +410,17 @@ static inline u32 rkisp1_read(struct rkisp1_device *rkisp1, unsigned int addr)
+>  	return readl(rkisp1->base_addr + addr);
 >  }
 >  
->  static int rkisp1_s_fmt_vid_cap_mplane(struct file *file,
-> @@ -1261,7 +1314,7 @@ static int rkisp1_register_capture(struct rkisp1_capture *cap)
->  	vdev->v4l2_dev = v4l2_dev;
->  	vdev->lock = &node->vlock;
->  	vdev->device_caps = V4L2_CAP_VIDEO_CAPTURE_MPLANE |
-> -			    V4L2_CAP_STREAMING;
-> +			    V4L2_CAP_STREAMING | V4L2_CAP_IO_MC;
->  	vdev->entity.ops = &rkisp1_media_ops;
->  	video_set_drvdata(vdev, cap);
->  	vdev->vfl_dir = VFL_DIR_RX;
+> +/*
+> + * rkisp1_cap_enum_mbus_codes - A helper function that return the i'th supported mbus code
+> + *				of the capture entity. This is used to enumerate the supported
+> + *				mbus codes on the source pad of the resizer.
+> + *
+> + * @cap:  the capture entity
+> + * @code: the mbus code, the function reads the code->index and fills the code->code
+> + */
+> +int rkisp1_cap_enum_mbus_codes(struct rkisp1_capture *cap,
+> +			       struct v4l2_subdev_mbus_code_enum *code);
+> +
+>  /*
+>   * rkisp1_sd_adjust_crop_rect - adjust a rectangle to fit into another rectangle.
+>   *
 > 
 
 _______________________________________________
