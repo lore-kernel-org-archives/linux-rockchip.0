@@ -2,79 +2,94 @@ Return-Path: <SRS0=+8lW=CR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5809EC2BC11
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2020 20:34:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 88A85C433E2
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2020 22:43:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 146D9208FE
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2020 20:34:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0FB9120757
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2020 22:43:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Sauu/CBt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 146D9208FE
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KaQSFTjr";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tcd-ie.20150623.gappssmtp.com header.i=@tcd-ie.20150623.gappssmtp.com header.b="cMCk0lKz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0FB9120757
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=tcd.ie
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ooDY5EB4dyoT7XOOJ2wT6tCmLIvyiDoBOYmu6tkTsEc=; b=Sauu/CBtyy147yZNCfK/YYlUC
-	z/ruIrUHFUmkBZ/494/+R88Pk9cFrpkvuC91kKo3jhAuYAbsi9PbxLtR8r0kViZ0BK0SDnbADPxga
-	PJ9hI3RUpe6IhEYF0ZBfHFsxCLLsdSyN9Uaq2mEZVVbZJX7wezZKPHBua/qX8x+eimJ6lstFXbUi0
-	2hQVnYAQESisQfUHvY1ZkItz5LsvthajC5Tkh7JbO5D1ArziW/HgdGxnfbGZVgO20PqkXI82cPRPA
-	u68S2zmTpEcVKMEw0ov5JguEM4XRsKwKMlu+bxQIe/AI8aalYd6/76mgcqCG57/hZVmkgLVoqch0Y
-	KKRLCybzw==;
+	 bh=tkUbHPai7O+yZXHMG8kTbD3J4d+nibLA/Te8tUsyL9c=; b=KaQSFTjrrUELKa5lcqgobpHl7
+	eVjjlmYQaKElwvD97qFn3uq7KvTxrvQZ10QPmjOIgv04JoHZ1Ses4fRVtC+K8UI7hukr8lGpBsSUm
+	L5szfRHvLpxOcz9zeGrANRkNWvY9Xjncuo25eASC6oH3lNetUAHNr1Pr25gc6jC8y1Y/FbGlhl6q2
+	cINnnfQ1HxHBaQ/2swMV8UrkP2Es0Jyvb/yjwZscfGtBTdAQHmAogY8shINdPFh0VKyJfJei173/N
+	a55U7VFR26P9z4zqxiEGvVi0A6bn5dXy5GT5x+Pqw8EXXq74EDwpBTijI5oyspjt0F3OvjnHAIHl4
+	zcyGDE8ZA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFkJd-00040I-Eh; Tue, 08 Sep 2020 20:34:09 +0000
-Received: from mail-il1-f196.google.com ([209.85.166.196])
+	id 1kFmKy-0004up-6t; Tue, 08 Sep 2020 22:43:40 +0000
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFkJX-0003yv-In; Tue, 08 Sep 2020 20:34:04 +0000
-Received: by mail-il1-f196.google.com with SMTP id t13so185823ile.9;
- Tue, 08 Sep 2020 13:34:03 -0700 (PDT)
+ id 1kFmKt-0004sB-2h
+ for linux-rockchip@lists.infradead.org; Tue, 08 Sep 2020 22:43:36 +0000
+Received: by mail-il1-x144.google.com with SMTP id u20so499914ilk.6
+ for <linux-rockchip@lists.infradead.org>; Tue, 08 Sep 2020 15:43:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=tcd-ie.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kP3fRBjvfm91Lgym+an8BHFQ2PuoWlJ3si63rQdbN8c=;
+ b=cMCk0lKzNfxAMTO2UkKJ0lXqynPZojKcMVW8pVBD0mlICjkRQgjWFrGN9QLlhQkHwT
+ /1hBT7NZs2Gr3ljH38g6Vgva0RGAIwKBL2lof8SnGTM7KVvDmeSc64CAB5ZYI51ye64A
+ myig/VRQXeaoQ2s/61egtsT7H1YfnYF00beULBHNwfkxORoyxD3tpyeCI6Vv4fXW9aiB
+ GZnJVGUOtP0w4hIktrh22UQPPwcXtPBeUim5uFhP4e860zMBj/sx+nCWMoR6wglWGBae
+ T9aUpzVxoJnsq7orTcIcavPOpRMVeH9o5ow658uO6j6bws7ZRAzwVfQXC+uLjcXt9vgh
+ eYDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=gleTakc4Nn6mTISuQkejPMu6ISZTqy+j8/Bxw7G61oU=;
- b=GhskKucbKKritiO7iI5YJW9P3Yxn6WpSBgf1r26GI0u3WCk4kVbosfoD7gZh1QPQLo
- jcrnZoN8/KpGQQMpgUsWJAI5h5crveM7/rSNB+9qLSzsuc/QPpuAKzzYtTtFq/OE6EGR
- ugz3UPClm42Qsbju93O+aHBbJRKdHx+wkrLO+db1R5Yy/MlBhhef5pwAfmxpRcRL1AOL
- HGLbZpInunO7K1+fQzQdU39o4npaqGSRDbcYBr5aJ9l8glUJFCHLfA1vTp3C8lIEVjuf
- ZVO8UVX1hWdWQOqn/lnL6juLngUZ9YHaG88Y2OGcAXapO6p/bd0Jlnh9RPtuz1CMZ4iL
- iwMA==
-X-Gm-Message-State: AOAM532ifTDaR79/L0t6sCL5BCVCaXzIxBqrJ+1sbqP9WAGe37u3pMwm
- 9KzAgk8avbE2TtmDW3IkYQ==
-X-Google-Smtp-Source: ABdhPJzCHoj/ZvrJj7t400J/VsMUBFrd75e5tcT3ln+3OZZL67b775TNHUe3xKteGxNcW5bAkZ322A==
-X-Received: by 2002:a92:c049:: with SMTP id o9mr483817ilf.193.1599597242634;
- Tue, 08 Sep 2020 13:34:02 -0700 (PDT)
-Received: from xps15 ([64.188.179.251])
- by smtp.gmail.com with ESMTPSA id k14sm217738ioa.7.2020.09.08.13.33.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2020 13:34:02 -0700 (PDT)
-Received: (nullmailer pid 868500 invoked by uid 1000);
- Tue, 08 Sep 2020 20:33:57 -0000
-Date: Tue, 8 Sep 2020 14:33:57 -0600
-From: Rob Herring <robh@kernel.org>
-To: Cheng-Yi Chiang <cychiang@chromium.org>
-Subject: Re: [PATCH v7 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
- bindings
-Message-ID: <20200908203357.GA861143@bogus>
-References: <20200907100039.1731457-1-cychiang@chromium.org>
- <20200907100039.1731457-3-cychiang@chromium.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kP3fRBjvfm91Lgym+an8BHFQ2PuoWlJ3si63rQdbN8c=;
+ b=o7WPp4d96Ck8nJ8JilEOEiM711Ag/R5Pk55gUbowXnVOyj61iBhaZ55bjrA0llCKaB
+ Sd5Me/hyE8iDv6V86In5aV2j9ESYwMk/H0xL4JqQ4xwRbda+tPEfnYxTGhJLP6DhMKsd
+ GDEJ7m/inbIt3XqONXtDanibLCFZN/ovCbkOjslIxYEHwk+nAFwW2X/8Flh4wULbCtMs
+ 493bcNX7GDaqF/Fv2SqB9QQcqR7c9a4GOpyT0r8uT2FXFFzG57l6fbUrAAA0w067cTEA
+ wW70y9ptDxAWy5+xA4wc56t1vEydYu07ShF2sEx8Fq+/55icXIxN8EnJ9B+47CJ5iJzp
+ DVzQ==
+X-Gm-Message-State: AOAM531umQpFOBi3UeQWqHa0hjiPDNNp9HbsXJDBiFf346J7H6vrY9BA
+ xWLVJarK6YilWySLt79oBsjjE0GCohTfucn3qc0OVg==
+X-Google-Smtp-Source: ABdhPJy2euDOe9gR5D2dH2jq/gUSw+Ds2//IpXgtG+LSuaTtkhuhiIiGtc0UENWkqIWHIiGMHapySfCTPJbwaFtJHWw=
+X-Received: by 2002:a92:9408:: with SMTP id c8mr928626ili.61.1599605010111;
+ Tue, 08 Sep 2020 15:43:30 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200907100039.1731457-3-cychiang@chromium.org>
+References: <20191221150402.13868-1-murphyt7@tcd.ie>
+ <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
+ <20200529124523.GA11817@infradead.org>
+ <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
+ <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
+ <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
+ <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
+ <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
+ <766525c3-4da9-6db7-cd90-fb4b82cd8083@deltatee.com>
+ <60a82319-cbee-4cd1-0d5e-3c407cc51330@linux.intel.com>
+ <e598fb31-ef7a-c2ee-8a54-bf62d50c480c@deltatee.com>
+ <b27cae1f-07ff-bef2-f125-a5f0d968016d@linux.intel.com>
+In-Reply-To: <b27cae1f-07ff-bef2-f125-a5f0d968016d@linux.intel.com>
+From: Tom Murphy <murphyt7@tcd.ie>
+Date: Tue, 8 Sep 2020 23:43:19 +0100
+Message-ID: <CALQxJut5c=cWdi+SVkN3JnbkhPSYmLkOyRUhduL-UJ9gyKn9Ow@mail.gmail.com>
+Subject: Re: [Intel-gfx] [PATCH 0/8] Convert the intel iommu driver to the
+ dma-iommu api
+To: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200908_163403_641042_78C6E0A9 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20200908_184335_165820_33623528 
+X-CRM114-Status: GOOD (  25.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,82 +102,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Taniya Das <tdas@codeaurora.org>, alsa-devel@alsa-project.org,
- Banajit Goswami <bgoswami@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
- Takashi Iwai <tiwai@suse.com>, Rohit kumar <rohitkr@codeaurora.org>,
- Patrick Lai <plai@codeaurora.org>, linux-rockchip@lists.infradead.org,
- Andy Gross <agross@kernel.org>, dgreid@chromium.org,
- Jaroslav Kysela <perex@perex.cz>, devicetree@vger.kernel.org,
- tzungbi@chromium.org, Stephan Gerhold <stephan@gerhold.net>,
- linux-arm-msm@vger.kernel.org, Mark Brown <broonie@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- linux-arm-kernel@lists.infradead.org, dianders@chromium.org,
- Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
- Srini Kandagatla <srinivas.kandagatla@linaro.org>
+Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
+ dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Julien Grall <julien.grall@arm.com>,
+ Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
+ Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, Robin Murphy <robin.murphy@arm.com>,
+ linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
+ Thomas Gleixner <tglx@linutronix.de>,
+ virtualization@lists.linux-foundation.org,
+ linux-arm-kernel@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
+ Logan Gunthorpe <logang@deltatee.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 07, 2020 at 06:00:38PM +0800, Cheng-Yi Chiang wrote:
-> Add devicetree bindings documentation file for sc7180 sound card.
-> 
-> Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> ---
->  .../bindings/sound/qcom,sc7180.yaml           | 143 ++++++++++++++++++
->  1 file changed, 143 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> new file mode 100644
-> index 000000000000..ae809346ca80
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> @@ -0,0 +1,143 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/qcom,sc7180.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Qualcomm Technologies Inc. SC7180 ASoC sound card driver
-> +
-> +maintainers:
-> +  - Rohit kumar <rohitkr@codeaurora.org>
-> +  - Cheng-Yi Chiang <cychiang@chromium.org>
-> +
-> +description:
-> +  This binding describes the SC7180 sound card which uses LPASS for audio.
-> +
-> +properties:
-> +  compatible:
-> +    const: qcom,sc7180-sndcard
-> +
-> +  audio-routing:
-> +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
-> +    description:
-> +      A list of the connections between audio components. Each entry is a
-> +      pair of strings, the first being the connection's sink, the second
-> +      being the connection's source.
-> +
-> +  model:
-> +    $ref: /schemas/types.yaml#/definitions/string
-> +    description: User specified audio sound card name
-> +
-> +  headset-jack:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: phandle of the codec for headset detection
-> +
-> +  hdmi-jack:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: phandle of the codec for hdmi jack detection
+On Tue, 8 Sep 2020 at 16:56, Tvrtko Ursulin
+<tvrtko.ursulin@linux.intel.com> wrote:
+>
+>
+> On 08/09/2020 16:44, Logan Gunthorpe wrote:
+> > On 2020-09-08 9:28 a.m., Tvrtko Ursulin wrote:
+> >>>
+> >>> diff --git a/drivers/gpu/drm/i915/i915_scatterlist.h
+> >>> b/drivers/gpu/drm/i915/i915
+> >>> index b7b59328cb76..9367ac801f0c 100644
+> >>> --- a/drivers/gpu/drm/i915/i915_scatterlist.h
+> >>> +++ b/drivers/gpu/drm/i915/i915_scatterlist.h
+> >>> @@ -27,13 +27,19 @@ static __always_inline struct sgt_iter {
+> >>>    } __sgt_iter(struct scatterlist *sgl, bool dma) {
+> >>>           struct sgt_iter s = { .sgp = sgl };
+> >>>
+> >>> +       if (sgl && !sg_dma_len(s.sgp))
+> >>
+> >> I'd extend the condition to be, just to be safe:
+> >>      if (dma && sgl && !sg_dma_len(s.sgp))
+> >>
+> >
+> > Right, good catch, that's definitely necessary.
+> >
+> >>> +               s.sgp = NULL;
+> >>> +
+> >>>           if (s.sgp) {
+> >>>                   s.max = s.curr = s.sgp->offset;
+> >>> -               s.max += s.sgp->length;
+> >>> -               if (dma)
+> >>> +
+> >>> +               if (dma) {
+> >>> +                       s.max += sg_dma_len(s.sgp);
+> >>>                           s.dma = sg_dma_address(s.sgp);
+> >>> -               else
+> >>> +               } else {
+> >>> +                       s.max += s.sgp->length;
+> >>>                           s.pfn = page_to_pfn(sg_page(s.sgp));
+> >>> +               }
+> >>
+> >> Otherwise has this been tested or alternatively how to test it? (How to
+> >> repro the issue.)
+> >
+> > It has not been tested. To test it, you need Tom's patch set without the
+> > last "DO NOT MERGE" patch:
+> >
+> > https://lkml.kernel.org/lkml/20200907070035.GA25114@infradead.org/T/
+>
+> Tom, do you have a branch somewhere I could pull from? (Just being lazy
+> about downloading a bunch of messages from the archives.)
 
-You already have links to these devices. Why duplicate it here? 
+I don't unfortunately. I'm working locally with poor internet.
 
-What if you had 2 headsets? This doesn't scale.
+>
+> What GPU is in your Lenovo x1 carbon 5th generation and what
+> graphical/desktop setup I need to repro?
 
-Rob
+
+Is this enough info?:
+
+$ lspci -vnn | grep VGA -A 12
+00:02.0 VGA compatible controller [0300]: Intel Corporation HD
+Graphics 620 [8086:5916] (rev 02) (prog-if 00 [VGA controller])
+    Subsystem: Lenovo ThinkPad X1 Carbon 5th Gen [17aa:224f]
+    Flags: bus master, fast devsel, latency 0, IRQ 148
+    Memory at eb000000 (64-bit, non-prefetchable) [size=16M]
+    Memory at 60000000 (64-bit, prefetchable) [size=256M]
+    I/O ports at e000 [size=64]
+    [virtual] Expansion ROM at 000c0000 [disabled] [size=128K]
+    Capabilities: [40] Vendor Specific Information: Len=0c <?>
+    Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
+    Capabilities: [ac] MSI: Enable+ Count=1/1 Maskable- 64bit-
+    Capabilities: [d0] Power Management version 2
+    Capabilities: [100] Process Address Space ID (PASID)
+    Capabilities: [200] Address Translation Service (ATS)
+
+
+>
+> Regards,
+>
+> Tvrtko
 
 _______________________________________________
 Linux-rockchip mailing list
