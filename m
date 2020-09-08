@@ -1,63 +1,77 @@
-Return-Path: <SRS0=WHqa=CQ=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=+8lW=CR=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D2EC5C433E2
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2020 14:20:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A030C43461
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2020 02:19:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 826CB21481
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Sep 2020 14:20:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9CF0521481
+	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2020 02:19:50 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bNFHirBD"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 826CB21481
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dOXUHCBS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9CF0521481
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5lwa8XzSYBxwpASGRcGChA8CXJCizEqmwQUKkrUZ0hE=; b=bNFHirBD/hO1dVPuZgqujxDzr
-	EyD0YvIgedTM7TEvdCkAZFL2HlRiKkr/W7oIyQYSYBgqYS2sGL5D6zXcDgAtgrlrE1nCsp32PixZK
-	KmOACuBgwWIzcGmxx2IkuhV1dvUFQcAt/k+Or+01TMXy3BAt5bImyUgUxvNDj9ra8nAzE0nd4GoHL
-	92ragfhYFidA8YjvOJM1J8mtKll5m9D2zFx0gSPO6bsHBSwH2lISqzU1NVc2etmkT3Lpgcg6oJh1s
-	cM1Ks9YEwo/So6OIIhfThv3ZLy+iqOLACYOViDPkNB5b2UPIWY4RCRhH1pxn1OP1KIOXKP24p7dsK
-	AwB8cObMw==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sePKM7V3W883nLWXmJTwIVDq+cJ0R0gCq1XA6E4vRog=; b=dOXUHCBSxsoa6OmsenF24pWVHN
+	X3o6h5bsPkY74S5H5ReefI2Gdp+NeC/AkWtGEHq0QSVxa8mTBFl2DRt5x+0ipUpm3QGIf58hS2ppL
+	qbKcZhdorvmZDxpBR2EzXFDLNjR/HTll2XTxumAe618domnmnK4mFz0jTtLbwpxfI7LVdaCQOUS9v
+	9P0+i0cTYu+jY99xmnw8CVXsWGMiXmspIC5u3YU2UDKbN2WEE8z6hFgij5jkq9eLHUAHVbx1Y538h
+	hej0jMy23PA6z7AZxkXRNabBQ2PA7vr1BUlAMj7qmQZ1/Rs14F9SNHPHl/kEW2DmEjbLTAIMoA01h
+	LxLKt15A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFI00-0005mN-Hi; Mon, 07 Sep 2020 14:20:00 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kFTEQ-0004Bk-LT; Tue, 08 Sep 2020 02:19:38 +0000
+Received: from lucky1.263xmail.com ([211.157.147.132])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFHzy-0005kl-7Q
- for linux-rockchip@lists.infradead.org; Mon, 07 Sep 2020 14:19:59 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id E56E72925F1
-Subject: Re: [PATCH v4 10/10] media: staging: rkisp1: fix configuration for
- GREY pixelformat
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-media@vger.kernel.org
-References: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
- <20200901111612.10552-11-dafna.hirschfeld@collabora.com>
-From: Helen Koike <helen.koike@collabora.com>
-Message-ID: <a87930d2-f7b1-c6c7-00b8-bb8213558e3b@collabora.com>
-Date: Mon, 7 Sep 2020 11:19:50 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <20200901111612.10552-11-dafna.hirschfeld@collabora.com>
-Content-Language: en-US
+ id 1kFTEN-0004AZ-27
+ for linux-rockchip@lists.infradead.org; Tue, 08 Sep 2020 02:19:37 +0000
+Received: from localhost (unknown [192.168.167.223])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 40586EF2E7;
+ Tue,  8 Sep 2020 10:19:27 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P15471T140655955252992S1599531565014377_; 
+ Tue, 08 Sep 2020 10:19:26 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <3cd5f7e96d627ee7b6aeb9cba0db83cc>
+X-RL-SENDER: jay.xu@rock-chips.com
+X-SENDER: xjq@rock-chips.com
+X-LOGIN-NAME: jay.xu@rock-chips.com
+X-FST-TO: linus.walleij@linaro.org
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-DNS-TYPE: 0
+X-System-Flag: 0
+From: Jianqun Xu <jay.xu@rock-chips.com>
+To: linus.walleij@linaro.org,
+	heiko@sntech.de
+Subject: [PATCH] pinctrl: rockchip: populate platform device for rockchip gpio
+Date: Tue,  8 Sep 2020 10:19:13 +0800
+Message-Id: <20200908021913.21556-1-jay.xu@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200907033808.10211-1-jay.xu@rock-chips.com>
+References: <20200907033808.10211-1-jay.xu@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200907_101958_368363_783AE7CB 
-X-CRM114-Status: GOOD (  17.83  )
+X-CRM114-CacheID: sfid-20200907_221935_565126_5BB184EE 
+X-CRM114-Status: GOOD (  20.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,68 +84,425 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
- hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com,
- kernel@collabora.com, ezequiel@collabora.com
+Cc: linux-gpio@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Register both gpio driver and device as part of driver model, so that
+the '-gpio'/'-gpios' dependency in dts can be correctly handled by
+of_devlink/of_fwlink.
+
+Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 305 +++++++++++++++++------------
+ 1 file changed, 175 insertions(+), 130 deletions(-)
+
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index c98bd352f831..2e4fc711d0d1 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -3370,139 +3370,121 @@ static void rockchip_irq_disable(struct irq_data *d)
+ }
+ 
+ static int rockchip_interrupts_register(struct platform_device *pdev,
+-						struct rockchip_pinctrl *info)
++						struct rockchip_pin_bank *bank)
+ {
+-	struct rockchip_pin_ctrl *ctrl = info->ctrl;
+-	struct rockchip_pin_bank *bank = ctrl->pin_banks;
+ 	unsigned int clr = IRQ_NOREQUEST | IRQ_NOPROBE | IRQ_NOAUTOEN;
+ 	struct irq_chip_generic *gc;
+ 	int ret;
+-	int i;
+ 
+-	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
+-		if (!bank->valid) {
+-			dev_warn(&pdev->dev, "bank %s is not valid\n",
+-				 bank->name);
+-			continue;
+-		}
++	if (!bank->valid) {
++		dev_warn(&pdev->dev, "bank %s is not valid\n",
++			 bank->name);
++		return -EINVAL;
++	}
+ 
+-		ret = clk_enable(bank->clk);
+-		if (ret) {
+-			dev_err(&pdev->dev, "failed to enable clock for bank %s\n",
+-				bank->name);
+-			continue;
+-		}
++	ret = clk_enable(bank->clk);
++	if (ret) {
++		dev_err(&pdev->dev, "failed to enable clock for bank %s\n",
++			bank->name);
++		return ret;
++	}
+ 
+-		bank->domain = irq_domain_add_linear(bank->of_node, 32,
+-						&irq_generic_chip_ops, NULL);
+-		if (!bank->domain) {
+-			dev_warn(&pdev->dev, "could not initialize irq domain for bank %s\n",
+-				 bank->name);
+-			clk_disable(bank->clk);
+-			continue;
+-		}
++	bank->domain = irq_domain_add_linear(bank->of_node, 32,
++					&irq_generic_chip_ops, NULL);
++	if (!bank->domain) {
++		dev_warn(&pdev->dev, "could not initialize irq domain for bank %s\n",
++			 bank->name);
++		clk_disable(bank->clk);
++		return -EINVAL;
++	}
+ 
+-		ret = irq_alloc_domain_generic_chips(bank->domain, 32, 1,
+-					 "rockchip_gpio_irq", handle_level_irq,
+-					 clr, 0, 0);
+-		if (ret) {
+-			dev_err(&pdev->dev, "could not alloc generic chips for bank %s\n",
+-				bank->name);
+-			irq_domain_remove(bank->domain);
+-			clk_disable(bank->clk);
+-			continue;
+-		}
++	ret = irq_alloc_domain_generic_chips(bank->domain, 32, 1,
++				 "rockchip_gpio_irq", handle_level_irq,
++				 clr, 0, 0);
++	if (ret) {
++		dev_err(&pdev->dev, "could not alloc generic chips for bank %s\n",
++			bank->name);
++		irq_domain_remove(bank->domain);
++		clk_disable(bank->clk);
++		return ret;
++	}
+ 
+-		gc = irq_get_domain_generic_chip(bank->domain, 0);
+-		gc->reg_base = bank->reg_base;
+-		gc->private = bank;
+-		gc->chip_types[0].regs.mask = GPIO_INTMASK;
+-		gc->chip_types[0].regs.ack = GPIO_PORTS_EOI;
+-		gc->chip_types[0].chip.irq_ack = irq_gc_ack_set_bit;
+-		gc->chip_types[0].chip.irq_mask = irq_gc_mask_set_bit;
+-		gc->chip_types[0].chip.irq_unmask = irq_gc_mask_clr_bit;
+-		gc->chip_types[0].chip.irq_enable = rockchip_irq_enable;
+-		gc->chip_types[0].chip.irq_disable = rockchip_irq_disable;
+-		gc->chip_types[0].chip.irq_set_wake = irq_gc_set_wake;
+-		gc->chip_types[0].chip.irq_suspend = rockchip_irq_suspend;
+-		gc->chip_types[0].chip.irq_resume = rockchip_irq_resume;
+-		gc->chip_types[0].chip.irq_set_type = rockchip_irq_set_type;
+-		gc->wake_enabled = IRQ_MSK(bank->nr_pins);
++	gc = irq_get_domain_generic_chip(bank->domain, 0);
++	gc->reg_base = bank->reg_base;
++	gc->private = bank;
++	gc->chip_types[0].regs.mask = GPIO_INTMASK;
++	gc->chip_types[0].regs.ack = GPIO_PORTS_EOI;
++	gc->chip_types[0].chip.irq_ack = irq_gc_ack_set_bit;
++	gc->chip_types[0].chip.irq_mask = irq_gc_mask_set_bit;
++	gc->chip_types[0].chip.irq_unmask = irq_gc_mask_clr_bit;
++	gc->chip_types[0].chip.irq_enable = rockchip_irq_enable;
++	gc->chip_types[0].chip.irq_disable = rockchip_irq_disable;
++	gc->chip_types[0].chip.irq_set_wake = irq_gc_set_wake;
++	gc->chip_types[0].chip.irq_suspend = rockchip_irq_suspend;
++	gc->chip_types[0].chip.irq_resume = rockchip_irq_resume;
++	gc->chip_types[0].chip.irq_set_type = rockchip_irq_set_type;
++	gc->wake_enabled = IRQ_MSK(bank->nr_pins);
+ 
+-		/*
+-		 * Linux assumes that all interrupts start out disabled/masked.
+-		 * Our driver only uses the concept of masked and always keeps
+-		 * things enabled, so for us that's all masked and all enabled.
+-		 */
+-		writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTMASK);
+-		writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTEN);
+-		gc->mask_cache = 0xffffffff;
++	/*
++	 * Linux assumes that all interrupts start out disabled/masked.
++	 * Our driver only uses the concept of masked and always keeps
++	 * things enabled, so for us that's all masked and all enabled.
++	 */
++	writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTMASK);
++	writel_relaxed(0xffffffff, bank->reg_base + GPIO_INTEN);
++	gc->mask_cache = 0xffffffff;
+ 
+-		irq_set_chained_handler_and_data(bank->irq,
+-						 rockchip_irq_demux, bank);
+-		clk_disable(bank->clk);
+-	}
++	irq_set_chained_handler_and_data(bank->irq,
++					 rockchip_irq_demux, bank);
++	clk_disable(bank->clk);
+ 
+ 	return 0;
+ }
+ 
+ static int rockchip_gpiolib_register(struct platform_device *pdev,
+-						struct rockchip_pinctrl *info)
++						struct rockchip_pin_bank *bank)
+ {
+-	struct rockchip_pin_ctrl *ctrl = info->ctrl;
+-	struct rockchip_pin_bank *bank = ctrl->pin_banks;
+ 	struct gpio_chip *gc;
+ 	int ret;
+-	int i;
+ 
+-	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
+-		if (!bank->valid) {
+-			dev_warn(&pdev->dev, "bank %s is not valid\n",
+-				 bank->name);
+-			continue;
+-		}
++	if (!bank->valid) {
++		dev_err(&pdev->dev, "bank %s is not valid\n", bank->name);
++		return -EINVAL;
++	}
+ 
+-		bank->gpio_chip = rockchip_gpiolib_chip;
++	bank->gpio_chip = rockchip_gpiolib_chip;
+ 
+-		gc = &bank->gpio_chip;
+-		gc->base = bank->pin_base;
+-		gc->ngpio = bank->nr_pins;
+-		gc->parent = &pdev->dev;
+-		gc->of_node = bank->of_node;
+-		gc->label = bank->name;
++	gc = &bank->gpio_chip;
++	gc->base = bank->pin_base;
++	gc->ngpio = bank->nr_pins;
++	gc->parent = &pdev->dev;
++	gc->of_node = bank->of_node;
++	gc->label = bank->name;
+ 
+-		ret = gpiochip_add_data(gc, bank);
+-		if (ret) {
+-			dev_err(&pdev->dev, "failed to register gpio_chip %s, error code: %d\n",
+-							gc->label, ret);
+-			goto fail;
+-		}
++	ret = gpiochip_add_data(gc, bank);
++	if (ret) {
++		dev_err(&pdev->dev, "failed to register %s (%d)\n", gc->label, ret);
++		return ret;
+ 	}
+ 
+-	rockchip_interrupts_register(pdev, info);
++	if (!of_property_read_bool(bank->of_node, "gpio-ranges")) {
++		struct device *parent = pdev->dev.parent;
++		struct rockchip_pinctrl *info = dev_get_drvdata(parent);
++		struct pinctrl_dev *pctldev;
+ 
+-	return 0;
++		if (!info)
++			return -ENODATA;
+ 
+-fail:
+-	for (--i, --bank; i >= 0; --i, --bank) {
+-		if (!bank->valid)
+-			continue;
+-		gpiochip_remove(&bank->gpio_chip);
+-	}
+-	return ret;
+-}
+-
+-static int rockchip_gpiolib_unregister(struct platform_device *pdev,
+-						struct rockchip_pinctrl *info)
+-{
+-	struct rockchip_pin_ctrl *ctrl = info->ctrl;
+-	struct rockchip_pin_bank *bank = ctrl->pin_banks;
+-	int i;
++		pctldev = info->pctl_dev;
++		if (!pctldev)
++			return -ENODEV;
+ 
+-	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
+-		if (!bank->valid)
+-			continue;
+-		gpiochip_remove(&bank->gpio_chip);
++		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0, gc->base, gc->ngpio);
++		if (ret) {
++			dev_err(&pdev->dev, "Failed to add pin range\n");
++			gpiochip_remove(&bank->gpio_chip);
++			return ret;
++		}
+ 	}
+ 
+ 	return 0;
+@@ -3571,7 +3553,6 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
+ {
+ 	const struct of_device_id *match;
+ 	struct device_node *node = pdev->dev.of_node;
+-	struct device_node *np;
+ 	struct rockchip_pin_ctrl *ctrl;
+ 	struct rockchip_pin_bank *bank;
+ 	int grf_offs, pmu_offs, drv_grf_offs, drv_pmu_offs, i, j;
+@@ -3579,23 +3560,6 @@ static struct rockchip_pin_ctrl *rockchip_pinctrl_get_soc_data(
+ 	match = of_match_node(rockchip_pinctrl_dt_match, node);
+ 	ctrl = (struct rockchip_pin_ctrl *)match->data;
+ 
+-	for_each_child_of_node(node, np) {
+-		if (!of_find_property(np, "gpio-controller", NULL))
+-			continue;
+-
+-		bank = ctrl->pin_banks;
+-		for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
+-			if (!strcmp(bank->name, np->name)) {
+-				bank->of_node = np;
+-
+-				if (!rockchip_get_bank_data(bank, d))
+-					bank->valid = true;
+-
+-				break;
+-			}
+-		}
+-	}
+-
+ 	grf_offs = ctrl->grf_mux_offset;
+ 	pmu_offs = ctrl->pmu_mux_offset;
+ 	drv_pmu_offs = ctrl->pmu_drv_offset;
+@@ -3742,6 +3706,68 @@ static int __maybe_unused rockchip_pinctrl_resume(struct device *dev)
+ static SIMPLE_DEV_PM_OPS(rockchip_pinctrl_dev_pm_ops, rockchip_pinctrl_suspend,
+ 			 rockchip_pinctrl_resume);
+ 
++static int rockchip_gpio_probe(struct platform_device *pdev)
++{
++	struct device_node *np = pdev->dev.of_node;
++	struct device *parent = pdev->dev.parent;
++	struct rockchip_pinctrl *info = dev_get_drvdata(parent);
++	struct rockchip_pin_ctrl *ctrl = info ? (info->ctrl) : NULL;
++	struct rockchip_pin_bank *bank;
++	int ret, i;
++
++	if (!info || !ctrl)
++		return -EINVAL;
++
++	if (!of_find_property(np, "gpio-controller", NULL))
++		return -ENODEV;
++
++	bank = ctrl->pin_banks;
++	for (i = 0; i < ctrl->nr_banks; ++i, ++bank) {
++		if (!strcmp(bank->name, np->name)) {
++			bank->of_node = np;
++
++			if (!rockchip_get_bank_data(bank, info))
++				bank->valid = true;
++
++			break;
++		}
++	}
++
++	if (!bank->valid) {
++		dev_info(parent, "gpio%d probed\n", bank->bank_num);
++		return -EINVAL;
++	}
++
++	bank->of_node = pdev->dev.of_node;
++
++	ret = rockchip_gpiolib_register(pdev, bank);
++	if (ret)
++		return ret;
++
++	ret = rockchip_interrupts_register(pdev, bank);
++	if (ret) {
++		gpiochip_remove(&bank->gpio_chip);
++		return ret;
++	}
++
++	platform_set_drvdata(pdev, bank);
++	dev_info(parent, "gpio%d probed\n", bank->bank_num);
++
++	return 0;
++}
++
++static int rockchip_gpio_remove(struct platform_device *pdev)
++{
++	struct rockchip_pin_bank *bank = platform_get_drvdata(pdev);
++
++	if (!bank)
++		return -EINVAL;
++
++	gpiochip_remove(&bank->gpio_chip);
++
++	return 0;
++}
++
+ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ {
+ 	struct rockchip_pinctrl *info;
+@@ -3813,17 +3839,20 @@ static int rockchip_pinctrl_probe(struct platform_device *pdev)
+ 			return PTR_ERR(info->regmap_pmu);
+ 	}
+ 
+-	ret = rockchip_gpiolib_register(pdev, info);
+-	if (ret)
+-		return ret;
+-
+ 	ret = rockchip_pinctrl_register(pdev, info);
+ 	if (ret) {
+-		rockchip_gpiolib_unregister(pdev, info);
++		dev_err(&pdev->dev, "failed to register pinctrl device\n");
+ 		return ret;
+ 	}
+ 
+ 	platform_set_drvdata(pdev, info);
++	dev_info(&pdev->dev, "pinctrl probed\n");
++
++	ret = of_platform_populate(np, rockchip_bank_match, NULL, dev);
++	if (ret) {
++		dev_err(&pdev->dev, "failed to register gpio device\n");
++		return ret;
++	}
+ 
+ 	return 0;
+ }
+@@ -4244,8 +4273,17 @@ static const struct of_device_id rockchip_pinctrl_dt_match[] = {
+ 	{},
+ };
+ 
++static struct platform_driver rockchip_gpio_driver = {
++	.probe	= rockchip_gpio_probe,
++	.remove = rockchip_gpio_remove,
++	.driver = {
++		.name	= "rockchip-gpio",
++		.of_match_table = rockchip_bank_match,
++	},
++};
++
+ static struct platform_driver rockchip_pinctrl_driver = {
+-	.probe		= rockchip_pinctrl_probe,
++	.probe	= rockchip_pinctrl_probe,
+ 	.driver = {
+ 		.name	= "rockchip-pinctrl",
+ 		.pm = &rockchip_pinctrl_dev_pm_ops,
+@@ -4255,11 +4293,18 @@ static struct platform_driver rockchip_pinctrl_driver = {
+ 
+ static int __init rockchip_pinctrl_drv_register(void)
+ {
+-	return platform_driver_register(&rockchip_pinctrl_driver);
++	int ret;
++
++	ret = platform_driver_register(&rockchip_pinctrl_driver);
++	if (ret)
++		return ret;
++
++	return platform_driver_register(&rockchip_gpio_driver);
+ }
+ 
+ static void __exit rockchip_pinctrl_drv_unregister(void)
+ {
++	platform_driver_unregister(&rockchip_gpio_driver);
+ 	platform_driver_unregister(&rockchip_pinctrl_driver);
+ }
+ 
+-- 
+2.17.1
 
 
-On 9/1/20 8:16 AM, Dafna Hirschfeld wrote:
-> This patch changes the device configuration to support capture
-> of V4L2_PIX_FMT_GREY video. The 'write_format' field of the format
-> description should be planar.
-> Also the array 'pixm->plane_fmt' that describes the planes should
-> be memset to 0 before filling it since the the cb, cr planes should
-> be 0.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
-
-Acked-by: Helen Koike <helen.koike@collabora.com>
-
-Thanks
-Helen
-
-> ---
->  drivers/staging/media/rkisp1/rkisp1-capture.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> index 79ee6795a58f..6d02cb1c9c5b 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> @@ -120,7 +120,7 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
->  	{
->  		.fourcc = V4L2_PIX_FMT_GREY,
->  		.uv_swap = 0,
-> -		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
-> +		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUV_PLA_OR_RAW8,
->  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	},
->  	/* yuv420 */
-> @@ -248,7 +248,7 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
->  	{
->  		.fourcc = V4L2_PIX_FMT_GREY,
->  		.uv_swap = 0,
-> -		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
-> +		.write_format = RKISP1_MI_CTRL_SP_WRITE_PLA,
->  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV400,
->  		.mbus = MEDIA_BUS_FMT_YUYV8_2X8,
->  	},
-> @@ -1059,6 +1059,7 @@ rkisp1_fill_pixfmt(struct v4l2_pix_format_mplane *pixm,
->  	unsigned int i;
->  	u32 stride;
->  
-> +	memset(pixm->plane_fmt, 0, sizeof(pixm->plane_fmt));
->  	info = v4l2_format_info(pixm->pixelformat);
->  	pixm->num_planes = info->mem_planes;
->  	stride = info->bpp[0] * pixm->width;
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
