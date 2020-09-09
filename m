@@ -1,95 +1,94 @@
-Return-Path: <SRS0=+8lW=CR=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=OTpZ=CS=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 88A85C433E2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2020 22:43:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EA63BC433E2
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2020 08:34:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0FB9120757
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Sep 2020 22:43:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8906A21532
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2020 08:34:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KaQSFTjr";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=tcd-ie.20150623.gappssmtp.com header.i=@tcd-ie.20150623.gappssmtp.com header.b="cMCk0lKz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0FB9120757
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=tcd.ie
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pe5p9Hxh"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8906A21532
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tkUbHPai7O+yZXHMG8kTbD3J4d+nibLA/Te8tUsyL9c=; b=KaQSFTjrrUELKa5lcqgobpHl7
-	eVjjlmYQaKElwvD97qFn3uq7KvTxrvQZ10QPmjOIgv04JoHZ1Ses4fRVtC+K8UI7hukr8lGpBsSUm
-	L5szfRHvLpxOcz9zeGrANRkNWvY9Xjncuo25eASC6oH3lNetUAHNr1Pr25gc6jC8y1Y/FbGlhl6q2
-	cINnnfQ1HxHBaQ/2swMV8UrkP2Es0Jyvb/yjwZscfGtBTdAQHmAogY8shINdPFh0VKyJfJei173/N
-	a55U7VFR26P9z4zqxiEGvVi0A6bn5dXy5GT5x+Pqw8EXXq74EDwpBTijI5oyspjt0F3OvjnHAIHl4
-	zcyGDE8ZA==;
+	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=71lBI0hqB3eUjtU0hOTSGrmODofGNC0pxMC6lj3svv8=; b=pe5p9HxhKY47yY7WRnGb9Q1X/s
+	0qAwaUeZwc/+b4JhWS0tqwd0HelYD0TUVHtyCu5H05zY/tCY/pdPtXWEDvXr+u9qFcxWZmzc8jxCF
+	wHW0IRmOSuVy6Yi5ImEg2TFkTkMS5eDYQteZEoCntFdwEsdMQ+pA4P8n7kTwxpwDrIRidXh+2lijH
+	6GgJaStEOnQcAkWhmkCvflOKbCTGG2IYd/X27dUIJ0j7FxYor4H/kSzq+o9RHak0x9ufNnrqC+i3m
+	PEShHKnBvrAq136+/adVEP97BIxhh1jq0S8hif0cHFdDLdYmCwr5iOsQsbIoGDF7zGV5NuqUNrzlP
+	nk63o5LQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFmKy-0004up-6t; Tue, 08 Sep 2020 22:43:40 +0000
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144])
+	id 1kFvYy-0005us-5l; Wed, 09 Sep 2020 08:34:44 +0000
+Received: from mail-ej1-f66.google.com ([209.85.218.66])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFmKt-0004sB-2h
- for linux-rockchip@lists.infradead.org; Tue, 08 Sep 2020 22:43:36 +0000
-Received: by mail-il1-x144.google.com with SMTP id u20so499914ilk.6
- for <linux-rockchip@lists.infradead.org>; Tue, 08 Sep 2020 15:43:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=tcd-ie.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kP3fRBjvfm91Lgym+an8BHFQ2PuoWlJ3si63rQdbN8c=;
- b=cMCk0lKzNfxAMTO2UkKJ0lXqynPZojKcMVW8pVBD0mlICjkRQgjWFrGN9QLlhQkHwT
- /1hBT7NZs2Gr3ljH38g6Vgva0RGAIwKBL2lof8SnGTM7KVvDmeSc64CAB5ZYI51ye64A
- myig/VRQXeaoQ2s/61egtsT7H1YfnYF00beULBHNwfkxORoyxD3tpyeCI6Vv4fXW9aiB
- GZnJVGUOtP0w4hIktrh22UQPPwcXtPBeUim5uFhP4e860zMBj/sx+nCWMoR6wglWGBae
- T9aUpzVxoJnsq7orTcIcavPOpRMVeH9o5ow658uO6j6bws7ZRAzwVfQXC+uLjcXt9vgh
- eYDQ==
+ id 1kFvYt-0005ti-OQ; Wed, 09 Sep 2020 08:34:40 +0000
+Received: by mail-ej1-f66.google.com with SMTP id r7so2289060ejs.11;
+ Wed, 09 Sep 2020 01:34:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kP3fRBjvfm91Lgym+an8BHFQ2PuoWlJ3si63rQdbN8c=;
- b=o7WPp4d96Ck8nJ8JilEOEiM711Ag/R5Pk55gUbowXnVOyj61iBhaZ55bjrA0llCKaB
- Sd5Me/hyE8iDv6V86In5aV2j9ESYwMk/H0xL4JqQ4xwRbda+tPEfnYxTGhJLP6DhMKsd
- GDEJ7m/inbIt3XqONXtDanibLCFZN/ovCbkOjslIxYEHwk+nAFwW2X/8Flh4wULbCtMs
- 493bcNX7GDaqF/Fv2SqB9QQcqR7c9a4GOpyT0r8uT2FXFFzG57l6fbUrAAA0w067cTEA
- wW70y9ptDxAWy5+xA4wc56t1vEydYu07ShF2sEx8Fq+/55icXIxN8EnJ9B+47CJ5iJzp
- DVzQ==
-X-Gm-Message-State: AOAM531umQpFOBi3UeQWqHa0hjiPDNNp9HbsXJDBiFf346J7H6vrY9BA
- xWLVJarK6YilWySLt79oBsjjE0GCohTfucn3qc0OVg==
-X-Google-Smtp-Source: ABdhPJy2euDOe9gR5D2dH2jq/gUSw+Ds2//IpXgtG+LSuaTtkhuhiIiGtc0UENWkqIWHIiGMHapySfCTPJbwaFtJHWw=
-X-Received: by 2002:a92:9408:: with SMTP id c8mr928626ili.61.1599605010111;
- Tue, 08 Sep 2020 15:43:30 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=vsALB+bxuuEP7Stns5jLN4qt786xLJXYhZvHFA9movY=;
+ b=TZR+ru75FR+SZ9syy3zfd0K2m0H1MfqVnkkj/N6oTRhhZkwIf5lDWdOQvFJ0zXQIZM
+ O71PaP8xyxKnmp0kZu8351V2xdaNoexw6o660eriRHB4ItPmH47F9vuXQCLANYxvVShs
+ QuLqHmhpC4PqBzx4gcxTIq1ZQrUnqLvBCe3TY6gmR9fWC2pUXJwXAo+5Z2oZ5pCZhD2c
+ 2iohN8KRC19msUJu9TrFMno6DaQfmNJBKfZccCmpCGFVJ1FJclfBhgBNFGcB7HCklyxA
+ e1a+SVtjbPTlguPtHe9S4LLtKhzqigKppNsrGB4EkragEn/Rg1ph+EYDFKYh9UqyA8q3
+ lfYQ==
+X-Gm-Message-State: AOAM531FQBJtMJEPtHD5RSCnsxEPd7TbnPYKEHJfIs+NHsPbaF6oAXGe
+ gdJ2FWc8sEZy88L+OhLUV/4nogybylY=
+X-Google-Smtp-Source: ABdhPJzNWdfEaEJMrGWJQ6SgVZ2LZkowL8XUPe1AidTLBAqeR320x6AIAcMg2mNv6uF3Dy3F+cwHGw==
+X-Received: by 2002:a17:906:1b55:: with SMTP id
+ p21mr2628419ejg.457.1599640477647; 
+ Wed, 09 Sep 2020 01:34:37 -0700 (PDT)
+Received: from kozik-lap ([194.230.155.174])
+ by smtp.googlemail.com with ESMTPSA id b13sm1320130edf.89.2020.09.09.01.34.35
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Wed, 09 Sep 2020 01:34:36 -0700 (PDT)
+Date: Wed, 9 Sep 2020 10:34:34 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Rob Herring <robh+dt@kernel.org>, Shawn Guo <shawnguo@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Heiko Stuebner <heiko@sntech.de>, Michal Simek <michal.simek@xilinx.com>,
+ Adam Ford <aford173@gmail.com>, Daniel Baluta <daniel.baluta@nxp.com>,
+ Anson Huang <Anson.Huang@nxp.com>, Robin Gong <yibin.gong@nxp.com>,
+ Alifer Moraes <alifer.wsdm@gmail.com>,
+ Leonard Crestez <leonard.crestez@nxp.com>,
+ "Angus Ainslie (Purism)" <angus@akkea.ca>,
+ Vitor Massaru Iha <vitor@massaru.org>,
+ Kever Yang <kever.yang@rock-chips.com>, Rajan Vaja <rajan.vaja@xilinx.com>,
+ Anurag Kumar Vulisha <anurag.kumar.vulisha@xilinx.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 3/8] arm64: dts: imx8mm: Correct interrupt flags in
+ examples
+Message-ID: <20200909083434.GB11775@kozik-lap>
+References: <20200908150241.5771-1-krzk@kernel.org>
+ <20200908150241.5771-3-krzk@kernel.org>
 MIME-Version: 1.0
-References: <20191221150402.13868-1-murphyt7@tcd.ie>
- <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
- <20200529124523.GA11817@infradead.org>
- <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
- <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
- <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
- <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
- <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
- <766525c3-4da9-6db7-cd90-fb4b82cd8083@deltatee.com>
- <60a82319-cbee-4cd1-0d5e-3c407cc51330@linux.intel.com>
- <e598fb31-ef7a-c2ee-8a54-bf62d50c480c@deltatee.com>
- <b27cae1f-07ff-bef2-f125-a5f0d968016d@linux.intel.com>
-In-Reply-To: <b27cae1f-07ff-bef2-f125-a5f0d968016d@linux.intel.com>
-From: Tom Murphy <murphyt7@tcd.ie>
-Date: Tue, 8 Sep 2020 23:43:19 +0100
-Message-ID: <CALQxJut5c=cWdi+SVkN3JnbkhPSYmLkOyRUhduL-UJ9gyKn9Ow@mail.gmail.com>
-Subject: Re: [Intel-gfx] [PATCH 0/8] Convert the intel iommu driver to the
- dma-iommu api
-To: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
+Content-Disposition: inline
+In-Reply-To: <20200908150241.5771-3-krzk@kernel.org>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200908_184335_165820_33623528 
-X-CRM114-Status: GOOD (  25.09  )
+X-CRM114-CacheID: sfid-20200909_043439_810675_FD1A4A6D 
+X-CRM114-Status: GOOD (  19.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,111 +101,95 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Julien Grall <julien.grall@arm.com>,
- Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
- Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
- Andy Gross <agross@kernel.org>, Gerald Schaefer <gerald.schaefer@de.ibm.com>,
- linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, Robin Murphy <robin.murphy@arm.com>,
- linux-mediatek@lists.infradead.org, linux-tegra@vger.kernel.org,
- Thomas Gleixner <tglx@linutronix.de>,
- virtualization@lists.linux-foundation.org,
- linux-arm-kernel@lists.infradead.org, David Woodhouse <dwmw2@infradead.org>,
- Cornelia Huck <cohuck@redhat.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
- Logan Gunthorpe <logang@deltatee.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 8 Sep 2020 at 16:56, Tvrtko Ursulin
-<tvrtko.ursulin@linux.intel.com> wrote:
->
->
-> On 08/09/2020 16:44, Logan Gunthorpe wrote:
-> > On 2020-09-08 9:28 a.m., Tvrtko Ursulin wrote:
-> >>>
-> >>> diff --git a/drivers/gpu/drm/i915/i915_scatterlist.h
-> >>> b/drivers/gpu/drm/i915/i915
-> >>> index b7b59328cb76..9367ac801f0c 100644
-> >>> --- a/drivers/gpu/drm/i915/i915_scatterlist.h
-> >>> +++ b/drivers/gpu/drm/i915/i915_scatterlist.h
-> >>> @@ -27,13 +27,19 @@ static __always_inline struct sgt_iter {
-> >>>    } __sgt_iter(struct scatterlist *sgl, bool dma) {
-> >>>           struct sgt_iter s = { .sgp = sgl };
-> >>>
-> >>> +       if (sgl && !sg_dma_len(s.sgp))
-> >>
-> >> I'd extend the condition to be, just to be safe:
-> >>      if (dma && sgl && !sg_dma_len(s.sgp))
-> >>
-> >
-> > Right, good catch, that's definitely necessary.
-> >
-> >>> +               s.sgp = NULL;
-> >>> +
-> >>>           if (s.sgp) {
-> >>>                   s.max = s.curr = s.sgp->offset;
-> >>> -               s.max += s.sgp->length;
-> >>> -               if (dma)
-> >>> +
-> >>> +               if (dma) {
-> >>> +                       s.max += sg_dma_len(s.sgp);
-> >>>                           s.dma = sg_dma_address(s.sgp);
-> >>> -               else
-> >>> +               } else {
-> >>> +                       s.max += s.sgp->length;
-> >>>                           s.pfn = page_to_pfn(sg_page(s.sgp));
-> >>> +               }
-> >>
-> >> Otherwise has this been tested or alternatively how to test it? (How to
-> >> repro the issue.)
-> >
-> > It has not been tested. To test it, you need Tom's patch set without the
-> > last "DO NOT MERGE" patch:
-> >
-> > https://lkml.kernel.org/lkml/20200907070035.GA25114@infradead.org/T/
->
-> Tom, do you have a branch somewhere I could pull from? (Just being lazy
-> about downloading a bunch of messages from the archives.)
+On Tue, Sep 08, 2020 at 05:02:36PM +0200, Krzysztof Kozlowski wrote:
+> GPIO_ACTIVE_x flags are not correct in the context of interrupt flags.
+> These are simple defines so they could be used in DTS but they will not
+> have the same meaning:
+> 1. GPIO_ACTIVE_HIGH = 0 = IRQ_TYPE_NONE
+> 2. GPIO_ACTIVE_LOW  = 1 = IRQ_TYPE_EDGE_RISING
+> 
+> Correct the interrupt flags, assuming the author of the code wanted some
+> logical behavior behind the name "ACTIVE_xxx", this is:
+>   ACTIVE_LOW  => IRQ_TYPE_LEVEL_LOW
+>   ACTIVE_HIGH => IRQ_TYPE_LEVEL_HIGH
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> ---
+>  arch/arm64/boot/dts/freescale/imx8mm-beacon-som.dtsi      | 2 +-
+>  arch/arm64/boot/dts/freescale/imx8mm-evk.dts              | 2 +-
+>  arch/arm64/boot/dts/freescale/imx8mm-var-som-symphony.dts | 2 +-
+>  arch/arm64/boot/dts/freescale/imx8mm-var-som.dtsi         | 2 +-
+>  4 files changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/freescale/imx8mm-beacon-som.dtsi b/arch/arm64/boot/dts/freescale/imx8mm-beacon-som.dtsi
+> index 620a124dfb5f..fdce665d7ac4 100644
+> --- a/arch/arm64/boot/dts/freescale/imx8mm-beacon-som.dtsi
+> +++ b/arch/arm64/boot/dts/freescale/imx8mm-beacon-som.dtsi
+> @@ -74,7 +74,7 @@
+>  		reg = <0x4b>;
+>  		pinctrl-0 = <&pinctrl_pmic>;
+>  		interrupt-parent = <&gpio1>;
+> -		interrupts = <3 GPIO_ACTIVE_LOW>;
+> +		interrupts = <3 IRQ_TYPE_LEVEL_LOW>;
 
-I don't unfortunately. I'm working locally with poor internet.
+All rohm,bd71847 PMIC interrupts should be rather EDGE_FALLING.  Some of
+the boards do not have external pull ups and most of the boards do not
+configure internal pull up.  Level low would cause the interrupt line to
+stay low all the time.
 
->
-> What GPU is in your Lenovo x1 carbon 5th generation and what
-> graphical/desktop setup I need to repro?
+Best regards,
+Krzysztof
 
-
-Is this enough info?:
-
-$ lspci -vnn | grep VGA -A 12
-00:02.0 VGA compatible controller [0300]: Intel Corporation HD
-Graphics 620 [8086:5916] (rev 02) (prog-if 00 [VGA controller])
-    Subsystem: Lenovo ThinkPad X1 Carbon 5th Gen [17aa:224f]
-    Flags: bus master, fast devsel, latency 0, IRQ 148
-    Memory at eb000000 (64-bit, non-prefetchable) [size=16M]
-    Memory at 60000000 (64-bit, prefetchable) [size=256M]
-    I/O ports at e000 [size=64]
-    [virtual] Expansion ROM at 000c0000 [disabled] [size=128K]
-    Capabilities: [40] Vendor Specific Information: Len=0c <?>
-    Capabilities: [70] Express Root Complex Integrated Endpoint, MSI 00
-    Capabilities: [ac] MSI: Enable+ Count=1/1 Maskable- 64bit-
-    Capabilities: [d0] Power Management version 2
-    Capabilities: [100] Process Address Space ID (PASID)
-    Capabilities: [200] Address Translation Service (ATS)
-
-
->
-> Regards,
->
-> Tvrtko
+>  		rohm,reset-snvs-powered;
+>  
+>  		regulators {
+> diff --git a/arch/arm64/boot/dts/freescale/imx8mm-evk.dts b/arch/arm64/boot/dts/freescale/imx8mm-evk.dts
+> index 38134d201eef..609d73e19fee 100644
+> --- a/arch/arm64/boot/dts/freescale/imx8mm-evk.dts
+> +++ b/arch/arm64/boot/dts/freescale/imx8mm-evk.dts
+> @@ -166,7 +166,7 @@
+>  		reg = <0x4b>;
+>  		pinctrl-0 = <&pinctrl_pmic>;
+>  		interrupt-parent = <&gpio1>;
+> -		interrupts = <3 GPIO_ACTIVE_LOW>;
+> +		interrupts = <3 IRQ_TYPE_LEVEL_LOW>;
+>  		rohm,reset-snvs-powered;
+>  
+>  		regulators {
+> diff --git a/arch/arm64/boot/dts/freescale/imx8mm-var-som-symphony.dts b/arch/arm64/boot/dts/freescale/imx8mm-var-som-symphony.dts
+> index 0bca737964d5..b84d94e10c26 100644
+> --- a/arch/arm64/boot/dts/freescale/imx8mm-var-som-symphony.dts
+> +++ b/arch/arm64/boot/dts/freescale/imx8mm-var-som-symphony.dts
+> @@ -133,7 +133,7 @@
+>  		pinctrl-names = "default";
+>  		pinctrl-0 = <&pinctrl_captouch>;
+>  		interrupt-parent = <&gpio5>;
+> -		interrupts = <4 GPIO_ACTIVE_HIGH>;
+> +		interrupts = <4 IRQ_TYPE_LEVEL_HIGH>;
+>  
+>  		touchscreen-size-x = <800>;
+>  		touchscreen-size-y = <480>;
+> diff --git a/arch/arm64/boot/dts/freescale/imx8mm-var-som.dtsi b/arch/arm64/boot/dts/freescale/imx8mm-var-som.dtsi
+> index c371cb34b3f7..49743d2f60c1 100644
+> --- a/arch/arm64/boot/dts/freescale/imx8mm-var-som.dtsi
+> +++ b/arch/arm64/boot/dts/freescale/imx8mm-var-som.dtsi
+> @@ -137,7 +137,7 @@
+>  		reg = <0x4b>;
+>  		pinctrl-0 = <&pinctrl_pmic>;
+>  		interrupt-parent = <&gpio2>;
+> -		interrupts = <8 GPIO_ACTIVE_LOW>;
+> +		interrupts = <8 IRQ_TYPE_LEVEL_LOW>;
+>  		rohm,reset-snvs-powered;
+>  
+>  		regulators {
+> -- 
+> 2.17.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
