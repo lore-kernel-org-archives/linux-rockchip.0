@@ -2,64 +2,78 @@ Return-Path: <SRS0=OTpZ=CS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48EBFC433E2
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2020 14:24:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 53E3EC10DAA
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2020 17:49:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8FADD22248
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2020 14:24:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CD5A421D46
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2020 17:49:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gXtQpuKP"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8FADD22248
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KuouMjRR";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="fols9K8K"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CD5A421D46
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/ce8vukBzN/TACv2igeO11YfiKW3PoU0V7q3quzMF0E=; b=gXtQpuKPgscbpl7ZjG6bUIVte4
-	uoh6XwBBPETQUw1EozYr3SvetbzenCdJu9tOZoNlY5Dx+XhtvJhmgzAqSH3VXt0Vlt3bEWqBY4ZFa
-	zUZoF4qQe/cWGNWarm+Q0sCfgD6uptJMCGslhyTAm++Bsfc2VQ5JRAD1fUC+C0USNyQDcA6A+Z6Va
-	uJv/mHUX/Xhc4ozdYP8K5lVWcAfranv23jt+N+zHQfwKikTnuCpG7DUaidNNK6AZSsmzfYb2toI90
-	lh+b+92vFz4B1m/kKI+9KLiEXuREG1dTGQjR7bXoxwccX2O6GXOtMTM4b6s+4CfKUEHuC5lMNy6VG
-	YWbjyQZw==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=rCAIPfxXYY2/um2/+/wBbT/nWLKCwk0CWZAF2EXR+pE=; b=KuouMjRReN2oPOdLeigpYAdHb
+	pLnkz16X26pDp9iVFdFYOv4wInpF9z6iZ507Aqbpfxhg+wh4XPziFe/TCa3K0O+EO58wfnGJm4Oy6
+	lEEza7YFZCWtzm5btOpNSDseETjvKU6UPUa34lMmgqCIyiCU691ggadTfDajcoBrhW7KT2ShVz/BU
+	j1LmkBPmO92QckIOas+xhrhAsFTtKWKiCSSbYZbArMMcTZ58QnieDTP3hNK4/ViVfrwXDMOy6hF+y
+	aoc3dW99mm+VP4LCeJHvBFSVQ89jcPoTTuhLsihsgFwiNFkEix+71JtlrhAKlKMfk4eE2ImqT/mRI
+	xn2phrNJw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kG11K-0003DT-Vk; Wed, 09 Sep 2020 14:24:23 +0000
-Received: from szxga06-in.huawei.com ([45.249.212.32] helo=huawei.com)
+	id 1kG4E3-0005A4-IU; Wed, 09 Sep 2020 17:49:43 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kG11J-0003Cw-4P
- for linux-rockchip@lists.infradead.org; Wed, 09 Sep 2020 14:24:22 +0000
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id B4FE2D48F4A63D882E9F;
- Wed,  9 Sep 2020 22:24:17 +0800 (CST)
-Received: from localhost (10.174.179.108) by DGGEMS412-HUB.china.huawei.com
- (10.3.19.212) with Microsoft SMTP Server id 14.3.487.0; Wed, 9 Sep 2020
- 22:24:11 +0800
-From: YueHaibing <yuehaibing@huawei.com>
-To: <ezequiel@collabora.com>, <mchehab@kernel.org>,
- <gregkh@linuxfoundation.org>, <hverkuil-cisco@xs4all.nl>,
- <boris.brezillon@collabora.com>
-Subject: [PATCH -next] media: rkvdec: Remove redundant platform_get_irq error
- message
-Date: Wed, 9 Sep 2020 22:24:07 +0800
-Message-ID: <20200909142407.31720-1-yuehaibing@huawei.com>
-X-Mailer: git-send-email 2.10.2.windows.1
+ id 1kG4Dw-00058N-Uu; Wed, 09 Sep 2020 17:49:38 +0000
+Received: from mail-oo1-f41.google.com (mail-oo1-f41.google.com
+ [209.85.161.41])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id B6388221E3;
+ Wed,  9 Sep 2020 17:49:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1599673775;
+ bh=je19kXLLPeXGnvJ2cpDOUeTXsKizvTv7mb1EaLQTtgE=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=fols9K8K9dpRLbuLhLcJb9qUeeCiTKsuENoJrq+YBNeC0RK/ZlH1kHvO5EDKRABAp
+ yD13dwjts1JX3l9VaH8AGbnOCA9svC0V2YMwvgnpGgF1YnZm7nx35PURL8jrcDh9te
+ 2JVdXPmWRdf9FlSYzobSMWPUf5iv+c6DEZcTsdQ4=
+Received: by mail-oo1-f41.google.com with SMTP id z1so779553ooj.3;
+ Wed, 09 Sep 2020 10:49:35 -0700 (PDT)
+X-Gm-Message-State: AOAM533rPI74FJDAvsi+ilzrtP4CN+S5AdenBesRbqXkgE25vs8ddaW/
+ FDqLMm311QdiwJ1LrnK8Rt5sGoWPuOKFwlBxwg==
+X-Google-Smtp-Source: ABdhPJzux78h4fn3WeT1EexUmlZfFAVO0RI5YO1uu9bfULqzMYzDuIWqUmStC0pX3w+IPhasTVC0BPqSbE28OFRux5E=
+X-Received: by 2002:a4a:d38c:: with SMTP id i12mr1548249oos.81.1599673774912; 
+ Wed, 09 Sep 2020 10:49:34 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [10.174.179.108]
-X-CFilter-Loop: Reflected
+References: <20200907100039.1731457-1-cychiang@chromium.org>
+ <20200907100039.1731457-3-cychiang@chromium.org>
+ <20200908203357.GA861143@bogus>
+ <CAFv8NwLMAkFhVT-ML7QHbnSkqmgh=5SrNSik5eSCTHB1=DGQ0A@mail.gmail.com>
+In-Reply-To: <CAFv8NwLMAkFhVT-ML7QHbnSkqmgh=5SrNSik5eSCTHB1=DGQ0A@mail.gmail.com>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 9 Sep 2020 11:49:22 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqKW2bpHP60MX4eFmtfzkvaHJ670m6e8H29=u=mDAYg63w@mail.gmail.com>
+Message-ID: <CAL_JsqKW2bpHP60MX4eFmtfzkvaHJ670m6e8H29=u=mDAYg63w@mail.gmail.com>
+Subject: Re: [PATCH v7 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
+ bindings
+To: Cheng-yi Chiang <cychiang@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200909_102421_425009_93D39925 
-X-CRM114-Status: UNSURE (   7.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200909_134937_124774_F4218024 
+X-CRM114-Status: GOOD (  34.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,43 +86,129 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, linux-rockchip@lists.infradead.org,
- YueHaibing <yuehaibing@huawei.com>, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org
+Cc: Taniya Das <tdas@codeaurora.org>,
+ "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
+ <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
+ Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>,
+ Rohit kumar <rohitkr@codeaurora.org>, Patrick Lai <plai@codeaurora.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Andy Gross <agross@kernel.org>, Dylan Reid <dgreid@chromium.org>,
+ Jaroslav Kysela <perex@perex.cz>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
+ Stephan Gerhold <stephan@gerhold.net>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>, Mark Brown <broonie@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Srini Kandagatla <srinivas.kandagatla@linaro.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-platform_get_irq() will call dev_err() itself on failure,
-so there is no need for the driver to also do this.
-This is detected by coccinelle.
+On Wed, Sep 9, 2020 at 3:24 AM Cheng-yi Chiang <cychiang@chromium.org> wrote:
+>
+> On Wed, Sep 9, 2020 at 4:34 AM Rob Herring <robh@kernel.org> wrote:
+> >
+> > On Mon, Sep 07, 2020 at 06:00:38PM +0800, Cheng-Yi Chiang wrote:
+> > > Add devicetree bindings documentation file for sc7180 sound card.
+> > >
+> > > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+> > > ---
+> > >  .../bindings/sound/qcom,sc7180.yaml           | 143 ++++++++++++++++++
+> > >  1 file changed, 143 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
+> > > new file mode 100644
+> > > index 000000000000..ae809346ca80
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
+> > > @@ -0,0 +1,143 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id: http://devicetree.org/schemas/sound/qcom,sc7180.yaml#
+> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > +
+> > > +title: Qualcomm Technologies Inc. SC7180 ASoC sound card driver
+> > > +
+> > > +maintainers:
+> > > +  - Rohit kumar <rohitkr@codeaurora.org>
+> > > +  - Cheng-Yi Chiang <cychiang@chromium.org>
+> > > +
+> > > +description:
+> > > +  This binding describes the SC7180 sound card which uses LPASS for audio.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    const: qcom,sc7180-sndcard
+> > > +
+> > > +  audio-routing:
+> > > +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
+> > > +    description:
+> > > +      A list of the connections between audio components. Each entry is a
+> > > +      pair of strings, the first being the connection's sink, the second
+> > > +      being the connection's source.
+> > > +
+> > > +  model:
+> > > +    $ref: /schemas/types.yaml#/definitions/string
+> > > +    description: User specified audio sound card name
+> > > +
+> > > +  headset-jack:
+> > > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > > +    description: phandle of the codec for headset detection
+> > > +
+> > > +  hdmi-jack:
+> > > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > > +    description: phandle of the codec for hdmi jack detection
+> >
+> > You already have links to these devices. Why duplicate it here?
+> >
+> > What if you had 2 headsets? This doesn't scale.
+> >
+> Hi Rob, thanks for reviewing.
+> There was some discussion in
+> https://patchwork.kernel.org/patch/11737905/#23571643 about how to
+> specify the dailink that has a headset jack.
+> I would like to pass the information of headset jack and hdmi jack to
+> the machine driver so the machine driver can call
+> snd_soc_component_set_jack to set jack when init the corresponding link.
+> Headset jack and hdmi jack will be treated differently for button and
+> event type.
+> Because of this, we can not just set a property "jack" in the link.
 
-Signed-off-by: YueHaibing <yuehaibing@huawei.com>
----
- drivers/staging/media/rkvdec/rkvdec.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Don't design your binding around some driver architecture. Limitations
+of ASoC are not reasons for your binding.
 
-diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-index d25c4a37e2af..552e0bd12ecf 100644
---- a/drivers/staging/media/rkvdec/rkvdec.c
-+++ b/drivers/staging/media/rkvdec/rkvdec.c
-@@ -1038,10 +1038,8 @@ static int rkvdec_probe(struct platform_device *pdev)
- 	vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
- 
- 	irq = platform_get_irq(pdev, 0);
--	if (irq <= 0) {
--		dev_err(&pdev->dev, "Could not get vdec IRQ\n");
-+	if (irq <= 0)
- 		return -ENXIO;
--	}
- 
- 	ret = devm_request_threaded_irq(&pdev->dev, irq, NULL,
- 					rkvdec_irq_handler, IRQF_ONESHOT,
--- 
-2.17.1
+For DP and HDMI, we assume HPD is supported generally as that's a
+standard function for HDMI/DP controllers. There's a 'no-hpd' property
+for cases of broken HPD. That hardware description is part of the
+device HPD is connected to which is the HDMI/DP controller/bridge or
+the connector node in the case of a GPIO line. That doesn't belong in
+the virtual sound card.
 
+I would assume a codec to be similar. The codec node (the alc5682
+node) should have any jack related properties (or possibly implicitly
+support it by default).
 
+> As for the 2 headsets case (I guess you mean hp jack and mic jack), on
+> this board we will not have this use case.
+> If someone really wants to build hp jack and mic jack on the board
+> based on this machine driver, we can add two more property hp-jack and
+> mic-jack to specify that,
+> as the machine driver will need to know the different jack types
+> anyway. What do you think ?
+
+I was thinking more of a case of having 2 of the same thing. Perhaps 2
+HDMI outputs. Or if you have DP instead of HDMI? Just going to add
+'dp-jack'?
+
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
