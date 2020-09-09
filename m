@@ -2,82 +2,87 @@ Return-Path: <SRS0=OTpZ=CS=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,HK_RANDOM_FROM,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2CF3C43461
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2020 10:19:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8147CC433E2
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2020 12:56:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 97C7B21D7A
-	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2020 10:19:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 10ECE20897
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Sep 2020 12:56:18 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E/JRE1Sy";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="nvSB7U1Y"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97C7B21D7A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="aPJA4LSB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 10ECE20897
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
+	To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nH+TYLraM1QmAxrQuu4/N6+IdKPQgEZEq92k1gl0uxE=; b=E/JRE1SyGvA8waV8+0ZAkfeXt
-	xf1X9f3KWQ48Eg1O50r6x190qOazUm50x9MpU1roXktrqGN2RQEoQ4dw6yhN9KB+eFqz1EfPNePKq
-	1nGXHh520WpgU+dWU44KjWPGULoBMf6ia069R0nlFRaXnoJzNTqvcqlJlLevkkRS+4/bMAFxIbs/9
-	dLCIuGrab3PlA+goDv9v6uswxS0c9mIINY/mQ14SVKBFUUXm89kX2K6cUMHz2zzEzVrJSQz8vEALt
-	Jpde0++1kehoV6dFx+svcOGWb0sqeWL8vHunLutNeJBGOrBUiSmIJr4XpnxvFlmMa+S9gzbZ+Bcoj
-	hUfxnaXTQ==;
+	 bh=rDbvhrbO8raW9pfAipqRqX1u/EWmVrx/aj+0dMg/Y5M=; b=aPJA4LSBWeFV8bWsEzK1Nhv09
+	/vhw8Mq5pgFBA7nNEoBPo+NOImcGALKm0F+uqVxG28RNpBcv7tabO/WcINKD3gyHRrtw5wtxqtkio
+	Gs5xtCm1MA2EWhMIX36JtWodas7Mu6SwBpsg/GIzlrrXgNS3YmKk++RVvt+z4sIs0xigOvXPgZxao
+	JdPLWESYdKw5XzU8D7sxwgsQ1vMpV+T95JJCVtFFyJ1tXLdSiL3GDYDyyHp8nJGY9DWpQn9PdK9S7
+	edWKVA0jzVwQKtww7DGQ3kfmRO3ZJwDs08x7oMsAl6NHONbN+xSP8GVnU4JGeXJFrJyt30vA7EeRk
+	r0EYuPorA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kFxCd-0006oZ-95; Wed, 09 Sep 2020 10:19:47 +0000
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+	id 1kFzdz-0007T4-FD; Wed, 09 Sep 2020 12:56:11 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kFxCa-0006nZ-Eg
- for linux-rockchip@lists.infradead.org; Wed, 09 Sep 2020 10:19:45 +0000
-Received: by mail-wm1-x343.google.com with SMTP id c19so1499528wmd.1
- for <linux-rockchip@lists.infradead.org>; Wed, 09 Sep 2020 03:19:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=MYtyV9sjpexCNQizdjqRW/SdiWDHf0KUeZqsLzbBBXw=;
- b=nvSB7U1YSQLRXpNDcMP9RUL4PGdEF8Pp4cI2ebpoYmMzEcjiDJLpG6b3HJObeEVAxL
- cijYVLuZEmfuyeKiiZN8Q6lt2h87SXNCljv8Xm5odSlNFG3IzsWZMaKBsHIF8GcmTvzX
- tAKWudAP91pOakcxDjcrP8IsABvDDWwVina9w=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=MYtyV9sjpexCNQizdjqRW/SdiWDHf0KUeZqsLzbBBXw=;
- b=THysFmVo6Pb/Jw7fJZ7KrLeIz3XW4nA3ZKUiuM6IOQI+5pE0ktBUOapWXYgMBL45P8
- UmB5GLKsLeyFygEk3NYykL0YbHfFdNMbkPNVqctl4zcizkUeNq7z/Qf1FxD2k3W//Icp
- rBWkp25JcLc1MqtQbyjqQRLQG/Nqjvmg+MRlszKtEfAOCClztbnVurlxw6TyCiQW1S+H
- Ue0/0/psc6gGAKVIDfQkYiT9smI8dKjuEdRrDdo8snaAZWYTGQV4znnEB3Xlqw01XMmI
- LAFBq4ZnUfyw6Su0+UCMm2jjzKgG6XAhy9Sd1X36ZAkhiC/thxY6abNnVLi8fijkc5UL
- w2Ew==
-X-Gm-Message-State: AOAM531F4CTPd9Shgd1wJhNBiwlmiGsqMtcJA2Rj2o8Nxim3qHj1GDXD
- vhabskY+maug/VcERK9wfFumM5xQI/jL73flurVyhw==
-X-Google-Smtp-Source: ABdhPJyiGLD2o5Mp0hKfuqc3sTpSUwV4QU2ftFwRMsUfKEu8ElxuFddp9M1CKV0LCUYsOZUPyqBuF/zKTLMFrnRTRBU=
-X-Received: by 2002:a7b:c3c8:: with SMTP id t8mr2821349wmj.101.1599646782754; 
- Wed, 09 Sep 2020 03:19:42 -0700 (PDT)
+ id 1kFzdt-0007Qh-PJ; Wed, 09 Sep 2020 12:56:07 +0000
+IronPort-SDR: 4TjiNgvhY7AwTNMFPo73dFv4tMlMt4tSJ4CKsIM+yQ1zbGfUJgE0DGwYCNc0j9Pf8KEszsi6Pk
+ JH+sWd8pNaBA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9738"; a="146037445"
+X-IronPort-AV: E=Sophos;i="5.76,409,1592895600"; d="scan'208";a="146037445"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2020 05:56:03 -0700
+IronPort-SDR: JQMyvoN12VuK/irCbuVWf848SLQCDQe4s2TJxhN6e7q3mAjHQ8jO8ITqda006fm/oJ1+v0fyDP
+ AZ+yU9lS391g==
+X-IronPort-AV: E=Sophos;i="5.76,409,1592895600"; d="scan'208";a="336762463"
+Received: from vdc-station-04.ger.corp.intel.com (HELO [10.251.165.91])
+ ([10.251.165.91])
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2020 05:55:52 -0700
+Subject: Re: [Intel-gfx] [PATCH 0/8] Convert the intel iommu driver to the
+ dma-iommu api
+From: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
+To: Tom Murphy <murphyt7@tcd.ie>
+References: <20191221150402.13868-1-murphyt7@tcd.ie>
+ <465815ae-9292-f37a-59b9-03949cb68460@deltatee.com>
+ <20200529124523.GA11817@infradead.org>
+ <CGME20200529190523eucas1p2c086133e707257c0cdc002f502d4f51d@eucas1p2.samsung.com>
+ <33137cfb-603c-86e8-1091-f36117ecfaf3@deltatee.com>
+ <ef2150d5-7b6a-df25-c10d-e43316fe7812@samsung.com>
+ <b9140772-0370-a858-578c-af503a06d8e9@deltatee.com>
+ <CALQxJuutRaeX89k2o4ffTKYRMizmMu0XbRnzpFuSSrkQR02jKg@mail.gmail.com>
+ <766525c3-4da9-6db7-cd90-fb4b82cd8083@deltatee.com>
+ <60a82319-cbee-4cd1-0d5e-3c407cc51330@linux.intel.com>
+ <e598fb31-ef7a-c2ee-8a54-bf62d50c480c@deltatee.com>
+ <b27cae1f-07ff-bef2-f125-a5f0d968016d@linux.intel.com>
+ <CALQxJut5c=cWdi+SVkN3JnbkhPSYmLkOyRUhduL-UJ9gyKn9Ow@mail.gmail.com>
+ <7106602a-9964-851e-9c4e-d8acf4033b89@linux.intel.com>
+Organization: Intel Corporation UK Plc
+Message-ID: <ea24e077-5aa6-dd8e-69a7-d186b606703f@linux.intel.com>
+Date: Wed, 9 Sep 2020 13:55:49 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <20200907100039.1731457-1-cychiang@chromium.org>
- <20200907100039.1731457-3-cychiang@chromium.org>
- <20200908203357.GA861143@bogus>
- <CAFv8NwLMAkFhVT-ML7QHbnSkqmgh=5SrNSik5eSCTHB1=DGQ0A@mail.gmail.com>
-In-Reply-To: <CAFv8NwLMAkFhVT-ML7QHbnSkqmgh=5SrNSik5eSCTHB1=DGQ0A@mail.gmail.com>
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Date: Wed, 9 Sep 2020 18:19:16 +0800
-Message-ID: <CAFv8NwJXyzUsCQZu1cU0t7NUJDpS_DyxZM=ZhU+jGoQj97i3Jw@mail.gmail.com>
-Subject: Re: [PATCH v7 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
- bindings
-To: Rob Herring <robh@kernel.org>
+In-Reply-To: <7106602a-9964-851e-9c4e-d8acf4033b89@linux.intel.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200909_061944_590225_75ECA289 
-X-CRM114-Status: GOOD (  33.97  )
+X-CRM114-CacheID: sfid-20200909_085605_959293_46C298BA 
+X-CRM114-Status: GOOD (  33.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,146 +95,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Taniya Das <tdas@codeaurora.org>,
- "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
- <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
- Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>,
- Rohit kumar <rohitkr@codeaurora.org>, Patrick Lai <plai@codeaurora.org>,
- linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
- Dylan Reid <dgreid@chromium.org>, Jaroslav Kysela <perex@perex.cz>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
- Stephan Gerhold <stephan@gerhold.net>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, Mark Brown <broonie@kernel.org>,
- linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Srini Kandagatla <srinivas.kandagatla@linaro.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: kvm@vger.kernel.org, David Airlie <airlied@linux.ie>,
+ dri-devel@lists.freedesktop.org, Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-tegra@vger.kernel.org, Julien Grall <julien.grall@arm.com>,
+ Will Deacon <will@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>,
+ Christoph Hellwig <hch@infradead.org>, linux-rockchip@lists.infradead.org,
+ Andy Gross <agross@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-s390@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ virtualization@lists.linux-foundation.org,
+ Gerald Schaefer <gerald.schaefer@de.ibm.com>,
+ Logan Gunthorpe <logang@deltatee.com>, David Woodhouse <dwmw2@infradead.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ iommu@lists.linux-foundation.org, Kukjin Kim <kgene@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 9, 2020 at 5:23 PM Cheng-yi Chiang <cychiang@chromium.org> wrote:
->
-> On Wed, Sep 9, 2020 at 4:34 AM Rob Herring <robh@kernel.org> wrote:
-> >
-> > On Mon, Sep 07, 2020 at 06:00:38PM +0800, Cheng-Yi Chiang wrote:
-> > > Add devicetree bindings documentation file for sc7180 sound card.
-> > >
-> > > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> > > ---
-> > >  .../bindings/sound/qcom,sc7180.yaml           | 143 ++++++++++++++++++
-> > >  1 file changed, 143 insertions(+)
-> > >  create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> > > new file mode 100644
-> > > index 000000000000..ae809346ca80
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> > > @@ -0,0 +1,143 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: http://devicetree.org/schemas/sound/qcom,sc7180.yaml#
-> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > +
-> > > +title: Qualcomm Technologies Inc. SC7180 ASoC sound card driver
-> > > +
-> > > +maintainers:
-> > > +  - Rohit kumar <rohitkr@codeaurora.org>
-> > > +  - Cheng-Yi Chiang <cychiang@chromium.org>
-> > > +
-> > > +description:
-> > > +  This binding describes the SC7180 sound card which uses LPASS for audio.
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    const: qcom,sc7180-sndcard
-> > > +
-> > > +  audio-routing:
-> > > +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
-> > > +    description:
-> > > +      A list of the connections between audio components. Each entry is a
-> > > +      pair of strings, the first being the connection's sink, the second
-> > > +      being the connection's source.
-> > > +
-> > > +  model:
-> > > +    $ref: /schemas/types.yaml#/definitions/string
-> > > +    description: User specified audio sound card name
-> > > +
-> > > +  headset-jack:
-> > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > +    description: phandle of the codec for headset detection
-> > > +
-> > > +  hdmi-jack:
-> > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > +    description: phandle of the codec for hdmi jack detection
-> >
-> > You already have links to these devices. Why duplicate it here?
-> >
-> > What if you had 2 headsets? This doesn't scale.
-> >
-> Hi Rob, thanks for reviewing.
-> There was some discussion in
-> https://patchwork.kernel.org/patch/11737905/#23571643 about how to
-> specify the dailink that has a headset jack.
-> I would like to pass the information of headset jack and hdmi jack to
-> the machine driver so the machine driver can call
-> snd_soc_component_set_jack to set jack when init the corresponding link.
-> Headset jack and hdmi jack will be treated differently for button and
-> event type.
-> Because of this, we can not just set a property "jack" in the link.
->
-> As for the 2 headsets case (I guess you mean hp jack and mic jack), on
-> this board we will not have this use case.
-> If someone really wants to build hp jack and mic jack on the board
-> based on this machine driver, we can add two more property hp-jack and
-> mic-jack to specify that,
-> as the machine driver will need to know the different jack types
-> anyway. What do you think ?
->
-> Or could you please suggest a proper way to pass such information ?
->
-> Thanks!
-> >
-Alternatively we can probably do
-
-                dai-link@0 {
-                        link-name = "MultiMedia0";
-                        reg = <0>;
-                        cpu {
-                                sound-dai = <&lpass_cpu 0>;
-                        };
-                        headset_jack;
-                        codec {
-                                sound-dai = <&alc5682 0>;
-                        };
-                };
-                dai-link@2 {
-                        link-name = "MultiMedia2";
-                        reg = <2>;
-                        cpu {
-                                sound-dai = <&lpass_hdmi 0>;
-                        };
-                        hdmi_jack;
-                        codec {
-                                sound-dai = <&msm_dp>;
-                        };
-                };
-
-Or even put the flag into codec {}.
-Please let me know if you feel this is a better way.
-I think it will make the driver code a little more complicated, but
-the interface on dts might looks cleaner.
-Thanks!
-
-> > Rob
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ck9uIDA5LzA5LzIwMjAgMTA6MTYsIFR2cnRrbyBVcnN1bGluIHdyb3RlOgo+IE9uIDA4LzA5LzIw
+MjAgMjM6NDMsIFRvbSBNdXJwaHkgd3JvdGU6Cj4+IE9uIFR1ZSwgOCBTZXAgMjAyMCBhdCAxNjo1
+NiwgVHZydGtvIFVyc3VsaW4KPj4gPHR2cnRrby51cnN1bGluQGxpbnV4LmludGVsLmNvbT4gd3Jv
+dGU6Cj4+PiBPbiAwOC8wOS8yMDIwIDE2OjQ0LCBMb2dhbiBHdW50aG9ycGUgd3JvdGU6Cj4+Pj4g
+T24gMjAyMC0wOS0wOCA5OjI4IGEubS4sIFR2cnRrbyBVcnN1bGluIHdyb3RlOgo+Pj4+Pj4KPj4+
+Pj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9pOTE1X3NjYXR0ZXJsaXN0LmgK
+Pj4+Pj4+IGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvaTkxNQo+Pj4+Pj4gaW5kZXggYjdiNTkzMjhj
+Yjc2Li45MzY3YWM4MDFmMGMgMTAwNjQ0Cj4+Pj4+PiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkx
+NS9pOTE1X3NjYXR0ZXJsaXN0LmgKPj4+Pj4+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2k5
+MTVfc2NhdHRlcmxpc3QuaAo+Pj4+Pj4gQEAgLTI3LDEzICsyNywxOSBAQCBzdGF0aWMgX19hbHdh
+eXNfaW5saW5lIHN0cnVjdCBzZ3RfaXRlciB7Cj4+Pj4+PiDCoMKgwqAgfSBfX3NndF9pdGVyKHN0
+cnVjdCBzY2F0dGVybGlzdCAqc2dsLCBib29sIGRtYSkgewo+Pj4+Pj4gwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgc3RydWN0IHNndF9pdGVyIHMgPSB7IC5zZ3AgPSBzZ2wgfTsKPj4+Pj4+Cj4+Pj4+PiAr
+wqDCoMKgwqDCoMKgIGlmIChzZ2wgJiYgIXNnX2RtYV9sZW4ocy5zZ3ApKQo+Pj4+Pgo+Pj4+PiBJ
+J2QgZXh0ZW5kIHRoZSBjb25kaXRpb24gdG8gYmUsIGp1c3QgdG8gYmUgc2FmZToKPj4+Pj4gwqDC
+oMKgwqDCoCBpZiAoZG1hICYmIHNnbCAmJiAhc2dfZG1hX2xlbihzLnNncCkpCj4+Pj4+Cj4+Pj4K
+Pj4+PiBSaWdodCwgZ29vZCBjYXRjaCwgdGhhdCdzIGRlZmluaXRlbHkgbmVjZXNzYXJ5Lgo+Pj4+
+Cj4+Pj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzLnNncCA9IE5VTEw7Cj4+Pj4+
+PiArCj4+Pj4+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAocy5zZ3ApIHsKPj4+Pj4+IMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzLm1heCA9IHMuY3VyciA9IHMuc2dwLT5v
+ZmZzZXQ7Cj4+Pj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzLm1heCArPSBzLnNn
+cC0+bGVuZ3RoOwo+Pj4+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgaWYgKGRtYSkK
+Pj4+Pj4+ICsKPj4+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGlmIChkbWEpIHsK
+Pj4+Pj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBzLm1h
+eCArPSBzZ19kbWFfbGVuKHMuc2dwKTsKPj4+Pj4+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcy5kbWEgPSBzZ19kbWFfYWRkcmVzcyhzLnNncCk7
+Cj4+Pj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBlbHNlCj4+Pj4+PiArwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB9IGVsc2Ugewo+Pj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHMubWF4ICs9IHMuc2dwLT5sZW5ndGg7Cj4+Pj4+
+PiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHMu
+cGZuID0gcGFnZV90b19wZm4oc2dfcGFnZShzLnNncCkpOwo+Pj4+Pj4gK8KgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqAgfQo+Pj4+Pgo+Pj4+PiBPdGhlcndpc2UgaGFzIHRoaXMgYmVlbiB0ZXN0
+ZWQgb3IgYWx0ZXJuYXRpdmVseSBob3cgdG8gdGVzdCBpdD8gCj4+Pj4+IChIb3cgdG8KPj4+Pj4g
+cmVwcm8gdGhlIGlzc3VlLikKPj4+Pgo+Pj4+IEl0IGhhcyBub3QgYmVlbiB0ZXN0ZWQuIFRvIHRl
+c3QgaXQsIHlvdSBuZWVkIFRvbSdzIHBhdGNoIHNldCB3aXRob3V0IAo+Pj4+IHRoZQo+Pj4+IGxh
+c3QgIkRPIE5PVCBNRVJHRSIgcGF0Y2g6Cj4+Pj4KPj4+PiBodHRwczovL2xrbWwua2VybmVsLm9y
+Zy9sa21sLzIwMjAwOTA3MDcwMDM1LkdBMjUxMTRAaW5mcmFkZWFkLm9yZy9ULwo+Pj4KPj4+IFRv
+bSwgZG8geW91IGhhdmUgYSBicmFuY2ggc29tZXdoZXJlIEkgY291bGQgcHVsbCBmcm9tPyAoSnVz
+dCBiZWluZyBsYXp5Cj4+PiBhYm91dCBkb3dubG9hZGluZyBhIGJ1bmNoIG9mIG1lc3NhZ2VzIGZy
+b20gdGhlIGFyY2hpdmVzLikKPj4KPj4gSSBkb24ndCB1bmZvcnR1bmF0ZWx5LiBJJ20gd29ya2lu
+ZyBsb2NhbGx5IHdpdGggcG9vciBpbnRlcm5ldC4KPj4KPj4+Cj4+PiBXaGF0IEdQVSBpcyBpbiB5
+b3VyIExlbm92byB4MSBjYXJib24gNXRoIGdlbmVyYXRpb24gYW5kIHdoYXQKPj4+IGdyYXBoaWNh
+bC9kZXNrdG9wIHNldHVwIEkgbmVlZCB0byByZXBybz8KPj4KPj4KPj4gSXMgdGhpcyBlbm91Z2gg
+aW5mbz86Cj4+Cj4+ICQgbHNwY2kgLXZubiB8IGdyZXAgVkdBIC1BIDEyCj4+IDAwOjAyLjAgVkdB
+IGNvbXBhdGlibGUgY29udHJvbGxlciBbMDMwMF06IEludGVsIENvcnBvcmF0aW9uIEhECj4+IEdy
+YXBoaWNzIDYyMCBbODA4Njo1OTE2XSAocmV2IDAyKSAocHJvZy1pZiAwMCBbVkdBIGNvbnRyb2xs
+ZXJdKQo+PiDCoMKgwqDCoCBTdWJzeXN0ZW06IExlbm92byBUaGlua1BhZCBYMSBDYXJib24gNXRo
+IEdlbiBbMTdhYToyMjRmXQo+PiDCoMKgwqDCoCBGbGFnczogYnVzIG1hc3RlciwgZmFzdCBkZXZz
+ZWwsIGxhdGVuY3kgMCwgSVJRIDE0OAo+PiDCoMKgwqDCoCBNZW1vcnkgYXQgZWIwMDAwMDAgKDY0
+LWJpdCwgbm9uLXByZWZldGNoYWJsZSkgW3NpemU9MTZNXQo+PiDCoMKgwqDCoCBNZW1vcnkgYXQg
+NjAwMDAwMDAgKDY0LWJpdCwgcHJlZmV0Y2hhYmxlKSBbc2l6ZT0yNTZNXQo+PiDCoMKgwqDCoCBJ
+L08gcG9ydHMgYXQgZTAwMCBbc2l6ZT02NF0KPj4gwqDCoMKgwqAgW3ZpcnR1YWxdIEV4cGFuc2lv
+biBST00gYXQgMDAwYzAwMDAgW2Rpc2FibGVkXSBbc2l6ZT0xMjhLXQo+PiDCoMKgwqDCoCBDYXBh
+YmlsaXRpZXM6IFs0MF0gVmVuZG9yIFNwZWNpZmljIEluZm9ybWF0aW9uOiBMZW49MGMgPD8+Cj4+
+IMKgwqDCoMKgIENhcGFiaWxpdGllczogWzcwXSBFeHByZXNzIFJvb3QgQ29tcGxleCBJbnRlZ3Jh
+dGVkIEVuZHBvaW50LCBNU0kgMDAKPj4gwqDCoMKgwqAgQ2FwYWJpbGl0aWVzOiBbYWNdIE1TSTog
+RW5hYmxlKyBDb3VudD0xLzEgTWFza2FibGUtIDY0Yml0LQo+PiDCoMKgwqDCoCBDYXBhYmlsaXRp
+ZXM6IFtkMF0gUG93ZXIgTWFuYWdlbWVudCB2ZXJzaW9uIDIKPj4gwqDCoMKgwqAgQ2FwYWJpbGl0
+aWVzOiBbMTAwXSBQcm9jZXNzIEFkZHJlc3MgU3BhY2UgSUQgKFBBU0lEKQo+PiDCoMKgwqDCoCBD
+YXBhYmlsaXRpZXM6IFsyMDBdIEFkZHJlc3MgVHJhbnNsYXRpb24gU2VydmljZSAoQVRTKQo+IAo+
+IFdvcmtzIGZvciBhIHN0YXJ0LiBXaGF0IGFib3V0IHRoZSBzdGVwcyB0byByZXBybz8gQW55IGRl
+c2t0b3AgCj4gZW52aXJvbm1lbnQgYW5kIGl0IGlzIGp1c3QgdmlzdWFsIGNvcnJ1cHRpb24sIG5v
+IGhhbmdzL3N0YWxscyBvciBzdWNoPwo+IAo+IEkndmUgc3VibWl0dGVkIGEgc2VyaWVzIGNvbnNp
+c3Rpbmcgb2Ygd2hhdCBJIHVuZGVyc3Rvb2QgYXJlIHRoZSBwYXRjaGVzIAo+IG5lZWRlZCB0byBy
+ZXBybyB0aGUgaXNzdWUgdG8gb3VyIGF1dG9tYXRlZCBDSSBoZXJlOgo+IAo+IGh0dHBzOi8vcGF0
+Y2h3b3JrLmZyZWVkZXNrdG9wLm9yZy9zZXJpZXMvODE0ODkvCj4gCj4gU28gd2lsbCBzZWUgaWYg
+aXQgd2lsbCBjYXRjaCBzb21ldGhpbmcsIG9yIG1vcmUgdGFyZ2V0ZWQgdGVzdGluZyB3aWxsIGJl
+IAo+IHJlcXVpcmVkLiBIb3BlZnVsbHkgaXQgZG9lcyB0cmlwIG92ZXIgaW4gd2hpY2ggY2FzZSBJ
+IGNhbiBhZGQgdGhlIHBhdGNoIAo+IHN1Z2dlc3RlZCBieSBMb2dhbiBvbiB0b3AgYW5kIHNlZSBp
+ZiB0aGF0IGZpeGVzIGl0LiBPciBJJ2xsIG5lZWQgdG8gCj4gd3JpdGUgYSBuZXcgdGVzdCBjYXNl
+Lgo+IAo+IElmIHlvdSBjb3VsZCBnbGFuY2Ugb3ZlciBteSBzZXJpZXMgdG8gY2hlY2sgSSBpZGVu
+dGlmaWVkIHRoZSBwYXRjaGVzIAo+IGNvcnJlY3RseSBpdCB3b3VsZCBiZSBhcHByZWNpYXRlZC4K
+Ck91ciBDSSB3YXMgbW9yZSB0aGFuIGNhcGFibGUgYXQgY2F0Y2hpbmcgdGhlIGJyZWFrYWdlIHNv
+IEkndmUgY29waWVkIHlvdSAKb24gYSBwYXRjaCAoaHR0cHM6Ly9wYXRjaHdvcmsuZnJlZWRlc2t0
+b3Aub3JnL3Nlcmllcy84MTQ5Ny8pIHdoaWNoIGhhcyBhIApnb29kIHBvdGVudGlhbCB0byBmaXgg
+dGhpcy4gKE9yIGltcHJvdmUgdGhlIHJvYnVzdG5lc3Mgb2Ygb3VyIHNnIHdhbGtzLCAKZGVwZW5k
+cyBob3cgeW91IGxvb2sgYXQgaXQuKQoKV291bGQgeW91IGJlIGFibGUgdG8gdGVzdCBpdCBpbiB5
+b3VyIGVudmlyb25tZW50IGJ5IGFueSBjaGFuY2U/IElmIGl0IAp3b3JrcyBJIHVuZGVyc3RhbmQg
+aXQgdW5ibG9ja3MgeW91ciBJT01NVSB3b3JrLCByaWdodD8KClJlZ2FyZHMsCgpUdnJ0a28KCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
