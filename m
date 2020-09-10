@@ -2,83 +2,81 @@ Return-Path: <SRS0=KXJX=CT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E0C32C433E2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 02:10:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E3FFC433E2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 03:07:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7A082206B7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 02:10:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CC2E121D40
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 03:07:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="GSQE18zd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="JkDoPoqK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7A082206B7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S8EQwEgL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC2E121D40
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hbBuU9/N3OE3O9b/WTjivj0VVZYM1DsFRQ62AI73NAE=; b=GSQE18zdslYAX9KefQGCRWISD
-	RNpNdmX0eVsPSQCuqZ0ghB40HLtgfUwguPeJuPHzz87vPZG6ubIn3wYmV1FZJehBsQ+6EubFnO7pr
-	eLQKzt0hGTEsAH8tBqE/T2jOZMXiP5NyI9IDV5+JgSvaF7sa+AQveCEPN4kKY7SDBuqhy6BKAdukU
-	GjtIcU0pQlHAXE8FwEEsjKE3I0qw1omCnuHi1uVaEKU1KHk+im89vfkcYZOgqfimCKzm5W99pOLeD
-	JsuJJTzQDCJTKrKJnVd9kjNkoB9J5cOfMFZKa7VMMDchqyokHrFBsbUjfgQs81lvZJ62owX8G5oLq
-	gKplX6r9Q==;
+	 bh=rzsWOjf8w5Squ7WfmVW17k7SZihsC2cyUjKwW4CWG0M=; b=S8EQwEgLSL24HPHs7cZMXHjn/
+	Yv3MhdNpme5psd1JKEbLnXL4cTMxe1mzumnPBGE3kLcx8/t7sn8ZVfndjSKg7lBigxr8r5IYEXQlu
+	ctGSoylQ9GqMhj9Vg9HSWL92H3uZSzmK7qxPNfRb86AILvptJud3CF+HdUAJt2c3ot4DSkiAqivoE
+	h3JMPBdzLvyEuYGP7tB8vPQErw5zDvNOYR7E+zXyKVRbe8LzVP5mMvEx1mGDGEmCJk3NqYLMSGJt+
+	cYx2VSw6WuhhwGLhL23fP/iLHQsrBjLEd6qiDuDERSighGoeC3e1LkafoOqgfLR5/2ioZPnGM6XoB
+	rWRScmoCw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGC2t-0008T6-Ce; Thu, 10 Sep 2020 02:10:43 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1kGCvr-0004mx-1v; Thu, 10 Sep 2020 03:07:31 +0000
+Received: from regular1.263xmail.com ([211.150.70.199])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGC2q-0008SJ-Lh
- for linux-rockchip@lists.infradead.org; Thu, 10 Sep 2020 02:10:41 +0000
-Received: by mail-wr1-x443.google.com with SMTP id z4so4957226wrr.4
- for <linux-rockchip@lists.infradead.org>; Wed, 09 Sep 2020 19:10:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PlSzeOt9N0W/7KOltCPrNSI8OJ7kFIa46v5Vs5ruAzE=;
- b=JkDoPoqKHm57pQylGVVBMb+2P4mUUyI14KYTHy2HW1JlsrjY4xP6wdtHeD5MFKdcE2
- URp+KWtbpiWbb/kbbYrMULGf9pcBMt1wV3jT5bmtmIq4TCLFYRe2zKmn3uVk+80GLzG6
- UBm7deRjVDb0LhAjTWLBs6RoLDkArABarz6zc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PlSzeOt9N0W/7KOltCPrNSI8OJ7kFIa46v5Vs5ruAzE=;
- b=PeTju3/3E8KWqZv3757nIhEm3oUm+vWRo9wSygPQE4+sgV5AJprxruEXkEP608XE7N
- 2oD0BHPLvQJprzzUS8SfYN7hZHiSWL6k+Od+L7lYpVsdQJreBIlZuFnBsCgdMasG+5az
- aQF2B4SrxlfOXj0tNs0jSHP2V0sl5QMwV8R6o/mtmgWtKyRm5VHGq8bddmeus1AOIQE9
- m2D/qqUrY+1tvdW4BElJWxx+BJvIe3B+FLKiSArqg+uQARGS0ERa6fWWyCs2MTod71X/
- SpTjOux5HXPCiNiEvQGopQp9V0iDnpow1rwlkkY6s+PURVvcPBmCuTVzwr1bV9kdO790
- JwUQ==
-X-Gm-Message-State: AOAM531nRk12s6sKI4801ezEkzzJVdXrgs8ILb7IHOdfnoM7OSTiy+Fv
- VVNyq2GStIjgBrm+WOK5epBi03m8h4X2uFbIr6IX2g==
-X-Google-Smtp-Source: ABdhPJzfvrq3ETFzz+i1NYsPH/dvVMCxkhygsXwY9sjZ5D5c8EGzXWs4p8/HuJYhmQ5eijuyWmC6iuTdYlluAj54gYQ=
-X-Received: by 2002:a5d:4ccb:: with SMTP id c11mr6416336wrt.159.1599703839398; 
- Wed, 09 Sep 2020 19:10:39 -0700 (PDT)
+ id 1kGCvn-0004m1-V8
+ for linux-rockchip@lists.infradead.org; Thu, 10 Sep 2020 03:07:29 +0000
+Received: from localhost (unknown [192.168.167.69])
+ by regular1.263xmail.com (Postfix) with ESMTP id 487AD104E;
+ Thu, 10 Sep 2020 11:07:19 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-SKE-CHECKED: 1
+X-ABS-CHECKED: 1
+Received: from [172.16.12.236] (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P25134T140525325764352S1599707237793667_; 
+ Thu, 10 Sep 2020 11:07:18 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <9b78765c88d40245569064639cb03e69>
+X-RL-SENDER: zhangqing@rock-chips.com
+X-SENDER: zhangqing@rock-chips.com
+X-LOGIN-NAME: zhangqing@rock-chips.com
+X-FST-TO: kever.yang@rock-chips.com
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-DNS-TYPE: 0
+X-System-Flag: 0
+Subject: Re: [PATCH v3 6/6] clk: rockchip: rk3399: Support module build
+To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
+References: <20200904074405.24439-1-zhangqing@rock-chips.com>
+ <20200904074505.24917-1-zhangqing@rock-chips.com> <3524790.GmC4BGDxql@diego>
+From: "elaine.zhang" <zhangqing@rock-chips.com>
+Organization: rockchip
+Message-ID: <ad06ac8a-e7f9-382d-1cbc-01aea6256e5c@rock-chips.com>
+Date: Thu, 10 Sep 2020 11:07:17 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <20200907100039.1731457-1-cychiang@chromium.org>
- <20200907100039.1731457-3-cychiang@chromium.org>
- <20200908203357.GA861143@bogus>
- <CAFv8NwLMAkFhVT-ML7QHbnSkqmgh=5SrNSik5eSCTHB1=DGQ0A@mail.gmail.com>
- <CAL_JsqKW2bpHP60MX4eFmtfzkvaHJ670m6e8H29=u=mDAYg63w@mail.gmail.com>
-In-Reply-To: <CAL_JsqKW2bpHP60MX4eFmtfzkvaHJ670m6e8H29=u=mDAYg63w@mail.gmail.com>
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Date: Thu, 10 Sep 2020 10:10:12 +0800
-Message-ID: <CAFv8NwJQpfLW9syXyUpPusfwS39DTp2wi+MQ=aMTzPqpO3vPig@mail.gmail.com>
-Subject: Re: [PATCH v7 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
- bindings
-To: Rob Herring <robh@kernel.org>
+In-Reply-To: <3524790.GmC4BGDxql@diego>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200909_221040_749386_DE4ADE35 
-X-CRM114-Status: GOOD (  39.57  )
+X-CRM114-CacheID: sfid-20200909_230728_467155_7FF556F1 
+X-CRM114-Status: GOOD (  17.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,153 +89,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Taniya Das <tdas@codeaurora.org>,
- "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
- <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
- Heiko Stuebner <heiko@sntech.de>, Takashi Iwai <tiwai@suse.com>,
- Rohit kumar <rohitkr@codeaurora.org>, Patrick Lai <plai@codeaurora.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Andy Gross <agross@kernel.org>, Dylan Reid <dgreid@chromium.org>,
- Jaroslav Kysela <perex@perex.cz>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
- Stephan Gerhold <stephan@gerhold.net>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, Mark Brown <broonie@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Srini Kandagatla <srinivas.kandagatla@linaro.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: huangtao@rock-chips.com, xf@rock-chips.com, sboyd@kernel.org,
+ mturquette@baylibre.com, linux-kernel@vger.kernel.org,
+ linux-clk@vger.kernel.org, kever.yang@rock-chips.com,
+ linux-rockchip@lists.infradead.org, xxx@rock-chips.com
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 10, 2020 at 1:49 AM Rob Herring <robh@kernel.org> wrote:
->
-> On Wed, Sep 9, 2020 at 3:24 AM Cheng-yi Chiang <cychiang@chromium.org> wrote:
-> >
-> > On Wed, Sep 9, 2020 at 4:34 AM Rob Herring <robh@kernel.org> wrote:
-> > >
-> > > On Mon, Sep 07, 2020 at 06:00:38PM +0800, Cheng-Yi Chiang wrote:
-> > > > Add devicetree bindings documentation file for sc7180 sound card.
-> > > >
-> > > > Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
-> > > > ---
-> > > >  .../bindings/sound/qcom,sc7180.yaml           | 143 ++++++++++++++++++
-> > > >  1 file changed, 143 insertions(+)
-> > > >  create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> > > >
-> > > > diff --git a/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> > > > new file mode 100644
-> > > > index 000000000000..ae809346ca80
-> > > > --- /dev/null
-> > > > +++ b/Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
-> > > > @@ -0,0 +1,143 @@
-> > > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > > +%YAML 1.2
-> > > > +---
-> > > > +$id: http://devicetree.org/schemas/sound/qcom,sc7180.yaml#
-> > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > +
-> > > > +title: Qualcomm Technologies Inc. SC7180 ASoC sound card driver
-> > > > +
-> > > > +maintainers:
-> > > > +  - Rohit kumar <rohitkr@codeaurora.org>
-> > > > +  - Cheng-Yi Chiang <cychiang@chromium.org>
-> > > > +
-> > > > +description:
-> > > > +  This binding describes the SC7180 sound card which uses LPASS for audio.
-> > > > +
-> > > > +properties:
-> > > > +  compatible:
-> > > > +    const: qcom,sc7180-sndcard
-> > > > +
-> > > > +  audio-routing:
-> > > > +    $ref: /schemas/types.yaml#/definitions/non-unique-string-array
-> > > > +    description:
-> > > > +      A list of the connections between audio components. Each entry is a
-> > > > +      pair of strings, the first being the connection's sink, the second
-> > > > +      being the connection's source.
-> > > > +
-> > > > +  model:
-> > > > +    $ref: /schemas/types.yaml#/definitions/string
-> > > > +    description: User specified audio sound card name
-> > > > +
-> > > > +  headset-jack:
-> > > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > > +    description: phandle of the codec for headset detection
-> > > > +
-> > > > +  hdmi-jack:
-> > > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > > +    description: phandle of the codec for hdmi jack detection
-> > >
-> > > You already have links to these devices. Why duplicate it here?
-> > >
-> > > What if you had 2 headsets? This doesn't scale.
-> > >
-> > Hi Rob, thanks for reviewing.
-> > There was some discussion in
-> > https://patchwork.kernel.org/patch/11737905/#23571643 about how to
-> > specify the dailink that has a headset jack.
-> > I would like to pass the information of headset jack and hdmi jack to
-> > the machine driver so the machine driver can call
-> > snd_soc_component_set_jack to set jack when init the corresponding link.
-> > Headset jack and hdmi jack will be treated differently for button and
-> > event type.
-> > Because of this, we can not just set a property "jack" in the link.
->
-> Don't design your binding around some driver architecture. Limitations
-> of ASoC are not reasons for your binding.
->
-> For DP and HDMI, we assume HPD is supported generally as that's a
-> standard function for HDMI/DP controllers. There's a 'no-hpd' property
-> for cases of broken HPD. That hardware description is part of the
-> device HPD is connected to which is the HDMI/DP controller/bridge or
-> the connector node in the case of a GPIO line. That doesn't belong in
-> the virtual sound card.
->
-> I would assume a codec to be similar. The codec node (the alc5682
-> node) should have any jack related properties (or possibly implicitly
-> support it by default).
-
-
-Thanks for the explanation. Now I can follow your thoughts.
-I see that the sound card driver should assume that there is jack/hpd
-available on HDMI/codec unless it is specified in HDMI/codec node
-(should not specified in sound card).
-
->
->
-> > As for the 2 headsets case (I guess you mean hp jack and mic jack), on
-> > this board we will not have this use case.
-> > If someone really wants to build hp jack and mic jack on the board
-> > based on this machine driver, we can add two more property hp-jack and
-> > mic-jack to specify that,
-> > as the machine driver will need to know the different jack types
-> > anyway. What do you think ?
->
-> I was thinking more of a case of having 2 of the same thing. Perhaps 2
-> HDMI outputs. Or if you have DP instead of HDMI? Just going to add
-> 'dp-jack'?
-
-
-I agree that this may not scale. It will become an abuse of binding interface.
-Sound card drivers should have more knowledge/control on this kind of
-configuration.
-I think this can be taken care of inside the sound card driver.
-If a machine wants a different configuration, we can use compatible
-strings to achieve that.
-This will be more flexible than the limited binding interface.
-
-Thanks for the discussion, I will remove headset-jack and hdmi-jack in v8.
->
->
-> Rob
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+aGksCgrlnKggMjAyMC85Lzcg5LiK5Y2INjo0OSwgSGVpa28gU3TDvGJuZXIg5YaZ6YGTOgo+IEFt
+IEZyZWl0YWcsIDQuIFNlcHRlbWJlciAyMDIwLCAwOTo0NTowNSBDRVNUIHNjaHJpZWIgRWxhaW5l
+IFpoYW5nOgo+PiBzdXBwb3J0IENMS19PRl9ERUNMQVJFIGFuZCBidWlsdGluX3BsYXRmb3JtX2Ry
+aXZlcl9wcm9iZQo+PiBkb3VibGUgY2xrIGluaXQgbWV0aG9kLgo+PiBhZGQgbW9kdWxlIGF1dGhv
+ciwgZGVzY3JpcHRpb24gYW5kIGxpY2Vuc2UgdG8gc3VwcG9ydCBidWlsZGluZwo+PiBTb2MgUmsz
+Mzk5IGNsb2NrIGRyaXZlciBhcyBtb2R1bGUuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEVsYWluZSBa
+aGFuZyA8emhhbmdxaW5nQHJvY2stY2hpcHMuY29tPgo+PiBSZXZpZXdlZC1ieTogS2V2ZXIgWWFu
+ZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+ICAgZHJpdmVycy9jbGsvcm9j
+a2NoaXAvY2xrLXJrMzM5OS5jIHwgNTUgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+
+PiAgIDEgZmlsZSBjaGFuZ2VkLCA1NSBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9j
+bGstcmszMzk5LmMKPj4gaW5kZXggY2UxZDI0NDZmMTQyLi40MGZmMTdhZWU1YjYgMTAwNjQ0Cj4+
+IC0tLSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+PiArKysgYi9kcml2ZXJz
+L2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMKPj4gQEAgLTUsOSArNSwxMSBAQAo+PiAgICAqLwo+
+PiAgIAo+PiAgICNpbmNsdWRlIDxsaW51eC9jbGstcHJvdmlkZXIuaD4KPj4gKyNpbmNsdWRlIDxs
+aW51eC9tb2R1bGUuaD4KPj4gICAjaW5jbHVkZSA8bGludXgvaW8uaD4KPj4gICAjaW5jbHVkZSA8
+bGludXgvb2YuaD4KPj4gICAjaW5jbHVkZSA8bGludXgvb2ZfYWRkcmVzcy5oPgo+PiArI2luY2x1
+ZGUgPGxpbnV4L29mX2RldmljZS5oPgo+PiAgICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZp
+Y2UuaD4KPj4gICAjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+Cj4+ICAgI2luY2x1ZGUgPGR0LWJp
+bmRpbmdzL2Nsb2NrL3JrMzM5OS1jcnUuaD4KPj4gQEAgLTE2MDAsMyArMTYwMiw1NiBAQCBzdGF0
+aWMgdm9pZCBfX2luaXQgcmszMzk5X3BtdV9jbGtfaW5pdChzdHJ1Y3QgZGV2aWNlX25vZGUgKm5w
+KQo+PiAgIAlyb2NrY2hpcF9jbGtfb2ZfYWRkX3Byb3ZpZGVyKG5wLCBjdHgpOwo+PiAgIH0KPj4g
+ICBDTEtfT0ZfREVDTEFSRShyazMzOTlfY3J1X3BtdSwgInJvY2tjaGlwLHJrMzM5OS1wbXVjcnUi
+LCByazMzOTlfcG11X2Nsa19pbml0KTsKPj4gKwo+PiArc3RydWN0IGNsa19yazMzOTlfaW5pdHMg
+ewo+PiArCQl2b2lkICgqaW5pdHMpKHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnApOwo+PiArfTsKPj4g
+Kwo+PiArc3RhdGljIGNvbnN0IHN0cnVjdCBjbGtfcmszMzk5X2luaXRzIGNsa19yazMzOTlfcG11
+Y3J1X2luaXQgPSB7Cj4+ICsJLmluaXRzID0gcmszMzk5X3BtdV9jbGtfaW5pdCwKPj4gK307Cj4+
+ICsKPj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgY2xrX3JrMzM5OV9pbml0cyBjbGtfcmszMzk5X2Ny
+dV9pbml0ID0gewo+PiArCS5pbml0cyA9IHJrMzM5OV9jbGtfaW5pdCwKPj4gK307Cj4+ICsKPj4g
+K3N0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIGNsa19yazMzOTlfbWF0Y2hfdGFibGVb
+XSA9IHsKPj4gKwl7Cj4+ICsJCS5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1jcnUiLAo+
+PiArCQkuZGF0YSA9ICZjbGtfcmszMzk5X2NydV9pbml0LAo+PiArCX0sICB7Cj4+ICsJCS5jb21w
+YXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1wbXVjcnUiLAo+PiArCQkuZGF0YSA9ICZjbGtfcmsz
+Mzk5X3BtdWNydV9pbml0LAo+PiArCX0sCj4+ICsJeyB9Cj4+ICt9Owo+PiArTU9EVUxFX0RFVklD
+RV9UQUJMRShvZiwgY2xrX3JrMzM5OV9tYXRjaF90YWJsZSk7Cj4+ICsKPj4gK3N0YXRpYyBpbnQg
+X19pbml0IGNsa19yazMzOTlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4g
+K3sKPj4gKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wID0gcGRldi0+ZGV2Lm9mX25vZGU7Cj4+ICsJ
+Y29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCAqbWF0Y2g7Cj4+ICsJY29uc3Qgc3RydWN0IGNsa19y
+azMzOTlfaW5pdHMgKmluaXRfZGF0YTsKPj4gKwo+PiArCW1hdGNoID0gb2ZfbWF0Y2hfZGV2aWNl
+KGNsa19yazMzOTlfbWF0Y2hfdGFibGUsICZwZGV2LT5kZXYpOwo+PiArCWlmICghbWF0Y2ggfHwg
+IW1hdGNoLT5kYXRhKQo+PiArCQlyZXR1cm4gLUVJTlZBTDsKPj4gKwo+PiArCWluaXRfZGF0YSA9
+IG1hdGNoLT5kYXRhOwo+PiArCWlmIChpbml0X2RhdGEtPmluaXRzKQo+PiArCQlpbml0X2RhdGEt
+PmluaXRzKG5wKTsKPj4gKwo+PiArCXJldHVybiAwOwo+PiArfQo+PiArCj4+ICtzdGF0aWMgc3Ry
+dWN0IHBsYXRmb3JtX2RyaXZlciBjbGtfcmszMzk5X2RyaXZlciA9IHsKPj4gKwkuZHJpdmVyCQk9
+IHsKPj4gKwkJLm5hbWUJPSAiY2xrLXJrMzM5OSIsCj4+ICsJCS5vZl9tYXRjaF90YWJsZSA9IGNs
+a19yazMzOTlfbWF0Y2hfdGFibGUsCj4gSSBndWVzcyB3ZSBwcm9iYWJseSB3YW50Cj4gCQkuc3Vw
+cHJlc3NfYmluZF9hdHRycyA9IHRydWUsCk9LLCBJIHdpbGwgYWRkIGl0IGluIHRoZSBuZXh0IHZl
+cnNpb24uCj4KPiBoZXJlLCBiZWNhdXNlIHRoZXJlIGlzIG5vIHVubG9hZGluZy4KPiBBbHNvIHdo
+YXQgaGFwcGVucyB3aGVuIHlvdSB0cnkgdG8gcm1tb2QgdGhlIG1vZHVsZT8KY29uc29sZTovICMg
+bHNtb2QgfCBncmVwIGNsawoKY2xrX3JrODA4wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMTYz
+ODTCoCAwCmNsa19yazMzOTnCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgNDkxNTLCoCAwIFtwZXJt
+YW5lbnRdCmNsa19yb2NrY2hpcMKgwqDCoMKgwqDCoMKgwqDCoMKgIDU3MzQ0wqAgMzIgcm9ja2No
+aXBfZG1jLHJvY2tjaGlwX29wcF9zZWxlY3QsY2xrX3JrMzM5OQpyb2NrY2hpcF9zaXDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCAyNDU3NsKgIDYgCnJrX3Zjb2RlYyxyb2NrY2hpcF9wd21fcmVtb3RlY3Rs
+LHJvY2tjaGlwX2J1cyxudm1lbV9yb2NrY2hpcF9lZnVzZSxyb2NrY2hpcF9wbV9jb25maWcsY2xr
+X3JvY2tjaGlwCgpjb25zb2xlOi8gIyBybW1vZCBjbGtfcmszMzk5CgpybW1vZDogZmFpbGVkIHRv
+IHVubG9hZCBjbGtfcmszMzk5OiBEZXZpY2Ugb3IgcmVzb3VyY2UgYnVzeQoKY29uc29sZTovICMg
+cm1tb2QgLWYgY2xrX3JrMzM5OQoKcm1tb2Q6IGZhaWxlZCB0byB1bmxvYWQgY2xrX3JrMzM5OTog
+RGV2aWNlIG9yIHJlc291cmNlIGJ1c3kKCgpUaGUgYnVpbHRpbl9wbGF0Zm9ybV9kcml2ZXJfcHJv
+YmUoKcKgIHdpdGhvdXQgdGhlIF9fZXhpdCBwYXJ0cy4KCj4KPiBIZWlrbwo+Cj4KPgo+CgoKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
