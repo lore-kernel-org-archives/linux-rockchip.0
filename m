@@ -2,64 +2,91 @@ Return-Path: <SRS0=KXJX=CT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D33C0C433E2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 07:53:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E6D1C433E2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 08:43:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 620ED20809
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 07:53:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0EDD9206D4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 08:43:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="U2D5JJS7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 620ED20809
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="B1hExoPi";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="INguoyub"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0EDD9206D4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bOvcjpmv8/4FULlwmdC1x1BsYi8ii063d9n5b3EnKrE=; b=U2D5JJS7ZXAxXL64GRG+F57sH
-	ve1b0m2HJomzGyJS3J0qEJjwuooP2314NV9NDL8GaHGgqllRbsaQmaBXjYvUO5zYv4T/hv9483NBf
-	SJ/sPiDJaDuJbKOI8XOHY/Sw9W8MNGQdRjOMt1Vxyft+yu3eEDgp5pXQcQ51JDPD18/LUJf9S6buw
-	0GkqjwIoApyuOJHANRQ3yiSE5LH+VZCFFFHvIlvzxdhrMy/ViC+mhp+KRYv3UvdGDyRezMIrAM5Ks
-	nVcBHxYDDZu+wJXA80vSGwUenuF0i1KeT1x6hdn5ySr5//NGrbQppsiWFFhkBymjcb4ZTIU8IsGqi
-	2mwM8be/A==;
+	 bh=mPQanuE2mVDK9LNQQcg0Mmvkpl78oODoiSJDrPUslOw=; b=B1hExoPi5KNNg0LDw+Aiifnk+
+	sNPTTz94Rp4qU+BRsGGZW6Pmy9hIjMRga3070C4+TmOMLk2zF/mdWSlLxpSyO6fMQ5uQo8S6ceftu
+	TR0UueoHfSvWwNVCap5fmY+dSLIjRn9lcjiUfwJ96zaejGU0in/5NGbLdLFvL+ksqOPGCLrNMOedC
+	lYnWuGqbM6WzoZniiEtK/4fWXq4TnQd8mbrjHlrPkydk2j5wRRJxGaVvqcU5Uph3g/zOcXUl05o5F
+	7b3vvi+OXwPk99Q/BtEBDWnYidOr/Cnbr575+9PxZwZuK19AdN9/h6/IJfI+pn3L0U5/Znx9Bfr8F
+	lohiG9eCg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGHO7-0005Ed-Sh; Thu, 10 Sep 2020 07:52:59 +0000
-Received: from szxga06-in.huawei.com ([45.249.212.32] helo=huawei.com)
+	id 1kGIBC-0000Sn-Ol; Thu, 10 Sep 2020 08:43:42 +0000
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGHO3-0005DT-EU; Thu, 10 Sep 2020 07:52:56 +0000
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id F28D11EF2D70231AC517;
- Thu, 10 Sep 2020 15:52:50 +0800 (CST)
-Received: from [127.0.0.1] (10.174.179.108) by DGGEMS407-HUB.china.huawei.com
- (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0;
- Thu, 10 Sep 2020 15:52:49 +0800
-Subject: Re: [PATCH -next] drm/rockchip: cdn-dp: Mark
- cdn_dp_core_suspend/resume __maybe_unused
-To: <hjc@rock-chips.com>, <heiko@sntech.de>, <airlied@linux.ie>,
- <daniel@ffwll.ch>
-References: <20200811021225.50296-1-yuehaibing@huawei.com>
-From: Yuehaibing <yuehaibing@huawei.com>
-Message-ID: <7b9799c6-96e2-2273-a296-ea1a94e4cade@huawei.com>
-Date: Thu, 10 Sep 2020 15:52:48 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.8.0
+ id 1kGIBB-0000RZ-5V
+ for linux-rockchip@lists.infradead.org; Thu, 10 Sep 2020 08:43:41 +0000
+Received: by mail-oi1-x241.google.com with SMTP id d189so5163621oig.12
+ for <linux-rockchip@lists.infradead.org>; Thu, 10 Sep 2020 01:43:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=RM+6YCueDPy1nkorG5jfOVGfbj1m5UCHBF4PF2PU/iI=;
+ b=INguoyube130+8WwnXu/RYMh/Ju9WC30cNYDrviHqjIJBbZccMMVak/rSrOZ3ijhHR
+ OmyS41tmWGU9bUjUr28yjCNpFgi3MHy2KYoaUXyZmwIZPZiIiwAojnfIKdvrGosGbjPA
+ JydJiXyNitT7guWnNfOTvv7Z4wIAc2T/tudn8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=RM+6YCueDPy1nkorG5jfOVGfbj1m5UCHBF4PF2PU/iI=;
+ b=tR3cxNhoczs91KFDxLRZYSIV3pjkedqNYh/CgfbpyKcd4wV8KSNCXItevQ8FdQ9buQ
+ oyxQlR7fvVT0JBr/F9Chyu2LeCFPINTfN5MG1LBoFZxM6jycIt9YkfTyejzT1Eu1ICgE
+ 6kUS6/ckqiem/cUrvran/RwOFuin2s1NvW55IxG1K3X/5J45eB0RZeU604oyVcst+Yzv
+ akjiQJSTO8KMFXxR5IZydClDuxJOH+J2iFJMp0ljHYOHQXEDBbTsth0mFH7r7r8xXsSH
+ GHYi2QeT2r7qtiL7n9rFX7u8WuyWXP5JbSTsbTX0ak26r5fJ4WHfHLe2p9Ti5qewnMHi
+ 9FuA==
+X-Gm-Message-State: AOAM530DxZS244cMjuvr5OFig8V8Iphux+iDUKIR9k1kyJ9/hYrYzYX8
+ J/KQ5Bj+UAPvOKOOwSD7g4zYKeyoasWzag==
+X-Google-Smtp-Source: ABdhPJwKV+ZOOaXIepnvzNCYeN8NOn1rDAp3iI0KH/Z6bShSmlhPLBYiqaL/xCZjBNbGL4Qxx3S0hg==
+X-Received: by 2002:aca:1711:: with SMTP id j17mr3173849oii.152.1599727418093; 
+ Thu, 10 Sep 2020 01:43:38 -0700 (PDT)
+Received: from mail-oi1-f180.google.com (mail-oi1-f180.google.com.
+ [209.85.167.180])
+ by smtp.gmail.com with ESMTPSA id j66sm728123otc.74.2020.09.10.01.43.36
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 10 Sep 2020 01:43:37 -0700 (PDT)
+Received: by mail-oi1-f180.google.com with SMTP id u126so5157861oif.13
+ for <linux-rockchip@lists.infradead.org>; Thu, 10 Sep 2020 01:43:36 -0700 (PDT)
+X-Received: by 2002:aca:1209:: with SMTP id 9mr2982017ois.94.1599727416353;
+ Thu, 10 Sep 2020 01:43:36 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200811021225.50296-1-yuehaibing@huawei.com>
-X-Originating-IP: [10.174.179.108]
-X-CFilter-Loop: Reflected
+References: <20200518174011.15543-1-ezequiel@collabora.com>
+ <20200518174011.15543-3-ezequiel@collabora.com>
+ <CAPBb6MXezNVxPrJ05mpS1=yE8V81DjeQ2gA4pGfC8QQzgfUi8A@mail.gmail.com>
+In-Reply-To: <CAPBb6MXezNVxPrJ05mpS1=yE8V81DjeQ2gA4pGfC8QQzgfUi8A@mail.gmail.com>
+From: Alexandre Courbot <acourbot@chromium.org>
+Date: Thu, 10 Sep 2020 17:43:24 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MVqq-3JLBe9k5WtYL-LHmXYwj7HFt8tAVLNnuqKJA0p9Q@mail.gmail.com>
+Message-ID: <CAPBb6MVqq-3JLBe9k5WtYL-LHmXYwj7HFt8tAVLNnuqKJA0p9Q@mail.gmail.com>
+Subject: Re: [PATCH v4 2/3] media: uapi: Add VP9 stateless decoder controls
+To: Ezequiel Garcia <ezequiel@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_035255_730516_A85628DC 
-X-CRM114-Status: GOOD (  15.82  )
+X-CRM114-CacheID: sfid-20200910_044341_224104_A9D5C572 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,36 +99,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>, Jonas Karlman <jonas@kwiboo.se>,
+ LKML <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, linux-rockchip@lists.infradead.org,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Jeffrey Kardatzke <jkardatzke@chromium.org>, kernel@collabora.com,
+ Gustavo Padovan <gustavo.padovan@collabora.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-cGluZy4uLgoKT24gMjAyMC84LzExIDEwOjEyLCBZdWVIYWliaW5nIHdyb3RlOgo+IElmIENPTkZJ
-R19QTSBpcyBub3Qgc2V0LCBnY2Mgd2FybnM6Cj4gCj4gZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlw
-L2Nkbi1kcC1jb3JlLmM6MTEyNDoxMjoKPiAgd2FybmluZzog4oCYY2RuX2RwX3Jlc3VtZeKAmSBk
-ZWZpbmVkIGJ1dCBub3QgdXNlZCBbLVd1bnVzZWQtZnVuY3Rpb25dCj4gCj4gTWFyayB0aGVtIF9f
-bWF5YmVfdW51c2VkIHRvIGZpeCB0aGlzLgo+IAo+IFJlcG9ydGVkLWJ5OiBIdWxrIFJvYm90IDxo
-dWxrY2lAaHVhd2VpLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBZdWVIYWliaW5nIDx5dWVoYWliaW5n
-QGh1YXdlaS5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29y
-ZS5jIHwgNCArKy0tCj4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKyksIDIgZGVsZXRp
-b25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAt
-Y29yZS5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKPiBpbmRleCBh
-NGE0NWRhZjkzZjIuLjQxM2IwZTkwZjEwZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvY2RuLWRwLWNvcmUuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9j
-ZG4tZHAtY29yZS5jCj4gQEAgLTExMDcsNyArMTEwNyw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qg
-Y29tcG9uZW50X29wcyBjZG5fZHBfY29tcG9uZW50X29wcyA9IHsKPiAgCS51bmJpbmQgPSBjZG5f
-ZHBfdW5iaW5kLAo+ICB9Owo+ICAKPiAtc3RhdGljIGludCBjZG5fZHBfc3VzcGVuZChzdHJ1Y3Qg
-ZGV2aWNlICpkZXYpCj4gK3N0YXRpYyBfX21heWJlX3VudXNlZCBpbnQgY2RuX2RwX3N1c3BlbmQo
-c3RydWN0IGRldmljZSAqZGV2KQo+ICB7Cj4gIAlzdHJ1Y3QgY2RuX2RwX2RldmljZSAqZHAgPSBk
-ZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiAgCWludCByZXQgPSAwOwo+IEBAIC0xMTIxLDcgKzExMjEs
-NyBAQCBzdGF0aWMgaW50IGNkbl9kcF9zdXNwZW5kKHN0cnVjdCBkZXZpY2UgKmRldikKPiAgCXJl
-dHVybiByZXQ7Cj4gIH0KPiAgCj4gLXN0YXRpYyBpbnQgY2RuX2RwX3Jlc3VtZShzdHJ1Y3QgZGV2
-aWNlICpkZXYpCj4gK3N0YXRpYyBfX21heWJlX3VudXNlZCBpbnQgY2RuX2RwX3Jlc3VtZShzdHJ1
-Y3QgZGV2aWNlICpkZXYpCj4gIHsKPiAgCXN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCA9IGRldl9n
-ZXRfZHJ2ZGF0YShkZXYpOwo+ICAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Thu, Sep 10, 2020 at 3:04 PM Alexandre Courbot <acourbot@chromium.org> wrote:
+>
+> Hi Ezequiel, sorry for the late review!
+>
+> On Tue, May 19, 2020 at 2:40 AM Ezequiel Garcia <ezequiel@collabora.com> wrote:
+> >
+> > From: Boris Brezillon <boris.brezillon@collabora.com>
+> >
+> > Add the VP9 stateless decoder controls plus the documentation that goes
+> > with it.
+> >
+> > Signed-off-by: Boris Brezillon <boris.brezillon@collabora.com>
+> > Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
+> > ---
+> >  .../userspace-api/media/v4l/biblio.rst        |  10 +
+> >  .../media/v4l/ext-ctrls-codec.rst             | 550 ++++++++++++++++++
+> >  drivers/media/v4l2-core/v4l2-ctrls.c          | 239 ++++++++
+> >  drivers/media/v4l2-core/v4l2-ioctl.c          |   1 +
+> >  include/media/v4l2-ctrls.h                    |   1 +
+> >  include/media/vp9-ctrls.h                     | 485 +++++++++++++++
+
+Also another thing I missed: shouldn't the new pointer controls be
+added to union v4l2_ctrl_ptr in v4l2-ctrls.h?
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
