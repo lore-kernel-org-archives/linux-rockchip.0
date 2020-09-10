@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 00EFEC43461
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 06:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F6A2C433E2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 06:27:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 87174206A1
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 06:25:48 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DDD7B207EA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 06:27:23 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="StO4vIM3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="TXaXfT1g"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 87174206A1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UEgmStxt";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="etU4Y2hi"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DDD7B207EA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,43 +26,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=MFX4vlzFns38XF1d48q2XNYRJggu1vq1aYJcH8KY0Ak=; b=StO4vIM3R8g1cg0pJrQtL9sjg
-	qA5EcYcag+NifSObfjnsxV6tgettJ8dm770rPyMZ6RQF2n4rhpOWTmUgPmWPJ/ifi1E035A71OwcV
-	P7XBM5atN0GO1DIPqeZjUMFIewgY6BxazmMxeRiz/+0UHjRERzu+S5j+6te2cNh7HSkW3HlAXbXhA
-	HQkCeE/K1m7RmHusRt84T47tHivsqtbeWF3ozLfoZGdhaWqdGG9wN9AqbagV/RH5laSJYV3s4J+uo
-	NDtc/yclTqbEtsL5ciNM/8rOOjD3ovMzU4UNecksh45EKIBtDtkWzkG/N49tAZCytzzDDz2Qsg8pv
-	8JTIUY0YQ==;
+	 bh=LGbzhy3DcnHoh/d/I+41cNwoxe3CogvBWSdw+g3KTjs=; b=UEgmStxt1/3ZdnD91ahexwRy0
+	l2IGwcLEX4XAgdi9M8LfRGhsw61lvTyMXKVbkBeLFp6zmtFgmU8PXd0zpAlCPdcxscr+eMu86MGiZ
+	SHzO4fEVVJwAQmnFI9B9sA5Nlvx76xe56O/z81FuF/aNKssxTD+HM8grsLYwsqSFdv/w/d5vcsXGu
+	4h5AIE6t2qPJ8fbtGyciHHghFGygo2GsmY7vFk5XLM/NFAzDABogo+bEmENyQUlUoGmdgdf6gPaeo
+	3zOWjRp+WpLm/vtMbghRhSnjpyyYVHMkvpX56ejnjga11My1uB3WXyh9Z48TAh6DPgkkpM4f8eZ9f
+	7Exf+J0gw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGG1f-000425-8t; Thu, 10 Sep 2020 06:25:43 +0000
+	id 1kGG3C-0004TP-Df; Thu, 10 Sep 2020 06:27:18 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGG1Y-0003zR-QZ; Thu, 10 Sep 2020 06:25:37 +0000
+ id 1kGG37-0004Ra-6F; Thu, 10 Sep 2020 06:27:14 +0000
 Received: from localhost (p5486ceec.dip0.t-ipconnect.de [84.134.206.236])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 1703A206A1;
- Thu, 10 Sep 2020 06:25:35 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 6EA4A207EA;
+ Thu, 10 Sep 2020 06:27:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1599719136;
- bh=1tmPJGIkpBXHgR/46GF8TeWUiMz2EH43SrJ8FMzonN0=;
+ s=default; t=1599719232;
+ bh=Gm5FP8nCLsvEkfvRpd3DNlXiO/khQnSfhfWHWBBmjY0=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TXaXfT1gOvjM9QB5dCOqR58HhVflow1+Q+bmi9oYJZdyWEd3X6svuE1JTuswzqWqg
- 1jmkkGWmaKl1PXdy/VCMIjw2b8PtEY7ioBS6LQX8JyTGqsHG1l/VPZoHMmFzki/SJR
- cseoRUmUBSndK4MRfpeGrkR8H+RiqbHr5/q/p+s4=
-Date: Thu, 10 Sep 2020 08:25:33 +0200
+ b=etU4Y2hicXxYTNu/4kWYn9Al5j8eZkOpVlo2pD0o1ZsWbpO8yQItP3MmmeCtXmeSe
+ fyvU9aDyHqv0zV0t5Qq9zQ5V1TzIGX8u0YUgsApk05uWFgTZuWfYcPmjEM53hyKvc7
+ 5F65oqU/5kMGkwkHBLR+LePV9sqD9cHQMPpUiAVQ=
+Date: Thu, 10 Sep 2020 08:27:09 +0200
 From: Wolfram Sang <wsa@kernel.org>
 To: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: Re: [PATCH 3/9] i2c: bcm2835: Simplify with dev_err_probe()
-Message-ID: <20200910062533.GF1031@ninjato>
+Subject: Re: [PATCH 6/9] i2c: imx: Simplify with dev_err_probe()
+Message-ID: <20200910062708.GG1031@ninjato>
 References: <20200902150643.14839-1-krzk@kernel.org>
- <20200902150643.14839-3-krzk@kernel.org>
+ <20200902150643.14839-6-krzk@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20200902150643.14839-3-krzk@kernel.org>
+In-Reply-To: <20200902150643.14839-6-krzk@kernel.org>
 User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_022536_937040_EE85EA15 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20200910_022713_311215_50AAF47D 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,55 +89,58 @@ Cc: Heiko Stuebner <heiko@sntech.de>, Sekhar Nori <nsekhar@ti.com>,
  linux-kernel@vger.kernel.org, Oleksij Rempel <linux@rempel-privat.de>,
  Maxime Coquelin <mcoquelin.stm32@gmail.com>, Shawn Guo <shawnguo@kernel.org>,
  Peter Rosin <peda@axentia.se>, Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Content-Type: multipart/mixed; boundary="===============9123986885588127195=="
+Content-Type: multipart/mixed; boundary="===============2692754344573981389=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============9123986885588127195==
+--===============2692754344573981389==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Mjqg7Yu+0hL22rav"
+	protocol="application/pgp-signature"; boundary="sLx0z+5FKKtIVDwd"
 Content-Disposition: inline
 
 
---Mjqg7Yu+0hL22rav
+--sLx0z+5FKKtIVDwd
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Sep 02, 2020 at 05:06:37PM +0200, Krzysztof Kozlowski wrote:
+On Wed, Sep 02, 2020 at 05:06:40PM +0200, Krzysztof Kozlowski wrote:
 > Common pattern of handling deferred probe can be simplified with
 > dev_err_probe().  Less code and the error value gets printed.
 >=20
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-Applied to for-next, thanks!
+Thanks, but this patch was a bit earlier:
+
+http://patchwork.ozlabs.org/project/linux-i2c/patch/1597203954-1803-1-git-s=
+end-email-Anson.Huang@nxp.com/
 
 
---Mjqg7Yu+0hL22rav
+--sLx0z+5FKKtIVDwd
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl9ZxtwACgkQFA3kzBSg
-KbaeHg//TExyGapDctpG3/NfiZUK8fRTxopI6eApuGkuRNFi4dDR7IN7TnG4JBIC
-ZzQa6MIT0nKsWK8hVRcGpEFYgU5pyxXvjT7UWr+EHD4sYaTJRocZVvNjC1D4FZhh
-JjgPJ6zbcneONv5izf77WadDSDkGXZ/PFo03gqW/NIaXx64YyCIp9LkPdqFqHYrw
-cmlC7ZMWUIVIBvITbES4MaW+h3byshkSNdy+45RPf15CH4w27YJubcFWlOozdWg5
-T4hRK0XLKuBzjvNF/K+tj8OPyWUHQS17P0M1fJ6orSo5XnkANcac9crhTSA2+mQG
-vOFCYGFh4ctXFYb2l4N+q2sZvqqjItcntGkQGYMNs0naoFN6rdIo9KYhhbU9nx9T
-JcYuUVKxv2mITRhD+Lvq0YfxJmKYoqpnGeN6I5UIqcV9QH3n1VKZOA6CwXVhgVaM
-L4CSVfQak+iqj3Yxz5D3p22uF5788jHRW8nKuR/aqQvyTB7nHYwTQR97jQWtpxuA
-b6aG1tecsKP4GxXhKozl1twrAtk0wqvvz/MrY7XDlTOwq4vDSgVioSSkPaw0G6E3
-n3BhV5CVQbBdSvFxg6IVpNsvGxGWOoEZFfvNup+6Q2DDqLiX556mvvt+0iJSoBgz
-ZS6M10mqVyirKjO9YWLDD4yUCx9VLgDUuXPdaNcLqvnpnlmipjs=
-=NMWb
+iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAl9ZxzwACgkQFA3kzBSg
+KbYCNhAAo2nfbP6Dmy9CcAEl/QKmFLjmjJKUIQb45IeuIZWlBMUc7gk6SBrqectE
+PTAyWBluLF8Pub2rqHtIuQZBEu19HG2reXcyNugVvoz64rUFksRUw0Ap3CJW3MBC
+81/i1SLsMp6gNhXUz7T+2JypfIu/XRYB5sMYVFCLFzstxepY15cQ6DwV37ARpJDp
+Z9n5uD9qNgcCmerP8TZC6HIwLSa4FDwJ1U2MYzWHp7IVIEA6OwshA/g7b28J/VBU
+egPLlaDRy9utqwMH1LqBJe9e8+yB52M/VI6ao4iA5qaMzdy9wROhiigkSJxRK/RS
+sx33t55k+3q9CfSiVhOuVepKetiNyTMEvXvOf8DvXqfPeUzIaZr0xKU3vnTa8kE8
+RDjC9mDy1aeH92gJxwhDPg90G9kaoz2G8unIynr5aS+5qGnPMQnK3nSn5IGVktD9
+aYtx0xQw1Io+BYoyE/W4gW6xOO4MROaqU354P1y+DodMVLrkfv8pluItqu9363cY
+NRkePoQnoWP2Ac2/cP7e7bY3P/ha7SNWMLS0FRpAitYAREilgiaABW2T+2v1WoNt
+6V6Oy97ceBSNxLuVTLEGWPqJasIk07gTR5SyB4i+doS+wDwfiHh1codmfOyErKz0
+00w5u9BN78VIAkriPGp/xz5a2rptVGvT0ovdvT6jsypdGplR1tM=
+=5W+d
 -----END PGP SIGNATURE-----
 
---Mjqg7Yu+0hL22rav--
+--sLx0z+5FKKtIVDwd--
 
 
---===============9123986885588127195==
+--===============2692754344573981389==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -148,5 +151,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============9123986885588127195==--
+--===============2692754344573981389==--
 
