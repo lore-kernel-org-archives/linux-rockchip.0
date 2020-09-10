@@ -2,81 +2,84 @@ Return-Path: <SRS0=KXJX=CT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E3FFC433E2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 03:07:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DB5A4C433E2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 05:24:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CC2E121D40
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 03:07:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1DD6F207FB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 05:24:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S8EQwEgL"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CC2E121D40
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YSIKLQn8";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Hhsh2bxV"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DD6F207FB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rzsWOjf8w5Squ7WfmVW17k7SZihsC2cyUjKwW4CWG0M=; b=S8EQwEgLSL24HPHs7cZMXHjn/
-	Yv3MhdNpme5psd1JKEbLnXL4cTMxe1mzumnPBGE3kLcx8/t7sn8ZVfndjSKg7lBigxr8r5IYEXQlu
-	ctGSoylQ9GqMhj9Vg9HSWL92H3uZSzmK7qxPNfRb86AILvptJud3CF+HdUAJt2c3ot4DSkiAqivoE
-	h3JMPBdzLvyEuYGP7tB8vPQErw5zDvNOYR7E+zXyKVRbe8LzVP5mMvEx1mGDGEmCJk3NqYLMSGJt+
-	cYx2VSw6WuhhwGLhL23fP/iLHQsrBjLEd6qiDuDERSighGoeC3e1LkafoOqgfLR5/2ioZPnGM6XoB
-	rWRScmoCw==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ajTSCu+Ao7GzfU5HsRRYo0+L1PkjN0ursKQ7ojraazs=; b=YSIKLQn8ZFQ0yq+i42xmcFRlaL
+	acdJGDaKNh83S2RTO5jdoswHXh00IUb5gJvkGZ3vbLMjzzYJSI10EbeESy/1nGBVDyGNhgo24DPL1
+	6wjQNlo+wydDiZ+//o3Inbu96lgACERPl0bYTkxeHJCjbdLPVtCxBS93H8fQ6DsQ+VUfV10oTZLdx
+	UpIaDqci6swno68MvMfJ22CT3uPv9W0b1Lp03pFNLgDGBMMLBFhiyU9q8V9qB0biy6KrGzJKLLfBv
+	yJ6l5efdfc57mGktbld3Rqx2CIAO2Tr5LPmbCKVas32qNdPUMttAgQaO/Ge6BAJIlgHVVoBPprfNP
+	d1a9LeTw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGCvr-0004mx-1v; Thu, 10 Sep 2020 03:07:31 +0000
-Received: from regular1.263xmail.com ([211.150.70.199])
+	id 1kGF42-00038X-VJ; Thu, 10 Sep 2020 05:24:07 +0000
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGCvn-0004m1-V8
- for linux-rockchip@lists.infradead.org; Thu, 10 Sep 2020 03:07:29 +0000
-Received: from localhost (unknown [192.168.167.69])
- by regular1.263xmail.com (Postfix) with ESMTP id 487AD104E;
- Thu, 10 Sep 2020 11:07:19 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-SKE-CHECKED: 1
-X-ABS-CHECKED: 1
-Received: from [172.16.12.236] (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P25134T140525325764352S1599707237793667_; 
- Thu, 10 Sep 2020 11:07:18 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <9b78765c88d40245569064639cb03e69>
-X-RL-SENDER: zhangqing@rock-chips.com
-X-SENDER: zhangqing@rock-chips.com
-X-LOGIN-NAME: zhangqing@rock-chips.com
-X-FST-TO: kever.yang@rock-chips.com
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-DNS-TYPE: 0
-X-System-Flag: 0
-Subject: Re: [PATCH v3 6/6] clk: rockchip: rk3399: Support module build
-To: =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>
-References: <20200904074405.24439-1-zhangqing@rock-chips.com>
- <20200904074505.24917-1-zhangqing@rock-chips.com> <3524790.GmC4BGDxql@diego>
-From: "elaine.zhang" <zhangqing@rock-chips.com>
-Organization: rockchip
-Message-ID: <ad06ac8a-e7f9-382d-1cbc-01aea6256e5c@rock-chips.com>
-Date: Thu, 10 Sep 2020 11:07:17 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1kGF3y-00036h-6K
+ for linux-rockchip@lists.infradead.org; Thu, 10 Sep 2020 05:24:04 +0000
+Received: by mail-pl1-x643.google.com with SMTP id bh1so346699plb.12
+ for <linux-rockchip@lists.infradead.org>; Wed, 09 Sep 2020 22:23:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7svLiscymaKWnrmSH+/5tItXplbBkAtLS63Umu4TPdE=;
+ b=Hhsh2bxV4Or8CULTUAvwBr178gZdx0OqNzPQZVuQALAru6ozgr8fpT759Ok0lPsug5
+ zx9Z7bzzJtG25wsjB1tRWcHw6X429Mjvx828TrKs6mXV8NcEQOpZkDnzpmIFEalPbQJg
+ 2PVLw2xiD8rfoJvStbp/R2tu1kSAvhB5rh8jw=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=7svLiscymaKWnrmSH+/5tItXplbBkAtLS63Umu4TPdE=;
+ b=SJVoc4BkrCBZDsglygmdVdrLEO8Qio+TcNbnyA02NJs1vFjfxoO7nB7kntq/pqZIbM
+ Mx1ozaiMd7Tj8NC+48JD7en3LahHPm46U7iBhRFy98kY8v+XC0+w/NeCKIp6BGHGEvdl
+ o/zKPxgjNAnwh8R68iXSar1csgg8hm7Dw31h9t+jP5XyCdJcOkV4p3DJlnofeamfHhDz
+ 6m2IwMtn3mZHrEkDdwRwP9lDWvPQoyGEI4msOYX1tdwi3UWFzIXW7P66wBl+l7lEHZ8y
+ UBHCsafAJ44TXtWGr9ln2/X/gUQLvhKqjDq0fMdbv0Vs6sqpCo1uS7z2QnvkWvyGMfjU
+ qLkw==
+X-Gm-Message-State: AOAM531WG3gPsE+RsFZPvHQh398N7YcXBtrHYK9V4IBoBS0WMrIdOUQP
+ 99Et6nguf/EVrZlXnswN2r+6Ow==
+X-Google-Smtp-Source: ABdhPJzMsuHQbv/HPSO541eGjwLrqzhteTkAkNdW0UtyqGCzZyJpwlC086qrl60aF0WceS74rgYSdw==
+X-Received: by 2002:a17:902:bd48:: with SMTP id
+ b8mr3945861plx.139.1599715438084; 
+ Wed, 09 Sep 2020 22:23:58 -0700 (PDT)
+Received: from localhost ([2401:fa00:1:10:de4a:3eff:fe7d:d39c])
+ by smtp.gmail.com with ESMTPSA id m14sm4289645pfo.202.2020.09.09.22.23.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Sep 2020 22:23:57 -0700 (PDT)
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v8 0/3] Add documentation and machine driver for SC7180 sound
+ card
+Date: Thu, 10 Sep 2020 13:23:44 +0800
+Message-Id: <20200910052347.1790735-1-cychiang@chromium.org>
+X-Mailer: git-send-email 2.28.0.526.ge36021eeef-goog
 MIME-Version: 1.0
-In-Reply-To: <3524790.GmC4BGDxql@diego>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200909_230728_467155_7FF556F1 
-X-CRM114-Status: GOOD (  17.53  )
+X-CRM114-CacheID: sfid-20200910_012402_264710_211954C1 
+X-CRM114-Status: GOOD (  16.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,75 +92,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: huangtao@rock-chips.com, xf@rock-chips.com, sboyd@kernel.org,
- mturquette@baylibre.com, linux-kernel@vger.kernel.org,
- linux-clk@vger.kernel.org, kever.yang@rock-chips.com,
- linux-rockchip@lists.infradead.org, xxx@rock-chips.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Taniya Das <tdas@codeaurora.org>, alsa-devel@alsa-project.org,
+ Banajit Goswami <bgoswami@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
+ Liam Girdwood <lgirdwood@gmail.com>, Rohit kumar <rohitkr@codeaurora.org>,
+ Cheng-Yi Chiang <cychiang@chromium.org>, Patrick Lai <plai@codeaurora.org>,
+ linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ dgreid@chromium.org, Jaroslav Kysela <perex@perex.cz>,
+ devicetree@vger.kernel.org, tzungbi@chromium.org,
+ Stephan Gerhold <stephan@gerhold.net>, linux-arm-msm@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, dianders@chromium.org,
+ Takashi Iwai <tiwai@suse.com>, Mark Brown <broonie@kernel.org>,
+ Srini Kandagatla <srinivas.kandagatla@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-aGksCgrlnKggMjAyMC85Lzcg5LiK5Y2INjo0OSwgSGVpa28gU3TDvGJuZXIg5YaZ6YGTOgo+IEFt
-IEZyZWl0YWcsIDQuIFNlcHRlbWJlciAyMDIwLCAwOTo0NTowNSBDRVNUIHNjaHJpZWIgRWxhaW5l
-IFpoYW5nOgo+PiBzdXBwb3J0IENMS19PRl9ERUNMQVJFIGFuZCBidWlsdGluX3BsYXRmb3JtX2Ry
-aXZlcl9wcm9iZQo+PiBkb3VibGUgY2xrIGluaXQgbWV0aG9kLgo+PiBhZGQgbW9kdWxlIGF1dGhv
-ciwgZGVzY3JpcHRpb24gYW5kIGxpY2Vuc2UgdG8gc3VwcG9ydCBidWlsZGluZwo+PiBTb2MgUmsz
-Mzk5IGNsb2NrIGRyaXZlciBhcyBtb2R1bGUuCj4+Cj4+IFNpZ25lZC1vZmYtYnk6IEVsYWluZSBa
-aGFuZyA8emhhbmdxaW5nQHJvY2stY2hpcHMuY29tPgo+PiBSZXZpZXdlZC1ieTogS2V2ZXIgWWFu
-ZyA8a2V2ZXIueWFuZ0Byb2NrLWNoaXBzLmNvbT4KPj4gLS0tCj4+ICAgZHJpdmVycy9jbGsvcm9j
-a2NoaXAvY2xrLXJrMzM5OS5jIHwgNTUgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKwo+
-PiAgIDEgZmlsZSBjaGFuZ2VkLCA1NSBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9j
-bGstcmszMzk5LmMKPj4gaW5kZXggY2UxZDI0NDZmMTQyLi40MGZmMTdhZWU1YjYgMTAwNjQ0Cj4+
-IC0tLSBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMzOTkuYwo+PiArKysgYi9kcml2ZXJz
-L2Nsay9yb2NrY2hpcC9jbGstcmszMzk5LmMKPj4gQEAgLTUsOSArNSwxMSBAQAo+PiAgICAqLwo+
-PiAgIAo+PiAgICNpbmNsdWRlIDxsaW51eC9jbGstcHJvdmlkZXIuaD4KPj4gKyNpbmNsdWRlIDxs
-aW51eC9tb2R1bGUuaD4KPj4gICAjaW5jbHVkZSA8bGludXgvaW8uaD4KPj4gICAjaW5jbHVkZSA8
-bGludXgvb2YuaD4KPj4gICAjaW5jbHVkZSA8bGludXgvb2ZfYWRkcmVzcy5oPgo+PiArI2luY2x1
-ZGUgPGxpbnV4L29mX2RldmljZS5oPgo+PiAgICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZp
-Y2UuaD4KPj4gICAjaW5jbHVkZSA8bGludXgvcmVnbWFwLmg+Cj4+ICAgI2luY2x1ZGUgPGR0LWJp
-bmRpbmdzL2Nsb2NrL3JrMzM5OS1jcnUuaD4KPj4gQEAgLTE2MDAsMyArMTYwMiw1NiBAQCBzdGF0
-aWMgdm9pZCBfX2luaXQgcmszMzk5X3BtdV9jbGtfaW5pdChzdHJ1Y3QgZGV2aWNlX25vZGUgKm5w
-KQo+PiAgIAlyb2NrY2hpcF9jbGtfb2ZfYWRkX3Byb3ZpZGVyKG5wLCBjdHgpOwo+PiAgIH0KPj4g
-ICBDTEtfT0ZfREVDTEFSRShyazMzOTlfY3J1X3BtdSwgInJvY2tjaGlwLHJrMzM5OS1wbXVjcnUi
-LCByazMzOTlfcG11X2Nsa19pbml0KTsKPj4gKwo+PiArc3RydWN0IGNsa19yazMzOTlfaW5pdHMg
-ewo+PiArCQl2b2lkICgqaW5pdHMpKHN0cnVjdCBkZXZpY2Vfbm9kZSAqbnApOwo+PiArfTsKPj4g
-Kwo+PiArc3RhdGljIGNvbnN0IHN0cnVjdCBjbGtfcmszMzk5X2luaXRzIGNsa19yazMzOTlfcG11
-Y3J1X2luaXQgPSB7Cj4+ICsJLmluaXRzID0gcmszMzk5X3BtdV9jbGtfaW5pdCwKPj4gK307Cj4+
-ICsKPj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3QgY2xrX3JrMzM5OV9pbml0cyBjbGtfcmszMzk5X2Ny
-dV9pbml0ID0gewo+PiArCS5pbml0cyA9IHJrMzM5OV9jbGtfaW5pdCwKPj4gK307Cj4+ICsKPj4g
-K3N0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lkIGNsa19yazMzOTlfbWF0Y2hfdGFibGVb
-XSA9IHsKPj4gKwl7Cj4+ICsJCS5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1jcnUiLAo+
-PiArCQkuZGF0YSA9ICZjbGtfcmszMzk5X2NydV9pbml0LAo+PiArCX0sICB7Cj4+ICsJCS5jb21w
-YXRpYmxlID0gInJvY2tjaGlwLHJrMzM5OS1wbXVjcnUiLAo+PiArCQkuZGF0YSA9ICZjbGtfcmsz
-Mzk5X3BtdWNydV9pbml0LAo+PiArCX0sCj4+ICsJeyB9Cj4+ICt9Owo+PiArTU9EVUxFX0RFVklD
-RV9UQUJMRShvZiwgY2xrX3JrMzM5OV9tYXRjaF90YWJsZSk7Cj4+ICsKPj4gK3N0YXRpYyBpbnQg
-X19pbml0IGNsa19yazMzOTlfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPj4g
-K3sKPj4gKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKm5wID0gcGRldi0+ZGV2Lm9mX25vZGU7Cj4+ICsJ
-Y29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCAqbWF0Y2g7Cj4+ICsJY29uc3Qgc3RydWN0IGNsa19y
-azMzOTlfaW5pdHMgKmluaXRfZGF0YTsKPj4gKwo+PiArCW1hdGNoID0gb2ZfbWF0Y2hfZGV2aWNl
-KGNsa19yazMzOTlfbWF0Y2hfdGFibGUsICZwZGV2LT5kZXYpOwo+PiArCWlmICghbWF0Y2ggfHwg
-IW1hdGNoLT5kYXRhKQo+PiArCQlyZXR1cm4gLUVJTlZBTDsKPj4gKwo+PiArCWluaXRfZGF0YSA9
-IG1hdGNoLT5kYXRhOwo+PiArCWlmIChpbml0X2RhdGEtPmluaXRzKQo+PiArCQlpbml0X2RhdGEt
-PmluaXRzKG5wKTsKPj4gKwo+PiArCXJldHVybiAwOwo+PiArfQo+PiArCj4+ICtzdGF0aWMgc3Ry
-dWN0IHBsYXRmb3JtX2RyaXZlciBjbGtfcmszMzk5X2RyaXZlciA9IHsKPj4gKwkuZHJpdmVyCQk9
-IHsKPj4gKwkJLm5hbWUJPSAiY2xrLXJrMzM5OSIsCj4+ICsJCS5vZl9tYXRjaF90YWJsZSA9IGNs
-a19yazMzOTlfbWF0Y2hfdGFibGUsCj4gSSBndWVzcyB3ZSBwcm9iYWJseSB3YW50Cj4gCQkuc3Vw
-cHJlc3NfYmluZF9hdHRycyA9IHRydWUsCk9LLCBJIHdpbGwgYWRkIGl0IGluIHRoZSBuZXh0IHZl
-cnNpb24uCj4KPiBoZXJlLCBiZWNhdXNlIHRoZXJlIGlzIG5vIHVubG9hZGluZy4KPiBBbHNvIHdo
-YXQgaGFwcGVucyB3aGVuIHlvdSB0cnkgdG8gcm1tb2QgdGhlIG1vZHVsZT8KY29uc29sZTovICMg
-bHNtb2QgfCBncmVwIGNsawoKY2xrX3JrODA4wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgMTYz
-ODTCoCAwCmNsa19yazMzOTnCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgNDkxNTLCoCAwIFtwZXJt
-YW5lbnRdCmNsa19yb2NrY2hpcMKgwqDCoMKgwqDCoMKgwqDCoMKgIDU3MzQ0wqAgMzIgcm9ja2No
-aXBfZG1jLHJvY2tjaGlwX29wcF9zZWxlY3QsY2xrX3JrMzM5OQpyb2NrY2hpcF9zaXDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCAyNDU3NsKgIDYgCnJrX3Zjb2RlYyxyb2NrY2hpcF9wd21fcmVtb3RlY3Rs
-LHJvY2tjaGlwX2J1cyxudm1lbV9yb2NrY2hpcF9lZnVzZSxyb2NrY2hpcF9wbV9jb25maWcsY2xr
-X3JvY2tjaGlwCgpjb25zb2xlOi8gIyBybW1vZCBjbGtfcmszMzk5CgpybW1vZDogZmFpbGVkIHRv
-IHVubG9hZCBjbGtfcmszMzk5OiBEZXZpY2Ugb3IgcmVzb3VyY2UgYnVzeQoKY29uc29sZTovICMg
-cm1tb2QgLWYgY2xrX3JrMzM5OQoKcm1tb2Q6IGZhaWxlZCB0byB1bmxvYWQgY2xrX3JrMzM5OTog
-RGV2aWNlIG9yIHJlc291cmNlIGJ1c3kKCgpUaGUgYnVpbHRpbl9wbGF0Zm9ybV9kcml2ZXJfcHJv
-YmUoKcKgIHdpdGhvdXQgdGhlIF9fZXhpdCBwYXJ0cy4KCj4KPiBIZWlrbwo+Cj4KPgo+CgoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Note:
+- The machine driver patch is made by the collaboration of
+  Cheng-Yi Chiang <cychiang@chromium.org>
+  Rohit kumar <rohitkr@codeaurora.org>
+  Ajit Pandey <ajitp@codeaurora.org>
+  But Ajit has left codeaurora.
+- This patch series needs HDMI DAI name defined in sc7180-lpass.h.
+  https://patchwork.kernel.org/patch/11745565/
+
+Changes from v1 to v2:
+- Ducumentation: Addressed all suggestions from Doug.
+- Machine driver:
+  - Fix comment style for license.
+  - Sort includes.
+  - Remove sc7180_snd_hw_params.
+  - Remove sc7180_dai_init and use aux device instead for headset jack registration.
+  - Statically define format for Primary MI2S.
+  - Atomic is not a concern because there is mutex in card to make sure
+    startup and shutdown happen sequentially.
+  - Fix missing return -EINVAL in startup.
+  - Use static sound card.
+  - Use devm_kzalloc to avoid kfree.
+
+Changes from v2 to v3:
+- Ducumentation: Addressed suggestions from Srini.
+- Machine driver:
+  - Reuse qcom_snd_parse_of to parse properties.
+  - Remove playback-only and capture-only.
+  - Misc fixes to address comments.
+
+Changes from v3 to v4:
+- Ducumentation: Addressed suggestions from Rob.
+ - Remove definition of dai.
+ - Use 'sound-dai: true' for sound-dai schema.
+ - Add reg property to pass 'make dt_binding_check' check although reg is not used in the driver.
+- Machine driver:
+ - Add Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+
+Changes from v4 to v5:
+- Documentation: Addressed suggestions from Rob.
+ - Add definition for "#address-cells" and "#size-cells".
+ - Add additionalProperties: false
+ - Add required properties.
+
+Changes from v5 to v6:
+- Documentation: Addressed suggestions from Rob.
+ - Drop contains in compatible strings.
+ - Only allow dai-link@[0-9]
+ - Remove reg ref since it has a type definition already.
+
+Changes from v6 to v7
+- Documentation:
+  - Add headset-jack and hdmi-jack to specify the codec
+    responsible for jack detection.
+- HDMI codec driver:
+  - Use component set_jack ops instead of exporting hdmi_codec_set_jack_detect.
+- Machine driver:
+  - Removed aux device following Stephan's suggestion.
+  - Use headset-jack and hdmi-jack to specify the codec
+    responsible for jack detection.
+  - Add support for HDMI(actually DP) playback.
+
+Changes from v7 to v8
+- Documentation:
+  - Remove headset-jack and hdmi-jack.
+- Machine driver:
+  - Let machine driver decide whether there is a jack on the DAI.
+
+Ajit Pandey (1):
+  ASoC: qcom: sc7180: Add machine driver for sound card registration
+
+Cheng-Yi Chiang (2):
+  ASoC: hdmi-codec: Use set_jack ops to set jack
+  ASoC: qcom: dt-bindings: Add sc7180 machine bindings
+
+ .../bindings/sound/qcom,sc7180.yaml           | 130 +++++++++
+ include/sound/hdmi-codec.h                    |   3 -
+ sound/soc/codecs/hdmi-codec.c                 |  12 +-
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c     |   5 +-
+ .../mediatek/mt8183/mt8183-da7219-max98357.c  |   5 +-
+ .../mt8183/mt8183-mt6358-ts3a227-max98357.c   |   5 +-
+ sound/soc/qcom/Kconfig                        |  12 +
+ sound/soc/qcom/Makefile                       |   2 +
+ sound/soc/qcom/sc7180.c                       | 270 ++++++++++++++++++
+ sound/soc/rockchip/rockchip_max98090.c        |   3 +-
+ 10 files changed, 425 insertions(+), 22 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
+ create mode 100644 sound/soc/qcom/sc7180.c
+
+-- 
+2.28.0.526.ge36021eeef-goog
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
