@@ -2,84 +2,85 @@ Return-Path: <SRS0=KXJX=CT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DB5A4C433E2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 05:24:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 12CE7C433E2
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 05:24:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1DD6F207FB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 05:24:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 64879207FB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 10 Sep 2020 05:24:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YSIKLQn8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Hhsh2bxV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DD6F207FB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jN2VFTMu";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="Jly6RuxB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64879207FB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ajTSCu+Ao7GzfU5HsRRYo0+L1PkjN0ursKQ7ojraazs=; b=YSIKLQn8ZFQ0yq+i42xmcFRlaL
-	acdJGDaKNh83S2RTO5jdoswHXh00IUb5gJvkGZ3vbLMjzzYJSI10EbeESy/1nGBVDyGNhgo24DPL1
-	6wjQNlo+wydDiZ+//o3Inbu96lgACERPl0bYTkxeHJCjbdLPVtCxBS93H8fQ6DsQ+VUfV10oTZLdx
-	UpIaDqci6swno68MvMfJ22CT3uPv9W0b1Lp03pFNLgDGBMMLBFhiyU9q8V9qB0biy6KrGzJKLLfBv
-	yJ6l5efdfc57mGktbld3Rqx2CIAO2Tr5LPmbCKVas32qNdPUMttAgQaO/Ge6BAJIlgHVVoBPprfNP
-	d1a9LeTw==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=wIP5BgGuQXkTdpGv10fii/fupJ2/yLX+/h6kJcFqUVQ=; b=jN2VFTMuqs4hwbDFeiFSFFxQm
+	fzxUR9TqFCqxSRMczxwafvQ6Jr13hdqRzcRbGXEPkmTRFduRj1AuzTkA0bnbkM1Xu2NqeM/lEnvsg
+	G5VcBifd74kDc+rzqMs532VJ1WJ2q+5LlcSfYriKEJhFvddmZWU/P02CM03vWLnBSyo7cRvEjMpbJ
+	3M3vPwJQLnrZpgspeBzIV8gbRgaHRpHB4nW1C9l49BfUV5M6LJkUzsLWiT70YxKP9w48nlt7udu6w
+	q/Ep5CIHBo8ohPYiqNi+3tgPxnJjufqdoAJwtpHZfiHKHIQ4LUT8coc0zevxYRUQJd9Gwv8BTFp6A
+	LYGTf7E0A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kGF42-00038X-VJ; Thu, 10 Sep 2020 05:24:07 +0000
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643])
+	id 1kGF48-0003Ax-Qc; Thu, 10 Sep 2020 05:24:13 +0000
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kGF3y-00036h-6K
- for linux-rockchip@lists.infradead.org; Thu, 10 Sep 2020 05:24:04 +0000
-Received: by mail-pl1-x643.google.com with SMTP id bh1so346699plb.12
- for <linux-rockchip@lists.infradead.org>; Wed, 09 Sep 2020 22:23:59 -0700 (PDT)
+ id 1kGF44-00038v-Qt
+ for linux-rockchip@lists.infradead.org; Thu, 10 Sep 2020 05:24:10 +0000
+Received: by mail-pl1-x642.google.com with SMTP id bd2so346288plb.7
+ for <linux-rockchip@lists.infradead.org>; Wed, 09 Sep 2020 22:24:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7svLiscymaKWnrmSH+/5tItXplbBkAtLS63Umu4TPdE=;
- b=Hhsh2bxV4Or8CULTUAvwBr178gZdx0OqNzPQZVuQALAru6ozgr8fpT759Ok0lPsug5
- zx9Z7bzzJtG25wsjB1tRWcHw6X429Mjvx828TrKs6mXV8NcEQOpZkDnzpmIFEalPbQJg
- 2PVLw2xiD8rfoJvStbp/R2tu1kSAvhB5rh8jw=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=2nWlloeWe4+nv6hVrTbPWUl2P9w8K0JESAZLCRmELVU=;
+ b=Jly6RuxBojd9khDo1aBZFbbE7iUymQQYlkNgHAGTRC/IGga0p/m/w/CkOY9snpatGR
+ 58eOqJx6SKkTxAE7U7cwXh+zZp5T1+Qvnop0cEBrwdZuw/FUw5znODV105LJmAW6iRXP
+ eWukC6v5ZlhBlERJkU+Nt8ElBhRHBHnxo5s7I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=7svLiscymaKWnrmSH+/5tItXplbBkAtLS63Umu4TPdE=;
- b=SJVoc4BkrCBZDsglygmdVdrLEO8Qio+TcNbnyA02NJs1vFjfxoO7nB7kntq/pqZIbM
- Mx1ozaiMd7Tj8NC+48JD7en3LahHPm46U7iBhRFy98kY8v+XC0+w/NeCKIp6BGHGEvdl
- o/zKPxgjNAnwh8R68iXSar1csgg8hm7Dw31h9t+jP5XyCdJcOkV4p3DJlnofeamfHhDz
- 6m2IwMtn3mZHrEkDdwRwP9lDWvPQoyGEI4msOYX1tdwi3UWFzIXW7P66wBl+l7lEHZ8y
- UBHCsafAJ44TXtWGr9ln2/X/gUQLvhKqjDq0fMdbv0Vs6sqpCo1uS7z2QnvkWvyGMfjU
- qLkw==
-X-Gm-Message-State: AOAM531WG3gPsE+RsFZPvHQh398N7YcXBtrHYK9V4IBoBS0WMrIdOUQP
- 99Et6nguf/EVrZlXnswN2r+6Ow==
-X-Google-Smtp-Source: ABdhPJzMsuHQbv/HPSO541eGjwLrqzhteTkAkNdW0UtyqGCzZyJpwlC086qrl60aF0WceS74rgYSdw==
-X-Received: by 2002:a17:902:bd48:: with SMTP id
- b8mr3945861plx.139.1599715438084; 
- Wed, 09 Sep 2020 22:23:58 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=2nWlloeWe4+nv6hVrTbPWUl2P9w8K0JESAZLCRmELVU=;
+ b=nxH/Ehvi0rNNqofmVSvSGc8mr2FH91DvDDIPsM6lcxFc1NZw9Vs237UUJUT+zuAyHx
+ ULXjqhrkI/YTqJgXr/Uw29zlu02zjZ3mfAZvTOcmFluI1aJoEWuA0937GGIoJ5+icDtA
+ 0DXcG2CMLa8z/24S8FoqKZurad6hVyETNp9IWxqRS9Ye9z+ioYdCWyiaWUaUHjYnAe5M
+ JQZ8kQ70WjpbDCJdoZB4JahNLSTz0NMcVrAcgl1Hx02sHmyNzGTvoTnfWK78aCnnaWek
+ RileTFYLKOQiJPzlhq0z6X8IMd1pva7OMXZ9V8jRxFFK6VBXQjQsTLhSblcC9SstfnvM
+ P+7g==
+X-Gm-Message-State: AOAM533lS8Mw8+cKZrrSATlJ5IfxBqBhDUecsPRnNqgD4q/qLBNfdNIk
+ AB6UXKFoeMd779iAz3OQbeE62A==
+X-Google-Smtp-Source: ABdhPJwiwRt7uJD2Tdw1Iu+DXvUoRD4x3qop7uDcJyYhptNWqo3qcCeWVelp64P4NCI+7u30w1o/aw==
+X-Received: by 2002:a17:90a:fb52:: with SMTP id
+ iq18mr3855544pjb.162.1599715447176; 
+ Wed, 09 Sep 2020 22:24:07 -0700 (PDT)
 Received: from localhost ([2401:fa00:1:10:de4a:3eff:fe7d:d39c])
- by smtp.gmail.com with ESMTPSA id m14sm4289645pfo.202.2020.09.09.22.23.53
+ by smtp.gmail.com with ESMTPSA id jz6sm772242pjb.22.2020.09.09.22.24.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Sep 2020 22:23:57 -0700 (PDT)
+ Wed, 09 Sep 2020 22:24:06 -0700 (PDT)
 From: Cheng-Yi Chiang <cychiang@chromium.org>
 To: linux-kernel@vger.kernel.org
-Subject: [PATCH v8 0/3] Add documentation and machine driver for SC7180 sound
- card
-Date: Thu, 10 Sep 2020 13:23:44 +0800
-Message-Id: <20200910052347.1790735-1-cychiang@chromium.org>
+Subject: [PATCH v8 1/3] ASoC: hdmi-codec: Use set_jack ops to set jack
+Date: Thu, 10 Sep 2020 13:23:45 +0800
+Message-Id: <20200910052347.1790735-2-cychiang@chromium.org>
 X-Mailer: git-send-email 2.28.0.526.ge36021eeef-goog
+In-Reply-To: <20200910052347.1790735-1-cychiang@chromium.org>
+References: <20200910052347.1790735-1-cychiang@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200910_012402_264710_211954C1 
-X-CRM114-Status: GOOD (  16.51  )
+X-CRM114-CacheID: sfid-20200910_012408_932621_FAB4437F 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,95 +112,160 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Note:
-- The machine driver patch is made by the collaboration of
-  Cheng-Yi Chiang <cychiang@chromium.org>
-  Rohit kumar <rohitkr@codeaurora.org>
-  Ajit Pandey <ajitp@codeaurora.org>
-  But Ajit has left codeaurora.
-- This patch series needs HDMI DAI name defined in sc7180-lpass.h.
-  https://patchwork.kernel.org/patch/11745565/
+Use set_jack ops to set jack so machine drivers do not need to include
+hdmi-codec.h explicitly.
 
-Changes from v1 to v2:
-- Ducumentation: Addressed all suggestions from Doug.
-- Machine driver:
-  - Fix comment style for license.
-  - Sort includes.
-  - Remove sc7180_snd_hw_params.
-  - Remove sc7180_dai_init and use aux device instead for headset jack registration.
-  - Statically define format for Primary MI2S.
-  - Atomic is not a concern because there is mutex in card to make sure
-    startup and shutdown happen sequentially.
-  - Fix missing return -EINVAL in startup.
-  - Use static sound card.
-  - Use devm_kzalloc to avoid kfree.
+Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
+---
+ include/sound/hdmi-codec.h                           |  3 ---
+ sound/soc/codecs/hdmi-codec.c                        | 12 ++++--------
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c            |  5 ++---
+ sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c   |  5 ++---
+ .../mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c |  5 ++---
+ sound/soc/rockchip/rockchip_max98090.c               |  3 +--
+ 6 files changed, 11 insertions(+), 22 deletions(-)
 
-Changes from v2 to v3:
-- Ducumentation: Addressed suggestions from Srini.
-- Machine driver:
-  - Reuse qcom_snd_parse_of to parse properties.
-  - Remove playback-only and capture-only.
-  - Misc fixes to address comments.
-
-Changes from v3 to v4:
-- Ducumentation: Addressed suggestions from Rob.
- - Remove definition of dai.
- - Use 'sound-dai: true' for sound-dai schema.
- - Add reg property to pass 'make dt_binding_check' check although reg is not used in the driver.
-- Machine driver:
- - Add Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
-
-Changes from v4 to v5:
-- Documentation: Addressed suggestions from Rob.
- - Add definition for "#address-cells" and "#size-cells".
- - Add additionalProperties: false
- - Add required properties.
-
-Changes from v5 to v6:
-- Documentation: Addressed suggestions from Rob.
- - Drop contains in compatible strings.
- - Only allow dai-link@[0-9]
- - Remove reg ref since it has a type definition already.
-
-Changes from v6 to v7
-- Documentation:
-  - Add headset-jack and hdmi-jack to specify the codec
-    responsible for jack detection.
-- HDMI codec driver:
-  - Use component set_jack ops instead of exporting hdmi_codec_set_jack_detect.
-- Machine driver:
-  - Removed aux device following Stephan's suggestion.
-  - Use headset-jack and hdmi-jack to specify the codec
-    responsible for jack detection.
-  - Add support for HDMI(actually DP) playback.
-
-Changes from v7 to v8
-- Documentation:
-  - Remove headset-jack and hdmi-jack.
-- Machine driver:
-  - Let machine driver decide whether there is a jack on the DAI.
-
-Ajit Pandey (1):
-  ASoC: qcom: sc7180: Add machine driver for sound card registration
-
-Cheng-Yi Chiang (2):
-  ASoC: hdmi-codec: Use set_jack ops to set jack
-  ASoC: qcom: dt-bindings: Add sc7180 machine bindings
-
- .../bindings/sound/qcom,sc7180.yaml           | 130 +++++++++
- include/sound/hdmi-codec.h                    |   3 -
- sound/soc/codecs/hdmi-codec.c                 |  12 +-
- sound/soc/mediatek/mt8173/mt8173-rt5650.c     |   5 +-
- .../mediatek/mt8183/mt8183-da7219-max98357.c  |   5 +-
- .../mt8183/mt8183-mt6358-ts3a227-max98357.c   |   5 +-
- sound/soc/qcom/Kconfig                        |  12 +
- sound/soc/qcom/Makefile                       |   2 +
- sound/soc/qcom/sc7180.c                       | 270 ++++++++++++++++++
- sound/soc/rockchip/rockchip_max98090.c        |   3 +-
- 10 files changed, 425 insertions(+), 22 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
- create mode 100644 sound/soc/qcom/sc7180.c
-
+diff --git a/include/sound/hdmi-codec.h b/include/sound/hdmi-codec.h
+index 7754631a3102..b55970859a13 100644
+--- a/include/sound/hdmi-codec.h
++++ b/include/sound/hdmi-codec.h
+@@ -117,9 +117,6 @@ struct hdmi_codec_pdata {
+ struct snd_soc_component;
+ struct snd_soc_jack;
+ 
+-int hdmi_codec_set_jack_detect(struct snd_soc_component *component,
+-			       struct snd_soc_jack *jack);
+-
+ #define HDMI_CODEC_DRV_NAME "hdmi-audio-codec"
+ 
+ #endif /* __HDMI_CODEC_H__ */
+diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
+index 8c6f540533ba..d1de5bcd5daa 100644
+--- a/sound/soc/codecs/hdmi-codec.c
++++ b/sound/soc/codecs/hdmi-codec.c
+@@ -698,13 +698,9 @@ static void plugged_cb(struct device *dev, bool plugged)
+ 		hdmi_codec_jack_report(hcp, 0);
+ }
+ 
+-/**
+- * hdmi_codec_set_jack_detect - register HDMI plugged callback
+- * @component: the hdmi-codec instance
+- * @jack: ASoC jack to report (dis)connection events on
+- */
+-int hdmi_codec_set_jack_detect(struct snd_soc_component *component,
+-			       struct snd_soc_jack *jack)
++static int hdmi_codec_set_jack_detect(struct snd_soc_component *component,
++				      struct snd_soc_jack *jack,
++				      void *data)
+ {
+ 	struct hdmi_codec_priv *hcp = snd_soc_component_get_drvdata(component);
+ 	int ret = -EOPNOTSUPP;
+@@ -720,7 +716,6 @@ int hdmi_codec_set_jack_detect(struct snd_soc_component *component,
+ 	}
+ 	return ret;
+ }
+-EXPORT_SYMBOL_GPL(hdmi_codec_set_jack_detect);
+ 
+ static int hdmi_dai_spdif_probe(struct snd_soc_dai *dai)
+ {
+@@ -806,6 +801,7 @@ static const struct snd_soc_component_driver hdmi_driver = {
+ 	.use_pmdown_time	= 1,
+ 	.endianness		= 1,
+ 	.non_legacy_dai_naming	= 1,
++	.set_jack		= hdmi_codec_set_jack_detect,
+ };
+ 
+ static int hdmi_codec_probe(struct platform_device *pdev)
+diff --git a/sound/soc/mediatek/mt8173/mt8173-rt5650.c b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+index 347b095d478d..c28ebf891cb0 100644
+--- a/sound/soc/mediatek/mt8173/mt8173-rt5650.c
++++ b/sound/soc/mediatek/mt8173/mt8173-rt5650.c
+@@ -11,7 +11,6 @@
+ #include <linux/of_gpio.h>
+ #include <sound/soc.h>
+ #include <sound/jack.h>
+-#include <sound/hdmi-codec.h>
+ #include "../../codecs/rt5645.h"
+ 
+ #define MCLK_FOR_CODECS		12288000
+@@ -154,8 +153,8 @@ static int mt8173_rt5650_hdmi_init(struct snd_soc_pcm_runtime *rtd)
+ 	if (ret)
+ 		return ret;
+ 
+-	return hdmi_codec_set_jack_detect(asoc_rtd_to_codec(rtd, 0)->component,
+-					  &mt8173_rt5650_hdmi_jack);
++	return snd_soc_component_set_jack(asoc_rtd_to_codec(rtd, 0)->component,
++					  &mt8173_rt5650_hdmi_jack, NULL);
+ }
+ 
+ enum {
+diff --git a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+index 06d0a4f80fc1..e53c6200d5a7 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
++++ b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
+@@ -10,7 +10,6 @@
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/pinctrl/consumer.h>
+-#include <sound/hdmi-codec.h>
+ #include <sound/jack.h>
+ #include <sound/pcm_params.h>
+ #include <sound/soc.h>
+@@ -369,8 +368,8 @@ static int mt8183_da7219_max98357_hdmi_init(struct snd_soc_pcm_runtime *rtd)
+ 	if (ret)
+ 		return ret;
+ 
+-	return hdmi_codec_set_jack_detect(asoc_rtd_to_codec(rtd, 0)->component,
+-					  &priv->hdmi_jack);
++	return snd_soc_component_set_jack(asoc_rtd_to_codec(rtd, 0)->component,
++					  &priv->hdmi_jack, NULL);
+ }
+ 
+ static struct snd_soc_dai_link mt8183_da7219_dai_links[] = {
+diff --git a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
+index 07410d7afaa9..327dfad41e31 100644
+--- a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
++++ b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
+@@ -9,7 +9,6 @@
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/pinctrl/consumer.h>
+-#include <sound/hdmi-codec.h>
+ #include <sound/jack.h>
+ #include <sound/pcm_params.h>
+ #include <sound/soc.h>
+@@ -350,8 +349,8 @@ mt8183_mt6358_ts3a227_max98357_hdmi_init(struct snd_soc_pcm_runtime *rtd)
+ 	if (ret)
+ 		return ret;
+ 
+-	return hdmi_codec_set_jack_detect(asoc_rtd_to_codec(rtd, 0)->component,
+-					  &priv->hdmi_jack);
++	return snd_soc_component_set_jack(asoc_rtd_to_codec(rtd, 0)->component,
++					  &priv->hdmi_jack, NULL);
+ }
+ 
+ static struct snd_soc_dai_link mt8183_mt6358_ts3a227_dai_links[] = {
+diff --git a/sound/soc/rockchip/rockchip_max98090.c b/sound/soc/rockchip/rockchip_max98090.c
+index 9acfd024aa5d..c8f1a28a92b7 100644
+--- a/sound/soc/rockchip/rockchip_max98090.c
++++ b/sound/soc/rockchip/rockchip_max98090.c
+@@ -12,7 +12,6 @@
+ #include <linux/gpio.h>
+ #include <linux/of_gpio.h>
+ #include <sound/core.h>
+-#include <sound/hdmi-codec.h>
+ #include <sound/jack.h>
+ #include <sound/pcm.h>
+ #include <sound/pcm_params.h>
+@@ -238,7 +237,7 @@ static int rk_hdmi_init(struct snd_soc_pcm_runtime *runtime)
+ 		return ret;
+ 	}
+ 
+-	return hdmi_codec_set_jack_detect(component, &rk_hdmi_jack);
++	return snd_soc_component_set_jack(component, &rk_hdmi_jack, NULL);
+ }
+ 
+ /* max98090 dai_link */
 -- 
 2.28.0.526.ge36021eeef-goog
 
