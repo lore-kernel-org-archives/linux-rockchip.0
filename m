@@ -2,76 +2,84 @@ Return-Path: <SRS0=unwu=CX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 827FDC43461
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2020 02:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7589BC433E2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2020 08:06:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3C1282177B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2020 02:23:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D8AB321741
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2020 08:06:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IA1s8YUA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C1282177B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xUrDdABc";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="SUDEULP4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D8AB321741
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bu3X78sa/55xmB1OnfnNMkFYH9GdsN3UU22bJLgAoqI=; b=IA1s8YUAcAYtMAYlJJmDz1G3mR
-	ZKmYqeCS93gFx/azorOi7PtuNaTIWizJsVg+Z0MgF+5MMS+g3Xt8t4fCQI9/V9Fdy/wkn6Yaj+jGK
-	JaTkWSIjM90Fqln8M6m8eFhhNHlAIrotCeH28BLds4SHHD13OGzTQrTCrMcxOrU9W7NfCktBxGnNU
-	LuE2S/tkXKDBh5geoS+jjf+Uk1YtSGZy9/MW8b2jPzwzKtAlPCSBk9o8RDD8vLHqNcw5BH4OwkKEX
-	pYZaxUnsFDspSB+raJeM49gOcrA6IFGcQLkRAuiQuSfIa3quTLullhohVw9Z8yZdhPfccWDDSTX2X
-	d7zqy/sQ==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=2rxNoWtDZPfI1OFYCSWrjYuy+aAgitP8GAqX+tzbrfA=; b=xUrDdABcQZimCbei1wcZpuaw1e
+	k3gyDcSyh8EWPqfHVi+9O7jGD0oazBGKOPBZQdofYMfKrLE6wZCwREccDct+JbhaMbJZSKXQxlPbN
+	AK+3vSpWjxO1ijY6yBBBbyIQjyEampj7+/gmslVqCXjg0Rj+Q1Ulzh0MX8/N9xds5Zhi1I7DWonk+
+	1uenT4Ty8W2AiKhxvDETtESmMhHnebXp4IW/n1MSL9zoC9eq8uIQn+bh+hv71ka3nBinqu0l5hTN5
+	Nvh499mFG69ZzyF+uYuj/FejCAXRPdA1S8S3fpqnsFq8Vo82ULQ9BzQwW9VD+MpY2FyBBtZT81LeV
+	sbktiuxA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHe9N-0000jk-Is; Mon, 14 Sep 2020 02:23:25 +0000
-Received: from lucky1.263xmail.com ([211.157.147.135])
+	id 1kHjVQ-0005uE-Q9; Mon, 14 Sep 2020 08:06:32 +0000
+Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHe9L-0000iR-7x
- for linux-rockchip@lists.infradead.org; Mon, 14 Sep 2020 02:23:24 +0000
-Received: from localhost (unknown [192.168.167.69])
- by lucky1.263xmail.com (Postfix) with ESMTP id 666A5A4CC5;
- Mon, 14 Sep 2020 10:23:18 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P25132T140525491451648S1600050196674706_; 
- Mon, 14 Sep 2020 10:23:17 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <df32b991cd3bfc0308031f8f2b6298df>
-X-RL-SENDER: zhangqing@rock-chips.com
-X-SENDER: zhangqing@rock-chips.com
-X-LOGIN-NAME: zhangqing@rock-chips.com
-X-FST-TO: heiko@sntech.de
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-DNS-TYPE: 0
-X-System-Flag: 0
-From: Elaine Zhang <zhangqing@rock-chips.com>
-To: heiko@sntech.de
-Subject: [PATCH v4 6/6] clk: rockchip: rk3399: Support module build
-Date: Mon, 14 Sep 2020 10:23:16 +0800
-Message-Id: <20200914022316.24045-1-zhangqing@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200914022225.23613-1-zhangqing@rock-chips.com>
-References: <20200914022225.23613-1-zhangqing@rock-chips.com>
+ id 1kHjVN-0005sa-Ov
+ for linux-rockchip@lists.infradead.org; Mon, 14 Sep 2020 08:06:30 +0000
+Received: by mail-pj1-x1043.google.com with SMTP id kk9so4938212pjb.2
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Sep 2020 01:06:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3ox4aNsfcgsY0RPX5lognE3py6DN8GEMGKvGSpSvhHM=;
+ b=SUDEULP4c/8tVHVk7xVbOPiooBoKPwQaZtEi0R6EjvskfHBD+R4GPSOXG962UXjQdn
+ hjEMWNOjCkbELEQDt7lAdtBKEDCKdfaZ/nE6LqBXKxUFgaACGT1SL+AfqiRWV8dTMPOI
+ 8IsvGl5Q4uG7ePFhBrYOXAQZi6rmMGR8iKa5s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3ox4aNsfcgsY0RPX5lognE3py6DN8GEMGKvGSpSvhHM=;
+ b=Nrp/ECw2MuuR99EVeTt5sXAgL7z6MhOMbVc8fpEDZjfKjAbW8qk1aJ6O8P4xOFSkYq
+ 4Dw5PkaGLuGOVnOq41O3duBqM6mtVMWGdb6TQawRVV7wCUCVdA9jgDqx2+36gbaizMAe
+ DxpSbW2OlM2ph6sjjO/DFCLRhqisMi+Kv+VCQbpCOcetWhx6lM+fCm3oWV5oF+AUbtkE
+ qV7VWXsvcWxb914HGKP0v4uJY2ytH4EK77FhHZp2o1/Hxb8BmV4fgPsRYHZUuaTazFi7
+ Gf0bdpSQFq6IoC3mD3SzhByk7yjAQk4aYjQizluUqaEoaxii9duhU0lnFGH8mk8zni/f
+ DKlQ==
+X-Gm-Message-State: AOAM5337yu8hwkQ/euyp+uWOr51SxkR4mFs5Ok89pYIpSEQ71hFuV2gK
+ Ykbc2ku+Zl91nsQOQgo5PH1Sqg==
+X-Google-Smtp-Source: ABdhPJx6+lhvNIvr9+VBanO1ggP5pmi1cHUcVKYwpq1KgsWsAXysHgZC4IqNJJqD6VKRGJo4WVtKAg==
+X-Received: by 2002:a17:90a:49c8:: with SMTP id
+ l8mr12375320pjm.24.1600070786866; 
+ Mon, 14 Sep 2020 01:06:26 -0700 (PDT)
+Received: from localhost ([2401:fa00:1:10:de4a:3eff:fe7d:d39c])
+ by smtp.gmail.com with ESMTPSA id b10sm3811152pgm.64.2020.09.14.01.06.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Sep 2020 01:06:25 -0700 (PDT)
+From: Cheng-Yi Chiang <cychiang@chromium.org>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v11 0/3] Add documentation and machine driver for SC7180 sound
+ card
+Date: Mon, 14 Sep 2020 16:06:16 +0800
+Message-Id: <20200914080619.4178587-1-cychiang@chromium.org>
+X-Mailer: git-send-email 2.28.0.618.gf4bc123cb7-goog
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200913_222324_021302_97CF1881 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20200914_040629_837617_78A52FF3 
+X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,106 +92,138 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: huangtao@rock-chips.com, xf@rock-chips.com, sboyd@kernel.org,
- mturquette@baylibre.com, Elaine Zhang <zhangqing@rock-chips.com>,
- linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org,
- kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org,
- xxx@rock-chips.com
-MIME-Version: 1.0
+Cc: Taniya Das <tdas@codeaurora.org>, alsa-devel@alsa-project.org,
+ Banajit Goswami <bgoswami@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
+ Liam Girdwood <lgirdwood@gmail.com>, Rohit kumar <rohitkr@codeaurora.org>,
+ Cheng-Yi Chiang <cychiang@chromium.org>, Patrick Lai <plai@codeaurora.org>,
+ linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ dgreid@chromium.org, Jaroslav Kysela <perex@perex.cz>,
+ devicetree@vger.kernel.org, tzungbi@chromium.org,
+ Srinivasa Rao <srivasam@codeaurora.org>, Stephan Gerhold <stephan@gerhold.net>,
+ linux-arm-msm@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, dianders@chromium.org,
+ Takashi Iwai <tiwai@suse.com>, Mark Brown <broonie@kernel.org>,
+ Srini Kandagatla <srinivas.kandagatla@linaro.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-support CLK_OF_DECLARE and builtin_platform_driver_probe
-double clk init method.
-add module author, description and license to support building
-Soc Rk3399 clock driver as module.
+Note:
+- The machine driver patch is made by the collaboration of
+  Cheng-Yi Chiang <cychiang@chromium.org>
+  Rohit kumar <rohitkr@codeaurora.org>
+  Ajit Pandey <ajitp@codeaurora.org>
+  But Ajit has left codeaurora.
+- This patch series needs HDMI DAI name SC7180_LPASS_DP defined in sc7180-lpass.h.
+  It will be posted in the newer patchset of https://patchwork.kernel.org/patch/11745565/
 
-Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
----
- drivers/clk/rockchip/clk-rk3399.c | 56 +++++++++++++++++++++++++++++++
- 1 file changed, 56 insertions(+)
+Changes from v1 to v2:
+- Ducumentation: Addressed all suggestions from Doug.
+- Machine driver:
+  - Fix comment style for license.
+  - Sort includes.
+  - Remove sc7180_snd_hw_params.
+  - Remove sc7180_dai_init and use aux device instead for headset jack registration.
+  - Statically define format for Primary MI2S.
+  - Atomic is not a concern because there is mutex in card to make sure
+    startup and shutdown happen sequentially.
+  - Fix missing return -EINVAL in startup.
+  - Use static sound card.
+  - Use devm_kzalloc to avoid kfree.
 
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index ce1d2446f142..7df2f1e00347 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -5,9 +5,11 @@
-  */
- 
- #include <linux/clk-provider.h>
-+#include <linux/module.h>
- #include <linux/io.h>
- #include <linux/of.h>
- #include <linux/of_address.h>
-+#include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <dt-bindings/clock/rk3399-cru.h>
-@@ -1600,3 +1602,57 @@ static void __init rk3399_pmu_clk_init(struct device_node *np)
- 	rockchip_clk_of_add_provider(np, ctx);
- }
- CLK_OF_DECLARE(rk3399_cru_pmu, "rockchip,rk3399-pmucru", rk3399_pmu_clk_init);
-+
-+struct clk_rk3399_inits {
-+	void (*inits)(struct device_node *np);
-+};
-+
-+static const struct clk_rk3399_inits clk_rk3399_pmucru_init = {
-+	.inits = rk3399_pmu_clk_init,
-+};
-+
-+static const struct clk_rk3399_inits clk_rk3399_cru_init = {
-+	.inits = rk3399_clk_init,
-+};
-+
-+static const struct of_device_id clk_rk3399_match_table[] = {
-+	{
-+		.compatible = "rockchip,rk3399-cru",
-+		.data = &clk_rk3399_cru_init,
-+	},  {
-+		.compatible = "rockchip,rk3399-pmucru",
-+		.data = &clk_rk3399_pmucru_init,
-+	},
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, clk_rk3399_match_table);
-+
-+static int __init clk_rk3399_probe(struct platform_device *pdev)
-+{
-+	struct device_node *np = pdev->dev.of_node;
-+	const struct of_device_id *match;
-+	const struct clk_rk3399_inits *init_data;
-+
-+	match = of_match_device(clk_rk3399_match_table, &pdev->dev);
-+	if (!match || !match->data)
-+		return -EINVAL;
-+
-+	init_data = match->data;
-+	if (init_data->inits)
-+		init_data->inits(np);
-+
-+	return 0;
-+}
-+
-+static struct platform_driver clk_rk3399_driver = {
-+	.driver		= {
-+		.name	= "clk-rk3399",
-+		.of_match_table = clk_rk3399_match_table,
-+		.suppress_bind_attrs = true,
-+	},
-+};
-+builtin_platform_driver_probe(clk_rk3399_driver, clk_rk3399_probe);
-+
-+MODULE_DESCRIPTION("Rockchip RK3399 Clock Driver");
-+MODULE_LICENSE("GPL");
-+MODULE_ALIAS("platform:clk-rk3399");
+Changes from v2 to v3:
+- Ducumentation: Addressed suggestions from Srini.
+- Machine driver:
+  - Reuse qcom_snd_parse_of to parse properties.
+  - Remove playback-only and capture-only.
+  - Misc fixes to address comments.
+
+Changes from v3 to v4:
+- Ducumentation: Addressed suggestions from Rob.
+ - Remove definition of dai.
+ - Use 'sound-dai: true' for sound-dai schema.
+ - Add reg property to pass 'make dt_binding_check' check although reg is not used in the driver.
+- Machine driver:
+ - Add Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+
+Changes from v4 to v5:
+- Documentation: Addressed suggestions from Rob.
+ - Add definition for "#address-cells" and "#size-cells".
+ - Add additionalProperties: false
+ - Add required properties.
+
+Changes from v5 to v6:
+- Documentation: Addressed suggestions from Rob.
+ - Drop contains in compatible strings.
+ - Only allow dai-link@[0-9]
+ - Remove reg ref since it has a type definition already.
+
+Changes from v6 to v7
+- Documentation:
+  - Add headset-jack and hdmi-jack to specify the codec
+    responsible for jack detection.
+- HDMI codec driver:
+  - Use component set_jack ops instead of exporting hdmi_codec_set_jack_detect.
+- Machine driver:
+  - Removed aux device following Stephan's suggestion.
+  - Use headset-jack and hdmi-jack to specify the codec
+    responsible for jack detection.
+  - Add support for HDMI(actually DP) playback.
+
+Changes from v7 to v8
+- Documentation:
+  - Remove headset-jack and hdmi-jack.
+- Machine driver:
+  - Let machine driver decide whether there is a jack on the DAI.
+
+Changes from v8 to v9
+- hdmi-codec driver:
+  - Fixed the naming.
+- Machine driver:
+  - Fixed unused fields.
+  - Moved snd_soc_card_set_drvdata
+  - Keep the naming of HDMI as dai name until v5 of lpass-hdmi patches.
+
+Changes from v9 to v10
+- Documentation:
+  - Let compatible string be more specific for board configuration to allow
+    for future changes.
+- Machine driver:
+  - Fixed unused include and macro.
+  - Add temporary macro SC7180_LPASS_DP for future change in sc7180-lpass.h.
+  - Let sound card be dynamically allocated.
+  - Change compatible string accordingly.
+
+Changes from v10 to v11
+- Machine driver:
+  - Use temporary macro LPASS_DP_RX for future change in sc7180-lpass.h.
+
+Ajit Pandey (1):
+  ASoC: qcom: sc7180: Add machine driver for sound card registration
+
+Cheng-Yi Chiang (2):
+  ASoC: hdmi-codec: Use set_jack ops to set jack
+  ASoC: qcom: dt-bindings: Add sc7180 machine bindings
+
+ .../bindings/sound/qcom,sc7180.yaml           | 130 +++++++++
+ include/sound/hdmi-codec.h                    |   3 -
+ sound/soc/codecs/hdmi-codec.c                 |  12 +-
+ sound/soc/mediatek/mt8173/mt8173-rt5650.c     |   5 +-
+ .../mediatek/mt8183/mt8183-da7219-max98357.c  |   5 +-
+ .../mt8183/mt8183-mt6358-ts3a227-max98357.c   |   5 +-
+ sound/soc/qcom/Kconfig                        |  12 +
+ sound/soc/qcom/Makefile                       |   2 +
+ sound/soc/qcom/sc7180.c                       | 266 ++++++++++++++++++
+ sound/soc/rockchip/rockchip_max98090.c        |   3 +-
+ 10 files changed, 421 insertions(+), 22 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/sound/qcom,sc7180.yaml
+ create mode 100644 sound/soc/qcom/sc7180.c
+
 -- 
-2.17.1
-
-
+2.28.0.618.gf4bc123cb7-goog
 
 
 _______________________________________________
