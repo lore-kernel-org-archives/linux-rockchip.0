@@ -2,22 +2,22 @@ Return-Path: <SRS0=unwu=CX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-19.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EB48C43461
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2020 15:37:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79A76C2BC11
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2020 15:37:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 93E9120756
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2020 15:37:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2FF0920756
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Sep 2020 15:37:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KFA09Cd5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="BmkEyJqb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93E9120756
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n/sc/ENF";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="jxAz9HV8"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2FF0920756
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,61 +26,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nDHcx5VFk/x++gB6qbFWQH0qg62kkrM843/FdeiycTQ=; b=KFA09Cd51qUUkSus6JYrwnq+Vs
-	q9fd82zX/UdTLxMvkfKO645ROyvlBsy3nZdC4bjOYu2iK3UIMDbpEUpSUZsgYs2eDrBLj86LScd7I
-	Z++/XxSPdq/++dq4v6XPtNDyr9A0L4q2CG2hcPWdw72Ex3kzvZdXO7aA8bwPwMiHG032lajlItzae
-	atQgb028hh1DLiZYYfbGUF2sH92IdmWIsjInibStfvZBj9ptnLib5b+8MFozZQt8d2X57ve8CCWIG
-	fDZRHXfxdmazRQRKQReLkVNM0e53LeTtA0gKosSUZZcZ8PMJAFKQhgnx7f0m4wZ+FbzahwLPD9LYZ
-	Pygs/2jg==;
+	bh=imncIYpA194EiR5zUFXB4qnWnta54kMNU8JpWKu7iW4=; b=n/sc/ENFMG7CK44xQ2e2u3YpjV
+	9YNpQdxgne2bo2oDL2ETuO1n8t7ABa2Zvq6/3Cpr4a6F3lzqx+A5yzNPsGRYde0bl+XwbeaTjnstC
+	dhUAfQ4alTrNLWuuS6HvCMwUU2IFOmGyEBB4No7EyCp9zSyj5LuaxVA3D9T5ANpJyZhJGgR25/LQn
+	XSOMneq7DkMnbPQ/7tbv3MrAyKaiNMSfccX4kTikj6Zhb8s/GJCax07X2era2Cq0bcvBdmq2HM8Vf
+	C5UPY1ivneRiLIk1Pb1/thSBftDpxVn9iNnLsqMnQnwpuYrxhJTBH+q3TyvDi4kZ9ll2Ob2X5NhsT
+	GBDDNkzQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHqXh-0003tB-Ov; Mon, 14 Sep 2020 15:37:21 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1kHqXj-0003ue-TG; Mon, 14 Sep 2020 15:37:23 +0000
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHqXd-0003q1-64
- for linux-rockchip@lists.infradead.org; Mon, 14 Sep 2020 15:37:18 +0000
-Received: by mail-pf1-x441.google.com with SMTP id v196so13080423pfc.1
- for <linux-rockchip@lists.infradead.org>; Mon, 14 Sep 2020 08:37:16 -0700 (PDT)
+ id 1kHqXh-0003sA-0Q
+ for linux-rockchip@lists.infradead.org; Mon, 14 Sep 2020 15:37:22 +0000
+Received: by mail-pg1-x543.google.com with SMTP id l191so79767pgd.5
+ for <linux-rockchip@lists.infradead.org>; Mon, 14 Sep 2020 08:37:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amarulasolutions.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=c2GtWAAHcVOyMG81bRCsoZlbKdGP01pmSXmHBZ9XXNQ=;
- b=BmkEyJqb75N6iiJ04BiEG4hzyoCG0f4FrleRysrgb+SDL5KZgAVPFtmT6yGwDeXTna
- Y2afwirxSxqELMbiMAxcS2GoBN42mYqXrl/xlkydVfZyarZsv9xvjJNbuEmoqXB0UrC3
- Tju6Fp0tX0DHvPI0S/fe3f8mnBFSLaX7ccPSc=
+ bh=HFvK/wQYg6h17KjeQ4QP/IzGqKESkuSFTHfGwGok+0M=;
+ b=jxAz9HV8yJc1MlOdZIrYNYph9SL/mo0dDM1vCYN8DRtzenPdDx8Pa52FOga8rh8fBm
+ gWl2faKM8wiJZ2Rv911/CLzJCspAlKDzfBf4n8LBl/sxjUdBLXjZPl4TRM3ua8UYklXL
+ IAxUtEDxGDUA3AesfQtmlsyck6HjDVaF79lvE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=c2GtWAAHcVOyMG81bRCsoZlbKdGP01pmSXmHBZ9XXNQ=;
- b=oEq5ZVzgsx1yksy5gmG756W1q+wXp9bDNtNo8Izt+tVOLTUdyezPeYcP7mx0kTkIAs
- ECCIhJ5GHH6UjNmcKflpOAX/FL6BhavXwQGAQ8uOpi1pR0+uXqqsB545HrUPoAbSAtJX
- AurPNa+oZ6/V9HckJ3csP+0e2OmvEaUdD4yYnktaUyjynrIEH1/2zfGn2eulpjwXkk5d
- NanmLSJ6Wkgt6tw5dac1gsErpl7N5p8RvTxmadnsY1asliEH3S7bRDkPGq2uoOBL/iAo
- +ZOic6o3CSU4GdORt+YzGYDhgUD9grZgqdhAK1SPEycIKPVk54SurmCqUzgreS2B7YiY
- 58Kg==
-X-Gm-Message-State: AOAM532ha2keJJJhxeYaUSB423l0WTyCsSNgyydEDUkiBFALiPi2rXLc
- 3AmNozQxxrjwgFNkG98ukXYSmA==
-X-Google-Smtp-Source: ABdhPJz44BEYFMgTjrwmOA0w4XBW3wbBWTwXPOzJX60dkVfa1RmqoKAzkthhwZVYbP+QINQg9+l20g==
-X-Received: by 2002:a17:902:a582:b029:d1:cbfc:608f with SMTP id
- az2-20020a170902a582b02900d1cbfc608fmr4046099plb.37.1600097835405; 
- Mon, 14 Sep 2020 08:37:15 -0700 (PDT)
+ bh=HFvK/wQYg6h17KjeQ4QP/IzGqKESkuSFTHfGwGok+0M=;
+ b=dWujZPcgFSXYHyKveJUc+DXdCUoYWEwkiImxh/TG/Z5dCCNt8J9P1YCX5I3NZlooWm
+ gY8gEAS717ZGFCc6552gYe0dj/IiI3OcYl/5aliQ5UtXfcwlH7XUwJF0ctNzGFvH/AT7
+ d6zG8v1PtNitecr7DESpY7Iw6e8wh/YujTt1MNRnbIGg7FUh82w5Yja+jj9JNI4wj9iC
+ EgjsW3n4GS/B89W0pNBBa38C8KazZSxloiTE1ugfNUfdOSQWQ9bDIpoKQel8KlfE6GSL
+ Ai7So+SCtB2+HuilK0GG/phrDT+2JUQBbcRB3yb3/W9nKScrgMYAuFYCC8/SWQKfhFS+
+ qChQ==
+X-Gm-Message-State: AOAM531NLMb2zKtuk8MLGDR4woK/nNwQg4l4Sl+vYv4wAZGIveal5Bad
+ 5ItNPAIRTf6SdfWbir9x7zQwlw==
+X-Google-Smtp-Source: ABdhPJzdYnCNyXlT7L5p5yzeTZg29MW+mLrrdTcj7Qn8PdqxEdilUyeeD8gJSgi0NorUVB7r2W37iw==
+X-Received: by 2002:a63:2c4:: with SMTP id 187mr6653742pgc.127.1600097838912; 
+ Mon, 14 Sep 2020 08:37:18 -0700 (PDT)
 Received: from localhost.localdomain ([124.123.169.115])
- by smtp.gmail.com with ESMTPSA id ml20sm9711026pjb.20.2020.09.14.08.37.12
+ by smtp.gmail.com with ESMTPSA id ml20sm9711026pjb.20.2020.09.14.08.37.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2020 08:37:14 -0700 (PDT)
+ Mon, 14 Sep 2020 08:37:18 -0700 (PDT)
 From: Suniel Mahesh <sunil@amarulasolutions.com>
 To: kever.yang@rock-chips.com, philipp.tomsich@theobroma-systems.com,
  sjg@chromium.org
-Subject: [PATCH v2 6/7] rockchip: Add Engicam PX30.Core C.TOUCH 2.0
-Date: Mon, 14 Sep 2020 21:06:33 +0530
-Message-Id: <20200914153634.18121-7-sunil@amarulasolutions.com>
+Subject: [PATCH v2 7/7] doc: rockchip: Document Rockchip miniloader flashing
+Date: Mon, 14 Sep 2020 21:06:34 +0530
+Message-Id: <20200914153634.18121-8-sunil@amarulasolutions.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200914153634.18121-1-sunil@amarulasolutions.com>
 References: <20200914153634.18121-1-sunil@amarulasolutions.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_113717_362609_552C53F3 
-X-CRM114-Status: GOOD (  18.53  )
+X-CRM114-CacheID: sfid-20200914_113721_068976_B188C618 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,221 +103,84 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Jagan Teki <jagan@amarulasolutions.com>
 
-PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
+This would be useful and recommended boot flow for new boards
+which has doesn't have the DDR support yet in mainline.
 
-C.TOUCH 2.0 is a general purpose carrier board with capacitive
-touch interface support.
+Sometimes it is very useful for debugging mainline DDR support.
 
-PX30.Core needs to mount on top of this Carrier board for creating
-complete PX30.Core C.TOUCH 2.0 board.
-
-Add support for it.
+Documen it for px30 boot flow.
 
 Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 ---
 Changes for v2:
-- Minor device tree adjustments as per Linux mainline changes
-- rename device tree from ctouch2-of10.dts to ctouch2.dts
-- rename defconfig from ctouch2-of10 to ctouch2
-- collect Kever Yang r-b tag
-- Add additional copyright
+- no changes
 
- arch/arm/dts/Makefile                    |   1 +
- arch/arm/dts/px30-px30-core-ctouch2.dts  |  22 +++++
- arch/arm/mach-rockchip/px30/Kconfig      |   7 ++
- board/rockchip/evb_px30/MAINTAINERS      |   6 ++
- configs/px30-core-ctouch2-px30_defconfig | 108 +++++++++++++++++++++++
- 5 files changed, 144 insertions(+)
- create mode 100644 arch/arm/dts/px30-px30-core-ctouch2.dts
- create mode 100644 configs/px30-core-ctouch2-px30_defconfig
+ doc/board/rockchip/rockchip.rst | 40 ++++++++++++++++++++++++++++++++-
+ 1 file changed, 39 insertions(+), 1 deletion(-)
 
-diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index f1b0286fa1..1ffa07cc6e 100644
---- a/arch/arm/dts/Makefile
-+++ b/arch/arm/dts/Makefile
-@@ -72,6 +72,7 @@ dtb-$(CONFIG_MACH_S700) += \
- dtb-$(CONFIG_ROCKCHIP_PX30) += \
- 	px30-evb.dtb \
- 	px30-firefly.dtb \
-+	px30-px30-core-ctouch2.dtb \
- 	px30-px30-core-edimm2.2.dtb \
- 	rk3326-odroid-go2.dtb
+diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
+index 8c92de0c92..ea061ad171 100644
+--- a/doc/board/rockchip/rockchip.rst
++++ b/doc/board/rockchip/rockchip.rst
+@@ -123,6 +123,9 @@ To build rk3399 boards::
+ Flashing
+ --------
  
-diff --git a/arch/arm/dts/px30-px30-core-ctouch2.dts b/arch/arm/dts/px30-px30-core-ctouch2.dts
-new file mode 100644
-index 0000000000..2da0128188
---- /dev/null
-+++ b/arch/arm/dts/px30-px30-core-ctouch2.dts
-@@ -0,0 +1,22 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2020 Fuzhou Rockchip Electronics Co., Ltd
-+ * Copyright (c) 2020 Engicam srl
-+ * Copyright (c) 2020 Amarula Solutions
-+ * Copyright (c) 2020 Amarula Solutions(India)
-+ */
++1. Package the image with U-Boot TPL/SPL
++-----------------------------------------
 +
-+/dts-v1/;
-+#include "px30.dtsi"
-+#include "px30-engicam-ctouch2.dtsi"
-+#include "px30-px30-core.dtsi"
-+
-+/ {
-+	model = "Engicam PX30.Core C.TOUCH 2.0";
-+	compatible = "engicam,px30-core-ctouch2", "engicam,px30-px30-core",
-+		     "rockchip,px30";
-+
-+	chosen {
-+		stdout-path = "serial2:115200n8";
-+	};
-+};
-diff --git a/arch/arm/mach-rockchip/px30/Kconfig b/arch/arm/mach-rockchip/px30/Kconfig
-index 98959fbf53..507a54af58 100644
---- a/arch/arm/mach-rockchip/px30/Kconfig
-+++ b/arch/arm/mach-rockchip/px30/Kconfig
-@@ -14,6 +14,13 @@ config TARGET_EVB_PX30
- 	  * PX30.Core needs to mount on top of EDIMM2.2 for creating complete
- 	    PX30.Core EDIMM2.2 Starter Kit.
+ SD Card
+ ^^^^^^^
  
-+	  PX30.Core CTOUCH2:
-+	  * PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
-+	  * CTOUCH2.0 is a general purpose Carrier board with capacitive
-+	    touch interface support.
-+	  * PX30.Core needs to mount on top of CTOUCH2.0 for creating complete
-+	    PX30.Core C.TOUCH Carrier board.
-+
- config TARGET_ODROID_GO2
- 	bool "ODROID_GO2"
+@@ -187,6 +190,39 @@ Copy SPI boot images into SD card and boot from SD::
+         sf erase 0x60000 +$filesize
+         sf write $kernel_addr_r 0x60000 ${filesize}
  
-diff --git a/board/rockchip/evb_px30/MAINTAINERS b/board/rockchip/evb_px30/MAINTAINERS
-index 48fba4e046..2634a0aa8d 100644
---- a/board/rockchip/evb_px30/MAINTAINERS
-+++ b/board/rockchip/evb_px30/MAINTAINERS
-@@ -11,3 +11,9 @@ M:	Jagan Teki <jagan@amarulasolutions.com>
- M:	Suniel Mahesh <sunil@amarulasolutions.com>
- S:	Maintained
- F:	configs/px30-core-edimm2.2-px30_defconfig
++2. Package the image with Rockchip miniloader
++---------------------------------------------
 +
-+PX30-Core-CTOUCH2.0
-+M:	Jagan Teki <jagan@amarulasolutions.com>
-+M:	Suniel Mahesh <sunil@amarulasolutions.com>
-+S:	Maintained
-+F:	configs/px30-core-ctouch2-px30_defconfig
-diff --git a/configs/px30-core-ctouch2-px30_defconfig b/configs/px30-core-ctouch2-px30_defconfig
-new file mode 100644
-index 0000000000..ea3c9c85c1
---- /dev/null
-+++ b/configs/px30-core-ctouch2-px30_defconfig
-@@ -0,0 +1,108 @@
-+CONFIG_ARM=y
-+CONFIG_ARCH_ROCKCHIP=y
-+CONFIG_SYS_TEXT_BASE=0x00200000
-+CONFIG_SPL_LIBCOMMON_SUPPORT=y
-+CONFIG_SPL_LIBGENERIC_SUPPORT=y
-+CONFIG_SYS_MALLOC_F_LEN=0x2000
-+CONFIG_SPL_TEXT_BASE=0x00000000
-+CONFIG_ROCKCHIP_PX30=y
-+CONFIG_TARGET_EVB_PX30=y
-+CONFIG_TPL_LIBGENERIC_SUPPORT=y
-+CONFIG_SPL_DRIVERS_MISC_SUPPORT=y
-+CONFIG_SPL_STACK_R_ADDR=0x600000
-+CONFIG_NR_DRAM_BANKS=1
-+CONFIG_DEBUG_UART_BASE=0xFF160000
-+CONFIG_DEBUG_UART_CLOCK=24000000
-+CONFIG_DEBUG_UART=y
-+CONFIG_TPL_SYS_MALLOC_F_LEN=0x600
-+# CONFIG_ANDROID_BOOT_IMAGE is not set
-+CONFIG_FIT=y
-+CONFIG_FIT_VERBOSE=y
-+CONFIG_SPL_LOAD_FIT=y
-+# CONFIG_CONSOLE_MUX is not set
-+CONFIG_DEFAULT_FDT_FILE="rockchip/px30-px30-core-ctouch2.dtb"
-+CONFIG_MISC_INIT_R=y
-+# CONFIG_DISPLAY_CPUINFO is not set
-+CONFIG_DISPLAY_BOARDINFO_LATE=y
-+CONFIG_SPL_BOOTROM_SUPPORT=y
-+# CONFIG_SPL_RAW_IMAGE_SUPPORT is not set
-+CONFIG_SPL_STACK_R=y
-+# CONFIG_TPL_BANNER_PRINT is not set
-+CONFIG_SPL_CRC32_SUPPORT=y
-+CONFIG_SPL_ATF=y
-+# CONFIG_TPL_FRAMEWORK is not set
-+# CONFIG_CMD_BOOTD is not set
-+# CONFIG_CMD_ELF is not set
-+# CONFIG_CMD_IMI is not set
-+# CONFIG_CMD_XIMG is not set
-+# CONFIG_CMD_LZMADEC is not set
-+# CONFIG_CMD_UNZIP is not set
-+CONFIG_CMD_GPT=y
-+# CONFIG_CMD_LOADB is not set
-+# CONFIG_CMD_LOADS is not set
-+CONFIG_CMD_MMC=y
-+CONFIG_CMD_USB=y
-+CONFIG_CMD_USB_MASS_STORAGE=y
-+# CONFIG_CMD_ITEST is not set
-+# CONFIG_CMD_SETEXPR is not set
-+# CONFIG_CMD_MISC is not set
-+# CONFIG_SPL_DOS_PARTITION is not set
-+# CONFIG_ISO_PARTITION is not set
-+CONFIG_EFI_PARTITION_ENTRIES_NUMBERS=64
-+CONFIG_SPL_OF_CONTROL=y
-+CONFIG_OF_LIVE=y
-+CONFIG_DEFAULT_DEVICE_TREE="px30-px30-core-ctouch2"
-+CONFIG_OF_SPL_REMOVE_PROPS="pinctrl-0 pinctrl-names interrupt-parent assigned-clocks assigned-clock-rates assigned-clock-parents"
-+CONFIG_ENV_IS_IN_MMC=y
-+CONFIG_SYS_RELOC_GD_ENV_ADDR=y
-+CONFIG_REGMAP=y
-+CONFIG_SPL_REGMAP=y
-+CONFIG_SYSCON=y
-+CONFIG_SPL_SYSCON=y
-+CONFIG_CLK=y
-+CONFIG_SPL_CLK=y
-+CONFIG_FASTBOOT_BUF_ADDR=0x800800
-+CONFIG_FASTBOOT_BUF_SIZE=0x04000000
-+CONFIG_ROCKCHIP_GPIO=y
-+CONFIG_SYS_I2C_ROCKCHIP=y
-+CONFIG_MISC=y
-+CONFIG_ROCKCHIP_OTP=y
-+CONFIG_MMC_DW=y
-+CONFIG_MMC_DW_ROCKCHIP=y
-+CONFIG_PHY_REALTEK=y
-+CONFIG_DM_ETH=y
-+CONFIG_ETH_DESIGNWARE=y
-+CONFIG_GMAC_ROCKCHIP=y
-+CONFIG_PINCTRL=y
-+CONFIG_DM_PMIC=y
-+CONFIG_PMIC_RK8XX=y
-+CONFIG_REGULATOR_PWM=y
-+CONFIG_DM_REGULATOR_FIXED=y
-+CONFIG_REGULATOR_RK8XX=y
-+CONFIG_PWM_ROCKCHIP=y
-+CONFIG_RAM=y
-+CONFIG_SPL_RAM=y
-+CONFIG_TPL_RAM=y
-+CONFIG_ROCKCHIP_SDRAM_COMMON=y
-+CONFIG_DM_RESET=y
-+CONFIG_DM_RNG=y
-+CONFIG_RNG_ROCKCHIP=y
-+# CONFIG_SPECIFY_CONSOLE_INDEX is not set
-+CONFIG_DEBUG_UART_SHIFT=2
-+CONFIG_DEBUG_UART_SKIP_INIT=y
-+CONFIG_SOUND=y
-+CONFIG_SYSRESET=y
-+CONFIG_DM_THERMAL=y
-+CONFIG_USB=y
-+CONFIG_USB_EHCI_HCD=y
-+CONFIG_USB_EHCI_GENERIC=y
-+CONFIG_USB_GADGET=y
-+CONFIG_USB_GADGET_DWC2_OTG=y
-+CONFIG_DM_VIDEO=y
-+CONFIG_DISPLAY=y
-+CONFIG_LCD=y
-+CONFIG_SPL_TINY_MEMSET=y
-+CONFIG_TPL_TINY_MEMSET=y
-+CONFIG_LZO=y
-+CONFIG_ERRNO_STR=y
-+# CONFIG_EFI_LOADER is not set
++Image package with Rockchip miniloader requires robin [1].
++
++Create idbloader.img
++
++.. code-block:: none
++
++  cd u-boot
++  ./tools/mkimage -n px30 -T rksd -d rkbin/bin/rk33/px30_ddr_333MHz_v1.15.bin idbloader.img
++  cat rkbin/bin/rk33/px30_miniloader_v1.22.bin >> idbloader.img
++  sudo dd if=idbloader.img of=/dev/sda seek=64
++
++Create trust.img
++
++.. code-block:: none
++
++  cd rkbin
++  ./tools/trust_merger RKTRUST/PX30TRUST.ini
++  sudo dd if=trust.img of=/dev/sda seek=24576
++
++Create uboot.img
++
++.. code-block:: none
++
++  rbink/tools/loaderimage --pack --uboot u-boot-dtb.bin uboot.img 0x200000
++  sudo dd if=uboot.img of=/dev/sda seek=16384
++
++Note:
++1. 0x200000 is load address and it's an optional in some platforms.
++2. rkbin binaries are kept on updating, so would recommend to use the latest versions.
++
+ TODO
+ ----
+ 
+@@ -195,5 +231,7 @@ TODO
+ - Document SPI flash boot
+ - Add missing SoC's with it boards list
+ 
++[1] https://github.com/rockchip-linux/rkbin
++
+ .. Jagan Teki <jagan@amarulasolutions.com>
+-.. Tuesday 02 June 2020 12:18:57 AM IST
++.. Thursday 23 July 2020 04:50:22 PM IST
 -- 
 2.17.1
 
