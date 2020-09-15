@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B734BC2D0E0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:02:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FDCCC433E2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:02:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4C23A20663
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:02:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D1F4020663
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:02:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ELAERNb0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C23A20663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1QIsByYZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D1F4020663
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DlDCcnpKVN2W1RBlVbzflfHqJqEBkpx8dXgZSjR6OOs=; b=ELAERNb0Yr3Xo4bS9ZcxG7DUf
-	9yDV1u17dPbxQpeYo80YHpQM97R4BP2M4NHJddkBcyWrSSb6xy+QeHjoIIEcA2j7M68AzRnjgcns7
-	PyCdDuOXvvlvi3aCX76O0AMkdd2KU10+9R6tosJ90DWU1EvvGl6SNxXSlY3CY4daxieERiJ76W56S
-	Im8WtkXOIrfP4UmoNlu5COOCpwTdBDrBuo20axjOsQ0ifeX3IHCXl6meGB0xTMxFbwWo8hhVGpqyY
-	NfYXL8+XP85mylCa0+GeBvvBZKSC2LX3TZcOb3Y6hMvCNRxvwJarWFTjRBR4HiLgdIoGt0u31nNJ8
-	PQRkFbmmw==;
+	 bh=x2fNm0HWU/hFmOOrNUj4DKuJyq9XzIPh7lu5LgESX3Q=; b=1QIsByYZcPRmJYaEFGwPuwRjd
+	VmtCm/noaDCM4H+9ytFZ6cUXuBWaU1Cf1PgtUAxt2AOlFWjjoEBWaeemPh0kP0xImF45ZLZAxx93k
+	PkIXabtLZrqO3pKU0bEmCTvtsos62e0xpsHIHDuusfHtx+m9qu4Till6cA6CFl6No0ZPDenz8u/9O
+	wXoGGb2HV8xNBy5NY59xpwGLg3wPIl49LVpKe0qOn2PZGPiMb08TPgFmXWmQHOFfpLq6U9aedTLwV
+	/Pa9hGtt68t9+cQyfU2CFZWgIxO6p1Xwyb4Rd/p2KXsjhxQB9IWbPddj+cBndsP1uxwg8ap7PBnN3
+	wj1kQWA3A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kICTG-0004xm-Rh; Tue, 15 Sep 2020 15:02:14 +0000
+	id 1kICTI-0004yg-A7; Tue, 15 Sep 2020 15:02:16 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kICRL-0003eY-Rm; Tue, 15 Sep 2020 15:00:18 +0000
+ id 1kICRL-0003eE-2E; Tue, 15 Sep 2020 15:00:17 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 0D59BB146;
- Tue, 15 Sep 2020 15:00:30 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 25941B158;
+ Tue, 15 Sep 2020 15:00:29 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
@@ -63,16 +63,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
  andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
  emil.velikov@collabora.com
-Subject: [PATCH v2 15/21] drm/vc4: Introduce GEM object functions
-Date: Tue, 15 Sep 2020 16:59:52 +0200
-Message-Id: <20200915145958.19993-16-tzimmermann@suse.de>
+Subject: [PATCH v2 14/21] drm/tegra: Introduce GEM object functions
+Date: Tue, 15 Sep 2020 16:59:51 +0200
+Message-Id: <20200915145958.19993-15-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200915145958.19993-1-tzimmermann@suse.de>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_110016_206517_D551A205 
-X-CRM114-Status: GOOD (  15.80  )
+X-CRM114-CacheID: sfid-20200915_110015_361151_63E8613C 
+X-CRM114-Status: GOOD (  14.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,116 +99,57 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 GEM object functions deprecate several similar callback interfaces in
 struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in vc4. The only exception is gem_prime_mmap,
-which is non-trivial to convert.
+per-instance callbacks in tegra.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Reviewed-by: Eric Anholt <eric@anholt.net>
 ---
- drivers/gpu/drm/vc4/vc4_bo.c  | 21 ++++++++++++++++++++-
- drivers/gpu/drm/vc4/vc4_drv.c | 12 ------------
- drivers/gpu/drm/vc4/vc4_drv.h |  1 -
- 3 files changed, 20 insertions(+), 14 deletions(-)
+ drivers/gpu/drm/tegra/drm.c | 4 ----
+ drivers/gpu/drm/tegra/gem.c | 8 ++++++++
+ 2 files changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/vc4/vc4_bo.c b/drivers/gpu/drm/vc4/vc4_bo.c
-index 74ceebd62fbc..f432278173cd 100644
---- a/drivers/gpu/drm/vc4/vc4_bo.c
-+++ b/drivers/gpu/drm/vc4/vc4_bo.c
-@@ -21,6 +21,8 @@
- #include "vc4_drv.h"
- #include "uapi/drm/vc4_drm.h"
- 
-+static vm_fault_t vc4_fault(struct vm_fault *vmf);
-+
- static const char * const bo_type_names[] = {
- 	"kernel",
- 	"V3D",
-@@ -374,6 +376,21 @@ static struct vc4_bo *vc4_bo_get_from_cache(struct drm_device *dev,
- 	return bo;
- }
- 
-+static const struct vm_operations_struct vc4_vm_ops = {
-+	.fault = vc4_fault,
-+	.open = drm_gem_vm_open,
-+	.close = drm_gem_vm_close,
-+};
-+
-+static const struct drm_gem_object_funcs vc4_gem_object_funcs = {
-+	.free = vc4_free_object,
-+	.export = vc4_prime_export,
-+	.get_sg_table = drm_gem_cma_prime_get_sg_table,
-+	.vmap = vc4_prime_vmap,
-+	.vunmap = drm_gem_cma_prime_vunmap,
-+	.vm_ops = &vc4_vm_ops,
-+};
-+
- /**
-  * vc4_gem_create_object - Implementation of driver->gem_create_object.
-  * @dev: DRM device
-@@ -400,6 +417,8 @@ struct drm_gem_object *vc4_create_object(struct drm_device *dev, size_t size)
- 	vc4->bo_labels[VC4_BO_TYPE_KERNEL].size_allocated += size;
- 	mutex_unlock(&vc4->bo_lock);
- 
-+	bo->base.base.funcs = &vc4_gem_object_funcs;
-+
- 	return &bo->base.base;
- }
- 
-@@ -684,7 +703,7 @@ struct dma_buf * vc4_prime_export(struct drm_gem_object *obj, int flags)
- 	return dmabuf;
- }
- 
--vm_fault_t vc4_fault(struct vm_fault *vmf)
-+static vm_fault_t vc4_fault(struct vm_fault *vmf)
- {
- 	struct vm_area_struct *vma = vmf->vma;
- 	struct drm_gem_object *obj = vma->vm_private_data;
-diff --git a/drivers/gpu/drm/vc4/vc4_drv.c b/drivers/gpu/drm/vc4/vc4_drv.c
-index f1a5fd5dab6f..d27eaa2d0cfe 100644
---- a/drivers/gpu/drm/vc4/vc4_drv.c
-+++ b/drivers/gpu/drm/vc4/vc4_drv.c
-@@ -140,12 +140,6 @@ static void vc4_close(struct drm_device *dev, struct drm_file *file)
- 	kfree(vc4file);
- }
- 
--static const struct vm_operations_struct vc4_vm_ops = {
--	.fault = vc4_fault,
--	.open = drm_gem_vm_open,
--	.close = drm_gem_vm_close,
--};
--
- static const struct file_operations vc4_drm_fops = {
- 	.owner = THIS_MODULE,
- 	.open = drm_open,
-@@ -195,16 +189,10 @@ static struct drm_driver vc4_drm_driver = {
+diff --git a/drivers/gpu/drm/tegra/drm.c b/drivers/gpu/drm/tegra/drm.c
+index ba9d1c3e7cac..f0f581cd345e 100644
+--- a/drivers/gpu/drm/tegra/drm.c
++++ b/drivers/gpu/drm/tegra/drm.c
+@@ -858,12 +858,8 @@ static struct drm_driver tegra_drm_driver = {
+ 	.debugfs_init = tegra_debugfs_init,
  #endif
  
- 	.gem_create_object = vc4_create_object,
--	.gem_free_object_unlocked = vc4_free_object,
--	.gem_vm_ops = &vc4_vm_ops,
- 
+-	.gem_free_object_unlocked = tegra_bo_free_object,
+-	.gem_vm_ops = &tegra_bo_vm_ops,
+-
  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
--	.gem_prime_export = vc4_prime_export,
--	.gem_prime_get_sg_table	= drm_gem_cma_prime_get_sg_table,
- 	.gem_prime_import_sg_table = vc4_prime_import_sg_table,
--	.gem_prime_vmap = vc4_prime_vmap,
--	.gem_prime_vunmap = drm_gem_cma_prime_vunmap,
- 	.gem_prime_mmap = vc4_prime_mmap,
+-	.gem_prime_export = tegra_gem_prime_export,
+ 	.gem_prime_import = tegra_gem_prime_import,
  
- 	.dumb_create = vc4_dumb_create,
-diff --git a/drivers/gpu/drm/vc4/vc4_drv.h b/drivers/gpu/drm/vc4/vc4_drv.h
-index 8c8d96b6289f..a22478a35199 100644
---- a/drivers/gpu/drm/vc4/vc4_drv.h
-+++ b/drivers/gpu/drm/vc4/vc4_drv.h
-@@ -799,7 +799,6 @@ int vc4_get_hang_state_ioctl(struct drm_device *dev, void *data,
- 			     struct drm_file *file_priv);
- int vc4_label_bo_ioctl(struct drm_device *dev, void *data,
- 		       struct drm_file *file_priv);
--vm_fault_t vc4_fault(struct vm_fault *vmf);
- int vc4_mmap(struct file *filp, struct vm_area_struct *vma);
- int vc4_prime_mmap(struct drm_gem_object *obj, struct vm_area_struct *vma);
- struct drm_gem_object *vc4_prime_import_sg_table(struct drm_device *dev,
+ 	.dumb_create = tegra_bo_dumb_create,
+diff --git a/drivers/gpu/drm/tegra/gem.c b/drivers/gpu/drm/tegra/gem.c
+index 47e2935b8c68..d481dea4738d 100644
+--- a/drivers/gpu/drm/tegra/gem.c
++++ b/drivers/gpu/drm/tegra/gem.c
+@@ -231,6 +231,12 @@ static int tegra_bo_iommu_unmap(struct tegra_drm *tegra, struct tegra_bo *bo)
+ 	return 0;
+ }
+ 
++static const struct drm_gem_object_funcs tegra_gem_object_funcs = {
++	.free = tegra_bo_free_object,
++	.export = tegra_gem_prime_export,
++	.vm_ops = &tegra_bo_vm_ops,
++};
++
+ static struct tegra_bo *tegra_bo_alloc_object(struct drm_device *drm,
+ 					      size_t size)
+ {
+@@ -241,6 +247,8 @@ static struct tegra_bo *tegra_bo_alloc_object(struct drm_device *drm,
+ 	if (!bo)
+ 		return ERR_PTR(-ENOMEM);
+ 
++	bo->gem.funcs = &tegra_gem_object_funcs;
++
+ 	host1x_bo_init(&bo->base, &tegra_bo_ops);
+ 	size = round_up(size, PAGE_SIZE);
+ 
 -- 
 2.28.0
 
