@@ -2,68 +2,94 @@ Return-Path: <SRS0=pRwE=CY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,HK_RANDOM_FROM,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DEB87C43461
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:54:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A77DC433E2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 16:15:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6767720936
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:54:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5346021D41
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 16:15:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lRHb2PsE";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="k/TxRWDw"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6767720936
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wayMZmN/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5346021D41
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YMJPENOBXuqkhdBnqLCm+9I97EbeW8aM5m1fZ3dEnCI=; b=lRHb2PsEAYPU5NE9lDZOL9JY9
-	OeSsD/97ThLsXXmhyt6fQXINvsBx9zYiCWfQp0YEngFfZdhKvfVwrByd2DkQiSi/yFTYKwKa/xq2F
-	5UNzvl0DPYHvHy/45J/jbKYCfPUypJ89GFehB2/8n3CzQtgMe/1CcB2UPdB9tvOWEfLju+0YCK2Y8
-	HZJHbZV0Lsxwdq7KITjiyT/2YrZZQT4WZWw+0cro3jDq6oPXu6dwknGDu4oOWJLxP28X/ahoN8+NV
-	itWMeaS2XgthecJ45p7SwREEGecJ9GUP9vG+e5mtjpjdqZfBw9YgLsRgMUlPYskQHiq97KroDauuc
-	5W+tROJZA==;
+	 bh=ZQ/oJZ57hKZ3t5y2tHuPWQIAkBJEeEhsKwZe0kv2QzA=; b=wayMZmN/x7JaHSaMfoLWzCu8S
+	ZnNGB1OPeqXhRO2ZBsm9F1kdxMdPRZ80oh3zn3/0Rq+AtJDCt3DYtbdjzrziZcmWo+WfQ+Ov7u4ZA
+	Oggs6wrJQMtG4N/f3/rpVPrwJX9wK9pEdOyNc2lciim1Dd/QmY/zveQxpzfQrtHAwM4MIja9K95BG
+	WDTO13C1XraUtCJrEVLOzEea8KBCt5EJourTDUX1VL9nDm8zMtoWgsq+wQPeTwcO7wNTCawT3WI0x
+	rOr94YOSRpHz53ct5YtGCKVlIKz6zPPG1MUGEHGHyqJvLVrEt39cG6MINpD6yE/R58iT6vCBIuoUD
+	nDRbgAn5A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIDI6-0006yE-PT; Tue, 15 Sep 2020 15:54:46 +0000
-Received: from perceval.ideasonboard.com
- ([2001:4b98:dc2:55:216:3eff:fef7:d647])
+	id 1kIDbq-0006z9-Af; Tue, 15 Sep 2020 16:15:10 +0000
+Received: from mga07.intel.com ([134.134.136.100])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIDI2-0006rq-1P; Tue, 15 Sep 2020 15:54:43 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
- [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id 0FA56276;
- Tue, 15 Sep 2020 17:54:16 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1600185256;
- bh=XzPEATglwb8mJLD0DYu0V5mnVt9Rmyb4GFF3M0n1BQw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=k/TxRWDwAUeEA/mxOqDGy3dXpqZvHw1rgu/hfc6AZ+2kJHV8nY1aZQ1niwJxXM2on
- uMm8kF40aJQq8Y3LJa+B/xGzPCzryGwMdT5H5oWYJQ48rRZEb8n/CrAkn0VvMZEJAK
- zd/EMFYW53+dug8ySJGu6EPKXShM0dS8ZH8bQ3S8=
-Date: Tue, 15 Sep 2020 18:53:46 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v2 20/21] drm/xlnx: Initialize DRM driver instance with
- CMA helper macro
-Message-ID: <20200915155346.GA26029@pendragon.ideasonboard.com>
+ id 1kIDbg-0006tN-A8; Tue, 15 Sep 2020 16:15:01 +0000
+IronPort-SDR: CJMhdRI9hrIaNAJoXFoMAmOeYs0NGWwzjpdLwMFq+SB1JQEZZV3Kl3RsXfmu91RZqB91Jasw0B
+ jDEL0GJUa/fg==
+X-IronPort-AV: E=McAfee;i="6000,8403,9745"; a="223480716"
+X-IronPort-AV: E=Sophos;i="5.76,430,1592895600"; d="scan'208";a="223480716"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Sep 2020 09:14:54 -0700
+IronPort-SDR: 1NweJQ/LUpVMZGR2CNL7idgXNRkgQYlVvGnbjzV+v3epVrjgQ3OHB8LQ+g+ZsKRvdD4MQ7Rl1b
+ B/J1ZOWPLOog==
+X-IronPort-AV: E=Sophos;i="5.76,430,1592895600"; d="scan'208";a="451484915"
+Received: from oshaham-mobl.ger.corp.intel.com (HELO [10.214.241.3])
+ ([10.214.241.3])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Sep 2020 09:14:31 -0700
+Subject: Re: [PATCH v2 06/21] drm/i915: Introduce GEM object functions
+To: Thomas Zimmermann <tzimmermann@suse.de>, alexander.deucher@amd.com,
+ christian.koenig@amd.com, airlied@linux.ie, daniel@ffwll.ch,
+ linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
+ inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
+ patrik.r.jakobsson@gmail.com, jani.nikula@linux.intel.com,
+ joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
+ chunkuang.hu@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ robdclark@gmail.com, sean@poorly.run, bskeggs@redhat.com,
+ tomi.valkeinen@ti.com, eric@anholt.net, hjc@rock-chips.com, heiko@sntech.de,
+ thierry.reding@gmail.com, jonathanh@nvidia.com,
+ rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
+ oleksandr_andrushchenko@epam.com, hyun.kwon@xilinx.com,
+ laurent.pinchart@ideasonboard.com, michal.simek@xilinx.com,
+ sumit.semwal@linaro.org, evan.quan@amd.com, Hawking.Zhang@amd.com,
+ tianci.yin@amd.com, marek.olsak@amd.com, hdegoede@redhat.com,
+ andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com, xinhui.pan@amd.com,
+ aaron.liu@amd.com, nirmoy.das@amd.com, chris@chris-wilson.co.uk,
+ matthew.auld@intel.com, andi.shyti@intel.com, sam@ravnborg.org,
+ miaoqinglang@huawei.com, emil.velikov@collabora.com
 References: <20200915145958.19993-1-tzimmermann@suse.de>
- <20200915145958.19993-21-tzimmermann@suse.de>
+ <20200915145958.19993-7-tzimmermann@suse.de>
+From: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
+Organization: Intel Corporation UK Plc
+Message-ID: <76e5eb2f-e324-8f56-866a-15b022abba8d@linux.intel.com>
+Date: Tue, 15 Sep 2020 17:14:27 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200915145958.19993-21-tzimmermann@suse.de>
+In-Reply-To: <20200915145958.19993-7-tzimmermann@suse.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_115442_270738_FA7E37E0 
-X-CRM114-Status: GOOD (  15.86  )
+X-CRM114-CacheID: sfid-20200915_121500_582822_204F48FD 
+X-CRM114-Status: GOOD (  23.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,92 +102,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: hamohammed.sa@gmail.com, heiko@sntech.de, andrey.grodzovsky@amd.com,
- airlied@linux.ie, nouveau@lists.freedesktop.org,
- joonas.lahtinen@linux.intel.com, dri-devel@lists.freedesktop.org,
- michal.simek@xilinx.com, eric@anholt.net, thierry.reding@gmail.com,
- robdclark@gmail.com, krzk@kernel.org, sam@ravnborg.org,
- sumit.semwal@linaro.org, emil.velikov@collabora.com,
- linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
- oleksandr_andrushchenko@epam.com, tomi.valkeinen@ti.com,
- linux-tegra@vger.kernel.org, linux@armlinux.org.uk,
- patrik.r.jakobsson@gmail.com, jonathanh@nvidia.com,
- linux-rockchip@lists.infradead.org, kgene@kernel.org, bskeggs@redhat.com,
- xen-devel@lists.xenproject.org, intel-gfx@lists.freedesktop.org,
- matthew.auld@intel.com, chunkuang.hu@kernel.org, andi.shyti@intel.com,
- daniel@ffwll.ch, linux-arm-msm@vger.kernel.org, marek.olsak@amd.com,
- tianci.yin@amd.com, maarten.lankhorst@linux.intel.com,
- etnaviv@lists.freedesktop.org, jani.nikula@linux.intel.com,
- inki.dae@samsung.com, hdegoede@redhat.com, christian.gmeiner@gmail.com,
- linux-mediatek@lists.infradead.org, mripard@kernel.org, rodrigo.vivi@intel.com,
- matthias.bgg@gmail.com, evan.quan@amd.com, sean@poorly.run,
- linux-arm-kernel@lists.infradead.org, tvrtko.ursulin@linux.intel.com,
- amd-gfx@lists.freedesktop.org, chris@chris-wilson.co.uk, hyun.kwon@xilinx.com,
- rodrigosiqueiramelo@gmail.com, aaron.liu@amd.com, Felix.Kuehling@amd.com,
- xinhui.pan@amd.com, sw0312.kim@samsung.com, hjc@rock-chips.com,
- miaoqinglang@huawei.com, kyungmin.park@samsung.com, nirmoy.das@amd.com,
- p.zabel@pengutronix.de, alexander.deucher@amd.com, Hawking.Zhang@amd.com,
- freedreno@lists.freedesktop.org, christian.koenig@amd.com,
- l.stach@pengutronix.de
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
+ xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Thomas,
 
-Thank you for the patch.
-
-On Tue, Sep 15, 2020 at 04:59:57PM +0200, Thomas Zimmermann wrote:
-> The xlnx driver uses CMA helpers with default callback functions.
-> Initialize the driver structure with the rsp CMA helper macro. The
-> driver is being converted to use GEM object functions as part of
-> this change.
-> 
-> Two callbacks, .dumb_destroy and .gem_prime_import, were initialized
-> to their default implementations, so they are just kept empty now.
+On 15/09/2020 15:59, Thomas Zimmermann wrote:
+> GEM object functions deprecate several similar callback interfaces in
+> struct drm_driver. This patch replaces the per-driver callbacks with
+> per-instance callbacks in i915.
 > 
 > v2:
-> 	* initialize with DRM_GEM_CMA_DRIVER_OPS_WITH_DUMB_CREATE (Laurent)
+> 	* move object-function instance to i915_gem_object.c (Jani)
 > 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-
 > ---
->  drivers/gpu/drm/xlnx/zynqmp_dpsub.c | 14 +-------------
->  1 file changed, 1 insertion(+), 13 deletions(-)
+>   drivers/gpu/drm/i915/gem/i915_gem_object.c    | 21 ++++++++++++++++---
+>   drivers/gpu/drm/i915/gem/i915_gem_object.h    |  3 ---
+>   drivers/gpu/drm/i915/i915_drv.c               |  4 ----
+>   .../gpu/drm/i915/selftests/mock_gem_device.c  |  3 ---
+>   4 files changed, 18 insertions(+), 13 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/xlnx/zynqmp_dpsub.c b/drivers/gpu/drm/xlnx/zynqmp_dpsub.c
-> index 8e69303aad3f..f3ffc3703a0e 100644
-> --- a/drivers/gpu/drm/xlnx/zynqmp_dpsub.c
-> +++ b/drivers/gpu/drm/xlnx/zynqmp_dpsub.c
-> @@ -80,19 +80,7 @@ static struct drm_driver zynqmp_dpsub_drm_driver = {
->  	.driver_features		= DRIVER_MODESET | DRIVER_GEM |
->  					  DRIVER_ATOMIC,
->  
-> -	.prime_handle_to_fd		= drm_gem_prime_handle_to_fd,
-> -	.prime_fd_to_handle		= drm_gem_prime_fd_to_handle,
-> -	.gem_prime_export		= drm_gem_prime_export,
-> -	.gem_prime_import		= drm_gem_prime_import,
-> -	.gem_prime_get_sg_table		= drm_gem_cma_prime_get_sg_table,
-> -	.gem_prime_import_sg_table	= drm_gem_cma_prime_import_sg_table,
-> -	.gem_prime_vmap			= drm_gem_cma_prime_vmap,
-> -	.gem_prime_vunmap		= drm_gem_cma_prime_vunmap,
-> -	.gem_prime_mmap			= drm_gem_cma_prime_mmap,
-> -	.gem_free_object_unlocked	= drm_gem_cma_free_object,
-> -	.gem_vm_ops			= &drm_gem_cma_vm_ops,
-> -	.dumb_create			= zynqmp_dpsub_dumb_create,
-> -	.dumb_destroy			= drm_gem_dumb_destroy,
-> +	DRM_GEM_CMA_DRIVER_OPS_WITH_DUMB_CREATE(zynqmp_dpsub_dumb_create),
->  
->  	.fops				= &zynqmp_dpsub_drm_fops,
->  
+> diff --git a/drivers/gpu/drm/i915/gem/i915_gem_object.c b/drivers/gpu/drm/i915/gem/i915_gem_object.c
+> index c8421fd9d2dc..3389ac972d16 100644
+> --- a/drivers/gpu/drm/i915/gem/i915_gem_object.c
+> +++ b/drivers/gpu/drm/i915/gem/i915_gem_object.c
+> @@ -39,9 +39,18 @@ static struct i915_global_object {
+>   	struct kmem_cache *slab_objects;
+>   } global;
+>   
+> +static const struct drm_gem_object_funcs i915_gem_object_funcs;
+> +
+>   struct drm_i915_gem_object *i915_gem_object_alloc(void)
+>   {
+> -	return kmem_cache_zalloc(global.slab_objects, GFP_KERNEL);
+> +	struct drm_i915_gem_object *obj;
+> +
+> +	obj = kmem_cache_zalloc(global.slab_objects, GFP_KERNEL);
+> +	if (!obj)
+> +		return NULL;
+> +	obj->base.funcs = &i915_gem_object_funcs;
+> +
+> +	return obj;
+>   }
+>   
+>   void i915_gem_object_free(struct drm_i915_gem_object *obj)
+> @@ -101,7 +110,7 @@ void i915_gem_object_set_cache_coherency(struct drm_i915_gem_object *obj,
+>   		!(obj->cache_coherent & I915_BO_CACHE_COHERENT_FOR_WRITE);
+>   }
+>   
+> -void i915_gem_close_object(struct drm_gem_object *gem, struct drm_file *file)
+> +static void i915_gem_close_object(struct drm_gem_object *gem, struct drm_file *file)
+>   {
+>   	struct drm_i915_gem_object *obj = to_intel_bo(gem);
+>   	struct drm_i915_file_private *fpriv = file->driver_priv;
+> @@ -264,7 +273,7 @@ static void __i915_gem_free_work(struct work_struct *work)
+>   	i915_gem_flush_free_objects(i915);
+>   }
+>   
+> -void i915_gem_free_object(struct drm_gem_object *gem_obj)
+> +static void i915_gem_free_object(struct drm_gem_object *gem_obj)
+>   {
+>   	struct drm_i915_gem_object *obj = to_intel_bo(gem_obj);
+>   	struct drm_i915_private *i915 = to_i915(obj->base.dev);
+> @@ -403,6 +412,12 @@ int __init i915_global_objects_init(void)
+>   	return 0;
+>   }
+>   
+> +static const struct drm_gem_object_funcs i915_gem_object_funcs = {
+> +	.free = i915_gem_free_object,
+> +	.close = i915_gem_close_object,
+> +	.export = i915_gem_prime_export,
+> +};
+> +
+>   #if IS_ENABLED(CONFIG_DRM_I915_SELFTEST)
+>   #include "selftests/huge_gem_object.c"
+>   #include "selftests/huge_pages.c"
+> diff --git a/drivers/gpu/drm/i915/gem/i915_gem_object.h b/drivers/gpu/drm/i915/gem/i915_gem_object.h
+> index d46db8d8f38e..eaf3d4147be0 100644
+> --- a/drivers/gpu/drm/i915/gem/i915_gem_object.h
+> +++ b/drivers/gpu/drm/i915/gem/i915_gem_object.h
+> @@ -38,9 +38,6 @@ void __i915_gem_object_release_shmem(struct drm_i915_gem_object *obj,
+>   
+>   int i915_gem_object_attach_phys(struct drm_i915_gem_object *obj, int align);
+>   
+> -void i915_gem_close_object(struct drm_gem_object *gem, struct drm_file *file);
+> -void i915_gem_free_object(struct drm_gem_object *obj);
+> -
+>   void i915_gem_flush_free_objects(struct drm_i915_private *i915);
+>   
+>   struct sg_table *
+> diff --git a/drivers/gpu/drm/i915/i915_drv.c b/drivers/gpu/drm/i915/i915_drv.c
+> index 94e00e450683..011a3fb41ece 100644
+> --- a/drivers/gpu/drm/i915/i915_drv.c
+> +++ b/drivers/gpu/drm/i915/i915_drv.c
+> @@ -1750,12 +1750,8 @@ static struct drm_driver driver = {
+>   	.lastclose = i915_driver_lastclose,
+>   	.postclose = i915_driver_postclose,
+>   
+> -	.gem_close_object = i915_gem_close_object,
+> -	.gem_free_object_unlocked = i915_gem_free_object,
+> -
+>   	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+>   	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+> -	.gem_prime_export = i915_gem_prime_export,
+>   	.gem_prime_import = i915_gem_prime_import,
+>   
+>   	.dumb_create = i915_gem_dumb_create,
+> diff --git a/drivers/gpu/drm/i915/selftests/mock_gem_device.c b/drivers/gpu/drm/i915/selftests/mock_gem_device.c
+> index f127e633f7ca..9244b5d6fb01 100644
+> --- a/drivers/gpu/drm/i915/selftests/mock_gem_device.c
+> +++ b/drivers/gpu/drm/i915/selftests/mock_gem_device.c
+> @@ -87,9 +87,6 @@ static struct drm_driver mock_driver = {
+>   	.name = "mock",
+>   	.driver_features = DRIVER_GEM,
+>   	.release = mock_device_release,
+> -
+> -	.gem_close_object = i915_gem_close_object,
+> -	.gem_free_object_unlocked = i915_gem_free_object,
+>   };
+>   
+>   static void release_dev(struct device *dev)
+> 
 
--- 
+Looks obviously fine.
+
+Reviewed-by: Tvrtko Ursulin <tvrtko.ursulin@intel.com>
+
 Regards,
 
-Laurent Pinchart
+Tvrtko
 
 _______________________________________________
 Linux-rockchip mailing list
