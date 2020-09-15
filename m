@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27B6CC31E5C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:00:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40521C35257
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A10E121655
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:00:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CB62720663
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:01:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="oezY9Dbd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A10E121655
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hh57UOPa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CB62720663
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gkrKvq0fsqRx0zh5S+synrIp5rkQTDIM9TyxkX42ehM=; b=oezY9DbdNbN5NFxGEnv/GZQiG
-	nO0gRyHXvuk/2tSsxBu2lT5vmhA68fvmE5a49zfW+hI5h95UUSjVKsiT1CLPJcpVafElbmU5VbWB9
-	E4bodzYEbZwfLpb1izWHVc9z0wi7BwCuv3UahNqkT55KGyKwC6Ju9Dp4ea0iHcpGIyzpGwjdgaDCk
-	JCw/zoC4C8dTvU27wKgSXJVE0qoXD1nGnynFlAJzxrL0VT2vpsaVL0zPMqG/RYK5AIAtfp/Mx+Zt9
-	hp6Vw/yeClPPyKpNX6+rp9bUNbGMzBaRXMZhlAz+zBq/jQMemnmZ3h+8zDGQ2oJMwdFYl5LbZQtI6
-	7SEW4407A==;
+	 bh=t4QZBbDhvRY8e/IU6e0kIFNV942ZVuM9Gz/LMfxu890=; b=hh57UOPa6+Qs3ygdAV5fDdjR4
+	XaAdh+WtidwTTqoeh9sI9nEbIoZrBr481ZNExnlDX014O/+D+euhDTPZYnI6fx0wNuGdezhOTBies
+	jX4r0V6DPZhq3v0Gv/AmzBK8SwqAZFTyne0TE9jxc1HgLjzlVbWhtkJkuwHfjdTz+udauV/YLqy29
+	13lQye3q8mVi3IX4q06Vgh55SzuHsd6YPO7R+RuJ/77J0DL5cnDkiwc5LACxsN6xUsQuwZVaEa7U4
+	Gnbba2xDefdej7IGqn2UDqYANmtWscyDHInZvb5WvqYql7YEXI7LVyX3cz+RDOiABPTgkUFaUgZEk
+	dN1hQtdBw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kICRu-0003yO-DL; Tue, 15 Sep 2020 15:00:50 +0000
+	id 1kICSd-0004Tm-4P; Tue, 15 Sep 2020 15:01:35 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kICRC-0003ZG-B2; Tue, 15 Sep 2020 15:00:09 +0000
+ id 1kICRI-0003cr-8m; Tue, 15 Sep 2020 15:00:14 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 62972AF6C;
- Tue, 15 Sep 2020 15:00:20 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 892D1B013;
+ Tue, 15 Sep 2020 15:00:26 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
@@ -63,16 +63,16 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
  andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
  emil.velikov@collabora.com
-Subject: [PATCH v2 04/21] drm/exynos: Introduce GEM object functions
-Date: Tue, 15 Sep 2020 16:59:41 +0200
-Message-Id: <20200915145958.19993-5-tzimmermann@suse.de>
+Subject: [PATCH v2 11/21] drm/pl111: Introduce GEM object functions
+Date: Tue, 15 Sep 2020 16:59:48 +0200
+Message-Id: <20200915145958.19993-12-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200915145958.19993-1-tzimmermann@suse.de>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_110006_636395_E7AF0A97 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20200915_110012_905222_6AA741D6 
+X-CRM114-Status: GOOD (  13.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,81 +99,39 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 GEM object functions deprecate several similar callback interfaces in
 struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in exynos. The only exception is gem_prime_mmap,
+per-instance callbacks in pl111. The only exception is gem_prime_mmap,
 which is non-trivial to convert.
 
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
----
- drivers/gpu/drm/exynos/exynos_drm_drv.c | 10 ----------
- drivers/gpu/drm/exynos/exynos_drm_gem.c | 15 +++++++++++++++
- 2 files changed, 15 insertions(+), 10 deletions(-)
+v2:
+	* use drm_gem_cma_create_object_default_funcs() (Eric)
 
-diff --git a/drivers/gpu/drm/exynos/exynos_drm_drv.c b/drivers/gpu/drm/exynos/exynos_drm_drv.c
-index dbd80f1e4c78..fe46680ca208 100644
---- a/drivers/gpu/drm/exynos/exynos_drm_drv.c
-+++ b/drivers/gpu/drm/exynos/exynos_drm_drv.c
-@@ -75,11 +75,6 @@ static void exynos_drm_postclose(struct drm_device *dev, struct drm_file *file)
- 	file->driver_priv = NULL;
- }
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Reviewed-by: Eric Anholt <eric@anholt.net>
+---
+ drivers/gpu/drm/pl111/pl111_drv.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/pl111/pl111_drv.c b/drivers/gpu/drm/pl111/pl111_drv.c
+index 46b0d1c4a16c..ecef8a2383d2 100644
+--- a/drivers/gpu/drm/pl111/pl111_drv.c
++++ b/drivers/gpu/drm/pl111/pl111_drv.c
+@@ -224,15 +224,12 @@ static struct drm_driver pl111_drm_driver = {
+ 	.major = 1,
+ 	.minor = 0,
+ 	.patchlevel = 0,
++	.gem_create_object = drm_gem_cma_create_object_default_funcs,
+ 	.dumb_create = drm_gem_cma_dumb_create,
+-	.gem_free_object_unlocked = drm_gem_cma_free_object,
+-	.gem_vm_ops = &drm_gem_cma_vm_ops,
+ 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+ 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+ 	.gem_prime_import_sg_table = pl111_gem_import_sg_table,
+-	.gem_prime_get_sg_table	= drm_gem_cma_prime_get_sg_table,
+ 	.gem_prime_mmap = drm_gem_cma_prime_mmap,
+-	.gem_prime_vmap = drm_gem_cma_prime_vmap,
  
--static const struct vm_operations_struct exynos_drm_gem_vm_ops = {
--	.open = drm_gem_vm_open,
--	.close = drm_gem_vm_close,
--};
--
- static const struct drm_ioctl_desc exynos_ioctls[] = {
- 	DRM_IOCTL_DEF_DRV(EXYNOS_GEM_CREATE, exynos_drm_gem_create_ioctl,
- 			DRM_RENDER_ALLOW),
-@@ -124,16 +119,11 @@ static struct drm_driver exynos_drm_driver = {
- 	.open			= exynos_drm_open,
- 	.lastclose		= drm_fb_helper_lastclose,
- 	.postclose		= exynos_drm_postclose,
--	.gem_free_object_unlocked = exynos_drm_gem_free_object,
--	.gem_vm_ops		= &exynos_drm_gem_vm_ops,
- 	.dumb_create		= exynos_drm_gem_dumb_create,
- 	.prime_handle_to_fd	= drm_gem_prime_handle_to_fd,
- 	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
- 	.gem_prime_import	= exynos_drm_gem_prime_import,
--	.gem_prime_get_sg_table	= exynos_drm_gem_prime_get_sg_table,
- 	.gem_prime_import_sg_table	= exynos_drm_gem_prime_import_sg_table,
--	.gem_prime_vmap		= exynos_drm_gem_prime_vmap,
--	.gem_prime_vunmap	= exynos_drm_gem_prime_vunmap,
- 	.gem_prime_mmap		= exynos_drm_gem_prime_mmap,
- 	.ioctls			= exynos_ioctls,
- 	.num_ioctls		= ARRAY_SIZE(exynos_ioctls),
-diff --git a/drivers/gpu/drm/exynos/exynos_drm_gem.c b/drivers/gpu/drm/exynos/exynos_drm_gem.c
-index efa476858db5..69a5cf28b4ae 100644
---- a/drivers/gpu/drm/exynos/exynos_drm_gem.c
-+++ b/drivers/gpu/drm/exynos/exynos_drm_gem.c
-@@ -129,6 +129,19 @@ void exynos_drm_gem_destroy(struct exynos_drm_gem *exynos_gem)
- 	kfree(exynos_gem);
- }
- 
-+static const struct vm_operations_struct exynos_drm_gem_vm_ops = {
-+	.open = drm_gem_vm_open,
-+	.close = drm_gem_vm_close,
-+};
-+
-+static const struct drm_gem_object_funcs exynos_drm_gem_object_funcs = {
-+	.free = exynos_drm_gem_free_object,
-+	.get_sg_table = exynos_drm_gem_prime_get_sg_table,
-+	.vmap = exynos_drm_gem_prime_vmap,
-+	.vunmap	= exynos_drm_gem_prime_vunmap,
-+	.vm_ops = &exynos_drm_gem_vm_ops,
-+};
-+
- static struct exynos_drm_gem *exynos_drm_gem_init(struct drm_device *dev,
- 						  unsigned long size)
- {
-@@ -143,6 +156,8 @@ static struct exynos_drm_gem *exynos_drm_gem_init(struct drm_device *dev,
- 	exynos_gem->size = size;
- 	obj = &exynos_gem->base;
- 
-+	obj->funcs = &exynos_drm_gem_object_funcs;
-+
- 	ret = drm_gem_object_init(dev, obj, size);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(dev->dev, "failed to initialize gem object\n");
+ #if defined(CONFIG_DEBUG_FS)
+ 	.debugfs_init = pl111_debugfs_init,
 -- 
 2.28.0
 
