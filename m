@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-15.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E35A7C433E2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:02:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EF27EC31E49
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:02:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7FC1420663
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:02:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A0A9220735
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 15:02:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TB+JNJ4A"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7FC1420663
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mesgPu2m"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0A9220735
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mVpv39OBWw7SJH9hbQRWjSfHBLdMSGwhlI/H0XVK7Jk=; b=TB+JNJ4Az1J6RktS3SeDhlcby
-	ENyqhfwjpfPY92CGgS4W6tZt7J1+zwlsmUeEkWC+w/CokCACSJGXAJ+o5lFnzbBweSI3L2hE4S5FA
-	yqJ9LKxd+4vsznNdAV7QV8LPeZhZ5/ejWq70cCpt03ExUG1OO1bHEiFXDv4bTitJ9h+77paXssLVm
-	JaHGf/pPycsGsvOij1ByXE81oOuHZs22WOBvgaxHBxBIUYLjPhLcBCzm+mzK/VEfUds49R/iH8c4j
-	SDpg2Vyuh3cTyBiN1uEvUmPUtPPy6FqrLZoMIhS1bMQz+m7qgT6EcJllT2IuhbzVx3uZpSY/P3Q+E
-	+cD0gHJZw==;
+	 bh=kPv6Si9hX3G6PI72FiYa/p4+M16+/b28KzzrJ0dPvAo=; b=mesgPu2mYKgUFQx2de5dB73Zw
+	KYgjrrIE1dYmcPgkpZYhdc6/j+bYICsDXyBqEXHai5QpKepZoShmeW2CLZxbRtUF8avZgo5I7LRKi
+	hsWoh85+Yb/oHrcYwsnqCYpFwfxj9e6uV3GewLn9DjiUtxwQ2mAT6hLctcx1Qyo698kIIxSxKQDpO
+	B2d6EmGUx9f/s4uKoDAaPvbLj0kLlHWEc/uUj+BeP/KNfnOzHx6RuIPYSoOFtYp9LSwzzK28MxlGC
+	V87iA1G90gCwj0yDLOeUckzL3EgaRmgLwwXDSBiF0yCtM7ujnfv4eY8vrtmpcpeIxpKNFZoikz79u
+	DuT2H8+cA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kICTD-0004vt-Ht; Tue, 15 Sep 2020 15:02:11 +0000
+	id 1kICTE-0004wU-Gj; Tue, 15 Sep 2020 15:02:12 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kICRK-0003dr-AI; Tue, 15 Sep 2020 15:00:16 +0000
+ id 1kICRN-0003fX-LC; Tue, 15 Sep 2020 15:00:19 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 4F700B2A3;
- Tue, 15 Sep 2020 15:00:28 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id BCD29B29E;
+ Tue, 15 Sep 2020 15:00:31 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  daniel@ffwll.ch, linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
@@ -63,16 +63,17 @@ To: alexander.deucher@amd.com, christian.koenig@amd.com, airlied@linux.ie,
  matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
  andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
  emil.velikov@collabora.com
-Subject: [PATCH v2 13/21] drm/rockchip: Convert to drm_gem_object_funcs
-Date: Tue, 15 Sep 2020 16:59:50 +0200
-Message-Id: <20200915145958.19993-14-tzimmermann@suse.de>
+Subject: [PATCH v2 17/21] drm/virtgpu: Set PRIME export function in struct
+ drm_gem_object_funcs
+Date: Tue, 15 Sep 2020 16:59:54 +0200
+Message-Id: <20200915145958.19993-18-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200915145958.19993-1-tzimmermann@suse.de>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_110014_669425_03F19396 
-X-CRM114-Status: GOOD (  14.64  )
+X-CRM114-CacheID: sfid-20200915_110017_990458_EB2D52E2 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,64 +99,39 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 GEM object functions deprecate several similar callback interfaces in
-struct drm_driver. This patch replaces the per-driver callbacks with
-per-instance callbacks in rockchip. The only exception is gem_prime_mmap,
-which is non-trivial to convert.
+struct drm_driver. This patch replaces virtgpu's per-driver PRIME export
+function with a per-object function.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c |  5 -----
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 10 ++++++++++
- 2 files changed, 10 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/virtio/virtgpu_drv.c    | 1 -
+ drivers/gpu/drm/virtio/virtgpu_object.c | 1 +
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index 0f3eb392fe39..b7654f5e4225 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -212,15 +212,10 @@ static const struct file_operations rockchip_drm_driver_fops = {
- static struct drm_driver rockchip_drm_driver = {
- 	.driver_features	= DRIVER_MODESET | DRIVER_GEM | DRIVER_ATOMIC,
- 	.lastclose		= drm_fb_helper_lastclose,
--	.gem_vm_ops		= &drm_gem_cma_vm_ops,
--	.gem_free_object_unlocked = rockchip_gem_free_object,
- 	.dumb_create		= rockchip_gem_dumb_create,
- 	.prime_handle_to_fd	= drm_gem_prime_handle_to_fd,
- 	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
--	.gem_prime_get_sg_table	= rockchip_gem_prime_get_sg_table,
- 	.gem_prime_import_sg_table	= rockchip_gem_prime_import_sg_table,
--	.gem_prime_vmap		= rockchip_gem_prime_vmap,
--	.gem_prime_vunmap	= rockchip_gem_prime_vunmap,
- 	.gem_prime_mmap		= rockchip_gem_mmap_buf,
- 	.fops			= &rockchip_drm_driver_fops,
- 	.name	= DRIVER_NAME,
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-index 0055d86576f7..bddc7d99efe3 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-@@ -296,6 +296,14 @@ static void rockchip_gem_release_object(struct rockchip_gem_object *rk_obj)
- 	kfree(rk_obj);
- }
+diff --git a/drivers/gpu/drm/virtio/virtgpu_drv.c b/drivers/gpu/drm/virtio/virtgpu_drv.c
+index b039f493bda9..1f8d6ed11d21 100644
+--- a/drivers/gpu/drm/virtio/virtgpu_drv.c
++++ b/drivers/gpu/drm/virtio/virtgpu_drv.c
+@@ -203,7 +203,6 @@ static struct drm_driver driver = {
+ 	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+ 	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+ 	.gem_prime_mmap = drm_gem_prime_mmap,
+-	.gem_prime_export = virtgpu_gem_prime_export,
+ 	.gem_prime_import = virtgpu_gem_prime_import,
+ 	.gem_prime_import_sg_table = virtgpu_gem_prime_import_sg_table,
  
-+static const struct drm_gem_object_funcs rockchip_gem_object_funcs = {
-+	.free = rockchip_gem_free_object,
-+	.get_sg_table = rockchip_gem_prime_get_sg_table,
-+	.vmap = rockchip_gem_prime_vmap,
-+	.vunmap	= rockchip_gem_prime_vunmap,
-+	.vm_ops = &drm_gem_cma_vm_ops,
-+};
-+
- static struct rockchip_gem_object *
- 	rockchip_gem_alloc_object(struct drm_device *drm, unsigned int size)
- {
-@@ -310,6 +318,8 @@ static struct rockchip_gem_object *
+diff --git a/drivers/gpu/drm/virtio/virtgpu_object.c b/drivers/gpu/drm/virtio/virtgpu_object.c
+index 842f8b61aa89..4f7d7ea8194c 100644
+--- a/drivers/gpu/drm/virtio/virtgpu_object.c
++++ b/drivers/gpu/drm/virtio/virtgpu_object.c
+@@ -108,6 +108,7 @@ static const struct drm_gem_object_funcs virtio_gpu_shmem_funcs = {
+ 	.close = virtio_gpu_gem_object_close,
  
- 	obj = &rk_obj->base;
- 
-+	obj->funcs = &rockchip_gem_object_funcs;
-+
- 	drm_gem_object_init(drm, obj, size);
- 
- 	return rk_obj;
+ 	.print_info = drm_gem_shmem_print_info,
++	.export = virtgpu_gem_prime_export,
+ 	.pin = drm_gem_shmem_pin,
+ 	.unpin = drm_gem_shmem_unpin,
+ 	.get_sg_table = drm_gem_shmem_get_sg_table,
 -- 
 2.28.0
 
