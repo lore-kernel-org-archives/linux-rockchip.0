@@ -2,67 +2,142 @@ Return-Path: <SRS0=pRwE=CY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50A1EC433E2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 00:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E31D1C433E2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 01:05:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E2C6D212CC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 00:45:26 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3189A206C9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 01:05:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="K0tqLc4O";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Uzamz8Kn"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E2C6D212CC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zcWOTP81";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=samsung.com header.i=@samsung.com header.b="lqBhElr6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3189A206C9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:References:
-	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:Date:Message-ID:
+	From:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Q/h6geyb/+U8PyqhdcTZoUbSCGa7azIq5moGhzhnXlw=; b=K0tqLc4ORw2Wh2NFBwv/QsrLB
-	JyAIc1U/cSFXd6q8hOIZ8Id2zwXTSmEJC3dg53PPva63f0Z2ARZxTrryJbQYNwlsAf0/lDXu5nH+5
-	tkhqgoihvx5fxBMw45lGJcxxoAjJhSBoor0W4Jjq7weuzO6U5M0k43pGA/MKEQOoJtUw+bkPuqI8I
-	indE97KNy54TpiEs8Op2x5t29Kb91eZWl1gkFmdJJ2q7VkTUgylp5k/z90UmmqsK+KqpKcHc4x2+B
-	+Ea5r/gQfP4HlrJ5byp2o9ypLbTXhjrkgNCJ8XxMuX4E4NgAbybHkLtbieCN+BoMNTXRJErIJPElW
-	SoD1NeaxQ==;
+	 bh=nL/J1316mW95H/TLXiibcuPrmPq81fZ7pok6EvOwXE8=; b=zcWOTP81z3FkZpQ1sh6ZsQCWF
+	LiXKorFZwJ6Iu0EvbDxRKG8KfauvDayIZfvZUFjOHFpmRiYk6t4zn5f710O+uM0j87tlVwiUkh5NG
+	MN3gqCSfwRp55DhgiDjqVJJ/lG7aGJ5ZNbhspra/iB5M/XIJkq2DioMtqdvFaEX5tBGe54N36vWl3
+	mwLY3k7qnBcLOwXmxHVAVyMC8f+u5d95kUxzGDbcEhWZ1F6s1TaZy/Z7vRtq+NEWsSl1LNMi9/OwA
+	Pq3Da3KVq5YfqI1pYxmc0OJvJVF0ePYGxS6wzedfXjOZI4LIkpr/3C/Km6s1NxyE4bpwI82cQE2nv
+	hj4n7YHcw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kHz5z-0007OA-C5; Tue, 15 Sep 2020 00:45:19 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kHzPm-0001Q7-Dj; Tue, 15 Sep 2020 01:05:46 +0000
+Received: from mailout2.samsung.com ([203.254.224.25])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kHz5u-0007MH-2s; Tue, 15 Sep 2020 00:45:15 +0000
-Received: from kernel.org (unknown [104.132.0.74])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id EA441212CC;
- Tue, 15 Sep 2020 00:45:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600130713;
- bh=pKdQVJjnWdHPks2U7fV5zrwIH3JNHsSVYFB3BBYhmLc=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=Uzamz8KnA4jUuOvHuRW4DNtTFoAFkGIgDB1dijjt4w7BuITnoGME8UDWm8nr0rYdy
- JwQcMq7kMpEFoZ2lu7YPYCcyeVJbp1tDKU8V9DXgjQ0zaaDegMc7SFKcYIknlZqX8i
- 75z43TNjN7LSl07uaYX33tH/STjkYNI/GXz6ljvc=
+ id 1kHzPi-0001NC-E9
+ for linux-rockchip@lists.infradead.org; Tue, 15 Sep 2020 01:05:43 +0000
+Received: from epcas1p4.samsung.com (unknown [182.195.41.48])
+ by mailout2.samsung.com (KnoxPortal) with ESMTP id
+ 20200915010537epoutp028835b3e0ab56dc640f235ad565cac64a~0z4UNCTEf0874808748epoutp02M
+ for <linux-rockchip@lists.infradead.org>; Tue, 15 Sep 2020 01:05:37 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com
+ 20200915010537epoutp028835b3e0ab56dc640f235ad565cac64a~0z4UNCTEf0874808748epoutp02M
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1600131938;
+ bh=7cG9MyWGNwhBGZW4n3v7v7+PSj/Cs4aYSzQytH3+M1c=;
+ h=Subject:To:Cc:From:Date:In-Reply-To:References:From;
+ b=lqBhElr6A4KvCCkAVQjnhXzjEm7cY/FPQ0ye9dc/FohioKV8sS6NrFGGun75WEr1D
+ Y9B8IwpQZv3rQioUMPW+QmGea4r8HSq5UNUj4waAalj9oZ+4XVWSStql9UIfbIsAjW
+ TgxcJcsSCh6awRau4X+q2EQcyykhBAn0puq56oJI=
+Received: from epsnrtp2.localdomain (unknown [182.195.42.163]) by
+ epcas1p2.samsung.com (KnoxPortal) with ESMTP id
+ 20200915010536epcas1p2c42d3884a5b8706df0f1fef293ce5797~0z4SiGtWv0119101191epcas1p2Z;
+ Tue, 15 Sep 2020 01:05:36 +0000 (GMT)
+Received: from epsmges1p3.samsung.com (unknown [182.195.40.154]) by
+ epsnrtp2.localdomain (Postfix) with ESMTP id 4Br4lx6RsjzMqYks; Tue, 15 Sep
+ 2020 01:05:33 +0000 (GMT)
+Received: from epcas1p3.samsung.com ( [182.195.41.47]) by
+ epsmges1p3.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 5B.28.29173.953106F5; Tue, 15 Sep 2020 10:05:29 +0900 (KST)
+Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
+ epcas1p3.samsung.com (KnoxPortal) with ESMTPA id
+ 20200915010529epcas1p34e3c68a606252fd079a8c72055b1e958~0z4MGFYXh0370203702epcas1p3A;
+ Tue, 15 Sep 2020 01:05:29 +0000 (GMT)
+Received: from epsmgms1p2.samsung.com (unknown [182.195.42.42]) by
+ epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20200915010529epsmtrp15aad051a12a55fb29e4887e4d7227b86~0z4MFSq4B1118711187epsmtrp1b;
+ Tue, 15 Sep 2020 01:05:29 +0000 (GMT)
+X-AuditID: b6c32a37-9cdff700000071f5-2f-5f601359ded1
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+ epsmgms1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 28.B2.08303.953106F5; Tue, 15 Sep 2020 10:05:29 +0900 (KST)
+Received: from [10.113.221.102] (unknown [10.113.221.102]) by
+ epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20200915010528epsmtip18bae177a6c5b134aaa6762c3fd0da5a8~0z4Ly_myB0862308623epsmtip1x;
+ Tue, 15 Sep 2020 01:05:28 +0000 (GMT)
+Subject: Re: [PATCH 0/3] extcon: Add Type-C Virtual PD
+To: Rob Herring <robh@kernel.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
+ <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>
+From: Chanwoo Choi <cw00.choi@samsung.com>
+Organization: Samsung Electronics
+Message-ID: <ce889395-d4f8-b8bb-0288-54f3628d8a02@samsung.com>
+Date: Tue, 15 Sep 2020 10:17:39 +0900
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:59.0) Gecko/20100101
+ Thunderbird/59.0
 MIME-Version: 1.0
-In-Reply-To: <20200831161436.134186-1-jagan@amarulasolutions.com>
-References: <20200831161436.134186-1-jagan@amarulasolutions.com>
-Subject: Re: [PATCH] clk: rockchip: Fix overflow rate during fractional
- approximation
-From: Stephen Boyd <sboyd@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>, Jagan Teki <jagan@amarulasolutions.com>,
- Michael Turquette <mturquette@baylibre.com>
-Date: Mon, 14 Sep 2020 17:45:11 -0700
-Message-ID: <160013071168.4188128.10518912964578839607@swboyd.mtv.corp.google.com>
-User-Agent: alot/0.9.1
+In-Reply-To: <20200914231533.GA429337@bogus>
+Content-Language: en-US
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrAJsWRmVeSWpSXmKPExsWy7bCmvm6kcEK8wbX7Rhbzj5xjtfj/6DWr
+ xZdNE9gslk/Yx2ax6fE1VovLu+awWXx68J/Z4nbjCjaL/3t2sFuseLuU2YHLY+3H+6wem1Z1
+ snlsXlLvsXi5oUffllWMHtuvzWP2+LxJLoA9KtsmIzUxJbVIITUvOT8lMy/dVsk7ON453tTM
+ wFDX0NLCXEkhLzE31VbJxSdA1y0zB+g6JYWyxJxSoFBAYnGxkr6dTVF+aUmqQkZ+cYmtUmpB
+ Sk6BZYFecWJucWleul5yfq6VoYGBkSlQYUJ2xtHWVvaCi8IVW7fMYG5g3MffxcjJISFgIrH/
+ RQ97FyMXh5DADkaJ7XOfMEM4nxgl+jbPZoNwPjNKbNqzghmmZVH3AxaIxC5Gibnn9rJCOO8Z
+ JTr3XGcDqRIWMJPY/fMhK4gtIlAn8WjBSbAiZoEvjBJfjt1hB0mwCWgBbb8B1sAvoChx9cdj
+ xi5GDg5eATuJXWfBDmQRUJX48GAXE4gtKhAmcXJbCyOIzSsgKHFy5hMWEJtTQEdiQu8hsF3M
+ AuISt57MZ4Kw5SWat84G+0dC4ACHxILtjxkhXnCRePLzMRuELSzx6vgWdghbSuJlfxuUXS2x
+ 8uQRNojmDkaJLfsvsEIkjCX2L53MBHIos4CmxPpd+hBhRYmdv+cyQizmk3j3tYcVpERCgFei
+ o00IokRZ4vKDu0wQtqTE4vZOtgmMSrOQvDMLyQuzkLwwC2HZAkaWVYxiqQXFuempxYYFxsjR
+ vYkRnHS1zHcwTnv7Qe8QIxMH4yFGCQ5mJRHeA43x8UK8KYmVValF+fFFpTmpxYcYTYEBPJFZ
+ SjQ5H5j280riDU2NjI2NLUwMzUwNDZXEeR/eUogXEkhPLEnNTk0tSC2C6WPi4JRqYFr+xnD6
+ 4zYPju+dWz8573Zd//rC/QkF8Rw1Fa8eH+vLFZr1zepo9tyHu//G2rGGy6y0N5eyDJ7Gu0Hx
+ IHvyjN4V25LP+fjesip0tK188LXZb8nnv5+7jwg8t6mLlBGrEpLce2uxX3hRg2TVwa7j19xY
+ nHQni6uZXfasfJiyMX+y6Oq4MwtTfz2Kq7/f2bnlSvHF7uKoHLMfLpu+ttYyVm9xipeZIa1+
+ SfZRtk4RF/fLtj/HxXOSFjws9C+/sp/jSJh37Nmj2X//CWltzrk/Ob915qmGboW4mzHhW8/9
+ fvHG91rM2U+KRqWMe5etSO3bxrtqk53cfRM+o19TmPu2VO2beva4kSnTtBDjv5d1nJVYijMS
+ DbWYi4oTAcRHb99DBAAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprFIsWRmVeSWpSXmKPExsWy7bCSnG6kcEK8wd2tnBbzj5xjtfj/6DWr
+ xZdNE9gslk/Yx2ax6fE1VovLu+awWXx68J/Z4nbjCjaL/3t2sFuseLuU2YHLY+3H+6wem1Z1
+ snlsXlLvsXi5oUffllWMHtuvzWP2+LxJLoA9issmJTUnsyy1SN8ugSvjaGsre8FF4YqtW2Yw
+ NzDu4+9i5OSQEDCRWNT9gKWLkYtDSGAHo8SeS33MEAlJiWkXjwLZHEC2sMThw8UQNW8ZJbZN
+ vMsCUiMsYCax++dDVhBbRKBO4uWTW0wgRcwCXxgl1h07yAbRcZlR4sPvPWwgVWwCWhL7X9wA
+ s/kFFCWu/njMCLKBV8BOYtdZsItYBFQlPjzYxQRiiwqESexc8hjM5hUQlDg58wnYYk4BHYkJ
+ vYfAFjMLqEv8mXeJGcIWl7j1ZD4ThC0v0bx1NvMERuFZSNpnIWmZhaRlFpKWBYwsqxglUwuK
+ c9Nziw0LjPJSy/WKE3OLS/PS9ZLzczcxgqNPS2sH455VH/QOMTJxMB5ilOBgVhLhPdAYHy/E
+ m5JYWZValB9fVJqTWnyIUZqDRUmc9+ushXFCAumJJanZqakFqUUwWSYOTqkGJvXHKfK8XcL8
+ Twp8GHqebmI6tShK14WHS3T7uwk9Xix3Aw7d3vag/m/C5SOLTjV6vwyrn7Bc+NPyoBvshZ6v
+ urv9Qu3FPi6e+Wuu88ecM/dSH6ol7hA8HsarZ3P9WeNXbbOqD5Kn7mWueihbuPkqU+O3x3On
+ dr3wF9U/FLXZdVP0lm0xPUmCi5tPz2U63RvOIryfY4NXrcLUo1v9G/KuLvl/+lhsce2UhT6C
+ b0Ua+HmzWY8qlYrsKC/ZrnvLPS/iPdeJ5crZMcbFvj1v7V6WM9fXGuxs2z9he7HSFN9fP/Xf
+ cIo2tCYxrdi5/lmA2vaCrzechadX/i3WqrjS3T93v/Fir1cRH8T8bQ2kZHQ+KbEUZyQaajEX
+ FScCADTd9VMtAwAA
+X-CMS-MailID: 20200915010529epcas1p34e3c68a606252fd079a8c72055b1e958
+X-Msg-Generator: CA
+X-Sendblock-Type: SVC_REQ_APPROVE
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20200914231545epcas1p32532a8bee9c5100e4f45fc0681735e82
+References: <20200904191830.387296-1-jagan@amarulasolutions.com>
+ <6955091.ERBjKZ0CLf@diego>
+ <CGME20200914231545epcas1p32532a8bee9c5100e4f45fc0681735e82@epcas1p3.samsung.com>
+ <20200914231533.GA429337@bogus>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200914_204514_364044_E2EC3077 
-X-CRM114-Status: GOOD (  16.72  )
+X-CRM114-CacheID: sfid-20200914_210542_764643_D2151EA2 
+X-CRM114-Status: GOOD (  24.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,142 +150,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Finley Xiao <finley.xiao@rock-chips.com>,
- Jagan Teki <jagan@amarulasolutions.com>,
- linux-amarula <linux-amarula@amarulasolutions.com>, linux-clk@vger.kernel.org,
+Cc: devicetree@vger.kernel.org, Tom Cubie <tom@radxa.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ MyungJoo Ham <myungjoo.ham@samsung.com>, linux-amarula@amarulasolutions.com,
  linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Jagan Teki (2020-08-31 09:14:36)
-> The current rockchip fractional approximation overflow the desired
-> rate if parent rate is lower than the (rate * 20) for few clocks like
-> dclk_vopb_frac.
-> 
-> The overflow condition has observed in px30 for dclk_vopb_frac
-> clock with an input rate of 71.1MHz and parent rate of 24MHz is,
-> 
-> [    2.543280] rockchip-drm display-subsystem: bound ff460000.vop (ops vop_component_ops)
-
-Can you remove timestamps?
-
-> [    2.557313] rockchip-drm display-subsystem: bound ff470000.vop (ops vop_component_ops)
-> [    2.566356] rockchip-drm display-subsystem: bound ff140000.syscon:lvds (ops rockchip_lvds_component_ops)
-> [    2.576999] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
-> [    2.592177] Unexpected kernel BRK exception at EL1
-> [    2.597551] Internal error: ptrace BRK handler: f20003e8 [#1] PREEMPT SMP
-> [    2.605143] Modules linked in:
-> [    2.608566] CPU: 1 PID: 31 Comm: kworker/1:1 Tainted: G     U            5.8.0-rc1-15632-g97edd822b844 #30
-> [    2.619363] Hardware name: Engicam PX30.Core C.TOUCH 2.0 10.1" Open Frame (DT)
-> [    2.627460] Workqueue: events deferred_probe_work_func
-> [    2.633209] pstate: 20000005 (nzCv daif -PAN -UAO BTYPE=--)
-> [    2.639445] pc : rational_best_approximation+0xc4/0xd0
-> [    2.645194] lr : rockchip_fractional_approximation+0xa8/0xe0
-> [    2.651520] sp : ffff800011ea31c0
-> [    2.655222] x29: ffff800011ea31c0 x28: ffff00007a4ecd50
-> [    2.661162] x27: ffff00007d042600 x26: 000000000439fca3
-> [    2.667102] x25: 0000000000000000 x24: ffff800011ac9948
-> [    2.673033] x23: ffff800011ea3308 x22: ffff00007d042418
-> [    2.678973] x21: ffff800011ea3240 x20: ffff800011ea3238
-> [    2.684904] x19: ea47000000000000 x18: 0000000000000000
-> [    2.690836] x17: 0000000000000500 x16: 0000000000000001
-> [    2.696775] x15: ffffffffffffffff x14: 0000000000000000
-> [    2.702707] x13: 0000000000000000 x12: 0000003c00000000
-> [    2.708647] x11: 0000000000000030 x10: 0101010101010101
-> [    2.714586] x9 : 0000032000000320 x8 : 7f7f7f7f7f7f7f7f
-> [    2.720517] x7 : 000000a3c59050d3 x6 : 0000000000000030
-> [    2.726457] x5 : ffff800011ea3240 x4 : ffff800011ea3238
-> [    2.732397] x3 : 000000000000ffff x2 : 000000000000ffff
-> [    2.738329] x1 : 00000000016e3600 x0 : 0000000001497e00
-> [    2.744269] Call trace:
-> [    2.747005]  rational_best_approximation+0xc4/0xd0
-> [    2.752365]  clk_fd_round_rate+0x8c/0x110
-> [    2.756846]  clk_composite_round_rate+0x30/0x40
-> [    2.761917]  clk_core_determine_round_nolock.part.30+0x44/0x80
-> [    2.768442]  clk_core_round_rate_nolock+0x78/0x80
-> [    2.773701]  clk_mux_determine_rate_flags+0xd8/0x200
-> [    2.779253]  clk_mux_determine_rate+0x10/0x20
-> [    2.784124]  clk_core_determine_round_nolock.part.30+0x1c/0x80
-> [    2.790639]  clk_core_round_rate_nolock+0x78/0x80
-> [    2.795900]  clk_core_round_rate_nolock+0x5c/0x80
-> [    2.801159]  clk_round_rate+0x64/0xf0
-> [    2.805254]  vop_crtc_mode_fixup+0x2c/0x60
-> [    2.809828]  drm_atomic_helper_check_modeset+0x95c/0xae0
-> [    2.815767]  drm_atomic_helper_check+0x1c/0xa0
-> [    2.820738]  drm_atomic_check_only+0x43c/0x760
-> [    2.825705]  drm_atomic_commit+0x18/0x60
-> [    2.830095]  drm_client_modeset_commit_atomic.isra.16+0x17c/0x250
-> [    2.836911]  drm_client_modeset_commit_locked+0x58/0x1a0
-> [    2.842851]  drm_client_modeset_commit+0x2c/0x50
-> [    2.848014]  drm_fb_helper_restore_fbdev_mode_unlocked+0x70/0xd0
-> [    2.854730]  drm_fb_helper_set_par+0x2c/0x60
-> [    2.859497]  fbcon_init+0x3c0/0x540
-> [    2.863400]  visual_init+0xac/0x100
-> [    2.867298]  do_bind_con_driver+0x1e4/0x3a0
-> [    2.871973]  do_take_over_console+0x140/0x200
-> [    2.876843]  do_fbcon_takeover+0x6c/0xe0
-> [    2.881228]  fbcon_fb_registered+0x10c/0x120
-> [    2.886005]  register_framebuffer+0x1f0/0x340
-> [    2.890878]  __drm_fb_helper_initial_config_and_unlock+0x318/0x4a0
-> [    2.897790]  drm_fb_helper_initial_config+0x3c/0x50
-> [    2.903244]  rockchip_drm_fbdev_init+0x5c/0xf0
-> [    2.908202]  rockchip_drm_bind+0x194/0x1e0
-> [    2.912785]  try_to_bring_up_master+0x164/0x1d0
-> [    2.917851]  component_master_add_with_match+0xac/0xf0
-> [    2.923597]  rockchip_drm_platform_probe+0x238/0x2e0
-> [    2.929150]  platform_drv_probe+0x50/0xa0
-> [    2.933631]  really_probe+0xd4/0x330
-> [    2.937628]  driver_probe_device+0x54/0xb0
-> [    2.942207]  __device_attach_driver+0x80/0xc0
-> [    2.947078]  bus_for_each_drv+0x78/0xd0
-> [    2.951365]  __device_attach+0xd4/0x130
-> [    2.955652]  device_initial_probe+0x10/0x20
-> [    2.960328]  bus_probe_device+0x90/0xa0
-> [    2.964616]  deferred_probe_work_func+0x6c/0xa0
-> [    2.969685]  process_one_work+0x1e4/0x360
-> [    2.974166]  worker_thread+0x208/0x480
-> [    2.978358]  kthread+0x150/0x160
-> [    2.981968]  ret_from_fork+0x10/0x18
-
-Wow this stack is huge.
-
-> [    2.985970] Code: d65f03c0 d2800008 d2800027 17ffffe8 (d4207d00)
-> 
-> This happened because the fractional divider does not apply if parent_rate
-> is lower than (rate * 20).
-> 
-> So, this patch is trying to fix that overflow clock and switch to half-div
-> instead computing fractioanl approximation.
-> 
-> Some part of the patch is referenced from below BSP commit:
-> 
-> commit <88a5404a2277> ("clk: rockchip: fix up the
-> rockchip_fractional_approximation")
-> 
-> commit <4186a0e4239b> ("clk: rockchip: Add supprot to limit input rate
-> for fractional divider")
-
-Not sure what these are. Do we need random commit hashes in the log that
-reference not-upstream patches? Seems like it could be left below the
-triple dash and anyone can reference the mailing list if they really
-care.
-
-> 
-> Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-> Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> ---
-
-Any Fixes tag?
-
->  drivers/clk/rockchip/clk-px30.c | 12 ++++++------
->  drivers/clk/rockchip/clk.c      |  9 +++++++++
->  2 files changed, 15 insertions(+), 6 deletions(-)
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgUm9iLAoKT24gOS8xNS8yMCA4OjE1IEFNLCBSb2IgSGVycmluZyB3cm90ZToKPiBPbiBGcmks
+IFNlcCAwNCwgMjAyMCBhdCAxMToyMzoyMVBNICswMjAwLCBIZWlrbyBTdMO8Ym5lciB3cm90ZToK
+Pj4gSGkgSmFnYW4sCj4+Cj4+IEFtIEZyZWl0YWcsIDQuIFNlcHRlbWJlciAyMDIwLCAyMToxODoy
+NyBDRVNUIHNjaHJpZWIgSmFnYW4gVGVraToKPj4+IFVTQiBUeXBlLUMgcHJvdG9jb2wgc3VwcG9y
+dHMgdmFyaW91cyBtb2RlcyBvZiBvcGVyYXRpb25zCj4+PiBpbmNsdWRlcyBQRCwgVVNCMywgYW5k
+IEFsdG1vZGUuIElmIHRoZSBwbGF0Zm9ybSBkZXNpZ24KPj4+IHN1cHBvcnRzIGEgVHlwZS1DIGNv
+bm5lY3RvciB0aGVuIGNvbmZpZ3VyaW5nIHRoZXNlIG1vZGVzCj4+PiBjYW4gYmUgZG9uZSB2aWEg
+ZW51bWVyYXRpb24uCj4+Pgo+Pj4gSG93ZXZlciwgdGhlcmUgYXJlIHNvbWUgcGxhdGZvcm1zIHRo
+YXQgZGVzaWduIHRoZXNlIG1vZGVzCj4+PiBvZiBvcGVyYXRpb25zIGFzIHNlcGFyYXRlIHByb3Rv
+Y29sIGNvbm5lY3RvcnMgbGlrZSBkZXNpZ24KPj4+IERpc3BsYXkgUG9ydCBmcm9tIG9uLWNoaXAg
+VVNCMyBjb250cm9sbGVyLiBTbyBhY2Nlc3NpbmcKPj4+IFR5cGUtQyBBbHRtb2RlIERpc3BsYXkg
+UG9ydCB2aWEgb25ib2FyZCBEaXNwbGF5IFBvcnQgCj4+PiBjb25uZWN0b3IgaW5zdGVhZCBvZiBh
+IFR5cGUtQyBjb25uZWN0b3IuCj4+PiAgCj4+PiBUaGVzZSBraW5kcyBvZiBwbGF0Zm9ybXMgcmVx
+dWlyZSBhbiBleHBsaWNpdCBleHRjb24gZHJpdmVyCj4+PiBpbiBvcmRlciB0byBoYW5kbGUgUG93
+ZXIgRGVsaXZlcnkgYW5kIFBvcnQgRGV0ZWN0aW9uLgo+Pj4KPj4+IFRoaXMgc2VyaWVzIHN1cHBv
+cnQgdGhpcyBUeXBlLUMgVmlydHVhbCBQRCBhbmQgZW5hYmxlIHRoZQo+Pj4gc2FtZSBpbiBST0NL
+IFBpIDRDIFNCQy4KPj4+Cj4+PiBBbnkgaW5wdXRzPwo+Pgo+PiBJIHRlbmQgdG8gZGlzYWdyZWUg
+b24gdGhlIGRlc2lnbiB2aWEgYW4gZXh0Y29uLgo+IAo+IEkgZG9uJ3QgYWNjZXB0IG5ldyBleHRj
+b24gYmluZGluZ3Mgb3IgdXNlcnMgb2YgaXQgZWl0aGVyLiBJdCdzIGEgCj4gcG9vcmx5IHRob3Vn
+aHQgb3V0IGNvbGxlY3Rpb24gb2YgTGludXggZHJpdmVyIHByb3BlcnRpZXMuIFVzZSB0aGUgdXNi
+IAo+IGNvbm5lY3RvciBiaW5kaW5nLgoKSSBhZ3JlZSB0aGUgcHJpb3IgYmluZGluZyBmb3JtYXQg
+b2YgZXh0Y29uIHdpdGggJ2V4dGNvbicgcHJvcGVydHkgbmFtZQppcyBub3QgcHJvcGVyLiBTbywg
+SSdsbCB0cnkgdG8gYmluZCBuZXcgc3R5bGUuIEJ1dCwgSSBoYXZlIGEgcXVlc3Rpb24uCkRvIHlv
+dSBoYXZlIHRoZSBvYmplY3Rpb24gb2YgdGhlIHVzZSBvZiBleHRjb24gbGlrZSAndXNlcnMgb2Yg
+aXQgZWl0aGVyJyAKb2YgeW91ciBjb21tZW50PwoKPiAKPj4KPj4gVGhhdCB0aGUgUm9ja2NoaXAg
+cmszMzk5IGN1cnJlbnRseSBjYXJyaWVzIHRoYXQgZXh0Y29uIHRoaW5neSBpcyB1bmZvcnR1bmF0
+ZQo+PiBhbmQgb25seSB3b3JrcyBmb3IgQ2hyb21lT1MgZGV2aWNlcyBiYXNlZCBvbiB0aGUgcmsz
+Mzk5Lgo+Pgo+PiBUaGUga2VybmVsIG5vdyBoYXMgYSByZWFsIHR5cGUtYyBmcmFtZXdvcmsgc28g
+d2Ugc2hvdWxkIG5vdCBleHRlbmQgdGhpcwo+PiBleHRjb24gaGFjayBhbnkgZnVydGhlciwgYmVj
+YXVzZSB0aGF0IHdpbGwgbWFrZSBpdCBldmVuIGhhcmRlciB0byByb2xsIGJhY2sKPj4gbGF0ZXIu
+IEFsc28gc2ltcGx5IGJlY2F1c2Ugb3RoZXIgUm9ja2NoaXAgYm9hcmRzIGN1cnJlbnRseSBjYW4n
+dCByZWFsbHkgbWFrZQo+PiB1c2Ugb2YgdHlwZS1jIGR1ZSB0byB0aGlzLCBhcyB0aGV5IHVzZSB0
+aGUgZnN1c2IzMDIgcGh5cyBkaXJlY3RseSBjb25uZWN0ZWQuCj4+Cj4+IENocm9tZU9TIGFjdHVh
+bGx5IHNwZW5kIHNvbWUgdGltZSB0byBtYWtlIHRoZSBjcm9zLWVjIHBkIHBhcnQgb2YgdGhlIHR5
+cGUtYwo+PiBmcmFtZXdvcmsgaWYgSSByZW1lbWJlciBjb3JyZWN0bHksIHNvIGEgdmlhYmxlIGJh
+dHRsZSBwbGFuIHdvdWxkIGJlIHRvOgo+Pgo+PiAoMSkgbW92ZSB0aGUgUm9ja2NoaXAgdHlwZS1j
+IHBoeSBkcml2ZXIgdG8gYWN0dWFsbHkgYmUgcGFydCBvZiB0aGUgdHlwZS1jCj4+ICAgICBmcmFt
+ZXdvcmssIHdpdGggdGhlIGV4dGNvbiBiZWluZyBhIGRlcHJlY2F0ZWQgZmFsbGJhY2sgZm9yIG9s
+ZCBEVHMuCj4+ICgyKSBpbXBsZW1lbnQgeW91ciBncGlvLWFsdG1vZGUgYXMgcGFydCBvZiB0aGUg
+dHlwZS1jIGZyYW1ld29yawo+PiAgICAgKHdoaWNoIG1heSBldmVuIGFscmVhZHkgZXhpc3QpCj4+
+Cj4+Cj4+IEluIHNob3J0LCBwbGVhc2UgZG9uJ3QgZXh0ZW5kIHRoZSByazMzOTkgdHlwZS1jIGV4
+dGNvbiBoYWNrLgo+Pgo+PiBUaGFua3MKPj4gSGVpa28KPj4KPj4KPj4KPj4KPiAKPiAKCgotLSAK
+QmVzdCBSZWdhcmRzLApDaGFud29vIENob2kKU2Ftc3VuZyBFbGVjdHJvbmljcwoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
