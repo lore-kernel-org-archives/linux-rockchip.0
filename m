@@ -2,111 +2,62 @@ Return-Path: <SRS0=pRwE=CY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 955B0C433E2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 08:57:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 81E50C433E2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 09:23:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1A1782078D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 08:57:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 354782078D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Sep 2020 09:23:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="faoIJB8y"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1A1782078D
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hsU+QHMa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 354782078D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bO8P2K+U2iPWqlYaI3ZMLP5cHFXKPOg/TDTDNOD7N6Q=; b=faoIJB8ypNDqy8+n8xcNM4Te7
-	ImRS9SdWIsjIfJnmc2/jSiDp9xPuyw+Lz/Dfdm1Sah8B+AnFwzEvmsf5Tx+ORHozOyGyKe8KjLavU
-	7qv/0wS82HpXD43W8KNVAROZk8HcYO5PUKB87gzfHvj21Kmldq7Lq9rdLwpongmjXao8O0BCVIaGS
-	KI2p0ZNz8Dj6WcDO75BmC67ET9wS1+nh2YGgk2vTxoa888ohCfwFMp98IB3865P/8K3hzBBiQY6m9
-	4KLGsVz1zMW1InInqQbNFGMbF1BmxlBC1tnT/fEAT47Afz+a5K6bcTgraZb7DXmcqzg2X3rPVu3yb
-	Q3uXPD0cQ==;
+	 bh=ojU2er9sw/4uU580G5/ooV+t3uRhbqeEmtWwUcasd80=; b=hsU+QHMa2MVMmMR1cqtjU7dlx
+	aLkbmeQC6+sm2ME2WuzhnuFSTB74U/wGJa+EAERlm9FT5wiIIsGxxnxSxXqO4NG80dsJ/rEW/2yya
+	KeHzDBc9A0FaU5T1KaOa47hqVeKH0/KtVesYDgmLP3Z9kcYskj/D4jElsugydaddJEoBIeH1eXOWH
+	Z9Pb7qjqtLaBkd1kg7igTZFnp2P7LmS2b8XnprBFTVHGeoYD+zX7uG25huXmn483DAA2WGFWVGOwN
+	jFyFDMCXenv9W66nxIXVACcVQpb1X6xVLk8fkn5n/ZDqrwv67cf+sDaCztSWB9gIN3fNZsYdaKjni
+	GqXT4PW/w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kI6lp-0002q0-TN; Tue, 15 Sep 2020 08:57:01 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1kI7BU-0006dc-Gj; Tue, 15 Sep 2020 09:23:32 +0000
+Received: from relay7-d.mail.gandi.net ([217.70.183.200])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kI6li-0002oZ-6Z; Tue, 15 Sep 2020 08:56:55 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 87BA2AFA9;
- Tue, 15 Sep 2020 08:57:07 +0000 (UTC)
-Subject: Re: [PATCH 18/20] drm/xen: Introduce GEM object functions
-To: Oleksandr Andrushchenko <Oleksandr_Andrushchenko@epam.com>,
- "alexander.deucher@amd.com" <alexander.deucher@amd.com>,
- "christian.koenig@amd.com" <christian.koenig@amd.com>,
- "airlied@linux.ie" <airlied@linux.ie>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- "l.stach@pengutronix.de" <l.stach@pengutronix.de>,
- "christian.gmeiner@gmail.com" <christian.gmeiner@gmail.com>,
- "inki.dae@samsung.com" <inki.dae@samsung.com>,
- "jy0922.shim@samsung.com" <jy0922.shim@samsung.com>,
- "sw0312.kim@samsung.com" <sw0312.kim@samsung.com>,
- "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>,
- "kgene@kernel.org" <kgene@kernel.org>, "krzk@kernel.org" <krzk@kernel.org>,
- "patrik.r.jakobsson@gmail.com" <patrik.r.jakobsson@gmail.com>,
- "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
- "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
- "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "robdclark@gmail.com" <robdclark@gmail.com>,
- "sean@poorly.run" <sean@poorly.run>, "bskeggs@redhat.com"
- <bskeggs@redhat.com>, "tomi.valkeinen@ti.com" <tomi.valkeinen@ti.com>,
- "eric@anholt.net" <eric@anholt.net>, "hjc@rock-chips.com"
- <hjc@rock-chips.com>, "heiko@sntech.de" <heiko@sntech.de>,
- "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
- "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
- "rodrigosiqueiramelo@gmail.com" <rodrigosiqueiramelo@gmail.com>,
- "hamohammed.sa@gmail.com" <hamohammed.sa@gmail.com>,
- "hyun.kwon@xilinx.com" <hyun.kwon@xilinx.com>,
- "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>,
- "michal.simek@xilinx.com" <michal.simek@xilinx.com>,
- "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
- "evan.quan@amd.com" <evan.quan@amd.com>,
- "Hawking.Zhang@amd.com" <Hawking.Zhang@amd.com>,
- "tianci.yin@amd.com" <tianci.yin@amd.com>,
- "marek.olsak@amd.com" <marek.olsak@amd.com>,
- "hdegoede@redhat.com" <hdegoede@redhat.com>,
- "andrey.grodzovsky@amd.com" <andrey.grodzovsky@amd.com>,
- "Felix.Kuehling@amd.com" <Felix.Kuehling@amd.com>,
- "xinhui.pan@amd.com" <xinhui.pan@amd.com>,
- "aaron.liu@amd.com" <aaron.liu@amd.com>,
- "nirmoy.das@amd.com" <nirmoy.das@amd.com>,
- "chris@chris-wilson.co.uk" <chris@chris-wilson.co.uk>,
- "matthew.auld@intel.com" <matthew.auld@intel.com>,
- "abdiel.janulgue@linux.intel.com" <abdiel.janulgue@linux.intel.com>,
- "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
- "andi.shyti@intel.com" <andi.shyti@intel.com>,
- "sam@ravnborg.org" <sam@ravnborg.org>,
- "miaoqinglang@huawei.com" <miaoqinglang@huawei.com>,
- "emil.velikov@collabora.com" <emil.velikov@collabora.com>
-References: <20200813083644.31711-1-tzimmermann@suse.de>
- <20200813083644.31711-19-tzimmermann@suse.de>
- <1fe5f918-2445-d2e6-a501-881e70929404@epam.com>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <ea91877b-6398-a398-4972-9794f7965662@suse.de>
-Date: Tue, 15 Sep 2020 10:56:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kI7BI-0006aT-S1; Tue, 15 Sep 2020 09:23:21 +0000
+X-Originating-IP: 91.224.148.103
+Received: from xps13 (unknown [91.224.148.103])
+ (Authenticated sender: miquel.raynal@bootlin.com)
+ by relay7-d.mail.gandi.net (Postfix) with ESMTPSA id 0895B2000C;
+ Tue, 15 Sep 2020 09:23:16 +0000 (UTC)
+Date: Tue, 15 Sep 2020 11:23:15 +0200
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+Subject: Re: [PATCH v8 2/8] mtd: rawnand: rockchip: NFC drivers for RK3308,
+ RK2928 and others
+Message-ID: <20200915112315.310d89c8@xps13>
+In-Reply-To: <20200915100728.5c866f89@xps13>
+References: <20200717092420.19798-1-yifeng.zhao@rock-chips.com>
+ <20200717092420.19798-3-yifeng.zhao@rock-chips.com>
+ <20200915100728.5c866f89@xps13>
+Organization: Bootlin
+X-Mailer: Claws Mail 3.17.4 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <1fe5f918-2445-d2e6-a501-881e70929404@epam.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200915_045654_519728_420471BE 
-X-CRM114-Status: GOOD (  24.13  )
+X-CRM114-CacheID: sfid-20200915_052321_050212_7506DE3D 
+X-CRM114-Status: GOOD (  18.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,289 +70,62 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "etnaviv@lists.freedesktop.org" <etnaviv@lists.freedesktop.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
- "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
- "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
-Content-Type: multipart/mixed; boundary="===============3484778403849804372=="
+Cc: devicetree@vger.kernel.org, vigneshr@ti.com, richard@nod.at,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, linux-mtd@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, heiko@sntech.de
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============3484778403849804372==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="PEKUmr8ZTfzNvLYko4DS4LvqUwNvZCpsP"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---PEKUmr8ZTfzNvLYko4DS4LvqUwNvZCpsP
-Content-Type: multipart/mixed; boundary="kA0kz2rRnYLjEYgqBQNbqkILRFPajOphI";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Oleksandr Andrushchenko <Oleksandr_Andrushchenko@epam.com>,
- "alexander.deucher@amd.com" <alexander.deucher@amd.com>,
- "christian.koenig@amd.com" <christian.koenig@amd.com>,
- "airlied@linux.ie" <airlied@linux.ie>, "daniel@ffwll.ch" <daniel@ffwll.ch>,
- "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- "l.stach@pengutronix.de" <l.stach@pengutronix.de>,
- "christian.gmeiner@gmail.com" <christian.gmeiner@gmail.com>,
- "inki.dae@samsung.com" <inki.dae@samsung.com>,
- "jy0922.shim@samsung.com" <jy0922.shim@samsung.com>,
- "sw0312.kim@samsung.com" <sw0312.kim@samsung.com>,
- "kyungmin.park@samsung.com" <kyungmin.park@samsung.com>,
- "kgene@kernel.org" <kgene@kernel.org>, "krzk@kernel.org" <krzk@kernel.org>,
- "patrik.r.jakobsson@gmail.com" <patrik.r.jakobsson@gmail.com>,
- "jani.nikula@linux.intel.com" <jani.nikula@linux.intel.com>,
- "joonas.lahtinen@linux.intel.com" <joonas.lahtinen@linux.intel.com>,
- "rodrigo.vivi@intel.com" <rodrigo.vivi@intel.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "robdclark@gmail.com" <robdclark@gmail.com>,
- "sean@poorly.run" <sean@poorly.run>, "bskeggs@redhat.com"
- <bskeggs@redhat.com>, "tomi.valkeinen@ti.com" <tomi.valkeinen@ti.com>,
- "eric@anholt.net" <eric@anholt.net>, "hjc@rock-chips.com"
- <hjc@rock-chips.com>, "heiko@sntech.de" <heiko@sntech.de>,
- "thierry.reding@gmail.com" <thierry.reding@gmail.com>,
- "jonathanh@nvidia.com" <jonathanh@nvidia.com>,
- "rodrigosiqueiramelo@gmail.com" <rodrigosiqueiramelo@gmail.com>,
- "hamohammed.sa@gmail.com" <hamohammed.sa@gmail.com>,
- "hyun.kwon@xilinx.com" <hyun.kwon@xilinx.com>,
- "laurent.pinchart@ideasonboard.com" <laurent.pinchart@ideasonboard.com>,
- "michal.simek@xilinx.com" <michal.simek@xilinx.com>,
- "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>,
- "evan.quan@amd.com" <evan.quan@amd.com>,
- "Hawking.Zhang@amd.com" <Hawking.Zhang@amd.com>,
- "tianci.yin@amd.com" <tianci.yin@amd.com>,
- "marek.olsak@amd.com" <marek.olsak@amd.com>,
- "hdegoede@redhat.com" <hdegoede@redhat.com>,
- "andrey.grodzovsky@amd.com" <andrey.grodzovsky@amd.com>,
- "Felix.Kuehling@amd.com" <Felix.Kuehling@amd.com>,
- "xinhui.pan@amd.com" <xinhui.pan@amd.com>,
- "aaron.liu@amd.com" <aaron.liu@amd.com>,
- "nirmoy.das@amd.com" <nirmoy.das@amd.com>,
- "chris@chris-wilson.co.uk" <chris@chris-wilson.co.uk>,
- "matthew.auld@intel.com" <matthew.auld@intel.com>,
- "abdiel.janulgue@linux.intel.com" <abdiel.janulgue@linux.intel.com>,
- "tvrtko.ursulin@linux.intel.com" <tvrtko.ursulin@linux.intel.com>,
- "andi.shyti@intel.com" <andi.shyti@intel.com>,
- "sam@ravnborg.org" <sam@ravnborg.org>,
- "miaoqinglang@huawei.com" <miaoqinglang@huawei.com>,
- "emil.velikov@collabora.com" <emil.velikov@collabora.com>
-Cc: "amd-gfx@lists.freedesktop.org" <amd-gfx@lists.freedesktop.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "etnaviv@lists.freedesktop.org" <etnaviv@lists.freedesktop.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-samsung-soc@vger.kernel.org" <linux-samsung-soc@vger.kernel.org>,
- "intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>,
- "nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-tegra@vger.kernel.org" <linux-tegra@vger.kernel.org>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>
-Message-ID: <ea91877b-6398-a398-4972-9794f7965662@suse.de>
-Subject: Re: [PATCH 18/20] drm/xen: Introduce GEM object functions
-References: <20200813083644.31711-1-tzimmermann@suse.de>
- <20200813083644.31711-19-tzimmermann@suse.de>
- <1fe5f918-2445-d2e6-a501-881e70929404@epam.com>
-In-Reply-To: <1fe5f918-2445-d2e6-a501-881e70929404@epam.com>
-
---kA0kz2rRnYLjEYgqBQNbqkILRFPajOphI
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Hi
-
-Am 13.08.20 um 13:19 schrieb Oleksandr Andrushchenko:
-> Hi,
->=20
-> On 8/13/20 11:36 AM, Thomas Zimmermann wrote:
->> GEM object functions deprecate several similar callback interfaces in
->> struct drm_driver. This patch replaces the per-driver callbacks with
->> per-instance callbacks in xen. The only exception is gem_prime_mmap,
->> which is non-trivial to convert.
->>
->> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->> ---
->>   drivers/gpu/drm/xen/xen_drm_front.c     | 12 +-----------
->>   drivers/gpu/drm/xen/xen_drm_front.h     |  2 ++
->>   drivers/gpu/drm/xen/xen_drm_front_gem.c | 15 +++++++++++++++
->>   3 files changed, 18 insertions(+), 11 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/xen/xen_drm_front.c b/drivers/gpu/drm/xen=
-/xen_drm_front.c
->> index 3e660fb111b3..bd9af1875af1 100644
->> --- a/drivers/gpu/drm/xen/xen_drm_front.c
->> +++ b/drivers/gpu/drm/xen/xen_drm_front.c
->> @@ -433,7 +433,7 @@ static int xen_drm_drv_dumb_create(struct drm_file=
- *filp,
->>   	return ret;
->>   }
->>  =20
->> -static void xen_drm_drv_free_object_unlocked(struct drm_gem_object *o=
-bj)
->> +void xen_drm_drv_free_object_unlocked(struct drm_gem_object *obj)
->=20
-> Can we please have naming consistent and name it as
->=20
-> xen_drm_front_drv_free_object_unlocked or any other name if this seems =
-to be too long,
->=20
-> but starting with xen_drm_front_ as the rest of exported functions?
-
-There already is a function with that name in drm_xen_front_gem.c. I'll
-move the callback function next to the object-function structure and
-rename it slightly.
-
-Best regards
-Thomas
-
->=20
-> With this,
->=20
-> Acked-by: Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>
->=20
-> Thank you,
->=20
-> Oleksandr
->=20
->>   {
->>   	struct xen_drm_front_drm_info *drm_info =3D obj->dev->dev_private;
->>   	int idx;
->> @@ -481,22 +481,12 @@ static const struct file_operations xen_drm_dev_=
-fops =3D {
->>   	.mmap           =3D xen_drm_front_gem_mmap,
->>   };
->>  =20
->> -static const struct vm_operations_struct xen_drm_drv_vm_ops =3D {
->> -	.open           =3D drm_gem_vm_open,
->> -	.close          =3D drm_gem_vm_close,
->> -};
->> -
->>   static struct drm_driver xen_drm_driver =3D {
->>   	.driver_features           =3D DRIVER_GEM | DRIVER_MODESET | DRIVER=
-_ATOMIC,
->>   	.release                   =3D xen_drm_drv_release,
->> -	.gem_vm_ops                =3D &xen_drm_drv_vm_ops,
->> -	.gem_free_object_unlocked  =3D xen_drm_drv_free_object_unlocked,
->>   	.prime_handle_to_fd        =3D drm_gem_prime_handle_to_fd,
->>   	.prime_fd_to_handle        =3D drm_gem_prime_fd_to_handle,
->>   	.gem_prime_import_sg_table =3D xen_drm_front_gem_import_sg_table,
->> -	.gem_prime_get_sg_table    =3D xen_drm_front_gem_get_sg_table,
->> -	.gem_prime_vmap            =3D xen_drm_front_gem_prime_vmap,
->> -	.gem_prime_vunmap          =3D xen_drm_front_gem_prime_vunmap,
->>   	.gem_prime_mmap            =3D xen_drm_front_gem_prime_mmap,
->>   	.dumb_create               =3D xen_drm_drv_dumb_create,
->>   	.fops                      =3D &xen_drm_dev_fops,
->> diff --git a/drivers/gpu/drm/xen/xen_drm_front.h b/drivers/gpu/drm/xen=
-/xen_drm_front.h
->> index f92c258350ca..93e60c1db550 100644
->> --- a/drivers/gpu/drm/xen/xen_drm_front.h
->> +++ b/drivers/gpu/drm/xen/xen_drm_front.h
->> @@ -160,4 +160,6 @@ int xen_drm_front_page_flip(struct xen_drm_front_i=
-nfo *front_info,
->>   void xen_drm_front_on_frame_done(struct xen_drm_front_info *front_in=
-fo,
->>   				 int conn_idx, u64 fb_cookie);
->>  =20
->> +void xen_drm_drv_free_object_unlocked(struct drm_gem_object *obj);
->> +
->>   #endif /* __XEN_DRM_FRONT_H_ */
->> diff --git a/drivers/gpu/drm/xen/xen_drm_front_gem.c b/drivers/gpu/drm=
-/xen/xen_drm_front_gem.c
->> index f0b85e094111..7b315c08bcfc 100644
->> --- a/drivers/gpu/drm/xen/xen_drm_front_gem.c
->> +++ b/drivers/gpu/drm/xen/xen_drm_front_gem.c
->> @@ -56,6 +56,19 @@ static void gem_free_pages_array(struct xen_gem_obj=
-ect *xen_obj)
->>   	xen_obj->pages =3D NULL;
->>   }
->>  =20
->> +static const struct vm_operations_struct xen_drm_drv_vm_ops =3D {
->> +	.open           =3D drm_gem_vm_open,
->> +	.close          =3D drm_gem_vm_close,
->> +};
->> +
->> +static const struct drm_gem_object_funcs xen_drm_front_gem_object_fun=
-cs =3D {
->> +	.free =3D xen_drm_drv_free_object_unlocked,
->> +	.get_sg_table =3D xen_drm_front_gem_get_sg_table,
->> +	.vmap =3D xen_drm_front_gem_prime_vmap,
->> +	.vunmap =3D xen_drm_front_gem_prime_vunmap,
->> +	.vm_ops =3D &xen_drm_drv_vm_ops,
->> +};
->> +
->>   static struct xen_gem_object *gem_create_obj(struct drm_device *dev,=
-
->>   					     size_t size)
->>   {
->> @@ -66,6 +79,8 @@ static struct xen_gem_object *gem_create_obj(struct =
-drm_device *dev,
->>   	if (!xen_obj)
->>   		return ERR_PTR(-ENOMEM);
->>  =20
->> +	xen_obj->base.funcs =3D &xen_drm_front_gem_object_funcs;
->> +
->>   	ret =3D drm_gem_object_init(dev, &xen_obj->base, size);
->>   	if (ret < 0) {
->>   		kfree(xen_obj);
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---kA0kz2rRnYLjEYgqBQNbqkILRFPajOphI--
-
---PEKUmr8ZTfzNvLYko4DS4LvqUwNvZCpsP
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQFIBAEBCAAyFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl9ggdEUHHR6aW1tZXJt
-YW5uQHN1c2UuZGUACgkQaA3BHVMLeiPDBwf/f2Q/YJ8WXCfC3ehLZzwlJXNPSLdV
-RBu8TYn7lfxxUA4dxKgUAU8gtA/RhGAj6nStvS9xB/lBn3Pzea0Zgxyi9muLzrVj
-AAtdCLdz4ykNSJKXeHJFa2/gNzRETQYNok4p3aC2o7qLw1vUdb3U2GY3PzrEX+CR
-cF1iwAbanJ+/6sT1OATWLOSzjyZ4EkRCP6xclKm6wzrrATaBUeneBeDT0TW4OY1i
-0W8WRT7epjcXidinkJnDOtSXDzLRgl5eV5BnsTioD1vJ12ArZwkW0xG/wTTpNgMq
-Rs06mSE5osC1vjmNLl5TUYmtRzgLkOztpo+HyNQH5SwuMdM1wMCL8OkOVA==
-=swh3
------END PGP SIGNATURE-----
-
---PEKUmr8ZTfzNvLYko4DS4LvqUwNvZCpsP--
-
-
---===============3484778403849804372==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3484778403849804372==--
-
+Ck1pcXVlbCBSYXluYWwgPG1pcXVlbC5yYXluYWxAYm9vdGxpbi5jb20+IHdyb3RlIG9uIFR1ZSwg
+MTUgU2VwIDIwMjAKMTA6MDc6MjggKzAyMDA6Cgo+IEhpIFlpZmVuZywKPiAKPiBJIGFtIHZlcnkg
+c29ycnkgZm9yIHRoZSBkZWxheSBpdCB0b29rIG1lIHRvIHJldmlldyB0aGlzIGRyaXZlciwgYnV0
+Cj4gdGhlcmUgYXJlIHN0aWxsIHNvbWUgc21hbGwgaW5jb2hlcmVuY2VzIElNSE8sIHNlZSBiZWxv
+dy4KCk9uZSBsYXN0IGltcG9ydGFudCBjb21tZW50IGJlbG93Cgo+ID4gK3N0YXRpYyBpbnQgcmtf
+bmZjX2F0dGFjaF9jaGlwKHN0cnVjdCBuYW5kX2NoaXAgKmNoaXApCj4gPiArewo+ID4gKwlzdHJ1
+Y3QgbXRkX2luZm8gKm10ZCA9IG5hbmRfdG9fbXRkKGNoaXApOwo+ID4gKwlzdHJ1Y3QgZGV2aWNl
+ICpkZXYgPSBtdGQtPmRldi5wYXJlbnQ7Cj4gPiArCXN0cnVjdCBya19uZmMgKm5mYyA9IG5hbmRf
+Z2V0X2NvbnRyb2xsZXJfZGF0YShjaGlwKTsKPiA+ICsJc3RydWN0IHJrX25mY19uYW5kX2NoaXAg
+KnJrbmFuZCA9IHRvX3JrbmFuZChjaGlwKTsKPiA+ICsJc3RydWN0IG5hbmRfZWNjX2N0cmwgKmVj
+YyA9ICZjaGlwLT5lY2M7Cj4gPiArCWludCBsZW47Cj4gPiArCWludCByZXQ7Cj4gPiArCj4gPiAr
+CWlmIChjaGlwLT5vcHRpb25zICYgTkFORF9CVVNXSURUSF8xNikgewo+ID4gKwkJZGV2X2Vycihk
+ZXYsICIxNiBiaXRzIGJ1cyB3aWR0aCBub3Qgc3VwcG9ydGVkIik7Cj4gPiArCQlyZXR1cm4gLUVJ
+TlZBTDsKPiA+ICsJfQo+ID4gKwo+ID4gKwlpZiAoZWNjLT5tb2RlICE9IE5BTkRfRUNDX0hXKQo+
+ID4gKwkJcmV0dXJuIDA7Cj4gPiArCj4gPiArCXJldCA9IHJrX25mY19lY2NfaW5pdChkZXYsIG10
+ZCk7Cj4gPiArCWlmIChyZXQpCj4gPiArCQlyZXR1cm4gcmV0Owo+ID4gKwlya25hbmQtPnNwYXJl
+X3Blcl9zZWN0b3IgPSBlY2MtPmJ5dGVzICsgTkZDX1NZU19EQVRBX1NJWkU7Cj4gPiArCXJrbmFu
+ZC0+bWV0YWRhdGFfc2l6ZSA9IE5GQ19TWVNfREFUQV9TSVpFICogZWNjLT5zdGVwczsKPiA+ICsK
+PiA+ICsJaWYgKHJrbmFuZC0+bWV0YWRhdGFfc2l6ZSA8IE5GQ19TWVNfREFUQV9TSVpFICsgMikg
+ewo+ID4gKwkJZGV2X2VycihkZXYsCj4gPiArCQkJIkRyaXZlciBuZWVkcyBhdCBsZWFzdCAlZCBi
+eXRlcyBvZiBtZXRhIGRhdGFcbiIsCj4gPiArCQkJTkZDX1NZU19EQVRBX1NJWkUgKyAyKTsKPiA+
+ICsJCXJldHVybiAtRUlPOwo+ID4gKwl9Cj4gPiArCS8qIENoZWNrIGJ1ZmZlciBmaXJzdCwgYXZv
+aWQgZHVwbGljYXRlIGFsbG9jIGJ1ZmZlci4gKi8KPiA+ICsJaWYgKG5mYy0+YnVmZmVyKQo+ID4g
+KwkJcmV0dXJuIDA7ICAKPiAKPiBZb3UgY2FuJ3QgZG8gdGhhdCB0aGlzIHdheTogd2hhdCBpZiB0
+aGUgZmlyc3QgbXRkIHRvIGJlIHJlZ2lzdGVyZWQgdXNlcwo+IGEgc21hbGxlciBwYWdlIHNpemUg
+dGhhbiB0aGUgc2Vjb25kPwo+IAo+ID4gKwo+ID4gKwlsZW4gPSBtdGQtPndyaXRlc2l6ZSArIG10
+ZC0+b29ic2l6ZTsKPiA+ICsJbmZjLT5idWZmZXIgPSBkZXZtX2t6YWxsb2MoZGV2LCBsZW4sIEdG
+UF9LRVJORUwgfCBHRlBfRE1BKTsKCkkgZG9uJ3QgdGhpbmsgdGhpcyBmaXRzIHlvdXIgcHVycG9z
+ZS4gWW91IHNob3VsZCBwcm9iYWJseSBhbGxvY2F0ZSB3aXRoCmt6YWxsb2Mgb3IgcGVyaGFwcyBk
+bWFfYWxsb2MqLgoKVGhlbiwgeW91J2xsIGFsc28gaGF2ZSB0byBmcmVlIHRoaXMgbWVtb3J5LgoK
+PiA+ICsJaWYgKCFuZmMtPmJ1ZmZlcikKPiA+ICsJCXJldHVybiAtRU5PTUVNOwo+ID4gKwo+ID4g
+KwluZmMtPnBhZ2VfYnVmID0gbmZjLT5idWZmZXI7Cj4gPiArCWxlbiA9IGVjYy0+c3RlcHMgKiBO
+RkNfTUFYX09PQl9QRVJfU1RFUDsKPiA+ICsJbmZjLT5vb2JfYnVmID0gZGV2bV9remFsbG9jKGRl
+diwgbGVuLCBHRlBfS0VSTkVMIHwgR0ZQX0RNQSk7Cj4gPiArCWlmICghbmZjLT5vb2JfYnVmKSB7
+Cj4gPiArCQluZmMtPmJ1ZmZlciA9IE5VTEw7Cj4gPiArCQluZmMtPm9vYl9idWYgPSBOVUxMOyAg
+Cj4gCj4gSSBkb24ndCB0aGluayB0aGlzIGlzIG5lZWRlZAo+IAo+ID4gKwkJcmV0dXJuIC1FTk9N
+RU07Cj4gPiArCX0KPiA+ICsKPiA+ICsJY2hpcC0+ZWNjLndyaXRlX3BhZ2VfcmF3ID0gcmtfbmZj
+X3dyaXRlX3BhZ2VfcmF3Owo+ID4gKwljaGlwLT5lY2Mud3JpdGVfcGFnZSA9IHJrX25mY193cml0
+ZV9wYWdlX2h3ZWNjOwo+ID4gKwljaGlwLT5lY2Mud3JpdGVfb29iX3JhdyA9IHJrX25mY193cml0
+ZV9vb2Jfc3RkOwo+ID4gKwljaGlwLT5lY2Mud3JpdGVfb29iID0gcmtfbmZjX3dyaXRlX29vYl9z
+dGQ7Cj4gPiArCj4gPiArCWNoaXAtPmVjYy5yZWFkX3BhZ2VfcmF3ID0gcmtfbmZjX3JlYWRfcGFn
+ZV9yYXc7Cj4gPiArCWNoaXAtPmVjYy5yZWFkX3BhZ2UgPSBya19uZmNfcmVhZF9wYWdlX2h3ZWNj
+Owo+ID4gKwljaGlwLT5lY2MucmVhZF9vb2JfcmF3ID0gcmtfbmZjX3JlYWRfb29iX3N0ZDsKPiA+
+ICsJY2hpcC0+ZWNjLnJlYWRfb29iID0gcmtfbmZjX3JlYWRfb29iX3N0ZDsgIAo+IAo+IEkgZG9u
+J3QgbGlrZSB0aGUgX3N0ZCBwcmVmaXgsIGJ1dCBpdCBzaG91bGQgYmUgZ29uZSB3aGVuIHNwbGl0
+dGluZyB0aGUKPiBmdW5jdGlvbnMgYXMgYWR2aXNlZC4KPiAKPiA+ICsKPiA+ICsJcmV0dXJuIDA7
+Cj4gPiArfQoKVGhhbmtzLApNaXF1w6hsCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
+aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
