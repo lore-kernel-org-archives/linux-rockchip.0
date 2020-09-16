@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 918EFC433E2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2020 12:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CCA69C433E2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2020 12:04:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 44158221E5
-	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2020 12:01:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4EEC42220E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 16 Sep 2020 12:04:40 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tTAEofcd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="kXxeFKQt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 44158221E5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2k4GnEN0";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="FINC2Lpm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4EEC42220E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,62 +26,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=mtxmsnE8C/tQy9dn/jH3LSXINtmMtHW2WHBkw6/Pjjk=; b=tTAEofcdKVorRiFqukaYQIkAp
-	YoFcyMA3k0uCWfVqS2C46Fs6UTlBaVj0KcbnWi86nfxouP3Y08EF1PIrMdBwp3kq0/IwwjCipNsIm
-	/N5IpVsjmhdL/uchXe6aQVbMAgNZwtWvHg7Z0aiJQx+9SKunCNCX2s7k3EqlHUVM+oeoaz4KCLL8N
-	TGiUG0pAFG+hF0IQcp+4XTWu3spsDgKlEKO/aQJzr1kM72R8bQlNaKClN/Ay8c/GHS90HnIlEkfUV
-	KJ8cZi+8dzz0v6YMUllNGfau1GvecaIIe7oRdOsrQJuHlheX+S9SOy+wmqj+rlD4oD7Rm5n7QF79d
-	8maTmdQVA==;
+	 bh=63qaO7vW0SlS0JUib5dGh7w0yCvQlXQh0zsIN99aTT8=; b=2k4GnEN0yPdYeGfQwwitYzIFw
+	AnuXEj5gHvVRFbFOD+WRJObowccxedkeTA4M0ZXvKo49iNeihWgzRNUgsL9sLqeKf7P3WSj2W6t/9
+	7PBVbEnayJii0VERsVcISjlLrzjziSzU5k0bmnFRNVqInGgqzlz3NTr51YQcOLfaZsetOdkgps0e6
+	twnSJAuZ4PrE+rQPIcPG4rvZPz2B5WmnowJULlZzylcwZcX3fSltHL9lTHUEWpK7/R0K5AvTUZERH
+	btvscd3ozvS/1aelhDnu6Ps1ET0gHMpk+3XaUPF/Z8D+am+gQb+28cTbxJn/hoOf+IUm4epNFei3f
+	VRreD85CA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIW82-00014y-6d; Wed, 16 Sep 2020 12:01:38 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1kIWAs-0001KB-Am; Wed, 16 Sep 2020 12:04:34 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIW7y-00013i-S4
- for linux-rockchip@lists.infradead.org; Wed, 16 Sep 2020 12:01:35 +0000
-Received: by mail-wm1-x342.google.com with SMTP id b79so2718452wmb.4
- for <linux-rockchip@lists.infradead.org>; Wed, 16 Sep 2020 05:01:34 -0700 (PDT)
+ id 1kIWAq-0001Ie-92
+ for linux-rockchip@lists.infradead.org; Wed, 16 Sep 2020 12:04:33 +0000
+Received: by mail-wr1-x443.google.com with SMTP id j2so6629512wrx.7
+ for <linux-rockchip@lists.infradead.org>; Wed, 16 Sep 2020 05:04:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=igBfcxeCtlQN5CLlSYPTKG81q+ycX2teEyiF94cMRWs=;
- b=kXxeFKQt9X9g8aLTM+QgfFognrWsi7bbeKyXtbUa6Sw3vDhO1pk5GhyGWNAwFRiYV/
- y3+Zb9FAd6+OgeWN2UBgXkLCkDAoTOIILHbMfIswZ+DjZ6vsfBBnkeLG6pdGQ2oE+uvl
- +Byrs6EBHXRCTzlSe/2XCwaludcXLVt60J20Y=
+ bh=96pn97vudIqUOy40qtVSGKAMicUxOYMMyH8l1R/+468=;
+ b=FINC2LpmrXDkMJm5Mgra7waQhpVoOUvOK/XivYRsgqJPi1t7MwreTsEe5qPaJMSnnc
+ bGLtUyOPhYe9Fwl6sFIaVos0Od9CqjRDqHzdWl2Mik+v6ih5KJgBn7LXGOWKxnCdsRrY
+ i97BOGnSpY1lJ1zlegmw5oCEcpE/Q74wyRPDU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=igBfcxeCtlQN5CLlSYPTKG81q+ycX2teEyiF94cMRWs=;
- b=CKZ45zzhFtFw+1MjUELLouYD0XDLIf4XNo5VJncrQKI963rA5VgSOu6TDgZDx2tILB
- D0kQyEeIpTnZLGu6/9Prwaj0nkb14+WGReV0+9aT1Gk9Zg1G89CBmKEbbkRbmDrG4I9r
- llAEkme+9yfNeyad4KiTsFbe27jnRY+OUhsPXBk0awjmeq/8WS7+4+5JOyQPqbPLO/0c
- VJY7tOu6Tj6HleNF4qKe6p1bjS4tT63dv/orwOtqAX5VYTWeZnF9VBBrYPr8PbFe6F9P
- Bnk3/qGnN7VHj0VEVhaSedYn5O6SLT5KAQSvSu2mBa4vfd5q0RxTc6tvrxEFS5JhI69L
- 3soA==
-X-Gm-Message-State: AOAM533sVOhMJB5QF8QNJ47fkQ+QJcxhQDGJMblImUVGRQaCROlf9OEQ
- 7jexGb/Udi8Sz18ci0aTPlwyMQ==
-X-Google-Smtp-Source: ABdhPJzfc+smqAu2u0R++9ZZRUwUh0N8NfJRxHBrlnztnEgrnVKh20aLbXU2FBFNb/vMU9OQyVRfcw==
-X-Received: by 2002:a1c:1d08:: with SMTP id d8mr4572504wmd.78.1600257693715;
- Wed, 16 Sep 2020 05:01:33 -0700 (PDT)
+ bh=96pn97vudIqUOy40qtVSGKAMicUxOYMMyH8l1R/+468=;
+ b=BOtEtvrdZ6VezLCaKs8f1ipezWF642ml/y6Vi8/eeQIfClRKKtVZ1YfkB1UG/YoLqQ
+ dfRbCRE3z/TRrP9OpBkHoJA49IITekiV2z9YAQPUansa2/uqI4tFLl40DMdOp95kL4ab
+ JmMwTGt85qf5IvwwCxILj1B+Y4WZHlVIbnFY8KRmgjSaVnWgJPz8psin2Zcop058wwqZ
+ hAqTYL5wuBWeIdz0pgxxbF7i+bwCCNacM3UPdw9ilgPq5M6vtDDHMi7AxIdP1gFeTnAP
+ cHz/ZcpT/gpX8Rp+P2oXzH8JemNm5RTiEFZMQqhDdfPNTnnPap1dvBVnYHoT+HLd1lHa
+ QXvg==
+X-Gm-Message-State: AOAM531bCYOGcg5G5s/LtoQgN8A5iifmrLi35nZP8JpO5rFEJWedmwcQ
+ 0cav5wuWA0D2HtDj275rUpTQOg==
+X-Google-Smtp-Source: ABdhPJzFyWPidEyBuJrzSJ1sZ5B58ttVLzyD39jTNflICGMYf35qmzZyXrhAzHarWd23ksw0UuQHDw==
+X-Received: by 2002:adf:ef4f:: with SMTP id c15mr3019661wrp.390.1600257868941; 
+ Wed, 16 Sep 2020 05:04:28 -0700 (PDT)
 Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id x16sm31915068wrq.62.2020.09.16.05.01.30
+ by smtp.gmail.com with ESMTPSA id z11sm33234891wru.88.2020.09.16.05.04.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2020 05:01:32 -0700 (PDT)
-Date: Wed, 16 Sep 2020 14:01:29 +0200
+ Wed, 16 Sep 2020 05:04:27 -0700 (PDT)
+Date: Wed, 16 Sep 2020 14:04:24 +0200
 From: Daniel Vetter <daniel@ffwll.ch>
 To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v2 08/21] drm/msm: Introduce GEM object funcs
-Message-ID: <20200916120129.GL438822@phenom.ffwll.local>
+Subject: Re: [PATCH v2 09/21] drm/nouveau: Introduce GEM object functions
+Message-ID: <20200916120424.GM438822@phenom.ffwll.local>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
- <20200915145958.19993-9-tzimmermann@suse.de>
+ <20200915145958.19993-10-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200915145958.19993-9-tzimmermann@suse.de>
+In-Reply-To: <20200915145958.19993-10-tzimmermann@suse.de>
 X-Operating-System: Linux phenom 5.7.0-1-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200916_080134_950618_121785F0 
-X-CRM114-Status: GOOD (  19.29  )
+X-CRM114-CacheID: sfid-20200916_080432_373529_CE27698D 
+X-CRM114-Status: GOOD (  18.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,114 +127,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 15, 2020 at 04:59:45PM +0200, Thomas Zimmermann wrote:
+On Tue, Sep 15, 2020 at 04:59:46PM +0200, Thomas Zimmermann wrote:
 > GEM object functions deprecate several similar callback interfaces in
 > struct drm_driver. This patch replaces the per-driver callbacks with
-> per-instance callbacks in msm. The only exception is gem_prime_mmap,
-> which is non-trivial to convert.
+> per-instance callbacks in nouveau.
 > 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+
+Hm ttm and gem mmap world still quite disjoint ... Anyway that's an
+entirely different thing.
 
 Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
 
 > ---
->  drivers/gpu/drm/msm/msm_drv.c | 13 -------------
->  drivers/gpu/drm/msm/msm_drv.h |  1 -
->  drivers/gpu/drm/msm/msm_gem.c | 19 ++++++++++++++++++-
->  3 files changed, 18 insertions(+), 15 deletions(-)
+>  drivers/gpu/drm/nouveau/nouveau_drm.c   |  9 ---------
+>  drivers/gpu/drm/nouveau/nouveau_gem.c   | 13 +++++++++++++
+>  drivers/gpu/drm/nouveau/nouveau_gem.h   |  2 ++
+>  drivers/gpu/drm/nouveau/nouveau_prime.c |  2 ++
+>  4 files changed, 17 insertions(+), 9 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
-> index 79333842f70a..5952767ea478 100644
-> --- a/drivers/gpu/drm/msm/msm_drv.c
-> +++ b/drivers/gpu/drm/msm/msm_drv.c
-> @@ -978,12 +978,6 @@ static const struct drm_ioctl_desc msm_ioctls[] = {
->  	DRM_IOCTL_DEF_DRV(MSM_SUBMITQUEUE_QUERY, msm_ioctl_submitqueue_query, DRM_RENDER_ALLOW),
->  };
+> diff --git a/drivers/gpu/drm/nouveau/nouveau_drm.c b/drivers/gpu/drm/nouveau/nouveau_drm.c
+> index 42fc5c813a9b..72640bca1617 100644
+> --- a/drivers/gpu/drm/nouveau/nouveau_drm.c
+> +++ b/drivers/gpu/drm/nouveau/nouveau_drm.c
+> @@ -1207,16 +1207,7 @@ driver_stub = {
 >  
-> -static const struct vm_operations_struct vm_ops = {
-> -	.fault = msm_gem_fault,
-> -	.open = drm_gem_vm_open,
-> -	.close = drm_gem_vm_close,
-> -};
-> -
->  static const struct file_operations fops = {
->  	.owner              = THIS_MODULE,
->  	.open               = drm_open,
-> @@ -1009,18 +1003,11 @@ static struct drm_driver msm_driver = {
->  	.irq_preinstall     = msm_irq_preinstall,
->  	.irq_postinstall    = msm_irq_postinstall,
->  	.irq_uninstall      = msm_irq_uninstall,
-> -	.gem_free_object_unlocked = msm_gem_free_object,
-> -	.gem_vm_ops         = &vm_ops,
->  	.dumb_create        = msm_gem_dumb_create,
->  	.dumb_map_offset    = msm_gem_dumb_map_offset,
 >  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
 >  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
-> -	.gem_prime_pin      = msm_gem_prime_pin,
-> -	.gem_prime_unpin    = msm_gem_prime_unpin,
-> -	.gem_prime_get_sg_table = msm_gem_prime_get_sg_table,
->  	.gem_prime_import_sg_table = msm_gem_prime_import_sg_table,
-> -	.gem_prime_vmap     = msm_gem_prime_vmap,
-> -	.gem_prime_vunmap   = msm_gem_prime_vunmap,
->  	.gem_prime_mmap     = msm_gem_prime_mmap,
->  #ifdef CONFIG_DEBUG_FS
->  	.debugfs_init       = msm_debugfs_init,
-> diff --git a/drivers/gpu/drm/msm/msm_drv.h b/drivers/gpu/drm/msm/msm_drv.h
-> index af259b0573ea..7bcea10be81f 100644
-> --- a/drivers/gpu/drm/msm/msm_drv.h
-> +++ b/drivers/gpu/drm/msm/msm_drv.h
-> @@ -269,7 +269,6 @@ void msm_gem_shrinker_cleanup(struct drm_device *dev);
->  int msm_gem_mmap_obj(struct drm_gem_object *obj,
->  			struct vm_area_struct *vma);
->  int msm_gem_mmap(struct file *filp, struct vm_area_struct *vma);
-> -vm_fault_t msm_gem_fault(struct vm_fault *vmf);
->  uint64_t msm_gem_mmap_offset(struct drm_gem_object *obj);
->  int msm_gem_get_iova(struct drm_gem_object *obj,
->  		struct msm_gem_address_space *aspace, uint64_t *iova);
-> diff --git a/drivers/gpu/drm/msm/msm_gem.c b/drivers/gpu/drm/msm/msm_gem.c
-> index b4553caaa196..de915ff6f4b4 100644
-> --- a/drivers/gpu/drm/msm/msm_gem.c
-> +++ b/drivers/gpu/drm/msm/msm_gem.c
-> @@ -247,7 +247,7 @@ int msm_gem_mmap(struct file *filp, struct vm_area_struct *vma)
->  	return msm_gem_mmap_obj(vma->vm_private_data, vma);
+> -	.gem_prime_pin = nouveau_gem_prime_pin,
+> -	.gem_prime_unpin = nouveau_gem_prime_unpin,
+> -	.gem_prime_get_sg_table = nouveau_gem_prime_get_sg_table,
+>  	.gem_prime_import_sg_table = nouveau_gem_prime_import_sg_table,
+> -	.gem_prime_vmap = nouveau_gem_prime_vmap,
+> -	.gem_prime_vunmap = nouveau_gem_prime_vunmap,
+> -
+> -	.gem_free_object_unlocked = nouveau_gem_object_del,
+> -	.gem_open_object = nouveau_gem_object_open,
+> -	.gem_close_object = nouveau_gem_object_close,
+>  
+>  	.dumb_create = nouveau_display_dumb_create,
+>  	.dumb_map_offset = nouveau_display_dumb_map_offset,
+> diff --git a/drivers/gpu/drm/nouveau/nouveau_gem.c b/drivers/gpu/drm/nouveau/nouveau_gem.c
+> index 89adadf4706b..28e0cbb00876 100644
+> --- a/drivers/gpu/drm/nouveau/nouveau_gem.c
+> +++ b/drivers/gpu/drm/nouveau/nouveau_gem.c
+> @@ -169,6 +169,17 @@ nouveau_gem_object_close(struct drm_gem_object *gem, struct drm_file *file_priv)
+>  	ttm_bo_unreserve(&nvbo->bo);
 >  }
 >  
-> -vm_fault_t msm_gem_fault(struct vm_fault *vmf)
-> +static vm_fault_t msm_gem_fault(struct vm_fault *vmf)
+> +const struct drm_gem_object_funcs nouveau_gem_object_funcs = {
+> +	.free = nouveau_gem_object_del,
+> +	.open = nouveau_gem_object_open,
+> +	.close = nouveau_gem_object_close,
+> +	.pin = nouveau_gem_prime_pin,
+> +	.unpin = nouveau_gem_prime_unpin,
+> +	.get_sg_table = nouveau_gem_prime_get_sg_table,
+> +	.vmap = nouveau_gem_prime_vmap,
+> +	.vunmap = nouveau_gem_prime_vunmap,
+> +};
+> +
+>  int
+>  nouveau_gem_new(struct nouveau_cli *cli, u64 size, int align, uint32_t domain,
+>  		uint32_t tile_mode, uint32_t tile_flags,
+> @@ -186,6 +197,8 @@ nouveau_gem_new(struct nouveau_cli *cli, u64 size, int align, uint32_t domain,
+>  	if (IS_ERR(nvbo))
+>  		return PTR_ERR(nvbo);
+>  
+> +	nvbo->bo.base.funcs = &nouveau_gem_object_funcs;
+> +
+>  	/* Initialize the embedded gem-object. We return a single gem-reference
+>  	 * to the caller, instead of a normal nouveau_bo ttm reference. */
+>  	ret = drm_gem_object_init(drm->dev, &nvbo->bo.base, size);
+> diff --git a/drivers/gpu/drm/nouveau/nouveau_gem.h b/drivers/gpu/drm/nouveau/nouveau_gem.h
+> index 978e07591990..b35c180322e2 100644
+> --- a/drivers/gpu/drm/nouveau/nouveau_gem.h
+> +++ b/drivers/gpu/drm/nouveau/nouveau_gem.h
+> @@ -5,6 +5,8 @@
+>  #include "nouveau_drv.h"
+>  #include "nouveau_bo.h"
+>  
+> +extern const struct drm_gem_object_funcs nouveau_gem_object_funcs;
+> +
+>  static inline struct nouveau_bo *
+>  nouveau_gem_object(struct drm_gem_object *gem)
 >  {
->  	struct vm_area_struct *vma = vmf->vma;
->  	struct drm_gem_object *obj = vma->vm_private_data;
-> @@ -994,6 +994,22 @@ int msm_gem_new_handle(struct drm_device *dev, struct drm_file *file,
->  	return ret;
->  }
+> diff --git a/drivers/gpu/drm/nouveau/nouveau_prime.c b/drivers/gpu/drm/nouveau/nouveau_prime.c
+> index b2ecb91f8ddc..a8264aebf3d4 100644
+> --- a/drivers/gpu/drm/nouveau/nouveau_prime.c
+> +++ b/drivers/gpu/drm/nouveau/nouveau_prime.c
+> @@ -77,6 +77,8 @@ struct drm_gem_object *nouveau_gem_prime_import_sg_table(struct drm_device *dev,
 >  
-> +static const struct vm_operations_struct vm_ops = {
-> +	.fault = msm_gem_fault,
-> +	.open = drm_gem_vm_open,
-> +	.close = drm_gem_vm_close,
-> +};
+>  	nvbo->valid_domains = NOUVEAU_GEM_DOMAIN_GART;
+>  
+> +	nvbo->bo.base.funcs = &nouveau_gem_object_funcs;
 > +
-> +static const struct drm_gem_object_funcs msm_gem_object_funcs = {
-> +	.free = msm_gem_free_object,
-> +	.pin = msm_gem_prime_pin,
-> +	.unpin = msm_gem_prime_unpin,
-> +	.get_sg_table = msm_gem_prime_get_sg_table,
-> +	.vmap = msm_gem_prime_vmap,
-> +	.vunmap = msm_gem_prime_vunmap,
-> +	.vm_ops = &vm_ops,
-> +};
-> +
->  static int msm_gem_new_impl(struct drm_device *dev,
->  		uint32_t size, uint32_t flags,
->  		struct drm_gem_object **obj)
-> @@ -1024,6 +1040,7 @@ static int msm_gem_new_impl(struct drm_device *dev,
->  	INIT_LIST_HEAD(&msm_obj->vmas);
->  
->  	*obj = &msm_obj->base;
-> +	(*obj)->funcs = &msm_gem_object_funcs;
->  
->  	return 0;
->  }
+>  	/* Initialize the embedded gem-object. We return a single gem-reference
+>  	 * to the caller, instead of a normal nouveau_bo ttm reference. */
+>  	ret = drm_gem_object_init(dev, &nvbo->bo.base, size);
 > -- 
 > 2.28.0
 > 
