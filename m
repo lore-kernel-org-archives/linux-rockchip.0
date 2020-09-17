@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E06B8C43461
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 11:31:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8C766C2BBD1
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 14:02:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 92F88208DB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 11:31:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3969B2065C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 14:02:07 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CWF3a/QF";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WT+tCnqs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 92F88208DB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="khA0ow3B";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="DNZiBZAK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3969B2065C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,63 +27,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tpAqPh18r/z37y2olMtEE0JwP/OOoe/MRg+nuY/nT90=; b=CWF3a/QFurlEpoLsB1Cij9HBj
-	EFuly4m/+4LCBZTfC5Qg+WUvETbHSE4QpOvHGIw5XhJbRnNkckTz4IpCcYoWTxIgtRqsUZdHkw31B
-	svKA8MHrXQhAwP1Opq8Bdg/hBQfa+XRUAFKXGUa01KikMko72OjyH4norpncf3mUlTmL2d3U0xmbO
-	o5cckJ4gr2H0aXxsBlSF2FpyvQBv151LKpEH+WMBwvqRiCoeayF2gXrkSrTbGmVHZkOegdI649N9i
-	ZNvvJV3JgV9POf1hxtahaKxomb3scYeJ7lvbYDv9AkW8q1fwpXyzBf2QcuIxGnirZOiUgUYQ/c3ke
-	pHAOO4Mbw==;
+	 bh=uIj47BQWm1BbTCe9IeFDOlS6pAX3k8Xe3/0UwkymuKI=; b=khA0ow3BycXGwB3kxkJniPPvE
+	kQBv+rFpmXGTZPLMqafLNJq1XgUouP4pambrZOy36QWZXK/Snc7wCY9LQghAVuGXVVfqi50/kMw0A
+	yLbX/W2sn1FnUQBhVtJs/yKUvAt3LzqoIpJB6bo+mi5JdTNnfzLqYUOTZLVKW1jLSS+2d9Gt2PPCH
+	BZxDLnq73HLtuTirHzc2DIUq5OzvWf0t2NFwgj9SFmo1YsZP0TGVzxwByPh9j04I0G3eqvPgnx9y7
+	+I7zeVsEseUt1weWGDbzIJEdWv+uBssBwOR/4EfCPaqjWVlhe5Qe79Vj1faNjIjbp0nScVhmV8Jz4
+	ukZR+hYbw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIs8X-0004lf-2j; Thu, 17 Sep 2020 11:31:37 +0000
+	id 1kIuU5-0007kl-FK; Thu, 17 Sep 2020 14:02:01 +0000
 Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIs8S-0004kt-U9; Thu, 17 Sep 2020 11:31:34 +0000
-Received: by mail-wm1-x342.google.com with SMTP id q9so1623301wmj.2;
- Thu, 17 Sep 2020 04:31:31 -0700 (PDT)
+ id 1kIuU3-0007jy-HO; Thu, 17 Sep 2020 14:02:00 +0000
+Received: by mail-wm1-x342.google.com with SMTP id s13so2079501wmh.4;
+ Thu, 17 Sep 2020 07:01:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=QoGoJWGY9uvsPbK1VFldPakdj/95886EaH4XmF5Nmig=;
- b=WT+tCnqscdjnhBzx4pey4qfrs3TpF1Xktu7jt8T8cQSP0yZJdX3KoYHPdWspzIugsq
- 6HSKY9VJKgsdLw89cCYxqdbs7Vt7/k4/jK9LtTE+4i9XvfXW1Lr/Fm+fEnngxxWPD5dx
- hAgvu8wEl2ImGMZ/Vxi1axcUTWC/C1hcCZmRCP+VMlQrWSEcu/Hqzj+fuVKA2INfBjX3
- /zcARTJCVi7gGPGSYovxguWtsuZzPwF6TsPs2IH9t/Kp5k3R+t/9fCDbL8cqbYXRyKxo
- iHGdqfCt+o61f/ixQfUMrk5tyRoSS69zCZaqGiTmJsGllEHi/xlz25EYavgN+6zZY8AL
- WM8g==
+ bh=lBUrIOfg3+mq8ad85tbb7EImBFZIDC/tVRBXQ4hE1ik=;
+ b=DNZiBZAKqypMSqQJoyD2IPrVpqiI3ikdcnRtqSUtglPbT/8APSdwaP78S9dCceWhaB
+ CUFzh+i3SYFxQjgJQYQXA+eAyv74bC7KPueFL/Gfi5sPNtWoyu6oeH0LQkpIWYJSX21y
+ rV7VkyxfFYten7MOhzm3Bz7i04GYai5m0PJD8/+pat7mIsmnFKD4UKKCCUMZ01zZFTbO
+ PKJYwiwHEuO6KO353OHy/LaLG0eDM48NEvTlWgc4GQY7VXvipXO0S4rEEhbCyvprEr3R
+ BIuNCJjy1NTGULEvR1fAoX12DfpViAnvzecyOpIl9S6AtbE1NSwC4GsSGoUx0L019NSL
+ oeQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=QoGoJWGY9uvsPbK1VFldPakdj/95886EaH4XmF5Nmig=;
- b=ShNisSa3lGsRSDlhvFwhKvATv3nE+XbOJO8S+WLWkEeFGnas24c7iArcxItcqqmyC4
- Pmc5RE+M+u51mzJTEjojzfjRDvXmgjEphX+J+8JJonDIA0P3pZOXhWdrXreBSBLj3/fh
- oqOkjAfM4UAVo/oJZNkTVYpA5bNRZLboA0/R74/Wo3KjDMVzyBsTaPra4WnPpuqWTxXm
- shDObt1oKm+14bV6GL4qJbLc+pj6FQmaaY9OAZyXDyjgqL53TCeEHuSgkKQxl059KVFO
- gKDOxYrqEpdW5lsN+l91HA9VNpCcQc91oEt1F0/RNNmZhoEmzOZnfqeyBDu+z6giXQOe
- 5K1w==
-X-Gm-Message-State: AOAM531Z3SA7bOaf2h3/0bSMc1FidLaCeB2cCmCJqWe2dqPUOjw4Ugxw
- +E86mU4VPKRFqfrZN7kVMmE=
-X-Google-Smtp-Source: ABdhPJyuZcp+AqRLPz3yJIfvdwNUATarIMvgIK7I09VrN4WEXhLqSMqZyvaS1A1ZqiWgJrdIoQA/Hg==
-X-Received: by 2002:a1c:96:: with SMTP id 144mr9601334wma.84.1600342290200;
- Thu, 17 Sep 2020 04:31:30 -0700 (PDT)
+ bh=lBUrIOfg3+mq8ad85tbb7EImBFZIDC/tVRBXQ4hE1ik=;
+ b=O2UyiAuXxHVbTWIC0bEw4iGT5ugee0OhpRLZ3Qc5p1m81svewCdujsKk8Rp4SvsRBH
+ RhV7aV1R6+rcUjeypMlAcgh2MgPI1jHLtvsGJVQtbrPUsco0HHi/nNhCrQkScWzsz2qm
+ y4JYRue/S0X+BXT7szzLUvMRvC8C53mPN7PFyVqgAUymRWp01rREE++zGOFBq51YWg0G
+ shnnuBL2wm3jINL+M2iFD8GoDrKJ4Vyx18Q8Nio3pPXQJPCXT1HX+sez4e+z3BE3OQ16
+ MOLKkl9GAEYK7BAvJ/q5N51yqxF5m6KoavW24Xi7HtFmiMKBrVYeRs/Xem4k/j4iZWSG
+ GI6w==
+X-Gm-Message-State: AOAM532NnQyOlPD6PHpikRiE+OsObJQmkRgD9tvFrsbeCGKhwXeR9L+L
+ 28LjUPdtrl+r2UiuyZu0A4c=
+X-Google-Smtp-Source: ABdhPJwVFsi9VyC5N2zDyjQYYSf7iQdzkgcW/plJduCk7Y3eMkitDq4/6m+bqkSKVjF1esIZWne4iA==
+X-Received: by 2002:a1c:ba0b:: with SMTP id k11mr10119624wmf.20.1600351318328; 
+ Thu, 17 Sep 2020 07:01:58 -0700 (PDT)
 Received: from smtp.gmail.com (a95-92-181-29.cpe.netcabo.pt. [95.92.181.29])
- by smtp.gmail.com with ESMTPSA id 11sm10489240wmi.14.2020.09.17.04.31.26
+ by smtp.gmail.com with ESMTPSA id z14sm37316830wrh.14.2020.09.17.07.01.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Sep 2020 04:31:29 -0700 (PDT)
-Date: Thu, 17 Sep 2020 08:31:20 -0300
+ Thu, 17 Sep 2020 07:01:57 -0700 (PDT)
+Date: Thu, 17 Sep 2020 11:01:48 -0300
 From: Melissa Wen <melissa.srw@gmail.com>
 To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v2 18/21] drm/vkms: Introduce GEM object functions
-Message-ID: <20200917113120.dtz7yxvdg7xdgbx5@smtp.gmail.com>
+Subject: Re: [PATCH v2 16/21] drm/vgem: Introduce GEM object functions
+Message-ID: <20200917140148.orpdihcctrr5upxg@smtp.gmail.com>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
- <20200915145958.19993-19-tzimmermann@suse.de>
+ <20200915145958.19993-17-tzimmermann@suse.de>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200915145958.19993-19-tzimmermann@suse.de>
+In-Reply-To: <20200915145958.19993-17-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200917_073132_998646_5CFAFA6F 
-X-CRM114-Status: GOOD (  18.82  )
+X-CRM114-CacheID: sfid-20200917_100159_606292_080D8742 
+X-CRM114-Status: GOOD (  20.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -134,76 +134,83 @@ Hi Thomas,
 On 09/15, Thomas Zimmermann wrote:
 > GEM object functions deprecate several similar callback interfaces in
 > struct drm_driver. This patch replaces the per-driver callbacks with
-> per-instance callbacks in vkms.
+> per-instance callbacks in vgem. The only exception is gem_prime_mmap,
+> which is non-trivial to convert.
 > 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 
-Thanks! Looks fine.
+Thanks here again.
+
+This drv file is little tumultuous to me.
+I mean, I took a while to sort functions in my head.
+
+However, finally, I got it, and the change looks good.
 
 Reviewed-by: Melissa Wen <melissa.srw@gmail.com>
 
 > ---
->  drivers/gpu/drm/vkms/vkms_drv.c |  8 --------
->  drivers/gpu/drm/vkms/vkms_gem.c | 13 +++++++++++++
->  2 files changed, 13 insertions(+), 8 deletions(-)
+>  drivers/gpu/drm/vgem/vgem_drv.c | 21 ++++++++++++++-------
+>  1 file changed, 14 insertions(+), 7 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/vkms/vkms_drv.c b/drivers/gpu/drm/vkms/vkms_drv.c
-> index cb0b6230c22c..726801ab44d4 100644
-> --- a/drivers/gpu/drm/vkms/vkms_drv.c
-> +++ b/drivers/gpu/drm/vkms/vkms_drv.c
-> @@ -51,12 +51,6 @@ static const struct file_operations vkms_driver_fops = {
->  	.release	= drm_release,
->  };
+> diff --git a/drivers/gpu/drm/vgem/vgem_drv.c b/drivers/gpu/drm/vgem/vgem_drv.c
+> index cb884c890065..fa54a6d1403d 100644
+> --- a/drivers/gpu/drm/vgem/vgem_drv.c
+> +++ b/drivers/gpu/drm/vgem/vgem_drv.c
+> @@ -50,6 +50,8 @@
+>  #define DRIVER_MAJOR	1
+>  #define DRIVER_MINOR	0
 >  
-> -static const struct vm_operations_struct vkms_gem_vm_ops = {
-> -	.fault = vkms_gem_fault,
-> -	.open = drm_gem_vm_open,
-> -	.close = drm_gem_vm_close,
-> -};
-> -
->  static void vkms_release(struct drm_device *dev)
->  {
->  	struct vkms_device *vkms = container_of(dev, struct vkms_device, drm);
-> @@ -98,8 +92,6 @@ static struct drm_driver vkms_driver = {
->  	.release		= vkms_release,
->  	.fops			= &vkms_driver_fops,
->  	.dumb_create		= vkms_dumb_create,
-> -	.gem_vm_ops		= &vkms_gem_vm_ops,
-> -	.gem_free_object_unlocked = vkms_gem_free_object,
->  	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
->  	.gem_prime_import_sg_table = vkms_prime_import_sg_table,
->  
-> diff --git a/drivers/gpu/drm/vkms/vkms_gem.c b/drivers/gpu/drm/vkms/vkms_gem.c
-> index a017fc59905e..19a0e260a4df 100644
-> --- a/drivers/gpu/drm/vkms/vkms_gem.c
-> +++ b/drivers/gpu/drm/vkms/vkms_gem.c
-> @@ -7,6 +7,17 @@
->  
->  #include "vkms_drv.h"
->  
-> +static const struct vm_operations_struct vkms_gem_vm_ops = {
-> +	.fault = vkms_gem_fault,
-> +	.open = drm_gem_vm_open,
-> +	.close = drm_gem_vm_close,
-> +};
+> +static const struct drm_gem_object_funcs vgem_gem_object_funcs;
 > +
-> +static const struct drm_gem_object_funcs vkms_gem_object_funcs = {
-> +	.free = vkms_gem_free_object,
-> +	.vm_ops = &vkms_gem_vm_ops,
-> +};
-> +
->  static struct vkms_gem_object *__vkms_gem_create(struct drm_device *dev,
->  						 u64 size)
->  {
-> @@ -17,6 +28,8 @@ static struct vkms_gem_object *__vkms_gem_create(struct drm_device *dev,
+>  static struct vgem_device {
+>  	struct drm_device drm;
+>  	struct platform_device *platform;
+> @@ -167,6 +169,8 @@ static struct drm_vgem_gem_object *__vgem_gem_create(struct drm_device *dev,
 >  	if (!obj)
 >  		return ERR_PTR(-ENOMEM);
 >  
-> +	obj->gem.funcs = &vkms_gem_object_funcs;
+> +	obj->base.funcs = &vgem_gem_object_funcs;
 > +
->  	size = roundup(size, PAGE_SIZE);
->  	ret = drm_gem_object_init(dev, &obj->gem, size);
+>  	ret = drm_gem_object_init(dev, &obj->base, roundup(size, PAGE_SIZE));
 >  	if (ret) {
+>  		kfree(obj);
+> @@ -401,12 +405,20 @@ static int vgem_prime_mmap(struct drm_gem_object *obj,
+>  	return 0;
+>  }
+>  
+> +static const struct drm_gem_object_funcs vgem_gem_object_funcs = {
+> +	.free = vgem_gem_free_object,
+> +	.pin = vgem_prime_pin,
+> +	.unpin = vgem_prime_unpin,
+> +	.get_sg_table = vgem_prime_get_sg_table,
+> +	.vmap = vgem_prime_vmap,
+> +	.vunmap = vgem_prime_vunmap,
+> +	.vm_ops = &vgem_gem_vm_ops,
+> +};
+> +
+>  static struct drm_driver vgem_driver = {
+>  	.driver_features		= DRIVER_GEM | DRIVER_RENDER,
+>  	.open				= vgem_open,
+>  	.postclose			= vgem_postclose,
+> -	.gem_free_object_unlocked	= vgem_gem_free_object,
+> -	.gem_vm_ops			= &vgem_gem_vm_ops,
+>  	.ioctls				= vgem_ioctls,
+>  	.num_ioctls 			= ARRAY_SIZE(vgem_ioctls),
+>  	.fops				= &vgem_driver_fops,
+> @@ -415,13 +427,8 @@ static struct drm_driver vgem_driver = {
+>  
+>  	.prime_handle_to_fd = drm_gem_prime_handle_to_fd,
+>  	.prime_fd_to_handle = drm_gem_prime_fd_to_handle,
+> -	.gem_prime_pin = vgem_prime_pin,
+> -	.gem_prime_unpin = vgem_prime_unpin,
+>  	.gem_prime_import = vgem_prime_import,
+>  	.gem_prime_import_sg_table = vgem_prime_import_sg_table,
+> -	.gem_prime_get_sg_table = vgem_prime_get_sg_table,
+> -	.gem_prime_vmap = vgem_prime_vmap,
+> -	.gem_prime_vunmap = vgem_prime_vunmap,
+>  	.gem_prime_mmap = vgem_prime_mmap,
+>  
+>  	.name	= DRIVER_NAME,
 > -- 
 > 2.28.0
 > 
