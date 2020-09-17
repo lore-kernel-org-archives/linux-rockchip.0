@@ -2,81 +2,80 @@ Return-Path: <SRS0=vbLC=C2=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D7359C35263
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 07:40:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D9F3C43461
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 08:36:05 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 712422083B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 07:40:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0374E2075E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 08:36:04 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Svtz9DBr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 712422083B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rc7Jbh6y";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=endlessos-org.20150623.gappssmtp.com header.i=@endlessos-org.20150623.gappssmtp.com header.b="rjctCKac"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0374E2075E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=endlessos.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=dJrq8t84kd14cEwdy0/Ap58hg6VsHzGJpd6gbthkPgk=; b=Svtz9DBrsA4AG8jg/8WNnfT3n
-	ExVBr4n5X1Lxu4U958Dm894TFdjTZZd+jwHFa8feaqnUpLZZGFxOfDoKuJX0jH03B7xlRN+6fCc3u
-	5DwZBSx6/QQRsVtef3e9szHCv0Q2e3Otqu2ds4NjFK/4fGvP+kwlkOu+BLfy16hxM7w5C7mgMtsyu
-	8al0gixGMChCsO6oHcHoS+XgjKyQJPXIBjKQr9gUo0VgR95WPu5PSEtyDxoWiueyqhMRhJ4J/OFa/
-	54RqQ+/pYTtwm4SBYew6Fg2v75uW/eYTK+aAqwWhFmMMiUWSs+CdUNYZKBXEhiuxxVPfSAZtGLOED
-	x8MrZdLCA==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:MIME-Version:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ljJs/iubr9JX1vqwfPCcVAuFPt/eFYhBwdNxJJB2D8E=; b=rc7Jbh6yh65aOnvvxRf7sRv+xg
+	FemMLqd0KavnBOtiB1Sjn549+BWotQannWQaWH1Tb6SEDDcYSe667fN9/HrVD7b6/MK4Ngt26cxLo
+	L36jtiyWC4+6Zx/5BbQPc365CUU0t/J9ARtmvfG54UZfPDzf48oIZbs1GMY3JvVslvazwo+Hx8ebT
+	sk+ahwv19DkOUyIH/E0aWxAUMcJx/SGDEAaByr043N6FEQ5uRd4hprKzNfyLJIv4EfQEsPjrYdP/V
+	H0sy3x6ZlE1Mqzu9WX8uE314uijYI2KVCweBiwmVi/83SbnlyjwlwrAU8yW3QlGJE/+k3gLPMrrC6
+	9Ln+grrw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIoX1-0007CT-Fd; Thu, 17 Sep 2020 07:40:39 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1kIpOZ-0000aO-SF; Thu, 17 Sep 2020 08:35:59 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIoWx-0007B4-N9; Thu, 17 Sep 2020 07:40:36 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id C72DEAB5C;
- Thu, 17 Sep 2020 07:40:49 +0000 (UTC)
-Subject: Re: [PATCH v2 01/21] drm/amdgpu: Introduce GEM object functions
-To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- alexander.deucher@amd.com, airlied@linux.ie, daniel@ffwll.ch,
- linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
- patrik.r.jakobsson@gmail.com, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
- chunkuang.hu@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
- robdclark@gmail.com, sean@poorly.run, bskeggs@redhat.com,
- tomi.valkeinen@ti.com, eric@anholt.net, hjc@rock-chips.com, heiko@sntech.de,
- thierry.reding@gmail.com, jonathanh@nvidia.com,
- rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
- oleksandr_andrushchenko@epam.com, hyun.kwon@xilinx.com,
- laurent.pinchart@ideasonboard.com, michal.simek@xilinx.com,
- sumit.semwal@linaro.org, evan.quan@amd.com, Hawking.Zhang@amd.com,
- tianci.yin@amd.com, marek.olsak@amd.com, hdegoede@redhat.com,
- andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com, xinhui.pan@amd.com,
- aaron.liu@amd.com, nirmoy.das@amd.com, chris@chris-wilson.co.uk,
- matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
- andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
- emil.velikov@collabora.com
-References: <20200915145958.19993-1-tzimmermann@suse.de>
- <20200915145958.19993-2-tzimmermann@suse.de>
- <835ba167-3576-1af6-5421-552075588796@amd.com>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <41eebda8-bf90-7b5c-8af2-e96b8fd0cea2@suse.de>
-Date: Thu, 17 Sep 2020 09:40:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ id 1kIpOX-0000Yr-8f
+ for linux-rockchip@lists.infradead.org; Thu, 17 Sep 2020 08:35:58 +0000
+Received: by mail-ot1-x332.google.com with SMTP id o6so1187579ota.2
+ for <linux-rockchip@lists.infradead.org>; Thu, 17 Sep 2020 01:35:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=endlessos-org.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=kQ9c6/cY7AA2icz6nrLQ2odqECkN7VHWBrAXOAN3CL8=;
+ b=rjctCKacuLheS1l4CHlvrW2jzI0JYuavDUQ+sD7Rez+RZKH3ncCxjiP6bqCM71RJ6I
+ 7CU3LzuKOwo9I98LiQ9RXUQkG42ggFUWuk6qSTmLID+4RNoQgVllf9724jKQGw0m4hcN
+ RrUVH68brzi3LJ9GmrfCLmvzrgvlxyMeSeOFZ2T+hYwRehDYmnpnG8wHLTobCTRnPtsW
+ VKpaVSuWi5IShNWGUCAsgogPijc1VaCGN3UnaiITUHJNzHmp3PLuh6galzdG5UgqvuOb
+ wpYQEYX86qCPMk8e+bgFDb7lIAeIXKa9jzeGZfRZbUuZ6z5212Cw0GlncKHs329+W8fF
+ afcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=kQ9c6/cY7AA2icz6nrLQ2odqECkN7VHWBrAXOAN3CL8=;
+ b=BGiYhiMMhO3ivon9spdw+hT9+ub/d3xWiimKtIorZ94iwC9TuCXIMeCUrZ5AopUSeP
+ IvGPA6d/BeaoSem3ulF0PI1ptwkvxE6LGARNi547MCSGExfUJF4WATRv/I+KHmASQ0LF
+ jF3FnSlmDSiQ6N9q3gKL+D1r0niVYdj7WdKvb/Tf10L3U/zPVkoZdevtzVnl2wQEs/en
+ RHi5FGQKi3FZWmNjoBhCkyYux8QMQEC5RdROptmTzBY76VjmAiNHUDWfmPM0tB/ul1lp
+ tLz6o/6cFRyKtYPmiMiqX626fu9ax5bxYLNQkqHi9l9RZjl4keIKYJA4N4+rqIVIlU7J
+ 4yGw==
+X-Gm-Message-State: AOAM532mUQm7Tq/OCMV50h27jXGnrk99HgZnsnlaOfsw6/ai58Fsf46O
+ vL6QOSnrlqKgOrhAqFW3dt3XGP0I+cKJ+Q4ppkkAHJYQ2i7MRUeJ
+X-Google-Smtp-Source: ABdhPJxwqv+r85faUaLA8WYJeV6XV5XcFu/cmmYdZ9MMagdMgVPHvq5Dl1nyUai/K3A8+1gJmRuGj62bRAPnOG4l5QQ=
+X-Received: by 2002:a9d:1:: with SMTP id 1mr17486919ota.81.1600331753437; Thu,
+ 17 Sep 2020 01:35:53 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <835ba167-3576-1af6-5421-552075588796@amd.com>
+From: Jian-Hong Pan <jhp@endlessos.org>
+Date: Thu, 17 Sep 2020 16:34:18 +0800
+Message-ID: <CAPpJ_efHX70Ej0uzRi-iRf7N0n6ZO5sMN-wK_YpszvVD-Un9RQ@mail.gmail.com>
+Subject: [QUESTION] Enable PINEBOOK Pro's display
+To: linux-rockchip@lists.infradead.org, t.schramm@manjaro.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200917_034035_985057_51A1D1DB 
-X-CRM114-Status: GOOD (  25.58  )
+X-CRM114-CacheID: sfid-20200917_043557_422263_983A1EB2 
+X-CRM114-Status: UNSURE (   7.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,308 +88,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
- xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============0749310029491001496=="
+Cc: Linux Upstreaming Team <linux@endlessm.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============0749310029491001496==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="ZR47F2it7RqvbT2snhj2Q3AXTit7yD8k0"
+Hi,
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---ZR47F2it7RqvbT2snhj2Q3AXTit7yD8k0
-Content-Type: multipart/mixed; boundary="mXx6VnsL56rJiBRNYFJpJY6lkuO91DGub";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- alexander.deucher@amd.com, airlied@linux.ie, daniel@ffwll.ch,
- linux@armlinux.org.uk, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, l.stach@pengutronix.de, christian.gmeiner@gmail.com,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
- patrik.r.jakobsson@gmail.com, jani.nikula@linux.intel.com,
- joonas.lahtinen@linux.intel.com, rodrigo.vivi@intel.com,
- chunkuang.hu@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
- robdclark@gmail.com, sean@poorly.run, bskeggs@redhat.com,
- tomi.valkeinen@ti.com, eric@anholt.net, hjc@rock-chips.com, heiko@sntech.de,
- thierry.reding@gmail.com, jonathanh@nvidia.com,
- rodrigosiqueiramelo@gmail.com, hamohammed.sa@gmail.com,
- oleksandr_andrushchenko@epam.com, hyun.kwon@xilinx.com,
- laurent.pinchart@ideasonboard.com, michal.simek@xilinx.com,
- sumit.semwal@linaro.org, evan.quan@amd.com, Hawking.Zhang@amd.com,
- tianci.yin@amd.com, marek.olsak@amd.com, hdegoede@redhat.com,
- andrey.grodzovsky@amd.com, Felix.Kuehling@amd.com, xinhui.pan@amd.com,
- aaron.liu@amd.com, nirmoy.das@amd.com, chris@chris-wilson.co.uk,
- matthew.auld@intel.com, tvrtko.ursulin@linux.intel.com,
- andi.shyti@intel.com, sam@ravnborg.org, miaoqinglang@huawei.com,
- emil.velikov@collabora.com
-Cc: linux-samsung-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- intel-gfx@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-mediatek@lists.infradead.org, amd-gfx@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, linux-tegra@vger.kernel.org,
- xen-devel@lists.xenproject.org, freedreno@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org
-Message-ID: <41eebda8-bf90-7b5c-8af2-e96b8fd0cea2@suse.de>
-Subject: Re: [PATCH v2 01/21] drm/amdgpu: Introduce GEM object functions
-References: <20200915145958.19993-1-tzimmermann@suse.de>
- <20200915145958.19993-2-tzimmermann@suse.de>
- <835ba167-3576-1af6-5421-552075588796@amd.com>
-In-Reply-To: <835ba167-3576-1af6-5421-552075588796@amd.com>
+We have a PINEBOOK Pro [1] equipped with Rockchip RK3399.
+I tried linux-next kernel at tag 5.9.0-rc5-next-20200915 with the
+build config [2].  However, the drm seems failed and also leads Xorg
+failed.
 
---mXx6VnsL56rJiBRNYFJpJY6lkuO91DGub
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Here is the log [3]:
 
-Hi
+kernel: rockchip-dp ff970000.edp: no DP phy configured
+kernel: cdn-dp fec00000.dp: [drm:cdn_dp_probe [rockchipdrm]] *ERROR*
+missing extcon or phy
+kernel: cdn-dp: probe of fec00000.dp failed with error -22
+...
+gdm-Xorg-:0[660]: (EE) open /dev/fb0: No such file or directory
+gdm-Xorg-:0[660]: (EE) No devices detected.
+gdm-Xorg-:0[660]: (EE)
+gdm-Xorg-:0[660]: Fatal server error:
+gdm-Xorg-:0[660]: (EE) no screens found(EE)
 
-Am 15.09.20 um 17:05 schrieb Christian K=C3=B6nig:
-> Am 15.09.20 um 16:59 schrieb Thomas Zimmermann:
->> GEM object functions deprecate several similar callback interfaces in
->> struct drm_driver. This patch replaces the per-driver callbacks with
->> per-instance callbacks in amdgpu. The only exception is gem_prime_mmap=
-,
->> which is non-trivial to convert.
->>
->> v2:
->> =C2=A0=C2=A0=C2=A0=C2=A0* move object-function instance to amdgpu_gem.=
-c (Christian)
->> =C2=A0=C2=A0=C2=A0=C2=A0* set callbacks in amdgpu_gem_object_create() =
-(Christian)
->>
->> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
->> ---
->> =C2=A0 drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c=C2=A0=C2=A0=C2=A0 |=C2=A0=
- 6 ------
->> =C2=A0 drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c=C2=A0=C2=A0=C2=A0 | 23 =
-+++++++++++++++++-----
->> =C2=A0 drivers/gpu/drm/amd/amdgpu/amdgpu_gem.h=C2=A0=C2=A0=C2=A0 |=C2=A0=
- 5 -----
->> =C2=A0 drivers/gpu/drm/amd/amdgpu/amdgpu_object.c |=C2=A0 1 +
->> =C2=A0 4 files changed, 19 insertions(+), 16 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
->> b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
->> index 6edde2b9e402..840ca8f9c1e1 100644
->> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
->> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
->> @@ -1505,19 +1505,13 @@ static struct drm_driver kms_driver =3D {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .lastclose =3D amdgpu_driver_lastclose_=
-kms,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .irq_handler =3D amdgpu_irq_handler,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .ioctls =3D amdgpu_ioctls_kms,
->> -=C2=A0=C2=A0=C2=A0 .gem_free_object_unlocked =3D amdgpu_gem_object_fr=
-ee,
->> -=C2=A0=C2=A0=C2=A0 .gem_open_object =3D amdgpu_gem_object_open,
->> -=C2=A0=C2=A0=C2=A0 .gem_close_object =3D amdgpu_gem_object_close,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .dumb_create =3D amdgpu_mode_dumb_creat=
-e,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .dumb_map_offset =3D amdgpu_mode_dumb_m=
-map,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .fops =3D &amdgpu_driver_kms_fops,
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .prime_handle_to_fd =3D drm_gem_=
-prime_handle_to_fd,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .prime_fd_to_handle =3D drm_gem_prime_f=
-d_to_handle,
->> -=C2=A0=C2=A0=C2=A0 .gem_prime_export =3D amdgpu_gem_prime_export,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .gem_prime_import =3D amdgpu_gem_prime_=
-import,
->> -=C2=A0=C2=A0=C2=A0 .gem_prime_vmap =3D amdgpu_gem_prime_vmap,
->> -=C2=A0=C2=A0=C2=A0 .gem_prime_vunmap =3D amdgpu_gem_prime_vunmap,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .gem_prime_mmap =3D amdgpu_gem_prime_mm=
-ap,
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .name =3D DRIVER_NAME,
->> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c
->> b/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c
->> index aa7f230c71bf..aeecd5dc3ce4 100644
->> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c
->> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c
->> @@ -36,9 +36,12 @@
->> =C2=A0 =C2=A0 #include "amdgpu.h"
->> =C2=A0 #include "amdgpu_display.h"
->> +#include "amdgpu_dma_buf.h"
->> =C2=A0 #include "amdgpu_xgmi.h"
->> =C2=A0 -void amdgpu_gem_object_free(struct drm_gem_object *gobj)
->> +static const struct drm_gem_object_funcs amdgpu_gem_object_funcs;
->> +
->> +static void amdgpu_gem_object_free(struct drm_gem_object *gobj)
->> =C2=A0 {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct amdgpu_bo *robj =3D gem_to_amdgp=
-u_bo(gobj);
->> =C2=A0 @@ -87,6 +90,7 @@ int amdgpu_gem_object_create(struct amdgpu_de=
-vice
->> *adev, unsigned long size,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return r;
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 *obj =3D &bo->tbo.base;
->> +=C2=A0=C2=A0=C2=A0 (*obj)->funcs =3D &amdgpu_gem_object_funcs;
->> =C2=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 0;
->> =C2=A0 }
->> @@ -119,8 +123,8 @@ void amdgpu_gem_force_release(struct amdgpu_device=
+Do I miss something?  Any guidance will be appreciated.
 
->> *adev)
->> =C2=A0=C2=A0 * Call from drm_gem_handle_create which appear in both ne=
-w and open
->> ioctl
->> =C2=A0=C2=A0 * case.
->> =C2=A0=C2=A0 */
->> -int amdgpu_gem_object_open(struct drm_gem_object *obj,
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 struct drm_file *file_priv)
->> +static int amdgpu_gem_object_open(struct drm_gem_object *obj,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct drm_file *file_priv)
->> =C2=A0 {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct amdgpu_bo *abo =3D gem_to_amdgpu=
-_bo(obj);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct amdgpu_device *adev =3D amdgpu_t=
-tm_adev(abo->tbo.bdev);
->> @@ -152,8 +156,8 @@ int amdgpu_gem_object_open(struct drm_gem_object
->> *obj,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return 0;
->> =C2=A0 }
->> =C2=A0 -void amdgpu_gem_object_close(struct drm_gem_object *obj,
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct drm_file *file_priv)
->> +static void amdgpu_gem_object_close(struct drm_gem_object *obj,
->> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct drm_file *file_priv)=
+[1] https://www.pine64.org/pinebook-pro/
+[2] https://gist.github.com/starnight/66d27f7888d599247371adb1575d1092#file-config
+[3] https://gist.github.com/starnight/66d27f7888d599247371adb1575d1092#file-journal-log
 
->> =C2=A0 {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct amdgpu_bo *bo =3D gem_to_amdgpu_=
-bo(obj);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct amdgpu_device *adev =3D amdgpu_t=
-tm_adev(bo->tbo.bdev);
->> @@ -211,6 +215,15 @@ void amdgpu_gem_object_close(struct
->> drm_gem_object *obj,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ttm_eu_backoff_reservation(&ticket, &li=
-st);
->> =C2=A0 }
->> =C2=A0 +static const struct drm_gem_object_funcs amdgpu_gem_object_fun=
-cs =3D {
->> +=C2=A0=C2=A0=C2=A0 .free =3D amdgpu_gem_object_free,
->> +=C2=A0=C2=A0=C2=A0 .open =3D amdgpu_gem_object_open,
->> +=C2=A0=C2=A0=C2=A0 .close =3D amdgpu_gem_object_close,
->> +=C2=A0=C2=A0=C2=A0 .export =3D amdgpu_gem_prime_export,
->> +=C2=A0=C2=A0=C2=A0 .vmap =3D amdgpu_gem_prime_vmap,
->> +=C2=A0=C2=A0=C2=A0 .vunmap =3D amdgpu_gem_prime_vunmap,
->> +};
->> +
->> =C2=A0 /*
->> =C2=A0=C2=A0 * GEM ioctls.
->> =C2=A0=C2=A0 */
->> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.h
->> b/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.h
->> index e0f025dd1b14..637bf51dbf06 100644
->> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.h
->> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_gem.h
->> @@ -33,11 +33,6 @@
->> =C2=A0 #define AMDGPU_GEM_DOMAIN_MAX=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 0x3
->> =C2=A0 #define gem_to_amdgpu_bo(gobj) container_of((gobj), struct
->> amdgpu_bo, tbo.base)
->> =C2=A0 -void amdgpu_gem_object_free(struct drm_gem_object *obj);
->> -int amdgpu_gem_object_open(struct drm_gem_object *obj,
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 struct drm_file *file_priv);
->> -void amdgpu_gem_object_close(struct drm_gem_object *obj,
->> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0 struct drm_file *file_priv);
->> =C2=A0 unsigned long amdgpu_gem_timeout(uint64_t timeout_ns);
->> =C2=A0 =C2=A0 /*
->> diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
->> b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
->> index ac043baac05d..c4e82a8fa53f 100644
->> --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
->> +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
->> @@ -561,6 +561,7 @@ static int amdgpu_bo_do_create(struct
->> amdgpu_device *adev,
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bo =3D kzalloc(sizeof(struct amdgpu_bo)=
-, GFP_KERNEL);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (bo =3D=3D NULL)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -ENOMEM;=
-
->> +
->=20
-> The newline is not unrelated.
->=20
-> Apart from that the patch is Reviewed-by: Christian K=C3=B6nig
-> <christian.koenig@amd.com>.
->=20
-> But I think we need some smoke testing of it.
-
-I gave it a try on the HW/drivers that I listed in the cover letter.
-Appears to be working there. There was a bug reported by CI that will be
-fixed in the next iteration.
-
-Best regards
-Thomas
-
->=20
-> Christian.
->=20
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 drm_gem_private_object_init(adev_to_drm=
-(adev), &bo->tbo.base,
->> size);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 INIT_LIST_HEAD(&bo->shadow_list);
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bo->vm_bo =3D NULL;
->=20
-> _______________________________________________
-> dri-devel mailing list
-> dri-devel@lists.freedesktop.org
-> https://lists.freedesktop.org/mailman/listinfo/dri-devel
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---mXx6VnsL56rJiBRNYFJpJY6lkuO91DGub--
-
---ZR47F2it7RqvbT2snhj2Q3AXTit7yD8k0
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQFIBAEBCAAyFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl9jEuwUHHR6aW1tZXJt
-YW5uQHN1c2UuZGUACgkQaA3BHVMLeiPyiggAh/BO7SFe5ZVkcBfrX0+omcib+uvq
-wUfAVwNVPgP4GrDtDXLr4zKuk59o62DKt31reEMSrNQm0ZVv4oYlt9YTXUIBc0fb
-Kfg1G/YdZEH4gl6Xnb1Y6bhK0lFKESQonYcCM20uUfgcfhIL71bxo6IQzNkLLXNl
-Gvbkj8qnJhHFWO8PunW5ufHbKHG+ywye5TnGplv1ubKtNKZuIbC+3zb7gf/+ysCT
-+8ttQ5BqdlF1Mc31bYqBTR0GwyfdofspCeDjdA6jDGN3Wq2Be+Y/E6/Pt7ANwWn8
-+pRLfFQYnt1aj5BKBvxQ4zLmOtqu3DJtik5oXtau5wp3407kMunsBYib0A==
-=Cl71
------END PGP SIGNATURE-----
-
---ZR47F2it7RqvbT2snhj2Q3AXTit7yD8k0--
-
-
---===============0749310029491001496==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Jian-Hong Pan
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0749310029491001496==--
-
