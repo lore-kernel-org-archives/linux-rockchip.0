@@ -2,88 +2,88 @@ Return-Path: <SRS0=vbLC=C2=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2ADE9C43461
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 10:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E06B8C43461
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 11:31:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D93E52074B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 10:56:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 92F88208DB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 17 Sep 2020 11:31:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LJKC2aGa";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="QB6L5K88"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D93E52074B
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CWF3a/QF";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WT+tCnqs"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 92F88208DB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Q4f3JrAS89AR1tN7YSl30bHHmxnaUFjAnU2iIR1BFfg=; b=LJKC2aGa5E0cWo1EJOUCTz6AO
-	eUYL75eDd2JHebWgRVFxHOSsr5gBwac1wm5cwXSynmKNO+aeq4WwGUnXNZsxM0WBSAvlZP5noydDa
-	tDk/3YActprOj41wWxaqeOs0Xdf/87i3FnbYCSO08sOoCvHNmtE3C/kZnt8evw2DI+FXEmszIfg7t
-	q5/0X6WGSCjWRjOUqNFF/cvWNW/3EFR1uep6dmyoYnT9sDWb/+PTGDreV/F5rJfcuNVCW7FgG86es
-	mWklIceJjPguycXBpVYNg3Qizek3ml+mA6wS7eOmtm9RcWjNM7rWlk0iBOh+OhmmtF0jIccOUtWy6
-	A1Kg6TRdw==;
+	 bh=tpAqPh18r/z37y2olMtEE0JwP/OOoe/MRg+nuY/nT90=; b=CWF3a/QFurlEpoLsB1Cij9HBj
+	EFuly4m/+4LCBZTfC5Qg+WUvETbHSE4QpOvHGIw5XhJbRnNkckTz4IpCcYoWTxIgtRqsUZdHkw31B
+	svKA8MHrXQhAwP1Opq8Bdg/hBQfa+XRUAFKXGUa01KikMko72OjyH4norpncf3mUlTmL2d3U0xmbO
+	o5cckJ4gr2H0aXxsBlSF2FpyvQBv151LKpEH+WMBwvqRiCoeayF2gXrkSrTbGmVHZkOegdI649N9i
+	ZNvvJV3JgV9POf1hxtahaKxomb3scYeJ7lvbYDv9AkW8q1fwpXyzBf2QcuIxGnirZOiUgUYQ/c3ke
+	pHAOO4Mbw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kIraV-0002YX-MX; Thu, 17 Sep 2020 10:56:27 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1kIs8X-0004lf-2j; Thu, 17 Sep 2020 11:31:37 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kIraS-0002Xy-Qx; Thu, 17 Sep 2020 10:56:25 +0000
-Received: by mail-wr1-x442.google.com with SMTP id w5so1554112wrp.8;
- Thu, 17 Sep 2020 03:56:24 -0700 (PDT)
+ id 1kIs8S-0004kt-U9; Thu, 17 Sep 2020 11:31:34 +0000
+Received: by mail-wm1-x342.google.com with SMTP id q9so1623301wmj.2;
+ Thu, 17 Sep 2020 04:31:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=T7o1O276VNvFCMXreEbeFlPYMFMj08O5QtDTtLf9+io=;
- b=QB6L5K889Bo72oCmXlPEd6RO0QFJaiOuUuQYNXSbkbKHLE0z4jthWl14REa3WCR0Bt
- 7IHiIFNeD/Ta+yo/4I3eoGqh6G9kDPeQAYogqalpiHtq8aE0N2vVL/nLfC8G7fyUISnI
- HqZvSuiNmgZzkTOCBFRSXTB+sPRscquK8BzaCBsBZW04/6qzVITT/XTRzNX58D5ubsqj
- EBCDdFzw/4/+qKJ5jqHMFDrIQ6SPZ7RFWRnZTqbCA2A8CuvrZLIiZY8CyMBMGu+cZPGz
- +Xk5dHOFs8kS9Gn7mKXA7wGo6jD27ynEwYEI2R76ZDPCy8bCgvVnpggr26rleQIwiHel
- X5Tg==
+ :content-disposition:in-reply-to;
+ bh=QoGoJWGY9uvsPbK1VFldPakdj/95886EaH4XmF5Nmig=;
+ b=WT+tCnqscdjnhBzx4pey4qfrs3TpF1Xktu7jt8T8cQSP0yZJdX3KoYHPdWspzIugsq
+ 6HSKY9VJKgsdLw89cCYxqdbs7Vt7/k4/jK9LtTE+4i9XvfXW1Lr/Fm+fEnngxxWPD5dx
+ hAgvu8wEl2ImGMZ/Vxi1axcUTWC/C1hcCZmRCP+VMlQrWSEcu/Hqzj+fuVKA2INfBjX3
+ /zcARTJCVi7gGPGSYovxguWtsuZzPwF6TsPs2IH9t/Kp5k3R+t/9fCDbL8cqbYXRyKxo
+ iHGdqfCt+o61f/ixQfUMrk5tyRoSS69zCZaqGiTmJsGllEHi/xlz25EYavgN+6zZY8AL
+ WM8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=T7o1O276VNvFCMXreEbeFlPYMFMj08O5QtDTtLf9+io=;
- b=Suzy4JbK+6i/obAyaehZrzYEkMHK43VLxyI64lbt2852U3b9/LerY72vAygSDYixKh
- NAim55Y22M69KmxVHRr0VuIP2+zvdK+I9xtZJ4xgM3iYZqmpJMQZRiNPKD/xmXVubN3T
- fBuA0qer1JLjzySw1vkK9oadIHhcprhvszCdu5iMwIrUP0Ep78ed1giMt3lJ2boKiUg6
- rUOl5G3bKEbyow10wZbbkegieq8yYqcG/NqEWMHZMrqQpf1JaJfn18xVVSUJ+lLNeedV
- mmLE3D68s6F0KKSqdvfWNfTQ9QnPdvzdbHkwFSLAW7nKAzSiBO8fwOZWUJhc03/rn99A
- kfxw==
-X-Gm-Message-State: AOAM531dcHWKigHEsASFtx6R6K0n1uQBXwrQzKVFR1soIndXtgjnv5Av
- dnwp+EMQNxSb+qUkJYhHz6o=
-X-Google-Smtp-Source: ABdhPJwg7nkwQTaRBQuWwl0RcZSkUXHrdUc9WYlLoauvclz9jtCse6f5SG7t61si5y3RH63KecEA/w==
-X-Received: by 2002:adf:e711:: with SMTP id c17mr32158269wrm.359.1600340183749; 
- Thu, 17 Sep 2020 03:56:23 -0700 (PDT)
-Received: from localhost ([217.111.27.204])
- by smtp.gmail.com with ESMTPSA id d83sm10820463wmf.23.2020.09.17.03.56.22
+ :mime-version:content-disposition:in-reply-to;
+ bh=QoGoJWGY9uvsPbK1VFldPakdj/95886EaH4XmF5Nmig=;
+ b=ShNisSa3lGsRSDlhvFwhKvATv3nE+XbOJO8S+WLWkEeFGnas24c7iArcxItcqqmyC4
+ Pmc5RE+M+u51mzJTEjojzfjRDvXmgjEphX+J+8JJonDIA0P3pZOXhWdrXreBSBLj3/fh
+ oqOkjAfM4UAVo/oJZNkTVYpA5bNRZLboA0/R74/Wo3KjDMVzyBsTaPra4WnPpuqWTxXm
+ shDObt1oKm+14bV6GL4qJbLc+pj6FQmaaY9OAZyXDyjgqL53TCeEHuSgkKQxl059KVFO
+ gKDOxYrqEpdW5lsN+l91HA9VNpCcQc91oEt1F0/RNNmZhoEmzOZnfqeyBDu+z6giXQOe
+ 5K1w==
+X-Gm-Message-State: AOAM531Z3SA7bOaf2h3/0bSMc1FidLaCeB2cCmCJqWe2dqPUOjw4Ugxw
+ +E86mU4VPKRFqfrZN7kVMmE=
+X-Google-Smtp-Source: ABdhPJyuZcp+AqRLPz3yJIfvdwNUATarIMvgIK7I09VrN4WEXhLqSMqZyvaS1A1ZqiWgJrdIoQA/Hg==
+X-Received: by 2002:a1c:96:: with SMTP id 144mr9601334wma.84.1600342290200;
+ Thu, 17 Sep 2020 04:31:30 -0700 (PDT)
+Received: from smtp.gmail.com (a95-92-181-29.cpe.netcabo.pt. [95.92.181.29])
+ by smtp.gmail.com with ESMTPSA id 11sm10489240wmi.14.2020.09.17.04.31.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Sep 2020 03:56:22 -0700 (PDT)
-Date: Thu, 17 Sep 2020 12:56:20 +0200
-From: Thierry Reding <thierry.reding@gmail.com>
+ Thu, 17 Sep 2020 04:31:29 -0700 (PDT)
+Date: Thu, 17 Sep 2020 08:31:20 -0300
+From: Melissa Wen <melissa.srw@gmail.com>
 To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v2 14/21] drm/tegra: Introduce GEM object functions
-Message-ID: <20200917105620.GK3515672@ulmo>
+Subject: Re: [PATCH v2 18/21] drm/vkms: Introduce GEM object functions
+Message-ID: <20200917113120.dtz7yxvdg7xdgbx5@smtp.gmail.com>
 References: <20200915145958.19993-1-tzimmermann@suse.de>
- <20200915145958.19993-15-tzimmermann@suse.de>
+ <20200915145958.19993-19-tzimmermann@suse.de>
 MIME-Version: 1.0
-In-Reply-To: <20200915145958.19993-15-tzimmermann@suse.de>
-User-Agent: Mutt/1.14.6 (2020-07-11)
+Content-Disposition: inline
+In-Reply-To: <20200915145958.19993-19-tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200917_065624_883186_88149BDA 
-X-CRM114-Status: GOOD (  12.92  )
+X-CRM114-CacheID: sfid-20200917_073132_998646_5CFAFA6F 
+X-CRM114-Status: GOOD (  18.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,7 +99,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Cc: hamohammed.sa@gmail.com, heiko@sntech.de, andrey.grodzovsky@amd.com,
  airlied@linux.ie, nouveau@lists.freedesktop.org,
  joonas.lahtinen@linux.intel.com, dri-devel@lists.freedesktop.org,
- michal.simek@xilinx.com, eric@anholt.net, nirmoy.das@amd.com,
+ michal.simek@xilinx.com, eric@anholt.net, thierry.reding@gmail.com,
  robdclark@gmail.com, krzk@kernel.org, sam@ravnborg.org,
  sumit.semwal@linaro.org, emil.velikov@collabora.com,
  linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
@@ -107,84 +107,112 @@ Cc: hamohammed.sa@gmail.com, heiko@sntech.de, andrey.grodzovsky@amd.com,
  linux-tegra@vger.kernel.org, linux@armlinux.org.uk,
  patrik.r.jakobsson@gmail.com, jonathanh@nvidia.com,
  linux-rockchip@lists.infradead.org, kgene@kernel.org, bskeggs@redhat.com,
- xen-devel@lists.xenproject.org, intel-gfx@lists.freedesktop.org,
- matthew.auld@intel.com, chunkuang.hu@kernel.org, andi.shyti@intel.com,
- daniel@ffwll.ch, linux-arm-msm@vger.kernel.org, marek.olsak@amd.com,
- tianci.yin@amd.com, maarten.lankhorst@linux.intel.com,
- etnaviv@lists.freedesktop.org, jani.nikula@linux.intel.com,
- inki.dae@samsung.com, hdegoede@redhat.com, christian.gmeiner@gmail.com,
- linux-mediatek@lists.infradead.org, mripard@kernel.org, rodrigo.vivi@intel.com,
- matthias.bgg@gmail.com, evan.quan@amd.com, sean@poorly.run,
- linux-arm-kernel@lists.infradead.org, tvrtko.ursulin@linux.intel.com,
- amd-gfx@lists.freedesktop.org, laurent.pinchart@ideasonboard.com,
- hyun.kwon@xilinx.com, rodrigosiqueiramelo@gmail.com, aaron.liu@amd.com,
- Felix.Kuehling@amd.com, xinhui.pan@amd.com, sw0312.kim@samsung.com,
- hjc@rock-chips.com, chris@chris-wilson.co.uk, kyungmin.park@samsung.com,
- miaoqinglang@huawei.com, p.zabel@pengutronix.de, alexander.deucher@amd.com,
- Hawking.Zhang@amd.com, freedreno@lists.freedesktop.org,
- christian.koenig@amd.com, l.stach@pengutronix.de
-Content-Type: multipart/mixed; boundary="===============2368064881906293589=="
+ xen-devel@lists.xenproject.org, miaoqinglang@huawei.com,
+ intel-gfx@lists.freedesktop.org, matthew.auld@intel.com,
+ chunkuang.hu@kernel.org, andi.shyti@intel.com, daniel@ffwll.ch,
+ linux-arm-msm@vger.kernel.org, marek.olsak@amd.com, tianci.yin@amd.com,
+ maarten.lankhorst@linux.intel.com, etnaviv@lists.freedesktop.org,
+ jani.nikula@linux.intel.com, inki.dae@samsung.com, hdegoede@redhat.com,
+ christian.gmeiner@gmail.com, linux-mediatek@lists.infradead.org,
+ mripard@kernel.org, rodrigo.vivi@intel.com, matthias.bgg@gmail.com,
+ evan.quan@amd.com, sean@poorly.run, linux-arm-kernel@lists.infradead.org,
+ tvrtko.ursulin@linux.intel.com, amd-gfx@lists.freedesktop.org,
+ laurent.pinchart@ideasonboard.com, hyun.kwon@xilinx.com,
+ rodrigosiqueiramelo@gmail.com, aaron.liu@amd.com, Felix.Kuehling@amd.com,
+ xinhui.pan@amd.com, sw0312.kim@samsung.com, hjc@rock-chips.com,
+ chris@chris-wilson.co.uk, kyungmin.park@samsung.com, nirmoy.das@amd.com,
+ p.zabel@pengutronix.de, alexander.deucher@amd.com, Hawking.Zhang@amd.com,
+ freedreno@lists.freedesktop.org, christian.koenig@amd.com,
+ l.stach@pengutronix.de
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Thomas,
 
---===============2368064881906293589==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="NqNl6FRZtoRUn5bW"
-Content-Disposition: inline
-
-
---NqNl6FRZtoRUn5bW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Sep 15, 2020 at 04:59:51PM +0200, Thomas Zimmermann wrote:
+On 09/15, Thomas Zimmermann wrote:
 > GEM object functions deprecate several similar callback interfaces in
 > struct drm_driver. This patch replaces the per-driver callbacks with
-> per-instance callbacks in tegra.
->=20
+> per-instance callbacks in vkms.
+> 
 > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+
+Thanks! Looks fine.
+
+Reviewed-by: Melissa Wen <melissa.srw@gmail.com>
+
 > ---
->  drivers/gpu/drm/tegra/drm.c | 4 ----
->  drivers/gpu/drm/tegra/gem.c | 8 ++++++++
->  2 files changed, 8 insertions(+), 4 deletions(-)
-
-Acked-by: Thierry Reding <treding@nvidia.com>
-
---NqNl6FRZtoRUn5bW
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl9jQNQACgkQ3SOs138+
-s6HfWQ//YmrWsVV1CJUAgb5t2QX4pCrujVRekVE/g1njlA/b4hb8UrTwixaZox4k
-Y6ALc4RAngHpnPoebK9HTtI7eQ6gV3NzTvOZN432iqInp8UuFdrqwY9hkRcS5ak9
-gNSHqMgl0BAkIdZ7VM5EWvVcbSkWsGbOR2uTx45m3hieqf80Jlyto/yqcH8yHm0Y
-dNhlRIxSS23lHF4c79jOtCPyJjF2DaErfz+qFiFLmdV60AjeCfl6LZZSuSNSbSNv
-Ht8OICXXHv9dKx6IbgyAAJIf77DsMDyXHzNC6YxoBH1c1X3JgEinuNaj8h+ZXxrT
-klWtayTZ15xforiBumJH+Zi23DA+95v6eigfHDVje5APtRHxDgdnNOhW6zRF049I
-powiLvCaS10xJVB7+4DlXmvdJTRaw8jNMcOYR0Yyg5fwrbkjkHyFsi2iQyzclBEJ
-KM5kjLzpgBQpaEgpsCqxY0TJ0/bU/VdL532UpAyCK7D9RxN8sdhfU7A4xuwwAeNP
-t63YCPEKs9kd0rKW4W6tUOEm9IeNiHL0CL55oYNDUNk0ddTtmdlQkFKSOfDbGBwe
-X3RtJeu0oG5S40RXucqy2J4BJO5tKcymjFb3xqjaCP8nDF3ozvgmq/Hu4+MWkeL7
-b/rNCCE8o02rDlLqOHqxccc+bQXs6tQBkwI0mESWxpdRfBPoyt8=
-=1YYz
------END PGP SIGNATURE-----
-
---NqNl6FRZtoRUn5bW--
-
-
---===============2368064881906293589==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>  drivers/gpu/drm/vkms/vkms_drv.c |  8 --------
+>  drivers/gpu/drm/vkms/vkms_gem.c | 13 +++++++++++++
+>  2 files changed, 13 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/vkms/vkms_drv.c b/drivers/gpu/drm/vkms/vkms_drv.c
+> index cb0b6230c22c..726801ab44d4 100644
+> --- a/drivers/gpu/drm/vkms/vkms_drv.c
+> +++ b/drivers/gpu/drm/vkms/vkms_drv.c
+> @@ -51,12 +51,6 @@ static const struct file_operations vkms_driver_fops = {
+>  	.release	= drm_release,
+>  };
+>  
+> -static const struct vm_operations_struct vkms_gem_vm_ops = {
+> -	.fault = vkms_gem_fault,
+> -	.open = drm_gem_vm_open,
+> -	.close = drm_gem_vm_close,
+> -};
+> -
+>  static void vkms_release(struct drm_device *dev)
+>  {
+>  	struct vkms_device *vkms = container_of(dev, struct vkms_device, drm);
+> @@ -98,8 +92,6 @@ static struct drm_driver vkms_driver = {
+>  	.release		= vkms_release,
+>  	.fops			= &vkms_driver_fops,
+>  	.dumb_create		= vkms_dumb_create,
+> -	.gem_vm_ops		= &vkms_gem_vm_ops,
+> -	.gem_free_object_unlocked = vkms_gem_free_object,
+>  	.prime_fd_to_handle	= drm_gem_prime_fd_to_handle,
+>  	.gem_prime_import_sg_table = vkms_prime_import_sg_table,
+>  
+> diff --git a/drivers/gpu/drm/vkms/vkms_gem.c b/drivers/gpu/drm/vkms/vkms_gem.c
+> index a017fc59905e..19a0e260a4df 100644
+> --- a/drivers/gpu/drm/vkms/vkms_gem.c
+> +++ b/drivers/gpu/drm/vkms/vkms_gem.c
+> @@ -7,6 +7,17 @@
+>  
+>  #include "vkms_drv.h"
+>  
+> +static const struct vm_operations_struct vkms_gem_vm_ops = {
+> +	.fault = vkms_gem_fault,
+> +	.open = drm_gem_vm_open,
+> +	.close = drm_gem_vm_close,
+> +};
+> +
+> +static const struct drm_gem_object_funcs vkms_gem_object_funcs = {
+> +	.free = vkms_gem_free_object,
+> +	.vm_ops = &vkms_gem_vm_ops,
+> +};
+> +
+>  static struct vkms_gem_object *__vkms_gem_create(struct drm_device *dev,
+>  						 u64 size)
+>  {
+> @@ -17,6 +28,8 @@ static struct vkms_gem_object *__vkms_gem_create(struct drm_device *dev,
+>  	if (!obj)
+>  		return ERR_PTR(-ENOMEM);
+>  
+> +	obj->gem.funcs = &vkms_gem_object_funcs;
+> +
+>  	size = roundup(size, PAGE_SIZE);
+>  	ret = drm_gem_object_init(dev, &obj->gem, size);
+>  	if (ret) {
+> -- 
+> 2.28.0
+> 
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2368064881906293589==--
-
