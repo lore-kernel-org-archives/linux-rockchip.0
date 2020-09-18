@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A055EC43464
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2020 14:04:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A6691C43463
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2020 14:04:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5923F20878
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2020 14:04:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5BECB21D42
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Sep 2020 14:04:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1rdvUq0x";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="hkoxVra2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5923F20878
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="COM2aFjx";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="RVt4tQGL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5BECB21D42
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,53 +25,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8340eXd4AJqSYOKLzjLXu8rMEqTIdO/gjGByhxcEkPk=; b=1rdvUq0xcWlGkncJiOB9qr7ux
-	9WnZQL8viYJpHpUbiw0maCQBWB+kI0A2Ev/vbT+X86O4/h5FDHhHO40uI/RGehblZF2lWNkYmNMYM
-	GL5ol9n2G7yi6c2SYPxM4C6zxzZLQJsaDdD5MoCQSMy7xfBEUgSEUJljmybs7NO240Ydb3/EwfMA5
-	gLvFWeoftzJ3PecJKenwcbvQk80EfFhX4jirdMjw6rfaMmyp7JG/6nOoCo0LMy9wZ5ei6l/ejdI2V
-	jN7FpMjLnOIXfI8B4xitdXQ+lSXJNheyrm0MpN7zTP/ihdfjtyCCxkQomTtt5ykEknvkA6FWGj+Ag
-	2lK3BL8mw==;
+	 bh=+l7fjx22DQRE0eXWQ/Rlgja3lirAWYu0PXvv9/MnmKk=; b=COM2aFjxynCFr4UF/Umk0EAQJ
+	1ls7l0YT2VvkxC1ILZkwikbZy0A0p/OoNAWBNaNhve3stgaql02fpQ6EW5LymiJ7FrvN4vsLkV4H6
+	c8w2gCdpIjFQmNq8roEnzSGozt8+i+AqHkkSSuaR6LeWyf5ESHJPqyuYpaPJiTdFTvLPiP3pOPYIX
+	qhlwcCZPhohrNOFBSJiGWEYBWg1kd8eq7q3sJGr6g5hCM7ujsGUy/YIN4imkBknVkyCl3Yrbvsp9X
+	0Edc/odsvjpX58FVoy6roOLYRXEYsh/WOnLKVn189zCXeYXFajimjqyK/JV8XXjfSb68k7jbEK35+
+	OP37o5p0Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kJGzW-0008FG-3R; Fri, 18 Sep 2020 14:03:58 +0000
+	id 1kJH0H-0008Mg-GW; Fri, 18 Sep 2020 14:04:45 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kJGzT-0008EY-Lv
- for linux-rockchip@lists.infradead.org; Fri, 18 Sep 2020 14:03:56 +0000
-Received: from mail-oi1-f171.google.com (mail-oi1-f171.google.com
- [209.85.167.171])
+ id 1kJH0E-0008Ls-Vu
+ for linux-rockchip@lists.infradead.org; Fri, 18 Sep 2020 14:04:43 +0000
+Received: from mail-ot1-f54.google.com (mail-ot1-f54.google.com
+ [209.85.210.54])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id C953D2376F
- for <linux-rockchip@lists.infradead.org>; Fri, 18 Sep 2020 14:03:54 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 0D47823119
+ for <linux-rockchip@lists.infradead.org>; Fri, 18 Sep 2020 14:04:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600437834;
- bh=jlUpQedx8lxFnhVYRHD0h2Z+8oE7QO6G9HDCL13E1RI=;
+ s=default; t=1600437882;
+ bh=+AUjt8uHrU807ERl3qIjVJflDoMSNyT4i7yBC6dijrI=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=hkoxVra26u+srB3hgMaWdFmgKHe/+4D9c7Q77PzhLQCLd8LvMoHtcMKBh7PQDncaN
- WhnwOkhrhrLq+g1PHNFu7hThsMHxnIOZOo6nv6qUeAwFwKaEyXyzPYBsyOVWXCMMiU
- xqMhzUt8cjTHWfMlYqdGr9EXabKN1gD6ko272Aj0=
-Received: by mail-oi1-f171.google.com with SMTP id c13so7117547oiy.6
- for <linux-rockchip@lists.infradead.org>; Fri, 18 Sep 2020 07:03:54 -0700 (PDT)
-X-Gm-Message-State: AOAM533Sdpeh5YhRp2RqyOuNQT2EjE6G/9Fa+nd3FRn+7hpIsTijuGts
- +QJVCvJJ2RfsZs9YW+EpxypU/dnXbtl6UBhICA==
-X-Google-Smtp-Source: ABdhPJw5PYmmyHWV1DhKrLllNfPExtmDPBfDoTPRLpa4UM124TtPu7YW7eKVG32FF/CjBLW9jymuFh3mRGXmtomX2ZE=
-X-Received: by 2002:aca:4d58:: with SMTP id a85mr8881222oib.147.1600437834149; 
- Fri, 18 Sep 2020 07:03:54 -0700 (PDT)
+ b=RVt4tQGL4NGqcuth0LV1JnlCXBW8SO30dOK+Lg8IIRjV0yOF0wWgsEgCOkBjFzk9s
+ 0Rn62vEFabnBsQPloLvnLHln9lSqPd+bL09xYBIprQJYenk2AZwnYvfpwWNJSXEtpi
+ Ma7cMkDdiC5idrlwehKbmi2TBawmYb3NOOEdOvqA=
+Received: by mail-ot1-f54.google.com with SMTP id 60so5485281otw.3
+ for <linux-rockchip@lists.infradead.org>; Fri, 18 Sep 2020 07:04:42 -0700 (PDT)
+X-Gm-Message-State: AOAM530lcRI78GccCMCcNSNwculKg9ZXsc+zsB/sx2sIoANcZFxNNk+9
+ DMoINKqJboIllnJJdRUyPcSatP54v+WZ/4AjCQ==
+X-Google-Smtp-Source: ABdhPJxRV95Yj/Uh3LvsS3bkFNGt2GCjGRYFMGcZ1fb2PKBNRXUO/m0gTSbm+YgzBtSAdBkO/WVadlDzl7cQpcm0zfE=
+X-Received: by 2002:a9d:6ada:: with SMTP id m26mr9294255otq.192.1600437881398; 
+ Fri, 18 Sep 2020 07:04:41 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200722155533.252844-1-helen.koike@collabora.com>
- <20200722155533.252844-3-helen.koike@collabora.com>
-In-Reply-To: <20200722155533.252844-3-helen.koike@collabora.com>
+ <20200722155533.252844-5-helen.koike@collabora.com>
+In-Reply-To: <20200722155533.252844-5-helen.koike@collabora.com>
 From: Rob Herring <robh+dt@kernel.org>
-Date: Fri, 18 Sep 2020 08:03:43 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqJgJYfT7iyxwfhixrBC3npUGZxMa_Dk4=XjKKN-AV7New@mail.gmail.com>
-Message-ID: <CAL_JsqJgJYfT7iyxwfhixrBC3npUGZxMa_Dk4=XjKKN-AV7New@mail.gmail.com>
-Subject: Re: [PATCH v5 2/9] media: staging: dt-bindings: rkisp1: drop i2c unit
- address
+Date: Fri, 18 Sep 2020 08:04:30 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqJYTNBZQ08ORB01z+=We6tuvqK3MKgGNm-Yj7q2KAMcAQ@mail.gmail.com>
+Message-ID: <CAL_JsqJYTNBZQ08ORB01z+=We6tuvqK3MKgGNm-Yj7q2KAMcAQ@mail.gmail.com>
+Subject: Re: [PATCH v5 4/9] media: staging: dt-bindings: rkisp1: drop parent
+ unit address
 To: Helen Koike <helen.koike@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200918_100355_777730_D3758CFD 
-X-CRM114-Status: GOOD (  16.77  )
+X-CRM114-CacheID: sfid-20200918_100443_083898_2D62705D 
+X-CRM114-Status: GOOD (  16.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,27 +102,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jul 22, 2020 at 9:55 AM Helen Koike <helen.koike@collabora.com> wrote:
+On Wed, Jul 22, 2020 at 9:56 AM Helen Koike <helen.koike@collabora.com> wrote:
 >
-> Add missing required items in Rockchip ISP1 dt-bindings example for
-> a complete i2c node.
-> Drop unit address to Fix error:
-> /example-0/parent/i2c@ff160000: node has a unit name, but no reg or ranges property
-> Remove unecessary fields for the example.
+> Fix the following error found with make ARCH=arm64 dt_binding_check:
 >
+> Documentation/devicetree/bindings/media/rockchip-isp1.example.dts:24.27-101.11:
+> Warning (unit_address_vs_reg): /example-0/parent@0: node has a unit name, but no reg or ranges property
+>
+> Reported-by: Johan Jonker <jbx6244@gmail.com>
 > Signed-off-by: Helen Koike <helen.koike@collabora.com>
 > ---
+> V5:
+> - Patch re-written to drop the unit address instead of adding reg
 >
-> Changes in v5:
-> - Patch re-written to drop unity address instead of completing i2c node
->
-> Changes in v2:
-> - new patch in the series
->
-> tmp: i2c drop fields
+> V3:
+> - this is a new patch in the series
 > ---
->  .../Documentation/devicetree/bindings/media/rockchip-isp1.yaml | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  .../Documentation/devicetree/bindings/media/rockchip-isp1.yaml  | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
 Acked-by: Rob Herring <robh@kernel.org>
 
