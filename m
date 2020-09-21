@@ -2,23 +2,23 @@ Return-Path: <SRS0=Rf1F=C6=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FC82C46466
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2020 18:18:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B183DC4727C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2020 22:56:40 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C575121D91
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2020 18:18:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2FFB42076E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2020 22:56:39 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gVAHxVgM";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Jo7iHJOC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C575121D91
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FecpQcaM";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="iTMeBMDS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2FFB42076E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,65 +26,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qjpg0rUqo1hA6wKGnGBwGz/BdcMiVDgafbrp1LG+SKE=; b=gVAHxVgMrIlbuILbEs8mz/DmhD
-	voABCEaeK5liqNhHU6JmQVCXTQpLHiMoshPqIW42Uv33W3nl/wlVijmV3UnMqu4eNePKmpof5/j1g
-	ZT5luu9+9wa8N031BK6a19O/N4INQJ1YrPVtb5pQVW5u0sAz+oyUnmVeMtGt2M6jGc+dy8+ZRbaL+
-	lVsqELr41gKBxCCV2JzKbvN54MKpBjb+InQXFxx78AGSHUBd9hNeJpMADdotUl+CPnHXfEgOf0doZ
-	oB5p61mHVFqP0mBIr8Ml3QKkw6A6EIFxr1seVrxghwLW1rwcxR3bdnA+h6wnTvFYAwgoSnPjPfCav
-	dM+TwuvQ==;
+	bh=5zfhjaR80L3eeXI973QG5mMrIMMrIkn6ntmOnJLvnkI=; b=FecpQcaMa5kEGVH9SQQzY9RjKs
+	Lp1lJ2ahcHevWTrlhqH6D6f0g0DA0fuoHjG52X85dERiu4VsbaG7mkeu3kdcxAOgOWCi+ZW/QZQhK
+	MSuS8TUfuITZU4xxweGiC7WrKozUsty3n2lbPXTBuwy53DOlOqHkOxNgWoJoCxMPrnoDYq90GiR+r
+	CvoGPaSFH+FTV4obGS1LdhYIQ6rCMrvFZyE0SdxH9wpiYRcoKxq9gUuSFVL4XW96ebYgoL2h9X7oH
+	0PdtOFRGkeR3RrNI4DW/X/qUxQmuqvoBBovXNnhmTrvrldZlIP1THKbVP3npKC49r6r/HJZ9fraL7
+	l9ch7YIw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKQOW-0008W2-7H; Mon, 21 Sep 2020 18:18:32 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1kKUjW-0003yG-Eo; Mon, 21 Sep 2020 22:56:30 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKQOU-0008US-2B
- for linux-rockchip@lists.infradead.org; Mon, 21 Sep 2020 18:18:30 +0000
-Received: by mail-wm1-x342.google.com with SMTP id w2so436575wmi.1
- for <linux-rockchip@lists.infradead.org>; Mon, 21 Sep 2020 11:18:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ id 1kKUjU-0003xG-Aa
+ for linux-rockchip@lists.infradead.org; Mon, 21 Sep 2020 22:56:29 +0000
+Received: by mail-wr1-x444.google.com with SMTP id o5so14774250wrn.13
+ for <linux-rockchip@lists.infradead.org>; Mon, 21 Sep 2020 15:56:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=A1MQxxkBThDiurj1v2jhCnceLVLB/fGM4hxv7q+SCYY=;
- b=Jo7iHJOCck6o7eEnd+5pX9prtparE7DUushGGX5zieZVkWYeruvuLW89Pl6KE41MOM
- kISKm7ZBw/mss7rigBz3FgEnn7Kqy1QUnOJGwY89uQzQiAFS1z+9kfeQheqf7xghjR9B
- NT69XADwIeDGX0rv23yLg7NnMx+BL3fB8TrYBJqXm5yVFgCZKEWkxjhW7wyXH3LIy1/p
- qhGDLG7Ql2QtJL6ga6+9DRhVkofGkLtarUMiHIfYGc+MTzHw6VEqK3Icq7U/Tp7gR3UP
- oxChnT8yniIqa8g+FpaKCDwV1qZzytN0NdluY/gSYqhgTpWDw3j8eCgU6j4WkZX2JBZs
- Mo+g==
+ bh=j57CFeGumUoULupeCRinOp3a9/2XpdO6zfbDwFadDd4=;
+ b=iTMeBMDSd3lMbfj0ysL1nD2Uqfr0dUMPdhbZtrjhXXZTgUw96tTJw7kMUmU8lkOZRZ
+ mAcaebTStOSSjVHMiecQrrWzpNxqcy3PRkbtYD/BbrPpoUPrXXn4IztAZbEKWIbmokwC
+ D0bdmrBbo5MhyFH6boYh3rB9BUYn709eYJ/yY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=A1MQxxkBThDiurj1v2jhCnceLVLB/fGM4hxv7q+SCYY=;
- b=H0DcsTgtpTUGRZXrU40IPRCB/E4llsh8RVnmq3eDz6MQFQAkYgGwfAYZlLER56aAiG
- eGr1DzED1ZFX7Zv0qxi4HurMTjFRb8gIf5+174s9CdWLR6JPbwIxfjwTdY+IBL49nJo8
- gKxp8T6+D93CwhJL+/F4qssg2LRwqFuIM4WTpQctqotzt9Qx5qLEHPcQKluVAG14YozS
- 3jR4uYpZLVHq+aK8+mMm79w98D73LpPKfvrYd7WtlrC6wk5ur4Flr6y11+wfLQkBlu2t
- J+8IbtG5roPsQ47B9bnkxG3YxTv0LnZoUqzBXtkc51H1Po9fZSSfyq+rlB6Y7fId1Nlq
- 9oZg==
-X-Gm-Message-State: AOAM530ORWohwxQCwo2CoEn1tRgT9xJBg5p9zc4CnaseF6GuhcuFhrfv
- 6EonS/JN7CDZkjBazzc+RJ4=
-X-Google-Smtp-Source: ABdhPJzovgLUVrfshcXNKGJlgkuOJ9nLWi6qMfYi/YQ+Z/7uKl5Iv6EsKAxZiQe7OgRFA96Yf6ctWg==
-X-Received: by 2002:a1c:9c8c:: with SMTP id f134mr601309wme.27.1600712307674; 
- Mon, 21 Sep 2020 11:18:27 -0700 (PDT)
-Received: from localhost.localdomain ([170.253.46.69])
- by smtp.gmail.com with ESMTPSA id h16sm23523249wre.87.2020.09.21.11.18.26
+ bh=j57CFeGumUoULupeCRinOp3a9/2XpdO6zfbDwFadDd4=;
+ b=k4zGdKkaxvpmO8opTSZo02WUcCDjW5NKviztKf957dBl4kwPSVcsIQScLCj/WLH95P
+ obPuboWP+IjwP3TNMfSNBRPoUt5qo4zlHn3lSmhJMcnyJG2qXNzkntFCbVj8Hk/qOgHo
+ 2ZV46uGuLBFeY8I0dUkTOt0ISDctpIZM00U9mCHUX7qdZWB3C8EUr+dsGO8atHjC8mCF
+ 7IDltyTgxH0ADjqg1QYniZ7LoylVgWImPebk2gPwc7maMlni3+R5Mh5qWJzuGldl8Z5Z
+ ghxnyUl0/ZsOoQv/mbFNxLnNsuVPpXtvRLAM04crdikHOBbnlA5XSoYbsp/DScPizTSy
+ FAdg==
+X-Gm-Message-State: AOAM5300H7Fjti45cafPS/iVRzCxZM6hVHASoAxyxnAF58f7HrskzxGr
+ F4vCcChLQHchWTHOU7E9Gymp1g==
+X-Google-Smtp-Source: ABdhPJwHEUTjE2FUfxfPVVxbUIO9QM0Shms2B58JmmJhPmYmEyqMdFXGSLoL3J9mFdd6KScW9zXpuw==
+X-Received: by 2002:adf:8481:: with SMTP id 1mr1936150wrg.231.1600728985313;
+ Mon, 21 Sep 2020 15:56:25 -0700 (PDT)
+Received: from tfiga.c.googlers.com.com
+ (216.131.76.34.bc.googleusercontent.com. [34.76.131.216])
+ by smtp.gmail.com with ESMTPSA id f14sm1543366wme.22.2020.09.21.15.56.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2020 11:18:26 -0700 (PDT)
-From: Vicente Bergas <vicencb@gmail.com>
-To: Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH 0/3] drm: rockchip: hdmi: enable higher resolutions than FHD
-Date: Mon, 21 Sep 2020 20:18:00 +0200
-Message-Id: <20200921181803.1160-1-vicencb@gmail.com>
-X-Mailer: git-send-email 2.28.0
+ Mon, 21 Sep 2020 15:56:24 -0700 (PDT)
+From: Tomasz Figa <tfiga@chromium.org>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH] phy: rockchip-dphy-rx0: Include linux/delay.h
+Date: Mon, 21 Sep 2020 22:56:18 +0000
+Message-Id: <20200921225618.52529-1-tfiga@chromium.org>
+X-Mailer: git-send-email 2.28.0.681.g6f77f65b4e-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200921_141830_139732_6CD4944C 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200921_185628_440092_791322B2 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,26 +91,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Vicente Bergas <vicencb@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Helen Koike <helen.koike@collabora.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org,
+ Vinod Koul <vkoul@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series enable a QHD HDMI monitor to work at native resolution.
-Tested on a Sapphire board with RK3399 connected to a Q27q-10 monitor at 2560x1440@60
+Fix an implicit declaration of usleep_range():
 
-Vicente Bergas (3):
-  drm: rockchip: remove vop_crtc_mode_fixup to fix clock handling
-  drm: rockchip: HDMI: allow any clock that is within the range
-  drm: rockchip: HDMI: add higher pixel clock frequencies
+drivers/phy/rockchip/phy-rockchip-dphy-rx0.c: In function 'rk_dphy_enable':
+drivers/phy/rockchip/phy-rockchip-dphy-rx0.c:203:2: error: implicit declaration of function 'usleep_range' [-Werror=implicit-function-declaration]
 
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c |  8 +++-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 45 ---------------------
- 2 files changed, 7 insertions(+), 46 deletions(-)
+Fixes: 32abcc4491c62 ("media: staging: phy-rockchip-dphy-rx0: add Rockchip MIPI Synopsys DPHY RX0 driver")
+Signed-off-by: Tomasz Figa <tfiga@chromium.org>
+---
+ drivers/phy/rockchip/phy-rockchip-dphy-rx0.c | 1 +
+ 1 file changed, 1 insertion(+)
 
+diff --git a/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c b/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
+index 7c4df6d48c43..4df9476ef2a9 100644
+--- a/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
++++ b/drivers/phy/rockchip/phy-rockchip-dphy-rx0.c
+@@ -16,6 +16,7 @@
+  */
+ 
+ #include <linux/clk.h>
++#include <linux/delay.h>
+ #include <linux/io.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
 -- 
-2.28.0
+2.28.0.681.g6f77f65b4e-goog
 
 
 _______________________________________________
