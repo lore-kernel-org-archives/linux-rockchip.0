@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 145ADC4346E
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B2D23C4363D
 	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2020 18:18:38 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B265420888
-	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2020 18:18:37 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5E37120888
+	for <linux-rockchip@archiver.kernel.org>; Mon, 21 Sep 2020 18:18:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zE2+27VT";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="k8ytlwjs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B265420888
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kBcnLzzb";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="rOyh0tsG"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E37120888
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,67 +27,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=PqzT7ROTycchhIbh9gAh1mWIl8c07x1pwc9S7AZpc6s=; b=zE2+27VTCLOz5HugNX5Pjfmwa
-	fXsBXJyWkt3hS6fiSjBHPDsasjoL+nPOnxv57KWjT3pJUlRMiXYVvNxF546mih2ulRJCDQapTZBlI
-	kisT6J9+yDEyfzqnHUHHQ12lfGY8JVghgpT5H+6WixxboBMNdA5mdH/V0q0uwRWPq/NMtn0JiD+JI
-	mkZhBPBBcWmtxf5mtHNLMkPdsGz5b85N+L9rHP6IMVK2uJQsrJz90q+34Eag2hhhR3O6Q0ThNUvk8
-	vTb80PRv+DWN88x9zz1lpi0H+5CYmWQp13Gz10+yw/3S/KGMd3Mb+50pKuwIPDasTXpkNwjRlT7R/
-	EVuk/8tHA==;
+	 bh=gz7vSY1j1JemrhGA5MmXoNSLfar46qxWcuuQn6etEIU=; b=kBcnLzzbEAm4+TuSn9YAKPpgy
+	o26Q1cEFrYOEYLgDQbXxn9NoIIBa2O64a/vavMAofliioKBuoCyx37Iy5UPNMIrNYxIBzx4zYtN+Q
+	cQ0lWoRYmChPQmyip1Gi52mHQclN/45Q22hPCKgnU6ZfNLHpU6uhBs8OeqndBA4eTsiEoygwgwK/R
+	1YKVxAlpSRdjMTCpcmZ9uiP8485CZ3yURWO8wnzmf99Hi2E+HyABzJ/AAJdDxsdc3E8rrv76PuQz3
+	gWMrLQeQ1V3ld2H+YmH92ems8GyqdtJMygmFiTBjmdVQ9tE9fhgRe2OiCOHGkgcyjB/4F6ShpV4ES
+	TZ3a51rSg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKQOX-0008WG-0x; Mon, 21 Sep 2020 18:18:33 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1kKQOY-00005E-Rv; Mon, 21 Sep 2020 18:18:34 +0000
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKQOU-0008Uk-E1
- for linux-rockchip@lists.infradead.org; Mon, 21 Sep 2020 18:18:31 +0000
-Received: by mail-wm1-x341.google.com with SMTP id d4so414107wmd.5
- for <linux-rockchip@lists.infradead.org>; Mon, 21 Sep 2020 11:18:30 -0700 (PDT)
+ id 1kKQOW-0008Vj-2o
+ for linux-rockchip@lists.infradead.org; Mon, 21 Sep 2020 18:18:33 +0000
+Received: by mail-wm1-x342.google.com with SMTP id k18so413613wmj.5
+ for <linux-rockchip@lists.infradead.org>; Mon, 21 Sep 2020 11:18:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=wN1VQcr5gopN//+YP1c+kyMLVVksKqlHg3J3zrz7FOU=;
- b=k8ytlwjsFo4BX7JUh7CapBzDGKRouXqIq9lZRGGlkP3m84azSYvitonhDLI+f0lqEx
- hIUX1oEPHGxhWhptxVKAHTYTJ5ECdL4IZZ89GbFr+XImQxZBn2eedIMpr1Jk1BGSohAm
- zZnEj8y3JuJO8a4zR5HmoSEq2R9/ygi3Sz884uloe2ckSJEqy2UE6VE7ug8jOn2aVKIT
- cUYxsW8blV8BPFeIUUFBVG/eebmKS7TOCS4BdFhKdmxOUuhG9m+LpsgaXZXjZwG8yUhz
- aSzn1x4rbgQUMkTbauI0jscb4TDFn8r6q3xrshq9B+sc6vRZx6xzdkAmZXPUN7ujw/dB
- N33Q==
+ bh=/ACUgjSRhezgf6ut/YNpIRBfmecqG58PBv3yXYOEimo=;
+ b=rOyh0tsGdC5eXyfXNGw8vKDDW1D7tCG6J839j2K+XF9e1oYJY4lY3mbOWagHTBY7B9
+ SPxh0PM4E3mLuc+cEt+JK/TRETWvWQVADSQ78Uz3xEqW1dgfSjUfRUwVQYseAITKxeFm
+ 3FCxo94NNT8JGS8poXdR977OcNMrasJFq6ee3EisL6YDzJVdtbOKU9Cq+hv4Pvvs9aZB
+ vplCp9xJe0XnMdjtFFD5c33cwRoitl3oLZ58VRtGZE7PyeVTtWqRUzWfbub06eLv0Hf2
+ BPMtlsx2l3DWldlqpic/uodyriud1ogIebmoBgVGe7ZUP0YLU8Da+ip6MQKuPJT4DcK1
+ ziTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=wN1VQcr5gopN//+YP1c+kyMLVVksKqlHg3J3zrz7FOU=;
- b=DzRfRuB4yLi4hMv7caVdXiYVpzuA10Zna30TwO0Y+wWc5XWflrWULY8h/yy6ZwNL61
- 6HtLDWgTAc3gHw4PjidPyVuW1MfApxN5jBbVeL8hJwsSEQAyLPkXsj8VSZPc3tnZCxWY
- zwArf4IvpL96EFYgQJZYMeTpP7BB27jdcWLceuwCLxwsepxBdWujkdGbi5qn3HpU+uJN
- 7VreH9E/EYQnrTgzGtLFhJ0RLi9cstTF8oeqaihTzlDkkbtL0B7OG3/47TwnL9R1F9m1
- BSnHk2ldiA03x6nS+7Kbcy2fEgKL+alFASIbjoPniYDmoXwbozcqZbVHJVUf2Rqngl+2
- S0nA==
-X-Gm-Message-State: AOAM531j8RbjXoilS03JUCz/e7DLjq/miKBTPoCdITYt380aCiceeUog
- 83jc2eTkPQyF56n+5l+bDe8=
-X-Google-Smtp-Source: ABdhPJwsqIQmUMoz2qqPyu7m3k2+6Iq+CcK5QecIPbZOLTffC9yTCP7aw529i0+eO1s8CZ8xoLOeDA==
-X-Received: by 2002:a7b:c215:: with SMTP id x21mr607808wmi.138.1600712308906; 
- Mon, 21 Sep 2020 11:18:28 -0700 (PDT)
+ bh=/ACUgjSRhezgf6ut/YNpIRBfmecqG58PBv3yXYOEimo=;
+ b=WjeRgfjUz84BNfL+tiQA2tBNwq9AqzPX7FA0ZK8cA855MwcbkRQ3F21GckgWbHVRtv
+ SgxC8iqvaWoCAYU/JQzXFwn8hxpsRLJayeWOZhoklbJ9eqWp5SihTC7bzj7eLcXRZcuz
+ oUftl96zNaRkpGqXd8NfIFo083oozuRUoXPwtbJOEiogKsWaWux0cjiPlR3cYzmwO3m4
+ sIlllWZwg1BUqeeyPHISe6RWNbmMft4XVZQBsIIxlJllw3Vqxh1j3jpk2hXzpz2fAaQK
+ NB7VLuju+wJb3DTBgh/ls/HM5xOKd7b90e153rkLRQMAzVMqzoakX2yvQWvT2KoKJ8GG
+ vCjw==
+X-Gm-Message-State: AOAM532Pa7R1E8b0fQ1HqSubGEyMb06n5Z9oMYNnXW/HpWPJ1ZRM2wlo
+ op3O7lS1JvBqTV9t3pA7faQ=
+X-Google-Smtp-Source: ABdhPJzABOL3ze5hfsEgGMTL3C0J67cqKBFDasWXFalipx7AIUjHU7f201Up1gS1hCfK8KEYj/oYIw==
+X-Received: by 2002:a7b:c0ca:: with SMTP id s10mr591087wmh.103.1600712311303; 
+ Mon, 21 Sep 2020 11:18:31 -0700 (PDT)
 Received: from localhost.localdomain ([170.253.46.69])
- by smtp.gmail.com with ESMTPSA id h16sm23523249wre.87.2020.09.21.11.18.27
+ by smtp.gmail.com with ESMTPSA id h16sm23523249wre.87.2020.09.21.11.18.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2020 11:18:28 -0700 (PDT)
+ Mon, 21 Sep 2020 11:18:30 -0700 (PDT)
 From: Vicente Bergas <vicencb@gmail.com>
 To: Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
  dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH 1/3] drm: rockchip: hdmi: remove vop_crtc_mode_fixup to fix
- clock handling
-Date: Mon, 21 Sep 2020 20:18:01 +0200
-Message-Id: <20200921181803.1160-2-vicencb@gmail.com>
+Subject: [PATCH 3/3] drm: rockchip: hdmi: add higher pixel clock frequencies
+Date: Mon, 21 Sep 2020 20:18:03 +0200
+Message-Id: <20200921181803.1160-4-vicencb@gmail.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200921181803.1160-1-vicencb@gmail.com>
 References: <20200921181803.1160-1-vicencb@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200921_141830_477398_036E74C2 
-X-CRM114-Status: GOOD (  15.97  )
+X-CRM114-CacheID: sfid-20200921_141832_148800_EBAF7BD6 
+X-CRM114-Status: GOOD (  12.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,83 +105,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Under certain conditions vop_crtc_mode_fixup rounds the clock
-148500000 to 148501000 which leads to the following error:
-dwhdmi-rockchip ff940000.hdmi: PHY configuration failed (clock 148501000)
-
-The issue was found on RK3399 booting with u-boot. U-boot configures the
-display at 2560x1440 and then linux comes up with a black screen.
-A workaround was to un-plug and re-plug the HDMI display.
+In order to support video resolutions beyond FHD more bandwidth is needed.
+The new entry values have been taken from u-boot:
+https://gitlab.denx.de/u-boot/u-boot/-/blob/ba2a0cbb053951ed6d36161989d38da724696b4d/drivers/video/rockchip/rk_hdmi.c#L63
 
 Signed-off-by: Vicente Bergas <vicencb@gmail.com>
 Tested-by: Vicente Bergas <vicencb@gmail.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 45 ---------------------
- 1 file changed, 45 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index c80f7d9fd13f..fe80da652994 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1142,50 +1142,6 @@ static void vop_crtc_disable_vblank(struct drm_crtc *crtc)
- 	spin_unlock_irqrestore(&vop->irq_lock, flags);
- }
- 
--static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
--				const struct drm_display_mode *mode,
--				struct drm_display_mode *adjusted_mode)
--{
--	struct vop *vop = to_vop(crtc);
--	unsigned long rate;
--
--	/*
--	 * Clock craziness.
--	 *
--	 * Key points:
--	 *
--	 * - DRM works in in kHz.
--	 * - Clock framework works in Hz.
--	 * - Rockchip's clock driver picks the clock rate that is the
--	 *   same _OR LOWER_ than the one requested.
--	 *
--	 * Action plan:
--	 *
--	 * 1. When DRM gives us a mode, we should add 999 Hz to it.  That way
--	 *    if the clock we need is 60000001 Hz (~60 MHz) and DRM tells us to
--	 *    make 60000 kHz then the clock framework will actually give us
--	 *    the right clock.
--	 *
--	 *    NOTE: if the PLL (maybe through a divider) could actually make
--	 *    a clock rate 999 Hz higher instead of the one we want then this
--	 *    could be a problem.  Unfortunately there's not much we can do
--	 *    since it's baked into DRM to use kHz.  It shouldn't matter in
--	 *    practice since Rockchip PLLs are controlled by tables and
--	 *    even if there is a divider in the middle I wouldn't expect PLL
--	 *    rates in the table that are just a few kHz different.
--	 *
--	 * 2. Get the clock framework to round the rate for us to tell us
--	 *    what it will actually make.
--	 *
--	 * 3. Store the rounded up rate so that we don't need to worry about
--	 *    this in the actual clk_set_rate().
--	 */
--	rate = clk_round_rate(vop->dclk, adjusted_mode->clock * 1000 + 999);
--	adjusted_mode->clock = DIV_ROUND_UP(rate, 1000);
--
--	return true;
--}
--
- static bool vop_dsp_lut_is_enabled(struct vop *vop)
- {
- 	return vop_read_reg(vop, 0, &vop->data->common->dsp_lut_en);
-@@ -1512,7 +1468,6 @@ static void vop_crtc_atomic_flush(struct drm_crtc *crtc,
- }
- 
- static const struct drm_crtc_helper_funcs vop_crtc_helper_funcs = {
--	.mode_fixup = vop_crtc_mode_fixup,
- 	.atomic_check = vop_crtc_atomic_check,
- 	.atomic_begin = vop_crtc_atomic_begin,
- 	.atomic_flush = vop_crtc_atomic_flush,
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 87a9198f7494..db4a946f92aa 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -148,6 +148,10 @@ static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
+ 			{ 0x214c, 0x0003},
+ 			{ 0x4064, 0x0003}
+ 		},
++	}, {
++		272000000, {
++			{ 0x0040, 0x0003},
++		},
+ 	}, {
+ 		~0UL, {
+ 			{ 0x00a0, 0x000a },
+@@ -173,6 +177,8 @@ static const struct dw_hdmi_curr_ctrl rockchip_cur_ctr[] = {
+ 		146250000, { 0x0038, 0x0038, 0x0038 },
+ 	}, {
+ 		148500000, { 0x0000, 0x0038, 0x0038 },
++	}, {
++		272000000, { 0x0000,                },
+ 	}, {
+ 		~0UL,      { 0x0000, 0x0000, 0x0000},
+ 	}
 -- 
 2.28.0
 
