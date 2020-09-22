@@ -2,62 +2,63 @@ Return-Path: <SRS0=X5eU=C7=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3770DC2D0E2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 11:34:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C9949C2D0E2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 11:49:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C364423600
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 11:34:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 7DC44221EB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 11:49:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qIxlZlU0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C364423600
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zW1ck9nc";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Q0kzW0fq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7DC44221EB
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Unsubscribe:List-Id:Message-Id:Subject:References:In-Reply-To:To:From:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tOujSrfx+LIcXt6XIO2CXIA422z/HUnHPND0MiRmy8Y=; b=qIxlZlU0LCgy0tcrhZXLNE++qJ
-	FlQtx1YIbfKBhLe/kQqzK9whTl4x+2WCxLYwbn4vVK4kjqyWs55hX/zgN23twA977akAzPpTxxIxs
-	6yyfeg2IsL5LyAQJ66igf8+4dlZD1XS7LFpjQHftrcu0PwLuT9c3F5V6a3kI/xPDRnfqFiI2fR/mX
-	TZnlVRAw8VtA1bYvIRLuxUAnwG45mRxE0Zo+77LKZLCFPYtX12X3xiXJxxVAUl0eOZw/6B2qN/2ii
-	TeD4SWj5/U0JE5xzIDOL42l7oA6m9ujmLq/Ixv7tCMMAepqXOikzadFFS1f9+rksOdRTh1xDy6pXN
-	2TmaG55w==;
+	bh=Wil/rbFIcC8ODWkMACGV6xnfqmr2NmVpwdlwqnCgrYU=; b=zW1ck9ncXZzky0roMQZQCZkYvr
+	wqGmjmoRQ7brrLR6570Ezm2+u8Kk58/ydzXtS0xRWVH+yQNIVvPOK7qFAyqPTW3p0M5upDcuRbsEM
+	NdV366uAa1VvylLhH0kwiTpDcjuzbIqrJXn1LSoMsHLI0IhK426jQ5OGbqtsvLonHK6DAq6gQs6NF
+	8B+CcLTzeqxjnCLDCuTqhjW9Sg3Kz9gyy+3WBsEGfZcpEz5qtb1qFHRONnkj4Oyfjq7AFVTQ0Ypfo
+	JSroHOdXnOmsvlupP7WWw3hpqDkMoFPtlPNsbUKv+OjLNrtI/I5eATFmHMWhiz2o+iBfDeiDHzGvb
+	E53z7MNg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKgZM-0006NC-SD; Tue, 22 Sep 2020 11:34:48 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kKgns-0000Wg-HB; Tue, 22 Sep 2020 11:49:49 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKgYv-00069M-3Q
- for linux-rockchip@lists.infradead.org; Tue, 22 Sep 2020 11:34:27 +0000
-Received: from guri.fritz.box
- (p200300c7cf13ec005877be1094b7a29d.dip0.t-ipconnect.de
- [IPv6:2003:c7:cf13:ec00:5877:be10:94b7:a29d])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 2A71029B4CE;
- Tue, 22 Sep 2020 12:34:14 +0100 (BST)
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v3 11/12] media: staging: rkisp1: use the right variants of
- spin_lock
-Date: Tue, 22 Sep 2020 13:34:01 +0200
-Message-Id: <20200922113402.12442-12-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200922113402.12442-1-dafna.hirschfeld@collabora.com>
-References: <20200922113402.12442-1-dafna.hirschfeld@collabora.com>
+ id 1kKgni-0000UF-Af; Tue, 22 Sep 2020 11:49:40 +0000
+Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id BC07A221EB;
+ Tue, 22 Sep 2020 11:49:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1600775377;
+ bh=Q4KDNQJE+iH1DnDYsmw0dPu90gd1omWDNMB3ZeVjjGg=;
+ h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
+ b=Q0kzW0fqgH/ZynkmIIsZ+Sk3TIZn1d1t5vPwcPmXgKloPcyO+FEfgbJPD2ON45Hz8
+ OOhutiHnFCkdlS2Oq5dnBkZlt3W7mf2vS5wJL9kS7AQvzZ8+wJETBuTKgGLs+1yuJc
+ NnwNw6eHuWv6vW9+hMhEnlq2sqh22UhUiTpgzLzI=
+Date: Tue, 22 Sep 2020 12:48:44 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Cheng-Yi Chiang <cychiang@chromium.org>, linux-kernel@vger.kernel.org
+In-Reply-To: <20200922062316.1172935-1-cychiang@chromium.org>
+References: <20200922062316.1172935-1-cychiang@chromium.org>
+Subject: Re: [PATCH] ASoC: hdmi-codec: Use set_jack ops to set jack
+Message-Id: <160077532459.10007.8996932486569302078.b4-ty@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_073421_471791_7E617952 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20200922_074939_927063_E1D13E08 
+X-CRM114-Status: GOOD (  11.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,169 +71,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
- tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
+Cc: dianders@chromium.org, alsa-devel@alsa-project.org, tzungbi@chromium.org,
+ Srinivasa Rao <srivasam@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>,
+ Takashi Iwai <tiwai@suse.com>, Tzung-Bi Shih <tzungbi@google.com>,
+ Rob Herring <robh+dt@kernel.org>, Rohit kumar <rohitkr@codeaurora.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ dgreid@chromium.org, linux-arm-kernel@lists.infradead.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When locking, use either 'spin_lock' or 'spin_lock_irq'
-according to the context. There is nowhere need to
-use 'spin_lock_irqsave'.
-Outside of irq context, always use 'spin_lock_irq'
-to be on the safe side.
+On Tue, 22 Sep 2020 14:23:16 +0800, Cheng-Yi Chiang wrote:
+> Use set_jack ops to set jack so machine drivers do not need to include
+> hdmi-codec.h explicitly.
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- drivers/staging/media/rkisp1/rkisp1-capture.c | 15 ++++++--------
- drivers/staging/media/rkisp1/rkisp1-params.c  | 20 ++++++++-----------
- 2 files changed, 14 insertions(+), 21 deletions(-)
+Applied to
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-index 1c762a369b63..012c0825a386 100644
---- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-@@ -626,9 +626,8 @@ static void rkisp1_handle_buffer(struct rkisp1_capture *cap)
- {
- 	struct rkisp1_isp *isp = &cap->rkisp1->isp;
- 	struct rkisp1_buffer *curr_buf;
--	unsigned long flags;
- 
--	spin_lock_irqsave(&cap->buf.lock, flags);
-+	spin_lock(&cap->buf.lock);
- 	curr_buf = cap->buf.curr;
- 
- 	if (curr_buf) {
-@@ -641,7 +640,7 @@ static void rkisp1_handle_buffer(struct rkisp1_capture *cap)
- 	}
- 
- 	rkisp1_set_next_buf(cap);
--	spin_unlock_irqrestore(&cap->buf.lock, flags);
-+	spin_unlock(&cap->buf.lock);
- }
- 
- void rkisp1_capture_isr(struct rkisp1_device *rkisp1)
-@@ -716,7 +715,6 @@ static void rkisp1_vb2_buf_queue(struct vb2_buffer *vb)
- 		container_of(vbuf, struct rkisp1_buffer, vb);
- 	struct rkisp1_capture *cap = vb->vb2_queue->drv_priv;
- 	const struct v4l2_pix_format_mplane *pixm = &cap->pix.fmt;
--	unsigned long flags;
- 	unsigned int i;
- 
- 	memset(ispbuf->buff_addr, 0, sizeof(ispbuf->buff_addr));
-@@ -741,9 +739,9 @@ static void rkisp1_vb2_buf_queue(struct vb2_buffer *vb)
- 		swap(ispbuf->buff_addr[RKISP1_PLANE_CR],
- 		     ispbuf->buff_addr[RKISP1_PLANE_CB]);
- 
--	spin_lock_irqsave(&cap->buf.lock, flags);
-+	spin_lock_irq(&cap->buf.lock);
- 	list_add_tail(&ispbuf->queue, &cap->buf.queue);
--	spin_unlock_irqrestore(&cap->buf.lock, flags);
-+	spin_unlock_irq(&cap->buf.lock);
- }
- 
- static int rkisp1_vb2_buf_prepare(struct vb2_buffer *vb)
-@@ -769,10 +767,9 @@ static int rkisp1_vb2_buf_prepare(struct vb2_buffer *vb)
- static void rkisp1_return_all_buffers(struct rkisp1_capture *cap,
- 				      enum vb2_buffer_state state)
- {
--	unsigned long flags;
- 	struct rkisp1_buffer *buf;
- 
--	spin_lock_irqsave(&cap->buf.lock, flags);
-+	spin_lock_irq(&cap->buf.lock);
- 	if (cap->buf.curr) {
- 		vb2_buffer_done(&cap->buf.curr->vb.vb2_buf, state);
- 		cap->buf.curr = NULL;
-@@ -787,7 +784,7 @@ static void rkisp1_return_all_buffers(struct rkisp1_capture *cap,
- 		list_del(&buf->queue);
- 		vb2_buffer_done(&buf->vb.vb2_buf, state);
- 	}
--	spin_unlock_irqrestore(&cap->buf.lock, flags);
-+	spin_unlock_irq(&cap->buf.lock);
- }
- 
- /*
-diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
-index f0258b4258ed..986d293201e6 100644
---- a/drivers/staging/media/rkisp1/rkisp1-params.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-params.c
-@@ -1300,16 +1300,15 @@ static void rkisp1_params_config_parameter(struct rkisp1_params *params)
- 	else
- 		rkisp1_csm_config(params, false);
- 
--	spin_lock(&params->config_lock);
-+	spin_lock_irq(&params->config_lock);
- 
- 	/* apply the first buffer if there is one already */
- 	if (params->is_streaming)
- 		rkisp1_params_apply_params_cfg(params, 0);
- 
--	spin_unlock(&params->config_lock);
-+	spin_unlock_irq(&params->config_lock);
- }
- 
--/* Not called when the camera active, thus not isr protection. */
- void rkisp1_params_configure(struct rkisp1_params *params,
- 			     enum rkisp1_fmt_raw_pat_type bayer_pat,
- 			     enum v4l2_quantization quantization)
-@@ -1442,12 +1441,11 @@ static void rkisp1_params_vb2_buf_queue(struct vb2_buffer *vb)
- 		container_of(vbuf, struct rkisp1_buffer, vb);
- 	struct vb2_queue *vq = vb->vb2_queue;
- 	struct rkisp1_params *params = vq->drv_priv;
--	unsigned long flags;
- 
- 	params_buf->vaddr = vb2_plane_vaddr(vb, 0);
--	spin_lock_irqsave(&params->config_lock, flags);
-+	spin_lock_irq(&params->config_lock);
- 	list_add_tail(&params_buf->queue, &params->params);
--	spin_unlock_irqrestore(&params->config_lock, flags);
-+	spin_unlock_irq(&params->config_lock);
- }
- 
- static int rkisp1_params_vb2_buf_prepare(struct vb2_buffer *vb)
-@@ -1465,7 +1463,6 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
- 	struct rkisp1_params *params = vq->drv_priv;
- 	struct rkisp1_buffer *buf;
- 	struct list_head tmp_list;
--	unsigned long flags;
- 
- 	INIT_LIST_HEAD(&tmp_list);
- 
-@@ -1474,10 +1471,10 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
- 	 * and then we can iterate it and call vb2_buffer_done
- 	 * without holding the lock
- 	 */
--	spin_lock_irqsave(&params->config_lock, flags);
-+	spin_lock_irq(&params->config_lock);
- 	params->is_streaming = false;
- 	list_cut_position(&tmp_list, &params->params, params->params.prev);
--	spin_unlock_irqrestore(&params->config_lock, flags);
-+	spin_unlock_irq(&params->config_lock);
- 
- 	list_for_each_entry(buf, &tmp_list, queue)
- 		vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
-@@ -1487,11 +1484,10 @@ static int
- rkisp1_params_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
- {
- 	struct rkisp1_params *params = queue->drv_priv;
--	unsigned long flags;
- 
--	spin_lock_irqsave(&params->config_lock, flags);
-+	spin_lock_irq(&params->config_lock);
- 	params->is_streaming = true;
--	spin_unlock_irqrestore(&params->config_lock, flags);
-+	spin_unlock_irq(&params->config_lock);
- 
- 	return 0;
- }
--- 
-2.17.1
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
+Thanks!
+
+[1/1] ASoC: hdmi-codec: Use set_jack ops to set jack
+      commit: 55c5cc63ab3277aa20637dc20f6528987ac23743
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-rockchip mailing list
