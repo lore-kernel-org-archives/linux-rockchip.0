@@ -2,92 +2,64 @@ Return-Path: <SRS0=X5eU=C7=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C1D36C2D0E2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 20:31:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 204D6C2D0E2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 23:27:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4C01A235FD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 20:31:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B96AD22206
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 23:27:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lVkylUmz";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="vVA6LLgG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C01A235FD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TRUJ6HD/";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="UX2E/qqk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B96AD22206
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=gz7vSY1j1JemrhGA5MmXoNSLfar46qxWcuuQn6etEIU=; b=lVkylUmzFCaL+FoiJag58w29X
-	EK05seNxKJS+Enfp+B1GtyVieiPyPdBpyETdHIEMuDIzrjUZPj8Ko1odVtG3zNe0hwf8xhVCiHG/m
-	Zml5alJX07qS+wIAEtL7dF+3GRbnx87lSLt2WX98uy++ufJTbwMf/LkROBqgTcdda2eOGk5ZMADH9
-	ReaQ6KyRRnnUx6YNSTHfQip+zU8KdZYWSh/lGFz0U2nNTjO60kZTmypLx7gk2tykTWxAWh8mTC/4M
-	ndwlCimUqvfHndXGp8Y5d72HU9HHjA4fzenpC33gfxL4uNZTXKmZyo/ofDXEjP10sudXWbu8ngKT2
-	9+ySWtQ9Q==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=N21RU9kmmBeyx/dnE0ZGH8OrNI4iTNjQTNESTygsCZI=; b=TRUJ6HD/xPwsXd6Pz3RCEenqK
+	oFjKIMfgkkV6jOpGhZD+6eQFnAMj9aW+jeZo37TbeOi63lH9bTM1sujjxp7kAgX61cuurbP2+npMa
+	zKKO91fq+QKXkB+OUsdqUbWXCLYzeFYlS0nKFvvnwE6hB7QikWC0aQil2iHbMO/yqkLd+30GARZ95
+	2r+pepwAWOroVVphNsLVeR6rM553KQ0FAq/qsAAaSeh8AIyI5/rK1z/PnkK5GVmNi5+VlRxnfW7Cu
+	s7jEhJpKubSX6JfcrOHK73yHvskWX+s6prwGP04UzdkwhQh0UbXNlmSdFIEKFmwtzhgK4cMe4lGQx
+	7NuKmtFNA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKown-0003sp-0Z; Tue, 22 Sep 2020 20:31:33 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1kKrgx-0005Pj-RB; Tue, 22 Sep 2020 23:27:23 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKowh-0003qW-0l
- for linux-rockchip@lists.infradead.org; Tue, 22 Sep 2020 20:31:28 +0000
-Received: by mail-wr1-x443.google.com with SMTP id s12so18517986wrw.11
- for <linux-rockchip@lists.infradead.org>; Tue, 22 Sep 2020 13:31:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/ACUgjSRhezgf6ut/YNpIRBfmecqG58PBv3yXYOEimo=;
- b=vVA6LLgG8jwWQguQZR4gVTXEp160a50BMNzyRiQUhwEHIgxAB3qPPlwvXKmyIOLqe4
- EWMSpiGjRuH22WiVKvFPxKzQE7p86aevN4bPO+wsC8YTKf3Qkrtcpg1rrrghvnvCU5rC
- BntTw3iKjTUEZHEfM1+dN0dfr2lx6kHCh89CMV20OYneUhftADpnifhJlZtu3K/GyJ+o
- TSPDXnTKUJhRtACorada1t6yRQtVHeIBd9mvGGiYLXqvd3ooDC2XZcW03Dkpu9EGolM5
- iTFZ2sj8Pfn0QZ6u0BcsxLjcSnyY+BCINk/6Gk9S9wqH28+HL9VuBfUqmcQwTf+yrj92
- EN6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=/ACUgjSRhezgf6ut/YNpIRBfmecqG58PBv3yXYOEimo=;
- b=idKhtYmxNh5CFfhaFk+WxhSv4cefVQidvFM14ox4JkI/inBAaFs4QqtEdlPn+TtNmk
- njoHwXwI//KiYQ6Gr8ka2UEK0SVlolNQUgD/LQ8qfrkYlHYy4wqSIIcTSzyY/9R9Ovgq
- 54PybBX9+miVwUIaV8kgqPiAvTQPzs8mjtAOoz/zAw8WZ7Q9PtzYFRZ8fbyHVufVnS+t
- WuzKC/OPhplj7s7HRxck0yGWhBz30U54Razt9OiNMXyAO8ExQ+03Mfb1UELRHi/HJErH
- roi8XepqoLR+0ChxJpc/9+/MdYzr5isGRGviOt2mqEf7ioNXaHHwQU2zaQp7Ox+PgCMh
- FzFw==
-X-Gm-Message-State: AOAM531M1s8jdnUGGkatoLqEigxMxHX11WlFnoMfpbkIlbP6xiNpaMfS
- xNKTnW7ykKPseeejcNZg81M=
-X-Google-Smtp-Source: ABdhPJwMq1POLzNAD4zYPSd4peQ88XtIsnbU+Onjj8ugiHJj2wP7WLd6U6NDUDY46Zv9Szf68UPXRQ==
-X-Received: by 2002:adf:f544:: with SMTP id j4mr7176078wrp.74.1600806686189;
- Tue, 22 Sep 2020 13:31:26 -0700 (PDT)
-Received: from localhost.localdomain ([170.253.46.69])
- by smtp.gmail.com with ESMTPSA id r14sm27256849wrn.56.2020.09.22.13.31.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Sep 2020 13:31:25 -0700 (PDT)
-From: Vicente Bergas <vicencb@gmail.com>
-To: Doug Anderson <dianders@chromium.org>, crj <algea.cao@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 3/3] drm: rockchip: hdmi: add higher pixel clock frequencies
-Date: Tue, 22 Sep 2020 22:31:07 +0200
-Message-Id: <20200922203107.2932-4-vicencb@gmail.com>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200922203107.2932-1-vicencb@gmail.com>
-References: <20200922203107.2932-1-vicencb@gmail.com>
+ id 1kKrgt-0005OC-2C; Tue, 22 Sep 2020 23:27:19 +0000
+Received: from localhost (52.sub-72-107-123.myvzw.com [72.107.123.52])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 26C4A22206;
+ Tue, 22 Sep 2020 23:27:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1600817237;
+ bh=eyyVOuMbNc1KJWbqEKXbyHjr+ZDT6KvrtdZF4IV+YD0=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=UX2E/qqkeJV5RuPr5PrBorxSb4xqxjH+GncQQIylk6kNaMTYsu6+IbfACIL8K7wud
+ 2bGgZOh17h8fepORLcnLn8Q+XEdLcpLDZbEpPaV3phCB7TK3Ma5wEWeBv75I7fdjbP
+ OIFefsO0cM42QWj9cAQJQ4EghDUmg5WOL6VomFSk=
+Date: Tue, 22 Sep 2020 18:27:15 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+Subject: Re: [PATCH] PCI: Unify ECAM constants in native PCI Express drivers
+Message-ID: <20200922232715.GA2238688@bjorn-Precision-5520>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200905204416.GA83847@rocinante>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_163127_125736_B4B851E3 
-X-CRM114-Status: GOOD (  12.94  )
+X-CRM114-CacheID: sfid-20200922_192719_247147_6483E0EC 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,51 +72,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Vicente Bergas <vicencb@gmail.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Rob Herring <robh@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
+ Shawn Lin <shawn.lin@rock-chips.com>, Jonathan Chocron <jonnyc@amazon.com>,
+ Michal Simek <michal.simek@xilinx.com>, linux-rockchip@lists.infradead.org,
+ Zhou Wang <wangzhou1@hisilicon.com>, Robert Richter <rrichter@marvell.com>,
+ Jonathan Cameron <Jonathan.Cameron@Huawei.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Will Deacon <will@kernel.org>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In order to support video resolutions beyond FHD more bandwidth is needed.
-The new entry values have been taken from u-boot:
-https://gitlab.denx.de/u-boot/u-boot/-/blob/ba2a0cbb053951ed6d36161989d38da724696b4d/drivers/video/rockchip/rk_hdmi.c#L63
-
-Signed-off-by: Vicente Bergas <vicencb@gmail.com>
-Tested-by: Vicente Bergas <vicencb@gmail.com>
----
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 87a9198f7494..db4a946f92aa 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -148,6 +148,10 @@ static const struct dw_hdmi_mpll_config rockchip_mpll_cfg[] = {
- 			{ 0x214c, 0x0003},
- 			{ 0x4064, 0x0003}
- 		},
-+	}, {
-+		272000000, {
-+			{ 0x0040, 0x0003},
-+		},
- 	}, {
- 		~0UL, {
- 			{ 0x00a0, 0x000a },
-@@ -173,6 +177,8 @@ static const struct dw_hdmi_curr_ctrl rockchip_cur_ctr[] = {
- 		146250000, { 0x0038, 0x0038, 0x0038 },
- 	}, {
- 		148500000, { 0x0000, 0x0038, 0x0038 },
-+	}, {
-+		272000000, { 0x0000,                },
- 	}, {
- 		~0UL,      { 0x0000, 0x0000, 0x0000},
- 	}
--- 
-2.28.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+WytjYyBSb2IsIHdobydzIGRvaW5nIGEgbG90IG9mIGNsZWFudXAgaW4gdGhlc2UgZHJpdmVyc10K
+Ck9uIFNhdCwgU2VwIDA1LCAyMDIwIGF0IDEwOjQ0OjE2UE0gKzAyMDAsIEtyenlzenRvZiBXaWxj
+ennFhHNraSB3cm90ZToKPiBIZWxsbyBKb25hdGhhbiwKPiAKPiBUaGFuayB5b3UgZm9yIHRoZSBy
+ZXZpZXchICBBbHNvLCBhcG9sb2dpZXMgZm9yIGxhdGUgcmVwbHkuCj4gCj4gT24gMjAtMDgtMjgg
+MTA6MDg6NDMsIEpvbmF0aGFuIENhbWVyb24gd3JvdGU6Cj4gWy4uLl0KPiA+IAo+ID4gTWlnaHQg
+cG90ZW50aWFsbHkgYmUgd29ydGggdGlkeWluZyB1cCB0aGUgbWFza3MgYXMgd2VsbD8KPiA+IE9y
+IHBvdGVudGlhbGx5IGRyb3AgdGhlbSBnaXZlbiBJIHN1c3BlY3QgdGhhdCB0aGVyZSBhcmUgbm8g
+Y2FzZXMKPiA+IGluIHdoaWNoIHRoZSBtYXNrIGlzIGFjdHVhbGx5IGRvaW5nIGFueXRoaW5nLi4u
+Cj4gCj4gSnVzdCB0byBjb25maXJtIC0geW91IGhhdmUgdGhlIGZvbGxvd2luZyBjb25zdGFudHMg
+aW4gbWluZD8KPiAKPiBkcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaDoKPiAK
+PiAjZGVmaW5lIFBDSUVfRUNBTV9CVVMoeCkJKCgoeCkgJiAweGZmKSA8PCAyMCkKPiAjZGVmaW5l
+IFBDSUVfRUNBTV9ERVYoeCkJKCgoeCkgJiAweDFmKSA8PCAxNSkKPiAjZGVmaW5lIFBDSUVfRUNB
+TV9GVU5DKHgpCSgoKHgpICYgMHg3KSA8PCAxMikKPiAKPiBkcml2ZXJzL3BjaS9jb250cm9sbGVy
+L2R3Yy9wY2llLWFsLmM6Cj4gCj4gI2RlZmluZSBQQ0lFX0VDQU1fREVWRk4oeCkJKCgoeCkgJiAw
+eGZmKSA8PCAxMikKPiAKPiBJIGNhbiBtb3ZlIFBDSUVfRUNBTV9CVVMsIFBDSUVfRUNBTV9ERVYg
+YW5kIFBDSUVfRUNBTV9GVU5DIChhcwo+IFBDSUVfRUNBTV9GVU4pIHRvIHRoZSBsaW51eC9wY2kt
+ZWNhbS5oIGZpbGUsIGFzIHRoZXNlIHNlZW0gdXNlZnVsLCBidXQKPiB3aXRob3V0IHRoZSBtYXNr
+cywgYW5kIHRoZW4gdXBkYXRlIG90aGVyIGZpbGVzIHRvIHVzZSB0aGVzZS4gIFdlIGNvdWxkCj4g
+dGhlbiBsZXZlcmFnZSB0aGVzZSwgZm9yIGV4YW1wbGU6Cj4gCj4gIAlwY2lfYmFzZV9hZGRyID0g
+KHZvaWQgX19pb21lbSAqKSgodWludHB0cl90KXBwLT52YV9jZmcwX2Jhc2UgKwo+IC0JCQkJCSAo
+YnVzbnJfZWNhbSA8PCAyMCkgKwo+IC0JCQkJCSBQQ0lFX0VDQU1fREVWRk4oZGV2Zm4pKTsKPiAr
+CQkJCQkgUENJRV9FQ0FNX0JVUyhidXNucl9lY2FtKSArCj4gKwkJCQkJIFBDSUVfRUNBTV9GVU4o
+ZGV2Zm4pKTsKPiAKPiBXaGF0IGRvIHlvdSB0aGluaz8gIEJqb3JuLCB3b3VsZCB0aGF0IGJlIGFj
+Y2VwdGFibGU/CgpJdCB3b3VsZCBiZSBuaWNlIHRvIHVzZSB0aGUgc2FtZSBzdHlsZSBhbmQgc2Ft
+ZSBtYWNyb3MgZm9yIGFsbCBvZgp0aGUgZm9sbG93aW5nLCB3aGljaCBhcmUgYWxsIHJlYWxseSBk
+b2luZyB0aGUgc2FtZSB0aGluZzoKCiAgYWxfcGNpZV9jb25mX2FkZHJfbWFwKCkKICAgIHBjaV9i
+YXNlX2FkZHIgPSAodm9pZCBfX2lvbWVtICopKCh1aW50cHRyX3QpcHAtPnZhX2NmZzBfYmFzZSAr
+CgkJCQkgICAgIChidXNucl9lY2FtIDw8IDIwKSArCgkJCQkgICAgIFBDSUVfRUNBTV9ERVZGTihk
+ZXZmbikpOwoKICByb2NrY2hpcF9wY2llX3JkX290aGVyX2NvbmYoKQogICAgYnVzZGV2ID0gUENJ
+RV9FQ0FNX0FERFIoYnVzLT5udW1iZXIsIFBDSV9TTE9UKGRldmZuKSwKCQkJICAgIFBDSV9GVU5D
+KGRldmZuKSwgd2hlcmUpOwoKICBud2xfcGNpZV9tYXBfYnVzKCkKICAgIHJlbGJ1cyA9IChidXMt
+Pm51bWJlciA8PCBFQ0FNX0JVU19MT0NfU0hJRlQpIHwKCQkgICAgKGRldmZuIDw8IEVDQU1fREVW
+X0xPQ19TSElGVCk7CgogICAgcmV0dXJuIHBjaWUtPmVjYW1fYmFzZSArIHJlbGJ1cyArIHdoZXJl
+OwoKICB4aWxpbnhfcGNpZV9tYXBfYnVzKCkKICAgIHJlbGJ1cyA9IChidXMtPm51bWJlciA8PCBF
+Q0FNX0JVU19OVU1fU0hJRlQpIHwKCSAgICAgKGRldmZuIDw8IEVDQU1fREVWX05VTV9TSElGVCk7
+CgogICAgcmV0dXJuIHBvcnQtPnJlZ19iYXNlICsgcmVsYnVzICsgd2hlcmU7CgpNYXliZSB0aGF0
+J3Mgc29tZXRoaW5nIGxpa2UgdXNpbmcgUENJRV9FQ0FNX0FERFIoKSBldmVyeXdoZXJlPyAgSSdt
+Cm5vdCBzdXJlIHRoZXJlJ3MgdmFsdWUgaW4gaGF2aW5nIHRoZSBjYWxsZXIgZG8gdGhlIFBDSV9T
+TE9UKCkgYW5kClBDSV9GVU5DKCkgZGVjb21wb3NpdGlvbiwgdGhvdWdoLCBpLmUuLCBtYXliZSBp
+dCdzIHNvbWV0aGluZyBsaWtlCnRoaXM/CgogICNkZWZpbmUgUENJRV9FQ0FNX1JFRyh4KSAgKCh4
+KSAmIDB4ZmZmKQoKICAjZGVmaW5lIFBDSV9FQ0FNX09GRlNFVChidXMsIGRldmZuLCB3aGVyZSkg
+XAogICAgUENJRV9FQ0FNX0JVUyhidXMtPm51bWJlcikgfCBcCiAgICBQQ0lFX0VDQU1fREVWRk4o
+ZGV2Zm4pIHwgXAogICAgUENJRV9FQ0FNX1JFRyh3aGVyZSkKCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApM
+aW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
