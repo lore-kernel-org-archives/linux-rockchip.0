@@ -6,17 +6,17 @@ X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0501C2D0E2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 19:45:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E6BEC2D0E2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 19:45:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6EA452065D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 19:45:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 168FB206DC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 19:45:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KVUKH/c8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="d8H1E695"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6EA452065D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Zp2QfngG";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Hc0Hocff"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 168FB206DC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,35 +25,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:References:
 	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=DmXxiSsjiAM15CludTvHczRvK+Gv36YG1pABA7zo2/s=; b=KVUKH/c8zdnUFwsE7G2hX7XO7
-	un9i/PUMAeSgma6O07VyvkWCWENeRMtk9//5s7AWRLnxDJcXISooA8QxghmctmhAoLoOWboC9SNA3
-	jK4j6qT+POUU3vHFXPUaivcNX3SVpaHzw2FQHstmUKzZgqbsd2GzJKoLATC+TVKLk4QooGaHPu3E5
-	jZ2aUlL/gw/rcUPYEmA3LIWIzyDdKboDQHFJLKw2xnP+3R6XVI1NeFDYE8l9GgwRso40LaNtmPANX
-	FBuCZ0Lvm1NMzo0fgd9rjqYNhjj92tuxi5bIpp0Swt/Vfz4tASUBEakzrevM+22X794D6R0lm1j2k
-	Ac5Z60s4w==;
+	 bh=9d0f5OcGT831wpbxjd2RpfmD5qMZWB3azGtFtdXU7cw=; b=Zp2QfngGa7Zu9MbfoBC1MbnHp
+	nWwi1IhjAMju4Px1ki4RZCygu6/9CrEr+HrZque9te7us01IcY90mRrsQ7bq+TXprEgYphZFO3DVo
+	imAJ7kM+z6jPRwgqeYavHeqaOOx/EAesvn1y65vY6vJpKw2Xv2fqNigClxez4ATZdZhRIw9BXL8AK
+	nQuTAnu2LNZFklOyBeX8Evjhu6MCsWHzNjx2fdCIccZ2ZSsizf1fGc3Xouu6cPKtS0wVLgGNTSkfQ
+	kkVNF/dniMTAy4UwB2ak3ke6trw38mv5Nsb9ttl9FJzYEkzFecPOUWR5/9QpM/AFyGKoyZnsO0G7F
+	z/M+sz+xA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKoEL-0005S0-1h; Tue, 22 Sep 2020 19:45:37 +0000
+	id 1kKoEa-0005XH-3G; Tue, 22 Sep 2020 19:45:52 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKoDv-0005Ib-B0; Tue, 22 Sep 2020 19:45:12 +0000
+ id 1kKoE2-0005LP-I8; Tue, 22 Sep 2020 19:45:19 +0000
 Received: from kernel.org (unknown [104.132.0.74])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 99BE5238A1;
- Tue, 22 Sep 2020 19:45:10 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id AE7892388B;
+ Tue, 22 Sep 2020 19:45:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600803910;
- bh=tA8MmDdsznvvUpaNUlFhuy1kR5m9EsbeClJ1SsYWScE=;
+ s=default; t=1600803917;
+ bh=smD2MG6rYBVA2ltBaZSXAPGB6fl0emwyxpPbDSkm+iE=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=d8H1E695Gu/6np9d7kKWOPnK7Y+psySwubSEINTKXUvlljyh6CnmFSzY/ArkW2xPH
- k4yn7N9P8d9OItRJNEvoR13HOXURJeH7XO7KS3I868o4jCIgs5NbzOMWNKX1Ma1DBs
- tJ1+uYCldJfZgd1jRepZwlOGXpaIfi1gA/ncGrno=
+ b=Hc0HocffpZ4wcZpsf6IDMWNHDZtUl9filj/ZFa3dbv1yUsnW1NYZdRSc2rhkNwXwR
+ YYyiR7UytWe+PCdEc4s3HjMr+Ag8US0XPZYXkeSCbY7zXfii9yYSOS0V+BVKf0Vejn
+ l0WoEjH+Ilwsh4jVkHOPbowYqSDXimdf2I1nO9v0=
 MIME-Version: 1.0
-In-Reply-To: <20200916161740.14173-4-krzk@kernel.org>
+In-Reply-To: <20200916161740.14173-5-krzk@kernel.org>
 References: <20200916161740.14173-1-krzk@kernel.org>
- <20200916161740.14173-4-krzk@kernel.org>
-Subject: Re: [PATCH 4/6] clk: mmp: pxa1928: drop unused 'clk' variable
+ <20200916161740.14173-5-krzk@kernel.org>
+Subject: Re: [PATCH 5/6] clk: si5341: drop unused 'err' variable
 From: Stephen Boyd <sboyd@kernel.org>
 To: Alexandre Belloni <alexandre.belloni@bootlin.com>,
  David Lechner <david@lechnology.com>, Heiko Stuebner <heiko@sntech.de>,
@@ -63,11 +63,11 @@ To: Alexandre Belloni <alexandre.belloni@bootlin.com>,
  Nicolas Ferre <nicolas.ferre@microchip.com>, Sekhar Nori <nsekhar@ti.com>,
  linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Date: Tue, 22 Sep 2020 12:45:09 -0700
-Message-ID: <160080390943.310579.10285589771843324355@swboyd.mtv.corp.google.com>
+Date: Tue, 22 Sep 2020 12:45:16 -0700
+Message-ID: <160080391652.310579.3763272722855831158@swboyd.mtv.corp.google.com>
 User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_154511_758761_91B4CA71 
+X-CRM114-CacheID: sfid-20200922_154518_701155_3B1C88B4 
 X-CRM114-Status: UNSURE (   9.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -88,13 +88,13 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-UXVvdGluZyBLcnp5c3p0b2YgS296bG93c2tpICgyMDIwLTA5LTE2IDA5OjE3OjM4KQo+ICdjbGsn
-IGlzIGFzc2lnbmVkIGJ1dCBuZXZlciByZWFkOgo+IAo+ICAgZHJpdmVycy9jbGsvbW1wL2Nsay1v
-Zi1weGExOTI4LmM6IEluIGZ1bmN0aW9uIOKAmHB4YTE5MjhfcGxsX2luaXTigJk6Cj4gICBkcml2
-ZXJzL2Nsay9tbXAvY2xrLW9mLXB4YTE5MjguYzo3MToxNDogd2FybmluZzogdmFyaWFibGUg4oCY
-Y2xr4oCZIHNldCBidXQgbm90IHVzZWQgWy1XdW51c2VkLWJ1dC1zZXQtdmFyaWFibGVdCj4gCj4g
-U2lnbmVkLW9mZi1ieTogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6a0BrZXJuZWwub3JnPgo+IC0t
-LQoKQXBwbGllZCB0byBjbGstbmV4dAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+UXVvdGluZyBLcnp5c3p0b2YgS296bG93c2tpICgyMDIwLTA5LTE2IDA5OjE3OjM5KQo+ICdlcnIn
+IGlzIGFzc2lnbmVkIGJ1dCBuZXZlciByZWFkOgo+IAo+ICAgL2RyaXZlcnMvY2xrL2Nsay1zaTUz
+NDEuYzogSW4gZnVuY3Rpb24g4oCYc2k1MzQxX291dHB1dF9nZXRfcGFyZW504oCZOgo+ICAgZHJp
+dmVycy9jbGsvY2xrLXNpNTM0MS5jOjg4Njo2OiB3YXJuaW5nOiB2YXJpYWJsZSDigJhlcnLigJkg
+c2V0IGJ1dCBub3QgdXNlZCBbLVd1bnVzZWQtYnV0LXNldC12YXJpYWJsZV0KPiAKPiBTaWduZWQt
+b2ZmLWJ5OiBLcnp5c3p0b2YgS296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+Cj4gLS0tCgpBcHBs
+aWVkIHRvIGNsay1uZXh0CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
+aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
+L2xpbnV4LXJvY2tjaGlwCg==
