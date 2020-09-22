@@ -2,21 +2,21 @@ Return-Path: <SRS0=X5eU=C7=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 910C1C4727D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 16:58:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18DB5C4363D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 17:19:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1E01E2371F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 16:58:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 456BF23119
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 17:19:54 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lncuS3Hg"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E01E2371F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZfWKdunT"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 456BF23119
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,36 +25,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=oOOCaYpM9yLf5rvU46gT29GBuTJlDrku1wNemdRHMj0=; b=lncuS3HgJ63HIwEcVV/XDSwK6g
-	xVFC7k6q2hR89HxuXWtHCrUSMbcfY1OKFJnQXmkH64DQqR1kcqzJPBKWZdGcTQ5fo2e22yyohTb/D
-	R1VgroV50Rq1+45onFWeFHsEuY9XkVu/R2qMuGuUHFQ8aqUPeuHBQlv4KHvtvRcZMmBQy1SZIZc/8
-	HoLAKGzDL9EyuNO69/Af86UUJv70v01Rx0ZH1jNUyfMx2abfECfacu02ncjLX/p2C/4+axVW2O0H/
-	2CLMXuTQ2KnCvmOHP2CZSmtwruI4y/RCVHMNObiJa0VZFlphN5NnjD+SKwQbuLj6OtDgoU9dLaw4G
-	mrJ6Iz3g==;
+	bh=+DFRjMN8ki0SPTqPcYXdHTn5H0eRuiAkuDZbtEJ/NgM=; b=ZfWKdunTZjfkI+9iXcoO1zZuRa
+	lDWMzQ9Q7rRyOK38BIE7c1/K4QE45MMuNiEBoyMWQZKbpkjok5BfaDHSVC0olFqwnozLgZXfPnz7r
+	9OuuLiVdYXlBFhnPW0w2OWVR38eIHLFX8oAY6mX79YrkvMT3ZunHdu2AmWgtHIIKuF7v7ZHSuXUwM
+	XprwXr69kqa62ZTRVA9Jn+3b8d0zv5Vb9WFm8MFOnoQxZXKs/tCSUjxuOY/uKWTKtdcoBSN6Uq+re
+	88F35ptCrPu6syZjH+4Md03l10b+ncKWA4pam/zCc3CEZJQj6zFffvTVSB3pU9ntDlmQ1hHEapH+Y
+	tCuD84TA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKlca-0007OM-JS; Tue, 22 Sep 2020 16:58:28 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kKlxA-0000cs-5R; Tue, 22 Sep 2020 17:19:44 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKlcV-0007Kh-3Y
- for linux-rockchip@lists.infradead.org; Tue, 22 Sep 2020 16:58:24 +0000
+ id 1kKlx8-0000cQ-8h
+ for linux-rockchip@lists.infradead.org; Tue, 22 Sep 2020 17:19:42 +0000
 Received: from guri.fritz.box
  (p200300c7cf13ec005877be1094b7a29d.dip0.t-ipconnect.de
  [IPv6:2003:c7:cf13:ec00:5877:be10:94b7:a29d])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 7A8C029E069;
- Tue, 22 Sep 2020 17:58:20 +0100 (BST)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id E9D582613EE;
+ Tue, 22 Sep 2020 18:19:40 +0100 (BST)
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH 0/2] Add format MEDIA_BUS_FMT_METADATA_FIXED and use it in
- rkisp1
-Date: Tue, 22 Sep 2020 18:58:11 +0200
-Message-Id: <20200922165813.19378-1-dafna.hirschfeld@collabora.com>
+Subject: [PATCH] v4l2-compliance: skip dimentions tests for media bus format
+ MEDIA_BUS_FMT_METADATA_FIXED
+Date: Tue, 22 Sep 2020 19:19:33 +0200
+Message-Id: <20200922171933.3830-1-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_125823_307239_9E1270E7 
-X-CRM114-Status: GOOD (  13.22  )
+X-CRM114-CacheID: sfid-20200922_131942_401593_DFAC5157 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,43 +77,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There are 2 pads between the entities
-rkisp1_isp to rkisp1_params and rkisp1_stats that transmit
-metadata. This metadata is fixed and not configurable from
-userspace. Since the metadata has no dimensions, it makes
-sense to set the width and height of these pads to 0.
-The problem is that it makes the v4l-compliance tests fail.
-Currently, in order to silent the tests, the width
-and height are set to RKISP1_DEFAULT_*
+The media bus format code MEDIA_BUS_FMT_METADATA_FIXED
+is used for metadata formats that are not configurable
+from userspace and therefore may have any value for
+width and height. So skip width and height tests for
+this format.
 
-This patchset sets the dimensions to 0 and solves the
-compliance error by introducing a new media bus code
-MEDIA_BUS_FMT_METADATA_FIXED
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+note, this patch should be applied after updating the header
+include/linux/media-bus-format.h to include that new format.
+---
+ utils/v4l2-compliance/v4l2-test-subdevs.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-The new code should be used when
-the same driver handles both sides of the link and
-the bus format is a fixed metadata format that is
-not configurable from userspace.
-
-Then the v4l2-compliance tests can skip the
-dimensions test for this media bus code.
-
-See irc discussion for that issue:
-https://linuxtv.org/irc/irclogger_log/v4l?date=2020-05-13,Wed
-https://linuxtv.org/irc/irclogger_log/v4l?date=2020-05-14,Thu
-
-
-
-Dafna Hirschfeld (2):
-  meida: uapi: add MEDIA_BUS_FMT_METADATA_FIXED media bus format.
-  media: staging: rkisp1: isp: set metadata pads to
-    MEDIA_BUS_FMT_METADATA_FIXED
-
- drivers/staging/media/rkisp1/TODO         | 1 -
- drivers/staging/media/rkisp1/rkisp1-isp.c | 8 ++++----
- include/uapi/linux/media-bus-format.h     | 8 ++++++++
- 3 files changed, 12 insertions(+), 5 deletions(-)
-
+diff --git a/utils/v4l2-compliance/v4l2-test-subdevs.cpp b/utils/v4l2-compliance/v4l2-test-subdevs.cpp
+index ec3ef169..f60853e3 100644
+--- a/utils/v4l2-compliance/v4l2-test-subdevs.cpp
++++ b/utils/v4l2-compliance/v4l2-test-subdevs.cpp
+@@ -300,8 +300,10 @@ int testSubDevFrameInterval(struct node *node, unsigned pad)
+ static int checkMBusFrameFmt(struct node *node, struct v4l2_mbus_framefmt &fmt)
+ {
+ 	fail_on_test(check_0(fmt.reserved, sizeof(fmt.reserved)));
+-	fail_on_test(fmt.width == 0 || fmt.width > 65536);
+-	fail_on_test(fmt.height == 0 || fmt.height > 65536);
++	if (fmt.code != MEDIA_BUS_FMT_METADATA_FIXED) {
++		fail_on_test(fmt.width == 0 || fmt.width > 65536);
++		fail_on_test(fmt.height == 0 || fmt.height > 65536);
++	}
+ 	fail_on_test(fmt.code == 0 || fmt.code == ~0U);
+ 	fail_on_test(fmt.field == ~0U);
+ 	if (!node->is_passthrough_subdev) {
 -- 
 2.17.1
 
