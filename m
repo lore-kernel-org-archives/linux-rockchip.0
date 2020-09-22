@@ -2,92 +2,90 @@ Return-Path: <SRS0=X5eU=C7=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60CABC2D0E2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 20:31:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 21D2DC4727E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 20:31:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E5486235FD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 20:31:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8834E235FD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 20:31:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zYet+YoV";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="CoXHm0ea"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E5486235FD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lqwuqh0c";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="tt/TTqjB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8834E235FD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=lQqsh1gedNejmkqRCzoeXj6AkpCA44cCPcGXdvFSgV8=; b=zYet+YoVro3HMFdsayzj7Wp5k
-	5Pg8haGLNjCGmIDxe/ECUD/mgJgEq7HJ0NZu2CC+uoz1fCD0QXIAsIV1ppIx3zUwUdx3sloRZYB7Z
-	9/5RM504/rjzeonOe7Q5mQF3mnpQmSSCIaUD18QQVokFS89MRbVJ4mEzqFZzuBeVyDrjvvAVuSZnx
-	3aUXxKbXBB2fZHz1Snnru47m024gYPbxtQo8GoqTP+siHOkh8KJj+6YsnVcfkx62UYbHKJI219vD6
-	Y7fR8ysEu6YDfCvJd6YWacIxFGQQ6H4mN8D9o54aptV49eNno7n/CgKHW7TEV8/AJAD2bVVSpL80t
-	HrwM0u63A==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8Sr+3t209IuUS+Mk3EEGaiG7l9D3EGyGaIVlQK/rvK0=; b=lqwuqh0crXDs/yo+vR1X7s762n
+	F1st9lIgLRLtCI+T2xinNv+gc3VSMSAaMzjhWjPR5q1Z1Q1pqFrT/Y70loSS9XwMyzJ1hF/AsX2ff
+	swC6nbni0vzlx6fSXySscT4usOlZppsQkBsln0H3qx8y8yEPZ0jLkt7ZkcmNRgFnvAVYI75YaKCsq
+	zU3K3IWrK8eibjmGUFF3sUaQSVlDKITbSm6pIXj+kqiRIASLvRDBCIQJLNpxjMRURDsSV3AKb03dF
+	8KNaJ90zp5zW90AM+3R266dN0L15Q1b8CTqJjSp3b1aMdvrNdRfkY0M4vnlcRZJgM0ivFB7AEruqo
+	rhx5YpZg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKowi-0003rA-Fd; Tue, 22 Sep 2020 20:31:28 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1kKowg-0003qd-W7; Tue, 22 Sep 2020 20:31:27 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKowe-0003pL-IR
- for linux-rockchip@lists.infradead.org; Tue, 22 Sep 2020 20:31:25 +0000
-Received: by mail-wr1-x441.google.com with SMTP id c18so18522169wrm.9
- for <linux-rockchip@lists.infradead.org>; Tue, 22 Sep 2020 13:31:24 -0700 (PDT)
+ id 1kKowc-0003pC-Tc
+ for linux-rockchip@lists.infradead.org; Tue, 22 Sep 2020 20:31:24 +0000
+Received: by mail-wr1-x443.google.com with SMTP id z1so18530781wrt.3
+ for <linux-rockchip@lists.infradead.org>; Tue, 22 Sep 2020 13:31:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=WFdc4SH1Iulou9qYgYBQGfoZtnnhVU1CnDj8vAu45kc=;
- b=CoXHm0eaOneQq4NOeA+r/ftMb0wf9sIVBeynoAxaeqawgA39as5IwJfpGsqCGWrUK4
- zG1CsoWq7MqNSHgxictCRpJlOY7LjwqnGrKkfuQvToF1vsxmQh9mam33dAEUT6mNK7Ba
- u5h7dvQix55Kuw4FZuBQxMOh7ymb7CIAevecuv2vLW1q4e1+76YftuMEavlFpLLpY5Au
- SJ3k18lbu/QsI/+YiwoTy5ZMSvAlYcBb3BOueGrTFVmgQiLGgQGhMa2z0BwtGD/4XX9e
- CjfMdtfO25dsvzPzXaKPtjxya5n2Xr3QYbtbQzW73pTkeoDDBq+zHr07O67fYr8vIhwv
- Yqcw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=gX9IO5DpX0Oyo76FoBWgDaUccVLtvB5CmzQwxpomYMM=;
+ b=tt/TTqjBTAhlSNEh4MlThxkbFeRZUCiSrVESk7ywxFuTyDJlPV+VVfUAOQ5TxQ4geg
+ 8DfNWex5LRrLWnOtib/RrzFLWhC6o3xrfK+CagvnIV775bH8fbId27Gwxfnuql9ZGZJC
+ X6TmSBmIrMXZ+oyJOSagw5XlubJRQyelk+afU9dTrVq0jZAP0n4kyU63cutP5JZ+WWBC
+ PNeLyQGQOkRgh97g6CkFyyV4gGc2FZ45niJgVXVvK74UjZ5qWSdq5Y4IErcLzZv7Shnc
+ G1/36aV1B7DfTlEWdXRYrrwUNt45+4M7Ya1LxkJZKRnG58OFucQQQGMvqI6yPXDK7d9H
+ UwVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=WFdc4SH1Iulou9qYgYBQGfoZtnnhVU1CnDj8vAu45kc=;
- b=ExQU//0ySD6QSdIe1M9Htj8Sw+gQT2EYqA2/fY1+m2aCiIe0OSYWnT+9lUn7ne/IoR
- 0Jahx1qUfVcO/bFQ56H+LtLLukWsjmHxy1P8k0BNrxpv1kJQZRg6rUuGTN2REPhqzp0u
- AxpRmyjGGHHf5lLy9p0QA+4uuB9PXwOCSg36Kn12nJLsnaSc+Rz++tsbiI5L0WB06jck
- CxhWHqDJlE4xAmYf1vMgefNGKGNzf9mHrJBKkEp9PGutcKKTLCb1QOyPVyjxxm8F85q5
- BYpv88njRwE2ab0Zpfecs5Xsxp5hrncnh5ykkzfT9NHROg0Npdh0xWckhNAHyxi8X1YM
- t8Hw==
-X-Gm-Message-State: AOAM533yNZpX74k4G6FXBp81h48N898mWfOvV1PeC6kfyIpEnI+pkrB4
- vnhQNb0iHDk9MwFy6ClEWet9xBiflWqKNw==
-X-Google-Smtp-Source: ABdhPJz1a/9PvGrBgYj/xTM5peJkjvqZ6wo444zg84ZzKqMUizLT0jDE3tcOqaLR/ocL4N+77TX/XQ==
-X-Received: by 2002:adf:e3cf:: with SMTP id k15mr6764290wrm.291.1600806683396; 
- Tue, 22 Sep 2020 13:31:23 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=gX9IO5DpX0Oyo76FoBWgDaUccVLtvB5CmzQwxpomYMM=;
+ b=EUdhUtKO+xvsptbj7SfHwkBCEgYodJ3qIZQEjNov0C2OYDkzxcsi1/a1UHcGdVvXGu
+ Nt7eyRnCMyyPCJiRpQyyc3lq4PaD+/uVpvYgrqlLcmlEcuC/H2XIA8cZ1ZojN8MSINQX
+ ROXF1fJI+v/FsgkG/fNMtx4vOsAM+ljf00fsUQNhXxyNJVfmZzn86xtvQJ/tqGj+9f7Z
+ ZAGSFeSiJILeUtyDSjhACFHOAYTbP/g6sXNXm0uToPv0DAZ6sJK8S7J+JIDwbVg8QfqR
+ DEprSvhr0py5XNxiqvkljV0ONjASh2pb3zv8H5BVkI6839o9h4Gh20Hcf/lleHcGCjTN
+ dubQ==
+X-Gm-Message-State: AOAM532uTbNC9kypJzv9CcMVzyLZ7w9SPN+dK35s3Z34MukSvCYB/WBz
+ J/50r2TRdNjlH3bUXqsM7Ck=
+X-Google-Smtp-Source: ABdhPJxF/lNJUJgqdUMQqKW7wBh4mAI8AHazZHk84HLlPru3YnyKcMGQb3qKQu8Jti8TIFS4nnVxDg==
+X-Received: by 2002:adf:ec92:: with SMTP id z18mr7741204wrn.53.1600806681913; 
+ Tue, 22 Sep 2020 13:31:21 -0700 (PDT)
 Received: from localhost.localdomain ([170.253.46.69])
- by smtp.gmail.com with ESMTPSA id r14sm27256849wrn.56.2020.09.22.13.31.22
+ by smtp.gmail.com with ESMTPSA id r14sm27256849wrn.56.2020.09.22.13.31.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 22 Sep 2020 13:31:22 -0700 (PDT)
+ Tue, 22 Sep 2020 13:31:20 -0700 (PDT)
 From: Vicente Bergas <vicencb@gmail.com>
 To: Doug Anderson <dianders@chromium.org>, crj <algea.cao@rock-chips.com>,
  Andy Yan <andy.yan@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>,
  =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
  David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
  dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 1/3] drm: rockchip: hdmi: fix clock rounding code
-Date: Tue, 22 Sep 2020 22:31:05 +0200
-Message-Id: <20200922203107.2932-2-vicencb@gmail.com>
+Subject: [PATCH v2 0/3] drm: rockchip: hdmi: enable higher resolutions than FHD
+Date: Tue, 22 Sep 2020 22:31:04 +0200
+Message-Id: <20200922203107.2932-1-vicencb@gmail.com>
 X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200922203107.2932-1-vicencb@gmail.com>
-References: <20200922203107.2932-1-vicencb@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_163124_678073_DE473F23 
-X-CRM114-Status: GOOD (  13.07  )
+X-CRM114-CacheID: sfid-20200922_163124_192529_AD32313D 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,47 +104,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Under certain conditions vop_crtc_mode_fixup rounds the clock
-148500000 to 148501000 which leads to the following error:
-dwhdmi-rockchip ff940000.hdmi: PHY configuration failed (clock 148501000)
+This patch series enable a QHD HDMI monitor to work at native resolution.
+Tested on a Sapphire board with RK3399 connected to a Q27q-10 monitor at 2560x1440@60
 
-The issue was found on RK3399 booting with u-boot. U-boot configures the
-display at 2560x1440 and then linux comes up with a black screen.
-A workaround was to un-plug and re-plug the HDMI display.
+Changes since v1:
+Use alternative clock rounding code proposed by Doug Anderson
 
-Signed-off-by: Vicente Bergas <vicencb@gmail.com>
-Tested-by: Vicente Bergas <vicencb@gmail.com>
----
+Vicente Bergas (3):
+  drm: rockchip: hdmi: fix clock rounding code
+  drm: rockchip: hdmi: allow any clock that is within the range
+  drm: rockchip: hdmi: add higher pixel clock frequencies
+
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 8 +++++++-
  drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ 2 files changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-index c80f7d9fd13f..92efbd899dee 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
-@@ -1176,12 +1176,9 @@ static bool vop_crtc_mode_fixup(struct drm_crtc *crtc,
- 	 *
- 	 * 2. Get the clock framework to round the rate for us to tell us
- 	 *    what it will actually make.
--	 *
--	 * 3. Store the rounded up rate so that we don't need to worry about
--	 *    this in the actual clk_set_rate().
- 	 */
- 	rate = clk_round_rate(vop->dclk, adjusted_mode->clock * 1000 + 999);
--	adjusted_mode->clock = DIV_ROUND_UP(rate, 1000);
-+	adjusted_mode->clock = rate / 1000;
- 
- 	return true;
- }
-@@ -1380,7 +1377,7 @@ static void vop_crtc_atomic_enable(struct drm_crtc *crtc,
- 
- 	VOP_REG_SET(vop, intr, line_flag_num[0], vact_end);
- 
--	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000);
-+	clk_set_rate(vop->dclk, adjusted_mode->clock * 1000 + 999);
- 
- 	VOP_REG_SET(vop, common, standby, 0);
- 	mutex_unlock(&vop->vop_lock);
 -- 
 2.28.0
 
