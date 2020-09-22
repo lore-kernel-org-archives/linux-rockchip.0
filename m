@@ -2,22 +2,21 @@ Return-Path: <SRS0=X5eU=C7=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,UNWANTED_LANGUAGE_BODY,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EAD04C2D0E2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 19:45:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B95AC2D0E2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 19:45:10 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 989A023787
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 19:45:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4E3FB2388B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 19:45:10 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="E4KoxZgT";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="kfN5EJLu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 989A023787
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="OvBSPNBL";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Rm2gLHq9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E3FB2388B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,34 +25,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:References:
 	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bmzf/Y/LV7sg569qW8jy8XxV7Ery69ol33iaVgG9kvs=; b=E4KoxZgTxV4R9k3fUpOGRIhWW
-	kkCJftNwsxQBCn6gM+GpzSZSF4e2xzFvrGAszeYfc0gh2S7oKGZzwL0r3mow6thrCQIw2E9pPVW96
-	Q9X0sEJrO1luIbWm1ofyzEvcQ/iNLvTbVaVqo0T9jBCgBSPEuPuCRR/geQHLXCJy/YYTYLGrib0g9
-	RU2Xaho+BFmkjSAS/ZiheiUaHZCTFiwa3yr+1V+q4IoGXvnN6DxzcJUZwht4cM/PoTtKH6CTtcxoA
-	BOlZt16w7bCtCmCwaqoNWd/mescUjyJodT092Qur++/APHYSrHr3AIwHL9PIkHlGearTs3UN0Vws/
-	prllzN1gg==;
+	 bh=zjTxtYrzM2sT5mXfBRapVLZ/A5ai0OWgRdf6yTjljk4=; b=OvBSPNBLmyJF/W6qdOi+CIjQZ
+	oht0aeIVjlNuZlS7cRiO6shlS/ExyS6Olhd4DvwL5u0Z2xohwHAqqWpBWBgCsd/VD/vNPYqmIbTv8
+	1h83Bp4XVuMlC45p+K4rLZirzPmbUZZKDnfywUJnAg+l00VmK1tArI6ACfDr4OGfD8/GRrXTHS1VA
+	oDyCEOmk4g9OTnT9IfA/zQAporaIeaOfrcsvFUfpzyQlHFvPbpEy1ZCHTsArW5dcSgLPLCYbh/ck9
+	SaArd5Z7MZE2x4zpbtinZne44skIft2d4K/auFf7KLxBm3pTctv2Es4fRgTSZXtSr018Iw82TXaVa
+	kyBbkpv9Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKoDe-0005DZ-9n; Tue, 22 Sep 2020 19:44:54 +0000
+	id 1kKoDo-0005GM-EH; Tue, 22 Sep 2020 19:45:04 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKoDZ-0005CS-V0; Tue, 22 Sep 2020 19:44:50 +0000
+ id 1kKoDf-0005Dh-8v; Tue, 22 Sep 2020 19:44:56 +0000
 Received: from kernel.org (unknown [104.132.0.74])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 33CE22158C;
- Tue, 22 Sep 2020 19:44:49 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 96164221E8;
+ Tue, 22 Sep 2020 19:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600803889;
- bh=xs7bv/Pd+JV3TnTXUPub1y7MuEAXK2Fb6r/sDD3vBR8=;
+ s=default; t=1600803894;
+ bh=eCsbf88+3hbsuxXMVeMDVUwgMkMeeFKQ3z+JXhLEwVE=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=kfN5EJLuhxYmsZBcUfgCjCiKyYLjYzAj7x45+3VIuggVzJ+CeO8+GLQrRgetxqRZU
- mrGA7G5Ygs/Mqh8S/MAmSWu2+wMmHGYCnZya580aVAGIrL7fGTHsFs+fmY08eTQ3V/
- 3iG8D93mao1OxuVLdbHo/uTnKzZQLWpv8psOI+x8=
+ b=Rm2gLHq9kTle5/dASc8C/0PKaf1LhGUKhvcDrN2UcXhp3wz9bFTuFVHfClyFwxQAf
+ GANFc6EDVHY9Zpav0o2/tDjIyZ5gY0ujKpz7i1eF5bIbkNrzFlfBcFeqN9tJz7vF8e
+ /INB+FP0R3ab+YrdnZDPvb6xR7j4QRQRx6EJUSak=
 MIME-Version: 1.0
-In-Reply-To: <20200916161740.14173-1-krzk@kernel.org>
+In-Reply-To: <20200916161740.14173-2-krzk@kernel.org>
 References: <20200916161740.14173-1-krzk@kernel.org>
-Subject: Re: [PATCH 1/6] clk: at91: drop unused at91sam9g45_pcr_layout
+ <20200916161740.14173-2-krzk@kernel.org>
+Subject: Re: [PATCH 2/6] clk: fixed: add missing kerneldoc
 From: Stephen Boyd <sboyd@kernel.org>
 To: Alexandre Belloni <alexandre.belloni@bootlin.com>,
  David Lechner <david@lechnology.com>, Heiko Stuebner <heiko@sntech.de>,
@@ -63,12 +63,12 @@ To: Alexandre Belloni <alexandre.belloni@bootlin.com>,
  Nicolas Ferre <nicolas.ferre@microchip.com>, Sekhar Nori <nsekhar@ti.com>,
  linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-Date: Tue, 22 Sep 2020 12:44:47 -0700
-Message-ID: <160080388798.310579.16399250820022000410@swboyd.mtv.corp.google.com>
+Date: Tue, 22 Sep 2020 12:44:53 -0700
+Message-ID: <160080389349.310579.18222721785105717802@swboyd.mtv.corp.google.com>
 User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_154450_054848_B6D930D1 
-X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-CacheID: sfid-20200922_154455_424008_1E52681D 
+X-CRM114-Status: UNSURE (   9.05  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -88,14 +88,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Krzysztof Kozlowski (2020-09-16 09:17:35)
-> The at91sam9g45_pcr_layout is not used so drop it to fix build warning:
+Quoting Krzysztof Kozlowski (2020-09-16 09:17:36)
+> Add missing kerneldoc to fix compile warnings like:
 > 
->   drivers/clk/at91/at91sam9g45.c:49:36: warning:
->     'at91sam9g45_pcr_layout' defined but not used [-Wunused-const-variable=]
+>   drivers/clk/clk-fixed-factor.c:211: warning: Function parameter or member 'node' not described in 'of_fixed_factor_clk_setup'
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
 > ---
 
 Applied to clk-next
