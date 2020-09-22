@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B91D4C4727F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 11:34:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4BA4EC2D0E2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 11:34:53 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5DE9D23600
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 11:34:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E6CA52388B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 11:34:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ve+kSiZC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5DE9D23600
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eheNOsQ/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6CA52388B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,38 +25,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JaMThV4TRVi7thMaFNcLY0cRe3EgNiXOFxkRbzO/w9A=; b=Ve+kSiZC6gkmllgeRxKA6AASuG
-	uvqhspeqx+DnoTC+lR13yBNit71j8I6Bx9/HKptTI/w7H1ArjBL9Y/9he3Py8HlrLtmA5E/ZKLkhu
-	FNh+J1u8YgT2Nlz4pcgCJ+tYWRKlKlEOVnISzVuQh/t44kVlJbWiEn6WOH4RdR1zi7mKt4W65IkvZ
-	sKxpOrFmcsWxKs76kNZNSa7SO0AYJcjgd5VP+dtW1wnUXFL5Avhlu+LoV9UrNFSwNmHSD0WcGrNiP
-	5nTuCx6YtwuvfHhuyFweli6EMpv7Ju4DsWWvP+ptKBKe43iOprCUNHZuBppawPt2yVEZxIMOxoxzp
-	xqIoTNOQ==;
+	bh=ecEeGtPr3fa/NqjDL1hCWX/tSsXIW9Faey3xKRZ4b3I=; b=eheNOsQ/E29uFtVXdqesyCJNcg
+	TaMvQGdSF/UcLtPVwqSOohF8SXt41kigx/DbKBH2gObGKKwLwT0l0DJm8pJzSBtduTBBu4G6TMveB
+	xdtIkBcUFHs4H0THJsj/fF8wphJwsDUOoKRJhzar6gtjc4WvXem8Pq1bx0XufcmLsJ9xtsqcdrrHo
+	SizgJCsQ/fKFXjnwkHOl2vNj+UqcvmapUTrkA+sozwlet3kKDBT+bb/ut34G+DgMD3Kj6EsBiDdRq
+	qdMyeOwx27CcLSbmJOZ7E6Bo0pEe88cyj1QioC2H6H3FuqvHVrkv1xIktF+j9zkYCZcbaEuJ9qQMa
+	F58cYgIw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKgZK-0006Lg-H9; Tue, 22 Sep 2020 11:34:46 +0000
+	id 1kKgZL-0006MM-KI; Tue, 22 Sep 2020 11:34:47 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKgYt-00066r-S4
- for linux-rockchip@lists.infradead.org; Tue, 22 Sep 2020 11:34:24 +0000
+ id 1kKgYv-00069o-8e
+ for linux-rockchip@lists.infradead.org; Tue, 22 Sep 2020 11:34:26 +0000
 Received: from guri.fritz.box
  (p200300c7cf13ec005877be1094b7a29d.dip0.t-ipconnect.de
  [IPv6:2003:c7:cf13:ec00:5877:be10:94b7:a29d])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id B192829B4A9;
- Tue, 22 Sep 2020 12:34:13 +0100 (BST)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 952E629B4EB;
+ Tue, 22 Sep 2020 12:34:14 +0100 (BST)
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH v3 10/12] media: staging: rkisp1: params: no need to lock
- default config
-Date: Tue, 22 Sep 2020 13:34:00 +0200
-Message-Id: <20200922113402.12442-11-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v3 12/12] media: staging: rkisp1: cap: protect access to buf
+ with the spin lock
+Date: Tue, 22 Sep 2020 13:34:02 +0200
+Message-Id: <20200922113402.12442-13-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200922113402.12442-1-dafna.hirschfeld@collabora.com>
 References: <20200922113402.12442-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_073420_242661_7DF63821 
-X-CRM114-Status: GOOD (  14.12  )
+X-CRM114-CacheID: sfid-20200922_073421_563400_F2FB4A32 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,39 +79,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In the function 'rkisp1_params_config_parameter' the lock
-is taken while applying the default config. But the lock
-only needs to protect the buffers list and the 'is_streaming'
-field, so move the locking to lock only what is needed.
+The function 'rkisp1_stream_start' calls 'rkisp1_set_next_buf'
+which access the buffers, so the call should be protected by
+taking the cap->buf.lock.
+After this patch, all locks are reviewed and commented so remove
+the TODO item "review and comment every lock"
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Acked-by: Helen Koike <helen.koike@collabora.com>
 ---
- drivers/staging/media/rkisp1/rkisp1-params.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/media/rkisp1/TODO             | 1 -
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 2 ++
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
-index 7aa76f032728..f0258b4258ed 100644
---- a/drivers/staging/media/rkisp1/rkisp1-params.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-params.c
-@@ -1276,8 +1276,6 @@ static void rkisp1_params_config_parameter(struct rkisp1_params *params)
- {
- 	struct rkisp1_cif_isp_hst_config hst = rkisp1_hst_params_default_config;
+diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
+index f0c90d1c86a8..9662e9b51c7f 100644
+--- a/drivers/staging/media/rkisp1/TODO
++++ b/drivers/staging/media/rkisp1/TODO
+@@ -1,6 +1,5 @@
+ * Fix pad format size for statistics and parameters entities.
+ * Fix checkpatch errors.
+-* Review and comment every lock
+ * Handle quantization
+ * streaming paths (mainpath and selfpath) check if the other path is streaming
+ in several places of the code, review this, specially that it doesn't seem it
+diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+index 012c0825a386..b9e56dab77af 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-capture.c
++++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+@@ -913,6 +913,7 @@ static void rkisp1_stream_start(struct rkisp1_capture *cap)
+ 	cap->ops->config(cap);
  
--	spin_lock(&params->config_lock);
--
- 	rkisp1_awb_meas_config(params, &rkisp1_awb_params_default_config);
- 	rkisp1_awb_meas_enable(params, &rkisp1_awb_params_default_config,
- 			       true);
-@@ -1302,6 +1300,8 @@ static void rkisp1_params_config_parameter(struct rkisp1_params *params)
- 	else
- 		rkisp1_csm_config(params, false);
+ 	/* Setup a buffer for the next frame */
++	spin_lock_irq(&cap->buf.lock);
+ 	rkisp1_set_next_buf(cap);
+ 	cap->ops->enable(cap);
+ 	/* It's safe to config ACTIVE and SHADOW regs for the
+@@ -930,6 +931,7 @@ static void rkisp1_stream_start(struct rkisp1_capture *cap)
+ 			     RKISP1_CIF_MI_INIT_SOFT_UPD, RKISP1_CIF_MI_INIT);
+ 		rkisp1_set_next_buf(cap);
+ 	}
++	spin_unlock_irq(&cap->buf.lock);
+ 	cap->is_streaming = true;
+ }
  
-+	spin_lock(&params->config_lock);
-+
- 	/* apply the first buffer if there is one already */
- 	if (params->is_streaming)
- 		rkisp1_params_apply_params_cfg(params, 0);
 -- 
 2.17.1
 
