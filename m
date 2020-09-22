@@ -2,63 +2,66 @@ Return-Path: <SRS0=X5eU=C7=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9949C2D0E2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 11:49:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D56D5C2D0E2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 12:37:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7DC44221EB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 11:49:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EE3542395C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 22 Sep 2020 12:37:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zW1ck9nc";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="Q0kzW0fq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7DC44221EB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="D2TRugMP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE3542395C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Subject:References:In-Reply-To:To:From:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wil/rbFIcC8ODWkMACGV6xnfqmr2NmVpwdlwqnCgrYU=; b=zW1ck9ncXZzky0roMQZQCZkYvr
-	wqGmjmoRQ7brrLR6570Ezm2+u8Kk58/ydzXtS0xRWVH+yQNIVvPOK7qFAyqPTW3p0M5upDcuRbsEM
-	NdV366uAa1VvylLhH0kwiTpDcjuzbIqrJXn1LSoMsHLI0IhK426jQ5OGbqtsvLonHK6DAq6gQs6NF
-	8B+CcLTzeqxjnCLDCuTqhjW9Sg3Kz9gyy+3WBsEGfZcpEz5qtb1qFHRONnkj4Oyfjq7AFVTQ0Ypfo
-	JSroHOdXnOmsvlupP7WWw3hpqDkMoFPtlPNsbUKv+OjLNrtI/I5eATFmHMWhiz2o+iBfDeiDHzGvb
-	E53z7MNg==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=6peZrjEANCBRtbYiF9v2fciadEZ7kHVXkIsnJ9ttRrc=; b=D2TRugMPVcVkz5msMsQP2RdZT
+	HEXezmgzecO20Ul5uN6bVepd6d/S3XDIzNGLo83lx5mM1PtViCWWy9oXmvQMsIWThF5M/XKIlNexY
+	+aiTbycU/x/8Fqgkt9HwEzL4tkNvkzcaKATQEjZtn7A2ficRK4tVSGbyfVdd0b5woKwekZyCiInNs
+	toNGlsuefC74u8uSGJOTem5f9rt1oToDyVfijyxSPHjfF0vSh0xS8CvQ5nTEjJs00cumNYixA1e7+
+	kVf4+pEPc5TohW9DyfwWSrlii/al2GxXALlWtFhvzSL5SNtNkekDDJx7dRbJ65AkNOHzyk/YRzjaC
+	pOvmtlKXQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKgns-0000Wg-HB; Tue, 22 Sep 2020 11:49:49 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kKhY5-0006tl-0k; Tue, 22 Sep 2020 12:37:33 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKgni-0000UF-Af; Tue, 22 Sep 2020 11:49:40 +0000
-Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id BC07A221EB;
- Tue, 22 Sep 2020 11:49:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1600775377;
- bh=Q4KDNQJE+iH1DnDYsmw0dPu90gd1omWDNMB3ZeVjjGg=;
- h=Date:From:To:Cc:In-Reply-To:References:Subject:From;
- b=Q0kzW0fqgH/ZynkmIIsZ+Sk3TIZn1d1t5vPwcPmXgKloPcyO+FEfgbJPD2ON45Hz8
- OOhutiHnFCkdlS2Oq5dnBkZlt3W7mf2vS5wJL9kS7AQvzZ8+wJETBuTKgGLs+1yuJc
- NnwNw6eHuWv6vW9+hMhEnlq2sqh22UhUiTpgzLzI=
-Date: Tue, 22 Sep 2020 12:48:44 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Cheng-Yi Chiang <cychiang@chromium.org>, linux-kernel@vger.kernel.org
-In-Reply-To: <20200922062316.1172935-1-cychiang@chromium.org>
-References: <20200922062316.1172935-1-cychiang@chromium.org>
-Subject: Re: [PATCH] ASoC: hdmi-codec: Use set_jack ops to set jack
-Message-Id: <160077532459.10007.8996932486569302078.b4-ty@kernel.org>
+ id 1kKhY0-0006sP-LJ; Tue, 22 Sep 2020 12:37:29 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1kKhXi-00005Z-Se; Tue, 22 Sep 2020 14:37:10 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ David Lechner <david@lechnology.com>, Sekhar Nori <nsekhar@ti.com>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH 6/6] clk: rockchip: rk3308: drop unused mux_timer_src_p
+Date: Tue, 22 Sep 2020 14:37:10 +0200
+Message-ID: <2966215.XPzGgDkocF@diego>
+In-Reply-To: <20200916161740.14173-6-krzk@kernel.org>
+References: <20200916161740.14173-1-krzk@kernel.org>
+ <20200916161740.14173-6-krzk@kernel.org>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200922_074939_927063_E1D13E08 
-X-CRM114-Status: GOOD (  11.78  )
+X-CRM114-CacheID: sfid-20200922_083728_795241_6A001B8F 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,52 +74,20 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dianders@chromium.org, alsa-devel@alsa-project.org, tzungbi@chromium.org,
- Srinivasa Rao <srivasam@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>,
- Takashi Iwai <tiwai@suse.com>, Tzung-Bi Shih <tzungbi@google.com>,
- Rob Herring <robh+dt@kernel.org>, Rohit kumar <rohitkr@codeaurora.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- dgreid@chromium.org, linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 22 Sep 2020 14:23:16 +0800, Cheng-Yi Chiang wrote:
-> Use set_jack ops to set jack so machine drivers do not need to include
-> hdmi-codec.h explicitly.
-
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
-
-Thanks!
-
-[1/1] ASoC: hdmi-codec: Use set_jack ops to set jack
-      commit: 55c5cc63ab3277aa20637dc20f6528987ac23743
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTWl0dHdvY2gsIDE2LiBTZXB0ZW1iZXIgMjAyMCwgMTg6MTc6NDAgQ0VTVCBzY2hyaWViIEty
+enlzenRvZiBLb3psb3dza2k6Cj4gVGhlIHBhcmVudCBuYW1lcyAnbXV4X3RpbWVyX3NyY19wJyBp
+cyBub3QgdXNlZDoKPiAKPiAgIEluIGZpbGUgaW5jbHVkZWQgZnJvbSBkcml2ZXJzL2Nsay9yb2Nr
+Y2hpcC9jbGstcmszMzA4LmM6MTM6MDoKPiAgIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazMz
+MDguYzoxMzY6Nzogd2FybmluZzog4oCYbXV4X3RpbWVyX3NyY19w4oCZIGRlZmluZWQgYnV0IG5v
+dCB1c2VkIFstV3VudXNlZC1jb25zdC12YXJpYWJsZT1dCj4gCj4gU2lnbmVkLW9mZi1ieTogS3J6
+eXN6dG9mIEtvemxvd3NraSA8a3J6a0BrZXJuZWwub3JnPgoKYXBwbGllZCBmb3IgNS4xMAoKVGhh
+bmtzCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
