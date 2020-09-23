@@ -2,79 +2,74 @@ Return-Path: <SRS0=ISdC=DA=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3D398C4363D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 14:04:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9B2DDC2D0A8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 17:24:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C802E221EB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 14:04:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1F48421BE5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 17:24:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pk6zY+8B"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C802E221EB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Na4tKEyI";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="NYwzNX8c"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F48421BE5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ECWmuWMu7IOnr2RDh0UFytEu2MiMaXVjgurEwJR1xiA=; b=pk6zY+8Bm7qINDEq0omH58URe
-	gRly99i6sH4dFfaBaAmBkdgwO0LRI7fd8t8H9OX5p3lbk+pgUXHGWkOdGGvINqa+Omr2g23y08J6s
-	dhfalWkdwcLVGxgNy5KF4fhzhw1q8//rNqlgPVXWr922xi4iPiR7s+esL2w7No3+JajWRbzkJpbz3
-	n8/dQsr7ZCen/+bM2n9jphq5r4/uMnHNFNSaD9dV/5D3VlKtTbM1oAqw/z/kGexMNjXdSFp//hrE2
-	KjLfVbkj//CgpBzpifalGAcZS9Oz45Ny2DTjYzKrD9h9BaKEW3/Vh/W0g/Q9JKhH77LDw36cMVpkL
-	nI7ta8asA==;
+	 bh=WpQJdh+YPPVyYj+DxJJoA6IEG6R6jEF0vczSQ2tOtfg=; b=Na4tKEyI6xYKwpspIhWu6WSG1
+	/W0u6v3aT6uRqcmhdNeKu73q8j5CpUM/PJWSZXdLT/5l8ss7246exKL2AOMyMNx1vKOSkh5PDUwDt
+	SnMp0rQ2fO796tQCaA+UD6NQMP2G4hQfAUOqFn3K8s7gnMGhfoxVkmOc5Qa8a5AQEvu+pukJ9OeFI
+	PunolD/t9kdS2iEl2Aqf2bXiTRaP/tmo93O9KMpO/GEoMg7lqmTN0NR0c+r2kIrKeMv67HqSvWDtf
+	tGpCS7KO0EdtMdLlF1X19WdaEsC9AUxXZC2dCRHXbAbJLTiXyRtoO2xAOsYkhSeGRVS7LLxP5EYWz
+	JrdXgpfDw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kL5O5-00044g-Nl; Wed, 23 Sep 2020 14:04:49 +0000
-Received: from mail-io1-f65.google.com ([209.85.166.65])
+	id 1kL8Uk-0002rx-2x; Wed, 23 Sep 2020 17:23:54 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kL5O2-00043Z-33; Wed, 23 Sep 2020 14:04:47 +0000
-Received: by mail-io1-f65.google.com with SMTP id z13so23802702iom.8;
- Wed, 23 Sep 2020 07:04:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=/2YIbGPyeDVPWPtl7cPgfN2lbTkXGFerVZnaUBAltaA=;
- b=nN1Sx2AdwS/SclBzKQpmrI+Gim+E7mqSPTVMsOvWg/F2iYdKiQipKAVlsEqtXwjzQ6
- igflx+0RHhahM3pPkpZxmyadp26LN93KWggE+yGFtdqEbBKXpez45ID3TxOWsS8EMZcn
- 7coyhWJUGK0hFIEFMNNyGH/gD8ho/7ON/55Jrb+jnPTgyJDrbdaXnMqoIwMyREPwpiPi
- U2omI2080Zp5CJG437VLrZeWItiMlIuV4NJ0+neWrcQOZI+PzlFDKzv9l16YBO5e6EP5
- hvvfgZFILwK1G5HMLf4KfJww5bneacPOpYpZxwxhNBwulT8U5Sf9IRt2jJS2c5TXzAzc
- Nv/Q==
-X-Gm-Message-State: AOAM530+vrTcS6zVRPEDrriefFwh0hqJENNga2T73Tqc9HoRLYwrb0pQ
- HuJjrhU+T18kByCO03ZUjg==
-X-Google-Smtp-Source: ABdhPJxstAEhgQaXKaAuFPlgyAyzZjgHKa6/lnHgGk0H6MXAN1HOfoHNKgPecNsaSTpPJLkpHpfD2A==
-X-Received: by 2002:a6b:be46:: with SMTP id o67mr7181697iof.133.1600869885401; 
- Wed, 23 Sep 2020 07:04:45 -0700 (PDT)
-Received: from xps15 ([64.188.179.253])
- by smtp.gmail.com with ESMTPSA id l6sm10864315ilt.34.2020.09.23.07.04.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Sep 2020 07:04:44 -0700 (PDT)
-Received: (nullmailer pid 644635 invoked by uid 1000);
- Wed, 23 Sep 2020 14:04:43 -0000
-Date: Wed, 23 Sep 2020 08:04:43 -0600
-From: Rob Herring <robh@kernel.org>
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Subject: Re: [PATCH v3 1/3] media: dt-bindings: media: Document Rockchip VIP
- bindings
-Message-ID: <20200923140443.GA639013@bogus>
-References: <20200922165535.1356622-1-maxime.chevallier@bootlin.com>
- <20200922165535.1356622-2-maxime.chevallier@bootlin.com>
+ id 1kL8Ug-0002rK-Br; Wed, 23 Sep 2020 17:23:51 +0000
+Received: from mail-ot1-f44.google.com (mail-ot1-f44.google.com
+ [209.85.210.44])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 13ABA2371F;
+ Wed, 23 Sep 2020 17:23:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1600881829;
+ bh=730KdbTlfAh6bLWtoHtsz8yH6kRXQvyGVrEQq7gSANU=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=NYwzNX8cDLPLw28QKKLAMaSEmE4trXAkB+v3qLNlHcmSoMjQorgFg/WGV9b+M/k1A
+ OVZO8rOgYBw1HNxTQHRKi7RO90FVD9vfWfbz63NPR/Cl/31J70UcF30ocGzLzx7RuN
+ KYFT/k4oLeZ8VQvnAw+qq/kVyxY/bL8tNNy4CL8s=
+Received: by mail-ot1-f44.google.com with SMTP id 95so428593ota.13;
+ Wed, 23 Sep 2020 10:23:49 -0700 (PDT)
+X-Gm-Message-State: AOAM532ujC1RloWcrJ+qGPumYKfGTJ1WV3rWe59CFrXvgoAUeQ4pPKNK
+ ozZby7nQz3zUJ87I78eWHoCtI6mACwojN0L7GA==
+X-Google-Smtp-Source: ABdhPJxUtzwTOVGogBCfk3/mDj7n+lJEHqswrMVz+ppffanPQR9H7uxwnTsaqk3Xj43eCclj08B5LLHvpJt3+Qf+o1c=
+X-Received: by 2002:a9d:6b0d:: with SMTP id g13mr489792otp.129.1600881828244; 
+ Wed, 23 Sep 2020 10:23:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200922165535.1356622-2-maxime.chevallier@bootlin.com>
+References: <20200905204416.GA83847@rocinante>
+ <20200922232715.GA2238688@bjorn-Precision-5520>
+In-Reply-To: <20200922232715.GA2238688@bjorn-Precision-5520>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 23 Sep 2020 11:23:37 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqKs2m_echD97C+Q_NFS=yJif0LcgLMdDLnywjz35mboKQ@mail.gmail.com>
+Message-ID: <CAL_JsqKs2m_echD97C+Q_NFS=yJif0LcgLMdDLnywjz35mboKQ@mail.gmail.com>
+Subject: Re: [PATCH] PCI: Unify ECAM constants in native PCI Express drivers
+To: Bjorn Helgaas <helgaas@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_100446_154319_8E30CC2B 
-X-CRM114-Status: GOOD (  20.73  )
+X-CRM114-CacheID: sfid-20200923_132350_715507_61BA67AD 
+X-CRM114-Status: GOOD (  24.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,166 +82,92 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>, devicetree@vger.kernel.org,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-kernel@vger.kernel.org,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- linux-rockchip@lists.infradead.org, Helen Koike <helen.koike@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, PCI <linux-pci@vger.kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Jonathan Chocron <jonnyc@amazon.com>,
+ Michal Simek <michal.simek@xilinx.com>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Zhou Wang <wangzhou1@hisilicon.com>, Robert Richter <rrichter@marvell.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Will Deacon <will@kernel.org>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 22, 2020 at 06:55:33PM +0200, Maxime Chevallier wrote:
-> Add a documentation for the Rockchip Camera Interface controller
-> binding.
-> 
-> This controller can be found on platforms such as the PX30 or the
-> RK3288, the PX30 being the only platform supported so far.
-> 
-> Signed-off-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
-> ---
-> V3 :
->  - renamed the controller
-> 
->  .../bindings/media/rockchip-vip.yaml          | 100 ++++++++++++++++++
->  1 file changed, 100 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/rockchip-vip.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip-vip.yaml b/Documentation/devicetree/bindings/media/rockchip-vip.yaml
-> new file mode 100644
-> index 000000000000..652c46053b29
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/media/rockchip-vip.yaml
-> @@ -0,0 +1,100 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/media/rockchip-vip.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Rockchip VIP Camera Interface
-> +
-> +maintainers:
-> +  - Maxime Chevallier <maxime.chevallier@bootlin.com>
-> +
-> +description: |-
-> +  Camera Interface for Rockcip platforms
-> +
-> +properties:
-> +  compatible:
-> +    const: rockchip,px30-vip
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    items:
-> +      - description: ACLK
-> +      - description: HCLK
-> +      - description: PCLK IN
-> +
-> +  clock-names:
-> +    items:
-> +      - const: aclk
-> +      - const: hclkf
-> +      - const: pclkin
-> +
-> +  resets:
-> +    items:
-> +      - description: AXI
-> +      - description: AHB
-> +      - description: PCLK IN
-> +
-> +  reset-names:
-> +    items:
-> +      - const: axi
-> +      - const: ahb
-> +      - const: pclkin
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +    description: phandle to the associated power domain
-
-Drop description.
-
-> +
-> +  # See ./video-interfaces.txt for details
-> +  port:
-> +    type: object
-> +    additionalProperties: false
-
-Need a description of the data the port represents.
-
-> +
-> +    properties:
-> +      endpoint:
-
-You can drop 'endpoint' since you don't have any other endpoint 
-properties. 
-
-> +        type: object
-> +
-> +        properties:
-> +          remote-endpoint: true
-> +
-> +        required:
-> +          - remote-endpoint
-> +
-> +    required:
-> +      - endpoint
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +  - interrupts
-> +  - clocks
-
-port should be required.
-
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/clock/px30-cru.h>
-> +    #include <dt-bindings/power/px30-power.h>
-> +
-> +    vip: vip@ff490000 {
-> +    	compatible = "rockchip,px30-vip";
-> +    	reg = <0x0 0xff490000 0x0 0x200>;
-> +    	interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
-> +    	clocks = <&cru ACLK_CIF>, <&cru HCLK_CIF>, <&cru PCLK_CIF>, <&cru SCLK_CIF_OUT>;
-> +    	clock-names = "aclk", "hclk", "pclkin";
-> +    	resets = <&cru SRST_CIF_A>, <&cru SRST_CIF_H>, <&cru SRST_CIF_PCLKIN>;
-> +    	reset-names = "axi", "ahb", "pclkin";
-> +    	power-domains = <&power PX30_PD_VI>;
-> +            port {
-
-Some indentation problems here.
-
-> +                    vip_in: endpoint {
-> +                            remote-endpoint = <&tw9900_out>;
-> +                    };
-> +            };
-> +    };
-> +...
-> -- 
-> 2.25.4
-> 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBTZXAgMjIsIDIwMjAgYXQgNToyNyBQTSBCam9ybiBIZWxnYWFzIDxoZWxnYWFzQGtl
+cm5lbC5vcmc+IHdyb3RlOgo+Cj4gWytjYyBSb2IsIHdobydzIGRvaW5nIGEgbG90IG9mIGNsZWFu
+dXAgaW4gdGhlc2UgZHJpdmVyc10KPgo+IE9uIFNhdCwgU2VwIDA1LCAyMDIwIGF0IDEwOjQ0OjE2
+UE0gKzAyMDAsIEtyenlzenRvZiBXaWxjennFhHNraSB3cm90ZToKPiA+IEhlbGxvIEpvbmF0aGFu
+LAo+ID4KPiA+IFRoYW5rIHlvdSBmb3IgdGhlIHJldmlldyEgIEFsc28sIGFwb2xvZ2llcyBmb3Ig
+bGF0ZSByZXBseS4KPiA+Cj4gPiBPbiAyMC0wOC0yOCAxMDowODo0MywgSm9uYXRoYW4gQ2FtZXJv
+biB3cm90ZToKPiA+IFsuLi5dCj4gPiA+Cj4gPiA+IE1pZ2h0IHBvdGVudGlhbGx5IGJlIHdvcnRo
+IHRpZHlpbmcgdXAgdGhlIG1hc2tzIGFzIHdlbGw/Cj4gPiA+IE9yIHBvdGVudGlhbGx5IGRyb3Ag
+dGhlbSBnaXZlbiBJIHN1c3BlY3QgdGhhdCB0aGVyZSBhcmUgbm8gY2FzZXMKPiA+ID4gaW4gd2hp
+Y2ggdGhlIG1hc2sgaXMgYWN0dWFsbHkgZG9pbmcgYW55dGhpbmcuLi4KPiA+Cj4gPiBKdXN0IHRv
+IGNvbmZpcm0gLSB5b3UgaGF2ZSB0aGUgZm9sbG93aW5nIGNvbnN0YW50cyBpbiBtaW5kPwo+ID4K
+PiA+IGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5oOgo+ID4KPiA+ICNkZWZp
+bmUgUENJRV9FQ0FNX0JVUyh4KSAgICAgICgoKHgpICYgMHhmZikgPDwgMjApCj4gPiAjZGVmaW5l
+IFBDSUVfRUNBTV9ERVYoeCkgICAgICAoKCh4KSAmIDB4MWYpIDw8IDE1KQo+ID4gI2RlZmluZSBQ
+Q0lFX0VDQU1fRlVOQyh4KSAgICAgKCgoeCkgJiAweDcpIDw8IDEyKQo+ID4KPiA+IGRyaXZlcnMv
+cGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtYWwuYzoKPiA+Cj4gPiAjZGVmaW5lIFBDSUVfRUNBTV9E
+RVZGTih4KSAgICAoKCh4KSAmIDB4ZmYpIDw8IDEyKQo+ID4KPiA+IEkgY2FuIG1vdmUgUENJRV9F
+Q0FNX0JVUywgUENJRV9FQ0FNX0RFViBhbmQgUENJRV9FQ0FNX0ZVTkMgKGFzCj4gPiBQQ0lFX0VD
+QU1fRlVOKSB0byB0aGUgbGludXgvcGNpLWVjYW0uaCBmaWxlLCBhcyB0aGVzZSBzZWVtIHVzZWZ1
+bCwgYnV0Cj4gPiB3aXRob3V0IHRoZSBtYXNrcywgYW5kIHRoZW4gdXBkYXRlIG90aGVyIGZpbGVz
+IHRvIHVzZSB0aGVzZS4gIFdlIGNvdWxkCj4gPiB0aGVuIGxldmVyYWdlIHRoZXNlLCBmb3IgZXhh
+bXBsZToKPiA+Cj4gPiAgICAgICBwY2lfYmFzZV9hZGRyID0gKHZvaWQgX19pb21lbSAqKSgodWlu
+dHB0cl90KXBwLT52YV9jZmcwX2Jhc2UgKwo+ID4gLSAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgKGJ1c25yX2VjYW0gPDwgMjApICsKPiA+IC0gICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgIFBDSUVfRUNBTV9ERVZGTihkZXZmbikpOwo+ID4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgUENJRV9FQ0FNX0JVUyhidXNucl9lY2FtKSAr
+Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBQQ0lFX0VDQU1fRlVO
+KGRldmZuKSk7Cj4gPgo+ID4gV2hhdCBkbyB5b3UgdGhpbms/ICBCam9ybiwgd291bGQgdGhhdCBi
+ZSBhY2NlcHRhYmxlPwo+Cj4gSXQgd291bGQgYmUgbmljZSB0byB1c2UgdGhlIHNhbWUgc3R5bGUg
+YW5kIHNhbWUgbWFjcm9zIGZvciBhbGwgb2YKPiB0aGUgZm9sbG93aW5nLCB3aGljaCBhcmUgYWxs
+IHJlYWxseSBkb2luZyB0aGUgc2FtZSB0aGluZzoKPgo+ICAgYWxfcGNpZV9jb25mX2FkZHJfbWFw
+KCkKPiAgICAgcGNpX2Jhc2VfYWRkciA9ICh2b2lkIF9faW9tZW0gKikoKHVpbnRwdHJfdClwcC0+
+dmFfY2ZnMF9iYXNlICsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKGJ1
+c25yX2VjYW0gPDwgMjApICsKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+UENJRV9FQ0FNX0RFVkZOKGRldmZuKSk7Cj4KPiAgIHJvY2tjaGlwX3BjaWVfcmRfb3RoZXJfY29u
+ZigpCj4gICAgIGJ1c2RldiA9IFBDSUVfRUNBTV9BRERSKGJ1cy0+bnVtYmVyLCBQQ0lfU0xPVChk
+ZXZmbiksCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgIFBDSV9GVU5DKGRldmZuKSwgd2hl
+cmUpOwo+Cj4gICBud2xfcGNpZV9tYXBfYnVzKCkKPiAgICAgcmVsYnVzID0gKGJ1cy0+bnVtYmVy
+IDw8IEVDQU1fQlVTX0xPQ19TSElGVCkgfAo+ICAgICAgICAgICAgICAgICAgICAgKGRldmZuIDw8
+IEVDQU1fREVWX0xPQ19TSElGVCk7Cj4KPiAgICAgcmV0dXJuIHBjaWUtPmVjYW1fYmFzZSArIHJl
+bGJ1cyArIHdoZXJlOwo+Cj4gICB4aWxpbnhfcGNpZV9tYXBfYnVzKCkKPiAgICAgcmVsYnVzID0g
+KGJ1cy0+bnVtYmVyIDw8IEVDQU1fQlVTX05VTV9TSElGVCkgfAo+ICAgICAgICAgICAgICAoZGV2
+Zm4gPDwgRUNBTV9ERVZfTlVNX1NISUZUKTsKPgo+ICAgICByZXR1cm4gcG9ydC0+cmVnX2Jhc2Ug
+KyByZWxidXMgKyB3aGVyZTsKPgo+IE1heWJlIHRoYXQncyBzb21ldGhpbmcgbGlrZSB1c2luZyBQ
+Q0lFX0VDQU1fQUREUigpIGV2ZXJ5d2hlcmU/ICBJJ20KPiBub3Qgc3VyZSB0aGVyZSdzIHZhbHVl
+IGluIGhhdmluZyB0aGUgY2FsbGVyIGRvIHRoZSBQQ0lfU0xPVCgpIGFuZAo+IFBDSV9GVU5DKCkg
+ZGVjb21wb3NpdGlvbiwgdGhvdWdoLCBpLmUuLCBtYXliZSBpdCdzIHNvbWV0aGluZyBsaWtlCj4g
+dGhpcz8KPgo+ICAgI2RlZmluZSBQQ0lFX0VDQU1fUkVHKHgpICAoKHgpICYgMHhmZmYpCj4KPiAg
+ICNkZWZpbmUgUENJX0VDQU1fT0ZGU0VUKGJ1cywgZGV2Zm4sIHdoZXJlKSBcCj4gICAgIFBDSUVf
+RUNBTV9CVVMoYnVzLT5udW1iZXIpIHwgXAo+ICAgICBQQ0lFX0VDQU1fREVWRk4oZGV2Zm4pIHwg
+XAo+ICAgICBQQ0lFX0VDQU1fUkVHKHdoZXJlKQoKTEdUTS4gVGhpcyB3YXMgb24gbXkgcmFkYXIs
+IGJ1dCBub3Qgc29tZXRoaW5nIEkndmUgbG9va2VkIGF0LgoKVGhlcmUncyBhbHNvIGFhcmR2YXJr
+IHdoaWNoIGlzbid0IEVDQU0sIGJ1dCBkb2VzIHRoZSBzYW1lIGNhbGN1bGF0aW9uLgpDYWxsIGl0
+IGluZGlyZWN0IEVDQU06Cgpkcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1hYXJkdmFyay5jOiNk
+ZWZpbmUgUENJRV9DT05GX0JVUyhidXMpCiAgICAgICAgICAgICAgICAgKCgoYnVzKSAmIDB4ZmYp
+IDw8IDIwKQpkcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1hYXJkdmFyay5jLSNkZWZpbmUgUENJ
+RV9DT05GX0RFVihkZXYpCiAgICAgICAgICAgICAgICAgKCgoZGV2KSAmIDB4MWYpIDw8IDE1KQpk
+cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1hYXJkdmFyay5jLSNkZWZpbmUgUENJRV9DT05GX0ZV
+TkMoZnVuKQogICAgICAgICAgICAgICAgICgoKGZ1bikgJiAweDcpICA8PCAxMikKZHJpdmVycy9w
+Y2kvY29udHJvbGxlci9wY2ktYWFyZHZhcmsuYy0jZGVmaW5lIFBDSUVfQ09ORl9SRUcocmVnKQog
+ICAgICAgICAgICAgICAgICgocmVnKSAmIDB4ZmZjKQpkcml2ZXJzL3BjaS9jb250cm9sbGVyL3Bj
+aS1hYXJkdmFyay5jLSNkZWZpbmUgUENJRV9DT05GX0FERFIoYnVzLApkZXZmbiwgd2hlcmUpIFwK
+ZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ktYWFyZHZhcmsuYy0gIChQQ0lFX0NPTkZfQlVTKGJ1
+cykgfApQQ0lFX0NPTkZfREVWKFBDSV9TTE9UKGRldmZuKSkgICAgfCBcCmRyaXZlcnMvcGNpL2Nv
+bnRyb2xsZXIvcGNpLWFhcmR2YXJrLmMtClBDSUVfQ09ORl9GVU5DKFBDSV9GVU5DKGRldmZuKSkg
+fCBQQ0lFX0NPTkZfUkVHKHdoZXJlKSkKCkFuZCBWTUQ6CmRyaXZlcnMvcGNpL2NvbnRyb2xsZXIv
+dm1kLmMtICAgY2hhciBfX2lvbWVtICphZGRyID0gdm1kLT5jZmdiYXIgKwpkcml2ZXJzL3BjaS9j
+b250cm9sbGVyL3ZtZC5jOiAgICAgICAgICAgICAgICAgICAgICAgICgoYnVzLT5udW1iZXIgLQp2
+bWQtPmJ1c25fc3RhcnQpIDw8IDIwKSArCmRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvdm1kLmMtICAg
+ICAgICAgICAgICAgICAgICAgICAgKGRldmZuIDw8IDEyKSArIHJlZzsKZHJpdmVycy9wY2kvY29u
+dHJvbGxlci92bWQuYy0KCgpBbmQgYnJjbV9wY2llX2NmZ19pbmRleCgpLgoKUm9iCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
