@@ -2,55 +2,68 @@ Return-Path: <SRS0=ISdC=DA=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
-	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7824DC4363D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 22:18:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BE8BFC4363D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 22:18:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6DD9B2311A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 22:18:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2E81D2311A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 22:18:30 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="dhPRzgzW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DD9B2311A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WOqpLVdi"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2E81D2311A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=mbNpQO1GkLFQLIYBdVVkKy4wgY93K9c0yD5rpZXgqQw=; b=dhPRzgzWeMY9UVbyIVP8oGtLJ+
-	6kqa6aDlGepWHuXiylS7CJFcgACweIo3WXCAEoOY6+RdBF6Lvso2NlhigTceCqQ6Q8I7wRSgdefkm
-	K29L0ZFJMFd9UxOZe92BhrBvbxHJWI2qLY3oec1rHetYKzp6Xn9ame7hmlEna6PKsTFM0bas2QgGz
-	AMuGw7RYqL8to00pP2kVKlBy31IPHML7zTJm07XS35shKyHUJrO8bHq12Crin7CH+I9+hPujXYIIA
-	o6znM4LF0Pur7QjmT6mJwoodP+fLMWG7BS6Omg0qROQoQPVtHx1CSFY8dY0fQmn3szxAuxS10/Bou
-	LlLxkA9Q==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=XSZvSXVjnaRwZnwJ/9fz8RthXXrH9ZNCvR6Cc2c7jGc=; b=WOqpLVdiheQvQbkY0hqB1Y7kK
+	3ZcYeTaBL0LUKoJt8NMMS2UKS5n6yzBqggH4iY36tkcHDjkFYlieWcz9/HYv0M70zRYJ+XGXAqtWw
+	f+UsuFm+G92M+uxLrVbW/jwkJcamspWyqso1xOCVs9hrfm14F8X7f6P01ZboxahE8V66afSBQbala
+	TmY5j0B9A6Go0DfG7pVzZWrA1/lrEH/R3XW4UeMQk0/I1JXZ5lAVehrFmwN5woMkeS5bqNnXPdiM3
+	7CVrXEAuXWXboEfpDNIcGZ6CUNZImB06VVfh39bOUU6OlD1fZ4OT3SSmILZQLnmu4TFOlDVy49Xl4
+	k8eQ8ZeEQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLD5c-0002Gl-EF; Wed, 23 Sep 2020 22:18:16 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLD5a-0002GG-Nt; Wed, 23 Sep 2020 22:18:15 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kLD5U-0001fd-G7; Thu, 24 Sep 2020 00:18:08 +0200
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Subject: [GIT PULL 1/2] Rockchip dt64 changes for 5.10
-Date: Thu, 24 Sep 2020 00:18:07 +0200
-Message-ID: <16010805.MhVyP8KKtY@diego>
+	id 1kLD5m-0002Hv-Dx; Wed, 23 Sep 2020 22:18:26 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kLD5k-0002HW-UI
+ for linux-rockchip@lists.infradead.org; Wed, 23 Sep 2020 22:18:25 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 88DB8113E;
+ Wed, 23 Sep 2020 15:18:23 -0700 (PDT)
+Received: from [10.57.48.76] (unknown [10.57.48.76])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 05AC13F73B;
+ Wed, 23 Sep 2020 15:18:21 -0700 (PDT)
+Subject: Re: [PATCH v2 0/3] drm: rockchip: hdmi: enable higher resolutions
+ than FHD
+To: Vicente Bergas <vicencb@gmail.com>, Doug Anderson
+ <dianders@chromium.org>, crj <algea.cao@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org
+References: <20200922203107.2932-1-vicencb@gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <340b1e7f-9149-3dcc-e6a3-74ab02fcc6e5@arm.com>
+Date: Wed, 23 Sep 2020 23:18:20 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
+In-Reply-To: <20200922203107.2932-1-vicencb@gmail.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_181814_798536_ED992AED 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20200923_181825_022320_6078A818 
+X-CRM114-Status: GOOD (  18.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,91 +76,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-List-Id: <soc.lore.kernel.org>
-Cc: linux-rockchip@lists.infradead.org, soc@kernel.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd, Kevin, Olof,
+On 2020-09-22 21:31, Vicente Bergas wrote:
+> This patch series enable a QHD HDMI monitor to work at native resolution.
+> Tested on a Sapphire board with RK3399 connected to a Q27q-10 monitor at 2560x1440@60
 
-please find below some Rockchip devicetree changes for 5.10
-Please pull!
+Indeed for RK3399 it also allows my 1920x1200 monitor (Dell U2415) to be 
+driven at its native resolution with a 154MHz pixel clock. However, as 
+predicted, it also breaks RK3328 for the same monitor - instead of 
+rejecting the native mode and falling back to "standard" 1920x1080, it 
+now tries to use it, which results in no signal and a spam of CRTC 
+timeout warnings in dmesg :(
 
-Thanks
-Heiko
+I'll try to test RK3288 as well soon - I tried hacking a specific entry 
+for 154MHz into the tables a while ago, and while it worked perfectly on 
+RK3399, RK3288 gave a fairly glitchy picture as if the clock signal was 
+unstable or slightly out of spec. I'm interested to see if patch #1 
+makes any difference there.
 
-The following changes since commit 9123e3a74ec7b934a4a099e98af6a61c2f80bbf5:
+Thanks,
+Robin.
 
-  Linux 5.9-rc1 (2020-08-16 13:04:57 -0700)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.10-rockchip-dts64-1
-
-for you to fetch changes up to 30a9a8c16865d37bfc0f1859a398ba1b24eec569:
-
-  arm64: dts: rockchip: add ir-receiver node to rk3399-khadas-edge (2020-09-23 15:39:58 +0200)
-
-----------------------------------------------------------------
-New boards NanoPi R2S, A95X-Z2 and more Rock-Pi4 variants.
-Khadas-edge additions and a some fixes.
-
-----------------------------------------------------------------
-Adrian Schmutzler (1):
-      arm64: dts: rockchip: replace status value "ok" by "okay"
-
-Artem Lapkin (2):
-      arm64: dts: rockchip: add spiflash node to rk3399-khadas-edge
-      arm64: dts: rockchip: add ir-receiver node to rk3399-khadas-edge
-
-David Bauer (2):
-      dt-bindings: Add doc for FriendlyARM NanoPi R2S
-      arm64: dts: rockchip: Add support for FriendlyARM NanoPi R2S
-
-Jagan Teki (5):
-      arm64: dts: rockchip: Fix power routing to support POE on rk3399-roc-pc
-      dt-bindings: arm: rockchip: Update ROCKPi 4 binding
-      arm64: dts: rockchip: Mark rock-pi-4 as rock-pi-4a dts
-      arm64: dts: rockchip: Add Radxa ROCK Pi 4B support
-      arm64: dts: rockchip: Add Radxa ROCK Pi 4C support
-
-Johan Jonker (5):
-      arm64: dts: rockchip: change spdif fallback compatible on rk3308
-      dt-bindings: Add vendor prefix for Shenzhen Zkmagic Technology Co., Ltd.
-      dt-bindings: arm: rockchip: add Zkmagic A95X Z2 description
-      arm64: dts: rockchip: add rk3318 A95X Z2 board
-      arm64: dts: rockchip: fix cpu-supply for rk3328-evb
-
- .../devicetree/bindings/arm/rockchip.yaml          |  16 +-
- .../devicetree/bindings/vendor-prefixes.yaml       |   2 +
- arch/arm64/boot/dts/rockchip/Makefile              |   6 +-
- arch/arm64/boot/dts/rockchip/rk3308.dtsi           |   2 +-
- arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts    | 374 +++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3328-evb.dts        |  12 +
- arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts | 368 ++++++++++++++++++++
- arch/arm64/boot/dts/rockchip/rk3368-evb.dtsi       |   2 +-
- .../boot/dts/rockchip/rk3368-orion-r68-meta.dts    |   2 +-
- arch/arm64/boot/dts/rockchip/rk3368-r88.dts        |   4 +-
- .../boot/dts/rockchip/rk3399-khadas-edge.dtsi      |  24 ++
- .../boot/dts/rockchip/rk3399-roc-pc-mezzanine.dts  |  18 +-
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    |  12 +-
- ...{rk3399-rock-pi-4.dts => rk3399-rock-pi-4.dtsi} |  26 --
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts |  13 +
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts |  42 +++
- arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts |  51 +++
- 17 files changed, 937 insertions(+), 37 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3318-a95x-z2.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
- rename arch/arm64/boot/dts/rockchip/{rk3399-rock-pi-4.dts => rk3399-rock-pi-4.dtsi} (95%)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4a.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4b.dts
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-rock-pi-4c.dts
-
-
-
+> 
+> Changes since v1:
+> Use alternative clock rounding code proposed by Doug Anderson
+> 
+> Vicente Bergas (3):
+>    drm: rockchip: hdmi: fix clock rounding code
+>    drm: rockchip: hdmi: allow any clock that is within the range
+>    drm: rockchip: hdmi: add higher pixel clock frequencies
+> 
+>   drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 8 +++++++-
+>   drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 7 ++-----
+>   2 files changed, 9 insertions(+), 6 deletions(-)
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
