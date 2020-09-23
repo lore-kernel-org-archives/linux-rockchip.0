@@ -2,59 +2,87 @@ Return-Path: <SRS0=ISdC=DA=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2A7DC4363D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 07:38:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8D9C1C2D0A8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 09:33:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BFE2B214D8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 07:38:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EEF5D214D8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 09:33:20 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AvnL2dNp"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BFE2B214D8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DjQ7z8r4";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="kTsW68Fp"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EEF5D214D8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FrNIVZF6DaZzqgwfhNuaHRxpzbe3VDEymB9X3h406no=; b=AvnL2dNp/fciQ5PMqE30Mmns2
-	1GNkhLkyLdJPfQsClxDybqTmnbSFeQlYcjK9h5eeqHTZ3C0iBGBkCgnNF5HX+dB99Hef0rytoq29l
-	0clDwIcORrJx+EkoWBft+lMaey2dTdC5XD/9ikTIRpNV+5NrJ2XG+GRds9wWTMNUIanLttNg7K+YB
-	G6N5QrBvGld8LyrRCshSwrZQ321aHDMnIrdE+x1017K98dl9ZWSkQaBBLI5wyO7fOnoVAU3Q0RXaq
-	T+g7FzWgBfPe1JNbJmR2T8gSQ4pf9JCE49c4Bg3wXd+dzOIxg+Ba3DJQ//JZiMmeLwwcEh3RiTFso
-	bl2hlW2kA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tA9pNXP6mbqPQnUOq8/0Tiq5pCd/3LSzkQWrB0OasO0=; b=DjQ7z8r4IS2V7AH8SC5NX3Nb0I
+	UceTJQSVrI7pv/kES7bGh6A7ROtXpiCHi5LTHJrvFbHnDHQ7pGgwaJR7IwkztqxKXpoj4Sfi3xbJ1
+	B8cEfROmfE9tlHyPp2Oi3cR1sJ3iliSXcHVqMnO5GIY0Cju/iFVXYwaAnq0aTX2BHSiy7dnN7ADTW
+	2LIPiawUIgcrtBtngSXyTDIVYBn6z28+p8ttuknhyKzTuj2ydEFE6v5b+Ewv9Re7zqI+gM2HGT0+I
+	p+GMf2n5tLDrPZIdVlntjlYm/a2I5w/jeNRuKlFwiSNuhzBbw8ats5TmcQoYUZcUS0h6zOKG8qP5/
+	eHXIHi6w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kKzMH-0007g1-BF; Wed, 23 Sep 2020 07:38:33 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1kL19H-0007Ni-Me; Wed, 23 Sep 2020 09:33:15 +0000
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kKzMD-0007fH-BU; Wed, 23 Sep 2020 07:38:30 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kKzM1-0005G0-UU; Wed, 23 Sep 2020 09:38:17 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Jian-Hong Pan <jhp@endlessos.org>
-Subject: Re: [PATCH] drm/rockchip: skip probed failed device
-Date: Wed, 23 Sep 2020 09:38:17 +0200
-Message-ID: <4075212.IPEHUSCvie@diego>
-In-Reply-To: <20200923065900.658666-1-jhp@endlessos.org>
-References: <CAPpJ_efHX70Ej0uzRi-iRf7N0n6ZO5sMN-wK_YpszvVD-Un9RQ@mail.gmail.com>
- <20200923065900.658666-1-jhp@endlessos.org>
+ id 1kL19G-0007N1-3C
+ for linux-rockchip@lists.infradead.org; Wed, 23 Sep 2020 09:33:14 +0000
+Received: by mail-pg1-x52b.google.com with SMTP id 7so14023866pgm.11
+ for <linux-rockchip@lists.infradead.org>; Wed, 23 Sep 2020 02:33:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=yZBx9wsYnF/skErc7f9ulQ7PEZnlU/1O8MVjFVsPTO8=;
+ b=kTsW68FpkVQ4TRSOsRO9hzNLFxAKMlAZ0b2vkgS0K4PkItgjQHjtwtG/q33gBXDOgx
+ Zrk82DbS2/FeT+q82Aax0nH3gsRlSA4hqeS4bdTZMBNrl7MDdwFdyn0iagURmc8YaAuE
+ hlyoodxWsqkiI0TWWw9yrJ9sEYeksiDC36jN3qGYvDoul9MkVt1FcQNbxro9RndnQ991
+ P15x/uUYrE35V2Vdz9l3zFhxaj+h8hwGDNq8vj87xLhCx2xC6v9JSaAC5uyIquFRXdLd
+ xsJq9wy2rKqiYuW5+s2IZBXzlyxiwWpCc0w18tGhNgWkncbmHyClspw7svlnkZsgJHZi
+ GyQg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=yZBx9wsYnF/skErc7f9ulQ7PEZnlU/1O8MVjFVsPTO8=;
+ b=uaVIaVkbg7hMrhrE/4MZOzTw2LxBja5sc9IBUhl2qbNa3edADKBTayU5DKCMIXMtyw
+ SiLZtk4TAct7mAt7RVJhYbmyH6WnIP06I0xEQUatTqzi2+myocMUFZAnMsEUR+bs9sex
+ 6lcPdoyMIYH4OE4Ct0G2ddM9yhSH1yHIC84j+Hwbk6wvkTuT41Fm2mtE1jCZsNK1G0KI
+ BdVuKKJrnBjPaNqMf0EqcF+U/WQtKU2Jucn5Q6WrfwP1+QUH6e2PifdExJSgM6HwUIOy
+ IIi18H6UR40J8TMGNZQwh5h5Ym74NYGuAJQqqvXI+s8N6hYpUS3wRcC+uO1H8eOvF/3K
+ xsGQ==
+X-Gm-Message-State: AOAM533LGPqq6EaWG3AX34tWR61h9WCX09XLJT/kFRsARhhaasnMXwhE
+ XgOSLeB6XhjniZ17fUdlq1Lc3F/2jtRZVQ==
+X-Google-Smtp-Source: ABdhPJxlFnpjRMoMjuUDlvd51GdH4AV7FUsTPSUvpoSGzq6tS6Hc9gqPjXoDWGobPPwmt6EwzRaP8g==
+X-Received: by 2002:a62:92ce:0:b029:13b:88f6:3935 with SMTP id
+ o197-20020a6292ce0000b029013b88f63935mr7500731pfd.2.1600853590305; 
+ Wed, 23 Sep 2020 02:33:10 -0700 (PDT)
+Received: from universe.lan (80.251.221.29.16clouds.com. [80.251.221.29])
+ by smtp.gmail.com with ESMTPSA id h35sm16874348pgl.31.2020.09.23.02.33.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 23 Sep 2020 02:33:09 -0700 (PDT)
+From: Artem Lapkin <email2tema@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Subject: [PATCH 0/2] arm64: dts: rockchip: rk3399-khadas-edge: missed nodes
+Date: Wed, 23 Sep 2020 17:32:32 +0800
+Message-Id: <20200923093234.1512037-1-email2tema@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_033829_405021_3E96EC5D 
-X-CRM114-Status: GOOD (  20.86  )
+X-CRM114-CacheID: sfid-20200923_053314_165308_6600CF37 
+X-CRM114-Status: UNSURE (   6.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,65 +95,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Jian-Hong Pan <jhp@endlessos.org>, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux@endlessm.com, linux-arm-kernel@lists.infradead.org
+Cc: art@khadas.com, gouwa@khadas.com, nick@khadas.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Artem Lapkin <art@khadas.com>
 
-Am Mittwoch, 23. September 2020, 08:59:00 CEST schrieb Jian-Hong Pan:
-> The cdn-dp sub driver probes the device failed on PINEBOOK Pro.
-> 
-> kernel: cdn-dp fec00000.dp: [drm:cdn_dp_probe [rockchipdrm]] *ERROR* missing extcon or phy
-> kernel: cdn-dp: probe of fec00000.dp failed with error -22
-> 
-> Then, the device halts all of the DRM related device jobs. For example,
-> the operations: vop_component_ops, vop_component_ops and
-> rockchip_dp_component_ops cannot be bound to corresponding devices. So,
-> Xorg cannot find the correct DRM device.
-> 
-> This patch skips the probing failed devices to fix this issue.
-> 
-> Link: http://lists.infradead.org/pipermail/linux-rockchip/2020-September/022352.html
-> Signed-off-by: Jian-Hong Pan <jhp@endlessos.org>
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> index 0f3eb392fe39..de13588602b4 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-> @@ -331,6 +331,12 @@ static struct component_match *rockchip_drm_match_add(struct device *dev)
->  
->  			if (!d)
->  				break;
-> +			if (!d->driver) {
-> +				DRM_DEV_ERROR(d,
-> +					      "%s did not probe successfully",
-> +					      drv->driver.name);
-> +				continue;
-> +			}
+add missed spiflash and ir-receiver dts nodes to Khadas Edge Board
 
-How does this relate to drivers doing EPROBE_DEFER?
+Artem Lapkin (2):
+  arm64: dts: rockchip: rk3399-khadas-edge: add missed spiflash node
+  arm64: dts: rockchip: rk3399-khadas-edge: add missed ir-recevier and
+    ir_rx pinctl nodes
 
-Very often you have sub-drivers defering probe as they still need another
-resource, so excluding them in that case would not work?
+ .../boot/dts/rockchip/rk3399-khadas-edge.dtsi | 30 +++++++++++++++++++
+ 1 file changed, 30 insertions(+)
 
-Heiko
-
-
->  
->  			device_link_add(dev, d, DL_FLAG_STATELESS);
->  			component_match_add(dev, &match, compare_dev, d);
-> 
-
-
-
+-- 
+2.25.1
 
 
 _______________________________________________
