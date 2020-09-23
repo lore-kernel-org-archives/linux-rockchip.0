@@ -2,59 +2,64 @@ Return-Path: <SRS0=ISdC=DA=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A3AB9C2D0A8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 10:49:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 99B6EC2D0A8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 11:05:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8C470235FC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 10:49:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2C147206A5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Sep 2020 11:05:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FMy17kz+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8C470235FC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TrbqNfTY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2C147206A5
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kemVWjSZzRLtYguNVrxQLCi1QVtXvO3YuhkJvzT/wQ8=; b=FMy17kz+Tox6oWZ0Jpkiif7YY
-	W8uvwShh1TvlJf3UZNvx7Y8CjN14EAtzcHEJ3WctlsUKtyLbBQvRcAGQtZnCOonM+9/QIvyLNFHki
-	H0nPecg7pAkwqa1bVwkUG9PGSXSpleGJZHbQ4KYeD+aZG2yEeaz2zsxp6O2LQ4oJ35O/irrcUlOSC
-	6mJQozVtT5JcptgBHiQzGXdghVtcL3HbXopumCdeR0qKTreTNHfY0IGzRouGDLqko3pV8/rKa52Dq
-	/8Eu2ur/YsG82DyKVbETSO5f6OjHynHaQnD+nh+Y9vKt0tdvkPmBUjO25MeBgiUjgdQt3xXM9Birc
-	+xI/+15tg==;
+	 bh=2uSlgGJ91l2iviBfMiXWaxK61N7VKBpJ+MYOAP5UHLc=; b=TrbqNfTYribWE7acWESHSAsPY
+	Oonh5QhWhc7j7Kee7+HB0BFQ180wHAF0D1pxDTTESjJfLBjAwfcMXGypvACvtelV7XVum9R5bUbYA
+	qY0ucAnqBuotDvr+VReTuHToEsnvO7c1Mec7rROrzmsi1EacoX8jvuxkX4apTzD+YUBBMcuu5HF2i
+	Eyt/RiRt6Dryy5xZ5P0P1SvX2tM46kX6BoiG6r+Gz3R0RUWXyW5Zpgj/vkQ2PnjPPdNDn43N2A2Rz
+	OBSfDhzKZlzQMQe/hIILSFOqBoVkDQ5v2EgY4jHQBoIX60seOpyS+Pn9xbRKsVRPOIH7TKPSacWsO
+	g2Ng8R0hA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kL2Ko-0000G9-3J; Wed, 23 Sep 2020 10:49:14 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kL2Kj-0000Eq-6b; Wed, 23 Sep 2020 10:49:10 +0000
-Received: from [95.90.166.74] (helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kL2Kc-0006VD-3y; Wed, 23 Sep 2020 12:49:02 +0200
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: thierry.reding@gmail.com, u.kleine-koenig@pengutronix.de,
- lee.jones@linaro.org, linux-pwm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Simon South <simon@simonsouth.net>
-Subject: Re: [PATCH v2] pwm: rockchip: Keep enabled PWMs running while probing
-Date: Wed, 23 Sep 2020 12:49:01 +0200
-Message-ID: <8127994.CrzmY9MQ1E@diego>
-In-Reply-To: <20200919193306.1023-1-simon@simonsouth.net>
-References: <20200919193306.1023-1-simon@simonsouth.net>
+	id 1kL2am-0003k6-Bp; Wed, 23 Sep 2020 11:05:44 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kL2ah-0003iN-BV; Wed, 23 Sep 2020 11:05:40 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8526AD6E;
+ Wed, 23 Sep 2020 04:05:36 -0700 (PDT)
+Received: from [10.57.48.76] (unknown [10.57.48.76])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 2B57D3F718;
+ Wed, 23 Sep 2020 04:05:35 -0700 (PDT)
+Subject: Re: [PATCH] drm/rockchip: skip probed failed device
+To: Jian-Hong Pan <jhp@endlessos.org>, =?UTF-8?Q?Heiko_St=c3=bcbner?=
+ <heiko@sntech.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>
+References: <CAPpJ_efHX70Ej0uzRi-iRf7N0n6ZO5sMN-wK_YpszvVD-Un9RQ@mail.gmail.com>
+ <20200923065900.658666-1-jhp@endlessos.org>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <439c4b59-b1e6-88bb-568e-1c2a0feceed4@arm.com>
+Date: Wed, 23 Sep 2020 12:05:26 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
+In-Reply-To: <20200923065900.658666-1-jhp@endlessos.org>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200923_064909_247296_7717ACC9 
-X-CRM114-Status: GOOD (  22.03  )
+X-CRM114-CacheID: sfid-20200923_070539_439881_E996BBE1 
+X-CRM114-Status: GOOD (  21.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,62 +72,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Simon South <simon@simonsouth.net>
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux@endlessm.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Samstag, 19. September 2020, 21:33:06 CEST schrieb Simon South:
-> Following commit cfc4c189bc70 ("pwm: Read initial hardware state at
-> request time") the Rockchip PWM driver can no longer assume a device's
-> pwm_state structure has been populated after a call to pwmchip_add().
-> Consequently, the test in rockchip_pwm_probe() intended to prevent the
-> driver from stopping PWM devices already enabled by the bootloader no
-> longer functions reliably and this can lead to the kernel hanging
-> during startup, particularly on devices like the Pinebook Pro that use
-> a PWM-controlled backlight for their display.
+On 2020-09-23 07:59, Jian-Hong Pan wrote:
+> The cdn-dp sub driver probes the device failed on PINEBOOK Pro.
 > 
-> Avoid this by querying the device directly at probe time to determine
-> whether or not it is enabled.
+> kernel: cdn-dp fec00000.dp: [drm:cdn_dp_probe [rockchipdrm]] *ERROR* missing extcon or phy
+> kernel: cdn-dp: probe of fec00000.dp failed with error -22
+
+Wouldn't it make more sense to simply not enable the DisplayPort node in 
+the upstream DT, until the type-C phy work has been done to make it 
+usable at all? AIUI the "official" Manjaro kernel is carrying a bunch of 
+hacks to make type-C work via extcon, but they know that isn't an 
+upstreamable solution.
+
+Robin.
+
+> Then, the device halts all of the DRM related device jobs. For example,
+> the operations: vop_component_ops, vop_component_ops and
+> rockchip_dp_component_ops cannot be bound to corresponding devices. So,
+> Xorg cannot find the correct DRM device.
 > 
-> Fixes: cfc4c189bc70 ("pwm: Read initial hardware state at request time")
-> Signed-off-by: Simon South <simon@simonsouth.net>
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-
+> This patch skips the probing failed devices to fix this issue.
+> 
+> Link: http://lists.infradead.org/pipermail/linux-rockchip/2020-September/022352.html
+> Signed-off-by: Jian-Hong Pan <jhp@endlessos.org>
 > ---
->  drivers/pwm/pwm-rockchip.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+>   drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 6 ++++++
+>   1 file changed, 6 insertions(+)
 > 
-> diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-> index eb8c9cb645a6..098e94335cb5 100644
-> --- a/drivers/pwm/pwm-rockchip.c
-> +++ b/drivers/pwm/pwm-rockchip.c
-> @@ -288,6 +288,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
->  	const struct of_device_id *id;
->  	struct rockchip_pwm_chip *pc;
->  	struct resource *r;
-> +	u32 enable_conf, ctrl;
->  	int ret, count;
->  
->  	id = of_match_device(rockchip_pwm_dt_ids, &pdev->dev);
-> @@ -362,7 +363,9 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
->  	}
->  
->  	/* Keep the PWM clk enabled if the PWM appears to be up and running. */
-> -	if (!pwm_is_enabled(pc->chip.pwms))
-> +	enable_conf = pc->data->enable_conf;
-> +	ctrl = readl_relaxed(pc->base + pc->data->regs.ctrl);
-> +	if ((ctrl & enable_conf) != enable_conf)
->  		clk_disable(pc->clk);
->  
->  	return 0;
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> index 0f3eb392fe39..de13588602b4 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+> @@ -331,6 +331,12 @@ static struct component_match *rockchip_drm_match_add(struct device *dev)
+>   
+>   			if (!d)
+>   				break;
+> +			if (!d->driver) {
+> +				DRM_DEV_ERROR(d,
+> +					      "%s did not probe successfully",
+> +					      drv->driver.name);
+> +				continue;
+> +			}
+>   
+>   			device_link_add(dev, d, DL_FLAG_STATELESS);
+>   			component_match_add(dev, &match, compare_dev, d);
 > 
-
-
-
-
 
 _______________________________________________
 Linux-rockchip mailing list
