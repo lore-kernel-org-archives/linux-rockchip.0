@@ -1,89 +1,87 @@
-Return-Path: <SRS0=GXEY=DC=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=FJi+=DD=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 159E7C4727E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2020 21:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D7A8C2D0A8
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2020 13:00:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B88C0206FC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 25 Sep 2020 21:56:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BC825221EA
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2020 13:00:27 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Mx44YUT7";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="smLOvcFF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B88C0206FC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="e3/gby2B";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="a8tHbMaq"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC825221EA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=07QV084ZabH2Ozp70Yd91MaCpPmrMrDQkZB7UpF6Gg4=; b=Mx44YUT7NIsFFDqvAgthnVXmK
-	lBY0PF8O5c/Pa72w0GCY0qnX2uovOi1EUPjWPxPyA8xyVb30LM4Plb2xL6PqXwKbvHYMjhjRthvvS
-	QiCaViUnFQ75No8uxB02DrOYXJDmhMHGIVKTcRdlX5MEdXZ13gY6yUIvaKTC7f6R3LhwkmaHD9u7o
-	qVMLMhoAp2jW391o0DikMfoPgZHdaPew+xsEburWlR3BSxWDnqmyOMtwftUnbXudBIO/qpyqhCkrJ
-	zzewFtyitoe+eqXH5Zli5yfLA18o4Nm8sbirT8o5NQWET3cLSe5fz23W8BL/On/Z9av8dBiyD01BN
-	Uw+ajuPDQ==;
+	 bh=TIuQYWYFO9glMtr73Ih1EBifbST1UF8UQkygsiZP6WA=; b=e3/gby2BIkdI+WSMpdGGnzDTa
+	ymGvtAwmk/di3minCYf1Ombgky3Y30MvdYuGa1VNzc4kOvVVGNKXOhDeRtawAq/lN6s1KZS21Hg8v
+	Tp/vRQg5p4QnlBXNpkfQK75nM1qUw7HRrcnuUKBzyXEfAmtpVhFcASCHXM0pfgcvP51Px7m6FT7Pw
+	2Mx8iLvsaDn+w3bxJdHjsC+NupYuwqW4s7YXOpUkvW5S19TUYt68fRSQYFD9qgTzpBaso0pTUyQue
+	43oZHYfybspNpTUyiRa9hWaaAqA7PPmimbSKGJg30ZBHevNwklx/0MUOS+5Z2YtYmE5ydermp3vyp
+	yWwzhvOoQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kLvh6-0007I8-2T; Fri, 25 Sep 2020 21:55:56 +0000
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
+	id 1kM9oF-0008MC-C4; Sat, 26 Sep 2020 13:00:15 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kLvgm-0007CA-7R; Fri, 25 Sep 2020 21:55:37 +0000
-Received: by mail-lj1-x243.google.com with SMTP id a22so3613049ljp.13;
- Fri, 25 Sep 2020 14:55:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=IqWRtJXL3h+0YNOWDfr/oyE5XU2E5SGs9B5R12b/mYU=;
- b=smLOvcFFfth/d/eCeWfi6sPNLPRxKuTHjZl6Qa78IJFY39bb2+0XlYQLC/pEPb0S5f
- krWWfpXYbxD08VHxrcxWjPchRtbLuzebmEukSrshxr4xU4tX1dR3f82OTovIcu62v4qP
- g20pfMDZ8diisUnm+1Se1IT4VvLZ2kruNSpscC6of4431D4LgyhrDdtXJZYCE10wtpdt
- gxO0psNfOrRHtRtDqjM8ju1BdpYSQbTemoNMxpKvwnAofmyb1mB3SQUq2a4pcitvlfIv
- b+hARjlJum+osgCVbXdK/+NORGUg++RWT54fIlmgTwTdM1sxpO02quE75L1NTKySgjPZ
- KjOA==
+ id 1kM9oB-0008Ke-OH
+ for linux-rockchip@lists.infradead.org; Sat, 26 Sep 2020 13:00:12 +0000
+Received: by mail-wr1-x441.google.com with SMTP id w5so6845990wrp.8
+ for <linux-rockchip@lists.infradead.org>; Sat, 26 Sep 2020 06:00:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=4qdU5lafYi+hcVoRAvstZheKhqCYZ5Ckd1gUvUE1rzc=;
+ b=a8tHbMaqB+v22Lv/kLM3g3AksGk0fdsVfKBnfPt4UWgrcsqPBoVo4ZT1FsDE/lmAi9
+ 3jlQWknciPpbAcVrBeSwTGb1NbaKP3b/uqTYcjGSC7r1XEc85wfqNnuoTZUSOK4mer2b
+ JzaniKOXgUp4A1mHhPumcaGqDJqTgyG77h7l0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=IqWRtJXL3h+0YNOWDfr/oyE5XU2E5SGs9B5R12b/mYU=;
- b=o4YYX4aAAh6EUp/aF0tsz6wD92ZDaqKh6v0oajp3Xm+MsK6Kz15JJXlfZRGGCKtP+h
- 4teQGOgKwQmaqKOm3gWYZUHbPCVTdy9p718cctWnzBkjVTTIpHvHjgknvfDatUW6bI9J
- hvBM/P8k9CN1t3Qlig9mzmPhQMy7i9rwPgkQf44OoXK9OKqWHR/6bBtY9iZPe/BE33ld
- 3/mjSpv7r87ntCn/m0n1/YIQogR3Z/dt937ja9KJyf1xEzrHPl+NJMHMvn9A8wCnPp/5
- spWeVxRj70L1AXH0xT4bnesGOKpTzQi1fkAI43LrO2DYDHOL6QQ0HozeOL4UALjBtZCe
- DUxg==
-X-Gm-Message-State: AOAM531cbTSoy7rkmSICeT40SK6Q24XAoe6v5L8x6TncK70hp5fQiOiI
- hCwvyGe/wYjC0nWNotPgkT8=
-X-Google-Smtp-Source: ABdhPJwmQGAytj+dmXke/hXv+JGQ4Kg6h02qEjK+GXB10/h+Q3MdC1ggeZKjWovNpDVBdcczonRk5w==
-X-Received: by 2002:a2e:90d6:: with SMTP id o22mr1769262ljg.442.1601070935198; 
- Fri, 25 Sep 2020 14:55:35 -0700 (PDT)
-Received: from saturn.localdomain ([2a00:fd00:805f:db00:3926:b59a:e618:9f9c])
- by smtp.gmail.com with ESMTPSA id
- j8sm261277lfr.80.2020.09.25.14.55.34
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=4qdU5lafYi+hcVoRAvstZheKhqCYZ5Ckd1gUvUE1rzc=;
+ b=b8maU9aNm2ZnvzQiN9KJMWS4S1bGEN2i7vKi/w7q+/IPOeVdY3r0ciNNxgcdk3S81A
+ H8LaibKOzZJj7Ivciyq/UsN+8CrRzNcHUg2ZDQ3v+Svb5+S5v2z17G/ROtSWw3QEyRAH
+ iaL5BLiVkGQHZxyPNCaSiVeUvF1LZforUFBjs93xIxCS6kieBDXLIls3U4amii1yFBrd
+ bImN3csKWPydnYS8ws1DH/U9oUDn8Y2TWBO8x8ozMj4iTTGfWRm20VGCRzWLij5xIdkZ
+ XD/tppILCMBu0RHcE/TofrPrhi/6Nr6pOPRJ6s59LIReVmNgw7Y2XsskYaLd5orNMDK1
+ 88YA==
+X-Gm-Message-State: AOAM532UdDlq7hIMLoqFdrv+SOW/xNUoCtBF1UcNv0V4/oyWcBcearNu
+ tS/80AJ7CJYhH6Qujl3ihBnB2g==
+X-Google-Smtp-Source: ABdhPJwnQFrsiZDsceVMa/OZGRYeitM4Z0qYBnUmfRNKn4bmhYo6FC4ZmxJTPdc3V0yS8KdYKve8gg==
+X-Received: by 2002:adf:f802:: with SMTP id s2mr9115823wrp.328.1601125207121; 
+ Sat, 26 Sep 2020 06:00:07 -0700 (PDT)
+Received: from chromium.org (216.131.76.34.bc.googleusercontent.com.
+ [34.76.131.216])
+ by smtp.gmail.com with ESMTPSA id e1sm6740101wrp.49.2020.09.26.06.00.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Sep 2020 14:55:34 -0700 (PDT)
-From: Sam Ravnborg <sam@ravnborg.org>
-To: dri-devel@lists.freedesktop.org, Heiko Stuebner <heiko@sntech.de>,
- Thomas Zimmermann <tzimmermann@suse.de>
-Subject: [PATCH v1 2/2] drm/rockchip: fix warning from cdn_dp_resume
-Date: Fri, 25 Sep 2020 23:55:24 +0200
-Message-Id: <20200925215524.2899527-3-sam@ravnborg.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200925215524.2899527-1-sam@ravnborg.org>
-References: <20200925215524.2899527-1-sam@ravnborg.org>
+ Sat, 26 Sep 2020 06:00:06 -0700 (PDT)
+Date: Sat, 26 Sep 2020 13:00:05 +0000
+From: Tomasz Figa <tfiga@chromium.org>
+To: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH v5 8/9] arm64: dts: rockchip: add isp0 node for rk3399
+Message-ID: <20200926130005.GC3781977@chromium.org>
+References: <20200722155533.252844-1-helen.koike@collabora.com>
+ <20200722155533.252844-9-helen.koike@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200722155533.252844-9-helen.koike@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200925_175536_309931_0F2AE15F 
-X-CRM114-Status: GOOD (  15.23  )
+X-CRM114-CacheID: sfid-20200926_090011_797651_7CE4D051 
+X-CRM114-Status: GOOD (  19.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,39 +94,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Sandy Huang <hjc@rock-chips.com>, stable@vger.kernel.org,
- linux-rockchip@lists.infradead.org,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Sam Ravnborg <sam@ravnborg.org>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ eddie.cai.linux@gmail.com, dafna.hirschfeld@collabora.com, heiko@sntech.de,
+ zhengsq@rock-chips.com, linux-kernel@vger.kernel.org,
+ karthik.poduval@gmail.com, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, hverkuil-cisco@xs4all.nl, robin.murphy@arm.com,
+ mark.rutland@arm.com, kernel@collabora.com, ezequiel@collabora.com,
+ jbx6244@gmail.com, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Q29tbWl0IDdjNDlhYmI0YzJmOCAoImRybS9yb2NrY2hpcDogY2RuLWRwLWNvcmU6IE1ha2UgY2Ru
-X2RwX2NvcmVfc3VzcGVuZC9yZXN1bWUgc3RhdGljIikKaW50cm9kdWNlZCB0aGUgZm9sbG93aW5n
-IHdhcm5pbmcgaW4gc29tZSBidWlsZHM6CgpjZG4tZHAtY29yZS5jOjExMjQ6MTI6IHdhcm5pbmc6
-IOKAmGNkbl9kcF9yZXN1bWXigJkgZGVmaW5lZCBidXQgbm90IHVzZWQKIDExMjQgfCBzdGF0aWMg
-aW50IGNkbl9kcF9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQogICAgICB8ICAgICAgICAgICAg
-Xn5+fn5+fn5+fn5+fgoKRml4IHRoaXMgYnkgZGVmaW5pbmcgY2RuX2RwX3Jlc3VtZSBfX21heWJl
-X3VudXNlZAoKU2lnbmVkLW9mZi1ieTogU2FtIFJhdm5ib3JnIDxzYW1AcmF2bmJvcmcub3JnPgpG
-aXhlczogN2M0OWFiYjRjMmY4ICgiZHJtL3JvY2tjaGlwOiBjZG4tZHAtY29yZTogTWFrZSBjZG5f
-ZHBfY29yZV9zdXNwZW5kL3Jlc3VtZSBzdGF0aWMiKQpDYzogRW5yaWMgQmFsbGV0Ym8gaSBTZXJy
-YSA8ZW5yaWMuYmFsbGV0Ym9AY29sbGFib3JhLmNvbT4KQ2M6IEhlaWtvIFN0dWVibmVyIDxoZWlr
-b0BzbnRlY2guZGU+CkNjOiBTYW5keSBIdWFuZyA8aGpjQHJvY2stY2hpcHMuY29tPgpDYzogbGlu
-dXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCkNjOiBsaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCkNjOiA8c3RhYmxlQHZnZXIua2VybmVsLm9yZz4gIyB2NS44KwotLS0K
-IGRyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAtY29yZS5jIHwgMiArLQogMSBmaWxlIGNo
-YW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgYi9kcml2ZXJzL2dwdS9kcm0vcm9ja2No
-aXAvY2RuLWRwLWNvcmUuYwppbmRleCBhNGE0NWRhZjkzZjIuLjExNjJlMzIxYWFlZCAxMDA2NDQK
-LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKKysrIGIvZHJpdmVy
-cy9ncHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMKQEAgLTExMjEsNyArMTEyMSw3IEBAIHN0
-YXRpYyBpbnQgY2RuX2RwX3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQogCXJldHVybiByZXQ7
-CiB9CiAKLXN0YXRpYyBpbnQgY2RuX2RwX3Jlc3VtZShzdHJ1Y3QgZGV2aWNlICpkZXYpCitzdGF0
-aWMgaW50IF9fbWF5YmVfdW51c2VkIGNkbl9kcF9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQog
-ewogCXN0cnVjdCBjZG5fZHBfZGV2aWNlICpkcCA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwogCi0t
-IAoyLjI1LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+Hi Helen,
+
+On Wed, Jul 22, 2020 at 12:55:32PM -0300, Helen Koike wrote:
+> From: Shunqian Zheng <zhengsq@rock-chips.com>
+> 
+> RK3399 has two ISPs, but only isp0 was tested.
+> Add isp0 node in rk3399 dtsi
+> 
+> Verified with:
+> make ARCH=arm64 dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+> 
+> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> 
+> ---
+> 
+> V4:
+> - update clock names
+> 
+> V3:
+> - clean up clocks
+> 
+> V2:
+> - re-order power-domains property
+> 
+> V1:
+> This patch was originally part of this patchset:
+> 
+>     https://patchwork.kernel.org/patch/10267431/
+> 
+> The only difference is:
+> - add phy properties
+> - add ports
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 25 ++++++++++++++++++++++++
+>  1 file changed, 25 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> index dba9641947a3a..ed8ba75dbbce8 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+> @@ -1721,6 +1721,31 @@ vopb_mmu: iommu@ff903f00 {
+>  		status = "disabled";
+>  	};
+>  
+> +	isp0: isp0@ff910000 {
+> +		compatible = "rockchip,rk3399-cif-isp";
+> +		reg = <0x0 0xff910000 0x0 0x4000>;
+> +		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
+> +		clocks = <&cru SCLK_ISP0>,
+> +			 <&cru ACLK_ISP0_WRAPPER>,
+> +			 <&cru HCLK_ISP0_WRAPPER>;
+> +		clock-names = "isp", "aclk", "hclk";
+> +		iommus = <&isp0_mmu>;
+> +		phys = <&mipi_dphy_rx0>;
+> +		phy-names = "dphy";
+> +		power-domains = <&power RK3399_PD_ISP0>;
+
+Should this have status = "disabled" too? The mipi_dphy_rx0 node is
+disabled by default too, so in the default configuration the driver
+would always fail to probe.
+
+Best regards,
+Tomasz
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
