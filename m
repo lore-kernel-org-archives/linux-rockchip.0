@@ -2,22 +2,22 @@ Return-Path: <SRS0=FJi+=DD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A6F5C2D0A8
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2020 13:03:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5EA2C2D0A8
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2020 13:17:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1AA5D206D4
-	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2020 13:03:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 61ADC207EA
+	for <linux-rockchip@archiver.kernel.org>; Sat, 26 Sep 2020 13:17:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M+EgGYGD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="PNuFpmwN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1AA5D206D4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="USoZ+CWB";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="bu7rNwBB"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61ADC207EA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,62 +26,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zLZF0J9Kt6E7u6O/ybwOrUnCxzTaNO5uJcbOC+nnyHk=; b=M+EgGYGDECqopddocKH9HDlTb
-	mDka29AqeV51E3I4oq7C/uOs9fJ/8hGOWNiwRpCFJFVYlOf/GRpBMFsqHh9Sb9KoOyd0rEZMDC8ww
-	M6/sqwSgqJENwBR1fDKoUCVmKxgC+nBJaQaxjnHGbj1L3HqzpVditVovD9C2PoH5nRVv0aqNxS1tW
-	UMxbnrWVthAFRNjWuuaJkMWV2XwK04q7mweAwH81BmREjrQI+JYYUrAj7eaaF2ULYt/6uJG0JEYn+
-	OzsVpWHa3rrxxxgY19XWhyX081sUbYBOrNqOfakKRAkUapZfZ0JV/DqsodxHb4E89ufzbfi6C1Dsc
-	3xLzWPivw==;
+	 bh=q6OlHqxvYlwwOHURt5vMore53v79hS76ZdpDDOP2q68=; b=USoZ+CWBIvy6n32/ckOVKf2xH
+	KngNrnf4KkqKazRx3BLyuaDvVSuaFE2mf9ZcLoHVjTo/4/kOgNQPDdD1ieyyXNtFOZf8K60CDuJTr
+	N6WcthGmNQF/rat26ny0nyPdQN3Q4P9fhDQ3a0rDmO+OSlq1zrEIKsZ5VV6mER0vbv85fQNsFzNHn
+	JJUI0DGPrikHmd+1GU7ZakBlhNigKqYF7d2ACvi3POW3llSKxjEBhyM20hKQIa9zT1wVrXNB9W6I7
+	8erl2Qj1wupLuHIDv3Ll8HiKDFG5UiEVKQ19M28HFOHdt2IOWgXNFn30GEpSJxcZ7CuOFM7G8a5Wu
+	8sQN5/wHw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kM9rR-0001Bg-AP; Sat, 26 Sep 2020 13:03:33 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1kMA4g-0002Uk-9J; Sat, 26 Sep 2020 13:17:14 +0000
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kM9rP-0001AT-4w
- for linux-rockchip@lists.infradead.org; Sat, 26 Sep 2020 13:03:31 +0000
-Received: by mail-wm1-x341.google.com with SMTP id l15so1256689wmh.1
- for <linux-rockchip@lists.infradead.org>; Sat, 26 Sep 2020 06:03:30 -0700 (PDT)
+ id 1kMA4e-0002U9-3m
+ for linux-rockchip@lists.infradead.org; Sat, 26 Sep 2020 13:17:13 +0000
+Received: by mail-wm1-x343.google.com with SMTP id e11so1276938wme.0
+ for <linux-rockchip@lists.infradead.org>; Sat, 26 Sep 2020 06:17:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=6UBlp4CWE/HNUMg46vGuXH/W4+PrU2QCjrc8dmoCqx0=;
- b=PNuFpmwNBdW/TGJSBIP0GAADCkUiJiN3BePu59PEzCMlCXYVv+OLoczXNNVfGW7GAf
- ZsIIVdoOhY0IsSg1qTLlM46HvznPpDEZgXCebWEEK1ft9+j5c+8EjUwlhkLqmSDP7mpx
- 4n3h5/vGkVdPc1nUSmhrDus0L0N0Yz96r3vpw=
+ bh=d4WdYnhNduVMb4IQylvNj0b3+xUXtGAllJOGjx+LukM=;
+ b=bu7rNwBBrw/g6/MQUYPv/rJuxs4kAJuSUSGF7HaoBxYmz+CE+8kF5cU7Vk+A9yw9fT
+ 2uTqTzH0/a59B/1vQknmTX55axzITAT5Sk1Eml/bFiKnwHjUdhTv0Q+hwWWoD69eTq2r
+ yb7hM4IaJd6RS4hi5svCI3acUoPyo69HIgP2Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=6UBlp4CWE/HNUMg46vGuXH/W4+PrU2QCjrc8dmoCqx0=;
- b=nbq+myzyHDGK95L0IytZNpSH5YcsXYuCmyB3scn2fJzQgEGDPI581IBp5F8MzenwTz
- v4lvJRUB7VzFFr9NbbLTXTBQXdiQDds0as19WyvhywYRJ96TeuvuC0mDpZkMoV2BXnY3
- YQaR5d5GppGpQgPpZHAQhOsNyo5/eYRKSKBNjORoqwoOW5PpUXMzRnwG63bZblo/YdZ6
- ZkBiRs3jkxSz0n+SE3Czz44udRPiZEzrlCRwBs80Hb1q7wZCkIKzn/HSOYEE4KY7yASX
- YrJVS8/txZa6uiG7Miv8BuTlnLNje1hePdFnW7U2EJlRixE05k/M7HXwNbmnKzGf2pne
- MdNw==
-X-Gm-Message-State: AOAM533TX4rnB4itH4gjx5/JKUfI94E+KHfYNvSiDqK/lol1gyKREIRl
- /07JNdW+5+v1zcuyUFymaCFhJIKwFIUUTzXB
-X-Google-Smtp-Source: ABdhPJynIuaCTOn8KUC4rrc+W/+aEYuVm8XN6ViT/zFkUVty6k8hF7b/mtHx243jPWCjHGHQoYci3Q==
-X-Received: by 2002:a1c:9c8c:: with SMTP id f134mr2541646wme.27.1601125410239; 
- Sat, 26 Sep 2020 06:03:30 -0700 (PDT)
+ bh=d4WdYnhNduVMb4IQylvNj0b3+xUXtGAllJOGjx+LukM=;
+ b=Rv9y/u40irajLYD0bGVnEq0nCc0BqLDcltaLGefi9lN/cHCodxAb7e/7yTyn1q14rY
+ bY7js41cFuE1cJQcEV0kPcmOoHqtqi7+rA/NWxSCZdFOLvISTLzrIvsrj5lQ0WpephYI
+ soNZr7ywCB1NfEFPennUU/U74bH7rxMXUa580k7uQlubXmL0k6aByuJDyyEezx4NoRPM
+ 1YXU64VOxmvFUA5bnHUNWPE/jSPP3efwqUi5aL0UOLsEN/6Ws1q1dZo/Crv2zQ6POvQN
+ cT6T0l7KZyWuAVSD/8gqWNFVKsOAYsAv5+DttjKHEZMEXL7p1Qkhc85RF4+lBaDOKLr0
+ Symg==
+X-Gm-Message-State: AOAM533dhLYhXndxQeIg4A0/Ilii0k0DP1hN4vGvpqXKY9/3gqDfWvRt
+ w8ix9A2Kc0cVkMPapjsjTBTcBw==
+X-Google-Smtp-Source: ABdhPJzA9zIAszTN7VfMOAdSZYj9TgCEGPni6cWED8LMBF3e0XPhvf2pPLGokCCo/16b8UNSW4Do6Q==
+X-Received: by 2002:a7b:c3c8:: with SMTP id t8mr2589182wmj.101.1601126230700; 
+ Sat, 26 Sep 2020 06:17:10 -0700 (PDT)
 Received: from chromium.org (216.131.76.34.bc.googleusercontent.com.
  [34.76.131.216])
- by smtp.gmail.com with ESMTPSA id e18sm6533467wrx.50.2020.09.26.06.03.28
+ by smtp.gmail.com with ESMTPSA id m185sm2768709wmf.5.2020.09.26.06.17.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2020 06:03:29 -0700 (PDT)
-Date: Sat, 26 Sep 2020 13:03:27 +0000
+ Sat, 26 Sep 2020 06:17:09 -0700 (PDT)
+Date: Sat, 26 Sep 2020 13:17:08 +0000
 From: Tomasz Figa <tfiga@chromium.org>
-To: Helen Koike <helen.koike@collabora.com>
-Subject: Re: [PATCH v5 0/9] move Rockchip ISP bindings out of staging / add
- ISP DT nodes for RK3399
-Message-ID: <20200926130327.GD3781977@chromium.org>
-References: <20200722155533.252844-1-helen.koike@collabora.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH v4 02/10] media: staging: rkisp1: cap: remove unsupported
+ formats
+Message-ID: <20200926131708.GE3781977@chromium.org>
+References: <20200901111612.10552-1-dafna.hirschfeld@collabora.com>
+ <20200901111612.10552-3-dafna.hirschfeld@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200722155533.252844-1-helen.koike@collabora.com>
+In-Reply-To: <20200901111612.10552-3-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200926_090331_226990_CA467FA7 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20200926_091712_181780_F185EDF6 
+X-CRM114-Status: GOOD (  17.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,42 +95,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
- eddie.cai.linux@gmail.com, dafna.hirschfeld@collabora.com, heiko@sntech.de,
- zhengsq@rock-chips.com, linux-kernel@vger.kernel.org,
- karthik.poduval@gmail.com, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, hverkuil-cisco@xs4all.nl, robin.murphy@arm.com,
- mark.rutland@arm.com, kernel@collabora.com, ezequiel@collabora.com,
- jbx6244@gmail.com, linux-media@vger.kernel.org
+Cc: mchehab@kernel.org, dafna3@gmail.com, hverkuil@xs4all.nl,
+ linux-rockchip@lists.infradead.org, helen.koike@collabora.com,
+ laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com,
+ kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Helen,
+Hi Dafna,
 
-On Wed, Jul 22, 2020 at 12:55:24PM -0300, Helen Koike wrote:
-> Move the bindings out of drivers/staging and place them in
-> Documentation/devicetree/bindings instead.
-> 
-> Also, add DT nodes for RK3399 and verify with make ARCH=arm64 dtbs_check
-> and make ARCH=arm64 dt_binding_check.
-> 
-> Tested by verifying images streamed from Scarlet Chromebook
-> 
-> Changes in v5:
-> - Drop unit addresses in dt-bindings example for simplification and fix
-> errors as suggested by Rob Herring in previous version
-> - Fix typos
-> - Re-write clock organization with if/then schema
->
+On Tue, Sep 01, 2020 at 01:16:04PM +0200, Dafna Hirschfeld wrote:
+> For Ycbcr packed formats only YUYV can be supported by
+> the driver. This patch removes the other formats.
 
-Besides one comment to patch 8/9,
-
-Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+I can see the driver already setting the
+RKISP1_CIF_MI_XTD_FMT_CTRL_*_CB_CR_SWAP register according to the
+uv_swap flag, but it currently does it so only if comp_planes is 2.
+Wouldn't just doing the same if the number of planes is 1 fix the
+support for at least the YVYU format?
 
 Best regards,
 Tomasz
+
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> Acked-by: Helen Koike <helen.koike@collabora.com>
+> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> ---
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 17 -----------------
+>  1 file changed, 17 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> index f4d5cc3e2f12..79195e74d995 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> @@ -88,13 +88,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_mp_fmts[] = {
+>  		.fourcc = V4L2_PIX_FMT_YUYV,
+>  		.uv_swap = 0,
+>  		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+> -	}, {
+> -		.fourcc = V4L2_PIX_FMT_YVYU,
+> -		.uv_swap = 1,
+> -		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+> -	}, {
+> -		.fourcc = V4L2_PIX_FMT_VYUY,
+> -		.write_format = RKISP1_MI_CTRL_MP_WRITE_YUVINT,
+>  	}, {
+>  		.fourcc = V4L2_PIX_FMT_YUV422P,
+>  		.uv_swap = 0,
+> @@ -197,16 +190,6 @@ static const struct rkisp1_capture_fmt_cfg rkisp1_sp_fmts[] = {
+>  		.uv_swap = 0,
+>  		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+>  		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+> -	}, {
+> -		.fourcc = V4L2_PIX_FMT_YVYU,
+> -		.uv_swap = 1,
+> -		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+> -		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+> -	}, {
+> -		.fourcc = V4L2_PIX_FMT_VYUY,
+> -		.uv_swap = 1,
+> -		.write_format = RKISP1_MI_CTRL_SP_WRITE_INT,
+> -		.output_format = RKISP1_MI_CTRL_SP_OUTPUT_YUV422,
+>  	}, {
+>  		.fourcc = V4L2_PIX_FMT_YUV422P,
+>  		.uv_swap = 0,
+> -- 
+> 2.17.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
