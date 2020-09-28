@@ -1,89 +1,81 @@
-Return-Path: <SRS0=B9YW=DE=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=Ahoz=DF=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 359A1C4346E
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Sep 2020 20:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 12DAEC4727D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2020 02:39:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 972E1239EB
-	for <linux-rockchip@archiver.kernel.org>; Sun, 27 Sep 2020 20:29:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6E30722262
+	for <linux-rockchip@archiver.kernel.org>; Mon, 28 Sep 2020 02:39:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="taUG0mYK";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="GjE1nwg8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 972E1239EB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kKHH57x3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6E30722262
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:MIME-Version:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SHHDEj2GTJvoqBZmLBwaa8INR3K13aj+JV9aOHLb+L8=; b=taUG0mYK3LL61OPu6N191r+sd+
-	4n4R3m6Vj4nSDrid+5DIr/579zktnMmYK41oJwklbnI0eaTskmsUwXTLbIumFswdrcjJqQQ9E+7PE
-	+CacQPYyXf/HDrZKl5rtI1c6ZCmA4NeP5kdEUU8SlmzWQEsGauX6k7ImgM4XAAlomnvMFIH7kcxPc
-	uwUM8lBCjgMhQcz2DdFAC6YuhrB7WNh3Qs/DTCxPnLQkcEyhB0Ou9VI6MByaTGnTj4n6R77hvLpxc
-	Oj+k/TIF0X88tOYDrFMqsFNcypkxQCv7gtE9MPa5qEN+j5mJioiBuyn+C9LUaHgAOTOOvskTQt3gX
-	h9AR89yA==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=RYd4t/EBrbycUJnvr+Fg9l6KEMV4sD2YCeatcdc0JXE=; b=kKHH57x3qWSxWd3k1ki8nZbGG
+	mZWvignL+mMAKk2lXzeLxKjQeoDr87+T1t/ajUi9EKVMsmdtfMaJPuUxkQOc1X1eszGqHLSkKXXQp
+	HRPOv7X5GpLRo6cRXuwvOKFVRb5isYUhuFUPaQ5Dd2+y9EmJd5SxlPTvEnOX1NsUejJtSN33McceV
+	sclzbuVmtPJrpF89KOaVReQG2BtKt+QaA1itBt2VLpEz2Mis9h5OGKYMQ89pkAfI2eXAVrWdGksEX
+	WQKLgE5MBvor17QcAZaPzDCVi2KdLENih6yl/kuccS89v+No4WQBdj6Xq/J/T5/Mc/ahxGGGPDfl/
+	QRzGQDmGw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kMdIQ-0000JD-Tt; Sun, 27 Sep 2020 20:29:22 +0000
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+	id 1kMj4k-0002gN-Nx; Mon, 28 Sep 2020 02:39:38 +0000
+Received: from regular1.263xmail.com ([211.150.70.203])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kMdIN-0000Ip-Jh
- for linux-rockchip@lists.infradead.org; Sun, 27 Sep 2020 20:29:20 +0000
-Received: by mail-wm1-x344.google.com with SMTP id e11so3095412wme.0
- for <linux-rockchip@lists.infradead.org>; Sun, 27 Sep 2020 13:29:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:mime-version:message-id:user-agent
- :content-transfer-encoding;
- bh=0QuyEWm6rQMqwW2hce/ANbthK7OQhuiFstxlw742Fu0=;
- b=GjE1nwg86XQKc+qR4ZcqjX72KjglRAD09q2yX1VN9msnrMalR/wid+aBwi+poCCQqr
- ZXizdbW792FxS4QMCuDrC8dCZfTE4al3ZfdMn2O5zONE0OfUNklGRt8o+VXcB3Y8lvDh
- cFcDV2WdT+nQZxTk491D74g5ZcQJ6DIBcfAgdQ6J8nhDVK8ARWofJ9HMDpRm+BZ/Gfe0
- naJPdawKZTs7mvNp5MIB1ofnrKXiLiHLHwDuIU7JhBweYMly1gSVUenZw/vGICsqPr6a
- GXt41d/Zn1Vgpg98t2Q76zP9B8YldUiV8n5gTuuYrs/eRtLpXjy02a/qPuI5ootTh9/h
- 6vnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:mime-version:message-id
- :user-agent:content-transfer-encoding;
- bh=0QuyEWm6rQMqwW2hce/ANbthK7OQhuiFstxlw742Fu0=;
- b=Nkd3p61HX4rVrn8ajgYJDGRvgP1s122qSwK3ziEhddKtEDnbrSoDFV12IUmezm5zBI
- qi69wMiR566I/vD4WDGPvbIlkUnyyK/2+yUpEcm2UtKA/eue3FZIyR8+/O2kwcurGP1y
- 4pmybQA1RscfHf1Fjwdb6bZF41MpnDpT7lw8AtqDE44ZdoT3Msz5uwmY6dtq0jK5CgGx
- geOe635rGbZPs2IDvLbTU6FS7vUOz8CzjI1M1r0hzmsvxzg27nJ5b5WhZWIzcVxSsP7o
- p4UZRqcjs43iax4CcZyXpzFUlK+E5lHmpHdEuwz/hEiDo1djw1EOZ6qRxe+fECJh4A2F
- 8FUw==
-X-Gm-Message-State: AOAM533OFTkkCxfSnitMr5F10UeuVbOnsGExWuiRMpyKQowU3BZ9vahK
- p4NG2xAw2nMAZ0+Qtrh3Mzk=
-X-Google-Smtp-Source: ABdhPJx2IGkAo+GY/8jpSp8EfKnyNHZSjz+R9zuY4VWcSnpxEWZzmj9EXAoeHiUEFenw/kOo0uR6TQ==
-X-Received: by 2002:a1c:408a:: with SMTP id n132mr7896666wma.45.1601238557360; 
- Sun, 27 Sep 2020 13:29:17 -0700 (PDT)
-Received: from localhost ([170.253.46.69])
- by smtp.gmail.com with ESMTPSA id l19sm6363686wmi.8.2020.09.27.13.29.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Sep 2020 13:29:16 -0700 (PDT)
-From: Vicente Bergas <vicencb@gmail.com>
-To: Coly Li <colyli@suse.de>, Ming Lei <ming.lei@redhat.com>,
- Hannes Reinecke <hare@suse.de>, Jack Wang <jinpu.wang@cloud.ionos.com>,
- Jens Axboe <axboe@kernel.dk>
-Subject: [BUG] =?iso-8859-1?Q?discard=5Fgranularity_is_0_on_rk3399-gru-kevin?=
-Date: Sun, 27 Sep 2020 22:29:14 +0200
+ id 1kMj4h-0002fK-In
+ for linux-rockchip@lists.infradead.org; Mon, 28 Sep 2020 02:39:37 +0000
+Received: from localhost (unknown [192.168.167.16])
+ by regular1.263xmail.com (Postfix) with ESMTP id AF9C48DB;
+ Mon, 28 Sep 2020 10:39:27 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-SKE-CHECKED: 1
+X-ABS-CHECKED: 1
+Received: from [172.16.12.120] (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P30218T139798257841920S1601260765340666_; 
+ Mon, 28 Sep 2020 10:39:26 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <47f977115a4613f570ce365caf24e8be>
+X-RL-SENDER: kever.yang@rock-chips.com
+X-SENDER: yk@rock-chips.com
+X-LOGIN-NAME: kever.yang@rock-chips.com
+X-FST-TO: jagan@amarulasolutions.com
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-DNS-TYPE: 0
+X-System-Flag: 0
+Subject: Re: [PATCH v2 0/7] rockchip: Add Engicam PX30.Core support
+To: Suniel Mahesh <sunil@amarulasolutions.com>,
+ philipp.tomsich@theobroma-systems.com, sjg@chromium.org
+References: <20200914153634.18121-1-sunil@amarulasolutions.com>
+From: Kever Yang <kever.yang@rock-chips.com>
+Message-ID: <55f45a6d-2ecf-05eb-1883-96ce1d3e5312@rock-chips.com>
+Date: Mon, 28 Sep 2020 10:39:24 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Message-ID: <2438c500-eb41-4ae2-b890-83d287ad3bcd@gmail.com>
-User-Agent: Trojita
+In-Reply-To: <20200914153634.18121-1-sunil@amarulasolutions.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200927_162919_740031_531843D4 
-X-CRM114-Status: UNSURE (   6.99  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20200927_223936_141797_E22C3B70 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,63 +88,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Bart Van Assche <bvanassche@acm.org>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- "Darrick J. Wong" <darrick.wong@oracle.com>, Evan Green <evgreen@chromium.org>,
- linux-block@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Xiao Ni <xni@redhat.com>, Enzo Matsumiya <ematsumiya@suse.com>,
- Christoph Hellwig <hch@lst.de>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: u-boot@lists.denx.de, linux-amarula@amarulasolutions.com,
+ jagan@amarulasolutions.com, linux-rockchip@lists.infradead.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
-since recently the rk3399-gru-kevin is reporting the trace below.
-The issue has been uncovered by
-  b35fd7422c2f8e04496f5a770bd4e1a205414b3f
-  block: check queue's limits.discard_granularity in 
-__blkdev_issue_discard()
-
-Regards,
- Vicente.
-
-WARNING: CPU: 0 PID: 135 at __blkdev_issue_discard+0x200/0x294
-CPU: 0 PID: 135 Comm: f2fs_discard-17 Not tainted 5.9.0-rc6 #1
-Hardware name: Google Kevin (DT)
-pstate: 00000005 (nzcv daif -PAN -UAO BTYPE=--)
-pc : __blkdev_issue_discard+0x200/0x294
-lr : __blkdev_issue_discard+0x54/0x294
-sp : ffff800011dd3b10
-x29: ffff800011dd3b10 x28: 0000000000000000 
-x27: ffff800011dd3cc4 x26: ffff800011dd3e18 
-x25: 000000000004e69b x24: 0000000000000c40 
-x23: ffff0000f1deaaf0 x22: ffff0000f2849200 
-x21: 00000000002734d8 x20: 0000000000000008 
-x19: 0000000000000000 x18: 0000000000000000 
-x17: 0000000000000000 x16: 0000000000000000 
-x15: 0000000000000000 x14: 0000000000000394 
-x13: 0000000000000000 x12: 0000000000000000 
-x11: 0000000000000000 x10: 00000000000008b0 
-x9 : ffff800011dd3cb0 x8 : 000000000004e69b 
-x7 : 0000000000000000 x6 : ffff0000f1926400 
-x5 : ffff0000f1940800 x4 : 0000000000000000 
-x3 : 0000000000000c40 x2 : 0000000000000008 
-x1 : 00000000002734d8 x0 : 0000000000000000 
-Call trace:
- __blkdev_issue_discard+0x200/0x294
- __submit_discard_cmd+0x128/0x374
- __issue_discard_cmd_orderly+0x188/0x244
- __issue_discard_cmd+0x2e8/0x33c
- issue_discard_thread+0xe8/0x2f0
- kthread+0x11c/0x120
- ret_from_fork+0x10/0x1c
----[ end trace e4c8023d33dfe77a ]---
-mmcblk1p2: Error: discard_granularity is 0.
-mmcblk1p2: Error: discard_granularity is 0.
-<last message repeated multiple times>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgU3VuaWVsLAoKIMKgwqDCoCBTZWVtcyBsaWtlIHRoZSBjb21tZW50cyBpbiBWMSBkb2VzIG5v
+dCBhZGRyZXNzZWQuCgogwqDCoMKgIEFuZCBmb3IgdGhlIERSQU0gc3VwcG9ydCwgYWxsIHRoZSBE
+UkFNIHR5cGUgZHJpdmVyIGZvciBQWDMwIGhhcyAKYmVlbiBzdXBwb3J0LCB3aGF0J3MgdGhlIHJl
+YXNvbiB5b3UgY2FuJ3QgYWRkCgpEUkFNIHN1cHBvcnQgaW4gVFBMIGZvciB0aGlzIGJvYXJkPwoK
+ClRoYW5rcywKCi0gS2V2ZXIKCk9uIDIwMjAvOS8xNCDkuIvljYgxMTozNiwgU3VuaWVsIE1haGVz
+aCB3cm90ZToKPiBQWDMwLkNvcmUgaXMgYW4gRURJTU0gU09NIGJhc2VkIG9uIFJvY2tjaGlwIFBY
+MzAgZnJvbSBFbmdpY2FtLgo+Cj4gUFgzMC5Db3JlIG5lZWRzIHRvIG1vdW50IG9uIHRvcCBvZiBF
+bmdpY2FtIGJhc2Vib2FyZHMgZm9yIGNyZWF0aW5nCj4gY29tcGxldGUgcGxhdGZvcm0gYm9hcmRz
+Lgo+Cj4gUG9zc2libGUgYmFzZWJvYXJkcyBhcmUsCj4gLSBFRElNTTIuMiBTdGFydGVyIEtpdAo+
+IC0gQy5UT1VDSCAyLjAgMTAuMSIgT3BlbiBGcmFtZQo+Cj4gUmlnaHQgbm93IGJvb3Qgc3VwcG9y
+dCBpcyB3b3JraW5nIHZpYSBSb2NrY2hpcCBtaW5pbG9hZGVyLCB3aWxsCj4gdXBkYXRlIHRvIFUt
+Qm9vdCBUUEwgb25jZSB0aGUgZGRyIHN1cHBvcnRlZC4KPgo+IE5vdGU6IGR0cyBwYXRjaGVzIGFy
+ZSBpbiBMaW51eCBtYWlsaW5nLWxpc3QuCj4KPiBFYXJsaWVyIHBhdGNoIHNlcmllcyBpcyBhdDoK
+PiBodHRwczovL3BhdGNod29yay5vemxhYnMub3JnL3Byb2plY3QvdWJvb3QvY292ZXIvMjAyMDA3
+MjQxMDUxMTkuMTMxMjMtMS1qYWdhbkBhbWFydWxhc29sdXRpb25zLmNvbS8KPgo+IEphZ2FuIFRl
+a2kgKDYpOgo+ICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBweDMwOiBBZGQgRW5naWNhbSBFRElN
+TTIuMiBTdGFydGVyIEtpdAo+ICAgIHJvY2tjaGlwOiBweDMwOiBBZGQgRVZCX1BYMzAgS2NvbmZp
+ZyBoZWxwCj4gICAgcm9ja2NoaXA6IEFkZCBFbmdpY2FtIFBYMzAuQ29yZSBFRElNTTIuMiBTdGFy
+dGVyIEtpdAo+ICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBweDMwOiBBZGQgRW5naWNhbSBDLlRP
+VUNIIDIuMAo+ICAgIHJvY2tjaGlwOiBBZGQgRW5naWNhbSBQWDMwLkNvcmUgQy5UT1VDSCAyLjAK
+PiAgICBkb2M6IHJvY2tjaGlwOiBEb2N1bWVudCBSb2NrY2hpcCBtaW5pbG9hZGVyIGZsYXNoaW5n
+Cj4KPiBNaWNoYWVsIFRyaW1hcmNoaSAoMSk6Cj4gICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFk
+ZCBFbmdpY2FtIFBYMzAuQ29yZSBTT00KPgo+ICAgYXJjaC9hcm0vZHRzL01ha2VmaWxlICAgICAg
+ICAgICAgICAgICAgICAgfCAgIDIgKwo+ICAgYXJjaC9hcm0vZHRzL3B4MzAtZW5naWNhbS1jb21t
+b24uZHRzaSAgICAgfCAgMzkgKysrKwo+ICAgYXJjaC9hcm0vZHRzL3B4MzAtZW5naWNhbS1jdG91
+Y2gyLmR0c2kgICAgfCAgIDggKwo+ICAgYXJjaC9hcm0vZHRzL3B4MzAtZW5naWNhbS1lZGltbTIu
+Mi5kdHNpICAgfCAgIDcgKwo+ICAgYXJjaC9hcm0vZHRzL3B4MzAtcHgzMC1jb3JlLWN0b3VjaDIu
+ZHRzICAgfCAgMjIgKysKPiAgIGFyY2gvYXJtL2R0cy9weDMwLXB4MzAtY29yZS1lZGltbTIuMi5k
+dHMgIHwgIDIxICsrCj4gICBhcmNoL2FybS9kdHMvcHgzMC1weDMwLWNvcmUuZHRzaSAgICAgICAg
+ICB8IDIzMiArKysrKysrKysrKysrKysrKysrKysrCj4gICBhcmNoL2FybS9tYWNoLXJvY2tjaGlw
+L3B4MzAvS2NvbmZpZyAgICAgICB8ICAxOCArKwo+ICAgYm9hcmQvcm9ja2NoaXAvZXZiX3B4MzAv
+TUFJTlRBSU5FUlMgICAgICAgfCAgMTIgKysKPiAgIGNvbmZpZ3MvcHgzMC1jb3JlLWN0b3VjaDIt
+cHgzMF9kZWZjb25maWcgIHwgMTA4ICsrKysrKysrKysKPiAgIGNvbmZpZ3MvcHgzMC1jb3JlLWVk
+aW1tMi4yLXB4MzBfZGVmY29uZmlnIHwgMTA4ICsrKysrKysrKysKPiAgIGRvYy9ib2FyZC9yb2Nr
+Y2hpcC9yb2NrY2hpcC5yc3QgICAgICAgICAgIHwgIDQwICsrKy0KPiAgIDEyIGZpbGVzIGNoYW5n
+ZWQsIDYxNiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4gICBjcmVhdGUgbW9kZSAxMDA2
+NDQgYXJjaC9hcm0vZHRzL3B4MzAtZW5naWNhbS1jb21tb24uZHRzaQo+ICAgY3JlYXRlIG1vZGUg
+MTAwNjQ0IGFyY2gvYXJtL2R0cy9weDMwLWVuZ2ljYW0tY3RvdWNoMi5kdHNpCj4gICBjcmVhdGUg
+bW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3B4MzAtZW5naWNhbS1lZGltbTIuMi5kdHNpCj4gICBj
+cmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3B4MzAtcHgzMC1jb3JlLWN0b3VjaDIuZHRz
+Cj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vZHRzL3B4MzAtcHgzMC1jb3JlLWVkaW1t
+Mi4yLmR0cwo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtL2R0cy9weDMwLXB4MzAtY29y
+ZS5kdHNpCj4gICBjcmVhdGUgbW9kZSAxMDA2NDQgY29uZmlncy9weDMwLWNvcmUtY3RvdWNoMi1w
+eDMwX2RlZmNvbmZpZwo+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGNvbmZpZ3MvcHgzMC1jb3JlLWVk
+aW1tMi4yLXB4MzBfZGVmY29uZmlnCj4KCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tj
+aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
+bi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
