@@ -2,61 +2,66 @@ Return-Path: <SRS0=Bn3x=DG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83EF1C4346E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 06:53:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A442C4346E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 07:18:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ED1DF206B7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 06:53:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1D28420754
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 07:18:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="xnbWwFvd"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED1DF206B7
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="gVuUa7l0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1D28420754
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OTDe4tOixoOEJxZNGRnyS3USvtvcw/CIVvTFQDaTsaA=; b=xnbWwFvdMTy0qeNHjWLNeKfHN
-	Ey4msrpcn6NxMi9rccVo5/dAUVaZVqicj8lly032YeMWMkVnIlgKTRiKu/jviIisj/GL9yj+gS49q
-	j63v27xktvj6Ax/xotWuGeU8SopV3hBlomo8aFKToQfI+EQZe7sXXi9jhb5+kL7aZi9CuFsp4yH1o
-	nKDG2Rhr9uTncVVN7ap5CfHlK7YHPNpVrqo+GVXWi2+c8scIdWMoTfgLG07Axu+l9R6akyF1gOC6t
-	o5gKv7/9uqNVlzbJ6buhvdS/AXJtQcmR235w8yLmFDFvaAXYFXu+THsgre5IHosUaAEjmyzsr7Gpn
-	JK5KbP/hQ==;
+	 bh=M5E8Mez8FtFt8LGintRsWtqF3XGn2yPgjqrw3Kjv2V8=; b=gVuUa7l0DY227dMoeJ/AVG1eo
+	iknui3XBtP9lQqa+X1tSqmve5G7M3l4Riwe+i9Yyna7K2Nbj6eLFETme3YLDn9rej47TuwyT87LUO
+	cPdPj1MurXVUBvLi6AENySs3AigYkDnTdD2vSRiC/a6bljwiT3YXhWAJW9mJygHxio8Fzk61jFDz9
+	+GdevRLIs0WlxX4EmmOUCP4lZ6C+f3QVSkMox6D1yIpf9tzHLwJFzxm+gEULXsgf9KjFzkM8/ObeZ
+	IB5n0zG73nN9zFh2G8gZsfokyGGzOhlWuqn0CEm1IlTKsD5Dsl3M3oqW0MJXknwp0JjaUghnQ8RHS
+	oQs4eBLwA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kN9Vl-0007EZ-MH; Tue, 29 Sep 2020 06:53:17 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1kN9tr-0000bf-SB; Tue, 29 Sep 2020 07:18:11 +0000
+Received: from asavdk4.altibox.net ([109.247.116.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kN9Vh-0007E0-HN; Tue, 29 Sep 2020 06:53:14 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id C20E5AA55;
- Tue, 29 Sep 2020 06:53:10 +0000 (UTC)
+ id 1kN9tl-0000aN-Er; Tue, 29 Sep 2020 07:18:08 +0000
+Received: from ravnborg.org (unknown [188.228.123.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by asavdk4.altibox.net (Postfix) with ESMTPS id 08D27804E5;
+ Tue, 29 Sep 2020 09:17:55 +0200 (CEST)
+Date: Tue, 29 Sep 2020 09:17:54 +0200
+From: Sam Ravnborg <sam@ravnborg.org>
+To: Thomas Zimmermann <tzimmermann@suse.de>
 Subject: Re: [PATCH v1 1/2] drm/rockchip: fix build due to undefined
  drm_gem_cma_vm_ops
-To: Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org,
- Heiko Stuebner <heiko@sntech.de>
+Message-ID: <20200929071754.GA736868@ravnborg.org>
 References: <20200925215524.2899527-1-sam@ravnborg.org>
  <20200925215524.2899527-2-sam@ravnborg.org>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Message-ID: <83650213-3b09-aea0-4485-cd20de1d9548@suse.de>
-Date: Tue, 29 Sep 2020 08:53:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.0
+ <83650213-3b09-aea0-4485-cd20de1d9548@suse.de>
 MIME-Version: 1.0
-In-Reply-To: <20200925215524.2899527-2-sam@ravnborg.org>
+Content-Disposition: inline
+In-Reply-To: <83650213-3b09-aea0-4485-cd20de1d9548@suse.de>
+X-CMAE-Score: 0
+X-CMAE-Analysis: v=2.3 cv=A5ZCwZeG c=1 sm=1 tr=0
+ a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
+ a=IkcTkHD0fZMA:10 a=7gkXJVJtAAAA:8 a=nVws210Im4UeU8Tq7v4A:9
+ a=QEXdDO2ut3YA:10 a=E9Po1WZjFZOl8hwRPBS3:22
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200929_025313_798321_65D710C4 
-X-CRM114-Status: GOOD (  22.08  )
+X-CRM114-CacheID: sfid-20200929_031805_636077_7C477ADA 
+X-CRM114-Status: GOOD (  16.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,136 +74,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-rockchip@lists.infradead.org, stable@vger.kernel.org,
- Sandy Huang <hjc@rock-chips.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: multipart/mixed; boundary="===============3448484804752684650=="
+Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
+ stable@vger.kernel.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============3448484804752684650==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="6YHHtMbT7KHuJuTcxyCa8HKASYuntrLh1"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---6YHHtMbT7KHuJuTcxyCa8HKASYuntrLh1
-Content-Type: multipart/mixed; boundary="a4Uvht4Eoz86hwhsz3CYNBhxRUzoaASBQ";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org,
- Heiko Stuebner <heiko@sntech.de>
-Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Sandy Huang <hjc@rock-chips.com>, stable@vger.kernel.org
-Message-ID: <83650213-3b09-aea0-4485-cd20de1d9548@suse.de>
-Subject: Re: [PATCH v1 1/2] drm/rockchip: fix build due to undefined
- drm_gem_cma_vm_ops
-References: <20200925215524.2899527-1-sam@ravnborg.org>
- <20200925215524.2899527-2-sam@ravnborg.org>
-In-Reply-To: <20200925215524.2899527-2-sam@ravnborg.org>
-
---a4Uvht4Eoz86hwhsz3CYNBhxRUzoaASBQ
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Hi Sam
-
-Am 25.09.20 um 23:55 schrieb Sam Ravnborg:
-> Commit 0d590af3140d ("drm/rockchip: Convert to drm_gem_object_funcs")
-> introduced the following build error:
->=20
-> rockchip_drm_gem.c:304:13: error: =E2=80=98drm_gem_cma_vm_ops=E2=80=99 =
-undeclared here
->   304 |  .vm_ops =3D &drm_gem_cma_vm_ops,
->       |             ^~~~~~~~~~~~~~~~~~
->       |             drm_gem_mmap_obj
->=20
-> Fixed by adding missing include file.
->=20
-> Signed-off-by: Sam Ravnborg <sam@ravnborg.org>
-
-Didn't you review exactly this change yesterday? Anyway, you should add
-
-Fixes: 0d590af3140d ("drm/rockchip: Convert to drm_gem_object_funcs")
-
-and
-
-Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
-
-It might happen that I land my patch first, depending on the urgency of
-the issue.
-
-Best regards
-Thomas
-
-> Cc: Thomas Zimmermann <tzimmermann@suse.de>
-> Cc: Sandy Huang <hjc@rock-chips.com>
-> Cc: "Heiko St=C3=BCbner" <heiko@sntech.de>
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-rockchip@lists.infradead.org
-> ---
->  drivers/gpu/drm/rockchip/rockchip_drm_gem.c | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c b/drivers/gpu/=
-drm/rockchip/rockchip_drm_gem.c
-> index bb3578469b03..6da15faf0192 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_gem.c
-> @@ -10,6 +10,7 @@
-> =20
->  #include <drm/drm.h>
->  #include <drm/drm_gem.h>
-> +#include <drm/drm_gem_cma_helper.h>
->  #include <drm/drm_prime.h>
->  #include <drm/drm_vma_manager.h>
-> =20
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
-
---a4Uvht4Eoz86hwhsz3CYNBhxRUzoaASBQ--
-
---6YHHtMbT7KHuJuTcxyCa8HKASYuntrLh1
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQFIBAEBCAAyFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl9y2dUUHHR6aW1tZXJt
-YW5uQHN1c2UuZGUACgkQaA3BHVMLeiOlhgf8DYDzFCpHX12ZpZHqFk3OQ9J9L89O
-pGoo9DVE8T363kMseRMt4gjR/MqCz6x9iaQj5Eh+9wFomogly/P4dIiZvuWXT4qI
-siLNbwiRT9VC3a4BqsI+bU938ftr+0fTV4J9BqVCr/arFBKhKldyofvXYtJK2stm
-58BPLvKLF9C7aORDCFA8+YMTgIuIALOtr9k6+W3K9PqcC1oG7QdvK8Yv7cop2hI3
-hD+j0qqPtI20sDcqEm2zs3vt6qMLSqvd29n3ax27FMu862XIp3n+d7v6qWhK67L8
-EdEoRjJG1gFjZ5fEzhMCs+iH16OrfKAicd6sYApBCgr4rq1obJmkLjlTzA==
-=qy3O
------END PGP SIGNATURE-----
-
---6YHHtMbT7KHuJuTcxyCa8HKASYuntrLh1--
-
-
---===============3448484804752684650==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3448484804752684650==--
-
+T24gVHVlLCBTZXAgMjksIDIwMjAgYXQgMDg6NTM6MDZBTSArMDIwMCwgVGhvbWFzIFppbW1lcm1h
+bm4gd3JvdGU6Cj4gSGkgU2FtCj4gCj4gQW0gMjUuMDkuMjAgdW0gMjM6NTUgc2NocmllYiBTYW0g
+UmF2bmJvcmc6Cj4gPiBDb21taXQgMGQ1OTBhZjMxNDBkICgiZHJtL3JvY2tjaGlwOiBDb252ZXJ0
+IHRvIGRybV9nZW1fb2JqZWN0X2Z1bmNzIikKPiA+IGludHJvZHVjZWQgdGhlIGZvbGxvd2luZyBi
+dWlsZCBlcnJvcjoKPiA+IAo+ID4gcm9ja2NoaXBfZHJtX2dlbS5jOjMwNDoxMzogZXJyb3I6IOKA
+mGRybV9nZW1fY21hX3ZtX29wc+KAmSB1bmRlY2xhcmVkIGhlcmUKPiA+ICAgMzA0IHwgIC52bV9v
+cHMgPSAmZHJtX2dlbV9jbWFfdm1fb3BzLAo+ID4gICAgICAgfCAgICAgICAgICAgICBefn5+fn5+
+fn5+fn5+fn5+fn4KPiA+ICAgICAgIHwgICAgICAgICAgICAgZHJtX2dlbV9tbWFwX29iago+ID4g
+Cj4gPiBGaXhlZCBieSBhZGRpbmcgbWlzc2luZyBpbmNsdWRlIGZpbGUuCj4gPiAKPiA+IFNpZ25l
+ZC1vZmYtYnk6IFNhbSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4KPiAKPiBEaWRuJ3QgeW91
+IHJldmlldyBleGFjdGx5IHRoaXMgY2hhbmdlIHllc3RlcmRheT8gQW55d2F5LCB5b3Ugc2hvdWxk
+IGFkZApZZXAuCgo+IAo+IEZpeGVzOiAwZDU5MGFmMzE0MGQgKCJkcm0vcm9ja2NoaXA6IENvbnZl
+cnQgdG8gZHJtX2dlbV9vYmplY3RfZnVuY3MiKQo+IAo+IGFuZAo+IAo+IFJldmlld2VkLWJ5OiBU
+aG9tYXMgWmltbWVybWFubiA8dHppbW1lcm1hbm5Ac3VzZS5kZT4KPiAKPiBJdCBtaWdodCBoYXBw
+ZW4gdGhhdCBJIGxhbmQgbXkgcGF0Y2ggZmlyc3QsIGRlcGVuZGluZyBvbiB0aGUgdXJnZW5jeSBv
+Zgo+IHRoZSBpc3N1ZS4KSSBleHBlY3QgeW91IHRvIGxhbmQgdGhlIHBhdGNoIHlvdSBtYWRlIGFz
+YXAgc28gd2UgY2FuIGhhdmUgdGhlIGJ1aWxkCmZpeGVkIGFnYWluLgoKCglTYW0KCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
