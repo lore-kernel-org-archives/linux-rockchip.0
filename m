@@ -2,76 +2,56 @@ Return-Path: <SRS0=Bn3x=DG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
+	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PULL_REQUEST,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61EF6C4346E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 09:13:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CA0EC4346E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 10:45:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B56E1204FD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 09:13:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9BC50207C4
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 10:45:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LV0IqKYh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B56E1204FD
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cIdlcoVg"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9BC50207C4
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bnCnxH/W66I+HjblU5jJeN7EHKFYbzN7IhkGPbkv/zQ=; b=LV0IqKYhZhzaoeIqoNDG6kK9vB
-	7icWYrHmG6WIy7eKUL7y3C6t1fLyV/NQmHiGulKh6net4uMnbK0t6d9JxKYmqJosBDKMWpAS1Q326
-	lK3iyrEBvfg4PYc5qVjCrw4caBVCtC3tomI15NxMXZcDk7P3H15c2ljB3LyA5tKzJcyyH9w1bDSGN
-	ednPio4GsJ75fH9sOwR7HmqGcE5KpyRxUmrJqalW437aYvqVX8gwY+rHLVAVfmo1rAY/VKTGHb062
-	t/oE29DkWrnB0JtsXcgGeaP3FGgOCC5PkJWi8L1bfssA69Miew59EUr2j+FJ7HSyUiXxDCfmckeyV
-	44VfQjBg==;
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=KqmEIll3hCldYNrCIUBncuwSEyHhwRBEDyQhzOdCpXw=; b=cIdlcoVgoxHWUQoQyuscixlr5
+	gn6tOH4vQ/EDsVVo7txP1vToGLUVryUKLexqJayFV51OzibXhn9qoFLIbRzgmzHc1G6VQPbFpIztm
+	VnfRVIFDtt+oyok0rnmoMjjsKntbtRVQsQjBx4udZOAMxkBJNr6N9B4J3yEme5RS+nJ3mH9hovyzP
+	OAdkbLg4u+HfxkVtxJ+hqdCxNkIVPaB9WEaBIwsyic/NUCrs7786P5H4W+iRAzZyNZTNiAjtci/Ia
+	GLrjU8sW4HkqL9kfeF/N2R/UlSrZc9Vdt8hPLPqeKFkmDlEt6AFP9Co+Spkpoo5RCDb9OKdUqYkz8
+	AnUDdBwuQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNBhT-0001LO-HO; Tue, 29 Sep 2020 09:13:31 +0000
-Received: from lucky1.263xmail.com ([211.157.147.133])
+	id 1kND8b-0002HO-3g; Tue, 29 Sep 2020 10:45:37 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNBfW-0000I3-5m; Tue, 29 Sep 2020 09:11:31 +0000
-Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 8BA47C99A4;
- Tue, 29 Sep 2020 17:11:23 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P30218T139798784222976S1601370676801501_; 
- Tue, 29 Sep 2020 17:11:24 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <4999b79e921842eae65ba625e0879f2b>
-X-RL-SENDER: yifeng.zhao@rock-chips.com
-X-SENDER: zyf@rock-chips.com
-X-LOGIN-NAME: yifeng.zhao@rock-chips.com
-X-FST-TO: miquel.raynal@bootlin.com
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-DNS-TYPE: 0
-X-System-Flag: 0
-From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-To: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
- robh+dt@kernel.org
-Subject: [PATCH v9 8/8] arm: dts: rockchip: Add NFC node for RK3036 SoC
-Date: Tue, 29 Sep 2020 17:11:14 +0800
-Message-Id: <20200929091114.21575-4-yifeng.zhao@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200929091114.21575-1-yifeng.zhao@rock-chips.com>
-References: <20200929090807.21511-1-yifeng.zhao@rock-chips.com>
- <20200929091114.21575-1-yifeng.zhao@rock-chips.com>
+ id 1kND8Y-0002Gu-MY; Tue, 29 Sep 2020 10:45:35 +0000
+Received: from [95.90.166.74] (helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1kND8T-0007Qg-U5; Tue, 29 Sep 2020 12:45:29 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: arm@kernel.org
+Subject: [GIT PULL 2/2] Rockchip dt32 changes for 5.10
+Date: Tue, 29 Sep 2020 12:45:29 +0200
+Message-ID: <1834049.gShM3QRH0n@diego>
+In-Reply-To: <16010805.MhVyP8KKtY@diego>
+References: <16010805.MhVyP8KKtY@diego>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200929_051130_482724_3EBFF157 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20200929_064534_740818_927DCE35 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,105 +64,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, heiko@sntech.de,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
+List-Id: <soc.lore.kernel.org>
+Cc: linux-rockchip@lists.infradead.org, soc@kernel.org,
  linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add NAND FLASH Controller(NFC) node for RK3036 SoC.
+Hi Arnd, Kevin, Olof,
 
-Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
----
+not sure if this got missed, but I can only see the arm64 pull request in
+the soc tree right now, so here is the 32bit part again.
 
-Changes in v9: None
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
+For reference the original pull was in 
+	http://lore.kernel.org/r/4293766.LrauBeaUkW@diego
 
- arch/arm/boot/dts/rk3036.dtsi | 52 +++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+Please pull
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index d9a0c9a29b68..be8d46c0bbb0 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -291,6 +291,21 @@
- 		status = "disabled";
- 	};
- 
-+	nfc: nand-controller@10500000 {
-+		compatible = "rockchip,rk3036-nfc",
-+			     "rockchip,rk2928-nfc";
-+		reg = <0x10500000 0x4000>;
-+		interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_NANDC>, <&cru SCLK_NANDC>;
-+		clock-names = "ahb", "nfc";
-+		assigned-clocks = <&cru SCLK_NANDC>;
-+		assigned-clock-rates = <150000000>;
-+		pinctrl-0 = <&flash_ale &flash_bus8 &flash_cle &flash_csn0
-+			     &flash_rdn &flash_rdy &flash_wrn>;
-+		pinctrl-names = "default";
-+		status = "disabled";
-+	};
-+
- 	cru: clock-controller@20000000 {
- 		compatible = "rockchip,rk3036-cru";
- 		reg = <0x20000000 0x1000>;
-@@ -642,6 +657,43 @@
- 			};
- 		};
- 
-+		nfc {
-+			flash_ale: flash-ale {
-+				rockchip,pins = <2 RK_PA0 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_bus8: flash-bus8 {
-+				rockchip,pins = <1 RK_PD0 1 &pcfg_pull_default>,
-+						<1 RK_PD1 1 &pcfg_pull_default>,
-+						<1 RK_PD2 1 &pcfg_pull_default>,
-+						<1 RK_PD3 1 &pcfg_pull_default>,
-+						<1 RK_PD4 1 &pcfg_pull_default>,
-+						<1 RK_PD5 1 &pcfg_pull_default>,
-+						<1 RK_PD6 1 &pcfg_pull_default>,
-+						<1 RK_PD7 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_cle: flash-cle {
-+				rockchip,pins = <2 RK_PA1 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_csn0: flash-csn0 {
-+				rockchip,pins = <2 RK_PA6 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_rdn: flash-rdn {
-+				rockchip,pins = <2 RK_PA3 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_rdy: flash-rdy {
-+				rockchip,pins = <2 RK_PA4 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_wrn: flash-wrn {
-+				rockchip,pins = <2 RK_PA2 1 &pcfg_pull_default>;
-+			};
-+		};
-+
- 		emac {
- 			emac_xfer: emac-xfer {
- 				rockchip,pins = <2 RK_PB2 1 &pcfg_pull_default>, /* crs_dvalid */
--- 
-2.17.1
+Thanks
+Heiko
+
+The following changes since commit 9123e3a74ec7b934a4a099e98af6a61c2f80bbf5:
+
+  Linux 5.9-rc1 (2020-08-16 13:04:57 -0700)
+
+are available in the Git repository at:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.10-rockchip-dts32-1
+
+for you to fetch changes up to 0cf10e6f94335495f90fc62fb75d9569f6a603fb:
+
+  ARM: dts: rockchip: replace status value "ok" by "okay" (2020-08-30 21:47:07 +0200)
+
+----------------------------------------------------------------
+cpu-supply fixes (supply for each cpu core not only cpu0)
+and a spelling for the status property.
+
+----------------------------------------------------------------
+Adrian Schmutzler (1):
+      ARM: dts: rockchip: replace status value "ok" by "okay"
+
+Johan Jonker (3):
+      ARM: dts: rockchip: update cpu supplies on rk3288
+      ARM: dts: rockchip: rk3066a: add label to cpu@1
+      ARM: dts: rockchip: update cpu supplies on rk3066a
+
+ arch/arm/boot/dts/rk3066a-bqcurie2.dts            |  6 +++++-
+ arch/arm/boot/dts/rk3066a-marsboard.dts           |  6 +++++-
+ arch/arm/boot/dts/rk3066a-rayeager.dts            |  6 +++++-
+ arch/arm/boot/dts/rk3066a.dtsi                    |  2 +-
+ arch/arm/boot/dts/rk3288-evb.dtsi                 |  2 +-
+ arch/arm/boot/dts/rk3288-firefly-reload-core.dtsi |  2 +-
+ arch/arm/boot/dts/rk3288-firefly.dtsi             |  2 +-
+ arch/arm/boot/dts/rk3288-miqi.dts                 | 16 ++++++++++++++--
+ arch/arm/boot/dts/rk3288-popmetal.dts             | 16 ++++++++++++++--
+ arch/arm/boot/dts/rk3288-r89.dts                  | 16 ++++++++++++++--
+ arch/arm/boot/dts/rk3288-rock2-square.dts         |  2 +-
+ arch/arm/boot/dts/rk3288-tinker.dtsi              |  2 +-
+ arch/arm/boot/dts/rk3288-vyasa.dts                | 14 +++++++++++++-
+ 13 files changed, 76 insertions(+), 16 deletions(-)
 
 
 
