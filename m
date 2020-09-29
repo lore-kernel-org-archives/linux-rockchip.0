@@ -2,88 +2,75 @@ Return-Path: <SRS0=Bn3x=DG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D0CAC4346E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 08:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CEB0CC4346E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 09:08:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 014BE20789
-	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 08:36:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1EEC02076A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 29 Sep 2020 09:08:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ntYMoNTC";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="hkJvgyTv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 014BE20789
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XRqRjT9h"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1EEC02076A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=1+2BZYRvId0B7EoL6Zfbp6fgyxHBThrI32c6CxutxWs=; b=ntYMoNTC3X4m72cmeWXa2naP7
-	QtwE/TrYc8gtm6g67PWtb0mpRfDc+BS+Wpu79h7G7btjvAq8+O2fojHKQbWFw4nnJpI5v9qA+Lk4f
-	ZnZqVXTx4o0W7kQ/KyB36ttatyNQMUwbna6dGdAdLSroj4dz/vYvWM6fKao7UZhVGPQ1OBTBtpl6u
-	uFeJczt1cQPJQk1SQgylp4K3k2vFlsONr0A2cMLixQaSH0au500mYWCGnZhuMiesE2HHjYa9SImMp
-	MU60J7lkpfCYBlzRePwW92ah7l7a2vNN13LyDxt9WjmIYSVPNfcI4OKsVBn7KOZrwehxPaaRAmebU
-	UGnT1wDmQ==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EPyFtxgb8HWbQrAyR3fvwTNmXJWu4Y0N3prE/vHY5RE=; b=XRqRjT9hRCbZe4+ivsJ1WSh1vZ
+	npa2LgIYgxIk6EQPBr0kSN408M8bpDlKOzY8icLUfoFigDrPHfIpO/VqInx2BMm9FeWmj7+cdboAu
+	CmkifmzmHYY/w8v3jOuu8JVfcxhvstGYOWt3ATGeMQgl+rRlLLe6kuL2HIbst4hLoW76StaFjEI4m
+	t11uf/q4wADKd0qo4F3gJJqY0pUs+JjT0NUou7z78V8O8mtaEdwsZJuzrVjd5XYp4quYlj1YMj26D
+	zSClYdVZX972Cu/JoUGXWYPSOkAOXTr9Oe0+nAQgyK0LW//G9O8lkhlqFnVS67Jx5qGnjNJZmbstB
+	p/We2p2Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNB77-0004oS-4j; Tue, 29 Sep 2020 08:35:57 +0000
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+	id 1kNBcm-0007QX-15; Tue, 29 Sep 2020 09:08:40 +0000
+Received: from lucky1.263xmail.com ([211.157.147.135])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNB4R-0003Tr-VO
- for linux-rockchip@lists.infradead.org; Tue, 29 Sep 2020 08:33:13 +0000
-Received: by mail-pf1-x441.google.com with SMTP id q123so3826982pfb.0
- for <linux-rockchip@lists.infradead.org>; Tue, 29 Sep 2020 01:33:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amarulasolutions.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=hIcoCSV3EdXkbZuDXxqCtycSPPds0aFZfPA4QHxDFJE=;
- b=hkJvgyTvhXdrm+4FrsoYdnxyrss+dx4swUqdhwA20BIRRTRDsq7AV2Lq2x5iifkpwQ
- T44caxDpBkBz1tZ2POIXvm5rBofFK3NjBYjoHUg8HNiFDuhx+gLqSler5AhQNvSIXKvQ
- CqYHdtbf39NDVJJ+zdNrbgCvxEIJJMo4S2ifg=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=hIcoCSV3EdXkbZuDXxqCtycSPPds0aFZfPA4QHxDFJE=;
- b=KOzVdstlyZHtvM+66ZqJ86rF1eg59PELEBPAgerPF9cP0pO83kFpQdyygdFblULjv/
- i/iJTMk6OTB295SL9DKxvg/HQbataWY+muobAj6dAsmCfXoatwkq3J04PMtQ3d1fVuAE
- 4PDh3uEx1SHLCeu4RnonufwosdaUX/Kz4S62DUDftsZkRyrz72jNshvPZD1envRQjn2u
- Zh50U9JqJWbcinEH6rmqe2sb/nDalE2eFLgPHxyxvsbTxOodieoReEZzMbZVe4tYykKg
- lDr4L/c7ZXAWM1DgLOuRZ0Ikbf7FatKzAt8wmQVZdrKUANCt0oRHivykIKO9DQWBYHJc
- OE6A==
-X-Gm-Message-State: AOAM530cN70BUNH8t+z+9blzhMTyqg0cuL7HNtbSyPQtWhyYKkR5kYNM
- XCUwGR8Pye0WJgMHMDEanK4S7w==
-X-Google-Smtp-Source: ABdhPJxDi59mzAOZvGeuEOE6J33+Iy0vN4m+HWhnk/da7nUC4K3ZUOxkUe4uvKrNAYuRfAgbygX5mg==
-X-Received: by 2002:a62:8806:0:b029:13c:d37c:5e47 with SMTP id
- l6-20020a6288060000b029013cd37c5e47mr3188060pfd.13.1601368389671; 
- Tue, 29 Sep 2020 01:33:09 -0700 (PDT)
-Received: from ub-XPS-13-9350.pdxnet.pdxeng.ch
- ([2405:201:c809:c7d5:b511:310d:8495:d767])
- by smtp.gmail.com with ESMTPSA id 36sm3961241pgl.72.2020.09.29.01.33.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Sep 2020 01:33:09 -0700 (PDT)
-From: Jagan Teki <jagan@amarulasolutions.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH v4 7/7] arm64: dts: rockchip: Add Engicam PX30.Core C.TOUCH 2.0
-Date: Tue, 29 Sep 2020 14:02:17 +0530
-Message-Id: <20200929083217.25406-8-jagan@amarulasolutions.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200929083217.25406-1-jagan@amarulasolutions.com>
-References: <20200929083217.25406-1-jagan@amarulasolutions.com>
-MIME-Version: 1.0
+ id 1kNBcX-0007N5-8j; Tue, 29 Sep 2020 09:08:28 +0000
+Received: from localhost (unknown [192.168.167.13])
+ by lucky1.263xmail.com (Postfix) with ESMTP id D912FA4D84;
+ Tue, 29 Sep 2020 17:08:17 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P1665T140084565235456S1601370489886989_; 
+ Tue, 29 Sep 2020 17:08:18 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <7c93c6f4907ea50fab47897f9a94730b>
+X-RL-SENDER: yifeng.zhao@rock-chips.com
+X-SENDER: zyf@rock-chips.com
+X-LOGIN-NAME: yifeng.zhao@rock-chips.com
+X-FST-TO: miquel.raynal@bootlin.com
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-DNS-TYPE: 0
+X-System-Flag: 0
+From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+To: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
+ robh+dt@kernel.org
+Subject: [PATCH v9 3/8] MAINTAINERS: add maintainers to ROCKCHIP NFC
+Date: Tue, 29 Sep 2020 17:08:06 +0800
+Message-Id: <20200929090807.21511-4-yifeng.zhao@rock-chips.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200929090807.21511-1-yifeng.zhao@rock-chips.com>
+References: <20200929090807.21511-1-yifeng.zhao@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200929_043312_065413_9EBA507E 
-X-CRM114-Status: GOOD (  16.11  )
+X-CRM114-CacheID: sfid-20200929_050826_044436_509A1233 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,83 +83,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Jagan Teki <jagan@amarulasolutions.com>,
- Suniel Mahesh <sunil@amarulasolutions.com>,
- Michael Trimarchi <michael@amarulasolutions.com>,
- linux-amarula <linux-amarula@amarulasolutions.com>,
+Cc: devicetree@vger.kernel.org, heiko@sntech.de,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
+Add maintainers to ROCKCHIP NFC.
 
-C.TOUCH 2.0 is a general purpose carrier board with capacitive
-touch interface support.
-
-PX30.Core needs to mount on top of this Carrier board for creating
-complete PX30.Core C.TOUCH 2.0 board.
-
-Add support for it.
-
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
-Signed-off-by: Michael Trimarchi <michael@amarulasolutions.com>
+Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
 ---
-Changes for v4:
-- new patch
-Changes for v3:
-- add Amarula Solutions copyright
-Changes for v2:
-- new patch
 
- arch/arm64/boot/dts/rockchip/Makefile         |  1 +
- .../dts/rockchip/px30-px30-core-ctouch2.dts   | 22 +++++++++++++++++++
- 2 files changed, 23 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/px30-px30-core-ctouch2.dts
+Changes in v9: None
+Changes in v8: None
+Changes in v7: None
+Changes in v6: None
+Changes in v5: None
+Changes in v4: None
+Changes in v3: None
+Changes in v2: None
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 65116fcb7368..958eb57e403a 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -1,5 +1,6 @@
- # SPDX-License-Identifier: GPL-2.0
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-evb.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-px30-core-ctouch2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-px30-core-edimm2.2.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3308-roc-cc.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/px30-px30-core-ctouch2.dts b/arch/arm64/boot/dts/rockchip/px30-px30-core-ctouch2.dts
-new file mode 100644
-index 000000000000..2da01281883a
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/px30-px30-core-ctouch2.dts
-@@ -0,0 +1,22 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2020 Fuzhou Rockchip Electronics Co., Ltd
-+ * Copyright (c) 2020 Engicam srl
-+ * Copyright (c) 2020 Amarula Solutions
-+ * Copyright (c) 2020 Amarula Solutions(India)
-+ */
-+
-+/dts-v1/;
-+#include "px30.dtsi"
-+#include "px30-engicam-ctouch2.dtsi"
-+#include "px30-px30-core.dtsi"
-+
-+/ {
-+	model = "Engicam PX30.Core C.TOUCH 2.0";
-+	compatible = "engicam,px30-core-ctouch2", "engicam,px30-px30-core",
-+		     "rockchip,px30";
-+
-+	chosen {
-+		stdout-path = "serial2:115200n8";
-+	};
-+};
+ MAINTAINERS | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1d4aa7f942de..187634a085a7 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2344,12 +2344,12 @@ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+ L:	linux-rockchip@lists.infradead.org
+ S:	Maintained
+ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
++F:	Documentation/devicetree/bindings/*/*rockchip*.yaml
+ F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+-F:	Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+-F:	Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+ F:	arch/arm/boot/dts/rk3*
+ F:	arch/arm/boot/dts/rv1108*
+ F:	arch/arm/mach-rockchip/
++F:	drivers/*/*/*/*rockchip*
+ F:	drivers/*/*/*rockchip*
+ F:	drivers/*/*rockchip*
+ F:	drivers/clk/rockchip/
 -- 
-2.25.1
+2.17.1
+
+
 
 
 _______________________________________________
