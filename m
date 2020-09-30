@@ -2,76 +2,76 @@ Return-Path: <SRS0=NTKj=DH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0AA00C4727D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 02:11:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5BD95C2D0A8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 08:19:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9271520773
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 02:11:10 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CBB2A20738
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 08:19:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="HpbYbfMT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9271520773
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="fB/yz1yL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBB2A20738
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QP5TCcwi6jzBBxk8thcweF2tOkIfppn6DYU0UZz6YMo=; b=HpbYbfMTd+5RwLV631Cs3kRaDD
-	jtJkSATN9n48tF2+CPraAnwm3uUduA9H0KQQ6X9+6XiC916egQFS9PrcALbpkXX98JpmGJc8yyIAI
-	HyVRDDZgdzeX4tPuxiG459TARvfpNEIrNVTw21eF/AN62JOSeIFAvtlF57HtE6cWp36vYBHkU4ZSq
-	EMtfMco1/1LJVjN7i3bwCRbwO5IDgWqc8zafkE3qlSdTYb3LgPznqvRsAlQWEJ+ktW1C3r6vjiqR7
-	PfM12P4ECvXNDuUMVY+EQ7r9+6bofisA5N49HtO+sASONymTBB0rhr+TN7P0kxsB9tr+24imgQjL9
-	SxtuB36A==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=lJrOuYyfeRDE84+ZcrOd5uWJIBJFkhOP4uCf3tDvkNI=; b=fB/yz1yLYwwj+KfT6e0eXfotO
+	JsQ7gQLtet2w3K9SyNS0fFbEsfkNcfvXFS0oE76U3o6L/Ez/dwvADvLMtupTZrd5khPu8lQhLob/9
+	1YYToIAZamAIURkwosK71RxXEAvxERqrcAg0jBzyckTPm+QvB8PXrY90kszCg/E11hvF7phlZX97k
+	5IQ3gFbCnKRVRUQPOaUGLLbmPnXjSKKkB1eWe+hlQWGh8GpWiN1AXSgVaGxXpP025i0QJBTQ50kvG
+	lPmxhuxoIDILlGjW8TWpfvetaQxyyqjeULXUWDqjFys6LAl24zN/pWYC47cxEQQBchMsiHJjiOudv
+	PAdwOBmaQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNRaC-0004di-Kk; Wed, 30 Sep 2020 02:11:04 +0000
-Received: from lucky1.263xmail.com ([211.157.147.132])
+	id 1kNXKV-0000uM-7a; Wed, 30 Sep 2020 08:19:15 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNRYQ-0003jy-Fu; Wed, 30 Sep 2020 02:09:21 +0000
-Received: from localhost (unknown [192.168.167.235])
- by lucky1.263xmail.com (Postfix) with ESMTP id 120FBEF426;
- Wed, 30 Sep 2020 10:09:11 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-ABS-CHECKED: 0
-Received: from localhost.localdomain (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P2981T139638771541760S1601431744269822_; 
- Wed, 30 Sep 2020 10:09:09 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <aabd3432e877f5e10417b637990fd75b>
-X-RL-SENDER: yifeng.zhao@rock-chips.com
-X-SENDER: zyf@rock-chips.com
-X-LOGIN-NAME: yifeng.zhao@rock-chips.com
-X-FST-TO: miquel.raynal@bootlin.com
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-DNS-TYPE: 0
-X-System-Flag: 0
-From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-To: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
- robh+dt@kernel.org
-Subject: [PATCH v10 6/8] arm: dts: rockchip: Add NFC node for RV1108 SoC
-Date: Wed, 30 Sep 2020 10:09:00 +0800
-Message-Id: <20200930020902.7522-2-yifeng.zhao@rock-chips.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200930020902.7522-1-yifeng.zhao@rock-chips.com>
-References: <20200930020710.7394-1-yifeng.zhao@rock-chips.com>
- <20200930020902.7522-1-yifeng.zhao@rock-chips.com>
+ id 1kNXKS-0000tM-10; Wed, 30 Sep 2020 08:19:13 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 76E42AFDC;
+ Wed, 30 Sep 2020 08:19:10 +0000 (UTC)
+Subject: Re: [PATCH v3 2/7] drm/ttm: Add ttm_kmap_obj_to_dma_buf_map() for
+ type conversion
+To: christian.koenig@amd.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org,
+ alexander.deucher@amd.com, kraxel@redhat.com, l.stach@pengutronix.de,
+ linux+etnaviv@armlinux.org.uk, christian.gmeiner@gmail.com,
+ inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
+ yuq825@gmail.com, bskeggs@redhat.com, robh@kernel.org,
+ tomeu.vizoso@collabora.com, steven.price@arm.com,
+ alyssa.rosenzweig@collabora.com, hjc@rock-chips.com, heiko@sntech.de,
+ hdegoede@redhat.com, sean@poorly.run, eric@anholt.net,
+ oleksandr_andrushchenko@epam.com, ray.huang@amd.com,
+ sumit.semwal@linaro.org, emil.velikov@collabora.com, luben.tuikov@amd.com,
+ apaneers@amd.com, linus.walleij@linaro.org, melissa.srw@gmail.com,
+ chris@chris-wilson.co.uk, miaoqinglang@huawei.com
+References: <20200929151437.19717-1-tzimmermann@suse.de>
+ <20200929151437.19717-3-tzimmermann@suse.de>
+ <8fad0114-064a-4ed5-c21d-d1b4294de0a1@amd.com>
+ <2614314a-81f7-4722-c400-68d90e48e09a@suse.de>
+ <8a84f62b-33f3-f44c-52af-c859a0e0d1fb@gmail.com>
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Message-ID: <07972ada-9135-3743-a86b-487f610c509f@suse.de>
+Date: Wed, 30 Sep 2020 10:19:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
+MIME-Version: 1.0
+In-Reply-To: <8a84f62b-33f3-f44c-52af-c859a0e0d1fb@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200929_220914_782539_24CDE961 
-X-CRM114-Status: GOOD (  11.03  )
+X-CRM114-CacheID: sfid-20200930_041912_290360_4AE5ACC3 
+X-CRM114-Status: GOOD (  29.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,63 +84,284 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, heiko@sntech.de,
- Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-samsung-soc@vger.kernel.org, lima@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linaro-mm-sig@lists.linaro.org, linux-rockchip@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, spice-devel@lists.freedesktop.org,
+ xen-devel@lists.xenproject.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============7902653826850275402=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add NAND FLASH Controller(NFC) node for RV1108 SoC.
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--===============7902653826850275402==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="2tnNmM6Gncu4Z9HVjsD6XejU6DShIRxes"
 
-Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
----
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--2tnNmM6Gncu4Z9HVjsD6XejU6DShIRxes
+Content-Type: multipart/mixed; boundary="8reR6qmzfsBdHGMj2V1Scdvi6KHFIuvgk";
+ protected-headers="v1"
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: christian.koenig@amd.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, airlied@linux.ie, daniel@ffwll.ch, sam@ravnborg.org,
+ alexander.deucher@amd.com, kraxel@redhat.com, l.stach@pengutronix.de,
+ linux+etnaviv@armlinux.org.uk, christian.gmeiner@gmail.com,
+ inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
+ yuq825@gmail.com, bskeggs@redhat.com, robh@kernel.org,
+ tomeu.vizoso@collabora.com, steven.price@arm.com,
+ alyssa.rosenzweig@collabora.com, hjc@rock-chips.com, heiko@sntech.de,
+ hdegoede@redhat.com, sean@poorly.run, eric@anholt.net,
+ oleksandr_andrushchenko@epam.com, ray.huang@amd.com,
+ sumit.semwal@linaro.org, emil.velikov@collabora.com, luben.tuikov@amd.com,
+ apaneers@amd.com, linus.walleij@linaro.org, melissa.srw@gmail.com,
+ chris@chris-wilson.co.uk, miaoqinglang@huawei.com
+Cc: linux-samsung-soc@vger.kernel.org, lima@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linaro-mm-sig@lists.linaro.org, linux-rockchip@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, xen-devel@lists.xenproject.org,
+ spice-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Message-ID: <07972ada-9135-3743-a86b-487f610c509f@suse.de>
+Subject: Re: [PATCH v3 2/7] drm/ttm: Add ttm_kmap_obj_to_dma_buf_map() for
+ type conversion
+References: <20200929151437.19717-1-tzimmermann@suse.de>
+ <20200929151437.19717-3-tzimmermann@suse.de>
+ <8fad0114-064a-4ed5-c21d-d1b4294de0a1@amd.com>
+ <2614314a-81f7-4722-c400-68d90e48e09a@suse.de>
+ <8a84f62b-33f3-f44c-52af-c859a0e0d1fb@gmail.com>
+In-Reply-To: <8a84f62b-33f3-f44c-52af-c859a0e0d1fb@gmail.com>
 
-Changes in v10: None
-Changes in v9: None
-Changes in v8: None
-Changes in v7: None
-Changes in v6: None
-Changes in v5: None
-Changes in v4: None
-Changes in v3: None
-Changes in v2: None
+--8reR6qmzfsBdHGMj2V1Scdvi6KHFIuvgk
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 
- arch/arm/boot/dts/rv1108.dtsi | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+Hi
 
-diff --git a/arch/arm/boot/dts/rv1108.dtsi b/arch/arm/boot/dts/rv1108.dtsi
-index a1a08cb9364e..1696ea19488b 100644
---- a/arch/arm/boot/dts/rv1108.dtsi
-+++ b/arch/arm/boot/dts/rv1108.dtsi
-@@ -452,6 +452,17 @@
- 		#reset-cells = <1>;
- 	};
- 
-+	nfc: nand-controller@30100000 {
-+		compatible = "rockchip,rv1108-nfc";
-+		reg = <0x30100000  0x1000>;
-+		interrupts = <GIC_SPI 14 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_NANDC>, <&cru SCLK_NANDC>;
-+		clock-names = "ahb", "nfc";
-+		assigned-clocks = <&cru SCLK_NANDC>;
-+		assigned-clock-rates = <150000000>;
-+		status = "disabled";
-+	};
-+
- 	emmc: mmc@30110000 {
- 		compatible = "rockchip,rv1108-dw-mshc", "rockchip,rk3288-dw-mshc";
- 		reg = <0x30110000 0x4000>;
--- 
-2.17.1
+Am 30.09.20 um 10:05 schrieb Christian K=C3=B6nig:
+> Am 29.09.20 um 19:49 schrieb Thomas Zimmermann:
+>> Hi Christian
+>>
+>> Am 29.09.20 um 17:35 schrieb Christian K=C3=B6nig:
+>>> Am 29.09.20 um 17:14 schrieb Thomas Zimmermann:
+>>>> The new helper ttm_kmap_obj_to_dma_buf() extracts address and locati=
+on
+>>>> from and instance of TTM's kmap_obj and initializes struct dma_buf_m=
+ap
+>>>> with these values. Helpful for TTM-based drivers.
+>>> We could completely drop that if we use the same structure inside TTM=
+ as
+>>> well.
+>>>
+>>> Additional to that which driver is going to use this?
+>> As Daniel mentioned, it's in patch 3. The TTM-based drivers will
+>> retrieve the pointer via this function.
+>>
+>> I do want to see all that being more tightly integrated into TTM, but
+>> not in this series. This one is about fixing the bochs-on-sparc64
+>> problem for good. Patch 7 adds an update to TTM to the DRM TODO list.
+>=20
+> I should have asked which driver you try to fix here :)
+>=20
+> In this case just keep the function inside bochs and only fix it there.=
 
+>=20
+> All other drivers can be fixed when we generally pump this through TTM.=
 
 
+Did you take a look at patch 3? This function will be used by VRAM
+helpers, nouveau, radeon, amdgpu and qxl. If we don't put it here, we
+have to duplicate the functionality in each if these drivers. Bochs
+itself uses VRAM helpers and doesn't touch the function directly.
+
+Best regards
+Thomas
+
+>=20
+> Regards,
+> Christian.
+>=20
+>> Best regards
+>> Thomas
+>>
+>>> Regards,
+>>> Christian.
+>>>
+>>>> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+>>>> ---
+>>>> =C2=A0 include/drm/ttm/ttm_bo_api.h | 24 ++++++++++++++++++++++++
+>>>> =C2=A0 include/linux/dma-buf-map.h=C2=A0 | 20 ++++++++++++++++++++
+>>>> =C2=A0 2 files changed, 44 insertions(+)
+>>>>
+>>>> diff --git a/include/drm/ttm/ttm_bo_api.h b/include/drm/ttm/ttm_bo_a=
+pi.h
+>>>> index c96a25d571c8..62d89f05a801 100644
+>>>> --- a/include/drm/ttm/ttm_bo_api.h
+>>>> +++ b/include/drm/ttm/ttm_bo_api.h
+>>>> @@ -34,6 +34,7 @@
+>>>> =C2=A0 #include <drm/drm_gem.h>
+>>>> =C2=A0 #include <drm/drm_hashtab.h>
+>>>> =C2=A0 #include <drm/drm_vma_manager.h>
+>>>> +#include <linux/dma-buf-map.h>
+>>>> =C2=A0 #include <linux/kref.h>
+>>>> =C2=A0 #include <linux/list.h>
+>>>> =C2=A0 #include <linux/wait.h>
+>>>> @@ -486,6 +487,29 @@ static inline void *ttm_kmap_obj_virtual(struct=
+
+>>>> ttm_bo_kmap_obj *map,
+>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return map->virtual;
+>>>> =C2=A0 }
+>>>> =C2=A0 +/**
+>>>> + * ttm_kmap_obj_to_dma_buf_map
+>>>> + *
+>>>> + * @kmap: A struct ttm_bo_kmap_obj returned from ttm_bo_kmap.
+>>>> + * @map: Returns the mapping as struct dma_buf_map
+>>>> + *
+>>>> + * Converts struct ttm_bo_kmap_obj to struct dma_buf_map. If the me=
+mory
+>>>> + * is not mapped, the returned mapping is initialized to NULL.
+>>>> + */
+>>>> +static inline void ttm_kmap_obj_to_dma_buf_map(struct ttm_bo_kmap_o=
+bj
+>>>> *kmap,
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 struct dma_buf_map *map)
+>>>> +{
+>>>> +=C2=A0=C2=A0=C2=A0 bool is_iomem;
+>>>> +=C2=A0=C2=A0=C2=A0 void *vaddr =3D ttm_kmap_obj_virtual(kmap, &is_i=
+omem);
+>>>> +
+>>>> +=C2=A0=C2=A0=C2=A0 if (!vaddr)
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dma_buf_map_clear(map);
+>>>> +=C2=A0=C2=A0=C2=A0 else if (is_iomem)
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dma_buf_map_set_vaddr_io=
+mem(map, (void __force __iomem *)vaddr);
+>>>> +=C2=A0=C2=A0=C2=A0 else
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 dma_buf_map_set_vaddr(ma=
+p, vaddr);
+>>>> +}
+>>>> +
+>>>> =C2=A0 /**
+>>>> =C2=A0=C2=A0 * ttm_bo_kmap
+>>>> =C2=A0=C2=A0 *
+>>>> diff --git a/include/linux/dma-buf-map.h b/include/linux/dma-buf-map=
+=2Eh
+>>>> index fd1aba545fdf..2e8bbecb5091 100644
+>>>> --- a/include/linux/dma-buf-map.h
+>>>> +++ b/include/linux/dma-buf-map.h
+>>>> @@ -45,6 +45,12 @@
+>>>> =C2=A0=C2=A0 *
+>>>> =C2=A0=C2=A0 *=C2=A0=C2=A0=C2=A0 dma_buf_map_set_vaddr(&map. 0xdeadb=
+eaf);
+>>>> =C2=A0=C2=A0 *
+>>>> + * To set an address in I/O memory, use dma_buf_map_set_vaddr_iomem=
+().
+>>>> + *
+>>>> + * .. code-block:: c
+>>>> + *
+>>>> + *=C2=A0=C2=A0=C2=A0 dma_buf_map_set_vaddr_iomem(&map. 0xdeadbeaf);=
+
+>>>> + *
+>>>> =C2=A0=C2=A0 * Test if a mapping is valid with either dma_buf_map_is=
+_set() or
+>>>> =C2=A0=C2=A0 * dma_buf_map_is_null().
+>>>> =C2=A0=C2=A0 *
+>>>> @@ -118,6 +124,20 @@ static inline void dma_buf_map_set_vaddr(struct=
+
+>>>> dma_buf_map *map, void *vaddr)
+>>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 map->is_iomem =3D false;
+>>>> =C2=A0 }
+>>>> =C2=A0 +/**
+>>>> + * dma_buf_map_set_vaddr_iomem - Sets a dma-buf mapping structure t=
+o
+>>>> an address in I/O memory
+>>>> + * @map:=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 The dma-buf mapp=
+ing structure
+>>>> + * @vaddr_iomem:=C2=A0=C2=A0=C2=A0 An I/O-memory address
+>>>> + *
+>>>> + * Sets the address and the I/O-memory flag.
+>>>> + */
+>>>> +static inline void dma_buf_map_set_vaddr_iomem(struct dma_buf_map *=
+map,
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 void __iomem *vaddr_iomem)
+>>>> +{
+>>>> +=C2=A0=C2=A0=C2=A0 map->vaddr_iomem =3D vaddr_iomem;
+>>>> +=C2=A0=C2=A0=C2=A0 map->is_iomem =3D true;
+>>>> +}
+>>>> +
+>>>> =C2=A0 /**
+>>>> =C2=A0=C2=A0 * dma_buf_map_is_equal - Compares two dma-buf mapping s=
+tructures
+>>>> for equality
+>>>> =C2=A0=C2=A0 * @lhs:=C2=A0=C2=A0=C2=A0 The dma-buf mapping structure=
+
+>>> _______________________________________________
+>>> dri-devel mailing list
+>>> dri-devel@lists.freedesktop.org
+>>> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+>>
+>> _______________________________________________
+>> amd-gfx mailing list
+>> amd-gfx@lists.freedesktop.org
+>> https://lists.freedesktop.org/mailman/listinfo/amd-gfx
+>=20
+>=20
+> _______________________________________________
+> dri-devel mailing list
+> dri-devel@lists.freedesktop.org
+> https://lists.freedesktop.org/mailman/listinfo/dri-devel
+>=20
+
+--=20
+Thomas Zimmermann
+Graphics Driver Developer
+SUSE Software Solutions Germany GmbH
+Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
+(HRB 36809, AG N=C3=BCrnberg)
+Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
+
+
+--8reR6qmzfsBdHGMj2V1Scdvi6KHFIuvgk--
+
+--2tnNmM6Gncu4Z9HVjsD6XejU6DShIRxes
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQFIBAEBCAAyFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl90P3oUHHR6aW1tZXJt
+YW5uQHN1c2UuZGUACgkQaA3BHVMLeiOhVQf/Yv+6gFInXQVuqEi1ESWHgMw3t7Q2
+cnUg/6thxYVeLkIYdhhbnWBJbHFuwrDriJIad46Ptb3IeoigYaKbFF3ugYhvPkyl
+Z9cLTYI023ZIe5VDgdIavfx82kfG2SYDn95MF4he62lWk+Wqf0sTr2ZtSmX5qoec
+0fkWrJu3aTwroDjJoUIfrysvpX0px5Oyee+wVT7pZgcL59ltLz+GTDWVJqLePjS3
+q8gRTYBP118NUnDY7V7GsUTg6VXUJf+IwYIO3GIhcq8tw835SzJx9wzOKQ7zVXxF
+X8+of5BnSn43BGnzP9KkXwoVR647nGNPwin8wqtDISLp1MjHvRP1sc3pWg==
+=0pMc
+-----END PGP SIGNATURE-----
+
+--2tnNmM6Gncu4Z9HVjsD6XejU6DShIRxes--
+
+
+--===============7902653826850275402==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7902653826850275402==--
+
