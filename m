@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A838C4727E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 13:17:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7678CC4727F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 13:18:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3ADA420754
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 13:17:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2770420754
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 13:18:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Fvg4XFGg";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="mjIQEbf2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3ADA420754
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2XCwi2z7";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="BflnOS7v"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2770420754
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,64 +26,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=FhUn9oPlX80hIiHWshLeU9AhUmaBpLJoaDYqTeeDdrQ=; b=Fvg4XFGgiY1sC1hzBq0FJjQpy
-	oilhnmNKtnedxtQZ4q8EPYA88WQkllAE4S+THbBh/4Jf4FR782GdeBcb4t09+fwC0qFvGemwG96eB
-	nXANHzdg52RrI+9gO9iTQJ3fs7NxEZJyQk3YVUzTGyS+lemrMHlmA8VK4/OJU6ZiFm47Bu+jSgxMO
-	bvBOw1DUNvukkBAF2CAISI6XyZkH4W5myqPTO6lgvuAiOQYdIgQuvvM3VAX+L22pOaBzcmk4MlqyU
-	MZSA7C8bOxq3nxal6H8prjozZo7+CLfBuARx0X7HUzl8b1tKGmvWaKpQmjW/TXPzprQdrrgIrnMN7
-	ucs57PKcA==;
+	 bh=dKVKwd+YoRaSqF8eeFKTtFqgTqo260XK/tN+hUWsECE=; b=2XCwi2z7XZDlwXfDpa+B3obo5
+	FRfrWpMX996IrBaldv164Efm2JWyTJ7VpmtOJM9AnFoMGb0FaXCRFmtl1Sj+itC/l1YgmihtX6r5F
+	vITCDZggte59riTqaAOa853Gi4u+9qdxS+hk2yuwUImoudUL/8Ryf1kdHv7jRX3Sa2fXz4BBCPQ0d
+	leT7x1aPc1UKSVTrjdodh+wGeX5IOyA4WNMe1H4WY5gExRxkUM6Zuhzl69jnwRbGSmnw5w8GKI0qL
+	AYUQqR4SU1h8s1ju9pqWZAaECr437DqTYFOn1m23SgUgACjEkuKwEaYrlNxJpbjwW0CuP5DIvcGo5
+	IZfJPYDBQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNbzS-0000Jm-NP; Wed, 30 Sep 2020 13:17:50 +0000
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542])
+	id 1kNbza-0000Np-PR; Wed, 30 Sep 2020 13:17:58 +0000
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNbzP-0000Hs-KO
- for linux-rockchip@lists.infradead.org; Wed, 30 Sep 2020 13:17:49 +0000
-Received: by mail-pg1-x542.google.com with SMTP id d13so1098083pgl.6
- for <linux-rockchip@lists.infradead.org>; Wed, 30 Sep 2020 06:17:47 -0700 (PDT)
+ id 1kNbzY-0000Lx-NK
+ for linux-rockchip@lists.infradead.org; Wed, 30 Sep 2020 13:17:57 +0000
+Received: by mail-pj1-x1042.google.com with SMTP id l18so937595pjz.1
+ for <linux-rockchip@lists.infradead.org>; Wed, 30 Sep 2020 06:17:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amarulasolutions.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=lyT7MBlnq+7NSh4L9NwBUSU1PFcUFpM8JlhbZRYZUXo=;
- b=mjIQEbf22uZJBElO3LfHTw3+hovyn7H5A6xmL3aeKxOGIyDZ9rEKcuu2H9xAO+bjy7
- nBMawZu0cpJwrY8uasgvKA0jVYVmkQX8G5+6vDVELC+lDL0KKeIKT6+s2O1HCdxycbdD
- LTu/0oMqTGCX4E6xpbOuF5kenYVCJesVAEf5A=
+ bh=zIMO/M6bXAsSG496h31byuZfR/fFfR1Yfrl05Ec3KKA=;
+ b=BflnOS7vl0H1nTzwUFRHqxCeh9O/VYp26pLCVvfPu5eb9tZ8jxwc9FtRaFOvth2JxH
+ CGkZFLwvhbzu3cqdXI/8/4VoZtCLzcPyWXo7XuMPXbm9BLYQSs4MALkBZgqXS9noIDuG
+ 4gg1AwOXcqVTYEMCGpGVoGaQMbSoV8EelFE9A=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=lyT7MBlnq+7NSh4L9NwBUSU1PFcUFpM8JlhbZRYZUXo=;
- b=nR25gtJPb3OmMxvDvdVqSduHxCYGzMP6kLLiILtqlykYATVrrSvbXBYieITOn02dmB
- 56Kcg5R6VnuYzOXXZIzfTMuUhgYlpIYpIbRFBOtURRK1XfF2TaepAkhm1bsPX4YBzABx
- ovQxYvwqaqRyZXv2ogv5dlAx6k2leTDGRW8cHtLkBVZ7Vx0KfssROu+I+7bmihB2xFCw
- 7CwXp1DUD4ci3+vl0IfhmEevXfwZjjghLaVvfQn81fW+vqIUOBHMXjGjO6qnyk1Zqm6N
- RMqKsA1bVClK4fn/9ISUjYqNJlmFzC4hzVP8mWoukwHwfrdLegT7fgJEQKtLt5Kzcksk
- oooQ==
-X-Gm-Message-State: AOAM5304+eilo3cjUEaIFoszzntzqka18itQ6NL5mh8Amaqi+00U5dLT
- tmmeyB+BKGpAoZYX25THCYyMew==
-X-Google-Smtp-Source: ABdhPJxJb5LDkzMW05kiQwkKkjuIcgv8Z4r90NuKSLjaA9MoIRrsZTAUKzzkPoAOCC257I/kl9Srxw==
-X-Received: by 2002:a62:e501:0:b029:13c:1611:6527 with SMTP id
- n1-20020a62e5010000b029013c16116527mr2232092pff.7.1601471865656; 
- Wed, 30 Sep 2020 06:17:45 -0700 (PDT)
+ bh=zIMO/M6bXAsSG496h31byuZfR/fFfR1Yfrl05Ec3KKA=;
+ b=cW/dfNFmADcl36G+QtJt49d4huvH6tBzCxM3QH+ugi0jPSwBgtmUzqXlThuRQJ86QG
+ /srbM1bM6+nh/bmwTdbFpa9ZiWYMk5MvUxNdfmY3hSSGSKWgnmuHOUakefFNkR33c/Rt
+ zfJiCTeeo01ljBnHVFJzL2p/wDFGvozDSg6wBgp39X0GOUwQw8Ct11+VSfBAj4chN1BO
+ iUxujXB8k/4YJKHtUShP65lR9EHGdELXwT/calPFhYf7PsM5KRo1PB398UslboZQHlyy
+ UbbWR6SQkMDjEFwll13vMc1DuXMWHwW1q48OqmjwebjxW1TUSzDR5K5BRprLN8KR7x3U
+ XsDw==
+X-Gm-Message-State: AOAM53052YeeQkPEWyKa4nfGnYBpnWzZFFGJNTbK3TQlSMj0gyIsOnwb
+ 4xqvr4hp5icFAQvGNoY7fNf+dg==
+X-Google-Smtp-Source: ABdhPJwtKcj4SV5KD0dJEok9DAAsBPANGKV+PBvmg/nkq9WbbEcuynzSADsIy2UVHXmMwhdJhOH6NA==
+X-Received: by 2002:a17:90a:a595:: with SMTP id
+ b21mr2447074pjq.95.1601471873742; 
+ Wed, 30 Sep 2020 06:17:53 -0700 (PDT)
 Received: from ub-XPS-13-9350.pdxnet.pdxeng.ch
  ([2405:201:c809:c7d5:91b9:59de:b063:d8ee])
- by smtp.gmail.com with ESMTPSA id q4sm2849004pjl.28.2020.09.30.06.17.38
+ by smtp.gmail.com with ESMTPSA id q4sm2849004pjl.28.2020.09.30.06.17.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 30 Sep 2020 06:17:45 -0700 (PDT)
+ Wed, 30 Sep 2020 06:17:53 -0700 (PDT)
 From: Jagan Teki <jagan@amarulasolutions.com>
 To: kever.yang@rock-chips.com, philipp.tomsich@theobroma-systems.com,
  sjg@chromium.org
-Subject: [PATCH v3 5/8] rockchip: Add Engicam PX30.Core EDIMM2.2 Starter Kit
-Date: Wed, 30 Sep 2020 18:46:23 +0530
-Message-Id: <20200930131626.265206-6-jagan@amarulasolutions.com>
+Subject: [PATCH v3 7/8] rockchip: Add Engicam PX30.Core C.TOUCH 2.0
+Date: Wed, 30 Sep 2020 18:46:25 +0530
+Message-Id: <20200930131626.265206-8-jagan@amarulasolutions.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20200930131626.265206-1-jagan@amarulasolutions.com>
 References: <20200930131626.265206-1-jagan@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200930_091747_697526_5B7368CC 
-X-CRM114-Status: GOOD (  20.16  )
+X-CRM114-CacheID: sfid-20200930_091756_770746_3912A330 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,11 +106,11 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
 
-EDIMM2.2 Starter Kit is an EDIMM 2.2 Form Factor Capacitive
-Evaluation Board from Engicam.
+C.TOUCH 2.0 is a general purpose carrier board with capacitive
+touch interface support.
 
-PX30.Core needs to mount on top of this Evaluation board for
-creating complete PX30.Core EDIMM2.2 Starter Kit.
+PX30.Core needs to mount on top of this Carrier board for creating
+complete PX30.Core C.TOUCH 2.0 board.
 
 Add support for it.
 
@@ -118,62 +118,57 @@ Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
 Signed-off-by: Suniel Mahesh <sunil@amarulasolutions.com>
 ---
 Changes for v3:
-- Changes to work TPL
+- changes to support TPL
 Changes for v2:
-- Collect Kever Yang r-b tag
+- Minor device tree adjustments as per Linux mainline changes
+- rename device tree from ctouch2-of10.dts to ctouch2.dts
+- rename defconfig from ctouch2-of10 to ctouch2
+- collect Kever Yang r-b tag
+- Add additional copyright
 
- arch/arm/dts/Makefile                     |   1 +
- arch/arm/dts/px30-px30-core-edimm2.2.dts  |  21 +++++
- arch/arm/mach-rockchip/px30/Kconfig       |  10 ++
- board/engicam/px30_core/Kconfig           |  15 +++
- board/engicam/px30_core/MAINTAINERS       |   7 ++
- board/engicam/px30_core/Makefile          |   7 ++
- board/engicam/px30_core/px30_core.c       |   4 +
- configs/px30-core-edimm2.2-px30_defconfig | 108 ++++++++++++++++++++++
- drivers/ram/rockchip/sdram_px30.c         |   4 +
- include/configs/px30_core.h               |  15 +++
- 10 files changed, 192 insertions(+)
- create mode 100644 arch/arm/dts/px30-px30-core-edimm2.2.dts
- create mode 100644 board/engicam/px30_core/Kconfig
- create mode 100644 board/engicam/px30_core/MAINTAINERS
- create mode 100644 board/engicam/px30_core/Makefile
- create mode 100644 board/engicam/px30_core/px30_core.c
- create mode 100644 configs/px30-core-edimm2.2-px30_defconfig
- create mode 100644 include/configs/px30_core.h
+ arch/arm/dts/Makefile                    |   1 +
+ arch/arm/dts/px30-px30-core-ctouch2.dts  |  22 +++++
+ arch/arm/mach-rockchip/px30/Kconfig      |   7 ++
+ board/engicam/px30_core/MAINTAINERS      |   6 ++
+ configs/px30-core-ctouch2-px30_defconfig | 108 +++++++++++++++++++++++
+ 5 files changed, 144 insertions(+)
+ create mode 100644 arch/arm/dts/px30-px30-core-ctouch2.dts
+ create mode 100644 configs/px30-core-ctouch2-px30_defconfig
 
 diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index f8f529435b..f1b0286fa1 100644
+index f1b0286fa1..1ffa07cc6e 100644
 --- a/arch/arm/dts/Makefile
 +++ b/arch/arm/dts/Makefile
 @@ -72,6 +72,7 @@ dtb-$(CONFIG_MACH_S700) += \
  dtb-$(CONFIG_ROCKCHIP_PX30) += \
  	px30-evb.dtb \
  	px30-firefly.dtb \
-+	px30-px30-core-edimm2.2.dtb \
++	px30-px30-core-ctouch2.dtb \
+ 	px30-px30-core-edimm2.2.dtb \
  	rk3326-odroid-go2.dtb
  
- dtb-$(CONFIG_ROCKCHIP_RK3036) += \
-diff --git a/arch/arm/dts/px30-px30-core-edimm2.2.dts b/arch/arm/dts/px30-px30-core-edimm2.2.dts
+diff --git a/arch/arm/dts/px30-px30-core-ctouch2.dts b/arch/arm/dts/px30-px30-core-ctouch2.dts
 new file mode 100644
-index 0000000000..c36280ce7f
+index 0000000000..2da0128188
 --- /dev/null
-+++ b/arch/arm/dts/px30-px30-core-edimm2.2.dts
-@@ -0,0 +1,21 @@
++++ b/arch/arm/dts/px30-px30-core-ctouch2.dts
+@@ -0,0 +1,22 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Copyright (c) 2020 Fuzhou Rockchip Electronics Co., Ltd
 + * Copyright (c) 2020 Engicam srl
++ * Copyright (c) 2020 Amarula Solutions
 + * Copyright (c) 2020 Amarula Solutions(India)
 + */
 +
 +/dts-v1/;
 +#include "px30.dtsi"
-+#include "px30-engicam-edimm2.2.dtsi"
++#include "px30-engicam-ctouch2.dtsi"
 +#include "px30-px30-core.dtsi"
 +
 +/ {
-+	model = "Engicam PX30.Core EDIMM2.2 Starter Kit";
-+	compatible = "engicam,px30-core-edimm2.2", "engicam,px30-px30-core",
++	model = "Engicam PX30.Core C.TOUCH 2.0";
++	compatible = "engicam,px30-core-ctouch2", "engicam,px30-px30-core",
 +		     "rockchip,px30";
 +
 +	chosen {
@@ -181,95 +176,42 @@ index 0000000000..c36280ce7f
 +	};
 +};
 diff --git a/arch/arm/mach-rockchip/px30/Kconfig b/arch/arm/mach-rockchip/px30/Kconfig
-index 6cd65dfa97..5d014f6561 100644
+index 5d014f6561..16090f5b08 100644
 --- a/arch/arm/mach-rockchip/px30/Kconfig
 +++ b/arch/arm/mach-rockchip/px30/Kconfig
-@@ -11,6 +11,15 @@ config TARGET_EVB_PX30
- config TARGET_ODROID_GO2
- 	bool "ODROID_GO2"
+@@ -20,6 +20,13 @@ config TARGET_PX30_CORE
+ 	  * PX30.Core needs to mount on top of EDIMM2.2 for creating complete
+ 	    PX30.Core EDIMM2.2 Starter Kit.
  
-+config TARGET_PX30_CORE
-+	bool "Engicam PX30.Core"
-+	help
-+	  PX30.Core EDIMM2.2:
++	  PX30.Core CTOUCH2:
 +	  * PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
-+	  * EDIMM2.2 is a Form Factor Capacitive Evaluation Board from Engicam.
-+	  * PX30.Core needs to mount on top of EDIMM2.2 for creating complete
-+	    PX30.Core EDIMM2.2 Starter Kit.
++	  * CTOUCH2.0 is a general purpose Carrier board with capacitive
++	    touch interface support.
++	  * PX30.Core needs to mount on top of CTOUCH2.0 for creating complete
++	    PX30.Core C.TOUCH Carrier board.
 +
  config ROCKCHIP_BOOT_MODE_REG
  	default 0xff010200
  
-@@ -44,6 +53,7 @@ config DEBUG_UART_CHANNEL
- 	  For using the UART for early debugging the route to use needs
- 	  to be declared (0 or 1).
- 
-+source "board/engicam/px30_core/Kconfig"
- source "board/hardkernel/odroid_go2/Kconfig"
- source "board/rockchip/evb_px30/Kconfig"
- 
-diff --git a/board/engicam/px30_core/Kconfig b/board/engicam/px30_core/Kconfig
-new file mode 100644
-index 0000000000..0158398200
---- /dev/null
-+++ b/board/engicam/px30_core/Kconfig
-@@ -0,0 +1,15 @@
-+if TARGET_PX30_CORE
-+
-+config SYS_BOARD
-+	default "px30_core"
-+
-+config SYS_VENDOR
-+	default "engicam"
-+
-+config SYS_CONFIG_NAME
-+	default "px30_core"
-+
-+config BOARD_SPECIFIC_OPTIONS # dummy
-+	def_bool y
-+
-+endif
 diff --git a/board/engicam/px30_core/MAINTAINERS b/board/engicam/px30_core/MAINTAINERS
-new file mode 100644
-index 0000000000..f98a84450a
---- /dev/null
+index f98a84450a..b87ca22207 100644
+--- a/board/engicam/px30_core/MAINTAINERS
 +++ b/board/engicam/px30_core/MAINTAINERS
-@@ -0,0 +1,7 @@
-+PX30-Core-EDIMM2.2
+@@ -1,3 +1,9 @@
++PX30-Core-CTOUCH2.0
 +M:	Jagan Teki <jagan@amarulasolutions.com>
 +M:	Suniel Mahesh <sunil@amarulasolutions.com>
 +S:	Maintained
-+F:	board/engicam/px30_core
-+F:	include/configs/px30_core.h
-+F:	configs/px30-core-edimm2.2-px30_defconfig
-diff --git a/board/engicam/px30_core/Makefile b/board/engicam/px30_core/Makefile
-new file mode 100644
-index 0000000000..321fdb0173
---- /dev/null
-+++ b/board/engicam/px30_core/Makefile
-@@ -0,0 +1,7 @@
-+#
-+# Copyright (c) 2020 Amarula Solutions(India)
-+#
-+# SPDX-License-Identifier:     GPL-2.0+
-+#
++F:	configs/px30-core-ctouch2-px30_defconfig
 +
-+obj-y	+= px30_core.o
-diff --git a/board/engicam/px30_core/px30_core.c b/board/engicam/px30_core/px30_core.c
+ PX30-Core-EDIMM2.2
+ M:	Jagan Teki <jagan@amarulasolutions.com>
+ M:	Suniel Mahesh <sunil@amarulasolutions.com>
+diff --git a/configs/px30-core-ctouch2-px30_defconfig b/configs/px30-core-ctouch2-px30_defconfig
 new file mode 100644
-index 0000000000..3adc2f11de
+index 0000000000..d64f05d8c0
 --- /dev/null
-+++ b/board/engicam/px30_core/px30_core.c
-@@ -0,0 +1,4 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+/*
-+ * Copyright (c) 2020 Amarula Solutions(India)
-+ */
-diff --git a/configs/px30-core-edimm2.2-px30_defconfig b/configs/px30-core-edimm2.2-px30_defconfig
-new file mode 100644
-index 0000000000..50a9a150c8
---- /dev/null
-+++ b/configs/px30-core-edimm2.2-px30_defconfig
++++ b/configs/px30-core-ctouch2-px30_defconfig
 @@ -0,0 +1,108 @@
 +CONFIG_ARM=y
 +CONFIG_ARCH_ROCKCHIP=y
@@ -287,7 +229,7 @@ index 0000000000..50a9a150c8
 +CONFIG_SPL_STACK_R_ADDR=0x600000
 +CONFIG_DEBUG_UART_BASE=0xFF160000
 +CONFIG_DEBUG_UART_CLOCK=24000000
-+CONFIG_DEFAULT_DEVICE_TREE="px30-px30-core-edimm2.2"
++CONFIG_DEFAULT_DEVICE_TREE="px30-px30-core-ctouch2"
 +CONFIG_DEBUG_UART=y
 +CONFIG_TPL_SYS_MALLOC_F_LEN=0x600
 +# CONFIG_ANDROID_BOOT_IMAGE is not set
@@ -295,7 +237,7 @@ index 0000000000..50a9a150c8
 +CONFIG_FIT_VERBOSE=y
 +CONFIG_SPL_LOAD_FIT=y
 +# CONFIG_CONSOLE_MUX is not set
-+CONFIG_DEFAULT_FDT_FILE="rockchip/px30-px30-core-edimm2.2.dtb"
++CONFIG_DEFAULT_FDT_FILE="rockchip/px30-px30-core-ctouch2.dtb"
 +CONFIG_MISC_INIT_R=y
 +# CONFIG_DISPLAY_CPUINFO is not set
 +CONFIG_DISPLAY_BOARDINFO_LATE=y
@@ -379,43 +321,6 @@ index 0000000000..50a9a150c8
 +CONFIG_TPL_TINY_MEMSET=y
 +CONFIG_LZO=y
 +CONFIG_ERRNO_STR=y
-diff --git a/drivers/ram/rockchip/sdram_px30.c b/drivers/ram/rockchip/sdram_px30.c
-index fd5763d0a0..13a343d028 100644
---- a/drivers/ram/rockchip/sdram_px30.c
-+++ b/drivers/ram/rockchip/sdram_px30.c
-@@ -125,7 +125,11 @@ u32 addrmap[][8] = {
- struct dram_info dram_info;
- 
- struct px30_sdram_params sdram_configs[] = {
-+#ifdef CONFIG_TARGET_PX30_CORE
-+#include	"sdram-px30-ddr4-detect-333.inc"
-+#else
- #include	"sdram-px30-ddr3-detect-333.inc"
-+#endif
- };
- 
- struct ddr_phy_skew skew = {
-diff --git a/include/configs/px30_core.h b/include/configs/px30_core.h
-new file mode 100644
-index 0000000000..01b4995598
---- /dev/null
-+++ b/include/configs/px30_core.h
-@@ -0,0 +1,15 @@
-+/* SPDX-License-Identifier: GPL-2.0+ */
-+/*
-+ * Copyright (c) 2020 Amarula Solutions(India)
-+ */
-+
-+#ifndef __PX30_CORE_H
-+#define __PX30_CORE_H
-+
-+#include <configs/px30_common.h>
-+
-+#define ROCKCHIP_DEVICE_SETTINGS \
-+		"stdout=serial,vidconsole\0" \
-+		"stderr=serial,vidconsole\0"
-+
-+#endif /* __PX30_CORE_H */
 -- 
 2.25.1
 
