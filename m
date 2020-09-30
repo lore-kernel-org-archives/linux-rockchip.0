@@ -2,88 +2,90 @@ Return-Path: <SRS0=NTKj=DH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BD41C4727E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 13:18:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AD889C4727E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 16:27:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 64F0E20754
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 13:18:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 13CF12072E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 16:27:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="JOq/NkNs";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="Il2JGDEK"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 64F0E20754
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZRy5lDyu";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=ragnatech-se.20150623.gappssmtp.com header.i=@ragnatech-se.20150623.gappssmtp.com header.b="nrxha9o+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13CF12072E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ragnatech.se
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zhuI0KKm+DpRkZ545/ua5rs/aQZc/+3Q4ic1WGwJLns=; b=JOq/NkNsf2JNBHbUQqP14YK20
-	4+qQSxE787YOG6OXkjDzttNQJxnr83I/q1tL1Fa2NgF5MQNi0v0SI4vDbniQyWoREJdJ9UA0C03eT
-	T25Zgy1RFcRTKUMxTYwaF7bcpyWB57D68kz5HLx8rHy0MfNe93fK6SLdDkUiXq1R14VAEzL38GGWp
-	6Fyno15RbftJ2sKkL1f32R0QYHjcTXfht/vMlw7Jo0U80vLf+xzLV9HxYqiGRa0Y4G5JmmcjEoD6J
-	MyykpkzJ+Jt2Tc970DdTH/LPcpKFVESbk3rqJbEUszmzmFmT9Erzya4eQnDA/Iv5hteGsq/3O1tAx
-	RX/qvhCeQ==;
+	 bh=YwROOMUrkxZp3JaDDia8X9yzmZ+8eJTCW7Ijjyqv4tw=; b=ZRy5lDyuYhNfk0KC9x+BCaAUD
+	pcKnGw9wxadL72zaMElsCgTuBug3TWwX4RjvWbZchWV0n09lwNEAN9h0hwRvakVGMBWQuiw/4C+pm
+	KoORacn66lMMBakByb6P0tJKeqIsKHjk0sQIWWj8KrvYmLlYWwrQ77fd2O5j0m9/RQ2bG2LEqp7FI
+	Ui9o+iLNFh2V1h13diiV2Ab6HOS6JKangPOodBM93xJh7tqvTDv09edzIeYeUyUtyqX0XptZjLmbP
+	lhkm33oDuCd14P2rlmNZcwuNgtIyqnXKCnFeV9ah6+hpN4mrv+GfKAoCrWwBubtuJJNUyDTEt4L3t
+	lc7ZB4FFg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNbzg-0000Rl-NS; Wed, 30 Sep 2020 13:18:04 +0000
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041])
+	id 1kNex7-0005Wr-Kv; Wed, 30 Sep 2020 16:27:37 +0000
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNbze-0000PN-Cp
- for linux-rockchip@lists.infradead.org; Wed, 30 Sep 2020 13:18:03 +0000
-Received: by mail-pj1-x1041.google.com with SMTP id u3so949111pjr.3
- for <linux-rockchip@lists.infradead.org>; Wed, 30 Sep 2020 06:18:02 -0700 (PDT)
+ id 1kNeww-0005QT-Da
+ for linux-rockchip@lists.infradead.org; Wed, 30 Sep 2020 16:27:33 +0000
+Received: by mail-lf1-x142.google.com with SMTP id y11so2896450lfl.5
+ for <linux-rockchip@lists.infradead.org>; Wed, 30 Sep 2020 09:27:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amarulasolutions.com; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=+tUr4DLqJ5Ez/uJit87xDsQ+1XaeUWN+STmRQVQ4B8k=;
- b=Il2JGDEKb/GrOGD77ROyak2ieuV+t5YNuIgx+ObkMWh1NwDBEFLIOwm4+ulApxzk0H
- 3KB07/D1l/M/c3EzqZt5G0Y1S4qCbF6r+EIZFU6m0NNHwMfI1OBlkISGCUt0k3CAxDXR
- Pf8n1FP8aA0bFkcHVlr36OE4v4JMPc5gllaEI=
+ d=ragnatech-se.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=SDgDsKonRl9jKYsZXyPmbBwG+e3LnZR8gLRHIxhxmiU=;
+ b=nrxha9o+yENidrz+UzMaKu4BoX+lo90cT7XY4QgLsjnRDLNQGJGSY9uD1gZ1j95+BM
+ fVFFaU/yWA/EXnIH8o/IHp+xG0AZK7WvY7szYAyny8WO7MsWZW//FlllvvSbwJ8wkiDj
+ KHNfyLIK6B8sQit/STZHE2/Itu8DMOoajo9TPMv3epsIUxBwK8dcoOpi4haOWBvAaUry
+ QSGWlitgBAnG+TtFQ5p12/3ir2eSAoXN0tZfvwH4m1dV7QmPemwezQ76O3PT6P4SjC11
+ GM8JEUZ2PlA1IJxMfHmaglslwpuWtWoItwMASrNjVxGkosSmWg2qqLcUfk+H+ixAOJPi
+ 1LpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+tUr4DLqJ5Ez/uJit87xDsQ+1XaeUWN+STmRQVQ4B8k=;
- b=lBT1QYNFxo8bsw5DyYU8t2+KtcGSnF5CvNvb3DgL9XzS7k0RD+7SAJm01uLa7tEdcO
- YGyjlzwepAnlbMvURBybgNCbs1/traVYpKX/MyUrDfURk/y7fI+WD1FnZSVWqA+WG8SR
- 2W3ybg6RpPNSqxx/jWlNzYuiQlysfLdVJXy4o6yjXTrwVk5HVAn0PAJ8kUXPT24vo8Ku
- +a7lfP1W9xB9x1/ApNyDVlrU+DB3fVlGAxlMNCF71UmaUWZn/znMqrXea2OcQZp/Ntik
- lWHz3idPYdkxmZqiMFLeZknO8m5SRRV8irpy1oPysUGB1yMTWenp8ZMfA6cdnN9AZnK8
- 2YfQ==
-X-Gm-Message-State: AOAM532ckxyGgJYWsHHaiE/59xIU/UhxSDHy1y55eIsgXamtSqLki3Xk
- Ip7+vdMHTpSmVQlLTSo/Iasf6A==
-X-Google-Smtp-Source: ABdhPJz18KaQgD48FpDsU6U2qtZho6JgdAmM/SYT5xxNfbeIZbsqbJK55JL2JmNiFmTSGcaaO5s1nw==
-X-Received: by 2002:a17:902:758f:b029:d2:ac2f:3a79 with SMTP id
- j15-20020a170902758fb02900d2ac2f3a79mr2393072pll.59.1601471880455; 
- Wed, 30 Sep 2020 06:18:00 -0700 (PDT)
-Received: from ub-XPS-13-9350.pdxnet.pdxeng.ch
- ([2405:201:c809:c7d5:91b9:59de:b063:d8ee])
- by smtp.gmail.com with ESMTPSA id q4sm2849004pjl.28.2020.09.30.06.17.54
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=SDgDsKonRl9jKYsZXyPmbBwG+e3LnZR8gLRHIxhxmiU=;
+ b=osp44kBCn2TBXFRFjAWf7r2OfCg87LyS0e4FJEzfJTt/QXG4IlC+LMQjWOrJ24CqUn
+ ECiPXqg+Gr7glzJ2lGjGVlJS2tQjUTqJo8f0YXPEqpRbO+p/udzMCOA3dHGUws35hGI3
+ MRoBu2b2z0Fv0MvH+U6GuS/RsPvMvQN6+L0JTN6XnJRL3vVBbfoh3uaL9P8X6hynb0pY
+ 4n8YhXKiGjZ5hTqZlO4faZYNGKXhYMlFxCasfRj6+e8U9TK6ZR5rc1ioF7zd3dALgvc4
+ a3wi37Ehx4GP7an5mmBsHetWYZwt5biP3sVAQoaN7HcCWwLR0WyJ2MJJ/7dLtbAyOnvQ
+ hsIg==
+X-Gm-Message-State: AOAM532ZsBDRNeOSHG8gnikZDvvfUR8a5+kG0zfT89dnMfUzwMLPjI1s
+ 6pOqtKoZoBly6C8wVcReGydsmQ==
+X-Google-Smtp-Source: ABdhPJwT3egLNqlOPdmJqDBfOvuBtNjLqFSOvCK/N7g6m3nbAMLWYxg8FpxRpAbVie8oM/srAUTQxw==
+X-Received: by 2002:a19:942:: with SMTP id 63mr1224078lfj.23.1601483243337;
+ Wed, 30 Sep 2020 09:27:23 -0700 (PDT)
+Received: from localhost (h-209-203.A463.priv.bahnhof.se. [155.4.209.203])
+ by smtp.gmail.com with ESMTPSA id l129sm242018lfd.279.2020.09.30.09.27.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 30 Sep 2020 06:17:59 -0700 (PDT)
-From: Jagan Teki <jagan@amarulasolutions.com>
-To: kever.yang@rock-chips.com, philipp.tomsich@theobroma-systems.com,
- sjg@chromium.org
-Subject: [PATCH v3 8/8] doc: rockchip: Document Rockchip miniloader flashing
-Date: Wed, 30 Sep 2020 18:46:26 +0530
-Message-Id: <20200930131626.265206-9-jagan@amarulasolutions.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200930131626.265206-1-jagan@amarulasolutions.com>
-References: <20200930131626.265206-1-jagan@amarulasolutions.com>
+ Wed, 30 Sep 2020 09:27:22 -0700 (PDT)
+Date: Wed, 30 Sep 2020 18:27:22 +0200
+From: Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>
+To: Marc Zyngier <maz@kernel.org>
+Subject: Re: [PATCH v2] of: address: Work around missing device_type property
+ in pcie nodes
+Message-ID: <20200930162722.GF1516931@oden.dyn.berto.se>
+References: <20200819094255.474565-1-maz@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20200819094255.474565-1-maz@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200930_091802_452126_80C53FEA 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20200930_122726_606306_9E54EA06 
+X-CRM114-Status: GOOD (  33.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,95 +98,177 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: u-boot@lists.denx.de, linux-rockchip@lists.infradead.org,
- linux-amarula@amarulasolutions.com, Jagan Teki <jagan@amarulasolutions.com>,
- sunil@amarulasolutions.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Rob Herring <robh@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+ linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
+ linux-kernel@vger.kernel.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, kernel-team@android.com,
+ Frank Rowand <frowand.list@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This would be useful and recommended boot flow for new boards
-which has doesn't have the DDR support yet in mainline.
+Hi Marc,
 
-Sometimes it is very useful for debugging mainline DDR support.
+I'm afraid this commit breaks booting my rk3399 device.
 
-Documen it for px30 boot flow.
+I bisected the problem to this patch merged as [1]. I'm testing on a =
 
-Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
----
-Changes for v3, v2:
-- no changes
+Scarlet device and I'm using the unmodified upstream  =
 
- doc/board/rockchip/rockchip.rst | 40 ++++++++++++++++++++++++++++++++-
- 1 file changed, 39 insertions(+), 1 deletion(-)
+rk3399-gru-scarlet-inx.dtb for my tests.
 
-diff --git a/doc/board/rockchip/rockchip.rst b/doc/board/rockchip/rockchip.rst
-index 8c92de0c92..ea061ad171 100644
---- a/doc/board/rockchip/rockchip.rst
-+++ b/doc/board/rockchip/rockchip.rst
-@@ -123,6 +123,9 @@ To build rk3399 boards::
- Flashing
- --------
- 
-+1. Package the image with U-Boot TPL/SPL
-+-----------------------------------------
-+
- SD Card
- ^^^^^^^
- 
-@@ -187,6 +190,39 @@ Copy SPI boot images into SD card and boot from SD::
-         sf erase 0x60000 +$filesize
-         sf write $kernel_addr_r 0x60000 ${filesize}
- 
-+2. Package the image with Rockchip miniloader
-+---------------------------------------------
-+
-+Image package with Rockchip miniloader requires robin [1].
-+
-+Create idbloader.img
-+
-+.. code-block:: none
-+
-+  cd u-boot
-+  ./tools/mkimage -n px30 -T rksd -d rkbin/bin/rk33/px30_ddr_333MHz_v1.15.bin idbloader.img
-+  cat rkbin/bin/rk33/px30_miniloader_v1.22.bin >> idbloader.img
-+  sudo dd if=idbloader.img of=/dev/sda seek=64
-+
-+Create trust.img
-+
-+.. code-block:: none
-+
-+  cd rkbin
-+  ./tools/trust_merger RKTRUST/PX30TRUST.ini
-+  sudo dd if=trust.img of=/dev/sda seek=24576
-+
-+Create uboot.img
-+
-+.. code-block:: none
-+
-+  rbink/tools/loaderimage --pack --uboot u-boot-dtb.bin uboot.img 0x200000
-+  sudo dd if=uboot.img of=/dev/sda seek=16384
-+
-+Note:
-+1. 0x200000 is load address and it's an optional in some platforms.
-+2. rkbin binaries are kept on updating, so would recommend to use the latest versions.
-+
- TODO
- ----
- 
-@@ -195,5 +231,7 @@ TODO
- - Document SPI flash boot
- - Add missing SoC's with it boards list
- 
-+[1] https://github.com/rockchip-linux/rkbin
-+
- .. Jagan Teki <jagan@amarulasolutions.com>
--.. Tuesday 02 June 2020 12:18:57 AM IST
-+.. Thursday 23 July 2020 04:50:22 PM IST
--- 
-2.25.1
+The problem I'm experience is a black screen after the bootloader and =
 
+the device is none responsive over the network. I have no serial console =
+
+to this device so I'm afraid I can't tell you if there is anything =
+
+useful on to aid debugging there.
+
+If I try to test one commit earlier [2] the system boots as expected and =
+
+everything works as it did for me in v5.8 and earlier. I have worked =
+
+little with this device and have no clue about what is really on the PCI =
+
+buss. But running from [2] I have this info about PCI if it's helpful, =
+
+please ask if somethings missing.
+
+# dmesg | grep -i pci
+[    0.003943] PCI/MSI: /interrupt-controller@fee00000/interrupt-controller=
+@fee20000 domain created
+[    0.922022] PCI: CLS 0 bytes, default 64
+[    0.941517] rockchip-pcie f8000000.pcie: host bridge /pcie@f8000000 rang=
+es:
+[    0.941577] rockchip-pcie f8000000.pcie:      MEM 0x00fa000000..0x00fbef=
+ffff -> 0x00fa000000
+[    0.941962] rockchip-pcie f8000000.pcie: GPIO lookup for consumer ep
+[    0.941981] rockchip-pcie f8000000.pcie: using device tree for GPIO look=
+up
+[    0.942018] of_get_named_gpiod_flags: parsed 'ep-gpios' property of node=
+ '/pcie@f8000000[0]' - status (0)
+[    0.942255] rockchip-pcie f8000000.pcie: no vpcie12v regulator found
+[    4.196248] ehci-pci: EHCI PCI platform driver
+[    4.214639] ohci-pci: OHCI PCI platform driver
+
+
+# ls /sys/bus/{pci,pci_express}/devices
+/sys/bus/pci/devices:
+
+/sys/bus/pci_express/devices:
+
+
+# ls /sys/bus/{pci,pci_express}/drivers
+/sys/bus/pci/drivers:
+cavium_rng_pf  cavium_rng_vf  dwc3-haps  ehci-pci  exar_serial  ohci-pci  p=
+cieport  serial  xhci_hcd
+
+/sys/bus/pci_express/drivers:
+pcie_pme
+
+
+# ls /sys/bus/platform/drivers/rockchip-{pcie,pcie-phy}
+/sys/bus/platform/drivers/rockchip-pcie:
+bind  uevent  unbind
+
+/sys/bus/platform/drivers/rockchip-pcie-phy:
+bind  ff770000.syscon:pcie-phy  uevent  unbind
+
+1. d1ac0002dd297069 ("of: address: Work around missing device_type property=
+ in pcie nodes")
+2. 43647929175e2cd3 ("dt: writing-schema: Miscellaneous grammar fixes")
+
+On 2020-08-19 10:42:55 +0100, Marc Zyngier wrote:
+> Recent changes to the DT PCI bus parsing made it mandatory for
+> device tree nodes describing a PCI controller to have the
+> 'device_type =3D "pci"' property for the node to be matched.
+> =
+
+> Although this follows the letter of the specification, it
+> breaks existing device-trees that have been working fine
+> for years.  Rockchip rk3399-based systems are a prime example
+> of such collateral damage, and have stopped discovering their
+> PCI bus.
+> =
+
+> In order to paper over it, let's add a workaround to the code
+> matching the device type, and accept as PCI any node that is
+> named "pcie",
+> =
+
+> A warning will hopefully nudge the user into updating their
+> DT to a fixed version if they can, but the incentive is
+> obviously pretty small.
+> =
+
+> Fixes: 2f96593ecc37 ("of_address: Add bus type match for pci ranges parse=
+r")
+> Suggested-by: Rob Herring <robh+dt@kernel.org>
+> Signed-off-by: Marc Zyngier <maz@kernel.org>
+> ---
+>  drivers/of/address.c | 16 +++++++++++++++-
+>  1 file changed, 15 insertions(+), 1 deletion(-)
+> =
+
+> diff --git a/drivers/of/address.c b/drivers/of/address.c
+> index 590493e04b01..b37bd9cc2810 100644
+> --- a/drivers/of/address.c
+> +++ b/drivers/of/address.c
+> @@ -128,15 +128,29 @@ static unsigned int of_bus_pci_get_flags(const __be=
+32 *addr)
+>   * PCI bus specific translator
+>   */
+>  =
+
+> +static bool of_node_is_pcie(struct device_node *np)
+> +{
+> +	bool is_pcie =3D of_node_name_eq(np, "pcie");
+> +
+> +	if (is_pcie)
+> +		pr_warn_once("%pOF: Missing device_type\n", np);
+> +
+> +	return is_pcie;
+> +}
+> +
+>  static int of_bus_pci_match(struct device_node *np)
+>  {
+>  	/*
+>   	 * "pciex" is PCI Express
+>  	 * "vci" is for the /chaos bridge on 1st-gen PCI powermacs
+>  	 * "ht" is hypertransport
+> +	 *
+> +	 * If none of the device_type match, and that the node name is
+> +	 * "pcie", accept the device as PCI (with a warning).
+>  	 */
+>  	return of_node_is_type(np, "pci") || of_node_is_type(np, "pciex") ||
+> -		of_node_is_type(np, "vci") || of_node_is_type(np, "ht");
+> +		of_node_is_type(np, "vci") || of_node_is_type(np, "ht") ||
+> +		of_node_is_pcie(np);
+>  }
+>  =
+
+>  static void of_bus_pci_count_cells(struct device_node *np,
+> -- =
+
+> 2.27.0
+> =
+
+> =
+
+> _______________________________________________
+> linux-arm-kernel mailing list
+> linux-arm-kernel@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
+
+-- =
+
+Regards,
+Niklas S=F6derlund
 
 _______________________________________________
 Linux-rockchip mailing list
