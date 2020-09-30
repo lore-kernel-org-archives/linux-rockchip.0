@@ -2,90 +2,85 @@ Return-Path: <SRS0=NTKj=DH=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AD889C4727E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 16:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CFE3CC4727E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 17:23:35 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 13CF12072E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 16:27:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 32419206F4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 30 Sep 2020 17:23:34 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZRy5lDyu";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=ragnatech-se.20150623.gappssmtp.com header.i=@ragnatech-se.20150623.gappssmtp.com header.b="nrxha9o+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 13CF12072E
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ragnatech.se
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bpgaDoxl";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="byIxjrxA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 32419206F4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:References:In-Reply-To:Subject:To:From:
+	Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YwROOMUrkxZp3JaDDia8X9yzmZ+8eJTCW7Ijjyqv4tw=; b=ZRy5lDyuYhNfk0KC9x+BCaAUD
-	pcKnGw9wxadL72zaMElsCgTuBug3TWwX4RjvWbZchWV0n09lwNEAN9h0hwRvakVGMBWQuiw/4C+pm
-	KoORacn66lMMBakByb6P0tJKeqIsKHjk0sQIWWj8KrvYmLlYWwrQ77fd2O5j0m9/RQ2bG2LEqp7FI
-	Ui9o+iLNFh2V1h13diiV2Ab6HOS6JKangPOodBM93xJh7tqvTDv09edzIeYeUyUtyqX0XptZjLmbP
-	lhkm33oDuCd14P2rlmNZcwuNgtIyqnXKCnFeV9ah6+hpN4mrv+GfKAoCrWwBubtuJJNUyDTEt4L3t
-	lc7ZB4FFg==;
+	 bh=wGRrV8eOFteK56jafnQbppoAkkKf5Ycj3IeUJ+NJ5zQ=; b=bpgaDoxluNGNfMke+QazyMJJN
+	cSAeRgXa7E3q/iMoZVnlkcon40gJqXwHWmORrQ/PtE5YC0bPo6VzbsRqnEf1gGqAr7SztgnKVu31C
+	OzoRCBx1WGUUEl8hYwug062EWYpnDbgxJMhisZLtxuzDFBwe/2NoXnrqPh83epNN0R33Msq4PaQYT
+	R7KikC9Lb6nXLuksbq/tt9vzKfqjeNR4g5tcaav1EdDWFTJsVis95BOTeCweJlRZZOnQSO5Ox9Hlz
+	rDMGGz17ONQntK8YhPM54lTz2Bw1G0hGPfLwIYmnnQhqY3RQWWkMWQ86UKsohFQMQeOPLOB7Q9Tsp
+	PA4Yoewmw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kNex7-0005Wr-Kv; Wed, 30 Sep 2020 16:27:37 +0000
-Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
+	id 1kNfpA-0005d9-Mm; Wed, 30 Sep 2020 17:23:28 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kNeww-0005QT-Da
- for linux-rockchip@lists.infradead.org; Wed, 30 Sep 2020 16:27:33 +0000
-Received: by mail-lf1-x142.google.com with SMTP id y11so2896450lfl.5
- for <linux-rockchip@lists.infradead.org>; Wed, 30 Sep 2020 09:27:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ragnatech-se.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=SDgDsKonRl9jKYsZXyPmbBwG+e3LnZR8gLRHIxhxmiU=;
- b=nrxha9o+yENidrz+UzMaKu4BoX+lo90cT7XY4QgLsjnRDLNQGJGSY9uD1gZ1j95+BM
- fVFFaU/yWA/EXnIH8o/IHp+xG0AZK7WvY7szYAyny8WO7MsWZW//FlllvvSbwJ8wkiDj
- KHNfyLIK6B8sQit/STZHE2/Itu8DMOoajo9TPMv3epsIUxBwK8dcoOpi4haOWBvAaUry
- QSGWlitgBAnG+TtFQ5p12/3ir2eSAoXN0tZfvwH4m1dV7QmPemwezQ76O3PT6P4SjC11
- GM8JEUZ2PlA1IJxMfHmaglslwpuWtWoItwMASrNjVxGkosSmWg2qqLcUfk+H+ixAOJPi
- 1LpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=SDgDsKonRl9jKYsZXyPmbBwG+e3LnZR8gLRHIxhxmiU=;
- b=osp44kBCn2TBXFRFjAWf7r2OfCg87LyS0e4FJEzfJTt/QXG4IlC+LMQjWOrJ24CqUn
- ECiPXqg+Gr7glzJ2lGjGVlJS2tQjUTqJo8f0YXPEqpRbO+p/udzMCOA3dHGUws35hGI3
- MRoBu2b2z0Fv0MvH+U6GuS/RsPvMvQN6+L0JTN6XnJRL3vVBbfoh3uaL9P8X6hynb0pY
- 4n8YhXKiGjZ5hTqZlO4faZYNGKXhYMlFxCasfRj6+e8U9TK6ZR5rc1ioF7zd3dALgvc4
- a3wi37Ehx4GP7an5mmBsHetWYZwt5biP3sVAQoaN7HcCWwLR0WyJ2MJJ/7dLtbAyOnvQ
- hsIg==
-X-Gm-Message-State: AOAM532ZsBDRNeOSHG8gnikZDvvfUR8a5+kG0zfT89dnMfUzwMLPjI1s
- 6pOqtKoZoBly6C8wVcReGydsmQ==
-X-Google-Smtp-Source: ABdhPJwT3egLNqlOPdmJqDBfOvuBtNjLqFSOvCK/N7g6m3nbAMLWYxg8FpxRpAbVie8oM/srAUTQxw==
-X-Received: by 2002:a19:942:: with SMTP id 63mr1224078lfj.23.1601483243337;
- Wed, 30 Sep 2020 09:27:23 -0700 (PDT)
-Received: from localhost (h-209-203.A463.priv.bahnhof.se. [155.4.209.203])
- by smtp.gmail.com with ESMTPSA id l129sm242018lfd.279.2020.09.30.09.27.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 30 Sep 2020 09:27:22 -0700 (PDT)
-Date: Wed, 30 Sep 2020 18:27:22 +0200
-From: Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>
-To: Marc Zyngier <maz@kernel.org>
+ id 1kNfp6-0005bs-Ti; Wed, 30 Sep 2020 17:23:25 +0000
+Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
+ [51.254.78.96])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 63992207C3;
+ Wed, 30 Sep 2020 17:23:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1601486603;
+ bh=8a6SbQSDDDVVdYYlKR/FBtkSry+2l0Ey8N1zPkLZdNQ=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=byIxjrxAeXmtNUM1CoZLHrJAJ74QDa2UJwYIaMDuDomv00UUHVD07EDgjbyRMesQi
+ DPDuiOxS9U62ca8hKdQUBTsrwy+CDoXCvw4YdU3DS/Up/mv2ADjxgbl9ZMw5QvByXQ
+ hf+4CJVZHSrCVt7QtAEcPZxT+KYzatZisScwrfqo=
+Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
+ by disco-boy.misterjones.org with esmtpsa
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
+ (envelope-from <maz@kernel.org>)
+ id 1kNfp3-00GDws-J7; Wed, 30 Sep 2020 18:23:21 +0100
+MIME-Version: 1.0
+Date: Wed, 30 Sep 2020 18:23:21 +0100
+From: Marc Zyngier <maz@kernel.org>
+To: =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>
 Subject: Re: [PATCH v2] of: address: Work around missing device_type property
  in pcie nodes
-Message-ID: <20200930162722.GF1516931@oden.dyn.berto.se>
+In-Reply-To: <20200930162722.GF1516931@oden.dyn.berto.se>
 References: <20200819094255.474565-1-maz@kernel.org>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200819094255.474565-1-maz@kernel.org>
+ <20200930162722.GF1516931@oden.dyn.berto.se>
+User-Agent: Roundcube Webmail/1.4.8
+Message-ID: <977f60f07a4cb5c59f0e5f8a9dfb3993@kernel.org>
+X-Sender: maz@kernel.org
+X-SA-Exim-Connect-IP: 51.254.78.96
+X-SA-Exim-Rcpt-To: niklas.soderlund@ragnatech.se, devicetree@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ robh@kernel.org, lorenzo.pieralisi@arm.com, heiko@sntech.de,
+ frowand.list@gmail.com, shawn.lin@rock-chips.com, jiaxun.yang@flygoat.com,
+ robh+dt@kernel.org, bhelgaas@google.com, kernel-team@android.com,
+ samuel@dionne-riel.com
+X-SA-Exim-Mail-From: maz@kernel.org
+X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
+ SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20200930_122726_606306_9E54EA06 
-X-CRM114-Status: GOOD (  33.76  )
+X-CRM114-CacheID: sfid-20200930_132325_033088_18FA7CAA 
+X-CRM114-Status: GOOD (  23.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,176 +96,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Cc: Rob Herring <robh@kernel.org>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
- linux-kernel@vger.kernel.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, kernel-team@android.com,
- Frank Rowand <frowand.list@gmail.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ samuel@dionne-riel.com, linux-pci@vger.kernel.org,
+ Shawn Lin <shawn.lin@rock-chips.com>, linux-kernel@vger.kernel.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, linux-rockchip@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ kernel-team@android.com, Frank Rowand <frowand.list@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Marc,
-
-I'm afraid this commit breaks booting my rk3399 device.
-
-I bisected the problem to this patch merged as [1]. I'm testing on a =
-
-Scarlet device and I'm using the unmodified upstream  =
-
-rk3399-gru-scarlet-inx.dtb for my tests.
-
-The problem I'm experience is a black screen after the bootloader and =
-
-the device is none responsive over the network. I have no serial console =
-
-to this device so I'm afraid I can't tell you if there is anything =
-
-useful on to aid debugging there.
-
-If I try to test one commit earlier [2] the system boots as expected and =
-
-everything works as it did for me in v5.8 and earlier. I have worked =
-
-little with this device and have no clue about what is really on the PCI =
-
-buss. But running from [2] I have this info about PCI if it's helpful, =
-
-please ask if somethings missing.
-
-# dmesg | grep -i pci
-[    0.003943] PCI/MSI: /interrupt-controller@fee00000/interrupt-controller=
-@fee20000 domain created
-[    0.922022] PCI: CLS 0 bytes, default 64
-[    0.941517] rockchip-pcie f8000000.pcie: host bridge /pcie@f8000000 rang=
-es:
-[    0.941577] rockchip-pcie f8000000.pcie:      MEM 0x00fa000000..0x00fbef=
-ffff -> 0x00fa000000
-[    0.941962] rockchip-pcie f8000000.pcie: GPIO lookup for consumer ep
-[    0.941981] rockchip-pcie f8000000.pcie: using device tree for GPIO look=
-up
-[    0.942018] of_get_named_gpiod_flags: parsed 'ep-gpios' property of node=
- '/pcie@f8000000[0]' - status (0)
-[    0.942255] rockchip-pcie f8000000.pcie: no vpcie12v regulator found
-[    4.196248] ehci-pci: EHCI PCI platform driver
-[    4.214639] ohci-pci: OHCI PCI platform driver
-
-
-# ls /sys/bus/{pci,pci_express}/devices
-/sys/bus/pci/devices:
-
-/sys/bus/pci_express/devices:
-
-
-# ls /sys/bus/{pci,pci_express}/drivers
-/sys/bus/pci/drivers:
-cavium_rng_pf  cavium_rng_vf  dwc3-haps  ehci-pci  exar_serial  ohci-pci  p=
-cieport  serial  xhci_hcd
-
-/sys/bus/pci_express/drivers:
-pcie_pme
-
-
-# ls /sys/bus/platform/drivers/rockchip-{pcie,pcie-phy}
-/sys/bus/platform/drivers/rockchip-pcie:
-bind  uevent  unbind
-
-/sys/bus/platform/drivers/rockchip-pcie-phy:
-bind  ff770000.syscon:pcie-phy  uevent  unbind
-
-1. d1ac0002dd297069 ("of: address: Work around missing device_type property=
- in pcie nodes")
-2. 43647929175e2cd3 ("dt: writing-schema: Miscellaneous grammar fixes")
-
-On 2020-08-19 10:42:55 +0100, Marc Zyngier wrote:
-> Recent changes to the DT PCI bus parsing made it mandatory for
-> device tree nodes describing a PCI controller to have the
-> 'device_type =3D "pci"' property for the node to be matched.
-> =
-
-> Although this follows the letter of the specification, it
-> breaks existing device-trees that have been working fine
-> for years.  Rockchip rk3399-based systems are a prime example
-> of such collateral damage, and have stopped discovering their
-> PCI bus.
-> =
-
-> In order to paper over it, let's add a workaround to the code
-> matching the device type, and accept as PCI any node that is
-> named "pcie",
-> =
-
-> A warning will hopefully nudge the user into updating their
-> DT to a fixed version if they can, but the incentive is
-> obviously pretty small.
-> =
-
-> Fixes: 2f96593ecc37 ("of_address: Add bus type match for pci ranges parse=
-r")
-> Suggested-by: Rob Herring <robh+dt@kernel.org>
-> Signed-off-by: Marc Zyngier <maz@kernel.org>
-> ---
->  drivers/of/address.c | 16 +++++++++++++++-
->  1 file changed, 15 insertions(+), 1 deletion(-)
-> =
-
-> diff --git a/drivers/of/address.c b/drivers/of/address.c
-> index 590493e04b01..b37bd9cc2810 100644
-> --- a/drivers/of/address.c
-> +++ b/drivers/of/address.c
-> @@ -128,15 +128,29 @@ static unsigned int of_bus_pci_get_flags(const __be=
-32 *addr)
->   * PCI bus specific translator
->   */
->  =
-
-> +static bool of_node_is_pcie(struct device_node *np)
-> +{
-> +	bool is_pcie =3D of_node_name_eq(np, "pcie");
-> +
-> +	if (is_pcie)
-> +		pr_warn_once("%pOF: Missing device_type\n", np);
-> +
-> +	return is_pcie;
-> +}
-> +
->  static int of_bus_pci_match(struct device_node *np)
->  {
->  	/*
->   	 * "pciex" is PCI Express
->  	 * "vci" is for the /chaos bridge on 1st-gen PCI powermacs
->  	 * "ht" is hypertransport
-> +	 *
-> +	 * If none of the device_type match, and that the node name is
-> +	 * "pcie", accept the device as PCI (with a warning).
->  	 */
->  	return of_node_is_type(np, "pci") || of_node_is_type(np, "pciex") ||
-> -		of_node_is_type(np, "vci") || of_node_is_type(np, "ht");
-> +		of_node_is_type(np, "vci") || of_node_is_type(np, "ht") ||
-> +		of_node_is_pcie(np);
->  }
->  =
-
->  static void of_bus_pci_count_cells(struct device_node *np,
-> -- =
-
-> 2.27.0
-> =
-
-> =
-
-> _______________________________________________
-> linux-arm-kernel mailing list
-> linux-arm-kernel@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-arm-kernel
-
--- =
-
-Regards,
-Niklas S=F6derlund
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTmlrbGFzLAoKWysgU2FtdWVsXQoKT24gMjAyMC0wOS0zMCAxNzoyNywgTmlrbGFzIFPDtmRl
+cmx1bmQgd3JvdGU6Cj4gSGkgTWFyYywKPiAKPiBJJ20gYWZyYWlkIHRoaXMgY29tbWl0IGJyZWFr
+cyBib290aW5nIG15IHJrMzM5OSBkZXZpY2UuCj4gCj4gSSBiaXNlY3RlZCB0aGUgcHJvYmxlbSB0
+byB0aGlzIHBhdGNoIG1lcmdlZCBhcyBbMV0uIEknbSB0ZXN0aW5nIG9uIGEKPiBTY2FybGV0IGRl
+dmljZSBhbmQgSSdtIHVzaW5nIHRoZSB1bm1vZGlmaWVkIHVwc3RyZWFtCj4gcmszMzk5LWdydS1z
+Y2FybGV0LWlueC5kdGIgZm9yIG15IHRlc3RzLgo+IAo+IFRoZSBwcm9ibGVtIEknbSBleHBlcmll
+bmNlIGlzIGEgYmxhY2sgc2NyZWVuIGFmdGVyIHRoZSBib290bG9hZGVyIGFuZAo+IHRoZSBkZXZp
+Y2UgaXMgbm9uZSByZXNwb25zaXZlIG92ZXIgdGhlIG5ldHdvcmsuIEkgaGF2ZSBubyBzZXJpYWwg
+Cj4gY29uc29sZQo+IHRvIHRoaXMgZGV2aWNlIHNvIEknbSBhZnJhaWQgSSBjYW4ndCB0ZWxsIHlv
+dSBpZiB0aGVyZSBpcyBhbnl0aGluZwo+IHVzZWZ1bCBvbiB0byBhaWQgZGVidWdnaW5nIHRoZXJl
+Lgo+IAo+IElmIEkgdHJ5IHRvIHRlc3Qgb25lIGNvbW1pdCBlYXJsaWVyIFsyXSB0aGUgc3lzdGVt
+IGJvb3RzIGFzIGV4cGVjdGVkIAo+IGFuZAo+IGV2ZXJ5dGhpbmcgd29ya3MgYXMgaXQgZGlkIGZv
+ciBtZSBpbiB2NS44IGFuZCBlYXJsaWVyLiBJIGhhdmUgd29ya2VkCj4gbGl0dGxlIHdpdGggdGhp
+cyBkZXZpY2UgYW5kIGhhdmUgbm8gY2x1ZSBhYm91dCB3aGF0IGlzIHJlYWxseSBvbiB0aGUgCj4g
+UENJCj4gYnVzcy4gQnV0IHJ1bm5pbmcgZnJvbSBbMl0gSSBoYXZlIHRoaXMgaW5mbyBhYm91dCBQ
+Q0kgaWYgaXQncyBoZWxwZnVsLAo+IHBsZWFzZSBhc2sgaWYgc29tZXRoaW5ncyBtaXNzaW5nLgoK
+UGxlYXNlIHNlZSB0aGUgdGhyZWFkIGF0IFsxXS4gVGhlIHByb2JsZW0gd2FzIHJlcG9ydGVkIGEg
+ZmV3IHdlZWtzIGJhY2sKYnkgU2FtdWVsLCBhbmQgSSB3YXMgZXhwZWN0aW5nIFJvYiBhbmQgTG9y
+ZW56byB0byBwdXNoIGEgZml4IGZvciB0aGlzLgoKUm9iLCBMb3JlbnpvLCBhbnkgdXBkYXRlIG9u
+IHRoaXM/CgogICAgICAgICBNLgoKWzFdIApodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1k
+ZXZpY2V0cmVlLzIwMjAwODI5MTY0OTIwLjdkMjhlMDFhQERVRkZNQU4vCi0tIApKYXp6IGlzIG5v
+dCBkZWFkLiBJdCBqdXN0IHNtZWxscyBmdW5ueS4uLgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
