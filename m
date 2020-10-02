@@ -2,86 +2,61 @@ Return-Path: <SRS0=AZtF=DJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 98B39C46466
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 18:05:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C3CBC4363D
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 18:42:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1F974206DD
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 18:05:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8F14420758
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 18:42:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tD3MAeVm";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="RoyUTHTN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F974206DD
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RXy7UR3/"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F14420758
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GLluQhGl7atkJgz6osZvlMStcr3nFtrPOPBQ9Mybpcc=; b=tD3MAeVmmGQ6MmRE0yStirwsz
-	qDKcUT8Y8X4FrK0CEl5u/QlLaPsM0+NHCyMHSNGjizCkP817gLuhXMHEPY9TGiHu2RpXkDQmjNmtB
-	9QF2wZGwX7As5ujdW7NUQ5VrwW17sZeBzPy+Ahiz9Ivn/2iUnfMYf9ytlnxvkmyW0R0ulKj6PKMZg
-	8H6rEpTrgAFeaHu1HAgQPmRlbtUilvyR+Qu8pNRL2Or8UhwsX3GW3MVVM1aKcaTwYn05vUTirhJkt
-	h3k5YYnSUTV/pz1lueQB6SpCNYfWTx+Ujr3PMoSO/xy2G2WztoEhRODqc4KozzobwbPRHL6VhP/ul
-	wp0Rumz6g==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CThJ0BGmZbsNcuV26f0H44vQu6+2Fqo1qtodd0e1NtY=; b=RXy7UR3/JOWKjKyQHDvs017M6U
+	jjYQWKOpBPHXQKf5gweleWV8XAuTfCaCIirTJlPh+GMFHBVjxPe3OCZOLG2AylAEa/QOO3mWe32GA
+	sqFJZUiErbyGd7X4ZWUWuT/eIh/P3ee1IZzO+KHKISvE2k6lTzj6dPHjEVGjUs99Dz+EN4XEeBAjI
+	6HiQbePCw1OYVS0bOyBbdEkYLShgoMTrLXrRh7BGc6pilxUHCcNs8IDVkV3ZGqS/KeN5X3O7tlAJU
+	zWhVh79kWB0oU8FQsuAhU6Cw7MhNG207tRCklERYmY3I8A/9+LL5jZiYxy1fVFHtbETEp5zKY8pS2
+	O1+vD3pw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kOPQa-0008QB-Dn; Fri, 02 Oct 2020 18:05:08 +0000
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+	id 1kOQ0q-00047n-J7; Fri, 02 Oct 2020 18:42:36 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kOPQX-0008Oo-SV
- for linux-rockchip@lists.infradead.org; Fri, 02 Oct 2020 18:05:07 +0000
-Received: by mail-wr1-x442.google.com with SMTP id k10so2750524wru.6
- for <linux-rockchip@lists.infradead.org>; Fri, 02 Oct 2020 11:05:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=nAsVSdK/7E/mt3Oq7A35InRFZW35+phEzXg0tEKoM3E=;
- b=RoyUTHTN+MQaWVa1oL+ggEUiHJrt0jXB9juJNkrZmpVPsnzyomqBSiw9aTb98u4ct8
- 4gbNx0B18lhFeinSoQ5/Lf/Is46husNbuW9r2SIYlaiPK/bXtSzrymO+4wWzaa+BZGKB
- Ka6gAP8r0jtntAFfHsdOUll3NCZPa58Wf2iq4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=nAsVSdK/7E/mt3Oq7A35InRFZW35+phEzXg0tEKoM3E=;
- b=V4QbutK+Xds6o2DOf3jQ7kn9Ku+4ZIYVokp9+br+aDw+CNEtb1oytwd49R9AF/LXiq
- Yh4d3D6zUetm/PwsXcvTLknn9BAnrfhlJw5dMYHrb7lKaoqvziBJ7flpjCUMeC/L5qsv
- 8NTesYs/HR8gFrbynbeiC7pc5HpH0+44SE6zUIuWWX3VB6rBNF42CQzuuWjkw/2BjgTf
- 109c96/dtkTJOUAOxlsRchchIbm0zva/9RgyTAoPhG9Un32Q7l9sKwfK3FXmVhBJDvwn
- 44MzAQTO5osVOAiH6IoCxXS0QrbdPVBnToKHmX1tst+RTkkGd+rH3CKuGsONRyVRD02U
- 75wQ==
-X-Gm-Message-State: AOAM5307rWugXLHu1yWpum6wBk3vvKn0Yz+oClBSbXMSwNjeRUbkq2VE
- q+0rpWCrcHkPfYKDPQjAdzGMGw==
-X-Google-Smtp-Source: ABdhPJz81eHAkz0Pqdl3fYidIh3cTsK0B1hmHy8AkNXaM5ryIfRr9H9pfts0XTgN4zmYd73luhZ50Q==
-X-Received: by 2002:a5d:52ca:: with SMTP id r10mr4133433wrv.195.1601661904725; 
- Fri, 02 Oct 2020 11:05:04 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id c16sm2793734wrx.31.2020.10.02.11.05.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2020 11:05:03 -0700 (PDT)
-Date: Fri, 2 Oct 2020 20:05:00 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v3 6/7] drm/fb_helper: Support framebuffers in I/O memory
-Message-ID: <20201002180500.GM438822@phenom.ffwll.local>
-References: <20200929151437.19717-1-tzimmermann@suse.de>
- <20200929151437.19717-7-tzimmermann@suse.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200929151437.19717-7-tzimmermann@suse.de>
-X-Operating-System: Linux phenom 5.7.0-1-amd64 
+ id 1kOQ0n-00044z-Jf
+ for linux-rockchip@lists.infradead.org; Fri, 02 Oct 2020 18:42:34 +0000
+Received: from guri.fritz.box
+ (p200300c7cf13ec00987cfa6c93a91dfa.dip0.t-ipconnect.de
+ [IPv6:2003:c7:cf13:ec00:987c:fa6c:93a9:1dfa])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 46ABB29B258;
+ Fri,  2 Oct 2020 19:42:32 +0100 (BST)
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+To: linux-media@vger.kernel.org
+Subject: [PATCH 3/6] media: staging: rkisp1: initialize buffer lists only on
+ probe
+Date: Fri,  2 Oct 2020 20:42:19 +0200
+Message-Id: <20201002184222.7094-4-dafna.hirschfeld@collabora.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20201002184222.7094-1-dafna.hirschfeld@collabora.com>
+References: <20201002184222.7094-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201002_140505_959220_618296C8 
-X-CRM114-Status: GOOD (  41.02  )
+X-CRM114-CacheID: sfid-20201002_144233_778413_C7E64D4C 
+X-CRM114-Status: GOOD (  10.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,476 +69,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: luben.tuikov@amd.com, heiko@sntech.de, airlied@linux.ie,
- nouveau@lists.freedesktop.org, linus.walleij@linaro.org,
- dri-devel@lists.freedesktop.org, chris@chris-wilson.co.uk,
- melissa.srw@gmail.com, eric@anholt.net, ray.huang@amd.com, kraxel@redhat.com,
- sam@ravnborg.org, sumit.semwal@linaro.org, emil.velikov@collabora.com,
- robh@kernel.org, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
- lima@lists.freedesktop.org, oleksandr_andrushchenko@epam.com, krzk@kernel.org,
- steven.price@arm.com, linux-rockchip@lists.infradead.org, kgene@kernel.org,
- bskeggs@redhat.com, linux+etnaviv@armlinux.org.uk,
- spice-devel@lists.freedesktop.org, alyssa.rosenzweig@collabora.com,
- maarten.lankhorst@linux.intel.com, etnaviv@lists.freedesktop.org,
- mripard@kernel.org, inki.dae@samsung.com, hdegoede@redhat.com,
- christian.gmeiner@gmail.com, xen-devel@lists.xenproject.org,
- virtualization@lists.linux-foundation.org, sean@poorly.run, apaneers@amd.com,
- linux-arm-kernel@lists.infradead.org, linaro-mm-sig@lists.linaro.org,
- amd-gfx@lists.freedesktop.org, tomeu.vizoso@collabora.com,
- sw0312.kim@samsung.com, hjc@rock-chips.com, kyungmin.park@samsung.com,
- miaoqinglang@huawei.com, yuq825@gmail.com, daniel@ffwll.ch,
- alexander.deucher@amd.com, linux-media@vger.kernel.org,
- christian.koenig@amd.com, l.stach@pengutronix.de
+Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
+ tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
+ helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
+ sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 29, 2020 at 05:14:36PM +0200, Thomas Zimmermann wrote:
-> At least sparc64 requires I/O-specific access to framebuffers. This
-> patch updates the fbdev console accordingly.
-> 
-> For drivers with direct access to the framebuffer memory, the callback
-> functions in struct fb_ops test for the type of memory and call the rsp
-> fb_sys_ of fb_cfb_ functions.
-> 
-> For drivers that employ a shadow buffer, fbdev's blit function retrieves
-> the framebuffer address as struct dma_buf_map, and uses dma_buf_map
-> interfaces to access the buffer.
-> 
-> The bochs driver on sparc64 uses a workaround to flag the framebuffer as
-> I/O memory and avoid a HW exception. With the introduction of struct
-> dma_buf_map, this is not required any longer. The patch removes the rsp
-> code from both, bochs and fbdev.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> ---
->  drivers/gpu/drm/bochs/bochs_kms.c |   1 -
->  drivers/gpu/drm/drm_fb_helper.c   | 217 ++++++++++++++++++++++++++++--
->  include/drm/drm_mode_config.h     |  12 --
->  include/linux/dma-buf-map.h       |  72 ++++++++--
->  4 files changed, 265 insertions(+), 37 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bochs/bochs_kms.c b/drivers/gpu/drm/bochs/bochs_kms.c
-> index 13d0d04c4457..853081d186d5 100644
-> --- a/drivers/gpu/drm/bochs/bochs_kms.c
-> +++ b/drivers/gpu/drm/bochs/bochs_kms.c
-> @@ -151,7 +151,6 @@ int bochs_kms_init(struct bochs_device *bochs)
->  	bochs->dev->mode_config.preferred_depth = 24;
->  	bochs->dev->mode_config.prefer_shadow = 0;
->  	bochs->dev->mode_config.prefer_shadow_fbdev = 1;
-> -	bochs->dev->mode_config.fbdev_use_iomem = true;
->  	bochs->dev->mode_config.quirk_addfb_prefer_host_byte_order = true;
->  
->  	bochs->dev->mode_config.funcs = &bochs_mode_funcs;
-> diff --git a/drivers/gpu/drm/drm_fb_helper.c b/drivers/gpu/drm/drm_fb_helper.c
-> index 343a292f2c7c..f345a314a437 100644
-> --- a/drivers/gpu/drm/drm_fb_helper.c
-> +++ b/drivers/gpu/drm/drm_fb_helper.c
-> @@ -388,24 +388,22 @@ static void drm_fb_helper_resume_worker(struct work_struct *work)
->  }
->  
->  static void drm_fb_helper_dirty_blit_real(struct drm_fb_helper *fb_helper,
-> -					  struct drm_clip_rect *clip)
-> +					  struct drm_clip_rect *clip,
-> +					  struct dma_buf_map *dst)
->  {
->  	struct drm_framebuffer *fb = fb_helper->fb;
->  	unsigned int cpp = fb->format->cpp[0];
->  	size_t offset = clip->y1 * fb->pitches[0] + clip->x1 * cpp;
->  	void *src = fb_helper->fbdev->screen_buffer + offset;
-> -	void *dst = fb_helper->buffer->map.vaddr + offset;
->  	size_t len = (clip->x2 - clip->x1) * cpp;
->  	unsigned int y;
->  
-> -	for (y = clip->y1; y < clip->y2; y++) {
-> -		if (!fb_helper->dev->mode_config.fbdev_use_iomem)
-> -			memcpy(dst, src, len);
-> -		else
-> -			memcpy_toio((void __iomem *)dst, src, len);
-> +	dma_buf_map_incr(dst, offset); /* go to first pixel within clip rect */
->  
-> +	for (y = clip->y1; y < clip->y2; y++) {
-> +		dma_buf_map_memcpy_to(dst, src, len);
-> +		dma_buf_map_incr(dst, fb->pitches[0]);
->  		src += fb->pitches[0];
-> -		dst += fb->pitches[0];
->  	}
->  }
->  
-> @@ -433,8 +431,9 @@ static void drm_fb_helper_dirty_work(struct work_struct *work)
->  			ret = drm_client_buffer_vmap(helper->buffer, &map);
->  			if (ret)
->  				return;
-> -			drm_fb_helper_dirty_blit_real(helper, &clip_copy);
-> +			drm_fb_helper_dirty_blit_real(helper, &clip_copy, &map);
->  		}
-> +
->  		if (helper->fb->funcs->dirty)
->  			helper->fb->funcs->dirty(helper->fb, NULL, 0, 0,
->  						 &clip_copy, 1);
-> @@ -771,6 +770,136 @@ void drm_fb_helper_sys_imageblit(struct fb_info *info,
->  }
->  EXPORT_SYMBOL(drm_fb_helper_sys_imageblit);
->  
-> +static ssize_t drm_fb_helper_cfb_read(struct fb_info *info, char __user *buf,
-> +				      size_t count, loff_t *ppos)
-> +{
-> +	unsigned long p = *ppos;
-> +	u8 *dst;
-> +	u8 __iomem *src;
-> +	int c, err = 0;
-> +	unsigned long total_size;
-> +	unsigned long alloc_size;
-> +	ssize_t ret = 0;
-> +
-> +	if (info->state != FBINFO_STATE_RUNNING)
-> +		return -EPERM;
-> +
-> +	total_size = info->screen_size;
-> +
-> +	if (total_size == 0)
-> +		total_size = info->fix.smem_len;
-> +
-> +	if (p >= total_size)
-> +		return 0;
-> +
-> +	if (count >= total_size)
-> +		count = total_size;
-> +
-> +	if (count + p > total_size)
-> +		count = total_size - p;
-> +
-> +	src = (u8 __iomem *)(info->screen_base + p);
-> +
-> +	alloc_size = min(count, PAGE_SIZE);
-> +
-> +	dst = kmalloc(alloc_size, GFP_KERNEL);
-> +	if (!dst)
-> +		return -ENOMEM;
-> +
-> +	while (count) {
-> +		c = min(count, alloc_size);
-> +
-> +		memcpy_fromio(dst, src, c);
-> +		if (copy_to_user(buf, dst, c)) {
-> +			err = -EFAULT;
-> +			break;
-> +		}
-> +
-> +		src += c;
-> +		*ppos += c;
-> +		buf += c;
-> +		ret += c;
-> +		count -= c;
-> +	}
-> +
-> +	kfree(dst);
-> +
-> +	if (err)
-> +		return err;
-> +
-> +	return ret;
-> +}
-> +
-> +static ssize_t drm_fb_helper_cfb_write(struct fb_info *info, const char __user *buf,
-> +				       size_t count, loff_t *ppos)
-> +{
-> +	unsigned long p = *ppos;
-> +	u8 *src;
-> +	u8 __iomem *dst;
-> +	int c, err = 0;
-> +	unsigned long total_size;
-> +	unsigned long alloc_size;
-> +	ssize_t ret = 0;
-> +
-> +	if (info->state != FBINFO_STATE_RUNNING)
-> +		return -EPERM;
-> +
-> +	total_size = info->screen_size;
-> +
-> +	if (total_size == 0)
-> +		total_size = info->fix.smem_len;
-> +
-> +	if (p > total_size)
-> +		return -EFBIG;
-> +
-> +	if (count > total_size) {
-> +		err = -EFBIG;
-> +		count = total_size;
-> +	}
-> +
-> +	if (count + p > total_size) {
-> +		/*
-> +		 * The framebuffer is too small. We do the
-> +		 * copy operation, but return an error code
-> +		 * afterwards. Taken from fbdev.
-> +		 */
-> +		if (!err)
-> +			err = -ENOSPC;
-> +		count = total_size - p;
-> +	}
-> +
-> +	alloc_size = min(count, PAGE_SIZE);
-> +
-> +	src = kmalloc(alloc_size, GFP_KERNEL);
-> +	if (!src)
-> +		return -ENOMEM;
-> +
-> +	dst = (u8 __iomem *)(info->screen_base + p);
-> +
-> +	while (count) {
-> +		c = min(count, alloc_size);
-> +
-> +		if (copy_from_user(src, buf, c)) {
-> +			err = -EFAULT;
-> +			break;
-> +		}
-> +		memcpy_toio(dst, src, c);
-> +
-> +		dst += c;
-> +		*ppos += c;
-> +		buf += c;
-> +		ret += c;
-> +		count -= c;
-> +	}
-> +
-> +	kfree(src);
-> +
-> +	if (err)
-> +		return err;
-> +
-> +	return ret;
-> +}
-> +
->  /**
->   * drm_fb_helper_cfb_fillrect - wrapper around cfb_fillrect
->   * @info: fbdev registered by the helper
-> @@ -2043,6 +2172,66 @@ static int drm_fbdev_fb_mmap(struct fb_info *info, struct vm_area_struct *vma)
->  		return -ENODEV;
->  }
->  
-> +static ssize_t drm_fbdev_fb_read(struct fb_info *info, char __user *buf,
-> +				 size_t count, loff_t *ppos)
-> +{
-> +	struct drm_fb_helper *fb_helper = info->par;
-> +	struct drm_client_buffer *buffer = fb_helper->buffer;
-> +
-> +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-> +		return drm_fb_helper_sys_read(info, buf, count, ppos);
-> +	else
-> +		return drm_fb_helper_cfb_read(info, buf, count, ppos);
-> +}
-> +
-> +static ssize_t drm_fbdev_fb_write(struct fb_info *info, const char __user *buf,
-> +				  size_t count, loff_t *ppos)
-> +{
-> +	struct drm_fb_helper *fb_helper = info->par;
-> +	struct drm_client_buffer *buffer = fb_helper->buffer;
-> +
-> +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-> +		return drm_fb_helper_sys_write(info, buf, count, ppos);
-> +	else
-> +		return drm_fb_helper_cfb_write(info, buf, count, ppos);
-> +}
-> +
-> +static void drm_fbdev_fb_fillrect(struct fb_info *info,
-> +				  const struct fb_fillrect *rect)
-> +{
-> +	struct drm_fb_helper *fb_helper = info->par;
-> +	struct drm_client_buffer *buffer = fb_helper->buffer;
-> +
-> +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-> +		drm_fb_helper_sys_fillrect(info, rect);
-> +	else
-> +		drm_fb_helper_cfb_fillrect(info, rect);
-> +}
-> +
-> +static void drm_fbdev_fb_copyarea(struct fb_info *info,
-> +				  const struct fb_copyarea *area)
-> +{
-> +	struct drm_fb_helper *fb_helper = info->par;
-> +	struct drm_client_buffer *buffer = fb_helper->buffer;
-> +
-> +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-> +		drm_fb_helper_sys_copyarea(info, area);
-> +	else
-> +		drm_fb_helper_cfb_copyarea(info, area);
-> +}
-> +
-> +static void drm_fbdev_fb_imageblit(struct fb_info *info,
-> +				   const struct fb_image *image)
-> +{
-> +	struct drm_fb_helper *fb_helper = info->par;
-> +	struct drm_client_buffer *buffer = fb_helper->buffer;
-> +
-> +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-> +		drm_fb_helper_sys_imageblit(info, image);
-> +	else
-> +		drm_fb_helper_cfb_imageblit(info, image);
-> +}
+The buffer lists of stats and params entities
+are initialized in queue_setup callback with
+'INIT_LIST_HEAD'. It is enough to initialize
+the lists only upon registration.
+For the stats entity the list is already
+initialize upon registration.
 
-I think a todo to make the new generic functions the real ones, and
-drivers not using the sys/cfb ones anymore would be a good addition.
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+ drivers/staging/media/rkisp1/rkisp1-params.c | 4 +---
+ drivers/staging/media/rkisp1/rkisp1-stats.c  | 4 ----
+ 2 files changed, 1 insertion(+), 7 deletions(-)
 
-> +
->  static const struct fb_ops drm_fbdev_fb_ops = {
->  	.owner		= THIS_MODULE,
->  	DRM_FB_HELPER_DEFAULT_OPS,
-> @@ -2050,11 +2239,11 @@ static const struct fb_ops drm_fbdev_fb_ops = {
->  	.fb_release	= drm_fbdev_fb_release,
->  	.fb_destroy	= drm_fbdev_fb_destroy,
->  	.fb_mmap	= drm_fbdev_fb_mmap,
-> -	.fb_read	= drm_fb_helper_sys_read,
-> -	.fb_write	= drm_fb_helper_sys_write,
-> -	.fb_fillrect	= drm_fb_helper_sys_fillrect,
-> -	.fb_copyarea	= drm_fb_helper_sys_copyarea,
-> -	.fb_imageblit	= drm_fb_helper_sys_imageblit,
-> +	.fb_read	= drm_fbdev_fb_read,
-> +	.fb_write	= drm_fbdev_fb_write,
-> +	.fb_fillrect	= drm_fbdev_fb_fillrect,
-> +	.fb_copyarea	= drm_fbdev_fb_copyarea,
-> +	.fb_imageblit	= drm_fbdev_fb_imageblit,
->  };
->  
->  static struct fb_deferred_io drm_fbdev_defio = {
-> diff --git a/include/drm/drm_mode_config.h b/include/drm/drm_mode_config.h
-> index 5ffbb4ed5b35..ab424ddd7665 100644
-> --- a/include/drm/drm_mode_config.h
-> +++ b/include/drm/drm_mode_config.h
-> @@ -877,18 +877,6 @@ struct drm_mode_config {
->  	 */
->  	bool prefer_shadow_fbdev;
->  
-> -	/**
-> -	 * @fbdev_use_iomem:
-> -	 *
-> -	 * Set to true if framebuffer reside in iomem.
-> -	 * When set to true memcpy_toio() is used when copying the framebuffer in
-> -	 * drm_fb_helper.drm_fb_helper_dirty_blit_real().
-> -	 *
-> -	 * FIXME: This should be replaced with a per-mapping is_iomem
-> -	 * flag (like ttm does), and then used everywhere in fbdev code.
-> -	 */
-> -	bool fbdev_use_iomem;
-> -
->  	/**
->  	 * @quirk_addfb_prefer_xbgr_30bpp:
->  	 *
-> diff --git a/include/linux/dma-buf-map.h b/include/linux/dma-buf-map.h
-
-I think the below should be split out as a prep patch.
-
-> index 2e8bbecb5091..6ca0f304dda2 100644
-> --- a/include/linux/dma-buf-map.h
-> +++ b/include/linux/dma-buf-map.h
-> @@ -32,6 +32,14 @@
->   * accessing the buffer. Use the returned instance and the helper functions
->   * to access the buffer's memory in the correct way.
->   *
-> + * The type :c:type:`struct dma_buf_map <dma_buf_map>` and its helpers are
-> + * actually independent from the dma-buf infrastructure. When sharing buffers
-> + * among devices, drivers have to know the location of the memory to access
-> + * the buffers in a safe way. :c:type:`struct dma_buf_map <dma_buf_map>`
-> + * solves this problem for dma-buf and its users. If other drivers or
-> + * sub-systems require similar functionality, the type could be generalized
-> + * and moved to a more prominent header file.
-> + *
->   * Open-coding access to :c:type:`struct dma_buf_map <dma_buf_map>` is
->   * considered bad style. Rather then accessing its fields directly, use one
->   * of the provided helper functions, or implement your own. For example,
-> @@ -51,6 +59,14 @@
->   *
->   *	dma_buf_map_set_vaddr_iomem(&map. 0xdeadbeaf);
->   *
-> + * Instances of struct dma_buf_map do not have to be cleaned up, but
-> + * can be cleared to NULL with dma_buf_map_clear(). Cleared mappings
-> + * always refer to system memory.
-> + *
-> + * .. code-block:: c
-> + *
-> + *	dma_buf_map_clear(&map);
-> + *
->   * Test if a mapping is valid with either dma_buf_map_is_set() or
->   * dma_buf_map_is_null().
->   *
-> @@ -73,17 +89,19 @@
->   *	if (dma_buf_map_is_equal(&sys_map, &io_map))
->   *		// always false
->   *
-> - * Instances of struct dma_buf_map do not have to be cleaned up, but
-> - * can be cleared to NULL with dma_buf_map_clear(). Cleared mappings
-> - * always refer to system memory.
-> + * A set up instance of struct dma_buf_map can be used to access or manipulate
-> + * the buffer memory. Depending on the location of the memory, the provided
-> + * helpers will pick the correct operations. Data can be copied into the memory
-> + * with dma_buf_map_memcpy_to(). The address can be manipulated with
-> + * dma_buf_map_incr().
->   *
-> - * The type :c:type:`struct dma_buf_map <dma_buf_map>` and its helpers are
-> - * actually independent from the dma-buf infrastructure. When sharing buffers
-> - * among devices, drivers have to know the location of the memory to access
-> - * the buffers in a safe way. :c:type:`struct dma_buf_map <dma_buf_map>`
-> - * solves this problem for dma-buf and its users. If other drivers or
-> - * sub-systems require similar functionality, the type could be generalized
-> - * and moved to a more prominent header file.
-> + * .. code-block:: c
-> + *
-> + *	const void *src = ...; // source buffer
-> + *	size_t len = ...; // length of src
-> + *
-> + *	dma_buf_map_memcpy_to(&map, src, len);
-> + *	dma_buf_map_incr(&map, len); // go to first byte after the memcpy
->   */
->  
->  /**
-> @@ -210,4 +228,38 @@ static inline void dma_buf_map_clear(struct dma_buf_map *map)
->  	}
->  }
->  
-> +/**
-> + * dma_buf_map_memcpy_to - Memcpy into dma-buf mapping
-> + * @dst:	The dma-buf mapping structure
-> + * @src:	The source buffer
-> + * @len:	The number of byte in src
-> + *
-> + * Copies data into a dma-buf mapping. The source buffer is in system
-> + * memory. Depending on the buffer's location, the helper picks the correct
-> + * method of accessing the memory.
-> + */
-> +static inline void dma_buf_map_memcpy_to(struct dma_buf_map *dst, const void *src, size_t len)
-> +{
-> +	if (dst->is_iomem)
-> +		memcpy_toio(dst->vaddr_iomem, src, len);
-> +	else
-> +		memcpy(dst->vaddr, src, len);
-> +}
-> +
-> +/**
-> + * dma_buf_map_incr - Increments the address stored in a dma-buf mapping
-> + * @map:	The dma-buf mapping structure
-> + * @incr:	The number of bytes to increment
-> + *
-> + * Increments the address stored in a dma-buf mapping. Depending on the
-> + * buffer's location, the correct value will be updated.
-> + */
-> +static inline void dma_buf_map_incr(struct dma_buf_map *map, size_t incr)
-> +{
-> +	if (map->is_iomem)
-> +		map->vaddr_iomem += incr;
-> +	else
-> +		map->vaddr += incr;
-> +}
-> +
->  #endif /* __DMA_BUF_MAP_H__ */
-> -- 
-> 2.28.0
-> 
-
+diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+index cb9f3332a9a0..aa758f8c2264 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-params.c
++++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+@@ -1420,8 +1420,6 @@ static int rkisp1_params_vb2_queue_setup(struct vb2_queue *vq,
+ 					 unsigned int sizes[],
+ 					 struct device *alloc_devs[])
+ {
+-	struct rkisp1_params *params = vq->drv_priv;
+-
+ 	*num_buffers = clamp_t(u32, *num_buffers,
+ 			       RKISP1_ISP_PARAMS_REQ_BUFS_MIN,
+ 			       RKISP1_ISP_PARAMS_REQ_BUFS_MAX);
+@@ -1430,7 +1428,6 @@ static int rkisp1_params_vb2_queue_setup(struct vb2_queue *vq,
+ 
+ 	sizes[0] = sizeof(struct rkisp1_params_cfg);
+ 
+-	INIT_LIST_HEAD(&params->params);
+ 	return 0;
+ }
+ 
+@@ -1545,6 +1542,7 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
+ 
+ 	params->rkisp1 = rkisp1;
+ 	mutex_init(&node->vlock);
++	INIT_LIST_HEAD(&params->params);
+ 	spin_lock_init(&params->config_lock);
+ 
+ 	strscpy(vdev->name, RKISP1_PARAMS_DEV_NAME, sizeof(vdev->name));
+diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
+index 51c64f75fe29..c58ae52b8a98 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-stats.c
++++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
+@@ -94,8 +94,6 @@ static int rkisp1_stats_vb2_queue_setup(struct vb2_queue *vq,
+ 					unsigned int sizes[],
+ 					struct device *alloc_devs[])
+ {
+-	struct rkisp1_stats *stats = vq->drv_priv;
+-
+ 	*num_planes = 1;
+ 
+ 	*num_buffers = clamp_t(u32, *num_buffers, RKISP1_ISP_STATS_REQ_BUFS_MIN,
+@@ -103,8 +101,6 @@ static int rkisp1_stats_vb2_queue_setup(struct vb2_queue *vq,
+ 
+ 	sizes[0] = sizeof(struct rkisp1_stat_buffer);
+ 
+-	INIT_LIST_HEAD(&stats->stat);
+-
+ 	return 0;
+ }
+ 
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+2.17.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
