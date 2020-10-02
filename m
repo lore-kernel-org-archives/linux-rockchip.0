@@ -5,20 +5,20 @@ X-Spam-Level:
 X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 89513C46466
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 18:46:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 610A7C4363D
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 19:27:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 28FCF20758
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 18:46:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D4E4E206DD
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 19:27:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pL7++9vy";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="LhoHpieZ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 28FCF20758
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M0hUoza3";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="BjBgaPnP"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D4E4E206DD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,63 +26,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=N/pcRHZl1C3KtFCwdNMy7fCl3iaC2akSIWJkPrnxX6Y=; b=pL7++9vyMlThN5S0wk57syJjA
-	eHZ5/ehwxDvWXU90NPCI+j70L1I1MNFYu8XzgX9yMtt1Nqx36CkhViw/yU0OZgaJVW03Beq1KYVLu
-	034r6PRGPYCxCk16wve0vLsFd+rGoyQ/bJPqKI4fQMUdm+1fLl/53vyIRNkKsmbdBZLhCOYcHV5NR
-	n2y1Q87Vs2fMMiidKdUpRoTzi5CclGcnZ8CCNnAcNiNYgaKNiqwa4EZYLGRhl5afDAAGvU/st6ljH
-	xYg290WZtyeT48KPyn9/Liw41kP7Hi5xzgTRBrixnl3G9L4oZ6ebP4V1+bsm4sqlZwceMcHxUPd0Y
-	EsnR75/Ag==;
+	 bh=9z+C/a+TukTQMHWHO5eGEnV/MzfCyzOF/zkPiXegY4M=; b=M0hUoza3nDVxtUbofh1cDXIFz
+	Nj2yYOEX97D+HkhKZcnWOujFFsotYNEqVHpQhcOOtrZKOsdPEv3BwDynDfmGWDOtU8Lmp7qmcwIGu
+	X/xSrjy9BDrdWRusZZj6I8jWiyVGRkEzv/t73Cf5iFUUMWJzmY57bl9LE161HMwwDFLNPEzw9DhFs
+	DojQeYOTjaJXGjQK3KlqrAagtA/uA/z0Kp4JNqGB9SS+p1ifS6scL/JRCcjzm65rtMvMuHYvo0YoR
+	j874GbVtMxqt2uKbnmgKCL48ojEnfw9i0hnrAye80QdvPtsavN0LxAz3aWHP2SKnkz+y0YV96oZUh
+	XGGQOmJ0w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kOQ4B-0004VN-Sc; Fri, 02 Oct 2020 18:46:03 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1kOQiE-0001lI-DO; Fri, 02 Oct 2020 19:27:26 +0000
+Received: from perceval.ideasonboard.com
+ ([2001:4b98:dc2:55:216:3eff:fef7:d647])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kOQ49-0004UR-1j
- for linux-rockchip@lists.infradead.org; Fri, 02 Oct 2020 18:46:02 +0000
-Received: by mail-wr1-x444.google.com with SMTP id z4so2862547wrr.4
- for <linux-rockchip@lists.infradead.org>; Fri, 02 Oct 2020 11:46:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=cqLPfUuqb60ZIVoOQ31hnraU/Ifr39O5/ULDkN9IWmw=;
- b=LhoHpieZ6b1yu3Bgv5UVyYwE5gEJCucfXpQtCsua7dxm7nPU5GPxUoM22UNQQ6v2CK
- k0Y2QqxCtl6jlPSAgvR23+rIu6KvQsYlEl3KTS7hhk4KmBbGsS7srplNima8l2683HV3
- M+RegCjSI+WIRGmRnHJIv+DYHNTbkSdc4/ZqA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=cqLPfUuqb60ZIVoOQ31hnraU/Ifr39O5/ULDkN9IWmw=;
- b=bsG3j9iTJu3Gp9U5BfV8PQP7TZjcvzLWgciLjcN0icxEyTrJEYDlFMs6JWEtC7JSKI
- 9jdxC10jgGNOYKniOs8ba1aUB9AXL0XDub8o37KhoG16JR2pXVOI8xQXGOTnIinNkec2
- CbXjaNt0suFMR8DCWsmFL9F0o1Te042om7R0Md+BXf+8xVGB1OivCetfMhAp+gLyRCE0
- ZmX3v6nRq1Uad4PioGkxG7F4F3skPRQMBeMrXQvO9etsFnLXEUQLR27I4iHqNBF9gVhq
- JFNz57HgOE+tdtK5fEzi4RKq00RbJWsMMtVHtke8uwU80hg2J5VhdY02H8IcnxNrxy+p
- o5aA==
-X-Gm-Message-State: AOAM531/mF5FnM6iQfjQ/mqfQORD+7eaBlhuraEKjSyVnD3Tu6X356mi
- DQl1gcDrsKP7/RZf1bu4GVqLzA==
-X-Google-Smtp-Source: ABdhPJzgHPhBsD8FZtMDQrfMIjGL4qmZj/8xNAuAHXm+0qz5n2h6pVB3S7OCKNZbK4qjctoXq1cGGA==
-X-Received: by 2002:a5d:40cd:: with SMTP id b13mr4528517wrq.297.1601664359823; 
- Fri, 02 Oct 2020 11:45:59 -0700 (PDT)
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
- by smtp.gmail.com with ESMTPSA id n2sm2937452wma.29.2020.10.02.11.45.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2020 11:45:57 -0700 (PDT)
-Date: Fri, 2 Oct 2020 20:45:54 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v3 7/7] drm/todo: Update entries around struct dma_buf_map
-Message-ID: <20201002184554.GN438822@phenom.ffwll.local>
-References: <20200929151437.19717-1-tzimmermann@suse.de>
- <20200929151437.19717-8-tzimmermann@suse.de>
+ id 1kOQiB-0001jg-WA
+ for linux-rockchip@lists.infradead.org; Fri, 02 Oct 2020 19:27:24 +0000
+Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
+ [62.78.145.57])
+ by perceval.ideasonboard.com (Postfix) with ESMTPSA id DE3182A2;
+ Fri,  2 Oct 2020 21:27:19 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+ s=mail; t=1601666840;
+ bh=cmo0Ui1cTTW5EkjJwBRgGy1Vl56HrIU+LdP8JmauseA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=BjBgaPnPJyIaTs+wz7WtnLDui0MLxxrZM6ZF8UO25bOFwPMR5nDWibSs/6mMVdDxd
+ heYHOGcI43BpV6eEFYcd9B3xWOyOdUMx5HnogX1qIDFjPl9BXyh3pPo/rXVgdatauO
+ W0zgOie5NllnmKhbLVYDBoD60gkRzPqT8AvHYKpg=
+Date: Fri, 2 Oct 2020 22:26:42 +0300
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH 6/6] media: staging: rkisp1: cap: add warning when link
+ validation fails
+Message-ID: <20201002192642.GG3933@pendragon.ideasonboard.com>
+References: <20201002184222.7094-1-dafna.hirschfeld@collabora.com>
+ <20201002184222.7094-7-dafna.hirschfeld@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20200929151437.19717-8-tzimmermann@suse.de>
-X-Operating-System: Linux phenom 5.7.0-1-amd64 
+In-Reply-To: <20201002184222.7094-7-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201002_144601_119706_92B3F4CC 
-X-CRM114-Status: GOOD (  20.89  )
+X-CRM114-CacheID: sfid-20201002_152724_141947_DB502A82 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,113 +77,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: luben.tuikov@amd.com, heiko@sntech.de, airlied@linux.ie,
- nouveau@lists.freedesktop.org, linus.walleij@linaro.org,
- dri-devel@lists.freedesktop.org, chris@chris-wilson.co.uk,
- melissa.srw@gmail.com, eric@anholt.net, ray.huang@amd.com, kraxel@redhat.com,
- sam@ravnborg.org, sumit.semwal@linaro.org, emil.velikov@collabora.com,
- robh@kernel.org, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
- lima@lists.freedesktop.org, oleksandr_andrushchenko@epam.com, krzk@kernel.org,
- steven.price@arm.com, linux-rockchip@lists.infradead.org, kgene@kernel.org,
- bskeggs@redhat.com, linux+etnaviv@armlinux.org.uk,
- spice-devel@lists.freedesktop.org, alyssa.rosenzweig@collabora.com,
- maarten.lankhorst@linux.intel.com, etnaviv@lists.freedesktop.org,
- mripard@kernel.org, inki.dae@samsung.com, hdegoede@redhat.com,
- christian.gmeiner@gmail.com, xen-devel@lists.xenproject.org,
- virtualization@lists.linux-foundation.org, sean@poorly.run, apaneers@amd.com,
- linux-arm-kernel@lists.infradead.org, linaro-mm-sig@lists.linaro.org,
- amd-gfx@lists.freedesktop.org, tomeu.vizoso@collabora.com,
- sw0312.kim@samsung.com, hjc@rock-chips.com, kyungmin.park@samsung.com,
- miaoqinglang@huawei.com, yuq825@gmail.com, daniel@ffwll.ch,
- alexander.deucher@amd.com, linux-media@vger.kernel.org,
- christian.koenig@amd.com, l.stach@pengutronix.de
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
+ hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
+ helen.koike@collabora.com, sakari.ailus@linux.intel.com, kernel@collabora.com,
+ ezequiel@collabora.com, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 29, 2020 at 05:14:37PM +0200, Thomas Zimmermann wrote:
-> Instances of struct dma_buf_map should be useful throughout DRM's
-> memory management code. Furthermore, several drivers can now use
-> generic fbdev emulation.
-> =
+Hi Dafna,
 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Thank you for the patch.
 
-Acked-by: Daniel Vetter <daniel.vetter@ffwll.ch>
-
+On Fri, Oct 02, 2020 at 08:42:22PM +0200, Dafna Hirschfeld wrote:
+> The link validation between the capture and resizer might
+> fail because of various reasons. Add an informative warning
+> to make it easier to debug.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 > ---
->  Documentation/gpu/todo.rst | 24 ++++++++++++++++++++++--
->  1 file changed, 22 insertions(+), 2 deletions(-)
-> =
+>  drivers/staging/media/rkisp1/rkisp1-capture.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> index 9b4a12e13f13..75321280ebf0 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> @@ -1269,8 +1269,16 @@ static int rkisp1_capture_link_validate(struct media_link *link)
+>  
+>  	if (sd_fmt.format.height != cap->pix.fmt.height ||
+>  	    sd_fmt.format.width != cap->pix.fmt.width ||
+> -	    sd_fmt.format.code != fmt->mbus)
+> +	    sd_fmt.format.code != fmt->mbus) {
+> +		dev_warn(cap->rkisp1->dev,
 
-> diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
-> index 3751ac976c3e..023626c1837b 100644
-> --- a/Documentation/gpu/todo.rst
-> +++ b/Documentation/gpu/todo.rst
-> @@ -197,8 +197,10 @@ Convert drivers to use drm_fbdev_generic_setup()
->  ------------------------------------------------
->  =
+I'd make this dev_dbg().
 
->  Most drivers can use drm_fbdev_generic_setup(). Driver have to implement
-> -atomic modesetting and GEM vmap support. Current generic fbdev emulation
-> -expects the framebuffer in system memory (or system-like memory).
-> +atomic modesetting and GEM vmap support. Historically, generic fbdev emu=
-lation
-> +expected the framebuffer in system memory or system-like memory. By empl=
-oying
-> +struct dma_buf_map, drivers with frambuffers in I/O memory can be suppor=
-ted
-> +as well.
->  =
+> +			 "%s: failed for '%s' sd:cap: height %u:%u, width %u:%u mbus: 0x%x:0x%x\n",
+> +			 __func__,
+> +			 cap->vnode.vdev.name,
+> +			 sd_fmt.format.height, cap->pix.fmt.height,
+> +			 sd_fmt.format.width, cap->pix.fmt.width,
+> +			 sd_fmt.format.code, fmt->mbus);
+>  		return -EPIPE;
+> +	}
+>  
+>  	return 0;
+>  }
 
->  Contact: Maintainer of the driver you plan to convert
->  =
+-- 
+Regards,
 
-> @@ -446,6 +448,24 @@ Contact: Ville Syrj=E4l=E4, Daniel Vetter
->  =
-
->  Level: Intermediate
->  =
-
-> +Use struct dma_buf_map throughout codebase
-> +------------------------------------------
-> +
-> +Pointers to shared device memory are stored in struct dma_buf_map. Each
-> +instance knows whether it refers to system or I/O memory. Most of the DR=
-M-wide
-> +interface have been converted to use struct dma_buf_map, but implementat=
-ions
-> +often still use raw pointers.
-> +
-> +The task is to use struct dma_buf_map where it makes sense.
-> +
-> +* Memory managers should use struct dma_buf_map for dma-buf-imported buf=
-fers.
-> +* TTM might benefit from using struct dma_buf_map internally.
-> +* Framebuffer copying and blitting helpers should operate on struct dma_=
-buf_map.
-> +
-> +Contact: Thomas Zimmermann <tzimmermann@suse.de>, Christian K=F6nig, Dan=
-iel Vetter
-> +
-> +Level: Intermediate
-> +
->  =
-
->  Core refactorings
->  =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> -- =
-
-> 2.28.0
-> =
-
-
--- =
-
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
