@@ -7,80 +7,81 @@ X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AD7D8C35257
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 17:35:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 98B39C46466
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 18:05:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ECA3820795
-	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 17:35:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1F974206DD
+	for <linux-rockchip@archiver.kernel.org>; Fri,  2 Oct 2020 18:05:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mrIlGsgP";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=vanguardiasur-com-ar.20150623.gappssmtp.com header.i=@vanguardiasur-com-ar.20150623.gappssmtp.com header.b="x6Ro0Q2q"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ECA3820795
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tD3MAeVm";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=ffwll.ch header.i=@ffwll.ch header.b="RoyUTHTN"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1F974206DD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ffwll.ch
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6uQsiKfZ9oddgW5nZ1p1VDdIA2+asMlX4libzZ+zAFQ=; b=mrIlGsgPf0HGPTYf1+DtZ0rdN
-	68AQL8CH9O9zUJ38u6swe7o7H5nKvhweUh9UAW8j9d4fHNOdc4l31VkVq9dYgmJwkLxVV5bpD7W/W
-	7qm44r9x+4A61ZhDbfFyUh6JresxTSFv1B9X2lIEMZZX+c6S8K02DZw42JapdTRcXE3blf1AxF2Bz
-	MkbfK67hfC0rKTELy0uBt3xz/H9qk2P1VRAgj2ETq7H5zvbJGcOuUOPNLLmDplkqn9TMsvVmGjTFA
-	blfReFwyRj5lqNZEM+LJtpcqFyYH2zT4cmHuN4OParTxpIlYAWZ1YMkImQXnL45jZIsD2DJ1tHJ78
-	1yB9LyvPw==;
+	 bh=GLluQhGl7atkJgz6osZvlMStcr3nFtrPOPBQ9Mybpcc=; b=tD3MAeVmmGQ6MmRE0yStirwsz
+	qDKcUT8Y8X4FrK0CEl5u/QlLaPsM0+NHCyMHSNGjizCkP817gLuhXMHEPY9TGiHu2RpXkDQmjNmtB
+	9QF2wZGwX7As5ujdW7NUQ5VrwW17sZeBzPy+Ahiz9Ivn/2iUnfMYf9ytlnxvkmyW0R0ulKj6PKMZg
+	8H6rEpTrgAFeaHu1HAgQPmRlbtUilvyR+Qu8pNRL2Or8UhwsX3GW3MVVM1aKcaTwYn05vUTirhJkt
+	h3k5YYnSUTV/pz1lueQB6SpCNYfWTx+Ujr3PMoSO/xy2G2WztoEhRODqc4KozzobwbPRHL6VhP/ul
+	wp0Rumz6g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kOOyF-0005T2-NE; Fri, 02 Oct 2020 17:35:51 +0000
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
+	id 1kOPQa-0008QB-Dn; Fri, 02 Oct 2020 18:05:08 +0000
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kOOy8-0005QE-11
- for linux-rockchip@lists.infradead.org; Fri, 02 Oct 2020 17:35:47 +0000
-Received: by mail-ej1-x644.google.com with SMTP id a3so3051213ejy.11
- for <linux-rockchip@lists.infradead.org>; Fri, 02 Oct 2020 10:35:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uIpmjFIKk/SzpIzf6L6JcayaR/JaTbT/C3aYGe5VEyQ=;
- b=x6Ro0Q2q+phxRBjbSSV3xQVoCRi2aE4+DD1jXC7ddq/phkhXqJqLaGzNmL6nYYimEa
- wagV8DZHTix1ff30ETkwkeHpvvk++6NJ3xmQvyA4ySt9bkUz8hHJAVX6/k9qI0XPnCPt
- MXA4nooj6FuhABFJyXGDEuPFsSutDeqjsumvOWu6mgf/bHx+7z/AlCnByeX97MEfxq18
- /e8z99NJYHx85E68bqBza9QhFf9TEsFrY6/0TB6BCJu8nCb44Ixkeln40h8bcIFwyDhw
- ku5V/fymCguLc3Jmx4oamIzp6N72qURkAC1/AjkQUrpe3WLNgf6PaKjc7Dfi/HPwgoNp
- bRVA==
+ id 1kOPQX-0008Oo-SV
+ for linux-rockchip@lists.infradead.org; Fri, 02 Oct 2020 18:05:07 +0000
+Received: by mail-wr1-x442.google.com with SMTP id k10so2750524wru.6
+ for <linux-rockchip@lists.infradead.org>; Fri, 02 Oct 2020 11:05:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ffwll.ch; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=nAsVSdK/7E/mt3Oq7A35InRFZW35+phEzXg0tEKoM3E=;
+ b=RoyUTHTN+MQaWVa1oL+ggEUiHJrt0jXB9juJNkrZmpVPsnzyomqBSiw9aTb98u4ct8
+ 4gbNx0B18lhFeinSoQ5/Lf/Is46husNbuW9r2SIYlaiPK/bXtSzrymO+4wWzaa+BZGKB
+ Ka6gAP8r0jtntAFfHsdOUll3NCZPa58Wf2iq4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uIpmjFIKk/SzpIzf6L6JcayaR/JaTbT/C3aYGe5VEyQ=;
- b=YVhU7GNNR7CbaJAMXCJ+eQFq4Y8guptNZZIZBki7PZYtK+hmQZ/8o/c1anlxQy1bSJ
- wHQZL1lZn0VgaNjpSCYPlZz7GEc5mjwlJZ//x3OQ0JnmW+NhcQswxgYGSPqFjuDaIyxY
- sXgUG8ohaTCaLM9EktKxoNanOXhjXFp2+TzS1nKdgQue0lvGxV2Kvm3L1uSr+kqYxc86
- qTTfXsdgpe7mZXWf44MQIPChIE9B6ihlwgNhdjBawuu6f/FN8OnPawTEi2S3LAx4soYG
- Ua+farAamrd0wUHmtjxJY8Cybja+6uKKPxUk62BE7ts1DlCHw8Ke7xMLHTBUTJNMNj+Y
- gT+Q==
-X-Gm-Message-State: AOAM531zDatgQxu2MNB01cmSKEAGe/Fgx2cE8UOsAgKNy1vutON204g7
- 2TNIPF/TNkW3Ein9CKj8uliirVSWB7WBIcVxHuAPaw==
-X-Google-Smtp-Source: ABdhPJzHLZ3DPap00aVCCCRvHDDF8vGLuFNHhQaaCHTnwNK9bMMMYb2cHsWRdrq5sXjj6jdb1hdaSVrf+wbuLuVQe7M=
-X-Received: by 2002:a17:906:7013:: with SMTP id
- n19mr3355942ejj.388.1601660141767; 
- Fri, 02 Oct 2020 10:35:41 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=nAsVSdK/7E/mt3Oq7A35InRFZW35+phEzXg0tEKoM3E=;
+ b=V4QbutK+Xds6o2DOf3jQ7kn9Ku+4ZIYVokp9+br+aDw+CNEtb1oytwd49R9AF/LXiq
+ Yh4d3D6zUetm/PwsXcvTLknn9BAnrfhlJw5dMYHrb7lKaoqvziBJ7flpjCUMeC/L5qsv
+ 8NTesYs/HR8gFrbynbeiC7pc5HpH0+44SE6zUIuWWX3VB6rBNF42CQzuuWjkw/2BjgTf
+ 109c96/dtkTJOUAOxlsRchchIbm0zva/9RgyTAoPhG9Un32Q7l9sKwfK3FXmVhBJDvwn
+ 44MzAQTO5osVOAiH6IoCxXS0QrbdPVBnToKHmX1tst+RTkkGd+rH3CKuGsONRyVRD02U
+ 75wQ==
+X-Gm-Message-State: AOAM5307rWugXLHu1yWpum6wBk3vvKn0Yz+oClBSbXMSwNjeRUbkq2VE
+ q+0rpWCrcHkPfYKDPQjAdzGMGw==
+X-Google-Smtp-Source: ABdhPJz81eHAkz0Pqdl3fYidIh3cTsK0B1hmHy8AkNXaM5ryIfRr9H9pfts0XTgN4zmYd73luhZ50Q==
+X-Received: by 2002:a5d:52ca:: with SMTP id r10mr4133433wrv.195.1601661904725; 
+ Fri, 02 Oct 2020 11:05:04 -0700 (PDT)
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+ by smtp.gmail.com with ESMTPSA id c16sm2793734wrx.31.2020.10.02.11.05.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 02 Oct 2020 11:05:03 -0700 (PDT)
+Date: Fri, 2 Oct 2020 20:05:00 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: Thomas Zimmermann <tzimmermann@suse.de>
+Subject: Re: [PATCH v3 6/7] drm/fb_helper: Support framebuffers in I/O memory
+Message-ID: <20201002180500.GM438822@phenom.ffwll.local>
+References: <20200929151437.19717-1-tzimmermann@suse.de>
+ <20200929151437.19717-7-tzimmermann@suse.de>
 MIME-Version: 1.0
-References: <20200922165535.1356622-1-maxime.chevallier@bootlin.com>
- <20200922165535.1356622-3-maxime.chevallier@bootlin.com>
-In-Reply-To: <20200922165535.1356622-3-maxime.chevallier@bootlin.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Fri, 2 Oct 2020 14:35:28 -0300
-Message-ID: <CAAEAJfCcPRnyjPozXG9rjovO+cJ6ZZBadShs_X9DQCrjSj7mUw@mail.gmail.com>
-Subject: Re: [PATCH v3 2/3] media: rockchip: Introduce driver for Rockhip's
- camera interface
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Content-Disposition: inline
+In-Reply-To: <20200929151437.19717-7-tzimmermann@suse.de>
+X-Operating-System: Linux phenom 5.7.0-1-amd64 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201002_133544_480811_A77C69E4 
-X-CRM114-Status: GOOD (  37.79  )
+X-CRM114-CacheID: sfid-20201002_140505_959220_618296C8 
+X-CRM114-Status: GOOD (  41.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,2343 +94,476 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Mark Rutland <mark.rutland@arm.com>,
- devicetree <devicetree@vger.kernel.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Helen Koike <helen.koike@collabora.com>, Rob Herring <robh+dt@kernel.org>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robin Murphy <robin.murphy@arm.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-media <linux-media@vger.kernel.org>
+Cc: luben.tuikov@amd.com, heiko@sntech.de, airlied@linux.ie,
+ nouveau@lists.freedesktop.org, linus.walleij@linaro.org,
+ dri-devel@lists.freedesktop.org, chris@chris-wilson.co.uk,
+ melissa.srw@gmail.com, eric@anholt.net, ray.huang@amd.com, kraxel@redhat.com,
+ sam@ravnborg.org, sumit.semwal@linaro.org, emil.velikov@collabora.com,
+ robh@kernel.org, linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
+ lima@lists.freedesktop.org, oleksandr_andrushchenko@epam.com, krzk@kernel.org,
+ steven.price@arm.com, linux-rockchip@lists.infradead.org, kgene@kernel.org,
+ bskeggs@redhat.com, linux+etnaviv@armlinux.org.uk,
+ spice-devel@lists.freedesktop.org, alyssa.rosenzweig@collabora.com,
+ maarten.lankhorst@linux.intel.com, etnaviv@lists.freedesktop.org,
+ mripard@kernel.org, inki.dae@samsung.com, hdegoede@redhat.com,
+ christian.gmeiner@gmail.com, xen-devel@lists.xenproject.org,
+ virtualization@lists.linux-foundation.org, sean@poorly.run, apaneers@amd.com,
+ linux-arm-kernel@lists.infradead.org, linaro-mm-sig@lists.linaro.org,
+ amd-gfx@lists.freedesktop.org, tomeu.vizoso@collabora.com,
+ sw0312.kim@samsung.com, hjc@rock-chips.com, kyungmin.park@samsung.com,
+ miaoqinglang@huawei.com, yuq825@gmail.com, daniel@ffwll.ch,
+ alexander.deucher@amd.com, linux-media@vger.kernel.org,
+ christian.koenig@amd.com, l.stach@pengutronix.de
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
- Hi Maxime,
-
-Thanks to Dafna, I found the patch ^_^
-
-The driver looks real good. Just a few comments below.
-
-Is the driver passing latest v4l2-compliance tests?
-
-On Tue, 22 Sep 2020 at 13:55, Maxime Chevallier
-<maxime.chevallier@bootlin.com> wrote:
->
-> Introduce a driver for the camera interface on some Rockchip platforms.
->
-> This controller supports CSI2 and BT656 interfaces, but for
-> now only the BT656 interface could be tested, hence it's the only one
-> that's supported in the first version of this driver.
->
-> This controller can be fond on PX30, RK1808, RK3128, RK3288 and RK3288,
-> but for now it's only be tested on PX30.
->
-> Most of this driver was written following the BSP driver from rockchip,
-> removing the parts that either didn't fit correctly the guidelines, or
-> that couldn't be tested.
->
-> In the BSP, this driver is known as the "cif" driver, but this was
-> renamed to "vip" to better fit the controller denomination in the
-> datasheet.
->
-> This basic version doesn't support cropping nor scaling, and is only
-> designed with one sensor being attached to it a any time.
->
-> This version uses the "pingpong" mode of the controller, which is a
-> double-buffering mechanism.
->
-> Signed-off-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
+On Tue, Sep 29, 2020 at 05:14:36PM +0200, Thomas Zimmermann wrote:
+> At least sparc64 requires I/O-specific access to framebuffers. This
+> patch updates the fbdev console accordingly.
+> 
+> For drivers with direct access to the framebuffer memory, the callback
+> functions in struct fb_ops test for the type of memory and call the rsp
+> fb_sys_ of fb_cfb_ functions.
+> 
+> For drivers that employ a shadow buffer, fbdev's blit function retrieves
+> the framebuffer address as struct dma_buf_map, and uses dma_buf_map
+> interfaces to access the buffer.
+> 
+> The bochs driver on sparc64 uses a workaround to flag the framebuffer as
+> I/O memory and avoid a HW exception. With the introduction of struct
+> dma_buf_map, this is not required any longer. The patch removes the rsp
+> code from both, bochs and fbdev.
+> 
+> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 > ---
-> V3:
->  - renamed the driver
->  - Took Hans, Robin and Ezequiel's reviews into account
->  - Implemented the ouble-buffering mode
->
->  drivers/media/platform/Kconfig                |   13 +
->  drivers/media/platform/Makefile               |    1 +
->  drivers/media/platform/rockchip/vip/Makefile  |    3 +
->  drivers/media/platform/rockchip/vip/capture.c | 1246 +++++++++++++++++
->  drivers/media/platform/rockchip/vip/dev.c     |  408 ++++++
->  drivers/media/platform/rockchip/vip/dev.h     |  206 +++
->  drivers/media/platform/rockchip/vip/regs.h    |  260 ++++
->  7 files changed, 2137 insertions(+)
->  create mode 100644 drivers/media/platform/rockchip/vip/Makefile
->  create mode 100644 drivers/media/platform/rockchip/vip/capture.c
->  create mode 100644 drivers/media/platform/rockchip/vip/dev.c
->  create mode 100644 drivers/media/platform/rockchip/vip/dev.h
->  create mode 100644 drivers/media/platform/rockchip/vip/regs.h
->
-> diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-> index c57ee78fa99d..5bc67a0bdd69 100644
-> --- a/drivers/media/platform/Kconfig
-> +++ b/drivers/media/platform/Kconfig
-> @@ -461,6 +461,19 @@ config VIDEO_ROCKCHIP_RGA
->
->           To compile this driver as a module choose m here.
->
-> +config VIDEO_ROCKCHIP_VIP
-> +       tristate "Rockchip VIP (Video InPut) Camera Interface"
-> +       depends on VIDEO_DEV && VIDEO_V4L2
-> +       depends on ARCH_ROCKCHIP || COMPILE_TEST
-> +       select VIDEOBUF2_DMA_SG
-> +       select VIDEOBUF2_DMA_CONTIG
-> +       select V4L2_FWNODE
-> +       select V4L2_MEM2MEM_DEV
-> +       help
-> +         This is a v4l2 driver for Rockchip SOC Camera interface.
+>  drivers/gpu/drm/bochs/bochs_kms.c |   1 -
+>  drivers/gpu/drm/drm_fb_helper.c   | 217 ++++++++++++++++++++++++++++--
+>  include/drm/drm_mode_config.h     |  12 --
+>  include/linux/dma-buf-map.h       |  72 ++++++++--
+>  4 files changed, 265 insertions(+), 37 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/bochs/bochs_kms.c b/drivers/gpu/drm/bochs/bochs_kms.c
+> index 13d0d04c4457..853081d186d5 100644
+> --- a/drivers/gpu/drm/bochs/bochs_kms.c
+> +++ b/drivers/gpu/drm/bochs/bochs_kms.c
+> @@ -151,7 +151,6 @@ int bochs_kms_init(struct bochs_device *bochs)
+>  	bochs->dev->mode_config.preferred_depth = 24;
+>  	bochs->dev->mode_config.prefer_shadow = 0;
+>  	bochs->dev->mode_config.prefer_shadow_fbdev = 1;
+> -	bochs->dev->mode_config.fbdev_use_iomem = true;
+>  	bochs->dev->mode_config.quirk_addfb_prefer_host_byte_order = true;
+>  
+>  	bochs->dev->mode_config.funcs = &bochs_mode_funcs;
+> diff --git a/drivers/gpu/drm/drm_fb_helper.c b/drivers/gpu/drm/drm_fb_helper.c
+> index 343a292f2c7c..f345a314a437 100644
+> --- a/drivers/gpu/drm/drm_fb_helper.c
+> +++ b/drivers/gpu/drm/drm_fb_helper.c
+> @@ -388,24 +388,22 @@ static void drm_fb_helper_resume_worker(struct work_struct *work)
+>  }
+>  
+>  static void drm_fb_helper_dirty_blit_real(struct drm_fb_helper *fb_helper,
+> -					  struct drm_clip_rect *clip)
+> +					  struct drm_clip_rect *clip,
+> +					  struct dma_buf_map *dst)
+>  {
+>  	struct drm_framebuffer *fb = fb_helper->fb;
+>  	unsigned int cpp = fb->format->cpp[0];
+>  	size_t offset = clip->y1 * fb->pitches[0] + clip->x1 * cpp;
+>  	void *src = fb_helper->fbdev->screen_buffer + offset;
+> -	void *dst = fb_helper->buffer->map.vaddr + offset;
+>  	size_t len = (clip->x2 - clip->x1) * cpp;
+>  	unsigned int y;
+>  
+> -	for (y = clip->y1; y < clip->y2; y++) {
+> -		if (!fb_helper->dev->mode_config.fbdev_use_iomem)
+> -			memcpy(dst, src, len);
+> -		else
+> -			memcpy_toio((void __iomem *)dst, src, len);
+> +	dma_buf_map_incr(dst, offset); /* go to first pixel within clip rect */
+>  
+> +	for (y = clip->y1; y < clip->y2; y++) {
+> +		dma_buf_map_memcpy_to(dst, src, len);
+> +		dma_buf_map_incr(dst, fb->pitches[0]);
+>  		src += fb->pitches[0];
+> -		dst += fb->pitches[0];
+>  	}
+>  }
+>  
+> @@ -433,8 +431,9 @@ static void drm_fb_helper_dirty_work(struct work_struct *work)
+>  			ret = drm_client_buffer_vmap(helper->buffer, &map);
+>  			if (ret)
+>  				return;
+> -			drm_fb_helper_dirty_blit_real(helper, &clip_copy);
+> +			drm_fb_helper_dirty_blit_real(helper, &clip_copy, &map);
+>  		}
 > +
-> +         To compile this driver as a module choose m here.
+>  		if (helper->fb->funcs->dirty)
+>  			helper->fb->funcs->dirty(helper->fb, NULL, 0, 0,
+>  						 &clip_copy, 1);
+> @@ -771,6 +770,136 @@ void drm_fb_helper_sys_imageblit(struct fb_info *info,
+>  }
+>  EXPORT_SYMBOL(drm_fb_helper_sys_imageblit);
+>  
+> +static ssize_t drm_fb_helper_cfb_read(struct fb_info *info, char __user *buf,
+> +				      size_t count, loff_t *ppos)
+> +{
+> +	unsigned long p = *ppos;
+> +	u8 *dst;
+> +	u8 __iomem *src;
+> +	int c, err = 0;
+> +	unsigned long total_size;
+> +	unsigned long alloc_size;
+> +	ssize_t ret = 0;
 > +
+> +	if (info->state != FBINFO_STATE_RUNNING)
+> +		return -EPERM;
+> +
+> +	total_size = info->screen_size;
+> +
+> +	if (total_size == 0)
+> +		total_size = info->fix.smem_len;
+> +
+> +	if (p >= total_size)
+> +		return 0;
+> +
+> +	if (count >= total_size)
+> +		count = total_size;
+> +
+> +	if (count + p > total_size)
+> +		count = total_size - p;
+> +
+> +	src = (u8 __iomem *)(info->screen_base + p);
+> +
+> +	alloc_size = min(count, PAGE_SIZE);
+> +
+> +	dst = kmalloc(alloc_size, GFP_KERNEL);
+> +	if (!dst)
+> +		return -ENOMEM;
+> +
+> +	while (count) {
+> +		c = min(count, alloc_size);
+> +
+> +		memcpy_fromio(dst, src, c);
+> +		if (copy_to_user(buf, dst, c)) {
+> +			err = -EFAULT;
+> +			break;
+> +		}
+> +
+> +		src += c;
+> +		*ppos += c;
+> +		buf += c;
+> +		ret += c;
+> +		count -= c;
+> +	}
+> +
+> +	kfree(dst);
+> +
+> +	if (err)
+> +		return err;
+> +
+> +	return ret;
+> +}
+> +
+> +static ssize_t drm_fb_helper_cfb_write(struct fb_info *info, const char __user *buf,
+> +				       size_t count, loff_t *ppos)
+> +{
+> +	unsigned long p = *ppos;
+> +	u8 *src;
+> +	u8 __iomem *dst;
+> +	int c, err = 0;
+> +	unsigned long total_size;
+> +	unsigned long alloc_size;
+> +	ssize_t ret = 0;
+> +
+> +	if (info->state != FBINFO_STATE_RUNNING)
+> +		return -EPERM;
+> +
+> +	total_size = info->screen_size;
+> +
+> +	if (total_size == 0)
+> +		total_size = info->fix.smem_len;
+> +
+> +	if (p > total_size)
+> +		return -EFBIG;
+> +
+> +	if (count > total_size) {
+> +		err = -EFBIG;
+> +		count = total_size;
+> +	}
+> +
+> +	if (count + p > total_size) {
+> +		/*
+> +		 * The framebuffer is too small. We do the
+> +		 * copy operation, but return an error code
+> +		 * afterwards. Taken from fbdev.
+> +		 */
+> +		if (!err)
+> +			err = -ENOSPC;
+> +		count = total_size - p;
+> +	}
+> +
+> +	alloc_size = min(count, PAGE_SIZE);
+> +
+> +	src = kmalloc(alloc_size, GFP_KERNEL);
+> +	if (!src)
+> +		return -ENOMEM;
+> +
+> +	dst = (u8 __iomem *)(info->screen_base + p);
+> +
+> +	while (count) {
+> +		c = min(count, alloc_size);
+> +
+> +		if (copy_from_user(src, buf, c)) {
+> +			err = -EFAULT;
+> +			break;
+> +		}
+> +		memcpy_toio(dst, src, c);
+> +
+> +		dst += c;
+> +		*ppos += c;
+> +		buf += c;
+> +		ret += c;
+> +		count -= c;
+> +	}
+> +
+> +	kfree(src);
+> +
+> +	if (err)
+> +		return err;
+> +
+> +	return ret;
+> +}
+> +
+>  /**
+>   * drm_fb_helper_cfb_fillrect - wrapper around cfb_fillrect
+>   * @info: fbdev registered by the helper
+> @@ -2043,6 +2172,66 @@ static int drm_fbdev_fb_mmap(struct fb_info *info, struct vm_area_struct *vma)
+>  		return -ENODEV;
+>  }
+>  
+> +static ssize_t drm_fbdev_fb_read(struct fb_info *info, char __user *buf,
+> +				 size_t count, loff_t *ppos)
+> +{
+> +	struct drm_fb_helper *fb_helper = info->par;
+> +	struct drm_client_buffer *buffer = fb_helper->buffer;
+> +
+> +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
+> +		return drm_fb_helper_sys_read(info, buf, count, ppos);
+> +	else
+> +		return drm_fb_helper_cfb_read(info, buf, count, ppos);
+> +}
+> +
+> +static ssize_t drm_fbdev_fb_write(struct fb_info *info, const char __user *buf,
+> +				  size_t count, loff_t *ppos)
+> +{
+> +	struct drm_fb_helper *fb_helper = info->par;
+> +	struct drm_client_buffer *buffer = fb_helper->buffer;
+> +
+> +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
+> +		return drm_fb_helper_sys_write(info, buf, count, ppos);
+> +	else
+> +		return drm_fb_helper_cfb_write(info, buf, count, ppos);
+> +}
+> +
+> +static void drm_fbdev_fb_fillrect(struct fb_info *info,
+> +				  const struct fb_fillrect *rect)
+> +{
+> +	struct drm_fb_helper *fb_helper = info->par;
+> +	struct drm_client_buffer *buffer = fb_helper->buffer;
+> +
+> +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
+> +		drm_fb_helper_sys_fillrect(info, rect);
+> +	else
+> +		drm_fb_helper_cfb_fillrect(info, rect);
+> +}
+> +
+> +static void drm_fbdev_fb_copyarea(struct fb_info *info,
+> +				  const struct fb_copyarea *area)
+> +{
+> +	struct drm_fb_helper *fb_helper = info->par;
+> +	struct drm_client_buffer *buffer = fb_helper->buffer;
+> +
+> +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
+> +		drm_fb_helper_sys_copyarea(info, area);
+> +	else
+> +		drm_fb_helper_cfb_copyarea(info, area);
+> +}
+> +
+> +static void drm_fbdev_fb_imageblit(struct fb_info *info,
+> +				   const struct fb_image *image)
+> +{
+> +	struct drm_fb_helper *fb_helper = info->par;
+> +	struct drm_client_buffer *buffer = fb_helper->buffer;
+> +
+> +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
+> +		drm_fb_helper_sys_imageblit(info, image);
+> +	else
+> +		drm_fb_helper_cfb_imageblit(info, image);
+> +}
 
-Please add ... "the module will be called {the name}".
+I think a todo to make the new generic functions the real ones, and
+drivers not using the sys/cfb ones anymore would be a good addition.
 
->  config VIDEO_TI_VPE
->         tristate "TI VPE (Video Processing Engine) driver"
->         depends on VIDEO_DEV && VIDEO_V4L2
-> diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
-> index 62b6cdc8c730..d056f5618c2b 100644
-> --- a/drivers/media/platform/Makefile
-> +++ b/drivers/media/platform/Makefile
-> @@ -53,6 +53,7 @@ obj-$(CONFIG_VIDEO_RENESAS_JPU)               += rcar_jpu.o
->  obj-$(CONFIG_VIDEO_RENESAS_VSP1)       += vsp1/
->
->  obj-$(CONFIG_VIDEO_ROCKCHIP_RGA)       += rockchip/rga/
-> +obj-$(CONFIG_VIDEO_ROCKCHIP_VIP)       += rockchip/vip/
->
->  obj-y  += omap/
->
-> diff --git a/drivers/media/platform/rockchip/vip/Makefile b/drivers/media/platform/rockchip/vip/Makefile
-> new file mode 100644
-> index 000000000000..c239ee0bb0fe
-> --- /dev/null
-> +++ b/drivers/media/platform/rockchip/vip/Makefile
-> @@ -0,0 +1,3 @@
-> +# SPDX-License-Identifier: GPL-2.0
-> +obj-$(CONFIG_VIDEO_ROCKCHIP_VIP) += video_rkvip.o
-> +video_rkvip-objs += dev.o capture.o
-> diff --git a/drivers/media/platform/rockchip/vip/capture.c b/drivers/media/platform/rockchip/vip/capture.c
-> new file mode 100644
-> index 000000000000..6f8e1184695c
-> --- /dev/null
-> +++ b/drivers/media/platform/rockchip/vip/capture.c
-> @@ -0,0 +1,1246 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Rockchip VIP Camera Interface Driver
+> +
+>  static const struct fb_ops drm_fbdev_fb_ops = {
+>  	.owner		= THIS_MODULE,
+>  	DRM_FB_HELPER_DEFAULT_OPS,
+> @@ -2050,11 +2239,11 @@ static const struct fb_ops drm_fbdev_fb_ops = {
+>  	.fb_release	= drm_fbdev_fb_release,
+>  	.fb_destroy	= drm_fbdev_fb_destroy,
+>  	.fb_mmap	= drm_fbdev_fb_mmap,
+> -	.fb_read	= drm_fb_helper_sys_read,
+> -	.fb_write	= drm_fb_helper_sys_write,
+> -	.fb_fillrect	= drm_fb_helper_sys_fillrect,
+> -	.fb_copyarea	= drm_fb_helper_sys_copyarea,
+> -	.fb_imageblit	= drm_fb_helper_sys_imageblit,
+> +	.fb_read	= drm_fbdev_fb_read,
+> +	.fb_write	= drm_fbdev_fb_write,
+> +	.fb_fillrect	= drm_fbdev_fb_fillrect,
+> +	.fb_copyarea	= drm_fbdev_fb_copyarea,
+> +	.fb_imageblit	= drm_fbdev_fb_imageblit,
+>  };
+>  
+>  static struct fb_deferred_io drm_fbdev_defio = {
+> diff --git a/include/drm/drm_mode_config.h b/include/drm/drm_mode_config.h
+> index 5ffbb4ed5b35..ab424ddd7665 100644
+> --- a/include/drm/drm_mode_config.h
+> +++ b/include/drm/drm_mode_config.h
+> @@ -877,18 +877,6 @@ struct drm_mode_config {
+>  	 */
+>  	bool prefer_shadow_fbdev;
+>  
+> -	/**
+> -	 * @fbdev_use_iomem:
+> -	 *
+> -	 * Set to true if framebuffer reside in iomem.
+> -	 * When set to true memcpy_toio() is used when copying the framebuffer in
+> -	 * drm_fb_helper.drm_fb_helper_dirty_blit_real().
+> -	 *
+> -	 * FIXME: This should be replaced with a per-mapping is_iomem
+> -	 * flag (like ttm does), and then used everywhere in fbdev code.
+> -	 */
+> -	bool fbdev_use_iomem;
+> -
+>  	/**
+>  	 * @quirk_addfb_prefer_xbgr_30bpp:
+>  	 *
+> diff --git a/include/linux/dma-buf-map.h b/include/linux/dma-buf-map.h
+
+I think the below should be split out as a prep patch.
+
+> index 2e8bbecb5091..6ca0f304dda2 100644
+> --- a/include/linux/dma-buf-map.h
+> +++ b/include/linux/dma-buf-map.h
+> @@ -32,6 +32,14 @@
+>   * accessing the buffer. Use the returned instance and the helper functions
+>   * to access the buffer's memory in the correct way.
+>   *
+> + * The type :c:type:`struct dma_buf_map <dma_buf_map>` and its helpers are
+> + * actually independent from the dma-buf infrastructure. When sharing buffers
+> + * among devices, drivers have to know the location of the memory to access
+> + * the buffers in a safe way. :c:type:`struct dma_buf_map <dma_buf_map>`
+> + * solves this problem for dma-buf and its users. If other drivers or
+> + * sub-systems require similar functionality, the type could be generalized
+> + * and moved to a more prominent header file.
 > + *
-> + * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
-> + * Copyright (C) 2020 Maxime Chevallier <maxime.chevallier@bootlin.com>
-> + */
-> +
-> +#include <linux/delay.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/reset.h>
-> +#include <media/v4l2-common.h>
-> +#include <media/v4l2-event.h>
-> +#include <media/v4l2-fh.h>
-> +#include <media/v4l2-fwnode.h>
-> +#include <media/v4l2-ioctl.h>
-> +#include <media/v4l2-mc.h>
-> +#include <media/v4l2-subdev.h>
-> +#include <media/videobuf2-dma-contig.h>
-> +
-> +#include "dev.h"
-> +#include "regs.h"
-> +
-> +#define VIP_REQ_BUFS_MIN       1
-
-I think you might want to have more than 1 buffer
-as minimum. How about 3? Two for the ping and pong,
-and one more in the queue.
-
-> +#define VIP_MIN_WIDTH          64
-> +#define VIP_MIN_HEIGHT         64
-> +#define VIP_MAX_WIDTH          8192
-> +#define VIP_MAX_HEIGHT         8192
-> +
-> +#define RK_VIP_PLANE_Y                 0
-> +#define RK_VIP_PLANE_CBCR              1
-> +
-> +#define VIP_FETCH_Y_LAST_LINE(VAL) ((VAL) & 0x1fff)
-> +/* Check if swap y and c in bt1120 mode */
-> +#define VIP_FETCH_IS_Y_FIRST(VAL) ((VAL) & 0xf)
-> +
-> +/* Get xsubs and ysubs for fourcc formats
+>   * Open-coding access to :c:type:`struct dma_buf_map <dma_buf_map>` is
+>   * considered bad style. Rather then accessing its fields directly, use one
+>   * of the provided helper functions, or implement your own. For example,
+> @@ -51,6 +59,14 @@
+>   *
+>   *	dma_buf_map_set_vaddr_iomem(&map. 0xdeadbeaf);
+>   *
+> + * Instances of struct dma_buf_map do not have to be cleaned up, but
+> + * can be cleared to NULL with dma_buf_map_clear(). Cleared mappings
+> + * always refer to system memory.
 > + *
-> + * @xsubs: horizontal color samples in a 4*4 matrix, for yuv
-> + * @ysubs: vertical color samples in a 4*4 matrix, for yuv
-> + */
-> +static int fcc_xysubs(u32 fcc, u32 *xsubs, u32 *ysubs)
-
-See below, you should be using v4l2_fill_pixfmt_mp.
-
-> +{
-> +       switch (fcc) {
-> +       case V4L2_PIX_FMT_NV16:
-> +       case V4L2_PIX_FMT_NV61:
-> +               *xsubs = 2;
-> +               *ysubs = 1;
-> +               break;
-> +       case V4L2_PIX_FMT_NV21:
-> +       case V4L2_PIX_FMT_NV12:
-> +               *xsubs = 2;
-> +               *ysubs = 2;
-> +               break;
-> +       default:
-> +               return -EINVAL;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static const struct vip_output_fmt out_fmts[] = {
-> +       {
-> +               .fourcc = V4L2_PIX_FMT_NV16,
-> +               .cplanes = 2,
-
-From what I can see, you are only using this
-information to calculate bytesperline and sizeimage,
-so you should be using the v4l2_fill_pixfmt_mp() helper.
-
-> +               .fmt_val = VIP_FORMAT_YUV_OUTPUT_422 |
-> +                          VIP_FORMAT_UV_STORAGE_ORDER_UVUV,
-> +               .bpp = { 8, 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_NV61,
-> +               .fmt_val = VIP_FORMAT_YUV_OUTPUT_422 |
-> +                          VIP_FORMAT_UV_STORAGE_ORDER_VUVU,
-> +               .cplanes = 2,
-> +               .bpp = { 8, 16 },
-> +       },
-> +       {
-> +               .fourcc = V4L2_PIX_FMT_NV12,
-> +               .fmt_val = VIP_FORMAT_YUV_OUTPUT_420 |
-> +                          VIP_FORMAT_UV_STORAGE_ORDER_UVUV,
-> +               .cplanes = 2,
-> +               .bpp = { 8, 16 },
-> +               .mbus = MEDIA_BUS_FMT_UYVY8_2X8,
-> +       },
-> +       {
-> +               .fourcc = V4L2_PIX_FMT_NV21,
-> +               .fmt_val = VIP_FORMAT_YUV_OUTPUT_420 |
-> +                          VIP_FORMAT_UV_STORAGE_ORDER_VUVU,
-> +               .cplanes = 2,
-> +               .bpp = { 8, 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_RGB24,
-> +               .cplanes = 1,
-> +               .bpp = { 24 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_RGB565,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_BGR666,
-> +               .cplanes = 1,
-> +               .bpp = { 18 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SRGGB8,
-> +               .cplanes = 1,
-> +               .bpp = { 8 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SGRBG8,
-> +               .cplanes = 1,
-> +               .bpp = { 8 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SGBRG8,
-> +               .cplanes = 1,
-> +               .bpp = { 8 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SBGGR8,
-> +               .cplanes = 1,
-> +               .bpp = { 8 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SRGGB10,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SGRBG10,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SGBRG10,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SBGGR10,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SRGGB12,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SGRBG12,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SGBRG12,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SBGGR12,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_SBGGR16,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }, {
-> +               .fourcc = V4L2_PIX_FMT_Y16,
-> +               .cplanes = 1,
-> +               .bpp = { 16 },
-> +       }
-> +};
-> +
-> +static const struct vip_input_fmt in_fmts[] = {
-> +       {
-> +               .mbus_code      = MEDIA_BUS_FMT_YUYV8_2X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_YUV_INPUT_422 |
-> +                                 VIP_FORMAT_YUV_INPUT_ORDER_YUYV,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_YUV422,
-> +               .fmt_type       = VIP_FMT_TYPE_YUV,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_YUYV8_2X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_YUV_INPUT_422 |
-> +                                 VIP_FORMAT_YUV_INPUT_ORDER_YUYV,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_YUV422,
-> +               .fmt_type       = VIP_FMT_TYPE_YUV,
-> +               .field          = V4L2_FIELD_INTERLACED,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_YVYU8_2X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_YUV_INPUT_422 |
-> +                                 VIP_FORMAT_YUV_INPUT_ORDER_YVYU,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_YUV422,
-> +               .fmt_type       = VIP_FMT_TYPE_YUV,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_YVYU8_2X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_YUV_INPUT_422 |
-> +                                 VIP_FORMAT_YUV_INPUT_ORDER_YVYU,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_YUV422,
-> +               .fmt_type       = VIP_FMT_TYPE_YUV,
-> +               .field          = V4L2_FIELD_INTERLACED,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_UYVY8_2X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_YUV_INPUT_422 |
-> +                                 VIP_FORMAT_YUV_INPUT_ORDER_UYVY,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_YUV422,
-> +               .fmt_type       = VIP_FMT_TYPE_YUV,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_UYVY8_2X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_YUV_INPUT_422 |
-> +                                 VIP_FORMAT_YUV_INPUT_ORDER_UYVY,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_YUV422,
-> +               .fmt_type       = VIP_FMT_TYPE_YUV,
-> +               .field          = V4L2_FIELD_INTERLACED,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_VYUY8_2X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_YUV_INPUT_422 |
-> +                                 VIP_FORMAT_YUV_INPUT_ORDER_VYUY,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_YUV422,
-> +               .fmt_type       = VIP_FMT_TYPE_YUV,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_VYUY8_2X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_YUV_INPUT_422 |
-> +                                 VIP_FORMAT_YUV_INPUT_ORDER_VYUY,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_YUV422,
-> +               .fmt_type       = VIP_FMT_TYPE_YUV,
-> +               .field          = V4L2_FIELD_INTERLACED,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SBGGR8_1X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_8,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW8,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SGBRG8_1X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_8,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW8,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SGRBG8_1X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_8,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW8,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SRGGB8_1X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_8,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW8,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SBGGR10_1X10,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_10,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW10,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SGBRG10_1X10,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_10,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW10,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SGRBG10_1X10,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_10,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW10,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SRGGB10_1X10,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_10,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW10,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SBGGR12_1X12,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_12,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW12,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SGBRG12_1X12,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_12,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW12,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SGRBG12_1X12,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_12,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW12,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_SRGGB12_1X12,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_12,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW12,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_RGB888_1X24,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RGB888,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_Y8_1X8,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_8,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW8,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_Y10_1X10,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_10,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW10,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }, {
-> +               .mbus_code      = MEDIA_BUS_FMT_Y12_1X12,
-> +               .dvp_fmt_val    = VIP_FORMAT_INPUT_MODE_RAW |
-> +                                 VIP_FORMAT_RAW_DATA_WIDTH_12,
-> +               .csi_fmt_val    = VIP_CSI_WRDDR_TYPE_RAW12,
-> +               .fmt_type       = VIP_FMT_TYPE_RAW,
-> +               .field          = V4L2_FIELD_NONE,
-> +       }
-> +};
-> +
-> +static const struct
-> +vip_input_fmt *get_input_fmt(struct v4l2_subdev *sd)
-> +{
-> +       struct v4l2_subdev_format fmt;
-> +       int ret;
-> +       u32 i;
-> +
-> +       fmt.which = V4L2_SUBDEV_FORMAT_ACTIVE;
-> +       fmt.pad = 0;
-> +       ret = v4l2_subdev_call(sd, pad, get_fmt, NULL, &fmt);
-> +       if (ret < 0) {
-> +               v4l2_warn(sd->v4l2_dev,
-> +                         "sensor fmt invalid, set to default size\n");
-> +               goto set_default;
-> +       }
-> +
-> +       for (i = 0; i < ARRAY_SIZE(in_fmts); i++)
-> +               if (fmt.format.code == in_fmts[i].mbus_code &&
-> +                   fmt.format.field == in_fmts[i].field)
-> +                       return &in_fmts[i];
-> +
-> +       v4l2_err(sd->v4l2_dev, "remote sensor mbus code not supported\n");
-> +
-> +set_default:
-> +       return NULL;
-> +}
-> +
-> +static const struct
-> +vip_output_fmt *find_output_fmt(struct rk_vip_stream *stream, u32 pixelfmt)
-> +{
-> +       const struct vip_output_fmt *fmt;
-> +       u32 i;
-> +
-> +       for (i = 0; i < ARRAY_SIZE(out_fmts); i++) {
-> +               fmt = &out_fmts[i];
-> +               if (fmt->fourcc == pixelfmt)
-> +                       return fmt;
-> +       }
-> +
-> +       return NULL;
-> +}
-> +
-> +static void rk_vip_setup_buffers(struct rk_vip_stream *stream)
-> +{
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +       void __iomem *base = dev->base_addr;
-> +
-> +       write_vip_reg(base, VIP_FRM0_ADDR_Y, stream->buffs[0]->buff_addr[RK_VIP_PLANE_Y]);
-> +       write_vip_reg(base, VIP_FRM0_ADDR_UV, stream->buffs[0]->buff_addr[RK_VIP_PLANE_CBCR]);
-> +
-> +       write_vip_reg(base, VIP_FRM1_ADDR_Y, stream->buffs[1]->buff_addr[RK_VIP_PLANE_Y]);
-> +       write_vip_reg(base, VIP_FRM1_ADDR_UV, stream->buffs[1]->buff_addr[RK_VIP_PLANE_CBCR]);
-> +}
-> +
-> +static struct rk_vip_buffer *rk_vip_buffer_next(struct rk_vip_stream *stream)
-> +{
-> +       struct rk_vip_buffer *buff;
-> +
-> +       if (list_empty(&stream->buf_head))
-> +               return NULL;
-> +
-> +       buff = list_first_entry(&stream->buf_head, struct rk_vip_buffer, queue);
-> +       list_del(&buff->queue);
-> +
-> +       return buff;
-> +}
-> +
-> +static void rk_vip_init_buffers(struct rk_vip_stream *stream)
-> +{
-> +       spin_lock(&stream->vbq_lock);
-> +
-> +       stream->buffs[0] = rk_vip_buffer_next(stream);
-> +       stream->buffs[1] = rk_vip_buffer_next(stream);
-> +
-> +       spin_unlock(&stream->vbq_lock);
-> +
-> +       rk_vip_setup_buffers(stream);
-> +}
-> +
-> +static void rk_vip_assign_new_buffer_pingpong(struct rk_vip_stream *stream)
-> +{
-> +       struct rk_vip_scratch_buffer *scratch_buf = &stream->scratch_buf;
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +       struct rk_vip_buffer *buffer = NULL;
-> +       void __iomem *base = dev->base_addr;
-> +       u32 frm_addr_y, frm_addr_uv;
-> +
-> +       /* Set up an empty buffer for the next frame */
-> +       spin_lock(&stream->vbq_lock);
-> +
-> +       buffer = rk_vip_buffer_next(stream);
-> +       stream->buffs[stream->frame_phase] = buffer;
-> +
-> +       spin_unlock(&stream->vbq_lock);
-> +
-> +       frm_addr_y = stream->frame_phase ? VIP_FRM1_ADDR_Y : VIP_FRM0_ADDR_Y;
-> +       frm_addr_uv = stream->frame_phase ? VIP_FRM1_ADDR_UV : VIP_FRM0_ADDR_UV;
-> +
-> +       if (buffer) {
-> +               write_vip_reg(base, frm_addr_y,
-> +                             buffer->buff_addr[RK_VIP_PLANE_Y]);
-> +               write_vip_reg(base, frm_addr_uv,
-> +                             buffer->buff_addr[RK_VIP_PLANE_CBCR]);
-> +       } else {
-> +               write_vip_reg(base, frm_addr_y, scratch_buf->dma_addr);
-> +               write_vip_reg(base, frm_addr_uv, scratch_buf->dma_addr);
-> +       }
-> +}
-> +
-> +static void rk_vip_stream_stop(struct rk_vip_stream *stream)
-> +{
-> +       struct rk_vip_device *vip_dev = stream->vipdev;
-> +       void __iomem *base = vip_dev->base_addr;
-> +       u32 val;
-> +
-> +       val = read_vip_reg(base, VIP_CTRL);
-> +       write_vip_reg(base, VIP_CTRL, val & (~VIP_CTRL_ENABLE_CAPTURE));
-> +       write_vip_reg(base, VIP_INTEN, 0x0);
-> +       write_vip_reg(base, VIP_INTSTAT, 0x3ff);
-> +       write_vip_reg(base, VIP_FRAME_STATUS, 0x0);
-> +
-> +       stream->state = RK_VIP_STATE_READY;
-> +}
-> +
-> +static int rk_vip_queue_setup(struct vb2_queue *queue,
-> +                             unsigned int *num_buffers,
-> +                             unsigned int *num_planes,
-> +                             unsigned int sizes[],
-> +                             struct device *alloc_devs[])
-> +{
-> +       struct rk_vip_stream *stream = queue->drv_priv;
-> +       const struct v4l2_plane_pix_format *plane_fmt;
-> +       const struct v4l2_pix_format_mplane *pixm;
-> +       const struct vip_output_fmt *vip_fmt;
-> +
-> +       pixm = &stream->pixm;
-> +       vip_fmt = stream->vip_fmt_out;
-> +
-> +       if (*num_planes) {
-> +               if (*num_planes != 1)
-> +                       return -EINVAL;
-> +
-> +               if (sizes[0] < pixm->plane_fmt[0].sizeimage)
-> +                       return -EINVAL;
-> +               return 0;
-> +       }
-> +
-> +       *num_planes = 1;
-> +
-> +       plane_fmt = &pixm->plane_fmt[0];
-> +       sizes[0] = plane_fmt->sizeimage;
-> +
-> +       *num_buffers = 5;
-> +
-
-Why not using VIP_REQ_BUFS_MIN here? (defined as 3)
-
-> +       return 0;
-> +}
-> +
-> +static void rk_vip_buf_queue(struct vb2_buffer *vb)
-> +{
-> +       struct vb2_v4l2_buffer *vbuf = to_vb2_v4l2_buffer(vb);
-> +       struct rk_vip_buffer *vipbuf = to_rk_vip_buffer(vbuf);
-> +       struct vb2_queue *queue = vb->vb2_queue;
-> +       struct rk_vip_stream *stream = queue->drv_priv;
-> +       struct v4l2_pix_format_mplane *pixm = &stream->pixm;
-> +       const struct vip_output_fmt *fmt = stream->vip_fmt_out;
-> +       unsigned long lock_flags = 0;
-> +       int i;
-> +
-> +       memset(vipbuf->buff_addr, 0, sizeof(vipbuf->buff_addr));
-> +
-> +       vipbuf->buff_addr[0] = vb2_dma_contig_plane_dma_addr(vb, 0);
-> +
-> +       for (i = 0; i < fmt->cplanes - 1; i++)
-> +               vipbuf->buff_addr[i + 1] = vipbuf->buff_addr[i] +
-> +                       pixm->plane_fmt[i].bytesperline * pixm->height;
-> +
-> +       spin_lock_irqsave(&stream->vbq_lock, lock_flags);
-> +       list_add_tail(&vipbuf->queue, &stream->buf_head);
-> +       spin_unlock_irqrestore(&stream->vbq_lock, lock_flags);
-> +}
-> +
-> +static int rk_vip_create_scratch_buf(struct rk_vip_stream *stream)
-> +{
-> +       struct rk_vip_scratch_buffer *scratch_buf = &stream->scratch_buf;
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +
-> +       /* get a maximum plane size */
-> +       scratch_buf->size = max(stream->pixm.plane_fmt[0].sizeimage,
-> +                               stream->pixm.plane_fmt[1].sizeimage);
-> +
-> +       scratch_buf->vaddr = dma_alloc_coherent(dev->dev, scratch_buf->size,
-> +                                               &scratch_buf->dma_addr,
-> +                                               GFP_KERNEL);
-> +       if (!scratch_buf->vaddr) {
-> +               v4l2_err(&dev->v4l2_dev,
-> +                        "Failed to allocate the memory for scratch buffer\n");
-> +               return -ENOMEM;
-> +       }
-> +
-> +       v4l2_info(&dev->v4l2_dev, "Allocate scratch buffer, size: 0x%08x\n",
-> +                 scratch_buf->size);
-> +
-
-I would silence this message. The scratch buffers are just regular buffers,
-why printing this on each start of streaming (well, why printing this at all) ?
-
-> +       return 0;
-> +}
-> +
-> +static void rk_vip_destroy_scratch_buf(struct rk_vip_stream *stream)
-> +{
-> +       struct rk_vip_scratch_buffer *scratch_buf = &stream->scratch_buf;
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +
-> +       dma_free_coherent(dev->dev, scratch_buf->size,
-> +                         scratch_buf->vaddr, scratch_buf->dma_addr);
-> +}
-> +
-> +static void rk_vip_stop_streaming(struct vb2_queue *queue)
-> +{
-> +       struct rk_vip_stream *stream = queue->drv_priv;
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +       struct rk_vip_buffer *buf;
-> +       struct v4l2_subdev *sd;
-> +       int ret;
-> +
-> +       stream->stopping = true;
-> +       ret = wait_event_timeout(stream->wq_stopped,
-> +                                stream->state != RK_VIP_STATE_STREAMING,
-> +                                msecs_to_jiffies(1000));
-> +       if (!ret) {
-> +               rk_vip_stream_stop(stream);
-> +               stream->stopping = false;
-> +       }
-> +       pm_runtime_put(dev->dev);
-> +
-> +       /* stop the sub device*/
-> +       sd = dev->sensor.sd;
-> +       v4l2_subdev_call(sd, video, s_stream, 0);
-> +       v4l2_subdev_call(sd, core, s_power, 0);
-> +
-> +       /* release buffers */
-> +       if (stream->buffs[0]) {
-> +               list_add_tail(&stream->buffs[0]->queue, &stream->buf_head);
-> +               stream->buffs[0] = NULL;
-> +       }
-> +       if (stream->buffs[1]) {
-> +               list_add_tail(&stream->buffs[1]->queue, &stream->buf_head);
-> +               stream->buffs[1] = NULL;
-> +       }
-> +
-> +       while (!list_empty(&stream->buf_head)) {
-> +               buf = rk_vip_buffer_next(stream);
-> +               vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
-> +       }
-> +
-> +       rk_vip_destroy_scratch_buf(stream);
-> +}
-> +
-> +static u32 rk_vip_determine_input_mode(struct rk_vip_device *dev)
-> +{
-> +       struct rk_vip_sensor_info *sensor_info = &dev->sensor;
-> +       struct rk_vip_stream *stream = &dev->stream;
-> +       v4l2_std_id std;
-> +       u32 mode = VIP_FORMAT_INPUT_MODE_YUV;
-> +       int ret;
-> +
-> +       ret = v4l2_subdev_call(sensor_info->sd, video, querystd, &std);
-> +       if (ret == 0) {
-> +               /* retrieve std from sensor if exist */
-> +               switch (std) {
-> +               case 0:
-> +                       break;
-> +               case V4L2_STD_NTSC:
-> +                       mode = VIP_FORMAT_INPUT_MODE_NTSC;
-> +                       break;
-> +               case V4L2_STD_PAL:
-> +                       mode = VIP_FORMAT_INPUT_MODE_PAL;
-> +                       break;
-> +               case V4L2_STD_ATSC:
-> +                       mode = VIP_FORMAT_INPUT_MODE_BT1120;
-> +                       break;
-> +               default:
-> +                       v4l2_err(&dev->v4l2_dev,
-> +                                "std: %lld is not supported", std);
-> +               }
-> +       } else {
-> +               /* determine input mode by mbus_code (fmt_type) */
-> +               switch (stream->vip_fmt_in->fmt_type) {
-> +               case VIP_FMT_TYPE_YUV:
-> +                       mode = VIP_FORMAT_INPUT_MODE_YUV;
-> +                       break;
-> +               case VIP_FMT_TYPE_RAW:
-> +                       mode = VIP_FORMAT_INPUT_MODE_RAW;
-> +                       break;
-> +               }
-> +       }
-> +
-> +       return mode;
-> +}
-> +
-> +static inline u32 rk_vip_scl_ctl(struct rk_vip_stream *stream)
-> +{
-> +       u32 fmt_type = stream->vip_fmt_in->fmt_type;
-> +
-> +       return (fmt_type == VIP_FMT_TYPE_YUV) ?
-> +               VIP_SCL_CTRL_ENABLE_YUV_16BIT_BYPASS :
-> +               VIP_SCL_CTRL_ENABLE_RAW_16BIT_BYPASS;
-> +}
-> +
-> +static int rk_vip_stream_start(struct rk_vip_stream *stream)
-> +{
-> +       u32 val, mbus_flags, href_pol, vsync_pol,
-> +           xfer_mode = 0, yc_swap = 0, skip_top = 0;
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +       struct rk_vip_sensor_info *sensor_info;
-> +       void __iomem *base = dev->base_addr;
-> +
-> +       sensor_info = &dev->sensor;
-> +       stream->frame_idx = 0;
-> +
-> +       mbus_flags = sensor_info->mbus.flags;
-> +       href_pol = (mbus_flags & V4L2_MBUS_HSYNC_ACTIVE_HIGH) ?
-> +                       VIP_FORMAT_HSY_HIGH_ACTIVE : VIP_FORMAT_HSY_LOW_ACTIVE;
-> +       vsync_pol = (mbus_flags & V4L2_MBUS_VSYNC_ACTIVE_HIGH) ?
-> +                       VIP_FORMAT_VSY_HIGH_ACTIVE : VIP_FORMAT_VSY_LOW_ACTIVE;
-> +
-> +       if (rk_vip_determine_input_mode(dev) == VIP_FORMAT_INPUT_MODE_BT1120) {
-> +               if (stream->vip_fmt_in->field == V4L2_FIELD_NONE)
-> +                       xfer_mode = VIP_FORMAT_BT1120_TRANSMIT_PROGRESS;
-> +               else
-> +                       xfer_mode = VIP_FORMAT_BT1120_TRANSMIT_INTERFACE;
-> +
-> +               if (!VIP_FETCH_IS_Y_FIRST(stream->vip_fmt_in->dvp_fmt_val))
-> +                       yc_swap = VIP_FORMAT_BT1120_YC_SWAP;
-> +       }
-> +
-> +       val = vsync_pol | href_pol | rk_vip_determine_input_mode(dev) |
-> +             stream->vip_fmt_out->fmt_val | stream->vip_fmt_in->dvp_fmt_val |
-> +             xfer_mode | yc_swap;
-> +       write_vip_reg(base, VIP_FOR, val);
-> +       val = stream->pixm.width;
-> +       if (stream->vip_fmt_in->fmt_type == VIP_FMT_TYPE_RAW)
-> +               val = stream->pixm.width * 2;
-> +       write_vip_reg(base, VIP_VIR_LINE_WIDTH, val);
-> +       write_vip_reg(base, VIP_SET_SIZE,
-> +                     stream->pixm.width | (stream->pixm.height << 16));
-> +
-> +       v4l2_subdev_call(sensor_info->sd, sensor, g_skip_top_lines, &skip_top);
-> +
-> +       write_vip_reg(base, VIP_CROP, skip_top << VIP_CROP_Y_SHIFT);
-> +       write_vip_reg(base, VIP_FRAME_STATUS, VIP_FRAME_STAT_CLS);
-> +       write_vip_reg(base, VIP_INTSTAT, VIP_INTSTAT_CLS);
-> +       write_vip_reg(base, VIP_SCL_CTRL, rk_vip_scl_ctl(stream));
-> +
-> +       rk_vip_init_buffers(stream);
-> +
-> +       write_vip_reg(base, VIP_INTEN, VIP_INTEN_FRAME_END_EN |
-> +                                      VIP_INTEN_LINE_ERR_EN |
-> +                                      VIP_INTEN_PST_INF_FRAME_END_EN);
-> +
-> +       write_vip_reg(base, VIP_CTRL, VIP_CTRL_AXI_BURST_16 |
-> +                                     VIP_CTRL_MODE_PINGPONG |
-> +                                     VIP_CTRL_ENABLE_CAPTURE);
-> +
-> +       stream->state = RK_VIP_STATE_STREAMING;
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_start_streaming(struct vb2_queue *queue, unsigned int count)
-> +{
-> +       struct rk_vip_stream *stream = queue->drv_priv;
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +       struct v4l2_device *v4l2_dev = &dev->v4l2_dev;
-> +       struct v4l2_subdev *sd;
-> +       int ret;
-> +
-> +       if (WARN_ON(stream->state != RK_VIP_STATE_READY)) {
-> +               ret = -EBUSY;
-> +               v4l2_err(v4l2_dev, "stream in busy state\n");
-> +               goto destroy_buf;
-> +       }
-> +
-> +       stream->vip_fmt_in = get_input_fmt(dev->sensor.sd);
-> +
-> +       ret = rk_vip_create_scratch_buf(stream);
-> +       if (ret < 0) {
-> +               v4l2_err(v4l2_dev, "Failed to create scratch_buf, %d\n", ret);
-> +               goto destroy_buf;
-> +       }
-> +
-> +       ret = pm_runtime_get_sync(dev->dev);
-> +       if (ret < 0) {
-> +               v4l2_err(v4l2_dev, "Failed to get runtime pm, %d\n", ret);
-> +               goto destroy_scratch_buf;
-> +       }
-> +
-> +       /* start sub-devices */
-> +       sd = dev->sensor.sd;
-> +       ret = v4l2_subdev_call(sd, core, s_power, 1);
-> +       if (ret < 0 && ret != -ENOIOCTLCMD)
-> +               goto runtime_put;
-> +       ret = v4l2_subdev_call(sd, video, s_stream, 1);
-> +       if (ret < 0)
-> +               goto subdev_poweroff;
-> +
-> +       ret = rk_vip_stream_start(stream);
-> +       if (ret < 0)
-> +               goto stop_stream;
-> +
-> +       return 0;
-> +
-> +stop_stream:
-> +       rk_vip_stream_stop(stream);
-> +subdev_poweroff:
-> +       v4l2_subdev_call(sd, core, s_power, 0);
-> +runtime_put:
-> +       pm_runtime_put(dev->dev);
-> +destroy_scratch_buf:
-> +       rk_vip_destroy_scratch_buf(stream);
-> +destroy_buf:
-> +       while (!list_empty(&stream->buf_head)) {
-> +               struct rk_vip_buffer *buf;
-> +
-> +               buf = rk_vip_buffer_next(stream);
-> +               vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_QUEUED);
-> +       }
-> +
-> +       return ret;
-> +}
-> +
-> +static struct vb2_ops rk_vip_vb2_ops = {
-> +       .queue_setup = rk_vip_queue_setup,
-> +       .buf_queue = rk_vip_buf_queue,
-> +       .wait_prepare = vb2_ops_wait_prepare,
-> +       .wait_finish = vb2_ops_wait_finish,
-> +       .stop_streaming = rk_vip_stop_streaming,
-> +       .start_streaming = rk_vip_start_streaming,
-> +};
-> +
-> +static int rk_vip_init_vb2_queue(struct vb2_queue *q,
-> +                                struct rk_vip_stream *stream,
-> +                                enum v4l2_buf_type buf_type)
-> +{
-> +       q->type = buf_type;
-
-Looks this is only called with one buf_type, so why not hardcoding it here?
-
-> +       q->io_modes = VB2_MMAP | VB2_DMABUF;
-> +       q->drv_priv = stream;
-> +       q->ops = &rk_vip_vb2_ops;
-> +       q->mem_ops = &vb2_dma_contig_memops;
-> +       q->buf_struct_size = sizeof(struct rk_vip_buffer);
-> +       q->min_buffers_needed = VIP_REQ_BUFS_MIN;
-> +       q->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_MONOTONIC;
-> +       q->lock = &stream->vlock;
-> +       q->dev = stream->vipdev->dev;
-> +
-> +       return vb2_queue_init(q);
-> +}
-> +
-> +static void rk_vip_set_fmt(struct rk_vip_stream *stream,
-> +                          struct v4l2_pix_format_mplane *pixm,
-> +                          bool try)
-> +{
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +       struct v4l2_subdev_format sd_fmt;
-> +       const struct vip_output_fmt *fmt;
-> +       struct v4l2_rect input_rect;
-> +       unsigned int planes, imagesize = 0;
-> +       u32 xsubs = 1, ysubs = 1;
-> +       int i;
-> +
-
-I was expecting to see some is_busy or is_streaming check
-here, have you tested what happens if you change the format
-while streaming, or after buffers are queued?
-
-> +       fmt = find_output_fmt(stream, pixm->pixelformat);
-> +       if (!fmt)
-> +               fmt = &out_fmts[0];
-> +
-> +       if (!try) {
-> +               sd_fmt.which = V4L2_SUBDEV_FORMAT_ACTIVE;
-> +               sd_fmt.pad = 0;
-> +               sd_fmt.format.width = pixm->width;
-> +               sd_fmt.format.height = pixm->height;
-> +               v4l2_subdev_call(dev->sensor.sd, pad, set_fmt, NULL, &sd_fmt);
-> +
-> +               pixm->width = sd_fmt.format.width;
-> +               pixm->height = sd_fmt.format.height;
-> +       }
-> +
-> +       input_rect.width = VIP_MAX_WIDTH;
-> +       input_rect.height = VIP_MAX_HEIGHT;
-> +
-> +       pixm->width = clamp_t(u32, pixm->width,
-> +                             VIP_MIN_WIDTH, input_rect.width);
-> +       pixm->height = clamp_t(u32, pixm->height,
-> +                              VIP_MIN_HEIGHT, input_rect.height);
-> +
-> +       pixm->num_planes = 1;
-> +       pixm->quantization = V4L2_QUANTIZATION_DEFAULT;
-> +       pixm->colorspace = V4L2_COLORSPACE_SRGB;
-> +
-> +       pixm->xfer_func = V4L2_MAP_XFER_FUNC_DEFAULT(pixm->colorspace);
-> +       pixm->ycbcr_enc = V4L2_MAP_YCBCR_ENC_DEFAULT(pixm->colorspace);
-> +
-> +       pixm->pixelformat = fmt->fourcc;
-> +       pixm->field = V4L2_FIELD_NONE;
-> +
-> +       /* calculate plane size and image size */
-> +       fcc_xysubs(fmt->fourcc, &xsubs, &ysubs);
-> +
-> +       planes = fmt->cplanes ? fmt->cplanes : 1;
-> +
-> +       for (i = 0; i < planes; i++) {
-> +               struct v4l2_plane_pix_format *plane_fmt;
-> +               int width, height, bpl, size;
-> +
-> +               if (i == 0) {
-> +                       width = pixm->width;
-> +                       height = pixm->height;
-> +               } else {
-> +                       width = pixm->width / xsubs;
-> +                       height = pixm->height / ysubs;
-> +               }
-> +
-> +               bpl = width * fmt->bpp[i] / 8;
-> +               size = bpl * height;
-> +               imagesize += size;
-> +
-> +               if (i == 0) {
-> +                       /* Set bpl and size for each mplane */
-> +                       plane_fmt = pixm->plane_fmt;
-> +                       plane_fmt->bytesperline = bpl;
-> +                       plane_fmt->sizeimage = size;
-> +               }
-> +       }
-> +
-> +       pixm->plane_fmt[0].sizeimage = imagesize;
-> +
-> +       if (!try) {
-> +               stream->vip_fmt_out = fmt;
-> +               stream->pixm = *pixm;
-> +       }
-> +}
-> +
-> +void rk_vip_stream_init(struct rk_vip_device *dev)
-> +{
-> +       struct rk_vip_stream *stream = &dev->stream;
-> +       struct v4l2_pix_format_mplane pixm;
-> +
-> +       memset(stream, 0, sizeof(*stream));
-> +       memset(&pixm, 0, sizeof(pixm));
-> +       stream->vipdev = dev;
-> +
-> +       INIT_LIST_HEAD(&stream->buf_head);
-> +       spin_lock_init(&stream->vbq_lock);
-> +       stream->state = RK_VIP_STATE_READY;
-> +       init_waitqueue_head(&stream->wq_stopped);
-> +
-> +       /* Set default format */
-> +       pixm.pixelformat = V4L2_PIX_FMT_NV12;
-> +       pixm.width = RK_VIP_DEFAULT_WIDTH;
-> +       pixm.height = RK_VIP_DEFAULT_HEIGHT;
-> +       rk_vip_set_fmt(stream, &pixm, false);
-> +
-> +       stream->crop.left = 0;
-> +       stream->crop.top = 0;
-> +       stream->crop.width = 10;
-> +       stream->crop.height = 10;
-> +}
-> +
-> +static const struct v4l2_file_operations rk_vip_fops = {
-> +       .open = v4l2_fh_open,
-> +       .release = vb2_fop_release,
-> +       .unlocked_ioctl = video_ioctl2,
-> +       .poll = vb2_fop_poll,
-> +       .mmap = vb2_fop_mmap,
-> +};
-> +
-> +static int rk_vip_enum_input(struct file *file, void *priv,
-> +                            struct v4l2_input *input)
-> +{
-> +       if (input->index > 0)
-> +               return -EINVAL;
-> +
-> +       input->type = V4L2_INPUT_TYPE_CAMERA;
-> +       strlcpy(input->name, "Camera", sizeof(input->name));
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_try_fmt_vid_cap_mplane(struct file *file, void *fh,
-> +                                        struct v4l2_format *f)
-> +{
-> +       struct rk_vip_stream *stream = video_drvdata(file);
-> +
-> +       rk_vip_set_fmt(stream, &f->fmt.pix_mp, true);
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_enum_fmt_vid_cap(struct file *file, void *priv,
-> +                                  struct v4l2_fmtdesc *f)
-> +{
-> +       const struct vip_output_fmt *fmt = NULL;
-> +
-> +       if (f->index >= ARRAY_SIZE(out_fmts))
-> +               return -EINVAL;
-> +
-> +       fmt = &out_fmts[f->index];
-> +       f->pixelformat = fmt->fourcc;
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_s_fmt_vid_cap_mplane(struct file *file,
-> +                                      void *priv, struct v4l2_format *f)
-> +{
-> +       struct rk_vip_stream *stream = video_drvdata(file);
-> +
-> +       rk_vip_set_fmt(stream, &f->fmt.pix_mp, false);
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_g_fmt_vid_cap_mplane(struct file *file, void *fh,
-> +                                      struct v4l2_format *f)
-> +{
-> +       struct rk_vip_stream *stream = video_drvdata(file);
-> +
-> +       f->fmt.pix_mp = stream->pixm;
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_querycap(struct file *file, void *priv,
-> +                          struct v4l2_capability *cap)
-> +{
-> +       struct rk_vip_stream *stream = video_drvdata(file);
-> +       struct device *dev = stream->vipdev->dev;
-> +
-> +       strlcpy(cap->driver, dev->driver->name, sizeof(cap->driver));
-> +       strlcpy(cap->card, dev->driver->name, sizeof(cap->card));
-> +       snprintf(cap->bus_info, sizeof(cap->bus_info),
-> +                "platform:%s", dev_name(dev));
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_enum_framesizes(struct file *file, void *fh,
-> +                                 struct v4l2_frmsizeenum *fsize)
-> +{
-> +       struct rk_vip_stream *stream = video_drvdata(file);
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +       struct v4l2_subdev_frame_size_enum fse = {
-> +               .index = fsize->index,
-> +               .which = V4L2_SUBDEV_FORMAT_ACTIVE,
-> +       };
-> +       const struct vip_output_fmt *fmt;
-> +       int ret;
-> +
-> +       if (!dev->sensor.sd)
-> +               return -EINVAL;
-> +
-> +       fmt = find_output_fmt(stream, fsize->pixel_format);
-> +       if (!fmt)
-> +               return -EINVAL;
-> +
-> +       fse.code = fmt->mbus;
-> +
-> +       ret = v4l2_subdev_call(dev->sensor.sd, pad, enum_frame_size,
-> +                              NULL, &fse);
-> +       if (ret)
-> +               return ret;
-> +
-> +       fsize->type = V4L2_FRMSIZE_TYPE_DISCRETE;
-> +       fsize->discrete.width = fse.max_width;
-> +       fsize->discrete.height = fse.max_height;
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_enum_frameintervals(struct file *file, void *fh,
-> +                                     struct v4l2_frmivalenum *fival)
-> +{
-> +       struct rk_vip_stream *stream = video_drvdata(file);
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +       struct v4l2_subdev_frame_interval_enum fie = {
-> +               .index = fival->index,
-> +               .width = fival->width,
-> +               .height = fival->height,
-> +               .which = V4L2_SUBDEV_FORMAT_ACTIVE,
-> +       };
-> +       const struct vip_output_fmt *fmt;
-> +       int ret;
-> +
-> +       if (!dev->sensor.sd)
-> +               return -EINVAL;
-> +
-> +       fmt = find_output_fmt(stream, fival->pixel_format);
-> +       if (!fmt)
-> +               return -EINVAL;
-> +
-> +       fie.code = fmt->mbus;
-> +
-> +       ret = v4l2_subdev_call(dev->sensor.sd, pad, enum_frame_interval,
-> +                              NULL, &fie);
-> +       if (ret)
-> +               return ret;
-> +
-> +       fival->type = V4L2_FRMSIZE_TYPE_DISCRETE;
-> +       fival->discrete = fie.interval;
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_g_input(struct file *file, void *fh, unsigned int *i)
-> +{
-> +       *i = 0;
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_s_input(struct file *file, void *fh, unsigned int i)
-> +{
-
-Only one input, why do you need to support this ioctl at all?
-
-> +       if (i)
-> +               return -EINVAL;
-> +
-> +       return 0;
-> +}
-> +
-> +static int rk_vip_g_parm(struct file *file, void *priv,
-> +                        struct v4l2_streamparm *p)
-> +{
-> +       struct rk_vip_stream *stream = video_drvdata(file);
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +
-> +       return v4l2_g_parm_cap(video_devdata(file), dev->sensor.sd, p);
-> +}
-> +
-> +static int rk_vip_s_parm(struct file *file, void *priv,
-> +                        struct v4l2_streamparm *p)
-> +{
-> +       struct rk_vip_stream *stream = video_drvdata(file);
-> +       struct rk_vip_device *dev = stream->vipdev;
-> +
-> +       return v4l2_s_parm_cap(video_devdata(file), dev->sensor.sd, p);
-> +}
-> +
-> +static const struct v4l2_ioctl_ops rk_vip_v4l2_ioctl_ops = {
-> +       .vidioc_reqbufs = vb2_ioctl_reqbufs,
-> +       .vidioc_querybuf = vb2_ioctl_querybuf,
-> +       .vidioc_create_bufs = vb2_ioctl_create_bufs,
-> +       .vidioc_qbuf = vb2_ioctl_qbuf,
-> +       .vidioc_expbuf = vb2_ioctl_expbuf,
-> +       .vidioc_dqbuf = vb2_ioctl_dqbuf,
-> +       .vidioc_prepare_buf = vb2_ioctl_prepare_buf,
-> +       .vidioc_streamon = vb2_ioctl_streamon,
-> +       .vidioc_streamoff = vb2_ioctl_streamoff,
-> +
-> +       .vidioc_enum_fmt_vid_cap = rk_vip_enum_fmt_vid_cap,
-> +       .vidioc_try_fmt_vid_cap_mplane = rk_vip_try_fmt_vid_cap_mplane,
-> +       .vidioc_s_fmt_vid_cap_mplane = rk_vip_s_fmt_vid_cap_mplane,
-> +       .vidioc_g_fmt_vid_cap_mplane = rk_vip_g_fmt_vid_cap_mplane,
-> +       .vidioc_querycap = rk_vip_querycap,
-> +       .vidioc_enum_framesizes = rk_vip_enum_framesizes,
-> +       .vidioc_enum_frameintervals = rk_vip_enum_frameintervals,
-> +
-> +       .vidioc_enum_input = rk_vip_enum_input,
-> +       .vidioc_g_input = rk_vip_g_input,
-> +       .vidioc_s_input = rk_vip_s_input,
-> +
-> +       .vidioc_g_parm = rk_vip_g_parm,
-> +       .vidioc_s_parm = rk_vip_s_parm,
-> +};
-> +
-> +void rk_vip_unregister_stream_vdev(struct rk_vip_device *dev)
- > +{
-> +       struct rk_vip_stream *stream = &dev->stream;
-> +
-> +       media_entity_cleanup(&stream->vdev.entity);
-> +       video_unregister_device(&stream->vdev);
-> +}
-> +
-> +int rk_vip_register_stream_vdev(struct rk_vip_device *dev)
-> +{
-> +       struct rk_vip_stream *stream = &dev->stream;
-> +       struct v4l2_device *v4l2_dev = &dev->v4l2_dev;
-> +       struct video_device *vdev = &stream->vdev;
-> +       int ret;
-> +
-> +       strlcpy(vdev->name, VIP_VIDEODEVICE_NAME, sizeof(vdev->name));
-> +       mutex_init(&stream->vlock);
-> +
-> +       vdev->ioctl_ops = &rk_vip_v4l2_ioctl_ops;
-> +       vdev->release = video_device_release_empty;
-> +       vdev->fops = &rk_vip_fops;
-> +       vdev->minor = -1;
-> +       vdev->v4l2_dev = v4l2_dev;
-> +       vdev->lock = &stream->vlock;
-> +       vdev->device_caps = V4L2_CAP_VIDEO_CAPTURE_MPLANE |
-> +                           V4L2_CAP_STREAMING;
-> +       video_set_drvdata(vdev, stream);
-> +       vdev->vfl_dir = VFL_DIR_RX;
-> +       stream->pad.flags = MEDIA_PAD_FL_SINK;
-> +
-> +       rk_vip_init_vb2_queue(&stream->buf_queue, stream,
-> +                             V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE |
-> +                             V4L2_BUF_TYPE_VIDEO_CAPTURE);
-> +       vdev->queue = &stream->buf_queue;
-> +       strscpy(vdev->name, KBUILD_MODNAME, sizeof(vdev->name));
-> +
-> +       ret = video_register_device(vdev, VFL_TYPE_SUBDEV, -1);
-> +       if (ret < 0) {
-> +               v4l2_err(v4l2_dev,
-> +                        "video_register_device failed with error %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       ret = media_entity_pads_init(&vdev->entity, 1, &stream->pad);
-> +       if (ret < 0)
-> +               goto unreg;
-> +
-> +       return 0;
-> +unreg:
-> +       video_unregister_device(vdev);
-> +       return ret;
-> +}
-> +
-> +static void rk_vip_vb_done(struct rk_vip_stream *stream,
-> +                          struct vb2_v4l2_buffer *vb_done)
-> +{
-> +       vb2_set_plane_payload(&vb_done->vb2_buf, 0,
-> +                             stream->pixm.plane_fmt[0].sizeimage);
-> +       vb_done->vb2_buf.timestamp = ktime_get_ns();
-
-vb_done->vb2_buf.sequence = stream->frame_idx; ?
-
-> +       vb2_buffer_done(&vb_done->vb2_buf, VB2_BUF_STATE_DONE);
-> +}
-> +
-> +static void rk_vip_reset_stream(struct rk_vip_device *vip_dev)
-> +{
-> +       void __iomem *base = vip_dev->base_addr;
-> +       u32 ctl = read_vip_reg(base, VIP_CTRL);
-> +
-> +       write_vip_reg(base, VIP_CTRL, ctl & (~VIP_CTRL_ENABLE_CAPTURE));
-> +       write_vip_reg(base, VIP_CTRL, ctl | VIP_CTRL_ENABLE_CAPTURE);
-> +}
-> +
-> +void rk_vip_irq_pingpong(struct rk_vip_device *vip_dev)
-> +{
-> +       struct rk_vip_stream *stream = &vip_dev->stream;
-> +       void __iomem *base = vip_dev->base_addr;
-> +       unsigned int intstat;
-> +
-> +       u32 lastline, lastpix, ctl, vip_frmst;
-> +
-> +       intstat = read_vip_reg(base, VIP_INTSTAT);
-> +       vip_frmst = read_vip_reg(base, VIP_FRAME_STATUS);
-> +       lastline = VIP_FETCH_Y_LAST_LINE(read_vip_reg(base, VIP_LAST_LINE));
-> +       lastpix = read_vip_reg(base, VIP_LAST_PIX);
-> +       ctl = read_vip_reg(base, VIP_CTRL);
-> +
-> +       /* There are two irqs enabled:
-> +        *  - PST_INF_FRAME_END: vip FIFO is ready,
-> +        *    this is prior to FRAME_END
-> +        *  - FRAME_END: vip has saved frame to memory,
-> +        *    a frame ready
-> +        */
-> +
-> +       if ((intstat & VIP_INTSTAT_PST_INF_FRAME_END)) {
-> +               write_vip_reg(base, VIP_INTSTAT,
-> +                             VIP_INTSTAT_PST_INF_FRAME_END_CLR);
-> +
-> +               if (stream->stopping)
-> +                       /* To stop VIP ASAP, before FRAME_END irq */
-> +                       write_vip_reg(base, VIP_CTRL,
-> +                                     ctl & (~VIP_CTRL_ENABLE_CAPTURE));
-> +       }
-> +
-> +       if ((intstat & VIP_INTSTAT_PRE_INF_FRAME_END))
-> +               write_vip_reg(base, VIP_INTSTAT, VIP_INTSTAT_PRE_INF_FRAME_END);
-> +
-> +       if (intstat & (VIP_INTSTAT_LINE_ERR | VIP_INTSTAT_PIX_ERR)) {
-> +               write_vip_reg(base, VIP_INTSTAT, VIP_INTSTAT_LINE_ERR |
-> +                                                VIP_INTSTAT_PIX_ERR);
-> +               rk_vip_reset_stream(vip_dev);
-> +       }
-> +
-> +       if ((intstat & VIP_INTSTAT_FRAME_END)) {
-> +               struct vb2_v4l2_buffer *vb_done = NULL;
-> +
-> +               write_vip_reg(base, VIP_INTSTAT, VIP_INTSTAT_FRAME_END_CLR |
-> +                                                VIP_INTSTAT_LINE_END_CLR);
-> +
-> +               if (stream->stopping) {
-> +                       rk_vip_stream_stop(stream);
-> +                       stream->stopping = false;
-> +                       wake_up(&stream->wq_stopped);
-> +                       return;
-> +               }
-> +
-> +               if (lastline != stream->pixm.height) {
-> +                       v4l2_err(&vip_dev->v4l2_dev,
-> +                                "Bad frame, irq:0x%x frmst:0x%x size:%dx%d\n",
-> +                                intstat, vip_frmst, lastline, lastpix);
-> +
-> +                       rk_vip_reset_stream(vip_dev);
-> +               }
-> +
-> +               if (vip_frmst & VIP_INTSTAT_F0_READY)
-> +                       stream->frame_phase = 0;
-> +               else if (vip_frmst & VIP_INTSTAT_F1_READY)
-> +                       stream->frame_phase = 1;
-> +               else
-> +                       return;
-> +
-> +               if (stream->buffs[stream->frame_phase])
-> +                       vb_done = &stream->buffs[stream->frame_phase]->vb;
-> +
-> +               rk_vip_assign_new_buffer_pingpong(stream);
-> +
-> +               if (vb_done)
-> +                       rk_vip_vb_done(stream, vb_done);
-> +
-> +               stream->frame_idx++;
-
-This counter seems unused, but maybe it should be used
-for the capture buffer sequence, as mentioned above.
-
-> +       }
-> +}
-> diff --git a/drivers/media/platform/rockchip/vip/dev.c b/drivers/media/platform/rockchip/vip/dev.c
-> new file mode 100644
-> index 000000000000..d9b64f088c37
-> --- /dev/null
-> +++ b/drivers/media/platform/rockchip/vip/dev.c
-> @@ -0,0 +1,408 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Rockchip VIP Camera Interface Driver
+> + * .. code-block:: c
 > + *
-> + * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
-> + * Copyright (C) 2020 Maxime Chevallier <maxime.chevallier@bootlin.com>
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/delay.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/module.h>
-> +#include <linux/of.h>
-> +#include <linux/of_graph.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/of_reserved_mem.h>
-> +#include <linux/reset.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/pinctrl/consumer.h>
-> +#include <media/v4l2-fwnode.h>
-> +
-> +#include "dev.h"
-> +#include "regs.h"
-> +
-> +#define RK_VIP_VERNO_LEN               10
-> +
-> +struct vip_match_data {
-> +       int chip_id;
-> +       const char * const *clks;
-> +       const char * const *rsts;
-> +       int clks_num;
-> +       int rsts_num;
-> +};
-> +
-> +static int rk_vip_create_links(struct rk_vip_device *dev)
-> +{
-> +       struct v4l2_subdev *sd = dev->sensor.sd;
-> +       int ret;
-> +
-> +       ret = media_entity_get_fwnode_pad(&sd->entity, sd->fwnode,
-> +                                         MEDIA_PAD_FL_SOURCE);
-> +       if (ret)
-> +               return ret;
-> +
-> +       ret = media_create_pad_link(&sd->entity, 0,
-> +                                   &dev->stream.vdev.entity, 0,
-> +                                   MEDIA_LNK_FL_ENABLED);
-> +       if (ret) {
-> +               dev_err(dev->dev, "failed to create link");
-> +               return ret;
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static int subdev_notifier_complete(struct v4l2_async_notifier *notifier)
-> +{
-> +       struct rk_vip_device *dev;
-> +       int ret;
-> +
-> +       dev = container_of(notifier, struct rk_vip_device, notifier);
-> +
-> +       mutex_lock(&dev->media_dev.graph_mutex);
-> +
-> +       ret = rk_vip_create_links(dev);
-> +       if (ret < 0)
-> +               goto unlock;
-> +
-> +       ret = v4l2_device_register_subdev_nodes(&dev->v4l2_dev);
-> +       if (ret < 0)
-> +               goto unlock;
-> +
-> +unlock:
-> +       mutex_unlock(&dev->media_dev.graph_mutex);
-> +       return ret;
-> +}
-> +
-> +static int subdev_notifier_bound(struct v4l2_async_notifier *notifier,
-> +                                struct v4l2_subdev *subdev,
-> +                                struct v4l2_async_subdev *asd)
-> +{
-> +       struct rk_vip_device *vip_dev = container_of(notifier,
-> +                                       struct rk_vip_device, notifier);
-> +
-> +       int pad;
-> +
-> +       vip_dev->sensor.sd = subdev;
-> +       pad = media_entity_get_fwnode_pad(&subdev->entity, subdev->fwnode,
-> +                                         MEDIA_PAD_FL_SOURCE);
-> +       if (pad < 0)
-> +               return pad;
-> +
-> +       vip_dev->sensor.pad = pad;
-> +
-> +       return 0;
-> +}
-> +
-> +static const struct v4l2_async_notifier_operations subdev_notifier_ops = {
-> +       .bound = subdev_notifier_bound,
-> +       .complete = subdev_notifier_complete,
-> +};
-> +
-> +static int vip_subdev_notifier(struct rk_vip_device *vip_dev)
-> +{
-> +       struct v4l2_async_notifier *ntf = &vip_dev->notifier;
-> +       struct device *dev = vip_dev->dev;
-> +       struct v4l2_fwnode_endpoint vep = {
-> +               .bus_type = V4L2_MBUS_PARALLEL,
-> +       };
-> +       struct fwnode_handle *ep;
-> +       int ret;
-> +
-> +       v4l2_async_notifier_init(ntf);
-> +
-> +       ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 0, 0,
-> +                       FWNODE_GRAPH_ENDPOINT_NEXT);
-> +       if (!ep)
-> +               return -EINVAL;
-> +
-> +       ret = v4l2_fwnode_endpoint_parse(ep, &vep);
-> +       if (ret)
-> +               return ret;
-> +
-> +       ret = v4l2_async_notifier_add_fwnode_remote_subdev(ntf, ep,
-> +                                                          &vip_dev->asd);
-> +       if (ret)
-> +               return ret;
-> +
-> +       ntf->ops = &subdev_notifier_ops;
-> +
-> +       fwnode_handle_put(ep);
-> +
-> +       ret = v4l2_async_notifier_register(&vip_dev->v4l2_dev, ntf);
-> +       return ret;
-> +}
-> +
-> +static int rk_vip_register_platform_subdevs(struct rk_vip_device *vip_dev)
-> +{
-> +       int ret;
-> +
-> +       ret = rk_vip_register_stream_vdev(vip_dev);
-> +       if (ret < 0)
-> +               return ret;
-> +
-> +       ret = vip_subdev_notifier(vip_dev);
-> +       if (ret < 0) {
-> +               v4l2_err(&vip_dev->v4l2_dev,
-> +                        "Failed to register subdev notifier(%d)\n", ret);
-> +               rk_vip_unregister_stream_vdev(vip_dev);
-> +       }
-> +
-> +       return 0;
-> +}
-> +
-> +static const char * const px30_vip_clks[] = {
-> +       "aclk_vip",
-> +       "hclk_vip",
-> +       "pclk_vip",
-> +       "vip_out",
-
-These clock names don't seem to match with the devicetree.
-I wonder how have you been testing this, to be honest ^_^  ?
-
-Isn't probe failing with mismatching clock names?
-
-> +};
-> +
-> +static const char * const px30_vip_rsts[] = {
-> +       "rst_vip_a",
-> +       "rst_vip_h",
-> +       "rst_vip_pclkin",
-> +};
-> +
-> +static const struct vip_match_data px30_vip_match_data = {
-> +       .chip_id = CHIP_PX30_VIP,
-> +       .clks = px30_vip_clks,
-> +       .clks_num = ARRAY_SIZE(px30_vip_clks),
-> +       .rsts = px30_vip_rsts,
-> +       .rsts_num = ARRAY_SIZE(px30_vip_rsts),
-> +};
-> +
-> +static const struct of_device_id rk_vip_plat_of_match[] = {
-> +       {
-> +               .compatible = "rockchip,px30-vip",
-> +               .data = &px30_vip_match_data,
-> +       },
-> +       {},
-> +};
-> +
-> +static irqreturn_t rk_vip_irq_handler(int irq, void *ctx)
-> +{
-> +       struct device *dev = ctx;
-> +       struct rk_vip_device *vip_dev = dev_get_drvdata(dev);
-> +
-> +       rk_vip_irq_pingpong(vip_dev);
-> +
-
-Why not just making rk_vip_irq_pingpong the interrupt handler?
-
-> +       return IRQ_HANDLED;
-> +}
-> +
-> +static void rk_vip_disable_sys_clk(struct rk_vip_device *vip_dev)
-> +{
-> +       int i;
-> +
-> +       for (i = vip_dev->clk_size - 1; i >= 0; i--)
-> +               clk_disable_unprepare(vip_dev->clks[i]);
-
-Please use clk_bulk_disable_unprepare.
-> +}
-> +
-> +static int rk_vip_enable_sys_clk(struct rk_vip_device *vip_dev)
-> +{
-> +       int i, ret = -EINVAL;
-> +
-> +       for (i = 0; i < vip_dev->clk_size; i++) {
-> +               ret = clk_prepare_enable(vip_dev->clks[i]);
-> +
-
-Please use clk_bulk_prepare_enable.
-
-> +               if (ret < 0)
-> +                       goto err;
-> +       }
-> +
-> +       return 0;
-> +
-> +err:
-> +       for (--i; i >= 0; --i)
-> +               clk_disable_unprepare(vip_dev->clks[i]);
-> +
-> +       return ret;
-> +}
-> +
-> +void rk_vip_soft_reset(struct rk_vip_device *vip_dev)
-> +{
-> +       unsigned int i;
-> +
-> +       for (i = 0; i < ARRAY_SIZE(vip_dev->vip_rst); i++)
-> +               if (vip_dev->vip_rst[i])
-> +                       reset_control_assert(vip_dev->vip_rst[i]);
-> +       udelay(5);
-> +       for (i = 0; i < ARRAY_SIZE(vip_dev->vip_rst); i++)
-> +               if (vip_dev->vip_rst[i])
-> +                       reset_control_deassert(vip_dev->vip_rst[i]);
-> +}
-> +
-> +static int rk_vip_plat_probe(struct platform_device *pdev)
-> +{
-> +       const struct of_device_id *match;
-> +       struct device_node *node = pdev->dev.of_node;
-> +       struct device *dev = &pdev->dev;
-> +       struct v4l2_device *v4l2_dev;
-> +       struct rk_vip_device *vip_dev;
-> +       const struct vip_match_data *data;
-> +       struct resource *res;
-> +       int i, ret, irq;
-> +
-> +       match = of_match_node(rk_vip_plat_of_match, node);
-> +       if (IS_ERR(match))
-> +               return PTR_ERR(match);
-> +
-> +       vip_dev = devm_kzalloc(dev, sizeof(*vip_dev), GFP_KERNEL);
-> +       if (!vip_dev)
-> +               return -ENOMEM;
-> +
-> +       dev_set_drvdata(dev, vip_dev);
-> +       vip_dev->dev = dev;
-> +
-> +       irq = platform_get_irq(pdev, 0);
-> +       if (irq < 0)
-> +               return irq;
-> +
-> +       ret = devm_request_irq(dev, irq, rk_vip_irq_handler, IRQF_SHARED,
-> +                              dev_driver_string(dev), dev);
-> +       if (ret < 0) {
-> +               dev_err(dev, "request irq failed: %d\n", ret);
-> +               return ret;
-> +       }
-> +
-> +       vip_dev->irq = irq;
-> +       data = match->data;
-> +       vip_dev->chip_id = data->chip_id;
-> +
-> +       res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +       vip_dev->base_addr = devm_ioremap_resource(dev, res);
-> +
-> +       if (IS_ERR(vip_dev->base_addr))
-> +               return PTR_ERR(vip_dev->base_addr);
-> +
-> +       if (data->clks_num > RK_VIP_MAX_BUS_CLK ||
-> +               data->rsts_num > RK_VIP_MAX_RESET) {
-> +               dev_err(dev, "out of range: clks(%d %d) rsts(%d %d)\n",
-> +                       data->clks_num, RK_VIP_MAX_BUS_CLK,
-> +                       data->rsts_num, RK_VIP_MAX_RESET);
-> +               return -EINVAL;
-> +       }
-> +
-> +       for (i = 0; i < data->clks_num; i++) {
-> +               struct clk *clk = devm_clk_get(dev, data->clks[i]);
-> +
-> +               if (IS_ERR(clk)) {
-> +                       dev_err(dev, "failed to get %s\n", data->clks[i]);
-> +                       return PTR_ERR(clk);
-> +               }
-> +
-> +               vip_dev->clks[i] = clk;
-> +       }
-> +
-> +       vip_dev->clk_size = data->clks_num;
-> +
-> +       for (i = 0; i < data->rsts_num; i++) {
-> +               struct reset_control *rst =
-> +                       devm_reset_control_get(dev, data->rsts[i]);
-> +               if (IS_ERR(rst)) {
-> +                       dev_err(dev, "failed to get %s\n", data->rsts[i]);
-> +                       return PTR_ERR(rst);
-> +               }
-> +               vip_dev->vip_rst[i] = rst;
-> +       }
-> +
-> +       /* Initialize the stream */
-> +       rk_vip_stream_init(vip_dev);
-> +
-> +       strlcpy(vip_dev->media_dev.model, "rk_vip",
-> +               sizeof(vip_dev->media_dev.model));
-> +       vip_dev->media_dev.dev = &pdev->dev;
-> +       v4l2_dev = &vip_dev->v4l2_dev;
-> +       v4l2_dev->mdev = &vip_dev->media_dev;
-> +       strlcpy(v4l2_dev->name, "rk_vip", sizeof(v4l2_dev->name));
-> +       v4l2_ctrl_handler_init(&vip_dev->ctrl_handler, 8);
-> +       v4l2_dev->ctrl_handler = &vip_dev->ctrl_handler;
-> +
-> +       ret = v4l2_device_register(vip_dev->dev, &vip_dev->v4l2_dev);
-> +       if (ret < 0)
-> +               return ret;
-> +
-> +       media_device_init(&vip_dev->media_dev);
-> +
-> +       ret = media_device_register(&vip_dev->media_dev);
-> +       if (ret < 0) {
-> +               v4l2_err(v4l2_dev, "Failed to register media device: %d\n",
-> +                        ret);
-> +               goto err_unreg_v4l2_dev;
-> +       }
-> +
-> +       /* create & register platefom subdev (from of_node) */
-> +       ret = rk_vip_register_platform_subdevs(vip_dev);
-> +       if (ret < 0)
-> +               goto err_unreg_media_dev;
-> +
-> +       ret = of_reserved_mem_device_init(dev);
-> +       if (ret)
-> +               v4l2_warn(v4l2_dev, "No reserved memory region assign to VIP\n");
-> +
-
-How about
-
-        ret = of_reserved_mem_device_init(dev);
-        if (ret && ret != -ENODEV)
-                return ret;
-
-instead?
-
-Also, it seems you are missing a of_reserved_mem_device_release
-on the error paths and plat_remove.
-
-Thanks,
-Ezequiel
-
-> +       pm_runtime_enable(&pdev->dev);
-> +
-> +       return 0;
-> +
-> +err_unreg_media_dev:
-> +       media_device_unregister(&vip_dev->media_dev);
-> +err_unreg_v4l2_dev:
-> +       v4l2_device_unregister(&vip_dev->v4l2_dev);
-> +       return ret;
-> +}
-> +
-> +static int rk_vip_plat_remove(struct platform_device *pdev)
-> +{
-> +       struct rk_vip_device *vip_dev = platform_get_drvdata(pdev);
-> +
-> +       pm_runtime_disable(&pdev->dev);
-> +
-> +       media_device_unregister(&vip_dev->media_dev);
-> +       v4l2_device_unregister(&vip_dev->v4l2_dev);
-> +       rk_vip_unregister_stream_vdev(vip_dev);
-> +
-> +       return 0;
-> +}
-> +
-> +static int __maybe_unused rk_vip_runtime_suspend(struct device *dev)
-> +{
-> +       struct rk_vip_device *vip_dev = dev_get_drvdata(dev);
-> +
-> +       rk_vip_disable_sys_clk(vip_dev);
-> +
-> +       return pinctrl_pm_select_sleep_state(dev);
-> +}
-> +
-> +static int __maybe_unused rk_vip_runtime_resume(struct device *dev)
-> +{
-> +       struct rk_vip_device *vip_dev = dev_get_drvdata(dev);
-> +       int ret;
-> +
-> +       ret = pinctrl_pm_select_default_state(dev);
-> +       if (ret < 0)
-> +               return ret;
-> +       rk_vip_enable_sys_clk(vip_dev);
-> +
-> +       return 0;
-> +}
-> +
-> +static const struct dev_pm_ops rk_vip_plat_pm_ops = {
-> +       SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-> +                               pm_runtime_force_resume)
-> +       SET_RUNTIME_PM_OPS(rk_vip_runtime_suspend, rk_vip_runtime_resume, NULL)
-> +};
-> +
-> +static struct platform_driver rk_vip_plat_drv = {
-> +       .driver = {
-> +                  .name = VIP_DRIVER_NAME,
-> +                  .of_match_table = of_match_ptr(rk_vip_plat_of_match),
-> +                  .pm = &rk_vip_plat_pm_ops,
-> +       },
-> +       .probe = rk_vip_plat_probe,
-> +       .remove = rk_vip_plat_remove,
-> +};
-> +
-> +module_platform_driver(rk_vip_plat_drv);
-> +MODULE_AUTHOR("Rockchip Camera/ISP team");
-> +MODULE_DESCRIPTION("Rockchip VIP platform driver");
-> +MODULE_LICENSE("GPL");
-> diff --git a/drivers/media/platform/rockchip/vip/dev.h b/drivers/media/platform/rockchip/vip/dev.h
-> new file mode 100644
-> index 000000000000..8d803885459d
-> --- /dev/null
-> +++ b/drivers/media/platform/rockchip/vip/dev.h
-> @@ -0,0 +1,206 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Rockchip VIP Driver
+> + *	dma_buf_map_clear(&map);
 > + *
-> + * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
+>   * Test if a mapping is valid with either dma_buf_map_is_set() or
+>   * dma_buf_map_is_null().
+>   *
+> @@ -73,17 +89,19 @@
+>   *	if (dma_buf_map_is_equal(&sys_map, &io_map))
+>   *		// always false
+>   *
+> - * Instances of struct dma_buf_map do not have to be cleaned up, but
+> - * can be cleared to NULL with dma_buf_map_clear(). Cleared mappings
+> - * always refer to system memory.
+> + * A set up instance of struct dma_buf_map can be used to access or manipulate
+> + * the buffer memory. Depending on the location of the memory, the provided
+> + * helpers will pick the correct operations. Data can be copied into the memory
+> + * with dma_buf_map_memcpy_to(). The address can be manipulated with
+> + * dma_buf_map_incr().
+>   *
+> - * The type :c:type:`struct dma_buf_map <dma_buf_map>` and its helpers are
+> - * actually independent from the dma-buf infrastructure. When sharing buffers
+> - * among devices, drivers have to know the location of the memory to access
+> - * the buffers in a safe way. :c:type:`struct dma_buf_map <dma_buf_map>`
+> - * solves this problem for dma-buf and its users. If other drivers or
+> - * sub-systems require similar functionality, the type could be generalized
+> - * and moved to a more prominent header file.
+> + * .. code-block:: c
+> + *
+> + *	const void *src = ...; // source buffer
+> + *	size_t len = ...; // length of src
+> + *
+> + *	dma_buf_map_memcpy_to(&map, src, len);
+> + *	dma_buf_map_incr(&map, len); // go to first byte after the memcpy
+>   */
+>  
+>  /**
+> @@ -210,4 +228,38 @@ static inline void dma_buf_map_clear(struct dma_buf_map *map)
+>  	}
+>  }
+>  
+> +/**
+> + * dma_buf_map_memcpy_to - Memcpy into dma-buf mapping
+> + * @dst:	The dma-buf mapping structure
+> + * @src:	The source buffer
+> + * @len:	The number of byte in src
+> + *
+> + * Copies data into a dma-buf mapping. The source buffer is in system
+> + * memory. Depending on the buffer's location, the helper picks the correct
+> + * method of accessing the memory.
 > + */
-> +
-> +#ifndef _RK_VIP_DEV_H
-> +#define _RK_VIP_DEV_H
-> +
-> +#include <linux/mutex.h>
-> +#include <media/media-device.h>
-> +#include <media/media-entity.h>
-> +#include <media/v4l2-ctrls.h>
-> +#include <media/v4l2-device.h>
-> +#include <media/videobuf2-v4l2.h>
-> +
-> +#define VIP_DRIVER_NAME                "rk_vip"
-> +#define VIP_VIDEODEVICE_NAME   "stream_vip"
-> +
-> +#define RK_VIP_MAX_BUS_CLK     8
-> +#define RK_VIP_MAX_SENSOR      2
-> +#define RK_VIP_MAX_RESET               5
-> +#define RK_VIP_MAX_CSI_CHANNEL 4
-> +
-> +#define RK_VIP_DEFAULT_WIDTH   640
-> +#define RK_VIP_DEFAULT_HEIGHT  480
-> +
-> +#define write_vip_reg(base, addr, val)  writel(val, (addr) + (base))
-> +#define read_vip_reg(base, addr) readl((addr) + (base))
-> +
-> +#define write_csihost_reg(base, addr, val)  writel(val, (addr) + (base))
-> +#define read_csihost_reg(base, addr) readl((addr) + (base))
-> +
-> +enum rk_vip_state {
-> +       RK_VIP_STATE_DISABLED,
-> +       RK_VIP_STATE_READY,
-> +       RK_VIP_STATE_STREAMING
-> +};
-> +
-> +enum rk_vip_chip_id {
-> +       CHIP_PX30_VIP,
-> +       CHIP_RK1808_VIP,
-> +       CHIP_RK3128_VIP,
-> +       CHIP_RK3288_VIP
-> +};
-> +
-> +enum host_type_t {
-> +       RK_CSI_RXHOST,
-> +       RK_DSI_RXHOST
-> +};
-> +
-> +struct rk_vip_buffer {
-> +       struct vb2_v4l2_buffer vb;
-> +       struct list_head queue;
-> +       union {
-> +               u32 buff_addr[VIDEO_MAX_PLANES];
-> +               void *vaddr[VIDEO_MAX_PLANES];
-> +       };
-> +};
-> +
-> +struct rk_vip_scratch_buffer {
-> +       void *vaddr;
-> +       dma_addr_t dma_addr;
-> +       u32 size;
-> +};
-> +
-> +extern int rk_vip_debug;
-> +
-> +static inline struct rk_vip_buffer *to_rk_vip_buffer(struct vb2_v4l2_buffer *vb)
+> +static inline void dma_buf_map_memcpy_to(struct dma_buf_map *dst, const void *src, size_t len)
 > +{
-> +       return container_of(vb, struct rk_vip_buffer, vb);
+> +	if (dst->is_iomem)
+> +		memcpy_toio(dst->vaddr_iomem, src, len);
+> +	else
+> +		memcpy(dst->vaddr, src, len);
 > +}
 > +
-> +/*
-> + * struct rk_vip_sensor_info - Sensor infomations
-> + * @mbus: media bus configuration
-> + */
-> +struct rk_vip_sensor_info {
-> +       struct v4l2_subdev *sd;
-> +       int pad;
-> +       struct v4l2_mbus_config mbus;
-> +       int lanes;
-> +};
-> +
-> +/*
-> + * struct vip_output_fmt - The output format
+> +/**
+> + * dma_buf_map_incr - Increments the address stored in a dma-buf mapping
+> + * @map:	The dma-buf mapping structure
+> + * @incr:	The number of bytes to increment
 > + *
-> + * @fourcc: pixel format in fourcc
-> + * @cplanes: number of colour planes
-> + * @fmt_val: the fmt val corresponding to VIP_FOR register
-> + * @bpp: bits per pixel for each cplanes
+> + * Increments the address stored in a dma-buf mapping. Depending on the
+> + * buffer's location, the correct value will be updated.
 > + */
-> +struct vip_output_fmt {
-> +       u32 fourcc;
-> +       u32 mbus;
-> +       u8 cplanes;
-> +       u32 fmt_val;
-> +       u8 bpp[VIDEO_MAX_PLANES];
-> +};
-> +
-> +enum vip_fmt_type {
-> +       VIP_FMT_TYPE_YUV = 0,
-> +       VIP_FMT_TYPE_RAW,
-> +};
-> +
-> +/*
-> + * struct vip_input_fmt - The input mbus format from sensor
-> + *
-> + * @mbus_code: mbus format
-> + * @dvp_fmt_val: the fmt val corresponding to VIP_FOR register
-> + * @csi_fmt_val: the fmt val corresponding to VIP_CSI_ID_CTRL
-> + * @field: the field type of the input from sensor
-> + */
-> +struct vip_input_fmt {
-> +       u32 mbus_code;
-> +       u32 dvp_fmt_val;
-> +       u32 csi_fmt_val;
-> +       enum vip_fmt_type fmt_type;
-> +       enum v4l2_field field;
-> +};
-> +
-> +/*
-> + * struct rk_vip_stream - Stream states TODO
-> + *
-> + * @vbq_lock: lock to protect buf_queue
-> + * @buf_queue: queued buffer list
-> + * @scratch_buf: scratch space to store dropped data
-> + *
-> + * rk_vip use shadowsock registers, so it need two buffer at a time
-> + * @curr_buf: the buffer used for current frame
-> + * @next_buf: the buffer used for next frame
-> + */
-> +struct rk_vip_stream {
-> +       struct rk_vip_device            *vipdev;
-> +       enum rk_vip_state               state;
-> +       bool                            stopping;
-> +       wait_queue_head_t               wq_stopped;
-> +       int                             frame_idx;
-> +       int                             frame_phase;
-> +
-> +       /* lock between irq and buf_queue */
-> +       spinlock_t                      vbq_lock;
-> +       struct vb2_queue                buf_queue;
-> +       struct list_head                buf_head;
-> +       struct rk_vip_scratch_buffer    scratch_buf;
-> +       struct rk_vip_buffer            *buffs[2];
-> +
-> +       /* vfd lock */
-> +       struct mutex                    vlock;
-> +       struct video_device             vdev;
-> +       /* TODO: pad for dvp and mipi separately? */
-> +       struct media_pad                pad;
-> +
-> +       const struct vip_output_fmt     *vip_fmt_out;
-> +       const struct vip_input_fmt      *vip_fmt_in;
-> +       struct v4l2_pix_format_mplane   pixm;
-> +       struct v4l2_rect                crop;
-> +       int                             crop_enable;
-> +};
-> +
-> +static inline struct rk_vip_stream *to_rk_vip_stream(struct video_device *vdev)
+> +static inline void dma_buf_map_incr(struct dma_buf_map *map, size_t incr)
 > +{
-> +       return container_of(vdev, struct rk_vip_stream, vdev);
+> +	if (map->is_iomem)
+> +		map->vaddr_iomem += incr;
+> +	else
+> +		map->vaddr += incr;
 > +}
 > +
-> +/*
-> + * struct rk_vip_device - ISP platform device
-> + * @base_addr: base register address
-> + * @active_sensor: sensor in-use, set when streaming on
-> + * @stream: capture video device
-> + */
-> +struct rk_vip_device {
-> +       struct list_head                list;
-> +       struct device                   *dev;
-> +       int                             irq;
-> +       void __iomem                    *base_addr;
-> +       void __iomem                    *csi_base;
-> +       struct clk                      *clks[RK_VIP_MAX_BUS_CLK];
-> +       int                             clk_size;
-> +       struct vb2_alloc_ctx            *alloc_ctx;
-> +       bool                            iommu_en;
-> +       struct iommu_domain             *domain;
-> +       struct reset_control            *vip_rst[RK_VIP_MAX_RESET];
-> +
-> +       struct v4l2_device              v4l2_dev;
-> +       struct media_device             media_dev;
-> +       struct v4l2_ctrl_handler        ctrl_handler;
-> +       struct v4l2_async_notifier      notifier;
-> +       struct v4l2_async_subdev        asd;
-> +       struct rk_vip_sensor_info       sensor;
-> +
-> +       struct rk_vip_stream            stream;
-> +
-> +       int                             chip_id;
-> +};
-> +
-> +void rk_vip_unregister_stream_vdev(struct rk_vip_device *dev);
-> +int rk_vip_register_stream_vdev(struct rk_vip_device *dev);
-> +void rk_vip_stream_init(struct rk_vip_device *dev);
-> +
-> +void rk_vip_irq_oneframe(struct rk_vip_device *vip_dev);
-> +void rk_vip_irq_pingpong(struct rk_vip_device *vip_dev);
-> +void rk_vip_soft_reset(struct rk_vip_device *vip_dev);
-> +
-> +#endif
-> diff --git a/drivers/media/platform/rockchip/vip/regs.h b/drivers/media/platform/rockchip/vip/regs.h
-> new file mode 100644
-> index 000000000000..cfe287ce5bf6
-> --- /dev/null
-> +++ b/drivers/media/platform/rockchip/vip/regs.h
-> @@ -0,0 +1,260 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Rockchip VIP Driver
-> + *
-> + * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
-> + */
-> +
-> +#ifndef _RK_VIP_REGS_H
-> +#define _RK_VIP_REGS_H
-> +
-> +/* VIP Reg Offset */
-> +#define VIP_CTRL                       0x00
-> +#define VIP_INTEN                      0x04
-> +#define VIP_INTSTAT                    0x08
-> +#define VIP_FOR                                0x0c
-> +#define VIP_LINE_NUM_ADDR              0x10
-> +#define VIP_FRM0_ADDR_Y                        0x14
-> +#define VIP_FRM0_ADDR_UV               0x18
-> +#define VIP_FRM1_ADDR_Y                        0x1c
-> +#define VIP_FRM1_ADDR_UV               0x20
-> +#define VIP_VIR_LINE_WIDTH             0x24
-> +#define VIP_SET_SIZE                   0x28
-> +#define VIP_SCM_ADDR_Y                 0x2c
-> +#define VIP_SCM_ADDR_U                 0x30
-> +#define VIP_SCM_ADDR_V                 0x34
-> +#define VIP_WB_UP_FILTER               0x38
-> +#define VIP_WB_LOW_FILTER              0x3c
-> +#define VIP_WBC_CNT                    0x40
-> +#define VIP_CROP                       0x44
-> +#define VIP_SCL_CTRL                   0x48
-> +#define VIP_SCL_DST                    0x4c
-> +#define VIP_SCL_FCT                    0x50
-> +#define VIP_SCL_VALID_NUM              0x54
-> +#define VIP_LINE_LOOP_CTR              0x58
-> +#define VIP_FRAME_STATUS               0x60
-> +#define VIP_CUR_DST                    0x64
-> +#define VIP_LAST_LINE                  0x68
-> +#define VIP_LAST_PIX                   0x6c
-> +
-> +/* RK1808 VIP CSI Registers Offset */
-> +#define VIP_CSI_ID0_CTRL0              0x80
-> +#define VIP_CSI_ID0_CTRL1              0x84
-> +#define VIP_CSI_ID1_CTRL0              0x88
-> +#define VIP_CSI_ID1_CTRL1              0x8c
-> +#define VIP_CSI_ID2_CTRL0              0x90
-> +#define VIP_CSI_ID2_CTRL1              0x94
-> +#define VIP_CSI_ID3_CTRL0              0x98
-> +#define VIP_CSI_ID3_CTRL1              0x9c
-> +#define VIP_CSI_WATER_LINE             0xa0
-> +#define VIP_CSI_FRM0_ADDR_Y_ID0                0xa4
-> +#define VIP_CSI_FRM1_ADDR_Y_ID0                0xa8
-> +#define VIP_CSI_FRM0_ADDR_UV_ID0       0xac
-> +#define VIP_CSI_FRM1_ADDR_UV_ID0       0xb0
-> +#define VIP_CSI_FRM0_VLW_Y_ID0         0xb4
-> +#define VIP_CSI_FRM1_VLW_Y_ID0         0xb8
-> +#define VIP_CSI_FRM0_VLW_UV_ID0                0xbc
-> +#define VIP_CSI_FRM1_VLW_UV_ID0                0xc0
-> +#define VIP_CSI_FRM0_ADDR_Y_ID1                0xc4
-> +#define VIP_CSI_FRM1_ADDR_Y_ID1                0xc8
-> +#define VIP_CSI_FRM0_ADDR_UV_ID1       0xcc
-> +#define VIP_CSI_FRM1_ADDR_UV_ID1       0xd0
-> +#define VIP_CSI_FRM0_VLW_Y_ID1         0xd4
-> +#define VIP_CSI_FRM1_VLW_Y_ID1         0xd8
-> +#define VIP_CSI_FRM0_VLW_UV_ID1                0xdc
-> +#define VIP_CSI_FRM1_VLW_UV_ID1                0xe0
-> +#define VIP_CSI_FRM0_ADDR_Y_ID2                0xe4
-> +#define VIP_CSI_FRM1_ADDR_Y_ID2                0xe8
-> +#define VIP_CSI_FRM0_ADDR_UV_ID2       0xec
-> +#define VIP_CSI_FRM1_ADDR_UV_ID2       0xf0
-> +#define VIP_CSI_FRM0_VLW_Y_ID2         0xf4
-> +#define VIP_CSI_FRM1_VLW_Y_ID2         0xf8
-> +#define VIP_CSI_FRM0_VLW_UV_ID2                0xfc
-> +#define VIP_CSI_FRM1_VLW_UV_ID2                0x100
-> +#define VIP_CSI_FRM0_ADDR_Y_ID3                0x104
-> +#define VIP_CSI_FRM1_ADDR_Y_ID3                0x108
-> +#define VIP_CSI_FRM0_ADDR_UV_ID3       0x10c
-> +#define VIP_CSI_FRM1_ADDR_UV_ID3       0x110
-> +#define VIP_CSI_FRM0_VLW_Y_ID3         0x114
-> +#define VIP_CSI_FRM1_VLW_Y_ID3         0x118
-> +#define VIP_CSI_FRM0_VLW_UV_ID3                0x11c
-> +#define VIP_CSI_FRM1_VLW_UV_ID3                0x120
-> +#define VIP_CSI_INTEN                  0x124
-> +#define VIP_CSI_INTSTAT                        0x128
-> +#define VIP_CSI_LINE_INT_NUM_ID0_1     0x12c
-> +#define VIP_CSI_LINE_INT_NUM_ID2_3     0x130
-> +#define VIP_CSI_LINE_CNT_ID0_1         0x134
-> +#define VIP_CSI_LINE_CNT_ID2_3         0x138
-> +#define VIP_CSI_ID0_CROP_START         0x13c
-> +#define VIP_CSI_ID1_CROP_START         0x140
-> +#define VIP_CSI_ID2_CROP_START         0x144
-> +#define VIP_CSI_ID3_CROP_START         0x148
-> +
-> +/* The key register bit description */
-> +
-> +/* VIP_CTRL Reg */
-> +#define VIP_CTRL_DISABLE_CAPTURE                       (0x0 << 0)
-> +#define VIP_CTRL_ENABLE_CAPTURE                        (0x1 << 0)
-> +#define VIP_CTRL_MODE_ONEFRAME                 (0x0 << 1)
-> +#define VIP_CTRL_MODE_PINGPONG                 (0x1 << 1)
-> +#define VIP_CTRL_MODE_LINELOOP                 (0x2 << 1)
-> +#define VIP_CTRL_AXI_BURST_16                  (0xF << 12)
-> +
-> +/* VIP_INTEN */
-> +#define VIP_INTEN_DISABLE                      (0x0 << 0)
-> +#define VIP_INTEN_FRAME_END_EN                 (0x1 << 0)
-> +#define VIP_INTEN_LINE_ERR_EN                  (0x1 << 2)
-> +#define VIP_INTEN_BUS_ERR_EN                   (0x1 << 6)
-> +#define VIP_INTEN_SCL_ERR_EN                   (0x1 << 7)
-> +#define VIP_INTEN_PST_INF_FRAME_END_EN         (0x1 << 9)
-> +
-> +/* VIP INTSTAT */
-> +#define VIP_INTSTAT_CLS                        (0x3FF)
-> +#define VIP_INTSTAT_FRAME_END                  (0x01 << 0)
-> +#define VIP_INTSTAT_LINE_END                   (0x01 << 1)
-> +#define VIP_INTSTAT_LINE_ERR                   (0x01 << 2)
-> +#define VIP_INTSTAT_PIX_ERR                    (0x01 << 3)
-> +#define VIP_INTSTAT_PRE_INF_FRAME_END          (0x01 << 8)
-> +#define VIP_INTSTAT_PST_INF_FRAME_END          (0x01 << 9)
-> +#define VIP_INTSTAT_FRAME_END_CLR                      (0x01 << 0)
-> +#define VIP_INTSTAT_LINE_END_CLR                       (0x01 << 1)
-> +#define VIP_INTSTAT_LINE_ERR_CLR                       (0x01 << 2)
-> +#define VIP_INTSTAT_PST_INF_FRAME_END_CLR              (0x01 << 9)
-> +#define VIP_INTSTAT_ERR                        (0xFC)
-> +
-> +/* VIP_FRAME STATUS */
-> +#define VIP_FRAME_STAT_CLS                     0x00
-> +#define VIP_FRAME_FRM0_STAT_CLS                        0x20    /* write 0 to clear frame 0 */
-> +
-> +/* VIP_FORMAT */
-> +#define VIP_FORMAT_VSY_HIGH_ACTIVE                     (0x01 << 0)
-> +#define VIP_FORMAT_VSY_LOW_ACTIVE                      (0x00 << 0)
-> +#define VIP_FORMAT_HSY_LOW_ACTIVE                      (0x01 << 1)
-> +#define VIP_FORMAT_HSY_HIGH_ACTIVE                     (0x00 << 1)
-> +#define VIP_FORMAT_INPUT_MODE_YUV                      (0x00 << 2)
-> +#define VIP_FORMAT_INPUT_MODE_PAL                      (0x02 << 2)
-> +#define VIP_FORMAT_INPUT_MODE_NTSC                     (0x03 << 2)
-> +#define VIP_FORMAT_INPUT_MODE_BT1120           (0x07 << 2)
-> +#define VIP_FORMAT_INPUT_MODE_RAW                      (0x04 << 2)
-> +#define VIP_FORMAT_INPUT_MODE_JPEG                     (0x05 << 2)
-> +#define VIP_FORMAT_INPUT_MODE_MIPI                     (0x06 << 2)
-> +#define VIP_FORMAT_YUV_INPUT_ORDER_UYVY                (0x00 << 5)
-> +#define VIP_FORMAT_YUV_INPUT_ORDER_YVYU                (0x01 << 5)
-> +#define VIP_FORMAT_YUV_INPUT_ORDER_VYUY                (0x10 << 5)
-> +#define VIP_FORMAT_YUV_INPUT_ORDER_YUYV                (0x03 << 5)
-> +#define VIP_FORMAT_YUV_INPUT_422                       (0x00 << 7)
-> +#define VIP_FORMAT_YUV_INPUT_420                       (0x01 << 7)
-> +#define VIP_FORMAT_INPUT_420_ORDER_EVEN                (0x00 << 8)
-> +#define VIP_FORMAT_INPUT_420_ORDER_ODD         (0x01 << 8)
-> +#define VIP_FORMAT_CCIR_INPUT_ORDER_ODD                (0x00 << 9)
-> +#define VIP_FORMAT_CCIR_INPUT_ORDER_EVEN               (0x01 << 9)
-> +#define VIP_FORMAT_RAW_DATA_WIDTH_8            (0x00 << 11)
-> +#define VIP_FORMAT_RAW_DATA_WIDTH_10           (0x01 << 11)
-> +#define VIP_FORMAT_RAW_DATA_WIDTH_12           (0x02 << 11)
-> +#define VIP_FORMAT_YUV_OUTPUT_422                      (0x00 << 16)
-> +#define VIP_FORMAT_YUV_OUTPUT_420                      (0x01 << 16)
-> +#define VIP_FORMAT_OUTPUT_420_ORDER_EVEN               (0x00 << 17)
-> +#define VIP_FORMAT_OUTPUT_420_ORDER_ODD                (0x01 << 17)
-> +#define VIP_FORMAT_RAWD_DATA_LITTLE_ENDIAN             (0x00 << 18)
-> +#define VIP_FORMAT_RAWD_DATA_BIG_ENDIAN                (0x01 << 18)
-> +#define VIP_FORMAT_UV_STORAGE_ORDER_UVUV               (0x00 << 19)
-> +#define VIP_FORMAT_UV_STORAGE_ORDER_VUVU               (0x01 << 19)
-> +#define VIP_FORMAT_BT1120_CLOCK_SINGLE_EDGES   (0x00 << 24)
-> +#define VIP_FORMAT_BT1120_CLOCK_DOUBLE_EDGES   (0x01 << 24)
-> +#define VIP_FORMAT_BT1120_TRANSMIT_INTERFACE   (0x00 << 25)
-> +#define VIP_FORMAT_BT1120_TRANSMIT_PROGRESS    (0x01 << 25)
-> +#define VIP_FORMAT_BT1120_YC_SWAP                      (0x01 << 26)
-> +
-> +/* VIP_SCL_CTRL */
-> +#define VIP_SCL_CTRL_ENABLE_SCL_DOWN                   (0x01 << 0)
-> +#define VIP_SCL_CTRL_DISABLE_SCL_DOWN          (0x00 << 0)
-> +#define VIP_SCL_CTRL_ENABLE_SCL_UP                     (0x01 << 1)
-> +#define VIP_SCL_CTRL_DISABLE_SCL_UP                    (0x00 << 1)
-> +#define VIP_SCL_CTRL_ENABLE_YUV_16BIT_BYPASS           (0x01 << 4)
-> +#define VIP_SCL_CTRL_DISABLE_YUV_16BIT_BYPASS  (0x00 << 4)
-> +#define VIP_SCL_CTRL_ENABLE_RAW_16BIT_BYPASS           (0x01 << 5)
-> +#define VIP_SCL_CTRL_DISABLE_RAW_16BIT_BYPASS  (0x00 << 5)
-> +#define VIP_SCL_CTRL_ENABLE_32BIT_BYPASS               (0x01 << 6)
-> +#define VIP_SCL_CTRL_DISABLE_32BIT_BYPASS              (0x00 << 6)
-> +
-> +/* VIP_INTSTAT */
-> +#define VIP_INTSTAT_F0_READY                   (0x01 << 0)
-> +#define VIP_INTSTAT_F1_READY                   (0x01 << 1)
-> +
-> +/* VIP_CROP */
-> +#define VIP_CROP_Y_SHIFT               16
-> +#define VIP_CROP_X_SHIFT               0
-> +
-> +/* VIP_CSI_ID_CTRL0 */
-> +#define VIP_CSI_DISABLE_CAPTURE                (0x0 << 0)
-> +#define VIP_CSI_ENABLE_CAPTURE         (0x1 << 0)
-> +#define VIP_CSI_WRDDR_TYPE_RAW8                (0x0 << 1)
-> +#define VIP_CSI_WRDDR_TYPE_RAW10               (0x1 << 1)
-> +#define VIP_CSI_WRDDR_TYPE_RAW12               (0x2 << 1)
-> +#define VIP_CSI_WRDDR_TYPE_RGB888              (0x3 << 1)
-> +#define VIP_CSI_WRDDR_TYPE_YUV422              (0x4 << 1)
-> +#define VIP_CSI_DISABLE_COMMAND_MODE   (0x0 << 4)
-> +#define VIP_CSI_ENABLE_COMMAND_MODE            (0x1 << 4)
-> +#define VIP_CSI_DISABLE_CROP           (0x0 << 5)
-> +#define VIP_CSI_ENABLE_CROP                    (0x1 << 5)
-> +
-> +/* VIP_CSI_INTEN */
-> +#define VIP_CSI_FRAME0_START_INTEN(id) (0x1 << ((id) * 2))
-> +#define VIP_CSI_FRAME1_START_INTEN(id) (0x1 << ((id) * 2 + 1))
-> +#define VIP_CSI_FRAME0_END_INTEN(id)   (0x1 << ((id) * 2 + 8))
-> +#define VIP_CSI_FRAME1_END_INTEN(id)   (0x1 << ((id) * 2 + 9))
-> +#define VIP_CSI_DMA_Y_FIFO_OVERFLOW_INTEN      (0x1 << 16)
-> +#define VIP_CSI_DMA_UV_FIFO_OVERFLOW_INTEN     (0x1 << 17)
-> +#define VIP_CSI_CONFIG_FIFO_OVERFLOW_INTEN     (0x1 << 18)
-> +#define VIP_CSI_BANDWIDTH_LACK_INTEN   (0x1 << 19)
-> +#define VIP_CSI_RX_FIFO_OVERFLOW_INTEN (0x1 << 20)
-> +#define VIP_CSI_ALL_FRAME_START_INTEN  (0xff << 0)
-> +#define VIP_CSI_ALL_FRAME_END_INTEN            (0xff << 8)
-> +#define VIP_CSI_ALL_ERROR_INTEN                (0x1f << 16)
-> +
-> +/* VIP_CSI_INTSTAT */
-> +#define VIP_CSI_FRAME0_START_ID0               (0x1 << 0)
-> +#define VIP_CSI_FRAME1_START_ID0               (0x1 << 1)
-> +#define VIP_CSI_FRAME0_START_ID1               (0x1 << 2)
-> +#define VIP_CSI_FRAME1_START_ID1               (0x1 << 3)
-> +#define VIP_CSI_FRAME0_START_ID2               (0x1 << 4)
-> +#define VIP_CSI_FRAME1_START_ID2               (0x1 << 5)
-> +#define VIP_CSI_FRAME0_START_ID3               (0x1 << 6)
-> +#define VIP_CSI_FRAME1_START_ID3               (0x1 << 7)
-> +#define VIP_CSI_FRAME0_END_ID0         (0x1 << 8)
-> +#define VIP_CSI_FRAME1_END_ID0         (0x1 << 9)
-> +#define VIP_CSI_FRAME0_END_ID1         (0x1 << 10)
-> +#define VIP_CSI_FRAME1_END_ID1         (0x1 << 11)
-> +#define VIP_CSI_FRAME0_END_ID2         (0x1 << 12)
-> +#define VIP_CSI_FRAME1_END_ID2         (0x1 << 13)
-> +#define VIP_CSI_FRAME0_END_ID3         (0x1 << 14)
-> +#define VIP_CSI_FRAME1_END_ID3         (0x1 << 15)
-> +#define VIP_CSI_DMA_Y_FIFO_OVERFLOW            (0x1 << 16)
-> +#define VIP_CSI_DMA_UV_FIFO_OVERFLOW   (0x1 << 17)
-> +#define VIP_CSI_CONFIG_FIFO_OVERFLOW   (0x1 << 18)
-> +#define VIP_CSI_BANDWIDTH_LACK         (0x1 << 19)
-> +#define VIP_CSI_RX_FIFO_OVERFLOW               (0x1 << 20)
-> +
-> +#define VIP_CSI_FIFO_OVERFLOW  (VIP_CSI_DMA_Y_FIFO_OVERFLOW |  \
-> +                                VIP_CSI_DMA_UV_FIFO_OVERFLOW | \
-> +                                VIP_CSI_CONFIG_FIFO_OVERFLOW | \
-> +                                VIP_CSI_RX_FIFO_OVERFLOW)
-> +
-> +/* CSI Host Registers Define */
-> +#define VIP_CSIHOST_N_LANES            0x04
-> +#define VIP_CSIHOST_PHY_RSTZ   0x0c
-> +#define VIP_CSIHOST_RESETN             0x10
-> +#define VIP_CSIHOST_ERR1               0x20
-> +#define VIP_CSIHOST_ERR2               0x24
-> +#define VIP_CSIHOST_MSK1               0x28
-> +#define VIP_CSIHOST_MSK2               0x2c
-> +#define VIP_CSIHOST_CONTROL            0x40
-> +
-> +#define VIP_SW_CPHY_EN(x)              ((x) << 0)
-> +#define VIP_SW_DSI_EN(x)               ((x) << 4)
-> +#define VIP_SW_DATATYPE_FS(x)  ((x) << 8)
-> +#define VIP_SW_DATATYPE_FE(x)  ((x) << 14)
-> +#define VIP_SW_DATATYPE_LS(x)  ((x) << 20)
-> +#define VIP_SW_DATATYPE_LE(x)  ((x) << 26)
-> +
-> +#endif
-> --
-> 2.25.4
->
+>  #endif /* __DMA_BUF_MAP_H__ */
+> -- 
+> 2.28.0
+> 
+
+-- 
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
 _______________________________________________
 Linux-rockchip mailing list
