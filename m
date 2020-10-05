@@ -2,79 +2,57 @@ Return-Path: <SRS0=gs2I=DM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BCF13C4727F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2020 14:41:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B6EC1C4363A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2020 15:01:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6F7FA20776
-	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2020 14:41:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6DC102078A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  5 Oct 2020 15:01:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BiN8u9y5"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F7FA20776
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A4HPa3zm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DC102078A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=denx.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=uWzQdepsEw5iPTQSru2m5HwRADhQPX1wRERub6qDxfs=; b=BiN8u9y5Eg9vn4i1YqQGQhona
-	RjxlDPSGYTlp1RznvreSrGfnshr8IQ/E5OZT7nIXM9TlbLJgPjTlvKeWCrEPvm7qPb88Tr4UNXfwt
-	l/cNLto09sOfLZdoWxGgGfXgmP0QNOMsVqAJs031vWnEbEbcwwIn3P+ZajMYGRVVhzAid483jo9Ez
-	qGPbcSVcfa5CQpMzOYjPENXJsft9rFXyR37Q5026pN3PrKwjXg+mYxHUfWJBblMZLJ66dVzlpa0ag
-	wyRxK13x39si6GJApAqGkr+4uWYKi+Zgjgkhrw3g9Mk4kCyTrDXOcoSN6Swu8+uYbAFN9/1n7BPOp
-	gYp2ORqRg==;
+	 bh=8tNzJsH5DtF3KIdBBv782ilUlmeKVZs2VpbgljR9wps=; b=A4HPa3zmRr0sbsrgVaOdWKu2g
+	x2QQo/p4Wz4qs9jiBD5Sg+x2Wrgg/0PegzR7GyUHy803I702jHi2yi12VjcukskUHSFJhcwEnFE+B
+	5fIqgXbF0FwWkrANh/9cjVGhP+JOeZLX7YtoGKiy1YKHtKvqZxzXm/ghA89GyNaVMJAXHQEb5rgHb
+	ZLGs6D/dmcn136I7q86KZFzuWRVDszEXHv92l38bg1n1XT8A6diVpI3/Ed3GFg6N/6bkPO5HYk54i
+	r7/gYjGHjplcC4VhPGT2OejxxR3EptEZkvx0LXDjmyDBIsxUWczltNkAWx7EPnuFbHaQ69vqhK5CD
+	MUSrxjL1w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kPRft-0002qt-VW; Mon, 05 Oct 2020 14:41:14 +0000
-Received: from mail-ot1-f68.google.com ([209.85.210.68])
+	id 1kPRzq-0006hz-8r; Mon, 05 Oct 2020 15:01:50 +0000
+Received: from jabberwock.ucw.cz ([46.255.230.98])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kPRfr-0002qJ-LH; Mon, 05 Oct 2020 14:41:12 +0000
-Received: by mail-ot1-f68.google.com with SMTP id n61so8793984ota.10;
- Mon, 05 Oct 2020 07:41:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=9bJPJc/0YFm4pMXzg6Pd5rp8R+BK4BSmdTiiXnloDY4=;
- b=Vw5o0YE4RFIPH+P9Bh6+d97ATANDECXLhXoG/P7neNO19sZsa4o9+4IMsuRbNpwJKW
- rEYIHOJUVdgSroxMxxP2MvWmTVDr8Lh2/jqCM8zmvE6In5Jp/lIK+czyBSJ4d1kAJjbs
- yidr47YilT+Cge6bpeUH9ixLHhIgi4G7DMWF26ZldY6nCTnaWY3p5V//WFTm2D1cHU6X
- YIdQCGfuBWLMCLuh8SLmyhmkzVhKK87upqfLHsGgHZtvuDY7fN7zsavfaoxMkrMIquKi
- K7yHJRq1+AIXZCwAevTFYTj+QRp1PXQrw7wFG5GbCbPbPF0q9VzBcGfaOVORChwqUovC
- fVTA==
-X-Gm-Message-State: AOAM533cfL9sy2xuiQvX6DFyP7+d5ms53kS1IE/w5nCg42HC9h10S1ER
- jAe3UDGBJRxbczBEo7CNSw==
-X-Google-Smtp-Source: ABdhPJxs9QD2rXZYSKcBC5z+8AzZfLlTL1JZdqwKI5hy0BOUwSmgkaRe0EA+ekgrzfEpXxDuIi8cxQ==
-X-Received: by 2002:a05:6830:1f2b:: with SMTP id
- e11mr12357240oth.296.1601908871008; 
- Mon, 05 Oct 2020 07:41:11 -0700 (PDT)
-Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id 2sm1921010oty.59.2020.10.05.07.41.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Oct 2020 07:41:10 -0700 (PDT)
-Received: (nullmailer pid 154079 invoked by uid 1000);
- Mon, 05 Oct 2020 14:41:09 -0000
-Date: Mon, 5 Oct 2020 09:41:09 -0500
-From: Rob Herring <robh@kernel.org>
-To: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-Subject: Re: [PATCH v10 1/8] dt-bindings: mtd: Describe Rockchip RK3xxx NAND
- flash controller
-Message-ID: <20201005144109.GA154028@bogus>
-References: <20200930020710.7394-1-yifeng.zhao@rock-chips.com>
- <20200930020710.7394-2-yifeng.zhao@rock-chips.com>
+ id 1kPRzn-0006h5-Um
+ for linux-rockchip@lists.infradead.org; Mon, 05 Oct 2020 15:01:49 +0000
+Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
+ id 3DF5F1C0B7C; Mon,  5 Oct 2020 17:01:43 +0200 (CEST)
+Date: Mon, 5 Oct 2020 17:01:42 +0200
+From: Pavel Machek <pavel@denx.de>
+To: Rob Herring <robh@kernel.org>
+Subject: Re: [PATCH] dt-bindings: Another round of adding missing
+ 'additionalProperties'
+Message-ID: <20201005150142.GA28675@duo.ucw.cz>
+References: <20201002234143.3570746-1-robh@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20200930020710.7394-2-yifeng.zhao@rock-chips.com>
+In-Reply-To: <20201002234143.3570746-1-robh@kernel.org>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201005_104111_711010_096F0414 
-X-CRM114-Status: GOOD (  14.56  )
+X-CRM114-CacheID: sfid-20201005_110148_126236_4268BC14 
+X-CRM114-Status: GOOD (  11.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,56 +65,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, vigneshr@ti.com, richard@nod.at,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, linux-mtd@lists.infradead.org, miquel.raynal@bootlin.com,
- linux-arm-kernel@lists.infradead.org, heiko@sntech.de
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, linux-iio@vger.kernel.org,
+ linux-pci@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>,
+ linux-remoteproc@vger.kernel.org, alsa-devel@alsa-project.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ Thierry Reding <thierry.reding@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ linux-clk@vger.kernel.org, linux-leds@vger.kernel.org,
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ linux-stm32@st-md-mailman.stormreply.com, linux-rockchip@lists.infradead.org,
+ linux-serial@vger.kernel.org, linux-mips@vger.kernel.org,
+ Guenter Roeck <linux@roeck-us.net>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-pm@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, linux-gpio@vger.kernel.org,
+ Mark Brown <broonie@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ openipmi-developer@lists.sourceforge.net,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, linux-hwmon@vger.kernel.org,
+ Stephen Boyd <sboyd@kernel.org>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
+ linux-mmc@vger.kernel.org, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-spi@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
+ netdev@vger.kernel.org, Baolin Wang <baolin.wang7@gmail.com>,
+ Shawn Guo <shawnguo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Jonathan Cameron <jic23@kernel.org>
+Content-Type: multipart/mixed; boundary="===============6315200012082377768=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 30 Sep 2020 10:07:07 +0800, Yifeng Zhao wrote:
-> Documentation support for Rockchip RK3xxx NAND flash controllers
-> 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> ---
-> 
-> Changes in v10: None
-> Changes in v9: None
-> Changes in v8:
-> - Fix make dt_binding_check error
-> 
-> Changes in v7:
-> - Fix some wrong define
-> 
-> Changes in v6:
-> - Fix some wrong define
-> - Modified the definition of compatible
-> 
-> Changes in v5:
-> - Fix some wrong define.
-> - Add boot-medium define.
-> - Remove some compatible define.
-> 
-> Changes in v4:
-> - The compatible define with rkxx_nfc.
-> - Add assigned-clocks.
-> - Fix some wrong defineChanges in.
-> 
-> Changes in v3:
-> - Change the title for the dt-bindings.
-> 
-> Changes in v2: None
-> 
->  .../mtd/rockchip,nand-controller.yaml         | 162 ++++++++++++++++++
->  1 file changed, 162 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
-> 
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+--===============6315200012082377768==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="xHFwDpU9dbj6ez1V"
+Content-Disposition: inline
+
+
+--xHFwDpU9dbj6ez1V
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hi!
+
+> Another round of wack-a-mole. The json-schema default is additional
+> unknown properties are allowed, but for DT all properties should be
+> defined.
+
+for leds:
+
+Acked-by: Pavel Machek <pavel@ucw.cz>
+
+I assume you apply it..?
+								Pavel
+							=09
+
+--=20
+(english) http://www.livejournal.com/~pavelmachek
+(cesky, pictures) http://atrey.karlin.mff.cuni.cz/~pavel/picture/horses/blo=
+g.html
+
+--xHFwDpU9dbj6ez1V
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCX3s1VgAKCRAw5/Bqldv6
+8owIAKDAkiq29W/tD49n7es9bNcHQLqXywCfWHIfHZ6OrlZTPZUQgy45PCK/EKM=
+=qVmv
+-----END PGP SIGNATURE-----
+
+--xHFwDpU9dbj6ez1V--
+
+
+--===============6315200012082377768==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6315200012082377768==--
+
