@@ -2,94 +2,90 @@ Return-Path: <SRS0=+p/r=DN=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D307DC41604
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2020 09:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B498CC41604
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2020 16:05:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5109720674
-	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2020 09:52:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 33EE820789
+	for <linux-rockchip@archiver.kernel.org>; Tue,  6 Oct 2020 16:05:52 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qzmMGrSC";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="FCLx73mo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5109720674
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qJCVKAv2";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="QnuSjKv9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33EE820789
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ecfo2LJbpmG7OzkuGhQDVy4OAN/UceEgEG3nZeZJFvk=; b=qzmMGrSCWViztLe3iddZDx/op
-	yrI4LGyLQX2LzRJs9rU6WDg8A6wGjYpwSRg8x/wWguTfONTnfI1tgwhs8idHAFEuvNFAfI3PNN7Cq
-	MuxghhIuQfAk8etw7Jm53TAIIkbd9CPRuOEDPbQKmWdTOlhmdsc6LPuFKJTVMJsl6Q7LfrauHciPZ
-	ndb6AfNsHezc2ZBtN+4nakb1o3LjchL3TDM51TCSN80jS9KoD45OLkC98g+8UMNhlswEMyMR4jtgA
-	q+HVoe0ZMb3i4MpabVJnbEFr1ZAfXQXODibm8dZlrNKxUTgnOZBUqxGV6cfdyuE8fBRGLeLqN+pQ3
-	UkuxdxIHg==;
+	 bh=af67rC87CaSRIpdbPpFuzsgY6lfOwC3AQGIuxZmfidc=; b=qJCVKAv2IEcZmOieBJlCl5IF0
+	I/lp+e5/f7vQl0x7i/38xrjivEPJao80k+MfWP0DAuPHjq35p44AoUflBhyhmxp303J2/NX3DCqpn
+	rZL2mV97FQvkkvaii2tJMcijh8N5ErP+hPT928O41GOloST7y7oDYbwzbqF8MojFdrsjBpxkA/3KX
+	saMfjPoRNVhxnZZD6n72p8RSE0gM8DoPmcSryEUQcog9Rwt38bzkF3aNfBujadtOi9tA0os6VXBvl
+	PnYi7UO/kgwDycdmImzlKX4WA/4B1qgoEMfGY/F0F//CIDYffmggEGbVn47ltU89IuVYumuftU0Hs
+	oayVltdEA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kPjdg-00015f-Sm; Tue, 06 Oct 2020 09:52:08 +0000
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
+	id 1kPpTE-0003HS-AA; Tue, 06 Oct 2020 16:05:44 +0000
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kPjdb-00013U-Im; Tue, 06 Oct 2020 09:52:04 +0000
-Received: by mail-ej1-x642.google.com with SMTP id p15so16705807ejm.7;
- Tue, 06 Oct 2020 02:52:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=BpndHynjiFOuceItUVm+AOdG3zbe75h4joXfwYhnJAg=;
- b=FCLx73moQAXqeIjasaAw7nsZvnH+svOrYn1ReUOpR2YYnEdn1Rw93VfaRHuhiv3Pbs
- Y4re8crhbHyo6oGRSxVJeua10lYk+UaKKgBJ6bnVji7ZmoniVQkNdUMJcXhvXJXaVEew
- VM5tYxc5Vljyfa6N/QiUCH/671ZaxGlC5EP1Ig8aifLkuR1c4etMCzVL3nhjHt/e7zlM
- aBn86JYpPvC9kFy5JgSi4hL9yYuFNcGUBLcKB/fHU5R3FpKCOCB0pSx6h018XFZj2YbO
- nZV16RDQ6Lih66mujQgRUlu/fNYqzmSN+ByvQuzsejexVkQSW4G4dcT50VaFx59ZikyJ
- R5Mg==
+ id 1kPpT3-0003D2-17
+ for linux-rockchip@lists.infradead.org; Tue, 06 Oct 2020 16:05:35 +0000
+Received: by mail-lj1-x241.google.com with SMTP id m16so9167945ljo.6
+ for <linux-rockchip@lists.infradead.org>; Tue, 06 Oct 2020 09:05:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=NF7N2mRAW3S3z+E29H9n2GJWFQgwjLjZu6wXpmNrAjA=;
+ b=QnuSjKv9RKJSS9usSHdc3csUNh37+SWBojV0KbiqRB/uUTyHw3PUCuPMbBoNLbSxch
+ ctAIEo0CDVjKJevPf8p4VuE6HubydpRxVZc5eeZYpcPCPuuydsALWD1AsCayyx2NYnUO
+ zyaCyTWKvoPYy/StmNcDNA20FouWPO/eLpEL/w6uUaDJl/xgZVobJnAY/bclDGlibLEB
+ VhtT98t14R2Wn5t2aOyfegJrVQG58LgYY1pesyCRO2hrouJk5XVsSuFAKCVmAJa/CaGL
+ P0BTqIS0stb/5p33JCdbJ1247LON+riDWu/XaHSTEniorXOPZ7QsRmYRWlyd2qbVXntJ
+ 5AMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=BpndHynjiFOuceItUVm+AOdG3zbe75h4joXfwYhnJAg=;
- b=hMSXeInTMcbZxRjYvg5rK+XRQyhwcNBNN3yywEAAoZkq074wbBvQG/0l0lhOhOnESb
- 3/6uaDgkcQWYJoOoH0P/fe0IfWT5UrHFGQeUMmYK8y1SchwuQ9FWTDCA/S2IS2cQcfKo
- HeVXGsMFrhgI4SoFK2Tnpu5jbfChSSghxm/CU/1X4inwkmpYGN44I2lYfVcGR8D22QaD
- yBR/DejLNIJDiKM1TBWOciHI49oxNjaA1gO2LI9N7p31eE0hDz9GrJCVC2qxSCxueVmh
- fHGc/H6jFUNmUkzIv42YXhYTHtjkUAyTSeXoQvnqYJQDRLmHeWDLwRT30hyqyp0WQJFr
- IShQ==
-X-Gm-Message-State: AOAM530hNnxpmF8kciMX5xVSriF9E2HaEgawZQmvsYEN9qhQBfyPHhcq
- o/LYRq66fw9gkCIYr7aqG0dVUykt9Og=
-X-Google-Smtp-Source: ABdhPJytDn5qeBQbaa/PyR2BMzIVAbfo2+hXQgKZxA3UE8zolJnnIZqwo0zBndyLTd1iD/j/syzE/w==
-X-Received: by 2002:a17:906:f106:: with SMTP id
- gv6mr4379100ejb.411.1601977920680; 
- Tue, 06 Oct 2020 02:52:00 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- e9sm1969902edu.49.2020.10.06.02.51.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Oct 2020 02:52:00 -0700 (PDT)
-Subject: Re: [PATCH v3] arm64: dts: rockchip: add SPDIF node for
- rk3399-rockpro64
-To: Katsuhiro Suzuki <katsuhiro@katsuster.net>,
- Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org
-References: <20201005140311.2507530-1-katsuhiro@katsuster.net>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <e5ab2c62-ad00-4cdf-8b0a-24fda59c980b@gmail.com>
-Date: Tue, 6 Oct 2020 11:51:58 +0200
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=NF7N2mRAW3S3z+E29H9n2GJWFQgwjLjZu6wXpmNrAjA=;
+ b=c63miuUFYttpUy1FWK9RE5QZlMQO4cGJ5bExQUinu8jMfO8RnjPv6g1AHlIdpSS6ij
+ z5exGk3VasL/UxfqZYvMm51lYqN3olG95hxYmFWIEBHpV4x8rqt9lnLjAqPFX8rxgBms
+ p9V7y8MH8sZi/Jk/N1kB0xQmJAVW5Wwwytu646TAoa6mSxM4zcNC5AJNIkBWn1xK+Z+O
+ ml2j8NJLjNlo8s2czJmlqkKCKqPDcAEFfVxAis5DKZbWCgZHmDc81CMkfGKXpU9kJfGm
+ 7NnQmscMfA5aoqchImZ+0/5Mwe3UlBN6OdxIU3JQSENYEmi42fJu0NNat5T92vucbm87
+ CIbQ==
+X-Gm-Message-State: AOAM530t2DLxU8Ll4KQhTFqS067QMhPka6Da3DBPp582fhjvEp2rDEwh
+ ZTPOU3meFcTnVmpp8rgcBmdTUQ==
+X-Google-Smtp-Source: ABdhPJzFR1bW78+ImmzRtpoOmMSKfadbIQz9q34xFBp+SWTiAX3i+KDBgDh1vUYYVDcwMdNCwHBdFQ==
+X-Received: by 2002:a2e:97c1:: with SMTP id m1mr2005098ljj.289.1602000330485; 
+ Tue, 06 Oct 2020 09:05:30 -0700 (PDT)
+Received: from localhost.localdomain (h-98-128-180-91.NA.cust.bahnhof.se.
+ [98.128.180.91])
+ by smtp.gmail.com with ESMTPSA id c16sm640925lfc.304.2020.10.06.09.05.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Oct 2020 09:05:29 -0700 (PDT)
+From: Ulf Hansson <ulf.hansson@linaro.org>
+To: "Rafael J . Wysocki" <rjw@rjwysocki.net>, Nishanth Menon <nm@ti.com>,
+ linux-pm@vger.kernel.org
+Subject: [PATCH 2/4] power: avs: rockchip-io: Move the driver to the rockchip
+ specific drivers
+Date: Tue,  6 Oct 2020 18:05:14 +0200
+Message-Id: <20201006160516.319830-3-ulf.hansson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20201006160516.319830-1-ulf.hansson@linaro.org>
+References: <20201006160516.319830-1-ulf.hansson@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20201005140311.2507530-1-katsuhiro@katsuster.net>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201006_055203_656827_ADE44AD0 
-X-CRM114-Status: GOOD (  26.16  )
+X-CRM114-CacheID: sfid-20201006_120533_129205_FAEA8D0C 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,170 +98,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Aaro Koskinen <aaro.koskinen@iki.fi>, Tony Lindgren <tony@atomide.com>,
+ Kevin Hilman <khilman@kernel.org>, linux-kernel@vger.kernel.org,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, Niklas Cassel <nks@flawful.org>,
+ linux-rockchip@lists.infradead.org, Andy Gross <agross@kernel.org>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Katsuhiro, Heiko,
+The avs drivers are all SoC specific drivers that doesn't share any code.
+Instead they are located in a directory, mostly to keep similar
+functionality together. From a maintenance point of view, it makes better
+sense to collect SoC specific drivers like these, into the SoC specific
+directories.
 
-Question for the maintainer:
-Should we add a SPDIF node if the connector is not physical on a board,
-only a header?
+Therefore, let's move the rockchip-io driver to the rockchip directory.
 
-Thanks Katsuhiro for the "aplay -l" screen print.
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/power/avs/Kconfig                                 | 8 --------
+ drivers/power/avs/Makefile                                | 1 -
+ drivers/soc/rockchip/Kconfig                              | 8 ++++++++
+ drivers/soc/rockchip/Makefile                             | 1 +
+ .../avs/rockchip-io-domain.c => soc/rockchip/io-domain.c} | 0
+ 5 files changed, 9 insertions(+), 9 deletions(-)
+ rename drivers/{power/avs/rockchip-io-domain.c => soc/rockchip/io-domain.c} (100%)
 
-**** List of PLAYBACK Hardware Devices ****
-card 0: hdmisound [hdmi-sound], device 0: ff8a0000.i2s-i2s-hifi
-i2s-hifi-0 [ff8a0000.i2s-i2s-hifi i2s-hifi-0]
-  Subdevices: 1/1
-  Subdevice #0: subdevice #0
-card 1: rockchiprk3399 [rockchip,rk3399], device 0: ff890000.i2s-ES8316
-HiFi ES8316 HiFi-0 [ff890000.i2s-ES8316 HiFi ES8316 HiFi-0]
-  Subdevices: 1/1
-  Subdevice #0: subdevice #0
-card 2: rockchiprk339_1 [rockchip,rk3399], device 0:
-ff870000.spdif-dit-hifi dit-hifi-0 [ff870000.spdif-dit-hifi dit-hifi-0]
-  Subdevices: 1/1
-  Subdevice #0: subdevice #0
-
-
-On 10/5/20 4:03 PM, Katsuhiro Suzuki wrote:
-> This patch adds 'disabled' SPDIF sound node and related settings
-> of SPDIF for rk3399-rockpro64.
-> 
-> RockPro64 has output pins for SPDIF Tx. But RK3399 does not have
-> enough DMA channel for enabling SPDIF tx. Current settings are:
-> 
->   - I2S0     (Req num 0, 1): Enabled : Output to 40pins header CON40
->   - I2S1     (Req num 2, 3): Enabled : Output to ES8316 on board
->   - I2S2     (Req num 4, 5): Enabled : Output to internal HDMI core
->   - SPDIF Tx (Req num 7)   : Disabled: Output to connector J10
-> 
-> If users want to enable ALL sound I/Os, we need 7 DMA channels for
-> it. But unfortunately, RK3399 has only 6 DMA channels. So users have
-> to choose from the following:
-> 
->   - Disable one of I2S (Ex. I2S0) and enable SPDIF tx
->   - Keep enable I2S0/1/2 and disable SPDIF tx
-> 
-> Signed-off-by: Katsuhiro Suzuki <katsuhiro@katsuster.net>
-> 
-> ---
-> 
-> Changes in v3:
->   - Refine commit description why adding disabled node
-> 
-> Changes in v2:
->   - Remove redundant status property
-> ---
->  .../boot/dts/rockchip/rk3399-rockpro64.dtsi   | 27 +++++++++++++++++++
->  1 file changed, 27 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-> index 6e553ff47534..58097245994a 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-rockpro64.dtsi
-> @@ -76,6 +76,23 @@ sound {
->  		dais = <&i2s1_p0>;
->  	};
->  
-
-
-	hdmi_sound: hdmi-sound {
-		compatible = "simple-audio-card";
-		simple-audio-card,name = "hdmi-sound";
-
-Maybe rename to "HDMI"?
-
-[..]
-	};
-
-	sound {
-		compatible = "audio-graph-card";
-		label = "rockchip,rk3399";
-
-Maybe change this to "ES8316" to prevent confusion?
-
-		dais = <&i2s1_p0>;
-	};
-
-
-> +	sound-dit {
-> +		compatible = "audio-graph-card"
-> +		label = "rockchip,rk3399";
-
-This would be the second sound card with the same label.
-It seems that aplay/linux? adds "-1" to it and removes the comma, so we get:
-
-hdmisound
-rockchiprk3399
-rockchiprk339_1
-
-Shouldn't we label it with something that reflect the function/output.
-Shouldn't we standardize to SPDIF, HDMI and Analog similar to rk3318/rk3328?
-Make a shorter label without spaces or special chars, so that chars
-don't get removed?
-
-Proposal:
-
-HDMI
-ES8316
-SPDIF
-
-> +		dais = <&spdif_p0>;
-
-Maybe disable too?
-
-The "sound-dit" node is standard enabled and will start some process
-with a dia in a node that is disabled.
-
-
-> +	};
-> +
-> +	spdif-dit {
-> +		compatible = "linux,spdif-dit";
-> +		#sound-dai-cells = <0>;
-
-Maybe disable too?
-
-> +
-> +		port {
-> +			dit_p0_0: endpoint {
-
-> +				remote-endpoint = <&spdif_p0_0>;
-
-This also points to something that's disabled.
-
-> +			};
-> +		};
-> +	};
-> +
->  	vcc12v_dcin: vcc12v-dcin {
->  		compatible = "regulator-fixed";
->  		regulator-name = "vcc12v_dcin";
-> @@ -698,6 +715,16 @@ &sdhci {
->  	status = "okay";
->  };
->  
-> +&spdif {
-> +	pinctrl-0 = <&spdif_bus_1>;
-
-This node is disabled.
-
-> +
-> +	spdif_p0: port {
-> +		spdif_p0_0: endpoint {
-> +			remote-endpoint = <&dit_p0_0>;
-> +		};
-> +	};
-> +};
-> +
->  &spi1 {
->  	status = "okay";
->  
-> 
+diff --git a/drivers/power/avs/Kconfig b/drivers/power/avs/Kconfig
+index 089b6244b716..9dde5a7e75c9 100644
+--- a/drivers/power/avs/Kconfig
++++ b/drivers/power/avs/Kconfig
+@@ -11,11 +11,3 @@ menuconfig POWER_AVS
+ 	  AVS is also called SmartReflex on OMAP devices.
+ 
+ 	  Say Y here to enable Adaptive Voltage Scaling class support.
+-
+-config ROCKCHIP_IODOMAIN
+-	tristate "Rockchip IO domain support"
+-	depends on POWER_AVS && ARCH_ROCKCHIP && OF
+-	help
+-	  Say y here to enable support io domains on Rockchip SoCs. It is
+-	  necessary for the io domain setting of the SoC to match the
+-	  voltage supplied by the regulators.
+diff --git a/drivers/power/avs/Makefile b/drivers/power/avs/Makefile
+index a1b8cd453f19..d541d436f01d 100644
+--- a/drivers/power/avs/Makefile
++++ b/drivers/power/avs/Makefile
+@@ -1,3 +1,2 @@
+ # SPDX-License-Identifier: GPL-2.0-only
+ obj-$(CONFIG_POWER_AVS_OMAP)		+= smartreflex.o
+-obj-$(CONFIG_ROCKCHIP_IODOMAIN)		+= rockchip-io-domain.o
+diff --git a/drivers/soc/rockchip/Kconfig b/drivers/soc/rockchip/Kconfig
+index b71b73bf5fc5..2c13bf4dd5db 100644
+--- a/drivers/soc/rockchip/Kconfig
++++ b/drivers/soc/rockchip/Kconfig
+@@ -14,6 +14,14 @@ config ROCKCHIP_GRF
+ 	  In a lot of cases there also need to be default settings initialized
+ 	  to make some of them conform to expectations of the kernel.
+ 
++config ROCKCHIP_IODOMAIN
++	tristate "Rockchip IO domain support"
++	depends on OF
++	help
++	  Say y here to enable support io domains on Rockchip SoCs. It is
++	  necessary for the io domain setting of the SoC to match the
++	  voltage supplied by the regulators.
++
+ config ROCKCHIP_PM_DOMAINS
+         bool "Rockchip generic power domain"
+         depends on PM
+diff --git a/drivers/soc/rockchip/Makefile b/drivers/soc/rockchip/Makefile
+index afca0a4c4b72..875032f7344e 100644
+--- a/drivers/soc/rockchip/Makefile
++++ b/drivers/soc/rockchip/Makefile
+@@ -3,4 +3,5 @@
+ # Rockchip Soc drivers
+ #
+ obj-$(CONFIG_ROCKCHIP_GRF) += grf.o
++obj-$(CONFIG_ROCKCHIP_IODOMAIN) += io-domain.o
+ obj-$(CONFIG_ROCKCHIP_PM_DOMAINS) += pm_domains.o
+diff --git a/drivers/power/avs/rockchip-io-domain.c b/drivers/soc/rockchip/io-domain.c
+similarity index 100%
+rename from drivers/power/avs/rockchip-io-domain.c
+rename to drivers/soc/rockchip/io-domain.c
+-- 
+2.25.1
 
 
 _______________________________________________
