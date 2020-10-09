@@ -1,77 +1,75 @@
-Return-Path: <SRS0=dbmB=DP=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=itU/=DQ=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 05259C433DF
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2020 19:47:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3CEE8C8303A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Oct 2020 19:58:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6DE6D221FC
-	for <linux-rockchip@archiver.kernel.org>; Thu,  8 Oct 2020 19:47:35 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id ED59C225A9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  9 Oct 2020 19:58:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iFK63PUA";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="pSfKtOkA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DE6D221FC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="S2h7jhux"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED59C225A9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=qt+w84lVZUtYaeJp0VLgXHX4uRNqY5HZmcpYxbzrMrY=; b=iFK63PUA7l7PfRGjej1BtyE6V
-	kxON1bOkqEnrhGx6b8/tvQB4j0UIwPBndB/Y0NOSI5cauh81i9xBVdy00pcjQsSXBSR1qL8I5sQYQ
-	albLD/dC0VBjSnTWg3JOnpiDZUp4mBBKCdCsOmvpXb2QUAMKpyF/ZVc1+N3EHj189v6Jfkuxeg4GT
-	Kfauj2MA2d8+s9sXWHtJWu0+UHF4auyZakhr0/NKk4idi32uCV65K7TJqbYkvELr8dS61lFHNmHlY
-	j+JdAdDEg5zU6y3WmKUQwEGtmRYlSaZxtPg04fQsTJjwYElFmLqAzr2opZEZ/VODJVtGoua5Im/Md
-	++MiMHgkA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0UlF+2DDP/5S+d01FFYzxWuDBoONxi7MIfQR3FSp8mA=; b=S2h7jhux3CR3SrDsRBmTaPe6k0
+	7EUdlyjShALHexyAye0k0+VZ37zSkHc84QSAlbvhehri9TvoMbRtrARmfu3sD1QijUd2aPKrdOO9p
+	WdNgxJjNXmDL3Di5FQGk0Ix+yNckJ07eYWYGylEV9yI/857awomSgwaj9/uiY/ArPqecYRJdIUbOl
+	eeWE2pDAEDvEVAJsSyRTliQ4geYOzC2CZm1GFjzmefZkjfBcAdcyvIDeOgu2AHpNQa1Lgc938e1Eo
+	7ZhfNtGDR5yKuxWLIqb7qOIy2nR64rQm+oiNs+EFKGV8kAkOV+GPKn8aLmcJsSeyuTb2yOmskYDWA
+	pIpEKNQA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kQbsu-0007LP-NN; Thu, 08 Oct 2020 19:47:28 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kQyWU-00048Q-FK; Fri, 09 Oct 2020 19:57:50 +0000
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kQbsp-0007KC-HI; Thu, 08 Oct 2020 19:47:24 +0000
-Received: from mail-oi1-f182.google.com (mail-oi1-f182.google.com
- [209.85.167.182])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 5CE3F221FC;
- Thu,  8 Oct 2020 19:47:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1602186442;
- bh=SogUjMB0CBlzI2GJG+eOsj9We4ZGEMenuo5pC/MW5eQ=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=pSfKtOkAypzDoteeVFxZt86mzhGnusdufe5AeGmfvWZbYg/ZTKlCqNUkNaE4eIQJ6
- svxa2XxdTtuoAYygm/TAu6gPgxjlMbQ0sFLodUAsU/uxuvMtIEygFvaGQ3vj95e6Y3
- fvYXRR9Tn+8OASb9L0Mz7A8fS1SBp6yvo0aB5ujA=
-Received: by mail-oi1-f182.google.com with SMTP id t77so7615074oie.4;
- Thu, 08 Oct 2020 12:47:22 -0700 (PDT)
-X-Gm-Message-State: AOAM5310UKtd41Lu7ciGJUZ5vJ7e5HDgcOhkwpTdFZkoKxrWn8rppGYI
- f91QHiraF+kxZqKd5NYA0nGS5OFlvd6DlOSX/A==
-X-Google-Smtp-Source: ABdhPJz2oNaku/oyyTmq42V8qnOXwViBgeYQXBKIrGbtQCDZkxU2VZpGkDVbUpGPZwahfqM+0DKZamEWEptncS+yMbQ=
-X-Received: by 2002:aca:4c52:: with SMTP id z79mr275043oia.147.1602186441518; 
- Thu, 08 Oct 2020 12:47:21 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200921092951.945382-1-enric.balletbo@collabora.com>
- <20201007151159.GA221754@bogus>
- <CAFqH_531fkh_gZbOMuzhsRj-72NeWsPyxWoFQh9bAF3CZwTfNw@mail.gmail.com>
-In-Reply-To: <CAFqH_531fkh_gZbOMuzhsRj-72NeWsPyxWoFQh9bAF3CZwTfNw@mail.gmail.com>
+ id 1kQySO-0001lZ-P4; Fri, 09 Oct 2020 19:53:48 +0000
+Received: by mail-ot1-x341.google.com with SMTP id n61so10049818ota.10;
+ Fri, 09 Oct 2020 12:53:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RuJMRkm/6mOfAA06cZuhfs1T0jl6aR1m0eqVuTh18Xg=;
+ b=AwcXxA/72TXwl6AkDz6fj13kFBzifLpRYjnJFIA7Ywqxbjxv7BC+6QLc3p3RjKe3yU
+ hcwEpmX78txktcO+q+zLC9BsacBGO0A/2zq1J72rAnKWotv7850KnKhgkAjS5sHYCTw8
+ kgSDkQ10i6gnPWNJwxoMZkr+wg6mFE4upUsdkmce8qDEnKYMhjmGHKRaaoRVxZi33+oj
+ sl6c0Bbhx7Mq0qX0mBR55prXetWlbk1ivSv2Tt+LpmnUPZvAK6QRaR9xEcJhqhblkzpH
+ JBlY37eE37gUfY6km45OfZymo1RmWuvehbWcBvEQDTDuPUfa61ci2Hly2UfiuXeuVqKb
+ waLQ==
+X-Gm-Message-State: AOAM530L3LdeBexPtVfMzqZbCZsc1GD1+dAvEmwps2ylBPoP4QTTEjMq
+ EG+9y8RGMj4L74zaNBP5fQ==
+X-Google-Smtp-Source: ABdhPJwi1Nt0bUQebv1yfgeFfw3DTpd+okHMVMA/kAzJwhWYLHi73v6K/4pHkplIlP85ycCMJBtTgA==
+X-Received: by 2002:a9d:638d:: with SMTP id w13mr9789206otk.32.1602273212011; 
+ Fri, 09 Oct 2020 12:53:32 -0700 (PDT)
+Received: from xps15.herring.priv (24-155-109-49.dyn.grandenetworks.net.
+ [24.155.109.49])
+ by smtp.googlemail.com with ESMTPSA id t20sm8316526oot.22.2020.10.09.12.53.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 09 Oct 2020 12:53:31 -0700 (PDT)
 From: Rob Herring <robh@kernel.org>
-Date: Thu, 8 Oct 2020 14:47:08 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqL7ej3o_qzb7r+Nmdp=YkuYciqRYYcFo4Z21OGOvkn-3A@mail.gmail.com>
-Message-ID: <CAL_JsqL7ej3o_qzb7r+Nmdp=YkuYciqRYYcFo4Z21OGOvkn-3A@mail.gmail.com>
-Subject: Re: [PATCH v3] dt-bindings: power: rockchip: Convert to json-schema
-To: Enric Balletbo Serra <eballetbo@gmail.com>
+To: linux-pci@vger.kernel.org
+Subject: [PATCH] PCI: Move Rockchip driver to Cadence directory
+Date: Fri,  9 Oct 2020 14:53:30 -0500
+Message-Id: <20201009195330.396775-1-robh@kernel.org>
+X-Mailer: git-send-email 2.25.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201008_154723_708213_6730FC90 
-X-CRM114-Status: GOOD (  35.15  )
+X-CRM114-CacheID: sfid-20201009_155336_964186_3F17DB23 
+X-CRM114-Status: GOOD (  17.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,139 +82,194 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Doug Anderson <dianders@chromium.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Collabora Kernel ML <kernel@collabora.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Caesar Wang <wxt@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, Shawn Lin <shawn.lin@rock-chips.com>,
+ linux-rockchip@lists.infradead.org, Tom Joseph <tjoseph@cadence.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBPY3QgNywgMjAyMCBhdCAzOjU3IFBNIEVucmljIEJhbGxldGJvIFNlcnJhIDxlYmFs
-bGV0Ym9AZ21haWwuY29tPiB3cm90ZToKPgo+IEhpIFJvYiwKPgo+IE1pc3NhdGdlIGRlIFJvYiBI
-ZXJyaW5nIDxyb2JoQGtlcm5lbC5vcmc+IGRlbCBkaWEgZGMuLCA3IGTigJlvY3QuIDIwMjAgYQo+
-IGxlcyAxNzoxMjoKPiA+Cj4gPiBPbiBNb24sIFNlcCAyMSwgMjAyMCBhdCAxMToyOTo1MUFNICsw
-MjAwLCBFbnJpYyBCYWxsZXRibyBpIFNlcnJhIHdyb3RlOgo+ID4gPiBDb252ZXJ0IHRoZSBzb2Mv
-cm9ja2NoaXAvcG93ZXJfZG9tYWluLnR4dCBiaW5kaW5nIGRvY3VtZW50IHRvIGpzb24tc2NoZW1h
-Cj4gPiA+IGFuZCBtb3ZlIHRvIHRoZSBwb3dlciBiaW5kaW5ncyBkaXJlY3RvcnkuCj4gPiA+Cj4g
-PiA+IFNpZ25lZC1vZmYtYnk6IEVucmljIEJhbGxldGJvIGkgU2VycmEgPGVucmljLmJhbGxldGJv
-QGNvbGxhYm9yYS5jb20+Cj4gPiA+IC0tLQo+ID4gPgo+ID4gPiBDaGFuZ2VzIGluIHYzOgo+ID4g
-PiAtIEZpeGVkIHRhYiBlcnJvcnMgZm91bmQgYnkgYm90Cj4gPiA+Cj4gPiA+IENoYW5nZXMgaW4g
-djI6Cj4gPiA+IC0gRml4ZWQgYSB3YXJuaW5nIHRoYXQgc2F5cyB0aGF0ICdzeXNjb24nIHNob3Vs
-ZCBub3QgYmUgdXNlZCBhbG9uZS4KPiA+ID4gLSBVc2UgcGF0dGVyblByb3BlcnRpZXMgdG8gZGVm
-aW5lIGEgbmV3IGxldmVsIGZvciBwb3dlci1kb21haW5zLgo+ID4gPiAtIEFkZCBjb25zdCB2YWx1
-ZXMgZm9yIHBvd2VyLWRvbWFpbi1jZWxscywgYWRkcmVzcy1jZWxscywgZXRjLgo+ID4gPgo+ID4g
-PiAgLi4uL3Bvd2VyL3JvY2tjaGlwLHBvd2VyLWNvbnRyb2xsZXIueWFtbCAgICAgIHwgMjA3ICsr
-KysrKysrKysrKysrKysrKwo+ID4gPiAgLi4uL2JpbmRpbmdzL3NvYy9yb2NrY2hpcC9wb3dlcl9k
-b21haW4udHh0ICAgIHwgMTM2IC0tLS0tLS0tLS0tLQo+ID4gPiAgMiBmaWxlcyBjaGFuZ2VkLCAy
-MDcgaW5zZXJ0aW9ucygrKSwgMTM2IGRlbGV0aW9ucygtKQo+ID4gPiAgY3JlYXRlIG1vZGUgMTAw
-NjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wb3dlci9yb2NrY2hpcCxwb3dl
-ci1jb250cm9sbGVyLnlhbWwKPiA+ID4gIGRlbGV0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9u
-L2RldmljZXRyZWUvYmluZGluZ3Mvc29jL3JvY2tjaGlwL3Bvd2VyX2RvbWFpbi50eHQKPiA+ID4K
-PiA+ID4gZGlmZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wb3dl
-ci9yb2NrY2hpcCxwb3dlci1jb250cm9sbGVyLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvcG93ZXIvcm9ja2NoaXAscG93ZXItY29udHJvbGxlci55YW1sCj4gPiA+IG5l
-dyBmaWxlIG1vZGUgMTAwNjQ0Cj4gPiA+IGluZGV4IDAwMDAwMDAwMDAwMC4uYjIzZWEzN2UyYTA4
-Cj4gPiA+IC0tLSAvZGV2L251bGwKPiA+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL3Bvd2VyL3JvY2tjaGlwLHBvd2VyLWNvbnRyb2xsZXIueWFtbAo+ID4gPiBAQCAt
-MCwwICsxLDIwNyBAQAo+ID4gPiArIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0yLjAt
-b25seSBPUiBCU0QtMi1DbGF1c2UpCj4gPiA+ICslWUFNTCAxLjIKPiA+ID4gKy0tLQo+ID4gPiAr
-JGlkOiBodHRwOi8vZGV2aWNldHJlZS5vcmcvc2NoZW1hcy9wb3dlci9yb2NrY2hpcCxwb3dlci1j
-b250cm9sbGVyLnlhbWwjCj4gPiA+ICskc2NoZW1hOiBodHRwOi8vZGV2aWNldHJlZS5vcmcvbWV0
-YS1zY2hlbWFzL2NvcmUueWFtbCMKPiA+ID4gKwo+ID4gPiArdGl0bGU6IFJvY2tjaGlwIFBvd2Vy
-IERvbWFpbnMKPiA+ID4gKwo+ID4gPiArbWFpbnRhaW5lcnM6Cj4gPiA+ICsgIC0gQ2Flc2FyIFdh
-bmcgPHd4dEByb2NrLWNoaXBzLmNvbT4KPiA+ID4gKyAgLSBIZWlrbyBTdHVlYm5lciA8aGVpa29A
-c250ZWNoLmRlPgo+ID4gPiArCj4gPiA+ICtkZXNjcmlwdGlvbjogfAo+ID4gPiArICBSb2NrY2hp
-cCBwcm9jZXNzb3JzIGluY2x1ZGUgc3VwcG9ydCBmb3IgbXVsdGlwbGUgcG93ZXIgZG9tYWlucyB3
-aGljaCBjYW4gYmUKPiA+ID4gKyAgcG93ZXJlZCB1cC9kb3duIGJ5IHNvZnR3YXJlIGJhc2VkIG9u
-IGRpZmZlcmVudCBhcHBsaWNhdGlvbiBzY2VuZXMgdG8gc2F2ZSBwb3dlci4KPiA+ID4gKwo+ID4g
-PiArICBQb3dlciBkb21haW5zIGNvbnRhaW5lZCB3aXRoaW4gcG93ZXItY29udHJvbGxlciBub2Rl
-IGFyZSBnZW5lcmljIHBvd2VyIGRvbWFpbgo+ID4gPiArICBwcm92aWRlcnMgZG9jdW1lbnRlZCBp
-biBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcG93ZXIvcG93ZXItZG9tYWluLnlh
-bWwuCj4gPiA+ICsKPiA+ID4gKyAgSVAgY29yZXMgYmVsb25naW5nIHRvIGEgcG93ZXIgZG9tYWlu
-IHNob3VsZCBjb250YWluIGEgJ3Bvd2VyLWRvbWFpbnMnCj4gPiA+ICsgIHByb3BlcnR5IHRoYXQg
-aXMgYSBwaGFuZGxlIGZvciB0aGUgcG93ZXIgZG9tYWluIG5vZGUgcmVwcmVzZW50aW5nIHRoZSBk
-b21haW4uCj4gPiA+ICsKPiA+ID4gK3Byb3BlcnRpZXM6Cj4gPiA+ICsgICRub2RlbmFtZToKPiA+
-ID4gKyAgICBjb25zdDogcG93ZXItY29udHJvbGxlcgo+ID4gPiArCj4gPiA+ICsgIGNvbXBhdGli
-bGU6Cj4gPiA+ICsgICAgZW51bToKPiA+ID4gKyAgICAgIC0gcm9ja2NoaXAscHgzMC1wb3dlci1j
-b250cm9sbGVyCj4gPiA+ICsgICAgICAtIHJvY2tjaGlwLHJrMzAzNi1wb3dlci1jb250cm9sbGVy
-Cj4gPiA+ICsgICAgICAtIHJvY2tjaGlwLHJrMzA2Ni1wb3dlci1jb250cm9sbGVyCj4gPiA+ICsg
-ICAgICAtIHJvY2tjaGlwLHJrMzEyOC1wb3dlci1jb250cm9sbGVyCj4gPiA+ICsgICAgICAtIHJv
-Y2tjaGlwLHJrMzE4OC1wb3dlci1jb250cm9sbGVyCj4gPiA+ICsgICAgICAtIHJvY2tjaGlwLHJr
-MzIyOC1wb3dlci1jb250cm9sbGVyCj4gPiA+ICsgICAgICAtIHJvY2tjaGlwLHJrMzI4OC1wb3dl
-ci1jb250cm9sbGVyCj4gPiA+ICsgICAgICAtIHJvY2tjaGlwLHJrMzMyOC1wb3dlci1jb250cm9s
-bGVyCj4gPiA+ICsgICAgICAtIHJvY2tjaGlwLHJrMzM2Ni1wb3dlci1jb250cm9sbGVyCj4gPiA+
-ICsgICAgICAtIHJvY2tjaGlwLHJrMzM2OC1wb3dlci1jb250cm9sbGVyCj4gPiA+ICsgICAgICAt
-IHJvY2tjaGlwLHJrMzM5OS1wb3dlci1jb250cm9sbGVyCj4gPiA+ICsKPiA+ID4gKyAgJyNwb3dl
-ci1kb21haW4tY2VsbHMnOgo+ID4gPiArICAgIGNvbnN0OiAxCj4gPiA+ICsKPiA+ID4gKyAgJyNh
-ZGRyZXNzLWNlbGxzJzoKPiA+ID4gKyAgICBjb25zdDogMQo+ID4gPiArCj4gPiA+ICsgICcjc2l6
-ZS1jZWxscyc6Cj4gPiA+ICsgICAgY29uc3Q6IDAKPiA+ID4gKwo+ID4gPiArcGF0dGVyblByb3Bl
-cnRpZXM6Cj4gPiA+ICsgICJecG93ZXItZG9tYWluQFswLTldKyQiOgo+ID4KPiA+IHVuaXQtYWRk
-cmVzc2VzIGFyZSBoZXguCj4gPgo+ID4gPiArICAgIHR5cGU6IG9iamVjdAo+ID4gPiArICAgIGRl
-c2NyaXB0aW9uOiB8Cj4gPiA+ICsgICAgICBSZXByZXNlbnRzIHRoZSBwb3dlciBkb21haW5zIHdp
-dGhpbiB0aGUgcG93ZXIgY29udHJvbGxlciBub2RlIGFzIGRvY3VtZW50ZWQKPiA+ID4gKyAgICAg
-IGluIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9wb3dlci9wb3dlci1kb21haW4u
-eWFtbC4KPiA+ID4gKwo+ID4gPiArICAgIHByb3BlcnRpZXM6Cj4gPiA+ICsKPiA+ID4gKyAgICAg
-ICcjcG93ZXItZG9tYWluLWNlbGxzJzoKPiA+ID4gKyAgICAgICAgZGVzY3JpcHRpb246Cj4gPiA+
-ICsgICAgICAgICAgICBNdXN0IGJlIDAgZm9yIG5vZGVzIHJlcHJlc2VudGluZyBhIHNpbmdsZSBQ
-TSBkb21haW4gYW5kIDEgZm9yIG5vZGVzCj4gPiA+ICsgICAgICAgICAgICBwcm92aWRpbmcgbXVs
-dGlwbGUgUE0gZG9tYWlucy4KPiA+ID4gKwo+ID4gPiArICAgICAgJyNhZGRyZXNzLWNlbGxzJzoK
-PiA+ID4gKyAgICAgICAgY29uc3Q6IDEKPiA+ID4gKwo+ID4gPiArICAgICAgJyNzaXplLWNlbGxz
-JzoKPiA+ID4gKyAgICAgICAgY29uc3Q6IDAKPiA+ID4gKwo+ID4gPiArICAgICAgcmVnOgo+ID4g
-PiArICAgICAgICBkZXNjcmlwdGlvbjogfAo+ID4gPiArICAgICAgICAgIFBvd2VyIGRvbWFpbiBp
-bmRleC4gVmFsaWQgdmFsdWVzIGFyZSBkZWZpbmVkIGluOgo+ID4gPiArICAgICAgICAgICJpbmNs
-dWRlL2R0LWJpbmRpbmdzL3Bvd2VyL3B4MzAtcG93ZXIuaCIgLSBmb3IgUFgzMCB0eXBlIHBvd2Vy
-IGRvbWFpbi4KPiA+ID4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9yazMw
-MzYtcG93ZXIuaCIgLSBmb3IgUkszMDM2IHR5cGUgcG93ZXIgZG9tYWluLgo+ID4gPiArICAgICAg
-ICAgICJpbmNsdWRlL2R0LWJpbmRpbmdzL3Bvd2VyL3JrMzA2Ni1wb3dlci5oIiAtIGZvciBSSzMw
-NjYgdHlwZSBwb3dlciBkb21haW4uCj4gPiA+ICsgICAgICAgICAgImluY2x1ZGUvZHQtYmluZGlu
-Z3MvcG93ZXIvcmszMTI4LXBvd2VyLmgiIC0gZm9yIFJLMzEyOCB0eXBlIHBvd2VyIGRvbWFpbi4K
-PiA+ID4gKyAgICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9yazMxODgtcG93ZXIu
-aCIgLSBmb3IgUkszMTg4IHR5cGUgcG93ZXIgZG9tYWluLgo+ID4gPiArICAgICAgICAgICJpbmNs
-dWRlL2R0LWJpbmRpbmdzL3Bvd2VyL3JrMzIyOC1wb3dlci5oIiAtIGZvciBSSzMyMjggdHlwZSBw
-b3dlciBkb21haW4uCj4gPiA+ICsgICAgICAgICAgImluY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIv
-cmszMjg4LXBvd2VyLmgiIC0gZm9yIFJLMzI4OCB0eXBlIHBvd2VyIGRvbWFpbi4KPiA+ID4gKyAg
-ICAgICAgICAiaW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9yazMzMjgtcG93ZXIuaCIgLSBmb3Ig
-UkszMzI4IHR5cGUgcG93ZXIgZG9tYWluLgo+ID4gPiArICAgICAgICAgICJpbmNsdWRlL2R0LWJp
-bmRpbmdzL3Bvd2VyL3JrMzM2Ni1wb3dlci5oIiAtIGZvciBSSzMzNjYgdHlwZSBwb3dlciBkb21h
-aW4uCj4gPiA+ICsgICAgICAgICAgImluY2x1ZGUvZHQtYmluZGluZ3MvcG93ZXIvcmszMzY4LXBv
-d2VyLmgiIC0gZm9yIFJLMzM2OCB0eXBlIHBvd2VyIGRvbWFpbi4KPiA+ID4gKyAgICAgICAgICAi
-aW5jbHVkZS9kdC1iaW5kaW5ncy9wb3dlci9yazMzOTktcG93ZXIuaCIgLSBmb3IgUkszMzk5IHR5
-cGUgcG93ZXIgZG9tYWluLgo+ID4gPiArICAgICAgICBtYXhJdGVtczogMQo+ID4KPiA+IFJhbmdl
-IG9mIHZhbHVlcz8KPiA+Cj4gPiA+ICsKPiA+ID4gKyAgICAgIGNsb2NrczoKPiA+ID4gKyAgICAg
-ICAgZGVzY3JpcHRpb246IHwKPiA+ID4gKyAgICAgICAgICBBIG51bWJlciBvZiBwaGFuZGxlcyB0
-byBjbG9ja3MgdGhhdCBuZWVkIHRvIGJlIGVuYWJsZWQgd2hpbGUgcG93ZXIgZG9tYWluCj4gPiA+
-ICsgICAgICAgICAgc3dpdGNoZXMgc3RhdGUuCj4gPgo+ID4gQ2FuIHlvdSBhdCBsZWFzdCBwdXQg
-YSByYW5nZSBvZiBob3cgbWFueSBjbG9ja3M/Cj4gPgo+ID4gPiArCj4gPiA+ICsgICAgICBwbV9x
-b3M6Cj4gPiA+ICsgICAgICAgIGRlc2NyaXB0aW9uOiB8Cj4gPiA+ICsgICAgICAgICAgQSBudW1i
-ZXIgb2YgcGhhbmRsZXMgdG8gcW9zIGJsb2NrcyB3aGljaCBuZWVkIHRvIGJlIHNhdmVkIGFuZCBy
-ZXN0b3JlZAo+ID4gPiArICAgICAgICAgIHdoaWxlIHBvd2VyIGRvbWFpbiBzd2l0Y2hlcyBzdGF0
-ZS4KPiA+Cj4gPiBBbmQgaGVyZS4KPiA+Cj4gPiA+ICsKPiA+ID4gKyAgICByZXF1aXJlZDoKPiA+
-ID4gKyAgICAgIC0gcmVnCj4gPgo+ID4gICAgICAgIGFkZGl0aW9uYWxQcm9wZXJ0aWVzOiBmYWxz
-ZQo+ID4KPiA+IFdoaWNoIGluIHR1cm4gbWVhbnMgdGhlIG5lc3RlZCBwb3dlciBkb21haW5zIHdp
-bGwgdGhyb3cgYW4gZXJyb3IsIHNvIHlvdQo+ID4gY2FuIGRvOgo+ID4KPiA+ICAgICAgICBwYXR0
-ZXJuUHJvcGVydGllczoKPiA+ICAgICAgICAgICJecG93ZXItZG9tYWluQFswLTlhLWZdKyQiOgo+
-ID4gICAgICAgICAgICAkcmVmOiAnIy9wYXR0ZXJuUHJvcGVydGllcy9ecG93ZXItZG9tYWluQFsw
-LTlhLWZdKyQnCj4gPgo+Cj4gV2hlbiBJIHRyaWVkIHRoaXMgSSBnb3QgdGhlIGZvbGxvd2luZyBl
-cnJvcjoKPgo+IHJvY2tjaGlwLHBvd2VyLWNvbnRyb2xsZXIueWFtbDoKPiBwYXR0ZXJuUHJvcGVy
-dGllczpecG93ZXItZG9tYWluQFswLTlhLWZdKyQ6cGF0dGVyblByb3BlcnRpZXM6XnBvd2VyLWRv
-bWFpbkBbMC05YS1mXSskOiRyZWY6Cj4gJyMvcGF0dGVyblByb3BlcnRpZXMvXnBvd2VyLWRvbWFp
-bkBbMC05YS1mXSskJyBpcyBub3QgYQo+ICd1cmktcmVmZXJlbmNlJwo+Cj4gTm90IHN1cmUgaWYg
-aXMgbXkgZW52aXJvbm1lbnQgb3IgSSBhbSBzdGlsbCBkb2luZyBzb21ldGhpbmcgc2lsbHksIGNh
-bgo+IHlvdSBjb25maXJtIHRoYXQgdGhpcyB3b3JrcyBmb3IgeW91PyBJdCBkb2Vzbid0IHNlZW0g
-dG8gYmUgYW55IGJpbmRpbmcKPiBkb2luZyB0aGlzIGFjdHVhbGx5LgoKSSB0aGluayB0aGUgcmVn
-ZXggd291bGQgaGF2ZSB0byBiZSBlc2NhcGVkIHRvIGJlIGEgdmFsaWQgVVJJOgoKJHJlZjogJyUy
-My9wYXR0ZXJuUHJvcGVydGllcy8lNUVwb3dlci1kb21haW5AJTVCMC05YS1mJTVEKyUyNCcKClRo
-YXQncyBub3QgdGhlIG1vc3QgcmVhZGFibGUgbm9yIGFtIEkgc3VyZSBpdCB3b3VsZCBnZXQgdHJh
-bnNsYXRlZApiYWNrIHRvIHRoZSByaWdodCBwYXRoLCBzbyBpdCdzIHByb2JhYmx5IGdvaW5nIHRv
-IGJlIGJlc3QgdG8ganVzdApkZWZpbmUgdGhlIGNoaWxkIG5vZGVzIGV2ZW4gaWYgZHVwbGljYXRl
-ZC4KClJvYgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+The Rockchip PCIe host controller is in fact a Cadence based PCIe host.
+This is most evident by comparing the address translation registers.
+
+As a first step to merge the Rockchip driver into the Cadence driver,
+let's just move the Rockchip driver into the Cadence directoy. This at
+least makes the relationship obvious.
+
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Tom Joseph <tjoseph@cadence.com>
+Cc: Heiko Stuebner <heiko@sntech.de>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+This is going to conflict at least with 'PCI: rockchip: Fix bus checks 
+in rockchip_pcie_valid_device()' and the common ECAM defines. 
+
+ drivers/pci/controller/Kconfig                | 28 -------------------
+ drivers/pci/controller/Makefile               |  3 --
+ drivers/pci/controller/cadence/Kconfig        | 28 +++++++++++++++++++
+ drivers/pci/controller/cadence/Makefile       |  3 ++
+ .../{ => cadence}/pcie-rockchip-ep.c          |  0
+ .../{ => cadence}/pcie-rockchip-host.c        |  2 +-
+ .../controller/{ => cadence}/pcie-rockchip.c  |  2 +-
+ .../controller/{ => cadence}/pcie-rockchip.h  |  0
+ 8 files changed, 33 insertions(+), 33 deletions(-)
+ rename drivers/pci/controller/{ => cadence}/pcie-rockchip-ep.c (100%)
+ rename drivers/pci/controller/{ => cadence}/pcie-rockchip-host.c (99%)
+ rename drivers/pci/controller/{ => cadence}/pcie-rockchip.c (99%)
+ rename drivers/pci/controller/{ => cadence}/pcie-rockchip.h (100%)
+
+diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
+index f18c3725ef80..3ffc4ad01a33 100644
+--- a/drivers/pci/controller/Kconfig
++++ b/drivers/pci/controller/Kconfig
+@@ -202,34 +202,6 @@ config PCI_HOST_THUNDER_ECAM
+ 	help
+ 	  Say Y here if you want ECAM support for CN88XX-Pass-1.x Cavium Thunder SoCs.
+ 
+-config PCIE_ROCKCHIP
+-	bool
+-	depends on PCI
+-
+-config PCIE_ROCKCHIP_HOST
+-	tristate "Rockchip PCIe host controller"
+-	depends on ARCH_ROCKCHIP || COMPILE_TEST
+-	depends on OF
+-	depends on PCI_MSI_IRQ_DOMAIN
+-	select MFD_SYSCON
+-	select PCIE_ROCKCHIP
+-	help
+-	  Say Y here if you want internal PCI support on Rockchip SoC.
+-	  There is 1 internal PCIe port available to support GEN2 with
+-	  4 slots.
+-
+-config PCIE_ROCKCHIP_EP
+-	bool "Rockchip PCIe endpoint controller"
+-	depends on ARCH_ROCKCHIP || COMPILE_TEST
+-	depends on OF
+-	depends on PCI_ENDPOINT
+-	select MFD_SYSCON
+-	select PCIE_ROCKCHIP
+-	help
+-	  Say Y here if you want to support Rockchip PCIe controller in
+-	  endpoint mode on Rockchip SoC. There is 1 internal PCIe port
+-	  available to support GEN2 with 4 slots.
+-
+ config PCIE_MEDIATEK
+ 	tristate "MediaTek PCIe controller"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+diff --git a/drivers/pci/controller/Makefile b/drivers/pci/controller/Makefile
+index bcdbf49ab1e4..1c03d1178df0 100644
+--- a/drivers/pci/controller/Makefile
++++ b/drivers/pci/controller/Makefile
+@@ -23,9 +23,6 @@ obj-$(CONFIG_PCIE_IPROC_PLATFORM) += pcie-iproc-platform.o
+ obj-$(CONFIG_PCIE_IPROC_BCMA) += pcie-iproc-bcma.o
+ obj-$(CONFIG_PCIE_ALTERA) += pcie-altera.o
+ obj-$(CONFIG_PCIE_ALTERA_MSI) += pcie-altera-msi.o
+-obj-$(CONFIG_PCIE_ROCKCHIP) += pcie-rockchip.o
+-obj-$(CONFIG_PCIE_ROCKCHIP_EP) += pcie-rockchip-ep.o
+-obj-$(CONFIG_PCIE_ROCKCHIP_HOST) += pcie-rockchip-host.o
+ obj-$(CONFIG_PCIE_MEDIATEK) += pcie-mediatek.o
+ obj-$(CONFIG_PCIE_TANGO_SMP8759) += pcie-tango.o
+ obj-$(CONFIG_VMD) += vmd.o
+diff --git a/drivers/pci/controller/cadence/Kconfig b/drivers/pci/controller/cadence/Kconfig
+index 5d30564190e1..2bdf6eb03ed8 100644
+--- a/drivers/pci/controller/cadence/Kconfig
++++ b/drivers/pci/controller/cadence/Kconfig
+@@ -65,4 +65,32 @@ config PCI_J721E_EP
+ 	  Say Y here if you want to support the TI J721E PCIe platform
+ 	  controller in endpoint mode. TI J721E PCIe controller uses Cadence PCIe
+ 	  core.
++
++config PCIE_ROCKCHIP
++	bool
++
++config PCIE_ROCKCHIP_HOST
++	tristate "Rockchip PCIe host controller"
++	depends on ARCH_ROCKCHIP || COMPILE_TEST
++	depends on OF
++	depends on PCI_MSI_IRQ_DOMAIN
++	select MFD_SYSCON
++	select PCIE_ROCKCHIP
++	help
++	  Say Y here if you want internal PCI support on Rockchip SoC.
++	  There is 1 internal PCIe port available to support GEN2 with
++	  4 slots.
++
++config PCIE_ROCKCHIP_EP
++	bool "Rockchip PCIe endpoint controller"
++	depends on ARCH_ROCKCHIP || COMPILE_TEST
++	depends on OF
++	depends on PCI_ENDPOINT
++	select MFD_SYSCON
++	select PCIE_ROCKCHIP
++	help
++	  Say Y here if you want to support Rockchip PCIe controller in
++	  endpoint mode on Rockchip SoC. There is 1 internal PCIe port
++	  available to support GEN2 with 4 slots.
++
+ endmenu
+diff --git a/drivers/pci/controller/cadence/Makefile b/drivers/pci/controller/cadence/Makefile
+index 9bac5fb2f13d..eb1aeae6c52b 100644
+--- a/drivers/pci/controller/cadence/Makefile
++++ b/drivers/pci/controller/cadence/Makefile
+@@ -4,3 +4,6 @@ obj-$(CONFIG_PCIE_CADENCE_HOST) += pcie-cadence-host.o
+ obj-$(CONFIG_PCIE_CADENCE_EP) += pcie-cadence-ep.o
+ obj-$(CONFIG_PCIE_CADENCE_PLAT) += pcie-cadence-plat.o
+ obj-$(CONFIG_PCI_J721E) += pci-j721e.o
++obj-$(CONFIG_PCIE_ROCKCHIP) += pcie-rockchip.o
++obj-$(CONFIG_PCIE_ROCKCHIP_EP) += pcie-rockchip-ep.o
++obj-$(CONFIG_PCIE_ROCKCHIP_HOST) += pcie-rockchip-host.o
+diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/cadence/pcie-rockchip-ep.c
+similarity index 100%
+rename from drivers/pci/controller/pcie-rockchip-ep.c
+rename to drivers/pci/controller/cadence/pcie-rockchip-ep.c
+diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/controller/cadence/pcie-rockchip-host.c
+similarity index 99%
+rename from drivers/pci/controller/pcie-rockchip-host.c
+rename to drivers/pci/controller/cadence/pcie-rockchip-host.c
+index 0bb2fb3e8a0b..1ee409d7b7e5 100644
+--- a/drivers/pci/controller/pcie-rockchip-host.c
++++ b/drivers/pci/controller/cadence/pcie-rockchip-host.c
+@@ -36,7 +36,7 @@
+ #include <linux/reset.h>
+ #include <linux/regmap.h>
+ 
+-#include "../pci.h"
++#include "../../pci.h"
+ #include "pcie-rockchip.h"
+ 
+ static void rockchip_pcie_enable_bw_int(struct rockchip_pcie *rockchip)
+diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/cadence/pcie-rockchip.c
+similarity index 99%
+rename from drivers/pci/controller/pcie-rockchip.c
+rename to drivers/pci/controller/cadence/pcie-rockchip.c
+index 904dec0d3a88..72ba71bab8e9 100644
+--- a/drivers/pci/controller/pcie-rockchip.c
++++ b/drivers/pci/controller/cadence/pcie-rockchip.c
+@@ -19,7 +19,7 @@
+ #include <linux/platform_device.h>
+ #include <linux/reset.h>
+ 
+-#include "../pci.h"
++#include "../../pci.h"
+ #include "pcie-rockchip.h"
+ 
+ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/cadence/pcie-rockchip.h
+similarity index 100%
+rename from drivers/pci/controller/pcie-rockchip.h
+rename to drivers/pci/controller/cadence/pcie-rockchip.h
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
