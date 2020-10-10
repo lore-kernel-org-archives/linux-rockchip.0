@@ -2,75 +2,66 @@ Return-Path: <SRS0=0Sn9=DR=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 238F8C433E7
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2020 15:32:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 656FDC433DF
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2020 16:50:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8D5922260
-	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2020 15:32:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A3F9722404
+	for <linux-rockchip@archiver.kernel.org>; Sat, 10 Oct 2020 16:50:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="rkpCaEhp";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kwiboo.se header.i=@kwiboo.se header.b="oXyDx2Yv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A8D5922260
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=kwiboo.se
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ngGr5BwC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A3F9722404
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=manjaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:References:In-Reply-To:Message-Id:Date:Subject:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:References:To:Subject:
+	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lejBArgVm9Cb86dmOcq/Of0WyyGquceuSg4ouqGWttg=; b=rkpCaEhpBYmb8Iv2NyMeK3ZbGc
-	z9N2RVf4Sw16AV9PdRDmrHaO2FQfIXIgDazlqDc1ViW45OcGYEUX1hgm1SiM4GVE6ubLb6TJVwCuv
-	gzvKz4Ii5oD0muZOpc8lUlNgYekg3LZZ1KNXx6SEE/Wt9ZnXOhig4GirW7GVC/aztzXotVCRmODZU
-	58yNli7Em02Jq/mqskMxTWRd1pzj/ygu6a/FRCvJWgcS/VcVjRA2P80lxP0mImzBlB4KRNRP917Ak
-	gMxt6jxEHMUthLYmhPbiAAFHRpIqT1n4sXzyYVUs+GgeiIXwsS8Nf2vWgSdeA+BdtsPRm2kDrLSUS
-	KgY96Nqg==;
+	bh=9QIAQzrA31kwE8soV7ezW57wg4R+Qu1K246EI4Eu4mE=; b=ngGr5BwCrZv3PWBDhzbnsRhj5N
+	2mswa0+bObyumjah/UIkL3FVKZVYQ4mPLNNQAWwxg0ekZYWWUgFiUQMHm9HdkxXM684KoycrhHuIP
+	2/gMX49c047MQj6HtjCXyGAW5qq8j0GgtJwRA8RzLALfEEiLSxoBS18yw4Ll2drTCdPU5m01iXos+
+	K90u3WX4CtcT3tCgPMFQewgwJEK0+pScgPh4hTDRGnKacyKHkTk0hN4UYcIzpnmvc67QYt/wvGlxh
+	CNXoYMEzNwTGhLlGaIMpMdqKgFL80eVPXYlLw2u787xknE5DlsbDiRebCaGk1mRcE1TkUEtFi2fBy
+	7HDi+b6A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kRGra-0005Zo-2n; Sat, 10 Oct 2020 15:32:50 +0000
-Received: from o1.b.az.sendgrid.net ([208.117.55.133])
+	id 1kRI4O-00035H-SF; Sat, 10 Oct 2020 16:50:08 +0000
+Received: from mail.manjaro.org ([176.9.38.148])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kRGr7-0005Oh-Am
- for linux-rockchip@lists.infradead.org; Sat, 10 Oct 2020 15:32:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=from:subject:in-reply-to:references:to:cc:content-type:
- content-transfer-encoding;
- s=001; bh=wESJQvpdfDsvdWan8Taf/CIlNvse8X0Jhu+UUVMx4i4=;
- b=oXyDx2YvexeMHXYOvbXPDaqn7APjYxMiKb/+bt1EPMIeinaG1tI43qsAINzdwXP0TvRC
- TGAxfps8nxUEaisW46e/HLaZ4r2Dm/K2ehKlcx1Rk1qerfHXpXvjmhk6i0zgLk1fV1usnQ
- xUEDUvaVFvvVXJrYub/A1a83Rdq79lztg=
-Received: by filterdrecv-p3mdw1-6685f47d68-9kn8s with SMTP id
- filterdrecv-p3mdw1-6685f47d68-9kn8s-18-5F81D401-55
- 2020-10-10 15:32:17.741501173 +0000 UTC m=+233773.767440829
-Received: from bionic.localdomain (unknown)
- by ismtpd0005p1lon1.sendgrid.net (SG) with ESMTP
- id vof286gPTU2LuS_fpzD_jA Sat, 10 Oct 2020 15:32:17.455 +0000 (UTC)
-From: Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v3 0/6] Support more HDMI modes on RK3228/RK3328
-Date: Sat, 10 Oct 2020 15:32:17 +0000 (UTC)
-Message-Id: <20201010153214.19722-1-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200108210740.28769-1-jonas@kwiboo.se>
-References: <20200108210740.28769-1-jonas@kwiboo.se>
-X-SG-EID: =?us-ascii?Q?TdbjyGynYnRZWhH+7lKUQJL+ZxmxpowvO2O9SQF5CwCVrYgcwUXgU5DKUU3QxA?=
- =?us-ascii?Q?fZekEeQsTe+RrMu3cja6a0h4CO0Scf6vcnfmbTz?=
- =?us-ascii?Q?4mZdRxcxfQtbnNCh2SLgMT0C=2FS7YcNADP=2FsQMH8?=
- =?us-ascii?Q?oK9pQPq1ftJEnG1hGSopqK8EFAKG0s6spWt9+hl?=
- =?us-ascii?Q?=2FLxqwHXlwQZsW+Z3APEdHW6s1=2FJD3hLihG=2Fo1wd?=
- =?us-ascii?Q?De+MpVp3gPadt3DdaetcMcaCKLq0GEO3M+2VHuH?=
- =?us-ascii?Q?F9nnNyKku95=2FkLXHoX5PA=3D=3D?=
-To: Kishon Vijay Abraham I <kishon@ti.com>, Heiko Stuebner <heiko@sntech.de>
-X-Entity-ID: wSPGWgGSXUap++qShBI+ag==
+ id 1kRI4M-00034w-9C
+ for linux-rockchip@lists.infradead.org; Sat, 10 Oct 2020 16:50:07 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by mail.manjaro.org (Postfix) with ESMTP id 961013CC0CC0;
+ Sat, 10 Oct 2020 18:31:43 +0200 (CEST)
+X-Virus-Scanned: Debian amavisd-new at manjaro.org
+Received: from mail.manjaro.org ([127.0.0.1])
+ by localhost (manjaro.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AF5gJPBveXzz; Sat, 10 Oct 2020 18:31:41 +0200 (CEST)
+Subject: =?UTF-8?B?UmU6IOWbnuWkjTogZHVwbGljYXRlZCBhc29jIHdpZGdldCBpbiBwaW5l?=
+ =?UTF-8?Q?bookpro_dts?=
+To: =?UTF-8?B?5bygIOWugQ==?= <zhangn1985@outlook.com>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "t.schramm@manjaro.org" <t.schramm@manjaro.org>
+References: <DM6PR16MB3163A1F904823FFA424C52B1CD250@DM6PR16MB3163.namprd16.prod.outlook.com>
+ <SYCPR01MB37769E1B4C7E96DE77411CDCCD090@SYCPR01MB3776.ausprd01.prod.outlook.com>
+From: Tobias Schramm <t.schramm@manjaro.org>
+Message-ID: <2b5ad81f-488a-1ff0-851a-4a838cbe923a@manjaro.org>
+Date: Sat, 10 Oct 2020 18:29:10 +0200
+MIME-Version: 1.0
+In-Reply-To: <SYCPR01MB37769E1B4C7E96DE77411CDCCD090@SYCPR01MB3776.ausprd01.prod.outlook.com>
+Content-Language: en-US-large
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201010_113221_430243_E8AF5BFF 
-X-CRM114-Status: GOOD (  10.65  )
+X-CRM114-CacheID: sfid-20201010_125006_438538_C5AEF433 
+X-CRM114-Status: UNSURE (   4.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,68 +74,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Algea Cao <algea.cao@rock-chips.com>, Jonas Karlman <jonas@kwiboo.se>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Vinod Koul <vkoul@kernel.org>, Huicong Xu <xhc@rock-chips.com>,
- linux-arm-kernel@lists.infradead.org, Zheng Yang <zhengyang@rock-chips.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is a long overdue revival of an old series that adds support for
-more HDMI modes on RK3228/RK3328.
-
-This v3 series contains the original v2 patches targeting the inno hdmi phy
-driver, a separate series targeting drm driver will follow, see [2] for
-current work-in-progress of drm driver part.
-
-Part of this has been reworked from vendor BSP 4.4 kernel commits.
-
-Patch 1-5 fixes issues and shortcomings in the inno hdmi phy driver.
-
-Patch 6 adds support for more pixel clock rates in order to support
-common DMT modes in addition to CEA modes.
-
-Changes in v3:
-  - split series
-  - drop drm and device tree changes
-
-Changes in v2:
-  - collect acked-by tag
-  - drop the limit resolution width to 3840 patch
-
-This series is also available at [1].
-
-[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20201009-inno-hdmi-phy
-[2] https://github.com/Kwiboo/linux-rockchip/commits/next-20201009-drm-rockchip
-
-Regards,
-Jonas
-
-Algea Cao (1):
-  phy/rockchip: inno-hdmi: Support more pre-pll configuration
-
-Huicong Xu (1):
-  phy/rockchip: inno-hdmi: force set_rate on power_on
-
-Jonas Karlman (3):
-  phy/rockchip: inno-hdmi: use correct vco_div_5 macro on rk3328
-  phy/rockchip: inno-hdmi: remove unused no_c from rk3328 recalc_rate
-  phy/rockchip: inno-hdmi: do not power on rk3328 post pll on reg write
-
-Zheng Yang (1):
-  phy/rockchip: inno-hdmi: round fractal pixclock in rk3328 recalc_rate
-
- drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 110 ++++++++++++------
- 1 file changed, 74 insertions(+), 36 deletions(-)
-
--- 
-2.17.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTmluZywKCnRoZSB3aWRnZXQgcHJvcGVydHkgaXMgYSBsaXN0IG9mIHBhaXJzLiBUaGUgZmly
+c3QgZW50cnkgb2YgZWFjaCBwYWlyIGlzCnRoZSBuYW1lIG9mIHRoZSB3aWRnZXQgdGVtcGxhdGUs
+IHRoZSBzZWNvbmQgZW50cnkgZGVub3RlcyB0aGUgbmFtZSB0aGF0CmlzIGFzc2lnbmVkIHRvIHRo
+ZSB3aWRnZXQgY3JlYXRlZCBmcm9tIHRoZSB0ZW1wbGF0ZS4gU2VlIFsxXS4KVGh1cwo+IMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgIlNwZWFrZXIiLCAiU3BlYWtlciI7
+CnNpbXBseSBjcmVhdGVzIGEgd2lkZ2V0IGNhbGxlZCAiU3BlYWtlciIgZnJvbSB0aGUgU3BlYWtl
+ciB3aWRnZXQKdGVtcGxhdGUsIG5vdCB0d28gd2lkZ2V0cyBjYWxsZWQgIlNwZWFrZXIiLgoKCkJl
+c3QgcmVnYXJkcywKClRvYmlhcwoKWzFdCmh0dHBzOi8vZWxpeGlyLmJvb3RsaW4uY29tL2xpbnV4
+L3Y1LjktcmM4L3NvdXJjZS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3Mvc291bmQv
+d2lkZ2V0cy50eHQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
