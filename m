@@ -2,55 +2,58 @@ Return-Path: <SRS0=hzxT=DT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7AFEFC433DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2020 21:07:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CEB5C433E7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2020 21:07:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 12EE2206CA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2020 21:07:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C1804206CA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2020 21:07:28 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1ShSd74H"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 12EE2206CA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XEXmeUgC"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1804206CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ZNwKLHZs8ZXJ94PznqniUExyGeIN9ioJYKaWlfetZxc=; b=1ShSd74HIAocI5NPxmm1eknhTL
-	OlUTnW4ZQoDVXwPB6DY4e5oSKmt2p4i8jH3IQu7hGgh0VwqlZm3Nf8XOlDYSDdZ4+k5vsMYtBP/ZH
-	HzbT6tf2Km6s76fZ7RF3cyb8+6PZarKm3wJFOPsEqRz+o+8CgvxK417qWjbCr0jAjZt4RYvYxMI4A
-	8+ydt9b8rMUJawPsawP9XZnrgBt06GgsaftJpuPFBejbk05coHJ279N+n524GvCnPxD9Mt7vE+CgR
-	3u30BhwA3H+ivqIaIN9MLWMfL71NSslqVZ8puO2+C+oi8HPZg041N/oCvKZIPg/zT3lFfrAVCDXl6
-	ozx/1dTw==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=zaP27Q0Xybl1e7EPTyVQ6dk+R1bm2pqpSXcrJBmyyDE=; b=XEXmeUgC4mhKPPDHiirNIwaFM
+	LWM/es/ihZy4M72vJuCnt14v2TtnjNidOLlRBvZtWdTPITmyasg1cAX8JYEViOm+ex1DEZ1wNBTVe
+	sARnDk/fcEfiFPQAdeGlAhS9ulc644FsBXIdqxTGjkm3fDSQRbjWshPDM2Dk7dzqVeyPg/mYBSpC+
+	RaQSYznB3Wo9rWOtrJU9SvCziK9rzKiERkqA8f4p6buORyaXqn28gIrMAe/SrP6Or5UyrL948Ad+Q
+	L6VaUftAj3q4AvBNtY9oHM2rQq7x9DT5GhNvknEZo2I8nvPTGaH9UBqUsKcbWXUg6hB76LEukIct1
+	mAnnSs1Ww==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kS52H-0004jM-PQ; Mon, 12 Oct 2020 21:07:14 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kS52N-0004lx-5K; Mon, 12 Oct 2020 21:07:19 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kS4uG-0000sX-82
- for linux-rockchip@lists.infradead.org; Mon, 12 Oct 2020 20:59:31 +0000
+ id 1kS4uG-0000sk-Lt
+ for linux-rockchip@lists.infradead.org; Mon, 12 Oct 2020 20:59:32 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: aratiu) with ESMTPSA id C2D091F40F09
+ (Authenticated sender: aratiu) with ESMTPSA id 6294E1F44C2A
 From: Adrian Ratiu <adrian.ratiu@collabora.com>
 To: Ezequiel Garcia <ezequiel@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH 00/18] Add Hantro regmap and VC8000 h264 decode support
-Date: Mon, 12 Oct 2020 23:59:39 +0300
-Message-Id: <20201012205957.889185-1-adrian.ratiu@collabora.com>
+Subject: [PATCH 01/18] media: hantro: document all int reg bits up to vc8000
+Date: Mon, 12 Oct 2020 23:59:40 +0300
+Message-Id: <20201012205957.889185-2-adrian.ratiu@collabora.com>
 X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20201012205957.889185-1-adrian.ratiu@collabora.com>
+References: <20201012205957.889185-1-adrian.ratiu@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201012_165856_413280_9E7BDA32 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20201012_165857_108489_B88A00E0 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,86 +76,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Dear all,
+These do not all strictly belong to the g1 core and even the majority
+of previously documented bits were not used (yet) by the driver irq
+handlers, but it's still very useful to have an overview of all IRQs,
+especially since starting with core versions vc8000 and later the irq
+bits previously used by G1 and G2 have been merged at the same address.
 
-This series introduces a regmap infrastructure for the Hantro driver
-which is used to compensate for different HW-revision register layouts.
-To justify it h264 decoding capability is added for newer VC8000 chips.
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+---
+ drivers/staging/media/hantro/hantro_g1_regs.h | 39 +++++++++++++------
+ 1 file changed, 28 insertions(+), 11 deletions(-)
 
-This is a gradual conversion to the new infra - a complete conversion
-would have been very big and I do not have all the HW yet to test (I'm
-expecting a RK3399 shipment next week though ;). I think converting the
-h264 decoder provides a nice blueprint for how the other codecs can be
-converted and enabled for different HW revisions.
-
-The end goal of this is to make the driver more generic and eliminate
-entirely custom boilerplate like `struct hantro_reg` or headers with
-core-specific bit manipulations like `hantro_g1_regs.h` and instead rely
-on the well-tested albeit more verbose regmap subsytem.
-
-To give just two examples of bugs which are easily discovered by using
-more verbose regmap fields (very easy to compare with the datasheets)
-instead of relying on bit-magic tricks: G1_REG_DEC_CTRL3_INIT_QP(x) was
-off-by-1 and the wrong .clk_gate bit was set in hantro_postproc.c.
-
-Anyway, this series also extends the MMIO regmap API to allow relaxed
-writes for the theoretical reason that avoiding unnecessary membarriers
-leads to less CPU usage and small improvements to battery life. However,
-in practice I could not measure differences between relaxed/non-relaxed
-IO, so I'm on the fence whether to keep or remove the relaxed calls.
-
-What I could masure is the performance impact of adding more sub-reg
-field acesses: a constant ~ 20 microsecond bump per G1 h264 frame. This
-is acceptable considering the total time to decode a frame takes three
-orders of magnitude longer, i.e. miliseconds ranges, depending on the
-frame size and bitstream params, so it is an acceptable trade-off to
-have a more generic driver.
-
-This has been tested on next-20201009 with imx8mq for G1 and an SoC with
-VC8000 which has not yet been added (hopefuly support lands soon).
-
-Kind regards,
-Adrian
-
-Adrian Ratiu (18):
-  media: hantro: document all int reg bits up to vc8000
-  media: hantro: make consistent use of decimal register notation
-  media: hantro: make G1_REG_SOFT_RESET Rockchip specific
-  media: hantro: add reset controller support
-  media: hantro: prepare clocks before variant inits are run
-  media: hantro: imx8mq: simplify ctrlblk reset logic
-  regmap: mmio: add config option to allow relaxed MMIO accesses
-  media: hantro: add initial MMIO regmap infrastructure
-  media: hantro: default regmap to relaxed MMIO
-  media: hantro: convert G1 h264 decoder to regmap fields
-  media: hantro: convert G1 postproc to regmap
-  media: hantro: add VC8000D h264 decoding
-  media: hantro: add VC8000D postproc support
-  media: hantro: make PP enablement logic a bit smarter
-  media: hantro: add user-selectable, platform-selectable H264 High10
-  media: hantro: rename h264_dec as it's not G1 specific anymore
-  media: hantro: add dump registers debug option before decode start
-  media: hantro: document encoder reg fields
-
- drivers/base/regmap/regmap-mmio.c             |   34 +-
- drivers/staging/media/hantro/Makefile         |    3 +-
- drivers/staging/media/hantro/hantro.h         |   79 +-
- drivers/staging/media/hantro/hantro_drv.c     |   41 +-
- drivers/staging/media/hantro/hantro_g1_regs.h |   92 +-
- ...hantro_g1_h264_dec.c => hantro_h264_dec.c} |  237 +++-
- drivers/staging/media/hantro/hantro_hw.h      |   23 +-
- .../staging/media/hantro/hantro_postproc.c    |  144 ++-
- drivers/staging/media/hantro/hantro_regmap.c  | 1015 +++++++++++++++++
- drivers/staging/media/hantro/hantro_regmap.h  |  295 +++++
- drivers/staging/media/hantro/hantro_v4l2.c    |    3 +-
- drivers/staging/media/hantro/imx8m_vpu_hw.c   |   75 +-
- drivers/staging/media/hantro/rk3288_vpu_hw.c  |    5 +-
- include/linux/regmap.h                        |    5 +
- 14 files changed, 1795 insertions(+), 256 deletions(-)
- rename drivers/staging/media/hantro/{hantro_g1_h264_dec.c => hantro_h264_dec.c} (58%)
- create mode 100644 drivers/staging/media/hantro/hantro_regmap.c
- create mode 100644 drivers/staging/media/hantro/hantro_regmap.h
-
+diff --git a/drivers/staging/media/hantro/hantro_g1_regs.h b/drivers/staging/media/hantro/hantro_g1_regs.h
+index c1756e3d5391..80ff297f6f68 100644
+--- a/drivers/staging/media/hantro/hantro_g1_regs.h
++++ b/drivers/staging/media/hantro/hantro_g1_regs.h
+@@ -13,17 +13,34 @@
+ 
+ /* Decoder registers. */
+ #define G1_REG_INTERRUPT				0x004
+-#define     G1_REG_INTERRUPT_DEC_PIC_INF		BIT(24)
+-#define     G1_REG_INTERRUPT_DEC_TIMEOUT		BIT(18)
+-#define     G1_REG_INTERRUPT_DEC_SLICE_INT		BIT(17)
+-#define     G1_REG_INTERRUPT_DEC_ERROR_INT		BIT(16)
+-#define     G1_REG_INTERRUPT_DEC_ASO_INT		BIT(15)
+-#define     G1_REG_INTERRUPT_DEC_BUFFER_INT		BIT(14)
+-#define     G1_REG_INTERRUPT_DEC_BUS_INT		BIT(13)
+-#define     G1_REG_INTERRUPT_DEC_RDY_INT		BIT(12)
+-#define     G1_REG_INTERRUPT_DEC_IRQ			BIT(8)
+-#define     G1_REG_INTERRUPT_DEC_IRQ_DIS		BIT(4)
+-#define     G1_REG_INTERRUPT_DEC_E			BIT(0)
++/* Interrupt bits. Some are present in:
++ *    - all core versions (">= g1")
++ *    - g1, missing in g2, but added back starting with vc8000d ("not in g2")
++ *    - vc8000d and later (">= vc8000d")
++ */
++#define     G1_REG_INTERRUPT_DEC_PIC_INF		BIT(24) /* not in g2 */
++#define     G1_REG_INTERRUPT_DEC_TILE_INT		BIT(23) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_LINE_CNT_INT		BIT(22) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_EXT_TIMEOUT_INT	BIT(21) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_NO_SLICE_INT		BIT(20) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_LAST_SLICE_INT		BIT(19) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_TIMEOUT		BIT(18) /* >= g1 */
++#define     G1_REG_INTERRUPT_DEC_SLICE_INT		BIT(17) /* not in g2 */
++#define     G1_REG_INTERRUPT_DEC_ERROR_INT		BIT(16) /* >= g1 */
++#define     G1_REG_INTERRUPT_DEC_ASO_INT		BIT(15) /* not in g2 */
++#define     G1_REG_INTERRUPT_DEC_BUFFER_INT		BIT(14) /* >= g1 */
++#define     G1_REG_INTERRUPT_DEC_BUS_INT		BIT(13) /* >= g1 */
++#define     G1_REG_INTERRUPT_DEC_RDY_INT		BIT(12) /* >= g1 */
++#define     G1_REG_INTERRUPT_DEC_ABORT_INT		BIT(11) /* >= g2 */
++#define     G1_REG_INTERRUPT_DEC_IRQ			BIT(8) /* >= g1 */
++#define     G1_REG_INTERRUPT_DEC_TILE_INT_E		BIT(7) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_SELF_RESET_DIS		BIT(6) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_ABORT_E		BIT(5) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_IRQ_DIS		BIT(4) /* >= g1 */
++#define     G1_REG_INTERRUPT_DEC_TIMEOUT_SOURCE		BIT(3) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_BUS_INT_DIS		BIT(2) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_STRM_CORRUPTED		BIT(1) /* >= vc8000d */
++#define     G1_REG_INTERRUPT_DEC_E			BIT(0) /* >= g1 */
+ #define G1_REG_CONFIG					0x008
+ #define     G1_REG_CONFIG_DEC_AXI_RD_ID(x)		(((x) & 0xff) << 24)
+ #define     G1_REG_CONFIG_DEC_TIMEOUT_E			BIT(23)
 -- 
 2.28.0
 
