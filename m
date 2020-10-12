@@ -8,16 +8,16 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CEB5C433E7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2020 21:07:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 78BB2C433DF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2020 21:07:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C1804206CA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2020 21:07:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 01269206CA
+	for <linux-rockchip@archiver.kernel.org>; Mon, 12 Oct 2020 21:07:38 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XEXmeUgC"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C1804206CA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jyo59J6x"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 01269206CA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,34 +26,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zaP27Q0Xybl1e7EPTyVQ6dk+R1bm2pqpSXcrJBmyyDE=; b=XEXmeUgC4mhKPPDHiirNIwaFM
-	LWM/es/ihZy4M72vJuCnt14v2TtnjNidOLlRBvZtWdTPITmyasg1cAX8JYEViOm+ex1DEZ1wNBTVe
-	sARnDk/fcEfiFPQAdeGlAhS9ulc644FsBXIdqxTGjkm3fDSQRbjWshPDM2Dk7dzqVeyPg/mYBSpC+
-	RaQSYznB3Wo9rWOtrJU9SvCziK9rzKiERkqA8f4p6buORyaXqn28gIrMAe/SrP6Or5UyrL948Ad+Q
-	L6VaUftAj3q4AvBNtY9oHM2rQq7x9DT5GhNvknEZo2I8nvPTGaH9UBqUsKcbWXUg6hB76LEukIct1
-	mAnnSs1Ww==;
+	 bh=vchwpFy2qd+/6FrHWX6Yi7T+aNuH2/+r7Hb0Dak1OJE=; b=jyo59J6xlxBwx/QOyTbxhNHT2
+	ZAJNp6xa7lD2vGkWjft31yz2fdK0mAg+YklOZqySAchxRXomIHRBZ9uKN3VBzEMI0RVo0jKEy9YMb
+	OGuYgiANyKfVizfD2RsbMQ4qqJP1QxH5iGyzV4dFo16P/s4FFml+y5IV7VtqZzH/W99bIvJro13nP
+	JgOGGzDBCF2+t/TISqyJ+MrvngqjG2kHW89mTC0i/vcAYL2w5tQl9T8VD1TsgiBNnpl1fZu7IZPoc
+	azDfYeRwR2gKa7mEerT9XizXnt1Oq2NVAGPYkkPT/VX/5EcckgZNFhL9fgDgp78Z6B63RzyL/J0Sv
+	exApYY2Ew==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kS52N-0004lx-5K; Mon, 12 Oct 2020 21:07:19 +0000
+	id 1kS52W-0004qq-Ex; Mon, 12 Oct 2020 21:07:28 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kS4uG-0000sk-Lt
- for linux-rockchip@lists.infradead.org; Mon, 12 Oct 2020 20:59:32 +0000
+ id 1kS4uN-0000wm-5A
+ for linux-rockchip@lists.infradead.org; Mon, 12 Oct 2020 20:59:35 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: aratiu) with ESMTPSA id 6294E1F44C2A
+ (Authenticated sender: aratiu) with ESMTPSA id 2C9261F44C44
 From: Adrian Ratiu <adrian.ratiu@collabora.com>
 To: Ezequiel Garcia <ezequiel@collabora.com>,
  Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH 01/18] media: hantro: document all int reg bits up to vc8000
-Date: Mon, 12 Oct 2020 23:59:40 +0300
-Message-Id: <20201012205957.889185-2-adrian.ratiu@collabora.com>
+Subject: [PATCH 09/18] media: hantro: default regmap to relaxed MMIO
+Date: Mon, 12 Oct 2020 23:59:48 +0300
+Message-Id: <20201012205957.889185-10-adrian.ratiu@collabora.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201012205957.889185-1-adrian.ratiu@collabora.com>
 References: <20201012205957.889185-1-adrian.ratiu@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201012_165857_108489_B88A00E0 
-X-CRM114-Status: GOOD (  11.95  )
+X-CRM114-CacheID: sfid-20201012_165903_349629_37AAD78E 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,67 +76,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-These do not all strictly belong to the g1 core and even the majority
-of previously documented bits were not used (yet) by the driver irq
-handlers, but it's still very useful to have an overview of all IRQs,
-especially since starting with core versions vc8000 and later the irq
-bits previously used by G1 and G2 have been merged at the same address.
+This is done to match the pre-regmap membarrier behaviour, ensuring
+default regmap_write calls in _relaxed() are indeed relaxed while
+the non-relaxed versions include an explicit mem-barrier call.
 
 Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
 ---
- drivers/staging/media/hantro/hantro_g1_regs.h | 39 +++++++++++++------
- 1 file changed, 28 insertions(+), 11 deletions(-)
+ drivers/staging/media/hantro/hantro.h        | 4 ++++
+ drivers/staging/media/hantro/hantro_regmap.c | 1 +
+ 2 files changed, 5 insertions(+)
 
-diff --git a/drivers/staging/media/hantro/hantro_g1_regs.h b/drivers/staging/media/hantro/hantro_g1_regs.h
-index c1756e3d5391..80ff297f6f68 100644
---- a/drivers/staging/media/hantro/hantro_g1_regs.h
-+++ b/drivers/staging/media/hantro/hantro_g1_regs.h
-@@ -13,17 +13,34 @@
+diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
+index c5425cd5ac84..5b7fbdc3779d 100644
+--- a/drivers/staging/media/hantro/hantro.h
++++ b/drivers/staging/media/hantro/hantro.h
+@@ -346,6 +346,7 @@ static inline void vepu_write_relaxed(struct hantro_dev *vpu,
+ static inline void vepu_write(struct hantro_dev *vpu, u32 val, u32 reg)
+ {
+ 	vpu_debug(6, "0x%04x = 0x%08x\n", reg / 4, val);
++	wmb(); /* flush encoder previous relaxed writes */
+ 	regmap_write(vpu->regs_enc, reg, val);
+ }
  
- /* Decoder registers. */
- #define G1_REG_INTERRUPT				0x004
--#define     G1_REG_INTERRUPT_DEC_PIC_INF		BIT(24)
--#define     G1_REG_INTERRUPT_DEC_TIMEOUT		BIT(18)
--#define     G1_REG_INTERRUPT_DEC_SLICE_INT		BIT(17)
--#define     G1_REG_INTERRUPT_DEC_ERROR_INT		BIT(16)
--#define     G1_REG_INTERRUPT_DEC_ASO_INT		BIT(15)
--#define     G1_REG_INTERRUPT_DEC_BUFFER_INT		BIT(14)
--#define     G1_REG_INTERRUPT_DEC_BUS_INT		BIT(13)
--#define     G1_REG_INTERRUPT_DEC_RDY_INT		BIT(12)
--#define     G1_REG_INTERRUPT_DEC_IRQ			BIT(8)
--#define     G1_REG_INTERRUPT_DEC_IRQ_DIS		BIT(4)
--#define     G1_REG_INTERRUPT_DEC_E			BIT(0)
-+/* Interrupt bits. Some are present in:
-+ *    - all core versions (">= g1")
-+ *    - g1, missing in g2, but added back starting with vc8000d ("not in g2")
-+ *    - vc8000d and later (">= vc8000d")
-+ */
-+#define     G1_REG_INTERRUPT_DEC_PIC_INF		BIT(24) /* not in g2 */
-+#define     G1_REG_INTERRUPT_DEC_TILE_INT		BIT(23) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_LINE_CNT_INT		BIT(22) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_EXT_TIMEOUT_INT	BIT(21) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_NO_SLICE_INT		BIT(20) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_LAST_SLICE_INT		BIT(19) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_TIMEOUT		BIT(18) /* >= g1 */
-+#define     G1_REG_INTERRUPT_DEC_SLICE_INT		BIT(17) /* not in g2 */
-+#define     G1_REG_INTERRUPT_DEC_ERROR_INT		BIT(16) /* >= g1 */
-+#define     G1_REG_INTERRUPT_DEC_ASO_INT		BIT(15) /* not in g2 */
-+#define     G1_REG_INTERRUPT_DEC_BUFFER_INT		BIT(14) /* >= g1 */
-+#define     G1_REG_INTERRUPT_DEC_BUS_INT		BIT(13) /* >= g1 */
-+#define     G1_REG_INTERRUPT_DEC_RDY_INT		BIT(12) /* >= g1 */
-+#define     G1_REG_INTERRUPT_DEC_ABORT_INT		BIT(11) /* >= g2 */
-+#define     G1_REG_INTERRUPT_DEC_IRQ			BIT(8) /* >= g1 */
-+#define     G1_REG_INTERRUPT_DEC_TILE_INT_E		BIT(7) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_SELF_RESET_DIS		BIT(6) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_ABORT_E		BIT(5) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_IRQ_DIS		BIT(4) /* >= g1 */
-+#define     G1_REG_INTERRUPT_DEC_TIMEOUT_SOURCE		BIT(3) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_BUS_INT_DIS		BIT(2) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_STRM_CORRUPTED		BIT(1) /* >= vc8000d */
-+#define     G1_REG_INTERRUPT_DEC_E			BIT(0) /* >= g1 */
- #define G1_REG_CONFIG					0x008
- #define     G1_REG_CONFIG_DEC_AXI_RD_ID(x)		(((x) & 0xff) << 24)
- #define     G1_REG_CONFIG_DEC_TIMEOUT_E			BIT(23)
+@@ -354,6 +355,7 @@ static inline u32 vepu_read(struct hantro_dev *vpu, u32 reg)
+ 	u32 val;
+ 
+ 	regmap_read(vpu->regs_enc, reg, &val);
++	rmb(); /* read encoder swreg data in order */
+ 	vpu_debug(6, "0x%04x = 0x%08x\n", reg / 4, val);
+ 
+ 	return val;
+@@ -369,6 +371,7 @@ static inline void vdpu_write_relaxed(struct hantro_dev *vpu,
+ static inline void vdpu_write(struct hantro_dev *vpu, u32 val, u32 reg)
+ {
+ 	vpu_debug(6, "0x%04x = 0x%08x\n", reg / 4, val);
++	wmb();/* flush decoder previous relaxed writes */
+ 	regmap_write(vpu->regs_dec, reg, val);
+ }
+ 
+@@ -377,6 +380,7 @@ static inline u32 vdpu_read(struct hantro_dev *vpu, u32 reg)
+ 	u32 val;
+ 
+ 	regmap_read(vpu->regs_dec, reg, &val);
++	rmb(); /* read decoder swreg data in order */
+ 	vpu_debug(6, "0x%04x = 0x%08x\n", reg / 4, val);
+ 
+ 	return val;
+diff --git a/drivers/staging/media/hantro/hantro_regmap.c b/drivers/staging/media/hantro/hantro_regmap.c
+index 890e443688e2..2fc409cbd797 100644
+--- a/drivers/staging/media/hantro/hantro_regmap.c
++++ b/drivers/staging/media/hantro/hantro_regmap.c
+@@ -21,6 +21,7 @@ struct regmap_config hantro_regmap_dec = {
+ 	.reg_stride = 4,
+ 	/* all hantro accesses are sequential, even with respect to irq ctx */
+ 	.disable_locking = true,
++	.use_relaxed_mmio = true,
+ 	.name = "hantro_regmap_dec",
+ };
+ 
 -- 
 2.28.0
 
