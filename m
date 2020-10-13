@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9796C433E7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 06:37:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E87D9C433DF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 06:37:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C3E682064C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 06:37:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4F2652064C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 06:37:56 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zrDQgrwI"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C3E682064C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="CBM6vsDX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4F2652064C
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,21 +25,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uJKT9SkLr6HWlWJqDuwUA9EfRlS+sgTvMP0E+NtJF9g=; b=zrDQgrwIGLPjQMyvmT7mtLpveE
-	TCLwc+d8xQZ4VIdXZmr1oSBuA+NVE/ZMvAwbJ7XEZA5Q4M/U9KoWS3skuyBfRb4s3asl1u+Qfx9lm
-	pkENTwTNKfM0WIVRQuW47D9KmvVerFS9mLSj51ovJraK3l5eJqkUQGYbGk0up80pWRJVKyu5nJDii
-	N4r7055BUoFdqrCcDz0ddgGysqMT+ZEDQ6c2mVHIPI0ERIcFQrXjO64y9qrhVRkt4tAcSLIemmo5K
-	xDBAIR2EBy4RPpipPq1yk3C6IsfYdjET/38wWxd4sEKfRA5sKQK6UGI3oHGBQkYqpNbh9GjXlSck4
-	38/bwDGg==;
+	bh=4QATVUtce9xDHB+KAWgQlatJWhd/qYR61F4xmHK/Q9U=; b=CBM6vsDXhjVuNFbkRPD0wFrFC7
+	jMIiMHDUyVY1YwN4dTxZFlxkGIosWns1EucXqWH7gvzMyWqEzOTpIMcXZiw9TK66o/IAvvt0vy4b+
+	qizzqHDdst5FVbmSktppW0f/BiQEauiuJjZTgEP8myv5XzzQv2w8QsNT+EO+pARmxscdjxVp9Tmcq
+	HaFr5NBLC6qRsBFazMl/59DRZCHBGLP3ZHZ1CpAXXSOK4QfTrbuN/wQGAgTyOcEDDJ5luQy/gu1Fo
+	ZVTvNOBxVIR0c1w3WWgdQBVMoOylvuFn+l8BF5qkYgX9zg0eHjrzKJbPbGYiSp15F8eQwJ+Pe8Bfs
+	eDoz0kew==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSDwT-0007VV-2u; Tue, 13 Oct 2020 06:37:49 +0000
-Received: from lucky1.263xmail.com ([211.157.147.130])
+	id 1kSDwV-0007WQ-H4; Tue, 13 Oct 2020 06:37:51 +0000
+Received: from lucky1.263xmail.com ([211.157.147.134])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSDwO-0007Rp-Il
- for linux-rockchip@lists.infradead.org; Tue, 13 Oct 2020 06:37:46 +0000
+ id 1kSDwO-0007Ro-K8
+ for linux-rockchip@lists.infradead.org; Tue, 13 Oct 2020 06:37:47 +0000
 Received: from localhost (unknown [192.168.167.16])
- by lucky1.263xmail.com (Postfix) with ESMTP id 8BA22CCD3B;
+ by lucky1.263xmail.com (Postfix) with ESMTP id 68E1FC3239;
  Tue, 13 Oct 2020 14:37:34 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
@@ -49,9 +49,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P30218T139798958167808S1602571053396950_; 
- Tue, 13 Oct 2020 14:37:34 +0800 (CST)
+ Tue, 13 Oct 2020 14:37:35 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <61acd240078281ebd28490af1f12a39f>
+X-UNIQUE-TAG: <3f72093f1ea45d218446f5d8a608d148>
 X-RL-SENDER: jay.xu@rock-chips.com
 X-SENDER: xjq@rock-chips.com
 X-LOGIN-NAME: jay.xu@rock-chips.com
@@ -63,15 +63,16 @@ X-System-Flag: 0
 From: Jianqun Xu <jay.xu@rock-chips.com>
 To: linus.walleij@linaro.org,
 	heiko@sntech.de
-Subject: [PATCH v3 1/3] pinctrl: rockchip: make driver be tristate module
-Date: Tue, 13 Oct 2020 14:37:29 +0800
-Message-Id: <20201013063731.3618-2-jay.xu@rock-chips.com>
+Subject: [PATCH v3 2/3] pinctrl: rockchip: enable gpio pclk for
+ rockchip_gpio_to_irq
+Date: Tue, 13 Oct 2020 14:37:30 +0800
+Message-Id: <20201013063731.3618-3-jay.xu@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20201013063731.3618-1-jay.xu@rock-chips.com>
 References: <20201013063731.3618-1-jay.xu@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201013_023744_883982_364DEEFC 
-X-CRM114-Status: GOOD (  13.64  )
+X-CRM114-CacheID: sfid-20201013_023744_917673_E42C037D 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,61 +93,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make pinctrl-rockchip driver to be tristate module, support to build as
-a module, this is useful for GKI.
+There need to enable pclk_gpio when do irq_create_mapping, since it will
+do access to gpio controller.
 
 Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Jianqun Xu <jay.xu@rock-chips.com>
 ---
- drivers/pinctrl/Kconfig            |  2 +-
- drivers/pinctrl/pinctrl-rockchip.c | 13 +++++++++++++
- 2 files changed, 14 insertions(+), 1 deletion(-)
+ drivers/pinctrl/pinctrl-rockchip.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
-index 815095326e2d..bc9774c1ae8d 100644
---- a/drivers/pinctrl/Kconfig
-+++ b/drivers/pinctrl/Kconfig
-@@ -207,7 +207,7 @@ config PINCTRL_OXNAS
- 	select MFD_SYSCON
- 
- config PINCTRL_ROCKCHIP
--	bool
-+	tristate "Rockchip gpio and pinctrl driver"
- 	depends on OF
- 	select PINMUX
- 	select GENERIC_PINCONF
 diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 0401c1da79dd..927d132d6716 100644
+index 927d132d6716..a2f361aa6d05 100644
 --- a/drivers/pinctrl/pinctrl-rockchip.c
 +++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -16,10 +16,12 @@
-  */
+@@ -3157,7 +3157,9 @@ static int rockchip_gpio_to_irq(struct gpio_chip *gc, unsigned offset)
+ 	if (!bank->domain)
+ 		return -ENXIO;
  
- #include <linux/init.h>
-+#include <linux/module.h>
- #include <linux/platform_device.h>
- #include <linux/io.h>
- #include <linux/bitops.h>
- #include <linux/gpio/driver.h>
-+#include <linux/of_device.h>
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
- #include <linux/pinctrl/machine.h>
-@@ -4258,3 +4260,14 @@ static int __init rockchip_pinctrl_drv_register(void)
- 	return platform_driver_register(&rockchip_pinctrl_driver);
++	clk_enable(bank->clk);
+ 	virq = irq_create_mapping(bank->domain, offset);
++	clk_disable(bank->clk);
+ 
+ 	return (virq) ? : -ENXIO;
  }
- postcore_initcall(rockchip_pinctrl_drv_register);
-+
-+static void __exit rockchip_pinctrl_drv_unregister(void)
-+{
-+	platform_driver_unregister(&rockchip_pinctrl_driver);
-+}
-+module_exit(rockchip_pinctrl_drv_unregister);
-+
-+MODULE_DESCRIPTION("ROCKCHIP Pin Controller Driver");
-+MODULE_LICENSE("GPL");
-+MODULE_ALIAS("platform:pinctrl-rockchip");
-+MODULE_DEVICE_TABLE(of, rockchip_pinctrl_dt_match);
 -- 
 2.17.1
 
