@@ -2,70 +2,58 @@ Return-Path: <SRS0=Ew1P=DU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3DD01C433E7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 08:12:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 44F66C433DF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 08:22:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E15D5207C3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 08:12:12 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 490C0207C3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 08:22:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PFAx9L/t"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E15D5207C3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="F1zrhWVA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 490C0207C3
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YtL0CrpXrudOMXpYXLSyPK1lXvXLa2Y7DK2dbhETSzc=; b=PFAx9L/tv+ZnJSqtnLBF8eq2j
-	Jpp3islungWcOL0TIDC8XLQAW1oNTm3PNdLe0AHlhgMpzYYLXRRPDusTLsUYTZOHpUL5IZ8H34EwI
-	0aNWeKpxN3h8ysznHLjJyCz0MoICVkeOPiH95MilPGb0/7iRxs5dROQfKek4skjngyEgiDNklr2OR
-	OGbhpVVuwF6cxbEI7txct5jaT0eTzqSj7Ns8/mcWF2f4g+XE0WWmKmq5a2D7G1beCqAjsOjZN+DQi
-	yJ1RaF38ndk48yEQxa+aehz/4ZpGGFqMtGXEdEOwOPwSnimYWy0oJRULy30b76JTdnVQP04qPk4S5
-	WiVIGzIRA==;
+	 bh=n3SlxL/b1ViENcjw+YU8Fw9MMuseIjF9dKaEITcSztc=; b=F1zrhWVAsN2C9ZnjtlO6ypH9y
+	2wH96uNvM4mlWdJ6pGyCn7OYrPSUntwwvi0COeWFaU5tejQvXWLTyY6VVCogl6IrSZrBpNmVN0Mvv
+	eT6AI6yoRW7HdiPLMAg3M/hU3Z5KNwoUA3ZIXWRrCXNW9uATSdGtSGKNB2qaT8B+ECHByeaqYNGcc
+	zU1z76x/33qowGKy/3L91qHCJ1xD7nuc80chxaSi3uiiZRNQCmBAgF68HrQhoCd7h+fqeZiBWLlVU
+	aS6rAXGZ1oz0xzsJHbNJkq3eEU0xgLswHUNeEvxSE7SmFmgmjT4nEL1D246Xd4VCCPiROWePPzOHn
+	KbIdEwCiA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSFPj-0005zg-Ip; Tue, 13 Oct 2020 08:12:07 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1kSFZs-0007Dg-Ht; Tue, 13 Oct 2020 08:22:36 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSFPh-0005yf-Gg
- for linux-rockchip@lists.infradead.org; Tue, 13 Oct 2020 08:12:06 +0000
-Received: from lupine.hi.pengutronix.de
- ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1kSFPX-0001LU-SH; Tue, 13 Oct 2020 10:11:55 +0200
-Received: from pza by lupine with local (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1kSFPV-0003Qg-TN; Tue, 13 Oct 2020 10:11:53 +0200
-Message-ID: <35ebc7a7c56c86dee523812bfb55d1bac96f4b42.camel@pengutronix.de>
-Subject: Re: [PATCH 04/18] media: hantro: add reset controller support
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Adrian Ratiu <adrian.ratiu@collabora.com>, Ezequiel Garcia
- <ezequiel@collabora.com>
-Date: Tue, 13 Oct 2020 10:11:53 +0200
-In-Reply-To: <20201012205957.889185-5-adrian.ratiu@collabora.com>
-References: <20201012205957.889185-1-adrian.ratiu@collabora.com>
- <20201012205957.889185-5-adrian.ratiu@collabora.com>
-User-Agent: Evolution 3.30.5-1.1 
+ id 1kSFZq-0007Cw-Jq
+ for linux-rockchip@lists.infradead.org; Tue, 13 Oct 2020 08:22:35 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1kSFZj-0005Q6-Bl; Tue, 13 Oct 2020 10:22:27 +0200
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+To: linus.walleij@linaro.org, Jianqun Xu <jay.xu@rock-chips.com>
+Subject: Re: [PATCH v3 0/3] rockchip-pinctrl fixes
+Date: Tue, 13 Oct 2020 10:22:26 +0200
+Message-ID: <34840448.7XeAIBGaoL@diego>
+In-Reply-To: <20201013063731.3618-1-jay.xu@rock-chips.com>
+References: <20201013063731.3618-1-jay.xu@rock-chips.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201013_041205_571079_B7E9F755 
-X-CRM114-Status: GOOD (  18.74  )
+X-CRM114-CacheID: sfid-20201013_042234_658662_AFE83210 
+X-CRM114-Status: GOOD (  10.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,76 +66,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Fruehberger Peter <Peter.Fruehberger@de.bosch.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Mark Brown <broonie@kernel.org>,
- kuhanh.murugasen.krishnan@intel.com, Daniel Vetter <daniel@ffwll.ch>,
- kernel@collabora.com, linux-media@vger.kernel.org
+Cc: linux-gpio@vger.kernel.org, Jianqun Xu <jay.xu@rock-chips.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Adrian,
+Hi Jianqun,
 
-On Mon, 2020-10-12 at 23:59 +0300, Adrian Ratiu wrote:
-> Some SoCs might have a reset controller which disables clocks
-> by default in reset state which then drivers need to unreset
-> before being able to ungate a specific clock.
+Am Dienstag, 13. Oktober 2020, 08:37:28 CEST schrieb Jianqun Xu:
+> These patches are required by GKI.
 > 
-> In this specific case, the hantro driver needs to ensure the
-> peripheral clock can be properly ungated otherwise MMIO reg
-> values can't be accessed.
-> 
-> If the SoC has no reset controller or there is no "resets" DT
-> property defined, this new code will have no effect.
-> 
-> Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
-> Signed-off-by: Ezequiel Garcia <ezequiel@collabora.com>
-> ---
->  drivers/staging/media/hantro/hantro.h     | 1 +
->  drivers/staging/media/hantro/hantro_drv.c | 8 ++++++++
->  2 files changed, 9 insertions(+)
-> 
-> diff --git a/drivers/staging/media/hantro/hantro.h b/drivers/staging/media/hantro/hantro.h
-> index 65f9f7ea7dcf..bb442eb1974e 100644
-> --- a/drivers/staging/media/hantro/hantro.h
-> +++ b/drivers/staging/media/hantro/hantro.h
-> @@ -183,6 +183,7 @@ struct hantro_dev {
->  	struct platform_device *pdev;
->  	struct device *dev;
->  	struct clk_bulk_data *clocks;
-> +	struct reset_control *reset;
->  	void __iomem **reg_bases;
->  	void __iomem *enc_base;
->  	void __iomem *dec_base;
-> diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/staging/media/hantro/hantro_drv.c
-> index 3cd00cc0a364..c2ea54552ce9 100644
-> --- a/drivers/staging/media/hantro/hantro_drv.c
-> +++ b/drivers/staging/media/hantro/hantro_drv.c
-> @@ -17,6 +17,7 @@
->  #include <linux/pm.h>
->  #include <linux/pm_runtime.h>
->  #include <linux/slab.h>
-> +#include <linux/reset.h>
->  #include <linux/videodev2.h>
->  #include <linux/workqueue.h>
->  #include <media/v4l2-event.h>
-> @@ -747,6 +748,13 @@ static int hantro_probe(struct platform_device *pdev)
->  
->  	INIT_DELAYED_WORK(&vpu->watchdog_work, hantro_watchdog);
->  
-> +	vpu->reset = devm_reset_control_get_optional_exclusive(&pdev->dev,
-> +							       NULL);
-> +	if (IS_ERR(vpu->reset))
-> +		vpu->reset = NULL;
+> Jianqun Xu (3):
+>   pinctrl: rockchip: make driver be tristate module
+>   pinctrl: rockchip: enable gpio pclk for rockchip_gpio_to_irq
+>   pinctrl: rockchip: create irq mapping in gpio_to_irq
 
-Please return the error. If the optional reset is missing from the
-device tree, devm_reset_control_get_optional_exclusive() returns NULL
-already.
+looks good to go as fixes.
 
-regards
-Philipp
+What happenend to the "populate platform device for rockchip gpio"
+patch though - more out of cursiosity.
+
+Heiko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
