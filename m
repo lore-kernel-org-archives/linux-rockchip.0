@@ -2,83 +2,56 @@ Return-Path: <SRS0=Ew1P=DU=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5160C433DF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 06:40:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 73D68C433E7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 06:47:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1BD7F2064C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 06:40:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D747C20714
+	for <linux-rockchip@archiver.kernel.org>; Tue, 13 Oct 2020 06:47:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="eUdVWPKs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1BD7F2064C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nTp4gtof"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D747C20714
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-ID:Mime-Version:References:Subject:To:From:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:List-Owner;
-	 bh=lzqXyoFewe3Ocd4Csi5qBwcrQ7/CNGGq/G5pTdp+vc8=; b=eUdVWPKsop05z6nRkkWgk3Cba
-	k04zYsNotUY/TuHOwU23GJiSP+01ijcUGf3SYaTrMSLKTi4ZhEAH/Q92vJp+yoionHa4SclZT6N8u
-	RPciSQZS0zq85KRCaZg5V3hBggSiWVYwLNtcZ9zfhlkOzuu2FIobmKC94DS30j4AiI5ICDPMC7aKT
-	QS0TIZHJuAlEAbX6OO6txLRq6PsnjAXCx0GmaiKqrmrjXHHPPNzAHIc0qttSdQqbYJqNT7FYJQ0q3
-	2t2wckFHTSJ5bD6Exzaxk19SJl1xG0ej1RYEcKlhiXxN58ccBAfQd/gAGcWOGd1ptAhexZBNwDCqm
-	FvEqKu/Vg==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=oHDnnTNEZCnsastwNeWIM2NSlC0ODWLLJ+F8pIlSN5Y=; b=nTp4gtofR0n7U+7ugWPoO5YMJ
+	1Mu7ljn9fnCCRnLHtcoMVMpHYKNPcsz5A0luZ3C0vrwzsAmHJT8BmBRVrvlImMq1zEreECy2Wqasy
+	pPxIeFVsQnhn5F4AF9OC0X0ixneV6iZ7O+oBm++JeCPbTDkPRw1R1DbjWQSwo8EB+YpZSkXwl/nhQ
+	n4bitbX8Es2rOG6srxBHsAJlvyHmurIAUn2tNXgqZvZ5UBPbYQbzOwB7GgU8fOKgC+vj+x+Gsk3sk
+	zZ3i6OmKNtF9KM8Ir013f75IpLCxegptKAfoWbaBXGcbxCMqkxPMjSZZXH04EfmVNnmWGsmitrUbb
+	SosGF7DNQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSDzR-0007uQ-RB; Tue, 13 Oct 2020 06:40:53 +0000
-Received: from regular1.263xmail.com ([211.150.70.200])
+	id 1kSE5w-0008GS-Vr; Tue, 13 Oct 2020 06:47:37 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSDzQ-0007tm-Dn
- for linux-rockchip@lists.infradead.org; Tue, 13 Oct 2020 06:40:53 +0000
-Received: from localhost (unknown [192.168.167.16])
- by regular1.263xmail.com (Postfix) with ESMTP id 9CA4B11C6;
- Tue, 13 Oct 2020 14:40:48 +0800 (CST)
-X-MAIL-GRAY: 0
-X-MAIL-DELIVERY: 1
-X-ADDR-CHECKED4: 1
-X-ANTISPAM-LEVEL: 2
-X-SKE-CHECKED: 1
-X-ABS-CHECKED: 1
-Received: from jianqun-pc (unknown [58.22.7.114])
- by smtp.263.net (postfix) whith ESMTP id
- P30217T139798165583616S1602571248138252_; 
- Tue, 13 Oct 2020 14:40:48 +0800 (CST)
-X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <5ba8c1c7360008fb64b95412a085cae9>
-X-RL-SENDER: jay.xu@rock-chips.com
-X-SENDER: xjq@rock-chips.com
-X-LOGIN-NAME: jay.xu@rock-chips.com
-X-FST-TO: linus.walleij@linaro.org
-X-SENDER-IP: 58.22.7.114
-X-ATTACHMENT-NUM: 0
-X-DNS-TYPE: 0
-X-System-Flag: 0
-Date: Tue, 13 Oct 2020 14:40:47 +0800
-From: "jay.xu@rock-chips.com" <jay.xu@rock-chips.com>
-To: "Linus Walleij" <linus.walleij@linaro.org>, 
- =?UTF-8?B?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>
-Subject: Re: Re: [PATCH 2/2] pinctrl: rockchip: make driver be tristate module
-References: <20200907025927.9713-3-jay.xu@rock-chips.com>, 
- <20200914003847.10341-1-jay.xu@rock-chips.com>, 
- <5373086.oXRXx9yCqB@diego>, <7244527.mGzxE9Z0Hj@diego>, 
- <CACRpkdYAxpyB+y88eC4iuvHRqttPSFdaMHAZdr6y8jfTr0Qong@mail.gmail.com>
-X-Priority: 3
-X-Has-Attach: no
-X-Mailer: Foxmail 7.2.18.95[cn]
-Mime-Version: 1.0
-Message-ID: <202010131440473168632@rock-chips.com>
+ id 1kSE5t-0008FR-NQ
+ for linux-rockchip@lists.infradead.org; Tue, 13 Oct 2020 06:47:35 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: aratiu) with ESMTPSA id 7652F1F44489
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+To: Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH 00/18] Add Hantro regmap and VC8000 h264 decode support
+In-Reply-To: <97e84bb5-972a-091d-a159-6ab1151f17ab@kwiboo.se>
+References: <20201012205957.889185-1-adrian.ratiu@collabora.com>
+ <97e84bb5-972a-091d-a159-6ab1151f17ab@kwiboo.se>
+Date: Tue, 13 Oct 2020 09:48:29 +0300
+Message-ID: <87r1q28vuq.fsf@iwork.i-did-not-set--mail-host-address--so-tickle-me>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201013_024052_777296_CAF7281F 
-X-CRM114-Status: UNSURE (   7.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201013_024734_205411_FD57CFE8 
+X-CRM114-Status: GOOD (  31.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,28 +64,170 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Fruehberger Peter <Peter.Fruehberger@de.bosch.com>, kernel@collabora.com,
+ Daniel Vetter <daniel@ffwll.ch>, linux-kernel@vger.kernel.org,
+ Tomasz Figa <tfiga@chromium.org>, linux-rockchip@lists.infradead.org,
+ kuhanh.murugasen.krishnan@intel.com, Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RGVhciBXYWxsZWlqIGFuZCBIZWlrbwoKVGhlIHBhdGNoICJbUEFUQ0hdIHBpbmN0cmw6IHJvY2tj
-aGlwOiBwb3B1bGF0ZSBwbGF0Zm9ybSBkZXZpY2UgZm9yIHJvY2tjaGlwIGdwaW8iIGhhcyBiZWVu
-IHJlbW92ZSBvdXRvZgp0aGUgcGF0Y2hlcywgc2luY2Ugd2UgaGF2ZSBhIG5ldyBwYXRjaCB0byBt
-b3ZlIGdwaW8gcmVsYXRlZCBjb2RlcyB0byBhIHNlcGFyYXRlZCBkcml2ZXIuCgpTbyBwbGVhc2Ug
-aWdub3JlIGl0IGZvciBub3cuIHRoYW5rcyB2ZXJ5IG11Y2guCgotLS0tLS0tLS0tLS0tLQpqYXku
-eHVAcm9jay1jaGlwcy5jb20KPk9uIE1vbiwgU2VwIDIxLCAyMDIwIGF0IDEyOjE4IEFNIEhlaWtv
-IFN0w7xibmVyIDxoZWlrb0BzbnRlY2guZGU+IHdyb3RlOgo+Cj4+IEl0IHNlZW1zIEkndmUgcmV2
-aWV3ZWQgYWxsIHBhdGNoZXMgb2YgdGhpcyBzZXJpZXMgbm93LCBidXQgSSB0aGluawo+PiB5b3Ug
-bWlnaHQgd2FudCB0byByZXNlbmQgdGhlIHNlcmllcyBhIGZpbmFsIHRpbWUgYXMgdjMgaW4gYSBj
-bGVhbmVkIHVwCj4+IHN0YXRlIChkcm9wIHBhdGNoMSBhbmQganVzdCBwb3N0IHBhdGNoZXMgMi01
-IGluIGEgZnVsbCBzZXJpZXMpIHNvIHRoYXQKPj4gd2UgZG9uJ3QgY29uZnVzZSBMaW51cyB0b28g
-bXVjaCB3aXRoIHRoZSByZXBvc3RlZCBwYXRjaGVzIHdlIGN1cnJlbnRseQo+PiBoYXZlLgo+Cj5Z
-ZXMgcGxlYXNlIHNlbmQgYSB2MyBsaWtlIHRoYXQgc28gSSBjYW4gYXBwbHkgaXQhCj4KPllvdXJz
-LAo+TGludXMgV2FsbGVpago+Cj4KPgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Jonas,
+
+On Mon, 12 Oct 2020, Jonas Karlman <jonas@kwiboo.se> wrote:
+> Hi, 
+> 
+> On 2020-10-12 22:59, Adrian Ratiu wrote: 
+>> Dear all,  This series introduces a regmap infrastructure for 
+>> the Hantro driver which is used to compensate for different 
+>> HW-revision register layouts.  To justify it h264 decoding 
+>> capability is added for newer VC8000 chips.   This is a gradual 
+>> conversion to the new infra - a complete conversion would have 
+>> been very big and I do not have all the HW yet to test (I'm 
+>> expecting a RK3399 shipment next week though ;). I think 
+>> converting the h264 decoder provides a nice blueprint for how 
+>> the other codecs can be converted and enabled for different HW 
+>> revisions.   The end goal of this is to make the driver more 
+>> generic and eliminate entirely custom boilerplate like `struct 
+>> hantro_reg` or headers with core-specific bit manipulations 
+>> like `hantro_g1_regs.h` and instead rely on the well-tested 
+>> albeit more verbose regmap subsytem.   To give just two 
+>> examples of bugs which are easily discovered by using more 
+>> verbose regmap fields (very easy to compare with the 
+>> datasheets) instead of relying on bit-magic tricks: 
+>> G1_REG_DEC_CTRL3_INIT_QP(x) was off-by-1 and the wrong 
+>> .clk_gate bit was set in hantro_postproc.c.   Anyway, this 
+>> series also extends the MMIO regmap API to allow relaxed writes 
+>> for the theoretical reason that avoiding unnecessary 
+>> membarriers leads to less CPU usage and small improvements to 
+>> battery life. However, in practice I could not measure 
+>> differences between relaxed/non-relaxed IO, so I'm on the fence 
+>> whether to keep or remove the relaxed calls.   What I could 
+>> masure is the performance impact of adding more sub-reg field 
+>> acesses: a constant ~ 20 microsecond bump per G1 h264 
+>> frame. This is acceptable considering the total time to decode 
+>> a frame takes three orders of magnitude longer, 
+>> i.e. miliseconds ranges, depending on the frame size and 
+>> bitstream params, so it is an acceptable trade-off to have a 
+>> more generic driver. 
+> 
+> In the RK3399 variant all fields use completely different 
+> positions so in order to make the driver fully generic all 
+> around 145 sub-reg fields used for h264 needs to be converted, 
+> see [1] for a quick generation of field mappings used for h264 
+> decoding. 
+> 
+> Any indication on how the performance will be impacted with 145 
+> fields compared to around 20 fields used in this series? 
+
+I'm aware of the RK3399 bigger layout divergence and have some 
+commits converting more of the reg fields, but not all that is 
+required for h264 on rk3399. I haven't seen a huge perf 
+degradation but more measurements are needed, basically it depends 
+on how often we go from writing a reg once to multiple times due 
+to splitting.
+
+I tried some benchmarks using regmap caching (both the default 
+backends provided by the regmap subsystem, and a custom one I 
+wrote) but they were not helping, perhaps if we had more fields 
+then that would have more of an impact.
+
+(btw some good news is I'm having a RK3399 SoC in the mail for an 
+unrelated project and expect to receive it soon :D)
+
+IMO there will always be a trade-off between optimizing the driver 
+to squeeze the most perf out of the HW, eg optimize reg writes at 
+low microsec level (which I think here is unnecessary) and making 
+it more generic to support more HW.
+
+In this case a fundamental question we need to ask ourselves is if 
+the RK3399 "looks like another/different-enough HW" due to its 
+bigger reg shuffling to warrant a separate driver or 
+driver-within-a-driver architecture instead trying to bring it 
+into the fold with the others, possibly degrading perf for 
+everyone. I guess we'll have to see some benchmark numbers and an 
+actual h264 implementation before deciding how to proceed with 
+RK3399.
+
+> 
+> Another issue with RK3399 variant is that some fields use 
+> different position depending on the codec used, e.g. two 
+> dec_ref_frames in [2].  Should we use codec specific field maps? 
+> or any other suggestion on how we can handle such case?
+
+Yes, codec specific fields would be one idea, but I'd try to avoid 
+it if possible to avoid unnecessary field definitions.
+
+The regmap field API and config we currently use are just a flat 
+structs (see hantro_regmap.[h|c]) but it doesn't have to be like 
+that. Maybe we could organize it a bit better and in the future 
+have some codec-level configs going on due to the regmap subsystem 
+allowing de-coupling of the API (struct regmap_field) from the reg 
+defs/configs (struct reg_field).
+
+That is just an idea of the top of my head :) Will have to think a 
+bit more about how to handle that specific use case in the 
+future. Thanks!
+
+>
+> [1] https://github.com/Kwiboo/rockchip-vpu-regtool/commit/8b88d94d2ed966c7d88d9a735c0c97368eb6c92d
+> [2] https://github.com/Kwiboo/rockchip-vpu-regtool/blob/master/rk3399_dec_regs.c#L1065
+> [3] https://github.com/Kwiboo/rockchip-vpu-regtool/commit/9498326296445a9ce153b585cc48e0cea05d3c93
+>
+> Best regards,
+> Jonas
+>
+>> 
+>> This has been tested on next-20201009 with imx8mq for G1 and an SoC with
+>> VC8000 which has not yet been added (hopefuly support lands soon).
+>> 
+>> Kind regards,
+>> Adrian
+>> 
+>> Adrian Ratiu (18):
+>>   media: hantro: document all int reg bits up to vc8000
+>>   media: hantro: make consistent use of decimal register notation
+>>   media: hantro: make G1_REG_SOFT_RESET Rockchip specific
+>>   media: hantro: add reset controller support
+>>   media: hantro: prepare clocks before variant inits are run
+>>   media: hantro: imx8mq: simplify ctrlblk reset logic
+>>   regmap: mmio: add config option to allow relaxed MMIO accesses
+>>   media: hantro: add initial MMIO regmap infrastructure
+>>   media: hantro: default regmap to relaxed MMIO
+>>   media: hantro: convert G1 h264 decoder to regmap fields
+>>   media: hantro: convert G1 postproc to regmap
+>>   media: hantro: add VC8000D h264 decoding
+>>   media: hantro: add VC8000D postproc support
+>>   media: hantro: make PP enablement logic a bit smarter
+>>   media: hantro: add user-selectable, platform-selectable H264 High10
+>>   media: hantro: rename h264_dec as it's not G1 specific anymore
+>>   media: hantro: add dump registers debug option before decode start
+>>   media: hantro: document encoder reg fields
+>> 
+>>  drivers/base/regmap/regmap-mmio.c             |   34 +-
+>>  drivers/staging/media/hantro/Makefile         |    3 +-
+>>  drivers/staging/media/hantro/hantro.h         |   79 +-
+>>  drivers/staging/media/hantro/hantro_drv.c     |   41 +-
+>>  drivers/staging/media/hantro/hantro_g1_regs.h |   92 +-
+>>  ...hantro_g1_h264_dec.c => hantro_h264_dec.c} |  237 +++-
+>>  drivers/staging/media/hantro/hantro_hw.h      |   23 +-
+>>  .../staging/media/hantro/hantro_postproc.c    |  144 ++-
+>>  drivers/staging/media/hantro/hantro_regmap.c  | 1015 +++++++++++++++++
+>>  drivers/staging/media/hantro/hantro_regmap.h  |  295 +++++
+>>  drivers/staging/media/hantro/hantro_v4l2.c    |    3 +-
+>>  drivers/staging/media/hantro/imx8m_vpu_hw.c   |   75 +-
+>>  drivers/staging/media/hantro/rk3288_vpu_hw.c  |    5 +-
+>>  include/linux/regmap.h                        |    5 +
+>>  14 files changed, 1795 insertions(+), 256 deletions(-)
+>>  rename drivers/staging/media/hantro/{hantro_g1_h264_dec.c => hantro_h264_dec.c} (58%)
+>>  create mode 100644 drivers/staging/media/hantro/hantro_regmap.c
+>>  create mode 100644 drivers/staging/media/hantro/hantro_regmap.h
+>> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
