@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A340C43457
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25AC5C433E7
 	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 02:28:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CCAD421D81
+	by mail.kernel.org (Postfix) with ESMTPS id BB51821D7F
 	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 02:28:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="WWt20lTQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCAD421D81
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zw8AJdUL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB51821D7F
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0DWFSJzS4F+uGwHu6AjNQQFXDjDQEEAhqUd06JNi15Q=; b=WWt20lTQKOJbH1uB9z15wiDBhp
-	yDPJrulFp7u0sTgig4QOm6O8TsUHCQ9rT8TO/FQ8BHdasT2m9zhgLDFtvP9gvdMDKQlacllN/qVpE
-	Ns1i8DTC/Jykabf4TKhMI2ml1OsEyFbIWH/2n1reevk2sYKym09Ag2/epPN2M9zdgUM29oKF3yerS
-	LvZHAgiVgRb92ejWb71/dvkwe9xJhGCLI7bhdIxMjKH+46gHDh/baOzKcv9kFSe6Il9apiIFKhPip
-	bAxMBfSOvQ8JwWV0C14oiTlCcqxHZg6dVSQbGL2d/mInKo3iH4D/yZ38ALgQHB9eO443K4VWoM+u6
-	9DX9XIYA==;
+	bh=erCf2S2X/rBCDecrjMNd9367IE0oghQaaHrvx9Vmj5s=; b=zw8AJdULtGiIyqtsFXA7iQ9I7l
+	vb9l2SWvoXwCbwrCkLr5sCALYSzwF89w2cco1i7PxADrpvYJKku8ewQB2d5Tui4+XtVcB3Y51HWP9
+	bDzq7lnrDo27iEWsqjdQkpHoMzeupmRnXzBRm+qv8WaoInOWDbtR965oIM5nfBPRSOhFYl9dPiUlq
+	ofL2DfM2iM9URUN0hPVwQtRAnGqpSdmNxx4VxioDblKHGMvS4HnYXpod2SzWPE053xWmOijgRXiCA
+	L9VOIaGpuwJz+VYJCmWFJ+tMpUMy5WuTM1qirl+2vW4EDxFp1toTxf7VSw4lyjLzwkYXY2ScqoHgZ
+	Pylpi9iQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSWWk-0002We-FL; Wed, 14 Oct 2020 02:28:30 +0000
-Received: from lucky1.263xmail.com ([211.157.147.133])
+	id 1kSWWl-0002Wr-BY; Wed, 14 Oct 2020 02:28:31 +0000
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSWWg-0002Sz-T8
+ id 1kSWWg-0002T2-I0
  for linux-rockchip@lists.infradead.org; Wed, 14 Oct 2020 02:28:28 +0000
 Received: from localhost (unknown [192.168.167.69])
- by lucky1.263xmail.com (Postfix) with ESMTP id 4491EC9973;
- Wed, 14 Oct 2020 10:28:18 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id D032FB5569;
+ Wed, 14 Oct 2020 10:28:16 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -49,9 +49,9 @@ X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
  P18907T140199837284096S1602642493459899_; 
- Wed, 14 Oct 2020 10:28:17 +0800 (CST)
+ Wed, 14 Oct 2020 10:28:16 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <dabb32f45699b564059b761a96482639>
+X-UNIQUE-TAG: <fbf45e18dd1cbaac3d69411fdd11a126>
 X-RL-SENDER: zhangqing@rock-chips.com
 X-SENDER: zhangqing@rock-chips.com
 X-LOGIN-NAME: zhangqing@rock-chips.com
@@ -62,15 +62,15 @@ X-DNS-TYPE: 0
 X-System-Flag: 0
 From: Elaine Zhang <zhangqing@rock-chips.com>
 To: heiko@sntech.de
-Subject: [PATCH v4 4/5] clk: rockchip: add pll up and down when change pll freq
-Date: Wed, 14 Oct 2020 10:28:11 +0800
-Message-Id: <20201014022812.6733-5-zhangqing@rock-chips.com>
+Subject: [PATCH v4 2/5] clk: rockchip: fix up the frac clk get rate error
+Date: Wed, 14 Oct 2020 10:28:09 +0800
+Message-Id: <20201014022812.6733-3-zhangqing@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20201014022812.6733-1-zhangqing@rock-chips.com>
 References: <20201014022812.6733-1-zhangqing@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201013_222827_791444_7E51234F 
-X-CRM114-Status: GOOD (  10.71  )
+X-CRM114-CacheID: sfid-20201013_222827_045346_7BDFCC60 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,77 +94,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-set pll sequence:
-        ->set pll to slow mode or other plls
-        ->set pll down
-        ->set pll params
-        ->set pll up
-        ->wait pll lock status
-        ->set pll to normal mode
+support fractional divider with one level and two level parent clock
+.i.e:
 
-To slove the system error:
-wait_pll_lock: timeout waiting for pll to lock
-pll_set_params: pll update unsucessful,
-                trying to restore old params
+normal fractional divider is:
+                |--\
+    ---[GPLL]---|   \                                      |--\
+    ---[CPLL]---|mux|--[GATE]--[DIV]-----------------------|   \
+    ---[NPLL]---|   /                |                     |mux|--[GATE]--[UART0]
+                |--/                 |--[GATE]--[FRACDIV]--|   /
+                                                           |--/
+but rk3399 uart is special:
+                |--\
+    ---[GPLL]---|   \                                         |--\
+    ---[CPLL]---|mux|--|--[GATE]--[DIV]-----------------------|   \
+    ---[NPLL]---|   /  |                |                     |mux|--[GATE]--[UART1]
+                |--/   |                |--[GATE]--[FRACDIV]--|   /
+                       |                                      |--/
+                       |
+                       |                                      |--\
+                       |--[GATE]--[DIV]-----------------------|   \
+                       |                |                     |mux|--[GATE]--[UART2]
+                       |                |--[GATE]--[FRACDIV]--|   /
+                       |                                      |--/
+                       |
+                       |                                      |--\
+                       |--[GATE]--[DIV]-----------------------|   \
+                                        |                     |mux|--[GATE]--[UART3]
+                                        |--[GATE]--[FRACDIV]--|   /
+                                                              |--/
+
+The special fractional divider, there are two levels of clock between FRACDIV and PLL.
 
 Signed-off-by: Elaine Zhang <zhangqing@rock-chips.com>
 ---
- drivers/clk/rockchip/clk-pll.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ drivers/clk/rockchip/clk.c | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
-index 4c6c9167ef50..8adc6f54a605 100644
---- a/drivers/clk/rockchip/clk-pll.c
-+++ b/drivers/clk/rockchip/clk-pll.c
-@@ -210,6 +210,11 @@ static int rockchip_rk3036_pll_set_params(struct rockchip_clk_pll *pll,
- 		rate_change_remuxed = 1;
- 	}
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index fac5a4a3f5c3..8f77c3f9fab7 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -190,16 +190,21 @@ static void rockchip_fractional_approximation(struct clk_hw *hw,
+ 	if (((rate * 20 > p_rate) && (p_rate % rate != 0)) ||
+ 	    (fd->max_prate && fd->max_prate < p_rate)) {
+ 		p_parent = clk_hw_get_parent(clk_hw_get_parent(hw));
+-		p_parent_rate = clk_hw_get_rate(p_parent);
+-		*parent_rate = p_parent_rate;
+-		if (fd->max_prate && p_parent_rate > fd->max_prate) {
+-			div = DIV_ROUND_UP(p_parent_rate, fd->max_prate);
+-			*parent_rate = p_parent_rate / div;
++		if (!p_parent) {
++			*parent_rate = p_rate;
++		} else {
++			p_parent_rate = clk_hw_get_rate(p_parent);
++			*parent_rate = p_parent_rate;
++			if (fd->max_prate && p_parent_rate > fd->max_prate) {
++				div = DIV_ROUND_UP(p_parent_rate,
++						   fd->max_prate);
++				*parent_rate = p_parent_rate / div;
++			}
+ 		}
  
-+	/* set pll power down */
-+	writel(HIWORD_UPDATE(RK3036_PLLCON1_PWRDOWN,
-+			     RK3036_PLLCON1_PWRDOWN, 0),
-+	       pll->reg_base + RK3036_PLLCON(1));
-+
- 	/* update pll values */
- 	writel_relaxed(HIWORD_UPDATE(rate->fbdiv, RK3036_PLLCON0_FBDIV_MASK,
- 					  RK3036_PLLCON0_FBDIV_SHIFT) |
-@@ -231,6 +236,11 @@ static int rockchip_rk3036_pll_set_params(struct rockchip_clk_pll *pll,
- 	pllcon |= rate->frac << RK3036_PLLCON2_FRAC_SHIFT;
- 	writel_relaxed(pllcon, pll->reg_base + RK3036_PLLCON(2));
- 
-+	/* set pll power up */
-+	writel(HIWORD_UPDATE(0, RK3036_PLLCON1_PWRDOWN, 0),
-+	       pll->reg_base + RK3036_PLLCON(1));
-+	udelay(1);
-+
- 	/* wait for the pll to lock */
- 	ret = rockchip_rk3036_pll_wait_lock(pll);
- 	if (ret) {
-@@ -692,6 +702,11 @@ static int rockchip_rk3399_pll_set_params(struct rockchip_clk_pll *pll,
- 		rate_change_remuxed = 1;
- 	}
- 
-+	/* set pll power down */
-+	writel(HIWORD_UPDATE(RK3399_PLLCON3_PWRDOWN,
-+			     RK3399_PLLCON3_PWRDOWN, 0),
-+	       pll->reg_base + RK3399_PLLCON(3));
-+
- 	/* update pll values */
- 	writel_relaxed(HIWORD_UPDATE(rate->fbdiv, RK3399_PLLCON0_FBDIV_MASK,
- 						  RK3399_PLLCON0_FBDIV_SHIFT),
-@@ -715,6 +730,12 @@ static int rockchip_rk3399_pll_set_params(struct rockchip_clk_pll *pll,
- 					    RK3399_PLLCON3_DSMPD_SHIFT),
- 		       pll->reg_base + RK3399_PLLCON(3));
- 
-+	/* set pll power up */
-+	writel(HIWORD_UPDATE(0,
-+			     RK3399_PLLCON3_PWRDOWN, 0),
-+	       pll->reg_base + RK3399_PLLCON(3));
-+	udelay(1);
-+
- 	/* wait for the pll to lock */
- 	ret = rockchip_rk3399_pll_wait_lock(pll);
- 	if (ret) {
+ 		if (*parent_rate < rate * 20) {
+-			pr_err("%s parent_rate(%ld) is low than rate(%ld)*20, fractional div is not allowed\n",
+-			       clk_hw_get_name(hw), *parent_rate, rate);
++			pr_warn("%s p_rate(%ld) is low than rate(%ld)*20, use integer or half-div\n",
++				clk_hw_get_name(hw), *parent_rate, rate);
+ 			*m = 0;
+ 			*n = 1;
+ 			return;
 -- 
 2.17.1
 
