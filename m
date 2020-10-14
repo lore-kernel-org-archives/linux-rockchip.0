@@ -8,16 +8,16 @@ X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0755BC433E7
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B36EC433DF
 	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 20:28:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 704E022247
+	by mail.kernel.org (Postfix) with ESMTPS id 6C22B20757
 	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 20:28:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iZ8LHWh9"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 704E022247
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zefowxlI"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C22B20757
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,42 +26,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=nbpUMvRUfQcHy7nhqdadwa+MHjZ6L1J5wxBBtbkNpSk=; b=iZ8LHWh9ppH8w1GcsUGzPu9rs
-	DfxscYiddk7pS5cxz/jqwjb0CqAnRrrUi5idsvt7+5Ui+d/ZQAU3t88sN9dtA09whr2ugV8K+LueD
-	tPf2k59KUtSjZ1AoqSPOl1SLwW1qzmeaIasOS5zSK6lEoKlfUoOxuIdWR9KsoUD9Jd3fVqDmjrXXM
-	RXMWvpxdJhZQUGqqWiEKUN/N+N3UkyexEgIiS8tWJDMO4te5gziWVseUF94kKj/g4ax2KaeLjSepB
-	zb4eIAEqVGdzJJnn+YI0X9OTpZWxl88v7QX1ZfyDfnZHSFv2tjEkOIQZ9f9CW4OuqTix3b9xMGDI9
-	7SzdTUuvA==;
+	 bh=wefjYGSRb154QI5CRw729Pdz3u5dxv0VClbEtpI0X5w=; b=zefowxlIlGO8Xy6s+iZN6jhEp
+	IAzOUdNkBzA8dZCqkGIPkenJmHp4n96EIsfajfG0I5QLcBD2QMkyBg6ev7uKAhqshKPtdaId00dgl
+	27CVeSw9pXJZfmLqP+dDe61UyvG3tInKLcNr/jbWJN5q9ZKdvGTNYClYC3M2WyA0i/eOLxSu+FLHu
+	H1bqpHbX5wr49XqqS2E9OaEl7wwe/LleKzmwUmrIJFNGE5/JyF8/NTcMcIaz3A1isQeYIX8c6Uyp2
+	T5opAnGg9Xg7hnBrFTPx636O0ybNwmgQ+82Gd/Q7edMNM4PfxCyb1Pdra3MmnjD09ye+jInUlnxIU
+	XhAvNBiCQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSnNd-0000DV-Ei; Wed, 14 Oct 2020 20:28:13 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kSnNa-0000Cp-SH; Wed, 14 Oct 2020 20:28:12 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSnNW-00007d-QR
- for linux-rockchip@lists.infradead.org; Wed, 14 Oct 2020 20:28:08 +0000
+ id 1kSnNW-00009w-IB
+ for linux-rockchip@lists.infradead.org; Wed, 14 Oct 2020 20:28:07 +0000
 Received: from [IPv6:2804:14c:483:7f66::1004] (unknown
  [IPv6:2804:14c:483:7f66::1004])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: koike)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 8745A1F4582F;
- Wed, 14 Oct 2020 21:27:51 +0100 (BST)
-Subject: Re: [PATCH 3/6] media: staging: rkisp1: initialize buffer lists only
- on probe
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 018AD1F45830;
+ Wed, 14 Oct 2020 21:27:52 +0100 (BST)
+Subject: Re: [PATCH 4/6] media: staging: rkisp1: remove the 'is_streaming'
+ field from stats and params
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
  linux-media@vger.kernel.org
 References: <20201002184222.7094-1-dafna.hirschfeld@collabora.com>
- <20201002184222.7094-4-dafna.hirschfeld@collabora.com>
+ <20201002184222.7094-5-dafna.hirschfeld@collabora.com>
 From: Helen Koike <helen.koike@collabora.com>
-Message-ID: <77970c1e-c723-6115-6d61-e19cc8afe42d@collabora.com>
-Date: Wed, 14 Oct 2020 17:27:46 -0300
+Message-ID: <bcf1127a-a508-3b4e-0060-277eddef7400@collabora.com>
+Date: Wed, 14 Oct 2020 17:27:49 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.2
 MIME-Version: 1.0
-In-Reply-To: <20201002184222.7094-4-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20201002184222.7094-5-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201014_162807_003834_495AFF23 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20201014_162806_785094_2E3BFECC 
+X-CRM114-Status: GOOD (  29.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,15 +83,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
+Hi Dafna,
 
 On 10/2/20 3:42 PM, Dafna Hirschfeld wrote:
-> The buffer lists of stats and params entities
-> are initialized in queue_setup callback with
-> 'INIT_LIST_HEAD'. It is enough to initialize
-> the lists only upon registration.
-> For the stats entity the list is already
-> initialize upon registration.
+> The params and stats entities have a field 'is_streaming'.
+> This field is not needed since the entities can have available
+> buffers only if they stream and therefore it is enough to
+> check if there are buffers available.
+> As a result, their start_stream callbacks can be removed since
+> they only set the 'is_streaming' field.
+
+I would just clarify this a bit, since it is possible to have
+is_streaming = true, but without any buffers queued, but
+if we have any buffers queued, then we are sure is_streaming = true,
+and this is what functions, executed after the testins this bool, check.
+
 > 
 > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
@@ -101,59 +107,170 @@ Thanks
 Helen
 
 > ---
->  drivers/staging/media/rkisp1/rkisp1-params.c | 4 +---
->  drivers/staging/media/rkisp1/rkisp1-stats.c  | 4 ----
->  2 files changed, 1 insertion(+), 7 deletions(-)
+>  drivers/staging/media/rkisp1/rkisp1-common.h | 12 ++++-------
+>  drivers/staging/media/rkisp1/rkisp1-params.c | 21 +-------------------
+>  drivers/staging/media/rkisp1/rkisp1-stats.c  | 17 ----------------
+>  3 files changed, 5 insertions(+), 45 deletions(-)
 > 
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+> index 45abacdbb664..692333c66f9d 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
+> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+> @@ -240,19 +240,17 @@ struct rkisp1_capture {
+>   *
+>   * @vnode:	  video node
+>   * @rkisp1:	  pointer to the rkisp1 device
+> - * @lock:	  locks the buffer list 'stat' and 'is_streaming'
+> + * @lock:	  locks the buffer list 'stat'
+>   * @stat:	  queue of rkisp1_buffer
+>   * @vdev_fmt:	  v4l2_format of the metadata format
+> - * @is_streaming: device is streaming
+>   */
+>  struct rkisp1_stats {
+>  	struct rkisp1_vdev_node vnode;
+>  	struct rkisp1_device *rkisp1;
+>  
+> -	spinlock_t lock; /* locks the buffers list 'stats' and 'is_streaming' */
+> +	spinlock_t lock; /* locks the buffers list 'stats' */
+>  	struct list_head stat;
+>  	struct v4l2_format vdev_fmt;
+> -	bool is_streaming;
+>  };
+>  
+>  /*
+> @@ -260,10 +258,9 @@ struct rkisp1_stats {
+>   *
+>   * @vnode:		video node
+>   * @rkisp1:		pointer to the rkisp1 device
+> - * @config_lock:	locks the buffer list 'params' and 'is_streaming'
+> + * @config_lock:	locks the buffer list 'params'
+>   * @params:		queue of rkisp1_buffer
+>   * @vdev_fmt:		v4l2_format of the metadata format
+> - * @is_streaming:	device is streaming
+>   * @quantization:	the quantization configured on the isp's src pad
+>   * @raw_type:		the bayer pattern on the isp video sink pad
+>   */
+> @@ -271,10 +268,9 @@ struct rkisp1_params {
+>  	struct rkisp1_vdev_node vnode;
+>  	struct rkisp1_device *rkisp1;
+>  
+> -	spinlock_t config_lock; /* locks the buffers list 'params' and 'is_streaming' */
+> +	spinlock_t config_lock; /* locks the buffers list 'params' */
+>  	struct list_head params;
+>  	struct v4l2_format vdev_fmt;
+> -	bool is_streaming;
+>  
+>  	enum v4l2_quantization quantization;
+>  	enum rkisp1_fmt_raw_pat_type raw_type;
 > diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
-> index cb9f3332a9a0..aa758f8c2264 100644
+> index aa758f8c2264..3afbc24ca05e 100644
 > --- a/drivers/staging/media/rkisp1/rkisp1-params.c
 > +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
-> @@ -1420,8 +1420,6 @@ static int rkisp1_params_vb2_queue_setup(struct vb2_queue *vq,
->  					 unsigned int sizes[],
->  					 struct device *alloc_devs[])
->  {
-> -	struct rkisp1_params *params = vq->drv_priv;
-> -
->  	*num_buffers = clamp_t(u32, *num_buffers,
->  			       RKISP1_ISP_PARAMS_REQ_BUFS_MIN,
->  			       RKISP1_ISP_PARAMS_REQ_BUFS_MAX);
-> @@ -1430,7 +1428,6 @@ static int rkisp1_params_vb2_queue_setup(struct vb2_queue *vq,
+> @@ -1224,10 +1224,6 @@ void rkisp1_params_isr(struct rkisp1_device *rkisp1)
+>  	struct rkisp1_params *params = &rkisp1->params;
 >  
->  	sizes[0] = sizeof(struct rkisp1_params_cfg);
+>  	spin_lock(&params->config_lock);
+> -	if (!params->is_streaming) {
+> -		spin_unlock(&params->config_lock);
+> -		return;
+> -	}
+>  	rkisp1_params_apply_params_cfg(params, frame_sequence);
 >  
-> -	INIT_LIST_HEAD(&params->params);
->  	return 0;
+>  	spin_unlock(&params->config_lock);
+> @@ -1303,8 +1299,7 @@ static void rkisp1_params_config_parameter(struct rkisp1_params *params)
+>  	spin_lock_irq(&params->config_lock);
+>  
+>  	/* apply the first buffer if there is one already */
+> -	if (params->is_streaming)
+> -		rkisp1_params_apply_params_cfg(params, 0);
+> +	rkisp1_params_apply_params_cfg(params, 0);
+>  
+>  	spin_unlock_irq(&params->config_lock);
+>  }
+> @@ -1467,7 +1462,6 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
+>  	 * without holding the lock
+>  	 */
+>  	spin_lock_irq(&params->config_lock);
+> -	params->is_streaming = false;
+>  	list_splice_init(&params->params, &tmp_list);
+>  	spin_unlock_irq(&params->config_lock);
+>  
+> @@ -1475,25 +1469,12 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
+>  		vb2_buffer_done(&buf->vb.vb2_buf, VB2_BUF_STATE_ERROR);
 >  }
 >  
-> @@ -1545,6 +1542,7 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
+> -static int
+> -rkisp1_params_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
+> -{
+> -	struct rkisp1_params *params = queue->drv_priv;
+> -
+> -	spin_lock_irq(&params->config_lock);
+> -	params->is_streaming = true;
+> -	spin_unlock_irq(&params->config_lock);
+> -
+> -	return 0;
+> -}
+> -
+>  static struct vb2_ops rkisp1_params_vb2_ops = {
+>  	.queue_setup = rkisp1_params_vb2_queue_setup,
+>  	.wait_prepare = vb2_ops_wait_prepare,
+>  	.wait_finish = vb2_ops_wait_finish,
+>  	.buf_queue = rkisp1_params_vb2_buf_queue,
+>  	.buf_prepare = rkisp1_params_vb2_buf_prepare,
+> -	.start_streaming = rkisp1_params_vb2_start_streaming,
+>  	.stop_streaming = rkisp1_params_vb2_stop_streaming,
 >  
->  	params->rkisp1 = rkisp1;
->  	mutex_init(&node->vlock);
-> +	INIT_LIST_HEAD(&params->params);
->  	spin_lock_init(&params->config_lock);
->  
->  	strscpy(vdev->name, RKISP1_PARAMS_DEV_NAME, sizeof(vdev->name));
+>  };
 > diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> index 51c64f75fe29..c58ae52b8a98 100644
+> index c58ae52b8a98..3ddab8fa8f2d 100644
 > --- a/drivers/staging/media/rkisp1/rkisp1-stats.c
 > +++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
-> @@ -94,8 +94,6 @@ static int rkisp1_stats_vb2_queue_setup(struct vb2_queue *vq,
->  					unsigned int sizes[],
->  					struct device *alloc_devs[])
->  {
-> -	struct rkisp1_stats *stats = vq->drv_priv;
+> @@ -136,7 +136,6 @@ static void rkisp1_stats_vb2_stop_streaming(struct vb2_queue *vq)
+>  	unsigned int i;
+>  
+>  	spin_lock_irq(&stats->lock);
+> -	stats->is_streaming = false;
+>  	for (i = 0; i < RKISP1_ISP_STATS_REQ_BUFS_MAX; i++) {
+>  		if (list_empty(&stats->stat))
+>  			break;
+> @@ -148,18 +147,6 @@ static void rkisp1_stats_vb2_stop_streaming(struct vb2_queue *vq)
+>  	spin_unlock_irq(&stats->lock);
+>  }
+>  
+> -static int
+> -rkisp1_stats_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
+> -{
+> -	struct rkisp1_stats *stats = queue->drv_priv;
 > -
->  	*num_planes = 1;
->  
->  	*num_buffers = clamp_t(u32, *num_buffers, RKISP1_ISP_STATS_REQ_BUFS_MIN,
-> @@ -103,8 +101,6 @@ static int rkisp1_stats_vb2_queue_setup(struct vb2_queue *vq,
->  
->  	sizes[0] = sizeof(struct rkisp1_stat_buffer);
->  
-> -	INIT_LIST_HEAD(&stats->stat);
+> -	spin_lock_irq(&stats->lock);
+> -	stats->is_streaming = true;
+> -	spin_unlock_irq(&stats->lock);
 > -
->  	return 0;
+> -	return 0;
+> -}
+> -
+>  static const struct vb2_ops rkisp1_stats_vb2_ops = {
+>  	.queue_setup = rkisp1_stats_vb2_queue_setup,
+>  	.buf_queue = rkisp1_stats_vb2_buf_queue,
+> @@ -167,7 +154,6 @@ static const struct vb2_ops rkisp1_stats_vb2_ops = {
+>  	.wait_prepare = vb2_ops_wait_prepare,
+>  	.wait_finish = vb2_ops_wait_finish,
+>  	.stop_streaming = rkisp1_stats_vb2_stop_streaming,
+> -	.start_streaming = rkisp1_stats_vb2_start_streaming,
+>  };
+>  
+>  static int
+> @@ -355,12 +341,9 @@ void rkisp1_stats_isr(struct rkisp1_stats *stats, u32 isp_ris)
+>  	if (isp_mis_tmp & RKISP1_STATS_MEAS_MASK)
+>  		rkisp1->debug.stats_error++;
+>  
+> -	if (!stats->is_streaming)
+> -		goto unlock;
+>  	if (isp_ris & RKISP1_STATS_MEAS_MASK)
+>  		rkisp1_stats_send_measurement(stats, isp_ris);
+>  
+> -unlock:
+>  	spin_unlock(&stats->lock);
 >  }
 >  
 > 
