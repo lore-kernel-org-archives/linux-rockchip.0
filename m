@@ -2,68 +2,59 @@ Return-Path: <SRS0=XvIT=DV=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CE5ABC43457
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 12:17:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A887AC433DF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 12:59:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 480BA20848
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 12:17:44 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 27F8E20848
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 12:59:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XApb/CaV"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 480BA20848
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c0ByUXFx"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 27F8E20848
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vep0kI35FniIT09MwIovNR2EzhyPrZauE9Ig0ht9cnA=; b=XApb/CaVzLSpMtfGhsD1i4Txg
-	o/awRWJUlaNWnPgntw/h3XxmZsv9zyhDklgtHxjCQIJSTSjSiIjkO3OdUloQru1F4L7sYMfa09Kju
-	Gk5a71/I1Vy24ZEUqY+x3FXqjwWlwX+wdpWTr6yB8I7Vw5+9pkTtP9ebm8nr6I+iZTZeOSpAHf9ud
-	fFBSZ+2NPTV0SbCZiY55QE+zsq+C9xMa7qSDomnx/9essrtgfP7AtyWanRtw8okuzvehWXpYDM6F7
-	ZQUnx9wCpIurbHNl+gxKdHGiaEVyLTUwp9nt6a1oXT+yeqfYcY4D27z9O0hIU3Mb3looR7+vY/pNK
-	MlEheZjpw==;
+	 bh=sBnDSq9jxCGBnD+dmyU8nkRjA9T7GfKBZJhnhAFO7AU=; b=c0ByUXFx3eKAO9oG9EErs6rE1
+	wV5nUwdQk2dznVxgDbU3kGN+eOShibeW6fMRSD2VYOy+yh2YuS/yuEg5zuhYTMG18Lic0DcDrRDFX
+	+DSmgruUQ2/oFZDUU8ypFCx3YMGSmxbTqXfvW34aot0PeiF8ZdknjXhVKzFR+KTmci8n6tJCiUcEg
+	eCHzhXnvFAxAPPgVfAmon9TWDXSaPV05Ik/n+yOoPtkCEnYS+mKfK4PLDChhGRRCab1BZH/sgwkeq
+	4evjqmXskvHqo7LZvegVnzPFm/L+JgN4V6KvJI8eSbnxZ6GP7kOmpK+7iFqyYcC7wZkZLZ0kuGo/R
+	nykWj3XkA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSfis-0003Ok-AZ; Wed, 14 Oct 2020 12:17:38 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSfim-0003N8-Uf; Wed, 14 Oct 2020 12:17:34 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9021A31B;
- Wed, 14 Oct 2020 05:17:24 -0700 (PDT)
-Received: from [10.57.48.76] (unknown [10.57.48.76])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 3E69F3F719;
- Wed, 14 Oct 2020 05:17:23 -0700 (PDT)
-Subject: Re: [PATCH v3 2/2] arm64: dts: rockchip: Add basic support for
- Kobol's Helios64
-To: Johan Jonker <jbx6244@gmail.com>, =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?=
- <uwe@kleine-koenig.org>, Heiko Stuebner <heiko@sntech.de>,
- Aditya Prayoga <aditya@kobol.io>
-References: <20201013161340.720403-1-uwe@kleine-koenig.org>
- <20201013161340.720403-3-uwe@kleine-koenig.org>
- <a3957410-af99-5df4-8953-ffa3e7734aab@gmail.com>
- <66aa4ffd-15f8-7c45-282e-e3bddc1af421@kleine-koenig.org>
- <99032f48-c807-def0-e672-7b2c408e1cc3@gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <b5edc522-e673-6013-cb9a-fe5ae180cfa7@arm.com>
-Date: Wed, 14 Oct 2020 13:17:21 +0100
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.3.2
+	id 1kSgNY-0008TU-WC; Wed, 14 Oct 2020 12:59:41 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kSgNW-0008SP-4f
+ for linux-rockchip@lists.infradead.org; Wed, 14 Oct 2020 12:59:39 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: aratiu) with ESMTPSA id CC77C1F41295
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+To: Mark Brown <broonie@kernel.org>, Adrian Ratiu <adrian.ratiu@collabora.com>
+Subject: Re: [PATCH 07/18] regmap: mmio: add config option to allow relaxed
+ MMIO accesses
+In-Reply-To: <20201014121249.GA4580@sirena.org.uk>
+References: <20201012205957.889185-1-adrian.ratiu@collabora.com>
+ <20201012205957.889185-8-adrian.ratiu@collabora.com>
+ <20201013102656.GA5425@sirena.org.uk> <87o8l581ql.fsf@collabora.com>
+ <20201014121249.GA4580@sirena.org.uk>
+Date: Wed, 14 Oct 2020 16:00:38 +0300
+Message-ID: <87lfg97yix.fsf@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <99032f48-c807-def0-e672-7b2c408e1cc3@gmail.com>
-Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201014_081733_119438_4FE56EFD 
-X-CRM114-Status: GOOD (  40.93  )
+X-CRM114-CacheID: sfid-20201014_085938_283747_85480860 
+X-CRM114-Status: GOOD (  26.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,146 +67,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: Fruehberger Peter <Peter.Fruehberger@de.bosch.com>, kernel@collabora.com,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, kuhanh.murugasen.krishnan@intel.com,
+ Daniel Vetter <daniel@ffwll.ch>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>, linux-media@vger.kernel.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyMC0xMC0xMyAyMzo0MSwgSm9oYW4gSm9ua2VyIHdyb3RlOgo+IEhpIFV3ZSwKPiAKPiBP
-biAxMC8xMy8yMCAxMDoyMiBQTSwgVXdlIEtsZWluZS1Lw7ZuaWcgd3JvdGU6Cj4+IEhlbGxvIEpv
-aGFuLAo+Pgo+PiBPbiAxMC8xMy8yMCA3OjM0IFBNLCBKb2hhbiBKb25rZXIgd3JvdGU6Cj4+PiBQ
-YXJ0IDEgb2YgMiBtaXNzaW5nIGhlcmUuCj4+Cj4+IFBsZWFzZSBjb21wbGFpbiB0byBnbWFpbCB0
-aGVuLCBnaXZlbiB0aGF0IHBhdGNoIDEgY2FuIGJlIGZvdW5kIG9uCj4+Cj4gaHR0cHM6Ly9sb3Jl
-Lmtlcm5lbC5vcmcvbGludXgtYXJtLWtlcm5lbC8yMDIwMTAxMzE2MTM0MC43MjA0MDMtMi11d2VA
-a2xlaW5lLWtvZW5pZy5vcmcvLgo+IAo+IFdpbGwgY2hlY2sgbXkgc3BhbS4KPiAKPj4KPj4+IFN1
-Ym1pdCBhbGwgcGF0Y2hlcyB0byBhbGwgbWFpbnRhaW5lcnMgYW5kIG1haWwgbGlzdHMuCj4+PiBE
-b24ndCBmb3JnZXQgcm9iaCtkdCAhCj4+Cj4+IEknbSByZWFsbHkgc3VycHJpc2VkIHlvdSBpbnNp
-c3QgaGVyZS4gSW4gbXkgZXhwZXJpZW5jZSBSb2IgKHdpdGggaGlzCj4+IGR0LWhhdCBvbikgaXMg
-bm90IGludGVyZXN0ZWQgaW4gc3BlY2lmaWNzIG9mIHRoZSBtYWNoaW5lIGZpbGVzIGFuZCBoZQo+
-PiBhbHJlYWR5IGFja2VkIHBhdGNoIDEuCj4gCj4gQXMgcnVsZSBvZiB0aGUgZHVtYi4gS2VlcCBl
-dmVyeWJvZHkgaW4gdGhhdCBsaXN0IGluZm9ybWVkIHRpbGwgdGhlIGxhc3QKPiB2ZXJzaW9uLiBX
-aGF0IHRoZXkgZG8gd2l0aCBpcyBub3Qgb3VyIHByb2JsZW0gb3IgY29uY2Vybi4KCk5vdGUgdGhh
-dCBnZXRfbWFpbnRhaW5lci5wbCBpcyBoYXJkbHkgcGVyZmVjdCwgYW5kIHVzaW5nIGEgYml0IG9m
-IApqdWRnZW1lbnQgaXMgYSBmYXIgYmV0dGVyIGlkZWEgdGhhbiB6ZWFsb3VzbHkgdHJ1c3Rpbmcg
-aXQgdG8gYmUgdGhlIG9uZSAKdHJ1ZSBDQyBsaXN0IGFuZCBzcGFtbWluZyBwZW9wbGUgd2l0aCB0
-aGluZ3MgdGhleSByZWFsbHkgYXJlbid0IGdvaW5nIHRvIApjYXJlIGFib3V0LiBJIG1lYW4sIEkg
-KnN0aWxsKiBvY2Nhc2lvbmFsbHkgZ2V0IENDZWQgb24gcmFuZG9tIFBvd2VyUEMgCnBhdGNoZXMg
-YmVjYXVzZSBJIG9uY2UgdG91Y2hlZCBhIGNvdXBsZSBvZiBjb3VwbGUgb2YgdW5yZWxhdGVkIGxp
-bmVzIGluIApvbmUgb2YgdGhlaXIgYXJjaCBoZWFkZXJzLi4uCgpFdmVuIGlmIHlvdSdyZSBwZXJm
-ZWN0bHkgaGFwcHkgdG8gc3BlbmQgdGltZSBzY2FubmluZyBhbmQgZGVsZXRpbmcgCmh1bmRyZWRz
-IG9mIGlycmVsZXZhbnQgZW1haWxzIGZyb20geW91ciBpbmJveCBldmVyeSBkYXksIGRvbid0IGFz
-c3VtZSAKdGhhdCBldmVyeW9uZSBlbHNlIGZlZWxzIHRoZSBzYW1lIHdheSA7KQoKRldJVyBhcyBm
-YXIgYXMgbGlzdHMgZ28sIGlmIEkgaGF2ZSBhIGdvb2QgaWRlYSBvZiB3aG8gdGhlIHRhcmdldCAK
-YXVkaWVuY2UgZm9yIGEgcGF0Y2ggaXMgdGhlbiBJJ2xsIG9ubHkgQ0MgTEtNTCBmb3IgdGhlIHNh
-a2Ugb2YgYXJjaGl2aW5nIAppZiB0aGVyZSBhcmVuJ3QgYXQgbGVhc3QgdHdvIG90aGVyIHJlbGV2
-YW50IGxpc3RzIG9uIENDLgoKPj4KPj4+IEFkZCBhIGxpdHRsZSBjaGFuZ2UgbG9nIGhlcmUuCj4+
-Cj4+IEkgYXNzdW1lIHlvdSBhbHNvIGRpZG4ndCBnZXQgdGhlIGNvdmVyIGxldHRlcj8KPj4KPj4+
-PiArCQlmYXVsdC1sZWQgewo+Pj4gZmF1bHRfbGVkOiBsZWQtMCB7fQo+Pj4KPj4+IE15IGZhdWx0
-Lgo+Pj4gQ2hhbmdlIG9uZXMgbW9yZS4uLgo+Pj4gICAgIyBUaGUgZmlyc3QgZm9ybSBpcyBwcmVm
-ZXJyZWQsIGJ1dCBmYWxsIGJhY2sgdG8ganVzdCAnbGVkJyBhbnl3aGVyZQo+IGluIHRoZQo+Pj4g
-ICAgIyBub2RlIG5hbWUgdG8gYXQgbGVhc3QgY2F0Y2ggc29tZSBjaGlsZCBub2Rlcy4KPj4+ICAg
-ICIoXmxlZC1bMC05YS1mXSR8bGVkKSI6Cj4+Cj4+IG9rLCB0aGUgbGFiZWwgaXNuJ3QgbmVjZXNz
-YXJ5LCBpcyBpdD8KPiAKPiBOb3QgcmVhbGx5LCBmb3IgbGVnYWN5IGFuZCByZWFkYWJpbGl0eSBy
-ZWFzb25zIGtlZXAgaXQuCj4gV2l0aG91dCBsYWJlbCBib3RoIGluIG5vZGVuYW1lIGFuZCBhcyBw
-cm9wZXJ0eSBvbmUgaGFzIHRvIGNvbXBhcmUgcGluCj4gbnVtYmVycyBpbiBwaW5jdHJsIHRvIHNl
-ZSB3aGljaCBub2RlIGJlbG9uZyB0byBlYWNoIG90aGVyLgo+IFNvbWUgdXNlcnMgbWF5IHdhbnQg
-dG8gYWRkIHRoZXJlIG93biBmdW5jdGlvbnMuIFdpdGggYWxyZWFkeSBhdmFpbGFibGUKPiBsYWJl
-bCB0aGV5IGNhbiBkbyBzby4KClRoZSBMRUQncyAibGFiZWwiIHByb3BlcnR5IGFscmVhZHkgY2Fu
-b25pY2FsbHkgZGVzY3JpYmVzIHdoYXQgaXQgaXMuIEFuIAp1bnVzZWQgRFRTIGxhYmVsIGp1c3Qg
-YWRkcyBub2lzZSBpbiB0aGUgc291cmNlIGFuZCBibG9hdHMgRFRCcyBidWlsdCAKd2l0aCBzeW1i
-b2xzLiBJZiB0aGVyZSByZWFsbHkgYXJlIHVzZXJzIG91dCB0aGVyZSB3aG8gd2FudCB0byB1c2Ug
-Cm92ZXJsYXlzIHRvIHNldCBhIGN1c3RvbSB0cmlnZ2VyIG9yIHN0YXRlIGZvciB0aGUgZnJhY3Rp
-b24gb2YgYm9vdCB0aW1lIApiZXR3ZWVuIHRoZSBMRUQgZHJpdmVyIHByb2JpbmcgYW5kIHdoZW4g
-YSB1ZGV2IHJ1bGUgY291bGQgZG8gaXQsIEkgY2FuJ3QgCmltYWdpbmUgdGhleSdkIG1pbmQgYWRk
-aW5nIHRoZSBjb3VwbGUgb2YgZXh0cmEgbGluZXMgdG8gc3BlY2lmeSB0aGUgZnVsbCAKbm9kZSBw
-YXRoIGluIHRoZWlyIG92ZXJsYXkuCgo+Pgo+Pj4+ICsJCQlsYWJlbCA9ICJoZWxpb3M2NDpncmVl
-bjpzdGF0dXMiOwo+Pj4+ICsJCQlncGlvcyA9IDwmZ3BpbzAgUktfUEI0IEdQSU9fQUNUSVZFX0hJ
-R0g+Owo+Pj4KPj4+PiArCQkJbGludXgsZGVmYXVsdC10cmlnZ2VyID0gIm5vbmUiOwo+Pj4KPj4+
-IERvbid0IHVzZSAnbm9uZScgZm9yIG1haW5saW5lLgo+Pgo+PiBPaCwgSSBtaXNzZWQgdGhhdC4g
-VGhhbmtzIGZvciB5b3VyIHBlcnNpc3RlbmNlLgo+IAo+IE5vIHRoYW5rcy4KPiAKPj4KPj4+PiAr
-CQkJZGVmYXVsdC1zdGF0ZSA9ICJvbiI7Cj4+Pj4gKwkJfTsKPj4+PiArCX07Cj4+Pj4gKwo+Pj4+
-ICsJdmNjMXY4X3N5c19zMDogdmNjMXY4LXN5cy1zMCB7Cj4+Pj4gKwkJY29tcGF0aWJsZSA9ICJy
-ZWd1bGF0b3ItZml4ZWQiOwo+Pj4+ICsJCXJlZ3VsYXRvci1uYW1lID0gInZjYzF2OF9zeXNfczAi
-Owo+Pj4+ICsJCXJlZ3VsYXRvci1hbHdheXMtb247Cj4+Pj4gKwkJcmVndWxhdG9yLWJvb3Qtb247
-Cj4+Pj4gKwkJcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+Pj4gKwkJcmVn
-dWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MTgwMDAwMD47Cj4+Pj4gKwkJdmluLXN1cHBseSA9IDwm
-dmNjMXY4X3N5c19zMz47Cj4+Pj4gKwl9Owo+Pj4+ICsKPj4+PiArCXZjYzN2MF9zZDogdmNjM3Yw
-LXNkIHsKPj4+PiArCQljb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7Cj4+Pj4gKwkJcmVn
-dWxhdG9yLW5hbWUgPSAidmNjM3YwX3NkIjsKPj4+Cj4+PiBEb2Vzbid0IGEgc2QgY2FyZCBuZWVk
-IGEgb24vb2ZmIGdwaW8/Cj4+PiBDb3VsZCB5b3UgY2hlY2sgdGhlIHNjaGVtYXRpY3M/Cj4+Cj4+
-IEhtbSwgdGhlcmUgaXMgYSBHUElPLiBJIGRpZG4ndCBjb25zaWRlciBhIHByb2JsZW0gdGhlcmUg
-Z2l2ZW4gdGhhdCB0aGUKPj4gbWFjaGluZSBsb2dzCj4+Cj4+IAlbICAgMzEuNzA4NzA2XSB2Y2Mz
-djBfc2Q6IGRpc2FibGluZwo+Pgo+PiB3aGVuIHRoZXJlIGlzIG5vIFNELWNhcmQgaW4gdGhlIHNs
-b3QuIFdpbGwgaW52ZXN0aWdhdGUgZnVydGhlci4KCkxvb2tpbmcgYXQgaG93IHRoZSByZWd1bGF0
-b3IgY29yZSBoYW5kbGVzIGVuYWJsZSBwaW5zLCBJJ2QgYXNzdW1lIHRoYXQgYSAKcmVndWxhdG9y
-IGNhbiBhbHdheXMgYmUgKmxvZ2ljYWxseSogZW5hYmxlZCBhbmQgZGlzYWJsZWQgcmVnYXJkbGVz
-cyBvZiAKd2hldGhlciBkb2luZyBzbyB3aWxsIGFjdHVhbGx5IHBoeXNpY2FsbHkgc3dpdGNoIGl0
-LiAoQW5kIEkgZ3Vlc3MgSSd2ZSAKZmluYWxseSBkaXNwcm92ZWQgbXkgb3duIHRob3VnaHQgYWJv
-dXQgd2hldGhlciAicmVndWxhdG9yLWFsd2F5cy1vbiIgaXMgCnJlZHVuZGFudCBmb3Igbm9uLXN3
-aXRjaGFibGUgcmVndWxhdG9ycy4uLikKCkl0J3Mgbm90IGFic29sdXRlbHkgKm1hbmRhdG9yeSog
-Zm9yIFZNTUMgdG8gYmUgc3dpdGNoYWJsZSAtIHNvbWUgbG93LWVuZCAKYm9hcmRzIHNpbXBseSB0
-YWtlIGl0IG9mZiBhbnkgb2xkIDNWMyByYWlsLCBob3dldmVyIHRoYXQgZG9lcyBwcmV2ZW50IApw
-b3dlci1jeWNsaW5nIHRoZSBjYXJkIHRvIHJlc2V0IGl0IGlmIGl0IGdldHMgaW50byBhIGJhZCBz
-dGF0ZSwgc28gSSdkIAp0ZW5kIHRvIGV4cGVjdCBhIHdlbGwtZGVzaWduZWQgYm9hcmQgd291bGQg
-Y2FycnkgdGhlIGV4dHJhIGZldyBjZW50cyBvZiAKQk9NIGNvc3QgZm9yIGEgc3dpdGNoYWJsZSBy
-ZWd1bGF0b3IuCgo+IExldCB1cyBrbm93Li4uCj4gCj4+Cj4+Pj4gKwkJcGluY3RybC1uYW1lcyA9
-ICJkZWZhdWx0IjsKPj4+PiArCQlwaW5jdHJsLTAgPSA8JnBtaWNfaW50X2w+Owo+Pj4KPj4+IHNv
-cnQKPj4KPj4gSSB3b3VsZCBleHBlY3QgdGhpcyBpcyBhbiBleGNlcHRpb24gZnJvbSB0aGUgc29y
-dGluZyBydWxlLgo+Pgo+PiAkIGdpdCBncmVwIHBpbmN0cmwtbmFtZXMgbGludXMvbWFzdGVyOmFy
-Y2gvYXJtNjQvYm9vdC9kdHMvIHwgd2MgLWwKPj4gMTkwNQo+Pgo+PiAkIGdpdCBncmVwIC1BMSBw
-aW5jdHJsLW5hbWVzIGxpbnVzL21hc3RlcjphcmNoL2FybTY0L2Jvb3QvZHRzLyB8IFwKPj4gICAg
-Z3JlcCBwaW5jdHJsLTAgfCB3YyAtbAo+PiAxNDEyCj4+Cj4+IFdoZW4gZ3JlcHBpbmcgb3ZlciBh
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwIHRoZSBudW1iZXJzIGFyZQo+PiA0NTMgYW5kIDQ0
-NSByZXNwZWN0aXZlbHkuCj4+Cj4+IFdpbGwgdXNlIHBpbmN0cmwtbmFtZXMgYWJvdmUgcGluY3Ry
-bC0wIGNvbnNpc3RlbnRseS4KPiAKPiBUaGF0IHBlb3BsZSBpbiB0aGUgcGFzdCBibGluZGx5IGZv
-bGxvd2VkIHRoZSBtYW51ZmFjdHVyZXIgZHRzIGRvZXNuJ3QKPiBtYWtlIGl0IGFuIGV4Y2VwdGlv
-biB0byB0aGUgc29ydCBydWxlLiBXaGF0ZXZlciB5b3UgZG8sIGRvIGl0IGNvbnNpc3RlbnQuCj4g
-Cj4+Cj4+Pj4gKwkJCQlyZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwxMzUwMDAwPjsKPj4+PiAr
-CQkJCXJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDc1MDAwMD47Cj4+Pgo+Pj4KPj4+IFRoZSBy
-ZXN0IGhhcyBtaW4gYWJvdmUgbWF4Lgo+Pj4gRXhjZXB0aW9uIHRvIHRoZSBzb3J0IHJ1bGUsIG5v
-dCBzdXJlIHdoYXQgSGVpa28gd2FudHMsIGJ1dCBrZWVwIGl0IGV2ZXJ5Cj4+PiB3aGVyZSB0aGUg
-c2FtZS4KPj4KPj4gT0ssIG1vc3Qgcm9ja2NoaXAgZHRzIGhhdmUgbWluIGJlZm9yZSBtYXgsIHdp
-bGwgZml4IHVwLgo+Pgo+Pj4+ICsJaTJjLXNjbC1yaXNpbmctdGltZS1ucyA9IDwxNjA+Owo+Pj4+
-ICsJaTJjLXNjbC1mYWxsaW5nLXRpbWUtbnMgPSA8MzA+Owo+Pj4KPj4+IHNvcnQKPj4KPj4gSSBj
-b25zaWRlciBpdCBsb2dpY2FsIHRvIGhhdmUgcmlzZSBiZWZvcmUgZmFsbC4gSW4gNDMgb2YgNTkg
-Y2FzZXMgaW4KPj4gYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC8gaXQgaXMgZG9uZSB0aGlz
-IHdheS4KPiAKPiBUaGF0IHBlb3BsZSBpbiB0aGUgcGFzdCBibGluZGx5IGZvbGxvd2VkIHRoZSBt
-YW51ZmFjdHVyZXIgZHRzIGRvZXNuJ3QKPiBtYWtlIGl0IGFuIGV4Y2VwdGlvbiB0byB0aGUgc29y
-dCBydWxlLiBXaGF0ZXZlciB5b3UgZG8sIGRvIGl0IGNvbnNpc3RlbnQuCj4gCj4+Cj4+Pj4gKwl2
-cW1tYy1zdXBwbHkgPSA8JnZjYzF2OF9zeXNfczA+Owo+Pj4+ICsJc3RhdHVzID0gIm9rYXkiOwo+
-Pj4+ICt9Owo+Pj4+ICsKPj4+PiArJnNkbW1jIHsKPj4+PiArCWJ1cy13aWR0aCA9IDw0PjsKPj4+
-PiArCWNhcC1zZC1oaWdoc3BlZWQ7Cj4+Pgo+Pj4+ICsJY2QtZ3Bpb3MgPSA8JmdwaW8wIFJLX1BB
-NyBHUElPX0FDVElWRV9MT1c+Owo+Pj4KPj4+IHNlZSByZWd1bGF0b3I/Cj4gCj4gTGl0dGxlIGxv
-bmdlciB2ZXJzaW9uOgo+IFNlZSBteSBxdWVzdGlvbiBhdCB0aGUgc2QgcmVndWxhdG9yLgo+IFdl
-IGhhdmUgYSBwaW4gdG8gZGV0ZWN0LCBidXQgbm90IHRvIHN3aXRjaCB0aGUgcmVndWxhdG9yLgo+
-IEhhdmVuJ3QgbG9va2VkIGF0IHRoZSBzY2hlbWF0aWNzLiBKdXN0IGEgcmVtaW5kZXIgdG8gY2hl
-Y2sgaWYgaXQncwo+IGNvcnJlY3QuIExldCB1cyBrbm93Li4KCkkgc2hhcmUgVXdlJ3MgYmVmdWRk
-bGVtZW50IGhlcmUgLSBWTU1DIGFuZCBDRCBhcmUgcHJldHR5IG11Y2ggZW50aXJlbHkgCnVucmVs
-YXRlZC4gSWYgdGhlIGRlZGljYXRlZCBDRCBmdW5jdGlvbiBpcyB1c2VkIGl0cyBpbnRlcm5hbCBw
-dWxsdXAgCmRlcGVuZHMgb24gVlFNTUMsIGJ1dCB0aGF0IG1lYW5zIHlvdSBjYW4ndCBwb3dlciBk
-b3duIHRoZSBJL08gd2hlbiBubyAKY2FyZCBpcyBwcmVzZW50LCBiZWNhdXNlIGl0IHRoZW4gY2Fu
-J3QgZ2VuZXJhdGUgYW4gaW50ZXJydXB0IHdoZW4gb25lIAoqaXMqIGluc2VydGVkIChvciBsaWtl
-IFJLMzI4OCB0aGUgQ0QgbGluZSBqdXN0IGZsb2F0cyBhbmQgZmlyZXMgCmludGVycnVwdHMgcmFu
-ZG9tbHkpLiBBdCBsZWFzdCBvbiBSSzMzOTkgdGhleSBtb3ZlZCB0aGUgQ0QgcGluIHRvIGEgCmRp
-ZmZlcmVudCBJL08gYmFuayB3aGVyZSB0aGUgR1BJTyBmdW5jdGlvbiBpcyBhbHdheXMtb24gcmVn
-YXJkbGVzcyBvZiAKVlFNTUMsIHNvIHVzaW5nIHRoZSBwaW4gYXMgYSBHUElPIGhlcmUgYWxsb3dz
-IHRoZSB3aG9sZSBTRE1NQyBibG9jayB0byAKYmUgZnVsbHkgcG93ZXJlZCBkb3duIHdoZW4gaWRs
-ZS4gTm9uZSBvZiB3aGljaCBoYXMgYW55dGhpbmcgdG8gZG8gd2l0aCAKVk1NQywgd2hpY2ggaXMg
-dGhlIG1haW4gcG93ZXIgc3VwcGx5IHRvIHRoZSBjYXJkIGl0c2VsZiBhbmQgZG9lc24ndCBnbyAK
-YW55d2hlcmUgbmVhciB0aGUgU29DLi4uCgpSb2Jpbi4KCj4+Cj4+IEdQSU8wX0E3IGlzIHRoZSBj
-YXJkIGRldGVjdCBsaW5lLiBJIGRvbid0IHVuZGVyc3RhbmQgeW91ciBxdWVzdGlvbi4gSXMKPj4g
-aXQgdGhlIHNhbWUgYXMgYWJvdmUsIGkuZS4gdGhhdCBpdCBzaG91bGQgYmUgcG9zc2libGUgdGhh
-dCB0aGUgU0QKPj4gcmVndWxhdG9yIGNhbiBiZSBkaXNhYmxlZD8KPj4KPj4+PiArCWRpc2FibGUt
-d3A7Cj4+Pj4gKwlwaW5jdHJsLTAgPSA8JnNkbW1jX2NsayAmc2RtbWNfY21kICZzZG1tY19jZCAm
-c2RtbWNfYnVzND47Cj4+Pj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+Pj4+ICsJdm1t
-Yy1zdXBwbHkgPSA8JnZjYzN2MF9zZD47Cj4+Pj4gKwl2cW1tYy1zdXBwbHkgPSA8JnZjY19zZGlv
-X3MwPjsKPj4+PiArCXN0YXR1cyA9ICJva2F5IjsKPj4+PiArfTsKPj4KPj4gQmVzdCByZWdhcmRz
-Cj4+IFV3ZQo+Pgo+IAo+IF9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCj4gTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Cj4gTGludXgtcm9ja2NoaXBAbGlz
-dHMuaW5mcmFkZWFkLm9yZwo+IGh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtcm9ja2NoaXAKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Wed, 14 Oct 2020, Mark Brown <broonie@kernel.org> wrote:
+> On Wed, Oct 14, 2020 at 02:51:14PM +0300, Adrian Ratiu wrote: 
+>> On Tue, 13 Oct 2020, Mark Brown <broonie@kernel.org> wrote: 
+>> > On Mon, Oct 12, 2020 at 11:59:46PM +0300, Adrian Ratiu wrote: 
+> 
+>> > > -	writeb(val, ctx->regs + reg); +	if 
+>> > > (ctx->relaxed_mmio) + writeb_relaxed(val, ctx->regs + reg); 
+>> > > +	else + writeb(val, ctx->regs + reg); 
+> 
+>> > There is no point in doing a conditional operation on every 
+>> > I/O, it'd be better to register a different set of ops when 
+>> > doing relaxed I/O. 
+> 
+>> Indeed I have considered adding new functions but went with 
+>> this solution because it's easier for the users to only have to 
+>> define a "relaxed" config then test the regmap ctx as above. 
+> 
+> It seems like you've taken this in a direction other than what 
+> I was thinking of here - defining separate ops doesn't mean we 
+> have to do anything which has any impact on the interface seen 
+> by users.  The regmap config is supplied at registration time, 
+> it's just as available then as it is when doing I/O.
+
+Right. I got confused by the meaning of ops :) Sorry about that.
+ 
+> 
+>> Thinking a bit more about it, yes, it makes more sense to have 
+>> dedicated ops: this way users don't have to be explicit about 
+>> adding membarriers and can combine relaxed and non-relaxed more 
+>> easily, so it's also a better API trade-off in addition to 
+>> avoiding the conditional. Thanks! 
+> 
+> I'm not sure what you're proposing here - it does seem useful to 
+> be able to combine relaxed and non-relaxed I/O but that seems 
+> like it'd break down the abstraction for regmap since tht's not 
+> really a concept other buses are going to have?  Unless we 
+> provide an operation to switch by setting flags or somethin 
+> possibly and integrate it with the cache perhaps.  Could you be 
+> a bit more specific about what you were thinking of here please?
+
+I was thinking about exposing a relaxed API like 
+regmap_write_relaxed but now that I know what you meant by ops and 
+also that it doesn't make sense for other busses / violates the 
+abstraction, I realize that is a bad idea and I will continue 
+improving this to avoid the conditional and send a separete 
+patch. Thanks again!
+
+>
+>> Question: Do you want me to split this patch from the series and send it
+>> separately just for the regmap subsystem to be easier to review / apply?
+>
+> Sure.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
