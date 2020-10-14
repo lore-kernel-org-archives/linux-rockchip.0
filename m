@@ -5,18 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62614C433E7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 20:28:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0755BC433E7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 20:28:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E677A20757
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 20:28:00 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 704E022247
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Oct 2020 20:28:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LyE9yaY3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E677A20757
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="iZ8LHWh9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 704E022247
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,42 +26,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=3qUzqAY/Z+n1CRGatgak+b4d9vQWsJv10q91RA96jpI=; b=LyE9yaY3soTV9qDE6Wi1mHzzQ
-	VIrRHdQUzItapwaJ83zFixZ53NAmAtv6Fq7vo0tz9vEentrN1bkVwURtP30/GI3GaZsh3dlWZ3hj0
-	hzEYFlS35Uuj7l1DegxaUu47yjQFZERf3Vltj7Hxrj0RDZtImjqbi9lVQgS7+NWEBtvkNRuV6YZGz
-	bzodNtF26Bno4/Pb9kO5Cb73BgTKAuKwPvxwtZFa32R94ZOfhB9X8RKpSSUWFjNu7SsztkKjBzJvE
-	q4JEbE8ShxPMvftG339JfQaGDbV+SeTleeHRsbS6N7lN4rxv29PxT1rPQgPEBrPh6755Hbk98osuM
-	NCfuChGuA==;
+	 bh=nbpUMvRUfQcHy7nhqdadwa+MHjZ6L1J5wxBBtbkNpSk=; b=iZ8LHWh9ppH8w1GcsUGzPu9rs
+	DfxscYiddk7pS5cxz/jqwjb0CqAnRrrUi5idsvt7+5Ui+d/ZQAU3t88sN9dtA09whr2ugV8K+LueD
+	tPf2k59KUtSjZ1AoqSPOl1SLwW1qzmeaIasOS5zSK6lEoKlfUoOxuIdWR9KsoUD9Jd3fVqDmjrXXM
+	RXMWvpxdJhZQUGqqWiEKUN/N+N3UkyexEgIiS8tWJDMO4te5gziWVseUF94kKj/g4ax2KaeLjSepB
+	zb4eIAEqVGdzJJnn+YI0X9OTpZWxl88v7QX1ZfyDfnZHSFv2tjEkOIQZ9f9CW4OuqTix3b9xMGDI9
+	7SzdTUuvA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kSnNK-00007S-NA; Wed, 14 Oct 2020 20:27:54 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kSnNd-0000DV-Ei; Wed, 14 Oct 2020 20:28:13 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kSnNH-00006m-Q6
- for linux-rockchip@lists.infradead.org; Wed, 14 Oct 2020 20:27:52 +0000
+ id 1kSnNW-00007d-QR
+ for linux-rockchip@lists.infradead.org; Wed, 14 Oct 2020 20:28:08 +0000
 Received: from [IPv6:2804:14c:483:7f66::1004] (unknown
  [IPv6:2804:14c:483:7f66::1004])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: koike)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 8BE331F4582E;
- Wed, 14 Oct 2020 21:27:47 +0100 (BST)
-Subject: Re: [PATCH 2/6] media: staging: rkisp1: params: in stop_streaming,
- use list_splice_init to move the buffers
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 8745A1F4582F;
+ Wed, 14 Oct 2020 21:27:51 +0100 (BST)
+Subject: Re: [PATCH 3/6] media: staging: rkisp1: initialize buffer lists only
+ on probe
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
  linux-media@vger.kernel.org
 References: <20201002184222.7094-1-dafna.hirschfeld@collabora.com>
- <20201002184222.7094-3-dafna.hirschfeld@collabora.com>
+ <20201002184222.7094-4-dafna.hirschfeld@collabora.com>
 From: Helen Koike <helen.koike@collabora.com>
-Message-ID: <e32bfefb-7b0c-669c-32da-8b407216d936@collabora.com>
-Date: Wed, 14 Oct 2020 17:27:43 -0300
+Message-ID: <77970c1e-c723-6115-6d61-e19cc8afe42d@collabora.com>
+Date: Wed, 14 Oct 2020 17:27:46 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.2
 MIME-Version: 1.0
-In-Reply-To: <20201002184222.7094-3-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20201002184222.7094-4-dafna.hirschfeld@collabora.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201014_162752_012606_60D51DA2 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20201014_162807_003834_495AFF23 
+X-CRM114-Status: GOOD (  17.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,11 +86,12 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 
 On 10/2/20 3:42 PM, Dafna Hirschfeld wrote:
-> Currently the code uses 'list_cut_position' to move the
-> buffers to a temporary list. Replace it with
-> 'list_splice_init'. This is nicer since we don't need
-> to access params.prev. Also, replace INIT_LIST_HEAD
-> with the simpler LIST_HEAD.
+> The buffer lists of stats and params entities
+> are initialized in queue_setup callback with
+> 'INIT_LIST_HEAD'. It is enough to initialize
+> the lists only upon registration.
+> For the stats entity the list is already
+> initialize upon registration.
 > 
 > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 
@@ -99,33 +101,61 @@ Thanks
 Helen
 
 > ---
->  drivers/staging/media/rkisp1/rkisp1-params.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
+>  drivers/staging/media/rkisp1/rkisp1-params.c | 4 +---
+>  drivers/staging/media/rkisp1/rkisp1-stats.c  | 4 ----
+>  2 files changed, 1 insertion(+), 7 deletions(-)
 > 
 > diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
-> index 986d293201e6..cb9f3332a9a0 100644
+> index cb9f3332a9a0..aa758f8c2264 100644
 > --- a/drivers/staging/media/rkisp1/rkisp1-params.c
 > +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
-> @@ -1462,9 +1462,7 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
+> @@ -1420,8 +1420,6 @@ static int rkisp1_params_vb2_queue_setup(struct vb2_queue *vq,
+>  					 unsigned int sizes[],
+>  					 struct device *alloc_devs[])
 >  {
->  	struct rkisp1_params *params = vq->drv_priv;
->  	struct rkisp1_buffer *buf;
-> -	struct list_head tmp_list;
+> -	struct rkisp1_params *params = vq->drv_priv;
 > -
-> -	INIT_LIST_HEAD(&tmp_list);
-> +	LIST_HEAD(tmp_list);
+>  	*num_buffers = clamp_t(u32, *num_buffers,
+>  			       RKISP1_ISP_PARAMS_REQ_BUFS_MIN,
+>  			       RKISP1_ISP_PARAMS_REQ_BUFS_MAX);
+> @@ -1430,7 +1428,6 @@ static int rkisp1_params_vb2_queue_setup(struct vb2_queue *vq,
 >  
->  	/*
->  	 * we first move the buffers into a local list 'tmp_list'
-> @@ -1473,7 +1471,7 @@ static void rkisp1_params_vb2_stop_streaming(struct vb2_queue *vq)
->  	 */
->  	spin_lock_irq(&params->config_lock);
->  	params->is_streaming = false;
-> -	list_cut_position(&tmp_list, &params->params, params->params.prev);
-> +	list_splice_init(&params->params, &tmp_list);
->  	spin_unlock_irq(&params->config_lock);
+>  	sizes[0] = sizeof(struct rkisp1_params_cfg);
 >  
->  	list_for_each_entry(buf, &tmp_list, queue)
+> -	INIT_LIST_HEAD(&params->params);
+>  	return 0;
+>  }
+>  
+> @@ -1545,6 +1542,7 @@ int rkisp1_params_register(struct rkisp1_device *rkisp1)
+>  
+>  	params->rkisp1 = rkisp1;
+>  	mutex_init(&node->vlock);
+> +	INIT_LIST_HEAD(&params->params);
+>  	spin_lock_init(&params->config_lock);
+>  
+>  	strscpy(vdev->name, RKISP1_PARAMS_DEV_NAME, sizeof(vdev->name));
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/staging/media/rkisp1/rkisp1-stats.c
+> index 51c64f75fe29..c58ae52b8a98 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-stats.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-stats.c
+> @@ -94,8 +94,6 @@ static int rkisp1_stats_vb2_queue_setup(struct vb2_queue *vq,
+>  					unsigned int sizes[],
+>  					struct device *alloc_devs[])
+>  {
+> -	struct rkisp1_stats *stats = vq->drv_priv;
+> -
+>  	*num_planes = 1;
+>  
+>  	*num_buffers = clamp_t(u32, *num_buffers, RKISP1_ISP_STATS_REQ_BUFS_MIN,
+> @@ -103,8 +101,6 @@ static int rkisp1_stats_vb2_queue_setup(struct vb2_queue *vq,
+>  
+>  	sizes[0] = sizeof(struct rkisp1_stat_buffer);
+>  
+> -	INIT_LIST_HEAD(&stats->stat);
+> -
+>  	return 0;
+>  }
+>  
 > 
 
 _______________________________________________
