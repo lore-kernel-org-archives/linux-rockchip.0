@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C75CC43467
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0B6AC388EC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2A94122254
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 764AA2225A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kix0VKRx"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A94122254
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Vx24sNm5"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 764AA2225A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,21 +25,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=n3Gvzi2d5Iw0oU1T+C/HFJ8jSiv8gk8pxkMXwKUgcG0=; b=kix0VKRxOIQW4LATpllm7t82i
-	dfwAmum+XskxirhWsXYEaUJ7bxlh32qPzY/IwWWeUJyON3eDNGfpZE/K/S0YIab6qsRyBXuQPLnCZ
-	odscf6NJQVbXQHs0XZbBWolg+i3t77TfvDVKtrEV9Utfcnx4cqO+5w2J9LLxTIY4n9mj2yzshZq+R
-	AJwHg2Yw7ToUt+06psIkv8eZpnDhbiF558nlboJGPCpllNbxuOA+WvEGtqd5YROgdjuodh5g1KpAL
-	tHl6qQ9OZAVgYJlU5kFvQ/ch3HI/OAUyYXJiOlM17OglWUTPH1ClsUNMVslVL2+T0q8s1qujbGRuG
-	0apgqPbPw==;
+	 bh=OJq59Qyo/k80m5wOEK/SCJ5zM9ULq4rl8sptMAoRFy0=; b=Vx24sNm536kB0/MYPMc+FBVyk
+	p3LzgWEZod4Ug/wnUsrAlzl2KDEyRhnGEpOJuxak0jNAJGxjiRAfsRVchzBbiwRZdbWilNa8QLAdg
+	qDjQy/OtUQ+hf9XGtNOPRL1mJAbh0TtFq5FxQy9suV7WRjX1T7j/9qNNLngtF5uuvy6/72BoQGpv3
+	VvTE62A+N4PuL64OLEaXeSQiZb6Ll2XQt19xHGPXKCLSMYMav9bbMipPq773P2BGM0dtQiEjsnTPz
+	uS7CvbJ4J2nxtL+Bhuj4SQNJx7ZC5yLpmM9rHSdpQp4feOTb32hR2KDEEW42G/tTTsrFJ8LDruXz3
+	wTiBqy+ag==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kT2Wb-0007qW-1g; Thu, 15 Oct 2020 12:38:29 +0000
+	id 1kT2Wj-0007vj-U5; Thu, 15 Oct 2020 12:38:37 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kT2WN-0007hi-LN; Thu, 15 Oct 2020 12:38:18 +0000
+ id 1kT2WN-0007hn-Rh; Thu, 15 Oct 2020 12:38:18 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id A929AB186;
+ by mx2.suse.de (Postfix) with ESMTP id A66FDB18A;
  Thu, 15 Oct 2020 12:38:12 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
@@ -56,16 +56,17 @@ To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
  sumit.semwal@linaro.org, emil.velikov@collabora.com, luben.tuikov@amd.com,
  apaneers@amd.com, linus.walleij@linaro.org, melissa.srw@gmail.com,
  chris@chris-wilson.co.uk, miaoqinglang@huawei.com
-Subject: [PATCH v4 03/10] drm/etnaviv: Remove empty etnaviv_gem_prime_vunmap()
-Date: Thu, 15 Oct 2020 14:37:59 +0200
-Message-Id: <20201015123806.32416-4-tzimmermann@suse.de>
+Subject: [PATCH v4 02/10] drm/cma-helper: Remove empty
+ drm_gem_cma_prime_vunmap()
+Date: Thu, 15 Oct 2020 14:37:58 +0200
+Message-Id: <20201015123806.32416-3-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201015123806.32416-1-tzimmermann@suse.de>
 References: <20201015123806.32416-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201015_083815_975126_EF11CACB 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20201015_083816_117888_1D5F075D 
+X-CRM114-Status: GOOD (  14.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,56 +91,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The function etnaviv_gem_prime_vunmap() is empty. Remove it before
+The function drm_gem_cma_prime_vunmap() is empty. Remove it before
 changing the interface to use struct drm_buf_map.
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- drivers/gpu/drm/etnaviv/etnaviv_drv.h       | 1 -
- drivers/gpu/drm/etnaviv/etnaviv_gem.c       | 1 -
- drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c | 5 -----
- 3 files changed, 7 deletions(-)
+ drivers/gpu/drm/drm_gem_cma_helper.c | 17 -----------------
+ drivers/gpu/drm/vc4/vc4_bo.c         |  1 -
+ include/drm/drm_gem_cma_helper.h     |  1 -
+ 3 files changed, 19 deletions(-)
 
-diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.h b/drivers/gpu/drm/etnaviv/etnaviv_drv.h
-index 914f0867ff71..9682c26d89bb 100644
---- a/drivers/gpu/drm/etnaviv/etnaviv_drv.h
-+++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.h
-@@ -52,7 +52,6 @@ int etnaviv_gem_mmap(struct file *filp, struct vm_area_struct *vma);
- int etnaviv_gem_mmap_offset(struct drm_gem_object *obj, u64 *offset);
- struct sg_table *etnaviv_gem_prime_get_sg_table(struct drm_gem_object *obj);
- void *etnaviv_gem_prime_vmap(struct drm_gem_object *obj);
--void etnaviv_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr);
- int etnaviv_gem_prime_mmap(struct drm_gem_object *obj,
- 			   struct vm_area_struct *vma);
- struct drm_gem_object *etnaviv_gem_prime_import_sg_table(struct drm_device *dev,
-diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gem.c b/drivers/gpu/drm/etnaviv/etnaviv_gem.c
-index 67d9a2b9ea6a..bbd235473645 100644
---- a/drivers/gpu/drm/etnaviv/etnaviv_gem.c
-+++ b/drivers/gpu/drm/etnaviv/etnaviv_gem.c
-@@ -571,7 +571,6 @@ static const struct drm_gem_object_funcs etnaviv_gem_object_funcs = {
- 	.unpin = etnaviv_gem_prime_unpin,
- 	.get_sg_table = etnaviv_gem_prime_get_sg_table,
- 	.vmap = etnaviv_gem_prime_vmap,
--	.vunmap = etnaviv_gem_prime_vunmap,
- 	.vm_ops = &vm_ops,
+diff --git a/drivers/gpu/drm/drm_gem_cma_helper.c b/drivers/gpu/drm/drm_gem_cma_helper.c
+index 2165633c9b9e..d527485ea0b7 100644
+--- a/drivers/gpu/drm/drm_gem_cma_helper.c
++++ b/drivers/gpu/drm/drm_gem_cma_helper.c
+@@ -537,23 +537,6 @@ void *drm_gem_cma_prime_vmap(struct drm_gem_object *obj)
+ }
+ EXPORT_SYMBOL_GPL(drm_gem_cma_prime_vmap);
+ 
+-/**
+- * drm_gem_cma_prime_vunmap - unmap a CMA GEM object from the kernel's virtual
+- *     address space
+- * @obj: GEM object
+- * @vaddr: kernel virtual address where the CMA GEM object was mapped
+- *
+- * This function removes a buffer exported via DRM PRIME from the kernel's
+- * virtual address space. This is a no-op because CMA buffers cannot be
+- * unmapped from kernel space. Drivers using the CMA helpers should set this
+- * as their &drm_gem_object_funcs.vunmap callback.
+- */
+-void drm_gem_cma_prime_vunmap(struct drm_gem_object *obj, void *vaddr)
+-{
+-	/* Nothing to do */
+-}
+-EXPORT_SYMBOL_GPL(drm_gem_cma_prime_vunmap);
+-
+ static const struct drm_gem_object_funcs drm_gem_cma_default_funcs = {
+ 	.free = drm_gem_cma_free_object,
+ 	.print_info = drm_gem_cma_print_info,
+diff --git a/drivers/gpu/drm/vc4/vc4_bo.c b/drivers/gpu/drm/vc4/vc4_bo.c
+index f432278173cd..557f0d1e6437 100644
+--- a/drivers/gpu/drm/vc4/vc4_bo.c
++++ b/drivers/gpu/drm/vc4/vc4_bo.c
+@@ -387,7 +387,6 @@ static const struct drm_gem_object_funcs vc4_gem_object_funcs = {
+ 	.export = vc4_prime_export,
+ 	.get_sg_table = drm_gem_cma_prime_get_sg_table,
+ 	.vmap = vc4_prime_vmap,
+-	.vunmap = drm_gem_cma_prime_vunmap,
+ 	.vm_ops = &vc4_vm_ops,
  };
  
-diff --git a/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c b/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
-index 135fbff6fecf..a6d9932a32ae 100644
---- a/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
-+++ b/drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c
-@@ -27,11 +27,6 @@ void *etnaviv_gem_prime_vmap(struct drm_gem_object *obj)
- 	return etnaviv_gem_vmap(obj);
- }
+diff --git a/include/drm/drm_gem_cma_helper.h b/include/drm/drm_gem_cma_helper.h
+index 2bfa2502607a..a064b0d1c480 100644
+--- a/include/drm/drm_gem_cma_helper.h
++++ b/include/drm/drm_gem_cma_helper.h
+@@ -104,7 +104,6 @@ drm_gem_cma_prime_import_sg_table(struct drm_device *dev,
+ int drm_gem_cma_prime_mmap(struct drm_gem_object *obj,
+ 			   struct vm_area_struct *vma);
+ void *drm_gem_cma_prime_vmap(struct drm_gem_object *obj);
+-void drm_gem_cma_prime_vunmap(struct drm_gem_object *obj, void *vaddr);
  
--void etnaviv_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr)
--{
--	/* TODO msm_gem_vunmap() */
--}
--
- int etnaviv_gem_prime_mmap(struct drm_gem_object *obj,
- 			   struct vm_area_struct *vma)
- {
+ struct drm_gem_object *
+ drm_gem_cma_create_object_default_funcs(struct drm_device *dev, size_t size);
 -- 
 2.28.0
 
