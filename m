@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 84FD7C54FB2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DF96C43457
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9DA722267
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EFB5D22258
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="LPCIglQt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E9DA722267
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Oilz440Q"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EFB5D22258
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kpem6p9wFLnbZQwgrwcZSVCOjkKJCFnLECx2dWS0+88=; b=LPCIglQtYqm8kzkQcgDztwdC9
-	V2mhsXf4h6a0rsrLBOln42wbrKZF4L7oeOSmVdu0mohOEbEkAe22VahAKSAEt9xQPsdDZciPSOPSx
-	UVVvClqsmlxPoRx/AtKciLYgHQTGK/zBV/J4g9KFacMHSiLX1wLlZ9d9LH8Wjk7YYL3RCM256lA8r
-	pLi/izPyR1Fd2s4BilvAbRfQUnbI0hSM/cfP26tfrmEW/HlJew8yqKr8ga4SuH7ywQq6ccbKhLyct
-	obKCF9eZSoX0/+VUAAokjIM1+5Gh1B2usIhSDYcby5rxZbHHqHxQtw+FNaw2OjoVbg1uQXfn4dQpL
-	oOBj4IJqw==;
+	 bh=FAHFi+DgIAM9nSQXLyE6Q4+++uEBa2Ocj3TCfPI03PE=; b=Oilz440Q8vtV9qIegJkDOeM1D
+	n9mNsT4n0R1bI3QQVMVd+eTy8DLa5OOLZD24/JN/py59O5xFmnM2PMuTF8xgBsOQOBHj9ierT2w0X
+	pZzjw6dDvT+IPsHOE0u5eR49pbApBEpP6wHFQgXGDe7ng1RoxmOTrCGaoy8Fsdu8G8RxLZ9A3nSuH
+	VIOXwGMqh89MmYSwt4YrZ+0c8XkO9Fp7mZB/pn0heZe2x+yYu7nUlX8E8RS4It+NYmvrfbGlKb2ym
+	+XRBZG63YA9c52dQN8C9zvJQ6oJk0SWif9fI23gYmualvpdD/gxw/AJnVyl24i5t3aGgwXCUqB4zN
+	X/84sJL4A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kT2Wq-0007yl-8o; Thu, 15 Oct 2020 12:38:44 +0000
+	id 1kT2X0-000865-6V; Thu, 15 Oct 2020 12:38:54 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kT2WO-0007hq-5d; Thu, 15 Oct 2020 12:38:18 +0000
+ id 1kT2WP-0007jd-OZ; Thu, 15 Oct 2020 12:38:22 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 42699B19B;
- Thu, 15 Oct 2020 12:38:13 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id 7E978B19C;
+ Thu, 15 Oct 2020 12:38:15 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
  daniel@ffwll.ch, sam@ravnborg.org, alexander.deucher@amd.com,
@@ -56,17 +56,17 @@ To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
  sumit.semwal@linaro.org, emil.velikov@collabora.com, luben.tuikov@amd.com,
  apaneers@amd.com, linus.walleij@linaro.org, melissa.srw@gmail.com,
  chris@chris-wilson.co.uk, miaoqinglang@huawei.com
-Subject: [PATCH v4 04/10] drm/exynos: Remove empty exynos_drm_gem_prime_{vmap,
- vunmap}()
-Date: Thu, 15 Oct 2020 14:38:00 +0200
-Message-Id: <20201015123806.32416-5-tzimmermann@suse.de>
+Subject: [PATCH v4 07/10] drm/gem: Update internal GEM vmap/vunmap interfaces
+ to use struct dma_buf_map
+Date: Thu, 15 Oct 2020 14:38:03 +0200
+Message-Id: <20201015123806.32416-8-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201015123806.32416-1-tzimmermann@suse.de>
 References: <20201015123806.32416-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201015_083816_444647_B3CE0C80 
-X-CRM114-Status: GOOD (  13.98  )
+X-CRM114-CacheID: sfid-20201015_083818_110761_D2C8DDE4 
+X-CRM114-Status: GOOD (  20.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,76 +80,110 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: linux-samsung-soc@vger.kernel.org, lima@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-rockchip@lists.infradead.org,
- dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
- xen-devel@lists.xenproject.org, spice-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ nouveau@lists.freedesktop.org, Daniel Vetter <daniel.vetter@ffwll.ch>,
+ etnaviv@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ virtualization@lists.linux-foundation.org, linaro-mm-sig@lists.linaro.org,
+ linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ Thomas Zimmermann <tzimmermann@suse.de>, xen-devel@lists.xenproject.org,
+ spice-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The functions exynos_drm_gem_prime_{vmap,vunmap}() are empty. Remove
-them before changing the interface to use struct drm_buf_map. As a side
-effect of removing drm_gem_prime_vmap(), the error code changes from
-ENOMEM to EOPNOTSUPP.
-
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
----
- drivers/gpu/drm/exynos/exynos_drm_gem.c | 12 ------------
- drivers/gpu/drm/exynos/exynos_drm_gem.h |  2 --
- 2 files changed, 14 deletions(-)
-
-diff --git a/drivers/gpu/drm/exynos/exynos_drm_gem.c b/drivers/gpu/drm/exynos/exynos_drm_gem.c
-index e7a6eb96f692..13a35623ac04 100644
---- a/drivers/gpu/drm/exynos/exynos_drm_gem.c
-+++ b/drivers/gpu/drm/exynos/exynos_drm_gem.c
-@@ -137,8 +137,6 @@ static const struct vm_operations_struct exynos_drm_gem_vm_ops = {
- static const struct drm_gem_object_funcs exynos_drm_gem_object_funcs = {
- 	.free = exynos_drm_gem_free_object,
- 	.get_sg_table = exynos_drm_gem_prime_get_sg_table,
--	.vmap = exynos_drm_gem_prime_vmap,
--	.vunmap	= exynos_drm_gem_prime_vunmap,
- 	.vm_ops = &exynos_drm_gem_vm_ops,
- };
- 
-@@ -471,16 +469,6 @@ exynos_drm_gem_prime_import_sg_table(struct drm_device *dev,
- 	return &exynos_gem->base;
- }
- 
--void *exynos_drm_gem_prime_vmap(struct drm_gem_object *obj)
--{
--	return NULL;
--}
--
--void exynos_drm_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr)
--{
--	/* Nothing to do */
--}
--
- int exynos_drm_gem_prime_mmap(struct drm_gem_object *obj,
- 			      struct vm_area_struct *vma)
- {
-diff --git a/drivers/gpu/drm/exynos/exynos_drm_gem.h b/drivers/gpu/drm/exynos/exynos_drm_gem.h
-index 74e926abeff0..a23272fb96fb 100644
---- a/drivers/gpu/drm/exynos/exynos_drm_gem.h
-+++ b/drivers/gpu/drm/exynos/exynos_drm_gem.h
-@@ -107,8 +107,6 @@ struct drm_gem_object *
- exynos_drm_gem_prime_import_sg_table(struct drm_device *dev,
- 				     struct dma_buf_attachment *attach,
- 				     struct sg_table *sgt);
--void *exynos_drm_gem_prime_vmap(struct drm_gem_object *obj);
--void exynos_drm_gem_prime_vunmap(struct drm_gem_object *obj, void *vaddr);
- int exynos_drm_gem_prime_mmap(struct drm_gem_object *obj,
- 			      struct vm_area_struct *vma);
- 
--- 
-2.28.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+R0VNJ3Mgdm1hcCBhbmQgdnVubWFwIGludGVyZmFjZXMgbm93IHdyYXAgbWVtb3J5IHBvaW50ZXJz
+IGluIHN0cnVjdApkbWFfYnVmX21hcC4KClNpZ25lZC1vZmYtYnk6IFRob21hcyBaaW1tZXJtYW5u
+IDx0emltbWVybWFubkBzdXNlLmRlPgpSZXZpZXdlZC1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVs
+LnZldHRlckBmZndsbC5jaD4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vZHJtX2NsaWVudC5jICAgfCAx
+OCArKysrKysrKysrKy0tLS0tLS0KIGRyaXZlcnMvZ3B1L2RybS9kcm1fZ2VtLmMgICAgICB8IDI2
+ICsrKysrKysrKysrKystLS0tLS0tLS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vZHJtX2ludGVybmFs
+LmggfCAgNSArKystLQogZHJpdmVycy9ncHUvZHJtL2RybV9wcmltZS5jICAgIHwgMTQgKysrKy0t
+LS0tLS0tLS0KIDQgZmlsZXMgY2hhbmdlZCwgMzEgaW5zZXJ0aW9ucygrKSwgMzIgZGVsZXRpb25z
+KC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2RybV9jbGllbnQuYyBiL2RyaXZlcnMv
+Z3B1L2RybS9kcm1fY2xpZW50LmMKaW5kZXggNDk1ZjQ3ZDIzZDg3Li5hYzAwODJiZWQ5NjYgMTAw
+NjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fY2xpZW50LmMKKysrIGIvZHJpdmVycy9ncHUv
+ZHJtL2RybV9jbGllbnQuYwpAQCAtMyw2ICszLDcgQEAKICAqIENvcHlyaWdodCAyMDE4IE5vcmFs
+ZiBUcsO4bm5lcwogICovCiAKKyNpbmNsdWRlIDxsaW51eC9kbWEtYnVmLW1hcC5oPgogI2luY2x1
+ZGUgPGxpbnV4L2xpc3QuaD4KICNpbmNsdWRlIDxsaW51eC9tb2R1bGUuaD4KICNpbmNsdWRlIDxs
+aW51eC9tdXRleC5oPgpAQCAtMzA0LDcgKzMwNSw4IEBAIGRybV9jbGllbnRfYnVmZmVyX2NyZWF0
+ZShzdHJ1Y3QgZHJtX2NsaWVudF9kZXYgKmNsaWVudCwgdTMyIHdpZHRoLCB1MzIgaGVpZ2h0LCB1
+CiAgKi8KIHZvaWQgKmRybV9jbGllbnRfYnVmZmVyX3ZtYXAoc3RydWN0IGRybV9jbGllbnRfYnVm
+ZmVyICpidWZmZXIpCiB7Ci0Jdm9pZCAqdmFkZHI7CisJc3RydWN0IGRtYV9idWZfbWFwIG1hcDsK
+KwlpbnQgcmV0OwogCiAJaWYgKGJ1ZmZlci0+dmFkZHIpCiAJCXJldHVybiBidWZmZXItPnZhZGRy
+OwpAQCAtMzE3LDEzICszMTksMTMgQEAgdm9pZCAqZHJtX2NsaWVudF9idWZmZXJfdm1hcChzdHJ1
+Y3QgZHJtX2NsaWVudF9idWZmZXIgKmJ1ZmZlcikKIAkgKiBmZF9pbnN0YWxsIHN0ZXAgb3V0IG9m
+IHRoZSBkcml2ZXIgYmFja2VuZCBob29rcywgdG8gbWFrZSB0aGF0CiAJICogZmluYWwgc3RlcCBv
+cHRpb25hbCBmb3IgaW50ZXJuYWwgdXNlcnMuCiAJICovCi0JdmFkZHIgPSBkcm1fZ2VtX3ZtYXAo
+YnVmZmVyLT5nZW0pOwotCWlmIChJU19FUlIodmFkZHIpKQotCQlyZXR1cm4gdmFkZHI7CisJcmV0
+ID0gZHJtX2dlbV92bWFwKGJ1ZmZlci0+Z2VtLCAmbWFwKTsKKwlpZiAocmV0KQorCQlyZXR1cm4g
+RVJSX1BUUihyZXQpOwogCi0JYnVmZmVyLT52YWRkciA9IHZhZGRyOworCWJ1ZmZlci0+dmFkZHIg
+PSBtYXAudmFkZHI7CiAKLQlyZXR1cm4gdmFkZHI7CisJcmV0dXJuIG1hcC52YWRkcjsKIH0KIEVY
+UE9SVF9TWU1CT0woZHJtX2NsaWVudF9idWZmZXJfdm1hcCk7CiAKQEAgLTMzNyw3ICszMzksOSBA
+QCBFWFBPUlRfU1lNQk9MKGRybV9jbGllbnRfYnVmZmVyX3ZtYXApOwogICovCiB2b2lkIGRybV9j
+bGllbnRfYnVmZmVyX3Z1bm1hcChzdHJ1Y3QgZHJtX2NsaWVudF9idWZmZXIgKmJ1ZmZlcikKIHsK
+LQlkcm1fZ2VtX3Z1bm1hcChidWZmZXItPmdlbSwgYnVmZmVyLT52YWRkcik7CisJc3RydWN0IGRt
+YV9idWZfbWFwIG1hcCA9IERNQV9CVUZfTUFQX0lOSVRfVkFERFIoYnVmZmVyLT52YWRkcik7CisK
+Kwlkcm1fZ2VtX3Z1bm1hcChidWZmZXItPmdlbSwgJm1hcCk7CiAJYnVmZmVyLT52YWRkciA9IE5V
+TEw7CiB9CiBFWFBPUlRfU1lNQk9MKGRybV9jbGllbnRfYnVmZmVyX3Z1bm1hcCk7CmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL2dwdS9kcm0vZHJtX2dlbS5jIGIvZHJpdmVycy9ncHUvZHJtL2RybV9nZW0u
+YwppbmRleCBhODlhZDQ1NzBlM2MuLjRkNWZmZjRiZDgyMSAxMDA2NDQKLS0tIGEvZHJpdmVycy9n
+cHUvZHJtL2RybV9nZW0uYworKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2dlbS5jCkBAIC0xMjA2
+LDMyICsxMjA2LDMyIEBAIHZvaWQgZHJtX2dlbV91bnBpbihzdHJ1Y3QgZHJtX2dlbV9vYmplY3Qg
+Km9iaikKIAkJb2JqLT5mdW5jcy0+dW5waW4ob2JqKTsKIH0KIAotdm9pZCAqZHJtX2dlbV92bWFw
+KHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKQoraW50IGRybV9nZW1fdm1hcChzdHJ1Y3QgZHJt
+X2dlbV9vYmplY3QgKm9iaiwgc3RydWN0IGRtYV9idWZfbWFwICptYXApCiB7Ci0Jc3RydWN0IGRt
+YV9idWZfbWFwIG1hcDsKIAlpbnQgcmV0OwogCiAJaWYgKCFvYmotPmZ1bmNzLT52bWFwKQotCQly
+ZXR1cm4gRVJSX1BUUigtRU9QTk9UU1VQUCk7CisJCXJldHVybiAtRU9QTk9UU1VQUDsKIAotCXJl
+dCA9IG9iai0+ZnVuY3MtPnZtYXAob2JqLCAmbWFwKTsKKwlyZXQgPSBvYmotPmZ1bmNzLT52bWFw
+KG9iaiwgbWFwKTsKIAlpZiAocmV0KQotCQlyZXR1cm4gRVJSX1BUUihyZXQpOwotCWVsc2UgaWYg
+KGRtYV9idWZfbWFwX2lzX251bGwoJm1hcCkpCi0JCXJldHVybiBFUlJfUFRSKC1FTk9NRU0pOwor
+CQlyZXR1cm4gcmV0OworCWVsc2UgaWYgKGRtYV9idWZfbWFwX2lzX251bGwobWFwKSkKKwkJcmV0
+dXJuIC1FTk9NRU07CiAKLQlyZXR1cm4gbWFwLnZhZGRyOworCXJldHVybiAwOwogfQogCi12b2lk
+IGRybV9nZW1fdnVubWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLCB2b2lkICp2YWRkcikK
+K3ZvaWQgZHJtX2dlbV92dW5tYXAoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmosIHN0cnVjdCBk
+bWFfYnVmX21hcCAqbWFwKQogewotCXN0cnVjdCBkbWFfYnVmX21hcCBtYXAgPSBETUFfQlVGX01B
+UF9JTklUX1ZBRERSKHZhZGRyKTsKLQotCWlmICghdmFkZHIpCisJaWYgKGRtYV9idWZfbWFwX2lz
+X251bGwobWFwKSkKIAkJcmV0dXJuOwogCiAJaWYgKG9iai0+ZnVuY3MtPnZ1bm1hcCkKLQkJb2Jq
+LT5mdW5jcy0+dnVubWFwKG9iaiwgJm1hcCk7CisJCW9iai0+ZnVuY3MtPnZ1bm1hcChvYmosIG1h
+cCk7CisKKwkvKiBBbHdheXMgc2V0IHRoZSBtYXBwaW5nIHRvIE5VTEwuIENhbGxlcnMgbWF5IHJl
+bHkgb24gdGhpcy4gKi8KKwlkbWFfYnVmX21hcF9jbGVhcihtYXApOwogfQogCiAvKioKZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1faW50ZXJuYWwuaCBiL2RyaXZlcnMvZ3B1L2RybS9k
+cm1faW50ZXJuYWwuaAppbmRleCBiNjU4NjVjNjMwYjAuLjU4ODMyZDc1YTliZCAxMDA2NDQKLS0t
+IGEvZHJpdmVycy9ncHUvZHJtL2RybV9pbnRlcm5hbC5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9k
+cm1faW50ZXJuYWwuaApAQCAtMzMsNiArMzMsNyBAQAogCiBzdHJ1Y3QgZGVudHJ5Owogc3RydWN0
+IGRtYV9idWY7CitzdHJ1Y3QgZG1hX2J1Zl9tYXA7CiBzdHJ1Y3QgZHJtX2Nvbm5lY3RvcjsKIHN0
+cnVjdCBkcm1fY3J0YzsKIHN0cnVjdCBkcm1fZnJhbWVidWZmZXI7CkBAIC0xODcsOCArMTg4LDgg
+QEAgdm9pZCBkcm1fZ2VtX3ByaW50X2luZm8oc3RydWN0IGRybV9wcmludGVyICpwLCB1bnNpZ25l
+ZCBpbnQgaW5kZW50LAogCiBpbnQgZHJtX2dlbV9waW4oc3RydWN0IGRybV9nZW1fb2JqZWN0ICpv
+YmopOwogdm9pZCBkcm1fZ2VtX3VucGluKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKTsKLXZv
+aWQgKmRybV9nZW1fdm1hcChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaik7Ci12b2lkIGRybV9n
+ZW1fdnVubWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLCB2b2lkICp2YWRkcik7CitpbnQg
+ZHJtX2dlbV92bWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLCBzdHJ1Y3QgZG1hX2J1Zl9t
+YXAgKm1hcCk7Cit2b2lkIGRybV9nZW1fdnVubWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2Jq
+LCBzdHJ1Y3QgZG1hX2J1Zl9tYXAgKm1hcCk7CiAKIC8qIGRybV9kZWJ1Z2ZzLmMgZHJtX2RlYnVn
+ZnNfY3JjLmMgKi8KICNpZiBkZWZpbmVkKENPTkZJR19ERUJVR19GUykKZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvZ3B1L2RybS9kcm1fcHJpbWUuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fcHJpbWUuYwpp
+bmRleCA4OWUyYTI0OTY3MzQuLmNiOGZiZWViNzMxYiAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUv
+ZHJtL2RybV9wcmltZS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fcHJpbWUuYwpAQCAtNjY3
+LDIxICs2NjcsMTUgQEAgRVhQT1JUX1NZTUJPTChkcm1fZ2VtX3VubWFwX2RtYV9idWYpOwogICoK
+ICAqIFNldHMgdXAgYSBrZXJuZWwgdmlydHVhbCBtYXBwaW5nLiBUaGlzIGNhbiBiZSB1c2VkIGFz
+IHRoZSAmZG1hX2J1Zl9vcHMudm1hcAogICogY2FsbGJhY2suIENhbGxzIGludG8gJmRybV9nZW1f
+b2JqZWN0X2Z1bmNzLnZtYXAgZm9yIGRldmljZSBzcGVjaWZpYyBoYW5kbGluZy4KKyAqIFRoZSBr
+ZXJuZWwgdmlydHVhbCBhZGRyZXNzIGlzIHJldHVybmVkIGluIG1hcC4KICAqCi0gKiBSZXR1cm5z
+IHRoZSBrZXJuZWwgdmlydHVhbCBhZGRyZXNzIG9yIE5VTEwgb24gZmFpbHVyZS4KKyAqIFJldHVy
+bnMgMCBvbiBzdWNjZXNzIG9yIGEgbmVnYXRpdmUgZXJybm8gY29kZSBvdGhlcndpc2UuCiAgKi8K
+IGludCBkcm1fZ2VtX2RtYWJ1Zl92bWFwKHN0cnVjdCBkbWFfYnVmICpkbWFfYnVmLCBzdHJ1Y3Qg
+ZG1hX2J1Zl9tYXAgKm1hcCkKIHsKIAlzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiA9IGRtYV9i
+dWYtPnByaXY7Ci0Jdm9pZCAqdmFkZHI7CiAKLQl2YWRkciA9IGRybV9nZW1fdm1hcChvYmopOwot
+CWlmIChJU19FUlIodmFkZHIpKQotCQlyZXR1cm4gUFRSX0VSUih2YWRkcik7Ci0KLQlkbWFfYnVm
+X21hcF9zZXRfdmFkZHIobWFwLCB2YWRkcik7Ci0KLQlyZXR1cm4gMDsKKwlyZXR1cm4gZHJtX2dl
+bV92bWFwKG9iaiwgbWFwKTsKIH0KIEVYUE9SVF9TWU1CT0woZHJtX2dlbV9kbWFidWZfdm1hcCk7
+CiAKQEAgLTY5Nyw3ICs2OTEsNyBAQCB2b2lkIGRybV9nZW1fZG1hYnVmX3Z1bm1hcChzdHJ1Y3Qg
+ZG1hX2J1ZiAqZG1hX2J1Ziwgc3RydWN0IGRtYV9idWZfbWFwICptYXApCiB7CiAJc3RydWN0IGRy
+bV9nZW1fb2JqZWN0ICpvYmogPSBkbWFfYnVmLT5wcml2OwogCi0JZHJtX2dlbV92dW5tYXAob2Jq
+LCBtYXAtPnZhZGRyKTsKKwlkcm1fZ2VtX3Z1bm1hcChvYmosIG1hcCk7CiB9CiBFWFBPUlRfU1lN
+Qk9MKGRybV9nZW1fZG1hYnVmX3Z1bm1hcCk7CiAKLS0gCjIuMjguMAoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
