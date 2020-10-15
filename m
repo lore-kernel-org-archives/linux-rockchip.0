@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9AB8EC433DF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8910FC35266
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:39:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0733B22254
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:39:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 16AC622254
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:39:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IrXiSgpf"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0733B22254
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BgkDjne+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 16AC622254
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,22 +25,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=WDWc8DW0IwEBeS7YlPNP9sbCl9gOnjmYRspRufzLpKI=; b=IrXiSgpfcxvr8sgFwFKv2zgVs
-	vz4FuPL5O1Jn2Yee2qjxmhs/nwpOJI507d9KvUnxXokfffjtdfsyP0jrsWAIB5aYe3TCV+u7slNqY
-	SAJJ5RmatzX2AazCVmhenrGItHfwcwKfPnOfJazmaU8cdbzamJOY/r6ULFPpoGGG4PjedglqumhVV
-	qpiBu4eROBf5bhpM7hG7YqDCea3ZU/a15Wz0PEpcq8Dqwr5yOpcbM1X3ldgkoWfGGuRJ3Z93mEqHw
-	NCCa9gK21N1JgB2/u1SPHV1N9Fl4NBSyUsnGeKFc9Mx70eIyEDi7gSeCw4MhTDymSwbk+9n5/Tn1k
-	Hf9qaDjCg==;
+	 bh=4VWblasKpJcfkAlGzkaKfB/qp/VCxGhqznhocLVLNdI=; b=BgkDjne+qinQ6ewf70CZelBrV
+	MBajmteH1L3wEYvAMPTNw1kipu+z1E0M1Yzf1/2/AblSCFInKdKdyXjU9nKSop3dsQZQjad1OTIgE
+	PlC6ciJI5tKwoTOZhYJbMO0NE1HveSjeWPDnA2uTAx+aplXPi1+HN4oa4x8cEiVnKu2jnqgX1O97I
+	h3z1wNYyI+tpSlVYkWj7XRPRBVgblD8lTy1D/u8Z9+8tYijo0LvViqeAku120jjqp9kuQ/8PVjUji
+	g0DriFSEezBjn5TwH4qKHUFw4m6O7GAgI/ibLXwjQYh3tNtnmXa90ACJaZs+3mURJHonDF4iuE7e9
+	pbZUs6rZw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kT2XE-0008Bq-2N; Thu, 15 Oct 2020 12:39:08 +0000
+	id 1kT2XB-0008AW-0Q; Thu, 15 Oct 2020 12:39:05 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kT2WR-0007l9-8M; Thu, 15 Oct 2020 12:38:29 +0000
+ id 1kT2WP-0007jc-Oa; Thu, 15 Oct 2020 12:38:23 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 8804EB1AD;
- Thu, 15 Oct 2020 12:38:17 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id EA1D7AFEA;
+ Thu, 15 Oct 2020 12:38:13 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
  daniel@ffwll.ch, sam@ravnborg.org, alexander.deucher@amd.com,
@@ -56,16 +56,16 @@ To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
  sumit.semwal@linaro.org, emil.velikov@collabora.com, luben.tuikov@amd.com,
  apaneers@amd.com, linus.walleij@linaro.org, melissa.srw@gmail.com,
  chris@chris-wilson.co.uk, miaoqinglang@huawei.com
-Subject: [PATCH v4 10/10] drm/fb_helper: Support framebuffers in I/O memory
-Date: Thu, 15 Oct 2020 14:38:06 +0200
-Message-Id: <20201015123806.32416-11-tzimmermann@suse.de>
+Subject: [PATCH v4 05/10] drm/ttm: Add vmap/vunmap to TTM and TTM GEM helpers
+Date: Thu, 15 Oct 2020 14:38:01 +0200
+Message-Id: <20201015123806.32416-6-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201015123806.32416-1-tzimmermann@suse.de>
 References: <20201015123806.32416-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201015_083819_577744_241217D8 
-X-CRM114-Status: GOOD (  27.00  )
+X-CRM114-CacheID: sfid-20201015_083818_114109_F3853274 
+X-CRM114-Status: GOOD (  26.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,371 +90,274 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-At least sparc64 requires I/O-specific access to framebuffers. This
-patch updates the fbdev console accordingly.
+The new functions ttm_bo_{vmap,vunmap}() map and unmap a TTM BO in kernel
+address space. The mapping's address is returned as struct dma_buf_map.
+Each function is a simplified version of TTM's existing kmap code. Both
+functions respect the memory's location ani/or writecombine flags.
 
-For drivers with direct access to the framebuffer memory, the callback
-functions in struct fb_ops test for the type of memory and call the rsp
-fb_sys_ of fb_cfb_ functions.
-
-For drivers that employ a shadow buffer, fbdev's blit function retrieves
-the framebuffer address as struct dma_buf_map, and uses dma_buf_map
-interfaces to access the buffer.
-
-The bochs driver on sparc64 uses a workaround to flag the framebuffer as
-I/O memory and avoid a HW exception. With the introduction of struct
-dma_buf_map, this is not required any longer. The patch removes the rsp
-code from both, bochs and fbdev.
+On top TTM's functions, GEM TTM helpers got drm_gem_ttm_{vmap,vunmap}(),
+two helpers that convert a GEM object into the TTM BO and forward the call
+to TTM's vmap/vunmap. These helpers can be dropped into the rsp GEM object
+callbacks.
 
 v4:
-	* move dma_buf_map changes into separate patch (Daniel)
-	* TODO list: comment on fbdev updates (Daniel)
+	* drop ttm_kmap_obj_to_dma_buf() in favor of vmap helpers (Daniel,
+	  Christian)
 
 Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
 ---
- Documentation/gpu/todo.rst        |  19 ++-
- drivers/gpu/drm/bochs/bochs_kms.c |   1 -
- drivers/gpu/drm/drm_fb_helper.c   | 217 ++++++++++++++++++++++++++++--
- include/drm/drm_mode_config.h     |  12 --
- 4 files changed, 220 insertions(+), 29 deletions(-)
+ drivers/gpu/drm/drm_gem_ttm_helper.c | 38 +++++++++++++++
+ drivers/gpu/drm/ttm/ttm_bo_util.c    | 72 ++++++++++++++++++++++++++++
+ include/drm/drm_gem_ttm_helper.h     |  6 +++
+ include/drm/ttm/ttm_bo_api.h         | 28 +++++++++++
+ include/linux/dma-buf-map.h          | 20 ++++++++
+ 5 files changed, 164 insertions(+)
 
-diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
-index 7e6fc3c04add..638b7f704339 100644
---- a/Documentation/gpu/todo.rst
-+++ b/Documentation/gpu/todo.rst
-@@ -197,13 +197,28 @@ Convert drivers to use drm_fbdev_generic_setup()
- ------------------------------------------------
- 
- Most drivers can use drm_fbdev_generic_setup(). Driver have to implement
--atomic modesetting and GEM vmap support. Current generic fbdev emulation
--expects the framebuffer in system memory (or system-like memory).
-+atomic modesetting and GEM vmap support. Historically, generic fbdev emulation
-+expected the framebuffer in system memory or system-like memory. By employing
-+struct dma_buf_map, drivers with frambuffers in I/O memory can be supported
-+as well.
- 
- Contact: Maintainer of the driver you plan to convert
- 
- Level: Intermediate
- 
-+Reimplement functions in drm_fbdev_fb_ops without fbdev
-+-------------------------------------------------------
-+
-+A number of callback functions in drm_fbdev_fb_ops could benefit from
-+being rewritten without dependencies on the fbdev module. Some of the
-+helpers could further benefit from using struct dma_buf_map instead of
-+raw pointers.
-+
-+Contact: Thomas Zimmermann <tzimmermann@suse.de>, Daniel Vetter
-+
-+Level: Advanced
-+
-+
- drm_framebuffer_funcs and drm_mode_config_funcs.fb_create cleanup
- -----------------------------------------------------------------
- 
-diff --git a/drivers/gpu/drm/bochs/bochs_kms.c b/drivers/gpu/drm/bochs/bochs_kms.c
-index 13d0d04c4457..853081d186d5 100644
---- a/drivers/gpu/drm/bochs/bochs_kms.c
-+++ b/drivers/gpu/drm/bochs/bochs_kms.c
-@@ -151,7 +151,6 @@ int bochs_kms_init(struct bochs_device *bochs)
- 	bochs->dev->mode_config.preferred_depth = 24;
- 	bochs->dev->mode_config.prefer_shadow = 0;
- 	bochs->dev->mode_config.prefer_shadow_fbdev = 1;
--	bochs->dev->mode_config.fbdev_use_iomem = true;
- 	bochs->dev->mode_config.quirk_addfb_prefer_host_byte_order = true;
- 
- 	bochs->dev->mode_config.funcs = &bochs_mode_funcs;
-diff --git a/drivers/gpu/drm/drm_fb_helper.c b/drivers/gpu/drm/drm_fb_helper.c
-index 6212cd7cde1d..462b0c130ebb 100644
---- a/drivers/gpu/drm/drm_fb_helper.c
-+++ b/drivers/gpu/drm/drm_fb_helper.c
-@@ -372,24 +372,22 @@ static void drm_fb_helper_resume_worker(struct work_struct *work)
+diff --git a/drivers/gpu/drm/drm_gem_ttm_helper.c b/drivers/gpu/drm/drm_gem_ttm_helper.c
+index 0e4fb9ba43ad..db4c14d78a30 100644
+--- a/drivers/gpu/drm/drm_gem_ttm_helper.c
++++ b/drivers/gpu/drm/drm_gem_ttm_helper.c
+@@ -49,6 +49,44 @@ void drm_gem_ttm_print_info(struct drm_printer *p, unsigned int indent,
  }
+ EXPORT_SYMBOL(drm_gem_ttm_print_info);
  
- static void drm_fb_helper_dirty_blit_real(struct drm_fb_helper *fb_helper,
--					  struct drm_clip_rect *clip)
-+					  struct drm_clip_rect *clip,
-+					  struct dma_buf_map *dst)
- {
- 	struct drm_framebuffer *fb = fb_helper->fb;
- 	unsigned int cpp = fb->format->cpp[0];
- 	size_t offset = clip->y1 * fb->pitches[0] + clip->x1 * cpp;
- 	void *src = fb_helper->fbdev->screen_buffer + offset;
--	void *dst = fb_helper->buffer->map.vaddr + offset;
- 	size_t len = (clip->x2 - clip->x1) * cpp;
- 	unsigned int y;
- 
--	for (y = clip->y1; y < clip->y2; y++) {
--		if (!fb_helper->dev->mode_config.fbdev_use_iomem)
--			memcpy(dst, src, len);
--		else
--			memcpy_toio((void __iomem *)dst, src, len);
-+	dma_buf_map_incr(dst, offset); /* go to first pixel within clip rect */
- 
-+	for (y = clip->y1; y < clip->y2; y++) {
-+		dma_buf_map_memcpy_to(dst, src, len);
-+		dma_buf_map_incr(dst, fb->pitches[0]);
- 		src += fb->pitches[0];
--		dst += fb->pitches[0];
- 	}
- }
- 
-@@ -417,8 +415,9 @@ static void drm_fb_helper_dirty_work(struct work_struct *work)
- 			ret = drm_client_buffer_vmap(helper->buffer, &map);
- 			if (ret)
- 				return;
--			drm_fb_helper_dirty_blit_real(helper, &clip_copy);
-+			drm_fb_helper_dirty_blit_real(helper, &clip_copy, &map);
- 		}
-+
- 		if (helper->fb->funcs->dirty)
- 			helper->fb->funcs->dirty(helper->fb, NULL, 0, 0,
- 						 &clip_copy, 1);
-@@ -755,6 +754,136 @@ void drm_fb_helper_sys_imageblit(struct fb_info *info,
- }
- EXPORT_SYMBOL(drm_fb_helper_sys_imageblit);
- 
-+static ssize_t drm_fb_helper_cfb_read(struct fb_info *info, char __user *buf,
-+				      size_t count, loff_t *ppos)
++/**
++ * drm_gem_ttm_vmap() - vmap &ttm_buffer_object
++ * @gem: GEM object.
++ * @map: [out] returns the dma-buf mapping.
++ *
++ * Maps a GEM object with ttm_bo_vmap(). This function can be used as
++ * &drm_gem_object_funcs.vmap callback.
++ *
++ * Returns:
++ * 0 on success, or a negative errno code otherwise.
++ */
++int drm_gem_ttm_vmap(struct drm_gem_object *gem,
++		     struct dma_buf_map *map)
 +{
-+	unsigned long p = *ppos;
-+	u8 *dst;
-+	u8 __iomem *src;
-+	int c, err = 0;
-+	unsigned long total_size;
-+	unsigned long alloc_size;
-+	ssize_t ret = 0;
++	struct ttm_buffer_object *bo = drm_gem_ttm_of_gem(gem);
 +
-+	if (info->state != FBINFO_STATE_RUNNING)
-+		return -EPERM;
++	return ttm_bo_vmap(bo, map);
 +
-+	total_size = info->screen_size;
-+
-+	if (total_size == 0)
-+		total_size = info->fix.smem_len;
-+
-+	if (p >= total_size)
-+		return 0;
-+
-+	if (count >= total_size)
-+		count = total_size;
-+
-+	if (count + p > total_size)
-+		count = total_size - p;
-+
-+	src = (u8 __iomem *)(info->screen_base + p);
-+
-+	alloc_size = min(count, PAGE_SIZE);
-+
-+	dst = kmalloc(alloc_size, GFP_KERNEL);
-+	if (!dst)
-+		return -ENOMEM;
-+
-+	while (count) {
-+		c = min(count, alloc_size);
-+
-+		memcpy_fromio(dst, src, c);
-+		if (copy_to_user(buf, dst, c)) {
-+			err = -EFAULT;
-+			break;
-+		}
-+
-+		src += c;
-+		*ppos += c;
-+		buf += c;
-+		ret += c;
-+		count -= c;
-+	}
-+
-+	kfree(dst);
-+
-+	if (err)
-+		return err;
-+
-+	return ret;
 +}
++EXPORT_SYMBOL(drm_gem_ttm_vmap);
 +
-+static ssize_t drm_fb_helper_cfb_write(struct fb_info *info, const char __user *buf,
-+				       size_t count, loff_t *ppos)
++/**
++ * drm_gem_ttm_vunmap() - vunmap &ttm_buffer_object
++ * @gem: GEM object.
++ * @map: dma-buf mapping.
++ *
++ * Unmaps a GEM object with ttm_bo_vunmap(). This function can be used as
++ * &drm_gem_object_funcs.vmap callback.
++ */
++void drm_gem_ttm_vunmap(struct drm_gem_object *gem,
++			struct dma_buf_map *map)
 +{
-+	unsigned long p = *ppos;
-+	u8 *src;
-+	u8 __iomem *dst;
-+	int c, err = 0;
-+	unsigned long total_size;
-+	unsigned long alloc_size;
-+	ssize_t ret = 0;
++	struct ttm_buffer_object *bo = drm_gem_ttm_of_gem(gem);
 +
-+	if (info->state != FBINFO_STATE_RUNNING)
-+		return -EPERM;
++	ttm_bo_vunmap(bo, map);
++}
++EXPORT_SYMBOL(drm_gem_ttm_vunmap);
 +
-+	total_size = info->screen_size;
+ /**
+  * drm_gem_ttm_mmap() - mmap &ttm_buffer_object
+  * @gem: GEM object.
+diff --git a/drivers/gpu/drm/ttm/ttm_bo_util.c b/drivers/gpu/drm/ttm/ttm_bo_util.c
+index bdee4df1f3f2..80c42c774c7d 100644
+--- a/drivers/gpu/drm/ttm/ttm_bo_util.c
++++ b/drivers/gpu/drm/ttm/ttm_bo_util.c
+@@ -32,6 +32,7 @@
+ #include <drm/ttm/ttm_bo_driver.h>
+ #include <drm/ttm/ttm_placement.h>
+ #include <drm/drm_vma_manager.h>
++#include <linux/dma-buf-map.h>
+ #include <linux/io.h>
+ #include <linux/highmem.h>
+ #include <linux/wait.h>
+@@ -526,6 +527,77 @@ void ttm_bo_kunmap(struct ttm_bo_kmap_obj *map)
+ }
+ EXPORT_SYMBOL(ttm_bo_kunmap);
+ 
++int ttm_bo_vmap(struct ttm_buffer_object *bo, struct dma_buf_map *map)
++{
++	struct ttm_resource *mem = &bo->mem;
++	int ret;
 +
-+	if (total_size == 0)
-+		total_size = info->fix.smem_len;
++	ret = ttm_mem_io_reserve(bo->bdev, mem);
++	if (ret)
++		return ret;
 +
-+	if (p > total_size)
-+		return -EFBIG;
++	if (mem->bus.is_iomem) {
++		void __iomem *vaddr_iomem;
++		unsigned long size = bo->num_pages << PAGE_SHIFT;
 +
-+	if (count > total_size) {
-+		err = -EFBIG;
-+		count = total_size;
-+	}
++		if (mem->bus.addr)
++			vaddr_iomem = (void *)(((u8 *)mem->bus.addr));
++		else if (mem->placement & TTM_PL_FLAG_WC)
++			vaddr_iomem = ioremap_wc(mem->bus.offset, size);
++		else
++			vaddr_iomem = ioremap(mem->bus.offset, size);
 +
-+	if (count + p > total_size) {
++		if (!vaddr_iomem)
++			return -ENOMEM;
++
++		dma_buf_map_set_vaddr_iomem(map, vaddr_iomem);
++
++	} else {
++		struct ttm_operation_ctx ctx = {
++			.interruptible = false,
++			.no_wait_gpu = false
++		};
++		struct ttm_tt *ttm = bo->ttm;
++		pgprot_t prot;
++		void *vaddr;
++
++		BUG_ON(!ttm);
++
++		ret = ttm_tt_populate(bo->bdev, ttm, &ctx);
++		if (ret)
++			return ret;
++
 +		/*
-+		 * The framebuffer is too small. We do the
-+		 * copy operation, but return an error code
-+		 * afterwards. Taken from fbdev.
++		 * We need to use vmap to get the desired page protection
++		 * or to make the buffer object look contiguous.
 +		 */
-+		if (!err)
-+			err = -ENOSPC;
-+		count = total_size - p;
++		prot = ttm_io_prot(mem->placement, PAGE_KERNEL);
++		vaddr = vmap(ttm->pages, bo->num_pages, 0, prot);
++		if (!vaddr)
++			return -ENOMEM;
++
++		dma_buf_map_set_vaddr(map, vaddr);
 +	}
 +
-+	alloc_size = min(count, PAGE_SIZE);
++	return 0;
++}
++EXPORT_SYMBOL(ttm_bo_vmap);
 +
-+	src = kmalloc(alloc_size, GFP_KERNEL);
-+	if (!src)
-+		return -ENOMEM;
++void ttm_bo_vunmap(struct ttm_buffer_object *bo, struct dma_buf_map *map)
++{
++	if (dma_buf_map_is_null(map))
++		return;
 +
-+	dst = (u8 __iomem *)(info->screen_base + p);
++	if (map->is_iomem)
++		iounmap(map->vaddr_iomem);
++	else
++		vunmap(map->vaddr);
++	dma_buf_map_clear(map);
 +
-+	while (count) {
-+		c = min(count, alloc_size);
++	ttm_mem_io_free(bo->bdev, &bo->mem);
++}
++EXPORT_SYMBOL(ttm_bo_vunmap);
 +
-+		if (copy_from_user(src, buf, c)) {
-+			err = -EFAULT;
-+			break;
-+		}
-+		memcpy_toio(dst, src, c);
+ static int ttm_bo_wait_free_node(struct ttm_buffer_object *bo,
+ 				 bool dst_use_tt)
+ {
+diff --git a/include/drm/drm_gem_ttm_helper.h b/include/drm/drm_gem_ttm_helper.h
+index 118cef76f84f..7c6d874910b8 100644
+--- a/include/drm/drm_gem_ttm_helper.h
++++ b/include/drm/drm_gem_ttm_helper.h
+@@ -10,11 +10,17 @@
+ #include <drm/ttm/ttm_bo_api.h>
+ #include <drm/ttm/ttm_bo_driver.h>
+ 
++struct dma_buf_map;
 +
-+		dst += c;
-+		*ppos += c;
-+		buf += c;
-+		ret += c;
-+		count -= c;
-+	}
+ #define drm_gem_ttm_of_gem(gem_obj) \
+ 	container_of(gem_obj, struct ttm_buffer_object, base)
+ 
+ void drm_gem_ttm_print_info(struct drm_printer *p, unsigned int indent,
+ 			    const struct drm_gem_object *gem);
++int drm_gem_ttm_vmap(struct drm_gem_object *gem,
++		     struct dma_buf_map *map);
++void drm_gem_ttm_vunmap(struct drm_gem_object *gem,
++			struct dma_buf_map *map);
+ int drm_gem_ttm_mmap(struct drm_gem_object *gem,
+ 		     struct vm_area_struct *vma);
+ 
+diff --git a/include/drm/ttm/ttm_bo_api.h b/include/drm/ttm/ttm_bo_api.h
+index 37102e45e496..2c59a785374c 100644
+--- a/include/drm/ttm/ttm_bo_api.h
++++ b/include/drm/ttm/ttm_bo_api.h
+@@ -48,6 +48,8 @@ struct ttm_bo_global;
+ 
+ struct ttm_bo_device;
+ 
++struct dma_buf_map;
 +
-+	kfree(src);
+ struct drm_mm_node;
+ 
+ struct ttm_placement;
+@@ -494,6 +496,32 @@ int ttm_bo_kmap(struct ttm_buffer_object *bo, unsigned long start_page,
+  */
+ void ttm_bo_kunmap(struct ttm_bo_kmap_obj *map);
+ 
++/**
++ * ttm_bo_vmap
++ *
++ * @bo: The buffer object.
++ * @map: pointer to a struct dma_buf_map representing the map.
++ *
++ * Sets up a kernel virtual mapping, using ioremap or vmap to the
++ * data in the buffer object. The parameter @map returns the virtual
++ * address as struct dma_buf_map. Unmap the buffer with ttm_bo_vunmap().
++ *
++ * Returns
++ * -ENOMEM: Out of memory.
++ * -EINVAL: Invalid range.
++ */
++int ttm_bo_vmap(struct ttm_buffer_object *bo, struct dma_buf_map *map);
 +
-+	if (err)
-+		return err;
++/**
++ * ttm_bo_vunmap
++ *
++ * @bo: The buffer object.
++ * @map: Object describing the map to unmap.
++ *
++ * Unmaps a kernel map set up by ttm_bo_vmap().
++ */
++void ttm_bo_vunmap(struct ttm_buffer_object *bo, struct dma_buf_map *map);
 +
-+	return ret;
+ /**
+  * ttm_bo_mmap_obj - mmap memory backed by a ttm buffer object.
+  *
+diff --git a/include/linux/dma-buf-map.h b/include/linux/dma-buf-map.h
+index fd1aba545fdf..2e8bbecb5091 100644
+--- a/include/linux/dma-buf-map.h
++++ b/include/linux/dma-buf-map.h
+@@ -45,6 +45,12 @@
+  *
+  *	dma_buf_map_set_vaddr(&map. 0xdeadbeaf);
+  *
++ * To set an address in I/O memory, use dma_buf_map_set_vaddr_iomem().
++ *
++ * .. code-block:: c
++ *
++ *	dma_buf_map_set_vaddr_iomem(&map. 0xdeadbeaf);
++ *
+  * Test if a mapping is valid with either dma_buf_map_is_set() or
+  * dma_buf_map_is_null().
+  *
+@@ -118,6 +124,20 @@ static inline void dma_buf_map_set_vaddr(struct dma_buf_map *map, void *vaddr)
+ 	map->is_iomem = false;
+ }
+ 
++/**
++ * dma_buf_map_set_vaddr_iomem - Sets a dma-buf mapping structure to an address in I/O memory
++ * @map:		The dma-buf mapping structure
++ * @vaddr_iomem:	An I/O-memory address
++ *
++ * Sets the address and the I/O-memory flag.
++ */
++static inline void dma_buf_map_set_vaddr_iomem(struct dma_buf_map *map,
++					       void __iomem *vaddr_iomem)
++{
++	map->vaddr_iomem = vaddr_iomem;
++	map->is_iomem = true;
 +}
 +
  /**
-  * drm_fb_helper_cfb_fillrect - wrapper around cfb_fillrect
-  * @info: fbdev registered by the helper
-@@ -2027,6 +2156,66 @@ static int drm_fbdev_fb_mmap(struct fb_info *info, struct vm_area_struct *vma)
- 		return -ENODEV;
- }
- 
-+static ssize_t drm_fbdev_fb_read(struct fb_info *info, char __user *buf,
-+				 size_t count, loff_t *ppos)
-+{
-+	struct drm_fb_helper *fb_helper = info->par;
-+	struct drm_client_buffer *buffer = fb_helper->buffer;
-+
-+	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-+		return drm_fb_helper_sys_read(info, buf, count, ppos);
-+	else
-+		return drm_fb_helper_cfb_read(info, buf, count, ppos);
-+}
-+
-+static ssize_t drm_fbdev_fb_write(struct fb_info *info, const char __user *buf,
-+				  size_t count, loff_t *ppos)
-+{
-+	struct drm_fb_helper *fb_helper = info->par;
-+	struct drm_client_buffer *buffer = fb_helper->buffer;
-+
-+	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-+		return drm_fb_helper_sys_write(info, buf, count, ppos);
-+	else
-+		return drm_fb_helper_cfb_write(info, buf, count, ppos);
-+}
-+
-+static void drm_fbdev_fb_fillrect(struct fb_info *info,
-+				  const struct fb_fillrect *rect)
-+{
-+	struct drm_fb_helper *fb_helper = info->par;
-+	struct drm_client_buffer *buffer = fb_helper->buffer;
-+
-+	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-+		drm_fb_helper_sys_fillrect(info, rect);
-+	else
-+		drm_fb_helper_cfb_fillrect(info, rect);
-+}
-+
-+static void drm_fbdev_fb_copyarea(struct fb_info *info,
-+				  const struct fb_copyarea *area)
-+{
-+	struct drm_fb_helper *fb_helper = info->par;
-+	struct drm_client_buffer *buffer = fb_helper->buffer;
-+
-+	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-+		drm_fb_helper_sys_copyarea(info, area);
-+	else
-+		drm_fb_helper_cfb_copyarea(info, area);
-+}
-+
-+static void drm_fbdev_fb_imageblit(struct fb_info *info,
-+				   const struct fb_image *image)
-+{
-+	struct drm_fb_helper *fb_helper = info->par;
-+	struct drm_client_buffer *buffer = fb_helper->buffer;
-+
-+	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-+		drm_fb_helper_sys_imageblit(info, image);
-+	else
-+		drm_fb_helper_cfb_imageblit(info, image);
-+}
-+
- static const struct fb_ops drm_fbdev_fb_ops = {
- 	.owner		= THIS_MODULE,
- 	DRM_FB_HELPER_DEFAULT_OPS,
-@@ -2034,11 +2223,11 @@ static const struct fb_ops drm_fbdev_fb_ops = {
- 	.fb_release	= drm_fbdev_fb_release,
- 	.fb_destroy	= drm_fbdev_fb_destroy,
- 	.fb_mmap	= drm_fbdev_fb_mmap,
--	.fb_read	= drm_fb_helper_sys_read,
--	.fb_write	= drm_fb_helper_sys_write,
--	.fb_fillrect	= drm_fb_helper_sys_fillrect,
--	.fb_copyarea	= drm_fb_helper_sys_copyarea,
--	.fb_imageblit	= drm_fb_helper_sys_imageblit,
-+	.fb_read	= drm_fbdev_fb_read,
-+	.fb_write	= drm_fbdev_fb_write,
-+	.fb_fillrect	= drm_fbdev_fb_fillrect,
-+	.fb_copyarea	= drm_fbdev_fb_copyarea,
-+	.fb_imageblit	= drm_fbdev_fb_imageblit,
- };
- 
- static struct fb_deferred_io drm_fbdev_defio = {
-diff --git a/include/drm/drm_mode_config.h b/include/drm/drm_mode_config.h
-index 5ffbb4ed5b35..ab424ddd7665 100644
---- a/include/drm/drm_mode_config.h
-+++ b/include/drm/drm_mode_config.h
-@@ -877,18 +877,6 @@ struct drm_mode_config {
- 	 */
- 	bool prefer_shadow_fbdev;
- 
--	/**
--	 * @fbdev_use_iomem:
--	 *
--	 * Set to true if framebuffer reside in iomem.
--	 * When set to true memcpy_toio() is used when copying the framebuffer in
--	 * drm_fb_helper.drm_fb_helper_dirty_blit_real().
--	 *
--	 * FIXME: This should be replaced with a per-mapping is_iomem
--	 * flag (like ttm does), and then used everywhere in fbdev code.
--	 */
--	bool fbdev_use_iomem;
--
- 	/**
- 	 * @quirk_addfb_prefer_xbgr_30bpp:
- 	 *
+  * dma_buf_map_is_equal - Compares two dma-buf mapping structures for equality
+  * @lhs:	The dma-buf mapping structure
 -- 
 2.28.0
 
