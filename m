@@ -2,44 +2,44 @@ Return-Path: <SRS0=vwyG=DW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96331C35257
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B042C352BC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 231C022255
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B65E222258
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 12:38:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vRyBBUcA"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 231C022255
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cAF5mreX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B65E222258
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=9QMxfaiuNYnjRmB+sntoMrEWSAZXtLHZg39Iwq9jIvI=; b=vRyBBUcAbJmfSTL5fYsz3Ctzz
-	ZbmPWkBCrmJjuBCuQfAqn2yn1v3iEHhFTbjuXOksVFlWB+mY0v9VIrFhO0N0ZcJWmELa0ZPcIy05L
-	aAgniFllZMESd8azd/NTHz+cYUaiSl/wAztk4qDzRxgyiX4r5fubCL5DKj0NDHJHEgHNqxs0yQfcI
-	DZPO5syIlHShJYAKE+5B7m+fvA988Me8mYTlCWCR5XZqwxMOHa8wibSa8bIT4f47rJgs45DpuESrI
-	SCgwOMt25uBnOiM1+N22mIIbT21N68d+qXQ4OKDFUgUOm465UM0haE/qPQrRh+leTv+K07GTK2Phs
-	Ssyhz4mhQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3DGNchWknkioXRLE887WTbRl5pyAPsxLLbAVqY9SO5k=; b=cAF5mreX+h739VZ+WSU68PHE65
+	V+obdehnDNzanP65LqGXWd42LTt1fsv6p7hAE5PyYGS10zLvu913C94w1eNd769vPjzXs6qRBqzjH
+	kjkp6dW/8a3ABCh86Ud2C9F/yR6f0Sw7YBbDO2Dk/OC5/ZzWlQaixUijovFu3mGXTS2fMZ7M1zW3b
+	sC6slla5yDkbbSGlcL+zXKKMC8sBpOqNI/PCVmiBrY852BeI6rt9YKGKJyoibbQ8z0cchJpTDNmGM
+	WgS3/VO+T4VMDk0qbTxKVpUDI8n0HhNvfSfsMQkSovd+WfdWPyMRmyf5zKreUlDyuIea8KDvcza8W
+	wIRfLG2Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kT2WT-0007mf-0J; Thu, 15 Oct 2020 12:38:21 +0000
+	id 1kT2WU-0007nY-ON; Thu, 15 Oct 2020 12:38:22 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kT2WN-0007hg-EE; Thu, 15 Oct 2020 12:38:16 +0000
+ id 1kT2WN-0007hd-D9; Thu, 15 Oct 2020 12:38:16 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id AB438B199;
+ by mx2.suse.de (Postfix) with ESMTP id AB403B195;
  Thu, 15 Oct 2020 12:38:12 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
@@ -56,17 +56,14 @@ To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
  sumit.semwal@linaro.org, emil.velikov@collabora.com, luben.tuikov@amd.com,
  apaneers@amd.com, linus.walleij@linaro.org, melissa.srw@gmail.com,
  chris@chris-wilson.co.uk, miaoqinglang@huawei.com
-Subject: [PATCH v4 01/10] drm/vram-helper: Remove invariant parameters from
- internal kmap function
-Date: Thu, 15 Oct 2020 14:37:57 +0200
-Message-Id: <20201015123806.32416-2-tzimmermann@suse.de>
+Subject: [PATCH v4 00/10] Support GEM object mappings from I/O memory
+Date: Thu, 15 Oct 2020 14:37:56 +0200
+Message-Id: <20201015123806.32416-1-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201015123806.32416-1-tzimmermann@suse.de>
-References: <20201015123806.32416-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201015_083815_739943_18860930 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20201015_083815_696650_E357E541 
+X-CRM114-Status: GOOD (  15.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,79 +77,133 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: linux-samsung-soc@vger.kernel.org, lima@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, Daniel Vetter <daniel.vetter@ffwll.ch>,
- etnaviv@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org, linaro-mm-sig@lists.linaro.org,
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
- Thomas Zimmermann <tzimmermann@suse.de>, xen-devel@lists.xenproject.org,
- spice-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
+ nouveau@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linaro-mm-sig@lists.linaro.org, linux-rockchip@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ xen-devel@lists.xenproject.org, spice-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The parameters map and is_iomem are always of the same value. Removed them
-to prepares the function for conversion to struct dma_buf_map.
+DRM's fbdev console uses regular load and store operations to update
+framebuffer memory. The bochs driver on sparc64 requires the use of
+I/O-specific load and store operations. We have a workaround, but need
+a long-term solution to the problem.
+
+This patchset changes GEM's vmap/vunmap interfaces to forward pointers
+of type struct dma_buf_map and updates the generic fbdev emulation to
+use them correctly. This enables I/O-memory operations on all framebuffers
+that require and support them.
+
+Patches #1 to #4 prepare VRAM helpers and drivers.
+
+Next is the update of the GEM vmap functions. Patch #5 adds vmap and vunmap
+that is usable with TTM-based GEM drivers, and patch #6 updates GEM's
+vmap/vunmap callback to forward instances of type struct dma_buf_map. While
+the patch touches many files throughout the DRM modules, the applied changes
+are mostly trivial interface fixes. Several TTM-based GEM drivers now use
+the new vmap code. Patch #7 updates GEM's internal vmap/vunmap functions to
+forward struct dma_buf_map.
+
+With struct dma_buf_map propagated through the layers, patches #9 and #10
+convert DRM clients and generic fbdev emulation to use it. Updating the
+fbdev framebuffer will select the correct functions, either for system or
+I/O memory.
 
 v4:
-	* don't check for !kmap->virtual; will always be false
+	* provide TTM vmap/vunmap plus GEM helpers and convert drivers
+	  over (Christian, Daniel)
+	* remove several empty functions
+	* more TODOs and documentation (Daniel)
 
-Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-Reviewed-by: Daniel Vetter <daniel.vetter@ffwll.ch>
----
- drivers/gpu/drm/drm_gem_vram_helper.c | 18 ++++--------------
- 1 file changed, 4 insertions(+), 14 deletions(-)
+v3:
+	* recreate the whole patchset on top of struct dma_buf_map
 
-diff --git a/drivers/gpu/drm/drm_gem_vram_helper.c b/drivers/gpu/drm/drm_gem_vram_helper.c
-index 3213429f8444..2d5ed30518f1 100644
---- a/drivers/gpu/drm/drm_gem_vram_helper.c
-+++ b/drivers/gpu/drm/drm_gem_vram_helper.c
-@@ -382,32 +382,22 @@ int drm_gem_vram_unpin(struct drm_gem_vram_object *gbo)
- }
- EXPORT_SYMBOL(drm_gem_vram_unpin);
- 
--static void *drm_gem_vram_kmap_locked(struct drm_gem_vram_object *gbo,
--				      bool map, bool *is_iomem)
-+static void *drm_gem_vram_kmap_locked(struct drm_gem_vram_object *gbo)
- {
- 	int ret;
- 	struct ttm_bo_kmap_obj *kmap = &gbo->kmap;
-+	bool is_iomem;
- 
- 	if (gbo->kmap_use_count > 0)
- 		goto out;
- 
--	if (kmap->virtual || !map)
--		goto out;
--
- 	ret = ttm_bo_kmap(&gbo->bo, 0, gbo->bo.num_pages, kmap);
- 	if (ret)
- 		return ERR_PTR(ret);
- 
- out:
--	if (!kmap->virtual) {
--		if (is_iomem)
--			*is_iomem = false;
--		return NULL; /* not mapped; don't increment ref */
--	}
- 	++gbo->kmap_use_count;
--	if (is_iomem)
--		return ttm_kmap_obj_virtual(kmap, is_iomem);
--	return kmap->virtual;
-+	return ttm_kmap_obj_virtual(kmap, &is_iomem);
- }
- 
- static void drm_gem_vram_kunmap_locked(struct drm_gem_vram_object *gbo)
-@@ -452,7 +442,7 @@ void *drm_gem_vram_vmap(struct drm_gem_vram_object *gbo)
- 	ret = drm_gem_vram_pin_locked(gbo, 0);
- 	if (ret)
- 		goto err_ttm_bo_unreserve;
--	base = drm_gem_vram_kmap_locked(gbo, true, NULL);
-+	base = drm_gem_vram_kmap_locked(gbo);
- 	if (IS_ERR(base)) {
- 		ret = PTR_ERR(base);
- 		goto err_drm_gem_vram_unpin_locked;
+v2:
+	* RFC patchset
+
+Thomas Zimmermann (10):
+  drm/vram-helper: Remove invariant parameters from internal kmap
+    function
+  drm/cma-helper: Remove empty drm_gem_cma_prime_vunmap()
+  drm/etnaviv: Remove empty etnaviv_gem_prime_vunmap()
+  drm/exynos: Remove empty exynos_drm_gem_prime_{vmap,vunmap}()
+  drm/ttm: Add vmap/vunmap to TTM and TTM GEM helpers
+  drm/gem: Use struct dma_buf_map in GEM vmap ops and convert GEM
+    backends
+  drm/gem: Update internal GEM vmap/vunmap interfaces to use struct
+    dma_buf_map
+  drm/gem: Store client buffer mappings as struct dma_buf_map
+  dma-buf-map: Add memcpy and pointer-increment interfaces
+  drm/fb_helper: Support framebuffers in I/O memory
+
+ Documentation/gpu/todo.rst                  |  37 ++-
+ drivers/gpu/drm/Kconfig                     |   2 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c |  36 ---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.h |   2 -
+ drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c     |   5 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_object.h  |   1 -
+ drivers/gpu/drm/ast/ast_cursor.c            |  27 ++-
+ drivers/gpu/drm/ast/ast_drv.h               |   7 +-
+ drivers/gpu/drm/bochs/bochs_kms.c           |   1 -
+ drivers/gpu/drm/drm_client.c                |  38 ++--
+ drivers/gpu/drm/drm_fb_helper.c             | 238 ++++++++++++++++++--
+ drivers/gpu/drm/drm_gem.c                   |  29 ++-
+ drivers/gpu/drm/drm_gem_cma_helper.c        |  27 +--
+ drivers/gpu/drm/drm_gem_shmem_helper.c      |  48 ++--
+ drivers/gpu/drm/drm_gem_ttm_helper.c        |  38 ++++
+ drivers/gpu/drm/drm_gem_vram_helper.c       | 117 +++++-----
+ drivers/gpu/drm/drm_internal.h              |   5 +-
+ drivers/gpu/drm/drm_prime.c                 |  14 +-
+ drivers/gpu/drm/etnaviv/etnaviv_drv.h       |   3 +-
+ drivers/gpu/drm/etnaviv/etnaviv_gem.c       |   1 -
+ drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c |  12 +-
+ drivers/gpu/drm/exynos/exynos_drm_gem.c     |  12 -
+ drivers/gpu/drm/exynos/exynos_drm_gem.h     |   2 -
+ drivers/gpu/drm/lima/lima_gem.c             |   6 +-
+ drivers/gpu/drm/lima/lima_sched.c           |  11 +-
+ drivers/gpu/drm/mgag200/mgag200_mode.c      |  10 +-
+ drivers/gpu/drm/nouveau/Kconfig             |   1 +
+ drivers/gpu/drm/nouveau/nouveau_bo.h        |   2 -
+ drivers/gpu/drm/nouveau/nouveau_gem.c       |   6 +-
+ drivers/gpu/drm/nouveau/nouveau_gem.h       |   2 -
+ drivers/gpu/drm/nouveau/nouveau_prime.c     |  20 --
+ drivers/gpu/drm/panfrost/panfrost_perfcnt.c |  14 +-
+ drivers/gpu/drm/qxl/qxl_display.c           |  11 +-
+ drivers/gpu/drm/qxl/qxl_draw.c              |  14 +-
+ drivers/gpu/drm/qxl/qxl_drv.h               |  11 +-
+ drivers/gpu/drm/qxl/qxl_object.c            |  31 ++-
+ drivers/gpu/drm/qxl/qxl_object.h            |   2 +-
+ drivers/gpu/drm/qxl/qxl_prime.c             |  12 +-
+ drivers/gpu/drm/radeon/radeon.h             |   1 -
+ drivers/gpu/drm/radeon/radeon_gem.c         |   7 +-
+ drivers/gpu/drm/radeon/radeon_prime.c       |  20 --
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c |  22 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.h |   4 +-
+ drivers/gpu/drm/tiny/cirrus.c               |  10 +-
+ drivers/gpu/drm/tiny/gm12u320.c             |  10 +-
+ drivers/gpu/drm/ttm/ttm_bo_util.c           |  72 ++++++
+ drivers/gpu/drm/udl/udl_modeset.c           |   8 +-
+ drivers/gpu/drm/vboxvideo/vbox_mode.c       |  11 +-
+ drivers/gpu/drm/vc4/vc4_bo.c                |   7 +-
+ drivers/gpu/drm/vc4/vc4_drv.h               |   2 +-
+ drivers/gpu/drm/vgem/vgem_drv.c             |  16 +-
+ drivers/gpu/drm/xen/xen_drm_front_gem.c     |  18 +-
+ drivers/gpu/drm/xen/xen_drm_front_gem.h     |   6 +-
+ include/drm/drm_client.h                    |   7 +-
+ include/drm/drm_gem.h                       |   5 +-
+ include/drm/drm_gem_cma_helper.h            |   3 +-
+ include/drm/drm_gem_shmem_helper.h          |   4 +-
+ include/drm/drm_gem_ttm_helper.h            |   6 +
+ include/drm/drm_gem_vram_helper.h           |  14 +-
+ include/drm/drm_mode_config.h               |  12 -
+ include/drm/ttm/ttm_bo_api.h                |  28 +++
+ include/linux/dma-buf-map.h                 |  92 +++++++-
+ 62 files changed, 817 insertions(+), 423 deletions(-)
+
 -- 
 2.28.0
 
