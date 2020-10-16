@@ -1,94 +1,84 @@
-Return-Path: <SRS0=vwyG=DW=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=QPul=DX=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0EBF7C433DF
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 21:37:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 79183C433DF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 08:50:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 534AB20759
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Oct 2020 21:37:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D7F7520848
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 08:50:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="X9CbgZHP";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="WsvessV7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 534AB20759
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s8G1X2xO";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="JA1GNd8+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D7F7520848
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TrMkc0F8iptfvxrlYpeksIHxFNpb4fbJoGnnFsKNlHQ=; b=X9CbgZHPW9q0jMnL3PcoA/V25
-	aglvimZW2E6giCmkAfG7xtkkwzp1rFWK+L3+mDHq3/7AOUAlIswLycQ4ujlv06d29LeaIq3Z2RtoP
-	cBvNBAaG9Ujl1IJq5gCT5wefwwZDvYkqwOP1ih5IAcYvtkwynlHMeJnA3OULa3hM5pJUue4XdzvWb
-	Hmd4rRk1pY2N/Lc8WfXi1vWGEXwl5x0hLh2tCgwqTX5oJZ9FQrac00YKiKNUgJaBDXohUu4OHxXhr
-	3ZliYd6mB7r6lYnBZFo87CVE8YNnodAaisW+ZDTn2IvKTFLiALd67opxkrkLmHfBaeOV1UqCOC9mh
-	6wzwYZIJg==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=eiZE6GW5FC7mIjecYo4fHdwbck/75NvHJKMvF5Pemgs=; b=s8G1X2xOLgp30wqsiMOF47Pg30
+	il3ckkvjtgLVjOFsLSjjTeN3RRrOBbkLqiRgPVD6CRUY1XfrB+QBgRWS6jlDalNmpWgox9SAEMr2C
+	qsHHKH33pTKM6gc94/tCb2EtEw11XHUGMSONzKmcmOz5f/t5YtduSrLwWnrt05Fa4AzGC7/AXaMPA
+	anCO7AYBiZdblkxxDk+5URio/6JAcKfgitGBJHBMrFbwYf53DmhKJnSVgXRFBmrlhp+ICUTUVR2fh
+	AzZFsqB6GpB21Mh8TkiE9ZAGiXkoqFh4qWoXPG3fzxbb7ppg9Ko53AQRgfbzs16efJMD+rqTlXHO0
+	RRIyjuRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kTAwO-0006yA-0d; Thu, 15 Oct 2020 21:37:40 +0000
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
+	id 1kTLRW-00056y-S4; Fri, 16 Oct 2020 08:50:30 +0000
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kTAwL-0006xn-Jq
- for linux-rockchip@lists.infradead.org; Thu, 15 Oct 2020 21:37:38 +0000
-Received: by mail-ej1-x644.google.com with SMTP id e22so235480ejr.4
- for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2020 14:37:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=shNugDWCSFxMFaQhudWs8qBWQPZ07aTny77+Ie1FHlk=;
- b=WsvessV78yuDktprTp/4iqa3Adv1XtNl2N/v19ZJnZoqVtqW3R89jenV6efR955q/r
- w/t7xoaoNh7s+6TICZL6hGqJEjkuoQuGozFyTv0FDKf47JoY98kaBG86Az0J9yrlcxxG
- WWCFFWYtDAiJztGSud9FB31svTcPtnbTB6Mhc=
+ id 1kTLRS-000563-H0; Fri, 16 Oct 2020 08:50:27 +0000
+Received: by mail-lj1-x243.google.com with SMTP id c21so1560773ljn.13;
+ Fri, 16 Oct 2020 01:50:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=l2g0WanDfq/KDOh+/VcHyYkZcE8dM9/DlazBWuJO0Zw=;
+ b=JA1GNd8+HG69mXKrInW+0dljGSbVqvNVsQIb2Q4Wl6dfWRYeempCQLpYb9LCCx0tF/
+ M//4FdO2QES7EtI0dmhPQ5LSEOjx95yO8c8ekXQETgalMH9LDJJYMryKl7NQY+wTG5P3
+ Z3pwCjpROLpJoK87+6xDJczYQvv1oZgEbOt5G8VxPFs45ijMGsNewG+SUAGA2oWWhOEg
+ 92Jl18IA1nE773vlSc40rcMiXogokilNW+h5C0A2yh2aFVlfYIbztIhTmG8aiZO7rErV
+ tpHdPSoVBgF27FnMYuUMLviVlfDXNiiunM4jihEFO01voqCV2NAZ4zeKCMGegQKSYFTL
+ fx8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=shNugDWCSFxMFaQhudWs8qBWQPZ07aTny77+Ie1FHlk=;
- b=lxiJZM/GxOWQGsosx731Wj+jtSnH2NNCcmChtkf9hW1YHvkriSvsa7XP7fFH7S2LJO
- OQfQyFCDlNX9UJF6FEiATo/1CdQWZCAdhqsrvw/qPmJPYgUc5k/NJiAc/rzDK8IxDGs/
- X7CFMz4ati+STfT05wAIHhRrkGWw9gbalC0cJ1j3jeDcTFjtK8O296GaTxdvBdVbYjmG
- YSLLoCAz2Fm4FNupIbw2QVxGrseL7qtUvZSgb8z/jUEg8ZCyoI686SCFPHReENPsTBlF
- rjBZWmGLrMWfb+JheFy3i1295oVxWhoQf5k0JzsL3PEfiLCxWOvz+feP4FPJsaTD4Y1y
- nJAg==
-X-Gm-Message-State: AOAM530dPR0ha8ySduF6MsbZ9tNCqm3OwTJY6HYWFSuNcVicc33ZSzbI
- hMBnrulTmrXDTQBHido5/jjAj4niIcHatg==
-X-Google-Smtp-Source: ABdhPJwYe5sAb5SRJOXRshgPmyLbRneapsoWAIYzj7NnYtVNYYGa1Yp0OOfiBIaUZwRpGeCdmKe9fg==
-X-Received: by 2002:a17:906:5a82:: with SMTP id
- l2mr408282ejq.240.1602797855059; 
- Thu, 15 Oct 2020 14:37:35 -0700 (PDT)
-Received: from mail-ej1-f49.google.com (mail-ej1-f49.google.com.
- [209.85.218.49])
- by smtp.gmail.com with ESMTPSA id si13sm246659ejb.49.2020.10.15.14.37.34
- for <linux-rockchip@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Oct 2020 14:37:34 -0700 (PDT)
-Received: by mail-ej1-f49.google.com with SMTP id ce10so229452ejc.5
- for <linux-rockchip@lists.infradead.org>; Thu, 15 Oct 2020 14:37:34 -0700 (PDT)
-X-Received: by 2002:a50:e40b:: with SMTP id d11mr491296edm.198.1602797381996; 
- Thu, 15 Oct 2020 14:29:41 -0700 (PDT)
-MIME-Version: 1.0
-References: <20201013080103.410133-1-amstan@chromium.org>
- <20201013010056.v2.2.I96b8d872ec51171f19274e43e96cadc092881271@changeid>
- <20201014141946.mkrvpkrttucffkhj@holly.lan>
-In-Reply-To: <20201014141946.mkrvpkrttucffkhj@holly.lan>
-From: Alexandru M Stan <amstan@chromium.org>
-Date: Thu, 15 Oct 2020 14:29:05 -0700
-X-Gmail-Original-Message-ID: <CAHNYxRx3J7XUE-hWa8-6_bOePsw1oeY9uuuehy=yCxN2RyqsjQ@mail.gmail.com>
-Message-ID: <CAHNYxRx3J7XUE-hWa8-6_bOePsw1oeY9uuuehy=yCxN2RyqsjQ@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] ARM: dts: rockchip: veyron: Remove 0 point from
- brightness-levels
-To: Daniel Thompson <daniel.thompson@linaro.org>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=l2g0WanDfq/KDOh+/VcHyYkZcE8dM9/DlazBWuJO0Zw=;
+ b=kMJCk6QnCkkDFZMpUpaCtwr/45lKijklCKtjoAJeWCqgm8F9HCaGAXERFw8pO8f+s6
+ wx7zCa3mkQhK+/d4Vyp8TcoWYWW1OXtsxPG8I7b7dTQb4Nlf+3TprVJrUOtf4X4TA1D6
+ Ge69bGZ0UETQFzKXeatol1nhmolNL4YTEx78LBC8NR4ELhBtLLLclx/rdy8I/Rlahx4q
+ 6N/MHojMrh545y1US5xeWWFdezrtQr/FVGOdi9hABove0i3GqCXCV4zXzbwxUGwdj27s
+ GYgZi4/f5WBNTqR7H4z9rLFociA/f5qaMwBh2aHqrR6isgKHVtS8NU42olHAAXQz1/Rw
+ fI4g==
+X-Gm-Message-State: AOAM532UT8bwY41GM7YBdoTMAJ8ma40WnSuC/L2KnRQvzirCINI49ThC
+ GtnjTgZBm6nlCqv5SzG3DeY=
+X-Google-Smtp-Source: ABdhPJwdW1Qe4VdACE8m9bGNR8Vib87O4M73lJOUO9VrfM5U5CqccUuVSr6SJSEuRzCSoN2I39zj2g==
+X-Received: by 2002:a2e:b5c1:: with SMTP id g1mr1014660ljn.305.1602838224050; 
+ Fri, 16 Oct 2020 01:50:24 -0700 (PDT)
+Received: from ubuntu-18.lintech.local ([80.87.144.137])
+ by smtp.gmail.com with ESMTPSA id 62sm607435lfk.47.2020.10.16.01.50.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 16 Oct 2020 01:50:23 -0700 (PDT)
+From: Alexander Kochetkov <al.kochet@gmail.com>
+To: Mark Brown <broonie@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] spi: rockchip: enable autosuspend feature
+Date: Fri, 16 Oct 2020 11:50:14 +0300
+Message-Id: <20201016085014.31667-1-al.kochet@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201015_173737_698516_B7B11FA9 
-X-CRM114-Status: GOOD (  20.20  )
+X-CRM114-CacheID: sfid-20201016_045026_674888_46471DD3 
+X-CRM114-Status: GOOD (  11.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,61 +91,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Douglas Anderson <dianders@chromium.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Jingoo Han <jingoohan1@gmail.com>, Andy Gross <agross@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Bjorn Andersson <bjorn.andersson@linaro.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Lee Jones <lee.jones@linaro.org>, Matthias Kaehlcke <mka@chromium.org>,
- linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org,
+ Alexander Kochetkov <al.kochet@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-spi@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 14, 2020 at 7:19 AM Daniel Thompson
-<daniel.thompson@linaro.org> wrote:
->
-> On Tue, Oct 13, 2020 at 01:01:02AM -0700, Alexandru Stan wrote:
-> > After the "PWM backlight interpolation adjustments" patches, the
-> > backlight interpolation works a little differently. The way these
-> > dts files were working before was relying on a bug (IMHO).
-> >
-> > Remove the 0-3 range since otherwise we would have a 252 long
-> > interpolation that would slowly go between 0 and 3, looking really bad
-> > in userspace.
-> >
-> > We don't need the 0% point, userspace seems to handle this just fine
-> > because it uses the bl_power property to turn off the display.
-> >
-> > Signed-off-by: Alexandru Stan <amstan@chromium.org>
->
-> Acked-by: Daniel Thompson <daniel.thompson@linaro.org>
+If SPI is used for periodic polling any sensor, significant delays
+sometimes appear. Switching on module clocks during resume lead to delays.
+Enabling autosuspend mode causes the controller to not suspend between
+SPI transfers and the delays disappear.
 
-Thank you!
+Signed-off-by: Alexander Kochetkov <al.kochet@gmail.com>
+---
+ drivers/spi/spi-rockchip.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
->
-> Note also shouldn't this be patch 1 of the set. AFAICT it makes sense
-> whether or not the interpolation algorithm is changed.
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 2cc6d9951b52..3e77b1a79bc8 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -157,6 +157,8 @@
+ 
+ #define ROCKCHIP_SPI_MAX_CS_NUM			2
+ 
++#define ROCKCHIP_AUTOSUSPEND_TIMEOUT		2000
++
+ struct rockchip_spi {
+ 	struct device *dev;
+ 
+@@ -670,6 +672,8 @@ static int rockchip_spi_probe(struct platform_device *pdev)
+ 		goto err_disable_spiclk;
+ 	}
+ 
++	pm_runtime_set_autosuspend_delay(&pdev->dev, ROCKCHIP_AUTOSUSPEND_TIMEOUT);
++	pm_runtime_use_autosuspend(&pdev->dev);
+ 	pm_runtime_set_active(&pdev->dev);
+ 	pm_runtime_enable(&pdev->dev);
+ 
+-- 
+2.17.1
 
-Yeah, I guess it could be. Sorry I didn't think of it that way before,
-I'm used to landing things in a group.
-
-In particular on veyron I assume it will almost be a noop without
-having my driver patch (especially with the findings of 0% not being
-that important).
-
-Feel free to land this independently.
-
->
->
-> Daniel.
-
-Alexandru Stan (amstan)
 
 _______________________________________________
 Linux-rockchip mailing list
