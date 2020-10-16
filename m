@@ -2,67 +2,65 @@ Return-Path: <SRS0=QPul=DX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21C4EC433E7
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 12:49:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B57FC433DF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 14:28:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5856F207E8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 12:49:17 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id CF72F20866
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 14:28:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="A24vWZXQ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5856F207E8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2pMVYAgH"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CF72F20866
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eLVmUhKA1ug6TJKMLOY9mscfZicaA0z5TihOYzy0eIE=; b=A24vWZXQsCxHAr/wuOmud9vU/
-	3x2lmfP870QSbuPvsndusGbyd8UrA6xPExk4dzNLylzzuhPXxFQtf1UEikTsgUAjlhYRIkQBhirPZ
-	ORXLACCGy/yy1Y5n3zgpCKXF84qsvy9n/VXLcdlG9gQERbC6Ye3bxqPCbhXWBUxlhGMIfHRNZ28qG
-	seyudPOgKQkphJTswkgGlYrczflUdushlryl1pjjfnwMsaFS3br0S3XwRQ0aH5P+ZIqGUxAzpwWpm
-	j1RBBgFwRre7JjSQ+8hs4H17LjPz0GOv0uCUlBFpbWIppP/HX2zA7vhKUcfdghHdDKz42r2KMf2KJ
-	7cqDhOIwA==;
+	 bh=I5mxjgEia5BM6VnLl1v4XehaEHLtaWeqa5tuSrOGyj8=; b=2pMVYAgHwoD0brfMOKuAviooF
+	tvLXScWOIUrhxdAfeLiyTs8N1ZuACX552F8qccKiH1oWZ4BscYap8u2XMSOmKoZVUgabd488sglTh
+	z2AWBrFjwwdmMCfOtrA6waXZ3aj0yBGQusJDaOaTHb3gdpOP82MdNMHqRAebiJutYnW9HUe7lge3W
+	Y0sD6R5w7IgLbr5Iz2Pq2JHi0Ra5Y9uRR98bvTa9OOJ9S7UZmB8Sxa/4B0WsQ96fXkV1CSE0/Sazh
+	2pRs5PjC0tuJ1clQ7tRXXOD9Fc+qBBUr8phylMBYBvh8mLOY9KlVpiWXF5nTnUEIhabJyrK2WWPCX
+	Ey17iwoSQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kTPAO-0003AU-Eg; Fri, 16 Oct 2020 12:49:04 +0000
-Received: from asavdk4.altibox.net ([109.247.116.15])
+	id 1kTQic-0006a3-0N; Fri, 16 Oct 2020 14:28:30 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kTPAK-00039w-Mr; Fri, 16 Oct 2020 12:49:02 +0000
-Received: from ravnborg.org (unknown [188.228.123.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by asavdk4.altibox.net (Postfix) with ESMTPS id 383A2806F9;
- Fri, 16 Oct 2020 14:48:52 +0200 (CEST)
-Date: Fri, 16 Oct 2020 14:48:50 +0200
-From: Sam Ravnborg <sam@ravnborg.org>
-To: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v4 10/10] drm/fb_helper: Support framebuffers in I/O memory
-Message-ID: <20201016124850.GA1174599@ravnborg.org>
-References: <20201015123806.32416-1-tzimmermann@suse.de>
- <20201015123806.32416-11-tzimmermann@suse.de>
- <20201016120347.GB1125266@ravnborg.org>
- <20201016141942.111e17f3@linux-uq9g>
+ id 1kTQiZ-0006ZL-6c
+ for linux-rockchip@lists.infradead.org; Fri, 16 Oct 2020 14:28:28 +0000
+Received: from [IPv6:2003:c7:cf43:5b00:30b6:b06:27e6:9e70]
+ (p200300c7cf435b0030b60b0627e69e70.dip0.t-ipconnect.de
+ [IPv6:2003:c7:cf43:5b00:30b6:b06:27e6:9e70])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 2D63B1F461D4;
+ Fri, 16 Oct 2020 15:28:24 +0100 (BST)
+Subject: Re: [PATCH] media: staging: rkisp1: cap: refactor enable/disable
+ stream to allow multistreaming
+To: Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org
+References: <20201015195746.264722-1-helen.koike@collabora.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <8b31c5a3-9b01-9536-384a-b06d9a0a2e1a@collabora.com>
+Date: Fri, 16 Oct 2020 16:28:21 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201016141942.111e17f3@linux-uq9g>
-X-CMAE-Score: 0
-X-CMAE-Analysis: v=2.3 cv=fu7ymmwf c=1 sm=1 tr=0
- a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
- a=8nJEP1OIZ-IA:10 a=7gkXJVJtAAAA:8 a=6Hpfs63HWkxrz3fWGNMA:9
- a=w4pgIJ6L-nyCBc2a:21 a=gikFlJ38tUkSyios:21 a=wPNLvfGTeEIA:10
- a=qfUslh1TxfEA:10 a=E9Po1WZjFZOl8hwRPBS3:22
+In-Reply-To: <20201015195746.264722-1-helen.koike@collabora.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201016_084901_105951_B133D327 
-X-CRM114-Status: GOOD (  47.35  )
+X-CRM114-CacheID: sfid-20201016_102827_421984_551BF79D 
+X-CRM114-Status: GOOD (  51.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,535 +73,423 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: luben.tuikov@amd.com, heiko@sntech.de, airlied@linux.ie,
- nouveau@lists.freedesktop.org, linus.walleij@linaro.org,
- dri-devel@lists.freedesktop.org, chris@chris-wilson.co.uk,
- melissa.srw@gmail.com, eric@anholt.net, ray.huang@amd.com, kraxel@redhat.com,
- sumit.semwal@linaro.org, emil.velikov@collabora.com, robh@kernel.org,
- linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
- lima@lists.freedesktop.org, oleksandr_andrushchenko@epam.com, krzk@kernel.org,
- steven.price@arm.com, linux-rockchip@lists.infradead.org, kgene@kernel.org,
- alyssa.rosenzweig@collabora.com, linux+etnaviv@armlinux.org.uk,
- spice-devel@lists.freedesktop.org, bskeggs@redhat.com,
- maarten.lankhorst@linux.intel.com, etnaviv@lists.freedesktop.org,
- mripard@kernel.org, inki.dae@samsung.com, hdegoede@redhat.com,
- christian.gmeiner@gmail.com, xen-devel@lists.xenproject.org,
- virtualization@lists.linux-foundation.org, sean@poorly.run, apaneers@amd.com,
- linux-arm-kernel@lists.infradead.org, linaro-mm-sig@lists.linaro.org,
- amd-gfx@lists.freedesktop.org, tomeu.vizoso@collabora.com,
- sw0312.kim@samsung.com, hjc@rock-chips.com, kyungmin.park@samsung.com,
- miaoqinglang@huawei.com, yuq825@gmail.com, daniel@ffwll.ch,
- alexander.deucher@amd.com, linux-media@vger.kernel.org,
- christian.koenig@amd.com, l.stach@pengutronix.de
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, tfiga@chromium.org,
+ hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
+ laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com,
+ mchehab@kernel.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 16, 2020 at 02:19:42PM +0200, Thomas Zimmermann wrote:
-> Hi
-> =
+Hi,
 
-> On Fri, 16 Oct 2020 14:03:47 +0200 Sam Ravnborg <sam@ravnborg.org> wrote:
-> =
+Am 15.10.20 um 21:57 schrieb Helen Koike:
+> Allow streaming from self picture path and main picture path at the same
+> time.
+> 
+> Take care for s_stream() callbacks to not be called twice.
+> When starting a stream, s_stream(true) shouldn't be called for the isp
+> and the sensor if the other stream is already enabled (since it was
+> already called).
+> When stopping a stream, s_stream(false) shouldn't be called for isp and
+> the sensor if the other stream is still enabled.
+> 
+> Remove the callback function scheme for navigating through the topology,
+> simplifying the code, improving readability, while calling
+> media_pipeline_{start,stop}() in the right order.
+> 
+> Remove multistreaming item from the TODO list.
+> 
+> Signed-off-by: Helen Koike <helen.koike@collabora.com>
+> 
+> ---
+> Hello,
+> 
+> Since we didn't reach an agreement on the helpers in the core[1], I'm
+> sending this patch to fix this limitation only for rkisp1.
+> 
+> [1] https://patchwork.linuxtv.org/project/linux-media/cover/20200415013044.1778572-1-helen.koike@collabora.com/
+> 
+> If we decide to add the helpers in the future, we can clean up drivers
+> even more, but I don't want to block this feature.
+> 
+> Overview of the patch:
+> ======================
+> 
+> * Rename rkisp1_stream_{start,stop}() to
+>    rkisp1_cap_stream_{enable,disable}() to clarify the difference between
+>    other stream enable/disable functions
+> 
+> * Implement rkisp1_pipeline_stream_{enable,disable}() to replace
+>    rkisp1_pipeline_{enable,disable}_cb() and rkisp1_pipeline_sink_walk(),
+>    which were removed.
+> 
+> * Call rkisp1_cap_stream_{enable,disable}() from
+>    rkisp1_pipeline_stream_{enable,disable}() for better
+>    unwind handling and function name semantics.
+> 
+> * Call media_pipeline_{start,stop}() in the right order.
+> 
+> * Remove item from TODO list (I also reviewed the use of the
+>    is_streaming var in the code and lgtm).
+> 
+> This patch was tested on rockpi4 board with:
+> ============================================
+> 
+> "media-ctl" "-d" "platform:rkisp1" "-r"
+> "media-ctl" "-d" "platform:rkisp1" "-l" "'imx219 4-0010':0 -> 'rkisp1_isp':0 [1]"
+> "media-ctl" "-d" "platform:rkisp1" "-l" "'rkisp1_isp':2 -> 'rkisp1_resizer_selfpath':0 [1]"
+> "media-ctl" "-d" "platform:rkisp1" "-l" "'rkisp1_isp':2 -> 'rkisp1_resizer_mainpath':0 [1]"
+> 
+> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"imx219 4-0010":0 [fmt:SRGGB10_1X10/1640x1232]'
+> 
+> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_isp":0 [fmt:SRGGB10_1X10/1640x1232 crop: (0,0)/1600x1200]'
+> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_isp":2 [fmt:YUYV8_2X8/1600x1200 crop: (0,0)/1500x1100]'
+> 
+> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_selfpath":0 [fmt:YUYV8_2X8/1500x1100 crop: (300,400)/1400x1000]'
+> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_selfpath":1 [fmt:YUYV8_2X8/900x800]'
+> 
+> "v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "-v" "width=900,height=800,"
+> "v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "-v" "pixelformat=422P"
+> 
+> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_mainpath":0 [fmt:YUYV8_2X8/1500x1100 crop: (300,400)/1400x1000]'
+> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_mainpath":1 [fmt:YUYV8_2X8/900x800]'
+> 
+> "v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_mainpath" "-v" "width=900,height=800,"
+> "v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_mainpath" "-v" "pixelformat=422P"
+> 
+> sleep 1
+> 
+> time v4l2-ctl "-z" "platform:rkisp1" "-d" "rkisp1_mainpath" "--stream-mmap" "--stream-count" "100" &
+> time v4l2-ctl "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "--stream-mmap" "--stream-count" "100" &
+> 
+> wait
+> echo "Completed"
+> 
+> Thanks
+> Helen
+> ---
+>   drivers/staging/media/rkisp1/TODO             |   3 -
+>   drivers/staging/media/rkisp1/rkisp1-capture.c | 227 +++++++++---------
+>   2 files changed, 113 insertions(+), 117 deletions(-)
+> 
+> diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
+> index e7c8398fc2cef..a2dd0ad951c25 100644
+> --- a/drivers/staging/media/rkisp1/TODO
+> +++ b/drivers/staging/media/rkisp1/TODO
+> @@ -1,9 +1,6 @@
+>   * Fix pad format size for statistics and parameters entities.
+>   * Fix checkpatch errors.
+>   * Add uapi docs. Remember to add documentation of how quantization is handled.
+> -* streaming paths (mainpath and selfpath) check if the other path is streaming
+> -in several places of the code, review this, specially that it doesn't seem it
+> -supports streaming from both paths at the same time.
+>   
+>   NOTES:
+>   * All v4l2-compliance test must pass.
+> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> index b6f497ce3e95c..254936873c6c1 100644
+> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+> @@ -830,71 +830,43 @@ static void rkisp1_return_all_buffers(struct rkisp1_capture *cap,
+>   }
+>   
+>   /*
+> - * rkisp1_pipeline_sink_walk - Walk through the pipeline and call cb
+> - * @from: entity at which to start pipeline walk
+> - * @until: entity at which to stop pipeline walk
+> - *
+> - * Walk the entities chain starting at the pipeline video node and stop
+> - * all subdevices in the chain.
+> - *
+> - * If the until argument isn't NULL, stop the pipeline walk when reaching the
+> - * until entity. This is used to disable a partially started pipeline due to a
+> - * subdev start error.
+> + * Most of registers inside rockchip ISP1 have shadow register since
+> + * they must be not be changed during processing a frame.
+> + * Usually, each sub-module updates its shadow register after
+> + * processing the last pixel of a frame.
+>    */
+> -static int rkisp1_pipeline_sink_walk(struct media_entity *from,
+> -				     struct media_entity *until,
+> -				     int (*cb)(struct media_entity *from,
+> -					       struct media_entity *curr))
+> +static void rkisp1_cap_stream_enable(struct rkisp1_capture *cap)
+>   {
+> -	struct media_entity *entity = from;
+> -	struct media_pad *pad;
+> -	unsigned int i;
+> -	int ret;
+> -
+> -	while (1) {
+> -		pad = NULL;
+> -		/* Find remote source pad */
+> -		for (i = 0; i < entity->num_pads; i++) {
+> -			struct media_pad *spad = &entity->pads[i];
+> -
+> -			if (!(spad->flags & MEDIA_PAD_FL_SINK))
+> -				continue;
+> -			pad = media_entity_remote_pad(spad);
+> -			if (pad && is_media_entity_v4l2_subdev(pad->entity))
+> -				break;
+> -		}
+> -		if (!pad || !is_media_entity_v4l2_subdev(pad->entity))
+> -			break;
+> +	struct rkisp1_device *rkisp1 = cap->rkisp1;
+> +	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
+>   
+> -		entity = pad->entity;
+> -		if (entity == until)
+> -			break;
+> +	cap->ops->set_data_path(cap);
+> +	cap->ops->config(cap);
+>   
+> -		ret = cb(from, entity);
+> -		if (ret)
+> -			return ret;
+> +	/* Setup a buffer for the next frame */
+> +	spin_lock_irq(&cap->buf.lock);
+> +	rkisp1_set_next_buf(cap);
+> +	cap->ops->enable(cap);
+> +	/* It's safe to config ACTIVE and SHADOW regs for the
+> +	 * first stream. While when the second is starting, do NOT
+> +	 * force update because it also update the first one.
+> +	 *
+> +	 * The latter case would drop one more buf(that is 2) since
+> +	 * there's not buf in shadow when the second FE received. This's
+> +	 * also required because the second FE maybe corrupt especially
+> +	 * when run at 120fps.
+> +	 */
+> +	if (!other->is_streaming) {
+> +		/* force cfg update */
+> +		rkisp1_write(rkisp1,
+> +			     RKISP1_CIF_MI_INIT_SOFT_UPD, RKISP1_CIF_MI_INIT);
+> +		rkisp1_set_next_buf(cap);
+>   	}
+> -
+> -	return 0;
+> -}
+> -
+> -static int rkisp1_pipeline_disable_cb(struct media_entity *from,
+> -				      struct media_entity *curr)
+> -{
+> -	struct v4l2_subdev *sd = media_entity_to_v4l2_subdev(curr);
+> -
+> -	return v4l2_subdev_call(sd, video, s_stream, false);
+> -}
+> -
+> -static int rkisp1_pipeline_enable_cb(struct media_entity *from,
+> -				     struct media_entity *curr)
+> -{
+> -	struct v4l2_subdev *sd = media_entity_to_v4l2_subdev(curr);
+> -
+> -	return v4l2_subdev_call(sd, video, s_stream, true);
+> +	spin_unlock_irq(&cap->buf.lock);
+> +	cap->is_streaming = true;
+>   }
+>   
+> -static void rkisp1_stream_stop(struct rkisp1_capture *cap)
+> +static void rkisp1_cap_stream_disable(struct rkisp1_capture *cap)
+>   {
+>   	int ret;
+>   
+> @@ -911,6 +883,81 @@ static void rkisp1_stream_stop(struct rkisp1_capture *cap)
+>   	}
+>   }
+>   
+> +/*
+> + * rkisp1_pipeline_stream_disable - disable nodes in the pipeline
+> + *
+> + * Call s_stream(false) in the reverse order from
+> + * rkisp1_pipeline_stream_enable() and disable the DMA engine.
+> + * Should be called before media_pipeline_stop()
+> + */
+> +static void rkisp1_pipeline_stream_disable(struct rkisp1_capture *cap)
+> +	__must_hold(&cap->rkisp1->stream_lock)
+> +{
+> +	struct rkisp1_device *rkisp1 = cap->rkisp1;
+> +
+> +	rkisp1_cap_stream_disable(cap);
+> +
+> +	/*
+> +	 * If the other capture is streaming, isp and sensor nodes shouldn't
+> +	 * be disabled, skip them.
+> +	 */
+> +	if (rkisp1->pipe.streaming_count < 2) {
+> +		v4l2_subdev_call(rkisp1->active_sensor->sd, video, s_stream,
+> +				 false);
+> +		v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, false);
+> +	}
+> +
+> +	v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video, s_stream,
+> +			 false);
 
-> > Hi Thomas.
-> > =
+I wonder if the order of the disable matters. If it should be from the sensor up to the
+capture then we should call 'rkisp1_cap_stream_disable' at the end of this
+function.
 
-> > On Thu, Oct 15, 2020 at 02:38:06PM +0200, Thomas Zimmermann wrote:
-> > > At least sparc64 requires I/O-specific access to framebuffers. This
-> > > patch updates the fbdev console accordingly.
-> > > =
+> +}
+> +
+> +/*
+> + * rkisp1_pipeline_stream_enable - enable nodes in the pipeline
+> + *
+> + * Enable the DMA Engine and call s_stream(true) through the pipeline.
+> + * Should be called after media_pipeline_start()
+> + */
+> +static int rkisp1_pipeline_stream_enable(struct rkisp1_capture *cap)
+> +	__must_hold(&cap->rkisp1->stream_lock)
+> +{
+> +	struct rkisp1_device *rkisp1 = cap->rkisp1;
+> +	int ret;
+> +
+> +	rkisp1_cap_stream_enable(cap);
+> +
+> +	ret = v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video,
+> +			       s_stream, true);
+> +	if (ret)
+> +		return ret;
 
-> > > For drivers with direct access to the framebuffer memory, the callback
-> > > functions in struct fb_ops test for the type of memory and call the r=
-sp
-> > > fb_sys_ of fb_cfb_ functions.
-> > > =
+In case of error here, shouldn't we call 'rkisp1_cap_stream_disable'?
 
-> > > For drivers that employ a shadow buffer, fbdev's blit function retrie=
-ves
-> > > the framebuffer address as struct dma_buf_map, and uses dma_buf_map
-> > > interfaces to access the buffer.
-> > > =
+> +
+> +	/*
+> +	 * If the other capture is streaming, isp and sensor nodes are already
+> +	 * enabled, skip them.
+> +	 */
+> +	if (rkisp1->pipe.streaming_count > 1)
+> +		return 0;
+> +
+> +	ret = v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, true);
+> +	if (ret)
+> +		goto err_disable_rsz;
+> +
+> +	ret = v4l2_subdev_call(rkisp1->active_sensor->sd, video, s_stream,
+> +			       true);
+> +	if (ret)
+> +		goto err_disable_isp;
+> +
+> +	return 0;
+> +
+> +err_disable_isp:
+> +	v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, false);
+> +err_disable_rsz:
+> +	v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video, s_stream,
+> +			 false);
+> +	rkisp1_cap_stream_disable(cap);
+> +
+> +	return ret;
+> +}
+> +
+>   static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
+>   {
+>   	struct rkisp1_capture *cap = queue->drv_priv;
+> @@ -920,13 +967,8 @@ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
+>   
+>   	mutex_lock(&cap->rkisp1->stream_lock);
+>   
+> -	rkisp1_stream_stop(cap);
+> +	rkisp1_pipeline_stream_disable(cap);
+>   	media_pipeline_stop(&node->vdev.entity);
+> -	ret = rkisp1_pipeline_sink_walk(&node->vdev.entity, NULL,
+> -					rkisp1_pipeline_disable_cb);
+> -	if (ret)
+> -		dev_err(rkisp1->dev,
+> -			"pipeline stream-off failed error:%d\n", ret);
+>   
+>   	rkisp1_return_all_buffers(cap, VB2_BUF_STATE_ERROR);
+>   
+> @@ -940,43 +982,6 @@ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
+>   	mutex_unlock(&cap->rkisp1->stream_lock);
+>   }
+>   
+> -/*
+> - * Most of registers inside rockchip ISP1 have shadow register since
+> - * they must be not be changed during processing a frame.
+> - * Usually, each sub-module updates its shadow register after
+> - * processing the last pixel of a frame.
+> - */
+> -static void rkisp1_stream_start(struct rkisp1_capture *cap)
+> -{
+> -	struct rkisp1_device *rkisp1 = cap->rkisp1;
+> -	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
+> -
+> -	cap->ops->set_data_path(cap);
+> -	cap->ops->config(cap);
+> -
+> -	/* Setup a buffer for the next frame */
+> -	spin_lock_irq(&cap->buf.lock);
+> -	rkisp1_set_next_buf(cap);
+> -	cap->ops->enable(cap);
+> -	/* It's safe to config ACTIVE and SHADOW regs for the
+> -	 * first stream. While when the second is starting, do NOT
+> -	 * force update because it also update the first one.
+> -	 *
+> -	 * The latter case would drop one more buf(that is 2) since
+> -	 * there's not buf in shadow when the second FE received. This's
+> -	 * also required because the second FE maybe corrupt especially
+> -	 * when run at 120fps.
+> -	 */
+> -	if (!other->is_streaming) {
+> -		/* force cfg update */
+> -		rkisp1_write(rkisp1,
+> -			     RKISP1_CIF_MI_INIT_SOFT_UPD, RKISP1_CIF_MI_INIT);
+> -		rkisp1_set_next_buf(cap);
+> -	}
+> -	spin_unlock_irq(&cap->buf.lock);
+> -	cap->is_streaming = true;
+> -}
+> -
+>   static int
+>   rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
+>   {
+> @@ -1001,28 +1006,22 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
+>   		goto err_pipe_pm_put;
+>   	}
+>  
 
-> > > The bochs driver on sparc64 uses a workaround to flag the framebuffer=
- as
-> > > I/O memory and avoid a HW exception. With the introduction of struct
-> > > dma_buf_map, this is not required any longer. The patch removes the r=
-sp
-> > > code from both, bochs and fbdev.
-> > > =
+The previous code with the 'rkisp1_pipeline_sink_walk' only followed enabled links.
+We should probably first check if the link between the resizer and the isp is enabled
+and also between the isp to the sensor. and return -EPIPE if not.
+Actually I think that the code that set the 'active_sensor' (callingrkisp1_get_remote_sensor)
+should move to here since this also check if the link to the sensor is enabled.
 
-> > > v4:
-> > > 	* move dma_buf_map changes into separate patch (Daniel)
-> > > 	* TODO list: comment on fbdev updates (Daniel)
-> > > =
+Thanks,
+Dafna
 
-> > > Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-> > =
-
-> > The original workaround fixed it so we could run qemu with the
-> > -nographic option.
-> > =
-
-> > So I went ahead and tried to run quemu version:
-> > v5.0.0-1970-g0b100c8e72-dirty.
-> > And with the BOCHS driver built-in.
-> > =
-
-> > With the following command line:
-> > qemu-system-sparc64 -m 512 -kernel vmlinux -append console=3DttyS0 -nog=
-raphic
-> > =
-
-> > Behaviour was the same before and after applying this patch.
-> > (panic due to VFS: Unable to mount root fs on unknown-block(0,0))
-> > So I consider it fixed for real now and not just a workaround.
-> > =
-
-> > I also tested with:
-> > qemu-system-sparc64 -m 512 -kernel vmlinux -append console=3DttyS0 -ser=
-ial
-> > stdio
-> > =
-
-> > and it worked in both cases too.
-> =
-
-> FTR, you booted a kernel and got graphics output. The error is simply that
-> there was no disk to mount?
-
-The short version "Yes".
-
-The longer version:
-
-With "qemu-system-sparc64 -m 512 -kernel vmlinux -append console=3DttyS0
--serial stdio" I got graphical output - one penguin.
-
-With "qemu-system-sparc64 -m 512 -kernel vmlinux -append console=3DttyS0
--nographic" I got no graphical output, as implied by the -nographic
-option. But the boot continued - where it would panic before when we
-accessed IO memory as system memory.
-
-In both cases I got an error because I had not specified any rootfs, so
-qemu failed to mount any rootfs. So expected.
-
-	Sam
-
-> =
-
-> Best regards
-> Thomas
-> =
-
-> > =
-
-> > All the comments above so future-me have an easier time finding how to
-> > reproduce.
-> > =
-
-> > Tested-by: Sam Ravnborg <sam@ravnborg.org>
-> > =
-
-> > 	Sam
-> > =
-
-> > > ---
-> > >  Documentation/gpu/todo.rst        |  19 ++-
-> > >  drivers/gpu/drm/bochs/bochs_kms.c |   1 -
-> > >  drivers/gpu/drm/drm_fb_helper.c   | 217 ++++++++++++++++++++++++++++=
---
-> > >  include/drm/drm_mode_config.h     |  12 --
-> > >  4 files changed, 220 insertions(+), 29 deletions(-)
-> > > =
-
-> > > diff --git a/Documentation/gpu/todo.rst b/Documentation/gpu/todo.rst
-> > > index 7e6fc3c04add..638b7f704339 100644
-> > > --- a/Documentation/gpu/todo.rst
-> > > +++ b/Documentation/gpu/todo.rst
-> > > @@ -197,13 +197,28 @@ Convert drivers to use drm_fbdev_generic_setup()
-> > >  ------------------------------------------------
-> > >  =
-
-> > >  Most drivers can use drm_fbdev_generic_setup(). Driver have to imple=
-ment
-> > > -atomic modesetting and GEM vmap support. Current generic fbdev emula=
-tion
-> > > -expects the framebuffer in system memory (or system-like memory).
-> > > +atomic modesetting and GEM vmap support. Historically, generic fbdev
-> > > emulation +expected the framebuffer in system memory or system-like
-> > > memory. By employing +struct dma_buf_map, drivers with frambuffers in=
- I/O
-> > > memory can be supported +as well.
-> > >  =
-
-> > >  Contact: Maintainer of the driver you plan to convert
-> > >  =
-
-> > >  Level: Intermediate
-> > >  =
-
-> > > +Reimplement functions in drm_fbdev_fb_ops without fbdev
-> > > +-------------------------------------------------------
-> > > +
-> > > +A number of callback functions in drm_fbdev_fb_ops could benefit from
-> > > +being rewritten without dependencies on the fbdev module. Some of the
-> > > +helpers could further benefit from using struct dma_buf_map instead =
-of
-> > > +raw pointers.
-> > > +
-> > > +Contact: Thomas Zimmermann <tzimmermann@suse.de>, Daniel Vetter
-> > > +
-> > > +Level: Advanced
-> > > +
-> > > +
-> > >  drm_framebuffer_funcs and drm_mode_config_funcs.fb_create cleanup
-> > >  -----------------------------------------------------------------
-> > >  =
-
-> > > diff --git a/drivers/gpu/drm/bochs/bochs_kms.c
-> > > b/drivers/gpu/drm/bochs/bochs_kms.c index 13d0d04c4457..853081d186d5
-> > > 100644 --- a/drivers/gpu/drm/bochs/bochs_kms.c
-> > > +++ b/drivers/gpu/drm/bochs/bochs_kms.c
-> > > @@ -151,7 +151,6 @@ int bochs_kms_init(struct bochs_device *bochs)
-> > >  	bochs->dev->mode_config.preferred_depth =3D 24;
-> > >  	bochs->dev->mode_config.prefer_shadow =3D 0;
-> > >  	bochs->dev->mode_config.prefer_shadow_fbdev =3D 1;
-> > > -	bochs->dev->mode_config.fbdev_use_iomem =3D true;
-> > >  	bochs->dev->mode_config.quirk_addfb_prefer_host_byte_order =3D
-> > > true; =
-
-> > >  	bochs->dev->mode_config.funcs =3D &bochs_mode_funcs;
-> > > diff --git a/drivers/gpu/drm/drm_fb_helper.c
-> > > b/drivers/gpu/drm/drm_fb_helper.c index 6212cd7cde1d..462b0c130ebb 10=
-0644
-> > > --- a/drivers/gpu/drm/drm_fb_helper.c
-> > > +++ b/drivers/gpu/drm/drm_fb_helper.c
-> > > @@ -372,24 +372,22 @@ static void drm_fb_helper_resume_worker(struct
-> > > work_struct *work) }
-> > >  =
-
-> > >  static void drm_fb_helper_dirty_blit_real(struct drm_fb_helper
-> > > *fb_helper,
-> > > -					  struct drm_clip_rect *clip)
-> > > +					  struct drm_clip_rect *clip,
-> > > +					  struct dma_buf_map *dst)
-> > >  {
-> > >  	struct drm_framebuffer *fb =3D fb_helper->fb;
-> > >  	unsigned int cpp =3D fb->format->cpp[0];
-> > >  	size_t offset =3D clip->y1 * fb->pitches[0] + clip->x1 * cpp;
-> > >  	void *src =3D fb_helper->fbdev->screen_buffer + offset;
-> > > -	void *dst =3D fb_helper->buffer->map.vaddr + offset;
-> > >  	size_t len =3D (clip->x2 - clip->x1) * cpp;
-> > >  	unsigned int y;
-> > >  =
-
-> > > -	for (y =3D clip->y1; y < clip->y2; y++) {
-> > > -		if (!fb_helper->dev->mode_config.fbdev_use_iomem)
-> > > -			memcpy(dst, src, len);
-> > > -		else
-> > > -			memcpy_toio((void __iomem *)dst, src, len);
-> > > +	dma_buf_map_incr(dst, offset); /* go to first pixel within clip
-> > > rect */ =
-
-> > > +	for (y =3D clip->y1; y < clip->y2; y++) {
-> > > +		dma_buf_map_memcpy_to(dst, src, len);
-> > > +		dma_buf_map_incr(dst, fb->pitches[0]);
-> > >  		src +=3D fb->pitches[0];
-> > > -		dst +=3D fb->pitches[0];
-> > >  	}
-> > >  }
-> > >  =
-
-> > > @@ -417,8 +415,9 @@ static void drm_fb_helper_dirty_work(struct
-> > > work_struct *work) ret =3D drm_client_buffer_vmap(helper->buffer, &ma=
-p);
-> > >  			if (ret)
-> > >  				return;
-> > > -			drm_fb_helper_dirty_blit_real(helper,
-> > > &clip_copy);
-> > > +			drm_fb_helper_dirty_blit_real(helper,
-> > > &clip_copy, &map); }
-> > > +
-> > >  		if (helper->fb->funcs->dirty)
-> > >  			helper->fb->funcs->dirty(helper->fb, NULL, 0, 0,
-> > >  						 &clip_copy, 1);
-> > > @@ -755,6 +754,136 @@ void drm_fb_helper_sys_imageblit(struct fb_info
-> > > *info, }
-> > >  EXPORT_SYMBOL(drm_fb_helper_sys_imageblit);
-> > >  =
-
-> > > +static ssize_t drm_fb_helper_cfb_read(struct fb_info *info, char __u=
-ser
-> > > *buf,
-> > > +				      size_t count, loff_t *ppos)
-> > > +{
-> > > +	unsigned long p =3D *ppos;
-> > > +	u8 *dst;
-> > > +	u8 __iomem *src;
-> > > +	int c, err =3D 0;
-> > > +	unsigned long total_size;
-> > > +	unsigned long alloc_size;
-> > > +	ssize_t ret =3D 0;
-> > > +
-> > > +	if (info->state !=3D FBINFO_STATE_RUNNING)
-> > > +		return -EPERM;
-> > > +
-> > > +	total_size =3D info->screen_size;
-> > > +
-> > > +	if (total_size =3D=3D 0)
-> > > +		total_size =3D info->fix.smem_len;
-> > > +
-> > > +	if (p >=3D total_size)
-> > > +		return 0;
-> > > +
-> > > +	if (count >=3D total_size)
-> > > +		count =3D total_size;
-> > > +
-> > > +	if (count + p > total_size)
-> > > +		count =3D total_size - p;
-> > > +
-> > > +	src =3D (u8 __iomem *)(info->screen_base + p);
-> > > +
-> > > +	alloc_size =3D min(count, PAGE_SIZE);
-> > > +
-> > > +	dst =3D kmalloc(alloc_size, GFP_KERNEL);
-> > > +	if (!dst)
-> > > +		return -ENOMEM;
-> > > +
-> > > +	while (count) {
-> > > +		c =3D min(count, alloc_size);
-> > > +
-> > > +		memcpy_fromio(dst, src, c);
-> > > +		if (copy_to_user(buf, dst, c)) {
-> > > +			err =3D -EFAULT;
-> > > +			break;
-> > > +		}
-> > > +
-> > > +		src +=3D c;
-> > > +		*ppos +=3D c;
-> > > +		buf +=3D c;
-> > > +		ret +=3D c;
-> > > +		count -=3D c;
-> > > +	}
-> > > +
-> > > +	kfree(dst);
-> > > +
-> > > +	if (err)
-> > > +		return err;
-> > > +
-> > > +	return ret;
-> > > +}
-> > > +
-> > > +static ssize_t drm_fb_helper_cfb_write(struct fb_info *info, const c=
-har
-> > > __user *buf,
-> > > +				       size_t count, loff_t *ppos)
-> > > +{
-> > > +	unsigned long p =3D *ppos;
-> > > +	u8 *src;
-> > > +	u8 __iomem *dst;
-> > > +	int c, err =3D 0;
-> > > +	unsigned long total_size;
-> > > +	unsigned long alloc_size;
-> > > +	ssize_t ret =3D 0;
-> > > +
-> > > +	if (info->state !=3D FBINFO_STATE_RUNNING)
-> > > +		return -EPERM;
-> > > +
-> > > +	total_size =3D info->screen_size;
-> > > +
-> > > +	if (total_size =3D=3D 0)
-> > > +		total_size =3D info->fix.smem_len;
-> > > +
-> > > +	if (p > total_size)
-> > > +		return -EFBIG;
-> > > +
-> > > +	if (count > total_size) {
-> > > +		err =3D -EFBIG;
-> > > +		count =3D total_size;
-> > > +	}
-> > > +
-> > > +	if (count + p > total_size) {
-> > > +		/*
-> > > +		 * The framebuffer is too small. We do the
-> > > +		 * copy operation, but return an error code
-> > > +		 * afterwards. Taken from fbdev.
-> > > +		 */
-> > > +		if (!err)
-> > > +			err =3D -ENOSPC;
-> > > +		count =3D total_size - p;
-> > > +	}
-> > > +
-> > > +	alloc_size =3D min(count, PAGE_SIZE);
-> > > +
-> > > +	src =3D kmalloc(alloc_size, GFP_KERNEL);
-> > > +	if (!src)
-> > > +		return -ENOMEM;
-> > > +
-> > > +	dst =3D (u8 __iomem *)(info->screen_base + p);
-> > > +
-> > > +	while (count) {
-> > > +		c =3D min(count, alloc_size);
-> > > +
-> > > +		if (copy_from_user(src, buf, c)) {
-> > > +			err =3D -EFAULT;
-> > > +			break;
-> > > +		}
-> > > +		memcpy_toio(dst, src, c);
-> > > +
-> > > +		dst +=3D c;
-> > > +		*ppos +=3D c;
-> > > +		buf +=3D c;
-> > > +		ret +=3D c;
-> > > +		count -=3D c;
-> > > +	}
-> > > +
-> > > +	kfree(src);
-> > > +
-> > > +	if (err)
-> > > +		return err;
-> > > +
-> > > +	return ret;
-> > > +}
-> > > +
-> > >  /**
-> > >   * drm_fb_helper_cfb_fillrect - wrapper around cfb_fillrect
-> > >   * @info: fbdev registered by the helper
-> > > @@ -2027,6 +2156,66 @@ static int drm_fbdev_fb_mmap(struct fb_info *i=
-nfo,
-> > > struct vm_area_struct *vma) return -ENODEV;
-> > >  }
-> > >  =
-
-> > > +static ssize_t drm_fbdev_fb_read(struct fb_info *info, char __user *=
-buf,
-> > > +				 size_t count, loff_t *ppos)
-> > > +{
-> > > +	struct drm_fb_helper *fb_helper =3D info->par;
-> > > +	struct drm_client_buffer *buffer =3D fb_helper->buffer;
-> > > +
-> > > +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-> > > +		return drm_fb_helper_sys_read(info, buf, count, ppos);
-> > > +	else
-> > > +		return drm_fb_helper_cfb_read(info, buf, count, ppos);
-> > > +}
-> > > +
-> > > +static ssize_t drm_fbdev_fb_write(struct fb_info *info, const char
-> > > __user *buf,
-> > > +				  size_t count, loff_t *ppos)
-> > > +{
-> > > +	struct drm_fb_helper *fb_helper =3D info->par;
-> > > +	struct drm_client_buffer *buffer =3D fb_helper->buffer;
-> > > +
-> > > +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-> > > +		return drm_fb_helper_sys_write(info, buf, count, ppos);
-> > > +	else
-> > > +		return drm_fb_helper_cfb_write(info, buf, count, ppos);
-> > > +}
-> > > +
-> > > +static void drm_fbdev_fb_fillrect(struct fb_info *info,
-> > > +				  const struct fb_fillrect *rect)
-> > > +{
-> > > +	struct drm_fb_helper *fb_helper =3D info->par;
-> > > +	struct drm_client_buffer *buffer =3D fb_helper->buffer;
-> > > +
-> > > +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-> > > +		drm_fb_helper_sys_fillrect(info, rect);
-> > > +	else
-> > > +		drm_fb_helper_cfb_fillrect(info, rect);
-> > > +}
-> > > +
-> > > +static void drm_fbdev_fb_copyarea(struct fb_info *info,
-> > > +				  const struct fb_copyarea *area)
-> > > +{
-> > > +	struct drm_fb_helper *fb_helper =3D info->par;
-> > > +	struct drm_client_buffer *buffer =3D fb_helper->buffer;
-> > > +
-> > > +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-> > > +		drm_fb_helper_sys_copyarea(info, area);
-> > > +	else
-> > > +		drm_fb_helper_cfb_copyarea(info, area);
-> > > +}
-> > > +
-> > > +static void drm_fbdev_fb_imageblit(struct fb_info *info,
-> > > +				   const struct fb_image *image)
-> > > +{
-> > > +	struct drm_fb_helper *fb_helper =3D info->par;
-> > > +	struct drm_client_buffer *buffer =3D fb_helper->buffer;
-> > > +
-> > > +	if (drm_fbdev_use_shadow_fb(fb_helper) || !buffer->map.is_iomem)
-> > > +		drm_fb_helper_sys_imageblit(info, image);
-> > > +	else
-> > > +		drm_fb_helper_cfb_imageblit(info, image);
-> > > +}
-> > > +
-> > >  static const struct fb_ops drm_fbdev_fb_ops =3D {
-> > >  	.owner		=3D THIS_MODULE,
-> > >  	DRM_FB_HELPER_DEFAULT_OPS,
-> > > @@ -2034,11 +2223,11 @@ static const struct fb_ops drm_fbdev_fb_ops =
-=3D {
-> > >  	.fb_release	=3D drm_fbdev_fb_release,
-> > >  	.fb_destroy	=3D drm_fbdev_fb_destroy,
-> > >  	.fb_mmap	=3D drm_fbdev_fb_mmap,
-> > > -	.fb_read	=3D drm_fb_helper_sys_read,
-> > > -	.fb_write	=3D drm_fb_helper_sys_write,
-> > > -	.fb_fillrect	=3D drm_fb_helper_sys_fillrect,
-> > > -	.fb_copyarea	=3D drm_fb_helper_sys_copyarea,
-> > > -	.fb_imageblit	=3D drm_fb_helper_sys_imageblit,
-> > > +	.fb_read	=3D drm_fbdev_fb_read,
-> > > +	.fb_write	=3D drm_fbdev_fb_write,
-> > > +	.fb_fillrect	=3D drm_fbdev_fb_fillrect,
-> > > +	.fb_copyarea	=3D drm_fbdev_fb_copyarea,
-> > > +	.fb_imageblit	=3D drm_fbdev_fb_imageblit,
-> > >  };
-> > >  =
-
-> > >  static struct fb_deferred_io drm_fbdev_defio =3D {
-> > > diff --git a/include/drm/drm_mode_config.h b/include/drm/drm_mode_con=
-fig.h
-> > > index 5ffbb4ed5b35..ab424ddd7665 100644
-> > > --- a/include/drm/drm_mode_config.h
-> > > +++ b/include/drm/drm_mode_config.h
-> > > @@ -877,18 +877,6 @@ struct drm_mode_config {
-> > >  	 */
-> > >  	bool prefer_shadow_fbdev;
-> > >  =
-
-> > > -	/**
-> > > -	 * @fbdev_use_iomem:
-> > > -	 *
-> > > -	 * Set to true if framebuffer reside in iomem.
-> > > -	 * When set to true memcpy_toio() is used when copying the
-> > > framebuffer in
-> > > -	 * drm_fb_helper.drm_fb_helper_dirty_blit_real().
-> > > -	 *
-> > > -	 * FIXME: This should be replaced with a per-mapping is_iomem
-> > > -	 * flag (like ttm does), and then used everywhere in fbdev code.
-> > > -	 */
-> > > -	bool fbdev_use_iomem;
-> > > -
-> > >  	/**
-> > >  	 * @quirk_addfb_prefer_xbgr_30bpp:
-> > >  	 *
-> > > -- =
-
-> > > 2.28.0
-> =
-
-> =
-
-> =
-
-> -- =
-
-> Thomas Zimmermann
-> Graphics Driver Developer
-> SUSE Software Solutions Germany GmbH
-> Maxfeldstr. 5, 90409 N=FCrnberg, Germany
-> (HRB 36809, AG N=FCrnberg)
-> Gesch=E4ftsf=FChrer: Felix Imend=F6rffer
+> -	rkisp1_stream_start(cap);
+> -
+> -	/* start sub-devices */
+> -	ret = rkisp1_pipeline_sink_walk(entity, NULL,
+> -					rkisp1_pipeline_enable_cb);
+> -	if (ret)
+> -		goto err_stop_stream;
+> -
+>   	ret = media_pipeline_start(entity, &cap->rkisp1->pipe);
+>   	if (ret) {
+>   		dev_err(cap->rkisp1->dev, "start pipeline failed %d\n", ret);
+> -		goto err_pipe_disable;
+> +		goto err_v4l2_pm_put;
+>   	}
+> +	ret = rkisp1_pipeline_stream_enable(cap);
+> +	if (ret)
+> +		goto err_media_pipeline_stop;
+>   
+>   	mutex_unlock(&cap->rkisp1->stream_lock);
+>   
+>   	return 0;
+>   
+> -err_pipe_disable:
+> -	rkisp1_pipeline_sink_walk(entity, NULL, rkisp1_pipeline_disable_cb);
+> -err_stop_stream:
+> -	rkisp1_stream_stop(cap);
+> +err_media_pipeline_stop:
+> +	media_pipeline_stop(entity);
+> +err_v4l2_pm_put:
+>   	v4l2_pipeline_pm_put(entity);
+>   err_pipe_pm_put:
+>   	pm_runtime_put(cap->rkisp1->dev);
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
