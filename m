@@ -2,66 +2,61 @@ Return-Path: <SRS0=QPul=DX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A20ADC433DF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 10:09:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 26B62C433DF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 10:39:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7627720848
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 10:09:27 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5922820872
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 10:39:46 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DgTdWn80"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7627720848
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ravnborg.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jLNPUVFM"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5922820872
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/Fx7Kd2ziyLiNKGKFVz2Q9tuD4mxDeL1sElPviFj6gI=; b=DgTdWn80d0/9SMkXkYDjfYe9/
-	1yYz96P5V1d5X8oQzCZSQm3r6z6djD0ySnsEHjArxz2lWAPcuuUP9Ui7cJUFIq+rJuGB28rOvfnPt
-	hNE+YeelJ7lsWRrsHhTTUTbXUu+paAMAAvA0/pjVO9cY4Rfmw39deqPz0OF2lxW8qA6IJsKlDAzDD
-	hOAlA1gtI1/+1UYOMwtXjduTWedRX6qFHn0nDw/1lK18QkNcQ3fgUGMOu3Av55J8sfGp8qpUPWsbD
-	a3GCK/l5bnEVd5+l7ql0ObUv494cjI6y9xRbEMr6VLsez11MR/2JR2xkXvOviPBB0p/NPOfyNznmf
-	Vwc1Wn81w==;
+	 bh=tbHLbhBZGVfECzas7pLssCQZxvUHSGGKmLDY0oScON8=; b=jLNPUVFMkvzWiHAy0ryTlhdk0
+	aG4WcbOfcXCpZJpkXXrVRZ2NFxzzi4G5Ui7wfNJZUE7t7fPLSK7Ac/4JBlPgmRFfvp48uezYblWCu
+	OG5wDDta+g7bG2b0KGr8TVlSE51Ao8tCNMtXaTByDoa9AHv7fX8JXsIJSZy2XeHUzGnZju69VQa+P
+	vsJwxhg0K1L6c4/hNkgkBG5ocIC4tTKS4+VJT2wKtLS2FgRXhmeUW9DcRs4ax3liL5H64x4unbw1X
+	1SbpDvRBwhKJOhZLRZD0V5vFlS96c/mMvz1V/LIPzyMC0/CCvxyADEZ3hn+mdWP8QTRmdZ5Qh+Sfd
+	suJYD7FWA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kTMfl-00059L-8w; Fri, 16 Oct 2020 10:09:17 +0000
-Received: from asavdk3.altibox.net ([109.247.116.14])
+	id 1kTN99-0007nF-JH; Fri, 16 Oct 2020 10:39:39 +0000
+Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kTMfi-00057t-3k; Fri, 16 Oct 2020 10:09:15 +0000
-Received: from ravnborg.org (unknown [188.228.123.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by asavdk3.altibox.net (Postfix) with ESMTPS id DC35220027;
- Fri, 16 Oct 2020 12:08:55 +0200 (CEST)
-Date: Fri, 16 Oct 2020 12:08:54 +0200
-From: Sam Ravnborg <sam@ravnborg.org>
-To: Thomas Zimmermann <tzimmermann@suse.de>
+ id 1kTN95-0007mY-Nq; Fri, 16 Oct 2020 10:39:36 +0000
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+ by mx2.suse.de (Postfix) with ESMTP id 6C254AB5C;
+ Fri, 16 Oct 2020 10:39:34 +0000 (UTC)
+Date: Fri, 16 Oct 2020 12:39:31 +0200
+From: Thomas Zimmermann <tzimmermann@suse.de>
+To: Sam Ravnborg <sam@ravnborg.org>
 Subject: Re: [PATCH v4 09/10] dma-buf-map: Add memcpy and pointer-increment
  interfaces
-Message-ID: <20201016100854.GA1042954@ravnborg.org>
+Message-ID: <20201016123931.10dd3930@linux-uq9g>
+In-Reply-To: <20201016100854.GA1042954@ravnborg.org>
 References: <20201015123806.32416-1-tzimmermann@suse.de>
  <20201015123806.32416-10-tzimmermann@suse.de>
+ <20201016100854.GA1042954@ravnborg.org>
+Organization: SUSE Software Solutions Germany GmbH
+X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-suse-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201015123806.32416-10-tzimmermann@suse.de>
-X-CMAE-Score: 0
-X-CMAE-Analysis: v=2.3 cv=S433PrkP c=1 sm=1 tr=0
- a=S6zTFyMACwkrwXSdXUNehg==:117 a=S6zTFyMACwkrwXSdXUNehg==:17
- a=kj9zAlcOel0A:10 a=7gkXJVJtAAAA:8 a=0A2xud3A4b7FAmx5SMIA:9
- a=7a1rlSNJFqSX5uOf:21 a=OU_kl8OV53ZSq-ss:21 a=CjuIK1q_8ugA:10
- a=E9Po1WZjFZOl8hwRPBS3:22
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201016_060914_404820_4C561BF4 
-X-CRM114-Status: GOOD (  30.58  )
+X-CRM114-CacheID: sfid-20201016_063936_036442_6894E1A4 
+X-CRM114-Status: GOOD (  37.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,153 +69,126 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: luben.tuikov@amd.com, heiko@sntech.de, airlied@linux.ie,
- nouveau@lists.freedesktop.org, linus.walleij@linaro.org,
+Cc: airlied@linux.ie, nouveau@lists.freedesktop.org,
  dri-devel@lists.freedesktop.org, chris@chris-wilson.co.uk,
- melissa.srw@gmail.com, eric@anholt.net, ray.huang@amd.com, kraxel@redhat.com,
- sumit.semwal@linaro.org, emil.velikov@collabora.com, robh@kernel.org,
- linux-samsung-soc@vger.kernel.org, jy0922.shim@samsung.com,
- lima@lists.freedesktop.org, oleksandr_andrushchenko@epam.com, krzk@kernel.org,
- steven.price@arm.com, linux-rockchip@lists.infradead.org, kgene@kernel.org,
+ melissa.srw@gmail.com, ray.huang@amd.com, kraxel@redhat.com, yuq825@gmail.com,
+ emil.velikov@collabora.com, linux-samsung-soc@vger.kernel.org,
+ jy0922.shim@samsung.com, lima@lists.freedesktop.org,
+ oleksandr_andrushchenko@epam.com, krzk@kernel.org, steven.price@arm.com,
+ linux-rockchip@lists.infradead.org, luben.tuikov@amd.com,
  alyssa.rosenzweig@collabora.com, linux+etnaviv@armlinux.org.uk,
  spice-devel@lists.freedesktop.org, bskeggs@redhat.com,
- maarten.lankhorst@linux.intel.com, etnaviv@lists.freedesktop.org,
- mripard@kernel.org, inki.dae@samsung.com, hdegoede@redhat.com,
- christian.gmeiner@gmail.com, xen-devel@lists.xenproject.org,
+ etnaviv@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+ hdegoede@redhat.com, xen-devel@lists.xenproject.org,
  virtualization@lists.linux-foundation.org, sean@poorly.run, apaneers@amd.com,
- linux-arm-kernel@lists.infradead.org, linaro-mm-sig@lists.linaro.org,
- amd-gfx@lists.freedesktop.org, tomeu.vizoso@collabora.com,
- sw0312.kim@samsung.com, hjc@rock-chips.com, kyungmin.park@samsung.com,
- miaoqinglang@huawei.com, yuq825@gmail.com, daniel@ffwll.ch,
+ linux-arm-kernel@lists.infradead.org, amd-gfx@lists.freedesktop.org,
+ tomeu.vizoso@collabora.com, sw0312.kim@samsung.com, hjc@rock-chips.com,
+ kyungmin.park@samsung.com, miaoqinglang@huawei.com, kgene@kernel.org,
  alexander.deucher@amd.com, linux-media@vger.kernel.org,
- christian.koenig@amd.com, l.stach@pengutronix.de
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ christian.koenig@amd.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Thomas.
-
-On Thu, Oct 15, 2020 at 02:38:05PM +0200, Thomas Zimmermann wrote:
-> To do framebuffer updates, one needs memcpy from system memory and a
-> pointer-increment function. Add both interfaces with documentation.
-> 
-> Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
-
-Looks good.
-Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
-
-> ---
->  include/linux/dma-buf-map.h | 72 +++++++++++++++++++++++++++++++------
->  1 file changed, 62 insertions(+), 10 deletions(-)
-> 
-> diff --git a/include/linux/dma-buf-map.h b/include/linux/dma-buf-map.h
-> index 2e8bbecb5091..6ca0f304dda2 100644
-> --- a/include/linux/dma-buf-map.h
-> +++ b/include/linux/dma-buf-map.h
-> @@ -32,6 +32,14 @@
->   * accessing the buffer. Use the returned instance and the helper functions
->   * to access the buffer's memory in the correct way.
->   *
-> + * The type :c:type:`struct dma_buf_map <dma_buf_map>` and its helpers are
-> + * actually independent from the dma-buf infrastructure. When sharing buffers
-> + * among devices, drivers have to know the location of the memory to access
-> + * the buffers in a safe way. :c:type:`struct dma_buf_map <dma_buf_map>`
-> + * solves this problem for dma-buf and its users. If other drivers or
-> + * sub-systems require similar functionality, the type could be generalized
-> + * and moved to a more prominent header file.
-> + *
->   * Open-coding access to :c:type:`struct dma_buf_map <dma_buf_map>` is
->   * considered bad style. Rather then accessing its fields directly, use one
->   * of the provided helper functions, or implement your own. For example,
-> @@ -51,6 +59,14 @@
->   *
->   *	dma_buf_map_set_vaddr_iomem(&map. 0xdeadbeaf);
->   *
-> + * Instances of struct dma_buf_map do not have to be cleaned up, but
-> + * can be cleared to NULL with dma_buf_map_clear(). Cleared mappings
-> + * always refer to system memory.
-> + *
-> + * .. code-block:: c
-> + *
-> + *	dma_buf_map_clear(&map);
-> + *
->   * Test if a mapping is valid with either dma_buf_map_is_set() or
->   * dma_buf_map_is_null().
->   *
-> @@ -73,17 +89,19 @@
->   *	if (dma_buf_map_is_equal(&sys_map, &io_map))
->   *		// always false
->   *
-> - * Instances of struct dma_buf_map do not have to be cleaned up, but
-> - * can be cleared to NULL with dma_buf_map_clear(). Cleared mappings
-> - * always refer to system memory.
-> + * A set up instance of struct dma_buf_map can be used to access or manipulate
-> + * the buffer memory. Depending on the location of the memory, the provided
-> + * helpers will pick the correct operations. Data can be copied into the memory
-> + * with dma_buf_map_memcpy_to(). The address can be manipulated with
-> + * dma_buf_map_incr().
->   *
-> - * The type :c:type:`struct dma_buf_map <dma_buf_map>` and its helpers are
-> - * actually independent from the dma-buf infrastructure. When sharing buffers
-> - * among devices, drivers have to know the location of the memory to access
-> - * the buffers in a safe way. :c:type:`struct dma_buf_map <dma_buf_map>`
-> - * solves this problem for dma-buf and its users. If other drivers or
-> - * sub-systems require similar functionality, the type could be generalized
-> - * and moved to a more prominent header file.
-> + * .. code-block:: c
-> + *
-> + *	const void *src = ...; // source buffer
-> + *	size_t len = ...; // length of src
-> + *
-> + *	dma_buf_map_memcpy_to(&map, src, len);
-> + *	dma_buf_map_incr(&map, len); // go to first byte after the memcpy
->   */
->  
->  /**
-> @@ -210,4 +228,38 @@ static inline void dma_buf_map_clear(struct dma_buf_map *map)
->  	}
->  }
->  
-> +/**
-> + * dma_buf_map_memcpy_to - Memcpy into dma-buf mapping
-> + * @dst:	The dma-buf mapping structure
-> + * @src:	The source buffer
-> + * @len:	The number of byte in src
-> + *
-> + * Copies data into a dma-buf mapping. The source buffer is in system
-> + * memory. Depending on the buffer's location, the helper picks the correct
-> + * method of accessing the memory.
-> + */
-> +static inline void dma_buf_map_memcpy_to(struct dma_buf_map *dst, const void *src, size_t len)
-> +{
-> +	if (dst->is_iomem)
-> +		memcpy_toio(dst->vaddr_iomem, src, len);
-> +	else
-> +		memcpy(dst->vaddr, src, len);
-> +}
-> +
-> +/**
-> + * dma_buf_map_incr - Increments the address stored in a dma-buf mapping
-> + * @map:	The dma-buf mapping structure
-> + * @incr:	The number of bytes to increment
-> + *
-> + * Increments the address stored in a dma-buf mapping. Depending on the
-> + * buffer's location, the correct value will be updated.
-> + */
-> +static inline void dma_buf_map_incr(struct dma_buf_map *map, size_t incr)
-> +{
-> +	if (map->is_iomem)
-> +		map->vaddr_iomem += incr;
-> +	else
-> +		map->vaddr += incr;
-> +}
-> +
->  #endif /* __DMA_BUF_MAP_H__ */
-> -- 
-> 2.28.0
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgU2FtCgpPbiBGcmksIDE2IE9jdCAyMDIwIDEyOjA4OjU0ICswMjAwIFNhbSBSYXZuYm9yZyA8
+c2FtQHJhdm5ib3JnLm9yZz4gd3JvdGU6Cgo+IEhpIFRob21hcy4KPiAKPiBPbiBUaHUsIE9jdCAx
+NSwgMjAyMCBhdCAwMjozODowNVBNICswMjAwLCBUaG9tYXMgWmltbWVybWFubiB3cm90ZToKPiA+
+IFRvIGRvIGZyYW1lYnVmZmVyIHVwZGF0ZXMsIG9uZSBuZWVkcyBtZW1jcHkgZnJvbSBzeXN0ZW0g
+bWVtb3J5IGFuZCBhCj4gPiBwb2ludGVyLWluY3JlbWVudCBmdW5jdGlvbi4gQWRkIGJvdGggaW50
+ZXJmYWNlcyB3aXRoIGRvY3VtZW50YXRpb24uCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IFRob21h
+cyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPgo+IAo+IExvb2tzIGdvb2QuCj4gUmV2
+aWV3ZWQtYnk6IFNhbSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4KClRoYW5rcy4gSWYgeW91
+IGhhdmUgdGhlIHRpbWUsIG1heSBJIGFzayB5b3UgdG8gdGVzdCB0aGlzIHBhdGNoc2V0IG9uIHRo
+ZQpib2Nocy9zcGFyYzY0IHN5c3RlbSB0aGF0IGZhaWxlZCB3aXRoIHRoZSBvcmlnaW5hbCBjb2Rl
+PwoKQmVzdCByZWdhcmRzClRob21hcwoKPiAKPiA+IC0tLQo+ID4gIGluY2x1ZGUvbGludXgvZG1h
+LWJ1Zi1tYXAuaCB8IDcyICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0KPiA+
+ICAxIGZpbGUgY2hhbmdlZCwgNjIgaW5zZXJ0aW9ucygrKSwgMTAgZGVsZXRpb25zKC0pCj4gPiAK
+PiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4L2RtYS1idWYtbWFwLmggYi9pbmNsdWRlL2xp
+bnV4L2RtYS1idWYtbWFwLmgKPiA+IGluZGV4IDJlOGJiZWNiNTA5MS4uNmNhMGYzMDRkZGEyIDEw
+MDY0NAo+ID4gLS0tIGEvaW5jbHVkZS9saW51eC9kbWEtYnVmLW1hcC5oCj4gPiArKysgYi9pbmNs
+dWRlL2xpbnV4L2RtYS1idWYtbWFwLmgKPiA+IEBAIC0zMiw2ICszMiwxNCBAQAo+ID4gICAqIGFj
+Y2Vzc2luZyB0aGUgYnVmZmVyLiBVc2UgdGhlIHJldHVybmVkIGluc3RhbmNlIGFuZCB0aGUgaGVs
+cGVyCj4gPiBmdW5jdGlvbnMKPiA+ICAgKiB0byBhY2Nlc3MgdGhlIGJ1ZmZlcidzIG1lbW9yeSBp
+biB0aGUgY29ycmVjdCB3YXkuCj4gPiAgICoKPiA+ICsgKiBUaGUgdHlwZSA6Yzp0eXBlOmBzdHJ1
+Y3QgZG1hX2J1Zl9tYXAgPGRtYV9idWZfbWFwPmAgYW5kIGl0cyBoZWxwZXJzCj4gPiBhcmUKPiA+
+ICsgKiBhY3R1YWxseSBpbmRlcGVuZGVudCBmcm9tIHRoZSBkbWEtYnVmIGluZnJhc3RydWN0dXJl
+LiBXaGVuIHNoYXJpbmcKPiA+IGJ1ZmZlcnMKPiA+ICsgKiBhbW9uZyBkZXZpY2VzLCBkcml2ZXJz
+IGhhdmUgdG8ga25vdyB0aGUgbG9jYXRpb24gb2YgdGhlIG1lbW9yeSB0bwo+ID4gYWNjZXNzCj4g
+PiArICogdGhlIGJ1ZmZlcnMgaW4gYSBzYWZlIHdheS4gOmM6dHlwZTpgc3RydWN0IGRtYV9idWZf
+bWFwIDxkbWFfYnVmX21hcD5gCj4gPiArICogc29sdmVzIHRoaXMgcHJvYmxlbSBmb3IgZG1hLWJ1
+ZiBhbmQgaXRzIHVzZXJzLiBJZiBvdGhlciBkcml2ZXJzIG9yCj4gPiArICogc3ViLXN5c3RlbXMg
+cmVxdWlyZSBzaW1pbGFyIGZ1bmN0aW9uYWxpdHksIHRoZSB0eXBlIGNvdWxkIGJlCj4gPiBnZW5l
+cmFsaXplZAo+ID4gKyAqIGFuZCBtb3ZlZCB0byBhIG1vcmUgcHJvbWluZW50IGhlYWRlciBmaWxl
+Lgo+ID4gKyAqCj4gPiAgICogT3Blbi1jb2RpbmcgYWNjZXNzIHRvIDpjOnR5cGU6YHN0cnVjdCBk
+bWFfYnVmX21hcCA8ZG1hX2J1Zl9tYXA+YCBpcwo+ID4gICAqIGNvbnNpZGVyZWQgYmFkIHN0eWxl
+LiBSYXRoZXIgdGhlbiBhY2Nlc3NpbmcgaXRzIGZpZWxkcyBkaXJlY3RseSwgdXNlCj4gPiBvbmUK
+PiA+ICAgKiBvZiB0aGUgcHJvdmlkZWQgaGVscGVyIGZ1bmN0aW9ucywgb3IgaW1wbGVtZW50IHlv
+dXIgb3duLiBGb3IgZXhhbXBsZSwKPiA+IEBAIC01MSw2ICs1OSwxNCBAQAo+ID4gICAqCj4gPiAg
+ICoJZG1hX2J1Zl9tYXBfc2V0X3ZhZGRyX2lvbWVtKCZtYXAuIDB4ZGVhZGJlYWYpOwo+ID4gICAq
+Cj4gPiArICogSW5zdGFuY2VzIG9mIHN0cnVjdCBkbWFfYnVmX21hcCBkbyBub3QgaGF2ZSB0byBi
+ZSBjbGVhbmVkIHVwLCBidXQKPiA+ICsgKiBjYW4gYmUgY2xlYXJlZCB0byBOVUxMIHdpdGggZG1h
+X2J1Zl9tYXBfY2xlYXIoKS4gQ2xlYXJlZCBtYXBwaW5ncwo+ID4gKyAqIGFsd2F5cyByZWZlciB0
+byBzeXN0ZW0gbWVtb3J5Lgo+ID4gKyAqCj4gPiArICogLi4gY29kZS1ibG9jazo6IGMKPiA+ICsg
+Kgo+ID4gKyAqCWRtYV9idWZfbWFwX2NsZWFyKCZtYXApOwo+ID4gKyAqCj4gPiAgICogVGVzdCBp
+ZiBhIG1hcHBpbmcgaXMgdmFsaWQgd2l0aCBlaXRoZXIgZG1hX2J1Zl9tYXBfaXNfc2V0KCkgb3IK
+PiA+ICAgKiBkbWFfYnVmX21hcF9pc19udWxsKCkuCj4gPiAgICoKPiA+IEBAIC03MywxNyArODks
+MTkgQEAKPiA+ICAgKglpZiAoZG1hX2J1Zl9tYXBfaXNfZXF1YWwoJnN5c19tYXAsICZpb19tYXAp
+KQo+ID4gICAqCQkvLyBhbHdheXMgZmFsc2UKPiA+ICAgKgo+ID4gLSAqIEluc3RhbmNlcyBvZiBz
+dHJ1Y3QgZG1hX2J1Zl9tYXAgZG8gbm90IGhhdmUgdG8gYmUgY2xlYW5lZCB1cCwgYnV0Cj4gPiAt
+ICogY2FuIGJlIGNsZWFyZWQgdG8gTlVMTCB3aXRoIGRtYV9idWZfbWFwX2NsZWFyKCkuIENsZWFy
+ZWQgbWFwcGluZ3MKPiA+IC0gKiBhbHdheXMgcmVmZXIgdG8gc3lzdGVtIG1lbW9yeS4KPiA+ICsg
+KiBBIHNldCB1cCBpbnN0YW5jZSBvZiBzdHJ1Y3QgZG1hX2J1Zl9tYXAgY2FuIGJlIHVzZWQgdG8g
+YWNjZXNzIG9yCj4gPiBtYW5pcHVsYXRlCj4gPiArICogdGhlIGJ1ZmZlciBtZW1vcnkuIERlcGVu
+ZGluZyBvbiB0aGUgbG9jYXRpb24gb2YgdGhlIG1lbW9yeSwgdGhlCj4gPiBwcm92aWRlZAo+ID4g
+KyAqIGhlbHBlcnMgd2lsbCBwaWNrIHRoZSBjb3JyZWN0IG9wZXJhdGlvbnMuIERhdGEgY2FuIGJl
+IGNvcGllZCBpbnRvIHRoZQo+ID4gbWVtb3J5Cj4gPiArICogd2l0aCBkbWFfYnVmX21hcF9tZW1j
+cHlfdG8oKS4gVGhlIGFkZHJlc3MgY2FuIGJlIG1hbmlwdWxhdGVkIHdpdGgKPiA+ICsgKiBkbWFf
+YnVmX21hcF9pbmNyKCkuCj4gPiAgICoKPiA+IC0gKiBUaGUgdHlwZSA6Yzp0eXBlOmBzdHJ1Y3Qg
+ZG1hX2J1Zl9tYXAgPGRtYV9idWZfbWFwPmAgYW5kIGl0cyBoZWxwZXJzCj4gPiBhcmUKPiA+IC0g
+KiBhY3R1YWxseSBpbmRlcGVuZGVudCBmcm9tIHRoZSBkbWEtYnVmIGluZnJhc3RydWN0dXJlLiBX
+aGVuIHNoYXJpbmcKPiA+IGJ1ZmZlcnMKPiA+IC0gKiBhbW9uZyBkZXZpY2VzLCBkcml2ZXJzIGhh
+dmUgdG8ga25vdyB0aGUgbG9jYXRpb24gb2YgdGhlIG1lbW9yeSB0bwo+ID4gYWNjZXNzCj4gPiAt
+ICogdGhlIGJ1ZmZlcnMgaW4gYSBzYWZlIHdheS4gOmM6dHlwZTpgc3RydWN0IGRtYV9idWZfbWFw
+IDxkbWFfYnVmX21hcD5gCj4gPiAtICogc29sdmVzIHRoaXMgcHJvYmxlbSBmb3IgZG1hLWJ1ZiBh
+bmQgaXRzIHVzZXJzLiBJZiBvdGhlciBkcml2ZXJzIG9yCj4gPiAtICogc3ViLXN5c3RlbXMgcmVx
+dWlyZSBzaW1pbGFyIGZ1bmN0aW9uYWxpdHksIHRoZSB0eXBlIGNvdWxkIGJlCj4gPiBnZW5lcmFs
+aXplZAo+ID4gLSAqIGFuZCBtb3ZlZCB0byBhIG1vcmUgcHJvbWluZW50IGhlYWRlciBmaWxlLgo+
+ID4gKyAqIC4uIGNvZGUtYmxvY2s6OiBjCj4gPiArICoKPiA+ICsgKgljb25zdCB2b2lkICpzcmMg
+PSAuLi47IC8vIHNvdXJjZSBidWZmZXIKPiA+ICsgKglzaXplX3QgbGVuID0gLi4uOyAvLyBsZW5n
+dGggb2Ygc3JjCj4gPiArICoKPiA+ICsgKglkbWFfYnVmX21hcF9tZW1jcHlfdG8oJm1hcCwgc3Jj
+LCBsZW4pOwo+ID4gKyAqCWRtYV9idWZfbWFwX2luY3IoJm1hcCwgbGVuKTsgLy8gZ28gdG8gZmly
+c3QgYnl0ZSBhZnRlciB0aGUKPiA+IG1lbWNweSAqLwo+ID4gIAo+ID4gIC8qKgo+ID4gQEAgLTIx
+MCw0ICsyMjgsMzggQEAgc3RhdGljIGlubGluZSB2b2lkIGRtYV9idWZfbWFwX2NsZWFyKHN0cnVj
+dAo+ID4gZG1hX2J1Zl9tYXAgKm1hcCkgfQo+ID4gIH0KPiA+ICAKPiA+ICsvKioKPiA+ICsgKiBk
+bWFfYnVmX21hcF9tZW1jcHlfdG8gLSBNZW1jcHkgaW50byBkbWEtYnVmIG1hcHBpbmcKPiA+ICsg
+KiBAZHN0OglUaGUgZG1hLWJ1ZiBtYXBwaW5nIHN0cnVjdHVyZQo+ID4gKyAqIEBzcmM6CVRoZSBz
+b3VyY2UgYnVmZmVyCj4gPiArICogQGxlbjoJVGhlIG51bWJlciBvZiBieXRlIGluIHNyYwo+ID4g
+KyAqCj4gPiArICogQ29waWVzIGRhdGEgaW50byBhIGRtYS1idWYgbWFwcGluZy4gVGhlIHNvdXJj
+ZSBidWZmZXIgaXMgaW4gc3lzdGVtCj4gPiArICogbWVtb3J5LiBEZXBlbmRpbmcgb24gdGhlIGJ1
+ZmZlcidzIGxvY2F0aW9uLCB0aGUgaGVscGVyIHBpY2tzIHRoZQo+ID4gY29ycmVjdAo+ID4gKyAq
+IG1ldGhvZCBvZiBhY2Nlc3NpbmcgdGhlIG1lbW9yeS4KPiA+ICsgKi8KPiA+ICtzdGF0aWMgaW5s
+aW5lIHZvaWQgZG1hX2J1Zl9tYXBfbWVtY3B5X3RvKHN0cnVjdCBkbWFfYnVmX21hcCAqZHN0LCBj
+b25zdAo+ID4gdm9pZCAqc3JjLCBzaXplX3QgbGVuKSArewo+ID4gKwlpZiAoZHN0LT5pc19pb21l
+bSkKPiA+ICsJCW1lbWNweV90b2lvKGRzdC0+dmFkZHJfaW9tZW0sIHNyYywgbGVuKTsKPiA+ICsJ
+ZWxzZQo+ID4gKwkJbWVtY3B5KGRzdC0+dmFkZHIsIHNyYywgbGVuKTsKPiA+ICt9Cj4gPiArCj4g
+PiArLyoqCj4gPiArICogZG1hX2J1Zl9tYXBfaW5jciAtIEluY3JlbWVudHMgdGhlIGFkZHJlc3Mg
+c3RvcmVkIGluIGEgZG1hLWJ1ZiBtYXBwaW5nCj4gPiArICogQG1hcDoJVGhlIGRtYS1idWYgbWFw
+cGluZyBzdHJ1Y3R1cmUKPiA+ICsgKiBAaW5jcjoJVGhlIG51bWJlciBvZiBieXRlcyB0byBpbmNy
+ZW1lbnQKPiA+ICsgKgo+ID4gKyAqIEluY3JlbWVudHMgdGhlIGFkZHJlc3Mgc3RvcmVkIGluIGEg
+ZG1hLWJ1ZiBtYXBwaW5nLiBEZXBlbmRpbmcgb24gdGhlCj4gPiArICogYnVmZmVyJ3MgbG9jYXRp
+b24sIHRoZSBjb3JyZWN0IHZhbHVlIHdpbGwgYmUgdXBkYXRlZC4KPiA+ICsgKi8KPiA+ICtzdGF0
+aWMgaW5saW5lIHZvaWQgZG1hX2J1Zl9tYXBfaW5jcihzdHJ1Y3QgZG1hX2J1Zl9tYXAgKm1hcCwg
+c2l6ZV90IGluY3IpCj4gPiArewo+ID4gKwlpZiAobWFwLT5pc19pb21lbSkKPiA+ICsJCW1hcC0+
+dmFkZHJfaW9tZW0gKz0gaW5jcjsKPiA+ICsJZWxzZQo+ID4gKwkJbWFwLT52YWRkciArPSBpbmNy
+Owo+ID4gK30KPiA+ICsKPiA+ICAjZW5kaWYgLyogX19ETUFfQlVGX01BUF9IX18gKi8KPiA+IC0t
+IAo+ID4gMi4yOC4wCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX18KPiBkcmktZGV2ZWwgbWFpbGluZyBsaXN0Cj4gZHJpLWRldmVsQGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwo+IGh0dHBzOi8vbGlzdHMuZnJlZWRlc2t0b3Aub3JnL21haWxtYW4vbGlzdGluZm8v
+ZHJpLWRldmVsCgoKCi0tIApUaG9tYXMgWmltbWVybWFubgpHcmFwaGljcyBEcml2ZXIgRGV2ZWxv
+cGVyClNVU0UgU29mdHdhcmUgU29sdXRpb25zIEdlcm1hbnkgR21iSApNYXhmZWxkc3RyLiA1LCA5
+MDQwOSBOw7xybmJlcmcsIEdlcm1hbnkKKEhSQiAzNjgwOSwgQUcgTsO8cm5iZXJnKQpHZXNjaMOk
+ZnRzZsO8aHJlcjogRmVsaXggSW1lbmTDtnJmZmVyCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
