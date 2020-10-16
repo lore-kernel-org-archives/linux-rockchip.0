@@ -2,21 +2,20 @@ Return-Path: <SRS0=QPul=DX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E9C90C433DF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 16:04:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 91F84C43457
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 16:07:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 33AB420866
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 16:04:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0A216207BC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Oct 2020 16:07:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Rjg3+sbe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 33AB420866
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YsY++W5j"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0A216207BC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,54 +24,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
 	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=jydSfDDncCTYLup0ysCtOKtduOMGn61N79MC5Kbthmk=; b=Rjg3+sbepcIFTS9g6oYfA3IQb
-	ZkzogtOC4bbCAuB5jHLdPjC0PsjeEojTEtBdGwY4zDs6nNYJBwdaYMBV8g9sEdqPt3uKtsWD3Yepv
-	LnapYS/4iyD9SRcA0BMEP1Xx3tal+1gtxIpGkmE1WL4WuIspfY3I2pSk9bVeFtFyYeJmPIzVq5GuK
-	haP0/xQHuZyWkFyo+gO44meWX8PB4NDMiSWCOtVHjIgg7mX8zAyxDudLqN/T5GpJovYFQC2uPTg02
-	fHn1g5IeRL2l2lUUTsoaDQIU4TUtoqqNedKT9B3qt3Yk8mjXK9lDdrjhGNn4PyAFZfvg69sN7fdLb
-	GzxZ41Vzg==;
+	 bh=LbxMmuUE6HXsWH3xm6F/7C4cCE6puikJ9yM3ksaOAd4=; b=YsY++W5jSLnb2AL00CQMi+DN4
+	Q4hHG3TOZWMctqvlCdyphTh8s+6vDaWsQqcvJOzIFYyo6E+8wAaZnTTQdfn0slvmzrBCVuyMkyidN
+	xxwfoUIIVrlV3YvWK2SUfPFfOGxt5Kt8wMg5oVXm1N4jMEw8lhGg91KqXtyddgI5vMcUJTFQnxdnQ
+	3yIBgFuxRIRAL/LgRGbhSOovPYCMLfp1S+e4drrRzF2HKRGJ0y9TN71r0oU0BpaBvCqkEjpWU70wn
+	R0u1RcuWigh+G7V7UeGPIHhiGFal0g1hHVZi+iMIt5ZbwN25QcNjSRbYGnmdF/aFQFtawQkRfLQ6I
+	2qAGk3bnA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kTSDo-00045f-PT; Fri, 16 Oct 2020 16:04:48 +0000
-Received: from mail-ot1-f67.google.com ([209.85.210.67])
+	id 1kTSGS-0004T9-B3; Fri, 16 Oct 2020 16:07:32 +0000
+Received: from mail-oi1-f194.google.com ([209.85.167.194])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kTSDj-00044H-Nc; Fri, 16 Oct 2020 16:04:44 +0000
-Received: by mail-ot1-f67.google.com with SMTP id m22so2869099ots.4;
- Fri, 16 Oct 2020 09:04:39 -0700 (PDT)
+ id 1kTSGQ-0004SY-8j; Fri, 16 Oct 2020 16:07:30 +0000
+Received: by mail-oi1-f194.google.com with SMTP id w141so2998978oia.2;
+ Fri, 16 Oct 2020 09:07:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=B5r1iVyK3g5LOaEPbQH7PWrVHl8ge6O5axWBuh2PZeE=;
- b=EzIgXmeUfI1qS4eTxygZTkl/sldrcusuEf+uqCBIMbKICic0CJm9Gw2YoiGEfKUZ07
- nFRymBjzZyFXSOt5HCANS/MNrX3FHJYtNO49mGK3vnBPeOcOB9yUWasDr6OdA5NmG6FF
- 2nsBDu3Z8k6z3N3dCBCVf/MLaC5sXubR+b6IbWfatPpENLWURxZErPTY2LOyfhtllSw7
- vDrV2jIyaNVS9mYtDR0FdtG3gwf15t9ihReoLvn9aUl/7efNLqYTOPPPhpqmOzoIvcJK
- gBmFr4UzH+1zMU/lAIsn5971DmIrGlBeEw8n5H4jT6SH0SEdL7xCyT8BIJG6Qk0anw4h
- WW5A==
-X-Gm-Message-State: AOAM533en/VWBMLn0Bg3K53KewVb0mPQfOV/4qjqLMvrwTJpUEWogNPi
- jbXjbmt45bi6Csv54Q1aBG/2v5zg4w==
-X-Google-Smtp-Source: ABdhPJws7R2VvBCs0QwPLkKNqMNgdPLcfuPj1pTN4MciCqactZNQnAW0FdCyTT6OPwznRy+xGlaMOg==
-X-Received: by 2002:a9d:7850:: with SMTP id c16mr3017265otm.342.1602864278409; 
- Fri, 16 Oct 2020 09:04:38 -0700 (PDT)
+ bh=FdAnypayCNAEHSt2e5tstCFOMa3BUpSuCuXAQeatv68=;
+ b=Ohm74Pi0EeUcu0S3nQlyhjk2IGCcqwVLxPZJGxO/LvrxF/CsoqlOEriLNL7WcJ3CHa
+ R/Kf3JCVDzL+pfKnVtGlPwolMhzjnwwweJJsKu7xziUPdPF8waKXxoVcrrmL2HJBJn+r
+ W8maLIjgNuTiUZIHkXIxhzWkBRXQBX7+TeecEKDAZTuO/tJq+Yr8oUUfQ5Dm73ohfAck
+ RFrBY0xFUGldp8gNhE1sf0lzoLbDo1QMeNDZoWzxvn+FSRevGACoZTTmorwjSn1A9pQ2
+ /afFOG7dZDAqhEELZE8GZmLFieKAbmmPUdS8tKwTx8wtzLTaHN69b9SGDX+Q542Orslz
+ YVEw==
+X-Gm-Message-State: AOAM531hfmJaWG8/14Y/H/ipSuf26Vuxkzg3SodW6FeevNXNLl6vtnNi
+ VOJkajuvDpb43i5f0EtbWkP4VqzmPw==
+X-Google-Smtp-Source: ABdhPJyueM8m+wzO38JzNm013LzdtBhgW4tkYxr+nxNYXJKypyowhgl+vsWfboUwF6MtrbhNisZWeg==
+X-Received: by 2002:aca:c54e:: with SMTP id v75mr2984866oif.134.1602864448669; 
+ Fri, 16 Oct 2020 09:07:28 -0700 (PDT)
 Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id k6sm1087596otp.33.2020.10.16.09.04.37
+ by smtp.gmail.com with ESMTPSA id t29sm1088993otd.51.2020.10.16.09.07.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Oct 2020 09:04:37 -0700 (PDT)
-Received: (nullmailer pid 1495855 invoked by uid 1000);
- Fri, 16 Oct 2020 16:04:37 -0000
-Date: Fri, 16 Oct 2020 11:04:37 -0500
+ Fri, 16 Oct 2020 09:07:28 -0700 (PDT)
+Received: (nullmailer pid 1499812 invoked by uid 1000);
+ Fri, 16 Oct 2020 16:07:27 -0000
+Date: Fri, 16 Oct 2020 11:07:27 -0500
 From: Rob Herring <robh@kernel.org>
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 Subject: Re: [PATCH v4] dt-bindings: power: rockchip: Convert to json-schema
-Message-ID: <20201016160437.GB1494813@bogus>
+Message-ID: <20201016160727.GA1499240@bogus>
 References: <20201015101944.407487-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20201015101944.407487-1-enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201016_120443_790887_30D32ACA 
-X-CRM114-Status: GOOD (  20.32  )
+X-CRM114-CacheID: sfid-20201016_120730_349201_C687F4B2 
+X-CRM114-Status: GOOD (  19.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,25 +123,10 @@ On Thu, 15 Oct 2020 12:19:44 +0200, Enric Balletbo i Serra wrote:
 >  2 files changed, 283 insertions(+), 136 deletions(-)
 >  create mode 100644 Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
 >  delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
-> 
 
+With the indentation fixed, 
 
-My bot found errors running 'make dt_binding_check' on your patch:
-
-./Documentation/devicetree/bindings/power/rockchip,power-controller.yaml:61:13: [warning] wrong indentation: expected 10 but found 12 (indentation)
-./Documentation/devicetree/bindings/power/rockchip,power-controller.yaml:106:17: [warning] wrong indentation: expected 14 but found 16 (indentation)
-./Documentation/devicetree/bindings/power/rockchip,power-controller.yaml:138:21: [warning] wrong indentation: expected 18 but found 20 (indentation)
-
-
-See https://patchwork.ozlabs.org/patch/1382558
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure dt-schema is up to date:
-
-pip3 install git+https://github.com/devicetree-org/dt-schema.git@master --upgrade
-
-Please check and re-submit.
-
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
