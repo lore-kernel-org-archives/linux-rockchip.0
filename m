@@ -2,66 +2,58 @@ Return-Path: <SRS0=ZzQ+=D2=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FB81C433DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 16:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4701FC43467
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 16:05:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A0FC92224D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 16:02:43 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A14E72224D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 16:05:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="krOpUJKM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A0FC92224D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qedFwa+6"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A14E72224D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8r+qMejbSwV3uhWh9O5hckciWDGfvkh3w26q7885E80=; b=krOpUJKMQyfBLCssO/8kMC5E0
-	dLg1VoWCjikiS7QdQY9UQSKehH+AzoAqEX0GgghzVBt4kNjRKVn7sGH0vJS28i53mvCursM+nWzeC
-	JNFeaGyawe9AYF5P2PqQjgqTcQuSRE5i0KN6WEUOz6rj+jii64Mxm6jt399hCinu0RgqyWgJ7vSP6
-	oBkegGgpokdYdvtCH2/I6jDLCn96F4I7YqbVOVD9vDjveIyzH/D2am7Nmx0spZk5rBk55+CotMUuc
-	axMAzu02b3b0GLAGbhhxWLhK+C70JckwtgNTLGir2sB1AyoFkyb3qI9EPjYrLVHstYytM/s/Ma/Uj
-	tkCcyRajQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VyPI/OgDZCg+XU0Lw01bFt7d9Dt0BRE9T7q8REdWzhI=; b=qedFwa+6ZwHlMLYCwgef4KEVfd
+	5MixVaVwYNcsqHbUGjNPlX5GMHe7aSNaQj31FczRD1gi5vwczNOKKp/J94mX/MaDM1mTFx88iNFz3
+	NCOa0Tca7htoeL8T71T5WjfA24PPJO83uFdhxvrIOvRXprlKSC/b7Tz3dc1Llwd7ODG8ALdPOp7Ih
+	cULdp65cu608mvdModJZi3WUQ/hoaJioX9YOmUZkAvFR1kGHfNsbPHzBfemjF377SXQ8iVh9YUf/a
+	/uGIUNPDP7o20zHYJFSQrqWkJCSAQ5PHUps3igJJqFu7AdXg+WERXeFdpeunXiVK4ar0r31Y3oGWQ
+	tBZRtDMQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUXcK-00088U-UZ; Mon, 19 Oct 2020 16:02:36 +0000
+	id 1kUXek-00006u-Fy; Mon, 19 Oct 2020 16:05:06 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUXcH-00086h-Co
- for linux-rockchip@lists.infradead.org; Mon, 19 Oct 2020 16:02:34 +0000
-Received: from [IPv6:2804:14c:483:7f66::1000] (unknown
- [IPv6:2804:14c:483:7f66::1000])
+ id 1kUXeg-00005T-TW
+ for linux-rockchip@lists.infradead.org; Mon, 19 Oct 2020 16:05:04 +0000
+Received: from floko.floko.floko (unknown [IPv6:2804:14c:483:7f66::1000])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: koike)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 4778A1F44F48;
- Mon, 19 Oct 2020 17:02:28 +0100 (BST)
-Subject: Re: [PATCH] media: staging: rkisp1: cap: refactor enable/disable
- stream to allow multistreaming
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 34BA71F44F4A;
+ Mon, 19 Oct 2020 17:04:58 +0100 (BST)
 From: Helen Koike <helen.koike@collabora.com>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- linux-media@vger.kernel.org
-References: <20201015195746.264722-1-helen.koike@collabora.com>
- <8b31c5a3-9b01-9536-384a-b06d9a0a2e1a@collabora.com>
- <b8e18639-febf-9e3f-3525-7fb52a612727@collabora.com>
-Message-ID: <32295a2e-c3b0-fffc-5e23-8dbdbb83f757@collabora.com>
-Date: Mon, 19 Oct 2020 13:02:23 -0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.2
+To: linux-media@vger.kernel.org
+Subject: [PATCH v2] media: staging: rkisp1: cap: refactor enable/disable
+ stream to allow multistreaming
+Date: Mon, 19 Oct 2020 13:04:34 -0300
+Message-Id: <20201019160434.877568-1-helen.koike@collabora.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-In-Reply-To: <b8e18639-febf-9e3f-3525-7fb52a612727@collabora.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201019_120233_611157_4C63D92A 
-X-CRM114-Status: GOOD (  33.11  )
+X-CRM114-CacheID: sfid-20201019_120503_122466_10A87A54 
+X-CRM114-Status: GOOD (  31.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,325 +66,405 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, tfiga@chromium.org,
- hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
+Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com,
+ linux-kernel@vger.kernel.org, tfiga@chromium.org, hverkuil@xs4all.nl,
+ linux-rockchip@lists.infradead.org, helen.koike@collabora.com,
  laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com,
- mchehab@kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ kernel@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8sCgpPbiAxMC8xNi8yMCAzOjExIFBNLCBIZWxlbiBLb2lrZSB3cm90ZToKPiAKPiAKPiBP
-biAxMC8xNi8yMCAxMToyOCBBTSwgRGFmbmEgSGlyc2NoZmVsZCB3cm90ZToKPj4gSGksCj4+Cj4+
-IEFtIDE1LjEwLjIwIHVtIDIxOjU3IHNjaHJpZWIgSGVsZW4gS29pa2U6Cj4+PiBBbGxvdyBzdHJl
-YW1pbmcgZnJvbSBzZWxmIHBpY3R1cmUgcGF0aCBhbmQgbWFpbiBwaWN0dXJlIHBhdGggYXQgdGhl
-IHNhbWUKPj4+IHRpbWUuCj4+Pgo+Pj4gVGFrZSBjYXJlIGZvciBzX3N0cmVhbSgpIGNhbGxiYWNr
-cyB0byBub3QgYmUgY2FsbGVkIHR3aWNlLgo+Pj4gV2hlbiBzdGFydGluZyBhIHN0cmVhbSwgc19z
-dHJlYW0odHJ1ZSkgc2hvdWxkbid0IGJlIGNhbGxlZCBmb3IgdGhlIGlzcAo+Pj4gYW5kIHRoZSBz
-ZW5zb3IgaWYgdGhlIG90aGVyIHN0cmVhbSBpcyBhbHJlYWR5IGVuYWJsZWQgKHNpbmNlIGl0IHdh
-cwo+Pj4gYWxyZWFkeSBjYWxsZWQpLgo+Pj4gV2hlbiBzdG9wcGluZyBhIHN0cmVhbSwgc19zdHJl
-YW0oZmFsc2UpIHNob3VsZG4ndCBiZSBjYWxsZWQgZm9yIGlzcCBhbmQKPj4+IHRoZSBzZW5zb3Ig
-aWYgdGhlIG90aGVyIHN0cmVhbSBpcyBzdGlsbCBlbmFibGVkLgo+Pj4KPj4+IFJlbW92ZSB0aGUg
-Y2FsbGJhY2sgZnVuY3Rpb24gc2NoZW1lIGZvciBuYXZpZ2F0aW5nIHRocm91Z2ggdGhlIHRvcG9s
-b2d5LAo+Pj4gc2ltcGxpZnlpbmcgdGhlIGNvZGUsIGltcHJvdmluZyByZWFkYWJpbGl0eSwgd2hp
-bGUgY2FsbGluZwo+Pj4gbWVkaWFfcGlwZWxpbmVfe3N0YXJ0LHN0b3B9KCkgaW4gdGhlIHJpZ2h0
-IG9yZGVyLgo+Pj4KPj4+IFJlbW92ZSBtdWx0aXN0cmVhbWluZyBpdGVtIGZyb20gdGhlIFRPRE8g
-bGlzdC4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBIZWxlbiBLb2lrZSA8aGVsZW4ua29pa2VAY29s
-bGFib3JhLmNvbT4KPj4+Cj4+PiAtLS0KPj4+IEhlbGxvLAo+Pj4KPj4+IFNpbmNlIHdlIGRpZG4n
-dCByZWFjaCBhbiBhZ3JlZW1lbnQgb24gdGhlIGhlbHBlcnMgaW4gdGhlIGNvcmVbMV0sIEknbQo+
-Pj4gc2VuZGluZyB0aGlzIHBhdGNoIHRvIGZpeCB0aGlzIGxpbWl0YXRpb24gb25seSBmb3Igcmtp
-c3AxLgo+Pj4KPj4+IFsxXSBodHRwczovL3BhdGNod29yay5saW51eHR2Lm9yZy9wcm9qZWN0L2xp
-bnV4LW1lZGlhL2NvdmVyLzIwMjAwNDE1MDEzMDQ0LjE3Nzg1NzItMS1oZWxlbi5rb2lrZUBjb2xs
-YWJvcmEuY29tLwo+Pj4KPj4+IElmIHdlIGRlY2lkZSB0byBhZGQgdGhlIGhlbHBlcnMgaW4gdGhl
-IGZ1dHVyZSwgd2UgY2FuIGNsZWFuIHVwIGRyaXZlcnMKPj4+IGV2ZW4gbW9yZSwgYnV0IEkgZG9u
-J3Qgd2FudCB0byBibG9jayB0aGlzIGZlYXR1cmUuCj4+Pgo+Pj4gT3ZlcnZpZXcgb2YgdGhlIHBh
-dGNoOgo+Pj4gPT09PT09PT09PT09PT09PT09PT09PQo+Pj4KPj4+ICogUmVuYW1lIHJraXNwMV9z
-dHJlYW1fe3N0YXJ0LHN0b3B9KCkgdG8KPj4+IMKgwqAgcmtpc3AxX2NhcF9zdHJlYW1fe2VuYWJs
-ZSxkaXNhYmxlfSgpIHRvIGNsYXJpZnkgdGhlIGRpZmZlcmVuY2UgYmV0d2Vlbgo+Pj4gwqDCoCBv
-dGhlciBzdHJlYW0gZW5hYmxlL2Rpc2FibGUgZnVuY3Rpb25zCj4+Pgo+Pj4gKiBJbXBsZW1lbnQg
-cmtpc3AxX3BpcGVsaW5lX3N0cmVhbV97ZW5hYmxlLGRpc2FibGV9KCkgdG8gcmVwbGFjZQo+Pj4g
-wqDCoCBya2lzcDFfcGlwZWxpbmVfe2VuYWJsZSxkaXNhYmxlfV9jYigpIGFuZCBya2lzcDFfcGlw
-ZWxpbmVfc2lua193YWxrKCksCj4+PiDCoMKgIHdoaWNoIHdlcmUgcmVtb3ZlZC4KPj4+Cj4+PiAq
-IENhbGwgcmtpc3AxX2NhcF9zdHJlYW1fe2VuYWJsZSxkaXNhYmxlfSgpIGZyb20KPj4+IMKgwqAg
-cmtpc3AxX3BpcGVsaW5lX3N0cmVhbV97ZW5hYmxlLGRpc2FibGV9KCkgZm9yIGJldHRlcgo+Pj4g
-wqDCoCB1bndpbmQgaGFuZGxpbmcgYW5kIGZ1bmN0aW9uIG5hbWUgc2VtYW50aWNzLgo+Pj4KPj4+
-ICogQ2FsbCBtZWRpYV9waXBlbGluZV97c3RhcnQsc3RvcH0oKSBpbiB0aGUgcmlnaHQgb3JkZXIu
-Cj4+Pgo+Pj4gKiBSZW1vdmUgaXRlbSBmcm9tIFRPRE8gbGlzdCAoSSBhbHNvIHJldmlld2VkIHRo
-ZSB1c2Ugb2YgdGhlCj4+PiDCoMKgIGlzX3N0cmVhbWluZyB2YXIgaW4gdGhlIGNvZGUgYW5kIGxn
-dG0pLgo+Pj4KPj4+IFRoaXMgcGF0Y2ggd2FzIHRlc3RlZCBvbiByb2NrcGk0IGJvYXJkIHdpdGg6
-Cj4+PiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQo+Pj4KPj4+
-ICJtZWRpYS1jdGwiICItZCIgInBsYXRmb3JtOnJraXNwMSIgIi1yIgo+Pj4gIm1lZGlhLWN0bCIg
-Ii1kIiAicGxhdGZvcm06cmtpc3AxIiAiLWwiICInaW14MjE5IDQtMDAxMCc6MCAtPiAncmtpc3Ax
-X2lzcCc6MCBbMV0iCj4+PiAibWVkaWEtY3RsIiAiLWQiICJwbGF0Zm9ybTpya2lzcDEiICItbCIg
-Iidya2lzcDFfaXNwJzoyIC0+ICdya2lzcDFfcmVzaXplcl9zZWxmcGF0aCc6MCBbMV0iCj4+PiAi
-bWVkaWEtY3RsIiAiLWQiICJwbGF0Zm9ybTpya2lzcDEiICItbCIgIidya2lzcDFfaXNwJzoyIC0+
-ICdya2lzcDFfcmVzaXplcl9tYWlucGF0aCc6MCBbMV0iCj4+Pgo+Pj4gIm1lZGlhLWN0bCIgIi1k
-IiAicGxhdGZvcm06cmtpc3AxIiAiLS1zZXQtdjRsMiIgJyJpbXgyMTkgNC0wMDEwIjowIFtmbXQ6
-U1JHR0IxMF8xWDEwLzE2NDB4MTIzMl0nCj4+Pgo+Pj4gIm1lZGlhLWN0bCIgIi1kIiAicGxhdGZv
-cm06cmtpc3AxIiAiLS1zZXQtdjRsMiIgJyJya2lzcDFfaXNwIjowIFtmbXQ6U1JHR0IxMF8xWDEw
-LzE2NDB4MTIzMiBjcm9wOiAoMCwwKS8xNjAweDEyMDBdJwo+Pj4gIm1lZGlhLWN0bCIgIi1kIiAi
-cGxhdGZvcm06cmtpc3AxIiAiLS1zZXQtdjRsMiIgJyJya2lzcDFfaXNwIjoyIFtmbXQ6WVVZVjhf
-Mlg4LzE2MDB4MTIwMCBjcm9wOiAoMCwwKS8xNTAweDExMDBdJwo+Pj4KPj4+ICJtZWRpYS1jdGwi
-ICItZCIgInBsYXRmb3JtOnJraXNwMSIgIi0tc2V0LXY0bDIiICcicmtpc3AxX3Jlc2l6ZXJfc2Vs
-ZnBhdGgiOjAgW2ZtdDpZVVlWOF8yWDgvMTUwMHgxMTAwIGNyb3A6ICgzMDAsNDAwKS8xNDAweDEw
-MDBdJwo+Pj4gIm1lZGlhLWN0bCIgIi1kIiAicGxhdGZvcm06cmtpc3AxIiAiLS1zZXQtdjRsMiIg
-JyJya2lzcDFfcmVzaXplcl9zZWxmcGF0aCI6MSBbZm10OllVWVY4XzJYOC85MDB4ODAwXScKPj4+
-Cj4+PiAidjRsMi1jdGwiICIteiIgInBsYXRmb3JtOnJraXNwMSIgIi1kIiAicmtpc3AxX3NlbGZw
-YXRoIiAiLXYiICJ3aWR0aD05MDAsaGVpZ2h0PTgwMCwiCj4+PiAidjRsMi1jdGwiICIteiIgInBs
-YXRmb3JtOnJraXNwMSIgIi1kIiAicmtpc3AxX3NlbGZwYXRoIiAiLXYiICJwaXhlbGZvcm1hdD00
-MjJQIgo+Pj4KPj4+ICJtZWRpYS1jdGwiICItZCIgInBsYXRmb3JtOnJraXNwMSIgIi0tc2V0LXY0
-bDIiICcicmtpc3AxX3Jlc2l6ZXJfbWFpbnBhdGgiOjAgW2ZtdDpZVVlWOF8yWDgvMTUwMHgxMTAw
-IGNyb3A6ICgzMDAsNDAwKS8xNDAweDEwMDBdJwo+Pj4gIm1lZGlhLWN0bCIgIi1kIiAicGxhdGZv
-cm06cmtpc3AxIiAiLS1zZXQtdjRsMiIgJyJya2lzcDFfcmVzaXplcl9tYWlucGF0aCI6MSBbZm10
-OllVWVY4XzJYOC85MDB4ODAwXScKPj4+Cj4+PiAidjRsMi1jdGwiICIteiIgInBsYXRmb3JtOnJr
-aXNwMSIgIi1kIiAicmtpc3AxX21haW5wYXRoIiAiLXYiICJ3aWR0aD05MDAsaGVpZ2h0PTgwMCwi
-Cj4+PiAidjRsMi1jdGwiICIteiIgInBsYXRmb3JtOnJraXNwMSIgIi1kIiAicmtpc3AxX21haW5w
-YXRoIiAiLXYiICJwaXhlbGZvcm1hdD00MjJQIgo+Pj4KPj4+IHNsZWVwIDEKPj4+Cj4+PiB0aW1l
-IHY0bDItY3RsICIteiIgInBsYXRmb3JtOnJraXNwMSIgIi1kIiAicmtpc3AxX21haW5wYXRoIiAi
-LS1zdHJlYW0tbW1hcCIgIi0tc3RyZWFtLWNvdW50IiAiMTAwIiAmCj4+PiB0aW1lIHY0bDItY3Rs
-ICIteiIgInBsYXRmb3JtOnJraXNwMSIgIi1kIiAicmtpc3AxX3NlbGZwYXRoIiAiLS1zdHJlYW0t
-bW1hcCIgIi0tc3RyZWFtLWNvdW50IiAiMTAwIiAmCj4+Pgo+Pj4gd2FpdAo+Pj4gZWNobyAiQ29t
-cGxldGVkIgo+Pj4KPj4+IFRoYW5rcwo+Pj4gSGVsZW4KPj4+IC0tLQo+Pj4gwqAgZHJpdmVycy9z
-dGFnaW5nL21lZGlhL3JraXNwMS9UT0RPwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDMg
-LQo+Pj4gwqAgZHJpdmVycy9zdGFnaW5nL21lZGlhL3JraXNwMS9ya2lzcDEtY2FwdHVyZS5jIHwg
-MjI3ICsrKysrKysrKy0tLS0tLS0tLQo+Pj4gwqAgMiBmaWxlcyBjaGFuZ2VkLCAxMTMgaW5zZXJ0
-aW9ucygrKSwgMTE3IGRlbGV0aW9ucygtKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3N0
-YWdpbmcvbWVkaWEvcmtpc3AxL1RPRE8gYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmtpc3AxL1RP
-RE8KPj4+IGluZGV4IGU3YzgzOThmYzJjZWYuLmEyZGQwYWQ5NTFjMjUgMTAwNjQ0Cj4+PiAtLS0g
-YS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvcmtpc3AxL1RPRE8KPj4+ICsrKyBiL2RyaXZlcnMvc3Rh
-Z2luZy9tZWRpYS9ya2lzcDEvVE9ETwo+Pj4gQEAgLTEsOSArMSw2IEBACj4+PiDCoCAqIEZpeCBw
-YWQgZm9ybWF0IHNpemUgZm9yIHN0YXRpc3RpY3MgYW5kIHBhcmFtZXRlcnMgZW50aXRpZXMuCj4+
-PiDCoCAqIEZpeCBjaGVja3BhdGNoIGVycm9ycy4KPj4+IMKgICogQWRkIHVhcGkgZG9jcy4gUmVt
-ZW1iZXIgdG8gYWRkIGRvY3VtZW50YXRpb24gb2YgaG93IHF1YW50aXphdGlvbiBpcyBoYW5kbGVk
-Lgo+Pj4gLSogc3RyZWFtaW5nIHBhdGhzIChtYWlucGF0aCBhbmQgc2VsZnBhdGgpIGNoZWNrIGlm
-IHRoZSBvdGhlciBwYXRoIGlzIHN0cmVhbWluZwo+Pj4gLWluIHNldmVyYWwgcGxhY2VzIG9mIHRo
-ZSBjb2RlLCByZXZpZXcgdGhpcywgc3BlY2lhbGx5IHRoYXQgaXQgZG9lc24ndCBzZWVtIGl0Cj4+
-PiAtc3VwcG9ydHMgc3RyZWFtaW5nIGZyb20gYm90aCBwYXRocyBhdCB0aGUgc2FtZSB0aW1lLgo+
-Pj4gwqAgwqAgTk9URVM6Cj4+PiDCoCAqIEFsbCB2NGwyLWNvbXBsaWFuY2UgdGVzdCBtdXN0IHBh
-c3MuCj4+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JraXNwMS9ya2lzcDEt
-Y2FwdHVyZS5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL3JraXNwMS9ya2lzcDEtY2FwdHVyZS5j
-Cj4+PiBpbmRleCBiNmY0OTdjZTNlOTVjLi4yNTQ5MzY4NzNjNmMxIDEwMDY0NAo+Pj4gLS0tIGEv
-ZHJpdmVycy9zdGFnaW5nL21lZGlhL3JraXNwMS9ya2lzcDEtY2FwdHVyZS5jCj4+PiArKysgYi9k
-cml2ZXJzL3N0YWdpbmcvbWVkaWEvcmtpc3AxL3JraXNwMS1jYXB0dXJlLmMKPj4+IEBAIC04MzAs
-NzEgKzgzMCw0MyBAQCBzdGF0aWMgdm9pZCBya2lzcDFfcmV0dXJuX2FsbF9idWZmZXJzKHN0cnVj
-dCBya2lzcDFfY2FwdHVyZSAqY2FwLAo+Pj4gwqAgfQo+Pj4gwqAgwqAgLyoKPj4+IC0gKiBya2lz
-cDFfcGlwZWxpbmVfc2lua193YWxrIC0gV2FsayB0aHJvdWdoIHRoZSBwaXBlbGluZSBhbmQgY2Fs
-bCBjYgo+Pj4gLSAqIEBmcm9tOiBlbnRpdHkgYXQgd2hpY2ggdG8gc3RhcnQgcGlwZWxpbmUgd2Fs
-awo+Pj4gLSAqIEB1bnRpbDogZW50aXR5IGF0IHdoaWNoIHRvIHN0b3AgcGlwZWxpbmUgd2Fsawo+
-Pj4gLSAqCj4+PiAtICogV2FsayB0aGUgZW50aXRpZXMgY2hhaW4gc3RhcnRpbmcgYXQgdGhlIHBp
-cGVsaW5lIHZpZGVvIG5vZGUgYW5kIHN0b3AKPj4+IC0gKiBhbGwgc3ViZGV2aWNlcyBpbiB0aGUg
-Y2hhaW4uCj4+PiAtICoKPj4+IC0gKiBJZiB0aGUgdW50aWwgYXJndW1lbnQgaXNuJ3QgTlVMTCwg
-c3RvcCB0aGUgcGlwZWxpbmUgd2FsayB3aGVuIHJlYWNoaW5nIHRoZQo+Pj4gLSAqIHVudGlsIGVu
-dGl0eS4gVGhpcyBpcyB1c2VkIHRvIGRpc2FibGUgYSBwYXJ0aWFsbHkgc3RhcnRlZCBwaXBlbGlu
-ZSBkdWUgdG8gYQo+Pj4gLSAqIHN1YmRldiBzdGFydCBlcnJvci4KPj4+ICsgKiBNb3N0IG9mIHJl
-Z2lzdGVycyBpbnNpZGUgcm9ja2NoaXAgSVNQMSBoYXZlIHNoYWRvdyByZWdpc3RlciBzaW5jZQo+
-Pj4gKyAqIHRoZXkgbXVzdCBiZSBub3QgYmUgY2hhbmdlZCBkdXJpbmcgcHJvY2Vzc2luZyBhIGZy
-YW1lLgo+Pj4gKyAqIFVzdWFsbHksIGVhY2ggc3ViLW1vZHVsZSB1cGRhdGVzIGl0cyBzaGFkb3cg
-cmVnaXN0ZXIgYWZ0ZXIKPj4+ICsgKiBwcm9jZXNzaW5nIHRoZSBsYXN0IHBpeGVsIG9mIGEgZnJh
-bWUuCj4+PiDCoMKgICovCj4+PiAtc3RhdGljIGludCBya2lzcDFfcGlwZWxpbmVfc2lua193YWxr
-KHN0cnVjdCBtZWRpYV9lbnRpdHkgKmZyb20sCj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoCBzdHJ1Y3QgbWVkaWFfZW50aXR5ICp1bnRpbCwKPj4+IC3CoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGludCAoKmNiKShzdHJ1Y3QgbWVkaWFf
-ZW50aXR5ICpmcm9tLAo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgc3RydWN0IG1lZGlhX2VudGl0eSAqY3VycikpCj4+PiArc3RhdGljIHZv
-aWQgcmtpc3AxX2NhcF9zdHJlYW1fZW5hYmxlKHN0cnVjdCBya2lzcDFfY2FwdHVyZSAqY2FwKQo+
-Pj4gwqAgewo+Pj4gLcKgwqDCoCBzdHJ1Y3QgbWVkaWFfZW50aXR5ICplbnRpdHkgPSBmcm9tOwo+
-Pj4gLcKgwqDCoCBzdHJ1Y3QgbWVkaWFfcGFkICpwYWQ7Cj4+PiAtwqDCoMKgIHVuc2lnbmVkIGlu
-dCBpOwo+Pj4gLcKgwqDCoCBpbnQgcmV0Owo+Pj4gLQo+Pj4gLcKgwqDCoCB3aGlsZSAoMSkgewo+
-Pj4gLcKgwqDCoMKgwqDCoMKgIHBhZCA9IE5VTEw7Cj4+PiAtwqDCoMKgwqDCoMKgwqAgLyogRmlu
-ZCByZW1vdGUgc291cmNlIHBhZCAqLwo+Pj4gLcKgwqDCoMKgwqDCoMKgIGZvciAoaSA9IDA7IGkg
-PCBlbnRpdHktPm51bV9wYWRzOyBpKyspIHsKPj4+IC3CoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0
-cnVjdCBtZWRpYV9wYWQgKnNwYWQgPSAmZW50aXR5LT5wYWRzW2ldOwo+Pj4gLQo+Pj4gLcKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgaWYgKCEoc3BhZC0+ZmxhZ3MgJiBNRURJQV9QQURfRkxfU0lOSykp
-Cj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNvbnRpbnVlOwo+Pj4gLcKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgcGFkID0gbWVkaWFfZW50aXR5X3JlbW90ZV9wYWQoc3BhZCk7Cj4+
-PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBpZiAocGFkICYmIGlzX21lZGlhX2VudGl0eV92NGwy
-X3N1YmRldihwYWQtPmVudGl0eSkpCj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IGJyZWFrOwo+Pj4gLcKgwqDCoMKgwqDCoMKgIH0KPj4+IC3CoMKgwqDCoMKgwqDCoCBpZiAoIXBh
-ZCB8fCAhaXNfbWVkaWFfZW50aXR5X3Y0bDJfc3ViZGV2KHBhZC0+ZW50aXR5KSkKPj4+IC3CoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIGJyZWFrOwo+Pj4gK8KgwqDCoCBzdHJ1Y3Qgcmtpc3AxX2Rldmlj
-ZSAqcmtpc3AxID0gY2FwLT5ya2lzcDE7Cj4+PiArwqDCoMKgIHN0cnVjdCBya2lzcDFfY2FwdHVy
-ZSAqb3RoZXIgPSAmcmtpc3AxLT5jYXB0dXJlX2RldnNbY2FwLT5pZCBeIDFdOwo+Pj4gwqAgLcKg
-wqDCoMKgwqDCoMKgIGVudGl0eSA9IHBhZC0+ZW50aXR5Owo+Pj4gLcKgwqDCoMKgwqDCoMKgIGlm
-IChlbnRpdHkgPT0gdW50aWwpCj4+PiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBicmVhazsKPj4+
-ICvCoMKgwqAgY2FwLT5vcHMtPnNldF9kYXRhX3BhdGgoY2FwKTsKPj4+ICvCoMKgwqAgY2FwLT5v
-cHMtPmNvbmZpZyhjYXApOwo+Pj4gwqAgLcKgwqDCoMKgwqDCoMKgIHJldCA9IGNiKGZyb20sIGVu
-dGl0eSk7Cj4+PiAtwqDCoMKgwqDCoMKgwqAgaWYgKHJldCkKPj4+IC3CoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIHJldHVybiByZXQ7Cj4+PiArwqDCoMKgIC8qIFNldHVwIGEgYnVmZmVyIGZvciB0aGUg
-bmV4dCBmcmFtZSAqLwo+Pj4gK8KgwqDCoCBzcGluX2xvY2tfaXJxKCZjYXAtPmJ1Zi5sb2NrKTsK
-Pj4+ICvCoMKgwqAgcmtpc3AxX3NldF9uZXh0X2J1ZihjYXApOwo+Pj4gK8KgwqDCoCBjYXAtPm9w
-cy0+ZW5hYmxlKGNhcCk7Cj4+PiArwqDCoMKgIC8qIEl0J3Mgc2FmZSB0byBjb25maWcgQUNUSVZF
-IGFuZCBTSEFET1cgcmVncyBmb3IgdGhlCj4+PiArwqDCoMKgwqAgKiBmaXJzdCBzdHJlYW0uIFdo
-aWxlIHdoZW4gdGhlIHNlY29uZCBpcyBzdGFydGluZywgZG8gTk9UCj4+PiArwqDCoMKgwqAgKiBm
-b3JjZSB1cGRhdGUgYmVjYXVzZSBpdCBhbHNvIHVwZGF0ZSB0aGUgZmlyc3Qgb25lLgo+Pj4gK8Kg
-wqDCoMKgICoKPj4+ICvCoMKgwqDCoCAqIFRoZSBsYXR0ZXIgY2FzZSB3b3VsZCBkcm9wIG9uZSBt
-b3JlIGJ1Zih0aGF0IGlzIDIpIHNpbmNlCj4+PiArwqDCoMKgwqAgKiB0aGVyZSdzIG5vdCBidWYg
-aW4gc2hhZG93IHdoZW4gdGhlIHNlY29uZCBGRSByZWNlaXZlZC4gVGhpcydzCj4+PiArwqDCoMKg
-wqAgKiBhbHNvIHJlcXVpcmVkIGJlY2F1c2UgdGhlIHNlY29uZCBGRSBtYXliZSBjb3JydXB0IGVz
-cGVjaWFsbHkKPj4+ICvCoMKgwqDCoCAqIHdoZW4gcnVuIGF0IDEyMGZwcy4KPj4+ICvCoMKgwqDC
-oCAqLwo+Pj4gK8KgwqDCoCBpZiAoIW90aGVyLT5pc19zdHJlYW1pbmcpIHsKPj4+ICvCoMKgwqDC
-oMKgwqDCoCAvKiBmb3JjZSBjZmcgdXBkYXRlICovCj4+PiArwqDCoMKgwqDCoMKgwqAgcmtpc3Ax
-X3dyaXRlKHJraXNwMSwKPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBSS0lT
-UDFfQ0lGX01JX0lOSVRfU09GVF9VUEQsIFJLSVNQMV9DSUZfTUlfSU5JVCk7Cj4+PiArwqDCoMKg
-wqDCoMKgwqAgcmtpc3AxX3NldF9uZXh0X2J1ZihjYXApOwo+Pj4gwqDCoMKgwqDCoCB9Cj4+PiAt
-Cj4+PiAtwqDCoMKgIHJldHVybiAwOwo+Pj4gLX0KPj4+IC0KPj4+IC1zdGF0aWMgaW50IHJraXNw
-MV9waXBlbGluZV9kaXNhYmxlX2NiKHN0cnVjdCBtZWRpYV9lbnRpdHkgKmZyb20sCj4+PiAtwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHN0cnVjdCBtZWRpYV9lbnRp
-dHkgKmN1cnIpCj4+PiAtewo+Pj4gLcKgwqDCoCBzdHJ1Y3QgdjRsMl9zdWJkZXYgKnNkID0gbWVk
-aWFfZW50aXR5X3RvX3Y0bDJfc3ViZGV2KGN1cnIpOwo+Pj4gLQo+Pj4gLcKgwqDCoCByZXR1cm4g
-djRsMl9zdWJkZXZfY2FsbChzZCwgdmlkZW8sIHNfc3RyZWFtLCBmYWxzZSk7Cj4+PiAtfQo+Pj4g
-LQo+Pj4gLXN0YXRpYyBpbnQgcmtpc3AxX3BpcGVsaW5lX2VuYWJsZV9jYihzdHJ1Y3QgbWVkaWFf
-ZW50aXR5ICpmcm9tLAo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgc3RydWN0IG1lZGlhX2VudGl0eSAqY3VycikKPj4+IC17Cj4+PiAtwqDCoMKgIHN0cnVjdCB2
-NGwyX3N1YmRldiAqc2QgPSBtZWRpYV9lbnRpdHlfdG9fdjRsMl9zdWJkZXYoY3Vycik7Cj4+PiAt
-Cj4+PiAtwqDCoMKgIHJldHVybiB2NGwyX3N1YmRldl9jYWxsKHNkLCB2aWRlbywgc19zdHJlYW0s
-IHRydWUpOwo+Pj4gK8KgwqDCoCBzcGluX3VubG9ja19pcnEoJmNhcC0+YnVmLmxvY2spOwo+Pj4g
-K8KgwqDCoCBjYXAtPmlzX3N0cmVhbWluZyA9IHRydWU7Cj4+PiDCoCB9Cj4+PiDCoCAtc3RhdGlj
-IHZvaWQgcmtpc3AxX3N0cmVhbV9zdG9wKHN0cnVjdCBya2lzcDFfY2FwdHVyZSAqY2FwKQo+Pj4g
-K3N0YXRpYyB2b2lkIHJraXNwMV9jYXBfc3RyZWFtX2Rpc2FibGUoc3RydWN0IHJraXNwMV9jYXB0
-dXJlICpjYXApCj4+PiDCoCB7Cj4+PiDCoMKgwqDCoMKgIGludCByZXQ7Cj4+PiDCoCBAQCAtOTEx
-LDYgKzg4Myw4MSBAQCBzdGF0aWMgdm9pZCBya2lzcDFfc3RyZWFtX3N0b3Aoc3RydWN0IHJraXNw
-MV9jYXB0dXJlICpjYXApCj4+PiDCoMKgwqDCoMKgIH0KPj4+IMKgIH0KPj4+IMKgICsvKgo+Pj4g
-KyAqIHJraXNwMV9waXBlbGluZV9zdHJlYW1fZGlzYWJsZSAtIGRpc2FibGUgbm9kZXMgaW4gdGhl
-IHBpcGVsaW5lCj4+PiArICoKPj4+ICsgKiBDYWxsIHNfc3RyZWFtKGZhbHNlKSBpbiB0aGUgcmV2
-ZXJzZSBvcmRlciBmcm9tCj4+PiArICogcmtpc3AxX3BpcGVsaW5lX3N0cmVhbV9lbmFibGUoKSBh
-bmQgZGlzYWJsZSB0aGUgRE1BIGVuZ2luZS4KPj4+ICsgKiBTaG91bGQgYmUgY2FsbGVkIGJlZm9y
-ZSBtZWRpYV9waXBlbGluZV9zdG9wKCkKPj4+ICsgKi8KPj4+ICtzdGF0aWMgdm9pZCBya2lzcDFf
-cGlwZWxpbmVfc3RyZWFtX2Rpc2FibGUoc3RydWN0IHJraXNwMV9jYXB0dXJlICpjYXApCj4+PiAr
-wqDCoMKgIF9fbXVzdF9ob2xkKCZjYXAtPnJraXNwMS0+c3RyZWFtX2xvY2spCj4+PiArewo+Pj4g
-K8KgwqDCoCBzdHJ1Y3Qgcmtpc3AxX2RldmljZSAqcmtpc3AxID0gY2FwLT5ya2lzcDE7Cj4+PiAr
-Cj4+PiArwqDCoMKgIHJraXNwMV9jYXBfc3RyZWFtX2Rpc2FibGUoY2FwKTsKPj4+ICsKPj4+ICvC
-oMKgwqAgLyoKPj4+ICvCoMKgwqDCoCAqIElmIHRoZSBvdGhlciBjYXB0dXJlIGlzIHN0cmVhbWlu
-ZywgaXNwIGFuZCBzZW5zb3Igbm9kZXMgc2hvdWxkbid0Cj4+PiArwqDCoMKgwqAgKiBiZSBkaXNh
-YmxlZCwgc2tpcCB0aGVtLgo+Pj4gK8KgwqDCoMKgICovCj4+PiArwqDCoMKgIGlmIChya2lzcDEt
-PnBpcGUuc3RyZWFtaW5nX2NvdW50IDwgMikgewo+Pj4gK8KgwqDCoMKgwqDCoMKgIHY0bDJfc3Vi
-ZGV2X2NhbGwocmtpc3AxLT5hY3RpdmVfc2Vuc29yLT5zZCwgdmlkZW8sIHNfc3RyZWFtLAo+Pj4g
-K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGZhbHNlKTsKPj4+ICvCoMKgwqDCoMKg
-wqDCoCB2NGwyX3N1YmRldl9jYWxsKCZya2lzcDEtPmlzcC5zZCwgdmlkZW8sIHNfc3RyZWFtLCBm
-YWxzZSk7Cj4+PiArwqDCoMKgIH0KPj4+ICsKPj4+ICvCoMKgwqAgdjRsMl9zdWJkZXZfY2FsbCgm
-cmtpc3AxLT5yZXNpemVyX2RldnNbY2FwLT5pZF0uc2QsIHZpZGVvLCBzX3N0cmVhbSwKPj4+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgZmFsc2UpOwo+Pgo+PiBJIHdvbmRlciBpZiB0aGUgb3Jk
-ZXIgb2YgdGhlIGRpc2FibGUgbWF0dGVycy4gSWYgaXQgc2hvdWxkIGJlIGZyb20gdGhlIHNlbnNv
-ciB1cCB0byB0aGUKPj4gY2FwdHVyZSB0aGVuIHdlIHNob3VsZCBjYWxsICdya2lzcDFfY2FwX3N0
-cmVhbV9kaXNhYmxlJyBhdCB0aGUgZW5kIG9mIHRoaXMKPj4gZnVuY3Rpb24uCgpUaGUgb25seSBp
-c3N1ZSBJIHNhdyB3YXMgaWYgSSBlbmFibGUgdGhlIHNlbnNvciBiZWZvcmUgdGhlIElTUC4KRXZl
-biBpZiB0aGUgb3JkZXIgaW4gZGlzYWJsaW5nIHRoZSBjYXB0dXJlIGRvZXNuJ3QgbWF0dGVyIG11
-Y2gsIGl0IGlzIG5pY2UgdG8Ka2VlcCB0aGUgbG9naWMsIHRoYW5rcyBmb3IgdGhpcyBjb21tZW50
-LgoKPj4KPj4+ICt9Cj4+PiArCj4+PiArLyoKPj4+ICsgKiBya2lzcDFfcGlwZWxpbmVfc3RyZWFt
-X2VuYWJsZSAtIGVuYWJsZSBub2RlcyBpbiB0aGUgcGlwZWxpbmUKPj4+ICsgKgo+Pj4gKyAqIEVu
-YWJsZSB0aGUgRE1BIEVuZ2luZSBhbmQgY2FsbCBzX3N0cmVhbSh0cnVlKSB0aHJvdWdoIHRoZSBw
-aXBlbGluZS4KPj4+ICsgKiBTaG91bGQgYmUgY2FsbGVkIGFmdGVyIG1lZGlhX3BpcGVsaW5lX3N0
-YXJ0KCkKPj4+ICsgKi8KPj4+ICtzdGF0aWMgaW50IHJraXNwMV9waXBlbGluZV9zdHJlYW1fZW5h
-YmxlKHN0cnVjdCBya2lzcDFfY2FwdHVyZSAqY2FwKQo+Pj4gK8KgwqDCoCBfX211c3RfaG9sZCgm
-Y2FwLT5ya2lzcDEtPnN0cmVhbV9sb2NrKQo+Pj4gK3sKPj4+ICvCoMKgwqAgc3RydWN0IHJraXNw
-MV9kZXZpY2UgKnJraXNwMSA9IGNhcC0+cmtpc3AxOwo+Pj4gK8KgwqDCoCBpbnQgcmV0Owo+Pj4g
-Kwo+Pj4gK8KgwqDCoCBya2lzcDFfY2FwX3N0cmVhbV9lbmFibGUoY2FwKTsKPj4+ICsKPj4+ICvC
-oMKgwqAgcmV0ID0gdjRsMl9zdWJkZXZfY2FsbCgmcmtpc3AxLT5yZXNpemVyX2RldnNbY2FwLT5p
-ZF0uc2QsIHZpZGVvLAo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBz
-X3N0cmVhbSwgdHJ1ZSk7Cj4+PiArwqDCoMKgIGlmIChyZXQpCj4+PiArwqDCoMKgwqDCoMKgwqAg
-cmV0dXJuIHJldDsKPj4KPj4gSW4gY2FzZSBvZiBlcnJvciBoZXJlLCBzaG91bGRuJ3Qgd2UgY2Fs
-bCAncmtpc3AxX2NhcF9zdHJlYW1fZGlzYWJsZSc/Cj4gCj4gWWVzLCB0aGFua3MgZm9yIGNhdGNo
-aW5nIGl0IDopCj4gCj4+Cj4+PiArCj4+PiArwqDCoMKgIC8qCj4+PiArwqDCoMKgwqAgKiBJZiB0
-aGUgb3RoZXIgY2FwdHVyZSBpcyBzdHJlYW1pbmcsIGlzcCBhbmQgc2Vuc29yIG5vZGVzIGFyZSBh
-bHJlYWR5Cj4+PiArwqDCoMKgwqAgKiBlbmFibGVkLCBza2lwIHRoZW0uCj4+PiArwqDCoMKgwqAg
-Ki8KPj4+ICvCoMKgwqAgaWYgKHJraXNwMS0+cGlwZS5zdHJlYW1pbmdfY291bnQgPiAxKQo+Pj4g
-K8KgwqDCoMKgwqDCoMKgIHJldHVybiAwOwo+Pj4gKwo+Pj4gK8KgwqDCoCByZXQgPSB2NGwyX3N1
-YmRldl9jYWxsKCZya2lzcDEtPmlzcC5zZCwgdmlkZW8sIHNfc3RyZWFtLCB0cnVlKTsKPj4+ICvC
-oMKgwqAgaWYgKHJldCkKPj4+ICvCoMKgwqDCoMKgwqDCoCBnb3RvIGVycl9kaXNhYmxlX3JzejsK
-Pj4+ICsKPj4+ICvCoMKgwqAgcmV0ID0gdjRsMl9zdWJkZXZfY2FsbChya2lzcDEtPmFjdGl2ZV9z
-ZW5zb3ItPnNkLCB2aWRlbywgc19zdHJlYW0sCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHRydWUpOwo+Pj4gK8KgwqDCoCBpZiAocmV0KQo+Pj4gK8KgwqDCoMKgwqDC
-oMKgIGdvdG8gZXJyX2Rpc2FibGVfaXNwOwo+Pj4gKwo+Pj4gK8KgwqDCoCByZXR1cm4gMDsKPj4+
-ICsKPj4+ICtlcnJfZGlzYWJsZV9pc3A6Cj4+PiArwqDCoMKgIHY0bDJfc3ViZGV2X2NhbGwoJnJr
-aXNwMS0+aXNwLnNkLCB2aWRlbywgc19zdHJlYW0sIGZhbHNlKTsKPj4+ICtlcnJfZGlzYWJsZV9y
-c3o6Cj4+PiArwqDCoMKgIHY0bDJfc3ViZGV2X2NhbGwoJnJraXNwMS0+cmVzaXplcl9kZXZzW2Nh
-cC0+aWRdLnNkLCB2aWRlbywgc19zdHJlYW0sCj4+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IGZhbHNlKTsKPj4+ICvCoMKgwqAgcmtpc3AxX2NhcF9zdHJlYW1fZGlzYWJsZShjYXApOwo+Pj4g
-Kwo+Pj4gK8KgwqDCoCByZXR1cm4gcmV0Owo+Pj4gK30KPj4+ICsKPj4+IMKgIHN0YXRpYyB2b2lk
-IHJraXNwMV92YjJfc3RvcF9zdHJlYW1pbmcoc3RydWN0IHZiMl9xdWV1ZSAqcXVldWUpCj4+PiDC
-oCB7Cj4+PiDCoMKgwqDCoMKgIHN0cnVjdCBya2lzcDFfY2FwdHVyZSAqY2FwID0gcXVldWUtPmRy
-dl9wcml2Owo+Pj4gQEAgLTkyMCwxMyArOTY3LDggQEAgc3RhdGljIHZvaWQgcmtpc3AxX3ZiMl9z
-dG9wX3N0cmVhbWluZyhzdHJ1Y3QgdmIyX3F1ZXVlICpxdWV1ZSkKPj4+IMKgIMKgwqDCoMKgwqAg
-bXV0ZXhfbG9jaygmY2FwLT5ya2lzcDEtPnN0cmVhbV9sb2NrKTsKPj4+IMKgIC3CoMKgwqAgcmtp
-c3AxX3N0cmVhbV9zdG9wKGNhcCk7Cj4+PiArwqDCoMKgIHJraXNwMV9waXBlbGluZV9zdHJlYW1f
-ZGlzYWJsZShjYXApOwo+Pj4gwqDCoMKgwqDCoCBtZWRpYV9waXBlbGluZV9zdG9wKCZub2RlLT52
-ZGV2LmVudGl0eSk7Cj4+PiAtwqDCoMKgIHJldCA9IHJraXNwMV9waXBlbGluZV9zaW5rX3dhbGso
-Jm5vZGUtPnZkZXYuZW50aXR5LCBOVUxMLAo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIHJraXNwMV9waXBlbGluZV9kaXNhYmxlX2NiKTsKPj4+IC3CoMKgwqAgaWYg
-KHJldCkKPj4+IC3CoMKgwqDCoMKgwqDCoCBkZXZfZXJyKHJraXNwMS0+ZGV2LAo+Pj4gLcKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgInBpcGVsaW5lIHN0cmVhbS1vZmYgZmFpbGVkIGVycm9yOiVkXG4i
-LCByZXQpOwo+Pj4gwqAgwqDCoMKgwqDCoCBya2lzcDFfcmV0dXJuX2FsbF9idWZmZXJzKGNhcCwg
-VkIyX0JVRl9TVEFURV9FUlJPUik7Cj4+PiDCoCBAQCAtOTQwLDQzICs5ODIsNiBAQCBzdGF0aWMg
-dm9pZCBya2lzcDFfdmIyX3N0b3Bfc3RyZWFtaW5nKHN0cnVjdCB2YjJfcXVldWUgKnF1ZXVlKQo+
-Pj4gwqDCoMKgwqDCoCBtdXRleF91bmxvY2soJmNhcC0+cmtpc3AxLT5zdHJlYW1fbG9jayk7Cj4+
-PiDCoCB9Cj4+PiDCoCAtLyoKPj4+IC0gKiBNb3N0IG9mIHJlZ2lzdGVycyBpbnNpZGUgcm9ja2No
-aXAgSVNQMSBoYXZlIHNoYWRvdyByZWdpc3RlciBzaW5jZQo+Pj4gLSAqIHRoZXkgbXVzdCBiZSBu
-b3QgYmUgY2hhbmdlZCBkdXJpbmcgcHJvY2Vzc2luZyBhIGZyYW1lLgo+Pj4gLSAqIFVzdWFsbHks
-IGVhY2ggc3ViLW1vZHVsZSB1cGRhdGVzIGl0cyBzaGFkb3cgcmVnaXN0ZXIgYWZ0ZXIKPj4+IC0g
-KiBwcm9jZXNzaW5nIHRoZSBsYXN0IHBpeGVsIG9mIGEgZnJhbWUuCj4+PiAtICovCj4+PiAtc3Rh
-dGljIHZvaWQgcmtpc3AxX3N0cmVhbV9zdGFydChzdHJ1Y3Qgcmtpc3AxX2NhcHR1cmUgKmNhcCkK
-Pj4+IC17Cj4+PiAtwqDCoMKgIHN0cnVjdCBya2lzcDFfZGV2aWNlICpya2lzcDEgPSBjYXAtPnJr
-aXNwMTsKPj4+IC3CoMKgwqAgc3RydWN0IHJraXNwMV9jYXB0dXJlICpvdGhlciA9ICZya2lzcDEt
-PmNhcHR1cmVfZGV2c1tjYXAtPmlkIF4gMV07Cj4+PiAtCj4+PiAtwqDCoMKgIGNhcC0+b3BzLT5z
-ZXRfZGF0YV9wYXRoKGNhcCk7Cj4+PiAtwqDCoMKgIGNhcC0+b3BzLT5jb25maWcoY2FwKTsKPj4+
-IC0KPj4+IC3CoMKgwqAgLyogU2V0dXAgYSBidWZmZXIgZm9yIHRoZSBuZXh0IGZyYW1lICovCj4+
-PiAtwqDCoMKgIHNwaW5fbG9ja19pcnEoJmNhcC0+YnVmLmxvY2spOwo+Pj4gLcKgwqDCoCBya2lz
-cDFfc2V0X25leHRfYnVmKGNhcCk7Cj4+PiAtwqDCoMKgIGNhcC0+b3BzLT5lbmFibGUoY2FwKTsK
-Pj4+IC3CoMKgwqAgLyogSXQncyBzYWZlIHRvIGNvbmZpZyBBQ1RJVkUgYW5kIFNIQURPVyByZWdz
-IGZvciB0aGUKPj4+IC3CoMKgwqDCoCAqIGZpcnN0IHN0cmVhbS4gV2hpbGUgd2hlbiB0aGUgc2Vj
-b25kIGlzIHN0YXJ0aW5nLCBkbyBOT1QKPj4+IC3CoMKgwqDCoCAqIGZvcmNlIHVwZGF0ZSBiZWNh
-dXNlIGl0IGFsc28gdXBkYXRlIHRoZSBmaXJzdCBvbmUuCj4+PiAtwqDCoMKgwqAgKgo+Pj4gLcKg
-wqDCoMKgICogVGhlIGxhdHRlciBjYXNlIHdvdWxkIGRyb3Agb25lIG1vcmUgYnVmKHRoYXQgaXMg
-Mikgc2luY2UKPj4+IC3CoMKgwqDCoCAqIHRoZXJlJ3Mgbm90IGJ1ZiBpbiBzaGFkb3cgd2hlbiB0
-aGUgc2Vjb25kIEZFIHJlY2VpdmVkLiBUaGlzJ3MKPj4+IC3CoMKgwqDCoCAqIGFsc28gcmVxdWly
-ZWQgYmVjYXVzZSB0aGUgc2Vjb25kIEZFIG1heWJlIGNvcnJ1cHQgZXNwZWNpYWxseQo+Pj4gLcKg
-wqDCoMKgICogd2hlbiBydW4gYXQgMTIwZnBzLgo+Pj4gLcKgwqDCoMKgICovCj4+PiAtwqDCoMKg
-IGlmICghb3RoZXItPmlzX3N0cmVhbWluZykgewo+Pj4gLcKgwqDCoMKgwqDCoMKgIC8qIGZvcmNl
-IGNmZyB1cGRhdGUgKi8KPj4+IC3CoMKgwqDCoMKgwqDCoCBya2lzcDFfd3JpdGUocmtpc3AxLAo+
-Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFJLSVNQMV9DSUZfTUlfSU5JVF9T
-T0ZUX1VQRCwgUktJU1AxX0NJRl9NSV9JTklUKTsKPj4+IC3CoMKgwqDCoMKgwqDCoCBya2lzcDFf
-c2V0X25leHRfYnVmKGNhcCk7Cj4+PiAtwqDCoMKgIH0KPj4+IC3CoMKgwqAgc3Bpbl91bmxvY2tf
-aXJxKCZjYXAtPmJ1Zi5sb2NrKTsKPj4+IC3CoMKgwqAgY2FwLT5pc19zdHJlYW1pbmcgPSB0cnVl
-Owo+Pj4gLX0KPj4+IC0KPj4+IMKgIHN0YXRpYyBpbnQKPj4+IMKgIHJraXNwMV92YjJfc3RhcnRf
-c3RyZWFtaW5nKHN0cnVjdCB2YjJfcXVldWUgKnF1ZXVlLCB1bnNpZ25lZCBpbnQgY291bnQpCj4+
-PiDCoCB7Cj4+PiBAQCAtMTAwMSwyOCArMTAwNiwyMiBAQCBya2lzcDFfdmIyX3N0YXJ0X3N0cmVh
-bWluZyhzdHJ1Y3QgdmIyX3F1ZXVlICpxdWV1ZSwgdW5zaWduZWQgaW50IGNvdW50KQo+Pj4gwqDC
-oMKgwqDCoMKgwqDCoMKgIGdvdG8gZXJyX3BpcGVfcG1fcHV0Owo+Pj4gwqDCoMKgwqDCoCB9Cj4+
-PiDCoAo+Pgo+PiBUaGUgcHJldmlvdXMgY29kZSB3aXRoIHRoZSAncmtpc3AxX3BpcGVsaW5lX3Np
-bmtfd2Fsaycgb25seSBmb2xsb3dlZCBlbmFibGVkIGxpbmtzLgo+PiBXZSBzaG91bGQgcHJvYmFi
-bHkgZmlyc3QgY2hlY2sgaWYgdGhlIGxpbmsgYmV0d2VlbiB0aGUgcmVzaXplciBhbmQgdGhlIGlz
-cCBpcyBlbmFibGVkCj4+IGFuZCBhbHNvIGJldHdlZW4gdGhlIGlzcCB0byB0aGUgc2Vuc29yLiBh
-bmQgcmV0dXJuIC1FUElQRSBpZiBub3QuCj4gCj4gVmVyeSBnb29kIHBvaW50LCB5ZXMsIEknbGwg
-Zml4IHRoaXMgaW4gdjIuCgpBY3R1YWxseSB0aGlzIGlzIG5vdCByZXF1aXJlZCwgc2luY2UgcmVz
-aXplciBhbmQgaXNwIHNpbmsgcGFkcyB1c2UgTUVESUFfUEFEX0ZMX01VU1RfQ09OTkVDVCwKbWVk
-aWFfcGlwZWxpbmVfc3RhcnQoKSB3aWxsIGZhaWxlZCB3aXRoIC1FTk9MSU5LIGlmIGl0IGlzIG5v
-dCBjb25uZWN0ZWQuCgpUaGFua3MKSGVsZW4KCj4gCj4+IEFjdHVhbGx5IEkgdGhpbmsgdGhhdCB0
-aGUgY29kZSB0aGF0IHNldCB0aGUgJ2FjdGl2ZV9zZW5zb3InIChjYWxsaW5ncmtpc3AxX2dldF9y
-ZW1vdGVfc2Vuc29yKQo+PiBzaG91bGQgbW92ZSB0byBoZXJlIHNpbmNlIHRoaXMgYWxzbyBjaGVj
-ayBpZiB0aGUgbGluayB0byB0aGUgc2Vuc29yIGlzIGVuYWJsZWQuCj4gCj4gb2sKPiAKPiBUaGFu
-a3MgZm9yIHlvdXIgcmV2aWV3Cj4gSGVsZW4KPiAKPj4KPj4gVGhhbmtzLAo+PiBEYWZuYQo+Pgo+
-Pj4gLcKgwqDCoCBya2lzcDFfc3RyZWFtX3N0YXJ0KGNhcCk7Cj4+PiAtCj4+PiAtwqDCoMKgIC8q
-IHN0YXJ0IHN1Yi1kZXZpY2VzICovCj4+PiAtwqDCoMKgIHJldCA9IHJraXNwMV9waXBlbGluZV9z
-aW5rX3dhbGsoZW50aXR5LCBOVUxMLAo+Pj4gLcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgIHJraXNwMV9waXBlbGluZV9lbmFibGVfY2IpOwo+Pj4gLcKgwqDCoCBpZiAocmV0
-KQo+Pj4gLcKgwqDCoMKgwqDCoMKgIGdvdG8gZXJyX3N0b3Bfc3RyZWFtOwo+Pj4gLQo+Pj4gwqDC
-oMKgwqDCoCByZXQgPSBtZWRpYV9waXBlbGluZV9zdGFydChlbnRpdHksICZjYXAtPnJraXNwMS0+
-cGlwZSk7Cj4+PiDCoMKgwqDCoMKgIGlmIChyZXQpIHsKPj4+IMKgwqDCoMKgwqDCoMKgwqDCoCBk
-ZXZfZXJyKGNhcC0+cmtpc3AxLT5kZXYsICJzdGFydCBwaXBlbGluZSBmYWlsZWQgJWRcbiIsIHJl
-dCk7Cj4+PiAtwqDCoMKgwqDCoMKgwqAgZ290byBlcnJfcGlwZV9kaXNhYmxlOwo+Pj4gK8KgwqDC
-oMKgwqDCoMKgIGdvdG8gZXJyX3Y0bDJfcG1fcHV0Owo+Pj4gwqDCoMKgwqDCoCB9Cj4+PiArwqDC
-oMKgIHJldCA9IHJraXNwMV9waXBlbGluZV9zdHJlYW1fZW5hYmxlKGNhcCk7Cj4+PiArwqDCoMKg
-IGlmIChyZXQpCj4+PiArwqDCoMKgwqDCoMKgwqAgZ290byBlcnJfbWVkaWFfcGlwZWxpbmVfc3Rv
-cDsKPj4+IMKgIMKgwqDCoMKgwqAgbXV0ZXhfdW5sb2NrKCZjYXAtPnJraXNwMS0+c3RyZWFtX2xv
-Y2spOwo+Pj4gwqAgwqDCoMKgwqDCoCByZXR1cm4gMDsKPj4+IMKgIC1lcnJfcGlwZV9kaXNhYmxl
-Ogo+Pj4gLcKgwqDCoCBya2lzcDFfcGlwZWxpbmVfc2lua193YWxrKGVudGl0eSwgTlVMTCwgcmtp
-c3AxX3BpcGVsaW5lX2Rpc2FibGVfY2IpOwo+Pj4gLWVycl9zdG9wX3N0cmVhbToKPj4+IC3CoMKg
-wqAgcmtpc3AxX3N0cmVhbV9zdG9wKGNhcCk7Cj4+PiArZXJyX21lZGlhX3BpcGVsaW5lX3N0b3A6
-Cj4+PiArwqDCoMKgIG1lZGlhX3BpcGVsaW5lX3N0b3AoZW50aXR5KTsKPj4+ICtlcnJfdjRsMl9w
-bV9wdXQ6Cj4+PiDCoMKgwqDCoMKgIHY0bDJfcGlwZWxpbmVfcG1fcHV0KGVudGl0eSk7Cj4+PiDC
-oCBlcnJfcGlwZV9wbV9wdXQ6Cj4+PiDCoMKgwqDCoMKgIHBtX3J1bnRpbWVfcHV0KGNhcC0+cmtp
-c3AxLT5kZXYpOwo+Pj4KPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+Allow streaming from self picture path and main picture path at the same
+time.
+
+Take care for s_stream() callbacks to not be called twice.
+When starting a stream, s_stream(true) shouldn't be called for the isp
+and the sensor if the other stream is already enabled (since it was
+already called).
+When stopping a stream, s_stream(false) shouldn't be called for isp and
+the sensor if the other stream is still enabled.
+
+Remove the callback function scheme for navigating through the topology,
+simplifying the code, improving readability.
+
+Remove multistreaming item from the TODO list.
+
+Signed-off-by: Helen Koike <helen.koike@collabora.com>
+---
+
+Hello,
+
+Since we didn't reach an agreement on the helpers in the core[1], I'm
+sending this patch to fix this limitation only for rkisp1.
+
+[1] https://patchwork.linuxtv.org/project/linux-media/cover/20200415013044.1778572-1-helen.koike@collabora.com/
+
+If we decide to add the helpers in the future, we can clean up drivers
+even more, but I don't want to block this feature.
+
+This Patch depends on patch:
+"media: staging: rkisp1: validate links before powering and streaming"
+https://patchwork.linuxtv.org/project/linux-media/patch/20201002184222.7094-2-dafna.hirschfeld@collabora.com/
+
+Changes in V2:
+==============
+- Rebase on top of patch
+"media: staging: rkisp1: validate links before powering and streaming"
+which fixes media_pipeline_{start,stop}() calling order.
+- Fix commit message
+- Fix disable order
+- Disable capture when s_stream(true) of the resizer fails
+
+Overview of the patch:
+======================
+
+* Rename rkisp1_stream_{start,stop}() to
+  rkisp1_cap_stream_{enable,disable}() to clarify the difference between
+  other stream enable/disable functions
+
+* Implement rkisp1_pipeline_stream_{enable,disable}() to replace
+  rkisp1_pipeline_{enable,disable}_cb() and rkisp1_pipeline_sink_walk(),
+  which were removed.
+
+* Call rkisp1_cap_stream_{enable,disable}() from
+  rkisp1_pipeline_stream_{enable,disable}() for better
+  unwind handling and function name semantics.
+
+* Remove item from TODO list (I also reviewed the use of the
+  is_streaming var in the code and lgtm).
+
+This patch was tested on rockpi4 board with:
+============================================
+
+"media-ctl" "-d" "platform:rkisp1" "-r"
+"media-ctl" "-d" "platform:rkisp1" "-l" "'imx219 4-0010':0 -> 'rkisp1_isp':0 [1]"
+"media-ctl" "-d" "platform:rkisp1" "-l" "'rkisp1_isp':2 -> 'rkisp1_resizer_selfpath':0 [1]"
+"media-ctl" "-d" "platform:rkisp1" "-l" "'rkisp1_isp':2 -> 'rkisp1_resizer_mainpath':0 [1]"
+
+"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"imx219 4-0010":0 [fmt:SRGGB10_1X10/1640x1232]'
+
+"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_isp":0 [fmt:SRGGB10_1X10/1640x1232 crop: (0,0)/1600x1200]'
+"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_isp":2 [fmt:YUYV8_2X8/1600x1200 crop: (0,0)/1500x1100]'
+
+"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_selfpath":0 [fmt:YUYV8_2X8/1500x1100 crop: (300,400)/1400x1000]'
+"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_selfpath":1 [fmt:YUYV8_2X8/900x800]'
+
+"v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "-v" "width=900,height=800,"
+"v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "-v" "pixelformat=422P"
+
+"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_mainpath":0 [fmt:YUYV8_2X8/1500x1100 crop: (300,400)/1400x1000]'
+"media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_mainpath":1 [fmt:YUYV8_2X8/900x800]'
+
+"v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_mainpath" "-v" "width=900,height=800,"
+"v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_mainpath" "-v" "pixelformat=422P"
+
+sleep 1
+
+time v4l2-ctl "-z" "platform:rkisp1" "-d" "rkisp1_mainpath" "--stream-mmap" "--stream-count" "100" &
+time v4l2-ctl "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "--stream-mmap" "--stream-count" "100" &
+
+wait
+echo "Completed"
+
+Thanks
+Helen
+---
+ drivers/staging/media/rkisp1/TODO             |   3 -
+ drivers/staging/media/rkisp1/rkisp1-capture.c | 219 +++++++++---------
+ 2 files changed, 110 insertions(+), 112 deletions(-)
+
+diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
+index e7c8398fc2cef..a2dd0ad951c25 100644
+--- a/drivers/staging/media/rkisp1/TODO
++++ b/drivers/staging/media/rkisp1/TODO
+@@ -1,9 +1,6 @@
+ * Fix pad format size for statistics and parameters entities.
+ * Fix checkpatch errors.
+ * Add uapi docs. Remember to add documentation of how quantization is handled.
+-* streaming paths (mainpath and selfpath) check if the other path is streaming
+-in several places of the code, review this, specially that it doesn't seem it
+-supports streaming from both paths at the same time.
+ 
+ NOTES:
+ * All v4l2-compliance test must pass.
+diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+index 9b4a12e13f135..13463c899b009 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-capture.c
++++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+@@ -830,71 +830,43 @@ static void rkisp1_return_all_buffers(struct rkisp1_capture *cap,
+ }
+ 
+ /*
+- * rkisp1_pipeline_sink_walk - Walk through the pipeline and call cb
+- * @from: entity at which to start pipeline walk
+- * @until: entity at which to stop pipeline walk
+- *
+- * Walk the entities chain starting at the pipeline video node and stop
+- * all subdevices in the chain.
+- *
+- * If the until argument isn't NULL, stop the pipeline walk when reaching the
+- * until entity. This is used to disable a partially started pipeline due to a
+- * subdev start error.
++ * Most of registers inside rockchip ISP1 have shadow register since
++ * they must be not be changed during processing a frame.
++ * Usually, each sub-module updates its shadow register after
++ * processing the last pixel of a frame.
+  */
+-static int rkisp1_pipeline_sink_walk(struct media_entity *from,
+-				     struct media_entity *until,
+-				     int (*cb)(struct media_entity *from,
+-					       struct media_entity *curr))
++static void rkisp1_cap_stream_enable(struct rkisp1_capture *cap)
+ {
+-	struct media_entity *entity = from;
+-	struct media_pad *pad;
+-	unsigned int i;
+-	int ret;
+-
+-	while (1) {
+-		pad = NULL;
+-		/* Find remote source pad */
+-		for (i = 0; i < entity->num_pads; i++) {
+-			struct media_pad *spad = &entity->pads[i];
+-
+-			if (!(spad->flags & MEDIA_PAD_FL_SINK))
+-				continue;
+-			pad = media_entity_remote_pad(spad);
+-			if (pad && is_media_entity_v4l2_subdev(pad->entity))
+-				break;
+-		}
+-		if (!pad || !is_media_entity_v4l2_subdev(pad->entity))
+-			break;
++	struct rkisp1_device *rkisp1 = cap->rkisp1;
++	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
+ 
+-		entity = pad->entity;
+-		if (entity == until)
+-			break;
++	cap->ops->set_data_path(cap);
++	cap->ops->config(cap);
+ 
+-		ret = cb(from, entity);
+-		if (ret)
+-			return ret;
++	/* Setup a buffer for the next frame */
++	spin_lock_irq(&cap->buf.lock);
++	rkisp1_set_next_buf(cap);
++	cap->ops->enable(cap);
++	/* It's safe to config ACTIVE and SHADOW regs for the
++	 * first stream. While when the second is starting, do NOT
++	 * force update because it also update the first one.
++	 *
++	 * The latter case would drop one more buf(that is 2) since
++	 * there's not buf in shadow when the second FE received. This's
++	 * also required because the second FE maybe corrupt especially
++	 * when run at 120fps.
++	 */
++	if (!other->is_streaming) {
++		/* force cfg update */
++		rkisp1_write(rkisp1,
++			     RKISP1_CIF_MI_INIT_SOFT_UPD, RKISP1_CIF_MI_INIT);
++		rkisp1_set_next_buf(cap);
+ 	}
+-
+-	return 0;
+-}
+-
+-static int rkisp1_pipeline_disable_cb(struct media_entity *from,
+-				      struct media_entity *curr)
+-{
+-	struct v4l2_subdev *sd = media_entity_to_v4l2_subdev(curr);
+-
+-	return v4l2_subdev_call(sd, video, s_stream, false);
+-}
+-
+-static int rkisp1_pipeline_enable_cb(struct media_entity *from,
+-				     struct media_entity *curr)
+-{
+-	struct v4l2_subdev *sd = media_entity_to_v4l2_subdev(curr);
+-
+-	return v4l2_subdev_call(sd, video, s_stream, true);
++	spin_unlock_irq(&cap->buf.lock);
++	cap->is_streaming = true;
+ }
+ 
+-static void rkisp1_stream_stop(struct rkisp1_capture *cap)
++static void rkisp1_cap_stream_disable(struct rkisp1_capture *cap)
+ {
+ 	int ret;
+ 
+@@ -911,6 +883,82 @@ static void rkisp1_stream_stop(struct rkisp1_capture *cap)
+ 	}
+ }
+ 
++/*
++ * rkisp1_pipeline_stream_disable - disable nodes in the pipeline
++ *
++ * Call s_stream(false) in the reverse order from
++ * rkisp1_pipeline_stream_enable() and disable the DMA engine.
++ * Should be called before media_pipeline_stop()
++ */
++static void rkisp1_pipeline_stream_disable(struct rkisp1_capture *cap)
++	__must_hold(&cap->rkisp1->stream_lock)
++{
++	struct rkisp1_device *rkisp1 = cap->rkisp1;
++
++	/*
++	 * If the other capture is streaming, isp and sensor nodes shouldn't
++	 * be disabled, skip them.
++	 */
++	if (rkisp1->pipe.streaming_count < 2) {
++		v4l2_subdev_call(rkisp1->active_sensor->sd, video, s_stream,
++				 false);
++		v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, false);
++	}
++
++	v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video, s_stream,
++			 false);
++
++	rkisp1_cap_stream_disable(cap);
++}
++
++/*
++ * rkisp1_pipeline_stream_enable - enable nodes in the pipeline
++ *
++ * Enable the DMA Engine and call s_stream(true) through the pipeline.
++ * Should be called after media_pipeline_start()
++ */
++static int rkisp1_pipeline_stream_enable(struct rkisp1_capture *cap)
++	__must_hold(&cap->rkisp1->stream_lock)
++{
++	struct rkisp1_device *rkisp1 = cap->rkisp1;
++	int ret;
++
++	rkisp1_cap_stream_enable(cap);
++
++	ret = v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video,
++			       s_stream, true);
++	if (ret)
++		goto err_disable_cap;
++
++	/*
++	 * If the other capture is streaming, isp and sensor nodes are already
++	 * enabled, skip them.
++	 */
++	if (rkisp1->pipe.streaming_count > 1)
++		return 0;
++
++	ret = v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, true);
++	if (ret)
++		goto err_disable_rsz;
++
++	ret = v4l2_subdev_call(rkisp1->active_sensor->sd, video, s_stream,
++			       true);
++	if (ret)
++		goto err_disable_isp;
++
++	return 0;
++
++err_disable_isp:
++	v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, false);
++err_disable_rsz:
++	v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video, s_stream,
++			 false);
++err_disable_cap:
++	rkisp1_cap_stream_disable(cap);
++
++	return ret;
++}
++
+ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
+ {
+ 	struct rkisp1_capture *cap = queue->drv_priv;
+@@ -920,12 +968,7 @@ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
+ 
+ 	mutex_lock(&cap->rkisp1->stream_lock);
+ 
+-	rkisp1_stream_stop(cap);
+-	ret = rkisp1_pipeline_sink_walk(&node->vdev.entity, NULL,
+-					rkisp1_pipeline_disable_cb);
+-	if (ret)
+-		dev_err(rkisp1->dev,
+-			"pipeline stream-off failed error:%d\n", ret);
++	rkisp1_pipeline_stream_disable(cap);
+ 
+ 	rkisp1_return_all_buffers(cap, VB2_BUF_STATE_ERROR);
+ 
+@@ -941,43 +984,6 @@ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
+ 	mutex_unlock(&cap->rkisp1->stream_lock);
+ }
+ 
+-/*
+- * Most of registers inside rockchip ISP1 have shadow register since
+- * they must be not be changed during processing a frame.
+- * Usually, each sub-module updates its shadow register after
+- * processing the last pixel of a frame.
+- */
+-static void rkisp1_stream_start(struct rkisp1_capture *cap)
+-{
+-	struct rkisp1_device *rkisp1 = cap->rkisp1;
+-	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
+-
+-	cap->ops->set_data_path(cap);
+-	cap->ops->config(cap);
+-
+-	/* Setup a buffer for the next frame */
+-	spin_lock_irq(&cap->buf.lock);
+-	rkisp1_set_next_buf(cap);
+-	cap->ops->enable(cap);
+-	/* It's safe to config ACTIVE and SHADOW regs for the
+-	 * first stream. While when the second is starting, do NOT
+-	 * force update because it also update the first one.
+-	 *
+-	 * The latter case would drop one more buf(that is 2) since
+-	 * there's not buf in shadow when the second FE received. This's
+-	 * also required because the second FE maybe corrupt especially
+-	 * when run at 120fps.
+-	 */
+-	if (!other->is_streaming) {
+-		/* force cfg update */
+-		rkisp1_write(rkisp1,
+-			     RKISP1_CIF_MI_INIT_SOFT_UPD, RKISP1_CIF_MI_INIT);
+-		rkisp1_set_next_buf(cap);
+-	}
+-	spin_unlock_irq(&cap->buf.lock);
+-	cap->is_streaming = true;
+-}
+-
+ static int
+ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
+ {
+@@ -1008,20 +1014,15 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
+ 		goto err_pipe_pm_put;
+ 	}
+ 
+-	rkisp1_stream_start(cap);
+-
+-	/* start sub-devices */
+-	ret = rkisp1_pipeline_sink_walk(entity, NULL,
+-					rkisp1_pipeline_enable_cb);
++	ret = rkisp1_pipeline_stream_enable(cap);
+ 	if (ret)
+-		goto err_stop_stream;
++		goto err_v4l2_pm_put;
+ 
+ 	mutex_unlock(&cap->rkisp1->stream_lock);
+ 
+ 	return 0;
+ 
+-err_stop_stream:
+-	rkisp1_stream_stop(cap);
++err_v4l2_pm_put:
+ 	v4l2_pipeline_pm_put(entity);
+ err_pipe_pm_put:
+ 	pm_runtime_put(cap->rkisp1->dev);
+-- 
+2.28.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
