@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F76DC433DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 21:00:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 644D0C43457
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 21:00:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7785121741
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 21:00:16 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BB0052222C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 21:00:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="s8TG+Qjr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7785121741
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="tlWsndep"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BB0052222C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,37 +25,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5MF9kchVbDsvClfXkbFI8+rEaK7d4Ime4l/K8An7oRE=; b=s8TG+QjrXu1TPjrrg5AM0DnYNF
-	ZW3HsB9xFO7Dvuyn4xwQtg7sEopFoFCLNCFJfhL5eTPomQd8VZJqOSk9YfMQ4/3rUew2+j/7cLoN9
-	zItxJGIzCnUD5a68Ey77mnb8NZbut5tenpwB2zBthca6tTgWDKeN3m/YMwfvfDUKGW2ARHhBh9iN9
-	HWnqn8TDg8XxyqxfDbBvSR/fIK8nr4CUfXvbOPYZfM3dczlkrzY+7QUX7BPiIhfd0S4cvOcm2hfSj
-	yXaT6o2mB1X6ngXcq4JlNXNSLMq9FcoTvwIjfMr/BcVxsoopAgx3js/D/Qdcgny88cGDrZ88Kze8L
-	30ciBbBw==;
+	bh=pDzRscavumi9ORmHvbGFLHAnlSNJRyTxK1/fk5h42l0=; b=tlWsndepd++tWUvPfGpS5j8yO6
+	nK709Hy7Xi2EEIdHD50ZC1XnTeF52UiQwARM+H3ZNk03+8oOmS8kULyYZgwp5KjrLHKISrlIAadsB
+	V0N0F3XWp3+guYYKhSVwH6JSBXRXi7ya5z39gMPc/etdJUnzja+oCYBBUEMtJxZYtk7UkGlRi6mD0
+	SedVytXflz7DQPJ19dNG1kGjtHVI644xlQ228t1lGWebQrN7D7CGzs70MuQvMml57M+L8IHl00RAc
+	zuz5cIGaZg0RtqhSlU5VGQEEXvheaJP+f24mCeYuQx2i33F943iYTsTW0oUzFMsh2XEi8ypbdKJgm
+	hAHdiEWQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUcGH-00071Y-P0; Mon, 19 Oct 2020 21:00:09 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kUcGK-00072p-Rf; Mon, 19 Oct 2020 21:00:12 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUcGE-0006zQ-QK
- for linux-rockchip@lists.infradead.org; Mon, 19 Oct 2020 21:00:08 +0000
+ id 1kUcGE-0006zR-RL
+ for linux-rockchip@lists.infradead.org; Mon, 19 Oct 2020 21:00:09 +0000
 Received: from guri.fritz.box
  (p200300c7cf435b00546912335c7d1654.dip0.t-ipconnect.de
  [IPv6:2003:c7:cf43:5b00:5469:1233:5c7d:1654])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 1E41A1F44FBF;
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 91FC41F44FC3;
  Mon, 19 Oct 2020 22:00:04 +0100 (BST)
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH 1/4] media: staging: rkisp1: fix coding style issues
-Date: Mon, 19 Oct 2020 22:59:53 +0200
-Message-Id: <20201019205956.6980-2-dafna.hirschfeld@collabora.com>
+Subject: [PATCH 2/4] media: staging: rkisp1: params: remove unnecessary "!!"
+Date: Mon, 19 Oct 2020 22:59:54 +0200
+Message-Id: <20201019205956.6980-3-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20201019205956.6980-1-dafna.hirschfeld@collabora.com>
 References: <20201019205956.6980-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201019_170006_995627_FD192338 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20201019_170007_119723_EC908C23 
+X-CRM114-Status: GOOD (  10.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,57 +78,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fix checkpatch issues:
-Blank lines aren't necessary before a close brace '}'
-Alignment should match open parenthesis
+There are several 'if' conditions of the form:
+
+if (!!(module_ens & SOME_FLAG))
+
+Those can be replaced with:
+
+if (module_ens & SOME_FLAG)
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- drivers/staging/media/rkisp1/rkisp1-dev.c     | 4 ++--
- drivers/staging/media/rkisp1/rkisp1-isp.c     | 1 -
- drivers/staging/media/rkisp1/rkisp1-resizer.c | 4 ++--
- 3 files changed, 4 insertions(+), 5 deletions(-)
+ drivers/staging/media/rkisp1/rkisp1-params.c | 24 ++++++++++----------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
-index 91584695804b..4f6ae1a01253 100644
---- a/drivers/staging/media/rkisp1/rkisp1-dev.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
-@@ -254,8 +254,8 @@ static int rkisp1_subdev_notifier(struct rkisp1_device *rkisp1)
- 		struct rkisp1_sensor_async *rk_asd = NULL;
- 		struct fwnode_handle *ep;
+diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
+index 986d293201e6..4ac401bc2164 100644
+--- a/drivers/staging/media/rkisp1/rkisp1-params.c
++++ b/drivers/staging/media/rkisp1/rkisp1-params.c
+@@ -896,7 +896,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+ 					   &new_params->others.dpcc_config);
  
--		ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(rkisp1->dev),
--			0, next_id, FWNODE_GRAPH_ENDPOINT_NEXT);
-+		ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(rkisp1->dev), 0, next_id,
-+						     FWNODE_GRAPH_ENDPOINT_NEXT);
- 		if (!ep)
- 			break;
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_DPCC) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_DPCC))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_DPCC)
+ 				rkisp1_param_set_bits(params,
+ 						      RKISP1_CIF_ISP_DPCC_MODE,
+ 						      RKISP1_CIF_ISP_DPCC_ENA);
+@@ -915,7 +915,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+ 					  &new_params->others.bls_config);
  
-diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/staging/media/rkisp1/rkisp1-isp.c
-index a9715b0b7264..fb23461d865c 100644
---- a/drivers/staging/media/rkisp1/rkisp1-isp.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-isp.c
-@@ -1157,5 +1157,4 @@ void rkisp1_isp_isr(struct rkisp1_device *rkisp1)
- 		 */
- 		rkisp1_params_isr(rkisp1);
- 	}
--
- }
-diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-index 1687d82e6c68..a9d537c11ecb 100644
---- a/drivers/staging/media/rkisp1/rkisp1-resizer.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-resizer.c
-@@ -610,8 +610,8 @@ static void rkisp1_rsz_set_sink_fmt(struct rkisp1_resizer *rsz,
- 				  RKISP1_ISP_MIN_WIDTH,
- 				  RKISP1_ISP_MAX_WIDTH);
- 	sink_fmt->height = clamp_t(u32, format->height,
--				  RKISP1_ISP_MIN_HEIGHT,
--				  RKISP1_ISP_MAX_HEIGHT);
-+				   RKISP1_ISP_MIN_HEIGHT,
-+				   RKISP1_ISP_MAX_HEIGHT);
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_BLS) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_BLS))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_BLS)
+ 				rkisp1_param_set_bits(params,
+ 						      RKISP1_CIF_ISP_BLS_CTRL,
+ 						      RKISP1_CIF_ISP_BLS_ENA);
+@@ -934,7 +934,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+ 					  &new_params->others.sdg_config);
  
- 	*format = *sink_fmt;
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_SDG) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_SDG))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_SDG)
+ 				rkisp1_param_set_bits(params,
+ 					RKISP1_CIF_ISP_CTRL,
+ 					RKISP1_CIF_ISP_CTRL_ISP_GAMMA_IN_ENA);
+@@ -953,7 +953,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+ 					  &new_params->others.lsc_config);
  
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_LSC) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_LSC))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_LSC)
+ 				rkisp1_param_set_bits(params,
+ 						RKISP1_CIF_ISP_LSC_CTRL,
+ 						RKISP1_CIF_ISP_LSC_CTRL_ENA);
+@@ -972,7 +972,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+ 					&new_params->others.awb_gain_config);
+ 
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_AWB_GAIN))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
+ 				rkisp1_param_set_bits(params,
+ 					RKISP1_CIF_ISP_CTRL,
+ 					RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
+@@ -991,7 +991,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+ 					  &new_params->others.bdm_config);
+ 
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_BDM) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_BDM))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_BDM)
+ 				rkisp1_param_set_bits(params,
+ 						RKISP1_CIF_ISP_DEMOSAIC,
+ 						RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
+@@ -1010,7 +1010,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+ 					  &new_params->others.flt_config);
+ 
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_FLT) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_FLT))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_FLT)
+ 				rkisp1_param_set_bits(params,
+ 						      RKISP1_CIF_ISP_FILT_MODE,
+ 						      RKISP1_CIF_ISP_FLT_ENA);
+@@ -1041,7 +1041,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+ 					  &new_params->others.goc_config);
+ 
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_GOC) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_GOC))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_GOC)
+ 				rkisp1_param_set_bits(params,
+ 					RKISP1_CIF_ISP_CTRL,
+ 					RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
+@@ -1061,7 +1061,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+ 		}
+ 
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_CPROC) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_CPROC))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_CPROC)
+ 				rkisp1_param_set_bits(params,
+ 						RKISP1_CIF_C_PROC_CTRL,
+ 						RKISP1_CIF_C_PROC_CTR_ENABLE);
+@@ -1092,7 +1092,7 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
+ 					  &new_params->others.dpf_config);
+ 
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_DPF) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_DPF))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_DPF)
+ 				rkisp1_param_set_bits(params,
+ 						   RKISP1_CIF_ISP_DPF_MODE,
+ 						   RKISP1_CIF_ISP_DPF_MODE_EN);
+@@ -1141,7 +1141,7 @@ static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
+ 					  &new_params->meas.afc_config);
+ 
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_AFC) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_AFC))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_AFC)
+ 				rkisp1_param_set_bits(params,
+ 						      RKISP1_CIF_ISP_AFM_CTRL,
+ 						      RKISP1_CIF_ISP_AFM_ENA);
+@@ -1173,7 +1173,7 @@ static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
+ 					  &new_params->meas.aec_config);
+ 
+ 		if (module_en_update & RKISP1_CIF_ISP_MODULE_AEC) {
+-			if (!!(module_ens & RKISP1_CIF_ISP_MODULE_AEC))
++			if (module_ens & RKISP1_CIF_ISP_MODULE_AEC)
+ 				rkisp1_param_set_bits(params,
+ 						      RKISP1_CIF_ISP_EXP_CTRL,
+ 						      RKISP1_CIF_ISP_EXP_ENA);
 -- 
 2.17.1
 
