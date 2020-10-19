@@ -5,18 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D8669C433E7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 08:36:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 60A54C433E7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 08:44:17 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4C6ED2225F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 08:36:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id DDBFF2225A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 08:44:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k+uoCUcJ"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C6ED2225F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MvqOMVx0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DDBFF2225A
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,21 +25,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=d/D2TXY4TtaHm6EtJODN3PnDK11aoQpYFF7sYxwfxNs=; b=k+uoCUcJIYlcnMfp9lXM6RsiSu
-	P5mQQgd4zUSVQe0ju2afekxEoVQE2BY96rxUYXSA3PeoIbL2mjBEx7xpbc+AcmbcR+/zdN0eJEe7r
-	/FN2MKNCaXTJYRX5l6eQykbcw2xiKRgKT1EPqPQpYMHefO60EhsbGZnxbvTURU1fNdhOgkEtqzV1b
-	x1UXVXkO+Xbp20p927bd8nQNeBU7RXy7UfTMlgqBzwwe9xjZtZXpNJQtQJigNgOTig92HiUwY9ddm
-	Gvcf2z4pVyM5FGs+cCYltlFY/38tCtrZg+MGGd4BUWKp2Cfr6eZMytjUfd8Axa9rPkPk8XopaLE4o
-	8/gAI+Ew==;
+	bh=AT0DtMrUVHOQorML4J7857PMr3G2z2uZ05e6z8lDoUY=; b=MvqOMVx0uLC//oh86Pm+CEHQ3H
+	ArYsZR/qOi3k41kAqIGG/tSRQzrFQsYBOds9CDWqpUbZNEQxRCbmRuDiIQvPgwpxqu3fxhHlHKJz9
+	fv8Egi/CktKPK/XDxGV+kGTLYx8xXaOztD0XR42CJ6W0cEJU7mKaOEz0TCp4XP57nieXLHQc8B6tS
+	HQjLMVTYcEAnwif2AeKPKkb7E2EnMuV7vMaWSpD1faoLDmoKFjuMiDcEliZx91bxvWSb8kLpnZFwj
+	27ujfEk6qT2D4NYMotYSEANpXs7WqXweQ4JudXBL+SN1gZl/uQ7F0MiOk0zc8DfhykLL1vYy5PYcX
+	KNtX90GA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUQel-0004gM-Vp; Mon, 19 Oct 2020 08:36:40 +0000
-Received: from lucky1.263xmail.com ([211.157.147.131])
+	id 1kUQlz-00083e-BN; Mon, 19 Oct 2020 08:44:07 +0000
+Received: from lucky1.263xmail.com ([211.157.147.132])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUQcy-0003fs-PD; Mon, 19 Oct 2020 08:34:49 +0000
+ id 1kUQk1-0007BI-EM; Mon, 19 Oct 2020 08:42:18 +0000
 Received: from localhost (unknown [192.168.167.8])
- by lucky1.263xmail.com (Postfix) with ESMTP id 26FF7B6A46;
- Mon, 19 Oct 2020 16:34:45 +0800 (CST)
+ by lucky1.263xmail.com (Postfix) with ESMTP id 2C1CBEF53C;
+ Mon, 19 Oct 2020 16:34:08 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
 X-ADDR-CHECKED4: 1
@@ -47,10 +47,10 @@ X-ANTISPAM-LEVEL: 2
 X-ABS-CHECKED: 0
 Received: from localhost.localdomain (unknown [58.22.7.114])
  by smtp.263.net (postfix) whith ESMTP id
- P2450T140206693807872S1603096477685464_; 
- Mon, 19 Oct 2020 16:34:45 +0800 (CST)
+ P2450T140205092755200S1603096440183334_; 
+ Mon, 19 Oct 2020 16:34:08 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <4a6e2746c3d417346d835b18f6a2a49c>
+X-UNIQUE-TAG: <479807150e341ab1bad9c42c97a78865>
 X-RL-SENDER: yifeng.zhao@rock-chips.com
 X-SENDER: zyf@rock-chips.com
 X-LOGIN-NAME: yifeng.zhao@rock-chips.com
@@ -62,16 +62,15 @@ X-System-Flag: 0
 From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
 To: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
  robh+dt@kernel.org
-Subject: [PATCH v11 8/8] arm: dts: rockchip: Add NFC node for RK3036 SoC
-Date: Mon, 19 Oct 2020 16:34:36 +0800
-Message-Id: <20201019083436.32677-4-yifeng.zhao@rock-chips.com>
+Subject: [PATCH v11 4/8] arm64: dts: rockchip: Add NFC node for RK3308 SoC
+Date: Mon, 19 Oct 2020 16:33:58 +0800
+Message-Id: <20201019083358.32621-5-yifeng.zhao@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20201019083436.32677-1-yifeng.zhao@rock-chips.com>
+In-Reply-To: <20201019083358.32621-1-yifeng.zhao@rock-chips.com>
 References: <20201019083358.32621-1-yifeng.zhao@rock-chips.com>
- <20201019083436.32677-1-yifeng.zhao@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201019_043449_144218_18DD5093 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20201019_044205_776991_91B98AFA 
+X-CRM114-Status: GOOD (  11.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,36 +86,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Cc: devicetree@vger.kernel.org, heiko@sntech.de,
  Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+ linux-arm-kernel@lists.infradead.org, Yifeng Zhao <zyf@rock-chips.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add NAND FLASH Controller(NFC) node for RK3036 SoC.
+From: Yifeng Zhao <zyf@rock-chips.com>
 
+Add NAND FLASH Controller(NFC) node for RK3308 SoC.
+
+Signed-off-by: Yifeng Zhao <zyf@rock-chips.com>
 Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
 ---
 
 (no changes since v1)
 
- arch/arm/boot/dts/rk3036.dtsi | 52 +++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3308.dtsi | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3036.dtsi b/arch/arm/boot/dts/rk3036.dtsi
-index 093567022386..dda5a1f79aca 100644
---- a/arch/arm/boot/dts/rk3036.dtsi
-+++ b/arch/arm/boot/dts/rk3036.dtsi
-@@ -292,6 +292,21 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+index 0cf954062387..f98c65c9bd13 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+@@ -629,6 +629,21 @@
  		status = "disabled";
  	};
  
-+	nfc: nand-controller@10500000 {
-+		compatible = "rockchip,rk3036-nfc",
-+			     "rockchip,rk2928-nfc";
-+		reg = <0x10500000 0x4000>;
-+		interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH>;
++	nfc: nand-controller@ff4b0000 {
++		compatible = "rockchip,rk3308-nfc",
++			     "rockchip,rv1108-nfc";
++		reg = <0x0 0xff4b0000 0x0 0x4000>;
++		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
 +		clocks = <&cru HCLK_NANDC>, <&cru SCLK_NANDC>;
 +		clock-names = "ahb", "nfc";
 +		assigned-clocks = <&cru SCLK_NANDC>;
@@ -127,53 +129,9 @@ index 093567022386..dda5a1f79aca 100644
 +		status = "disabled";
 +	};
 +
- 	cru: clock-controller@20000000 {
- 		compatible = "rockchip,rk3036-cru";
- 		reg = <0x20000000 0x1000>;
-@@ -643,6 +658,43 @@
- 			};
- 		};
- 
-+		nfc {
-+			flash_ale: flash-ale {
-+				rockchip,pins = <2 RK_PA0 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_bus8: flash-bus8 {
-+				rockchip,pins = <1 RK_PD0 1 &pcfg_pull_default>,
-+						<1 RK_PD1 1 &pcfg_pull_default>,
-+						<1 RK_PD2 1 &pcfg_pull_default>,
-+						<1 RK_PD3 1 &pcfg_pull_default>,
-+						<1 RK_PD4 1 &pcfg_pull_default>,
-+						<1 RK_PD5 1 &pcfg_pull_default>,
-+						<1 RK_PD6 1 &pcfg_pull_default>,
-+						<1 RK_PD7 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_cle: flash-cle {
-+				rockchip,pins = <2 RK_PA1 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_csn0: flash-csn0 {
-+				rockchip,pins = <2 RK_PA6 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_rdn: flash-rdn {
-+				rockchip,pins = <2 RK_PA3 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_rdy: flash-rdy {
-+				rockchip,pins = <2 RK_PA4 1 &pcfg_pull_default>;
-+			};
-+
-+			flash_wrn: flash-wrn {
-+				rockchip,pins = <2 RK_PA2 1 &pcfg_pull_default>;
-+			};
-+		};
-+
- 		emac {
- 			emac_xfer: emac-xfer {
- 				rockchip,pins = <2 RK_PB2 1 &pcfg_pull_default>, /* crs_dvalid */
+ 	cru: clock-controller@ff500000 {
+ 		compatible = "rockchip,rk3308-cru";
+ 		reg = <0x0 0xff500000 0x0 0x1000>;
 -- 
 2.17.1
 
