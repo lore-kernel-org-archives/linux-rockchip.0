@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C35CC4363A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 80C5EC4363A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:40:14 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 057042225F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:40:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0D77C2225F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:40:14 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2c1F8Q+7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 057042225F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="c/DVTk/H"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D77C2225F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,33 +25,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ShbqF4XveMnO8FDputDPd80AybF9nRJRxLNKualrbDQ=; b=2c1F8Q+74RifCNwrZfRXzIc7S
-	4IvfrkLzObJragaKa/x1E5M0VQ4Pq/1pahZuHeiIQLYz5LCKiLji8NJqCJiwN3BU+Dn69sevm90yK
-	phlabEwfK7NPMbwp98FOvKjX3JtOqfs2n3XWRNE7M8oKYNHuAId34Y6AQMsQpI3aXtnJs2dKhpCZU
-	W3S2BU2v6BBVservMS0onSk3L74UcSTVODx+B4ZybyWgTiY++tTwaheNZV29GgFReq8KC2f8N3s6k
-	DTSl2mdBpbvbXeE+KAzwcks7dyTEl9QOHFowvKVkoamGpCfYQuxxbe5/ZkukWqOCFFlHcarq4XBN8
-	wofrcIBRQ==;
+	 bh=Edo2eQQbgXJGzDMb93qAAp0ZjqcH/q7oHIV3hPjtlxs=; b=c/DVTk/HtxPsM6S427zTLFAK0
+	aawoF2bh6Mc4WuaBtSU6RV7JyyStksVJqTMg9+AieJiupIuPW3kFWDSNj788V2qgsFIZKxYHrwjwD
+	iCYoSVjWpYjlseXTSh8f1pMdkCJdwn/SZNWd4AT4Y5ZhhshTpDPmIXPG9cFi7YjaOj6oTMDG84J+F
+	cQ5wV9WRftoO9hlTc3hESOT8I3uPfu0+VHvDeISEQLyrhEKe3BGnIdxjxZAoteYXvdDluCQhJSQu9
+	imsOfvwpUssa5SgJ2Y7I/j+wRBotUMFgheVxGDN3koKLqGP6lG7F/BTt7PUAb5EsnLTI2Qkbzzs4Q
+	eO5DuNPag==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUxUG-0001Nt-9q; Tue, 20 Oct 2020 19:40:00 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kUxUP-0001ST-8d; Tue, 20 Oct 2020 19:40:09 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUxTq-0001BU-Nm
- for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 19:39:37 +0000
+ id 1kUxTv-0001DY-HE
+ for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 19:39:42 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id E230A1F44DC3
+ (Authenticated sender: koike) with ESMTPSA id 64CF51F44DB5
 From: Helen Koike <helen.koike@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH v6 7/9] media: MAINTAINERS: rkisp1: add path to dt-bindings
-Date: Tue, 20 Oct 2020 16:38:48 -0300
-Message-Id: <20201020193850.1460644-8-helen.koike@collabora.com>
+Subject: [PATCH v6 8/9] arm64: dts: rockchip: add isp0 node for rk3399
+Date: Tue, 20 Oct 2020 16:38:49 -0300
+Message-Id: <20201020193850.1460644-9-helen.koike@collabora.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201020193850.1460644-1-helen.koike@collabora.com>
 References: <20201020193850.1460644-1-helen.koike@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_153936_063659_033539B6 
-X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-CacheID: sfid-20201020_153939_813138_76504A13 
+X-CRM114-Status: UNSURE (   9.70  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -76,34 +76,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip ISP bindings was moved out of staging.
-Update MAINTAINERS file with the new path.
+From: Shunqian Zheng <zhengsq@rock-chips.com>
 
-Fields sorted according to output of
-./scripts/parse-maintainers.pl --input=MAINTAINERS --output=MAINTAINERS
---order
+RK3399 has two ISPs, but only isp0 was tested.
+Add isp0 node in rk3399 dtsi
 
+Verified with:
+make ARCH=arm64 dtbs_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+
+Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
+Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
 Signed-off-by: Helen Koike <helen.koike@collabora.com>
-Reviewed-by: Tomasz Figa <tfiga@chromium.org>
----
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 7a12633747c80..df679b3626b9a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -14889,8 +14889,10 @@ ROCKCHIP ISP V1 DRIVER
- M:	Helen Koike <helen.koike@collabora.com>
- M:	Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
- L:	linux-media@vger.kernel.org
-+L:	linux-rockchip@lists.infradead.org
- S:	Maintained
- F:	Documentation/admin-guide/media/rkisp1.rst
-+F:	Documentation/devicetree/bindings/media/rockchip-isp1.yaml
- F:	Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst
- F:	drivers/staging/media/rkisp1/
+---
+
+Changes in v6:
+- Add status = "disabled" in the isp0 node
+---
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 26 ++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index ada724b12f014..af5f8e2c5e64d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -1723,6 +1723,32 @@ vopb_mmu: iommu@ff903f00 {
+ 		status = "disabled";
+ 	};
  
++	isp0: isp0@ff910000 {
++		compatible = "rockchip,rk3399-cif-isp";
++		reg = <0x0 0xff910000 0x0 0x4000>;
++		interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru SCLK_ISP0>,
++			 <&cru ACLK_ISP0_WRAPPER>,
++			 <&cru HCLK_ISP0_WRAPPER>;
++		clock-names = "isp", "aclk", "hclk";
++		iommus = <&isp0_mmu>;
++		phys = <&mipi_dphy_rx0>;
++		phy-names = "dphy";
++		power-domains = <&power RK3399_PD_ISP0>;
++		status = "disabled";
++
++		ports {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			port@0 {
++				reg = <0>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++			};
++		};
++	};
++
+ 	isp0_mmu: iommu@ff914000 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff914000 0x0 0x100>, <0x0 0xff915000 0x0 0x100>;
 -- 
 2.28.0
 
