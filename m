@@ -5,19 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 759D9C5517A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:39:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5C9CC388F7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:40:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0293022265
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:39:33 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5876922265
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:40:03 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1uQD5Q+t"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0293022265
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Lc/sKryo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5876922265
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,33 +25,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4l3fBwfvrgqrICQO9Q6oyTL+8R0ymQkYbNaUXad6G3g=; b=1uQD5Q+tBzgkyMQx0cM75CsE4
-	x9eOij4p0vNKb6OfiEzO2S9W7QJXlBf+jOhJFPs+AP6L8h8cMCH+O9HvkegBbPWnWN8p45dOAK0tu
-	z3VeD9dsFpLja417w6fenYo8rk3YFRlQT9MTSZbMXBpVIzWJNAaethXB3MFIsmvKJYqA6pnwuD3m2
-	KjF+ABEtR6DfyTdtIGHdfbV05eHHaTeXou3t4k2dAZ/GiMHPJfvDK77PaXPo7OuwgV+VwZgzTPY0/
-	sEtJdapVvdI4ojW4tGH8Xw2Mi6qBlRZ+gVFGzm3dQFRFSzrQyOeolfJ2wfwEqce63B6O1SLNmFt9z
-	qMk165ZgA==;
+	 bh=t6pSgAkSV1CK5oXmcJSrWG4bXsiERlYJPgqoHjynlFM=; b=Lc/sKryo4zdQXU8GADzj7LSUB
+	1l7X07JoDvi86m+g+PpNcLX3grsKWTUk3u5USbhm4FDzd2RWAqSNmKAtu8EkVQ8KLdSMK3uSOeyze
+	f7irtIJoFWt0XOXUjnRtLoQkgDzlPEQvgs4wiuQTc4aI46WD+gVreJ94jMggFKnkB/W4HTEUKadw2
+	rit6Cb0uuPIqO9q8UWLkFTnvATo7VzPq0HjyKmVp71pwq4c1rSrRzfFKaX4u4Ir3zR9O7YY7aHPk4
+	p+xszyB9XLku6juIndU0yB8+wN1eoL22wkHYcFgrVGHsXoIRYHief9AP3W0jSPUdvYCh0rPlyYh/p
+	pHGFYk4Xg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUxTk-00017W-MZ; Tue, 20 Oct 2020 19:39:28 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kUxUC-0001M5-8Y; Tue, 20 Oct 2020 19:39:56 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUxTh-00015S-Nm
- for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 19:39:26 +0000
+ id 1kUxTm-00018W-9Q
+ for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 19:39:31 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id E77F81F44D9D
+ (Authenticated sender: koike) with ESMTPSA id 6F4E11F44DB5
 From: Helen Koike <helen.koike@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH v6 5/9] media: staging: rkisp1: remove unecessary clocks
-Date: Tue, 20 Oct 2020 16:38:46 -0300
-Message-Id: <20201020193850.1460644-6-helen.koike@collabora.com>
+Subject: [PATCH v6 6/9] dt-bindings: media: rkisp1: move rockchip-isp1
+ bindings out of staging
+Date: Tue, 20 Oct 2020 16:38:47 -0300
+Message-Id: <20201020193850.1460644-7-helen.koike@collabora.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201020193850.1460644-1-helen.koike@collabora.com>
 References: <20201020193850.1460644-1-helen.koike@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_153925_895712_F4C09297 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20201020_153930_475253_B71754D7 
+X-CRM114-Status: UNSURE (   6.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,151 +77,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-aclk_isp_wrap is a child of aclk_isp, and hclk_isp_wrap is a child of
-hclk_isp, thus we can remove parents from the list.
+Move rkisp1 bindings to Documentation/devicetree/bindings/media
 
-Also, for the isp0, we only need the ISP clock, ACLK and HCLK.
-In the future we'll need a pixel clock for RK3288 and RK3399, and a JPEG
-clock for RK3288.
-
-So with the goal to cleanup the dt-bindings and remove it from staging,
-simplify clock names to isp, aclk and hclk.
-
-Assigned clocks are meant to refer to the full path in the clock tree,
-i.e. the leaf in the tree.
-For instance, in RK3399, the clock responsible for ACLK (ISP AXI CLOCK)
-is aclk_isp0_wrapper.
-
-For reference, this is the isp clock topology on RK3399:
-
- xin24m
-    pll_npll
-       npll
-          clk_isp1
-          clk_isp0
-    pll_cpll
-       cpll
-          aclk_isp1
-             aclk_isp1_noc
-             hclk_isp1
-                aclk_isp1_wrapper
-                hclk_isp1_noc
-          aclk_isp0
-             hclk_isp1_wrapper
-             aclk_isp0_wrapper
-             aclk_isp0_noc
-             hclk_isp0
-                hclk_isp0_wrapper
-                hclk_isp0_noc
- pclkin_isp1_wrapper
+Verified with:
+make ARCH=arm64 dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 
 Signed-off-by: Helen Koike <helen.koike@collabora.com>
+Acked-by: Rob Herring <robh@kernel.org>
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
-
 ---
+ .../devicetree/bindings/media/rockchip-isp1.yaml                  | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename {drivers/staging/media/rkisp1/Documentation => Documentation}/devicetree/bindings/media/rockchip-isp1.yaml (100%)
 
-Changes in V6:
-- Define clocks in the top level, and use if/else schema to define how
-  many for each compatible as sugested by Rob Herring on
-  https://patchwork.linuxtv.org/project/linux-media/patch/20200722155533.252844-6-helen.koike@collabora.com/#122626
----
- .../bindings/media/rockchip-isp1.yaml         | 44 +++++++++++++------
- drivers/staging/media/rkisp1/rkisp1-dev.c     |  8 ++--
- 2 files changed, 33 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index 62a6b9c959498..2004c054ed1a0 100644
---- a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-+++ b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -24,20 +24,24 @@ properties:
-     maxItems: 1
- 
-   clocks:
-+    minItems: 3
-     items:
-+      # isp0 and isp1
-       - description: ISP clock
--      - description: ISP AXI clock clock
--      - description: ISP AXI clock  wrapper clock
--      - description: ISP AHB clock clock
--      - description: ISP AHB wrapper clock
-+      - description: ISP AXI clock
-+      - description: ISP AHB clock
-+      # only for isp1
-+      - description: ISP Pixel clock
- 
-   clock-names:
-+    minItems: 3
-     items:
--      - const: clk_isp
--      - const: aclk_isp
--      - const: aclk_isp_wrap
--      - const: hclk_isp
--      - const: hclk_isp_wrap
-+      # isp0 and isp1
-+      - const: isp
-+      - const: aclk
-+      - const: hclk
-+      # only for isp1
-+      - const: pclk_isp
- 
-   iommus:
-     maxItems: 1
-@@ -116,6 +120,20 @@ required:
-   - power-domains
-   - ports
- 
-+if:
-+  properties:
-+    compatible:
-+      contains:
-+        const: rockchip,rk3399-cif-isp
-+then:
-+  properties:
-+    clocks:
-+      minItems: 3
-+      maxItems: 4
-+    clock-names:
-+      minItems: 3
-+      maxItems: 4
-+
- additionalProperties: false
- 
- examples:
-@@ -134,11 +152,9 @@ examples:
-             reg = <0x0 0xff910000 0x0 0x4000>;
-             interrupts = <GIC_SPI 43 IRQ_TYPE_LEVEL_HIGH 0>;
-             clocks = <&cru SCLK_ISP0>,
--                     <&cru ACLK_ISP0>, <&cru ACLK_ISP0_WRAPPER>,
--                     <&cru HCLK_ISP0>, <&cru HCLK_ISP0_WRAPPER>;
--            clock-names = "clk_isp",
--                          "aclk_isp", "aclk_isp_wrap",
--                          "hclk_isp", "hclk_isp_wrap";
-+                     <&cru ACLK_ISP0_WRAPPER>,
-+                     <&cru HCLK_ISP0_WRAPPER>;
-+            clock-names = "isp", "aclk", "hclk";
-             iommus = <&isp0_mmu>;
-             phys = <&dphy>;
-             phy-names = "dphy";
-diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/staging/media/rkisp1/rkisp1-dev.c
-index 91584695804bb..90d6543465562 100644
---- a/drivers/staging/media/rkisp1/rkisp1-dev.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-dev.c
-@@ -405,11 +405,9 @@ static irqreturn_t rkisp1_isr(int irq, void *ctx)
- }
- 
- static const char * const rk3399_isp_clks[] = {
--	"clk_isp",
--	"aclk_isp",
--	"hclk_isp",
--	"aclk_isp_wrap",
--	"hclk_isp_wrap",
-+	"isp",
-+	"aclk",
-+	"hclk",
- };
- 
- static const struct rkisp1_match_data rk3399_isp_clk_data = {
+diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+similarity index 100%
+rename from drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+rename to Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 -- 
 2.28.0
 
