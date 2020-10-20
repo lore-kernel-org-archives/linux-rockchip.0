@@ -1,4 +1,4 @@
-Return-Path: <SRS0=ZzQ+=D2=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=P5PH=D3=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D52F1C433DF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 21:00:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A4581C433E7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 03:18:13 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C71D21741
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Oct 2020 21:00:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F21D8222E9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 03:18:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MAb8nmni"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C71D21741
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uN7bHIUy"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F21D8222E9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,38 +25,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=94ZZm3uj7+UmLEXaf4gbU74CdlVXMDoskiaRX9Z3Zn4=; b=MAb8nmniyeZMIzOrZu1qetLAZP
-	UBTBzl1l+dDuRIJYwIJR5bx7L/lpIYcJ/mNC2BZdYe+u145D2Cr11dogBwAWuDoDixrbAogOTjsLO
-	+CQgl+n8zZOoOkQoOJkWEDMxSiBekMDCznFtCW1q7C9M0+QOSpHYR9m5ahY4Gq25q4I8uQhR12Zjk
-	HQHQvM1OpSGElLZBho0naft7Zhw/StAiGkxm2aYAhpk5sOMcf0ZyKtWUHOt/KeQAO5pzHpNnp6wi9
-	VJ3Cq2bJIPxjQWJuQtO+nfvotl1fJDVIqNZcx8w3TGf6/qzf1/EuTwZ2sDeTplOnNsYhlAvdAJy8+
-	biNBn9Xw==;
+	bh=e7Z0BepvHpZYwyqhf+lqmE1PjbltC7ExLpZoTPL1vk4=; b=uN7bHIUyaYgpHSKFRPOSNmNT5P
+	ocOg2z/mlAGIey+ymIuEElJH1dnpMVbXBytwURpFesmBM2hJhTFiFVHN0SYrxBYoL/5XflOmUgo4N
+	WjP1sWX3VeNwz/T5tBf4FfIicjhjXVKMAntXGQTLMQVsN263TcSOo/aJyJAsxlNSVnyX+FeF8iDTL
+	+e1LoCPMzgk4OCZwHZ9KWa6f5hqZmxNeA23Tsd4zEgtXOuJqroxztIaSHOBDPuvy4i7VkxId7WoXi
+	lR7Jl1RenJ40zsw3+TpXHDKVIXA2kd/4YFwVQqiYO2gwppD9BkYLzIXOU55wWqsGTzMZDuolIHCLV
+	+tddWyZQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUcGM-00073U-PX; Mon, 19 Oct 2020 21:00:14 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kUiA1-0005Jn-PT; Tue, 20 Oct 2020 03:18:07 +0000
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUcGF-0006zT-Gt
- for linux-rockchip@lists.infradead.org; Mon, 19 Oct 2020 21:00:12 +0000
-Received: from guri.fritz.box
- (p200300c7cf435b00546912335c7d1654.dip0.t-ipconnect.de
- [IPv6:2003:c7:cf43:5b00:5469:1233:5c7d:1654])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 7AA0C1F44FD0;
- Mon, 19 Oct 2020 22:00:05 +0100 (BST)
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH 4/4] media: staging: rkisp1: params: remove extra 'if'
- conditions
-Date: Mon, 19 Oct 2020 22:59:56 +0200
-Message-Id: <20201019205956.6980-5-dafna.hirschfeld@collabora.com>
+ id 1kUi9k-0005EN-OS; Tue, 20 Oct 2020 03:17:50 +0000
+Received: from localhost (unknown [192.168.167.32])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 074F4B6B17;
+ Tue, 20 Oct 2020 11:17:44 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P19667T139950908143360S1603163856544923_; 
+ Tue, 20 Oct 2020 11:17:43 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <9d35410286502c0f97d28961d8fe3990>
+X-RL-SENDER: yifeng.zhao@rock-chips.com
+X-SENDER: zyf@rock-chips.com
+X-LOGIN-NAME: yifeng.zhao@rock-chips.com
+X-FST-TO: miquel.raynal@bootlin.com
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-DNS-TYPE: 0
+X-System-Flag: 0
+From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
+To: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
+ robh+dt@kernel.org
+Subject: [PATCH v12 1/8] dt-bindings: mtd: Describe Rockchip RK3xxx NAND flash
+ controller
+Date: Tue, 20 Oct 2020 11:17:30 +0800
+Message-Id: <20201020031733.17883-2-yifeng.zhao@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20201019205956.6980-1-dafna.hirschfeld@collabora.com>
-References: <20201019205956.6980-1-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20201020031733.17883-1-yifeng.zhao@rock-chips.com>
+References: <20201020031733.17883-1-yifeng.zhao@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201019_170007_735033_CBDD30F1 
-X-CRM114-Status: GOOD (  16.89  )
+X-CRM114-CacheID: sfid-20201019_231749_265461_35443584 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,547 +84,223 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, dafna3@gmail.com,
- tfiga@chromium.org, hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- sakari.ailus@linux.intel.com, kernel@collabora.com, ezequiel@collabora.com
+Cc: devicetree@vger.kernel.org, heiko@sntech.de,
+ Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is a repeating code pattern:
+Documentation support for Rockchip RK3xxx NAND flash controllers
 
-if (a || b) {
-	if (a)
-		...
-	if (b)
-		...
-}
-
-In this pattern, the first 'if' is redundant.
-The code can be replaced with:
-
-if (a)
-	...
-if (b)
-	...
-
-In addition, the patch corrects alignment issues
-reported by checkpatch.
-This solves the TODO item
-"Fix checkpatch errors."
-
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
 ---
- drivers/staging/media/rkisp1/TODO            |   1 -
- drivers/staging/media/rkisp1/rkisp1-params.c | 420 ++++++++-----------
- 2 files changed, 175 insertions(+), 246 deletions(-)
 
-diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
-index e7c8398fc2ce..647ab482d032 100644
---- a/drivers/staging/media/rkisp1/TODO
-+++ b/drivers/staging/media/rkisp1/TODO
-@@ -1,5 +1,4 @@
- * Fix pad format size for statistics and parameters entities.
--* Fix checkpatch errors.
- * Add uapi docs. Remember to add documentation of how quantization is handled.
- * streaming paths (mainpath and selfpath) check if the other path is streaming
- in several places of the code, review this, specially that it doesn't seem it
-diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
-index a2df6b50c109..c8585b6ee918 100644
---- a/drivers/staging/media/rkisp1/rkisp1-params.c
-+++ b/drivers/staging/media/rkisp1/rkisp1-params.c
-@@ -186,7 +186,7 @@ static void rkisp1_bls_config(struct rkisp1_params *params,
- /* ISP LS correction interface function */
- static void
- rkisp1_lsc_correct_matrix_config(struct rkisp1_params *params,
--				const struct rkisp1_cif_isp_lsc_config *pconfig)
-+				 const struct rkisp1_cif_isp_lsc_config *pconfig)
- {
- 	unsigned int isp_lsc_status, sram_addr, isp_lsc_table_sel, i, j, data;
- 
-@@ -434,7 +434,7 @@ static void rkisp1_ctk_enable(struct rkisp1_params *params, bool en)
- 
- /* ISP White Balance Mode */
- static void rkisp1_awb_meas_config(struct rkisp1_params *params,
--			const struct rkisp1_cif_isp_awb_meas_config *arg)
-+				   const struct rkisp1_cif_isp_awb_meas_config *arg)
- {
- 	u32 reg_val = 0;
- 	/* based on the mode,configure the awb module */
-@@ -888,226 +888,171 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
- 	module_cfg_update = new_params->module_cfg_update;
- 	module_ens = new_params->module_ens;
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_DPCC) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPCC)) {
--		/*update dpc config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPCC)
--			rkisp1_dpcc_config(params,
--					   &new_params->others.dpcc_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_DPCC) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_DPCC)
--				rkisp1_param_set_bits(params,
--						      RKISP1_CIF_ISP_DPCC_MODE,
--						      RKISP1_CIF_ISP_DPCC_ENA);
--			else
--				rkisp1_param_clear_bits(params,
-+	/*update dpc config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPCC)
-+		rkisp1_dpcc_config(params,
-+				   &new_params->others.dpcc_config);
+Changes in v12:
+- Fix some warnings while make dt_binding_check
+- Drop a allOf defined
+
+Changes in v8:
+- Fix a error while make dt_binding_check
+
+Changes in v7:
+- Fix some wrong define
+
+Changes in v6:
+- Fix some wrong define
+- Modified the definition of compatible
+
+Changes in v5:
+- Fix some wrong define.
+- Add boot-medium define.
+- Remove some compatible define.
+
+Changes in v4:
+- The compatible define with rkxx_nfc.
+- Add assigned-clocks.
+- Fix some wrong defineChanges in.
+
+Changes in v3:
+- Change the title for the dt-bindings.
+
+ .../mtd/rockchip,nand-controller.yaml         | 161 ++++++++++++++++++
+ 1 file changed, 161 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
+
+diff --git a/Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml b/Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
+new file mode 100644
+index 000000000000..0922536b1811
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mtd/rockchip,nand-controller.yaml
+@@ -0,0 +1,161 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mtd/rockchip,nand-controller.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_DPCC) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_DPCC)
-+			rkisp1_param_set_bits(params,
-+					      RKISP1_CIF_ISP_DPCC_MODE,
-+					      RKISP1_CIF_ISP_DPCC_ENA);
-+		else
-+			rkisp1_param_clear_bits(params,
- 						RKISP1_CIF_ISP_DPCC_MODE,
- 						RKISP1_CIF_ISP_DPCC_ENA);
--		}
- 	}
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_BLS) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_BLS)) {
--		/* update bls config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_BLS)
--			rkisp1_bls_config(params,
--					  &new_params->others.bls_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_BLS) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_BLS)
--				rkisp1_param_set_bits(params,
--						      RKISP1_CIF_ISP_BLS_CTRL,
--						      RKISP1_CIF_ISP_BLS_ENA);
--			else
--				rkisp1_param_clear_bits(params,
--							RKISP1_CIF_ISP_BLS_CTRL,
--							RKISP1_CIF_ISP_BLS_ENA);
--		}
-+	/* update bls config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_BLS)
-+		rkisp1_bls_config(params,
-+				  &new_params->others.bls_config);
++title: Rockchip SoCs NAND FLASH Controller (NFC)
 +
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_BLS) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_BLS)
-+			rkisp1_param_set_bits(params,
-+					      RKISP1_CIF_ISP_BLS_CTRL,
-+					      RKISP1_CIF_ISP_BLS_ENA);
-+		else
-+			rkisp1_param_clear_bits(params,
-+						RKISP1_CIF_ISP_BLS_CTRL,
-+						RKISP1_CIF_ISP_BLS_ENA);
- 	}
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_SDG) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_SDG)) {
--		/* update sdg config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_SDG)
--			rkisp1_sdg_config(params,
--					  &new_params->others.sdg_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_SDG) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_SDG)
--				rkisp1_param_set_bits(params,
--					RKISP1_CIF_ISP_CTRL,
--					RKISP1_CIF_ISP_CTRL_ISP_GAMMA_IN_ENA);
--			else
--				rkisp1_param_clear_bits(params,
--					RKISP1_CIF_ISP_CTRL,
--					RKISP1_CIF_ISP_CTRL_ISP_GAMMA_IN_ENA);
--		}
-+	/* update sdg config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_SDG)
-+		rkisp1_sdg_config(params,
-+				  &new_params->others.sdg_config);
++allOf:
++  - $ref: "nand-controller.yaml#"
 +
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_SDG) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_SDG)
-+			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
-+					      RKISP1_CIF_ISP_CTRL_ISP_GAMMA_IN_ENA);
-+		else
-+			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_CTRL,
-+						RKISP1_CIF_ISP_CTRL_ISP_GAMMA_IN_ENA);
- 	}
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_LSC) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_LSC)) {
--		/* update lsc config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_LSC)
--			rkisp1_lsc_config(params,
--					  &new_params->others.lsc_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_LSC) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_LSC)
--				rkisp1_param_set_bits(params,
--						RKISP1_CIF_ISP_LSC_CTRL,
--						RKISP1_CIF_ISP_LSC_CTRL_ENA);
--			else
--				rkisp1_param_clear_bits(params,
--						RKISP1_CIF_ISP_LSC_CTRL,
-+	/* update lsc config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_LSC)
-+		rkisp1_lsc_config(params,
-+				  &new_params->others.lsc_config);
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
 +
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_LSC) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_LSC)
-+			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_LSC_CTRL,
-+					      RKISP1_CIF_ISP_LSC_CTRL_ENA);
-+		else
-+			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_LSC_CTRL,
- 						RKISP1_CIF_ISP_LSC_CTRL_ENA);
--		}
- 	}
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN)) {
--		/* update awb gains */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
--			rkisp1_awb_gain_config(params,
--					&new_params->others.awb_gain_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
--				rkisp1_param_set_bits(params,
--					RKISP1_CIF_ISP_CTRL,
--					RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
--			else
--				rkisp1_param_clear_bits(params,
--					RKISP1_CIF_ISP_CTRL,
--					RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
--		}
-+	/* update awb gains */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
-+		rkisp1_awb_gain_config(params, &new_params->others.awb_gain_config);
++properties:
++  compatible:
++    oneOf:
++      - const: rockchip,px30-nfc
++      - const: rockchip,rk2928-nfc
++      - const: rockchip,rv1108-nfc
++      - items:
++          - const: rockchip,rk3036-nfc
++          - const: rockchip,rk2928-nfc
++      - items:
++          - const: rockchip,rk3308-nfc
++          - const: rockchip,rv1108-nfc
 +
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
-+			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
-+					      RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
-+		else
-+			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_CTRL,
-+						RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
- 	}
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_BDM) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_BDM)) {
--		/* update bdm config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_BDM)
--			rkisp1_bdm_config(params,
--					  &new_params->others.bdm_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_BDM) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_BDM)
--				rkisp1_param_set_bits(params,
--						RKISP1_CIF_ISP_DEMOSAIC,
--						RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
--			else
--				rkisp1_param_clear_bits(params,
--						RKISP1_CIF_ISP_DEMOSAIC,
-+	/* update bdm config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_BDM)
-+		rkisp1_bdm_config(params,
-+				  &new_params->others.bdm_config);
++  reg:
++    maxItems: 1
 +
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_BDM) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_BDM)
-+			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
-+					      RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
-+		else
-+			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
- 						RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
--		}
- 	}
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_FLT) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_FLT)) {
--		/* update filter config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_FLT)
--			rkisp1_flt_config(params,
--					  &new_params->others.flt_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_FLT) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_FLT)
--				rkisp1_param_set_bits(params,
--						      RKISP1_CIF_ISP_FILT_MODE,
--						      RKISP1_CIF_ISP_FLT_ENA);
--			else
--				rkisp1_param_clear_bits(params,
--						RKISP1_CIF_ISP_FILT_MODE,
-+	/* update filter config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_FLT)
-+		rkisp1_flt_config(params,
-+				  &new_params->others.flt_config);
++  interrupts:
++    maxItems: 1
 +
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_FLT) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_FLT)
-+			rkisp1_param_set_bits(params,
-+					      RKISP1_CIF_ISP_FILT_MODE,
-+					      RKISP1_CIF_ISP_FLT_ENA);
-+		else
-+			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_FILT_MODE,
- 						RKISP1_CIF_ISP_FLT_ENA);
--		}
- 	}
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_CTK) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_CTK)) {
--		/* update ctk config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_CTK)
--			rkisp1_ctk_config(params,
--					  &new_params->others.ctk_config);
-+	/* update ctk config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_CTK)
-+		rkisp1_ctk_config(params,
-+				  &new_params->others.ctk_config);
- 
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_CTK)
--			rkisp1_ctk_enable(params,
--				!!(module_ens & RKISP1_CIF_ISP_MODULE_CTK));
--	}
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_CTK)
-+		rkisp1_ctk_enable(params, !!(module_ens & RKISP1_CIF_ISP_MODULE_CTK));
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_GOC) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_GOC)) {
--		/* update goc config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_GOC)
--			rkisp1_goc_config(params,
--					  &new_params->others.goc_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_GOC) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_GOC)
--				rkisp1_param_set_bits(params,
--					RKISP1_CIF_ISP_CTRL,
--					RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
--			else
--				rkisp1_param_clear_bits(params,
--					RKISP1_CIF_ISP_CTRL,
--					RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
--		}
-+	/* update goc config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_GOC)
-+		rkisp1_goc_config(params,
-+				  &new_params->others.goc_config);
++  clocks:
++    minItems: 1
++    items:
++      - description: Bus Clock
++      - description: Module Clock
 +
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_GOC) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_GOC)
-+			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
-+					      RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
-+		else
-+			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_CTRL,
-+						RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
- 	}
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_CPROC) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_CPROC)) {
--		/* update cproc config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_CPROC) {
--			rkisp1_cproc_config(params,
--					    &new_params->others.cproc_config);
--		}
-+	/* update cproc config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_CPROC) {
-+		rkisp1_cproc_config(params,
-+				    &new_params->others.cproc_config);
-+	}
- 
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_CPROC) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_CPROC)
--				rkisp1_param_set_bits(params,
--						RKISP1_CIF_C_PROC_CTRL,
--						RKISP1_CIF_C_PROC_CTR_ENABLE);
--			else
--				rkisp1_param_clear_bits(params,
--						RKISP1_CIF_C_PROC_CTRL,
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_CPROC) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_CPROC)
-+			rkisp1_param_set_bits(params, RKISP1_CIF_C_PROC_CTRL,
-+					      RKISP1_CIF_C_PROC_CTR_ENABLE);
-+		else
-+			rkisp1_param_clear_bits(params, RKISP1_CIF_C_PROC_CTRL,
- 						RKISP1_CIF_C_PROC_CTR_ENABLE);
--		}
- 	}
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_IE) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_IE)) {
--		/* update ie config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_IE)
--			rkisp1_ie_config(params,
--					 &new_params->others.ie_config);
-+	/* update ie config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_IE)
-+		rkisp1_ie_config(params,
-+				 &new_params->others.ie_config);
- 
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_IE)
--			rkisp1_ie_enable(params,
--				!!(module_ens & RKISP1_CIF_ISP_MODULE_IE));
--	}
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_IE)
-+		rkisp1_ie_enable(params, !!(module_ens & RKISP1_CIF_ISP_MODULE_IE));
++  clock-names:
++    minItems: 1
++    items:
++      - const: ahb
++      - const: nfc
 +
-+	/* update dpf  config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPF)
-+		rkisp1_dpf_config(params,
-+				  &new_params->others.dpf_config);
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_DPF) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPF)) {
--		/* update dpf  config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPF)
--			rkisp1_dpf_config(params,
--					  &new_params->others.dpf_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_DPF) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_DPF)
--				rkisp1_param_set_bits(params,
--						   RKISP1_CIF_ISP_DPF_MODE,
--						   RKISP1_CIF_ISP_DPF_MODE_EN);
--			else
--				rkisp1_param_clear_bits(params,
--						RKISP1_CIF_ISP_DPF_MODE,
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_DPF) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_DPF)
-+			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_DPF_MODE,
-+					      RKISP1_CIF_ISP_DPF_MODE_EN);
-+		else
-+			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_DPF_MODE,
- 						RKISP1_CIF_ISP_DPF_MODE_EN);
--		}
- 	}
- 
- 	if ((module_en_update & RKISP1_CIF_ISP_MODULE_DPF_STRENGTH) ||
- 	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPF_STRENGTH)) {
- 		/* update dpf strength config */
--		rkisp1_dpf_strength_config(params,
--				&new_params->others.dpf_strength_config);
-+		rkisp1_dpf_strength_config(params, &new_params->others.dpf_strength_config);
- 	}
- }
- 
-@@ -1120,68 +1065,53 @@ static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
- 	module_cfg_update = new_params->module_cfg_update;
- 	module_ens = new_params->module_ens;
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_AWB) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB)) {
--		/* update awb config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB)
--			rkisp1_awb_meas_config(params,
--					&new_params->meas.awb_meas_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB)
--			rkisp1_awb_meas_enable(params,
--				&new_params->meas.awb_meas_config,
--				!!(module_ens & RKISP1_CIF_ISP_MODULE_AWB));
--	}
-+	/* update awb config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB)
-+		rkisp1_awb_meas_config(params, &new_params->meas.awb_meas_config);
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_AFC) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_AFC)) {
--		/* update afc config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AFC)
--			rkisp1_afm_config(params,
--					  &new_params->meas.afc_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_AFC) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_AFC)
--				rkisp1_param_set_bits(params,
--						      RKISP1_CIF_ISP_AFM_CTRL,
--						      RKISP1_CIF_ISP_AFM_ENA);
--			else
--				rkisp1_param_clear_bits(params,
--							RKISP1_CIF_ISP_AFM_CTRL,
--							RKISP1_CIF_ISP_AFM_ENA);
--		}
--	}
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB)
-+		rkisp1_awb_meas_enable(params, &new_params->meas.awb_meas_config,
-+				       !!(module_ens & RKISP1_CIF_ISP_MODULE_AWB));
++  assigned-clocks:
++    maxItems: 1
 +
-+	/* update afc config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AFC)
-+		rkisp1_afm_config(params,
-+				  &new_params->meas.afc_config);
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_HST) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_HST)) {
--		/* update hst config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_HST)
--			rkisp1_hst_config(params,
--					  &new_params->meas.hst_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_HST)
--			rkisp1_hst_enable(params,
--				&new_params->meas.hst_config,
--				!!(module_ens & RKISP1_CIF_ISP_MODULE_HST));
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_AFC) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_AFC)
-+			rkisp1_param_set_bits(params,
-+					      RKISP1_CIF_ISP_AFM_CTRL,
-+					      RKISP1_CIF_ISP_AFM_ENA);
-+		else
-+			rkisp1_param_clear_bits(params,
-+						RKISP1_CIF_ISP_AFM_CTRL,
-+						RKISP1_CIF_ISP_AFM_ENA);
- 	}
- 
--	if ((module_en_update & RKISP1_CIF_ISP_MODULE_AEC) ||
--	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_AEC)) {
--		/* update aec config */
--		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AEC)
--			rkisp1_aec_config(params,
--					  &new_params->meas.aec_config);
--
--		if (module_en_update & RKISP1_CIF_ISP_MODULE_AEC) {
--			if (module_ens & RKISP1_CIF_ISP_MODULE_AEC)
--				rkisp1_param_set_bits(params,
--						      RKISP1_CIF_ISP_EXP_CTRL,
--						      RKISP1_CIF_ISP_EXP_ENA);
--			else
--				rkisp1_param_clear_bits(params,
--							RKISP1_CIF_ISP_EXP_CTRL,
--							RKISP1_CIF_ISP_EXP_ENA);
--		}
-+	/* update hst config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_HST)
-+		rkisp1_hst_config(params,
-+				  &new_params->meas.hst_config);
++  assigned-clock-rates:
++    maxItems: 1
 +
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_HST)
-+		rkisp1_hst_enable(params, &new_params->meas.hst_config,
-+				  !!(module_ens & RKISP1_CIF_ISP_MODULE_HST));
++  power-domains:
++    maxItems: 1
 +
-+	/* update aec config */
-+	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AEC)
-+		rkisp1_aec_config(params,
-+				  &new_params->meas.aec_config);
++patternProperties:
++  "^nand@[0-7]$":
++    type: object
++    properties:
++      reg:
++        minimum: 0
++        maximum: 7
 +
-+	if (module_en_update & RKISP1_CIF_ISP_MODULE_AEC) {
-+		if (module_ens & RKISP1_CIF_ISP_MODULE_AEC)
-+			rkisp1_param_set_bits(params,
-+					      RKISP1_CIF_ISP_EXP_CTRL,
-+					      RKISP1_CIF_ISP_EXP_ENA);
-+		else
-+			rkisp1_param_clear_bits(params,
-+						RKISP1_CIF_ISP_EXP_CTRL,
-+						RKISP1_CIF_ISP_EXP_ENA);
- 	}
- }
- 
++      nand-ecc-mode:
++        const: hw
++
++      nand-ecc-step-size:
++        const: 1024
++
++      nand-ecc-strength:
++        enum: [16, 24, 40, 60, 70]
++        description: |
++          The ECC configurations that can be supported are as follows.
++            NFC v600 ECC 16, 24, 40, 60
++              RK2928, RK3066, RK3188
++
++            NFC v622 ECC 16, 24, 40, 60
++              RK3036, RK3128
++
++            NFC v800 ECC 16
++              RK3308, RV1108
++
++            NFC v900 ECC 16, 40, 60, 70
++              RK3326, PX30
++
++      nand-bus-width:
++        const: 8
++
++      rockchip,boot-blks:
++        $ref: /schemas/types.yaml#/definitions/uint32
++        minimum: 2
++        default: 16
++        description:
++          The NFC driver need this information to select ECC
++          algorithms supported by the boot ROM.
++          Only used in combination with 'nand-is-boot-medium'.
++
++      rockchip,boot-ecc-strength:
++        enum: [16, 24, 40, 60, 70]
++        allOf:
++          - $ref: /schemas/types.yaml#/definitions/uint32
++        description: |
++          If specified it indicates that a different BCH/ECC setting is
++          supported by the boot ROM.
++            NFC v600 ECC 16, 24
++              RK2928, RK3066, RK3188
++
++            NFC v622 ECC 16, 24, 40, 60
++              RK3036, RK3128
++
++            NFC v800 ECC 16
++              RK3308, RV1108
++
++            NFC v900 ECC 16, 70
++              RK3326, PX30
++
++          Only used in combination with 'nand-is-boot-medium'.
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3308-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    nfc: nand-controller@ff4b0000 {
++      compatible = "rockchip,rk3308-nfc",
++                   "rockchip,rv1108-nfc";
++      reg = <0xff4b0000 0x4000>;
++      interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
++      clocks = <&cru HCLK_NANDC>, <&cru SCLK_NANDC>;
++      clock-names = "ahb", "nfc";
++      assigned-clocks = <&clks SCLK_NANDC>;
++      assigned-clock-rates = <150000000>;
++
++      pinctrl-0 = <&flash_ale &flash_bus8 &flash_cle &flash_csn0
++                   &flash_rdn &flash_rdy &flash_wrn>;
++      pinctrl-names = "default";
++
++      #address-cells = <1>;
++      #size-cells = <0>;
++
++      nand@0 {
++        reg = <0>;
++        label = "rk-nand";
++        nand-bus-width = <8>;
++        nand-ecc-mode = "hw";
++        nand-ecc-step-size = <1024>;
++        nand-ecc-strength = <16>;
++        nand-is-boot-medium;
++        rockchip,boot-blks = <8>;
++        rockchip,boot-ecc-strength = <16>;
++      };
++    };
++
++...
 -- 
 2.17.1
+
+
 
 
 _______________________________________________
