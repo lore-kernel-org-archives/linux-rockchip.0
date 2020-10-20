@@ -2,67 +2,85 @@ Return-Path: <SRS0=P5PH=D3=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E7317C4363A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 17:21:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BE89C4363A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 18:52:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C75A2222D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 17:21:41 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 823D722244
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 18:52:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MfP47t1C"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1C75A2222D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZgDzxbYd";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="dbg1dsuc"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 823D722244
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/iO+AJgoxETHpjwSTz8VlUuVGe8eEUhfjsMLfQo3YoA=; b=MfP47t1CaqVJyp1YmZwxUMrf1
-	lorjQ6+jhniFIccHj+GTTGY/4mklRVwczaXVv5BxaedcXF3aOdUhboYt6d1QOmwpgpZIGhD4CYtLZ
-	YuwHuOZ8ZM6IMlA99+W2rTsm9BPnMOdVk8uJci6zS1KaNjh0ExY3dU2So1TuMgGmXqB175SJZs3L3
-	vmhzl8CaSNzOPS3jcLgb+x+rD6GvIRgbR201KxvqEpISs6UzLpaYO37HKhlF2LNYzEaN98affZNJ2
-	yZGKPv63Mf9T2A8kNPXmF7pzUbOdq4HJt6nr7VPOqNcFeWh+dO+qLxxxK7rfR1Xf1npGzjXvheld0
-	WRgdi2Sbw==;
+	 bh=7hEDU+vH34TX2Souooy9AvKNfBTZhRTdT+oJFI1T+x4=; b=ZgDzxbYdEOIX3vSBHx7ibt0sE
+	kMsULejqPilUQW3vcsIMRSzr7w8xLWrz98z3SUVQ2sfdNKitwLeBaruCwpJVORFaAGzPv6hjUf+Qu
+	N+EorkzhstK6Im0E8Me+uzBv+gba79KZ5zw96MiIeR2IG7rHoW4DnKvZJBUBP0VLFvy9hhXI4BTps
+	Cf8IzwmUjKldNn9fXTmWdDgwkmtIwOK6f4ZnXP/ubmlC+E54p1q4WOD+gh3BdjnyonXiTGmfcoLmp
+	4Jp1TQlhk2thiuAkaGUTmSrIq0T0dryj3ERfdLtykygjbe3Z8UnDEvT3WeSpvuQyoGD+X62E1fWWW
+	hhAXY5D7Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUvKJ-00056D-VQ; Tue, 20 Oct 2020 17:21:36 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kUwjx-0005Tc-2O; Tue, 20 Oct 2020 18:52:09 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUvKI-00055m-56
- for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 17:21:35 +0000
-Received: from [IPv6:2003:c7:cf43:5b00:28a3:2f4e:277d:2227]
- (p200300c7cf435b0028a32f4e277d2227.dip0.t-ipconnect.de
- [IPv6:2003:c7:cf43:5b00:28a3:2f4e:277d:2227])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id DA3C91F45294;
- Tue, 20 Oct 2020 18:21:32 +0100 (BST)
-Subject: Re: [PATCH 4/4] media: staging: rkisp1: params: remove extra 'if'
- conditions
-To: Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org
-References: <20201019205956.6980-1-dafna.hirschfeld@collabora.com>
- <20201019205956.6980-5-dafna.hirschfeld@collabora.com>
- <d99172ee-6117-ad75-9e78-8dd1c13fa905@collabora.com>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <d7101ed0-23a6-a3d6-7392-ac05f8ffb09f@collabora.com>
-Date: Tue, 20 Oct 2020 19:21:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1kUwjs-0005Rt-2e
+ for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 18:52:06 +0000
+Received: by mail-wr1-x444.google.com with SMTP id e17so3485691wru.12
+ for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2020 11:52:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jYFdycc4cemOIaYFUQzd2hjpOFiC6YIkhXB4IeoEDOc=;
+ b=dbg1dsucJfSwBHh00T6Mc9TxIy2cA3D0xo1Vm098iBuTl3wM9obmhlk2Rgw+3Fe9DE
+ lhn/KcJI0CzGJ6oaNtkW3L2DYRWLDfMqxzbcRxS7Ipt1zizebN8Dh7Zxgafe7FBS9DOS
+ DhU2QoyTkvFT2KdsWGAohFct9ghNqDtSzxfoY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jYFdycc4cemOIaYFUQzd2hjpOFiC6YIkhXB4IeoEDOc=;
+ b=sexBTZKIm5Du5M8cA2b9q7pMV0OSpGKQdVrF89HN6bXnjG/SPacw70hK3egI/3vCWl
+ 02U9RfrDHmyF9WA4KSBj4MlpME7waxouoxe7+NJg0nwBUnbNuh4/ikYIWNLIwrhloi+Y
+ zY2wqaGdkMG2RH0III9JiyHa12I6zem5GMQ/tKG5TH/2oUeZFQuobziSEZ+N23XL4Sd5
+ DKSbJQpfOFn+CERGxoQiifURLWQUo7F0Ji4Io2s/uiHzon8BOcAI8QCfIKqZ6G4v+bMo
+ WAjTHtSDff9LOHRGWSMIcnDiS8LgJA12TBUdqv1vmdEJqkUYWi0SfVZSDg8R/zHdoG3Z
+ Vekg==
+X-Gm-Message-State: AOAM532Of/5AMstkgSJOuzxCXU3XhccNry3O+4CZNRwlJPwLnE5bZavn
+ AGENXP8CBqBJTnq7kuB68EtI6u5VLWZ8/xo0ZrI2pA==
+X-Google-Smtp-Source: ABdhPJzwG1O5oS9ghCKoJUxg59+XPLW7h0AAeoCd9EgHF2nhb1cMfI/IvqKJePI2HX9vcvnVxX2frJft2ThKtBNDJrA=
+X-Received: by 2002:a5d:4001:: with SMTP id n1mr5162648wrp.426.1603219922351; 
+ Tue, 20 Oct 2020 11:52:02 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <d99172ee-6117-ad75-9e78-8dd1c13fa905@collabora.com>
-Content-Language: en-US
+References: <20200914080619.4178587-1-cychiang@chromium.org>
+ <20200914080619.4178587-3-cychiang@chromium.org>
+ <7bdc0d63-27b1-f99e-c5f8-65f880733d16@linaro.org>
+ <CAFv8NwLkvxX2avoLY+4NY5gBv0dQ863hFFiqy7iQOJxH4WenmQ@mail.gmail.com>
+ <20201015161251.GF4390@sirena.org.uk>
+ <CAFv8NwL1xX=yPGFqQL_mOzAnPTfH0Z0J6ibG1+D32W46Nx0KYQ@mail.gmail.com>
+ <20201020143711.GC9448@sirena.org.uk>
+In-Reply-To: <20201020143711.GC9448@sirena.org.uk>
+From: Cheng-yi Chiang <cychiang@chromium.org>
+Date: Wed, 21 Oct 2020 02:51:33 +0800
+Message-ID: <CAFv8NwKuLjLeM1KLeV8Br2TZC8L7DO6KWHL=pXvhAUV5+wSBPg@mail.gmail.com>
+Subject: Re: [PATCH v11 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
+ bindings
+To: Mark Brown <broonie@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_132134_384536_78C0D76F 
-X-CRM114-Status: GOOD (  24.83  )
+X-CRM114-CacheID: sfid-20201020_145204_134355_8BF161A3 
+X-CRM114-Status: GOOD (  40.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,583 +93,163 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
- hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com,
- kernel@collabora.com, ezequiel@collabora.com
+Cc: Taniya Das <tdas@codeaurora.org>,
+ "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
+ <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ Takashi Iwai <tiwai@suse.com>, Rohit kumar <rohitkr@codeaurora.org>,
+ Ajye Huang <ajye_huang@compal.corp-partner.google.com>,
+ Patrick Lai <plai@codeaurora.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Andy Gross <agross@kernel.org>, Dylan Reid <dgreid@chromium.org>,
+ Jaroslav Kysela <perex@perex.cz>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
+ Srinivasa Rao <srivasam@codeaurora.org>, Stephan Gerhold <stephan@gerhold.net>,
+ linux-arm-msm <linux-arm-msm@vger.kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>,
+ Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, Oct 20, 2020 at 10:37 PM Mark Brown <broonie@kernel.org> wrote:
+>
+> On Tue, Oct 20, 2020 at 09:37:05PM +0800, Cheng-yi Chiang wrote:
+>
+> > May I know your suggestion on Ajye's patch "ASoC: qcom: sc7180: Modify
+> > machine driver for 2mic" ?
+>
+> > https://lore.kernel.org/r/20200928063744.525700-3-ajye_huang@compal.corp-partner.google.com
+>
+> > I think adding code in the machine driver makes the intent straightforward.
+> > If we want the machine driver to be fully configurable,
+> > we can always add more code to handle properties like gpio, route,
+> > widget (mux, text selection) passed in from the device tree.
+>
+> If the device has both front and rear mics and only one can be active at
+> once that seems obvious and sensible.  If the devices only have one of
+> these then this seems like a bad idea.
+>
 
-Am 20.10.20 um 19:13 schrieb Helen Koike:
-> Hi Dafna,
-> 
-> On 10/19/20 5:59 PM, Dafna Hirschfeld wrote:
->> There is a repeating code pattern:
->>
->> if (a || b) {
->> 	if (a)
->> 		...
->> 	if (b)
->> 		...
->> }
->>
->> In this pattern, the first 'if' is redundant.
->> The code can be replaced with:
->>
->> if (a)
->> 	...
->> if (b)
->> 	...
->>
->> In addition, the patch corrects alignment issues
->> reported by checkpatch.
->> This solves the TODO item
->> "Fix checkpatch errors."
->>
->> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
->> ---
->>   drivers/staging/media/rkisp1/TODO            |   1 -
->>   drivers/staging/media/rkisp1/rkisp1-params.c | 420 ++++++++-----------
->>   2 files changed, 175 insertions(+), 246 deletions(-)
->>
->> diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
->> index e7c8398fc2ce..647ab482d032 100644
->> --- a/drivers/staging/media/rkisp1/TODO
->> +++ b/drivers/staging/media/rkisp1/TODO
->> @@ -1,5 +1,4 @@
->>   * Fix pad format size for statistics and parameters entities.
->> -* Fix checkpatch errors.
->>   * Add uapi docs. Remember to add documentation of how quantization is handled.
->>   * streaming paths (mainpath and selfpath) check if the other path is streaming
->>   in several places of the code, review this, specially that it doesn't seem it
->> diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/staging/media/rkisp1/rkisp1-params.c
->> index a2df6b50c109..c8585b6ee918 100644
->> --- a/drivers/staging/media/rkisp1/rkisp1-params.c
->> +++ b/drivers/staging/media/rkisp1/rkisp1-params.c
->> @@ -186,7 +186,7 @@ static void rkisp1_bls_config(struct rkisp1_params *params,
->>   /* ISP LS correction interface function */
->>   static void
->>   rkisp1_lsc_correct_matrix_config(struct rkisp1_params *params,
->> -				const struct rkisp1_cif_isp_lsc_config *pconfig)
->> +				 const struct rkisp1_cif_isp_lsc_config *pconfig)
-> 
-> I think this should be part of the alignment patch.
-> 
->>   {
->>   	unsigned int isp_lsc_status, sram_addr, isp_lsc_table_sel, i, j, data;
->>   
->> @@ -434,7 +434,7 @@ static void rkisp1_ctk_enable(struct rkisp1_params *params, bool en)
->>   
->>   /* ISP White Balance Mode */
->>   static void rkisp1_awb_meas_config(struct rkisp1_params *params,
->> -			const struct rkisp1_cif_isp_awb_meas_config *arg)
->> +				   const struct rkisp1_cif_isp_awb_meas_config *arg)
-> 
-> This too.
-> 
->>   {
->>   	u32 reg_val = 0;
->>   	/* based on the mode,configure the awb module */
->> @@ -888,226 +888,171 @@ rkisp1_isp_isr_other_config(struct rkisp1_params *params,
->>   	module_cfg_update = new_params->module_cfg_update;
->>   	module_ens = new_params->module_ens;
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_DPCC) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPCC)) {
->> -		/*update dpc config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPCC)
->> -			rkisp1_dpcc_config(params,
->> -					   &new_params->others.dpcc_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_DPCC) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_DPCC)
->> -				rkisp1_param_set_bits(params,
->> -						      RKISP1_CIF_ISP_DPCC_MODE,
->> -						      RKISP1_CIF_ISP_DPCC_ENA);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> +	/*update dpc config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPCC)
->> +		rkisp1_dpcc_config(params,
->> +				   &new_params->others.dpcc_config);
->> +
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_DPCC) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_DPCC)
->> +			rkisp1_param_set_bits(params,
->> +					      RKISP1_CIF_ISP_DPCC_MODE,
->> +					      RKISP1_CIF_ISP_DPCC_ENA);
->> +		else
->> +			rkisp1_param_clear_bits(params,
->>   						RKISP1_CIF_ISP_DPCC_MODE,
->>   						RKISP1_CIF_ISP_DPCC_ENA);
->> -		}
->>   	}
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_BLS) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_BLS)) {
->> -		/* update bls config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_BLS)
->> -			rkisp1_bls_config(params,
->> -					  &new_params->others.bls_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_BLS) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_BLS)
->> -				rkisp1_param_set_bits(params,
->> -						      RKISP1_CIF_ISP_BLS_CTRL,
->> -						      RKISP1_CIF_ISP_BLS_ENA);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -							RKISP1_CIF_ISP_BLS_CTRL,
->> -							RKISP1_CIF_ISP_BLS_ENA);
->> -		}
->> +	/* update bls config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_BLS)
->> +		rkisp1_bls_config(params,
->> +				  &new_params->others.bls_config);
->> +
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_BLS) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_BLS)
->> +			rkisp1_param_set_bits(params,
->> +					      RKISP1_CIF_ISP_BLS_CTRL,
->> +					      RKISP1_CIF_ISP_BLS_ENA);
->> +		else
->> +			rkisp1_param_clear_bits(params,
->> +						RKISP1_CIF_ISP_BLS_CTRL,
->> +						RKISP1_CIF_ISP_BLS_ENA);
->>   	}
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_SDG) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_SDG)) {
->> -		/* update sdg config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_SDG)
->> -			rkisp1_sdg_config(params,
->> -					  &new_params->others.sdg_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_SDG) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_SDG)
->> -				rkisp1_param_set_bits(params,
->> -					RKISP1_CIF_ISP_CTRL,
->> -					RKISP1_CIF_ISP_CTRL_ISP_GAMMA_IN_ENA);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -					RKISP1_CIF_ISP_CTRL,
->> -					RKISP1_CIF_ISP_CTRL_ISP_GAMMA_IN_ENA);
->> -		}
->> +	/* update sdg config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_SDG)
->> +		rkisp1_sdg_config(params,
->> +				  &new_params->others.sdg_config);
->> +
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_SDG) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_SDG)
->> +			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
->> +					      RKISP1_CIF_ISP_CTRL_ISP_GAMMA_IN_ENA);
->> +		else
->> +			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_CTRL,
->> +						RKISP1_CIF_ISP_CTRL_ISP_GAMMA_IN_ENA);
->>   	}
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_LSC) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_LSC)) {
->> -		/* update lsc config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_LSC)
->> -			rkisp1_lsc_config(params,
->> -					  &new_params->others.lsc_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_LSC) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_LSC)
->> -				rkisp1_param_set_bits(params,
->> -						RKISP1_CIF_ISP_LSC_CTRL,
->> -						RKISP1_CIF_ISP_LSC_CTRL_ENA);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -						RKISP1_CIF_ISP_LSC_CTRL,
->> +	/* update lsc config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_LSC)
->> +		rkisp1_lsc_config(params,
->> +				  &new_params->others.lsc_config);
->> +
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_LSC) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_LSC)
->> +			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_LSC_CTRL,
->> +					      RKISP1_CIF_ISP_LSC_CTRL_ENA);
->> +		else
->> +			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_LSC_CTRL,
->>   						RKISP1_CIF_ISP_LSC_CTRL_ENA);
->> -		}
->>   	}
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN)) {
->> -		/* update awb gains */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
->> -			rkisp1_awb_gain_config(params,
->> -					&new_params->others.awb_gain_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
->> -				rkisp1_param_set_bits(params,
->> -					RKISP1_CIF_ISP_CTRL,
->> -					RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -					RKISP1_CIF_ISP_CTRL,
->> -					RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
->> -		}
->> +	/* update awb gains */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
->> +		rkisp1_awb_gain_config(params, &new_params->others.awb_gain_config);
->> +
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB_GAIN) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_AWB_GAIN)
->> +			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
->> +					      RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
->> +		else
->> +			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_CTRL,
->> +						RKISP1_CIF_ISP_CTRL_ISP_AWB_ENA);
->>   	}
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_BDM) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_BDM)) {
->> -		/* update bdm config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_BDM)
->> -			rkisp1_bdm_config(params,
->> -					  &new_params->others.bdm_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_BDM) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_BDM)
->> -				rkisp1_param_set_bits(params,
->> -						RKISP1_CIF_ISP_DEMOSAIC,
->> -						RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -						RKISP1_CIF_ISP_DEMOSAIC,
->> +	/* update bdm config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_BDM)
->> +		rkisp1_bdm_config(params,
->> +				  &new_params->others.bdm_config);
->> +
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_BDM) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_BDM)
->> +			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
->> +					      RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
->> +		else
->> +			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_DEMOSAIC,
->>   						RKISP1_CIF_ISP_DEMOSAIC_BYPASS);
->> -		}
->>   	}
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_FLT) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_FLT)) {
->> -		/* update filter config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_FLT)
->> -			rkisp1_flt_config(params,
->> -					  &new_params->others.flt_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_FLT) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_FLT)
->> -				rkisp1_param_set_bits(params,
->> -						      RKISP1_CIF_ISP_FILT_MODE,
->> -						      RKISP1_CIF_ISP_FLT_ENA);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -						RKISP1_CIF_ISP_FILT_MODE,
->> +	/* update filter config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_FLT)
->> +		rkisp1_flt_config(params,
->> +				  &new_params->others.flt_config);
->> +
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_FLT) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_FLT)
->> +			rkisp1_param_set_bits(params,
->> +					      RKISP1_CIF_ISP_FILT_MODE,
->> +					      RKISP1_CIF_ISP_FLT_ENA);
->> +		else
->> +			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_FILT_MODE,
->>   						RKISP1_CIF_ISP_FLT_ENA);
->> -		}
->>   	}
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_CTK) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_CTK)) {
->> -		/* update ctk config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_CTK)
->> -			rkisp1_ctk_config(params,
->> -					  &new_params->others.ctk_config);
->> +	/* update ctk config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_CTK)
->> +		rkisp1_ctk_config(params,
->> +				  &new_params->others.ctk_config);
->>   
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_CTK)
->> -			rkisp1_ctk_enable(params,
->> -				!!(module_ens & RKISP1_CIF_ISP_MODULE_CTK));
->> -	}
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_CTK)
->> +		rkisp1_ctk_enable(params, !!(module_ens & RKISP1_CIF_ISP_MODULE_CTK));
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_GOC) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_GOC)) {
->> -		/* update goc config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_GOC)
->> -			rkisp1_goc_config(params,
->> -					  &new_params->others.goc_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_GOC) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_GOC)
->> -				rkisp1_param_set_bits(params,
->> -					RKISP1_CIF_ISP_CTRL,
->> -					RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -					RKISP1_CIF_ISP_CTRL,
->> -					RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
->> -		}
->> +	/* update goc config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_GOC)
->> +		rkisp1_goc_config(params,
->> +				  &new_params->others.goc_config);
->> +
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_GOC) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_GOC)
->> +			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_CTRL,
->> +					      RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
->> +		else
->> +			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_CTRL,
->> +						RKISP1_CIF_ISP_CTRL_ISP_GAMMA_OUT_ENA);
->>   	}
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_CPROC) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_CPROC)) {
->> -		/* update cproc config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_CPROC) {
->> -			rkisp1_cproc_config(params,
->> -					    &new_params->others.cproc_config);
->> -		}
->> +	/* update cproc config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_CPROC) {
->> +		rkisp1_cproc_config(params,
->> +				    &new_params->others.cproc_config);
->> +	}
-> 
-> No need for the curly braces.
-> 
->>   
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_CPROC) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_CPROC)
->> -				rkisp1_param_set_bits(params,
->> -						RKISP1_CIF_C_PROC_CTRL,
->> -						RKISP1_CIF_C_PROC_CTR_ENABLE);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -						RKISP1_CIF_C_PROC_CTRL,
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_CPROC) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_CPROC)
->> +			rkisp1_param_set_bits(params, RKISP1_CIF_C_PROC_CTRL,
->> +					      RKISP1_CIF_C_PROC_CTR_ENABLE);
->> +		else
->> +			rkisp1_param_clear_bits(params, RKISP1_CIF_C_PROC_CTRL,
->>   						RKISP1_CIF_C_PROC_CTR_ENABLE);
->> -		}
->>   	}
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_IE) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_IE)) {
->> -		/* update ie config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_IE)
->> -			rkisp1_ie_config(params,
->> -					 &new_params->others.ie_config);
->> +	/* update ie config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_IE)
->> +		rkisp1_ie_config(params,
->> +				 &new_params->others.ie_config);
->>   
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_IE)
->> -			rkisp1_ie_enable(params,
->> -				!!(module_ens & RKISP1_CIF_ISP_MODULE_IE));
->> -	}
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_IE)
->> +		rkisp1_ie_enable(params, !!(module_ens & RKISP1_CIF_ISP_MODULE_IE));
->> +
->> +	/* update dpf  config */
-> 
-> Could you remove this extra space between "dpf" and "config" ?
+trogdor board: only front mic.
+pompom board: having both front mic and rear mic. Only one of them
+will be used at a time. It is toggled by mixer control backed by a
+gpio.
 
-I think it is better to add your suggestions on a separate
-patch so not to overload the patch.
+My proposed solution: instead of using compatible strings, expose only
+dmic-gpio property.
+When the machine driver sees this property, it uses the dapm widgets
+and controls created in the machine driver.
 
-> 
-> 
-> I'm glad to see a level of identation gone.
+> > But I feel that we don't need a machine driver to be that configurable
+> > from the device tree.
+> > I think having the logic scattered in various dtsi files and relying
+> > on manual inspection to understand the usage would be less
+> > maintainable than only exposing needed property like gpio.
+> > Especially in the complicated case where we need to create a mux
+> > widget with callback toggling the gpio like this:
+>
+> I don't understand what "logic scattered in various dtsi files" means,
+> sorry.
+>
+I mean I don't want to use device property to pass in widget name,
+type, text and callbacks.
+Let me give an example:
 
-:-)
+- Board trogdor uses front mic, rt5682, and max98357a.
+- Board pompom is based on board trogdor, but it has front mic and rear mic.
+If we somehow managed to add the code to pass in widget, route, type,
+text, and callbacks needed for dmic control, we will need to put a
+bunch of properties in trogdor-pompom.dtsi file.
+- Board ABC is based on trogdor as well, and it has front mic and rear
+mic, but with a different speaker amp.
 
-Thanks,
-Dafna
+To use widget, route, type, text and callbacks for front mic and rear
+mic, in trogdor-ABC.dtsi file we would copy some properties used in
+trogdor-pompom.dtsi file. To support the different combination of
+codec, we would need some modification of the route and widget.
 
-> 
-> With these changes
-> 
-> Acked-by: Helen Koike <helen.koike@collabora.com>
-> 
-> Thanks
-> Helen
-> 
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPF)
->> +		rkisp1_dpf_config(params,
->> +				  &new_params->others.dpf_config);
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_DPF) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPF)) {
->> -		/* update dpf  config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPF)
->> -			rkisp1_dpf_config(params,
->> -					  &new_params->others.dpf_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_DPF) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_DPF)
->> -				rkisp1_param_set_bits(params,
->> -						   RKISP1_CIF_ISP_DPF_MODE,
->> -						   RKISP1_CIF_ISP_DPF_MODE_EN);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -						RKISP1_CIF_ISP_DPF_MODE,
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_DPF) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_DPF)
->> +			rkisp1_param_set_bits(params, RKISP1_CIF_ISP_DPF_MODE,
->> +					      RKISP1_CIF_ISP_DPF_MODE_EN);
->> +		else
->> +			rkisp1_param_clear_bits(params, RKISP1_CIF_ISP_DPF_MODE,
->>   						RKISP1_CIF_ISP_DPF_MODE_EN);
->> -		}
->>   	}
->>   
->>   	if ((module_en_update & RKISP1_CIF_ISP_MODULE_DPF_STRENGTH) ||
->>   	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_DPF_STRENGTH)) {
->>   		/* update dpf strength config */
->> -		rkisp1_dpf_strength_config(params,
->> -				&new_params->others.dpf_strength_config);
->> +		rkisp1_dpf_strength_config(params, &new_params->others.dpf_strength_config);
->>   	}
->>   }
->>   
->> @@ -1120,68 +1065,53 @@ static void rkisp1_isp_isr_meas_config(struct rkisp1_params *params,
->>   	module_cfg_update = new_params->module_cfg_update;
->>   	module_ens = new_params->module_ens;
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_AWB) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB)) {
->> -		/* update awb config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB)
->> -			rkisp1_awb_meas_config(params,
->> -					&new_params->meas.awb_meas_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB)
->> -			rkisp1_awb_meas_enable(params,
->> -				&new_params->meas.awb_meas_config,
->> -				!!(module_ens & RKISP1_CIF_ISP_MODULE_AWB));
->> -	}
->> +	/* update awb config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AWB)
->> +		rkisp1_awb_meas_config(params, &new_params->meas.awb_meas_config);
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_AFC) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_AFC)) {
->> -		/* update afc config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AFC)
->> -			rkisp1_afm_config(params,
->> -					  &new_params->meas.afc_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_AFC) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_AFC)
->> -				rkisp1_param_set_bits(params,
->> -						      RKISP1_CIF_ISP_AFM_CTRL,
->> -						      RKISP1_CIF_ISP_AFM_ENA);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -							RKISP1_CIF_ISP_AFM_CTRL,
->> -							RKISP1_CIF_ISP_AFM_ENA);
->> -		}
->> -	}
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_AWB)
->> +		rkisp1_awb_meas_enable(params, &new_params->meas.awb_meas_config,
->> +				       !!(module_ens & RKISP1_CIF_ISP_MODULE_AWB));
->> +
->> +	/* update afc config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AFC)
->> +		rkisp1_afm_config(params,
->> +				  &new_params->meas.afc_config);
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_HST) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_HST)) {
->> -		/* update hst config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_HST)
->> -			rkisp1_hst_config(params,
->> -					  &new_params->meas.hst_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_HST)
->> -			rkisp1_hst_enable(params,
->> -				&new_params->meas.hst_config,
->> -				!!(module_ens & RKISP1_CIF_ISP_MODULE_HST));
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_AFC) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_AFC)
->> +			rkisp1_param_set_bits(params,
->> +					      RKISP1_CIF_ISP_AFM_CTRL,
->> +					      RKISP1_CIF_ISP_AFM_ENA);
->> +		else
->> +			rkisp1_param_clear_bits(params,
->> +						RKISP1_CIF_ISP_AFM_CTRL,
->> +						RKISP1_CIF_ISP_AFM_ENA);
->>   	}
->>   
->> -	if ((module_en_update & RKISP1_CIF_ISP_MODULE_AEC) ||
->> -	    (module_cfg_update & RKISP1_CIF_ISP_MODULE_AEC)) {
->> -		/* update aec config */
->> -		if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AEC)
->> -			rkisp1_aec_config(params,
->> -					  &new_params->meas.aec_config);
->> -
->> -		if (module_en_update & RKISP1_CIF_ISP_MODULE_AEC) {
->> -			if (module_ens & RKISP1_CIF_ISP_MODULE_AEC)
->> -				rkisp1_param_set_bits(params,
->> -						      RKISP1_CIF_ISP_EXP_CTRL,
->> -						      RKISP1_CIF_ISP_EXP_ENA);
->> -			else
->> -				rkisp1_param_clear_bits(params,
->> -							RKISP1_CIF_ISP_EXP_CTRL,
->> -							RKISP1_CIF_ISP_EXP_ENA);
->> -		}
->> +	/* update hst config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_HST)
->> +		rkisp1_hst_config(params,
->> +				  &new_params->meas.hst_config);
->> +
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_HST)
->> +		rkisp1_hst_enable(params, &new_params->meas.hst_config,
->> +				  !!(module_ens & RKISP1_CIF_ISP_MODULE_HST));
->> +
->> +	/* update aec config */
->> +	if (module_cfg_update & RKISP1_CIF_ISP_MODULE_AEC)
->> +		rkisp1_aec_config(params,
->> +				  &new_params->meas.aec_config);
->> +
->> +	if (module_en_update & RKISP1_CIF_ISP_MODULE_AEC) {
->> +		if (module_ens & RKISP1_CIF_ISP_MODULE_AEC)
->> +			rkisp1_param_set_bits(params,
->> +					      RKISP1_CIF_ISP_EXP_CTRL,
->> +					      RKISP1_CIF_ISP_EXP_ENA);
->> +		else
->> +			rkisp1_param_clear_bits(params,
->> +						RKISP1_CIF_ISP_EXP_CTRL,
->> +						RKISP1_CIF_ISP_EXP_ENA);
->>   	}
->>   }
->>   
->>
+Now the support of front mic and rear mic switch is scattered in
+trogdor-ABC.dtsi and trogdor-pompom.dtsi files.
+For example, when we change the code to parse or build the widget and
+route, we need to fix both trogdor-pompom.dtsi and trogdor-ABC.dtsi.
+
+Alternatively, if we only expose dmic-gpio property and put
+surrounding code in the machine driver, we can use this dmic-gpio
+property, plus the sound card name to identify the needed widget and
+route.
+
+> > Yes, that should work to describe the dailink we are using.
+> > But a more tricky issue is how to do calls like setting PLL in dai startup ops.
+>
+> ...
+>
+> > I think that asking a generic machine driver to do configuration like
+> > this with only a limited interface of device property
+> > might be too much of an ask for the machine driver.
+>
+> Richard was looking at some basic configuration for PLLs.
+
+That sounds promising. If we don't need to include the codec driver
+header file explicitly, that can make machine drivers simpler.
+Maybe for most of the simple cases we don't even need a dedicated
+machine driver.
+
+>
+> > Would you mind if I simplify the compatible string like Srinivas
+> > suggested, and send a v12?
+>
+> > As for other two kinds of variations that I am aware of:
+>
+> > 1. front mic / rear mic
+> > 2. replace alc5682 with adau7002
+>
+> The CODEC change is going to be described in the DT no matter what -
+> you'll have a reference to the CODEC node but it may make sense if
+> there's enough custom code around it.  For front vs rear mic the
+> simplest thing would just be to not mention which if this is a hardware
+> fixed thing, otherwise a control.
+>
+
+Would you suggest checking whether the codec node is a rt5682 node,
+and call required PLL calls accordingly ?
+
+"For front vs rear mic the simplest thing would just be to not mention
+which if this is a hardware fixed thing, otherwise a control."
+Sorry I am not sure if I understand this correctly. Please correct me
+if I am wrong.
+
+- For default case having 1 mic: not mention this at all
+- For front mic / rear mic case: see gpio property and use an
+additional control.
+
+> > We can set different board names and different compatible strings to
+> > achieve such variation.
+> > So that it would make sense to describe configuration in compatible
+> > strings like you suggested, and also provides UCM a way to distinguish
+> > different boards.
+>
+> I don't recall having suggested distinguishing these things with a
+> compatible string, especially not the microphones.  UCM can already use
+> the display names for the boards to distinguish things.
+
+My apology that I made the wrong interpretation when I read your reply
+"These feel more like things that fit with compatible" regarding
+replacing alc5682 with adau7002. Please let me know which one solution
+you prefer:
+-  deriving this information from codec node
+-  deriving this information from different sound card name
+
+Thanks so much!
 
 _______________________________________________
 Linux-rockchip mailing list
