@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BE89C4363A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 18:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CC317C4363A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 18:55:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 823D722244
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 18:52:15 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 543B32222D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 18:55:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZgDzxbYd";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="dbg1dsuc"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 823D722244
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2M02fXU9";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="kC1bm7nz"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 543B32222D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,43 +26,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7hEDU+vH34TX2Souooy9AvKNfBTZhRTdT+oJFI1T+x4=; b=ZgDzxbYdEOIX3vSBHx7ibt0sE
-	kMsULejqPilUQW3vcsIMRSzr7w8xLWrz98z3SUVQ2sfdNKitwLeBaruCwpJVORFaAGzPv6hjUf+Qu
-	N+EorkzhstK6Im0E8Me+uzBv+gba79KZ5zw96MiIeR2IG7rHoW4DnKvZJBUBP0VLFvy9hhXI4BTps
-	Cf8IzwmUjKldNn9fXTmWdDgwkmtIwOK6f4ZnXP/ubmlC+E54p1q4WOD+gh3BdjnyonXiTGmfcoLmp
-	4Jp1TQlhk2thiuAkaGUTmSrIq0T0dryj3ERfdLtykygjbe3Z8UnDEvT3WeSpvuQyoGD+X62E1fWWW
-	hhAXY5D7Q==;
+	 bh=BEm6WTmNMTjLNWX75CLeU7Fi5O+O2MsjdfkXubPXshk=; b=2M02fXU9XyYYE1x+NYMdv30OZ
+	gm/Upb8p5EPxirjzLxzK7BmLTbSdEVAqMj+xin9q6CwYGRcsC2vnDnSAp8swqujFe/wwHWbavlzEU
+	bpxfK19SG2mkQFJf9F5aJn1EI5fyWGkiGDq7L7EFMQ8Q/3JCnwfvsLKLZLeTA+wC42ijVjkX5DUSW
+	Yn77/mgaZGF1puPeztGkKaOwntobVSPP5ixamiZxpunr7BT9R3vcEUFKn0tEQFWlc/EWoH39PlZT6
+	c1gL/FEO6AIdtpzQPLKbRciTbTAFZI28AAFOCvmzV7KBg8e7Jygv2gUxZBJlTlbFaAO9N7mMW+Z5i
+	Sd4uxyySw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUwjx-0005Tc-2O; Tue, 20 Oct 2020 18:52:09 +0000
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
+	id 1kUwn1-0005ru-7h; Tue, 20 Oct 2020 18:55:19 +0000
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUwjs-0005Rt-2e
- for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 18:52:06 +0000
-Received: by mail-wr1-x444.google.com with SMTP id e17so3485691wru.12
- for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2020 11:52:03 -0700 (PDT)
+ id 1kUwmv-0005qF-Ut
+ for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 18:55:15 +0000
+Received: by mail-wr1-x441.google.com with SMTP id n6so3503387wrm.13
+ for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2020 11:55:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jYFdycc4cemOIaYFUQzd2hjpOFiC6YIkhXB4IeoEDOc=;
- b=dbg1dsucJfSwBHh00T6Mc9TxIy2cA3D0xo1Vm098iBuTl3wM9obmhlk2Rgw+3Fe9DE
- lhn/KcJI0CzGJ6oaNtkW3L2DYRWLDfMqxzbcRxS7Ipt1zizebN8Dh7Zxgafe7FBS9DOS
- DhU2QoyTkvFT2KdsWGAohFct9ghNqDtSzxfoY=
+ :cc; bh=mScZ8ah2UgtXD/hHaoKN6/WZjy3yp0sHiaOHV6wLFW8=;
+ b=kC1bm7nzh6+1h/Q0nN45KdnVbW/OI5uUooOLQ2Vs/LpFzRvJnYRUV+JwP0kcW7T4QR
+ 41jNfWJ2Z9lO48O89PVVflQTzDH60CTncg14/nyfU9FIEeibQS8Vrf68eqVidtcHz3vp
+ 3lByNPbOMsEb9+VEVy4e6EqFieABTbe7vnr3g=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=jYFdycc4cemOIaYFUQzd2hjpOFiC6YIkhXB4IeoEDOc=;
- b=sexBTZKIm5Du5M8cA2b9q7pMV0OSpGKQdVrF89HN6bXnjG/SPacw70hK3egI/3vCWl
- 02U9RfrDHmyF9WA4KSBj4MlpME7waxouoxe7+NJg0nwBUnbNuh4/ikYIWNLIwrhloi+Y
- zY2wqaGdkMG2RH0III9JiyHa12I6zem5GMQ/tKG5TH/2oUeZFQuobziSEZ+N23XL4Sd5
- DKSbJQpfOFn+CERGxoQiifURLWQUo7F0Ji4Io2s/uiHzon8BOcAI8QCfIKqZ6G4v+bMo
- WAjTHtSDff9LOHRGWSMIcnDiS8LgJA12TBUdqv1vmdEJqkUYWi0SfVZSDg8R/zHdoG3Z
- Vekg==
-X-Gm-Message-State: AOAM532Of/5AMstkgSJOuzxCXU3XhccNry3O+4CZNRwlJPwLnE5bZavn
- AGENXP8CBqBJTnq7kuB68EtI6u5VLWZ8/xo0ZrI2pA==
-X-Google-Smtp-Source: ABdhPJzwG1O5oS9ghCKoJUxg59+XPLW7h0AAeoCd9EgHF2nhb1cMfI/IvqKJePI2HX9vcvnVxX2frJft2ThKtBNDJrA=
-X-Received: by 2002:a5d:4001:: with SMTP id n1mr5162648wrp.426.1603219922351; 
- Tue, 20 Oct 2020 11:52:02 -0700 (PDT)
+ bh=mScZ8ah2UgtXD/hHaoKN6/WZjy3yp0sHiaOHV6wLFW8=;
+ b=abN2OBu5czN3CJa+bEVlzctPfnvDH2kr3lN5IVpEb8JIgvJAl5FfhtGYxU0/ZrYAP4
+ eB9HMe7WIOka2Mp3uKi4bIpka+G30/TnTBp+3OU85WcJifxl4My032N2mctHReviQ7qh
+ vBP5E9EY5Y4mG7dtmlG44KhpDH4Jnp6ElfJ02NHhn6v/cIl3FlZO5w2B4uhQp3W5pAJy
+ 8TIQOhQ/qH6rXUQmG79DZeXulljj9kkKbXbyLON0FS0+kknTby4f4Rn64CKvlS1LsJQj
+ CAQDdEZcE/SoQ2NxY+CdAh35Pw95BQYcX/sQ5BPy/JCT7dI3MxsoX5AW0gH9q+h4mEMu
+ HXWg==
+X-Gm-Message-State: AOAM531cjMFAMc1BNQzJcIyUX0TEzpjNZ1t3n3nPCdEXV+RmhQWVFubD
+ 2ekbqJ06F4K1u/VbazOhBzl+G13sK+0YtTJuFkOc8g==
+X-Google-Smtp-Source: ABdhPJxsMtKaYZKishW1LFkqqTjFYaAFJFl/nN/EX/ADY7U9joK0FSO7QV5LU0tzsLkN7u78bKqbrTQK/Z5k/u4nUP8=
+X-Received: by 2002:a5d:49ca:: with SMTP id t10mr5023373wrs.404.1603220112425; 
+ Tue, 20 Oct 2020 11:55:12 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200914080619.4178587-1-cychiang@chromium.org>
  <20200914080619.4178587-3-cychiang@chromium.org>
@@ -71,16 +71,17 @@ References: <20200914080619.4178587-1-cychiang@chromium.org>
  <20201015161251.GF4390@sirena.org.uk>
  <CAFv8NwL1xX=yPGFqQL_mOzAnPTfH0Z0J6ibG1+D32W46Nx0KYQ@mail.gmail.com>
  <20201020143711.GC9448@sirena.org.uk>
-In-Reply-To: <20201020143711.GC9448@sirena.org.uk>
+ <63f1a29c-0758-97b8-ce80-fe43d91630fa@linaro.org>
+In-Reply-To: <63f1a29c-0758-97b8-ce80-fe43d91630fa@linaro.org>
 From: Cheng-yi Chiang <cychiang@chromium.org>
-Date: Wed, 21 Oct 2020 02:51:33 +0800
-Message-ID: <CAFv8NwKuLjLeM1KLeV8Br2TZC8L7DO6KWHL=pXvhAUV5+wSBPg@mail.gmail.com>
+Date: Wed, 21 Oct 2020 02:54:43 +0800
+Message-ID: <CAFv8NwJ-+f146Ss9Mk=nEXjm1B--ZwhAgnfx-cTi7DGEKqC1-Q@mail.gmail.com>
 Subject: Re: [PATCH v11 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
  bindings
-To: Mark Brown <broonie@kernel.org>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_145204_134355_8BF161A3 
-X-CRM114-Status: GOOD (  40.59  )
+X-CRM114-CacheID: sfid-20201020_145514_079856_3167C4C5 
+X-CRM114-Status: GOOD (  28.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,142 +115,72 @@ Cc: Taniya Das <tdas@codeaurora.org>,
  Bjorn Andersson <bjorn.andersson@linaro.org>,
  Linux ARM <linux-arm-kernel@lists.infradead.org>,
  Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>,
- Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
+ linux-kernel <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 20, 2020 at 10:37 PM Mark Brown <broonie@kernel.org> wrote:
+On Tue, Oct 20, 2020 at 10:55 PM Srinivas Kandagatla
+<srinivas.kandagatla@linaro.org> wrote:
 >
-> On Tue, Oct 20, 2020 at 09:37:05PM +0800, Cheng-yi Chiang wrote:
 >
-> > May I know your suggestion on Ajye's patch "ASoC: qcom: sc7180: Modify
-> > machine driver for 2mic" ?
 >
-> > https://lore.kernel.org/r/20200928063744.525700-3-ajye_huang@compal.corp-partner.google.com
+> On 20/10/2020 15:37, Mark Brown wrote:
+> > I don't understand what "logic scattered in various dtsi files" means,
+> > sorry.
+> >
+> >> Yes, that should work to describe the dailink we are using.
+> >> But a more tricky issue is how to do calls like setting PLL in dai startup ops.
+> > ...
+> >
+> >> I think that asking a generic machine driver to do configuration like
+> >> this with only a limited interface of device property
+> >> might be too much of an ask for the machine driver.
+> > Richard was looking at some basic configuration for PLLs.
+> >
+> >> Would you mind if I simplify the compatible string like Srinivas
+> >> suggested, and send a v12?
+> >> As for other two kinds of variations that I am aware of:
+> >> 1. front mic / rear mic
+> >> 2. replace alc5682 with adau7002
+> > The CODEC change is going to be described in the DT no matter what -
+> > you'll have a reference to the CODEC node but it may make sense if
+> > there's enough custom code around it.  For front vs rear mic the
+> > simplest thing would just be to not mention which if this is a hardware
+> > fixed thing, otherwise a control.
+> >
+> >> We can set different board names and different compatible strings to
+> >> achieve such variation.
+> >> So that it would make sense to describe configuration in compatible
+> >> strings like you suggested, and also provides UCM a way to distinguish
+> >> different boards.
+> > I don't recall having suggested distinguishing these things with a
+> > compatible string, especially not the microphones.  UCM can already use
+> > the display names for the boards to distinguish things.
 >
-> > I think adding code in the machine driver makes the intent straightforward.
-> > If we want the machine driver to be fully configurable,
-> > we can always add more code to handle properties like gpio, route,
-> > widget (mux, text selection) passed in from the device tree.
 >
-> If the device has both front and rear mics and only one can be active at
-> once that seems obvious and sensible.  If the devices only have one of
-> these then this seems like a bad idea.
+> Not with the compatible string!
 >
+> Currently card name, and long name are exactly same in all Qualcomm
+> soundcards, which makes it very difficult to identify how those boards
+> re wired up at UCM2 level. So the plan is to properly populate card long
+> name with "model" property which can include details on how things are
+> wiredup on that board.
+>
+> --srini
 
-trogdor board: only front mic.
-pompom board: having both front mic and rear mic. Only one of them
-will be used at a time. It is toggled by mixer control backed by a
-gpio.
+Hi Srini,
+Thanks for taking a look.
+Let me try to clarify your comments in case there is any misunderstanding.
 
-My proposed solution: instead of using compatible strings, expose only
-dmic-gpio property.
-When the machine driver sees this property, it uses the dapm widgets
-and controls created in the machine driver.
+I understand your request on having different board variations using
+different sound card names through model property, and I totally agree
+with that.
+As for compatible strings, do you insist on having all the board
+variations using exactly the same compatible string ?
 
-> > But I feel that we don't need a machine driver to be that configurable
-> > from the device tree.
-> > I think having the logic scattered in various dtsi files and relying
-> > on manual inspection to understand the usage would be less
-> > maintainable than only exposing needed property like gpio.
-> > Especially in the complicated case where we need to create a mux
-> > widget with callback toggling the gpio like this:
->
-> I don't understand what "logic scattered in various dtsi files" means,
-> sorry.
->
-I mean I don't want to use device property to pass in widget name,
-type, text and callbacks.
-Let me give an example:
-
-- Board trogdor uses front mic, rt5682, and max98357a.
-- Board pompom is based on board trogdor, but it has front mic and rear mic.
-If we somehow managed to add the code to pass in widget, route, type,
-text, and callbacks needed for dmic control, we will need to put a
-bunch of properties in trogdor-pompom.dtsi file.
-- Board ABC is based on trogdor as well, and it has front mic and rear
-mic, but with a different speaker amp.
-
-To use widget, route, type, text and callbacks for front mic and rear
-mic, in trogdor-ABC.dtsi file we would copy some properties used in
-trogdor-pompom.dtsi file. To support the different combination of
-codec, we would need some modification of the route and widget.
-
-Now the support of front mic and rear mic switch is scattered in
-trogdor-ABC.dtsi and trogdor-pompom.dtsi files.
-For example, when we change the code to parse or build the widget and
-route, we need to fix both trogdor-pompom.dtsi and trogdor-ABC.dtsi.
-
-Alternatively, if we only expose dmic-gpio property and put
-surrounding code in the machine driver, we can use this dmic-gpio
-property, plus the sound card name to identify the needed widget and
-route.
-
-> > Yes, that should work to describe the dailink we are using.
-> > But a more tricky issue is how to do calls like setting PLL in dai startup ops.
->
-> ...
->
-> > I think that asking a generic machine driver to do configuration like
-> > this with only a limited interface of device property
-> > might be too much of an ask for the machine driver.
->
-> Richard was looking at some basic configuration for PLLs.
-
-That sounds promising. If we don't need to include the codec driver
-header file explicitly, that can make machine drivers simpler.
-Maybe for most of the simple cases we don't even need a dedicated
-machine driver.
-
->
-> > Would you mind if I simplify the compatible string like Srinivas
-> > suggested, and send a v12?
->
-> > As for other two kinds of variations that I am aware of:
->
-> > 1. front mic / rear mic
-> > 2. replace alc5682 with adau7002
->
-> The CODEC change is going to be described in the DT no matter what -
-> you'll have a reference to the CODEC node but it may make sense if
-> there's enough custom code around it.  For front vs rear mic the
-> simplest thing would just be to not mention which if this is a hardware
-> fixed thing, otherwise a control.
->
-
-Would you suggest checking whether the codec node is a rt5682 node,
-and call required PLL calls accordingly ?
-
-"For front vs rear mic the simplest thing would just be to not mention
-which if this is a hardware fixed thing, otherwise a control."
-Sorry I am not sure if I understand this correctly. Please correct me
-if I am wrong.
-
-- For default case having 1 mic: not mention this at all
-- For front mic / rear mic case: see gpio property and use an
-additional control.
-
-> > We can set different board names and different compatible strings to
-> > achieve such variation.
-> > So that it would make sense to describe configuration in compatible
-> > strings like you suggested, and also provides UCM a way to distinguish
-> > different boards.
->
-> I don't recall having suggested distinguishing these things with a
-> compatible string, especially not the microphones.  UCM can already use
-> the display names for the boards to distinguish things.
-
-My apology that I made the wrong interpretation when I read your reply
-"These feel more like things that fit with compatible" regarding
-replacing alc5682 with adau7002. Please let me know which one solution
-you prefer:
--  deriving this information from codec node
--  deriving this information from different sound card name
-
-Thanks so much!
+Thanks!
 
 _______________________________________________
 Linux-rockchip mailing list
