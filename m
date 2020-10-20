@@ -2,86 +2,56 @@ Return-Path: <SRS0=P5PH=D3=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_GIT
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC317C4363A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 18:55:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C0A4FC4363A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:39:12 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 543B32222D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 18:55:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 44F0D2225F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:39:12 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2M02fXU9";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="kC1bm7nz"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 543B32222D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DtaRRYuX"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 44F0D2225F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=BEm6WTmNMTjLNWX75CLeU7Fi5O+O2MsjdfkXubPXshk=; b=2M02fXU9XyYYE1x+NYMdv30OZ
-	gm/Upb8p5EPxirjzLxzK7BmLTbSdEVAqMj+xin9q6CwYGRcsC2vnDnSAp8swqujFe/wwHWbavlzEU
-	bpxfK19SG2mkQFJf9F5aJn1EI5fyWGkiGDq7L7EFMQ8Q/3JCnwfvsLKLZLeTA+wC42ijVjkX5DUSW
-	Yn77/mgaZGF1puPeztGkKaOwntobVSPP5ixamiZxpunr7BT9R3vcEUFKn0tEQFWlc/EWoH39PlZT6
-	c1gL/FEO6AIdtpzQPLKbRciTbTAFZI28AAFOCvmzV7KBg8e7Jygv2gUxZBJlTlbFaAO9N7mMW+Z5i
-	Sd4uxyySw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=Ga7gbwDgZJxyrSovZ2ZHnaFkfvP0DbfgyHAKuL8wvZk=; b=DtaRRYuXIsTtnr3k0PiY1K+MmL
+	S3LJmchA7DIiBLscRduwDGvuO7rpJ+VOoNcUQwHmYzaDG94boirLb6bR+aoRIUCP43Fen6X95bB2F
+	plOhArwoK00f0pheg/oAsfmeP4GmREg4AFF9bjTuWXdCQ7VR0qcqRqTodCb/Pf+gK7GfakMZXqfYh
+	1gwLBhIP0vuSiqLoii25xzmWw6TQlgU+jujObz/tGgNNq0a/hNrqRQ80bt6ZbxzfcWreuXH7Znf7u
+	zuaGFs3A2wAAz0kdap7XFGSv+/dSa8Gvj2DuAft2Ty3jswEImgy6TYnW4r1jx5rI5kODx+bixNL3N
+	eA46w/Lw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUwn1-0005ru-7h; Tue, 20 Oct 2020 18:55:19 +0000
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441])
+	id 1kUxTO-0000x8-LH; Tue, 20 Oct 2020 19:39:06 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUwmv-0005qF-Ut
- for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 18:55:15 +0000
-Received: by mail-wr1-x441.google.com with SMTP id n6so3503387wrm.13
- for <linux-rockchip@lists.infradead.org>; Tue, 20 Oct 2020 11:55:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=mScZ8ah2UgtXD/hHaoKN6/WZjy3yp0sHiaOHV6wLFW8=;
- b=kC1bm7nzh6+1h/Q0nN45KdnVbW/OI5uUooOLQ2Vs/LpFzRvJnYRUV+JwP0kcW7T4QR
- 41jNfWJ2Z9lO48O89PVVflQTzDH60CTncg14/nyfU9FIEeibQS8Vrf68eqVidtcHz3vp
- 3lByNPbOMsEb9+VEVy4e6EqFieABTbe7vnr3g=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=mScZ8ah2UgtXD/hHaoKN6/WZjy3yp0sHiaOHV6wLFW8=;
- b=abN2OBu5czN3CJa+bEVlzctPfnvDH2kr3lN5IVpEb8JIgvJAl5FfhtGYxU0/ZrYAP4
- eB9HMe7WIOka2Mp3uKi4bIpka+G30/TnTBp+3OU85WcJifxl4My032N2mctHReviQ7qh
- vBP5E9EY5Y4mG7dtmlG44KhpDH4Jnp6ElfJ02NHhn6v/cIl3FlZO5w2B4uhQp3W5pAJy
- 8TIQOhQ/qH6rXUQmG79DZeXulljj9kkKbXbyLON0FS0+kknTby4f4Rn64CKvlS1LsJQj
- CAQDdEZcE/SoQ2NxY+CdAh35Pw95BQYcX/sQ5BPy/JCT7dI3MxsoX5AW0gH9q+h4mEMu
- HXWg==
-X-Gm-Message-State: AOAM531cjMFAMc1BNQzJcIyUX0TEzpjNZ1t3n3nPCdEXV+RmhQWVFubD
- 2ekbqJ06F4K1u/VbazOhBzl+G13sK+0YtTJuFkOc8g==
-X-Google-Smtp-Source: ABdhPJxsMtKaYZKishW1LFkqqTjFYaAFJFl/nN/EX/ADY7U9joK0FSO7QV5LU0tzsLkN7u78bKqbrTQK/Z5k/u4nUP8=
-X-Received: by 2002:a5d:49ca:: with SMTP id t10mr5023373wrs.404.1603220112425; 
- Tue, 20 Oct 2020 11:55:12 -0700 (PDT)
+ id 1kUxTM-0000wA-EA
+ for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 19:39:05 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: koike) with ESMTPSA id 29CE31F44D9D
+From: Helen Koike <helen.koike@collabora.com>
+To: linux-media@vger.kernel.org
+Subject: [PATCH v6 0/9] move Rockchip ISP bindings out of staging / add ISP DT
+ nodes for RK3399
+Date: Tue, 20 Oct 2020 16:38:41 -0300
+Message-Id: <20201020193850.1460644-1-helen.koike@collabora.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-References: <20200914080619.4178587-1-cychiang@chromium.org>
- <20200914080619.4178587-3-cychiang@chromium.org>
- <7bdc0d63-27b1-f99e-c5f8-65f880733d16@linaro.org>
- <CAFv8NwLkvxX2avoLY+4NY5gBv0dQ863hFFiqy7iQOJxH4WenmQ@mail.gmail.com>
- <20201015161251.GF4390@sirena.org.uk>
- <CAFv8NwL1xX=yPGFqQL_mOzAnPTfH0Z0J6ibG1+D32W46Nx0KYQ@mail.gmail.com>
- <20201020143711.GC9448@sirena.org.uk>
- <63f1a29c-0758-97b8-ce80-fe43d91630fa@linaro.org>
-In-Reply-To: <63f1a29c-0758-97b8-ce80-fe43d91630fa@linaro.org>
-From: Cheng-yi Chiang <cychiang@chromium.org>
-Date: Wed, 21 Oct 2020 02:54:43 +0800
-Message-ID: <CAFv8NwJ-+f146Ss9Mk=nEXjm1B--ZwhAgnfx-cTi7DGEKqC1-Q@mail.gmail.com>
-Subject: Re: [PATCH v11 2/3] ASoC: qcom: dt-bindings: Add sc7180 machine
- bindings
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_145514_079856_3167C4C5 
-X-CRM114-Status: GOOD (  28.93  )
+X-CRM114-CacheID: sfid-20201020_153904_572125_FC0472A1 
+X-CRM114-Status: UNSURE (   9.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,93 +64,83 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Taniya Das <tdas@codeaurora.org>,
- "moderated list:SOUND - SOC LAYER / DYNAMIC AUDIO POWER MANAGEM..."
- <alsa-devel@alsa-project.org>, Banajit Goswami <bgoswami@codeaurora.org>,
- Heiko Stuebner <heiko@sntech.de>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- Takashi Iwai <tiwai@suse.com>, Rohit kumar <rohitkr@codeaurora.org>,
- Ajye Huang <ajye_huang@compal.corp-partner.google.com>,
- Patrick Lai <plai@codeaurora.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Andy Gross <agross@kernel.org>, Dylan Reid <dgreid@chromium.org>,
- Jaroslav Kysela <perex@perex.cz>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, Tzung-Bi Shih <tzungbi@chromium.org>,
- Srinivasa Rao <srivasam@codeaurora.org>, Stephan Gerhold <stephan@gerhold.net>,
- linux-arm-msm <linux-arm-msm@vger.kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- Doug Anderson <dianders@chromium.org>, Liam Girdwood <lgirdwood@gmail.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, Mark Brown <broonie@kernel.org>
+Cc: devel@driverdev.osuosl.org, devicetree@vger.kernel.org,
+ eddie.cai.linux@gmail.com, dafna.hirschfeld@collabora.com, heiko@sntech.de,
+ robin.murphy@arm.com, linux-kernel@vger.kernel.org, karthik.poduval@gmail.com,
+ linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
+ hverkuil-cisco@xs4all.nl, mark.rutland@arm.com, kernel@collabora.com,
+ zhengsq@rock-chips.com, jbx6244@gmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 20, 2020 at 10:55 PM Srinivas Kandagatla
-<srinivas.kandagatla@linaro.org> wrote:
->
->
->
-> On 20/10/2020 15:37, Mark Brown wrote:
-> > I don't understand what "logic scattered in various dtsi files" means,
-> > sorry.
-> >
-> >> Yes, that should work to describe the dailink we are using.
-> >> But a more tricky issue is how to do calls like setting PLL in dai startup ops.
-> > ...
-> >
-> >> I think that asking a generic machine driver to do configuration like
-> >> this with only a limited interface of device property
-> >> might be too much of an ask for the machine driver.
-> > Richard was looking at some basic configuration for PLLs.
-> >
-> >> Would you mind if I simplify the compatible string like Srinivas
-> >> suggested, and send a v12?
-> >> As for other two kinds of variations that I am aware of:
-> >> 1. front mic / rear mic
-> >> 2. replace alc5682 with adau7002
-> > The CODEC change is going to be described in the DT no matter what -
-> > you'll have a reference to the CODEC node but it may make sense if
-> > there's enough custom code around it.  For front vs rear mic the
-> > simplest thing would just be to not mention which if this is a hardware
-> > fixed thing, otherwise a control.
-> >
-> >> We can set different board names and different compatible strings to
-> >> achieve such variation.
-> >> So that it would make sense to describe configuration in compatible
-> >> strings like you suggested, and also provides UCM a way to distinguish
-> >> different boards.
-> > I don't recall having suggested distinguishing these things with a
-> > compatible string, especially not the microphones.  UCM can already use
-> > the display names for the boards to distinguish things.
->
->
-> Not with the compatible string!
->
-> Currently card name, and long name are exactly same in all Qualcomm
-> soundcards, which makes it very difficult to identify how those boards
-> re wired up at UCM2 level. So the plan is to properly populate card long
-> name with "model" property which can include details on how things are
-> wiredup on that board.
->
-> --srini
+Move the bindings out of drivers/staging and place them in
+Documentation/devicetree/bindings instead.
 
-Hi Srini,
-Thanks for taking a look.
-Let me try to clarify your comments in case there is any misunderstanding.
+Also, add DT nodes for RK3399 and verify with make ARCH=arm64 dtbs_check
+and make ARCH=arm64 dt_binding_check.
 
-I understand your request on having different board variations using
-different sound card names through model property, and I totally agree
-with that.
-As for compatible strings, do you insist on having all the board
-variations using exactly the same compatible string ?
+Tested by verifying images streamed from Scarlet Chromebook
 
-Thanks!
+Changes in v6:
+- [PATCH v6 5/9] media: staging: rkisp1: remove unecessary clocks
+  Define clocks in the top level, and use if/else schema to define how
+  many for each compatible as sugested by Rob Herring on
+  https://patchwork.linuxtv.org/project/linux-media/patch/20200722155533.252844-6-helen.koike@collabora.com/#122626
+- [PATCH v6 8/9] arm64: dts: rockchip: add isp0 node for rk3399
+  Add status = "disabled" in the isp0 node
+- Added Reviewed-by tags from Tomasz Figa
+- Added Acked-by tags from Rog Herring
+- No changes for other patches in the serie.
+
+Changes in v5:
+- Drop unit addresses in dt-bindings example for simplification and fix
+errors as suggested by Rob Herring in previous version
+- Fix typos
+- Re-write clock organization with if/then schema
+
+Changes in v4:
+- simplify clocks with "isp", "aclk" and "hclk" as suggested by
+Robin Murphy on https://patchwork.kernel.org/patch/11475007/
+
+Changes in v3:
+- dropped accepted patches
+- cleanup clocks
+- fix "no reg" error in dt-bindings parent@0 example
+- add linux-rockchip list in MAINTAINERS and reorder items
+- add Scarlet sensors dt nodes to the series
+
+Changes in v2:
+Add patches modifying bindings, as sugested by Johan Jonker in v1,
+before moving them out of staging.
+
+Eddie Cai (1):
+  arm64: dts: rockchip: add isp and sensors for Scarlet
+
+Helen Koike (7):
+  media: staging: dt-bindings: rkisp1: add missing required nodes
+  media: staging: dt-bindings: rkisp1: drop i2c unit address
+  media: staging: dt-bindings: rkisp1: re-order properties
+  media: staging: dt-bindings: rkisp1: drop parent unit address
+  media: staging: rkisp1: remove unecessary clocks
+  dt-bindings: media: rkisp1: move rockchip-isp1 bindings out of staging
+  media: MAINTAINERS: rkisp1: add path to dt-bindings
+
+Shunqian Zheng (1):
+  arm64: dts: rockchip: add isp0 node for rk3399
+
+ .../bindings/media/rockchip-isp1.yaml         | 81 ++++++++++++-------
+ MAINTAINERS                                   |  2 +
+ .../boot/dts/rockchip/rk3399-gru-scarlet.dtsi | 74 +++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi      | 26 ++++++
+ drivers/staging/media/rkisp1/rkisp1-dev.c     |  8 +-
+ 5 files changed, 157 insertions(+), 34 deletions(-)
+ rename {drivers/staging/media/rkisp1/Documentation => Documentation}/devicetree/bindings/media/rockchip-isp1.yaml (81%)
+
+-- 
+2.28.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
