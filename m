@@ -5,19 +5,18 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 76F87C5517F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:39:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 93B0BC41604
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:39:31 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E1CD22225F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:39:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1FE132225D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Oct 2020 19:39:31 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qhKNdQ48"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E1CD22225F
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vppLhh4Z"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1FE132225D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,35 +25,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kBvLpUEypM9isptfJqhg+gYNJ01U0zFti7ccOhMATvI=; b=qhKNdQ48hoKLh5pP+1dJSAVF/
-	HO/PvM7mQCZWVuIEnk4J7YFt7a/StA7o+NLYba/3hPEs0KFBABV4Cm/L6R/b7be1qGYba7yVYJiod
-	80JmabA2O4ghhgbY8CdpbC/Q3KI2eqMHKWGFK6DLJ1TvWE3cbT+IlvVoIK9uZbuMsJL4DGCgnFHfe
-	8PuEOYjAWacvtuWkMLvpVwA6jVps9oR5S7EcvtGiolpTXAoL3cIYZlq+UwemCwjLvr1EssGAQwlgR
-	3y2pnyFC0BGKih3B0JUxFdiCXYwQCEKfkCVwAHz5HHXehpNqok2gW1VEz74tGT+o8pm+xkwxYpKV9
-	qkLfvFD3A==;
+	 bh=2cwLcXTLAqnIeAWR8iCZQSuD1PqIIiYevXnr5sRw6vk=; b=vppLhh4ZFbZQxc29CKeS3wxvB
+	/gPE9Ngju/IObhM7tTTf1EGXYF3VhGN9NV6owZJwGIPibkHKoRMio2S9YKp4L/zoIur79nw6p70hq
+	4by1KGolYJ6Ydyw5Mqm+oB541aI6feom0mw24f3VPL6e7qXYOLIP5OqiJvFH3Y1/x/PoVnUP8e46p
+	bT2xDaEXe7IjPqgv3Zwl8JlipeGEzt71Y4EupMuPx4CaZENwF55rdSRuLPhzX7TMTdESe8fGUaVQA
+	4wyhAT5eWtWeCoL6Li8mRmUE9hFo+6JJZFIXh7x9Macrq7woMFgFu4/CvUC5U/AUcMRSJWkzXFbQ8
+	1OokkkDNg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kUxTg-00015F-Ss; Tue, 20 Oct 2020 19:39:24 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kUxTi-000161-Dr; Tue, 20 Oct 2020 19:39:26 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kUxTY-00011R-QA
- for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 19:39:17 +0000
+ id 1kUxTd-000133-68
+ for linux-rockchip@lists.infradead.org; Tue, 20 Oct 2020 19:39:22 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id EDA591F44D9D
+ (Authenticated sender: koike) with ESMTPSA id 718431F44DB5
 From: Helen Koike <helen.koike@collabora.com>
 To: linux-media@vger.kernel.org
-Subject: [PATCH v6 3/9] media: staging: dt-bindings: rkisp1: re-order
- properties
-Date: Tue, 20 Oct 2020 16:38:44 -0300
-Message-Id: <20201020193850.1460644-4-helen.koike@collabora.com>
+Subject: [PATCH v6 4/9] media: staging: dt-bindings: rkisp1: drop parent unit
+ address
+Date: Tue, 20 Oct 2020 16:38:45 -0300
+Message-Id: <20201020193850.1460644-5-helen.koike@collabora.com>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201020193850.1460644-1-helen.koike@collabora.com>
 References: <20201020193850.1460644-1-helen.koike@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201020_153916_973094_72E4D9B9 
-X-CRM114-Status: UNSURE (   7.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201020_153921_372429_AEB388C1 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,96 +76,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Organize properties order in dt-bindings to move it out of staging.
+Fix the following error found with make ARCH=arm64 dt_binding_check:
 
-On top: compatible, reg and interrupts.
-Then alphabetical order, then properties starting with '#'.
+Documentation/devicetree/bindings/media/rockchip-isp1.example.dts:24.27-101.11:
+Warning (unit_address_vs_reg): /example-0/parent@0: node has a unit name, but no reg or ranges property
 
+Reported-by: Johan Jonker <jbx6244@gmail.com>
 Signed-off-by: Helen Koike <helen.koike@collabora.com>
 Acked-by: Rob Herring <robh@kernel.org>
 Reviewed-by: Tomasz Figa <tfiga@chromium.org>
 ---
- .../bindings/media/rockchip-isp1.yaml         | 32 +++++++++----------
- 1 file changed, 16 insertions(+), 16 deletions(-)
+ .../Documentation/devicetree/bindings/media/rockchip-isp1.yaml  | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-index 4c31cfaee2709..79ebacab83cf3 100644
+index 79ebacab83cf3..62a6b9c959498 100644
 --- a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
 +++ b/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-@@ -23,19 +23,6 @@ properties:
-   interrupts:
-     maxItems: 1
+@@ -125,7 +125,7 @@ examples:
+     #include <dt-bindings/interrupt-controller/arm-gic.h>
+     #include <dt-bindings/power/rk3399-power.h>
  
--  iommus:
--    maxItems: 1
--
--  power-domains:
--    maxItems: 1
--
--  phys:
--    maxItems: 1
--    description: phandle for the PHY port
--
--  phy-names:
--    const: dphy
--
-   clocks:
-     items:
-       - description: ISP clock
-@@ -52,6 +39,19 @@ properties:
-       - const: hclk_isp
-       - const: hclk_isp_wrap
+-    parent0: parent@0 {
++    parent0: parent {
+         #address-cells = <2>;
+         #size-cells = <2>;
  
-+  iommus:
-+    maxItems: 1
-+
-+  phys:
-+    maxItems: 1
-+    description: phandle for the PHY port
-+
-+  phy-names:
-+    const: dphy
-+
-+  power-domains:
-+    maxItems: 1
-+
-   # See ./video-interfaces.txt for details
-   ports:
-     type: object
-@@ -110,10 +110,10 @@ required:
-   - interrupts
-   - clocks
-   - clock-names
--  - power-domains
-   - iommus
-   - phys
-   - phy-names
-+  - power-domains
-   - ports
- 
- additionalProperties: false
-@@ -139,19 +139,19 @@ examples:
-             clock-names = "clk_isp",
-                           "aclk_isp", "aclk_isp_wrap",
-                           "hclk_isp", "hclk_isp_wrap";
--            power-domains = <&power RK3399_PD_ISP0>;
-             iommus = <&isp0_mmu>;
-             phys = <&dphy>;
-             phy-names = "dphy";
-+            power-domains = <&power RK3399_PD_ISP0>;
- 
-             ports {
-                 #address-cells = <1>;
-                 #size-cells = <0>;
- 
-                 port@0 {
-+                    reg = <0>;
-                     #address-cells = <1>;
-                     #size-cells = <0>;
--                    reg = <0>;
- 
-                     mipi_in_wcam: endpoint@0 {
-                         reg = <0>;
 -- 
 2.28.0
 
