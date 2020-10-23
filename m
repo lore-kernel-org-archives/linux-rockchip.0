@@ -2,24 +2,23 @@ Return-Path: <SRS0=CSn7=D6=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CA384C388F9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Oct 2020 18:16:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A192C4363A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Oct 2020 18:18:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 29EF520759
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Oct 2020 18:16:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 880552192A
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Oct 2020 18:18:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="k01khrCm";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="COKoTY6b"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 29EF520759
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="zVinJkfy";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="OnkZ5bNo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 880552192A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -27,63 +26,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=jx/5fgNMff3t8mv50gNGl+iQLikVV+WFJ7U+hiqYLT0=; b=k01khrCm8qsP58UOla/0cSigOq
-	3xYtmqmBWAN/2A6ZA5O17bEmebtPjiUGRFcmwjUHi1qV1sh97ro3ZtlBtlZhWKK2Pc4B7sR8vcbZl
-	KdRn1Fx3KtlVKqtJqesrDWFUxrNSnVQdVCvmP2UjgUVVqWJqcYJsFyMYY/2e7Z3imRXxVJBPUgq9g
-	bmY/VyWhBBNJPpMSPIHGmabyUjxvYEpBgDxZfSwKRFLKaiz6lAaScslAxyrmxTULA72ohJmZokLOW
-	P/vdGPGPmQJNepehH4nkfUvbcOSRnLmukUdlsuviKtPzABWpQuLYwcY4LnJHANVOVmOfXIdZZM3vy
-	Q9d9KMEg==;
+	bh=YTQhgegnJaIriXfLDZeoZEf9ZXsoo0JJiy0vFdjY+fg=; b=zVinJkfyKbP8g8AwpZIaraOqJa
+	JhWSuix50u2dJOldu40WxAt2pN4paht71eWANdWEnS3rxFrEo+ZWdfsGV7KVbnR+g7BK7lLQ/ohka
+	5tAiIUxkUm5GUA8Rk5H0zK2PxjccbVONJ2aGOw6VaNd2gzidY3VndRcURF+GnPJ2vS3BbAanNPnjr
+	2pJHja/VNzzF4lsyq5xs7Km0JbwSM25ulXKQGdxPgVw1skrTmt6zdC2JXf5+IpPBGfY1cknZRTNx+
+	ovv2WyHmQ85/8AFBMuXh90t5UjqOszbc1xpZrMw4yPBQTcubaY1FpW/3RECAdPpbgwdD3lyOte5EX
+	+YN+HuBQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kW1cE-0007Gd-It; Fri, 23 Oct 2020 18:16:38 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1kW1eE-0007QA-KU; Fri, 23 Oct 2020 18:18:42 +0000
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kW1cC-0007Fw-Ro
- for linux-rockchip@lists.infradead.org; Fri, 23 Oct 2020 18:16:37 +0000
-Received: by mail-lf1-x132.google.com with SMTP id l2so3204045lfk.0
- for <linux-rockchip@lists.infradead.org>; Fri, 23 Oct 2020 11:16:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ id 1kW1e7-0007Nt-R0
+ for linux-rockchip@lists.infradead.org; Fri, 23 Oct 2020 18:18:39 +0000
+Received: by mail-pf1-x441.google.com with SMTP id e15so1982573pfh.6
+ for <linux-rockchip@lists.infradead.org>; Fri, 23 Oct 2020 11:18:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amarulasolutions.com; s=google;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=jgzcJanOtbB8ayQ+kiIz5HlevCgPPzDSXuFBsBzfzgw=;
- b=COKoTY6bBNMDEhrNUCwfe0PSeTmqzg6KeKk3FLIWTCs4ABrO5BXgAXkKwSLnrW22d/
- lwc1x7Dc4wInGPDIkJ+UwApBF+YfKGZh22dsUTdb8iwkhr+INFO/xplaW8cYqbz77nmI
- 1ttkAvXUlAyVfXHIk0Dj/ZHaO9E2n+RbgaXVSe/sfXY0l8rwpwuLaL9UHgqWhT8qwbK6
- IgKvGM8xhwsCeGHuoeCHpx3ckYdC0w70F60dHE31yg2NijGPbRCUCNcbvReKDao1qHG8
- oN6YEATAmbFJTH51xFNk4Kif2EgbjeEddbWWt4pPPG+HGn+4ZjKDhSNy+uk6mViq7QE9
- rd5Q==
+ bh=4m6jfpbMPvI670v+G/621vDvUbzIbqCiowX3qojKrHw=;
+ b=OnkZ5bNo3R7+KUYl2VjSFO4cE69flfZGBlgFhKWUCEvet4c7zl9z0V4Qa/bIHcoFlb
+ ZvZUeqnObh5JBFDqgzycXfZq1QwG8mAJvv+v8eHfYQGSRUAvRlxsm1u5CI98zQOirmFj
+ 4yjjrW5PwzY1KGllFJ+rgc1yGbwPVz+8jyU0A=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=jgzcJanOtbB8ayQ+kiIz5HlevCgPPzDSXuFBsBzfzgw=;
- b=ENTc2KXduB64MFCBxYKgvJRsoMXNqi7p3wgwcumMZxUPV9TExPSNC5kaLnTSJCr2zq
- WxeEVWBiVKGjbEjKeec3X/LDbV2pF4ba2RQ9iomcPaqQuGhCLaZb+1tM4A1P/RYsVehw
- b412JlbM6qnDsZTaVMhCehF2eI0KjkCV8XqrWD08LQBfJUf0Aw0L4lHVWRF9AC9XKB/r
- L7qvbM+EMADtmaH/HTPAap3Ulq1UPKCQzKcJDI/vQ8nOvdcchkG2ZPJWSXnoBSpt1Ypu
- jXGsgTpVki/ACDx/zeXZSefcXdV7j6yUq9nkgWHrAEHcpw03UmelXERW1tVjrjl/0muN
- e38A==
-X-Gm-Message-State: AOAM533FmOs9K3ZlxJi9aqZAZqvHM6B1AX1X7FNfKqoL31LjMokBa17I
- VMSmSNvOP2QebZmPiFgPTxc=
-X-Google-Smtp-Source: ABdhPJz6dnqB4MNO7eUYQIREgtgBPqL+k+1Okg6aZvhLKsEVPgt0sNQZQl7/VTyf1vs8OVXchLV/nw==
-X-Received: by 2002:a19:408b:: with SMTP id n133mr489667lfa.564.1603476992897; 
- Fri, 23 Oct 2020 11:16:32 -0700 (PDT)
-Received: from localhost.localdomain ([2a02:a31a:4241:5400:113e:58f9:4c3d:30])
- by smtp.gmail.com with ESMTPSA id
- r6sm204143lfm.242.2020.10.23.11.16.31
+ bh=4m6jfpbMPvI670v+G/621vDvUbzIbqCiowX3qojKrHw=;
+ b=lMvIc21875GWHKHCqOvJ4F1d8qRdtchK630ygfHIjm8grfadIUPuKiWL2yjHodYeLY
+ N1/SpSqlses6PQy+6+XxX0kBmgSgb48B9rM2MgrPmoU6k1A4+oeOAVPV7wqPjWrN3JXl
+ lISvP4tcTdtI4/eoeVa4PJQAOBrgYvFaQlmmaaPJckyyoIs9LYoYTgUAfwncw/hmpu6m
+ VFeZKW3wW6T4Keprw1TWINhu9lC4d9sQ1CeuMSilzw1oliNORJYNJYAtkwI26V6wyk4g
+ eLnyQtV+e0iJeeSxXncrbxoHw704W3sT/9brjhWGSEAMhoT9TEyfF2GZvAZcgj85ZIMT
+ SG2w==
+X-Gm-Message-State: AOAM533GXe0lXmGa5CQLtvQsPNqkweDesThrzJIEt5od0cRRD5YCBh0l
+ l1AH6aA9HR0svHL8ZG2uhe/90w==
+X-Google-Smtp-Source: ABdhPJybfaHmQ0Qz0QLxS4XqhlxkmDHZb4o+gWXwJ3icSXABR6RqkLoRyXl0QuuoqyOHS54Cas/Ysw==
+X-Received: by 2002:a63:481d:: with SMTP id v29mr2942292pga.448.1603477112153; 
+ Fri, 23 Oct 2020 11:18:32 -0700 (PDT)
+Received: from localhost.localdomain ([2405:201:c809:c7a4:2d08:2249:ad54:d32d])
+ by smtp.gmail.com with ESMTPSA id q24sm3271162pfn.72.2020.10.23.11.18.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Oct 2020 11:16:32 -0700 (PDT)
-From: Maciej Matuszczyk <maccraft123mc@gmail.com>
-To: robh+dt@kernel.org,
-	heiko@sntech.de
-Subject: [PATCH] Fix poweroff issue on Odroid Go Advance
-Date: Fri, 23 Oct 2020 20:16:29 +0200
-Message-Id: <20201023181629.119727-1-maccraft123mc@gmail.com>
-X-Mailer: git-send-email 2.29.0
+ Fri, 23 Oct 2020 11:18:31 -0700 (PDT)
+From: Jagan Teki <jagan@amarulasolutions.com>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+ Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>
+Subject: [PATCH 1/2] arm64: defconfig: Enable RTC_DRV_HYM8563
+Date: Fri, 23 Oct 2020 23:48:13 +0530
+Message-Id: <20201023181814.220974-1-jagan@amarulasolutions.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201023_141636_921679_2DD12EE5 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20201023_141835_900841_68AAE953 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,31 +92,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Maciej Matuszczyk <maccraft123mc@gmail.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Tom Cubie <tom@radxa.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Jagan Teki <jagan@amarulasolutions.com>,
+ Suniel Mahesh <sunil@amarulasolutions.com>,
+ linux-amarula <linux-amarula@amarulasolutions.com>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
----
- arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts | 1 -
- 1 file changed, 1 deletion(-)
+RTC HYM8563 used in the ARM64 Rockchip SoC's SDIO power
+sequence enablement.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-index 35bd6b904b9c..337681038519 100644
---- a/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts
-@@ -243,7 +243,6 @@ rk817: pmic@20 {
- 		interrupts = <RK_PB2 IRQ_TYPE_LEVEL_LOW>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&pmic_int>;
--		rockchip,system-power-controller;
- 		wakeup-source;
- 		#clock-cells = <1>;
- 		clock-output-names = "rk808-clkout1", "xin32k";
+Enable it as module.
+
+Signed-off-by: Jagan Teki <jagan@amarulasolutions.com>
+---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index e0f33826819f..7f72d3b4b39d 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -770,6 +770,7 @@ CONFIG_EDAC=y
+ CONFIG_EDAC_GHES=y
+ CONFIG_RTC_CLASS=y
+ CONFIG_RTC_DRV_DS1307=m
++CONFIG_RTC_DRV_HYM8563=m
+ CONFIG_RTC_DRV_MAX77686=y
+ CONFIG_RTC_DRV_RK808=m
+ CONFIG_RTC_DRV_PCF85363=m
 -- 
-2.28.0
+2.25.1
 
 
 _______________________________________________
