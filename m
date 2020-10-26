@@ -5,19 +5,19 @@ X-Spam-Level:
 X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F93CC2D0A3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2020 11:17:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 329CEC4363A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2020 16:27:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E7E72223C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2020 11:17:54 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A2BBC2224A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2020 16:27:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QjK3k3Bh"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4E7E72223C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Ag9oF6jY"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A2BBC2224A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=david-bauer.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,37 +25,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=EREpf/DZ0hgozqozhtsv7pRtusIoOwoiElusn9gtEUQ=; b=QjK3k3BhencufAda4BFZafrT6Z
-	/ZJopHdSUW7eQ0WT6ZSOkWLQfHPTNJcB+MW74QNyK9/KcT9JR9nb3wLFQyXe1xvhWPseedlE0htpT
-	uzPn2pZCnFh/J0cMEgWmoyhiS7ocYm0Rmyyu7ZNKGnYK6zX2uo8zTvvO/ET1x4gZsO20WaROHt6V3
-	vdHAt53QW0sY41jno8XK6BNas1mXH/t9pZTgUJzP2ykzZ/dEgoFgVtCewVza3XtGO0zZZMJJTptqY
-	nE89mv/c9Ht1kvyCJaZACoA2YXtAlvQMgkBXGywQ6rRAkA7Mpyr2EUGUWudbvlYxGPF7tdeVl8uNb
-	oczwaRTg==;
+	bh=MWfIitNxRty0UE1N9z1GVUuRYTXLsVHMqRGCK9sjYRM=; b=Ag9oF6jYCbgpsn9o3QaEiBJ6R0
+	/okBIGXVqEVmf32Y0OVG1FYWKoMfEK+g3LSPk21AAQkeiywRFUUmeSJqHD3MT8t0Ik/EIxbGs6wHI
+	1Nmun4o9WiFooAikUeQ4qAs9COnI9bKmk0aHch7+Bx2urakRHikOs9LBFiWEKxGpZK8sYrNLY561d
+	uwWEXFO8n11A0X/GMdfxa1RpJHgNVT2B1vUxeMR6cShg+dv9YkpUR6GU7g5KP8+mZzl7mfJaE4aZk
+	q+MnAuZXhYFqj+8rLoEqxCN6fikMpD/UKVEIvVqTEiJl1fVZ7RJDd835/vPoLZwYUK+N9JrZYEWgo
+	vmV6+nHA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kX0VW-0001wD-OM; Mon, 26 Oct 2020 11:17:46 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kX0VG-0001oC-Ni; Mon, 26 Oct 2020 11:17:34 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 9FA69101E;
- Mon, 26 Oct 2020 04:17:28 -0700 (PDT)
-Received: from e121345-lin.cambridge.arm.com (e121345-lin.cambridge.arm.com
- [10.1.196.37])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 9CF623F719;
- Mon, 26 Oct 2020 04:17:27 -0700 (PDT)
-From: Robin Murphy <robin.murphy@arm.com>
-To: mturquette@baylibre.com,
-	sboyd@kernel.org,
-	heiko@sntech.de
-Subject: [PATCH] clk: rockchip: Add appropriate arch dependencies
-Date: Mon, 26 Oct 2020 11:17:20 +0000
-Message-Id: <72abb0f794b8ed77e274e8ee21c22e0bd3223dfd.1603710913.git.robin.murphy@arm.com>
-X-Mailer: git-send-email 2.28.0.dirty
+	id 1kX5La-0007tu-My; Mon, 26 Oct 2020 16:27:50 +0000
+Received: from mars.blocktrron.ovh ([51.254.112.43] helo=mail.blocktrron.ovh)
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kX5LW-0007sS-Ci; Mon, 26 Oct 2020 16:27:47 +0000
+Received: from localhost.localdomain
+ (p200300e53f0929002cfb59f77ff723ec.dip0.t-ipconnect.de
+ [IPv6:2003:e5:3f09:2900:2cfb:59f7:7ff7:23ec])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail.blocktrron.ovh (Postfix) with ESMTPSA id F3C0522AE0;
+ Mon, 26 Oct 2020 17:27:40 +0100 (CET)
+From: David Bauer <mail@david-bauer.net>
+To: heiko@sntech.de, jbx6244@gmail.com, pgwipeout@gmail.com,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH] rockchip: rk3328: fix NanoPi R2S GMAC clock name
+Date: Mon, 26 Oct 2020 17:27:21 +0100
+Message-Id: <20201026162721.70672-1-mail@david-bauer.net>
+X-Mailer: git-send-email 2.29.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_071730_943669_99A02F59 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20201026_122746_542705_4180D156 
+X-CRM114-Status: GOOD (  14.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,107 +67,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, zhangqing@rock-chips.com,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Tobias Waldvogel <tobias.waldvogel@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There's no point offering support for 32-bit platforms to users
-configuring a 64-bit kernel - and vice-versa - unless they are
-explicitly interested in compile-testing.
+This commit fixes the name for the GMAC clock to gmac_clkin, as this is
+the name of the clock provided by the rk3328-clk driver.
 
-Signed-off-by: Robin Murphy <robin.murphy@arm.com>
+Without this commit, the GMAC will not work in TX direction.
+
+Suggested-by: Tobias Waldvogel <tobias.waldvogel@gmail.com>
+Signed-off-by: David Bauer <mail@david-bauer.net>
 ---
- drivers/clk/rockchip/Kconfig | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/clk/rockchip/Kconfig b/drivers/clk/rockchip/Kconfig
-index 47cd6c5de837..effd05032e85 100644
---- a/drivers/clk/rockchip/Kconfig
-+++ b/drivers/clk/rockchip/Kconfig
-@@ -11,67 +11,77 @@ config COMMON_CLK_ROCKCHIP
- if COMMON_CLK_ROCKCHIP
- config CLK_PX30
- 	bool "Rockchip PX30 clock controller support"
-+	depends on (ARM64 || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for PX30 Clock Driver.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+index a7d98501a16d..b1e45c01a9b2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts
+@@ -20,7 +20,7 @@ chosen {
+ 	gmac_clk: gmac-clock {
+ 		compatible = "fixed-clock";
+ 		clock-frequency = <125000000>;
+-		clock-output-names = "gmac_clk";
++		clock-output-names = "gmac_clkin";
+ 		#clock-cells = <0>;
+ 	};
  
- config CLK_RV110X
- 	bool "Rockchip RV110x clock controller support"
-+	depends on (ARM || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for RV110x Clock Driver.
- 
- config CLK_RK3036
- 	bool "Rockchip RK3036 clock controller support"
-+	depends on (ARM || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for RK3036 Clock Driver.
- 
- config CLK_RK312X
- 	bool "Rockchip RK312x clock controller support"
-+	depends on (ARM || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for RK312x Clock Driver.
- 
- config CLK_RK3188
- 	bool "Rockchip RK3188 clock controller support"
-+	depends on (ARM || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for RK3188 Clock Driver.
- 
- config CLK_RK322X
- 	bool "Rockchip RK322x clock controller support"
-+	depends on (ARM || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for RK322x Clock Driver.
- 
- config CLK_RK3288
- 	bool "Rockchip RK3288 clock controller support"
--	depends on ARM
-+	depends on (ARM || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for RK3288 Clock Driver.
- 
- config CLK_RK3308
- 	bool "Rockchip RK3308 clock controller support"
-+	depends on (ARM64 || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for RK3308 Clock Driver.
- 
- config CLK_RK3328
- 	bool "Rockchip RK3328 clock controller support"
-+	depends on (ARM64 || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for RK3328 Clock Driver.
- 
- config CLK_RK3368
- 	bool "Rockchip RK3368 clock controller support"
-+	depends on (ARM64 || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for RK3368 Clock Driver.
- 
- config CLK_RK3399
- 	tristate "Rockchip RK3399 clock controller support"
-+	depends on (ARM64 || COMPILE_TEST)
- 	default y
- 	help
- 	  Build the driver for RK3399 Clock Driver.
 -- 
-2.28.0.dirty
+2.29.1
 
 
 _______________________________________________
