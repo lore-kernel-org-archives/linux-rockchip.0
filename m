@@ -2,65 +2,54 @@ Return-Path: <SRS0=TxuA=EB=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 720B6C2D0A3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2020 17:50:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72161C4363A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2020 18:33:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1BA292225C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2020 17:50:51 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id D58772076A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Oct 2020 18:33:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ij2bOUOt"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1BA292225C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Xec4pL7q"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D58772076A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GlFUb+/LusrPjPFmk5FplO7gcT4x0850igJ5Z8GeEhA=; b=ij2bOUOtyzjGSjh8noUIFry8F
-	rU2Nqebeqlw+jALwCWQ2a5gOuqZL3JuCryx4skqAhbGz6mmi5uiQVOVSyW7OwYIDPxVLdmV7BiYf6
-	Hin8okjy4/GGtccYqUaHwdFFO4WHLK0lFv4ZxC+Y2lGyyvEMB4WWpCFpuah6i0EJs1yuoE3w04TUj
-	7nYP1Uzn6qXrnCxzY7v9izNNwCG5hygIg+zZWlnuGFQGHhkfUH1NVYLEzK7AEhOMWkUlNv0J7Jbxb
-	JBN2O1/KZTMtXmH1JOlci/TDmqt3nQOUy08dZ+k7F8N2M7QCZ+dPvu62l1A+6ufGJmzYQoNkvhgHM
-	MLUmHL1MA==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=B9PunTlpMzCyKsUEWgGaSdEXIjVO3PVy6O0ODfhhgYo=; b=Xec4pL7q48p372+FYEBUsDaLhc
+	yl/7ntifeQlwv2SLJq+CGw0kKmmMzYQ5jNGay4zRWq34kcZzDLAwuZQoCqp8yEPvG5ldSuKAvZyGN
+	GvYQLtOPmF0QZuHOFJde5c2tMqSBVsbmHkGW+eUjUz5gJbvtLtLp9Z0qlGc4FEC1CCrQp/mLLdf7h
+	qgWLy+HfYf55/4h4rueATadoYa+UDhiBNPYiw2nI3iLW18RxJJPob2BiZkIAffp8QUTVEiauaw6c6
+	5eZs8WofcusEnEjSevoJZ4MNjcqO0kbhR+SH7Pmqv7oNmyCvZxrw5vBlg+S81LPNwbIwH5vsXYa6z
+	it4i9fGw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kX6do-0006oF-SX; Mon, 26 Oct 2020 17:50:44 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kX7Ie-0003U3-L6; Mon, 26 Oct 2020 18:32:57 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kX6dl-0006mN-8D
- for linux-rockchip@lists.infradead.org; Mon, 26 Oct 2020 17:50:42 +0000
-Received: from [IPv6:2003:c7:cf0c:ab00:29cf:35ae:fe00:641e]
- (p200300c7cf0cab0029cf35aefe00641e.dip0.t-ipconnect.de
- [IPv6:2003:c7:cf0c:ab00:29cf:35ae:fe00:641e])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 7BC3E1F44FB7;
- Mon, 26 Oct 2020 17:50:39 +0000 (GMT)
-Subject: Re: [PATCH v2] media: staging: rkisp1: cap: refactor enable/disable
- stream to allow multistreaming
-To: Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org
-References: <20201019160434.877568-1-helen.koike@collabora.com>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <b0657648-2af9-c78a-c55a-9581ff3bd9ee@collabora.com>
-Date: Mon, 26 Oct 2020 18:50:37 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ id 1kX7IZ-0003Ox-HJ; Mon, 26 Oct 2020 18:32:53 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id E19AE1F44FDB
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+To: linux-kernel@vger.kernel.org
+Subject: [PATCH v5] dt-bindings: power: rockchip: Convert to json-schema
+Date: Mon, 26 Oct 2020 19:32:42 +0100
+Message-Id: <20201026183242.2921978-1-enric.balletbo@collabora.com>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-In-Reply-To: <20201019160434.877568-1-helen.koike@collabora.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201026_135041_528673_6EBC3165 
-X-CRM114-Status: GOOD (  48.62  )
+X-CRM114-CacheID: sfid-20201026_143251_753389_7B2C6E89 
+X-CRM114-Status: GOOD (  22.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,411 +62,481 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: kernel@collabora.com, linux-kernel@vger.kernel.org, tfiga@chromium.org,
- hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- laurent.pinchart@ideasonboard.com, sakari.ailus@linux.intel.com,
- mchehab@kernel.org
+Cc: Rob Herring <robh@kernel.org>, heiko@sntech.de, devicetree@vger.kernel.org,
+ dianders@chromium.org, linux-rockchip@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, Collabora Kernel ML <kernel@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, Caesar Wang <wxt@rock-chips.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Convert the soc/rockchip/power_domain.txt binding document to json-schema
+and move to the power bindings directory.
 
+Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
+---
 
-Am 19.10.20 um 18:04 schrieb Helen Koike:
-> Allow streaming from self picture path and main picture path at the same
-> time.
-> 
-> Take care for s_stream() callbacks to not be called twice.
-> When starting a stream, s_stream(true) shouldn't be called for the isp
-> and the sensor if the other stream is already enabled (since it was
-> already called).
-> When stopping a stream, s_stream(false) shouldn't be called for isp and
-> the sensor if the other stream is still enabled.
-> 
-> Remove the callback function scheme for navigating through the topology,
-> simplifying the code, improving readability.
-> 
-> Remove multistreaming item from the TODO list.
-> 
-> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> ---
-> 
-> Hello,
-> 
-> Since we didn't reach an agreement on the helpers in the core[1], I'm
-> sending this patch to fix this limitation only for rkisp1.
-> 
-> [1] https://patchwork.linuxtv.org/project/linux-media/cover/20200415013044.1778572-1-helen.koike@collabora.com/
-> 
-> If we decide to add the helpers in the future, we can clean up drivers
-> even more, but I don't want to block this feature.
-> 
-> This Patch depends on patch:
-> "media: staging: rkisp1: validate links before powering and streaming"
-> https://patchwork.linuxtv.org/project/linux-media/patch/20201002184222.7094-2-dafna.hirschfeld@collabora.com/
-> 
-> Changes in V2:
-> ==============
-> - Rebase on top of patch
-> "media: staging: rkisp1: validate links before powering and streaming"
-> which fixes media_pipeline_{start,stop}() calling order.
-> - Fix commit message
-> - Fix disable order
-> - Disable capture when s_stream(true) of the resizer fails
-> 
-> Overview of the patch:
-> ======================
-> 
-> * Rename rkisp1_stream_{start,stop}() to
->    rkisp1_cap_stream_{enable,disable}() to clarify the difference between
->    other stream enable/disable functions
-> 
-> * Implement rkisp1_pipeline_stream_{enable,disable}() to replace
->    rkisp1_pipeline_{enable,disable}_cb() and rkisp1_pipeline_sink_walk(),
->    which were removed.
-> 
-> * Call rkisp1_cap_stream_{enable,disable}() from
->    rkisp1_pipeline_stream_{enable,disable}() for better
->    unwind handling and function name semantics.
-> 
-> * Remove item from TODO list (I also reviewed the use of the
->    is_streaming var in the code and lgtm).
-> 
-> This patch was tested on rockpi4 board with:
-> ============================================
-> 
-> "media-ctl" "-d" "platform:rkisp1" "-r"
-> "media-ctl" "-d" "platform:rkisp1" "-l" "'imx219 4-0010':0 -> 'rkisp1_isp':0 [1]"
-> "media-ctl" "-d" "platform:rkisp1" "-l" "'rkisp1_isp':2 -> 'rkisp1_resizer_selfpath':0 [1]"
-> "media-ctl" "-d" "platform:rkisp1" "-l" "'rkisp1_isp':2 -> 'rkisp1_resizer_mainpath':0 [1]"
-> 
-> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"imx219 4-0010":0 [fmt:SRGGB10_1X10/1640x1232]'
-> 
-> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_isp":0 [fmt:SRGGB10_1X10/1640x1232 crop: (0,0)/1600x1200]'
-> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_isp":2 [fmt:YUYV8_2X8/1600x1200 crop: (0,0)/1500x1100]'
-> 
-> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_selfpath":0 [fmt:YUYV8_2X8/1500x1100 crop: (300,400)/1400x1000]'
-> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_selfpath":1 [fmt:YUYV8_2X8/900x800]'
-> 
-> "v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "-v" "width=900,height=800,"
-> "v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "-v" "pixelformat=422P"
-> 
-> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_mainpath":0 [fmt:YUYV8_2X8/1500x1100 crop: (300,400)/1400x1000]'
-> "media-ctl" "-d" "platform:rkisp1" "--set-v4l2" '"rkisp1_resizer_mainpath":1 [fmt:YUYV8_2X8/900x800]'
-> 
-> "v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_mainpath" "-v" "width=900,height=800,"
-> "v4l2-ctl" "-z" "platform:rkisp1" "-d" "rkisp1_mainpath" "-v" "pixelformat=422P"
-> 
-> sleep 1
-> 
-> time v4l2-ctl "-z" "platform:rkisp1" "-d" "rkisp1_mainpath" "--stream-mmap" "--stream-count" "100" &
-> time v4l2-ctl "-z" "platform:rkisp1" "-d" "rkisp1_selfpath" "--stream-mmap" "--stream-count" "100" &
-> 
-> wait
-> echo "Completed"
-> 
-> Thanks
-> Helen
-> ---
->   drivers/staging/media/rkisp1/TODO             |   3 -
->   drivers/staging/media/rkisp1/rkisp1-capture.c | 219 +++++++++---------
->   2 files changed, 110 insertions(+), 112 deletions(-)
-> 
-> diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
-> index e7c8398fc2cef..a2dd0ad951c25 100644
-> --- a/drivers/staging/media/rkisp1/TODO
-> +++ b/drivers/staging/media/rkisp1/TODO
-> @@ -1,9 +1,6 @@
->   * Fix pad format size for statistics and parameters entities.
->   * Fix checkpatch errors.
->   * Add uapi docs. Remember to add documentation of how quantization is handled.
-> -* streaming paths (mainpath and selfpath) check if the other path is streaming
-> -in several places of the code, review this, specially that it doesn't seem it
-> -supports streaming from both paths at the same time.
->   
->   NOTES:
->   * All v4l2-compliance test must pass.
-> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> index 9b4a12e13f135..13463c899b009 100644
-> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
-> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
-> @@ -830,71 +830,43 @@ static void rkisp1_return_all_buffers(struct rkisp1_capture *cap,
->   }
->   
->   /*
-> - * rkisp1_pipeline_sink_walk - Walk through the pipeline and call cb
-> - * @from: entity at which to start pipeline walk
-> - * @until: entity at which to stop pipeline walk
-> - *
-> - * Walk the entities chain starting at the pipeline video node and stop
-> - * all subdevices in the chain.
-> - *
-> - * If the until argument isn't NULL, stop the pipeline walk when reaching the
-> - * until entity. This is used to disable a partially started pipeline due to a
-> - * subdev start error.
-> + * Most of registers inside rockchip ISP1 have shadow register since
-> + * they must be not be changed during processing a frame.
-> + * Usually, each sub-module updates its shadow register after
-> + * processing the last pixel of a frame.
->    */
-> -static int rkisp1_pipeline_sink_walk(struct media_entity *from,
-> -				     struct media_entity *until,
-> -				     int (*cb)(struct media_entity *from,
-> -					       struct media_entity *curr))
-> +static void rkisp1_cap_stream_enable(struct rkisp1_capture *cap)
->   {
-> -	struct media_entity *entity = from;
-> -	struct media_pad *pad;
-> -	unsigned int i;
-> -	int ret;
-> -
-> -	while (1) {
-> -		pad = NULL;
-> -		/* Find remote source pad */
-> -		for (i = 0; i < entity->num_pads; i++) {
-> -			struct media_pad *spad = &entity->pads[i];
-> -
-> -			if (!(spad->flags & MEDIA_PAD_FL_SINK))
-> -				continue;
-> -			pad = media_entity_remote_pad(spad);
-> -			if (pad && is_media_entity_v4l2_subdev(pad->entity))
-> -				break;
-> -		}
-> -		if (!pad || !is_media_entity_v4l2_subdev(pad->entity))
-> -			break;
-> +	struct rkisp1_device *rkisp1 = cap->rkisp1;
-> +	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
->   
-> -		entity = pad->entity;
-> -		if (entity == until)
-> -			break;
-> +	cap->ops->set_data_path(cap);
-> +	cap->ops->config(cap);
->   
-> -		ret = cb(from, entity);
-> -		if (ret)
-> -			return ret;
-> +	/* Setup a buffer for the next frame */
-> +	spin_lock_irq(&cap->buf.lock);
-> +	rkisp1_set_next_buf(cap);
-> +	cap->ops->enable(cap);
-> +	/* It's safe to config ACTIVE and SHADOW regs for the
-> +	 * first stream. While when the second is starting, do NOT
-> +	 * force update because it also update the first one.
-> +	 *
-> +	 * The latter case would drop one more buf(that is 2) since
-> +	 * there's not buf in shadow when the second FE received. This's
-> +	 * also required because the second FE maybe corrupt especially
-> +	 * when run at 120fps.
-> +	 */
-> +	if (!other->is_streaming) {
-> +		/* force cfg update */
-> +		rkisp1_write(rkisp1,
-> +			     RKISP1_CIF_MI_INIT_SOFT_UPD, RKISP1_CIF_MI_INIT);
-> +		rkisp1_set_next_buf(cap);
->   	}
-> -
-> -	return 0;
-> -}
-> -
-> -static int rkisp1_pipeline_disable_cb(struct media_entity *from,
-> -				      struct media_entity *curr)
-> -{
-> -	struct v4l2_subdev *sd = media_entity_to_v4l2_subdev(curr);
-> -
-> -	return v4l2_subdev_call(sd, video, s_stream, false);
-> -}
-> -
-> -static int rkisp1_pipeline_enable_cb(struct media_entity *from,
-> -				     struct media_entity *curr)
-> -{
-> -	struct v4l2_subdev *sd = media_entity_to_v4l2_subdev(curr);
-> -
-> -	return v4l2_subdev_call(sd, video, s_stream, true);
-> +	spin_unlock_irq(&cap->buf.lock);
-> +	cap->is_streaming = true;
->   }
->   
-> -static void rkisp1_stream_stop(struct rkisp1_capture *cap)
-> +static void rkisp1_cap_stream_disable(struct rkisp1_capture *cap)
->   {
->   	int ret;
->   
-> @@ -911,6 +883,82 @@ static void rkisp1_stream_stop(struct rkisp1_capture *cap)
->   	}
->   }
->   
-> +/*
-> + * rkisp1_pipeline_stream_disable - disable nodes in the pipeline
-> + *
-> + * Call s_stream(false) in the reverse order from
-> + * rkisp1_pipeline_stream_enable() and disable the DMA engine.
-> + * Should be called before media_pipeline_stop()
-> + */
-> +static void rkisp1_pipeline_stream_disable(struct rkisp1_capture *cap)
-> +	__must_hold(&cap->rkisp1->stream_lock)
-> +{
-> +	struct rkisp1_device *rkisp1 = cap->rkisp1;
-> +
-> +	/*
-> +	 * If the other capture is streaming, isp and sensor nodes shouldn't
-> +	 * be disabled, skip them.
-> +	 */
-> +	if (rkisp1->pipe.streaming_count < 2) {
-> +		v4l2_subdev_call(rkisp1->active_sensor->sd, video, s_stream,
-> +				 false);
-> +		v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, false);
-> +	}
-> +
-> +	v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video, s_stream,
-> +			 false);
-> +
-> +	rkisp1_cap_stream_disable(cap);
-> +}
-> +
-> +/*
-> + * rkisp1_pipeline_stream_enable - enable nodes in the pipeline
-> + *
-> + * Enable the DMA Engine and call s_stream(true) through the pipeline.
-> + * Should be called after media_pipeline_start()
-> + */
-> +static int rkisp1_pipeline_stream_enable(struct rkisp1_capture *cap)
-> +	__must_hold(&cap->rkisp1->stream_lock)
-> +{
-> +	struct rkisp1_device *rkisp1 = cap->rkisp1;
-> +	int ret;
-> +
-> +	rkisp1_cap_stream_enable(cap);
-> +
-> +	ret = v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video,
-> +			       s_stream, true);
-> +	if (ret)
-> +		goto err_disable_cap;
-> +
-> +	/*
-> +	 * If the other capture is streaming, isp and sensor nodes are already
-> +	 * enabled, skip them.
-> +	 */
-> +	if (rkisp1->pipe.streaming_count > 1)
-> +		return 0;
-> +
-> +	ret = v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, true);
-> +	if (ret)
-> +		goto err_disable_rsz;
-> +
-> +	ret = v4l2_subdev_call(rkisp1->active_sensor->sd, video, s_stream,
-> +			       true);
-> +	if (ret)
-> +		goto err_disable_isp;
-> +
-> +	return 0;
-> +
-> +err_disable_isp:
-> +	v4l2_subdev_call(&rkisp1->isp.sd, video, s_stream, false);
-> +err_disable_rsz:
-> +	v4l2_subdev_call(&rkisp1->resizer_devs[cap->id].sd, video, s_stream,
-> +			 false);
-> +err_disable_cap:
-> +	rkisp1_cap_stream_disable(cap);
-> +
-> +	return ret;
-> +}
-> +
->   static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
->   {
->   	struct rkisp1_capture *cap = queue->drv_priv;
-> @@ -920,12 +968,7 @@ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
->   
->   	mutex_lock(&cap->rkisp1->stream_lock);
->   
-> -	rkisp1_stream_stop(cap);
-> -	ret = rkisp1_pipeline_sink_walk(&node->vdev.entity, NULL,
-> -					rkisp1_pipeline_disable_cb);
-> -	if (ret)
-> -		dev_err(rkisp1->dev,
-> -			"pipeline stream-off failed error:%d\n", ret);
-> +	rkisp1_pipeline_stream_disable(cap);
->   
->   	rkisp1_return_all_buffers(cap, VB2_BUF_STATE_ERROR);
->   
-> @@ -941,43 +984,6 @@ static void rkisp1_vb2_stop_streaming(struct vb2_queue *queue)
->   	mutex_unlock(&cap->rkisp1->stream_lock);
->   }
->   
-> -/*
-> - * Most of registers inside rockchip ISP1 have shadow register since
-> - * they must be not be changed during processing a frame.
-> - * Usually, each sub-module updates its shadow register after
-> - * processing the last pixel of a frame.
-> - */
-> -static void rkisp1_stream_start(struct rkisp1_capture *cap)
-> -{
-> -	struct rkisp1_device *rkisp1 = cap->rkisp1;
-> -	struct rkisp1_capture *other = &rkisp1->capture_devs[cap->id ^ 1];
-> -
-> -	cap->ops->set_data_path(cap);
-> -	cap->ops->config(cap);
-> -
-> -	/* Setup a buffer for the next frame */
-> -	spin_lock_irq(&cap->buf.lock);
-> -	rkisp1_set_next_buf(cap);
-> -	cap->ops->enable(cap);
-> -	/* It's safe to config ACTIVE and SHADOW regs for the
-> -	 * first stream. While when the second is starting, do NOT
-> -	 * force update because it also update the first one.
-> -	 *
-> -	 * The latter case would drop one more buf(that is 2) since
-> -	 * there's not buf in shadow when the second FE received. This's
-> -	 * also required because the second FE maybe corrupt especially
-> -	 * when run at 120fps.
-> -	 */
-> -	if (!other->is_streaming) {
-> -		/* force cfg update */
-> -		rkisp1_write(rkisp1,
-> -			     RKISP1_CIF_MI_INIT_SOFT_UPD, RKISP1_CIF_MI_INIT);
-> -		rkisp1_set_next_buf(cap);
-> -	}
-> -	spin_unlock_irq(&cap->buf.lock);
-> -	cap->is_streaming = true;
-> -}
-> -
->   static int
->   rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
->   {
-> @@ -1008,20 +1014,15 @@ rkisp1_vb2_start_streaming(struct vb2_queue *queue, unsigned int count)
->   		goto err_pipe_pm_put;
->   	}
->   
-> -	rkisp1_stream_start(cap);
-> -
-> -	/* start sub-devices */
-> -	ret = rkisp1_pipeline_sink_walk(entity, NULL,
-> -					rkisp1_pipeline_enable_cb);
+Changes in v5:
+- Fix space warnings reported by bot.
+- Add the Rob's Reviewed-by tag.
+- Fix license.
 
-We should also make sure that the resizer is connected to the isp
-and fail if not.
-otherwise,
+Changes in v4:
+- Use hex for unit-addresses.
+- Use space between compatibles in the example.
+- Define child nodes for nested power domains even are duplicated but
+  more clear that adding a regex scaped to be a valid URI.
 
-Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Changes in v3:
+- Fixed tab errors found by bot
 
-> +	ret = rkisp1_pipeline_stream_enable(cap);
->   	if (ret)
-> -		goto err_stop_stream;
-> +		goto err_v4l2_pm_put;
->   
->   	mutex_unlock(&cap->rkisp1->stream_lock);
->   
->   	return 0;
->   
-> -err_stop_stream:
-> -	rkisp1_stream_stop(cap);
-> +err_v4l2_pm_put:
->   	v4l2_pipeline_pm_put(entity);
->   err_pipe_pm_put:
->   	pm_runtime_put(cap->rkisp1->dev);
-> 
+Changes in v2:
+- Fixed a warning that says that 'syscon' should not be used alone.
+- Use patternProperties to define a new level for power-domains.
+- Add const values for power-domain-cells, address-cells, etc.
+
+ .../power/rockchip,power-controller.yaml      | 283 ++++++++++++++++++
+ .../bindings/soc/rockchip/power_domain.txt    | 136 ---------
+ 2 files changed, 283 insertions(+), 136 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+ delete mode 100644 Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+
+diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+new file mode 100644
+index 000000000000..61221df17082
+--- /dev/null
++++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+@@ -0,0 +1,283 @@
++# SPDX-License-Identifier: GPL-2.0-only
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/power/rockchip,power-controller.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip Power Domains
++
++maintainers:
++  - Caesar Wang <wxt@rock-chips.com>
++  - Heiko Stuebner <heiko@sntech.de>
++
++description: |
++  Rockchip processors include support for multiple power domains which can be
++  powered up/down by software based on different application scenes to save power.
++
++  Power domains contained within power-controller node are generic power domain
++  providers documented in Documentation/devicetree/bindings/power/power-domain.yaml.
++
++  IP cores belonging to a power domain should contain a 'power-domains'
++  property that is a phandle for the power domain node representing the domain.
++
++properties:
++  $nodename:
++    const: power-controller
++
++  compatible:
++    enum:
++      - rockchip,px30-power-controller
++      - rockchip,rk3036-power-controller
++      - rockchip,rk3066-power-controller
++      - rockchip,rk3128-power-controller
++      - rockchip,rk3188-power-controller
++      - rockchip,rk3228-power-controller
++      - rockchip,rk3288-power-controller
++      - rockchip,rk3328-power-controller
++      - rockchip,rk3366-power-controller
++      - rockchip,rk3368-power-controller
++      - rockchip,rk3399-power-controller
++
++  '#power-domain-cells':
++    const: 1
++
++  '#address-cells':
++    const: 1
++
++  '#size-cells':
++    const: 0
++
++patternProperties:
++  "^power-domain@[0-9a-f]+$":
++    type: object
++    description: |
++      Represents the power domains within the power controller node as documented
++      in Documentation/devicetree/bindings/power/power-domain.yaml.
++
++    properties:
++
++      '#power-domain-cells':
++        description:
++          Must be 0 for nodes representing a single PM domain and 1 for nodes
++          providing multiple PM domains.
++
++      '#address-cells':
++        const: 1
++
++      '#size-cells':
++        const: 0
++
++      reg:
++        description: |
++          Power domain index. Valid values are defined in:
++          "include/dt-bindings/power/px30-power.h" - for PX30 type power domain.
++          "include/dt-bindings/power/rk3036-power.h" - for RK3036 type power domain.
++          "include/dt-bindings/power/rk3066-power.h" - for RK3066 type power domain.
++          "include/dt-bindings/power/rk3128-power.h" - for RK3128 type power domain.
++          "include/dt-bindings/power/rk3188-power.h" - for RK3188 type power domain.
++          "include/dt-bindings/power/rk3228-power.h" - for RK3228 type power domain.
++          "include/dt-bindings/power/rk3288-power.h" - for RK3288 type power domain.
++          "include/dt-bindings/power/rk3328-power.h" - for RK3328 type power domain.
++          "include/dt-bindings/power/rk3366-power.h" - for RK3366 type power domain.
++          "include/dt-bindings/power/rk3368-power.h" - for RK3368 type power domain.
++          "include/dt-bindings/power/rk3399-power.h" - for RK3399 type power domain.
++        maxItems: 1
++
++      clocks:
++        description: |
++          A number of phandles to clocks that need to be enabled while power domain
++          switches state.
++
++      pm_qos:
++        description: |
++          A number of phandles to qos blocks which need to be saved and restored
++          while power domain switches state.
++
++    patternProperties:
++      "^power-domain@[0-9a-f]+$":
++        type: object
++        description: |
++          Represents a power domain child within a power domain parent node.
++
++        properties:
++
++          '#power-domain-cells':
++            description:
++              Must be 0 for nodes representing a single PM domain and 1 for nodes
++              providing multiple PM domains.
++
++          '#address-cells':
++            const: 1
++
++          '#size-cells':
++            const: 0
++
++          reg:
++            maxItems: 1
++
++          clocks:
++            description: |
++              A number of phandles to clocks that need to be enabled while power domain
++              switches state.
++
++          pm_qos:
++            description: |
++              A number of phandles to qos blocks which need to be saved and restored
++              while power domain switches state.
++
++        patternProperties:
++          "^power-domain@[0-9a-f]+$":
++            type: object
++            description: |
++              Represents a power domain child within a power domain parent node.
++
++            properties:
++
++              '#power-domain-cells':
++                description:
++                  Must be 0 for nodes representing a single PM domain and 1 for nodes
++                  providing multiple PM domains.
++
++              '#address-cells':
++                const: 1
++
++              '#size-cells':
++                const: 0
++
++              reg:
++                maxItems: 1
++
++              clocks:
++                description: |
++                  A number of phandles to clocks that need to be enabled while power domain
++                  switches state.
++
++              pm_qos:
++                description: |
++                  A number of phandles to qos blocks which need to be saved and restored
++                  while power domain switches state.
++
++            required:
++              - reg
++
++            additionalProperties: false
++
++        required:
++          - reg
++
++        additionalProperties: false
++
++    required:
++      - reg
++
++    additionalProperties: false
++
++required:
++  - compatible
++  - '#power-domain-cells'
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3399-cru.h>
++    #include <dt-bindings/power/rk3399-power.h>
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        qos_hdcp: qos@ffa90000 {
++            compatible = "rockchip,rk3399-qos", "syscon";
++            reg = <0x0 0xffa90000 0x0 0x20>;
++        };
++
++        qos_iep: qos@ffa98000 {
++            compatible = "rk3399-qos", "syscon";
++            reg = <0x0 0xffa98000 0x0 0x20>;
++        };
++
++        qos_rga_r: qos@ffab0000 {
++            compatible = "rk3399-qos", "syscon";
++            reg = <0x0 0xffab0000 0x0 0x20>;
++        };
++
++        qos_rga_w: qos@ffab0080 {
++            compatible = "rk3399-qos", "syscon";
++            reg = <0x0 0xffab0080 0x0 0x20>;
++        };
++
++        qos_video_m0: qos@ffab8000 {
++            compatible = "rk3399-qos", "syscon";
++            reg = <0x0 0xffab8000 0x0 0x20>;
++        };
++
++        qos_video_m1_r: qos@ffac0000 {
++            compatible = "rk3399-qos", "syscon";
++            reg = <0x0 0xffac0000 0x0 0x20>;
++        };
++
++        qos_video_m1_w: qos@ffac0080 {
++            compatible = "rk3399-qos", "syscon";
++            reg = <0x0 0xffac0080 0x0 0x20>;
++        };
++
++        power-management@ff310000 {
++            compatible = "rockchip,rk3399-pmu", "syscon", "simple-mfd";
++            reg = <0x0 0xff310000 0x0 0x1000>;
++
++            power-controller {
++                compatible = "rockchip,rk3399-power-controller";
++                #power-domain-cells = <1>;
++                #address-cells = <1>;
++                #size-cells = <0>;
++
++                /* These power domains are grouped by VD_CENTER */
++                power-domain@RK3399_PD_IEP {
++                    reg = <RK3399_PD_IEP>;
++                    clocks = <&cru ACLK_IEP>,
++                             <&cru HCLK_IEP>;
++                    pm_qos = <&qos_iep>;
++                    #power-domain-cells = <0>;
++                };
++                power-domain@RK3399_PD_RGA {
++                    reg = <RK3399_PD_RGA>;
++                    clocks = <&cru ACLK_RGA>,
++                             <&cru HCLK_RGA>;
++                    pm_qos = <&qos_rga_r>,
++                             <&qos_rga_w>;
++                    #power-domain-cells = <0>;
++                };
++                power-domain@RK3399_PD_VCODEC {
++                    reg = <RK3399_PD_VCODEC>;
++                    clocks = <&cru ACLK_VCODEC>,
++                             <&cru HCLK_VCODEC>;
++                    pm_qos = <&qos_video_m0>;
++                    #power-domain-cells = <0>;
++                };
++                power-domain@RK3399_PD_VDU {
++                    reg = <RK3399_PD_VDU>;
++                    clocks = <&cru ACLK_VDU>,
++                             <&cru HCLK_VDU>;
++                    pm_qos = <&qos_video_m1_r>,
++                             <&qos_video_m1_w>;
++                    #power-domain-cells = <0>;
++                };
++                power-domain@RK3399_PD_VIO {
++                    reg = <RK3399_PD_VIO>;
++                    #power-domain-cells = <1>;
++                    #address-cells = <1>;
++                    #size-cells = <0>;
++
++                    power-domain@RK3399_PD_HDCP {
++                        reg = <RK3399_PD_HDCP>;
++                        clocks = <&cru ACLK_HDCP>,
++                                 <&cru HCLK_HDCP>,
++                                 <&cru PCLK_HDCP>;
++                        pm_qos = <&qos_hdcp>;
++                        #power-domain-cells = <0>;
++                    };
++                };
++            };
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt b/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
+deleted file mode 100644
+index 8304eceb62e4..000000000000
+--- a/Documentation/devicetree/bindings/soc/rockchip/power_domain.txt
++++ /dev/null
+@@ -1,136 +0,0 @@
+-* Rockchip Power Domains
+-
+-Rockchip processors include support for multiple power domains which can be
+-powered up/down by software based on different application scenes to save power.
+-
+-Required properties for power domain controller:
+-- compatible: Should be one of the following.
+-	"rockchip,px30-power-controller" - for PX30 SoCs.
+-	"rockchip,rk3036-power-controller" - for RK3036 SoCs.
+-	"rockchip,rk3066-power-controller" - for RK3066 SoCs.
+-	"rockchip,rk3128-power-controller" - for RK3128 SoCs.
+-	"rockchip,rk3188-power-controller" - for RK3188 SoCs.
+-	"rockchip,rk3228-power-controller" - for RK3228 SoCs.
+-	"rockchip,rk3288-power-controller" - for RK3288 SoCs.
+-	"rockchip,rk3328-power-controller" - for RK3328 SoCs.
+-	"rockchip,rk3366-power-controller" - for RK3366 SoCs.
+-	"rockchip,rk3368-power-controller" - for RK3368 SoCs.
+-	"rockchip,rk3399-power-controller" - for RK3399 SoCs.
+-- #power-domain-cells: Number of cells in a power-domain specifier.
+-	Should be 1 for multiple PM domains.
+-- #address-cells: Should be 1.
+-- #size-cells: Should be 0.
+-
+-Required properties for power domain sub nodes:
+-- reg: index of the power domain, should use macros in:
+-	"include/dt-bindings/power/px30-power.h" - for PX30 type power domain.
+-	"include/dt-bindings/power/rk3036-power.h" - for RK3036 type power domain.
+-	"include/dt-bindings/power/rk3066-power.h" - for RK3066 type power domain.
+-	"include/dt-bindings/power/rk3128-power.h" - for RK3128 type power domain.
+-	"include/dt-bindings/power/rk3188-power.h" - for RK3188 type power domain.
+-	"include/dt-bindings/power/rk3228-power.h" - for RK3228 type power domain.
+-	"include/dt-bindings/power/rk3288-power.h" - for RK3288 type power domain.
+-	"include/dt-bindings/power/rk3328-power.h" - for RK3328 type power domain.
+-	"include/dt-bindings/power/rk3366-power.h" - for RK3366 type power domain.
+-	"include/dt-bindings/power/rk3368-power.h" - for RK3368 type power domain.
+-	"include/dt-bindings/power/rk3399-power.h" - for RK3399 type power domain.
+-- clocks (optional): phandles to clocks which need to be enabled while power domain
+-	switches state.
+-- pm_qos (optional): phandles to qos blocks which need to be saved and restored
+-	while power domain switches state.
+-
+-Qos Example:
+-
+-	qos_gpu: qos_gpu@ffaf0000 {
+-		compatible ="syscon";
+-		reg = <0x0 0xffaf0000 0x0 0x20>;
+-	};
+-
+-Example:
+-
+-	power: power-controller {
+-		compatible = "rockchip,rk3288-power-controller";
+-		#power-domain-cells = <1>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-
+-		pd_gpu {
+-			reg = <RK3288_PD_GPU>;
+-			clocks = <&cru ACLK_GPU>;
+-			pm_qos = <&qos_gpu>;
+-		};
+-	};
+-
+-	 power: power-controller {
+-                compatible = "rockchip,rk3368-power-controller";
+-                #power-domain-cells = <1>;
+-                #address-cells = <1>;
+-                #size-cells = <0>;
+-
+-                pd_gpu_1 {
+-                        reg = <RK3368_PD_GPU_1>;
+-                        clocks = <&cru ACLK_GPU_CFG>;
+-                };
+-        };
+-
+-Example 2:
+-		power: power-controller {
+-			compatible = "rockchip,rk3399-power-controller";
+-			#power-domain-cells = <1>;
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-
+-			pd_vio {
+-				#address-cells = <1>;
+-				#size-cells = <0>;
+-				reg = <RK3399_PD_VIO>;
+-
+-				pd_vo {
+-					#address-cells = <1>;
+-					#size-cells = <0>;
+-					reg = <RK3399_PD_VO>;
+-
+-					pd_vopb {
+-						reg = <RK3399_PD_VOPB>;
+-					};
+-
+-					pd_vopl {
+-						reg = <RK3399_PD_VOPL>;
+-					};
+-				};
+-			};
+-		};
+-
+-Node of a device using power domains must have a power-domains property,
+-containing a phandle to the power device node and an index specifying which
+-power domain to use.
+-The index should use macros in:
+-	"include/dt-bindings/power/px30-power.h" - for px30 type power domain.
+-	"include/dt-bindings/power/rk3036-power.h" - for rk3036 type power domain.
+-	"include/dt-bindings/power/rk3128-power.h" - for rk3128 type power domain.
+-	"include/dt-bindings/power/rk3128-power.h" - for rk3228 type power domain.
+-	"include/dt-bindings/power/rk3288-power.h" - for rk3288 type power domain.
+-	"include/dt-bindings/power/rk3328-power.h" - for rk3328 type power domain.
+-	"include/dt-bindings/power/rk3366-power.h" - for rk3366 type power domain.
+-	"include/dt-bindings/power/rk3368-power.h" - for rk3368 type power domain.
+-	"include/dt-bindings/power/rk3399-power.h" - for rk3399 type power domain.
+-
+-Example of the node using power domain:
+-
+-	node {
+-		/* ... */
+-		power-domains = <&power RK3288_PD_GPU>;
+-		/* ... */
+-	};
+-
+-	node {
+-                /* ... */
+-                power-domains = <&power RK3368_PD_GPU_1>;
+-                /* ... */
+-        };
+-
+-	node {
+-		/* ... */
+-		power-domains = <&power RK3399_PD_VOPB>;
+-		/* ... */
+-	};
+-- 
+2.28.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
