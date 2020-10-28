@@ -7,17 +7,17 @@ X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A135C55178
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2020 13:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 303CCC388F7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2020 13:34:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0D625246E2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2020 13:34:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5E22624650
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2020 13:34:24 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pIDUHx/g";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="ekeNrkDF"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0D625246E2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ha8uqVUV";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=amarulasolutions.com header.i=@amarulasolutions.com header.b="meK50fpO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5E22624650
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=amarulasolutions.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,65 +26,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=8cD3KzypBoT/Gr2gaYfC/MPex9XRoqnYGrgxOfJRBkw=; b=pIDUHx/ged/IofLPcFHzoGpnW
-	v66u6Bm9aXGrlmiOtXoO52+zXXbez9CpbQ/jB3Ir3WZL/YSZmkB5LE6Z+LWGHxf4Hy3TnpT+WDYT3
-	fGVCb6V8iPzeeDvrfjBaZWRxfX2fnKfFHvMHAB2fGKpfLz/hEiKkX3IKXJkr6AcMesCkFsko2wrj2
-	HfqOEpIm29jv/X8Y2xb0w96SFTTa7GffrzlwLaCH11kRNlUn30zyWgxVZL+PbbWWF7wuek6QHTtxf
-	GYkUnAAJi6wC0+CymlfdCZKI2eSzSyJkf9DH9wKsNkGWj3kJj56i5IfVy/sn4oFk70lkT2XbTtpo2
-	XGeNkzBng==;
+	 bh=+xZmLyqd6E1aapvgs/u0IUS0wyhVPRs9fB3CquD9IOk=; b=ha8uqVUVh27G1ZtAmNZT8RS4H
+	4U4WrCDhwNlRdxOTF5TVZylm4wngEjPSGP/OoyGrY2+XanCb6Rq4GW1+NgWnnjOpRnNMmnWTPVddq
+	ApUh0J0cYZfe6AKjiENbP/byQiwwHsL/mrTPJQLmg4NA/fuKPnhH+9oFdQ62EJApI9ed5/zLYSiof
+	MySseO39k3OSI8MXIKCzarprgtc6p0KCvGZENvPOfszurmoQINQTNdxsQF81wDysP+TmTamxmDyqx
+	HOqy5wjwoh2eSHI0Y4vpuLNnQu/pA+c/bwI+LvnBxIJN8OZPOiHbwLUwqCp8rNMt0dPv8G/q5zAO4
+	zxpSyShiw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXlag-0002gx-Mp; Wed, 28 Oct 2020 13:34:14 +0000
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+	id 1kXlak-0002ir-Re; Wed, 28 Oct 2020 13:34:18 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXlae-0002fo-EQ
- for linux-rockchip@lists.infradead.org; Wed, 28 Oct 2020 13:34:13 +0000
-Received: by mail-pj1-x1031.google.com with SMTP id m17so1624354pjz.3
- for <linux-rockchip@lists.infradead.org>; Wed, 28 Oct 2020 06:34:11 -0700 (PDT)
+ id 1kXlai-0002h0-Jb
+ for linux-rockchip@lists.infradead.org; Wed, 28 Oct 2020 13:34:17 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id 1so2491370ple.2
+ for <linux-rockchip@lists.infradead.org>; Wed, 28 Oct 2020 06:34:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amarulasolutions.com; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=DzO2IlrdBQR1HWEG+K/iR6TtsyWEukIy8V/Za/avVek=;
- b=ekeNrkDFmYzGlAQ0uf4pNzHWeg0hd2HIq7Mobx32as8zBEYAVSntJr2jm+5vxqaCh6
- N5qUvKmRZiFJr1Bd0gZCChMQGQ/cK2i+13ox1qHAObVLOK1+Yd0w4TgZ8WSWflHcOVnL
- Plmf+mAfj3kgHY+3XF8M2tAs9mkvo04AcDvvM=
+ bh=luBxJeG21PRbkDvtCUa8q7TR+doNkz1+zwU+JYOL8j4=;
+ b=meK50fpOn3qe1Ljdu83t7tZmw0/+bZaSEnSrWX3kCOyCMBCfDB2OoJFNUobKL0zOZR
+ 2bEdiovRHxRevmRtMIcAXz2eYPSDfUmOHP2+BgQYMPPIGdNq52Ys6jDoGy+Ex0V3QOkk
+ wRKOzOIYoh0j0K4ll1KlYOYLKlF5FcyucaaY0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=DzO2IlrdBQR1HWEG+K/iR6TtsyWEukIy8V/Za/avVek=;
- b=amoFSifDyTXqz6vgZpveW7E1MeKznWK5JWXHdUeH+cDD9dY8FxiG/ogKKnu6Ue5GEP
- fGMinlzOseDLJeQEIiTtTv5IJHpQJ5TnzdMpab9fTXc19sW1rs9DC8/XTpVy39kHcs9/
- /JHSKYr16DWmXD870/tNKFS6XXaLb49GkzjxHdYuImoh12g7fBqNu2tDDR7vgHdsbhsI
- O9BKTPr+NjHcaUIraqJLEGP+DhdND9qp3eBH3FHwjgy95hV6EwQ7ezvW7IqB2oM4/syK
- 0Nc74RyrlYL1csqO3PiGjVPH8dFu4nJRts/+U5hmFU/U+snmL0m3VlH5YaAIQJmJHe4M
- JAEg==
-X-Gm-Message-State: AOAM531HoJkppPhzk8IVabcLjmu/Vonwd4WjZS3yTH2eh7bjfcId8/1/
- xYFRqEAxJy7qwFHIGgA0tHXUvkC/gR6Dsw==
-X-Google-Smtp-Source: ABdhPJwiEYP4TJQGK/bkb68CjM6dHlXxPC5kB96yE1/THrEOR0xUAKl4pyUsaxh7f0PXEF7hf30Xlg==
-X-Received: by 2002:a17:90a:5b05:: with SMTP id
- o5mr6730113pji.139.1603892050358; 
- Wed, 28 Oct 2020 06:34:10 -0700 (PDT)
+ bh=luBxJeG21PRbkDvtCUa8q7TR+doNkz1+zwU+JYOL8j4=;
+ b=ev4xfwM+BEz+gr3Iu0oEwIf9Qt4BHXq2VH1Ko5O+83i2KXk7wbZlyjWAOCF+TjS2ex
+ bPyFsztAXNFHATBr6xWM816sW9hwnr+nfEEXjkYBZ5JeSuRuT2jAjxbsLT5fsH1XbPxB
+ 7qC29eEA9oYq+SNiKH9pCuYlAM+k5o3Lz06z9DJZ9LmiN4FmcbMqwWePcgEmgd7fmyci
+ ajm4mtVy7Cc2GTF+QyB+gPU1MNAS1CsDZdVFdSFajp9sF6Hke0RJp16FG1LoPUy2lQc8
+ z80BcKBrmw5L75a6/l93dmlxDX3uROyBtoPzKtbUX3HRm4FWMkNWw+w4NLWSFSJlnpq8
+ +2Ug==
+X-Gm-Message-State: AOAM533AnLQb3ftQpTbSAWyzjnv7zrzxE8uQ1y5sTdCXa+c8zB+U/oGQ
+ 3n6qKVS3iSp7xGIusS8uk3IIqQ==
+X-Google-Smtp-Source: ABdhPJxLN1Fku2WT4bLysqXO8ETg5GQBP9V59Kq7yCkYQQKRtUJ1CW7Uj3HXbLqCiWtr/cwkJOwYcA==
+X-Received: by 2002:a17:90b:4b84:: with SMTP id
+ lr4mr7036741pjb.153.1603892054352; 
+ Wed, 28 Oct 2020 06:34:14 -0700 (PDT)
 Received: from localhost.localdomain ([2405:201:c809:c7a4:2d09:2940:d772:8d5])
  by smtp.gmail.com with ESMTPSA id
- u11sm5717073pfk.164.2020.10.28.06.34.05
+ u11sm5717073pfk.164.2020.10.28.06.34.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Oct 2020 06:34:09 -0700 (PDT)
+ Wed, 28 Oct 2020 06:34:13 -0700 (PDT)
 From: Jagan Teki <jagan@amarulasolutions.com>
 To: kever.yang@rock-chips.com, philipp.tomsich@theobroma-systems.com,
  sjg@chromium.org
-Subject: [PATCH v4 1/8] arm64: dts: rockchip: px30: Add Engicam EDIMM2.2
- Starter Kit
-Date: Wed, 28 Oct 2020 19:03:41 +0530
-Message-Id: <20201028133348.241839-2-jagan@amarulasolutions.com>
+Subject: [PATCH v4 2/8] arm64: dts: rockchip: Add Engicam PX30.Core SOM
+Date: Wed, 28 Oct 2020 19:03:42 +0530
+Message-Id: <20201028133348.241839-3-jagan@amarulasolutions.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201028133348.241839-1-jagan@amarulasolutions.com>
 References: <20201028133348.241839-1-jagan@amarulasolutions.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201028_093412_505878_6DD49494 
-X-CRM114-Status: GOOD (  14.97  )
+X-CRM114-CacheID: sfid-20201028_093416_694298_D393EFFC 
+X-CRM114-Status: GOOD (  13.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,25 +105,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Engicam EDIMM2.2 Starter Kit is an EDIMM 2.2 Form Factor Capacitive
-Evaluation Board.
+From: Michael Trimarchi <michael@amarulasolutions.com>
 
-Genaral features:
-- LCD 7" C.Touch
-- microSD slot
-- Ethernet 1Gb
-- Wifi/BT
-- 2x LVDS Full HD interfaces
-- 3x USB 2.0
-- 1x USB 3.0
-- HDMI Out
-- Mini PCIe
-- MIPI CSI
-- 2x CAN
-- Audio Out
+PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
 
-SOM's like PX30.Core needs to mount on top of this Evaluation board
-for creating complete PX30.Core EDIMM2.2 Starter Kit.
+General features:
+- Rockchip PX30
+- Up to 2GB DDR4
+- eMMC 4 GB expandible
+- rest of PX30 features
+
+PX30.Core needs to mount on top of Engicam baseboards for creating
+complete platform boards.
+
+Possible baseboards are,
+- EDIMM2.2
+- C.TOUCH 2.0
 
 Add support for it.
 
@@ -135,70 +131,248 @@ Reviewed-by: Kever Yang <kever.yang@rock-chips.com>
 Changes for v4:
 - none
 
- arch/arm/dts/px30-engicam-common.dtsi   | 39 +++++++++++++++++++++++++
- arch/arm/dts/px30-engicam-edimm2.2.dtsi |  7 +++++
- 2 files changed, 46 insertions(+)
- create mode 100644 arch/arm/dts/px30-engicam-common.dtsi
- create mode 100644 arch/arm/dts/px30-engicam-edimm2.2.dtsi
+ arch/arm/dts/px30-px30-core.dtsi | 232 +++++++++++++++++++++++++++++++
+ 1 file changed, 232 insertions(+)
+ create mode 100644 arch/arm/dts/px30-px30-core.dtsi
 
-diff --git a/arch/arm/dts/px30-engicam-common.dtsi b/arch/arm/dts/px30-engicam-common.dtsi
+diff --git a/arch/arm/dts/px30-px30-core.dtsi b/arch/arm/dts/px30-px30-core.dtsi
 new file mode 100644
-index 0000000000..bd5bde989e
+index 0000000000..16e6cf28a4
 --- /dev/null
-+++ b/arch/arm/dts/px30-engicam-common.dtsi
-@@ -0,0 +1,39 @@
++++ b/arch/arm/dts/px30-px30-core.dtsi
+@@ -0,0 +1,232 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
++ * Copyright (c) 2020 Fuzhou Rockchip Electronics Co., Ltd
 + * Copyright (c) 2020 Engicam srl
-+ * Copyright (c) 2020 Amarula Solutions
-+ * Copyright (c) 2020 Amarula Solutions(India)
++ * Copyright (c) 2020 Amarula Solutons
++ * Copyright (c) 2020 Amarula Solutons(India)
 + */
 +
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++
 +/ {
-+	vcc5v0_sys: vcc5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";	/* +5V */
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
++	compatible = "engicam,px30-px30-core", "rockchip,px30";
++};
++
++&cpu0 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu1 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu2 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&cpu3 {
++	cpu-supply = <&vdd_arm>;
++};
++
++&emmc {
++	cap-mmc-highspeed;
++	mmc-hs200-1_8v;
++	non-removable;
++	status = "okay";
++};
++
++&i2c0 {
++	status = "okay";
++
++	rk809: pmic@20 {
++		compatible = "rockchip,rk809";
++		reg = <0x20>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PA7 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&pmic_int>;
++		rockchip,system-power-controller;
++		wakeup-source;
++		#clock-cells = <1>;
++		clock-output-names = "rk808-clkout1", "rk808-clkout2";
++
++		vcc1-supply = <&vcc5v0_sys>;
++		vcc2-supply = <&vcc5v0_sys>;
++		vcc3-supply = <&vcc5v0_sys>;
++		vcc4-supply = <&vcc5v0_sys>;
++		vcc5-supply = <&vcc3v3_sys>;
++		vcc6-supply = <&vcc3v3_sys>;
++		vcc7-supply = <&vcc3v3_sys>;
++		vcc8-supply = <&vcc3v3_sys>;
++		vcc9-supply = <&vcc5v0_sys>;
++
++		regulators {
++			vdd_log: DCDC_REG1 {
++				regulator-name = "vdd_log";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <950000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <6001>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <950000>;
++				};
++			};
++
++			vdd_arm: DCDC_REG2 {
++				regulator-name = "vdd_arm";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <950000>;
++				regulator-max-microvolt = <1350000>;
++				regulator-ramp-delay = <6001>;
++
++				regulator-state-mem {
++					regulator-off-in-suspend;
++					regulator-suspend-microvolt = <950000>;
++				};
++			};
++
++			vcc_ddr: DCDC_REG3 {
++				regulator-name = "vcc_ddr";
++				regulator-always-on;
++				regulator-boot-on;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++				};
++			};
++
++			vcc_3v3: DCDC_REG4 {
++				regulator-name = "vcc_3v3";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc3v3_sys: DCDC_REG5 {
++				regulator-name = "vcc3v3_sys";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc_1v0: LDO_REG1 {
++				regulator-name = "vcc_1v0";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1000000>;
++				};
++			};
++
++			vcc_1v8: LDO_REG2 {
++				regulator-name = "vcc_1v8";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <1800000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1800000>;
++				};
++			};
++
++			vdd_1v0: LDO_REG3 {
++				regulator-name = "vdd_1v0";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1000000>;
++				regulator-max-microvolt = <1000000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <1000000>;
++				};
++			};
++
++			vcc3v0_pmu: LDO_REG4 {
++				regulator-name = "vcc3v0_pmu";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <3300000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++
++				};
++			};
++
++			vccio_sd: LDO_REG5 {
++				regulator-name = "vccio_sd";
++				regulator-always-on;
++				regulator-boot-on;
++				regulator-min-microvolt = <1800000>;
++				regulator-max-microvolt = <3300000>;
++
++				regulator-state-mem {
++					regulator-on-in-suspend;
++					regulator-suspend-microvolt = <3300000>;
++				};
++			};
++
++			vcc5v0_host: SWITCH_REG2 {
++				regulator-name = "vcc5v0_host";
++				regulator-always-on;
++				regulator-boot-on;
++			};
++		};
 +	};
 +};
 +
-+&gmac {
-+	clock_in_out = "output";
-+	phy-supply = <&vcc_3v3>;	/* +3V3_SOM */
-+	snps,reset-active-low;
-+	snps,reset-delays-us = <0 50000 50000>;
-+	snps,reset-gpio = <&gpio2 RK_PB5 GPIO_ACTIVE_HIGH>;
++&io_domains {
++	vccio1-supply = <&vcc_3v3>;
++	vccio2-supply = <&vcc_3v3>;
++	vccio3-supply = <&vcc_3v3>;
++	vccio4-supply = <&vcc_3v3>;
++	vccio5-supply = <&vcc_3v3>;
++	vccio6-supply = <&vcc_1v8>;
 +	status = "okay";
 +};
 +
-+&sdmmc {
-+	cap-sd-highspeed;
-+	card-detect-delay = <800>;
-+	vmmc-supply = <&vcc_3v3>;	/* +3V3_SOM */
-+	vqmmc-supply = <&vcc_3v3>;
++&pinctrl {
++	pmic {
++		pmic_int: pmic_int {
++			rockchip,pins = <0 RK_PA7 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++};
++
++&pmu_io_domains {
++	pmuio1-supply = <&vcc_3v3>;
++	pmuio2-supply = <&vcc_3v3>;
 +	status = "okay";
 +};
 +
-+&uart2 {
-+	pinctrl-0 = <&uart2m1_xfer>;
++&tsadc {
++	rockchip,hw-tshut-mode = <1>;
++	rockchip,hw-tshut-polarity = <1>;
 +	status = "okay";
 +};
-diff --git a/arch/arm/dts/px30-engicam-edimm2.2.dtsi b/arch/arm/dts/px30-engicam-edimm2.2.dtsi
-new file mode 100644
-index 0000000000..cb00988953
---- /dev/null
-+++ b/arch/arm/dts/px30-engicam-edimm2.2.dtsi
-@@ -0,0 +1,7 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2020 Engicam srl
-+ * Copyright (c) 2020 Amarula Solutions(India)
-+ */
-+
-+#include "px30-engicam-common.dtsi"
 -- 
 2.25.1
 
