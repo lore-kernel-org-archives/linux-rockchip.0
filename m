@@ -2,21 +2,21 @@ Return-Path: <SRS0=JMM0=ED=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A7EE8C4363A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2020 09:54:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C777AC4363A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2020 09:55:41 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E502E246A2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2020 09:54:18 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 39373246A2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Oct 2020 09:55:41 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mxZTajDo"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E502E246A2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Z3sC7M8p"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 39373246A2
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,20 +25,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fXEBinybzZg+P7f4sRg7WEaLtwfJ55BzQi2WS5nQn4w=; b=mxZTajDoMLxEvH2dtFDf1mpAIO
-	ltKOulb29z9VOYpX4UMacjMwc/3JEUyG2Ad6nzImnjUOmbRAG07iHi6eba3SP/2QDCE+evcZoLeuP
-	fX6i26SYeRzkmnLwzJna0lhx+v80i5H5DppdfzMo0Dmtg7aJFXWZmkBbjCIHZUAt7J752XFpZRudb
-	LaRiPVQWEW34CZiByi235sJ09oTOq/P0wWki7pkDlFRr594za0u1Zm0kWS6scxlztcqO2+x1wo+7i
-	eN80ypyV+5+OGdCK8pJlyDeY2Oo253nCdjWKuwz/An29ZSriBfGKjc3mlB1P0mEyFaPQQSL+Bj4FT
-	6Zy3D5Eg==;
+	bh=b1IZPIldwLakyecLi2JZhkdm0Amca0i4WL2xN0QH7AE=; b=Z3sC7M8pHiLkcB7YGKXbQVOKFP
+	Mw0qGkUXinAINns8dAS63t0iJYKGmywPro2efWshKFrCxu+6ONlDXFPrNItlshxuozkDjQy0Dl9nJ
+	pVdKeCrj4SI5ucYUHEcU0Ysc4heD6Y7vU9c+60J/KhAzsL9m6BdieUs6hWFRxDrY/HxsjtLII1u/+
+	ilUH7yZpdzR+BPbo6AHVDVqNlxZU0AdxZa+3qwQ2oZhVZ5lk041HD0oh8OuvJjq5FTNVqTUatxWd1
+	CQ28UTljUb5IrvvtitlCgVcvIbYd/8Gp16FSKST9/i/IL64cNlmneqc0oXvjCmWocWiRkYoT+D1Wd
+	yP08nJFg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kXi9k-0007UA-Kb; Wed, 28 Oct 2020 09:54:12 +0000
-Received: from lucky1.263xmail.com ([211.157.147.133])
+	id 1kXiB5-0007xA-HM; Wed, 28 Oct 2020 09:55:35 +0000
+Received: from lucky1.263xmail.com ([211.157.147.131])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kXi9W-0007PS-09; Wed, 28 Oct 2020 09:53:59 +0000
+ id 1kXi9X-0007PA-Ay; Wed, 28 Oct 2020 09:54:02 +0000
 Received: from localhost (unknown [192.168.167.13])
- by lucky1.263xmail.com (Postfix) with ESMTP id BEEAECA4BB;
+ by lucky1.263xmail.com (Postfix) with ESMTP id 288BAB6A40;
  Wed, 28 Oct 2020 17:53:52 +0800 (CST)
 X-MAIL-GRAY: 0
 X-MAIL-DELIVERY: 1
@@ -50,7 +50,7 @@ Received: from localhost.localdomain (unknown [58.22.7.114])
  P9243T140659033757440S1603878810079875_; 
  Wed, 28 Oct 2020 17:53:52 +0800 (CST)
 X-IP-DOMAINF: 1
-X-UNIQUE-TAG: <d8fe397009b99f86f599358911547af3>
+X-UNIQUE-TAG: <5d1b841b380f0a8b36de57231a599a07>
 X-RL-SENDER: yifeng.zhao@rock-chips.com
 X-SENDER: zyf@rock-chips.com
 X-LOGIN-NAME: yifeng.zhao@rock-chips.com
@@ -62,15 +62,15 @@ X-System-Flag: 0
 From: Yifeng Zhao <yifeng.zhao@rock-chips.com>
 To: miquel.raynal@bootlin.com, richard@nod.at, vigneshr@ti.com,
  robh+dt@kernel.org
-Subject: [PATCH v13 4/8] arm64: dts: rockchip: Add NFC node for RK3308 SoC
-Date: Wed, 28 Oct 2020 17:53:26 +0800
-Message-Id: <20201028095326.15562-5-yifeng.zhao@rock-chips.com>
+Subject: [PATCH v13 3/8] MAINTAINERS: add maintainers to ROCKCHIP NFC
+Date: Wed, 28 Oct 2020 17:53:25 +0800
+Message-Id: <20201028095326.15562-4-yifeng.zhao@rock-chips.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20201028095326.15562-1-yifeng.zhao@rock-chips.com>
 References: <20201028095326.15562-1-yifeng.zhao@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201028_055358_385554_1F483200 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20201028_055359_612647_826C38F5 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,18 +86,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
 Cc: devicetree@vger.kernel.org, heiko@sntech.de,
  Yifeng Zhao <yifeng.zhao@rock-chips.com>, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, Yifeng Zhao <zyf@rock-chips.com>
+ linux-arm-kernel@lists.infradead.org
 MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Yifeng Zhao <zyf@rock-chips.com>
+Add maintainers to ROCKCHIP NFC.
 
-Add NAND FLASH Controller(NFC) node for RK3308 SoC.
-
-Signed-off-by: Yifeng Zhao <zyf@rock-chips.com>
 Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
 ---
 
@@ -114,35 +111,28 @@ Changes in v4: None
 Changes in v3: None
 Changes in v2: None
 
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ MAINTAINERS | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index b3118cabd0f6..f6b4d47089b5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -629,6 +629,21 @@
- 		status = "disabled";
- 	};
- 
-+	nfc: nand-controller@ff4b0000 {
-+		compatible = "rockchip,rk3308-nfc",
-+			     "rockchip,rv1108-nfc";
-+		reg = <0x0 0xff4b0000 0x0 0x4000>;
-+		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
-+		clocks = <&cru HCLK_NANDC>, <&cru SCLK_NANDC>;
-+		clock-names = "ahb", "nfc";
-+		assigned-clocks = <&cru SCLK_NANDC>;
-+		assigned-clock-rates = <150000000>;
-+		pinctrl-0 = <&flash_ale &flash_bus8 &flash_cle &flash_csn0
-+			     &flash_rdn &flash_rdy &flash_wrn>;
-+		pinctrl-names = "default";
-+		status = "disabled";
-+	};
-+
- 	cru: clock-controller@ff500000 {
- 		compatible = "rockchip,rk3308-cru";
- 		reg = <0x0 0xff500000 0x0 0x1000>;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index e73636b75f29..30db834dbfab 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2361,12 +2361,12 @@ L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+ L:	linux-rockchip@lists.infradead.org
+ S:	Maintained
+ T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git
++F:	Documentation/devicetree/bindings/*/*rockchip*.yaml
+ F:	Documentation/devicetree/bindings/i2c/i2c-rk3x.yaml
+-F:	Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
+-F:	Documentation/devicetree/bindings/spi/spi-rockchip.yaml
+ F:	arch/arm/boot/dts/rk3*
+ F:	arch/arm/boot/dts/rv1108*
+ F:	arch/arm/mach-rockchip/
++F:	drivers/*/*/*/*rockchip*
+ F:	drivers/*/*/*rockchip*
+ F:	drivers/*/*rockchip*
+ F:	drivers/clk/rockchip/
 -- 
 2.17.1
 
