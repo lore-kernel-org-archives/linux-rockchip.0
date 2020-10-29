@@ -2,60 +2,70 @@ Return-Path: <SRS0=CN2P=EE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EF31BC2D0A3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2020 16:27:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A6082C4363A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2020 18:00:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 733C52076E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2020 16:27:31 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 22D9520790
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2020 18:00:01 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2pdFSuIe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 733C52076E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hR9Obpir";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="pIEzdSBl"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 22D9520790
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Fftj9orT083j4zDQ8EMxYpufmc7t8upj+BenvpULADc=; b=2pdFSuIekn42MufQ6/ZxX+pQc
-	TjjzbrAaAAyjx+HF8huZ6mUXPyLdAE7FM0yuWfezi4s8JHqTnHc4J0PDZGZukg6u1eCfPrl4k68kX
-	itvQIoCiMeqVNrCqPDFAdBK3aczZr4/ElC2aihZJmtb1yj7GN2FACeD3GrvLLOXmJ88ieYlEqFbWy
-	UeHGF5bxgsxHO+4TWJwiT0jsXyz3fFJFbF5iCxxTluOqu3BZfNXVE4t409VSLUZt+U6QbZRQ09Mot
-	KeHeRXznvBTAGqhzBIT9NQrEiHdQUT/SD177yF7T1AjABoejy4siL8xcYlrs0OEJooYOtdl06/iwA
-	+B05ZuuwA==;
+	 bh=ypfhCq07uHDn6U38I+DFLxl8iDWAkkoH0V2u/92Y6CE=; b=hR9ObpirHS46T8VyGF699N4cN
+	1OWlmPeaUTWPoYD8v/WpZG1KfQCtnp+BBOM2n1qxh1lHOSOxYX3braUU99nbkHFYTWfEJtsH+QBQ6
+	Dx77IAZISrAbkdmLG+Yh2qYi7KgOJgcBnvBw0qcPBvzeBINFvdCtR9dsuO1cxZZacelVC18gZl4pN
+	clwBIJXuRI8hLfYD64AmiS1wplYNYo7BIJzt3lzc3d+wCsFFolefI4+xLyVBkNidr+kqQjtE5E0AG
+	wtSGnNznMyeKw/Pvft18nBybr8vdjykA/5RLK+ks7UoqgkD1B2H7LxDCwBsE+8+RxS4AEIrPAyoE5
+	pW0VkZGJw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYAlq-0005V8-VD; Thu, 29 Oct 2020 16:27:27 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kYCDJ-00054H-Tg; Thu, 29 Oct 2020 17:59:53 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYAln-0005TE-CC
- for linux-rockchip@lists.infradead.org; Thu, 29 Oct 2020 16:27:25 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 72E621F4171E
-Message-ID: <5a653c86f887bf8f3d34c4d620471300b612a4d8.camel@collabora.com>
+ id 1kYCDI-00053f-Ed
+ for linux-rockchip@lists.infradead.org; Thu, 29 Oct 2020 17:59:53 +0000
+Received: from localhost (fw-tnat.cambridge.arm.com [217.140.96.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 85B6F20790;
+ Thu, 29 Oct 2020 17:59:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1603994390;
+ bh=AZhOU2W6PRWrW++sUwojyV8r0hQKprOKEkuphmHahJo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=pIEzdSBlrcWxEoEuNilbOwp5u8kO4Q26+P+M2ItJj0B4B0jOS8vPB+rK7f2uCMBqP
+ E3CxhD3RUIbUpQkg5ZEUJwilewx80cqkLghXR+y/A1dSSuVeWgjXf2lgGqjSyDk52y
+ C9cxJ8EjkUqHMLg6YkSrTj7sn2nNt4mOikajvZsA=
+Date: Thu, 29 Oct 2020 17:59:43 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Ezequiel Garcia <ezequiel@collabora.com>
 Subject: Re: [PATCH 00/18] Add Hantro regmap and VC8000 h264 decode support
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Robin Murphy <robin.murphy@arm.com>, Adrian Ratiu
- <adrian.ratiu@collabora.com>, Philipp Zabel <p.zabel@pengutronix.de>
-Date: Thu, 29 Oct 2020 13:27:08 -0300
-In-Reply-To: <0dd9fb9d-3f33-b9b0-a7a8-6d3111e92d64@arm.com>
+Message-ID: <20201029175943.GE5042@sirena.org.uk>
 References: <20201012205957.889185-1-adrian.ratiu@collabora.com>
  <d4d080658113ad97816eda9262736e5fcc7b017c.camel@collabora.com>
  <0dd9fb9d-3f33-b9b0-a7a8-6d3111e92d64@arm.com>
-Organization: Collabora
-User-Agent: Evolution 3.36.3-1 
+ <5a653c86f887bf8f3d34c4d620471300b612a4d8.camel@collabora.com>
 MIME-Version: 1.0
+In-Reply-To: <5a653c86f887bf8f3d34c4d620471300b612a4d8.camel@collabora.com>
+X-Cookie: Monotheism is a gift from the gods.
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201029_122723_679504_0E4E1963 
-X-CRM114-Status: GOOD (  36.14  )
+X-CRM114-CacheID: sfid-20201029_135952_699344_4D769281 
+X-CRM114-Status: GOOD (  17.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,121 +79,81 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: Fruehberger Peter <Peter.Fruehberger@de.bosch.com>, kernel@collabora.com,
+ Daniel Vetter <daniel@ffwll.ch>, Adrian Ratiu <adrian.ratiu@collabora.com>,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Mark Brown <broonie@kernel.org>, kuhanh.murugasen.krishnan@intel.com,
- Daniel Vetter <daniel@ffwll.ch>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+ kuhanh.murugasen.krishnan@intel.com, Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============4504906888134584946=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Robin,
 
-On Thu, 2020-10-29 at 14:15 +0000, Robin Murphy wrote:
-> On 2020-10-29 13:07, Ezequiel Garcia wrote:
-> > Hello Adrian,
-> > 
-> > On Mon, 2020-10-12 at 23:59 +0300, Adrian Ratiu wrote:
-> > > Dear all,
-> > > 
-> > > This series introduces a regmap infrastructure for the Hantro driver
-> > > which is used to compensate for different HW-revision register layouts.
-> > > To justify it h264 decoding capability is added for newer VC8000 chips.
-> > > 
-> > > This is a gradual conversion to the new infra - a complete conversion
-> > > would have been very big and I do not have all the HW yet to test (I'm
-> > > expecting a RK3399 shipment next week though ;). I think converting the
-> > > h264 decoder provides a nice blueprint for how the other codecs can be
-> > > converted and enabled for different HW revisions.
-> > > 
-> > > The end goal of this is to make the driver more generic and eliminate
-> > > entirely custom boilerplate like `struct hantro_reg` or headers with
-> > > core-specific bit manipulations like `hantro_g1_regs.h` and instead rely
-> > > on the well-tested albeit more verbose regmap subsytem.
-> > > 
-> > > To give just two examples of bugs which are easily discovered by using
-> > > more verbose regmap fields (very easy to compare with the datasheets)
-> > > instead of relying on bit-magic tricks: G1_REG_DEC_CTRL3_INIT_QP(x) was
-> > > off-by-1 and the wrong .clk_gate bit was set in hantro_postproc.c.
-> > > 
-> > > Anyway, this series also extends the MMIO regmap API to allow relaxed
-> > > writes for the theoretical reason that avoiding unnecessary membarriers
-> > > leads to less CPU usage and small improvements to battery life. However,
-> > > in practice I could not measure differences between relaxed/non-relaxed
-> > > IO, so I'm on the fence whether to keep or remove the relaxed calls.
-> > > 
-> > > What I could masure is the performance impact of adding more sub-reg
-> > > field acesses: a constant ~ 20 microsecond bump per G1 h264 frame. This
-> > > is acceptable considering the total time to decode a frame takes three
-> > > orders of magnitude longer, i.e. miliseconds ranges, depending on the
-> > > frame size and bitstream params, so it is an acceptable trade-off to
-> > > have a more generic driver.
-> > > 
-> > 
-> > Before going forward with using regmap, I would like to have a sense
-> > of the footprint it adds, and see if we can avoid that 20 us penalty.
-> > 
-> > I'd also like to try another approach, something that has less
-> > memory footprint and less runtime penalty.
-> > 
-> > How about something like this:
-> > 
-> > #define G1_PIC_WIDTH 4, 0xff8, 23
-> > #define ...
-> >                                   
-> > struct hantro_swreg {
-> >          u32 value[399 /*whatever size goes here*/];
-> > };
-> >                                                                                   
-> > void hantro_reg_write(struct hantro_swreg *r,
-> >                        unsigned int swreg, u32 mask, u32 offset, u32 new_val)
-> > {
-> >          r->value[swreg] = (r->value[swreg] & ~(mask)) |
-> >                            ((new_val << offset) & mask);
-> > }
-> > 
-> > Which you can then use in a very similar way as the current proposal:
-> > 
-> > hantro_reg_write(&swreg, G1_PIC_WIDTH, width);
-> > 
-> > The first advantage here is that we no longer have any
-> > footprint for the fields.
-> > 
-> > The ugly macros for "4, 0xff8, 23" can be auto-generated from
-> > existing vendor headers, when possible, so that shouldn't
-> > bother us.
-> > 
-> > The register set is "flushed" using _relaxed, but it
-> > could be still costly.
-> > 
-> > If that is indeed costly, perhaps we can avoid writing
-> > the entire set by having a dirty bit somewhere.
-> > 
-> > In any case, it's worth exploring our options first, I think.
-> 
-> Or maybe the regmap API itself deserves extending with a "deferred" 
-> operating mode where updates to the cached state can be separated from 
-> committing that state to the underlying hardware.
-> 
-> ...which, after a brief code search out of curiosity, apparently already 
-> exists in the form of regcache_cache_only()/regcache_sync(), so there's 
-> probably no need to reinvent it :)
-> 
-
-To be fair, and despite it could seem an anti-pattern, this particular
-wheel is so tiny and trivial, that I'm starting to seriously consider
-reinventing it.
-
-I've been thinking long about this but just can't seem to see exactly
-what benefit we're getting from using MMIO regmaps here,
-as opposed to just a simple macro with an index, a mask, and an offset.
-
-Ezequiel
+--===============4504906888134584946==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Rgf3q3z9SdmXC6oT"
+Content-Disposition: inline
 
 
+--Rgf3q3z9SdmXC6oT
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Oct 29, 2020 at 01:27:08PM -0300, Ezequiel Garcia wrote:
+> On Thu, 2020-10-29 at 14:15 +0000, Robin Murphy wrote:
+
+> > Or maybe the regmap API itself deserves extending with a "deferred"=20
+> > operating mode where updates to the cached state can be separated from=
+=20
+> > committing that state to the underlying hardware.
+
+> > ...which, after a brief code search out of curiosity, apparently alread=
+y=20
+> > exists in the form of regcache_cache_only()/regcache_sync(), so there's=
+=20
+> > probably no need to reinvent it :)
+
+> To be fair, and despite it could seem an anti-pattern, this particular
+> wheel is so tiny and trivial, that I'm starting to seriously consider
+> reinventing it.
+
+> I've been thinking long about this but just can't seem to see exactly
+> what benefit we're getting from using MMIO regmaps here,
+> as opposed to just a simple macro with an index, a mask, and an offset.
+
+As a rule of thumb if you're not using a cache or fitting into some
+other higher level framework stuff that uses regmap then I wouldn't
+bother for MMIO devices.
+
+--Rgf3q3z9SdmXC6oT
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAl+bAw4ACgkQJNaLcl1U
+h9BrSAf/dmEzyzrzFZNPwE6FzIAV8o45wj261p4lQVkPR6Vl5CvsVKpC+h8d9ArY
+t3plejxUu4tD6bQxgr4Z8hH21CstLRRfTBvMxw3B30qRx+WjCcoUp3ITBvQ4un9G
+wUQsSkBqR9sbYFROEenraceUC4digdUJ4zUF+UKtmLcOH/qmrio1PSBsJyOugFRd
+KHp5PxSUG18I93T1S/MLSuxpi11ZTvgXp3g41eDRia+joSz7OAHbTkeMsn8vkLYy
+rMJpJDOC/UN+lOMqM7XLaD6nuY3jVDVoJqRPFDHOij/tPaDOmScjK4RRvWQwyNR3
+OV4/0EqCGUf6z5RAwF6t6yedKSYzSQ==
+=uxou
+-----END PGP SIGNATURE-----
+
+--Rgf3q3z9SdmXC6oT--
+
+
+--===============4504906888134584946==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4504906888134584946==--
+
