@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
 	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D902CC4363A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2020 13:51:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36C3EC4363A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2020 14:15:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 61F432076A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2020 13:51:38 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9B44A2076B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2020 14:15:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="FEH3Oebq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 61F432076A
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="MQVSYruZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9B44A2076B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,42 +25,42 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=kQoPo6sYwdBndpteU+Ym7PVxH5eTiXjAmNvo6ySNUIs=; b=FEH3OebqvCpSYy1MtDlqK1YQh
-	tRlhMaHJslClCpcNyyhIgpDhBS4NxGJgMETvK+Fo3Oh+rVT4rn9jOrG+UARJRzMCyvwJOLjtgcOYf
-	I9ATWH/0+hFh5qKxpeXIefZ9dViAjRPfPZI+tAURP0SW08YP7dr422z4Qb99OHv0hFbs9GDWmhsO4
-	jL06qAINVPqMr/3sgk2IJBPoobzNFAW1xms7nNJBMEBAoTHNTFX7bWytACVpARlcaqU1yfSyJW8Ws
-	I6oDBhAxLps8PRRzzSqY9myJsLCVP50NE0fVO1C5ktvI3EAScrAGVsSjVVWOzRo969eQ0fLekzfM2
-	Yxlrdqdww==;
+	 bh=zUwPgy4h5pdYkyg85jVEJezgoR8V/XkY5dWucakW1+k=; b=MQVSYruZaR6O8EJA2qpByHTXy
+	9FeadaH0lWXja+0Kxe/ZYWLLf0qvTa2b/NLsvC2ze2nUSpXsa3hxPzSWc+HCQ//ylHYkRdaI5ImuA
+	pB8/pviuner4jo/DHGB0pgFhHKaoNZL5LZktYrfgTW2oXDkGnF7K3UeX9fmmuYNzqMHwOnFU/sOj0
+	EmSCRQO+acc5VfGX0dahxgvTZRW3Boevn8O/Fy1rrZ/M/0jfWnGMHU1PugzngwQ6IZmXUXKw0Iuxl
+	eDcqg3QUI7WoH8antpZAs47aGkhrw6PL09D30RVlZHeyoqWa/GtHigAAFgTLLKf4zt4U86gHdE9ND
+	ysAzmWPxA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kY8Ky-0002ui-P4; Thu, 29 Oct 2020 13:51:32 +0000
+	id 1kY8hw-0005S7-HO; Thu, 29 Oct 2020 14:15:16 +0000
 Received: from foss.arm.com ([217.140.110.172])
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kY8Kt-0002sm-0t; Thu, 29 Oct 2020 13:51:27 +0000
+ id 1kY8hu-0005RT-D5
+ for linux-rockchip@lists.infradead.org; Thu, 29 Oct 2020 14:15:15 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id ED001139F;
- Thu, 29 Oct 2020 06:51:25 -0700 (PDT)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 62125139F;
+ Thu, 29 Oct 2020 07:15:13 -0700 (PDT)
 Received: from [10.57.54.223] (unknown [10.57.54.223])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 9BDDC3F719;
- Thu, 29 Oct 2020 06:51:24 -0700 (PDT)
-Subject: Re: [PATCH] iommu/rockchip: check return value of
- of_find_device_by_node() in rk_iommu_of_xlate()
-To: "yukuai (C)" <yukuai3@huawei.com>, joro@8bytes.org, heiko@sntech.de,
- jeffy.chen@rock-chips.com
-References: <20201029092202.900218-1-yukuai3@huawei.com>
- <98dec09e-08a1-6550-fa4e-85a8104b90e1@arm.com>
- <35ff5111-1270-fc88-788c-4fb9e38faa85@huawei.com>
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 7A0533F719;
+ Thu, 29 Oct 2020 07:15:11 -0700 (PDT)
+Subject: Re: [PATCH 00/18] Add Hantro regmap and VC8000 h264 decode support
+To: Ezequiel Garcia <ezequiel@collabora.com>,
+ Adrian Ratiu <adrian.ratiu@collabora.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+References: <20201012205957.889185-1-adrian.ratiu@collabora.com>
+ <d4d080658113ad97816eda9262736e5fcc7b017c.camel@collabora.com>
 From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <d5442e6b-2a6b-a8f9-2056-2c0c81e88a01@arm.com>
-Date: Thu, 29 Oct 2020 13:51:23 +0000
+Message-ID: <0dd9fb9d-3f33-b9b0-a7a8-6d3111e92d64@arm.com>
+Date: Thu, 29 Oct 2020 14:15:10 +0000
 User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <35ff5111-1270-fc88-788c-4fb9e38faa85@huawei.com>
+In-Reply-To: <d4d080658113ad97816eda9262736e5fcc7b017c.camel@collabora.com>
 Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201029_095127_146777_83E44C29 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20201029_101514_612653_0B21D56A 
+X-CRM114-Status: GOOD (  32.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,46 +73,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- yi.zhang@huawei.com
+Cc: Fruehberger Peter <Peter.Fruehberger@de.bosch.com>, kernel@collabora.com,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Mark Brown <broonie@kernel.org>, kuhanh.murugasen.krishnan@intel.com,
+ Daniel Vetter <daniel@ffwll.ch>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-media@vger.kernel.org
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2020-10-29 13:19, yukuai (C) wrote:
+On 2020-10-29 13:07, Ezequiel Garcia wrote:
+> Hello Adrian,
 > 
-> On 2020/10/29 18:08, Robin Murphy wrote:
->> On 2020-10-29 09:22, Yu Kuai wrote:
->>> If of_find_device_by_node() failed in rk_iommu_of_xlate(), null pointer
->>> dereference will be triggered. Thus return error code if
->>> of_find_device_by_node() failed.
+> On Mon, 2020-10-12 at 23:59 +0300, Adrian Ratiu wrote:
+>> Dear all,
 >>
->> How can that happen? (Given that ".suppress_bind_attrs = true")
+>> This series introduces a regmap infrastructure for the Hantro driver
+>> which is used to compensate for different HW-revision register layouts.
+>> To justify it h264 decoding capability is added for newer VC8000 chips.
 >>
->> Robin.
+>> This is a gradual conversion to the new infra - a complete conversion
+>> would have been very big and I do not have all the HW yet to test (I'm
+>> expecting a RK3399 shipment next week though ;). I think converting the
+>> h264 decoder provides a nice blueprint for how the other codecs can be
+>> converted and enabled for different HW revisions.
+>>
+>> The end goal of this is to make the driver more generic and eliminate
+>> entirely custom boilerplate like `struct hantro_reg` or headers with
+>> core-specific bit manipulations like `hantro_g1_regs.h` and instead rely
+>> on the well-tested albeit more verbose regmap subsytem.
+>>
+>> To give just two examples of bugs which are easily discovered by using
+>> more verbose regmap fields (very easy to compare with the datasheets)
+>> instead of relying on bit-magic tricks: G1_REG_DEC_CTRL3_INIT_QP(x) was
+>> off-by-1 and the wrong .clk_gate bit was set in hantro_postproc.c.
+>>
+>> Anyway, this series also extends the MMIO regmap API to allow relaxed
+>> writes for the theoretical reason that avoiding unnecessary membarriers
+>> leads to less CPU usage and small improvements to battery life. However,
+>> in practice I could not measure differences between relaxed/non-relaxed
+>> IO, so I'm on the fence whether to keep or remove the relaxed calls.
+>>
+>> What I could masure is the performance impact of adding more sub-reg
+>> field acesses: a constant ~ 20 microsecond bump per G1 h264 frame. This
+>> is acceptable considering the total time to decode a frame takes three
+>> orders of magnitude longer, i.e. miliseconds ranges, depending on the
+>> frame size and bitstream params, so it is an acceptable trade-off to
+>> have a more generic driver.
+>>
 > 
-> I'm not sure if that could happen...
+> Before going forward with using regmap, I would like to have a sense
+> of the footprint it adds, and see if we can avoid that 20 us penalty.
 > 
-> My thought is that it's better to do such checking to aviod any possible
-> problem.
+> I'd also like to try another approach, something that has less
+> memory footprint and less runtime penalty.
+> 
+> How about something like this:
+> 
+> #define G1_PIC_WIDTH 4, 0xff8, 23
+> #define ...
+>                                   
+> struct hantro_swreg {
+>          u32 value[399 /*whatever size goes here*/];
+> };
+>                                                                                   
+> void hantro_reg_write(struct hantro_swreg *r,
+>                        unsigned int swreg, u32 mask, u32 offset, u32 new_val)
+> {
+>          r->value[swreg] = (r->value[swreg] & ~(mask)) |
+>                            ((new_val << offset) & mask);
+> }
+> 
+> Which you can then use in a very similar way as the current proposal:
+> 
+> hantro_reg_write(&swreg, G1_PIC_WIDTH, width);
+> 
+> The first advantage here is that we no longer have any
+> footprint for the fields.
+> 
+> The ugly macros for "4, 0xff8, 23" can be auto-generated from
+> existing vendor headers, when possible, so that shouldn't
+> bother us.
+> 
+> The register set is "flushed" using _relaxed, but it
+> could be still costly.
+> 
+> If that is indeed costly, perhaps we can avoid writing
+> the entire set by having a dirty bit somewhere.
+> 
+> In any case, it's worth exploring our options first, I think.
 
-->of_xlate() is only invoked on the specific set of ops returned by 
-iommu_ops_from_fwnode(). In turn, iommu_ops_from_fwnode() will only 
-return those ops if the driver has successfully probed and called 
-iommu_register_device() with the relevant DT node. For the driver to 
-have been able to probe at all, a platform device associated with that 
-DT node must have been created, and therefore of_find_device_by_node() 
-cannot fail.
+Or maybe the regmap API itself deserves extending with a "deferred" 
+operating mode where updates to the cached state can be separated from 
+committing that state to the underlying hardware.
 
-If there ever were some problem serious enough to break that fundamental 
-assumption, then I *want* these drivers to crash right here, with a nice 
-clear stack trace to start debugging from. So no, I firmly disagree that 
-adding redundant code, which will never do anything except attempt to 
-paper over catastrophic memory corruption, is "better". Sorry :)
+...which, after a brief code search out of curiosity, apparently already 
+exists in the form of regcache_cache_only()/regcache_sync(), so there's 
+probably no need to reinvent it :)
 
 Robin.
+
+> 
+> PS: Another option is to just fork RK3399 to its
+> own driver and call the day, given how different it is :)
+> 
+> Thanks!
+> Ezequiel
+> 
+> 
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
