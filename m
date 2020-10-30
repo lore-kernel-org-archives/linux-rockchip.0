@@ -1,76 +1,68 @@
-Return-Path: <SRS0=CN2P=EE=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=455t=EF=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DCF05C4742C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2020 20:04:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E43FC4742C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2020 01:27:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 55AE520791
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Oct 2020 20:04:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B1BF9206BE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2020 01:27:48 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pjHQXwL8";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="E9pSr6O/"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55AE520791
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vVKcBGYS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B1BF9206BE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=smsSAM3OUsQmganI2r0+dbTWYN9xK/Js1HFpU2bPhl0=; b=pjHQXwL8wySB80cCtxRI+rWFG
-	7WKH/Dafy+yiDn7xqA8aY0wrYz7UI81sBlxtJqqFKo9YkZQmpYLLaTY4sirQGWmG7eyJS1x8zpO7v
-	V3mcx4yc0k9gxs8s2OMiTgBCXS3DGgB45IvF1tRj3VcOC2DbA9McPNunXsI322WE+Oj8lZbI/cnZB
-	h6BKu+xzN3ppIlAzoVMc3F7zGVEXH7ZEfhPsN9ZrXPUrBzd5eghCcrncLOxj2oGxhNrUHmQs4oyb+
-	xlcjStOWvLQ+j/pXP1HMECOPd00sDtvb+6N8bltPXuK4ZZ6D149q4RADN5p+oEtOoNvjPEmO8Dcko
-	Qsamr0ZSw==;
+	 bh=/oA7FXPHegTFFy+wYoLwptwHffoQl7y+g0FLpxPM6WQ=; b=vVKcBGYSeN3UjRtJD9gvWw43U
+	thyhxiZRS5Hwg29W0Pndi80G7M+mR5A7885ThHA9jrzHwI+TxNe6TIlGsVI1ZiNt32qPHvPVMqN5f
+	8vMTSU6/21T7q+p7sAxbA1iHycvdeqcjBFf4JKwOLU2UbkN7nm88rNRGKkycvO+T52OBNuuTag0/0
+	ciukA+3oCyzgS+lQ85sL2HvRsY8lINgMLRkDlwyOJYItbD9zgBny30szZvd5kv5aUJBTqwKD6yMAy
+	/GOreEFG/Wwv5qOOf6bZGwEz9USgjyswA1khCYUTzBsDn1Ob2xdX6motEJ+OgXyTtdoM4KDicfd5J
+	8RI29IZMg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYE9x-0003oV-9R; Thu, 29 Oct 2020 20:04:33 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kYJCg-0002nF-Ae; Fri, 30 Oct 2020 01:27:42 +0000
+Received: from szxga07-in.huawei.com ([45.249.212.35])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYE9u-0003n4-3m
- for linux-rockchip@lists.infradead.org; Thu, 29 Oct 2020 20:04:31 +0000
-Received: from mail-oo1-f51.google.com (mail-oo1-f51.google.com
- [209.85.161.51])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 64B4820838
- for <linux-rockchip@lists.infradead.org>; Thu, 29 Oct 2020 20:04:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1604001868;
- bh=AOvWudq0ZqsWRnN/qXnDh5LtmEQC83i+z8hhzYFp75c=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=E9pSr6O/G6YE5XFNmqJqljbHx3wSzq6bVnhYgluqrf/H7wEGt4aAL9MLa6Ef2g5bE
- 4w5Ruk1xZvDR0sd7whf/fLVhUkTVh6Yvbg+wvF3ZK42Y28B6ivLMgvYklEgjEcZcBs
- SnRh+ePJ2S1j6tL012nn1pFY9GPKgLLRWuNt5q28=
-Received: by mail-oo1-f51.google.com with SMTP id j41so1025028oof.12
- for <linux-rockchip@lists.infradead.org>; Thu, 29 Oct 2020 13:04:28 -0700 (PDT)
-X-Gm-Message-State: AOAM530AzHFptk3R9BhAs1vnE6hxjSymJ7ItjD3fXfaaaqkuoXaunA5k
- 3O7YJt8hq6SP9l1/huPoh15FCYP55yG8ki3BmQ==
-X-Google-Smtp-Source: ABdhPJzY69332/TXD/GEbGo1Phdkm8uP9368uPwVctCb5SZBvuiMltO4sKY7UEYa7BklecuGbw5fafj/oTXoXLnSFpE=
-X-Received: by 2002:a4a:dcc8:: with SMTP id h8mr4529803oou.81.1604001867553;
- Thu, 29 Oct 2020 13:04:27 -0700 (PDT)
+ id 1kYJCc-0002mA-GK; Fri, 30 Oct 2020 01:27:39 +0000
+Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CMl6b5hklz70G5;
+ Fri, 30 Oct 2020 09:27:35 +0800 (CST)
+Received: from [10.174.179.62] (10.174.179.62) by
+ DGGEMS413-HUB.china.huawei.com (10.3.19.213) with Microsoft SMTP Server id
+ 14.3.487.0; Fri, 30 Oct 2020 09:27:23 +0800
+Subject: Re: [PATCH] iommu/rockchip: check return value of
+ of_find_device_by_node() in rk_iommu_of_xlate()
+To: Robin Murphy <robin.murphy@arm.com>, <joro@8bytes.org>, <heiko@sntech.de>, 
+ <jeffy.chen@rock-chips.com>
+References: <20201029092202.900218-1-yukuai3@huawei.com>
+ <98dec09e-08a1-6550-fa4e-85a8104b90e1@arm.com>
+ <35ff5111-1270-fc88-788c-4fb9e38faa85@huawei.com>
+ <d5442e6b-2a6b-a8f9-2056-2c0c81e88a01@arm.com>
+From: "yukuai (C)" <yukuai3@huawei.com>
+Message-ID: <e3805bee-347a-1e66-b2ca-48f06df6f702@huawei.com>
+Date: Fri, 30 Oct 2020 09:27:23 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <20201020193850.1460644-1-helen.koike@collabora.com>
- <20201020193850.1460644-6-helen.koike@collabora.com>
-In-Reply-To: <20201020193850.1460644-6-helen.koike@collabora.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Thu, 29 Oct 2020 15:04:16 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqK3xhPHscbB+waDqEjKeRoeZ0MNu88fp70g9CSC02Qopw@mail.gmail.com>
-Message-ID: <CAL_JsqK3xhPHscbB+waDqEjKeRoeZ0MNu88fp70g9CSC02Qopw@mail.gmail.com>
-Subject: Re: [PATCH v6 5/9] media: staging: rkisp1: remove unecessary clocks
-To: Helen Koike <helen.koike@collabora.com>
+In-Reply-To: <d5442e6b-2a6b-a8f9-2056-2c0c81e88a01@arm.com>
+X-Originating-IP: [10.174.179.62]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201029_160430_394686_2BE67C0A 
-X-CRM114-Status: GOOD (  19.73  )
+X-CRM114-CacheID: sfid-20201029_212738_809541_C085BFE3 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,77 +75,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:STAGING SUBSYSTEM" <devel@driverdev.osuosl.org>,
- devicetree@vger.kernel.org, Eddie Cai <eddie.cai.linux@gmail.com>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- "heiko@sntech.de" <heiko@sntech.de>, Robin Murphy <robin.murphy@arm.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- karthik.poduval@gmail.com,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mark Rutland <mark.rutland@arm.com>,
- Collabora Kernel ML <kernel@collabora.com>,
- Shunqian Zheng <zhengsq@rock-chips.com>, Johan Jonker <jbx6244@gmail.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
+Cc: linux-rockchip@lists.infradead.org, iommu@lists.linux-foundation.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ yi.zhang@huawei.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 20, 2020 at 2:39 PM Helen Koike <helen.koike@collabora.com> wrote:
->
-> aclk_isp_wrap is a child of aclk_isp, and hclk_isp_wrap is a child of
-> hclk_isp, thus we can remove parents from the list.
->
-> Also, for the isp0, we only need the ISP clock, ACLK and HCLK.
-> In the future we'll need a pixel clock for RK3288 and RK3399, and a JPEG
-> clock for RK3288.
->
-> So with the goal to cleanup the dt-bindings and remove it from staging,
-> simplify clock names to isp, aclk and hclk.
->
-> Assigned clocks are meant to refer to the full path in the clock tree,
-> i.e. the leaf in the tree.
-> For instance, in RK3399, the clock responsible for ACLK (ISP AXI CLOCK)
-> is aclk_isp0_wrapper.
->
-> For reference, this is the isp clock topology on RK3399:
->
->  xin24m
->     pll_npll
->        npll
->           clk_isp1
->           clk_isp0
->     pll_cpll
->        cpll
->           aclk_isp1
->              aclk_isp1_noc
->              hclk_isp1
->                 aclk_isp1_wrapper
->                 hclk_isp1_noc
->           aclk_isp0
->              hclk_isp1_wrapper
->              aclk_isp0_wrapper
->              aclk_isp0_noc
->              hclk_isp0
->                 hclk_isp0_wrapper
->                 hclk_isp0_noc
->  pclkin_isp1_wrapper
->
-> Signed-off-by: Helen Koike <helen.koike@collabora.com>
-> Reviewed-by: Tomasz Figa <tfiga@chromium.org>
->
-> ---
->
-> Changes in V6:
-> - Define clocks in the top level, and use if/else schema to define how
->   many for each compatible as sugested by Rob Herring on
->   https://patchwork.linuxtv.org/project/linux-media/patch/20200722155533.252844-6-helen.koike@collabora.com/#122626
-> ---
->  .../bindings/media/rockchip-isp1.yaml         | 44 +++++++++++++------
->  drivers/staging/media/rkisp1/rkisp1-dev.c     |  8 ++--
->  2 files changed, 33 insertions(+), 19 deletions(-)
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+On 2020/10/29 21:51, Robin Murphy wrote:
+> On 2020-10-29 13:19, yukuai (C) wrote:
+>>
+>> On 2020/10/29 18:08, Robin Murphy wrote:
+>>> On 2020-10-29 09:22, Yu Kuai wrote:
+>>>> If of_find_device_by_node() failed in rk_iommu_of_xlate(), null pointer
+>>>> dereference will be triggered. Thus return error code if
+>>>> of_find_device_by_node() failed.
+>>>
+>>> How can that happen? (Given that ".suppress_bind_attrs = true")
+>>>
+>>> Robin.
+>>
+>> I'm not sure if that could happen...
+>>
+>> My thought is that it's better to do such checking to aviod any possible
+>> problem.
+> 
+> ->of_xlate() is only invoked on the specific set of ops returned by 
+> iommu_ops_from_fwnode(). In turn, iommu_ops_from_fwnode() will only 
+> return those ops if the driver has successfully probed and called 
+> iommu_register_device() with the relevant DT node. For the driver to 
+> have been able to probe at all, a platform device associated with that 
+> DT node must have been created, and therefore of_find_device_by_node() 
+> cannot fail.
+> 
+> If there ever were some problem serious enough to break that fundamental 
+> assumption, then I *want* these drivers to crash right here, with a nice 
+> clear stack trace to start debugging from. So no, I firmly disagree that 
+> adding redundant code, which will never do anything except attempt to 
+> paper over catastrophic memory corruption, is "better". Sorry :)
+> 
+
+Sounds reasonable, thanks for your explanation
+
+Yu Kuai
 
 _______________________________________________
 Linux-rockchip mailing list
