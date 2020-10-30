@@ -2,74 +2,86 @@ Return-Path: <SRS0=455t=EF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.7 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
-	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-3.5 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E644C4741F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2020 17:09:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8FDA2C00A89
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2020 22:04:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CCED620731
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2020 17:09:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C78A6206E9
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Oct 2020 22:04:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wiF4iFcj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CCED620731
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="PHr+VyoU";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="PXotuqdO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C78A6206E9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=aUgWQaX66LIdu0cHmjnIUFS+5YZbgkjaDKcrel49BGM=; b=wiF4iFcjKlECNbl6dkRnpQVJl
-	S7+9UHmOjQN0wLO4QOFaMlN/gQZbM33cJUwb4wtwD9Nyu5Tk6workKYbKYXZ+wjt9FAM7v2Qk8JY1
-	jZXGFuJwzXhnLXbkcUgpydU/a7Iu/wjK8oMIIoEZGcBP3EwBLKFlLFKrkGQyCgvsoF2tmOqkUGCqF
-	o+YUdh/9Y7iDmqgmTGoRzGUl0GOJQjNtu01QRPBHV1lIk/LVXVRnVVBwRI52N+zKwHl2AJJDdnqgB
-	VQFs7DRRqd6iJzBZXrL9vALsswSVVkoD0fzRyRGw737FWFDSZ/4ER8tV8u79tQc03CD2tLXPpdvTJ
-	JD//2e7cA==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-ID:MIME-Version:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=XTxZ7mt3/ip9YXTvsDevbgNc7jOlcVDTFwjAAKlaYxI=; b=PHr+VyoU4iTx9W1Rw3AITas9lp
+	NkjAwHOuI4vzvy9rAHFbiCqzyufzC+cKE1EKhpYBqedrQgnU962JpTldw+VKnOJT+gbQ2KF4IABfE
+	K18jCOuLdgrT7Qb8MYNgDi+ZYTNcnUH9PpyI85SjyaX1BHBXqopDJYh3xpQczsYSDmYWEUka9XlsL
+	xGy1hKnSCzJOPT7l+lpYReEQcS0fvXSUM9SgPyuMY8H0bTJbZju5+FDS3bV6vHyNQ+E4VCbrWtS4T
+	jZZ5NP3xREZssELu1MY9EikNZPbueeUuGQZ9j3mHXlBnTQ+jSOYinymwqfE1l5No/lzJ8Ra/tyY5d
+	zCdScC9Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYXu8-0002KK-LW; Fri, 30 Oct 2020 17:09:32 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1kYcVO-0002kt-EF; Fri, 30 Oct 2020 22:04:18 +0000
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYXu3-0002I8-DA
- for linux-rockchip@lists.infradead.org; Fri, 30 Oct 2020 17:09:28 +0000
-IronPort-SDR: 8ysmPhSY7gs0XaTeAaREjXdThnJTckiT2/zDMX0gkeJy9WXLRiKfWFCVvJWvzn2j3HWVzBELQg
- E1gcneYulGJA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9790"; a="232815552"
-X-IronPort-AV: E=Sophos;i="5.77,434,1596524400"; d="scan'208";a="232815552"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Oct 2020 10:09:19 -0700
-IronPort-SDR: 5N2oZGH55VprlyiNlLydwafobFQ6yreOgcuf7zUhyzWb4eHAo6KeTv06azpEnyGk/Dii5CQ/vD
- XgMeaOjoaRjw==
-X-IronPort-AV: E=Sophos;i="5.77,434,1596524400"; d="scan'208";a="335480145"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Oct 2020 10:09:16 -0700
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id F2E6A20736; Fri, 30 Oct 2020 16:02:41 +0200 (EET)
-Date: Fri, 30 Oct 2020 16:02:41 +0200
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [PATCH v3 1/2] media: uapi: add MEDIA_BUS_FMT_METADATA_FIXED
- media bus format.
-Message-ID: <20201030140241.GQ26150@paasikivi.fi.intel.com>
-References: <20201030134609.30020-1-dafna.hirschfeld@collabora.com>
+ id 1kYcVM-0002kG-3p
+ for linux-rockchip@lists.infradead.org; Fri, 30 Oct 2020 22:04:16 +0000
+Received: by mail-wm1-x32a.google.com with SMTP id k18so4197220wmj.5
+ for <linux-rockchip@lists.infradead.org>; Fri, 30 Oct 2020 15:04:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:mime-version:message-id:user-agent
+ :content-transfer-encoding;
+ bh=GIHGcZfwXbGXSVrPAO6X2nhVJghT1GZVx7nHWu9UzEc=;
+ b=PXotuqdOYszRVDxVAHo7DVhGOWyaSOP3VIFXZAwByjViTen00oe9Cxs13jxpSDd/g8
+ VrZiKNNiFwsBzzGVvwFsCssi4uok9fYOt3eATxtUfNae7BebBA0br/CGPfwKyLNi3xhO
+ S2znsys6lctFYAGXD5DHb1PqwUcmfjScK/ZF61Lk3I9vZXZ1/Uozewojtwc7MX5C4XFK
+ BLmGPflHAfyLGPxKq2/PcWg1bgNe1ot61zFzoMkAd0UpV4AQYPdlVewTsWCfKScNgQQm
+ 0qCKOq/5VAXvll0yO3nuETdtPr9/TQLXT2OV+PDYoQIKWJmZ0JQGl6O80I4O+EhUKsCB
+ ttZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:mime-version:message-id
+ :user-agent:content-transfer-encoding;
+ bh=GIHGcZfwXbGXSVrPAO6X2nhVJghT1GZVx7nHWu9UzEc=;
+ b=SkGuB7D3egO6qtQXRjj+N/SByLDKVyI0JbK53TqEhIgIa1OevyhK9AFY1fIXlHPDhK
+ 7Lhj55cAjf+HtaN7dfUcT6jfehICLJc7QoqHgpzdNA4VGCTWc8XJ/nbbYKvn+2t0Gl5R
+ zJxIig7h2sZoFLWGwBEJOiG5S2AJTep2l0y0nOSGP/I0sFBihU+GreU4wt2ERDFZQ6k5
+ Ww8jueHO1C0DT7cHd1hmtixheSMPM8NlwLsamIkFgp2pn7ij5G0vkA+/OGYBfOEcFav/
+ zL1Mzx7zXdu3DRsQ6j9ujWgA7tG8rIXD92vygQewbBuhgu0lC+dbIngGqhPWBP+2rIOc
+ pagg==
+X-Gm-Message-State: AOAM532jKm8/5ZvekjTaGgPETNZYOtyV1FWa7Y0pS//R3tpDM+Oc+J0T
+ cv+wmlCZ0J0MDSRHHVslKdg=
+X-Google-Smtp-Source: ABdhPJyLfn7tUOIzPaD5UTEDVNIPoeQE4Hot1+pbcLn7TaGjQEmFrGBTJaeDRB372tMG47UbdRCnuw==
+X-Received: by 2002:a1c:a402:: with SMTP id n2mr1143945wme.160.1604095454916; 
+ Fri, 30 Oct 2020 15:04:14 -0700 (PDT)
+Received: from localhost ([170.253.46.69])
+ by smtp.gmail.com with ESMTPSA id v6sm5940454wmj.6.2020.10.30.15.04.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 30 Oct 2020 15:04:14 -0700 (PDT)
+From: Vicente Bergas <vicencb@gmail.com>
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+Subject: [regression, bisected] rk3399-gru-kevin does not boot with 5.10-rc1
+Date: Fri, 30 Oct 2020 23:04:13 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201030134609.30020-1-dafna.hirschfeld@collabora.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Message-ID: <83376abe-f2c4-4b64-ba24-4c15cdc49d3f@gmail.com>
+User-Agent: Trojita
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201030_130927_597359_BDCC63CD 
-X-CRM114-Status: GOOD (  26.56  )
+X-CRM114-CacheID: sfid-20201030_180416_233508_FBA28713 
+X-CRM114-Status: UNSURE (   6.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,102 +94,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna3@gmail.com, tfiga@chromium.org,
- hverkuil@xs4all.nl, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: Gwendal Grignou <gwendal@chromium.org>, Tony Luck <tony.luck@intel.com>,
+ Kees Cook <keescook@chromium.org>, Anton Vorontsov <anton@enomsg.org>,
+ linux-rockchip@lists.infradead.org, Colin Cross <ccross@android.com>,
+ Guenter Roeck <groeck@chromium.org>, Benson Leung <bleung@chromium.org>,
+ Heiko Stuebner <heiko@sntech.de>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dafna,
+Hi,
+commit dd92f7dfe1ba3bad556c8a529edacce7c6fd0195
+platform/chrome: Kconfig: Remove the transitional MFD_CROS_EC config
+broke booting rk3399-gru-kevin.
 
-On Fri, Oct 30, 2020 at 02:46:08PM +0100, Dafna Hirschfeld wrote:
-> MEDIA_BUS_FMT_METADATA_FIXED should be used when
-> the same driver handles both sides of the link and
-> the bus format is a fixed metadata format that is
-> not configurable from userspace.
-> The width and height will be set to 0 for this format.
-> 
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> Acked-by: Helen Koike <helen.koike@collabora.com>
-> ---
-> changes since v2:
-> added documentation in subdev-formats.rst
-> changes since v1:
-> 1. replace "This format may have 0 height and width."
-> with "Width and height will be set to 0 for this format."
-> and add it also to the commit log
-> 2. s/meida:/media:/ in the patch subject line
-> 
->  .../media/v4l/subdev-formats.rst              | 27 +++++++++++++++++++
->  include/uapi/linux/media-bus-format.h         |  8 ++++++
->  2 files changed, 35 insertions(+)
-> 
-> diff --git a/Documentation/userspace-api/media/v4l/subdev-formats.rst b/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> index c9b7bb3ca089..7f16cbe46e5c 100644
-> --- a/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> +++ b/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> @@ -7899,3 +7899,30 @@ formats.
->        - 0x5001
->        - Interleaved raw UYVY and JPEG image format with embedded meta-data
->  	used by Samsung S3C73MX camera sensors.
-> +
-> +.. _v4l2-mbus-metadata-fmts:
-> +
-> +Metadata Formats
-> +^^^^^^^^^^^^^^^^
-> +
-> +This section lists all metadata formats.
-> +
-> +The following table lists the existing metadata formats.
-> +
-> +.. tabularcolumns:: |p{8.0cm}|p{1.4cm}|p{7.7cm}|
-> +
-> +.. flat-table:: Metadata formats
-> +    :header-rows:  1
-> +    :stub-columns: 0
-> +
-> +    * - Identifier
-> +      - Code
-> +      - Comments
-> +    * .. _MEDIA-BUS-FMT-METADATA-FIXED:
-> +
-> +      - MEDIA_BUS_FMT_METADATA_FIXED
-> +      - 0x7001
-> +      - This format should be used when the same driver handles
-> +	both sides of the link and the bus format is a fixed
-> +	metadata format that is not configurable from userspace.
-> +	Width and height will be set to 0 for this format.
-> diff --git a/include/uapi/linux/media-bus-format.h b/include/uapi/linux/media-bus-format.h
-> index 84fa53ffb13f..2ce3d891d344 100644
-> --- a/include/uapi/linux/media-bus-format.h
-> +++ b/include/uapi/linux/media-bus-format.h
-> @@ -156,4 +156,12 @@
->  /* HSV - next is	0x6002 */
->  #define MEDIA_BUS_FMT_AHSV8888_1X32		0x6001
->  
-> +/*
-> + * This format should be used when the same driver handles
-> + * both sides of the link and the bus format is a fixed
-> + * metadata format that is not configurable from userspace.
-> + * Width and height will be set to 0 for this format.
-> + */
+The display does not turn on and there are no easy means to access the
+serial port, so, no more information is available.
 
-Does this mean that metadata with dimensions should not use
-MEDIA_BUS_FMT_METADATA_FIXED? I guess that's not the intention? For some
-formats the dimensions would be relevant but for others not. I'd thus
-replace "will" by "may". Same for the documentation.
-
-> +#define MEDIA_BUS_FMT_METADATA_FIXED		0x7001
-> +
->  #endif /* __LINUX_MEDIA_BUS_FORMAT_H */
-
--- 
-Kind regards,
-
-Sakari Ailus
+Regards,
+  Vicente.
 
 _______________________________________________
 Linux-rockchip mailing list
