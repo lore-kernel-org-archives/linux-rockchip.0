@@ -2,96 +2,116 @@ Return-Path: <SRS0=kO9o=EG=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MSGID_FROM_MTA_HEADER,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CB05BC388F9
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Oct 2020 13:45:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 23654C388F9
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Oct 2020 23:04:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 71C972071A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Oct 2020 13:45:53 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 84E6B2076D
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Oct 2020 23:04:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bFpJaBKZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="IJhi4wKM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 71C972071A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jNfTjfbk";
+	dkim=temperror (0-bit key) header.d=outlook.com header.i=@outlook.com header.b="bslZnpa1"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 84E6B2076D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=outlook.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pDQkVrxbms3lwhhpvB1+CwqyeDxNuB7dl0XFu8QOijU=; b=bFpJaBKZpRzx27OdBYUGOo7is
-	04HPVoiZqxKUhKW7yTP6UUKBX7+JTNkCx8/ZIb/N9vizAPVJKmMYr54oePCnrATuZRLraQG2Y75WI
-	fPJl1pA+wWD2BKrsdqc4invB9MIN6IDu+N/u5ERETSdc6D/A48Q33i4QhOaCAeIEI9/MKH6iPTyG1
-	g5yNnuFEsHmWsP5OKVGgXd/dBKPvhHRKeXGSFJoGITp/TAzHe3D9AYFNnXe+wd8KvItZAmjzqJYk9
-	lus/uBjyObT5db5CU2fc+gwtyFI8GnloqbiB1xt0VMfHMKHjVcUnLW2uTnkqQtCDUNBXhGVMKjmOn
-	TAhZ6A45w==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=yZn+OoiRXTifYEyiO4Rel7ikQ3eVUyo5UgqmLPs+4BY=; b=jNfTjfbkiC4Vv5UeGjr3BeAvLc
+	TUsrLgeSp13uPjEhO8xBBtz+VqQTmq6QfM4YiqXkIJ1FS6DNRjXtx3O6Ctw9Gj1x5mJEpYMvkyDBe
+	Kv/CZomLA+nEtUe7lgSjmnMkXmHXBsw1zmO7N2AFKwM+9xL8f+SRxpVOVUCU7kJRGYVU8z1xcW6NC
+	OmEzGSBIncmeru5AMUlZHSleREjzaqEVhooqWESRLVozPzeeGITE/CnoNl1D8Ll/KSy3Xk06s+3Px
+	eRoIBIDHaWKjB4eCeJqQYQcU7hSANXH+GW5TnyItGocCwQu/Z+TctUgU2N6FyXc5WrObVpOuHD/eY
+	p/PYoh9w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kYrCU-0006rP-Jt; Sat, 31 Oct 2020 13:45:46 +0000
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
+	id 1kYzv2-00028k-EJ; Sat, 31 Oct 2020 23:04:20 +0000
+Received: from mail-oln040092254096.outbound.protection.outlook.com
+ ([40.92.254.96] helo=APC01-PU1-obe.outbound.protection.outlook.com)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kYrCO-0006qH-W4; Sat, 31 Oct 2020 13:45:42 +0000
-Received: by mail-ej1-x644.google.com with SMTP id s15so12403592ejf.8;
- Sat, 31 Oct 2020 06:45:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=+vChzJQ+4flHvRyJKlk2Uh9VQxych+++R4cwBhR+cB8=;
- b=IJhi4wKMxNjdLH7IlvoZCBa+IM7Zp0fsFGqRMpbQeelHZTIYfp/fniJ4ZTIQwXQdjf
- A4xpk+aHPo0jeJRk7GkuKRhmJmDrWyePuHIyFjeToi+QBGPr+gpBCmTDnA+Upb+lZaCQ
- 8fT/MyVVKq2AKl+QiZcG2rw2K6iWdfpfBCO1JSbmYX56gSlUNCfXuWKdTnN0TXJBfUl2
- fGG386B5aJF2E3R+mBGwbsYTxJ+DVHA5sXFtbkMT2rmImq2RluFV7UfdfspS7K50HKmy
- ftf8bP5uZK/Nj2FMbJUytYh/H80qZEbvHkxqynh3GmM/IBbJK0dllLrvNbGgeQVvB/21
- L8GQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=+vChzJQ+4flHvRyJKlk2Uh9VQxych+++R4cwBhR+cB8=;
- b=lYoWywuPgNCwJEeLa8IBNdDHDrBpSVq5+kBQybALeiSGD3F6T9w0RuSZxfoSXwa6u1
- 4tJPO5KD+CcRXGoWpP/yNTW3RIxwwSLCfb+cBndnpZhDoiMVMPCNWJA1Xbc7tj+2zM01
- BnWnS83ksOtzFoScMFOPpsM3jzICovjZ6d5veKL3URyoFwnGJrqEmdRL+0pl0zBTtQ3d
- mlWjnYOf6VERobIofK+HjlfgXYX8czNNAwAXAsCpGdFeR/vl78jKhGDe5maGbFJQuVng
- hj9ym20B7UZ1/YhgBHdmnDmputie92+V5K5zdV+DTjl9q/LxDu0EymvW7QeupTcH9TiE
- M6vQ==
-X-Gm-Message-State: AOAM532vGogmiEn1X74RaM81aPHaPPZj6tXmYoWkhapXiKLgc2qoEbh8
- FTcduS+/Bm8NB0bIKLmUWDzPVkGo5jMjlA==
-X-Google-Smtp-Source: ABdhPJx4n4Y6dKr69cZcbBG67TBbDYHjIGaKd1OY4/ExEQKzRvcNRnEn5aF4bqjQCyeafC05mAs5uQ==
-X-Received: by 2002:a17:906:444:: with SMTP id
- e4mr7585761eja.218.1604151939529; 
- Sat, 31 Oct 2020 06:45:39 -0700 (PDT)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- h4sm5169254edj.1.2020.10.31.06.45.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 31 Oct 2020 06:45:39 -0700 (PDT)
-Subject: Re: [PATCH v13 2/8] mtd: rawnand: rockchip: NFC drivers for RK3308,
- RK2928 and others
-From: Johan Jonker <jbx6244@gmail.com>
-To: Yifeng Zhao <yifeng.zhao@rock-chips.com>, miquel.raynal@bootlin.com,
- richard@nod.at, vigneshr@ti.com, robh+dt@kernel.org
-References: <20201028095326.15562-1-yifeng.zhao@rock-chips.com>
- <20201028095326.15562-3-yifeng.zhao@rock-chips.com>
- <a8a7875b-f08b-62c6-a630-245687e0df3b@gmail.com>
-Message-ID: <0dabd80e-b281-be65-b8e2-da00f46964fb@gmail.com>
-Date: Sat, 31 Oct 2020 14:45:37 +0100
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ id 1kYzuz-00028B-Pr
+ for linux-rockchip@lists.infradead.org; Sat, 31 Oct 2020 23:04:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=WnNaUtwfDo7gd2dHngO5Df++pzZJanq/TGvNaJij+jzHTOW5mrcXfAfr2rDPorqlKuddFaRRN51r0YnlnFJZsBlQ7+F3u3aUC25LiYsjJZCcbZ1F3HocpC99hyVz9hWHC4VMI+Bb+TXOIy/v2+4+ferDYUjfnSE6YtUshS2wWS3h5VoURVu4mOrPXdNfNbIg6Fg5IUC6PvdkWCc0W8hOKyNiOCZem60r2j+WGSCzAKM8FclXZv4YjlhDUdSfY6PPRfw4l4+aLsCtcZd8QWIGsRaZXd0+A7+WtYGnhRKOsOY8UTVbB+vKiXkLnSjGz1zkcOzmhQNocuoNJwbSIPqhkA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XP88d/GLudsHZmJPxIWONq9QAm8k353Z7snLOLtn1tA=;
+ b=jQ84eKAot7F/laVzpGW12ejRxLk9ogCChCd2Tjuq5ovUSEMT4Nf7HL9nl44s2GuQ4OuK+nodU2RGXBwfT3EZ4RDroAa4Zkb4iZkldHLIPhpMIWxHtljX7p+tn+yT0rKeBMAOlWUUuGeeg50o+guzq75xWYg3MwoAtO5zuOXbXRdU5/ucwWctUqQ7Gh+Y1RuoUx0z19Yc16NcBjBAFl7LkcklJz4P/UDLLh8y3ovDUP6sSBKT194J9j8jjFMuoAsMl0SEfuzroqzdRThcCEJ/VeHQV63Q/AlGj7YLZOslzpn5+xGCCBGpjKuCI7bQqykyItqYe66FQ5Tax7tM7YYCIg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=XP88d/GLudsHZmJPxIWONq9QAm8k353Z7snLOLtn1tA=;
+ b=bslZnpa1eVztJHVhou7Zu9tG5nL9M05ZhrtEBgPJcR5ELhcrDvqcg30aWR3PJciay4sy+4DHXWSJ7MGQVMCPwQjIpaczsUn4pTuNtKs0Z1CGJihZL/XJfWY5caBOt83j1fw0mA3UNjSZNcL4RUefDzGKEt8Sm6VldLdoEfbRiGiVmsDKw4qG5pn5yOIcf6wA/9iStEIp496fmq3EVK1kuJ71wPSMwXiMaEwDRMQ4UBiRr+vJVQFLTvxmay8ITADWjiHzpZOPcgDqnOqYXHsqNWvwYIfqnECnyGVdUZR8dXdS/jvefXn9canLK96a853RQcgvznbR9OyqIyYnwqU8uA==
+Received: from SG2APC01FT063.eop-APC01.prod.protection.outlook.com
+ (2a01:111:e400:7ebd::50) by
+ SG2APC01HT206.eop-APC01.prod.protection.outlook.com (2a01:111:e400:7ebd::413)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3520.15; Sat, 31 Oct
+ 2020 23:04:08 +0000
+Received: from SLXP216MB0191.KORP216.PROD.OUTLOOK.COM (10.152.250.56) by
+ SG2APC01FT063.mail.protection.outlook.com (10.152.251.186) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3520.15 via Frontend Transport; Sat, 31 Oct 2020 23:04:08 +0000
+X-IncomingTopHeaderMarker: OriginalChecksum:C300BBD03001FFC9EB582BD550D194DB074FC71E52EC547C9911A3C6F304E5E8;
+ UpperCasedChecksum:F54123E586FF932164B913ADF74F200CF7EF57FE2379A15743F2D9572F3C492D;
+ SizeAsReceived:7317; Count:45
+Received: from SLXP216MB0191.KORP216.PROD.OUTLOOK.COM
+ ([fe80::6c:ccfc:11a6:257e]) by SLXP216MB0191.KORP216.PROD.OUTLOOK.COM
+ ([fe80::6c:ccfc:11a6:257e%8]) with mapi id 15.20.3499.029; Sat, 31 Oct 2020
+ 23:04:08 +0000
+From: cheat.sc.linux@outlook.com
+To: linux-rockchip@lists.infradead.org
+Subject: [PATCH] arm64: dts: rockchip: Fix wrong rk808's VDDIO on
+ rk3399-firefly
+Date: Sun,  1 Nov 2020 08:03:41 +0900
+Message-ID: <SLXP216MB0191533C7D45A2B873226DA09B120@SLXP216MB0191.KORP216.PROD.OUTLOOK.COM>
+X-Mailer: git-send-email 2.29.2
+X-TMN: [fDAB28CtNUC3pc6r1hT812Ak1F/qo0Av]
+X-ClientProxiedBy: OS0PR01CA0076.jpnprd01.prod.outlook.com
+ (2603:1096:604:99::23) To SLXP216MB0191.KORP216.PROD.OUTLOOK.COM
+ (2603:1096:100:9::19)
+X-Microsoft-Original-Message-ID: <20201031230340.277985-1-cheat.sc.linux@outlook.com>
 MIME-Version: 1.0
-In-Reply-To: <a8a7875b-f08b-62c6-a630-245687e0df3b@gmail.com>
-Content-Language: en-US
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from localhost.localdomain (114.164.12.202) by
+ OS0PR01CA0076.jpnprd01.prod.outlook.com (2603:1096:604:99::23) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3499.18 via Frontend Transport; Sat, 31 Oct 2020 23:04:07 +0000
+X-MS-PublicTrafficType: Email
+X-IncomingHeaderCount: 45
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-Correlation-Id: 88761627-0f40-4078-eb0b-08d87df1454a
+X-MS-Exchange-SLBlob-MailProps: NS9Gj58uCj37rNM4T32ZSlXCO4gWtorzaLMydmvhvuOaCdxeRra/tc7PNfOtnWW26AMHW6cNL/1HcyA7anzXeMtDwyxNIPvpTytzgyUjsxf/MnkryDykyWftztB+Rbnk5NE88FOao3Yk0klX0lJYJfb/ihsWmcd0g3N2CCX5bgHqG01STavqnAzSsZXuMOa0NXMwclRLFmO11R+FeESpysc9RPaEqAmGtqSC7Amh++FL+6eKWNy4sj9yz+307DI02LKIrj9wGAmTrmQ7fBUJzpCxTKt8XvJVqUX6tQO3ORB+z9EyR6Fxi8ci2+4giDYX2OhFDlcBGg06ITiioYWBr6hXLVnVaOirV3gy2jYV0kmEa1+WlUwr2XJUe8UzouEq98iAt3SKaHAO+jmb2Gp52HSpro+HjA/k3Xeuqxjz/4p7MHyXWFnhRQuJlv5HZS1YRZvdPiE1dCOPt3Oy2kqmUE3LOor9S7BPkwAMb2b++ajbw5yXmAMkSNC8fkQZ8Ou4+k/mYadwk7CV8UsUwCW5+EvrfFexXqokn1Nf+ZM17djqtADfIFV7VatoOGYwLKEnbq/XdGaPjNsqxBWibNv1Vg5W5EecurhD5u+GXKEo8Y+Elc6omdjcOuSxW1egAiNMB0gfgZ8woR1qlrsyCiU+1l0N2CzyJPLrpE61bK9tFg2MfMCu1fc/+QDe5MT5zFp5/dXXaWxwilP0HNP5FvonoA==
+X-MS-TrafficTypeDiagnostic: SG2APC01HT206:
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: jdyeaJD7nvqGHnn6uVQFCWQR9xySQKAeYXYB1lXLEIE2vBvT4llEl9P2bSfRr3rDx3sfnkc9ttiqVZx9sHdji48sSM51JEzWbdD4QMqFwpwXJS08k2iSsq9NxirPLt4Bp+OGI0iIJMeE+lXw5MVBDVpIV6LLn9zwXr4OoiVAip3ufHgEGWlG0ZapKRypP5dcDkYDF5/ruOVmX8iO7dtxkA==
+X-MS-Exchange-AntiSpam-MessageData: l2ZJllfDbood/ItVXU8t5LcL+OFwYRWGuLIlIX9hSZNR4fdxrG7zYqpDldA3TsGVuLEKKDCItDIz67cUqY791BpCjufaJIC2Zmmndb+PSs1QLGbIerAYwGha5RmN8Jpargj/rF+WjEfvGIsJO8Re5g==
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 88761627-0f40-4078-eb0b-08d87df1454a
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Oct 2020 23:04:08.0001 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-AuthSource: SG2APC01FT063.eop-APC01.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2APC01HT206
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201031_094541_138177_98A1661A 
-X-CRM114-Status: GOOD (  35.47  )
+X-CRM114-CacheID: sfid-20201031_190417_968355_0C8EEDE5 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,543 +124,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, heiko@sntech.de, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Shohei Maruyama <cheat.sc.linux@outlook.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Yifeng,
+From: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
-In some functions you deselect the chips.
-The MTD frame work has a functions for that and also keeps track of its
-select status, so I think that you shouldn't poke with that yourself and
-should therefore remove the deselections from your driver.
+According to the schematic, rk808's VDDIO is vcc_3v0, not vcc1v8_pmu. This
+commit fix the wrong VDDIO.
 
-/**
- * nand_deselect_target() - Deselect the currently selected target
- * @chip: NAND chip object
- *
- * Deselect the currently selected NAND target. The result of operations
- * executed on @chip after the target has been deselected is undefined.
- */
-void nand_deselect_target(struct nand_chip *chip)
-{
-	if (chip->legacy.select_chip)
-		chip->legacy.select_chip(chip, -1);
+Signed-off-by: Shohei Maruyama <cheat.sc.linux@outlook.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3399-firefly.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-	chip->cur_cs = -1;
-}
-EXPORT_SYMBOL_GPL(nand_deselect_target);
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+index 6db18808b9c5..e1f19d40165f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-firefly.dts
+@@ -292,7 +292,7 @@ rk808: pmic@1b {
+ 		vcc10-supply = <&vcc_sys>;
+ 		vcc11-supply = <&vcc_sys>;
+ 		vcc12-supply = <&vcc3v3_sys>;
+-		vddio-supply = <&vcc1v8_pmu>;
++		vddio-supply = <&vcc_3v0>;
+ 
+ 		regulators {
+ 			vdd_center: DCDC_REG1 {
+-- 
+2.29.2
 
-
-On 10/31/20 12:58 PM, Johan Jonker wrote:
-
-[..]
-
-> On 10/28/20 10:53 AM, Yifeng Zhao wrote:
-
-[..]
-
->> +
->> +static int rk_nfc_write_page_raw(struct nand_chip *chip, const u8 *buf,
->> +				 int oob_on, int page)
->> +{
->> +	struct mtd_info *mtd = nand_to_mtd(chip);
->> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
->> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
->> +	int ret = 0;
->> +	u32 i;
->> +
-> 
-> 	/*
-> 	* Normal timing and ECC layout size setup is already done in
-> 	* the rk_nfc_select_chip() function.
-> 	*/
-> 
-> How about the ECC layout size setup for a boot block?
-> 
->> +	if (!buf)
->> +		memset(nfc->buffer, 0xff, mtd->writesize + mtd->oobsize);
->> +> +	for (i = 0; i < ecc->steps; i++) {
->> +		/* Copy data to nfc buffer. */
->> +		if (buf)
->> +			memcpy(rk_nfc_data_ptr(chip, i),
->> +			       rk_nfc_buf_to_data_ptr(chip, buf, i),
->> +			       ecc->size);
-> 
->> +		/*
->> +		 * The first four bytes of OOB are reserved for the
->> +		 * boot ROM. In some debugging cases, such as with a
->> +		 * read, erase and write back test these 4 bytes stored
->> +		 * in OOB also need to be written back.
->> +		 */
-> 
-> 
-> 	/*
-> 	* The first four bytes of OOB are reserved for the
-> 	* boot ROM. In some debugging cases, such as with a
-> 	* read, erase and write back test these 4 bytes stored
-> 	* in OOB also need to be written back.
-> 	*
-> 	* The function nand_block_bad detects bad blocks like:
-> 	*
-> 	* bad = chip->oob_poi[chip->badblockpos];
-> 	*
-> 	* chip->badblockpos == 0 for a large page NAND Flash,
-> 	* so chip->oob_poi[0] is the bad block mask (BBM).
-> 	*
-> 	* The OOB data layout on the NFC is:
-> 	*
-> 	*   PA0  PA1  PA2  PA3 | BBM OOB1 OOB2 OOB3 | ...
-> 	*
-> 	* or
-> 	*
-> 	*  0xFF 0xFF 0xFF 0xFF | BBM OOB1 OOB2 OOB3 | ...
-> 	*
-> 	* The code here just swaps the first 4 bytes with the last
-> 	* 4 bytes without losing any data.
-> 	*
-> 	* The chip->oob_poi data layout:
-> 	*
-> 	*   BBM OOB1 OOB2 OOB3 |......|  PA0  PA1  PA2  PA3
-> 	*
-> 	* The rk_nfc_ooblayout_free() function already has reserved
-> 	* these 4 bytes with:
-> 	*
-> 	* oob_region->offset = NFC_SYS_DATA_SIZE + 2;
-> 	*/
-> 
-> 
->> +		if (!i)
->> +			memcpy(rk_nfc_oob_ptr(chip, i),
->> +			       rk_nfc_buf_to_oob_ptr(chip, ecc->steps - 1),
->> +			       NFC_SYS_DATA_SIZE);
->> +		else
->> +			memcpy(rk_nfc_oob_ptr(chip, i),
->> +			       rk_nfc_buf_to_oob_ptr(chip, i - 1),
->> +			       NFC_SYS_DATA_SIZE);
->> +		/* Copy ECC data to the NFC buffer. */
->> +		memcpy(rk_nfc_oob_ptr(chip, i) + NFC_SYS_DATA_SIZE,
->> +		       rk_nfc_buf_to_oob_ecc_ptr(chip, i),
->> +		       ecc->bytes);
->> +	}
->> +
->> +	nand_prog_page_begin_op(chip, page, 0, NULL, 0);
->> +	rk_nfc_write_buf(nfc, buf, mtd->writesize + mtd->oobsize);
->> +	ret = nand_prog_page_end_op(chip);
->> +
-
->> +	/*
->> +	 * Deselect the currently selected target after the ops is done
->> +	 * to reduce the power consumption.
->> +	 */
->> +	rk_nfc_select_chip(chip, -1);
-> 
-> Does the MTD framework always select again?
-
-Remove.
-Do not assume that the MTD framework or user space knows that you have
-deselected the chip.
-
-> 
->> +
->> +	return ret;
->> +}
->> +
->> +static int rk_nfc_write_oob(struct nand_chip *chip, int page)
->> +{
->> +	return rk_nfc_write_page_raw(chip, NULL, 1, page);
->> +}
->> +
->> +static int rk_nfc_write_page_hwecc(struct nand_chip *chip, const u8 *buf,
->> +				   int oob_on, int page)
->> +{
->> +	struct mtd_info *mtd = nand_to_mtd(chip);
->> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
->> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
->> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
->> +	int oob_step = (ecc->bytes > 60) ? NFC_MAX_OOB_PER_STEP :
->> +			NFC_MIN_OOB_PER_STEP;
->> +	int pages_per_blk = mtd->erasesize / mtd->writesize;
->> +	int ret = 0, i, boot_rom_mode = 0;
->> +	dma_addr_t dma_data, dma_oob;
->> +	u32 reg;
->> +	u8 *oob;
->> +
->> +	nand_prog_page_begin_op(chip, page, 0, NULL, 0);
->> +
->> +	memcpy(nfc->page_buf, buf, mtd->writesize);
->> +
->> +	/*
->> +	 * The first blocks (4, 8 or 16 depending on the device) are used
->> +	 * by the boot ROM and the first 32 bits of OOB need to link to
->> +	 * the next page address in the same block. We can't directly copy
->> +	 * OOB data from the MTD framework, because this page address
->> +	 * conflicts for example with the bad block marker (BBM),
->> +	 * so we shift all OOB data including the BBM with 4 byte positions.
->> +	 * As a consequence the OOB size available to the MTD framework is
->> +	 * also reduced with 4 bytes.
->> +	 *
-> 
->> +	 *    PA0 PA1 PA2 PA3 | BBM OOB1 OOB2 OOB3 | ...
-> 
-> 
-> 	 *    PA0  PA1  PA2  PA3 | BBM OOB1 OOB2 OOB3 | ...
-> 
-> keep layouts aligned
-> 
->> +	 *
->> +	 * If a NAND is not a boot medium or the page is not a boot block,
->> +	 * the first 4 bytes are left untouched by writing 0xFF to them.
->> +	 *
->> +	 *   0xFF 0xFF 0xFF 0xFF | BBM OOB1 OOB2 OOB3 | ...
->> +	 *
->> +	 * Configure the ECC algorithm supported by the boot ROM.
->> +	 */
->> +	if ((page < pages_per_blk * rknand->boot_blks) &&
-> 
-> 	if ((page < (pages_per_blk * rknand->boot_blks)) &&
-> 
->> +	    (chip->options & NAND_IS_BOOT_MEDIUM)) {
->> +		boot_rom_mode = 1;
->> +		if (rknand->boot_ecc != ecc->strength)
->> +			rk_nfc_hw_ecc_setup(chip, ecc,
->> +					    rknand->boot_ecc);
->> +	}
->> +
->> +	for (i = 0; i < ecc->steps; i++) {
->> +		if (!i) {
->> +			reg = 0xFFFFFFFF;
->> +		} else {
->> +			oob = chip->oob_poi + (i - 1) * NFC_SYS_DATA_SIZE;
->> +			reg = oob[0] | oob[1] << 8 | oob[2] << 16 |
->> +			      oob[3] << 24;
->> +		}
->> +		if (!i && boot_rom_mode)
->> +			reg = (page & (pages_per_blk - 1)) * 4;
->> +
->> +		if (nfc->cfg->type == NFC_V9)
->> +			nfc->oob_buf[i] = reg;
->> +		else
->> +			nfc->oob_buf[i * (oob_step / 4)] = reg;
->> +	}
->> +
->> +	dma_data = dma_map_single(nfc->dev, (void *)nfc->page_buf,
->> +				  mtd->writesize, DMA_TO_DEVICE);
->> +	dma_oob = dma_map_single(nfc->dev, nfc->oob_buf,
->> +				 ecc->steps * oob_step,
->> +				 DMA_TO_DEVICE);
->> +
->> +	reinit_completion(&nfc->done);
->> +	writel(INT_DMA, nfc->regs + nfc->cfg->int_en_off);
->> +
->> +	rk_nfc_xfer_start(nfc, NFC_WRITE, ecc->steps, dma_data,
->> +			  dma_oob);
->> +	ret = wait_for_completion_timeout(&nfc->done,
->> +					  msecs_to_jiffies(100));
->> +	if (!ret)
->> +		dev_warn(nfc->dev, "write: wait dma done timeout.\n");
->> +	/*
->> +	 * Whether the DMA transfer is completed or not. The driver
->> +	 * needs to check the NFC`s status register to see if the data
->> +	 * transfer was completed.
->> +	 */
->> +	ret = rk_nfc_wait_for_xfer_done(nfc);
->> +
->> +	dma_unmap_single(nfc->dev, dma_data, mtd->writesize,
->> +			 DMA_TO_DEVICE);
->> +	dma_unmap_single(nfc->dev, dma_oob, ecc->steps * oob_step,
->> +			 DMA_TO_DEVICE);
->> +
-> 
->> +	if (boot_rom_mode && rknand->boot_ecc != ecc->strength)
->> +		rk_nfc_hw_ecc_setup(chip, ecc, ecc->strength);
->> +
-> 
->> +	if (ret) {
->> +		ret = -EIO;
->> +		dev_err(nfc->dev,
->> +			"write: wait transfer done timeout.\n");
->> +	}
->> +
-> 
->> +	if (ret)
->> +		return ret;
-> 
-> remove, always deselect
-> 
-> if (!ret) {
-> 
->> +
->> +	ret = nand_prog_page_end_op(chip);
-> 
-> }
-> 
-
->> +
->> +	/*
->> +	 * Deselect the currently selected target after the ops is done
->> +	 * to reduce the power consumption.
->> +	 */
->> +	rk_nfc_select_chip(chip, -1);
-> 
-> Does the MTD framework always select again?
-
-Remove.
-Do not assume that the MTD framework or user space knows that you have
-deselected the chip.
-
-> 
->> +
->> +	return ret;
->> +}
->> +
->> +static int rk_nfc_read_page_raw(struct nand_chip *chip, u8 *buf, int oob_on,
->> +				int page)
->> +{
->> +	struct mtd_info *mtd = nand_to_mtd(chip);
->> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
->> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
->> +	int i;
->> +
-> 
-> 	/*
-> 	* Normal timing and ECC layout size setup is already done in
-> 	* the rk_nfc_select_chip() function.
-> 	*/
-> 
-> How about the ECC layout size setup for a boot block?
-> 
->> +	nand_read_page_op(chip, page, 0, NULL, 0);
->> +	rk_nfc_read_buf(nfc, nfc->buffer, mtd->writesize + mtd->oobsize);
->> +
-
->> +	/*
->> +	 * Deselect the currently selected target after the ops is done
->> +	 * to reduce the power consumption.
->> +	 */
->> +	rk_nfc_select_chip(chip, -1);
-
-Remove.
-Do not assume that the MTD framework or user space knows that you have
-deselected the chip.
-
->> +
->> +	for (i = 0; i < ecc->steps; i++) {
->> +		/*
->> +		 * The first four bytes of OOB are reserved for the
->> +		 * boot ROM. In some debugging cases, such as with a read,
->> +		 * erase and write back test, these 4 bytes also must be
->> +		 * saved somewhere, otherwise this information will be
->> +		 * lost during a write back.
->> +		 */
->> +		if (!i)
->> +			memcpy(rk_nfc_buf_to_oob_ptr(chip, ecc->steps - 1),
->> +			       rk_nfc_oob_ptr(chip, i),
->> +			       NFC_SYS_DATA_SIZE);
->> +		else
->> +			memcpy(rk_nfc_buf_to_oob_ptr(chip, i - 1),
->> +			       rk_nfc_oob_ptr(chip, i),
->> +			       NFC_SYS_DATA_SIZE);
->> +		/* Copy ECC data from the NFC buffer. */
->> +		memcpy(rk_nfc_buf_to_oob_ecc_ptr(chip, i),
->> +		       rk_nfc_oob_ptr(chip, i) + NFC_SYS_DATA_SIZE,
->> +		       ecc->bytes);
->> +		/* Copy data from the NFC buffer. */
->> +		if (buf)
->> +			memcpy(rk_nfc_buf_to_data_ptr(chip, buf, i),
->> +			       rk_nfc_data_ptr(chip, i),
->> +			       ecc->size);
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->> +static int rk_nfc_read_oob(struct nand_chip *chip, int page)
->> +{
->> +	return rk_nfc_read_page_raw(chip, NULL, 1, page);
->> +}
->> +
->> +static int rk_nfc_read_page_hwecc(struct nand_chip *chip, u8 *buf, int oob_on,
->> +				  int page)
->> +{
->> +	struct mtd_info *mtd = nand_to_mtd(chip);
->> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
->> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
->> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
->> +	int oob_step = (ecc->bytes > 60) ? NFC_MAX_OOB_PER_STEP :
->> +			NFC_MIN_OOB_PER_STEP;
->> +	int pages_per_blk = mtd->erasesize / mtd->writesize;
->> +	dma_addr_t dma_data, dma_oob;
-> 
->> +	int ret = 0, i, boot_rom_mode = 0;
-> 
-> 	int ret = 0, i, cnt, boot_rom_mode = 0;
-> 
->> +	int bitflips = 0, bch_st;
->> +	u8 *oob;
->> +	u32 tmp;
->> +
->> +	nand_read_page_op(chip, page, 0, NULL, 0);
->> +
->> +	dma_data = dma_map_single(nfc->dev, nfc->page_buf,
->> +				  mtd->writesize,
->> +				  DMA_FROM_DEVICE);
->> +	dma_oob = dma_map_single(nfc->dev, nfc->oob_buf,
->> +				 ecc->steps * oob_step,
->> +				 DMA_FROM_DEVICE);
->> +
->> +	/*
->> +	 * The first blocks (4, 8 or 16 depending on the device)
->> +	 * are used by the boot ROM.
->> +	 * Configure the ECC algorithm supported by the boot ROM.
->> +	 */
-> 
->> +	if ((page < pages_per_blk * rknand->boot_blks) &&
-> 
->> +	if ((page < (pages_per_blk * rknand->boot_blks)) &&
-> 
->> +	    (chip->options & NAND_IS_BOOT_MEDIUM)) {
->> +		boot_rom_mode = 1;
->> +		if (rknand->boot_ecc != ecc->strength)
->> +			rk_nfc_hw_ecc_setup(chip, ecc,
->> +					    rknand->boot_ecc);
->> +	}
->> +
->> +	reinit_completion(&nfc->done);
->> +	writel(INT_DMA, nfc->regs + nfc->cfg->int_en_off);
->> +	rk_nfc_xfer_start(nfc, NFC_READ, ecc->steps, dma_data,
->> +			  dma_oob);
->> +	ret = wait_for_completion_timeout(&nfc->done,
->> +					  msecs_to_jiffies(100));
->> +	if (!ret)
->> +		dev_warn(nfc->dev, "read: wait dma done timeout.\n");
->> +	/*
->> +	 * Whether the DMA transfer is completed or not. The driver
->> +	 * needs to check the NFC`s status register to see if the data
->> +	 * transfer was completed.
->> +	 */
->> +	ret = rk_nfc_wait_for_xfer_done(nfc);
-> 
-> add empty line
-> 
->> +	dma_unmap_single(nfc->dev, dma_data, mtd->writesize,
->> +			 DMA_FROM_DEVICE);
->> +	dma_unmap_single(nfc->dev, dma_oob, ecc->steps * oob_step,
->> +			 DMA_FROM_DEVICE);
->> +
->> +	if (ret) {
-> 
->> +		bitflips = -EIO;
-> 
-> 		ret = -EIO;
-> 
-> return only "0" or official error codes
-> 
->> +		dev_err(nfc->dev,
->> +			"read: wait transfer done timeout.\n");
->> +		goto out;
->> +	}
->> +
->> +	for (i = 1; i < ecc->steps; i++) {
->> +		oob = chip->oob_poi + (i - 1) * NFC_SYS_DATA_SIZE;
->> +		if (nfc->cfg->type == NFC_V9)
->> +			tmp = nfc->oob_buf[i];
->> +		else
->> +			tmp = nfc->oob_buf[i * (oob_step / 4)];
->> +		*oob++ = (u8)tmp;
->> +		*oob++ = (u8)(tmp >> 8);
->> +		*oob++ = (u8)(tmp >> 16);
->> +		*oob++ = (u8)(tmp >> 24);
->> +	}
->> +
->> +	for (i = 0; i < (ecc->steps / 2); i++) {
->> +		bch_st = readl_relaxed(nfc->regs +
->> +				       nfc->cfg->bch_st_off + i * 4);
->> +		if (bch_st & BIT(nfc->cfg->ecc0.err_flag_bit) ||
->> +		    bch_st & BIT(nfc->cfg->ecc1.err_flag_bit)) {
->> +			mtd->ecc_stats.failed++;
-> 
->> +			bitflips = 0;
-> 
-> max_bitflips = -1;
-> 
-> use max_bitflips only for the error warning, not as return value
-> 
->> +		} else {
-> 
->> +			ret = ECC_ERR_CNT(bch_st, nfc->cfg->ecc0);
-> 
-> use ret only with "0" or official error codes, use cnt instead
-> 
-> 			cnt = ECC_ERR_CNT(bch_st, nfc->cfg->ecc0);
-> 
->> +			mtd->ecc_stats.corrected += ret;
-> 			mtd->ecc_stats.corrected += cnt;
-> 
->> +			bitflips = max_t(u32, bitflips, ret);
-> 
-> 			bitflips = max_t(u32, bitflips, cnt);
-> 
->> +
->> +			ret = ECC_ERR_CNT(bch_st, nfc->cfg->ecc1);
-> 
-> 			cnt = ECC_ERR_CNT(bch_st, nfc->cfg->ecc1);
-> 
->> +			mtd->ecc_stats.corrected += ret;
-> 
-> 			mtd->ecc_stats.corrected += cnt;
-> 
->> +			bitflips = max_t(u32, bitflips, ret);
-> 
-> 			bitflips = max_t(u32, bitflips, cnt);
->> +		}
->> +	}
->> +out:
->> +	memcpy(buf, nfc->page_buf, mtd->writesize);
->> +
-> 
->> +	if (boot_rom_mode && rknand->boot_ecc != ecc->strength)
->> +		rk_nfc_hw_ecc_setup(chip, ecc, ecc->strength);
->> +
-> 
->> +	if (bitflips > ecc->strength)
-> 
-> 	if (bitflips  == -1) {
-> 		ret = -EIO;
-> 
->> +		dev_err(nfc->dev, "read page: %x ecc error!\n", page);
-> 
-> }
-> 
-
->> +
->> +	/*
->> +	 * Deselect the currently selected target after the ops is done
->> +	 * to reduce the power consumption.
->> +	 */
->> +	rk_nfc_select_chip(chip, -1);
-
-
-Remove.
-Do not assume that the MTD framework or user space knows that you have
-deselected the chip.
-
->> +
-> 
->> +	return bitflips;
-> 
-> 	return ret;
-> 
-> Return only "0" or official error codes
-> If you want to do a "bad block scan" function in user space analyse/use
-> "mtd->ecc_stats" instead.
-> 
->> +}
->> +
 
 _______________________________________________
 Linux-rockchip mailing list
