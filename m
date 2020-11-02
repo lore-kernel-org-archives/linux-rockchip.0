@@ -2,83 +2,59 @@ Return-Path: <SRS0=PFct=EI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E65EC00A89
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2020 14:54:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 77619C388F2
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2020 14:55:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A6526222EC
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2020 14:54:57 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id B5F172227F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Nov 2020 14:55:58 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yqqlSGGD";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="gQ+FOIc7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A6526222EC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="IeqJCqJE"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B5F172227F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=7kppBB99E0pheZOVeB0StJSLcYjjVU7cVivJJRovrwA=; b=yqqlSGGDWd+pcGkhQXJ+3XhKo
-	hJRT/4U+skyfKlzEJanFX3DvlgL6mOx7AMXml+S/OuHERXxCrPE3yTJ3QDGa/UL3iE7EC8q2UWO4u
-	mrixdvSzrPhaPr9O8SfnXzgFs+ZqZHsYJ9/Quqs+jJO6aIT+X8laSa8uh+8CUfTZok7rmGYXQPOc1
-	cg2JxR8pNQ9UO7erImPLvLLWIGwkkl1Wetq43YN5r9lwoDVz6B2EKzEmZcCAq87kxD5mo8C+9NW5c
-	4UjYYOdX/8Y44lsUb5QZEAMWg+95YKQ6pxuoPxy9+6JovHjJyvVUpuTdjJhZ5aCJhD1/0I0RlAQJI
-	Gb1WjOvBw==;
+	 bh=7gXjzE4mJeIgNbzouOztXx9hyg4c7bgJXMPKH5WMdHs=; b=IeqJCqJEOf21UIW53FYW+OGsb
+	bpw4eR97qWPX/yLElzvGbOhWPOnXmwXo+1UboyMrsCozyfu63/Y4oTjcqh/vs+0Wf1VaBjYYbOQXW
+	UHo/Y90QBF3kMJPM6SdK3JSIyC6qMXE9cPPwKMyef1O+ARfOetvxorNIVX1rveyqvAPaZmEJvOnve
+	tc8+Lxq94Ws3Zomzts4j17IHX1TaVJxj39MTcbGv3ITCAeMD6s6WOuikNFp29TFqI5boA1OF1Ba7O
+	MjS5CETI5cC/ntfoEiukcNqucaJ/PtMwO9cOXufTTyB8k9SVwZ+x28xtdGCm+C1F4G48hmuAUJR+9
+	yhww5xo1A==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZbET-0005jY-C1; Mon, 02 Nov 2020 14:54:53 +0000
-Received: from mail-vs1-xe2a.google.com ([2607:f8b0:4864:20::e2a])
+	id 1kZbFT-0005qD-Tb; Mon, 02 Nov 2020 14:55:55 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZbEQ-0005iw-O2
- for linux-rockchip@lists.infradead.org; Mon, 02 Nov 2020 14:54:51 +0000
-Received: by mail-vs1-xe2a.google.com with SMTP id h5so7601601vsp.3
- for <linux-rockchip@lists.infradead.org>; Mon, 02 Nov 2020 06:54:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=b+PEzNBJyGsKvDmDb7/sowIJwPahGqfbvKvpEucgAzU=;
- b=gQ+FOIc7rMZfzMgQDx+DmzAxvIP0oaeHxwrk25cTpBvsLFJKJE56GaiYnZ7AVzcO8D
- S9sumbhZSdVP/6JnGzMWz/q8qI3dJuzNQOYlCfVtHsVuXZPrm+lTZHcCpVRVC2/xLQbc
- VJEkqfh43iJRBhCYO9w1JQP2XFtmrrWfv2F3yMAZ0pA6k6TVV6GnNHRZ/EtipCcRDBju
- Ec5gnEXyxHum2fbiQEjSjmjI1GRiUH++tdv8gecKLtoKTuUKw11awCVMRPSE+Xd2JmhS
- pM2/tj7T/ulSM0c3VDZ7Td9u8o6LUkVnzE0+OfGTSdfKeOPN9fghG0hVHJA4iIS+lo1c
- rQTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=b+PEzNBJyGsKvDmDb7/sowIJwPahGqfbvKvpEucgAzU=;
- b=MTKc9loycMHHFm1PM/7/0fQNIaEBd9ztTnh8bmxKIamdkKJVHjH9VugXBbRoYTz8oF
- 8fWzLCqgXsHvhbvvzHHWfMmidtVKeVSXW8tN0okq8G7eic0GJCadrjDJPoLmjGFV/du3
- agTJI0n9rw89Su7zVCxc6eP/FyMzFTAIuJCX+jJaXYKbjRQhox7Xu5zob1P/lljJdR3B
- NzG8uRuxjezM0yY5C/vPXT2F/o5UY6XcAENc469lV2BJqneYPzDquYnclqmWcUuP1VAQ
- wbD9lqZXJslajtyH1eQxEEYwUsz91a8mEDmDbaRjlzfvTdxuGkJqU+fm6MAoprFTLH5+
- q7Vg==
-X-Gm-Message-State: AOAM531aginw/TdtCk5RQzhZPLvSk852xgVSURhGfc5UvD0+Mb6m6sLo
- fkJTt7F5GEbSKKD/N9NIFjocfNFQZn393BHOH6rrsg==
-X-Google-Smtp-Source: ABdhPJxDwqyeIG36cjfG1DWi8OQZQf/npk7fOC9c1lS1SXSIiATfKrZpIPD254oVxAvvXmuqijqQ5lTW4jjHXwKldDc=
-X-Received: by 2002:a67:f417:: with SMTP id p23mr8674022vsn.42.1604328887327; 
- Mon, 02 Nov 2020 06:54:47 -0800 (PST)
+ id 1kZbFP-0005pA-7K; Mon, 02 Nov 2020 14:55:52 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=phil.lan)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1kZbFK-0006vx-R7; Mon, 02 Nov 2020 15:55:46 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Aditya Prayoga <aditya@kobol.io>,
+ =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <uwe@kleine-koenig.org>
+Subject: Re: [PATCH v4 0/2] arm64: Add basic support for Kobol's Helios64
+Date: Mon,  2 Nov 2020 15:55:45 +0100
+Message-Id: <160432890189.1244997.12717967728600775929.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20201014200030.845759-1-uwe@kleine-koenig.org>
+References: <20201014200030.845759-1-uwe@kleine-koenig.org>
 MIME-Version: 1.0
-References: <fa7f3fc5-c37a-ac49-e14a-45a1d2e0a942@gmail.com>
-In-Reply-To: <fa7f3fc5-c37a-ac49-e14a-45a1d2e0a942@gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 2 Nov 2020 15:54:11 +0100
-Message-ID: <CAPDyKFq9vKOODDQEEE2W+Gsx69_R3XV_Hb-owMU-=qAMbv39kg@mail.gmail.com>
-Subject: Re: [BUG] cqe unable to handle buggy cards
-To: Peter Geis <pgwipeout@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, 
- Ritesh Harjani <riteshh@codeaurora.org>,
- Asutosh Das <asutoshd@codeaurora.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201102_095450_803379_B765639A 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20201102_095551_288435_D1A7FC4E 
+X-CRM114-Status: GOOD (  14.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,112 +67,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- nuumiofi@gmail.com, "linux-mmc@vger.kernel.org" <linux-mmc@vger.kernel.org>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Johan Jonker <jbx6244@gmail.com>, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-+ cqhci maintainers
-
-On Sat, 31 Oct 2020 at 13:54, Peter Geis <pgwipeout@gmail.com> wrote:
->
-> Good Morning,
->
-> We are seeing an issue on the rk3399 with certain Foresee emmc modules
-> where the module reports it supports command queuing but fails in actual
-> implementation.
->
-> Unfortunately there doesn't seem to be any method for the mmc core code
-> to detect this situation and disable command queue automatically.
-> There also appears to be no way to disable it at runtime.
->
-> Certain modified kernels have added a patch to enable runtime disable of
-> command queue entirely, but this will affect mmc core as a whole and not
-> just the buggy card.
->
-> Does anyone have any insight into this issue?
-> Thank you for your time.
-
-Unfortunate, not me personally. I assume the issue is either be card
-specific or host specific. Before looking at a disable option, we need
-to know more about what goes wrong, I think.
-
-Kind regards
-Uffe
-
->
-> Very Respectfully,
-> Peter Geis
->
-> [   64.472882] mmc2: cqhci: timeout for tag 2
-> [   64.473349] mmc2: cqhci: ============ CQHCI REGISTER DUMP ===========
-> [   64.474057] mmc2: cqhci: Caps:      0x00000000 | Version:  0x00000510
-> [   64.474763] mmc2: cqhci: Config:    0x00000000 | Control:  0x00000000
-> [   64.475468] mmc2: cqhci: Int stat:  0x00000000 | Int enab: 0x00000000
-> [   64.476172] mmc2: cqhci: Int sig:   0x00000000 | Int Coal: 0x00000000
-> [   64.476875] mmc2: cqhci: TDL base:  0x00000000 | TDL up32: 0x00000000
-> [   64.477578] mmc2: cqhci: Doorbell:  0x00000000 | TCN:      0x00000000
-> [   64.478281] mmc2: cqhci: Dev queue: 0x00000000 | Dev Pend: 0x00000000
-> [   64.478984] mmc2: cqhci: Task clr:  0x00000000 | SSC1:     0x00011000
-> [   64.479687] mmc2: cqhci: SSC2:      0x00000000 | DCMD rsp: 0x00000000
-> [   64.489785] mmc2: cqhci: RED mask:  0xfdf9a080 | TERRI:    0x00000000
-> [   64.499774] mmc2: cqhci: Resp idx:  0x00000000 | Resp arg: 0x00000000
-> [   64.509687] mmc2: sdhci: ============ SDHCI REGISTER DUMP ===========
-> [   64.519597] mmc2: sdhci: Sys addr:  0x00000000 | Version:  0x00001002
-> [   64.529521] mmc2: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000000
-> [   64.539440] mmc2: sdhci: Argument:  0x00010000 | Trn mode: 0x00000010
-> [   64.549352] mmc2: sdhci: Present:   0x1fff0000 | Host ctl: 0x00000034
-> [   64.559277] mmc2: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
-> [   64.569214] mmc2: sdhci: Wake-up:   0x00000000 | Clock:    0x00000007
-> [   64.579061] mmc2: sdhci: Timeout:   0x0000000e | Int stat: 0x00000000
-> [   64.588842] mmc2: sdhci: Int enab:  0x02ff4000 | Sig enab: 0x02ff4000
-> [   64.598671] mmc2: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
-> [   64.608446] mmc2: sdhci: Caps:      0x44edc880 | Caps_1:   0x800020f7
-> [   64.618161] mmc2: sdhci: Cmd:       0x00000d1a | Max curr: 0x00000000
-> [   64.627801] mmc2: sdhci: Resp[0]:   0x00000900 | Resp[1]:  0x642017d7
-> [   64.637376] mmc2: sdhci: Resp[2]:   0x4e436172 | Resp[3]:  0x00880103
-> [   64.646855] mmc2: sdhci: Host ctl2: 0x00000083
-> [   64.656080] mmc2: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xf0628208
-> [   64.665445] mmc2: sdhci: ============================================
-> [   64.674998] mmc2: running CQE recovery
->
-> [  125.912941] mmc2: cqhci: timeout for tag 3
-> [  125.921978] mmc2: cqhci: ============ CQHCI REGISTER DUMP ===========
-> [  125.931200] mmc2: cqhci: Caps:      0x00000000 | Version:  0x00000510
-> [  125.940389] mmc2: cqhci: Config:    0x00000001 | Control:  0x00000000
-> [  125.949499] mmc2: cqhci: Int stat:  0x00000000 | Int enab: 0x00000006
-> [  125.958527] mmc2: cqhci: Int sig:   0x00000006 | Int Coal: 0x00000000
-> [  125.967486] mmc2: cqhci: TDL base:  0x00000000 | TDL up32: 0x00000000
-> [  125.976260] mmc2: cqhci: Doorbell:  0x00000000 | TCN:      0x00000000
-> [  125.985065] mmc2: cqhci: Dev queue: 0x00000000 | Dev Pend: 0x00000000
-> [  125.993698] mmc2: cqhci: Task clr:  0x00000000 | SSC1:     0x00011000
-> [  126.002244] mmc2: cqhci: SSC2:      0x00000000 | DCMD rsp: 0x00000000
-> [  126.010716] mmc2: cqhci: RED mask:  0xfdf9a080 | TERRI:    0x00000000
-> [  126.019159] mmc2: cqhci: Resp idx:  0x00000000 | Resp arg: 0x00000000
-> [  126.027525] mmc2: sdhci: ============ SDHCI REGISTER DUMP ===========
-> [  126.035955] mmc2: sdhci: Sys addr:  0x00000000 | Version:  0x00001002
-> [  126.044258] mmc2: sdhci: Blk size:  0x00007200 | Blk cnt:  0x00000000
-> [  126.052396] mmc2: sdhci: Argument:  0x00000001 | Trn mode: 0x00000010
-> [  126.060370] mmc2: sdhci: Present:   0x1fff0000 | Host ctl: 0x00000034
-> [  126.068241] mmc2: sdhci: Power:     0x0000000b | Blk gap:  0x00000080
-> [  126.075978] mmc2: sdhci: Wake-up:   0x00000000 | Clock:    0x00000007
-> [  126.083552] mmc2: sdhci: Timeout:   0x0000000e | Int stat: 0x00000000
-> [  126.090937] mmc2: sdhci: Int enab:  0x02ff4000 | Sig enab: 0x02ff4000
-> [  126.098219] mmc2: sdhci: ACmd stat: 0x00000000 | Slot int: 0x00000000
-> [  126.105403] mmc2: sdhci: Caps:      0x44edc880 | Caps_1:   0x800020f7
-> [  126.112649] mmc2: sdhci: Cmd:       0x00003013 | Max curr: 0x00000000
-> [  126.119700] mmc2: sdhci: Resp[0]:   0x00400800 | Resp[1]:  0x642017d7
-> [  126.126594] mmc2: sdhci: Resp[2]:   0x4e436172 | Resp[3]:  0x00880103
-> [  126.133334] mmc2: sdhci: Host ctl2: 0x00000083
-> [  126.139652] mmc2: sdhci: ADMA Err:  0x00000000 | ADMA Ptr: 0xf0628208
-> [  126.146008] mmc2: sdhci: ============================================
-> [  126.152361] mmc2: running CQE recovery
->
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCAxNCBPY3QgMjAyMCAyMjowMDoyOCArMDIwMCwgVXdlIEtsZWluZS1Lw7ZuaWcgd3Jv
+dGU6Cj4gaW4gdjMgSm9oYW4gc3RpbGwgZm91bmQgc29tZSBpbmNvbnNpc3RlbmNpZXMgaW4gaG93
+IEkgc29ydGVkIChvciBkaWRuJ3QKPiBzb3J0KSB0aGUgZGV2aWNlIHRyZWUgcHJvcGVydGllcy4g
+VGhlIHJ1bGVzIEkgYXBwbGllZCBub3cgYXJlOgo+IAo+IAlhdCB0aGUgYmVnaW5uaW5nIG9mIGEg
+bm9kZTogY29tcGF0aWJsZSwgcmVnIGFuZCBpbnRlcnJ1cHQgc3R1ZmYKPiAJc3RhdHVzIGFuZCAj
+KiBhdCB0aGUgZW5kCj4gCWkyYy1zY2wtcmlzaW5nLXRpbWUtbnMgYmVmb3JlIGkyYy1zY2wtZmFs
+bGluZy10aW1lLW5zCj4gCXJlZ3VsYXRvci1uYW1lIGZpcnN0IGFtb25nIHJlZ3VsYXRvci0qCj4g
+CXJlZ3VsYXRvci1taW4tbWljcm92b2x0IGJlZm9yZSByZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdAo+
+IAlwaW5jdHJsLW5hbWVzIGJlZm9yZSBwaW5jdHJsLTAKPiAJdHhfZGVsYXkgZ3JvdXBlZCB3aXRo
+IChhbmQgYWZ0ZXIpIHJ4X2RlbGF5Cj4gCXZjYzEyKiBhZnRlciB2Y2M1Kgo+IAlvdGhlcndpc2Ug
+YWxwaGFiZXRpY2FsbHkKPiAKPiBbLi4uXQoKQXBwbGllZCwgdGhhbmtzIQoKWzEvMl0gZHQtYmlu
+ZGluZ3M6IHZlbmRvci1wcmVmaXhlczogQWRkIGtvYm9sIHByZWZpeAogICAgICBjb21taXQ6IGZh
+NjdmMjgxN2ZmMmM5YmIwNzQ3MmQzMGU1OGQ5MDQ5MjJmMWE1MzgKWzIvMl0gYXJtNjQ6IGR0czog
+cm9ja2NoaXA6IEFkZCBiYXNpYyBzdXBwb3J0IGZvciBLb2JvbCdzIEhlbGlvczY0CiAgICAgIGNv
+bW1pdDogMDllMDA2Y2ZiNDNlOGVjMzhhZmUyODI3OGIyMTBkYWI3MmU2Y2FjOAoKRml4ZWQgc3Bh
+Y2VzIHdpdGggdGFicyBpbiB0aGUgZGVsZXRlZCBvcHAgYXJlYSBhbmQKaW5zZXJ0ZWQgYSBibGFu
+ayBiZXR3ZWVuIHRoZSB0d28gY2x1c3RlciBibG9ja3MuCgoKQmVzdCByZWdhcmRzLAotLSAKSGVp
+a28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KCl9fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
+b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
+aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
