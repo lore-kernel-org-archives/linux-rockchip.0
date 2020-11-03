@@ -2,45 +2,45 @@ Return-Path: <SRS0=SS7Y=EJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A3D27C4742C
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 09:31:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85D41C388F2
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 09:31:19 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 21566223BD
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 09:31:28 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 138AF223BF
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 09:31:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BDt6lea2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 21566223BD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="izWWfim7"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 138AF223BF
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=a+qZ09fZ371d6vBanp+QOqV5i4o3yis1AFBjLlnSWXw=; b=BDt6lea27T1U0cSDLor2trTjQ
-	Q+n645exXtXLhtX7yIrHAEQn21mVkmxVNk/wxYTlK3RIUPNleyDr2Q09I3eT5MRn0aKsVvJ0SD56+
-	B2lzdml2sVxOSUgb9iUf1EVOZBfCReoj9bViuBSL7QQcxTAMsD+QcEYM106nraHRqlvMRgJvYbWCb
-	r019Bec/MZ62SEyNg233yZ7uQPeEAnbuhQbCXukoPh4IIdFNKl8sC9R1/28SroMEMXcWbnKKLRSiz
-	IObknw4x9BjsZ3bvdkvEOOAPt7r6x788hAp56n70UAmzM0K7SAjJl0R3wKnXLmqbKsM4dIaim5lBR
-	qfBUnLoUA==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=+buoN7nmZGQ7e1AZU17cDbfNjtwvh78yFrSd7E8lg28=; b=izWWfim7/MRWA5ngn8dBIIGmub
+	6IHOE3zUo/oM5YPSjA1OuH4dbwAh25FGsfES5iit2c8alI9uSexRT4WvlYAwf6BAAN2cIL5Dqj4lV
+	4rwZ+73QGAHbt3ubQhNPAV0FCRcrWCSC58qqsLJJLv4NWQfPx+7JhRi3XIW6E56WvFPW2ayAivjjz
+	p+N5NugJzu0iAIkVcwXNjS5+GzQ37DA5n+l6GRcqB5K/b6ci1bJ99eN3su0MR32EO8J+7NYnGioG2
+	H0j/X+aU+Yg+e+qWfRTIdUCZX5yoC5fVHak53Q3Pz8KnMJHaxsrCjtDIOzBUFV2pTohA4OUMOC8vn
+	3vF3I+1g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZset-0007Kj-SJ; Tue, 03 Nov 2020 09:31:20 +0000
+	id 1kZsel-0007IB-Gk; Tue, 03 Nov 2020 09:31:11 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZse3-0006wM-NM; Tue, 03 Nov 2020 09:30:32 +0000
+ id 1kZse0-0006rs-Vs; Tue, 03 Nov 2020 09:30:29 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 1B272B135;
- Tue,  3 Nov 2020 09:30:23 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id AEF6BAF5B;
+ Tue,  3 Nov 2020 09:30:18 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
  daniel@ffwll.ch, sam@ravnborg.org, alexander.deucher@amd.com,
@@ -56,17 +56,14 @@ To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
  sumit.semwal@linaro.org, emil.velikov@collabora.com, luben.tuikov@amd.com,
  apaneers@amd.com, linus.walleij@linaro.org, melissa.srw@gmail.com,
  chris@chris-wilson.co.uk, miaoqinglang@huawei.com
-Subject: [PATCH v7 07/10] drm/gem: Update internal GEM vmap/vunmap interfaces
- to use struct dma_buf_map
-Date: Tue,  3 Nov 2020 10:30:12 +0100
-Message-Id: <20201103093015.1063-8-tzimmermann@suse.de>
+Subject: [PATCH v7 00/10] Support GEM object mappings from I/O memory
+Date: Tue,  3 Nov 2020 10:30:05 +0100
+Message-Id: <20201103093015.1063-1-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.29.0
-In-Reply-To: <20201103093015.1063-1-tzimmermann@suse.de>
-References: <20201103093015.1063-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201103_043030_502138_69231114 
-X-CRM114-Status: GOOD (  19.76  )
+X-CRM114-CacheID: sfid-20201103_043025_616583_51918735 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,111 +77,158 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: linux-samsung-soc@vger.kernel.org, lima@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, Daniel Vetter <daniel.vetter@ffwll.ch>,
- etnaviv@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
- virtualization@lists.linux-foundation.org, linaro-mm-sig@lists.linaro.org,
- linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
- Thomas Zimmermann <tzimmermann@suse.de>, xen-devel@lists.xenproject.org,
- spice-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ nouveau@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
+ amd-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
+ linaro-mm-sig@lists.linaro.org, linux-rockchip@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
+ xen-devel@lists.xenproject.org, spice-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-R0VNJ3Mgdm1hcCBhbmQgdnVubWFwIGludGVyZmFjZXMgbm93IHdyYXAgbWVtb3J5IHBvaW50ZXJz
-IGluIHN0cnVjdApkbWFfYnVmX21hcC4KClNpZ25lZC1vZmYtYnk6IFRob21hcyBaaW1tZXJtYW5u
-IDx0emltbWVybWFubkBzdXNlLmRlPgpSZXZpZXdlZC1ieTogRGFuaWVsIFZldHRlciA8ZGFuaWVs
-LnZldHRlckBmZndsbC5jaD4KVGVzdGVkLWJ5OiBTYW0gUmF2bmJvcmcgPHNhbUByYXZuYm9yZy5v
-cmc+Ci0tLQogZHJpdmVycy9ncHUvZHJtL2RybV9jbGllbnQuYyAgIHwgMTggKysrKysrKysrKyst
-LS0tLS0tCiBkcml2ZXJzL2dwdS9kcm0vZHJtX2dlbS5jICAgICAgfCAyNiArKysrKysrKysrKysr
-LS0tLS0tLS0tLS0tLQogZHJpdmVycy9ncHUvZHJtL2RybV9pbnRlcm5hbC5oIHwgIDUgKysrLS0K
-IGRyaXZlcnMvZ3B1L2RybS9kcm1fcHJpbWUuYyAgICB8IDE0ICsrKystLS0tLS0tLS0tCiA0IGZp
-bGVzIGNoYW5nZWQsIDMxIGluc2VydGlvbnMoKyksIDMyIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fY2xpZW50LmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2Ns
-aWVudC5jCmluZGV4IDQ5NWY0N2QyM2Q4Ny4uYWMwMDgyYmVkOTY2IDEwMDY0NAotLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vZHJtX2NsaWVudC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fY2xpZW50
-LmMKQEAgLTMsNiArMyw3IEBACiAgKiBDb3B5cmlnaHQgMjAxOCBOb3JhbGYgVHLDuG5uZXMKICAq
-LwogCisjaW5jbHVkZSA8bGludXgvZG1hLWJ1Zi1tYXAuaD4KICNpbmNsdWRlIDxsaW51eC9saXN0
-Lmg+CiAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+CiAjaW5jbHVkZSA8bGludXgvbXV0ZXguaD4K
-QEAgLTMwNCw3ICszMDUsOCBAQCBkcm1fY2xpZW50X2J1ZmZlcl9jcmVhdGUoc3RydWN0IGRybV9j
-bGllbnRfZGV2ICpjbGllbnQsIHUzMiB3aWR0aCwgdTMyIGhlaWdodCwgdQogICovCiB2b2lkICpk
-cm1fY2xpZW50X2J1ZmZlcl92bWFwKHN0cnVjdCBkcm1fY2xpZW50X2J1ZmZlciAqYnVmZmVyKQog
-ewotCXZvaWQgKnZhZGRyOworCXN0cnVjdCBkbWFfYnVmX21hcCBtYXA7CisJaW50IHJldDsKIAog
-CWlmIChidWZmZXItPnZhZGRyKQogCQlyZXR1cm4gYnVmZmVyLT52YWRkcjsKQEAgLTMxNywxMyAr
-MzE5LDEzIEBAIHZvaWQgKmRybV9jbGllbnRfYnVmZmVyX3ZtYXAoc3RydWN0IGRybV9jbGllbnRf
-YnVmZmVyICpidWZmZXIpCiAJICogZmRfaW5zdGFsbCBzdGVwIG91dCBvZiB0aGUgZHJpdmVyIGJh
-Y2tlbmQgaG9va3MsIHRvIG1ha2UgdGhhdAogCSAqIGZpbmFsIHN0ZXAgb3B0aW9uYWwgZm9yIGlu
-dGVybmFsIHVzZXJzLgogCSAqLwotCXZhZGRyID0gZHJtX2dlbV92bWFwKGJ1ZmZlci0+Z2VtKTsK
-LQlpZiAoSVNfRVJSKHZhZGRyKSkKLQkJcmV0dXJuIHZhZGRyOworCXJldCA9IGRybV9nZW1fdm1h
-cChidWZmZXItPmdlbSwgJm1hcCk7CisJaWYgKHJldCkKKwkJcmV0dXJuIEVSUl9QVFIocmV0KTsK
-IAotCWJ1ZmZlci0+dmFkZHIgPSB2YWRkcjsKKwlidWZmZXItPnZhZGRyID0gbWFwLnZhZGRyOwog
-Ci0JcmV0dXJuIHZhZGRyOworCXJldHVybiBtYXAudmFkZHI7CiB9CiBFWFBPUlRfU1lNQk9MKGRy
-bV9jbGllbnRfYnVmZmVyX3ZtYXApOwogCkBAIC0zMzcsNyArMzM5LDkgQEAgRVhQT1JUX1NZTUJP
-TChkcm1fY2xpZW50X2J1ZmZlcl92bWFwKTsKICAqLwogdm9pZCBkcm1fY2xpZW50X2J1ZmZlcl92
-dW5tYXAoc3RydWN0IGRybV9jbGllbnRfYnVmZmVyICpidWZmZXIpCiB7Ci0JZHJtX2dlbV92dW5t
-YXAoYnVmZmVyLT5nZW0sIGJ1ZmZlci0+dmFkZHIpOworCXN0cnVjdCBkbWFfYnVmX21hcCBtYXAg
-PSBETUFfQlVGX01BUF9JTklUX1ZBRERSKGJ1ZmZlci0+dmFkZHIpOworCisJZHJtX2dlbV92dW5t
-YXAoYnVmZmVyLT5nZW0sICZtYXApOwogCWJ1ZmZlci0+dmFkZHIgPSBOVUxMOwogfQogRVhQT1JU
-X1NZTUJPTChkcm1fY2xpZW50X2J1ZmZlcl92dW5tYXApOwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL2RybV9nZW0uYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fZ2VtLmMKaW5kZXggNDIzMWZk
-YTI2ZTcwLi5lYjJkMjNlMDRiZTkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fZ2Vt
-LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9nZW0uYwpAQCAtMTIwNiwzMiArMTIwNiwzMiBA
-QCB2b2lkIGRybV9nZW1fdW5waW4oc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmopCiAJCW9iai0+
-ZnVuY3MtPnVucGluKG9iaik7CiB9CiAKLXZvaWQgKmRybV9nZW1fdm1hcChzdHJ1Y3QgZHJtX2dl
-bV9vYmplY3QgKm9iaikKK2ludCBkcm1fZ2VtX3ZtYXAoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpv
-YmosIHN0cnVjdCBkbWFfYnVmX21hcCAqbWFwKQogewotCXN0cnVjdCBkbWFfYnVmX21hcCBtYXA7
-CiAJaW50IHJldDsKIAogCWlmICghb2JqLT5mdW5jcy0+dm1hcCkKLQkJcmV0dXJuIEVSUl9QVFIo
-LUVPUE5PVFNVUFApOworCQlyZXR1cm4gLUVPUE5PVFNVUFA7CiAKLQlyZXQgPSBvYmotPmZ1bmNz
-LT52bWFwKG9iaiwgJm1hcCk7CisJcmV0ID0gb2JqLT5mdW5jcy0+dm1hcChvYmosIG1hcCk7CiAJ
-aWYgKHJldCkKLQkJcmV0dXJuIEVSUl9QVFIocmV0KTsKLQllbHNlIGlmIChkbWFfYnVmX21hcF9p
-c19udWxsKCZtYXApKQotCQlyZXR1cm4gRVJSX1BUUigtRU5PTUVNKTsKKwkJcmV0dXJuIHJldDsK
-KwllbHNlIGlmIChkbWFfYnVmX21hcF9pc19udWxsKG1hcCkpCisJCXJldHVybiAtRU5PTUVNOwog
-Ci0JcmV0dXJuIG1hcC52YWRkcjsKKwlyZXR1cm4gMDsKIH0KIAotdm9pZCBkcm1fZ2VtX3Z1bm1h
-cChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwgdm9pZCAqdmFkZHIpCit2b2lkIGRybV9nZW1f
-dnVubWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLCBzdHJ1Y3QgZG1hX2J1Zl9tYXAgKm1h
-cCkKIHsKLQlzdHJ1Y3QgZG1hX2J1Zl9tYXAgbWFwID0gRE1BX0JVRl9NQVBfSU5JVF9WQUREUih2
-YWRkcik7Ci0KLQlpZiAoIXZhZGRyKQorCWlmIChkbWFfYnVmX21hcF9pc19udWxsKG1hcCkpCiAJ
-CXJldHVybjsKIAogCWlmIChvYmotPmZ1bmNzLT52dW5tYXApCi0JCW9iai0+ZnVuY3MtPnZ1bm1h
-cChvYmosICZtYXApOworCQlvYmotPmZ1bmNzLT52dW5tYXAob2JqLCBtYXApOworCisJLyogQWx3
-YXlzIHNldCB0aGUgbWFwcGluZyB0byBOVUxMLiBDYWxsZXJzIG1heSByZWx5IG9uIHRoaXMuICov
-CisJZG1hX2J1Zl9tYXBfY2xlYXIobWFwKTsKIH0KIAogLyoqCmRpZmYgLS1naXQgYS9kcml2ZXJz
-L2dwdS9kcm0vZHJtX2ludGVybmFsLmggYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2ludGVybmFsLmgK
-aW5kZXggMmJkYWMzNTU3NzY1Li44MWQzODZiNWI5MmEgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
-L2RybS9kcm1faW50ZXJuYWwuaAorKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX2ludGVybmFsLmgK
-QEAgLTMzLDYgKzMzLDcgQEAKIAogc3RydWN0IGRlbnRyeTsKIHN0cnVjdCBkbWFfYnVmOworc3Ry
-dWN0IGRtYV9idWZfbWFwOwogc3RydWN0IGRybV9jb25uZWN0b3I7CiBzdHJ1Y3QgZHJtX2NydGM7
-CiBzdHJ1Y3QgZHJtX2ZyYW1lYnVmZmVyOwpAQCAtMTg3LDggKzE4OCw4IEBAIHZvaWQgZHJtX2dl
-bV9wcmludF9pbmZvKHN0cnVjdCBkcm1fcHJpbnRlciAqcCwgdW5zaWduZWQgaW50IGluZGVudCwK
-IAogaW50IGRybV9nZW1fcGluKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKTsKIHZvaWQgZHJt
-X2dlbV91bnBpbihzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaik7Ci12b2lkICpkcm1fZ2VtX3Zt
-YXAoc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmopOwotdm9pZCBkcm1fZ2VtX3Z1bm1hcChzdHJ1
-Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwgdm9pZCAqdmFkZHIpOworaW50IGRybV9nZW1fdm1hcChz
-dHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwgc3RydWN0IGRtYV9idWZfbWFwICptYXApOwordm9p
-ZCBkcm1fZ2VtX3Z1bm1hcChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwgc3RydWN0IGRtYV9i
-dWZfbWFwICptYXApOwogCiAvKiBkcm1fZGVidWdmcy5jIGRybV9kZWJ1Z2ZzX2NyYy5jICovCiAj
-aWYgZGVmaW5lZChDT05GSUdfREVCVUdfRlMpCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-ZHJtX3ByaW1lLmMgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX3ByaW1lLmMKaW5kZXggMTg3YjU1ZWRl
-NjJlLi4zMDJlMmJiM2RmZmYgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9kcm1fcHJpbWUu
-YworKysgYi9kcml2ZXJzL2dwdS9kcm0vZHJtX3ByaW1lLmMKQEAgLTY2NywyMSArNjY3LDE1IEBA
-IEVYUE9SVF9TWU1CT0woZHJtX2dlbV91bm1hcF9kbWFfYnVmKTsKICAqCiAgKiBTZXRzIHVwIGEg
-a2VybmVsIHZpcnR1YWwgbWFwcGluZy4gVGhpcyBjYW4gYmUgdXNlZCBhcyB0aGUgJmRtYV9idWZf
-b3BzLnZtYXAKICAqIGNhbGxiYWNrLiBDYWxscyBpbnRvICZkcm1fZ2VtX29iamVjdF9mdW5jcy52
-bWFwIGZvciBkZXZpY2Ugc3BlY2lmaWMgaGFuZGxpbmcuCisgKiBUaGUga2VybmVsIHZpcnR1YWwg
-YWRkcmVzcyBpcyByZXR1cm5lZCBpbiBtYXAuCiAgKgotICogUmV0dXJucyB0aGUga2VybmVsIHZp
-cnR1YWwgYWRkcmVzcyBvciBOVUxMIG9uIGZhaWx1cmUuCisgKiBSZXR1cm5zIDAgb24gc3VjY2Vz
-cyBvciBhIG5lZ2F0aXZlIGVycm5vIGNvZGUgb3RoZXJ3aXNlLgogICovCiBpbnQgZHJtX2dlbV9k
-bWFidWZfdm1hcChzdHJ1Y3QgZG1hX2J1ZiAqZG1hX2J1Ziwgc3RydWN0IGRtYV9idWZfbWFwICpt
-YXApCiB7CiAJc3RydWN0IGRybV9nZW1fb2JqZWN0ICpvYmogPSBkbWFfYnVmLT5wcml2OwotCXZv
-aWQgKnZhZGRyOwogCi0JdmFkZHIgPSBkcm1fZ2VtX3ZtYXAob2JqKTsKLQlpZiAoSVNfRVJSKHZh
-ZGRyKSkKLQkJcmV0dXJuIFBUUl9FUlIodmFkZHIpOwotCi0JZG1hX2J1Zl9tYXBfc2V0X3ZhZGRy
-KG1hcCwgdmFkZHIpOwotCi0JcmV0dXJuIDA7CisJcmV0dXJuIGRybV9nZW1fdm1hcChvYmosIG1h
-cCk7CiB9CiBFWFBPUlRfU1lNQk9MKGRybV9nZW1fZG1hYnVmX3ZtYXApOwogCkBAIC02OTcsNyAr
-NjkxLDcgQEAgdm9pZCBkcm1fZ2VtX2RtYWJ1Zl92dW5tYXAoc3RydWN0IGRtYV9idWYgKmRtYV9i
-dWYsIHN0cnVjdCBkbWFfYnVmX21hcCAqbWFwKQogewogCXN0cnVjdCBkcm1fZ2VtX29iamVjdCAq
-b2JqID0gZG1hX2J1Zi0+cHJpdjsKIAotCWRybV9nZW1fdnVubWFwKG9iaiwgbWFwLT52YWRkcik7
-CisJZHJtX2dlbV92dW5tYXAob2JqLCBtYXApOwogfQogRVhQT1JUX1NZTUJPTChkcm1fZ2VtX2Rt
-YWJ1Zl92dW5tYXApOwogCi0tIAoyLjI5LjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+DRM's fbdev console uses regular load and store operations to update
+framebuffer memory. The bochs driver on sparc64 requires the use of
+I/O-specific load and store operations. We have a workaround, but need
+a long-term solution to the problem.
+
+This patchset changes GEM's vmap/vunmap interfaces to forward pointers
+of type struct dma_buf_map and updates the generic fbdev emulation to
+use them correctly. This enables I/O-memory operations on all framebuffers
+that require and support them.
+
+Patches #1 to #4 prepare VRAM helpers and drivers.
+
+Next is the update of the GEM vmap functions. Patch #5 adds vmap and vunmap
+that is usable with TTM-based GEM drivers, and patch #6 updates GEM's
+vmap/vunmap callback to forward instances of type struct dma_buf_map. While
+the patch touches many files throughout the DRM modules, the applied changes
+are mostly trivial interface fixes. Several TTM-based GEM drivers now use
+the new vmap code. Patch #7 updates GEM's internal vmap/vunmap functions to
+forward struct dma_buf_map.
+
+With struct dma_buf_map propagated through the layers, patches #8 to #10
+convert DRM clients and generic fbdev emulation to use it. Updating the
+fbdev framebuffer will select the correct functions, either for system or
+I/O memory.
+
+There is also a set of IGT testcases for fbdev at [1]. Reading and writting
+fbdev device files has several corner cases near the EOF that the tests cover
+as well. The original fbdev code has different semantics with the different
+implementations (sys, cfb). Patch #10 and the testcases intend to harmonize
+the behaviour and serve as a reference.
+
+v7:
+	* return number of read/written bytes in fbdev code; if any
+	* init QXL cursor from BO buffer (kernel test robot)
+	* use min_t(size_t,) (kernel test robot)
+v6:
+	* don't call page_to_phys() on fbdev framebuffers in I/O memory;
+	  warn instead (Daniel)
+v5:
+	* rebase onto latest TTM changes (Christian)
+	* support TTM premapped memory correctly (Christian)
+	* implement fb_read/fb_write internally (Sam, Daniel)
+	* cleanups
+v4:
+	* provide TTM vmap/vunmap plus GEM helpers and convert drivers
+	  over (Christian, Daniel)
+	* remove several empty functions
+	* more TODOs and documentation (Daniel)
+v3:
+	* recreate the whole patchset on top of struct dma_buf_map
+v2:
+	* RFC patchset
+
+[1] https://gitlab.freedesktop.org/tzimmermann/igt-gpu-tools/-/merge_requests/1
+
+Thomas Zimmermann (10):
+  drm/vram-helper: Remove invariant parameters from internal kmap
+    function
+  drm/cma-helper: Remove empty drm_gem_cma_prime_vunmap()
+  drm/etnaviv: Remove empty etnaviv_gem_prime_vunmap()
+  drm/exynos: Remove empty exynos_drm_gem_prime_{vmap,vunmap}()
+  drm/ttm: Add vmap/vunmap to TTM and TTM GEM helpers
+  drm/gem: Use struct dma_buf_map in GEM vmap ops and convert GEM
+    backends
+  drm/gem: Update internal GEM vmap/vunmap interfaces to use struct
+    dma_buf_map
+  drm/gem: Store client buffer mappings as struct dma_buf_map
+  dma-buf-map: Add memcpy and pointer-increment interfaces
+  drm/fb_helper: Support framebuffers in I/O memory
+
+ Documentation/gpu/todo.rst                  |  37 ++-
+ drivers/gpu/drm/Kconfig                     |   2 +
+ drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c |  36 ---
+ drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.h |   2 -
+ drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c     |   5 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_object.h  |   1 -
+ drivers/gpu/drm/ast/ast_cursor.c            |  27 +--
+ drivers/gpu/drm/ast/ast_drv.h               |   7 +-
+ drivers/gpu/drm/bochs/bochs_kms.c           |   1 -
+ drivers/gpu/drm/drm_client.c                |  38 +--
+ drivers/gpu/drm/drm_fb_helper.c             | 250 ++++++++++++++++++--
+ drivers/gpu/drm/drm_gem.c                   |  29 ++-
+ drivers/gpu/drm/drm_gem_cma_helper.c        |  27 +--
+ drivers/gpu/drm/drm_gem_shmem_helper.c      |  48 ++--
+ drivers/gpu/drm/drm_gem_ttm_helper.c        |  38 +++
+ drivers/gpu/drm/drm_gem_vram_helper.c       | 117 +++++----
+ drivers/gpu/drm/drm_internal.h              |   5 +-
+ drivers/gpu/drm/drm_prime.c                 |  14 +-
+ drivers/gpu/drm/etnaviv/etnaviv_drv.h       |   3 +-
+ drivers/gpu/drm/etnaviv/etnaviv_gem.c       |   1 -
+ drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c |  12 +-
+ drivers/gpu/drm/exynos/exynos_drm_gem.c     |  12 -
+ drivers/gpu/drm/exynos/exynos_drm_gem.h     |   2 -
+ drivers/gpu/drm/lima/lima_gem.c             |   6 +-
+ drivers/gpu/drm/lima/lima_sched.c           |  11 +-
+ drivers/gpu/drm/mgag200/mgag200_mode.c      |  10 +-
+ drivers/gpu/drm/nouveau/Kconfig             |   1 +
+ drivers/gpu/drm/nouveau/nouveau_bo.h        |   2 -
+ drivers/gpu/drm/nouveau/nouveau_gem.c       |   6 +-
+ drivers/gpu/drm/nouveau/nouveau_gem.h       |   2 -
+ drivers/gpu/drm/nouveau/nouveau_prime.c     |  20 --
+ drivers/gpu/drm/panfrost/panfrost_perfcnt.c |  14 +-
+ drivers/gpu/drm/qxl/qxl_display.c           |  15 +-
+ drivers/gpu/drm/qxl/qxl_draw.c              |  14 +-
+ drivers/gpu/drm/qxl/qxl_drv.h               |  11 +-
+ drivers/gpu/drm/qxl/qxl_object.c            |  31 ++-
+ drivers/gpu/drm/qxl/qxl_object.h            |   2 +-
+ drivers/gpu/drm/qxl/qxl_prime.c             |  12 +-
+ drivers/gpu/drm/radeon/radeon.h             |   1 -
+ drivers/gpu/drm/radeon/radeon_gem.c         |   7 +-
+ drivers/gpu/drm/radeon/radeon_prime.c       |  20 --
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c |  22 +-
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.h |   4 +-
+ drivers/gpu/drm/tiny/cirrus.c               |  10 +-
+ drivers/gpu/drm/tiny/gm12u320.c             |  10 +-
+ drivers/gpu/drm/ttm/ttm_bo_util.c           |  72 ++++++
+ drivers/gpu/drm/udl/udl_modeset.c           |   8 +-
+ drivers/gpu/drm/vboxvideo/vbox_mode.c       |  11 +-
+ drivers/gpu/drm/vc4/vc4_bo.c                |   7 +-
+ drivers/gpu/drm/vc4/vc4_drv.h               |   2 +-
+ drivers/gpu/drm/vgem/vgem_drv.c             |  16 +-
+ drivers/gpu/drm/vkms/vkms_plane.c           |  15 +-
+ drivers/gpu/drm/vkms/vkms_writeback.c       |  22 +-
+ drivers/gpu/drm/xen/xen_drm_front_gem.c     |  18 +-
+ drivers/gpu/drm/xen/xen_drm_front_gem.h     |   6 +-
+ include/drm/drm_client.h                    |   7 +-
+ include/drm/drm_gem.h                       |   5 +-
+ include/drm/drm_gem_cma_helper.h            |   3 +-
+ include/drm/drm_gem_shmem_helper.h          |   4 +-
+ include/drm/drm_gem_ttm_helper.h            |   6 +
+ include/drm/drm_gem_vram_helper.h           |  14 +-
+ include/drm/drm_mode_config.h               |  12 -
+ include/drm/ttm/ttm_bo_api.h                |  28 +++
+ include/linux/dma-buf-map.h                 |  93 +++++++-
+ 64 files changed, 856 insertions(+), 438 deletions(-)
+
+--
+2.29.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
