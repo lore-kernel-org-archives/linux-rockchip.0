@@ -2,45 +2,45 @@ Return-Path: <SRS0=SS7Y=EJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 85D41C388F2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 09:31:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3599EC2D0A3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 09:31:46 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 138AF223BF
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 09:31:19 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C69D0223BD
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 09:31:45 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="izWWfim7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 138AF223BF
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="UMERzGq4"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C69D0223BD
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+buoN7nmZGQ7e1AZU17cDbfNjtwvh78yFrSd7E8lg28=; b=izWWfim7/MRWA5ngn8dBIIGmub
-	6IHOE3zUo/oM5YPSjA1OuH4dbwAh25FGsfES5iit2c8alI9uSexRT4WvlYAwf6BAAN2cIL5Dqj4lV
-	4rwZ+73QGAHbt3ubQhNPAV0FCRcrWCSC58qqsLJJLv4NWQfPx+7JhRi3XIW6E56WvFPW2ayAivjjz
-	p+N5NugJzu0iAIkVcwXNjS5+GzQ37DA5n+l6GRcqB5K/b6ci1bJ99eN3su0MR32EO8J+7NYnGioG2
-	H0j/X+aU+Yg+e+qWfRTIdUCZX5yoC5fVHak53Q3Pz8KnMJHaxsrCjtDIOzBUFV2pTohA4OUMOC8vn
-	3vF3I+1g==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=4ZIJoJcP7R8zGApUBTKe3VB7j5xigzdlmXG5QSKmc3s=; b=UMERzGq4hSQxd+BbTVo8Z3/si
+	A8q5oObYYAgNAm4syLKX0f86Q+fStsjyqsM45ArnnWHy8AKExTt7hTk06ZDNJjpjeujB4C6ez05ZC
+	8z2zYjF8gwl43T24A6UY2kqiY+uCuO0oQuOvGtC4FqS761UzvHKvqTJiqLLdwcWhpD+VfLknbV33I
+	d2cmlRl0piYFyCKfjuBLyaQBT2TieplRyF3+S7rCldM3lLREKkGnreJhIdBrTDSatTBXVEWW+DCbp
+	ZBh/BjOAyaoYs71EYeCosI3j87YXfGSXZCu8IAVOWpuK11bXpT+JorRbj8zaXT2K57W3igXTE6fI+
+	QtcxWIOVA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZsel-0007IB-Gk; Tue, 03 Nov 2020 09:31:11 +0000
+	id 1kZsfB-0007SS-Qx; Tue, 03 Nov 2020 09:31:38 +0000
 Received: from mx2.suse.de ([195.135.220.15])
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZse0-0006rs-Vs; Tue, 03 Nov 2020 09:30:29 +0000
+ id 1kZse7-0006xa-42; Tue, 03 Nov 2020 09:30:36 +0000
 X-Virus-Scanned: by amavisd-new at test-mx.suse.de
 Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id AEF6BAF5B;
- Tue,  3 Nov 2020 09:30:18 +0000 (UTC)
+ by mx2.suse.de (Postfix) with ESMTP id A49C2B1A6;
+ Tue,  3 Nov 2020 09:30:24 +0000 (UTC)
 From: Thomas Zimmermann <tzimmermann@suse.de>
 To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
  daniel@ffwll.ch, sam@ravnborg.org, alexander.deucher@amd.com,
@@ -56,14 +56,17 @@ To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
  sumit.semwal@linaro.org, emil.velikov@collabora.com, luben.tuikov@amd.com,
  apaneers@amd.com, linus.walleij@linaro.org, melissa.srw@gmail.com,
  chris@chris-wilson.co.uk, miaoqinglang@huawei.com
-Subject: [PATCH v7 00/10] Support GEM object mappings from I/O memory
-Date: Tue,  3 Nov 2020 10:30:05 +0100
-Message-Id: <20201103093015.1063-1-tzimmermann@suse.de>
+Subject: [PATCH v7 09/10] dma-buf-map: Add memcpy and pointer-increment
+ interfaces
+Date: Tue,  3 Nov 2020 10:30:14 +0100
+Message-Id: <20201103093015.1063-10-tzimmermann@suse.de>
 X-Mailer: git-send-email 2.29.0
+In-Reply-To: <20201103093015.1063-1-tzimmermann@suse.de>
+References: <20201103093015.1063-1-tzimmermann@suse.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201103_043025_616583_51918735 
-X-CRM114-Status: GOOD (  16.67  )
+X-CRM114-CacheID: sfid-20201103_043032_941366_F5E8FFAF 
+X-CRM114-Status: GOOD (  21.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,143 +91,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-DRM's fbdev console uses regular load and store operations to update
-framebuffer memory. The bochs driver on sparc64 requires the use of
-I/O-specific load and store operations. We have a workaround, but need
-a long-term solution to the problem.
+To do framebuffer updates, one needs memcpy from system memory and a
+pointer-increment function. Add both interfaces with documentation.
 
-This patchset changes GEM's vmap/vunmap interfaces to forward pointers
-of type struct dma_buf_map and updates the generic fbdev emulation to
-use them correctly. This enables I/O-memory operations on all framebuffers
-that require and support them.
-
-Patches #1 to #4 prepare VRAM helpers and drivers.
-
-Next is the update of the GEM vmap functions. Patch #5 adds vmap and vunmap
-that is usable with TTM-based GEM drivers, and patch #6 updates GEM's
-vmap/vunmap callback to forward instances of type struct dma_buf_map. While
-the patch touches many files throughout the DRM modules, the applied changes
-are mostly trivial interface fixes. Several TTM-based GEM drivers now use
-the new vmap code. Patch #7 updates GEM's internal vmap/vunmap functions to
-forward struct dma_buf_map.
-
-With struct dma_buf_map propagated through the layers, patches #8 to #10
-convert DRM clients and generic fbdev emulation to use it. Updating the
-fbdev framebuffer will select the correct functions, either for system or
-I/O memory.
-
-There is also a set of IGT testcases for fbdev at [1]. Reading and writting
-fbdev device files has several corner cases near the EOF that the tests cover
-as well. The original fbdev code has different semantics with the different
-implementations (sys, cfb). Patch #10 and the testcases intend to harmonize
-the behaviour and serve as a reference.
-
-v7:
-	* return number of read/written bytes in fbdev code; if any
-	* init QXL cursor from BO buffer (kernel test robot)
-	* use min_t(size_t,) (kernel test robot)
-v6:
-	* don't call page_to_phys() on fbdev framebuffers in I/O memory;
-	  warn instead (Daniel)
 v5:
-	* rebase onto latest TTM changes (Christian)
-	* support TTM premapped memory correctly (Christian)
-	* implement fb_read/fb_write internally (Sam, Daniel)
-	* cleanups
-v4:
-	* provide TTM vmap/vunmap plus GEM helpers and convert drivers
-	  over (Christian, Daniel)
-	* remove several empty functions
-	* more TODOs and documentation (Daniel)
-v3:
-	* recreate the whole patchset on top of struct dma_buf_map
-v2:
-	* RFC patchset
+	* include <linux/string.h> to build on sparc64 (Sam)
 
-[1] https://gitlab.freedesktop.org/tzimmermann/igt-gpu-tools/-/merge_requests/1
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Reviewed-by: Sam Ravnborg <sam@ravnborg.org>
+Tested-by: Sam Ravnborg <sam@ravnborg.org>
+---
+ include/linux/dma-buf-map.h | 73 ++++++++++++++++++++++++++++++++-----
+ 1 file changed, 63 insertions(+), 10 deletions(-)
 
-Thomas Zimmermann (10):
-  drm/vram-helper: Remove invariant parameters from internal kmap
-    function
-  drm/cma-helper: Remove empty drm_gem_cma_prime_vunmap()
-  drm/etnaviv: Remove empty etnaviv_gem_prime_vunmap()
-  drm/exynos: Remove empty exynos_drm_gem_prime_{vmap,vunmap}()
-  drm/ttm: Add vmap/vunmap to TTM and TTM GEM helpers
-  drm/gem: Use struct dma_buf_map in GEM vmap ops and convert GEM
-    backends
-  drm/gem: Update internal GEM vmap/vunmap interfaces to use struct
-    dma_buf_map
-  drm/gem: Store client buffer mappings as struct dma_buf_map
-  dma-buf-map: Add memcpy and pointer-increment interfaces
-  drm/fb_helper: Support framebuffers in I/O memory
-
- Documentation/gpu/todo.rst                  |  37 ++-
- drivers/gpu/drm/Kconfig                     |   2 +
- drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c |  36 ---
- drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.h |   2 -
- drivers/gpu/drm/amd/amdgpu/amdgpu_gem.c     |   5 +-
- drivers/gpu/drm/amd/amdgpu/amdgpu_object.h  |   1 -
- drivers/gpu/drm/ast/ast_cursor.c            |  27 +--
- drivers/gpu/drm/ast/ast_drv.h               |   7 +-
- drivers/gpu/drm/bochs/bochs_kms.c           |   1 -
- drivers/gpu/drm/drm_client.c                |  38 +--
- drivers/gpu/drm/drm_fb_helper.c             | 250 ++++++++++++++++++--
- drivers/gpu/drm/drm_gem.c                   |  29 ++-
- drivers/gpu/drm/drm_gem_cma_helper.c        |  27 +--
- drivers/gpu/drm/drm_gem_shmem_helper.c      |  48 ++--
- drivers/gpu/drm/drm_gem_ttm_helper.c        |  38 +++
- drivers/gpu/drm/drm_gem_vram_helper.c       | 117 +++++----
- drivers/gpu/drm/drm_internal.h              |   5 +-
- drivers/gpu/drm/drm_prime.c                 |  14 +-
- drivers/gpu/drm/etnaviv/etnaviv_drv.h       |   3 +-
- drivers/gpu/drm/etnaviv/etnaviv_gem.c       |   1 -
- drivers/gpu/drm/etnaviv/etnaviv_gem_prime.c |  12 +-
- drivers/gpu/drm/exynos/exynos_drm_gem.c     |  12 -
- drivers/gpu/drm/exynos/exynos_drm_gem.h     |   2 -
- drivers/gpu/drm/lima/lima_gem.c             |   6 +-
- drivers/gpu/drm/lima/lima_sched.c           |  11 +-
- drivers/gpu/drm/mgag200/mgag200_mode.c      |  10 +-
- drivers/gpu/drm/nouveau/Kconfig             |   1 +
- drivers/gpu/drm/nouveau/nouveau_bo.h        |   2 -
- drivers/gpu/drm/nouveau/nouveau_gem.c       |   6 +-
- drivers/gpu/drm/nouveau/nouveau_gem.h       |   2 -
- drivers/gpu/drm/nouveau/nouveau_prime.c     |  20 --
- drivers/gpu/drm/panfrost/panfrost_perfcnt.c |  14 +-
- drivers/gpu/drm/qxl/qxl_display.c           |  15 +-
- drivers/gpu/drm/qxl/qxl_draw.c              |  14 +-
- drivers/gpu/drm/qxl/qxl_drv.h               |  11 +-
- drivers/gpu/drm/qxl/qxl_object.c            |  31 ++-
- drivers/gpu/drm/qxl/qxl_object.h            |   2 +-
- drivers/gpu/drm/qxl/qxl_prime.c             |  12 +-
- drivers/gpu/drm/radeon/radeon.h             |   1 -
- drivers/gpu/drm/radeon/radeon_gem.c         |   7 +-
- drivers/gpu/drm/radeon/radeon_prime.c       |  20 --
- drivers/gpu/drm/rockchip/rockchip_drm_gem.c |  22 +-
- drivers/gpu/drm/rockchip/rockchip_drm_gem.h |   4 +-
- drivers/gpu/drm/tiny/cirrus.c               |  10 +-
- drivers/gpu/drm/tiny/gm12u320.c             |  10 +-
- drivers/gpu/drm/ttm/ttm_bo_util.c           |  72 ++++++
- drivers/gpu/drm/udl/udl_modeset.c           |   8 +-
- drivers/gpu/drm/vboxvideo/vbox_mode.c       |  11 +-
- drivers/gpu/drm/vc4/vc4_bo.c                |   7 +-
- drivers/gpu/drm/vc4/vc4_drv.h               |   2 +-
- drivers/gpu/drm/vgem/vgem_drv.c             |  16 +-
- drivers/gpu/drm/vkms/vkms_plane.c           |  15 +-
- drivers/gpu/drm/vkms/vkms_writeback.c       |  22 +-
- drivers/gpu/drm/xen/xen_drm_front_gem.c     |  18 +-
- drivers/gpu/drm/xen/xen_drm_front_gem.h     |   6 +-
- include/drm/drm_client.h                    |   7 +-
- include/drm/drm_gem.h                       |   5 +-
- include/drm/drm_gem_cma_helper.h            |   3 +-
- include/drm/drm_gem_shmem_helper.h          |   4 +-
- include/drm/drm_gem_ttm_helper.h            |   6 +
- include/drm/drm_gem_vram_helper.h           |  14 +-
- include/drm/drm_mode_config.h               |  12 -
- include/drm/ttm/ttm_bo_api.h                |  28 +++
- include/linux/dma-buf-map.h                 |  93 +++++++-
- 64 files changed, 856 insertions(+), 438 deletions(-)
-
---
+diff --git a/include/linux/dma-buf-map.h b/include/linux/dma-buf-map.h
+index 2e8bbecb5091..583a3a1f9447 100644
+--- a/include/linux/dma-buf-map.h
++++ b/include/linux/dma-buf-map.h
+@@ -7,6 +7,7 @@
+ #define __DMA_BUF_MAP_H__
+ 
+ #include <linux/io.h>
++#include <linux/string.h>
+ 
+ /**
+  * DOC: overview
+@@ -32,6 +33,14 @@
+  * accessing the buffer. Use the returned instance and the helper functions
+  * to access the buffer's memory in the correct way.
+  *
++ * The type :c:type:`struct dma_buf_map <dma_buf_map>` and its helpers are
++ * actually independent from the dma-buf infrastructure. When sharing buffers
++ * among devices, drivers have to know the location of the memory to access
++ * the buffers in a safe way. :c:type:`struct dma_buf_map <dma_buf_map>`
++ * solves this problem for dma-buf and its users. If other drivers or
++ * sub-systems require similar functionality, the type could be generalized
++ * and moved to a more prominent header file.
++ *
+  * Open-coding access to :c:type:`struct dma_buf_map <dma_buf_map>` is
+  * considered bad style. Rather then accessing its fields directly, use one
+  * of the provided helper functions, or implement your own. For example,
+@@ -51,6 +60,14 @@
+  *
+  *	dma_buf_map_set_vaddr_iomem(&map. 0xdeadbeaf);
+  *
++ * Instances of struct dma_buf_map do not have to be cleaned up, but
++ * can be cleared to NULL with dma_buf_map_clear(). Cleared mappings
++ * always refer to system memory.
++ *
++ * .. code-block:: c
++ *
++ *	dma_buf_map_clear(&map);
++ *
+  * Test if a mapping is valid with either dma_buf_map_is_set() or
+  * dma_buf_map_is_null().
+  *
+@@ -73,17 +90,19 @@
+  *	if (dma_buf_map_is_equal(&sys_map, &io_map))
+  *		// always false
+  *
+- * Instances of struct dma_buf_map do not have to be cleaned up, but
+- * can be cleared to NULL with dma_buf_map_clear(). Cleared mappings
+- * always refer to system memory.
++ * A set up instance of struct dma_buf_map can be used to access or manipulate
++ * the buffer memory. Depending on the location of the memory, the provided
++ * helpers will pick the correct operations. Data can be copied into the memory
++ * with dma_buf_map_memcpy_to(). The address can be manipulated with
++ * dma_buf_map_incr().
+  *
+- * The type :c:type:`struct dma_buf_map <dma_buf_map>` and its helpers are
+- * actually independent from the dma-buf infrastructure. When sharing buffers
+- * among devices, drivers have to know the location of the memory to access
+- * the buffers in a safe way. :c:type:`struct dma_buf_map <dma_buf_map>`
+- * solves this problem for dma-buf and its users. If other drivers or
+- * sub-systems require similar functionality, the type could be generalized
+- * and moved to a more prominent header file.
++ * .. code-block:: c
++ *
++ *	const void *src = ...; // source buffer
++ *	size_t len = ...; // length of src
++ *
++ *	dma_buf_map_memcpy_to(&map, src, len);
++ *	dma_buf_map_incr(&map, len); // go to first byte after the memcpy
+  */
+ 
+ /**
+@@ -210,4 +229,38 @@ static inline void dma_buf_map_clear(struct dma_buf_map *map)
+ 	}
+ }
+ 
++/**
++ * dma_buf_map_memcpy_to - Memcpy into dma-buf mapping
++ * @dst:	The dma-buf mapping structure
++ * @src:	The source buffer
++ * @len:	The number of byte in src
++ *
++ * Copies data into a dma-buf mapping. The source buffer is in system
++ * memory. Depending on the buffer's location, the helper picks the correct
++ * method of accessing the memory.
++ */
++static inline void dma_buf_map_memcpy_to(struct dma_buf_map *dst, const void *src, size_t len)
++{
++	if (dst->is_iomem)
++		memcpy_toio(dst->vaddr_iomem, src, len);
++	else
++		memcpy(dst->vaddr, src, len);
++}
++
++/**
++ * dma_buf_map_incr - Increments the address stored in a dma-buf mapping
++ * @map:	The dma-buf mapping structure
++ * @incr:	The number of bytes to increment
++ *
++ * Increments the address stored in a dma-buf mapping. Depending on the
++ * buffer's location, the correct value will be updated.
++ */
++static inline void dma_buf_map_incr(struct dma_buf_map *map, size_t incr)
++{
++	if (map->is_iomem)
++		map->vaddr_iomem += incr;
++	else
++		map->vaddr += incr;
++}
++
+ #endif /* __DMA_BUF_MAP_H__ */
+-- 
 2.29.0
 
 
