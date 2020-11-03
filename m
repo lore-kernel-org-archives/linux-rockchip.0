@@ -2,70 +2,64 @@ Return-Path: <SRS0=SS7Y=EJ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E2D66C388F2
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 10:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20000C2D0A3
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 11:11:56 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6DB85206F1
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 10:41:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 569B5223BD
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Nov 2020 11:11:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="12sUu/a2"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6DB85206F1
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="jr6y+k6y"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 569B5223BD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bsnFfzjwtk9XxJae5p7kNDknYE1ZuwxDMxllGDsuL+s=; b=12sUu/a22rMkesilZq8UThDNb
-	l7AD7+LS1jwwc84Xb5PvJi3tj6yW14hfCgVgR/R+xW8tuniwFAbhni0SzYnzkgYMtP/Pc9XALMdL8
-	xkrr9hgx8i9UeJ38FYkfyrTNXgc65RnLD4mHWUVUMWFBIUDWNvy6zEO0MeWoVO0B7ReIaD5barmOB
-	ximR5Z9kwy0mKnCuRpJg6sZJ/pGq5xUarIwof2ZPhDPkSPWqetZpVeFNxL25/ERWGA0LK2VGnWxqE
-	nq+C45l4CzCbxahiNb23bU13atdV66tO1viJwGjdjwOawJ305FZv8H1byHfhNNf1F7Z3EKshTUDCi
-	jRxO1B8Ew==;
+	 bh=/jO8lakWk+r8rfKXAcXkGY1QJeAPsFiR6dSFLzz+usA=; b=jr6y+k6y1m9dMkMs45+o2cbOH
+	BdfBkpr39S90rRGRGir2DInML1FZxvWBcsS9RZHDKs4TX1zd4XfpGCrlvC5LP1U5dXdfqEGZFe8/D
+	FW2jeCgqULf3Xj3vUN2Lj7o1xYRnXk1AOezBT5Yd0QA1Xw0aLP+zhbJU8Cx95dgiNH0d0SBt8ektq
+	TUkGvTyaKUeUZaz6Hkgs+tNHWmQawE5wuZIfqnc6E6f6b7feIWHTa/+bTxeeUt5sG5/v6Gy1ytVaU
+	nhFMLIuztgqYzZIpUhEZdjhAaLK5k5cPDQSNUpL9eXOGgN2SUeFbh4FUnhr4TEROyykwD5fiInBWe
+	0O7LNCOvg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kZtky-0006K9-JD; Tue, 03 Nov 2020 10:41:41 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1kZuE4-0002xP-V4; Tue, 03 Nov 2020 11:11:45 +0000
+Received: from foss.arm.com ([217.140.110.172])
  by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kZse0-0006rw-Vq; Tue, 03 Nov 2020 09:30:26 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id 08299B119;
- Tue,  3 Nov 2020 09:30:20 +0000 (UTC)
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, airlied@linux.ie,
- daniel@ffwll.ch, sam@ravnborg.org, alexander.deucher@amd.com,
- christian.koenig@amd.com, kraxel@redhat.com, l.stach@pengutronix.de,
- linux+etnaviv@armlinux.org.uk, christian.gmeiner@gmail.com,
- inki.dae@samsung.com, jy0922.shim@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, kgene@kernel.org, krzk@kernel.org,
- yuq825@gmail.com, bskeggs@redhat.com, robh@kernel.org,
- tomeu.vizoso@collabora.com, steven.price@arm.com,
- alyssa.rosenzweig@collabora.com, hjc@rock-chips.com, heiko@sntech.de,
- hdegoede@redhat.com, sean@poorly.run, eric@anholt.net,
- oleksandr_andrushchenko@epam.com, ray.huang@amd.com,
- sumit.semwal@linaro.org, emil.velikov@collabora.com, luben.tuikov@amd.com,
- apaneers@amd.com, linus.walleij@linaro.org, melissa.srw@gmail.com,
- chris@chris-wilson.co.uk, miaoqinglang@huawei.com
-Subject: [PATCH v7 03/10] drm/etnaviv: Remove empty etnaviv_gem_prime_vunmap()
-Date: Tue,  3 Nov 2020 10:30:08 +0100
-Message-Id: <20201103093015.1063-4-tzimmermann@suse.de>
-X-Mailer: git-send-email 2.29.0
-In-Reply-To: <20201103093015.1063-1-tzimmermann@suse.de>
-References: <20201103093015.1063-1-tzimmermann@suse.de>
+ id 1kZuDz-0002wB-L0; Tue, 03 Nov 2020 11:11:40 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0BA75101E;
+ Tue,  3 Nov 2020 03:11:37 -0800 (PST)
+Received: from [10.57.54.223] (unknown [10.57.54.223])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5B3AE3F66E;
+ Tue,  3 Nov 2020 03:11:35 -0800 (PST)
+Subject: Re: [PATCH v2] iio: adc: rockchip_saradc: fix missing
+ clk_disable_unprepare() on error in rockchip_saradc_resume
+To: Qinglang Miao <miaoqinglang@huawei.com>,
+ Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>,
+ Peter Meerwald-Stadler <pmeerw@pmeerw.net>, Heiko Stuebner <heiko@sntech.de>
+References: <20201103074909.195465-1-miaoqinglang@huawei.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <50da9bf1-7317-b24b-9a87-e9dfb4e4a694@arm.com>
+Date: Tue, 3 Nov 2020 11:11:34 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
+In-Reply-To: <20201103074909.195465-1-miaoqinglang@huawei.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201103_043025_493764_7860AB7B 
-X-CRM114-Status: GOOD (  12.58  )
+X-CRM114-CacheID: sfid-20201103_061139_819501_CBFB407D 
+X-CRM114-Status: GOOD (  19.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,59 +72,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-samsung-soc@vger.kernel.org, lima@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, etnaviv@lists.freedesktop.org,
- amd-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- linaro-mm-sig@lists.linaro.org, linux-rockchip@lists.infradead.org,
- dri-devel@lists.freedesktop.org, Thomas Zimmermann <tzimmermann@suse.de>,
- xen-devel@lists.xenproject.org, spice-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: linux-iio@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlIGZ1bmN0aW9uIGV0bmF2aXZfZ2VtX3ByaW1lX3Z1bm1hcCgpIGlzIGVtcHR5LiBSZW1vdmUg
-aXQgYmVmb3JlCmNoYW5naW5nIHRoZSBpbnRlcmZhY2UgdG8gdXNlIHN0cnVjdCBkcm1fYnVmX21h
-cC4KClNpZ25lZC1vZmYtYnk6IFRob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRl
-PgpBY2tlZC1ieTogQ2hyaXN0aWFuIEvDtm5pZyA8Y2hyaXN0aWFuLmtvZW5pZ0BhbWQuY29tPgpU
-ZXN0ZWQtYnk6IFNhbSBSYXZuYm9yZyA8c2FtQHJhdm5ib3JnLm9yZz4KLS0tCiBkcml2ZXJzL2dw
-dS9kcm0vZXRuYXZpdi9ldG5hdml2X2Rydi5oICAgICAgIHwgMSAtCiBkcml2ZXJzL2dwdS9kcm0v
-ZXRuYXZpdi9ldG5hdml2X2dlbS5jICAgICAgIHwgMSAtCiBkcml2ZXJzL2dwdS9kcm0vZXRuYXZp
-di9ldG5hdml2X2dlbV9wcmltZS5jIHwgNSAtLS0tLQogMyBmaWxlcyBjaGFuZ2VkLCA3IGRlbGV0
-aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9ldG5hdml2L2V0bmF2aXZfZHJ2
-LmggYi9kcml2ZXJzL2dwdS9kcm0vZXRuYXZpdi9ldG5hdml2X2Rydi5oCmluZGV4IDkxNGYwODY3
-ZmY3MS4uOTY4MmMyNmQ4OWJiIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vZXRuYXZpdi9l
-dG5hdml2X2Rydi5oCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9ldG5hdml2L2V0bmF2aXZfZHJ2LmgK
-QEAgLTUyLDcgKzUyLDYgQEAgaW50IGV0bmF2aXZfZ2VtX21tYXAoc3RydWN0IGZpbGUgKmZpbHAs
-IHN0cnVjdCB2bV9hcmVhX3N0cnVjdCAqdm1hKTsKIGludCBldG5hdml2X2dlbV9tbWFwX29mZnNl
-dChzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKm9iaiwgdTY0ICpvZmZzZXQpOwogc3RydWN0IHNnX3Rh
-YmxlICpldG5hdml2X2dlbV9wcmltZV9nZXRfc2dfdGFibGUoc3RydWN0IGRybV9nZW1fb2JqZWN0
-ICpvYmopOwogdm9pZCAqZXRuYXZpdl9nZW1fcHJpbWVfdm1hcChzdHJ1Y3QgZHJtX2dlbV9vYmpl
-Y3QgKm9iaik7Ci12b2lkIGV0bmF2aXZfZ2VtX3ByaW1lX3Z1bm1hcChzdHJ1Y3QgZHJtX2dlbV9v
-YmplY3QgKm9iaiwgdm9pZCAqdmFkZHIpOwogaW50IGV0bmF2aXZfZ2VtX3ByaW1lX21tYXAoc3Ry
-dWN0IGRybV9nZW1fb2JqZWN0ICpvYmosCiAJCQkgICBzdHJ1Y3Qgdm1fYXJlYV9zdHJ1Y3QgKnZt
-YSk7CiBzdHJ1Y3QgZHJtX2dlbV9vYmplY3QgKmV0bmF2aXZfZ2VtX3ByaW1lX2ltcG9ydF9zZ190
-YWJsZShzdHJ1Y3QgZHJtX2RldmljZSAqZGV2LApkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJt
-L2V0bmF2aXYvZXRuYXZpdl9nZW0uYyBiL2RyaXZlcnMvZ3B1L2RybS9ldG5hdml2L2V0bmF2aXZf
-Z2VtLmMKaW5kZXggNjdkOWEyYjllYTZhLi5iYmQyMzU0NzM2NDUgMTAwNjQ0Ci0tLSBhL2RyaXZl
-cnMvZ3B1L2RybS9ldG5hdml2L2V0bmF2aXZfZ2VtLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2V0
-bmF2aXYvZXRuYXZpdl9nZW0uYwpAQCAtNTcxLDcgKzU3MSw2IEBAIHN0YXRpYyBjb25zdCBzdHJ1
-Y3QgZHJtX2dlbV9vYmplY3RfZnVuY3MgZXRuYXZpdl9nZW1fb2JqZWN0X2Z1bmNzID0gewogCS51
-bnBpbiA9IGV0bmF2aXZfZ2VtX3ByaW1lX3VucGluLAogCS5nZXRfc2dfdGFibGUgPSBldG5hdml2
-X2dlbV9wcmltZV9nZXRfc2dfdGFibGUsCiAJLnZtYXAgPSBldG5hdml2X2dlbV9wcmltZV92bWFw
-LAotCS52dW5tYXAgPSBldG5hdml2X2dlbV9wcmltZV92dW5tYXAsCiAJLnZtX29wcyA9ICZ2bV9v
-cHMsCiB9OwogCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vZXRuYXZpdi9ldG5hdml2X2dl
-bV9wcmltZS5jIGIvZHJpdmVycy9ncHUvZHJtL2V0bmF2aXYvZXRuYXZpdl9nZW1fcHJpbWUuYwpp
-bmRleCAxMzVmYmZmNmZlY2YuLmE2ZDk5MzJhMzJhZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUv
-ZHJtL2V0bmF2aXYvZXRuYXZpdl9nZW1fcHJpbWUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0vZXRu
-YXZpdi9ldG5hdml2X2dlbV9wcmltZS5jCkBAIC0yNywxMSArMjcsNiBAQCB2b2lkICpldG5hdml2
-X2dlbV9wcmltZV92bWFwKHN0cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqKQogCXJldHVybiBldG5h
-dml2X2dlbV92bWFwKG9iaik7CiB9CiAKLXZvaWQgZXRuYXZpdl9nZW1fcHJpbWVfdnVubWFwKHN0
-cnVjdCBkcm1fZ2VtX29iamVjdCAqb2JqLCB2b2lkICp2YWRkcikKLXsKLQkvKiBUT0RPIG1zbV9n
-ZW1fdnVubWFwKCkgKi8KLX0KLQogaW50IGV0bmF2aXZfZ2VtX3ByaW1lX21tYXAoc3RydWN0IGRy
-bV9nZW1fb2JqZWN0ICpvYmosCiAJCQkgICBzdHJ1Y3Qgdm1fYXJlYV9zdHJ1Y3QgKnZtYSkKIHsK
-LS0gCjIuMjkuMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On 2020-11-03 07:49, Qinglang Miao wrote:
+> Fix the missing clk_disable_unprepare() of info->pclk
+> before return from rockchip_saradc_resume in the error
+> handling case when fails to prepare and enable info->clk.
+> 
+> Fixes: 44d6f2ef94f9 ("iio: adc: add driver for Rockchip saradc")
+> Signed-off-by: Qinglang Miao <miaoqinglang@huawei.com>
+> ---
+>   drivers/iio/adc/rockchip_saradc.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iio/adc/rockchip_saradc.c b/drivers/iio/adc/rockchip_saradc.c
+> index 1f3d7d639..5eb566274 100644
+> --- a/drivers/iio/adc/rockchip_saradc.c
+> +++ b/drivers/iio/adc/rockchip_saradc.c
+> @@ -461,9 +461,10 @@ static int rockchip_saradc_resume(struct device *dev)
+>   		return ret;
+>   
+>   	ret = clk_prepare_enable(info->clk);
+> -	if (ret)
+> +	if (ret) {
+> +		clk_disable_unprepare(info->pclk);
+>   		return ret;
+
+No need to add braces, just replace this utterly pointless "early" return ;)
+
+Robin.
+
+> -
+> +	}
+>   	return ret;
+>   }
+>   #endif
+> 
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
