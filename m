@@ -2,69 +2,90 @@ Return-Path: <SRS0=nVt2=EK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D12CC2D0A3
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2020 16:24:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D434BC388F9
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2020 16:28:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ACDD9206A5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2020 16:24:40 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 60BEA206D4
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2020 16:28:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XrptuPMv"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ACDD9206A5
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fivetechno.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2EOM6tCJ";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="CYyTnjZ9"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 60BEA206D4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1j/x6W7e4zSEBLepsA7i5LwcYZEPbDIO07tbRVbfD4I=; b=XrptuPMv+juTe+JCZKWnQ+CWtz
-	0YStEZbENFqhO6jiX8gY0tnEb7BUmjsVAjLDFsohk+jLnp2XHyHIJpxfsZySpQEzHR7DMh3eFzcGW
-	2/KcSuD1Kum/7gHdb2767Jsv9amBGTYjvY5cvfmr81Uo5w1XFeWwq7vzr4CZBPydT9nrXvM4epHD9
-	U7Vs8KqlPv0N4CX+43xdLAi1juGmn23upNWtUht1GISXQP6zVzBQKnmwyp1OOBvt18WMqBHRFKQeu
-	X1a75ou9h6m8vn2vePmNy4rdWxLNnlhEf3ADVaMQ2fyuUq2Iy5W9Nbhu6IQpe+D2Pnl7EvunRriKh
-	hMRpXsVA==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=QySpLc15xXx8GUJtmdk+x8JmNDlw14O0rrgjn5N5cK0=; b=2EOM6tCJLyL8RL/6YL0ZAaqJU
+	QrMN6knpQFk1aDierlTwC6lxjBqVqnc7169tE4wQ7cY7TJKHpmZyCWSgS8m6Aw/MXOeSxZG1w8civ
+	xyP/j4jBLA8NHCwhCzTcGUU/mUI2BpoPNd1sQrFu71sVNBkrfaIXBqYxGYVd09SXyUyXqvbnssk+r
+	lS8CT0NvoG5nvMJhmwUUTfhaokbCvzcLn/fQ+L8VoaXH46vxlEcgup7uZmfGkZSMWnbnU88LmJ6OG
+	tXUl/W6VU6cLUly7kUf5cqgSFB2UfCEvAL4rUwN/7UkYf86ONG5dMPZUTg2Ci0vg5DagoEUqerEFa
+	ScEMZgfvA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaLaM-0003Wd-I0; Wed, 04 Nov 2020 16:24:34 +0000
-Received: from wp126.webpack.hosteurope.de ([80.237.132.133])
+	id 1kaLds-00047a-7W; Wed, 04 Nov 2020 16:28:12 +0000
+Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaLaJ-0003VR-OQ; Wed, 04 Nov 2020 16:24:32 +0000
-Received: from [2003:a:659:3f00:1e6f:65ff:fe31:d1d5]
- (helo=hermes.fivetechno.de); authenticated
- by wp126.webpack.hosteurope.de running ExIM with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- id 1kaLaF-0007tB-SY; Wed, 04 Nov 2020 17:24:27 +0100
-X-Virus-Scanned: by amavisd-new 2.11.1 using newest ClamAV at
- linuxbbg.five-lan.de
-Received: from roc (p5098d998.dip0.t-ipconnect.de [80.152.217.152])
- (authenticated bits=0)
- by hermes.fivetechno.de (8.15.2/8.14.5/SuSE Linux 0.8) with ESMTPSA id
- 0A4GOQQo020573
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NO);
- Wed, 4 Nov 2020 17:24:26 +0100
-From: Markus Reichl <m.reichl@fivetechno.de>
-To: linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH] arm64: dts: rockchip: Assign a fixed index to mmc devices on
- rk3399 boards.
-Date: Wed,  4 Nov 2020 17:23:55 +0100
-Message-Id: <20201104162356.1251-1-m.reichl@fivetechno.de>
-X-Mailer: git-send-email 2.28.0
+ id 1kaLdo-00046B-1q
+ for linux-rockchip@lists.infradead.org; Wed, 04 Nov 2020 16:28:09 +0000
+Received: by mail-ua1-x944.google.com with SMTP id q4so2095402ual.8
+ for <linux-rockchip@lists.infradead.org>; Wed, 04 Nov 2020 08:28:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=LjuXhQKMkVF/DFnAs8lSgplGwULXo7VijpW+tg4xDRo=;
+ b=CYyTnjZ9sT5OzEIgvIcFGZuSxN+Eid8b5mYJi0Nf25q32LAUY54og5lkDHh40Aba16
+ LH63QeOb6L4WxI5TKhvVzq3fugcyltMxwbtRFqilu5XPRVURd3DTemYhTopb7D8fQFWL
+ Xzsdh7fnY7Z9kQZojTdOMe9r9rq7AtR5hF0FQ=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LjuXhQKMkVF/DFnAs8lSgplGwULXo7VijpW+tg4xDRo=;
+ b=hcbiKmwdwfmT1KEt0koTm7OgPZpTqZ9ntEaCmKu9l8DerKabQUVE7xMheO7rNHX36c
+ ISOvuvujuT+EO+GrUXPuZKLg9sxjBIdjEFP5TZbm8e9Du90OOZSv1NcK8EuBVRltzEsC
+ 5FIZjS6EfXbE2gEK/ZlxWTYhMsQgAOBv4nrl7K0syV9wOfTQYlJ1hPnorJ5/L2bFyC8e
+ Hf7u38m0MwoGz4PVTgeupHg8J3xIWIOz+nmu5Ji2PFcsw5VnM9U+oSu6ku1IGqGf13Jr
+ LkycClx74rmL9odTVuwFYIUlS9eHwqE/NS+Qxa0RD9vFYwZMatMJaM7aS9m+lE1ZxJWw
+ fPvA==
+X-Gm-Message-State: AOAM530bQhIETJEoUa6oVJzmpBgOdvp/YXEAsdVDwiKpiBYa5xLxhrll
+ RA4KaKvPPKvTkQE5jliTSHYZ5GbjX3mFIA==
+X-Google-Smtp-Source: ABdhPJynN7Hd746bBhaMbXiPUzCm+g0XZpwFdaLKYOaxrlQC3BY55+4QCTvYrqgRX/lEhVDWbdBAcw==
+X-Received: by 2002:ab0:31c3:: with SMTP id e3mr13573650uan.142.1604507285856; 
+ Wed, 04 Nov 2020 08:28:05 -0800 (PST)
+Received: from mail-ua1-f41.google.com (mail-ua1-f41.google.com.
+ [209.85.222.41])
+ by smtp.gmail.com with ESMTPSA id t71sm327605vkb.7.2020.11.04.08.28.05
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 04 Nov 2020 08:28:05 -0800 (PST)
+Received: by mail-ua1-f41.google.com with SMTP id q20so6219824uar.7
+ for <linux-rockchip@lists.infradead.org>; Wed, 04 Nov 2020 08:28:05 -0800 (PST)
+X-Received: by 2002:a9f:2f15:: with SMTP id x21mr14344167uaj.104.1604507284609; 
+ Wed, 04 Nov 2020 08:28:04 -0800 (PST)
 MIME-Version: 1.0
-X-bounce-key: webpack.hosteurope.de; m.reichll@fivetechno.de; 1604507071;
- 621b1f40; 
-X-HE-SMSGID: 1kaLaF-0007tB-SY
+References: <20201104162356.1251-1-m.reichl@fivetechno.de>
+In-Reply-To: <20201104162356.1251-1-m.reichl@fivetechno.de>
+From: Doug Anderson <dianders@chromium.org>
+Date: Wed, 4 Nov 2020 08:27:53 -0800
+X-Gmail-Original-Message-ID: <CAD=FV=VdcG_DQs+er5g-p=pX_G79Nzciv=M0MDZDhTr2c4sh8g@mail.gmail.com>
+Message-ID: <CAD=FV=VdcG_DQs+er5g-p=pX_G79Nzciv=M0MDZDhTr2c4sh8g@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Assign a fixed index to mmc devices
+ on rk3399 boards.
+To: Markus Reichl <m.reichl@fivetechno.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_112431_922117_347ACC58 
-X-CRM114-Status: GOOD (  11.46  )
+X-CRM114-CacheID: sfid-20201104_112808_108450_0D32BD1D 
+X-CRM114-Status: GOOD (  11.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,43 +98,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, dianders@chromium.org,
- linux-kernel@vger.kernel.org, Markus Reichl <m.reichl@fivetechno.de>,
- wens@kernel.org, robin.murphy@arm.com, linux-arm-kernel@lists.infradead.org
+Cc: "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ LKML <linux-kernel@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Rob Herring <robh+dt@kernel.org>, wens@kernel.org,
+ Robin Murphy <robin.murphy@arm.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Recently introduced async probe on mmc devices can shuffle block IDs.
-Pin them to fixed values to ease booting in environments where UUIDs
-are not practical. Use newly introduced aliases for mmcblk devices from [1].
+Hi,
 
-[1]
-https://patchwork.kernel.org/patch/11747669/
+On Wed, Nov 4, 2020 at 8:24 AM Markus Reichl <m.reichl@fivetechno.de> wrote:
+>
+> Recently introduced async probe on mmc devices can shuffle block IDs.
+> Pin them to fixed values to ease booting in environments where UUIDs
+> are not practical. Use newly introduced aliases for mmcblk devices from [1].
+>
+> [1]
+> https://patchwork.kernel.org/patch/11747669/
+>
+> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399.dtsi | 3 +++
+>  1 file changed, 3 insertions(+)
 
-Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
----
- arch/arm64/boot/dts/rockchip/rk3399.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index ada724b12f01..7a9a7aca86c6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-@@ -29,6 +29,9 @@ aliases {
- 		i2c6 = &i2c6;
- 		i2c7 = &i2c7;
- 		i2c8 = &i2c8;
-+		mmc0 = &sdio0;
-+		mmc1 = &sdmmc;
-+		mmc2 = &sdhci;
- 		serial0 = &uart0;
- 		serial1 = &uart1;
- 		serial2 = &uart2;
--- 
-2.28.0
-
+Reviewed-by: Douglas Anderson <dianders@chromium.org>
 
 _______________________________________________
 Linux-rockchip mailing list
