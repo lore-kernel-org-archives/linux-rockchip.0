@@ -2,77 +2,92 @@ Return-Path: <SRS0=nVt2=EK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 920E1C55179
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2020 14:55:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0124EC2D0A3
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2020 15:42:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 20B0420867
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2020 14:55:14 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 772D720732
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Nov 2020 15:42:29 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="qQxh36zT"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 20B0420867
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="kt5g2WWe";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="R2E/Db42"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 772D720732
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=yLXUnjIb+ibYN2SAOPIaeV1LHRz0O7dsG3MAPUrdLMA=; b=qQxh36zTcmOi7exDpaiXYUBMp
-	wZOpHidDwxL/rJst7aW0HCyklfAvRxa2r9JfPjNbvSSFq+bXIqDZL+WawRSUg5+gk/XzzKIhRkDlK
-	CyY/SHLKgSMya2bq04iyylJO0IYmtS6UieUJ8A+wI6Gte7MTUAflxl5xI2d5tWF5bzLDzpobxwMmC
-	r8WkiZWWfStZwUkzMkjXGXX8rzk5F3Nf0s7b9CW8gFT8OAHFhJ9FAl9tpYtsMWyW6gJcdQ7hnCGFM
-	5Stivo74fSoRjwwrNEXs72/g5+Ww6IbKsLDuL3cOsySoaXqPBN7zoUA+ecsf5URLJnuXKWunw/LBX
-	DNdkgjfiQ==;
+	 bh=IoGNC6ltSg1um9nRa0dAP52E3ERra8d2MtySweDkaZg=; b=kt5g2WWebThwOMzw42zeRAtCG
+	z01OLjFDJ+BhoxTMif+SGR3HL3tMnKtGX6rTF20Azr09ElWpHojI4DF3Gt9TqXQ/4bvkjcbWoaLQs
+	KVKObNFgLooe8X4cYV1xtqIOo39oNRtZk7h3sgGxD0lV2fymIOOdY3W0U1CzsPairx6dAqENwhzWk
+	nBHK1UDAoHJx9qYRYgJkTaQQq3T/bIxX6l/S1uOG5YGW4+0VMdxOfM/8u1mP5UP+JAjbm7eNdIRJ1
+	DYNI4ArQvdNsKSKmoF+boayWL7d0XDT/by5nP+fmDP/Z0ctB/lWfZBraAN+2AULMRVBLY2zb7OUal
+	xLVUc9kww==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaKBm-0007cW-9W; Wed, 04 Nov 2020 14:55:06 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1kaKvW-0004AK-SU; Wed, 04 Nov 2020 15:42:22 +0000
+Received: from mail-vk1-xa42.google.com ([2607:f8b0:4864:20::a42])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaKBj-0007ap-FO
- for linux-rockchip@lists.infradead.org; Wed, 04 Nov 2020 14:55:04 +0000
-IronPort-SDR: vH8asns7GJjm0wW76aAnFFKV4DzMu2fhf3CYAodXXAn8UBGACiqon881oH5oJ804eD0R3V+zif
- kk5qlROxiIRg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9794"; a="233387699"
-X-IronPort-AV: E=Sophos;i="5.77,451,1596524400"; d="scan'208";a="233387699"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2020 06:55:01 -0800
-IronPort-SDR: K9ceXkebkyg5AG26Y9bkZ8doR2GXgIG/CoM1APC2iDFx+jxJ/7aZFYFSnSmK+PC2+LthD5C0yI
- c3DEfb5S8B6w==
-X-IronPort-AV: E=Sophos;i="5.77,451,1596524400"; d="scan'208";a="320829813"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Nov 2020 06:54:58 -0800
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id ECF9A20B51; Wed,  4 Nov 2020 16:54:56 +0200 (EET)
-Date: Wed, 4 Nov 2020 16:54:56 +0200
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH v3 1/2] media: uapi: add MEDIA_BUS_FMT_METADATA_FIXED
- media bus format.
-Message-ID: <20201104145456.GR26150@paasikivi.fi.intel.com>
-References: <20201030134609.30020-1-dafna.hirschfeld@collabora.com>
- <20201030140241.GQ26150@paasikivi.fi.intel.com>
- <5c8852f5-a803-1bd0-7798-3cca0d7ee9ea@xs4all.nl>
- <20201104123218.GQ26150@paasikivi.fi.intel.com>
- <573fb8b3-e4fd-9239-a407-e904ed18ff3f@xs4all.nl>
+ id 1kaKvS-00048e-9S
+ for linux-rockchip@lists.infradead.org; Wed, 04 Nov 2020 15:42:19 +0000
+Received: by mail-vk1-xa42.google.com with SMTP id m3so4568663vki.12
+ for <linux-rockchip@lists.infradead.org>; Wed, 04 Nov 2020 07:42:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=/FtdeSUhs74nhRFArqfFNBt0MhUao+F2IwHVVHi0aS0=;
+ b=R2E/Db42MGI+YnyGlaOGsgu2dpWlTR02Cg/FLj+Kp3JW23/91+RSpJo6HIb2Vd2OxD
+ UhNWS7AO+DC76rP5D8KfB+CIk1uhYDJJ6pcTAwzO6R7MNOTDwKRNW11SbspmVk4xCsEn
+ 47OyYvCfBw3qGLbqq+IDebwZRM8ydfmrcxmdE=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=/FtdeSUhs74nhRFArqfFNBt0MhUao+F2IwHVVHi0aS0=;
+ b=lAZDnQ1c4QyXrcTc45PfjXkYWfyjFBuzqHgT10Wu+BPRT8TavDo2x2j0wmzRitvJE+
+ s61Y84FLgs3YjTyAYG5KDfk2GqZ/ejwUi6edA73h2LB04G0fyrK5Q8yp9E6UMEVg7KuG
+ iKIj5z2dcar1QJC+hhSLdNPehNIHGqN5kb6GCNgLadvmg4k/eR5nqxC97Bx8IItOguS0
+ h/4EmdfH5lYGjxQg8Wkh4p2I9Z67+mHLTYtojLOtyb9lV/nzeHkjPig5RccxV/Mej8VQ
+ wyaVrGXJ4s6p1tSERLVDiDdMLBdlIShbmaN3ebzbfssySY5ZoyftEWRwXB7k8WxGXVyH
+ jXaw==
+X-Gm-Message-State: AOAM530pQuMZS8dDNkUmhINAA/N1re93A4Edj/h3NUxYFiM2yZDTW1FP
+ k+UVoze1tI6sO8xMY/dtuz2+n8bvVntsNg==
+X-Google-Smtp-Source: ABdhPJxNeUwaRGiU6ugnRhBm2tfphR6Bi6NbSN+f2bDDQuhia+pzBrjZEsr1ny9oSjkD07metyYJDQ==
+X-Received: by 2002:a1f:ccc5:: with SMTP id c188mr19719231vkg.4.1604504535026; 
+ Wed, 04 Nov 2020 07:42:15 -0800 (PST)
+Received: from mail-vs1-f44.google.com (mail-vs1-f44.google.com.
+ [209.85.217.44])
+ by smtp.gmail.com with ESMTPSA id z1sm300870vka.37.2020.11.04.07.42.14
+ for <linux-rockchip@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 04 Nov 2020 07:42:14 -0800 (PST)
+Received: by mail-vs1-f44.google.com with SMTP id y78so11699500vsy.6
+ for <linux-rockchip@lists.infradead.org>; Wed, 04 Nov 2020 07:42:14 -0800 (PST)
+X-Received: by 2002:a67:ef98:: with SMTP id r24mr8004994vsp.37.1604504533670; 
+ Wed, 04 Nov 2020 07:42:13 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <573fb8b3-e4fd-9239-a407-e904ed18ff3f@xs4all.nl>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20201104094950.2096-1-m.reichl@fivetechno.de>
+ <4984701.vSXMUKeAfh@diego>
+In-Reply-To: <4984701.vSXMUKeAfh@diego>
+From: Doug Anderson <dianders@chromium.org>
+Date: Wed, 4 Nov 2020 07:42:01 -0800
+X-Gmail-Original-Message-ID: <CAD=FV=V2Vv0bv-exiZ6VrOtfMM5TVpjATO04qaXeGWDRu+6vyw@mail.gmail.com>
+Message-ID: <CAD=FV=V2Vv0bv-exiZ6VrOtfMM5TVpjATO04qaXeGWDRu+6vyw@mail.gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Assign a fixed index to mmc devices
+ on rk3399-roc-pc boards.
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_095503_749157_D7EA7D7B 
-X-CRM114-Status: GOOD (  39.65  )
+X-CRM114-CacheID: sfid-20201104_104218_413931_E870EB8E 
+X-CRM114-Status: GOOD (  23.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,153 +100,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- dafna3@gmail.com, tfiga@chromium.org, linux-rockchip@lists.infradead.org,
- helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
- kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Rob Herring <robh@kernel.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>, LKML <linux-kernel@vger.kernel.org>,
+ Markus Reichl <m.reichl@fivetechno.de>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Mark Brown <broonie@kernel.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Hans,
-
-On Wed, Nov 04, 2020 at 02:46:39PM +0100, Hans Verkuil wrote:
-> On 04/11/2020 13:32, Sakari Ailus wrote:
-> > Hi Hans,
-> > 
-> > On Wed, Nov 04, 2020 at 01:16:03PM +0100, Hans Verkuil wrote:
-> >> On 30/10/2020 15:02, Sakari Ailus wrote:
-> >>> Hi Dafna,
-> >>>
-> >>> On Fri, Oct 30, 2020 at 02:46:08PM +0100, Dafna Hirschfeld wrote:
-> >>>> MEDIA_BUS_FMT_METADATA_FIXED should be used when
-> >>>> the same driver handles both sides of the link and
-> >>>> the bus format is a fixed metadata format that is
-> >>>> not configurable from userspace.
-> >>>> The width and height will be set to 0 for this format.
-> >>>>
-> >>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> >>>> Acked-by: Helen Koike <helen.koike@collabora.com>
-> >>>> ---
-> >>>> changes since v2:
-> >>>> added documentation in subdev-formats.rst
-> >>>> changes since v1:
-> >>>> 1. replace "This format may have 0 height and width."
-> >>>> with "Width and height will be set to 0 for this format."
-> >>>> and add it also to the commit log
-> >>>> 2. s/meida:/media:/ in the patch subject line
-> >>>>
-> >>>>  .../media/v4l/subdev-formats.rst              | 27 +++++++++++++++++++
-> >>>>  include/uapi/linux/media-bus-format.h         |  8 ++++++
-> >>>>  2 files changed, 35 insertions(+)
-> >>>>
-> >>>> diff --git a/Documentation/userspace-api/media/v4l/subdev-formats.rst b/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> >>>> index c9b7bb3ca089..7f16cbe46e5c 100644
-> >>>> --- a/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> >>>> +++ b/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> >>>> @@ -7899,3 +7899,30 @@ formats.
-> >>>>        - 0x5001
-> >>>>        - Interleaved raw UYVY and JPEG image format with embedded meta-data
-> >>>>  	used by Samsung S3C73MX camera sensors.
-> >>>> +
-> >>>> +.. _v4l2-mbus-metadata-fmts:
-> >>>> +
-> >>>> +Metadata Formats
-> >>>> +^^^^^^^^^^^^^^^^
-> >>>> +
-> >>>> +This section lists all metadata formats.
-> >>>> +
-> >>>> +The following table lists the existing metadata formats.
-> >>>> +
-> >>>> +.. tabularcolumns:: |p{8.0cm}|p{1.4cm}|p{7.7cm}|
-> >>>> +
-> >>>> +.. flat-table:: Metadata formats
-> >>>> +    :header-rows:  1
-> >>>> +    :stub-columns: 0
-> >>>> +
-> >>>> +    * - Identifier
-> >>>> +      - Code
-> >>>> +      - Comments
-> >>>> +    * .. _MEDIA-BUS-FMT-METADATA-FIXED:
-> >>>> +
-> >>>> +      - MEDIA_BUS_FMT_METADATA_FIXED
-> >>>> +      - 0x7001
-> >>>> +      - This format should be used when the same driver handles
-> >>>> +	both sides of the link and the bus format is a fixed
-> >>>> +	metadata format that is not configurable from userspace.
-> >>>> +	Width and height will be set to 0 for this format.
-> >>>> diff --git a/include/uapi/linux/media-bus-format.h b/include/uapi/linux/media-bus-format.h
-> >>>> index 84fa53ffb13f..2ce3d891d344 100644
-> >>>> --- a/include/uapi/linux/media-bus-format.h
-> >>>> +++ b/include/uapi/linux/media-bus-format.h
-> >>>> @@ -156,4 +156,12 @@
-> >>>>  /* HSV - next is	0x6002 */
-> >>>>  #define MEDIA_BUS_FMT_AHSV8888_1X32		0x6001
-> >>>>  
-> >>>> +/*
-> >>>> + * This format should be used when the same driver handles
-> >>>> + * both sides of the link and the bus format is a fixed
-> >>>> + * metadata format that is not configurable from userspace.
-> >>>> + * Width and height will be set to 0 for this format.
-> >>>> + */
-> >>>
-> >>> Does this mean that metadata with dimensions should not use
-> >>> MEDIA_BUS_FMT_METADATA_FIXED? I guess that's not the intention? For some
-> >>> formats the dimensions would be relevant but for others not. I'd thus
-> >>> replace "will" by "may". Same for the documentation.
-> >>
-> >> struct v4l2_meta_format as used with VIDIOC_G/S/TRY_FMT doesn't have
-> >> a width or height either. Supporting width and height for metadata
-> >> doesn't really make sense for me for metadata.
-> >>
-> >> Explicitly specifying the width and height here indicates that the
-> >> data is basically an array of width x height of some sort which makes
-> >> sense for video devices.
-> >>
-> >> Metadata is more complex data that cannot be represented like that.
-> >> If metadata is actually an array, then I'm not sure I would call it
-> >> metadata, I would probably see it as video with its own pixelformat
-> >> that contains non-video data.
-> > 
-> > Let's say the metadata is laid out in a similar way than an image; you have
-> > lines of data, followed by some padding at the end, and a line has length
-> > and a buffer has a number of lines. Sensor metadata falls into this
-> > description.
-> > 
-> > Would you then use struct v4l2_pix_format for it, and use
-> > V4L2_BUF_TYPE_VIDEO_CAPTURE for it?
-> 
-> Yes. It's still metadata, but it has the same 'format' as video data.
-> We have similar situations such as with v4l-touch devices: the data
-> is formatted like video, but it is actually pressure values from a
-> touch pad. But it is 'video-like' in its behavior.
-> 
-> > 
-> > That would make a few things easier but this is still metadata, not video
-> > data. Albeit I guess it's not important to be so strict about that
-> > interface-wise, indeed this is not a bad fit for such metadata. Still some
-> > fields such as colourspace and quantisation are not relevant, but that
-> > holds also for some pixel formats.
-> > 
-> 
-> So are you OK with setting width and height to 0 for MEDIA_BUS_FMT_METADATA_*?
-
-One more question.
-
-What do you do if a link can carry both metadata (as in
-V4L2_BUF_TYPE_METADATA_CAPTURE) as well as pixel data, but with a fixed
-format?
-
-I'm not sure we have any such case at the moment but it's not
-inconceivable.
-
--- 
-Regards,
-
-Sakari Ailus
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpPbiBXZWQsIE5vdiA0LCAyMDIwIGF0IDI6NTEgQU0gSGVpa28gU3TDvGJuZXIgPGhlaWtv
+QHNudGVjaC5kZT4gd3JvdGU6Cj4KPiBIaSBNYXJrdXMsCj4KPiBBbSBNaXR0d29jaCwgNC4gTm92
+ZW1iZXIgMjAyMCwgMTA6NDk6NDUgQ0VUIHNjaHJpZWIgTWFya3VzIFJlaWNobDoKPiA+IFJlY2Vu
+dGx5IGludHJvZHVjZWQgYXN5bmMgcHJvYmUgb24gbW1jIGRldmljZXMgY2FuIHNodWZmbGUgYmxv
+Y2sgSURzLgo+ID4gUGluIHRoZW0gdG8gZml4ZWQgdmFsdWVzIHRvIGVhc2UgYm9vdGluZyBpbiBl
+dmlyb25tZW50cyB3aGVyZSBVVUlEcwo+ID4gYXJlIG5vdCBwcmFjdGljYWwuIFVzZSBuZXdseSBp
+bnRyb2R1Y2VkIGFsaWFzZXMgZm9yIG1tY2JsayBkZXZpY2VzIGZyb20gWzFdLgo+ID4KPiA+IFsx
+XQo+ID4gaHR0cHM6Ly9wYXRjaHdvcmsua2VybmVsLm9yZy9wYXRjaC8xMTc0NzY2OS8KPiA+Cj4g
+PiBTaWduZWQtb2ZmLWJ5OiBNYXJrdXMgUmVpY2hsIDxtLnJlaWNobEBmaXZldGVjaG5vLmRlPgo+
+ID4gLS0tCj4gPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcm9jLXBjLmR0
+c2kgfCA1ICsrKysrCj4gPiAgMSBmaWxlIGNoYW5nZWQsIDUgaW5zZXJ0aW9ucygrKQo+ID4KPiA+
+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2MtcGMu
+ZHRzaSBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvYy1wYy5kdHNpCj4g
+PiBpbmRleCBlN2E0NTlmYTQzMjIuLmJjOTQ4MmI1OTQyOCAxMDA2NDQKPiA+IC0tLSBhL2FyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJvYy1wYy5kdHNpCj4gPiArKysgYi9hcmNo
+L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1yb2MtcGMuZHRzaQo+ID4gQEAgLTEzLDYg
+KzEzLDExIEBAIC8gewo+ID4gICAgICAgbW9kZWwgPSAiRmlyZWZseSBST0MtUkszMzk5LVBDIEJv
+YXJkIjsKPiA+ICAgICAgIGNvbXBhdGlibGUgPSAiZmlyZWZseSxyb2MtcmszMzk5LXBjIiwgInJv
+Y2tjaGlwLHJrMzM5OSI7Cj4gPgo+ID4gKyAgICAgYWxpYXNlcyB7Cj4gPiArICAgICAgICAgICAg
+IG1tYzAgPSAmc2RtbWM7Cj4gPiArICAgICAgICAgICAgIG1tYzEgPSAmc2RoY2k7Cj4gPiArICAg
+ICB9Owo+ID4gKwo+Cj4gQW55IHJlYXNvbiBmb3IgdGhpcyBvZGVyaW5nPwo+Cj4gSS5lLiBzb21l
+IHByZXZpb3VzIGluY2FybmF0aW9ucyBoYWQgaXQgb3JkZXJlZCBhcyAoZW1tYywgbW1jLCBzZGlv
+KS4KPiBUaGlzIGlzIGFsc28gdHJ1ZSBmb3IgdGhlIENocm9tZU9TIG91dC1vZi10cmVlIHVzYWdl
+IG9mIHRob3NlLCB0aGUKPiByazMzOTkgZHRzIGluIHRoZSBjaHJvbWVvcy00LjQgdHJlZSBhbHNv
+IG9yZGVycyB0aGlzIGFzIHNkaGNpLCBzZG1tYywgc2Rpby4KPgo+IEFuZCBJIGd1ZXNzIGEgZnVy
+dGhlciBxdWVzdGlvbiB3b3VsZCBiZSB3aGVuIHdlJ3JlIGRvaW5nIGFyYml0YXJ5IG9yZGVyaW5n
+cwo+IGFueXdheSwgd2h5IGlzIHRoaXMgbm90IGluIHJrMzM5OS5kdHNpIDstKSA/CgpUaG91Z2gg
+SSBwZXJzb25hbGx5IGxpa2UgdGhlIGlkZWEgb2YgZU1NQywgd2hpY2ggaXMgdHlwaWNhbGx5CmJ1
+aWx0LWluLCBhcyBiZWluZyB0aGUgIjAiIG51bWJlciwgSSdtIHBlcnNvbmFsbHkgaGFwcHkgd2l0
+aCBhbnkKbnVtYmVyaW5nIHNjaGVtZSB0aGF0J3MgY29uc2lzdGVudC4gIE9yZGVyaW5nIHRoZW0g
+YnkgYmFzZSBhZGRyZXNzIGlzCk9LIHcvIG1lIGFuZCBzZWVtcyBsZXNzIGNvbnRyb3ZlcnNpYWwu
+ICBUaGF0IHNlZW1zIGxpa2UgaXQgY291bGQgZ28gaW4KcmszMzk5LmR0c2kgYW5kIHRoZW4gaWYg
+YSBwYXJ0aWN1bGFyIGJvYXJkIHdhbnRlZCBhIGRpZmZlcmVudCBvcmRlcgp0aGV5IGNvdWxkIG92
+ZXJyaWRlIGl0IGluIHRoZWlyIGJvYXJkIGZpbGUuICBUaGUgZG93bnNpZGUgb2YgcHV0dGluZwpp
+biByazMzOTkgaXMgdGhhdCBib2FyZHMgdGhhdCBkb24ndCBoYXZlIGFsbCBTRC9NTUMgaW50ZXJm
+YWNlcyBlbmFibGVkCndvdWxkIGRlZmluaXRlbHkgZ2V0IGEgbmV3IG51bWJlciBjb21wYXJlZCB0
+byBvbGQga2VybmVscywgYnV0CmhvcGVmdWxseSB0aGlzIGlzIHRoZSBsYXN0IHRpbWU/CgotRG91
+ZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
