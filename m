@@ -2,81 +2,64 @@ Return-Path: <SRS0=eRos=EL=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 29610C55179
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 14:45:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 90299C4742C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 14:54:32 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 874502087D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 14:45:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 1EFC720719
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 14:54:32 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="13kMqNg8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 874502087D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="pPWQbwG+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1EFC720719
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=esb2bx0YlDLhuLJnTFsGaRI9CipnjqO7GVC3hypVmd8=; b=13kMqNg88a39N+JxlHThFsTDG
-	5Th4XsfXrZOlzo6+vmirRYrJJbmsugqnQu/mCpShQbmk0ovh21LJbXK/nzM8hH+8+SCGbGcdXYuUQ
-	tJtRGoGYN7qDdk2zF9puc7JO8pacZKRtapgVB4oNAln89H6PATWdviUuS7tUNnhYm3eEGoRuHz3Ui
-	v9kGz0Ntk8yYlJsyINdh/D1fxLUrvvqDxKSGltLkxfcaeRQaa5VdUTmbwTLK/OcEIDzNDJrgncHLi
-	OZAwfvpigNS/QiEs9o900JhIxd0MZDVsIllOcPjP1vFmmU31UZG7BiSsEe63wM2OLpfe8YgBm5CJc
-	OpKM6g6Tg==;
+	 bh=Wrx3t+gw33i3hV6odXpQSvhQwO7jFFpVZmZmkmaITnU=; b=pPWQbwG+4YefGu6zYlRA6hwFY
+	J08+eBD5g2aFnekcrh1L3ziR0ac+DxEfwDnh8qTvkjf166KGnpjUYA2o+OVM5S0DhsmGbIduD5Cwx
+	LLjarm0EjEtvtdoEU4luNR76G+z9o5PQSDKWjcDf+SEtOWdKeJS8lUg3Ar6YzvP0KpVDEYZCu6+zt
+	uUN7UxAGHbs2hCouzatWn1dGtc0uIxpPlb2Y7DCG19LygCeUjiaWBTrXuwY6EQEu5zXujX8vTFTRe
+	NyVazOAQRC3Xk61rs7rXs+VlnrQqItJTZXpYdqk06/QlqJh8elAjR0l5+WfNeMQPjNcBZ2snlTa80
+	RjtYju5tQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kagVe-0007NF-JE; Thu, 05 Nov 2020 14:45:06 +0000
-Received: from mga05.intel.com ([192.55.52.43])
- by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kagVb-0007Lt-UR
- for linux-rockchip@lists.infradead.org; Thu, 05 Nov 2020 14:45:05 +0000
-IronPort-SDR: BnAVzuXqgwStv198cKJQcf0UxibYGLlud7BNdrGJ8gpDWG2DFvzG8rVaBmlSagrtYnBdefMEOC
- dVM8SJmUvZeQ==
-X-IronPort-AV: E=McAfee;i="6000,8403,9795"; a="254097143"
-X-IronPort-AV: E=Sophos;i="5.77,453,1596524400"; d="scan'208";a="254097143"
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2020 06:44:56 -0800
-IronPort-SDR: ywPHE07AamyMKCKp+OiDPGAiXIAYQzkkTfleoPk6ZST0Frlx9Jd0Rj+xRsMVX9qUlj0y5fyawt
- +ZRKG86XH0ZQ==
-X-IronPort-AV: E=Sophos;i="5.77,453,1596524400"; d="scan'208";a="364360360"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
- by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2020 06:44:53 -0800
-Received: by paasikivi.fi.intel.com (Postfix, from userid 1000)
- id 0B30420901; Thu,  5 Nov 2020 16:44:51 +0200 (EET)
-Date: Thu, 5 Nov 2020 16:44:51 +0200
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Subject: Re: [PATCH v3 1/2] media: uapi: add MEDIA_BUS_FMT_METADATA_FIXED
- media bus format.
-Message-ID: <20201105144450.GJ26150@paasikivi.fi.intel.com>
-References: <20201030134609.30020-1-dafna.hirschfeld@collabora.com>
- <20201030140241.GQ26150@paasikivi.fi.intel.com>
- <5c8852f5-a803-1bd0-7798-3cca0d7ee9ea@xs4all.nl>
- <20201104123218.GQ26150@paasikivi.fi.intel.com>
- <573fb8b3-e4fd-9239-a407-e904ed18ff3f@xs4all.nl>
- <20201104145456.GR26150@paasikivi.fi.intel.com>
- <98059490-6ab1-c895-5a20-e1b14b70c624@xs4all.nl>
- <20201105124542.GE26150@paasikivi.fi.intel.com>
- <851de312-7c6b-a0a0-0a3c-70a9a27cb0b5@collabora.com>
+	id 1kagef-0001iC-OQ; Thu, 05 Nov 2020 14:54:26 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kaged-0001gu-JP
+ for linux-rockchip@lists.infradead.org; Thu, 05 Nov 2020 14:54:24 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D7C8B14BF;
+ Thu,  5 Nov 2020 06:54:22 -0800 (PST)
+Received: from [10.57.54.223] (unknown [10.57.54.223])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id AFD583F718;
+ Thu,  5 Nov 2020 06:54:21 -0800 (PST)
+Subject: Re: [PATCH] pinctrl: Remove hole in pinctrl_gpio_range
+To: Linus Walleij <linus.walleij@linaro.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>
+References: <20201028145117.1731876-1-geert+renesas@glider.be>
+ <CACRpkdayhrcfyXEB4P+apjOyF=8DZgmu=_H8+aQEr4XEbB0NeQ@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+Message-ID: <77bc14cd-7e47-6972-ee0b-fa72bb9e9fad@arm.com>
+Date: Thu, 5 Nov 2020 14:54:21 +0000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <851de312-7c6b-a0a0-0a3c-70a9a27cb0b5@collabora.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <CACRpkdayhrcfyXEB4P+apjOyF=8DZgmu=_H8+aQEr4XEbB0NeQ@mail.gmail.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201105_094504_130289_8820425A 
-X-CRM114-Status: GOOD (  52.08  )
+X-CRM114-CacheID: sfid-20201105_095423_721984_BC85828B 
+X-CRM114-Status: GOOD (  15.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,176 +72,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Jacopo Mondi <jacopo@jmondi.org>, mchehab@kernel.org, dafna3@gmail.com,
- tfiga@chromium.org, Hans Verkuil <hverkuil@xs4all.nl>,
- linux-rockchip@lists.infradead.org, helen.koike@collabora.com,
- laurent.pinchart@ideasonboard.com, kernel@collabora.com,
- ezequiel@collabora.com, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
+Cc: "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 05, 2020 at 03:21:45PM +0100, Dafna Hirschfeld wrote:
-> Hi
+On 2020-11-05 13:57, Linus Walleij wrote:
+> On Wed, Oct 28, 2020 at 3:51 PM Geert Uytterhoeven
+> <geert+renesas@glider.be> wrote:
 > 
-> Am 05.11.20 um 13:45 schrieb Sakari Ailus:
-> > On Thu, Nov 05, 2020 at 01:35:00PM +0100, Hans Verkuil wrote:
-> > > On 04/11/2020 15:54, Sakari Ailus wrote:
-> > > > Hi Hans,
-> > > > 
-> > > > On Wed, Nov 04, 2020 at 02:46:39PM +0100, Hans Verkuil wrote:
-> > > > > On 04/11/2020 13:32, Sakari Ailus wrote:
-> > > > > > Hi Hans,
-> > > > > > 
-> > > > > > On Wed, Nov 04, 2020 at 01:16:03PM +0100, Hans Verkuil wrote:
-> > > > > > > On 30/10/2020 15:02, Sakari Ailus wrote:
-> > > > > > > > Hi Dafna,
-> > > > > > > > 
-> > > > > > > > On Fri, Oct 30, 2020 at 02:46:08PM +0100, Dafna Hirschfeld wrote:
-> > > > > > > > > MEDIA_BUS_FMT_METADATA_FIXED should be used when
-> > > > > > > > > the same driver handles both sides of the link and
-> > > > > > > > > the bus format is a fixed metadata format that is
-> > > > > > > > > not configurable from userspace.
-> > > > > > > > > The width and height will be set to 0 for this format.
-> > > > > > > > > 
-> > > > > > > > > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> > > > > > > > > Acked-by: Helen Koike <helen.koike@collabora.com>
-> > > > > > > > > ---
-> > > > > > > > > changes since v2:
-> > > > > > > > > added documentation in subdev-formats.rst
-> > > > > > > > > changes since v1:
-> > > > > > > > > 1. replace "This format may have 0 height and width."
-> > > > > > > > > with "Width and height will be set to 0 for this format."
-> > > > > > > > > and add it also to the commit log
-> > > > > > > > > 2. s/meida:/media:/ in the patch subject line
-> > > > > > > > > 
-> > > > > > > > >   .../media/v4l/subdev-formats.rst              | 27 +++++++++++++++++++
-> > > > > > > > >   include/uapi/linux/media-bus-format.h         |  8 ++++++
-> > > > > > > > >   2 files changed, 35 insertions(+)
-> > > > > > > > > 
-> > > > > > > > > diff --git a/Documentation/userspace-api/media/v4l/subdev-formats.rst b/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> > > > > > > > > index c9b7bb3ca089..7f16cbe46e5c 100644
-> > > > > > > > > --- a/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> > > > > > > > > +++ b/Documentation/userspace-api/media/v4l/subdev-formats.rst
-> > > > > > > > > @@ -7899,3 +7899,30 @@ formats.
-> > > > > > > > >         - 0x5001
-> > > > > > > > >         - Interleaved raw UYVY and JPEG image format with embedded meta-data
-> > > > > > > > >   	used by Samsung S3C73MX camera sensors.
-> > > > > > > > > +
-> > > > > > > > > +.. _v4l2-mbus-metadata-fmts:
-> > > > > > > > > +
-> > > > > > > > > +Metadata Formats
-> > > > > > > > > +^^^^^^^^^^^^^^^^
-> > > > > > > > > +
-> > > > > > > > > +This section lists all metadata formats.
-> > > > > > > > > +
-> > > > > > > > > +The following table lists the existing metadata formats.
-> > > > > > > > > +
-> > > > > > > > > +.. tabularcolumns:: |p{8.0cm}|p{1.4cm}|p{7.7cm}|
-> > > > > > > > > +
-> > > > > > > > > +.. flat-table:: Metadata formats
-> > > > > > > > > +    :header-rows:  1
-> > > > > > > > > +    :stub-columns: 0
-> > > > > > > > > +
-> > > > > > > > > +    * - Identifier
-> > > > > > > > > +      - Code
-> > > > > > > > > +      - Comments
-> > > > > > > > > +    * .. _MEDIA-BUS-FMT-METADATA-FIXED:
-> > > > > > > > > +
-> > > > > > > > > +      - MEDIA_BUS_FMT_METADATA_FIXED
-> > > > > > > > > +      - 0x7001
-> > > > > > > > > +      - This format should be used when the same driver handles
-> > > > > > > > > +	both sides of the link and the bus format is a fixed
-> > > > > > > > > +	metadata format that is not configurable from userspace.
-> > > > > > > > > +	Width and height will be set to 0 for this format.
-> > > > > > > > > diff --git a/include/uapi/linux/media-bus-format.h b/include/uapi/linux/media-bus-format.h
-> > > > > > > > > index 84fa53ffb13f..2ce3d891d344 100644
-> > > > > > > > > --- a/include/uapi/linux/media-bus-format.h
-> > > > > > > > > +++ b/include/uapi/linux/media-bus-format.h
-> > > > > > > > > @@ -156,4 +156,12 @@
-> > > > > > > > >   /* HSV - next is	0x6002 */
-> > > > > > > > >   #define MEDIA_BUS_FMT_AHSV8888_1X32		0x6001
-> > > > > > > > > +/*
-> > > > > > > > > + * This format should be used when the same driver handles
-> > > > > > > > > + * both sides of the link and the bus format is a fixed
-> > > > > > > > > + * metadata format that is not configurable from userspace.
-> > > > > > > > > + * Width and height will be set to 0 for this format.
-> > > > > > > > > + */
-> > > > > > > > 
-> > > > > > > > Does this mean that metadata with dimensions should not use
-> > > > > > > > MEDIA_BUS_FMT_METADATA_FIXED? I guess that's not the intention? For some
-> > > > > > > > formats the dimensions would be relevant but for others not. I'd thus
-> > > > > > > > replace "will" by "may". Same for the documentation.
-> > > > > > > 
-> > > > > > > struct v4l2_meta_format as used with VIDIOC_G/S/TRY_FMT doesn't have
-> > > > > > > a width or height either. Supporting width and height for metadata
-> > > > > > > doesn't really make sense for me for metadata.
-> > > > > > > 
-> > > > > > > Explicitly specifying the width and height here indicates that the
-> > > > > > > data is basically an array of width x height of some sort which makes
-> > > > > > > sense for video devices.
-> > > > > > > 
-> > > > > > > Metadata is more complex data that cannot be represented like that.
-> > > > > > > If metadata is actually an array, then I'm not sure I would call it
-> > > > > > > metadata, I would probably see it as video with its own pixelformat
-> > > > > > > that contains non-video data.
-> > > > > > 
-> > > > > > Let's say the metadata is laid out in a similar way than an image; you have
-> > > > > > lines of data, followed by some padding at the end, and a line has length
-> > > > > > and a buffer has a number of lines. Sensor metadata falls into this
-> > > > > > description.
-> > > > > > 
-> > > > > > Would you then use struct v4l2_pix_format for it, and use
-> > > > > > V4L2_BUF_TYPE_VIDEO_CAPTURE for it?
-> > > > > 
-> > > > > Yes. It's still metadata, but it has the same 'format' as video data.
-> > > > > We have similar situations such as with v4l-touch devices: the data
-> > > > > is formatted like video, but it is actually pressure values from a
-> > > > > touch pad. But it is 'video-like' in its behavior.
-> > > > > 
-> > > > > > 
-> > > > > > That would make a few things easier but this is still metadata, not video
-> > > > > > data. Albeit I guess it's not important to be so strict about that
-> > > > > > interface-wise, indeed this is not a bad fit for such metadata. Still some
-> > > > > > fields such as colourspace and quantisation are not relevant, but that
-> > > > > > holds also for some pixel formats.
-> > > > > > 
-> > > > > 
-> > > > > So are you OK with setting width and height to 0 for MEDIA_BUS_FMT_METADATA_*?
-> > > > 
-> > > > One more question.
-> > > > 
-> > > > What do you do if a link can carry both metadata (as in
-> > > > V4L2_BUF_TYPE_METADATA_CAPTURE) as well as pixel data, but with a fixed
-> > > > format?
-> > > > 
-> > > > I'm not sure we have any such case at the moment but it's not
-> > > > inconceivable.
-> > > > 
-> > > 
-> > > This should be reflected in the mediabus format. So METADATA_FIXED if it carries
-> > > metadata, or a video format if it carries video. Userspace could configure this
-> > > with VIDIOC_SUBDEV_S_FMT if it is something that userspace can actually change.
-> > 
-> > Works for me.
-> > 
-> > Acked-by: Sakari Ailus <sakari.ailus@linux.intel.com>
-> > 
+>> On 64-bit platforms, pointer size and alignment are 64-bit, hence two
+>> 4-byte holes are present before the pins and gc members of the
+>> pinctrl_gpio_range structure.  Get rid of these holes by moving the
+>> pins pointer.
+>>
+>> This reduces kernel size of an arm64 Rockchip kernel by ca. 512 bytes.
+>>
+>> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+>> ---
+>> Compile-tested only (arm/multi_v7_defconfig and arm64/defconfig).
 > 
-> Hi,
-> There is another patch sent by jmondi that adds csi-2 embedded data format:
+> Patch applied.
 > 
-> https://patchwork.kernel.org/project/linux-media/patch/20201102165258.408049-3-jacopo@jmondi.org/
-> 
-> Maybe it worth thinking already how those two patches should fit together.
-> Currently they both try to acquire 0x7001 code.
+> Do you think it'd be worth it to add a check to checkpatch to suggest
+> to move pointers toward the end of any struct?
 
-I'll reply to Jacopo. This will at least require discussion, as not all
-metadata is created equal.
+For a general rule, I thought that ordering struct members largest-first 
+was the conventional wisdom, since that way no sensible compiler would 
+add padding between any members, only at the end?
 
--- 
-Sakari Ailus
+That said, the trouble with any checkpatch rule is that people will 
+inevitably try to apply it indiscriminately. With structure layout, that 
+could often end up hurting readability and/or performance (via cache 
+effects), while in many cases making no actual difference to the overall 
+size anyway.
+
+Robin.
 
 _______________________________________________
 Linux-rockchip mailing list
