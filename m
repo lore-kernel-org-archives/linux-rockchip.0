@@ -2,61 +2,82 @@ Return-Path: <SRS0=eRos=EL=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 132D5C388F7
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 10:37:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 714BBC00A89
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 12:35:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6F719206E3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 10:37:22 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 869452078E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 12:35:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mcAjnfPb"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6F719206E3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="NpxoosuJ";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=xs4all.nl header.i=@xs4all.nl header.b="cue1Zrhw"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 869452078E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:Date:Message-ID:Subject:From:References:To:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/MTztQaT64RD1gG1RRZobZedg/crh5ZzOFaX3QoDAZ0=; b=mcAjnfPbIzx88q+gI077MpN8X
-	MJafRApz0RnUBdOAgZ7WQOW1BgKgHieKRUPnSGheEIURqaIP54S95Se9K0y12sq8bhP8EvWmIwhIi
-	YKtxAg1ZTBOptvOuicUqBUqlRWuZIOIbG+4hfCfpiZQmCqIIatuvFD7PYklBp1pmkPgfp+EMZWTqb
-	xXODVBNXt1l0CcXn+eCAKNrVmUS7uJDh2EaCn7CidhlSIBZcJXcjYajsO5Srh3bMfokAWF+frY3I+
-	D5YwBcQuLO9MI4cgREEMg7GVnO5viNqjKmPPeCybjIlCM5o0wax2r+bWuxYlKw37WoamEswkV9MjG
-	p8eZpELFg==;
+	 bh=J5ZX8P3dQOiBM79ZLBTicizY/cg4fMZrc+s7o2/K9a4=; b=NpxoosuJQaG5sd2nVaR5/U9kv
+	zNBG/J9PhBWAeBE5PLKqJl0H8eXN5tqBFX1GLhxGCLvP5TOCFEG/gxQYg91dHUaFPUinghFNvOeQq
+	YtZhWAuYv/kwiy6D3+Sz4d/O7w7x8GItrJKejdAkdr+DSQ8OGprJ3sKaXQJhl0hVakFbNGAinCC/y
+	90spuLdcToxwqzDheZXUZVUGJhxwNBXGBZkZEHtOfR3f/eb9AMHBEPFQIm8xF+Wnz1wP1BIxVI2xB
+	lWm/5EfthR8AsJNxvqeely2MDpx13oOvHqW2hn1rRwxchULaio820hL/F8UF2IoR/d5ZTbxfNY9c0
+	yLYngM2yA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kacdp-0003Db-5o; Thu, 05 Nov 2020 10:37:17 +0000
-Received: from mx2.suse.de ([195.135.220.15])
+	id 1kaeU0-0002dj-Jk; Thu, 05 Nov 2020 12:35:16 +0000
+Received: from lb3-smtp-cloud8.xs4all.net ([194.109.24.29])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kacdm-0003Ci-Cx; Thu, 05 Nov 2020 10:37:15 +0000
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.221.27])
- by mx2.suse.de (Postfix) with ESMTP id DA1A7AD18;
- Thu,  5 Nov 2020 10:37:10 +0000 (UTC)
-To: Linus Walleij <linus.walleij@linaro.org>
-References: <20201020122046.31167-1-tzimmermann@suse.de>
- <20201020122046.31167-10-tzimmermann@suse.de>
- <CACRpkdbvGWKo8y323actUJn9xXmxpgDw1EKLiPH4RqB_kFx=XQ@mail.gmail.com>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v5 09/10] dma-buf-map: Add memcpy and pointer-increment
- interfaces
-Message-ID: <27acbd7e-d72e-4e05-c147-b50f56e21589@suse.de>
-Date: Thu, 5 Nov 2020 11:37:08 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.3
+ id 1kaeTx-0002cX-QQ
+ for linux-rockchip@lists.infradead.org; Thu, 05 Nov 2020 12:35:14 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud8.xs4all.net with ESMTPA
+ id aeTkkCup0NanzaeTnkoKTw; Thu, 05 Nov 2020 13:35:07 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s1;
+ t=1604579707; bh=CvSxDX9wQb32LlMB7/lzKcwReuyk6sk83rE6bpZrRTg=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=cue1Zrhw+WDA0Kno/d/AhCIaXxTc7ejXyUMgPtnC0AR6Lg6dWB00+c4SdYLrNWrA/
+ twVvivBK0jdkg/38zPJdzVZahmX0zFOlhJRNJ3MyYi+6icttGT005c2pNKR/kOAzKR
+ 7/b9JqwWKSpKvUYZ3t2PahLgg1ATVNv1N5BYA/daAeBbTa9sMyb5dcD0k5OxGyjJj+
+ BUs076Mc3JKv6fCHrbgRhoK/kI9I+XtzywODZEhjSWBcFiQGxbi53wIgsg6oCVYZE7
+ bq/uOx2ZeC2fu7b9kP1fkjgC0mP4C5OPYRJdYEeiBqfu9yRKPrU6xRaUAp4hRq/I1d
+ OuKKsn5XgmPYw==
+Subject: Re: [PATCH v3 1/2] media: uapi: add MEDIA_BUS_FMT_METADATA_FIXED
+ media bus format.
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+References: <20201030134609.30020-1-dafna.hirschfeld@collabora.com>
+ <20201030140241.GQ26150@paasikivi.fi.intel.com>
+ <5c8852f5-a803-1bd0-7798-3cca0d7ee9ea@xs4all.nl>
+ <20201104123218.GQ26150@paasikivi.fi.intel.com>
+ <573fb8b3-e4fd-9239-a407-e904ed18ff3f@xs4all.nl>
+ <20201104145456.GR26150@paasikivi.fi.intel.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <98059490-6ab1-c895-5a20-e1b14b70c624@xs4all.nl>
+Date: Thu, 5 Nov 2020 13:35:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <CACRpkdbvGWKo8y323actUJn9xXmxpgDw1EKLiPH4RqB_kFx=XQ@mail.gmail.com>
+In-Reply-To: <20201104145456.GR26150@paasikivi.fi.intel.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4xfESwrLD7Q/5VLr5TD8KhPZRccYDg4FzA8PK+X+KDPqAlmw5DszWyPAJgSYZQrVAsoAlwuWl7vRXOQcR1aDILVfic+aUyhv2b4KRX4erDVJgs8af5Wds5
+ N7iLPDysEGpMjucDbOZjscwipWsJdvb7D/jq7uOu3toS9enS2RJODU3+iEl1pS+AWM2d/eG+dn29OKaQ82QQHJB9anxRcktdiB5B8AOvjom7RYUi80o/XR6r
+ HjEd5XlhrMJdHbTciO4Ltb9a3SFwnxJu6nD4U8rFSR21feN16pOw2P6qVAX+1DyYxG/pzcn8ICZy3XQOCvzOJnDkAvAPd2oEh6ryvwp6qahbogGjeaIo5GTi
+ WhWTkHLyo5zdsyKGX234PQ6JgKGqxU/YOr0cqFRBZ0vJRN0iS+y4nf+3MO25AkPTrYTFCj3y2th/pZORMpyeE8YbV0IU0mPypX7JMaYbkyPa5gea5PwwKLFZ
+ PMmsR0Jxui2tD5NIZ6zMlPkhJKD+taM5I8A3xKHD1hF61BFPRzuUj8mHUSVh5HYbwG1aedPJehSuidmn9xumNX7JEF5kb6UEQXb+Wg==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201105_053714_702808_BB59CA84 
-X-CRM114-Status: GOOD (  29.03  )
+X-CRM114-CacheID: sfid-20201105_073513_971775_E83B70A3 
+X-CRM114-Status: GOOD (  28.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,353 +90,158 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: luben.tuikov@amd.com, =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- Dave Airlie <airlied@linux.ie>, nouveau@lists.freedesktop.org,
- "open list:DRM PANEL DRIVERS" <dri-devel@lists.freedesktop.org>,
- Chris Wilson <chris@chris-wilson.co.uk>, melissa.srw@gmail.com,
- Eric Anholt <eric@anholt.net>, ray.huang@amd.com,
- Gerd Hoffmann <kraxel@redhat.com>, Sam Ravnborg <sam@ravnborg.org>,
- Sumit Semwal <sumit.semwal@linaro.org>,
- Emil Velikov <emil.velikov@collabora.com>, Rob Herring <robh@kernel.org>,
- linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
- Joonyoung Shim <jy0922.shim@samsung.com>, lima@lists.freedesktop.org,
- Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>,
- Krzysztof Kozlowski <krzk@kernel.org>, steven.price@arm.com,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Kukjin Kim <kgene@kernel.org>, Ben Skeggs <bskeggs@redhat.com>,
- linux+etnaviv@armlinux.org.uk, spice-devel@lists.freedesktop.org,
- alyssa.rosenzweig@collabora.com,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- etnaviv@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>,
- Inki Dae <inki.dae@samsung.com>, Hans de Goede <hdegoede@redhat.com>,
- Christian Gmeiner <christian.gmeiner@gmail.com>,
- xen-devel@lists.xenproject.org, virtualization@lists.linux-foundation.org,
- Sean Paul <sean@poorly.run>, apaneers@amd.com,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linaro-mm-sig@lists.linaro.org, amd-gfx@lists.freedesktop.org,
- Tomeu Vizoso <tomeu.vizoso@collabora.com>,
- Seung-Woo Kim <sw0312.kim@samsung.com>, Sandy Huang <hjc@rock-chips.com>,
- Kyungmin Park <kyungmin.park@samsung.com>,
- Qinglang Miao <miaoqinglang@huawei.com>, yuq825@gmail.com,
- Daniel Vetter <daniel@ffwll.ch>, Alex Deucher <alexander.deucher@amd.com>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- Lucas Stach <l.stach@pengutronix.de>
-Content-Type: multipart/mixed; boundary="===============8998290314413817848=="
+Cc: mchehab@kernel.org, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ dafna3@gmail.com, tfiga@chromium.org, linux-rockchip@lists.infradead.org,
+ helen.koike@collabora.com, laurent.pinchart@ideasonboard.com,
+ kernel@collabora.com, ezequiel@collabora.com, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---===============8998290314413817848==
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="au3pBN7wEzB3K5LcfiCmM2HMj6BCSqtMB"
+On 04/11/2020 15:54, Sakari Ailus wrote:
+> Hi Hans,
+> 
+> On Wed, Nov 04, 2020 at 02:46:39PM +0100, Hans Verkuil wrote:
+>> On 04/11/2020 13:32, Sakari Ailus wrote:
+>>> Hi Hans,
+>>>
+>>> On Wed, Nov 04, 2020 at 01:16:03PM +0100, Hans Verkuil wrote:
+>>>> On 30/10/2020 15:02, Sakari Ailus wrote:
+>>>>> Hi Dafna,
+>>>>>
+>>>>> On Fri, Oct 30, 2020 at 02:46:08PM +0100, Dafna Hirschfeld wrote:
+>>>>>> MEDIA_BUS_FMT_METADATA_FIXED should be used when
+>>>>>> the same driver handles both sides of the link and
+>>>>>> the bus format is a fixed metadata format that is
+>>>>>> not configurable from userspace.
+>>>>>> The width and height will be set to 0 for this format.
+>>>>>>
+>>>>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>>>>>> Acked-by: Helen Koike <helen.koike@collabora.com>
+>>>>>> ---
+>>>>>> changes since v2:
+>>>>>> added documentation in subdev-formats.rst
+>>>>>> changes since v1:
+>>>>>> 1. replace "This format may have 0 height and width."
+>>>>>> with "Width and height will be set to 0 for this format."
+>>>>>> and add it also to the commit log
+>>>>>> 2. s/meida:/media:/ in the patch subject line
+>>>>>>
+>>>>>>  .../media/v4l/subdev-formats.rst              | 27 +++++++++++++++++++
+>>>>>>  include/uapi/linux/media-bus-format.h         |  8 ++++++
+>>>>>>  2 files changed, 35 insertions(+)
+>>>>>>
+>>>>>> diff --git a/Documentation/userspace-api/media/v4l/subdev-formats.rst b/Documentation/userspace-api/media/v4l/subdev-formats.rst
+>>>>>> index c9b7bb3ca089..7f16cbe46e5c 100644
+>>>>>> --- a/Documentation/userspace-api/media/v4l/subdev-formats.rst
+>>>>>> +++ b/Documentation/userspace-api/media/v4l/subdev-formats.rst
+>>>>>> @@ -7899,3 +7899,30 @@ formats.
+>>>>>>        - 0x5001
+>>>>>>        - Interleaved raw UYVY and JPEG image format with embedded meta-data
+>>>>>>  	used by Samsung S3C73MX camera sensors.
+>>>>>> +
+>>>>>> +.. _v4l2-mbus-metadata-fmts:
+>>>>>> +
+>>>>>> +Metadata Formats
+>>>>>> +^^^^^^^^^^^^^^^^
+>>>>>> +
+>>>>>> +This section lists all metadata formats.
+>>>>>> +
+>>>>>> +The following table lists the existing metadata formats.
+>>>>>> +
+>>>>>> +.. tabularcolumns:: |p{8.0cm}|p{1.4cm}|p{7.7cm}|
+>>>>>> +
+>>>>>> +.. flat-table:: Metadata formats
+>>>>>> +    :header-rows:  1
+>>>>>> +    :stub-columns: 0
+>>>>>> +
+>>>>>> +    * - Identifier
+>>>>>> +      - Code
+>>>>>> +      - Comments
+>>>>>> +    * .. _MEDIA-BUS-FMT-METADATA-FIXED:
+>>>>>> +
+>>>>>> +      - MEDIA_BUS_FMT_METADATA_FIXED
+>>>>>> +      - 0x7001
+>>>>>> +      - This format should be used when the same driver handles
+>>>>>> +	both sides of the link and the bus format is a fixed
+>>>>>> +	metadata format that is not configurable from userspace.
+>>>>>> +	Width and height will be set to 0 for this format.
+>>>>>> diff --git a/include/uapi/linux/media-bus-format.h b/include/uapi/linux/media-bus-format.h
+>>>>>> index 84fa53ffb13f..2ce3d891d344 100644
+>>>>>> --- a/include/uapi/linux/media-bus-format.h
+>>>>>> +++ b/include/uapi/linux/media-bus-format.h
+>>>>>> @@ -156,4 +156,12 @@
+>>>>>>  /* HSV - next is	0x6002 */
+>>>>>>  #define MEDIA_BUS_FMT_AHSV8888_1X32		0x6001
+>>>>>>  
+>>>>>> +/*
+>>>>>> + * This format should be used when the same driver handles
+>>>>>> + * both sides of the link and the bus format is a fixed
+>>>>>> + * metadata format that is not configurable from userspace.
+>>>>>> + * Width and height will be set to 0 for this format.
+>>>>>> + */
+>>>>>
+>>>>> Does this mean that metadata with dimensions should not use
+>>>>> MEDIA_BUS_FMT_METADATA_FIXED? I guess that's not the intention? For some
+>>>>> formats the dimensions would be relevant but for others not. I'd thus
+>>>>> replace "will" by "may". Same for the documentation.
+>>>>
+>>>> struct v4l2_meta_format as used with VIDIOC_G/S/TRY_FMT doesn't have
+>>>> a width or height either. Supporting width and height for metadata
+>>>> doesn't really make sense for me for metadata.
+>>>>
+>>>> Explicitly specifying the width and height here indicates that the
+>>>> data is basically an array of width x height of some sort which makes
+>>>> sense for video devices.
+>>>>
+>>>> Metadata is more complex data that cannot be represented like that.
+>>>> If metadata is actually an array, then I'm not sure I would call it
+>>>> metadata, I would probably see it as video with its own pixelformat
+>>>> that contains non-video data.
+>>>
+>>> Let's say the metadata is laid out in a similar way than an image; you have
+>>> lines of data, followed by some padding at the end, and a line has length
+>>> and a buffer has a number of lines. Sensor metadata falls into this
+>>> description.
+>>>
+>>> Would you then use struct v4l2_pix_format for it, and use
+>>> V4L2_BUF_TYPE_VIDEO_CAPTURE for it?
+>>
+>> Yes. It's still metadata, but it has the same 'format' as video data.
+>> We have similar situations such as with v4l-touch devices: the data
+>> is formatted like video, but it is actually pressure values from a
+>> touch pad. But it is 'video-like' in its behavior.
+>>
+>>>
+>>> That would make a few things easier but this is still metadata, not video
+>>> data. Albeit I guess it's not important to be so strict about that
+>>> interface-wise, indeed this is not a bad fit for such metadata. Still some
+>>> fields such as colourspace and quantisation are not relevant, but that
+>>> holds also for some pixel formats.
+>>>
+>>
+>> So are you OK with setting width and height to 0 for MEDIA_BUS_FMT_METADATA_*?
+> 
+> One more question.
+> 
+> What do you do if a link can carry both metadata (as in
+> V4L2_BUF_TYPE_METADATA_CAPTURE) as well as pixel data, but with a fixed
+> format?
+> 
+> I'm not sure we have any such case at the moment but it's not
+> inconceivable.
+> 
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---au3pBN7wEzB3K5LcfiCmM2HMj6BCSqtMB
-Content-Type: multipart/mixed; boundary="r1jVFk6ICkZhPNx7Iw7VQFjwZE3LDZBXr";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Linus Walleij <linus.walleij@linaro.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Dave Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Sam Ravnborg <sam@ravnborg.org>,
- Alex Deucher <alexander.deucher@amd.com>,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Lucas Stach <l.stach@pengutronix.de>,
- linux+etnaviv@armlinux.org.uk,
- Christian Gmeiner <christian.gmeiner@gmail.com>,
- Inki Dae <inki.dae@samsung.com>, Joonyoung Shim <jy0922.shim@samsung.com>,
- Seung-Woo Kim <sw0312.kim@samsung.com>,
- Kyungmin Park <kyungmin.park@samsung.com>, Kukjin Kim <kgene@kernel.org>,
- Krzysztof Kozlowski <krzk@kernel.org>, yuq825@gmail.com,
- Ben Skeggs <bskeggs@redhat.com>, Rob Herring <robh@kernel.org>,
- Tomeu Vizoso <tomeu.vizoso@collabora.com>, steven.price@arm.com,
- alyssa.rosenzweig@collabora.com, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=c3=bcbner?= <heiko@sntech.de>,
- Hans de Goede <hdegoede@redhat.com>, Sean Paul <sean@poorly.run>,
- Eric Anholt <eric@anholt.net>,
- Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>,
- ray.huang@amd.com, Sumit Semwal <sumit.semwal@linaro.org>,
- Emil Velikov <emil.velikov@collabora.com>, luben.tuikov@amd.com,
- apaneers@amd.com, melissa.srw@gmail.com,
- Chris Wilson <chris@chris-wilson.co.uk>,
- Qinglang Miao <miaoqinglang@huawei.com>,
- "open list:DRM PANEL DRIVERS" <dri-devel@lists.freedesktop.org>,
- amd-gfx@lists.freedesktop.org, virtualization@lists.linux-foundation.org,
- etnaviv@lists.freedesktop.org,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
- lima@lists.freedesktop.org, nouveau@lists.freedesktop.org,
- spice-devel@lists.freedesktop.org,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- xen-devel@lists.xenproject.org,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- linaro-mm-sig@lists.linaro.org
-Message-ID: <27acbd7e-d72e-4e05-c147-b50f56e21589@suse.de>
-Subject: Re: [PATCH v5 09/10] dma-buf-map: Add memcpy and pointer-increment
- interfaces
-References: <20201020122046.31167-1-tzimmermann@suse.de>
- <20201020122046.31167-10-tzimmermann@suse.de>
- <CACRpkdbvGWKo8y323actUJn9xXmxpgDw1EKLiPH4RqB_kFx=XQ@mail.gmail.com>
-In-Reply-To: <CACRpkdbvGWKo8y323actUJn9xXmxpgDw1EKLiPH4RqB_kFx=XQ@mail.gmail.com>
+This should be reflected in the mediabus format. So METADATA_FIXED if it carries
+metadata, or a video format if it carries video. Userspace could configure this
+with VIDIOC_SUBDEV_S_FMT if it is something that userspace can actually change.
 
---r1jVFk6ICkZhPNx7Iw7VQFjwZE3LDZBXr
-Content-Type: multipart/mixed;
- boundary="------------BD3526B269F64B0F265EC3B0"
-Content-Language: en-US
+Regards,
 
-This is a multi-part message in MIME format.
---------------BD3526B269F64B0F265EC3B0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-Hi
-
-Am 05.11.20 um 11:07 schrieb Linus Walleij:
-> Overall I like this, just an inline question:
->=20
-> On Tue, Oct 20, 2020 at 2:20 PM Thomas Zimmermann <tzimmermann@suse.de>=
- wrote:
->=20
->> To do framebuffer updates, one needs memcpy from system memory and a
->> pointer-increment function. Add both interfaces with documentation.
->=20
-> (...)
->> +/**
->> + * dma_buf_map_memcpy_to - Memcpy into dma-buf mapping
->> + * @dst:       The dma-buf mapping structure
->> + * @src:       The source buffer
->> + * @len:       The number of byte in src
->> + *
->> + * Copies data into a dma-buf mapping. The source buffer is in system=
-
->> + * memory. Depending on the buffer's location, the helper picks the c=
-orrect
->> + * method of accessing the memory.
->> + */
->> +static inline void dma_buf_map_memcpy_to(struct dma_buf_map *dst, con=
-st void *src, size_t len)
->> +{
->> +       if (dst->is_iomem)
->> +               memcpy_toio(dst->vaddr_iomem, src, len);
->> +       else
->> +               memcpy(dst->vaddr, src, len);
->> +}
->=20
-> Are these going to be really big memcpy() operations?
-
-Individually, each could be a scanline, so a few KiB. (4 bytes *
-horizontal resolution). Updating a full framebuffer can sum up to
-several MiB.
-
->=20
-> Some platforms have DMA offload engines that can perform memcpy(),They =
-could be
-> drivers/dma, include/linux/dmaengine.h
-> especially if the CPU doesn't really need to touch the contents
-> and flush caches etc.
-> An example exist in some MTD drivers that move large quantities of
-> data off flash memory like this:
-> drivers/mtd/nand/raw/cadence-nand-controller.c
->=20
-> Notice that DMAengine and DMAbuf does not have much in common,
-> the names can be deceiving.
->=20
-> The value of this varies with the system architecture. It is not just
-> a question about performance but also about power and the CPU
-> being able to do other stuff in parallel for large transfers. So *when*=
-
-> to use this facility to accelerate memcpy() is a delicate question.
->=20
-> What I'm after here is if these can be really big, do we want
-> (in the long run, not now) open up to the idea to slot in
-> hardware-accelerated memcpy() here?
-
-We currently use this functionality for the graphical framebuffer
-console that most DRM drivers provide. It's non-accelerated and slow,
-but this has not been much of a problem so far.
-
-Within DRM, we're more interested in removing console code from drivers
-and going for the generic implementation.
-
-Most of the graphics HW allocates framebuffers from video RAM, system
-memory or CMA pools and does not really need these memcpys. Only a few
-systems with small video RAM require a shadow buffer, which we flush
-into VRAM as needed. Those might benefit.
-
-OTOH, off-loading memcpys to hardware sounds reasonable if we can hide
-it from the DRM code. I think it all depends on how invasive that change
-would be.
-
-Best regards
-Thomas
-
->=20
-> Yours,
-> Linus Walleij
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
---------------BD3526B269F64B0F265EC3B0
-Content-Type: application/pgp-keys;
- name="OpenPGP_0x680DC11D530B7A23.asc"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: attachment;
- filename="OpenPGP_0x680DC11D530B7A23.asc"
-
------BEGIN PGP PUBLIC KEY BLOCK-----
-
-xsBNBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdgX=
-H47
-fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0BeB5B=
-bqP
-5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4YchdHm3bkPj=
-z9E
-ErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB9GluwvIhSezPg=
-nEm
-imZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEBAAHNKFRob21hcyBaa=
-W1t
-ZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmNvbT7CwI4EEwEIADgCGwMFCwkIBwIGFQoJCAsCB=
-BYC
-AwECHgECF4AWIQRyF/usjOnPY0ShaOVoDcEdUwt6IwUCXvxIWAAKCRBoDcEdUwt6I+aZB/9ih=
-Onf
-G4Lgf1L87cvoXh95/bnaJ6aQhP6/ZeRleuCXflnyDajlm3c9loQr0r2bQUi7JeYwUKbBab2QS=
-GJm
-DMRGlLMnmzWB8mHmZ6bHAu+2Sth8SraE42p6BB9d8dlYEID+dl/D/xUBeulfkck5rloGtYqDi=
-+1Q
-DfkEZJaxVSZ6FFkXuQi/G9qcI4iklN2nv02iQ7mZe8WYAysix6s/6vIobhirEBreclSNxXqis=
-p8n
-91+v855JC11EgRdUXMRK81IAaCKXP8zLx3ixku7mvP9Om61yerHSbeU2HZbIggZYQlFh6llJm=
-zF1
-CjCWgPTJyk4t4kMTcNOw5ykD47vU/KW+wl0EEBECAB0WIQQn6OOmnzvP/7ktjmoud6EwEfXTw=
-gUC
-WzodVwAKCRAud6EwEfXTwidvAKDkOADDHfI0QNXqAZcg6i1kOndAYACeLXHBwpjnumkPSyoab=
-IiL
-+he8r3zCwHMEEAEIAB0WIQQeXZghmQijlU7YzFiqUDvJrg9HpwUCWznxsQAKCRCqUDvJrg9Hp=
-42f
-CADIvsZcAd04PDFclRltHr2huy6s7+ZZA6PgYlMblEBh4bJA+dNPBTvzpJ7FJv/bmHOa+phWy=
-Urj
-EpfFGuOKGuWAfzgVAEu52fMrW3/mm+O26z1AKIu8hiZ/x9OAe4AM71ZO2lZrV1/53ZdzWnRuO=
-45N
-GQcotU8oeVfT9okAfmozmWMmIMq7Q0K6bV8W3qiD5XfDNxjr2caxc/9WX1bZPUo3n0H23MNaA=
-Tpy
-Oz732UtDh6sKUAB1RfzBBd/REbjHD7+quwJGAdRScyDRncX1vNb2+wihy0ipA69XY3bkhR5iD=
-u5r
-A9enuiMe6J1IBMI1PZh+vOufB/M6cd2D9RULIJaJwsBzBBABCAAdFiEEuyNtt7Ge78bIRx1op=
-/N8
-GYw5MYEFAls6MrsACgkQp/N8GYw5MYEnLQf/dwqlDJVQL2q+i8FFaqTMAm0n9jLRV6pN8JxFH=
-j0g
-voyWUOnQuNdAFgtKd26ZhN8NkLoSMO8E19eBPfLoBIFK5yNNVmRHAZm07MzGbA0uNWINJhmdR=
-bZM
-RMh0nneXjcEU/IvUmd8TPFTAd24X2mbzHgcaHMLJSVx1ohd4alRJXHIqDobKmiVwekyPnInJn=
-zWw
-iuZUkIotTkQple1PT/dF3S+KtPXBL6ldQ4NkAeCjsz4wnzSa9+VKOxEhiHM0PMzXSbkCMP+4m=
-Xy9
-RMplBw9Dm9hN2PSouBPifIrSodiiSWZYXOEkzLiBAB0frCKR63Dnx9kvjCD9Pz5wLd/70rjqI=
-c0n
-VGhvbWFzIFppbW1lcm1hbm4gPHR6aW1tZXJtYW5uQHN1c2UuZGU+wsCOBBMBCAA4AhsDBQsJC=
-AcC
-BhUKCQgLAgQWAgMBAh4BAheAFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl78SF4ACgkQaA3BH=
-VML
-eiOpGAgAih6C1OnWms/N8eBMC4Q93y/nyywe5vCL22Dr1rwgn6Iw2jOGziJSi7zhY4sEk2NKJ=
-5cd
-lFrx8mP//b+xO4AGffwBD0Vwpf38Hj2Gt0KjpzRYccqqU+tJPO5c0pjI52ZIV3+kOEFvYGfkN=
-PHE
-flE+b81T8L2dSXCLtj4WAGUM1rmHn3bCYl+/RwkB+8XnoL5AvrmMcU4Uhb3FJpM4DHExccYkd=
-eSL
-ojBppOCztBCUpBx3le+8QPVvAvJDuur4wRmjk3sjKClAwzeqoYyUKcN3JDdb3mt3QcJal9rSh=
-VEI
-7B25IvfmEbs42oGm8GPzPkaNJu3gcska+l5PSTfurNETGsJdBBARAgAdFiEEJ+jjpp87z/+5L=
-Y5q
-LnehMBH108IFAls6HVcACgkQLnehMBH108LTkACgjLQdDYMENi6BDjY/gd/LF9lMi8oAnR+o0=
-FwE
-Vb1K1tEMQ/1x+k1U6/xgwsBzBBABCAAdFiEEHl2YIZkIo5VO2MxYqlA7ya4PR6cFAls58bMAC=
-gkQ
-qlA7ya4PR6cvTAgAzY1N5QMKh8ECRtYcZNmilyV59uHTEY9hAR+203JqWnSGfUKtU7s6xfl5O=
-NGq
-DI5rULk4Cw2CEIzg9Sat+/lxn36w2f1tEznS5Vb0gVGWrzDAFjj7tB6MnmCzsNb/S1kgxnqJM=
-Yor
-RYQ7uB3Yr2Fdp08FJxN0ipd5YfzaZ6KoSWcRAv4r1R4ZQGuS77URAg7HDOIrBMOVO+HIn7GYQ=
-qPS
-5ZFw5yXbvEtL1c5Y8Zdw1AG2VmEXx78TWQVG3kI8/lQF1QI3yrJ1Rp2x5eK9I0OJihv13IlIW=
-3sb
-QGrj9pxF63kA20ZFaynzFglBGiyxExYvTD0/xKIhzYhj8mtCunPb2cLAcwQQAQgAHRYhBLsjb=
-bex
-nu/GyEcdaKfzfBmMOTGBBQJbOjLAAAoJEKfzfBmMOTGBBoMIALIW4EtBY28tPwZMOpN/+ARPO=
-a2g
-Qzpivw7iNtiDTnGIXMCoxly1CybfMdqTHYmuKbEO9AlFAlDOnkgInsn8E65IvgUTVI95Ah+Ob=
-iPI
-FkYc/9a+AexPl7f5kI9489k77eKtqtMpWFpo/vROmRroSw4JnM7ovwPq1QOSHExfTKbLunzD1=
-i3V
-4PShSZ6bGsp1LW6Wk0lRMHDuAk3xsyjBWfJwSbrCe3E6OsLG7BuQqEUt2fR6NxdDRSR9tQUp9=
-Tri
-AYG5LndmUzxeU6FAQjD8Wt1ezOFH5ODcCDXfRyYmE6uCGA4EvO8l9R3o68NPlUjPRAZsCbxJa=
-UAg
-iazX1nyQGwvOwE0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRHU=
-E9e
-osYbT6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgTRjP+q=
-bU6
-3Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+RdhgATnWWG=
-KdD
-egUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zbehDda8lvhFXod=
-NFM
-AgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r12+lqdsAEQEAAcLAf=
-AQY
-AQgAJhYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsMBQkDwmcAAAoJEGgNwR1TC3ojp=
-fcI
-AInwP5OlcEKokTnHCiDTz4Ony4GnHRP2fXATQZCKxmu4AJY2h9ifw9Nf2TjCZ6AMvC3thAN0r=
-FDj
-55N9l4s1CpaDo4J+0fkrHuyNacnT206CeJV1E7NYntxUn+LSiRrOdywn6erjxRi9EYTVLCHcD=
-hBE
-jKmFZfg4AM4GZMWX1lg0+eHbd5oL1as28WvvI/uIaMyV8RbyXot1r/8QLlWldU3NrTF5p7TMU=
-2y3
-ZH2mf5suSKHAMtbE4jKJ8ZHFOo3GhLgjVrBWHE9JXO08xKkgD+w6v83+nomsEuf6C6LYrqY/t=
-sZv
-yEX6zN8CtirPdPWu/VXNRYAl/lat7lSI3H26qrE=3D
-=3DmxFq
------END PGP PUBLIC KEY BLOCK-----
-
---------------BD3526B269F64B0F265EC3B0--
-
---r1jVFk6ICkZhPNx7Iw7VQFjwZE3LDZBXr--
-
---au3pBN7wEzB3K5LcfiCmM2HMj6BCSqtMB
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
-
------BEGIN PGP SIGNATURE-----
-
-wsB5BAABCAAjFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl+j1dQFAwAAAAAACgkQaA3BHVMLeiNU
-qQgAgOC30hCOxo+dX4gsKWIeGRbIouEbDaOkcDYC/gZJfPh5rePmaNGGVGOANGWjnuWjwgEnw4mj
-psqmzUPDUdnL7V1B2Qey5mfEhNgHEhvPby7+LtaE7icG1EQlkY+FLCHNoVjETPec1KZNSLukpxaO
-HrKYOA5Fpl6bc89NCaedSvHKGMMsbuh+ufNfSNBNsj6xVBoSKlcXWADqeGbQVMBHH+xU1vRjdAv3
-vO7By/k7ya9/Gh/K4lnyrhC1Mem4UwodK0ty/r8TPoOY8yuNqpzG2I67A1d9EhetaVYxvzf6PuC9
-Pvq61sFNHLIxqPeRE7m7OpN9hKlRUq1gZ05MX3xXZA==
-=cSl4
------END PGP SIGNATURE-----
-
---au3pBN7wEzB3K5LcfiCmM2HMj6BCSqtMB--
-
-
---===============8998290314413817848==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+	Hans
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8998290314413817848==--
-
