@@ -7,68 +7,79 @@ X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 083CCC4741F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 05:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A69C0C4742C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 10:08:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 97BCA2083B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 05:23:56 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2070D2087D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 10:08:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="cPW5shSi";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="MDLeiFkM"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 97BCA2083B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="wFF/Bjb9";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="rvffOctS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2070D2087D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ZHKLU1RGdXJXmr7ynei8Pf7WVn58Vu7DMg9wuTcYDO0=; b=cPW5shSizfa60QxBugOozcpJq
-	mha5JwOa79I2WFB6E1WipbTQ60oqNOjzri1PZDBLJX2e1lNX7XpKOsZXKTNkiEqdcEPHBVU2Lp7Gi
-	slKWqAQg3pw2OsK361EMwhgdLjNEEyFrPvxtBHuhtbk/P2vlImqkTSjChuizRd3sdDSb7mVKhnO93
-	wyHq56fheUi7LNsZnwZm9aUqQ+uByaCbFKRoqAO7Qq7Q/oxOmVk2hAV3qpxY8OVZxvSyMVzO0TTnf
-	bgrzFKhTP8XuiUzKfHYmJUJDVu3X8OpIXeqBYwae3kGrUgl7uSPh/HXXr/RZ+1rFVa3+O33ieqGY+
-	+TxlKp9Lg==;
+	 bh=ithSQ6whAj6jj4UjTBTrPa4K50imxgFUTk1hv3iKi8Y=; b=wFF/Bjb9JkNBmJN1W+sPZGfAg
+	Mbj+MYWVu7XUPhQ1qp2GHpmOFCjNEYQ8kEk+I8ZM3pI0KrJPcy8XzDyc7A/l3DehVCC1RQCrpNphC
+	Uvmdv6/2CUzSphQ1Mvy8nCJwDzln4VWGgIiWMR23ZMubSgE2xlpTZTbgwCg9wXhcR4bYEmzVAmSVt
+	XY2UB/TO4xFyrptOc6R26vpEN9YNSiV8835eManpPcC+pYI6z052Y79D9jR3MthNO6dk//2Zsc+v2
+	RfefNvRZOCgZu+6zaXq8FxgW6JEPTFZjHlPAvxY8UHPlARQ6DVoVBNzQuZIXc81OKPg1lk2MhWguf
+	+rVatCZDA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kaXkS-0004ga-3Q; Thu, 05 Nov 2020 05:23:48 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1kacBh-0008CX-Pp; Thu, 05 Nov 2020 10:08:13 +0000
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaW71-00016k-AS; Thu, 05 Nov 2020 03:38:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=Content-Type:Content-Transfer-Encoding:
- MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender
- :Reply-To:Content-ID:Content-Description;
- bh=qdJ3FZ5tTq02XWSmKUP8MghmabyaxMoOqrKyZH04+6o=; b=MDLeiFkMfQ/ued2gnhHPZo+CKz
- D/pSHvwlO+mHhZFGnM/rcTU3xC5wq852YMTu8tCyROareKuisVmZEfutmtmJjqCOkZrW56swV0IYS
- ES8WfLX+a1UtRwI2jB9+qm95BOe3GdsL5x3jHaHENv+fKosYmZ96LZkT7nrTtSzrOmC6seeIybdJI
- 3VWtEJVveEiX95+kLzjx5LMTVR7lXY73qj0X3sVstbNu+1Z4fVIF4wl1CkFt2OUHBUv4+Yv5Q20r0
- xf45XXrT+MqKLwaB1qebq1paj6GEm5K7D1FE2rGqmlXqhqHdn65Lm090FrQbaMWfW+7S+abE4D/kw
- Z75+Szxg==;
-Received: from gloria.sntech.de ([185.11.138.130])
- by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kaQkX-0004GL-G6; Wed, 04 Nov 2020 21:55:28 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kaQkK-0004Zn-T8; Wed, 04 Nov 2020 22:55:12 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Rob Herring <robh+dt@kernel.org>, Jagan Teki <jagan@amarulasolutions.com>
-Subject: Re: [PATCH v4 0/7] arm64: dts: rockchip: Add Engicam PX30.Core
-Date: Wed, 04 Nov 2020 22:55:10 +0100
-Message-ID: <3599415.KCJOEREoO8@diego>
-In-Reply-To: <CAMty3ZCib5TiQdzU95WS1Xiq1tAQ7FHEQcbf5JhUZYYvofb_MQ@mail.gmail.com>
-References: <20200929083217.25406-1-jagan@amarulasolutions.com>
- <CAMty3ZDHDC5TMF=8HJRmZd7HijOM6RP-k4y9JkdWVQGgPKyGvg@mail.gmail.com>
- <CAMty3ZCib5TiQdzU95WS1Xiq1tAQ7FHEQcbf5JhUZYYvofb_MQ@mail.gmail.com>
+ id 1kacBf-0008Bh-Ke
+ for linux-rockchip@lists.infradead.org; Thu, 05 Nov 2020 10:08:12 +0000
+Received: by mail-lj1-x242.google.com with SMTP id 11so969903ljf.2
+ for <linux-rockchip@lists.infradead.org>; Thu, 05 Nov 2020 02:08:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=eEue8Bau+pupF7CyTGHXC2yqWeY8Sj18qJXhmeK0+qY=;
+ b=rvffOctSKYH+6isvUsZ6vjuDGiRiPXrriws2tYpmxIOJoDbVaUBBLJZNLsZfPTViCm
+ OB7UJ7kJVc74V/wH1kAJWs50qUWe8BxYk+3Bh0Ntwrn4R80Kw+RHuzDoPIDkFuxVKOMP
+ awvWPavfta6vj9AUR/6i26T0t+QGvBOviGEDNRn+gsaMK+rwApX3VuBwIy6OffxGwIGI
+ Q9ElrJtiii5nM3Ug/hNAa7sMnYOfnIMkNbbQWWsd9e9E4LqYfoNACefZyIQWVQxYvven
+ erCA3D+b6EoRTgIG3bxLlMg5PeozREFm5ydwy7sAu7xfjUKeSkZzmy6N/j40DftaLQPo
+ OSmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=eEue8Bau+pupF7CyTGHXC2yqWeY8Sj18qJXhmeK0+qY=;
+ b=ORRAG+X2tb9O8A28aB7DJ/OLZAPlXYoPOwKRfX8haklmkrywzkTJ+nmMQOSsJtPm9x
+ kFpWHeeN/zz5zbY67az4XqzKSiCVWnsLkZtDvcBXV4iSC4SI8GYA+29CcRMIpZiBd4M7
+ atvmyMhAfl7xu3Y+Q0Pbukz1ug9MYYrQgyec6M/LLZ3KANX0UAF0FlTxgEI536nszqtP
+ unZOmz/TrSBaB4sZti9ufdQryPG+v7WyxlnlW9r/5LbwGPa7lOPUe1BIvTTTgAwC3M0z
+ qQEN1/OXYiM1ypO6dj0rT4qW/+bn+GjGk0KJ05SrK69TVXd/yE99xa9qZdopGyuT7uB+
+ 3oxA==
+X-Gm-Message-State: AOAM533g+eC3P7oc4fLhlEnwSFqOs/KUNhxqEEPNezjuBWpfwQe21pI1
+ sY149ptugUZB5LazNUZUDdjkauiaNw1ARTCjsAjghQ==
+X-Google-Smtp-Source: ABdhPJzTsAT/B7g6yG/tiOPWkhIyiq+coc///CuocOp+hPojlZHj2TddLjwWNxDtJai798d/HI10cYYk95MMhchsZzo=
+X-Received: by 2002:a05:651c:1205:: with SMTP id
+ i5mr658065lja.283.1604570889728; 
+ Thu, 05 Nov 2020 02:08:09 -0800 (PST)
 MIME-Version: 1.0
+References: <20201020122046.31167-1-tzimmermann@suse.de>
+ <20201020122046.31167-10-tzimmermann@suse.de>
+In-Reply-To: <20201020122046.31167-10-tzimmermann@suse.de>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 5 Nov 2020 11:07:59 +0100
+Message-ID: <CACRpkdbvGWKo8y323actUJn9xXmxpgDw1EKLiPH4RqB_kFx=XQ@mail.gmail.com>
+Subject: Re: [PATCH v5 09/10] dma-buf-map: Add memcpy and pointer-increment
+ interfaces
+To: Thomas Zimmermann <tzimmermann@suse.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201104_215525_812589_E5ADBC7E 
-X-CRM114-Status: GOOD (  24.30  )
+X-CRM114-CacheID: sfid-20201105_050811_742934_AFD9CDC6 
+X-CRM114-Status: GOOD (  16.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,89 +92,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree <devicetree@vger.kernel.org>,
- linux-kernel <linux-kernel@vger.kernel.org>,
+Cc: luben.tuikov@amd.com, =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Dave Airlie <airlied@linux.ie>, nouveau@lists.freedesktop.org,
+ "open list:DRM PANEL DRIVERS" <dri-devel@lists.freedesktop.org>,
+ Chris Wilson <chris@chris-wilson.co.uk>, melissa.srw@gmail.com,
+ Eric Anholt <eric@anholt.net>, ray.huang@amd.com,
+ Gerd Hoffmann <kraxel@redhat.com>, Sam Ravnborg <sam@ravnborg.org>,
+ Sumit Semwal <sumit.semwal@linaro.org>,
+ Emil Velikov <emil.velikov@collabora.com>, Rob Herring <robh@kernel.org>,
+ linux-samsung-soc <linux-samsung-soc@vger.kernel.org>,
+ Joonyoung Shim <jy0922.shim@samsung.com>, lima@lists.freedesktop.org,
+ Oleksandr Andrushchenko <oleksandr_andrushchenko@epam.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>, steven.price@arm.com,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Suniel Mahesh <sunil@amarulasolutions.com>,
- Michael Trimarchi <michael@amarulasolutions.com>,
- linux-amarula <linux-amarula@amarulasolutions.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+ Kukjin Kim <kgene@kernel.org>, Ben Skeggs <bskeggs@redhat.com>,
+ linux+etnaviv@armlinux.org.uk, spice-devel@lists.freedesktop.org,
+ alyssa.rosenzweig@collabora.com,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ etnaviv@lists.freedesktop.org, Maxime Ripard <mripard@kernel.org>,
+ Inki Dae <inki.dae@samsung.com>, Hans de Goede <hdegoede@redhat.com>,
+ Christian Gmeiner <christian.gmeiner@gmail.com>,
+ xen-devel@lists.xenproject.org, virtualization@lists.linux-foundation.org,
+ Sean Paul <sean@poorly.run>, apaneers@amd.com,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linaro-mm-sig@lists.linaro.org, amd-gfx@lists.freedesktop.org,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>,
+ Seung-Woo Kim <sw0312.kim@samsung.com>, Sandy Huang <hjc@rock-chips.com>,
+ Kyungmin Park <kyungmin.park@samsung.com>,
+ Qinglang Miao <miaoqinglang@huawei.com>, yuq825@gmail.com,
+ Daniel Vetter <daniel@ffwll.ch>, Alex Deucher <alexander.deucher@amd.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ Lucas Stach <l.stach@pengutronix.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Mittwoch, 4. November 2020, 20:54:40 CET schrieb Jagan Teki:
-> On Thu, Oct 22, 2020 at 12:27 AM Jagan Teki <jagan@amarulasolutions.com> wrote:
-> >
-> > Hi Heiko,
-> >
-> > On Tue, Sep 29, 2020 at 2:02 PM Jagan Teki <jagan@amarulasolutions.com> wrote:
-> > >
-> > > PX30.Core is an EDIMM SOM based on Rockchip PX30 from Engicam.
-> > >
-> > > PX30.Core needs to mount on top of Engicam baseboards for creating
-> > > complete platform boards.
-> > >
-> > > Possible baseboards are,
-> > > - EDIMM2.2 Starter Kit
-> > > - C.TOUCH 2.0 Carrier Board
-> > >
-> > > Changes for v4:
-> > > - collect Rob A-b
-> > > Changes for v3:
-> > > - resolved Johan comments about sorting node properties
-> > > - add copyright to Amarula Solutions
-> > > - update px30 dtsi author
-> > > Changes for v2:
-> > > - include C.TOUCH 2.0 carrier board
-> > > - skip 10" OF LCD as it requires separate dts with panel support.
-> > >
-> > > Note: These baseboards can be used for i.MX8 SOM's as well. So having
-> > > baseboard on respective SoC seems to be easy rather than making it
-> > > common across all.
-> > >
-> > > Any inputs?
-> > > Jagan.
-> > >
-> > > Jagan Teki (6):
-> > >   dt-bindings: arm: rockchip: Add Engicam PX30.Core EDIMM2.2 Starter Kit
-> > >   arm64: dts: rockchip: px30: Add Engicam EDIMM2.2 Starter Kit
-> > >   arm64: dts: rockchip: Add Engicam PX30.Core EDIMM2.2 Starter Kit
-> > >   dt-bindings: arm: rockchip: Add Engicam PX30.Core C.TOUCH 2.0
-> > >   arm64: dts: rockchip: px30: Add Engicam C.TOUCH 2.0
-> > >   arm64: dts: rockchip: Add Engicam PX30.Core C.TOUCH 2.0
-> > >
-> > > Michael Trimarchi (1):
-> > >   arm64: dts: rockchip: Add Engicam PX30.Core SOM
-> > >
-> > >  .../devicetree/bindings/arm/rockchip.yaml     |  12 +
-> > >  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
-> > >  .../dts/rockchip/px30-engicam-common.dtsi     |  39 +++
-> > >  .../dts/rockchip/px30-engicam-ctouch2.dtsi    |   8 +
-> > >  .../dts/rockchip/px30-engicam-edimm2.2.dtsi   |   7 +
-> > >  .../dts/rockchip/px30-px30-core-ctouch2.dts   |  22 ++
-> > >  .../dts/rockchip/px30-px30-core-edimm2.2.dts  |  21 ++
-> > >  .../boot/dts/rockchip/px30-px30-core.dtsi     | 232 ++++++++++++++++++
-> > >  8 files changed, 343 insertions(+)
-> > >  create mode 100644 arch/arm64/boot/dts/rockchip/px30-engicam-common.dtsi
-> > >  create mode 100644 arch/arm64/boot/dts/rockchip/px30-engicam-ctouch2.dtsi
-> > >  create mode 100644 arch/arm64/boot/dts/rockchip/px30-engicam-edimm2.2.dtsi
-> > >  create mode 100644 arch/arm64/boot/dts/rockchip/px30-px30-core-ctouch2.dts
-> > >  create mode 100644 arch/arm64/boot/dts/rockchip/px30-px30-core-edimm2.2.dts
-> > >  create mode 100644 arch/arm64/boot/dts/rockchip/px30-px30-core.dtsi
-> >
-> > Any further comments?
-> 
-> Gentle ping.
+Overall I like this, just an inline question:
 
-on my list to untangle :-)
+On Tue, Oct 20, 2020 at 2:20 PM Thomas Zimmermann <tzimmermann@suse.de> wrote:
 
+> To do framebuffer updates, one needs memcpy from system memory and a
+> pointer-increment function. Add both interfaces with documentation.
 
-Heiko
+(...)
+> +/**
+> + * dma_buf_map_memcpy_to - Memcpy into dma-buf mapping
+> + * @dst:       The dma-buf mapping structure
+> + * @src:       The source buffer
+> + * @len:       The number of byte in src
+> + *
+> + * Copies data into a dma-buf mapping. The source buffer is in system
+> + * memory. Depending on the buffer's location, the helper picks the correct
+> + * method of accessing the memory.
+> + */
+> +static inline void dma_buf_map_memcpy_to(struct dma_buf_map *dst, const void *src, size_t len)
+> +{
+> +       if (dst->is_iomem)
+> +               memcpy_toio(dst->vaddr_iomem, src, len);
+> +       else
+> +               memcpy(dst->vaddr, src, len);
+> +}
 
+Are these going to be really big memcpy() operations?
 
+Some platforms have DMA offload engines that can perform memcpy(),
+drivers/dma, include/linux/dmaengine.h
+especially if the CPU doesn't really need to touch the contents
+and flush caches etc.
+An example exist in some MTD drivers that move large quantities of
+data off flash memory like this:
+drivers/mtd/nand/raw/cadence-nand-controller.c
 
+Notice that DMAengine and DMAbuf does not have much in common,
+the names can be deceiving.
+
+The value of this varies with the system architecture. It is not just
+a question about performance but also about power and the CPU
+being able to do other stuff in parallel for large transfers. So *when*
+to use this facility to accelerate memcpy() is a delicate question.
+
+What I'm after here is if these can be really big, do we want
+(in the long run, not now) open up to the idea to slot in
+hardware-accelerated memcpy() here?
+
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-rockchip mailing list
