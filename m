@@ -2,56 +2,65 @@ Return-Path: <SRS0=pTeD=EM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C29C0C2D0A3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2020 12:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F073C2D0A3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2020 14:43:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 306EC20715
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2020 12:20:03 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id A32B320724
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2020 14:43:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="0bxliiB8"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 306EC20715
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Oed5mnhO"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A32B320724
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cGpaQIx85fRjJ7GdskFGrsvhBkA+cXSVRnEy4N6z4Wc=; b=0bxliiB8/2ZnzYjbMbStxo3JV
-	dKZPfg5inJRstD2RtKThLSe53WVeu9dBkwGEtD2eYwoBlTZ2AMk2Mx7fGr9bsl5D+nR8xMkEeA/rV
-	yUd9xcuXSX2GzI8IymaVDmMfLOkqzxJZJRXVzoiO6RkIykTt8HHON5VWBKv2FV/mAfwgfFVPU1jw/
-	JwvEPy1xSRF8uDHrrOeAbCW7jhTr2EM4yVihMjc+kZOkTNrqYFuhryw1YW3CFlLwJB/4htSV66MO7
-	8vXsDl4KiE7jjslis71Xli43RFUgIJs69hNWBeGuXjnAmVnC6egB1CWjsb8mR8p8QnKxnu6bdqs+1
-	9EruU9jvg==;
+	 bh=XLag2Zwkx/GA617tISvaXstPVoJpc7wc4GloiJ2mYZY=; b=Oed5mnhOrNhg+vo6Hh4+jSgxK
+	b7yjvxkB/j2oYetpqJbq2U6YiWm08vL7igVTdECL6jFjO6tMANX5e2s22SnvwH1DncDoBVfaOM0nx
+	u927xvqiA9AYCgFZ6spEn8TNu2Nfhx+3dZxFGzOoou5+xppJFDXWbFY69/2aMXr13D2UoOSwSl8R4
+	9bQK+ejGyFbsht6BH0iix0e/Usbw6XlMQZSpeP9WDQ31f/O25cuQw7fOSwG/L3ZQI7fpwKh8bbCHg
+	H05udpNDMtQ29dWbbw8icIDWBW1fnBUqBlOhkHrZu6O74qpz/fag30B4MdlqyJrrJrc70KreHlToD
+	4CsvMwRKA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kb0il-0001kO-F6; Fri, 06 Nov 2020 12:19:59 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kb2xk-00074i-PM; Fri, 06 Nov 2020 14:43:36 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kb0ij-0001jN-53
- for linux-rockchip@lists.infradead.org; Fri, 06 Nov 2020 12:19:58 +0000
+ id 1kb2xi-00073R-4h
+ for linux-rockchip@lists.infradead.org; Fri, 06 Nov 2020 14:43:35 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id 2A1671F468B7
+ (Authenticated sender: koike) with ESMTPSA id 3E88F1F46A75
+Subject: Re: [PATCH v3 06/12] media: staging: rkisp1: remove atomic operations
+ for frame sequence
+To: Tomasz Figa <tfiga@chromium.org>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+References: <20200922113402.12442-1-dafna.hirschfeld@collabora.com>
+ <20200922113402.12442-7-dafna.hirschfeld@collabora.com>
+ <20200925204222.GG3607091@chromium.org>
+ <bebacafe-11bb-5d9a-f889-4d16bb5d1817@collabora.com>
+ <CAAFQd5BeWOYadUU8nBtFpaA5Eb2T0qFk0kDVf9eYmYzXJj+sZA@mail.gmail.com>
 From: Helen Koike <helen.koike@collabora.com>
-To: linux-media@vger.kernel.org
-Subject: [PATCH v3 2/2] media: rockchip: rkisp1: destage Rockchip ISP1 driver
-Date: Fri,  6 Nov 2020 09:19:37 -0300
-Message-Id: <20201106121937.1459948-3-helen.koike@collabora.com>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20201106121937.1459948-1-helen.koike@collabora.com>
-References: <20201106121937.1459948-1-helen.koike@collabora.com>
+Message-ID: <d6b893e1-1177-ba6d-0499-a3e45f79503b@collabora.com>
+Date: Fri, 6 Nov 2020 11:43:17 -0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.4.0
 MIME-Version: 1.0
+In-Reply-To: <CAAFQd5BeWOYadUU8nBtFpaA5Eb2T0qFk0kDVf9eYmYzXJj+sZA@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201106_071957_379189_BA4E87BD 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20201106_094334_388991_FC22230E 
+X-CRM114-Status: GOOD (  31.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,279 +73,185 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mchehab@kernel.org, dafna.hirschfeld@collabora.com, heiko@sntech.de,
- niklas.soderlund@ragnatech.se, linux-kernel@vger.kernel.org,
- tfiga@chromium.org, linux-rockchip@lists.infradead.org,
- laurent.pinchart@ideasonboard.com, hverkuil-cisco@xs4all.nl,
- kernel@collabora.com, zhengsq@rock-chips.com, ribalda@google.com
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Dafna Hirschfeld <dafna3@gmail.com>, Hans Verkuil <hverkuil@xs4all.nl>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, kernel@collabora.com,
+ Ezequiel Garcia <ezequiel@collabora.com>,
+ Linux Media Mailing List <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-All the items in the TODO list were addressed, uapi was reviewed,
-documentation written, checkpatch errors fixed, several bugs fixed.
+Hi Tomasz,
 
-There is no big reason to keep this driver in staging, so move it out.
+(sorry for not had replied this earlier)
 
-Dt-bindings Verified with:
-make ARCH=arm64 dt_binding_check DT_SCHEMA_FILES=Documentation/devicetree/bindings/media/rockchip-isp1.yaml
+On 10/2/20 12:30 PM, Tomasz Figa wrote:
+> On Fri, Oct 2, 2020 at 11:16 AM Dafna Hirschfeld
+> <dafna.hirschfeld@collabora.com> wrote:
+>>
+>> Hi,
+>>
+>> Am 25.09.20 um 22:42 schrieb Tomasz Figa:
+>>> Hi Dafna,
+>>>
+>>> On Tue, Sep 22, 2020 at 01:33:56PM +0200, Dafna Hirschfeld wrote:
+>>>> The isp.frame_sequence is now read only from the irq handlers
+>>>> that are all fired from the same interrupt, so there is not need
+>>>> for atomic operation.
+>>>> In addition, the frame seq incrementation is moved from
+>>>> rkisp1_isp_queue_event_sof to rkisp1_isp_isr to make the code
+>>>> clearer and the incorrect inline comment is removed.
+>>>>
+>>>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>>>> Acked-by: Helen Koike <helen.koike@collabora.com>
+>>>>
+>>>> ---
+>>>> changes since v2:
+>>>> add a closing "}" to if condition
+>>>> remove usless inline comment
+>>>> ---
+>>>>   drivers/staging/media/rkisp1/rkisp1-capture.c |  2 +-
+>>>>   drivers/staging/media/rkisp1/rkisp1-common.h  |  2 +-
+>>>>   drivers/staging/media/rkisp1/rkisp1-isp.c     | 16 +++++-----------
+>>>>   drivers/staging/media/rkisp1/rkisp1-params.c  |  2 +-
+>>>>   drivers/staging/media/rkisp1/rkisp1-stats.c   |  3 +--
+>>>>   5 files changed, 9 insertions(+), 16 deletions(-)
+>>>>
+>>>
+>>> Thank you for the patch. Please see my comments inline.
+>>>
+>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>>>> index 0632582a95b4..1c762a369b63 100644
+>>>> --- a/drivers/staging/media/rkisp1/rkisp1-capture.c
+>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-capture.c
+>>>> @@ -632,7 +632,7 @@ static void rkisp1_handle_buffer(struct rkisp1_capture *cap)
+>>>>      curr_buf = cap->buf.curr;
+>>>>
+>>>>      if (curr_buf) {
+>>>> -            curr_buf->vb.sequence = atomic_read(&isp->frame_sequence);
+>>>> +            curr_buf->vb.sequence = isp->frame_sequence;
+>>>
+>>> I wonder if with higher resolutions, let's say full 5 Mpix, and/or some
+>>> memory-intensive system load, like video encoding and graphics rendering,
+>>> the DMA wouldn't take enough time to have the MI_FRAME interrupt fire after
+>>> the V_START for the next frame.
+>>>
+>>> I recall you did some testing back in time [1], showing that the two are
+>>> interleaved. Do you remember what CAPTURE resolution was it?
+>>
+>> I ran the testing again, I added a patch to allow streaming simultanously from
+>> both pathes: https://gitlab.collabora.com/dafna/linux/-/commit/8df0d15567b27cb88674fbbe33d1906c3c5a91da
+>> Then I ran two tests:
+>> stream simultaneously with 3280x2464 frames from the camera, and then downscaling them to 1920x1080 on selfpath, this is http://ix.io/2zoP
+>> stream simultaneously with 640x480 frames from the camera, and upscaling them to 1920x1080 on the selfpath. this is http://ix.io/2zoR
+>>
+>> the pixelformat for both is 422P.
+>> I don't know how meaningful and useful is to test it on the rockchip-pi4 board, I only use it with a serial console.
+>> The functionality can probably only be tested on the scarlet.
+> 
+> Okay, thanks. It looks like there is always plenty of time margin on
+> the hardware side and if the interrupt handling is delayed for a short
+> time and both are handled by the same handler call, it's also going to
+> be handled fine because of rkisp1_capture_isr() being called before
+> rkisp1_isp_isr().
+> 
+> By the way, do we need the MIPI interrupts every frame? Perhaps we
+> could enable the RKISP1_CIF_MIPI_ERR_CTRL* interrupts only and then,
+> when we get an error, we disable it and enable
+> RKISP1_CIF_MIPI_FRAME_END, which would then re-enable
+> RKISP1_CIF_MIPI_ERR_CTRL* and disable itself? WDYT?
 
-Fields of MAINTAINERS file sorted according to output of
-./scripts/parse-maintainers.pl --input=MAINTAINERS --output=MAINTAINERS
---order
+The driver already do this in a sense, it disables these interrupts on
+the first MIPI error and re-enable them on RKISP1_CIF_MIPI_FRAME_END.
 
-Signed-off-by: Helen Koike <helen.koike@collabora.com>
-[dt-bindings: media: rkisp1: move rockchip-isp1 bindings out of staging]
-Acked-by: Rob Herring <robh@kernel.org>
-[dt-bindings: media: rkisp1: move rockchip-isp1 bindings out of staging]
-Reviewed-by: Tomasz Figa <tfiga@chromium.org>
+Please check:
 
----
+https://git.linuxtv.org/media_tree.git/tree/drivers/staging/media/rkisp1/rkisp1-isp.c#n1069
 
-Changes in v3:
-- Moved Kconfig entry from M2M to Platform devices
-- Patches squashed:
-dt-bindings: media: rkisp1: move rockchip-isp1 bindings out of staging
-media: MAINTAINERS: rkisp1: add path to dt-bindings
-media: rockchip: rkisp1: destage Rockchip ISP1 driver
-media: MAINTAINERS: Update rkisp1 files with new location
+For convenience:
 
----
- .../bindings/media/rockchip-isp1.yaml         |  0
- .../media/v4l/pixfmt-meta-rkisp1.rst          |  2 +-
- MAINTAINERS                                   |  5 ++++-
- drivers/media/platform/Kconfig                | 18 ++++++++++++++++++
- drivers/media/platform/Makefile               |  1 +
- .../platform/rockchip}/rkisp1/Makefile        |  0
- .../rockchip}/rkisp1/rkisp1-capture.c         |  0
- .../platform/rockchip}/rkisp1/rkisp1-common.c |  0
- .../platform/rockchip}/rkisp1/rkisp1-common.h |  2 +-
- .../platform/rockchip}/rkisp1/rkisp1-dev.c    |  0
- .../platform/rockchip}/rkisp1/rkisp1-isp.c    |  0
- .../platform/rockchip}/rkisp1/rkisp1-params.c |  0
- .../platform/rockchip}/rkisp1/rkisp1-regs.h   |  0
- .../rockchip}/rkisp1/rkisp1-resizer.c         |  0
- .../platform/rockchip}/rkisp1/rkisp1-stats.c  |  0
- drivers/staging/media/Kconfig                 |  2 --
- drivers/staging/media/Makefile                |  1 -
- drivers/staging/media/rkisp1/Kconfig          | 19 -------------------
- drivers/staging/media/rkisp1/TODO             |  6 ------
- .../uapi/linux}/rkisp1-config.h               |  0
- 20 files changed, 25 insertions(+), 31 deletions(-)
- rename {drivers/staging/media/rkisp1/Documentation => Documentation}/devicetree/bindings/media/rockchip-isp1.yaml (100%)
- rename drivers/{staging/media => media/platform/rockchip}/rkisp1/Makefile (100%)
- rename drivers/{staging/media => media/platform/rockchip}/rkisp1/rkisp1-capture.c (100%)
- rename drivers/{staging/media => media/platform/rockchip}/rkisp1/rkisp1-common.c (100%)
- rename drivers/{staging/media => media/platform/rockchip}/rkisp1/rkisp1-common.h (99%)
- rename drivers/{staging/media => media/platform/rockchip}/rkisp1/rkisp1-dev.c (100%)
- rename drivers/{staging/media => media/platform/rockchip}/rkisp1/rkisp1-isp.c (100%)
- rename drivers/{staging/media => media/platform/rockchip}/rkisp1/rkisp1-params.c (100%)
- rename drivers/{staging/media => media/platform/rockchip}/rkisp1/rkisp1-regs.h (100%)
- rename drivers/{staging/media => media/platform/rockchip}/rkisp1/rkisp1-resizer.c (100%)
- rename drivers/{staging/media => media/platform/rockchip}/rkisp1/rkisp1-stats.c (100%)
- delete mode 100644 drivers/staging/media/rkisp1/Kconfig
- delete mode 100644 drivers/staging/media/rkisp1/TODO
- rename {drivers/staging/media/rkisp1/uapi => include/uapi/linux}/rkisp1-config.h (100%)
+void rkisp1_mipi_isr(struct rkisp1_device *rkisp1)
+{
+	u32 val, status;
 
-diff --git a/drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml b/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-similarity index 100%
-rename from drivers/staging/media/rkisp1/Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-rename to Documentation/devicetree/bindings/media/rockchip-isp1.yaml
-diff --git a/Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst b/Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst
-index 7e43837ed260a..f3671472d4105 100644
---- a/Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst
-+++ b/Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst
-@@ -46,4 +46,4 @@ important tuning tools using software control loop.
- rkisp1 uAPI data types
- ======================
- 
--.. kernel-doc:: drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-+.. kernel-doc:: include/uapi/linux/rkisp1-config.h
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 811db1d3ca33b..352b8eaa21f7c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -15034,10 +15034,13 @@ ROCKCHIP ISP V1 DRIVER
- M:	Helen Koike <helen.koike@collabora.com>
- M:	Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
- L:	linux-media@vger.kernel.org
-+L:	linux-rockchip@lists.infradead.org
- S:	Maintained
- F:	Documentation/admin-guide/media/rkisp1.rst
-+F:	Documentation/devicetree/bindings/media/rockchip-isp1.yaml
- F:	Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst
--F:	drivers/staging/media/rkisp1/
-+F:	drivers/media/platform/rockchip/rkisp1
-+F:	include/uapi/linux/rkisp1-config.h
- 
- ROCKCHIP RASTER 2D GRAPHIC ACCELERATION UNIT DRIVER
- M:	Jacob Chen <jacob-chen@iotwrt.com>
-diff --git a/drivers/media/platform/Kconfig b/drivers/media/platform/Kconfig
-index a3cb104956d56..b161f2ba238fe 100644
---- a/drivers/media/platform/Kconfig
-+++ b/drivers/media/platform/Kconfig
-@@ -147,6 +147,24 @@ config VIDEO_RENESAS_CEU
- 	help
- 	  This is a v4l2 driver for the Renesas CEU Interface
- 
-+config VIDEO_ROCKCHIP_ISP1
-+	tristate "Rockchip Image Signal Processing v1 Unit driver"
-+	depends on VIDEO_V4L2 && OF
-+	depends on ARCH_ROCKCHIP || COMPILE_TEST
-+	select MEDIA_CONTROLLER
-+	select VIDEO_V4L2_SUBDEV_API
-+	select VIDEOBUF2_DMA_CONTIG
-+	select VIDEOBUF2_VMALLOC
-+	select V4L2_FWNODE
-+	select GENERIC_PHY_MIPI_DPHY
-+	default n
-+	help
-+	  Enable this to support the Image Signal Processing (ISP) module
-+	  present in RK3399 SoCs.
-+
-+	  To compile this driver as a module, choose M here: the module
-+	  will be called rockchip-isp1.
-+
- source "drivers/media/platform/exynos4-is/Kconfig"
- source "drivers/media/platform/am437x/Kconfig"
- source "drivers/media/platform/xilinx/Kconfig"
-diff --git a/drivers/media/platform/Makefile b/drivers/media/platform/Makefile
-index 62b6cdc8c7300..b342714228db4 100644
---- a/drivers/media/platform/Makefile
-+++ b/drivers/media/platform/Makefile
-@@ -52,6 +52,7 @@ obj-$(CONFIG_VIDEO_RENESAS_FDP1)	+= rcar_fdp1.o
- obj-$(CONFIG_VIDEO_RENESAS_JPU)		+= rcar_jpu.o
- obj-$(CONFIG_VIDEO_RENESAS_VSP1)	+= vsp1/
- 
-+obj-$(CONFIG_VIDEO_ROCKCHIP_ISP1)	+= rockchip/rkisp1/
- obj-$(CONFIG_VIDEO_ROCKCHIP_RGA)	+= rockchip/rga/
- 
- obj-y	+= omap/
-diff --git a/drivers/staging/media/rkisp1/Makefile b/drivers/media/platform/rockchip/rkisp1/Makefile
-similarity index 100%
-rename from drivers/staging/media/rkisp1/Makefile
-rename to drivers/media/platform/rockchip/rkisp1/Makefile
-diff --git a/drivers/staging/media/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-similarity index 100%
-rename from drivers/staging/media/rkisp1/rkisp1-capture.c
-rename to drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
-diff --git a/drivers/staging/media/rkisp1/rkisp1-common.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-similarity index 100%
-rename from drivers/staging/media/rkisp1/rkisp1-common.c
-rename to drivers/media/platform/rockchip/rkisp1/rkisp1-common.c
-diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-similarity index 99%
-rename from drivers/staging/media/rkisp1/rkisp1-common.h
-rename to drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-index 692333c66f9d1..3a134e97161cb 100644
---- a/drivers/staging/media/rkisp1/rkisp1-common.h
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
-@@ -13,6 +13,7 @@
- 
- #include <linux/clk.h>
- #include <linux/mutex.h>
-+#include <linux/rkisp1-config.h>
- #include <media/media-device.h>
- #include <media/media-entity.h>
- #include <media/v4l2-ctrls.h>
-@@ -20,7 +21,6 @@
- #include <media/videobuf2-v4l2.h>
- 
- #include "rkisp1-regs.h"
--#include "uapi/rkisp1-config.h"
- 
- /*
-  * flags on the 'direction' field in struct 'rkisp1_isp_mbus_info' that indicate
-diff --git a/drivers/staging/media/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-similarity index 100%
-rename from drivers/staging/media/rkisp1/rkisp1-dev.c
-rename to drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
-diff --git a/drivers/staging/media/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-similarity index 100%
-rename from drivers/staging/media/rkisp1/rkisp1-isp.c
-rename to drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-diff --git a/drivers/staging/media/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-similarity index 100%
-rename from drivers/staging/media/rkisp1/rkisp1-params.c
-rename to drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-diff --git a/drivers/staging/media/rkisp1/rkisp1-regs.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-similarity index 100%
-rename from drivers/staging/media/rkisp1/rkisp1-regs.h
-rename to drivers/media/platform/rockchip/rkisp1/rkisp1-regs.h
-diff --git a/drivers/staging/media/rkisp1/rkisp1-resizer.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-similarity index 100%
-rename from drivers/staging/media/rkisp1/rkisp1-resizer.c
-rename to drivers/media/platform/rockchip/rkisp1/rkisp1-resizer.c
-diff --git a/drivers/staging/media/rkisp1/rkisp1-stats.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-similarity index 100%
-rename from drivers/staging/media/rkisp1/rkisp1-stats.c
-rename to drivers/media/platform/rockchip/rkisp1/rkisp1-stats.c
-diff --git a/drivers/staging/media/Kconfig b/drivers/staging/media/Kconfig
-index 747c6cf1d795e..e8996b1c3b351 100644
---- a/drivers/staging/media/Kconfig
-+++ b/drivers/staging/media/Kconfig
-@@ -44,6 +44,4 @@ source "drivers/staging/media/tegra-video/Kconfig"
- 
- source "drivers/staging/media/ipu3/Kconfig"
- 
--source "drivers/staging/media/rkisp1/Kconfig"
--
- endif
-diff --git a/drivers/staging/media/Makefile b/drivers/staging/media/Makefile
-index b59571826ba69..24b5873ff7608 100644
---- a/drivers/staging/media/Makefile
-+++ b/drivers/staging/media/Makefile
-@@ -10,5 +10,4 @@ obj-$(CONFIG_VIDEO_TEGRA)	+= tegra-video/
- obj-$(CONFIG_TEGRA_VDE)		+= tegra-vde/
- obj-$(CONFIG_VIDEO_HANTRO)	+= hantro/
- obj-$(CONFIG_VIDEO_IPU3_IMGU)	+= ipu3/
--obj-$(CONFIG_VIDEO_ROCKCHIP_ISP1)	+= rkisp1/
- obj-$(CONFIG_VIDEO_ZORAN)	+= zoran/
-diff --git a/drivers/staging/media/rkisp1/Kconfig b/drivers/staging/media/rkisp1/Kconfig
-deleted file mode 100644
-index 41f5def9ea442..0000000000000
---- a/drivers/staging/media/rkisp1/Kconfig
-+++ /dev/null
-@@ -1,19 +0,0 @@
--# SPDX-License-Identifier: GPL-2.0-only
--
--config VIDEO_ROCKCHIP_ISP1
--	tristate "Rockchip Image Signal Processing v1 Unit driver"
--	depends on VIDEO_V4L2 && OF
--	depends on ARCH_ROCKCHIP || COMPILE_TEST
--	select MEDIA_CONTROLLER
--	select VIDEO_V4L2_SUBDEV_API
--	select VIDEOBUF2_DMA_CONTIG
--	select VIDEOBUF2_VMALLOC
--	select V4L2_FWNODE
--	select GENERIC_PHY_MIPI_DPHY
--	default n
--	help
--	  Enable this to support the Image Signal Processing (ISP) module
--	  present in RK3399 SoCs.
--
--	  To compile this driver as a module, choose M here: the module
--	  will be called rockchip-isp1.
-diff --git a/drivers/staging/media/rkisp1/TODO b/drivers/staging/media/rkisp1/TODO
-deleted file mode 100644
-index bb5548cd6bd1b..0000000000000
---- a/drivers/staging/media/rkisp1/TODO
-+++ /dev/null
-@@ -1,6 +0,0 @@
--NOTES:
--* All v4l2-compliance test must pass.
--* Stats and params can be tested with libcamera and ChromiumOS stack.
--
--Please CC patches to Linux Media <linux-media@vger.kernel.org> and
--Helen Koike <helen.koike@collabora.com>.
-diff --git a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h b/include/uapi/linux/rkisp1-config.h
-similarity index 100%
-rename from drivers/staging/media/rkisp1/uapi/rkisp1-config.h
-rename to include/uapi/linux/rkisp1-config.h
--- 
-2.29.2
+	status = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_MIS);
+	if (!status)
+		return;
 
+	rkisp1_write(rkisp1, status, RKISP1_CIF_MIPI_ICR);
+
+	/*
+	 * Disable DPHY errctrl interrupt, because this dphy
+	 * erctrl signal is asserted until the next changes
+	 * of line state. This time is may be too long and cpu
+	 * is hold in this interrupt.
+	 */
+	if (status & RKISP1_CIF_MIPI_ERR_CTRL(0x0f)) {
+		val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC);
+		rkisp1_write(rkisp1, val & ~RKISP1_CIF_MIPI_ERR_CTRL(0x0f),
+			     RKISP1_CIF_MIPI_IMSC);
+		rkisp1->isp.is_dphy_errctrl_disabled = true;
+	}
+
+	/*
+	 * Enable DPHY errctrl interrupt again, if mipi have receive
+	 * the whole frame without any error.
+	 */
+	if (status == RKISP1_CIF_MIPI_FRAME_END) {
+		/*
+		 * Enable DPHY errctrl interrupt again, if mipi have receive
+		 * the whole frame without any error.
+		 */
+		if (rkisp1->isp.is_dphy_errctrl_disabled) {
+			val = rkisp1_read(rkisp1, RKISP1_CIF_MIPI_IMSC);
+			val |= RKISP1_CIF_MIPI_ERR_CTRL(0x0f);
+			rkisp1_write(rkisp1, val, RKISP1_CIF_MIPI_IMSC);
+			rkisp1->isp.is_dphy_errctrl_disabled = false;
+		}
+	} else {
+		rkisp1->debug.mipi_error++;
+	}
+}
+
+Regards,
+Helen
+
+> 
+> Best regards,
+> Tomasz
+> 
+>>
+>> Thanks,
+>> Dafna
+>>
+>>
+>>
+>>>
+>>>>              curr_buf->vb.vb2_buf.timestamp = ktime_get_boottime_ns();
+>>>>              curr_buf->vb.field = V4L2_FIELD_NONE;
+>>>>              vb2_buffer_done(&curr_buf->vb.vb2_buf, VB2_BUF_STATE_DONE);
+>>>> diff --git a/drivers/staging/media/rkisp1/rkisp1-common.h b/drivers/staging/media/rkisp1/rkisp1-common.h
+>>>> index 232bee92d0eb..51c92a251ea5 100644
+>>>> --- a/drivers/staging/media/rkisp1/rkisp1-common.h
+>>>> +++ b/drivers/staging/media/rkisp1/rkisp1-common.h
+>>>> @@ -131,7 +131,7 @@ struct rkisp1_isp {
+>>>>      const struct rkisp1_isp_mbus_info *src_fmt;
+>>>>      struct mutex ops_lock; /* serialize the subdevice ops */
+>>>>      bool is_dphy_errctrl_disabled;
+>>>> -    atomic_t frame_sequence;
+>>>> +    __u32 frame_sequence;
+>>>
+>>> nit: The __ prefixed types are defined for the UAPI to avoid covering userspace
+>>> types. For kernel types please just use the plain u32.
+>>>
+>>> Best regards,
+>>> Tomasz
+>>>
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
