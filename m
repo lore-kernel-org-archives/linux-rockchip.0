@@ -1,68 +1,95 @@
-Return-Path: <SRS0=eRos=EL=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=pTeD=EM=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-11.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D49A9C4741F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 18:11:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 76E83C2D0A3
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2020 11:11:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 55B6820709
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Nov 2020 18:11:39 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E245A20735
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Nov 2020 11:11:13 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="L/juh5d+"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 55B6820709
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Bhv9iQ+c";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="EMe3OMLo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E245A20735
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zsDwFrPx5MrH/GOG0gCRoeWkunfqksO12HmMqARmROs=; b=L/juh5d+1vp+4LMnQT+jxAlOI
-	8wsGmJlhEwkB5IwD8DIVgGObGnGIGNTrzZ87P7LU908jwAJxBrsIfShdqx8fOjDdQ9kbffral7awA
-	TqGflGPx2oSLAGg0Y5TwFYk9Yz3MSy+FXeHA70mNletDnYYoPBHSjDiXGVvl/UoWsshuCCp2yuNlw
-	QlAAh9LsdwvAYXqBSi28D1j3fNe0m9WXIq13L9yBUTCrmvu4fLa+JAksYb8CncZAVKrRJWxdHivj7
-	FK7DhTgRGu/tP/pTWyCWdmcgoY13OkUyTe3oQYAaATA0wL7pLnASnCFrbLqskwKWKBekb4tIDaoIC
-	T0v96pldg==;
+	 bh=dYAtvN7YtFsjDyFhAXugKUENtfkfFBU5mzDFVBYC0RY=; b=Bhv9iQ+cNczSaDnWr50h+CWfb
+	hWsdBD5g704eD/ZMvKjkm75lRReZRfr6YZlCMJQX0bOYOdIqhcA1AqqlwAQOa+IryC5r3JRUgI+LO
+	aC23dLSyZQI+TNZ9Ont3cJ6mjBAlMNz9emwwV6f44eOff2vkBrtXfXAbFs6wT+FlpRaMvQJQdfRwY
+	h7GCDhO1uem+Wt8N5HdC0/KR3lcFGnY2lA8+UalJkaX0JU6SXeKifTZ11l+td//OjldD+rjQZMb3u
+	Hn7L59Dak/1GZyIK8zZSLFVx7mdVix7MjIZm5QF6abdpC0aHQuKY1dmX3MmxcW6YVI0QTp4XGTRc8
+	5CHNBXUDA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kajjT-0005sd-Si; Thu, 05 Nov 2020 18:11:35 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kajjS-0005s0-73
- for linux-rockchip@lists.infradead.org; Thu, 05 Nov 2020 18:11:35 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 10B8614BF;
- Thu,  5 Nov 2020 10:11:31 -0800 (PST)
-Received: from [10.57.54.223] (unknown [10.57.54.223])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A76EE3F719;
- Thu,  5 Nov 2020 10:11:28 -0800 (PST)
-Subject: Re: [PATCH v2 1/3] media: videodev2.h, v4l2-ioctl: add rkisp1 meta
- buffer format
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Helen Koike <helen.koike@collabora.com>, linux-media@vger.kernel.org
-References: <20201030112225.2095909-1-helen.koike@collabora.com>
- <20201030112225.2095909-2-helen.koike@collabora.com>
- <89711cf3-fc1d-68e2-1de0-c6cc88c6f7d0@xs4all.nl>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <2e22fa70-28c8-8bd6-734c-ced1b5113726@arm.com>
-Date: Thu, 5 Nov 2020 18:11:28 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+	id 1kayzo-0002YR-1g; Fri, 06 Nov 2020 10:29:28 +0000
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kayzY-0002PB-K3; Fri, 06 Nov 2020 10:29:14 +0000
+Received: by mail-ej1-x642.google.com with SMTP id o9so1223637ejg.1;
+ Fri, 06 Nov 2020 02:29:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=6KO3tpZd9fabNVI7knO854DR7pkC+nbJTMXJxRywBRA=;
+ b=EMe3OMLoP1liYhjqmesTIm2OlSPEBZKFgyagolt5SDpky7xC2UVQ2bapJPCmi+Kjfk
+ mkzYOS5nVmK8O6uv8ECa16gBtIxF/bt1YbWleozvTfWMQwdmqtuYYRNJAl3UnEopwhJK
+ g26Zo2I7/PF8WPxGs96/n7IpzZWdOFycfw3faWxDO+MHdu0i5/jsQd6sMUZFhWVxkRmR
+ fALhhgHAAWNafZUQkqPTSFfCQEGk0c3aLL383IhONAQmlj+uA2Zb7t9E4R8BjuXU8IMJ
+ O0000TWi980w1YbmEGGbaEY+I4pkgfBGlFVu5lB4g8Ys9CkW0KgN0G+vOVjorrfmrMKy
+ zkOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=6KO3tpZd9fabNVI7knO854DR7pkC+nbJTMXJxRywBRA=;
+ b=Yso3NawfD37TBnUpy1CrbKaLAT3vV5vXRn7twxh288WD1f1zL3myddlujlVxM/RyXc
+ 78hHgBZXMpHFXKPQm6MXQRvYrGiXl4N5EBwWOuyJhZ1MQVFKdNut3Ma3KaXZqaJfM2q9
+ 4ZgpPWon/eyeLTmOb5yWBDLZT26vaQBovHlHh/O9e+YHrg+oSj+mnXpnSUCDrzIkulul
+ p90zWUXUiTJXbe/8f7LgKpL4WTIzpdKSkwOeuYm8SD0GZCW55BETI2YHIKo5njnrlDmI
+ U6NtVkvxotJt0DYe7RAYTqh3GMcXxKPVv301VhbX9JB5F/Wb6D+88N3QRzEluZ42iF3o
+ 8WdA==
+X-Gm-Message-State: AOAM530qyCeqkzNaSBDRiXWEiPW2231X9Qa4YuyYIGFc7clKYSa0kM9x
+ fhK1ROrfZVmb0g5MLjR9iPs=
+X-Google-Smtp-Source: ABdhPJwaSNRdkwLPT5rKEBe1a0MIvWVbRI5fFAFSNm5F00QScRXq83ByBFNMbNKBobP+3nuKRcdVTg==
+X-Received: by 2002:a17:906:4bc2:: with SMTP id
+ x2mr1352791ejv.525.1604658549486; 
+ Fri, 06 Nov 2020 02:29:09 -0800 (PST)
+Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id h4sm691028edj.1.2020.11.06.02.29.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 06 Nov 2020 02:29:08 -0800 (PST)
+Subject: Re: [PATCH] arm64: dts: rockchip: Reorder LED triggers from mmc
+ devices on rk3399-roc-pc.
+To: Markus Reichl <m.reichl@fivetechno.de>,
+ linux-rockchip@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>
+References: <20201104192933.1001-1-m.reichl@fivetechno.de>
+From: Johan Jonker <jbx6244@gmail.com>
+Message-ID: <db3986ed-e572-bdd1-6f04-3bb2d04d49fa@gmail.com>
+Date: Fri, 6 Nov 2020 11:29:06 +0100
+User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <89711cf3-fc1d-68e2-1de0-c6cc88c6f7d0@xs4all.nl>
-Content-Language: en-GB
+In-Reply-To: <20201104192933.1001-1-m.reichl@fivetechno.de>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201105_131134_439304_EEDCC2F8 
-X-CRM114-Status: GOOD (  19.49  )
+X-CRM114-CacheID: sfid-20201106_052912_860286_81EFF5D1 
+X-CRM114-Status: GOOD (  19.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,117 +102,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: kernel@collabora.com, dafna.hirschfeld@collabora.com, heiko@sntech.de,
- linux-kernel@vger.kernel.org, tfiga@chromium.org,
- linux-rockchip@lists.infradead.org, laurent.pinchart@ideasonboard.com,
- niklas.soderlund@ragnatech.se, mchehab@kernel.org, zhengsq@rock-chips.com,
- ribalda@google.com
+Cc: devicetree@vger.kernel.org, dianders@chromium.org,
+ linux-kernel@vger.kernel.org, wens@kernel.org, robin.murphy@arm.com,
+ linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2020-11-05 17:43, Hans Verkuil wrote:
-> On 30/10/2020 12:22, Helen Koike wrote:
->> From: Shunqian Zheng <zhengsq@rock-chips.com>
->>
->> Add the Rockchip ISP1 specific processing parameter format
->> V4L2_META_FMT_RK_ISP1_PARAMS and metadata format
->> V4L2_META_FMT_RK_ISP1_STAT_3A for 3A.
->>
->> Signed-off-by: Shunqian Zheng <zhengsq@rock-chips.com>
->> Signed-off-by: Jacob Chen <jacob2.chen@rock-chips.com>
->> Signed-off-by: Helen Koike <helen.koike@collabora.com>
->> Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
->>
->> ---
->> Hello,
->>
->> This patch is a continuation of:
->>
->> https://patchwork.kernel.org/project/linux-arm-kernel/patch/20191106120132.6876-2-helen.koike@collabora.com/
->>
->> These formats are already documented under
->> Documentation/userspace-api/media/v4l/pixfmt-meta-rkisp1.rst
->>
->> We had agreed to keep under
->> drivers/staging/media/rkisp1/uapi/rkisp1-config.h while the driver was
->> in staging, since we are moving it out of staging, I guess this is the
->> time :)
->>
->> Regards,
->> Helen
->> ---
->>   drivers/media/v4l2-core/v4l2-ioctl.c              | 2 ++
->>   drivers/staging/media/rkisp1/uapi/rkisp1-config.h | 4 ----
->>   include/uapi/linux/videodev2.h                    | 4 ++++
->>   3 files changed, 6 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/media/v4l2-core/v4l2-ioctl.c b/drivers/media/v4l2-core/v4l2-ioctl.c
->> index eeff398fbdcc1..202597d031c6b 100644
->> --- a/drivers/media/v4l2-core/v4l2-ioctl.c
->> +++ b/drivers/media/v4l2-core/v4l2-ioctl.c
->> @@ -1402,6 +1402,8 @@ static void v4l_fill_fmtdesc(struct v4l2_fmtdesc *fmt)
->>   	case V4L2_META_FMT_UVC:		descr = "UVC Payload Header Metadata"; break;
->>   	case V4L2_META_FMT_D4XX:	descr = "Intel D4xx UVC Metadata"; break;
->>   	case V4L2_META_FMT_VIVID:       descr = "Vivid Metadata"; break;
->> +	case V4L2_META_FMT_RK_ISP1_PARAMS:	descr = "Rockchip ISP1 3A params"; break;
->> +	case V4L2_META_FMT_RK_ISP1_STAT_3A:	descr = "Rockchip ISP1 3A statistics"; break;
-> 
-> Use 'Params' and 'Statistics' to conform to the other descriptions.
+Hi Markus,
 
-Drive-by observation: "parameters" is the exact same length as 
-"statistics". I could understand abbreviating both, or neither, but the 
-mix just looks decidedly odd.
+On 11/4/20 8:29 PM, Markus Reichl wrote:
+> After patch [1] SD-card becomes mmc1 and eMMC becomes mmc2.
+> Correct trigger of LEDs accordingly.
+> 
+> [1]
+> https://patchwork.kernel.org/patch/11881427
+> 
+> Signed-off-by: Markus Reichl <m.reichl@fivetechno.de>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> index e7a459fa4322..20309076dbac 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi
+> @@ -74,14 +74,14 @@ diy_led: led-1 {
+>  			label = "red:diy";
+>  			gpios = <&gpio0 RK_PB5 GPIO_ACTIVE_HIGH>;
+>  			default-state = "off";
+> -			linux,default-trigger = "mmc1";
 
-Robin.
+> +			linux,default-trigger = "mmc2";
 
+remove
+>  		};
+>  
+>  		yellow_led: led-2 {
+>  			label = "yellow:yellow-led";
+>  			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
+>  			default-state = "off";
+> -			linux,default-trigger = "mmc0";
+
+> +			linux,default-trigger = "mmc1";
+
+remove
+
+>  		};
+>  	};
+>  
 > 
-> Regards,
-> 
-> 	Hans
-> 
->>   
->>   	default:
->>   		/* Compressed formats */
->> diff --git a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
->> index 8d906cc7da8fc..6e449e7842605 100644
->> --- a/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
->> +++ b/drivers/staging/media/rkisp1/uapi/rkisp1-config.h
->> @@ -9,10 +9,6 @@
->>   
->>   #include <linux/types.h>
->>   
->> -/* Vendor specific - used for RK_ISP1 camera sub-system */
->> -#define V4L2_META_FMT_RK_ISP1_PARAMS   v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 params */
->> -#define V4L2_META_FMT_RK_ISP1_STAT_3A  v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A statistics */
->> -
->>   /* Defect Pixel Cluster Detection */
->>   #define RKISP1_CIF_ISP_MODULE_DPCC		(1U << 0)
->>   /* Black Level Subtraction */
->> diff --git a/include/uapi/linux/videodev2.h b/include/uapi/linux/videodev2.h
->> index 534eaa4d39bc8..c2e13ba81196b 100644
->> --- a/include/uapi/linux/videodev2.h
->> +++ b/include/uapi/linux/videodev2.h
->> @@ -770,6 +770,10 @@ struct v4l2_pix_format {
->>   #define V4L2_META_FMT_D4XX        v4l2_fourcc('D', '4', 'X', 'X') /* D4XX Payload Header metadata */
->>   #define V4L2_META_FMT_VIVID	  v4l2_fourcc('V', 'I', 'V', 'D') /* Vivid Metadata */
->>   
->> +/* Vendor specific - used for RK_ISP1 camera sub-system */
->> +#define V4L2_META_FMT_RK_ISP1_PARAMS	v4l2_fourcc('R', 'K', '1', 'P') /* Rockchip ISP1 params */
->> +#define V4L2_META_FMT_RK_ISP1_STAT_3A	v4l2_fourcc('R', 'K', '1', 'S') /* Rockchip ISP1 3A statistics */
->> +
->>   /* priv field value to indicates that subsequent fields are valid. */
->>   #define V4L2_PIX_FMT_PRIV_MAGIC		0xfeedcafe
->>   
->>
-> 
-> 
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
-> 
+
+The "mmc1" and "mmc2" options are custom values and invalid to the
+automated dt check in the mainline kernel.
+
+make ARCH=arm64 dtbs_check
+DT_SCHEMA_FILES=Documentation/devicetree/bindings/leds/leds-gpio.yaml
+
+
+  linux,default-trigger:
+    description:
+      This parameter, if present, is a string defining the trigger
+assigned to
+      the LED.
+    $ref: /schemas/types.yaml#definitions/string
+
+    enum:
+        # LED will act as a back-light, controlled by the framebuffer system
+      - backlight
+        # LED will turn on (but for leds-gpio see "default-state"
+property in
+        # Documentation/devicetree/bindings/leds/leds-gpio.yaml)
+      - default-on
+        # LED "double" flashes at a load average based rate
+      - heartbeat
+        # LED indicates disk activity
+      - disk-activity
+        # LED indicates IDE disk activity (deprecated), in new
+implementations
+        # use "disk-activity"
+      - ide-disk
+        # LED flashes at a fixed, configurable rate
+      - timer
+        # LED alters the brightness for the specified duration with one
+software
+        # timer (requires "led-pattern" property)
+      - pattern
 
 _______________________________________________
 Linux-rockchip mailing list
