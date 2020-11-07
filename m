@@ -8,78 +8,81 @@ X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D402CC388F7
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2020 17:01:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 540DFC55178
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2020 17:01:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5CCAB206E3
+	by mail.kernel.org (Postfix) with ESMTPS id DB9BD206E3
 	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2020 17:01:35 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1EQXOp+1";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="U6ov5KOO"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5CCAB206E3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="d4Qa+VzM";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="YOyqblNo"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DB9BD206E3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=v8qeEFiEGK7ezanQvLF9OYAlMTmLZhA8gfvrZXQ8FnA=; b=1EQXOp+1S+Q9EmI6m1oMKUqo5w
-	6hdYjJhzjeLCGMYHSfj4A2NwJXGC1upN6XN8gc9W+CaripWUfCT+VT7c7sqBPnvirYt/zMQipjUuM
-	nOLD9VubXF+WmamsqcrF+LvNvGjDXiXIUHXuLfEd2TKfZHBxT7gx1f7OypBuOOut9K3y0+l4M9fL3
-	Hds4UifSEAMT23RurzFxQ+g2gsDsaO73gPoY5e+YnF9RP/4sYBFwoS8NUfX5YOg0F8DqrjQmQ7OfU
-	Vwoa+ZNNsdGS7Bw3X9DYuOqOFKLDh+bUQqSKtYV42wkxMK1fJOEd839nQnAuykHq7W1GVBIgIJfsF
-	PQq5jZbw==;
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qfXJlgxikIRpFnc9aMGNdEBc3prCHJ3aa2j7KZqDNEg=; b=d4Qa+VzMTHd79s0kyj4+HxlhDs
+	aT8Dsem+rxRu6vb3LcAXBGyLLUzGVxXFBmsc+WCtVou7agamErhtAOswISwnPTfF3yyr/D4xFYcZl
+	gwyacB08XV0vWQDUyUeacjVfYPrkqm8oslbQiWP3+rFPnLaG7IDM7dwcusRJPKoqfPl99R7m9Uemf
+	v6mDp8DzL8LWLEwIrmUCqd5228ZSUzQHzKW/uumo2mfx6Z8ggnhtBVASTUhTCz7kpX3D2Epee1JMe
+	thOy6lJLsKLV8UGGfQoNkCCucB+nKwiiQse3LdlAtacCHCvjSTKm6zAsCg8UxlLS8KRvUxg9oaNca
+	uOLVrVVg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kbRag-0007G4-Mo; Sat, 07 Nov 2020 17:01:26 +0000
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
+	id 1kbRah-0007GF-CN; Sat, 07 Nov 2020 17:01:27 +0000
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kbRaW-0007BH-Iy; Sat, 07 Nov 2020 17:01:17 +0000
-Received: by mail-ej1-x641.google.com with SMTP id i19so6321395ejx.9;
- Sat, 07 Nov 2020 09:01:15 -0800 (PST)
+ id 1kbRaW-0007Bg-RZ; Sat, 07 Nov 2020 17:01:17 +0000
+Received: by mail-ej1-x642.google.com with SMTP id oq3so6327184ejb.7;
+ Sat, 07 Nov 2020 09:01:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=iYx7Zu5YxaAUOh2wUpaIISnZwmtTFG2J3DAA0bojnps=;
- b=U6ov5KOO2oi2Nbht9hCtXqab7Nl5JNHRBuG2cGOcEmZehAEFGMxDJPKid9uRJra3Hu
- wXveMDyHCGG4IlCFMoKbDof6WKIsjNzhYUmtqozgiHAS9rl/MF2WVmX5Q8O+BTQXQA95
- xjytFKJKXoJwLuVZ72bN7HAW7mcY/roG2oov0WHgSfWuBGU2bM9KEN1RExG3LLM0d315
- LX2lq1Neg+ttDjRv7ODqXnwEjKijlMTILjVlAXGfbN7jO3uVi/wjlBzpXh27qGvoaPNl
- Qq37y+Rc9AVAUGdH1VmhvQIF3sB6doxnncX1LVdWHRrJ/CvHwABvGwQ4orrRXxWY3cun
- QLCQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=j1Mhg9zNZL9zm+d/ViVbeh1jFha9crRB2Lx0TDAGCGk=;
+ b=YOyqblNoJ4457IwuVC7eytLfj4NWcLL5XXxnSZFl9Aww+VMzbXiaUMbG0KP9evo1tJ
+ WPMNmBSnuxl8NcMYQjEBwOFAZuUdOiMdV8/6aTNYx3Ggg+89TPst5JdlSidDWec6VcbP
+ msMvI7585Ro9/yBFeiNHarmT0FpXXTsYd+eyp2evtgPQC4U9cIl+WPNf9hfmwkTsK+T8
+ 5Hx71wUjIqrRITMMuUOMrrmGJbf5kxxCtcq4QEjCUBtDbCDDGnbUem3UlGQkKXsq3dz/
+ eQtqUNLjQxNnOJPRkVXPLsD2snazRSRZTDGAALKbZYQuABAcl8T6VGTmVzkVK3x3YhfH
+ tPgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=iYx7Zu5YxaAUOh2wUpaIISnZwmtTFG2J3DAA0bojnps=;
- b=puSWlmAWNRJHYTei7q4wx5T+addJwsOTk73dtpZgC/nZ2XqRgGabVODWkLlzNStoKl
- 9taMFWcVccaf8bou3Y4nRpMpLulwBp8zhx2HherpBF0WFFbyKgS3q0UVTae3WdKMY8aL
- 8hZCtd7Jry+MkHqObit+BtkixVB8kKTbh8zomXKFgAmilNMvNRacPahh5TtAJOAIRqOd
- 1AZ0W5z6o3zYXnVKBih5vjXdsigymCmJs5Nm3roK/0xeI8JdmQcfCVzc/AYMxyp9F2ZA
- 8AnNiAyCkWteR0DdPwTXu96VTDIF/Spod7Cs28dBQsHKu54IK5aS4FYrmATsKsp0XytU
- JnPw==
-X-Gm-Message-State: AOAM530a6GsgJl+WraCPFs5ZhYlzvguHeszVKxujxeLB/G+nseLK+dNR
- vpxu2s5UsQuy6VA6viLkiZ0=
-X-Google-Smtp-Source: ABdhPJz7mUoi1CzwS6zfSfBUvQiJhIoTCcqt4t0soJXcWdAdtGuxARn9QJ+kqdJCcMLoEqPNwRU+XA==
-X-Received: by 2002:a17:906:512:: with SMTP id
- j18mr7744965eja.370.1604768474402; 
- Sat, 07 Nov 2020 09:01:14 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=j1Mhg9zNZL9zm+d/ViVbeh1jFha9crRB2Lx0TDAGCGk=;
+ b=nq6kd9gdGGDTEuSSS3ttdONPNI7895dOjgSS/rKZ0bGsHdyw3nDGVArqwsmKE0InLR
+ waMoc7/eSj6YANaS4OhRaGnIJc/ICIcWJinQ6YFpA+aOU8wcgohRTVFvLPIXC4iEpAZw
+ MPcvl23XF8qlhtVAbhYJxcntAjautKrWVep7OwGf/trWvANE8zeyCOXVkq4v43RkkaWD
+ /NXSHBhN+jJ6tRD7tyGji3oNIZAmi/qXORv9isNT94M6HTLo++HtXpuPzW7yqHTzZAPf
+ 7AFydNLsrkp0aWK5s2jX6cjJtUqyjt/X1TU44iQwvfrHjcG+JPA65mLySDjWi6pge2Yb
+ GG3w==
+X-Gm-Message-State: AOAM531KvWcIPrIYcQbLLOiuSZlwn0My0olHMYO8cYb703Ypr8e9YGzf
+ TA5Emx+tNHyAg2BmZB//dlM=
+X-Google-Smtp-Source: ABdhPJxZLjCikhr2EYeBq7HnBrQ84tl0WX8qqH488I4GMNBHumXjNKTLNENvkIBHt9VoYSThgNRamg==
+X-Received: by 2002:a17:906:6d52:: with SMTP id
+ a18mr7356951ejt.224.1604768475385; 
+ Sat, 07 Nov 2020 09:01:15 -0800 (PST)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id t22sm3729700edq.64.2020.11.07.09.01.13
+ by smtp.gmail.com with ESMTPSA id t22sm3729700edq.64.2020.11.07.09.01.14
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 07 Nov 2020 09:01:13 -0800 (PST)
+ Sat, 07 Nov 2020 09:01:14 -0800 (PST)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
-Subject: [PATCH v1 1/5] dt-binding: mfd: syscon: add Rockchip QoS register
- compatibles
-Date: Sat,  7 Nov 2020 18:00:59 +0100
-Message-Id: <20201107170103.25608-1-jbx6244@gmail.com>
+Subject: [PATCH v1 2/5] ARM: dts: rockchip: add QoS register compatibles for
+ rk3066/rk3188
+Date: Sat,  7 Nov 2020 18:01:00 +0100
+Message-Id: <20201107170103.25608-2-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20201107170103.25608-1-jbx6244@gmail.com>
+References: <20201107170103.25608-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201107_120116_671044_49E2D484 
-X-CRM114-Status: GOOD (  10.94  )
+X-CRM114-CacheID: sfid-20201107_120116_943965_AD3E968F 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,35 +106,72 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 With the conversion of syscon.yaml minItems for compatibles
 was set to 2. Current Rockchip dtsi files only use "syscon" for
-QoS registers. Add Rockchip QoS compatibles to reduce notifications
-produced with:
+QoS registers. Add Rockchip QoS compatibles for rk3066/rk3188
+to reduce notifications produced with:
 
 make ARCH=arm dtbs_check
 DT_SCHEMA_FILES=Documentation/devicetree/bindings/mfd/syscon.yaml
 
-make ARCH=arm64 dtbs_check
-DT_SCHEMA_FILES=Documentation/devicetree/bindings/mfd/syscon.yaml
-
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- Documentation/devicetree/bindings/mfd/syscon.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
+ arch/arm/boot/dts/rk3xxx.dtsi | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
-index 8f4764a9e..f14ae6da0 100644
---- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-+++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-@@ -44,6 +44,10 @@ properties:
-               - hisilicon,peri-subctrl
-               - microchip,sparx5-cpu-syscon
-               - mstar,msc313-pmsleep
-+              - rockchip,px30-qos
-+              - rockchip,rk3066-qos
-+              - rockchip,rk3288-qos
-+              - rockchip,rk3399-qos
-               - samsung,exynos3-sysreg
-               - samsung,exynos4-sysreg
-               - samsung,exynos5-sysreg
+diff --git a/arch/arm/boot/dts/rk3xxx.dtsi b/arch/arm/boot/dts/rk3xxx.dtsi
+index 859a74779..eb9d25d23 100644
+--- a/arch/arm/boot/dts/rk3xxx.dtsi
++++ b/arch/arm/boot/dts/rk3xxx.dtsi
+@@ -151,42 +151,42 @@
+ 	};
+ 
+ 	qos_gpu: qos@1012d000 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3066-qos","syscon";
+ 		reg = <0x1012d000 0x20>;
+ 	};
+ 
+ 	qos_vpu: qos@1012e000 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3066-qos","syscon";
+ 		reg = <0x1012e000 0x20>;
+ 	};
+ 
+ 	qos_lcdc0: qos@1012f000 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3066-qos","syscon";
+ 		reg = <0x1012f000 0x20>;
+ 	};
+ 
+ 	qos_cif0: qos@1012f080 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3066-qos","syscon";
+ 		reg = <0x1012f080 0x20>;
+ 	};
+ 
+ 	qos_ipp: qos@1012f100 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3066-qos","syscon";
+ 		reg = <0x1012f100 0x20>;
+ 	};
+ 
+ 	qos_lcdc1: qos@1012f180 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3066-qos","syscon";
+ 		reg = <0x1012f180 0x20>;
+ 	};
+ 
+ 	qos_cif1: qos@1012f200 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3066-qos","syscon";
+ 		reg = <0x1012f200 0x20>;
+ 	};
+ 
+ 	qos_rga: qos@1012f280 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3066-qos","syscon";
+ 		reg = <0x1012f280 0x20>;
+ 	};
+ 
 -- 
 2.11.0
 
