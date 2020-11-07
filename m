@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 70E1DC388F9
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2020 17:01:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BCBE3C388F7
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2020 17:01:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 23A43206E3
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2020 17:01:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6992C20888
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Nov 2020 17:01:43 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="d9ma0VAy";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Gzm0iFj0"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 23A43206E3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1KGgU2YL";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="q+82+2gk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6992C20888
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,62 +27,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W3gS0O3fm4QrulKNyf6xuB6ntCVaLBkXHJmj5IG8duc=; b=d9ma0VAyZTd1HWv3laR3P0tncn
-	6CMWwX7z5PKCS94M8Ntgz58XXVY2PN78FLfori3QX1Iu3gK26GPBCvYbb+0zmkEPkknQlj8N2wX9b
-	4qucjJj0xWBo3pc5dA3VgfDsGXvk21aAb/i83cGE7v/lzhH7Zz2lknzp+MCygozQv5NNozGbSwdX6
-	+NwissqHByvK/71x6D6IHUTckPEYIQHVRuGmoeBOZrsa1LrR5DBlwbupImu6/tPw3DqFzarXUBg30
-	WjwYUiFtWKsKvNLtmlsIDWKCeMxUUOGeohyU8GwQN3mJSoYio4jdeyFWrAvj4Icp/uuqpW8IPbpDL
-	N7g1je7w==;
+	bh=HvcIJp/YzhMVwuPhXHIabVnThcDYwifZXJFq3+HK55M=; b=1KGgU2YLXdY5mjT1pLtXRr9ow4
+	2lrmNUZC6/pLykPoqSDMzb9sVDLQmYrrWfm/LHiS3Kpm1xxk9p7vH0mCwfshcSJo/qYn2GKyR3V5p
+	EE5XHVZ9zA1gsykDTt60CpBVRq0BgUGSo1yoAcpOi6eAnzlywFyTOFX0C6xi0hywAo6sA/F1E2vWx
+	XmtHpZcAaPYXPEsLN/3jOMUeHPv8hAM/hASyyTo/9o251H3dmog6pv3LZ9Wbu3Unk+LjLJpNwt97y
+	hKS12nBbbXfD0H5Pc5f7yNky5k9cR6HNHMWpTUxjFeLChflmtGyKUlip0+M4mgrPlhlEB7x/rduCF
+	plxGQPDA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kbRat-0007Kg-12; Sat, 07 Nov 2020 17:01:39 +0000
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
+	id 1kbRas-0007KH-Cq; Sat, 07 Nov 2020 17:01:38 +0000
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kbRaZ-0007Dj-PO; Sat, 07 Nov 2020 17:01:22 +0000
-Received: by mail-ej1-x644.google.com with SMTP id k3so6322433ejj.10;
- Sat, 07 Nov 2020 09:01:19 -0800 (PST)
+ id 1kbRaY-0007D2-Bz; Sat, 07 Nov 2020 17:01:21 +0000
+Received: by mail-ej1-x642.google.com with SMTP id w13so6305548eju.13;
+ Sat, 07 Nov 2020 09:01:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=Zq1Ou0jMvIjoZ2w0wOmMCC/GKFzl+UGGCZWv6JD39N4=;
- b=Gzm0iFj0EB4BO95L4Ks/rc61eoroyvAr7tN49rVECqj1v7qRRd+w2q3F1TtfcsE5+i
- XaLL+iD++Y5O7zBEdQTgnqK0ReL+7HI8gvbaQO7oRthD32lPNtAcJnJCljhHLHPinxKo
- l8WxxE66HE6aQyUDbbx5i3iKiEX6FhixjiBW0dk7eXDd1wKtHr9gS2tNTxHknWYfcY3T
- 0UUJxMlxFc8hIYLFnXFNMTwgA7fSeaLu0JYOgNsZp1g6t8oTowCFYEJ+KYR2cogHN2Kt
- W6KW3ipftVulNSHs39UoiTx0zCmIHIydwsJoc1IgbWcP4OGzut8JAFJ3tdbZ8IGwGKYy
- 6W1A==
+ bh=u6WYOik1eFyWW6JqEZgzc6DFTvnTKfIu799c+q/dYFM=;
+ b=q+82+2gk8fgkYlS2QZOF2NaxgnuobdnDkv+5oGgY0Hemy1U06GzPfkKi5lEEhS8Koi
+ IDEoQ9qmuM/CMyL8JjAZb4ywVQe/wDNfe6VcSU77cTbp9ooP6qYkgLo/JHB+qxJm3enM
+ 6OtSxEGACqv1U+S8jxCbr7bK76tCiye6w/Z98DLE+7i1I4j1mlwxz+fVyU400MHyPLRA
+ voNy4ISMofTwnIbUEfRbon42l6ph541aP5jCNxOMir++GsS//EbCb60CBDPN7C2yVvff
+ jqaLehFlLy183NVEt8wy3RYDIy4lhsDEfKcgxUYbxCcvgRm/wdFp0Pj8K5KgHLLSphXs
+ eUNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=Zq1Ou0jMvIjoZ2w0wOmMCC/GKFzl+UGGCZWv6JD39N4=;
- b=JelPTLWxuXFp4HxiAwFNjiZAcXgGFg9iMYUZbiR630TOMTbwj85gi8D3FpWDqwAxwr
- ef/aFkTSwooO6AjYtN5McOV0OOTYE1ZLzGIHnydAgo4IZM7+291SWQos6JnkxFL49dnw
- tpbIkZoWSicRM3jWwTFphq7ZykpSwKI+FfD/pR2zzEMXpjHHp5XA0eDRPVM8pJ6C2785
- FuBOd/ehXSshzn6OIPkK1GAMJNYrTCj6ZR/TXTpt9nBzfr97TWF7QDKL6g3w+0dftR7b
- E4n3Q1R5Lt3H3J2QSY/ZGaupcOoYQZuioIxd4E8Wmzk9QfSkl+lbVxJi4FM3W0pufwGT
- DLXQ==
-X-Gm-Message-State: AOAM530SDICY+52jwUtJB/5arEjxU1HkI9a8cYA5GuDXTY30r5KE5BDR
- KS2/VgKp01GyUHfyxWXLi2Q=
-X-Google-Smtp-Source: ABdhPJy4JdaWQPpM6V8tQo4sHCMhIpf87AT6eKdwGjbetI6Rw6KidtH7UeEFpuc0Fyv4/Nn7C4ZIxQ==
-X-Received: by 2002:a17:906:840e:: with SMTP id
- n14mr7246795ejx.147.1604768478455; 
- Sat, 07 Nov 2020 09:01:18 -0800 (PST)
+ bh=u6WYOik1eFyWW6JqEZgzc6DFTvnTKfIu799c+q/dYFM=;
+ b=aKc1Fl5X+Vwcdem3md/XDa+kcw1v6WyhZU9MnMDg64ehUI6RO1Q2DdVJoNOX0LKCzj
+ LoqOZfniP+5iHjrOYeveXuFGADL36WcPoOVuzTeifyH6PqKfKs6h4qw8Vtn+36OU4d26
+ /U8Y3rrFKljF7b8r2LgYnMTnDzSpN9NSPeRXWuIVr3/0ud35j8RrfuRsW5pJ76xrLHCI
+ 4hyb1939qS89aN9E3ffi2Hmnpo28ey84oYAcdoP+S5snv45yN9ZzBbIknd0rj0K+FWV2
+ cb+qmXD9BqZRraIh50IngRpFkgRxZXuwTJt1Zer8AJk03revVDUCqUnZHoEfvRa/VFru
+ y9YQ==
+X-Gm-Message-State: AOAM5323jzNtXiK7DbHkByJRexUDTsss7NV2mslzikXqwre8hBbQRMGf
+ O7hZzSedn+dPm7BosAwOESc=
+X-Google-Smtp-Source: ABdhPJxTEYdXvym049Q3hFtyHNLtuX5TdVJVleljfpGwRWjM/CEpq3LAo8d7e3RNXZX+TQe3O0kl+Q==
+X-Received: by 2002:a17:906:5a8b:: with SMTP id
+ l11mr2679338ejq.99.1604768477507; 
+ Sat, 07 Nov 2020 09:01:17 -0800 (PST)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id t22sm3729700edq.64.2020.11.07.09.01.17
+ by smtp.gmail.com with ESMTPSA id t22sm3729700edq.64.2020.11.07.09.01.16
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 07 Nov 2020 09:01:18 -0800 (PST)
+ Sat, 07 Nov 2020 09:01:17 -0800 (PST)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
-Subject: [PATCH v1 5/5] arm64: dts: rockchip: add QoS register compatibles for
- px30
-Date: Sat,  7 Nov 2020 18:01:03 +0100
-Message-Id: <20201107170103.25608-5-jbx6244@gmail.com>
+Subject: [PATCH v1 4/5] arm64: dts: rockchip: add QoS register compatibles for
+ rk3399
+Date: Sat,  7 Nov 2020 18:01:02 +0100
+Message-Id: <20201107170103.25608-4-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20201107170103.25608-1-jbx6244@gmail.com>
 References: <20201107170103.25608-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201107_120119_916114_6E20D5D7 
-X-CRM114-Status: GOOD (  12.54  )
+X-CRM114-CacheID: sfid-20201107_120118_477021_D3EC419E 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,7 +106,7 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 With the conversion of syscon.yaml minItems for compatibles
 was set to 2. Current Rockchip dtsi files only use "syscon" for
-QoS registers. Add Rockchip QoS compatibles for px30
+QoS registers. Add Rockchip QoS compatibles for rk3399
 to reduce notifications produced with:
 
 make ARCH=arm64 dtbs_check
@@ -114,134 +114,164 @@ DT_SCHEMA_FILES=Documentation/devicetree/bindings/mfd/syscon.yaml
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/px30.dtsi | 40 +++++++++++++++++-----------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399.dtsi | 50 ++++++++++++++++----------------
+ 1 file changed, 25 insertions(+), 25 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
-index 2695ea8cd..7317bca2e 100644
---- a/arch/arm64/boot/dts/rockchip/px30.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
-@@ -1107,102 +1107,102 @@
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+index ada724b12..32e867179 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
+@@ -855,127 +855,127 @@
  	};
  
- 	qos_gmac: qos@ff518000 {
+ 	qos_emmc: qos@ffa58000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff518000 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa58000 0x0 0x20>;
  	};
  
- 	qos_gpu: qos@ff520000 {
+ 	qos_gmac: qos@ffa5c000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff520000 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa5c000 0x0 0x20>;
  	};
  
- 	qos_sdmmc: qos@ff52c000 {
+ 	qos_pcie: qos@ffa60080 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff52c000 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa60080 0x0 0x20>;
  	};
  
- 	qos_emmc: qos@ff538000 {
+ 	qos_usb_host0: qos@ffa60100 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff538000 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa60100 0x0 0x20>;
  	};
  
- 	qos_nand: qos@ff538080 {
+ 	qos_usb_host1: qos@ffa60180 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff538080 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa60180 0x0 0x20>;
  	};
  
- 	qos_sdio: qos@ff538100 {
+ 	qos_usb_otg0: qos@ffa70000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff538100 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa70000 0x0 0x20>;
  	};
  
- 	qos_sfc: qos@ff538180 {
+ 	qos_usb_otg1: qos@ffa70080 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff538180 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa70080 0x0 0x20>;
  	};
  
- 	qos_usb_host: qos@ff540000 {
+ 	qos_sd: qos@ffa74000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff540000 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa74000 0x0 0x20>;
  	};
  
- 	qos_usb_otg: qos@ff540080 {
+ 	qos_sdioaudio: qos@ffa76000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff540080 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa76000 0x0 0x20>;
  	};
  
- 	qos_isp_128: qos@ff548000 {
+ 	qos_hdcp: qos@ffa90000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff548000 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa90000 0x0 0x20>;
  	};
  
- 	qos_isp_rd: qos@ff548080 {
+ 	qos_iep: qos@ffa98000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff548080 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffa98000 0x0 0x20>;
  	};
  
- 	qos_isp_wr: qos@ff548100 {
+ 	qos_isp0_m0: qos@ffaa0000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff548100 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffaa0000 0x0 0x20>;
  	};
  
- 	qos_isp_m1: qos@ff548180 {
+ 	qos_isp0_m1: qos@ffaa0080 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff548180 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffaa0080 0x0 0x20>;
  	};
  
- 	qos_vip: qos@ff548200 {
+ 	qos_isp1_m0: qos@ffaa8000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff548200 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffaa8000 0x0 0x20>;
  	};
  
- 	qos_rga_rd: qos@ff550000 {
+ 	qos_isp1_m1: qos@ffaa8080 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff550000 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffaa8080 0x0 0x20>;
  	};
  
- 	qos_rga_wr: qos@ff550080 {
+ 	qos_rga_r: qos@ffab0000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff550080 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffab0000 0x0 0x20>;
  	};
  
- 	qos_vop_m0: qos@ff550100 {
+ 	qos_rga_w: qos@ffab0080 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff550100 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffab0080 0x0 0x20>;
  	};
  
- 	qos_vop_m1: qos@ff550180 {
+ 	qos_video_m0: qos@ffab8000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff550180 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffab8000 0x0 0x20>;
  	};
  
- 	qos_vpu: qos@ff558000 {
+ 	qos_video_m1_r: qos@ffac0000 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff558000 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffac0000 0x0 0x20>;
  	};
  
- 	qos_vpu_r128: qos@ff558080 {
+ 	qos_video_m1_w: qos@ffac0080 {
 -		compatible = "syscon";
-+		compatible = "rockchip,px30-qos","syscon";
- 		reg = <0x0 0xff558080 0x0 0x20>;
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffac0080 0x0 0x20>;
+ 	};
+ 
+ 	qos_vop_big_r: qos@ffac8000 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffac8000 0x0 0x20>;
+ 	};
+ 
+ 	qos_vop_big_w: qos@ffac8080 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffac8080 0x0 0x20>;
+ 	};
+ 
+ 	qos_vop_little: qos@ffad0000 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffad0000 0x0 0x20>;
+ 	};
+ 
+ 	qos_perihp: qos@ffad8080 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffad8080 0x0 0x20>;
+ 	};
+ 
+ 	qos_gpu: qos@ffae0000 {
+-		compatible = "syscon";
++		compatible = "rockchip,rk3399-qos","syscon";
+ 		reg = <0x0 0xffae0000 0x0 0x20>;
  	};
  
 -- 
