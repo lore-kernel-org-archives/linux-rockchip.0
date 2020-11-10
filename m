@@ -7,51 +7,55 @@ X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 78230C388F7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2020 22:38:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED348C388F7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2020 22:44:21 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F3A0B2068D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2020 22:38:34 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 98667206B6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Nov 2020 22:44:21 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="2j87Ylif"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F3A0B2068D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mixrUGDL"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 98667206B6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=beuT7O0CHCFEAelQ0Qi7g0249bwdCHgiQNyz+HOGlkw=; b=2j87YlifmfE5tCfOwPtPDll9a
-	4otaKxukjC5+IE+bcNJ84uS2UFEWx3fKA8c93jkY+mBdCcPWIhr/MqudBjEqWEt+5/0WqXCGfl69f
-	2G265ZpXeuJ9H5cw+h384b5PfMCMYy9ppOYgN4f1KzLsU3V9V8eFWcDmk6qyR0RKf/T7Q7/M6uJmi
-	jwIgWhDvENbX+Ew2HGPAGHhzR0MjPbKyVer5nuPLaXE2I0Qw4R7IHfwgCZUHJ2fd+yPDwnLWxJoQ5
-	aWC/NdJOsEPgsdHXfSypqZm9vLfx00pJay6EU0p3TWZL8wV1wbijXcBtekmh1bLycZ3kMUdx0ZDWI
-	elOxp1vKw==;
+	 bh=ahWCjvDtXAAwZQDqH/3NXxQqAAq4+Cbkmdm//fPDMmM=; b=mixrUGDLJzVod4ez0eEnaZYD1
+	/lIeAjPetEQTg/KX8mJoGkq/7vh6CQ6wZaCUArMEY/SJY6nkDe2y2YH6s+BBwjtmQ5exQyM8FaIYA
+	eOCso6UyvrrkN2gnkb7A3SaFmX9nJInBzWTSPZA/ImMmdIb5CLuRhNG0PB2T49pRzwMdxX+HDf2aF
+	QCiu9RXfDd1nQdfH6wdzMu+nqv8E6Lh28bXP4Lf3M8pV9ykynHd+DKaH1CtACCtioswZaQhrErCNU
+	tUpL5/i4oCiIDCbogyeONIi4ZfCy0wQNQiUaoCDXEGxyW20/LJJltj8RY2lCbviwk/TEfiRnoBWaf
+	VwQ0r+qbQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kccHT-0008Ap-6e; Tue, 10 Nov 2020 22:38:27 +0000
+	id 1kccN4-0002Xe-Gz; Tue, 10 Nov 2020 22:44:14 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kcc5t-0002vv-PB
- for linux-rockchip@lists.infradead.org; Tue, 10 Nov 2020 22:26:53 +0000
+ id 1kccIn-0000MU-OY
+ for linux-rockchip@lists.infradead.org; Tue, 10 Nov 2020 22:40:10 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: aratiu) with ESMTPSA id 6323F1F454F7
-From: Adrian Ratiu <adrian.ratiu@collabora.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+ (Authenticated sender: ezequiel) with ESMTPSA id DB7A61F4554F
+Message-ID: <ee12e70c92bacf1080ceae82feafa736c0719a2e.camel@collabora.com>
 Subject: Re: [PATCH v5 0/3] media: rkvdec: Add a VP9 backend
-In-Reply-To: <CAAEAJfA1N1k9Vho4weZ9VnM_v6K4RXdmERyrWcWPCj64NMzDoQ@mail.gmail.com>
+From: Ezequiel Garcia <ezequiel@collabora.com>
+To: Adrian Ratiu <adrian.ratiu@collabora.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>
+Date: Tue, 10 Nov 2020 19:39:38 -0300
+In-Reply-To: <87y2j8hmoc.fsf@collabora.com>
 References: <20201102190551.1223389-1-adrian.ratiu@collabora.com>
  <CAAEAJfA1N1k9Vho4weZ9VnM_v6K4RXdmERyrWcWPCj64NMzDoQ@mail.gmail.com>
-Date: Wed, 11 Nov 2020 00:28:03 +0200
-Message-ID: <87y2j8hmoc.fsf@collabora.com>
+ <87y2j8hmoc.fsf@collabora.com>
+Organization: Collabora
+User-Agent: Evolution 3.36.3-1 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201110_172630_045963_1873B536 
-X-CRM114-Status: GOOD (  31.72  )
+X-CRM114-CacheID: sfid-20201110_173950_054554_6A70E60D 
+X-CRM114-Status: GOOD (  44.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,155 +75,163 @@ Cc: kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@collabora.com>,
  linux-media <linux-media@vger.kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Ezequiel,
- 
-On Tue, 10 Nov 2020, Ezequiel Garcia 
-<ezequiel@vanguardiasur.com.ar> wrote:
-> On Mon, 2 Nov 2020 at 16:04, Adrian Ratiu 
-> <adrian.ratiu@collabora.com> wrote: 
->> 
->> Dear all, 
->> 
->> This is v5 of the series adding VP9 profile 0 decoding to 
->> rkvdec. 
->> 
->> All feedback from v4 should be addressed, there's just one 
->> thing I did not address: ref_frame_sign_biases in the uAPI. The 
->> userspace tool I'm 
+On Wed, 2020-11-11 at 00:28 +0200, Adrian Ratiu wrote:
+> Hi Ezequiel,
+>  
+> On Tue, 10 Nov 2020, Ezequiel Garcia 
+> <ezequiel@vanguardiasur.com.ar> wrote:
+> > On Mon, 2 Nov 2020 at 16:04, Adrian Ratiu 
+> > <adrian.ratiu@collabora.com> wrote: 
+> > > Dear all, 
+> > > 
+> > > This is v5 of the series adding VP9 profile 0 decoding to 
+> > > rkvdec. 
+> > > 
+> > > All feedback from v4 should be addressed, there's just one 
+> > > thing I did not address: ref_frame_sign_biases in the uAPI. The 
+> > > userspace tool I'm 
+> > 
+> > I believe that Hantro G2 VP9 needs ref_frame_sign_biases. 
+> > 
+> > I think that it's also needed for the MTK decoder.  Might be 
+> > worth checking that as well, if the code is publicly available 
+> > somewhere.
 > 
-> I believe that Hantro G2 VP9 needs ref_frame_sign_biases. 
+> I consulted the imx8m app ref manual for the Hantro G2 core and 
+> indeed there's not one, but three fields at SWREG11 and 13 (last, 
+> gold, alt) to signify sign biases for ref frames. Thanks for the 
+> hint!
+>  
+> > Coming to think about it, I think we are really close to having 
+> > this uAPI directly upstream. 
+> > 
+> > Let's take a step back on why we have these uAPIs in the staging 
+> > area. Couple years ago, there were some doubts in the media 
+> > community about these uAPIs, and we wanted to wait a bit for 
+> > more users before moving to public land. 
+> > 
+> > The uAPIs were meant to be in staging until enough users 
+> > appeared and we were confident enough to move to stable. 
+> > 
+> > For VP9, given the feedback received through the year was 
+> > already addressed, I think all that's left is to check the 
+> > interface and make sure it can support Rockchip (RK3399, RK3326, 
+> > etc), Hantro G2 and Mediatek, 
+> > 
+> > We will be very close to having a public API, and we could even 
+> > merge it directly there.
 > 
-> I think that it's also needed for the MTK decoder.  Might be 
-> worth checking that as well, if the code is publicly available 
-> somewhere.
+> Thank you very much for this background. I understand that the 
+> uAPI is independent from the driver implementations, so having a 
+> good stable uAPI is beneficial when (for example) adding support 
+> for VP9 on G2 in  hantro or for upstream adoption of these 
+> drivers.
+> 
+> Given this rkvdec driver implementation is also adding the VP9 
+> uAPI and it's very close to stability (maybe only missing ref 
+> frame sign bias, but who knows?) would you like to block its 
+> submission until the uAPI is finalized or would it make sense to 
+> treat the uAPI de-staging process separately because the uAPI is 
+> independent from the driver? 
+> 
 
-I consulted the imx8m app ref manual for the Hantro G2 core and 
-indeed there's not one, but three fields at SWREG11 and 13 (last, 
-gold, alt) to signify sign biases for ref frames. Thanks for the 
-hint!
- 
-> 
-> Coming to think about it, I think we are really close to having 
-> this uAPI directly upstream. 
-> 
-> Let's take a step back on why we have these uAPIs in the staging 
-> area. Couple years ago, there were some doubts in the media 
-> community about these uAPIs, and we wanted to wait a bit for 
-> more users before moving to public land. 
-> 
-> The uAPIs were meant to be in staging until enough users 
-> appeared and we were confident enough to move to stable. 
-> 
-> For VP9, given the feedback received through the year was 
-> already addressed, I think all that's left is to check the 
-> interface and make sure it can support Rockchip (RK3399, RK3326, 
-> etc), Hantro G2 and Mediatek, 
-> 
-> We will be very close to having a public API, and we could even 
-> merge it directly there.
+I don't mean to block it, quite the opposite, to make sure
+we take this opportunity to go through Rockchip, Hantro and Mediatek,
+double-check the uAPI is covering all the VP9 syntax, and then
+target for public API.
 
-Thank you very much for this background. I understand that the 
-uAPI is independent from the driver implementations, so having a 
-good stable uAPI is beneficial when (for example) adding support 
-for VP9 on G2 in  hantro or for upstream adoption of these 
-drivers.
+Cheers,
+Ezequiel
 
-Given this rkvdec driver implementation is also adding the VP9 
-uAPI and it's very close to stability (maybe only missing ref 
-frame sign bias, but who knows?) would you like to block its 
-submission until the uAPI is finalized or would it make sense to 
-treat the uAPI de-staging process separately because the uAPI is 
-independent from the driver? 
-
-Thanks,
-Adrian
-
->
 > Thanks,
-> Ezequiel
->
->> using [1] apparently doesn't need it or the default hwreg value for it
->> is capable of decoding the bitstreams I used on the driver, so I don't
->> really have a use-case to change and test that. :)
->>
->> Considering the uAPI is a work in progress and expected to be modified,
->> ref_frame_sign_biases can be added later with others which might be
->> required to enable more functionality (for eg profiles >= 1).
->>
->> Series tested on rk3399 and applies on next-20201030.
->>
->> [1] https://github.com/Kwiboo/FFmpeg/tree/v4l2-request-hwaccel-4.2.2-rkvdec
->>
->> Changelog
->> ---------
->>
->> v5:
->>
->> * Drop unnecessary OUTPUT buffer payload set in .buf_prepare.
->> * Drop obsolete .per_request ctrl flag
->> * Added new vp9 ctrls to v4l2_ctrl_ptr
->> * Fix pahole detected padding issues
->> * Send userspace an error if it tries to reconfigure decode resolution
->>   as v4l2 or rkvdec-vp9 backend do not support dynamic res changes yet
->> * Allow frame ctx probability tables to be non-mandatory so users can
->>   set them directly during frame decoding in cases where no defaults
->>   have been set previously (eg. ffmpeg vp9 backend)
->> * Some comments and documentation clarifications
->> * Minor checkpatch fixes
->>
->> v4:
->>
->> * Drop color_space field from the VP9 interface.
->>   V4L2 API should be used for it.
->> * Clarified Segment-ID comments.
->> * Moved motion vector probabilities to a separate
->>   struct.
->>
->> v3:
->>
->> * Fix documentation issues found by Hans.
->> * Fix smatch detected issues as pointed out by Hans.
->> * Added patch to fix wrong bytesused set on .buf_prepare.
->>
->> v2:
->>
->> * Documentation style issues pointed out by Nicolas internally.
->> * s/VP9_PROFILE_MAX/V4L2_VP9_PROFILE_MAX/
->> * Fix wrong kfree(ctx).
->> * constify a couple structs on rkvdec-vp9.c
->>
->>
->> Boris Brezillon (2):
->>   media: uapi: Add VP9 stateless decoder controls
->>   media: rkvdec: Add the VP9 backend
->>
->> Ezequiel Garcia (1):
->>   media: rkvdec: Fix .buf_prepare
->>
->>  .../userspace-api/media/v4l/biblio.rst        |   10 +
->>  .../media/v4l/ext-ctrls-codec.rst             |  550 ++++++
->>  drivers/media/v4l2-core/v4l2-ctrls.c          |  239 +++
->>  drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
->>  drivers/staging/media/rkvdec/Makefile         |    2 +-
->>  drivers/staging/media/rkvdec/rkvdec-vp9.c     | 1577 +++++++++++++++++
->>  drivers/staging/media/rkvdec/rkvdec.c         |   72 +-
->>  drivers/staging/media/rkvdec/rkvdec.h         |    6 +
->>  include/media/v4l2-ctrls.h                    |    5 +
->>  include/media/vp9-ctrls.h                     |  486 +++++
->>  10 files changed, 2942 insertions(+), 6 deletions(-)
->>  create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
->>  create mode 100644 include/media/vp9-ctrls.h
->>
->> --
->> 2.29.0
->>
+> Adrian
+> 
+> > Thanks,
+> > Ezequiel
+> > 
+> > > using [1] apparently doesn't need it or the default hwreg value for it
+> > > is capable of decoding the bitstreams I used on the driver, so I don't
+> > > really have a use-case to change and test that. :)
+> > > 
+> > > Considering the uAPI is a work in progress and expected to be modified,
+> > > ref_frame_sign_biases can be added later with others which might be
+> > > required to enable more functionality (for eg profiles >= 1).
+> > > 
+> > > Series tested on rk3399 and applies on next-20201030.
+> > > 
+> > > [1] https://github.com/Kwiboo/FFmpeg/tree/v4l2-request-hwaccel-4.2.2-rkvdec
+> > > 
+> > > Changelog
+> > > ---------
+> > > 
+> > > v5:
+> > > 
+> > > * Drop unnecessary OUTPUT buffer payload set in .buf_prepare.
+> > > * Drop obsolete .per_request ctrl flag
+> > > * Added new vp9 ctrls to v4l2_ctrl_ptr
+> > > * Fix pahole detected padding issues
+> > > * Send userspace an error if it tries to reconfigure decode resolution
+> > >   as v4l2 or rkvdec-vp9 backend do not support dynamic res changes yet
+> > > * Allow frame ctx probability tables to be non-mandatory so users can
+> > >   set them directly during frame decoding in cases where no defaults
+> > >   have been set previously (eg. ffmpeg vp9 backend)
+> > > * Some comments and documentation clarifications
+> > > * Minor checkpatch fixes
+> > > 
+> > > v4:
+> > > 
+> > > * Drop color_space field from the VP9 interface.
+> > >   V4L2 API should be used for it.
+> > > * Clarified Segment-ID comments.
+> > > * Moved motion vector probabilities to a separate
+> > >   struct.
+> > > 
+> > > v3:
+> > > 
+> > > * Fix documentation issues found by Hans.
+> > > * Fix smatch detected issues as pointed out by Hans.
+> > > * Added patch to fix wrong bytesused set on .buf_prepare.
+> > > 
+> > > v2:
+> > > 
+> > > * Documentation style issues pointed out by Nicolas internally.
+> > > * s/VP9_PROFILE_MAX/V4L2_VP9_PROFILE_MAX/
+> > > * Fix wrong kfree(ctx).
+> > > * constify a couple structs on rkvdec-vp9.c
+> > > 
+> > > 
+> > > Boris Brezillon (2):
+> > >   media: uapi: Add VP9 stateless decoder controls
+> > >   media: rkvdec: Add the VP9 backend
+> > > 
+> > > Ezequiel Garcia (1):
+> > >   media: rkvdec: Fix .buf_prepare
+> > > 
+> > >  .../userspace-api/media/v4l/biblio.rst        |   10 +
+> > >  .../media/v4l/ext-ctrls-codec.rst             |  550 ++++++
+> > >  drivers/media/v4l2-core/v4l2-ctrls.c          |  239 +++
+> > >  drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
+> > >  drivers/staging/media/rkvdec/Makefile         |    2 +-
+> > >  drivers/staging/media/rkvdec/rkvdec-vp9.c     | 1577 +++++++++++++++++
+> > >  drivers/staging/media/rkvdec/rkvdec.c         |   72 +-
+> > >  drivers/staging/media/rkvdec/rkvdec.h         |    6 +
+> > >  include/media/v4l2-ctrls.h                    |    5 +
+> > >  include/media/vp9-ctrls.h                     |  486 +++++
+> > >  10 files changed, 2942 insertions(+), 6 deletions(-)
+> > >  create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
+> > >  create mode 100644 include/media/vp9-ctrls.h
+> > > 
+> > > --
+> > > 2.29.0
+> > > 
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
