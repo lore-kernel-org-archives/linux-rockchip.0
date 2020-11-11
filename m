@@ -2,58 +2,85 @@ Return-Path: <SRS0=RWH0=ER=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-3.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CFA9C5517A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2020 00:10:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A0C01C388F7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2020 01:08:43 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6C0BC205CA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2020 00:10:04 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id E03FB21D46
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Nov 2020 01:08:42 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nHl5VJ+7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6C0BC205CA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="lTAKiFwC";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=vanguardiasur-com-ar.20150623.gappssmtp.com header.i=@vanguardiasur-com-ar.20150623.gappssmtp.com header.b="Lovjln1f"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E03FB21D46
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References:In-Reply-To:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pkJnYpznOV17vQjSidx+m6RKYmlmzVQ5xqMydcbfn7Y=; b=nHl5VJ+77ZvLuakH8zx59b36w
-	HzrjK+5yRE8uJODdvi92Faj3+G2/clGLkshkCbnj+T6/Q3SSXqAZilHn3zfzighN1tM5aTZ0FH3Lk
-	rpL71uEhAYe7klUnnJ4j1ue0fLr/0A4OJLeLQ3g8lzV9HuHmb05ThtmCf1MmBq7sEBcJGBeVwTabl
-	v7TWF2vc8htwErNaeTABLzD5Iu8OyWeCq8b1w0M9BBI7ife5qEI0L/DfpBhKRVB6RKIwI0xbzBPP4
-	DTsEjX2CXOHbSNrIS0ykxbKtRcwNjkcjdp4lr5GuCnOHF0DRsveQNMdC2xRhYMv5enAn1KscBtlIx
-	ive4JgKDA==;
+	 bh=tZ+zsZlz1azGUBnZ/7+bVNGOK5HimqGNyWev1ODn3A4=; b=lTAKiFwCTo77eQDMgvKpqY4r0
+	3dOtTfeE6KD4d+8o7C5HKirFMiaQWdngFuKohCvtPMRqSeiYidCkqGURnOTz0fGeu0dGIe1JP55fA
+	HgPuSKoF/KxdzhfEyYH1PdtlfdoHzp8ScEwAwTHjv3fPu2VzxlN2Yw+ldKRGhh/u4IEzsjqK9yMbC
+	I6tNVu8drSEYtoi92a6JyF2qfFFqejizVUqe1GZl5FQy1jE7KUql+e5L7ustM4mVTz5zoa4RLX/wg
+	6qLkw8q9NgeJUCxClXy0p4Afg+886ewE8Js6ryHhI6IyT5tUyIFI844Bj7/ELHlEmYbTZg92doNwz
+	x9TtsOj1g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kcdi1-00050w-5t; Wed, 11 Nov 2020 00:09:57 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kcecp-00089x-8r; Wed, 11 Nov 2020 01:08:39 +0000
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kcdhy-00050a-He
- for linux-rockchip@lists.infradead.org; Wed, 11 Nov 2020 00:09:55 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: aratiu) with ESMTPSA id 8B8EE1F455B5
-From: Adrian Ratiu <adrian.ratiu@collabora.com>
-To: Ezequiel Garcia <ezequiel@collabora.com>
-Subject: Re: [PATCH v5 0/3] media: rkvdec: Add a VP9 backend
-In-Reply-To: <ee12e70c92bacf1080ceae82feafa736c0719a2e.camel@collabora.com>
-References: <20201102190551.1223389-1-adrian.ratiu@collabora.com>
- <CAAEAJfA1N1k9Vho4weZ9VnM_v6K4RXdmERyrWcWPCj64NMzDoQ@mail.gmail.com>
- <87y2j8hmoc.fsf@collabora.com>
- <ee12e70c92bacf1080ceae82feafa736c0719a2e.camel@collabora.com>
-Date: Wed, 11 Nov 2020 02:11:30 +0200
-Message-ID: <87pn4khhvx.fsf@collabora.com>
+ id 1kceck-000895-Sm
+ for linux-rockchip@lists.infradead.org; Wed, 11 Nov 2020 01:08:37 +0000
+Received: by mail-ej1-x641.google.com with SMTP id f20so457349ejz.4
+ for <linux-rockchip@lists.infradead.org>; Tue, 10 Nov 2020 17:08:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=hHQDiEVFp1foYy6daRs4fHFD9ayYaszDLVuF2Z51ya8=;
+ b=Lovjln1fIbkD2LOWfwf5p5B1YNXCK0mWG+9fGH4sigwtycevhDKQ0AeODjSfHWpjwF
+ iNdy65rI1Wq5x2Grg8/Relh95qlXkU51w/ZD0lb9LhW7+fZEozkHk34DrT0UMCUN6cZK
+ iPllHOzKkEliSAK+mJhJhzW+6hAXS8kRfEc/mBC9gPXCg/l/b8iy2GV7cFhZDAUD+UIi
+ j4prnHj/aTGgJC/9VBDvxk8HE9lsb0hdMkmXEc2OhmWjr10S6kulM4D/D/k2NonVfPgX
+ 1Uj1X6kTPhq9mHhJF+/r4mwzp3aPzJFUKDSUdlBWYLIeWryBNUUdb8Mdv+M7VDq8KMqv
+ Mbvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=hHQDiEVFp1foYy6daRs4fHFD9ayYaszDLVuF2Z51ya8=;
+ b=J/j0kaDYI+IQCOO1hm66JmxWGPeLnW649bekOt7JndLWJK4ySqBY8nA750IawDW95I
+ jgGoN5tlkWT3Qi/k0+pkGUXZb+hqiJAAbBTVfOTpUyurhnnuecOnD/f4NA1/9Ch6J0bl
+ nICR7LLAum6jHYcbedbHBKGH7BJGGELati+nekpncLyCd1H20lwq4g0UGFC7RgwxfdAr
+ F/5KWhzw0QoxjP7kfMNM79iDUhhcilTCt6O8+kGDeWbPgJX+bJ/j9VdKxBvYU9eKOO/j
+ 7AwuWjIkxeQWuRImjrXP2zutucVo+BjZjD8WN2sA2T0oEQCmVKZkGQjc2h6fJDngX0f/
+ w1JQ==
+X-Gm-Message-State: AOAM530dKAkH83fESVjXjS7Fzth318Ecv4ftMb3X6F+NxasASPOlLw0n
+ GeC/wTqTRFBQswgupo3kD+aGlt8Pe7Jm9liVP+u5yQ==
+X-Google-Smtp-Source: ABdhPJxTkNCrHxkNrKMGfx/redHh8XOwE0W/+nPr1awBqj+Z+Er5yh4soUAWZNDAv2tGIUavyTgUj5FavxbQfUNMpTU=
+X-Received: by 2002:a17:906:3541:: with SMTP id
+ s1mr23454310eja.413.1605056913762; 
+ Tue, 10 Nov 2020 17:08:33 -0800 (PST)
 MIME-Version: 1.0
+References: <20201109162244.16531-1-linkmauve@linkmauve.fr>
+In-Reply-To: <20201109162244.16531-1-linkmauve@linkmauve.fr>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Tue, 10 Nov 2020 22:08:21 -0300
+Message-ID: <CAAEAJfDhQpZYRMQoQRy=2AUSQFpmy2cQ4y=2sczWgkDp03dYEw@mail.gmail.com>
+Subject: Re: [RESEND PATCH 0/2] media: uapi: Expose VP8 probability lengths as
+ defines
+To: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201110_190954_782948_15729B08 
-X-CRM114-Status: GOOD (  42.15  )
+X-CRM114-CacheID: sfid-20201110_200835_225008_026A0BBB 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,161 +93,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
+Cc: devel@driverdev.osuosl.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>,
  linux-media <linux-media@vger.kernel.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 10 Nov 2020, Ezequiel Garcia <ezequiel@collabora.com> 
-wrote:
-> On Wed, 2020-11-11 at 00:28 +0200, Adrian Ratiu wrote: 
->> Hi Ezequiel, 
->>   
->> On Tue, 10 Nov 2020, Ezequiel Garcia 
->> <ezequiel@vanguardiasur.com.ar> wrote: 
->> > On Mon, 2 Nov 2020 at 16:04, Adrian Ratiu 
->> > <adrian.ratiu@collabora.com> wrote:  
->> > > Dear all,   This is v5 of the series adding VP9 profile 0 
->> > > decoding to  rkvdec.    All feedback from v4 should be 
->> > > addressed, there's just one  thing I did not address: 
->> > > ref_frame_sign_biases in the uAPI. The  userspace tool I'm  
->> >  I believe that Hantro G2 VP9 needs ref_frame_sign_biases. 
->> > I think that it's also needed for the MTK decoder.  Might be 
->> > worth checking that as well, if the code is publicly 
->> > available  somewhere. 
->>  I consulted the imx8m app ref manual for the Hantro G2 core 
->> and  indeed there's not one, but three fields at SWREG11 and 13 
->> (last,  gold, alt) to signify sign biases for ref 
->> frames. Thanks for the  hint! 
->>   
->> > Coming to think about it, I think we are really close to 
->> > having  this uAPI directly upstream.    Let's take a step 
->> > back on why we have these uAPIs in the staging  area. Couple 
->> > years ago, there were some doubts in the media  community 
->> > about these uAPIs, and we wanted to wait a bit for  more 
->> > users before moving to public land.    The uAPIs were meant 
->> > to be in staging until enough users  appeared and we were 
->> > confident enough to move to stable.    For VP9, given the 
->> > feedback received through the year was  already addressed, I 
->> > think all that's left is to check the  interface and make 
->> > sure it can support Rockchip (RK3399, RK3326,  etc), Hantro 
->> > G2 and Mediatek,   We will be very close to having a public 
->> > API, and we could even  merge it directly there. 
->>  Thank you very much for this background. I understand that the 
->> uAPI is independent from the driver implementations, so having 
->> a  good stable uAPI is beneficial when (for example) adding 
->> support  for VP9 on G2 in  hantro or for upstream adoption of 
->> these  drivers.   Given this rkvdec driver implementation is 
->> also adding the VP9  uAPI and it's very close to stability 
->> (maybe only missing ref  frame sign bias, but who knows?) would 
->> you like to block its  submission until the uAPI is finalized 
->> or would it make sense to  treat the uAPI de-staging process 
->> separately because the uAPI is  independent from the driver?   
-> 
-> I don't mean to block it, quite the opposite, to make sure we 
-> take this opportunity to go through Rockchip, Hantro and 
-> Mediatek, double-check the uAPI is covering all the VP9 syntax, 
-> and then target for public API.
-
-That makes sense. I'm just cautious to not directly botch the 
-public API, but that's what reviews are for, right? :) Thanks 
-again for helping with background & direction.
-
->
-> Cheers,
-> Ezequiel
->
->> Thanks,
->> Adrian
->> 
->> > Thanks,
->> > Ezequiel
->> > 
->> > > using [1] apparently doesn't need it or the default hwreg value for it
->> > > is capable of decoding the bitstreams I used on the driver, so I don't
->> > > really have a use-case to change and test that. :)
->> > > 
->> > > Considering the uAPI is a work in progress and expected to be modified,
->> > > ref_frame_sign_biases can be added later with others which might be
->> > > required to enable more functionality (for eg profiles >= 1).
->> > > 
->> > > Series tested on rk3399 and applies on next-20201030.
->> > > 
->> > > [1] https://github.com/Kwiboo/FFmpeg/tree/v4l2-request-hwaccel-4.2.2-rkvdec
->> > > 
->> > > Changelog
->> > > ---------
->> > > 
->> > > v5:
->> > > 
->> > > * Drop unnecessary OUTPUT buffer payload set in .buf_prepare.
->> > > * Drop obsolete .per_request ctrl flag
->> > > * Added new vp9 ctrls to v4l2_ctrl_ptr
->> > > * Fix pahole detected padding issues
->> > > * Send userspace an error if it tries to reconfigure decode resolution
->> > >   as v4l2 or rkvdec-vp9 backend do not support dynamic res changes yet
->> > > * Allow frame ctx probability tables to be non-mandatory so users can
->> > >   set them directly during frame decoding in cases where no defaults
->> > >   have been set previously (eg. ffmpeg vp9 backend)
->> > > * Some comments and documentation clarifications
->> > > * Minor checkpatch fixes
->> > > 
->> > > v4:
->> > > 
->> > > * Drop color_space field from the VP9 interface.
->> > >   V4L2 API should be used for it.
->> > > * Clarified Segment-ID comments.
->> > > * Moved motion vector probabilities to a separate
->> > >   struct.
->> > > 
->> > > v3:
->> > > 
->> > > * Fix documentation issues found by Hans.
->> > > * Fix smatch detected issues as pointed out by Hans.
->> > > * Added patch to fix wrong bytesused set on .buf_prepare.
->> > > 
->> > > v2:
->> > > 
->> > > * Documentation style issues pointed out by Nicolas internally.
->> > > * s/VP9_PROFILE_MAX/V4L2_VP9_PROFILE_MAX/
->> > > * Fix wrong kfree(ctx).
->> > > * constify a couple structs on rkvdec-vp9.c
->> > > 
->> > > 
->> > > Boris Brezillon (2):
->> > >   media: uapi: Add VP9 stateless decoder controls
->> > >   media: rkvdec: Add the VP9 backend
->> > > 
->> > > Ezequiel Garcia (1):
->> > >   media: rkvdec: Fix .buf_prepare
->> > > 
->> > >  .../userspace-api/media/v4l/biblio.rst        |   10 +
->> > >  .../media/v4l/ext-ctrls-codec.rst             |  550 ++++++
->> > >  drivers/media/v4l2-core/v4l2-ctrls.c          |  239 +++
->> > >  drivers/media/v4l2-core/v4l2-ioctl.c          |    1 +
->> > >  drivers/staging/media/rkvdec/Makefile         |    2 +-
->> > >  drivers/staging/media/rkvdec/rkvdec-vp9.c     | 1577 +++++++++++++++++
->> > >  drivers/staging/media/rkvdec/rkvdec.c         |   72 +-
->> > >  drivers/staging/media/rkvdec/rkvdec.h         |    6 +
->> > >  include/media/v4l2-ctrls.h                    |    5 +
->> > >  include/media/vp9-ctrls.h                     |  486 +++++
->> > >  10 files changed, 2942 insertions(+), 6 deletions(-)
->> > >  create mode 100644 drivers/staging/media/rkvdec/rkvdec-vp9.c
->> > >  create mode 100644 include/media/vp9-ctrls.h
->> > > 
->> > > --
->> > > 2.29.0
->> > > 
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRW1tYW51ZWwsCgpUaGFua3MgZm9yIHRoZSBwYXRjaC4KCk9uIE1vbiwgOSBOb3YgMjAyMCBh
+dCAxNTozNywgRW1tYW51ZWwgR2lsIFBleXJvdCA8bGlua21hdXZlQGxpbmttYXV2ZS5mcj4gd3Jv
+dGU6Cj4KPiBUaGVzZSB2YWx1ZXMgd2lsbCBiZSB1c2VkIGJ5IHZhcmlvdXMgZHJpdmVycyBpbXBs
+ZW1lbnRpbmcgdGhlIFZQOAo+IHN0YXRlbGVzcyBBUEkuCj4KPiBUaGlzIGhhZCBiZWVuIHN1Z2dl
+c3RlZCBieSBFemVxdWllbCBHYXJjaWEgZm9yIHRoZSBDZWRydXMgVlA4IGRyaXZlci4KPgo+IFRo
+ZSBvbmx5IGRyaXZlciB1c2luZyB0aGlzIEFQSSAodW50aWwgbm93KSBoYXMgYWxzbyBiZWVuIHVw
+ZGF0ZWQgdG8gdXNlCj4gdGhlc2UgbmV3IGRlZmluZXMuCj4KPiBUaGlzIGlzIGEgcmVzZW5kIGJl
+Y2F1c2UgSSBmb3Jnb3QgdG8gaW5jbHVkZSBtb3N0IG1haW50YWluZXJzLCBzb3JyeSBmb3IKPiB0
+aGF0LiAgSXTigJlzIG15IHZlcnkgZmlyc3QgcGF0Y2ggdG8gdGhlIGtlcm5lbCwgSSBkaWRu4oCZ
+dCBrbm93IGFib3V0Cj4gc2NyaXB0cy9nZXRfbWFpbnRhaW5lcnMucGwKPgoKSSBoYXZlbid0IHZh
+bGlkYXRlZCB0aGVzZSB0d28gcGF0Y2hlcywgYnV0IG9uIGEgZmlyc3QgbG9vaywKaXQgc2VlbXMg
+aXQncyBhIGxvdy1oYW5naW5nIGZydWl0IG5pY2UgY2xlYW51cC4gVGhhbmtzIGZvciB0aGF0IQoK
+U2luY2UgaXQgc2VlbXMgeW91IGFyZSBsb29raW5nIGZvciBpbnRlcmVzdGluZyB0aGluZ3MgdG8g
+Y29udHJpYnV0ZSwKbm90ZSB0aGF0IHRoZSB2cDgtY3RybHMuaCBoZWFkZXIgaXMgbGFja2luZyBz
+b21lIG5pY2UgZG9jdW1lbnRhdGlvbgpvbiBlYWNoIHN0cnVjdHVyZS4KClRoaXMgc2hvdWxkIGJl
+IGRvbmUgYnkgbG9va2luZyBhdCB0aGUgVlA4IHN5bnRheCBzcGVjIGFuZCBkb2N1bWVudGluZwp0
+aGluZ3MgYXBwcm9wcmlhdGVseS4gU2VlIGhvdyBpdCdzIGRvbmUgZm9yIEguMjY0IGFuZCBWUDk6
+CgpodHRwczovL3BhdGNod29yay5saW51eHR2Lm9yZy9wcm9qZWN0L2xpbnV4LW1lZGlhL3BhdGNo
+LzIwMjAwOTI4MjAxNDMzLjMyNzA2OC0xLWV6ZXF1aWVsQGNvbGxhYm9yYS5jb20vCmh0dHBzOi8v
+cGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1yb2NrY2hpcC9wYXRjaC8yMDIwMTEw
+MjE5MDU1MS4xMjIzMzg5LTMtYWRyaWFuLnJhdGl1QGNvbGxhYm9yYS5jb20vCgpUaGFua3MsCkV6
+ZXF1aWVsCgo+IEVtbWFudWVsIEdpbCBQZXlyb3QgKDIpOgo+ICAgbWVkaWE6IHVhcGk6IEV4cG9z
+ZSBwcm9iYWJpbGl0eSBsZW5ndGhzIGFzIGRlZmluZXMKPiAgIG1lZGlhOiBoYW50cm86IFVzZSBW
+UDggbGVuZ3RocyBkZWZpbmVkIGluIHVhcGkKPgo+ICBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFu
+dHJvL2hhbnRyb192cDguYyB8IDQgKystLQo+ICBpbmNsdWRlL21lZGlhL3ZwOC1jdHJscy5oICAg
+ICAgICAgICAgICAgICB8IDYgKysrKy0tCj4gIDIgZmlsZXMgY2hhbmdlZCwgNiBpbnNlcnRpb25z
+KCspLCA0IGRlbGV0aW9ucygtKQo+Cj4gLS0KPiAyLjI5LjIKPgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
