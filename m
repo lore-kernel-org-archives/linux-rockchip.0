@@ -2,88 +2,89 @@ Return-Path: <SRS0=8xFb=ES=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-11.0 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D37C2C5519F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2020 19:02:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 34462C55ABD
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2020 19:07:18 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 550212222F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2020 19:02:55 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 9490F216C4
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Nov 2020 19:07:17 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="YvfmSVH9";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="s4lVN2Hs"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 550212222F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="C5v25pVr";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="h33D+mRR"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9490F216C4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=c3gdVKDfHVbMeRtoXiCUyJ6r2VE4oBNx5NOscyn0QKs=; b=YvfmSVH9TQO18Srar0Ho+ECQt
-	xl3Hm6+uDdBGz9swIlC0j5UMcjMZbZxjRTRRZ2aRHipdF0Iui5nMayr4bb7iKfrV5UDTE50/80cdk
-	Gq6SETgZ78+oUkS1gW/8PZKPiO4/tWeTRpQL3PDrxYgAsxI218hofx7St9V4dMVPUq5TDzYxpRiLd
-	7F0CuZf+JFVGbOA/jLX72xw9ZIulMifBUZqt624PQwGZnrP3tSgxr2Fp2oyRwLON2GxNZdeTn8ljm
-	xZJjhWjYAW4qqTqXZJA+LndwV66z/+lF0X4/l9sTAcsDKEnqOJMF8mQYvnEx5bto3p4BQww3sWkdZ
-	yEhWB1GbQ==;
+	 bh=CfjcTcOE79PJvtmtMH34kAlLNLMrB4xmW2dFdrnxpSY=; b=C5v25pVrJPTN6UFiRA86/tpjZ
+	KxKVodT/a9aLI3C1U0FVto/5AWM8e+oVx2ZFtLbXaSC6iWZZsuHV3ClIIqTfH1NOo7n1JZ2/CENzb
+	bQ5z5Zt5vclYJzh5tcNjcupGOPHweYRgs7wDzs21rPCkxQz1pep/Z+6LAN7SAHOYwvGqjdeBaI0Uz
+	0T+XcY757hwMr+GYKWy5259KECVIyCl7U6uWym4BJzPkbpKxST8+T+z/LVj5LH9qrRZnuZM3hOWJw
+	xbfeqHkub51GBxIQMltyqdeJTbSAJQJDg5JQ3++xKOeVi2Zrc9Uu4j5u8UIz07WOTEX+Aj49dS7hr
+	BSDFAcfXA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kdHru-0004Tz-El; Thu, 12 Nov 2020 19:02:50 +0000
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+	id 1kdHw7-0006d7-7O; Thu, 12 Nov 2020 19:07:11 +0000
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kdHqr-0003zt-8k
- for linux-rockchip@lists.infradead.org; Thu, 12 Nov 2020 19:01:54 +0000
-Received: by mail-wm1-x342.google.com with SMTP id d142so6188103wmd.4
- for <linux-rockchip@lists.infradead.org>; Thu, 12 Nov 2020 11:01:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=+WLjHfl3orvIQYtFk8cWNm313KtEs9zxT+XRuqJ/3Ug=;
- b=s4lVN2Hsx8GQ3TeqOoSE+KsBPJlUyYD142nagiXHMQJgIDfn1bY4BwRFQBD8Vbl9FQ
- O1+Z4SJSb0AKtr0z4NL7sqVeIdUmqJgfibxF7FcTPCDjxi72V/cgW+I45MyNR7hyQatY
- Qq6fLZTJliIXtLc70YQLXh9XCIkxcvBrW28WU+HTtjc9SLVqe0wfSak6HsnGU4+CHXD2
- TLxVHbtf1X+A4xTTQUaJmHS+quv06uqVKJCznn0DlN8LHoqBZKvJ05NZTDOTgolMzCmA
- p7dTjD0sVkTvS3CHvXQSUXtaP5QslSGjSxcJeX6go4uEcgyGTct/hmAMIrOA64HMzKE5
- 4F9g==
+ id 1kdHvr-0006Vn-Mg; Thu, 12 Nov 2020 19:06:57 +0000
+Received: by mail-wr1-x444.google.com with SMTP id p8so7188020wrx.5;
+ Thu, 12 Nov 2020 11:06:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=xEBQ+X3j8UVOYbY0ZzGSw1N+DpyyJg/wWh7q1siWRJ4=;
+ b=h33D+mRRRvo6/1txIF4V3Jz/UuKLAJaOqy8ik/N8dTlunkqrn4JyGAQ8GkXQG7Xg7K
+ VKYedpGIlTERFNHTDnq8DKx/hnoo/zVqhxAGgVlP5TlU7R0LmnWRAbLGzfIHBGL4fQ8C
+ EDh5ZV4UMdnQeLnqJaxygnqvmbOlkCNB+U0iHJB3JgfkiVQz5FzZZgwhTYLdOhrTZCcn
+ 5sbGvhYzkUh7OV0odRqD2N1T0g93/QWFlRlkuSazpVwvFD9fQh2X+LrO+kYCZ41en1fJ
+ //XCnICraHifQu4S96Icxg6l8XtlgTOndlf66hH/CqGZPpPybDGFHT4BExopTX/NPqcD
+ 8m5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+WLjHfl3orvIQYtFk8cWNm313KtEs9zxT+XRuqJ/3Ug=;
- b=Z0Ndsh1rtFLsv1/iBmvfhfv1pCfaRCvWzR3RkHjckZa7luQn/ASPhlW3yJ59Sk3Qdp
- /LGTx6HKUsgMaQ3U06HoopWhWvjIWsl3CPKABXI+bUeojRySGNn93i0eoSrqO+E3aaz3
- IiFA8H6+rrADq/GBZX+9EFQuen6idyq+0BGdl0HAZLquDjF4lda6dehWTCxw2PNQ0wW0
- 1a7xtbhr0XhYSXdZQc6AmoG31tYVSSilIo2NXoFDuOD/UNJ5zZTiSAnPP6lJqRoOKL/Q
- F4SmSLSNdzSzn4edkAFfhcGs4MLFH8QwmiJj+dGec1HqFpAqIpSoyMKDGEE1tTdSbK15
- +gDw==
-X-Gm-Message-State: AOAM533u3ruZ+4vrL3C6sRNbcDnvGrXNqDIKec7uW4Bx6IZK3Fy3n1lF
- XtkpcNOn7afXfnyDd3aWHuL2dw==
-X-Google-Smtp-Source: ABdhPJxXaF3jZQ2mBJbDe3b1AG/65HW5oMGlPkeTd6SbS62ThvjaB4q1OUbAYzVP+iDACDMmHv8Kxw==
-X-Received: by 2002:a1c:3d44:: with SMTP id k65mr999880wma.147.1605207703616; 
- Thu, 12 Nov 2020 11:01:43 -0800 (PST)
-Received: from dell.default ([91.110.221.159])
- by smtp.gmail.com with ESMTPSA id p4sm8105214wrm.51.2020.11.12.11.01.42
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=xEBQ+X3j8UVOYbY0ZzGSw1N+DpyyJg/wWh7q1siWRJ4=;
+ b=qxSKR+wZYvZ7YUONJH+cRmRSDJzQMRuznfVGvAMNpV4aFu6LD8mzHBsEbo9Xtdynaj
+ ZvGkvDm0ETX0D3FB6ARN5NUPcg7qZvNXfHrTsdyjU7MqS8OSgGkGUnUdsQwxuyra8D3t
+ 4KgwP05H5bgAENMB0iNtbtaAu7cYVslkho0mCBFLtroPiehhxnK1ggcX5FDdmg+7EI0q
+ RF0wl8oeVZ6/bbX5aOkjEyPOkNvekst3IFPyttcbt3aPVXN0L9KBZ2qd+jvUtq3ubZ5W
+ TiEkb76gtBvLY5AuPa6Hi9ryqab045GtCg06Z/YkgGglvrriSklL1NrBTG1y8Y01D4ya
+ 4mXQ==
+X-Gm-Message-State: AOAM5321I4JJn0HyvAYgdoAXSm37tcP7CCcZwY2ZuwANnw73tunMOCUn
+ +aoSKB+5Rm2E+aSHlIZHLKE=
+X-Google-Smtp-Source: ABdhPJwh5v5jsUINEfAgHo+Yz1dU4BfWu2Vhg3yORml9Zdo4fRJyxoz3JbVnZCE8wfzxzwdlH9aG6Q==
+X-Received: by 2002:adf:f085:: with SMTP id n5mr1086434wro.293.1605208012606; 
+ Thu, 12 Nov 2020 11:06:52 -0800 (PST)
+Received: from localhost ([217.111.27.204])
+ by smtp.gmail.com with ESMTPSA id n6sm7959107wrj.60.2020.11.12.11.06.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Nov 2020 11:01:42 -0800 (PST)
-From: Lee Jones <lee.jones@linaro.org>
-To: lee.jones@linaro.org
-Subject: [PATCH 25/30] drm/rockchip/rockchip_lvds: Fix struct document
- formatting
-Date: Thu, 12 Nov 2020 19:00:34 +0000
-Message-Id: <20201112190039.2785914-26-lee.jones@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201112190039.2785914-1-lee.jones@linaro.org>
-References: <20201112190039.2785914-1-lee.jones@linaro.org>
+ Thu, 12 Nov 2020 11:06:51 -0800 (PST)
+Date: Thu, 12 Nov 2020 20:06:49 +0100
+From: Thierry Reding <thierry.reding@gmail.com>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Subject: Re: [PATCH 01/32] pwm: sun4i: convert to
+ devm_platform_ioremap_resource
+Message-ID: <20201112190649.GA908613@ulmo>
+References: <20191229080610.7597-1-tiny.windzz@gmail.com>
+ <20201112161346.gp5nenuagx5wmwl2@pengutronix.de>
 MIME-Version: 1.0
+In-Reply-To: <20201112161346.gp5nenuagx5wmwl2@pengutronix.de>
+User-Agent: Mutt/1.14.7 (2020-08-29)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201112_140145_639685_A8EB5337 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20201112_140655_889371_EDD4F17B 
+X-CRM114-Status: GOOD (  31.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,38 +97,154 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
- David Airlie <airlied@linux.ie>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, Sandy Huang <hjc@rock-chips.com>,
- linux-rockchip@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
- linux-arm-kernel@lists.infradead.org, Mark Yao <mark.yao@rock-chips.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: alexandre.belloni@bootlin.com, heiko@sntech.de,
+ Yangtao Li <tiny.windzz@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-tegra@vger.kernel.org, linux-riscv@lists.infradead.org,
+ festevam@gmail.com, f.fainelli@gmail.com, shc_work@mail.ru,
+ khilman@baylibre.com, wens@csie.org, jonathanh@nvidia.com,
+ linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
+ bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
+ slemieux.tyco@gmail.com, linux-pwm@vger.kernel.org, rjui@broadcom.com,
+ s.hauer@pengutronix.de, mripard@kernel.org, vz@mleia.com,
+ linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
+ paul.walmsley@sifive.com, matthias.bgg@gmail.com,
+ linux-amlogic@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, sbranden@broadcom.com,
+ nicolas.ferre@microchip.com, palmer@dabbelt.com, kernel@pengutronix.de,
+ shawnguo@kernel.org, claudiu.beznea@microchip.com, nsaenzjulienne@suse.de
+Content-Type: multipart/mixed; boundary="===============4041462240226759755=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-TXVzdCBzdGFydCB3aXRoICJzdHJ1Y3QgPG5hbWU+IgoKRml4ZXMgdGhlIGZvbGxvd2luZyBXPTEg
-a2VybmVsIGJ1aWxkIHdhcm5pbmcocyk6CgogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tj
-aGlwX2x2ZHMuYzo0OTogd2FybmluZzogY2Fubm90IHVuZGVyc3RhbmQgZnVuY3Rpb24gcHJvdG90
-eXBlOiAnc3RydWN0IHJvY2tjaGlwX2x2ZHNfc29jX2RhdGEgJwoKQ2M6IFNhbmR5IEh1YW5nIDxo
-amNAcm9jay1jaGlwcy5jb20+CkNjOiAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+
-CkNjOiBEYXZpZCBBaXJsaWUgPGFpcmxpZWRAbGludXguaWU+CkNjOiBEYW5pZWwgVmV0dGVyIDxk
-YW5pZWxAZmZ3bGwuY2g+CkNjOiBNYXJrIFlhbyA8bWFyay55YW9Acm9jay1jaGlwcy5jb20+CkNj
-OiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCkNjOiBsaW51eC1hcm0ta2VybmVsQGxp
-c3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-U2lnbmVkLW9mZi1ieTogTGVlIEpvbmVzIDxsZWUuam9uZXNAbGluYXJvLm9yZz4KLS0tCiBkcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jIHwgMiArLQogMSBmaWxlIGNoYW5n
-ZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hp
-cC9yb2NrY2hpcF9sdmRzLmMKaW5kZXggZjI5MmM2YTZlMjBmYi4uODY1OGVmODJkOTM3YiAxMDA2
-NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2x2ZHMuYworKysgYi9k
-cml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfbHZkcy5jCkBAIC00Miw3ICs0Miw3IEBA
-IHN0cnVjdCByb2NrY2hpcF9sdmRzOwogCQljb250YWluZXJfb2YoYywgc3RydWN0IHJvY2tjaGlw
-X2x2ZHMsIGVuY29kZXIpCiAKIC8qKgotICogcm9ja2NoaXBfbHZkc19zb2NfZGF0YSAtIHJvY2tj
-aGlwIGx2ZHMgU29jIHByaXZhdGUgZGF0YQorICogc3RydWN0IHJvY2tjaGlwX2x2ZHNfc29jX2Rh
-dGEgLSByb2NrY2hpcCBsdmRzIFNvYyBwcml2YXRlIGRhdGEKICAqIEBwcm9iZTogTFZEUyBwbGF0
-Zm9ybSBwcm9iZSBmdW5jdGlvbgogICogQGhlbHBlcl9mdW5jczogTFZEUyBjb25uZWN0b3IgaGVs
-cGVyIGZ1bmN0aW9ucwogICovCi0tIAoyLjI1LjEKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============4041462240226759755==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="qMm9M+Fa2AknHoGS"
+Content-Disposition: inline
+
+
+--qMm9M+Fa2AknHoGS
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Nov 12, 2020 at 05:13:46PM +0100, Uwe Kleine-K=C3=B6nig wrote:
+> Hello Thierry,
+>=20
+> On Sun, Dec 29, 2019 at 08:05:39AM +0000, Yangtao Li wrote:
+> > Use devm_platform_ioremap_resource() to simplify code.
+> >=20
+> > Signed-off-by: Yangtao Li <tiny.windzz@gmail.com>
+> > ---
+> >  drivers/pwm/pwm-sun4i.c | 4 +---
+> >  1 file changed, 1 insertion(+), 3 deletions(-)
+> >=20
+> > diff --git a/drivers/pwm/pwm-sun4i.c b/drivers/pwm/pwm-sun4i.c
+> > index 581d23287333..f2afd312f77c 100644
+> > --- a/drivers/pwm/pwm-sun4i.c
+> > +++ b/drivers/pwm/pwm-sun4i.c
+> > @@ -344,7 +344,6 @@ MODULE_DEVICE_TABLE(of, sun4i_pwm_dt_ids);
+> >  static int sun4i_pwm_probe(struct platform_device *pdev)
+> >  {
+> >  	struct sun4i_pwm_chip *pwm;
+> > -	struct resource *res;
+> >  	int ret;
+> > =20
+> >  	pwm =3D devm_kzalloc(&pdev->dev, sizeof(*pwm), GFP_KERNEL);
+> > @@ -355,8 +354,7 @@ static int sun4i_pwm_probe(struct platform_device *=
+pdev)
+> >  	if (!pwm->data)
+> >  		return -ENODEV;
+> > =20
+> > -	res =3D platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> > -	pwm->base =3D devm_ioremap_resource(&pdev->dev, res);
+> > +	pwm->base =3D devm_platform_ioremap_resource(pdev, 0);
+> >  	if (IS_ERR(pwm->base))
+> >  		return PTR_ERR(pwm->base);
+>=20
+> Can you please comment why you don't apply this series?
+
+I did in fact apply this yesterday, but I now see that I didn't reply to
+the thread to report that.
+
+> My point of view is:
+>=20
+> devm_platform_ioremap_resource is the designated wrapper to replace
+> platform_get_resource() and devm_ioremap_resource(). So I don't see a
+> good reason to continue open coding it.
+>=20
+> The patch series doesn't apply to 5.10-rc1 as is. (pwm-puv3 was removed
+> and a simple conflict in the pwm-rockchip driver.) The overall diffstat
+> (of the fixed series applied on top of 5.10-rc1) is
+>=20
+> 	31 files changed, 32 insertions(+), 96 deletions(-)
+>=20
+> and it converts all of drivers/pwm but a single instance of
+> platform_get_resource() + devm_ioremap_resource() (for pwm-lpss where
+> platform_get_resource and devm_ioremap_resource are in different
+> functions (different files even)) which isn't trivial to fix.
+>=20
+> So in my eyes applying this series is the right thing to do.
+
+For the record, I personally think this helper is a bit over the top. I
+do agree that it's nice to create helpers for common code sequences, but
+this is a *lot* of churn all across the kernel to save just two lines,
+which I don't think is worth it in this case. Often these helpers allow
+common mistakes to be avoided while at the same time reducing lines of
+code, but devm_ioremap_resource() was already created to address the
+pitfalls (like returning all sorts of weird and inconsistent error
+codes). So this helper doesn't actually add any value other than saving
+a few lines, which I don't think justifies the churn. I would've been
+sold on this if the ratio had been slightly higher, like maybe saving a
+dozen or so lines, but as it is, I just don't think it's worth the churn
+that it's causing.
+
+I also think that it's overly narrow is scope, so you can't actually
+"blindly" use this helper and I've seen quite a few cases where this was
+unknowingly used for cases where it shouldn't have been used and then
+broke things (because some drivers must not do the request_mem_region()
+for example). And then there are cases where the driver needs the
+resource for some other purpose, so you can't use the helper either, or
+at least it looses all of its advantages in those cases.
+
+That said, the helper is there and has been widely accepted, so my
+opinion has been overruled by the majority.
+
+Thierry
+
+--qMm9M+Fa2AknHoGS
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAl+th8UACgkQ3SOs138+
+s6EJGw/9H77dbaNDlBX7JuQrZ1yTANFYsknIsNBqiHqxVyeNOvnNiOCwLyMpfyD4
+ZhxeUvz370ZXDuCQoA8kSbANuC36XqIoYJXUX2WbN5WQ6eJF1sRxXmctvY11Fpkc
+mnztEolVT5ygFHRfXvCEeoZ2ucAZMcnKKXOMSMDLcWw4NHl5qLMwZITmtJMBQd/w
+F3nHNtv+e9Za7m162+G4XXLpaMxEpD+mx0/MKKU9OQyWmNolPSQQ0TEhIX31v9gK
+CpR2u5izH0pYJzo7nZahyzWGVi5cLxid93pF8wobHhvcXOGtwXH0ThZB3q7BSles
+EDr//4p1Fx/99llemBrp1LO+koGgl7x7mkFFWMmakmtEueBLzmcR6jKU4A9qKera
+t5AkiFK2MpzpY62o/g9JPpVDRJUFUB7z2xv4Nv6QH7Xc9rXlb5eA36T3RfOUgybi
+MDbiB/6+bjnmzsKvmzmVZTAdRKPQHJh1XVX6l5qZsHU8xW3ZrG4zsZ94/gIE82w9
+Ib1moNdBt7MT2XH4AILfVx+7xJtyRetkhoDMRBfsqBQZvFDbr7zuszXPPKvPQIuo
+jL7uT6OIs6Yc16b0qk1My2XNO/YGufWXUMTnZoixkngZHDd0nQ+Bx49K9AR847dI
+XokkpjXh91solUKZCbEhV0guv43K1HCmU9z3KOCV4RoS93nObXM=
+=kMKR
+-----END PGP SIGNATURE-----
+
+--qMm9M+Fa2AknHoGS--
+
+
+--===============4041462240226759755==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4041462240226759755==--
+
