@@ -1,69 +1,74 @@
-Return-Path: <SRS0=j9H1=ET=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=bCYA=EU=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
-	autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 73885C55ABD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2020 17:41:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F7B6C5519F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2020 03:56:00 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ED39722201
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Nov 2020 17:41:08 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 2A60F2225D
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Nov 2020 03:55:59 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="07cY+N3O"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org ED39722201
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="RxkScwQA"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 2A60F2225D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rock-chips.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=rPu2rS1QssQESEyYIYF3W7ibd5Vrv8oSrwWeXmA+uh4=; b=07cY+N3OL6YL/MOUgLrYUBY7C
-	DMYaaO/wMqUMXIS8ZviXAoruP6aKywO85uyD4D8APuyjVrvtoSlXDWKqjsHg+y6dfjsswQyGj8Spw
-	sR5K4c2WyyY7YYu/IjO5u4m5YsacidwGHY5uQa8wIsLntuf35jtB6/dS3PutNnTLkCjfwRnmtEF/k
-	HD5F0MG7+SPPk5BYC2m6pUwAEoVceVvX/TlAF7f0wGaaZml4ksDk8d3EtzkCXV/+ua7Et0nWpTYi6
-	4Z1NDL8kzjT+v+KmyxN2agbUKurFrfZIXEZ2DxRBPTne7t3/o0eVjJe7mklrg/283n2ILqE49b0YK
-	D754eHRfA==;
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=aJGRepg4RwyRtlbUFOyiJB+v+cBXqXvCHbCvWYnqoM8=; b=RxkScwQAjrJ5wkKfXuLUcDXSQT
+	Xuhyc+Q6BqUxU62NVIQXDSFS3JClUoLNTVR2ugSa2xXDIY9vBu96Scng9gzBo9kHm2fxoCQdqUFpE
+	QH/u5T2BF42f2QsDPzwx9pXB8pH0SK8FSBqoXN8xpq64cVFboQ6GKTZaDsgc50TzrZ7myFObmHa1i
+	raXYVFY12J9WE3qZhBX3F/5wjrrQglqz/64/Di3SFxVTXW/mh5Qr5ZCG1tTM5R8Y10SklIn+aW4Is
+	3HgcOW70xdD1V7tM0IbMkBztHwrISrG/LUSFOudPsw23gLwcB+/go57DpLJgdj/hoGJytEBTVldAR
+	PalUioGw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kdd4I-0006eH-WC; Fri, 13 Nov 2020 17:41:03 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kdd4A-0006bX-IW; Fri, 13 Nov 2020 17:40:55 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6D6711042;
- Fri, 13 Nov 2020 09:40:51 -0800 (PST)
-Received: from [10.57.53.43] (unknown [10.57.53.43])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C6B8C3F718;
- Fri, 13 Nov 2020 09:40:42 -0800 (PST)
-Subject: Re: About devm_platform_ioremap_resource [Was: Re: [PATCH 01/32] pwm:
- sun4i: convert to devm_platform_ioremap_resource]
-To: Thierry Reding <thierry.reding@gmail.com>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
-References: <20191229080610.7597-1-tiny.windzz@gmail.com>
- <20201112161346.gp5nenuagx5wmwl2@pengutronix.de>
- <20201112190649.GA908613@ulmo>
- <20201112211429.kfyqzkmmchjo6pll@pengutronix.de>
- <20201113070343.lhcsbyvi5baxn3lq@pengutronix.de>
- <20201113161153.GB1408970@ulmo>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <6cddd32c-50eb-4399-02bc-d4377237134c@arm.com>
-Date: Fri, 13 Nov 2020 17:40:41 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.4.3
-MIME-Version: 1.0
-In-Reply-To: <20201113161153.GB1408970@ulmo>
-Content-Language: en-GB
+	id 1kdmfF-0006qQ-3i; Sat, 14 Nov 2020 03:55:49 +0000
+Received: from lucky1.263xmail.com ([211.157.147.134])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kdmfB-0006pt-NA
+ for linux-rockchip@lists.infradead.org; Sat, 14 Nov 2020 03:55:47 +0000
+Received: from localhost (unknown [192.168.167.70])
+ by lucky1.263xmail.com (Postfix) with ESMTP id 0B240C49BF;
+ Sat, 14 Nov 2020 11:55:32 +0800 (CST)
+X-MAIL-GRAY: 0
+X-MAIL-DELIVERY: 1
+X-ADDR-CHECKED4: 1
+X-ANTISPAM-LEVEL: 2
+X-ABS-CHECKED: 0
+Received: from localhost.localdomain (unknown [58.22.7.114])
+ by smtp.263.net (postfix) whith ESMTP id
+ P27840T140553139496704S1605326130614637_; 
+ Sat, 14 Nov 2020 11:55:31 +0800 (CST)
+X-IP-DOMAINF: 1
+X-UNIQUE-TAG: <6d5c2be54c926e753545094f68123e26>
+X-RL-SENDER: sugar.zhang@rock-chips.com
+X-SENDER: zxg@rock-chips.com
+X-LOGIN-NAME: sugar.zhang@rock-chips.com
+X-FST-TO: vkoul@kernel.org
+X-SENDER-IP: 58.22.7.114
+X-ATTACHMENT-NUM: 0
+X-DNS-TYPE: 0
+X-System-Flag: 0
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
+To: vkoul@kernel.org
+Subject: [PATCH] dmaengine: pl330: _prep_dma_memcpy: Fix wrong burst size
+Date: Sat, 14 Nov 2020 11:55:06 +0800
+Message-Id: <1605326106-55681-1-git-send-email-sugar.zhang@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201113_124054_715687_67EC4228 
-X-CRM114-Status: GOOD (  30.25  )
+X-CRM114-CacheID: sfid-20201113_225546_041530_4460271F 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,131 +81,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: alexandre.belloni@bootlin.com, heiko@sntech.de,
- Yangtao Li <tiny.windzz@gmail.com>, Linus Walleij <linus.walleij@linaro.org>,
- nicolas.ferre@microchip.com, matthias.bgg@gmail.com,
- linux-riscv@lists.infradead.org, festevam@gmail.com, f.fainelli@gmail.com,
- shc_work@mail.ru, Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- khilman@baylibre.com, ludovic.desroches@microchip.com, jonathanh@nvidia.com,
- linux-rockchip@lists.infradead.org, wens@csie.org,
- bcm-kernel-feedback-list@broadcom.com, linux-imx@nxp.com,
- slemieux.tyco@gmail.com, linux-pwm@vger.kernel.org, rjui@broadcom.com,
- s.hauer@pengutronix.de, mripard@kernel.org, vz@mleia.com,
- linux-mediatek@lists.infradead.org, linux-rpi-kernel@lists.infradead.org,
- paul.walmsley@sifive.com, linux-tegra@vger.kernel.org,
- linux-amlogic@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-arm-kernel@lists.infradead.org, sbranden@broadcom.com,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- palmer@dabbelt.com, kernel@pengutronix.de, shawnguo@kernel.org,
- claudiu.beznea@microchip.com, nsaenzjulienne@suse.de
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="windows-1252"; Format="flowed"
+Cc: Sugar Zhang <sugar.zhang@rock-chips.com>,
+ linux-rockchip@lists.infradead.org, Dan Williams <dan.j.williams@intel.com>,
+ dmaengine@vger.kernel.org, linux-kernel@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2020-11-13 16:11, Thierry Reding wrote:
-> On Fri, Nov 13, 2020 at 08:03:43AM +0100, Uwe Kleine-K=F6nig wrote:
->> Hello,
->>
->> [Added lkml and the people involved in commit 7945f929f1a7
->> ("drivers: provide devm_platform_ioremap_resource()") to Cc:. For the
->> new readers: This is about patches making use of
->> devm_platform_ioremap_resource() instead of open coding it. Full context
->> at https://lore.kernel.org/r/20201112190649.GA908613@ulmo]
->>
->> On Thu, Nov 12, 2020 at 10:14:29PM +0100, Uwe Kleine-K=F6nig wrote:
->>> On Thu, Nov 12, 2020 at 08:06:49PM +0100, Thierry Reding wrote:
->>>> I also think that it's overly narrow is scope, so you can't actually
->>>> "blindly" use this helper and I've seen quite a few cases where this w=
-as
->>>> unknowingly used for cases where it shouldn't have been used and then
->>>> broke things (because some drivers must not do the request_mem_region()
->>>> for example).
->>>
->>> You have a link to such an accident?
->>
->> I got a hint in private here: https://lore.kernel.org/r/1555670144-24220=
--1-git-send-email-aisheng.dong@nxp.com
->>
->> devm_platform_ioremap_resource() is platform_get_resource() +
->> devm_ioremap_resource() and here it was used to replace
->> platform_get_resource() + devm_ioremap().
->>
->> IMHO the unlucky thing in this situation is that devm_ioremap_resource()
->> and devm_ioremap() are different by more than just how they get the area
->> to remap. (i.e. devm_ioremap_resource() also does
->> devm_request_mem_region().)
->>
->> So the problem is not the added wrapper, but unclear semantics in the
->> functions it uses.
-> =
+Actually, burst size is equal to '1 << desc->rqcfg.brst_size'.
+we should use burst size, not desc->rqcfg.brst_size.
 
-> The semantics aren't unclear. It's just that the symbol name doesn't
-> spell out every detail that the function implements, which, frankly, no
-> function name ever does, at least not for anything beyond simple
-> instructional examples. That's what we have documentation for and why
-> people should read the documentation before they use a function and make
-> (potentially wrong) assumption about what it does.
-> =
+dma memcpy performance on Rockchip RV1126
+@ 1512MHz A7, 1056MHz LPDDR3, 200MHz DMA:
 
->>                     In my eyes devm_ioremap() and
->> devm_platform_ioremap_resource() should better be named
->> devm_request_ioremap() and devm_platform_request_ioremap_resource()
->> respectively. Is it worth to rename these for clearity?
-> =
+dmatest:
 
-> I think function names are always a compromise between giving you the
-> gist of what the implementation does and being short enough so it
-> doesn't become difficult to read or use.
-> =
+/# echo dma0chan0 > /sys/module/dmatest/parameters/channel
+/# echo 4194304 > /sys/module/dmatest/parameters/test_buf_size
+/# echo 8 > /sys/module/dmatest/parameters/iterations
+/# echo y > /sys/module/dmatest/parameters/norandom
+/# echo y > /sys/module/dmatest/parameters/verbose
+/# echo 1 > /sys/module/dmatest/parameters/run
 
-> One of the reasons why I dislike the addition of helpers for every
-> common special case (like devm_platform_ioremap_resource()) is because
-> it doesn't (always) actually make things easier for developers and/or
-> maintainers. Replacing three lines of code with one is a minor
-> improvement, even though there may be many callsites and therefore in
-> the sum this being a fairly sizeable reduction. The flip side is that
-> now we've got an extra symbol with an unwieldy name that people need
-> to become familiar with, and then, like the link above shows, it doesn't
-> work in all cases, so you either need to fall back to the open-coded
-> version or you keep adding helpers until you've covered all cases. And
-> then we end up with a bunch of helpers that you actually have to go and
-> read the documentation for in order to find out which one exactly fits
-> your use-case.
-> =
+dmatest: dma0chan0-copy0: result #1: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+dmatest: dma0chan0-copy0: result #2: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+dmatest: dma0chan0-copy0: result #3: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+dmatest: dma0chan0-copy0: result #4: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+dmatest: dma0chan0-copy0: result #5: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+dmatest: dma0chan0-copy0: result #6: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+dmatest: dma0chan0-copy0: result #7: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+dmatest: dma0chan0-copy0: result #8: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
 
-> Without the helpers it's pretty simple to write, even if a little
-> repetitive:
-> =
+Before:
 
->    1) get the resource you want to map
->    2) request the resource
->    3) map the resource
-> =
+  dmatest: dma0chan0-copy0: summary 8 tests, 0 failures 48 iops 200338 KB/s (0)
 
-> 2) & 3) are very commonly done together, so it makes sense to have a
-> generic helper for them. If you look at the implementation, the
-> devm_ioremap_request() implementation does quite a bit of things in
-> addition to just requesting and remapping, and that's the reason why
-> that helper makes sense.
-> =
+After this patch:
 
-> For me personally, devm_platform_ioremap_resource() is just not adding
-> enough value to justify its existence. And then we get all these other
-> variants that operate on the resource name (_byname) and those which
-> remap write-combined (_wc). But don't we also need a _byname_wc()
-> variant for the combination? Where does it stop?
+  dmatest: dma0chan0-copy0: summary 8 tests, 0 failures 179 iops 734873 KB/s (0)
 
-Arguably the worst thing about devm_platform_ioremap_resource() is that =
+After this patch and increase dma clk to 400MHz:
 
-it was apparently the gateway drug to a belief that =
+  dmatest: dma0chan0-copy0: summary 8 tests, 0 failures 259 iops 1062929 KB/s (0)
 
-devm_platform_get_and_ioremap_resource() is anything other than a =
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+---
 
-hideous way to obfuscate an assignment...
+ drivers/dma/pl330.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Robin.
+diff --git a/drivers/dma/pl330.c b/drivers/dma/pl330.c
+index e9f0101..0f5c193 100644
+--- a/drivers/dma/pl330.c
++++ b/drivers/dma/pl330.c
+@@ -2799,7 +2799,7 @@ pl330_prep_dma_memcpy(struct dma_chan *chan, dma_addr_t dst,
+ 	 * If burst size is smaller than bus width then make sure we only
+ 	 * transfer one at a time to avoid a burst stradling an MFIFO entry.
+ 	 */
+-	if (desc->rqcfg.brst_size * 8 < pl330->pcfg.data_bus_width)
++	if (burst * 8 < pl330->pcfg.data_bus_width)
+ 		desc->rqcfg.brst_len = 1;
+ 
+ 	desc->bytes_requested = len;
+-- 
+2.7.4
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
