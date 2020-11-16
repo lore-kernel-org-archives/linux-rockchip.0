@@ -2,85 +2,65 @@ Return-Path: <SRS0=vJNw=EW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 54E01C5519F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 16:25:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DAC5C2D0A3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 16:42:11 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C20EB2222C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 16:25:32 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 0ABBE21527
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 16:42:11 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="yiXDqUCZ";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="O1Qjd+36"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C20EB2222C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l6X/GVdD";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="sQ5aXPh3"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0ABBE21527
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=e8qk6v6cuy+tGp53iWAZ8suf4JEFWgB+lbnbAfyUkTQ=; b=yiXDqUCZ1CsW5TgMOSqPKxwxo
-	C/LYb9y2oCRpfXI6oUh689Oof+Vky58wANM8E4Vvb5cHjHpZ+STmk5Q5pKX3PyFDkMbyb9qTrIn0+
-	ihcLczYYHY25R8E/qFiq9wAgrD200OikelU7J9p6kcZoPnZlcg62uhDeTIN50pXO4b7zzMU9/0ouL
-	fiAZtBEGKqGMdgnxOtjufch/1v+IzqGNOxvT4AdU/bOzvmzij+iGMqMgRTZ3rkErJdSj2FGgoaSeB
-	WZBDJ/mJkahM6ERkORY9q8xqdJDk1w+UqqEbm2V86hD6Ervh0tdrMbOnHMurzAVhyMMP6BFMMow0D
-	L1LLgV1/w==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=CJYg0XiammVcf9qkdEEp7ydyVEUX/0fcFTtcTPcMlnE=; b=l6X/GVdD7ewoXsAJxIoM8ZFnN
+	NcJ/Qn6bov3T6Z+UsTMhVAto8NgeoaN8dHIqn48zw8DNftywRKJfqYUS39FAnak+wecyx4dqlQpVf
+	DuqbEyi6e6x0lyaW4tLlgqF2/7ymmuQcEXvoq94owBwHU4PDiOtUpTfg/nWhhZfio7mnc/A1YpjoR
+	HmoDK43/J/MkRPHqqM8aDgpNVXhEPzds5amQvaPYLP+cdJ6SPtm0HR1t5zwvSWFAhIWWlbQo8JvXZ
+	8UrpkryatUzt36ST3fmhN8Zz0p++NamIS6+9sgSaIMFLSoawzYxNiHupj9SZX+LY8oTdvKR0l2tvj
+	vel0CkByw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kehJn-00073w-2L; Mon, 16 Nov 2020 16:25:27 +0000
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541])
+	id 1kehZv-0000rT-D1; Mon, 16 Nov 2020 16:42:07 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kehJj-00072U-Q1; Mon, 16 Nov 2020 16:25:24 +0000
-Received: by mail-ed1-x541.google.com with SMTP id d18so6437796edt.7;
- Mon, 16 Nov 2020 08:25:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=36kI422mx2qfLcPg3+nHskQP6VdwizY0Ulfa8KTJnr0=;
- b=O1Qjd+36JGEvo6pZ30mwIxjGKl8BzRv9Z9ZrFgBmynNuqT2zdA0znCFqKRL9G+5Fcv
- ehaNLlkJ+qZcFQXkjFsxuaH8np3UuMufIj7YjXcUIgynj9LUoghdrn9L6QjxOo84a2uu
- +xxZYIB0oN/SNd3DK+mGOoxv2HVvTZW7YY07BH1yJcxyQu0RzqFXv3GfaCkpSy6DzXP/
- MXLTLXQ7Hk++kxORW12sr+JUTQdBCsPfKIUGGvxvhuxJFVn60RtgAcs9FFmza1SxD/IU
- Gu80B0PySPDo7A3ESBpHeOtX/lwq7U/ZRQLjA+ryedlpnvkhxsx84TZvrxw82haDmA3r
- J3pg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=36kI422mx2qfLcPg3+nHskQP6VdwizY0Ulfa8KTJnr0=;
- b=a7TWfmDiVBeuJJeTt5OdMdcpODtyD4AI+LMf140hrT0Tz4L+8EiuiZI4vmIgPL9Vaf
- iZ9DecHYXY+Kj43nqUQzP+9ExsE+bTYI2ZUx1oFg8+SfP3Hdeaxbh3n0N2akSHmr4yzW
- VmsvyzqVwKw5MWYX9SswD5biigP3DE6u/2ZhU++mar9P366VsK0mcrw95U+Cg1BjVyva
- Jh0EwJo86JQQGmxWdKZR99kEpPIgslQ8WDo85scdoYouUIll/6B8VU5BDAIWLTsdCfzP
- ncbQNiZKmEHuOha//+keGRr5kCALh6JioqmVcgzyxkwcKNum2v0dvTfJmf1wx7Y4xcno
- o9Pw==
-X-Gm-Message-State: AOAM532YMqcOel4WAp7KcI9YjUErqiywkiUhxGlJDiDnb5UlqciWUut3
- GzZ6TB5W1KIWRiXRUiPmUswwqr100dRDNiX1YSsHpH36AzOLJg==
-X-Google-Smtp-Source: ABdhPJwvsO8BY0A2SJ3pMJ9k/E9Uzy41HquFwR8+/Fdb9eiUpcLtm8P91iDhsjw0QZ3t7I6pu28tNlVpgLp/2F3paMQ=
-X-Received: by 2002:a05:6402:22af:: with SMTP id
- cx15mr15950673edb.207.1605543922570; 
- Mon, 16 Nov 2020 08:25:22 -0800 (PST)
+ id 1kehZr-0000qW-Ku; Mon, 16 Nov 2020 16:42:04 +0000
+Received: from localhost (189.sub-72-105-114.myvzw.com [72.105.114.189])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 8A6AD206D9;
+ Mon, 16 Nov 2020 16:42:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605544922;
+ bh=TgH1abjAGKm1AI19eKqktN7to1FFPzXHleFxcxbkKI8=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=sQ5aXPh3snFjQmczM+VPazL8s/aZevGo5eKBMXnrsHdeK2P4LWLWwhRgrP+4tjo8v
+ fW5whkpjlstLvmNNEO8dlnYlFNu6k+v/nUNQX7WySZoxfEoEU88ZimYtMLQAhFVB1f
+ GulmiaLGww5TeaexigJXCTBgVktebrIBLAsYafiM=
+Date: Mon, 16 Nov 2020 10:41:59 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Chen-Yu Tsai <wens@kernel.org>
+Subject: Re: [PATCH 1/4] PCI: rockchip: make ep_gpio optional
+Message-ID: <20201116164159.GA1282970@bjorn-Precision-5520>
 MIME-Version: 1.0
-References: <20201116151735.178737-1-pgwipeout@gmail.com>
- <20201116151735.178737-4-pgwipeout@gmail.com>
- <ce2217b9-3627-df09-04d9-e47bef6c3572@gmail.com>
-In-Reply-To: <ce2217b9-3627-df09-04d9-e47bef6c3572@gmail.com>
-From: Peter Geis <pgwipeout@gmail.com>
-Date: Mon, 16 Nov 2020 11:25:10 -0500
-Message-ID: <CAMdYzYpFYEp_H-NX0+CWdUK_d8mqVjQD1w8SuQXwANTEbg7CvQ@mail.gmail.com>
-Subject: Re: [PATCH 3/4] arm64: dts: rockchip: add rk3328 usb3 and usb3phy
- nodes
-To: Johan Jonker <jbx6244@gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20201116075215.15303-2-wens@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201116_112523_894189_8DA69FCB 
-X-CRM114-Status: GOOD (  25.35  )
+X-CRM114-CacheID: sfid-20201116_114203_811777_C9F89A89 
+X-CRM114-Status: GOOD (  21.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,153 +73,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Felipe Balbi <balbi@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- =?UTF-8?B?546L5piO5oiQ?= <frank.wang@rock-chips.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- Kever Yang <kever.yang@rock-chips.com>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- wulf <wulf@rock-chips.com>, zyw <zyw@rock-chips.com>,
- =?UTF-8?B?5ZC06Imv5bOw?= <william.wu@rock-chips.com>,
+Cc: Rob Herring <robh@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
+ linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Chen-Yu Tsai <wens@csie.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Johan Jonker <jbx6244@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
  linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 16, 2020 at 11:07 AM Johan Jonker <jbx6244@gmail.com> wrote:
->
-> Hi Peter,
->
-> Just some comments...
->
-> The compatible "rockchip,rk3328-dwc3" is currently under test in:
->
-> https://git.kernel.org/pub/scm/linux/kernel/git/balbi/usb.git/
->
-> I think we should let it go in mainline first
-> (if the maintainers agree?) and then you can base your serie on that.
->
-> The compatible "rockchip,rk3328-usb3phy" needs to be added to a document
-> as well.
+Run "git log --oneline drivers/pci/controller/pcie-rockchip.c" (or
+even just look at the Fixes: commits you mention) and follow the
+convention, e.g.,
 
-I will address documentation in the complete patch set.
-This set to get feedback on the method of implementation and if
-possible make the glue layer unnecessary.
+  PCI: rockchip: Make 'ep-gpios' DT property optional
 
->
-> Add increase version number after previous series.
->
-> Is there any change in code or on how you detect?
+Also, you used 'ep_gpio' (singular, with an underline) in the subject
+but 'ep-gpios' (plural, with hyphen) in the commit log.  The error
+message and Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
+both say 'ep-gpios' (plural, with hyphen).
 
-It would seem that the patches you just linked simply enable the usb3
-controller.
-It does not address the original issues as to why this method was
-rejected previously.
-Without the phy driver, there is no hotplug detection, meaning that
-only devices which are plugged in at boot are enumerated.
+Please fix so this is all consistent.  Details matter.
 
-If you look at patch 2, you will see my glue driver is based off of-simple.
-This is no accident, as I had originally plugged in my code into that driver.
-At >40% rewrite of of-simple, it didn't feel "simple" anymore, so I
-broke it out separately.
-
-The patches you linked will work if the usb2 hub issue can be resolved
-purely in the phy driver.
-
->
-> On 11/16/20 4:17 PM, Peter Geis wrote:
-> > Add the usb3 controller and usb3 phy nodes to the rk3328.
-> >
-> > Signed-off-by: Peter Geis <pgwipeout@gmail.com>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/rk3328.dtsi | 65 ++++++++++++++++++++++++
-> >  1 file changed, 65 insertions(+)
-> >
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> > index bbdb19a3e85d..9fea9203d114 100644
-> > --- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-> > @@ -853,6 +853,40 @@ u2phy_host: host-port {
-> >               };
-> >       };
-> >
-> > +     usb3phy: usb3-phy@ff470000 {
-> > +             compatible = "rockchip,rk3328-usb3phy";
-> > +             reg = <0x0 0xff460000 0x0 0x10000>;
-> > +             clocks = <&cru PCLK_USB3PHY_OTG>, <&cru PCLK_USB3PHY_PIPE>;
-> > +             clock-names = "usb3phy-otg", "usb3phy-pipe";
-> > +             resets = <&cru SRST_USB3PHY_U2>,
-> > +                      <&cru SRST_USB3PHY_U3>,
-> > +                      <&cru SRST_USB3PHY_PIPE>,
-> > +                      <&cru SRST_USB3OTG_UTMI>,
-> > +                      <&cru SRST_USB3PHY_OTG_P>,
-> > +                      <&cru SRST_USB3PHY_PIPE_P>;
-> > +             reset-names = "usb3phy-u2-por", "usb3phy-u3-por",
-> > +                           "usb3phy-pipe-mac", "usb3phy-utmi-mac",
-> > +                           "usb3phy-utmi-apb", "usb3phy-pipe-apb";
-> > +             #address-cells = <2>;
-> > +             #size-cells = <2>;
-> > +             ranges;
-> > +             status = "disabled";
-> > +
-> > +             usb3phy_utmi: utmi@ff470000 {
-> > +                     compatible = "rockchip,rk3328-usb3phy-utmi";
-> > +                     reg = <0x0 0xff470000 0x0 0x8000>;
-> > +                     #phy-cells = <0>;
-> > +                     status = "disabled";
-> > +             };
-> > +
-> > +             usb3phy_pipe: pipe@ff478000 {
-> > +                     compatible = "rockchip,rk3328-usb3phy-pipe";
-> > +                     reg = <0x0 0xff478000 0x0 0x8000>;
-> > +                     #phy-cells = <0>;
-> > +                     status = "disabled";
-> > +             };
-> > +     };
-> > +
-> >       sdmmc: mmc@ff500000 {
-> >               compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
-> >               reg = <0x0 0xff500000 0x0 0x4000>;
-> > @@ -983,6 +1017,37 @@ usb_host0_ohci: usb@ff5d0000 {
-> >               status = "disabled";
-> >       };
-> >
-> > +       usbdrd3: usb@ff600000 {
-> > +             compatible = "rockchip,rk3328-dwc3";
-> > +             clocks = <&cru SCLK_USB3OTG_REF>, <&cru ACLK_USB3OTG>,
-> > +                      <&cru SCLK_USB3OTG_SUSPEND>;
-> > +             clock-names = "ref", "bus_early", "suspend";
-> > +             #address-cells = <2>;
-> > +             #size-cells = <2>;
-> > +             ranges;
-> > +             status = "disabled";
-> > +
-> > +             usbdrd_dwc3: dwc3@ff600000 {
-> > +                     compatible = "snps,dwc3";
-> > +                     reg = <0x0 0xff600000 0x0 0x100000>;
-> > +                     interrupts = <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
-> > +                     clocks = <&cru SCLK_USB3OTG_REF>, <&cru ACLK_USB3OTG>,
-> > +                              <&cru SCLK_USB3OTG_SUSPEND>;
-> > +                     clock-names = "ref", "bus_early", "suspend";
-> > +                     dr_mode = "host";
-> > +                     usb-phy = <&usb3phy_utmi>, <&usb3phy_pipe>;
-> > +                     phy_type = "utmi_wide";
-> > +                     snps,dis_enblslpm_quirk;
-> > +                     snps,dis-u2-freeclk-exists-quirk;
-> > +                     snps,dis_u2_susphy_quirk;
-> > +                     snps,dis_u3_susphy_quirk;
-> > +                     snps,dis-del-phy-power-chg-quirk;
-> > +                     snps,dis-tx-ipgap-linecheck-quirk;
-> > +                     snps,xhci-trb-ent-quirk;
-> > +                     status = "disabled";
-> > +             };
-> > +     };
-> > +
-> >       gic: interrupt-controller@ff811000 {
-> >               compatible = "arm,gic-400";
-> >               #interrupt-cells = <3>;
-> >
->
+On Mon, Nov 16, 2020 at 03:52:12PM +0800, Chen-Yu Tsai wrote:
+> From: Chen-Yu Tsai <wens@csie.org>
+> 
+> The Rockchip PCIe controller DT binding clearly states that ep-gpios is
+> an optional property. And indeed there are boards that don't require it.
+> 
+> Make the driver follow the binding by using devm_gpiod_get_optional()
+> instead of devm_gpiod_get().
+> 
+> Fixes: e77f847df54c ("PCI: rockchip: Add Rockchip PCIe controller support")
+> Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
+> Fixes: 964bac9455be ("PCI: rockchip: Split out rockchip_pcie_parse_dt() to parse DT")
+> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+> ---
+>  drivers/pci/controller/pcie-rockchip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+> index 904dec0d3a88..c95950e9004f 100644
+> --- a/drivers/pci/controller/pcie-rockchip.c
+> +++ b/drivers/pci/controller/pcie-rockchip.c
+> @@ -118,7 +118,7 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>  	}
+>  
+>  	if (rockchip->is_rc) {
+> -		rockchip->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
+> +		rockchip->ep_gpio = devm_gpiod_get_optional(dev, "ep", GPIOD_OUT_HIGH);
+>  		if (IS_ERR(rockchip->ep_gpio)) {
+>  			dev_err(dev, "missing ep-gpios property in node\n");
+>  			return PTR_ERR(rockchip->ep_gpio);
+> -- 
+> 2.29.1
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
