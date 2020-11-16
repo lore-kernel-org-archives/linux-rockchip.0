@@ -2,65 +2,66 @@ Return-Path: <SRS0=vJNw=EW=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SIGNED_OFF_BY,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DAC5C2D0A3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 16:42:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9F809C2D0A3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 17:14:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0ABBE21527
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 16:42:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 4529A20797
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 17:14:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="l6X/GVdD";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="sQ5aXPh3"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0ABBE21527
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="M+uaHXgN";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="V/PPfYy+"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4529A20797
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=CJYg0XiammVcf9qkdEEp7ydyVEUX/0fcFTtcTPcMlnE=; b=l6X/GVdD7ewoXsAJxIoM8ZFnN
-	NcJ/Qn6bov3T6Z+UsTMhVAto8NgeoaN8dHIqn48zw8DNftywRKJfqYUS39FAnak+wecyx4dqlQpVf
-	DuqbEyi6e6x0lyaW4tLlgqF2/7ymmuQcEXvoq94owBwHU4PDiOtUpTfg/nWhhZfio7mnc/A1YpjoR
-	HmoDK43/J/MkRPHqqM8aDgpNVXhEPzds5amQvaPYLP+cdJ6SPtm0HR1t5zwvSWFAhIWWlbQo8JvXZ
-	8UrpkryatUzt36ST3fmhN8Zz0p++NamIS6+9sgSaIMFLSoawzYxNiHupj9SZX+LY8oTdvKR0l2tvj
-	vel0CkByw==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=TsdBCG2CyfaI9A28Iwr2o6f/QRghMt0ZGa4g+Zw9Kvw=; b=M+uaHXgNXUSw19W23UXufn6jB
+	s/je5NZGBESIxhZEJ9zRpJP8LdJVkSh1R42ONS90DNGjXnxUWKn+4q6sj1gL+mr1GiXy49Bn6pr2f
+	G38RWgUUrVlI97xzi4AqlXvkLVtGYj+61phnIeMMSVQWY+gKFQ80rohnQwZ5LYA8Ibp6yrBzF/gNY
+	snbgi6UBpVYW+05t7/fZOk3ixWqIx6fpw6h2cM670JaIHejDNITcOvt7WYaQsS8nTE2EX5IxK3TPR
+	3I0eL+T6yLhB9cA4pXwjlS91G7RGPOK9bH+1+2vRJLm9aEyaYOkn5dd6icTMSVB14g3yaaRXbwHGX
+	2XGBu3UOw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kehZv-0000rT-D1; Mon, 16 Nov 2020 16:42:07 +0000
+	id 1kei5b-0006AD-FE; Mon, 16 Nov 2020 17:14:51 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kehZr-0000qW-Ku; Mon, 16 Nov 2020 16:42:04 +0000
-Received: from localhost (189.sub-72-105-114.myvzw.com [72.105.114.189])
+ id 1kei5Z-00069h-NL
+ for linux-rockchip@lists.infradead.org; Mon, 16 Nov 2020 17:14:50 +0000
+Received: from localhost (unknown [122.171.203.152])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 8A6AD206D9;
- Mon, 16 Nov 2020 16:42:01 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 21FF720797;
+ Mon, 16 Nov 2020 17:14:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605544922;
- bh=TgH1abjAGKm1AI19eKqktN7to1FFPzXHleFxcxbkKI8=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=sQ5aXPh3snFjQmczM+VPazL8s/aZevGo5eKBMXnrsHdeK2P4LWLWwhRgrP+4tjo8v
- fW5whkpjlstLvmNNEO8dlnYlFNu6k+v/nUNQX7WySZoxfEoEU88ZimYtMLQAhFVB1f
- GulmiaLGww5TeaexigJXCTBgVktebrIBLAsYafiM=
-Date: Mon, 16 Nov 2020 10:41:59 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Chen-Yu Tsai <wens@kernel.org>
-Subject: Re: [PATCH 1/4] PCI: rockchip: make ep_gpio optional
-Message-ID: <20201116164159.GA1282970@bjorn-Precision-5520>
+ s=default; t=1605546889;
+ bh=Do6LikazT2GPRsF4PjZgIWIMXnzhA/SSk92JoCfMLG8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=V/PPfYy+fVraJmzX0RDzARI4yPpVSeu+Oy83cU0rFyWc1/B/nhWFK+gECtLr1C7qm
+ TVyt6NwFmgV6JALFNsNP7bVzYB5hOBpqbTAVZuRdhYQpzzpgSEOCT8I1l97RSEkOe/
+ sLWhP2Kc80FumzzaasgjvK+D7S16ddfq+oLViDRA=
+Date: Mon, 16 Nov 2020 22:44:44 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Sugar Zhang <sugar.zhang@rock-chips.com>
+Subject: Re: [PATCH] dmaengine: pl330: _prep_dma_memcpy: Fix wrong burst size
+Message-ID: <20201116171444.GA50232@vkoul-mobl>
+References: <1605326106-55681-1-git-send-email-sugar.zhang@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20201116075215.15303-2-wens@kernel.org>
+In-Reply-To: <1605326106-55681-1-git-send-email-sugar.zhang@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201116_114203_811777_C9F89A89 
-X-CRM114-Status: GOOD (  21.00  )
+X-CRM114-CacheID: sfid-20201116_121449_860768_08354374 
+X-CRM114-Status: GOOD (  10.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,65 +74,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org,
- linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Chen-Yu Tsai <wens@csie.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Johan Jonker <jbx6244@gmail.com>, Robin Murphy <robin.murphy@arm.com>,
- linux-arm-kernel@lists.infradead.org
+Cc: dmaengine@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Dan Williams <dan.j.williams@intel.com>, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Run "git log --oneline drivers/pci/controller/pcie-rockchip.c" (or
-even just look at the Fixes: commits you mention) and follow the
-convention, e.g.,
+On 14-11-20, 11:55, Sugar Zhang wrote:
+> Actually, burst size is equal to '1 << desc->rqcfg.brst_size'.
+> we should use burst size, not desc->rqcfg.brst_size.
+> 
+> dma memcpy performance on Rockchip RV1126
+> @ 1512MHz A7, 1056MHz LPDDR3, 200MHz DMA:
+> 
+> dmatest:
+> 
+> /# echo dma0chan0 > /sys/module/dmatest/parameters/channel
+> /# echo 4194304 > /sys/module/dmatest/parameters/test_buf_size
+> /# echo 8 > /sys/module/dmatest/parameters/iterations
+> /# echo y > /sys/module/dmatest/parameters/norandom
+> /# echo y > /sys/module/dmatest/parameters/verbose
+> /# echo 1 > /sys/module/dmatest/parameters/run
+> 
+> dmatest: dma0chan0-copy0: result #1: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+> dmatest: dma0chan0-copy0: result #2: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+> dmatest: dma0chan0-copy0: result #3: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+> dmatest: dma0chan0-copy0: result #4: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+> dmatest: dma0chan0-copy0: result #5: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+> dmatest: dma0chan0-copy0: result #6: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+> dmatest: dma0chan0-copy0: result #7: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+> dmatest: dma0chan0-copy0: result #8: 'test passed' with src_off=0x0 dst_off=0x0 len=0x400000
+> 
+> Before:
+> 
+>   dmatest: dma0chan0-copy0: summary 8 tests, 0 failures 48 iops 200338 KB/s (0)
+> 
+> After this patch:
+> 
+>   dmatest: dma0chan0-copy0: summary 8 tests, 0 failures 179 iops 734873 KB/s (0)
+> 
+> After this patch and increase dma clk to 400MHz:
+> 
+>   dmatest: dma0chan0-copy0: summary 8 tests, 0 failures 259 iops 1062929 KB/s (0)
 
-  PCI: rockchip: Make 'ep-gpios' DT property optional
+Applied, thanks
 
-Also, you used 'ep_gpio' (singular, with an underline) in the subject
-but 'ep-gpios' (plural, with hyphen) in the commit log.  The error
-message and Documentation/devicetree/bindings/pci/rockchip-pcie-host.txt
-both say 'ep-gpios' (plural, with hyphen).
-
-Please fix so this is all consistent.  Details matter.
-
-On Mon, Nov 16, 2020 at 03:52:12PM +0800, Chen-Yu Tsai wrote:
-> From: Chen-Yu Tsai <wens@csie.org>
-> 
-> The Rockchip PCIe controller DT binding clearly states that ep-gpios is
-> an optional property. And indeed there are boards that don't require it.
-> 
-> Make the driver follow the binding by using devm_gpiod_get_optional()
-> instead of devm_gpiod_get().
-> 
-> Fixes: e77f847df54c ("PCI: rockchip: Add Rockchip PCIe controller support")
-> Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
-> Fixes: 964bac9455be ("PCI: rockchip: Split out rockchip_pcie_parse_dt() to parse DT")
-> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
-> ---
->  drivers/pci/controller/pcie-rockchip.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-> index 904dec0d3a88..c95950e9004f 100644
-> --- a/drivers/pci/controller/pcie-rockchip.c
-> +++ b/drivers/pci/controller/pcie-rockchip.c
-> @@ -118,7 +118,7 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
->  	}
->  
->  	if (rockchip->is_rc) {
-> -		rockchip->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
-> +		rockchip->ep_gpio = devm_gpiod_get_optional(dev, "ep", GPIOD_OUT_HIGH);
->  		if (IS_ERR(rockchip->ep_gpio)) {
->  			dev_err(dev, "missing ep-gpios property in node\n");
->  			return PTR_ERR(rockchip->ep_gpio);
-> -- 
-> 2.29.1
-> 
+-- 
+~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
