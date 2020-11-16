@@ -6,20 +6,20 @@ X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
 	SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 39CC0C5519F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 15:35:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EDA4FC4742C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 15:35:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B6ED2221F9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 15:35:11 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 6683F2076E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 15:35:16 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="BgtW5eZK";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="saBkJWPB";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="FRek7/5t"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B6ED2221F9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="uUuchFSc";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.b="RZqLuJOp";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="UHuHKb1w"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6683F2076E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -28,78 +28,78 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=eTWLSVvZOT4Kw4YaTnRLTDlkmazKbs2K9Z40yd/beVE=; b=BgtW5eZK2Hq2RUjgQ7srEpIgN
-	QfgJ5wn2OvKkQfUXPJDZY0ofrN9xHHKv+ZHqvTNorxGctXFEyy928NVBsZbyku4GB9U4anCN2J7RE
-	ON8DmN7a1ibmehdmGcuUsU91oNIQeYNn2PSU5oIWfmRCUtwbbklJLyQiOrk8Fa6aPO8TOMxgm3Mw0
-	xx1NMMc+JEruqFgyBW6e5tYaM6ff3/GAtQee/EmzaU6pxlC0gXzGCDAG5S/7F0SHPO/whIibVLyq8
-	kLztOyZw6Il44r1NwoAm+L+fZRmiPemYNH11UADkpJBwRvMjlLBgr+W++o83d1GvAkvEnmOSDeFl8
-	qp2d++4PA==;
+	 bh=Et9bnnJA6iG/rLDpchCS0bxRlQgBQpayEZxT3kS/J04=; b=uUuchFScHUR3b189VxGoFe7ZJ
+	f8UsD3AWi3Om64ppw6AXlm4tP08vMxQfTIMrkiKhGBiZRvq0lhUCP+2B5eja79gFOoVCDXlh6tcMW
+	jMKsd4XE4kDjzdc8zOgaaRAIzqfKZO020x0rI+aSdsKP1RRjZvgOEcW42y9nVk5DvaClraJvvH8DI
+	IFlobhRZIHWby2I07FDdu6ukufcnoeKBQcQobYcNNVf8GItjsuaM6kF4iqVsqswrCzIfmkLURi6uT
+	mE/kogci38lrqpqANoN6L8/4hzO62dVDKr8sd1TSuh3KeTNQNgl+PT/jkgOeG2b5Jc3VblJ6y2YsU
+	gHPmjrGRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kegWy-0004aR-LR; Mon, 16 Nov 2020 15:35:00 +0000
+	id 1kegXA-0004fY-1W; Mon, 16 Nov 2020 15:35:12 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kegQe-0001TW-Hu; Mon, 16 Nov 2020 15:28:28 +0000
+ id 1kegQg-0001TW-6H; Mon, 16 Nov 2020 15:28:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:MIME-Version:
  References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
  Content-Type:Content-ID:Content-Description;
- bh=SfOqpctSUu1pHCgTELS9Ubj4JB3rNrdpFdF+X6duIF8=; b=saBkJWPBXbAm4hHQMhLkuaaFS1
- xW25NJVyDokj/zfqz7p81eHK+onxXdtbJXAxdC20/A42Czg6NfT2RDwFoU0vCOump/N5nHb/WKBzb
- hbISgMByoi3rXud7v+qX37zEsLJJYfAvbVY+/xn8ucxFSPHwtDVpwDFJg6xrVPVzx52K6y4UbjhKN
- iH6vrvuKQsmTfqL2QbrxaYZUG2glR5+td3wp6EdrfdNh7LOTpIFoEP/rWp9zZ8CKvPfArjwIq3Rm9
- ks6Vq5tXCHVsP+INZUUWDpLrlIJp0F2AVhzYLdfzxxAW4tGjU2Gx7Y7IkjoOnozOVHt8rp84Jd5jM
- Pv38aWBg==;
-Received: from mail-qk1-x72e.google.com ([2607:f8b0:4864:20::72e])
+ bh=eWtERLXExs4DoM6gWGaTUFy6iPC/nCVkimSM+qIDVKM=; b=RZqLuJOpu1Jh2eT0FovM5VjZBD
+ 68c5MPR8nuwlrXCz8KN/dAk5oDaR04d9WZmnssPGmelKS+l25SyEs8LETRbImd6eB7BCAzNVsanlG
+ rU/AbCP1gT+VTscXhuNFeQ9Rv0PJd5rFpz902eARSbqROnhPvuTs/CD8UK+IbEWg/Ar7Tt/ekhG5S
+ Ksf1+shXUzmxIn6zLlTNURs4EdEn9elKsGjOGoVwmrVKnCNGC41ERv/gZrHXMtKkxCF1hpPvhbVwZ
+ fGW6PPV8iYBJ9ptpKMej9Prn9Xu3nmPlIr7c/flyPh2nQMkFVsCiNjA4ih/CTXFKIHljhxe3DBeXG
+ dfEe96uQ==;
+Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844])
  by casper.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kegHr-0006rq-Ue; Mon, 16 Nov 2020 15:19:32 +0000
-Received: by mail-qk1-x72e.google.com with SMTP id 11so17058598qkd.5;
- Mon, 16 Nov 2020 07:19:22 -0800 (PST)
+ id 1kegHu-0006sv-4T; Mon, 16 Nov 2020 15:19:30 +0000
+Received: by mail-qt1-x844.google.com with SMTP id f93so13042784qtb.10;
+ Mon, 16 Nov 2020 07:19:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=SfOqpctSUu1pHCgTELS9Ubj4JB3rNrdpFdF+X6duIF8=;
- b=FRek7/5tdw8CTF72ZdVn0iR4CAI19MTuZpreaUm1RgUId/Arhe5QFaScdSim0GGNjq
- X+wxhkNoQVTBTW+fxWDZyTCFpe0NLKwGrYmv4A7uBd+r5QA7TH8SErfToSjp8Suw123U
- 8z/BeYPhSFQhh6nJ0zY4l3KcsKZmQCv2i9AIr5JwTMApKXZXyUr20Gd+DihIFiMiu33V
- /cByBQGynOsGnS2+bZpVDOKvULKbsZnyXSuagL6gx8ngXtkg2L5x2kkWkOcwwuWN1IqZ
- lEeed/XfZPLogMtYTZ2AR0RmM1qh/u0pEuFP4UctMXSbbHyUpl1Ut5oQDM/0ZM63yCg7
- aGSA==
+ bh=eWtERLXExs4DoM6gWGaTUFy6iPC/nCVkimSM+qIDVKM=;
+ b=UHuHKb1wyzJgScpQpTHI+khKWYoA0r+5oV4I4cL+EXw762BNPY6IkiLTLnw7WI6vXX
+ XFRXGWlHjy3L/v6/t8qZGt/ACYNMjAXyVJXA2jP1QltuyhGKVzJe0xsM52OpnSRgzh5e
+ azZNUKR0ppmLCIEr61/CjjMSwazJcDSjYNBkTOmfSgp2yZawPeHX/Ie0w2k8yY1yzUSs
+ Rqnu/m/uLC4WLFZsjftlmMaMdRJfPoAlIKQs+yVyyzuhJXhfR755gLQ5h4VoNQDy/A4Z
+ SGQwkxLqM6Jd5yX5mXQvG+QFggL6XzgC12DqJ2XMhvykSOYVz8KjgQ3lbpi2orB/fACo
+ ztfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=SfOqpctSUu1pHCgTELS9Ubj4JB3rNrdpFdF+X6duIF8=;
- b=V4ijT+YcK+e1nqv/PdLKSavBYYPIMz8J1+eiQckOKtNYsRa3FnkMkG+zgEAKqdaKwH
- bPqVtLJqZzMvYQnBY7wadbTa5k2zwmvw0wPn2zZWYsQ9Gb8uIoE+QC+oGd5X5pGU2Sc/
- Qxm46yHuCKSv/0DYaIKPF8u7/J6ROIjjEUe1P5eU7QW+TtgQq4KAu9XD3Yt+/P3L9ERm
- KZmwMbN7PEU7jMKG63GfrOmr5QGj+9K0upw8fMNTjjF9cZfuoGY2Evn15ZO5pV3tyzHb
- +HAk38xh26uapCt8CzxCrEKgLE7ZFCA1UYecNhzGifMHo58/sPRkNJyYoosfota8voba
- ngew==
-X-Gm-Message-State: AOAM5304QQ0Blg9wMGI9B93HguJoslAnyaUesUYFrn3ORQ2H+knQnek9
- MKrgrdbQpKvRk8XE/qmJlsc=
-X-Google-Smtp-Source: ABdhPJzEGY2K4o1wLh29Ket56r5s/duEPeDCz0Cl0ieWJYFQqjiIvdBnJQ0a/DI27ZX8Y4Ps6YrkHg==
-X-Received: by 2002:a37:9c84:: with SMTP id
- f126mr14511584qke.484.1605539960676; 
- Mon, 16 Nov 2020 07:19:20 -0800 (PST)
+ bh=eWtERLXExs4DoM6gWGaTUFy6iPC/nCVkimSM+qIDVKM=;
+ b=lq4dY7b0JW7rBnuD9c2rllEjn5Bel4Hf2NeM10R8P1EsIJSbVqhBMBo/d5uAJIERm5
+ 1WndZcLiqaA5K7g9IVYxmH6Xx/iUSZ1V2wRiwzI+6wmfGXDkSWFYuEHcJrKC9I+1mqXr
+ t7/OhaqatQs6jLPEWWOz2TfMV3u0AWbUeOe5YV4AtCXPojQCwIphU0BrqheQvje8QIHS
+ FSkLacK1/k1DevrbJs2MVL9Jj72HJ7l8PoHyxRsqHA+acPr/WcG/gy8XSrEu1VHaLgjy
+ osInPMUsBpfC8PYx4sy5siFK9bkvHp4yNorlmoAE9KEy32eczeRWhNjgBIZwGHvPXGMh
+ LGdg==
+X-Gm-Message-State: AOAM532vtMLkHMB9ChIpzBeitLngNf6qoArsoHgdr8e747hiV4i0d79z
+ 8uZRU6fzZYPWowct2alx3AU=
+X-Google-Smtp-Source: ABdhPJwYnI/O7MjyagGSH+7FQMKnfE01e57JG2POD/MrOpJLlI2if5o0NkVRHFEUiDoG5h7TqaOQmg==
+X-Received: by 2002:aed:3263:: with SMTP id y90mr14509217qtd.196.1605539964181; 
+ Mon, 16 Nov 2020 07:19:24 -0800 (PST)
 Received: from rockpro64.sparksnet ([2601:153:900:7730::20])
- by smtp.gmail.com with ESMTPSA id p127sm12216818qkc.37.2020.11.16.07.19.19
+ by smtp.gmail.com with ESMTPSA id p127sm12216818qkc.37.2020.11.16.07.19.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 16 Nov 2020 07:19:20 -0800 (PST)
+ Mon, 16 Nov 2020 07:19:23 -0800 (PST)
 From: Peter Geis <pgwipeout@gmail.com>
 To: Felipe Balbi <balbi@kernel.org>,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
  Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH 1/4] phy: rockchip: add rockchip usb3 innosilicon phy driver
-Date: Mon, 16 Nov 2020 15:17:33 +0000
-Message-Id: <20201116151735.178737-2-pgwipeout@gmail.com>
+Subject: [PATCH 4/4] arm64: dts: rockchip: enable usb3 on rk3328-roc-cc board
+Date: Mon, 16 Nov 2020 15:17:36 +0000
+Message-Id: <20201116151735.178737-5-pgwipeout@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201116151735.178737-1-pgwipeout@gmail.com>
 References: <20201116151735.178737-1-pgwipeout@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201116_151924_270998_788FE55A 
-X-CRM114-Status: GOOD (  23.98  )
+X-CRM114-CacheID: sfid-20201116_151926_565663_1ACFAF07 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,496 +121,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The innosilicon based usb3 phy used in rockchip devices such as the rk3328 is bugged, requiring special handling.
-The following erata have been observed:
- - usb3 device disconnect events are not detected by the controller
- - usb2 hubs with no devices attached do not trigger disconnect events when removed
- - interrupts are not reliable
-
-To work around these issue we implement polling of the usb2 and usb3 status.
-On usb3 disconnection we reset the usb3 phy which triggers the disconnect event.
-On usb2 disconnection we have to force reset the whole controller.
-This requires a handoff to a special dwc3 device driver.
-
-This has been tested on the rk3328-roc-cc board with the following devices:
- - usb2 only device
- - usb3 only device
- - usb2 only hub without devices
- - usb3 hub without devices
- - usb2 hub with devices
- - usb3 hub with devices
+Enable the usb3 controller and usb3 phy nodes on the rk3328-roc-cc board file.
 
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
- drivers/phy/rockchip/Kconfig                  |   9 +
- drivers/phy/rockchip/Makefile                 |   1 +
- drivers/phy/rockchip/phy-rockchip-inno-usb3.c | 425 ++++++++++++++++++
- 3 files changed, 435 insertions(+)
- create mode 100644 drivers/phy/rockchip/phy-rockchip-inno-usb3.c
+ .../arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 21 +++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-index c2f22f90736c..ce16e0877354 100644
---- a/drivers/phy/rockchip/Kconfig
-+++ b/drivers/phy/rockchip/Kconfig
-@@ -47,6 +47,15 @@ config PHY_ROCKCHIP_INNO_USB2
- 	help
- 	  Support for Rockchip USB2.0 PHY with Innosilicon IP block.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+index b70ffb1c6a63..b060323830af 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
+@@ -345,6 +345,27 @@ &usb_host0_ohci {
+ 	status = "okay";
+ };
  
-+config PHY_ROCKCHIP_INNO_USB3
-+	tristate "Rockchip INNO USB3PHY Driver"
-+	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-+	depends on COMMON_CLK
-+	depends on USB_SUPPORT
-+	select USB_COMMON
-+	help
-+	  Support for Rockchip USB3.0 PHY with Innosilicon IP block.
-+
- config PHY_ROCKCHIP_INNO_DSIDPHY
- 	tristate "Rockchip Innosilicon MIPI/LVDS/TTL PHY driver"
- 	depends on (ARCH_ROCKCHIP || COMPILE_TEST) && OF
-diff --git a/drivers/phy/rockchip/Makefile b/drivers/phy/rockchip/Makefile
-index c3cfc7f0af5c..738e3574a722 100644
---- a/drivers/phy/rockchip/Makefile
-+++ b/drivers/phy/rockchip/Makefile
-@@ -5,6 +5,7 @@ obj-$(CONFIG_PHY_ROCKCHIP_EMMC)		+= phy-rockchip-emmc.o
- obj-$(CONFIG_PHY_ROCKCHIP_INNO_DSIDPHY)	+= phy-rockchip-inno-dsidphy.o
- obj-$(CONFIG_PHY_ROCKCHIP_INNO_HDMI)	+= phy-rockchip-inno-hdmi.o
- obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB2)	+= phy-rockchip-inno-usb2.o
-+obj-$(CONFIG_PHY_ROCKCHIP_INNO_USB3)	+= phy-rockchip-inno-usb3.o
- obj-$(CONFIG_PHY_ROCKCHIP_PCIE)		+= phy-rockchip-pcie.o
- obj-$(CONFIG_PHY_ROCKCHIP_TYPEC)	+= phy-rockchip-typec.o
- obj-$(CONFIG_PHY_ROCKCHIP_USB)		+= phy-rockchip-usb.o
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb3.c b/drivers/phy/rockchip/phy-rockchip-inno-usb3.c
-new file mode 100644
-index 000000000000..6e4aa2f0ba46
---- /dev/null
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb3.c
-@@ -0,0 +1,425 @@
-+// SPDX-License-Identifier: GPL-2.0+
-+
-+#include <linux/clk.h>
-+#include <linux/delay.h>
-+#include <linux/err.h>
-+#include <linux/extcon-provider.h>
-+#include <linux/io.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
-+#include <linux/notifier.h>
-+#include <linux/of.h>
-+#include <linux/of_address.h>
-+#include <linux/of_device.h>
-+#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
-+#include <linux/reset.h>
-+#include <linux/workqueue.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/usb/phy.h>
-+
-+#define USB3_STATUS_REG 0x284
-+#define USB2_STATUS_REG 0x30
-+#define USB3_CONN_BIT BIT(0)
-+#define USB2_CONN_BIT BIT(7)
-+#define USB2_STATE_SHIFT 6
-+#define REG_WRITE_MASK GENMASK(31, 16)
-+
-+struct rockchip_usb3phy_port{
-+	struct device		*dev;
-+	struct regmap		*regmap;
-+	struct usb_phy		phy;
-+	struct rockchip_usb3phy	*parent;
-+	unsigned char 		type;
++&usbdrd3 {
++	status = "okay";
 +};
 +
-+enum usb3phy_mode {
-+	PHY_IDLE = 0,
-+	PHY_USB3,
-+	PHY_USB2,
-+	PHY_COMBO
++&usbdrd_dwc3 {
++	dr_mode = "host";
++	status = "okay";
 +};
 +
-+struct rockchip_usb3phy {
-+	struct device			*dev;
-+	struct regmap			*regmap;
-+	struct clk			*clk_pipe;
-+	struct clk			*clk_otg;
-+	struct reset_control		*u3por_rst;
-+	struct reset_control		*u2por_rst;
-+	struct reset_control		*pipe_rst;
-+	struct reset_control		*utmi_rst;
-+	struct reset_control		*pipe_apb_rst;
-+	struct reset_control		*utmi_apb_rst;
-+	struct rockchip_usb3phy_port	port_pipe;
-+	struct rockchip_usb3phy_port	port_utmi;
-+	struct work_struct		usb_phy_work;
-+	struct notifier_block		nb;
-+	enum usb3phy_mode		mode;
-+	struct mutex			lock;
++&usb3phy {
++	status = "okay";
 +};
 +
-+static int rockchip_usb3phy_reset(struct rockchip_usb3phy *usb3phy, bool reset, enum usb3phy_mode mode)
-+{
-+	if (reset == true) {
-+		if ((mode == PHY_USB2) | (mode == PHY_COMBO)){
-+			clk_disable_unprepare(usb3phy->clk_otg);
-+			reset_control_assert(usb3phy->utmi_rst);
-+			reset_control_assert(usb3phy->u2por_rst);
-+		}
-+		if ((mode == PHY_USB3) | (mode == PHY_COMBO)){
-+			clk_disable_unprepare(usb3phy->clk_pipe);
-+			reset_control_assert(usb3phy->pipe_rst);
-+			reset_control_assert(usb3phy->u3por_rst);
-+		}
-+	}
-+
-+	if (reset == false) {
-+		if ((mode == PHY_USB2) | (mode == PHY_COMBO)){
-+			reset_control_deassert(usb3phy->u2por_rst);
-+			udelay(1000);
-+			clk_prepare_enable(usb3phy->clk_otg);
-+			udelay(500);
-+			reset_control_deassert(usb3phy->utmi_rst);
-+		}
-+		if ((mode == PHY_USB3) | (mode == PHY_COMBO)){
-+			reset_control_deassert(usb3phy->u3por_rst);
-+			udelay(500);
-+			clk_prepare_enable(usb3phy->clk_pipe);
-+			udelay(1000);
-+			reset_control_deassert(usb3phy->pipe_rst);
-+		}
-+	}
-+
-+	return 0;
-+}
-+
-+static void rockchip_usb3phy_work(struct work_struct *work)
-+{
-+	struct rockchip_usb3phy *usb3phy = container_of(work, struct rockchip_usb3phy, usb_phy_work);
-+	struct rockchip_usb3phy_port *port_pipe = &usb3phy->port_pipe;
-+	struct rockchip_usb3phy_port *port_utmi = &usb3phy->port_utmi;
-+	int usb2, usb3, tmp, state;
-+
-+	mutex_lock(&usb3phy->lock);
-+
-+	regmap_read(port_pipe->regmap, USB3_STATUS_REG, &tmp);
-+	usb3 = tmp & USB3_CONN_BIT;
-+	regmap_read(usb3phy->regmap, USB2_STATUS_REG, &tmp);
-+	usb2 = ((tmp & USB2_CONN_BIT) ^ USB2_CONN_BIT ) >> USB2_STATE_SHIFT;
-+	state = (usb3 | usb2);
-+	dev_dbg(usb3phy->dev, "mode %i, state %i\n", usb3phy->mode, state);
-+
-+	if (usb3phy->mode == state)
-+		/* not our device */
-+		goto out;
-+
-+	if (usb2) {
-+		usb3phy->mode = PHY_USB2;
-+		dev_dbg(usb3phy->dev, "usb3phy utmi polling started\n");
-+		regmap_read_poll_timeout(usb3phy->regmap, USB2_STATUS_REG, tmp, (tmp & USB2_CONN_BIT), 2000, 0);
-+		state = ((tmp & USB2_CONN_BIT) ^ USB2_CONN_BIT ) >> USB2_STATE_SHIFT;
-+		dev_dbg(usb3phy->dev, "usb3phy utmi polling completed\n");
-+
-+		atomic_notifier_call_chain(&port_utmi->phy.notifier, 0, NULL);
-+		goto out;
-+	}
-+
-+	if (usb3) {
-+		dev_dbg(usb3phy->dev, "usb3phy pipe polling started\n");
-+		regmap_read_poll_timeout(port_pipe->regmap, USB3_STATUS_REG, tmp, !(tmp & USB3_CONN_BIT), 2000, 0);
-+		dev_dbg(usb3phy->dev, "usb3phy pipe polling completed\n");
-+
-+		rockchip_usb3phy_reset(usb3phy, true, PHY_USB3);
-+		udelay(500);
-+		rockchip_usb3phy_reset(usb3phy, false, PHY_USB3);
-+		udelay(500);
-+
-+		goto out;
-+	}
-+
-+out:
-+	usb3phy->mode = PHY_IDLE;
-+	mutex_unlock(&usb3phy->lock);
-+	return;
-+}
-+
-+static int rockchip_usb3phy_parse_dt(struct rockchip_usb3phy *usb3phy, struct device *dev)
-+{
-+	usb3phy->clk_pipe = devm_clk_get(dev, "usb3phy-pipe");
-+	if (IS_ERR(usb3phy->clk_pipe)) {
-+		dev_err(dev, "could not get usb3phy pipe clock\n");
-+		return PTR_ERR(usb3phy->clk_pipe);
-+	}
-+
-+	usb3phy->clk_otg = devm_clk_get(dev, "usb3phy-otg");
-+	if (IS_ERR(usb3phy->clk_otg)) {
-+		dev_err(dev, "could not get usb3phy otg clock\n");
-+		return PTR_ERR(usb3phy->clk_otg);
-+	}
-+
-+	usb3phy->u2por_rst = devm_reset_control_get(dev, "usb3phy-u2-por");
-+	if (IS_ERR(usb3phy->u2por_rst)) {
-+		dev_err(dev, "no usb3phy-u2-por reset control found\n");
-+		return PTR_ERR(usb3phy->u2por_rst);
-+	}
-+
-+	usb3phy->u3por_rst = devm_reset_control_get(dev, "usb3phy-u3-por");
-+	if (IS_ERR(usb3phy->u3por_rst)) {
-+		dev_err(dev, "no usb3phy-u3-por reset control found\n");
-+		return PTR_ERR(usb3phy->u3por_rst);
-+	}
-+
-+	usb3phy->pipe_rst = devm_reset_control_get(dev, "usb3phy-pipe-mac");
-+	if (IS_ERR(usb3phy->pipe_rst)) {
-+		dev_err(dev, "no usb3phy_pipe_mac reset control found\n");
-+		return PTR_ERR(usb3phy->pipe_rst);
-+	}
-+
-+	usb3phy->utmi_rst = devm_reset_control_get(dev, "usb3phy-utmi-mac");
-+	if (IS_ERR(usb3phy->utmi_rst)) {
-+		dev_err(dev, "no usb3phy-utmi-mac reset control found\n");
-+		return PTR_ERR(usb3phy->utmi_rst);
-+	}
-+
-+	usb3phy->pipe_apb_rst = devm_reset_control_get(dev, "usb3phy-pipe-apb");
-+	if (IS_ERR(usb3phy->pipe_apb_rst)) {
-+		dev_err(dev, "no usb3phy-pipe-apb reset control found\n");
-+		return PTR_ERR(usb3phy->pipe_apb_rst);
-+	}
-+
-+	usb3phy->utmi_apb_rst = devm_reset_control_get(dev, "usb3phy-utmi-apb");
-+	if (IS_ERR(usb3phy->utmi_apb_rst)) {
-+		dev_err(dev, "no usb3phy-utmi-apb reset control found\n");
-+		return PTR_ERR(usb3phy->utmi_apb_rst);
-+	}
-+
-+	return 0;
-+}
-+
-+static int rockchip_usb3phy_notify(struct notifier_block *nb, unsigned long action, void *data)
-+{
-+	struct rockchip_usb3phy *usb3phy = container_of(nb, struct rockchip_usb3phy, nb);
-+	switch (action) {
-+	case USB_DEVICE_ADD:
-+		dev_dbg(usb3phy->dev, "notified of device add\n");
-+		if (!(mutex_is_locked(&usb3phy->lock)))
-+			schedule_work(&usb3phy->usb_phy_work);
-+		return NOTIFY_OK;
-+	}
-+	return NOTIFY_DONE;
-+}
-+
-+static int rockchip_usb3phy_init(struct usb_phy *phy)
-+{
-+	struct rockchip_usb3phy_port *usb3phy_port = container_of(phy, struct rockchip_usb3phy_port, phy);
-+	struct rockchip_usb3phy *usb3phy = usb3phy_port->parent;
-+
-+	dev_warn(usb3phy->dev, "usb3phy_init %s\n", phy->label);
-+	if (phy->type == USB_PHY_TYPE_USB3){
-+		rockchip_usb3phy_reset(usb3phy, false, PHY_USB3);
-+		udelay(100); /* let it stabilize */
-+		usb3phy->nb.notifier_call = rockchip_usb3phy_notify;
-+		usb_register_notify(&usb3phy->nb);
-+	}
-+	if (phy->type == USB_PHY_TYPE_USB2){
-+		rockchip_usb3phy_reset(usb3phy, false, PHY_USB2);
-+		udelay(100); /* let it stabilize */
-+	}
-+
-+	return 0;
-+}
-+
-+static void rockchip_usb3phy_shutdown(struct usb_phy *phy)
-+{
-+	struct rockchip_usb3phy_port *usb3phy_port = container_of(phy, struct rockchip_usb3phy_port, phy);
-+	struct rockchip_usb3phy *usb3phy = usb3phy_port->parent;
-+
-+	dev_dbg(usb3phy->dev, "usb3phy_shutdown\n");
-+	if (phy->type == USB_PHY_TYPE_USB3){
-+		rockchip_usb3phy_reset(usb3phy, false, PHY_USB3);
-+		usb_unregister_notify(&usb3phy->nb);
-+	}
-+	if (phy->type == USB_PHY_TYPE_USB2){
-+		rockchip_usb3phy_reset(usb3phy, false, PHY_USB2);
-+	}
-+}
-+
-+static const struct regmap_config rockchip_usb3phy_port_regmap_config = {
-+	.reg_bits = 32,
-+	.val_bits = 32,
-+	.reg_stride = 4,
-+	.max_register = 0x1000,
++&usb3phy_utmi {
++	status = "okay";
 +};
 +
-+static const struct regmap_config rockchip_usb3phy_regmap_config = {
-+	.reg_bits = 32,
-+	.val_bits = 32,
-+	.reg_stride = 4,
-+	.max_register = 0x1000,
-+	.write_flag_mask = REG_WRITE_MASK,
++&usb3phy_pipe {
++	status = "okay";
 +};
 +
-+static int rockchip_usb3phy_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct device_node *np = dev->of_node;
-+	struct rockchip_usb3phy *usb3phy;
-+	struct rockchip_usb3phy_port *usb3phy_port;
-+	struct regmap_config regmap_config = rockchip_usb3phy_regmap_config;
-+	struct regmap_config regmap_port_config = rockchip_usb3phy_port_regmap_config;
-+	const struct of_device_id *match;
-+	void __iomem *base;
-+	int ret;
-+
-+	match = of_match_device(dev->driver->of_match_table, dev);
-+	if (!match) {
-+		dev_err(dev, "phy node not assigned\n");
-+		return -EINVAL;
-+	}
-+
-+	if (of_node_name_eq(np, "usb3-phy")) {
-+		dev_dbg(dev, "Probe usb3phy main block\n");
-+
-+		usb3phy = devm_kzalloc(dev, sizeof(*usb3phy), GFP_KERNEL);
-+		if (!usb3phy)
-+			return -ENOMEM;
-+
-+		ret = rockchip_usb3phy_parse_dt(usb3phy, dev);
-+		if (ret) {
-+			dev_err(dev, "parse dt failed %i\n", ret);
-+			return ret;
-+		}
-+
-+		base = devm_of_iomap(dev, np, 0, NULL);
-+		if (IS_ERR(base)) {
-+			dev_err(dev, "failed port ioremap\n");
-+			return PTR_ERR(base);
-+		}
-+
-+		regmap_config.name = np->name;
-+
-+		usb3phy->regmap = devm_regmap_init_mmio(dev, base, &regmap_config);
-+		if (IS_ERR(usb3phy->regmap)) {
-+			dev_err(dev, "regmap init failed\n");
-+			return PTR_ERR(usb3phy->regmap);
-+		}
-+
-+		usb3phy->dev = dev;
-+		platform_set_drvdata(pdev, usb3phy);
-+
-+		/* place block in reset */
-+		reset_control_assert(usb3phy->pipe_rst);
-+		reset_control_assert(usb3phy->utmi_rst);
-+		reset_control_assert(usb3phy->u3por_rst);
-+		reset_control_assert(usb3phy->u2por_rst);
-+		reset_control_assert(usb3phy->pipe_apb_rst);
-+		reset_control_assert(usb3phy->utmi_apb_rst);
-+
-+		udelay(20);
-+
-+		/* take apb interface out of reset */
-+		reset_control_deassert(usb3phy->utmi_apb_rst);
-+		reset_control_deassert(usb3phy->pipe_apb_rst);
-+
-+		usb3phy->mode = PHY_IDLE;
-+		INIT_WORK(&usb3phy->usb_phy_work, rockchip_usb3phy_work);
-+		dev_dbg(dev, "Completed usb3phy core probe \n");
-+
-+		return devm_of_platform_populate(&pdev->dev);
-+	}
-+
-+	/* probe the actual ports */
-+	usb3phy = platform_get_drvdata(of_find_device_by_node(np->parent));
-+
-+	if (of_node_name_eq(np, "utmi")) {
-+		usb3phy_port = &usb3phy->port_utmi;
-+		usb3phy_port->phy.label	= "usb2-phy";
-+		usb3phy_port->phy.type	= USB_PHY_TYPE_USB2;
-+	}
-+	else if (of_node_name_eq(np, "pipe")) {
-+		usb3phy_port = &usb3phy->port_pipe;
-+		usb3phy_port->phy.label	= "usb3-phy";
-+		usb3phy_port->phy.type	= USB_PHY_TYPE_USB3;
-+	}
-+	else {
-+		dev_err(dev, "unknown child node port type %s\n", np->name);
-+		return -EINVAL;
-+	}
-+
-+	usb3phy_port->dev = dev;
-+
-+	base = devm_of_iomap(dev, np, 0, NULL);
-+	if (IS_ERR(base)) {
-+		dev_err(dev, "failed port ioremap\n");
-+		return PTR_ERR(base);
-+	}
-+
-+	regmap_port_config.name = np->name;
-+
-+	usb3phy_port->regmap = devm_regmap_init_mmio(dev, base, &regmap_port_config);
-+	if (IS_ERR(usb3phy_port->regmap)) {
-+		dev_err(dev, "regmap init failed\n");
-+		return PTR_ERR(usb3phy_port->regmap);
-+	}
-+
-+	usb3phy_port->phy.dev = dev;
-+	usb3phy_port->phy.init = rockchip_usb3phy_init;
-+	usb3phy_port->phy.shutdown = rockchip_usb3phy_shutdown;
-+	usb3phy_port->parent = usb3phy;
-+
-+	ret = usb_add_phy_dev(&usb3phy_port->phy);
-+	if (ret) {
-+		dev_err(dev, "add usb phy failed %i\n", ret);
-+		return ret;
-+	}
-+
-+	mutex_init(&usb3phy->lock);
-+
-+	dev_info(dev, "Completed usb3phy %s port init\n", usb3phy_port->phy.label);
-+	return 0;
-+}
-+
-+
-+static int rockchip_usb3phy_remove(struct platform_device *pdev)
-+{
-+	struct rockchip_usb3phy *usb3phy = platform_get_drvdata(pdev);
-+	struct rockchip_usb3phy_port *port_pipe = &usb3phy->port_pipe;
-+	struct rockchip_usb3phy_port *port_utmi = &usb3phy->port_utmi;
-+
-+	if (&port_pipe->phy.head)
-+		usb_remove_phy(&port_pipe->phy);
-+	if (&port_utmi->phy.head)
-+		usb_remove_phy(&port_utmi->phy);
-+
-+	reset_control_assert(usb3phy->pipe_apb_rst);
-+	reset_control_assert(usb3phy->utmi_apb_rst);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id rockchip_usb3phy_dt_ids[] = {
-+	{ .compatible = "rockchip,rk3328-usb3phy", },
-+	{ .compatible = "rockchip,rk3328-usb3phy-utmi", },
-+	{ .compatible = "rockchip,rk3328-usb3phy-pipe", },
-+	{ /* sentinel */ }
-+};
-+
-+MODULE_DEVICE_TABLE(of, rockchip_usb3phy_dt_ids);
-+
-+static struct platform_driver rockchip_usb3phy_driver = {
-+	.probe		= rockchip_usb3phy_probe,
-+	.remove		= rockchip_usb3phy_remove,
-+	.driver		= {
-+		.name	= "rockchip-usb3-phy",
-+		.of_match_table = rockchip_usb3phy_dt_ids,
-+	},
-+};
-+
-+module_platform_driver(rockchip_usb3phy_driver);
-+
-+MODULE_AUTHOR("Peter Geis <pgwipeout@gmail.com>");
-+MODULE_DESCRIPTION("Rockchip USB 3 PHY driver");
-+MODULE_LICENSE("GPL v2");
+ &vop {
+ 	status = "okay";
+ };
 -- 
 2.25.1
 
