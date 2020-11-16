@@ -7,51 +7,49 @@ X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SIGNED_OFF_BY,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 44705C5519F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 14:16:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D53C9C4742C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 14:16:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A66A4206B5
+	by mail.kernel.org (Postfix) with ESMTPS id 714E9206A1
 	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Nov 2020 14:16:26 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="H9Ma7R1h"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A66A4206B5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Qz/yUKU0"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 714E9206A1
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7cR8xYUUnK5fRMRZVYkroYfwUWn5MfSEPnyfa4LBwJ0=; b=H9Ma7R1h/vFLQb8Non6VT+CBgb
-	SvT42TLRwCG+JpvzIoXn7OOwCOEVx9YVcSWlTvX6/FFJ54NcJLnzzExOYiKp4h0EAjLz8nEMAQTQo
-	EqDKfcIYf83TsEnMrIuaZHpqS67nOJ0BUDnJ01rAXxzRcFA3g+HTimiuGwTqgM7I+XF0Y6hZ4OGQC
-	ANogKAxe0ifyHoDwWSofsgCSq+alVYINLj9iWCYST+KaU/N/5lSAkEs5k2hL6FxBRYXbldxEgoDlt
-	BXjqV7lkDsCJUg1/XmPVUk0jqUd+i7My9PrBzcUipoFGYA9uhgv/L0D2MvMuGl78HfodOQ26DxudK
-	Op6qPjFQ==;
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=hu7Ar8PbdwyRjUoWyHIelDxGUMPsq+CLU575+h63CPw=; b=Qz/yUKU0gqz8emV0P8KqPjbL8y
+	veis6dB9mNpOIonKej6HTqox9vHVzRKDRALxbqSJ3w8g2Zhk5DlJbMbaP3BWVtWXTaAON+eH6U3Az
+	XPyFbuoDJNnD/36e6tSyhG5y3DZ37n2BAB4OimZp1tELiRzUpiP9VmDASvs0+6oopWfSQSps1FTLq
+	vVlFA4cUziO4bhzPdJtLJ5thHis4nroAjyCk94rMJ0ULu5B7sHnjOszlYM+bsph6wbke8Tp7AB1dX
+	uIL4fCxs6u4yHKSX9q8ANl9L9naM3vBtpZyg9LkEeFLQIC803/qDN5Q5gqAipxS43lXGU2syhUP0r
+	l6AxMobQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kefIt-0007Pf-W2; Mon, 16 Nov 2020 14:16:24 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kefIr-0007Oj-JE; Mon, 16 Nov 2020 14:16:21 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kefIq-0007Ni-8T
- for linux-rockchip@lists.infradead.org; Mon, 16 Nov 2020 14:16:21 +0000
+ id 1kefIp-0007Nf-MX
+ for linux-rockchip@lists.infradead.org; Mon, 16 Nov 2020 14:16:20 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id A2F101F46EB9
+ (Authenticated sender: dafna) with ESMTPSA id 3F6721F46EB7
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: hjc@rock-chips.com,
 	heiko@sntech.de
-Subject: [PATCH] drm/rockchip: for error print, use the correct device pointer
-Date: Mon, 16 Nov 2020 15:16:09 +0100
-Message-Id: <20201116141609.26719-2-dafna.hirschfeld@collabora.com>
+Subject: [PATCH] drm/rockchip: fix typo in Kconfig 's/HDMI/dsi/'
+Date: Mon, 16 Nov 2020 15:16:08 +0100
+Message-Id: <20201116141609.26719-1-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20201116141609.26719-1-dafna.hirschfeld@collabora.com>
-References: <20201116141609.26719-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201116_091620_416979_BA95A11D 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20201116_091619_823854_75691EA1 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,27 +70,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-There is a use of DRM_DEV_ERROR(dsi->dev,..)
-which should be replaced with DRM_DEV_ERROR(dev, ..)
-since dsi->dev is set later
+In the help of ROCKCHIP_DW_MIPI_DSI it said
+it is a HDMI driver instead of a dsi driver.
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 2 +-
+ drivers/gpu/drm/rockchip/Kconfig | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 542dcf7eddd6..a610335eaa6e 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -1089,7 +1089,7 @@ static int dw_mipi_dsi_rockchip_probe(struct platform_device *pdev)
- 
- 	dsi->grf_regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
- 	if (IS_ERR(dsi->grf_regmap)) {
--		DRM_DEV_ERROR(dsi->dev, "Unable to get rockchip,grf\n");
-+		DRM_DEV_ERROR(dev, "Unable to get rockchip,grf\n");
- 		return PTR_ERR(dsi->grf_regmap);
- 	}
+diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+index 310aa1546893..cb25c0e8fc9b 100644
+--- a/drivers/gpu/drm/rockchip/Kconfig
++++ b/drivers/gpu/drm/rockchip/Kconfig
+@@ -49,7 +49,7 @@ config ROCKCHIP_DW_MIPI_DSI
+ 	select GENERIC_PHY_MIPI_DPHY
+ 	help
+ 	  This selects support for Rockchip SoC specific extensions
+-	  for the Synopsys DesignWare HDMI driver. If you want to
++	  for the Synopsys DesignWare dsi driver. If you want to
+ 	  enable MIPI DSI on RK3288 or RK3399 based SoC, you should
+ 	  select this option.
  
 -- 
 2.17.1
