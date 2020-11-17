@@ -2,81 +2,86 @@ Return-Path: <SRS0=Nc53=EX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 18A78C2D0E4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2020 19:45:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D6161C64E7C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2020 19:46:02 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7B1E12222E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2020 19:45:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 8274222240
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Nov 2020 19:46:02 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1f89kHUB";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="bEGG7+pW"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7B1E12222E
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ZwaICyrw";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="oKkdf4FD"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8274222240
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=n4HYaZnQyC7yfcL3WgzZ/OnowBHnHDYrg+Z3MbCjzUY=; b=1f89kHUBO7wcOD6nhzD8NssTT3
-	w6ThsJAEwOpqliNUyzGqEFqYRIEMvgr2mq3LdEFES7X7BSU6CI0zcOC+dta8VZOo39qi7wz79/SEE
-	tOiEKLUiuMDA3wa4EQDgMX4Sy4pRJxrrDMt1yKC8SZJN1ZbDqx74u6ek5JbQiyWLsZQDb1vWSRu5/
-	xm2OwGQSuMbmGQ1phG/0eN7UryRPkAXiLS0fz8ViAq7pF+Hou+HMyI48r5zOdeSLu0bJzSzdRecTe
-	Uxz2bZrGVM10NsS8v0cK0gRkmXfyQVeuwbQ2JvAwHBbtvETZ4KiQhtQ7yHKXPYJ+dCKe6CcrIjo+V
-	E3RJDH8w==;
+	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YTn3Gt2LXJFabv1zHqDVxf8sMsVgbm27xhncAhQBR3g=; b=ZwaICyrwdlOU3AFo8luHM2Q5Tj
+	SnFfMYlNzXHh8lYckshHt5I802aeEch/6uY5yDOHkR+x+rzWvs5guDaFlQY0S+htMntQj7+yVxKfk
+	JL5H0pmUAX79KxDFOsjDMXYRrKVtHPitzkDYGZ2rrEJUt9If+/ajtaQXwUteSCHZ1JcHtobiz7DJ5
+	e5FdDjJev93jmVphOEe82GJca0a1W+TC6yXSvGEngg0t63aIafeBNS8K5dLLDyqE66iL+YtL29tM5
+	rvBhgHimM6vyLN3TVbcdb4drEZruqBeSSxPyuH0+dbdfEO0kTK4RGabB6QqMw5FUhz78ojEzYbcO/
+	4bLLCmsQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kf6vF-00033v-5S; Tue, 17 Nov 2020 19:45:49 +0000
+	id 1kf6vL-00036T-Bj; Tue, 17 Nov 2020 19:45:55 +0000
 Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kf6ul-0002sv-Av; Tue, 17 Nov 2020 19:45:21 +0000
-Received: by mail-ed1-x544.google.com with SMTP id t11so23696061edj.13;
- Tue, 17 Nov 2020 11:45:17 -0800 (PST)
+ id 1kf6ul-0002tN-HJ; Tue, 17 Nov 2020 19:45:21 +0000
+Received: by mail-ed1-x544.google.com with SMTP id ay21so23798168edb.2;
+ Tue, 17 Nov 2020 11:45:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=7FuTWq4BSG35jYcVC2y/aAokRjHupx3BOtYk6g9sB7k=;
- b=bEGG7+pWjohHYGCns+rU7864961TKkiTrUm42uvT6LxfEO1YbnvJekuitA/BWkBKCo
- qsN7cTlm7OY2hRiTAQmLfnUp5/8RZkKp3Z1cgY6qHSkU2RUHKqAoAI1oAj92qbp+41pe
- b6MjEliAQcKXdDVxBibvY1dzSUPVoAUuBdgwaCY1IAT2zds2yNeNwWnKqoWmVMTxDpmU
- Akl7TpvzvH5UZnc2SzUfp1e4+K8aIFpDLyllv88lW4vf7WvlidV+fOa2lO/WErCtz9Eb
- wrQ/xv8kRnYDHyi6GvBxmPENKiQuoaJ2MA8DAOb2WxOwi6mr7o/5gY81Y8VYrIQ0wr9s
- 1piQ==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=qLZ92o7SKXRNCO4EpTsjSi6r9gNUjFUim5asS0HF/w0=;
+ b=oKkdf4FDYOBcmRjaWF0djFWKvkEqMKLs8V80Y1M3AuCZSdPVZPQadXdiS6A1MtHNlU
+ tON1BGPFwyeiGJ1066SUnIc3fqf0Bfv4cjJF8DLF1zA0tHI7XMZcOIiO5+ZzzaGh1jgZ
+ tkwRnw4K2HLlTi4Rgr1ErjdxqsqGgJ3RqPaz+IchvRiEGvuLadjlSvx++D3mccEGuKGQ
+ 3w5aoTYSVWBq+V3BupHllZOk4/0hxww1fmflisiadpt+RRH51V0hqOn+oOILJKje73nu
+ L5xBl0gUosjFuWFxdgqFqhJE3jffW4bvC/f7No6YZMBpSJu1ijPc8o0jdH+m3aB4ki1a
+ Vfmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=7FuTWq4BSG35jYcVC2y/aAokRjHupx3BOtYk6g9sB7k=;
- b=KZHw+akaqTTKXBIjGChesAb69EjMlMUit5lPTGhzvB4Fe5wo+pLnoKN6l7JORizPBV
- a142xIun/gXWiU15X5iU095mk3x89KXEb8+f5yw1mw19DdYQvX8axLCouTYNX+JPsPqj
- swwAPdu+thsTjP4bERFVXDJVYExpAweD1lHuRQO4mKa0QaOGXF+Qxu4xFN+6EyNC0V23
- MKTCfASdCulo3RhBE8dwhl4s5Xv66mIDDrWepIiXLk5wd5gZ/C6RpA6oEASTIYoj1RRM
- BB9JTLNDOWJw3+qGzrRxk3qqMrgrWm+0fiY7YdCw09vCpPJ2UDIboyMZnwQHcH82p+zg
- fRoQ==
-X-Gm-Message-State: AOAM531HmL2LwseXD6m2ZTVcAUsaiNzF/u2zs4xWVz4qu0qlKjiYK0nO
- L1Tv8Kka6sWlK4+3E0TPDxo=
-X-Google-Smtp-Source: ABdhPJwioSe6dJaxInh8X3IisG9hWd9obKO0KYfxQKA8qdRvbEI9nQjadusnXlOz4yN8QPtxAn5+Fg==
-X-Received: by 2002:aa7:df82:: with SMTP id b2mr21560851edy.251.1605642316279; 
- Tue, 17 Nov 2020 11:45:16 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=qLZ92o7SKXRNCO4EpTsjSi6r9gNUjFUim5asS0HF/w0=;
+ b=JWMu5fWlEWfmZygdbQGb6WX2FrVitx5dr5VMgY4Bfeb0HLt/5Mq7O+pTEi4EgF8ZXn
+ lrk2QUg/8vZfDmKtpR43qAUddRDLw0J/llvy2yhNq5E0tYhLRf+tu71p3D/dIX+4+b9R
+ 7DiglUUDQiHTAMqxbak34VXiEEHmEke1QhT9h3nb8FLL/0IbSzQuOoml+SBzHRmk5Kkt
+ AaA4vbmrzo1ukk60BjJDHzuXKShR5hgxauLPM735FuROGZM4dhAcEJLKQNO2lfT4J0q3
+ AESjeqdlclnfesKTd5uH8kgpmkE7kTF0GNacUjJJP/QJe1aHqQTTESU+6ojwEEF99jr8
+ 7dSw==
+X-Gm-Message-State: AOAM531F02M/EgvXdAYcMGxUGwjh7oK+bxCSUyjgByU356z7OXVRhgxi
+ TwjSzUnM3jfM8GttagpNKLY=
+X-Google-Smtp-Source: ABdhPJxTXIBU54JqmMAwvF6EOMr/MiPBAO9XomS/YrWcH+/VIo1h+Y3x2QhXOy3CZ7L2oxRaE1WIFA==
+X-Received: by 2002:a05:6402:2d7:: with SMTP id
+ b23mr21720443edx.196.1605642318630; 
+ Tue, 17 Nov 2020 11:45:18 -0800 (PST)
 Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id w2sm727972ejc.109.2020.11.17.11.45.14
+ by smtp.gmail.com with ESMTPSA id w2sm727972ejc.109.2020.11.17.11.45.17
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 17 Nov 2020 11:45:15 -0800 (PST)
+ Tue, 17 Nov 2020 11:45:18 -0800 (PST)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
-Subject: [PATCH v4 0/7] Enable rk3066a HDMI sound
-Date: Tue, 17 Nov 2020 20:45:00 +0100
-Message-Id: <20201117194507.14843-1-jbx6244@gmail.com>
+Subject: [PATCH v4 2/7] clk: rockchip: fix i2s gate bits on rk3066 and rk3188
+Date: Tue, 17 Nov 2020 20:45:02 +0100
+Message-Id: <20201117194507.14843-3-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
+In-Reply-To: <20201117194507.14843-1-jbx6244@gmail.com>
+References: <20201117194507.14843-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201117_144519_494464_BE3E371B 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20201117_144519_689921_8037E280 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,36 +105,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-First fix some legacy things in clk-rk3188.c that was never updated,
-because probably nobody used rk3066a I2S before in the mainline kernel.
-Update the rk3066a HDMI documents with a #sound-dai-cells property.
-Include the code for sound in the HDMI driver.
-Add a simple-sound-card compatible node to rk3066a.dtsi,
-because I2S0 and HDMI TX are connected internally.
-And as last enable rk3066a HDMI sound in the rk3066a-mk808.dts file.
+The Rockchip PX2/RK3066 uses these bits in CRU_CLKGATE7_CON:
 
-Johan Jonker (6):
-  clk: rockchip: add CLK_SET_RATE_PARENT to sclk for rk3066a i2s and
-    uart clocks
-  clk: rockchip: fix i2s gate bits on rk3066 and rk3188
-  dt-bindings: display: add #sound-dai-cells property to rockchip rk3066
-    hdmi
-  ARM: dts: rockchip: rk3066a: add #sound-dai-cells to hdmi node
-  ARM: dts: rockchip: add hdmi-sound node to rk3066a.dtsi
-  ARM: dts: rockchip: enable hdmi_sound and i2s0 for rk3066a-mk808
+hclk_i2s_8ch_gate_en  bit 4 (dtsi: i2s0)
+hclk_i2s0_2ch_gate_en bit 2 (dtsi: i2s1)
+hclk_i2s1_2ch_gate_en bit 3 (dtsi: i2s2)
 
-Zheng Yang (1):
-  drm: rockchip: add sound support to rk3066 hdmi driver
+The Rockchip PX3/RK3188 uses this bit in CRU_CLKGATE7_CON:
 
- .../display/rockchip/rockchip,rk3066-hdmi.yaml     |   4 +
- arch/arm/boot/dts/rk3066a-mk808.dts                |   8 +
- arch/arm/boot/dts/rk3066a.dtsi                     |  17 ++
- drivers/clk/rockchip/clk-rk3188.c                  |  35 +--
- drivers/gpu/drm/rockchip/Kconfig                   |   2 +
- drivers/gpu/drm/rockchip/rk3066_hdmi.c             | 272 ++++++++++++++++++++-
- 6 files changed, 320 insertions(+), 18 deletions(-)
+hclk_i2s_2ch_gate_en  bit 2 (dtsi: i2s0)
 
---
+The bits got somehow mixed up in the clk-rk3188.c file.
+The labels in the dtsi files are not suppose to change.
+The sclk and hclk names should match for
+"trace_event=clk_disable,clk_enable",
+so remove GATE HCLK_I2S0 from the common clock tree and
+fix the bits in the rk3066 and rk3188 clock tree.
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ drivers/clk/rockchip/clk-rk3188.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3188.c b/drivers/clk/rockchip/clk-rk3188.c
+index db8c58813..0b76ad34d 100644
+--- a/drivers/clk/rockchip/clk-rk3188.c
++++ b/drivers/clk/rockchip/clk-rk3188.c
+@@ -449,7 +449,6 @@ static struct rockchip_clk_branch common_clk_branches[] __initdata = {
+ 
+ 	/* hclk_cpu gates */
+ 	GATE(HCLK_ROM, "hclk_rom", "hclk_cpu", 0, RK2928_CLKGATE_CON(5), 6, GFLAGS),
+-	GATE(HCLK_I2S0, "hclk_i2s0", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
+ 	GATE(HCLK_SPDIF, "hclk_spdif", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 1, GFLAGS),
+ 	GATE(0, "hclk_cpubus", "hclk_cpu", 0, RK2928_CLKGATE_CON(4), 8, GFLAGS),
+ 	/* hclk_ahb2apb is part of a clk branch */
+@@ -634,8 +633,9 @@ static struct rockchip_clk_branch rk3066a_clk_branches[] __initdata = {
+ 			RK2928_CLKGATE_CON(0), 12, GFLAGS,
+ 			&rk3066a_i2s2_fracmux),
+ 
+-	GATE(HCLK_I2S1, "hclk_i2s1", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 3, GFLAGS),
+-	GATE(HCLK_I2S2, "hclk_i2s2", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 4, GFLAGS),
++	GATE(HCLK_I2S0, "hclk_i2s0", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 4, GFLAGS),
++	GATE(HCLK_I2S1, "hclk_i2s1", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
++	GATE(HCLK_I2S2, "hclk_i2s2", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 3, GFLAGS),
+ 	GATE(HCLK_CIF1, "hclk_cif1", "hclk_cpu", 0, RK2928_CLKGATE_CON(6), 6, GFLAGS),
+ 	GATE(HCLK_HDMI, "hclk_hdmi", "hclk_cpu", 0, RK2928_CLKGATE_CON(4), 14, GFLAGS),
+ 
+@@ -728,6 +728,7 @@ static struct rockchip_clk_branch rk3188_clk_branches[] __initdata = {
+ 			RK2928_CLKGATE_CON(0), 10, GFLAGS,
+ 			&rk3188_i2s0_fracmux),
+ 
++	GATE(HCLK_I2S0, "hclk_i2s0", "hclk_cpu", 0, RK2928_CLKGATE_CON(7), 2, GFLAGS),
+ 	GATE(0, "hclk_imem0", "hclk_cpu", 0, RK2928_CLKGATE_CON(4), 14, GFLAGS),
+ 	GATE(0, "hclk_imem1", "hclk_cpu", 0, RK2928_CLKGATE_CON(4), 15, GFLAGS),
+ 
+-- 
 2.11.0
 
 
