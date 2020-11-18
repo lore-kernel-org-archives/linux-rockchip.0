@@ -8,17 +8,17 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1583C63697
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 13:59:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D25D5C63697
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 13:59:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 274732078D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 13:59:46 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 5F99A2078D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 13:59:51 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="QqmYFNlN";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="YxD4BW5c"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 274732078D
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="XKMdwXIp";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WzfS5ftW"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5F99A2078D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -27,62 +27,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tFRZcmm09f+bySRkwDK+BXk/Apb2pZkGV03wtC7blCc=; b=QqmYFNlNHJRM+dDQxj/SE6wNEv
-	WZBXmUqL8mERXMDjgWCUQVKi+J7s3hDS76B5PKiaCCgDF4OQXrZLZkXLuVZ8CdMgq/Zo+aAWIMT5i
-	qp3cFjspYEbS8ZUqOudiDw6joiWDcs7ERy8Ltw8BuK83EYC6rOSsiPvA9fji4+12xlCliRj9Sy/3h
-	eqLQWWD+8g1sjvwZEUy4UWQcf/Q28038JytoHOZ+zUTKdcTk6Ia+eT7cA2HZEbtt9G4sdUVYR3VM5
-	df7TiEjI9ZG8mmCaWRukNT0JoGZkLShiWywPM8xpVhzwrRn0QEpQHtktjzdFHN0A2DA4behRBYE9Y
-	Vr7iwbtw==;
+	bh=16gS6jjmYi2GTyyTwGt2V+tBmHCbfgjxVBgcxsqyQhw=; b=XKMdwXIpJq7aePBT9ALkyVikq7
+	tsIHPx0Sk613amj09GXbZyWUki/GyS9IM2pj7QgILLjd2CebUGNgIbxwPy6F25x7KxSgPC7ma/gl5
+	LsgtTpbnVI+qr4b7L0+5/igNNxTuTXOH4jBU1NHia1Li4ZxGPhzf7q9iUW92TZ2lYZWANAuXQVEts
+	pJTSBFbWWj3dU3ZKkxEunNjUoRAqSJgTd9OQ0quacDuLTfv8JlsXazZyi/2PqU/WZwqaX9+aYeyC4
+	HrT8iv5KLXgFOdRiBAFYlTxB6xbKm59sqlYIG4EuMHL6N22qFA0a/8AF815q2LVOgIN2r/QSQQYRd
+	KgW9levw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kfNzo-0001sp-Ne; Wed, 18 Nov 2020 13:59:40 +0000
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
+	id 1kfNzs-0001w8-Hy; Wed, 18 Nov 2020 13:59:44 +0000
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfNyr-0001SF-Un; Wed, 18 Nov 2020 13:58:42 +0000
-Received: by mail-ej1-x642.google.com with SMTP id o9so2920443ejg.1;
- Wed, 18 Nov 2020 05:58:38 -0800 (PST)
+ id 1kfNyr-0001Ry-P1; Wed, 18 Nov 2020 13:58:42 +0000
+Received: by mail-ej1-x641.google.com with SMTP id dk16so2829224ejb.12;
+ Wed, 18 Nov 2020 05:58:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=MNzWsDtU39BR4iFEfSJQ9mnoYu92ToJLMEGgLWUUrPw=;
- b=YxD4BW5cjmQdz4D/NWPOTYFDoj79erTso5jj6MSUrfUHf5OPHU//Y+UjP6rHQ8VYEi
- vBjQQBNvcP9cw+uaMWj5PTsXnqGwi+kVyf/BQa0kDaY381yNAEK3VpqAAZ093jnk/LMK
- uTtUZiMYKd8Yzkuafi0CZD6v8UN+ngYxLTCukSBE1wNJ/fl4NlZ4t+DWlUI+C/vjax69
- nouAaB5P0vcCRk3Ub6qTmGOojyV8lhP+JClrNBmQxficjyoktGm12RqQIMnkW051Za3x
- r2gagmHv/V2uVmIY3M0N9T9Dl9MIz3112FQOwMO59615Oe+Zq9Y611rb0gojGj2SwgSl
- KrLQ==
+ bh=/M45YtMWBHvWX7HJgiaCX3duzycDxACgeh25TxK15Eg=;
+ b=WzfS5ftWkRMUzolpSh5HCyN4cmp70soK14s87h+2M08gwqkRfSM1li/SeATS7MA8CA
+ n/sY36cmWUjV1SvmUdcnwVr88B4NjXCBd+xogRlmqDnN7DqOLXdQuISdhL57o6jwPxee
+ IawguAG9hPu0NW7aAXvvmQ1fW4WTfO8oOP7dScEJdK0PnNfDMu27k9qRigi+sJu4VF3b
+ Bxoik+iaaYnm1yT8K2F4x8HHZKjjlkbPX0lbLt7LpEQvd0TKi3Me4dyadjHW11Onb46M
+ xYjT0zw3/9G6+6KLQJwPFviF+W9Sf6NNTpaw0SBLiN2PLCWcq6h5hvUlWV8NfZRGOh+h
+ YOPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=MNzWsDtU39BR4iFEfSJQ9mnoYu92ToJLMEGgLWUUrPw=;
- b=joeyMPGHS7uxkCp2qdY82AKoq4BcdqWENcsEYXLtSppfQBC8GUQQ1ovTj/oskYG4VP
- KN6fKJ9FQfScEMj+cWfgslcGO1ffLpXaERJ/e0FyBJ3JAqRi0AhgX6yymfCQc8s42lDp
- OVEXx82qNDDo2HGQCvV31lOmEiFUpD2knoB9E+XIoR2AN6MVYJwCrMEI3m8/qcZGZSbV
- aodDc+2s3fsYTHv3KCYbNu9mq50T2oDdEcPvZxesaAnFVZW6pEMoS9nFj8+smMRWAW4V
- gZ7Cdbl48lLYyXlHcYiofsqhZzPw8Emz6L9A+wxqgpSaRpv84aSITcIkaJi2UppOSe1L
- jvbA==
-X-Gm-Message-State: AOAM533V/5Z1dP0ECEGaZGSLl3oO+tMGUR/f9TkGCQllbI9sEjJpmTKY
- ThxSvKLh48RpZq5ICJRKF+k=
-X-Google-Smtp-Source: ABdhPJyl5SpYNZp2HUHCYYO8l+T0uxxnjSi9rjNGR0CciOkx5xPSCoFR3ksws8b0r8sM04dsBaG9wA==
-X-Received: by 2002:a17:906:374a:: with SMTP id
- e10mr14400381ejc.246.1605707918063; 
- Wed, 18 Nov 2020 05:58:38 -0800 (PST)
-Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id cx6sm13721384edb.61.2020.11.18.05.58.37
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ bh=/M45YtMWBHvWX7HJgiaCX3duzycDxACgeh25TxK15Eg=;
+ b=rRZp88HW/DbReQoEx+vbtmJmPxtzKHIP2ZAFZYnzyBxRFdTl6+6svOpUWyqEF65c0q
+ ae89lQoORzcJSFT0TpDMJxVoW0QKDUoTdejvP3nHQbL5pWFnARBLKoDhoVc36j3E6AwC
+ Cdw/Uu1k3TTrhj0bZ6zTxrnqXRGbRK12htvfzEhAqaedcSLf+JFEibXEOaU9snkaS5Hc
+ F+TCH1e2jBMyGv/ckcLGnz7iYGrMJFUJuXqYWuqPLoq66LBor2aqmYomKoYeRfQPvg6t
+ pWCBRDO2xL7+srY8Aft8HQAErOxahf9V8ubLa8X1vQE5wF3XDTwIS8WIqIwJBupgecQY
+ JeOA==
+X-Gm-Message-State: AOAM533tZxDp0yA3KW0+N3yxdA+iZsB5YH9YnaOYhBO+En1ehLSuDIrS
+ fCg0Voj8Ny247rJ6EazE+Z0=
+X-Google-Smtp-Source: ABdhPJzjtTA6aSJDvhbh3mZRYc7KQzylCh451tX0U9bpOnGQQ2ddCN9W+I66OX1Z3ial8hqeM8QM/w==
+X-Received: by 2002:a17:907:4335:: with SMTP id
+ ni5mr20187759ejb.459.1605707917128; 
  Wed, 18 Nov 2020 05:58:37 -0800 (PST)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id cx6sm13721384edb.61.2020.11.18.05.58.36
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 18 Nov 2020 05:58:36 -0800 (PST)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
-Subject: [PATCH v5 7/7] ARM: dts: rockchip: enable hdmi_sound and i2s0 for
- rk3066a-mk808
-Date: Wed, 18 Nov 2020 14:58:22 +0100
-Message-Id: <20201118135822.9582-8-jbx6244@gmail.com>
+Subject: [PATCH v5 6/7] ARM: dts: rockchip: add hdmi-sound node to rk3066a.dtsi
+Date: Wed, 18 Nov 2020 14:58:21 +0100
+Message-Id: <20201118135822.9582-7-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20201118135822.9582-1-jbx6244@gmail.com>
 References: <20201118135822.9582-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201118_085842_045839_A2440236 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20201118_085841_853487_6733C373 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,33 +105,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make some noise with mk808. Enable the hdmi_sound node and
-add i2s0 as sound source for hdmi.
+Add hdmi-sound node to rk3066a.dtsi, so that it
+can be reused by boards with HDMI support.
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm/boot/dts/rk3066a-mk808.dts | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ arch/arm/boot/dts/rk3066a.dtsi | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rk3066a-mk808.dts b/arch/arm/boot/dts/rk3066a-mk808.dts
-index eed9e60cf..5fe74c097 100644
---- a/arch/arm/boot/dts/rk3066a-mk808.dts
-+++ b/arch/arm/boot/dts/rk3066a-mk808.dts
-@@ -116,6 +116,14 @@
+diff --git a/arch/arm/boot/dts/rk3066a.dtsi b/arch/arm/boot/dts/rk3066a.dtsi
+index 67fcb0dc9..f91ce3054 100644
+--- a/arch/arm/boot/dts/rk3066a.dtsi
++++ b/arch/arm/boot/dts/rk3066a.dtsi
+@@ -49,6 +49,22 @@
+ 		ports = <&vop0_out>, <&vop1_out>;
  	};
- };
  
-+&hdmi_sound {
-+	status = "okay";
-+};
++	hdmi_sound: hdmi-sound {
++		compatible = "simple-audio-card";
++		simple-audio-card,name = "HDMI";
++		simple-audio-card,format = "i2s";
++		simple-audio-card,mclk-fs = <256>;
++		status = "disabled";
 +
-+&i2s0 {
-+	status = "okay";
-+};
++		simple-audio-card,codec {
++			sound-dai = <&hdmi>;
++		};
 +
- &mmc0 {
- 	bus-width = <4>;
- 	cap-mmc-highspeed;
++		simple-audio-card,cpu {
++			sound-dai = <&i2s0>;
++		};
++	};
++
+ 	sram: sram@10080000 {
+ 		compatible = "mmio-sram";
+ 		reg = <0x10080000 0x10000>;
 -- 
 2.11.0
 
