@@ -2,71 +2,60 @@ Return-Path: <SRS0=K/1+=EY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 97641C63777
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 07:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8EB2DC5519F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 08:53:58 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1CB7A2223D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 07:18:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id AA2A82083E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 08:53:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="h95xukz3";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="fZw1+P6X"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1CB7A2223D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Dl1Y3aIa"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AA2A82083E
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=W0zM0FAqwKT6DmJv1SK6WecFowWf1lWVOZG+PUtJvtw=; b=h95xukz3ld1Wx95SobXWmscsd
-	vFxtSkncBixE+jIEcPjmvmSGRcBlcNI7xGpJ4KjTsvl+w4dDDf0huCCX6vqYPt7epIuqJUJ6r4D2g
-	gmZKhWL2eXIAJpEn9qsbcJn65wwFk4ypsMzW/BMCOXJ3F4K7atFdkH/rS/h2asq5j2qhZOQTU+24v
-	kuR0QANIbpy35CGjVJVwwjD8NMufn32Du/fX9nlXtA7fUf1U0bUjj/Tu36l1lAKdv3lgoLkIW3PHv
-	6SOpABg5l4sX87E/jZ+55OmUd2TpnY0QmJg9hXEtP44p32fkvywvBybKWYKsPVmv9j0MWY4mmtkfY
-	1JWH4WdzQ==;
+	 bh=bAGt1hT1TwcmjWARA3tzCddqXL7cozRAmzLhdhcEMbM=; b=Dl1Y3aIaEMbAYHjFvqrQO3gW5
+	5rf8/hnqhv3iKHdO5wGg+ocZW1GUgrugtFkvAHrCpLJW/SYFr7Iy9tVCGZiWYAypH7AR6Id55bLDn
+	FFWSReUxkjx+qmsWPVOMIuV10SbEszmiQNjnqIhLrqCbkJ1sw792T48PvwR+oF6P9xDRBRctlF5BT
+	OtdUfTneHw9Jcn+GdZBSrzQAbi6TxjmvuUaZ2whwSu50i94Rbf56y/fDAYvJcPh5oDLwQyQOqLhfk
+	riylMNMjc3iS2m/bnVJTXWsmEiJky34D+SGyshttTm9cNaqWZYN2n/rRBIq6tIgVDsWKx2rCD/i5S
+	ZRLXIJJcA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kfHjE-0005jc-Io; Wed, 18 Nov 2020 07:18:08 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kfJDk-0002IR-NQ; Wed, 18 Nov 2020 08:53:45 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfHii-0005Xh-5o; Wed, 18 Nov 2020 07:17:38 +0000
-Received: from wens.tw (mirror2.csie.ntu.edu.tw [140.112.30.76])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 3DC3E2467D;
- Wed, 18 Nov 2020 07:17:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1605683855;
- bh=q0JIDRhJdDz77Yyth8UbeOSGaE5MbbRHj8XZKD8tXFM=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fZw1+P6X2B5zX/qz2dggYW0PIEOQHKQh6EncGn90uPS3Vp6T91KuRtHdujYQdoN7z
- 8kmEtUF28L2+jo48we+gE/hjtz1w1tG+Rrxx9cOUZpBcGo5qXpTe4mL7bIcrBHMABv
- /SdjglvbibQ/U5caweKqFEJ2wxkF7i3hqbvW3lpE=
-Received: by wens.tw (Postfix, from userid 1000)
- id 894AD5FD69; Wed, 18 Nov 2020 15:17:31 +0800 (CST)
-From: Chen-Yu Tsai <wens@kernel.org>
+ id 1kfJA5-0000UK-TZ; Wed, 18 Nov 2020 08:50:08 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=diego.localnet)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1kfJ9o-00056u-Q4; Wed, 18 Nov 2020 09:49:40 +0100
+From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
 To: Shawn Lin <shawn.lin@rock-chips.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v2 2/4] dt-bindings: arm: rockchip: Add FriendlyARM NanoPi M4B
-Date: Wed, 18 Nov 2020 15:17:22 +0800
-Message-Id: <20201118071724.4866-3-wens@kernel.org>
-X-Mailer: git-send-email 2.29.1
-In-Reply-To: <20201118071724.4866-1-wens@kernel.org>
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Chen-Yu Tsai <wens@kernel.org>
+Subject: Re: [PATCH v2 1/4] PCI: rockchip: Make 'ep-gpios' DT property optional
+Date: Wed, 18 Nov 2020 09:49:40 +0100
+Message-ID: <1737702.WCGJIqnLLh@diego>
+In-Reply-To: <20201118071724.4866-2-wens@kernel.org>
 References: <20201118071724.4866-1-wens@kernel.org>
+ <20201118071724.4866-2-wens@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201118_021736_444467_94118830 
-X-CRM114-Status: GOOD (  15.18  )
+X-CRM114-CacheID: sfid-20201118_034958_088135_BB7A76B8 
+X-CRM114-Status: GOOD (  19.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,48 +77,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chen-Yu Tsai <wens@csie.org>
+Am Mittwoch, 18. November 2020, 08:17:21 CET schrieb Chen-Yu Tsai:
+> From: Chen-Yu Tsai <wens@csie.org>
+> 
+> The Rockchip PCIe controller DT binding clearly states that 'ep-gpios' is
+> an optional property. And indeed there are boards that don't require it.
+> 
+> Make the driver follow the binding by using devm_gpiod_get_optional()
+> instead of devm_gpiod_get().
+> 
+> Fixes: e77f847df54c ("PCI: rockchip: Add Rockchip PCIe controller support")
+> Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
+> Fixes: 964bac9455be ("PCI: rockchip: Split out rockchip_pcie_parse_dt() to parse DT")
+> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 
-The NanoPi M4B is a minor revision of the original M4.
+Reviewed-by: Heiko Stuebner <heiko@sntech.de
 
-The differences against the original Nanopi M4 that are common with the
-other M4V2 revision include:
 
-  - microphone header removed
-  - power button added
-  - recovery button added
+I'll pick up patches 2-4 separately, after giving Rob a chance to look at
+the simple binding.
 
-Additional changes specific to the M4B:
 
-  - USB 3.0 hub removed; board now has 2x USB 3.0 type-A ports and 2x
-    USB 2.0 ports
-  - ADB toggle switch added; this changes the top USB 3.0 host port to
-    a peripheral port
-  - Type-C port no longer supports data or PD
-  - WiFi/Bluetooth combo chip switched to AP6256, which supports BT 5.0
-    but only 1T1R (down from 2T2R) for WiFi
+Heiko
 
-Add a compatible string for the new board revision.
+> ---
+> Changes since v1:
+> 
+>   - Rewrite subject to match existing convention and reference
+>     'ep-gpios' DT property instead of the 'ep_gpio' field
+> ---
+>  drivers/pci/controller/pcie-rockchip.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+> index 904dec0d3a88..c95950e9004f 100644
+> --- a/drivers/pci/controller/pcie-rockchip.c
+> +++ b/drivers/pci/controller/pcie-rockchip.c
+> @@ -118,7 +118,7 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>  	}
+>  
+>  	if (rockchip->is_rc) {
+> -		rockchip->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
+> +		rockchip->ep_gpio = devm_gpiod_get_optional(dev, "ep", GPIOD_OUT_HIGH);
+>  		if (IS_ERR(rockchip->ep_gpio)) {
+>  			dev_err(dev, "missing ep-gpios property in node\n");
+>  			return PTR_ERR(rockchip->ep_gpio);
+> 
 
-Signed-off-by: Chen-Yu Tsai <wens@csie.org>
----
- Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
- 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index 37fd456170d2..1c0ec57ba860 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -126,6 +126,7 @@ properties:
-           - enum:
-               - friendlyarm,nanopc-t4
-               - friendlyarm,nanopi-m4
-+              - friendlyarm,nanopi-m4b
-               - friendlyarm,nanopi-neo4
-           - const: rockchip,rk3399
- 
--- 
-2.29.1
+
 
 
 _______________________________________________
