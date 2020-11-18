@@ -2,23 +2,23 @@ Return-Path: <SRS0=K/1+=EY=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A5998C5519F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 04:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F327C56202
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 07:17:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4425E21D7E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 04:39:13 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 92B712223D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Nov 2020 07:17:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="r7Z1S+R5";
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.b="O940nd56"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4425E21D7E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y8Drm68b";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="OGIufOFf"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 92B712223D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -26,59 +26,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=w08SlU3q+hZXQVtfqcs7MDLvuhW77kdnC+io/SxMDDQ=; b=r7Z1S+R5m69kPXQbqN1pEQ8u3T
-	9VRNjZIoATxaTbgIxaFdhv/6dNxilHxC90L76YJei3F0RFc/hj4xom4NwhZRufWVI2trYI64GUYR0
-	JoepQEAkalYN+0Bf/mlaKdSoOGSZTUQUY4IRD07uGIsWKhBlUrsHNt6tK+4Ph0QfE5xp23v2zFjdc
-	J1MfoF7fspQVoyP89ZyblI6ws7+0fhIP3CG77mxFjhkAbVQisZm6QqNlZCC44HwVTLIku8EfoczOf
-	YnvrNHoOUxhXUv0+g8qPLMyLp7YDHhhS9gfLfs6hZ7wiMyWot4Q4kFC1isiRsORYS5NfN4TO5DBwy
-	bc5OJJ0w==;
+	bh=ZUtBAzTKVFJN1yAPPNQ351gruqR1ladn/FsCApipHUM=; b=Y8Drm68bFffd8xX2hJtCmuwTK+
+	GFYPoOgar7ulQqONGjlknOCfongBoarQEz40tfzumGhFbXNnd5WxK6VEmr0NeBNXaQvCiNWaZnwvW
+	V5kR6LeTKC9rFnbe+lXNy4Jyo2tt62qLyIhLmcpCufYFG6zyTcIwnSfqsKeEgcKPVOD7+C890Yub2
+	L066G+ZTJAr6iCPDQk+2gOU6XOtRVrfDLKjBUQ0SoqnX2z3YN0yv+opKonWAErM2smIjt7juQJp4N
+	aUoPxMLMXFAiBy/Dcqz79iwiMGwVZcAupaMj7QoKg00sZQjydTaExk1zkJ/pn2BURBZK7d+kRlB0O
+	jVGM4TJg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kfFFL-000427-D8; Wed, 18 Nov 2020 04:39:07 +0000
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
+	id 1kfHip-0005bI-W0; Wed, 18 Nov 2020 07:17:44 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kfFFE-0003zL-Kn
- for linux-rockchip@lists.infradead.org; Wed, 18 Nov 2020 04:39:02 +0000
-Received: by mail-pg1-x541.google.com with SMTP id w4so310199pgg.13
- for <linux-rockchip@lists.infradead.org>; Tue, 17 Nov 2020 20:39:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=owERzaYqHwi5W3jNP2ap5wqI6aYFg8h8r6Iq4kQIegs=;
- b=O940nd56EF39C6shvsKKS7HBzyblt8tQFn/ktV4VByDF3Bk4MvBDHLBh6/6DWlKKb2
- 3TKGn7hW4DPSD1Yoqk7hTzjznUzG8YnmM1jz+RF7xckxqITG1sWpbnUeBApKS507K4v6
- F6l1Hpgmi4AZL6YUSAnqGw34DuXTeMVLXekVY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=owERzaYqHwi5W3jNP2ap5wqI6aYFg8h8r6Iq4kQIegs=;
- b=VPPGHTG5mbHeE8d50S9t7NytO/o2QnLSvgylt3ZnpLSdH2Hwy/TuYgK6vaUKQmaA88
- XZoynYFviV+ZJwgrb8gtiU6S7NnmrfHOIeUKy9b49owJ2n4HFQ6DZz8P4UzGiECbG3No
- w/h919yXIVAoarqpF3TUwAQKowty7YAcVzSY4vO2kb8MubPa/ah3ZDLDJlOvW4jxx1UH
- 8CNQyypYBF0z6ZSHZaqgqvgw8rthECO4/GKo3eGImetiSuUaG3rw4Oh8GFPRw33njMIh
- b6x5dukZArA5AOK8vPd0T5GJZPiSBddPteBzCqdRfFRiERStR4DczhoqXUponOQtWofg
- oscQ==
-X-Gm-Message-State: AOAM531By7dgbxZ/vtQkLogOekXYc9554DLps/v5FLB+uPRr4wSklARS
- NRwajzVWa82dsHWqw304myTVGw==
-X-Google-Smtp-Source: ABdhPJyLY/ULmYE7kL4z+NpXB7dygkTdqOpK+q9RIVgz26oFSNkBFFbemBEILFCvjOfFPaMHn/lqfw==
-X-Received: by 2002:aa7:84d0:0:b029:18b:fac7:29b with SMTP id
- x16-20020aa784d00000b029018bfac7029bmr2744535pfn.29.1605674338308; 
- Tue, 17 Nov 2020 20:38:58 -0800 (PST)
-Received: from localhost ([100.102.99.29])
- by smtp.gmail.com with ESMTPSA id k7sm22725611pfa.184.2020.11.17.20.38.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Nov 2020 20:38:57 -0800 (PST)
-From: Cheng-Yi Chiang <cychiang@chromium.org>
-To: linux-kernel@vger.kernel.org
-Subject: [PATCH v2] ASoC: hdmi-codec: Get ELD in before reporting plugged event
-Date: Wed, 18 Nov 2020 12:38:52 +0800
-Message-Id: <20201118043852.1338877-1-cychiang@chromium.org>
-X-Mailer: git-send-email 2.29.2.299.gdc1121823c-goog
+ id 1kfHih-0005XZ-Rh; Wed, 18 Nov 2020 07:17:37 +0000
+Received: from wens.tw (mirror2.csie.ntu.edu.tw [140.112.30.76])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2806A2462E;
+ Wed, 18 Nov 2020 07:17:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605683854;
+ bh=bbEAIhpk175oqHWozTzC68bHohiYOtIa3Zj5+QlIjOM=;
+ h=From:To:Cc:Subject:Date:From;
+ b=OGIufOFfUeppMBAapTb2svWHqDXG9xrWw32kVvKGT+dSxAxplXLA1e9Aeee+h5qu5
+ JxLUbgcQbHV7wCHoqDYGkRLQNzatm35ZVK2iGWEE2oRmMd24Lswxa5Er1YSK7PRiVD
+ vF+ystZfHJcIPvxhgfUUYzMf1EV5/1SC1b21Rn2c=
+Received: by wens.tw (Postfix, from userid 1000)
+ id 741735FD01; Wed, 18 Nov 2020 15:17:31 +0800 (CST)
+From: Chen-Yu Tsai <wens@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH v2 0/4] arm64: rockchip: Fix PCIe ep-gpios requirement and Add
+ Nanopi M4B
+Date: Wed, 18 Nov 2020 15:17:20 +0800
+Message-Id: <20201118071724.4866-1-wens@kernel.org>
+X-Mailer: git-send-email 2.29.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201117_233900_830090_BD5E9060 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20201118_021736_137688_9D811D51 
+X-CRM114-Status: GOOD (  22.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,61 +78,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: alsa-devel@alsa-project.org, dianders@chromium.org,
- Srinivasa Rao <srivasam@codeaurora.org>, Heiko Stuebner <heiko@sntech.de>,
- Takashi Iwai <tiwai@suse.com>, Rob Herring <robh+dt@kernel.org>,
- Liam Girdwood <lgirdwood@gmail.com>, linux-rockchip@lists.infradead.org,
- Mark Brown <broonie@kernel.org>, Rohit kumar <rohitkr@codeaurora.org>,
- tzungbi@chromium.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, dgreid@chromium.org,
- Jaroslav Kysela <perex@perex.cz>, judyhsiao@chromium.org,
- linux-arm-kernel@lists.infradead.org, Cheng-Yi Chiang <cychiang@chromium.org>
+Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Chen-Yu Tsai <wens@csie.org>, Johan Jonker <jbx6244@gmail.com>,
+ Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In plugged callback, ELD should be updated from display driver so that
-user space can query information from ELD immediately after receiving jack
-plugged event.
+From: Chen-Yu Tsai <wens@csie.org>
 
-When jack is unplugged, clear ELD buffer so that user space does not get
-obsolete information of unplugged HDMI.
+Hi everyone,
 
-Signed-off-by: Cheng-Yi Chiang <cychiang@chromium.org>
----
-Change from v1 to v2:
- - Report jack unplug event then clear ELD. This makes sure user will not get a
-   cleared ELD during their usage of jack.
+This is v2 of my Nanopi M4B series. Changes since v1 include:
 
- sound/soc/codecs/hdmi-codec.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
-
-diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
-index 403d4c6a49a8..e8410b2433de 100644
---- a/sound/soc/codecs/hdmi-codec.c
-+++ b/sound/soc/codecs/hdmi-codec.c
-@@ -692,10 +692,16 @@ static void plugged_cb(struct device *dev, bool plugged)
- {
- 	struct hdmi_codec_priv *hcp = dev_get_drvdata(dev);
+  - Rewrite subject of patch 1 to match existing convention and reference
+    'ep-gpios' DT property instead of the 'ep_gpio' field
  
--	if (plugged)
-+	if (plugged) {
-+		if (hcp->hcd.ops->get_eld) {
-+			hcp->hcd.ops->get_eld(dev->parent, hcp->hcd.data,
-+					    hcp->eld, sizeof(hcp->eld));
-+		}
- 		hdmi_codec_jack_report(hcp, SND_JACK_LINEOUT);
--	else
-+	} else {
- 		hdmi_codec_jack_report(hcp, 0);
-+		memset(hcp->eld, 0, sizeof(hcp->eld));
-+	}
- }
- 
- static int hdmi_codec_set_jack(struct snd_soc_component *component,
+This series mainly adds support for the new Nanopi M4B, which is a newer
+variant of the Nanopi M4.
+
+The differences against the original Nanopi M4 that are common with the
+other M4V2 revision include:
+
+  - microphone header removed
+  - power button added
+  - recovery button added
+
+Additional changes specific to the M4B:
+
+  - USB 3.0 hub removed; board now has 2x USB 3.0 type-A ports and 2x
+    USB 2.0 ports
+  - ADB toggle switch added; this changes the top USB 3.0 host port to
+    a peripheral port
+  - Type-C port no longer supports data or PD
+  - WiFi/Bluetooth combo chip switched to AP6256, which supports BT 5.0
+    but only 1T1R (down from 2T2R) for WiFi
+
+While working on this, I found that for the M4 family, the PCIe reset
+pin (from the M.2 expansion board) was not wired to the SoC. Only the
+NanoPC T4 has this wired. This ended up in patches 1 and 3.
+
+Patch 1 makes ep_gpio in the Rockchip PCIe driver optional. This property
+is optional in the DT binding, so this just makes the driver adhere to
+the binding.
+
+Patch 2 adds a new compatible string for the new board.
+
+Patch 3 moves the ep-gpios property of the pcie controller from the
+common nanopi4.dtsi file to the nanopc-t4.dts file.
+
+Patch 4 adds a new device tree file for the new board. It includes the
+original device tree for the M4, and then lists the differences.
+
+Given that patch 3 would make PCIe unusable without patch 1, I suggest
+merging patch 1 through the PCI tree as a fix for 5.10, and the rest
+for 5.11 through the Rockchip tree.
+
+Please have a look. The changes are mostly trivial.
+
+
+Regards
+ChenYu
+
+Chen-Yu Tsai (4):
+  PCI: rockchip: Make 'ep-gpios' DT property optional
+  dt-bindings: arm: rockchip: Add FriendlyARM NanoPi M4B
+  arm64: dts: rockchip: nanopi4: Move ep-gpios property to nanopc-t4
+  arm64: dts: rockchip: rk3399: Add NanoPi M4B
+
+ .../devicetree/bindings/arm/rockchip.yaml     |  1 +
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../boot/dts/rockchip/rk3399-nanopc-t4.dts    |  1 +
+ .../boot/dts/rockchip/rk3399-nanopi-m4b.dts   | 52 +++++++++++++++++++
+ .../boot/dts/rockchip/rk3399-nanopi4.dtsi     |  1 -
+ drivers/pci/controller/pcie-rockchip.c        |  2 +-
+ 6 files changed, 56 insertions(+), 2 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts
+
 -- 
-2.29.2.299.gdc1121823c-goog
+2.29.1
 
 
 _______________________________________________
