@@ -2,95 +2,65 @@ Return-Path: <SRS0=tk72=E2=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1A462C2D0E4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2020 18:17:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 27F62C2D0E4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2020 20:34:45 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 766B42242B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2020 18:17:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 839D22223F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Nov 2020 20:34:44 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="R4om0zaA";
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NvJSibWu"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 766B42242B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Svvbac8a";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="BbetyQON"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 839D22223F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=ecGdRUseOUNmsnJLNGIz1UbhfmDXO8d2ELLr4Vv0dD0=; b=R4om0zaAdbovjoz5NfVVP829+
-	b5gV4P/zymBVIr51SUG1hSaMGIwzKpTYfho0TwaWH0e7D9E4unfZY3MtFxhhsm3k4DlqRfCyibUxa
-	Ot1HA8AR6qtqmyif27vgFq5B5MWcQkMovGgzoU+d287TH85AS3MRKS84sgNJ6hZm6dbQOHOtdjKIv
-	Wc2KNxCLfhjAwUMjm2Pmr657QxwpR3aBOMm9JeCQmLBZ1SV7DoY6/Hmc56y6UsOKyCqK23zpNKMyf
-	YQAgYwOL9hLYfHcyQYYu1X8/TxHq5sWPy/MqgZ9UNhU3B3kBYnyPgOGXReDkQRzyp/HPOUrjUmwxe
-	FqagwZAog==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=rvkKTP+mUX6+HhCQ2EFfQW0iM6WH7C17oH0V6doNlSE=; b=Svvbac8aPWdrLJmmLU5ZiR4gn
+	wHPuY8Q6i0AjOGIzvQnERcH506DteGJVBkpdIN5tFdAf+cvK0kYCyXvnh56AiMPIeXZHfGBUhAIxZ
+	sLFuCyQG+FxlbBUn3g/fLhzmaAbqSzfn9gjFha6/MdnjiIqyBVVTYju2tgiKhMFqL/N+OfF36+1kb
+	n8zf/xq7BIVoAAZm3o0xj1pidCCR0qSod8eMD/vzHLuhc9+QOnyz0+uXJp5jOoQTwc9Qb+JbP284x
+	CRVUKv316BLle6bQAOw8pZcPZMeHbB0nsQmYZpIPvpF7yhaWaxk36D48tOyxFvI3fxD7kemlUNRWZ
+	EOyooLjcQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kgAyc-0007Po-Vn; Fri, 20 Nov 2020 18:17:43 +0000
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
+	id 1kgD78-0002nc-FT; Fri, 20 Nov 2020 20:34:38 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kgAyV-0007O6-74; Fri, 20 Nov 2020 18:17:37 +0000
-Received: by mail-ej1-x642.google.com with SMTP id i19so14130292ejx.9;
- Fri, 20 Nov 2020 10:17:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=EDiwUV4MnNtWMZeAVqj383+PkGcwoD4xqULGh3M8Esc=;
- b=NvJSibWuR2+G8c+Bcpm34vHIuFszBfw/ysFyeo/MhOurZDfcPuTQiqku48rjzytZ+r
- F8GV8OOcds6C2MfzZ8tLpZAkNsLz+mBfK/TIIEmDQKE/iwwpDoB/zMBqyE79CcOzY1Bs
- DxhPh4RhuODIVOfNfKzN9ak+Zv4Sggbmni7O1QCLtpPJrLvWt6L4e5n4HI+r9mdXHcs4
- Hd7jzlwhqNgxPAk2uBOrq/tThqZn2rWWxM8vx33jhYgqNMeVCd+3HpIBOVDnQ2ia8AZ3
- UnmfED/ehXybEMFfshJGP6bt9rKlky9ScYlp6dw0e7MMqE0Frs5ibI+04XAx1CySTHvB
- rMfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=EDiwUV4MnNtWMZeAVqj383+PkGcwoD4xqULGh3M8Esc=;
- b=FbDTSOnPR9U8vCu8pDYZ0gOSzAnNydL3t3xySZwCU6Io3YjtMVKIBEhobgihC3AW9Q
- mrhUGePDo+ldOLaPJWZlfFm4R1vyORNwu+ZxEx30Iv1DxheBriCAYB9G861PSKo3tRw3
- rCvtaGUEHnjBB1AEehLRTdQv3yDaqb7mGS5OTsA7NPiXxmYw3To+ooiwVwGg4SI6EqAY
- 4Yj9rsPle6frkVyX15n7rk2GT3+46ZLJvqh4IIuKmHhMMBGn9CGW6hAvRkYKBGW5Okfu
- iwhsUce2AAi/6FdHQcnvtHcKSS9Cl39tMzmnr0O4EW0MhKn6wp+ujd0YVFgIMrmOwKqN
- 7Fig==
-X-Gm-Message-State: AOAM533XKUNO2rh314avupVRwuyxgXiRUquhYusEkYN2OqbpvfhbrQDJ
- clFtiRXMBbXvHeMoMgoYrpfWhfHp0G4W9w==
-X-Google-Smtp-Source: ABdhPJwIw5qBb2E9HIKGJ0b1+C1Ooju0UyKfMjUUv8QskG11Akydmq5MRzBpW8tOeFkC3gdvbHO0hA==
-X-Received: by 2002:a17:906:594a:: with SMTP id
- g10mr13171632ejr.448.1605896251068; 
- Fri, 20 Nov 2020 10:17:31 -0800 (PST)
-Received: from [192.168.2.1] (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id
- k11sm1401432edh.72.2020.11.20.10.17.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Nov 2020 10:17:30 -0800 (PST)
-Subject: Re: [PATCH v14 2/8] mtd: rawnand: rockchip: NFC drivers for RK3308,
- RK2928 and others
-To: Yifeng Zhao <yifeng.zhao@rock-chips.com>, miquel.raynal@bootlin.com,
- richard@nod.at, vigneshr@ti.com, robh+dt@kernel.org
-References: <20201120095613.20172-1-yifeng.zhao@rock-chips.com>
- <20201120095613.20172-3-yifeng.zhao@rock-chips.com>
-From: Johan Jonker <jbx6244@gmail.com>
-Message-ID: <46f21c37-231d-938f-5da7-6eb155d2e98c@gmail.com>
-Date: Fri, 20 Nov 2020 19:17:27 +0100
-User-Agent: Mozilla/5.0 (X11; Linux i686; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ id 1kgD72-0002m4-5p; Fri, 20 Nov 2020 20:34:33 +0000
+Received: from localhost (129.sub-72-107-112.myvzw.com [72.107.112.129])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id C5862221EB;
+ Fri, 20 Nov 2020 20:34:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1605904470;
+ bh=a/CBfITEsHX+7WRPG8LgDJZ3uN96ReyX4M/vDmQAFRo=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=BbetyQONu0aAdTQkfD0TY1jRi/HH68AfGQaiMbQD+7MsRD2Ya0M5vqfFUSSirFuOO
+ foEcC5dXs8oPKivpfnqOOq/MDgw7V65HMy+q3E3v08ao4V9fRt07Yx/aODE//yC+sm
+ eMhHOF++jlZGzA4R7H41wiz+meAIzytijWwHOy4Y=
+Date: Fri, 20 Nov 2020 14:34:28 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+Subject: Re: [PATCH v4] PCI: Unify ECAM constants in native PCI Express drivers
+Message-ID: <20201120203428.GA272511@bjorn-Precision-5520>
 MIME-Version: 1.0
-In-Reply-To: <20201120095613.20172-3-yifeng.zhao@rock-chips.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20201005003805.465057-1-kw@linux.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201120_131735_390549_A9DEA235 
-X-CRM114-Status: GOOD (  42.81  )
+X-CRM114-CacheID: sfid-20201120_153432_418120_359BADE2 
+X-CRM114-Status: GOOD (  37.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,1798 +73,523 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, heiko@sntech.de, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-mtd@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Paul Mackerras <paulus@samba.org>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Jonathan Chocron <jonnyc@amazon.com>, Toan Le <toan@os.amperecomputing.com>,
+ Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Michael Ellerman <mpe@ellerman.id.au>, Michal Simek <michal.simek@xilinx.com>,
+ linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-arm-kernel@lists.infradead.org, linux-pci@vger.kernel.org,
+ Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ linux-rpi-kernel@lists.infradead.org,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Jonathan Derrick <jonathan.derrick@intel.com>,
+ Scott Branden <sbranden@broadcom.com>, Zhou Wang <wangzhou1@hisilicon.com>,
+ Robert Richter <rrichter@marvell.com>, linuxppc-dev@lists.ozlabs.org,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Yifeng,
-
-A few more comments.
-
-In version 12 a review by tag was earned from rob+dt.
-If nothing changes in rockchip,nand-controller.yaml you must add it to
-your patch else it triggers a new review.
-
-The patch "arm64: dts: rockchip: Add NFC node for RK3308 SoC" has 2
-signed-off's for the same person. Maybe one is enough?
-
-With this all fixed and if Miquel doesn't find major isseus one could add:
-
-Suggested-by: Johan Jonker <jbx6244@gmail.com>
-
-On 11/20/20 10:56 AM, Yifeng Zhao wrote:
-> This driver supports Rockchip NFC (NAND Flash Controller) found on RK3308,
-> RK2928, RKPX30, RV1108 and other SOCs. The driver has been tested using
-> 8-bit NAND interface on the ARM based RK3308 platform.
-> 
-> Support Rockchip SoCs and NFC versions:
-> - PX30 and RK3326(NFCv900).
-> 	ECC: 16/40/60/70 bits/1KB.
-> 	CLOCK: ahb and nfc.
-> - RK3308 and RV1108(NFCv800).
-> 	ECC: 16 bits/1KB.
-> 	CLOCK: ahb and nfc.
-> - RK3036 and RK3128(NFCv622).
-> 	ECC: 16/24/40/60 bits/1KB.
-> 	CLOCK: ahb and nfc.
-> - RK3066, RK3188 and RK2928(NFCv600).
-> 	ECC: 16/24/40/60 bits/1KB.
-> 	CLOCK: ahb.
-> 
-> Supported features:
-> - Read full page data by DMA.
-> - Support HW ECC(one step is 1KB).
-> - Support 2 - 32K page size.
-> - Support 8 CS(depend on SoCs)
-> 
-> Limitations:
-> - No support for the ecc step size is 512.
-> - Untested on some SoCs.
-> - No support for subpages.
-> - No support for the builtin randomizer.
-> - The original bad block mask is not supported. It is recommended to use
->   the BBT(bad block table).
-> 
-> Signed-off-by: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> ---
-> 
-> Changes in v14:
-> - Add oob_read and oob_write hook api.
-> - Support timing config and ecc config for each chips.
-> - Fix some comments.
-> 
-> Changes in v13:
-> - The nfc->buffer will realloc while the page size of the second mtd
->   is large than the first one.
-> - Fix coding style.
-> - Fix some comments.
-> 
-> Changes in v12: None
-> Changes in v11:
-> - Fix compile error.
-> 
-> Changes in v10:
-> - Fix compile error on master v5.9-rc7.
-> 
-> Changes in v9:
-> - The nfc->buffer will realloc while the page size of the second mtd
->   is large than the first one
-> - Fix coding style.
-> - Remove struct rk_nfc_clk.
-> - Prepend some function with rk_nfc_.
-> - Replace function readl_poll_timeout_atomic with readl_relaxed_poll_timeout.
-> - Remove function rk_nfc_read_byte and rk_nfc_write_byte.
-> - Don't select the die if 'check_only == true' in function rk_nfc_exec_op.
-> - Modify function rk_nfc_write_page and rk_nfc_write_page_raw.
-> 
-> Changes in v8: None
-> Changes in v7:
-> - Rebase to linux-next.
-> - Fix coding style.
-> - Reserved 4 bytes at the beginning of the oob area.
-> - Page raw read and write included ecc data.
-> 
-> Changes in v6:
-> - The mtd->name set by NAND label property.
-> - Add some comments.
-> - Fix compile error.
-> 
-> Changes in v5:
-> - Add boot blocks support  with different ECC for bootROM.
-> - Rename rockchip-nand.c to rockchip-nand-controller.c.
-> - Unification of other variable names.
-> - Remove some compatible define.
-> 
-> Changes in v4:
-> - Define platform data structure for the register offsets.
-> - The compatible define with rkxx_nfc.
-> - Use SET_SYSTEM_SLEEP_PM_OPS to define PM_OPS.
-> - Use exec_op instead of legacy hooks.
-> 
-> Changes in v3: None
-> Changes in v2:
-> - Fix compile error.
-> - Include header files sorted by file name.
-> 
->  drivers/mtd/nand/raw/Kconfig                  |   12 +
->  drivers/mtd/nand/raw/Makefile                 |    1 +
->  .../mtd/nand/raw/rockchip-nand-controller.c   | 1497 +++++++++++++++++
->  3 files changed, 1510 insertions(+)
->  create mode 100644 drivers/mtd/nand/raw/rockchip-nand-controller.c
-> 
-> diff --git a/drivers/mtd/nand/raw/Kconfig b/drivers/mtd/nand/raw/Kconfig
-> index 6c46f25b57e2..2cc533e4e239 100644
-> --- a/drivers/mtd/nand/raw/Kconfig
-> +++ b/drivers/mtd/nand/raw/Kconfig
-> @@ -462,6 +462,18 @@ config MTD_NAND_ARASAN
->  	  Enables the driver for the Arasan NAND flash controller on
->  	  Zynq Ultrascale+ MPSoC.
->  
-> +config MTD_NAND_ROCKCHIP
-> +	tristate "Rockchip NAND controller"
-> +	depends on ARCH_ROCKCHIP && HAS_IOMEM
-> +	help
-> +	  Enables support for NAND controller on Rockchip SoCs.
-> +	  There are four different versions of NAND FLASH Controllers,
-> +	  including:
-> +	    NFC v600: RK2928, RK3066, RK3188
-> +	    NFC v622: RK3036, RK3128
-> +	    NFC v800: RK3308, RV1108
-> +	    NFC v900: PX30, RK3326
-> +
->  comment "Misc"
->  
->  config MTD_SM_COMMON
-> diff --git a/drivers/mtd/nand/raw/Makefile b/drivers/mtd/nand/raw/Makefile
-> index 2930f5b9015d..960c9be25204 100644
-> --- a/drivers/mtd/nand/raw/Makefile
-> +++ b/drivers/mtd/nand/raw/Makefile
-> @@ -58,6 +58,7 @@ obj-$(CONFIG_MTD_NAND_STM32_FMC2)	+= stm32_fmc2_nand.o
->  obj-$(CONFIG_MTD_NAND_MESON)		+= meson_nand.o
->  obj-$(CONFIG_MTD_NAND_CADENCE)		+= cadence-nand-controller.o
->  obj-$(CONFIG_MTD_NAND_ARASAN)		+= arasan-nand-controller.o
-> +obj-$(CONFIG_MTD_NAND_ROCKCHIP)		+= rockchip-nand-controller.o
->  
->  nand-objs := nand_base.o nand_legacy.o nand_bbt.o nand_timings.o nand_ids.o
->  nand-objs += nand_onfi.o
-> diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-> new file mode 100644
-> index 000000000000..c50467c5c7c6
-> --- /dev/null
-> +++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-> @@ -0,0 +1,1497 @@
-> +// SPDX-License-Identifier: GPL-2.0 OR MIT
-> +/*
-> + * Rockchip NAND Flash controller driver.
-> + * Copyright (C) 2020 Rockchip Inc.
-> + * Author: Yifeng Zhao <yifeng.zhao@rock-chips.com>
-> + */
-> +
-> +#include <linux/clk.h>
-> +#include <linux/delay.h>
-> +#include <linux/dma-mapping.h>
-> +#include <linux/dmaengine.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/iopoll.h>
-> +#include <linux/module.h>
-> +#include <linux/mtd/mtd.h>
-> +#include <linux/mtd/rawnand.h>
-> +#include <linux/of.h>
-> +#include <linux/of_device.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/slab.h>
-> +
-> +/*
-> + * NFC Page Data Layout:
-> + *	1024 Bytes Data + 4Bytes sys data + 28Bytes~124Bytes ecc +
-> + *	1024 Bytes Data + 4Bytes sys data + 28Bytes~124Bytes ecc +
-> + *	......
-> + * NAND Page Data Layout:
-> + *	1024 * n Data + m Bytes oob
-> + * Original Bad Block Mask Location:
-> + *	First byte of oob(spare).
-> + * nand_chip->oob_poi data layout:
-> + *	4Bytes sys data + .... + 4Bytes sys data + ecc data.
-> + */
-> +
-> +/* NAND controller register definition */
-> +#define NFC_READ			(0)
-> +#define NFC_WRITE			(1)
-> +
-> +#define NFC_FMCTL			(0x00)
-> +#define   FMCTL_CE_SEL_M		0xFF
-> +#define   FMCTL_CE_SEL(x)		(1 << (x))
-> +#define   FMCTL_WP			BIT(8)
-> +#define   FMCTL_RDY			BIT(9)
-> +
-> +#define NFC_FMWAIT			(0x04)
-> +#define   FLCTL_RST			BIT(0)
-> +#define   FLCTL_WR			(1)	/* 0: read, 1: write */
-> +#define   FLCTL_XFER_ST			BIT(2)
-> +#define   FLCTL_XFER_EN			BIT(3)
-> +#define   FLCTL_ACORRECT		BIT(10) /* Auto correct error bits. */
-> +#define   FLCTL_XFER_READY		BIT(20)
-> +#define   FLCTL_XFER_SECTOR		(22)
-> +#define   FLCTL_TOG_FIX			BIT(29)
-> +
-> +#define   BCHCTL_BANK_M			(7 << 5)
-> +#define   BCHCTL_BANK			(5)
-> +
-> +#define   DMA_ST			BIT(0)
-> +#define   DMA_WR			(1)	/* 0: write, 1: read */
-> +#define   DMA_EN			BIT(2)
-> +#define   DMA_AHB_SIZE			(3)	/* 0: 1, 1: 2, 2: 4 */
-> +#define   DMA_BURST_SIZE		(6)	/* 0: 1, 3: 4, 5: 8, 7: 16 */
-> +#define   DMA_INC_NUM			(9)	/* 1 - 16 */
-> +
-> +#define ECC_ERR_CNT(x, e) ((((x) >> (e).low) & (e).low_mask) |\
-> +	  (((x) >> (e).high) & (e).high_mask) << (e).low_bn)> +#define   INT_DMA			BIT(0)
-> +#define NFC_BANK			(0x800)
-> +#define NFC_BANK_STEP			(0x100)
-> +#define   BANK_DATA			(0x00)
-> +#define   BANK_ADDR			(0x04)
-> +#define   BANK_CMD			(0x08)
-> +#define NFC_SRAM0			(0x1000)
-> +#define NFC_SRAM1			(0x1400)
-> +#define NFC_SRAM_SIZE			(0x400)
-> +#define NFC_TIMEOUT			(500000)
-> +#define NFC_MAX_OOB_PER_STEP		128
-> +#define NFC_MIN_OOB_PER_STEP		64
-> +#define MAX_DATA_SIZE			0xFFFC
-> +#define MAX_ADDRESS_CYC			6
-> +#define NFC_ECC_MAX_MODES		4
-> +#define NFC_MAX_NSELS			(8) /* Some Socs only have 1 or 2 CSs. */
-> +#define NFC_SYS_DATA_SIZE		(4) /* 4 bytes sys data in oob pre 1024 data.*/
-> +#define RK_DEFAULT_CLOCK_RATE		(150 * 1000 * 1000) /* 150 Mhz */
-> +#define ACCTIMING(csrw, rwpw, rwcs)	((csrw) << 12 | (rwpw) << 5 | (rwcs))
-> +
-> +enum nfc_type {
-> +	NFC_V6,
-> +	NFC_V8,
-> +	NFC_V9,
-> +};
-> +
-
-> +/**
-
-/* ??
-
-> + * struct rk_ecc_cnt_status: represent a ecc status data.
-> + * @err_flag_bit: error flag bit index at register.
-> + * @low: ecc count low bit index at register.
-> + * @low_mask: mask bit.
-> + * @low_bn: ecc count low bit number.
-> + * @high: ecc count high bit index at register.
-
-ECC
-
-> + * @high_mask: mask bit
-> + */
-> +struct ecc_cnt_status {
-> +	u8 err_flag_bit;
-> +	u8 low;
-> +	u8 low_mask;
-> +	u8 low_bn;
-> +	u8 high;
-> +	u8 high_mask;
-> +};
-> +
-> +/*
-> + * @type: NFC version
-
-> + * @ecc_strengths: ecc strengths
-> + * @ecc_cfgs: ecc config values
-
-ECC
-
-> + * @flctl_off: FLCTL register offset
-> + * @bchctl_off: BCHCTL register offset
-> + * @dma_data_buf_off: DMA_DATA_BUF register offset
-> + * @dma_oob_buf_off: DMA_OOB_BUF register offset
-> + * @dma_cfg_off: DMA_CFG register offset
-> + * @dma_st_off: DMA_ST register offset
-> + * @bch_st_off: BCG_ST register offset
-> + * @randmz_off: RANDMZ register offset
-> + * @int_en_off: interrupt enable register offset
-> + * @int_clr_off: interrupt clean register offset
-> + * @int_st_off: interrupt status register offset
-> + * @oob0_off: oob0 register offset
-> + * @oob1_off: oob1 register offset
-> + * @ecc0: represent ECC0 status data
-> + * @ecc1: represent ECC1 status data
-> + */
-> +struct nfc_cfg {
-> +	enum nfc_type type;
-> +	u8 ecc_strengths[NFC_ECC_MAX_MODES];
-> +	u32 ecc_cfgs[NFC_ECC_MAX_MODES];
-> +	u32 flctl_off;
-> +	u32 bchctl_off;
-> +	u32 dma_cfg_off;
-> +	u32 dma_data_buf_off;
-> +	u32 dma_oob_buf_off;
-> +	u32 dma_st_off;
-> +	u32 bch_st_off;
-> +	u32 randmz_off;
-> +	u32 int_en_off;
-> +	u32 int_clr_off;
-> +	u32 int_st_off;
-> +	u32 oob0_off;
-> +	u32 oob1_off;
-> +	struct ecc_cnt_status ecc0;
-> +	struct ecc_cnt_status ecc1;
-> +};
-> +
-> +struct rk_nfc_nand_chip {
-> +	struct list_head node;
-> +	struct nand_chip chip;
-> +
-> +	u16 oob_buf_per_sector;
-> +	u16 boot_blks;
-> +	u16 metadata_size;
-> +	u32 boot_ecc;
-> +	u32 timing;
-> +
-> +	u8 nsels;
-> +	u8 sels[0];
-> +	/* Nothing after this field. */
-> +};
-> +
-> +struct rk_nfc {
-> +	struct nand_controller controller;
-> +	const struct nfc_cfg *cfg;
-> +	struct device *dev;
-> +
-> +	struct clk *nfc_clk;
-> +	struct clk *ahb_clk;
-> +	void __iomem *regs;
-> +
-> +	u32 selected_bank;
-> +	u32 band_offset;
-> +	u32 cur_ecc;
-> +	u32 cur_timing;
-> +
-> +	struct completion done;
-> +	struct list_head chips;
-> +
-> +	u8 *buffer;
-> +	u8 *page_buf;
-> +	u32 *oob_buf;
-> +	u32 buffer_size;
-> +	u32 oob_buf_size;
-> +
-> +	unsigned long assigned_cs;
-> +};
-> +
-> +static inline struct rk_nfc_nand_chip *rk_nfc_to_rknand(struct nand_chip *chip)
-> +{
-> +	return container_of(chip, struct rk_nfc_nand_chip, chip);
-> +}
-> +
-> +static inline u8 *rk_nfc_buf_to_data_ptr(struct nand_chip *chip, const u8 *p, int i)
-> +{
-> +	return (u8 *)p + i * chip->ecc.size;
-> +}
-> +
-> +static inline u8 *rk_nfc_buf_to_oob_ptr(struct nand_chip *chip, int i)
-> +{
-> +	u8 *poi;
-> +
-> +	poi = chip->oob_poi + i * NFC_SYS_DATA_SIZE;
-> +
-> +	return poi;
-> +}
-> +
-> +static inline u8 *rk_nfc_buf_to_oob_ecc_ptr(struct nand_chip *chip, int i)
-> +{
-> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
-> +	u8 *poi;
-> +
-> +	poi = chip->oob_poi + rknand->metadata_size + chip->ecc.bytes * i;
-> +
-> +	return poi;
-> +}
-> +
-> +static inline int rk_nfc_data_len(struct nand_chip *chip)
-> +{
-> +	return chip->ecc.size + chip->ecc.bytes + NFC_SYS_DATA_SIZE;
-> +}
-> +
-> +static inline u8 *rk_nfc_data_ptr(struct nand_chip *chip,  int i)
-> +{
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +
-> +	return nfc->buffer + i * rk_nfc_data_len(chip);
-> +}
-> +
-> +static inline u8 *rk_nfc_oob_ptr(struct nand_chip *chip, int i)
-> +{
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +
-> +	return nfc->buffer + i * rk_nfc_data_len(chip) + chip->ecc.size;
-> +}
-> +
-> +static int rk_nfc_hw_ecc_setup(struct nand_chip *chip, uint32_t strength)
-
-uint32_t -> u32 ?
-
-> +{
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	u32 reg, i;
-> +
-> +	for (i = 0; i < NFC_ECC_MAX_MODES; i++) {
-> +		if (strength == nfc->cfg->ecc_strengths[i]) {
-> +			reg = nfc->cfg->ecc_cfgs[i];
-> +			break;
-> +		}
-> +	}
-> +
-> +	if (i >= NFC_ECC_MAX_MODES)
-> +		return -EINVAL;
-> +
-> +	writel(reg, nfc->regs + nfc->cfg->bchctl_off);
-> +
-> +	/* Save chip ECC setting */
-> +	nfc->cur_ecc = strength;
-> +
-> +	return 0;
-> +}
-> +
-> +static void rk_nfc_select_chip(struct nand_chip *chip, int cs)
-> +{
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
-> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
-> +	u32 val;
-> +
-> +	if (cs < 0) {
-> +		nfc->selected_bank = -1;
-> +		/* Deselect the currently selected target. */
-> +		val = readl_relaxed(nfc->regs + NFC_FMCTL);
-> +		val &= ~FMCTL_CE_SEL_M;
-> +		writel(val, nfc->regs + NFC_FMCTL);
-> +		return;
-> +	}
-> +
-> +	nfc->selected_bank = rknand->sels[cs];
-> +	nfc->band_offset = NFC_BANK + nfc->selected_bank * NFC_BANK_STEP;
-> +
-> +	val = readl_relaxed(nfc->regs + NFC_FMCTL);
-> +	val &= ~FMCTL_CE_SEL_M;
-> +	val |= FMCTL_CE_SEL(nfc->selected_bank);
-> +
-> +	writel(val, nfc->regs + NFC_FMCTL);
-> +
-> +	/*
-> +	 * Compare current chip timing with selected chip timing and
-> +	 * change if needed.
-> +	 */
-> +	if (nfc->cur_timing != rknand->timing) {
-> +		writel(rknand->timing, nfc->regs + NFC_FMWAIT);
-> +		nfc->cur_timing = rknand->timing;
-> +	}
-> +
-> +	/*
-> +	 * Compare current chip ECC setting with selected chip ECC setting and
-> +	 * change if needed.
-> +	 */
-> +	if (nfc->cur_ecc != ecc->strength)
-> +		rk_nfc_hw_ecc_setup(chip, ecc->strength);
-> +}
-> +
-> +static inline int rk_nfc_wait_ioready(struct rk_nfc *nfc)
-> +{
-> +	int rc;
-> +	u32 val;
-> +
-> +	rc = readl_relaxed_poll_timeout(nfc->regs + NFC_FMCTL, val,
-> +					val & FMCTL_RDY, 10, NFC_TIMEOUT);
-> +
-> +	return rc;
-> +}
-> +
-> +static void rk_nfc_read_buf(struct rk_nfc *nfc, u8 *buf, int len)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < len; i++)
-> +		buf[i] = readb_relaxed(nfc->regs + nfc->band_offset +
-> +				       BANK_DATA);
-> +}
-> +
-> +static void rk_nfc_write_buf(struct rk_nfc *nfc, const u8 *buf, int len)
-> +{
-> +	int i;
-> +
-> +	for (i = 0; i < len; i++)
-> +		writeb(buf[i], nfc->regs + nfc->band_offset + BANK_DATA);
-> +}
-> +
-> +static int rk_nfc_cmd(struct nand_chip *chip,
-> +		      const struct nand_subop *subop)
-> +{
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	unsigned int i, j, remaining, start;
-> +	int reg_offset = nfc->band_offset;
-> +	u8 *inbuf = NULL;
-> +	const u8 *outbuf;
-> +	u32 cnt = 0;
-> +	int ret = 0;
-> +
-> +	for (i = 0; i < subop->ninstrs; i++) {
-> +		const struct nand_op_instr *instr = &subop->instrs[i];
-> +
-> +		switch (instr->type) {
-> +		case NAND_OP_CMD_INSTR:
-> +			writeb(instr->ctx.cmd.opcode,
-> +			       nfc->regs + reg_offset + BANK_CMD);
-> +			break;
-> +
-> +		case NAND_OP_ADDR_INSTR:
-> +			remaining = nand_subop_get_num_addr_cyc(subop, i);
-> +			start = nand_subop_get_addr_start_off(subop, i);
-> +
-> +			for (j = 0; j < 8 && j + start < remaining; j++)
-> +				writeb(instr->ctx.addr.addrs[j + start],
-> +				       nfc->regs + reg_offset + BANK_ADDR);
-> +			break;
-> +
-> +		case NAND_OP_DATA_IN_INSTR:
-> +		case NAND_OP_DATA_OUT_INSTR:
-> +			start = nand_subop_get_data_start_off(subop, i);
-> +			cnt = nand_subop_get_data_len(subop, i);
-> +
-> +			if (instr->type == NAND_OP_DATA_OUT_INSTR) {
-> +				outbuf = instr->ctx.data.buf.out + start;
-> +				rk_nfc_write_buf(nfc, outbuf, cnt);
-> +			} else {
-> +				inbuf = instr->ctx.data.buf.in + start;
-> +				rk_nfc_read_buf(nfc, inbuf, cnt);
-> +			}
-> +			break;
-> +
-> +		case NAND_OP_WAITRDY_INSTR:
-> +			if (rk_nfc_wait_ioready(nfc) < 0) {
-> +				ret = -ETIMEDOUT;
-> +				dev_err(nfc->dev, "IO not ready\n");
-> +			}
-> +			break;
-> +		}
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static const struct nand_op_parser rk_nfc_op_parser = NAND_OP_PARSER(
-> +	NAND_OP_PARSER_PATTERN(
-> +		rk_nfc_cmd,
-> +		NAND_OP_PARSER_PAT_CMD_ELEM(true),
-> +		NAND_OP_PARSER_PAT_ADDR_ELEM(true, MAX_ADDRESS_CYC),
-> +		NAND_OP_PARSER_PAT_CMD_ELEM(true),
-> +		NAND_OP_PARSER_PAT_WAITRDY_ELEM(true),
-> +		NAND_OP_PARSER_PAT_DATA_IN_ELEM(true, MAX_DATA_SIZE)),
-> +	NAND_OP_PARSER_PATTERN(
-> +		rk_nfc_cmd,
-> +		NAND_OP_PARSER_PAT_CMD_ELEM(true),
-> +		NAND_OP_PARSER_PAT_ADDR_ELEM(true, MAX_ADDRESS_CYC),
-> +		NAND_OP_PARSER_PAT_DATA_OUT_ELEM(true, MAX_DATA_SIZE),
-> +		NAND_OP_PARSER_PAT_CMD_ELEM(true),
-> +		NAND_OP_PARSER_PAT_WAITRDY_ELEM(true)),
-> +);
-> +
-> +static int rk_nfc_exec_op(struct nand_chip *chip,
-> +			  const struct nand_operation *op,
-> +			  bool check_only)
-> +{
-> +	if (!check_only)
-> +		rk_nfc_select_chip(chip, op->cs);
-> +
-> +	return nand_op_parser_exec_op(chip, &rk_nfc_op_parser, op,
-> +				      check_only);
-> +}
-> +
-> +static int rk_nfc_data_interface(struct nand_chip *chip, int target,
-
-static int rk_nfc_setup_interface(struct nand_chip *chip, int target,
-
-Comment by Miquel:
-Please have a look at the recent changes in the core, this helper
-should be named "setup_interface".
-
-> +				 const struct nand_interface_config *conf)
-> +{
-> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	const struct nand_sdr_timings *timings;
-> +	u32 rate, tc2rw, trwpw, trw2c;
-> +	u32 temp;
-> +
-> +	if (target < 0)
-> +		return 0;
-> +
-> +	timings = nand_get_sdr_timings(conf);
-> +	if (IS_ERR(timings))
-> +		return -EOPNOTSUPP;
-> +
-> +	if (IS_ERR(nfc->nfc_clk))
-> +		rate = clk_get_rate(nfc->ahb_clk);
-> +	else
-> +		rate = clk_get_rate(nfc->nfc_clk);
-> +
-> +	/* Turn clock rate into kHz. */
-> +	rate /= 1000;
-> +
-> +	tc2rw = 1;
-> +	trw2c = 1;
-> +
-> +	trwpw = max(timings->tWC_min, timings->tRC_min) / 1000;
-> +	trwpw = DIV_ROUND_UP(trwpw * rate, 1000000);
-> +
-> +	temp = timings->tREA_max / 1000;
-> +	temp = DIV_ROUND_UP(temp * rate, 1000000);
-> +
-> +	if (trwpw < temp)
-> +		trwpw = temp;
-> +
-> +	/*
-> +	 * ACCON: access timing control register
-> +	 * -------------------------------------
-> +	 * 31:18: reserved
-> +	 * 17:12: csrw, clock cycles from the falling edge of CSn to the
-> +	 *   falling edge of RDn or WRn
-> +	 * 11:11: reserved
-> +	 * 10:05: rwpw, the width of RDn or WRn in processor clock cycles
-> +	 * 04:00: rwcs, clock cycles from the rising edge of RDn or WRn to the
-> +	 *   rising edge of CSn
-> +	 */
-
-> +	temp = ACCTIMING(tc2rw, trwpw, trw2c);
-> +	/* Save chip timing */
-> +	rknand->timing = temp;
-
-	rknand->timing = ACCTIMING(tc2rw, trwpw, trw2c);
-
-no need for temp anymore
-
-> +
-> +	return 0;
-> +}
-> +
-> +static void rk_nfc_xfer_start(struct rk_nfc *nfc, u8 rw, u8 n_KB,
-> +			      dma_addr_t dma_data, dma_addr_t dma_oob)
-> +{
-> +	u32 dma_reg, fl_reg, bch_reg;
-> +
-> +	dma_reg = DMA_ST | ((!rw) << DMA_WR) | DMA_EN | (2 << DMA_AHB_SIZE) |
-> +	      (7 << DMA_BURST_SIZE) | (16 << DMA_INC_NUM);
-> +
-> +	fl_reg = (rw << FLCTL_WR) | FLCTL_XFER_EN | FLCTL_ACORRECT |
-> +		 (n_KB << FLCTL_XFER_SECTOR) | FLCTL_TOG_FIX;
-> +
-> +	if (nfc->cfg->type == NFC_V6 || nfc->cfg->type == NFC_V8) {
-> +		bch_reg = readl_relaxed(nfc->regs + nfc->cfg->bchctl_off);
-> +		bch_reg = (bch_reg & (~BCHCTL_BANK_M)) |
-> +			  (nfc->selected_bank << BCHCTL_BANK);
-> +		writel(bch_reg, nfc->regs + nfc->cfg->bchctl_off);
-> +	}
-> +
-> +	writel(dma_reg, nfc->regs + nfc->cfg->dma_cfg_off);
-> +	writel((u32)dma_data, nfc->regs + nfc->cfg->dma_data_buf_off);
-> +	writel((u32)dma_oob, nfc->regs + nfc->cfg->dma_oob_buf_off);
-> +	writel(fl_reg, nfc->regs + nfc->cfg->flctl_off);
-> +	fl_reg |= FLCTL_XFER_ST;
-> +	writel(fl_reg, nfc->regs + nfc->cfg->flctl_off);
-> +}
-> +
-> +static int rk_nfc_wait_for_xfer_done(struct rk_nfc *nfc)
-> +{
-> +	void __iomem *ptr;
-> +	int ret = 0;
-> +	u32 reg;
-> +
-> +	ptr = nfc->regs + nfc->cfg->flctl_off;
-> +
-> +	ret = readl_relaxed_poll_timeout(ptr, reg,
-> +					 reg & FLCTL_XFER_READY,
-> +					 10, NFC_TIMEOUT);
-> +
-> +	return ret;
-> +}
-> +
-> +static int rk_nfc_write_page_raw(struct nand_chip *chip, const u8 *buf,
-> +				 int oob_on, int page)
-> +{
-> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	struct mtd_info *mtd = nand_to_mtd(chip);
-> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
-> +	int i, pages_per_blk, ret = 0;
-> +
-> +	pages_per_blk = mtd->erasesize / mtd->writesize;
-> +	if ((chip->options & NAND_IS_BOOT_MEDIUM) &&
-> +	    (page < (pages_per_blk * rknand->boot_blks)) &&
-
-> +	    (rknand->boot_ecc != ecc->strength)) {
-
-CHECK: Unnecessary parentheses around 'rknand->boot_ecc != ecc->strength'
-
-/*
-* There's currently no method to notify the MTD framework that
-* a different ECC strength is in use for the boot blocks.
-*/
-
-> +		return -EIO;
-> +	}
-> +
-> +	if (!buf)
-> +		memset(nfc->buffer, 0xff, mtd->writesize + mtd->oobsize);
-> +
-> +	for (i = 0; i < ecc->steps; i++) {
-
-> +		/* Copy data to NFC buffer. */
-
-		/* Copy data to the NFC buffer. */
-
-> +		if (buf)
-> +			memcpy(rk_nfc_data_ptr(chip, i),
-> +			       rk_nfc_buf_to_data_ptr(chip, buf, i),
-> +			       ecc->size);
-> +		/*
-> +		 * The first four bytes of OOB are reserved for the
-> +		 * boot ROM. In some debugging cases, such as with a
-> +		 * read, erase and write back test these 4 bytes stored
-> +		 * in OOB also need to be written back.
-> +		 *
-> +		 * The function nand_block_bad detects bad blocks like:
-> +		 *
-> +		 * bad = chip->oob_poi[chip->badblockpos];
-> +		 *
-> +		 * chip->badblockpos == 0 for a large page NAND Flash,
-> +		 * so chip->oob_poi[0] is the bad block mask (BBM).
-> +		 *
-> +		 * The OOB data layout on the NFC is:
-> +		 *
-> +		 *    PA0  PA1  PA2  PA3  | BBM OOB1 OOB2 OOB3 | ...
-> +		 *
-> +		 * or
-> +		 *
-> +		 *    0xFF 0xFF 0xFF 0xFF | BBM OOB1 OOB2 OOB3 | ...
-> +		 *
-> +		 * The code here just swaps the first 4 bytes with the last
-> +		 * 4 bytes without losing any data.
-> +		 *
-> +		 * The chip->oob_poi data layout:
-> +		 *
-
-> +		 *   BBM OOB1 OOB2 OOB3 |......|  PA0  PA1  PA2  PA3
-
-		 *     BBM OOB1 OOB2 OOB3 |......|  PA0  PA1  PA2  PA3
-
-align layouts
-
-> +		 *
-> +		 * The rk_nfc_ooblayout_free() function already has reserved
-> +		 * these 4 bytes with:
-> +		 *
-> +		 * oob_region->offset = NFC_SYS_DATA_SIZE + 2;
-> +		 */
-> +		if (!i)
-> +			memcpy(rk_nfc_oob_ptr(chip, i),
-> +			       rk_nfc_buf_to_oob_ptr(chip, ecc->steps - 1),
-> +			       NFC_SYS_DATA_SIZE);
-> +		else
-> +			memcpy(rk_nfc_oob_ptr(chip, i),
-> +			       rk_nfc_buf_to_oob_ptr(chip, i - 1),
-> +			       NFC_SYS_DATA_SIZE);
-> +		/* Copy ECC data to the NFC buffer. */
-> +		memcpy(rk_nfc_oob_ptr(chip, i) + NFC_SYS_DATA_SIZE,
-> +		       rk_nfc_buf_to_oob_ecc_ptr(chip, i),
-> +		       ecc->bytes);
-> +	}
-> +
-> +	nand_prog_page_begin_op(chip, page, 0, NULL, 0);
-> +	rk_nfc_write_buf(nfc, buf, mtd->writesize + mtd->oobsize);
-> +	ret = nand_prog_page_end_op(chip);
-> +
-> +	return ret;
-> +}
-> +
-> +static int rk_nfc_write_page_hwecc(struct nand_chip *chip, const u8 *buf,
-> +				   int oob_on, int page)
-> +{
-> +	struct mtd_info *mtd = nand_to_mtd(chip);
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
-> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
-> +	int oob_step = (ecc->bytes > 60) ? NFC_MAX_OOB_PER_STEP :
-> +			NFC_MIN_OOB_PER_STEP;
-> +	int pages_per_blk = mtd->erasesize / mtd->writesize;
-> +	int ret = 0, i, boot_rom_mode = 0;
-> +	dma_addr_t dma_data, dma_oob;
-> +	u32 reg;
-> +	u8 *oob;
-> +
-> +	nand_prog_page_begin_op(chip, page, 0, NULL, 0);
-> +
-> +	if (buf)
-> +		memcpy(nfc->page_buf, buf, mtd->writesize);
-> +	else
-> +		memset(nfc->page_buf, 0xFF, mtd->writesize);
-> +
-> +	/*
-> +	 * The first blocks (4, 8 or 16 depending on the device) are used
-> +	 * by the boot ROM and the first 32 bits of OOB need to link to
-> +	 * the next page address in the same block. We can't directly copy
-> +	 * OOB data from the MTD framework, because this page address
-> +	 * conflicts for example with the bad block marker (BBM),
-> +	 * so we shift all OOB data including the BBM with 4 byte positions.
-> +	 * As a consequence the OOB size available to the MTD framework is
-> +	 * also reduced with 4 bytes.
-> +	 *
-> +	 *    PA0  PA1  PA2  PA3 | BBM OOB1 OOB2 OOB3 | ...
-> +	 *
-> +	 * If a NAND is not a boot medium or the page is not a boot block,
-> +	 * the first 4 bytes are left untouched by writing 0xFF to them.
-> +	 *
-> +	 *   0xFF 0xFF 0xFF 0xFF | BBM OOB1 OOB2 OOB3 | ...
-> +	 *
-> +	 * Configure the ECC algorithm supported by the boot ROM.
-> +	 */
-> +	if ((page < (pages_per_blk * rknand->boot_blks)) &&
-> +	    (chip->options & NAND_IS_BOOT_MEDIUM)) {
-> +		boot_rom_mode = 1;
-> +		if (rknand->boot_ecc != ecc->strength)
-> +			rk_nfc_hw_ecc_setup(chip, rknand->boot_ecc);
-> +	}
-> +
-> +	for (i = 0; i < ecc->steps; i++) {
-> +		if (!i) {
-> +			reg = 0xFFFFFFFF;
-> +		} else {
-> +			oob = chip->oob_poi + (i - 1) * NFC_SYS_DATA_SIZE;
-> +			reg = oob[0] | oob[1] << 8 | oob[2] << 16 |
-> +			      oob[3] << 24;
-> +		}
-> +
-> +		if (!i && boot_rom_mode)
-> +			reg = (page & (pages_per_blk - 1)) * 4;
-> +
-> +		if (nfc->cfg->type == NFC_V9)
-> +			nfc->oob_buf[i] = reg;
-> +		else
-> +			nfc->oob_buf[i * (oob_step / 4)] = reg;
-> +	}
-> +
-> +	dma_data = dma_map_single(nfc->dev, (void *)nfc->page_buf,
-> +				  mtd->writesize, DMA_TO_DEVICE);
-> +	dma_oob = dma_map_single(nfc->dev, nfc->oob_buf,
-> +				 ecc->steps * oob_step,
-> +				 DMA_TO_DEVICE);
-> +
-> +	reinit_completion(&nfc->done);
-> +	writel(INT_DMA, nfc->regs + nfc->cfg->int_en_off);
-> +
-> +	rk_nfc_xfer_start(nfc, NFC_WRITE, ecc->steps, dma_data,
-> +			  dma_oob);
-> +	ret = wait_for_completion_timeout(&nfc->done,
-> +					  msecs_to_jiffies(100));
-> +	if (!ret)
-> +		dev_warn(nfc->dev, "write: wait dma done timeout.\n");
-> +	/*
-> +	 * Whether the DMA transfer is completed or not. The driver
-> +	 * needs to check the NFC`s status register to see if the data
-> +	 * transfer was completed.
-> +	 */
-> +	ret = rk_nfc_wait_for_xfer_done(nfc);
-> +
-> +	dma_unmap_single(nfc->dev, dma_data, mtd->writesize,
-> +			 DMA_TO_DEVICE);
-> +	dma_unmap_single(nfc->dev, dma_oob, ecc->steps * oob_step,
-> +			 DMA_TO_DEVICE);
-> +
-> +	if (boot_rom_mode && rknand->boot_ecc != ecc->strength)
-> +		rk_nfc_hw_ecc_setup(chip, ecc->strength);
-> +
-> +	if (ret) {
-
-> +		ret = -EIO;
-
-remove
-
-> +		dev_err(nfc->dev,
-> +			"write: wait transfer done timeout.\n");
-
-use one line
-
-if (ret) {
-	dev_err(nfc->dev, "write: wait transfer done timeout.\n");
-	return -ETIMEDOUT;
-}
-
-Comment by Miquel in pre serie:
-I expect the rk_nandc_wiat_for_xfer_done() helper to return -ETIMEDOUT
-in case of timeout.
-
-> +	}
-> +
-
-> +	if (ret)
-> +		return ret;
-
-remove
-don't check ret again
-
-> +
-
-> +	ret = nand_prog_page_end_op(chip);
-> +
-> +	return ret;
-
-	return nand_prog_page_end_op(chip);
-
-don't use ret again
-
-> +}
-> +
-> +static int rk_nfc_write_oob(struct nand_chip *chip, int page)
-> +{
-> +	return rk_nfc_write_page_hwecc(chip, NULL, 1, page);
-> +}
-> +
-> +static int rk_nfc_read_page_raw(struct nand_chip *chip, u8 *buf, int oob_on,
-> +				int page)
-> +{
-> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	struct mtd_info *mtd = nand_to_mtd(chip);
-> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
-> +	int i, pages_per_blk;
-> +
-> +	pages_per_blk = mtd->erasesize / mtd->writesize;
-> +	if ((chip->options & NAND_IS_BOOT_MEDIUM) &&
-> +	    (page < (pages_per_blk * rknand->boot_blks)) &&
-
-> +	    (rknand->boot_ecc != ecc->strength)) {
-
-CHECK: Unnecessary parentheses around 'rknand->boot_ecc != ecc->strength'
-
-/*
-* There's currently no method to notify the MTD framework that
-* a different ECC strength is in use for the boot blocks.
-*/
-
-> +		return -EIO;
-> +	}
-> +
-> +	nand_read_page_op(chip, page, 0, NULL, 0);
-> +	rk_nfc_read_buf(nfc, nfc->buffer, mtd->writesize + mtd->oobsize);
-> +	for (i = 0; i < ecc->steps; i++) {
-> +		/*
-> +		 * The first four bytes of OOB are reserved for the
-> +		 * boot ROM. In some debugging cases, such as with a read,
-> +		 * erase and write back test, these 4 bytes also must be
-> +		 * saved somewhere, otherwise this information will be
-> +		 * lost during a write back.
-> +		 */
-> +		if (!i)
-> +			memcpy(rk_nfc_buf_to_oob_ptr(chip, ecc->steps - 1),
-> +			       rk_nfc_oob_ptr(chip, i),
-> +			       NFC_SYS_DATA_SIZE);
-> +		else
-> +			memcpy(rk_nfc_buf_to_oob_ptr(chip, i - 1),
-> +			       rk_nfc_oob_ptr(chip, i),
-> +			       NFC_SYS_DATA_SIZE);
-> +
-> +		/* Copy ECC data from the NFC buffer. */
-> +		memcpy(rk_nfc_buf_to_oob_ecc_ptr(chip, i),
-> +		       rk_nfc_oob_ptr(chip, i) + NFC_SYS_DATA_SIZE,
-> +		       ecc->bytes);
-> +
-> +		/* Copy data from the NFC buffer. */
-> +		if (buf)
-> +			memcpy(rk_nfc_buf_to_data_ptr(chip, buf, i),
-> +			       rk_nfc_data_ptr(chip, i),
-> +			       ecc->size);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static int rk_nfc_read_page_hwecc(struct nand_chip *chip, u8 *buf, int oob_on,
-> +				  int page)
-> +{
-> +	struct mtd_info *mtd = nand_to_mtd(chip);
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
-> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
-> +	int oob_step = (ecc->bytes > 60) ? NFC_MAX_OOB_PER_STEP :
-> +			NFC_MIN_OOB_PER_STEP;
-> +	int pages_per_blk = mtd->erasesize / mtd->writesize;
-> +	dma_addr_t dma_data, dma_oob;
-> +	int ret = 0, i, cnt, boot_rom_mode = 0;
-> +	int max_bitflips = 0, bch_st, ecc_fail = 0;
-> +	u8 *oob;
-> +	u32 tmp;
-> +
-> +	nand_read_page_op(chip, page, 0, NULL, 0);
-> +
-> +	dma_data = dma_map_single(nfc->dev, nfc->page_buf,
-> +				  mtd->writesize,
-> +				  DMA_FROM_DEVICE);
-> +	dma_oob = dma_map_single(nfc->dev, nfc->oob_buf,
-> +				 ecc->steps * oob_step,
-> +				 DMA_FROM_DEVICE);
-> +
-> +	/*
-> +	 * The first blocks (4, 8 or 16 depending on the device)
-> +	 * are used by the boot ROM.
-> +	 * Configure the ECC algorithm supported by the boot ROM.
-> +	 */
-> +	if ((page < (pages_per_blk * rknand->boot_blks)) &&
-> +	    (chip->options & NAND_IS_BOOT_MEDIUM)) {
-> +		boot_rom_mode = 1;
-> +		if (rknand->boot_ecc != ecc->strength)
-> +			rk_nfc_hw_ecc_setup(chip, rknand->boot_ecc);
-> +	}
-> +
-> +	reinit_completion(&nfc->done);
-> +	writel(INT_DMA, nfc->regs + nfc->cfg->int_en_off);
-> +	rk_nfc_xfer_start(nfc, NFC_READ, ecc->steps, dma_data,
-> +			  dma_oob);
-> +	ret = wait_for_completion_timeout(&nfc->done,
-> +					  msecs_to_jiffies(100));
-> +	if (!ret)
-> +		dev_warn(nfc->dev, "read: wait dma done timeout.\n");
-> +	/*
-> +	 * Whether the DMA transfer is completed or not. The driver
-> +	 * needs to check the NFC`s status register to see if the data
-> +	 * transfer was completed.
-> +	 */
-> +	ret = rk_nfc_wait_for_xfer_done(nfc);
-> +
-> +	dma_unmap_single(nfc->dev, dma_data, mtd->writesize,
-> +			 DMA_FROM_DEVICE);
-> +	dma_unmap_single(nfc->dev, dma_oob, ecc->steps * oob_step,
-> +			 DMA_FROM_DEVICE);
-> +
-> +	if (ret) {
-
-> +		ret = -EIO;
-
-remove
-
-> +		dev_err(nfc->dev,
-> +			"read: wait transfer done timeout.\n");
-
-		dev_err(nfc->dev, "read: wait transfer done timeout.\n");
-
-use one line
-
-		ret = -ETIMEDOUT;
-
-Comment by Miquel in pre serie:
-I expect the rk_nandc_wiat_for_xfer_done() helper to return -ETIMEDOUT
-in case of timeout.
-
-> +		return ret;
-
-		goto timeout_err;
-
-Exit without restoring boot_ecc setup.
-The MTD framework doesn't know that something was changed.
-Without a new chip select other pages could get the wrong ECC length.
-
-> +	}
-> +
-> +	for (i = 1; i < ecc->steps; i++) {
-> +		oob = chip->oob_poi + (i - 1) * NFC_SYS_DATA_SIZE;
-> +		if (nfc->cfg->type == NFC_V9)
-> +			tmp = nfc->oob_buf[i];
-> +		else
-> +			tmp = nfc->oob_buf[i * (oob_step / 4)];
-> +		*oob++ = (u8)tmp;
-> +		*oob++ = (u8)(tmp >> 8);
-> +		*oob++ = (u8)(tmp >> 16);
-> +		*oob++ = (u8)(tmp >> 24);
-> +	}
-> +
-> +	for (i = 0; i < (ecc->steps / 2); i++) {
-> +		bch_st = readl_relaxed(nfc->regs +
-> +				       nfc->cfg->bch_st_off + i * 4);
-> +		if (bch_st & BIT(nfc->cfg->ecc0.err_flag_bit) ||
-> +		    bch_st & BIT(nfc->cfg->ecc1.err_flag_bit)) {
-> +			mtd->ecc_stats.failed++;
-
-> +			max_bitflips = 0;
-
-remove
-max_bitflips is part of an 'if' loop and could in theory change again.
-
-
-> +			ecc_fail = 1;
-> +		} else {
-> +			cnt = ECC_ERR_CNT(bch_st, nfc->cfg->ecc0);
-> +			mtd->ecc_stats.corrected += cnt;
-> +			max_bitflips = max_t(u32, max_bitflips, cnt);
-> +
-> +			cnt = ECC_ERR_CNT(bch_st, nfc->cfg->ecc1);
-> +			mtd->ecc_stats.corrected += cnt;
-> +			max_bitflips = max_t(u32, max_bitflips, cnt);
-> +		}
-> +	}
-> +
-> +	if (buf)
-> +		memcpy(buf, nfc->page_buf, mtd->writesize);
-> +
-
-timeout_err:
-
-> +	if (boot_rom_mode && rknand->boot_ecc != ecc->strength)
-> +		rk_nfc_hw_ecc_setup(chip, ecc->strength);
-> +
-
-	if (ret)
-		return ret;
-
-> +	if (ecc_fail)
-
-	{
-
-> +		dev_err(nfc->dev, "read page: %x ecc error!\n", page);
-
-		return 0;
-	}
-
-> +
-> +	return max_bitflips;
-> +}
-> +
-> +static int rk_nfc_read_oob(struct nand_chip *chip, int page)
-> +{
-> +	return rk_nfc_read_page_hwecc(chip, NULL, 1, page);
-> +}
-> +
-> +static inline void rk_nfc_hw_init(struct rk_nfc *nfc)
-> +{
-> +	/* Disable flash wp. */
-> +	writel(FMCTL_WP, nfc->regs + NFC_FMCTL);
-> +	/* Config default timing 40ns at 150 Mhz NFC clock. */
-> +	writel(0x1081, nfc->regs + NFC_FMWAIT);
-> +	nfc->cur_timing = 0x1081;
-> +	/* Disable randomizer and DMA. */
-> +	writel(0, nfc->regs + nfc->cfg->randmz_off);
-> +	writel(0, nfc->regs + nfc->cfg->dma_cfg_off);
-> +	writel(FLCTL_RST, nfc->regs + nfc->cfg->flctl_off);
-> +}
-> +
-> +static irqreturn_t rk_nfc_irq(int irq, void *id)
-> +{
-> +	struct rk_nfc *nfc = id;
-> +	u32 sta, ien;
-> +
-> +	sta = readl_relaxed(nfc->regs + nfc->cfg->int_st_off);
-> +	ien = readl_relaxed(nfc->regs + nfc->cfg->int_en_off);
-> +
-> +	if (!(sta & ien))
-> +		return IRQ_NONE;
-> +
-> +	writel(sta, nfc->regs + nfc->cfg->int_clr_off);
-> +	writel(~sta & ien, nfc->regs + nfc->cfg->int_en_off);
-> +
-> +	complete(&nfc->done);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static int rk_nfc_enable_clks(struct device *dev, struct rk_nfc *nfc)
-> +{
-> +	int ret;
-> +
-> +	if (!IS_ERR(nfc->nfc_clk)) {
-> +		ret = clk_prepare_enable(nfc->nfc_clk);
-> +		if (ret) {
-> +			dev_err(dev, "failed to enable NFC clk\n");
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	ret = clk_prepare_enable(nfc->ahb_clk);
-> +	if (ret) {
-> +		dev_err(dev, "failed to enable ahb clk\n");
-> +		if (!IS_ERR(nfc->nfc_clk))
-> +			clk_disable_unprepare(nfc->nfc_clk);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static void rk_nfc_disable_clks(struct rk_nfc *nfc)
-> +{
-> +	if (!IS_ERR(nfc->nfc_clk))
-> +		clk_disable_unprepare(nfc->nfc_clk);
-> +	clk_disable_unprepare(nfc->ahb_clk);
-> +}
-> +
-> +static int rk_nfc_ooblayout_free(struct mtd_info *mtd, int section,
-> +				 struct mtd_oob_region *oob_region)
-> +{
-> +	struct nand_chip *chip = mtd_to_nand(mtd);
-> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
-> +
-> +	if (section)
-> +		return -ERANGE;
-> +
-> +	/*
-> +	 * The beginning of the OOB area stores the reserved data for the NFC,
-> +	 * the size of the reserved data is NFC_SYS_DATA_SIZE bytes.
-> +	 */
-> +	oob_region->length = rknand->metadata_size - NFC_SYS_DATA_SIZE - 2;
-> +	oob_region->offset = NFC_SYS_DATA_SIZE + 2;
-> +
-> +	return 0;
-> +}
-> +
-> +static int rk_nfc_ooblayout_ecc(struct mtd_info *mtd, int section,
-> +				struct mtd_oob_region *oob_region)
-> +{
-> +	struct nand_chip *chip = mtd_to_nand(mtd);
-> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
-> +
-> +	if (section)
-> +		return -ERANGE;
-> +
-> +	oob_region->length = mtd->oobsize - rknand->metadata_size;
-> +	oob_region->offset = rknand->metadata_size;
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct mtd_ooblayout_ops rk_nfc_ooblayout_ops = {
-> +	.free = rk_nfc_ooblayout_free,
-> +	.ecc = rk_nfc_ooblayout_ecc,
-> +};
-> +
-> +static int rk_nfc_ecc_init(struct device *dev, struct mtd_info *mtd)
-> +{
-> +	struct nand_chip *chip = mtd_to_nand(mtd);
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
-> +	const u8 *strengths = nfc->cfg->ecc_strengths;
-> +	u8 max_strength, nfc_max_strength;
-> +	int i;
-> +
-> +	nfc_max_strength = nfc->cfg->ecc_strengths[0];
-> +	/* If optional dt settings not present. */
-> +	if (!ecc->size || !ecc->strength ||
-> +	    ecc->strength > nfc_max_strength) {
-> +		chip->ecc.size = 1024;
-> +		ecc->steps = mtd->writesize / ecc->size;
-> +
-> +		/*
-> +		 * HW ECC always requests the number of ECC bytes per 1024 byte
-> +		 * blocks. The first 4 OOB bytes are reserved for sys data.
-> +		 */
-> +		max_strength = ((mtd->oobsize / ecc->steps) - 4) * 8 /
-> +				 fls(8 * 1024);
-> +		if (max_strength > nfc_max_strength)
-> +			max_strength = nfc_max_strength;
-> +
-> +		for (i = 0; i < 4; i++) {
-> +			if (max_strength >= strengths[i])
-> +				break;
-> +		}
-> +
-> +		if (i >= 4) {
-> +			dev_err(nfc->dev, "Unsupported ECC strength\n");
-> +			return -EOPNOTSUPP;
-> +		}
-> +
-> +		ecc->strength = strengths[i];
-> +	}
-> +	ecc->steps = mtd->writesize / ecc->size;
-> +	ecc->bytes = DIV_ROUND_UP(ecc->strength * fls(8 * chip->ecc.size), 8);
-> +
-> +	return 0;
-> +}
-> +
-> +static int rk_nfc_attach_chip(struct nand_chip *chip)
-> +{
-> +	struct mtd_info *mtd = nand_to_mtd(chip);
-> +	struct device *dev = mtd->dev.parent;
-> +	struct rk_nfc *nfc = nand_get_controller_data(chip);
-> +	struct rk_nfc_nand_chip *rknand = rk_nfc_to_rknand(chip);
-> +	struct nand_ecc_ctrl *ecc = &chip->ecc;
-> +	int new_len, new_oob_len;
-> +	void *buf;
-> +	int ret;
-> +
-> +	if (chip->options & NAND_BUSWIDTH_16) {
-> +		dev_err(dev, "16 bits bus width not supported");
-> +		return -EINVAL;
-> +	}
-> +
-> +	if (ecc->engine_type != NAND_ECC_ENGINE_TYPE_ON_HOST)
-> +		return 0;
-> +
-> +	ret = rk_nfc_ecc_init(dev, mtd);
-> +	if (ret)
-> +		return ret;
-> +
-> +	rknand->metadata_size = NFC_SYS_DATA_SIZE * ecc->steps;
-> +
-> +	if (rknand->metadata_size < NFC_SYS_DATA_SIZE + 2) {
-> +		dev_err(dev,
-> +			"Driver needs at least %d bytes of meta data\n",
-> +			NFC_SYS_DATA_SIZE + 2);
-> +		return -EIO;
-> +	}
-> +
-> +	/* Check buffer first, avoid duplicate alloc buffer. */
-> +	new_len = mtd->writesize + mtd->oobsize;
-> +	if (nfc->buffer && new_len > nfc->buffer_size) {
-> +		buf = krealloc(nfc->buffer, new_len, GFP_KERNEL | GFP_DMA);
-> +		if (!buf)
-> +			return -ENOMEM;
-> +		nfc->buffer = buf;
-> +		nfc->buffer_size = new_len;
-> +	}
-> +
-> +	new_oob_len = ecc->steps * NFC_MAX_OOB_PER_STEP;
-> +	if (nfc->oob_buf && new_oob_len > nfc->oob_buf_size) {
-> +		buf = krealloc(nfc->oob_buf, new_oob_len,
-> +			       GFP_KERNEL | GFP_DMA);
-> +		if (!buf) {
-> +			kfree(nfc->buffer);
-> +			nfc->buffer = NULL;
-> +			return -ENOMEM;
-> +		}
-> +		nfc->oob_buf = buf;
-> +		nfc->oob_buf_size = new_oob_len;
-> +	}
-> +
-> +	if (!nfc->buffer) {
-> +		nfc->buffer = kzalloc(new_len, GFP_KERNEL | GFP_DMA);
-> +		if (!nfc->buffer)
-> +			return -ENOMEM;
-> +		nfc->buffer_size = new_len;
-> +	}
-> +
-> +	if (!nfc->oob_buf) {
-> +		nfc->oob_buf = kzalloc(new_oob_len, GFP_KERNEL | GFP_DMA);
-> +		if (!nfc->oob_buf) {
-> +			kfree(nfc->buffer);
-> +			nfc->buffer = NULL;
-> +			return -ENOMEM;
-> +		}
-> +		nfc->oob_buf_size = new_oob_len;
-> +	}
-> +
-> +	nfc->page_buf = nfc->buffer;
-> +
-> +	chip->ecc.write_page_raw = rk_nfc_write_page_raw;
-> +	chip->ecc.write_page = rk_nfc_write_page_hwecc;
-> +	chip->ecc.write_oob = rk_nfc_write_oob;
-> +
-> +	chip->ecc.read_page_raw = rk_nfc_read_page_raw;
-> +	chip->ecc.read_page = rk_nfc_read_page_hwecc;
-> +	chip->ecc.read_oob = rk_nfc_read_oob;
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct nand_controller_ops rk_nfc_controller_ops = {
-> +	.attach_chip = rk_nfc_attach_chip,
-> +	.exec_op = rk_nfc_exec_op,
-
-> +	.setup_interface = rk_nfc_data_interface,
-
-	.setup_interface = rk_nfc_setup_interface,
-
-> +};
-> +
-> +static int rk_nfc_nand_chip_init(struct device *dev, struct rk_nfc *nfc,
-> +				 struct device_node *np)
-> +{
-> +	struct rk_nfc_nand_chip *rknand;
-> +	struct nand_chip *chip;
-> +	struct mtd_info *mtd;
-> +	int nsels;
-> +	u32 tmp;
-> +	int ret;
-> +	int i;
-> +
-> +	if (!of_get_property(np, "reg", &nsels))
-> +		return -ENODEV;
-> +	nsels /= sizeof(u32);
-> +	if (!nsels || nsels > NFC_MAX_NSELS) {
-> +		dev_err(dev, "invalid reg property size %d\n", nsels);
-> +		return -EINVAL;
-> +	}
-> +
-> +	rknand = devm_kzalloc(dev, sizeof(*rknand) + nsels * sizeof(u8),
-> +			      GFP_KERNEL);
-> +	if (!rknand)
-> +		return -ENOMEM;
-> +
-> +	rknand->nsels = nsels;
-> +	for (i = 0; i < nsels; i++) {
-> +		ret = of_property_read_u32_index(np, "reg", i, &tmp);
-> +		if (ret) {
-> +			dev_err(dev, "reg property failure : %d\n", ret);
-> +			return ret;
-> +		}
-> +
-> +		if (tmp >= NFC_MAX_NSELS) {
-> +			dev_err(dev, "invalid CS: %u\n", tmp);
-> +			return -EINVAL;
-> +		}
-> +
-> +		if (test_and_set_bit(tmp, &nfc->assigned_cs)) {
-> +			dev_err(dev, "CS %u already assigned\n", tmp);
-> +			return -EINVAL;
-> +		}
-> +
-> +		rknand->sels[i] = tmp;
-> +	}
-> +
-> +	chip = &rknand->chip;
-> +	chip->controller = &nfc->controller;
-> +
-> +	nand_set_flash_node(chip, np);
-> +
-> +	nand_set_controller_data(chip, nfc);
-> +
-> +	chip->options |= NAND_USES_DMA | NAND_NO_SUBPAGE_WRITE;
-> +	chip->bbt_options = NAND_BBT_USE_FLASH | NAND_BBT_NO_OOB;
-> +
-> +	/* Set default mode in case dt entry is missing. */
-> +	chip->ecc.engine_type = NAND_ECC_ENGINE_TYPE_ON_HOST;
-> +
-> +	mtd = nand_to_mtd(chip);
-> +	mtd->owner = THIS_MODULE;
-> +	mtd->dev.parent = dev;
-> +
-> +	if (!mtd->name) {
-> +		dev_err(nfc->dev, "NAND label property is mandatory\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	mtd_set_ooblayout(mtd, &rk_nfc_ooblayout_ops);
-> +	rk_nfc_hw_init(nfc);
-> +	ret = nand_scan(chip, nsels);
-> +	if (ret)
-> +		return ret;
-> +
-> +	if (chip->options & NAND_IS_BOOT_MEDIUM) {
-> +		ret = of_property_read_u32(np, "rockchip,boot-blks", &tmp);
-> +		rknand->boot_blks = ret ? 0 : tmp;
-> +
-> +		ret = of_property_read_u32(np, "rockchip,boot-ecc-strength",
-> +					   &tmp);
-> +		rknand->boot_ecc = ret ? chip->ecc.strength : tmp;
-> +	}
-> +
-> +	ret = mtd_device_register(mtd, NULL, 0);
-> +	if (ret) {
-> +		dev_err(dev, "mtd parse partition error\n");
-> +		nand_cleanup(chip);
-> +		return ret;
-> +	}
-> +
-> +	list_add_tail(&rknand->node, &nfc->chips);
-> +
-> +	return 0;
-> +}
-> +
-> +static void rk_nfc_chips_cleanup(struct rk_nfc *nfc)
-> +{
-> +	struct rk_nfc_nand_chip *rknand, *tmp;
-> +	struct nand_chip *chip;
-> +	int ret;
-> +
-> +	list_for_each_entry_safe(rknand, tmp, &nfc->chips, node) {
-> +		chip = &rknand->chip;
-> +		ret = mtd_device_unregister(nand_to_mtd(chip));
-> +		WARN_ON(ret);
-> +		nand_cleanup(chip);
-> +		list_del(&rknand->node);
-> +	}
-> +}
-> +
-> +static int rk_nfc_nand_chips_init(struct device *dev, struct rk_nfc *nfc)
-> +{
-> +	struct device_node *np = dev->of_node, *nand_np;
-> +	int nchips = of_get_child_count(np);
-> +	int ret;
-> +
-> +	if (!nchips || nchips > NFC_MAX_NSELS) {
-> +		dev_err(nfc->dev, "Incorrect number of NAND chips (%d)\n",
-> +			nchips);
-> +		return -EINVAL;
-> +	}
-> +
-> +	for_each_child_of_node(np, nand_np) {
-> +		ret = rk_nfc_nand_chip_init(dev, nfc, nand_np);
-> +		if (ret) {
-> +			of_node_put(nand_np);
-> +			rk_nfc_chips_cleanup(nfc);
-> +			return ret;
-> +		}
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static struct nfc_cfg nfc_v6_cfg = {
-> +		.type			= NFC_V6,
-> +		.ecc_strengths		= {60, 40, 24, 16},
-> +		.ecc_cfgs		= {
-> +			0x00040011, 0x00040001, 0x00000011, 0x00000001,
-> +		},
-> +		.flctl_off		= 0x08,
-> +		.bchctl_off		= 0x0C,
-> +		.dma_cfg_off		= 0x10,
-> +		.dma_data_buf_off	= 0x14,
-> +		.dma_oob_buf_off	= 0x18,
-> +		.dma_st_off		= 0x1C,
-> +		.bch_st_off		= 0x20,
-> +		.randmz_off		= 0x150,
-> +		.int_en_off		= 0x16C,
-> +		.int_clr_off		= 0x170,
-> +		.int_st_off		= 0x174,
-> +		.oob0_off		= 0x200,
-> +		.oob1_off		= 0x230,
-> +		.ecc0			= {
-> +			.err_flag_bit	= 2,
-> +			.low		= 3,
-> +			.low_mask	= 0x1F,
-> +			.low_bn		= 5,
-> +			.high		= 27,
-> +			.high_mask	= 0x1,
-> +		},
-> +		.ecc1			= {
-> +			.err_flag_bit	= 15,
-> +			.low		= 16,
-> +			.low_mask	= 0x1F,
-> +			.low_bn		= 5,
-> +			.high		= 29,
-> +			.high_mask	= 0x1,
-> +		},
-> +};
-> +
-> +static struct nfc_cfg nfc_v8_cfg = {
-> +		.type			= NFC_V8,
-> +		.ecc_strengths		= {16, 16, 16, 16},
-> +		.ecc_cfgs		= {
-> +			0x00000001, 0x00000001, 0x00000001, 0x00000001,
-> +		},
-> +		.flctl_off		= 0x08,
-> +		.bchctl_off		= 0x0C,
-> +		.dma_cfg_off		= 0x10,
-> +		.dma_data_buf_off	= 0x14,
-> +		.dma_oob_buf_off	= 0x18,
-> +		.dma_st_off		= 0x1C,
-> +		.bch_st_off		= 0x20,
-> +		.randmz_off		= 0x150,
-> +		.int_en_off		= 0x16C,
-> +		.int_clr_off		= 0x170,
-> +		.int_st_off		= 0x174,
-> +		.oob0_off		= 0x200,
-> +		.oob1_off		= 0x230,
-> +		.ecc0			= {
-> +			.err_flag_bit	= 2,
-> +			.low		= 3,
-> +			.low_mask	= 0x1F,
-> +			.low_bn		= 5,
-> +			.high		= 27,
-> +			.high_mask	= 0x1,
-> +		},
-> +		.ecc1			= {
-> +			.err_flag_bit	= 15,
-> +			.low		= 16,
-> +			.low_mask	= 0x1F,
-> +			.low_bn		= 5,
-> +			.high		= 29,
-> +			.high_mask	= 0x1,
-> +		},
-> +};
-> +
-> +static struct nfc_cfg nfc_v9_cfg = {
-> +		.type			= NFC_V9,
-> +		.ecc_strengths		= {70, 60, 40, 16},
-> +		.ecc_cfgs		= {
-> +			0x00000001, 0x06000001, 0x04000001, 0x02000001,
-> +		},
-> +		.flctl_off		= 0x10,
-> +		.bchctl_off		= 0x20,
-> +		.dma_cfg_off		= 0x30,
-> +		.dma_data_buf_off	= 0x34,
-> +		.dma_oob_buf_off	= 0x38,
-> +		.dma_st_off		= 0x3C,
-> +		.bch_st_off		= 0x150,
-> +		.randmz_off		= 0x208,
-> +		.int_en_off		= 0x120,
-> +		.int_clr_off		= 0x124,
-> +		.int_st_off		= 0x128,
-> +		.oob0_off		= 0x200,
-> +		.oob1_off		= 0x204,
-> +		.ecc0			= {
-> +			.err_flag_bit	= 2,
-> +			.low		= 3,
-> +			.low_mask	= 0x7F,
-> +			.low_bn		= 7,
-> +			.high		= 0,
-> +			.high_mask	= 0x0,
-> +		},
-> +		.ecc1			= {
-> +			.err_flag_bit	= 18,
-> +			.low		= 19,
-> +			.low_mask	= 0x7F,
-> +			.low_bn		= 7,
-> +			.high		= 0,
-> +			.high_mask	= 0x0,
-> +		},
-> +};
-> +
-> +static const struct of_device_id rk_nfc_id_table[] = {
-> +	{
-> +		.compatible = "rockchip,px30-nfc",
-> +		.data = &nfc_v9_cfg
-> +	},
-> +	{
-> +		.compatible = "rockchip,rk2928-nfc",
-> +		.data = &nfc_v6_cfg
-> +	},
-> +	{
-> +		.compatible = "rockchip,rv1108-nfc",
-> +		.data = &nfc_v8_cfg
-> +	},
-> +	{ /* sentinel */ }
-> +};
-> +MODULE_DEVICE_TABLE(of, rk_nfc_id_table);
-> +
-> +static int rk_nfc_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct rk_nfc *nfc;
-> +	int ret, irq;
-> +
-> +	nfc = devm_kzalloc(dev, sizeof(*nfc), GFP_KERNEL);
-> +	if (!nfc)
-> +		return -ENOMEM;
-> +
-> +	nand_controller_init(&nfc->controller);
-> +	INIT_LIST_HEAD(&nfc->chips);
-> +	nfc->controller.ops = &rk_nfc_controller_ops;
-> +
-> +	nfc->cfg = of_device_get_match_data(dev);
-> +	nfc->dev = dev;
-> +
-> +	init_completion(&nfc->done);
-> +
-> +	nfc->regs = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(nfc->regs)) {
-> +		ret = PTR_ERR(nfc->regs);
-> +		goto release_nfc;
-> +	}
-> +
-> +	nfc->nfc_clk = devm_clk_get(dev, "nfc");
-> +	if (IS_ERR(nfc->nfc_clk)) {
-> +		dev_dbg(dev, "no NFC clk\n");
-> +		/* Some earlier models, such as rk3066, have no NFC clk. */
-> +	}
-> +
-> +	nfc->ahb_clk = devm_clk_get(dev, "ahb");
-> +	if (IS_ERR(nfc->ahb_clk)) {
-> +		dev_err(dev, "no ahb clk\n");
-> +		ret = PTR_ERR(nfc->ahb_clk);
-> +		goto release_nfc;
-> +	}
-> +
-> +	ret = rk_nfc_enable_clks(dev, nfc);
-> +	if (ret)
-> +		goto release_nfc;
-> +
-> +	irq = platform_get_irq(pdev, 0);
-> +	if (irq < 0) {
-> +		dev_err(dev, "no NFC irq resource\n");
-> +		ret = -EINVAL;
-> +		goto clk_disable;
-> +	}
-> +
-> +	writel(0, nfc->regs + nfc->cfg->int_en_off);
-> +	ret = devm_request_irq(dev, irq, rk_nfc_irq, 0x0, "rk-nand", nfc);
-> +	if (ret) {
-> +		dev_err(dev, "failed to request NFC irq\n");
-> +		goto clk_disable;
-> +	}
-> +
-> +	platform_set_drvdata(pdev, nfc);
-> +
-> +	ret = rk_nfc_nand_chips_init(dev, nfc);
-> +	if (ret) {
-> +		dev_err(dev, "failed to init NAND chips\n");
-> +		goto clk_disable;
-> +	}
-> +	return 0;
-> +
-> +clk_disable:
-> +	rk_nfc_disable_clks(nfc);
-> +release_nfc:
-> +	return ret;
-> +}
-> +
-> +static int rk_nfc_remove(struct platform_device *pdev)
-> +{
-> +	struct rk_nfc *nfc = platform_get_drvdata(pdev);
-> +
-> +	kfree(nfc->buffer);
-> +	kfree(nfc->oob_buf);
-> +	rk_nfc_chips_cleanup(nfc);
-> +	rk_nfc_disable_clks(nfc);
-> +
-> +	return 0;
-> +}
-> +
-> +static int __maybe_unused rk_nfc_suspend(struct device *dev)
-> +{
-> +	struct rk_nfc *nfc = dev_get_drvdata(dev);
-> +
-> +	rk_nfc_disable_clks(nfc);
-> +
-> +	return 0;
-> +}
-> +
-> +static int __maybe_unused rk_nfc_resume(struct device *dev)
-> +{
-> +	struct rk_nfc *nfc = dev_get_drvdata(dev);
-> +	struct rk_nfc_nand_chip *rknand;
-> +	struct nand_chip *chip;
-> +	int ret;
-> +	u32 i;
-> +
-> +	ret = rk_nfc_enable_clks(dev, nfc);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Reset NAND chip if VCC was powered off. */
-> +	list_for_each_entry(rknand, &nfc->chips, node) {
-> +		chip = &rknand->chip;
-> +		for (i = 0; i < rknand->nsels; i++)
-> +			nand_reset(chip, i);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct dev_pm_ops rk_nfc_pm_ops = {
-> +	SET_SYSTEM_SLEEP_PM_OPS(rk_nfc_suspend, rk_nfc_resume)
-> +};
-> +
-> +static struct platform_driver rk_nfc_driver = {
-> +	.probe = rk_nfc_probe,
-> +	.remove = rk_nfc_remove,
-> +	.driver = {
-> +		.name = "rockchip-nfc",
-> +		.of_match_table = rk_nfc_id_table,
-> +		.pm = &rk_nfc_pm_ops,
-> +	},
-> +};
-> +
-> +module_platform_driver(rk_nfc_driver);
-> +
-> +MODULE_LICENSE("Dual MIT/GPL");
-> +MODULE_AUTHOR("Yifeng Zhao <yifeng.zhao@rock-chips.com>");
-> +MODULE_DESCRIPTION("Rockchip Nand Flash Controller Driver");
-> +MODULE_ALIAS("platform:rockchip-nand-controller");
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBPY3QgMDUsIDIwMjAgYXQgMTI6Mzg6MDVBTSArMDAwMCwgS3J6eXN6dG9mIFdpbGN6
+ecWEc2tpIHdyb3RlOgo+IFVuaWZ5IEVDQU0tcmVsYXRlZCBjb25zdGFudHMgaW50byBhIHNpbmds
+ZSBzZXQgb2Ygc3RhbmRhcmQgY29uc3RhbnRzCj4gZGVmaW5pbmcgbWVtb3J5IGFkZHJlc3Mgc2hp
+ZnQgdmFsdWVzIGZvciB0aGUgYnl0ZS1sZXZlbCBhZGRyZXNzIHRoYXQgY2FuCj4gYmUgdXNlZCB3
+aGVuIGFjY2Vzc2luZyB0aGUgUENJIEV4cHJlc3MgQ29uZmlndXJhdGlvbiBTcGFjZSwgYW5kIHRo
+ZW4KPiBtb3ZlIG5hdGl2ZSBQQ0kgRXhwcmVzcyBjb250cm9sbGVyIGRyaXZlcnMgdG8gdXNlIG5l
+d2x5IGludHJvZHVjZWQKPiBkZWZpbml0aW9ucyByZXRpcmluZyBhbnkgZHJpdmVyLXNwZWNpZmlj
+IG9uZXMuCj4gCj4gVGhlIEVDQU0gKCJFbmhhbmNlZCBDb25maWd1cmF0aW9uIEFjY2VzcyBNZWNo
+YW5pc20iKSBpcyBkZWZpbmVkIGJ5IHRoZQo+IFBDSSBFeHByZXNzIHNwZWNpZmljYXRpb24gKHNl
+ZSBQQ0kgRXhwcmVzcyBCYXNlIFNwZWNpZmljYXRpb24sIFJldmlzaW9uCj4gNS4wLCBWZXJzaW9u
+IDEuMCwgU2VjdGlvbiA3LjIuMiwgcC4gNjc2KSwgdGh1cyBtb3N0IGhhcmR3YXJlIHNob3VsZAo+
+IGltcGxlbWVudCBpdCB0aGUgc2FtZSB3YXkuICBNb3N0IG9mIHRoZSBuYXRpdmUgUENJIEV4cHJl
+c3MgY29udHJvbGxlcgo+IGRyaXZlcnMgZGVmaW5lIHRoZWlyIEVDQU0tcmVsYXRlZCBjb25zdGFu
+dHMsIG1hbnkgb2YgdGhlc2UgY291bGQgYmUKPiBzaGFyZWQsIG9yIHVzZSBvcGVuLWNvZGVkIHZh
+bHVlcyB3aGVuIHNldHRpbmcgdGhlIC5idXNfc2hpZnQgZmllbGQgb2YKPiB0aGUgc3RydWN0IHBj
+aV9lY2FtX29wcy4KPiAKPiBBbGwgb2YgdGhlIG5ld2x5IGFkZGVkIGNvbnN0YW50cyBzaG91bGQg
+cmVtb3ZlIGFtYmlndWl0eSBhbmQgcmVkdWNlIHRoZQo+IG51bWJlciBvZiBvcGVuLWNvZGVkIHZh
+bHVlcywgYW5kIGFsc28gY29ycmVsYXRlIG1vcmUgc3Ryb25nbHkgd2l0aCB0aGUKPiBkZXNjcmlw
+dGlvbnMgaW4gdGhlIGFmb3JlbWVudGlvbmVkIHNwZWNpZmljYXRpb24gKHNlZSBUYWJsZSA3LTEK
+PiAiRW5oYW5jZWQgQ29uZmlndXJhdGlvbiBBZGRyZXNzIE1hcHBpbmciLCBwLiA2NzcpLgo+IAo+
+IFRoZXJlIGlzIG5vIGNoYW5nZSB0byBmdW5jdGlvbmFsaXR5Lgo+IAo+IFN1Z2dlc3RlZC1ieTog
+Qmpvcm4gSGVsZ2FhcyA8YmhlbGdhYXNAZ29vZ2xlLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBLcnp5
+c3p0b2YgV2lsY3p5xYRza2kgPGt3QGxpbnV4LmNvbT4KCkkgdGhpbmsgdGhpcyBpcyBhIG5pY2Ug
+Y2xlYW51cC4gIFBDSUVfRUNBTV9ERVZfU0hJRlQgaXMgdW51c2VkLCBzbyBJJ2QKcHJvYmFibHkg
+cmVtb3ZlIGl0IGFuZCBtYXliZSByZW5hbWUgUENJRV9FQ0FNX0ZVTl9TSElGVCB0bwpQQ0lFX0VD
+QU1fREVWRk5fU0hJRlQgb3Igc2ltaWxhci4KCkkgYXNzdW1lIHRoaXMgd291bGQgYmVzdCBnbyB0
+aHJvdWdoIExvcmVuem8ncyB0cmVlLgoKPiAtLS0KPiBDaGFuZ2VkIGluIHY0Ogo+ICAgUmVtb3Zl
+ZCBjb25zdGFudHMgcmVsYXRlZCB0byAiQ0FNIi4KPiAgIEFkZGVkIG1vcmUgcGxhdGZvcm1zIGFu
+ZCBkZXZpY2VzIHRoYXQgY2FuIHVzZSBuZXcgRUNBTSBtYWNyb3MgYW5kCj4gICBjb25zdGFudHMu
+Cj4gICBSZW1vdmVkIHVudXNlZCAiLmJ1c19zaGlmdCIgaW5pdGlhbGlzZXJzIGZyb20gcGNpLXhn
+ZW5lLmMgYXMKPiAgIHhnZW5lX3BjaWVfbWFwX2J1cygpIGRpZCBub3QgdXNlIHRoZXNlLgo+IAo+
+IENoYW5nZXMgaW4gdjM6Cj4gICBVcGRhdGVkIGNvbW1pdCBtZXNzYWdlIHdvcmRpbmcuCj4gICBV
+cGRhdGVkIHJlZ2FyZGluZyBjdXN0b20gRUNBTSBidXMgc2hpZnQgdmFsdWVzIGFuZCBjb25jZXJu
+aW5nIFBDSSBiYXNlCj4gICBjb25maWd1cmF0aW9uIHNwYWNlIGFjY2VzcyBmb3IgVHlwZSAxIGFj
+Y2Vzcy4KPiAgIFJlZmFjdG9yZWQgcm9ja2NoaXBfcGNpZV9yZF9vdGhlcl9jb25mKCkgYW5kIHJv
+Y2tjaGlwX3BjaWVfd3Jfb3RoZXJfY29uZigpCj4gICBhbmQgcmVtb3ZlZCB0aGUgImJ1c2RldiIg
+dmFyaWFibGUuCj4gICBSZW1vdmVkIHN1cnBsdXMgInJlbGJ1cyIgdmFyaWFibGUgZnJvbSBud2xf
+cGNpZV9tYXBfYnVzKCkgYW5kCj4gICB4aWxpbnhfcGNpZV9tYXBfYnVzKCkuCj4gICBSZW5hbWVk
+IHRoZSBQQ0lFX0VDQU1fQUREUigpIG1hY3JvIHRvIFBDSUVfRUNBTV9PRkZTRVQoKS4KPiAKPiBD
+aGFuZ2VzIGluIHYyOgo+ICAgVXNlIFBDSUVfRUNBTV9BRERSIG1hY3JvIHdoZW4gY29tcHV0aW5n
+IEVDQU0gYWRkcmVzcyBvZmZzZXQsIGJ1dCBkcm9wCj4gICBQQ0lfU0xPVCBhbmQgUENJX0ZVTkMg
+bWFjcm9zIGZyb20gdGhlIFBDSUVfRUNBTV9BRERSIG1hY3JvIGluIGZhdm91cgo+ICAgb2YgdXNp
+bmcgYSBzaW5nbGUgdmFsdWUgZm9yIHRoZSBkZXZpY2UvZnVuY3Rpb24uCj4gCj4gIGFyY2gvcG93
+ZXJwYy9wbGF0Zm9ybXMvNHh4L3BjaS5jICAgICAgICAgICAgfCAgNyArKystLQo+ICBkcml2ZXJz
+L3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWFsLmMgICAgICAgIHwgIDggKysrLS0tCj4gIGRyaXZl
+cnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtaGlzaS5jICAgICAgfCAgNCArLS0KPiAgZHJpdmVy
+cy9wY2kvY29udHJvbGxlci9wY2ktYWFyZHZhcmsuYyAgICAgICB8IDEzICsrKy0tLS0tLQo+ICBk
+cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1ob3N0LWdlbmVyaWMuYyAgIHwgIDIgKy0KPiAgZHJp
+dmVycy9wY2kvY29udHJvbGxlci9wY2ktdGh1bmRlci1lY2FtLmMgICB8ICAyICstCj4gIGRyaXZl
+cnMvcGNpL2NvbnRyb2xsZXIvcGNpLXRodW5kZXItcGVtLmMgICAgfCAxMyArKysrKysrLS0KPiAg
+ZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2kteGdlbmUuYyAgICAgICAgICB8ICAyIC0tCj4gIGRy
+aXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1icmNtc3RiLmMgICAgICAgfCAxNiArKy0tLS0tLS0t
+LS0KPiAgZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLWlwcm9jLmMgICAgICAgICB8IDI5ICsr
+KysrKy0tLS0tLS0tLS0tLS0tLQo+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2No
+aXAtaG9zdC5jIHwgMjcgKysrKysrKysrLS0tLS0tLS0tLQo+ICBkcml2ZXJzL3BjaS9jb250cm9s
+bGVyL3BjaWUtcm9ja2NoaXAuaCAgICAgIHwgIDggKy0tLS0tCj4gIGRyaXZlcnMvcGNpL2NvbnRy
+b2xsZXIvcGNpZS10YW5nby5jICAgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL3BjaS9jb250cm9s
+bGVyL3BjaWUteGlsaW54LW53bC5jICAgIHwgIDkgKystLS0tLQo+ICBkcml2ZXJzL3BjaS9jb250
+cm9sbGVyL3BjaWUteGlsaW54LmMgICAgICAgIHwgMTEgKystLS0tLS0KPiAgZHJpdmVycy9wY2kv
+Y29udHJvbGxlci92bWQuYyAgICAgICAgICAgICAgICB8ICA1ICsrLS0KPiAgZHJpdmVycy9wY2kv
+ZWNhbS5jICAgICAgICAgICAgICAgICAgICAgICAgICB8ICA0ICstLQo+ICBpbmNsdWRlL2xpbnV4
+L3BjaS1lY2FtLmggICAgICAgICAgICAgICAgICAgIHwgMjQgKysrKysrKysrKysrKysrKysKPiAg
+MTggZmlsZXMgY2hhbmdlZCwgODIgaW5zZXJ0aW9ucygrKSwgMTA0IGRlbGV0aW9ucygtKQo+IAo+
+IGRpZmYgLS1naXQgYS9hcmNoL3Bvd2VycGMvcGxhdGZvcm1zLzR4eC9wY2kuYyBiL2FyY2gvcG93
+ZXJwYy9wbGF0Zm9ybXMvNHh4L3BjaS5jCj4gaW5kZXggYzEzZDY0YzNiMDE5Li5jZWU0MGUwYjA2
+MWMgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9wb3dlcnBjL3BsYXRmb3Jtcy80eHgvcGNpLmMKPiArKysg
+Yi9hcmNoL3Bvd2VycGMvcGxhdGZvcm1zLzR4eC9wY2kuYwo+IEBAIC0yMCw2ICsyMCw3IEBACj4g
+IAo+ICAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wY2kuaD4K
+PiArI2luY2x1ZGUgPGxpbnV4L3BjaS1lY2FtLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9pbml0Lmg+
+Cj4gICNpbmNsdWRlIDxsaW51eC9vZi5oPgo+ICAjaW5jbHVkZSA8bGludXgvZGVsYXkuaD4KPiBA
+QCAtMTU4NSwxNyArMTU4NiwxNSBAQCBzdGF0aWMgdm9pZCBfX2lvbWVtICpwcGM0eHhfcGNpZXhf
+Z2V0X2NvbmZpZ19iYXNlKHN0cnVjdCBwcGM0eHhfcGNpZXhfcG9ydCAqcG9ydAo+ICAJCQkJCQkg
+IHN0cnVjdCBwY2lfYnVzICpidXMsCj4gIAkJCQkJCSAgdW5zaWduZWQgaW50IGRldmZuKQo+ICB7
+Cj4gLQlpbnQgcmVsYnVzOwo+IC0KPiAgCS8qIFJlbW92ZSB0aGUgY2FzdHMgd2hlbiB3ZSBmaW5h
+bGx5IHJlbW92ZSB0aGUgc3R1cGlkIHZvbGF0aWxlCj4gIAkgKiBpbiBzdHJ1Y3QgcGNpX2NvbnRy
+b2xsZXIKPiAgCSAqLwo+ICAJaWYgKGJ1cy0+bnVtYmVyID09IHBvcnQtPmhvc2UtPmZpcnN0X2J1
+c25vKQo+ICAJCXJldHVybiAodm9pZCBfX2lvbWVtICopcG9ydC0+aG9zZS0+Y2ZnX2FkZHI7Cj4g
+IAo+IC0JcmVsYnVzID0gYnVzLT5udW1iZXIgLSAocG9ydC0+aG9zZS0+Zmlyc3RfYnVzbm8gKyAx
+KTsKPiAgCXJldHVybiAodm9pZCBfX2lvbWVtICopcG9ydC0+aG9zZS0+Y2ZnX2RhdGEgKwo+IC0J
+CSgocmVsYnVzICA8PCAyMCkgfCAoZGV2Zm4gPDwgMTIpKTsKPiArCQlQQ0lFX0VDQU1fQlVTKGJ1
+cy0+bnVtYmVyIC0gKHBvcnQtPmhvc2UtPmZpcnN0X2J1c25vICsgMSkpIHwKPiArCQlQQ0lFX0VD
+QU1fREVWRk4oZGV2Zm4pOwoKQ2FuIHdlIHR3ZWFrIHRoZSBwcGM0eHhfcGNpZXhfZ2V0X2NvbmZp
+Z19iYXNlKCkgaW50ZXJmYWNlIHRvIGFkZAoid2hlcmUiIGFuZCB0aGVuIGRvIHRoaXM/CgogIHJl
+dHVybiBwb3J0LT5ob3NlLT5jZmdfZGF0YSArIFBDSUVfRUNBTV9PRkZTRVQocmVsYnVzLCBkZXZm
+biwgd2hlcmUpOwoKKFNlZSBjb21tZW50IGJlbG93IGF0IFBDSUVfRUNBTV9PRkZTRVQgZGVmaW5p
+dGlvbikKCj4gIH0KPiAgCj4gIHN0YXRpYyBpbnQgcHBjNHh4X3BjaWV4X3JlYWRfY29uZmlnKHN0
+cnVjdCBwY2lfYnVzICpidXMsIHVuc2lnbmVkIGludCBkZXZmbiwKPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1hbC5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxl
+ci9kd2MvcGNpZS1hbC5jCj4gaW5kZXggZDU3ZDRlZTE1ODQ4Li43YzJhYTA0OTExM2MgMTAwNjQ0
+Cj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1hbC5jCj4gKysrIGIvZHJp
+dmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1hbC5jCj4gQEAgLTc2LDcgKzc2LDcgQEAgc3Rh
+dGljIGludCBhbF9wY2llX2luaXQoc3RydWN0IHBjaV9jb25maWdfd2luZG93ICpjZmcpCj4gIH0K
+PiAgCj4gIGNvbnN0IHN0cnVjdCBwY2lfZWNhbV9vcHMgYWxfcGNpZV9vcHMgPSB7Cj4gLQkuYnVz
+X3NoaWZ0ICAgID0gMjAsCj4gKwkuYnVzX3NoaWZ0ICAgID0gUENJRV9FQ0FNX0JVU19TSElGVCwK
+PiAgCS5pbml0ICAgICAgICAgPSAgYWxfcGNpZV9pbml0LAo+ICAJLnBjaV9vcHMgICAgICA9IHsK
+PiAgCQkubWFwX2J1cyAgICA9IGFsX3BjaWVfbWFwX2J1cywKPiBAQCAtMTM4LDggKzEzOCw2IEBA
+IHN0cnVjdCBhbF9wY2llIHsKPiAgCXN0cnVjdCBhbF9wY2llX3RhcmdldF9idXNfY2ZnIHRhcmdl
+dF9idXNfY2ZnOwo+ICB9Owo+ICAKPiAtI2RlZmluZSBQQ0lFX0VDQU1fREVWRk4oeCkJCSgoKHgp
+ICYgMHhmZikgPDwgMTIpCj4gLQo+ICAjZGVmaW5lIHRvX2FsX3BjaWUoeCkJCWRldl9nZXRfZHJ2
+ZGF0YSgoeCktPmRldikKPiAgCj4gIHN0YXRpYyBpbmxpbmUgdTMyIGFsX3BjaWVfY29udHJvbGxl
+cl9yZWFkbChzdHJ1Y3QgYWxfcGNpZSAqcGNpZSwgdTMyIG9mZnNldCkKPiBAQCAtMjI4LDcgKzIy
+Niw3IEBAIHN0YXRpYyB2b2lkIF9faW9tZW0gKmFsX3BjaWVfY29uZl9hZGRyX21hcChzdHJ1Y3Qg
+YWxfcGNpZSAqcGNpZSwKPiAgCXZvaWQgX19pb21lbSAqcGNpX2Jhc2VfYWRkcjsKPiAgCj4gIAlw
+Y2lfYmFzZV9hZGRyID0gKHZvaWQgX19pb21lbSAqKSgodWludHB0cl90KXBwLT52YV9jZmcwX2Jh
+c2UgKwo+IC0JCQkJCSAoYnVzbnJfZWNhbSA8PCAyMCkgKwo+ICsJCQkJCSBQQ0lFX0VDQU1fQlVT
+KGJ1c25yX2VjYW0pICsKPiAgCQkJCQkgUENJRV9FQ0FNX0RFVkZOKGRldmZuKSk7CgpDYW4ndCB3
+ZSBkbyB0aGlzIGFzIHRoZSBsYXN0IGxpbmUgYW5kIGRyb3AgcGNpX2Jhc2VfYWRkcj8KCiAgcmV0
+dXJuIHBwLT52YV9jZmcwX2Jhc2UgKyBQQ0lFX0VDQU1fT0ZGU0VUKHJlbGJ1cywgZGV2Zm4sIHdo
+ZXJlKTsKCj4gIAlpZiAoYnVzbnJfcmVnICE9IHRhcmdldF9idXNfY2ZnLT5yZWdfdmFsKSB7Cj4g
+QEAgLTMwMCw3ICsyOTgsNyBAQCBzdGF0aWMgdm9pZCBhbF9wY2llX2NvbmZpZ19wcmVwYXJlKHN0
+cnVjdCBhbF9wY2llICpwY2llKQo+ICAKPiAgCXRhcmdldF9idXNfY2ZnID0gJnBjaWUtPnRhcmdl
+dF9idXNfY2ZnOwo+ICAKPiAtCWVjYW1fYnVzX21hc2sgPSAocGNpZS0+ZWNhbV9zaXplID4+IDIw
+KSAtIDE7Cj4gKwllY2FtX2J1c19tYXNrID0gKHBjaWUtPmVjYW1fc2l6ZSA+PiBQQ0lFX0VDQU1f
+QlVTX1NISUZUKSAtIDE7Cj4gIAlpZiAoZWNhbV9idXNfbWFzayA+IDI1NSkgewo+ICAJCWRldl93
+YXJuKHBjaWUtPmRldiwgIkVDQU0gd2luZG93IHNpemUgaXMgbGFyZ2VyIHRoYW4gMjU2TUIuIEN1
+dHRpbmcgb2ZmIGF0IDI1NlxuIik7Cj4gIAkJZWNhbV9idXNfbWFzayA9IDI1NTsKPiBkaWZmIC0t
+Z2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1oaXNpLmMgYi9kcml2ZXJzL3Bj
+aS9jb250cm9sbGVyL2R3Yy9wY2llLWhpc2kuYwo+IGluZGV4IDVjYTg2Nzk2ZDQzYS4uYjdhZmJm
+MWQ0YmQ5IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtaGlz
+aS5jCj4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1oaXNpLmMKPiBAQCAt
+MTAwLDcgKzEwMCw3IEBAIHN0YXRpYyBpbnQgaGlzaV9wY2llX2luaXQoc3RydWN0IHBjaV9jb25m
+aWdfd2luZG93ICpjZmcpCj4gIH0KPiAgCj4gIGNvbnN0IHN0cnVjdCBwY2lfZWNhbV9vcHMgaGlz
+aV9wY2llX29wcyA9IHsKPiAtCS5idXNfc2hpZnQgICAgPSAyMCwKPiArCS5idXNfc2hpZnQgICAg
+PSBQQ0lFX0VDQU1fQlVTX1NISUZULAo+ICAJLmluaXQgICAgICAgICA9ICBoaXNpX3BjaWVfaW5p
+dCwKPiAgCS5wY2lfb3BzICAgICAgPSB7Cj4gIAkJLm1hcF9idXMgICAgPSBoaXNpX3BjaWVfbWFw
+X2J1cywKPiBAQCAtMTM1LDcgKzEzNSw3IEBAIHN0YXRpYyBpbnQgaGlzaV9wY2llX3BsYXRmb3Jt
+X2luaXQoc3RydWN0IHBjaV9jb25maWdfd2luZG93ICpjZmcpCj4gIH0KPiAgCj4gIHN0YXRpYyBj
+b25zdCBzdHJ1Y3QgcGNpX2VjYW1fb3BzIGhpc2lfcGNpZV9wbGF0Zm9ybV9vcHMgPSB7Cj4gLQku
+YnVzX3NoaWZ0ICAgID0gMjAsCj4gKwkuYnVzX3NoaWZ0ICAgID0gUENJRV9FQ0FNX0JVU19TSElG
+VCwKPiAgCS5pbml0ICAgICAgICAgPSAgaGlzaV9wY2llX3BsYXRmb3JtX2luaXQsCj4gIAkucGNp
+X29wcyAgICAgID0gewo+ICAJCS5tYXBfYnVzICAgID0gaGlzaV9wY2llX21hcF9idXMsCj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpLWFhcmR2YXJrLmMgYi9kcml2ZXJz
+L3BjaS9jb250cm9sbGVyL3BjaS1hYXJkdmFyay5jCj4gaW5kZXggMTU1OWY3OWU2M2I2Li4yMDBh
+ZDA3ZTQ3NDcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ktYWFyZHZh
+cmsuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpLWFhcmR2YXJrLmMKPiBAQCAt
+MTUsNiArMTUsNyBAQAo+ICAjaW5jbHVkZSA8bGludXgvaXJxZG9tYWluLmg+Cj4gICNpbmNsdWRl
+IDxsaW51eC9rZXJuZWwuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BjaS5oPgo+ICsjaW5jbHVkZSA8
+bGludXgvcGNpLWVjYW0uaD4KPiAgI2luY2x1ZGUgPGxpbnV4L2luaXQuaD4KPiAgI2luY2x1ZGUg
+PGxpbnV4L3BoeS9waHkuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3JtX2RldmljZS5oPgo+
+IEBAIC0xNjMsMTQgKzE2NCw2IEBACj4gICNkZWZpbmUgUENJRV9DT05GSUdfV1JfVFlQRTAJCQkw
+eGEKPiAgI2RlZmluZSBQQ0lFX0NPTkZJR19XUl9UWVBFMQkJCTB4Ygo+ICAKPiAtI2RlZmluZSBQ
+Q0lFX0NPTkZfQlVTKGJ1cykJCQkoKChidXMpICYgMHhmZikgPDwgMjApCj4gLSNkZWZpbmUgUENJ
+RV9DT05GX0RFVihkZXYpCQkJKCgoZGV2KSAmIDB4MWYpIDw8IDE1KQo+IC0jZGVmaW5lIFBDSUVf
+Q09ORl9GVU5DKGZ1bikJCQkoKChmdW4pICYgMHg3KQk8PCAxMikKPiAtI2RlZmluZSBQQ0lFX0NP
+TkZfUkVHKHJlZykJCQkoKHJlZykgJiAweGZmYykKPiAtI2RlZmluZSBQQ0lFX0NPTkZfQUREUihi
+dXMsIGRldmZuLCB3aGVyZSkJXAo+IC0JKFBDSUVfQ09ORl9CVVMoYnVzKSB8IFBDSUVfQ09ORl9E
+RVYoUENJX1NMT1QoZGV2Zm4pKQl8IFwKPiAtCSBQQ0lFX0NPTkZfRlVOQyhQQ0lfRlVOQyhkZXZm
+bikpIHwgUENJRV9DT05GX1JFRyh3aGVyZSkpCj4gLQo+ICAjZGVmaW5lIFBJT19SRVRSWV9DTlQJ
+CQk1MDAKPiAgI2RlZmluZSBQSU9fUkVUUllfREVMQVkJCQkyIC8qIDIgdXMqLwo+ICAKPiBAQCAt
+NjgzLDcgKzY3Niw3IEBAIHN0YXRpYyBpbnQgYWR2a19wY2llX3JkX2NvbmYoc3RydWN0IHBjaV9i
+dXMgKmJ1cywgdTMyIGRldmZuLAo+ICAJYWR2a193cml0ZWwocGNpZSwgcmVnLCBQSU9fQ1RSTCk7
+Cj4gIAo+ICAJLyogUHJvZ3JhbSB0aGUgYWRkcmVzcyByZWdpc3RlcnMgKi8KPiAtCXJlZyA9IFBD
+SUVfQ09ORl9BRERSKGJ1cy0+bnVtYmVyLCBkZXZmbiwgd2hlcmUpOwo+ICsJcmVnID0gUENJRV9F
+Q0FNX09GRlNFVChidXMsIGRldmZuLCAod2hlcmUgJiAweGZmYykpOwoKTWF5YmUgdGhpczoKCiAg
+cmVnID0gQUxJR05fRE9XTihQQ0lFX0VDQU1fT0ZGU0VUKGJ1cy0+bnVtYmVyLCBkZXZmbiwgd2hl
+cmUpLCA0KTsKCklJVUMsIHRoZSBwb2ludCBpcyB0aGF0IGFhcmR2YXJrIGNhbiBvbmx5IGRvIDMy
+LWJpdCwgYWxpZ25lZCwKYWNjZXNzZXMuICAiJiAweGZmYyIgZG9lcyBkbyB0aGF0LCBidXQgaXQn
+IGFsc28gYSByYW5nZSByZXN0cmljdGlvbiwKc28gaXQncyBub3QgYXMgb2J2aW91cyBhcyBpdCBj
+b3VsZCBiZSB3aGljaCBpcyBpbXBvcnRhbnQgaGVyZS4KCj4gIAlhZHZrX3dyaXRlbChwY2llLCBy
+ZWcsIFBJT19BRERSX0xTKTsKPiAgCWFkdmtfd3JpdGVsKHBjaWUsIDAsIFBJT19BRERSX01TKTsK
+PiAgCj4gQEAgLTc0NCw3ICs3MzcsNyBAQCBzdGF0aWMgaW50IGFkdmtfcGNpZV93cl9jb25mKHN0
+cnVjdCBwY2lfYnVzICpidXMsIHUzMiBkZXZmbiwKPiAgCWFkdmtfd3JpdGVsKHBjaWUsIHJlZywg
+UElPX0NUUkwpOwo+ICAKPiAgCS8qIFByb2dyYW0gdGhlIGFkZHJlc3MgcmVnaXN0ZXJzICovCj4g
+LQlyZWcgPSBQQ0lFX0NPTkZfQUREUihidXMtPm51bWJlciwgZGV2Zm4sIHdoZXJlKTsKPiArCXJl
+ZyA9IFBDSUVfRUNBTV9PRkZTRVQoYnVzLCBkZXZmbiwgKHdoZXJlICYgMHhmZmMpKTsKCkRpdHRv
+LgoKPiAgCWFkdmtfd3JpdGVsKHBjaWUsIHJlZywgUElPX0FERFJfTFMpOwo+ICAJYWR2a193cml0
+ZWwocGNpZSwgMCwgUElPX0FERFJfTVMpOwo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kv
+Y29udHJvbGxlci9wY2ktaG9zdC1nZW5lcmljLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3Bj
+aS1ob3N0LWdlbmVyaWMuYwo+IGluZGV4IGI1MTk3N2FiZmRmMS4uYzFjNjliMTE2MTVmIDEwMDY0
+NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpLWhvc3QtZ2VuZXJpYy5jCj4gKysr
+IGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ktaG9zdC1nZW5lcmljLmMKPiBAQCAtNDksNyAr
+NDksNyBAQCBzdGF0aWMgdm9pZCBfX2lvbWVtICpwY2lfZHdfZWNhbV9tYXBfYnVzKHN0cnVjdCBw
+Y2lfYnVzICpidXMsCj4gIH0KPiAgCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgcGNpX2VjYW1fb3Bz
+IHBjaV9kd19lY2FtX2J1c19vcHMgPSB7Cj4gLQkuYnVzX3NoaWZ0CT0gMjAsCj4gKwkuYnVzX3No
+aWZ0CT0gUENJRV9FQ0FNX0JVU19TSElGVCwKPiAgCS5wY2lfb3BzCT0gewo+ICAJCS5tYXBfYnVz
+CT0gcGNpX2R3X2VjYW1fbWFwX2J1cywKPiAgCQkucmVhZAkJPSBwY2lfZ2VuZXJpY19jb25maWdf
+cmVhZCwKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ktdGh1bmRlci1l
+Y2FtLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS10aHVuZGVyLWVjYW0uYwo+IGluZGV4
+IDdlODgzNWZlZTVmNy4uMjJlZDdlOTk1YjM5IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2Nv
+bnRyb2xsZXIvcGNpLXRodW5kZXItZWNhbS5jCj4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxl
+ci9wY2ktdGh1bmRlci1lY2FtLmMKPiBAQCAtMzQ2LDcgKzM0Niw3IEBAIHN0YXRpYyBpbnQgdGh1
+bmRlcl9lY2FtX2NvbmZpZ193cml0ZShzdHJ1Y3QgcGNpX2J1cyAqYnVzLCB1bnNpZ25lZCBpbnQg
+ZGV2Zm4sCj4gIH0KPiAgCj4gIGNvbnN0IHN0cnVjdCBwY2lfZWNhbV9vcHMgcGNpX3RodW5kZXJf
+ZWNhbV9vcHMgPSB7Cj4gLQkuYnVzX3NoaWZ0CT0gMjAsCj4gKwkuYnVzX3NoaWZ0CT0gUENJRV9F
+Q0FNX0JVU19TSElGVCwKPiAgCS5wY2lfb3BzCT0gewo+ICAJCS5tYXBfYnVzICAgICAgICA9IHBj
+aV9lY2FtX21hcF9idXMsCj4gIAkJLnJlYWQgICAgICAgICAgID0gdGh1bmRlcl9lY2FtX2NvbmZp
+Z19yZWFkLAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS10aHVuZGVy
+LXBlbS5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ktdGh1bmRlci1wZW0uYwo+IGluZGV4
+IDNmODQ3OTY5MTQzZS4uMWEzZjcwYWM2MWZjIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2Nv
+bnRyb2xsZXIvcGNpLXRodW5kZXItcGVtLmMKPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVy
+L3BjaS10aHVuZGVyLXBlbS5jCj4gQEAgLTE5LDYgKzE5LDE1IEBACj4gICNkZWZpbmUgUEVNX0NG
+R19XUiAweDI4Cj4gICNkZWZpbmUgUEVNX0NGR19SRCAweDMwCj4gIAo+ICsvKgo+ICsgKiBFbmhh
+bmNlZCBDb25maWd1cmF0aW9uIEFjY2VzcyBNZWNoYW5pc20gKEVDQU0pCj4gKyAqCj4gKyAqIE4u
+Qi4gVGhpcyBpcyBhIG5vbi1zdGFuZGFyZCBwbGF0Zm9ybS1zcGVjaWZpYyBFQ0FNIGJ1cyBzaGlm
+dCB2YWx1ZS4gIEZvcgo+ICsgKiBzdGFuZGFyZCB2YWx1ZXMgZGVmaW5lZCBpbiB0aGUgUENJIEV4
+cHJlc3MgQmFzZSBTcGVjaWZpY2F0aW9uIHNlZQo+ICsgKiBpbmNsdWRlL2xpbnV4L3BjaS1lY2Ft
+LmguCj4gKyAqLwo+ICsjZGVmaW5lIFRIVU5ERVJfUENJRV9FQ0FNX0JVU19TSElGVAkyNAo+ICsK
+PiAgc3RydWN0IHRodW5kZXJfcGVtX3BjaSB7Cj4gIAl1MzIJCWVhX2VudHJ5WzNdOwo+ICAJdm9p
+ZCBfX2lvbWVtCSpwZW1fcmVnX2Jhc2U7Cj4gQEAgLTQwNCw3ICs0MTMsNyBAQCBzdGF0aWMgaW50
+IHRodW5kZXJfcGVtX2FjcGlfaW5pdChzdHJ1Y3QgcGNpX2NvbmZpZ193aW5kb3cgKmNmZykKPiAg
+fQo+ICAKPiAgY29uc3Qgc3RydWN0IHBjaV9lY2FtX29wcyB0aHVuZGVyX3BlbV9lY2FtX29wcyA9
+IHsKPiAtCS5idXNfc2hpZnQJPSAyNCwKPiArCS5idXNfc2hpZnQJPSBUSFVOREVSX1BDSUVfRUNB
+TV9CVVNfU0hJRlQsCj4gIAkuaW5pdAkJPSB0aHVuZGVyX3BlbV9hY3BpX2luaXQsCj4gIAkucGNp
+X29wcwk9IHsKPiAgCQkubWFwX2J1cwk9IHBjaV9lY2FtX21hcF9idXMsCj4gQEAgLTQ0MSw3ICs0
+NTAsNyBAQCBzdGF0aWMgaW50IHRodW5kZXJfcGVtX3BsYXRmb3JtX2luaXQoc3RydWN0IHBjaV9j
+b25maWdfd2luZG93ICpjZmcpCj4gIH0KPiAgCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgcGNpX2Vj
+YW1fb3BzIHBjaV90aHVuZGVyX3BlbV9vcHMgPSB7Cj4gLQkuYnVzX3NoaWZ0CT0gMjQsCj4gKwku
+YnVzX3NoaWZ0CT0gVEhVTkRFUl9QQ0lFX0VDQU1fQlVTX1NISUZULAo+ICAJLmluaXQJCT0gdGh1
+bmRlcl9wZW1fcGxhdGZvcm1faW5pdCwKPiAgCS5wY2lfb3BzCT0gewo+ICAJCS5tYXBfYnVzCT0g
+cGNpX2VjYW1fbWFwX2J1cywKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9w
+Y2kteGdlbmUuYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpLXhnZW5lLmMKPiBpbmRleCA4
+ZTBkYjg0ZjA4OWQuLjg1ZTdjOTgyNjVlOCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250
+cm9sbGVyL3BjaS14Z2VuZS5jCj4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2kteGdl
+bmUuYwo+IEBAIC0yNTcsNyArMjU3LDYgQEAgc3RhdGljIGludCB4Z2VuZV92MV9wY2llX2VjYW1f
+aW5pdChzdHJ1Y3QgcGNpX2NvbmZpZ193aW5kb3cgKmNmZykKPiAgfQo+ICAKPiAgY29uc3Qgc3Ry
+dWN0IHBjaV9lY2FtX29wcyB4Z2VuZV92MV9wY2llX2VjYW1fb3BzID0gewo+IC0JLmJ1c19zaGlm
+dAk9IDE2LAo+ICAJLmluaXQJCT0geGdlbmVfdjFfcGNpZV9lY2FtX2luaXQsCj4gIAkucGNpX29w
+cwk9IHsKPiAgCQkubWFwX2J1cwk9IHhnZW5lX3BjaWVfbWFwX2J1cywKPiBAQCAtMjcyLDcgKzI3
+MSw2IEBAIHN0YXRpYyBpbnQgeGdlbmVfdjJfcGNpZV9lY2FtX2luaXQoc3RydWN0IHBjaV9jb25m
+aWdfd2luZG93ICpjZmcpCj4gIH0KPiAgCj4gIGNvbnN0IHN0cnVjdCBwY2lfZWNhbV9vcHMgeGdl
+bmVfdjJfcGNpZV9lY2FtX29wcyA9IHsKPiAtCS5idXNfc2hpZnQJPSAxNiwKPiAgCS5pbml0CQk9
+IHhnZW5lX3YyX3BjaWVfZWNhbV9pbml0LAo+ICAJLnBjaV9vcHMJPSB7Cj4gIAkJLm1hcF9idXMJ
+PSB4Z2VuZV9wY2llX21hcF9idXMsCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xs
+ZXIvcGNpZS1icmNtc3RiLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtYnJjbXN0Yi5j
+Cj4gaW5kZXggODVmYTdkNTRmMTFmLi41ZDFlNjQ1NTBiYmEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
+cy9wY2kvY29udHJvbGxlci9wY2llLWJyY21zdGIuYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRy
+b2xsZXIvcGNpZS1icmNtc3RiLmMKPiBAQCAtMjIsNiArMjIsNyBAQAo+ICAjaW5jbHVkZSA8bGlu
+dXgvb2ZfcGNpLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZl9wbGF0Zm9ybS5oPgo+ICAjaW5jbHVk
+ZSA8bGludXgvcGNpLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wY2ktZWNhbS5oPgo+ICAjaW5jbHVk
+ZSA8bGludXgvcHJpbnRrLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9zaXplcy5oPgo+ICAjaW5jbHVk
+ZSA8bGludXgvc2xhYi5oPgo+IEBAIC0xMTYsMTEgKzExNyw3IEBACj4gICNkZWZpbmUgUENJRV9N
+U0lfSU5UUjJfTUFTS19DTFIJCQkJMHg0NTE0Cj4gIAo+ICAjZGVmaW5lIFBDSUVfRVhUX0NGR19E
+QVRBCQkJCTB4ODAwMAo+IC0KPiAgI2RlZmluZSBQQ0lFX0VYVF9DRkdfSU5ERVgJCQkJMHg5MDAw
+Cj4gLSNkZWZpbmUgIFBDSUVfRVhUX0JVU05VTV9TSElGVAkJCQkyMAo+IC0jZGVmaW5lICBQQ0lF
+X0VYVF9TTE9UX1NISUZUCQkJCTE1Cj4gLSNkZWZpbmUgIFBDSUVfRVhUX0ZVTkNfU0hJRlQJCQkJ
+MTIKPiAgCj4gICNkZWZpbmUgUENJRV9SR1IxX1NXX0lOSVRfMQkJCQkweDkyMTAKPiAgI2RlZmlu
+ZSAgUENJRV9SR1IxX1NXX0lOSVRfMV9QRVJTVF9NQVNLCQkJMHgxCj4gQEAgLTU2OSwxNSArNTY2
+LDYgQEAgc3RhdGljIGJvb2wgYnJjbV9wY2llX2xpbmtfdXAoc3RydWN0IGJyY21fcGNpZSAqcGNp
+ZSkKPiAgCXJldHVybiBkbGEgJiYgcGx1Owo+ICB9Cj4gIAo+IC0vKiBDb25maWd1cmF0aW9uIHNw
+YWNlIHJlYWQvd3JpdGUgc3VwcG9ydCAqLwo+IC1zdGF0aWMgaW5saW5lIGludCBicmNtX3BjaWVf
+Y2ZnX2luZGV4KGludCBidXNuciwgaW50IGRldmZuLCBpbnQgcmVnKQo+IC17Cj4gLQlyZXR1cm4g
+KChQQ0lfU0xPVChkZXZmbikgJiAweDFmKSA8PCBQQ0lFX0VYVF9TTE9UX1NISUZUKQo+IC0JCXwg
+KChQQ0lfRlVOQyhkZXZmbikgJiAweDA3KSA8PCBQQ0lFX0VYVF9GVU5DX1NISUZUKQo+IC0JCXwg
+KGJ1c25yIDw8IFBDSUVfRVhUX0JVU05VTV9TSElGVCkKPiAtCQl8IChyZWcgJiB+Myk7Cj4gLX0K
+PiAtCj4gIHN0YXRpYyB2b2lkIF9faW9tZW0gKmJyY21fcGNpZV9tYXBfY29uZihzdHJ1Y3QgcGNp
+X2J1cyAqYnVzLCB1bnNpZ25lZCBpbnQgZGV2Zm4sCj4gIAkJCQkJaW50IHdoZXJlKQo+ICB7Cj4g
+QEAgLTU5MCw3ICs1NzgsNyBAQCBzdGF0aWMgdm9pZCBfX2lvbWVtICpicmNtX3BjaWVfbWFwX2Nv
+bmYoc3RydWN0IHBjaV9idXMgKmJ1cywgdW5zaWduZWQgaW50IGRldmZuLAo+ICAJCXJldHVybiBQ
+Q0lfU0xPVChkZXZmbikgPyBOVUxMIDogYmFzZSArIHdoZXJlOwo+ICAKPiAgCS8qIEZvciBkZXZp
+Y2VzLCB3cml0ZSB0byB0aGUgY29uZmlnIHNwYWNlIGluZGV4IHJlZ2lzdGVyICovCj4gLQlpZHgg
+PSBicmNtX3BjaWVfY2ZnX2luZGV4KGJ1cy0+bnVtYmVyLCBkZXZmbiwgMCk7Cj4gKwlpZHggPSBQ
+Q0lFX0VDQU1fQlVTKGJ1cy0+bnVtYmVyKSB8IFBDSUVfRUNBTV9ERVZGTihkZXZmbik7CgogIGlk
+eCA9IFBDSUVfRUNBTV9PRkZTRVQoYnVzLT5udW1iZXIsIGRldmZuLCAwKTsKCmJyY21fcGNpZV9j
+ZmdfaW5kZXgoKSBlbmZvcmNlZCAzMi1iaXQgYWxpZ25tZW50LCBidXQgd2FzIG9ubHkgZXZlcgp1
+c2VkIHdpdGggInJlZyA9PSAwIiwgc28gdGhhdCBuZXZlciBkaWQgYW55dGhpbmcuICBOb3Qgc3Vy
+ZSBpZiB0aGF0IGlzCmEgaGludCB0aGF0ICpzb21ldGhpbmcqIGhlcmUgcmVxdWlyZXMgYWxpZ25t
+ZW50PwoKPiAgCXdyaXRlbChpZHgsIHBjaWUtPmJhc2UgKyBQQ0lFX0VYVF9DRkdfSU5ERVgpOwo+
+ICAJcmV0dXJuIGJhc2UgKyBQQ0lFX0VYVF9DRkdfREFUQSArIHdoZXJlOwo+ICB9Cj4gZGlmZiAt
+LWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1pcHJvYy5jIGIvZHJpdmVycy9wY2kv
+Y29udHJvbGxlci9wY2llLWlwcm9jLmMKPiBpbmRleCA5MDVlOTM4MDgyNDMuLjMwYWJlNGI3YmU3
+MCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtaXByb2MuYwo+ICsr
+KyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1pcHJvYy5jCj4gQEAgLTYsNiArNiw3IEBA
+Cj4gIAo+ICAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wY2ku
+aD4KPiArI2luY2x1ZGUgPGxpbnV4L3BjaS1lY2FtLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9tc2ku
+aD4KPiAgI2luY2x1ZGUgPGxpbnV4L2Nsay5oPgo+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+
+Cj4gQEAgLTM5LDE1ICs0MCw3IEBACj4gIAo+ICAjZGVmaW5lIENGR19JTkRfQUREUl9NQVNLCQkw
+eDAwMDAxZmZjCj4gIAo+IC0jZGVmaW5lIENGR19BRERSX0JVU19OVU1fU0hJRlQJCTIwCj4gLSNk
+ZWZpbmUgQ0ZHX0FERFJfQlVTX05VTV9NQVNLCQkweDBmZjAwMDAwCj4gLSNkZWZpbmUgQ0ZHX0FE
+RFJfREVWX05VTV9TSElGVAkJMTUKPiAtI2RlZmluZSBDRkdfQUREUl9ERVZfTlVNX01BU0sJCTB4
+MDAwZjgwMDAKPiAtI2RlZmluZSBDRkdfQUREUl9GVU5DX05VTV9TSElGVAkJMTIKPiAtI2RlZmlu
+ZSBDRkdfQUREUl9GVU5DX05VTV9NQVNLCQkweDAwMDA3MDAwCj4gLSNkZWZpbmUgQ0ZHX0FERFJf
+UkVHX05VTV9TSElGVAkJMgo+ICAjZGVmaW5lIENGR19BRERSX1JFR19OVU1fTUFTSwkJMHgwMDAw
+MGZmYwo+IC0jZGVmaW5lIENGR19BRERSX0NGR19UWVBFX1NISUZUCQkwCj4gICNkZWZpbmUgQ0ZH
+X0FERFJfQ0ZHX1RZUEVfTUFTSwkJMHgwMDAwMDAwMwo+ICAKPiAgI2RlZmluZSBTWVNfUkNfSU5U
+WF9NQVNLCQkweGYKPiBAQCAtNDU5LDE4ICs0NTIsMTYgQEAgc3RhdGljIGlubGluZSB2b2lkIGlw
+cm9jX3BjaWVfYXBiX2Vycl9kaXNhYmxlKHN0cnVjdCBwY2lfYnVzICpidXMsCj4gIAo+ICBzdGF0
+aWMgdm9pZCBfX2lvbWVtICppcHJvY19wY2llX21hcF9lcF9jZmdfcmVnKHN0cnVjdCBpcHJvY19w
+Y2llICpwY2llLAo+ICAJCQkJCSAgICAgICB1bnNpZ25lZCBpbnQgYnVzbm8sCj4gLQkJCQkJICAg
+ICAgIHVuc2lnbmVkIGludCBzbG90LAo+IC0JCQkJCSAgICAgICB1bnNpZ25lZCBpbnQgZm4sCj4g
+KwkJCQkJICAgICAgIHVuc2lnbmVkIGludCBkZXZmbiwKPiAgCQkJCQkgICAgICAgaW50IHdoZXJl
+KQo+ICB7Cj4gIAl1MTYgb2Zmc2V0Owo+ICAJdTMyIHZhbDsKPiAgCj4gIAkvKiBFUCBkZXZpY2Ug
+YWNjZXNzICovCj4gLQl2YWwgPSAoYnVzbm8gPDwgQ0ZHX0FERFJfQlVTX05VTV9TSElGVCkgfAo+
+IC0JCShzbG90IDw8IENGR19BRERSX0RFVl9OVU1fU0hJRlQpIHwKPiAtCQkoZm4gPDwgQ0ZHX0FE
+RFJfRlVOQ19OVU1fU0hJRlQpIHwKPiAtCQkod2hlcmUgJiBDRkdfQUREUl9SRUdfTlVNX01BU0sp
+IHwKPiArCXZhbCA9IFBDSUVfRUNBTV9CVVMoYnVzbm8pIHwKPiArCQlQQ0lFX0VDQU1fREVWRk4o
+ZGV2Zm4pIHwKPiArCQlQQ0lFX0VDQU1fUkVHKHdoZXJlICYgQ0ZHX0FERFJfUkVHX05VTV9NQVNL
+KSB8Cj4gIAkJKDEgJiBDRkdfQUREUl9DRkdfVFlQRV9NQVNLKTsKCiAgdmFsID0gQUxJR05fRE9X
+TihQQ0lFX0VDQU1fT0ZGU0VUKGJ1c25vLCBkZXZmbiwgd2hlcmUpLCA0KSB8IDE7CgpMb29rcyBs
+aWtlIHRoZXJlIHJlYWxseSBzaG91bGQgYmUgYSAjZGVmaW5lIGZvciB0aGF0ICIxIiBhdCB0aGUg
+ZW5kLgoiMSAmIENGR19BRERSX0NGR19UWVBFX01BU0siIGlzIGp1c3QgIjEgJiAweDMiLCB3aGlj
+aCB3b3VsZCBiZQp1bm5lY2Vzc2FyaWx5IHZlcmJvc2UgaWYgdGhlcmUgd2VyZSBhIENGR19BRERS
+X0NGR19UWVBFXzEgb3Igd2hhdGV2ZXIKdGhhdCBpcy4KCj4gIAlpcHJvY19wY2llX3dyaXRlX3Jl
+ZyhwY2llLCBJUFJPQ19QQ0lFX0NGR19BRERSLCB2YWwpOwo+IEBAIC01NzQsOCArNTY1LDYgQEAg
+c3RhdGljIGludCBpcHJvY19wY2llX2NvbmZpZ19yZWFkKHN0cnVjdCBwY2lfYnVzICpidXMsIHVu
+c2lnbmVkIGludCBkZXZmbiwKPiAgCQkJCSAgaW50IHdoZXJlLCBpbnQgc2l6ZSwgdTMyICp2YWwp
+Cj4gIHsKPiAgCXN0cnVjdCBpcHJvY19wY2llICpwY2llID0gaXByb2NfZGF0YShidXMpOwo+IC0J
+dW5zaWduZWQgaW50IHNsb3QgPSBQQ0lfU0xPVChkZXZmbik7Cj4gLQl1bnNpZ25lZCBpbnQgZm4g
+PSBQQ0lfRlVOQyhkZXZmbik7Cj4gIAl1bnNpZ25lZCBpbnQgYnVzbm8gPSBidXMtPm51bWJlcjsK
+PiAgCXZvaWQgX19pb21lbSAqY2ZnX2RhdGFfcDsKPiAgCXVuc2lnbmVkIGludCBkYXRhOwo+IEBA
+IC01OTAsNyArNTc5LDcgQEAgc3RhdGljIGludCBpcHJvY19wY2llX2NvbmZpZ19yZWFkKHN0cnVj
+dCBwY2lfYnVzICpidXMsIHVuc2lnbmVkIGludCBkZXZmbiwKPiAgCQlyZXR1cm4gcmV0Owo+ICAJ
+fQo+ICAKPiAtCWNmZ19kYXRhX3AgPSBpcHJvY19wY2llX21hcF9lcF9jZmdfcmVnKHBjaWUsIGJ1
+c25vLCBzbG90LCBmbiwgd2hlcmUpOwo+ICsJY2ZnX2RhdGFfcCA9IGlwcm9jX3BjaWVfbWFwX2Vw
+X2NmZ19yZWcocGNpZSwgYnVzbm8sIGRldmZuLCB3aGVyZSk7Cj4gIAo+ICAJaWYgKCFjZmdfZGF0
+YV9wKQo+ICAJCXJldHVybiBQQ0lCSU9TX0RFVklDRV9OT1RfRk9VTkQ7Cj4gQEAgLTYzMSwxMyAr
+NjIwLDExIEBAIHN0YXRpYyB2b2lkIF9faW9tZW0gKmlwcm9jX3BjaWVfbWFwX2NmZ19idXMoc3Ry
+dWN0IGlwcm9jX3BjaWUgKnBjaWUsCj4gIAkJCQkJICAgIGludCBidXNubywgdW5zaWduZWQgaW50
+IGRldmZuLAo+ICAJCQkJCSAgICBpbnQgd2hlcmUpCj4gIHsKPiAtCXVuc2lnbmVkIHNsb3QgPSBQ
+Q0lfU0xPVChkZXZmbik7Cj4gLQl1bnNpZ25lZCBmbiA9IFBDSV9GVU5DKGRldmZuKTsKPiAgCXUx
+NiBvZmZzZXQ7Cj4gIAo+ICAJLyogcm9vdCBjb21wbGV4IGFjY2VzcyAqLwo+ICAJaWYgKGJ1c25v
+ID09IDApIHsKPiAtCQlpZiAoc2xvdCA+IDAgfHwgZm4gPiAwKQo+ICsJCWlmIChQQ0lFX0VDQU1f
+REVWRk4oZGV2Zm4pID4gMCkKPiAgCQkJcmV0dXJuIE5VTEw7Cj4gIAo+ICAJCWlwcm9jX3BjaWVf
+d3JpdGVfcmVnKHBjaWUsIElQUk9DX1BDSUVfQ0ZHX0lORF9BRERSLAo+IEBAIC02NDksNyArNjM2
+LDcgQEAgc3RhdGljIHZvaWQgX19pb21lbSAqaXByb2NfcGNpZV9tYXBfY2ZnX2J1cyhzdHJ1Y3Qg
+aXByb2NfcGNpZSAqcGNpZSwKPiAgCQkJcmV0dXJuIChwY2llLT5iYXNlICsgb2Zmc2V0KTsKPiAg
+CX0KPiAgCj4gLQlyZXR1cm4gaXByb2NfcGNpZV9tYXBfZXBfY2ZnX3JlZyhwY2llLCBidXNubywg
+c2xvdCwgZm4sIHdoZXJlKTsKPiArCXJldHVybiBpcHJvY19wY2llX21hcF9lcF9jZmdfcmVnKHBj
+aWUsIGJ1c25vLCBkZXZmbiwgd2hlcmUpOwo+ICB9Cj4gIAo+ICBzdGF0aWMgdm9pZCBfX2lvbWVt
+ICppcHJvY19wY2llX2J1c19tYXBfY2ZnX2J1cyhzdHJ1Y3QgcGNpX2J1cyAqYnVzLAo+IGRpZmYg
+LS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAtaG9zdC5jIGIvZHJp
+dmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWhvc3QuYwo+IGluZGV4IDBiYjJmYjNl
+OGEwYi4uNGMwNjlmOGZhNDIwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIv
+cGNpZS1yb2NrY2hpcC1ob3N0LmMKPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUt
+cm9ja2NoaXAtaG9zdC5jCj4gQEAgLTE2MCwxMiArMTYwLDExIEBAIHN0YXRpYyBpbnQgcm9ja2No
+aXBfcGNpZV9yZF9vdGhlcl9jb25mKHN0cnVjdCByb2NrY2hpcF9wY2llICpyb2NrY2hpcCwKPiAg
+CQkJCSAgICAgICBzdHJ1Y3QgcGNpX2J1cyAqYnVzLCB1MzIgZGV2Zm4sCj4gIAkJCQkgICAgICAg
+aW50IHdoZXJlLCBpbnQgc2l6ZSwgdTMyICp2YWwpCj4gIHsKPiAtCXUzMiBidXNkZXY7Cj4gKwl2
+b2lkIF9faW9tZW0gKmFkZHI7Cj4gIAo+IC0JYnVzZGV2ID0gUENJRV9FQ0FNX0FERFIoYnVzLT5u
+dW1iZXIsIFBDSV9TTE9UKGRldmZuKSwKPiAtCQkJCVBDSV9GVU5DKGRldmZuKSwgd2hlcmUpOwo+
+ICsJYWRkciA9IHJvY2tjaGlwLT5yZWdfYmFzZSArIFBDSUVfRUNBTV9PRkZTRVQoYnVzLCBkZXZm
+biwgd2hlcmUpOwoKSWYgeW91IGFkb3B0IHRoZSBidXMtPm51bWJlciBjaGFuZ2UsCgogIGFkZHIg
+PSByb2NrY2hpcC0+cmVnX2Jhc2UgKyBQQ0lFX0VDQU1fT0ZGU0VUKGJ1cy0+bnVtYmVyLCBkZXZm
+biwgd2hlcmUpOwoKPiAtCWlmICghSVNfQUxJR05FRChidXNkZXYsIHNpemUpKSB7Cj4gKwlpZiAo
+IUlTX0FMSUdORUQoKHVpbnRwdHJfdClhZGRyLCBzaXplKSkgewo+ICAJCSp2YWwgPSAwOwo+ICAJ
+CXJldHVybiBQQ0lCSU9TX0JBRF9SRUdJU1RFUl9OVU1CRVI7Cj4gIAl9Cj4gQEAgLTE3OCwxMSAr
+MTc3LDExIEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNpZV9yZF9vdGhlcl9jb25mKHN0cnVjdCBy
+b2NrY2hpcF9wY2llICpyb2NrY2hpcCwKPiAgCQkJCQkJQVhJX1dSQVBQRVJfVFlQRTFfQ0ZHKTsK
+PiAgCj4gIAlpZiAoc2l6ZSA9PSA0KSB7Cj4gLQkJKnZhbCA9IHJlYWRsKHJvY2tjaGlwLT5yZWdf
+YmFzZSArIGJ1c2Rldik7Cj4gKwkJKnZhbCA9IHJlYWRsKGFkZHIpOwo+ICAJfSBlbHNlIGlmIChz
+aXplID09IDIpIHsKPiAtCQkqdmFsID0gcmVhZHcocm9ja2NoaXAtPnJlZ19iYXNlICsgYnVzZGV2
+KTsKPiArCQkqdmFsID0gcmVhZHcoYWRkcik7Cj4gIAl9IGVsc2UgaWYgKHNpemUgPT0gMSkgewo+
+IC0JCSp2YWwgPSByZWFkYihyb2NrY2hpcC0+cmVnX2Jhc2UgKyBidXNkZXYpOwo+ICsJCSp2YWwg
+PSByZWFkYihhZGRyKTsKPiAgCX0gZWxzZSB7Cj4gIAkJKnZhbCA9IDA7Cj4gIAkJcmV0dXJuIFBD
+SUJJT1NfQkFEX1JFR0lTVEVSX05VTUJFUjsKPiBAQCAtMTk0LDExICsxOTMsMTEgQEAgc3RhdGlj
+IGludCByb2NrY2hpcF9wY2llX3dyX290aGVyX2NvbmYoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJv
+Y2tjaGlwLAo+ICAJCQkJICAgICAgIHN0cnVjdCBwY2lfYnVzICpidXMsIHUzMiBkZXZmbiwKPiAg
+CQkJCSAgICAgICBpbnQgd2hlcmUsIGludCBzaXplLCB1MzIgdmFsKQo+ICB7Cj4gLQl1MzIgYnVz
+ZGV2Owo+ICsJdm9pZCBfX2lvbWVtICphZGRyOwo+ICAKPiAtCWJ1c2RldiA9IFBDSUVfRUNBTV9B
+RERSKGJ1cy0+bnVtYmVyLCBQQ0lfU0xPVChkZXZmbiksCj4gLQkJCQlQQ0lfRlVOQyhkZXZmbiks
+IHdoZXJlKTsKPiAtCWlmICghSVNfQUxJR05FRChidXNkZXYsIHNpemUpKQo+ICsJYWRkciA9IHJv
+Y2tjaGlwLT5yZWdfYmFzZSArIFBDSUVfRUNBTV9PRkZTRVQoYnVzLCBkZXZmbiwgd2hlcmUpOwoK
+RGl0dG8uCgo+ICsJaWYgKCFJU19BTElHTkVEKCh1aW50cHRyX3QpYWRkciwgc2l6ZSkpCj4gIAkJ
+cmV0dXJuIFBDSUJJT1NfQkFEX1JFR0lTVEVSX05VTUJFUjsKPiAgCj4gIAlpZiAocGNpX2lzX3Jv
+b3RfYnVzKGJ1cy0+cGFyZW50KSkKPiBAQCAtMjA5LDExICsyMDgsMTEgQEAgc3RhdGljIGludCBy
+b2NrY2hpcF9wY2llX3dyX290aGVyX2NvbmYoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlw
+LAo+ICAJCQkJCQlBWElfV1JBUFBFUl9UWVBFMV9DRkcpOwo+ICAKPiAgCWlmIChzaXplID09IDQp
+Cj4gLQkJd3JpdGVsKHZhbCwgcm9ja2NoaXAtPnJlZ19iYXNlICsgYnVzZGV2KTsKPiArCQl3cml0
+ZWwodmFsLCBhZGRyKTsKPiAgCWVsc2UgaWYgKHNpemUgPT0gMikKPiAtCQl3cml0ZXcodmFsLCBy
+b2NrY2hpcC0+cmVnX2Jhc2UgKyBidXNkZXYpOwo+ICsJCXdyaXRldyh2YWwsIGFkZHIpOwo+ICAJ
+ZWxzZSBpZiAoc2l6ZSA9PSAxKQo+IC0JCXdyaXRlYih2YWwsIHJvY2tjaGlwLT5yZWdfYmFzZSAr
+IGJ1c2Rldik7Cj4gKwkJd3JpdGViKHZhbCwgYWRkcik7Cj4gIAllbHNlCj4gIAkJcmV0dXJuIFBD
+SUJJT1NfQkFEX1JFR0lTVEVSX05VTUJFUjsKPiAgCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNp
+L2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5oIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ll
+LXJvY2tjaGlwLmgKPiBpbmRleCBjN2QwMTc4ZmM4YzIuLjE2NTBhNTA4NzQ1MCAxMDA2NDQKPiAt
+LS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaAo+ICsrKyBiL2RyaXZl
+cnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5oCj4gQEAgLTEzLDYgKzEzLDcgQEAKPiAg
+Cj4gICNpbmNsdWRlIDxsaW51eC9rZXJuZWwuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3BjaS5oPgo+
+ICsjaW5jbHVkZSA8bGludXgvcGNpLWVjYW0uaD4KPiAgCj4gIC8qCj4gICAqIFRoZSB1cHBlciAx
+NiBiaXRzIG9mIFBDSUVfQ0xJRU5UX0NPTkZJRyBhcmUgYSB3cml0ZSBtYXNrIGZvciB0aGUgbG93
+ZXIgMTYKPiBAQCAtMTc4LDEzICsxNzksNiBAQAo+ICAjZGVmaW5lIE1JTl9BWElfQUREUl9CSVRT
+X1BBU1NFRAkJOAo+ICAjZGVmaW5lIFBDSUVfUkNfU0VORF9QTUVfT0ZGCQkJMHgxMTk2MAo+ICAj
+ZGVmaW5lIFJPQ0tDSElQX1ZFTkRPUl9JRAkJCTB4MWQ4Nwo+IC0jZGVmaW5lIFBDSUVfRUNBTV9C
+VVMoeCkJCQkoKCh4KSAmIDB4ZmYpIDw8IDIwKQo+IC0jZGVmaW5lIFBDSUVfRUNBTV9ERVYoeCkJ
+CQkoKCh4KSAmIDB4MWYpIDw8IDE1KQo+IC0jZGVmaW5lIFBDSUVfRUNBTV9GVU5DKHgpCQkJKCgo
+eCkgJiAweDcpIDw8IDEyKQo+IC0jZGVmaW5lIFBDSUVfRUNBTV9SRUcoeCkJCQkoKCh4KSAmIDB4
+ZmZmKSA8PCAwKQo+IC0jZGVmaW5lIFBDSUVfRUNBTV9BRERSKGJ1cywgZGV2LCBmdW5jLCByZWcp
+IFwKPiAtCSAgKFBDSUVfRUNBTV9CVVMoYnVzKSB8IFBDSUVfRUNBTV9ERVYoZGV2KSB8IFwKPiAt
+CSAgIFBDSUVfRUNBTV9GVU5DKGZ1bmMpIHwgUENJRV9FQ0FNX1JFRyhyZWcpKQo+ICAjZGVmaW5l
+IFBDSUVfTElOS19JU19MMih4KSBcCj4gIAkoKCh4KSAmIFBDSUVfQ0xJRU5UX0RFQlVHX0xUU1NN
+X01BU0spID09IFBDSUVfQ0xJRU5UX0RFQlVHX0xUU1NNX0wyKQo+ICAjZGVmaW5lIFBDSUVfTElO
+S19VUCh4KSBcCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS10YW5n
+by5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXRhbmdvLmMKPiBpbmRleCBkMDkzYThj
+ZTRiYjEuLjhmMGQ2OTVhZmJkZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVy
+L3BjaWUtdGFuZ28uYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS10YW5nby5j
+Cj4gQEAgLTIwOCw3ICsyMDgsNyBAQCBzdGF0aWMgaW50IHNtcDg3NTlfY29uZmlnX3dyaXRlKHN0
+cnVjdCBwY2lfYnVzICpidXMsIHVuc2lnbmVkIGludCBkZXZmbiwKPiAgfQo+ICAKPiAgc3RhdGlj
+IGNvbnN0IHN0cnVjdCBwY2lfZWNhbV9vcHMgc21wODc1OV9lY2FtX29wcyA9IHsKPiAtCS5idXNf
+c2hpZnQJPSAyMCwKPiArCS5idXNfc2hpZnQJPSBQQ0lFX0VDQU1fQlVTX1NISUZULAo+ICAJLnBj
+aV9vcHMJPSB7Cj4gIAkJLm1hcF9idXMJPSBwY2lfZWNhbV9tYXBfYnVzLAo+ICAJCS5yZWFkCQk9
+IHNtcDg3NTlfY29uZmlnX3JlYWQsCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xs
+ZXIvcGNpZS14aWxpbngtbndsLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUteGlsaW54
+LW53bC5jCj4gaW5kZXggZjNjZjdkNjE5MjRmLi5jZmQxMmI3NWJhY2IgMTAwNjQ0Cj4gLS0tIGEv
+ZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXhpbGlueC1ud2wuYwo+ICsrKyBiL2RyaXZlcnMv
+cGNpL2NvbnRyb2xsZXIvcGNpZS14aWxpbngtbndsLmMKPiBAQCAtMTgsNiArMTgsNyBAQAo+ICAj
+aW5jbHVkZSA8bGludXgvb2ZfcGxhdGZvcm0uaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mX2lycS5o
+Pgo+ICAjaW5jbHVkZSA8bGludXgvcGNpLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wY2ktZWNhbS5o
+Pgo+ICAjaW5jbHVkZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gICNpbmNsdWRlIDxsaW51
+eC9pcnFjaGlwL2NoYWluZWRfaXJxLmg+Cj4gIAo+IEBAIC0xMjQsOCArMTI1LDYgQEAKPiAgI2Rl
+ZmluZSBFX0VDQU1fQ1JfRU5BQkxFCQlCSVQoMCkKPiAgI2RlZmluZSBFX0VDQU1fU0laRV9MT0MJ
+CQlHRU5NQVNLKDIwLCAxNikKPiAgI2RlZmluZSBFX0VDQU1fU0laRV9TSElGVAkJMTYKPiAtI2Rl
+ZmluZSBFQ0FNX0JVU19MT0NfU0hJRlQJCTIwCj4gLSNkZWZpbmUgRUNBTV9ERVZfTE9DX1NISUZU
+CQkxMgo+ICAjZGVmaW5lIE5XTF9FQ0FNX1ZBTFVFX0RFRkFVTFQJCTEyCj4gIAo+ICAjZGVmaW5l
+IENGR19ETUFfUkVHX0JBUgkJCUdFTk1BU0soMiwgMCkKPiBAQCAtMjQwLDE1ICsyMzksMTEgQEAg
+c3RhdGljIHZvaWQgX19pb21lbSAqbndsX3BjaWVfbWFwX2J1cyhzdHJ1Y3QgcGNpX2J1cyAqYnVz
+LCB1bnNpZ25lZCBpbnQgZGV2Zm4sCj4gIAkJCQkgICAgICBpbnQgd2hlcmUpCj4gIHsKPiAgCXN0
+cnVjdCBud2xfcGNpZSAqcGNpZSA9IGJ1cy0+c3lzZGF0YTsKPiAtCWludCByZWxidXM7Cj4gIAo+
+ICAJaWYgKCFud2xfcGNpZV92YWxpZF9kZXZpY2UoYnVzLCBkZXZmbikpCj4gIAkJcmV0dXJuIE5V
+TEw7Cj4gIAo+IC0JcmVsYnVzID0gKGJ1cy0+bnVtYmVyIDw8IEVDQU1fQlVTX0xPQ19TSElGVCkg
+fAo+IC0JCQkoZGV2Zm4gPDwgRUNBTV9ERVZfTE9DX1NISUZUKTsKPiAtCj4gLQlyZXR1cm4gcGNp
+ZS0+ZWNhbV9iYXNlICsgcmVsYnVzICsgd2hlcmU7Cj4gKwlyZXR1cm4gcGNpZS0+ZWNhbV9iYXNl
+ICsgUENJRV9FQ0FNX09GRlNFVChidXMsIGRldmZuLCB3aGVyZSk7CgpEaXR0by4KCj4gIH0KPiAg
+Cj4gIC8qIFBDSWUgb3BlcmF0aW9ucyAqLwo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250
+cm9sbGVyL3BjaWUteGlsaW54LmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUteGlsaW54
+LmMKPiBpbmRleCA4NTIzYmU2MWJiYTUuLjQ5YmRlNTI2NmFhMiAxMDA2NDQKPiAtLS0gYS9kcml2
+ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUteGlsaW54LmMKPiArKysgYi9kcml2ZXJzL3BjaS9jb250
+cm9sbGVyL3BjaWUteGlsaW54LmMKPiBAQCAtMjEsNiArMjEsNyBAQAo+ICAjaW5jbHVkZSA8bGlu
+dXgvb2ZfcGxhdGZvcm0uaD4KPiAgI2luY2x1ZGUgPGxpbnV4L29mX2lycS5oPgo+ICAjaW5jbHVk
+ZSA8bGludXgvcGNpLmg+Cj4gKyNpbmNsdWRlIDxsaW51eC9wY2ktZWNhbS5oPgo+ICAjaW5jbHVk
+ZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gIAo+ICAjaW5jbHVkZSAiLi4vcGNpLmgiCj4g
+QEAgLTg2LDEwICs4Nyw2IEBACj4gIC8qIFBoeSBTdGF0dXMvQ29udHJvbCBSZWdpc3RlciBkZWZp
+bml0aW9ucyAqLwo+ICAjZGVmaW5lIFhJTElOWF9QQ0lFX1JFR19QU0NSX0xOS1VQCUJJVCgxMSkK
+PiAgCj4gLS8qIEVDQU0gZGVmaW5pdGlvbnMgKi8KPiAtI2RlZmluZSBFQ0FNX0JVU19OVU1fU0hJ
+RlQJCTIwCj4gLSNkZWZpbmUgRUNBTV9ERVZfTlVNX1NISUZUCQkxMgo+IC0KPiAgLyogTnVtYmVy
+IG9mIE1TSSBJUlFzICovCj4gICNkZWZpbmUgWElMSU5YX05VTV9NU0lfSVJRUwkJMTI4Cj4gIAo+
+IEBAIC0xODMsMTUgKzE4MCwxMSBAQCBzdGF0aWMgdm9pZCBfX2lvbWVtICp4aWxpbnhfcGNpZV9t
+YXBfYnVzKHN0cnVjdCBwY2lfYnVzICpidXMsCj4gIAkJCQkJIHVuc2lnbmVkIGludCBkZXZmbiwg
+aW50IHdoZXJlKQo+ICB7Cj4gIAlzdHJ1Y3QgeGlsaW54X3BjaWVfcG9ydCAqcG9ydCA9IGJ1cy0+
+c3lzZGF0YTsKPiAtCWludCByZWxidXM7Cj4gIAo+ICAJaWYgKCF4aWxpbnhfcGNpZV92YWxpZF9k
+ZXZpY2UoYnVzLCBkZXZmbikpCj4gIAkJcmV0dXJuIE5VTEw7Cj4gIAo+IC0JcmVsYnVzID0gKGJ1
+cy0+bnVtYmVyIDw8IEVDQU1fQlVTX05VTV9TSElGVCkgfAo+IC0JCSAoZGV2Zm4gPDwgRUNBTV9E
+RVZfTlVNX1NISUZUKTsKPiAtCj4gLQlyZXR1cm4gcG9ydC0+cmVnX2Jhc2UgKyByZWxidXMgKyB3
+aGVyZTsKPiArCXJldHVybiBwb3J0LT5yZWdfYmFzZSArIFBDSUVfRUNBTV9PRkZTRVQoYnVzLCBk
+ZXZmbiwgd2hlcmUpOwoKQW5kIGhlcmUuICBCb3ksIHdlIHJlYWxseSBjYXJnby1jdWx0ZWQgdGhh
+dCAicmVsYnVzIiBuYW1lLCBldmVuIHdoZW4KdGhlcmUncyBubyAiYmFzZSIgdG8gYmUgcmVsYXRp
+dmUgdG8sIGRpZG4ndCB3ZT8KCj4gIH0KPiAgCj4gIC8qIFBDSWUgb3BlcmF0aW9ucyAqLwo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3ZtZC5jIGIvZHJpdmVycy9wY2kvY29u
+dHJvbGxlci92bWQuYwo+IGluZGV4IGY2OWVmOGM4OWY3Mi4uYjE0NzUxODQ1MjYzIDEwMDY0NAo+
+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvdm1kLmMKPiArKysgYi9kcml2ZXJzL3BjaS9j
+b250cm9sbGVyL3ZtZC5jCj4gQEAgLTExLDYgKzExLDcgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L21v
+ZHVsZS5oPgo+ICAjaW5jbHVkZSA8bGludXgvbXNpLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wY2ku
+aD4KPiArI2luY2x1ZGUgPGxpbnV4L3BjaS1lY2FtLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9zcmN1
+Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9yY3VsaXN0Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9yY3Vw
+ZGF0ZS5oPgo+IEBAIC0zMDIsOCArMzAzLDggQEAgc3RhdGljIGNoYXIgX19pb21lbSAqdm1kX2Nm
+Z19hZGRyKHN0cnVjdCB2bWRfZGV2ICp2bWQsIHN0cnVjdCBwY2lfYnVzICpidXMsCj4gIAkJCQkg
+IHVuc2lnbmVkIGludCBkZXZmbiwgaW50IHJlZywgaW50IGxlbikKPiAgewo+ICAJY2hhciBfX2lv
+bWVtICphZGRyID0gdm1kLT5jZmdiYXIgKwo+IC0JCQkgICAgICgoYnVzLT5udW1iZXIgLSB2bWQt
+PmJ1c25fc3RhcnQpIDw8IDIwKSArCj4gLQkJCSAgICAgKGRldmZuIDw8IDEyKSArIHJlZzsKPiAr
+CQkJICAgICBQQ0lFX0VDQU1fQlVTKGJ1cy0+bnVtYmVyIC0gdm1kLT5idXNuX3N0YXJ0KSArCj4g
+KwkJCSAgICAgUENJRV9FQ0FNX0RFVkZOKGRldmZuKSArIFBDSUVfRUNBTV9SRUcocmVnKTsKCiAg
+UENJRV9FQ0FNX09GRlNFVChidXMtPm51bWJlciAtIHZtZC0+YnVzbl9zdGFydCwgLi4uKTsKCj4g
+IAlpZiAoKGFkZHIgLSB2bWQtPmNmZ2JhcikgKyBsZW4gPj0KPiAgCSAgICByZXNvdXJjZV9zaXpl
+KCZ2bWQtPmRldi0+cmVzb3VyY2VbVk1EX0NGR0JBUl0pKQoKTG9va3MgbGlrZSBzb3J0IG9mIGEg
+d2VpcmQgd2F5IHRvIGJvdW5kcyBjaGVjayB0aGlzLiAgTWF5YmUgdGhpcwppbnN0ZWFkPwoKICB1
+MzIgb2Zmc2V0ID0gUENJRV9FQ0FNX09GRlNFVChidXMtPm51bWJlciAtIHZtZC0+YnVzbl9zdGFy
+dCwgLi4uKTsKCiAgaWYgKG9mZnNldCArIGxlbiA+PSByZXNvdXJjZV9zaXplKCZ2bWQtPmRldi0+
+cmVzb3VyY2VbVk1EX0NGR0JBUl0pKQogICAgcmV0dXJuIE5VTEw7CgogIHJldHVybiB2bWQtPmNm
+Z2JhciArIG9mZnNldDsKCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2VjYW0uYyBiL2RyaXZl
+cnMvcGNpL2VjYW0uYwo+IGluZGV4IDhmMDY1YTQyZmMxYS4uZmZkMDEwMjkwMDg0IDEwMDY0NAo+
+IC0tLSBhL2RyaXZlcnMvcGNpL2VjYW0uYwo+ICsrKyBiL2RyaXZlcnMvcGNpL2VjYW0uYwo+IEBA
+IC0xNDksNyArMTQ5LDcgQEAgRVhQT1JUX1NZTUJPTF9HUEwocGNpX2VjYW1fbWFwX2J1cyk7Cj4g
+IAo+ICAvKiBFQ0FNIG9wcyAqLwo+ICBjb25zdCBzdHJ1Y3QgcGNpX2VjYW1fb3BzIHBjaV9nZW5l
+cmljX2VjYW1fb3BzID0gewo+IC0JLmJ1c19zaGlmdAk9IDIwLAo+ICsJLmJ1c19zaGlmdAk9IFBD
+SUVfRUNBTV9CVVNfU0hJRlQsCj4gIAkucGNpX29wcwk9IHsKPiAgCQkubWFwX2J1cwk9IHBjaV9l
+Y2FtX21hcF9idXMsCj4gIAkJLnJlYWQJCT0gcGNpX2dlbmVyaWNfY29uZmlnX3JlYWQsCj4gQEAg
+LTE2MSw3ICsxNjEsNyBAQCBFWFBPUlRfU1lNQk9MX0dQTChwY2lfZ2VuZXJpY19lY2FtX29wcyk7
+Cj4gICNpZiBkZWZpbmVkKENPTkZJR19BQ1BJKSAmJiBkZWZpbmVkKENPTkZJR19QQ0lfUVVJUktT
+KQo+ICAvKiBFQ0FNIG9wcyBmb3IgMzItYml0IGFjY2VzcyBvbmx5IChub24tY29tcGxpYW50KSAq
+Lwo+ICBjb25zdCBzdHJ1Y3QgcGNpX2VjYW1fb3BzIHBjaV8zMmJfb3BzID0gewo+IC0JLmJ1c19z
+aGlmdAk9IDIwLAo+ICsJLmJ1c19zaGlmdAk9IFBDSUVfRUNBTV9CVVNfU0hJRlQsCj4gIAkucGNp
+X29wcwk9IHsKPiAgCQkubWFwX2J1cwk9IHBjaV9lY2FtX21hcF9idXMsCj4gIAkJLnJlYWQJCT0g
+cGNpX2dlbmVyaWNfY29uZmlnX3JlYWQzMiwKPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9saW51eC9w
+Y2ktZWNhbS5oIGIvaW5jbHVkZS9saW51eC9wY2ktZWNhbS5oCj4gaW5kZXggMWFmNWNiMDJlZjdm
+Li4zY2E1Njc0ZmRmNWUgMTAwNjQ0Cj4gLS0tIGEvaW5jbHVkZS9saW51eC9wY2ktZWNhbS5oCj4g
+KysrIGIvaW5jbHVkZS9saW51eC9wY2ktZWNhbS5oCj4gQEAgLTksNiArOSwzMCBAQAo+ICAjaW5j
+bHVkZSA8bGludXgva2VybmVsLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2Uu
+aD4KPiAgCj4gKy8qCj4gKyAqIE1lbW9yeSBhZGRyZXNzIHNoaWZ0IHZhbHVlcyBmb3IgdGhlIGJ5
+dGUtbGV2ZWwgYWRkcmVzcyB0aGF0Cj4gKyAqIGNhbiBiZSB1c2VkIHdoZW4gYWNjZXNzaW5nIHRo
+ZSBQQ0kgRXhwcmVzcyBDb25maWd1cmF0aW9uIFNwYWNlLgo+ICsgKi8KPiArCj4gKy8qCj4gKyAq
+IEVuaGFuY2VkIENvbmZpZ3VyYXRpb24gQWNjZXNzIE1lY2hhbmlzbSAoRUNBTSkKPiArICoKPiAr
+ICogU2VlIFBDSSBFeHByZXNzIEJhc2UgU3BlY2lmaWNhdGlvbiwgUmV2aXNpb24gNS4wLCBWZXJz
+aW9uIDEuMCwKPiArICogU2VjdGlvbiA3LjIuMiwgVGFibGUgNy0xLCBwLiA2NzcuCj4gKyAqLwo+
+ICsjZGVmaW5lIFBDSUVfRUNBTV9CVVNfU0hJRlQJMjAgLyogQnVzIE51bWJlciAqLwo+ICsjZGVm
+aW5lIFBDSUVfRUNBTV9ERVZfU0hJRlQJMTUgLyogRGV2aWNlIE51bWJlciAqLwo+ICsjZGVmaW5l
+IFBDSUVfRUNBTV9GVU5fU0hJRlQJMTIgLyogRnVuY3Rpb24gTnVtYmVyICovCj4gKwo+ICsjZGVm
+aW5lIFBDSUVfRUNBTV9CVVMoeCkJKCgoeCkgJiAweGZmKSA8PCBQQ0lFX0VDQU1fQlVTX1NISUZU
+KQo+ICsjZGVmaW5lIFBDSUVfRUNBTV9ERVZGTih4KQkoKCh4KSAmIDB4ZmYpIDw8IFBDSUVfRUNB
+TV9GVU5fU0hJRlQpCj4gKyNkZWZpbmUgUENJRV9FQ0FNX1JFRyh4KQkoKHgpICYgMHhmZmYpCj4g
+Kwo+ICsjZGVmaW5lIFBDSUVfRUNBTV9PRkZTRVQoYnVzLCBkZXZmbiwgd2hlcmUpIFwKPiArICAg
+IChQQ0lFX0VDQU1fQlVTKGJ1cy0+bnVtYmVyKSB8IFwKCklmIHlvdSB1c2UgIlBDSUVfRUNBTV9C
+VVMoYnVzKSIgaGVyZSBzbyB0aGUgY2FsbGVyIGRvZXMgdGhlCiJidXMtPm51bWJlciIgcGFydCwg
+dGhpcyB3aWxsIGJlIHVzYWJsZSBpbiBhIGZldyBtb3JlIHBsYWNlcy4KCj4gKyAgICAgUENJRV9F
+Q0FNX0RFVkZOKGRldmZuKSB8IFwKPiArICAgICBQQ0lFX0VDQU1fUkVHKHdoZXJlKSkKPiArCj4g
+IC8qCj4gICAqIHN0cnVjdCB0byBob2xkIHBjaSBvcHMgYW5kIGJ1cyBzaGlmdCBvZiB0aGUgY29u
+ZmlnIHdpbmRvdwo+ICAgKiBmb3IgYSBQQ0kgY29udHJvbGxlci4KPiAtLSAKPiAyLjI4LjAKPiAK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
+Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
