@@ -1,56 +1,62 @@
-Return-Path: <SRS0=EOzb=E4=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=W4bh=E5=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.6 required=3.0 tests=BAYES_00,DKIM_INVALID,
-	DKIM_SIGNED,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5215C56202
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2020 13:33:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71EB1C2D0E4
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2020 07:22:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8273120758
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Nov 2020 13:33:25 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id BC9D32072C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Nov 2020 07:22:15 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Eir1yitq"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8273120758
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vyGCw9Ul"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org BC9D32072C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Do58XZ3wsEQGtOongYp477RJXp3Yn/GcwZrIx0Qb3dQ=; b=Eir1yitqHxeYk0HNuBHO0E7yOh
-	e7z8eoJhVZo0jA72f8j8pYB8qdfH6cq5+T3sBEcP0Yi2T8XTRSDIWMXygsKKlavg+tZKdLp59fCVv
-	BrNFIZKXKUD+FPakiHHPA07n0veF6A/giYHmCEkjEGdfj4WuB2GRQroCP4ZVal0GbSjRItHViYfsj
-	8/miHiHgAbX42seFL/U+DDs/HuDpyg50QBCxh//x3xJkplqpcjTL9QMnz7StQnyBUKOdCLAFd0tsw
-	FZ2SWXXX7f08qyJW73yexQo3nJwyquD3VNPsHDG8ycDqN0g/wQ+VBfUiongtYtAYZxg3w3UPCClRu
-	cWJLHZfQ==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=vQOuIvpy7Po454m4ov8oCVYXlj/9jBGbc+b/BSDl6C0=; b=vyGCw9Ulb5pS4m43YvOY9xJRn
+	aotvsujNRwwfLEQKF2cE39dqbOsdO9co6fOFFKm482g1J2lH02U+wga0Ed8M/JNc1jmleZ8s7399R
+	XDSr9fyBQ6Pr2GQ6Qu40N21uwh9EYwx1dTVLjPfs9GEsOv+EzjRJDIr7161E1yeqhWvlm6tcVCbXN
+	RD/J8O5lLQQyvOKip9jy9KV/HROr9I7OJR5ovzQrL1HmgTwn65M9JUPkaX5GiRjANnuubz9mC7KIr
+	rT5GCxcDk4D1jvp08J3f6X2MQdoI+kYdwxrBWyfS12aB1RQbuN8U5Cs7/kQmyjGoeGWVjbwvHXmvN
+	02ZqT+FKg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kgpUQ-0000Wq-L4; Sun, 22 Nov 2020 13:33:14 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1kh6Ap-0002FZ-Si; Mon, 23 Nov 2020 07:22:07 +0000
+Received: from relay11.mail.gandi.net ([217.70.178.231])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kgpUO-0000WR-Un; Sun, 22 Nov 2020 13:33:13 +0000
-Received: from p508fd741.dip0.t-ipconnect.de ([80.143.215.65]
- helo=phil.localnet)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kgpUJ-0000rh-LB; Sun, 22 Nov 2020 14:33:07 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Subject: [GIT PULL] Rockchip dts fixes for 5.10
-Date: Sun, 22 Nov 2020 14:33:05 +0100
-Message-ID: <11641389.O9o76ZdvQC@phil>
+ id 1kh6Ak-0002ES-OH; Mon, 23 Nov 2020 07:22:04 +0000
+Received: from bootlin.com (atoulouse-258-1-33-168.w90-55.abo.wanadoo.fr
+ [90.55.104.168])
+ (Authenticated sender: maxime.chevallier@bootlin.com)
+ by relay11.mail.gandi.net (Postfix) with ESMTPSA id 4592F100009;
+ Mon, 23 Nov 2020 07:21:24 +0000 (UTC)
+Date: Mon, 23 Nov 2020 08:21:22 +0100
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Subject: Re: [PATCH v3 2/3] media: rockchip: Introduce driver for Rockhip's
+ camera interface
+Message-ID: <20201123082122.49a08ebb@bootlin.com>
+In-Reply-To: <CAAEAJfCcPRnyjPozXG9rjovO+cJ6ZZBadShs_X9DQCrjSj7mUw@mail.gmail.com>
+References: <20200922165535.1356622-1-maxime.chevallier@bootlin.com>
+ <20200922165535.1356622-3-maxime.chevallier@bootlin.com>
+ <CAAEAJfCcPRnyjPozXG9rjovO+cJ6ZZBadShs_X9DQCrjSj7mUw@mail.gmail.com>
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201122_083313_007962_E717AAC5 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20201123_022203_011824_F7FAE373 
+X-CRM114-Status: GOOD (  33.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,58 +69,318 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-List-Id: <soc.lore.kernel.org>
-Cc: linux-rockchip@lists.infradead.org, soc@kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ devicetree <devicetree@vger.kernel.org>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>, "open
+ list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Helen Koike <helen.koike@collabora.com>, Rob Herring <robh+dt@kernel.org>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
+ linux-media <linux-media@vger.kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd, Kevin, Olof,
+Hi Ezequiel, and thanks a lot for the review !
 
-please find below some Rockchip devicetree fixes for the 5.10 cycle.
-Please pull!
+On Fri, 2 Oct 2020 14:35:28 -0300
+Ezequiel Garcia <ezequiel@vanguardiasur.com.ar> wrote:
 
-Thanks
-Heiko
+> Hi Maxime,
+>
+>Thanks to Dafna, I found the patch ^_^
+>
+>The driver looks real good. Just a few comments below.
+>
+>Is the driver passing latest v4l2-compliance tests?
 
-The following changes since commit 3650b228f83adda7e5ee532e2b90429c03f7b9ec:
+I'll post them along with the next iteration of the series.
 
-  Linux 5.10-rc1 (2020-10-25 15:14:11 -0700)
+>> +config VIDEO_ROCKCHIP_VIP
+>> +       tristate "Rockchip VIP (Video InPut) Camera Interface"
+>> +       depends on VIDEO_DEV && VIDEO_V4L2
+>> +       depends on ARCH_ROCKCHIP || COMPILE_TEST
+>> +       select VIDEOBUF2_DMA_SG
+>> +       select VIDEOBUF2_DMA_CONTIG
+>> +       select V4L2_FWNODE
+>> +       select V4L2_MEM2MEM_DEV
+>> +       help
+>> +         This is a v4l2 driver for Rockchip SOC Camera interface.
+>> +
+>> +         To compile this driver as a module choose m here.
+>> +  
+>
+>Please add ... "the module will be called {the name}".
 
-are available in the Git repository at:
+Sure, I will do !
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.10-rockchip-dtsfixes1
+[...]
 
-for you to fetch changes up to 7327c8b98e2e14c47021eea14d1ab268086a6408:
+>> +#define VIP_REQ_BUFS_MIN       1  
+>
+>I think you might want to have more than 1 buffer
+>as minimum. How about 3? Two for the ping and pong,
+>and one more in the queue.
 
-  arm64: dts: rockchip: Reorder LED triggers from mmc devices on rk3399-roc-pc. (2020-11-08 01:34:53 +0100)
+Yes you're correct, 3 should be the strict minimum required buffers
+here, I didn't update that after adding the dual-buffering mode.
 
-----------------------------------------------------------------
-Fixed ordering for MMC devices on rk3399, due to a mmc change jumbling
-all ordering, a fix to make the Odroig Go Advance actually power down
-and using the correct clock name on the NanoPi R2S.
+>> +#define VIP_MIN_WIDTH          64
+>> +#define VIP_MIN_HEIGHT         64
+>> +#define VIP_MAX_WIDTH          8192
+>> +#define VIP_MAX_HEIGHT         8192
+>> +
+>> +#define RK_VIP_PLANE_Y                 0
+>> +#define RK_VIP_PLANE_CBCR              1
+>> +
+>> +#define VIP_FETCH_Y_LAST_LINE(VAL) ((VAL) & 0x1fff)
+>> +/* Check if swap y and c in bt1120 mode */
+>> +#define VIP_FETCH_IS_Y_FIRST(VAL) ((VAL) & 0xf)
+>> +
+>> +/* Get xsubs and ysubs for fourcc formats
+>> + *
+>> + * @xsubs: horizontal color samples in a 4*4 matrix, for yuv
+>> + * @ysubs: vertical color samples in a 4*4 matrix, for yuv
+>> + */
+>> +static int fcc_xysubs(u32 fcc, u32 *xsubs, u32 *ysubs)  
+>
+>See below, you should be using v4l2_fill_pixfmt_mp.
+>
+>> +{
+>> +       switch (fcc) {
+>> +       case V4L2_PIX_FMT_NV16:
+>> +       case V4L2_PIX_FMT_NV61:
+>> +               *xsubs = 2;
+>> +               *ysubs = 1;
+>> +               break;
+>> +       case V4L2_PIX_FMT_NV21:
+>> +       case V4L2_PIX_FMT_NV12:
+>> +               *xsubs = 2;
+>> +               *ysubs = 2;
+>> +               break;
+>> +       default:
+>> +               return -EINVAL;
+>> +       }
+>> +
+>> +       return 0;
+>> +}
+>> +
+>> +static const struct vip_output_fmt out_fmts[] = {
+>> +       {
+>> +               .fourcc = V4L2_PIX_FMT_NV16,
+>> +               .cplanes = 2,  
+>
+>From what I can see, you are only using this
+>information to calculate bytesperline and sizeimage,
+>so you should be using the v4l2_fill_pixfmt_mp() helper.
 
-----------------------------------------------------------------
-David Bauer (1):
-      arm64: dts: rockchip: fix NanoPi R2S GMAC clock name
-
-Maciej Matuszczyk (1):
-      arm64: dts: rockchip: Remove system-power-controller from pmic on Odroid Go Advance
-
-Markus Reichl (2):
-      arm64: dts: rockchip: Assign a fixed index to mmc devices on rk3399 boards.
-      arm64: dts: rockchip: Reorder LED triggers from mmc devices on rk3399-roc-pc.
-
- arch/arm64/boot/dts/rockchip/rk3326-odroid-go2.dts | 1 -
- arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s.dts | 2 +-
- arch/arm64/boot/dts/rockchip/rk3399-roc-pc.dtsi    | 4 ++--
- arch/arm64/boot/dts/rockchip/rk3399.dtsi           | 3 +++
- 4 files changed, 6 insertions(+), 4 deletions(-)
+You're correct, it indeed makes things much easier and allowed to
+removed a lot of redundant info here !
 
 
+>> +static void rk_vip_set_fmt(struct rk_vip_stream *stream,
+>> +                          struct v4l2_pix_format_mplane *pixm,
+>> +                          bool try)
+>> +{
+>> +       struct rk_vip_device *dev = stream->vipdev;
+>> +       struct v4l2_subdev_format sd_fmt;
+>> +       const struct vip_output_fmt *fmt;
+>> +       struct v4l2_rect input_rect;
+>> +       unsigned int planes, imagesize = 0;
+>> +       u32 xsubs = 1, ysubs = 1;
+>> +       int i;
+>> +  
+>
+>I was expecting to see some is_busy or is_streaming check
+>here, have you tested what happens if you change the format
+>while streaming, or after buffers are queued?
 
+Yes correct. I used the stream->state private flag here, but I it was
+also brought to my attention that there also exists a vb2_is_busy()
+helper, but I'm unsure if it would be correct to use it here.
+
+
+>> +
+>> +static int rk_vip_g_input(struct file *file, void *fh, unsigned int *i)
+>> +{
+>> +       *i = 0;
+>> +       return 0;
+>> +}
+>> +
+>> +static int rk_vip_s_input(struct file *file, void *fh, unsigned int i)
+>> +{  
+>
+>Only one input, why do you need to support this ioctl at all?
+
+I actually saw a fair amount of existing drivers implementing these
+callbacks even for only one input, so I don't really know if I should
+remove it or not ?
+
+[...]
+
+>> +
+>> +static void rk_vip_vb_done(struct rk_vip_stream *stream,
+>> +                          struct vb2_v4l2_buffer *vb_done)
+>> +{
+>> +       vb2_set_plane_payload(&vb_done->vb2_buf, 0,
+>> +                             stream->pixm.plane_fmt[0].sizeimage);
+>> +       vb_done->vb2_buf.timestamp = ktime_get_ns();  
+>
+>vb_done->vb2_buf.sequence = stream->frame_idx; ?
+
+Good catch, thanks !
+
+>> +       vb2_buffer_done(&vb_done->vb2_buf, VB2_BUF_STATE_DONE);
+>> +}
+>> +
+
+[...]
+
+>> diff --git a/drivers/media/platform/rockchip/vip/dev.c b/drivers/media/platform/rockchip/vip/dev.c
+>> new file mode 100644
+>> index 000000000000..d9b64f088c37
+>> --- /dev/null
+>> +++ b/drivers/media/platform/rockchip/vip/dev.c
+>> @@ -0,0 +1,408 @@
+>> +// SPDX-License-Identifier: GPL-2.0
+>> +/*
+>> + * Rockchip VIP Camera Interface Driver
+>> + *
+>> + * Copyright (C) 2018 Rockchip Electronics Co., Ltd.
+>> + * Copyright (C) 2020 Maxime Chevallier <maxime.chevallier@bootlin.com>
+>> + */
+>> +
+>> +#include <linux/clk.h>
+>> +#include <linux/delay.h>
+>> +#include <linux/interrupt.h>
+>> +#include <linux/module.h>
+>> +#include <linux/of.h>
+>> +#include <linux/of_graph.h>
+>> +#include <linux/of_platform.h>
+>> +#include <linux/of_reserved_mem.h>
+>> +#include <linux/reset.h>
+>> +#include <linux/pm_runtime.h>
+>> +#include <linux/pinctrl/consumer.h>
+>> +#include <media/v4l2-fwnode.h>
+>> +
+>> +#include "dev.h"
+>> +#include "regs.h"
+>> +
+>> +#define RK_VIP_VERNO_LEN               10
+>> +
+
+[...]
+
+>> +static const char * const px30_vip_clks[] = {
+>> +       "aclk_vip",
+>> +       "hclk_vip",
+>> +       "pclk_vip",
+>> +       "vip_out",  
+>
+>These clock names don't seem to match with the devicetree.
+>I wonder how have you been testing this, to be honest ^_^  ?
+>
+>Isn't probe failing with mismatching clock names?
+
+Aw you're correct, the change was in my tree but wasn't commited, my
+bad. Sorry about that.
+
+>> +};
+>> +
+>> +static const char * const px30_vip_rsts[] = {
+>> +       "rst_vip_a",
+>> +       "rst_vip_h",
+>> +       "rst_vip_pclkin",
+>> +};
+>> +
+>> +static const struct vip_match_data px30_vip_match_data = {
+>> +       .chip_id = CHIP_PX30_VIP,
+>> +       .clks = px30_vip_clks,
+>> +       .clks_num = ARRAY_SIZE(px30_vip_clks),
+>> +       .rsts = px30_vip_rsts,
+>> +       .rsts_num = ARRAY_SIZE(px30_vip_rsts),
+>> +};
+>> +
+>> +static const struct of_device_id rk_vip_plat_of_match[] = {
+>> +       {
+>> +               .compatible = "rockchip,px30-vip",
+>> +               .data = &px30_vip_match_data,
+>> +       },
+>> +       {},
+>> +};
+>> +
+>> +static irqreturn_t rk_vip_irq_handler(int irq, void *ctx)
+>> +{
+>> +       struct device *dev = ctx;
+>> +       struct rk_vip_device *vip_dev = dev_get_drvdata(dev);
+>> +
+>> +       rk_vip_irq_pingpong(vip_dev);
+>> +  
+>
+>Why not just making rk_vip_irq_pingpong the interrupt handler?
+
+You're also correct, this is a remaining piece of code from when both
+single-buffer and double-buffer'd acquisition were coexisting.
+
+>> +       return IRQ_HANDLED;
+>> +}
+>> +
+>> +static void rk_vip_disable_sys_clk(struct rk_vip_device *vip_dev)
+>> +{
+>> +       int i;
+>> +
+>> +       for (i = vip_dev->clk_size - 1; i >= 0; i--)
+>> +               clk_disable_unprepare(vip_dev->clks[i]);  
+>
+>Please use clk_bulk_disable_unprepare.
+>> +}
+>> +
+>> +static int rk_vip_enable_sys_clk(struct rk_vip_device *vip_dev)
+>> +{
+>> +       int i, ret = -EINVAL;
+>> +
+>> +       for (i = 0; i < vip_dev->clk_size; i++) {
+>> +               ret = clk_prepare_enable(vip_dev->clks[i]);
+>> +  
+>
+>Please use clk_bulk_prepare_enable.
+
+I'll switch to that, thanks
+
+[...]
+
+>> +       ret = of_reserved_mem_device_init(dev);
+>> +       if (ret)
+>> +               v4l2_warn(v4l2_dev, "No reserved memory region assign to VIP\n");
+>> +  
+>
+>How about
+>
+>        ret = of_reserved_mem_device_init(dev);
+>        if (ret && ret != -ENODEV)
+>                return ret;
+>
+>instead?
+>
+>Also, it seems you are missing a of_reserved_mem_device_release
+>on the error paths and plat_remove.
+
+You're correct, I'll add that.
+
+Thanks again for the thourough review !
+
+Maxime
+
+>Thanks,
+>Ezequiel
 
 _______________________________________________
 Linux-rockchip mailing list
