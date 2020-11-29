@@ -2,22 +2,22 @@ Return-Path: <SRS0=xO8Q=FD=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0716BC64E7D
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Nov 2020 05:46:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36302C64E7B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Nov 2020 16:38:51 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5895C20825
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Nov 2020 05:46:09 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 3C36420738
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Nov 2020 16:38:49 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="KPL9eUEj"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5895C20825
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=gtsys.com.hk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="nSwkZh1u"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C36420738
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
@@ -25,45 +25,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=EaGoNcCSO88Vli90QKJDrMWGOf3xfDySzwFilCp7bCk=; b=KPL9eUEjMutV4uBjWmu/dyEvh
-	Ibp98cv0GJyeONokhwMfX3wbYvtO8Ej/DMvMnIzOLu/Qh/OJiSm3H3hJUtfhQiFKtlgzAQ7MiUGUh
-	nYeZRvbFGmTw7rEVflgmT6Z9vT5TjCuDGVMa+H0EFHifXSoeVLozzq6xa09bpilkRNvOZlXG3xKgB
-	mHDtcvKCU5GiqLUPwDr7Lf0ixU450eXS7qH71froDeeIyH/r7PRONnW5zf4jjOdGHv7W6HXdgUepC
-	837lqYg61IxEoLHyvqLYUfxTb0NG6pkNMYARCoI9iQ3xS/aSFxrT6QB1RLu4wSQpVqjMCVyEX7Zi9
-	seHqAHM+Q==;
+	 bh=cFHiSXuegDlFi+f4kNACiOa8b6wva3F6MqSbYzMDPpk=; b=nSwkZh1u57klyIN0KA0V2+7ut
+	CO2NLPqn5ps67wRICuvq+6chvWCdwtNM/7cmfFv4nCjKj85avKuYT9VmzQ02XpiLpYR2+oP8W+NcK
+	TCqxALGdYGiePP631mbiZvYRY2fjVBNVulQpsSngSMBL5XLAPIYRu65kw0mcXrLhzO5+pwaaLp2Rc
+	3S/+xej2hRlPdOk7qPGFuthpmv3xohmZBg9AMeeA7VvxZv4qAr0DQDpPxfzwtzl+PwHAINGfOrcUq
+	GrDx+5O3F9OJg+NmNMeu+npcfNtf6cNxxMYwgCbluuMjNFQBOip6DgTA8cBEvCGo2IBhzdBgN85/M
+	pEBzs09Yw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjFX7-0006Bf-IJ; Sun, 29 Nov 2020 05:46:01 +0000
-Received: from [27.111.83.178] (helo=mail.gtsys.com.hk)
+	id 1kjPil-0001oB-Ry; Sun, 29 Nov 2020 16:38:43 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjFWw-00069f-EJ; Sun, 29 Nov 2020 05:45:52 +0000
-Received: from localhost (localhost [127.0.0.1])
- by mail.gtsys.com.hk (Postfix) with ESMTP id 9B302201456F;
- Sun, 29 Nov 2020 13:45:42 +0800 (HKT)
-X-Virus-Scanned: Debian amavisd-new at gtsys.com.hk
-Received: from mail.gtsys.com.hk ([127.0.0.1])
- by localhost (mail.gtsys.com.hk [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Z1g5G2GaXUdd; Sun, 29 Nov 2020 13:45:42 +0800 (HKT)
-Received: from s01.gtsys.com.hk (unknown [10.128.4.2])
- by mail.gtsys.com.hk (Postfix) with ESMTP id 8234E20020FC;
- Sun, 29 Nov 2020 13:45:42 +0800 (HKT)
-Received: from armhf2.gtsys.com.hk (unknown [10.128.4.15])
- by s01.gtsys.com.hk (Postfix) with ESMTP id 7C4A6C019E2;
- Sun, 29 Nov 2020 13:45:42 +0800 (HKT)
-Received: by armhf2.gtsys.com.hk (Postfix, from userid 1000)
- id 7D9EE200756; Sun, 29 Nov 2020 13:45:42 +0800 (HKT)
-From: Chris Ruehl <chris.ruehl@gtsys.com.hk>
-To: 
-Subject: [PATCH v2 1/2] phy: rockchip: set pulldown for strobe line in dts
-Date: Sun, 29 Nov 2020 13:44:14 +0800
-Message-Id: <20201129054416.3980-2-chris.ruehl@gtsys.com.hk>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201129054416.3980-1-chris.ruehl@gtsys.com.hk>
-References: <20201129054416.3980-1-chris.ruehl@gtsys.com.hk>
+ id 1kjPij-0001n4-Mf; Sun, 29 Nov 2020 16:38:42 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=phil.lan)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1kjPiS-0004tM-O4; Sun, 29 Nov 2020 17:38:24 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+Subject: Re: [PATCH] drm/rockchip: Avoid uninitialized use of endpoint id in
+ LVDS
+Date: Sun, 29 Nov 2020 17:38:22 +0100
+Message-Id: <160666788608.935311.17420179487951916810.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201110200430.1713467-1-paul.kocialkowski@bootlin.com>
+References: <20201110200430.1713467-1-paul.kocialkowski@bootlin.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201129_004550_908258_3F7E9B1E 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20201129_113841_759144_9207AEE1 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,84 +69,31 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
- linux-rockchip@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
- Chris Ruehl <chris.ruehl@gtsys.com.hk>, linux-arm-kernel@lists.infradead.org
+Cc: David Airlie <airlied@linux.ie>, Sandy Huang <hjc@rock-chips.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Mark Yao <markyao0591@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch add support to set the internal pulldown via dt property
-and allow simplify the board design for the trace from emmc-phy to
-the eMMC chipset.
-Default to not set the pull-down.
+On Tue, 10 Nov 2020 21:04:30 +0100, Paul Kocialkowski wrote:
+> In the Rockchip DRM LVDS component driver, the endpoint id provided to
+> drm_of_find_panel_or_bridge is grabbed from the endpoint's reg property.
+> 
+> However, the property may be missing in the case of a single endpoint.
+> Initialize the endpoint_id variable to 0 to avoid using an
+> uninitialized variable in that case.
 
-This patch was inspired from the 4.4 tree of the
-Rockchip SDK, where it is enabled unconditional.
-The patch had been tested with our rk3399 customized board.
+Applied, thanks!
 
-Signed-off-by: Chris Ruehl <chris.ruehl@gtsys.com.hk>
----
- drivers/phy/rockchip/phy-rockchip-emmc.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+[1/1] drm/rockchip: Avoid uninitialized use of endpoint id in LVDS
+      commit: aec9fe892812ed10d0bffcf309d2a8fc380d8ce6
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-index 2dc19ddd120f..48e2d75b1004 100644
---- a/drivers/phy/rockchip/phy-rockchip-emmc.c
-+++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-@@ -67,6 +67,10 @@
- #define PHYCTRL_OTAPDLYENA_SHIFT	0xb
- #define PHYCTRL_OTAPDLYSEL_MASK		0xf
- #define PHYCTRL_OTAPDLYSEL_SHIFT	0x7
-+#define PHYCTRL_REN_STRB_DISABLE	0x0
-+#define PHYCTRL_REN_STRB_ENABLE		0x1
-+#define PHYCTRL_REN_STRB_MASK		0x1
-+#define PHYCTRL_REN_STRB_SHIFT		0x9
- 
- #define PHYCTRL_IS_CALDONE(x) \
- 	((((x) >> PHYCTRL_CALDONE_SHIFT) & \
-@@ -80,6 +84,7 @@ struct rockchip_emmc_phy {
- 	struct regmap	*reg_base;
- 	struct clk	*emmcclk;
- 	unsigned int drive_impedance;
-+	unsigned int enable_strobe_pulldown;
- };
- 
- static int rockchip_emmc_phy_power(struct phy *phy, bool on_off)
-@@ -295,6 +300,13 @@ static int rockchip_emmc_phy_power_on(struct phy *phy)
- 				   PHYCTRL_OTAPDLYSEL_MASK,
- 				   PHYCTRL_OTAPDLYSEL_SHIFT));
- 
-+	/* Internal pull-down for strobe line */
-+	regmap_write(rk_phy->reg_base,
-+		     rk_phy->reg_offset + GRF_EMMCPHY_CON2,
-+		     HIWORD_UPDATE(rk_phy->enable_strobe_pulldown,
-+				   PHYCTRL_REN_STRB_MASK,
-+				   PHYCTRL_REN_STRB_SHIFT));
-+
- 	/* Power up emmc phy analog blocks */
- 	return rockchip_emmc_phy_power(phy, PHYCTRL_PDB_PWR_ON);
- }
-@@ -359,10 +371,14 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
- 	rk_phy->reg_offset = reg_offset;
- 	rk_phy->reg_base = grf;
- 	rk_phy->drive_impedance = PHYCTRL_DR_50OHM;
-+	rk_phy->enable_strobe_pulldown = PHYCTRL_REN_STRB_DISABLE;
- 
- 	if (!of_property_read_u32(dev->of_node, "drive-impedance-ohm", &val))
- 		rk_phy->drive_impedance = convert_drive_impedance_ohm(pdev, val);
- 
-+	if (of_property_read_bool(dev->of_node, "enable-strobe-pulldown"))
-+		rk_phy->enable_strobe_pulldown = PHYCTRL_REN_STRB_ENABLE;
-+
- 	generic_phy = devm_phy_create(dev, dev->of_node, &ops);
- 	if (IS_ERR(generic_phy)) {
- 		dev_err(dev, "failed to create PHY\n");
+Best regards,
 -- 
-2.20.1
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
