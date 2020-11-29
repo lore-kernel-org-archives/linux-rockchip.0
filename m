@@ -7,16 +7,16 @@ X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 50433C64E7B
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Nov 2020 16:50:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0914CC3E8C5
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Nov 2020 16:52:48 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 74A5120738
-	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Nov 2020 16:50:07 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 47CFE20738
+	for <linux-rockchip@archiver.kernel.org>; Sun, 29 Nov 2020 16:52:47 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="vU3qhwGN"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 74A5120738
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="DQu/2bCk"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 47CFE20738
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -25,36 +25,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=krJafysU9QDlJTMSDx94T4QKa165QHdrqiGH7jhJUFY=; b=vU3qhwGNAhcVfS09Jb4C643nQ
-	f71VpkRyaBhiIWx4sssTfgsEyhbNzSrNUu1PsqErDJyVPRfJTIuYi7Glhmf81+4tCp4DsMhZfRWJU
-	gkN7bt+VGXGGOcpKdh1sTbG7YUGQshYuwcrEfVnZfpG926fin6N82CssfWTWcQT9tuy02blQ4RalQ
-	RkGnSxTqL2LN25wmFDh7Tn4OHCEZKfl1QtzQqiT06n+IhQwR32gT/bs0OswKPu1SYFuYJFq2XPbaA
-	SgaKasHI0KBUZY6yfYi/1lVsy9DvQkKMLo7QKsQVC7eAaoBNTAr/RIOOQn/0aH/zLzF41Jz6URJCW
-	l1qZlMUDw==;
+	 bh=fo1W6Kx3cGHV3NcgYhLDU5eB4Hgu6DQ9X2R5w/7AGxQ=; b=DQu/2bCk34d3dRGfCmqwZDeTC
+	yY9zoY6p3DmC5yosB7VPZjwCbElAfTsMg+/uz1/34civnzR08sONdWPG9B852JH+T0AIaiExNfLdU
+	s+QCHMYcA48E20pgzrm4UYSqmDVUXm1MHiZq4bjWs2eYJPzb+shF077SmxnYNIlQ+PYfBYtDuDJgk
+	jLvwpY4kXFRWW/JAnogSTSL9Xa87jBE+npWkH1OLUhsLNjWWTtsQOvD+o6Yw5MxfCkgnTtdgajbcO
+	4lnsAivm4RxYuSkn2pUkGfV1wrI/NAq1ENRadPgpWsCVo9cXxF7oskvIOW5vd+bgLPH7sAfTm7liT
+	6DJgU4eug==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjPth-0002EL-Ln; Sun, 29 Nov 2020 16:50:02 +0000
+	id 1kjPwK-0002Qe-15; Sun, 29 Nov 2020 16:52:44 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjPtd-0002DS-7z; Sun, 29 Nov 2020 16:49:58 +0000
+ id 1kjPwH-0002QE-S4
+ for linux-rockchip@lists.infradead.org; Sun, 29 Nov 2020 16:52:42 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=diego.localnet)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kjPta-0004yQ-3z; Sun, 29 Nov 2020 17:49:54 +0100
+ id 1kjPwG-0004zj-7s; Sun, 29 Nov 2020 17:52:40 +0100
 From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Jonathan Liu <net147@gmail.com>
-Subject: Re: [PATCH] drm/rockchip: dw_hdmi: fix incorrect clock in vpll clock
- error message
-Date: Sun, 29 Nov 2020 17:49:53 +0100
-Message-ID: <2205756.JbxMgk7veO@diego>
-In-Reply-To: <20201024035321.4898-1-net147@gmail.com>
-References: <20201024035321.4898-1-net147@gmail.com>
+To: hjc@rock-chips.com, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Subject: Re: [PATCH] drm/rockchip: fix typo in Kconfig 's/HDMI/dsi/'
+Date: Sun, 29 Nov 2020 17:52:39 +0100
+Message-ID: <5908692.DV2fQpopjJ@diego>
+In-Reply-To: <20201116141609.26719-1-dafna.hirschfeld@collabora.com>
+References: <20201116141609.26719-1-dafna.hirschfeld@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201129_114957_440423_8AA0CE57 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20201129_115241_950886_00A2D4A1 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,20 +66,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, Jonathan Liu <net147@gmail.com>,
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
+Cc: enric.balletbo@collabora.com, linux-rockchip@lists.infradead.org,
+ dafna3@gmail.com, kernel@collabora.com, dafna.hirschfeld@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Samstag, 24. Oktober 2020, 05:53:21 CET schrieb Jonathan Liu:
-> Error message incorrectly refers to grf clock instead of vpll clock.
-> 
-> Signed-off-by: Jonathan Liu <net147@gmail.com>
+Hi Dafna,
 
-applied to drm-misc-next
+Am Montag, 16. November 2020, 15:16:08 CET schrieb Dafna Hirschfeld:
+> In the help of ROCKCHIP_DW_MIPI_DSI it said
+> it is a HDMI driver instead of a dsi driver.
+> 
+> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+
+applied both patches to drm-misc-next.
+
+Just a small wish for the future, threading together unrelated patches
+makes b4 hickup, so ideally either submit them separately or give them
+a numbering (1/2 + 2/2).
+
 
 Thanks
 Heiko
