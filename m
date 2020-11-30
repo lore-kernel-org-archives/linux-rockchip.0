@@ -2,43 +2,43 @@ Return-Path: <SRS0=Brux=FE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20144C64E7B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 13:36:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6A5E2C64E7B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 13:37:01 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8345920643
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 13:36:50 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id F33E320643
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 13:37:00 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="mX1i3XHr"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8345920643
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hwMNVktj"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F33E320643
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=SDzC3MXW4wiUyMmcdNsRHyk39m9/24j5UGk5gCdkDJw=; b=mX1i3XHrQcUdFVGFaRZX1XiV64
-	zg4WQ50c09trREaXIC1mGCNN09TQE+msKbht4u+XT+swMyoN8OlJ9bdmYnVwuyVN5Gs6pYhvmPvIz
-	ISfcfO8jDOzuIxn9OGawM7xJxU98ZRkLMTOpQloynvej2vD6vNrknk7ojXI5/ZC/QTzCEazmKmMoU
-	mGd2emQ0h7t7fz3d4xlalN5rdcEG234Kx6PS4Zo35+RMF/V80h8ktfF4P0PwvzMu6ZJePMZZnDKtR
-	AK8wXXwyGQJisRBZrluDHrEvfM+MhCJGwvlhRhnqcWTUZ1G7TqompOBHiXrYFC51ANfJLcWDuF5+8
-	+M6tijQw==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=Rv87ZAOps0Wcx14FvhzKh1vT+GLzFFuABmImGLiN6xo=; b=hwMNVktjpIsVk3KuQSQuedE/4
+	EBVNVLAthdEu7XMk6gzFglCaFvd14X+VKTbgmbnbqsaXNMQP1xIU4xdDMBzZhTPZZAPwh5AKqVCqK
+	2Yy+P0JikC48da33q7rnC3ypghm72CeLjkIVjK/KDpa0TBkt6QhLn41P7cqa50Kxy1p5NyZcrjPa1
+	Z02NM/yuq3frlbmcIFeOwA5Vk+E7noamP40HztwXpnSdMLdjW8b0CpxR1HcjzmME6qwYvK68Ueq40
+	6X+aUzFT581kdtNd4qkn2Rlo85b1TfWqCucUsVYI6BOpNb0RevyycMPwJyb1GA7djyNrev8EyhOQs
+	a4W21A1og==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjjMD-0003pg-EN; Mon, 30 Nov 2020 13:36:45 +0000
+	id 1kjjMM-0003ru-LW; Mon, 30 Nov 2020 13:36:54 +0000
 Received: from szxga05-in.huawei.com ([45.249.212.191])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjjM5-0003md-1m; Mon, 30 Nov 2020 13:36:38 +0000
+ id 1kjjM6-0003mc-Tx; Mon, 30 Nov 2020 13:36:40 +0000
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Cl5pv3L5NzhkhQ;
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Cl5pv36WgzhjMS;
  Mon, 30 Nov 2020 21:36:07 +0800 (CST)
 Received: from localhost.localdomain.localdomain (10.175.113.25) by
  DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
@@ -47,17 +47,19 @@ From: Qinglang Miao <miaoqinglang@huawei.com>
 To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?=
  <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
  <daniel@ffwll.ch>
-Subject: [PATCH 0/3] drm/rockchip: fix reference leak of pm_runtime_get_sync
-Date: Mon, 30 Nov 2020 21:44:24 +0800
-Message-ID: <20201130134427.57545-1-miaoqinglang@huawei.com>
+Subject: [PATCH 1/3] drm/rockchip: cdn-dp: fix reference leak when
+ pm_runtime_get_sync fails
+Date: Mon, 30 Nov 2020 21:44:25 +0800
+Message-ID: <20201130134427.57545-2-miaoqinglang@huawei.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20201130134427.57545-1-miaoqinglang@huawei.com>
+References: <20201130134427.57545-1-miaoqinglang@huawei.com>
 MIME-Version: 1.0
 X-Originating-IP: [10.175.113.25]
 X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201130_083637_413998_862C9C55 
-X-CRM114-Status: UNSURE (   8.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201130_083639_333432_2A1216C0 
+X-CRM114-Status: GOOD (  11.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,20 +80,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace pm_runtime_get_sync with pm_runtime_resume_and_get to keep usage
-counter balanced. 
+pm_runtime_get_sync will increment pm usage counter even
+failed. Forgetting to putting operation will result in a
+reference leak here.
 
-Qinglang Miao (3):
-  drm/rockchip: cdn-dp: fix reference leak when pm_runtime_get_sync
-    fails
-  drm/rockchip: vop: fix reference leak when pm_runtime_get_sync fails
-  drm/rockchip: lvds: fix reference leak when pm_runtime_get_sync fails
+Replace it with pm_runtime_resume_and_get to keep usage
+counter balanced.
 
- drivers/gpu/drm/rockchip/cdn-dp-core.c      | 2 +-
- drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 4 ++--
- drivers/gpu/drm/rockchip/rockchip_lvds.c    | 4 ++--
- 3 files changed, 5 insertions(+), 5 deletions(-)
+Fixes: efe0220fc2d2 ("drm/rockchip: cdn-dp: Fix error handling")
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Qinglang Miao <miaoqinglang@huawei.com>
+---
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index a4a45daf9..9b4406191 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -98,7 +98,7 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
+ 		goto err_core_clk;
+ 	}
+ 
+-	ret = pm_runtime_get_sync(dp->dev);
++	ret = pm_runtime_resume_and_get(dp->dev);
+ 	if (ret < 0) {
+ 		DRM_DEV_ERROR(dp->dev, "cannot get pm runtime %d\n", ret);
+ 		goto err_pm_runtime_get;
 -- 
 2.23.0
 
