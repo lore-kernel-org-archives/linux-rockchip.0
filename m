@@ -2,64 +2,59 @@ Return-Path: <SRS0=Brux=FE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A7F15C71156
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 13:37:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A005C64E7B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 13:50:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 31955206F9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 13:37:21 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id C4453207BC
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 13:50:36 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="1LsPKpJG"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 31955206F9
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="ion+35kK"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C4453207BC
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Smgmpi8ozkLkfRsu7SV3tkdFm9Jii2MZqaSGrNWFk84=; b=1LsPKpJGD/LV/QMjUIY9vAXHP
-	Z1rlW5WPv2c9BJuMjZN7mMCEIWxCosoVZ78aqjCfv8LNWMeOXEUzOxl94mOv1jitQ4WIoARuS98wI
-	XhQJxkYbcNqbw7k3WwjmVIYS9h/ru77+Pd6FDgSmG9oTtSWH8i+ZsfKmrQpoPOVjuU1aSvqITe48E
-	ec4D8njXEWc8s6eiN7NDx6ZA2YbK2YBXbJSNoDPms13j9FuQSZUzwNnINFI5pwOF/is8XpzoPTWoI
-	0CAVgSPItjFazy4OCgVrbZcDz470hp4FHpuGhYotpnnaDOlaaHpkq2qY2i8JtMqdaeL3z+lrxbQvq
-	cs22kM8tQ==;
+	 bh=HSBM3nRvhtMqTG4w6k2Vl5Fsg5h9Uxw4HkgAj5oN4S4=; b=ion+35kK+Oj7Qfj8IR+t5ZYqB
+	woZnLv5BTd1h3W0ITSi6jNAFTQd2M3u7fKwXEe3C/21VEuedH1AiRBeoJ7RNoMK2x/hel9xOa6+Q/
+	ZC8h/2/INtVrCKNmJT+sGOt+XZCwc0QYl3x7Kf+XhqAhh4DxGbh+mXkrMt6ibpBW0FZ5ybC71wBaG
+	Ve1RyWVCRy1X+ryH9tolI4vod0P+dEtLE4xI1jYT/7MmL45u9aocaZJs/n8Zpb7vJr+HsQXICGGzE
+	BT9uvc5Nu6METKdMNTsHTjXsl3L//T/5qtVPocCt6vc5YAb/Ly34RFdGYPi+8+Gpgl3nHU3DS0KEa
+	YTi1XEC5Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjjMh-0003za-I8; Mon, 30 Nov 2020 13:37:15 +0000
-Received: from szxga05-in.huawei.com ([45.249.212.191])
+	id 1kjjZX-0006Xv-K1; Mon, 30 Nov 2020 13:50:31 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjjMB-0003o5-3s; Mon, 30 Nov 2020 13:36:45 +0000
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Cl5q03WM8zhkdw;
- Mon, 30 Nov 2020 21:36:12 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 30 Nov 2020 21:36:27 +0800
-From: Qinglang Miao <miaoqinglang@huawei.com>
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?=
- <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>
-Subject: [PATCH 3/3] drm/rockchip: lvds: fix reference leak when
- pm_runtime_get_sync fails
-Date: Mon, 30 Nov 2020 21:44:27 +0800
-Message-ID: <20201130134427.57545-4-miaoqinglang@huawei.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201130134427.57545-1-miaoqinglang@huawei.com>
-References: <20201130134427.57545-1-miaoqinglang@huawei.com>
+ id 1kjjZW-0006XK-2i; Mon, 30 Nov 2020 13:50:30 +0000
+Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
+ helo=phil.lan)
+ by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.92) (envelope-from <heiko@sntech.de>)
+ id 1kjjZQ-0002YW-V4; Mon, 30 Nov 2020 14:50:25 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Johan Jonker <jbx6244@gmail.com>
+Subject: Re: [PATCH] ARM: dts: rockchip: rename wdt nodename to watchdog in
+ rv1108.dtsi
+Date: Mon, 30 Nov 2020 14:50:22 +0100
+Message-Id: <160674371009.1066509.12752605391442707719.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201116150756.14265-1-jbx6244@gmail.com>
+References: <20201116150756.14265-1-jbx6244@gmail.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201130_083643_489969_D57C61BD 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20201130_085030_150000_26EAB7A2 
+X-CRM114-Status: GOOD (  12.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,53 +67,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, Qinglang Miao <miaoqinglang@huawei.com>,
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
+Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-pm_runtime_get_sync will increment pm usage counter even
-failed. Forgetting to putting operation will result in a
-reference leak here.
+On Mon, 16 Nov 2020 16:07:56 +0100, Johan Jonker wrote:
+> A test with the command below gives for example this error:
+> 
+> /arch/arm/boot/dts/rv1108-evb.dt.yaml:
+> wdt@10360000: $nodename:0: 'wdt@10360000'
+> does not match '^watchdog(@.*|-[0-9a-f])?$'
+> 
+> Fix it by renaming the wdt nodename to watchdog
+> in the rv1108.dtsi file.
+> 
+> [...]
 
-Replace it with pm_runtime_resume_and_get to keep usage
-counter balanced.
+Applied, thanks!
 
-Fixes: cca1705c3d89 ("drm/rockchip: lvds: Add PX30 support")
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: Qinglang Miao <miaoqinglang@huawei.com>
----
- drivers/gpu/drm/rockchip/rockchip_lvds.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+[1/1] ARM: dts: rockchip: rename wdt nodename to watchdog in rv1108.dtsi
+      commit: 06bccda2c13c07d4ac7ebfef766a968c788cbdbf
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_lvds.c b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-index f292c6a6e..c3b1ac484 100644
---- a/drivers/gpu/drm/rockchip/rockchip_lvds.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_lvds.c
-@@ -145,7 +145,7 @@ static int rk3288_lvds_poweron(struct rockchip_lvds *lvds)
- 		DRM_DEV_ERROR(lvds->dev, "failed to enable lvds pclk %d\n", ret);
- 		return ret;
- 	}
--	ret = pm_runtime_get_sync(lvds->dev);
-+	ret = pm_runtime_resume_and_get(lvds->dev);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(lvds->dev, "failed to get pm runtime: %d\n", ret);
- 		clk_disable(lvds->pclk);
-@@ -329,7 +329,7 @@ static int px30_lvds_poweron(struct rockchip_lvds *lvds)
- {
- 	int ret;
- 
--	ret = pm_runtime_get_sync(lvds->dev);
-+	ret = pm_runtime_resume_and_get(lvds->dev);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(lvds->dev, "failed to get pm runtime: %d\n", ret);
- 		return ret;
+Best regards,
 -- 
-2.23.0
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
