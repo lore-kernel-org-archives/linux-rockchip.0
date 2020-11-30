@@ -2,61 +2,64 @@ Return-Path: <SRS0=Brux=FE=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CF133C63777
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 16:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7193C63777
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 17:21:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6604206E3
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 16:28:52 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 375CE2076E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Nov 2020 17:21:19 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="bv0FTg7M"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E6604206E3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="brmDkrew";
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=kernel.org header.i=@kernel.org header.b="TGw3iJHv"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 375CE2076E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=u5AHQOlhWdW2qhVmQuWysvMNb85uPc47aTb4YxvW+t4=; b=bv0FTg7MH+Qg640htYXewXGeG
-	7VqPRitDWPn+e+ZKdZO0dWBCnhzqXItwk/T1CisqsyIPAQ7024/l5O8z0SdUWE6BDyS7Zky0y3HFu
-	TZMi1jo++c15aNCUBqkcdakpF+aOFwbypHkVQu3gn/+8MYv28VJep6FV1gGei1Kl97EnZJlEBY7Zx
-	GOvh6Xzkq/fH5stUCQ9aC1X4yI+uqwhFWA/r0a2Ux9SctjzKLT4QUl609UvJSg+4VJRhQ9Ha+T3HD
-	C21vSArQ4TKLtN431iFNU+lpKm21r8FCcohBTkuM7LE5+4kvOqBN0RWAVyI0+5SdTdtLHH0lIfqum
-	77egRqFtA==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
+	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
+	 bh=FpEwTacHid2/ZJuW7Zq5ax2ZdnqXckrwhR9+mkAOEsc=; b=brmDkrewecNxSzFWaLuCtcoxH
+	3GGo+PVvIpv9PX7mOf/YFGM1ZpuwvaVF2QykdVVRq15VLU/pWMgaD9LDiaRvfOs4eR293ZKfqUyST
+	D6w0xgYc9fqwXPOp5YZ1iGQUOK1jfgxTvtFGK2efElhZqdiD0o35yoxifo7tIq/izcVCHTpzGignt
+	AY6DP75wC9MGaO+V50bUD7DaB3YXNNAXQRuemVJw8vKIXoLAv1xAnOIPpCJ69ZgVlrPJJG8VyAIav
+	O9pnNFbJ8EsMLXhdBxDSTYaWOunh6cIGbxOHwnPL2ffsw/Wg3ChjMakEHPUoeaX3DtP5OKlDytBk2
+	I2yaCelDw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjm2j-0001tf-Pf; Mon, 30 Nov 2020 16:28:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1kjmrN-0000VI-Vp; Mon, 30 Nov 2020 17:21:10 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjm2f-0001si-Ut
- for linux-rockchip@lists.infradead.org; Mon, 30 Nov 2020 16:28:47 +0000
-Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=phil.lan)
- by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kjm2R-0003Mu-Bk; Mon, 30 Nov 2020 17:28:31 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-media@vger.kernel.org,
-	Helen Koike <helen.koike@collabora.com>
-Subject: Re: (subset) [PATCH v6 0/9] move Rockchip ISP bindings out of staging
- / add ISP DT nodes for RK3399
-Date: Mon, 30 Nov 2020 17:28:29 +0100
-Message-Id: <160675369960.1150759.2276623622378204083.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20201020193850.1460644-1-helen.koike@collabora.com>
-References: <20201020193850.1460644-1-helen.koike@collabora.com>
+ id 1kjmrE-0000Sp-Ky; Mon, 30 Nov 2020 17:21:01 +0000
+Received: from localhost (129.sub-72-107-112.myvzw.com [72.107.112.129])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 7E7372074A;
+ Mon, 30 Nov 2020 17:20:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=default; t=1606756859;
+ bh=CbyJZAykpCyvjLTpCkzzfJ9pt8bGnYt3xwR2qqUfoI0=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=TGw3iJHvgbb+g7diOKMOugr/nuC73+5xTFsD9rPkDlD83W1yHAv7Z9v4H3q8I+h2c
+ xfiTLITVOpwfI8mn+Ad8xB8BJQI4zSsYIJBr4W2mHE1j1LovJTR5pfq9Lf1A6rY2iM
+ aagN+CcdLl1BicBBB0tVOwQNrEZ9ea5LezYWYgRc=
+Date: Mon, 30 Nov 2020 11:20:58 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: David Laight <David.Laight@ACULAB.COM>
+Subject: Re: [PATCH v6 4/5] PCI: vmd: Update type of the __iomem pointers
+Message-ID: <20201130172058.GA1088391@bjorn-Precision-5520>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <81f4ddc2f0524b4b80c8a0bfa2df57fe@AcuMS.aculab.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201130_112846_609860_7E339E4E 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20201130_122100_851886_32D11F9F 
+X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,39 +72,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: mark.rutland@arm.com, devicetree@vger.kernel.org, eddie.cai.linux@gmail.com,
- devel@driverdev.osuosl.org, dafna.hirschfeld@collabora.com,
- Heiko Stuebner <heiko@sntech.de>, robin.murphy@arm.com,
- karthik.poduval@gmail.com, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
- hverkuil-cisco@xs4all.nl, jbx6244@gmail.com, kernel@collabora.com,
- zhengsq@rock-chips.com
+Cc: 'Krzysztof =?utf-8?Q?Wilczy=C5=84ski'?= <kw@linux.com>,
+ Heiko Stuebner <heiko@sntech.de>,
+ "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Paul Mackerras <paulus@samba.org>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Jonathan Chocron <jonnyc@amazon.com>, Toan Le <toan@os.amperecomputing.com>,
+ Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Michal Simek <michal.simek@xilinx.com>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "bcm-kernel-feedback-list@broadcom.com"
+ <bcm-kernel-feedback-list@broadcom.com>,
+ Jonathan Derrick <jonathan.derrick@intel.com>, Ray Jui <rjui@broadcom.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "linux-rpi-kernel@lists.infradead.org" <linux-rpi-kernel@lists.infradead.org>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+ Scott Branden <sbranden@broadcom.com>, Zhou Wang <wangzhou1@hisilicon.com>,
+ Robert Richter <rrichter@marvell.com>,
+ "linuxppc-dev@lists.ozlabs.org" <linuxppc-dev@lists.ozlabs.org>,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 20 Oct 2020 16:38:41 -0300, Helen Koike wrote:
-> Move the bindings out of drivers/staging and place them in
-> Documentation/devicetree/bindings instead.
+On Mon, Nov 30, 2020 at 09:06:56AM +0000, David Laight wrote:
+> From: Krzysztof Wilczynski
+> > Sent: 29 November 2020 23:08
+> > 
+> > Use "void __iomem" instead "char __iomem" pointer type when working with
+> > the accessor functions (with names like readb() or writel(), etc.) to
+> > better match a given accessor function signature where commonly the
+> > address pointing to an I/O memory region would be a "void __iomem"
+> > pointer.
 > 
-> Also, add DT nodes for RK3399 and verify with make ARCH=arm64 dtbs_check
-> and make ARCH=arm64 dt_binding_check.
+> ISTM that is heading in the wrong direction.
 > 
-> Tested by verifying images streamed from Scarlet Chromebook
+> I think (form the variable names etc) that these are pointers
+> to specific registers.
 > 
-> [...]
+> So what you ought to have is a type for that register block.
+> Typically this is actually a structure - to give some type
+> checking that the offsets are being used with the correct
+> base address.
 
-Applied, thanks!
+In this case, "cfgbar" is not really a pointer to a register; it's the
+address of memory-mapped config space.  The VMD hardware turns
+accesses to that space into PCI config transactions on its secondary
+side.  xgene_pcie_get_cfg_base() and brcm_pcie_map_conf() are similar
+situations and use "void *".
 
-[8/9] arm64: dts: rockchip: add isp0 node for rk3399
-      commit: 97a0115cd96a173369ef30eee2290184921b3f24
-[9/9] arm64: dts: rockchip: add isp and sensors for Scarlet
-      commit: ef098edc9c245dd1c150001e22c78e6a3ffd7ff8
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Bjorn
 
 _______________________________________________
 Linux-rockchip mailing list
