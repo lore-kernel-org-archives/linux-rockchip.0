@@ -7,61 +7,59 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CE15FC71156
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 03:10:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4599C64E7A
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 12:47:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1661B20671
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 03:10:36 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id EE71B2084C
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 12:47:25 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="TD3YoQw7"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1661B20671
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=gtsys.com.hk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="q1rLmGCm"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org EE71B2084C
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=RiqiZFi7ooQO5ukdwZPchQMxcoctWAKMmlYc4tg9tgY=; b=TD3YoQw7oBSX3iRVpNU65zZzJx
-	sqlGnnyycioCP82X4PMOAR/xpPhrBtGJkn0dWRsYoWZPr5sfPMWX4c3giDbpT5TuJCB6wv9osYOol
-	P1TAsTCzWffPZGltp3dOWuUZv23m1X6bco2STQ1XYnBt+cxnNUAf1XfHvukezF/3sIJ5oYvK6cSuO
-	SY0pnrn+kCNOYOGz1G2WbxEFZKDfR10pp++8vrukdr/lrv0O/OeqIDanZUJydrfvm2rt5Eiu7QYIA
-	TX4kZg9VpBV1RK0CgMeYuWfFnEK/inzyAh2xNM/mGzlrLtX5k6R3dWKdSOkn72OD1X6r2E3tFwHcj
-	DN3O5ctA==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=ebellrLwKH5BQkxFbh+aIB4sgK/tpCJkaFonRgdCLSs=; b=q1rLmGCm3AEJgya7L2Qkz8Xul
+	dEcdPc9uZYeRoHUmKJQ9cGyclMVp0vW1RmAeXdYsfUn8NSgQJ5dJXyKT37hO2DKaVVUJvxdZyirii
+	qeYUk55aL4Qp7b8hfSrjNcXPnzkXXG0o7HXejC2JFTrrc6E0vx1EBGff2eiCqciVDuchZfIGdVzPi
+	Q9eY78Nsj90Y65zRDvCP5QIr1vav1gbjnWd0EPMn9tCtMSS5lb27dn04crHPXvl8fabVsy42zvVw5
+	xOolz+iE4JMYjHEzfFxNy0B8HisWzp8nV6NG77ERW8geRIaPolthgkIyrB87GOJtsxpZp9tLkggza
+	oDyz6Re+Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kjw3j-00037v-Lj; Tue, 01 Dec 2020 03:10:31 +0000
-Received: from [27.111.83.178] (helo=mail.gtsys.com.hk)
+	id 1kk53w-0004BV-Tu; Tue, 01 Dec 2020 12:47:20 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kjw3e-00035k-TK; Tue, 01 Dec 2020 03:10:28 +0000
-Received: from localhost (localhost [127.0.0.1])
- by mail.gtsys.com.hk (Postfix) with ESMTP id DF2B7200D28A;
- Tue,  1 Dec 2020 11:10:21 +0800 (HKT)
-X-Virus-Scanned: Debian amavisd-new at gtsys.com.hk
-Received: from mail.gtsys.com.hk ([127.0.0.1])
- by localhost (mail.gtsys.com.hk [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yRNd_2PMXOKD; Tue,  1 Dec 2020 11:10:21 +0800 (HKT)
-Received: from s01.gtsys.com.hk (unknown [10.128.4.2])
- by mail.gtsys.com.hk (Postfix) with ESMTP id C5B26200D287;
- Tue,  1 Dec 2020 11:10:21 +0800 (HKT)
-Received: from armhf2.gtsys.com.hk (unknown [10.128.4.15])
- by s01.gtsys.com.hk (Postfix) with ESMTP id B5F1AC019E2;
- Tue,  1 Dec 2020 11:10:21 +0800 (HKT)
-Received: by armhf2.gtsys.com.hk (Postfix, from userid 1000)
- id 888CE200756; Tue,  1 Dec 2020 11:10:21 +0800 (HKT)
-From: Chris Ruehl <chris.ruehl@gtsys.com.hk>
-To: 
-Subject: [PATCH] phy: rockchip-emmc: emmc_phy_init() always return 0
-Date: Tue,  1 Dec 2020 11:10:14 +0800
-Message-Id: <20201201031015.23314-1-chris.ruehl@gtsys.com.hk>
+ id 1kk53r-00049b-CK; Tue, 01 Dec 2020 12:47:16 +0000
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4ClhgM2RwyzLwyk;
+ Tue,  1 Dec 2020 20:46:39 +0800 (CST)
+Received: from localhost.localdomain.localdomain (10.175.113.25) by
+ DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
+ 14.3.487.0; Tue, 1 Dec 2020 20:47:02 +0800
+From: Qinglang Miao <miaoqinglang@huawei.com>
+To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?=
+ <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+ <daniel@ffwll.ch>
+Subject: [PATCH 2/3] drm/rockchip: vop: fix reference leak when
+ pm_runtime_get_sync fails
+Date: Tue, 1 Dec 2020 20:54:58 +0800
+Message-ID: <20201201125459.142178-3-miaoqinglang@huawei.com>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20201201125459.142178-1-miaoqinglang@huawei.com>
+References: <20201201125459.142178-1-miaoqinglang@huawei.com>
 MIME-Version: 1.0
+X-Originating-IP: [10.175.113.25]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201130_221027_157357_E94DF09A 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20201201_074715_687794_7DFF4733 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,42 +72,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-kernel@vger.kernel.org, Douglas Anderson <dianders@chromium.org>,
- Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org,
- Vinod Koul <vkoul@kernel.org>, Chris Ruehl <chris.ruehl@gtsys.com.hk>,
- linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, Qinglang Miao <miaoqinglang@huawei.com>,
+ linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rockchip_emmc_phy_init() return variable is not set with the error value
-if clk_get() failed. The debug message print 0 on error and the function
-always return 0.
-Fix it using PTR_ERR().
+The PM reference count is not expected to be incremented on
+return in functions vop_enable and vop_enable.
 
-Fixes: 52c0624a10cce phy: rockchip-emmc: Set phyctrl_frqsel based on card clock
+However, pm_runtime_get_sync will increment the PM reference
+count even failed. Forgetting to putting operation will result
+in a reference leak here.
 
-Signed-off-by: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+Replace it with pm_runtime_resume_and_get to keep usage
+counter balanced.
+
+Fixes: 5e570373c015 ("drm/rockchip: vop: Enable pm domain before vop_initial")
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Qinglang Miao <miaoqinglang@huawei.com>
 ---
- drivers/phy/rockchip/phy-rockchip-emmc.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-index 48e2d75b1004..75faee5c0d27 100644
---- a/drivers/phy/rockchip/phy-rockchip-emmc.c
-+++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-@@ -253,6 +253,7 @@ static int rockchip_emmc_phy_init(struct phy *phy)
- 	 */
- 	rk_phy->emmcclk = clk_get(&phy->dev, "emmcclk");
- 	if (IS_ERR(rk_phy->emmcclk)) {
-+		ret = PTR_ERR(rk_phy->emmcclk);
- 		dev_dbg(&phy->dev, "Error getting emmcclk: %d\n", ret);
- 		rk_phy->emmcclk = NULL;
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+index c80f7d9fd..006988a6e 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop.c
+@@ -587,7 +587,7 @@ static int vop_enable(struct drm_crtc *crtc, struct drm_crtc_state *old_state)
+ 	struct vop *vop = to_vop(crtc);
+ 	int ret, i;
+ 
+-	ret = pm_runtime_get_sync(vop->dev);
++	ret = pm_runtime_resume_and_get(vop->dev);
+ 	if (ret < 0) {
+ 		DRM_DEV_ERROR(vop->dev, "failed to get pm runtime: %d\n", ret);
+ 		return ret;
+@@ -1908,7 +1908,7 @@ static int vop_initial(struct vop *vop)
+ 		return PTR_ERR(vop->dclk);
  	}
+ 
+-	ret = pm_runtime_get_sync(vop->dev);
++	ret = pm_runtime_resume_and_get(vop->dev);
+ 	if (ret < 0) {
+ 		DRM_DEV_ERROR(vop->dev, "failed to get pm runtime: %d\n", ret);
+ 		return ret;
 -- 
-2.20.1
+2.23.0
 
 
 _______________________________________________
