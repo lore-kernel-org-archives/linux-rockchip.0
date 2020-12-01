@@ -2,64 +2,100 @@ Return-Path: <SRS0=IWi6=FF=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CBCEDC64E7B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 12:47:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 941E1C64E7A
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 14:28:22 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3767F206C1
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 12:47:29 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 14A7320757
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 14:28:22 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="n3I79RBe"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3767F206C1
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="AcH6fN0b";
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="fBDLhHqS"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 14A7320757
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=KD8LqS9QooeG8nHLd0KDcslaaFvxQDPlYgZZj0QPMys=; b=n3I79RBeIv6Zivwg83U+M3XMJ
-	D06bBOKmTsKEbkFRFIBmmOVXBBIhJ03zNjXqi/+Smq+ydnBLJ4LQDF6uNZGwivMca8KDM5q3xs2RZ
-	LmJNtX2SRIjuz/IY351WbpcsI0lvv2HJBSkTWtzXZZJ+zQPfGaYJTCF0hACObC8WZKPKv4yQDmNxH
-	/gGpHMN468w0Dqic0fgcxnaMWw2Wj6UfaRFRFtCkDbPf1GTb7ET/WGucOTIDqXhRtyi3Ddvv7OjAE
-	cmDYsBjmpo1AEBvhCn9bsB579g6GuWtHi7BIIVpXU0HY1vtNJ6Cf0ga3PcdqhRpw0XEtOyyViCvF7
-	Hh5Lxcugw==;
+	 bh=0wJdxE7JO95FiQJXt5XmKSriCOKNbGeG+mE9WznR9DE=; b=AcH6fN0bN23Jvk8a3klB5SWA0
+	jKK9cMmr3bmI/VNFIxnzV+6vhpVbL+k/pkPtzrgSbgSNkt/K7nhW+D1HjRNmWZrM/9XVQExc+Cgfc
+	GVHrqJve6TuM+COV48qNSUNEQ1l2O3VrlLTuwAZsYQgorFOXi3ZR9mj3lpAul4CiKo9e0Cx97DBef
+	Wwi6khIKPCXLHJ5HeP5LkT3Js9WLfJV9nTdQUULefsTNW2/v03FrSaGZvPTbH2V/xdizhp+pT//mz
+	Hu2n/+gZWy5j86OmSAqAkmJgAqDeMI6HizpHysVMj/WUf1GSDksld0eSe5CtqsVymjXwhjcimV6d4
+	R0eRFRzgg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kk541-0004Cy-IG; Tue, 01 Dec 2020 12:47:25 +0000
-Received: from szxga04-in.huawei.com ([45.249.212.190])
+	id 1kk6dd-0001Mv-4e; Tue, 01 Dec 2020 14:28:17 +0000
+Received: from userp2130.oracle.com ([156.151.31.86])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kk53t-00049a-4k; Tue, 01 Dec 2020 12:47:18 +0000
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4ClhgM5frgzkjvg;
- Tue,  1 Dec 2020 20:46:39 +0800 (CST)
-Received: from localhost.localdomain.localdomain (10.175.113.25) by
- DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 1 Dec 2020 20:47:01 +0800
-From: Qinglang Miao <miaoqinglang@huawei.com>
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?q?Heiko=20St=C3=BCbner?=
- <heiko@sntech.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>
-Subject: [PATCH 1/3] drm/rockchip: cdn-dp: fix reference leak when
- pm_runtime_get_sync fails
-Date: Tue, 1 Dec 2020 20:54:57 +0800
-Message-ID: <20201201125459.142178-2-miaoqinglang@huawei.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201201125459.142178-1-miaoqinglang@huawei.com>
-References: <20201201125459.142178-1-miaoqinglang@huawei.com>
+ id 1kk6da-0001Lg-8T; Tue, 01 Dec 2020 14:28:15 +0000
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+ by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B1EPbKc066438;
+ Tue, 1 Dec 2020 14:28:06 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=lSDu8t/HORP5DGvOJVpdFSL55t/SXzgnV5nxwvWbtpM=;
+ b=fBDLhHqSvpikoiRVAKewNM5lZ+BAmcHZ8lrgKB2KDaoRrk7/JSKt7+qNVsJDYIFpWpee
+ +ZqheuWD/Uz1PIcDSzNguIfirqyu2GwVUFRhBqFg4xfEb9S51jtt8tk/2zWKysOx+RXn
+ rVJVZnUx3u+X7jKDFY/ZUBirXtCfh3tH3LiG8OpqzsBhaA80ltrvannqaq1EezII5mY4
+ pHI00AvViLwQ37Po/0LtAT97Ay/DloKvmhISctvTlWFaJRStLj9BcmFlpPPmdiFF6JNN
+ lkzj4PLZ5q5xTPjta595lPHEXQgpRGvIOpTsWot0ZnFvD37+F3BSiLhfRyvmGq4q8+yk TQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by userp2130.oracle.com with ESMTP id 353dyqjsqc-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Tue, 01 Dec 2020 14:28:06 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0B1ELKc0118032;
+ Tue, 1 Dec 2020 14:28:06 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+ by userp3030.oracle.com with ESMTP id 3540fx0x2f-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 01 Dec 2020 14:28:05 +0000
+Received: from abhmp0010.oracle.com (abhmp0010.oracle.com [141.146.116.16])
+ by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0B1ES2Rs023619;
+ Tue, 1 Dec 2020 14:28:03 GMT
+Received: from kadam (/102.36.221.92) by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Tue, 01 Dec 2020 06:28:01 -0800
+Date: Tue, 1 Dec 2020 17:27:54 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Helen Koike <helen.koike@collabora.com>
+Subject: Re: [PATCH] media: rockchip: rkisp1: remove some dead code
+Message-ID: <20201201142754.GI2767@kadam>
+References: <X8TrSj3PbqVtN5XQ@mwanda>
+ <a6d9660f-84ec-317d-c3aa-9b3bda595d49@collabora.com>
 MIME-Version: 1.0
-X-Originating-IP: [10.175.113.25]
-X-CFilter-Loop: Reflected
+Content-Disposition: inline
+In-Reply-To: <a6d9660f-84ec-317d-c3aa-9b3bda595d49@collabora.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9821
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ suspectscore=0
+ phishscore=0 mlxlogscore=999 adultscore=0 mlxscore=0 bulkscore=0
+ spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2012010092
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9821
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ bulkscore=0
+ clxscore=1015 mlxscore=0 spamscore=0 priorityscore=1501 mlxlogscore=999
+ suspectscore=0 lowpriorityscore=0 phishscore=0 adultscore=0
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2012010092
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201201_074717_479573_55F48E80 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20201201_092814_481386_D3C6293D 
+X-CRM114-Status: GOOD (  29.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,47 +108,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-rockchip@lists.infradead.org, Qinglang Miao <miaoqinglang@huawei.com>,
- linux-arm-kernel@lists.infradead.org, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The PM reference count is not expected to be incremented on
-return in cdn_dp_clk_enable.
+On Mon, Nov 30, 2020 at 11:20:05AM -0300, Helen Koike wrote:
+> Hi Dan,
+> 
+> Thank you for your patch.
+> 
+> On 11/30/20 9:53 AM, Dan Carpenter wrote:
+> > The debugfs_create_dir() function never returns NULLs.  It's not supposed
+> > to checked for errors in the normal case and there is no need to check
+> > in this function so let's just delete this dead code.
+> > 
+> > Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > ---
+> >  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 4 ----
+> >  1 file changed, 4 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > index 9af137e4967f..68da1eed753d 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> > @@ -430,10 +430,6 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+> >  	struct rkisp1_debug *debug = &rkisp1->debug;
+> >  
+> >  	debug->debugfs_dir = debugfs_create_dir(RKISP1_DRIVER_NAME, NULL);
+> > -	if (!debug->debugfs_dir) {
+> > -		dev_dbg(rkisp1->dev, "failed to create debugfs directory\n");
+> > -		return;
+> > -	}
+> 
+> I was taking a look at the debugfs_create_dir() code, and I saw it can
+> return ERR_PTR(), so ideally we should check for errors with IS_ERR() / PTR_ERR().
 
-However, pm_runtime_get_sync will increment the PM reference
-count even failed. Forgetting to putting operation will result
-in a reference leak here.
+Debugfs functions aren't meant to be error checked in the normal case.
+There are some drivers which dereference the dentry pointer so those
+need to check it but that's not very common and isn't the case here.
 
-Replace it with pm_runtime_resume_and_get to keep usage
-counter balanced.
+I'm really sure this must be documented somewhere but I can't find it
+at all.  :P  But look at commit 057e212eae72 ("media: usb: uvc: no need
+to check return value of debugfs_create functions") for example.
 
-Fixes: efe0220fc2d2 ("drm/rockchip: cdn-dp: Fix error handling")
-Reported-by: Hulk Robot <hulkci@huawei.com>
-Signed-off-by: Qinglang Miao <miaoqinglang@huawei.com>
----
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index a4a45daf9..9b4406191 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -98,7 +98,7 @@ static int cdn_dp_clk_enable(struct cdn_dp_device *dp)
- 		goto err_core_clk;
- 	}
- 
--	ret = pm_runtime_get_sync(dp->dev);
-+	ret = pm_runtime_resume_and_get(dp->dev);
- 	if (ret < 0) {
- 		DRM_DEV_ERROR(dp->dev, "cannot get pm runtime %d\n", ret);
- 		goto err_pm_runtime_get;
--- 
-2.23.0
-
+regards,
+dan carpenter
 
 _______________________________________________
 Linux-rockchip mailing list
