@@ -8,16 +8,16 @@ X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	UNPARSEABLE_RELAY,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4724CC64E7B
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 14:39:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CCDBCC64E7B
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 14:39:55 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9C51620757
-	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 14:39:02 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPS id 571A120757
+	for <linux-rockchip@archiver.kernel.org>; Tue,  1 Dec 2020 14:39:55 +0000 (UTC)
 Authentication-Results: mail.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="Y/o62wIU"
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C51620757
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.b="hEaGyffZ"
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 571A120757
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -26,36 +26,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=YdFSO4n2Lxb0F5pN100jqj6U75lstgZCSkdAJZY2f/c=; b=Y/o62wIUIY1xz+fgcxIN5GoTA
-	dAHTdWENrTWy3uD9bF0hGdkbS/EXYd5XGCSsJqBFQADuYKcJBhiA5JuBnHFHTOOByTOjcMzE9x2/d
-	HM1uAGdFuTYHbAPpTi55aLGr1DYTesAi8vu0gj2MrZLpgX49JC8pja7RYJJZUH/mrczm2utvl5n8/
-	WDIM/03c4LSr56U9Iymk35CKkp1o+B0FGpdB8zVduUa/4re3NwDW/bUATlY1Jb9deGpKUC/MF8/LI
-	ixYXwUGpK89xDlBmp3vRpZsmgjwNm4A2HkEiRABHR3XYJMaB2ip9uHMGpeta84SfvgKnSdVZ3FXBs
-	UsBC//Dlg==;
+	 bh=NrLPydxZq5gp6ZY/oknTIUCEU02c1e2biuDqROKDbZc=; b=hEaGyffZ7Wagi5Ns4GHQg//vq
+	JuW4v3AyykfRcHEhqZ0dzeHsoZ9cm9ftpqlgHmqJgKl/d9Od4KVDUqkpVKR/XnL+Gy+NGnPWPfONo
+	nEzyLSzm885fMGGxDwwOmiBksvMqJFDAY9sPQagiR3zhYOshkuf8GzvL3gtc8kV83tEGYAefVZ0tr
+	/yAjLLAEG4EwMT3e1uJ4aNg+bQoBPN3YAFFHZ1C39Nbpij63I8+uOShlW5AXnw1u2Zo/oc01KU5vm
+	IrWVQnLQZnO6mU4EcuFmLZj81RtMz2rN/3qKnUrwXoJrGYS0nxihfxa9D/mCbpoyE99skn43pznXC
+	HYf52ueEw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kk6nx-0003IU-Fp; Tue, 01 Dec 2020 14:38:57 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kk6oq-0003TC-KN; Tue, 01 Dec 2020 14:39:52 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kk6nt-0003HG-LM; Tue, 01 Dec 2020 14:38:54 +0000
+ id 1kk6on-0003Rt-9R; Tue, 01 Dec 2020 14:39:50 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: koike) with ESMTPSA id 1E32E1F44B45
-Subject: Re: [PATCH] media: rockchip: rkisp1: remove some dead code
+ (Authenticated sender: koike) with ESMTPSA id ADBA41F40F5D
+Subject: Re: [PATCH v2] media: rockchip: rkisp1: remove useless debugfs checks
 To: Dan Carpenter <dan.carpenter@oracle.com>
-References: <X8TrSj3PbqVtN5XQ@mwanda>
- <a6d9660f-84ec-317d-c3aa-9b3bda595d49@collabora.com>
- <20201201142754.GI2767@kadam>
+References: <20201201143058.GJ2767@kadam>
 From: Helen Koike <helen.koike@collabora.com>
-Message-ID: <cedd1dd1-36c5-ff63-4092-e5f6b40e6286@collabora.com>
-Date: Tue, 1 Dec 2020 11:38:33 -0300
+Message-ID: <17d5555c-1f95-159b-f5db-cd3db0704a6c@collabora.com>
+Date: Tue, 1 Dec 2020 11:39:41 -0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.4.0
 MIME-Version: 1.0
-In-Reply-To: <20201201142754.GI2767@kadam>
+In-Reply-To: <20201201143058.GJ2767@kadam>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201201_093853_825491_12426A75 
-X-CRM114-Status: GOOD (  21.73  )
+X-CRM114-CacheID: sfid-20201201_093949_423828_CD36D006 
+X-CRM114-Status: GOOD (  17.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,60 +76,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dan,
 
-On 12/1/20 11:27 AM, Dan Carpenter wrote:
-> On Mon, Nov 30, 2020 at 11:20:05AM -0300, Helen Koike wrote:
->> Hi Dan,
->>
->> Thank you for your patch.
->>
->> On 11/30/20 9:53 AM, Dan Carpenter wrote:
->>> The debugfs_create_dir() function never returns NULLs.  It's not supposed
->>> to checked for errors in the normal case and there is no need to check
->>> in this function so let's just delete this dead code.
->>>
->>> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
->>> ---
->>>  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 4 ----
->>>  1 file changed, 4 deletions(-)
->>>
->>> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->>> index 9af137e4967f..68da1eed753d 100644
->>> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->>> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
->>> @@ -430,10 +430,6 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
->>>  	struct rkisp1_debug *debug = &rkisp1->debug;
->>>  
->>>  	debug->debugfs_dir = debugfs_create_dir(RKISP1_DRIVER_NAME, NULL);
->>> -	if (!debug->debugfs_dir) {
->>> -		dev_dbg(rkisp1->dev, "failed to create debugfs directory\n");
->>> -		return;
->>> -	}
->>
->> I was taking a look at the debugfs_create_dir() code, and I saw it can
->> return ERR_PTR(), so ideally we should check for errors with IS_ERR() / PTR_ERR().
+
+On 12/1/20 11:30 AM, Dan Carpenter wrote:
+> The debugfs_create_dir() function never returns NULLs so this code will
+> never be executed.  It's not intended that callers will check for
+> debugfs errors in the normal case and it's not necessary in this driver,
+> so we can just delete this code.
 > 
-> Debugfs functions aren't meant to be error checked in the normal case.
-> There are some drivers which dereference the dentry pointer so those
-> need to check it but that's not very common and isn't the case here.
+> Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 
-right, I just saw the functions in inode.c already checks the parent with
-IS_ERR(). the debugfs_create_*() function calls start_creating() which
-already checks the parent.
+Since the debugfs_create_*() functions already check the parent
+with IS_ERR(), this looks good to me.
 
-ok, fair enough, I'll ack v2.
+Acked-by: Helen Koike <helen.koike@collabora.com>
 
-Regards,
+Thanks
 Helen
 
+> ---
+> v2: Fix subject
 > 
-> I'm really sure this must be documented somewhere but I can't find it
-> at all.  :P  But look at commit 057e212eae72 ("media: usb: uvc: no need
-> to check return value of debugfs_create functions") for example.
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c | 4 ----
+>  1 file changed, 4 deletions(-)
 > 
-> regards,
-> dan carpenter
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> index 9af137e4967f..68da1eed753d 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+> @@ -430,10 +430,6 @@ static void rkisp1_debug_init(struct rkisp1_device *rkisp1)
+>  	struct rkisp1_debug *debug = &rkisp1->debug;
+>  
+>  	debug->debugfs_dir = debugfs_create_dir(RKISP1_DRIVER_NAME, NULL);
+> -	if (!debug->debugfs_dir) {
+> -		dev_dbg(rkisp1->dev, "failed to create debugfs directory\n");
+> -		return;
+> -	}
+>  	debugfs_create_ulong("data_loss", 0444, debug->debugfs_dir,
+>  			     &debug->data_loss);
+>  	debugfs_create_ulong("outform_size_err", 0444,  debug->debugfs_dir,
 > 
 
 _______________________________________________
