@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E78EDC64E7A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Dec 2020 13:33:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0BD8AC63777
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Dec 2020 13:34:27 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 873C32051A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Dec 2020 13:33:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 873C32051A
+	by mail.kernel.org (Postfix) with ESMTPS id 8ED9620449
+	for <linux-rockchip@archiver.kernel.org>; Thu,  3 Dec 2020 13:34:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8ED9620449
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=bcNau3Gxsh29ZV25kKD/+Rga0NWCe0Yo/EUnCWBu5GA=; b=PKTnGseG7+zefJMSrB8lUpXt1
-	UZfN5IGsWHoE6YI6MfqcRZ77gb/EnGqoBRw2HaH5RRd8pP4GwngLVNq3Euhv2cctR8KTI0lytDe3/
-	cz5AUnmBvA4cbAasDxH+OWaGeSYViYT7KWI9HvE7ijwtviGlFLlfagp8Fwoz9FT51dVaMXkfz5U3/
-	H+K1kH10BcFsDzV0EPk3VcqnOherXE4V6haPwC1Sial3tIIRwBT5wWJsDGDKd92ejVhkLdgCc8+vw
-	/shZBeJf7z6VntgkPnUr7h1NDMoarbcF9RUF+sixQY5Tk2JU8Vz5vkj9JupZGcwKeYFRBZZdYYajc
-	1ymOo3g3g==;
+	 bh=3mdrl5yzjQZrNn1DzM/aSgE6Oej/fS4h1OrueS+lNTM=; b=EWYm/DvpSR1exg8GOdKlRnOPf
+	ojIxXN+bM7G6iPNWCKQCG/oWxBfkKb9JcV96NH3xTAEpa1sSpzm6sANO6/nHFMZWzPY8Whj08GmI4
+	dhXEcFcS1MmM0oZWlOQmrOB8qnUX4qEbwgvGeCXkNVO9CTMCEpK+2GxBJj6BQguvpiOL7YBoLATbp
+	CnjWuj/Ikpp4w1dkPttNzu7uhqZsOwgSTarr1xIosyaj8PV+6iJUVKkC1AQ9u57rGcZQll2J7we3O
+	XRe9KPTgB3hPeSghz30QjlWo0rHeh26982uD3UPUaqco8vSZcgCsBnWaBiaUvZIFi+f1pSOGzti97
+	GXAZc0qoQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kkojX-0004qR-HP; Thu, 03 Dec 2020 13:33:19 +0000
+	id 1kkokO-0005Kd-Rn; Thu, 03 Dec 2020 13:34:12 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kkog0-0002qy-FM; Thu, 03 Dec 2020 13:29:43 +0000
+ id 1kkogZ-0003Ea-V0; Thu, 03 Dec 2020 13:30:16 +0000
 From: Sasha Levin <sashal@kernel.org>
 Authentication-Results: mail.kernel.org;
  dkim=permerror (bad message/signature format)
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 02/23] arm64: dts: rockchip: Assign a fixed index
+Subject: [PATCH AUTOSEL 4.19 02/14] arm64: dts: rockchip: Assign a fixed index
  to mmc devices on rk3399 boards.
-Date: Thu,  3 Dec 2020 08:29:14 -0500
-Message-Id: <20201203132935.931362-2-sashal@kernel.org>
+Date: Thu,  3 Dec 2020 08:29:58 -0500
+Message-Id: <20201203133010.931600-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20201203132935.931362-1-sashal@kernel.org>
-References: <20201203132935.931362-1-sashal@kernel.org>
+In-Reply-To: <20201203133010.931600-1-sashal@kernel.org>
+References: <20201203133010.931600-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201203_082940_876825_9B1119FF 
+X-CRM114-CacheID: sfid-20201203_083016_123247_F31F162D 
 X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -95,7 +95,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 3 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/rk3399.dtsi b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
-index c5d8d1c582913..bb7d0aac6b9db 100644
+index f14e8c5c41acc..f4ee7c4f83b8b 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3399.dtsi
 +++ b/arch/arm64/boot/dts/rockchip/rk3399.dtsi
 @@ -29,6 +29,9 @@ aliases {
