@@ -2,53 +2,60 @@ Return-Path: <SRS0=Y7pG=FI=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BC019C433FE
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Dec 2020 06:48:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A919BC4361A
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Dec 2020 08:30:24 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 25FEF22583
-	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Dec 2020 06:48:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 25FEF22583
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0C6C822582
+	for <linux-rockchip@archiver.kernel.org>; Fri,  4 Dec 2020 08:30:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0C6C822582
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=huawei.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sIF22OfETchKfYm4tUeLblWOUZA3BVF5CiCg4SIHZhw=; b=DX9oFwZeVvSfOVcj5Wz+jQ5+qf
-	tTBWscRSl+SmkoibgH5GiSpL43HY84bSbWYhgQt7zdxO+5OlZHke/nsivCYzStTjg+P0FH66Lv+Uk
-	jM6uf9RYwIrxbBl7Y4TZwrxI1r1aDjJkMDeJjmrjhjbAzlG8/OqBd1JlK6VhwMpwzD+a53SW7ji12
-	T2hzILL2VJ+WFknsfp3KIlhFLJRFzr3RVMNgBUXcUO2NImk3/1nguaqliMPvVnV8/AOReIDRAdzZf
-	a3Erbe8R4WFNv32Pz2mU8afH98ROh4NUrBtClvw7H45DChJxc0Zd2aytPCDEIe+FBbKXRr6mcK7ak
-	VIL0+dPQ==;
+	bh=Cs4/EntOF29u0op0yX4G5ibd+1iyc8VJ6Yf5MgnwrJM=; b=P9qJGc+kawYzuk6uB/WKA7CYzn
+	CR2id+3mQNrwK+P3giFBMSWGY1wJ2fZ2tFGIBbj19Smkn9y9x5gko0bCxn2+90P2wdpfqjdirElQJ
+	8FUXW8gEiP6zzomnbXbPdLN3Y2umKpGtFG/HDKPLH6+T49N2lboxS6rth9zHN6oxLI2qjf0zkxsUR
+	8JA79HzAil4MLYr6WH9W1bUZEWkOIkh5/zvMDXg73vKvfvvo7EU9pvdRPKDNpr+ydiT9CYV+CvGB7
+	jhv1xSNY2Gv0mc1PhV+Wg/oba+A3fNDSrdnkO94pIqo2XCBB5RSJBuzzeNqNxvQHQc+IQ2yQs8Kp7
+	r7J7cepA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kl4t3-0003ms-Od; Fri, 04 Dec 2020 06:48:13 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kl6Tq-0007A2-0X; Fri, 04 Dec 2020 08:30:18 +0000
+Received: from szxga04-in.huawei.com ([45.249.212.190])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kl4t0-0003mL-QJ; Fri, 04 Dec 2020 06:48:11 +0000
-From: Chen-Yu Tsai <wens@kernel.org>
-Authentication-Results: mail.kernel.org;
- dkim=permerror (bad message/signature format)
-To: Heiko Stuebner <heiko@sntech.de>,
-	Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH] arm64: dts: rockchip: rk3328: Fix UART pull-ups
-Date: Fri,  4 Dec 2020 14:48:05 +0800
-Message-Id: <20201204064805.6480-1-wens@kernel.org>
-X-Mailer: git-send-email 2.29.2
+ id 1kl6Tn-00077h-DS
+ for linux-rockchip@lists.infradead.org; Fri, 04 Dec 2020 08:30:16 +0000
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CnQqP3FbXz15XKk;
+ Fri,  4 Dec 2020 16:29:37 +0800 (CST)
+Received: from compute.localdomain (10.175.112.70) by
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Fri, 4 Dec 2020 16:29:56 +0800
+From: Zhang Changzhong <zhangchangzhong@huawei.com>
+To: Heiko Stuebner <heiko@sntech.de>, "Rafael J. Wysocki"
+ <rafael.j.wysocki@intel.com>, Ulf Hansson <ulf.hansson@linaro.org>
+Subject: [PATCH] PM: AVS: rockchip-io: Fix error return code in
+ rockchip_iodomain_probe()
+Date: Fri, 4 Dec 2020 16:33:25 +0800
+Message-ID: <1607070805-33038-1-git-send-email-zhangchangzhong@huawei.com>
+X-Mailer: git-send-email 1.8.3.1
 MIME-Version: 1.0
+X-Originating-IP: [10.175.112.70]
+X-CFilter-Loop: Reflected
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201204_014810_958379_FC27A356 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201204_033015_705373_16A1F3F9 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -61,78 +68,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Chen-Yu Tsai <wens@csie.org>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+Cc: Zhang Changzhong <zhangchangzhong@huawei.com>, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chen-Yu Tsai <wens@csie.org>
+Fix to return a negative error code from the error handling
+case instead of 0, as done elsewhere in this function.
 
-For UARTs, the local pull-ups should be on the RX pin, not the TX pin.
-UARTs transmit active-low, so a disconnected RX pin should be pulled
-high instead of left floating to prevent noise being interpreted as
-transmissions.
-
-This gets rid of bogus sysrq events when the UART console is not
-connected.
-
-Fixes: 52e02d377a72 ("arm64: dts: rockchip: add core dtsi file for RK3328 SoCs")
-Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+Fixes: e943c43b32ce ("PM: AVS: rockchip-io: Move the driver to the rockchip specific drivers")
+Reported-by: Hulk Robot <hulkci@huawei.com>
+Signed-off-by: Zhang Changzhong <zhangchangzhong@huawei.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3328.dtsi | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ drivers/soc/rockchip/io-domain.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-index 521c4678ec35..1e3aa6acbc11 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
-@@ -1265,8 +1265,8 @@ otp_out: otp-out {
- 
- 		uart0 {
- 			uart0_xfer: uart0-xfer {
--				rockchip,pins = <1 RK_PB1 1 &pcfg_pull_up>,
--						<1 RK_PB0 1 &pcfg_pull_none>;
-+				rockchip,pins = <1 RK_PB1 1 &pcfg_pull_none>,
-+						<1 RK_PB0 1 &pcfg_pull_up>;
- 			};
- 
- 			uart0_cts: uart0-cts {
-@@ -1284,8 +1284,8 @@ uart0_rts_pin: uart0-rts-pin {
- 
- 		uart1 {
- 			uart1_xfer: uart1-xfer {
--				rockchip,pins = <3 RK_PA4 4 &pcfg_pull_up>,
--						<3 RK_PA6 4 &pcfg_pull_none>;
-+				rockchip,pins = <3 RK_PA4 4 &pcfg_pull_none>,
-+						<3 RK_PA6 4 &pcfg_pull_up>;
- 			};
- 
- 			uart1_cts: uart1-cts {
-@@ -1303,15 +1303,15 @@ uart1_rts_pin: uart1-rts-pin {
- 
- 		uart2-0 {
- 			uart2m0_xfer: uart2m0-xfer {
--				rockchip,pins = <1 RK_PA0 2 &pcfg_pull_up>,
--						<1 RK_PA1 2 &pcfg_pull_none>;
-+				rockchip,pins = <1 RK_PA0 2 &pcfg_pull_none>,
-+						<1 RK_PA1 2 &pcfg_pull_up>;
- 			};
- 		};
- 
- 		uart2-1 {
- 			uart2m1_xfer: uart2m1-xfer {
--				rockchip,pins = <2 RK_PA0 1 &pcfg_pull_up>,
--						<2 RK_PA1 1 &pcfg_pull_none>;
-+				rockchip,pins = <2 RK_PA0 1 &pcfg_pull_none>,
-+						<2 RK_PA1 1 &pcfg_pull_up>;
- 			};
- 		};
+diff --git a/drivers/soc/rockchip/io-domain.c b/drivers/soc/rockchip/io-domain.c
+index eece97f..b29e829 100644
+--- a/drivers/soc/rockchip/io-domain.c
++++ b/drivers/soc/rockchip/io-domain.c
+@@ -547,6 +547,7 @@ static int rockchip_iodomain_probe(struct platform_device *pdev)
+ 		if (uV < 0) {
+ 			dev_err(iod->dev, "Can't determine voltage: %s\n",
+ 				supply_name);
++			ret = uV;
+ 			goto unreg_notify;
+ 		}
  
 -- 
-2.29.2
+2.9.5
 
 
 _______________________________________________
