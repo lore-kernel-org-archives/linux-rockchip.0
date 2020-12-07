@@ -1,77 +1,92 @@
-Return-Path: <SRS0=Jg7J=FK=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=PznR=FL=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-7.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EF55CC4361B
-	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Dec 2020 20:17:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E141C4361B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Dec 2020 03:25:25 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 80AAB2310B
-	for <linux-rockchip@archiver.kernel.org>; Sun,  6 Dec 2020 20:17:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 80AAB2310B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0761322CA0
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Dec 2020 03:25:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0761322CA0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=sGw70y7+KVJfkU5oHu4KKo4YC39YqXuAmbVuznqhu/Q=; b=2X31iSpyX8x1M7lbak9Yt+m3Y
-	7RJ9LtluoBBSXeBMYQzhh/psmrfD2yFcHLoftffF0U5D3W8c60r9n/A2O3/xISJEgF7IZXw8ONpRu
-	IF+xJ0n7d9Nk+y2a1CYBfdzrzUksisIm7F1lvvyy+h7uuFnugzyJYAL0XkzlWLbK0z3wklqdd5na7
-	C0ZJ0uZRM4gSa0zZO6o3YVgRc9zm7+8yHtIdaNtBxrAhqWE942dPBQ7J8N1blScLnMsq8TU2Temuh
-	Mq158nlS9u3/20Z3ducVsyAWQPc1tPfNL04/zgkwFcIPROHygcyAo/9NqCmdOkOEhkcUmv5KlO7z3
-	Wmj5OQEDQ==;
+	 bh=vVGrQTdZVMrCyY131ulUXiNfOVGnFhduqa+VFzYevJ0=; b=M08EkxlZzQ807lUJVZPgD56Dk
+	cNbiZwB6Cyndk92iIZbS4n50OewJFCLCKKhARrhXeraX1sQdZpTfI7WgZSPWpWWfYE4QXXrELvviJ
+	Z7Ue6EvpP51dSujSQbUwhFLRlQIFq7QKOtTnRoVzrbGyYIZ2fjFKkvJ3raS7fKyKae1E0dRh+jS2/
+	/NLd2bAYlk9R3H9nk4Pl+BsFtfEXugFYQu6S29m24b8zuvmNlWHQktHPfeDAkQskjdrRvNaq+8CMi
+	SCAj6SDPZ26RWjNlgGcz49T8e3JDVnUOO47j0Rws5JZHAs+1VY1abr5tvhuX8DynvpKWk+/8kHhmL
+	/ZEGHgWAQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1km0Ss-0002NI-GY; Sun, 06 Dec 2020 20:17:02 +0000
-Received: from mail-pj1-f67.google.com ([209.85.216.67])
+	id 1km79K-000505-NN; Mon, 07 Dec 2020 03:25:18 +0000
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1km0Sn-0002Mh-Iz; Sun, 06 Dec 2020 20:16:58 +0000
-Received: by mail-pj1-f67.google.com with SMTP id iq13so6144804pjb.3;
- Sun, 06 Dec 2020 12:16:55 -0800 (PST)
+ id 1km79H-0004zY-Um; Mon, 07 Dec 2020 03:25:17 +0000
+Received: by mail-oi1-x244.google.com with SMTP id s2so4461047oij.2;
+ Sun, 06 Dec 2020 19:25:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=C2Ix5oeKbqJKBSFQum17pYUeNiQgWG4qBDaCP6pF+9E=;
+ b=pzZKsSd8MbNoUDnMdPCVc5u6LHTCjTVi1zdUIqAWpWGrKhn2SS+tAQeQc1vQfqA/M1
+ uo8emwG4ei0ap7lYcKus+vFJPiNL9SkPX5E4aXMBBvKSXAMv+GrpZrRpXHAngVWkMhZd
+ klK8iivt8DWyHnAvHGkqeKM1A5/ecGxXpIvop6wwC85CtjCZLEoGJz1YariaxwQOd4Zm
+ uqNOHPLKB8eFtTXr1BHAUBlQr03aC+bJPtTF9wkNuDxCLJUuwzK8mgvxbRXeo+ieU7Zu
+ dGmAKaT/2GABKN60dHgCOR2thZ66V1CUcFOY5jb1kZDWWyVqgLj/rGwqLg55Mz3hUZyh
+ iFgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=R+rjdl/kMmpfvATyyiBKTTDC7/ADOrYG2LQ26ycg4ts=;
- b=UVSibi/Mun73YtGoLr7deKQteyXjjeqO5g4I3GjqIvVaMjoX/6vvZePYA/SMcdEmFV
- YujjMjMigb0A1Yy02XSxG8bFC4w60OlVH/kblCMCJNoWMiZoiY7UPSK5c5wnPVrof+vM
- KxhQPXRTblUqSKi7UIcFsif49DF+gPTXOpCSKURVgMSVnmQPUa7ipw31CXOmmxd2qg9m
- mAiNpnCX80riln2gHptavIFcYMP+QzrFNlEr3uZ7t7NrStf2vLezsKZVRjN+6YI0XayC
- iubWqvCcwdV5VnqyaF1/rKk4K1wqbVsI8qd7e2m0mJW5i2NPXUziR2zb271eP8bM08L7
- T/9A==
-X-Gm-Message-State: AOAM5312hKIlc1iN7rwzdFtYbL1vALa+sXaZvP2m9jIhW/cGYDF/aFKZ
- 1ERUEXtc4P7NTCux4FrOiGs=
-X-Google-Smtp-Source: ABdhPJxpA9QCLH2CckDZiO4WQ7tusbQz3TsQfr9LJIt6xF7N6IQbRIyD2evK2VHZgjLCDBw3mAerWw==
-X-Received: by 2002:a17:90a:990a:: with SMTP id
- b10mr2206383pjp.87.1607285815024; 
- Sun, 06 Dec 2020 12:16:55 -0800 (PST)
-Received: from rocinante ([95.155.85.46])
- by smtp.gmail.com with ESMTPSA id w11sm12784288pfi.162.2020.12.06.12.16.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 06 Dec 2020 12:16:54 -0800 (PST)
-Date: Sun, 6 Dec 2020 21:16:36 +0100
-From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
-To: Bjorn Helgaas <bhelgaas@google.com>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=C2Ix5oeKbqJKBSFQum17pYUeNiQgWG4qBDaCP6pF+9E=;
+ b=uAI28prveX9xpQDpufxxWrGgi5LmWMjoJ7Vk5UK+ZtQcGQoxmlGA0tMuJh1WLT258j
+ HLepUbgqZMzL0RMJ/0QvsoQSkCjy9NGdEe9LrbRzAEbXlXrG3uv2tEGGJQc7+NB405Kk
+ toYDWzkDHPOIUKkzqyXp8fuUiLpQWQhMgJ5dMUW+mHHvDffgGH8xd0mbL9n4otmUGedD
+ Toh+iBH8mip/Jom5JmXbaEuRyJWhT3QkXPhpfTw3Uebcid9rcI2H0dTcosBP8+cdnk3+
+ pSTBwCxWJyMrSwF3IAh+/pEWj7bTBQGsc2ignw6yM8+iOwrS2aysY0iWtBmuH5F/yQEv
+ dnvA==
+X-Gm-Message-State: AOAM5312P9gkzRMzwHa2FbQ5qhptXjwMB2JsvG0Wwzg4Q1hGPTQatxfe
+ OlUzepG6cnHKVRk2anhSOl08KXq/8G0=
+X-Google-Smtp-Source: ABdhPJzczOydwnK1CTI9pP9bxm9+oAl7Jgo4Mw8k7GQ6HD6zylEV81DWrC05uDG06SC4srcr560HGA==
+X-Received: by 2002:aca:3d0b:: with SMTP id k11mr11306704oia.122.1607311511211; 
+ Sun, 06 Dec 2020 19:25:11 -0800 (PST)
+Received: from ?IPv6:2600:1700:dfe0:49f0:98c0:b1b6:3436:9662?
+ ([2600:1700:dfe0:49f0:98c0:b1b6:3436:9662])
+ by smtp.gmail.com with ESMTPSA id k5sm2350693oot.30.2020.12.06.19.25.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 06 Dec 2020 19:25:10 -0800 (PST)
 Subject: Re: [PATCH v6 1/5] PCI: Unify ECAM constants in native PCI Express
  drivers
-Message-ID: <X808JJGeIREwqIjb@rocinante>
+To: =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Jim Quinlan <james.quinlan@broadcom.com>
 References: <20201129230743.3006978-1-kw@linux.com>
- <20201129230743.3006978-2-kw@linux.com>
+ <20201129230743.3006978-2-kw@linux.com> <X808JJGeIREwqIjb@rocinante>
+From: Florian Fainelli <f.fainelli@gmail.com>
+Message-ID: <094b314f-7f61-d0fd-fd63-c9c4da9e84a8@gmail.com>
+Date: Sun, 6 Dec 2020 19:25:06 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.5.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201129230743.3006978-2-kw@linux.com>
+In-Reply-To: <X808JJGeIREwqIjb@rocinante>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201206_151657_659236_EFB66798 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20201206_222516_067163_60E1B026 
+X-CRM114-Status: GOOD (  19.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,62 +109,46 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
  Michael Ellerman <mpe@ellerman.id.au>, Michal Simek <michal.simek@xilinx.com>,
  linux-rockchip@lists.infradead.org, bcm-kernel-feedback-list@broadcom.com,
  Jonathan Derrick <jonathan.derrick@intel.com>, linux-pci@vger.kernel.org,
- Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>,
- linux-rpi-kernel@lists.infradead.org,
+ Ray Jui <rjui@broadcom.com>, linux-rpi-kernel@lists.infradead.org,
  Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  linux-arm-kernel@lists.infradead.org, Scott Branden <sbranden@broadcom.com>,
  Zhou Wang <wangzhou1@hisilicon.com>, Robert Richter <rrichter@marvell.com>,
  linuxppc-dev@lists.ozlabs.org, Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Nicolas, Florian and Florian,
-
-[...]
-> -/* Configuration space read/write support */
-> -static inline int brcm_pcie_cfg_index(int busnr, int devfn, int reg)
-> -{
-> -	return ((PCI_SLOT(devfn) & 0x1f) << PCIE_EXT_SLOT_SHIFT)
-> -		| ((PCI_FUNC(devfn) & 0x07) << PCIE_EXT_FUNC_SHIFT)
-> -		| (busnr << PCIE_EXT_BUSNUM_SHIFT)
-> -		| (reg & ~3);
-> -}
-> -
->  static void __iomem *brcm_pcie_map_conf(struct pci_bus *bus, unsigned int devfn,
->  					int where)
->  {
-> @@ -716,7 +704,7 @@ static void __iomem *brcm_pcie_map_conf(struct pci_bus *bus, unsigned int devfn,
->  		return PCI_SLOT(devfn) ? NULL : base + where;
->  
->  	/* For devices, write to the config space index register */
-> -	idx = brcm_pcie_cfg_index(bus->number, devfn, 0);
-> +	idx = PCIE_ECAM_OFFSET(bus->number, devfn, 0);
->  	writel(idx, pcie->base + PCIE_EXT_CFG_INDEX);
->  	return base + PCIE_EXT_CFG_DATA + where;
->  }
-[...]
-
-Passing the hard-coded 0 as the "reg" argument here never actually did
-anything, thus the 32 bit alignment was never correctly enforced.
-
-My question would be: should this be 32 bit aligned?  It seems like the
-intention was to perhaps make the alignment?  I am sadly not intimately
-familiar with his hardware, so I am not sure if there is something to
-fix here or not.
-
-Also, I wonder whether it would be safe to pass the offset (the "where"
-variable) rather than hard-coded 0?
-
-Thank you for help in advance!
-
-Bjorn also asked the same question:
-  https://lore.kernel.org/linux-pci/20201120203428.GA272511@bjorn-Precision-5520/
-
-Krzysztof
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+K0ppbVEsCgpPbiAxMi82LzIwMjAgMTI6MTYgUE0sIEtyenlzenRvZiBXaWxjennFhHNraSB3cm90
+ZToKPiBIZWxsbyBOaWNvbGFzLCBGbG9yaWFuIGFuZCBGbG9yaWFuLAo+IAo+IFsuLi5dCj4+IC0v
+KiBDb25maWd1cmF0aW9uIHNwYWNlIHJlYWQvd3JpdGUgc3VwcG9ydCAqLwo+PiAtc3RhdGljIGlu
+bGluZSBpbnQgYnJjbV9wY2llX2NmZ19pbmRleChpbnQgYnVzbnIsIGludCBkZXZmbiwgaW50IHJl
+ZykKPj4gLXsKPj4gLQlyZXR1cm4gKChQQ0lfU0xPVChkZXZmbikgJiAweDFmKSA8PCBQQ0lFX0VY
+VF9TTE9UX1NISUZUKQo+PiAtCQl8ICgoUENJX0ZVTkMoZGV2Zm4pICYgMHgwNykgPDwgUENJRV9F
+WFRfRlVOQ19TSElGVCkKPj4gLQkJfCAoYnVzbnIgPDwgUENJRV9FWFRfQlVTTlVNX1NISUZUKQo+
+PiAtCQl8IChyZWcgJiB+Myk7Cj4+IC19Cj4+IC0KPj4gIHN0YXRpYyB2b2lkIF9faW9tZW0gKmJy
+Y21fcGNpZV9tYXBfY29uZihzdHJ1Y3QgcGNpX2J1cyAqYnVzLCB1bnNpZ25lZCBpbnQgZGV2Zm4s
+Cj4+ICAJCQkJCWludCB3aGVyZSkKPj4gIHsKPj4gQEAgLTcxNiw3ICs3MDQsNyBAQCBzdGF0aWMg
+dm9pZCBfX2lvbWVtICpicmNtX3BjaWVfbWFwX2NvbmYoc3RydWN0IHBjaV9idXMgKmJ1cywgdW5z
+aWduZWQgaW50IGRldmZuLAo+PiAgCQlyZXR1cm4gUENJX1NMT1QoZGV2Zm4pID8gTlVMTCA6IGJh
+c2UgKyB3aGVyZTsKPj4gIAo+PiAgCS8qIEZvciBkZXZpY2VzLCB3cml0ZSB0byB0aGUgY29uZmln
+IHNwYWNlIGluZGV4IHJlZ2lzdGVyICovCj4+IC0JaWR4ID0gYnJjbV9wY2llX2NmZ19pbmRleChi
+dXMtPm51bWJlciwgZGV2Zm4sIDApOwo+PiArCWlkeCA9IFBDSUVfRUNBTV9PRkZTRVQoYnVzLT5u
+dW1iZXIsIGRldmZuLCAwKTsKPj4gIAl3cml0ZWwoaWR4LCBwY2llLT5iYXNlICsgUENJRV9FWFRf
+Q0ZHX0lOREVYKTsKPj4gIAlyZXR1cm4gYmFzZSArIFBDSUVfRVhUX0NGR19EQVRBICsgd2hlcmU7
+Cj4+ICB9Cj4gWy4uLl0KPiAKPiBQYXNzaW5nIHRoZSBoYXJkLWNvZGVkIDAgYXMgdGhlICJyZWci
+IGFyZ3VtZW50IGhlcmUgbmV2ZXIgYWN0dWFsbHkgZGlkCj4gYW55dGhpbmcsIHRodXMgdGhlIDMy
+IGJpdCBhbGlnbm1lbnQgd2FzIG5ldmVyIGNvcnJlY3RseSBlbmZvcmNlZC4KPiAKPiBNeSBxdWVz
+dGlvbiB3b3VsZCBiZTogc2hvdWxkIHRoaXMgYmUgMzIgYml0IGFsaWduZWQ/ICBJdCBzZWVtcyBs
+aWtlIHRoZQo+IGludGVudGlvbiB3YXMgdG8gcGVyaGFwcyBtYWtlIHRoZSBhbGlnbm1lbnQ/ICBJ
+IGFtIHNhZGx5IG5vdCBpbnRpbWF0ZWx5Cj4gZmFtaWxpYXIgd2l0aCBoaXMgaGFyZHdhcmUsIHNv
+IEkgYW0gbm90IHN1cmUgaWYgdGhlcmUgaXMgc29tZXRoaW5nIHRvCj4gZml4IGhlcmUgb3Igbm90
+Lgo+IAo+IEFsc28sIEkgd29uZGVyIHdoZXRoZXIgaXQgd291bGQgYmUgc2FmZSB0byBwYXNzIHRo
+ZSBvZmZzZXQgKHRoZSAid2hlcmUiCj4gdmFyaWFibGUpIHJhdGhlciB0aGFuIGhhcmQtY29kZWQg
+MD8KPiAKPiBUaGFuayB5b3UgZm9yIGhlbHAgaW4gYWR2YW5jZSEKPiAKPiBCam9ybiBhbHNvIGFz
+a2VkIHRoZSBzYW1lIHF1ZXN0aW9uOgo+ICAgaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgt
+cGNpLzIwMjAxMTIwMjAzNDI4LkdBMjcyNTExQGJqb3JuLVByZWNpc2lvbi01NTIwLwo+IAo+IEty
+enlzenRvZgo+IAoKLS0gCkZsb3JpYW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
