@@ -3,76 +3,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
 X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03DD6C4361B
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Dec 2020 21:14:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7122AC4361B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Dec 2020 21:29:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF288238EE
-	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Dec 2020 21:14:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AF288238EE
+	by mail.kernel.org (Postfix) with ESMTPS id 194F822C7C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  7 Dec 2020 21:29:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 194F822C7C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:Message-ID:Date:To:From:Subject:References:
+	In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=cFlyfX5hrFdaViypSOXzvhHHiGUSABMvGjp/dyEOrms=; b=di7pk3wuEgufvCWivnaMQwPut
-	9pdA6RPw57BxMqmjBasWeqG8MG2ZGWTn/PcQjL0nJcNyNkOkIJ5DrEWHsC3KBOZVb9reaL0sG7rU3
-	HNoPAi96y4kMZq+DCNObJ0Hi/dfdGNwc+73u2BL8u4Z9eX0KTnVf/z8EX0GBQcwK4NeBEaFAFuSEq
-	YtJE7n4ytC2I5+AexpZXQ/L8bJ1XgkFdJ/g7bUpDeqO8FmvzAbiy3Kqp820gXOzKTCw9yVD07VOrl
-	qP5pDiR+ZVaswvn51xV8PHqlQ5XpRkDsX4HaNQ3/JQgvN6PICm/NlukYCOhvoIakrryT1t7KMYJCn
-	cSicldTqA==;
+	 bh=YR+WkOjCohJKoMyEo//MwdtN33epUeRHhBFP9a/bXC4=; b=DfYObetm78IHu6a2rM1VAdOFs
+	hxDN7mzr5bu35KAKYkS6/XWWaMUf+wdiLqgLz48V0PpGg64f3e33wo5SpU06FJV3aR+Ij2ygCdyDh
+	02430UCjYgBp+X6GP50x8dTNoXA/TQeN+oJLegbeZ2WcJtsxpNo96VckzGNRb+BdEhyuM26Kyjhio
+	FdZsGSBFE/VNq7SnrtJqW0nkkWPsah8djSjs4h9g87WHpMOFPTUPnBro9rO1r1QD6GWANl1TCQAJz
+	VY/8iRw8T+3oY6Jel1mpHFuVMS20E6ah4XqSV5E2JmhVb3sHqDWaS+nPwelBOrpF1P6bWUGTHfTET
+	slbacLYJA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmNpS-0003v9-IT; Mon, 07 Dec 2020 21:13:54 +0000
-Received: from mail-oi1-f195.google.com ([209.85.167.195])
+	id 1kmO47-0006lQ-1D; Mon, 07 Dec 2020 21:29:03 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmNpH-0003nR-To; Mon, 07 Dec 2020 21:13:47 +0000
-Received: by mail-oi1-f195.google.com with SMTP id 15so5854545oix.8;
- Mon, 07 Dec 2020 13:13:40 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=wSSUTQZg6bgD+NFU+dlyoaBo/UNi5gEZyvnAHdAYmoI=;
- b=CmY9wq+MXjjKJT3ikZefsnIfJYOjePUyVZt7QydKionichjJqDqtoJkYgWqCPYTGQn
- p2yy5ufSBTrMo2ZwylDlSIWl87Cyi9yAY6DJss8/QfGDaz8ARtmgmd8Ur6fm8mBHe9e8
- Go08TA1bWZmlzMj0K0gpDU2MoGA/sVu8jcxFji/K2CyHjN6rlYj1Ic3ffouiY8N8MLWe
- T2y66aymUYdvjJt6MQh6nMB31fpP7PSZh4PT9WcTB3tFaljzo4oQTq1sLoWC5ztg9W2A
- clRo0GMQThyKb8BU3Exgi7BY8kXNFmw0vGRw+8PsRbuBv3qNyCg0FmgtpiFPmtjPcT9b
- LpBQ==
-X-Gm-Message-State: AOAM530bpmN4qfH/g4sqz9HjsooUTykf3xcBHpZyE4wtTFVV+YNwD7DF
- UXnB/WVG7pOSXqZX+D5sxA==
-X-Google-Smtp-Source: ABdhPJwxEb2r9vTvghtzHd8K3uHSFXi9O1760V/OHmnDBVyD9HJ35YFbgajx/vD/9xQJIohC18waoQ==
-X-Received: by 2002:aca:3192:: with SMTP id x140mr558323oix.172.1607375620156; 
- Mon, 07 Dec 2020 13:13:40 -0800 (PST)
-Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
- by smtp.gmail.com with ESMTPSA id t186sm3224633oif.1.2020.12.07.13.13.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Dec 2020 13:13:38 -0800 (PST)
-Received: (nullmailer pid 835084 invoked by uid 1000);
- Mon, 07 Dec 2020 21:13:37 -0000
-Date: Mon, 7 Dec 2020 15:13:37 -0600
-From: Rob Herring <robh@kernel.org>
-To: Chen-Yu Tsai <wens@kernel.org>
-Subject: Re: [PATCH v2 2/4] dt-bindings: arm: rockchip: Add FriendlyARM
- NanoPi M4B
-Message-ID: <20201207211337.GA835025@robh.at.kernel.org>
-References: <20201118071724.4866-1-wens@kernel.org>
- <20201118071724.4866-3-wens@kernel.org>
+ id 1kmO45-0006l3-1N
+ for linux-rockchip@lists.infradead.org; Mon, 07 Dec 2020 21:29:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1607376539;
+ bh=1NyZkq+r9GIAEnDMcrQBgRznt4H6S0WMSlyeNHODLi8=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=ljnj/MMt+fOyRRqNabC/peq8Ji71Hj4LxbgsZD9iBhHlSzKOLoIUbPgY204SbyFbF
+ nGT5nPPnEV1k+Q8Xyb1FSxX/G3RQbUiHAgkSkXKJnGhrH8spInhKF4hRbZnOen3xDR
+ bUt5LIClEhBHcUQLSwml9YeCrvMGGFiaUbRtzDN9V55+sE1gqPOG5H82DUVRfkyYHG
+ 1LKw4IHizUXChoRcis169b6Y5ctnNmFLQ4CoSe8ENrCwnraMT9SxK4mL4B5bAVbgrU
+ q4cxqVapZMB0Cfj5XrHmgYhV2UXzkg8lrc+IOoyqV7J4k/gBIbqMpRhmHImzWBf9YV
+ Yju6JxBzfoYTw==
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201118071724.4866-3-wens@kernel.org>
+In-Reply-To: <5662766.lOV4Wx5bFT@phil>
+References: <5662766.lOV4Wx5bFT@phil>
+Subject: Re: [GIT PULL] Rockchip clock changes for 5.11
+From: Stephen Boyd <sboyd@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
+Date: Mon, 07 Dec 2020 13:28:58 -0800
+Message-ID: <160737653822.1580929.2930727213908816182@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201207_161344_193598_E4D4BB36 
-X-CRM114-Status: GOOD (  18.48  )
+X-CRM114-CacheID: sfid-20201207_162901_212572_8B1651EB 
+X-CRM114-Status: UNSURE (   6.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,48 +71,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
- Shawn Lin <shawn.lin@rock-chips.com>, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Chen-Yu Tsai <wens@csie.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 18 Nov 2020 15:17:22 +0800, Chen-Yu Tsai wrote:
-> From: Chen-Yu Tsai <wens@csie.org>
+Quoting Heiko Stuebner (2020-12-06 10:27:36)
+> Hi Mike, Stephen,
 > 
-> The NanoPi M4B is a minor revision of the original M4.
+> please find below Rockchip clock changes for 5.11
 > 
-> The differences against the original Nanopi M4 that are common with the
-> other M4V2 revision include:
+> Please pull, thanks
+> Heiko
 > 
->   - microphone header removed
->   - power button added
->   - recovery button added
+> The following changes since commit 3650b228f83adda7e5ee532e2b90429c03f7b9ec:
 > 
-> Additional changes specific to the M4B:
+>   Linux 5.10-rc1 (2020-10-25 15:14:11 -0700)
 > 
->   - USB 3.0 hub removed; board now has 2x USB 3.0 type-A ports and 2x
->     USB 2.0 ports
->   - ADB toggle switch added; this changes the top USB 3.0 host port to
->     a peripheral port
->   - Type-C port no longer supports data or PD
->   - WiFi/Bluetooth combo chip switched to AP6256, which supports BT 5.0
->     but only 1T1R (down from 2T2R) for WiFi
+> are available in the Git repository at:
 > 
-> Add a compatible string for the new board revision.
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.11-rockchip-clk-1
 > 
-> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
-> ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
->  1 file changed, 1 insertion(+)
+> for you to fetch changes up to caa2fd752ecb80faf7a2e1cdadc737187934675e:
 > 
+>   clk: rockchip: fix i2s gate bits on rk3066 and rk3188 (2020-11-29 20:10:45 +0100)
+> 
+> ----------------------------------------------------------------
 
-Acked-by: Rob Herring <robh@kernel.org>
+Thanks. Pulled into clk-next
 
 _______________________________________________
 Linux-rockchip mailing list
