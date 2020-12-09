@@ -1,56 +1,74 @@
-Return-Path: <SRS0=uTbi=FM=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=aL02=FN=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIM_INVALID,
-	DKIM_SIGNED,INCLUDES_PULL_REQUEST,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 51EA7C433FE
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Dec 2020 23:32:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FB0AC433FE
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Dec 2020 01:29:47 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 065C523AC8
-	for <linux-rockchip@archiver.kernel.org>; Tue,  8 Dec 2020 23:32:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 065C523AC8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 93E7321E92
+	for <linux-rockchip@archiver.kernel.org>; Wed,  9 Dec 2020 01:29:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 93E7321E92
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=gtsys.com.hk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=6FPbb22C+1blf0t7GlAe+FZP7FEf6s0jdiLOMkmv5wI=; b=Q2uNdi1T0FM+7Gkee8C87ZiNU
-	H23p2eP9tejwpptMc5wAy27TGGdCJTweHq1o4MB8pkmEVyuzJxC8fHN51VM4bxUykbUV66z0JxJUe
-	HudutFYCaIasT0CwYntY21YJWshu748nWSn3lgWoON+g6Jqlox/rHFSWTmi0SRieIQzlR9nYhvuX6
-	+1mo+62vGhqX9HgkXaD8AB2/o5kIekjQBYvb8zamwVovgynOy0k4+7CDMzIGcAxtZkVReixOiNmfg
-	8G1TULjPslFpy3/7jGLriJaVvQ9AOWilxIox6ypSTjJEOwAC7o9ZxzmnLf/+cJJwszq9VNRfxQveS
-	C5UhDoF3g==;
+	 bh=89Bk5YwxH2eAqYMp02kP+Yh2P1Sz4P5Ozax3dg9Oo/U=; b=Ds1m1Gu7KM6QLeGqD7xgp8KTz
+	caO6gtPUqOafRf10b9forfA+TvpPtKvqimN83yWG3gjBFL14Eu8xpUP0koR1OXofy0t0jE3u5epet
+	WWDoBaPHGE84MXciaTSx6UPfNelNM4zQOo4v/DfWpJQKJP89WhtCeXnp6LXVn06bTH2fy1LZnBxna
+	EomnlRNkRX/SYpciI8arhvAM5Sd/2Loap7Yr68jV5i4nVWdI3hG8UQE4K0kInFlIpI2UGQ4b0qAOG
+	fa5kxBQDPA/ohZIhTvRqx3aUTyeBOCP65eUJ+hZ7Gv0EV1Ba8cGqaqvM7JAuprCRhAL956zjuD2lw
+	WvWKUGxtQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kmmT6-0002mi-5w; Tue, 08 Dec 2020 23:32:28 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kmoIW-0003q2-UH; Wed, 09 Dec 2020 01:29:41 +0000
+Received: from [27.111.83.178] (helo=mail.gtsys.com.hk)
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kmmT1-0002lH-5t; Tue, 08 Dec 2020 23:32:23 +0000
-From: Arnd Bergmann <arnd@kernel.org>
-Authentication-Results: mail.kernel.org;
- dkim=permerror (bad message/signature format)
-To: Heiko Stuebner <heiko@sntech.de>,
-	arm@kernel.org
-Subject: Re: [GIT PULL] Rockchip driver changes for 5.11
-Date: Wed,  9 Dec 2020 00:31:37 +0100
-Message-Id: <160747024231.3766805.886914278440068286.b4-ty@arndb.de>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <2045618.irdbgypaU6@phil>
-References: <2045618.irdbgypaU6@phil>
+ id 1kmoIU-0003pc-BQ
+ for linux-rockchip@lists.infradead.org; Wed, 09 Dec 2020 01:29:39 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by mail.gtsys.com.hk (Postfix) with ESMTP id 346D2200E7E0;
+ Wed,  9 Dec 2020 09:29:28 +0800 (HKT)
+X-Virus-Scanned: Debian amavisd-new at gtsys.com.hk
+Received: from mail.gtsys.com.hk ([127.0.0.1])
+ by localhost (mail.gtsys.com.hk [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8iN3Ermle6wW; Wed,  9 Dec 2020 09:29:28 +0800 (HKT)
+Received: from s01.gtsys.com.hk (unknown [10.128.4.2])
+ by mail.gtsys.com.hk (Postfix) with ESMTP id 1CAAD200E7DE;
+ Wed,  9 Dec 2020 09:29:28 +0800 (HKT)
+Received: from [10.128.2.32] (unknown [124.217.188.227])
+ by s01.gtsys.com.hk (Postfix) with ESMTPSA id E99A9C01F98;
+ Wed,  9 Dec 2020 09:29:27 +0800 (HKT)
+Subject: Re: [PATCH] phy: rockchip-emmc: emmc_phy_init() always return 0
+To: Doug Anderson <dianders@chromium.org>
+References: <20201201031015.23314-1-chris.ruehl@gtsys.com.hk>
+ <CAD=FV=Wyk9BYR3cnfm=9tBh=XBxEP=udMTeaEYPzAqa5m8x=yg@mail.gmail.com>
+ <f8a21465-91d0-9967-e559-d8f91f795028@gtsys.com.hk>
+ <e6d351f9-232c-ebab-2f4e-bf2ff4dc8238@gtsys.com.hk>
+ <CAD=FV=UjwK7qz-SOJNpZbq4bABWgDunZ0Yjk+Z9zs=wSH=sy-A@mail.gmail.com>
+ <1288be76-7599-92dd-561a-636872dd0186@gtsys.com.hk>
+ <CAD=FV=XkdnLt9PHM+TNWtDw5R9D1uqrJp2KoXpTG8oCQ=ECA3A@mail.gmail.com>
+From: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+Message-ID: <302d718f-31d7-ed9a-725a-483ab52694ad@gtsys.com.hk>
+Date: Wed, 9 Dec 2020 09:29:27 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.5.1
 MIME-Version: 1.0
+In-Reply-To: <CAD=FV=XkdnLt9PHM+TNWtDw5R9D1uqrJp2KoXpTG8oCQ=ECA3A@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201208_183223_311416_488A7491 
-X-CRM114-Status: UNSURE (   8.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20201208_202938_607105_BB3D4321 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,32 +81,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-List-Id: <soc.lore.kernel.org>
-Cc: linux-rockchip@lists.infradead.org, soc@kernel.org,
- linux-arm-kernel@lists.infradead.org, Arnd Bergmann <arnd@arndb.de>
-Content-Type: text/plain; charset="us-ascii"
+Cc: "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
-
-On Sun, 06 Dec 2020 19:32:04 +0100, Heiko Stuebner wrote:
-> The following changes since commit 3650b228f83adda7e5ee532e2b90429c03f7b9ec:
+On 8/12/2020 12:29 am, Doug Anderson wrote:
+> Hi,
 > 
->   Linux 5.10-rc1 (2020-10-25 15:14:11 -0700)
+> On Sun, Dec 6, 2020 at 8:13 PM Chris Ruehl <chris.ruehl@gtsys.com.hk> wrote:
+>>
+>> To be backwards compatible, and keep it optional, I can check if clock-names is
+>> defined and if not, set emmcclk=null and return 0.
+>> But if emmcclk is defined and an error returned from clk_get(), escalate it.
 > 
-> are available in the Git repository at:
+> ...but how is this different than just checking for the -ENODEV (or
+> maybe -ENOENT?) error return (other than being more complicated and
+> requiring more code?)  ...or, perhaps even better, just use
+> clk_get_optional()?
 > 
->   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v5.11-rockchip-drivers-1
+> -Doug
 > 
-> [...]
 
-Merged into arm/drivers, thanks!
+Hi,
 
-merge commit: d7f9c26b45254bce50c0a4ec030d44abeb6eb22c
+yeah! good hint. Let me rewind, and use the optional function call.
 
-       Arnd
+Chris
 
 _______________________________________________
 Linux-rockchip mailing list
