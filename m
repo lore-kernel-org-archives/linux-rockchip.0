@@ -1,64 +1,68 @@
-Return-Path: <SRS0=0eoG=FP=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=DTRJ=FQ=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 557B7C433FE
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Dec 2020 10:45:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4299DC4361B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Dec 2020 15:18:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A005323F2B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 11 Dec 2020 10:45:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A005323F2B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 398EE2247F
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Dec 2020 15:18:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 398EE2247F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=oqY01agxVbo/bZa+HpRGlIbYSmGj8jR+kglwjePNww0=; b=PrGmO+VVxCfLh9Bw7GCjWQKo5
-	F89rpEOTx3+Gv2lh/roqiTB1Q4R6IrijWVNwv96S7QIQY4KoARKp40xJMGh88faeHsox5j0IJOo6e
-	BHEMokwhzxXI/ZaZFiROKxFUp7yGaPLCcLmh7ucCklUe4zMLjKHhdLu3u4cHAgXZuSGe1Gdzhf8+k
-	7RedkidMHVJrodq5v74xGmR6ZI5SwUOKpz381Hi93uUyCyIwVfRpWLqMSFsz8RtgBvEnI2ihJ38fZ
-	wQWjq/feQHHD96qNQlyk5V8oWJ0KIajuuz798tH9UfDY0U/UrqnaHzFQk0DWK4kVwjD0CDmMVR8AI
-	vcqTgzlUA==;
+	 bh=hyIRTv1SQj1SXnxdVAlFPWdk0XHfrOUWa0LuqkYTv/0=; b=W4REAKOJBpdS/GjxVGAvpUPO5
+	OMbmDKZEr+S6NXZS7leYhqbyUemos4U86ZEtgAU3uND7INd1oJj4BRpoKxg9TOM9c3M63BOghmyKD
+	yp1fAiWdHpQ3dC5FdwS+7kcRH6WYubdthAswnmoMymtS7xW5DSETmydEMxGYsXIGip4i7qTsDI7gV
+	/oAe5x1Vm1BZEer/XXvdt5XDE/G9uQQaN+e/9gf1w1qunwCyAdmKI8Of6lWY82m8Gq4t53f+qa/cm
+	CqcGonbTMJdzqlwbH+3dGhiaXhq/Mdau9EQeB6FJJAL3JCuf+uC6wcvspPZFzZqOuRCsNNOgRk75k
+	gnz7PwV7Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1knfv0-000738-1e; Fri, 11 Dec 2020 10:44:58 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1knfuu-00071T-NH; Fri, 11 Dec 2020 10:44:53 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A98FC31B;
- Fri, 11 Dec 2020 02:44:49 -0800 (PST)
-Received: from [10.57.61.6] (unknown [10.57.61.6])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id F0CA63F68F;
- Fri, 11 Dec 2020 02:44:47 -0800 (PST)
-Subject: Re: [PATCH] pwm: rockchip: Eliminate potential race condition when
- probing
-To: Trent Piepho <tpiepho@gmail.com>, Simon South <simon@simonsouth.net>,
- Thierry Reding <thierry.reding@gmail.com>
-References: <875z5nof46.fsf@simonsouth.net>
- <20201130004419.1714-1-simon@simonsouth.net> <X9JfbpTnfqUVk6iN@ulmo>
- <2304095.iZASKD2KPV@zen.local>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <07807886-0abc-52a2-d3b5-d994b0d7c701@arm.com>
-Date: Fri, 11 Dec 2020 10:44:46 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.5.1
+	id 1ko6fP-0007WS-0C; Sat, 12 Dec 2020 15:18:39 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1ko6fK-0007Vn-FD; Sat, 12 Dec 2020 15:18:35 +0000
+X-Gm-Message-State: AOAM530jWrRjvVEbHreOPKJsi7XVz2NnLu1Lk7vaLFfVxksq7Va6xL5q
+ HGJSM9WXgvp4c/2PIv5BmZsszcJfnFc+1iFgs38=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1607786311;
+ bh=psS0hu2IUIHN0p65FsTtGV4EUTtLG77MUOh+AZo/pFQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=RmFUg1o5T+2sP8kQE8wa7IRy+eKJo5EB9Gh6xs3WbV2I5d+MTIBbS4YUCVy94Z8S/
+ rs119tEMc8dJogiB88HTo3QzFZaReIkLWA8mDrP3WEpjmzAWNglqghpD9zk9EZenad
+ 91ZdRJEOzgl3NsT5MJ5lsEaSK5mIpKSOals2+XUqWFRDAmbI+/5i/gABtOl2UFTa0s
+ RSPNcCwgf1tNBTn3Ptckf37nnREh+LBol2X7QYPZaNAR0F7DpiWexMD3vj6ijbFbYJ
+ ouatYiF+r0HIa6aBWBUD5LUPrG+1KTTWQ8pKO67Gx5wyw9n8yTuv3PU/WAVGVujGhz
+ v9V3IqYY/d4KQ==
+X-Google-Smtp-Source: ABdhPJyYQRTgL1rTSEK+bKujyRCO/OeCso0uNE89jr89FeehL7hSSu8lYv+6qAr6DfcKWjb3JSUKkYAcGQNDLHbUEbQ=
+X-Received: by 2002:a67:fd88:: with SMTP id k8mr15795093vsq.17.1607786310790; 
+ Sat, 12 Dec 2020 07:18:30 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <2304095.iZASKD2KPV@zen.local>
-Content-Language: en-GB
+References: <20201118071724.4866-1-wens@kernel.org>
+ <20201118071724.4866-2-wens@kernel.org>
+ <CAL_JsqJphYYUsQR_kLH_y1gOArTifpEVUiTJfDpDsL8WjGxRfA@mail.gmail.com>
+In-Reply-To: <CAL_JsqJphYYUsQR_kLH_y1gOArTifpEVUiTJfDpDsL8WjGxRfA@mail.gmail.com>
+From: Chen-Yu Tsai <wens@kernel.org>
+Date: Sat, 12 Dec 2020 23:18:17 +0800
+X-Gmail-Original-Message-ID: <CAGb2v6409SeptNUvMnpozriZ-L7iFCFFoG+=fJrtohxezDrEDQ@mail.gmail.com>
+Message-ID: <CAGb2v6409SeptNUvMnpozriZ-L7iFCFFoG+=fJrtohxezDrEDQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/4] PCI: rockchip: Make 'ep-gpios' DT property optional
+To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201211_054452_879820_075FA743 
-X-CRM114-Status: GOOD (  28.02  )
+X-CRM114-CacheID: sfid-20201212_101834_640710_23D2735F 
+X-CRM114-Status: GOOD (  23.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,73 +75,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-pwm@vger.kernel.org, heiko@sntech.de, bbrezillon@kernel.org,
- linux-rockchip@lists.infradead.org, u.kleine-koenig@pengutronix.de,
- lee.jones@linaro.org, linux-arm-kernel@lists.infradead.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: devicetree <devicetree@vger.kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, PCI <linux-pci@vger.kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>,
+ Chen-Yu Tsai <wens@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjAyMC0xMi0xMCAyMTowMCwgVHJlbnQgUGllcGhvIHdyb3RlOgo+IE9uIFRodXJzZGF5LCBE
-ZWNlbWJlciAxMCwgMjAyMCA5OjQ4OjMwIEFNIFBTVCBUaGllcnJ5IFJlZGluZyB3cm90ZToKPj4g
-T24gU3VuLCBOb3YgMjksIDIwMjAgYXQgMDc6NDQ6MTlQTSAtMDUwMCwgU2ltb24gU291dGggd3Jv
-dGU6Cj4+PiBAQCAtMzI2LDIxICszMjksMzggQEAgc3RhdGljIGludCByb2NrY2hpcF9wd21fcHJv
-YmUoc3RydWN0Cj4+PiBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpPgo+Pj4gICAJCXJldHVybiByZXQ7
-Cj4+PiAgIAkKPj4+ICAgCX0KPj4+Cj4+PiAtCXJldCA9IGNsa19wcmVwYXJlX2VuYWJsZShwYy0+
-Y2xrKTsKPj4+ICsJcmV0ID0gY2xrX3ByZXBhcmUocGMtPmNsayk7Cj4+Pgo+Pj4gICAJaWYgKHJl
-dCkgewo+Pj4KPj4+IC0JCWRldl9lcnIoJnBkZXYtPmRldiwgIkNhbid0IHByZXBhcmUgZW5hYmxl
-IGJ1cyBjbGs6ICVkXG4iLCByZXQpOwo+Pj4gKwkJZGV2X2VycigmcGRldi0+ZGV2LCAiQ2FuJ3Qg
-cHJlcGFyZSBidXMgY2xrOiAlZFxuIiwgcmV0KTsKPj4+Cj4+PiAgIAkJcmV0dXJuIHJldDsKPj4+
-ICAgCQo+Pj4gICAJfQo+Pj4KPj4+ICsJLyoKPj4+ICsJICogSWYgaXQgYXBwZWFycyB0aGUgUFdN
-IGhhcyBhbHJlYWR5IGJlZW4gZW5hYmxlZCwgcGVyaGFwcyBieSBhCj4+PiArCSAqIGJvb3Rsb2Fk
-ZXIsIHJlLWVuYWJsZSBpdHMgY2xvY2sgdG8gaW5jcmVtZW50IHRoZSBjbG9jaydzIGVuYWJsZQo+
-Pj4gKwkgKiBjb3VudGVyIGFuZCBlbnN1cmUgaXQgaXMga2VwdCBydW5uaW5nIChwYXJ0aWN1bGFy
-bHkgaW4gdGhlIGNhc2UKPj4+ICsJICogd2hlcmUgdGhlcmUgaXMgbm8gc2VwYXJhdGUgQVBCIGNs
-b2NrKS4KPj4+ICsJICovCj4+PiArCWVuYWJsZV9jb25mID0gcGMtPmRhdGEtPmVuYWJsZV9jb25m
-Owo+Pj4gKwljdHJsID0gcmVhZGxfcmVsYXhlZChwYy0+YmFzZSArIHBjLT5kYXRhLT5yZWdzLmN0
-cmwpOwo+Pj4gKwllbmFibGVkID0gKGN0cmwgJiBlbmFibGVfY29uZikgPT0gZW5hYmxlX2NvbmY7
-Cj4+Cj4+IEdpdmVuIHRoYXQgd2UgZG9uJ3QgZW5hYmxlIHRoZSBidXMgY2xvY2sgYmVmb3JlIHRo
-aXMsIGlzIGl0IGV2ZW4gc2FmZSB0bwo+PiBhY2Nlc3MgcmVnaXN0ZXJzIG9uIHRoZSBidXMgaWYg
-dGhlIGNsb2NrIGlzIGRpc2FibGVkPyBJJ3ZlIHNlZW4gYSBsb3Qgb2YKPj4gY2FzZXMgd2hlcmUg
-YWNjZXNzZXMgdG8gYW4gdW5jbG9ja2VkIGJ1cyBlaXRoZXIgbGVhZCB0byBzaWxlbnQgaGFuZ3Mg
-b3IKPj4gdmVyeSBub2lzeSBjcmFzaGVzLCBhbmQgSSB3b3VsZCBleHBlY3Qgc29tZXRoaW5nIGxp
-a2UgdGhhdCAob3Igc29tZXRoaW5nCj4+IGluIGJldHdlZW4pIHRvIGhhcHBlbiBvbiBSb2NrY2hp
-cCBTb0NzLgo+IAo+IEkgd291bGQgYWxzbyBhc3N1bWUgcmVnaXN0ZXIgYWNjZXNzIHdpdGggdGhl
-IGNsb2NrIGRpc2FibGVkIHdvdWxkIGhhbmcgb3IKPiBvdGhlcndpc2UgZmFpbC4gIFRoZXJlIGFy
-ZSBwb3NzaWJseSB0d28gY2xvY2tzLCBvbmUgY2FsbGVkICJidXMgY2xvY2siIGFuZAo+IHRoZSBv
-dGhlciAiQVBCIGNsb2NrIi4gIEFQQiBiZWluZyBBZHZhbmNlZCBQZXJpcGhlcmFsIEJ1cy4gIE5v
-dCB0aGUgZ3JlYXRlc3QKPiBjaG9pY2Ugb2YgbmFtZXMuICBJIGFzc3VtZSB0aGUgQVBCIGNsb2Nr
-IGlzIG5lZWRlZCBmb3IgcmVnaXN0ZXIgYWNjZXNzIGFuZAo+IHRoZSAiYnVzIGNsb2NrIiBpcyB1
-c2VkIHRvIGdlbmVyYXRlIHRoZSBQV00gc2lnbmFsIGFuZCBkb2VzIG5vdCBuZWVkIHRvIGJlCj4g
-ZW5hYmxlZCBmb3IgcmVnaXN0ZXIgYWNjZXNzLiAgVW5mb3J0dW5hdGVseSB0aGUgUkszMzk5IGRv
-Y3MgZG8gbm90IGhhdmUgYQo+IGNsb2NrIGRpYWdyYW0gZm9yIHRoZSBQV00gb3IgaW5jbHVkZSBk
-ZXRhaWxzIHN1Y2ggYXMgdGhlc2UuCj4gCj4gVGhlcmUgaXMgYSBsb3cgcG93ZXIgbW9kZSBiaXQg
-aW4gdGhlIGNvbnRyb2wgcmVnaXN0ZXIgdGhhdCBkaXNhYmxlcyB0aGUgUFdNCj4gc2lnbmFsJ3Mg
-Y2xvY2suICBBbmQgd2hpY2ggY2xvY2sgZG9lcyB0aGF0IGRpc2FibGVkLCB0aGUgIkFCUCBjbG9j
-ayIgb3IgdGhlCj4gImJ1cyBjbG9jayI/ICBJIHF1b3RlIMKnMTguNi40LCAidGhlIEFQQiBidXMg
-Y2xvY2sg4oCmIGlzIGdhdGVk4oCmIiAgSXQncyBsaWtlCj4gdGhleSdyZSBiZWluZyBpbnRlbnRp
-b25hbCBhbWJpZ3VvdXMuCgpGV0lXIEkgdGhpbmsgaXQgYmVjb21lcyBjbGVhciBlbm91Z2ggaWYg
-eW91IHJlYWQgdGhlIERUIGJpbmRpbmcgaW4gCnBhcmFsbGVsIHdpdGggdGhlIGNvZGUgLSBpZiBk
-ZXZtX2Nsa19nZXQoJnBkZXYtPmRldiwgInB3bSIpIGZhaWxzLCB0aGUgCmRyaXZlciBmYWxscyBi
-YWNrIHRvIGFzc3VtaW5nIHRoZSBSSzMzOTktb3ItZWFybGllciBjYXNlIG9mIGEgc2luZ2xlIAp1
-bm5hbWVkIGNsb2NrLCBzbyAiQ2FuJ3QgZ2V0IGJ1cyBjbGsiIGlzIHJlZmVycmluZyBzcGVjaWZp
-Y2FsbHkgdG8gdGhlIApkZXZtX2Nsa19nZXQoJnBkZXYtPmRldiwgTlVMTCkgY2FsbCB3aGVyZSB0
-aGF0IGNsb2NrICppcyogYWxzbyB0aGUgQVBCIApjbG9jay4KClBvc3NpYmx5IHRoZSBkcml2ZXIg
-Y291bGQgZG8gd2l0aCBhIHNsaWdodGx5IGNsZWFyZXIgc3RydWN0dXJlIGhlcmUsIGJ1dCAKY29t
-cGF0aWJpbGl0eSBmYWxsYmFja3MgYXJlIGluZXZpdGFibHkgbWVzc3kgdG8gc29tZSBkZWdyZWUu
-CgpSb2Jpbi4KCj4gQW55d2F5LCBmcm9tIHRoZSBleGlzdGluZyBjb2RlLCBpdCBzZWVtcyBjbGVh
-ciB0aGF0IHBjLT5wY2xrIG5lZWRzIHRvIGJlCj4gZW5hYmxlZCBmb3IgcmVnaXN0ZXIgYWNjZXNz
-IGFuZCBwYy0+Y2xrIHRvIGdlbmVyYXRlIGEgc2lnbmFsLiAgVGhlIGNhbGwgdG8KPiBjbGtfcHJl
-cGFyZShwYy0+cGNsaykgc2hvdWxkIGJlY29tZSBjbGtfcHJlcGFyZV9lbmFibGUocGMtPnBjbGsp
-IGFuZCBtb3ZlZAo+IHRvIGJlZm9yZSB0aGUgZW5hYmxlZF9jb25mIGNoZWNrLiAgVGhlbiBjbGtf
-ZGlzYWJsZShwYy0+cGNsaykgYWZ0ZXJ3YXJkLgo+IFRoZSBleGlzdGluZyBjb2RlIHdpbGwgZGlz
-YWJsZSBwY2xrIGV2ZW4gaWYgdGhlIFBXTSBpcyBlbmFibGVkLCBzbyB1bmxlc3MKPiB0aGF0IGlz
-IGFsc28gYSBidWcsIGl0IHNob3VsZCBiZSBvayB0byBkaXNhYmxlIHBjLT5wY2xrIGFmdGVyIGVu
-YWJsaW5nCj4gcGMtPmNsay4KPiAKPiAKPiAKPiBfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwo+IExpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdAo+IExpbnV4
-LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPiBodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCj4gCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
-TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Mon, Dec 7, 2020 at 10:11 PM Rob Herring <robh@kernel.org> wrote:
+>
+> On Wed, Nov 18, 2020 at 1:17 AM Chen-Yu Tsai <wens@kernel.org> wrote:
+> >
+> > From: Chen-Yu Tsai <wens@csie.org>
+> >
+> > The Rockchip PCIe controller DT binding clearly states that 'ep-gpios' is
+> > an optional property. And indeed there are boards that don't require it.
+> >
+> > Make the driver follow the binding by using devm_gpiod_get_optional()
+> > instead of devm_gpiod_get().
+> >
+> > Fixes: e77f847df54c ("PCI: rockchip: Add Rockchip PCIe controller support")
+> > Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
+> > Fixes: 964bac9455be ("PCI: rockchip: Split out rockchip_pcie_parse_dt() to parse DT")
+> > Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+> > ---
+> > Changes since v1:
+> >
+> >   - Rewrite subject to match existing convention and reference
+> >     'ep-gpios' DT property instead of the 'ep_gpio' field
+> > ---
+> >  drivers/pci/controller/pcie-rockchip.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+> > index 904dec0d3a88..c95950e9004f 100644
+> > --- a/drivers/pci/controller/pcie-rockchip.c
+> > +++ b/drivers/pci/controller/pcie-rockchip.c
+> > @@ -118,7 +118,7 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+> >         }
+> >
+> >         if (rockchip->is_rc) {
+> > -               rockchip->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
+> > +               rockchip->ep_gpio = devm_gpiod_get_optional(dev, "ep", GPIOD_OUT_HIGH);
+> >                 if (IS_ERR(rockchip->ep_gpio)) {
+> >                         dev_err(dev, "missing ep-gpios property in node\n");
+>
+> You should drop the error message. What it says is now never the
+> reason for the error and it could most likely be a deferred probe
+> which you don't want an error message for.
+
+What about switching to dev_err_probe() instead?
+
+That way deferred probe errors get silenced (or get a better debug message),
+and error messages for other issues, such as miswritten gpio properties are
+still produced.
+
+ChenYu
+
+> >                         return PTR_ERR(rockchip->ep_gpio);
+> > --
+> > 2.29.1
+> >
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
