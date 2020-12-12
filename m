@@ -2,67 +2,84 @@ Return-Path: <SRS0=DTRJ=FQ=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4299DC4361B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Dec 2020 15:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48959C433FE
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Dec 2020 22:24:39 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 398EE2247F
-	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Dec 2020 15:18:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 398EE2247F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 9138C22D71
+	for <linux-rockchip@archiver.kernel.org>; Sat, 12 Dec 2020 22:24:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9138C22D71
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
-	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=hyIRTv1SQj1SXnxdVAlFPWdk0XHfrOUWa0LuqkYTv/0=; b=W4REAKOJBpdS/GjxVGAvpUPO5
-	OMbmDKZEr+S6NXZS7leYhqbyUemos4U86ZEtgAU3uND7INd1oJj4BRpoKxg9TOM9c3M63BOghmyKD
-	yp1fAiWdHpQ3dC5FdwS+7kcRH6WYubdthAswnmoMymtS7xW5DSETmydEMxGYsXIGip4i7qTsDI7gV
-	/oAe5x1Vm1BZEer/XXvdt5XDE/G9uQQaN+e/9gf1w1qunwCyAdmKI8Of6lWY82m8Gq4t53f+qa/cm
-	CqcGonbTMJdzqlwbH+3dGhiaXhq/Mdau9EQeB6FJJAL3JCuf+uC6wcvspPZFzZqOuRCsNNOgRk75k
-	gnz7PwV7Q==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=EJnckZqM3BHA+uwQPeogNO0VCHgwIf1dXbPbz3yI83A=; b=fD7DEPv9ta6FxSxM02x14U5P8y
+	av+Gx9krq/vK58D6udky8Fa5DpUTKIsN0Rjjx6uV2NHrJCoLTBZUnPto/rUawlwcGZM7j/DftMe7W
+	BzHcEH0G1OI/CKo7ARCl/2zNMl/A+0YMluldcEIak77cRg3kz9nvheyk8HW5I3x2F0lM8yTQw7DPY
+	oqRVQSq3dAhOui5E5yvKqLzV/4/nt8ttLjCccf0GfFgcwrKcNKYzOeAstPeEnx+4Ya409WK5PsQA7
+	i/yVd8CbNqPZbsWU3+y099YiSVEtKrvWy84jlDf8PnvkYIyZC4vOpoHq0C2xZOBb2MH2u9f3cg3sk
+	jUCosFfA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ko6fP-0007WS-0C; Sat, 12 Dec 2020 15:18:39 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1koDJJ-00007o-RM; Sat, 12 Dec 2020 22:24:18 +0000
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ko6fK-0007Vn-FD; Sat, 12 Dec 2020 15:18:35 +0000
-X-Gm-Message-State: AOAM530jWrRjvVEbHreOPKJsi7XVz2NnLu1Lk7vaLFfVxksq7Va6xL5q
- HGJSM9WXgvp4c/2PIv5BmZsszcJfnFc+1iFgs38=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1607786311;
- bh=psS0hu2IUIHN0p65FsTtGV4EUTtLG77MUOh+AZo/pFQ=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=RmFUg1o5T+2sP8kQE8wa7IRy+eKJo5EB9Gh6xs3WbV2I5d+MTIBbS4YUCVy94Z8S/
- rs119tEMc8dJogiB88HTo3QzFZaReIkLWA8mDrP3WEpjmzAWNglqghpD9zk9EZenad
- 91ZdRJEOzgl3NsT5MJ5lsEaSK5mIpKSOals2+XUqWFRDAmbI+/5i/gABtOl2UFTa0s
- RSPNcCwgf1tNBTn3Ptckf37nnREh+LBol2X7QYPZaNAR0F7DpiWexMD3vj6ijbFbYJ
- ouatYiF+r0HIa6aBWBUD5LUPrG+1KTTWQ8pKO67Gx5wyw9n8yTuv3PU/WAVGVujGhz
- v9V3IqYY/d4KQ==
-X-Google-Smtp-Source: ABdhPJyYQRTgL1rTSEK+bKujyRCO/OeCso0uNE89jr89FeehL7hSSu8lYv+6qAr6DfcKWjb3JSUKkYAcGQNDLHbUEbQ=
-X-Received: by 2002:a67:fd88:: with SMTP id k8mr15795093vsq.17.1607786310790; 
- Sat, 12 Dec 2020 07:18:30 -0800 (PST)
+ id 1koDJA-000077-SO; Sat, 12 Dec 2020 22:24:09 +0000
+Received: by mail-pf1-x442.google.com with SMTP id x126so703783pfc.7;
+ Sat, 12 Dec 2020 14:24:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QtJXBVt7gHI21bYFoZ1JoDV4VjhjgVIaaJDaUSnjM6k=;
+ b=pY6anJiq1VYF1jMzjF+dcOuysiwgKQDBjxl4pI8MvZXad/L5wQeiVvdBaxzIBH4eXF
+ I0u0mlSOK6Q1WgcgHP4nVk4j5+r9Fe7OHS/lRK5OMbfKq3aPDYcmkDpA2KR5OrRrdHJ5
+ kOMhOOGcT5JwrjmDUIutKsPkSxPFJdqC6jG22WHBKp34KLojdw+IeJ9eI2bOfk/NOenP
+ ckFJQvY6Nx+gkkerIPwjQn7qOmkWBz2Xpncl37I+ibqgkLWqhTTuA4Xznaikb0/Vs821
+ W+sq6zDvupwDluvrcNkKqZ8zrN6TrTapk3X6/IYF27VPMZaUCDKbH2C5j5WRaihImvDq
+ fLfg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=QtJXBVt7gHI21bYFoZ1JoDV4VjhjgVIaaJDaUSnjM6k=;
+ b=JdRfMSE91t5EGQxqsq1u9D2ce/ivD7uGU3+LIZ4tLMTxLew4a7baQn/aYaQlb2FK9D
+ HtTAKkPrkp3Yyq0PYr9hpNBpI2YTAsPuMOkKokg6O4phRttCsWJ5OAOfKSXr48f75AM5
+ jxdx9hbOYORxHaPE/twLwLWjZ87c4HMfYhB4eW1e4H4HRx2QKyhrsyjQ/qRBjeI2QzAR
+ vtiKjO1edCo1cuzt3HRY88Y+tmPSC6mGH8QCq6MOyC9wjQQaJiagL2LnlakpTtnCFlch
+ PJ2TU6hW6OQBI0tQMQSXF8acZU/sOP8n6TIUqlYVdwuZ0xHwBOo0Cg0CVp8ZDuR+Zyx9
+ wOcA==
+X-Gm-Message-State: AOAM532xbYzbX9av+Me/fhVIFdaZnxFi/I88UmLrwz9yfSdMoxW123jt
+ upJxQ6Y3nBYAjCEbOES/9Bk=
+X-Google-Smtp-Source: ABdhPJzLYLeOuMQKOWMGgFp4pj8D4j+yoysIS0L8UZ95aYc/Z8WmvA33yxJuB5XMv5grTtczBMPB2A==
+X-Received: by 2002:aa7:9738:0:b029:19d:dce0:d8e7 with SMTP id
+ k24-20020aa797380000b029019ddce0d8e7mr17276456pfg.14.1607811845359; 
+ Sat, 12 Dec 2020 14:24:05 -0800 (PST)
+Received: from glados.. ([2601:647:6000:3e5b::a27])
+ by smtp.gmail.com with ESMTPSA id na6sm13244256pjb.12.2020.12.12.14.24.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 12 Dec 2020 14:24:04 -0800 (PST)
+From: Thomas Hebb <tommyhebb@gmail.com>
+To: linux-kernel@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>
+Subject: [PATCH] drm/rockchip: dsi: remove extra component_del() call
+Date: Sat, 12 Dec 2020 14:23:55 -0800
+Message-Id: <b6fef187969c45c3153d90bfd1cba684b764a225.1607811826.git.tommyhebb@gmail.com>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-References: <20201118071724.4866-1-wens@kernel.org>
- <20201118071724.4866-2-wens@kernel.org>
- <CAL_JsqJphYYUsQR_kLH_y1gOArTifpEVUiTJfDpDsL8WjGxRfA@mail.gmail.com>
-In-Reply-To: <CAL_JsqJphYYUsQR_kLH_y1gOArTifpEVUiTJfDpDsL8WjGxRfA@mail.gmail.com>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Sat, 12 Dec 2020 23:18:17 +0800
-X-Gmail-Original-Message-ID: <CAGb2v6409SeptNUvMnpozriZ-L7iFCFFoG+=fJrtohxezDrEDQ@mail.gmail.com>
-Message-ID: <CAGb2v6409SeptNUvMnpozriZ-L7iFCFFoG+=fJrtohxezDrEDQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/4] PCI: rockchip: Make 'ep-gpios' DT property optional
-To: Rob Herring <robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201212_101834_640710_23D2735F 
-X-CRM114-Status: GOOD (  23.67  )
+X-CRM114-CacheID: sfid-20201212_172408_979107_B06AD04D 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,74 +92,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree <devicetree@vger.kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Heiko Stuebner <heiko@sntech.de>, PCI <linux-pci@vger.kernel.org>,
- Shawn Lin <shawn.lin@rock-chips.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>,
- Chen-Yu Tsai <wens@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
+Cc: linux-rockchip@lists.infradead.org, David Airlie <airlied@linux.ie>,
+ Sandy Huang <hjc@rock-chips.com>, stable@vger.kernel.org,
+ Andrzej Hajda <a.hajda@samsung.com>, Thomas Hebb <tommyhebb@gmail.com>,
+ dri-devel@lists.freedesktop.org, Daniel Vetter <daniel@ffwll.ch>,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 7, 2020 at 10:11 PM Rob Herring <robh@kernel.org> wrote:
->
-> On Wed, Nov 18, 2020 at 1:17 AM Chen-Yu Tsai <wens@kernel.org> wrote:
-> >
-> > From: Chen-Yu Tsai <wens@csie.org>
-> >
-> > The Rockchip PCIe controller DT binding clearly states that 'ep-gpios' is
-> > an optional property. And indeed there are boards that don't require it.
-> >
-> > Make the driver follow the binding by using devm_gpiod_get_optional()
-> > instead of devm_gpiod_get().
-> >
-> > Fixes: e77f847df54c ("PCI: rockchip: Add Rockchip PCIe controller support")
-> > Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
-> > Fixes: 964bac9455be ("PCI: rockchip: Split out rockchip_pcie_parse_dt() to parse DT")
-> > Signed-off-by: Chen-Yu Tsai <wens@csie.org>
-> > ---
-> > Changes since v1:
-> >
-> >   - Rewrite subject to match existing convention and reference
-> >     'ep-gpios' DT property instead of the 'ep_gpio' field
-> > ---
-> >  drivers/pci/controller/pcie-rockchip.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-> > index 904dec0d3a88..c95950e9004f 100644
-> > --- a/drivers/pci/controller/pcie-rockchip.c
-> > +++ b/drivers/pci/controller/pcie-rockchip.c
-> > @@ -118,7 +118,7 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
-> >         }
-> >
-> >         if (rockchip->is_rc) {
-> > -               rockchip->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
-> > +               rockchip->ep_gpio = devm_gpiod_get_optional(dev, "ep", GPIOD_OUT_HIGH);
-> >                 if (IS_ERR(rockchip->ep_gpio)) {
-> >                         dev_err(dev, "missing ep-gpios property in node\n");
->
-> You should drop the error message. What it says is now never the
-> reason for the error and it could most likely be a deferred probe
-> which you don't want an error message for.
+commit cf6d100dd238 ("drm/rockchip: dsi: add dual mipi support") added
+this devcnt field and call to component_del(). However, these both
+appear to be erroneous changes left over from an earlier version of the
+patch. In the version merged, nothing ever modifies devcnt, meaning
+component_del() runs unconditionally and in addition to the
+component_del() calls in dw_mipi_dsi_rockchip_host_detach(). The second
+call fails to delete anything and produces a warning in dmesg.
 
-What about switching to dev_err_probe() instead?
+If we look at the previous version of the patch[1], however, we see that
+it had logic to calculate devcnt and call component_add() in certain
+situations. This was removed in v6, and the fact that the deletion code
+was not appears to have been an oversight.
 
-That way deferred probe errors get silenced (or get a better debug message),
-and error messages for other issues, such as miswritten gpio properties are
-still produced.
+[1] https://patchwork.kernel.org/project/dri-devel/patch/20180821140515.22246-8-heiko@sntech.de/
 
-ChenYu
+Fixes: cf6d100dd238 ("drm/rockchip: dsi: add dual mipi support")
+Cc: stable@vger.kernel.org
+Signed-off-by: Thomas Hebb <tommyhebb@gmail.com>
+---
 
-> >                         return PTR_ERR(rockchip->ep_gpio);
-> > --
-> > 2.29.1
-> >
+ drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+index 542dcf7eddd6..ce044db8c97e 100644
+--- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+@@ -243,7 +243,6 @@ struct dw_mipi_dsi_rockchip {
+ 	struct dw_mipi_dsi *dmd;
+ 	const struct rockchip_dw_dsi_chip_data *cdata;
+ 	struct dw_mipi_dsi_plat_data pdata;
+-	int devcnt;
+ };
+ 
+ struct dphy_pll_parameter_map {
+@@ -1121,9 +1120,6 @@ static int dw_mipi_dsi_rockchip_remove(struct platform_device *pdev)
+ {
+ 	struct dw_mipi_dsi_rockchip *dsi = platform_get_drvdata(pdev);
+ 
+-	if (dsi->devcnt == 0)
+-		component_del(dsi->dev, &dw_mipi_dsi_rockchip_ops);
+-
+ 	dw_mipi_dsi_remove(dsi->dmd);
+ 
+ 	return 0;
+-- 
+2.29.2
+
 
 _______________________________________________
 Linux-rockchip mailing list
