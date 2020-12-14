@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37412C4361B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Dec 2020 14:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FE21C4361B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Dec 2020 14:17:37 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D5AA020798
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Dec 2020 14:10:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D5AA020798
+	by mail.kernel.org (Postfix) with ESMTPS id D378022B4B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Dec 2020 14:17:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org D378022B4B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,48 +23,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
 	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Mb3Xxk6h5TCHP3sPprhUQwlIT8Udv+19l0YCBANYz+0=; b=V+UaPQJ2Pyjp/q6znRrZhf3Y2
-	Rt83NuUXfhiV3oDIdsRvBOaR7yR++XHy+e2iWcKnDYisXLwXN4Tw5c8BwLQOC3UpeUaNy4vdf38gh
-	5YUZv3XxqsWihxZFsOm0aZqqpRv4/h7UhAeg14Ft12YsnUt38ZqA5d3oaX0ZFvSx1Jx3wfazphLwf
-	5aVPLmbPIFow9iOLk7XBG7st3JXxAVUOb+q1nsIHqBhv0DZjGokmuu4enRKPuEYfHlQHVXIKNvP6u
-	yZAhDkCMxd3h6y4YUaYpDtw0QaRpkNW/d2LnTiVHyNzGYCzJ5ngzPVvFaD2wDskiLqr9BZZc9QoJh
-	2x9UzbVNA==;
+	 bh=AhQZpEZLCtMgre3ERfI8eivIPhatOXEitpcnAiEJEu8=; b=lWal/xEZwZzkzB/BNtkw/JZ/g
+	D0TRprWqQuyW5a6qKW7dubTFYHzxPJc41gt04xby1FEl6hHND5gjMjOC3KUyWhiJGxBawAWuhfwFc
+	e4fB8YmbbQ382BdRgh7XZRTRmNAyUWE8v8FV7Z5+chilqqfQ+xrvYV1WvOAbO+rvy4tvFwf83FNnZ
+	HVbJ1y6JjXgY7ZqlSPqipQTXi8VGVICyKhpVNI15BGaNiVKOufDiKweOBUhWh+KWhYAJY4xNBugJm
+	oiGA2Q4t9yXBIZMjARhMl8PBk063F2Yc3OxmmeuFVNj6IsL2fJgZCiYT4/UlNF8HEAd+laKiaWvsK
+	91ogqBUcw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kooYf-0000ER-9O; Mon, 14 Dec 2020 14:10:37 +0000
+	id 1koofN-0001FG-Fs; Mon, 14 Dec 2020 14:17:33 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kooYb-0000De-Sy; Mon, 14 Dec 2020 14:10:34 +0000
-X-Gm-Message-State: AOAM532v419FHU0fzr8jmFhWXWf7DqgRRq3GuShpxttvihp4zMduSjXd
- vZu6Izh+TMSFh13u8uADGkPCkseW3+2Z6XZXcw==
+ id 1koofJ-0001EY-Gb; Mon, 14 Dec 2020 14:17:30 +0000
+X-Gm-Message-State: AOAM531/LL8c49PtDFhQfmpz/WZglllwn9ZmWu57HFvo8xUfgW14/OOF
+ ZKtPE/Cj0iKWKYg9v7/04mc1rRa+1DQ1EDz0Bw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1607955031;
- bh=Jzn8l38KRoOLsKkVvnCldWRNNSXncIPTkIkR6xkPitI=;
+ s=k20201202; t=1607955448;
+ bh=vgF8+AK6GkBkQYu4wyAk0STQnnPO354gKvQ6xqwdcfA=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=H6RJAYtoicuiA77SS89g7/7wgarP1h28KYBi4he/ZpAttxpAIEH+ISSwzXMIOB1nV
- ekLHRVocilZfHlK6f2arL5Pi9XBXnTJEZ7wvC3eb8VAt8UdJAEvI78CYUwCk4YS5RN
- on1OLWBXG2XygQ2ut3NnOJUjEAM4H7r7o87DFCJVXNcx4zWhSvZdS9lw0WQ0Yl7QSI
- rdgbwvcP9sOW2cqf8q9qNUDqB9ns+Xv3BKO93/cjYeoG5yM7nMwJ38wSWH4QqONntf
- NKnY/BGHLKLcORPIGVDD7QMtLYCwW/PNa4N2U7jGjrdGSYlw6BWJZ39G06TcgK0Zki
- Mh0jZIFQVziBw==
-X-Google-Smtp-Source: ABdhPJw143/zC9fcc9wUHjIGVkwDKIZ/YUpCE4b6b1HB/jrN8MuTToZ3sZ8F/J1h8qV8oXUR5pUC/R/NxmzaWK1nUlk=
-X-Received: by 2002:a05:6402:ca2:: with SMTP id
- cn2mr24906609edb.137.1607955030122; 
- Mon, 14 Dec 2020 06:10:30 -0800 (PST)
+ b=UmexIdARMA6NpqX5l/Ll1YH7GxF2bLQRdPOHD/ZZIUFm5MJNvSr2lKR1TSEU0DJGj
+ 6l7ix120lUgWQu482Ycgcty7yW3BRqOatZsrfTlM5v65GdoRdrkXX2aywlRUziM3cZ
+ qodmZ0IwyS5ZXX1829JWd3FEkE3IP9G+T3diDYTe2wafs3ufzRLzb38pHXL3w05pyl
+ 5urYUo3XBlIiDijQ+p4vvKG9HNiT6hY+a5Q3xrL4lYRTtiZfwPwyOHs1QbcTvPR81+
+ OUPNQzjxhLDJCm56ps8uqr6NkD6bkLaB5W8pFjGl5B2StUSP5umPrtlWGRSfA5Le86
+ TqzRm9q75FaQA==
+X-Google-Smtp-Source: ABdhPJzYRe4IfcaOp8gXNnir2xIHkexB7fAKbIAKD+/2t8UmLHcMcL+EMxw9BMGG2PCerqzkxj+BwlEdA4xVCD10jVg=
+X-Received: by 2002:aa7:d154:: with SMTP id r20mr26170869edo.258.1607955447089; 
+ Mon, 14 Dec 2020 06:17:27 -0800 (PST)
 MIME-Version: 1.0
-References: <20201214025946.25753-1-chris.ruehl@gtsys.com.hk>
- <20201214025946.25753-2-chris.ruehl@gtsys.com.hk>
-In-Reply-To: <20201214025946.25753-2-chris.ruehl@gtsys.com.hk>
+References: <20201118071724.4866-1-wens@kernel.org>
+ <20201118071724.4866-2-wens@kernel.org>
+ <CAL_JsqJphYYUsQR_kLH_y1gOArTifpEVUiTJfDpDsL8WjGxRfA@mail.gmail.com>
+ <CAGb2v6409SeptNUvMnpozriZ-L7iFCFFoG+=fJrtohxezDrEDQ@mail.gmail.com>
+In-Reply-To: <CAGb2v6409SeptNUvMnpozriZ-L7iFCFFoG+=fJrtohxezDrEDQ@mail.gmail.com>
 From: Rob Herring <robh@kernel.org>
-Date: Mon, 14 Dec 2020 08:10:18 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqL0WF-VwnaqhgQyYP0A-2Xp_q==zAw9jS5eoD3P6PmF-A@mail.gmail.com>
-Message-ID: <CAL_JsqL0WF-VwnaqhgQyYP0A-2Xp_q==zAw9jS5eoD3P6PmF-A@mail.gmail.com>
-Subject: Re: [PATCH v1 1/4] devicetree: phy: rockchip-emmc optional add vendor
- prefix
-To: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+Date: Mon, 14 Dec 2020 08:17:15 -0600
+X-Gmail-Original-Message-ID: <CAL_Jsq+0fMQkqYZ0W0eqnB+J016n-VnBm0TM2Hv1nqhO8_yUbQ@mail.gmail.com>
+Message-ID: <CAL_Jsq+0fMQkqYZ0W0eqnB+J016n-VnBm0TM2Hv1nqhO8_yUbQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/4] PCI: rockchip: Make 'ep-gpios' DT property optional
+To: Chen-Yu Tsai <wens@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201214_091034_080563_600FC23A 
-X-CRM114-Status: GOOD (  17.71  )
+X-CRM114-CacheID: sfid-20201214_091729_696630_28FE469B 
+X-CRM114-Status: GOOD (  25.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,71 +77,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+Cc: devicetree <devicetree@vger.kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Heiko Stuebner <heiko@sntech.de>, PCI <linux-pci@vger.kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Kishon Vijay Abraham I <kishon@ti.com>,
  "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- Vinod Koul <vkoul@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>, Johan Jonker <jbx6244@gmail.com>,
+ Robin Murphy <robin.murphy@arm.com>,
  linux-arm-kernel <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 13, 2020 at 9:00 PM Chris Ruehl <chris.ruehl@gtsys.com.hk> wrote:
+On Sat, Dec 12, 2020 at 9:18 AM Chen-Yu Tsai <wens@kernel.org> wrote:
 >
-> Update the documentation and add the vendor prefix to the optional
-> properties referred in vendor-prefixes.yaml.
+> On Mon, Dec 7, 2020 at 10:11 PM Rob Herring <robh@kernel.org> wrote:
+> >
+> > On Wed, Nov 18, 2020 at 1:17 AM Chen-Yu Tsai <wens@kernel.org> wrote:
+> > >
+> > > From: Chen-Yu Tsai <wens@csie.org>
+> > >
+> > > The Rockchip PCIe controller DT binding clearly states that 'ep-gpios' is
+> > > an optional property. And indeed there are boards that don't require it.
+> > >
+> > > Make the driver follow the binding by using devm_gpiod_get_optional()
+> > > instead of devm_gpiod_get().
+> > >
+> > > Fixes: e77f847df54c ("PCI: rockchip: Add Rockchip PCIe controller support")
+> > > Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
+> > > Fixes: 964bac9455be ("PCI: rockchip: Split out rockchip_pcie_parse_dt() to parse DT")
+> > > Signed-off-by: Chen-Yu Tsai <wens@csie.org>
+> > > ---
+> > > Changes since v1:
+> > >
+> > >   - Rewrite subject to match existing convention and reference
+> > >     'ep-gpios' DT property instead of the 'ep_gpio' field
+> > > ---
+> > >  drivers/pci/controller/pcie-rockchip.c | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >
+> > > diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+> > > index 904dec0d3a88..c95950e9004f 100644
+> > > --- a/drivers/pci/controller/pcie-rockchip.c
+> > > +++ b/drivers/pci/controller/pcie-rockchip.c
+> > > @@ -118,7 +118,7 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+> > >         }
+> > >
+> > >         if (rockchip->is_rc) {
+> > > -               rockchip->ep_gpio = devm_gpiod_get(dev, "ep", GPIOD_OUT_HIGH);
+> > > +               rockchip->ep_gpio = devm_gpiod_get_optional(dev, "ep", GPIOD_OUT_HIGH);
+> > >                 if (IS_ERR(rockchip->ep_gpio)) {
+> > >                         dev_err(dev, "missing ep-gpios property in node\n");
+> >
+> > You should drop the error message. What it says is now never the
+> > reason for the error and it could most likely be a deferred probe
+> > which you don't want an error message for.
 >
-> Signed-off-by: Chris Ruehl <chris.ruehl@gtsys.com.hk>
-> ---
->  .../bindings/phy/rockchip-emmc-phy.txt        | 19 ++++++++++---------
->  1 file changed, 10 insertions(+), 9 deletions(-)
+> What about switching to dev_err_probe() instead?
 >
-> diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> index 00aa2d349e55..3a55d8086868 100644
-> --- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> +++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
-> @@ -13,14 +13,15 @@ Optional properties:
->                 access to it), it is strongly suggested.
->                 See ../clock/clock-bindings.txt for details.
->   - clocks: Should have a phandle to the card clock exported by the SDHCI driver.
-> - - drive-impedance-ohm: Specifies the drive impedance in Ohm.
-> -                        Possible values are 33, 40, 50, 66 and 100.
-> -                        If not set, the default value of 50 will be applied.
-> - - enable-strobe-pulldown: Enable internal pull-down for the strobe line.
-> -                           If not set, pull-down is not used.
-> - - output-tapdelay-select: Specifies the phyctrl_otapdlysec register.
-> -                           If not set, the register defaults to 0x4.
-> -                           Maximum value 0xf.
-> + - rockchip,drive-impedance-ohm: Specifies the drive impedance in Ohm.
-> +                                 Possible values are 33, 40, 50, 66 and 100.
-> +                                 If not set, the default value of 50 will be
-> +                                 applied.
+> That way deferred probe errors get silenced (or get a better debug message),
+> and error messages for other issues, such as miswritten gpio properties are
+> still produced.
 
-You can't change this one, it's already an ABI. Only what just got
-queued can be changed.
+I guess, but those errors should be in the subsystem code IMO rather
+than every driver.
 
-> + - rockchip,enable-strobe-pulldown: Enable internal pull-down for the strobe
-> +                                    line.  If not set, pull-down is not used.
-> + - rockchip,output-tapdelay-select: Specifies the phyctrl_otapdlysec register.
-> +                                    If not set, the register defaults to 0x4.
-> +                                    Maximum value 0xf.
->
->  Example:
->
-> @@ -37,7 +38,7 @@ grf: syscon@ff770000 {
->                 reg = <0xf780 0x20>;
->                 clocks = <&sdhci>;
->                 clock-names = "emmcclk";
-> -               drive-impedance-ohm = <50>;
-> +               rockchip,drive-impedance-ohm = <50>;
->                 #phy-cells = <0>;
->         };
->  };
-> --
-> 2.20.1
->
+Rob
 
 _______________________________________________
 Linux-rockchip mailing list
