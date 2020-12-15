@@ -2,67 +2,76 @@ Return-Path: <SRS0=dXo0=FT=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D81AC2BB9A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Dec 2020 01:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AB2D9C4361B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Dec 2020 18:18:20 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 114BE224D1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Dec 2020 01:44:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 114BE224D1
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=gtsys.com.hk
+	by mail.kernel.org (Postfix) with ESMTPS id 693BE22515
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Dec 2020 18:18:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 693BE22515
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=u3SExTyyR9BqJ93vmf+ejKqOr4e6BJ3oje7SCn7ylKc=; b=ndAoXMnkTvKnZe/FX2dJLeMRO
-	g+SpnWm0Mc14nRTnGyVnKucdvHRBuP50gDtdekUN0csEWfNObGU1DOkitRSWVJuw4E5i8jv2sRqDI
-	E3UPibx46XJ8NiqiEYfx7ZDXhsy4j8ZXIR+dcUMnzYKL9qYSQy8uiVYJYPoP8nTasSLJwmjZ7UTmV
-	sjK5OWCvOxYgR61NQlc2oGshzFvh2m2p0/MqmKo+kXln+PU3iRMKgvEWqTd4mf6Yy4WkwcOiiNcv3
-	wooQwQpeyBSzstK1ybLeJJ7z068kabHZL6sEQsUYYzqJwoaTTHXZ2bNX13AXe+XX6J7fTAkgT3L+Q
-	VWGFqy21A==;
+	 bh=kq6s0o/EtO3rIaahyStrW1LxELWQ4gWoWmJNFFkuKGA=; b=LfJJ2azmmol4gu+x+cfSqnpJ6
+	r/FyRhS/gzdqNbRUNnKbpjT6N2fkVjp7UeyRS55HA+De80L7+V2fpxQWx7lT1VJ/i5Ld7SN5lR+Dt
+	ayRKIwv/JDJaAZxiC5Os/+XGuI3DLibrgPqTEzJSadtzFFPLjnMztNUeYVql0M47BtsfC7swnADiQ
+	+qhcVuGGRwlXbdTRHXAAlml6OrgDf13Uxd14t4yGTe1sT6UP3LJeNzOEYKfmqgbr3jXs8Gsp/hUtC
+	s/FEYeE8nJvmm5QB4ujNJhntSayi4Gbuow0auR93Yejt7amTrbItCEET20OWFkHiqK81cjIygZJ0f
+	3igd0/+3Q==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kozO7-0006cS-4B; Tue, 15 Dec 2020 01:44:27 +0000
-Received: from [27.111.83.178] (helo=mail.gtsys.com.hk)
+	id 1kpEto-0003zB-PK; Tue, 15 Dec 2020 18:18:12 +0000
+Received: from mail-ot1-f67.google.com ([209.85.210.67])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kozNy-0006aB-Do; Tue, 15 Dec 2020 01:44:20 +0000
-Received: from localhost (localhost [127.0.0.1])
- by mail.gtsys.com.hk (Postfix) with ESMTP id E750C20138CB;
- Tue, 15 Dec 2020 09:44:14 +0800 (HKT)
-X-Virus-Scanned: Debian amavisd-new at gtsys.com.hk
-Received: from mail.gtsys.com.hk ([127.0.0.1])
- by localhost (mail.gtsys.com.hk [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 863XrYKeHdKL; Tue, 15 Dec 2020 09:44:14 +0800 (HKT)
-Received: from s01.gtsys.com.hk (unknown [10.128.4.2])
- by mail.gtsys.com.hk (Postfix) with ESMTP id CEC8320138C7;
- Tue, 15 Dec 2020 09:44:14 +0800 (HKT)
-Received: from armhf2.gtsys.com.hk (unknown [10.128.4.15])
- by s01.gtsys.com.hk (Postfix) with ESMTP id D24F6C01FAD;
- Tue, 15 Dec 2020 09:44:14 +0800 (HKT)
-Received: by armhf2.gtsys.com.hk (Postfix, from userid 1000)
- id C67602000CF; Tue, 15 Dec 2020 09:44:14 +0800 (HKT)
-From: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+ id 1kpEtk-0003wu-4Q; Tue, 15 Dec 2020 18:18:08 +0000
+Received: by mail-ot1-f67.google.com with SMTP id d8so20322045otq.6;
+ Tue, 15 Dec 2020 10:18:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=P/jLsGp20WgJwDEhTmMuRmqydR5T/IJ51ILOe2UCGr8=;
+ b=BB6zbu+70Asxd9G/ByxPAH6a3uBt25hxstCQd0vup2gfcF4n0Msk20sleZDwq0FmOy
+ jhhE/LYlNGxYx15dM4uL3jE/ySUU6o+wUGpoSLJaUjStLZsSpE6Fypoxt9kUKDVd9bDL
+ mtAqR2TQQboVYgCEHy7O9Ie1XngYkFaSDh8SnGTH36bec1Ml54ap1zOUfzFW8A7MEB6J
+ UpgSOts6MU+SxOQsZyimOYUiCiSLxV33v8+9DX3g1ILwJC+qjcXBd7h13xAkUYOQKNLn
+ qoYlXmfcTigrN18KdfA7CN3NYgFxuIz6q7UqagUkbySRc4K3aVKIY41T/VOudwZBdp3h
+ DJfA==
+X-Gm-Message-State: AOAM531ycDBhCN1+fHFbZMD/78MGA9nzickLOZ/f44KS8RfnqosapiIz
+ BiMocHt+5hvGOi3GlqE3ls9Pk4qqFA==
+X-Google-Smtp-Source: ABdhPJw5u7KWSVyM8A8MHLioXhU8/SevPeNGrm3xUT9JurqqAhjH4LaA75m9/X5WWOTjdIe9a3jVbg==
+X-Received: by 2002:a9d:7ac1:: with SMTP id m1mr1666058otn.186.1608056287634; 
+ Tue, 15 Dec 2020 10:18:07 -0800 (PST)
+Received: from xps15 (24-155-109-49.dyn.grandenetworks.net. [24.155.109.49])
+ by smtp.gmail.com with ESMTPSA id d20sm593325ote.48.2020.12.15.10.18.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Dec 2020 10:18:06 -0800 (PST)
+Received: (nullmailer pid 4146529 invoked by uid 1000);
+ Tue, 15 Dec 2020 18:18:05 -0000
+Date: Tue, 15 Dec 2020 12:18:05 -0600
+From: Rob Herring <robh@kernel.org>
 To: Chris Ruehl <chris.ruehl@gtsys.com.hk>
-Subject: [PATCH v2 2/2] phy: rockchip: emmc,
- add vendor prefix to dts properties
-Date: Tue, 15 Dec 2020 09:44:08 +0800
-Message-Id: <20201215014409.905-3-chris.ruehl@gtsys.com.hk>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201215014409.905-1-chris.ruehl@gtsys.com.hk>
+Subject: Re: [PATCH v2 1/2] devicetree: phy: rockchip-emmc optional add
+ vendor prefix
+Message-ID: <20201215181805.GA4145251@robh.at.kernel.org>
 References: <20201215014409.905-1-chris.ruehl@gtsys.com.hk>
+ <20201215014409.905-2-chris.ruehl@gtsys.com.hk>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20201215014409.905-2-chris.ruehl@gtsys.com.hk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201214_204418_720823_9775716E 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20201215_131808_205679_22233012 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,46 +84,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org,
- Vinod Koul <vkoul@kernel.org>, linux-arm-kernel@lists.infradead.org
+Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-kernel@vger.kernel.org, Kishon Vijay Abraham I <kishon@ti.com>,
+ linux-rockchip@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Update the implementation add "rockchip," vendor prefix for the
-optional dts properties. Prefix referred from vendor-prefixes.yaml.
-Follow up with
-commit 8b5c2b45b8f0a ("phy: rockchip: set pulldown for strobe line in dts")
-commit a8cef928276bb ("phy: rockchip-emmc: output tap delay dt property")
+On Tue, 15 Dec 2020 09:44:07 +0800, Chris Ruehl wrote:
+> Update the documentation and add the vendor prefix to the optional
+> properties referred in vendor-prefixes.yaml.
+> Follow up with
+> commit 8b5c2b45b8f0a ("phy: rockchip: set pulldown for strobe line in dts")
+> commit a8cef928276bb ("phy: rockchip-emmc: output tap delay dt property")
 
-Signed-off-by: Chris Ruehl <chris.ruehl@gtsys.com.hk>
----
- drivers/phy/rockchip/phy-rockchip-emmc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+These could be Fixes tags.
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-emmc.c b/drivers/phy/rockchip/phy-rockchip-emmc.c
-index 1e424f263e7a..860b2fbbb092 100644
---- a/drivers/phy/rockchip/phy-rockchip-emmc.c
-+++ b/drivers/phy/rockchip/phy-rockchip-emmc.c
-@@ -380,10 +380,10 @@ static int rockchip_emmc_phy_probe(struct platform_device *pdev)
- 	if (!of_property_read_u32(dev->of_node, "drive-impedance-ohm", &val))
- 		rk_phy->drive_impedance = convert_drive_impedance_ohm(pdev, val);
- 
--	if (of_property_read_bool(dev->of_node, "enable-strobe-pulldown"))
-+	if (of_property_read_bool(dev->of_node, "rockchip,enable-strobe-pulldown"))
- 		rk_phy->enable_strobe_pulldown = PHYCTRL_REN_STRB_ENABLE;
- 
--	if (!of_property_read_u32(dev->of_node, "output-tapdelay-select", &val)) {
-+	if (!of_property_read_u32(dev->of_node, "rockchip,output-tapdelay-select", &val)) {
- 		if (val <= PHYCTRL_OTAPDLYSEL_MAXVALUE)
- 			rk_phy->output_tapdelay_select = val;
- 		else
--- 
-2.20.1
+> 
+> Signed-off-by: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+> ---
+>  .../devicetree/bindings/phy/rockchip-emmc-phy.txt      | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 
+TBC, this needs to be applied for v5.11.
+
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-rockchip mailing list
