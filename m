@@ -1,65 +1,68 @@
-Return-Path: <SRS0=K/hu=FS=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=dXo0=FT=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6A2DC2BBCA
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Dec 2020 15:19:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8162AC4361B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Dec 2020 01:44:29 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 331EF2074B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 14 Dec 2020 15:19:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 331EF2074B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id E66C4224D1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 15 Dec 2020 01:44:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E66C4224D1
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=gtsys.com.hk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=HZdakMztJibEFSnaZFFyIQTBM65knqQAc7YfT7rY1lM=; b=e7gG/vrwIB4vRShoOxUBXWZDS
-	Dv1VVDoM6rm7BjKqNzrfAgZ3ibTmfb8Bh08ULPeI2N6GvD/2zUozGkUrH+B479+s0iLrAmnE4CGgv
-	zwMeZSXfG5mnygmPezZDDZu4fsUn3hGMKdx/ZzASiPBT7WFN16fJFuN77V+f2WQQe8fNCLuz1muzl
-	4M75RYOw2VTFnTuQleM5PccdeEuP+pBktP9if1/tp6ntfyc14ApozKYbtbSFcQRtJvzVAjVigUdWG
-	rpwNF4X0q9CmEkkhNz4HrJTmJPJXgO1ICzv5j+kKti940qFl8/YRKrqM67cErNFpvqePr46CTbv3A
-	LXhjKgJWg==;
+	 bh=KaO73RvDHgLO0D3weMGzsuZlPyipPYrxcQPvWqyEYJM=; b=i61PREoye8ri80M6iHbtj68qf
+	2Ev98EmofJiLmPSYnDCa53Kkas9aSKrE7l5xYp7CzBMuNk5KepRHVf2zrE20gt59IGMAGRXqv7F4n
+	pPd7YtWIgddNsZpcPKv8EB1P6c2j19FUQ3glCyPgLwHGLnobuaGsMfzj2hqhTkZ99zev3bc1zxsWT
+	wVEUcsOS147xjCkR01JJWeJ61U/IPDKfWN0n8OMejk1EmEwgiSgDCZh6IKir7Eh7mnmtNCjEPvyDO
+	DHkooo/KkN8wfpCgGordZYVPcxAxLCnXogpqxMUAqQKtwaba4D5OdiIyeL+rzYzEIyBHNQyI9kg6B
+	xQ8DB2JBQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kopcl-0000Db-UY; Mon, 14 Dec 2020 15:18:55 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kopch-0000CZ-T1; Mon, 14 Dec 2020 15:18:52 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8BF4E30E;
- Mon, 14 Dec 2020 07:18:44 -0800 (PST)
-Received: from [10.57.33.60] (unknown [10.57.33.60])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 5A02D3F66E;
- Mon, 14 Dec 2020 07:18:42 -0800 (PST)
-Subject: Re: [PATCH v2 3/4] arm64: dts: rockchip: nanopi4: Move ep-gpios
- property to nanopc-t4
-To: Chen-Yu Tsai <wens@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring
- <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>
-References: <20201118071724.4866-1-wens@kernel.org>
- <20201118071724.4866-4-wens@kernel.org>
-From: Robin Murphy <robin.murphy@arm.com>
-Message-ID: <1e41aefe-6875-d319-1922-210fb865631c@arm.com>
-Date: Mon, 14 Dec 2020 15:18:40 +0000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101
- Thunderbird/78.5.1
+	id 1kozO4-0006by-50; Tue, 15 Dec 2020 01:44:24 +0000
+Received: from [27.111.83.178] (helo=mail.gtsys.com.hk)
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kozNy-0006a9-Dn; Tue, 15 Dec 2020 01:44:19 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by mail.gtsys.com.hk (Postfix) with ESMTP id 7649120138C6;
+ Tue, 15 Dec 2020 09:44:14 +0800 (HKT)
+X-Virus-Scanned: Debian amavisd-new at gtsys.com.hk
+Received: from mail.gtsys.com.hk ([127.0.0.1])
+ by localhost (mail.gtsys.com.hk [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0gcxjvr6xVlo; Tue, 15 Dec 2020 09:44:14 +0800 (HKT)
+Received: from s01.gtsys.com.hk (unknown [10.128.4.2])
+ by mail.gtsys.com.hk (Postfix) with ESMTP id 5D39520139A0;
+ Tue, 15 Dec 2020 09:44:14 +0800 (HKT)
+Received: from armhf2.gtsys.com.hk (unknown [10.128.4.15])
+ by s01.gtsys.com.hk (Postfix) with ESMTP id 6094AC01FAD;
+ Tue, 15 Dec 2020 09:44:14 +0800 (HKT)
+Received: by armhf2.gtsys.com.hk (Postfix, from userid 1000)
+ id 4D3A02000CF; Tue, 15 Dec 2020 09:44:14 +0800 (HKT)
+From: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+To: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+Subject: [PATCH v2 1/2] devicetree: phy: rockchip-emmc optional add vendor
+ prefix
+Date: Tue, 15 Dec 2020 09:44:07 +0800
+Message-Id: <20201215014409.905-2-chris.ruehl@gtsys.com.hk>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20201215014409.905-1-chris.ruehl@gtsys.com.hk>
+References: <20201215014409.905-1-chris.ruehl@gtsys.com.hk>
 MIME-Version: 1.0
-In-Reply-To: <20201118071724.4866-4-wens@kernel.org>
-Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201214_101852_015431_8310BAC3 
-X-CRM114-Status: GOOD (  22.35  )
+X-CRM114-CacheID: sfid-20201214_204418_681698_601EC982 
+X-CRM114-Status: GOOD (  11.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,73 +75,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Chen-Yu Tsai <wens@csie.org>, Johan Jonker <jbx6244@gmail.com>,
+Cc: Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Kishon Vijay Abraham I <kishon@ti.com>, linux-rockchip@lists.infradead.org,
+ Vinod Koul <vkoul@kernel.org>, Rob Herring <robh+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2020-11-18 07:17, Chen-Yu Tsai wrote:
-> From: Chen-Yu Tsai <wens@csie.org>
-> 
-> Only the NanoPC T4 hs the PCIe reset pin routed to the SoC. For the
-> NanoPi M4 family, no such signal is routed to the expansion header on
-> the base board.
-> 
-> As the schematics for the expansion board were not released, it is
-> unclear how this is handled, but the likely answer is that the signal
-> is always pulled high.
-> 
-> Move the ep-gpios property from the common nanopi4.dtsi file to the
-> board level nanopc-t4.dts file. This makes the nanopi-m4 lack ep-gpios,
-> matching the board design.
-> 
-> A companion patch "PCI: rockchip: make ep_gpio optional" for the Linux
-> driver is required, as the driver currently requires the property to be
-> present.
+Update the documentation and add the vendor prefix to the optional
+properties referred in vendor-prefixes.yaml.
+Follow up with
+commit 8b5c2b45b8f0a ("phy: rockchip: set pulldown for strobe line in dts")
+commit a8cef928276bb ("phy: rockchip-emmc: output tap delay dt property")
 
-I concur that this is a more correct description per the schematics (the 
-SOM-RK3399 Dev Kit carrier board is the only other thing showing PERST# 
-wired up like this), and whatever the M4 hats are doing they clearly 
-aren't doing it with GPIO2_A4 either way.
+Signed-off-by: Chris Ruehl <chris.ruehl@gtsys.com.hk>
+---
+ .../devicetree/bindings/phy/rockchip-emmc-phy.txt      | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+diff --git a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+index 00aa2d349e55..57d28c0d5696 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
++++ b/Documentation/devicetree/bindings/phy/rockchip-emmc-phy.txt
+@@ -16,11 +16,11 @@ Optional properties:
+  - drive-impedance-ohm: Specifies the drive impedance in Ohm.
+                         Possible values are 33, 40, 50, 66 and 100.
+                         If not set, the default value of 50 will be applied.
+- - enable-strobe-pulldown: Enable internal pull-down for the strobe line.
+-                           If not set, pull-down is not used.
+- - output-tapdelay-select: Specifies the phyctrl_otapdlysec register.
+-                           If not set, the register defaults to 0x4.
+-                           Maximum value 0xf.
++ - rockchip,enable-strobe-pulldown: Enable internal pull-down for the strobe
++                                    line.  If not set, pull-down is not used.
++ - rockchip,output-tapdelay-select: Specifies the phyctrl_otapdlysec register.
++                                    If not set, the register defaults to 0x4.
++                                    Maximum value 0xf.
+ 
+ Example:
+ 
+-- 
+2.20.1
 
-> Fixes: e7a095908227 ("arm64: dts: rockchip: Add devicetree for NanoPC-T4")
-> Signed-off-by: Chen-Yu Tsai <wens@csie.org>
-> ---
->   arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts | 1 +
->   arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi  | 1 -
->   2 files changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-> index e0d75617bb7e..452728b82e42 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-> @@ -95,6 +95,7 @@ map3 {
->   };
->   
->   &pcie0 {
-> +	ep-gpios = <&gpio2 RK_PA4 GPIO_ACTIVE_HIGH>;
->   	num-lanes = <4>;
->   	vpcie3v3-supply = <&vcc3v3_sys>;
->   };
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-> index 76a8b40a93c6..48ed4aaa37f3 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-> @@ -504,7 +504,6 @@ &pcie_phy {
->   };
->   
->   &pcie0 {
-> -	ep-gpios = <&gpio2 RK_PA4 GPIO_ACTIVE_HIGH>;
->   	max-link-speed = <2>;
->   	num-lanes = <2>;
->   	vpcie0v9-supply = <&vcca0v9_s3>;
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
