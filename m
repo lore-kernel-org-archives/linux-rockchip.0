@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A9F4FC4361B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Dec 2020 12:06:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AC92DC4361B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Dec 2020 12:06:36 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6D3FC23443
-	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Dec 2020 12:06:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6D3FC23443
+	by mail.kernel.org (Postfix) with ESMTPS id 7175623A51
+	for <linux-rockchip@archiver.kernel.org>; Fri, 18 Dec 2020 12:06:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 7175623A51
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,61 +24,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:References:In-Reply-To:Message-Id:Date:Subject:To:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wjDoush8dQxgSU/mwN3WyxXd+cWZj0CuAXbD19szn90=; b=rvPoD0BfQz+Lbo7l0leplGdASV
-	s8TVVgM/Pq1FboZWIwSOCNQfrp9r7jp+RkP0kiYMHbs4Ne6VlAEW1n4eo2AY9EuvCOp5fZ7SU9xUq
-	G8AjCeF4Brpin0sy193Xwtw8E2KOCGHF/EqY3fTpmfZfPvvvHIbmhDDceyedsBoWAY6IsgsV1ffxu
-	UPwk6qjojqkcAuPIGOda4FKmXvRvVpPxzzZrN4ZlxIRwYr1toP4Zc7r24243ZUN5piVPezhUykt9o
-	CBdGrQTIu1WSGur8Ua/gvQWs3tVttnVAoaDgDEflvRJscdTlXd3V6OqX1ZuIRwTuo4zpBZMNWZtgl
-	X1A/hKGg==;
+	bh=B1+uw4Oi93TaZ7xg4sqS+b0KZsrJtEUjWiMIS8XsI80=; b=C0+WOE6zBRXXiDUmCgj0WXM9Xq
+	aaiOCWPN4XDWvpJSolqUQPWfOaetaP3Cned2tM2BIk0I3SOeqAs3Gs/Y9XNzeHx+u7BaQe+Xnuve0
+	EJMrm0HkOQ3MdGFGv2pjVu5ApmEs2McayHUtD5mbHRiOrJFESfoz/nJoqvzujjC4ZFjjTUM3zLqcM
+	zfW+WX9HVOfP/y7ZY3xHhvGZVXvn2B0MyhymgWjGRA86Ym/yoWTH5OcSl26SPiYeyGN0jB/umHeHv
+	WGhuhXr25wBYuMMDeeVPtrHm+2v5u5x4Ghq7z5D1w7tiMJBUZq+bbsbv+urXfSBawHnjTapNYcqvl
+	fIkHaIiw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kqEWf-00079t-PD; Fri, 18 Dec 2020 12:06:25 +0000
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+	id 1kqEWm-0007C6-Dq; Fri, 18 Dec 2020 12:06:32 +0000
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kqEW6-0006z7-MO; Fri, 18 Dec 2020 12:05:54 +0000
-Received: by mail-ej1-x636.google.com with SMTP id qw4so2809023ejb.12;
- Fri, 18 Dec 2020 04:05:50 -0800 (PST)
+ id 1kqEW5-0006yt-Qm; Fri, 18 Dec 2020 12:05:54 +0000
+Received: by mail-ej1-x62a.google.com with SMTP id lt17so2880609ejb.3;
+ Fri, 18 Dec 2020 04:05:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=t6IawFaTxlXErq81LHg7H7iHtTYroJYDvrDaOnFY3WQ=;
- b=tCeKxpzidw4wpeNtTlUC2MsQrKtU5p+9l82IRzDxKn4wair0jV1sjajMvGZ6WVN5AB
- yD7+J8eHsOvfY4ZtcHKKOFR0Ezow9juDqPED5P761rzz4EdZgv8NGoDmW0Du+CnzcQn/
- zGil5FyGTrCjws/aBOs/ydL1E9lcoBLI3LkR+HjJ8X+dkffqeAU2FWlfhjKRgJh0u45A
- LUc6MgKxBefdOWgUbt+66pfWPOiRQNmEHteifIXNgR3lXbre7f0epVebu4mwC13PG3KX
- IIFvMz8Wx+78JI55vZkdliGLDiJzyx5pp0YfghI01mmWOKmlgbbVfR8oy+oH34PV/hEo
- TT7A==
+ bh=/ZZ4VBnbNLp5BmhedYREI5dGQvhTk+buJrXKgrwV+9k=;
+ b=BjFKZ/kInBB3IhnwuwfILcjBujRZmZru2u9hhK/11pIIrU0IxLhAlXBTf0CNPaJun1
+ C5dyMdl8Dbjecd2wZl4krNXj23NRef7m9FM6f4SeJiJylmw5trYMnUpFKiRteYmdydNM
+ 7pL2VQklCt4/P54w+lOiE/S/IdiuHLLsOH7pOHy7URn6nk0CWoe4foaiwCp0fTQwQgbr
+ kGr2sWtKO3Qs2e+oj61SHQVqJFMWFfdIF1us/ofJT2fyerjW5CCy86VxYVq9P8SvpckU
+ QGu9UYSBQDidZiM23oFL1svRWeYqdP/NAmB4ESLGEnE/dD+YxXaY1M69bNZdkuURNFnE
+ OPVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=t6IawFaTxlXErq81LHg7H7iHtTYroJYDvrDaOnFY3WQ=;
- b=A15XgYe56sVNtmm8Sx3m+LupZElCLBPp1r8f7d/4YK/lJbsaSgJH5GGtPLwktaZ2wI
- PqlWFH0c956HXt6oiZtA6G81WB2Bxtb2kF1P0awkzZleXEYCtL7G6qobGusMGaEabU6P
- pIxHaNVIkUsSOAK9eIbAv15PQ6ZB9ktFYlXykeiyPkwclquHJEj/tmq/qXDPh454hFy9
- DjRx/8JetLwuJ8xWk79cj8weZipfN5cDVDcHuPP53fiYqTUq33JJIlj1k5dAWRpO58Oy
- t08bcGgQF35PB+MZrwzhOCJ5RY7aRuRBUJ4Pkjkm/Qh21syvqikeOlhXq/QenufTgjSE
- S/zw==
-X-Gm-Message-State: AOAM532Y/PuMoj5nhE5/1OA2cjB5cMCjtY/O32F/oWdGmrw4mO3TzXAx
- gsFhgQus5cIUtceodTi7ruY=
-X-Google-Smtp-Source: ABdhPJzSar6uDlkcYSArlYr83CyBFBxNMlePA6gL9OekO8talCfdxAOiss9MicKjqUr6XHL/lK01WQ==
-X-Received: by 2002:a17:906:9888:: with SMTP id
- zc8mr3646664ejb.42.1608293149321; 
- Fri, 18 Dec 2020 04:05:49 -0800 (PST)
-Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
- by smtp.gmail.com with ESMTPSA id ga37sm4775832ejc.96.2020.12.18.04.05.48
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ bh=/ZZ4VBnbNLp5BmhedYREI5dGQvhTk+buJrXKgrwV+9k=;
+ b=AAZQIcWC249CXtdJECTFYQo1sMtsOThM8NmPC0zcxj8oRSVuqQyFwpxciPQj2MwttS
+ lQieNagmidzmZK8GVkZBvP8Aj8ZpdeDYUltNe1TvSHVIRiUy+S/3QoAZiP51r8zLjLor
+ GY/k9aw6O0E+eeGmWMzls2rUJQx0v375SkXHa9qUqVSqvEl6StEz73dqeOgYmCtTzj9H
+ gV9sI07bJo5ELd2rOhgQRhCyOLQjMEXUU90eQiRCJfe3kDvgC8P8aIBfH/gooKFr5b2I
+ TYGdtB2f7d13LpsnyKLktGnsLYtjyazPY2NXuGea9e5pYl/F0SI+qySb5CmOrzkNPoax
+ 7+fQ==
+X-Gm-Message-State: AOAM5311ATen3ozUxIeqNGB1tjvoAzYey8TinkIuBmjaDMKwSM2Z/KTw
+ +SdMMCTs11NrPCLundTuUR8=
+X-Google-Smtp-Source: ABdhPJxHfIZ2zikC+cc85SIfju4KkJ6KDnevlI+HVFp90ifbcpbus3lkMjqe1/lr0Tuf6M/rCLanQg==
+X-Received: by 2002:a17:906:c289:: with SMTP id
+ r9mr3587553ejz.311.1608293148392; 
  Fri, 18 Dec 2020 04:05:48 -0800 (PST)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id ga37sm4775832ejc.96.2020.12.18.04.05.47
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 18 Dec 2020 04:05:47 -0800 (PST)
 From: Johan Jonker <jbx6244@gmail.com>
 To: heiko@sntech.de
-Subject: [PATCH 5/8] arm64: dts: rockchip: add new watchdog compatible to
- rk3308.dtsi
-Date: Fri, 18 Dec 2020 13:05:31 +0100
-Message-Id: <20201218120534.13788-5-jbx6244@gmail.com>
+Subject: [PATCH 4/8] arm64: dts: rockchip: add new watchdog compatible to
+ px30.dtsi
+Date: Fri, 18 Dec 2020 13:05:30 +0100
+Message-Id: <20201218120534.13788-4-jbx6244@gmail.com>
 X-Mailer: git-send-email 2.11.0
 In-Reply-To: <20201218120534.13788-1-jbx6244@gmail.com>
 References: <20201218120534.13788-1-jbx6244@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201218_070550_828208_E8C6DDBF 
+X-CRM114-CacheID: sfid-20201218_070549_879676_E2932A79 
 X-CRM114-Status: GOOD (  14.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
@@ -103,33 +103,33 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 The watchdog compatible strings are suppose to be SoC orientated.
-In the more recently added Rockchip rk3308.dtsi file only
+In the more recently added Rockchip px30.dtsi file only
 the fallback string "snps,dw-wdt" is used, so add the new
 compatible string:
 
-"rockchip,rk3308-wdt", "snps,dw-wdt"
+"rockchip,px30-wdt", "snps,dw-wdt"
 
 make ARCH=arm64 dtbs_check
 DT_SCHEMA_FILES=Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
 
 Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3308.dtsi | 2 +-
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3308.dtsi b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-index 2560b9877..ad54acf5d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-@@ -244,7 +244,7 @@
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index af6bcef9e..541785425 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -600,7 +600,7 @@
  	};
  
- 	wdt: watchdog@ff080000 {
+ 	wdt: watchdog@ff1e0000 {
 -		compatible = "snps,dw-wdt";
-+		compatible = "rockchip,rk3308-wdt", "snps,dw-wdt";
- 		reg = <0x0 0xff080000 0x0 0x100>;
- 		clocks = <&cru PCLK_WDT>;
- 		interrupts = <GIC_SPI 10 IRQ_TYPE_LEVEL_HIGH>;
++		compatible = "rockchip,px30-wdt", "snps,dw-wdt";
+ 		reg = <0x0 0xff1e0000 0x0 0x100>;
+ 		clocks = <&cru PCLK_WDT_NS>;
+ 		interrupts = <GIC_SPI 37 IRQ_TYPE_LEVEL_HIGH>;
 -- 
 2.11.0
 
