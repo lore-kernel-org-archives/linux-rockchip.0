@@ -2,66 +2,80 @@ Return-Path: <SRS0=0WH/=FX=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BFCCAC4361B
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Dec 2020 20:45:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B0699C4361B
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Dec 2020 21:05:23 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5FE4922D72
-	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Dec 2020 20:45:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FE4922D72
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=simonsouth.net
+	by mail.kernel.org (Postfix) with ESMTPS id 3C5B123A79
+	for <linux-rockchip@archiver.kernel.org>; Sat, 19 Dec 2020 21:05:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3C5B123A79
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=GxJsQeR4bmlYwY+Vi34Lomq/PllgWoMOwy9J1Tk0Z8I=; b=t1kZ70diE2PX5nqNZDCXJceaD
-	99+UvQlJSrqDIKi4ri5oF9JV2FgOreZoMxc4axQ51y5U8u2jd37bMqjdRND+TNhqdQdYcCJhVmHf4
-	g1kRVEy0Ut31UcUNHgLDe+jyvO8aFmURmwqJkH5EDab4Gd1II2F4GxIKXufyQjZnMIVeAXNt/RK4l
-	cFv/0XLWgeo9H9eEHvBrwYivvE8Asi2mL2K892zxYBbyRHYEcO995jVzNF1C9qK8B3kyvbU0GGc66
-	2t/J81jTZqnMJvIW3Uxn9N/8fb5piYm9DOfPN1mGjoC+Lk7O2I7LE8HOt5FlEvXaxzPJ8dvicoMnl
-	NpT4TNZng==;
+	Content-Type:MIME-Version:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:Message-Id:Date:Subject:To:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=SR84M9mNwbRbFLyPqpRE+NYz5/iW2Lp2SmyE2I6eUyg=; b=Pcj7WQlBcmn2fbFcW5hFihuSZp
+	yPQwwc5+tyeBDbnzKoV7mk9YS/bUvSMgkEHw6GNDub9P0sEw0MBITdZzcoBehvJlXv9nhhVlD5EAP
+	90BCZY5WbfUKEt2iz1nP6QNb1AsXsgfzRyBVUURm8p5Tw9QRUDGCybD9hsW381mGp1eu4PISBjPxx
+	dbU+bopTavySAcSj2ynRThhh4a1rlD/UBBPsc1iYTetaVRva5qirICRtjRnZx8K8me+srD4O4/XgK
+	lhYgj1ZNwWpusES6/9JhxZIN6lxouG7rKtj+ia+8qQBMpjlOtkOal0ObTYh3pNthd/oWiVBVbVYWb
+	PiX0qhSg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kqj6O-0001Na-A9; Sat, 19 Dec 2020 20:45:20 +0000
-Received: from mailout.easymail.ca ([64.68.200.34])
+	id 1kqjPd-0002wr-QJ; Sat, 19 Dec 2020 21:05:13 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kqj6I-0001Ln-Fy; Sat, 19 Dec 2020 20:45:15 +0000
-Received: from localhost (localhost [127.0.0.1])
- by mailout.easymail.ca (Postfix) with ESMTP id 45F2BBFD50;
- Sat, 19 Dec 2020 20:45:14 +0000 (UTC)
-X-Virus-Scanned: Debian amavisd-new at emo04-pco.easydns.vpn
-Received: from mailout.easymail.ca ([127.0.0.1])
- by localhost (emo04-pco.easydns.vpn [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wmJsXWBXQu9v; Sat, 19 Dec 2020 20:45:14 +0000 (UTC)
-Received: from localhost.localdomain (unknown [108.162.141.195])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mailout.easymail.ca (Postfix) with ESMTPSA id 55123BFBC9;
- Sat, 19 Dec 2020 20:44:59 +0000 (UTC)
-From: Simon South <simon@simonsouth.net>
-To: tpiepho@gmail.com, thierry.reding@gmail.com,
- u.kleine-koenig@pengutronix.de, lee.jones@linaro.org, heiko@sntech.de,
- bbrezillon@kernel.org, linux-pwm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v2 3/3] pwm: rockchip: Do not start PWMs not already running
-Date: Sat, 19 Dec 2020 15:44:10 -0500
-Message-Id: <0acdf3a78f670a2678e03b0bbbb01aa58a11ce9a.1608407584.git.simon@simonsouth.net>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <cover.1608407584.git.simon@simonsouth.net>
-References: <cover.1608407584.git.simon@simonsouth.net>
-MIME-Version: 1.0
+ id 1kqjPb-0002wN-Rt; Sat, 19 Dec 2020 21:05:12 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id c7so5921925edv.6;
+ Sat, 19 Dec 2020 13:05:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id;
+ bh=yCg0N5XHLdcvyzB8XtbsgLX0uVCGtu8p9OhsrWKEzmI=;
+ b=ZOayuf5MpYctakbG05R3dem09hHqfNfXaxDYwUfuhENiSfcdDzV3Q+uRqNh2bfMTQt
+ BAQQii6h83kwUyA+i32ljQELwP1RoaAdFBGJs6JGE9cFfbweOPT07zGKGE/Ge57mp6i9
+ ocI/L0hJJdnpt1k2a0Q1t4PlMcwZKI2gosI9hSLLwmm/cFaFsoxq/GPG0Qdb6uB0fgBt
+ cVfU32+72cdvm5WpU4Bi5B7rPrR1rHlImJUAec4fMexLk1/mjH33cuKU3HRVa0izDac5
+ +XsDXAoDot7+qF6OwcvnN1MeOr//aCRFvNRcy5vmin6n0to87FT20uTOt3e28BgDtwDY
+ 1NZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=yCg0N5XHLdcvyzB8XtbsgLX0uVCGtu8p9OhsrWKEzmI=;
+ b=LnYpaFhl+iHF0nckdJ61TeNwt5oMrF7Bz+YICCf62lShaW7zLaE6k63F9oUZj7smRw
+ 3WkkgGoG5yh3+/AjmW4Or9hOn+ynDTnoE+bk3g1gK5xaFTPGw4W7vw0bStgyTA918TQn
+ dejPXYflAoH1mhO5SSZP15VJ3p7Khplp4w8qCvLRMfz40pIs//P/OjYXa47kV7jJabfo
+ HMqvJko+sj4a0DKuUBeayc8F6SMJjn8yyCyKSzZbgVfTPWWy7DIWww3MjommocxlKiao
+ yuN2QMi5t5R2B/+YPCMbSNFuCWyPeMKI+Po3z1XEFkgHbMxv82zgKaArKi6T4NTc/fdA
+ ftNg==
+X-Gm-Message-State: AOAM532i8KU7StXPdQBvloiet9NeItB7dejufLLmnvriyd8wHsfikI8o
+ bPRE44qUjGznk3waI9MBRFcyC1hypRPNKA==
+X-Google-Smtp-Source: ABdhPJwUOLxMqZHFnWA+AM/Mc5tNkY09FqSU8RHM9licxpTkUPDZ6d6Rp7YMFP1kyyvbL2MzBmbfzQ==
+X-Received: by 2002:a50:d491:: with SMTP id s17mr10004889edi.169.1608411908228; 
+ Sat, 19 Dec 2020 13:05:08 -0800 (PST)
+Received: from debian.home (81-204-249-205.fixed.kpn.net. [81.204.249.205])
+ by smtp.gmail.com with ESMTPSA id a6sm26960419edv.74.2020.12.19.13.05.07
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 19 Dec 2020 13:05:07 -0800 (PST)
+From: Johan Jonker <jbx6244@gmail.com>
+To: heiko@sntech.de
+Subject: [PATCH] arm64: dts: rockchip: assign a fixed index to mmc devices on
+ rk3328 boards
+Date: Sat, 19 Dec 2020 22:05:00 +0100
+Message-Id: <20201219210500.3855-1-jbx6244@gmail.com>
+X-Mailer: git-send-email 2.11.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201219_154514_591600_D83A8B79 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20201219_160511_965017_C1E432CE 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,77 +88,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: simon@simonsouth.net
+Cc: linux-rockchip@lists.infradead.org, robh+dt@kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently the Rockchip PWM driver enables the signal ("bus") clock for
-every PWM device it finds during probing, then disables it for any device
-that was not already enabled (such as by a bootloader) when the kernel
-started.
+Recently introduced async probe on mmc devices can shuffle block IDs.
+Pin them to fixed values to ease booting in environments where UUIDs
+are not practical. Use newly introduced aliases for mmcblk devices from [1].
 
-Instead of starting PWMs unnecessarily, check first to see whether a device
-has already been enabled and if not, do not enable its signal clock.
+[1] https://patchwork.kernel.org/patch/11747669/
 
-Signed-off-by: Simon South <simon@simonsouth.net>
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
 ---
- drivers/pwm/pwm-rockchip.c | 28 +++++++++++++---------------
- 1 file changed, 13 insertions(+), 15 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3328.dtsi | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index f286a498b82c..b9faef3e9954 100644
---- a/drivers/pwm/pwm-rockchip.c
-+++ b/drivers/pwm/pwm-rockchip.c
-@@ -327,19 +327,6 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	ret = clk_prepare_enable(pc->clk);
--	if (ret) {
--		dev_err(&pdev->dev, "Can't prepare enable bus clk: %d\n", ret);
--		return ret;
--	}
--
--	ret = clk_prepare_enable(pc->pclk);
--	if (ret) {
--		dev_err(&pdev->dev, "Can't enable APB clk: %d\n", ret);
--		clk_disable_unprepare(pc->clk);
--		return ret;
--	}
--
- 	platform_set_drvdata(pdev, pc);
- 
- 	pc->data = id->data;
-@@ -353,12 +340,23 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
- 		pc->chip.of_pwm_n_cells = 3;
- 	}
- 
-+	ret = clk_prepare_enable(pc->pclk);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Can't enable APB clk: %d\n", ret);
-+		return ret;
-+	}
-+
- 	/* Keep the PWM clk enabled if the PWM appears to be up and running. */
- 	enable_conf = pc->data->enable_conf;
- 	ctrl = readl_relaxed(pc->base + pc->data->regs.ctrl);
- 	enabled = ((ctrl & enable_conf) == enable_conf);
--	if (!enabled)
--		clk_disable(pc->clk);
-+
-+	ret = enabled ? clk_prepare_enable(pc->clk) : clk_prepare(pc->clk);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Can't prepare bus clk: %d\n", ret);
-+		clk_disable_unprepare(pc->pclk);
-+		return ret;
-+	}
- 
- 	clk_disable(pc->pclk);
- 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328.dtsi b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+index 957ebb70b..1ae129793 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3328.dtsi
+@@ -27,6 +27,9 @@
+ 		i2c1 = &i2c1;
+ 		i2c2 = &i2c2;
+ 		i2c3 = &i2c3;
++		mmc0 = &sdmmc;
++		mmc1 = &sdio;
++		mmc2 = &emmc;
+ 		ethernet0 = &gmac2io;
+ 		ethernet1 = &gmac2phy;
+ 	};
 -- 
-2.29.2
+2.11.0
 
 
 _______________________________________________
