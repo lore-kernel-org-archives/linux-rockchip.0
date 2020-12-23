@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DB329C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:02:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F3E21C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:02:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8F4F6221E2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:02:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 8F4F6221E2
+	by mail.kernel.org (Postfix) with ESMTPS id AC377221E2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:02:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC377221E2
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=simonsouth.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,46 +23,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=pYF/6jEK6ttOP51rjC97VkhA22xh0ylqtpICxE9Jrok=; b=FCgbRkWMfznsKyZxp7kQmQ/WS
-	IV1iMQzfwFnHo/ETKyTZMF8a+l8So1IPm6A6QgK3YD3q75wsUmN6Z4YeTXdz7OH59Ca1U/SoogfcS
-	2uzVY4GzRYmqNDEMyXvZiRHKUiEzMTk0nMbJFI/ZzUjXQ2FjAW3jpbD8FHp9hYURNIvI4u7FX5ebG
-	ba/D2LeQeEzhW2WTGycBzCPsFC0qSp5W8VX/K4SuErITYN8YG5c/0oIzNJ8yCOSQRPjs+xEy1gVZW
-	duasbiP4gVWf22+nQmPZLSfemoqGF5pHbwfVWOVwAyj4jjtlvojtnueb7nA55oFWDBAMM+DxzUZIl
-	2hujONG9Q==;
+	 bh=B6Qq6KSVjc0uPUIcFo9xC2xOg0IsBJaF8kJRcgu5+5M=; b=WzyMqyX0wmn8PItj2afAla1zM
+	7MafmuYFEsRwtzlnTvyijCLtpzjbDrOK9YlUesfy3LFYHritEst/0H/IWlAZ7kEt0DCAkoalAepD6
+	G0bBrnJAQVtckBi3oDKTVQXZ1DoUbiuVhDGxXr5HCpn7bjsRT/o2w+k4tItXTEioPHSrxvE/TuRmV
+	tsuQFpaaW+g6q36lTTx9RrMLdP32uOPzIrQezEiMfWOdr8xKhMUnsXZ+/T1MABZ7JwM6PTGIhKtqy
+	Vljz9kNz4t8URIZhecIS8aH4GScv+MOuP9XnVM7h2dWJZRgaxA2CuI3aa0wSOxoP1qLcx1pUxHGBc
+	5L3oAwtog==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ks6aR-0002x0-QF; Wed, 23 Dec 2020 16:02:03 +0000
+	id 1ks6am-00032D-Qd; Wed, 23 Dec 2020 16:02:24 +0000
 Received: from mailout.easymail.ca ([64.68.200.34])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ks6aN-0002vo-Gv; Wed, 23 Dec 2020 16:02:00 +0000
+ id 1ks6ai-00030y-Qx; Wed, 23 Dec 2020 16:02:21 +0000
 Received: from localhost (localhost [127.0.0.1])
- by mailout.easymail.ca (Postfix) with ESMTP id 3A073C0E07;
- Wed, 23 Dec 2020 16:01:59 +0000 (UTC)
+ by mailout.easymail.ca (Postfix) with ESMTP id 5FA07C0CDA;
+ Wed, 23 Dec 2020 16:02:20 +0000 (UTC)
 X-Virus-Scanned: Debian amavisd-new at emo04-pco.easydns.vpn
 Received: from mailout.easymail.ca ([127.0.0.1])
  by localhost (emo04-pco.easydns.vpn [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s5WhSR3WjPd2; Wed, 23 Dec 2020 16:01:59 +0000 (UTC)
+ with ESMTP id cRag1UTJdh_c; Wed, 23 Dec 2020 16:02:20 +0000 (UTC)
 Received: from localhost.localdomain (unknown [108.162.141.195])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mailout.easymail.ca (Postfix) with ESMTPSA id 4E5C4C0E1D;
- Wed, 23 Dec 2020 16:01:36 +0000 (UTC)
+ by mailout.easymail.ca (Postfix) with ESMTPSA id AD771C0DB4;
+ Wed, 23 Dec 2020 16:01:59 +0000 (UTC)
 From: Simon South <simon@simonsouth.net>
 To: tpiepho@gmail.com, thierry.reding@gmail.com,
  u.kleine-koenig@pengutronix.de, robin.murphy@arm.com, lee.jones@linaro.org,
  heiko@sntech.de, bbrezillon@kernel.org, linux-pwm@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 1/7] pwm: rockchip: Enable APB clock during register access
- while probing
-Date: Wed, 23 Dec 2020 11:01:03 -0500
-Message-Id: <49ceda3def13f6186073745e99d7315c974bfa81.1608735481.git.simon@simonsouth.net>
+Subject: [PATCH v3 2/7] pwm: rockchip: rockchip_pwm_probe(): Remove
+ superfluous clk_unprepare()
+Date: Wed, 23 Dec 2020 11:01:04 -0500
+Message-Id: <fe86b3ad145c5df3b16b09a83769f078bb4a9d1f.1608735481.git.simon@simonsouth.net>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1608735481.git.simon@simonsouth.net>
 References: <cover.1608735481.git.simon@simonsouth.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_110159_585785_62248D2B 
-X-CRM114-Status: GOOD (  17.28  )
+X-CRM114-CacheID: sfid-20201223_110220_905672_2DBC705C 
+X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,54 +81,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Commit 457f74abbed0 ("pwm: rockchip: Keep enabled PWMs running while
-probing") modified rockchip_pwm_probe() to access a PWM device's registers
-directly to check whether or not the device is running, but did not also
-change the function to first enable the device's APB clock to be certain
-the device can respond. This risks hanging the kernel on systems with PWM
-devices that use more than a single clock.
+If rockchip_pwm_probe() fails to register a PWM device it calls
+clk_unprepare() for the device's PWM clock, without having first disabled
+the clock and before jumping to an error handler that also unprepares
+it. This is likely to produce warnings from the kernel about the clock
+being unprepared when it is still enabled, and then being unprepared when
+it has already been unprepared.
 
-Avoid this by enabling the device's APB clock before accessing its
-registers (and disabling the clock when register access is complete).
+Prevent these warnings by removing this unnecessary call to
+clk_unprepare().
 
-Fixes: 457f74abbed0 ("pwm: rockchip: Keep enabled PWMs running while probing")
-Reported-by: Thierry Reding <thierry.reding@gmail.com>
-Suggested-by: Trent Piepho <tpiepho@gmail.com>
+Fixes: 48cf973cae33 ("pwm: rockchip: Avoid glitches on already running PWMs")
 Signed-off-by: Simon South <simon@simonsouth.net>
 ---
- drivers/pwm/pwm-rockchip.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ drivers/pwm/pwm-rockchip.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index 77c23a2c6d71..d2058138ce1e 100644
+index d2058138ce1e..0c940c7508ea 100644
 --- a/drivers/pwm/pwm-rockchip.c
 +++ b/drivers/pwm/pwm-rockchip.c
-@@ -332,9 +332,9 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
- 		return ret;
+@@ -353,7 +353,6 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+ 
+ 	ret = pwmchip_add(&pc->chip);
+ 	if (ret < 0) {
+-		clk_unprepare(pc->clk);
+ 		dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
+ 		goto err_pclk;
  	}
- 
--	ret = clk_prepare(pc->pclk);
-+	ret = clk_prepare_enable(pc->pclk);
- 	if (ret) {
--		dev_err(&pdev->dev, "Can't prepare APB clk: %d\n", ret);
-+		dev_err(&pdev->dev, "Can't enable APB clk: %d\n", ret);
- 		goto err_clk;
- 	}
- 
-@@ -364,10 +364,12 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
- 	if ((ctrl & enable_conf) != enable_conf)
- 		clk_disable(pc->clk);
- 
-+	clk_disable(pc->pclk);
-+
- 	return 0;
- 
- err_pclk:
--	clk_unprepare(pc->pclk);
-+	clk_disable_unprepare(pc->pclk);
- err_clk:
- 	clk_disable_unprepare(pc->clk);
- 
 -- 
 2.29.2
 
