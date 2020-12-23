@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 03CF1C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:04:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52281C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:04:28 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AB7C9227BF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:04:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AB7C9227BF
+	by mail.kernel.org (Postfix) with ESMTPS id 0DC24227BF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:04:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0DC24227BF
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=simonsouth.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,46 +23,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=TKLGYXtgPfYPEjZ8bsHIik2hG6u62jucPRAs6c5pUNI=; b=H/m12R3WBqp6N8iElJgmoObFB
-	pb8+O0XvnvpAsdZ/Jngy+o3YosXYOpXjbGuacUf3s6FuoG2paXDzzdiZIKajH+K0mmIQ8DAa/AhNr
-	uJX9MHpbliGzaNYLWmUTwK3A7U00hK0ODz7gCzW6xN2bVQaZGU6JhXi/IjLVAtyMtFoDMFFRPyNrw
-	6g7dJHITRPaXmF+iC5SYfo95zG73qrYpLidqnWQOwkCBuepjSmIQJueNonVPuhKBRHT4blcvpbFY3
-	AMroAlb+ba7R0XQXbcwFm2ItUclZU+peUmTv0NqECqKkBH29i7OkeIuO9rEH4EVH9PZtO+5Ut5f27
-	a3GOv0wZg==;
+	 bh=upjKzM+5cZ6cb0olgnO74U8uAJsNI202eIy8dLDWsHY=; b=ROu5PeTiIMDgqmF318/V3HsLm
+	FHuHnCNOvcuXLWx7oImgdbqCkWVNcLQwkwZpHr1CnpKrWVAYYvHl1IWF9dS6hDEKcAqk2ugQ2Bd+M
+	lPDo0wuI8ajOuZGiS4+suDtqTRzpsI9+150HRjn//1Bikp3KwY8+kfibuLoSfqStmIf9exAskg6qO
+	Xbh1wv9onOI6CP+KD/4V0Bx3655tmm5GMJxze4PtXg3MYhWa2vC44OwDOTWemR4evXFx/zVHlinYx
+	5dQ+BzAVIc9+iMNwBNYfSck+a9ACFUFzdrFstnV0ZKIs+ehsrISb9gmvGKyqNExnyL3q56vAB6aX3
+	m8h6a6d2g==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ks6cK-0003fo-7M; Wed, 23 Dec 2020 16:04:00 +0000
+	id 1ks6cg-0003rp-Pj; Wed, 23 Dec 2020 16:04:22 +0000
 Received: from mailout.easymail.ca ([64.68.200.34])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ks6c6-0003ZH-CF; Wed, 23 Dec 2020 16:03:47 +0000
+ id 1ks6cT-0003kK-PF; Wed, 23 Dec 2020 16:04:10 +0000
 Received: from localhost (localhost [127.0.0.1])
- by mailout.easymail.ca (Postfix) with ESMTP id 07F5DC0CFF;
- Wed, 23 Dec 2020 16:03:46 +0000 (UTC)
+ by mailout.easymail.ca (Postfix) with ESMTP id C7D8BBF51F;
+ Wed, 23 Dec 2020 16:04:08 +0000 (UTC)
 X-Virus-Scanned: Debian amavisd-new at emo04-pco.easydns.vpn
 Received: from mailout.easymail.ca ([127.0.0.1])
  by localhost (emo04-pco.easydns.vpn [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ry7oTjkAQf7Z; Wed, 23 Dec 2020 16:03:45 +0000 (UTC)
+ with ESMTP id Q_OXOl_ia-w1; Wed, 23 Dec 2020 16:04:08 +0000 (UTC)
 Received: from localhost.localdomain (unknown [108.162.141.195])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mailout.easymail.ca (Postfix) with ESMTPSA id 4C34FC0CAA;
- Wed, 23 Dec 2020 16:03:23 +0000 (UTC)
+ by mailout.easymail.ca (Postfix) with ESMTPSA id 18B43C0E47;
+ Wed, 23 Dec 2020 16:03:45 +0000 (UTC)
 From: Simon South <simon@simonsouth.net>
 To: tpiepho@gmail.com, thierry.reding@gmail.com,
  u.kleine-koenig@pengutronix.de, robin.murphy@arm.com, lee.jones@linaro.org,
  heiko@sntech.de, bbrezillon@kernel.org, linux-pwm@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 6/7] pwm: rockchip: Enable PWM clock of probed device only
- if running
-Date: Wed, 23 Dec 2020 11:01:08 -0500
-Message-Id: <cb5a28d5fde04c09e9aace6ce619e445f895e0a8.1608735481.git.simon@simonsouth.net>
+Subject: [PATCH v3 7/7] pwm: rockchip: Enable clock before calling
+ clk_get_rate()
+Date: Wed, 23 Dec 2020 11:01:09 -0500
+Message-Id: <58dc19f81bbf531d2921c6fb0018a5cc37dc9794.1608735481.git.simon@simonsouth.net>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1608735481.git.simon@simonsouth.net>
 References: <cover.1608735481.git.simon@simonsouth.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_110346_469109_AFFC82D1 
-X-CRM114-Status: GOOD (  16.50  )
+X-CRM114-CacheID: sfid-20201223_110409_924520_48328FA0 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,68 +76,43 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: simon@simonsouth.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently rockchip_pwm_probe() enables the PWM clock of every device it
-matches, then disables the clock unless the device itself appears to have
-been enabled (by a bootloader, presumably) before the kernel started.
-
-Simplify this by enabling (rather, keeping enabled) the PWM clock of only
-devices that are already running, as enabling the clock for any other
-device during probing is unnecessary.
-
-Signed-off-by: Simon South <simon@simonsouth.net>
----
- drivers/pwm/pwm-rockchip.c | 21 +++++++++++++--------
- 1 file changed, 13 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index 80f5e69d9b8a..02da7370db70 100644
---- a/drivers/pwm/pwm-rockchip.c
-+++ b/drivers/pwm/pwm-rockchip.c
-@@ -327,12 +327,6 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	ret = clk_prepare_enable(pc->clk);
--	if (ret) {
--		dev_err(&pdev->dev, "Can't prepare enable PWM clk: %d\n", ret);
--		return ret;
--	}
--
- 	ret = clk_prepare_enable(pc->pclk);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Can't enable APB clk: %d\n", ret);
-@@ -357,8 +351,19 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
- 	enable_conf = pc->data->enable_conf;
- 	ctrl = readl_relaxed(pc->base + pc->data->regs.ctrl);
- 	enabled = ((ctrl & enable_conf) == enable_conf);
--	if (!enabled)
--		clk_disable(pc->clk);
-+	if (enabled) {
-+		ret = clk_prepare_enable(pc->clk);
-+		if (ret) {
-+			dev_err(&pdev->dev, "Can't enable PWM clk: %d\n", ret);
-+			return ret;
-+		}
-+	} else {
-+		ret = clk_prepare(pc->clk);
-+		if (ret) {
-+			dev_err(&pdev->dev, "Can't prepare PWM clk: %d\n", ret);
-+			return ret;
-+		}
-+	}
- 
- 	clk_disable(pc->pclk);
- 
--- 
-2.29.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIGRvY3VtZW50YXRpb24gZm9yIGNsa19nZXRfcmF0ZSgpIGluIGluY2x1ZGUvbGludXgvY2xr
+Lmggc3RhdGVzIHRoZQpmdW5jdGlvbidzIHJlc3VsdCBpcyB2YWxpZCBvbmx5IGZvciBhIGNsb2Nr
+IHNvdXJjZSB0aGF0IGhhcyBiZWVuCmVuYWJsZWQuIEhvd2V2ZXIsIHRoZSBSb2NrY2hpcCBQV00g
+ZHJpdmVyIHVzZXMgdGhpcyBmdW5jdGlvbiBpbiB0d28gcGxhY2VzCnRvIHF1ZXJ5IHRoZSByYXRl
+IG9mIGEgY2xvY2sgd2l0aG91dCBmaXJzdCBlbnN1cmluZyBpdCBpcyBlbmFibGVkLgoKRml4IHRo
+aXMgYnkgbW9kaWZ5aW5nIHJvY2tjaGlwX3B3bV9nZXRfc3RhdGUoKSBhbmQgcm9ja2NoaXBfcHdt
+X2FwcGx5KCkgc28KdGhleSBlbmFibGUgYSBkZXZpY2UncyBQV00gY2xvY2sgYmVmb3JlIHF1ZXJ5
+aW5nIGl0cyByYXRlIChpbiB0aGUgbGF0dGVyCmNhc2UsIHRoZSBxdWVyeWluZyBpcyBhY3R1YWxs
+eSBkb25lIGluIHJvY2tjaGlwX3B3bV9jb25maWcoKSkgYW5kIGRpc2FibGUKdGhlIGNsb2NrIGFn
+YWluIGJlZm9yZSByZXR1cm5pbmcuCgpSZXBvcnRlZC1ieTogVXdlIEtsZWluZS1Lw7ZuaWcgPHUu
+a2xlaW5lLWtvZW5pZ0BwZW5ndXRyb25peC5kZT4KU2lnbmVkLW9mZi1ieTogU2ltb24gU291dGgg
+PHNpbW9uQHNpbW9uc291dGgubmV0PgotLS0KIGRyaXZlcnMvcHdtL3B3bS1yb2NrY2hpcC5jIHwg
+MTAgKysrKysrKysrKwogMSBmaWxlIGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKykKCmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL3B3bS9wd20tcm9ja2NoaXAuYyBiL2RyaXZlcnMvcHdtL3B3bS1yb2NrY2hp
+cC5jCmluZGV4IDAyZGE3MzcwZGI3MC4uNDQ0MjVlZWI0ZTgxIDEwMDY0NAotLS0gYS9kcml2ZXJz
+L3B3bS9wd20tcm9ja2NoaXAuYworKysgYi9kcml2ZXJzL3B3bS9wd20tcm9ja2NoaXAuYwpAQCAt
+NzIsNiArNzIsMTAgQEAgc3RhdGljIHZvaWQgcm9ja2NoaXBfcHdtX2dldF9zdGF0ZShzdHJ1Y3Qg
+cHdtX2NoaXAgKmNoaXAsCiAJaWYgKHJldCkKIAkJcmV0dXJuOwogCisJcmV0ID0gY2xrX2VuYWJs
+ZShwYy0+Y2xrKTsKKwlpZiAocmV0KQorCQlyZXR1cm47CisKIAljbGtfcmF0ZSA9IGNsa19nZXRf
+cmF0ZShwYy0+Y2xrKTsKIAogCXRtcCA9IHJlYWRsX3JlbGF4ZWQocGMtPmJhc2UgKyBwYy0+ZGF0
+YS0+cmVncy5wZXJpb2QpOwpAQCAtOTAsNiArOTQsNyBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9w
+d21fZ2V0X3N0YXRlKHN0cnVjdCBwd21fY2hpcCAqY2hpcCwKIAllbHNlCiAJCXN0YXRlLT5wb2xh
+cml0eSA9IFBXTV9QT0xBUklUWV9OT1JNQUw7CiAKKwljbGtfZGlzYWJsZShwYy0+Y2xrKTsKIAlj
+bGtfZGlzYWJsZShwYy0+cGNsayk7CiB9CiAKQEAgLTE4OSw2ICsxOTQsMTAgQEAgc3RhdGljIGlu
+dCByb2NrY2hpcF9wd21fYXBwbHkoc3RydWN0IHB3bV9jaGlwICpjaGlwLCBzdHJ1Y3QgcHdtX2Rl
+dmljZSAqcHdtLAogCWlmIChyZXQpCiAJCXJldHVybiByZXQ7CiAKKwlyZXQgPSBjbGtfZW5hYmxl
+KHBjLT5jbGspOworCWlmIChyZXQpCisJCXJldHVybiByZXQ7CisKIAlwd21fZ2V0X3N0YXRlKHB3
+bSwgJmN1cnN0YXRlKTsKIAllbmFibGVkID0gY3Vyc3RhdGUuZW5hYmxlZDsKIApAQCAtMjA4LDYg
+KzIxNyw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcHdtX2FwcGx5KHN0cnVjdCBwd21fY2hpcCAq
+Y2hpcCwgc3RydWN0IHB3bV9kZXZpY2UgKnB3bSwKIAl9CiAKIG91dDoKKwljbGtfZGlzYWJsZShw
+Yy0+Y2xrKTsKIAljbGtfZGlzYWJsZShwYy0+cGNsayk7CiAKIAlyZXR1cm4gcmV0OwotLSAKMi4y
+OS4yCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2Nr
+Y2hpcAo=
