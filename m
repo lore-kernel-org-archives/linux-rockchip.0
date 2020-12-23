@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3E21C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:02:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 873EAC433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:02:52 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AC377221E2
-	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:02:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org AC377221E2
+	by mail.kernel.org (Postfix) with ESMTPS id 4966320789
+	for <linux-rockchip@archiver.kernel.org>; Wed, 23 Dec 2020 16:02:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4966320789
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=simonsouth.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,46 +23,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=B6Qq6KSVjc0uPUIcFo9xC2xOg0IsBJaF8kJRcgu5+5M=; b=WzyMqyX0wmn8PItj2afAla1zM
-	7MafmuYFEsRwtzlnTvyijCLtpzjbDrOK9YlUesfy3LFYHritEst/0H/IWlAZ7kEt0DCAkoalAepD6
-	G0bBrnJAQVtckBi3oDKTVQXZ1DoUbiuVhDGxXr5HCpn7bjsRT/o2w+k4tItXTEioPHSrxvE/TuRmV
-	tsuQFpaaW+g6q36lTTx9RrMLdP32uOPzIrQezEiMfWOdr8xKhMUnsXZ+/T1MABZ7JwM6PTGIhKtqy
-	Vljz9kNz4t8URIZhecIS8aH4GScv+MOuP9XnVM7h2dWJZRgaxA2CuI3aa0wSOxoP1qLcx1pUxHGBc
-	5L3oAwtog==;
+	 bh=QFkC4cTYtow6xhyxUHq4z9AyA+2t2SLcCHJi6HcAUNA=; b=pVeyu6XvmAkaOG1tyY8H948dZ
+	YuQLcjZRYFVbzFdsoRmV4+JFQ5aMrmt0EwJFURvp3ds5n/ZT0iAf9DuGaxxD9QajCRUmIIjhtbT8F
+	8lQ+UxelxJCH7o9VsoW4g1IdlwS4hEUXk10AfiD+Budmn0lhRq3MeeI5qPNk0T2JaFr7BH0vjXHaH
+	Vp72x0NTkGf3hiazHuShfaxosGBKwxKqxgY7xSIioVfVSnce1HdeUKv2faMU2JZObSb7/EfbkpuJL
+	JFFG04U+CQdjmz7Y3kEl59zS8tbqWvLpS+8frxd2SaSH9zWDupn06fccDXqjkZe7ED9Z8kq0cXz+e
+	ltH0BhxJg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1ks6am-00032D-Qd; Wed, 23 Dec 2020 16:02:24 +0000
+	id 1ks6bA-00038P-An; Wed, 23 Dec 2020 16:02:48 +0000
 Received: from mailout.easymail.ca ([64.68.200.34])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1ks6ai-00030y-Qx; Wed, 23 Dec 2020 16:02:21 +0000
+ id 1ks6b4-00036X-Kt; Wed, 23 Dec 2020 16:02:43 +0000
 Received: from localhost (localhost [127.0.0.1])
- by mailout.easymail.ca (Postfix) with ESMTP id 5FA07C0CDA;
- Wed, 23 Dec 2020 16:02:20 +0000 (UTC)
+ by mailout.easymail.ca (Postfix) with ESMTP id BDB6BC0D92;
+ Wed, 23 Dec 2020 16:02:41 +0000 (UTC)
 X-Virus-Scanned: Debian amavisd-new at emo04-pco.easydns.vpn
 Received: from mailout.easymail.ca ([127.0.0.1])
  by localhost (emo04-pco.easydns.vpn [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cRag1UTJdh_c; Wed, 23 Dec 2020 16:02:20 +0000 (UTC)
+ with ESMTP id UnY-35FmZUnb; Wed, 23 Dec 2020 16:02:41 +0000 (UTC)
 Received: from localhost.localdomain (unknown [108.162.141.195])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mailout.easymail.ca (Postfix) with ESMTPSA id AD771C0DB4;
- Wed, 23 Dec 2020 16:01:59 +0000 (UTC)
+ by mailout.easymail.ca (Postfix) with ESMTPSA id AE71FC0CAA;
+ Wed, 23 Dec 2020 16:02:20 +0000 (UTC)
 From: Simon South <simon@simonsouth.net>
 To: tpiepho@gmail.com, thierry.reding@gmail.com,
  u.kleine-koenig@pengutronix.de, robin.murphy@arm.com, lee.jones@linaro.org,
  heiko@sntech.de, bbrezillon@kernel.org, linux-pwm@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: [PATCH v3 2/7] pwm: rockchip: rockchip_pwm_probe(): Remove
- superfluous clk_unprepare()
-Date: Wed, 23 Dec 2020 11:01:04 -0500
-Message-Id: <fe86b3ad145c5df3b16b09a83769f078bb4a9d1f.1608735481.git.simon@simonsouth.net>
+Subject: [PATCH v3 3/7] pwm: rockchip: Replace "bus clk" with "PWM clk"
+Date: Wed, 23 Dec 2020 11:01:05 -0500
+Message-Id: <1c2f85dafab03d6f5cdbcac37e7288de8f90e6d8.1608735481.git.simon@simonsouth.net>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <cover.1608735481.git.simon@simonsouth.net>
 References: <cover.1608735481.git.simon@simonsouth.net>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20201223_110220_905672_2DBC705C 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20201223_110242_714495_D0BFB9E8 
+X-CRM114-Status: GOOD (  15.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,34 +80,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If rockchip_pwm_probe() fails to register a PWM device it calls
-clk_unprepare() for the device's PWM clock, without having first disabled
-the clock and before jumping to an error handler that also unprepares
-it. This is likely to produce warnings from the kernel about the clock
-being unprepared when it is still enabled, and then being unprepared when
-it has already been unprepared.
+Clarify the Rockchip PWM driver's error messages by referring to the clock
+that operates a PWM device as the "PWM" clock, rather than the "bus"
+clock (which is especially misleading in the case of devices that also use
+a separate clock for bus access).
 
-Prevent these warnings by removing this unnecessary call to
-clk_unprepare().
-
-Fixes: 48cf973cae33 ("pwm: rockchip: Avoid glitches on already running PWMs")
+Suggested-by: Robin Murphy <robin.murphy@arm.com>
 Signed-off-by: Simon South <simon@simonsouth.net>
 ---
- drivers/pwm/pwm-rockchip.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/pwm/pwm-rockchip.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/pwm/pwm-rockchip.c b/drivers/pwm/pwm-rockchip.c
-index d2058138ce1e..0c940c7508ea 100644
+index 0c940c7508ea..3b1aa5daafff 100644
 --- a/drivers/pwm/pwm-rockchip.c
 +++ b/drivers/pwm/pwm-rockchip.c
-@@ -353,7 +353,6 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
- 
- 	ret = pwmchip_add(&pc->chip);
- 	if (ret < 0) {
--		clk_unprepare(pc->clk);
- 		dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
- 		goto err_pclk;
+@@ -309,7 +309,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+ 		pc->clk = devm_clk_get(&pdev->dev, NULL);
+ 		if (IS_ERR(pc->clk))
+ 			return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk),
+-					     "Can't get bus clk\n");
++					     "Can't get PWM clk\n");
  	}
+ 
+ 	count = of_count_phandle_with_args(pdev->dev.of_node,
+@@ -328,7 +328,7 @@ static int rockchip_pwm_probe(struct platform_device *pdev)
+ 
+ 	ret = clk_prepare_enable(pc->clk);
+ 	if (ret) {
+-		dev_err(&pdev->dev, "Can't prepare enable bus clk: %d\n", ret);
++		dev_err(&pdev->dev, "Can't prepare enable PWM clk: %d\n", ret);
+ 		return ret;
+ 	}
+ 
 -- 
 2.29.2
 
