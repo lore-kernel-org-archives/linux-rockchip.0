@@ -1,64 +1,83 @@
-Return-Path: <SRS0=BUd0=GE=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=EgMs=GF=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 47F5BC433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jan 2021 17:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C07DC433E0
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Jan 2021 13:44:06 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B842C20782
-	for <linux-rockchip@archiver.kernel.org>; Fri,  1 Jan 2021 17:38:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B842C20782
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 463A2224D4
+	for <linux-rockchip@archiver.kernel.org>; Sat,  2 Jan 2021 13:44:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 463A2224D4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:Subject:To:From:
-	Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:List-Owner;
-	 bh=grG7Y/cciohs6nNSs3V4KrpD0rjWuPV7AtZkK4E+bdI=; b=zppyFyPCXo+Uu+1vBbZunIbBf
-	TKTjD8Zq6HiAWJ6bYfjnfzy73tVHQ48T7rw7751pI7WepsLAizbkucBhv1sKbpDsgtjLb8dVw8djh
-	Lee5fsx95nMLSzw4V1xqxGGdOsz7dkGaQPYLaX+1OG7rLroF3g5x1ahWIx92kxmkH92DPjKDuQv5R
-	hnkJePiVZLPQ/UvOYA+e9ysGKPqKm/FCQXmd5rWNMDUPzkeMb7+bjBibTvGhHfl3YslxUV5mGMg1X
-	OZUdQ+qiTjC32RAwNn+axXUViK4GHlP3JAKX8rOnhvSNBbsqm5TVMOWoAWOHTs6KpIVkkBc/97KEN
-	zNGuoFSBg==;
+	List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:In-Reply-To:
+	References:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=FN0WO5bOUs1fnF7Nh1PCftDHMnM4HHV5xWzA64FMdR8=; b=IYjG0AuuaUr0B63HrC+EnvxS8
+	LrPtl+wqkzEhEc1c12fdKy8odkw4JGsvgutSDH2h8eiaYpG4Ibx7nawjRYXq+1mqi3NVbUOI7W1fw
+	q9K3Ip5grvsDVKWjTtxoEMEkdkDCLmQ8H8Jgi0AxsSVPoL1gTCXuX1cQF4mabm7BlkAofMfJFxYAK
+	4hF6juG3oIfosFFGXNT+WHIFYlcLM1IthhZW5uTWpt/Qvh8w9+L+bRjI6l7RKjU/55lOuRqeRuwtm
+	dHZZ+GJa/GwLwq1KQ1vzMXUoZ84Z44lkslwj9OSH3X6qYoi7Q+gCKLoBim0aJMkLIgSO0WtDLf2qp
+	YotngZGeg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kvON5-0003Fb-Qq; Fri, 01 Jan 2021 17:37:51 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kvhCF-0004Pn-67; Sat, 02 Jan 2021 13:43:55 +0000
+Received: from mail-vk1-xa29.google.com ([2607:f8b0:4864:20::a29])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kvON2-0003Ez-7k
- for linux-rockchip@lists.infradead.org; Fri, 01 Jan 2021 17:37:49 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 859DE221E9;
- Fri,  1 Jan 2021 17:37:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1609522666;
- bh=/AL+2blderBT7RQyiS+zdFi6qDMRoz8Drww6xSQunj0=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=ds19deqXgUyJdPVUHaDDYV8nTSskwT3p/w+FzfhA+uPuI8PFbzoq4Aojmnosj0VvA
- hBdb8aYbG3qF2wleRSF/XEEbUUv4tr0IvPfrUIgvkmyAaVuFlwmFRWEXIvDKrmGj1z
- L2N75KR/Fv/iFJFk0rMt6IzIYkYzz95SBFJxTWYJlK6O/hk7SOiHSZbkCZ/0pbBb6C
- s+G8+8Y6mfSvYDEEUkrMyf2NsgsYpcI9lk1MhHjC2quoElfqQQmUBX/vKbxd8hfjhG
- 0wz3GBE5ZgJLwRKaV0bexoYIScc/+U48x1U33NktP4G8I38UVdP0wp2BME/LPsWK50
- fNkmypLDJdftA==
-Date: Fri, 1 Jan 2021 11:37:44 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Jari =?iso-8859-1?Q?H=E4m=E4l=E4inen?= <nuumiofi@gmail.com>
+ id 1kvhCB-0004OO-7q
+ for linux-rockchip@lists.infradead.org; Sat, 02 Jan 2021 13:43:53 +0000
+Received: by mail-vk1-xa29.google.com with SMTP id d6so5156821vkb.13
+ for <linux-rockchip@lists.infradead.org>; Sat, 02 Jan 2021 05:43:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=fvoKi/UdTaiI0OLkGRfi2t7gorBCZNrDhcQKoTT864c=;
+ b=NmfsYvfoo7D/VEdPe1IFrkTnSfar5I0KkeA1fUrOiW6OpPzrd//lq4LtHTvfDKEt46
+ b3X+ST1Tz0OnNYwv453IFZgWgZEfOKJkB58N9gwQQMNtR9LnnvqAK/zhVJ28J2sBtmPg
+ M9j25jOvaBejwraB9u+k+LAewa0cV1Mw9o0w2zhhzNxgkFrzKPaRVFDShncAz6hkz9dC
+ 84fpiQs89bnT+ZGxrR+wEcb/ETPykNofTSLqqAxWgVVEI75b/MGRwnXTeMCSbDSD8/ol
+ xr8JnCL0upwedfhRWqSNtl7k4+PKTsSFOy4AGM4Yw0cTFuJHB+jvURAfWTWT2xc5a6h8
+ 7Nug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=fvoKi/UdTaiI0OLkGRfi2t7gorBCZNrDhcQKoTT864c=;
+ b=O94oZMUcNfwF2ecY/KINx4DFiFqGzijpcJcSzlOt4S5/Apmxvg2jhoWDRxSP9tTJ7c
+ w/AFvWZ+oGYZCzAH8m81yCV0GUd4oh+UJobLLs2nHxf17NhsVIJleR/CZ2kqG5ZXFKZX
+ ri8kePywWHs0K8FGhNQ7EL5s1MQo5feMu+rI4CiLOlPGITsftd0piTkgfxLva5yNXn5n
+ HdWJJtQMIt9Wt1wrM0jLvTxQUYT1sVfFIxABwMBXYJrE0d0T7GXgEynbJZqX8m8ogCtV
+ wwXTF20+aOA/mKwSjaawqNY4a9Q/vo0QTJuIQHgj29e3XBXcQnTvwdD0bDDxsZeGMGU1
+ kpSw==
+X-Gm-Message-State: AOAM530OPk5h0fvdG4futFeBAbcO4fsvHnsV5+OjUrJg7dh0YXw6yF7N
+ IFAKOYP/d+wizIPmjSoLwkvAcFiUD/YDVT2F+hU=
+X-Google-Smtp-Source: ABdhPJx4G8iD3SygzVqqF59+DKBXBlI7vaCnbgu5KqPS3RkrY6tID1fBqcuyKwdAZkoRa+ird6b866tH0jIiUbMgUuk=
+X-Received: by 2002:a1f:3889:: with SMTP id f131mr22844732vka.22.1609595029317; 
+ Sat, 02 Jan 2021 05:43:49 -0800 (PST)
+MIME-Version: 1.0
+References: <20201231125214.25733-2-nuumiofi@gmail.com>
+ <20210101173744.GA921848@bjorn-Precision-5520>
+In-Reply-To: <20210101173744.GA921848@bjorn-Precision-5520>
+From: =?UTF-8?B?SmFyaSBIw6Rtw6Rsw6RpbmVu?= <nuumiofi@gmail.com>
+Date: Sat, 2 Jan 2021 15:43:37 +0200
+Message-ID: <CA+_S-OqAE5xoV=DFGJ=oOLrdfHEUVQ2d0tSyJ2Cksp5DGmAc7g@mail.gmail.com>
 Subject: Re: [RFC PATCH 1/3] PCI: rockchip: provide workaround for bus scan
  crash with optional delay
-Message-ID: <20210101173744.GA921848@bjorn-Precision-5520>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20201231125214.25733-2-nuumiofi@gmail.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210101_123748_891530_8784F1A5 
-X-CRM114-Status: GOOD (  36.93  )
+X-CRM114-CacheID: sfid-20210102_084351_329497_A0104680 
+X-CRM114-Status: GOOD (  45.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,258 +95,212 @@ Cc: Rob Herring <robh@kernel.org>,
  Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
  Shawn Lin <shawn.lin@rock-chips.com>, linux-rockchip@lists.infradead.org,
  Bjorn Helgaas <bhelgaas@google.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 31, 2020 at 02:52:12PM +0200, Jari H=E4m=E4l=E4inen wrote:
-> Some PCIe devices cause Rockchip PCIe controller to crash in bus scan.
-> Crash may be avoided by delaying bus scan by time given from command line
-> or from device tree. Needed amount of delay varies from device to device.
-> Delay doesn't have to be exact. It just has to be long enough.
-
-Is this a standard post-reset delay that the rockchip driver is
-missing?  Maybe compare with other drivers to see if rockchip is
-missing something.
-
-Is this an erratum in the Rockchip IP?  If so, we should have a
-specific description and a citation for it, and a workaround could be
-done automatically without DT or command-line switches.
-
-> The following lists few problematic PCIe devices with delays needed for
-> stable bus scan surviving 100 sequential reboots in test loop executed on
-> RockPro64 (RK3399 single-board computer):
-> - LSI 9201-8i         / SAS2008 chipset [1000:0072]: 725 ms
-> - LSI 9302-8i         / SAS3008 chipset [1000:0097]: 575 ms (1)
-> - HP H220             / SAS2308 chipset [1000:0087]: 800 ms (2)
-> - IBM ServeRAID M5110 / SAS2208 chipset [1000:005b]: 1050 ms (3)
-> =
-
->   1) mpt3sas module has soft lockup bug on shutdown but device is usable
->   2) has infrequent crash on mpt3sas module load (2 of 662 reboots in all
->      test sessions with this device crashed on module load)
->   3) megaraid_sas module crashes on load so device remains unusable
->      (bus scan tested with module being blacklisted)
-> =
-
-> Side effect of delay, if set, is that it slows down system startup by the
-> amount of delay.
-> =
-
-> Log excerpt showing a crash happening always on unpatched kernel with
-> problematic PCIe devices listed above rendering them unusable:
-
-It doesn't seem likely that the devices above are broken since we
-don't have problems with them on other systems.  More likely to be
-some Rockchip-specific thing, and the devices above are operating
-within spec (possibly using more of the allowed post-reset time than
-most devices).
-
-> [    1.240649] SError Interrupt on CPU5, code 0xbf000002 -- SError
-
-We really should know more about what the specific error is.  Most
-errors on PCIe should be recoverable and they can happen at any time,
-not just at boot-time.
-
-This patch adds a boot-time delay.  At run-time, if we power-cycle or
-reset a device and re-enumerate the bus, we would likely see the same
-problem and this patch wouldn't help.
-
-> [    1.240653] CPU: 5 PID: 1 Comm: swapper/0 Not tainted 5.10.2-stable #1
-> [    1.240656] Hardware name: Pine64 RockPro64 v2.0 (DT)
-> [    1.240659] pstate: 60000085 (nZCv daIf -PAN -UAO -TCO BTYPE=3D--)
-> [    1.240661] pc : rockchip_pcie_rd_conf+0x178/0x268
-> [    1.240664] lr : rockchip_pcie_rd_conf+0x1b8/0x268
-> [    1.240666] sp : ffff8000119db850
-> [    1.240669] x29: ffff8000119db850 x28: 0000000000000000
-> [    1.240676] x27: 0000000000000000 x26: 0000000000000000
-> [    1.240682] x25: ffff8000119db984 x24: 0000000000000000
-> [    1.240688] x23: 0000000000000000 x22: ffff000040ba0b80
-> [    1.240694] x21: ffff8000119db8d4 x20: 0000000000000004
-> [    1.240700] x19: 0000000000100000 x18: ffffffffffffffff
-> [    1.240706] x17: 0000000031cae143 x16: 000000008c75157c
-> [    1.240712] x15: ffff800011729908 x14: ffff000040c87a1c
-> [    1.240718] x13: ffff000040c87293 x12: 0000000000000038
-> [    1.240724] x11: 0000000005f5e0ff x10: 7f7f7f7f7f7f7f7f
-> [    1.240729] x9 : 0000000001001d87 x8 : 000000000000ea60
-> [    1.240735] x7 : ffff8000119db984 x6 : 0000000000000000
-> [    1.240741] x5 : 0000000000000000 x4 : 0000000000c00008
-> [    1.240747] x3 : ffff800017000000 x2 : 000000000080000a
-> [    1.240753] x1 : 0000000000000000 x0 : ffff800014000000
-> [    1.240759] Kernel panic - not syncing: Asynchronous SError Interrupt
-> [    1.240763] CPU: 5 PID: 1 Comm: swapper/0 Not tainted 5.10.2-stable #1
-> [    1.240765] Hardware name: Pine64 RockPro64 v2.0 (DT)
-> [    1.240768] Call trace:
-> [    1.240770]  dump_backtrace+0x0/0x1e8
-> [    1.240772]  show_stack+0x18/0x60
-> [    1.240775]  dump_stack+0xd8/0x130
-> [    1.240777]  panic+0x15c/0x380
-> [    1.240779]  add_taint+0x0/0xb0
-> [    1.240782]  arm64_serror_panic+0x78/0x88
-> [    1.240784]  do_serror+0x3c/0x68
-> [    1.240787]  el1_error+0x84/0x104
-> [    1.240789]  rockchip_pcie_rd_conf+0x178/0x268
-> [    1.240791]  pci_bus_read_config_dword+0xa4/0x150
-> [    1.240794]  pci_bus_generic_read_dev_vendor_id+0x30/0x1b0
-> [    1.240797]  pci_bus_read_dev_vendor_id+0x4c/0x78
-> [    1.240800]  pci_scan_single_device+0x80/0x100
-> [    1.240802]  pci_scan_slot+0x38/0x130
-> [    1.240805]  pci_scan_child_bus_extend+0x58/0x348
-> [    1.240807]  pci_scan_bridge_extend+0x304/0x5a0
-> [    1.240810]  pci_scan_child_bus_extend+0x20c/0x348
-> [    1.240812]  pci_scan_root_bus_bridge+0x64/0xf0
-> [    1.240815]  pci_host_probe+0x18/0xc8
-> [    1.240817]  rockchip_pcie_probe+0x34c/0x4b8
-> [    1.240820]  platform_drv_probe+0x54/0xa8
-> [    1.240822]  really_probe+0x29c/0x4f8
-> [    1.240824]  driver_probe_device+0xfc/0x168
-> [    1.240827]  device_driver_attach+0x74/0x80
-> [    1.240829]  __driver_attach+0xb8/0x168
-> [    1.240832]  bus_for_each_dev+0x7c/0xd8
-> [    1.240834]  driver_attach+0x24/0x30
-> [    1.240837]  bus_add_driver+0x15c/0x240
-> [    1.240839]  driver_register+0x64/0x120
-> [    1.240841]  __platform_driver_register+0x44/0x50
-> [    1.240844]  rockchip_pcie_driver_init+0x1c/0x28
-> [    1.240846]  do_one_initcall+0x60/0x1d8
-> [    1.240849]  kernel_init_freeable+0x234/0x2b4
-> [    1.240851]  kernel_init+0x14/0x118
-> [    1.240854]  ret_from_fork+0x10/0x34
-> [    1.240878] SMP: stopping secondary CPUs
-> [    1.240881] Kernel Offset: disabled
-> [    1.240883] CPU features: 0x0240022,2100200c
-> [    1.240886] Memory Limit: none
-> =
-
-> Signed-off-by: Jari H=E4m=E4l=E4inen <nuumiofi@gmail.com>
-> ---
->  .../admin-guide/kernel-parameters.txt          |  8 ++++++++
->  drivers/pci/controller/pcie-rockchip-host.c    | 18 ++++++++++++++++++
->  drivers/pci/controller/pcie-rockchip.c         |  5 +++++
->  drivers/pci/controller/pcie-rockchip.h         |  2 ++
->  4 files changed, 33 insertions(+)
-> =
-
-> diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentat=
-ion/admin-guide/kernel-parameters.txt
-> index c722ec19cd00..fda9bb9c85c3 100644
-> --- a/Documentation/admin-guide/kernel-parameters.txt
-> +++ b/Documentation/admin-guide/kernel-parameters.txt
-> @@ -3823,6 +3823,14 @@
->  		nomsi	Do not use MSI for native PCIe PME signaling (this makes
->  			all PCIe root ports use INTx for all services).
->  =
-
-> +	pcie_rockchip_host.bus_scan_delay_ms=3D
-> +			[PCIE] delay before PCIe bus scan in milliseconds.
-> +			If set to greater than or equal to 0 this parameter will
-> +			override delay set in device tree. Values less than 0
-> +			are ignored. This parameter provides a workaround for
-> +			some devices causing a crash in bus scan.
-> +			Default: -1
-> +
->  	pcmv=3D		[HW,PCMCIA] BadgePAD 4
->  =
-
->  	pd_ignore_unused
-> diff --git a/drivers/pci/controller/pcie-rockchip-host.c b/drivers/pci/co=
-ntroller/pcie-rockchip-host.c
-> index f1d08a1b1591..14733c92b25c 100644
-> --- a/drivers/pci/controller/pcie-rockchip-host.c
-> +++ b/drivers/pci/controller/pcie-rockchip-host.c
-> @@ -24,6 +24,7 @@
->  #include <linux/kernel.h>
->  #include <linux/mfd/syscon.h>
->  #include <linux/module.h>
-> +#include <linux/moduleparam.h>
->  #include <linux/of_address.h>
->  #include <linux/of_device.h>
->  #include <linux/of_pci.h>
-> @@ -39,6 +40,9 @@
->  #include "../pci.h"
->  #include "pcie-rockchip.h"
->  =
-
-> +static int bus_scan_delay_ms =3D -1;
-> +module_param(bus_scan_delay_ms, int, 0444);
-> +
->  static void rockchip_pcie_enable_bw_int(struct rockchip_pcie *rockchip)
->  {
->  	u32 status;
-> @@ -941,6 +945,7 @@ static int rockchip_pcie_probe(struct platform_device=
- *pdev)
->  	struct device *dev =3D &pdev->dev;
->  	struct pci_host_bridge *bridge;
->  	int err;
-> +	u32 delay =3D 0;
->  =
-
->  	if (!dev->of_node)
->  		return -ENODEV;
-> @@ -992,6 +997,19 @@ static int rockchip_pcie_probe(struct platform_devic=
-e *pdev)
->  	bridge->sysdata =3D rockchip;
->  	bridge->ops =3D &rockchip_pcie_ops;
->  =
-
-> +	/*
-> +	 * Work around a crash caused by some devices on bus scan by applying a
-> +	 * delay if one is given. Prefer command line value over device tree.
-> +	 */
-> +	if (bus_scan_delay_ms >=3D 0)
-> +		delay =3D bus_scan_delay_ms;
-> +	else
-> +		delay =3D rockchip->bus_scan_delay_ms;
-> +	if (delay > 0) {
-> +		dev_info(dev, "delay bus scan for %u ms\n", delay);
-> +		msleep(delay);
-> +	}
-> +
->  	err =3D pci_host_probe(bridge);
->  	if (err < 0)
->  		goto err_remove_irq_domain;
-> diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/control=
-ler/pcie-rockchip.c
-> index 904dec0d3a88..2e49e9204894 100644
-> --- a/drivers/pci/controller/pcie-rockchip.c
-> +++ b/drivers/pci/controller/pcie-rockchip.c
-> @@ -149,6 +149,11 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *roc=
-kchip)
->  		return PTR_ERR(rockchip->clk_pcie_pm);
->  	}
->  =
-
-> +	err =3D of_property_read_u32(node, "rockchip,bus-scan-delay-ms",
-> +				   &rockchip->bus_scan_delay_ms);
-> +	if (err)
-> +		rockchip->bus_scan_delay_ms =3D 0;
-> +
->  	return 0;
->  }
->  EXPORT_SYMBOL_GPL(rockchip_pcie_parse_dt);
-> diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/control=
-ler/pcie-rockchip.h
-> index 1650a5087450..18f37820b35b 100644
-> --- a/drivers/pci/controller/pcie-rockchip.h
-> +++ b/drivers/pci/controller/pcie-rockchip.h
-> @@ -300,6 +300,8 @@ struct rockchip_pcie {
->  	phys_addr_t msg_bus_addr;
->  	bool is_rc;
->  	struct resource *mem_res;
-> +	/* bus scan delay for crash causing devices' workaround */
-> +	u32 bus_scan_delay_ms;
->  };
->  =
-
->  static u32 rockchip_pcie_read(struct rockchip_pcie *rockchip, u32 reg)
-> -- =
-
-> 2.29.2
-> =
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gRnJpLCBKYW4gMSwgMjAyMSBhdCA3OjM3IFBNIEJqb3JuIEhlbGdhYXMgPGhlbGdhYXNAa2Vy
+bmVsLm9yZz4gd3JvdGU6Cj4KPiBPbiBUaHUsIERlYyAzMSwgMjAyMCBhdCAwMjo1MjoxMlBNICsw
+MjAwLCBKYXJpIEjDpG3DpGzDpGluZW4gd3JvdGU6Cj4gPiBTb21lIFBDSWUgZGV2aWNlcyBjYXVz
+ZSBSb2NrY2hpcCBQQ0llIGNvbnRyb2xsZXIgdG8gY3Jhc2ggaW4gYnVzIHNjYW4uCj4gPiBDcmFz
+aCBtYXkgYmUgYXZvaWRlZCBieSBkZWxheWluZyBidXMgc2NhbiBieSB0aW1lIGdpdmVuIGZyb20g
+Y29tbWFuZCBsaW5lCj4gPiBvciBmcm9tIGRldmljZSB0cmVlLiBOZWVkZWQgYW1vdW50IG9mIGRl
+bGF5IHZhcmllcyBmcm9tIGRldmljZSB0byBkZXZpY2UuCj4gPiBEZWxheSBkb2Vzbid0IGhhdmUg
+dG8gYmUgZXhhY3QuIEl0IGp1c3QgaGFzIHRvIGJlIGxvbmcgZW5vdWdoLgo+Cj4gSXMgdGhpcyBh
+IHN0YW5kYXJkIHBvc3QtcmVzZXQgZGVsYXkgdGhhdCB0aGUgcm9ja2NoaXAgZHJpdmVyIGlzCj4g
+bWlzc2luZz8gIE1heWJlIGNvbXBhcmUgd2l0aCBvdGhlciBkcml2ZXJzIHRvIHNlZSBpZiByb2Nr
+Y2hpcCBpcwo+IG1pc3Npbmcgc29tZXRoaW5nLgo+Cj4gSXMgdGhpcyBhbiBlcnJhdHVtIGluIHRo
+ZSBSb2NrY2hpcCBJUD8gIElmIHNvLCB3ZSBzaG91bGQgaGF2ZSBhCj4gc3BlY2lmaWMgZGVzY3Jp
+cHRpb24gYW5kIGEgY2l0YXRpb24gZm9yIGl0LCBhbmQgYSB3b3JrYXJvdW5kIGNvdWxkIGJlCj4g
+ZG9uZSBhdXRvbWF0aWNhbGx5IHdpdGhvdXQgRFQgb3IgY29tbWFuZC1saW5lIHN3aXRjaGVzLgoK
+VGhhbmtzIGZvciB5b3VyIHJlcGx5IQoKVGhpcyBwYXRjaCB3YXMgbm90IGJhc2VkIG9uIFJvY2tj
+aGlwIGVycmF0dW0gb3Igb3RoZXIgZG9jdW1lbnRhdGlvbi4gSXQgd2FzCmZvdW5kIGJ5IGEgbHVj
+a3kgc2hvdCB3aGVuIHRyeWluZyB0byBnZXQgUm9ja2NoaXAgUENJZSB3b3JraW5nIHdpdGgKdGhl
+c2UgZGV2aWNlcy4gSSdtIHNvcnJ5IGZvciBub3QgbWVudGlvbmluZyB0aGF0IGluIHRoZSBmaXJz
+dCBwbGFjZS4gSW4KdGhhdCBzZW5zZSAiYSBoYWNrIiB3b3VsZCBiZSBhIGJldHRlciBkZXNjcmlw
+dGlvbiB0aGFuICJ3b3JrYXJvdW5kIi4KCkknbGwgbG9vayBhdCBvdGhlciBkcml2ZXJzIGFuZCBz
+ZWUgaWYgSSBjYW4gc3BvdCBhbnl0aGluZyBtaXNzaW5nIGZyb20KUm9ja2NoaXAuIERlc2lnbndh
+cmUgZHJpdmVyIHNlZW1zIGxpa2UgYSBnb29kIHBsYWNlIHRvIHN0YXJ0LiBJJ20gbmV3YmllIGlu
+Cmtlcm5lbCBoYWNraW5nIGFuZCBldmVuIG1vcmUgc28gd2l0aCBQQ0llIHNvIHBvaW50ZXJzIGFy
+ZSB3ZWxjb21lLgoKPiA+IFRoZSBmb2xsb3dpbmcgbGlzdHMgZmV3IHByb2JsZW1hdGljIFBDSWUg
+ZGV2aWNlcyB3aXRoIGRlbGF5cyBuZWVkZWQgZm9yCj4gPiBzdGFibGUgYnVzIHNjYW4gc3Vydml2
+aW5nIDEwMCBzZXF1ZW50aWFsIHJlYm9vdHMgaW4gdGVzdCBsb29wIGV4ZWN1dGVkIG9uCj4gPiBS
+b2NrUHJvNjQgKFJLMzM5OSBzaW5nbGUtYm9hcmQgY29tcHV0ZXIpOgo+ID4gLSBMU0kgOTIwMS04
+aSAgICAgICAgIC8gU0FTMjAwOCBjaGlwc2V0IFsxMDAwOjAwNzJdOiA3MjUgbXMKPiA+IC0gTFNJ
+IDkzMDItOGkgICAgICAgICAvIFNBUzMwMDggY2hpcHNldCBbMTAwMDowMDk3XTogNTc1IG1zICgx
+KQo+ID4gLSBIUCBIMjIwICAgICAgICAgICAgIC8gU0FTMjMwOCBjaGlwc2V0IFsxMDAwOjAwODdd
+OiA4MDAgbXMgKDIpCj4gPiAtIElCTSBTZXJ2ZVJBSUQgTTUxMTAgLyBTQVMyMjA4IGNoaXBzZXQg
+WzEwMDA6MDA1Yl06IDEwNTAgbXMgKDMpCj4gPgo+ID4gICAxKSBtcHQzc2FzIG1vZHVsZSBoYXMg
+c29mdCBsb2NrdXAgYnVnIG9uIHNodXRkb3duIGJ1dCBkZXZpY2UgaXMgdXNhYmxlCj4gPiAgIDIp
+IGhhcyBpbmZyZXF1ZW50IGNyYXNoIG9uIG1wdDNzYXMgbW9kdWxlIGxvYWQgKDIgb2YgNjYyIHJl
+Ym9vdHMgaW4gYWxsCj4gPiAgICAgIHRlc3Qgc2Vzc2lvbnMgd2l0aCB0aGlzIGRldmljZSBjcmFz
+aGVkIG9uIG1vZHVsZSBsb2FkKQo+ID4gICAzKSBtZWdhcmFpZF9zYXMgbW9kdWxlIGNyYXNoZXMg
+b24gbG9hZCBzbyBkZXZpY2UgcmVtYWlucyB1bnVzYWJsZQo+ID4gICAgICAoYnVzIHNjYW4gdGVz
+dGVkIHdpdGggbW9kdWxlIGJlaW5nIGJsYWNrbGlzdGVkKQo+ID4KPiA+IFNpZGUgZWZmZWN0IG9m
+IGRlbGF5LCBpZiBzZXQsIGlzIHRoYXQgaXQgc2xvd3MgZG93biBzeXN0ZW0gc3RhcnR1cCBieSB0
+aGUKPiA+IGFtb3VudCBvZiBkZWxheS4KPiA+Cj4gPiBMb2cgZXhjZXJwdCBzaG93aW5nIGEgY3Jh
+c2ggaGFwcGVuaW5nIGFsd2F5cyBvbiB1bnBhdGNoZWQga2VybmVsIHdpdGgKPiA+IHByb2JsZW1h
+dGljIFBDSWUgZGV2aWNlcyBsaXN0ZWQgYWJvdmUgcmVuZGVyaW5nIHRoZW0gdW51c2FibGU6Cj4K
+PiBJdCBkb2Vzbid0IHNlZW0gbGlrZWx5IHRoYXQgdGhlIGRldmljZXMgYWJvdmUgYXJlIGJyb2tl
+biBzaW5jZSB3ZQo+IGRvbid0IGhhdmUgcHJvYmxlbXMgd2l0aCB0aGVtIG9uIG90aGVyIHN5c3Rl
+bXMuICBNb3JlIGxpa2VseSB0byBiZQo+IHNvbWUgUm9ja2NoaXAtc3BlY2lmaWMgdGhpbmcsIGFu
+ZCB0aGUgZGV2aWNlcyBhYm92ZSBhcmUgb3BlcmF0aW5nCj4gd2l0aGluIHNwZWMgKHBvc3NpYmx5
+IHVzaW5nIG1vcmUgb2YgdGhlIGFsbG93ZWQgcG9zdC1yZXNldCB0aW1lIHRoYW4KPiBtb3N0IGRl
+dmljZXMpLgoKVGhpcyBzZWVtcyB0byBiZSBSb2NrY2hpcC1zcGVjaWZpYyBpbmRlZWQuIEFsbCBk
+ZXZpY2VzIGFib3ZlIHdvcmtlZCBmaW5lIG9uCng4Ni1iYXNlZCBzZXR1cC4KCj4gPiBbICAgIDEu
+MjQwNjQ5XSBTRXJyb3IgSW50ZXJydXB0IG9uIENQVTUsIGNvZGUgMHhiZjAwMDAwMiAtLSBTRXJy
+b3IKPgo+IFdlIHJlYWxseSBzaG91bGQga25vdyBtb3JlIGFib3V0IHdoYXQgdGhlIHNwZWNpZmlj
+IGVycm9yIGlzLiAgTW9zdAo+IGVycm9ycyBvbiBQQ0llIHNob3VsZCBiZSByZWNvdmVyYWJsZSBh
+bmQgdGhleSBjYW4gaGFwcGVuIGF0IGFueSB0aW1lLAo+IG5vdCBqdXN0IGF0IGJvb3QtdGltZS4K
+Pgo+IFRoaXMgcGF0Y2ggYWRkcyBhIGJvb3QtdGltZSBkZWxheS4gIEF0IHJ1bi10aW1lLCBpZiB3
+ZSBwb3dlci1jeWNsZSBvcgo+IHJlc2V0IGEgZGV2aWNlIGFuZCByZS1lbnVtZXJhdGUgdGhlIGJ1
+cywgd2Ugd291bGQgbGlrZWx5IHNlZSB0aGUgc2FtZQo+IHByb2JsZW0gYW5kIHRoaXMgcGF0Y2gg
+d291bGRuJ3QgaGVscC4KCkkgd2lsbCB0cnkgdG8gZGlnIGRlZXBlciBpbnRvIGRldGFpbHMgb2Yg
+dGhpcyBlcnJvci4gTWF5YmUgbWVnYXJhaWRfc2FzCmRyaXZlciBjcmFzaGluZyBvbiBtb2R1bGUg
+bG9hZCBpcyBhIG1hbmlmZXN0YXRpb24gb2Ygc2FtZSBwcm9ibGVtIGFuZCBjb3VsZApvZmZlciBh
+IGhpbnQgb3IgYXQgbGVhc3QgYW5vdGhlciB2aWV3cG9pbnQgdG8gd2hhdCBnb2VzIG9uLgoKPiA+
+IFsgICAgMS4yNDA2NTNdIENQVTogNSBQSUQ6IDEgQ29tbTogc3dhcHBlci8wIE5vdCB0YWludGVk
+IDUuMTAuMi1zdGFibGUgIzEKPiA+IFsgICAgMS4yNDA2NTZdIEhhcmR3YXJlIG5hbWU6IFBpbmU2
+NCBSb2NrUHJvNjQgdjIuMCAoRFQpCj4gPiBbICAgIDEuMjQwNjU5XSBwc3RhdGU6IDYwMDAwMDg1
+IChuWkN2IGRhSWYgLVBBTiAtVUFPIC1UQ08gQlRZUEU9LS0pCj4gPiBbICAgIDEuMjQwNjYxXSBw
+YyA6IHJvY2tjaGlwX3BjaWVfcmRfY29uZisweDE3OC8weDI2OAo+ID4gWyAgICAxLjI0MDY2NF0g
+bHIgOiByb2NrY2hpcF9wY2llX3JkX2NvbmYrMHgxYjgvMHgyNjgKPiA+IFsgICAgMS4yNDA2NjZd
+IHNwIDogZmZmZjgwMDAxMTlkYjg1MAo+ID4gWyAgICAxLjI0MDY2OV0geDI5OiBmZmZmODAwMDEx
+OWRiODUwIHgyODogMDAwMDAwMDAwMDAwMDAwMAo+ID4gWyAgICAxLjI0MDY3Nl0geDI3OiAwMDAw
+MDAwMDAwMDAwMDAwIHgyNjogMDAwMDAwMDAwMDAwMDAwMAo+ID4gWyAgICAxLjI0MDY4Ml0geDI1
+OiBmZmZmODAwMDExOWRiOTg0IHgyNDogMDAwMDAwMDAwMDAwMDAwMAo+ID4gWyAgICAxLjI0MDY4
+OF0geDIzOiAwMDAwMDAwMDAwMDAwMDAwIHgyMjogZmZmZjAwMDA0MGJhMGI4MAo+ID4gWyAgICAx
+LjI0MDY5NF0geDIxOiBmZmZmODAwMDExOWRiOGQ0IHgyMDogMDAwMDAwMDAwMDAwMDAwNAo+ID4g
+WyAgICAxLjI0MDcwMF0geDE5OiAwMDAwMDAwMDAwMTAwMDAwIHgxODogZmZmZmZmZmZmZmZmZmZm
+Zgo+ID4gWyAgICAxLjI0MDcwNl0geDE3OiAwMDAwMDAwMDMxY2FlMTQzIHgxNjogMDAwMDAwMDA4
+Yzc1MTU3Ywo+ID4gWyAgICAxLjI0MDcxMl0geDE1OiBmZmZmODAwMDExNzI5OTA4IHgxNDogZmZm
+ZjAwMDA0MGM4N2ExYwo+ID4gWyAgICAxLjI0MDcxOF0geDEzOiBmZmZmMDAwMDQwYzg3MjkzIHgx
+MjogMDAwMDAwMDAwMDAwMDAzOAo+ID4gWyAgICAxLjI0MDcyNF0geDExOiAwMDAwMDAwMDA1ZjVl
+MGZmIHgxMDogN2Y3ZjdmN2Y3ZjdmN2Y3Zgo+ID4gWyAgICAxLjI0MDcyOV0geDkgOiAwMDAwMDAw
+MDAxMDAxZDg3IHg4IDogMDAwMDAwMDAwMDAwZWE2MAo+ID4gWyAgICAxLjI0MDczNV0geDcgOiBm
+ZmZmODAwMDExOWRiOTg0IHg2IDogMDAwMDAwMDAwMDAwMDAwMAo+ID4gWyAgICAxLjI0MDc0MV0g
+eDUgOiAwMDAwMDAwMDAwMDAwMDAwIHg0IDogMDAwMDAwMDAwMGMwMDAwOAo+ID4gWyAgICAxLjI0
+MDc0N10geDMgOiBmZmZmODAwMDE3MDAwMDAwIHgyIDogMDAwMDAwMDAwMDgwMDAwYQo+ID4gWyAg
+ICAxLjI0MDc1M10geDEgOiAwMDAwMDAwMDAwMDAwMDAwIHgwIDogZmZmZjgwMDAxNDAwMDAwMAo+
+ID4gWyAgICAxLjI0MDc1OV0gS2VybmVsIHBhbmljIC0gbm90IHN5bmNpbmc6IEFzeW5jaHJvbm91
+cyBTRXJyb3IgSW50ZXJydXB0Cj4gPiBbICAgIDEuMjQwNzYzXSBDUFU6IDUgUElEOiAxIENvbW06
+IHN3YXBwZXIvMCBOb3QgdGFpbnRlZCA1LjEwLjItc3RhYmxlICMxCj4gPiBbICAgIDEuMjQwNzY1
+XSBIYXJkd2FyZSBuYW1lOiBQaW5lNjQgUm9ja1BybzY0IHYyLjAgKERUKQo+ID4gWyAgICAxLjI0
+MDc2OF0gQ2FsbCB0cmFjZToKPiA+IFsgICAgMS4yNDA3NzBdICBkdW1wX2JhY2t0cmFjZSsweDAv
+MHgxZTgKPiA+IFsgICAgMS4yNDA3NzJdICBzaG93X3N0YWNrKzB4MTgvMHg2MAo+ID4gWyAgICAx
+LjI0MDc3NV0gIGR1bXBfc3RhY2srMHhkOC8weDEzMAo+ID4gWyAgICAxLjI0MDc3N10gIHBhbmlj
+KzB4MTVjLzB4MzgwCj4gPiBbICAgIDEuMjQwNzc5XSAgYWRkX3RhaW50KzB4MC8weGIwCj4gPiBb
+ICAgIDEuMjQwNzgyXSAgYXJtNjRfc2Vycm9yX3BhbmljKzB4NzgvMHg4OAo+ID4gWyAgICAxLjI0
+MDc4NF0gIGRvX3NlcnJvcisweDNjLzB4NjgKPiA+IFsgICAgMS4yNDA3ODddICBlbDFfZXJyb3Ir
+MHg4NC8weDEwNAo+ID4gWyAgICAxLjI0MDc4OV0gIHJvY2tjaGlwX3BjaWVfcmRfY29uZisweDE3
+OC8weDI2OAo+ID4gWyAgICAxLjI0MDc5MV0gIHBjaV9idXNfcmVhZF9jb25maWdfZHdvcmQrMHhh
+NC8weDE1MAo+ID4gWyAgICAxLjI0MDc5NF0gIHBjaV9idXNfZ2VuZXJpY19yZWFkX2Rldl92ZW5k
+b3JfaWQrMHgzMC8weDFiMAo+ID4gWyAgICAxLjI0MDc5N10gIHBjaV9idXNfcmVhZF9kZXZfdmVu
+ZG9yX2lkKzB4NGMvMHg3OAo+ID4gWyAgICAxLjI0MDgwMF0gIHBjaV9zY2FuX3NpbmdsZV9kZXZp
+Y2UrMHg4MC8weDEwMAo+ID4gWyAgICAxLjI0MDgwMl0gIHBjaV9zY2FuX3Nsb3QrMHgzOC8weDEz
+MAo+ID4gWyAgICAxLjI0MDgwNV0gIHBjaV9zY2FuX2NoaWxkX2J1c19leHRlbmQrMHg1OC8weDM0
+OAo+ID4gWyAgICAxLjI0MDgwN10gIHBjaV9zY2FuX2JyaWRnZV9leHRlbmQrMHgzMDQvMHg1YTAK
+PiA+IFsgICAgMS4yNDA4MTBdICBwY2lfc2Nhbl9jaGlsZF9idXNfZXh0ZW5kKzB4MjBjLzB4MzQ4
+Cj4gPiBbICAgIDEuMjQwODEyXSAgcGNpX3NjYW5fcm9vdF9idXNfYnJpZGdlKzB4NjQvMHhmMAo+
+ID4gWyAgICAxLjI0MDgxNV0gIHBjaV9ob3N0X3Byb2JlKzB4MTgvMHhjOAo+ID4gWyAgICAxLjI0
+MDgxN10gIHJvY2tjaGlwX3BjaWVfcHJvYmUrMHgzNGMvMHg0YjgKPiA+IFsgICAgMS4yNDA4MjBd
+ICBwbGF0Zm9ybV9kcnZfcHJvYmUrMHg1NC8weGE4Cj4gPiBbICAgIDEuMjQwODIyXSAgcmVhbGx5
+X3Byb2JlKzB4MjljLzB4NGY4Cj4gPiBbICAgIDEuMjQwODI0XSAgZHJpdmVyX3Byb2JlX2Rldmlj
+ZSsweGZjLzB4MTY4Cj4gPiBbICAgIDEuMjQwODI3XSAgZGV2aWNlX2RyaXZlcl9hdHRhY2grMHg3
+NC8weDgwCj4gPiBbICAgIDEuMjQwODI5XSAgX19kcml2ZXJfYXR0YWNoKzB4YjgvMHgxNjgKPiA+
+IFsgICAgMS4yNDA4MzJdICBidXNfZm9yX2VhY2hfZGV2KzB4N2MvMHhkOAo+ID4gWyAgICAxLjI0
+MDgzNF0gIGRyaXZlcl9hdHRhY2grMHgyNC8weDMwCj4gPiBbICAgIDEuMjQwODM3XSAgYnVzX2Fk
+ZF9kcml2ZXIrMHgxNWMvMHgyNDAKPiA+IFsgICAgMS4yNDA4MzldICBkcml2ZXJfcmVnaXN0ZXIr
+MHg2NC8weDEyMAo+ID4gWyAgICAxLjI0MDg0MV0gIF9fcGxhdGZvcm1fZHJpdmVyX3JlZ2lzdGVy
+KzB4NDQvMHg1MAo+ID4gWyAgICAxLjI0MDg0NF0gIHJvY2tjaGlwX3BjaWVfZHJpdmVyX2luaXQr
+MHgxYy8weDI4Cj4gPiBbICAgIDEuMjQwODQ2XSAgZG9fb25lX2luaXRjYWxsKzB4NjAvMHgxZDgK
+PiA+IFsgICAgMS4yNDA4NDldICBrZXJuZWxfaW5pdF9mcmVlYWJsZSsweDIzNC8weDJiNAo+ID4g
+WyAgICAxLjI0MDg1MV0gIGtlcm5lbF9pbml0KzB4MTQvMHgxMTgKPiA+IFsgICAgMS4yNDA4NTRd
+ICByZXRfZnJvbV9mb3JrKzB4MTAvMHgzNAo+ID4gWyAgICAxLjI0MDg3OF0gU01QOiBzdG9wcGlu
+ZyBzZWNvbmRhcnkgQ1BVcwo+ID4gWyAgICAxLjI0MDg4MV0gS2VybmVsIE9mZnNldDogZGlzYWJs
+ZWQKPiA+IFsgICAgMS4yNDA4ODNdIENQVSBmZWF0dXJlczogMHgwMjQwMDIyLDIxMDAyMDBjCj4g
+PiBbICAgIDEuMjQwODg2XSBNZW1vcnkgTGltaXQ6IG5vbmUKPiA+Cj4gPiBTaWduZWQtb2ZmLWJ5
+OiBKYXJpIEjDpG3DpGzDpGluZW4gPG51dW1pb2ZpQGdtYWlsLmNvbT4KPiA+IC0tLQo+ID4gIC4u
+Li9hZG1pbi1ndWlkZS9rZXJuZWwtcGFyYW1ldGVycy50eHQgICAgICAgICAgfCAgOCArKysrKysr
+Kwo+ID4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1ob3N0LmMgICAgfCAx
+OCArKysrKysrKysrKysrKysrKysKPiA+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9j
+a2NoaXAuYyAgICAgICAgIHwgIDUgKysrKysKPiA+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL3Bj
+aWUtcm9ja2NoaXAuaCAgICAgICAgIHwgIDIgKysKPiA+ICA0IGZpbGVzIGNoYW5nZWQsIDMzIGlu
+c2VydGlvbnMoKykKPiA+Cj4gPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9hZG1pbi1ndWlk
+ZS9rZXJuZWwtcGFyYW1ldGVycy50eHQgYi9Eb2N1bWVudGF0aW9uL2FkbWluLWd1aWRlL2tlcm5l
+bC1wYXJhbWV0ZXJzLnR4dAo+ID4gaW5kZXggYzcyMmVjMTljZDAwLi5mZGE5YmI5Yzg1YzMgMTAw
+NjQ0Cj4gPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2FkbWluLWd1aWRlL2tlcm5lbC1wYXJhbWV0ZXJz
+LnR4dAo+ID4gKysrIGIvRG9jdW1lbnRhdGlvbi9hZG1pbi1ndWlkZS9rZXJuZWwtcGFyYW1ldGVy
+cy50eHQKPiA+IEBAIC0zODIzLDYgKzM4MjMsMTQgQEAKPiA+ICAgICAgICAgICAgICAgbm9tc2kg
+ICBEbyBub3QgdXNlIE1TSSBmb3IgbmF0aXZlIFBDSWUgUE1FIHNpZ25hbGluZyAodGhpcyBtYWtl
+cwo+ID4gICAgICAgICAgICAgICAgICAgICAgIGFsbCBQQ0llIHJvb3QgcG9ydHMgdXNlIElOVHgg
+Zm9yIGFsbCBzZXJ2aWNlcykuCj4gPgo+ID4gKyAgICAgcGNpZV9yb2NrY2hpcF9ob3N0LmJ1c19z
+Y2FuX2RlbGF5X21zPQo+ID4gKyAgICAgICAgICAgICAgICAgICAgIFtQQ0lFXSBkZWxheSBiZWZv
+cmUgUENJZSBidXMgc2NhbiBpbiBtaWxsaXNlY29uZHMuCj4gPiArICAgICAgICAgICAgICAgICAg
+ICAgSWYgc2V0IHRvIGdyZWF0ZXIgdGhhbiBvciBlcXVhbCB0byAwIHRoaXMgcGFyYW1ldGVyIHdp
+bGwKPiA+ICsgICAgICAgICAgICAgICAgICAgICBvdmVycmlkZSBkZWxheSBzZXQgaW4gZGV2aWNl
+IHRyZWUuIFZhbHVlcyBsZXNzIHRoYW4gMAo+ID4gKyAgICAgICAgICAgICAgICAgICAgIGFyZSBp
+Z25vcmVkLiBUaGlzIHBhcmFtZXRlciBwcm92aWRlcyBhIHdvcmthcm91bmQgZm9yCj4gPiArICAg
+ICAgICAgICAgICAgICAgICAgc29tZSBkZXZpY2VzIGNhdXNpbmcgYSBjcmFzaCBpbiBidXMgc2Nh
+bi4KPiA+ICsgICAgICAgICAgICAgICAgICAgICBEZWZhdWx0OiAtMQo+ID4gKwo+ID4gICAgICAg
+cGNtdj0gICAgICAgICAgIFtIVyxQQ01DSUFdIEJhZGdlUEFEIDQKPiA+Cj4gPiAgICAgICBwZF9p
+Z25vcmVfdW51c2VkCj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ll
+LXJvY2tjaGlwLWhvc3QuYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC1o
+b3N0LmMKPiA+IGluZGV4IGYxZDA4YTFiMTU5MS4uMTQ3MzNjOTJiMjVjIDEwMDY0NAo+ID4gLS0t
+IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWhvc3QuYwo+ID4gKysrIGIv
+ZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLWhvc3QuYwo+ID4gQEAgLTI0LDYg
+KzI0LDcgQEAKPiA+ICAjaW5jbHVkZSA8bGludXgva2VybmVsLmg+Cj4gPiAgI2luY2x1ZGUgPGxp
+bnV4L21mZC9zeXNjb24uaD4KPiA+ICAjaW5jbHVkZSA8bGludXgvbW9kdWxlLmg+Cj4gPiArI2lu
+Y2x1ZGUgPGxpbnV4L21vZHVsZXBhcmFtLmg+Cj4gPiAgI2luY2x1ZGUgPGxpbnV4L29mX2FkZHJl
+c3MuaD4KPiA+ICAjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+Cj4gPiAgI2luY2x1ZGUgPGxp
+bnV4L29mX3BjaS5oPgo+ID4gQEAgLTM5LDYgKzQwLDkgQEAKPiA+ICAjaW5jbHVkZSAiLi4vcGNp
+LmgiCj4gPiAgI2luY2x1ZGUgInBjaWUtcm9ja2NoaXAuaCIKPiA+Cj4gPiArc3RhdGljIGludCBi
+dXNfc2Nhbl9kZWxheV9tcyA9IC0xOwo+ID4gK21vZHVsZV9wYXJhbShidXNfc2Nhbl9kZWxheV9t
+cywgaW50LCAwNDQ0KTsKPiA+ICsKPiA+ICBzdGF0aWMgdm9pZCByb2NrY2hpcF9wY2llX2VuYWJs
+ZV9id19pbnQoc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJvY2tjaGlwKQo+ID4gIHsKPiA+ICAgICAg
+IHUzMiBzdGF0dXM7Cj4gPiBAQCAtOTQxLDYgKzk0NSw3IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBf
+cGNpZV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4gICAgICAgc3RydWN0
+IGRldmljZSAqZGV2ID0gJnBkZXYtPmRldjsKPiA+ICAgICAgIHN0cnVjdCBwY2lfaG9zdF9icmlk
+Z2UgKmJyaWRnZTsKPiA+ICAgICAgIGludCBlcnI7Cj4gPiArICAgICB1MzIgZGVsYXkgPSAwOwo+
+ID4KPiA+ICAgICAgIGlmICghZGV2LT5vZl9ub2RlKQo+ID4gICAgICAgICAgICAgICByZXR1cm4g
+LUVOT0RFVjsKPiA+IEBAIC05OTIsNiArOTk3LDE5IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGNp
+ZV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4gICAgICAgYnJpZGdlLT5z
+eXNkYXRhID0gcm9ja2NoaXA7Cj4gPiAgICAgICBicmlkZ2UtPm9wcyA9ICZyb2NrY2hpcF9wY2ll
+X29wczsKPiA+Cj4gPiArICAgICAvKgo+ID4gKyAgICAgICogV29yayBhcm91bmQgYSBjcmFzaCBj
+YXVzZWQgYnkgc29tZSBkZXZpY2VzIG9uIGJ1cyBzY2FuIGJ5IGFwcGx5aW5nIGEKPiA+ICsgICAg
+ICAqIGRlbGF5IGlmIG9uZSBpcyBnaXZlbi4gUHJlZmVyIGNvbW1hbmQgbGluZSB2YWx1ZSBvdmVy
+IGRldmljZSB0cmVlLgo+ID4gKyAgICAgICovCj4gPiArICAgICBpZiAoYnVzX3NjYW5fZGVsYXlf
+bXMgPj0gMCkKPiA+ICsgICAgICAgICAgICAgZGVsYXkgPSBidXNfc2Nhbl9kZWxheV9tczsKPiA+
+ICsgICAgIGVsc2UKPiA+ICsgICAgICAgICAgICAgZGVsYXkgPSByb2NrY2hpcC0+YnVzX3NjYW5f
+ZGVsYXlfbXM7Cj4gPiArICAgICBpZiAoZGVsYXkgPiAwKSB7Cj4gPiArICAgICAgICAgICAgIGRl
+dl9pbmZvKGRldiwgImRlbGF5IGJ1cyBzY2FuIGZvciAldSBtc1xuIiwgZGVsYXkpOwo+ID4gKyAg
+ICAgICAgICAgICBtc2xlZXAoZGVsYXkpOwo+ID4gKyAgICAgfQo+ID4gKwo+ID4gICAgICAgZXJy
+ID0gcGNpX2hvc3RfcHJvYmUoYnJpZGdlKTsKPiA+ICAgICAgIGlmIChlcnIgPCAwKQo+ID4gICAg
+ICAgICAgICAgICBnb3RvIGVycl9yZW1vdmVfaXJxX2RvbWFpbjsKPiA+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuYyBiL2RyaXZlcnMvcGNpL2NvbnRy
+b2xsZXIvcGNpZS1yb2NrY2hpcC5jCj4gPiBpbmRleCA5MDRkZWMwZDNhODguLjJlNDllOTIwNDg5
+NCAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1yb2NrY2hpcC5j
+Cj4gPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2NoaXAuYwo+ID4gQEAg
+LTE0OSw2ICsxNDksMTEgQEAgaW50IHJvY2tjaGlwX3BjaWVfcGFyc2VfZHQoc3RydWN0IHJvY2tj
+aGlwX3BjaWUgKnJvY2tjaGlwKQo+ID4gICAgICAgICAgICAgICByZXR1cm4gUFRSX0VSUihyb2Nr
+Y2hpcC0+Y2xrX3BjaWVfcG0pOwo+ID4gICAgICAgfQo+ID4KPiA+ICsgICAgIGVyciA9IG9mX3By
+b3BlcnR5X3JlYWRfdTMyKG5vZGUsICJyb2NrY2hpcCxidXMtc2Nhbi1kZWxheS1tcyIsCj4gPiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmcm9ja2NoaXAtPmJ1c19zY2FuX2RlbGF5
+X21zKTsKPiA+ICsgICAgIGlmIChlcnIpCj4gPiArICAgICAgICAgICAgIHJvY2tjaGlwLT5idXNf
+c2Nhbl9kZWxheV9tcyA9IDA7Cj4gPiArCj4gPiAgICAgICByZXR1cm4gMDsKPiA+ICB9Cj4gPiAg
+RVhQT1JUX1NZTUJPTF9HUEwocm9ja2NoaXBfcGNpZV9wYXJzZV9kdCk7Cj4gPiBkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLmggYi9kcml2ZXJzL3BjaS9j
+b250cm9sbGVyL3BjaWUtcm9ja2NoaXAuaAo+ID4gaW5kZXggMTY1MGE1MDg3NDUwLi4xOGYzNzgy
+MGIzNWIgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtcm9ja2No
+aXAuaAo+ID4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLXJvY2tjaGlwLmgKPiA+
+IEBAIC0zMDAsNiArMzAwLDggQEAgc3RydWN0IHJvY2tjaGlwX3BjaWUgewo+ID4gICAgICAgcGh5
+c19hZGRyX3QgbXNnX2J1c19hZGRyOwo+ID4gICAgICAgYm9vbCBpc19yYzsKPiA+ICAgICAgIHN0
+cnVjdCByZXNvdXJjZSAqbWVtX3JlczsKPiA+ICsgICAgIC8qIGJ1cyBzY2FuIGRlbGF5IGZvciBj
+cmFzaCBjYXVzaW5nIGRldmljZXMnIHdvcmthcm91bmQgKi8KPiA+ICsgICAgIHUzMiBidXNfc2Nh
+bl9kZWxheV9tczsKPiA+ICB9Owo+ID4KPiA+ICBzdGF0aWMgdTMyIHJvY2tjaGlwX3BjaWVfcmVh
+ZChzdHJ1Y3Qgcm9ja2NoaXBfcGNpZSAqcm9ja2NoaXAsIHUzMiByZWcpCj4gPiAtLQo+ID4gMi4y
+OS4yCj4gPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
