@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5D47C433DB
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jan 2021 13:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2393AC433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jan 2021 13:47:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6AE842311A
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jan 2021 13:46:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 6AE842311A
+	by mail.kernel.org (Postfix) with ESMTPS id B7E1F2311A
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jan 2021 13:47:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org B7E1F2311A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,47 +23,47 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=OIA16z+O/RWri06YE9191I6LYqu8w9rT7yPdcQJPt94=; b=gNG9cvJsiXKJH5alngPBJYMml
-	YDxKEEEVRKGwYumYwnLZpuZcUE+8ilLLfueBMpzfBaS9j81ozGyDzOZmtGDaAtsBfowwSjyyAGeMY
-	tTFDUwMB1jq0Nh7Snu2AS4xsQV3vIXGjl+wdNO58W3tvG/50rRsvzazY8JuVQKAzGm6sVIQzWT6mF
-	CMB516u3QQOnRrBEZz69YyuK3H4a4SL697EPWooFfmmvC6+a/8Sa5qkp9y7x5udqkdkpBqCg9Wjry
-	DahAB8KDL8/zPzW3nY89FlbMdAoL9gXVX43WOoR53v1o2UT8/z5Abe0cVPdmk/Jn/a7ktX1MxjQEB
-	TmALbIQ1w==;
+	 bh=wqudyGXFAREeb5QHWhyyRGN3JfgOnDsltvI7Ua87HZE=; b=vViWXZbgOz56E46WetJmExsoM
+	Bv42SLNEKaUel65g0NQWI8h9Z3ETXy7qHWk9kZA8wjo06rXktOGmhrcPGcQKv1ppH3UGuTDtTp5f3
+	Z7shIcTWQg6esfpozEPQC/g5P9GZYtxGEgU7Yu0RWHRXnbK+65Kx2AKBvKcQ4BFF9GyKt9Eh5H65o
+	WH6jMQebQvTmPMrfQX2eslSGXzLHaM0fPWcAsGSwvs/zebMFtgsw/+smSEPqfszg9Z56Taewy4j47
+	H7NmQxVQRzfCmLBGAOmq40KQGlyAn6o/fqX962v3cV1i+HR5VRgMkJYj8u+YDeaEhyjcyteVY/hnd
+	YlJqNsIsA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kx996-0000ms-RD; Wed, 06 Jan 2021 13:46:40 +0000
+	id 1kx99P-0000vN-Kd; Wed, 06 Jan 2021 13:46:59 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kx98t-0000gM-Og; Wed, 06 Jan 2021 13:46:28 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6BE6D2311E;
+ id 1kx98t-0000gR-R3; Wed, 06 Jan 2021 13:46:30 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9553223121;
  Wed,  6 Jan 2021 13:46:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1609940786;
- bh=tYKdxArNM4nHAHfgzQ+s9wREa9C4OBkvvuMWxCIRM50=;
+ bh=zxCR5IPMVyUtLgw9iNAvhL1NSsx2Ep3Yv/Co5D5pP1o=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=d8OlBfLIAVBEcTXbyTmWAbDjrXox/N/ncOzpWyUyxwAr7m1JZ1rAwvQ+mIkGBT/L4
- cuYC6eqbEZQKw/lYye7CNXjJ7TovOPnGeBiWlUCccC0dLtvxht861vvQBWLyAvgg+E
- 80NYRIIoUDu/3Sn/XbhFEgAHgXL8y9HiBQ4qLOwbyUeTctqDa3bp8BLd3fQuMf6YPq
- hMRJSTXD9i7XLhWNJ9sXfFdmd07LDYCdCX9rG7Jr8/1C2BGpQjg3N1shbDrDJ6rodp
- fTXkkRFuZC2OsvbGeSR+rMdRtoYPxQ3nEb3JXSzChmK95SZ9zOTwbhoe4pojbOCEZs
- 7tDgGqtoSwPrw==
+ b=WfIA1I7JwmXFyLWbQfb1NMwLZkm/cTbJZ2IDXvHEDEXQtU5mGhKhO2Djrq/abFzw7
+ YNLgMAmHaFEX+YimPat/a9qBoFM5q3U9CYQzWgCTcE31H143GIHu/qnmFexPHkYvl3
+ dBTijGo8jBTEe2Hl+RYxZoTHKyr2U+SCxZv1uW8RxKjsjFzIOcSUpnfmCrvOcAu1rv
+ vz7HctMfKC5mjNRMUcG384HE+4kVUImguBmFej2tqrkUSRmQQea5Vb1QVRzXrSaY/L
+ VSeglprmcdDyMzDubZOWYNcSqN9JlM1ChTSyoQqRNJ6QsNo9Ad4ugb3gT0j5dcmLHc
+ 58EPdukbI/+3w==
 Received: by wens.tw (Postfix, from userid 1000)
- id 63E3D5FBBF; Wed,  6 Jan 2021 21:46:24 +0800 (CST)
+ id 757B35FBCC; Wed,  6 Jan 2021 21:46:24 +0800 (CST)
 From: Chen-Yu Tsai <wens@kernel.org>
 To: Shawn Lin <shawn.lin@rock-chips.com>,
  Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
  Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
  Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v3 2/4] dt-bindings: arm: rockchip: Add FriendlyARM NanoPi M4B
-Date: Wed,  6 Jan 2021 21:46:15 +0800
-Message-Id: <20210106134617.391-3-wens@kernel.org>
+Subject: [PATCH v3 4/4] arm64: dts: rockchip: rk3399: Add NanoPi M4B
+Date: Wed,  6 Jan 2021 21:46:17 +0800
+Message-Id: <20210106134617.391-5-wens@kernel.org>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210106134617.391-1-wens@kernel.org>
 References: <20210106134617.391-1-wens@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210106_084627_916876_8843B907 
-X-CRM114-Status: GOOD (  13.21  )
+X-CRM114-CacheID: sfid-20210106_084628_084858_23ED83C8 
+X-CRM114-Status: GOOD (  16.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,25 +106,86 @@ Additional changes specific to the M4B:
   - WiFi/Bluetooth combo chip switched to AP6256, which supports BT 5.0
     but only 1T1R (down from 2T2R) for WiFi
 
-Add a compatible string for the new board revision.
+Add a new dts file for the new board revision that shows the difference
+against the original.
 
 Signed-off-by: Chen-Yu Tsai <wens@csie.org>
 ---
- Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../boot/dts/rockchip/rk3399-nanopi-m4b.dts   | 52 +++++++++++++++++++
+ 2 files changed, 53 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts
 
-diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
-index ef4544ad6f82..773fd4c531ed 100644
---- a/Documentation/devicetree/bindings/arm/rockchip.yaml
-+++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
-@@ -132,6 +132,7 @@ properties:
-           - enum:
-               - friendlyarm,nanopc-t4
-               - friendlyarm,nanopi-m4
-+              - friendlyarm,nanopi-m4b
-               - friendlyarm,nanopi-neo4
-           - const: rockchip,rk3399
- 
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index 1ab55a124a87..622d320ddd13 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -33,6 +33,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-kobol-helios64.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-leez-p710.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopc-t4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-m4.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-m4b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-nanopi-neo4.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-orangepi.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-pinebook-pro.dtb
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts
+new file mode 100644
+index 000000000000..72182c58cc46
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-m4b.dts
+@@ -0,0 +1,52 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * FriendlyElec NanoPi M4B board device tree source
++ *
++ * Copyright (c) 2020 Chen-Yu Tsai <wens@csie.org>
++ */
++
++/dts-v1/;
++#include "rk3399-nanopi-m4.dts"
++
++/ {
++	model = "FriendlyElec NanoPi M4B";
++	compatible = "friendlyarm,nanopi-m4b", "rockchip,rk3399";
++
++	adc-keys {
++		compatible = "adc-keys";
++		io-channels = <&saradc 1>;
++		io-channel-names = "buttons";
++		keyup-threshold-microvolt = <1500000>;
++		poll-interval = <100>;
++
++		recovery {
++			label = "Recovery";
++			linux,code = <KEY_VENDOR>;
++			press-threshold-microvolt = <18000>;
++		};
++	};
++};
++
++/* No USB type-C PD power manager */
++/delete-node/ &fusb0;
++
++&i2c4 {
++	status = "disabled";
++};
++
++&u2phy0_host {
++	phy-supply = <&vcc5v0_usb2>;
++};
++
++&u2phy0_otg {
++	phy-supply = <&vbus_typec>;
++};
++
++&u2phy1_otg {
++	phy-supply = <&vcc5v0_usb1>;
++};
++
++&vbus_typec {
++	enable-active-high;
++	gpios = <&gpio4 RK_PD2 GPIO_ACTIVE_HIGH>;
++};
 -- 
 2.29.2
 
