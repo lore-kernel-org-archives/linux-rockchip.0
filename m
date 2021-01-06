@@ -7,64 +7,56 @@ X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EB663C433E0
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jan 2021 13:36:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 35E10C433DB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jan 2021 13:46:03 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 54A5B2064C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jan 2021 13:36:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 54A5B2064C
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id F2DA822B40
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jan 2021 13:46:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org F2DA822B40
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
+	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=/Tic6r9x+KVoRpZmiDlbB87m68ABOl0JUDSMV9bPSnE=; b=1xSzXGxy+ZjOlWQA6PPJng6RL
-	zmDKSgxYm3fYj1q+NncCUBScUPZWcjcBJRb4V10cwvc7KMWGNSQoXHj1LuL5thOT/6fFvL51qySf4
-	4wAslL6f4gHp4IOK1gFvI/6E2oAYEf2Pj2iLXKd7oHVSpHmPbkPX+8xoj8EcL9Nnh/qJtxP5m1c15
-	KgzGIeAwhrA7wEmlFwbvQHLbuBvHmR1tIG+LPZOmhdYGFZZsDyATbXjcM9pUAquZESFdYxPT+I5+h
-	Vpnm9g9O7K6NhkYwwmWL2ohTpHJgQog7KDTWzNDIHNpeg9l9r3IJVBHCZau+5vKPw7b67JEGow5Km
-	gDjcZw30g==;
+	 bh=uxrFYb72ZV5QVvdjsn3mlxoINs5vAMa52+P/t5Qu8Fw=; b=TO9ZMLXdqOmq70af6FQqZtsXJ
+	trwuHtufymDR4d7IP0XJ88/VUrfXuFit14lhH6q0xPDlxP1QApoFkP/x5rwWhWU4El6NDbGRu5KeH
+	35UfonPIwOv1zYoHXyg4ZOyM+b/WhfzBxh6pRZASGojsXrwvZNFZ+MaAUK9XcV1rlENtzvXFQUgfJ
+	L3IljOGVp7G7ax7DAcQamVMmh07gfJukpSTnDuJj4gHmTaUaUzt7YgMk0aFBjgO38HYwVPq5qlIG3
+	z5j69R597ax6HvW8GWndvj46oqCN+Xv0/yXVUj5pRVuD8IytTtcDnV0mq8oqiuTO1gsqvzj+E5YmH
+	dLIF0oCgw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kx8yl-0007K5-S5; Wed, 06 Jan 2021 13:35:59 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1kx98S-0000Xq-6G; Wed, 06 Jan 2021 13:46:00 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kx8yi-0007I3-HI
- for linux-rockchip@lists.infradead.org; Wed, 06 Jan 2021 13:35:58 +0000
-Received: from lupine.hi.pengutronix.de
- ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1kx8yc-0001l3-0x; Wed, 06 Jan 2021 14:35:50 +0100
-Received: from pza by lupine with local (Exim 4.92)
- (envelope-from <p.zabel@pengutronix.de>)
- id 1kx8yY-0005CD-Rt; Wed, 06 Jan 2021 14:35:46 +0100
-Message-ID: <b5c5cf7360a0bc297e5753ed1b4d40476ccd7923.camel@pengutronix.de>
-Subject: Re: [PATCH -next] media: hantro: use resource_size
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Zheng Yongjun <zhengyongjun3@huawei.com>, ezequiel@collabora.com, 
- mchehab@kernel.org, linux-media@vger.kernel.org, 
- linux-rockchip@lists.infradead.org, devel@driverdev.osuosl.org, 
- linux-kernel@vger.kernel.org
-Date: Wed, 06 Jan 2021 14:35:46 +0100
-In-Reply-To: <20210106131813.32644-1-zhengyongjun3@huawei.com>
-References: <20210106131813.32644-1-zhengyongjun3@huawei.com>
-User-Agent: Evolution 3.30.5-1.1 
+ id 1kx98O-0000Tn-Sd
+ for linux-rockchip@lists.infradead.org; Wed, 06 Jan 2021 13:45:58 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BE4DA2311A;
+ Wed,  6 Jan 2021 13:45:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1609940754;
+ bh=dCoF2O50cFUHjCxcKBfGbJ4M0gpxaJLAvMtc+XoF27U=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=saP0e/tkb9fUsADhfZ8zphsUzXLH5nHr03v0X18DRG4nTOOm5iF8uwxftDnxfirRn
+ t2AZbtNgRRWmOA7lPQb4FmNpvQVQvirHznbPK80l/iBodfuCjPfsoZtOOdtJOaHleX
+ LYGldEnecXvSTNm3P7+lBNC3P5e2HezXgqzfyA5c=
+Date: Wed, 6 Jan 2021 14:47:14 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Zheng Yongjun <zhengyongjun3@huawei.com>
+Subject: Re: [PATCH -next] media: rkvdec: use resource_size
+Message-ID: <X/W/YnBwP5q9sxkI@kroah.com>
+References: <20210106131820.32706-1-zhengyongjun3@huawei.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <20210106131820.32706-1-zhengyongjun3@huawei.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210106_083556_594926_C6B644AB 
-X-CRM114-Status: GOOD (  13.54  )
+X-CRM114-CacheID: sfid-20210106_084557_086437_5FFFD45D 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,41 +69,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: gregkh@linuxfoundation.org
+Cc: devel@driverdev.osuosl.org, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, mchehab@kernel.org, ezequiel@collabora.com,
+ linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Zheng,
-
-On Wed, 2021-01-06 at 21:18 +0800, Zheng Yongjun wrote:
+On Wed, Jan 06, 2021 at 09:18:20PM +0800, Zheng Yongjun wrote:
 > Use resource_size rather than a verbose computation on
 > the end and start fields.
 > 
 > Signed-off-by: Zheng Yongjun <zhengyongjun3@huawei.com>
 > ---
->  drivers/staging/media/hantro/hantro_v4l2.c | 2 +-
+>  drivers/staging/media/rkvdec/rkvdec.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/drivers/staging/media/hantro/hantro_v4l2.c b/drivers/staging/media/hantro/hantro_v4l2.c
-> index b668a82d40ad..e1081c16f56a 100644
-> --- a/drivers/staging/media/hantro/hantro_v4l2.c
-> +++ b/drivers/staging/media/hantro/hantro_v4l2.c
-> @@ -316,7 +316,7 @@ hantro_reset_fmt(struct v4l2_pix_format_mplane *fmt,
->  
->  	fmt->pixelformat = vpu_fmt->fourcc;
->  	fmt->field = V4L2_FIELD_NONE;
-> -	fmt->colorspace = V4L2_COLORSPACE_JPEG,
-> +	fmt->colorspace = V4L2_COLORSPACE_JPEG;
->  	fmt->ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
->  	fmt->quantization = V4L2_QUANTIZATION_DEFAULT;
->  	fmt->xfer_func = V4L2_XFER_FUNC_DEFAULT;
+> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+> index d25c4a37e2af..66572066e7a0 100644
+> --- a/drivers/staging/media/rkvdec/rkvdec.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+> @@ -130,7 +130,7 @@ static void rkvdec_reset_fmt(struct rkvdec_ctx *ctx, struct v4l2_format *f,
+>  	memset(f, 0, sizeof(*f));
+>  	f->fmt.pix_mp.pixelformat = fourcc;
+>  	f->fmt.pix_mp.field = V4L2_FIELD_NONE;
+> -	f->fmt.pix_mp.colorspace = V4L2_COLORSPACE_REC709,
+> +	f->fmt.pix_mp.colorspace = V4L2_COLORSPACE_REC709;
+>  	f->fmt.pix_mp.ycbcr_enc = V4L2_YCBCR_ENC_DEFAULT;
+>  	f->fmt.pix_mp.quantization = V4L2_QUANTIZATION_DEFAULT;
+>  	f->fmt.pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
+> -- 
+> 2.22.0
+> 
 
-Subject and commit message do not describe the patch.
-
-regards
-Philipp
+That is not what this patch does at all :(
 
 _______________________________________________
 Linux-rockchip mailing list
