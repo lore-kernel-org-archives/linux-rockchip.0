@@ -2,57 +2,59 @@ Return-Path: <SRS0=faov=GK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A6B6C433DB
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 13:41:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 53F7FC433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 13:41:50 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DA591224BD
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 13:41:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org DA591224BD
+	by mail.kernel.org (Postfix) with ESMTPS id 1DC2C224D3
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 13:41:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1DC2C224D3
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=CoWMqA8nOwYtmtgJu7iphY06O/CdYo4ZRaA747Y/TdY=; b=NFJcei+Z4rMxEhTiy5JHtHnUGg
-	JkCmISsZ272JJFDRgifoA0u/8lJ3XrtUxyKCWE7lKsqhlMsAb6lvyOkDaPsBDHlcPbx8kdkxXcfjS
-	Y06QJRTYHYjhFw3kow/Apj0r1hrLvAwR6Zh9r4d5ITJ/eIP5DtPKUHMTV2lSv3HOFgDiEDC0/mHCs
-	i2TiOuEKadMihNXjxoPs4o6DddFokmBwGVI6aWfTi+53st2F8sURFipFD1Jujs+dXFBn01HscAlp4
-	9eahs6VnaLd7ysW5kL50ycVfytrBvOUfvBxcKjnvWuGty5a0smV1ZGB+7rDvAf/UWFZMq1mqkmtx2
-	eqHxx93Q==;
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	 bh=5FCgFlv9/bjCyfdI2Z9XZYq3/IuMmR9pcDOKEt65X+w=; b=Xtm7jbGxADjhXWPeuUWn+EpF1
+	DVeBjCFwFxjN12cDLQZB8SCXx41ZXLDa1NzSZGdzN/ziWm+l9sRfpfrjUpM+y5q55cvqIFoTw/MuU
+	ctN4GO9eO1zCDJyKQVkuM2xnyY6JfC4uGz/PszCR43QrjqM3ZIc8ZKq2U8l886AjuJecFO38UiQDF
+	owtZRP+ZQErZq7hKKg6j33440IspjCEmUkeRgVsmrqh/7Y6+obHSVJINH0gMDg/+WoyGEYvB+zydJ
+	QmrXrp/irL68ZUKmh9zJefNDEX52kZH9KIDbtAkr2ojBp468c2z+DbeL9nI94aqsW29uTnIBLhPQs
+	Lrj4Iv+eg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxVXl-0003TE-IC; Thu, 07 Jan 2021 13:41:37 +0000
+	id 1kxVXu-0003YH-IE; Thu, 07 Jan 2021 13:41:46 +0000
 Received: from relay6-d.mail.gandi.net ([217.70.183.198])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxVXT-0003Mz-LI; Thu, 07 Jan 2021 13:41:20 +0000
+ id 1kxVXV-0003Oe-46; Thu, 07 Jan 2021 13:41:22 +0000
 X-Originating-IP: 93.29.109.196
 Received: from localhost.localdomain (196.109.29.93.rev.sfr.net
  [93.29.109.196])
  (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 18014C0005;
- Thu,  7 Jan 2021 13:41:10 +0000 (UTC)
+ by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id E6717C0004;
+ Thu,  7 Jan 2021 13:41:18 +0000 (UTC)
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 0/5] Rockchip PX30 RGA and VPU support
-Date: Thu,  7 Jan 2021 14:40:56 +0100
-Message-Id: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
+Subject: [PATCH 4/5] arm64: dts: rockchip: Add VPU support for the PX30
+Date: Thu,  7 Jan 2021 14:41:00 +0100
+Message-Id: <20210107134101.195426-5-paul.kocialkowski@bootlin.com>
 X-Mailer: git-send-email 2.30.0
+In-Reply-To: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
+References: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_084119_797553_3335E05B 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20210107_084121_425051_A865212D 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,28 +80,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds the required bits for RGA and VPU support on the
-Rockchip PX30 SoC.
+The PX30 has a VPU (both decoder and encoder) with a dedicated IOMMU.
+Describe these two entities in device-tree.
 
-Cheers,
+Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+---
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-Paul
-
-Paul Kocialkowski (5):
-  dt-bindings: media: rockchip-rga: Add PX30 compatible
-  arm64: dts: rockchip: Add RGA support to the PX30
-  dt-bindings: media: rockchip-vpu: Add PX30 compatible
-  arm64: dts: rockchip: Add VPU support for the PX30
-  media: hantro: Add support for the Rockchip PX30
-
- .../bindings/media/rockchip-rga.yaml          |  4 ++-
- .../bindings/media/rockchip-vpu.yaml          | 25 +++++++++-----
- arch/arm64/boot/dts/rockchip/px30.dtsi        | 34 +++++++++++++++++++
- drivers/staging/media/hantro/hantro_drv.c     |  5 +--
- drivers/staging/media/hantro/hantro_hw.h      |  1 +
- drivers/staging/media/hantro/rk3399_vpu_hw.c  | 21 ++++++++++++
- 6 files changed, 79 insertions(+), 11 deletions(-)
-
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index e056d1c32cc8..4322302a2685 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -986,6 +986,29 @@ gpu: gpu@ff400000 {
+ 		status = "disabled";
+ 	};
+ 
++	vpu: video-codec@ff442000 {
++		compatible = "rockchip,px30-vpu", "rockchip,rk3399-vpu";
++		reg = <0x0 0xff442000 0x0 0x800>;
++		interrupts = <GIC_SPI 80 IRQ_TYPE_LEVEL_HIGH>,
++			     <GIC_SPI 79 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "vepu", "vdpu";
++		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>, <&cru SCLK_CORE_VPU>;
++		clock-names = "aclk", "hclk", "sclk";
++		iommus = <&vpu_mmu>;
++		power-domains = <&power PX30_PD_VPU>;
++	};
++
++	vpu_mmu: iommu@ff442800 {
++		compatible = "rockchip,iommu";
++		reg = <0x0 0xff442800 0x0 0x100>;
++		interrupts = <GIC_SPI 81 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-names = "vpu_mmu";
++		clocks = <&cru ACLK_VPU>, <&cru HCLK_VPU>;
++		clock-names = "aclk", "iface";
++		#iommu-cells = <0>;
++		power-domains = <&power PX30_PD_VPU>;
++	};
++
+ 	dsi: dsi@ff450000 {
+ 		compatible = "rockchip,px30-mipi-dsi";
+ 		reg = <0x0 0xff450000 0x0 0x10000>;
 -- 
 2.30.0
 
