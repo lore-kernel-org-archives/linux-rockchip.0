@@ -2,58 +2,86 @@ Return-Path: <SRS0=faov=GK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DF29EC433E0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 19:08:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 61CF5C433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 23:59:26 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5D19023432
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 19:08:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5D19023432
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id E46C0235FD
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 23:59:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E46C0235FD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
-	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=zoXp0sBnR3qSKPJudkQ3iPWryOEaKH8zQVi+WLZ4Qqg=; b=aNSg6nKrvufSc0+PEnHT3jshZ
-	MaJJIFI3u1j/xysOcX6mMDNAC7+mO3sxTNtmFn9RG6qa3kJVeyUKsXNMuUBp3FHTncw2on5ZwZSrL
-	cICn734KNZtYWAfqLqW2Tv0oTOx3obSHzqHPHUpNljnTMxA+5NWb945Ae9YusI/EQF10HQew5tT6F
-	57zar9DD3rBcv1ZNUaZXPOFLsBAZbY4tKunvU74k0Nxi3uxB++fwUApo5QUFK7R2xUnhaTCE5Af5i
-	sxRnddV57PPXGKyFRPq3gePuv0Wz9ggfUwYT3cdStmbs2e/f/d41spdPcSq7luqT49DJ5gaYBhvvD
-	2fzaQ9Ufg==;
+	Content-Type:List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe
+	:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=oxlhnHoMAPaeFN0pKkMpF2mYGNpVNhW8zBJeeX4lwgw=; b=XX4YKbmFfRneXu+GLrBmGJtvVe
+	toVQcdUmdV59e94PHw7Xz8XtVG9HXXqMTmj3oIBj3b2AEYjDkcRBMy8qifTTDKbSGxrR6iyjfcsP8
+	2bekG1OpVE+rgHkv6XgzafLG2562I76c3qbgqTTFpT93Zuy/BD7Ugo5+u43mehE3vJACPMbQ9RgHS
+	qA30dzUNRPt9RLS9omsMqwF1JKidK540fBsqVUHZ0UXrvFd0ptQhOx4t2cB6EljG2CeuKlYGiEKV5
+	r6NNUWoHpebKBEj27eJ4FA2e9u60YV8F7x/uOJwAIiKtRdXHlshuKpnXad8OqlDCrNenXl0LzG5fc
+	9r40lu8w==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxae7-0008Q5-TT; Thu, 07 Jan 2021 19:08:32 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1kxfBY-00022k-EC; Thu, 07 Jan 2021 23:59:20 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxae1-0008Of-FG; Thu, 07 Jan 2021 19:08:29 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id 1F0991F4662A
-Message-ID: <f7291b83fe39d71c3192ea58ebf71e3909bd38af.camel@collabora.com>
-Subject: Re: [PATCH 5/5] media: hantro: Add support for the Rockchip PX30
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>, 
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-Date: Thu, 07 Jan 2021 16:08:10 -0300
-In-Reply-To: <20210107134101.195426-6-paul.kocialkowski@bootlin.com>
-References: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
- <20210107134101.195426-6-paul.kocialkowski@bootlin.com>
-Organization: Collabora
-User-Agent: Evolution 3.38.2-1 
+ id 1kxfBV-00021r-Bi; Thu, 07 Jan 2021 23:59:18 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id l23so5152884pjg.1;
+ Thu, 07 Jan 2021 15:59:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=i+8d2HurmLuY/fjmxjePAkINENkGN3Pzqi7ebx49cCY=;
+ b=CKsRpny0W3qEoMZ3k5PEtqHfo8t69e1shu/9KLTONKOxB/S/AgzMlChZplWwWdFx/x
+ 4XdDlPAGvA5eLw2CjTIqGZEJDNSErKRUnRVtcjTGM+8YLdCuMep5qLMgHWeR4+BNow/6
+ 3sdWYk5liQfpx+H/9fJAIAt459EJUqN8pfNKq0ZbESYrY01ELl40pMNAhs2b8hqS7CgS
+ EkxIMoUq3ZeNlpnleTfWo0i2U+Fp2+f/bylMYjHlTvbSZA/BuzllghsZmnG2l3uiL067
+ Ma/DoY+eXp0mjwJjJxQWvLM9oD/TPRdbWJrgtKPcCbw4APKHAsb+9/IKdzUFxuTGNMbh
+ 8Sww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=i+8d2HurmLuY/fjmxjePAkINENkGN3Pzqi7ebx49cCY=;
+ b=tJxG3ZKtGdALpUUV59vHnItuyjCdi813g/nfCxouUtCngyFtLk2d0QXhGuAujHpj2Z
+ TUybwFUQENGfbA1Exo25ud2UmKo2dT4VN6k+NRuR1RMJFwKsbOI+vRpNavCXvNEBIM3/
+ xE9HcgQaWftaPQI/YHFG0qLiFcNafvHBDRmQ0U8mAg4VatGIfCFA45WcmpOIg8XpXEeh
+ yW72/SYmoKUMZVFycYX7yUJdLfPTufwueQHcBkM83jik7z4XRgxuX7WVsuOLFmBsiGYz
+ c7O4UvDCk5uR6Y1g/4qxWDEh/woRod1+y7nZwPNUnFo/SXXZmswEMdAK8w5LN5nzlU1A
+ 5Mgw==
+X-Gm-Message-State: AOAM533tz5jO6LyEp4j6VRbwbYyaMK+rdqdGYOy/f4LfIJGZUx1WXN3U
+ ZEJ+88I7tMp7NXO4t1XXBi4=
+X-Google-Smtp-Source: ABdhPJzetQAFGdnSIb5NP1F1agOCW+TZUH0FGEVsGuGgipmIrUBL7jVjaqb1BMvkq2J5gt/jKOgH4Q==
+X-Received: by 2002:a17:90a:ea02:: with SMTP id w2mr872195pjy.99.1610063953408; 
+ Thu, 07 Jan 2021 15:59:13 -0800 (PST)
+Received: from x2.lan ([2400:4070:175b:7500::7a7])
+ by smtp.gmail.com with ESMTPSA id bf3sm6448195pjb.45.2021.01.07.15.59.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Jan 2021 15:59:12 -0800 (PST)
+From: Vincent Pelletier <plr.vincent@gmail.com>
+To: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
+ Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>, linux-rpi-kernel@lists.infradead.org
+Subject: spi: *: Call the dedicated transfer completion function.
+Date: Thu,  7 Jan 2021 23:58:29 +0000
+Message-Id: <20210107235832.839221-1-plr.vincent@gmail.com>
+X-Mailer: git-send-email 2.30.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_140825_683487_997C0C67 
-X-CRM114-Status: GOOD (  22.38  )
+X-CRM114-CacheID: sfid-20210107_185917_416317_FBD275F3 
+X-CRM114-Status: UNSURE (   7.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,102 +94,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Rob Herring <robh+dt@kernel.org>, Jacob Chen <jacob-chen@iotwrt.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUGF1bCwKCkhhcHB5IHRvIHNlZSB0aGlzIHBhdGNoLiBJdCB3YXMgb24gbXkgVE9ETyBsaXN0
-LApidXQgSSBoYWRuJ3QgaGFkIHRpbWUgdG8gYnJpbmd1cCBteSByazMzMjYgZGV2aWNlLgoKQSBm
-ZXcgY29tbWVudHMuCgpPbiBUaHUsIDIwMjEtMDEtMDcgYXQgMTQ6NDEgKzAxMDAsIFBhdWwgS29j
-aWFsa293c2tpIHdyb3RlOgo+IFRoZSBQWDMwIFNvQyBpbmNsdWRlcyBib3RoIHRoZSBWRFBVMiBh
-bmQgVkVQVTIgYmxvY2tzIHdoaWNoIGFyZSBzaW1pbGFyCj4gdG8gdGhlIFJLMzM5OSAoSGFudHJv
-IEcxL0gxIHdpdGggc2h1ZmZsZWQgcmVnaXN0ZXJzKS4KPiAKPiBCZXNpZGVzIHRha2luZyBhbiBl
-eHRyYSBjbG9jaywgaXQgYWxzbyBzaGFyZXMgYW4gaW50ZXJydXB0IHdpdGggdGhlIElPTU1VCj4g
-c28gaXQncyBuZWNlc3NhcnkgdG8gcmVxdWVzdCB0aGUgaW50ZXJydXB0IHNoYXJlZC4KPiAKCkNv
-dWxkIHlvdSBjbGFyaWZ5IG9uIHRoZSBjb21taXQgZGVzY3JpcHRpb24gd2hpY2ggaW9tbXUgZGV2
-aWNlIGludGVycnVwdApsaW5lIGlzIGJlaW5nIHNoYXJlZD8KCj4gU2lnbmVkLW9mZi1ieTogUGF1
-bCBLb2NpYWxrb3dza2kgPHBhdWwua29jaWFsa293c2tpQGJvb3RsaW4uY29tPgo+IC0tLQo+IMKg
-ZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9fZHJ2LmPCoMKgwqAgfMKgIDUgKysr
-LS0KPiDCoGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmjCoMKgwqDCoCB8
-wqAgMSArCj4gwqBkcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL3JrMzM5OV92cHVfaHcuYyB8
-IDIxICsrKysrKysrKysrKysrKysrKysrCj4gwqAzIGZpbGVzIGNoYW5nZWQsIDI1IGluc2VydGlv
-bnMoKyksIDIgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9t
-ZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9o
-YW50cm9fZHJ2LmMKPiBpbmRleCBlNWYyMDBlNjQ5OTMuLjA3NmE3NzgyYjQ3NiAxMDA2NDQKPiAt
-LS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19kcnYuYwo+ICsrKyBiL2Ry
-aXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2Rydi5jCj4gQEAgLTQ3Miw2ICs0NzIs
-NyBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHY0bDJfZmlsZV9vcGVyYXRpb25zIGhhbnRyb19mb3Bz
-ID0gewo+IMKgCj4gwqBzdGF0aWMgY29uc3Qgc3RydWN0IG9mX2RldmljZV9pZCBvZl9oYW50cm9f
-bWF0Y2hbXSA9IHsKPiDCoCNpZmRlZiBDT05GSUdfVklERU9fSEFOVFJPX1JPQ0tDSElQCj4gK8Kg
-wqDCoMKgwqDCoMKgeyAuY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxweDMwLXZwdSIsIC5kYXRhID0g
-JnB4MzBfdnB1X3ZhcmlhbnQsIH0sCj4gwqDCoMKgwqDCoMKgwqDCoHsgLmNvbXBhdGlibGUgPSAi
-cm9ja2NoaXAscmszMzk5LXZwdSIsIC5kYXRhID0gJnJrMzM5OV92cHVfdmFyaWFudCwgfSwKPiDC
-oMKgwqDCoMKgwqDCoMKgeyAuY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxyazMzMjgtdnB1IiwgLmRh
-dGEgPSAmcmszMzI4X3ZwdV92YXJpYW50LCB9LAo+IMKgwqDCoMKgwqDCoMKgwqB7IC5jb21wYXRp
-YmxlID0gInJvY2tjaGlwLHJrMzI4OC12cHUiLCAuZGF0YSA9ICZyazMyODhfdnB1X3ZhcmlhbnQs
-IH0sCj4gQEAgLTc5Niw4ICs3OTcsOCBAQCBzdGF0aWMgaW50IGhhbnRyb19wcm9iZShzdHJ1Y3Qg
-cGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoHJldHVybiAtRU5YSU87Cj4gwqAKPiDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoHJldCA9IGRldm1fcmVxdWVzdF9pcnEodnB1LT5kZXYsIGlycSwKPiAtwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgdnB1LT52YXJpYW50LT5pcnFzW2ldLmhhbmRsZXIsIDAsCj4gLcKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgIGRldl9uYW1lKHZwdS0+ZGV2KSwgdnB1KTsKPiArwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgdnB1LT52YXJpYW50LT5pcnFzW2ldLmhhbmRsZXIsCj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIElS
-UUZfU0hBUkVELCBkZXZfbmFtZSh2cHUtPmRldiksIHZwdSk7CgpNYXliZSB0aGlzIGlycSBmbGFn
-IHNob3VsZCBiZSBwYXJ0IG9mIHZwdS0+dmFyaWFudD8gSXQgc291bmRzIGxpa2UgYW4gSVAgYmxv
-Y2sKaW50ZWdyYXRpb24gc3BlY2lmaWMgdGhpbmcuCgpBbHNvLCB5b3Ugd2lsbCBuZWVkIGEgcHgz
-MC1zcGVjaWZpYyBpbnRlcnJ1cHQgaGFuZGxlciBub3csCnNpbmNlIHRoZSByazMzOTkgb25lIGlz
-IG5vdCBzaGFyZWQtZnJpZW5kbHkuCgo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-aWYgKHJldCkgewo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoGRldl9lcnIodnB1LT5kZXYsICJDb3VsZCBub3QgcmVxdWVzdCAlcyBJUlEuXG4iLAo+IMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqBpcnFfbmFtZSk7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50
-cm8vaGFudHJvX2h3LmggYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19ody5o
-Cj4gaW5kZXggMzRjOWU0NjQ5YTI1Li4wN2Y1MTZmZDdhMmUgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9zdGFnaW5nL21lZGlhL2hhbnRyby9oYW50cm9faHcuaAo+ICsrKyBiL2RyaXZlcnMvc3RhZ2lu
-Zy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgKPiBAQCAtMTQ4LDYgKzE0OCw3IEBAIGVudW0gaGFu
-dHJvX2VuY19mbXQgewo+IMKgwqDCoMKgwqDCoMKgwqBSSzMyODhfVlBVX0VOQ19GTVRfVVlWWTQy
-MiA9IDMsCj4gwqB9Owo+IMKgCj4gK2V4dGVybiBjb25zdCBzdHJ1Y3QgaGFudHJvX3ZhcmlhbnQg
-cHgzMF92cHVfdmFyaWFudDsKPiDCoGV4dGVybiBjb25zdCBzdHJ1Y3QgaGFudHJvX3ZhcmlhbnQg
-cmszMzk5X3ZwdV92YXJpYW50Owo+IMKgZXh0ZXJuIGNvbnN0IHN0cnVjdCBoYW50cm9fdmFyaWFu
-dCByazMzMjhfdnB1X3ZhcmlhbnQ7Cj4gwqBleHRlcm4gY29uc3Qgc3RydWN0IGhhbnRyb192YXJp
-YW50IHJrMzI4OF92cHVfdmFyaWFudDsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9zdGFnaW5nL21l
-ZGlhL2hhbnRyby9yazMzOTlfdnB1X2h3LmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJv
-L3JrMzM5OV92cHVfaHcuYwo+IGluZGV4IDdhNzk2MmNmNzcxZS4uNDExMmY5OGJhYTYwIDEwMDY0
-NAo+IC0tLSBhL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vcmszMzk5X3ZwdV9ody5jCj4g
-KysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9yazMzOTlfdnB1X2h3LmMKClBlcmhh
-cHMgaXQncyB0aW1lIHRvIHJlbmFtZSB0aGlzIHRvIHJvY2tjaGlwX3ZwdV9ody5jLAphbmQgbWVy
-Z2UgcmszMjg4IGFuZCByazMzOTk/IEl0J3MgYSBuaXRwaWNrLCB0aG91Z2guCgo+IEBAIC0yMjAs
-MyArMjIwLDI0IEBAIGNvbnN0IHN0cnVjdCBoYW50cm9fdmFyaWFudCByazMzMjhfdnB1X3Zhcmlh
-bnQgPSB7Cj4gwqDCoMKgwqDCoMKgwqDCoC5jbGtfbmFtZXMgPSByazMzOTlfY2xrX25hbWVzLAo+
-IMKgwqDCoMKgwqDCoMKgwqAubnVtX2Nsb2NrcyA9IEFSUkFZX1NJWkUocmszMzk5X2Nsa19uYW1l
-cyksCj4gwqB9Owo+ICsKPiArc3RhdGljIGNvbnN0IGNoYXIgKiBjb25zdCBweDMwX2Nsa19uYW1l
-c1tdID0gewo+ICvCoMKgwqDCoMKgwqDCoCJhY2xrIiwgImhjbGsiLCAic2NsayIKPiArfTsKPiAr
-Cj4gK2NvbnN0IHN0cnVjdCBoYW50cm9fdmFyaWFudCBweDMwX3ZwdV92YXJpYW50ID0gewo+ICvC
-oMKgwqDCoMKgwqDCoC5lbmNfb2Zmc2V0ID0gMHgwLAo+ICvCoMKgwqDCoMKgwqDCoC5lbmNfZm10
-cyA9IHJrMzM5OV92cHVfZW5jX2ZtdHMsCj4gK8KgwqDCoMKgwqDCoMKgLm51bV9lbmNfZm10cyA9
-IEFSUkFZX1NJWkUocmszMzk5X3ZwdV9lbmNfZm10cyksCj4gK8KgwqDCoMKgwqDCoMKgLmRlY19v
-ZmZzZXQgPSAweDQwMCwKPiArwqDCoMKgwqDCoMKgwqAuZGVjX2ZtdHMgPSByazMzOTlfdnB1X2Rl
-Y19mbXRzLAo+ICvCoMKgwqDCoMKgwqDCoC5udW1fZGVjX2ZtdHMgPSBBUlJBWV9TSVpFKHJrMzM5
-OV92cHVfZGVjX2ZtdHMpLAo+ICvCoMKgwqDCoMKgwqDCoC5jb2RlYyA9IEhBTlRST19KUEVHX0VO
-Q09ERVIgfCBIQU5UUk9fTVBFRzJfREVDT0RFUiB8Cj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCBIQU5UUk9fVlA4X0RFQ09ERVIsCj4gK8KgwqDCoMKgwqDCoMKgLmNvZGVjX29wcyA9
-IHJrMzM5OV92cHVfY29kZWNfb3BzLAo+ICvCoMKgwqDCoMKgwqDCoC5pcnFzID0gcmszMzk5X2ly
-cXMsCj4gK8KgwqDCoMKgwqDCoMKgLm51bV9pcnFzID0gQVJSQVlfU0laRShyazMzOTlfaXJxcyks
-Cj4gK8KgwqDCoMKgwqDCoMKgLmluaXQgPSByazMzOTlfdnB1X2h3X2luaXQsCj4gK8KgwqDCoMKg
-wqDCoMKgLmNsa19uYW1lcyA9IHB4MzBfY2xrX25hbWVzLAo+ICvCoMKgwqDCoMKgwqDCoC5udW1f
-Y2xvY2tzID0gQVJSQVlfU0laRShweDMwX2Nsa19uYW1lcykKPiArfTsKClRoYW5rcywKRXplcXVp
-ZWwKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+Hello,
+
+I started this fix on bcm2835.c and, because of its simplicity, thought
+I should check other controllers as well.
+This patch set should fix all occurrences, as of v5.11-rc2, of an SPI
+controller driver calling
+  complete(&...->xfer_completion);
+when it could call
+  spi_finalize_current_transfer(...);
+as requested in Documentation/spi/spi-summary.rst .
+
+While I did build all modified files, and these should be trivial to
+check for correctness, I have not exercised all codepaths.
+I have exercised spi-bcm2835 IRQ and DMA tx, but I am still hunting
+for another issue which causes completion timeouts at spi/spi.c level
+which seem to affect spi-bcm2835 dma transfers (both before and after
+this patch set).
+
+Regards,
+Vincent Pelletier
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
