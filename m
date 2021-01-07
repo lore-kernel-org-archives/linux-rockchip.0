@@ -2,69 +2,59 @@ Return-Path: <SRS0=faov=GK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B847DC433DB
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 12:54:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D2E9FC433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 13:41:33 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 36B0B2336D
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 12:54:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 36B0B2336D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.microsoft.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5FA952312F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 13:41:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FA952312F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
+	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
+	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=wTX0JTDHtS5nWvzD9CZPtpWDZg9pUnrML1vT93q7aaU=; b=KXz5Q/7j/7qZCKOh6vfONXZfB
-	njByLHqGSpxRfC1LrTkL5DIQWQuUXST07zJPBp0isCraF11+uDF7fWuMsix5h3yxBWX79Flz6wnj6
-	8fumKliJ5fbnP9hTpZO5jo6VXq75BzXe2lHPGnqagGpaOLPobobBVzO/0s8DshhHNLTnw3dwcwWgB
-	5yYUx7FhdXx77mO3a0n+DpRVLL+7P7cH9HDOH523uxNvsHezsIbYHCSsmsJ/MGnnv08tyru3LXOlT
-	CCY6wI93KAMBBrQS4FbWu2njRGeIE82/GUbBsW+8yqh6kd6yrqsdMlmwoR3Vf+Q/KEvY+jV7SB74Y
-	qYxISnkVA==;
+	 bh=4EWEy8IqntyWYkt5jgkfLA8sMdwuBypyzvqco3XMLmc=; b=TLEgsQJnpfyJneQt/lKdwYc+A
+	A941x6EWEkf2Z3hhMF6R7RQtHgQQDiLkmNTdLjjH0E0DJHTQycf7N76v+CDCHwDHScv3ujzDsTqxF
+	I6t+dAdoy+d98NYeLPUNZSjQrMEw7S4HrbNgzv3uHsIja8vnwHap8qvvtML08aDa2vAoklY3KJDzT
+	cM31yiqGbOmgPvxKlr0p5E1HQKBZR+Jh8nV1ZCouXINIE9jkAd7Qc/5Ycv/OFL6zleVOpwnFLyvnA
+	VWRD7fmPy5yP69ZML9PahUP8G/7K9zjKiYkvY+ne8W7ln1r20dUqPX85UEv5ANp5864LnvT0nsklE
+	P9sNA5GJA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxUoB-0005vY-R8; Thu, 07 Jan 2021 12:54:31 +0000
-Received: from linux.microsoft.com ([13.77.154.182])
- by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxUgB-0001ev-In; Thu, 07 Jan 2021 12:46:20 +0000
-Received: from [192.168.0.114] (unknown [49.207.211.144])
- by linux.microsoft.com (Postfix) with ESMTPSA id C5DF420B7192;
- Thu,  7 Jan 2021 04:46:02 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com C5DF420B7192
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1610023571;
- bh=oRvau2/egDUl+G19e+mKJcct9N7ThAjp83e0jgPJfTU=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=ElN2p/YLxSOxarXXe6EodJy3spbth4RctmOJskoyN8cmf+kXe44AeZXr/K7pWKgss
- jHEcRvV984of41rQRvStOiGhwCs9ciGhHnZEB7KeHM+VxG8NROIKn+aUowmt2vjSJX
- zmp7qqUgujmS+rW2cP1cOdEmYc9MZHqV4iaK9orY=
-Subject: Re: [PATCH v2 16/19] crypto: rockchip: convert tasklets to use new
- tasklet_setup() API
-To: Emil Renner Berthing <emil.renner.berthing@gmail.com>,
- Allen Pais <allen.lkml@gmail.com>
-References: <20210107122944.16363-1-allen.lkml@gmail.com>
- <20210107122944.16363-13-allen.lkml@gmail.com>
- <CANBLGcziNt5R9H2eh=3y=jUUjFzHJo+G1FgVVYRgxZpfE8W-6Q@mail.gmail.com>
-From: Allen Pais <apais@linux.microsoft.com>
-Message-ID: <546446ed-27e0-e74d-f290-cd8c9097b1ca@linux.microsoft.com>
-Date: Thu, 7 Jan 2021 18:15:56 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+	id 1kxVXb-0003Qf-SX; Thu, 07 Jan 2021 13:41:27 +0000
+Received: from relay6-d.mail.gandi.net ([217.70.183.198])
+ by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
+ id 1kxVXS-0003N7-Hj; Thu, 07 Jan 2021 13:41:20 +0000
+X-Originating-IP: 93.29.109.196
+Received: from localhost.localdomain (196.109.29.93.rev.sfr.net
+ [93.29.109.196])
+ (Authenticated sender: paul.kocialkowski@bootlin.com)
+ by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 54C7BC0011;
+ Thu,  7 Jan 2021 13:41:15 +0000 (UTC)
+From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH 1/5] dt-bindings: media: rockchip-rga: Add PX30 compatible
+Date: Thu,  7 Jan 2021 14:40:57 +0100
+Message-Id: <20210107134101.195426-2-paul.kocialkowski@bootlin.com>
+X-Mailer: git-send-email 2.30.0
+In-Reply-To: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
+References: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
 MIME-Version: 1.0
-In-Reply-To: <CANBLGcziNt5R9H2eh=3y=jUUjFzHJo+G1FgVVYRgxZpfE8W-6Q@mail.gmail.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_074615_976354_41B99056 
-X-CRM114-Status: GOOD (  19.81  )
+X-CRM114-CacheID: sfid-20210107_084118_723623_B0FC28C6 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,102 +67,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
- aymen.sghaier@nxp.com, Heiko Stuebner <heiko@sntech.de>, schalla@marvell.com,
- jamie@jamieiles.com, jesper.nilsson@axis.com,
- linux-samsung-soc@vger.kernel.org, herbert@gondor.apana.org.au,
- horia.geanta@nxp.com, k.konieczny@samsung.com, qat-linux@intel.com,
- krzk@kernel.org,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- ludovic.desroches@microchip.com, thomas.lendacky@amd.com, arno@natisbad.org,
- vz@mleia.com, gilad@benyossef.com, gcherian@marvell.com,
- linux-mediatek@lists.infradead.org, lars.persson@axis.com,
- matthias.bgg@gmail.com, john.allen@amd.com, bbrezillon@kernel.org,
- nicolas.ferre@microchip.com, linux-crypto@vger.kernel.org,
- Romain Perier <romain.perier@gmail.com>,
- "David S . Miller" <davem@davemloft.net>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Paul Kocialkowski <paul.kocialkowski@bootlin.com>,
+ Jacob Chen <jacob-chen@iotwrt.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Ezequiel Garcia <ezequiel@collabora.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Add a new compatible for the PX30 Rockchip SoC, which also features
+a RGA block. It is compatible with the RK3288 RGA block.
 
+Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
+---
+ Documentation/devicetree/bindings/media/rockchip-rga.yaml | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-> 
-> On Thu, 7 Jan 2021 at 13:32, Allen Pais <allen.lkml@gmail.com> wrote:
->>
->> From: Allen Pais <apais@linux.microsoft.com>
->>
->> In preparation for unconditionally passing the
->> struct tasklet_struct pointer to all tasklet
->> callbacks, switch to using the new tasklet_setup()
->> and from_tasklet() to pass the tasklet pointer explicitly.
->>
->> Signed-off-by: Romain Perier <romain.perier@gmail.com>
->> Signed-off-by: Allen Pais <apais@linux.microsoft.com>
->> ---
->>   drivers/crypto/rockchip/rk3288_crypto.c | 14 ++++++--------
->>   1 file changed, 6 insertions(+), 8 deletions(-)
->>
->> diff --git a/drivers/crypto/rockchip/rk3288_crypto.c b/drivers/crypto/rockchip/rk3288_crypto.c
->> index 35d73061d156..af6ad9f49009 100644
->> --- a/drivers/crypto/rockchip/rk3288_crypto.c
->> +++ b/drivers/crypto/rockchip/rk3288_crypto.c
->> @@ -201,9 +201,9 @@ static int rk_crypto_enqueue(struct rk_crypto_info *dev,
->>          return ret;
->>   }
->>
->> -static void rk_crypto_queue_task_cb(unsigned long data)
->> +static void rk_crypto_queue_task_cb(struct tasklet_struct *T)
->>   {
->> -       struct rk_crypto_info *dev = (struct rk_crypto_info *)data;
->> +       struct rk_crypto_info *dev = from_tasklet(dev, t, queue_task);
-> 
-> This doesn't look right. First it's called T and then t. I wonder how
-> this even compiles..
-> 
+diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.yaml b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+index dd645ddccb07..4ffdb317b606 100644
+--- a/Documentation/devicetree/bindings/media/rockchip-rga.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
+@@ -21,7 +21,9 @@ properties:
+       - const: rockchip,rk3288-rga
+       - const: rockchip,rk3399-rga
+       - items:
+-          - const: rockchip,rk3228-rga
++          - enum:
++            - rockchip,px30-rga
++            - rockchip,rk3228-rga
+           - const: rockchip,rk3288-rga
+ 
+   reg:
+-- 
+2.30.0
 
-   Thanks for catching it. I am not sure how I missed it and it even 
-compiled. I will fix it.
-
-Thanks.
-
->>          struct crypto_async_request *async_req, *backlog;
->>          unsigned long flags;
->>          int err = 0;
->> @@ -231,9 +231,9 @@ static void rk_crypto_queue_task_cb(unsigned long data)
->>                  dev->complete(dev->async_req, err);
->>   }
->>
->> -static void rk_crypto_done_task_cb(unsigned long data)
->> +static void rk_crypto_done_task_cb(struct tasklet_struct *t)
->>   {
->> -       struct rk_crypto_info *dev = (struct rk_crypto_info *)data;
->> +       struct rk_crypto_info *dev = from_tasklet(dev, t, done_task);
->>
->>          if (dev->err) {
->>                  dev->complete(dev->async_req, dev->err);
->> @@ -389,10 +389,8 @@ static int rk_crypto_probe(struct platform_device *pdev)
->>          crypto_info->dev = &pdev->dev;
->>          platform_set_drvdata(pdev, crypto_info);
->>
->> -       tasklet_init(&crypto_info->queue_task,
->> -                    rk_crypto_queue_task_cb, (unsigned long)crypto_info);
->> -       tasklet_init(&crypto_info->done_task,
->> -                    rk_crypto_done_task_cb, (unsigned long)crypto_info);
->> +       tasklet_setup(&crypto_info->queue_task, rk_crypto_queue_task_cb);
->> +       tasklet_setup(&crypto_info->done_task, rk_crypto_done_task_cb);
->>          crypto_init_queue(&crypto_info->queue, 50);
->>
->>          crypto_info->enable_clk = rk_crypto_enable_clk;
->> --
->> 2.25.1
->>
->>
->> _______________________________________________
->> Linux-rockchip mailing list
->> Linux-rockchip@lists.infradead.org
->> http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
 _______________________________________________
 Linux-rockchip mailing list
