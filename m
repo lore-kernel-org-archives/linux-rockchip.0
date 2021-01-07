@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 955A7C433DB
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 23:59:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 93326C433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 23:59:30 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4FA2F235FD
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 23:59:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4FA2F235FD
+	by mail.kernel.org (Postfix) with ESMTPS id 5287C235FD
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 23:59:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5287C235FD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,68 +24,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:
 	Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ckFD9UkMBJFBY/AXBwiHLqIe7kkHGd3kfqakjzC5+PM=; b=Ms8kHMOu8SbWzwl0WAP+1sU1vW
-	bge4h6MkWvQynXeJloqf1RCPaYm8gg4udUzWMAHmMlMHmFD5jxAFuUJPa+yexEQJ1UPD6B2j62VyM
-	OFI4/nOxZlQNMlCOdjdrib/W8hgrn4tgoRYuyvDo/uWII0RG0lYOdNnhZgfz1A6/5E4+lvXPyaNnC
-	xWvRUqKvX+famBzGMiduEVhImriZl5GAJYKnFG0O5QWDUzebRd89177phbduWiVS6WRQHpeT1M7hf
-	MycFJG8Mowo4z67axog51VhAnuHgKVVJ4IO121oXJV0g/yOh5WtOCFStBxD6VVMBSkolhhb7oHebL
-	i3tpPdoQ==;
+	bh=VENtxYlf/oYGlvIvOxcE902Fm28Qg0FF+8iYwt5SBcM=; b=vronkugFH1TaVDCUs3/Z1L24Q1
+	a95PTeYFdRLFf4dHb6q7uZj0Qr/8+wLeEyT0aEW7MtmW5LslYgq+ZYzNDihOQQRxYDYZm/q5CYAIW
+	DKhD2CoROEeQZle5egTVgfqDNv7Vm60Z/6aqWGUbw8qGQsyckHqJpLRGM3bRvx1pW9ohio8cyC2f5
+	cVWKQ2LEAZP33mB45VdQz7nKQS7cvOC6CSvnxeOmy64U23ScIpd5DBockYE8qrrPDCeV+h1Xl9QkB
+	uja1zwM0VaZBdmKymGJgW+eeSkJQ2R8H+Pf5UdqHdNz+Lr4GTgq1XFmNQ0IqdfG6Ywk4kUv1upoCA
+	4sjeRGXQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxfBZ-00022z-Hx; Thu, 07 Jan 2021 23:59:21 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1kxfBe-00025D-Vp; Thu, 07 Jan 2021 23:59:27 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxfBW-000222-BV; Thu, 07 Jan 2021 23:59:19 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id s15so4710095plr.9;
- Thu, 07 Jan 2021 15:59:18 -0800 (PST)
+ id 1kxfBc-00023j-LI; Thu, 07 Jan 2021 23:59:25 +0000
+Received: by mail-pf1-x432.google.com with SMTP id h186so5110993pfe.0;
+ Thu, 07 Jan 2021 15:59:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=1zT4HWOZj8+DNGvXT+tQbujMnSkK9ZiyjWReVuMf2E8=;
- b=eDHF8SwHkQ93Gv+k2sh6Li/bNUnwyQVO+OLN8WfEw0lgaafcE78E16ZyJJYqxRIJNc
- VXyPGjl3TzteoFFqsToaR1ZJnsvjxyJ/Le/OaQ01ea0FekLNj8ZiEvbUwoYF4e4buHUz
- 9F1bYF+4RmiuTnjsSAkPeES1PLZ5aQr8hi/ciuFezL48tq2JISgX1ftAtZ9Qyc4zqqxm
- /PU12vtOV1SsfybUCNWgoe387JnpV5hWWn4dhQoncSOGrhr2pnFOWVuPbCKgCLPwIUS9
- EAS2Gn95SJtBm0MRDomS7yzpbZ5zbvTkTQANS53jSS2zbn4f0s/OrsfGTQ7YPQ3DrIZF
- jonA==
+ bh=oJVh/my9+9Gu7+k7keDLqkZNyRGli6f9+DmOVRImkkY=;
+ b=CWZJyXyJQbF9Na1Pzs4NcHk2oB3TaHSm2tHAKLDv9bNLnngpjSwEi6m7CG/CPflpZC
+ tVzwSakepZZWnoIW1sALg3ZjoZ4BF7lKyKdoPTkzVAmSgLcwe8CoymbdqiBC8kC7iErB
+ yQbpAVE6WXn8ON0w9sUuMcxh1BxlTZJaQm/Z0Ztb/wAIBHpVP4hqX3lGrTUq4kS40+FS
+ oHplBwspj//AOKKcPQQR/qdRYc+Tiv6VaRx2LIaapwvsHzzQHJZCR8GNCzklAsc49YD6
+ +B8yn/7/oHcRA364M4w4gZ3nn6BzaIsGMAQpMdqkPqPsTYbRPUBSdGjap6RNx0soylYm
+ thAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=1zT4HWOZj8+DNGvXT+tQbujMnSkK9ZiyjWReVuMf2E8=;
- b=ZG3W0tNZ3iYdDZKRTD2yadxNlUOabSH8qk0l8b16igKBFXgo5iepOaEvFTsw/Q4Rr3
- vpK7Lk7Azu7iOuAsJCApX4Mi6Rx8rMIK6RvBmA6apLeB9QLzIOmqD1OoJmkfDv6MFAMz
- stJ1jETNtSD8dfbSCB0S/lGsoHmEgqiEpj2aUdauK6c3qgjGPT71/W8giErM96w5KDbX
- dB3D2SCxlExpAgtWOHqbHk6zyBC2KtotJaviQA4VvhQ6zD3yMrTMtKWokyR5GiQoCp+5
- 9q/cqtXQFjUq646bvBnIZb1GBbr5MnwEgmauDqMDfsRFfFeWkCpOPTflM/xQktqWxIP3
- 8Dbw==
-X-Gm-Message-State: AOAM533pZFE6Zd/lE8lHZHB8ivfi7l2boENlXX6fwUU+uj8DCrLPRFy7
- AIHMJ0+h+4nOSZXmMxZe4S+pIQLr2x4CvA==
-X-Google-Smtp-Source: ABdhPJxMZjfgFn+blSTgxtMCQPjl7EHjF4IiZVYspJNDnRqtGydpf+fVNJLW3TGRpNthvi5Tye72Pg==
-X-Received: by 2002:a17:90a:a012:: with SMTP id
- q18mr842727pjp.223.1610063956619; 
- Thu, 07 Jan 2021 15:59:16 -0800 (PST)
+ bh=oJVh/my9+9Gu7+k7keDLqkZNyRGli6f9+DmOVRImkkY=;
+ b=D5gH+ffWDdT3YX9g8qqDbc0HtODehKHhmX5U1ec6sSb2f1gvtI334TV7KsnjIwdodT
+ +QV17G1Fqw6OS7YbDqVoNXrZ2FqTR+8NLgVB0YnEanUP4zZ3Y86VJR1oa3W6iISN3+W8
+ Zms/2f1p0uVOzyeP2S+yX0aeJbSzY9n2/GmO0rHJGJxHWLfzUtTCoFEI5OOqikGFGpgM
+ kSiSII81qshJgYPxfzT1tfe5+eZDfqGFj+F81OmPZRu7xHzktlI2MCqzovpcTYGSc1XJ
+ 5nwnXpVnwNoXZU48xWInnDBF4caoIfSBDpPRVGy0ON8rprSc5d4fD0jNCK7xd6jBdftY
+ YfaQ==
+X-Gm-Message-State: AOAM531iPwrczRxQXjMjdCXuqHAyL0pYX2h9hEFjM+Ae0Ppv6T2HKXnp
+ pXKsrEOjINFxtvOYdDqr2cA=
+X-Google-Smtp-Source: ABdhPJz3du2kRkADciN7SImnBCQ6L07nS036HGi6RwOFEunY/bLqZLsRFbrNvPFqaexZ/qjIuPzXlQ==
+X-Received: by 2002:a63:f19:: with SMTP id e25mr4200495pgl.220.1610063962848; 
+ Thu, 07 Jan 2021 15:59:22 -0800 (PST)
 Received: from x2.lan ([2400:4070:175b:7500::7a7])
- by smtp.gmail.com with ESMTPSA id bf3sm6448195pjb.45.2021.01.07.15.59.13
+ by smtp.gmail.com with ESMTPSA id bf3sm6448195pjb.45.2021.01.07.15.59.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Jan 2021 15:59:15 -0800 (PST)
+ Thu, 07 Jan 2021 15:59:22 -0800 (PST)
 From: Vincent Pelletier <plr.vincent@gmail.com>
 To: Mark Brown <broonie@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
  linux-spi@vger.kernel.org, linux-rockchip@lists.infradead.org,
  Nicolas Saenz Julienne <nsaenzjulienne@suse.de>,
  Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
  Scott Branden <sbranden@broadcom.com>, linux-rpi-kernel@lists.infradead.org
-Subject: [1/3] spi: bcm2835: Call the dedicated transfer completion function.
-Date: Thu,  7 Jan 2021 23:58:30 +0000
-Message-Id: <633c3d5c350dde4d14ce2120c32698c25b95d302.1610062884.git.plr.vincent@gmail.com>
+Subject: [3/3] spi: rockchip: Call the dedicated transfer completion function.
+Date: Thu,  7 Jan 2021 23:58:32 +0000
+Message-Id: <f3e1cf19a7dcdd77adc0a719adf46449b84ccadd.1610062884.git.plr.vincent@gmail.com>
 X-Mailer: git-send-email 2.30.0
-In-Reply-To: <20210107235832.839221-1-plr.vincent@gmail.com>
-References: <20210107235832.839221-1-plr.vincent@gmail.com>
+In-Reply-To: <633c3d5c350dde4d14ce2120c32698c25b95d302.1610062884.git.plr.vincent@gmail.com>
+References: <633c3d5c350dde4d14ce2120c32698c25b95d302.1610062884.git.plr.vincent@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_185918_417649_5C0F0FA0 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210107_185924_711983_550A72C5 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,40 +106,22 @@ functional change is expected.
 
 Signed-off-by: Vincent Pelletier <plr.vincent@gmail.com>
 ---
- drivers/spi/spi-bcm2835.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/spi/spi-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/spi/spi-bcm2835.c b/drivers/spi/spi-bcm2835.c
-index 197485f2c2b2..dbadbc4638e9 100644
---- a/drivers/spi/spi-bcm2835.c
-+++ b/drivers/spi/spi-bcm2835.c
-@@ -386,7 +386,7 @@ static irqreturn_t bcm2835_spi_interrupt(int irq, void *dev_id)
- 		/* Transfer complete - reset SPI HW */
- 		bcm2835_spi_reset_hw(bs);
- 		/* wake up the framework */
--		complete(&bs->ctlr->xfer_completion);
-+		spi_finalize_current_transfer(bs->ctlr);
- 	}
+diff --git a/drivers/spi/spi-rockchip.c b/drivers/spi/spi-rockchip.c
+index 09d8e92400eb..936ef54e0903 100644
+--- a/drivers/spi/spi-rockchip.c
++++ b/drivers/spi/spi-rockchip.c
+@@ -566,7 +566,7 @@ static int rockchip_spi_slave_abort(struct spi_controller *ctlr)
+ 	struct rockchip_spi *rs = spi_controller_get_devdata(ctlr);
  
- 	return IRQ_HANDLED;
-@@ -608,7 +608,7 @@ static void bcm2835_spi_dma_rx_done(void *data)
- 	bcm2835_spi_reset_hw(bs);
- 
- 	/* and mark as completed */;
+ 	rs->slave_abort = true;
 -	complete(&ctlr->xfer_completion);
 +	spi_finalize_current_transfer(ctlr);
+ 
+ 	return 0;
  }
- 
- /**
-@@ -640,7 +640,7 @@ static void bcm2835_spi_dma_tx_done(void *data)
- 
- 	bcm2835_spi_undo_prologue(bs);
- 	bcm2835_spi_reset_hw(bs);
--	complete(&ctlr->xfer_completion);
-+	spi_finalize_current_transfer(ctlr);
- }
- 
- /**
 -- 
 2.30.0
 
