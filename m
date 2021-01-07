@@ -2,86 +2,58 @@ Return-Path: <SRS0=faov=GK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 09138C433DB
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 12:32:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 90031C433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 12:32:44 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A314A23358
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 12:32:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org A314A23358
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 37D5B23356
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 12:32:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 37D5B23356
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
+	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=vZUw7e0lOj1xd2Wh/BYhWi/rkzykNNRyk3wO+QAmY9w=; b=unC5f36m+gGnzl5RyTjLallEv
-	9I8tKpeh0OVznCWGdaeL58jDkerbg2fT5EWpEupEQPC+H8aDCEHhi/BdcV8Q880ssEnr0sMXJit/v
-	f1b0IhzFZuJTIDLETN2gZ52+xxUVLFHoSY6PXxllBnqlhp/UW5hE9TuPY5Ln2HGeBrkkwH2vKINKL
-	gAY6UZgPG/L+sAgtUkDj6BLsRJFNY/e00bQ/OFK4nik4KI1Uj1W0zxvrugn0dwzKOzfGcYbl62PxU
-	IwMnekuBSc0lphxS/unxxH0+jVQz9eRS40Bp+cYwz4+FnoGyqGNBmcdxdRUd72IDz5r7boEG98yV7
-	e2xdA+dyA==;
+	 bh=NrhsqHfUJtlto+xNIPD0yxW68OPXdhu1w+YSXw11zY0=; b=nZo8pnxY8MTm8O1xbu6cUXK2y
+	2aSregElAQzhk6tIccTEeSnRKjFE9aRyqujboThpJMfxzlmQJmvoyWWN+ZYkWuyZm0n80Wwar7bRp
+	x/sJ2/oGAdCW49sEtLatdFjky/1H2NUOjz17Q+4NsVxHXehVuClPHGqpWhW2vpcYKvsrKR9nPSPvc
+	TrytKcZxICS9lYYE+wQrZ68OlIrfQznQzAX/LGFoL7Yq0JtIMGJTu5ysnZUnXka9MdZgFxql6dHEy
+	n4ow6Z9N1tYKX3BQGkS3uPPQsyWJD86C+6NrdXI8z3DXDLKqsBvV8kWd8ggsPRhUT+8Uvp7FsPqoQ
+	OIovAfpBQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxUSn-00053j-3U; Thu, 07 Jan 2021 12:32:25 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1kxUT3-0005C8-6b; Thu, 07 Jan 2021 12:32:41 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxUSh-0004zI-OA; Thu, 07 Jan 2021 12:32:20 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id q4so3406645plr.7;
- Thu, 07 Jan 2021 04:32:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=nmGD8HgPe/79+tkqFpZtuKTtNUxMt+0Wii+rdB2TPJ0=;
- b=S4LNIh9R6yyfuQUC+97w6+ddLUmLZts28spXG4s3H2FtN63hu9uKU4xyqyNAaURVtl
- MrEoseabVLnbPwm4szc+NBo3o6mQ6oNDvq79kNnzMzf+eSGD3U53lSioAf2cU0sTVx6d
- f3DTuXE5WYhBTPbycCxa6p3Em5hFNd/hzmb8ZOvDpGBmqzWZNyCnHDqqjt72U4HtEQ2h
- 9lkZqR+IabZBTkSqHXDQqAaLkI0A/EPMfO0SUQutv1gLXBlPX5KENzoKX5gxKHYGxuvY
- Rs0TWa9WbyQmSdqmJsJ5qlA9aTFN+w2bppat+Roha+o29T2fcaL0dmRWmf/sBmG9IbnS
- TGmQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=nmGD8HgPe/79+tkqFpZtuKTtNUxMt+0Wii+rdB2TPJ0=;
- b=m8rxYt8+PggVaRh8oqUT3xjbyoCoaKKXHANjBNvOF4TyNDbvmJ8gp0NVDmC9AMaCHp
- fB1S+nHJ/7cM1lw5nTbqUgM68sWXEN36C+gl3p+hOj/yRf0oEkbLs6GgTrPWliGWxJ4P
- eSXzm/F4B6Z5P8laP9BNEdi8x2o5DoH6zj6aaqIgVdEUu5/XyfMxFvkSjdyKVrBQIC2b
- ORyd+KSRSguwD4T/HDchmdgEnPL+7sAnCqEK/L42+gLkL1h/pUhKkBw6uxJ9335lGrKA
- wrBjDBjcM68eQOTxgxdlDO/4v5JDAt26KA0BhEtBFTbmzirJJt94dSUa5yqUIv07DZNq
- Bbbw==
-X-Gm-Message-State: AOAM531MTp3sfcOHILAxo0eamdJiqVKjDbPYJKK7SfPcsLd+L23mfpxd
- EkBRWZbGOHPoo461cQid5z8=
-X-Google-Smtp-Source: ABdhPJwUHfulHl4CVzwuW48JZr7yc4B+TDj4yp3uEqLNhqwdi5LQG75OesrunlT96l85jZk7PELY/A==
-X-Received: by 2002:a17:90b:815:: with SMTP id
- bk21mr8954482pjb.21.1610022737613; 
- Thu, 07 Jan 2021 04:32:17 -0800 (PST)
-Received: from localhost.localdomain ([49.207.216.201])
- by smtp.gmail.com with ESMTPSA id h12sm6356014pgk.70.2021.01.07.04.32.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Jan 2021 04:32:16 -0800 (PST)
-From: Allen Pais <allen.lkml@gmail.com>
-To: herbert@gondor.apana.org.au
-Subject: [PATCH v2 19/19] crypto: octeontx: convert tasklets to use new
- tasklet_setup() API
-Date: Thu,  7 Jan 2021 17:59:44 +0530
-Message-Id: <20210107122944.16363-16-allen.lkml@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210107122944.16363-1-allen.lkml@gmail.com>
-References: <20210107122944.16363-1-allen.lkml@gmail.com>
+ id 1kxUT0-0005AE-9k
+ for linux-rockchip@lists.infradead.org; Thu, 07 Jan 2021 12:32:39 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: ezequiel) with ESMTPSA id 931831F4628C
+Message-ID: <f499532ca147a0d2907a5020fb69def89d4c69a6.camel@collabora.com>
+Subject: Re: [PATCH] media: rkvdec: silence ktest bot build warning
+From: Ezequiel Garcia <ezequiel@collabora.com>
+To: Boris Brezillon <boris.brezillon@collabora.com>, Hans Verkuil
+ <hverkuil@xs4all.nl>
+Date: Thu, 07 Jan 2021 09:32:28 -0300
+In-Reply-To: <20210107124132.3648e789@collabora.com>
+References: <20201208155540.340583-1-adrian.ratiu@collabora.com>
+ <76b5569c-bc19-3d11-4da7-cf0dbb244433@xs4all.nl>
+ <20210107124132.3648e789@collabora.com>
+Organization: Collabora
+User-Agent: Evolution 3.38.2-1 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_073219_832867_CA723558 
-X-CRM114-Status: GOOD (  13.25  )
+X-CRM114-CacheID: sfid-20210107_073238_468648_D62AD3A8 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,71 +66,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
- aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
- jamie@jamieiles.com, jesper.nilsson@axis.com,
- linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
- k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
- linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
- thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
- gcherian@marvell.com, linux-mediatek@lists.infradead.org,
- lars.persson@axis.com, matthias.bgg@gmail.com,
- Allen Pais <apais@linux.microsoft.com>, john.allen@amd.com,
- bbrezillon@kernel.org, nicolas.ferre@microchip.com,
- linux-crypto@vger.kernel.org, davem@davemloft.net
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: devel@driverdev.osuosl.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ kernel test robot <lkp@intel.com>, Adrian Ratiu <adrian.ratiu@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ kernel@collabora.com, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Allen Pais <apais@linux.microsoft.com>
-
-In preparation for unconditionally passing the
-struct tasklet_struct pointer to all tasklet
-callbacks, switch to using the new tasklet_setup()
-and from_tasklet() to pass the tasklet pointer explicitly.
-
-Signed-off-by: Allen Pais <apais@linux.microsoft.com>
----
- drivers/crypto/marvell/octeontx/otx_cptvf_main.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/crypto/marvell/octeontx/otx_cptvf_main.c b/drivers/crypto/marvell/octeontx/otx_cptvf_main.c
-index c076d0b3ad5f..831550123719 100644
---- a/drivers/crypto/marvell/octeontx/otx_cptvf_main.c
-+++ b/drivers/crypto/marvell/octeontx/otx_cptvf_main.c
-@@ -17,11 +17,12 @@
- #define DRV_NAME	"octeontx-cptvf"
- #define DRV_VERSION	"1.0"
- 
--static void vq_work_handler(unsigned long data)
-+static void vq_work_handler(struct tasklet_struct *t)
- {
--	struct otx_cptvf_wqe_info *cwqe_info =
--					(struct otx_cptvf_wqe_info *) data;
--
-+	struct otx_cptvf_wqe *cwqe = from_tasklet(cwqe, t, twork);
-+	struct otx_cptvf_wqe_info *cwqe_info = container_of(cwqe,
-+							typeof(*cwqe_info),
-+							vq_wqe[0]);
- 	otx_cpt_post_process(&cwqe_info->vq_wqe[0]);
- }
- 
-@@ -41,8 +42,7 @@ static int init_worker_threads(struct otx_cptvf *cptvf)
- 	}
- 
- 	for (i = 0; i < cptvf->num_queues; i++) {
--		tasklet_init(&cwqe_info->vq_wqe[i].twork, vq_work_handler,
--			     (u64)cwqe_info);
-+		tasklet_setup(&cwqe_info->vq_wqe[i].twork, vq_work_handler);
- 		cwqe_info->vq_wqe[i].cptvf = cptvf;
- 	}
- 	cptvf->wqe_info = cwqe_info;
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCAyMDIxLTAxLTA3IGF0IDEyOjQxICswMTAwLCBCb3JpcyBCcmV6aWxsb24gd3JvdGU6
+Cj4gT24gVGh1LCA3IEphbiAyMDIxIDEwOjEzOjQzICswMTAwCj4gSGFucyBWZXJrdWlsIDxodmVy
+a3VpbEB4czRhbGwubmw+IHdyb3RlOgo+IAo+ID4gT24gMDgvMTIvMjAyMCAxNjo1NSwgQWRyaWFu
+IFJhdGl1IHdyb3RlOgo+ID4gPiBTb21lIGNvbmZpZ3VyYXRpb25zIGJ1aWx0IGJ5IHRoZSBrdGVz
+dCBib3QgcHJvZHVjZSB0aGUgZm9sbG93aW5nCj4gPiA+IHdhcm4sIHNvIG1hcmsgdGhlIHN0cnVj
+dCBhcyBfX21heWJlX3VudXNlZCB0byBhdm9pZCB1bm5lY2Vzc2FyeQo+ID4gPiBNTCBzcGFtLgo+
+ID4gPiDCoCAKPiA+ID4gPiA+IGRyaXZlcnMvc3RhZ2luZy9tZWRpYS9ya3ZkZWMvcmt2ZGVjLmM6
+OTY3OjM0OiB3YXJuaW5nOiB1bnVzZWQgdmFyaWFibGUgJ29mX3JrdmRlY19tYXRjaCcgWy1XdW51
+c2VkLWNvbnN0LXZhcmlhYmxlXcKgIAo+ID4gPiDCoMKgIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2Zf
+ZGV2aWNlX2lkIG9mX3JrdmRlY19tYXRjaFtdID0gewo+ID4gPiDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIF4KPiA+
+ID4gwqDCoCAxIHdhcm5pbmcgZ2VuZXJhdGVkLsKgIAo+ID4gCj4gPiBJIHN1c3BlY3QgdGhhdCB0
+aGlzIGlzIGJlY2F1c2UgdGhlcmUgaXMgbm8gJ2RlcGVuZHMgb24gT0YnIGluIHRoZSBLY29uZmln
+Lgo+ID4gCj4gPiAnX19tYXliZV91bnVzZWQnIGlzbid0IHVzZWQgZm9yIHRoaXMgYW55d2hlcmUg
+ZWxzZSwgc28gdGhpcyBkb2VzIG5vdCBzZWVtIGxpa2UgdGhlCj4gPiByaWdodCBhcHByb2FjaC4K
+PiAKPiBJdCdzIG5vdCB1bmNvbW1vbiB0byBkbyB0aGF0LCBlc3BlY2lhbGx5IHdoZW4geW91IHdh
+bnQgdGhlIGRyaXZlciB0byBiZQo+IGNvbXBpbGUtdGVzdGVkIChgZ2l0IGdyZXAgLUMyIF9fbWF5
+YmVfdW51c2VkfGdyZXAgb2ZfZGV2aWNlX2lkYCBldmVuCj4gcmVwb3J0cyAyIGRyaXZlcnMgaW4g
+dGhlIG1lZGlhIHRyZWUgOlApLiBBIGBkZXBlbmRzIG9uIE9GYCBvciBhbgo+IGAjaWZkZWYgQ09O
+RklHX09GYCBzZWN0aW9uIHN1cnJvdW5kaW5nIHRoZSBvZl9ya3ZkZWNfbWF0Y2ggZGVjbGFyYXRp
+b24KPiB3b3VsZCBhbHNvIGRvIHRoZSB0cmljay4KPiAKCkknbSBmaW5lIGVpdGhlciB3YXksIF9f
+bWF5YmVfdW51c2VkIG9yIGRlcGVuZHMgb24gT0YuCgpUaGFua3MsCkV6ZXF1aWVsCgoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
