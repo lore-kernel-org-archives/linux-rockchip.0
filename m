@@ -2,60 +2,83 @@ Return-Path: <SRS0=faov=GK=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C267BC433E0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 11:41:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83F96C433E0
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 12:27:15 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 679C822CF8
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 11:41:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 679C822CF8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1721723356
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 12:27:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1721723356
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:
-	Subject:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=Ul1uMM3BdfByWB0/oA5XG4wYurUrwpXmGa+TF5Cxvug=; b=UvzUkX9zB58jlcPVBn39Q1DGH
-	9HhnHLfs74YUc9jUsbgX5EihSXLBav0kfhVI9kdXSKBsmToI+9yCURrPxuz0yhGqlTgDY6YxXgyaz
-	2yb6BF6SlWpD8QWtjmjKc41/4xqMaHQYR/BSlq1IIxgPz822wSwctngrvlGWSZEP3q8eV56pMSUfv
-	BPyTmU48xnBTc2V+jbV3nucyIKfacUqhLejIsG73isuOMOvL9Js/GHazNbDZJWLzZFcEySnhmj+6K
-	9ofTfCKNmFJjUHrHSghFDRWGHiOR4X+pGQqxeTBF3XevsjCkHwMAmJO+MX0Xn6l47vdfD5inEtHDe
-	c+06suHLQ==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=okDmoawEAGchc5AfCeYYVh+U0LP871WlPSy2mMnOk2w=; b=OrETqR+9Vc5YG+QTvGrWwOoZTQ
+	oB6e7+39nZgmhO9GA2T8lRFT1eL7xAiwMMFxifoVIs9FILO/5pCe6gfgaIHkWx65QV3jhEFweINIW
+	hc/6egR8KHzS38XvB1qWXSKc6tUhehc3L95q80faf8+JcR2QDTkoFZkph/BbubmtZ2eZaN2Oxz2Oe
+	QogIy65vcEv4ruKH8zs2U2XStVfCiK8tlTqC8xtU9bsj4qBdJMHxt6JlDV9x7Qol039mE33+vdyjY
+	X7TdC6pXTAHc+6OaaA9G1vSa9lu3Xy3yRFpyaTHLUNaF7+a8xqVe9zPMjkRzNftffRJzK+yr8Y3h3
+	AekE5Ntg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxTfj-0005qI-GF; Thu, 07 Jan 2021 11:41:43 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kxUNh-0003ZJ-UN; Thu, 07 Jan 2021 12:27:09 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxTfh-0005pn-76
- for linux-rockchip@lists.infradead.org; Thu, 07 Jan 2021 11:41:42 +0000
-Received: from localhost (unknown [IPv6:2a01:e0a:2c:6930:b93f:9fae:b276:a89a])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256
- bits)) (No client certificate requested)
- (Authenticated sender: bbrezillon)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 6BB471F4107E;
- Thu,  7 Jan 2021 11:41:38 +0000 (GMT)
-Date: Thu, 7 Jan 2021 12:41:32 +0100
-From: Boris Brezillon <boris.brezillon@collabora.com>
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Subject: Re: [PATCH] media: rkvdec: silence ktest bot build warning
-Message-ID: <20210107124132.3648e789@collabora.com>
-In-Reply-To: <76b5569c-bc19-3d11-4da7-cf0dbb244433@xs4all.nl>
-References: <20201208155540.340583-1-adrian.ratiu@collabora.com>
- <76b5569c-bc19-3d11-4da7-cf0dbb244433@xs4all.nl>
-Organization: Collabora
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ id 1kxUNf-0003YI-Io; Thu, 07 Jan 2021 12:27:08 +0000
+Received: by mail-pg1-x532.google.com with SMTP id 15so4723353pgx.7;
+ Thu, 07 Jan 2021 04:27:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rdzhko0OrjkG6Nl0CuymqMX6T8qlz4I52QwBBCGkLMw=;
+ b=QVbfURqlAvyfONwwA1cZ4PfkRS0kE3wlUIR8xdHj4CMNJa71Gj1zjLG/LfGbPyDJRa
+ HG8uckhKBb80dcHlNhm5Z1N4yDdKc2eMnXAOCcprB8DBsGLIeIvTS0RSjFLlhKZQvMPL
+ 3UG40mVcLkOfIcjwdajPfw6sua4j4Uiq3S2iRi5egJsL64awGWaPIbS/OC7C0quILs2b
+ qqOD2oERzYh67vRhLclK6DmRAtemTj8jfB7oF+1WJKL86ueMnGuYmqBF3Ts0J6Wje+4e
+ VwXFU+daciJaQbXeCPo0V0F1wCKjdkEoxnkREMSwxNxonHVd9DrmCX60luxRzN223Zbh
+ t13A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=rdzhko0OrjkG6Nl0CuymqMX6T8qlz4I52QwBBCGkLMw=;
+ b=gzuUSOq7ANn+yjiJJbtUF6pEycibuTzKS3BtMEUqclMYdTUjTxQCCLwDYBIrnvT25N
+ Dzc/VLX2XgxlL35v0M6xhaXXU0dOdNuifG4qIERMTTQmRT67m+m636QXakjzqn2IZEfq
+ cr/8Bx6NZDcEcJcYl/zaF61n3r8dTbqgesZbHyk2pwUSnroSheiBzFhu8K6Fsk2JCjY+
+ 4wokvzcJNq3cLHPqDXwBlLS5aSUboT1M2PD/13Wlx/aLaeOimwWI6i2pghEfaSrQ862I
+ gQFnpkZkCSsloeKJBZ7tjrFZ3HgueNbuxT+vW0uIAXfvxtHZg9aNfaLUjn7qikTXxP8C
+ VHjA==
+X-Gm-Message-State: AOAM533FBeosVcQafRf5T+eihxhaM+buuPocdgjyU3/jvyGTr+sOF1uq
+ 6UA/S+yYJq4nc8LCUsWgQsk=
+X-Google-Smtp-Source: ABdhPJxcXn2o1SIoGKUkyjfui4Ui1mGNILmr8LFU3SW1oA5A3jEzGZxheiIYztpJO/oNgHZukM36xw==
+X-Received: by 2002:a63:4923:: with SMTP id w35mr1605236pga.404.1610022423958; 
+ Thu, 07 Jan 2021 04:27:03 -0800 (PST)
+Received: from localhost.localdomain ([49.207.207.140])
+ by smtp.gmail.com with ESMTPSA id x28sm5860403pff.182.2021.01.07.04.26.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Jan 2021 04:27:03 -0800 (PST)
+From: Allen Pais <allen.lkml@gmail.com>
+To: herbert@gondor.apana.org.au
+Subject: [PATCH v2 00/19]crypto: convert tasklets to use new tasklet_setup
+ API()
+Date: Thu,  7 Jan 2021 17:56:27 +0530
+Message-Id: <20210107122646.16055-1-allen.lkml@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_064141_367571_8EF39AA4 
-X-CRM114-Status: GOOD (  20.81  )
+X-CRM114-CacheID: sfid-20210107_072707_640761_ED595D68 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,80 +91,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devel@driverdev.osuosl.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
- kernel test robot <lkp@intel.com>, Adrian Ratiu <adrian.ratiu@collabora.com>,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- kernel@collabora.com, Ezequiel Garcia <ezequiel@collabora.com>,
- linux-media@vger.kernel.org
+Cc: giovanni.cabiddu@intel.com, alexandre.belloni@bootlin.com,
+ aymen.sghaier@nxp.com, heiko@sntech.de, qat-linux@intel.com,
+ jamie@jamieiles.com, jesper.nilsson@axis.com,
+ linux-samsung-soc@vger.kernel.org, horia.geanta@nxp.com,
+ k.konieczny@samsung.com, schalla@marvell.com, krzk@kernel.org,
+ linux-rockchip@lists.infradead.org, ludovic.desroches@microchip.com,
+ thomas.lendacky@amd.com, arno@natisbad.org, vz@mleia.com, gilad@benyossef.com,
+ gcherian@marvell.com, linux-mediatek@lists.infradead.org,
+ lars.persson@axis.com, matthias.bgg@gmail.com,
+ Allen Pais <apais@linux.microsoft.com>, john.allen@amd.com,
+ bbrezillon@kernel.org, nicolas.ferre@microchip.com,
+ linux-crypto@vger.kernel.org, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 7 Jan 2021 10:13:43 +0100
-Hans Verkuil <hverkuil@xs4all.nl> wrote:
+From: Allen Pais <apais@linux.microsoft.com>
 
-> On 08/12/2020 16:55, Adrian Ratiu wrote:
-> > Some configurations built by the ktest bot produce the following
-> > warn, so mark the struct as __maybe_unused to avoid unnecessary
-> > ML spam.
-> >   
-> >>> drivers/staging/media/rkvdec/rkvdec.c:967:34: warning: unused variable 'of_rkvdec_match' [-Wunused-const-variable]  
-> >    static const struct of_device_id of_rkvdec_match[] = {
-> > 				    ^
-> >    1 warning generated.  
-> 
-> I suspect that this is because there is no 'depends on OF' in the Kconfig.
-> 
-> '__maybe_unused' isn't used for this anywhere else, so this does not seem like the
-> right approach.
+Commit 12cc923f1ccc ("tasklet: Introduce new initialization API")'
+introduced a new tasklet initialization API. This series converts
+all the crypto modules to use the new tasklet_setup() API
 
-It's not uncommon to do that, especially when you want the driver to be
-compile-tested (`git grep -C2 __maybe_unused|grep of_device_id` even
-reports 2 drivers in the media tree :P). A `depends on OF` or an
-`#ifdef CONFIG_OF` section surrounding the of_rkvdec_match declaration
-would also do the trick.
+The series is based on v5.11-rc2 (e71ba9452f0b)
 
-> 
-> Regards,
-> 
-> 	Hans
-> 
-> > 
-> > vim +/of_rkvdec_match +967 drivers/staging/media/rkvdec/rkvdec.c
-> > 
-> >    966  
-> >  > 967	static const struct of_device_id of_rkvdec_match[] = {  
-> >    968		{ .compatible = "rockchip,rk3399-vdec" },
-> >    969		{ /* sentinel */ }
-> >    970	};
-> >    971	MODULE_DEVICE_TABLE(of, of_rkvdec_match);
-> >    972
-> > 
-> > Cc: Boris Brezillon <boris.brezillon@collabora.com>
-> > Cc: Ezequiel Garcia <ezequiel@collabora.com>
-> > Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
-> > Reported-by: kernel test robot <lkp@intel.com>
-> > Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
-> > ---
-> >  drivers/staging/media/rkvdec/rkvdec.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
-> > index aa4f8c287618..3af0f02ec59b 100644
-> > --- a/drivers/staging/media/rkvdec/rkvdec.c
-> > +++ b/drivers/staging/media/rkvdec/rkvdec.c
-> > @@ -992,7 +992,7 @@ static void rkvdec_watchdog_func(struct work_struct *work)
-> >  	}
-> >  }
-> >  
-> > -static const struct of_device_id of_rkvdec_match[] = {
-> > +static const struct of_device_id __maybe_unused of_rkvdec_match[] = {
-> >  	{ .compatible = "rockchip,rk3399-vdec" },
-> >  	{ /* sentinel */ }
-> >  };
-> >   
-> 
+v2:
+  - added acks
+  - addressed comments [Krzysztof and Gilad]
+
+Allen Pais (19):
+  crypto: amcc: convert tasklets to use new tasklet_setup() API
+  crypto: atmel: convert tasklets to use new tasklet_setup() API
+  crypto: axis: convert tasklets to use new tasklet_setup() API
+  crypto: caam: convert tasklets to use new tasklet_setup() API
+  crypto: cavium: convert tasklets to use new tasklet_setup() API
+  crypto: ccp: convert tasklets to use new tasklet_setup() API
+  crypto: ccree: convert tasklets to use new tasklet_setup() API
+  crypto: hifn_795x: convert tasklets to use new tasklet_setup() API
+  crypto: img-hash: convert tasklets to use new tasklet_setup() API
+  crypto: ixp4xx: convert tasklets to use new tasklet_setup() API
+  crypto: mediatek: convert tasklets to use new tasklet_setup() API
+  crypto: omap: convert tasklets to use new tasklet_setup() API
+  crypto: picoxcell: convert tasklets to use new tasklet_setup() API
+  crypto: qat: convert tasklets to use new tasklet_setup() API
+  crypto: qce: convert tasklets to use new tasklet_setup() API
+  crypto: rockchip: convert tasklets to use new tasklet_setup() API
+  crypto: s5p: convert tasklets to use new tasklet_setup() API
+  crypto: talitos: convert tasklets to use new tasklet_setup() API
+  crypto: octeontx: convert tasklets to use new tasklet_setup() API
+
+ drivers/crypto/amcc/crypto4xx_core.c          |  7 ++--
+ drivers/crypto/atmel-aes.c                    | 14 +++----
+ drivers/crypto/atmel-sha.c                    | 14 +++----
+ drivers/crypto/atmel-tdes.c                   | 14 +++----
+ drivers/crypto/axis/artpec6_crypto.c          |  7 ++--
+ drivers/crypto/caam/jr.c                      |  9 ++--
+ drivers/crypto/cavium/cpt/cptvf_main.c        |  9 ++--
+ drivers/crypto/cavium/nitrox/nitrox_common.h  |  2 +-
+ drivers/crypto/cavium/nitrox/nitrox_isr.c     | 13 +++---
+ drivers/crypto/cavium/nitrox/nitrox_reqmgr.c  |  4 +-
+ drivers/crypto/ccp/ccp-dev-v3.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dev-v5.c               |  9 ++--
+ drivers/crypto/ccp/ccp-dmaengine.c            |  7 ++--
+ drivers/crypto/ccree/cc_fips.c                |  8 ++--
+ drivers/crypto/ccree/cc_request_mgr.c         | 12 +++---
+ drivers/crypto/hifn_795x.c                    |  6 +--
+ drivers/crypto/img-hash.c                     | 12 +++---
+ drivers/crypto/ixp4xx_crypto.c                |  4 +-
+ .../crypto/marvell/octeontx/otx_cptvf_main.c  | 12 +++---
+ drivers/crypto/mediatek/mtk-aes.c             | 14 +++----
+ drivers/crypto/mediatek/mtk-sha.c             | 14 +++----
+ drivers/crypto/omap-aes.c                     |  6 +--
+ drivers/crypto/omap-des.c                     |  6 +--
+ drivers/crypto/omap-sham.c                    |  6 +--
+ drivers/crypto/picoxcell_crypto.c             |  7 ++--
+ drivers/crypto/qat/qat_common/adf_isr.c       |  5 +--
+ drivers/crypto/qat/qat_common/adf_sriov.c     | 10 ++---
+ drivers/crypto/qat/qat_common/adf_transport.c |  4 +-
+ .../qat/qat_common/adf_transport_internal.h   |  2 +-
+ drivers/crypto/qat/qat_common/adf_vf_isr.c    | 11 +++--
+ drivers/crypto/qce/core.c                     |  7 ++--
+ drivers/crypto/rockchip/rk3288_crypto.c       | 14 +++----
+ drivers/crypto/s5p-sss.c                      | 13 +++---
+ drivers/crypto/talitos.c                      | 42 +++++++++----------
+ 34 files changed, 152 insertions(+), 181 deletions(-)
+
+-- 
+2.25.1
 
 
 _______________________________________________
