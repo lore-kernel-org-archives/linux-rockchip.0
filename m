@@ -1,70 +1,73 @@
-Return-Path: <SRS0=uU3o=GJ=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=faov=GK=lists.infradead.org=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AA95FC433E6
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jan 2021 13:47:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C0381C433DB
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 09:14:07 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 581F022B40
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 Jan 2021 13:47:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 581F022B40
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1E63C23333
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 09:14:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 1E63C23333
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=xs4all.nl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=NCYvj7bntNggpm3BTYstz5y3nri1mpHz78t8Dpi8bF0=; b=w8lkt7r20UQmir2xPlIEqElFs
-	YYgZIymEae8tkkxwV9CAVYE4wfzE8bGrT/EMt5+KQYqXj9Pv98mU2ekByXdZjEeh87J7zIbL0yJqv
-	qPD17vGFfjvtm6uVCc+2bj/3izhy+C5cyZ/3HxNmzFPDUgZXVf7G/Ks75utSvm7oyiH2F92DNmbCx
-	23Ct3bAROSdKNOSRA25yyr5DF93haiVDC1EPiKSXKwg2g0FRLpwD0RAZU19FVYyBvAC9MyrsHj35c
-	rmjrEneSiI8cDMVCICaQkzNu0tfiyrzJV4Bvu8LhRHY4PxuQMyZPOpc7aeZ1Ab/rugmTMhZKHQ48Y
-	/teJ7905Q==;
+	 bh=+hyoqy66hT5AMBdXTz5bIiCPTFQn9663LX+k+Zw/AT0=; b=kD1D+XRpUHRm2dAT1GMoOVPfb
+	Acp8y2ey2BSR+8PjsW7x2yV3v1bSt69+Wprb/CFAQ2MsvNbMtENehTjoLZnfaOHDuwBXAb+D1K58a
+	8lmPM6Fig3kvm9PF4viFKoFRe9IJVbHX7m1Ccqbgmz0Q/X+CWxjIXe2JR1Y//T/4hwxGN/k2n5cfs
+	FdqKoJ63VWObtrXU3LHiwZ3tgXb7OMtckTWmAbSnILnuKTHhj4qGthbDVcFIGxEmzP588ArFZyoHA
+	IaKxRJePVfvIzf5zciGfUOiDPRS7FWZ039dTxXK9lDTJK7/B5ewR4N8mQmjZgzMLbxHxohKc8YKsD
+	kIiu7E7Jg==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kx99Z-00012C-UE; Wed, 06 Jan 2021 13:47:09 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1kxRMo-0007KF-RM; Thu, 07 Jan 2021 09:14:02 +0000
+Received: from lb1-smtp-cloud9.xs4all.net ([194.109.24.22])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kx98t-0000gU-Tq; Wed, 06 Jan 2021 13:46:31 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A26F023123;
- Wed,  6 Jan 2021 13:46:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1609940786;
- bh=SGnWKlQo06sg8d+NDOQwaMUesF8OTKiZdb/fFObVA5M=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ncJTmZ21DQmGZsn4m+g3wTzkU5pB0741DgOAbJxi8KRI0IPZa5BOO73Zf592/XHhQ
- 23mN9j9jeFLsNrzneQxFsiwg5taj9LMX1swVTQUZzF5YiXWb3HWjMsVOPMYgBfZo8I
- NUDqkp4rCJdoRIAjrYV/xV6gMxWOLuQmI/ipA/oj0fexSHStn9Mq0x6LLWaK2dMQ+1
- qlNiQ8fZYgo6lxqNdQ13nrvCGtyK/81/1Q2Cd6KpXfQhndh9DJKZvltSAIyyzbJRjU
- RejZTASXj+uxUYzESWxnp65mpMIfaTCeza3g2e8pm23DyeijiJrxbscHHAh44xSj+1
- idQFq5JMv6/vw==
-Received: by wens.tw (Postfix, from userid 1000)
- id 6C4CA5FBCB; Wed,  6 Jan 2021 21:46:24 +0800 (CST)
-From: Chen-Yu Tsai <wens@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>
-Subject: [PATCH v3 3/4] arm64: dts: rockchip: nanopi4: Move ep-gpios property
- to nanopc-t4
-Date: Wed,  6 Jan 2021 21:46:16 +0800
-Message-Id: <20210106134617.391-4-wens@kernel.org>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <20210106134617.391-1-wens@kernel.org>
-References: <20210106134617.391-1-wens@kernel.org>
+ id 1kxRMj-0007Df-A3
+ for linux-rockchip@lists.infradead.org; Thu, 07 Jan 2021 09:14:00 +0000
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+ by smtp-cloud9.xs4all.net with ESMTPA
+ id xRMVklktVbMeAxRMZkT4Za; Thu, 07 Jan 2021 10:13:50 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+ t=1610010830; bh=E0MA7bSe09OCRGTiRBeJqYGJV3Asl9zqcjkRywEcSlA=;
+ h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+ Subject;
+ b=LiqJ21KYHrwqKrRJcgKxZqm1AxBN59aAlf3EUIosdZWalxJ2wL1NvKnPXyy3G8Kwv
+ zbWzE6Y8/nuiS6rogUvCfWoh+l8Ubn53VKT3c23ecaosLLAANRjTfe3b7t8k/tjDBd
+ c+/aFH2YhtbKMkbuu93gpQXu7kv6vdbASh4EwInk6aJWmpsaSB1tNUYG5NiFHCsrde
+ qnUIhYzEYwTpnz6KZ16dwFI+vEwuBq2rbmPBT1ewOXKeVIcRsjWZw8KvUqvBJYJ8iR
+ 581HlH8TUiMkRbJStjcx5IdxoSN1FWfTsh58D7t3xiH06Dp7mcy+gGJBRPMWD9S9cM
+ hqsAlKnfIx+tg==
+Subject: Re: [PATCH] media: rkvdec: silence ktest bot build warning
+To: Adrian Ratiu <adrian.ratiu@collabora.com>, linux-media@vger.kernel.org
+References: <20201208155540.340583-1-adrian.ratiu@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <76b5569c-bc19-3d11-4da7-cf0dbb244433@xs4all.nl>
+Date: Thu, 7 Jan 2021 10:13:43 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.6.0
 MIME-Version: 1.0
+In-Reply-To: <20201208155540.340583-1-adrian.ratiu@collabora.com>
+Content-Language: en-US
+X-CMAE-Envelope: MS4xfECXKwRH1TUnQACLjcNLsP8PHssfJJz/tIezgMZj62/CxkRMGBxeAwNrUgW+Q3170ToZ4VnWpgpVMi/tPwXxZQTsqdGv1eukLo5ghbZ5Xgmo3wfn6QT4
+ XPHbH2VyQJ9lQ1iiBZnfnwh9mWIE3CTJSlGRJPdtyNo4fb29QXbYynlw0T55QFeTbbDefiJxe8Cby7mIk/gLeHoObJ3kYd9fXUlltm2GF+r6IAgusSlF4VGN
+ cOCIaubQuEIQHGtC++jcl/dTcaw9Q2N0iJTerVTq13CrZlwZInddDIHGqlo0ESut9PLWvuYoj4N1k/BtW/bKP6pFK+/gBw82VLVASDLcBuBG8l9i+CLLMkCU
+ H1BB/rd9s18MP0BUpnMGxrzcK7dbH1CQHA0VxWO94undZRd0wyPOWIVUskiEwnYBvgAFycxi4aUrQKH6h0Tu1eII4xYIcGM9FT88VtCApDcFxCk1/EdAS0Fn
+ sOG/rUxKg5I5+WUdx3/aeoiIHaVWXN2v6SVhDorbPjkKebsLIIMAHX+t80E=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210106_084628_206960_64C7110D 
-X-CRM114-Status: GOOD (  14.67  )
+X-CRM114-CacheID: sfid-20210107_041357_499237_D036B4A8 
+X-CRM114-Status: GOOD (  18.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,67 +80,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- Chen-Yu Tsai <wens@csie.org>, Johan Jonker <jbx6244@gmail.com>,
- Robin Murphy <robin.murphy@arm.com>, linux-arm-kernel@lists.infradead.org
+Cc: devel@driverdev.osuosl.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ kernel test robot <lkp@intel.com>, linux-kernel@vger.kernel.org,
+ linux-rockchip@lists.infradead.org,
+ Boris Brezillon <boris.brezillon@collabora.com>, kernel@collabora.com,
+ Ezequiel Garcia <ezequiel@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chen-Yu Tsai <wens@csie.org>
+On 08/12/2020 16:55, Adrian Ratiu wrote:
+> Some configurations built by the ktest bot produce the following
+> warn, so mark the struct as __maybe_unused to avoid unnecessary
+> ML spam.
+> 
+>>> drivers/staging/media/rkvdec/rkvdec.c:967:34: warning: unused variable 'of_rkvdec_match' [-Wunused-const-variable]
+>    static const struct of_device_id of_rkvdec_match[] = {
+> 				    ^
+>    1 warning generated.
 
-Only the NanoPC T4 hs the PCIe reset pin routed to the SoC. For the
-NanoPi M4 family, no such signal is routed to the expansion header on
-the base board.
+I suspect that this is because there is no 'depends on OF' in the Kconfig.
 
-As the schematics for the expansion board were not released, it is
-unclear how this is handled, but the likely answer is that the signal
-is always pulled high.
+'__maybe_unused' isn't used for this anywhere else, so this does not seem like the
+right approach.
 
-Move the ep-gpios property from the common nanopi4.dtsi file to the
-board level nanopc-t4.dts file. This makes the nanopi-m4 lack ep-gpios,
-matching the board design.
+Regards,
 
-A companion patch "PCI: rockchip: make ep_gpio optional" for the Linux
-driver is required, as the driver currently requires the property to be
-present.
+	Hans
 
-Fixes: e7a095908227 ("arm64: dts: rockchip: Add devicetree for NanoPC-T4")
-Reviewed-by: Robin Murphy <robin.murphy@arm.com>
-Signed-off-by: Chen-Yu Tsai <wens@csie.org>
----
- arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts | 1 +
- arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi  | 1 -
- 2 files changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-index e0d75617bb7e..452728b82e42 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4.dts
-@@ -95,6 +95,7 @@ map3 {
- };
- 
- &pcie0 {
-+	ep-gpios = <&gpio2 RK_PA4 GPIO_ACTIVE_HIGH>;
- 	num-lanes = <4>;
- 	vpcie3v3-supply = <&vcc3v3_sys>;
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-index 76a8b40a93c6..48ed4aaa37f3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi
-@@ -504,7 +504,6 @@ &pcie_phy {
- };
- 
- &pcie0 {
--	ep-gpios = <&gpio2 RK_PA4 GPIO_ACTIVE_HIGH>;
- 	max-link-speed = <2>;
- 	num-lanes = <2>;
- 	vpcie0v9-supply = <&vcca0v9_s3>;
--- 
-2.29.2
+> 
+> vim +/of_rkvdec_match +967 drivers/staging/media/rkvdec/rkvdec.c
+> 
+>    966
+>  > 967	static const struct of_device_id of_rkvdec_match[] = {
+>    968		{ .compatible = "rockchip,rk3399-vdec" },
+>    969		{ /* sentinel */ }
+>    970	};
+>    971	MODULE_DEVICE_TABLE(of, of_rkvdec_match);
+>    972
+> 
+> Cc: Boris Brezillon <boris.brezillon@collabora.com>
+> Cc: Ezequiel Garcia <ezequiel@collabora.com>
+> Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+> Reported-by: kernel test robot <lkp@intel.com>
+> Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+> ---
+>  drivers/staging/media/rkvdec/rkvdec.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/rkvdec/rkvdec.c b/drivers/staging/media/rkvdec/rkvdec.c
+> index aa4f8c287618..3af0f02ec59b 100644
+> --- a/drivers/staging/media/rkvdec/rkvdec.c
+> +++ b/drivers/staging/media/rkvdec/rkvdec.c
+> @@ -992,7 +992,7 @@ static void rkvdec_watchdog_func(struct work_struct *work)
+>  	}
+>  }
+>  
+> -static const struct of_device_id of_rkvdec_match[] = {
+> +static const struct of_device_id __maybe_unused of_rkvdec_match[] = {
+>  	{ .compatible = "rockchip,rk3399-vdec" },
+>  	{ /* sentinel */ }
+>  };
+> 
 
 
 _______________________________________________
