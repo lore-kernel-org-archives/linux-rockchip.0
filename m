@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D2E9FC433E0
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 13:41:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16EDDC433E6
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 13:41:34 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5FA952312F
+	by mail.kernel.org (Postfix) with ESMTPS id C848C224BD
 	for <linux-rockchip@archiver.kernel.org>; Thu,  7 Jan 2021 13:41:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 5FA952312F
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org C848C224BD
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=4EWEy8IqntyWYkt5jgkfLA8sMdwuBypyzvqco3XMLmc=; b=TLEgsQJnpfyJneQt/lKdwYc+A
-	A941x6EWEkf2Z3hhMF6R7RQtHgQQDiLkmNTdLjjH0E0DJHTQycf7N76v+CDCHwDHScv3ujzDsTqxF
-	I6t+dAdoy+d98NYeLPUNZSjQrMEw7S4HrbNgzv3uHsIja8vnwHap8qvvtML08aDa2vAoklY3KJDzT
-	cM31yiqGbOmgPvxKlr0p5E1HQKBZR+Jh8nV1ZCouXINIE9jkAd7Qc/5Ycv/OFL6zleVOpwnFLyvnA
-	VWRD7fmPy5yP69ZML9PahUP8G/7K9zjKiYkvY+ne8W7ln1r20dUqPX85UEv5ANp5864LnvT0nsklE
-	P9sNA5GJA==;
+	 bh=ZxgeeoUBjpGxseoTzhZg1b5ZWT1UDJINJLiPMspkyw8=; b=Vexqhdu+PET7u8IJhnUw6BQ8y
+	00gJSJAc+Ue4xO1i4cpKLU0KV53cQ2tBw2mFubs95gPWp2zy4dYZJFgimrkICLN55hT84I9IhwYbT
+	2E4B/z311HB2UzhD94FTbEi9ene6QxfIw2NdksUF3BNgDrWMloOsl/cnSPviyjBex8FPi5Ll0CZSk
+	5+CSH4rBK9a6HuIuglZ+sWF9YC2ct36AgJymvCU4qfhy1wAQQPP1o5Xlri5bNYL2o7fEXXy0hjks6
+	gsL2y/DfgGs5Lx8K5kqdjS8SAuOOHt3lWILZU8k59VKEK6omw2ZbsoOCqWHA/MIlbKyoTeVxxTJ5B
+	ondMJ9xyA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxVXb-0003Qf-SX; Thu, 07 Jan 2021 13:41:27 +0000
+	id 1kxVXb-0003QV-1g; Thu, 07 Jan 2021 13:41:27 +0000
 Received: from relay6-d.mail.gandi.net ([217.70.183.198])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxVXS-0003N7-Hj; Thu, 07 Jan 2021 13:41:20 +0000
+ id 1kxVXS-0003N8-Jk; Thu, 07 Jan 2021 13:41:20 +0000
 X-Originating-IP: 93.29.109.196
 Received: from localhost.localdomain (196.109.29.93.rev.sfr.net
  [93.29.109.196])
  (Authenticated sender: paul.kocialkowski@bootlin.com)
- by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 54C7BC0011;
- Thu,  7 Jan 2021 13:41:15 +0000 (UTC)
+ by relay6-d.mail.gandi.net (Postfix) with ESMTPSA id 7E292C0007;
+ Thu,  7 Jan 2021 13:41:16 +0000 (UTC)
 From: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 To: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 1/5] dt-bindings: media: rockchip-rga: Add PX30 compatible
-Date: Thu,  7 Jan 2021 14:40:57 +0100
-Message-Id: <20210107134101.195426-2-paul.kocialkowski@bootlin.com>
+Subject: [PATCH 2/5] arm64: dts: rockchip: Add RGA support to the PX30
+Date: Thu,  7 Jan 2021 14:40:58 +0100
+Message-Id: <20210107134101.195426-3-paul.kocialkowski@bootlin.com>
 X-Mailer: git-send-email 2.30.0
 In-Reply-To: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
 References: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210107_084118_723623_B0FC28C6 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20210107_084118_798373_33227531 
+X-CRM114-Status: GOOD (  12.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,29 +80,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a new compatible for the PX30 Rockchip SoC, which also features
-a RGA block. It is compatible with the RK3288 RGA block.
+The PX30 features a RGA block: add the necessary node to support it.
 
 Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
 ---
- Documentation/devicetree/bindings/media/rockchip-rga.yaml | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.yaml b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
-index dd645ddccb07..4ffdb317b606 100644
---- a/Documentation/devicetree/bindings/media/rockchip-rga.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
-@@ -21,7 +21,9 @@ properties:
-       - const: rockchip,rk3288-rga
-       - const: rockchip,rk3399-rga
-       - items:
--          - const: rockchip,rk3228-rga
-+          - enum:
-+            - rockchip,px30-rga
-+            - rockchip,rk3228-rga
-           - const: rockchip,rk3288-rga
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 2695ea8cda14..e056d1c32cc8 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -1106,6 +1106,17 @@ vopl_mmu: iommu@ff470f00 {
+ 		status = "disabled";
+ 	};
  
-   reg:
++	rga: rga@ff480000 {
++		compatible = "rockchip,px30-rga", "rockchip,rk3288-rga";
++		reg = <0x0 0xff480000 0x0 0x10000>;
++		interrupts = <GIC_SPI 76 IRQ_TYPE_LEVEL_HIGH 0>;
++		clocks = <&cru ACLK_RGA>, <&cru HCLK_RGA>, <&cru SCLK_RGA_CORE>;
++		clock-names = "aclk", "hclk", "sclk";
++		power-domains = <&power PX30_PD_VO>;
++		resets = <&cru SRST_RGA>, <&cru SRST_RGA_A>, <&cru SRST_RGA_H>;
++		reset-names = "core", "axi", "ahb";
++	};
++
+ 	qos_gmac: qos@ff518000 {
+ 		compatible = "syscon";
+ 		reg = <0x0 0xff518000 0x0 0x20>;
 -- 
 2.30.0
 
