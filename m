@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B49F1C433E0
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 19:33:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A43D3C433E9
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 19:33:59 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 289D923AA9
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 19:33:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 289D923AA9
+	by mail.kernel.org (Postfix) with ESMTPS id 3474D23A9D
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 19:33:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 3474D23A9D
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=+ogJOw+aHKN4sBvpfc+pe2dzDtxDJ7FK3pINWm5YL68=; b=1jqu9S/qcniLptozsvdAUEiSQ
-	JNjhmyhJvfECGL5oDNDK8dDuwCYg2KPtPwL0Dz7oiBCyp+mkOkINrEyGlTNxKkVHTsodpBm5eB2Mn
-	OyTW3b2vufV/WZUbbY9Z3HHzs/UgYxmJ9SpOBB46SWyquZkdeuusa8AGurgjj09vB36Jwc2VAIYF3
-	HkmQq2yUFElv4e6CrwNJcICJuNXGge5d9KtApectAacM5pWwaxr/8b8tVAXRKZKMGipbUsZFLbklT
-	DA4DgoHsZF2gz3N6fPKKxV2RJcJW8Z0+vOftTYFcE93yc7Rh9XI6cTYivPQKrwmbab55z9+v3TozU
-	cdt24unMA==;
+	 bh=Ox3WbmEhbQ85YdCfWUVJxQkkmsuvo/uTQciS0u2Ft1o=; b=c+UfpqOrd5mEsW2OzeFSPAd7N
+	FCOvmxi6vpV2nk07jwPJ2S+33FIjus+Ip/q6+n9q/9q5CGtuzVc9y6Hy6bdKa1yM4HrBRKKQpVTZx
+	9iI0ai3tqPSWpdHreBaS9/ZccYGxy+1A0vvCzpsv3WmgkzTjX2RjQhFBxvYLRoaenor/zDY4cANWz
+	igWBkIzCmGhMFKY7foeZOwY80x8SII43FxIfUq0KVKjUAOKHROuGs6j85skzz9xGvvGbIITZY6kKK
+	IrWath/h4Y+FQdiRzF9nSlMrt+WJGSxpPP0RkkjQupJFVddOdCt1kNy3nku2jXlwqRd+Z9SpASGvh
+	WX0mXJxTw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxxWD-0005xJ-5v; Fri, 08 Jan 2021 19:33:53 +0000
+	id 1kxxWB-0005wk-JD; Fri, 08 Jan 2021 19:33:51 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxxW8-0005tz-Lz
- for linux-rockchip@lists.infradead.org; Fri, 08 Jan 2021 19:33:51 +0000
+ id 1kxxW8-0005u7-M1
+ for linux-rockchip@lists.infradead.org; Fri, 08 Jan 2021 19:33:50 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
  helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kxxVv-0004Zr-RM; Fri, 08 Jan 2021 20:33:35 +0100
+ id 1kxxVx-0004Zr-7V; Fri, 08 Jan 2021 20:33:37 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: ezequiel@collabora.com, dafna.hirschfeld@collabora.com,
  helen.koike@collabora.com, Laurent.pinchart@ideasonboard.com
-Subject: [PATCH RFC 03/11] arm64: dts: rockchip: hook up camera on px30-evb
-Date: Fri,  8 Jan 2021 20:33:03 +0100
-Message-Id: <20210108193311.3423236-4-heiko@sntech.de>
+Subject: [PATCH RFC 07/11] media: rockchip: rkisp1: carry ip version
+ information
+Date: Fri,  8 Jan 2021 20:33:07 +0100
+Message-Id: <20210108193311.3423236-8-heiko@sntech.de>
 X-Mailer: git-send-email 2.29.2
 In-Reply-To: <20210108193311.3423236-1-heiko@sntech.de>
 References: <20210108193311.3423236-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210108_143348_979964_A839CF08 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210108_143348_820024_16BA9632 
+X-CRM114-Status: GOOD (  15.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,74 +77,82 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 
+The IP block evolved from its rk3288/rk3399 base and the vendor
+designates them with a numerical version. rk3399 for example
+is designated V10 probably meaning V1.0.
+
+There doesn't seem to be an actual version register we could read that
+information from, so allow the match_data to carry that information
+for future differentiation.
+
 Signed-off-by: Heiko Stuebner <heiko.stuebner@theobroma-systems.com>
 ---
- arch/arm64/boot/dts/rockchip/px30-evb.dts | 52 +++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+ drivers/media/platform/rockchip/rkisp1/rkisp1-common.h | 5 +++++
+ drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c    | 7 +++++--
+ 2 files changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-evb.dts b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-index 5fe905fae9a8..52e788e983af 100644
---- a/arch/arm64/boot/dts/rockchip/px30-evb.dts
-+++ b/arch/arm64/boot/dts/rockchip/px30-evb.dts
-@@ -422,6 +422,58 @@ sensor@4c {
- 	};
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+index 44f333bf5d6a..7678eabc9ffc 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-common.h
+@@ -59,6 +59,10 @@
+ 					 RKISP1_CIF_ISP_EXP_END |	\
+ 					 RKISP1_CIF_ISP_HIST_MEASURE_RDY)
+ 
++enum rkisp1_isp_ver {
++	RKISP1_V10 = 0,
++};
++
+ /* enum for the resizer pads */
+ enum rkisp1_rsz_pad {
+ 	RKISP1_RSZ_PAD_SINK,
+@@ -355,6 +359,7 @@ struct rkisp1_device {
+ 	void __iomem *base_addr;
+ 	int irq;
+ 	struct device *dev;
++	enum rkisp1_isp_ver isp_ver;
+ 	unsigned int clk_size;
+ 	struct clk_bulk_data clks[RKISP1_MAX_BUS_CLK];
+ 	struct v4l2_device v4l2_dev;
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+index 96afc1d1a914..0a01ffbc2cae 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-dev.c
+@@ -104,6 +104,7 @@
+ struct rkisp1_match_data {
+ 	const char * const *clks;
+ 	unsigned int size;
++	enum rkisp1_isp_ver isp_ver;
  };
  
-+&i2c2 {
-+	status = "okay";
-+
-+	clock-frequency = <100000>;
-+
-+	/* These are relatively safe rise/fall times; TODO: measure */
-+	i2c-scl-falling-time-ns = <50>;
-+	i2c-scl-rising-time-ns = <300>;
-+
-+	ov5695: ov5695@36 {
-+		compatible = "ovti,ov5695";
-+		reg = <0x36>;
-+		avdd-supply = <&vcc2v8_dvp>;
-+		dvdd-supply = <&vcc1v5_dvp>;
-+		dovdd-supply = <&vcc1v8_dvp>;
-+		clocks = <&cru SCLK_CIF_OUT>;
-+		clock-names = "xvclk";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cif_clkout_m0>;
-+		reset-gpios = <&gpio2 14 GPIO_ACTIVE_LOW>;
-+
-+		port {
-+			ucam_out: endpoint {
-+				remote-endpoint = <&mipi_in_ucam>;
-+				data-lanes = <1 2>;
-+			};
-+		};
-+	};
-+};
-+
-+&csi_dphy {
-+	status = "okay";
-+};
-+
-+&isp {
-+	status = "okay";
-+
-+	ports {
-+		port@0 {
-+			mipi_in_ucam: endpoint@0 {
-+				reg = <0>;
-+				remote-endpoint = <&ucam_out>;
-+				data-lanes = <1 2>;
-+			};
-+		};
-+	};
-+};
-+
-+&isp_mmu {
-+	status = "okay";
-+};
-+
- &i2s1_2ch {
- 	status = "okay";
+ /* ----------------------------------------------------------------------------
+@@ -408,15 +409,16 @@ static const char * const rk3399_isp_clks[] = {
+ 	"hclk",
  };
+ 
+-static const struct rkisp1_match_data rk3399_isp_clk_data = {
++static const struct rkisp1_match_data rk3399_isp_match_data = {
+ 	.clks = rk3399_isp_clks,
+ 	.size = ARRAY_SIZE(rk3399_isp_clks),
++	.isp_ver = RKISP1_V10,
+ };
+ 
+ static const struct of_device_id rkisp1_of_match[] = {
+ 	{
+ 		.compatible = "rockchip,rk3399-cif-isp",
+-		.data = &rk3399_isp_clk_data,
++		.data = &rk3399_isp_match_data,
+ 	},
+ 	{},
+ };
+@@ -532,6 +534,7 @@ static int rkisp1_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
+ 	rkisp1->clk_size = clk_data->size;
++	rkisp1->isp_ver = clk_data->isp_ver;
+ 
+ 	pm_runtime_enable(&pdev->dev);
+ 
 -- 
 2.29.2
 
