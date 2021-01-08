@@ -2,57 +2,87 @@ Return-Path: <SRS0=mPU+=GL=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C79DBC433DB
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 13:14:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AADB9C433E0
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 15:11:49 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4C027235FC
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 13:14:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4C027235FC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4CBD2238EC
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 15:11:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 4CBD2238EC
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Date:To:From:
-	Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=A+Jdgr4FguQRKeCijepVcJVRPSG0yoHOyyvKRK/7zoQ=; b=yE102bliso7/m238lHBqmksjy
-	fryjik63jR2xqyj2RH1SURGu8S95+Ew6XSkesK8vn3Ed6WeLh9U9m2BTqi0EPgQr+Iz4UDh0t0wYa
-	Y6lOPkD0H5QHYdnpvZRprRtGcVPe63NoqAw4RH/zX2D4xABzeiwfIvpsl2sHUym4Y37PS3CLqz71M
-	5KMFtDLhORic5nri8Irmmf5kRXBmBO923zF0ttyJVccFb6kd24Vf7rclOHCBCW0+DcwzLunedgs8i
-	IfJc1Aghz8L2R6SjACTSPbAwuDpt0G0sSmbc7EoGEGxOBzEKuDXfxSweaVHX5KAXD1AYoPxP1iu5s
-	CI5Gs+5uw==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=55R8cXQYoWn3MwcJqHcb5ZW8ttllUQt/oiCg7M38INg=; b=x31U6KlMB0JQvbJJY1wT6Wksp4
+	iXTf7cII7oNBfFlwkAfM4mS7RLJXLMNpa7nQcu/MGLdUEIS/6E6NOw05e1bUwbQ7O/WtSlLzf/rAH
+	2npI98HXGnDSkCHxZ/Iktm64zxFaDaCjDJqNDa+CX0RTnRaEkJghOuQAKXISZdT9JQRbbylpEFSKP
+	10vxpHa7JkQEYDd7ll98Na+CkNhc7YUIGcaJWS30OkDiJx9OLS1hKyd315K6jeuNupnVsaSbsSylg
+	TLARVeJV183dtcmUWzNlNYj/4YbeBN0bY1HIEDqhnwKPBVIIbdMyc6QOqjv2k2at0Tvae8kvd/iNX
+	jnoPqpUw==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxrat-0006tc-86; Fri, 08 Jan 2021 13:14:19 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1kxtQN-0000Hp-Mp; Fri, 08 Jan 2021 15:11:35 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxraQ-0006pV-C2; Fri, 08 Jan 2021 13:13:55 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: ezequiel) with ESMTPSA id B596C1F469E7
-Message-ID: <f9a163675ae05cc77b2d527ea5d68064fbbeead9.camel@collabora.com>
-Subject: Re: [PATCH 5/5] media: hantro: Add support for the Rockchip PX30
-From: Ezequiel Garcia <ezequiel@collabora.com>
-To: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Date: Fri, 08 Jan 2021 10:13:36 -0300
-In-Reply-To: <X/ggTOOTBhGoFDpW@aptenodytes>
-References: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
- <20210107134101.195426-6-paul.kocialkowski@bootlin.com>
- <f7291b83fe39d71c3192ea58ebf71e3909bd38af.camel@collabora.com>
- <X/ggTOOTBhGoFDpW@aptenodytes>
-Organization: Collabora
-User-Agent: Evolution 3.38.2-1 
+ id 1kxtPU-0008Qh-VN; Fri, 08 Jan 2021 15:10:42 +0000
+Received: by mail-ed1-x532.google.com with SMTP id v26so2552849eds.13;
+ Fri, 08 Jan 2021 07:10:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Yv1Cd7yjkWa6SiXfOYc2/ThBFnWGdgOOaqiI+T4YVvU=;
+ b=ISM7io9NxWtXYCEJtzD7rih2PcZf6Tj6x7AZQjcYcYbWq7SWTPmFan4+UF/rxApTTY
+ 5UgYkmt/sIsRaGz/tnXGGnn2HcLGvqlqtWhDDkeQiIqmh/klcBRG4rUDxgEUNPkdr436
+ UyylC4fRDqE+5y5uC8DyQVykfkjSl0m58sjot2xy+NZHVg6Ti28gduJ1kBR8nrmitBfa
+ lJpebXYagcD8TCwENvbEkHybXRFw5LIYG5+glipe2W+KQhCx/L7nWATxkK06X+3zD0WS
+ FBOxgcvlqnk33vJkzrnRUfbb59qod+6TgTgehgjoFX2ZQ7fLiRwtLOuYfLkBMUUGAD5N
+ IiuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Yv1Cd7yjkWa6SiXfOYc2/ThBFnWGdgOOaqiI+T4YVvU=;
+ b=LyPWFq0Za3YVa0VmGUQvNLJMlhVw5gkQkp7V5IpEvru2ubG1H8wXc5ityoTyq2TIRm
+ zXq6d4wJ+lNBP1xhuU1WpaVilEQNzeqjZ3gpUknlHzgO7O2CIfPDZfQX3PlkKKQeaDxB
+ kWTSPzcUq1naKEScaEvyTYY2CrSAHxuSHLcAHjSRK76R/WQrWxo1NZf2wGBkWWc+y//g
+ yhj64qCX6WepI99n2E2wpXYHjM0I5HCbDYtSVgNyzWcRXa1gaURVNYnRw0xCreVgp0Qh
+ fSNIT3gYaNUXczc2VJ9vvEE6pQphGO1qJPuIyUufWUv//L/Vok0K9zZpnIBvYCqmLjSC
+ pzlw==
+X-Gm-Message-State: AOAM533vb0affzd1FzK2dbziHv/zn68XoejpcZ/6g/LO7OSCegfvqwdQ
+ JMw2X5/F2/gKSl9VJ4CWGA==
+X-Google-Smtp-Source: ABdhPJxoepKz8v6G+i9nSzXAadPVyX1jnM/Mpr31ibtS4FGr/ETI9yCKbb9OQz28l/TtkW85zUE0CQ==
+X-Received: by 2002:a05:6402:404:: with SMTP id
+ q4mr5788509edv.295.1610118638748; 
+ Fri, 08 Jan 2021 07:10:38 -0800 (PST)
+Received: from demetris-TA770E3.lan ([212.50.117.154])
+ by smtp.gmail.com with ESMTPSA id oq7sm3669286ejb.63.2021.01.08.07.10.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Jan 2021 07:10:38 -0800 (PST)
+From: Demetris Ierokipides <ierokipides.dem@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh+dt@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 0/2] ARM: dts: rockchip: minor tweaks for rk3288-miqi.This
+ series adds a missing mali GPU node and two additional CPU opp points
+Date: Fri,  8 Jan 2021 17:10:34 +0200
+Message-Id: <20210108151036.36434-1-ierokipides.dem@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210108_081350_535111_7EA1E73A 
-X-CRM114-Status: GOOD (  22.42  )
+X-CRM114-CacheID: sfid-20210108_101041_145065_D154040C 
+X-CRM114-Status: UNSURE (   8.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,58 +95,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org,
- Jacob Chen <jacob-chen@iotwrt.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Demetris Ierokipides <ierokipides.dem@gmail.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCAyMDIxLTAxLTA4IGF0IDEwOjA1ICswMTAwLCBQYXVsIEtvY2lhbGtvd3NraSB3cm90
-ZToKPiBIaSBFemVxdWllbCwKPiAKPiBPbiBUaHUgMDcgSmFuIDIxLCAxNjowOCwgRXplcXVpZWwg
-R2FyY2lhIHdyb3RlOgo+ID4gSGFwcHkgdG8gc2VlIHRoaXMgcGF0Y2guIEl0IHdhcyBvbiBteSBU
-T0RPIGxpc3QsCj4gPiBidXQgSSBoYWRuJ3QgaGFkIHRpbWUgdG8gYnJpbmd1cCBteSByazMzMjYg
-ZGV2aWNlLgo+IAo+IFNhbWUgaGVyZSwgSSBqdXN0IGhhZCBhbiBvY2Nhc2lvbiB0byB1c2UgaXQg
-YWdhaW4gdGhlc2UgZGF5cyBzbyBJIGp1bXBlZAo+IG9uIGl0IQo+IAo+ID4gQSBmZXcgY29tbWVu
-dHMuCj4gPiAKPiA+IE9uIFRodSwgMjAyMS0wMS0wNyBhdCAxNDo0MSArMDEwMCwgUGF1bCBLb2Np
-YWxrb3dza2kgd3JvdGU6Cj4gPiA+IFRoZSBQWDMwIFNvQyBpbmNsdWRlcyBib3RoIHRoZSBWRFBV
-MiBhbmQgVkVQVTIgYmxvY2tzIHdoaWNoIGFyZSBzaW1pbGFyCj4gPiA+IHRvIHRoZSBSSzMzOTkg
-KEhhbnRybyBHMS9IMSB3aXRoIHNodWZmbGVkIHJlZ2lzdGVycykuCj4gPiA+IAo+ID4gPiBCZXNp
-ZGVzIHRha2luZyBhbiBleHRyYSBjbG9jaywgaXQgYWxzbyBzaGFyZXMgYW4gaW50ZXJydXB0IHdp
-dGggdGhlIElPTU1VCj4gPiA+IHNvIGl0J3MgbmVjZXNzYXJ5IHRvIHJlcXVlc3QgdGhlIGludGVy
-cnVwdCBzaGFyZWQuCj4gPiA+IAo+ID4gClsuLl0KPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-c3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmggYi9kcml2ZXJzL3N0YWdpbmcvbWVkaWEv
-aGFudHJvL2hhbnRyb19ody5oCj4gPiA+IGluZGV4IDM0YzllNDY0OWEyNS4uMDdmNTE2ZmQ3YTJl
-IDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2ZXJzL3N0YWdpbmcvbWVkaWEvaGFudHJvL2hhbnRyb19o
-dy5oCj4gPiA+ICsrKyBiL2RyaXZlcnMvc3RhZ2luZy9tZWRpYS9oYW50cm8vaGFudHJvX2h3LmgK
-PiA+ID4gQEAgLTE0OCw2ICsxNDgsNyBAQCBlbnVtIGhhbnRyb19lbmNfZm10IHsKPiA+ID4gwqDC
-oMKgwqDCoMKgwqDCoFJLMzI4OF9WUFVfRU5DX0ZNVF9VWVZZNDIyID0gMywKPiA+ID4gwqB9Owo+
-ID4gPiDCoAo+ID4gPiArZXh0ZXJuIGNvbnN0IHN0cnVjdCBoYW50cm9fdmFyaWFudCBweDMwX3Zw
-dV92YXJpYW50Owo+ID4gPiDCoGV4dGVybiBjb25zdCBzdHJ1Y3QgaGFudHJvX3ZhcmlhbnQgcmsz
-Mzk5X3ZwdV92YXJpYW50Owo+ID4gPiDCoGV4dGVybiBjb25zdCBzdHJ1Y3QgaGFudHJvX3Zhcmlh
-bnQgcmszMzI4X3ZwdV92YXJpYW50Owo+ID4gPiDCoGV4dGVybiBjb25zdCBzdHJ1Y3QgaGFudHJv
-X3ZhcmlhbnQgcmszMjg4X3ZwdV92YXJpYW50Owo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9z
-dGFnaW5nL21lZGlhL2hhbnRyby9yazMzOTlfdnB1X2h3LmMgYi9kcml2ZXJzL3N0YWdpbmcvbWVk
-aWEvaGFudHJvL3JrMzM5OV92cHVfaHcuYwo+ID4gPiBpbmRleCA3YTc5NjJjZjc3MWUuLjQxMTJm
-OThiYWE2MCAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9y
-azMzOTlfdnB1X2h3LmMKPiA+ID4gKysrIGIvZHJpdmVycy9zdGFnaW5nL21lZGlhL2hhbnRyby9y
-azMzOTlfdnB1X2h3LmMKPiA+IAo+ID4gUGVyaGFwcyBpdCdzIHRpbWUgdG8gcmVuYW1lIHRoaXMg
-dG8gcm9ja2NoaXBfdnB1X2h3LmMsCj4gPiBhbmQgbWVyZ2UgcmszMjg4IGFuZCByazMzOTk/IEl0
-J3MgYSBuaXRwaWNrLCB0aG91Z2guCj4gCj4gSGFoYSwgSSB3YXMgdGhpbmtpbmcgdGhlIGV4YWN0
-IHNhbWUgdGhpbmcgYnV0IHdhc24ndCBzdXJlIGl0IHdvdWxkIGJlIHdlbGNvbWUhCj4gCj4gSSB3
-YXMgdGhpbmtpbmcgb2Ygcm9ja2NoaXBfdnB1Ml9ody5jIG9yIHJvY2tjaGlwX3ZkcHUyX2h3LmMg
-c2luY2UgdGhhdCdzCj4gYXBwYXJlbnRseSBob3cgaXQncyBjYWxsZWQgaW4gUm9ja2NoaXAgdGVy
-bWlub2xvZ3k6IFZEUFUyIGFuZCBWRVBVMiBmb3IgdGhlCj4gSGFudHJvIEcxIGFuZCBIMSB3aXRo
-IHRoZSBzaHVmZmxlZCByZWdpc3RlciBsYXlvdXQuIFRoZSByazMyODggc3R1ZmYgaXMKPiBwcm9i
-YWJseSBWRFBVMS9WRVBVMSBhbmQgd2UgbWlnaHQgd2FudCB0byByZW5hbWUgaXQgYWNjb3JkaW5n
-bHkgYXMgd2VsbC4KPiAKCkknZCByYXRoZXIga2VlcCBpdCBzaW1wbGUgYXMgcm9ja2NoaXBfdnB1
-X2h3LmMgYW5kIGp1c3QgdGhyb3cgaW4gdGhlcmUKYWxsIHRoZSByb2NrY2hpcCBzdHVmZi4KClRo
-YW5rcywKRXplcXVpZWwKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+From: Ntemis <ierokipides.dem@gmail.com>
+
+Demetris Ierokipides (2):
+  ARM: dts: rockchip: add gpu node to rk3288-miqi
+  ARM: dts: rockchip: add extra cpu opp points to rk3288-miqi
+
+ arch/arm/boot/dts/rk3288-miqi.dts | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
