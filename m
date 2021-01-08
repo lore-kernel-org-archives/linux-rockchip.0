@@ -2,57 +2,54 @@ Return-Path: <SRS0=mPU+=GL=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-19.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CCDEC433E0
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 10:50:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7536FC433DB
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 11:06:42 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CBD02238E3
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 10:50:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org CBD02238E3
+	by mail.kernel.org (Postfix) with ESMTPS id 9C9D92395C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 Jan 2021 11:06:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 9C9D92395C
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
-	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=tR0imkLPhXB0nOLYn9Np3ATNLrqAhcHyHU0WqfYdu2k=; b=HDFdpjoRhkeRpyUyGYVzgP9XA
-	PjcePs3pGD18TEmv4k9mdS0b0T6ATXOIjczW6Sel83B6mmPzbA6Za4L2m+eqZu2Y6LXVZBqSXfRSW
-	w9LYFq2uPwqep3Z6TDesJNX4TiJ9JsX/bDh7ac+JQjy9ZYNygfzqoCm/L5W/9JrMIFx8btKsGVXuF
-	j82NCWxC1w4+Hovc5PTsridOyrx4atiiTmQrpm+h5y2VVGLb8PRswhwHnU6XLMgZZq7xaLl2Czpfk
-	lcFfsqiYURx4kZQDhtGPLWN5gKoERoUvvH4pSV+GBRiA9j91ymgg8MPbpplO0FDy4+9HsgzbR47uH
-	FpWhFi1Kg==;
+	List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MkLMoHzaKkcdSjcCn7qdO9Z5kUWf1NVTKdcVaBnCBeg=; b=EUeIg7EeF3kM6SbBEGH2m2Gshx
+	kERaNYgd/Y8U5A3A3HgGyzNT29xGix6jF8GDwZpcM09f1fDl2RYUWnPFIw+B+RTbSloEWd5iLQw5E
+	wXLQOC6gH+5LdHvye0GqwgnZrWVhtMSEAeB3lydmoI56X30kZI0EV+svKl+M4OfBiJ+2YVjQ6PSRE
+	uV3MAuiilF2c0/ei9FeMdwhrtmYBRkG4IgbUb0dBy+VP7JrNKLJ4Md9DSnNTLvjpZ8aWtkP+HJofZ
+	NrBZ4Lc12XThTf0E6sGCZDnqWMkXHuZSYghOhAWC/aguGUFdSkJs9tJpafhr277wcd35mWrnxFaMq
+	PTpC4jRQ==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kxpLG-0006Ee-0R; Fri, 08 Jan 2021 10:50:02 +0000
+	id 1kxpbJ-0001pm-9n; Fri, 08 Jan 2021 11:06:37 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kxpLA-0006Bm-AD; Fri, 08 Jan 2021 10:49:59 +0000
+ id 1kxpbG-0001oX-4p; Fri, 08 Jan 2021 11:06:35 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
+ helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kxpL9-0002KQ-F4; Fri, 08 Jan 2021 11:49:55 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-To: Ezequiel Garcia <ezequiel@collabora.com>,
- Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-Subject: Re: [PATCH 5/5] media: hantro: Add support for the Rockchip PX30
-Date: Fri, 08 Jan 2021 11:49:54 +0100
-Message-ID: <5671105.lOV4Wx5bFT@diego>
-In-Reply-To: <11669141.O9o76ZdvQC@diego>
-References: <20210107134101.195426-1-paul.kocialkowski@bootlin.com>
- <X/ggTOOTBhGoFDpW@aptenodytes> <11669141.O9o76ZdvQC@diego>
+ id 1kxpbD-0002PB-Pe; Fri, 08 Jan 2021 12:06:31 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org
+Subject: [PATCH] arm64: dts: rockchip: fix vopl iommu irq on px30
+Date: Fri,  8 Jan 2021 12:06:27 +0100
+Message-Id: <20210108110627.3231226-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210108_054956_520271_F455E49D 
-X-CRM114-Status: GOOD (  40.43  )
+X-CRM114-CacheID: sfid-20210108_060634_242734_0834415F 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,239 +62,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, linux-rockchip@lists.infradead.org,
- Jacob Chen <jacob-chen@iotwrt.com>, Philipp Zabel <p.zabel@pengutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: Heiko Stuebner <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ paul.kocialkowski@bootlin.com, ezequiel@collabora.com,
+ linux-arm-kernel@lists.infradead.org, christoph.muellner@theobroma-systems.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 8. Januar 2021, 11:48:26 CET schrieb Heiko St=FCbner:
-> Am Freitag, 8. Januar 2021, 10:05:16 CET schrieb Paul Kocialkowski:
-> > Hi Ezequiel,
-> > =
+From: Sandy Huang <hjc@rock-chips.com>
 
-> > On Thu 07 Jan 21, 16:08, Ezequiel Garcia wrote:
-> > > Happy to see this patch. It was on my TODO list,
-> > > but I hadn't had time to bringup my rk3326 device.
-> > =
+The vop-mmu shares the irq with its matched vop but not the vpu.
 
-> > Same here, I just had an occasion to use it again these days so I jumped
-> > on it!
-> > =
+Fixes: 7053e06b1422 ("arm64: dts: rockchip: add core dtsi file for PX30 SoCs")
+Signed-off-by: Sandy Huang <hjc@rock-chips.com>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ arch/arm64/boot/dts/rockchip/px30.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> > > A few comments.
-> > > =
-
-> > > On Thu, 2021-01-07 at 14:41 +0100, Paul Kocialkowski wrote:
-> > > > The PX30 SoC includes both the VDPU2 and VEPU2 blocks which are sim=
-ilar
-> > > > to the RK3399 (Hantro G1/H1 with shuffled registers).
-> > > > =
-
-> > > > Besides taking an extra clock, it also shares an interrupt with the=
- IOMMU
-> > > > so it's necessary to request the interrupt shared.
-> > > > =
-
-> > > =
-
-> > > Could you clarify on the commit description which iommu device interr=
-upt
-> > > line is being shared?
-> > =
-
-> > Sure! It's IRQ 79 of the GIC that's shared with vopl_mmu.
-> > It's not very obvious in the dt commit.
-> =
-
-> Having looked through the docs again, I think that the vopl_mmu using
-> irq 79 is just a mistake:
-> =
-
-> (1) in general vop and vop-mmu use the same irq (78 in that case)
-> (2) Rockchip does seem to have fixed that in their 4.19 tree as well:
-> https://github.com/rockchip-linux/kernel/blob/develop-4.19/arch/arm64/boo=
-t/dts/rockchip/px30.dtsi#L1598
-
-(3) https://github.com/rockchip-linux/kernel/commit/391a5c5f96d177896f9fe92=
-ca1c83e00f4352191 ;-)
-
-> =
-
-> So to me it looks like this doesn't need to be shared and instead
-> "simply" the px30 dtsi fixed ;-)
-> =
-
-> =
-
-> Heiko
-> =
-
-> =
-
-> > > > Signed-off-by: Paul Kocialkowski <paul.kocialkowski@bootlin.com>
-> > > > ---
-> > > >  drivers/staging/media/hantro/hantro_drv.c    |  5 +++--
-> > > >  drivers/staging/media/hantro/hantro_hw.h     |  1 +
-> > > >  drivers/staging/media/hantro/rk3399_vpu_hw.c | 21 ++++++++++++++++=
-++++
-> > > >  3 files changed, 25 insertions(+), 2 deletions(-)
-> > > > =
-
-> > > > diff --git a/drivers/staging/media/hantro/hantro_drv.c b/drivers/st=
-aging/media/hantro/hantro_drv.c
-> > > > index e5f200e64993..076a7782b476 100644
-> > > > --- a/drivers/staging/media/hantro/hantro_drv.c
-> > > > +++ b/drivers/staging/media/hantro/hantro_drv.c
-> > > > @@ -472,6 +472,7 @@ static const struct v4l2_file_operations hantro=
-_fops =3D {
-> > > >  =
-
-> > > >  static const struct of_device_id of_hantro_match[] =3D {
-> > > >  #ifdef CONFIG_VIDEO_HANTRO_ROCKCHIP
-> > > > +       { .compatible =3D "rockchip,px30-vpu", .data =3D &px30_vpu_=
-variant, },
-> > > >         { .compatible =3D "rockchip,rk3399-vpu", .data =3D &rk3399_=
-vpu_variant, },
-> > > >         { .compatible =3D "rockchip,rk3328-vpu", .data =3D &rk3328_=
-vpu_variant, },
-> > > >         { .compatible =3D "rockchip,rk3288-vpu", .data =3D &rk3288_=
-vpu_variant, },
-> > > > @@ -796,8 +797,8 @@ static int hantro_probe(struct platform_device =
-*pdev)
-> > > >                         return -ENXIO;
-> > > >  =
-
-> > > >                 ret =3D devm_request_irq(vpu->dev, irq,
-> > > > -                                      vpu->variant->irqs[i].handle=
-r, 0,
-> > > > -                                      dev_name(vpu->dev), vpu);
-> > > > +                                      vpu->variant->irqs[i].handle=
-r,
-> > > > +                                      IRQF_SHARED, dev_name(vpu->d=
-ev), vpu);
-> > > =
-
-> > > Maybe this irq flag should be part of vpu->variant? It sounds like an=
- IP block
-> > > integration specific thing.
-> > =
-
-> > Ah right, I agree that it would be justified. But it would also be simp=
-le to
-> > just fix the irq handlers and assume this can generally be the case, be=
-cause it
-> > feels like a bit of a detail to justify a flag.
-> > =
-
-> > Do you think this could be a safe/workable assumption?
-> > =
-
-> > > Also, you will need a px30-specific interrupt handler now,
-> > > since the rk3399 one is not shared-friendly.
-> > =
-
-> > Yeah I realize I haven't been very careful there and didn't really chec=
-k that
-> > the IOMMU driver is really safe to handle shared interrupts either. I'l=
-l take
-> > a look a that when crafting v2.
-> > =
-
-> > > >                 if (ret) {
-> > > >                         dev_err(vpu->dev, "Could not request %s IRQ=
-.\n",
-> > > >                                 irq_name);
-> > > > diff --git a/drivers/staging/media/hantro/hantro_hw.h b/drivers/sta=
-ging/media/hantro/hantro_hw.h
-> > > > index 34c9e4649a25..07f516fd7a2e 100644
-> > > > --- a/drivers/staging/media/hantro/hantro_hw.h
-> > > > +++ b/drivers/staging/media/hantro/hantro_hw.h
-> > > > @@ -148,6 +148,7 @@ enum hantro_enc_fmt {
-> > > >         RK3288_VPU_ENC_FMT_UYVY422 =3D 3,
-> > > >  };
-> > > >  =
-
-> > > > +extern const struct hantro_variant px30_vpu_variant;
-> > > >  extern const struct hantro_variant rk3399_vpu_variant;
-> > > >  extern const struct hantro_variant rk3328_vpu_variant;
-> > > >  extern const struct hantro_variant rk3288_vpu_variant;
-> > > > diff --git a/drivers/staging/media/hantro/rk3399_vpu_hw.c b/drivers=
-/staging/media/hantro/rk3399_vpu_hw.c
-> > > > index 7a7962cf771e..4112f98baa60 100644
-> > > > --- a/drivers/staging/media/hantro/rk3399_vpu_hw.c
-> > > > +++ b/drivers/staging/media/hantro/rk3399_vpu_hw.c
-> > > =
-
-> > > Perhaps it's time to rename this to rockchip_vpu_hw.c,
-> > > and merge rk3288 and rk3399? It's a nitpick, though.
-> > =
-
-> > Haha, I was thinking the exact same thing but wasn't sure it would be w=
-elcome!
-> > =
-
-> > I was thinking of rockchip_vpu2_hw.c or rockchip_vdpu2_hw.c since that's
-> > apparently how it's called in Rockchip terminology: VDPU2 and VEPU2 for=
- the
-> > Hantro G1 and H1 with the shuffled register layout. The rk3288 stuff is
-> > probably VDPU1/VEPU1 and we might want to rename it accordingly as well.
-> > =
-
-> > Cheers and thanks for the review!
-> > =
-
-> > Paul
-> > =
-
-> > > > @@ -220,3 +220,24 @@ const struct hantro_variant rk3328_vpu_variant=
- =3D {
-> > > >         .clk_names =3D rk3399_clk_names,
-> > > >         .num_clocks =3D ARRAY_SIZE(rk3399_clk_names),
-> > > >  };
-> > > > +
-> > > > +static const char * const px30_clk_names[] =3D {
-> > > > +       "aclk", "hclk", "sclk"
-> > > > +};
-> > > > +
-> > > > +const struct hantro_variant px30_vpu_variant =3D {
-> > > > +       .enc_offset =3D 0x0,
-> > > > +       .enc_fmts =3D rk3399_vpu_enc_fmts,
-> > > > +       .num_enc_fmts =3D ARRAY_SIZE(rk3399_vpu_enc_fmts),
-> > > > +       .dec_offset =3D 0x400,
-> > > > +       .dec_fmts =3D rk3399_vpu_dec_fmts,
-> > > > +       .num_dec_fmts =3D ARRAY_SIZE(rk3399_vpu_dec_fmts),
-> > > > +       .codec =3D HANTRO_JPEG_ENCODER | HANTRO_MPEG2_DECODER |
-> > > > +                HANTRO_VP8_DECODER,
-> > > > +       .codec_ops =3D rk3399_vpu_codec_ops,
-> > > > +       .irqs =3D rk3399_irqs,
-> > > > +       .num_irqs =3D ARRAY_SIZE(rk3399_irqs),
-> > > > +       .init =3D rk3399_vpu_hw_init,
-> > > > +       .clk_names =3D px30_clk_names,
-> > > > +       .num_clocks =3D ARRAY_SIZE(px30_clk_names)
-> > > > +};
-> > > =
-
-> > > Thanks,
-> > > Ezequiel
-> > > =
-
-> > =
-
-> > =
-
-> =
-
-> =
-
-
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/px30.dtsi b/arch/arm64/boot/dts/rockchip/px30.dtsi
+index 39b54093d858..4f762968f75f 100644
+--- a/arch/arm64/boot/dts/rockchip/px30.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30.dtsi
+@@ -1110,7 +1110,7 @@ vopl_out_lvds: endpoint@1 {
+ 	vopl_mmu: iommu@ff470f00 {
+ 		compatible = "rockchip,iommu";
+ 		reg = <0x0 0xff470f00 0x0 0x100>;
+-		interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_HIGH>;
++		interrupts = <GIC_SPI 78 IRQ_TYPE_LEVEL_HIGH>;
+ 		interrupt-names = "vopl_mmu";
+ 		clocks = <&cru ACLK_VOPL>, <&cru HCLK_VOPL>;
+ 		clock-names = "aclk", "iface";
+-- 
+2.29.2
 
 
 _______________________________________________
