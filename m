@@ -2,56 +2,58 @@ Return-Path: <SRS0=bvFq=GM=lists.infradead.org=linux-rockchip-bounces+linux-rock
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-7.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8E7C9C433DB
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Jan 2021 14:06:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C1818C433E0
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Jan 2021 15:40:16 +0000 (UTC)
 Received: from merlin.infradead.org (merlin.infradead.org [205.233.59.134])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E101023A1C
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Jan 2021 14:06:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org E101023A1C
+	by mail.kernel.org (Postfix) with ESMTPS id 0F05623372
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 Jan 2021 15:40:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 mail.kernel.org 0F05623372
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=sntech.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=merlin.20170209; h=Sender:Content-Transfer-Encoding:
 	Content-Type:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-ID:Date:
+	List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:Message-Id:Date:
 	Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	 bh=5zzYlYUPji5K5oCO6k90V5l3cl/vpq3iiaaxC6GQegc=; b=gzXgXxHRwhJKihmpMr1honWMK
-	VMlbB0DZCzZCQfS6McKr2m0RP+1GjT2h1YBD/8zG95Oh4VOU1THGjtoD2SzNcEBJvn6UCxTqwcd9U
-	8pvCswGV4RJ8LxRqW03RVCTJcSRH80485KdUOOrQl9YMyCIas71YUjqGvWIjThWw5iAIvK00Hy/Ha
-	bBJqhvD2OqqyTBc4RJHPCcyiT3onPbgSDHRokPqNuyADsKHzHNZZ64vJaWbTTiC3MHjbpZTQv8Mki
-	T6j+vwYnRQ7wiJDsXmzQzPxKh5NHTi8o7d9tI3FLjsjb/l6trQnjuMAdW8193WVyZ7H9YOxcu3dqn
-	dCSjvwDXQ==;
+	 bh=KarxF7vDaH9TTt1t0RzxgeOZJnl6hYFCotDTz8X4whg=; b=d19ECnEOn8Nq37uiqV37UI9eV
+	lKseq9cUIihGy4dJsfWS75L+qIMgmqn4FjCuX5Wafo/xGDy7u8KHc74GRhMTZulFi6qPAmP5dasI7
+	LWhDcHO96d5Khzz26f/V6gBg6AsD2wAgSlHweT2JywnxF0EmmOh90LHlp9gcsWMV1KiuVN7J7BL1l
+	gSZNMQ5B5SYSWOm1fZN5ADNFWgvI/EtExkj4v71WBYTMLG9uZnVDW6/c0L/rFdkPs/uqwnhOooNeo
+	ao4ay586mHRsR2VEPCzwcs1CUwX1ZiiIfEzRDP0jSQOjYfmtiHAEJCkh3WYsCPrxjEWEguJCGSK4T
+	TSm5guCxA==;
 Received: from localhost ([::1] helo=merlin.infradead.org)
 	by merlin.infradead.org with esmtp (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1kyEsd-0004jU-PL; Sat, 09 Jan 2021 14:06:11 +0000
+	id 1kyGLc-0000d6-R9; Sat, 09 Jan 2021 15:40:12 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
  by merlin.infradead.org with esmtps (Exim 4.92.3 #3 (Red Hat Linux))
- id 1kyEsW-0004iG-FD; Sat, 09 Jan 2021 14:06:05 +0000
+ id 1kyGLO-0000Xp-Cv; Sat, 09 Jan 2021 15:39:59 +0000
 Received: from ip5f5aa64a.dynamic.kabel-deutschland.de ([95.90.166.74]
- helo=diego.localnet)
+ helo=phil.lan)
  by gloria.sntech.de with esmtpsa (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.92) (envelope-from <heiko@sntech.de>)
- id 1kyEsH-0000Kp-BU; Sat, 09 Jan 2021 15:05:49 +0100
-From: Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+ id 1kyGLM-0000jX-Ed; Sat, 09 Jan 2021 16:39:56 +0100
+From: Heiko Stuebner <heiko@sntech.de>
 To: Johan Jonker <jbx6244@gmail.com>
-Subject: Re: [PATCH 1/8] dt-binding: watchdog: add more Rockchip compatibles
- to snps, dw-wdt.yaml
-Date: Sat, 09 Jan 2021 15:05:48 +0100
-Message-ID: <1773127.CQOukoFCf9@diego>
-In-Reply-To: <20201218120534.13788-1-jbx6244@gmail.com>
-References: <20201218120534.13788-1-jbx6244@gmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: assign a fixed index to mmc devices
+ on rk3328 boards
+Date: Sat,  9 Jan 2021 16:39:48 +0100
+Message-Id: <161020678303.3482489.12512122590216902227.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.29.2
+In-Reply-To: <20201219210500.3855-1-jbx6244@gmail.com>
+References: <20201219210500.3855-1-jbx6244@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210109_090604_591250_47E484EA 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20210109_103958_591199_0EE0EA0A 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,45 +66,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>, 
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-watchdog@vger.kernel.org,
+Cc: devicetree@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
  linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org, jamie@jamieiles.com,
- wim@linux-watchdog.org, linux@roeck-us.net
+ robh+dt@kernel.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Am Freitag, 18. Dezember 2020, 13:05:27 CET schrieb Johan Jonker:
-> The watchdog compatible strings are suppose to be SoC orientated.
-> In the more recently added Rockchip SoC dtsi files only
-> the fallback string "snps,dw-wdt" is used, so add the following
-> compatible strings:
+On Sat, 19 Dec 2020 22:05:00 +0100, Johan Jonker wrote:
+> Recently introduced async probe on mmc devices can shuffle block IDs.
+> Pin them to fixed values to ease booting in environments where UUIDs
+> are not practical. Use newly introduced aliases for mmcblk devices from [1].
 > 
-> "rockchip,px30-wdt", "snps,dw-wdt"
-> "rockchip,rk3228-wdt", "snps,dw-wdt"
-> "rockchip,rk3308-wdt", "snps,dw-wdt"
-> "rockchip,rk3328-wdt", "snps,dw-wdt"
-> "rockchip,rk3399-wdt", "snps,dw-wdt"
-> "rockchip,rv1108-wdt", "snps,dw-wdt"
-> 
-> make ARCH=arm dtbs_check
-> DT_SCHEMA_FILES=Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> 
-> make ARCH=arm64 dtbs_check
-> DT_SCHEMA_FILES=Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> 
-> Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+> [1] https://patchwork.kernel.org/patch/11747669/
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+Applied, thanks!
 
-I'd like to pick up the devicetree patches (2-8) once this has landed
-in the watchdog tree.
+[1/1] arm64: dts: rockchip: assign a fixed index to mmc devices on rk3328 boards
+      commit: 221c6c042fa004b73b10780fa2aaf177085e2f3f
 
-Thanks
-Heiko
-
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
